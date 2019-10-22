@@ -2,7 +2,7 @@
 	name = "rubber stamp"
 	desc = "A rubber stamp for stamping important documents."
 	icon = 'icons/obj/bureaucracy.dmi'
-	icon_state = "stamp-qm"
+	icon_state = "stamp-so"
 	item_state = "stamp"
 	throwforce = 0
 	w_class = ITEM_SIZE_TINY
@@ -15,29 +15,41 @@
 	name = "captain's rubber stamp"
 	icon_state = "stamp-cap"
 
-/obj/item/weapon/stamp/hop
-	name = "head of personnel's rubber stamp"
-	icon_state = "stamp-hop"
+/obj/item/weapon/stamp/fl
+	name = "first lieutenant's rubber stamp"
+	icon_state = "stamp-fl"
 
-/obj/item/weapon/stamp/hos
-	name = "head of security's rubber stamp"
-	icon_state = "stamp-hos"
+/obj/item/weapon/stamp/cseco
+	name = "chief security officer's rubber stamp"
+	icon_state = "stamp-cseco"
 
-/obj/item/weapon/stamp/ward
-	name = "warden's rubber stamp"
-	icon_state = "stamp-ward"
+/obj/item/weapon/stamp/security
+	name = "security's rubber stamp"
+	icon_state = "stamp-sec"
 
 /obj/item/weapon/stamp/ce
 	name = "chief engineer's rubber stamp"
 	icon_state = "stamp-ce"
 
-/obj/item/weapon/stamp/rd
-	name = "research director's rubber stamp"
-	icon_state = "stamp-rd"
+/obj/item/weapon/stamp/engineering
+	name = "engineering rubber stamp"
+	icon_state = "stamp-engi"
 
-/obj/item/weapon/stamp/cmo
-	name = "chief medical officer's rubber stamp"
-	icon_state = "stamp-cmo"
+/obj/item/weapon/stamp/cscio
+	name = "chief science officer's rubber stamp"
+	icon_state = "stamp-cscio"
+
+/obj/item/weapon/stamp/science
+	name = "science rubber stamp"
+	icon_state = "stamp-sci"
+
+/obj/item/weapon/stamp/smo
+	name = "senior medical officer's rubber stamp"
+	icon_state = "stamp-smo"
+
+/obj/item/weapon/stamp/medical
+	name = "medical rubber stamp"
+	icon_state = "stamp-med"
 
 /obj/item/weapon/stamp/denied
 	name = "\improper DENIED rubber stamp"
@@ -55,9 +67,21 @@
 	name = "centcomm rubber stamp"
 	icon_state = "stamp-cent"
 
-/obj/item/weapon/stamp/qm
-	name = "quartermaster's rubber stamp"
-	icon_state = "stamp-qm"
+/obj/item/weapon/stamp/dom
+	name = "director of mining's rubber stamp"
+	icon_state = "stamp-dom"
+
+/obj/item/weapon/stamp/foreman
+	name = "foreman's rubber stamp"
+	icon_state = "stamp-fm"
+
+/obj/item/weapon/stamp/mining
+	name = "mining rubber stamp"
+	icon_state = "stamp-mining"
+
+/obj/item/weapon/stamp/so
+	name = "supply officer's rubber stamp"
+	icon_state = "stamp-so"
 
 /obj/item/weapon/stamp/cargo
 	name = "cargo rubber stamp"

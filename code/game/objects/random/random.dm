@@ -258,8 +258,6 @@
 				/obj/item/weapon/storage/pill_bottle/tramadol = 3,
 				/obj/item/weapon/storage/pill_bottle/happy = 2,
 				/obj/item/weapon/storage/pill_bottle/zoom = 2,
-				/obj/item/weapon/reagent_containers/glass/beaker/vial/random/toxin = 1,
-				/obj/item/weapon/reagent_containers/glass/beaker/sulphuric = 1,
 				/obj/item/weapon/contraband/poster = 5,
 				/obj/item/weapon/material/butterfly = 2,
 				/obj/item/weapon/material/butterflyblade = 3,
@@ -267,12 +265,7 @@
 				/obj/item/weapon/material/wirerod = 3,
 				/obj/item/weapon/melee/baton/cattleprod = 1,
 				/obj/item/weapon/material/butterfly/switchblade = 1,
-				/obj/item/weapon/material/hatchet/tacknife = 1,
-				/obj/item/weapon/material/kitchen/utensil/knife/boot = 2,
 				/obj/item/weapon/storage/secure/briefcase/money = 1,
-				/obj/item/weapon/storage/box/syndie_kit/cigarette = 1,
-				/obj/item/stack/telecrystal = 1,
-				/obj/item/clothing/under/syndicate = 2,
 				/obj/item/weapon/reagent_containers/syringe = 3,
 				/obj/item/weapon/reagent_containers/syringe/steroid = 2,
 				/obj/item/weapon/reagent_containers/syringe/drugs = 1))
@@ -499,7 +492,6 @@ obj/random/closet/item_to_spawn()
 				/obj/structure/closet/crate/medical,
 				/obj/structure/closet/boxinggloves,
 				/obj/structure/largecrate,
-				/obj/structure/closet/wardrobe/xenos,
 				/obj/structure/closet/wardrobe/mixed,
 				/obj/structure/closet/wardrobe/suit,
 				/obj/structure/closet/wardrobe/orange))
@@ -605,13 +597,8 @@ obj/random/closet/item_to_spawn()
 
 /obj/random/soap/item_to_spawn()
 	return pickweight(list(/obj/item/weapon/soap = 4,
-				/obj/item/weapon/soap/nanotrasen = 3,
 				/obj/item/weapon/soap/deluxe = 3,
-				/obj/item/weapon/soap/syndie = 1,
-				/obj/item/weapon/soap/gold = 1,
-				/obj/item/weapon/reagent_containers/glass/rag = 2,
-				/obj/item/weapon/reagent_containers/spray/cleaner = 2,
-				/obj/item/weapon/grenade/chem_grenade/cleaner = 1))
+				/obj/item/weapon/soap/gold = 1))
 
 obj/random/obstruction //Large objects to block things off in maintenance
 	name = "random obstruction"
@@ -663,7 +650,6 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/weapon/camera_assembly,
 				/obj/item/device/camera,
 				/obj/item/modular_computer/pda,
-				/obj/item/weapon/card/emag_broken,
 				/obj/item/device/radio/headset,
 				/obj/item/device/flashlight/flare/glowstick/yellow,
 				/obj/item/device/flashlight/flare/glowstick/orange,
@@ -702,7 +688,6 @@ obj/random/obstruction/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/mask/gas = 4,
 				/obj/item/clothing/mask/gas/half = 5,
 				/obj/item/clothing/mask/gas/swat = 1,
-				/obj/item/clothing/mask/gas/syndicate = 1,
 				/obj/item/clothing/mask/breath = 6,
 				/obj/item/clothing/mask/breath/medical = 4,
 				/obj/item/clothing/mask/balaclava = 3,
@@ -726,16 +711,13 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/weapon/reagent_containers/food/snacks/cheesiehonkers,
 				/obj/item/weapon/reagent_containers/food/snacks/tastybread,
 				/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar,
-				/obj/item/weapon/reagent_containers/food/snacks/syndicake,
 				/obj/item/weapon/reagent_containers/food/snacks/donut,
 				/obj/item/weapon/reagent_containers/food/snacks/donut/cherryjelly,
 				/obj/item/weapon/reagent_containers/food/snacks/donut/jelly,
 				/obj/item/pizzabox/meat,
 				/obj/item/pizzabox/vegetable,
 				/obj/item/pizzabox/margherita,
-				/obj/item/pizzabox/mushroom,
-				/obj/item/weapon/reagent_containers/food/snacks/plumphelmetbiscuit,
-				/obj/item/weapon/reagent_containers/food/snacks/skrellsnacks))
+				/obj/item/pizzabox/mushroom))
 
 
 /obj/random/storage
@@ -753,7 +735,6 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/weapon/storage/backpack/dufflebag = 2,
 				/obj/item/weapon/storage/box = 5,
 				/obj/item/weapon/storage/box/donkpockets = 3,
-				/obj/item/weapon/storage/box/sinpockets = 1,
 				/obj/item/weapon/storage/box/donut = 2,
 				/obj/item/weapon/storage/box/cups = 3,
 				/obj/item/weapon/storage/box/mousetraps = 4,
@@ -784,7 +765,6 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/clothing/shoes/swat = 1,
 				/obj/item/clothing/shoes/combat = 1,
 				/obj/item/clothing/shoes/galoshes = 2,
-				/obj/item/clothing/shoes/syndigaloshes = 1,
 				/obj/item/clothing/shoes/magboots = 1,
 				/obj/item/clothing/shoes/laceup = 4,
 				/obj/item/clothing/shoes/black = 4,
@@ -858,7 +838,6 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/clothing/head/hardhat/orange = 4,
 				/obj/item/clothing/head/hardhat/red = 4,
 				/obj/item/clothing/head/hardhat/dblue = 4,
-				/obj/item/clothing/head/ushanka = 3,
 				/obj/item/clothing/head/welding = 2))
 
 /obj/random/suit
@@ -891,9 +870,7 @@ obj/random/obstruction/item_to_spawn()
 	icon_state = "grey"
 
 /obj/random/clothing/item_to_spawn()
-	return pickweight(list(/obj/item/clothing/under/syndicate/tacticool = 2,
-				/obj/item/clothing/under/syndicate/combat = 1,
-				/obj/item/clothing/under/hazard = 4,
+	return pickweight(list(/obj/item/clothing/under/hazard = 4,
 				/obj/item/clothing/under/sterile = 4,
 				/obj/item/clothing/under/casual_pants/camo = 2,
 				/obj/item/clothing/under/frontier = 2,
@@ -1002,8 +979,6 @@ something, make sure it's not in one of the other lists.*/
 				/obj/random/voidsuit = 10,
 				/obj/random/hardsuit = 10,
 				/obj/item/clothing/mask/muzzle = 7,
-				/obj/item/clothing/mask/gas/vox = 8,
-				/obj/item/clothing/mask/gas/syndicate = 10,
 				/obj/item/clothing/glasses/night = 3,
 				/obj/item/clothing/glasses/thermal = 1,
 				/obj/item/clothing/glasses/welding/superior = 7,
@@ -1023,9 +998,6 @@ something, make sure it's not in one of the other lists.*/
 				/obj/item/stack/material/mhydrogen/ten = 6,
 				/obj/item/stack/material/plasteel/ten = 9,
 				/obj/item/weapon/storage/box/monkeycubes = 5,
-				/obj/item/weapon/storage/box/monkeycubes/neaeracubes = 4,
-				/obj/item/weapon/storage/box/monkeycubes/stokcubes = 4,
-				/obj/item/weapon/storage/box/monkeycubes/farwacubes = 4,
 				/obj/item/weapon/storage/firstaid/surgery = 4,
 				/obj/item/weapon/cell/infinite = 1,
 				/obj/item/weapon/archaeological_find = 2,
@@ -1040,8 +1012,7 @@ something, make sure it's not in one of the other lists.*/
 				/obj/item/weapon/bonegel = 7,
 				/obj/item/weapon/circular_saw = 7,
 				/obj/item/weapon/scalpel = 7,
-				/obj/item/weapon/melee/baton/loaded = 9,
-				/obj/item/device/radio/headset/syndicate = 6))
+				/obj/item/weapon/melee/baton/loaded = 9))
 
 /obj/random/voidhelmet
 	name = "Random Voidsuit Helmet"
@@ -1096,9 +1067,7 @@ something, make sure it's not in one of the other lists.*/
 				/obj/item/weapon/rig/eva,
 				/obj/item/weapon/rig/light/hacker,
 				/obj/item/weapon/rig/light/stealth,
-				/obj/item/weapon/rig/light,
-				/obj/item/weapon/rig/unathi,
-				/obj/item/weapon/rig/unathi/fancy))
+				/obj/item/weapon/rig/light))
 
 /obj/random/hostile
 	name = "Random Hostile Mob"
@@ -1205,7 +1174,6 @@ var/list/random_useful_
 
 			random_junk_ -= /obj/item/trash/plate
 			random_junk_ -= /obj/item/trash/snack_bowl
-			random_junk_ -= /obj/item/trash/syndi_cakes
 			random_junk_ -= /obj/item/trash/tray
 		return pick(random_junk_)
 
