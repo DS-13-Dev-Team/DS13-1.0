@@ -226,3 +226,12 @@
 	if(!istype(d))
 		return json_encode(d)
 	return d.get_log_info_line()
+
+
+/proc/report_progress(var/progress_message)
+	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)
+	admin_notice("[progress_message]", R_DEBUG)
+	to_world_log(progress_message)
+	//Prevents spam in single user mode
+	if (world.port)
+		to_world_log(progress_message)

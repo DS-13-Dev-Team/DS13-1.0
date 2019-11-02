@@ -166,6 +166,8 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	report_progress("Unit testing, so not loading away sites")
 	return // don't build away sites during unit testing
 #else
+	if (config.no_overmap)
+		return
 	report_progress("Loading away sites...")
 	var/list/sites_by_spawn_weight = list()
 	for (var/site_name in SSmapping.away_sites_templates)
@@ -191,7 +193,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 #endif
 
 /datum/map/proc/build_exoplanets()
-	if(!use_overmap)
+	if(!use_overmap || config.no_overmap)
 		return
 
 	for(var/i = 0, i < num_exoplanets, i++)

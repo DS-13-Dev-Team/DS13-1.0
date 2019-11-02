@@ -76,7 +76,7 @@
 		/datum/unarmed_attack,
 		/datum/unarmed_attack/bite
 		)
-	var/list/unarmed_attacks = null           // For empty hand harm-intent attack
+	var/list/unarmed_attacks = null           // populated at runtime, don't touch
 
 	var/list/natural_armour_values            // Armour values used if naked.
 	var/brute_mod =      1                    // Physical damage multiplier.

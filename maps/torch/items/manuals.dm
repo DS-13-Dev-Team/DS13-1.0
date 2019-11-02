@@ -106,6 +106,11 @@
 
 /obj/item/weapon/folder/envelope/captain/Initialize()
 	. = ..()
+
+	//Throws runtimes without overmap
+	if (config.no_overmap)
+		return
+
 	var/obj/effect/overmap/torch = map_sectors["[z]"]
 	var/memo = {"
 	<tt><center><b><font color='red'>SECRET - CODE WORDS: TORCH</font></b>
@@ -144,7 +149,7 @@
 
 /obj/item/weapon/folder/envelope/rep
 	desc = "A thick envelope. The SCG crest is stamped in the corner, along with 'TOP SECRET - UMBRA'."
-	
+
 /obj/item/weapon/folder/envelope/rep/Initialize()
 	. = ..()
 	new/obj/item/weapon/paper/umbra(src)

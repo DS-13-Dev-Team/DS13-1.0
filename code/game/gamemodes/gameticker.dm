@@ -4,6 +4,8 @@ var/global/datum/controller/gameticker/ticker
 	var/const/restart_timeout = 600
 	var/current_state = GAME_STATE_PREGAME
 
+	var/start_ASAP = FALSE          //the game will start as soon as possible, bypassing all pre-game nonsense
+
 	var/hide_mode = 0
 	var/datum/game_mode/mode = null
 	var/post_game = 0
@@ -51,11 +53,17 @@ var/global/datum/controller/gameticker/ticker
 				master_mode = "extended"
 
 		to_world("<b>Trying to start [master_mode]...</b>")
-		to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
-		to_world("Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds")
+		if (config.auto_start)
+			start_ASAP = TRUE
+		else
+			to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
+			to_world("Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds")
 
 
 		while(current_state == GAME_STATE_PREGAME)
+			if(start_ASAP)
+				start_now()
+				return
 			for(var/i=0, i<10, i++)
 				sleep(1)
 				vote.process()
@@ -75,6 +83,20 @@ var/global/datum/controller/gameticker/ticker
 
 	while (!setup())
 
+
+/datum/controller/gameticker/proc/start_now(mob/user)
+	if(!(current_state == RUNLEVEL_LOBBY))
+		return
+	initialization_stage = INITIALIZATION_NOW_AND_COMPLETE
+	current_state = GAME_STATE_SETTING_UP
+	pregame_timeleft = 0
+	//if(istype(SSvote.active_vote, /datum/vote/gamemode))
+	//	SSvote.cancel_vote(user)
+	//	bypass_gamemode_vote = 1
+	Master.SetRunLevel(RUNLEVEL_SETUP)
+
+
+	return 1
 
 /datum/controller/gameticker/proc/setup()
 	//Create and announce mode
@@ -150,6 +172,17 @@ var/global/datum/controller/gameticker/ticker
 		CreateModularRecord(H)
 
 	callHook("roundstart")
+
+	//Here we will trigger the auto-observe and auto bst debug things
+	if (config.auto_observe)
+		for(var/client/C in GLOB.clients)
+			if (C.mob)
+				make_observer(C.mob)
+	spawn(5)
+		if (config.auto_bst)
+			for(var/client/C in GLOB.clients)
+				if (C.mob)
+					C.cmd_dev_bst(TRUE)
 
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()

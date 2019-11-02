@@ -11,6 +11,8 @@
 	eye_attack_text = "a tendril"
 	eye_attack_text_victim = "a tendril"
 
+
+
 /datum/unarmed_attack/claws
 	attack_verb = list("scratched", "clawed", "slashed")
 	attack_noun = list("claws")
@@ -20,7 +22,7 @@
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	sharp = 1
 	edge = 1
-	
+
 /datum/unarmed_attack/claws/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 	if(user.gloves)
 		var/obj/item/clothing/gloves/gloves = user.gloves

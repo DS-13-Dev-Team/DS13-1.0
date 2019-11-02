@@ -277,6 +277,11 @@
 #define SPECIES_ALIEN       "Humanoid"
 #define SPECIES_ADHERENT    "Adherent"
 
+//Necromorph species
+#define SPECIES_NECROMORPH 	"Necromorph"
+#define SPECIES_NECROMORPH_SLASHER 	"Slasher"
+#define SPECIES_NECROMORPH_SLASHER_ENHANCED 	"Enhanced Slasher"
+
 #define SURGERY_CLOSED 0
 #define SURGERY_OPEN 1
 #define SURGERY_RETRACTED 2
