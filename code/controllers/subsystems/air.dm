@@ -139,12 +139,12 @@ SUBSYSTEM_DEF(air)
 
 		CHECK_TICK
 
-	report_progress({"Total Simulated Turfs: [simulated_turf_count]
-Total Zones: [zones.len]
-Total Edges: [edges.len]
-Total Active Edges: [active_edges.len ? "<span class='danger'>[active_edges.len]</span>" : "None"]
-Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]
-"})
+	report_progress("Total Simulated Turfs: [simulated_turf_count]")
+	report_progress("Total Zones: [zones.len]")
+	report_progress("Total Edges: [edges.len]")
+	report_progress("Total Active Edges: [active_edges.len ? "<span class='danger'>[active_edges.len]</span>" : "None"]")
+	report_progress("Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
+
 
 	report_progress("Geometry processing completed in [(REALTIMEOFDAY - starttime)/10] seconds!")
 

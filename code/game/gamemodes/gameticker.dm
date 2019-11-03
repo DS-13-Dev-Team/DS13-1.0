@@ -36,6 +36,7 @@ var/global/datum/controller/gameticker/ticker
 
 	var/list/antag_pool = list()
 	var/looking_for_antags = 0
+	var/bypass_gamemode_vote = FALSE
 
 /datum/controller/gameticker/proc/pregame()
 	do
@@ -63,13 +64,12 @@ var/global/datum/controller/gameticker/ticker
 		while(current_state == GAME_STATE_PREGAME)
 			if(start_ASAP)
 				start_now()
-				return
 			for(var/i=0, i<10, i++)
 				sleep(1)
 				vote.process()
 			if(round_progressing)
 				pregame_timeleft--
-			if(pregame_timeleft == config.vote_autogamemode_timeleft && !gamemode_voted)
+			if(pregame_timeleft == config.vote_autogamemode_timeleft && !gamemode_voted && !bypass_gamemode_vote)
 				gamemode_voted = 1
 				if(!vote.time_remaining)
 					vote.autogamemode()	//Quit calling this over and over and over and over.
@@ -85,15 +85,17 @@ var/global/datum/controller/gameticker/ticker
 
 
 /datum/controller/gameticker/proc/start_now(mob/user)
-	if(!(current_state == RUNLEVEL_LOBBY))
-		return
-	initialization_stage = INITIALIZATION_NOW_AND_COMPLETE
-	current_state = GAME_STATE_SETTING_UP
-	pregame_timeleft = 0
+	//if(!(current_state == RUNLEVEL_LOBBY))
+		//return
+	//initialization_stage = INITIALIZATION_NOW_AND_COMPLETE
+	//current_state = GAME_STATE_SETTING_UP
+	initialization_stage |= INITIALIZATION_NOW
+	bypass_gamemode_vote = TRUE
+	vote.reset()
 	//if(istype(SSvote.active_vote, /datum/vote/gamemode))
 	//	SSvote.cancel_vote(user)
-	//	bypass_gamemode_vote = 1
-	Master.SetRunLevel(RUNLEVEL_SETUP)
+
+	//Master.SetRunLevel(RUNLEVEL_SETUP)
 
 
 	return 1

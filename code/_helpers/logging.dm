@@ -229,9 +229,10 @@
 
 
 /proc/report_progress(var/progress_message)
-	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)
-	admin_notice("[progress_message]", R_DEBUG)
 	to_world_log(progress_message)
-	//Prevents spam in single user mode
+
+
+	//Checking world port here is used to prevent spamming a developer with duplicate reports when running in single user mode.
+	//Only do this log if port is nonzero, which means we are hosting through dream daemon
 	if (world.port)
-		to_world_log(progress_message)
+		admin_notice(progress_message, R_DEBUG)
