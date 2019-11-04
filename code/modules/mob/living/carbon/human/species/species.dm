@@ -15,6 +15,7 @@
 	var/deform =       'icons/mob/human_races/species/human/deformed_body.dmi' // Mutated icon set.
 	var/preview_icon = 'icons/mob/human_races/species/human/preview.dmi'
 	var/husk_icon =    'icons/mob/human_races/species/default_husk.dmi'
+	var/lying_rotation = 90 //How much to rotate the icon when lying down
 
 	// Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/species/human/damage_overlay.dmi'

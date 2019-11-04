@@ -2142,6 +2142,7 @@
 #include "code\modules\organs\external\species\nabber_camo.dm"
 #include "code\modules\organs\external\species\nabber_stance.dm"
 #include "code\modules\organs\external\species\nabber_threat.dm"
+#include "code\modules\organs\external\species\necromorph.dm"
 #include "code\modules\organs\external\species\prometheans.dm"
 #include "code\modules\organs\external\species\skrell.dm"
 #include "code\modules\organs\external\species\unathi.dm"

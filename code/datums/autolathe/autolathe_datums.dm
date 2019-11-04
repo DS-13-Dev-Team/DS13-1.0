@@ -38,16 +38,20 @@ other types of metals and chemistry for reagents).
 
 //These procs are used in subtypes for assigning names and descriptions dynamically
 /datum/design/proc/AssembleDesignInfo()
+
 	if(build_path)
-		var/atom/temp_atom = Fabricate(null, 1, null)
+
+		var/atom/movable/temp_atom = Fabricate(null, 1, null)
 		AssembleDesignName(temp_atom)
 		AssembleDesignMaterials(temp_atom)
 		qdel(temp_atom)
+
 
 	AssembleDesignTime()
 	AssembleDesignDesc()
 	AssembleDesignId()
 	AssembleDesignUIData()
+
 
 //Get name from build path if possible
 /datum/design/proc/AssembleDesignName(atom/temp_atom)
@@ -141,7 +145,7 @@ other types of metals and chemistry for reagents).
 		var/list/RS = list()
 
 		for(var/reagent in chemicals)
-			var/datum/reagent/RG = new reagent
+			var/datum/reagent/RG = new reagent(TRUE)//Passing in true here prevents a runtime errror
 			var/chemical_name = "UNKNOWN"
 			if(RG)
 				chemical_name = RG.name

@@ -204,16 +204,25 @@
 	if (anchored)
 		return ..()
 	if (hasorgans(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name[BP_R_HAND]
+		var/mob/living/carbon/human/H
+		if (istype(user, /mob/living/carbon/human))
+			H = user
+		var/organ_name = BP_R_HAND
 		if (user.hand)
-			temp = H.organs_by_name[BP_L_HAND]
+			organ_name = BP_L_HAND
+		var/obj/item/organ/external/temp = H.organs_by_name[organ_name]
+
+
 		if(temp && !temp.is_usable())
 			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
 			return
 		if(!temp)
-			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
+			if (H && H.should_have_organ(organ_name))
+				to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
+			else
+				to_chat(user, "<span class='notice'>You have no hands to pickup objects with!</span>")
 			return
+
 
 	var/old_loc = src.loc
 

@@ -13,7 +13,6 @@
 
 	strength    = STR_HIGH
 	show_ssd = "dead" //If its not moving, it looks like a corpse
-	blood_volume = 0  // Initial blood volume.
 	hunger_factor = 0 // Necros don't eat
 	taste_sensitivity = 0      // no eat
 
@@ -33,9 +32,10 @@
 	//Sprites
 	damage_overlays = null
 	damage_mask = null
+	lying_rotation = 0
 
 	//Single iconstates. These are somewhat of a hack
-	var/icon = "icons/mob/necromorph/48x48necros.dmi"
+	icon_template = 'icons/mob/necromorph/48x48necros.dmi'
 	var/icon_normal = "slasher_d"
 	var/icon_lying = "slasher_d_lying"
 	var/icon_dead = "slasher_d_dead"
@@ -44,7 +44,7 @@
 	//Defense
 	total_health = 80
 	burn_mod = 1.3	//Takes more damage from burn attacks
-
+	blood_oxy = FALSE
 
 
 	//Breathing and Environment
@@ -55,6 +55,7 @@
 	oxy_mod =        0 //No breathing, no suffocation
 
 	//Far better cold tolerance than humans
+	body_temperature = null //No thermoregulation, will be the same temp as the environment around it
 	cold_level_1 = 200                                      // Cold damage level 1 below this point. -30 Celsium degrees
 	cold_level_2 = 140                                      // Cold damage level 2 below this point.
 	cold_level_3 = 100                                      // Cold damage level 3 below this point.
@@ -70,6 +71,16 @@
 	appearance_flags = 0      // Appearance/display related features.
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN           // Flags that specify who can spawn as this specie
 
+
+	has_organ = list(    // which required-organ checks are conducted.
+	BP_HEART =    /obj/item/organ/internal/heart/undead,
+	BP_LUNGS =    /obj/item/organ/internal/lungs/dead,
+	BP_LIVER =    /obj/item/organ/internal/liver,
+	BP_KIDNEYS =  /obj/item/organ/internal/kidneys,
+	BP_BRAIN =    /obj/item/organ/internal/brain,
+	BP_APPENDIX = /obj/item/organ/internal/appendix,
+	BP_EYES =     /obj/item/organ/internal/eyes
+	)
 
 	/* //TODO: Uncomment this once limbs are sorted
 	var/list/has_limbs = list(
@@ -87,3 +98,7 @@
 	.=..()
 	breathing_organ = null //This is autoset to lungs in the parent if they exist.
 	//We want it to be unset but we stil want to have our useless lungs
+
+
+/datum/species/necromorph/get_blood_name()
+	return "ichor"

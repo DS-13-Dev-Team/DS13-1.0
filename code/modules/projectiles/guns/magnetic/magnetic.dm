@@ -33,7 +33,8 @@
 /obj/item/weapon/gun/magnetic/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(cell)
-	QDEL_NULL(loaded)
+	if (istype(loaded, /datum))
+		QDEL_NULL(loaded)
 	QDEL_NULL(capacitor)
 	. = ..()
 

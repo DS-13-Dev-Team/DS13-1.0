@@ -12,13 +12,19 @@
 /mob/living/carbon/human/necromorph/slasher/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER_ENHANCED)
 	..(new_loc, new_species)
 
+/mob/living/carbon/human/necromorph/update_icons()
+	.=..()
+	update_body(FALSE)
+
+#define DEBUG
 //Override all that complicated limb-displaying stuff, with singular icons
-/mob/living/carbon/human/necromorph/update_body()
+/mob/living/carbon/human/necromorph/update_body(var/update_icons=1)
 	var/datum/species/necromorph/N = species
 	if (!istype(N))
 		return
 
-
+	stand_icon = N.icon_template
+	icon = stand_icon
 
 	if (stat == DEAD)
 		icon_state = N.icon_dead

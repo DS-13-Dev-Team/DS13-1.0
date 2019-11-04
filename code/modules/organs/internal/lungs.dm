@@ -30,6 +30,16 @@
 	var/last_failed_breath
 	var/breath_fail_ratio // How badly they failed a breath. Higher is worse.
 
+
+//Dead version of lungs used for necromorphs
+/obj/item/organ/internal/lungs/dead/Initialize()
+	.=..()
+	active_breathing = FALSE
+	die()
+
+/obj/item/organ/internal/lungs/dead/Process()
+	return PROCESS_KILL //No processing, we are inert
+
 /obj/item/organ/internal/lungs/proc/remove_oxygen_deprivation(var/amount)
 	var/last_suffocation = oxygen_deprivation
 	oxygen_deprivation = min(species.total_health,max(0,oxygen_deprivation - amount))
