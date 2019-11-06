@@ -19,10 +19,11 @@
 /atom/proc/shake_animation(var/intensity = 8)
 	var/init_px = pixel_x
 	var/shake_dir = pick(-1, 1)
-	animate(src, transform=turn(matrix(), intensity*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
-	var/returntime = 2 + intensity * 0.3
-	returntime = min(returntime, 20)
-	animate(transform=null, pixel_x=init_px, time=returntime, easing=ELASTIC_EASING)
+	var/rotation = 2+soft_cap(intensity, 1, 1, 0.94)
+	var/offset = 1+soft_cap(intensity*0.3, 1, 1, 0.8)
+	var/time = 2+soft_cap(intensity*0.3, 2, 1, 0.92)
+	animate(src, transform=turn(matrix(), rotation*shake_dir), pixel_x=init_px + offset*shake_dir, time=1)
+	animate(transform=null, pixel_x=init_px, time=time, easing=ELASTIC_EASING)
 
 //The X pixel offset of this matrix
 /matrix/proc/get_x_shift()

@@ -2,7 +2,7 @@
 	Slasher variant, the most common necromorph. Has an additional pair of arms with scything blades on the end
 */
 /datum/species/necromorph/slasher
-	name = "Slasher"
+	name = SPECIES_NECROMORPH_SLASHER
 	name_plural =  "Slashers"
 	blurb = "The Slasher is created from a single human corpse, and is one of the more common Necromorphs encountered in a typical outbreak\
 	. The Slasher is named for its specialized arms, which sport sharp blade-like protrusions of bone."
@@ -28,6 +28,7 @@
 	)
 
 /datum/species/necromorph/slasher/enhanced
+	name = SPECIES_NECROMORPH_SLASHER_ENHANCED
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 200
 
@@ -52,5 +53,5 @@
 	return TRUE
 
 /datum/unarmed_attack/blades/strong
-	damage = 22
+	damage = 100
 	delay = 10
