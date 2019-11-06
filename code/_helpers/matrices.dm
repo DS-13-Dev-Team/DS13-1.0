@@ -20,7 +20,9 @@
 	var/init_px = pixel_x
 	var/shake_dir = pick(-1, 1)
 	animate(src, transform=turn(matrix(), intensity*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
-	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
+	var/returntime = 2 + intensity * 0.3
+	returntime = min(returntime, 20)
+	animate(transform=null, pixel_x=init_px, time=returntime, easing=ELASTIC_EASING)
 
 //The X pixel offset of this matrix
 /matrix/proc/get_x_shift()

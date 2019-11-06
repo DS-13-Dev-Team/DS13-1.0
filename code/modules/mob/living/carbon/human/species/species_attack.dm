@@ -5,11 +5,7 @@
 	sharp = 1
 	edge = 1
 
-/datum/unarmed_attack/diona
-	attack_verb = list("lashed", "bludgeoned")
-	attack_noun = list("tendril")
-	eye_attack_text = "a tendril"
-	eye_attack_text_victim = "a tendril"
+
 
 
 
@@ -72,6 +68,9 @@
 	attack_verb = list("slashed")
 	damage = 5
 	shredding = 1
+
+/datum/unarmed_attack/bite/weak
+	damage = 4
 
 /datum/unarmed_attack/bite/strong
 	attack_verb = list("mauled")
@@ -138,20 +137,4 @@
 
 		if(8)		user.visible_message("<span class='danger'>[user] landed a heavy blow with their [pick(attack_noun)] against [target]'s [organ]!</span>")
 
-/datum/unarmed_attack/nabber
-	attack_verb = list("mauled", "slashed", "struck", "pierced")
-	attack_noun = list("forelimb")
-	damage = 8
-	shredding = 1
-	sharp = 1
-	edge = 1
-	delay = 20
-	eye_attack_text = "a forelimb"
-	eye_attack_text_victim = "a forelimb"
 
-/datum/unarmed_attack/punch/starborn
-	attack_verb = list("scorched", "burned", "fried")
-	shredding = 1
-
-/datum/unarmed_attack/punc/starborn/get_damage_type()
-	return BURN

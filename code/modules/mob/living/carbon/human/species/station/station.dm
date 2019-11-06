@@ -290,6 +290,13 @@
 	reagent_tag = IS_DIONA
 	genders = list(PLURAL)
 
+
+/datum/unarmed_attack/diona
+	attack_verb = list("lashed", "bludgeoned")
+	attack_noun = list("tendril")
+	eye_attack_text = "a tendril"
+	eye_attack_text_victim = "a tendril"
+
 /proc/spawn_diona_nymph(var/turf/target)
 	if(!istype(target))
 		return 0

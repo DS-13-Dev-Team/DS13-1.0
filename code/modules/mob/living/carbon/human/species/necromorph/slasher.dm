@@ -6,7 +6,7 @@
 	name_plural =  "Slashers"
 	blurb = "The Slasher is created from a single human corpse, and is one of the more common Necromorphs encountered in a typical outbreak\
 	. The Slasher is named for its specialized arms, which sport sharp blade-like protrusions of bone."
-	unarmed_types = list(/datum/unarmed_attack/blades)
+	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	total_health = 80
 
 	icon_template = 'icons/mob/necromorph/48x48necros.dmi'
@@ -28,7 +28,7 @@
 	)
 
 /datum/species/necromorph/slasher/enhanced
-	unarmed_types = list(/datum/unarmed_attack/blades/strong)
+	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 200
 
 /datum/unarmed_attack/blades
@@ -42,8 +42,15 @@
 	edge = TRUE
 	shredding = TRUE
 	damage = 15
-	delay = 10
+	delay = 12
+	airlock_force_power = 2
+
+//Can't slash things without arms
+/datum/unarmed_attack/blades/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+	if(!user.has_organ(BP_R_ARM) && !user.has_organ(BP_L_ARM))
+		return FALSE
+	return TRUE
 
 /datum/unarmed_attack/blades/strong
 	damage = 22
-	delay = 8
+	delay = 10
