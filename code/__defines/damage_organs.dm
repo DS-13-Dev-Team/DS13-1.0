@@ -6,6 +6,7 @@
 #define OXY         "oxy"
 #define CLONE       "clone"
 #define PAIN        "pain"
+#define PSYCHOSIS   "psychosis" //DS13 - Psychosis damage for crazy people.
 #define ELECTROCUTE "electrocute"
 
 #define CUT       "cut"
@@ -82,7 +83,7 @@
 
 #define INFECTION_LEVEL_ONE   2500000
 #define INFECTION_LEVEL_TWO   5000000 // infections are now pretty much disabled
-#define INFECTION_LEVEL_THREE 10000000 
+#define INFECTION_LEVEL_THREE 10000000
 
 //Blood levels. These are percentages based on the species blood_volume far.
 #define BLOOD_VOLUME_SAFE    55
