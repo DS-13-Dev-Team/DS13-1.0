@@ -27,6 +27,8 @@
 	BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 	)
 
+	inherent_verbs = list(/atom/movable/proc/charge_verb)
+
 /datum/species/necromorph/slasher/enhanced
 	name = SPECIES_NECROMORPH_SLASHER_ENHANCED
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
