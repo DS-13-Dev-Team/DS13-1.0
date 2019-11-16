@@ -64,6 +64,8 @@
 	var/cooldown = 20 SECONDS	//After the charge completes, it will stay on the charger and block additional charges for this long
 	var/tiles_moved = 0
 
+	var/list/atoms_hit = list()
+
 /datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed = 5, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)
 	.=..()
 	charger = holder
@@ -160,7 +162,9 @@
 	if (obstacle == target)
 		target_type = CHARGE_TARGET_PRIMARY
 
-	charger.charge_impact(obstacle, get_total_power(), target_type, tiles_moved)
+	if (!(obstacle in atoms_hit))
+		charger.charge_impact(obstacle, get_total_power(), target_type, tiles_moved)
+		atoms_hit += obstacle
 	//If that was our intended target, then we win
 	if (target_type == CHARGE_TARGET_PRIMARY)
 		stop_success()

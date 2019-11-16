@@ -350,6 +350,7 @@ var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 			else			return I_HURT
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
+//There should really be an Observation in here to detect this
 /mob/verb/a_intent_change(input as text)
 	set name = "a-intent"
 	set hidden = 1
@@ -656,3 +657,43 @@ proc/is_blind(A)
 			if(!mob.mind)
 				return
 			return mob.mind.initial_email_login["login"]
+
+
+
+//Does this mob have the ability to grasp objects with some sort of limb?
+/mob/proc/can_grasp()
+	return FALSE
+
+
+//Any useable grasping limb will do
+/mob/living/carbon/human/can_grasp()
+	for(var/obj/item/organ/external/E in organs)
+		if ((E.limb_flags & ORGAN_FLAG_CAN_GRASP) && E.is_usable())
+			return TRUE
+	return FALSE
+
+
+
+/mob/proc/can_grasp_with_selected()
+	return FALSE
+
+//More specifically: Can we grasp with the hand/arm we currently have selected?
+/mob/living/carbon/human/can_grasp_with_selected()
+	var/obj/item/organ/external/G = get_grasping_limb(hand)
+
+	if (G && G.is_usable())
+		return TRUE
+
+	return FALSE
+
+
+/mob/proc/get_grasping_limb(var/side)
+	return null
+
+
+//A true value means left
+/mob/living/carbon/human/get_grasping_limb(var/side)
+	if (species)
+		return species.get_grasping_limb(src, side)
+
+

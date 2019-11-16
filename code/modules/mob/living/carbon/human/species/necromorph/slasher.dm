@@ -35,6 +35,9 @@
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 200
 
+
+
+/* Unarmed attacks*/
 /datum/unarmed_attack/blades
 	attack_verb = list("slashed", "scythed", "cleaved")
 	attack_noun = list("blades")
@@ -56,7 +59,7 @@
 	return TRUE
 
 /datum/unarmed_attack/blades/strong
-	damage = 100
+	damage = 22
 	delay = 10
 
 
@@ -69,3 +72,29 @@
 	if (.)
 		//Do some audio cues here
 		shake_animation(20)
+
+
+/*
+	Slashers have a special charge impact. Each of their blade arms gets a free hit on impact with the primary target
+*/
+/datum/species/necromorph/slasher/charge_impact(var/mob/living/charger, var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
+	if (target_type == CHARGE_TARGET_PRIMARY && isliving(obstacle))
+		var/mob/living/carbon/human/H = charger
+		var/mob/living/L = obstacle
+
+		//We need to be in harm intent for this, set it if its not already
+		if (H.a_intent != I_HURT)
+			H.a_intent_change(I_HURT)
+
+		//This is a bit of a hack because unarmed attacks are poorly coded:
+			//We'll set the user's last attack to some time in the past so they can attack again
+		if (H.has_organ(BP_R_ARM))
+			H.last_attack = 0
+			H.UnarmedAttack(L)
+
+		if (H.has_organ(BP_L_ARM))
+			H.last_attack = 0
+			H.UnarmedAttack(L)
+		return
+	else
+		return ..()

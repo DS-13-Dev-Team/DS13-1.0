@@ -723,3 +723,21 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/post_organ_rejuvenate(var/obj/item/organ/org)
 	return
+
+
+/datum/species/proc/get_grasping_limb(var/mob/living/carbon/human/H, var/side)
+	//True side means left, false is right
+	var/obj/item/organ/external/temp
+	if (!side)
+		temp = H.organs_by_name[BP_R_HAND]
+		if (!temp)//If no hand, maybe there's tentacle arms
+			temp = H.organs_by_name[BP_R_ARM]
+	else
+		temp = H.organs_by_name[BP_L_HAND]
+		if (!temp)
+			temp = H.organs_by_name[BP_L_ARM]
+
+	if (temp && (temp.limb_flags & ORGAN_FLAG_CAN_GRASP))
+		return temp
+
+	return null
