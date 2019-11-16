@@ -353,6 +353,7 @@
 		if(error_messages) to_chat(src, "You are too close to [target], get some distance first!")
 		return FALSE
 
+
 	return TRUE
 
 /mob/living/can_charge(var/atom/target, var/error_messages = TRUE)
@@ -375,7 +376,7 @@
 
 /atom/movable/proc/charge_attack(var/atom/_target, var/_speed = 7, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)
 	//First of all, lets check if we're currently able to charge
-	if (!can_charge(TRUE))
+	if (!can_charge(_target, TRUE))
 		return FALSE
 
 

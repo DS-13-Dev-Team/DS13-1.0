@@ -70,6 +70,7 @@
 
 	.= charge_attack(A, _delay = 1.5 SECONDS)
 	if (.)
+		face_atom(A)
 		//Do some audio cues here
 		shake_animation(20)
 
