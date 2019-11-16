@@ -79,6 +79,12 @@
 		)
 	var/list/unarmed_attacks = null           // populated at runtime, don't touch
 
+	var/modifier_verbs						//A list of key modifiers and procs, in the format Key = list(proc path, priority, arg1, arg2, arg3... etc)
+	//Any number of extra arguments allowed. Only key and proc path are mandatory. Default priority is 1 and will be used if none is supplied.
+	//Key must be one of the KEY_XXX defines in defines/client.dm
+
+
+
 	var/list/natural_armour_values            // Armour values used if naked.
 	var/brute_mod =      1                    // Physical damage multiplier.
 	var/burn_mod =       1                    // Burn damage multiplier.
@@ -367,13 +373,29 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	if(inherent_verbs)
 		for(var/verb_path in inherent_verbs)
 			H.verbs -= verb_path
-	return
+
+	if (modifier_verbs)
+		for (var/hotkey in modifier_verbs)
+			var/list/L = modifier_verbs[hotkey]
+			H.remove_modclick_verb(hotkey, L[1])
 
 /datum/species/proc/add_inherent_verbs(var/mob/living/carbon/human/H)
 	if(inherent_verbs)
 		for(var/verb_path in inherent_verbs)
 			H.verbs |= verb_path
-	return
+
+	if (modifier_verbs)
+		for (var/hotkey in modifier_verbs)
+			var/list/L = modifier_verbs[hotkey]
+			var/list/input_args = list(hotkey, L[1])
+			if (L.len >= 2)
+				input_args.Add(L[2])
+				if (L.len >= 3)
+					input_args.Add(list(L.Copy(3)))
+
+			//We use input_args here since we're doing voodoo with passing arguments.
+			//Modclick takes key type, function name, function priority, and a list of extra arguments
+			H.add_modclick_verb(arglist(input_args))
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)

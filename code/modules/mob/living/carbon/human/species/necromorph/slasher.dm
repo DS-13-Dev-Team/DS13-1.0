@@ -27,7 +27,8 @@
 	BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 	)
 
-	inherent_verbs = list(/atom/movable/proc/charge_verb)
+	inherent_verbs = list(/atom/movable/proc/slasher_charge)
+	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/slasher_charge))
 
 /datum/species/necromorph/slasher/enhanced
 	name = SPECIES_NECROMORPH_SLASHER_ENHANCED
@@ -57,3 +58,14 @@
 /datum/unarmed_attack/blades/strong
 	damage = 100
 	delay = 10
+
+
+/atom/movable/proc/slasher_charge(var/atom/A)
+	set name = "Charge"
+	set category = "Abilities"
+
+
+	.= charge_attack(A, _delay = 1.5 SECONDS)
+	if (.)
+		//Do some audio cues here
+		shake_animation(20)

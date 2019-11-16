@@ -356,10 +356,12 @@ Use add_modclick_verb to add a verb,
 
 	//Next we create a callback, which points to the mob, proc to call, and the arguments to pass to it
 	var/list/newargs = list(src, function)
-	newargs.Add(extra_args)
-	var/datum/callback/C = CALLBACK(newargs)
+	if (extra_args)
+		newargs.Add(extra_args)
+	var/datum/callback/C = CALLBACK(arglist(newargs))
 
-
+	if (!isnum(priority))
+		priority = 1
 	//Add it to the verbs list
 	CHM.verbs[C] = priority
 

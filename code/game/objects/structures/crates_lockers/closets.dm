@@ -68,7 +68,6 @@
 			to_chat(user, "It is full.")
 
 /obj/structure/closet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	world << "Closet canpass [height]"
 	if(air_group || (height==0 || wall_mounted)) return 1
 	return (!density)
 

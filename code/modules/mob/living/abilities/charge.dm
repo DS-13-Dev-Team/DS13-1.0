@@ -60,10 +60,11 @@
 	var/power = 0
 	var/list/atoms_bumped = list() //Bumped observation may make duplicate calls. We'll use this to filter them out
 	var/lifespan_timer
+	var/start_timer
 	var/cooldown = 20 SECONDS	//After the charge completes, it will stay on the charger and block additional charges for this long
 	var/tiles_moved = 0
 
-/datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed = 5, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/immediate = TRUE)
+/datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed = 5, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)
 	.=..()
 	charger = holder
 	target = _target
@@ -75,12 +76,23 @@
 	power = _power
 	cooldown = _cooldown
 
-	//If not immediate, you need to start it manually
-	if (immediate)
+	//Delay handling
+	if (!_delay)
+		//If no delay, start immediately
 		start()
-
+	else if (isnum(_delay) && _delay > 0)
+		//If positive delay, wait that long before starting
+		start_timer = addtimer(CALLBACK(src, .proc/start), _delay, TIMER_STOPPABLE)
 
 /datum/extension/charge/proc/start()
+	if (start_timer)
+		deltimer(start_timer)
+
+	//Something may have disabled us between windup and starting
+	if (!charger || !charger.can_continue_charge(target))
+		stop()
+		return
+
 	status = CHARGE_STATE_CHARGING
 	GLOB.bump_event.register(holder, src, /datum/extension/charge/proc/bump)
 	GLOB.moved_event.register(holder, src, /datum/extension/charge/proc/moved)
@@ -197,14 +209,15 @@
 	//If we have entered the same turf as our target then it must have been nondense. Let's hit it
 	if (charger.loc == target.loc)
 		bump(charger, target)
+	else
+		//Light shake with each step
+		shake_camera(src,1.5,0.5)
 
 
 	//We allow the above to happen first cuz momentum
 	//Now we'll check if we're able to continue
-	if (isliving(charger))
-		var/mob/living/L = charger
-		if (L.incapacitated())
-			stop_peter_out()
+	if (!charger || !charger.can_continue_charge(target))
+		stop_peter_out()
 
 /datum/extension/charge/proc/get_total_power()
 	var/total = power
@@ -317,7 +330,9 @@
 	set name = "Charge"
 	set category = "Abilities"
 
-	charge_attack(A)
+
+	return charge_attack(A)
+
 
 /atom/movable/proc/can_charge(var/atom/target, var/error_messages = TRUE)
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
@@ -343,7 +358,18 @@
 	.=..()
 
 
-/atom/movable/proc/charge_attack(var/atom/_target, var/_speed = 7, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0)
+//Called periodically to check if we can keep charging
+/atom/movable/proc/can_continue_charge(var/atom/target)
+	if (QDELETED(src))
+		return FALSE
+	return TRUE
+
+/mob/living/can_continue_charge(var/atom/target)
+	if (incapacitated())
+		return FALSE
+	return ..()
+
+/atom/movable/proc/charge_attack(var/atom/_target, var/_speed = 7, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)
 	//First of all, lets check if we're currently able to charge
 	if (!can_charge(TRUE))
 		return FALSE
@@ -351,5 +377,7 @@
 
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/charge, /datum/extension/charge, _target, _speed, _lifespan)
+	set_extension(src, /datum/extension/charge, /datum/extension/charge, _target, _speed, _lifespan, _maxrange, _homing, _inertia, _power, _cooldown, _delay)
+
+	return TRUE
 

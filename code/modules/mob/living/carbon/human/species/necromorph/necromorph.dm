@@ -40,6 +40,7 @@
 	var/icon_lying = "slasher_d_lying"
 	var/icon_dead = "slasher_d_dead"
 
+	blood_color = COLOR_BLOOD_NECRO
 
 	//Defense
 	total_health = 80
