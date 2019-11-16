@@ -31,7 +31,7 @@
 	// END GAS DATA
 
 /datum/reagent/New(var/datum/reagents/holder)
-	if(!istype(holder))
+	if(!istype(holder) && holder != TRUE)
 		CRASH("Invalid reagents holder: [log_info_line(holder)]")
 	src.holder = holder
 	..()

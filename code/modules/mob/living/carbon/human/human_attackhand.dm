@@ -10,23 +10,20 @@
 
 /mob/living/carbon/human/attack_hand(mob/living/carbon/M as mob)
 
-	var/mob/living/carbon/human/H = M
-	if(istype(H))
-		var/obj/item/organ/external/temp = H.organs_by_name[BP_R_HAND]
-		if(H.hand)
-			temp = H.organs_by_name[BP_L_HAND]
-		if(!temp || !temp.is_usable())
-			to_chat(H, "<span class='warning'>You can't use your hand.</span>")
-			return
+	var/mob/living/carbon/human/H = null
+	if (ishuman(M))
+		H = M
 
 	..()
 	remove_cloaking_source(species)
 	// Should this all be in Touch()?
-	if(istype(H))
-		if(H != src && check_shields(0, null, H, H.zone_sel.selecting, H.name))
+		//No it shouldn't
+	if(H)
+		if(H != src && H.zone_sel && check_shields(0, null, H, H.zone_sel.selecting, H.name))
 			H.do_attack_animation(src)
 			return 0
 
+		//This is awful code, why is it here
 		if(istype(H.gloves, /obj/item/clothing/gloves/boxing/hologlove))
 			H.do_attack_animation(src)
 			var/damage = rand(0, 9)
@@ -54,7 +51,7 @@
 	if(istype(M,/mob/living/carbon))
 		M.spread_disease_to(src, "Contact")
 
-	if(istype(H))
+	if(H)
 		for (var/obj/item/grab/G in H)
 			if (G.assailant == H && G.affecting == src)
 				if(G.resolve_openhand_attack())
@@ -63,6 +60,9 @@
 
 	switch(M.a_intent)
 		if(I_HELP)
+			if (!can_grasp_with_selected())
+				to_chat(H, "<span class='warning'>You can't use your hand.</span>")
+				return
 			if(istype(H) && (is_asystole() || (status_flags & FAKEDEATH)))
 				if (!cpr_time)
 					return 0
@@ -114,11 +114,26 @@
 			return 1
 
 		if(I_GRAB)
+			if (!can_grasp_with_selected())
+				to_chat(H, "<span class='warning'>You can't use your hand.</span>")
+				return
 			return H.species.attempt_grab(H, src)
 
 		if(I_HURT)
 
-			if(!istype(H))
+			//This whole thing below here is a mess.
+			/*
+				All this logic shouldn't be in attackhand
+				there's no reason for unarmed attack datums to not work on nonhuman mobs
+				The flat 1-5 random damage is bad
+				Unarmed attacks are never consulted about the potential target
+				Random blocking/evading adds nothing if its not user controlled
+
+				The entire rest of this function needs to be refactored, trimmed down and cut into several more atomic procs
+				But not today
+					~Nanako
+			*/
+			if(!H)
 				attack_generic(H,rand(1,3),"punched")
 				return
 

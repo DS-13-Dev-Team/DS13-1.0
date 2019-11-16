@@ -6,27 +6,29 @@
 // Most of their superhuman qualities can be toggled off if you need a normal human for testing biological functions
 */
 
-
-//ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)	DS13 doesn't have this macro at the moment, things must be manually added to lists of admin verbs
+//ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 
 /client/proc/cmd_dev_bst()
 	set category = "Debug"
 	set name = "Spawn Bluespace Tech"
 	set desc = "Spawns a Bluespace Tech to debug stuff"
 
-
-	if(!check_rights(R_ADMIN|R_DEBUG))
+	if(!check_rights(R_ADMIN|R_DEBUG, C = src))
 		return
 
-	var/T = get_turf(usr)
+	var/T = get_turf(mob)
 	var/mob/living/carbon/human/bst/bst = new(T)
 	bst.anchored = TRUE
-	bst.ckey = usr.ckey
+	bst.ckey = ckey
 	bst.name = "Bluespace Technician"
 	bst.real_name = "Bluespace Technician"
 	bst.voice_name = "Bluespace Technician"
-	bst.h_style = "Crewcut"
-
+	bst.gender = prefs.gender
+	if (prefs.gender == MALE)
+		bst.h_style = "Crewcut"
+	else if (prefs.gender == FEMALE)
+		bst.h_style = "Long Hair Alt 2"
+		bst.change_hair_color(255,255,204)
 	//Items
 	bst.equip_to_slot_or_del(new /obj/item/clothing/under/assistantformal/bst(bst), slot_w_uniform)
 	bst.equip_to_slot_or_del(new /obj/item/device/radio/headset/ert/bst(bst), slot_l_ear)
@@ -57,10 +59,9 @@
 	bst.update_inv_wear_id()
 	bst.regenerate_icons()
 
-	//BSTs have all languages
-	bst.add_language(LANGUAGE_GALCOM)
-	bst.add_language(LANGUAGE_GUTTER)
-	bst.add_language(LANGUAGE_SIGN)
+	//TODO:
+	//Add the rest of the languages
+	//bst.add_language(LANGUAGE_COMMON)
 
 	spawn(10)
 		bst_post_spawn(bst)
@@ -177,8 +178,6 @@
 	name = "bluespace technician's headset"
 	desc = "A Bluespace Technician's headset. The letters 'BST' are stamped on the side."
 	translate_binary = TRUE
-	translate_hive = TRUE
-	//keyslot1 = new /obj/item/device/encryptionkey/binary
 
 /obj/item/device/radio/headset/ert/bst/attack_hand()
 	if(!usr)
@@ -192,7 +191,7 @@
 /obj/item/device/radio/headset/ert/bst/recalculateChannels(var/setDescription = FALSE)
 	..(setDescription)
 	translate_binary = TRUE
-	translate_hive = TRUE
+	//translate_hive = TRUE
 
 /obj/item/clothing/under/assistantformal/bst
 	name = "bluespace technician's uniform"
@@ -266,7 +265,8 @@
 	name = "bluespace technician's shoes"
 	desc = "A pair of black shoes with extra grip. The letters 'BST' are stamped on the side."
 	icon_state = "black"
-	item_flags = ITEM_FLAG_NOSLIP
+	//TODO: Enable noslip
+	//item_flags = NOSLIP
 
 /obj/item/clothing/shoes/black/bst/attack_hand()
 	if(!usr)
@@ -310,12 +310,15 @@
 	return fall_override ? FALSE : ..()
 
 
+//These are just wrappers on the standard move up/down verbs, duplicating them into the BST menu for easy clicking
 /mob/living/carbon/human/bst/verb/moveup()
 	set name = "Phase Upwards"
 	set category = "BST"
-	zMove(UP)
+	up()
+	//zMove(UP)
 
 /mob/living/carbon/human/bst/verb/movedown()
 	set name = "Phase Downwards"
 	set category = "BST"
-	zMove(DOWN)
+	down()
+	//zMove(DOWN)

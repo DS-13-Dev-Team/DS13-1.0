@@ -15,6 +15,14 @@
 /obj/item/organ/internal/heart/open
 	open = 1
 
+//Dead version of heart used for necromorphs
+/obj/item/organ/internal/heart/undead/Initialize()
+	.=..()
+	die()
+
+/obj/item/organ/internal/heart/undead/is_working()
+	return TRUE //This prevents necromorphs going into crit from having a dead heart
+
 /obj/item/organ/internal/heart/die()
 	if(dead_icon)
 		icon_state = dead_icon

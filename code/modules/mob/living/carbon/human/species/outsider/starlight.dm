@@ -112,3 +112,12 @@
 /datum/species/starlight/blueforged/handle_death(var/mob/living/carbon/human/H)
 	..()
 	new /obj/effect/temporary(get_turf(H),11, 'icons/mob/mob.dmi', "liquify")
+
+
+
+/datum/unarmed_attack/punch/starborn
+	attack_verb = list("scorched", "burned", "fried")
+	shredding = 1
+
+/datum/unarmed_attack/punch/starborn/get_damage_type()
+	return BURN

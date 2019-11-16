@@ -163,8 +163,21 @@
 	initialized = TRUE
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, "<span class='boldannounce'>[msg]</span>")
-	log_world(msg)
+
+	//The formatting of outputs depends on the time taken
+	//Longer than one second, its in red
+	//The formatting of outputs depends on the time taken
+	//Longer than one second, its in red
+	if (time > 1)
+		//log_world(msg)
+		report_progress("<span class='boldannounce'>[msg]</span>")
+	else if (time > 0.2)
+		//Over 0.2 seconds, its in blue. this excludes most of them
+		report_progress(SPAN_NOTICE(msg))
+	else
+		//The rest appear in boring unbolded black so as not to create visual noise
+		report_progress("[msg]")
+
 	return time
 
 //hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.

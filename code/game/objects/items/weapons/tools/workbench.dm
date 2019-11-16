@@ -6,7 +6,8 @@
 	icon_state = "deadspace_workbench"
 	standalone = TRUE //No connecting, uses its own icon
 	can_plate = FALSE
-
+	maxhealth = 500 //Hard to break
+	health = 500
 
 /obj/structure/table/workbench
 
@@ -21,7 +22,7 @@
 	use_power(time_in_seconds * active_power_usage)
 
 
-
+/obj/structure/table/workbench/update_material()
 
 
 /******************************
