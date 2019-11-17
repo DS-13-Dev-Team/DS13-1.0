@@ -85,17 +85,11 @@ var/global/datum/controller/gameticker/ticker
 
 
 /datum/controller/gameticker/proc/start_now(mob/user)
-	//if(!(current_state == RUNLEVEL_LOBBY))
-		//return
-	//initialization_stage = INITIALIZATION_NOW_AND_COMPLETE
-	//current_state = GAME_STATE_SETTING_UP
+
 	initialization_stage |= INITIALIZATION_NOW
 	bypass_gamemode_vote = TRUE
 	vote.reset()
-	//if(istype(SSvote.active_vote, /datum/vote/gamemode))
-	//	SSvote.cancel_vote(user)
 
-	//Master.SetRunLevel(RUNLEVEL_SETUP)
 
 
 	return 1

@@ -20,9 +20,3 @@
 #define REALTIMEOFDAY (world.timeofday + (MIDNIGHT_ROLLOVER * MIDNIGHT_ROLLOVER_CHECK))
 #define MIDNIGHT_ROLLOVER_CHECK ( GLOB.rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : GLOB.midnight_rollovers )
 
-
-//Takes a speed in metres per second, and outputs delay in deciseconds between each step to achieve that
-#define SPEED_TO_DELAY(speed) (10/speed)
-
-//Takes a speed in metres per second, and outputs the number of ticks to wait between each step to achieve that
-#define SPEED_TO_TICKS(speed) (SPEED_TO_DELAY(speed) / world.tick_lag)

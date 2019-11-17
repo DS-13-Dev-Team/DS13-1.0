@@ -83,17 +83,6 @@
 	BP_EYES =     /obj/item/organ/internal/eyes
 	)
 
-	/* //TODO: Uncomment this once limbs are sorted
-	var/list/has_limbs = list(
-	BP_CHEST =  list("path" = /obj/item/organ/external/chest),
-	BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-	BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-	BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right)
-	)
-	*/
 
 /datum/species/necromorph/New()
 	.=..()
