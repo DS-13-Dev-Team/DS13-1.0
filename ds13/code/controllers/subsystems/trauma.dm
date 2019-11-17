@@ -2,7 +2,7 @@
 
 PROCESSING_SUBSYSTEM_DEF(trauma)
 	name = "Psychotic trauma"
-	wait = 5 SECONDS
+	wait = 10 SECONDS
 	var/list/trauma_components = list()
 
 /datum/controller/subsystem/processing/trauma/proc/try_add_trauma(var/atom/target)
