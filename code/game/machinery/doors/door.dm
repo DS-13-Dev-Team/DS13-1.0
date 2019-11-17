@@ -574,9 +574,9 @@
 
 //For forcing
 /obj/machinery/door/proc/get_force_difficulty()
-	.=force_resist
+	. = force_resist
 
 
 
 /obj/machinery/door/proc/get_force_time()
-	.= force_time * get_force_difficulty()
+	. = force_time * get_force_difficulty()

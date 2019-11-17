@@ -315,10 +315,8 @@
 	set name = "Phase Upwards"
 	set category = "BST"
 	up()
-	//zMove(UP)
 
 /mob/living/carbon/human/bst/verb/movedown()
 	set name = "Phase Downwards"
 	set category = "BST"
 	down()
-	//zMove(DOWN)
