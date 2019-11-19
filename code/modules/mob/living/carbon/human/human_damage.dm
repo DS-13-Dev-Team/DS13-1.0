@@ -98,10 +98,11 @@
 		heal_overall_damage(0, -amount)
 	BITSET(hud_updateflag, HEALTH_HUD)
 
-/mob/living/carbon/human/Stun(amount)
-	amount *= species.stun_mod
-	if(amount <= 0 || (HULK in mutations)) return
-	..()
+/mob/living/carbon/human/Stun(amount, bypass_resist = FALSE)
+	if (!bypass_resist)
+		amount *= species.stun_mod
+		if(amount <= 0 || (HULK in mutations)) return
+	..(amount)
 
 /mob/living/carbon/human/Weaken(amount)
 	amount *= species.weaken_mod

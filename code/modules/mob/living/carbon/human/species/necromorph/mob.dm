@@ -12,6 +12,9 @@
 /mob/living/carbon/human/necromorph/slasher/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER_ENHANCED)
 	..(new_loc, new_species)
 
+/mob/living/carbon/human/necromorph/brute/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_BRUTE)
+	..(new_loc, new_species)
+
 /mob/living/carbon/human/necromorph/update_icons()
 	.=..()
 	update_body(FALSE)

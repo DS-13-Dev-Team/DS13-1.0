@@ -241,41 +241,45 @@ var/global/list/sparring_attack_cache = list()
 	damage = 0
 
 /datum/unarmed_attack/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
-	var/organ = affecting.name
 
-	attack_damage = Clamp(attack_damage, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
+	if (ishuman(target))
+		var/obj/item/organ/external/affecting = target.get_organ(zone)
+		var/organ = affecting.name
 
-	if(target == user)
-		user.visible_message("<span class='danger'>[user] [pick(attack_verb)] \himself in the [organ]!</span>")
-		return 0
+		attack_damage = Clamp(attack_damage, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
 
-	if(!target.lying)
-		switch(zone)
-			if(BP_HEAD, BP_MOUTH, BP_EYES)
-				// ----- HEAD ----- //
-				switch(attack_damage)
-					if(1 to 2)
-						user.visible_message("<span class='danger'>[user] slapped [target] across \his cheek!</span>")
-					if(3 to 4)
-						user.visible_message(pick(
-							80; "<span class='danger'>[user] [pick(attack_verb)] [target] in the head!</span>",
-							20; "<span class='danger'>[user] struck [target] in the head[pick("", " with a closed fist")]!</span>",
-							50; "<span class='danger'>[user] threw a hook against [target]'s head!</span>"
-							))
-					if(5)
-						user.visible_message(pick(
-							10; "<span class='danger'>[user] gave [target] a solid slap across \his face!</span>",
-							90; "<span class='danger'>[user] smashed \his [pick(attack_noun)] into [target]'s [pick("[organ]", "face", "jaw")]!</span>"
-							))
-			else
-				// ----- BODY ----- //
-				switch(attack_damage)
-					if(1 to 2)	user.visible_message("<span class='danger'>[user] threw a glancing punch at [target]'s [organ]!</span>")
-					if(1 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target] in \his [organ]!</span>")
-					if(5)		user.visible_message("<span class='danger'>[user] smashed \his [pick(attack_noun)] into [target]'s [organ]!</span>")
+		if(target == user)
+			user.visible_message("<span class='danger'>[user] [pick(attack_verb)] \himself in the [organ]!</span>")
+			return 0
+
+		if(!target.lying)
+			switch(zone)
+				if(BP_HEAD, BP_MOUTH, BP_EYES)
+					// ----- HEAD ----- //
+					switch(attack_damage)
+						if(1 to 2)
+							user.visible_message("<span class='danger'>[user] slapped [target] across \his cheek!</span>")
+						if(3 to 4)
+							user.visible_message(pick(
+								80; "<span class='danger'>[user] [pick(attack_verb)] [target] in the head!</span>",
+								20; "<span class='danger'>[user] struck [target] in the head[pick("", " with a closed fist")]!</span>",
+								50; "<span class='danger'>[user] threw a hook against [target]'s head!</span>"
+								))
+						if(5)
+							user.visible_message(pick(
+								10; "<span class='danger'>[user] gave [target] a solid slap across \his face!</span>",
+								90; "<span class='danger'>[user] smashed \his [pick(attack_noun)] into [target]'s [pick("[organ]", "face", "jaw")]!</span>"
+								))
+				else
+					// ----- BODY ----- //
+					switch(attack_damage)
+						if(1 to 2)	user.visible_message("<span class='danger'>[user] threw a glancing punch at [target]'s [organ]!</span>")
+						if(1 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target] in \his [organ]!</span>")
+						if(5)		user.visible_message("<span class='danger'>[user] smashed \his [pick(attack_noun)] into [target]'s [organ]!</span>")
+		else
+			user.visible_message("<span class='danger'>[user] [pick("punched", "threw a punch at", "struck", "slammed their [pick(attack_noun)] into")] [target]'s [organ]!</span>") //why do we have a separate set of verbs for lying targets?
 	else
-		user.visible_message("<span class='danger'>[user] [pick("punched", "threw a punch at", "struck", "slammed their [pick(attack_noun)] into")] [target]'s [organ]!</span>") //why do we have a separate set of verbs for lying targets?
+		return ..()
 
 /datum/unarmed_attack/kick
 	attack_verb = list("kicked", "kicked", "kicked", "kneed")

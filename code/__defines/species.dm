@@ -42,3 +42,23 @@
 #define DARKTINT_NONE      "#ffffff"
 #define DARKTINT_MODERATE  "#f9f9f5"
 #define DARKTINT_GOOD      "#ebebe6"
+
+
+#define SPECIES_HUMAN       "Human"
+#define SPECIES_TAJARA      "Tajara"
+#define SPECIES_DIONA       "Diona"
+#define SPECIES_VOX         "Vox"
+#define SPECIES_IPC         "Machine"
+#define SPECIES_UNATHI      "Unathi"
+#define SPECIES_SKRELL      "Skrell"
+#define SPECIES_NABBER      "giant armoured serpentid"
+#define SPECIES_PROMETHEAN  "Promethean"
+#define SPECIES_XENO        "Xenophage"
+#define SPECIES_ALIEN       "Humanoid"
+#define SPECIES_ADHERENT    "Adherent"
+
+//Necromorph species
+#define SPECIES_NECROMORPH 	"Necromorph"
+#define SPECIES_NECROMORPH_SLASHER 	"Slasher"
+#define SPECIES_NECROMORPH_SLASHER_ENHANCED 	"Enhanced Slasher"
+#define SPECIES_NECROMORPH_BRUTE	"Brute"

@@ -311,6 +311,7 @@
 
 //When a human does it, we call the same proc on their species. This allows various people to do stuff
 /mob/living/carbon/human/charge_impact(var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
+	world << "Charge impact [power]"
 	shake_camera(src,3,1)
 	if (species)
 		return species.charge_impact(src, obstacle, power, target_type, distance_travelled)

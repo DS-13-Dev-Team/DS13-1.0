@@ -264,23 +264,7 @@
 #define CORPSE_CAN_REENTER 1
 #define CORPSE_CAN_REENTER_AND_RESPAWN 2
 
-#define SPECIES_HUMAN       "Human"
-#define SPECIES_TAJARA      "Tajara"
-#define SPECIES_DIONA       "Diona"
-#define SPECIES_VOX         "Vox"
-#define SPECIES_IPC         "Machine"
-#define SPECIES_UNATHI      "Unathi"
-#define SPECIES_SKRELL      "Skrell"
-#define SPECIES_NABBER      "giant armoured serpentid"
-#define SPECIES_PROMETHEAN  "Promethean"
-#define SPECIES_XENO        "Xenophage"
-#define SPECIES_ALIEN       "Humanoid"
-#define SPECIES_ADHERENT    "Adherent"
 
-//Necromorph species
-#define SPECIES_NECROMORPH 	"Necromorph"
-#define SPECIES_NECROMORPH_SLASHER 	"Slasher"
-#define SPECIES_NECROMORPH_SLASHER_ENHANCED 	"Enhanced Slasher"
 
 #define SURGERY_CLOSED 0
 #define SURGERY_OPEN 1
