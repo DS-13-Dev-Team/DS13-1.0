@@ -5,7 +5,7 @@
 	w_class = ITEM_SIZE_HUGE
 	obj_flags =  OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BACK
-	icon_state = "oldlaser"
+	icon_state = "ripper"
 	max_shells = 8
 	caliber = "saw"
 	handle_casings = CLEAR_CASINGS
