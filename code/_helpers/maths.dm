@@ -170,3 +170,7 @@
 		power++ //Transfer to output, increment power, repeat until the input pile is all used
 
 	return output
+
+#define CLAMP(CLVALUE,CLMIN,CLMAX) ( max( (CLMIN), min((CLVALUE), (CLMAX)) ) )
+
+// Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive
