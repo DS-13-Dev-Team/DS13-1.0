@@ -851,7 +851,7 @@ About the new airlock wires panel:
 			if(src.shock(user, 100))
 				return
 
-	if(src.p_open)
+	if(src.p_open && user && user.a_intent != I_HURT)
 		user.set_machine(src)
 		wires.Interact(user)
 	else
@@ -1007,121 +1007,121 @@ About the new airlock wires panel:
 		return 1
 
 /obj/machinery/door/airlock/attackby(var/obj/item/C, var/mob/user)
-	// Brace is considered installed on the airlock, so interacting with it is protected from electrification.
-	if(brace && (istype(C.GetIdCard(), /obj/item/weapon/card/id/) || istype(C, /obj/item/weapon/tool/crowbar/brace_jack)))
-		return brace.attackby(C, user)
 
-	if(!brace && istype(C, /obj/item/weapon/airlock_brace))
-		var/obj/item/weapon/airlock_brace/A = C
-		if(!density)
-			to_chat(user, "<span class='warning'>You must close \the [src] before installing \the [A]!</span>")
-			return
+	if (!ismob(C))
+		// Brace is considered installed on the airlock, so interacting with it is protected from electrification.
+		if(brace && (istype(C.GetIdCard(), /obj/item/weapon/card/id/) || istype(C, /obj/item/weapon/tool/crowbar/brace_jack)))
+			return brace.attackby(C, user)
 
-		if((!A.req_access.len && !A.req_one_access) && (alert("\the [A]'s 'Access Not Set' light is flashing. Install it anyway?", "Access not set", "Yes", "No") == "No"))
-			return
-
-		if(do_after(user, 50, src) && density && A && user.unEquip(A, src))
-			to_chat(user, "<span class='notice'>You successfully install \the [A].</span>")
-			brace = A
-			brace.airlock = src
-			update_icon()
-		return
-
-	if(!istype(usr, /mob/living/silicon))
-		if(src.isElectrified())
-			if(src.shock(user, 75))
+		if(!brace && istype(C, /obj/item/weapon/airlock_brace))
+			var/obj/item/weapon/airlock_brace/A = C
+			if(!density)
+				to_chat(user, "<span class='warning'>You must close \the [src] before installing \the [A]!</span>")
 				return
-	if(istype(C, /obj/item/taperoll))
-		return
 
-	if (!repairing && (stat & BROKEN) && src.locked) //bolted and broken
-		if (!cut_bolts(C,user))
-			..()
-		return
+			if((!A.req_access.len && !A.req_one_access) && (alert("\the [A]'s 'Access Not Set' light is flashing. Install it anyway?", "Access not set", "Yes", "No") == "No"))
+				return
 
-	if(!repairing && isWelder(C) && !( src.operating > 0 ) && src.density)
-		user.visible_message("You start [welded?"unwelding":"welding"] the [src]")
-		if(C.use_tool(user, src, WORKTIME_VERY_SLOW, QUALITY_WELDING, FAILCHANCE_NORMAL))
-			if(!src.welded)
-				src.welded = 1
+			if(do_after(user, 50, src) && density && A && user.unEquip(A, src))
+				to_chat(user, "<span class='notice'>You successfully install \the [A].</span>")
+				brace = A
+				brace.airlock = src
+				update_icon()
+			return
+
+		if(!istype(usr, /mob/living/silicon))
+			if(src.isElectrified())
+				if(src.shock(user, 75))
+					return
+		if(istype(C, /obj/item/taperoll))
+			return
+
+		if (!repairing && (stat & BROKEN) && src.locked) //bolted and broken
+			if (!cut_bolts(C,user))
+				..()
+			return
+
+		if(!repairing && isWelder(C) && !( src.operating > 0 ) && src.density)
+			user.visible_message("You start [welded?"unwelding":"welding"] the [src]")
+			if(C.use_tool(user, src, WORKTIME_VERY_SLOW, QUALITY_WELDING, FAILCHANCE_NORMAL))
+				if(!src.welded)
+					src.welded = 1
+				else
+					src.welded = null
+				playsound(src, 'sound/items/Welder.ogg', 100, 1)
+				src.update_icon()
+			return
+		else if(isScrewdriver(C))
+			if (src.p_open)
+				if (stat & BROKEN)
+					to_chat(usr, "<span class='warning'>The panel is broken and cannot be closed.</span>")
+				else
+					src.p_open = 0
 			else
-				src.welded = null
-			playsound(src, 'sound/items/Welder.ogg', 100, 1)
+				src.p_open = 1
 			src.update_icon()
-		return
-	else if(isScrewdriver(C))
-		if (src.p_open)
-			if (stat & BROKEN)
-				to_chat(usr, "<span class='warning'>The panel is broken and cannot be closed.</span>")
+		else if(isWirecutter(C))
+			return src.attack_hand(user)
+		else if(isMultitool(C))
+			return src.attack_hand(user)
+		else if(istype(C, /obj/item/device/assembly/signaler))
+			return src.attack_hand(user)
+		else if(istype(C, /obj/item/weapon/pai_cable))	// -- TLE
+			var/obj/item/weapon/pai_cable/cable = C
+			cable.plugin(src, user)
+		else if(!repairing && isCrowbar(C))
+			if(src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && !src.locked)) && !brace)
+				playsound(src.loc, 'sound/items/Crowbar.ogg', 100, 1)
+				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
+				if(do_after(user,40,src))
+					to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
+					deconstruct(user)
+					return
+			else if(arePowerSystemsOn())
+				to_chat(user, "<span class='notice'>The airlock's motors resist your efforts to force it.</span>")
+			else if(locked)
+				to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
+			else if(brace)
+				to_chat(user, "<span class='notice'>The airlock's brace holds it firmly in place.</span>")
 			else
-				src.p_open = 0
-		else
-			src.p_open = 1
-		src.update_icon()
-	else if(isWirecutter(C))
-		return src.attack_hand(user)
-	else if(isMultitool(C))
-		return src.attack_hand(user)
-	else if(istype(C, /obj/item/device/assembly/signaler))
-		return src.attack_hand(user)
-	else if(istype(C, /obj/item/weapon/pai_cable))	// -- TLE
-		var/obj/item/weapon/pai_cable/cable = C
-		cable.plugin(src, user)
-	else if(!repairing && isCrowbar(C))
-		if(src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && !src.locked)) && !brace)
-			playsound(src.loc, 'sound/items/Crowbar.ogg', 100, 1)
-			user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
-			if(do_after(user,40,src))
-				to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
-				deconstruct(user)
-				return
-		else if(arePowerSystemsOn())
-			to_chat(user, "<span class='notice'>The airlock's motors resist your efforts to force it.</span>")
-		else if(locked)
-			to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
-		else if(brace)
-			to_chat(user, "<span class='notice'>The airlock's brace holds it firmly in place.</span>")
-		else
-			if(density)
-				spawn(0)	open(1)
-			else
-				spawn(0)	close(1)
-
-			//if door is unbroken, but at half health or less, hit with fire axe using harm intent
-	else if (istype(C, /obj/item/weapon/material/twohanded/fireaxe) && !(stat & BROKEN) && (src.health <= src.maxhealth / 2) && user.a_intent == I_HURT)
-		var/obj/item/weapon/material/twohanded/fireaxe/F = C
-		if (F.wielded)
-			playsound(src, 'sound/weapons/smash.ogg', 100, 1)
-			user.visible_message("<span class='danger'>[user] smashes \the [C] into the airlock's control panel! It explodes in a shower of sparks!</span>", "<span class='danger'>You smash \the [C] into the airlock's control panel! It explodes in a shower of sparks!</span>")
-			src.health = 0
-			src.set_broken()
-		else
-			..()
-			return
-
-	else if(istype(C, /obj/item/weapon/material/twohanded/fireaxe) && !arePowerSystemsOn())
-		if(locked)
-			to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
-		else if( !welded && !operating )
-			if(density)
-				var/obj/item/weapon/material/twohanded/fireaxe/F = C
-				if(F.wielded)
+				if(density)
 					spawn(0)	open(1)
 				else
-					to_chat(user, "<span class='warning'>You need to be wielding \the [C] to do that.</span>")
-			else
-				var/obj/item/weapon/material/twohanded/fireaxe/F = C
-				if(F.wielded)
 					spawn(0)	close(1)
+
+				//if door is unbroken, but at half health or less, hit with fire axe using harm intent
+		else if (istype(C, /obj/item/weapon/material/twohanded/fireaxe) && !(stat & BROKEN) && (src.health <= src.maxhealth / 2) && user.a_intent == I_HURT)
+			var/obj/item/weapon/material/twohanded/fireaxe/F = C
+			if (F.wielded)
+				playsound(src, 'sound/weapons/smash.ogg', 100, 1)
+				user.visible_message("<span class='danger'>[user] smashes \the [C] into the airlock's control panel! It explodes in a shower of sparks!</span>", "<span class='danger'>You smash \the [C] into the airlock's control panel! It explodes in a shower of sparks!</span>")
+				src.health = 0
+				src.set_broken()
+			else
+				..()
+				return
+
+		else if(istype(C, /obj/item/weapon/material/twohanded/fireaxe) && !arePowerSystemsOn())
+			if(locked)
+				to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
+			else if( !welded && !operating )
+				if(density)
+					var/obj/item/weapon/material/twohanded/fireaxe/F = C
+					if(F.wielded)
+						spawn(0)	open(1)
+					else
+						to_chat(user, "<span class='warning'>You need to be wielding \the [C] to do that.</span>")
 				else
-					to_chat(user, "<span class='warning'>You need to be wielding \the [C] to do that.</span>")
+					var/obj/item/weapon/material/twohanded/fireaxe/F = C
+					if(F.wielded)
+						spawn(0)	close(1)
+					else
+						to_chat(user, "<span class='warning'>You need to be wielding \the [C] to do that.</span>")
 
-	else if(istype(C, /obj/item/device/floor_painter))
-		return
+		else if(istype(C, /obj/item/device/floor_painter))
+			return
 
-	else
-		..()
-	return
+	return	..()
 
 /obj/machinery/door/airlock/deconstruct(mob/user, var/moved = FALSE)
 	var/obj/structure/door_assembly/da = new assembly_type(src.loc)
@@ -1415,3 +1415,49 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/proc/stripe_airlock(var/paint_color)
 	stripe_color = paint_color
 	update_icon()
+
+
+/obj/machinery/door/airlock/get_force_difficulty()
+	.=..()
+	if(!arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_OPEN_DOOR))
+		.-=(force_resist* 0.3)//Depowered door is easier to force, it has a third of its base force resistance
+
+	//Bolts help
+	if (locked)
+		. += 0.5
+
+	//Welding helps
+	if (welded)
+		. += 0.5
+
+	//Welded 2 = reinforced with sheets, damage is reduced twice
+	if (welded == 2)
+		. += 1
+
+	if (brace)
+		.+=2 //Braces are reeeally strong
+
+/obj/machinery/door/airlock/apply_resistance(var/damage, var/ignore_resistance = FALSE)
+	if (ignore_resistance)
+		return ..(damage, ignore_resistance)
+
+	//Bolts help
+	if (locked)
+		damage *= 0.85
+
+	//Welding helps
+	if (welded)
+		damage *= 0.85
+
+	//Welded 2 = reinforced with sheets, damage is reduced twice
+	if (welded == 2)
+		damage *= 0.85
+
+	return ..(damage, ignore_resistance)
+
+
+/obj/machinery/door/airlock/break_open()
+	welded = FALSE
+	locked = FALSE
+	QDEL_NULL(brace)
+	.=..()

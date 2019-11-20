@@ -18,6 +18,17 @@ var/global/list/sparring_attack_cache = list()
 	var/eye_attack_text
 	var/eye_attack_text_victim
 
+	var/airlock_force_power = 0	//Can this attack be used to force open airlocks?
+		//A power of 1 can open a normal airlock.
+		//Power of 2 is needed to force open a welded and bolted airlock
+		//Power of 3 will open a bolted and reinforced airlock
+		//Power of 5 will open everything, even with a brace attached
+
+		//Extra power above what's required will make the forcing go faster
+
+	//Additional divider on time required to force open airlocks.
+	var/airlock_force_speed = 1
+
 /datum/unarmed_attack/proc/get_damage_type()
 	if(deal_halloss)
 		return PAIN
@@ -29,7 +40,7 @@ var/global/list/sparring_attack_cache = list()
 			sparring_attack_cache[sparring_variant_type] = new sparring_variant_type()
 		return sparring_attack_cache[sparring_variant_type]
 
-/datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user, var/atom/target, var/zone)
 	if(user.restrained())
 		return 0
 
@@ -47,56 +58,62 @@ var/global/list/sparring_attack_cache = list()
 /datum/unarmed_attack/proc/get_unarmed_damage()
 	return damage
 
-/datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
+/datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/atom/target,var/armour,var/attack_damage,var/zone)
 
-	if(target.stat == DEAD)
-		return
+	if (ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(H.stat == DEAD)
+			return
 
-	var/stun_chance = rand(0, 100)
+		var/stun_chance = rand(0, 100)
 
-	if(attack_damage >= 5 && armour < 100 && !(target == user) && stun_chance <= attack_damage * 5) // 25% standard chance
-		switch(zone) // strong punches can have effects depending on where they hit
-			if(BP_HEAD, BP_EYES, BP_MOUTH)
-				// Induce blurriness
-				target.visible_message("<span class='danger'>[target] looks momentarily disoriented.</span>", "<span class='danger'>You see stars.</span>")
-				target.apply_effect(attack_damage*2, EYE_BLUR, armour)
-			if(BP_L_ARM, BP_L_HAND)
-				if (target.l_hand)
-					// Disarm left hand
-					//Urist McAssistant dropped the macguffin with a scream just sounds odd.
-					target.visible_message("<span class='danger'>\The [target.l_hand] was knocked right out of [target]'s grasp!</span>")
-					target.drop_l_hand()
-			if(BP_R_ARM, BP_R_HAND)
-				if (target.r_hand)
-					// Disarm right hand
-					target.visible_message("<span class='danger'>\The [target.r_hand] was knocked right out of [target]'s grasp!</span>")
-					target.drop_r_hand()
-			if(BP_CHEST)
-				if(!target.lying)
-					var/turf/T = get_step(get_turf(target), get_dir(get_turf(user), get_turf(target)))
-					if(!T.density)
-						step(target, get_dir(get_turf(user), get_turf(target)))
-						target.visible_message("<span class='danger'>[pick("[target] was sent flying backward!", "[target] staggers back from the impact!")]</span>")
-					if(prob(50))
-						target.set_dir(GLOB.reverse_dir[target.dir])
-					target.apply_effect(attack_damage * 0.4, WEAKEN, armour)
-			if(BP_GROIN)
-				target.visible_message("<span class='warning'>[target] looks like \he is in pain!</span>", "<span class='warning'>[(target.gender=="female") ? "Oh god that hurt!" : "Oh no, not your[pick("testicles", "crown jewels", "clockweights", "family jewels", "marbles", "bean bags", "teabags", "sweetmeats", "goolies")]!"]</span>")
-				target.apply_effects(stutter = attack_damage * 2, agony = attack_damage* 3, blocked = armour)
-			if(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT)
-				if(!target.lying)
-					target.visible_message("<span class='warning'>[target] gives way slightly.</span>")
-					target.apply_effect(attack_damage*3, PAIN, armour)
-	else if(attack_damage >= 5 && !(target == user) && (stun_chance + attack_damage * 5 >= 100) && armour < 100) // Chance to get the usual throwdown as well (25% standard chance)
-		if(!target.lying)
-			target.visible_message("<span class='danger'>[target] [pick("slumps", "falls", "drops")] down to the ground!</span>")
-		else
-			target.visible_message("<span class='danger'>[target] has been weakened!</span>")
-		target.apply_effect(3, WEAKEN, armour)
+		if(attack_damage >= 5 && armour < 100 && !(H == user) && stun_chance <= attack_damage * 5) // 25% standard chance
+			switch(zone) // strong punches can have effects depending on where they hit
+				if(BP_HEAD, BP_EYES, BP_MOUTH)
+					// Induce blurriness
+					H.visible_message("<span class='danger'>[H] looks momentarily disoriented.</span>", "<span class='danger'>You see stars.</span>")
+					H.apply_effect(attack_damage*2, EYE_BLUR, armour)
+				if(BP_L_ARM, BP_L_HAND)
+					if (H.l_hand)
+						// Disarm left hand
+						//Urist McAssistant dropped the macguffin with a scream just sounds odd.
+						H.visible_message("<span class='danger'>\The [H.l_hand] was knocked right out of [H]'s grasp!</span>")
+						H.drop_l_hand()
+				if(BP_R_ARM, BP_R_HAND)
+					if (H.r_hand)
+						// Disarm right hand
+						H.visible_message("<span class='danger'>\The [H.r_hand] was knocked right out of [H]'s grasp!</span>")
+						H.drop_r_hand()
+				if(BP_CHEST)
+					if(!H.lying)
+						var/turf/T = get_step(get_turf(H), get_dir(get_turf(user), get_turf(H)))
+						if(!T.density)
+							step(H, get_dir(get_turf(user), get_turf(H)))
+							H.visible_message("<span class='danger'>[pick("[H] was sent flying backward!", "[H] staggers back from the impact!")]</span>")
+						if(prob(50))
+							H.set_dir(GLOB.reverse_dir[H.dir])
+						H.apply_effect(attack_damage * 0.4, WEAKEN, armour)
+				if(BP_GROIN)
+					H.visible_message("<span class='warning'>[H] looks like \he is in pain!</span>", "<span class='warning'>[(H.gender=="female") ? "Oh god that hurt!" : "Oh no, not your[pick("testicles", "crown jewels", "clockweights", "family jewels", "marbles", "bean bags", "teabags", "sweetmeats", "goolies")]!"]</span>")
+					H.apply_effects(stutter = attack_damage * 2, agony = attack_damage* 3, blocked = armour)
+				if(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT)
+					if(!H.lying)
+						H.visible_message("<span class='warning'>[H] gives way slightly.</span>")
+						H.apply_effect(attack_damage*3, PAIN, armour)
+		else if(attack_damage >= 5 && !(H == user) && (stun_chance + attack_damage * 5 >= 100) && armour < 100) // Chance to get the usual throwdown as well (25% standard chance)
+			if(!H.lying)
+				H.visible_message("<span class='danger'>[H] [pick("slumps", "falls", "drops")] down to the ground!</span>")
+			else
+				H.visible_message("<span class='danger'>[H] has been weakened!</span>")
+			H.apply_effect(3, WEAKEN, armour)
 
-/datum/unarmed_attack/proc/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
-	user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [target] in the [affecting.name]!</span>")
+/datum/unarmed_attack/proc/show_attack(var/mob/living/carbon/human/user, var/atom/target, var/zone, var/attack_damage)
+	if (ishuman(target))
+		var/mob/living/carbon/human/H = target
+		var/obj/item/organ/external/affecting = H.get_organ(zone)
+		user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [target] in the [affecting.name]!</span>")
+	else
+		user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [target]!</span>")
 	playsound(user.loc, attack_sound, 25, 1, -1)
 
 /datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
@@ -112,6 +129,91 @@ var/global/list/sparring_attack_cache = list()
 /datum/unarmed_attack/proc/damage_flags()
 	return (src.sharp? DAM_SHARP : 0)|(src.edge? DAM_EDGE : 0)
 
+
+
+//Procs for attacking airlocks
+//------------------------------------
+/mob/proc/force_door(var/obj/machinery/door/target)
+	return FALSE
+
+/mob/proc/strike_door(var/obj/machinery/door/target)
+	return FALSE
+
+
+/mob/living/carbon/human/force_door(var/obj/machinery/door/target)
+	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
+		world << "Trying to force with [u_attack.type]"
+		if (u_attack.force_door(src, target))
+			return TRUE
+		return FALSE
+
+//Perhaps someday we'll have a unified atom damage framework and not need lots of procs like this
+/mob/living/carbon/human/strike_door(var/obj/machinery/door/target)
+	var/datum/unarmed_attack/u_attack = get_unarmed_attack(target)
+	if (u_attack)
+		if(world.time < last_attack + u_attack.delay)
+			to_chat(src, "<span class='notice'>You can't attack again so soon.</span>")
+			return 0
+		last_attack = world.time
+		var/damage_done = target.hit(src, null, u_attack.damage) //TODO Later: Add in an attack flag for ignoring resistance?
+		u_attack.show_attack(src, target, null, damage_done)
+
+
+
+/datum/unarmed_attack/proc/force_door(var/mob/living/carbon/human/user, var/obj/machinery/door/target)
+
+	if (!airlock_force_power)
+		return FALSE
+
+	if (!is_usable(user, target))
+		return FALSE
+
+	//Can we force this door open?
+	var/difficulty = target.get_force_difficulty()
+	if (airlock_force_power < difficulty)
+		//Nope, its too tough. But since the user has some forcing ability, lets inform them that this door is an exception
+		to_chat(user, "\The [target] is too tough for you to force open!")
+		return FALSE
+
+	else
+		.=TRUE //Returning true prevents parent attack from continuing
+
+		//Yes we are strong enough!
+		//First of all, lets get the base time it will take
+		var/time = target.get_force_time()
+
+		//Now, if we have more power than we need, we get a discount on that time
+		if (airlock_force_power > difficulty)
+			time /= 1 + (airlock_force_power - difficulty)
+
+		//And we divide by our speed too
+		time /= get_force_speed(user, target)
+
+		//Ok lets start
+		if (!do_after(user, time, target))
+			return//Fail
+
+		//Success!
+		target.break_open()
+
+//Return the force power here. this attack could modulate this value to make certain doors easier.
+/datum/unarmed_attack/proc/get_force_power(var/mob/living/carbon/human/user, var/obj/machinery/door/target)
+	return airlock_force_power
+
+//Return the force speed here. It will probably be desireable to return half of the normal value if some needed limbs are missing
+/datum/unarmed_attack/proc/get_force_speed(var/mob/living/carbon/human/user, var/obj/machinery/door/target)
+	return airlock_force_speed
+
+
+
+
+
+
+
+
+/*
+	Specific Types
+*/
 /datum/unarmed_attack/bite
 	attack_verb = list("bit")
 	attack_sound = 'sound/weapons/bite.ogg'

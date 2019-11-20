@@ -28,7 +28,8 @@
 	var/datum/storage_ui/storage_ui = /datum/storage_ui/default
 
 /obj/item/weapon/storage/Destroy()
-	QDEL_NULL(storage_ui)
+	if (istype(storage_ui, /datum))
+		QDEL_NULL(storage_ui)
 	. = ..()
 
 /obj/item/weapon/storage/MouseDrop(obj/over_object as obj)

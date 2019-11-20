@@ -115,7 +115,6 @@
 	* mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
 */
 /mob/proc/ClickOn(var/atom/A, var/params)
-
 	if(world.time <= next_click) // Hard check, before anything else, to avoid crashing
 		return
 
@@ -123,22 +122,22 @@
 
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["ctrl"])
-		CtrlShiftClickOn(A)
+		CtrlShiftClickOn(A, params)
 		return 1
 	if(modifiers["ctrl"] && modifiers["alt"])
-		CtrlAltClickOn(A)
+		CtrlAltClickOn(A, params)
 		return 1
 	if(modifiers["middle"])
-		MiddleClickOn(A)
+		MiddleClickOn(A, params)
 		return 1
 	if(modifiers["shift"])
-		ShiftClickOn(A)
+		ShiftClickOn(A, params)
 		return 0
 	if(modifiers["alt"]) // alt and alt-gr (rightalt)
-		AltClickOn(A)
+		AltClickOn(A, params)
 		return 1
 	if(modifiers["ctrl"])
-		CtrlClickOn(A)
+		CtrlClickOn(A, params)
 		return 1
 
 	if(stat || paralysis || stunned || weakened)
@@ -287,7 +286,17 @@
 	Middle click
 	Only used for swapping hands
 */
-/mob/proc/MiddleClickOn(var/atom/A)
+/mob/proc/MiddleClickOn(var/atom/A, var/params)
+	var/datum/stack/click_handlers
+
+	click_handlers = src.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.OnMiddleClick(A,params))
+				return
 	swap_hand()
 	return
 
@@ -302,9 +311,20 @@
 	For most mobs, examine.
 	This is overridden in ai.dm
 */
-/mob/proc/ShiftClickOn(var/atom/A)
+/mob/proc/ShiftClickOn(var/atom/A, var/params)
+	var/datum/stack/click_handlers
+
+	click_handlers = src.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.OnShiftClick(A,params))
+				return
+
 	A.ShiftClick(src)
-	return
+
 /atom/proc/ShiftClick(var/mob/user)
 	if(user.client && user.client.eye == user)
 		user.examinate(src)
@@ -314,9 +334,19 @@
 	Ctrl click
 	For most objects, pull
 */
-/mob/proc/CtrlClickOn(var/atom/A)
+/mob/proc/CtrlClickOn(var/atom/A, var/params)
+	var/datum/stack/click_handlers
+
+	click_handlers = src.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.OnCtrlClick(A,params))
+				return
 	A.CtrlClick(src)
-	return
+
 /atom/proc/CtrlClick(var/mob/user)
 	return
 
@@ -328,7 +358,18 @@
 	Alt click
 	Unused except for AI
 */
-/mob/proc/AltClickOn(var/atom/A)
+/mob/proc/AltClickOn(var/atom/A, var/params)
+	var/datum/stack/click_handlers
+
+	click_handlers = src.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.OnAltClick(A,params))
+				return
+	.=..()
 	A.AltClick(src)
 
 /atom/proc/AltClick(var/mob/user)
@@ -353,9 +394,18 @@
 	Control+Shift click
 	Unused except for AI
 */
-/mob/proc/CtrlShiftClickOn(var/atom/A)
+/mob/proc/CtrlShiftClickOn(var/atom/A, var/params)
+	var/datum/stack/click_handlers
+
+	click_handlers = src.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.OnCtrlShiftClick(A,params))
+				return
 	A.CtrlShiftClick(src)
-	return
 
 /atom/proc/CtrlShiftClick(var/mob/user)
 	return
@@ -363,9 +413,18 @@
 /*
 	Control+Alt click
 */
-/mob/proc/CtrlAltClickOn(var/atom/A)
+/mob/proc/CtrlAltClickOn(var/atom/A, var/params)
+	var/datum/stack/click_handlers
+
+	click_handlers = src.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.OnCtrlAltClick(A,params))
+				return
 	A.CtrlAltClick(src)
-	return
 
 /atom/proc/CtrlAltClick(var/mob/user)
 	return

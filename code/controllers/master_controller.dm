@@ -57,6 +57,3 @@ datum/controller/game_controller/proc/setup_objects()
 		overmap_event_handler.create_events(GLOB.using_map.overmap_z, GLOB.using_map.overmap_size, GLOB.using_map.overmap_event_areas)
 
 
-/proc/report_progress(var/progress_message)
-	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)
-	to_world_log(progress_message)

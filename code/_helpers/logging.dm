@@ -226,3 +226,13 @@
 	if(!istype(d))
 		return json_encode(d)
 	return d.get_log_info_line()
+
+
+/proc/report_progress(var/progress_message)
+	to_world_log(progress_message)
+
+
+	//Checking world port here is used to prevent spamming a developer with duplicate reports when running in single user mode.
+	//Only do this log if port is nonzero, which means we are hosting through dream daemon
+	if (world.port)
+		admin_notice(progress_message, R_DEBUG)

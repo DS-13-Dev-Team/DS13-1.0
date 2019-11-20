@@ -4,6 +4,8 @@ var/global/datum/controller/gameticker/ticker
 	var/const/restart_timeout = 600
 	var/current_state = GAME_STATE_PREGAME
 
+	var/start_ASAP = FALSE          //the game will start as soon as possible, bypassing all pre-game nonsense
+
 	var/hide_mode = 0
 	var/datum/game_mode/mode = null
 	var/post_game = 0
@@ -34,6 +36,7 @@ var/global/datum/controller/gameticker/ticker
 
 	var/list/antag_pool = list()
 	var/looking_for_antags = 0
+	var/bypass_gamemode_vote = FALSE
 
 /datum/controller/gameticker/proc/pregame()
 	do
@@ -51,17 +54,22 @@ var/global/datum/controller/gameticker/ticker
 				master_mode = "extended"
 
 		to_world("<b>Trying to start [master_mode]...</b>")
-		to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
-		to_world("Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds")
+		if (config.auto_start)
+			start_ASAP = TRUE
+		else
+			to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
+			to_world("Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds")
 
 
 		while(current_state == GAME_STATE_PREGAME)
+			if(start_ASAP)
+				start_now()
 			for(var/i=0, i<10, i++)
 				sleep(1)
 				vote.process()
 			if(round_progressing)
 				pregame_timeleft--
-			if(pregame_timeleft == config.vote_autogamemode_timeleft && !gamemode_voted)
+			if(pregame_timeleft == config.vote_autogamemode_timeleft && !gamemode_voted && !bypass_gamemode_vote)
 				gamemode_voted = 1
 				if(!vote.time_remaining)
 					vote.autogamemode()	//Quit calling this over and over and over and over.
@@ -75,6 +83,14 @@ var/global/datum/controller/gameticker/ticker
 
 	while (!setup())
 
+
+/datum/controller/gameticker/proc/start_now(mob/user)
+
+	initialization_stage |= INITIALIZATION_NOW
+	bypass_gamemode_vote = TRUE
+	vote.reset()
+
+	return TRUE
 
 /datum/controller/gameticker/proc/setup()
 	//Create and announce mode
@@ -90,7 +106,7 @@ var/global/datum/controller/gameticker/ticker
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
 			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
 
-			return 0
+			return FALSE
 		if(secret_force_mode != "secret")
 			src.mode = config.pick_mode(secret_force_mode)
 		if(!src.mode)
@@ -106,7 +122,7 @@ var/global/datum/controller/gameticker/ticker
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		to_world("<span class='danger'>Serious error in mode setup!</span> Reverting to pre-game lobby.")
 
-		return 0
+		return FALSE
 
 	job_master.ResetOccupations()
 	src.mode.create_antagonists()
@@ -122,7 +138,7 @@ var/global/datum/controller/gameticker/ticker
 		mode.fail_setup()
 		mode = null
 		job_master.ResetOccupations()
-		return 0
+		return FALSE
 
 	if(hide_mode)
 		to_world("<B>The current game mode is - Secret!</B>")
@@ -151,6 +167,17 @@ var/global/datum/controller/gameticker/ticker
 
 	callHook("roundstart")
 
+	//Here we will trigger the auto-observe and auto bst debug things
+	if (config.auto_observe)
+		for(var/client/C in GLOB.clients)
+			if (C.mob)
+				make_observer(C.mob)
+	spawn(5)
+		if (config.auto_bst)
+			for(var/client/C in GLOB.clients)
+				if (C.mob)
+					C.cmd_dev_bst(TRUE)
+
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		to_world("<FONT color='blue'><B>Enjoy the game!</B></FONT>")
@@ -172,7 +199,7 @@ var/global/datum/controller/gameticker/ticker
 	if(config.sql_enabled)
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 
-	return 1
+	return TRUE
 
 /datum/controller/gameticker
 	//station_explosion used to be a variable for every mob's hud. Which was a waste!
@@ -313,7 +340,7 @@ var/global/datum/controller/gameticker/ticker
 
 	proc/process()
 		if(current_state != GAME_STATE_PLAYING)
-			return 0
+			return FALSE
 
 		mode.process()
 
@@ -398,7 +425,7 @@ var/global/datum/controller/gameticker/ticker
 					log_and_message_admins(": All antagonists are deceased or the gamemode has ended.") //Outputs as "Event: All antagonists are deceased or the gamemode has ended."
 				vote.autotransfer()
 
-		return 1
+		return TRUE
 
 /datum/controller/gameticker/proc/declare_completion()
 	to_world("<br><br><br><H1>A round of [mode.name] has ended!</H1>")
@@ -504,7 +531,7 @@ var/global/datum/controller/gameticker/ticker
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
 
-	return 1
+	return TRUE
 
 /datum/controller/gameticker/proc/attempt_late_antag_spawn(var/list/antag_choices)
 	var/datum/antagonist/antag = antag_choices[1]
@@ -534,7 +561,7 @@ var/global/datum/controller/gameticker/ticker
 			antag.attempt_spawn()
 			antag.finalize_spawn()
 			additional_antag_types.Add(antag.id)
-			return 1
+			return TRUE
 		else
 			if(antag.initial_spawn_req > 1)
 				to_world("Failed to find enough [antag.role_text_plural].")
@@ -548,4 +575,4 @@ var/global/datum/controller/gameticker/ticker
 				if(antag)
 					to_world("Attempting to spawn [antag.role_text_plural].")
 
-	return 0
+	return FALSE

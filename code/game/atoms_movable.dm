@@ -37,6 +37,7 @@
 	if(src.throwing)
 		src.throw_impact(A)
 		src.throwing = 0
+	GLOB.bump_event.raise_event(src, A)
 
 	spawn(0)
 		if (A && yes)

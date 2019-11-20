@@ -82,6 +82,10 @@
 	to_chat(victim, "This area of space is uncharted, away from SCG territory. You might encounter remote outposts or drifting hulks, but no recognized government holds claim on this sector.")
 
 /datum/map/torch/send_welcome()
+	//Lack of overmap throws runtime errors in this proc
+	if (config.no_overmap)
+		return
+
 	var/welcome_text = "<center><img src = sollogo.png /><br /><font size = 3><b>SEV Torch</b> Sensor Readings:</font><hr />"
 	welcome_text += "Report generated on [stationdate2text()] at [stationtime2text()]</center><br /><br />"
 	welcome_text += "Current system:<br /><b>[system_name()]</b><br />"

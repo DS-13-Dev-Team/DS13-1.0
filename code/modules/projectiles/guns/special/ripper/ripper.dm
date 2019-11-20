@@ -5,7 +5,8 @@
 	w_class = ITEM_SIZE_HUGE
 	obj_flags =  OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BACK
-	icon_state = "oldlaser"
+	icon_state = "ripper"
+	item_state = "ripper"
 	max_shells = 8
 	caliber = "saw"
 	handle_casings = CLEAR_CASINGS
@@ -32,6 +33,17 @@
 	//World pixel coords of where a user last clicked to fire this gun
 	var/vector2/last_clickpoint = new /vector2(0,0)
 
+/obj/item/weapon/gun/projectile/ripper/update_icon()
+	overlays.Cut()
+	var/ammonum = getAmmo()
+	if(ammonum > max_shells)
+		ammonum = max_shells
+	var/progress = ammonum
+	var/goal = max_shells
+	progress = CLAMP(progress, 0, goal)
+	progress = round(((progress / goal) * 100), 25)//Round it down to 25s.
+	var/state = "ripper_[progress]"
+	overlays += image(icon,state)
 
 /obj/item/weapon/gun/projectile/ripper/loaded
 	ammo_type = /obj/item/ammo_casing/sawblade

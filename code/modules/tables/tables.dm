@@ -36,6 +36,15 @@
 		reinforced = get_material_by_name(reinforced)
 	..()
 
+/obj/structure/table/ex_act(severity)
+	switch(severity)
+		if(1.0)
+			take_damage(500)	//Any kind of table is toast
+		if(2.0)
+			take_damage(rand(125, 200)) //Usually enough to break a reinforced steel table
+		if(3.0)
+			take_damage(rand(75, 125))//Enough to break a plastic table and sometimes a marble one
+
 /obj/structure/table/proc/update_material()
 	var/old_maxhealth = maxhealth
 	if(!material)

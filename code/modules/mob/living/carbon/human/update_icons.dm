@@ -190,7 +190,7 @@ Please contact me on #coderbus IRC. ~Carn x
 
 	var/matrix/M = matrix()
 	if(lying)
-		M.Turn(90)
+		M.Turn(species.lying_rotation)
 		M.Scale(size_multiplier)
 		M.Translate(1,-6)
 	else

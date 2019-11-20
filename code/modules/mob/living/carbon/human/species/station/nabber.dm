@@ -345,3 +345,17 @@
 		if(!hidden)
 			H.visible_message("<span class='warning'>[H] tenses as \he brings \his smaller arms in close to \his body. \His two massive spiked arms reach \
 			out. \He looks ready to attack.</span>")
+
+
+
+
+/datum/unarmed_attack/nabber
+	attack_verb = list("mauled", "slashed", "struck", "pierced")
+	attack_noun = list("forelimb")
+	damage = 8
+	shredding = 1
+	sharp = 1
+	edge = 1
+	delay = 20
+	eye_attack_text = "a forelimb"
+	eye_attack_text_victim = "a forelimb"

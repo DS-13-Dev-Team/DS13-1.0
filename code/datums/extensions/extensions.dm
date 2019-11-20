@@ -1,4 +1,5 @@
 /datum/extension
+	var/name = "Extension"
 	var/datum/holder = null // The holder
 	var/expected_type = /datum
 	var/flags = EXTENSION_FLAG_NONE
@@ -66,3 +67,11 @@
 /proc/construct_extension_instance(var/extension_type, var/datum/source, var/list/arguments)
 	arguments = list(source) + arguments
 	return new extension_type(arglist(arguments))
+
+
+/proc/remove_extension(var/datum/source, var/base_type)
+	if(!source.extensions || !source.extensions[base_type])
+		return
+	if(!islist(source.extensions[base_type]))
+		qdel(source.extensions[base_type])
+	LAZYREMOVE(source.extensions, base_type)

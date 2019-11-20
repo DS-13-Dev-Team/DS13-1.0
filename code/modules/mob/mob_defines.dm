@@ -104,7 +104,6 @@
 	var/default_pixel_x = 0
 	var/default_pixel_y = 0
 
-	var/shakecamera = 0
 	var/a_intent = I_HELP//Living
 
 	var/decl/move_intent/move_intent = /decl/move_intent/run

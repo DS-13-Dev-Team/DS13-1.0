@@ -19,8 +19,28 @@
 /atom/proc/shake_animation(var/intensity = 8)
 	var/init_px = pixel_x
 	var/shake_dir = pick(-1, 1)
-	animate(src, transform=turn(matrix(), intensity*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
-	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
+	var/rotation = 2+soft_cap(intensity, 1, 1, 0.94)
+	var/offset = 1+soft_cap(intensity*0.3, 1, 1, 0.8)
+	var/time = 2+soft_cap(intensity*0.3, 2, 1, 0.92)
+	animate(src, transform=turn(matrix(), rotation*shake_dir), pixel_x=init_px + offset*shake_dir, time=1)
+	animate(transform=null, pixel_x=init_px, time=time, easing=ELASTIC_EASING)
+
+
+
+/proc/shake_camera(mob/M, duration, strength=1)
+	if(!istype(M) || !M.client || M.stat || isEye(M) || isAI(M))
+		return
+
+	spawn(1)
+		if(!M.client)
+			return
+
+		var/px_y = rand(0, strength*world.icon_size) * pick(-1, 1)
+		var/px_x = rand(0, strength*world.icon_size) * pick(-1, 1)
+		var/vector2/init_px = new /vector2(M.client.pixel_x, M.client.pixel_y)
+		animate(M.client, pixel_x=init_px.x + px_x, pixel_y=init_px.y + px_y, time=1)
+		animate(pixel_x=init_px.x, pixel_y=init_px.y, time=duration, easing=ELASTIC_EASING)
+
 
 //The X pixel offset of this matrix
 /matrix/proc/get_x_shift()
