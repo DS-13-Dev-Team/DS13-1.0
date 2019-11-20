@@ -19,7 +19,8 @@
 		Homing: If true, we will keep moving towards the target even when they move.
 			If false, we will aim at the spot they were standing when we started, and miss them if they aren't in it
 			Optional, Default True
-		Inertia: Only used if homing is false.
+		Inertia: CURRENTLY UNIMPLEMENTED
+			Only used if homing is false.
 			If inertia is true, and we miss the target, we will keep going until we meet maximum range, maximum time, or crash into something dense
 			optional, default false
 		Power: Used for breaking obstacles mid-charge, this should be a value in the range -3 to 3.
@@ -108,15 +109,9 @@
 		//If no homing or inertia, we aim for the tile the thing is on
 		move_target = get_turf(target)
 	else
-		//If no homing but yes inertia, we project a straight path out as far as we can
-		/*var/turf/T1 = get_turf(holder)
-		var/turf/T2 = get_turf(target)
-		var/delta_x = T2.x - T1.x
-		var/delta_y = T2.y - T1.y
-		var/y_per_x = delta_y / delta_x
-
-		var/x_dist_to_edge = world.maxx - T2.x
-		var/y_dist = */
+		//Inertia calculations go here.
+		//I didn't have time for the math, so for now this setting doesn't function
+		//It should target the farthest possible point in the target direction
 		move_target = get_turf(target) //Temporary
 
 	if (isnum(lifespan) && lifespan > 0)

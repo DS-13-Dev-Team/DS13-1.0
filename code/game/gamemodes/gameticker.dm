@@ -85,20 +85,12 @@ var/global/datum/controller/gameticker/ticker
 
 
 /datum/controller/gameticker/proc/start_now(mob/user)
-	//if(!(current_state == RUNLEVEL_LOBBY))
-		//return
-	//initialization_stage = INITIALIZATION_NOW_AND_COMPLETE
-	//current_state = GAME_STATE_SETTING_UP
+
 	initialization_stage |= INITIALIZATION_NOW
 	bypass_gamemode_vote = TRUE
 	vote.reset()
-	//if(istype(SSvote.active_vote, /datum/vote/gamemode))
-	//	SSvote.cancel_vote(user)
 
-	//Master.SetRunLevel(RUNLEVEL_SETUP)
-
-
-	return 1
+	return TRUE
 
 /datum/controller/gameticker/proc/setup()
 	//Create and announce mode
@@ -114,7 +106,7 @@ var/global/datum/controller/gameticker/ticker
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
 			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
 
-			return 0
+			return FALSE
 		if(secret_force_mode != "secret")
 			src.mode = config.pick_mode(secret_force_mode)
 		if(!src.mode)
@@ -130,7 +122,7 @@ var/global/datum/controller/gameticker/ticker
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		to_world("<span class='danger'>Serious error in mode setup!</span> Reverting to pre-game lobby.")
 
-		return 0
+		return FALSE
 
 	job_master.ResetOccupations()
 	src.mode.create_antagonists()
@@ -146,7 +138,7 @@ var/global/datum/controller/gameticker/ticker
 		mode.fail_setup()
 		mode = null
 		job_master.ResetOccupations()
-		return 0
+		return FALSE
 
 	if(hide_mode)
 		to_world("<B>The current game mode is - Secret!</B>")
@@ -207,7 +199,7 @@ var/global/datum/controller/gameticker/ticker
 	if(config.sql_enabled)
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 
-	return 1
+	return TRUE
 
 /datum/controller/gameticker
 	//station_explosion used to be a variable for every mob's hud. Which was a waste!
@@ -348,7 +340,7 @@ var/global/datum/controller/gameticker/ticker
 
 	proc/process()
 		if(current_state != GAME_STATE_PLAYING)
-			return 0
+			return FALSE
 
 		mode.process()
 
@@ -433,7 +425,7 @@ var/global/datum/controller/gameticker/ticker
 					log_and_message_admins(": All antagonists are deceased or the gamemode has ended.") //Outputs as "Event: All antagonists are deceased or the gamemode has ended."
 				vote.autotransfer()
 
-		return 1
+		return TRUE
 
 /datum/controller/gameticker/proc/declare_completion()
 	to_world("<br><br><br><H1>A round of [mode.name] has ended!</H1>")
@@ -539,7 +531,7 @@ var/global/datum/controller/gameticker/ticker
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
 
-	return 1
+	return TRUE
 
 /datum/controller/gameticker/proc/attempt_late_antag_spawn(var/list/antag_choices)
 	var/datum/antagonist/antag = antag_choices[1]
@@ -569,7 +561,7 @@ var/global/datum/controller/gameticker/ticker
 			antag.attempt_spawn()
 			antag.finalize_spawn()
 			additional_antag_types.Add(antag.id)
-			return 1
+			return TRUE
 		else
 			if(antag.initial_spawn_req > 1)
 				to_world("Failed to find enough [antag.role_text_plural].")
@@ -583,4 +575,4 @@ var/global/datum/controller/gameticker/ticker
 				if(antag)
 					to_world("Attempting to spawn [antag.role_text_plural].")
 
-	return 0
+	return FALSE
