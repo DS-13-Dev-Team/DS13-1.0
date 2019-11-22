@@ -2,6 +2,9 @@
 	var/moving           = FALSE
 
 /mob/proc/SelfMove(var/direction)
+	if (facedir(direction) && slow_turning)
+		return TRUE
+
 	if(DoMove(direction, src) & MOVEMENT_HANDLED)
 		return TRUE // Doesn't necessarily mean the mob physically moved
 
@@ -26,6 +29,11 @@
 	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
 	if(delay)
 		delay.AddDelay(timeout)
+
+/mob/proc/CheckMoveCooldown()
+	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
+	if(delay)
+		return delay.MayMove()
 
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))

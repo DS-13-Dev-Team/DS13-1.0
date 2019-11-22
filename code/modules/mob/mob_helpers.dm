@@ -697,3 +697,47 @@ proc/is_blind(A)
 		return species.get_grasping_limb(src, side)
 
 
+// facing verbs
+/mob/proc/canface()
+	if (!incapacitated() && CheckMoveCooldown())
+		return TRUE
+	return FALSE
+
+// Simple helper to face what you clicked on, in case it should be needed in more than one place
+/mob/proc/face_atom(var/atom/A)
+	if(!A || !x || !y || !A.x || !A.y) return
+	var/dx = A.x - x
+	var/dy = A.y - y
+	if(!dx && !dy) return
+
+	var/direction
+	if(abs(dx) < abs(dy))
+		if(dy > 0)	direction = NORTH
+		else		direction = SOUTH
+	else
+		if(dx > 0)	direction = EAST
+		else		direction = WEST
+	if(direction != dir)
+		return facedir(direction)
+
+
+
+
+/mob/proc/facedir(var/ndir)
+	if(!canface() || moving)
+		return FALSE
+	.=set_dir(ndir)
+	if(buckled && buckled.buckle_movable)
+		buckled.set_dir(ndir)
+	if (. && slow_turning)	//Only mobs with slow turning set will set their move cooldown when changing dir
+		SetMoveCooldown(movement_delay())
+
+
+/mob/set_dir()
+	if(facing_dir)
+		if(!canface() || lying || buckled || restrained())
+			facing_dir = null
+		else if(dir != facing_dir)
+			return ..(facing_dir)
+	else
+		return ..()

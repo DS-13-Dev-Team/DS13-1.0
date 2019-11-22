@@ -180,3 +180,6 @@
 	var/datum/skillset/skillset = /datum/skillset
 
 	var/last_radio_sound = -INFINITY
+
+
+	var/slow_turning = FALSE //If true, turning on the spot costs a move

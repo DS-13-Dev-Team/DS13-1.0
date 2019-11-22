@@ -470,7 +470,7 @@
 		if(dx > 0)	direction = EAST
 		else		direction = WEST
 	if(direction != dir)
-		facedir(direction)
+		return facedir(direction)
 
 /obj/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'

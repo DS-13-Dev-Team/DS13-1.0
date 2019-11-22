@@ -1005,6 +1005,9 @@
 	species = all_species[new_species]
 	species.handle_pre_spawn(src)
 
+	species.setup_movement(src)
+	species.setup_vision(src)
+
 	if(species.language)
 		add_language(species.language)
 		species_language = all_languages[species.language]

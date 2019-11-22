@@ -152,6 +152,10 @@
 
 	var/grab_type = GRAB_NORMAL		// The species' default grab type.
 
+	//Movement
+	var/slowdown = 0              // Passive movement speed malus (or boost, if negative)
+	var/slow_turning = FALSE		//If true
+
 	// Body/form vars.
 	var/list/inherent_verbs 	  // Species-specific verbs.
 	var/has_fine_manipulation = 1 // Can use small items.
@@ -161,7 +165,6 @@
 	var/species_flags = 0         // Various specific features.
 	var/appearance_flags = 0      // Appearance/display related features.
 	var/spawn_flags = 0           // Flags that specify who can spawn as this species
-	var/slowdown = 0              // Passive movement speed malus (or boost, if negative)
 	var/primitive_form            // Lesser form, if any (ie. monkey for humans)
 	var/greater_form              // Greater form, if any, ie. human for monkeys.
 	var/holder_type
@@ -396,6 +399,12 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			//We use input_args here since we're doing voodoo with passing arguments.
 			//Modclick takes key type, function name, function priority, and a list of extra arguments
 			H.add_modclick_verb(arglist(input_args))
+
+/datum/species/proc/setup_movement(var/mob/living/carbon/human/H)
+	H.slow_turning = slow_turning
+
+/datum/species/proc/setup_vision(var/mob/living/carbon/human/H)
+	return
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
