@@ -31,13 +31,14 @@
 	var/list/affected_turfs_secondary
 	var/stopped_at
 
-/datum/extension/slam/New(var/atom/movable/user, var/atom/target, var/_damage, var/_down_factor, var/_weaken_time, var/_windup_time, var/_cooldown)
+/datum/extension/slam/New(var/atom/movable/user, var/atom/target, var/_damage, var/_down_factor, var/_weaken_time, var/_power, var/_windup_time, var/_cooldown)
 	..()
 	slammer = user
 	epicentre = get_turf(target) //This attack can be dodged. If we target a mob, we'll hit where they were standing at the initiation time, whether they're still there or not
 	damage = _damage
 	down_factor = _down_factor
 	weaken_time = _weaken_time
+	power = _power
 	windup_time = _windup_time
 	cooldown = _cooldown
 
@@ -179,14 +180,17 @@
 	//Lets smoothly slide back to a normal stance
 	animate(slammer, transform=matrix(), pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = 7)
 
+	world << "Slam stopping, about to cool down [cooldown]"
 	//When we finish, we go on cooldown
 	if (cooldown && cooldown > 0)
+		world << "Adding cooldown timer"
 		addtimer(CALLBACK(src, /datum/extension/slam/proc/finish_cooldown), cooldown)
 	else
 		finish_cooldown() //If there's no cooldown timer call it now
 
 
 /datum/extension/slam/proc/finish_cooldown()
+	world << "finishing cooldown"
 	to_chat(slammer, SPAN_NOTICE("You are ready to [name] again")) //Use name here so i can reuse this for leaping
 	remove_extension(holder, /datum/extension/slam)
 
@@ -210,7 +214,7 @@
 
 /atom/movable/proc/can_slam(var/atom/target, var/error_messages = TRUE)
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
-	var/datum/extension/slam/ES = get_extension(src, /datum/extension/charge)
+	var/datum/extension/slam/ES = get_extension(src, /datum/extension/slam)
 	if(istype(ES))
 		if (ES.stopped_at)
 			if(error_messages) to_chat(src, "[ES.name] is cooling down. You can use it again in [ES.get_cooldown_time() /10] seconds")
@@ -240,12 +244,12 @@
 	.=..()
 
 
-/atom/movable/proc/slam_attack(var/atom/_target, var/_damage = 40, var/_down_factor = 2, var/_weaken_time = 3, var/_windup_time = 1.75 SECONDS, var/_cooldown = 8 SECONDS)
+/atom/movable/proc/slam_attack(var/atom/_target, var/_damage = 40, var/_down_factor = 2, var/_weaken_time = 3, var/_power = 0, var/_windup_time = 1.75 SECONDS, var/_cooldown = 10 SECONDS)
 	//First of all, lets check if we're currently able to charge
 	if (!can_slam(_target, TRUE))
 		return FALSE
 
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/slam, /datum/extension/slam, _target, _damage, _down_factor, _weaken_time, _windup_time, _cooldown)
+	set_extension(src, /datum/extension/slam, /datum/extension/slam, _target, _damage, _down_factor, _weaken_time, _power, _windup_time, _cooldown)
 	return TRUE

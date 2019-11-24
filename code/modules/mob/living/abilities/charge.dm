@@ -19,8 +19,7 @@
 		Homing: If true, we will keep moving towards the target even when they move.
 			If false, we will aim at the spot they were standing when we started, and miss them if they aren't in it
 			Optional, Default True
-		Inertia: CURRENTLY UNIMPLEMENTED
-			Only used if homing is false.
+		Inertia: Only used if homing is false.
 			If inertia is true, and we miss the target, we will keep going until we meet maximum range, maximum time, or crash into something dense
 			optional, default false
 		Power: Used for breaking obstacles mid-charge, this should be a value in the range -3 to 3.
@@ -76,6 +75,8 @@
 	range_left = _maxrange
 	homing = _homing
 	inertia = _inertia
+	if (inertia)	//Inertia and homing are mutually exclusive
+		homing = FALSE
 	power = _power
 	cooldown = _cooldown
 
@@ -109,15 +110,20 @@
 		//If no homing or inertia, we aim for the tile the thing is on
 		move_target = get_turf(target)
 	else
-		//Inertia calculations go here.
-		//I didn't have time for the math, so for now this setting doesn't function
-		//It should target the farthest possible point in the target direction
-		move_target = get_turf(target) //Temporary
+		//Note: This may fail near the map edge, if it overshoots world bounds. Tricky to fix, probably won't be a problem
+		var/vector2/delta = new(target.x - charger.x, target.y - charger.y)
+		delta = delta.ToMagnitude(max_range()+1)
+		var/turf/target_turf = locate(charger.x + delta.x, charger.y + delta.y, charger.z)
+		if (target_turf)
+			move_target = target_turf
+		else
+			move_target = get_turf(target) //fallback incase of failure
 
 	if (isnum(lifespan) && lifespan > 0)
 		lifespan_timer = addtimer(CALLBACK(src, .proc/stop_peter_out), lifespan, TIMER_STOPPABLE)
 
 	charger.visible_message(SPAN_DANGER("[charger] charges at [target]!"))
+	world << "Move target [jumplink(move_target)]"
 
 	walk_towards(holder, move_target, SPEED_TO_TICKS(speed))
 
@@ -145,7 +151,7 @@
 
 
 
-/datum/extension/charge/proc/bump(var/atom/movable/user, var/atom/obstacle)
+/datum/extension/charge/proc/bump(var/atom/movable/user, var/atom/obstacle, var/crossed = FALSE)
 	if (charger != user)
 		//This should never happen. Error state, terminate
 		stop()
@@ -160,10 +166,14 @@
 	if (!(obstacle in atoms_hit))
 		charger.charge_impact(obstacle, get_total_power(), target_type, tiles_moved)
 		atoms_hit += obstacle
+
 	//If that was our intended target, then we win
 	if (target_type == CHARGE_TARGET_PRIMARY)
-		stop_success()
-		return
+		//However, there's an exception here.
+		//If this charge has inertia, we don't stop until we ARE stopped.
+		if (!inertia)
+			stop_success()
+			return
 
 	//We stop if:
 	//the obstacle still exists, it still will not give way, and it hasn't moved
@@ -197,6 +207,7 @@
 
 
 /datum/extension/charge/proc/moved(var/atom/mover, var/oldloc, var/newloc)
+	world << "Charge moved"
 	//When we move, deplete the remaining range, and abort if we run out
 	tiles_moved++
 	if (isnum(range_left))
@@ -207,7 +218,7 @@
 
 	//If we have entered the same turf as our target then it must have been nondense. Let's hit it
 	if (charger.loc == target.loc)
-		bump(charger, target)
+		bump(charger, target, TRUE) //Passing true here indicates we crossed over the target rather than crashing into them. This affects whether we'll stop in inertia mode
 	else
 		//Light shake with each step
 		shake_camera(src,1.5,0.5)
@@ -238,6 +249,21 @@
 	var/elapsed = world.time - stopped_at
 	return cooldown - elapsed
 
+
+//Figures out how far this charge could feasibly go if not blocked.
+/datum/extension/charge/proc/max_range()
+	if (!lifespan)
+		return range_left
+
+	var/lifemax = round((lifespan*0.1) * speed) //Lifespan is in deciseconds so we change it to seconds,
+	//and then multiply by speed which is in tiles per second
+	//We also round off, because can't go part of a tile
+
+	if (!range_left)
+		return lifemax
+
+	return min(range_left, lifemax)
+
 //Stop Wrappers:
 //-------------------
 //Various methods of stopping that do an additional effect and then call stop
@@ -256,7 +282,7 @@
 		//Damage the charger and stun them
 		var/mob/living/L = holder
 		var/blocked = L.damaged_by_atom(obstacle, CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved)
-		L.apply_effect(3*TP, STUN, blocked)
+		L.apply_effect(4*TP, STUN, blocked)
 	stop()
 
 //Called when we reach max time or range

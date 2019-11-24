@@ -729,11 +729,7 @@
 					stat(A)
 
 
-// facing verbs
-/mob/proc/canface()
-	if (!incapacitated() && CheckMoveCooldown())
-		return TRUE
-	return FALSE
+
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
@@ -783,23 +779,7 @@
 	else
 		reset_plane_and_layer()
 
-/mob/set_dir()
-	if(facing_dir)
-		if(!canface() || lying || buckled || restrained())
-			facing_dir = null
-		else if(dir != facing_dir)
-			return ..(facing_dir)
-	else
-		return ..()
 
-/mob/proc/facedir(var/ndir)
-	if(!canface() || moving)
-		return FALSE
-	.=set_dir(ndir)
-	if(buckled && buckled.buckle_movable)
-		buckled.set_dir(ndir)
-	if (. && slow_turning)	//Only mobs with slow turning set will set their move cooldown when changing dir
-		SetMoveCooldown(movement_delay())
 
 
 

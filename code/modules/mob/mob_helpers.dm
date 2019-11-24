@@ -720,9 +720,7 @@ proc/is_blind(A)
 	if(direction != dir)
 		return facedir(direction)
 
-
-
-
+//Facedir is called from face_atom and has
 /mob/proc/facedir(var/ndir)
 	if(!canface() || moving)
 		return FALSE
@@ -730,14 +728,8 @@ proc/is_blind(A)
 	if(buckled && buckled.buckle_movable)
 		buckled.set_dir(ndir)
 	if (. && slow_turning)	//Only mobs with slow turning set will set their move cooldown when changing dir
-		SetMoveCooldown(movement_delay())
+		var/turntime = movement_delay()
+		SetMoveCooldown(turntime)
+		setClickCooldown(turntime + DEFAULT_ATTACK_COOLDOWN)
 
 
-/mob/set_dir()
-	if(facing_dir)
-		if(!canface() || lying || buckled || restrained())
-			facing_dir = null
-		else if(dir != facing_dir)
-			return ..(facing_dir)
-	else
-		return ..()

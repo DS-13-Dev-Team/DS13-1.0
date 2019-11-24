@@ -120,6 +120,14 @@
 
 	next_click = world.time + 1
 
+	//Limited click arc handling here
+	if (limited_click_arc && !click_in_frontal_arc(src, A, limited_click_arc))
+		world << "Click is not in arc"
+		face_atom(A)
+		return
+	else if (limited_click_arc)
+		world << "Click is in arc"
+
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["ctrl"])
 		CtrlShiftClickOn(A, params)
@@ -455,22 +463,7 @@
 	else
 		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
 
-// Simple helper to face what you clicked on, in case it should be needed in more than one place
-/mob/proc/face_atom(var/atom/A)
-	if(!A || !x || !y || !A.x || !A.y) return
-	var/dx = A.x - x
-	var/dy = A.y - y
-	if(!dx && !dy) return
 
-	var/direction
-	if(abs(dx) < abs(dy))
-		if(dy > 0)	direction = NORTH
-		else		direction = SOUTH
-	else
-		if(dx > 0)	direction = EAST
-		else		direction = WEST
-	if(direction != dir)
-		return facedir(direction)
 
 /obj/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'
@@ -517,3 +510,10 @@
 	. = ..()
 
 
+//Checks if target is within arc degrees either side of user's forward vector.
+//Used to make mobs that can only click on stuff infront of them
+//Code supplied by Kaiochao
+	//Note: Rounding included to compensate for a byond bug in 513.1497.
+	//Without the rounding, cos(90) returns an erroneous value which breaks this proc
+/proc/click_in_frontal_arc(var/mob/user, var/atom/target, var/arc)
+	return (round(Vector2.FromDir(user.dir).Dot(new/vector2(target.x - user.x, target.y - user.y).Normalized()),0.000001) >= round(cos(arc),0.000001))

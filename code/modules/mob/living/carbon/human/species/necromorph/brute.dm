@@ -26,6 +26,8 @@
 	unarmed_types = list(/datum/unarmed_attack/punch/brute) //Bite attack is a backup if blades are severed
 
 	slowdown = 5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
+	slow_turning = TRUE		//Slow turning and limited clicks ensures he can't just 360quickscope someone who sneaked up behind
+	limited_click_arc = 90
 
 /*
 	Brute charge: Slower but more powerful due to mob size
@@ -35,7 +37,7 @@
 	set category = "Abilities"
 
 
-	.= charge_attack(A, _delay = 2 SECONDS, _speed = 4, _lifespan = 4 SECONDS)
+	.= charge_attack(A, _delay = 2.5 SECONDS, _speed = 3.5, _lifespan = 8 SECONDS, _inertia = TRUE)
 	if (.)
 		var/mob/H = src
 		if (istype(H))
@@ -48,12 +50,10 @@
 	set name = "Slam"
 	set category = "Abilities"
 
-	world << "Brute slam [A]"
 	if (!A)
 		A = get_step(src, dir)
 
-	world << "Calling slam attack"
-	return slam_attack(A, _damage = 35, _power = 2, _cooldown = 10 SECONDS)
+	return slam_attack(A, _damage = 35, _power = 1, _cooldown = 10 SECONDS)
 
 
 
@@ -64,8 +64,8 @@
 	Brute punch, heavy damage, slow
 */
 /datum/unarmed_attack/punch/brute
-	delay = 20
-	damage = 30
+	delay = 25
+	damage = 25
 	airlock_force_power = 5
 	airlock_force_speed = 2.5
 	shredding = TRUE //Better environment interactions, even if not sharp

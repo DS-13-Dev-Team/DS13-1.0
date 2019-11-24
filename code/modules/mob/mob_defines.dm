@@ -181,5 +181,8 @@
 
 	var/last_radio_sound = -INFINITY
 
+	//Interaction
+	var/limited_click_arc = 0	//If nonzero, the mob is limited to clicking on things in X degrees arc infront of it. Best combined with slow turning. Recommended values, 45 or 90
 
-	var/slow_turning = FALSE //If true, turning on the spot costs a move
+	//Movement
+	var/slow_turning = FALSE //If true, mob goes on move+click cooldown when rotating in place, and can't turn+move in the same step

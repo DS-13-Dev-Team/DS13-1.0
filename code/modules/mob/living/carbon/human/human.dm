@@ -1005,6 +1005,7 @@
 	species = all_species[new_species]
 	species.handle_pre_spawn(src)
 
+	species.setup_interaction(src)
 	species.setup_movement(src)
 	species.setup_vision(src)
 

@@ -154,7 +154,10 @@
 
 	//Movement
 	var/slowdown = 0              // Passive movement speed malus (or boost, if negative)
-	var/slow_turning = FALSE		//If true
+	var/slow_turning = FALSE		//If true, mob goes on move+click cooldown when rotating in place, and can't turn+move in the same step
+
+	//Interaction
+	var/limited_click_arc = 0	  //If nonzero, the mob is limited to clicking on things in X degrees arc infront of it. Best combined with slow turning. Recommended values, 45 or 90
 
 	// Body/form vars.
 	var/list/inherent_verbs 	  // Species-specific verbs.
@@ -399,6 +402,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			//We use input_args here since we're doing voodoo with passing arguments.
 			//Modclick takes key type, function name, function priority, and a list of extra arguments
 			H.add_modclick_verb(arglist(input_args))
+
+/datum/species/proc/setup_interaction(var/mob/living/carbon/human/H)
+	H.limited_click_arc = limited_click_arc
 
 /datum/species/proc/setup_movement(var/mob/living/carbon/human/H)
 	H.slow_turning = slow_turning
