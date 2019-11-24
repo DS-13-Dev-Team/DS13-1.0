@@ -697,7 +697,8 @@ proc/is_blind(A)
 		return species.get_grasping_limb(src, side)
 
 
-// facing verbs
+// Direction Setting
+//------------------------
 /mob/proc/canface()
 	if (!incapacitated() && CheckMoveCooldown())
 		return TRUE
@@ -732,4 +733,9 @@ proc/is_blind(A)
 		SetMoveCooldown(turntime)
 		setClickCooldown(turntime + DEFAULT_ATTACK_COOLDOWN)
 
-
+//Mobs with offset view should update it every time they turn
+/mob/set_dir(new_dir)
+	.=..()
+	if (. && view_offset)
+		reset_view(null)	//Possible future consideration, should this call handle_vision instead?
+							//Seems pointlessly expensive for now, but consider it if there are problems

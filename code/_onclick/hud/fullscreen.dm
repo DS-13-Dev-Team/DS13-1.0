@@ -6,7 +6,11 @@
 	condition ? overlay_fullscreen(screen_name, screen_type, arg) : clear_fullscreen(screen_name)
 
 /mob/proc/overlay_fullscreen(category, type, severity)
+	var/rescale = FALSE
 	var/obj/screen/fullscreen/screen = screens[category]
+
+
+
 
 	if(screen)
 		if(screen.type != type)
@@ -14,6 +18,8 @@
 			screen = null
 		else if(!severity || severity == screen.severity)
 			return null
+		else if (rescale)
+			screen = new screen.type()	//Make our screen object a new one so we're not altering the things in the global list
 
 	if(!screen)
 		screen = new type()
@@ -21,8 +27,11 @@
 	screen.icon_state = "[initial(screen.icon_state)][severity]"
 	screen.severity = severity
 
+	screen.set_size(client)
+
 	screens[category] = screen
 	if(client && (stat != DEAD || screen.allstate))
+
 		client.screen += screen
 	return screen
 
@@ -57,16 +66,25 @@
 /mob/proc/reload_fullscreen()
 	if(client)
 		for(var/category in screens)
-			client.screen |= screens[category]
+			client.screen -= screens[category]
+			overlay_fullscreen(category, screens[category].type, INFINITY)
+
 
 /obj/screen/fullscreen
 	icon = 'icons/mob/screen_full.dmi'
 	icon_state = "default"
-	screen_loc = "CENTER-7,CENTER-7"
+	screen_loc = "BOTTOMLEFT"
 	plane = FULLSCREEN_PLANE
-	mouse_opacity = 0
+	mouse_opacity = 1
 	var/severity = 0
 	var/allstate = 0 //shows if it should show up for dead people too
+
+/obj/screen/fullscreen/proc/set_size(var/client/C)
+	//Scale it up or down to fit the client's window
+	var/scale_factor = ((C.view*2)+1) / ((world.view*2)+1)
+	var/matrix/M = matrix()
+	M.Scale(scale_factor)
+	transform = M
 
 /obj/screen/fullscreen/Destroy()
 	severity = 0

@@ -283,6 +283,11 @@
 			else
 				client.perspective = EYE_PERSPECTIVE
 				client.eye = loc
+
+		if (ismob(client.eye))
+			var/mob/M = client.eye
+			client.set_view_range(M.vision_range)
+			client.set_view_offset(M.dir, M.view_offset)
 	return
 
 

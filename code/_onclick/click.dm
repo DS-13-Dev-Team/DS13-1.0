@@ -472,10 +472,11 @@
 	mouse_opacity = 2
 	screen_loc = "CENTER-7,CENTER-7"
 
-/proc/create_click_catcher()
+/proc/create_click_catcher(var/radius = 7)
+	var/diameter = (radius*2) + 1
 	. = list()
-	for(var/i = 0, i<15, i++)
-		for(var/j = 0, j<15, j++)
+	for(var/i = 0, i<diameter, i++)
+		for(var/j = 0, j<diameter, j++)
 			var/obj/screen/click_catcher/CC = new()
 			CC.screen_loc = "NORTH-[i],EAST-[j]"
 			. += CC

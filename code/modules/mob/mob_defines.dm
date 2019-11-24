@@ -47,7 +47,7 @@
 	var/obj/screen/throw_icon = null
 	var/obj/screen/nutrition_icon = null
 	var/obj/screen/pressure = null
-	var/obj/screen/pain = null
+	var/obj/screen/fullscreen/pain = null
 	var/obj/screen/gun/item/item_use_icon = null
 	var/obj/screen/gun/radio/radio_use_icon = null
 	var/obj/screen/gun/move/gun_move_icon = null
@@ -186,3 +186,7 @@
 
 	//Movement
 	var/slow_turning = FALSE //If true, mob goes on move+click cooldown when rotating in place, and can't turn+move in the same step
+
+	//Vision
+	var/view_offset = 0
+	var/vision_range = 7

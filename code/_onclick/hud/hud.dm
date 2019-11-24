@@ -9,6 +9,7 @@
 	var/datum/hud/hud_used = null
 
 /mob/proc/InitializeHud()
+
 	if(hud_used)
 		qdel(hud_used)
 	if(hud_type)
@@ -253,11 +254,9 @@
 	update_action_buttons()
 
 /mob/proc/add_click_catcher()
-	if(!client.void)
-		client.void = create_click_catcher()
-	if(!client.screen)
-		client.screen = list()
-	client.screen |= client.void
+	if (client)
+		client.setup_click_catcher()
+
 
 /mob/new_player/add_click_catcher()
 	return

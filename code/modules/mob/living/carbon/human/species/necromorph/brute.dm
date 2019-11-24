@@ -29,6 +29,10 @@
 	slow_turning = TRUE		//Slow turning and limited clicks ensures he can't just 360quickscope someone who sneaked up behind
 	limited_click_arc = 90
 
+	//Vision
+	vision_range = 4
+	view_offset = 3 * WORLD_ICON_SIZE
+
 /*
 	Brute charge: Slower but more powerful due to mob size
 */
@@ -72,12 +76,10 @@
 
 //Brute punch causes knockback on any mob smaller than itself
 /datum/unarmed_attack/punch/brute/apply_effects(var/mob/living/carbon/human/user,var/atom/target,var/armour,var/attack_damage,var/zone)
-	world << "Brutepunch AE [target]"
+
 	if (isliving(target))
-		world << "Brutepunch living"
 		var/mob/living/L = target
 		if (user.mob_size > L.mob_size)
-			world << "Brutepunch size"
 			//Ok we will knock it back! Lets do some math
 
 			//Get a vector representing the offset from us to target
@@ -85,10 +87,8 @@
 			delta = delta.ToMagnitude(5) //Rescale it to a length of 5 tiles. This is our approximate knockback distance, although it may end up shorter with rounding and diagonals
 
 			var/turf/target_turf = locate(user.x + delta.x, user.y + delta.y, user.z) //Get the target turf to knock them towards
-			world << "Brutepunch target_turf [jumplink(target_turf)]"
 			if (target_turf)
 				//Throw the victim towards the target
-				world << "Brutepunch launching [L] at target"
 				L.throw_at(target_turf, 5, 1, user)
 
 				//Note, a speed of 1 here means travel 1 tile then sleep(1)

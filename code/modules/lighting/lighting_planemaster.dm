@@ -16,9 +16,10 @@
 
 	mouse_opacity = 0    // nothing on this plane is mouse-visible
 
+
 /obj/lighting_general
 	plane = LIGHTING_PLANE
-	screen_loc = "8,8"
+	screen_loc = "CENTER"
 
 	icon = LIGHTING_ICON
 	icon_state = LIGHTING_ICON_STATE_DARK
@@ -27,15 +28,19 @@
 
 	blend_mode = BLEND_MULTIPLY
 
-/obj/lighting_general/Initialize()
+/obj/lighting_general/New(var/atom/location, var/client/C)
 	. = ..()
-	var/matrix/M = matrix()
-	M.Scale(world.view*2.2)
-
-	transform = M
+	var/newscale = ((C.view * 2) + 1) / C.view
+	transform *= newscale
 
 /obj/lighting_general/proc/sync(var/new_colour)
 	color = new_colour
+
+/obj/lighting_general/proc/resize(var/client/C)
+	var/newscale = ((C.view * 2) + 1) / C.view
+	var/matrix/M = matrix()
+	M *= newscale
+	transform = M
 
 /mob
 	var/obj/lighting_plane/l_plane

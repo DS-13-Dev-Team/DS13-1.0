@@ -51,7 +51,7 @@
 	var/strength    = STR_MEDIUM
 	var/show_ssd = "fast asleep"
 	var/virus_immune
-	var/short_sighted                         // Permanent weldervision.
+
 	var/light_sensitive                       // Ditto, but requires sunglasses to fix
 	var/blood_volume = SPECIES_BLOOD_DEFAULT  // Initial blood volume.
 	var/hunger_factor = DEFAULT_HUNGER_FACTOR // Multiplier for hunger.
@@ -97,7 +97,7 @@
 	var/paralysis_mod =  1                    // Paralysis period modifier.
 	var/weaken_mod =     1                    // Weaken period modifier.
 
-	var/vision_flags = SEE_SELF               // Same flags as glasses.
+
 
 	// Death vars.
 	var/meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/human
@@ -159,12 +159,19 @@
 	//Interaction
 	var/limited_click_arc = 0	  //If nonzero, the mob is limited to clicking on things in X degrees arc infront of it. Best combined with slow turning. Recommended values, 45 or 90
 
+
+	//Vision
+	var/view_offset = 0			  //How far forward the mob's view is offset, in pixels.
+	var/vision_range = 7		  //Mob's vision radius, in tiles. It gets buggy with values below 7, but anything 7+ is flawless
+	var/darksight_range = 2       // Native darksight distance.
+	var/darksight_tint = DARKTINT_NONE // How shadows are tinted.
+	var/vision_flags = SEE_SELF               // Same flags as glasses.
+	var/short_sighted                         // Permanent weldervision.
+
 	// Body/form vars.
 	var/list/inherent_verbs 	  // Species-specific verbs.
 	var/has_fine_manipulation = 1 // Can use small items.
 	var/siemens_coefficient = 1   // The lower, the thicker the skin and better the insulation.
-	var/darksight_range = 2       // Native darksight distance.
-	var/darksight_tint = DARKTINT_NONE // How shadows are tinted.
 	var/species_flags = 0         // Various specific features.
 	var/appearance_flags = 0      // Appearance/display related features.
 	var/spawn_flags = 0           // Flags that specify who can spawn as this species
@@ -410,7 +417,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.slow_turning = slow_turning
 
 /datum/species/proc/setup_vision(var/mob/living/carbon/human/H)
-	return
+	H.view_offset = view_offset
+	H.vision_range = vision_range
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
