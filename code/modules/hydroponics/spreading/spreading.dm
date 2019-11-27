@@ -127,7 +127,7 @@
 	// Some plants eat through plating.
 	if(islist(seed.chems) && !isnull(seed.chems[/datum/reagent/acid/polyacid]))
 		var/turf/T = get_turf(src)
-		T.ex_act(prob(80) ? 3 : 2)
+		T.ex_act(prob(80) ? 3 : 2, src)
 
 /obj/effect/vine/update_icon()
 	overlays.Cut()

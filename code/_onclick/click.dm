@@ -121,12 +121,9 @@
 	next_click = world.time + 1
 
 	//Limited click arc handling here
-	if (limited_click_arc && !click_in_frontal_arc(src, A, limited_click_arc))
-		world << "Click is not in arc"
+	if (limited_click_arc && !target_in_frontal_arc(src, A, limited_click_arc))
 		face_atom(A)
 		return
-	else if (limited_click_arc)
-		world << "Click is in arc"
 
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["ctrl"])
@@ -147,15 +144,11 @@
 	if(modifiers["ctrl"])
 		CtrlClickOn(A, params)
 		return 1
-
 	if(stat || paralysis || stunned || weakened)
 		return
-
 	face_atom(A) // change direction to face what you clicked on
-
 	if(!canClick()) // in the year 2000...
 		return
-
 	if(istype(loc, /obj/mecha))
 		if(!locate(/turf) in list(A, A.loc)) // Prevents inventory from being drilled
 			return
@@ -516,5 +509,5 @@
 //Code supplied by Kaiochao
 	//Note: Rounding included to compensate for a byond bug in 513.1497.
 	//Without the rounding, cos(90) returns an erroneous value which breaks this proc
-/proc/click_in_frontal_arc(var/mob/user, var/atom/target, var/arc)
+/proc/target_in_frontal_arc(var/mob/user, var/atom/target, var/arc)
 	return (round(Vector2.FromDir(user.dir).Dot(new/vector2(target.x - user.x, target.y - user.y).Normalized()),0.000001) >= round(cos(arc),0.000001))

@@ -1186,23 +1186,23 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	update_icon()
 	..()
 
-/obj/machinery/power/apc/ex_act(severity)
+/obj/machinery/power/apc/ex_act(severity, var/atom/epicentre)
 	switch(severity)
 		if(1.0)
 			if (cell)
-				cell.ex_act(1.0) // more lags woohoo
+				cell.ex_act(1.0, epicentre) // more lags woohoo
 			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
 				set_broken()
 				if (cell && prob(50))
-					cell.ex_act(2.0)
+					cell.ex_act(2.0, epicentre)
 		if(3.0)
 			if (prob(25))
 				set_broken()
 				if (cell && prob(25))
-					cell.ex_act(3.0)
+					cell.ex_act(3.0, epicentre)
 	return
 
 /obj/machinery/power/apc/disconnect_terminal(var/obj/machinery/power/terminal/term)

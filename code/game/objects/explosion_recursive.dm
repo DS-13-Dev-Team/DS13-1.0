@@ -50,7 +50,7 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 		var/x = T.x
 		var/y = T.y
 		var/z = T.z
-		T.ex_act(severity)
+		T.ex_act(severity, epicenter)
 		if(!T)
 			T = locate(x,y,z)
 
@@ -58,7 +58,7 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 		for(var/atom_movable in T.contents)
 			var/atom/movable/AM = atom_movable
 			if(AM && AM.simulated && !T.protects_atom(AM))
-				AM.ex_act(severity)
+				AM.ex_act(severity, epicenter)
 				if(!AM.anchored)
 					addtimer(CALLBACK(AM, /atom/movable/.proc/throw_at, throw_target, 9/severity, 9/severity), 0)
 

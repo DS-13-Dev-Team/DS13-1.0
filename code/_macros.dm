@@ -51,6 +51,8 @@
 
 #define isorgan(A) istype(A, /obj/item/organ/external)
 
+#define isprojectile(A)	istype(A, /obj/item/projectile)
+
 #define isstack(A) istype(A, /obj/item/stack)
 
 #define isspace(A) istype(A, /area/space)
@@ -193,3 +195,6 @@
 
 //Makes span tags easier
 #define span(class, text) ("<span class='[class]'>[text]</span>")
+
+//Used to set all the arguments of the currently executing proc, to a list
+#define SET_ARGS(L) var/list/newargs = L; for(var/i in 1 to length(newargs)) { args[i] = newargs[i] };

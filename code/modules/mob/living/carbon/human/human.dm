@@ -99,67 +99,7 @@
 				stat("Chemical Storage", mind.changeling.chem_charges)
 				stat("Genetic Damage Time", mind.changeling.geneticdamage)
 
-/mob/living/carbon/human/ex_act(severity)
-	if(!blinded)
-		flash_eyes()
 
-	var/b_loss = null
-	var/f_loss = null
-	switch (severity)
-		if (1.0)
-			b_loss = 400
-			f_loss = 100
-			if (!prob(getarmor(null, "bomb")))
-				gib()
-				return
-			else
-				var/atom/target = get_edge_target_turf(src, get_dir(src, get_step_away(src, src)))
-				throw_at(target, 200, 4)
-			//return
-//				var/atom/target = get_edge_target_turf(user, get_dir(src, get_step_away(user, src)))
-				//user.throw_at(target, 200, 4)
-
-		if (2.0)
-			b_loss = 60
-			f_loss = 60
-
-			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
-				ear_damage += 30
-				ear_deaf += 120
-			if (prob(70))
-				Paralyse(10)
-
-		if(3.0)
-			b_loss = 30
-			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
-				ear_damage += 15
-				ear_deaf += 60
-			if (prob(50))
-				Paralyse(10)
-
-	// factor in armour
-	var/protection = blocked_mult(getarmor(null, "bomb"))
-	b_loss *= protection
-	f_loss *= protection
-
-	// focus most of the blast on one organ
-	var/obj/item/organ/external/take_blast = pick(organs)
-	take_blast.take_external_damage(b_loss * 0.7, f_loss * 0.7, used_weapon = "Explosive blast")
-
-	// distribute the remaining 30% on all limbs equally (including the one already dealt damage)
-	b_loss *= 0.3
-	f_loss *= 0.3
-
-	var/weapon_message = "Explosive Blast"
-	for(var/obj/item/organ/external/temp in organs)
-		var/loss_val
-		if(temp.organ_tag  == BP_HEAD)
-			loss_val = 0.2
-		else if(temp.organ_tag == BP_CHEST)
-			loss_val = 0.4
-		else
-			loss_val = 0.05
-		temp.take_external_damage(b_loss * loss_val, f_loss * loss_val, used_weapon = weapon_message)
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
 	if(!config.use_loyalty_implants && !override) return // Nuh-uh.
@@ -1532,3 +1472,8 @@
 		. += 1
 	if(skill_check(SKILL_WEAPONS, SKILL_PROF))
 		. += 2
+
+
+
+/mob/living/carbon/human/density_lying()
+	return species.density_lying

@@ -41,7 +41,7 @@
 
 		if(floor.density)
 			if(!isnull(seed.chems[/datum/reagent/acid/polyacid]))
-				spawn(rand(5,25)) floor.ex_act(3)
+				spawn(rand(5,25)) floor.ex_act(3, src)
 			continue
 
 		if(!Adjacent(floor) || !floor.Enter(src))

@@ -316,20 +316,20 @@
 				if (l[2] <= 0)
 					l[2] = EX3_TOTAL
 					A.shake_animation(2)
-					A.ex_act(3)
+					A.ex_act(3, src)
 
 
 				l[3] -= damage
 				if (l[3] <= 0)
 					l[3] = EX2_TOTAL
 					A.shake_animation(4)
-					A.ex_act(2)
+					A.ex_act(2, src)
 
 				l[4] -= damage
 				if (l[4] <= 0)
 					l[4] = EX1_TOTAL
 					A.shake_animation(8)
-					A.ex_act(1)
+					A.ex_act(1, src)
 
 				updatehealth()
 				set_sound(SOUND_GRIND)//We're grinding, play the grind sound

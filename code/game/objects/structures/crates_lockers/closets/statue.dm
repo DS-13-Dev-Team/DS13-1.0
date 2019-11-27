@@ -97,9 +97,9 @@
 		for(var/mob/M in src)
 			shatter(M)
 
-/obj/structure/closet/statue/ex_act(severity)
+/obj/structure/closet/statue/ex_act(severity, var/atom/epicentre)
 	for(var/mob/M in src)
-		M.ex_act(severity)
+		M.ex_act(severity, epicentre)
 		health -= 60 / severity
 		check_health()
 

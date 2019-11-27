@@ -303,7 +303,9 @@
 	new /obj/item/device/t_scanner(src)
 
 /mob/living/carbon/human/bst/restrained()
-	return !(status_flags & GODMODE)
+	if (status_flags & GODMODE)
+		return FALSE
+	return ..()
 
 
 /mob/living/carbon/human/bst/can_fall()

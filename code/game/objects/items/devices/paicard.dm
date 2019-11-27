@@ -316,7 +316,7 @@
 
 /obj/item/device/paicard/ex_act(severity)
 	if(pai)
-		pai.ex_act(severity)
+		pai.ex_act(severity, src)
 	else
 		qdel(src)
 

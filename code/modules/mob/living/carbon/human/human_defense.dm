@@ -26,6 +26,8 @@ meteor_act
 	var/armor = getarmor_organ(organ, P.check_armour)
 	var/penetrating_damage = ((P.damage + P.armor_penetration) * P.penetration_modifier) - armor
 
+	var/blocked = ..(P, def_zone)
+
 	//Embed or sever artery
 	if(P.can_embed() && !(species.species_flags & SPECIES_FLAG_NO_EMBED) && prob(22.5 + max(penetrating_damage, -10)) && !(prob(50) && (organ.sever_artery())))
 		var/obj/item/weapon/material/shard/shrapnel/SP = new()
@@ -34,7 +36,7 @@ meteor_act
 		SP.loc = organ
 		organ.embed(SP)
 
-	var/blocked = ..(P, def_zone)
+
 
 	projectile_hit_bloody(P, P.damage*blocked_mult(blocked), def_zone)
 
@@ -325,7 +327,7 @@ meteor_act
 			zone = ran_zone(BP_CHEST,75)	//Hits a random part of the body, geared towards the chest
 
 		//check if we hit
-		var/miss_chance = 15
+		var/miss_chance = species.evasion
 		if (O.throw_source)
 			var/distance = get_dist(O.throw_source, loc)
 			miss_chance = max(15*(distance-2), 0)

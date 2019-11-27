@@ -281,7 +281,7 @@
 	if (isliving(holder))
 		//Damage the charger and stun them
 		var/mob/living/L = holder
-		var/blocked = L.damaged_by_atom(obstacle, CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved)
+		var/blocked = L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved, 0,0,0, obstacle)
 		L.apply_effect(4*TP, STUN, blocked)
 	stop()
 
@@ -321,7 +321,7 @@
 		if (L.mob_size < mob_size)
 			return FALSE
 
-	var/blocked = damaged_by_atom(mover, (CHARGE_DAMAGE_BASE*power) + (dist * CHARGE_DAMAGE_DIST))
+	take_overall_damage((CHARGE_DAMAGE_BASE*power), 0,0,0, mover)
 	apply_effect(3*power, STUN, blocked)
 	return TRUE
 

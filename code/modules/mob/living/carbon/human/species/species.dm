@@ -78,7 +78,7 @@
 		/datum/unarmed_attack/bite
 		)
 	var/list/unarmed_attacks = null           // populated at runtime, don't touch
-
+	var/evasion = 15						//Base chance for projectile attacks to miss this mob
 	var/modifier_verbs						//A list of key modifiers and procs, in the format Key = list(proc path, priority, arg1, arg2, arg3... etc)
 	//Any number of extra arguments allowed. Only key and proc path are mandatory. Default priority is 1 and will be used if none is supplied.
 	//Key must be one of the KEY_XXX defines in defines/client.dm
@@ -241,6 +241,8 @@
 	var/bump_flag = HUMAN	// What are we considered to be when bumped?
 	var/push_flags = ~HEAVY	// What can we push?
 	var/swap_flags = ~HEAVY	// What can we swap place with?
+	var/density_lying = FALSE	//Is this mob dense while lying down?
+	var/opacity = FALSE		//Does this mob block vision?
 
 	var/pass_flags = 0
 	var/breathing_sound = 'sound/voice/monkey.ogg'
@@ -412,6 +414,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/setup_interaction(var/mob/living/carbon/human/H)
 	H.limited_click_arc = limited_click_arc
+	H.opacity = opacity
 
 /datum/species/proc/setup_movement(var/mob/living/carbon/human/H)
 	H.slow_turning = slow_turning
@@ -764,3 +767,28 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		return temp
 
 	return null
+
+
+
+/*
+	Species level damage handling
+----------------------------------------
+
+All of the below procs are a species version of a living or human damage proc, passing in all the same vars.
+These procs should return their entire args list. Best just to return parent in any overrides, parent will handle it
+*/
+
+var/debug_damage_counter = 0
+
+//Apply_damage
+//This is useful for changing damagetypes, tweaking flags, or retargeting the attack to a specific organ
+//Note, it is recommended not to override the damage value here, but instead to do that in handle_organ_external_damage.
+	//This is because apply_damage will eventually call that anyways for brute/burn damage
+	//Plus there are a variety of damage methods (like explosions) which will completely bypass apply_damage, and use organ damage directly
+/datum/species/proc/handle_apply_damage(var/mob/user, var/damage, var/damagetype, var/def_zone, var/blocked, var/damage_flags, var/obj/used_weapon, var/obj/item/organ/external/given_organ)
+	return args.Copy(2)
+
+
+//Override damage values here as a one stop catch-all solution
+/datum/species/proc/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+	return args.Copy(2)

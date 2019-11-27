@@ -292,7 +292,7 @@ its easier to just keep the beam vertical.
 /atom/proc/update_icon()
 	return
 
-/atom/proc/ex_act()
+/atom/proc/ex_act(var/severity, var/atom/epicentre)
 	return
 
 /atom/proc/emag_act(var/remaining_charges, var/mob/user, var/emag_source)

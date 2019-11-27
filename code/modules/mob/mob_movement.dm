@@ -15,9 +15,9 @@
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
 			return 1
-		return (!mover.density || !density || lying)
+		return (!mover.density || !density || (lying && !density_lying()))
 	else
-		return (!mover.density || !density || lying)
+		return (!mover.density || !density || (lying && !density_lying()))
 	return
 
 /mob/proc/SetMoveCooldown(var/timeout)

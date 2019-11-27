@@ -757,7 +757,7 @@
 		lying = incapacitated(INCAPACITATION_KNOCKDOWN)
 
 	if(lying)
-		set_density(0)
+		set_density(density_lying())
 		if(l_hand) unEquip(l_hand)
 		if(r_hand) unEquip(r_hand)
 	else
@@ -776,6 +776,10 @@
 		regenerate_icons()
 	else if( lying != lying_prev )
 		update_icons()
+
+//Overridden by humans in human.dm
+/mob/proc/density_lying()
+	return 0
 
 /mob/proc/reset_layer()
 	if(lying)

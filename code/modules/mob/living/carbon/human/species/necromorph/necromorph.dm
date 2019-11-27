@@ -92,3 +92,7 @@
 
 /datum/species/necromorph/get_blood_name()
 	return "ichor"
+
+/datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
+	.=..()
+	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things

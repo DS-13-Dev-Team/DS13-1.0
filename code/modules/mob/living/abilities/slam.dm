@@ -126,15 +126,15 @@
 				if (L.lying)
 					tempdamage *= down_factor
 				L.Weaken(weaken_time)
-				L.damaged_by_atom(slammer, tempdamage)
+				L.take_overall_damage(tempdamage, 0,0,0, slammer)
 				shake_camera(L, 3, damage/10) //Shake camera of mobs too
 			else
 				//Atoms get ex_acted
-				if (power)A.ex_act(4-power)
+				if (power)A.ex_act(4-power, slammer)
 
 		T.shake_animation(damage)	//Shake the turf itself
 		if (power)
-			T.ex_act(4-power)
+			T.ex_act(4-power, slammer)
 
 
 	//Now we weaken these values for the next round
@@ -155,15 +155,15 @@
 				if (L.lying)
 					tempdamage *= down_factor
 				L.Weaken(weaken_time)
-				L.damaged_by_atom(slammer, tempdamage)
+				L.take_overall_damage(tempdamage, 0,0,0, slammer)
 				shake_camera(L, 3, damage/10) //Shake camera of mobs too
 			else
 				//Atoms get ex_acted
-				if (power)A.ex_act(4-power)
+				if (power)A.ex_act(4-power, slammer)
 
 		T.shake_animation(damage)	//Shake the turf itself
 		if (power)
-			T.ex_act(4-power)
+			T.ex_act(4-power, slammer)
 
 
 	//Wait a bit longer before we return to neutral
