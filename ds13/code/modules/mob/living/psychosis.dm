@@ -68,6 +68,10 @@
 	can_set_psychosis = TRUE
 	to_chat(src, "<span class='warning'>You feel like something's watching you,  creeping into your mind even...</span>") //Give them a warning to know they need to avoid traumae again.
 
+/mob/living/carbon/human/proc/allow_psychosis_message()
+	sanity_cooldown = FALSE
+
+
 /**
 *
 *
@@ -81,6 +85,7 @@
 	var/last_sanity = 100
 	var/can_set_psychosis = TRUE //This variable means that mobs can't instant descend into total insanity just by getting sneezed on by a necromorph.
 	var/psychosis_immune = FALSE //SET THIS TO TRUE FOR NECROMORPHS IF YOU MAKE THEM A HUMAN SUBTYPE, OR THEY WILL GO INSANE FROM MARKER STUFF
+	var/sanity_cooldown = FALSE
 
 /mob/living/carbon/human/Life()
 	. = ..() //Override here to allow mobs to slowly heal from psychosis damage...SLOWLY.
@@ -151,6 +156,9 @@
 /datum/component/traumatic_sight/Process() //This isn't terribly efficient, but it's also not the worst performance wise.
 	for(var/mob/living/carbon/human/H in viewers(source, null))
 		H.adjustPsychosisLoss(trauma_power)
+		if(H.sanity_cooldown)
+			return
+		H.sanity_cooldown = TRUE
 		switch(trauma_power)
 			if(0 to TRAUMA_POWER_WEAK)
 				to_chat(H, "<span class='warning'>The sight of [source] makes you a little uneasy...</span>")
@@ -160,3 +168,4 @@
 				to_chat(H, "<span class='userdanger'>The mere sight of [source] makes you want to run away and hide!</span>")
 			if(TRAUMA_POWER_STRONG+0.1 to INFINITY)
 				to_chat(H, "<span class='userdanger'>You can feel [source] inside your head... RUN!.</span>")
+		addtimer(CALLBACK(H, /mob/living/carbon/human/proc/allow_psychosis_message), 30 SECONDS)
