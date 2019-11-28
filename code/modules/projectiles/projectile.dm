@@ -244,7 +244,6 @@
 		last_result = null
 
 	if (result == PROJECTILE_DEFLECT)
-		world << "Doing deflect [PROJECTILE_DEFLECT]"
 		if(!silenced)
 			target_mob.visible_message("<span class='notice'>\The [src] deflects off [target_mob]!</span>")
 			if(LAZYLEN(miss_sounds))

@@ -778,7 +778,6 @@ All of the below procs are a species version of a living or human damage proc, p
 These procs should return their entire args list. Best just to return parent in any overrides, parent will handle it
 */
 
-var/debug_damage_counter = 0
 
 //Apply_damage
 //This is useful for changing damagetypes, tweaking flags, or retargeting the attack to a specific organ
