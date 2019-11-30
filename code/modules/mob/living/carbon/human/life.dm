@@ -632,12 +632,9 @@
 		if(gloves && germ_level > gloves.germ_level && prob(10))
 			gloves.germ_level += 1
 
-		if(vsc.plc.CONTAMINATION_LOSS)
-			var/total_phoronloss = 0
-			for(var/obj/item/I in src)
-				if(I.contaminated)
-					total_phoronloss += vsc.plc.CONTAMINATION_LOSS
-			adjustToxLoss(total_phoronloss)
+		//Note by nanako: Phoron contamination feature removed from here
+		//Our setting doesnt have phoron, and this was terribly inefficient. it was also screwing up my debugging a seperate problem
+		//If we need something like it, it can be reimplemented far better
 
 		// nutrition decrease
 		if (nutrition > 0)

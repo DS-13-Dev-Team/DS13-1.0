@@ -189,4 +189,4 @@
 
 	//Vision
 	var/view_offset = 0
-	var/vision_range = 7
+	var/view_range = 7

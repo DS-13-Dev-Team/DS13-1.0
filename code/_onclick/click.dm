@@ -510,4 +510,7 @@
 	//Note: Rounding included to compensate for a byond bug in 513.1497.
 	//Without the rounding, cos(90) returns an erroneous value which breaks this proc
 /proc/target_in_frontal_arc(var/mob/user, var/atom/target, var/arc)
+	//You are allowed to click yourself and things in your own turf
+	if (user.loc == target.loc)
+		return TRUE
 	return (round(Vector2.FromDir(user.dir).Dot(new/vector2(target.x - user.x, target.y - user.y).Normalized()),0.000001) >= round(cos(arc),0.000001))

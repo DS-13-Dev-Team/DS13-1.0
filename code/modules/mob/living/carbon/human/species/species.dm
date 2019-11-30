@@ -162,7 +162,7 @@
 
 	//Vision
 	var/view_offset = 0			  //How far forward the mob's view is offset, in pixels.
-	var/vision_range = 7		  //Mob's vision radius, in tiles. It gets buggy with values below 7, but anything 7+ is flawless
+	var/view_range = 7		  //Mob's vision radius, in tiles. It gets buggy with values below 7, but anything 7+ is flawless
 	var/darksight_range = 2       // Native darksight distance.
 	var/darksight_tint = DARKTINT_NONE // How shadows are tinted.
 	var/vision_flags = SEE_SELF               // Same flags as glasses.
@@ -421,7 +421,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/setup_vision(var/mob/living/carbon/human/H)
 	H.view_offset = view_offset
-	H.vision_range = vision_range
+	H.view_range = view_range
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)

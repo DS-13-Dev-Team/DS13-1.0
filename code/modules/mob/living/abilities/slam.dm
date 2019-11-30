@@ -202,10 +202,11 @@
 
 //	Triggering
 //------------------------
-/atom/movable/proc/slam_verb(var/A)
+/atom/movable/proc/slam_verb()
 	set name = "Slam"
 	set category = "Abilities"
 
+	var/A = LAZYACCESS(args, 1)
 	if (!A)
 		A = get_step(src, dir)
 

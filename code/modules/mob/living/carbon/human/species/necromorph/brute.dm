@@ -26,23 +26,26 @@
 	weaken_mod = 0.3
 	paralysis_mod = 0.3
 
-	inherent_verbs = list(/atom/movable/proc/brute_charge, /atom/movable/proc/brute_slam)
+	inherent_verbs = list(/atom/movable/proc/brute_charge, /atom/movable/proc/brute_slam, /atom/movable/proc/curl_verb)
 	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/brute_charge),
-	KEY_CTRLALT = list(/atom/movable/proc/brute_slam))
-	unarmed_types = list(/datum/unarmed_attack/punch/brute) //Bite attack is a backup if blades are severed
+	KEY_CTRLALT = list(/atom/movable/proc/brute_slam),
+	KEY_CTRLSHIFT = list(/atom/movable/proc/curl_verb))
+
+	unarmed_types = list(/datum/unarmed_attack/punch/brute)
 
 	slowdown = 5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
 	slow_turning = TRUE		//Slow turning and limited clicks ensures he can't just 360quickscope someone who sneaked up behind
 	limited_click_arc = 90
 
 	//Vision
-	vision_range = 4
+	view_range = 4
 	view_offset = 3 * WORLD_ICON_SIZE
 
 	//Brute Armor vars
 	var/armor_front = 30	//Flat reduction applied to incoming damage within a 45 degree cone infront
 	var/armor_flank = 20	//Flat reduction applied to incoming damage within a 90 degree cone infront. Doesnt stack with front
-
+	var/curl_armor_mult = 1.5	//Multiplier applied to armor when we are curled up
+	var/armor_coverage = 95 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
 /*
 	Brute charge: Slower but more powerful due to mob size.
 	Shorter windup time making it deadly at close range
@@ -62,10 +65,11 @@
 		shake_animation(50)
 
 
-/atom/movable/proc/brute_slam(var/A)
+/atom/movable/proc/brute_slam()
 	set name = "Slam"
 	set category = "Abilities"
 
+	var/A = LAZYACCESS(args, 1)
 	if (!A)
 		A = get_step(src, dir)
 
@@ -140,17 +144,30 @@
 	if (source == L || source.loc == L.loc)
 		return ..()
 
+	//Now lets check if we're curled up
+	var/curled = FALSE
+	var/datum/extension/curl/E = get_extension(L, /datum/extension/curl)
+	if(istype(E) && E.status == 2) //Status 2 is curled up
+		curled = TRUE
 
 	//Ok, how much can we take off this damage
 	var/reduction = 0
-	if (target_in_frontal_arc(L, source, 45)) //If its within 45 degrees, we use front armor
-		reduction = armor_front
-	else if (target_in_frontal_arc(L, source, 90)) //If its >45 but within 90, we use the weaker flank armor
-		reduction = armor_flank
+
+	//First of all lets factor in the possibility of the hit striking a gap in our armor
+	//Note: The gaps are covered up when curled
+	if (curled || prob(armor_coverage))
+		if (target_in_frontal_arc(L, source, 45)) //If its within 45 degrees, we use front armor
+			reduction = armor_front
+		else if (target_in_frontal_arc(L, source, 90)) //If its >45 but within 90, we use the weaker flank armor
+			reduction = armor_flank
+
+		if (curled)
+			reduction *= curl_armor_mult
 
 	if (!reduction)
-		//The target must be behind us, the attack will go through unhindered
-		//TODO: Curl up here
+		//The target must be behind us or hit a gap, the attack will go through unhindered
+		if(!curled && L.curl_ability(_automatic = TRUE, _force_time = 5 SECONDS))
+			to_chat(L, SPAN_DANGER("You reflexively curl up in panic"))
 		return ..()
 
 	//Ok lets reduce that damage!
@@ -191,5 +208,5 @@
 		//We found a mob
 		M.Stun(3)
 		M.shake_animation(40)
-		shake_camera(M, 20, 5)
+		shake_camera(M, duration = 4 SECONDS, strength = 5)
 		return
