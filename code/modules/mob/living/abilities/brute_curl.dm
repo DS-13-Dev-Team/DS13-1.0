@@ -57,7 +57,7 @@
 
 /datum/extension/curl/proc/curl()
 	status = CURLING
-	user.Stun(INFINITY) //The user is stunned until they uncurl
+	user.Stun(999999) //The user is stunned until they uncurl
 	var/vector2/offset_dir = Vector2.FromDir(GLOB.reverse_dir[user.dir]) //Get the opposite of the direction its facing
 	var/rotation = 35 * offset_dir.x * -1
 	offset_dir *= 8 //Sprite will slide back a bit

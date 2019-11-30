@@ -483,3 +483,23 @@ meteor_act
 		perm += perm_by_part[part]
 
 	return perm
+
+
+/mob/living/carbon/human/Stun(amount, bypass_resist = FALSE)
+	if (!bypass_resist)
+		amount *= species.stun_mod
+		if(amount <= 0 || (HULK in mutations)) return
+	..(amount)
+
+/mob/living/carbon/human/Weaken(amount)
+	amount *= species.weaken_mod
+	if(amount <= 0 || (HULK in mutations)) return
+	..(amount)
+
+/mob/living/carbon/human/Paralyse(amount)
+	amount *= species.paralysis_mod
+	if(amount <= 0 || (HULK in mutations)) return
+	// Notify our AI if they can now control the suit.
+	if(wearing_rig && !stat && paralysis < amount) //We are passing out right this second.
+		wearing_rig.notify_ai("<span class='danger'>Warning: user consciousness failure. Mobility control passed to integrated intelligence system.</span>")
+	..(amount)

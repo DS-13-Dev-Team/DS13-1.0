@@ -820,6 +820,7 @@
 	if(status_flags & CANSTUN)
 		facing_dir = null
 		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower your current stun
+
 		UpdateLyingBuckledAndVerbStatus()
 	return
 

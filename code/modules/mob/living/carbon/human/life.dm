@@ -1068,7 +1068,6 @@
 
 /mob/living/carbon/human/handle_stunned()
 	if(!can_feel_pain())
-		stunned = 0
 		return 0
 	return ..()
 
