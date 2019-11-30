@@ -126,7 +126,7 @@
 
 
 /datum/extension/curl/proc/notify_forced()
-	to_chat(user, "You can now use Curl again to uncurl and move")
+	to_chat(user, SPAN_NOTICE("You can now use Curl again to uncurl and move"))
 
 //	Triggering
 //------------------------
@@ -152,7 +152,6 @@
 
 /mob/living/can_curl(var/atom/target, var/error_messages = TRUE)
 	if (incapacitated())
-		world << "We are incapacitated"
 		return FALSE
 
 	.=..()

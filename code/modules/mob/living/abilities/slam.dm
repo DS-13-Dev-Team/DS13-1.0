@@ -42,22 +42,17 @@
 	windup_time = _windup_time
 	cooldown = _cooldown
 
-	world << "Slam New: [slammer]-[epicentre]-[damage]-[down_factor]-[weaken_time]-[windup_time]-[cooldown]"
-
 	start()
 
 /datum/extension/slam/proc/start()
-	world << "Slam starting"
 	if (isliving(slammer))
 		//Lets face the thing
 		var/mob/living/L = slammer
-		world << "Living face atom [jumplink(epicentre)]"
 		L.face_atom(epicentre)
 
 		//We'll stun the user so they can't move during the animation
 		//The extra number added to windup time is the total of all the little sleeps used throughout the process
 		var/stuntime = Ceiling((windup_time + 13) / 10) //Stuntime is in life ticks, so we divide by 10, and round up to the nearest integer
-		world << "Living stuntime [stuntime]"
 		L.Stun(stuntime, TRUE) //Passing true here bypasses species resistance
 
 	//Here we start the windup.
@@ -71,13 +66,11 @@
 	else if (epicentre.x < slammer.x)
 		x_direction = -1
 
-	world << "X dir [x_direction]"
 
 	//We do the windup animation. This involves the user slowly rising into the air, and tilting back if striking horizontally
 	animate(slammer, transform=turn(matrix(), 25*(x_direction*-1)),pixel_y = cached_pixels.y + 16, time = windup_time)
 
 	//Start a timer
-	world << "Starting timer [windup_time]"
 	slam_timer = addtimer(CALLBACK(src, .proc/finish), windup_time, TIMER_STOPPABLE)
 
 	//While that's running, lets quickly calculate the affected turfs
@@ -94,7 +87,6 @@
 			LAZYADD(affected_turfs_secondary,T2)
 
 /datum/extension/slam/proc/finish()
-	world << "Finishing slam"
 	//Lets finish the slamming animation. We drop sharply back to the floor
 	//And, if we had an x offset, we'll also strike there
 	animate(slammer, transform=turn(matrix(), 35*x_direction), pixel_y = cached_pixels.y-8, pixel_x = cached_pixels.x + 24*x_direction, time = 3, easing = BACK_EASING)
@@ -180,17 +172,14 @@
 	//Lets smoothly slide back to a normal stance
 	animate(slammer, transform=matrix(), pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = 7)
 
-	world << "Slam stopping, about to cool down [cooldown]"
 	//When we finish, we go on cooldown
 	if (cooldown && cooldown > 0)
-		world << "Adding cooldown timer"
 		addtimer(CALLBACK(src, /datum/extension/slam/proc/finish_cooldown), cooldown)
 	else
 		finish_cooldown() //If there's no cooldown timer call it now
 
 
 /datum/extension/slam/proc/finish_cooldown()
-	world << "finishing cooldown"
 	to_chat(slammer, SPAN_NOTICE("You are ready to [name] again")) //Use name here so i can reuse this for leaping
 	remove_extension(holder, /datum/extension/slam)
 
@@ -239,7 +228,6 @@
 
 /mob/living/can_slam(var/atom/target, var/error_messages = TRUE)
 	if (incapacitated())
-		world << "We are incapacitated"
 		return FALSE
 
 	.=..()

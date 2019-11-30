@@ -193,6 +193,7 @@
 		)
 	var/vision_organ              // If set, this organ is required for vision. Defaults to "eyes" if the species has them.
 	var/breathing_organ           // If set, this organ is required for breathing. Defaults to "lungs" if the species has them.
+	var/can_vomit = TRUE		//Whether this mob can vomit, added to disable it on necromorphs
 
 	var/obj/effect/decal/cleanable/blood/tracks/move_trail = /obj/effect/decal/cleanable/blood/tracks/footprints // What marks are left when walking
 

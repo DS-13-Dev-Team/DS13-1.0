@@ -12,7 +12,6 @@
 	if (client.view != world.view)
 		rescale = TRUE
 
-	world << "Adding fullscreen, [category] rescale [rescale]"
 
 
 	if(screen)
@@ -44,8 +43,6 @@
 
 	if(!screen)
 		return
-
-	world << "Clearing fullscreen [category] [screen]"
 
 	screens -= category
 
@@ -82,24 +79,33 @@
 			overlay_fullscreen(category, newtype, INFINITY)
 
 
+/proc/get_or_create_fullscreen(var/view_radius)
+	var/pixels = ((view_radius*2)+1)*world.icon_size
+	var/entry_name = "[pixels]x[pixels]"
+	if (!GLOB.fullscreen_icons[entry_name])
+		//If the icons isn't made yet, make it and set it in the global list
+		GLOB.fullscreen_icons[entry_name] = rescale_icon('icons/mob/screen_full.dmi', pixels, pixels)
+	return GLOB.fullscreen_icons[entry_name] //Then return it
+
+
 /obj/screen/fullscreen
 	icon = 'icons/mob/screen_full.dmi'
 	icon_state = "default"
 	screen_loc = "BOTTOMLEFT"
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = 1
+	var/small_icon = FALSE	//True on any that don't use screen_full.dmi
 	var/severity = 0
 	var/allstate = 0 //shows if it should show up for dead people too
-	var/scale = 1
 
 /obj/screen/fullscreen/proc/set_size(var/client/C)
-	//Scale it up or down to fit the client's window
-	var/scale_factor = ((C.view*2)+1) / ((world.view*2)+1)
-	var/matrix/M = matrix()
-	M.Scale(scale_factor)
-	transform = M
+	//Here we select (and if needed, generate) the icon for the right size
+	if (C.view == world.view)
+		return	//No special sizing needed
 
-	scale = scale_factor
+	icon = get_or_create_fullscreen(C.view)
+
+
 
 /obj/screen/fullscreen/Destroy()
 	severity = 0
@@ -121,59 +127,12 @@
 	icon_state = "blackimageoverlay"
 	layer = DAMAGE_LAYER
 
-/obj/screen/fullscreen/blackout
-	icon = 'icons/mob/screen1.dmi'
-	icon_state = "black"
-	//screen_loc = "WEST,SOUTH to EAST,NORTH"
-	layer = DAMAGE_LAYER
-
 /obj/screen/fullscreen/impaired
 	icon_state = "impairedoverlay"
 	layer = IMPAIRED_LAYER
 
-/obj/screen/fullscreen/blurry
-	icon = 'icons/mob/screen1.dmi'
-	//screen_loc = "WEST,SOUTH to EAST,NORTH"
-	icon_state = "blurry"
-
-/obj/screen/fullscreen/flash
-	icon = 'icons/mob/screen1.dmi'
-	//screen_loc = "WEST,SOUTH to EAST,NORTH"
-	icon_state = "flash"
-
 /obj/screen/fullscreen/flash/noise
 	icon_state = "noise"
-
-/obj/screen/fullscreen/high
-	icon = 'icons/mob/screen1.dmi'
-	//screen_loc = "WEST,SOUTH to EAST,NORTH"
-	icon_state = "druggy"
-
-/obj/screen/fullscreen/noise
-	icon = 'icons/effects/static.dmi'
-	icon_state = "1 light"
-	//screen_loc = ui_entire_screen
-	layer = FULLSCREEN_LAYER
-	alpha = 127
-
-/obj/screen/fullscreen/fadeout
-	icon = 'icons/mob/screen1.dmi'
-	icon_state = "black"
-	//screen_loc = ui_entire_screen
-	layer = FULLSCREEN_LAYER
-	alpha = 0
-	allstate = 1
-
-/obj/screen/fullscreen/fadeout/Initialize()
-	. = ..()
-	animate(src, alpha = 255, time = 10)
-
-/obj/screen/fullscreen/scanline
-	icon = 'icons/effects/static.dmi'
-	icon_state = "scanlines"
-	//screen_loc = ui_entire_screen
-	alpha = 50
-	layer = FULLSCREEN_LAYER
 
 /obj/screen/fullscreen/fishbed
 	icon_state = "fishbed"
@@ -183,6 +142,64 @@
 	icon_state = "brutedamageoverlay6"
 	alpha = 0
 
-/client/verb/debug_screen()
-	for (var/obj/screen/fullscreen/A in screen)
-		world << "[A.type]	[A.screen_loc] [A.scale]"
+
+//Small icons
+//-------------------------
+/obj/screen/fullscreen/blackout
+	icon = 'icons/mob/screen1.dmi'
+	icon_state = "black"
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	layer = DAMAGE_LAYER
+	small_icon = TRUE
+
+
+
+/obj/screen/fullscreen/blurry
+	icon = 'icons/mob/screen1.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "blurry"
+	small_icon = TRUE
+
+/obj/screen/fullscreen/flash
+	icon = 'icons/mob/screen1.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "flash"
+
+
+
+/obj/screen/fullscreen/high
+	icon = 'icons/mob/screen1.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "druggy"
+	small_icon = TRUE
+
+/obj/screen/fullscreen/noise
+	icon = 'icons/effects/static.dmi'
+	icon_state = "1 light"
+	screen_loc = ui_entire_screen
+	layer = FULLSCREEN_LAYER
+	alpha = 127
+	small_icon = TRUE
+
+/obj/screen/fullscreen/fadeout
+	icon = 'icons/mob/screen1.dmi'
+	icon_state = "black"
+	screen_loc = ui_entire_screen
+	layer = FULLSCREEN_LAYER
+	alpha = 0
+	allstate = 1
+	small_icon = TRUE
+
+/obj/screen/fullscreen/fadeout/Initialize()
+	. = ..()
+	animate(src, alpha = 255, time = 10)
+
+/obj/screen/fullscreen/scanline
+	icon = 'icons/effects/static.dmi'
+	icon_state = "scanlines"
+	screen_loc = ui_entire_screen
+	alpha = 50
+	layer = FULLSCREEN_LAYER
+	small_icon = TRUE
+
+

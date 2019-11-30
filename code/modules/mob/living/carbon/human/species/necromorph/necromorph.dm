@@ -40,7 +40,9 @@
 	var/icon_lying = "slasher_d_lying"
 	var/icon_dead = "slasher_d_dead"
 
+	//Biology
 	blood_color = COLOR_BLOOD_NECRO
+	can_vomit = FALSE
 
 	//Defense
 	total_health = 80
@@ -68,7 +70,7 @@
 	//Interaction
 	has_fine_manipulation = FALSE //Can't use most objects
 
-	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT //| SPECIES_FLAG_NO_POISON         // Various specific features.
+	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON         // Various specific features.
 	appearance_flags = 0      // Appearance/display related features.
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN           // Flags that specify who can spawn as this specie
 
@@ -79,7 +81,6 @@
 	BP_LIVER =    /obj/item/organ/internal/liver/undead,
 	BP_KIDNEYS =  /obj/item/organ/internal/kidneys/undead,
 	BP_BRAIN =    /obj/item/organ/internal/brain,
-	BP_APPENDIX = /obj/item/organ/internal/appendix,
 	BP_EYES =     /obj/item/organ/internal/eyes
 	)
 

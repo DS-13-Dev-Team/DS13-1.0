@@ -141,7 +141,7 @@
 			source = get_turf(P.last_loc)
 
 	//Lastly, if the source is ourselves, or on the same tile as us, we'll let it through
-	if (source == L || source.loc == L.loc)
+	if (used_weapon == L || source == L.loc)
 		return ..()
 
 	//Now lets check if we're curled up

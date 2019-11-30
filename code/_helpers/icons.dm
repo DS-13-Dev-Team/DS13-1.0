@@ -934,3 +934,12 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 
 	return cap
 
+
+
+/*
+	This ambitious proc takes a named icon file, and copies the entire thing, rescaling each state at a time, to fit the newly defined X and Y values
+*/
+/proc/rescale_icon(var/icon_file, var/new_x, var/new_y)
+	var/icon/loaded = new(icon_file)	//Load the specified icon file into memory to use as a container
+	loaded.Scale(new_x, new_y)
+	return loaded

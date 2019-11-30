@@ -21,6 +21,31 @@
 	var/healed_threshold = 1
 	var/oxygen_reserve = 6
 
+
+//Undead version for necromorphs
+/obj/item/organ/internal/brain/undead
+	vital = FALSE	//Necros survive the destruction of the head
+	can_use_mmi	=	FALSE
+
+/obj/item/organ/internal/brain/undead/Initialize()
+	.=..()
+	die()
+
+/obj/item/organ/internal/brain/undead/is_broken()
+	return FALSE //This prevents necromorphs taking damage
+
+
+/obj/item/organ/internal/brain/undead/is_bruised()
+	return FALSE //This prevents necromorphs taking damage
+
+/obj/item/organ/internal/brain/undead/is_usable()
+	return TRUE
+
+/obj/item/organ/internal/brain/undead/getToxLoss()
+	return 0
+
+
+
 /obj/item/organ/internal/brain/robotize()
 	replace_self_with(/obj/item/organ/internal/posibrain)
 
