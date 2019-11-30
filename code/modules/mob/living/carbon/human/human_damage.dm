@@ -166,7 +166,6 @@
 
 // TODO: better internal organ damage procs.
 /mob/living/carbon/human/adjustToxLoss(var/amount)
-	crash_with("Adjusting tox loss")
 	if((species.species_flags & SPECIES_FLAG_NO_POISON) || isSynthetic())
 		return
 
@@ -348,8 +347,6 @@ This function restores all organs.
 	return organs_by_name[check_zone(zone)]
 
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null)
-	if (damagetype == TOX)
-		crash_with("Tox damage [damage] [used_weapon]")
 	SET_ARGS(species.handle_apply_damage(arglist(list(src)+args)))
 	var/obj/item/organ/external/organ = given_organ
 	if(!organ)

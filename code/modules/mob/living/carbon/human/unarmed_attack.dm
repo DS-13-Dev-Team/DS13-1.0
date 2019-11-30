@@ -142,7 +142,6 @@ var/global/list/sparring_attack_cache = list()
 
 /mob/living/carbon/human/force_door(var/obj/machinery/door/target)
 	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
-		world << "Trying to force with [u_attack.type]"
 		if (u_attack.force_door(src, target))
 			return TRUE
 		return FALSE
