@@ -53,24 +53,31 @@
 	if(!can_set_psychosis && !override) //Avoids patients being permanently debilitated by psychosis such that they can't move. EG: if youre on 0 sanity, you have a small window to get help before the effects manifest again.
 		return
 	switch(stage)
+		if(0)
+			clear_fullscreen("insane")
 		if(1)
 			add_side_effect("Irrational laughter")
 		if(2)
 			adjust_hallucination(10,10)
 			to_chat(src, "<span class='warning'>You feel unhinged.</span>")
+			overlay_fullscreen("insane", /obj/screen/fullscreen/insane)
 		if(3 to INFINITY)
 			adjust_hallucination(20,20)
 			to_chat(src, "<span class='warning'>You can see the walls dividing reality fall apart at your feet...</span>")
+			overlay_fullscreen("insane", /obj/screen/fullscreen/insane)
 	can_set_psychosis = FALSE
 	addtimer(CALLBACK(src, .proc/allow_psychosis), 10 SECONDS) ///This cooldown should be balanced around how debilitating psychosis damage actually turns out to be.
 
 /mob/living/carbon/human/proc/allow_psychosis()
 	can_set_psychosis = TRUE
-	to_chat(src, "<span class='warning'>You feel like something's watching you,  creeping into your mind even...</span>") //Give them a warning to know they need to avoid traumae again.
 
 /mob/living/carbon/human/proc/allow_psychosis_message()
 	sanity_cooldown = FALSE
 
+/obj/screen/fullscreen/insane
+	icon_state = "insane"
+	layer = DAMAGE_LAYER
+	alpha = 180
 
 /**
 *
@@ -109,6 +116,8 @@
 				set_psychosis(2)
 			if(60 to 80) //Feeling slightly off
 				set_psychosis(1)
+			if(81 to 100)
+				set_psychosis(0)
 	else if(sanity >= 90) //You're back to normal, and the bad times have worn off.
 		set_psychosis(0)
 	last_sanity = sanity
@@ -155,6 +164,8 @@
 
 /datum/component/traumatic_sight/Process() //This isn't terribly efficient, but it's also not the worst performance wise.
 	for(var/mob/living/carbon/human/H in viewers(source, null))
+		if(H.eye_blind > 0) //Check for blindness
+			continue
 		H.adjustPsychosisLoss(trauma_power)
 		if(H.sanity_cooldown)
 			return
@@ -167,5 +178,5 @@
 			if(TRAUMA_POWER_MEDIUM+0.1 to TRAUMA_POWER_STRONG)
 				to_chat(H, "<span class='userdanger'>The mere sight of [source] makes you want to run away and hide!</span>")
 			if(TRAUMA_POWER_STRONG+0.1 to INFINITY)
-				to_chat(H, "<span class='userdanger'>You can feel [source] inside your head... RUN!.</span>")
+				to_chat(H, "<span class='userdanger'>You can feel [source] inside your head!.</span>")
 		addtimer(CALLBACK(H, /mob/living/carbon/human/proc/allow_psychosis_message), 30 SECONDS)

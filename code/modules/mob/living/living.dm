@@ -464,6 +464,11 @@ default behaviour is:
 	reload_fullscreen()
 	return
 
+/mob/living/carbon/human/rejuvenate()//DS13 - Psychosis damage. Overriden as psychosis only occurs on human subtype mobs.
+	. = ..()
+	setPsychosisLoss(0)
+	set_psychosis(0, override=TRUE)
+
 /mob/living/proc/UpdateDamageIcon()
 	return
 

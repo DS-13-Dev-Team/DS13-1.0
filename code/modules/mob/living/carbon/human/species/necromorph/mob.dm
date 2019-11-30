@@ -5,6 +5,7 @@
 `	I am well aware this is not how human mobs and species are supposed to be used
 */
 /mob/living/carbon/human/necromorph
+	psychosis_immune = TRUE //Because..y'know.
 
 /mob/living/carbon/human/necromorph/slasher/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER)
 	..(new_loc, new_species)
