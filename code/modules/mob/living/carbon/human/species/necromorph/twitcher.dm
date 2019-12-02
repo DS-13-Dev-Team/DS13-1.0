@@ -27,7 +27,7 @@
 	inherent_verbs = list(/atom/movable/proc/twitcher_charge)
 	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/twitcher_charge))
 
-	var/blink_damage_mult = 0.5 	//When the twitcher dodges an attack, the incoming damage is multiplied by this value
+	var/blink_damage_mult = 0.25 	//When the twitcher dodges an attack, the incoming damage is multiplied by this value
 
 //Setup the twitch extension which handles a lot of the special behaviour
 /datum/species/necromorph/slasher/twitcher/add_inherent_verbs(var/mob/living/carbon/human/H)
