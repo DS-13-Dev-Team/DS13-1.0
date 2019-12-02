@@ -53,7 +53,7 @@
 	var/penetration_modifier = 0.2 //How much internal damage this projectile can deal, as a multiplier.
 
 	var/hitscan = 0		// whether the projectile should be hitscan
-	var/step_delay = 3	// the delay between iterations if not a hitscan projectile
+	var/step_delay = 1	// the delay between iterations if not a hitscan projectile
 	var/cached_rotation = 0 //This is used to prevent rotation changes from accumulating on redirects
 
 	// effect types to be used

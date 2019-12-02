@@ -171,6 +171,10 @@
 
 	//Lets smoothly slide back to a normal stance
 	animate(slammer, transform=matrix(), pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = 7)
+	spawn(7)
+		var/mob/living/L = slammer
+		if (istype(L))
+			L.stunned = 0
 
 	//When we finish, we go on cooldown
 	if (cooldown && cooldown > 0)
