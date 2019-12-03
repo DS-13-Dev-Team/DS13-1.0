@@ -16,7 +16,8 @@
 						src.break_tile()
 					src.hotspot_expose(1000,CELL_VOLUME)
 		if(2.0)
-			if(prob(33)) new /obj/item/stack/material/steel(src)
+			if(prob(33)) 
+				new /obj/item/stack/material/steel(src)
 			if(prob(80))
 				src.break_tile_to_plating()
 			else

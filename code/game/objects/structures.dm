@@ -117,7 +117,7 @@
 
 
 // When destroyed by explosions, properly handle contents.
-obj/structure/ex_act(severity, var/atom/epicentre)
+/obj/structure/ex_act(severity, var/atom/epicentre)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/AM in contents)
