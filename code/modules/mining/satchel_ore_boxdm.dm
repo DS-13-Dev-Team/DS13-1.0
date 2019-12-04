@@ -89,10 +89,10 @@
 
 	return
 
-/obj/structure/ore_box/ex_act(severity)
+/obj/structure/ore_box/ex_act(severity, var/atom/epicentre)
 	if(severity == 1.0 || (severity < 3.0 && prob(50)))
 		for (var/obj/item/weapon/ore/O in contents)
 			O.loc = src.loc
-			O.ex_act(severity++)
+			O.ex_act(severity++, epicentre)
 		qdel(src)
 		return

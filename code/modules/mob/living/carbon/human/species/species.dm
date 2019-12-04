@@ -51,7 +51,7 @@
 	var/strength    = STR_MEDIUM
 	var/show_ssd = "fast asleep"
 	var/virus_immune
-	var/short_sighted                         // Permanent weldervision.
+
 	var/light_sensitive                       // Ditto, but requires sunglasses to fix
 	var/blood_volume = SPECIES_BLOOD_DEFAULT  // Initial blood volume.
 	var/hunger_factor = DEFAULT_HUNGER_FACTOR // Multiplier for hunger.
@@ -78,7 +78,7 @@
 		/datum/unarmed_attack/bite
 		)
 	var/list/unarmed_attacks = null           // populated at runtime, don't touch
-
+	var/evasion = 15						//Base chance for projectile attacks to miss this mob
 	var/modifier_verbs						//A list of key modifiers and procs, in the format Key = list(proc path, priority, arg1, arg2, arg3... etc)
 	//Any number of extra arguments allowed. Only key and proc path are mandatory. Default priority is 1 and will be used if none is supplied.
 	//Key must be one of the KEY_XXX defines in defines/client.dm
@@ -97,7 +97,7 @@
 	var/paralysis_mod =  1                    // Paralysis period modifier.
 	var/weaken_mod =     1                    // Weaken period modifier.
 
-	var/vision_flags = SEE_SELF               // Same flags as glasses.
+
 
 	// Death vars.
 	var/meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/human
@@ -152,16 +152,29 @@
 
 	var/grab_type = GRAB_NORMAL		// The species' default grab type.
 
+	//Movement
+	var/slowdown = 0              // Passive movement speed malus (or boost, if negative)
+	var/slow_turning = FALSE		//If true, mob goes on move+click cooldown when rotating in place, and can't turn+move in the same step
+
+	//Interaction
+	var/limited_click_arc = 0	  //If nonzero, the mob is limited to clicking on things in X degrees arc infront of it. Best combined with slow turning. Recommended values, 45 or 90
+
+
+	//Vision
+	var/view_offset = 0			  //How far forward the mob's view is offset, in pixels.
+	var/view_range = 7		  //Mob's vision radius, in tiles. It gets buggy with values below 7, but anything 7+ is flawless
+	var/darksight_range = 2       // Native darksight distance.
+	var/darksight_tint = DARKTINT_NONE // How shadows are tinted.
+	var/vision_flags = SEE_SELF               // Same flags as glasses.
+	var/short_sighted                         // Permanent weldervision.
+
 	// Body/form vars.
 	var/list/inherent_verbs 	  // Species-specific verbs.
 	var/has_fine_manipulation = 1 // Can use small items.
 	var/siemens_coefficient = 1   // The lower, the thicker the skin and better the insulation.
-	var/darksight_range = 2       // Native darksight distance.
-	var/darksight_tint = DARKTINT_NONE // How shadows are tinted.
 	var/species_flags = 0         // Various specific features.
 	var/appearance_flags = 0      // Appearance/display related features.
 	var/spawn_flags = 0           // Flags that specify who can spawn as this species
-	var/slowdown = 0              // Passive movement speed malus (or boost, if negative)
 	var/primitive_form            // Lesser form, if any (ie. monkey for humans)
 	var/greater_form              // Greater form, if any, ie. human for monkeys.
 	var/holder_type
@@ -180,6 +193,7 @@
 		)
 	var/vision_organ              // If set, this organ is required for vision. Defaults to "eyes" if the species has them.
 	var/breathing_organ           // If set, this organ is required for breathing. Defaults to "lungs" if the species has them.
+	var/can_vomit = TRUE		//Whether this mob can vomit, added to disable it on necromorphs
 
 	var/obj/effect/decal/cleanable/blood/tracks/move_trail = /obj/effect/decal/cleanable/blood/tracks/footprints // What marks are left when walking
 
@@ -228,6 +242,8 @@
 	var/bump_flag = HUMAN	// What are we considered to be when bumped?
 	var/push_flags = ~HEAVY	// What can we push?
 	var/swap_flags = ~HEAVY	// What can we swap place with?
+	var/density_lying = FALSE	//Is this mob dense while lying down?
+	var/opacity = FALSE		//Does this mob block vision?
 
 	var/pass_flags = 0
 	var/breathing_sound = 'sound/voice/monkey.ogg'
@@ -396,6 +412,17 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			//We use input_args here since we're doing voodoo with passing arguments.
 			//Modclick takes key type, function name, function priority, and a list of extra arguments
 			H.add_modclick_verb(arglist(input_args))
+
+/datum/species/proc/setup_interaction(var/mob/living/carbon/human/H)
+	H.limited_click_arc = limited_click_arc
+	H.opacity = opacity
+
+/datum/species/proc/setup_movement(var/mob/living/carbon/human/H)
+	H.slow_turning = slow_turning
+
+/datum/species/proc/setup_vision(var/mob/living/carbon/human/H)
+	H.view_offset = view_offset
+	H.view_range = view_range
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
@@ -741,3 +768,27 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		return temp
 
 	return null
+
+
+
+/*
+	Species level damage handling
+----------------------------------------
+
+All of the below procs are a species version of a living or human damage proc, passing in all the same vars.
+These procs should return their entire args list. Best just to return parent in any overrides, parent will handle it
+*/
+
+
+//Apply_damage
+//This is useful for changing damagetypes, tweaking flags, or retargeting the attack to a specific organ
+//Note, it is recommended not to override the damage value here, but instead to do that in handle_organ_external_damage.
+	//This is because apply_damage will eventually call that anyways for brute/burn damage
+	//Plus there are a variety of damage methods (like explosions) which will completely bypass apply_damage, and use organ damage directly
+/datum/species/proc/handle_apply_damage(var/mob/user, var/damage, var/damagetype, var/def_zone, var/blocked, var/damage_flags, var/obj/used_weapon, var/obj/item/organ/external/given_organ)
+	return args.Copy(2)
+
+
+//Override damage values here as a one stop catch-all solution
+/datum/species/proc/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+	return args.Copy(2)

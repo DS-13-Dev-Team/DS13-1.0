@@ -697,3 +697,45 @@ proc/is_blind(A)
 		return species.get_grasping_limb(src, side)
 
 
+// Direction Setting
+//------------------------
+/mob/proc/canface()
+	if (!incapacitated() && CheckMoveCooldown())
+		return TRUE
+	return FALSE
+
+// Simple helper to face what you clicked on, in case it should be needed in more than one place
+/mob/proc/face_atom(var/atom/A)
+	if(!A || !x || !y || !A.x || !A.y) return
+	var/dx = A.x - x
+	var/dy = A.y - y
+	if(!dx && !dy) return
+
+	var/direction
+	if(abs(dx) < abs(dy))
+		if(dy > 0)	direction = NORTH
+		else		direction = SOUTH
+	else
+		if(dx > 0)	direction = EAST
+		else		direction = WEST
+	if(direction != dir)
+		return facedir(direction)
+
+//Facedir is called from face_atom and has
+/mob/proc/facedir(var/ndir)
+	if(!canface() || moving)
+		return FALSE
+	.=set_dir(ndir)
+	if(buckled && buckled.buckle_movable)
+		buckled.set_dir(ndir)
+	if (. && slow_turning)	//Only mobs with slow turning set will set their move cooldown when changing dir
+		var/turntime = movement_delay()
+		SetMoveCooldown(turntime)
+		setClickCooldown(turntime + DEFAULT_ATTACK_COOLDOWN)
+
+//Mobs with offset view should update it every time they turn
+/mob/set_dir(new_dir)
+	.=..()
+	if (. && view_offset)
+		reset_view(null)	//Possible future consideration, should this call handle_vision instead?
+							//Seems pointlessly expensive for now, but consider it if there are problems

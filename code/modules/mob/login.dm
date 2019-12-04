@@ -83,8 +83,8 @@
 	if(eyeobj)
 		eyeobj.possess(src)
 
-	l_plane = new()
-	l_general = new()
+	l_plane = new(null, client)
+	l_general = new(null, client)
 	client.screen += l_plane
 	client.screen += l_general
 

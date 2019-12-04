@@ -150,6 +150,8 @@
 		using.alpha = ui_alpha
 		src.hotkeybuttons += using
 
+
+
 	if(hud_data.has_throw)
 		mymob.throw_icon = new /obj/screen()
 		mymob.throw_icon.icon = ui_style
@@ -238,9 +240,12 @@
 		mymob.nutrition_icon.screen_loc = ui_nutrition
 		hud_elements |= mymob.nutrition_icon
 
+//WORKING POINT 1
 
-	mymob.pain = new /obj/screen/fullscreen/pain( null )
+	mymob.pain = mymob.overlay_fullscreen("pain", /obj/screen/fullscreen/pain, INFINITY)//new /obj/screen/fullscreen/pain( null )
+	//mymob.pain.set_size(mymob.client)
 	hud_elements |= mymob.pain
+
 
 	mymob.zone_sel = new /obj/screen/zone_sel( null )
 	mymob.zone_sel.icon = ui_style
@@ -256,6 +261,7 @@
 	mymob.gun_setting_icon.color = ui_color
 	mymob.gun_setting_icon.alpha = ui_alpha
 	hud_elements |= mymob.gun_setting_icon
+	//FAIL POINT 1
 
 	mymob.item_use_icon = new /obj/screen/gun/item(null)
 	mymob.item_use_icon.icon = ui_style

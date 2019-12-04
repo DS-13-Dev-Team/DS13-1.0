@@ -23,6 +23,9 @@
 	var/list/permutated = list() // we've passed through these atoms, don't try to hit them again
 	var/list/segments = list() //For hitscan projectiles with tracers.
 
+	var/atom/last_loc	//Last place we were. used for direction handling. This is set on Move, and any time our loc is set directly
+	var/last_result = null	//A bit of a hack. Anything can set this on a projectile and it'll be checked at various stages while hitting a mob
+
 	//var/p_x = 16
 	//var/p_y = 16 // the pixel location of the tile that the player clicked. Default is the center
 	var/vector2/pixel_click = new /vector2(16, 16)
@@ -51,6 +54,7 @@
 
 	var/hitscan = 0		// whether the projectile should be hitscan
 	var/step_delay = 1	// the delay between iterations if not a hitscan projectile
+	var/cached_rotation = 0 //This is used to prevent rotation changes from accumulating on redirects
 
 	// effect types to be used
 	var/muzzle_type
@@ -75,6 +79,10 @@
 	. = ..()
 
 /obj/item/projectile/Destroy()
+	return ..()
+
+/obj/item/projectile/Move(NewLoc,Dir=0)
+	last_loc = loc
 	return ..()
 
 /obj/item/projectile/forceMove()
@@ -173,6 +181,7 @@
 		qdel(src)
 		return 0
 
+	last_loc = loc
 	loc = get_turf(user) //move the projectile out into the world
 
 	firer = user
@@ -191,6 +200,28 @@
 
 	setup_trajectory(starting_loc, new_target)
 
+/obj/item/projectile/proc/ricochet_from(var/atom/bounceoff, var/angle = 135)
+	//Causes this projectile to bounce off of the atom in a random angle.
+		//The angle is bidirectional, an input of 90 could go up to a right angle either side
+	//For best results, this should be called from a tile adjacent to the target
+	var/vector2/base_dir
+	if (bounceoff.loc == loc)
+		base_dir = Vector2.FromDir(get_dir(bounceoff, last_loc))
+	else
+		base_dir = Vector2.FromDir(get_dir(bounceoff, src))
+
+	base_dir = base_dir.Turn(rand_between(-angle, angle))
+
+	base_dir = base_dir.ToMagnitude(15) //Should be a long enough distance to get the angle right
+
+	//Before we redirect, move us into the bounceoff turf
+	last_loc = loc
+	loc = bounceoff.loc
+	redirect(bounceoff.x + base_dir.x, bounceoff.y + base_dir.y, bounceoff.loc)
+
+
+#define CHECK_RESULT	if (last_result) { result = last_result; last_result = null}
+
 //Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
 /obj/item/projectile/proc/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
 	if(!istype(target_mob))
@@ -204,15 +235,27 @@
 	if(hit_zone)
 		def_zone = hit_zone //set def_zone, so if the projectile ends up hitting someone else later (to be implemented), it is more likely to hit the same part
 		if(!target_mob.aura_check(AURA_TYPE_BULLET, src,def_zone))
-			return 1
+			return 0
 		result = target_mob.bullet_act(src, def_zone)
+
+	//Incase that bullet act wanted to override something
+	if (last_result)
+		result = last_result
+		last_result = null
+
+	if (result == PROJECTILE_DEFLECT)
+		if(!silenced)
+			target_mob.visible_message("<span class='notice'>\The [src] deflects off [target_mob]!</span>")
+			if(LAZYLEN(miss_sounds))
+				playsound(target_mob.loc, pick(miss_sounds), 60, 1)
+		return result
 
 	if(result == PROJECTILE_FORCE_MISS)
 		if(!silenced)
 			target_mob.visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
 			if(LAZYLEN(miss_sounds))
 				playsound(target_mob.loc, pick(miss_sounds), 60, 1)
-		return 0
+		return 1
 
 	//hit messages
 	if(silenced)
@@ -234,15 +277,16 @@
 
 	//sometimes bullet_act() will want the projectile to continue flying
 	if (result == PROJECTILE_CONTINUE)
-		return 0
+		return 1
 
-	return 1
+	return 0
 
 /obj/item/projectile/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == src)
 		return 0 //no
 
 	if(A == firer)
+		last_loc = loc
 		loc = A.loc
 		return 0 //cannot shoot yourself
 
@@ -263,7 +307,7 @@
 				if(Bump(G.affecting, forced=1))
 					return //If Bump() returns 0 (keep going) then we continue on to attack M.
 
-			passthrough = !attack_mob(M, distance)
+			passthrough = attack_mob(M, distance)
 		else
 			passthrough = 1 //so ghosts don't stop bullets
 	else
@@ -272,7 +316,11 @@
 			for(var/obj/O in A)
 				O.bullet_act(src)
 			for(var/mob/living/M in A)
-				attack_mob(M, distance)
+				var/p = attack_mob(M, distance)
+				if (passthrough == TRUE)
+					passthrough = p	//A mob may block or deflect a projectile which was otherwise going to go through
+
+
 
 	//penetrating projectiles can pass through things that otherwise would not let them
 	if(!passthrough && penetrating > 0)
@@ -280,15 +328,22 @@
 			passthrough = 1
 		penetrating--
 
+	if (passthrough == PROJECTILE_DEFLECT)
+		bumped = 0
+		ricochet_from(A)
+
 	//the bullet passes through a dense object!
 	if(passthrough)
 		//move ourselves onto A so we can continue on our way.
 		if(A)
 			if(istype(A, /turf))
+				last_loc = loc
 				loc = A
 			else
+				last_loc = loc
 				loc = A.loc
 			permutated.Add(A)
+
 		bumped = 0 //reset bumped variable!
 		return 0
 
@@ -374,7 +429,9 @@
 	effect_transform.Scale(round(trajectory.return_hypotenuse() + 0.005, 0.001) , 1) //Seems like a weird spot to truncate, but it minimizes gaps.
 	effect_transform.Turn(round(-trajectory.return_angle(), 0.1))		//no idea why this has to be inverted, but it works
 
-	transform = turn(transform, -(trajectory.return_angle() + 90)) //no idea why 90 needs to be added, but it works
+	var/newrot = (-(trajectory.return_angle() + 90))
+	transform = turn(transform, newrot - cached_rotation) //Bullets are turned because their sprites are drawn side-facing
+	cached_rotation = newrot
 
 /obj/item/projectile/proc/muzzle_effect(var/matrix/T)
 	if(silenced)
@@ -424,6 +481,7 @@
 
 /obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area)
 	if(A == firer)
+		last_loc = loc
 		loc = A.loc
 		return //cannot shoot yourself
 	if(istype(A, /obj/item/projectile))

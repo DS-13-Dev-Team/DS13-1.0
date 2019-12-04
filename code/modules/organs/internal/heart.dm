@@ -15,10 +15,23 @@
 /obj/item/organ/internal/heart/open
 	open = 1
 
-//Dead version of heart used for necromorphs
+//Undead version for necromorphs
 /obj/item/organ/internal/heart/undead/Initialize()
 	.=..()
 	die()
+
+/obj/item/organ/internal/heart/undead/is_broken()
+	return FALSE //This prevents necromorphs taking damage
+
+
+/obj/item/organ/internal/heart/undead/is_bruised()
+	return FALSE //This prevents necromorphs taking damage
+
+/obj/item/organ/internal/heart/undead/is_usable()
+	return TRUE
+
+/obj/item/organ/internal/heart/undead/getToxLoss()
+	return 0
 
 /obj/item/organ/internal/heart/undead/is_working()
 	return TRUE //This prevents necromorphs going into crit from having a dead heart

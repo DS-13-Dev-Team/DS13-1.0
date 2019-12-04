@@ -27,6 +27,8 @@
 	BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 	)
 
+	slowdown = 2.5
+
 	inherent_verbs = list(/atom/movable/proc/slasher_charge)
 	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/slasher_charge))
 
@@ -34,6 +36,7 @@
 	name = SPECIES_NECROMORPH_SLASHER_ENHANCED
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 200
+	slowdown = 2
 
 
 
@@ -68,7 +71,7 @@
 	set category = "Abilities"
 
 
-	.= charge_attack(A, _delay = 1.5 SECONDS)
+	.= charge_attack(A, _delay = 1.5 SECONDS, _speed = 4)
 	if (.)
 		var/mob/H = src
 		if (istype(H))

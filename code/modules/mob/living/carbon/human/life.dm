@@ -632,12 +632,9 @@
 		if(gloves && germ_level > gloves.germ_level && prob(10))
 			gloves.germ_level += 1
 
-		if(vsc.plc.CONTAMINATION_LOSS)
-			var/total_phoronloss = 0
-			for(var/obj/item/I in src)
-				if(I.contaminated)
-					total_phoronloss += vsc.plc.CONTAMINATION_LOSS
-			adjustToxLoss(total_phoronloss)
+		//Note by nanako: Phoron contamination feature removed from here
+		//Our setting doesnt have phoron, and this was terribly inefficient. it was also screwing up my debugging a seperate problem
+		//If we need something like it, it can be reimplemented far better
 
 		// nutrition decrease
 		if (nutrition > 0)
@@ -824,21 +821,22 @@
 
 /mob/living/carbon/human/handle_random_events()
 	// Puke if toxloss is too high
-	var/vomit_score = 0
-	for(var/tag in list(BP_LIVER,BP_KIDNEYS))
-		var/obj/item/organ/internal/I = internal_organs_by_name[tag]
-		if(I)
-			vomit_score += I.damage
-		else if (should_have_organ(tag))
-			vomit_score += 45
-	if(chem_effects[CE_TOXIN] || radiation)
-		vomit_score += 0.5 * getToxLoss()
-	if(chem_effects[CE_ALCOHOL_TOXIC])
-		vomit_score += 10 * chem_effects[CE_ALCOHOL_TOXIC]
-	if(chem_effects[CE_ALCOHOL])
-		vomit_score += 10
-	if(stat != DEAD && vomit_score > 25 && prob(10))
-		spawn vomit(1, vomit_score, vomit_score/25)
+	if (species.can_vomit)
+		var/vomit_score = 0
+		for(var/tag in list(BP_LIVER,BP_KIDNEYS))
+			var/obj/item/organ/internal/I = internal_organs_by_name[tag]
+			if(I)
+				vomit_score += I.damage
+			else if (should_have_organ(tag))
+				vomit_score += 45
+		if(chem_effects[CE_TOXIN] || radiation)
+			vomit_score += 0.5 * getToxLoss()
+		if(chem_effects[CE_ALCOHOL_TOXIC])
+			vomit_score += 10 * chem_effects[CE_ALCOHOL_TOXIC]
+		if(chem_effects[CE_ALCOHOL])
+			vomit_score += 10
+		if(stat != DEAD && vomit_score > 25 && prob(10))
+			spawn vomit(1, vomit_score, vomit_score/25)
 
 	//0.1% chance of playing a scary sound to someone who's in complete darkness
 	if(isturf(loc) && rand(1,1000) == 1)
@@ -1069,9 +1067,6 @@
 	hud_updateflag = 0
 
 /mob/living/carbon/human/handle_stunned()
-	if(!can_feel_pain())
-		stunned = 0
-		return 0
 	return ..()
 
 /mob/living/carbon/human/handle_fire()

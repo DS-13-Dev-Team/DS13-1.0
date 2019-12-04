@@ -10,6 +10,27 @@
 	max_damage = 70
 	relative_size = 60
 
+
+//Undead version for necromorphs
+/obj/item/organ/internal/liver/undead/Initialize()
+	.=..()
+	die()
+
+/obj/item/organ/internal/liver/undead/is_broken()
+	return FALSE //This prevents necromorphs taking damage
+
+
+/obj/item/organ/internal/liver/undead/is_bruised()
+	return FALSE //This prevents necromorphs taking damage
+
+/obj/item/organ/internal/liver/undead/is_usable()
+	return TRUE
+
+/obj/item/organ/internal/liver/undead/getToxLoss()
+	return 0
+
+
+
 /obj/item/organ/internal/liver/robotize()
 	. = ..()
 	icon_state = "liver-prosthetic"

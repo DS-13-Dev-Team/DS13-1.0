@@ -120,6 +120,11 @@
 
 	next_click = world.time + 1
 
+	//Limited click arc handling here
+	if (limited_click_arc && !target_in_frontal_arc(src, A, limited_click_arc))
+		face_atom(A)
+		return
+
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["ctrl"])
 		CtrlShiftClickOn(A, params)
@@ -139,15 +144,11 @@
 	if(modifiers["ctrl"])
 		CtrlClickOn(A, params)
 		return 1
-
 	if(stat || paralysis || stunned || weakened)
 		return
-
 	face_atom(A) // change direction to face what you clicked on
-
 	if(!canClick()) // in the year 2000...
 		return
-
 	if(istype(loc, /obj/mecha))
 		if(!locate(/turf) in list(A, A.loc)) // Prevents inventory from being drilled
 			return
@@ -455,22 +456,7 @@
 	else
 		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
 
-// Simple helper to face what you clicked on, in case it should be needed in more than one place
-/mob/proc/face_atom(var/atom/A)
-	if(!A || !x || !y || !A.x || !A.y) return
-	var/dx = A.x - x
-	var/dy = A.y - y
-	if(!dx && !dy) return
 
-	var/direction
-	if(abs(dx) < abs(dy))
-		if(dy > 0)	direction = NORTH
-		else		direction = SOUTH
-	else
-		if(dx > 0)	direction = EAST
-		else		direction = WEST
-	if(direction != dir)
-		facedir(direction)
 
 /obj/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'
@@ -479,10 +465,11 @@
 	mouse_opacity = 2
 	screen_loc = "CENTER-7,CENTER-7"
 
-/proc/create_click_catcher()
+/proc/create_click_catcher(var/radius = 7)
+	var/diameter = (radius*2) + 1
 	. = list()
-	for(var/i = 0, i<15, i++)
-		for(var/j = 0, j<15, j++)
+	for(var/i = 0, i<diameter, i++)
+		for(var/j = 0, j<diameter, j++)
 			var/obj/screen/click_catcher/CC = new()
 			CC.screen_loc = "NORTH-[i],EAST-[j]"
 			. += CC
@@ -517,3 +504,13 @@
 	. = ..()
 
 
+//Checks if target is within arc degrees either side of user's forward vector.
+//Used to make mobs that can only click on stuff infront of them
+//Code supplied by Kaiochao
+	//Note: Rounding included to compensate for a byond bug in 513.1497.
+	//Without the rounding, cos(90) returns an erroneous value which breaks this proc
+/proc/target_in_frontal_arc(var/mob/user, var/atom/target, var/arc)
+	//You are allowed to click yourself and things in your own turf
+	if (user.loc == target.loc)
+		return TRUE
+	return (round(Vector2.FromDir(user.dir).Dot(new/vector2(target.x - user.x, target.y - user.y).Normalized()),0.000001) >= round(cos(arc),0.000001))

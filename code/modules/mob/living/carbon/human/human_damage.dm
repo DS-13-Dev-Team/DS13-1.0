@@ -98,23 +98,7 @@
 		heal_overall_damage(0, -amount)
 	BITSET(hud_updateflag, HEALTH_HUD)
 
-/mob/living/carbon/human/Stun(amount)
-	amount *= species.stun_mod
-	if(amount <= 0 || (HULK in mutations)) return
-	..()
 
-/mob/living/carbon/human/Weaken(amount)
-	amount *= species.weaken_mod
-	if(amount <= 0 || (HULK in mutations)) return
-	..(amount)
-
-/mob/living/carbon/human/Paralyse(amount)
-	amount *= species.paralysis_mod
-	if(amount <= 0 || (HULK in mutations)) return
-	// Notify our AI if they can now control the suit.
-	if(wearing_rig && !stat && paralysis < amount) //We are passing out right this second.
-		wearing_rig.notify_ai("<span class='danger'>Warning: user consciousness failure. Mobility control passed to integrated intelligence system.</span>")
-	..(amount)
 
 /mob/living/carbon/human/getCloneLoss()
 	var/amount = 0
@@ -182,7 +166,6 @@
 
 // TODO: better internal organ damage procs.
 /mob/living/carbon/human/adjustToxLoss(var/amount)
-
 	if((species.species_flags & SPECIES_FLAG_NO_POISON) || isSynthetic())
 		return
 
@@ -364,7 +347,7 @@ This function restores all organs.
 	return organs_by_name[check_zone(zone)]
 
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null)
-
+	SET_ARGS(species.handle_apply_damage(arglist(list(src)+args)))
 	var/obj/item/organ/external/organ = given_organ
 	if(!organ)
 		if(isorgan(def_zone))
@@ -425,3 +408,65 @@ This function restores all organs.
 	if(effecttype == IRRADIATE && (effect * blocked_mult(blocked) <= RAD_LEVEL_LOW))
 		return 0
 	return ..()
+
+
+/mob/living/carbon/human/ex_act(severity, var/atom/epicentre)
+	if(!blinded)
+		flash_eyes()
+
+	var/b_loss = null
+	var/f_loss = null
+	switch (severity)
+		if (1.0)
+			b_loss = 400
+			f_loss = 100
+			if (!prob(getarmor(null, "bomb")))
+				gib()
+				return
+			else
+				var/atom/target = get_edge_target_turf(src, get_dir(src, get_step_away(src, epicentre)))
+				throw_at(target, 200, 4)
+			//return
+//				var/atom/target = get_edge_target_turf(user, get_dir(src, get_step_away(user, src)))
+				//user.throw_at(target, 200, 4)
+
+		if (2.0)
+			b_loss = 60
+			f_loss = 60
+
+			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
+				ear_damage += 30
+				ear_deaf += 120
+			if (prob(70))
+				Paralyse(10)
+
+		if(3.0)
+			b_loss = 30
+			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
+				ear_damage += 15
+				ear_deaf += 60
+			if (prob(50))
+				Paralyse(10)
+
+	// factor in armour
+	var/protection = blocked_mult(getarmor(null, "bomb"))
+	b_loss *= protection
+	f_loss *= protection
+
+	// focus most of the blast on one organ
+	var/obj/item/organ/external/take_blast = pick(organs)
+	take_blast.take_external_damage(b_loss * 0.7, f_loss * 0.7, used_weapon = "Explosive blast")
+
+	// distribute the remaining 30% on all limbs equally (including the one already dealt damage)
+	b_loss *= 0.3
+	f_loss *= 0.3
+
+	for(var/obj/item/organ/external/temp in organs)
+		var/loss_val
+		if(temp.organ_tag  == BP_HEAD)
+			loss_val = 0.2
+		else if(temp.organ_tag == BP_CHEST)
+			loss_val = 0.4
+		else
+			loss_val = 0.05
+		temp.take_external_damage(b_loss * loss_val, f_loss * loss_val, used_weapon = epicentre)

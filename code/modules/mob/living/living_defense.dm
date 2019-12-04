@@ -168,11 +168,7 @@
 	return 1
 
 
-//A generic proc for taking damage from an atom
-/mob/living/proc/damaged_by_atom(var/atom/damager, var/damage)
-	var/blocked = run_armor_check(null, "melee")
-	apply_damage(damage, BRUTE, null, blocked, 0, damager)
-	return blocked
+
 
 //this proc handles being hit by a thrown atom
 /mob/living/hitby(atom/movable/AM as mob|obj,var/speed = THROWFORCE_SPEED_DIVISOR)//Standardization and logging -Sieve

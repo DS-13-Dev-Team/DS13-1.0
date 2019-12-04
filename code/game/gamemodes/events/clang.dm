@@ -22,19 +22,19 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 
 		else if (istype(clong, /turf) && !istype(clong, /turf/unsimulated))
 			if(clong.density)
-				clong.ex_act(2)
+				clong.ex_act(2, src)
 				for (var/mob/O in hearers(src, null))
 					O.show_message("CLANG", 2)
 
 		else if (istype(clong, /obj))
 			if(clong.density)
-				clong.ex_act(2)
+				clong.ex_act(2, src)
 				for (var/mob/O in hearers(src, null))
 					O.show_message("CLANG", 2)
 
 		else if (istype(clong, /mob))
 			if(clong.density || prob(10))
-				clong.ex_act(2)
+				clong.ex_act(2, src)
 		else
 			qdel(src)
 

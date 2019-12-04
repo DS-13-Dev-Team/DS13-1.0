@@ -283,6 +283,11 @@
 			else
 				client.perspective = EYE_PERSPECTIVE
 				client.eye = loc
+
+		if (ismob(client.eye))
+			var/mob/M = client.eye
+			client.set_view_range(M.view_range)
+			client.set_view_offset(M.dir, M.view_offset)
 	return
 
 
@@ -729,9 +734,7 @@
 					stat(A)
 
 
-// facing verbs
-/mob/proc/canface()
-	return !incapacitated()
+
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
@@ -754,7 +757,7 @@
 		lying = incapacitated(INCAPACITATION_KNOCKDOWN)
 
 	if(lying)
-		set_density(0)
+		set_density(density_lying())
 		if(l_hand) unEquip(l_hand)
 		if(r_hand) unEquip(r_hand)
 	else
@@ -774,6 +777,10 @@
 	else if( lying != lying_prev )
 		update_icons()
 
+//Overridden by humans in human.dm
+/mob/proc/density_lying()
+	return 0
+
 /mob/proc/reset_layer()
 	if(lying)
 		plane = LYING_MOB_PLANE
@@ -781,14 +788,8 @@
 	else
 		reset_plane_and_layer()
 
-/mob/proc/facedir(var/ndir)
-	if(!canface() || moving)
-		return 0
-	set_dir(ndir)
-	if(buckled && buckled.buckle_movable)
-		buckled.set_dir(ndir)
-	SetMoveCooldown(movement_delay())
-	return 1
+
+
 
 
 /mob/verb/eastface()
@@ -819,6 +820,7 @@
 	if(status_flags & CANSTUN)
 		facing_dir = null
 		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower your current stun
+
 		UpdateLyingBuckledAndVerbStatus()
 	return
 
@@ -1037,17 +1039,10 @@
 	else if(facing_dir)
 		facing_dir = null
 	else
-		set_dir(dir)
+		facedir(dir)
 		facing_dir = dir
 
-/mob/set_dir()
-	if(facing_dir)
-		if(!canface() || lying || buckled || restrained())
-			facing_dir = null
-		else if(dir != facing_dir)
-			return ..(facing_dir)
-	else
-		return ..()
+
 
 /mob/proc/set_stat(var/new_stat)
 	. = stat != new_stat

@@ -82,7 +82,7 @@
 		return
 	for(var/obj/machinery/door/D in T) // There can be several - and some of them can be open, locate() is not suitable
 		if(D.density)
-			D.ex_act(2)
+			D.ex_act(2, src)
 			return
 	var/obj/structure/foamedmetal/F = locate() in T
 	if(F)
@@ -95,7 +95,7 @@
 
 	var/obj/vehicle/V = locate() in T
 	if(V)
-		V.ex_act(2)
+		V.ex_act(2, src)
 		return
 	var/obj/mecha/M = locate() in T
 	if(M)

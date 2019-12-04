@@ -183,11 +183,11 @@
 	//first bust whatever is in the turf
 	for(var/atom/A in T)
 		if(A != src && !A.CanPass(src, src.loc, 0.5, 0)) //only ram stuff that would actually block us
-			A.ex_act(hitpwr)
+			A.ex_act(hitpwr, src)
 
 	//then, ram the turf if it still exists
 	if(T && !T.CanPass(src, src.loc, 0.5, 0))
-		T.ex_act(hitpwr)
+		T.ex_act(hitpwr, src)
 
 //process getting 'hit' by colliding with a dense object
 //or randomly when ramming turfs

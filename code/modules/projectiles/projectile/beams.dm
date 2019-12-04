@@ -79,7 +79,7 @@
 
 /obj/item/projectile/beam/pulse/destroy/on_hit(var/atom/target, var/blocked = 0)
 	if(isturf(target))
-		target.ex_act(2)
+		target.ex_act(2, src)
 	..()
 
 /obj/item/projectile/beam/emitter
@@ -216,8 +216,8 @@
 		else
 			M.emitter_blasts_taken += 2
 	. = ..()
-	
-	
+
+
 
 /obj/item/projectile/beam/deadspaceplasmacutter
 	name = "plasma arc"

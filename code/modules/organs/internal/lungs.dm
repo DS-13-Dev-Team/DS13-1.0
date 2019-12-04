@@ -32,13 +32,24 @@
 
 
 //Dead version of lungs used for necromorphs
-/obj/item/organ/internal/lungs/dead/Initialize()
+/obj/item/organ/internal/lungs/undead/Initialize()
 	.=..()
 	active_breathing = FALSE
 	die()
 
-/obj/item/organ/internal/lungs/dead/Process()
-	return PROCESS_KILL //No processing, we are inert
+/obj/item/organ/internal/lungs/undead/is_broken()
+	return FALSE //This prevents necromorphs taking damage
+
+
+/obj/item/organ/internal/lungs/undead/is_bruised()
+	return FALSE //This prevents necromorphs taking damage
+
+/obj/item/organ/internal/lungs/undead/is_usable()
+	return TRUE
+
+/obj/item/organ/internal/lungs/undead/getToxLoss()
+	return 0
+
 
 /obj/item/organ/internal/lungs/proc/remove_oxygen_deprivation(var/amount)
 	var/last_suffocation = oxygen_deprivation

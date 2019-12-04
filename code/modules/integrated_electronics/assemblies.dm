@@ -250,9 +250,9 @@
 	for(var/atom/movable/AM in contents)
 		AM.emp_act(severity)
 
-/obj/item/device/electronic_assembly/ex_act(severity)
+/obj/item/device/electronic_assembly/ex_act(severity, var/atom/epicentre)
 	for(var/obj/thing in src)
-		thing.ex_act(severity)
+		thing.ex_act(severity, epicentre)
 	..()
 
 /obj/item/device/electronic_assembly/proc/add_circuit(var/obj/item/integrated_circuit/IC, var/mob/user)

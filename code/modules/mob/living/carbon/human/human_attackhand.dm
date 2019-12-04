@@ -41,7 +41,7 @@
 
 			visible_message("<span class='danger'>[H] has punched \the [src]!</span>")
 
-			apply_damage(damage, PAIN, affecting, armor_block)
+			apply_damage(damage, PAIN, affecting, armor_block, used_weapon = M)
 			if(damage >= 9)
 				visible_message("<span class='danger'>[H] has weakened \the [src]!</span>")
 				apply_effect(4, WEAKEN, armor_block)
@@ -243,7 +243,7 @@
 			attack.apply_effects(H, src, armour, rand_damage, hit_zone)
 
 			// Finally, apply damage to target
-			apply_damage(real_damage, attack.get_damage_type(), hit_zone, armour, damage_flags=attack.damage_flags())
+			apply_damage(real_damage, attack.get_damage_type(), hit_zone, armour, damage_flags=attack.damage_flags(),used_weapon = M)
 
 		if(I_DISARM)
 			if(H.species)
@@ -266,7 +266,7 @@
 	var/dam_zone = pick(organs_by_name)
 	var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))
 	var/armor_block = run_armor_check(affecting, armorcheck)
-	apply_damage(damage, damtype, affecting, armor_block)
+	apply_damage(damage, damtype, affecting, armor_block, used_weapon = user)
 	updatehealth()
 	return 1
 
