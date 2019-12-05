@@ -44,33 +44,40 @@
 /datum/extension/charge
 	name = "Charge"
 	var/verb_name = "Charging"
+	var/verb_action = "charges"
 	expected_type = /atom/movable
 	flags = EXTENSION_FLAG_IMMEDIATE
 	var/status = CHARGE_STATE_WINDUP
-	var/atom/movable/charger
-	var/started_at = 0
-	var/stopped_at
+
 	var/atom/target = null //What we want to hit
 	var/atom/move_target = null //What we're actually running towards, may not be the same
 	var/speed = 5
 	var/lifespan = 0
-	var/range_left = null //Null value means we're not using range limits
 	var/homing = TRUE
 	var/inertia = FALSE
 	var/power = 0
-	var/list/atoms_bumped = list() //Bumped observation may make duplicate calls. We'll use this to filter them out
+	var/cooldown = 20 SECONDS	//After the charge completes, it will stay on the user and block additional charges for this long
+	var/continue_check = TRUE	//Check for incapacitated status every step
+
+	//Runtime data
+	var/tiles_moved = 0
+	var/list/atoms_hit = list()
 	var/lifespan_timer
 	var/start_timer
-	var/cooldown = 20 SECONDS	//After the charge completes, it will stay on the charger and block additional charges for this long
-	var/tiles_moved = 0
+	var/list/atoms_bumped = list() //Bumped observation may make duplicate calls. We'll use this to filter them out
+	var/atom/movable/user
+	var/started_at = 0
+	var/stopped_at
+	var/range_left = null //Null value means we're not using range limits
 
 	var/step_interval = 1	//Replaces the user's step interval for the duration of the charge
 	var/cached_step_interval
 	var/list/atoms_hit = list()
 
-/datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed = 5, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)
+
+/datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
 	.=..()
-	charger = holder
+	user = holder
 	target = _target
 	speed = _speed
 	lifespan = _lifespan
@@ -99,7 +106,7 @@
 		deltimer(start_timer)
 
 	//Something may have disabled us between windup and starting
-	if (!charger || !charger.can_continue_charge(target))
+	if (!user || (continue_check && !user.can_continue_charge(target)))
 		stop()
 		return
 
@@ -117,9 +124,9 @@
 		move_target = get_turf(target)
 	else
 		//Note: This may fail near the map edge, if it overshoots world bounds. Tricky to fix, probably won't be a problem
-		var/vector2/delta = new(target.x - charger.x, target.y - charger.y)
+		var/vector2/delta = new(target.x - user.x, target.y - user.y)
 		delta = delta.ToMagnitude(max_range()+1)
-		var/turf/target_turf = locate(charger.x + delta.x, charger.y + delta.y, charger.z)
+		var/turf/target_turf = locate(user.x + delta.x, user.y + delta.y, user.z)
 		if (target_turf)
 			move_target = target_turf
 		else
@@ -128,7 +135,7 @@
 	if (isnum(lifespan) && lifespan > 0)
 		lifespan_timer = addtimer(CALLBACK(src, .proc/stop_peter_out), lifespan, TIMER_STOPPABLE)
 
-	charger.visible_message(SPAN_DANGER("[charger] charges at [target]!"))
+	user.visible_message(SPAN_DANGER("[user] [verb_action] at [target]!"))
 
 	walk_towards(holder, move_target, SPEED_TO_TICKS(speed))
 
@@ -154,16 +161,16 @@
 
 
 /datum/extension/charge/proc/finish_cooldown()
-	to_chat(charger, SPAN_NOTICE("You are ready to [name] again")) //Use name here so i can reuse this for leaping
+	to_chat(user, SPAN_NOTICE("You are ready to [name] again")) //Use name here so i can reuse this for leaping
 	remove_extension(holder, /datum/extension/charge)
 
 
 
 /datum/extension/charge/proc/bump(var/atom/movable/user, var/atom/obstacle, var/crossed = FALSE)
-	if (charger != user)
-		//This should never happen. Error state, terminate
-		stop()
-		return
+	if (obstacle in atoms_hit)
+		return //Don't hit the same atom more than once
+
+
 
 	var/obstacle_oldloc = obstacle.loc//Cache where the obstacle is
 
@@ -171,9 +178,9 @@
 	if (obstacle == target)
 		target_type = CHARGE_TARGET_PRIMARY
 
-	if (!(obstacle in atoms_hit))
-		charger.charge_impact(obstacle, get_total_power(), target_type, tiles_moved)
-		atoms_hit += obstacle
+
+	user.charge_impact(obstacle, get_total_power(), target_type, tiles_moved)
+	atoms_hit += obstacle
 
 	//If that was our intended target, then we win
 	if (target_type == CHARGE_TARGET_PRIMARY)
@@ -186,7 +193,7 @@
 	//We stop if:
 	//the obstacle still exists, it still will not give way, and it hasn't moved
 	//In other words, we continue if the obstacle was destroyed, or entered some kind of state where it now lets us through, or was moved out of its position
-	if ((obstacle && !QDELETED(obstacle)) && !obstacle.CanPass(charger, get_turf(obstacle), 1))
+	if ((obstacle && !QDELETED(obstacle)) && !obstacle.CanPass(user, get_turf(obstacle), 1))
 
 		//Position checking is more complex
 
@@ -207,7 +214,7 @@
 			else
 				//If unanchored, it might move. We're going to spawn, and then redo all the checks
 				spawn(1)
-					if ((obstacle && !QDELETED(obstacle)) && !obstacle.CanPass(charger, get_turf(obstacle), 1) && obstacle.loc == obstacle_oldloc)
+					if ((obstacle && !QDELETED(obstacle)) && !obstacle.CanPass(user, get_turf(obstacle), 1) && obstacle.loc == obstacle_oldloc)
 						stop_obstacle(obstacle)
 						return
 
@@ -224,8 +231,8 @@
 
 
 	//If we have entered the same turf as our target then it must have been nondense. Let's hit it
-	if (charger.loc == target.loc)
-		bump(charger, target, TRUE) //Passing true here indicates we crossed over the target rather than crashing into them. This affects whether we'll stop in inertia mode
+	if (user.loc == target.loc)
+		bump(user, target, TRUE) //Passing true here indicates we crossed over the target rather than crashing into them. This affects whether we'll stop in inertia mode
 	else
 		//Light shake with each step
 		shake_camera(src,1.5,0.5)
@@ -233,7 +240,7 @@
 
 	//We allow the above to happen first cuz momentum
 	//Now we'll check if we're able to continue
-	if (!charger || !charger.can_continue_charge(target))
+	if (!user || (continue_check && !user.can_continue_charge(target)))
 		stop_peter_out()
 
 /datum/extension/charge/proc/get_total_power()
@@ -271,6 +278,15 @@
 
 	return min(range_left, lifemax)
 
+//Figures out how long this charge could feasibly endure for, if not blocked
+/datum/extension/charge/proc/max_lifespan()
+	.= lifespan
+	if (!range_left)
+		return
+
+	var/rangemax = (range_left / speed) SECONDS
+	return min(lifespan, rangemax)
+
 //Stop Wrappers:
 //-------------------
 //Various methods of stopping that do an additional effect and then call stop
@@ -286,14 +302,14 @@
 
 	obstacle.shake_animation(8*TP)
 	if (isliving(holder))
-		//Damage the charger and stun them
+		//Damage the user and stun them
 		var/mob/living/L = holder
 		var/blocked = L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved, 0,0,0, obstacle)
 		L.apply_effect(4*TP, STUN, blocked)
 	stop()
 
 //Called when we reach max time or range
-//Drain the charger's stamina?
+//Drain the user's stamina?
 /datum/extension/charge/proc/stop_peter_out()
 	stop()
 
@@ -329,7 +345,7 @@
 			return FALSE
 
 	take_overall_damage((CHARGE_DAMAGE_BASE*power), 0,0,0, mover)
-	apply_effect(3*power, STUN, blocked)
+	apply_effect(3*power, STUN)
 	return TRUE
 
 
@@ -351,8 +367,8 @@
 
 
 
-/datum/species/proc/charge_impact(var/mob/living/charger, var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
-	return obstacle.charge_act(charger, power, distance_travelled)
+/datum/species/proc/charge_impact(var/mob/living/user, var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
+	return obstacle.charge_act(user, power, distance_travelled)
 
 
 

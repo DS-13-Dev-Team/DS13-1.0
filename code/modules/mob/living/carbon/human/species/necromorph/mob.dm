@@ -18,7 +18,11 @@
 /mob/living/carbon/human/necromorph/brute/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_BRUTE)
 	..(new_loc, new_species)
 
+/mob/living/carbon/human/necromorph/leaper/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER)
+	..(new_loc, new_species)
 
+/mob/living/carbon/human/necromorph/leaper/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER_ENHANCED)
+	..(new_loc, new_species)
 
 /mob/living/carbon/human/necromorph/update_icons()
 	.=..()

@@ -81,7 +81,7 @@
 
 
 	Crossed(AM as mob|obj)
-		if(armed)
+		if(armed && !(AM.pass_flags & PASS_FLAG_FLYING))
 			if(ishuman(AM))
 				var/mob/living/carbon/H = AM
 				if(!MOVING_DELIBERATELY(H))

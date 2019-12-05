@@ -54,7 +54,7 @@
 				total_item_slowdown += max(item_slowdown, 0)
 		tally += round(total_item_slowdown)
 
-		for(var/organ_name in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT))
+		for(var/organ_name in species.locomotion_limbs)
 			var/obj/item/organ/external/E = get_organ(organ_name)
 			if(!E || E.is_stump())
 				tally += 4
