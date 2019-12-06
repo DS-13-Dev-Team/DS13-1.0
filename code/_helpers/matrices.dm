@@ -27,7 +27,9 @@
 	animate(transform=initial_transform, pixel_x=init_px, time=time, easing=ELASTIC_EASING)
 
 
-
+//Duration is in deciseconds
+//Strength is an offset in tiles
+//Non integer values are perfectly fine for both inputs
 /proc/shake_camera(mob/M, duration, strength=1)
 	if(!istype(M) || !M.client || M.stat || isEye(M) || isAI(M))
 		return

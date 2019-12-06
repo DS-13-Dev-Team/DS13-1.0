@@ -9,7 +9,7 @@
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	total_health = 80
 
-	icon_template = 'icons/mob/necromorph/48x48necros.dmi'
+	icon_template = 'icons/mob/necromorph/slasher.dmi'
 	icon_normal = "slasher_d"
 	icon_lying = "slasher_d_lying"
 	icon_dead = "slasher_d_dead"
@@ -27,9 +27,39 @@
 	BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 	)
 
+	species_audio = list(
+	SOUND_ATTACK = list('sound/effects/creatures/necromorph/slasher/slasher_attack_1.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_attack_2.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_attack_3.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_attack_4.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_attack_5.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_attack_6.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_attack_7.ogg'),
+	SOUND_DEATH = list('sound/effects/creatures/necromorph/slasher/slasher_death_1.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_death_2.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_death_3.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_death_4.ogg'),
+	SOUND_PAIN = list('sound/effects/creatures/necromorph/slasher/slasher_pain_1.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_pain_2.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_pain_3.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_pain_4.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_pain_5.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_pain_6.ogg'),
+	SOUND_SHOUT = list('sound/effects/creatures/necromorph/slasher/slasher_shout_1.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_shout_2.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_shout_3.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_shout_4.ogg'),
+	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/slasher/slasher_shout_long_1.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_shout_long_2.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_shout_long_3.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_shout_long_4.ogg'),
+	SOUND_SPEECH = list('sound/effects/creatures/necromorph/slasher/slasher_speech_1.ogg',
+	'sound/effects/creatures/necromorph/slasher/slasher_speech_2.ogg')
+	)
+
 	slowdown = 2.5
 
-	inherent_verbs = list(/atom/movable/proc/slasher_charge)
+	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/proc/shout)
 	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/slasher_charge))
 
 /datum/species/necromorph/slasher/enhanced
@@ -76,8 +106,13 @@
 		var/mob/H = src
 		if (istype(H))
 			H.face_atom(A)
-		//Do some audio cues here
-		shake_animation(20)
+
+			//Long shout when targeting mobs, normal when targeting objects
+			if (ismob(A))
+				H.play_species_audio(H, SOUND_SHOUT_LONG, 100, 1, 3)
+			else
+				H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
+		shake_animation(30)
 
 
 /*
