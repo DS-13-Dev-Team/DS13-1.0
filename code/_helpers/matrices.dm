@@ -137,6 +137,50 @@
 
 	return list(R + x,R,R, G,G + x,G, B,B,B + x)
 
+
+//This proc moves mover to target instantly, but plays an animation to make it appear like they're sliding there smoothly.
+//This movement is effectively teleporting, it will ignore any obstacles. Do any checks before moving
+//Speed is in metres (tiles) per second
+//Client lag is a divisor on client animation time. Lower values will cause it to take longer to catch up with the mob, this is a cool effect for conveying speed
+/proc/animate_movement(var/atom/movable/mover, var/atom/target, var/speed, var/client_lag = 1.0)
+	var/target_pixel_loc = target.get_global_pixel_loc()
+	var/vector2/pixel_delta = mover.get_global_pixel_loc() - target_pixel_loc //This is an inverse delta that gives the offset FROM target TO mover
+	var/vector2/cached_pixels = new /vector2(mover.pixel_x, mover.pixel_y)
+	var/pixel_distance = pixel_delta.Magnitude()
+	var/pixels_per_decisecond = (world.icon_size * speed) * 0.1
+
+	//Lets handle clients too
+	var/client/C = mover.get_client()
+	var/mob/living/L
+	//var/vector2/client_pixel_delta
+	var/vector2/cached_client_pixels
+	if (C)
+		L = mover
+		L.lock_view = TRUE
+		cached_client_pixels = new /vector2(C.pixel_x, C.pixel_y)
+
+
+	//Okay, lets set ourselves there
+	mover.forceMove(target)
+	mover.pixel_x += pixel_delta.x
+	mover.pixel_y += pixel_delta.y
+	if (C)
+		C.pixel_x += pixel_delta.x
+		C.pixel_y += pixel_delta.y
+
+	//If we were to stop now, the mover would technically be in the new tile, but visually appear to have not moved at all,
+	//due to being pixel-offset to exactly where we came from
+
+	var/animtime  = (pixel_distance / pixels_per_decisecond)
+	animate(mover, pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = animtime)
+	if (C)
+		animate(C, pixel_x = cached_client_pixels.x, pixel_y = cached_client_pixels.y, time = (animtime / client_lag))
+
+	//Lets make sure view stays locked until we're done animating client
+	if (C && istype(L))
+		spawn(animtime / client_lag)
+			L.lock_view = FALSE
+
 #undef LUMR
 #undef LUMG
 #undef LUMB
