@@ -38,6 +38,7 @@ var/list/flooring_types
 	var/descriptor = "tiles"
 	var/flags
 	var/can_paint
+	var/step_priority = 1
 
 /decl/flooring/proc/on_remove()
 	return
@@ -59,6 +60,7 @@ var/list/flooring_types
 	icon_base = "asteroid"
 	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
 	build_type = null
+	step_priority = 2 //Soft surfaces have more distinctive sounds
 
 /decl/flooring/carpet
 	name = "brown carpet"
@@ -68,6 +70,7 @@ var/list/flooring_types
 	build_type = /obj/item/stack/tile/carpet
 	damage_temperature = T0C+200
 	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
+	step_priority = 2 //Soft surfaces have more distinctive sounds
 
 /decl/flooring/carpet/blue
 	name = "blue carpet"

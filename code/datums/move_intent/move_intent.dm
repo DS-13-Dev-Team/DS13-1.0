@@ -8,6 +8,7 @@
 	var/flags = 0
 	var/move_delay = 1
 	var/hud_icon_state
+	var/footstep_interval = 3
 
 /decl/move_intent/walk
 	name = "Walk"
@@ -23,6 +24,7 @@
 	name = "Run"
 	flags = MOVE_INTENT_EXERTIVE | MOVE_INTENT_QUICK
 	hud_icon_state = "running"
+	footstep_interval = 2
 
 /decl/move_intent/run/Initialize()
 	. = ..()

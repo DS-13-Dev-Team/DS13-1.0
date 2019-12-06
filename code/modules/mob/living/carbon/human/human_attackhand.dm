@@ -175,6 +175,13 @@
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
 				rand_damage = 5
 
+			//Here seems a good enough place for attack audio
+			//Its not impact sounds, but screams of rage while swinging
+			if (H && H.check_audio_cooldown(SOUND_ATTACK))
+				H.play_species_audio(H, SOUND_ATTACK, 40, 1)
+				H.set_audio_cooldown(SOUND_ATTACK, 3 SECONDS)
+
+
 			// Process evasion and blocking
 			var/miss_type = 0
 			var/attack_message
