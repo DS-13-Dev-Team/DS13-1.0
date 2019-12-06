@@ -130,7 +130,12 @@
 			//Ok we will knock it back! Lets do some math
 
 			//Get a vector representing the offset from us to target
-			var/vector2/delta = new(L.x - user.x, L.y - user.y)
+			var/vector2/delta
+			if (get_turf(user) == get_turf(target))
+				var/turf/T = get_step(user, user.dir)
+				delta = new(T.x - user.x, T.y - user.y)
+			else
+				delta = new(L.x - user.x, L.y - user.y)
 			delta = delta.ToMagnitude(5) //Rescale it to a length of 5 tiles. This is our approximate knockback distance, although it may end up shorter with rounding and diagonals
 
 			var/turf/target_turf = locate(user.x + delta.x, user.y + delta.y, user.z) //Get the target turf to knock them towards

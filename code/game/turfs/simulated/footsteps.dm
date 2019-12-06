@@ -100,7 +100,7 @@
 
 /mob/living/carbon/human
 	var/step_count
-	var/step_interval	=	3 //We make a footstep sound every time we reach this
+	var/step_interval	=	2 //We make a footstep sound every time we reach this
 
 /mob/living/carbon/human/proc/handle_footsteps()
 	var/turf/simulated/floor/T = get_turf(src)
@@ -130,7 +130,7 @@
 	var/best_priority = 0
 
 	if (species.step_priority > best_priority)
-
+		//Note: Species step priority should be set to zero when that species doesn't have any species-specific footstep sounds
 		footsound = get_species_audio(SOUND_FOOTSTEP)
 		best_priority = species.step_priority
 

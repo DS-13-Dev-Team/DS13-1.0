@@ -90,15 +90,15 @@
 	if (automatic)
 		force_notify_timer = addtimer(CALLBACK(src, /datum/extension/curl/proc/notify_forced), force_time)
 
-	//Some extra little impact sounds for the brute's arms hitting the ground as it curls up
-	spawn(animtime * 0.4)
-		user.play_species_audio(user, SOUND_FOOTSTEP, 40, 1)
-		spawn(6) //One then the other
-			user.play_species_audio(user, SOUND_FOOTSTEP, 40, 1)
+
 
 	//Set the status after the animation finishes
 	spawn(animtime)
 		status = CURLED
+		//Some extra little impact sounds for the brute's arms hitting the ground as it curls up
+		user.play_species_audio(user, SOUND_FOOTSTEP, 40, 1)
+		spawn(6) //One then the other
+			user.play_species_audio(user, SOUND_FOOTSTEP, 40, 1)
 	//Nothing farther happens for now
 
 
