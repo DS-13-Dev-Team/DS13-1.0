@@ -8,7 +8,7 @@
 	var/flags = 0
 	var/move_delay = 1
 	var/hud_icon_state
-	var/footstep_interval = 3
+	var/footstep_interval = 1
 
 /decl/move_intent/walk
 	name = "Walk"
