@@ -94,7 +94,7 @@ var/list/organ_cache = list()
 	STOP_PROCESSING(SSobj, src)
 	death_time = world.time
 	if(owner && vital)
-		owner.death()
+		owner.handle_death_check()
 
 /obj/item/organ/Process()
 
@@ -240,6 +240,8 @@ var/list/organ_cache = list()
 
 /obj/item/organ/proc/heal_damage(amount)
 	damage = between(0, damage - round(amount, 0.1), max_damage)
+	if (owner)
+		owner.updatehealth()
 
 
 /obj/item/organ/proc/robotize() //Being used to make robutt hearts, etc
@@ -273,7 +275,7 @@ var/list/organ_cache = list()
 	if(owner && vital)
 		if(user)
 			admin_attack_log(user, owner, "Removed a vital organ ([src]).", "Had a vital organ ([src]) removed.", "removed a vital organ ([src]) from")
-		owner.death()
+		owner.handle_death_check()
 
 	owner = null
 

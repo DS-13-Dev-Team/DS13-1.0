@@ -4,6 +4,7 @@
 	blurb = "The Brute is a large Necromorph composed of multiple human corpses. It has heavy organic armor in its front and possesses extreme physical \
 	strength, making it a deadly foe in combat. "
 	total_health = 300
+	torso_damage_mult = 1 //Hitting centre mass is fine for brute
 
 	icon_template = 'icons/mob/necromorph/64x64necros.dmi'
 	icon_normal = "brute"
@@ -47,6 +48,22 @@
 	var/curl_armor_mult = 1.5	//Multiplier applied to armor when we are curled up
 	var/armor_coverage = 95 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
 
+
+	has_limbs = list(
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/giant),
+	BP_GROIN =  list("path" = /obj/item/organ/external/groin/giant),
+	BP_HEAD =   list("path" = /obj/item/organ/external/head/giant),
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/giant),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/giant),
+	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/giant),
+	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/giant),
+	BP_L_HAND = list("path" = /obj/item/organ/external/hand/giant),
+	BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/giant),
+	BP_L_FOOT = list("path" = /obj/item/organ/external/foot/giant),
+	BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/giant)
+	)
+
+
 	//Audio
 	step_volume = 10 //Brute stomps are low pitched and resonant, don't want them loud
 	step_range = 4
@@ -71,6 +88,7 @@
 	'sound/effects/creatures/necromorph/brute_shout_3.ogg'),
 	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/brute_shout_long.ogg')
 	)
+
 /*
 	Brute charge: Slower but more powerful due to mob size.
 	Shorter windup time making it deadly at close range

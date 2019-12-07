@@ -106,6 +106,9 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	if(BP_IS_ROBOTIC(src) && !robo_repair)
 		return
 
+	if (!number_wounds)
+		return 0
+
 	//Heal damage on the individual wounds
 	for(var/datum/wound/W in wounds)
 		if(brute == 0 && burn == 0)
@@ -142,12 +145,17 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		genetic_degradation = 0
 		status &= ~ORGAN_MUTATED
 		return
+	if (!genetic_degradation)
+		return 0
+
 	var/last_gene_dam = genetic_degradation
 	genetic_degradation = min(100,max(0,genetic_degradation - amount))
 	if(genetic_degradation <= 30)
 		if(status & ORGAN_MUTATED)
 			unmutate()
-			to_chat(src, "<span class = 'notice'>Your [name] is shaped normally again.</span>")
+			to_chat(owner, "<span class = 'notice'>Your [name] is shaped normally again.</span>")
+	if (owner)
+		owner.updatehealth()
 	return -(genetic_degradation - last_gene_dam)
 
 /obj/item/organ/external/proc/add_genetic_damage(var/amount)
@@ -161,6 +169,8 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		if(!(status & ORGAN_MUTATED) && prob(genetic_degradation))
 			mutate()
 			to_chat(owner, "<span class = 'notice'>Something is not right with your [name]...</span>")
+	if (owner)
+		owner.updatehealth()
 	return (genetic_degradation - last_gene_dam)
 
 /obj/item/organ/external/proc/mutate()
@@ -191,8 +201,12 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	if(!can_feel_pain())
 		pain = 0
 		return
+	if (!pain)
+		return 0
 	var/last_pain = pain
 	pain = max(0,min(max_damage,pain-amount))
+	if (owner)
+		owner.updatehealth()
 	return -(pain-last_pain)
 
 /obj/item/organ/external/proc/add_pain(var/amount)
@@ -201,8 +215,11 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		return
 	var/last_pain = pain
 	pain = max(0,min(max_damage,pain+amount))
-	if(owner && ((amount > 15 && prob(20)) || (amount > 30 && prob(60))))
-		owner.emote("scream")
+	if(owner)
+
+		if (((amount > 15 && prob(20)) || (amount > 30 && prob(60))))
+			owner.emote("scream")
+		owner.updatehealth()
 	return pain-last_pain
 
 /obj/item/organ/external/proc/stun_act(var/stun_amount, var/agony_amount)

@@ -54,7 +54,6 @@
 		owner.internal_organs_by_name -= organ_tag
 		owner.internal_organs_by_name -= null
 		owner.internal_organs -= src
-
 		if(detach)
 			var/obj/item/organ/external/affected = owner.get_organ(parent_organ)
 			if(affected)
@@ -135,15 +134,17 @@ obj/item/organ/internal/take_general_damage(var/amount, var/silent = FALSE)
 		damage = between(0, src.damage + amount, max_damage)
 
 		//only show this if the organ is not robotic
-		if(owner && can_feel_pain() && parent_organ && (amount > 5 || prob(10)))
-			var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
-			if(parent && !silent)
-				var/degree = ""
-				if(is_bruised())
-					degree = " a lot"
-				if(damage < 5)
-					degree = " a bit"
-				owner.custom_pain("Something inside your [parent.name] hurts[degree].", amount, affecting = parent)
+		if(owner)
+			if (can_feel_pain() && parent_organ && (amount > 5 || prob(10)))
+				var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
+				if(parent && !silent)
+					var/degree = ""
+					if(is_bruised())
+						degree = " a lot"
+					if(damage < 5)
+						degree = " a bit"
+					owner.custom_pain("Something inside your [parent.name] hurts[degree].", amount, affecting = parent)
+				owner.updatehealth() //Needed here
 
 /obj/item/organ/internal/proc/get_visible_state()
 	if(damage > max_damage)

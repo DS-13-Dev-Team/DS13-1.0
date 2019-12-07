@@ -12,16 +12,16 @@
 	if(!damage || (blocked >= 100))	return 0
 	switch(damagetype)
 		if(BRUTE)
-			adjustBruteLoss(damage * blocked_mult(blocked))
+			adjustBruteLoss(damage * blocked_mult(blocked))	//This calls organ damage procs which call updatehealth
 		if(BURN)
 			if(COLD_RESISTANCE in mutations)	damage = 0
-			adjustFireLoss(damage * blocked_mult(blocked))
+			adjustFireLoss(damage * blocked_mult(blocked))	//This calls organ damage procs which call updatehealth
 		if(TOX)
 			adjustToxLoss(damage * blocked_mult(blocked))
 		if(OXY)
-			adjustOxyLoss(damage * blocked_mult(blocked))
+			adjustOxyLoss(damage * blocked_mult(blocked))	//This calls lungs.add oxygen deprivation, which calls updatehealth
 		if(CLONE)
-			adjustCloneLoss(damage * blocked_mult(blocked))
+			adjustCloneLoss(damage * blocked_mult(blocked))	//Calls updatehealth through organ procs
 		if(PAIN)
 			adjustHalLoss(damage * blocked_mult(blocked))
 		if(ELECTROCUTE)

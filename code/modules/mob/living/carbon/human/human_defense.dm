@@ -367,7 +367,7 @@ meteor_act
 		//thrown weapon embedded object code.
 		if(dtype == BRUTE && istype(O,/obj/item))
 			var/obj/item/I = O
-			if (!is_robot_module(I))
+			if (!is_robot_module(I) && !(I.item_flags & ITEM_FLAG_NO_EMBED))
 				var/sharp = is_sharp(I)
 				var/damage = throw_damage //the effective damage used for embedding purposes, no actual damage is dealt here
 				if (armor)

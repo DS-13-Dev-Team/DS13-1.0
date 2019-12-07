@@ -368,6 +368,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 	H.sync_organ_dna()
 
+/datum/species/proc/should_have_organ(var/organ_tag)
+	return has_organ[organ_tag]
+
 /datum/species/proc/hug(var/mob/living/carbon/human/H,var/mob/living/target)
 
 	var/t_him = "them"
