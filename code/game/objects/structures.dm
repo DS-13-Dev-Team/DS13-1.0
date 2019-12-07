@@ -19,12 +19,12 @@
 /obj/structure/New()
 	.=..()
 	if(LAZYLEN(footstep_sounds) && istype(loc, /turf/simulated/floor))
-		var/turf/simulated/floor/T = loc
+		var/turf/simulated/floor/T = get_turf(src)
 		T.step_structures |= src
 
 /obj/structure/Destroy()
 	if(LAZYLEN(footstep_sounds) && istype(loc, /turf/simulated/floor))
-		var/turf/simulated/floor/T = loc
+		var/turf/simulated/floor/T = get_turf(src)
 		T.step_structures -= src
 	if(parts)
 		new parts(loc)

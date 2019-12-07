@@ -159,5 +159,5 @@
 
 
 /mob/living/carbon/human/set_move_intent(var/decl/move_intent/M)
-	.=..()
+	. = ..()
 	step_interval = M.footstep_interval
