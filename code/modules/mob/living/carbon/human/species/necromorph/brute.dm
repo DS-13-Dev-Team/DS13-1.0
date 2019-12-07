@@ -4,6 +4,7 @@
 	blurb = "The Brute is a large Necromorph composed of multiple human corpses. It has heavy organic armor in its front and possesses extreme physical \
 	strength, making it a deadly foe in combat. "
 	total_health = 300
+	torso_damage_mult = 1 //Hitting centre mass is fine for brute
 
 	icon_template = 'icons/mob/necromorph/64x64necros.dmi'
 	icon_normal = "brute"
