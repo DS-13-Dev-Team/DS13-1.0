@@ -155,10 +155,9 @@
 		if (!E || E.is_stump())
 			//Its not here!
 			subtotal = initial_health_values[organ_tag] * dismember_mult
-			continue
-
-		//Its here
-		subtotal = E.damage
+		else
+			//Its here
+			subtotal = E.damage
 
 		//Is it a torso part?
 		if ((E.organ_tag in BP_TORSO))
