@@ -95,6 +95,7 @@
 	step_volume = 60 //Necromorphs can't wear shoes, so their base footstep volumes are louder
 	step_range = 1
 	pain_audio_threshold = 0.10
+	speech_chance = 15
 
 
 	has_organ = list(    // which required-organ checks are conducted.

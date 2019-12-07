@@ -37,11 +37,9 @@
 	user = _user
 	target = _target //The thing we originally wanted to hit. We will hit them if they were in range and don't move
 
-	world << "Target is [target]"
 	//This attack can be dodged. If we target a mob, we'll hit where they were standing at the initiation time, whether they're still there or not
 	//We might have clicked on a distant tile, but this attack has a max range of 2, so lets limit it
 	if (get_dist(user, target) > maxrange)
-		world << "Dist to target is [get_dist(user, target)]"
 		epicentre = Vector2.TurfAtMagnitudeBetween(user, target, maxrange)
 	else
 		epicentre = get_turf(target)
@@ -101,7 +99,12 @@
 		animate(transform=turn(user.transform, -60*direction),pixel_y = user.pixel_y-(pixel_offset.y*0.3), pixel_x = user.pixel_x-(pixel_offset.x*0.3), time = winddown_time*0.3, easing = SINE_EASING | EASE_IN)
 		animate(transform = cached_transform, pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = winddown_time*0.7, easing = SINE_EASING | EASE_OUT)
 
-
+	//Lets play a whiplash sound, just before impact
+	spawn(windup_time - 3)
+		playsound(user, pick(list('sound/effects/creatures/necromorph/leaper/leaper_tailswing_1.ogg',
+		'sound/effects/creatures/necromorph/leaper/leaper_tailswing_2.ogg',
+		'sound/effects/creatures/necromorph/leaper/leaper_tailswing_3.ogg',
+		'sound/effects/creatures/necromorph/leaper/leaper_tailswing_4.ogg')), 80, 1, -1)
 
 	//Start a timer to do the finishing hit
 	tailstrike_timer = addtimer(CALLBACK(src, .proc/finish), windup_time, TIMER_STOPPABLE)

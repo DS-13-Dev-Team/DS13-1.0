@@ -61,10 +61,9 @@
 
 	//Runtime data
 	var/tiles_moved = 0
-	var/list/atoms_hit = list()
+	var/list/atoms_hit = list()//Bumped observation may make duplicate calls. We'll use this to filter them out
 	var/lifespan_timer
 	var/start_timer
-	var/list/atoms_bumped = list() //Bumped observation may make duplicate calls. We'll use this to filter them out
 	var/atom/movable/user
 	var/started_at = 0
 	var/stopped_at
@@ -72,7 +71,6 @@
 
 	var/step_interval = 1	//Replaces the user's step interval for the duration of the charge
 	var/cached_step_interval
-	var/list/atoms_hit = list()
 
 
 /datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
@@ -98,8 +96,8 @@
 		start_timer = addtimer(CALLBACK(src, .proc/start), _delay, TIMER_STOPPABLE)
 
 /datum/extension/charge/proc/start()
-	if (ishuman(charger))
-		var/mob/living/carbon/human/H = charger
+	if (ishuman(user))
+		var/mob/living/carbon/human/H = user
 		cached_step_interval = H.step_interval
 		H.step_interval = src.step_interval
 	if (start_timer)
@@ -142,8 +140,8 @@
 
 
 /datum/extension/charge/proc/stop()
-	if (ishuman(charger))
-		var/mob/living/carbon/human/H = charger
+	if (ishuman(user))
+		var/mob/living/carbon/human/H = user
 		H.step_interval = cached_step_interval
 	GLOB.bump_event.unregister(holder, src, /datum/extension/charge/proc/bump)
 	GLOB.moved_event.unregister(holder, src, /datum/extension/charge/proc/moved)

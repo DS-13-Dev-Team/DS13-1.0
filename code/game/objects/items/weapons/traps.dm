@@ -297,7 +297,7 @@ Very rarely it might escape
 
 
 
-/obj/item/weapon/beartrap/Crossed(AM as mob|obj)
+/obj/item/weapon/beartrap/Crossed(var/atom/movable/AM)
 	if(deployed && isliving(AM) && !(AM.pass_flags & PASS_FLAG_FLYING))
 		var/mob/living/L = AM
 		L.visible_message(

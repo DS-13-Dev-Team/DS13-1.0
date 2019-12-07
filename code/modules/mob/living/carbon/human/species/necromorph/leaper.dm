@@ -24,7 +24,7 @@
 	pixel_offset_x = -16
 	pixel_offset_y = -20
 
-	evasion = 30	//Harder to hit than usual
+	evasion = 25	//Harder to hit than usual
 
 	view_range = 8
 	view_offset = (WORLD_ICON_SIZE*3)	//Can see much farther than usual
@@ -38,25 +38,65 @@
 	BP_TAIL =  list("path" = /obj/item/organ/external/tail/leaper)
 	)
 
-	inherent_verbs = list(/atom/movable/proc/leaper_leap, /atom/movable/proc/tailstrike_leaper)
+	inherent_verbs = list(/atom/movable/proc/leaper_leap, /mob/living/carbon/human/proc/tailstrike_leaper, /mob/proc/shout)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap),
-	KEY_ALT = list(/atom/movable/proc/tailstrike_leaper))
+	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper))
 
 	slowdown = 4
 
 	//Leaper has no legs, it moves with arms and tail
 	locomotion_limbs = list(BP_R_ARM, BP_L_ARM, BP_TAIL)
 
+	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/leaper_footstep_1.ogg',
+	'sound/effects/footstep/leaper_footstep_2.ogg',
+	'sound/effects/footstep/leaper_footstep_3.ogg',
+	'sound/effects/footstep/leaper_footstep_4.ogg',
+	'sound/effects/footstep/leaper_footstep_5.ogg'),
+	SOUND_PAIN = list('sound/effects/creatures/necromorph/leaper/leaper_pain_1.ogg',
+	 'sound/effects/creatures/necromorph/leaper/leaper_pain_2.ogg',
+	 'sound/effects/creatures/necromorph/leaper/leaper_pain_3.ogg',
+	 'sound/effects/creatures/necromorph/leaper/leaper_pain_4.ogg',
+	 'sound/effects/creatures/necromorph/leaper/leaper_pain_5.ogg',
+	 'sound/effects/creatures/necromorph/leaper/leaper_pain_6.ogg',
+	 'sound/effects/creatures/necromorph/leaper/leaper_pain_7.ogg'),
+	SOUND_DEATH = list('sound/effects/creatures/necromorph/leaper/leaper_death_1.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_death_2.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_death_3.ogg'),
+	SOUND_ATTACK = list('sound/effects/creatures/necromorph/leaper/leaper_attack_1.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_attack_2.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_attack_3.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_attack_4.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_attack_5.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_attack_6.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_attack_7.ogg'),
+	SOUND_SHOUT = list('sound/effects/creatures/necromorph/leaper/leaper_shout_1.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_shout_2.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_shout_3.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_shout_4.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_shout_5.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_shout_6.ogg'),
+	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/leaper/leaper_shout_long_1.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_shout_long_2.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_shout_long_3.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_shout_long_4.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_shout_long_5.ogg'),
+	SOUND_SPEECH = list('sound/effects/creatures/necromorph/leaper/leaper_speech_1.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_speech_2.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_speech_3.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_speech_4.ogg')
+	)
+	speech_chance = 50
+
 /datum/species/necromorph/leaper/enhanced
 	name = SPECIES_NECROMORPH_LEAPER_ENHANCED
 	unarmed_types = list(/datum/unarmed_attack/claws/strong)
 	slowdown = 3
 	total_health = 200
-	evasion = 35
+	evasion = 30
 
-	inherent_verbs = list(/atom/movable/proc/leaper_leap_enhanced, /atom/movable/proc/tailstrike_leaper_enhanced)
+	inherent_verbs = list(/atom/movable/proc/leaper_leap_enhanced, /mob/living/carbon/human/proc/tailstrike_leaper_enhanced)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap_enhanced),
-	KEY_ALT = list(/atom/movable/proc/tailstrike_leaper_enhanced))
+	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper_enhanced))
 
 
 
@@ -87,12 +127,20 @@
 	set name = "Leap"
 	set category = "Abilities"
 
+	var/mob/living/carbon/human/H = src
+
 	//Do a chargeup animation. Pulls back and then launches forwards
 	//The time is equal to the windup time of the attack, plus 0.5 seconds to prevent a brief stop and ensure launching is a fluid motion
 	var/vector2/pixel_offset = Vector2.DirectionBetween(src, A) * -16
 	var/vector2/cached_pixels = new /vector2(src.pixel_x, src.pixel_y)
 	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 1.7 SECONDS, easing = BACK_EASING)
 	animate(pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = 0.3 SECONDS)
+
+	//Long shout when targeting mobs, normal when targeting objects
+	if (ismob(A))
+		H.play_species_audio(H, SOUND_SHOUT_LONG, 100, 1, 3)
+	else
+		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
 	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 2 SECONDS, _speed = 5, _maxrange = 11,_lifespan = 8 SECONDS, _maxrange = 20)
 
@@ -101,12 +149,19 @@
 	set name = "Leap"
 	set category = "Abilities"
 
+	var/mob/living/carbon/human/H = src
 
 	//Do a chargeup animation
 	var/vector2/pixel_offset = Vector2.DirectionBetween(src, A) * -16
 	var/vector2/cached_pixels = new /vector2(src.pixel_x, src.pixel_y)
 	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 0.7 SECONDS, easing = BACK_EASING)
 	animate(pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = 0.3 SECONDS)
+
+	//Long shout when targeting mobs, normal when targeting objects
+	if (ismob(A))
+		H.play_species_audio(H, SOUND_SHOUT_LONG, 100, 1, 3)
+	else
+		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
 	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 5, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
 
@@ -124,32 +179,36 @@
 		L.apply_damage(3*(distance_travelled+1), used_weapon = user) //We apply damage based on the distance. We add 1 to the distance because we're moving into their tile too
 		shake_camera(L,5,3)
 		//And lets also land ontop of them
+		user.play_species_audio(user, SOUND_SHOUT, 100, 1, 3) //Victory scream
 		spawn(2)
 			user.Move(obstacle.loc)
 	else if (obstacle.density)
 	//If something else blocked our leap, or if we hit a dense object (even intentionally) we get pretty rattled
 		user.Weaken(5)
 		user.apply_damage(20, used_weapon = obstacle) //ow
+		user.play_species_audio(user, SOUND_PAIN, 100, 1, 3) //It huuurts
 
 
 
 //Tailstrike attack
-/atom/movable/proc/tailstrike_leaper(var/atom/A)
+/mob/living/carbon/human/proc/tailstrike_leaper(var/atom/A)
 	set name = "Tail Strike"
 	set category = "Abilities"
 
 	if (!A)
 		A = get_step(src, dir)
 
-
+	play_species_audio(src, SOUND_ATTACK, 30, 1)
 	return tailstrike_attack(A, _damage = 25, _windup_time = 0.75 SECONDS, _winddown_time = 1.2 SECONDS, _cooldown = 0)
 
 
-/atom/movable/proc/tailstrike_leaper_enhanced(var/atom/A)
+/mob/living/carbon/human/proc/tailstrike_leaper_enhanced(var/atom/A)
 	set name = "Tail Strike"
 	set category = "Abilities"
 
 	if (!A)
 		A = get_step(src, dir)
 
+
+	play_species_audio(src, SOUND_ATTACK, 30, 1)
 	return tailstrike_attack(A, _damage = 28, _windup_time = 0.6 SECONDS, _winddown_time = 1 SECONDS, _cooldown = 0)
