@@ -128,5 +128,5 @@
 	if (.)
 		//Time to die
 		death()
-		blinded = 1
-		silent = 0
+		blinded = TRUE
+		silent = FALSE
