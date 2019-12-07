@@ -265,3 +265,7 @@
 	DO_MOVE(WEST)
 
 #undef DO_MOVE
+
+
+/mob/proc/set_move_intent(var/decl/move_intent/M)
+	move_intent = M

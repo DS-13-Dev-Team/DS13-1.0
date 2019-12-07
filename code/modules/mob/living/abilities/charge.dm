@@ -64,6 +64,8 @@
 	var/cooldown = 20 SECONDS	//After the charge completes, it will stay on the charger and block additional charges for this long
 	var/tiles_moved = 0
 
+	var/step_interval = 1	//Replaces the user's step interval for the duration of the charge
+	var/cached_step_interval
 	var/list/atoms_hit = list()
 
 /datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed = 5, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)
@@ -89,6 +91,10 @@
 		start_timer = addtimer(CALLBACK(src, .proc/start), _delay, TIMER_STOPPABLE)
 
 /datum/extension/charge/proc/start()
+	if (ishuman(charger))
+		var/mob/living/carbon/human/H = charger
+		cached_step_interval = H.step_interval
+		H.step_interval = src.step_interval
 	if (start_timer)
 		deltimer(start_timer)
 
@@ -129,6 +135,9 @@
 
 
 /datum/extension/charge/proc/stop()
+	if (ishuman(charger))
+		var/mob/living/carbon/human/H = charger
+		H.step_interval = cached_step_interval
 	GLOB.bump_event.unregister(holder, src, /datum/extension/charge/proc/bump)
 	GLOB.moved_event.unregister(holder, src, /datum/extension/charge/proc/moved)
 	walk(holder, 0)

@@ -98,7 +98,9 @@
 /datum/species/var/silent_steps
 /datum/species/nabber/silent_steps = 1
 
-/mob/living/carbon/human/var/step_count
+/mob/living/carbon/human
+	var/step_count
+	var/step_interval	=	2 //We make a footstep sound every time we reach this
 
 /mob/living/carbon/human/proc/handle_footsteps()
 	var/turf/simulated/floor/T = get_turf(src)
@@ -108,9 +110,7 @@
 	if(buckled || lying || throwing)
 		return //people flying, lying down or sitting do not step
 
-	if(MOVING_QUICKLY(src))
-		if(step_count % 2) //every other turf makes a sound
-			return
+
 
 	if(species.silent_steps)
 		return //species is silent
@@ -118,27 +118,40 @@
 	if(shoes && (shoes.item_flags & ITEM_FLAG_SILENT))
 		return // quiet shoes
 
-	if(!has_gravity(src))
-		if(step_count % 3) // don't need to step as often when you hop around
-			return
+	if(step_count % step_interval)
+		return
 
-	if(!has_organ(BP_L_FOOT) && !has_organ(BP_R_FOOT))
-		return //no feet no footsteps
-
+	//Nanako's Priority based footstep system.
+	//All structures, floors, and species have a step priority var.
+	//When determining which one gets to choose the footstep sound, highest value wins.
+	//In case of equal values, species > structure > floor
+	//Also heavily optimised an awful structure loop here
 	var/footsound
-	for(var/obj/structure/S in T)
-		footsound = S.get_footstep_sound()
-		if(footsound) break
-	if(!footsound)
+	var/best_priority = 0
+
+	if (species.step_priority > best_priority)
+		//Note: Species step priority should be set to zero when that species doesn't have any species-specific footstep sounds
+		footsound = get_species_audio(SOUND_FOOTSTEP)
+		best_priority = species.step_priority
+
+	for(var/obj/structure/S as anything in T.step_structures)
+		if (S.step_priority > best_priority)
+			best_priority = S.step_priority
+			footsound = S.get_footstep_sound()
+
+	if(T.step_priority > best_priority)
+		best_priority = T.step_priority
 		footsound = T.get_footstep_sound()
 	if(footsound)
-		var/range = -(world.view - 2)
-		var/volume = 70
+
+		var/range = species.step_range//-(world.view - 2)
+		var/volume = species.step_volume
+
 		if(MOVING_DELIBERATELY(src))
-			volume -= 45
-			range -= 0.333
-		if(!shoes)
-			volume -= 60
-			range -= 0.333
+			volume -= 20
+			range -= 1
+		if(shoes)
+			volume += shoes.step_volume
+			range += shoes.step_range
 
 		playsound(T, footsound, volume, 1, range)

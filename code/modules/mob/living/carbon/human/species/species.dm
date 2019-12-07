@@ -65,11 +65,21 @@
 	var/language = LANGUAGE_GALCOM            // Default racial language, if any.
 	var/list/secondary_langs = list()         // The names of secondary languages that are available to this species.
 	var/assisted_langs = list()               // The languages the species can't speak without an assisted organ.
-	var/list/speech_sounds                    // A list of sounds to potentially play when speaking.
-	var/list/speech_chance                    // The likelihood of a speech sound playing.
 	var/num_alternate_languages = 0           // How many secondary languages are available to select at character creation
 	var/name_language = LANGUAGE_GALCOM       // The language to use when determining names for this species, or null to use the first name/last name generator
 	var/additional_langs                      // Any other languages the species always gets.
+
+	//Audio vars
+	var/step_volume = 30	//Base volume of ALL footstep sounds for this mob
+	var/step_range = -1		//Base volume of ALL footstep sounds for this mob. Each point of range adds or subtracts two tiles from the actual audio distance
+	var/step_priority = 0	//Base priority of species-specific footstep sounds. Zero disables them
+	var/pain_audio_threshold = 0	//If a mob takes damage equal to this portion of its total health, (and audio files exist), it will scream in pain
+	var/list/species_audio = list()	//An associative list of lists, in the format SOUND_TYPE = list(sound_1, sound_2)
+		//In addition, the list of sounds supports weighted picking (default weight 1 if unspecified).
+		//For example: (sound_1, sound_2 = 0.5) will result in sound_2 being played half as often as sound_1
+	var/list/speech_chance                    // The likelihood of a speech sound playing.
+
+
 
 	// Combat vars.
 	var/total_health = 120                   // Point at which the mob will enter crit.
@@ -104,7 +114,7 @@
 	var/remains_type = /obj/item/remains/xeno
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
-	var/death_sound
+
 	var/death_message = "seizes up and falls limp, their eyes dead and lifeless..."
 	var/knockout_message = "collapses, having been knocked unconscious."
 	var/halloss_message = "slumps over, too weak to continue fighting..."
@@ -794,4 +804,43 @@ These procs should return their entire args list. Best just to return parent in 
 
 //Override damage values here as a one stop catch-all solution
 /datum/species/proc/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+	//Here we'll handle pain audio
+	if (pain_audio_threshold)
+		var/total_damage = brute+burn
+		if (total_damage >= (total_health * pain_audio_threshold))
+			var/mob/living/L = organ.owner
+			if (!L.incapacitated(INCAPACITATION_KNOCKOUT) && L.check_audio_cooldown(SOUND_PAIN)) //Must be conscious to scream
+				play_species_audio(L, SOUND_PAIN, 60, 1)
+				L.set_audio_cooldown(SOUND_PAIN, 3 SECONDS)
 	return args.Copy(2)
+
+
+
+
+//Species level audio wrappers
+//--------------------------------
+/datum/species/proc/get_species_audio(var/audio_type)
+	var/list/L = species_audio[audio_type]
+	if (L)
+		return pickweight(L)
+	return null
+
+/datum/species/proc/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
+	var/soundin = get_species_audio(audio_type)
+	if (soundin)
+		playsound(source, soundin, vol, vary, extrarange, falloff, is_global, frequency, is_ambiance)
+		return TRUE
+	return FALSE
+
+
+/mob/proc/play_species_audio()
+	return
+
+/mob/living/carbon/human/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
+	return species.play_species_audio(arglist(args.Copy()))
+
+/mob/proc/get_species_audio()
+	return
+
+/mob/living/carbon/human/get_species_audio(var/audio_type)
+	return species.get_species_audio(arglist(args.Copy()))

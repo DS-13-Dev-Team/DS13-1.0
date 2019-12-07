@@ -11,11 +11,21 @@
 	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
 
 	var/list/footstep_sounds	//footstep sounds when stepped on
+	var/step_priority = 1	//Priority of the sound attached to this
 
 /obj/structure/proc/get_footstep_sound()
 	if(LAZYLEN(footstep_sounds)) return pick(footstep_sounds)
 
+/obj/structure/New()
+	.=..()
+	if(LAZYLEN(footstep_sounds) && istype(loc, /turf/simulated/floor))
+		var/turf/simulated/floor/T = get_turf(src)
+		T.step_structures |= src
+
 /obj/structure/Destroy()
+	if(LAZYLEN(footstep_sounds) && istype(loc, /turf/simulated/floor))
+		var/turf/simulated/floor/T = get_turf(src)
+		T.step_structures -= src
 	if(parts)
 		new parts(loc)
 	. = ..()
