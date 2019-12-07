@@ -49,6 +49,22 @@
 	burn_mod = 1.3	//Takes more damage from burn attacks
 	blood_oxy = FALSE
 
+	var/list/initial_health_values	//This list is populated once for each species, when a necromorph of that type is created
+	//It stores the starting max health values of each limb this necromorph has
+	//It is an associative list in the format organ_tag = initial health
+
+	var/torso_damage_mult	=	0.3
+	/*
+		For the purpose of determining whether or not the necromorph has taken enough damage to be killed:
+			Damage to the chest and groin is treated as being multiplied by this,
+	*/
+
+	var/dismember_mult = 1.5
+	/*
+		For the purpose of determining whether or not the necromorph has taken enough damage to be killed:
+			A limb which is completely severed counts as its max damage multiplied by this
+	*/
+
 
 	//Breathing and Environment
 	warning_low_pressure = 0             // Low pressure warning.
@@ -74,7 +90,6 @@
 	appearance_flags = 0      // Appearance/display related features.
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN           // Flags that specify who can spawn as this specie
 
-
 	has_organ = list(    // which required-organ checks are conducted.
 	BP_HEART =    /obj/item/organ/internal/heart/undead,
 	BP_LUNGS =    /obj/item/organ/internal/lungs/undead,
@@ -97,3 +112,59 @@
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
 	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
+
+
+//We don't want to be suffering for the lack of any particular organs
+/datum/species/necromorph/should_have_organ()
+	return FALSE
+
+
+//Populate the initial health values
+/datum/species/necromorph/create_organs(var/mob/living/carbon/human/H)
+	.=..()
+	if (!initial_health_values)
+		initial_health_values = list()
+		for (var/organ_tag in H.organs_by_name)
+			var/obj/item/organ/external/E	= H.organs_by_name[organ_tag]
+			initial_health_values[organ_tag] = E.max_damage
+
+
+
+//Necromorphs die when they've taken enough total damage to all their limbs.
+/datum/species/necromorph/handle_death_check(var/mob/living/carbon/human/H)
+
+	var/damage = get_weighted_total_limb_damage(H)
+	if (damage >= total_health)
+		return TRUE
+
+	return FALSE
+
+//How much damage has this necromorph taken?
+//We'll loop through each organ tag in the species' initial health values list, which should definitely be populated already, and try to get the organ for each
+	//Any limb still attached, adds its current damage to the total
+	//Any limb no longer attached (or stumped) adds its pre-cached max damage * dismemberment mult to the total
+	//Any limb which is considered to be a torso part adds its damage, multiplied by the torso mult, to the total
+/datum/species/necromorph/proc/get_weighted_total_limb_damage(var/mob/living/carbon/human/H)
+	var/total = 0
+	if (!initial_health_values)
+		return 0 //Not populated? welp
+
+	for (var/organ_tag in initial_health_values)
+		var/obj/item/organ/external/E	= H.organs_by_name[organ_tag]
+		var/subtotal = 0
+		if (!E || E.is_stump())
+			//Its not here!
+			subtotal = initial_health_values[organ_tag] * dismember_mult
+			continue
+
+		//Its here
+		subtotal = E.damage
+
+		//Is it a torso part?
+		if ((E.organ_tag in BP_TORSO))
+			subtotal *= torso_damage_mult
+
+		//And now add to total
+		total += subtotal
+
+	return total

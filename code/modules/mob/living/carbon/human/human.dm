@@ -1329,7 +1329,7 @@
 
 	if(affecting && BP_IS_ROBOTIC(affecting))
 		return 0
-	return (species && species.has_organ[organ_check])
+	return (species && species.should_have_organ(organ_check))
 
 /mob/living/carbon/human/can_feel_pain(var/obj/item/organ/check_organ)
 	if(isSynthetic())

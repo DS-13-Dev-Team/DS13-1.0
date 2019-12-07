@@ -2,7 +2,6 @@
 var/global/human_health_calls = 0
 /mob/living/carbon/human/updatehealth()
 	human_health_calls++
-	world << "Human updatehealth [human_health_calls]"
 
 	if(status_flags & GODMODE)
 		health = maxHealth

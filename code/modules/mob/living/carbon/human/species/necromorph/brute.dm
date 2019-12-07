@@ -46,6 +46,23 @@
 	var/armor_flank = 20	//Flat reduction applied to incoming damage within a 90 degree cone infront. Doesnt stack with front
 	var/curl_armor_mult = 1.5	//Multiplier applied to armor when we are curled up
 	var/armor_coverage = 95 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
+
+
+	has_limbs = list(
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/giant),
+	BP_GROIN =  list("path" = /obj/item/organ/external/groin/giant),
+	BP_HEAD =   list("path" = /obj/item/organ/external/head/giant),
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/giant),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/giant),
+	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/giant),
+	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/giant),
+	BP_L_HAND = list("path" = /obj/item/organ/external/hand/giant),
+	BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/giant),
+	BP_L_FOOT = list("path" = /obj/item/organ/external/foot/giant),
+	BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/giant)
+	)
+
+
 /*
 	Brute charge: Slower but more powerful due to mob size.
 	Shorter windup time making it deadly at close range
