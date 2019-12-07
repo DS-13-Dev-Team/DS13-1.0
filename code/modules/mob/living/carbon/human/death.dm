@@ -110,3 +110,24 @@
 		E.status |= ORGAN_DISFIGURED
 	update_body(1)
 	return
+
+
+
+// Check if we should die.
+/mob/living/carbon/human/proc/handle_death_check()
+	//Prevent potential loops
+	if (stat == DEAD)
+		return
+
+	if(should_have_organ(BP_BRAIN))
+		var/obj/item/organ/internal/brain/brain = internal_organs_by_name[BP_BRAIN]
+		if(!brain || (brain.status & ORGAN_DEAD))
+			.= TRUE
+	if (!.)
+		.=species.handle_death_check(src)
+
+	if (.)
+		//Time to die
+		death()
+		blinded = 1
+		silent = 0

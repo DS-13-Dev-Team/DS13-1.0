@@ -260,7 +260,7 @@
 		damage = Floor(damage * (isSynthetic() ? 0.5 : species.radiation_mod))
 		if(damage)
 			adjustToxLoss(damage * RADIATION_SPEED_COEFFICIENT)
-			updatehealth()
+			//update health is called by adjustToxLoss
 			if(!isSynthetic() && organs.len)
 				var/obj/item/organ/external/O = pick(organs)
 				if(istype(O)) O.add_autopsy_data("Radiation Poisoning", damage)
@@ -536,17 +536,10 @@
 		if(chem_doses[T] <= 0)
 			chem_doses -= T
 
-	updatehealth()
 
 	return //TODO: DEFERRED
 
-// Check if we should die.
-/mob/living/carbon/human/proc/handle_death_check()
-	if(should_have_organ(BP_BRAIN))
-		var/obj/item/organ/internal/brain/brain = internal_organs_by_name[BP_BRAIN]
-		if(!brain || (brain.status & ORGAN_DEAD))
-			return TRUE
-	return species.handle_death_check(src)
+
 
 //DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
 /mob/living/carbon/human/handle_regular_status_updates()
@@ -562,13 +555,6 @@
 		blinded = 1
 		silent = 0
 	else				//ALIVE. LIGHTS ARE ON
-		updatehealth()	//TODO
-
-		if(handle_death_check())
-			death()
-			blinded = 1
-			silent = 0
-			return 1
 
 		if(hallucination_power)
 			handle_hallucinations()

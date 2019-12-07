@@ -1,5 +1,8 @@
 //Updates the mob's health from organs and mob damage variables
+var/global/human_health_calls = 0
 /mob/living/carbon/human/updatehealth()
+	human_health_calls++
+	world << "Human updatehealth [human_health_calls]"
 
 	if(status_flags & GODMODE)
 		health = maxHealth
@@ -7,6 +10,8 @@
 		return
 
 	health = maxHealth - getBrainLoss()
+
+	handle_death_check()	//This is where people die
 
 	//TODO: fix husking
 	if(((maxHealth - getFireLoss()) < config.health_threshold_dead) && stat == DEAD)
@@ -18,7 +23,8 @@
 	if(should_have_organ(BP_BRAIN))
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name[BP_BRAIN]
 		if(sponge)
-			sponge.take_internal_damage(amount)
+			sponge.take_internal_damage(amount)	//This calls update health
+
 
 /mob/living/carbon/human/setBrainLoss(var/amount)
 	if(status_flags & GODMODE)	return 0	//godmode
@@ -26,7 +32,8 @@
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name[BP_BRAIN]
 		if(sponge)
 			sponge.damage = min(max(amount, 0),sponge.species.total_health)
-			updatehealth()
+			updatehealth() //This is needed since damage procs aren't called
+
 
 /mob/living/carbon/human/getBrainLoss()
 	if(status_flags & GODMODE)	return 0	//godmode
@@ -118,9 +125,9 @@
 		var/obj/item/organ/external/E = pick(pick_organs)
 		pick_organs -= E
 		if(heal)
-			amount -= E.remove_genetic_damage(amount)
+			amount -= E.remove_genetic_damage(amount)//This calls update health
 		else
-			amount -= E.add_genetic_damage(amount)
+			amount -= E.add_genetic_damage(amount)	//This calls update health
 	BITSET(hud_updateflag, HEALTH_HUD)
 
 // Defined here solely to take species flags into account without having to recast at mob/living level.
@@ -214,6 +221,10 @@
 				I.take_internal_damage(amount, silent=TRUE)
 				amount = 0
 
+	if (heal)
+		//If this is causing damage, take_internal_damage will call update health
+		updatehealth()
+
 /mob/living/carbon/human/proc/can_autoheal(var/dam_type)
 	if(!species || !dam_type) return FALSE
 
@@ -248,9 +259,9 @@
 	var/list/obj/item/organ/external/parts = get_damaged_organs(brute,burn)
 	if(!parts.len)	return
 	var/obj/item/organ/external/picked = pick(parts)
-	if(picked.heal_damage(brute,burn))
+	if(picked.heal_damage(brute,burn))//This updates health
 		BITSET(hud_updateflag, HEALTH_HUD)
-	updatehealth()
+
 
 
 //TODO reorganize damage procs so that there is a clean API for damaging living mobs
@@ -272,7 +283,6 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	if(picked.take_external_damage(brute, burn, damage_flags))
 		BITSET(hud_updateflag, HEALTH_HUD)
 
-	updatehealth()
 
 
 //Heal MANY external organs, in random order
@@ -291,7 +301,6 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		burn -= (burn_was-picked.burn_dam)
 
 		parts -= picked
-	updatehealth()
 	BITSET(hud_updateflag, HEALTH_HUD)
 
 // damage MANY external organs, in random order
@@ -308,8 +317,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 			apply_damage(damage = brute_avg, damagetype = BRUTE, blocked = getarmor_organ(E, "melee"), damage_flags = dam_flags, used_weapon = used_weapon, given_organ = E)
 		if(burn_avg)
 			apply_damage(damage = burn_avg, damagetype = BURN, damage_flags = dam_flags, used_weapon = used_weapon, given_organ = E)
-
-	updatehealth()
+	//Apply damage will call update health through limb damage
 	BITSET(hud_updateflag, HEALTH_HUD)
 
 
@@ -377,17 +385,18 @@ This function restores all organs.
 	switch(damagetype)
 		if(BRUTE)
 			damage = damage*species.brute_mod
-			created_wound = organ.take_external_damage(damage, 0, damage_flags, used_weapon)
+			created_wound = organ.take_external_damage(damage, 0, damage_flags, used_weapon)	//This calls update health
 		if(BURN)
 			damage = damage*species.burn_mod
-			created_wound = organ.take_external_damage(0, damage, damage_flags, used_weapon)
+			created_wound = organ.take_external_damage(0, damage, damage_flags, used_weapon)	//This calls update health
 		if(PAIN)
-			organ.add_pain(damage)
+			organ.add_pain(damage)	//This calls update health
 		if(CLONE)
-			organ.add_genetic_damage(damage)
+			organ.add_genetic_damage(damage)	//This calls update health
+
 
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
-	updatehealth()
+	//Updatehealth is called by all the above procs, we don't call it here
 	BITSET(hud_updateflag, HEALTH_HUD)
 	return created_wound
 
