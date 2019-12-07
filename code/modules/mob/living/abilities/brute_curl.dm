@@ -62,6 +62,8 @@
 	var/rotation = 35 * offset_dir.x * -1
 	offset_dir *= 8 //Sprite will slide back a bit
 
+	user.play_species_audio(user, SOUND_PAIN, 60, 1)
+
 	//Lets cache some data too
 	cached_pixels = new /vector2(user.pixel_x, user.pixel_y)
 	cached_transform = user.transform
@@ -89,9 +91,14 @@
 		force_notify_timer = addtimer(CALLBACK(src, /datum/extension/curl/proc/notify_forced), force_time)
 
 
+
 	//Set the status after the animation finishes
 	spawn(animtime)
 		status = CURLED
+		//Some extra little impact sounds for the brute's arms hitting the ground as it curls up
+		user.play_species_audio(user, SOUND_FOOTSTEP, 40, 1)
+		spawn(6) //One then the other
+			user.play_species_audio(user, SOUND_FOOTSTEP, 40, 1)
 	//Nothing farther happens for now
 
 

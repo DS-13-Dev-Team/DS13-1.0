@@ -26,7 +26,7 @@
 	weaken_mod = 0.3
 	paralysis_mod = 0.3
 
-	inherent_verbs = list(/atom/movable/proc/brute_charge, /atom/movable/proc/brute_slam, /atom/movable/proc/curl_verb)
+	inherent_verbs = list(/atom/movable/proc/brute_charge, /atom/movable/proc/brute_slam, /atom/movable/proc/curl_verb, /mob/proc/shout)
 	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/brute_charge),
 	KEY_CTRLALT = list(/atom/movable/proc/brute_slam),
 	KEY_CTRLSHIFT = list(/atom/movable/proc/curl_verb))
@@ -46,6 +46,31 @@
 	var/armor_flank = 20	//Flat reduction applied to incoming damage within a 90 degree cone infront. Doesnt stack with front
 	var/curl_armor_mult = 1.5	//Multiplier applied to armor when we are curled up
 	var/armor_coverage = 95 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
+
+	//Audio
+	step_volume = 10 //Brute stomps are low pitched and resonant, don't want them loud
+	step_range = 4
+	step_priority = 5
+	pain_audio_threshold = 0.03 //Gotta set this low to compensate for his high health
+	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/brute_step_1.ogg',
+	'sound/effects/footstep/brute_step_2.ogg',
+	'sound/effects/footstep/brute_step_3.ogg',
+	'sound/effects/footstep/brute_step_4.ogg',
+	'sound/effects/footstep/brute_step_5.ogg',
+	'sound/effects/footstep/brute_step_6.ogg'),
+	SOUND_PAIN = list('sound/effects/creatures/necromorph/brute_pain_1.ogg',
+	 'sound/effects/creatures/necromorph/brute_pain_2.ogg',
+	 'sound/effects/creatures/necromorph/brute_pain_3.ogg',
+	 'sound/effects/creatures/necromorph/brute_pain_extreme.ogg' = 0.2),
+	SOUND_DEATH = list('sound/effects/creatures/necromorph/brute_death.ogg'),
+	SOUND_ATTACK = list('sound/effects/creatures/necromorph/brute_attack_1.ogg',
+	'sound/effects/creatures/necromorph/brute_attack_2.ogg',
+	'sound/effects/creatures/necromorph/brute_attack_3.ogg'),
+	SOUND_SHOUT = list('sound/effects/creatures/necromorph/brute_shout_1.ogg',
+	'sound/effects/creatures/necromorph/brute_shout_2.ogg',
+	'sound/effects/creatures/necromorph/brute_shout_3.ogg'),
+	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/brute_shout_long.ogg')
+	)
 /*
 	Brute charge: Slower but more powerful due to mob size.
 	Shorter windup time making it deadly at close range
@@ -58,10 +83,13 @@
 
 	.= charge_attack(A, _delay = 1.5 SECONDS, _speed = 3, _lifespan = 8 SECONDS, _inertia = TRUE)
 	if (.)
-		var/mob/H = src
+		var/mob/living/carbon/human/H = src
 		if (istype(H))
 			H.face_atom(A)
-		//Do some audio cues here
+			if (isliving(A) && prob(40)) //When we're charging a mob, sometimes do the long shout
+				H.play_species_audio(H, SOUND_SHOUT_LONG, 80, 1, 5)
+			else
+				H.play_species_audio(H, SOUND_SHOUT, 80, 1, 5)
 		shake_animation(50)
 
 
@@ -73,8 +101,11 @@
 	if (!A)
 		A = get_step(src, dir)
 
-	return slam_attack(A, _damage = 35, _power = 1, _cooldown = 10 SECONDS)
 
+	.=slam_attack(A, _damage = 35, _power = 1, _cooldown = 10 SECONDS)
+	if (.)
+		var/mob/living/carbon/human/H = src
+		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
 
 
@@ -99,7 +130,12 @@
 			//Ok we will knock it back! Lets do some math
 
 			//Get a vector representing the offset from us to target
-			var/vector2/delta = new(L.x - user.x, L.y - user.y)
+			var/vector2/delta
+			if (get_turf(user) == get_turf(target))
+				var/turf/T = get_step(user, user.dir)
+				delta = new(T.x - user.x, T.y - user.y)
+			else
+				delta = new(L.x - user.x, L.y - user.y)
 			delta = delta.ToMagnitude(5) //Rescale it to a length of 5 tiles. This is our approximate knockback distance, although it may end up shorter with rounding and diagonals
 
 			var/turf/target_turf = locate(user.x + delta.x, user.y + delta.y, user.z) //Get the target turf to knock them towards

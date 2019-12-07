@@ -75,6 +75,11 @@
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN           // Flags that specify who can spawn as this specie
 
 
+	//Audio
+	step_volume = 60 //Necromorphs can't wear shoes, so their base footstep volumes are louder
+	step_range = 1
+	pain_audio_threshold = 0.10
+
 	has_organ = list(    // which required-organ checks are conducted.
 	BP_HEART =    /obj/item/organ/internal/heart/undead,
 	BP_LUNGS =    /obj/item/organ/internal/lungs/undead,
@@ -97,3 +102,8 @@
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
 	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
+
+
+//Individual necromorphs are identified only by their species
+/datum/species/necromorph/get_random_name()
+	return src.name

@@ -300,3 +300,5 @@
 
 	UNSETEMPTY(cloaking_sources)
 	return !cloaking_sources // If cloaking_sources wasn't initially null but is now, we've uncloaked
+
+

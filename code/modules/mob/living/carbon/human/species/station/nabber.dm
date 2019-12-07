@@ -17,8 +17,8 @@
 	name_language = LANGUAGE_GUTTER
 	min_age = 8
 	max_age = 40
+	species_audio = list(SOUND_SPEECH = list('sound/voice/bug.ogg'))
 
-	speech_sounds = list('sound/voice/bug.ogg')
 	speech_chance = 2
 
 	warning_low_pressure = 50

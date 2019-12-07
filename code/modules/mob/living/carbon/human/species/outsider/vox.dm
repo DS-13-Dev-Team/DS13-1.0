@@ -17,7 +17,7 @@
 	dealing with their traders and merchants; those that do rarely enjoy the experience."
 
 	taste_sensitivity = TASTE_DULL
-	speech_sounds = list('sound/voice/shriek1.ogg')
+	species_audio = list(SOUND_SPEECH = list('sound/voice/shriek1.ogg'))
 	speech_chance = 20
 
 	warning_low_pressure = 50

@@ -57,9 +57,8 @@
 	gibbed_anim = "gibbed-a"
 	dusted_anim = "dust-a"
 	death_message = "lets out a waning guttural screech, green blood bubbling from its maw."
-	death_sound = 'sound/voice/hiss6.ogg'
+	species_audio = list(SOUND_DEATH = list('sound/voice/hiss6.ogg'), SOUND_SPEECH = list('sound/voice/hiss1.ogg','sound/voice/hiss2.ogg','sound/voice/hiss3.ogg','sound/voice/hiss4.ogg'))
 
-	speech_sounds = list('sound/voice/hiss1.ogg','sound/voice/hiss2.ogg','sound/voice/hiss3.ogg','sound/voice/hiss4.ogg')
 	speech_chance = 100
 
 	breath_type = null

@@ -216,9 +216,9 @@
 					used_radios += r_ear
 
 /mob/living/carbon/human/handle_speech_sound()
-	if(species.speech_sounds && prob(species.speech_chance))
+	if(prob(species.speech_chance))
 		var/list/returns[2]
-		returns[1] = sound(pick(species.speech_sounds))
+		returns[1] = sound(get_species_audio(SOUND_SPEECH))
 		returns[2] = 50
 		return returns
 	return ..()

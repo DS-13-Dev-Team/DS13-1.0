@@ -24,6 +24,10 @@
 	heat_capacity = 10000
 	var/lava = 0
 
+	//A list of structures on this floor which may affect footstep sounds
+	var/list/step_structures = list()
+	var/step_priority = 1
+
 /turf/simulated/floor/is_plating()
 	return !flooring
 
@@ -40,6 +44,7 @@
 /turf/simulated/floor/proc/set_flooring(var/decl/flooring/newflooring)
 	make_plating(defer_icon_update = 1)
 	flooring = newflooring
+	step_priority = newflooring.step_priority
 	update_icon(1)
 	levelupdate()
 
