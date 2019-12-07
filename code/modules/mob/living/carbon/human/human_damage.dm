@@ -1,7 +1,5 @@
 //Updates the mob's health from organs and mob damage variables
-var/global/human_health_calls = 0
 /mob/living/carbon/human/updatehealth()
-	human_health_calls++
 
 	if(status_flags & GODMODE)
 		health = maxHealth
