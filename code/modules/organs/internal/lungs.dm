@@ -56,13 +56,15 @@
 		return 0
 	var/last_suffocation = oxygen_deprivation
 	oxygen_deprivation = min(species.total_health,max(0,oxygen_deprivation - amount))
-	if (owner)	owner.updatehealth()
+	if (owner)
+		owner.updatehealth()
 	return -(oxygen_deprivation - last_suffocation)
 
 /obj/item/organ/internal/lungs/proc/add_oxygen_deprivation(var/amount)
 	var/last_suffocation = oxygen_deprivation
 	oxygen_deprivation = min(species.total_health,max(0,oxygen_deprivation + amount))
-	if (owner)	owner.updatehealth()
+	if (owner)
+		owner.updatehealth()
 	return (oxygen_deprivation - last_suffocation)
 
 // Returns a percentage value for use by GetOxyloss().

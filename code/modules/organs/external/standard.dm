@@ -155,4 +155,3 @@
 	amputation_point = "right wrist"
 
 
-
