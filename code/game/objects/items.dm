@@ -207,7 +207,11 @@
 		var/mob/living/carbon/human/H
 		if (istype(user, /mob/living/carbon/human))
 			H = user
+		if (H && !H.species.can_pickup)
+			to_chat(user, "<span class='warning'>You lack the manual dexterity to pick up objects!</span>")
+			return
 		var/organ_name = BP_R_HAND
+
 		if (user.hand)
 			organ_name = BP_L_HAND
 		var/obj/item/organ/external/temp = H.organs_by_name[organ_name]
