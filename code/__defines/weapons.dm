@@ -4,11 +4,11 @@
 //These are due for a review and overhaul, generally too powerful
 #define WEAPON_FORCE_HARMLESS    3
 #define WEAPON_FORCE_WEAK        7
-#define WEAPON_FORCE_NORMAL      10
-#define WEAPON_FORCE_PAINFULL    15
-#define WEAPON_FORCE_DANGEROUS   20
-#define WEAPON_FORCE_ROBUST      26
-#define WEAPON_FORCE_LETHAL      51
+#define WEAPON_FORCE_NORMAL      8
+#define WEAPON_FORCE_PAINFUL     12
+#define WEAPON_FORCE_DANGEROUS   16
+#define WEAPON_FORCE_ROBUST      20
+#define WEAPON_FORCE_LETHAL      30
 
 
 //Resistance values, used on floors, windows, airlocks, girders, and similar hard targets

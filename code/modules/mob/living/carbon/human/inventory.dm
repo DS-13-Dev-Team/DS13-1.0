@@ -431,4 +431,51 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(slot_r_hand)
 			return BP_R_ARM
 
+
+
+
+
+//This proc updates a specific inventory slot only
+/mob/living/carbon/human/proc/update_slot(slot, redraw_mob = TRUE)
+
+	switch(slot)
+		if(slot_back)
+			update_inv_back(redraw_mob)
+		if(slot_wear_mask)
+			update_inv_wear_mask(redraw_mob)
+		if(slot_handcuffed)
+			update_inv_handcuffed(redraw_mob)
+		if(slot_l_hand)
+			update_inv_l_hand(redraw_mob)
+		if(slot_r_hand)
+			update_inv_r_hand(redraw_mob)
+		if(slot_belt)
+			update_inv_belt(redraw_mob)
+		if(slot_wear_id)
+			update_inv_wear_id(redraw_mob)
+		if(slot_l_ear)
+			update_inv_ears(redraw_mob)
+		if(slot_r_ear)
+			update_inv_ears(redraw_mob)
+		if(slot_glasses)
+			update_inv_glasses(redraw_mob)
+		if(slot_gloves)
+			update_inv_gloves(redraw_mob)
+		if(slot_head)
+			update_inv_head(redraw_mob)
+		if(slot_shoes)
+			update_inv_shoes(redraw_mob)
+		if(slot_wear_suit)
+			update_inv_wear_suit(redraw_mob)
+		if(slot_w_uniform)
+			update_inv_w_uniform(redraw_mob)
+		if(slot_l_store)
+			update_inv_pockets(redraw_mob)
+		if(slot_r_store)
+			update_inv_pockets(redraw_mob)
+		if(slot_s_store)
+			update_inv_s_store(redraw_mob)
+
+
+
 #undef REMOVE_INTERNALS

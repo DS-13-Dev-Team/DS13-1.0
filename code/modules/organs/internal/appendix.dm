@@ -24,7 +24,7 @@
 			if(prob(3))
 				take_internal_damage(0.1)
 				if(owner.can_feel_pain())
-					owner.visible_message("<B>\The [owner]</B> winces painfully.")
+					owner.visible_message("<B>\The [owner]</B> winces PAINFULy.")
 				owner.adjustToxLoss(1)
 		if(inflamed > 400)
 			if(prob(1))
