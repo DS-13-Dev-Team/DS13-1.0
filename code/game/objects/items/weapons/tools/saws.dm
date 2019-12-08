@@ -74,7 +74,7 @@
 	switched_on_force = WEAPON_FORCE_DANGEROUS
 	matter = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 3000)
 	tool_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20)
-	max_upgrades = 5
+	max_upgrades = 4
 	degradation = 0.05
 	use_power_cost = 0.22
 	passive_power_cost = 0.03
@@ -94,9 +94,9 @@
 /obj/item/weapon/tool/saw/plasma/turn_on()
 	.=..()
 	flick("plasma_saw_ignite", src)
-	playsound(get_turf(src), 'sound/weapons/saberon.ogg', 50, 1)
+	playsound(get_turf(src), 'sound/weapons/saberon.ogg', 20, 1, -2)
 
 
 /obj/item/weapon/tool/saw/plasma/turn_off()
 	.=..()
-	playsound(get_turf(src), 'sound/weapons/saberoff.ogg', 50, 1)
+	playsound(get_turf(src), 'sound/weapons/saberoff.ogg', 20, 1, -2)
