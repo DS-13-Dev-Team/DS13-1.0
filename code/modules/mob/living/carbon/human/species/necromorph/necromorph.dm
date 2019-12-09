@@ -35,10 +35,21 @@
 	lying_rotation = 0
 
 	//Single iconstates. These are somewhat of a hack
+	var/single_icon = TRUE
 	icon_template = 'icons/mob/necromorph/48x48necros.dmi'
 	var/icon_normal = "slasher_d"
 	var/icon_lying = "slasher_d_lying"
 	var/icon_dead = "slasher_d_dead"
+
+	//Icon details. null out all of these, maybe someday they can be done
+	deform 			=   null
+	preview_icon 	= 	null
+	husk_icon 		=   null
+	damage_overlays =   null
+	damage_mask 	=   null
+	blood_mask 		=   null
+
+
 
 	//Biology
 	blood_color = COLOR_BLOOD_NECRO

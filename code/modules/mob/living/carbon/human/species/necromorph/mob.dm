@@ -32,8 +32,14 @@
 //Override all that complicated limb-displaying stuff, with singular icons
 /mob/living/carbon/human/necromorph/update_body(var/update_icons=1)
 	var/datum/species/necromorph/N = species
+
+
 	if (!istype(N))
 		return
+
+	//If single icon is turned off, do the normal thing
+	if (!N.single_icon)
+		return ..()
 
 	stand_icon = N.icon_template
 	icon = stand_icon
