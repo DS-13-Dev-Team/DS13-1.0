@@ -181,6 +181,7 @@
 	// Body/form vars.
 	var/list/inherent_verbs 	  // Species-specific verbs.
 	var/has_fine_manipulation = 1 // Can use small items.
+	var/can_pickup	=	TRUE	  // Can pickup items at all
 	var/siemens_coefficient = 1   // The lower, the thicker the skin and better the insulation.
 	var/species_flags = 0         // Various specific features.
 	var/appearance_flags = 0      // Appearance/display related features.
