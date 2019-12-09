@@ -13,6 +13,7 @@
 
 	var/use_power_cost = 0	//For tool system, determinze how much power tool will drain from cells, 0 means no cell needed
 	var/obj/item/weapon/cell/cell = null
+	var/passive_power_cost = 0
 	var/suitable_cell = null	//Dont forget to edit this for a tool, if you want in to consume cells
 
 	var/use_fuel_cost = 0	//Same, only for fuel. And for the sake of God, DONT USE CELLS AND FUEL SIMULTANEOUSLY.
@@ -110,6 +111,9 @@
 			if(!consume_fuel(passive_fuel_cost))
 				turn_off()
 
+		if (passive_power_cost)
+			if (!cell.checked_use(passive_power_cost))
+				turn_off()
 
 //Cell reload
 /obj/item/weapon/tool/MouseDrop(over_object)
@@ -596,7 +600,7 @@
 	if(glow_color)
 		set_light(1, 1, 3, l_color = glow_color)
 	update_icon()
-	//update_wear_icon() //Too tied into eris' inventory system, need to find a better path to do this
+	update_wear_icon() //Too tied into eris' inventory system, need to find a better path to do this
 
 /obj/item/weapon/tool/proc/turn_off(mob/user)
 	switched_on = FALSE
@@ -606,7 +610,7 @@
 	if(glow_color)
 		set_light(0,0, 0)
 	update_icon()
-	//update_wear_icon() //Too tied into eris' inventory system, need to find a better path to do this
+	update_wear_icon() //Too tied into eris' inventory system, need to find a better path to do this
 
 
 

@@ -1303,7 +1303,7 @@ obj/item/organ/external/proc/remove_clamps()
 	if(brute_dam + force < min_broken_damage/5)	//no papercuts moving bones
 		return
 	if(internal_organs.len && prob(brute_dam + force))
-		owner.custom_pain("A piece of bone in your [encased ? encased : name] moves painfully!", 50, affecting = src)
+		owner.custom_pain("A piece of bone in your [encased ? encased : name] moves PAINFULy!", 50, affecting = src)
 		var/obj/item/organ/internal/I = pick(internal_organs)
 		I.take_internal_damage(rand(3,5))
 

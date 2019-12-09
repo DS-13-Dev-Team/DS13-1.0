@@ -127,7 +127,7 @@
 		if(1 to 10)
 			H.custom_pain("The muscles in your body hurt a little.",0)
 		if(11 to 30)
-			H.custom_pain("The muscles in your body cramp up painfully.",0)
+			H.custom_pain("The muscles in your body cramp up PAINFULy.",0)
 		if(31 to INFINITY)
 			H.visible_message("<B>\The [src]</B> flinches as all the muscles in their body cramp up.")
 			H.custom_pain("There's pain all over your body.",1)

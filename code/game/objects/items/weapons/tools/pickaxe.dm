@@ -68,3 +68,47 @@
 	tool_qualities = list(QUALITY_DIGGING = 15, QUALITY_PRYING = 15, QUALITY_EXCAVATION = 30)
 	w_class = ITEM_SIZE_NORMAL
 	matter = list(MATERIAL_STEEL = 800)
+
+
+/obj/item/weapon/tool/pickaxe/ds_rocksaw
+	name = "rock saw"
+	desc = "An energised mining tool for surveying and retrieval of objects embedded in otherwise dense material. Very dangerous, will cut through flesh and bone with ease."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "ds_rocksaw0"
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+	slot_flags = SLOT_BELT
+	switched_on_force = WEAPON_FORCE_DANGEROUS
+	force = WEAPON_FORCE_NORMAL
+	throwforce = WEAPON_FORCE_NORMAL
+	item_state = "ds_rocksaw0"
+	w_class = ITEM_SIZE_HUGE
+	matter = list(MATERIAL_STEEL = 1200, MATERIAL_PLASTIC = 800)
+	tool_qualities = list(QUALITY_DIGGING = 50, QUALITY_DRILLING = 20, QUALITY_EXCAVATION = 15, QUALITY_SAWING = 60, QUALITY_CUTTING = 50)
+	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
+	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
+	sharp = 1
+	edge = 1
+	max_upgrades = 4
+	degradation = 0.10
+	use_power_cost = 0.44
+	passive_power_cost = 0.06
+	suitable_cell = /obj/item/weapon/cell
+	toggleable = TRUE
+
+/obj/item/weapon/tool/pickaxe/ds_rocksaw/update_icon()
+	if (switched_on)
+		icon_state = "ds_rocksaw1"
+		item_state = "ds_rocksaw1"
+	else
+		icon_state = "ds_rocksaw0"
+		item_state = "ds_rocksaw0"
+
+
+/obj/item/weapon/tool/pickaxe/ds_rocksaw/turn_on()
+	.=..()
+	playsound(get_turf(src), 'sound/weapons/saberon.ogg', 20, 1, -2)
+
+
+/obj/item/weapon/tool/pickaxe/ds_rocksaw/turn_off()
+	.=..()
+	playsound(get_turf(src), 'sound/weapons/saberoff.ogg', 20, 1, -2)

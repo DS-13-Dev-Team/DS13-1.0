@@ -3,7 +3,7 @@
 	desc = "Cut, cut, and once more cut."
 	icon_state = "scalpel_t3"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
-	force = WEAPON_FORCE_PAINFULL
+	force = WEAPON_FORCE_PAINFUL
 	sharp = TRUE
 	edge = TRUE
 	w_class = ITEM_SIZE_TINY

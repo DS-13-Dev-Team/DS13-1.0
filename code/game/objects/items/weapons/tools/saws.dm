@@ -19,7 +19,7 @@
 	name = "choppa"
 	desc = "A wicked serrated blade made of whatever nasty sharp things you could find. It would make a pretty decent weapon"
 	icon_state = "impro_saw"
-	force = WEAPON_FORCE_PAINFULL
+	force = WEAPON_FORCE_PAINFUL
 	tool_qualities = list(QUALITY_SAWING = 15, QUALITY_CUTTING = 10, QUALITY_WIRE_CUTTING = 10)
 	degradation = 0.7
 
@@ -29,7 +29,7 @@
 	icon_state = "saw"
 	hitsound = WORKSOUND_CIRCULAR_SAW
 	worksound = WORKSOUND_CIRCULAR_SAW
-	force = WEAPON_FORCE_ROBUST
+	force = WEAPON_FORCE_PAINFUL
 	matter = list(MATERIAL_STEEL = 1000, MATERIAL_PLASTIC = 600)
 	tool_qualities = list(QUALITY_SAWING = 40, QUALITY_CUTTING = 30, QUALITY_WIRE_CUTTING = 30)
 
@@ -56,9 +56,47 @@
 	icon_state = "chainsaw"
 	hitsound = WORKSOUND_CHAINSAW
 	worksound = WORKSOUND_CHAINSAW
-	force = WEAPON_FORCE_ROBUST
+	force = WEAPON_FORCE_DANGEROUS
 	matter = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 3000)
 	tool_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20)
 	max_upgrades = 4
 	use_fuel_cost = 0.1
 	max_fuel = 80
+
+/obj/item/weapon/tool/saw/plasma
+	name = "SH-B1 Plasma Saw"
+	desc = "The SH-B1 Plasma Saw is designed for dissection of heavy duty materials in both on and off-site locations. Users are advised to always wear protective clothing when the saw is in use."
+	icon_state = "plasma_saw_off"
+	item_state = "plasma_saw_off"
+	hitsound = WORKSOUND_CHAINSAW
+	worksound = WORKSOUND_CHAINSAW
+	force = WEAPON_FORCE_HARMLESS
+	switched_on_force = WEAPON_FORCE_DANGEROUS
+	matter = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 3000)
+	tool_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20)
+	max_upgrades = 4
+	degradation = 0.05
+	use_power_cost = 0.22
+	passive_power_cost = 0.03
+	suitable_cell = /obj/item/weapon/cell
+	toggleable = TRUE
+
+
+/obj/item/weapon/tool/saw/plasma/update_icon()
+	if (switched_on)
+		icon_state = "plasma_saw_on"
+		item_state = "plasma_saw_on"
+	else
+		icon_state = "plasma_saw_off"
+		item_state = "plasma_saw_off"
+
+
+/obj/item/weapon/tool/saw/plasma/turn_on()
+	.=..()
+	flick("plasma_saw_ignite", src)
+	playsound(get_turf(src), 'sound/weapons/saberon.ogg', 20, 1, -2)
+
+
+/obj/item/weapon/tool/saw/plasma/turn_off()
+	.=..()
+	playsound(get_turf(src), 'sound/weapons/saberoff.ogg', 20, 1, -2)

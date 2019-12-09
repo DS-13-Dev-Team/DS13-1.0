@@ -7,7 +7,7 @@
 	icon_state = "crowbar"
 	item_state = "crowbar"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
-	force = WEAPON_FORCE_PAINFULL
+	force = WEAPON_FORCE_PAINFUL
 	worksound = WORKSOUND_EASY_CROWBAR
 	w_class = ITEM_SIZE_NORMAL
 	//storage_cost = ITEM_SIZE_NORMAL //Unimplemented mechanic to override automatic storage cost generation

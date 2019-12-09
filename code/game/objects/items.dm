@@ -851,3 +851,9 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		return equip_slot
 	else
 		return slot_none
+
+
+/obj/item/proc/update_wear_icon()
+	if (ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_slot(equip_slot)

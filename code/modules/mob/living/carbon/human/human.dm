@@ -852,8 +852,8 @@
 	else
 		var/msg = pick( \
 			"<span class='warning'>A spike of pain jolts your [organ.name] as you bump [O] inside.</span>", \
-			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>", \
-			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>")
+			"<span class='warning'>Your movement jostles [O] in your [organ.name] PAINFULy.</span>", \
+			"<span class='warning'>Your movement jostles [O] in your [organ.name] PAINFULy.</span>")
 		custom_pain(msg,40,affecting = organ)
 
 	organ.take_external_damage(rand(1,3), 0, 0)
