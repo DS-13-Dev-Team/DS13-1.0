@@ -17,7 +17,7 @@
 	unarmed_types = list(/datum/unarmed_attack/claws) //Bite attack is a backup if blades are severed
 	total_health = 80
 
-	icon_template = 'icons/mob/necromorph/64x64necros.dmi'
+	icon_template = 'icons/mob/necromorph/leaper.dmi'
 	icon_normal = "leaper"
 	icon_lying = "leaper"
 	icon_dead = "leaper"
@@ -198,7 +198,9 @@
 	if (!A)
 		A = get_step(src, dir)
 
-	play_species_audio(src, SOUND_ATTACK, 30, 1)
+	//The sound has a randomised delay
+	spawn(rand_between(0, 2 SECONDS))
+		play_species_audio(src, SOUND_ATTACK, 30, 1)
 	return tailstrike_attack(A, _damage = 25, _windup_time = 0.75 SECONDS, _winddown_time = 1.2 SECONDS, _cooldown = 0)
 
 
@@ -209,6 +211,7 @@
 	if (!A)
 		A = get_step(src, dir)
 
-
-	play_species_audio(src, SOUND_ATTACK, 30, 1)
+	//The sound has a randomised delay
+	spawn(rand_between(0, 1.8 SECONDS))
+		play_species_audio(src, SOUND_ATTACK, 30, 1)
 	return tailstrike_attack(A, _damage = 28, _windup_time = 0.6 SECONDS, _winddown_time = 1 SECONDS, _cooldown = 0)

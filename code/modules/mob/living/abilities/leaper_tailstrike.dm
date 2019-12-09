@@ -100,11 +100,11 @@
 		animate(transform = cached_transform, pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = winddown_time*0.7, easing = SINE_EASING | EASE_OUT)
 
 	//Lets play a whiplash sound, just before impact
-	spawn(windup_time - 3)
+	spawn(windup_time - 5)
 		playsound(user, pick(list('sound/effects/creatures/necromorph/leaper/leaper_tailswing_1.ogg',
 		'sound/effects/creatures/necromorph/leaper/leaper_tailswing_2.ogg',
 		'sound/effects/creatures/necromorph/leaper/leaper_tailswing_3.ogg',
-		'sound/effects/creatures/necromorph/leaper/leaper_tailswing_4.ogg')), 80, 1, -1)
+		'sound/effects/creatures/necromorph/leaper/leaper_tailswing_4.ogg')), 40, 1, -1)
 
 	//Start a timer to do the finishing hit
 	tailstrike_timer = addtimer(CALLBACK(src, .proc/finish), windup_time, TIMER_STOPPABLE)
@@ -234,7 +234,6 @@
 /mob/living/carbon/human/can_tailstrike(var/atom/target, var/error_messages = TRUE)
 	var/obj/item/organ/external/E = get_organ(BP_TAIL)
 	if(!E || E.is_stump() || (E.status & ORGAN_BROKEN))
-		world << "No tail"
 		return FALSE
 	.=..()
 
@@ -242,8 +241,6 @@
 	//First of all, lets check if we're currently able to do the thing
 	if (!can_tailstrike(_target, TRUE))
 		return FALSE
-
-	world << "Can tailstrike, doing now"
 	//Ok we've passed all safety checks, let's commence strike!
 	//We simply create the extension on the movable atom, and everything works from there
 	set_extension(src, /datum/extension/tailstrike, /datum/extension/tailstrike, _target, _damage,  _windup_time, _winddown_time, _cooldown)
