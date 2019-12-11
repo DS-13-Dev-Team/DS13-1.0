@@ -57,6 +57,7 @@
 		flick(pick(animations), user)
 
 	//Make random sounds sometimes when we twitch.
+	//I originally tested this without a prob call, and it got annoying real fast
 	if (prob(20))
 		var/sound_type = pickweight(list(SOUND_SPEECH = 6, SOUND_ATTACK  = 2, SOUND_PAIN = 1.5, SOUND_SHOUT = 1))
 		user.play_species_audio(user, sound_type, VOLUME_QUIET, 1, -1)
