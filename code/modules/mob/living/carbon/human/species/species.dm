@@ -70,7 +70,7 @@
 	var/additional_langs                      // Any other languages the species always gets.
 
 	//Audio vars
-	var/step_volume = 30	//Base volume of ALL footstep sounds for this mob
+	var/step_volume = VOLUME_MID	//Base volume of ALL footstep sounds for this mob
 	var/step_range = -1		//Base volume of ALL footstep sounds for this mob. Each point of range adds or subtracts two tiles from the actual audio distance
 	var/step_priority = 0	//Base priority of species-specific footstep sounds. Zero disables them
 	var/pain_audio_threshold = 0	//If a mob takes damage equal to this portion of its total health, (and audio files exist), it will scream in pain
@@ -811,7 +811,7 @@ These procs should return their entire args list. Best just to return parent in 
 		if (total_damage >= (total_health * pain_audio_threshold))
 			var/mob/living/L = organ.owner
 			if (!L.incapacitated(INCAPACITATION_KNOCKOUT) && L.check_audio_cooldown(SOUND_PAIN)) //Must be conscious to scream
-				play_species_audio(L, SOUND_PAIN, 60, 1)
+				play_species_audio(L, SOUND_PAIN, VOLUME_HIGH, 1)
 				L.set_audio_cooldown(SOUND_PAIN, 3 SECONDS)
 	return args.Copy(2)
 

@@ -3,7 +3,7 @@
 	set name = "Shout"
 	set category = "Abilities"
 	if (check_audio_cooldown(SOUND_SHOUT))
-		if (play_species_audio(src, SOUND_SHOUT, 100, 1, 2))
+		if (play_species_audio(src, SOUND_SHOUT, VOLUME_HIGH, 1, 2))
 			src.Stun(2)
 			src.shake_animation(40)
 			set_audio_cooldown(SOUND_SHOUT, 8 SECONDS)
