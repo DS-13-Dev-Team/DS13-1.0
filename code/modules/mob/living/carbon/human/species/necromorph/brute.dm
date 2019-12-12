@@ -1,4 +1,4 @@
-/datum/species/necromorph/brute/brute
+/datum/species/necromorph/brute
 	name = SPECIES_NECROMORPH_BRUTE
 	name_plural =  "Brutes"
 	blurb = "The Brute is a large Necromorph composed of multiple human corpses. It has heavy organic armor in its front and possesses extreme physical \
@@ -174,7 +174,7 @@
 */
 
 //The brute takes less damage from front and side attacks.
-/datum/species/necromorph/brute/brute/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+/datum/species/necromorph/brute/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
 	//First of all, we need to figure out where the attack is coming from
 	var/atom/source
 	if (isatom(used_weapon))	//Its possible used weapon might be a string, useless to us
@@ -244,7 +244,7 @@
 	return ..()
 
 //Brute armor does various neat effects if it fully blocks a hit
-/datum/species/necromorph/brute/brute/proc/handle_armor_bounceoff(var/mob/user, var/atom/A)
+/datum/species/necromorph/brute/proc/handle_armor_bounceoff(var/mob/user, var/atom/A)
 	if (isprojectile(A))
 		//Projectiles will ricochet off in a random direction
 		var/obj/item/projectile/P = A
