@@ -224,3 +224,21 @@
 		if(!istype(heart) || !heart.is_working())
 			return TRUE
 	return FALSE
+
+//Used when we target a missing organ but still want to hit something. Tries to find the next organ up the hierarchy to hit instea
+//External only
+/mob/living/carbon/human/proc/find_target_organ(var/hit_zone)
+	var/depth = 3 //Max repetitions to search
+	var/obj/item/organ/external/found_organ = null
+	while (!found_organ && depth)
+		found_organ = organs_by_name[hit_zone]
+		if (!found_organ || found_organ.is_stump()) //If we didn't find it, recurse up
+			depth--
+			hit_zone = GLOB.organ_parents[hit_zone]
+			found_organ = null
+			if (!hit_zone) //Something went wrong
+				return null
+
+		else
+			return found_organ
+	return null

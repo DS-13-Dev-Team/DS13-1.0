@@ -287,22 +287,18 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 			droplimb(0, edge_eligible ? DROPLIMB_EDGE : DROPLIMB_BLUNT)
 		return TRUE
 
-	if(edge_eligible && brute >= max_damage / DROPLIMB_THRESHOLD_EDGE)
-		if(prob(brute))
-			droplimb(0, DROPLIMB_EDGE)
-			return TRUE
-	else if(burn >= max_damage / DROPLIMB_THRESHOLD_DESTROY)
-		if(prob(burn/3))
-			droplimb(0, DROPLIMB_BURN)
-			return TRUE
-	else if(brute >= max_damage / DROPLIMB_THRESHOLD_DESTROY)
-		if(prob(brute))
-			droplimb(0, DROPLIMB_BLUNT)
-			return TRUE
-	else if(brute >= max_damage / DROPLIMB_THRESHOLD_TEAROFF)
-		if(prob(brute/3))
-			droplimb(0, DROPLIMB_EDGE)
-			return TRUE
+	if((edge_eligible && brute >= max_damage / DROPLIMB_THRESHOLD_EDGE) && prob(brute))
+		droplimb(0, DROPLIMB_EDGE)
+		return TRUE
+	else if((burn >= max_damage / DROPLIMB_THRESHOLD_DESTROY) && prob(burn/3))
+		droplimb(0, DROPLIMB_BURN)
+		return TRUE
+	else if((brute >= max_damage / DROPLIMB_THRESHOLD_DESTROY) && prob(brute))
+		droplimb(0, DROPLIMB_BLUNT)
+		return TRUE
+	else if((brute >= max_damage / DROPLIMB_THRESHOLD_TEAROFF) && prob(brute/3))
+		droplimb(0, DROPLIMB_EDGE)
+		return TRUE
 	else
 		//Lets handle cumulative damage. No probabilities, guaranteed effect if enough damage accumulates
 
