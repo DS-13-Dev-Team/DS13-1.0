@@ -148,12 +148,14 @@ Please contact me on #coderbus IRC. ~Carn x
 
 //UPDATES OVERLAYS FROM OVERLAYS_LYING/OVERLAYS_STANDING
 /mob/living/carbon/human/update_icons()
-	lying_prev = lying	//so we don't update overlays for lying/standing unless our stance changes again
+
 	update_hud()		//TODO: remove the need for this
 	overlays.Cut()
 
 	var/list/overlays_to_apply = list()
 	if (icon_update)
+		if (species.icon_lying && lying != lying_prev)
+			update_body(TRUE)
 
 		var/list/visible_overlays
 		if(is_cloaked())
@@ -182,6 +184,8 @@ Please contact me on #coderbus IRC. ~Carn x
 		if(istype(head) && !head.is_stump())
 			var/image/I = head.get_eye_overlay()
 			if(I) overlays_to_apply += I
+
+	lying_prev = lying	//so we don't update overlays for lying/standing unless our stance changes again
 
 	if(auras)
 		overlays_to_apply += auras
@@ -308,6 +312,9 @@ var/global/list/damage_icon_parts = list()
 			icon_key += "3"
 		else
 			icon_key += "1"
+
+	if (lying && species.icon_lying)
+		icon_key += "_lying"
 
 	icon_key = "[icon_key][husk ? 1 : 0][fat ? 1 : 0][hulk ? 1 : 0][skeleton ? 1 : 0]"
 

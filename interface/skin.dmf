@@ -610,8 +610,6 @@ macro "hotkeymode"
 		name = "F5"
 		command = "msay"
 	elem 
-		name = "F5+REP"
-	elem 
 		name = "F6"
 		command = "Player-Panel-New"
 	elem 
@@ -793,6 +791,8 @@ macro "borgmacro"
 	elem 
 		name = "F12"
 		command = "F12"
+
+macro "macro1"
 
 
 menu "menu"

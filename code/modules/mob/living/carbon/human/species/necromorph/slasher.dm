@@ -10,22 +10,20 @@
 	total_health = 80
 
 	icon_template = 'icons/mob/necromorph/slasher.dmi'
-	icon_normal = "slasher_d"
-	icon_lying = "slasher_d_lying"
-	icon_dead = "slasher_d_dead"
+	icon_lying = "_lying"
 	pixel_offset_x = -8
+	single_icon = FALSE
+
 
 	has_limbs = list(
-	BP_CHEST =  list("path" = /obj/item/organ/external/chest),
-	BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-	BP_HEAD =   list("path" = /obj/item/organ/external/head),
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple),
+	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple),
 	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/blade),
 	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right),
-	BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
-	BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-	BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple),
+	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple)
 	)
+
 
 	species_audio = list(
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/slasher/slasher_attack_1.ogg',
@@ -139,3 +137,12 @@
 		return
 	else
 		return ..()
+
+
+
+//Special death condition: Slashers die when they lose both blade arms
+/datum/species/necromorph/slasher/handle_death_check(var/mob/living/carbon/human/H)
+	.=..()
+	if (!.)
+		if (!H.has_organ(BP_L_ARM) && !H.has_organ(BP_R_ARM))
+			return TRUE

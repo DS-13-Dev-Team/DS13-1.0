@@ -303,3 +303,14 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		if(prob(brute/3))
 			droplimb(0, DROPLIMB_EDGE)
 			return TRUE
+	else
+		//Lets handle cumulative damage. No probabilities, guaranteed effect if enough damage accumulates
+
+		//Any edge weapon can cut off a limb if its been thoroughly broken
+		if (edge && damage >= max_damage * DROPLIMB_CUMULATIVE_TEAROFF)
+			droplimb(0, DROPLIMB_EDGE)
+			return TRUE
+		//Any limb can be beaten to a pulp with enough repeated hits
+		else if (damage >= max_damage * DROPLIMB_CUMULATIVE_DESTROY)
+			droplimb(0, DROPLIMB_BLUNT)
+			return TRUE

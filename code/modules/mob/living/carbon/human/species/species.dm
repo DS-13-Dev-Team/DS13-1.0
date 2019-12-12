@@ -17,6 +17,13 @@
 	var/husk_icon =    'icons/mob/human_races/species/default_husk.dmi'
 	var/lying_rotation = 90 //How much to rotate the icon when lying down
 
+	//This icon_lying var pulls several duties
+	//First, if its non-null, it indicates this species has some kind of special behaviour when lying down. This will trigger extra updates and things
+	//Secondly, it is the string suffix added to organ iconstates
+	//Thirdly, in single icon mode, it is the icon state for lying down
+	var/icon_lying = null
+
+
 	// Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/species/human/damage_overlay.dmi'
 	var/damage_mask =     'icons/mob/human_races/species/human/damage_mask.dmi'
