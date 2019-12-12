@@ -178,7 +178,7 @@
 			//Here seems a good enough place for attack audio
 			//Its not impact sounds, but screams of rage while swinging
 			if (H && H.check_audio_cooldown(SOUND_ATTACK))
-				H.play_species_audio(H, SOUND_ATTACK, 40, 1)
+				H.play_species_audio(H, SOUND_ATTACK, 20, 1, -1)
 				H.set_audio_cooldown(SOUND_ATTACK, 3 SECONDS)
 
 

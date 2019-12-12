@@ -18,6 +18,7 @@
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	sharp = 1
 	edge = 1
+	damage = 7
 
 /datum/unarmed_attack/claws/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 	if(user.gloves)
@@ -66,7 +67,7 @@
 
 /datum/unarmed_attack/claws/strong
 	attack_verb = list("slashed")
-	damage = 5
+	damage = 10.5
 	shredding = 1
 
 /datum/unarmed_attack/bite/weak
