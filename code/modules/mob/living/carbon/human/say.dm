@@ -219,7 +219,7 @@
 	if(prob(species.speech_chance))
 		var/list/returns[2]
 		returns[1] = sound(get_species_audio(SOUND_SPEECH))
-		returns[2] = 50
+		returns[2] = VOLUME_LOW
 		return returns
 	return ..()
 

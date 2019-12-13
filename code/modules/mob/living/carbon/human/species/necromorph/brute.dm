@@ -75,18 +75,18 @@
 	'sound/effects/footstep/brute_step_4.ogg',
 	'sound/effects/footstep/brute_step_5.ogg',
 	'sound/effects/footstep/brute_step_6.ogg'),
-	SOUND_PAIN = list('sound/effects/creatures/necromorph/brute_pain_1.ogg',
-	 'sound/effects/creatures/necromorph/brute_pain_2.ogg',
-	 'sound/effects/creatures/necromorph/brute_pain_3.ogg',
-	 'sound/effects/creatures/necromorph/brute_pain_extreme.ogg' = 0.2),
-	SOUND_DEATH = list('sound/effects/creatures/necromorph/brute_death.ogg'),
-	SOUND_ATTACK = list('sound/effects/creatures/necromorph/brute_attack_1.ogg',
-	'sound/effects/creatures/necromorph/brute_attack_2.ogg',
-	'sound/effects/creatures/necromorph/brute_attack_3.ogg'),
-	SOUND_SHOUT = list('sound/effects/creatures/necromorph/brute_shout_1.ogg',
-	'sound/effects/creatures/necromorph/brute_shout_2.ogg',
-	'sound/effects/creatures/necromorph/brute_shout_3.ogg'),
-	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/brute_shout_long.ogg')
+	SOUND_PAIN = list('sound/effects/creatures/necromorph/brute/brute_pain_1.ogg',
+	 'sound/effects/creatures/necromorph/brute/brute_pain_2.ogg',
+	 'sound/effects/creatures/necromorph/brute/brute_pain_3.ogg',
+	 'sound/effects/creatures/necromorph/brute/brute_pain_extreme.ogg' = 0.2),
+	SOUND_DEATH = list('sound/effects/creatures/necromorph/brute/brute_death.ogg'),
+	SOUND_ATTACK = list('sound/effects/creatures/necromorph/brute/brute_attack_1.ogg',
+	'sound/effects/creatures/necromorph/brute/brute_attack_2.ogg',
+	'sound/effects/creatures/necromorph/brute/brute_attack_3.ogg'),
+	SOUND_SHOUT = list('sound/effects/creatures/necromorph/brute/brute_shout_1.ogg',
+	'sound/effects/creatures/necromorph/brute/brute_shout_2.ogg',
+	'sound/effects/creatures/necromorph/brute/brute_shout_3.ogg'),
+	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/brute/brute_shout_long.ogg')
 	)
 
 /*
@@ -105,9 +105,9 @@
 		if (istype(H))
 			H.face_atom(A)
 			if (isliving(A) && prob(40)) //When we're charging a mob, sometimes do the long shout
-				H.play_species_audio(H, SOUND_SHOUT_LONG, 80, 1, 5)
+				H.play_species_audio(H, SOUND_SHOUT_LONG, VOLUME_HIGH, 1, 5)
 			else
-				H.play_species_audio(H, SOUND_SHOUT, 80, 1, 5)
+				H.play_species_audio(H, SOUND_SHOUT, VOLUME_HIGH, 1, 5)
 		shake_animation(50)
 
 
@@ -123,7 +123,7 @@
 	.=slam_attack(A, _damage = 35, _power = 1, _cooldown = 10 SECONDS)
 	if (.)
 		var/mob/living/carbon/human/H = src
-		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
+		H.play_species_audio(H, SOUND_SHOUT, VOLUME_HIGH, 1, 3)
 
 
 

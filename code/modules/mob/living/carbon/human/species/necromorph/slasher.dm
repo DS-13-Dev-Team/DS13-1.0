@@ -107,9 +107,9 @@
 
 			//Long shout when targeting mobs, normal when targeting objects
 			if (ismob(A))
-				H.play_species_audio(H, SOUND_SHOUT_LONG, 100, 1, 3)
+				H.play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_HIGH, 1, 3)
 			else
-				H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
+				H.play_species_audio(src, SOUND_SHOUT, VOLUME_HIGH, 1, 3)
 		shake_animation(30)
 
 

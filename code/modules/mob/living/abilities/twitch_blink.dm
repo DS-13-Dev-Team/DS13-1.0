@@ -22,7 +22,7 @@
 	var/list/animations = list("twitcher_anim_1", "twitcher_anim_2")
 
 	//Twitchers will blink to an adjacent tile when damaged, this effect has a cooldown
-	var/defensive_displace_cooldown = 5 SECONDS
+	var/defensive_displace_cooldown = 3 SECONDS
 
 	//Small chance to randomly displace each step taken. This does not trigger the defensive cooldown
 	var/movement_displace_chance = 4
@@ -55,6 +55,12 @@
 /datum/extension/twitch/proc/twitch_animation()
 	if (!user.lying)
 		flick(pick(animations), user)
+
+	//Make random sounds sometimes when we twitch.
+	//I originally tested this without a prob call, and it got annoying real fast
+	if (prob(20))
+		var/sound_type = pickweight(list(SOUND_SPEECH = 6, SOUND_ATTACK  = 2, SOUND_PAIN = 1.5, SOUND_SHOUT = 1))
+		user.play_species_audio(user, sound_type, VOLUME_QUIET, 1, -1)
 
 	set_next_idle_twitch()
 
