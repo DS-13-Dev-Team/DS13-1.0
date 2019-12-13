@@ -155,3 +155,15 @@
 	amputation_point = "right wrist"
 
 
+/obj/item/organ/external/tail
+	organ_tag = BP_TAIL
+	name = "tail"
+	icon_name = "tail"
+	body_part = TAIL
+	parent_organ = BP_GROIN
+	joint = "coccyx"
+	amputation_point = "hip"
+	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
+	max_damage = 90
+	min_broken_damage = 50
+	w_class = ITEM_SIZE_HUGE

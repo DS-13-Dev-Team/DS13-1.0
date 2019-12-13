@@ -30,3 +30,21 @@ Vector2
 				if(NORTHWEST) return Northwest
 				if(SOUTHWEST) return Southwest
 				else CRASH("Invalid direction.")
+
+	proc
+		//Gets a directional vector between two atoms
+		DirectionBetween(var/atom/A, var/atom/B)
+			var/vector2/delta = new /vector2(B.x - A.x, B.y - A.y)
+			delta = delta.ToMagnitude(1)
+			return delta
+
+	proc
+		MagnitudeBetween(var/atom/A, var/atom/B, var/magnitude)
+			var/vector2/delta = new /vector2(B.x - A.x, B.y - A.y)
+			delta = delta.ToMagnitude(magnitude)
+			return delta
+
+	proc
+		TurfAtMagnitudeBetween(var/atom/A, var/atom/B, var/magnitude)
+			var/vector2/delta = MagnitudeBetween(A, B, magnitude)
+			return locate(A.x + delta.x, A.y + delta.y, A.z)
