@@ -300,7 +300,7 @@
 /obj/item/weapon/storage/belt/utility/full/bst/New()
 	..()
 	//new /obj/item/weapon/tool/multitool(src)
-	new /obj/item/device/t_scanner(src)
+	new /obj/item/weapon/tool/saw/plasma(src)
 
 /mob/living/carbon/human/bst/restrained()
 	if (status_flags & GODMODE)

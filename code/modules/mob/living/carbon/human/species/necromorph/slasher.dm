@@ -15,13 +15,9 @@
 	single_icon = FALSE
 
 
-	has_limbs = list(
-	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple),
-	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple),
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/blade),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right),
-	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple),
-	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple)
+	override_limb_types = list(
+	BP_L_ARM =  /obj/item/organ/external/arm/blade,
+	BP_R_ARM =  /obj/item/organ/external/arm/blade/right,
 	)
 
 

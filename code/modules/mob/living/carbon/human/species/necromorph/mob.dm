@@ -24,9 +24,14 @@
 /mob/living/carbon/human/necromorph/leaper/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER_ENHANCED)
 	..(new_loc, new_species)
 
+/mob/living/carbon/human/necromorph/ubermorph/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_UBERMORPH)
+	..(new_loc, new_species)
+
 /mob/living/carbon/human/necromorph/update_icons()
 	.=..()
 	update_body(FALSE)
+
+
 
 #define DEBUG
 //Override all that complicated limb-displaying stuff, with singular icons

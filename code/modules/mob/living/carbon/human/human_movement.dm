@@ -20,8 +20,7 @@
 	if(CE_SLOWDOWN in chem_effects)
 		tally += chem_effects[CE_SLOWDOWN]
 
-	var/health_deficiency = (maxHealth - health)
-	if(health_deficiency >= 40) tally += (health_deficiency / 25)
+	//Removed section about health deficiency, it basically duplicates what pain does
 
 	if(can_feel_pain())
 		if(get_shock() >= 10) tally += (get_shock() / 10) //pain shouldn't slow you down if you can't even feel it
@@ -78,6 +77,7 @@
 
 	if(mRun in mutations)
 		tally = 0
+
 
 	return (tally+config.human_delay)
 

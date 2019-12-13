@@ -57,6 +57,8 @@
 
 	//Defense
 	total_health = 80
+	healing_factor = 0	//Necromorphs don't naturally heal, but they will be able to heal through certain situational effects
+	wound_remnant_time = 0 //No cuts sitting around forever
 	burn_mod = 1.3	//Takes more damage from burn attacks
 	blood_oxy = FALSE
 

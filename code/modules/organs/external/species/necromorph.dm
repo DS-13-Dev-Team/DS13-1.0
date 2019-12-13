@@ -72,3 +72,8 @@
 /obj/item/organ/external/hand/right/giant
 	max_damage = 180
 	min_broken_damage = 100
+
+
+/obj/item/organ/external/head/ubermorph
+	eye_icon_location = 'icons/mob/necromorph/ubermorph.dmi'
+	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL

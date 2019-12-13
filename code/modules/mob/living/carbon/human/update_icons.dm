@@ -188,6 +188,8 @@ Please contact me on #coderbus IRC. ~Carn x
 	lying_prev = lying	//so we don't update overlays for lying/standing unless our stance changes again
 
 	if(auras)
+		for (var/obj/o in auras)
+			world << "Aura: [o.name] [o.type]"
 		overlays_to_apply += auras
 
 	overlays = overlays_to_apply

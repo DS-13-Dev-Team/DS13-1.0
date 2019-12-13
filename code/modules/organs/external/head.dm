@@ -50,7 +50,7 @@
 	if(eye_icon_location)
 		var/cache_key = get_eye_cache_key()
 		if(!human_icon_cache[cache_key])
-			var/icon/eyes_icon = icon(icon = eye_icon_location, icon_state = "")
+			var/icon/eyes_icon = icon(icon = eye_icon_location, icon_state = "eyes")
 			if(apply_eye_colour)
 				eyes_icon.Blend(last_cached_eye_colour, ICON_ADD)
 			human_icon_cache[cache_key] = eyes_icon
