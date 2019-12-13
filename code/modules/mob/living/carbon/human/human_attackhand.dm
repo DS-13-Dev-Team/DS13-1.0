@@ -141,7 +141,7 @@
 			var/block = 0
 			var/accurate = 0
 			var/hit_zone = H.zone_sel.selecting
-			var/obj/item/organ/external/affecting = get_organ(hit_zone)
+			var/obj/item/organ/external/affecting = find_target_organ(hit_zone)
 
 			// See what attack they use
 			var/datum/unarmed_attack/attack = H.get_unarmed_attack(src, hit_zone)

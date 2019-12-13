@@ -80,6 +80,8 @@
 	passive_power_cost = 0.03
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
+	atom_flags = ATOM_FLAG_NO_BLOOD
+	item_flags = ITEM_FLAG_NO_EMBED
 
 
 /obj/item/weapon/tool/saw/plasma/update_icon()

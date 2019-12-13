@@ -18,7 +18,7 @@
 
 
 
-	death_message = "spasms and falls silent"
+	death_message = ""
 	knockout_message = "crumples into a heap"
 	halloss_message = "twitches and collapses"
 	halloss_message_self = "your limbs spasm violently, pitching you forward onto the ground"
@@ -35,10 +35,21 @@
 	lying_rotation = 0
 
 	//Single iconstates. These are somewhat of a hack
+	var/single_icon = TRUE
 	icon_template = 'icons/mob/necromorph/48x48necros.dmi'
 	var/icon_normal = "slasher_d"
-	var/icon_lying = "slasher_d_lying"
+	icon_lying = "slasher_d_lying"
 	var/icon_dead = "slasher_d_dead"
+
+	//Icon details. null out all of these, maybe someday they can be done
+	deform 			=   null
+	preview_icon 	= 	null
+	husk_icon 		=   null
+	damage_overlays =   null
+	damage_mask 	=   null
+	blood_mask 		=   null
+
+
 
 	//Biology
 	blood_color = COLOR_BLOOD_NECRO
@@ -107,6 +118,17 @@
 	BP_EYES =     /obj/item/organ/internal/eyes
 	)
 
+	locomotion_limbs = list(BP_L_LEG, BP_R_LEG)
+
+	has_limbs = list(
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple),
+	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple),
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple),
+	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple),
+	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple)
+	)
+
 
 /datum/species/necromorph/New()
 	.=..()
@@ -116,6 +138,10 @@
 
 /datum/species/necromorph/get_blood_name()
 	return "ichor"
+
+/datum/species/necromorph/get_icobase(var/mob/living/carbon/human/H)
+	return icon_template //We don't need to duplicate the same dmi path twice
+
 
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()

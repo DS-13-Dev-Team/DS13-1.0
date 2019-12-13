@@ -454,6 +454,10 @@
 
 //Handle some effects on hitting mobs
 /obj/item/projectile/sawblade/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+	//Update our hit location to wherever user is currently aiming
+	if (user)
+		def_zone = user.zone_sel.selecting
+
 	.=..()
 	health -= damage
 	playsound(target_mob, 'sound/weapons/bladeslice.ogg', 60, 1, 1)

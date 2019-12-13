@@ -12,6 +12,9 @@
 
 
 //Undead version for necromorphs
+/obj/item/organ/internal/liver/undead
+	parent_organ = BP_CHEST
+
 /obj/item/organ/internal/liver/undead/Initialize()
 	.=..()
 	die()

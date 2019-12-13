@@ -159,12 +159,13 @@ meteor_act
 	if(check_shields(I.force, I, user, target_zone, "the [I.name]"))
 		return null
 
-	var/obj/item/organ/external/affecting = get_organ(hit_zone)
+	var/obj/item/organ/external/affecting = find_target_organ(hit_zone)
 	if (!affecting || affecting.is_stump())
 		to_chat(user, "<span class='danger'>They are missing that limb!</span>")
 		return null
 
-	return hit_zone
+
+	return affecting.organ_tag
 
 /mob/living/carbon/human/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
