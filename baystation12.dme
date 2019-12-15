@@ -1725,6 +1725,7 @@
 #include "code\modules\mob\living\abilities\leaper_tailstrike.dm"
 #include "code\modules\mob\living\abilities\lunge.dm"
 #include "code\modules\mob\living\abilities\regenerate.dm"
+#include "code\modules\mob\living\abilities\sense.dm"
 #include "code\modules\mob\living\abilities\shout.dm"
 #include "code\modules\mob\living\abilities\slam.dm"
 #include "code\modules\mob\living\abilities\twitch_blink.dm"
