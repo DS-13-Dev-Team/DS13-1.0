@@ -28,7 +28,7 @@
 	density_lying = TRUE	//Chunky boi
 	evasion = -10	//Big target, easier to shoot
 
-	slowdown = 1
+	slowdown = 1.5 //Modest speed, but he has no charge ability
 
 	//Vision
 	view_range = 9
@@ -59,13 +59,20 @@
 	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/brute/brute_shout_long.ogg')
 	)
 
-	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/living/carbon/human/proc/ubermorph_regenerate, /mob/proc/shout)
-	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/slasher_charge))
+	inherent_verbs = list(/mob/living/carbon/human/proc/ubermorph_battlecry, /mob/living/carbon/human/proc/ubermorph_regenerate, /mob/proc/shout)
+	modifier_verbs = list(KEY_CTRLALT = list(/mob/living/carbon/human/proc/ubermorph_battlecry), KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/ubermorph_regenerate))
 
 /datum/species/necromorph/ubermorph/handle_death_check(var/mob/living/carbon/human/H)
 	//No
 	return FALSE
 
+
+/*
+	Regenerate
+	Immobilises you for 4 seconds, healing a fair chunk of damage and regrowing a missing limb.
+	No cooldown, can be used endlessly, can't be interrupted
+	It can't be used again while in progress though, obviously
+*/
 /mob/living/carbon/human/proc/ubermorph_regenerate()
 	set name = "Regenerate"
 	set category = "Abilities"
@@ -74,3 +81,19 @@
 	.= regenerate_ability(_heal_amount = 40, _duration = 4 SECONDS, _max_organs = 1, _cooldown = 0)
 	if (.)
 		play_species_audio(src, SOUND_PAIN, VOLUME_HIGH, 1, 3)
+
+
+/*
+	Battle cry
+	Drives necros into a frenzy, increasing their movement and attackspeed.
+
+	Duration is far longer than cooldown, so it has 100% uptime as long as necros stay nearby
+	Does not affect yourself, only other allies.
+*/
+/mob/living/carbon/human/proc/ubermorph_battlecry()
+	set name = "Battle Cry"
+	set category = "Abilities"
+
+	.=frenzy_shout_ability(30 SECONDS, 0.3, 10 SECONDS, FACTION_NECROMORPH, 9)
+	if (.)
+		play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_HIGH, 1, 3)

@@ -78,8 +78,10 @@
 	if(mRun in mutations)
 		tally = 0
 
+	tally += config.human_delay
+	tally /= get_move_speed_factor()
 
-	return (tally+config.human_delay)
+	return tally
 
 /mob/living/carbon/human/size_strength_mod()
 	. = ..()

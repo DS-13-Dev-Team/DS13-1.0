@@ -51,7 +51,7 @@
 	'sound/effects/creatures/necromorph/slasher/slasher_speech_2.ogg')
 	)
 
-	slowdown = 2.5
+	slowdown = 3.5
 
 	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/proc/shout)
 	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/slasher_charge))
@@ -60,7 +60,7 @@
 	name = SPECIES_NECROMORPH_SLASHER_ENHANCED
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 200
-	slowdown = 2
+	slowdown = 2.8
 
 
 

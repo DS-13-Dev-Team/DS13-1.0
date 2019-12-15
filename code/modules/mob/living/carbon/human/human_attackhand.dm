@@ -147,7 +147,7 @@
 			var/datum/unarmed_attack/attack = H.get_unarmed_attack(src, hit_zone)
 			if(!attack)
 				return 0
-			if(world.time < H.last_attack + attack.delay)
+			if(world.time < H.last_attack + attack.get_delay(H))
 				to_chat(H, "<span class='notice'>You can't attack again so soon.</span>")
 				return 0
 			else

@@ -35,7 +35,7 @@
 	return last_eye_cache_key
 
 /obj/item/organ/external/head/proc/get_eye_overlay()
-	if(glowing_eyes)
+	if(glowing_eyes && owner && !owner.stat) //Eyes only glow when the head is attached to an alive, conscious creature
 		var/icon/I = get_eyes()
 		if(I)
 			var/cache_key = "[last_eye_cache_key]-glow"

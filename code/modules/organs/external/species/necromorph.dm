@@ -75,5 +75,6 @@
 
 
 /obj/item/organ/external/head/ubermorph
+	glowing_eyes = TRUE
 	eye_icon_location = 'icons/mob/necromorph/ubermorph.dmi'
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL

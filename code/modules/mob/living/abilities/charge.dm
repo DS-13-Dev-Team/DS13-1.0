@@ -77,7 +77,7 @@
 	.=..()
 	user = holder
 	target = _target
-	speed = _speed
+	speed = _speed * user.get_move_speed_factor()
 	lifespan = _lifespan
 	range_left = _maxrange
 	homing = _homing
@@ -86,12 +86,18 @@
 		homing = FALSE
 	power = _power
 	cooldown = _cooldown
+	if (cooldown)
+		cooldown /= user.get_attack_speed_factor() //Factor in attackspeed
+
+
 
 	//Delay handling
 	if (!_delay)
 		//If no delay, start immediately
 		start()
 	else if (isnum(_delay) && _delay > 0)
+		_delay /= user.get_attack_speed_factor() //Factor in attackspeed
+
 		//If positive delay, wait that long before starting
 		start_timer = addtimer(CALLBACK(src, .proc/start), _delay, TIMER_STOPPABLE)
 

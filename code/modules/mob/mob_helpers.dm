@@ -739,3 +739,9 @@ proc/is_blind(A)
 	if (. && view_offset)
 		reset_view(null)	//Possible future consideration, should this call handle_vision instead?
 							//Seems pointlessly expensive for now, but consider it if there are problems
+
+/mob/living/get_move_speed_factor()
+	return move_speed_factor
+
+/mob/living/get_attack_speed_factor()
+	return attack_speed_factor

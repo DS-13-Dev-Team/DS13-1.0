@@ -148,7 +148,7 @@
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
 	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
-
+	H.faction = FACTION_NECROMORPH
 
 
 //We don't want to be suffering for the lack of any particular organs

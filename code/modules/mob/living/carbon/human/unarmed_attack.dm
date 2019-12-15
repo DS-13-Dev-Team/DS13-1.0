@@ -58,6 +58,12 @@ var/global/list/sparring_attack_cache = list()
 /datum/unarmed_attack/proc/get_unarmed_damage()
 	return damage
 
+//Factor in attackspeed here
+/datum/unarmed_attack/proc/get_delay(var/mob/living/user)
+	if (isnum(delay) && delay > 0)
+		return delay / user.get_attack_speed_factor()
+	return 0
+
 /datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/atom/target,var/armour,var/attack_damage,var/zone)
 
 	if (ishuman(target))

@@ -42,7 +42,7 @@
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper))
 
-	slowdown = 4
+	slowdown = 4.5
 
 	//Leaper has no legs, it moves with arms and tail
 	locomotion_limbs = list(BP_R_ARM, BP_L_ARM, BP_TAIL)

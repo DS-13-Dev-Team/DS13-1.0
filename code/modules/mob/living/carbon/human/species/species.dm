@@ -833,7 +833,7 @@ These procs should return their entire args list. Best just to return parent in 
 	var/image/LR = image(regen_icon, H, "[limb]_regen")
 	LR.plane = H.plane
 	LR.layer = H.layer -0.1 //Slightly below the layer of the mob, so that the healthy limb will draw over it
-	flick_overlay(LR, GLOB.clients, 4.5 SECONDS)
+	flick_overlay(LR, GLOB.clients, 6 SECONDS)
 	//var/obj/aura/limb_regen/LR = new (H, regen_icon,"[limb]_regen")
 	//LAZYADD(H.auras, regen_limb)
 	//H.update_icons()

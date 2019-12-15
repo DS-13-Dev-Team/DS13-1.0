@@ -39,8 +39,9 @@
 	down_factor = _down_factor
 	weaken_time = _weaken_time
 	power = _power
-	windup_time = _windup_time
-	cooldown = _cooldown
+	windup_time = _windup_time /= user.get_attack_speed_factor() //Factor in attackspeed
+	if (cooldown)
+		cooldown = _cooldown /= user.get_attack_speed_factor() //Factor in attackspeed
 
 	start()
 
