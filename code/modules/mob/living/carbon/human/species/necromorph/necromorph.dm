@@ -151,8 +151,10 @@
 	H.faction = FACTION_NECROMORPH
 
 
-//We don't want to be suffering for the lack of any particular organs
-/datum/species/necromorph/should_have_organ()
+//We don't want to be suffering for the lack of most particular organs
+/datum/species/necromorph/should_have_organ(var/query)
+	if (query in list(BP_EYES))	//Expand this list as needed
+		return ..()
 	return FALSE
 
 

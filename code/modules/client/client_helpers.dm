@@ -16,6 +16,8 @@
 /client/proc/set_view_range(var/radius)
 
 	if (view != radius && isnum(radius))
+		//If radius has changed, we'll return true
+		.=TRUE
 		view = radius
 		remake_click_catcher()
 
@@ -27,6 +29,7 @@
 /client/proc/set_view_offset(var/direction, var/magnitude)
 	var/vector2/offset = (Vector2.FromDir(direction))*magnitude
 	if (pixel_x != offset.x || pixel_y != offset.y) //If the values already match the target, don't interrupt the animation by repeating it
+		.=TRUE //Offset has changed, return true
 		animate(src, pixel_x = offset.x, pixel_y = offset.y, time = 5, easing = SINE_EASING)
 
 

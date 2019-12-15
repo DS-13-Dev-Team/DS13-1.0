@@ -135,3 +135,9 @@ vector2
 		/* Get a vector with the same magnitude rotated by a clockwise angle in degrees.
 		*/
 		Turn(angle) return src * matrix().Turn(angle)
+
+		FloorVec()
+			return new/vector2(Floor(x), Floor(y))
+
+		CeilingVec()
+			return new/vector2(Ceiling(x), Ceiling(y))

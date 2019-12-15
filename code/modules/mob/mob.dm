@@ -1,7 +1,7 @@
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	STOP_PROCESSING(SSmobs, src)
-	GLOB.dead_mob_list_ -= src
-	GLOB.living_mob_list_ -= src
+	GLOB.dead_mob_list -= src
+	GLOB.living_mob_list -= src
 	unset_machine()
 	QDEL_NULL(hud_used)
 	if(istype(skillset))
@@ -286,9 +286,14 @@
 
 		if (ismob(client.eye))
 			var/mob/M = client.eye
-			client.set_view_range(M.view_range)
-			client.set_view_offset(M.dir, M.view_offset)
-	return
+			var/view_changed = FALSE
+			if (client.set_view_range(M.view_range))
+				view_changed = TRUE
+			if (client.set_view_offset(M.dir, M.view_offset))
+				view_changed = TRUE
+
+			if (view_changed)
+				GLOB.view_changed_event.raise_event(src)
 
 
 /mob/proc/show_inv(mob/user as mob)

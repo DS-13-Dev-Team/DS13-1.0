@@ -59,12 +59,18 @@
 	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/brute/brute_shout_long.ogg')
 	)
 
-	inherent_verbs = list(/mob/living/carbon/human/proc/ubermorph_battlecry, /mob/living/carbon/human/proc/ubermorph_regenerate, /mob/living/carbon/human/proc/ubermorph_lunge, /mob/proc/shout)
+	inherent_verbs = list(/mob/living/carbon/human/proc/ubermorph_battlecry, /mob/living/carbon/human/proc/ubermorph_regenerate, /mob/living/carbon/human/proc/ubermorph_lunge, /mob/proc/shout, /mob/proc/sense_verb)
 	modifier_verbs = list(KEY_CTRLALT = list(/mob/living/carbon/human/proc/ubermorph_battlecry), KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/ubermorph_regenerate), KEY_ALT = list(/mob/living/carbon/human/proc/ubermorph_lunge))
 
 /datum/species/necromorph/ubermorph/handle_death_check(var/mob/living/carbon/human/H)
 	//No
 	return FALSE
+
+/*
+	Basic attack isn't a huge deal, but its powerful anyway because endgame monster
+*/
+/datum/unarmed_attack/claws/ubermorph
+	damage = 20
 
 
 /*
@@ -107,7 +113,7 @@
 */
 /mob/living/carbon/human/proc/ubermorph_lunge(var/atom/A)
 	set name = "Lunge"
-	set category = "Impale"
+	set category = "Abilities"
 
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
 	var/datum/extension/charge/EC = get_extension(src, /datum/extension/charge)
@@ -173,3 +179,14 @@
 
 	else
 		..()
+
+
+
+/*
+	Sense
+*/
+/mob/proc/sense_verb()
+	set name = "Sense"
+	set category = "Abilities"
+	set desc = "Reveals nearby living creatures around you, to yourself and allies"
+	set_extension(src, /datum/extension/sense, /datum/extension/sense, 9, 9, FACTION_NECROMORPH, 6 SECONDS, 12 SECONDS)

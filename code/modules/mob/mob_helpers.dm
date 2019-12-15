@@ -652,7 +652,7 @@ proc/is_blind(A)
 
 //Tries to find the mob's email.
 /proc/find_email(real_name)
-	for(var/mob/mob in GLOB.living_mob_list_)
+	for(var/mob/mob in GLOB.living_mob_list)
 		if(mob.real_name == real_name)
 			if(!mob.mind)
 				return

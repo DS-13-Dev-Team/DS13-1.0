@@ -226,12 +226,12 @@ var/global/datum/controller/gameticker/ticker
 		var/obj/structure/bed/temp_buckle = new(src)
 		//Incredibly hackish. It creates a bed within the gameticker (lol) to stop mobs running around
 		if(station_missed)
-			for(var/mob/living/M in GLOB.living_mob_list_)
+			for(var/mob/living/M in GLOB.living_mob_list)
 				M.buckled = temp_buckle				//buckles the mob so it can't do anything
 				if(M.client)
 					M.client.screen += cinematic	//show every client the cinematic
 		else	//nuke kills everyone on z-level 1 to prevent "hurr-durr I survived"
-			for(var/mob/living/M in GLOB.living_mob_list_)
+			for(var/mob/living/M in GLOB.living_mob_list)
 				M.buckled = temp_buckle
 				if(M.client)
 					M.client.screen += cinematic
@@ -296,7 +296,7 @@ var/global/datum/controller/gameticker/ticker
 						flick("station_explode_fade_red", cinematic)
 						sound_to(world, sound('sound/effects/explosionfar.ogg'))
 						cinematic.icon_state = "summary_selfdes"
-				for(var/mob/living/M in GLOB.living_mob_list_)
+				for(var/mob/living/M in GLOB.living_mob_list)
 					if(is_station_turf(get_turf(M)))
 						M.death()//No mercy
 		//If its actually the end of the round, wait for it to end.

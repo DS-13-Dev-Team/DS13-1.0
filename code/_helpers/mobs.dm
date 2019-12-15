@@ -230,27 +230,27 @@ proc/age2agedescription(age)
 /mob/proc/add_to_living_mob_list()
 	return FALSE
 /mob/living/add_to_living_mob_list()
-	if((src in GLOB.living_mob_list_) || (src in GLOB.dead_mob_list_))
+	if((src in GLOB.living_mob_list) || (src in GLOB.dead_mob_list))
 		return FALSE
-	GLOB.living_mob_list_ += src
+	GLOB.living_mob_list += src
 	return TRUE
 
 // Returns true if the mob was removed from the living list
 /mob/proc/remove_from_living_mob_list()
-	return GLOB.living_mob_list_.Remove(src)
+	return GLOB.living_mob_list.Remove(src)
 
 // Returns true if the mob was in neither the dead or living list
 /mob/proc/add_to_dead_mob_list()
 	return FALSE
 /mob/living/add_to_dead_mob_list()
-	if((src in GLOB.living_mob_list_) || (src in GLOB.dead_mob_list_))
+	if((src in GLOB.living_mob_list) || (src in GLOB.dead_mob_list))
 		return FALSE
-	GLOB.dead_mob_list_ += src
+	GLOB.dead_mob_list += src
 	return TRUE
 
 // Returns true if the mob was removed form the dead list
 /mob/proc/remove_from_dead_mob_list()
-	return GLOB.dead_mob_list_.Remove(src)
+	return GLOB.dead_mob_list.Remove(src)
 
 //Find a dead mob with a brain and client.
 /proc/find_dead_player(var/find_key, var/include_observers = 0)

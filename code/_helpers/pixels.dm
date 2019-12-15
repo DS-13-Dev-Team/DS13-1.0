@@ -68,3 +68,48 @@
 /proc/get_turf_at_pixel_coords(var/vector2/coords, var/zlevel)
 	coords = new /vector2(round(coords.x / world.icon_size)+1, round(coords.y / world.icon_size)+1)
 	return locate(coords.x, coords.y, zlevel)
+
+
+
+//Client Procs
+
+//This proc gets the client's total pixel offset from its eyeobject
+/client/proc/get_pixel_offset()
+	var/vector2/offset = new /vector2(0,0)
+	if (ismob(eye))
+		var/mob/M = eye
+		offset = (Vector2.FromDir(M.dir))*M.view_offset
+
+	offset.x += pixel_x
+	offset.y += pixel_y
+
+	return offset
+
+
+//Figures out the offsets of the bottomleft and topright corners of the game window
+/client/proc/get_pixel_bounds()
+	var/radius = view*world.icon_size
+	var/vector2/bottomleft = new /vector2(-radius, -radius)
+	var/vector2/topright = new /vector2(radius, radius)
+	var/vector2/offset = get_pixel_offset()
+	bottomleft += offset
+	topright += offset
+
+	return list("BL" = bottomleft, "TR" = topright, "OFFSET" = offset)
+
+
+//Figures out the offsets of the bottomleft and topright corners of the game window in tiles
+//There are no decimal tiles, it will always be a whole number. Partially visible tiles can be included or excluded
+/client/proc/get_tile_bounds(var/include_partial = TRUE)
+	var/list/bounds = get_pixel_bounds()
+	world << "Tilebounds 1 [english_list(bounds)]"
+	for (var/thing in bounds)
+		var/vector2/corner = bounds[thing]
+		corner /= WORLD_ICON_SIZE
+		if (include_partial)
+			corner = corner.CeilingVec()
+		else
+			corner = corner.FloorVec()
+		bounds[thing] = corner
+	world << "Tilebounds 2 [english_list(bounds)]"
+	return bounds
