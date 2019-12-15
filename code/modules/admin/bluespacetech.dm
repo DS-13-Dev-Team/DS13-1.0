@@ -78,7 +78,7 @@
 
 /mob/living/carbon/human/bst
 	universal_understand = TRUE
-	status_flags = GODMODE
+	//status_flags = GODMODE	//Leave this off by default, more useful for testing
 	var/fall_override = TRUE
 	var/mob/original_body = null
 

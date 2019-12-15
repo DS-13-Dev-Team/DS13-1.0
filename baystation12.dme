@@ -1723,6 +1723,7 @@
 #include "code\modules\mob\living\abilities\frenzy_shout.dm"
 #include "code\modules\mob\living\abilities\leap.dm"
 #include "code\modules\mob\living\abilities\leaper_tailstrike.dm"
+#include "code\modules\mob\living\abilities\lunge.dm"
 #include "code\modules\mob\living\abilities\regenerate.dm"
 #include "code\modules\mob\living\abilities\shout.dm"
 #include "code\modules\mob\living\abilities\slam.dm"

@@ -39,10 +39,8 @@
 //Lets regrow limbs
 /datum/extension/regenerate/proc/start()
 	tick_step = duration / tick_interval
-	world << "Regnerate max [max_organs]"
 	for(var/limb_type in user.species.has_limbs)
 		if (max_organs <= 0)
-			world << "No more [max_organs]"
 			break
 		var/obj/item/organ/external/E = user.organs_by_name[limb_type]
 		if(E && !E.is_usable())
@@ -52,7 +50,6 @@
 		if(!E)
 			regenerating_organs |= limb_type
 			max_organs--
-			world << "Max reduced to [max_organs]"
 
 
 	//Lets play the animations

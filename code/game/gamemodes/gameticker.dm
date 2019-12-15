@@ -178,6 +178,10 @@ var/global/datum/controller/gameticker/ticker
 				if (C.mob)
 					C.cmd_dev_bst(TRUE)
 
+		if (config.debug_verbs)
+			for(var/client/C in GLOB.clients)
+				C.enable_debug_verbs(TRUE)
+
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		to_world("<FONT color='blue'><B>Enjoy the game!</B></FONT>")

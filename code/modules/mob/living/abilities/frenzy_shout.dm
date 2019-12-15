@@ -66,12 +66,10 @@
 /mob/living/proc/frenzy_shout_ability(var/_duration, var/_intensity, var/_cooldown, var/_faction, var/_range)
 	//First lets check we can actually do it
 	if (incapacitated(INCAPACITATION_KNOCKOUT))
-		world << "Incapacitated"
 		return FALSE 	//Gotta be conscious. But being knocked down is fine
 
 	var/mob/living/carbon/human/H = src
 	if (istype(H) && !H.has_organ(BP_HEAD))
-		world << "no mouth"
 		return FALSE	//I have no mouth and I must scream
 
 
