@@ -11,7 +11,6 @@
 	icon_state = "health6"
 
 /obj/screen/movable/tracker/New(var/mob/host, var/atom/_tracked)
-	world << "New tracker [host] [_tracked]"
 	if (host.client)
 		origin = host
 		C = origin.client
@@ -50,19 +49,15 @@
 	alpha = 0
 
 /obj/screen/movable/tracker/proc/update()
-	world << "Tracker doing update \ref[src]"
 	if (QDELETED(tracked) || QDELETED(origin))
-		world << "Something is gone"
 		qdel(src)	//if our target atom is gone, so are we
 		return
 
 	if (!origin.client || !C)//Player logged out?
-		world << "Client logged out"
 		qdel(src)
 		return
 
 	if (origin.client && origin.client != C)	//Someone else posessed the player? Lets transfer ourselves to the new client
-		world << "Client swapped"
 		clear_from_screen()
 		C = origin.client
 
@@ -81,20 +76,17 @@
 	if (origin.z != track_target.z)
 		//If its on another zlevel we can't see it
 		//Possible todo: Add support for openspace/transparent floors and seeing things below. But not now
-		world << "Thing is on wrong zlevel"
 		hide()
 		return
 
 	//Lets get how far the screen extends around the origin
 	var/list/bound_offsets = C.get_tile_bounds(FALSE) //Cut off partial tiles or they might stretch the screen
 	var/vector2/delta = new /vector2(track_target.x - origin.x, track_target.y - origin.y)	//Lets get the position delta from origin to target
-	world << "Delta [delta] [delta.x] [delta.y]"
 	//Now check whether or not that would put it onscreen
 	//Bottomleft first
 	var/vector2/BL = bound_offsets["BL"]
 	if (delta.x < BL.x || delta.y < BL.y)
 		//Its offscreen
-		world << "Thing is offscreen"
 		hide()
 		return
 
@@ -103,7 +95,6 @@
 	var/vector2/TR = bound_offsets["TR"]
 	if (delta.x > TR.x || delta.y > TR.y)
 		//Its offscreen
-		world << "Thing is offscreen"
 		hide()
 		return
 
@@ -114,5 +105,4 @@
 	delta.x += C.view + 1
 	delta.y += C.view + 1
 	screen_loc = "[encode_screen_X(delta.x, origin)],[encode_screen_Y(delta.y,origin)]"
-	world << "Tracker screenloc [screen_loc]"
 	//AAaaand done

@@ -25,7 +25,6 @@
 		var/turf/T = get_turf(L)
 		if (T in turfs_sense)
 			seen += L //We can see this mob
-			world << "Seeing [L]"
 
 		//To se things you've got to be:
 			//In the correct faction
@@ -35,7 +34,6 @@
 		if ((!buff_faction || buff_faction == L.faction) && L.client && (T in turfs_buff) && !L.stat)
 			//This mob gets to see
 			seers += L
-			world << "Seer [L]"
 
 	for (var/mob/living/L in seen)
 		for (var/mob/living/S in seers)
@@ -64,5 +62,4 @@
 	QDEL_NULL_LIST(trackers)
 
 /datum/extension/sense/proc/finish_cooldown()
-	world << "Sense done cooling"
 	remove_extension(holder, /datum/extension/sense)

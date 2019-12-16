@@ -102,7 +102,6 @@
 //There are no decimal tiles, it will always be a whole number. Partially visible tiles can be included or excluded
 /client/proc/get_tile_bounds(var/include_partial = TRUE)
 	var/list/bounds = get_pixel_bounds()
-	world << "Tilebounds 1 [english_list(bounds)]"
 	for (var/thing in bounds)
 		var/vector2/corner = bounds[thing]
 		corner /= WORLD_ICON_SIZE
@@ -111,5 +110,4 @@
 		else
 			corner = corner.FloorVec()
 		bounds[thing] = corner
-	world << "Tilebounds 2 [english_list(bounds)]"
 	return bounds
