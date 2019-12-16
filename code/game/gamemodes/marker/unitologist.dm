@@ -18,6 +18,8 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	protected_jobs = list(/datum/job/warden, /datum/job/detective, /datum/job/captain, /datum/job/lawyer, /datum/job/hos) //Securitologists above officer rank might be unfair.
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	skill_setter = /datum/antag_skill_setter/station
+	antaghud_indicator = "hudunitologist" // Used by the ghost antagHUD.
+	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
 
 datum/objective/unitologist
 	explanation_text = "Serve the marker at all costs."
