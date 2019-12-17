@@ -98,7 +98,7 @@
 
 	if(!client)
 		return
-	
+
 	if(last_radio_sound + 0.5 SECOND > world.time)
 		playsound(loc, 'sound/effects/radio_chatter.ogg', 10, 0, -1, falloff = -3)
 		last_radio_sound = world.time
@@ -284,7 +284,7 @@
 		if(copytext(heardword,1, 1) in punctuation)
 			heardword = copytext(heardword,2)
 		if(copytext(heardword,-1) in punctuation)
-			heardword = copytext(heardword,1,lentext(heardword))
+			heardword = copytext(heardword,1,length(heardword))
 		heard = "<span class = 'game_say'>...You hear something about...[heardword]</span>"
 
 	else
