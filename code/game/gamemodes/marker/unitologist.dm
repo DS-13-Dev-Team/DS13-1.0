@@ -48,3 +48,12 @@ datum/objective/unitologist
 		if(minion && minion != our_owner)
 			to_chat(our_owner, "Fellow unitologist: [minion.real_name]")
 			our_owner.mind.store_memory("<b>Fellow unitologist</b>: [minion.real_name]")
+
+/*
+/datum/antagonist/rogue_ai/build_candidate_list()
+	..()
+	for(var/datum/mind/player in candidates)
+		if(player.assigned_role && player.assigned_role != "AI")
+			candidates -= player
+	return candidates
+*/ //Useful code that lets you force candidate selection. Use this for marker?
