@@ -42,21 +42,20 @@
 			var/obj/screen/movable/tracker/TR = new (S,L)
 			TR.appearance = new /mutable_appearance(L)
 			trackers += TR
-	/*
-		var/icon/mobicon = getFlatIcon(L)
-		var/image/I = image(mobicon, L)
-		I.plane = HUD_PLANE
-		I.layer = UNDER_HUD_LAYER
-		I.appearance_flags = RESET_ALPHA
-		seen_images += I
 
-	//Lastly, show it to everyone
-	for (var/I in seen_images)
-		flick_overlay(I, seers, duration)
-	*/
 	addtimer(CALLBACK(src, /datum/extension/sense/proc/finish), duration)
 
 	addtimer(CALLBACK(src, /datum/extension/sense/proc/finish_cooldown), cooldown)
+
+	//Lets do some cool effects
+	var/obj/effect/effect/expanding_circle/EC = new /obj/effect/effect/expanding_circle(user.loc, 2, 2 SECOND)
+	EC.pixel_y += 40	//Offset it so it appears to be at our mob's head
+	spawn(4)
+		EC = new /obj/effect/effect/expanding_circle(user.loc, 2, 2 SECOND)
+		EC.pixel_y += 40	//Offset it so it appears to be at our mob's head
+		spawn(4)
+			EC = new /obj/effect/effect/expanding_circle(user.loc, 2, 2 SECOND)
+			EC.pixel_y += 40	//Offset it so it appears to be at our mob's head
 
 /datum/extension/sense/proc/finish()
 	QDEL_NULL_LIST(trackers)

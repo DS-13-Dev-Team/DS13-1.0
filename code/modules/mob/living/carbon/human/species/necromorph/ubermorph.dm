@@ -25,8 +25,7 @@
 	bump_flag 	= HEAVY	// What are we considered to be when bumped?
 	push_flags 	= ALLMOBS	// What can we push?
 	swap_flags 	= ALLMOBS	// What can we swap place with?
-	density_lying = TRUE	//Chunky boi
-	evasion = -10	//Big target, easier to shoot
+	evasion = 0	//Big target, easier to shoot
 
 	slowdown = 1.5 //Modest speed, but he has no charge ability
 
@@ -84,7 +83,7 @@
 	set category = "Abilities"
 
 
-	.= regenerate_ability(_heal_amount = 40, _duration = 4 SECONDS, _max_organs = 1, _cooldown = 0)
+	.= regenerate_ability(_heal_amount = 40, _duration = 4 SECONDS, _max_limbs = 1, _cooldown = 0)
 	if (.)
 		play_species_audio(src, SOUND_PAIN, VOLUME_HIGH, 1, 3)
 
@@ -189,4 +188,8 @@
 	set name = "Sense"
 	set category = "Abilities"
 	set desc = "Reveals nearby living creatures around you, to yourself and allies"
-	set_extension(src, /datum/extension/sense, /datum/extension/sense, 9, 9, FACTION_NECROMORPH, 6 SECONDS, 12 SECONDS)
+	var/datum/extension/sense/S = get_extension(src, /datum/extension/sense)
+	if (S)
+		return
+	set_extension(src, /datum/extension/sense, /datum/extension/sense, 9, 9, FACTION_NECROMORPH, 9 SECONDS, 12 SECONDS)
+	play_species_audio(src, SOUND_SPEECH, VOLUME_MID, 1, 3)

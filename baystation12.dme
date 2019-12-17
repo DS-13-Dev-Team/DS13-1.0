@@ -776,6 +776,7 @@
 #include "code\game\objects\effects\aliens.dm"
 #include "code\game\objects\effects\bump_teleporter.dm"
 #include "code\game\objects\effects\effect_system.dm"
+#include "code\game\objects\effects\expanding_circle.dm"
 #include "code\game\objects\effects\explosion_particles.dm"
 #include "code\game\objects\effects\force_portal.dm"
 #include "code\game\objects\effects\gibs.dm"

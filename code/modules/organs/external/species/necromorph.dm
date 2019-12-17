@@ -75,6 +75,22 @@
 
 
 /obj/item/organ/external/head/ubermorph
-	glowing_eyes = TRUE
-	eye_icon_location = 'icons/mob/necromorph/ubermorph.dmi'
+	glowing_eyes = FALSE
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL
+	var/eye_icon = 'icons/mob/necromorph/ubermorph.dmi'
+
+/obj/item/organ/external/head/ubermorph/replaced(var/mob/newowner)
+	.=..()
+
+
+	//Lets do a little animation for the eyes lighting up
+	var/image/LR = image(eye_icon, newowner, "eyes_anim")
+	LR.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	LR.layer = EYE_GLOW_LAYER
+	flick_overlay_source(LR, newowner, 3 SECONDS)
+
+	//Activate the actual glow
+	spawn(2.7 SECONDS)
+		glowing_eyes = TRUE
+		eye_icon_location = eye_icon
+		owner.update_body(TRUE)

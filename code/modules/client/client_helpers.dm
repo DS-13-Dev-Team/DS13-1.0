@@ -23,7 +23,8 @@
 
 		if (mob)
 			mob.reload_fullscreen()
-			mob.l_general.resize(src)
+			if (mob.l_general)//It may not exist during login
+				mob.l_general.resize(src)
 
 
 /client/proc/set_view_offset(var/direction, var/magnitude)

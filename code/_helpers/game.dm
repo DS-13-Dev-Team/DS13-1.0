@@ -401,6 +401,26 @@ proc/isInSight(var/atom/A, var/atom/B)
 		for(var/client/C in show_to)
 			C.images -= I
 
+//Finds mobs near the source and shows them an overlay
+/proc/flick_overlay_source(image/I, var/atom/source, duration)
+	source = get_turf(source)
+	var/range = world.view + 4
+	//First lets figure out how far away to find mobs.
+	//The longer the duration, the higher the chance of someone walking in while its playing, so we'll search farther at high duration
+	range += Ceiling(duration * 0.2)
+
+	var/list/clients = list()
+
+	for (var/mob/M in GLOB.player_list)	//We only care about people with clients here
+		world << "Checking [M]"
+		if (get_dist(get_turf(M), source)	<= range)
+			world << "In range [range]"
+			clients.Add(M.get_client())
+
+	world << "About to show to [clients.len] clients"
+
+	flick_overlay(I, clients, duration)
+
 
 datum/projectile_data
 	var/src_x
