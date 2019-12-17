@@ -1,6 +1,6 @@
 
 /obj/structure/table/proc/straight_table_check(var/direction)
-	if(health > 100)
+	if(obj_integrity > 100)
 		return 0
 	var/obj/structure/table/T
 	for(var/angle in list(-90,90))

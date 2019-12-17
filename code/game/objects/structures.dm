@@ -12,6 +12,20 @@
 
 	var/list/footstep_sounds	//footstep sounds when stepped on
 	var/step_priority = 1	//Priority of the sound attached to this
+	var/obj_integrity = 100
+	var/max_integrity = 100
+
+/obj/structure/proc/take_damage(amount)
+	obj_integrity -= amount
+	update_icon()
+	if(obj_integrity <= 0 && breakable)
+		qdel(src)
+
+/obj/structure/proc/repair_damage(amount)
+	if(obj_integrity + amount > max_integrity)
+		obj_integrity = max_integrity
+		return
+	obj_integrity += obj_integrity
 
 /obj/structure/proc/get_footstep_sound()
 	if(LAZYLEN(footstep_sounds)) return pick(footstep_sounds)

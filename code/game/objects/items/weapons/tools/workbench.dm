@@ -6,8 +6,8 @@
 	icon_state = "deadspace_workbench"
 	standalone = TRUE //No connecting, uses its own icon
 	can_plate = FALSE
-	maxhealth = 500 //Hard to break
-	health = 500
+	max_integrity = 500 //Hard to break
+	obj_integrity = 500
 
 /obj/structure/table/workbench
 

@@ -174,7 +174,7 @@
 	new /obj/item/stack/material/steel(get_turf(src))
 	qdel(src)
 
-/obj/structure/wall_frame/proc/take_damage(dam)
+/obj/structure/wall_frame/take_damage(dam)
 	if(dam)
 		damage = max(0, damage + dam)
 		update_damage()
