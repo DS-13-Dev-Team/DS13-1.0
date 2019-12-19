@@ -130,17 +130,14 @@
 		shake_camera(src, 3, 4)
 
 		//Lets do some cool effects
-		var/obj/effect/effect/expanding_circle/EC = new /obj/effect/effect/expanding_circle(loc, 1.5, 1.5 SECOND)
+		var/obj/effect/effect/expanding_circle/EC = new /obj/effect/effect/expanding_circle(loc, 1.5, 1.5 SECOND,"#ff0000")
 		EC.pixel_y += 40	//Offset it so it appears to be at our mob's head
-		EC.color = "#FF0000"
 		spawn(4)
-			EC = new /obj/effect/effect/expanding_circle(loc, 2, 2 SECOND)
+			EC = new /obj/effect/effect/expanding_circle(loc, 1.5, 1.5 SECOND,"#ff0000")
 			EC.pixel_y += 40	//Offset it so it appears to be at our mob's head
-			EC.color = "#FF0000"
 			spawn(4)
-				EC = new /obj/effect/effect/expanding_circle(loc, 2, 2 SECOND)
+				EC = new /obj/effect/effect/expanding_circle(loc, 1.5, 1.5 SECOND,"#ff0000")
 				EC.pixel_y += 40	//Offset it so it appears to be at our mob's head
-				EC.color = "#FF0000"
 
 /*
 	Lunge: A variant of charge used by ubermorph. Short ranged
