@@ -18,7 +18,7 @@
 	var/cooldown = 0
 	var/heal_amount = 40
 	var/tick_interval = 0.2 SECONDS
-	var/shake_interval = 1 SECONDS
+	var/shake_interval = 0.6 SECONDS
 
 	//Runtime stuff
 	var/list/regenerating_organs = list()
@@ -39,10 +39,20 @@
 //Lets regrow limbs
 /datum/extension/regenerate/proc/start()
 	tick_step = duration / tick_interval
+	var/list/missing_limbs = list()
+
+	//This loop counts and documents the damaged limbs, for the purpose of regrowing them and also for documenting how many there are for stun time
 	for(var/limb_type in user.species.has_limbs)
-		if (max_limbs <= 0)
-			break
+
 		var/obj/item/organ/external/E = user.organs_by_name[limb_type]
+		if (E && E.is_usable())
+			//This organ is fine, skip it
+			continue
+		else
+			missing_limbs |= limb_type
+
+		if (max_limbs <= 0)
+			continue
 		if(E && !E.is_usable())
 			E.removed()
 			qdel(E)
@@ -51,6 +61,14 @@
 			regenerating_organs |= limb_type
 			max_limbs--
 
+
+
+
+	//Special effect:
+	//If the user is missing two or more limbs, regenerating takes longer and plays a special sound
+	if (missing_limbs.len >= 2)
+		duration *= 1.5
+		user.play_species_audio(user, SOUND_REGEN, VOLUME_MID, 1)
 
 	//Lets play the animations
 	for(var/limb_type in regenerating_organs)

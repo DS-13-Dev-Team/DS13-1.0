@@ -5,7 +5,7 @@
 
 	//Health and Defense
 	total_health = INFINITY	//This number doesn't matter, it won't ever be used
-	healing_factor = 3	//Lots of constant healing
+	healing_factor = 4	//Lots of constant healing
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
 	single_icon = FALSE
@@ -34,32 +34,56 @@
 
 
 	//Audio
-	step_volume = 10 //Brute stomps are low pitched and resonant, don't want them loud
+	step_volume = VOLUME_MID //Brute stomps are low pitched and resonant, don't want them loud
 	step_range = 4
 	step_priority = 5
 	pain_audio_threshold = 0.03 //Gotta set this low to compensate for his high health
-	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/brute_step_1.ogg',
-	'sound/effects/footstep/brute_step_2.ogg',
-	'sound/effects/footstep/brute_step_3.ogg',
-	'sound/effects/footstep/brute_step_4.ogg',
-	'sound/effects/footstep/brute_step_5.ogg',
-	'sound/effects/footstep/brute_step_6.ogg'),
-	SOUND_PAIN = list('sound/effects/creatures/necromorph/brute/brute_pain_1.ogg',
-	 'sound/effects/creatures/necromorph/brute/brute_pain_2.ogg',
-	 'sound/effects/creatures/necromorph/brute/brute_pain_3.ogg',
-	 'sound/effects/creatures/necromorph/brute/brute_pain_extreme.ogg' = 0.2),
-	SOUND_DEATH = list('sound/effects/creatures/necromorph/brute/brute_death.ogg'),
-	SOUND_ATTACK = list('sound/effects/creatures/necromorph/brute/brute_attack_1.ogg',
-	'sound/effects/creatures/necromorph/brute/brute_attack_2.ogg',
-	'sound/effects/creatures/necromorph/brute/brute_attack_3.ogg'),
-	SOUND_SHOUT = list('sound/effects/creatures/necromorph/brute/brute_shout_1.ogg',
-	'sound/effects/creatures/necromorph/brute/brute_shout_2.ogg',
-	'sound/effects/creatures/necromorph/brute/brute_shout_3.ogg'),
-	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/brute/brute_shout_long.ogg')
+	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/ubermorph_footstep_1.ogg',
+	'sound/effects/footstep/ubermorph_footstep_2.ogg',
+	'sound/effects/footstep/ubermorph_footstep_3.ogg',
+	'sound/effects/footstep/ubermorph_footstep_4.ogg'),
+	SOUND_ATTACK = list('sound/effects/creatures/necromorph/ubermorph/ubermorph_attack_1.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_attack_2.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_attack_3.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_attack_4.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_attack_5.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_attack_6.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_attack_7.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_attack_8.ogg'),
+	SOUND_PAIN = list('sound/effects/creatures/necromorph/ubermorph/ubermorph_pain_1.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_pain_2.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_pain_3.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_pain_4.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_pain_5.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_pain_6.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_pain_7.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_pain_8.ogg'),
+	SOUND_SHOUT = list('sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_1.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_2.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_3.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_4.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_5.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_6.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_7.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_8.ogg'),
+	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_long_1.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_long_2.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_long_3.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_shout_long_4.ogg'),
+	SOUND_SPEECH = list('sound/effects/creatures/necromorph/ubermorph/ubermorph_speech_1.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_speech_2.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_speech_3.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_speech_4.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_speech_5.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_speech_6.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_speech_7.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_speech_8.ogg'),
+	SOUND_REGEN = list('sound/effects/creatures/necromorph/ubermorph/ubermorph_regen_1.ogg',
+	'sound/effects/creatures/necromorph/ubermorph/ubermorph_regen_2.ogg')
 	)
 
 	inherent_verbs = list(/mob/living/carbon/human/proc/ubermorph_battlecry, /mob/living/carbon/human/proc/ubermorph_regenerate, /mob/living/carbon/human/proc/ubermorph_lunge, /mob/proc/shout, /mob/proc/sense_verb)
-	modifier_verbs = list(KEY_CTRLALT = list(/mob/living/carbon/human/proc/ubermorph_battlecry), KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/ubermorph_regenerate), KEY_ALT = list(/mob/living/carbon/human/proc/ubermorph_lunge))
+	modifier_verbs = list(KEY_CTRLALT = list(/mob/living/carbon/human/proc/ubermorph_battlecry), KEY_CTRLSHIFT = list(/mob/proc/sense_verb), KEY_ALT = list(/mob/living/carbon/human/proc/ubermorph_lunge))
 
 /datum/species/necromorph/ubermorph/handle_death_check(var/mob/living/carbon/human/H)
 	//No
@@ -81,7 +105,7 @@
 /mob/living/carbon/human/proc/ubermorph_regenerate()
 	set name = "Regenerate"
 	set category = "Abilities"
-
+	set desc = "Regrows a missing limb and restores some of your health."
 
 	.= regenerate_ability(_heal_amount = 40, _duration = 4 SECONDS, _max_limbs = 1, _cooldown = 0)
 	if (.)
@@ -98,11 +122,25 @@
 /mob/living/carbon/human/proc/ubermorph_battlecry()
 	set name = "Battle Cry"
 	set category = "Abilities"
+	set desc = "Grants a 30% move and attackspeed buff to other nearby necromorphs. Doesn't affect yourself, HK: Ctrl+Alt+Click"
 
-	.=frenzy_shout_ability(30 SECONDS, 0.3, 10 SECONDS, FACTION_NECROMORPH, 9)
+	.=frenzy_shout_ability(60 SECONDS, 0.3, 30 SECONDS, FACTION_NECROMORPH, 9)
 	if (.)
-		play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_HIGH, 1, 3)
+		play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_MAX, 1, 6)//Very loud, heard far away
 		shake_camera(src, 3, 4)
+
+		//Lets do some cool effects
+		var/obj/effect/effect/expanding_circle/EC = new /obj/effect/effect/expanding_circle(loc, 1.5, 1.5 SECOND)
+		EC.pixel_y += 40	//Offset it so it appears to be at our mob's head
+		EC.color = "#FF0000"
+		spawn(4)
+			EC = new /obj/effect/effect/expanding_circle(loc, 2, 2 SECOND)
+			EC.pixel_y += 40	//Offset it so it appears to be at our mob's head
+			EC.color = "#FF0000"
+			spawn(4)
+				EC = new /obj/effect/effect/expanding_circle(loc, 2, 2 SECOND)
+				EC.pixel_y += 40	//Offset it so it appears to be at our mob's head
+				EC.color = "#FF0000"
 
 /*
 	Lunge: A variant of charge used by ubermorph. Short ranged
@@ -113,6 +151,7 @@
 /mob/living/carbon/human/proc/ubermorph_lunge(var/atom/A)
 	set name = "Lunge"
 	set category = "Abilities"
+	set desc = "A shortrange charge which causes heavy internal damage to one victim. Often fatal. HK: Alt+Click:"
 
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
 	var/datum/extension/charge/EC = get_extension(src, /datum/extension/charge)
@@ -187,7 +226,7 @@
 /mob/proc/sense_verb()
 	set name = "Sense"
 	set category = "Abilities"
-	set desc = "Reveals nearby living creatures around you, to yourself and allies"
+	set desc = "Reveals nearby living creatures around you, to yourself and allies. HK: Ctrl+Shift+Click"
 	var/datum/extension/sense/S = get_extension(src, /datum/extension/sense)
 	if (S)
 		return

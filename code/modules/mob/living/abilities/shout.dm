@@ -7,6 +7,7 @@
 			src.Stun(2)
 			src.shake_animation(40)
 			set_audio_cooldown(SOUND_SHOUT, 8 SECONDS)
+			new /obj/effect/effect/expanding_circle(loc, 2, 2 SECOND)	//Visual effect
 			for (var/mob/M in range(7, src))
 				var/distance = get_dist(src, M)
 				var/intensity = 4 - (distance * 0.4)

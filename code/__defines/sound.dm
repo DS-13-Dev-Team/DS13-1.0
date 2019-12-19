@@ -1,6 +1,0 @@
-#define VOLUME_MAX		100
-#define VOLUME_HIGH		45
-#define VOLUME_MID		18
-#define VOLUME_LOW		8
-#define VOLUME_QUIET	5
-#define VOLUME_NEAR_SILENT	2.5

@@ -412,12 +412,8 @@ proc/isInSight(var/atom/A, var/atom/B)
 	var/list/clients = list()
 
 	for (var/mob/M in GLOB.player_list)	//We only care about people with clients here
-		world << "Checking [M]"
 		if (get_dist(get_turf(M), source)	<= range)
-			world << "In range [range]"
 			clients.Add(M.get_client())
-
-	world << "About to show to [clients.len] clients"
 
 	flick_overlay(I, clients, duration)
 
