@@ -13,6 +13,8 @@
 	icon_lying = null//Ubermorph doesnt have a lying icon, due to complexity from regen animations
 	pixel_offset_x = -16
 
+	unarmed_types = list(/datum/unarmed_attack/claws/ubermorph, /datum/unarmed_attack/bite/strong) //Bite attack is a backup if blades are severed
+
 
 	override_limb_types = list(
 	BP_HEAD =  /obj/item/organ/external/head/ubermorph

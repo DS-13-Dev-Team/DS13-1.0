@@ -12,7 +12,6 @@
 	lifespan = _lifespan
 	expansion_rate = _expansion_rate //What scale multiplier to gain per second
 	color = _color
-	world << "Color is [color]"
 	..()
 
 /obj/effect/effect/expanding_circle/Initialize()
@@ -21,6 +20,3 @@
 	var/matrix/M = new
 	animate(src, transform = M.Scale(1 + (expansion_rate * (lifespan*0.1))), alpha = 0, time = lifespan)
 	QDEL_IN(src, lifespan)
-	world << "Color2 is [color]"
-	spawn(3)
-		world << "Color3 is [color]"

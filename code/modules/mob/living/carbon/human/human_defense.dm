@@ -331,7 +331,7 @@ meteor_act
 		var/miss_chance = species.evasion
 		if (O.throw_source)
 			var/distance = get_dist(O.throw_source, loc)
-			miss_chance = max(15*(distance-2), 0)
+			miss_chance += max(5*(distance-2), 0)
 		zone = get_zone_with_miss_chance(zone, src, miss_chance, ranged_attack=1)
 
 		if(zone && O.thrower != src)
@@ -347,7 +347,12 @@ meteor_act
 
 		O.throwing = 0		//it hit, so stop moving
 
-		var/obj/item/organ/external/affecting = get_organ(zone)
+		var/obj/item/organ/external/affecting = find_target_organ(zone)
+
+		if (!affecting)
+			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
+			return
+
 		var/hit_area = affecting.name
 		var/datum/wound/created_wound
 
