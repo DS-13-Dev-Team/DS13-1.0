@@ -60,6 +60,11 @@
 	var/show_ssd = "fast asleep"
 	var/virus_immune
 
+	var/plane	=	HUMAN_PLANE
+	var/layer = 0
+	var/plane_lying	=	LYING_HUMAN_PLANE
+	var/layer_lying	=	LYING_HUMAN_LAYER
+
 	var/light_sensitive                       // Ditto, but requires sunglasses to fix
 	var/blood_volume = SPECIES_BLOOD_DEFAULT  // Initial blood volume.
 	var/hunger_factor = DEFAULT_HUNGER_FACTOR // Multiplier for hunger.

@@ -12,6 +12,8 @@
 	lying_rotation = 90
 	icon_lying = null//Ubermorph doesnt have a lying icon, due to complexity from regen animations
 	pixel_offset_x = -16
+	plane = LARGE_MOB_PLANE
+	layer = LARGE_MOB_LAYER
 
 	unarmed_types = list(/datum/unarmed_attack/claws/ubermorph, /datum/unarmed_attack/bite/strong) //Bite attack is a backup if blades are severed
 
@@ -96,7 +98,9 @@
 */
 /datum/unarmed_attack/claws/ubermorph
 	damage = 20
-
+	airlock_force_power = 5
+	airlock_force_speed = 2.5
+	shredding = TRUE //Better environment interactions, even if not sharp
 
 /*
 	Regenerate
@@ -153,7 +157,7 @@
 	set desc = "A shortrange charge which causes heavy internal damage to one victim. Often fatal. HK: Alt+Click:"
 
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
-	var/datum/extension/charge/EC = get_extension(src, /datum/extension/charge)
+	var/datum/extension/charge/EC = get_extension(src, /datum/extension/charge/lunge)
 	if(istype(EC))
 		if (EC.status == CHARGE_STATE_COOLDOWN)
 			to_chat(src, "[EC.name] is cooling down. You can use it again in [EC.get_cooldown_time() /10] seconds")

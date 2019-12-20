@@ -174,7 +174,7 @@
 /datum/extension/charge/proc/finish_cooldown()
 	to_chat(user, SPAN_NOTICE("You are ready to [name] again")) //Use name here so i can reuse this for leaping
 	if (holder) //Apparently holder can be null here
-		remove_extension(holder, /datum/extension/charge)
+		remove_extension(holder, src.type)
 	else
 		qdel(src)
 
@@ -322,7 +322,7 @@
 		//Damage the user and stun them
 		var/mob/living/L = holder
 		var/blocked = L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved, 0,0,0, obstacle)
-		L.apply_effect(4*TP, STUN, blocked)
+		L.apply_effect(2*TP, STUN, blocked)
 	stop()
 
 //Called when we reach max time or range

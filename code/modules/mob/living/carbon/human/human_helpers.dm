@@ -210,10 +210,11 @@
 		plane = HIDING_MOB_PLANE
 		layer = HIDING_MOB_LAYER
 	else if(lying)
-		plane = LYING_HUMAN_PLANE
-		layer = LYING_HUMAN_LAYER
+		plane = species.plane_lying
+		layer = species.layer_lying
 	else
-		..()
+		plane = species.plane
+		layer = species.layer
 
 /mob/living/carbon/human/proc/has_headset_in_ears()
 	return istype(get_equipped_item(slot_l_ear), /obj/item/device/radio/headset) || istype(get_equipped_item(slot_r_ear), /obj/item/device/radio/headset)

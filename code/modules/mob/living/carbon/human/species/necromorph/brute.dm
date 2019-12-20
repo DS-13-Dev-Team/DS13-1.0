@@ -12,6 +12,9 @@
 	icon_dead = "brute"
 
 	pixel_offset_x = -16
+	plane = LARGE_MOB_PLANE
+	layer = LARGE_MOB_LAYER
+
 
 	//Collision and bulk
 	strength    = STR_VHIGH
