@@ -187,7 +187,7 @@
 /datum/species/necromorph/ubermorph/charge_impact(var/mob/living/user, var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
 	if (isliving(obstacle))
 		var/mob/living/L = obstacle
-		.=TRUE	//We won't keep charging after this
+		.=FALSE	//We won't keep charging after this
 		var/targetstring = "[L.name]"
 
 

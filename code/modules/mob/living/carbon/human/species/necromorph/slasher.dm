@@ -130,7 +130,7 @@
 		if (H.has_organ(BP_L_ARM))
 			H.last_attack = 0
 			H.UnarmedAttack(L)
-		return
+		return FALSE
 	else
 		return ..()
 

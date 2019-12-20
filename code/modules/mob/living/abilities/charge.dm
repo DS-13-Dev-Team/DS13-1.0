@@ -31,7 +31,7 @@
 
 #define CHARGE_TARGET_PRIMARY	"primary"
 #define CHARGE_TARGET_SECONDARY	"secondary"
-#define CHARGE_DAMAGE_BASE	10	//Basic damage of charges dealt to mobs, per power point
+#define CHARGE_DAMAGE_BASE	15	//Basic damage of charges dealt to mobs, per power point
 #define CHARGE_DAMAGE_DIST	2	//Extra damage dealt by charge per tile travelled while charging
 
 
@@ -97,7 +97,7 @@
 	if (isliving(user))
 		var/mob/living/L = user
 		L.face_atom(target)
-		L.Stun(max_lifespan(),TRUE)
+		L.Stun(max_lifespan()*0.1,TRUE)
 	//Delay handling
 	if (!delay)
 		//If no delay, start immediately
@@ -193,7 +193,7 @@
 		target_type = CHARGE_TARGET_PRIMARY
 
 
-	if(user.charge_impact(obstacle, get_total_power(), target_type, tiles_moved))
+	if(!user.charge_impact(obstacle, get_total_power(), target_type, tiles_moved))
 		stop_success()
 		return
 	atoms_hit += obstacle
@@ -321,18 +321,26 @@
 	if (isliving(holder))
 		//Damage the user and stun them
 		var/mob/living/L = holder
-		var/blocked = L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved, 0,0,0, obstacle)
-		L.apply_effect(2*TP, STUN, blocked)
+		L.stunned = 0
+		L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved, 0,0,0, obstacle)
+		L.Stun(3*TP)
 	stop()
 
 //Called when we reach max time or range
 //Drain the user's stamina?
 /datum/extension/charge/proc/stop_peter_out()
+	if (isliving(holder))
+		//Damage the user and stun them
+		var/mob/living/L = holder
+		L.stunned = 0
 	stop()
 
 
 //We have ended the charge by successfully reaching our intended target. This is ideal
 /datum/extension/charge/proc/stop_success()
+	if (isliving(holder))
+		var/mob/living/L = holder
+		L.stunned = 0
 	var/TP = get_total_power()
 	//Screenshake everyone near the impact site
 	for (var/mob/M in range(TP))

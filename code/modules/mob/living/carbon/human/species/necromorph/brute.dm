@@ -26,7 +26,7 @@
 	evasion = -10	//Big target, easier to shoot
 
 	//Implacable
-	stun_mod = 0.3
+	stun_mod = 0.5
 	weaken_mod = 0.3
 	paralysis_mod = 0.3
 
