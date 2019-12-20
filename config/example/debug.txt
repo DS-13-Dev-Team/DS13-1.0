@@ -2,15 +2,18 @@
 
 ## Autostart: Uncomment this option to force the round to be automatically started as soon as possible, instead of having the 3 minute wait period
 ## Code for this is located in ticker.dm, Initialize proc
-#AUTO_START
+AUTO_START
 
 ## Auto-observe: Uncomment this to force players to be immediately spawned as observer-ghosts instead of being left at the menu. They will need to respawn to use character setup
 ## Code for this is located in ticker.dm, start_now proc
-#AUTO_OBSERVE
+AUTO_OBSERVE
 
 ## Auto-BST: When uncommented, this option will cause anyone who enters observer mode to immediately spawn as a bluespace technician, if they have the permissions to do so
 ## Code for this is located in ticker.dm, start_now proc
-#AUTO_BST
+AUTO_BST
 
 ## No Overmap: When uncommented, this will prevent generation of overmap, exoplanets, away sites, and any other locations outside of the ship. Thus greatly speeding server startup
-#NO_OVERMAP
+NO_OVERMAP
+
+## Debug verbs: Enables debug verbs by default
+DEBUG_VERBS

@@ -273,7 +273,6 @@
 	if(operating > 0 || isrobot(user))	return //borgs can't attack doors open because it conflicts with their AI-like interaction with them.
 
 	if(operating) return
-
 	if(allowed(user) && operable())
 		if(density)
 			open()

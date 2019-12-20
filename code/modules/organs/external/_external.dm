@@ -681,8 +681,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return
 
 	for(var/datum/wound/W in wounds)
-		// wounds can disappear after 10 minutes at the earliest
-		if(W.damage <= 0 && W.created + (10 MINUTES) <= world.time)
+		// wounds can disappear after wound_remnant_time, defaults to 10 mins
+		if(W.damage <= 0 && (W.created + species.wound_remnant_time <= world.time))
 			wounds -= W
 			continue
 			// let the GC handle the deletion of the wound
@@ -690,15 +690,17 @@ Note that amputating the affected organ does in fact remove the infection from t
 		// slow healing
 		var/heal_amt = 0
 		// if damage >= 50 AFTER treatment then it's probably too severe to heal within the timeframe of a round.
-		if (!owner.chem_effects[CE_TOXIN] && W.can_autoheal() && W.wound_damage() && brute_ratio < 0.5 && burn_ratio < 0.5)
-			heal_amt += 0.5
+		if (!owner.chem_effects[CE_TOXIN] && W.can_autoheal() && W.wound_damage() && brute_ratio < species.max_heal_threshold && burn_ratio < species.max_heal_threshold)
+			heal_amt += species.healing_factor
 
 		//we only update wounds once in [wound_update_accuracy] ticks so have to emulate realtime
-		heal_amt = heal_amt * wound_update_accuracy
-		//configurable regen speed woo, no-regen hardcore or instaheal hugbox, choose your destiny
-		heal_amt = heal_amt * config.organ_regeneration_multiplier
+		heal_amt *= wound_update_accuracy
+
+		//No game balance values in configs	~Nanako
+
 		// amount of healing is spread over all the wounds
 		heal_amt = heal_amt / (wounds.len + 1)
+
 		// making it look prettier on scanners
 		heal_amt = round(heal_amt,0.1)
 		var/dam_type = BRUTE

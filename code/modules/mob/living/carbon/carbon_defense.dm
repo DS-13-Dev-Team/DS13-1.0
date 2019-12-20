@@ -30,3 +30,53 @@
 			src.embed(I, hit_zone, supplied_wound = created_wound)
 
 	return 1
+
+
+/mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
+	if(status_flags & GODMODE)	return 0	//godmode
+
+	shock_damage = apply_shock(shock_damage, def_zone, siemens_coeff)
+
+	if(!shock_damage)
+		return 0
+
+	stun_effect_act(agony_amount=shock_damage, def_zone=def_zone)
+
+	playsound(loc, "sparks", 50, 1, -1)
+	if (shock_damage > 15)
+		src.visible_message(
+			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \
+			"<span class='danger'>You feel a powerful shock course through your body!</span>", \
+			"<span class='warning'>You hear a heavy electrical crack.</span>" \
+		)
+	else
+		src.visible_message(
+			"<span class='warning'>[src] was shocked[source ? " by the [source]" : ""].</span>", \
+			"<span class='warning'>You feel a shock course through your body.</span>", \
+			"<span class='warning'>You hear a zapping sound.</span>" \
+		)
+
+	switch(shock_damage)
+		if(16 to 20)
+			Stun(2)
+		if(21 to 25)
+			Weaken(2)
+		if(26 to 25)
+			Weaken(4)
+		if(31 to INFINITY)
+			Weaken(7) //This should work for now, more is really silly and makes you lay there forever
+
+	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	s.set_up(5, 1, loc)
+	s.start()
+
+	return shock_damage
+
+/mob/living/carbon/proc/apply_shock(var/shock_damage, var/def_zone, var/siemens_coeff = 1.0)
+	shock_damage *= siemens_coeff
+	if(shock_damage < 0.5)
+		return 0
+	if(shock_damage < 1)
+		shock_damage = 1
+	apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
+	return(shock_damage)

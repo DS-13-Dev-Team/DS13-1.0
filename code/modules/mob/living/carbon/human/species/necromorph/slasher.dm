@@ -13,15 +13,11 @@
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE
+	evasion = 5	//Below the normal human value of 15, because they're slow
 
-
-	has_limbs = list(
-	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple),
-	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple),
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/blade),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right),
-	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple),
-	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple)
+	override_limb_types = list(
+	BP_L_ARM =  /obj/item/organ/external/arm/blade,
+	BP_R_ARM =  /obj/item/organ/external/arm/blade/right,
 	)
 
 
@@ -55,7 +51,7 @@
 	'sound/effects/creatures/necromorph/slasher/slasher_speech_2.ogg')
 	)
 
-	slowdown = 2.5
+	slowdown = 3.5
 
 	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/proc/shout)
 	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/slasher_charge))
@@ -64,7 +60,7 @@
 	name = SPECIES_NECROMORPH_SLASHER_ENHANCED
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 200
-	slowdown = 2
+	slowdown = 2.8
 
 
 
@@ -134,7 +130,7 @@
 		if (H.has_organ(BP_L_ARM))
 			H.last_attack = 0
 			H.UnarmedAttack(L)
-		return
+		return FALSE
 	else
 		return ..()
 

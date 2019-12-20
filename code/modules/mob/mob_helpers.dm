@@ -652,7 +652,7 @@ proc/is_blind(A)
 
 //Tries to find the mob's email.
 /proc/find_email(real_name)
-	for(var/mob/mob in GLOB.living_mob_list_)
+	for(var/mob/mob in GLOB.living_mob_list)
 		if(mob.real_name == real_name)
 			if(!mob.mind)
 				return
@@ -739,3 +739,9 @@ proc/is_blind(A)
 	if (. && view_offset)
 		reset_view(null)	//Possible future consideration, should this call handle_vision instead?
 							//Seems pointlessly expensive for now, but consider it if there are problems
+
+/mob/living/get_move_speed_factor()
+	return move_speed_factor
+
+/mob/living/get_attack_speed_factor()
+	return attack_speed_factor

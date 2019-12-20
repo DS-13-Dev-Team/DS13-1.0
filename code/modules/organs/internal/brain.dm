@@ -20,12 +20,15 @@
 	var/damage_threshold_value
 	var/healed_threshold = 1
 	var/oxygen_reserve = 6
+	var/mind_bound	=	TRUE	//Is the mob's bound to this organ? Controls whether or not we do mind transferring stuff on remove/replace
 
 
 //Undead version for necromorphs
 /obj/item/organ/internal/brain/undead
 	vital = FALSE	//Necros survive the destruction of the head
 	can_use_mmi	=	FALSE
+	mind_bound = FALSE
+
 
 /obj/item/organ/internal/brain/undead/Initialize()
 	.=..()
@@ -119,7 +122,8 @@
 	if(borer)
 		borer.detatch() //Should remove borer if the brain is removed - RR
 
-	transfer_identity(owner)
+	if (mind_bound)
+		transfer_identity(owner)
 
 	..()
 
@@ -127,14 +131,15 @@
 
 	if(!..()) return 0
 
-	if(target.key)
-		target.ghostize()
+	if (mind_bound)
+		if(target.key)
+			target.ghostize()
 
-	if(brainmob)
-		if(brainmob.mind)
-			brainmob.mind.transfer_to(target)
-		else
-			target.key = brainmob.key
+		if(brainmob)
+			if(brainmob.mind)
+				brainmob.mind.transfer_to(target)
+			else
+				target.key = brainmob.key
 
 	return 1
 

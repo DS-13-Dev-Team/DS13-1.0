@@ -75,13 +75,13 @@
 /obj/item/grab/proc/target_change()
 	var/hit_zone = assailant.zone_sel.selecting
 	if(src != assailant.get_active_hand())
-		return 0
+		return FALSE
 	if(hit_zone && hit_zone != last_target)
 		last_target = hit_zone
 		special_target_functional = current_grab.check_special_target(src)
 		return hit_zone
 	else
-		return 0
+		return FALSE
 
 
 /obj/item/grab/proc/force_drop()
@@ -91,19 +91,26 @@
 
 	// can't grab non-carbon/human/'s
 	if(!istype(affecting))
-		return 0
+		return FALSE
 
 	if(assailant.anchored || affecting.anchored)
-		return 0
+		return FALSE
 
 	if(!assailant.Adjacent(affecting))
-		return 0
+		return FALSE
+
+	if (!assailant.can_pull(affecting))
+		return FALSE
+
+	var/datum/species/S = assailant.get_species_datum()
+	if (S && !S.can_pickup)
+		return FALSE	//You need to be able to pick things up to hold a grab object
 
 	for(var/obj/item/grab/G in affecting.grabbed_by)
 		if(G.assailant == assailant && G.target_zone == target_zone)
 			var/obj/O = G.get_targeted_organ()
 			to_chat(assailant, "<span class='notice'>You already grabbed [affecting]'s [O.name].</span>")
-			return 0
+			return FALSE
 
 	return 1
 
@@ -113,28 +120,32 @@
 /obj/item/grab/proc/pre_check()
 
 	if(!assailant || !affecting)
-		return 0
+		return FALSE
 
 	if(assailant == affecting)
 		to_chat(assailant, "<span class='notice'>You can't grab yourself.</span>")
-		return 0
+		return FALSE
 
 	if(assailant.get_active_hand())
 		to_chat(assailant, "<span class='notice'>You can't grab someone if your hand is full.</span>")
-		return 0
+		return FALSE
 
 	if(assailant.grabbed_by.len)
 		to_chat(assailant, "<span class='notice'>You can't grab someone if you're being grabbed.</span>")
-		return 0
+		return FALSE
+
+
 
 	return 1
 
 /obj/item/grab/proc/init()
 	last_target = assailant.zone_sel.selecting
 	affecting.UpdateLyingBuckledAndVerbStatus()
-	adjust_position()
+	if (!adjust_position())
+		return FALSE
 	update_icons()
 	action_used()
+	return TRUE
 
 // Returns the organ of the grabbed person that the grabber is targeting
 /obj/item/grab/proc/get_targeted_organ()
@@ -144,7 +155,7 @@
 	if((M && ishuman(M)) && I)
 		return current_grab.resolve_item_attack(src, M, I, target_zone)
 	else
-		return 0
+		return FALSE
 
 /obj/item/grab/proc/action_used()
 	assailant.remove_cloaking_source(assailant.species)
@@ -197,11 +208,15 @@
 	current_grab.handle_resist(src)
 
 /obj/item/grab/proc/adjust_position(var/force = 0)
+	if (assailant && !assailant.can_pull(affecting))
+		qdel(src)
+		return FALSE
+
 	if(force)	affecting.forceMove(assailant.loc)
 
 	if(!assailant || !affecting || !assailant.Adjacent(affecting))
 		qdel(src)
-		return 0
+		return FALSE
 	else
 		current_grab.adjust_position(src)
 
@@ -212,7 +227,9 @@
 	This section is for the simple procs used to return things from current_grab.
 */
 /obj/item/grab/proc/stop_move()
-	return current_grab.stop_move
+	if (current_grab.stop_move)
+		if (assailant && assailant.can_pull(affecting))//Can't stop someone from moving if you don't have the strength to pull them
+			return TRUE
 
 /obj/item/grab/proc/force_stand()
 	return current_grab.force_stand

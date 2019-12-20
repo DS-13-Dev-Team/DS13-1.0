@@ -283,19 +283,35 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 
 //Heal MANY external organs, in random order
-/mob/living/carbon/human/heal_overall_damage(var/brute, var/burn)
-	var/list/obj/item/organ/external/parts = get_damaged_organs(brute,burn)
+//If no damage type specified, heals all forms of external damage
+/mob/living/carbon/human/heal_overall_damage(var/heal_amount, var/damage_type)
+	if (heal_amount <= 0 || !isnum(heal_amount))
+		return
 
-	while(parts.len && (brute>0 || burn>0) )
+	var/list/obj/item/organ/external/parts
+	if (damage_type == BRUTE)
+		parts = get_damaged_organs(heal_amount,0)
+	else if (damage_type == BURN)
+		parts = get_damaged_organs(0,heal_amount)
+	else
+		parts = get_damaged_organs(heal_amount,heal_amount)
+
+	while(parts.len && heal_amount > 0)
 		var/obj/item/organ/external/picked = pick(parts)
 
-		var/brute_was = picked.brute_dam
-		var/burn_was = picked.burn_dam
 
-		picked.heal_damage(brute,burn)
 
-		brute -= (brute_was-picked.brute_dam)
-		burn -= (burn_was-picked.burn_dam)
+		var/brute_heal = 0
+		if (damage_type != BURN)
+			brute_heal = min(picked.brute_dam, heal_amount)
+			heal_amount -= brute_heal
+		var/burn_heal = 0
+		if (damage_type != BRUTE)
+			burn_heal = min(picked.burn_dam, heal_amount)
+			heal_amount -= burn_heal
+
+
+		picked.heal_damage(brute_heal,burn_heal)
 
 		parts -= picked
 	BITSET(hud_updateflag, HEALTH_HUD)

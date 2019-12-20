@@ -78,7 +78,7 @@
 
 /mob/living/carbon/human/bst
 	universal_understand = TRUE
-	status_flags = GODMODE
+	//status_flags = GODMODE	//Leave this off by default, more useful for testing
 	var/fall_override = TRUE
 	var/mob/original_body = null
 
@@ -300,7 +300,7 @@
 /obj/item/weapon/storage/belt/utility/full/bst/New()
 	..()
 	//new /obj/item/weapon/tool/multitool(src)
-	new /obj/item/device/t_scanner(src)
+	new /obj/item/weapon/tool/saw/plasma(src)
 
 /mob/living/carbon/human/bst/restrained()
 	if (status_flags & GODMODE)

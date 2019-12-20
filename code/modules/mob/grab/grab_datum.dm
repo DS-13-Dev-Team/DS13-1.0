@@ -190,7 +190,7 @@
 	var/mob/living/carbon/human/affecting = G.affecting
 
 	if(!affecting.buckled)
-		animate(affecting, pixel_x = 0, pixel_y = 0, 4, 1, LINEAR_EASING)
+		animate(affecting, pixel_x = affecting.default_pixel_x, pixel_y = affecting.default_pixel_y, 4, 1, LINEAR_EASING)
 	affecting.reset_plane_and_layer()
 
 // This is called whenever the assailant moves.

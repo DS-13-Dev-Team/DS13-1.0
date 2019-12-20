@@ -12,6 +12,9 @@
 	icon_dead = "brute"
 
 	pixel_offset_x = -16
+	plane = LARGE_MOB_PLANE
+	layer = LARGE_MOB_LAYER
+
 
 	//Collision and bulk
 	strength    = STR_VHIGH
@@ -23,7 +26,7 @@
 	evasion = -10	//Big target, easier to shoot
 
 	//Implacable
-	stun_mod = 0.3
+	stun_mod = 0.5
 	weaken_mod = 0.3
 	paralysis_mod = 0.3
 

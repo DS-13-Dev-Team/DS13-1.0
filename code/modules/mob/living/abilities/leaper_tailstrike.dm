@@ -44,9 +44,11 @@
 	else
 		epicentre = get_turf(target)
 	damage = _damage
-	windup_time = _windup_time
-	winddown_time = _winddown_time
+	windup_time = _windup_time /= user.get_attack_speed_factor() //Factor in attackspeed
+	winddown_time = _winddown_time /= user.get_attack_speed_factor() //Factor in attackspeed
 	cooldown = _cooldown
+	if (cooldown)
+		cooldown /= user.get_attack_speed_factor() //Factor in attackspeed
 
 	start()
 

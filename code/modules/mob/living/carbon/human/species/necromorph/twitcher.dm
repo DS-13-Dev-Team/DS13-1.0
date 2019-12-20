@@ -21,6 +21,7 @@
 	icon_normal = "twitcher"
 	icon_lying = "twitcher"
 	icon_dead = "twitcher"
+	single_icon = TRUE
 
 	slowdown = 1.5
 	view_offset = 3 * WORLD_ICON_SIZE //Forward view offset allows longer-ranged charges

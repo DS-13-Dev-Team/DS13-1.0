@@ -156,12 +156,12 @@ var/list/debug_verbs = list (
 	)
 
 
-/client/proc/enable_debug_verbs()
+/client/proc/enable_debug_verbs(var/skip_check = FALSE)
 	set category = "Debug"
 	set name = "Debug verbs"
 
-	if(!check_rights(R_DEBUG)) return
-
+	if(!skip_check && !check_rights(R_DEBUG))
+		return
 	verbs += debug_verbs
 
 	feedback_add_details("admin_verb","mDV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
