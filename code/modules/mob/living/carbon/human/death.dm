@@ -1,6 +1,5 @@
 /mob/living/carbon/human/gib()
 
-	crash_with("Human gibbed Stat:[stat]")
 
 	for(var/obj/item/organ/external/E in src.organs)
 		if (species.can_obliterate || (E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE))
@@ -29,7 +28,6 @@
 		..()
 
 /mob/living/carbon/human/death(gibbed,deathmessage="seizes up and falls limp...", show_dead_message = "You have died.")
-	crash_with("Human death Stat:[stat]")
 	if(stat == DEAD) return
 	BITSET(hud_updateflag, HEALTH_HUD)
 	BITSET(hud_updateflag, STATUS_HUD)
