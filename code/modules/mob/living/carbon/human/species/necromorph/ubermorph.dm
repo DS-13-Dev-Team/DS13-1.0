@@ -129,7 +129,7 @@
 	.=frenzy_shout_ability(60 SECONDS, 0.3, 30 SECONDS, FACTION_NECROMORPH, 9)
 	if (.)
 		play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_MAX, 1, 6)//Very loud, heard far away
-		shake_camera(src, 3, 4)
+		shake_camera(src, 6, 4)
 
 		//Lets do some cool effects
 		var/obj/effect/effect/expanding_circle/EC = new /obj/effect/effect/expanding_circle(loc, 1.5, 1.5 SECOND,"#ff0000")

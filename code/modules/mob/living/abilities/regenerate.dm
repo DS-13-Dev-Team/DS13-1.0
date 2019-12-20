@@ -54,7 +54,7 @@
 		if (max_limbs <= 0)
 			continue
 		if(E)
-			if (!E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE)
+			if (!(E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE))
 				continue	//We can't regrow something which can never be removed in the first place
 			if (!E.is_usable())
 				E.removed()
