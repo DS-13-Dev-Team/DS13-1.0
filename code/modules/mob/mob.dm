@@ -598,9 +598,9 @@
 		if(pullin)
 			pullin.icon_state = "pull0"
 
-/mob/proc/start_pulling(var/atom/movable/AM)
-
-	if ( !AM || !usr || src==AM || !isturf(src.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
+/mob/proc/can_pull(var/atom/movable/AM)
+	.=FALSE
+	if ( !AM || src==AM || !isturf(src.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
 	if (AM.anchored)
@@ -636,6 +636,14 @@
 		if(!can_pull_size || can_pull_size < I.w_class)
 			to_chat(src, "<span class='warning'>It won't budge!</span>")
 			return
+
+	return TRUE
+
+
+/mob/proc/start_pulling(var/atom/movable/AM)
+
+	if (!usr || !can_pull(AM))	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
+		return
 
 	if(pulling)
 		var/pulling_old = pulling
@@ -906,6 +914,9 @@
 
 /mob/proc/get_species()
 	return ""
+
+/mob/proc/get_species_datum()
+	return null
 
 /mob/proc/get_visible_implants(var/class = 0)
 	var/list/visible_implants = list()
