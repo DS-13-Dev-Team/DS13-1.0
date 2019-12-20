@@ -1,19 +1,25 @@
 /mob/living/carbon/human/gib()
-	for(var/obj/item/organ/I in internal_organs)
-		I.removed()
-		if(istype(loc,/turf))
-			I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
+
+	crash_with("Human gibbed Stat:[stat]")
 
 	for(var/obj/item/organ/external/E in src.organs)
-		E.droplimb(0,DROPLIMB_EDGE,1)
+		if (species.can_obliterate || (E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE))
+			for(var/obj/item/organ/I in E.internal_organs)
+				I.removed()
+				if(istype(loc,/turf))
+					I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
+			E.droplimb(0,DROPLIMB_EDGE,1)
 
 	sleep(1)
 
 	for(var/obj/item/I in src)
+		if (istype(I, /obj/item/organ))
+			continue	//Organs are already handled above
 		drop_from_inventory(I)
 		I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/I.w_class))
 
-	..(species.gibbed_anim)
+	if(species.can_obliterate)
+		..(species.gibbed_anim)
 	gibs(loc, dna, null, species.get_flesh_colour(src), species.get_blood_colour(src))
 
 /mob/living/carbon/human/dust()
@@ -23,7 +29,7 @@
 		..()
 
 /mob/living/carbon/human/death(gibbed,deathmessage="seizes up and falls limp...", show_dead_message = "You have died.")
-
+	crash_with("Human death Stat:[stat]")
 	if(stat == DEAD) return
 	BITSET(hud_updateflag, HEALTH_HUD)
 	BITSET(hud_updateflag, STATUS_HUD)

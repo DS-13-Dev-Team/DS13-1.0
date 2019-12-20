@@ -68,10 +68,11 @@
 
 
 	//Special effect:
-	//If the user is missing two or more limbs, regenerating takes longer and plays a special sound
+	//If the user is missing two or more limbs, rplays a special sound
 	if (missing_limbs.len >= 2)
-		duration *= 1.5
 		user.play_species_audio(user, SOUND_REGEN, VOLUME_MID, 1)
+
+	duration *= (1 + (missing_limbs.len * 0.25))	//more limbs lost, the longer it takes
 
 	//Lets play the animations
 	for(var/limb_type in regenerating_organs)

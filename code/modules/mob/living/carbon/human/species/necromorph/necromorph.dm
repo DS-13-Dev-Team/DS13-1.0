@@ -116,7 +116,7 @@
 	BP_LUNGS =    /obj/item/organ/internal/lungs/undead,
 	BP_LIVER =    /obj/item/organ/internal/liver/undead,
 	BP_KIDNEYS =  /obj/item/organ/internal/kidneys/undead,
-	BP_BRAIN =    /obj/item/organ/internal/brain,
+	BP_BRAIN =    /obj/item/organ/internal/brain/undead,
 	BP_EYES =     /obj/item/organ/internal/eyes
 	)
 

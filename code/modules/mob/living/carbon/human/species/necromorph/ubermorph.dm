@@ -5,6 +5,7 @@
 
 	//Health and Defense
 	total_health = INFINITY	//This number doesn't matter, it won't ever be used
+	can_obliterate = FALSE
 	healing_factor = 4	//Lots of constant healing
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
