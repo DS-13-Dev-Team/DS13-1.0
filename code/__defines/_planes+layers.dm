@@ -143,6 +143,7 @@ What is the naming convention for planes or layers?
 
 #define HUMAN_PLANE                   -11 // For Humans that are standing up.
 	#define HUMAN_LAYER	0
+	// MOB_LAYER 4
 
 #define MOB_PLANE                      -7 // For Mobs.
 	// MOB_LAYER 4
@@ -153,17 +154,18 @@ What is the naming convention for planes or layers?
 	#define VEHICLE_LOAD_LAYER 1
 	#define CAMERA_LAYER       2
 
-#define LARGE_MOB_PLANE				   -5
+
+#define LARGE_MOB_PLANE				   -5.5
 
 	#define LARGE_MOB_LAYER				1
 
-#define BLOB_PLANE                     -4 // For Blobs, which are above humans.
+#define BLOB_PLANE                     -5 // For Blobs, which are above humans.
 
 	#define BLOB_SHIELD_LAYER		1
 	#define BLOB_NODE_LAYER			2
 	#define BLOB_CORE_LAYER			3
 
-#define EFFECTS_BELOW_LIGHTING_PLANE   -3 // For special effects.
+#define EFFECTS_BELOW_LIGHTING_PLANE   -4 // For special effects.
 
 	#define BELOW_PROJECTILE_LAYER  2
 	#define FIRE_LAYER              3
@@ -172,9 +174,9 @@ What is the naming convention for planes or layers?
 	#define SINGULARITY_LAYER       6
 	#define POINTER_LAYER           7
 
-#define OBSERVER_PLANE                 -2 // For observers and ghosts
+#define OBSERVER_PLANE                 -3 // For observers and ghosts
 
-#define LIGHTING_PLANE 			       -1 // For Lighting. - The highest plane (ignoring all other even higher planes)
+#define LIGHTING_PLANE 			       -2 // For Lighting. - The highest plane (ignoring all other even higher planes)
 
 	#define LIGHTBULB_LAYER        0
 	#define LIGHTING_LAYER         1
@@ -182,12 +184,12 @@ What is the naming convention for planes or layers?
 	#define SUPER_PORTAL_LAYER     3
 	#define NARSIE_GLOW            4
 
-#define EFFECTS_ABOVE_LIGHTING_PLANE   0 // For glowy eyes, laser beams, etc. that shouldn't be affected by darkness
+#define EFFECTS_ABOVE_LIGHTING_PLANE   -1 // For glowy eyes, laser beams, etc. that shouldn't be affected by darkness
 	#define EYE_GLOW_LAYER         1
 	#define BEAM_PROJECTILE_LAYER  2
 	#define SUPERMATTER_WALL_LAYER 3
 
-#define BASE_PLANE 				        1 // Not for anything, but this is the default.
+#define BASE_PLANE 				        0 // Not for anything, but this is the default.
 	#define BASE_AREA_LAYER 999
 
 #define OBSCURITY_PLANE 		        2 // For visualnets, such as the AI's static.
