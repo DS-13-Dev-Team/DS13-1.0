@@ -405,23 +405,33 @@
 		return 0 //Door's open... wait, why are you in it's contents then?
 	if((setup & CLOSET_HAS_LOCK) && locked)
 		return 1 // Closed and locked
-	return (!welded) //closed but not welded...
+	return (welded) //closed but not welded...
 
 /obj/structure/closet/proc/mob_breakout(var/mob/living/escapee)
-	var/breakout_time = 2 //2 minutes by default
+	var/breakout_time = 2 MINUTES//2 minutes by default
+
+
 
 	if(breakout || !req_breakout())
 		return
 
+	//Species strength affects breakout times
+	if (ishuman(escapee))
+		var/datum/species/S = escapee.get_species_datum()
+		if (S.strength < 0)
+			breakout_time /= 1 + (S.strength*0.3)
+		else if (S.strength > 0)
+			breakout_time /= 1 + (S.strength*2)
+
 	escapee.setClickCooldown(100)
 
 	//okay, so the closet is either welded or locked... resist!!!
-	to_chat(escapee, "<span class='warning'>You lean on the back of \the [src] and start pushing the door open. (this will take about [breakout_time] minutes)</span>")
+	to_chat(escapee, "<span class='warning'>You lean on the back of \the [src] and start pushing the door open. (this will take about [breakout_time*0.1] seconds)</span>")
 
 	visible_message("<span class='danger'>\The [src] begins to shake violently!</span>")
 
 	breakout = 1 //can't think of a better way to do this right now.
-	for(var/i in 1 to (6*breakout_time * 2)) //minutes * 6 * 5seconds * 2
+	for(var/i in 1 to Ceiling(breakout_time*0.02)) //minutes * 6 * 5seconds * 2
 		if(!do_after(escapee, 50, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED)) //5 seconds
 			breakout = 0
 			return
