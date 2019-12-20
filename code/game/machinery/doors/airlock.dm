@@ -851,7 +851,6 @@ About the new airlock wires panel:
 	return ..()
 
 /obj/machinery/door/airlock/attack_hand(mob/user as mob)
-	world << "Airlock AH 1"
 	if(!istype(usr, /mob/living/silicon))
 		if(src.isElectrified())
 			if(src.shock(user, 100))
@@ -861,7 +860,6 @@ About the new airlock wires panel:
 		user.set_machine(src)
 		wires.Interact(user)
 	else
-		world << "Airlock AH 2"
 		..(user)
 	return
 
@@ -1014,7 +1012,6 @@ About the new airlock wires panel:
 		return 1
 
 /obj/machinery/door/airlock/attackby(var/obj/item/C, var/mob/user)
-	world << "airlock AB 1 [C] [user]"
 	if (!ismob(C))
 		// Brace is considered installed on the airlock, so interacting with it is protected from electrification.
 		if(brace && (istype(C.GetIdCard(), /obj/item/weapon/card/id/) || istype(C, /obj/item/weapon/tool/crowbar/brace_jack)))
