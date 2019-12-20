@@ -49,6 +49,7 @@
 
 /datum/extension/frenzy_cooldown
 	name = "Battlecry"
+	flags = EXTENSION_FLAG_IMMEDIATE
 	var/cooldown_time
 	var/cooltimer
 	var/started_at
