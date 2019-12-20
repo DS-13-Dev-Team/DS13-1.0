@@ -509,3 +509,77 @@ meteor_act
 	if(wearing_rig && !stat && paralysis < amount) //We are passing out right this second.
 		wearing_rig.notify_ai("<span class='danger'>Warning: user consciousness failure. Mobility control passed to integrated intelligence system.</span>")
 	..(amount)
+
+
+//Removed the horrible safety parameter. It was only being used by ninja code anyways.
+//Now checks siemens_coefficient of the affected area by default
+/mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
+
+	if(status_flags & GODMODE)	return 0	//godmode
+
+	if(species.siemens_coefficient == -1)
+		if(stored_shock_by_ref["\ref[src]"])
+			stored_shock_by_ref["\ref[src]"] += shock_damage
+		else
+			stored_shock_by_ref["\ref[src]"] = shock_damage
+		return
+
+	if (!def_zone)
+		def_zone = pick(BP_L_HAND, BP_R_HAND)
+
+	return ..(shock_damage, source, base_siemens_coeff, def_zone)
+
+/mob/living/carbon/human/apply_shock(var/shock_damage, var/def_zone, var/base_siemens_coeff = 1.0)
+	var/obj/item/organ/external/initial_organ = get_organ(check_zone(def_zone))
+	if(!initial_organ)
+		initial_organ = pick(organs)
+
+	var/obj/item/organ/external/floor_organ
+
+	if(!lying)
+		var/obj/item/organ/external/list/standing = list()
+		for(var/limb_tag in species.locomotion_limbs)
+			var/obj/item/organ/external/E = organs_by_name[limb_tag]
+			if(E && E.is_usable())
+				standing[limb_tag] = E
+		if((def_zone == BP_L_FOOT || def_zone == BP_L_LEG) && standing[BP_L_FOOT])
+			floor_organ = standing[BP_L_FOOT]
+		if((def_zone == BP_R_FOOT || def_zone == BP_R_LEG) && standing[BP_R_FOOT])
+			floor_organ = standing[BP_R_FOOT]
+		else
+			floor_organ = standing[pick(standing)]
+
+	if(!floor_organ)
+		floor_organ = pick(organs)
+
+	var/obj/item/organ/external/list/to_shock = trace_shock(initial_organ, floor_organ)
+
+	if(to_shock && to_shock.len)
+		shock_damage /= to_shock.len
+		shock_damage = round(shock_damage, 0.1)
+	else
+		return 0
+
+	var/total_damage = 0
+
+	for(var/obj/item/organ/external/E in to_shock)
+		total_damage += ..(shock_damage, E.organ_tag, base_siemens_coeff * get_siemens_coefficient_organ(E))
+	return total_damage
+
+/mob/living/carbon/human/proc/trace_shock(var/obj/item/organ/external/init, var/obj/item/organ/external/floor)
+	var/obj/item/organ/external/list/traced_organs = list(floor)
+
+	if(!init)
+		return
+
+	if(!floor || init == floor)
+		return list(init)
+
+	for(var/obj/item/organ/external/E in list(floor, init))
+		while(E && E.parent_organ)
+			E = organs_by_name[E.parent_organ]
+			traced_organs += E
+			if(E == init)
+				return traced_organs
+
+	return traced_organs

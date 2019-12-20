@@ -60,6 +60,7 @@
 	healing_factor = 0	//Necromorphs don't naturally heal, but they will be able to heal through certain situational effects
 	wound_remnant_time = 0 //No cuts sitting around forever
 	burn_mod = 1.3	//Takes more damage from burn attacks
+	weaken_mod = 0.75	//Get back up faster
 	blood_oxy = FALSE
 
 	var/list/initial_health_values	//This list is populated once for each species, when a necromorph of that type is created
