@@ -7,18 +7,24 @@
 	item_state = "ds_captain"
 	worn_state = "ds_captain"
 	icon_state = "ds_captain"
+	permeability_coefficient = 0.50
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /obj/item/clothing/under/first_officer
 	name = "first lieutenant's uniform"
 	item_state = "ds_firstlieutenant"
 	worn_state = "ds_firstlieutenant"
 	icon_state = "ds_firstlieutenant"
+	permeability_coefficient = 0.50
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /obj/item/clothing/under/bridge_officer
 	name = "ensign's uniform"
 	item_state = "ds_bridgeensign"
 	worn_state = "ds_bridgeensign"
 	icon_state = "ds_bridgeensign"
+	permeability_coefficient = 0.50
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /*
  * Medical
@@ -74,7 +80,7 @@
 	item_state = "ds_spare1"
 	worn_state = "ds_spare1"
 	icon_state = "ds_spare1"
-	
+
 /obj/item/clothing/under/dsspareishimura2
 	name = "crew uniform"
 	item_state = "ds_spare2"
@@ -90,15 +96,15 @@
 	worn_state = "ds_miner"
 	icon_state = "ds_miner"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
-	
+
 /*
  * Security
  */
-/obj/item/clothing/under/security/ds_securityundersuit
+/obj/item/clothing/under/security/deadspace
 	name = "security jumpsuit"
 	item_state = "ds_securityjumpsuit"
 	worn_state = "ds_securityjumpsuit"
 	icon_state = "ds_securityjumpsuit"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	permeability_coefficient = 0.25
-	armor = list(melee = 35, bullet = 55, laser = 20, energy = 20, bomb = 45, bio = 0, rad = 0)
+	armor = list(melee = 35, bullet = 55, laser = 0, energy = 20, bomb = 45, bio = 0, rad = 0)

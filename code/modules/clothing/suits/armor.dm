@@ -27,6 +27,26 @@
 	icon_state = "armorsec"
 	//item_state = "armor"
 
+/obj/item/clothing/suit/armor/vest/ds_armor
+	name = "security officer's armor"
+	desc = "An armored vest that protects against some damage."
+	icon_state = "ds_securityarmor"
+	//item_state = "armor"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	cold_protection = UPPER_TORSO|LOWER_TORSO
+	heat_protection = UPPER_TORSO|LOWER_TORSO
+	armor = list(melee = 50, bullet = 40, laser = 50, energy = 0, bomb = 25, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/armor/vest/ds_jacket
+	name = "stylish security jacket"
+	desc = "An armored jacket often worn by the Chief Security Officer. Although it looks cool, the only protection it offers is against a cold breeze."
+	icon_state = "ds_securityjacket"
+	//item_state = "armor"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
+
 /obj/item/clothing/suit/armor/vest/warden
 	name = "warden's jacket"
 	desc = "An armoured jacket with silver rank pips and livery."

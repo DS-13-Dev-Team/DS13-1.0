@@ -1,15 +1,16 @@
-/decl/hierarchy/outfit/job/science/ds13chiefsciencenerd
+/decl/hierarchy/outfit/job/science/cscio
 	name = OUTFIT_JOB_NAME("Chief Science Officer")
 	uniform = /obj/item/clothing/under/chief_science_officer
 	l_ear = /obj/item/device/radio/headset/heads/rd
-	shoes = /obj/item/clothing/shoes/hightops/black
-	id_type = /obj/item/weapon/card/id/holoidaltmanbepraised
-	
-/decl/hierarchy/outfit/job/science/ds13juniorsciencenerd
+	shoes = /obj/item/clothing/shoes/black
+	id_type = /obj/item/weapon/card/id/holoidcscio
+
+/decl/hierarchy/outfit/job/science/ra
 	name = OUTFIT_JOB_NAME("Research Assistant")
 	uniform = /obj/item/clothing/under/research_assistant
-	shoes = /obj/item/clothing/shoes/hightops/black
-	id_type = /obj/item/weapon/card/id/holoidwhosaltman
+	l_ear = /obj/item/device/radio/headset/headset_medsci
+	shoes = /obj/item/clothing/shoes/black
+	id_type = /obj/item/weapon/card/id/holoidra
 
 
 

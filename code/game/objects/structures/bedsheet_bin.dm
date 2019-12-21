@@ -58,9 +58,9 @@ LINEN BINS
 	icon_state = "sheetyellow"
 	item_state = "sheetyellow"
 
-/obj/item/weapon/bedsheet/mime
-	icon_state = "sheetmime"
-	item_state = "sheetmime"
+/obj/item/weapon/bedsheet/prisoner
+	icon_state = "sheetprisoner"
+	item_state = "sheetprisoner"
 
 /obj/item/weapon/bedsheet/clown
 	icon_state = "sheetclown"
@@ -70,9 +70,9 @@ LINEN BINS
 	icon_state = "sheetcaptain"
 	item_state = "sheetcaptain"
 
-/obj/item/weapon/bedsheet/rd
-	icon_state = "sheetrd"
-	item_state = "sheetrd"
+/obj/item/weapon/bedsheet/officer
+	icon_state = "sheetofficer"
+	item_state = "sheetofficer"
 
 /obj/item/weapon/bedsheet/medical
 	icon_state = "sheetmedical"

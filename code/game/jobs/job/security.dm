@@ -1,4 +1,4 @@
-/datum/job/ds13chiefsecurityofficer
+/datum/job/cseco
 	title = "Chief Security Officer"
 	head_position = 1
 	department = "Security"
@@ -11,9 +11,9 @@
 
 	access = list(access_bridge, access_armory, access_security, access_maint_tunnels,
 					access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/security/ds13chiefsecurityofficer
+	outfit_type = /decl/hierarchy/outfit/job/security/cseco
 
-/datum/job/ds13seniorsecurityofficer
+/datum/job/sso
 	title = "Senior Security Officer"
 	department = "Security"
 	department_flag = SEC
@@ -23,9 +23,9 @@
 	selection_color = "#601c1c"
 
 	access = list(access_armory, access_security, access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/security/ds13seniorsecurityofficer
+	outfit_type = /decl/hierarchy/outfit/job/security/sso
 
-/datum/job/ds13securityofficer
+/datum/job/security_officer
 	title = "Security Officer"
 	department = "Security"
 	department_flag = SEC
@@ -35,31 +35,7 @@
 	selection_color = "#601c1c"
 
 	access = list(access_security, access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/security/ds13securityofficer
-
-/datum/job/ds13psecsecuritychief //security chief for PSEC/colony security.
-	title = "PSEC Security Chief"
-	department = "Security"
-	department_flag = SEC
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "the CEC"
-	selection_color = "#601c1c"
-
-	access = list(access_security, access_mining, access_maint_tunnels) //PSEC HQ on the colony should require both access_security and access_mining_station.
-	outfit_type = /decl/hierarchy/outfit/job/security/ds13PSECboss
-
-/datum/job/ds13psecsecurityofficer //security officer that spawns on colony.
-	title = "PSEC Security Officer"
-	department = "Security"
-	department_flag = SEC
-	total_positions = 4
-	spawn_positions = 4
-	supervisors = "the PSEC Security Chief"
-	selection_color = "#601c1c"
-
-	access = list(access_security, access_mining, access_maint_tunnels) //PSEC HQ on the colony should require both access_security and access_mining_station.
-	outfit_type = /decl/hierarchy/outfit/job/security/ds13PSECofficer
+	outfit_type = /decl/hierarchy/outfit/job/security/officer
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -85,7 +61,6 @@
 	access = list()
 	minimal_access = list()
 	minimal_player_age = 14
-	outfit_type = /decl/hierarchy/outfit/job/security/hos
 
 /datum/job/hos/equip(var/mob/living/carbon/human/H)
 	. = ..()
@@ -105,7 +80,6 @@
 	access = list()
 	minimal_access = list()
 	minimal_player_age = 7
-	outfit_type = /decl/hierarchy/outfit/job/security/warden
 
 /datum/job/detective
 	title = "Detective"
@@ -120,7 +94,6 @@
 	access = list()
 	minimal_access = list()
 	minimal_player_age = 7
-	outfit_type = /decl/hierarchy/outfit/job/security/detective
 
 /datum/job/officer
 	title = "Security Officer"
@@ -136,4 +109,3 @@
 	access = list()
 	minimal_access = list()
 	minimal_player_age = 7
-	outfit_type = /decl/hierarchy/outfit/job/security/officer
