@@ -53,7 +53,7 @@
 
 /obj/structure/closet/airlock_crush(var/crush_damage)
 	..()
-	damage(crush_damage)
+	take_damage(crush_damage, used_weapon = src)
 	for(var/atom/movable/AM in src)
 		AM.airlock_crush()
 	return

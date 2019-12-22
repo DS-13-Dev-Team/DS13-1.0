@@ -61,8 +61,7 @@ for reference:
 	icon_state = "barricade"
 	anchored = 1.0
 	density = 1
-	var/health = 100
-	var/maxhealth = 100
+	max_health = 100
 	var/material/material
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	layer = ABOVE_WINDOW_LAYER
@@ -78,8 +77,8 @@ for reference:
 	name = "[material.display_name] barricade"
 	desc = "This space is blocked off by a barricade made of [material.display_name]."
 	color = material.icon_colour
-	maxhealth = material.integrity
-	health = maxhealth
+	max_health = material.integrity
+	health = max_health
 
 /obj/structure/barricade/get_material()
 	return material
@@ -88,50 +87,29 @@ for reference:
 	if (istype(W, /obj/item/stack))
 		var/obj/item/stack/D = W
 		if(D.get_material_name() != material.name)
-			return //hitting things with the wrong type of stack usually doesn't produce messages, and probably doesn't need to.
-		if (health < maxhealth)
+			return 	TRUE
+		if (health < max_health)
 			if (D.get_amount() < 1)
 				to_chat(user, "<span class='warning'>You need one sheet of [material.display_name] to repair \the [src].</span>")
-				return
+				return	TRUE
 			visible_message("<span class='notice'>[user] begins to repair \the [src].</span>")
-			if(do_after(user,20,src) && health < maxhealth)
+			if(do_after(user,20,src) && health < max_health)
 				if (D.use(1))
-					health = maxhealth
+					health = max_health
 					visible_message("<span class='notice'>[user] repairs \the [src].</span>")
-				return
-		return
+				return	TRUE
+		return	TRUE
 	else
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		switch(W.damtype)
-			if("fire")
-				src.health -= W.force * 1
-			if("brute")
-				src.health -= W.force * 0.75
-			else
-		if (src.health <= 0)
-			visible_message("<span class='danger'>The barricade is smashed apart!</span>")
-			dismantle()
-			qdel(src)
-			return
-		..()
+		.=..()
+
+/obj/structure/barricade/zero_health()
+	dismantle()
 
 /obj/structure/barricade/proc/dismantle()
 	material.place_dismantled_product(get_turf(src))
 	qdel(src)
 	return
 
-/obj/structure/barricade/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			visible_message("<span class='danger'>\The [src] is blown apart!</span>")
-			qdel(src)
-			return
-		if(2.0)
-			src.health -= 25
-			if (src.health <= 0)
-				visible_message("<span class='danger'>\The [src] is blown apart!</span>")
-				dismantle()
-			return
 
 /obj/structure/barricade/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)//So bullets will fly over and stuff.
 	if(air_group || (height==0))
@@ -156,7 +134,7 @@ for reference:
 	density = 1
 	icon_state = "barrier0"
 	var/health = 100.0
-	var/maxhealth = 100.0
+	var/max_health = 100.0
 	var/locked = 0.0
 //	req_access = list(access_maint_tunnels)
 
@@ -186,8 +164,8 @@ for reference:
 					return
 			return
 		else if(isWrench(W))
-			if (src.health < src.maxhealth)
-				src.health = src.maxhealth
+			if (src.health < src.max_health)
+				src.health = src.max_health
 				src.emagged = 0
 				src.req_access = list(access_security)
 				visible_message("<span class='warning'>[user] repairs \the [src]!</span>")

@@ -8,7 +8,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	layer = BELOW_OBJ_LAYER
 	explosion_resistance = 1
-	var/health = 10
+	health = 20
 	var/destroyed = 0
 	var/on_frame = FALSE
 
@@ -20,8 +20,6 @@
 	update_connections(1)
 	update_icon()
 
-/obj/structure/grille/ex_act(severity)
-	qdel(src)
 
 /obj/structure/grille/update_icon()
 	update_onframe()
@@ -118,8 +116,7 @@
 		. = PROJECTILE_CONTINUE
 		damage = between(0, (damage - Proj.damage)*(Proj.damage_type == BRUTE? 0.4 : 1), 10) //if the bullet passes through then the grille avoids most of the damage
 
-	src.health -= damage*0.2
-	spawn(0) healthcheck() //spawn to make sure we return properly if the grille is deleted
+	take_damage(damage*0.2, user = Proj.firer, used_weapon = Proj)
 
 /obj/structure/grille/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(isWirecutter(W))

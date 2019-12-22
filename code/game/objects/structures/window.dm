@@ -9,10 +9,10 @@
 	anchored = 1.0
 	atom_flags = ATOM_FLAG_CHECKS_BORDER
 	alpha = 180
-	var/maxhealth = 14.0
+	max_health = 14.0
+	hitsound = 'sound/effects/Glasshit.ogg'
 	var/maximal_heat = T0C + 100 		// Maximal heat before this window begins taking damage from fire
 	var/damage_per_fire_tick = 2.0 		// Amount of damage per fire tick. Regular windows are not fireproof so they might as well break quickly.
-	var/health
 	var/ini_dir = null
 	var/state = 2
 	var/reinf = 0
@@ -31,10 +31,10 @@
 /obj/structure/window/examine(mob/user)
 	. = ..(user)
 
-	if(health == maxhealth)
+	if(health == max_health)
 		to_chat(user, "<span class='notice'>It looks fully intact.</span>")
 	else
-		var/perc = health / maxhealth
+		var/perc = health / max_health
 		if(perc > 0.75)
 			to_chat(user, "<span class='notice'>It has a few cracks.</span>")
 		else if(perc > 0.5)
@@ -51,31 +51,22 @@
 		else
 			to_chat(user, "<span class='notice'>There is a thick layer of silicate covering it.</span>")
 
-/obj/structure/window/proc/take_damage(var/damage = 0,  var/sound_effect = 1)
-	var/initialhealth = health
+/obj/structure/window/take_damage(var/damage = 0,  var/sound_effect = 1)
+	playsound(loc, hitsound, 100, 1)
+	.=..()
 
-	if(silicate)
-		damage = damage * (1 - silicate / 200)
-
-	health = max(0, health - damage)
-
-	if(health <= 0)
-		shatter()
-	else
-		if(sound_effect)
-			playsound(loc, 'sound/effects/Glasshit.ogg', 100, 1)
-		if(health < maxhealth / 4 && initialhealth >= maxhealth / 4)
+	if(health > 0)
+		if(health < max_health / 4)
 			visible_message("[src] looks like it's about to shatter!" )
-		else if(health < maxhealth / 2 && initialhealth >= maxhealth / 2)
+		else if(health < max_health / 2)
 			visible_message("[src] looks seriously damaged!" )
-		else if(health < maxhealth * 3/4 && initialhealth >= maxhealth * 3/4)
+		else if(health < max_health * 3/4)
 			visible_message("Cracks begin to appear in [src]!" )
-	return
 
 /obj/structure/window/proc/apply_silicate(var/amount)
-	if(health < maxhealth) // Mend the damage
-		health = min(health + amount * 3, maxhealth)
-		if(health == maxhealth)
+	if(health < max_health) // Mend the damage
+		health = min(health + amount * 3, max_health)
+		if(health == max_health)
 			visible_message("[src] looks fully repaired." )
 	else // Reinforce
 		silicate = min(silicate + amount, 100)
@@ -101,28 +92,6 @@
 	return
 
 
-/obj/structure/window/bullet_act(var/obj/item/projectile/Proj)
-
-	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage) return
-
-	..()
-	take_damage(proj_damage)
-	return
-
-
-/obj/structure/window/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			shatter(0)
-			return
-		if(3.0)
-			if(prob(50))
-				shatter(0)
-				return
 
 //TODO: Make full windows a separate type of window.
 //Once a full window, it will always be a full window, so there's no point
@@ -206,9 +175,8 @@
 		user.do_attack_animation(src)
 	if(!damage)
 		return
-	if(damage >= 10)
-		visible_message("<span class='danger'>[user] [attack_verb] into [src]!</span>")
-		take_damage(damage)
+	if(damage > resistance)
+		.=..()
 	else
 		visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
 	return 1
@@ -258,16 +226,7 @@
 			P.state = state
 			qdel(src)
 	else
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		if(W.damtype == BRUTE || W.damtype == BURN)
-			user.do_attack_animation(src)
-			hit(W.force)
-			if(health <= 7)
-				set_anchored(FALSE)
-				step(src, get_dir(user, src))
-				update_verbs()
-		else
-			playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
+		.=..()
 		..()
 	return
 
@@ -325,9 +284,9 @@
 		set_dir(start_dir)
 
 	if(is_fulltile())
-		maxhealth *= 4
+		max_health *= 4
 
-	health = maxhealth
+	health = max_health
 
 	ini_dir = dir
 
@@ -433,13 +392,14 @@
 	glasstype = /obj/item/stack/material/glass
 	maximal_heat = T0C + 100
 	damage_per_fire_tick = 2.0
-	maxhealth = 12.0
+	max_health = 12.0
 	material_color = GLASS_COLOR
 	color = GLASS_COLOR
 
 /obj/structure/window/basic/full
 	dir = 5
 	icon_state = "window_full"
+	resistance = 10
 
 /obj/structure/window/phoronbasic
 	name = "phoron window"
@@ -449,7 +409,7 @@
 	glasstype = /obj/item/stack/material/glass/phoronglass
 	maximal_heat = T0C + 2000
 	damage_per_fire_tick = 1.0
-	maxhealth = 40.0
+	max_health = 40.0
 	material_color = GLASS_COLOR_PHORON
 	color = GLASS_COLOR_PHORON
 
@@ -467,7 +427,7 @@
 	reinf = 1
 	maximal_heat = T0C + 4000
 	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that borosilicate windows have something like ablative layer that protects them for a while.
-	maxhealth = 80.0
+	max_health = 80.0
 	material_color = GLASS_COLOR_PHORON
 	color = GLASS_COLOR_PHORON
 
@@ -480,13 +440,14 @@
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
 	icon_state = "rwindow"
 	basestate = "rwindow"
-	maxhealth = 40.0
+	max_health = 40.0
 	reinf = 1
 	maximal_heat = T0C + 750
 	damage_per_fire_tick = 2.0
 	glasstype = /obj/item/stack/material/glass/reinforced
 	material_color = GLASS_COLOR
 	color = GLASS_COLOR
+	resistance = 10
 
 /obj/structure/window/New(Loc, constructed=0)
 	..()
@@ -503,6 +464,7 @@
 /obj/structure/window/reinforced/full
 	dir = 5
 	icon_state = "rwindow_full"
+	resistance = 15
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
@@ -515,7 +477,7 @@
 	name = "frosted window"
 	desc = "It looks rather strong and frosted over. Looks like it might take a few less hits than a normal reinforced window."
 	icon_state = "window"
-	maxhealth = 30
+	max_health = 30
 	color = GLASS_COLOR_FROSTED
 
 /obj/structure/window/shuttle
@@ -524,7 +486,7 @@
 	icon = 'icons/obj/podwindows.dmi'
 	icon_state = "window"
 	basestate = "window"
-	maxhealth = 40
+	max_health = 40
 	reinf = 1
 	basestate = "w"
 	dir = 5

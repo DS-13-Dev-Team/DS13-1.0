@@ -29,6 +29,8 @@ var/global/list/sparring_attack_cache = list()
 	//Additional divider on time required to force open airlocks.
 	var/airlock_force_speed = 1
 
+	var/structure_damage_mult = 1
+
 /datum/unarmed_attack/proc/get_damage_type()
 	if(deal_halloss)
 		return PAIN
@@ -119,8 +121,12 @@ var/global/list/sparring_attack_cache = list()
 		var/obj/item/organ/external/affecting = H.get_organ(zone)
 		user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [target] in the [affecting.name]!</span>")
 	else
-		user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [target]!</span>")
-	playsound(user.loc, attack_sound, 25, 1, -1)
+		user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [target][attack_damage?"":", to no effect"]!</span>")
+	user.do_attack_animation(target)
+	if (attack_damage)
+		playsound(user.loc, attack_sound, 25, 1, -1)
+	else
+		playsound(user.loc, attack_sound, VOLUME_NEAR_SILENT, 1, -2)//If we deal 0 damage, the attacksound is much quieter
 
 /datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
 	var/obj/item/organ/internal/eyes/eyes = target.internal_organs_by_name[BP_EYES]
@@ -137,7 +143,7 @@ var/global/list/sparring_attack_cache = list()
 
 
 
-//Procs for attacking airlocks
+//Procs for attacking airlocks and structures
 //------------------------------------
 /mob/proc/force_door(var/obj/machinery/door/target)
 	return FALSE
@@ -163,6 +169,7 @@ var/global/list/sparring_attack_cache = list()
 		setClickCooldown(u_attack.delay)
 		var/damage_done = target.hit(src, null, u_attack.damage) //TODO Later: Add in an attack flag for ignoring resistance?
 		u_attack.show_attack(src, target, null, damage_done)
+
 
 
 
@@ -211,8 +218,22 @@ var/global/list/sparring_attack_cache = list()
 	return airlock_force_speed
 
 
+/mob/proc/strike_structure(var/obj/structure/target)
+	return
 
-
+/mob/living/carbon/human/strike_structure(var/obj/structure/target)
+	var/datum/unarmed_attack/u_attack = get_unarmed_attack(target)
+	if (u_attack)
+		if(world.time < last_attack + u_attack.delay)
+			to_chat(src, "<span class='notice'>You can't attack again so soon.</span>")
+			return 0
+		last_attack = world.time
+		setClickCooldown(u_attack.delay)
+		var/damage_done = u_attack.damage*u_attack.structure_damage_mult
+		if (target.take_damage(damage_done, BRUTE, src, u_attack))
+			u_attack.show_attack(src, target, null, damage_done-target.resistance)
+		else
+			u_attack.show_attack(src, target, null, 0)
 
 
 
@@ -222,6 +243,7 @@ var/global/list/sparring_attack_cache = list()
 */
 /datum/unarmed_attack/bite
 	attack_verb = list("bit")
+	attack_verb = list("teeth")
 	attack_sound = 'sound/weapons/bite.ogg'
 	shredding = 0
 	damage = 0
