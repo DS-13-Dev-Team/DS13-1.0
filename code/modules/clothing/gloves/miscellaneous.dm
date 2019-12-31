@@ -132,22 +132,11 @@
 	permeability_coefficient = 0.05
 	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
 
-/obj/item/clothing/gloves/guards
-	desc = "A pair of synthetic gloves and arm pads reinforced with armor plating."
-	name = "arm guards"
-	icon_state = "guards"
-	item_state = "guards"
-	body_parts_covered = HANDS|ARMS
-	w_class = ITEM_SIZE_NORMAL
-	siemens_coefficient = 0.7
-	permeability_coefficient = 0.03
-	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
-
-/obj/item/clothing/gloves/ds_securityglove
-	desc = "Thick work gloves designed to resist liquid, helps keep the blood out."
-	name = "gloves"
-	icon_state = "ds_securitygloves"
-	item_state = "ds_securitygloves"
+/obj/item/clothing/gloves/combat
+	desc = "A pair of thick, armored gloves designed to protect the wearer and keep blood off."
+	name = "armored gloves"
+	icon_state = "combat"
+	item_state = "combat"
 	siemens_coefficient = 0.50
 	permeability_coefficient = 0.05
 	item_flags = ITEM_FLAG_THICKMATERIAL
@@ -155,3 +144,4 @@
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
+	armor = list(melee = 40, bullet = 40, laser = 0, energy = 0, bomb = 20, bio = 10, rad = 0)

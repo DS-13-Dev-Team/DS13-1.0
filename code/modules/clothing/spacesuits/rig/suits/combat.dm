@@ -111,16 +111,16 @@
 		/obj/item/rig_module/chem_dispenser/combat,
 		/obj/item/rig_module/cooling_unit
 		)
-		
-	
 
-	
+
+
+
 /////////////////////////////////////////////////////////////
 ///////////////Dead Space EDF Rig Suits Proper///////////////
 /////////////////////////////////////////////////////////////
 
-	
-/obj/item/weapon/rig/deadspace/edfsoldier
+
+/*/obj/item/weapon/rig/deadspace/edfsoldier
 	name = "advanced edf infantry rig control module"
 	suit_type = "advanced edf infantry rig"
 	icon = 'icons/obj/rig_modules.dmi'
@@ -139,8 +139,8 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/edfsoldier
 	boot_type = /obj/item/clothing/shoes/magboots/rig/edfsoldier
 	glove_type = /obj/item/clothing/gloves/rig/edfsoldier
-	
-	
+
+
 /obj/item/clothing/suit/space/rig/edfsoldier
 	name = "advanced combat armor"
 	breach_threshold = 60
@@ -148,7 +148,7 @@
 /obj/item/clothing/head/helmet/space/rig/edfsoldier
 	name = "advanced combat helmet"
 	light_overlay = "helmet_light_dual"
-		
+
 /obj/item/clothing/shoes/magboots/rig/edfsoldier
 	name = "advanced combat magboots"
 
@@ -196,7 +196,7 @@
 /obj/item/clothing/head/helmet/space/rig/edfengie
 	name = "advanced combat helmet"
 	light_overlay = "helmet_light_dual"
-		
+
 /obj/item/clothing/shoes/magboots/rig/edfengie
 	name = "advanced combat magboots"
 
@@ -237,7 +237,7 @@
 	boot_type = /obj/item/clothing/shoes/magboots/rig/edfmedic
 	glove_type = /obj/item/clothing/gloves/rig/edfmedic
 
-	
+
 /obj/item/clothing/suit/space/rig/edfmedic
 	name = "advanced combat armor"
 	breach_threshold = 60
@@ -245,7 +245,7 @@
 /obj/item/clothing/head/helmet/space/rig/edfmedic
 	name = "advanced combat helmet"
 	light_overlay = "helmet_light_dual"
-		
+
 /obj/item/clothing/shoes/magboots/rig/edfmedic
 	name = "advanced combat magboots"
 
@@ -286,7 +286,7 @@
 	boot_type = /obj/item/clothing/shoes/magboots/rig/edfcommander
 	glove_type = /obj/item/clothing/gloves/rig/edfcommander
 
-	
+
 /obj/item/clothing/suit/space/rig/edfcommander
 	name = "advanced combat armor"
 	breach_threshold = 60
@@ -294,7 +294,7 @@
 /obj/item/clothing/head/helmet/space/rig/edfcommander
 	name = "advanced combat helmet"
 	light_overlay = "helmet_light_dual_green"
-		
+
 /obj/item/clothing/shoes/magboots/rig/edfcommander
 	name = "advanced combat magboots"
 
@@ -312,7 +312,7 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/mounted/taser	//adding taser here to reflect the stun mode EDF marines had in Dead Space: Aftermath
 		)
-		
+
 
 
 //////////////////////////////////////////////////////////////////////
@@ -339,8 +339,8 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/unisoldier
 	boot_type = /obj/item/clothing/shoes/magboots/rig/unisoldier
 	glove_type = /obj/item/clothing/gloves/rig/unisoldier
-	
-	
+
+
 /obj/item/clothing/suit/space/rig/unisoldier
 	name = "combat armor"
 	breach_threshold = 60
@@ -348,7 +348,7 @@
 /obj/item/clothing/head/helmet/space/rig/unisoldier
 	name = "combat helmet"
 	light_overlay = "helmet_light_dual"
-		
+
 /obj/item/clothing/shoes/magboots/rig/unisoldier
 	name = "combat magboots"
 
@@ -365,7 +365,7 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/voice
 		)
-		
+
 /obj/item/weapon/rig/deadspace/uniengie
 	name = "unitologist engineer rig control module"
 	suit_type = "unitologist engineer rig"
@@ -385,8 +385,8 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/uniengie
 	boot_type = /obj/item/clothing/shoes/magboots/rig/uniengie
 	glove_type = /obj/item/clothing/gloves/rig/uniengie
-	
-	
+
+
 /obj/item/clothing/suit/space/rig/uniengie
 	name = "combat armor"
 	breach_threshold = 60
@@ -394,7 +394,7 @@
 /obj/item/clothing/head/helmet/space/rig/uniengie
 	name = "combat helmet"
 	light_overlay = "helmet_light_dual"
-		
+
 /obj/item/clothing/shoes/magboots/rig/uniengie
 	name = "combat magboots"
 
@@ -433,8 +433,8 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/unifaithful
 	boot_type = /obj/item/clothing/shoes/magboots/rig/unifaithful
 	glove_type = /obj/item/clothing/gloves/rig/unifaithful
-	
-	
+
+
 /obj/item/clothing/suit/space/rig/unifaithful
 	name = "combat armor"
 	breach_threshold = 60
@@ -442,7 +442,7 @@
 /obj/item/clothing/head/helmet/space/rig/unifaithful
 	name = "combat helmet"
 	light_overlay = "helmet_light_dual"
-		
+
 /obj/item/clothing/shoes/magboots/rig/unifaithful
 	name = "zealot combat magboots"
 
@@ -478,8 +478,8 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/unifaithful
 	boot_type = /obj/item/clothing/shoes/magboots/rig/unimedic
 	glove_type = /obj/item/clothing/gloves/rig/unimedic
-	
-	
+
+
 /obj/item/clothing/suit/space/rig/unimedic
 	name = "combat armor"
 	breach_threshold = 60
@@ -487,7 +487,7 @@
 /obj/item/clothing/head/helmet/space/rig/unimedic
 	name = "combat helmet"
 	light_overlay = "helmet_light_dual"
-		
+
 /obj/item/clothing/shoes/magboots/rig/unimedic
 	name = "combat magboots"
 
@@ -526,8 +526,8 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/unizerk
 	boot_type = /obj/item/clothing/shoes/magboots/rig/unizerk
 	glove_type = /obj/item/clothing/gloves/rig/unizerk
-	
-	
+
+
 /obj/item/clothing/suit/space/rig/unizerk
 	name = "combat armor"
 	breach_threshold = 60
@@ -535,7 +535,7 @@
 /obj/item/clothing/head/helmet/space/rig/unizerk
 	name = "combat helmet"
 	light_overlay = "helmet_light_dual"
-		
+
 /obj/item/clothing/shoes/magboots/rig/unizerk
 	name = "combat magboots"
 
@@ -551,4 +551,4 @@
 		/obj/item/rig_module/cooling_unit,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/voice
-		)
+		)*/

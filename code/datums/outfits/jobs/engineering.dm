@@ -1,27 +1,29 @@
-/decl/hierarchy/outfit/job/engineering/ds13chiefofengines
+/decl/hierarchy/outfit/job/engineering/ce
 	name = OUTFIT_JOB_NAME("Chief Engineer")
-	head = null //used by engineering rig
+	head = /obj/item/clothing/head/hardhat/orange
 	glasses = /obj/item/clothing/glasses/meson
-	mask = /obj/item/clothing/mask/gas/budget
 	uniform = /obj/item/clothing/under/rigunder
 	l_ear = /obj/item/device/radio/headset/heads/ce
-	gloves = null //used by engineering rig
+	gloves = /obj/item/clothing/gloves/insulated
 	belt = /obj/item/weapon/storage/belt/utility/full
-	shoes = null //used by engineering rig
-	id_type = /obj/item/weapon/card/id/holoidchiefengineman
-	back = /obj/item/weapon/rig/deadspace/edfengineer/equipped //placeholder till we have sprites for engineering rig
+	shoes = null
+	id_type = /obj/item/weapon/card/id/holoidce
+	pda_type = /obj/item/modular_computer/pda/heads/ce
+	back = /obj/item/weapon/storage/backpack/satchel_eng
 
-/decl/hierarchy/outfit/job/engineering/ds13expendableengineer
+/decl/hierarchy/outfit/job/engineering/tech_engineer
 	name = OUTFIT_JOB_NAME("Technical Engineer")
-	head = null //used by engineering rig
+	head = /obj/item/clothing/head/hardhat/red
 	glasses = /obj/item/clothing/glasses/meson
-	mask = /obj/item/clothing/mask/gas/budget
+	mask = /obj/item/clothing/mask/gas/half
 	uniform = /obj/item/clothing/under/rigunder
-	gloves = null //used by engineering rig
+	l_ear = /obj/item/device/radio/headset/headset_eng
+	gloves = /obj/item/clothing/gloves/insulated
 	belt = /obj/item/weapon/storage/belt/utility/full
-	shoes = null //used by engineering rig
-	id_type = /obj/item/weapon/card/id/holoidengineermeatshield
-	back = /obj/item/weapon/rig/deadspace/edfengineer/equipped //placeholder till we have sprites for engineering rig
+	shoes = null
+	id_type = /obj/item/weapon/card/id/holoidtech
+	pda_type = /obj/item/modular_computer/pda/engineering
+	back = /obj/item/weapon/storage/backpack/satchel_eng
 
 ////////////////////////////////////////////////////////////////////////////////
 ////			DEFAULT OUTFITS BELOW HERE.									////
@@ -41,7 +43,7 @@
 	BACKPACK_OVERRIDE_ENGINEERING
 
 /decl/hierarchy/outfit/job/engineering/chief_engineer
-	name = OUTFIT_JOB_NAME("Chief engineer")
+	name = OUTFIT_JOB_NAME("Old - Chief Engineer")
 	head = /obj/item/clothing/head/hardhat/white
 	uniform = /obj/item/clothing/under/rank/chief_engineer
 	l_ear = /obj/item/device/radio/headset/heads/ce

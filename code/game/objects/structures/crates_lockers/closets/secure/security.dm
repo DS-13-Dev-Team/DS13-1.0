@@ -360,3 +360,32 @@
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec))
 	)
+
+/obj/structure/closet/secure_closet/military
+	name = "military personnel's locker"
+	req_access = list(access_captain)
+	icon_state = "base"
+	icon_closed = "base"
+	icon_locked = "base"
+	icon_opened = "base"
+	icon_off = "base"
+
+/obj/structure/closet/secure_closet/military/WillContain()
+	return list(
+		/obj/item/clothing/suit/captunic,
+		/obj/item/clothing/suit/captunic/capjacket,
+		/obj/item/clothing/head/caphat/cap,
+		/obj/item/clothing/under/rank/captain,
+		/obj/item/clothing/suit/armor/vest/nt,
+		/obj/item/clothing/head/helmet,
+		/obj/item/clothing/shoes/brown,
+		/obj/item/device/radio/headset/heads/captain,
+		/obj/item/clothing/gloves/captain,
+		/obj/item/weapon/gun/energy/gun,
+		/obj/item/clothing/suit/armor/captain,
+		/obj/item/weapon/melee/telebaton,
+		/obj/item/clothing/under/dress/dress_cap,
+		/obj/item/clothing/head/caphat/formal,
+		/obj/item/clothing/under/captainformal,
+		/obj/random/tool = 3
+	)

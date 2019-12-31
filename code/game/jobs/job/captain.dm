@@ -1,11 +1,11 @@
-/datum/job/ds13captain
+/datum/job/cap
 	title = "Captain"
 	department = "Command"
 	head_position = 1
 	department_flag = COM
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the concordance extraction corporation and your own moral compass"
+	supervisors = "the CEC"
 	selection_color = "#1d1d4f"
 	req_admin_notify = 1
 	minimal_player_age = 14
@@ -15,9 +15,9 @@
 				access_cargo, access_mining, access_engineering,
 				access_external_airlocks, access_medical, access_research,
 				access_armory)
-	outfit_type = /decl/hierarchy/outfit/job/ds13captain
+	outfit_type = /decl/hierarchy/outfit/job/cap
 
-/datum/job/ds13flieutenant
+/datum/job/fl
 	title = "First Lieutenant"
 	department_flag = COM|CIV
 	head_position = 1
@@ -30,9 +30,9 @@
 	ideal_character_age = 35
 
 	access = list(access_bridge, access_security, access_armory, access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/ds13flieutenant
+	outfit_type = /decl/hierarchy/outfit/job/fl
 
-/datum/job/ds13bensign
+/datum/job/bo
 	title = "Bridge Ensign"
 	department_flag = CIV
 	total_positions = 4
@@ -43,7 +43,7 @@
 	ideal_character_age = 22
 
 	access = list(access_bridge, access_security, access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/ds13bensign
+	outfit_type = /decl/hierarchy/outfit/job/bo
 
 
 

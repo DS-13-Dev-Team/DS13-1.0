@@ -458,15 +458,13 @@
 				/obj/effect/decal/cleanable/blood/gibs/robot,
 				/obj/effect/decal/cleanable/blood/oil,
 				/obj/effect/decal/cleanable/blood/oil/streak,
-				/obj/effect/decal/cleanable/spiderling_remains,
 				/obj/item/remains/mouse,
 				/obj/effect/decal/cleanable/vomit,
 				/obj/effect/decal/cleanable/blood/splatter,
 				/obj/effect/decal/cleanable/ash,
 				/obj/effect/decal/cleanable/generic,
 				/obj/effect/decal/cleanable/flour,
-				/obj/effect/decal/cleanable/dirt,
-				/obj/item/remains/robot))
+				/obj/effect/decal/cleanable/dirt))
 
 
 obj/random/closet //A couple of random closets to spice up maint
@@ -480,21 +478,14 @@ obj/random/closet/item_to_spawn()
 				/obj/structure/closet/firecloset,
 				/obj/structure/closet/emcloset,
 				/obj/structure/closet/jcloset,
-				/obj/structure/closet/athletic_mixed,
 				/obj/structure/closet/toolcloset,
-				/obj/structure/closet/l3closet/general,
-				/obj/structure/closet/cabinet,
 				/obj/structure/closet/crate,
 				/obj/structure/closet/crate/freezer,
 				/obj/structure/closet/crate/freezer/rations,
 				/obj/structure/closet/crate/internals,
 				/obj/structure/closet/crate/trashcart,
 				/obj/structure/closet/crate/medical,
-				/obj/structure/closet/boxinggloves,
-				/obj/structure/largecrate,
-				/obj/structure/closet/wardrobe/mixed,
-				/obj/structure/closet/wardrobe/suit,
-				/obj/structure/closet/wardrobe/orange))
+				/obj/structure/largecrate))
 
 /obj/random/coin
 	name = "random coin"
@@ -615,8 +606,6 @@ obj/random/obstruction/item_to_spawn()
 				/obj/structure/grille,
 				/obj/structure/grille/broken,
 				/obj/structure/foamedmetal,
-				/obj/item/weapon/caution,
-				/obj/item/weapon/caution/cone,
 				/obj/structure/inflatable/wall,
 				/obj/structure/inflatable/door))
 
@@ -629,8 +618,7 @@ obj/random/obstruction/item_to_spawn()
 /obj/random/assembly/item_to_spawn()
 	return pickweight(list(/obj/item/device/electronic_assembly,
 				/obj/item/device/electronic_assembly/medium,
-				/obj/item/device/electronic_assembly/large,
-				/obj/item/device/electronic_assembly/drone))
+				/obj/item/device/electronic_assembly/large))
 
 /obj/random/advdevice
 	name = "random advanced device"
@@ -643,9 +631,7 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/device/flashlight/flare,
 				/obj/item/device/flashlight/pen,
 				/obj/item/device/toner,
-				/obj/item/device/paicard,
 				/obj/item/device/destTagger,
-				/obj/item/weapon/beartrap,
 				/obj/item/weapon/handcuffs,
 				/obj/item/weapon/camera_assembly,
 				/obj/item/device/camera,
@@ -670,13 +656,7 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/weapon/storage/fancy/cigarettes/jerichos = 3,
 				/obj/item/weapon/storage/fancy/cigarettes/menthols = 2,
 				/obj/item/weapon/storage/fancy/cigarettes/carcinomas = 3,
-				/obj/item/weapon/storage/fancy/cigarettes/professionals = 2,
-				/obj/item/weapon/storage/fancy/cigar = 1,
-				/obj/item/clothing/mask/smokable/cigarette = 2,
-				/obj/item/clothing/mask/smokable/cigarette/menthol = 2,
-				/obj/item/clothing/mask/smokable/cigarette/cigar = 1,
-				/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba = 1,
-				/obj/item/clothing/mask/smokable/cigarette/cigar/havana = 1))
+				/obj/item/weapon/storage/fancy/cigarettes/professionals = 2))
 
 /obj/random/masks
 	name = "random mask"
@@ -789,14 +769,11 @@ obj/random/obstruction/item_to_spawn()
 /obj/random/gloves/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/gloves/insulated = 3,
 				/obj/item/clothing/gloves/thick = 6,
-				/obj/item/clothing/gloves/thick/botany = 5,
 				/obj/item/clothing/gloves/latex = 4,
 				/obj/item/clothing/gloves/thick/swat = 3,
 				/obj/item/clothing/gloves/thick/combat = 3,
 				/obj/item/clothing/gloves/white = 5,
-				/obj/item/clothing/gloves/rainbow = 1,
 				/obj/item/clothing/gloves/duty = 5,
-				/obj/item/clothing/gloves/guards = 3,
 				/obj/item/clothing/gloves/tactical = 3,
 				/obj/item/clothing/gloves/insulated/cheap = 5))
 
@@ -973,8 +950,7 @@ something, make sure it's not in one of the other lists.*/
 	icon_state = "gift3"
 
 /obj/random/loot/item_to_spawn()
-	return pickweight(list(/obj/random/energy = 10,
-				/obj/random/projectile = 10,
+	return pickweight(list(/obj/random/projectile = 10,
 				/obj/random/voidhelmet = 10,
 				/obj/random/voidsuit = 10,
 				/obj/random/hardsuit = 10,
@@ -988,7 +964,6 @@ something, make sure it's not in one of the other lists.*/
 				/obj/item/clothing/head/helmet/merc = 3,
 				/obj/item/stack/material/diamond/ten = 7,
 				/obj/item/stack/material/glass/phoronrglass/ten = 7,
-				/obj/item/stack/material/marble/ten = 8,
 				/obj/item/stack/material/phoron/ten = 7,
 				/obj/item/stack/material/gold/ten = 7,
 				/obj/item/stack/material/silver/ten = 7,
@@ -999,9 +974,6 @@ something, make sure it's not in one of the other lists.*/
 				/obj/item/stack/material/plasteel/ten = 9,
 				/obj/item/weapon/storage/box/monkeycubes = 5,
 				/obj/item/weapon/storage/firstaid/surgery = 4,
-				/obj/item/weapon/cell/infinite = 1,
-				/obj/item/weapon/archaeological_find = 2,
-				/obj/machinery/artifact = 1,
 				/obj/item/device/multitool/hacktool = 2,
 				/obj/item/weapon/surgicaldrill = 7,
 				/obj/item/weapon/FixOVein = 7,
@@ -1163,9 +1135,7 @@ var/list/random_useful_
 		if(!random_junk_)
 			random_junk_ = subtypesof(/obj/item/trash)
 			random_junk_ += typesof(/obj/item/weapon/cigbutt)
-			random_junk_ += /obj/effect/decal/cleanable/spiderling_remains
 			random_junk_ += /obj/item/remains/mouse
-			random_junk_ += /obj/item/remains/robot
 			random_junk_ += /obj/item/weapon/paper/crumpled
 			random_junk_ += /obj/item/inflatable/torn
 			random_junk_ += /obj/effect/decal/cleanable/molten_item

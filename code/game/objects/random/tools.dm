@@ -111,8 +111,7 @@
 /obj/random/toolbox/item_to_spawn()
 	return pickweight(list(/obj/item/weapon/storage/toolbox/mechanical = 30,
 				/obj/item/weapon/storage/toolbox/electrical = 20,
-				/obj/item/weapon/storage/toolbox/emergency = 20,
-				/obj/item/weapon/storage/toolbox/syndicate = 1))
+				/obj/item/weapon/storage/toolbox/emergency = 20))
 
 /obj/random/toolbox/low_chance
 	name = "low chance random toolbox"

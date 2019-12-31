@@ -438,161 +438,147 @@ var/const/NO_EMAG_ACT = -50
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Captain."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13captain
+	job_access_type = /datum/job/cap
 
-/obj/item/weapon/card/id/holoidflieutenant
+/obj/item/weapon/card/id/holoidfl
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's First Lieutenant."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13flieutenant
+	job_access_type = /datum/job/fl
 
-/obj/item/weapon/card/id/holoidbensign
+/obj/item/weapon/card/id/holoidbo
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Bridge Ensign."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13bensign
+	job_access_type = /datum/job/bo
 
 /obj/item/weapon/card/id/holoidbartender
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Bartender."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13bartender
+	job_access_type = /datum/job/bar
 
 /obj/item/weapon/card/id/holoidlinecook
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Line Cook."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13linecook
+	job_access_type = /datum/job/line_cook
 
-/obj/item/weapon/card/id/holoiddirectorofmining
+/obj/item/weapon/card/id/holoiddom
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the CEC Director of Mining."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13dom
+	job_access_type = /datum/job/dom
 
-/obj/item/weapon/card/id/holoidsupplyofficer
+/obj/item/weapon/card/id/holoidso
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Supply Officer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13supplyofficer
+	job_access_type = /datum/job/so
 
-/obj/item/weapon/card/id/holoidcargotransportspecs
+/obj/item/weapon/card/id/holoidserviceman
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Cargo Transport Specialist."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13cargojockey
+	job_access_type = /datum/job/serviceman
 
-/obj/item/weapon/card/id/holoidgravityman
+/obj/item/weapon/card/id/holoidplanetcracker
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Gravity Tether Operator."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13gravityman
+	job_access_type = /datum/job/planet_cracker
 
-/obj/item/weapon/card/id/holoidminingforeman
+/obj/item/weapon/card/id/holoidforeman
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Mining Foreman."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13miningforeman
+	job_access_type = /datum/job/foreman
 
-/obj/item/weapon/card/id/holoidaegiscolonist
-	name = "holographic id"
-	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to an Aegis VII Colonist."
-	icon_state = "holowarrant_filled"
-	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13necromorphbait
-
-/obj/item/weapon/card/id/holoidchiefengineman
+/obj/item/weapon/card/id/holoidce
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Chief Engineer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13chiefofengines
+	job_access_type = /datum/job/ce
 
-/obj/item/weapon/card/id/holoidengineermeatshield
+/obj/item/weapon/card/id/holoidtech
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Technical Engineer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13expendableengineer
+	job_access_type = /datum/job/tech_engineer
 
-/obj/item/weapon/card/id/holoidseniormed
+/obj/item/weapon/card/id/holoidsmo
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Senior Medical Officer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13seniormedofficer
+	job_access_type = /datum/job/smo
 
-/obj/item/weapon/card/id/holoidmedicaldoc
+/obj/item/weapon/card/id/holoidmd
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Medical Doctor."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13meddoctor
+	job_access_type = /datum/job/md
 
-/obj/item/weapon/card/id/holoidthefirsttogoinsane
+/obj/item/weapon/card/id/holoidsurg
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Surgeon."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13medsurgeon
+	job_access_type = /datum/job/surg
 
-/obj/item/weapon/card/id/holoidaltmanbepraised
+/obj/item/weapon/card/id/holoidcscio
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Chief Science Officer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13chiefsciencenerd
+	job_access_type = /datum/job/cscio
 
-/obj/item/weapon/card/id/holoidwhosaltman
+/obj/item/weapon/card/id/holoidra
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Research Assistant."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13juniorsciencenerd
+	job_access_type = /datum/job/ra
 
-/obj/item/weapon/card/id/holoidlawfulgood
+/obj/item/weapon/card/id/holoidcseco
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Chief Security Officer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13chiefsecurityofficer
+	job_access_type = /datum/job/cseco
 
-/obj/item/weapon/card/id/holoidchaoticgood
+/obj/item/weapon/card/id/holoidsso
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Senior Security Officer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13seniorsecurityofficer
+	job_access_type = /datum/job/sso
 
-/obj/item/weapon/card/id/holoidneutralgood
+/obj/item/weapon/card/id/holoidsecurity
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Security Officer from the Ishimura."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13securityofficer
+	job_access_type = /datum/job/security_officer
 
-/obj/item/weapon/card/id/holoiddeadchief
-	name = "holographic id"
-	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to PSEC's Chief Security Officer."
-	icon_state = "holowarrant_filled"
-	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13psecsecuritychief
-
-/obj/item/weapon/card/id/holoiddeadofficer
+/*/obj/item/weapon/card/id/holoiddeadofficer
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a PSEC Security Officer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13psecsecurityofficer
+	job_access_type = /datum/job/ds13psecsecurityofficer*/
 
 //////////////////////////////////////////////////
 ///////DEAD SPACE EDF/UNI/KELLION IDS BELOW///////
@@ -631,37 +617,37 @@ var/const/NO_EMAG_ACT = -50
 
 //uni//
 
-/obj/item/weapon/card/id/unisoldierbadge
+/obj/item/weapon/card/id/faithful
 	name = "holographic id"
-	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Soldier' scratched in."
+	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Faithful' scratched on it."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	access = list(access_engineering, access_external_airlocks)
 
-/obj/item/weapon/card/id/unizerkerbadge
+/obj/item/weapon/card/id/berserker
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Berserker' scratched in."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	access = list(access_engineering, access_external_airlocks)
 
-/obj/item/weapon/card/id/uniengiebadge
+/obj/item/weapon/card/id/mechanic
 	name = "holographic id"
-	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Engineer' scratched in."
+	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Mechanic' scratched in."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	access = list(access_engineering, access_external_airlocks)
 
-/obj/item/weapon/card/id/unimedicbadge
+/obj/item/weapon/card/id/healer
 	name = "holographic id"
-	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Medic' scratched in."
+	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Healer' scratched in."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	access = list(access_engineering, access_external_airlocks)
 
-/obj/item/weapon/card/id/unifaithfulbadge
+/obj/item/weapon/card/id/deacon
 	name = "holographic id"
-	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Zealot' scratched in."
+	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Deacon' scratched in."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	access = list(access_engineering, access_external_airlocks)
