@@ -2,6 +2,9 @@
 /area/ishimura
 	icon = 'maps/DeadSpace/ishimura_areas.dmi'
 
+/area/ishimura/hull
+	name = "\improper Ishimura Hull"
+
 //---------------------------------------------------UPPER--AREAS---------------------------------------------------//
 /area/ishimura/upper
 	name = "\improper Upper Deck"
@@ -57,11 +60,17 @@
 /area/ishimura/upper/engineering/machining_room
 	name = "\improper Machining Room"
 
-/area/ishimura/upper/engineering/material_storage
-	name = "\improper Main Material Storage"
+/area/ishimura/upper/engineering/spare_storage
+	name = "\improper Machining Room Storage"
 
-/area/ishimura/upper/engineering/material_storage/fore
-	name = "\improper Upper Deck Fore Material Storage"
+/area/ishimura/upper/engineering/spare_storage/port
+	name = "\improper Upper Deck Port Power Storage"
+
+/area/ishimura/upper/engineering/spare_storage/starboard
+	name = "\improper Upper Deck Starboard Power Storage"
+
+/area/ishimura/upper/engineering/spare_storage/tool
+	name = "\improper Upper Deck Tool Storage"
 
 /area/ishimura/upper/engineering/monitoring_room
 	name = "\improper Engine Monitoring Room"
@@ -92,8 +101,11 @@
 /area/ishimura/upper/maintenance/central
 	name = "\improper Upper Deck Central Maintenance"
 
-/area/ishimura/upper/maintenance/fore
-	name = "\improper Upper Deck Fore Maintenance"
+/area/ishimura/upper/maintenance/fore_central
+	name = "\improper Upper Deck Fore-Central Maintenance"
+
+/area/ishimura/upper/maintenance/fore_port
+	name = "\improper Upper Deck Fore-Port Maintenance"
 
 /area/ishimura/upper/maintenance/fore_starboard
 	name = "\improper Upper Deck Fore-Starboard Maintenance"
@@ -210,8 +222,11 @@
 /area/ishimura/upper/misc/janitorcloset/aft
 	name = "\improper Aft Janitorial Closet"
 
-/area/ishimura/upper/misc/janitorcloset/fore
-	name = "\improper Fore Janitorial Closet"
+/area/ishimura/upper/misc/janitorcloset/fore_port
+	name = "\improper Fore-Port Janitorial Closet"
+
+/area/ishimura/upper/misc/janitorcloset/fore_starboard
+	name = "\improper Fore-Starboard Janitorial Closet"
 
 //------------------Security - Upper------------------//
 /area/ishimura/upper/security
@@ -358,6 +373,15 @@
 	name = "\improper Lower Engineeering"
 	icon_state = "engibase"
 
+/area/ishimura/lower/engineering/airlock
+	name = "\improper Airlock"
+
+/area/ishimura/lower/engineering/airlock/one
+	name = "\improper Engineering Airlock Maintenance One"
+
+/area/ishimura/lower/engineering/airlock/two
+	name = "\improper Engineering Airlock Maintenance Two"
+
 /area/ishimura/lower/engineering/bay
 	name = "\improper Lower Engineering Bay"
 	icon_state = "low_engi_bay"
@@ -442,8 +466,12 @@
 	name = "\improper Processing Room"
 	icon_state = "processing"
 
+/area/ishimura/lower/mining/reception
+	name = "\improper Mining Reception"
+
 /area/ishimura/lower/mining/shuttle
 	name = "\improper Mining Shuttle"
+	requires_power = 0
 
 /area/ishimura/lower/mining/shuttle/one
 	name = "\improper Mining Shuttle One"
@@ -471,6 +499,9 @@
 /area/ishimura/lower/misc
 	name = "\improper Misc"
 	icon_state = "miscbase"
+
+/area/ishimura/lower/misc/abandon_surgery
+	name = "\improper Abandoned Surgical Suite"
 
 /area/ishimura/lower/misc/bathroom
 	name = "\improper Bathroom"
@@ -501,6 +532,12 @@
 
 /area/ishimura/lower/misc/janitorcloset/aft
 	name = "\improper Aft Janitorial Closet"
+
+/area/ishimura/lower/misc/janitorcloset/aft/port
+	name = "\improper Aft-Port Janitorial Closet"
+
+/area/ishimura/lower/misc/janitorcloset/aft/starboard
+	name = "\improper Aft-Starboard Janitorial Closet"
 
 /area/ishimura/lower/misc/janitorcloset/fore
 	name = "\improper Fore Janitoral Closet"
