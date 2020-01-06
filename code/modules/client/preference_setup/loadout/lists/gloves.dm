@@ -19,15 +19,6 @@
 	path = /obj/item/clothing/gloves/latex/nitrile
 	cost = 3
 
-/datum/gear/gloves/rainbow
-	display_name = "gloves, rainbow"
-	path = /obj/item/clothing/gloves/rainbow
-
-/datum/gear/gloves/evening
-	display_name = "gloves, evening, colour select"
-	path = /obj/item/clothing/gloves/color/evening
-	flags = GEAR_HAS_COLOR_SELECTION
-
 /datum/gear/ring
 	display_name = "ring"
 	path = /obj/item/clothing/ring
@@ -50,12 +41,6 @@
 	ringtype["ring, wood"] = /obj/item/clothing/ring/material/wood
 	ringtype["ring, plastic"] = /obj/item/clothing/ring/material/plastic
 	gear_tweaks += new/datum/gear_tweak/path(ringtype)
-
-/datum/gear/gloves/botany
-	display_name = "gloves, botany"
-	path = /obj/item/clothing/gloves/thick/botany
-	cost = 3
-	allowed_roles = list(/datum/job/rd, /datum/job/scientist, /datum/job/chef, /datum/job/bartender, /datum/job/assistant)
 
 /datum/gear/gloves/work
 	display_name = "gloves, work"
