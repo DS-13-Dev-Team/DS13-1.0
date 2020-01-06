@@ -9,5 +9,5 @@
 			if(L.stat == DEAD)
 				continue
 
-		for(var/turf/t in seen_turfs_in_range(source, world.view))
+		for(var/t in seen_turfs_in_range(source, world.view))
 			visible[t] = t

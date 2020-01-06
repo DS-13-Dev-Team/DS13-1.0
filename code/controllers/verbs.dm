@@ -48,7 +48,7 @@
 			debug_variables(paiController)
 			feedback_add_details("admin_verb","DpAI")
 		if("Cameras")
-			debug_variables(cameranet)
+			debug_variables(GLOB.cameranet)
 			feedback_add_details("admin_verb","DCameras")
 		if("Transfer Controller")
 			debug_variables(transfer_controller)

@@ -54,8 +54,27 @@
 	if(!mob.forceMove(T))
 		return
 
+
 	mob.set_dir(direction)
 	mob.PostIncorporealMovement()
+
+//Variation of incorporeal movement for signal eyes. Uses eyemove instead of forcemove
+/datum/movement_handler/mob/incorporeal/eye/DoMove(var/direction)
+	. = MOVEMENT_HANDLED
+	direction = mob.AdjustMovementDirection(direction)
+
+	var/turf/T = get_step(mob, direction)
+	if(!mob.MayEnterTurf(T))
+		return
+
+	if(!mob.eyeobj)
+		return
+	mob.eyeobj.EyeMove(direction)
+
+	mob.set_dir(direction)
+	mob.PostIncorporealMovement()
+
+
 
 /mob/proc/PostIncorporealMovement()
 	return
