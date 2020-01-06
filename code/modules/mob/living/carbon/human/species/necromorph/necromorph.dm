@@ -151,6 +151,11 @@
 	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
 	H.faction = FACTION_NECROMORPH
 
+//Add this necro as a vision node for the marker and signals
+/datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
+	.=..()
+	GLOB.necrovision.add_source(H)
+
 
 //We don't want to be suffering for the lack of most particular organs
 /datum/species/necromorph/should_have_organ(var/query)

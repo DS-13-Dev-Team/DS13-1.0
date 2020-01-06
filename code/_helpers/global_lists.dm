@@ -44,9 +44,7 @@ GLOBAL_DATUM_INIT(underwear, /datum/category_collection/underwear, new())
 
 var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 
-// Visual nets
-var/list/datum/visualnet/visual_nets = list()
-var/datum/visualnet/camera/cameranet = new()
+
 
 // Runes
 var/global/list/rune_list = new()

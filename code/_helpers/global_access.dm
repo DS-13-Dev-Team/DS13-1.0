@@ -41,8 +41,12 @@
 			return global.SSalarm;
 		if("SSantags")
 			return global.SSantags;
+		if("SSasset")
+			return global.SSasset;
 		if("SSatoms")
 			return global.SSatoms;
+		if("SScraft")
+			return global.SScraft;
 		if("SSevac")
 			return global.SSevac;
 		if("SSevent")
@@ -77,6 +81,8 @@
 			return global.SSprocessing;
 		if("SSradiation")
 			return global.SSradiation;
+		if("SSresearch")
+			return global.SSresearch;
 		if("SSshuttle")
 			return global.SSshuttle;
 		if("SSskybox")
@@ -107,6 +113,8 @@
 			return global.Tier3Runes;
 		if("Tier4Runes")
 			return global.Tier4Runes;
+		if("Vector2")
+			return global.Vector2;
 		if("WALLITEMS")
 			return global.WALLITEMS;
 		if("_all_globals")
@@ -257,8 +265,6 @@
 			return global.camera_range_display_status;
 		if("camera_repository")
 			return global.camera_repository;
-		if("cameranet")
-			return global.cameranet;
 		if("can_call_ert")
 			return global.can_call_ert;
 		if("captain_announcement")
@@ -933,6 +939,8 @@
 			return global.uniqueness_repository;
 		if("universe_has_ended")
 			return global.universe_has_ended;
+		if("unworn_slots")
+			return global.unworn_slots;
 		if("uplink")
 			return global.uplink;
 		if("uplink_purchase_repository")
@@ -951,8 +959,6 @@
 			return global.view_variables_no_assoc;
 		if("virusDB")
 			return global.virusDB;
-		if("visual_nets")
-			return global.visual_nets;
 		if("vote")
 			return global.vote;
 		if("vsc")
@@ -983,7 +989,7 @@
 			return global.z_levels;
 		if("zone_blocked")
 			return global.zone_blocked;
-
+		
 /proc/writeglobal(which, newval)
 	switch(which)
 		if("ALL_ANTIGENS")
@@ -1026,8 +1032,12 @@
 			global.SSalarm=newval;
 		if("SSantags")
 			global.SSantags=newval;
+		if("SSasset")
+			global.SSasset=newval;
 		if("SSatoms")
 			global.SSatoms=newval;
+		if("SScraft")
+			global.SScraft=newval;
 		if("SSevac")
 			global.SSevac=newval;
 		if("SSevent")
@@ -1062,6 +1072,8 @@
 			global.SSprocessing=newval;
 		if("SSradiation")
 			global.SSradiation=newval;
+		if("SSresearch")
+			global.SSresearch=newval;
 		if("SSshuttle")
 			global.SSshuttle=newval;
 		if("SSskybox")
@@ -1092,6 +1104,8 @@
 			global.Tier3Runes=newval;
 		if("Tier4Runes")
 			global.Tier4Runes=newval;
+		if("Vector2")
+			global.Vector2=newval;
 		if("WALLITEMS")
 			global.WALLITEMS=newval;
 		if("_all_globals")
@@ -1242,8 +1256,6 @@
 			global.camera_range_display_status=newval;
 		if("camera_repository")
 			global.camera_repository=newval;
-		if("cameranet")
-			global.cameranet=newval;
 		if("can_call_ert")
 			global.can_call_ert=newval;
 		if("captain_announcement")
@@ -1918,6 +1930,8 @@
 			global.uniqueness_repository=newval;
 		if("universe_has_ended")
 			global.universe_has_ended=newval;
+		if("unworn_slots")
+			global.unworn_slots=newval;
 		if("uplink")
 			global.uplink=newval;
 		if("uplink_purchase_repository")
@@ -1936,8 +1950,6 @@
 			global.view_variables_no_assoc=newval;
 		if("virusDB")
 			global.virusDB=newval;
-		if("visual_nets")
-			global.visual_nets=newval;
 		if("vote")
 			global.vote=newval;
 		if("vsc")
@@ -1968,7 +1980,7 @@
 			global.z_levels=newval;
 		if("zone_blocked")
 			global.zone_blocked=newval;
-
+		
 /var/list/_all_globals=list(
 	"ALL_ANTIGENS",
 	"ANTAG_FREQS",
@@ -1990,7 +2002,9 @@
 	"SSairflow",
 	"SSalarm",
 	"SSantags",
+	"SSasset",
 	"SSatoms",
+	"SScraft",
 	"SSevac",
 	"SSevent",
 	"SSfastprocess",
@@ -2008,6 +2022,7 @@
 	"SSopen_space",
 	"SSprocessing",
 	"SSradiation",
+	"SSresearch",
 	"SSshuttle",
 	"SSskybox",
 	"SSsun",
@@ -2023,6 +2038,7 @@
 	"Tier2Runes",
 	"Tier3Runes",
 	"Tier4Runes",
+	"Vector2",
 	"WALLITEMS",
 	"_all_globals",
 	"_client_preferences",
@@ -2087,8 +2103,6 @@
 	"assigned_blocks",
 	"atmosphere_alarm",
 	"attack_log_repository",
-	"autolathe_categories",
-	"autolathe_recipes",
 	"base_miss_chance",
 	"basic_robolimb",
 	"blackbox",
@@ -2100,7 +2114,6 @@
 	"camera_alarm",
 	"camera_range_display_status",
 	"camera_repository",
-	"cameranet",
 	"can_call_ert",
 	"captain_announcement",
 	"cargo_supply_pack_root",
@@ -2438,6 +2451,7 @@
 	"turret_icons",
 	"uniqueness_repository",
 	"universe_has_ended",
+	"unworn_slots",
 	"uplink",
 	"uplink_purchase_repository",
 	"uplink_random_selections_",
@@ -2447,7 +2461,6 @@
 	"view_variables_dont_expand",
 	"view_variables_no_assoc",
 	"virusDB",
-	"visual_nets",
 	"vote",
 	"vsc",
 	"wax_recipes",
