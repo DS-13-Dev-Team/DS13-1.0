@@ -16,6 +16,7 @@
 	blurb = "Leapers appear to be made from a single human corpse, with the host body's modifications serving to give the Necromorph vastly increased mobility. he legs are completely re-shaped: the muscle and bone is flayed, fused together, and lengthened into a single limb tipped with a sharp blade of considerable weight and durability"
 	unarmed_types = list(/datum/unarmed_attack/claws) //Bite attack is a backup if blades are severed
 	total_health = 80
+	biomass = 120
 
 	icon_template = 'icons/mob/necromorph/leaper.dmi'
 	icon_normal = "leaper"
@@ -93,6 +94,9 @@
 	slowdown = 3
 	total_health = 200
 	evasion = 30
+
+	biomass = 240
+	biomass_reclamation = 0.75
 
 	inherent_verbs = list(/atom/movable/proc/leaper_leap_enhanced, /mob/living/carbon/human/proc/tailstrike_leaper_enhanced)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap_enhanced),

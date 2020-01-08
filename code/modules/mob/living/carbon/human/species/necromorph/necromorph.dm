@@ -10,6 +10,11 @@
 	blurb = "Mutated and reanimated corpses, reshaped into horrific new forms by a recombinant extraterrestrial infection. \
 	The resulting creatures are extremely aggressive and will attack any uninfected organism on sight."
 
+	//Spawning and biomass
+	var/marker_spawnable = TRUE	//Set this to true to allow the marker to spawn this type of necro. Be sure to unset it on the enhanced version unless desired
+	biomass = 80	//This var is defined for all species
+	var/biomass_reclamation	=	1	//The marker recovers cost*reclamation
+	var/biomass_reclamation_time	=	10 MINUTES	//How long does it take for all of the reclaimed biomass to return to the marker? This is a pseudo respawn timer
 
 	strength    = STR_HIGH
 	show_ssd = "dead" //If its not moving, it looks like a corpse
@@ -183,6 +188,14 @@
 		return TRUE
 
 	return FALSE
+
+
+/datum/species/necromorph/handle_death(var/mob/living/carbon/human/H)
+	//We just died? Lets start getting absorbed by the marker
+	if (!GLOB.marker)	//Gotta have one
+		return
+
+	GLOB.marker.add_biomass_source(H, biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
 
 //How much damage has this necromorph taken?
 //We'll loop through each organ tag in the species' initial health values list, which should definitely be populated already, and try to get the organ for each

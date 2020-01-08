@@ -7,6 +7,7 @@
 	total_health = INFINITY	//This number doesn't matter, it won't ever be used
 	can_obliterate = FALSE
 	healing_factor = 4	//Lots of constant healing
+	biomass	=	1600	//Endgame, real expensive
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
 	single_icon = FALSE

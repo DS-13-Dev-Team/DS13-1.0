@@ -3,7 +3,10 @@
 
 //Mob
 
-/mob/proc/atoms_in_view()
+/atom/proc/atoms_in_view()
+	return dview(world.view, src)
+
+/mob/atoms_in_view()
 	var/list/things
 	if (!view_offset)
 		things = hear(view_range, src)
@@ -16,7 +19,7 @@
 	return things
 
 //Returns a list of all turfs this mob can see, accounting for view radius and offset
-/mob/proc/turfs_in_view()
+/atom/proc/turfs_in_view()
 	var/list/things = atoms_in_view()
 
 	for (var/a in things)

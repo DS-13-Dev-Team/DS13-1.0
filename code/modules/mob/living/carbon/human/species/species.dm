@@ -59,6 +59,8 @@
 	var/strength    = STR_MEDIUM
 	var/show_ssd = "fast asleep"
 	var/virus_immune
+	var/biomass	=	80	//How much biomass does it cost to spawn this (for necros) and how much does it yield when absorbed by a marker
+		//This is in kilograms, and is thus approximately the mass of an average human male adult
 
 	var/plane	=	HUMAN_PLANE
 	var/layer = 0
@@ -470,6 +472,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events (such as dionaea nymph spawns).
 	return
 
+/datum/species/proc/handle_death_check(var/mob/living/carbon/human/H)
+	return FALSE
+
 /datum/species/proc/handle_new_grab(var/mob/living/carbon/human/H, var/obj/item/grab/G)
 	return
 
@@ -591,8 +596,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/get_blood_name()
 	return "blood"
 
-/datum/species/proc/handle_death_check(var/mob/living/carbon/human/H)
-	return FALSE
+
 
 //Mostly for toasters
 /datum/species/proc/handle_limbs_setup(var/mob/living/carbon/human/H)

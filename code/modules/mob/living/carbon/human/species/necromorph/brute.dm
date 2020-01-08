@@ -15,6 +15,9 @@
 	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 
+	biomass = 500
+	biomass_reclamation_time	=	20 MINUTES
+
 
 	//Collision and bulk
 	strength    = STR_VHIGH
