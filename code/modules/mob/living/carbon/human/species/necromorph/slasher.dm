@@ -61,6 +61,8 @@
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 200
 	slowdown = 2.8
+	biomass = 160
+	biomass_reclamation = 0.75
 
 
 

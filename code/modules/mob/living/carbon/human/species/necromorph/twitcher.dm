@@ -23,6 +23,9 @@
 	icon_dead = "twitcher"
 	single_icon = TRUE
 
+	biomass	=	120
+
+
 	slowdown = 1.5
 	view_offset = 3 * WORLD_ICON_SIZE //Forward view offset allows longer-ranged charges
 
