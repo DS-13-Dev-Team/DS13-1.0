@@ -7,7 +7,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/weapon/storage/belt/holster/security
 	shoes = /obj/item/clothing/shoes/ds_securityboots
-	id_type = /obj/item/weapon/card/id/holoidcseco
+	id_type = /obj/item/weapon/card/id/holo/security/cseco
 
 /decl/hierarchy/outfit/job/security/sso
 	name = OUTFIT_JOB_NAME("Senior Security Officer")
@@ -17,7 +17,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/weapon/storage/belt/holster/security
 	shoes = /obj/item/clothing/shoes/ds_securityboots
-	id_type = /obj/item/weapon/card/id/holoidsso
+	id_type = /obj/item/weapon/card/id/holo/security/sso
 
 /decl/hierarchy/outfit/job/security/officer
 	name = OUTFIT_JOB_NAME("Security Officer")
@@ -27,4 +27,4 @@
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/weapon/storage/belt/holster/security
 	shoes = /obj/item/clothing/shoes/ds_securityboots
-	id_type = /obj/item/weapon/card/id/holoidsecurity
+	id_type = /obj/item/weapon/card/id/holo/security

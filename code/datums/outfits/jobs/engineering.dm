@@ -7,7 +7,7 @@
 	gloves = /obj/item/clothing/gloves/insulated
 	belt = /obj/item/weapon/storage/belt/utility/full
 	shoes = null
-	id_type = /obj/item/weapon/card/id/holoidce
+	id_type = /obj/item/weapon/card/id/holo/engineering/chief_engineer
 	pda_type = /obj/item/modular_computer/pda/heads/ce
 	back = /obj/item/weapon/storage/backpack/satchel_eng
 
@@ -21,6 +21,6 @@
 	gloves = /obj/item/clothing/gloves/insulated
 	belt = /obj/item/weapon/storage/belt/utility/full
 	shoes = null
-	id_type = /obj/item/weapon/card/id/holoidtech
+	id_type = /obj/item/weapon/card/id/holo/engineering
 	pda_type = /obj/item/modular_computer/pda/engineering
 	back = /obj/item/weapon/storage/backpack/satchel_eng

@@ -3,7 +3,7 @@
 	uniform = /obj/item/clothing/under/rank/bartender
 	l_ear = /obj/item/device/radio/headset/headset_service
 	shoes = /obj/item/clothing/shoes/black
-	id_type = /obj/item/weapon/card/id/holoidbartender
+	id_type = /obj/item/weapon/card/id/holo/civilian/bartender
 	pda_type = /obj/item/modular_computer/pda
 
 /decl/hierarchy/outfit/job/line_cook
@@ -13,5 +13,5 @@
 	suit = /obj/item/clothing/suit/chef
 	head = /obj/item/clothing/head/chefhat
 	shoes = /obj/item/clothing/shoes/black
-	id_type = /obj/item/weapon/card/id/holoidlinecook
+	id_type = /obj/item/weapon/card/id/holo/civilian/line_cook
 	pda_type = /obj/item/modular_computer/pda

@@ -16,7 +16,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 	id_slot = slot_wear_id
-	id_type = /obj/item/weapon/card/id/edfcommholobadge
+	id_type = /obj/item/weapon/card/id/holo/edf/commander
 	id_desc = "EDF Commander"
 
 /decl/hierarchy/outfit/edf_medic
@@ -34,7 +34,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 	id_slot = slot_wear_id
-	id_type = /obj/item/weapon/card/id/edfmedholobadge
+	id_type = /obj/item/weapon/card/id/holo/edf/medic
 	id_desc = "EDF Medic"
 
 /decl/hierarchy/outfit/edf_engie
@@ -51,7 +51,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 	id_slot = slot_wear_id
-	id_type = /obj/item/weapon/card/id/edfengieholobadge
+	id_type = /obj/item/weapon/card/id/holo/edf/engineer
 	id_desc = "EDF Engineer"
 
 /decl/hierarchy/outfit/edf_grunt
@@ -68,7 +68,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 	id_slot = slot_wear_id
-	id_type = /obj/item/weapon/card/id/edfgruntholobadge
+	id_type = /obj/item/weapon/card/id/holo/edf
 	id_desc = "EDF Marine"
 
 ///////////////////
@@ -89,7 +89,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 	id_slot = slot_wear_id
-	id_type = /obj/item/weapon/card/id/faithful
+	id_type = /obj/item/weapon/card/id/holo/unitologist
 	id_desc = "A holographic ID belonging to an unregistered civilian vessel. It bears unitologist iconography."
 
 /decl/hierarchy/outfit/healer
@@ -106,7 +106,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 	id_slot = slot_wear_id
-	id_type = /obj/item/weapon/card/id/healer
+	id_type = /obj/item/weapon/card/id/holo/healer
 	id_desc = "A holographic ID belonging to an unregistered civilian vessel. It bears unitologist iconography."
 
 /decl/hierarchy/outfit/mechanic
@@ -123,7 +123,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 	id_slot = slot_wear_id
-	id_type = /obj/item/weapon/card/id/mechanic
+	id_type = /obj/item/weapon/card/id/holo/mechanic
 	id_desc = "A holographic ID belonging to an unregistered civilian vessel. It bears unitologist iconography."
 
 /decl/hierarchy/outfit/berserker
@@ -140,7 +140,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 	id_slot = slot_wear_id
-	id_type = /obj/item/weapon/card/id/berserker
+	id_type = /obj/item/weapon/card/id/holo/berserker
 	id_desc = "A holographic ID belonging to an unregistered civilian vessel. It bears unitologist iconography."
 
 /decl/hierarchy/outfit/deacon
@@ -157,7 +157,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 	id_slot = slot_wear_id
-	id_type = /obj/item/weapon/card/id/deacon
+	id_type = /obj/item/weapon/card/id/holo/deacon
 	id_desc = "A holographic ID belonging to an unregistered civilian vessel. It bears unitologist iconography."
 
 /////////////////////
