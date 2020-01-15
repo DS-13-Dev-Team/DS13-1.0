@@ -15,6 +15,7 @@
 	biomass = 80	//This var is defined for all species
 	var/biomass_reclamation	=	1	//The marker recovers cost*reclamation
 	var/biomass_reclamation_time	=	10 MINUTES	//How long does it take for all of the reclaimed biomass to return to the marker? This is a pseudo respawn timer
+	var/spawn_method = SPAWN_POINT	//What method of spawning from marker should be used? At a point or manual placement? check _defines/necromorph.dm
 
 	strength    = STR_HIGH
 	show_ssd = "dead" //If its not moving, it looks like a corpse
@@ -150,6 +151,11 @@
 /datum/species/necromorph/get_icobase(var/mob/living/carbon/human/H)
 	return icon_template //We don't need to duplicate the same dmi path twice
 
+
+//Add the verb to vacate the body. its really just a copy of ghost
+/datum/species/necromorph/add_inherent_verbs(var/mob/living/carbon/human/H)
+	.=..()
+	H.verbs |= /mob/proc/necro_evacuate
 
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()

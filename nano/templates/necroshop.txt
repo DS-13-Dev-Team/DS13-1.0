@@ -1,0 +1,25 @@
+<!-- 
+Title: Necroshop
+Used In File(s): \code\game\machinery\autolathe.dm
+ -->
+ 
+ 
+<div style="display: table; width:100%">
+	<tr>
+		<td>
+			{{if data.current}}
+				<div class="item">{data.current.name}</div>
+			{{else}}
+				<div class="item">Nothing Selected</div>
+			{{/if}}
+		</td>
+		<td>
+			{{for data.necromorphs}}
+				<div class="item">
+					{{:helper.link(value.name, 'circle-arrow-s', { "select" : value.name }, data.authorised ? null : 'disabled')}}
+				</div>
+			{{/for}}
+		</td>
+	</tr>
+		
+</div>

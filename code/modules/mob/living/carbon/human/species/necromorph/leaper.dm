@@ -12,11 +12,11 @@
 
 /datum/species/necromorph/leaper
 	name = SPECIES_NECROMORPH_LEAPER
-	name_plural =  "Leapers"
-	blurb = "Leapers appear to be made from a single human corpse, with the host body's modifications serving to give the Necromorph vastly increased mobility. he legs are completely re-shaped: the muscle and bone is flayed, fused together, and lengthened into a single limb tipped with a sharp blade of considerable weight and durability"
+	mob_type	=	/mob/living/carbon/human/necromorph/leaper
+	blurb = "A long range ambusher, the leaper can leap on unsuspecting victims from afar, knock them down, and tear them apart with its bladed tail. Not good for prolonged combat though."
 	unarmed_types = list(/datum/unarmed_attack/claws) //Bite attack is a backup if blades are severed
-	total_health = 80
-	biomass = 120
+	total_health = 90
+	biomass = 100
 
 	icon_template = 'icons/mob/necromorph/leaper.dmi'
 	icon_normal = "leaper"
@@ -90,6 +90,8 @@
 
 /datum/species/necromorph/leaper/enhanced
 	name = SPECIES_NECROMORPH_LEAPER_ENHANCED
+	marker_spawnable = FALSE 	//Enable this once we have sprites for it
+	mob_type	=	/mob/living/carbon/human/necromorph/leaper/enhanced
 	unarmed_types = list(/datum/unarmed_attack/claws/strong)
 	slowdown = 3
 	total_health = 200

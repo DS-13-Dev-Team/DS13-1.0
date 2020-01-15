@@ -178,6 +178,6 @@
 
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/regenerate, /datum/extension/regenerate, _heal_amount, _duration, _max_limbs, _cooldown)
+	set_extension(src, /datum/extension/regenerate, _heal_amount, _duration, _max_limbs, _cooldown)
 
 	return TRUE

@@ -4,8 +4,8 @@
 /datum/species/necromorph/slasher
 	name = SPECIES_NECROMORPH_SLASHER
 	name_plural =  "Slashers"
-	blurb = "The Slasher is created from a single human corpse, and is one of the more common Necromorphs encountered in a typical outbreak\
-	. The Slasher is named for its specialized arms, which sport sharp blade-like protrusions of bone."
+	mob_type = /mob/living/carbon/human/necromorph/slasher
+	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	total_health = 80
 
@@ -58,6 +58,8 @@
 
 /datum/species/necromorph/slasher/enhanced
 	name = SPECIES_NECROMORPH_SLASHER_ENHANCED
+	marker_spawnable = FALSE 	//Enable this once we have sprites for it
+	mob_type = /mob/living/carbon/human/necromorph/slasher/enhanced
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 200
 	slowdown = 2.8
@@ -68,6 +70,8 @@
 
 /* Unarmed attacks*/
 /datum/unarmed_attack/blades
+	name = "Scything blades"
+	desc = "These colossal blades can cleave a man in half."
 	attack_verb = list("slashed", "scythed", "cleaved")
 	attack_noun = list("blades")
 	eye_attack_text = "impales"

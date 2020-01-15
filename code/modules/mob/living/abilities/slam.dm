@@ -245,5 +245,5 @@
 
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/slam, /datum/extension/slam, _target, _damage, _down_factor, _weaken_time, _power, _windup_time, _cooldown)
+	set_extension(src, /datum/extension/slam, _target, _damage, _down_factor, _weaken_time, _power, _windup_time, _cooldown)
 	return TRUE

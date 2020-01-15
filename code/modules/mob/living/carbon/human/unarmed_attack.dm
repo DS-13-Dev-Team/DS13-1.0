@@ -2,6 +2,9 @@ var/global/list/sparring_attack_cache = list()
 
 //Species unarmed attacks
 /datum/unarmed_attack
+	var/name = "Attack" //Capitalise this
+	var/list/tags = list()
+	var/desc = ""	//Make this short, typically one sentance
 	var/attack_verb = list("attack")	// Empty hand hurt intent verb.
 	var/attack_noun = list("fist")
 	var/damage = 0						// Extra empty hand attack damage.
@@ -11,6 +14,7 @@ var/global/list/sparring_attack_cache = list()
 	var/sharp = 0
 	var/edge = 0
 	var/delay = 1 SECOND	//Default delay, overrideable
+
 
 	var/deal_halloss
 	var/sparring_variant_type = /datum/unarmed_attack/light_strike
@@ -28,6 +32,13 @@ var/global/list/sparring_attack_cache = list()
 
 	//Additional divider on time required to force open airlocks.
 	var/airlock_force_speed = 1
+
+/datum/unarmed_attack/New()
+	.=..()
+	if (edge)
+		tags += "edged"
+	if (sharp)
+		tags += "sharp"
 
 /datum/unarmed_attack/proc/get_damage_type()
 	if(deal_halloss)
@@ -240,6 +251,8 @@ var/global/list/sparring_attack_cache = list()
 	return 1
 
 /datum/unarmed_attack/punch
+	name = "Punch"
+	desc = "Requires arms"
 	attack_verb = list("punched")
 	attack_noun = list("fist")
 	eye_attack_text = "fingers"
@@ -288,6 +301,8 @@ var/global/list/sparring_attack_cache = list()
 		return ..()
 
 /datum/unarmed_attack/kick
+	name = "Kick"
+	desc = "Requires legs"
 	attack_verb = list("kicked", "kicked", "kicked", "kneed")
 	attack_noun = list("kick", "kick", "kick", "knee strike")
 	attack_sound = "swing_hit"

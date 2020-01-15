@@ -1,5 +1,6 @@
 /datum/extension/deity_be_near
 	expected_type = /obj/item
+	base_type = /datum/extension/deity_be_near
 	var/keep_away_instead = FALSE
 	var/mob/living/deity/connected_deity
 	var/threshold_base = 6
