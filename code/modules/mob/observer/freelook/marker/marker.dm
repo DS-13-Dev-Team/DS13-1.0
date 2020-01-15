@@ -11,21 +11,35 @@ GLOBAL_DATUM_INIT(marker, /obj/machinery/marker, null)
 	density = TRUE
 	anchored = TRUE
 	var/light_colour = "#FF9999"
-	var/player
+	var/player	//Ckey of the player controlling the marker
+	var/mob/observer/eye/signal/master/playermob	//Signal mob of the player controlling the marker
 
 	//Biomass handling
 	//--------------------------
-	var/biomass	//Current actual quantity of biomass we have stored
+	var/biomass	= 80//Current actual quantity of biomass we have stored. Start with enough to spawn a slasher
 	var/biomass_tick = 0	//Current amount of mass we're gaining each second. This shouldn't be edited as it is regularly recalculated
 	var/list/biomass_sources = list()	//A list of various sources (mostly necromorph corpses) from which we are gradually gaining biomass. These are finite
 
+	var/datum/necroshop/shop
+
 /obj/machinery/marker/New()
-	..()
 	GLOB.marker = src	//Populate the global var with ourselves
+	..()
+
+
+/obj/machinery/marker/Initialize()
+	.=..()
+	shop = new(src)//Create necroshop datum
 	GLOB.necrovision.add_source(src)	//Add it as the first source for necrovision
 	add_biomass_source(null, 0, 1, /datum/biomass_source/baseline)	//Add the baseline income
 
+	//Lets create a proximity tracker to detect corpses being dragged into our vicinity
+	var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/machinery/marker/proc/nearby_movement, range = 10)
+	PT.register_turfs()
+	set_extension(src, /datum/extension/proximity_manager, PT)
 
+/obj/machinery/marker/attack_hand(var/mob/user)//Temporary
+	shop.ui_interact(user)
 
 /obj/machinery/marker/update_icon()
 	icon_state = "marker_giant_active_anim"
@@ -36,7 +50,8 @@ GLOBAL_DATUM_INIT(marker, /obj/machinery/marker, null)
 /obj/machinery/marker/Process()
 	handle_biomass_tick()
 
-
+/obj/machinery/marker/is_necromorph()
+	return TRUE
 
 
 //Biomass handling
@@ -46,12 +61,18 @@ GLOBAL_DATUM_INIT(marker, /obj/machinery/marker, null)
 //This allows us to display an accurate preview of mass income in player-facing UIs
 /obj/machinery/marker/proc/handle_biomass_tick()
 	biomass += biomass_tick //Add the biomass we calculated last tick
-	world << "Biomass gained: [biomass_tick]	Total:[biomass]"
 	biomass_tick = 0	//Reset this before we recalculate it
 	for (var/datum/biomass_source/S as anything in biomass_sources)
+
 		var/check = S.can_absorb()
 		if (check != MASS_READY)
-			//Handle failure cases and continue
+			if (check == MASS_PAUSE)
+				continue	//ITs paused, just keep going
+
+			if (check == MASS_EXHAUST)
+				S.mass_exhausted()	//It ran out, trigger a proc before we delete the source
+			biomass_sources.Remove(S)
+			qdel(S)
 			continue
 
 		//If we got here, it's ready.
@@ -72,10 +93,30 @@ GLOBAL_DATUM_INIT(marker, /obj/machinery/marker, null)
 	biomass_sources.Add(BS)
 
 
-/obj/machinery/marker/proc/posess(var/mob/M)
-	player = M
 
-/obj/machinery/marker/attack_ghost(var/mob/user)
-	.=..()
-	if (!player)
-		posess(user)
+/obj/machinery/marker/proc/become_master_signal(var/mob/M)
+	var/mob/observer/eye/signal/master/S = new(src)
+	player = S.key
+	playermob = S
+	return S
+
+
+///obj/machinery/marker/attack_ghost(var/mob/user)
+
+
+
+//A mob was detected nearby, can we absorb it?
+/obj/machinery/marker/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
+
+	if (isliving(AM))
+		var/mob/living/L = AM
+		if (!L.is_necromorph() && L.stat == DEAD)
+			//Yes we can
+			add_biomass_source(L, L.mass, 1 MINUTES, /datum/biomass_source/convergence)
+
+
+/obj/machinery/marker/proc/pay_biomass(var/purpose, var/amount)
+	if (biomass >= amount)
+		biomass -= amount
+		return TRUE
+	return FALSE

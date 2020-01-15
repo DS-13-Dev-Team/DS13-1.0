@@ -10,6 +10,8 @@
 
 
 /datum/unarmed_attack/claws
+	name = "Claws"
+	desc = "Sharp, causes bleeding."
 	attack_verb = list("scratched", "clawed", "slashed")
 	attack_noun = list("claws")
 	eye_attack_text = "claws"

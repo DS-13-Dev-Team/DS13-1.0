@@ -3,32 +3,48 @@
 
 //Mob
 
-/atom/proc/atoms_in_view()
-	return dview(world.view, src)
+/atom/proc/atoms_in_view(var/check_range = world.view)
+	return dview(check_range, get_turf(src))
 
-/mob/atoms_in_view()
+/mob/atoms_in_view(var/check_range = null)
+
 	var/list/things
 	if (!view_offset)
-		things = hear(view_range, src)
+		things = hear((check_range? check_range : view_range), src)
 	else
 		//View offset makes things much more complex
 
 		var/turf/origin = get_view_centre()
-		things = dview(view_range, origin, see_invisible)
+		things = dview((check_range? check_range : view_range), origin, see_invisible)
 
 	return things
 
 //Returns a list of all turfs this mob can see, accounting for view radius and offset
-/atom/proc/turfs_in_view()
-	var/list/things = atoms_in_view()
-
+/atom/proc/turfs_in_view(var/check_range = world.view)
+	var/list/things = atoms_in_view(check_range)
 	for (var/a in things)
 		if (!isturf(a))
 			things.Remove(a)
 
 	return things
 
+//As above, but specifically finds turfs without dense objects blocking them
+/atom/proc/clear_turfs_in_view(var/check_range = world.view)
+	var/list/things = atoms_in_view(check_range)
+	for (var/a in things)
+		if (!isturf(a))
+			things.Remove(a)
+			continue
 
+		if (!turf_clear(a))
+			things.Remove(a)
+
+	return things
+
+/mob/turfs_in_view(var/check_range = null)
+	.=..()
+
+/mob/clear_turfs_in_view(var/check_range = null)
 
 //Generic
 

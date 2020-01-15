@@ -192,5 +192,5 @@
 
 	//Ok we've passed all safety checks, let's commence curling!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/curl, /datum/extension/curl, _automatic, _force_time, _animtime)
+	set_extension(src, /datum/extension/curl, _automatic, _force_time, _animtime)
 	return TRUE

@@ -1,5 +1,6 @@
 //This extension is a low cost way of adding per-datum cooldowns for various types of audio files
 /datum/extension/audio_cooldown
+	base_type = /datum/extension/audio_cooldown
 	expected_type = /datum
 	flags = EXTENSION_FLAG_IMMEDIATE
 	var/list/times = list()
@@ -10,7 +11,7 @@
 /datum/proc/set_audio_cooldown(var/category, var/cooldown)
 	var/datum/extension/audio_cooldown/AC = get_extension(src, /datum/extension/audio_cooldown)
 	if (!AC)
-		AC = set_extension(src, /datum/extension/audio_cooldown,/datum/extension/audio_cooldown)
+		AC = set_extension(src, /datum/extension/audio_cooldown)
 
 	AC.times[category] = max(AC.times[category], world.time + cooldown)
 

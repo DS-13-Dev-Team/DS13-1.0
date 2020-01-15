@@ -7,6 +7,9 @@
 		/datum/movement_handler/mob/incorporeal/eye
 	)
 
+/mob/observer/eye/signal/is_necromorph()
+	return TRUE
+
 
 //This will have a mob passed in that we were created from
 /mob/observer/eye/signal/New(var/mob/body)
@@ -35,9 +38,7 @@
 	forceMove(T)
 
 
-/mob/observer/eye/signal/master
-	icon = 'icons/mob/eye.dmi'
-	icon_state = "AI-eye"
+
 
 
 //Joining and leaving
@@ -60,3 +61,47 @@
 /mob/proc/join_marker()
 	var/mob/observer/eye/signal/S = new(src)
 	return S
+
+
+//Posession and evacuating
+/mob/observer/eye/signal/verb/necro_possess(var/mob/living/L)
+	set name = "Posess"
+	set category = "Necromorph"
+	set desc = "Take control of a necromorph vessel"
+
+	if (!L.is_necromorph())
+		to_chat(src, SPAN_DANGER("You can only posess necromorph units."))
+		return
+
+	if (L.client)
+		to_chat(src, SPAN_DANGER("Error: [L.key] is already controlling [L]"))
+		return
+
+	//Seems clear
+	L.key = key
+	qdel(src)
+
+/mob/proc/necro_evacuate()
+	set name = "Evacuate"
+	set category = "Necromorph"
+	set desc = "Depart your body and return to the marker. You can go back and forth with ease"
+
+	necro_ghost()
+
+
+//Evacuates a mob from their body but makes them a marker signal instead of a normal ghost
+/mob/proc/necro_ghost()
+	var/signaltype = /mob/observer/eye/signal
+	if (is_marker_master(src))	//If they are the marker's player, lets be sure to put them into the correct signal type
+		signaltype = /mob/observer/eye/signal/master
+
+	.=new signaltype(src)
+
+	//If we're in some kind of observer body, delete it
+	if (!isliving(src))
+		qdel(src)
+
+
+//Signals cant become signals, silly
+/mob/observer/eye/signal/necro_ghost()
+	return src

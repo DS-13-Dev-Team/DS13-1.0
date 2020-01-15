@@ -1,5 +1,6 @@
 /datum/extension/appearance
 	expected_type = /atom
+	base_type = /datum/extension/appearance
 	flags = EXTENSION_FLAG_IMMEDIATE // | EXTENSION_FLAG_MULTIPLE_INSTANCES
 	var/appearance_handler_type
 	var/item_equipment_proc

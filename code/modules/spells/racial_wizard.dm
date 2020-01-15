@@ -135,7 +135,7 @@
 
 /spell/moghes_blessing/cast(var/list/targets, mob/user)
 	for(var/obj/item/I in targets)
-		set_extension(I, /datum/extension/moghes_blessing, /datum/extension/moghes_blessing)
+		set_extension(I, /datum/extension/moghes_blessing)
 
 /datum/extension/moghes_blessing
 	expected_type = /obj/item

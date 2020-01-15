@@ -1,0 +1,57 @@
+<!-- 
+Title: Necroshop
+Used In File(s): \code\modules\mob\observer\freelook\marker\necroshop.dm
+data.authorised ? null : 'disabled'
+ -->
+<style>
+	td {border-style: solid;
+  border-width: 1px; border-color: black;}
+  body{height: 100%}
+  
+  h1 {
+    font-size: 18px; color: #e9c183;
+}
+h2 {
+    font-size: 16px; color: #e9c183;
+}
+
+}
+</style>
+<table style="width: 100%; height: 650px; margin: 0px;">
+	<tr style="height: 5vh;">
+		<td colspan = "2" style="width: 100%; border: 1px solid black; padding-left: 70%; padding-bottom: 10px; overflow: hidden; line-height: 0px; height: 15px;">
+			<div style = "display:inline-block; overflow: hidden;"><h2>Biomass: {{:data.biomass}}</h2></div> <div style = "font-size: 0.7em; display:inline-block; vertical-align: top; padding-top: 10px;">+{{:data.income}} /sec</div>
+		</td>
+	</tr>	
+	<tr style="height: 80vh;">
+		<td style="width: 75%; vertical-align: top;">
+			{{if data.current}}
+				<h1>{{:data.current.name}}</h1>
+				<div style="line-height: 1rem">{{:data.current.desc}}</div>
+			{{else}}
+				<h2>Nothing Selected</h2>
+			{{/if}}
+		</td>
+		<td style="width: 25%; vertical-align: top; text-align: center;">
+			<div style="height:100%;  height: 550px; overflow-y: auto;">
+			<h2>Necromorphs</h2>
+			<hr>
+			{{for data.necromorphs}}
+				<div class="item" style="vertical-align: top; text-align: center;">
+					{{:helper.link(value.name+' (' + value.price + ')', 'circle-arrow-s', { "select" : value.name }, null, "linkFixed")}}
+				</div>
+				
+			{{/for}}
+			
+			</div>
+		</td>
+	</tr>	
+	<tr style="height: 7vh;">
+		<td style="width: 75%; vertical-align: middle; font-size: 1.2em; padding-left: 80px;">
+			<div class="itemLabel" style = "display:inline-block; overflow: hidden; width: 60%;"><b>Selected Spawnpoint</b>: </div> <div style = "display:inline-block;">{{:data.spawn.name}} ({{:data.spawn.x}}, {{:data.spawn.y}}, {{:data.spawn.z}})</div>
+		</td>
+		<td style="width: 25%; vertical-align: top; text-align: center;">
+			{{:helper.link('Spawn', null, { "spawn" : value.name }, (data.authorised &&(!data.current || data.biomass > data.current.price)) ? null : 'disabled', "linkMax")}}
+		</td>
+	</tr >
+</table>

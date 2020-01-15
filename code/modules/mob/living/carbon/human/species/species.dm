@@ -7,6 +7,7 @@
 	// Descriptors and strings.
 	var/name                                             // Species name.
 	var/name_plural                                      // Pluralized name (since "[name]s" is not always valid)
+	var/long_desc	=	""								 // An entire pageful of information. Generated at runtime from various variables and procs, check the description section below and override those
 	var/blurb = "A completely nondescript species."      // A brief lore summary for use in the chargen screen.
 	var/cyborg_noun = "Cyborg"
 
@@ -16,6 +17,7 @@
 	var/preview_icon = 'icons/mob/human_races/species/human/preview.dmi'
 	var/husk_icon =    'icons/mob/human_races/species/default_husk.dmi'
 	var/lying_rotation = 90 //How much to rotate the icon when lying down
+	var/mob_type = /mob/living/carbon/human	//The mob we spawn in order to create a member of this species instantly
 
 	//This icon_lying var pulls several duties
 	//First, if its non-null, it indicates this species has some kind of special behaviour when lying down. This will trigger extra updates and things
@@ -350,6 +352,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
 
 	H.mob_size = mob_size
+	H.mass = biomass
 	for(var/obj/item/organ/organ in H.contents)
 		if((organ in H.organs) || (organ in H.internal_organs))
 			qdel(organ)
@@ -804,6 +807,70 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		return temp
 
 	return null
+
+
+
+//Descriptions and documentation
+//----------------------------------------
+//These are formatted for display in UI windows
+
+/datum/species/proc/get_long_description()
+	if (long_desc)
+		return long_desc
+	.="<b>Health</b>: [get_healthstring()]<br>"
+	.+="<b>Biomass</b>: [biomass]kg<br>"
+	.+="<b>Evasion</b>: [evasion]%<br>"
+	.+="<b>Movespeed</b>: [get_speed_descriptor()]<br><br>"
+	.+= get_blurb()
+	.+="<br><hr>"
+	.+=	get_unarmed_description()
+	.+="<br><br><hr>"
+	.+= get_ability_descriptions()
+	long_desc = .
+
+//This proc exists to be overridden by ubermorph
+/datum/species/proc/get_healthstring()
+	return "[total_health]"
+
+
+//This is an awful means to cope with an awful system. Speed/movement code needs redesigned
+/datum/species/proc/get_speed_descriptor()
+	switch (slowdown)
+		if (-10 to -2)
+			return "Very fast"
+		if (-2 to 0)
+			return "Fast"
+		if (0 to 2)
+			return "Average"
+		if (2 to 4)
+			return "Slow"
+		if (4 to INFINITY)
+			return "Very Slow"
+
+//This is a proc so that enhanced necros can get their parent blurb
+/datum/species/proc/get_blurb()
+	.=..()
+	if (.)
+		.+="<br><br>"
+	.+=blurb
+
+//Shows information for the basic attacks of this species
+/datum/species/proc/get_unarmed_description()
+	for (var/U in unarmed_types)
+		var/datum/unarmed_attack/A = new U
+		.+= "<b>Basic Attack</b>: [A.name]<br>"
+		.+= "[A.delay ? "<b>Interval</b>: [A.delay * 0.1] seconds" : ""]<br>"
+		.+= "<b>Damage</b>: [A.damage]"
+		if (A.tags.len)
+			.+= ",  [english_list(A.tags)]"
+		.+= "<br>"
+		.+= A.desc
+		return 	//We'll only show description for the primary attack, not any weak fallbacks
+
+
+/datum/species/proc/get_ability_descriptions()
+	return ""
+
 
 
 

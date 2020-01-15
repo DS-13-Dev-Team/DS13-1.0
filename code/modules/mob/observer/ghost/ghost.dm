@@ -135,6 +135,9 @@ Works together with spawning an observer, noted above.
 	return 1
 
 /mob/proc/ghostize(var/can_reenter_corpse = CORPSE_CAN_REENTER)
+	if (is_necromorph())
+		return necro_ghost()
+
 	// Are we the body of an aghosted admin? If so, don't make a ghost.
 	if(teleop && istype(teleop, /mob/observer/ghost))
 		var/mob/observer/ghost/G = teleop
@@ -157,6 +160,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "OOC"
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
+
+	if (is_necromorph())
+		necro_ghost() 	//Ghosting as a necromorph follows a different path
+		return
 
 	if(stat == DEAD)
 		announce_ghost_joinleave(ghostize(1))

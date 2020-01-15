@@ -108,11 +108,11 @@
 		if (istype(FB))
 			FB.set_timer(_duration)
 		else
-			set_extension(L, /datum/extension/frenzy_buff, /datum/extension/frenzy_buff, _duration, _intensity)
+			set_extension(L, /datum/extension/frenzy_buff, _duration, _intensity)
 
 
 	//Now that we've buffed them all, lets set cooldown on the user, and tell them how it went
-	set_extension(src, /datum/extension/frenzy_cooldown, /datum/extension/frenzy_cooldown, _cooldown)
+	set_extension(src, /datum/extension/frenzy_cooldown, _cooldown)
 	if (tobuff.len)
 		to_chat(src, SPAN_NOTICE("You have empowered your allies! [english_list(tobuff,"","","\n")]"))
 	else
