@@ -59,6 +59,11 @@ hr {
 	padding-top: 12px !important;
 }
 
+.checkbox, .checkbox:hover {width: 10px !important;
+height: 10px !important;
+background: transparent !important;
+}
+
 .hasIcon {
     padding: 0px 4px 4px 0px;
 }

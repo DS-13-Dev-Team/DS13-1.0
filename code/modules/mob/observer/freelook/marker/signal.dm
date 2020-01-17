@@ -44,7 +44,7 @@
 //Joining and leaving
 //-------------------------------
 /mob/observer/ghost/verb/join_marker_verb()
-	set name = "Join Necromorphs"
+	set name = "Join Necromorph Horde"
 	set category = "Necromorph"
 	set desc = "Joins the necromorph team, and allows you to control horrible creatures."
 
@@ -61,6 +61,21 @@
 /mob/proc/join_marker()
 	var/mob/observer/eye/signal/S = new(src)
 	return S
+
+
+/mob/observer/eye/signal/verb/leave_marker_verb()
+	set name = "Leave Necromorph Horde"
+	set category = "Necromorph"
+	set desc = "Leaves the necromorph team, making you a normal ghost"
+
+	//Lets not look like an eye after we become a ghost
+	icon = 'icons/mob/mob.dmi'
+	icon_state = "ghost"
+
+	var/mob/observer/ghost/ghost = ghostize(0)
+	qdel(src)
+	return ghost
+
 
 
 //Posession and evacuating
@@ -105,3 +120,19 @@
 //Signals cant become signals, silly
 /mob/observer/eye/signal/necro_ghost()
 	return src
+
+
+/mob/observer/eye/signal/Login()
+	.=..()
+	//Todo, check preferences for autoqueue here
+
+	SSnecromorph.join_necroqueue(src)
+
+
+/mob/observer/eye/signal/Logout()
+	SSnecromorph.remove_from_necroqueue(src)
+	.=..()
+
+/mob/observer/eye/signal/Destroy()
+	SSnecromorph.remove_from_necroqueue(src)
+	.=..()

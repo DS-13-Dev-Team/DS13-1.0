@@ -1,4 +1,4 @@
-GLOBAL_DATUM_INIT(marker, /obj/machinery/marker, null)
+
 /*
 	The marker is the heart of the necromorph army
 */
@@ -23,7 +23,7 @@ GLOBAL_DATUM_INIT(marker, /obj/machinery/marker, null)
 	var/datum/necroshop/shop
 
 /obj/machinery/marker/New()
-	GLOB.marker = src	//Populate the global var with ourselves
+	SSnecromorph.marker = src	//Populate the global var with ourselves
 	..()
 
 
@@ -38,8 +38,14 @@ GLOBAL_DATUM_INIT(marker, /obj/machinery/marker, null)
 	PT.register_turfs()
 	set_extension(src, /datum/extension/proximity_manager, PT)
 
-/obj/machinery/marker/attack_hand(var/mob/user)//Temporary
+/obj/machinery/marker/proc/open_shop(var/mob/user)
 	shop.ui_interact(user)
+
+/obj/machinery/marker/attack_hand(var/mob/user)//Temporary
+	open_shop(user)
+
+/obj/machinery/marker/attack_ghost(var/mob/user)//Temporary
+	open_shop(user)
 
 /obj/machinery/marker/update_icon()
 	icon_state = "marker_giant_active_anim"
@@ -53,6 +59,10 @@ GLOBAL_DATUM_INIT(marker, /obj/machinery/marker, null)
 /obj/machinery/marker/is_necromorph()
 	return TRUE
 
+/obj/machinery/marker/verb/shop_verb()
+	set name = "Spawning Menu"
+	set src in view()
+	open_shop(usr)
 
 //Biomass handling
 //---------------------------------
@@ -95,11 +105,19 @@ GLOBAL_DATUM_INIT(marker, /obj/machinery/marker, null)
 
 
 /obj/machinery/marker/proc/become_master_signal(var/mob/M)
-	var/mob/observer/eye/signal/master/S = new(src)
+	var/mob/observer/eye/signal/master/S = new(M)
 	player = S.key
 	playermob = S
+	qdel(M)
 	return S
 
+
+/obj/machinery/marker/proc/vacate_master_signal()
+	if (playermob)
+		var/mob/observer/eye/signal/S = new(playermob)
+		player = null
+		QDEL_NULL(playermob)
+		return S
 
 ///obj/machinery/marker/attack_ghost(var/mob/user)
 

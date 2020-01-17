@@ -13,6 +13,7 @@
 	var/list/spawnable_necromorphs = list()
 	var/datum/necrospawn/selected_spawn = null
 	var/list/content_data	=	list()	//No need to regenerate this every second
+	var/necroqueue_fill	 = TRUE//Shop-level toggle for using necroqueue to fill new spawns
 
 /datum/necroshop/New(var/newhost)
 	host = newhost
@@ -33,6 +34,7 @@
 		I.price = initial(N.biomass)
 		I.spawn_method = initial(N.spawn_method)
 		I.spawn_path = N.mob_type
+		I.queue_fill = N.major_vessel
 
 		//And add it to the list
 		spawnable_necromorphs[I.name] = I
@@ -71,6 +73,20 @@
 	data["spawn"] = list("name" = selected_spawn.name, "x" = selected_spawn.spawnpoint.x, "y" = selected_spawn.spawnpoint.y, "z" = selected_spawn.spawnpoint.z)
 	if (authorised_to_spawn(user))
 		data["authorised"] = TRUE
+
+	if (necroqueue_fill)
+		data["queue"]	=	"checked"	//Used in html
+
+
+	data["waiting_num"] = 0
+	if (SSnecromorph.necroqueue.len)
+		data["waiting_num"] = SSnecromorph.necroqueue.len
+		var/names = "Currently in necroqueue:"
+		for (var/mob/observer/eye/signal/S in SSnecromorph.necroqueue)
+			names += "\n[S.key]"
+		data["waiting_names"] = names
+	else
+		data["waiting_names"] = "There are no players currently in the necroqueue."
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "necroshop.tmpl", "Spawning Menu", 800, 700, state = GLOB.interactive_state)
@@ -87,6 +103,9 @@
 
 	if (href_list["spawn"])
 		start_spawn()
+
+	if (href_list["toggle-queue"])
+		necroqueue_fill = !necroqueue_fill
 	SSnano.update_uis(src)
 
 
@@ -116,7 +135,7 @@
 		return TRUE
 
 	//Admins are allowed
-	if(M.client && check_rights(R_ADMIN|R_DEBUG, M.client))
+	if(M.client && check_rights(R_ADMIN|R_DEBUG, FALSE, M.client))
 		return TRUE
 
 	return FALSE
@@ -128,7 +147,7 @@
 		return TRUE
 
 	//Admins are allowed
-	if(M.client && check_rights(R_ADMIN|R_DEBUG, M.client))
+	if(M.client && check_rights(R_ADMIN|R_DEBUG, FALSE,  M.client))
 		return TRUE
 
 	return FALSE
@@ -155,6 +174,9 @@
 	if (!host_pay_biomass(params["name"], params["price"]))
 		to_chat(params["user"], SPAN_DANGER("ERROR: Not enough biomass to spawn [params["name"]]"))
 		return
+
+
+
 	var/spawnpath = params["path"]
 	var/atom/targetloc = params["target"]
 	var/atom/newthing = new spawnpath(targetloc)
@@ -162,6 +184,9 @@
 	if (!QDELETED(newthing))
 		newthing.set_dir(params["dir"])
 		to_chat(user, SPAN_NOTICE("Successfully spawned [newthing] at [jumplink(targetloc)]"))
+
+		if (params["queue"] && necroqueue_fill)
+			SSnecromorph.fill_vessel_from_queue(newthing)
 
 
 //Attempts to subtract the relevant quantity of biomass from the host marker or whatever else
@@ -182,6 +207,7 @@
 	var/price	=	1	//price in biomass
 	var/spawn_method	= SPAWN_POINT	//Do we spawn around a point or manual placement?
 	var/spawn_path		=	null		//What atom will we actually spawn?
+	var/queue_fill	=	FALSE	//Can this thing be populated by a ghost from the necroqueue?
 
 
 //This function has two modes.
@@ -203,5 +229,5 @@
 		params["dir"] = SOUTH	//Direction we face on spawning, not important for point spawn
 		params["path"] = spawn_path
 		params["user"] = usr	//Who is responsible for this ? Who shall we show error messages to
-
+		params["queue"] = queue_fill
 		return params
