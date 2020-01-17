@@ -16,6 +16,7 @@
 	var/biomass_reclamation	=	1	//The marker recovers cost*reclamation
 	var/biomass_reclamation_time	=	10 MINUTES	//How long does it take for all of the reclaimed biomass to return to the marker? This is a pseudo respawn timer
 	var/spawn_method = SPAWN_POINT	//What method of spawning from marker should be used? At a point or manual placement? check _defines/necromorph.dm
+	var/major_vessel = TRUE	//If true, we can fill this mob from the necroqueue
 
 	strength    = STR_HIGH
 	show_ssd = "dead" //If its not moving, it looks like a corpse
@@ -198,10 +199,10 @@
 
 /datum/species/necromorph/handle_death(var/mob/living/carbon/human/H)
 	//We just died? Lets start getting absorbed by the marker
-	if (!GLOB.marker)	//Gotta have one
+	if (!SSnecromorph.marker)	//Gotta have one
 		return
 
-	GLOB.marker.add_biomass_source(H, biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
+	SSnecromorph.marker.add_biomass_source(H, biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
 
 //How much damage has this necromorph taken?
 //We'll loop through each organ tag in the species' initial health values list, which should definitely be populated already, and try to get the organ for each

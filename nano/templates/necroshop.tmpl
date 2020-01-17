@@ -6,7 +6,7 @@ data.authorised ? null : 'disabled'
 <style>
 	td {border-style: solid;
   border-width: 1px; border-color: black;}
-  body{height: 100%}
+  body{height: 100%;}
   
   h1 {
     font-size: 18px; color: #e9c183;
@@ -19,15 +19,29 @@ h2 {
 </style>
 <table style="width: 100%; height: 650px; margin: 0px;">
 	<tr style="height: 5vh;">
-		<td colspan = "2" style="width: 100%; border: 1px solid black; padding-left: 70%; padding-bottom: 10px; overflow: hidden; line-height: 0px; height: 15px;">
-			<div style = "display:inline-block; overflow: hidden;"><h2>Biomass: {{:data.biomass}}</h2></div> <div style = "font-size: 0.7em; display:inline-block; vertical-align: top; padding-top: 10px;">+{{:data.income}} /sec</div>
+		<td colspan = "2" style="width: 100%; border: 1px solid black; overflow: hidden; padding: 0px; margin: 0px; line-height: 100%;">
+			<div style = "display:inline-block; vertical-align: middle; margin: 0px;" title= "When enabled, newly spawned necromorphs will immediately be posessed by a player in the necroqueue."> 
+				<div style = "display:inline-block; vertical-align: top; padding: 5px;"> Necroqueue:</div>
+				<div style = "display:inline-block; ">{{:helper.link(('<form><input type="checkbox" ' + data.queue + '></form>'), "", {'toggle-queue' : 1}, null, "checkbox")}}</div>
+				
+			</div>
+			
+			<div style = "display:inline-block; vertical-align: middle; margin-left: 20px; width: 60px;" title="{{:data.waiting_names}}"> 
+				<img src="playerhead.png" style = "display:inline-block; margin: 0px; padding: 0px;" width = "25" height = "25">
+				<div style = "display:inline-block;margin: 0px; padding-top: 5px; vertical-align: top;  font-size: 26px; color: {{:data.waiting_num > 0 ? "#e9c183" : "#999999"}};">{{:data.waiting_num}}</div>
+			</div>
+			
+			<div style = "display:inline-block; overflow: hidden; padding: 0px; margin: 0px; margin-left: 40%; ">
+				<div style = "display:inline-block; font-size: 16px; color: #e9c183; padding-top: 5px; margin: 0px; font-weight: bold;">Biomass: {{:data.biomass}}</div> 
+				<div style = "display:inline-block; vertical-align: top;"><div style = "font-size: 0.7em;">+{{:data.income}} /sec</div></div>
+			</div>
 		</td>
 	</tr>	
 	<tr style="height: 80vh;">
 		<td style="width: 75%; vertical-align: top;">
 			{{if data.current}}
 				<h1>{{:data.current.name}}</h1>
-				<div style="line-height: 1rem">{{:data.current.desc}}</div>
+				<div style="line-height: 120%; font-size: 11px;">{{:data.current.desc}}</div>
 			{{else}}
 				<h2>Nothing Selected</h2>
 			{{/if}}
