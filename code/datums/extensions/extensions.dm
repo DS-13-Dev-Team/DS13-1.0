@@ -9,6 +9,7 @@
 		CRASH("Invalid holder type. Expected [expected_type], was [holder.type]")
 	src.holder = holder
 
+
 /datum/extension/Destroy()
 	holder = null
 	. = ..()

@@ -81,7 +81,7 @@
 
 /datum/extension/twitch/proc/displace(var/defensive = FALSE)
 	if (defensive)
-		if (last_defensive_displace + defensive_displace_cooldown >= world.time)
+		if (last_defensive_displace + (defensive_displace_cooldown / user.get_attack_speed_factor()) >= world.time)
 			return FALSE //Too soon since last one
 
 

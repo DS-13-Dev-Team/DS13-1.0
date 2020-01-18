@@ -1,4 +1,4 @@
-/datum/job/ds13chiefofengines
+/datum/job/ce
 	title = "Chief Engineer"
 	head_position = 1
 	department = "Engineering"
@@ -12,9 +12,9 @@
 	minimal_player_age = 14
 
 	access = list(access_bridge, access_engineering, access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/engineering/ds13chiefofengines
+	outfit_type = /decl/hierarchy/outfit/job/engineering/ce
 
-/datum/job/ds13expendableengineer
+/datum/job/tech_engineer
 	title = "Technical Engineer"
 	department = "Engineering"
 	department_flag = ENG
@@ -26,7 +26,7 @@
 	minimal_player_age = 7
 
 	access = list(access_engineering, access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/engineering/ds13expendableengineer
+	outfit_type = /decl/hierarchy/outfit/job/engineering/tech_engineer
 
 
 ////////////////////////////////////////////////////////////////////////////////

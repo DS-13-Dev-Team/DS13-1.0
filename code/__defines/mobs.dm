@@ -289,3 +289,7 @@
 #define AURA_TYPE_LIFE   "Life"
 
 #define SPECIES_BLOOD_DEFAULT 560
+
+
+//Faction strings
+#define FACTION_NECROMORPH	"necromorph"

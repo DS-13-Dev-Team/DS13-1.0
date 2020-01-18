@@ -10,7 +10,7 @@ var/global/list/sparring_attack_cache = list()
 	var/shredding = 0 // Calls the old attack_alien() behavior on objects/mobs when on harm intent.
 	var/sharp = 0
 	var/edge = 0
-	var/delay = 0
+	var/delay = 1 SECOND	//Default delay, overrideable
 
 	var/deal_halloss
 	var/sparring_variant_type = /datum/unarmed_attack/light_strike
@@ -57,6 +57,12 @@ var/global/list/sparring_attack_cache = list()
 
 /datum/unarmed_attack/proc/get_unarmed_damage()
 	return damage
+
+//Factor in attackspeed here
+/datum/unarmed_attack/proc/get_delay(var/mob/living/user)
+	if (isnum(delay) && delay > 0)
+		return delay / user.get_attack_speed_factor()
+	return 0
 
 /datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/atom/target,var/armour,var/attack_damage,var/zone)
 
@@ -154,6 +160,7 @@ var/global/list/sparring_attack_cache = list()
 			to_chat(src, "<span class='notice'>You can't attack again so soon.</span>")
 			return 0
 		last_attack = world.time
+		setClickCooldown(u_attack.delay)
 		var/damage_done = target.hit(src, null, u_attack.damage) //TODO Later: Add in an attack flag for ignoring resistance?
 		u_attack.show_attack(src, target, null, damage_done)
 

@@ -1,4 +1,4 @@
-/datum/job/ds13chiefsciencenerd
+/datum/job/cscio
 	title = "Chief Science Officer"
 	head_position = 1
 	department = "Science"
@@ -11,9 +11,9 @@
 	ideal_character_age = 50
 
 	access = list(access_bridge, access_research, access_medical)
-	outfit_type = /decl/hierarchy/outfit/job/science/ds13chiefsciencenerd
+	outfit_type = /decl/hierarchy/outfit/job/science/cscio
 
-/datum/job/ds13juniorsciencenerd
+/datum/job/ra
 	title = "Research Assistant"
 	department = "Science"
 	department_flag = SCI
@@ -24,7 +24,7 @@
 	ideal_character_age = 26
 
 	access = list(access_research, access_medical)
-	outfit_type = /decl/hierarchy/outfit/job/science/ds13juniorsciencenerd
+	outfit_type = /decl/hierarchy/outfit/job/science/ra
 
 
 ////////////////////////////////////////////////////////////////////////////////

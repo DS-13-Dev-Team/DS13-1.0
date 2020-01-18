@@ -580,3 +580,11 @@ its easier to just keep the beam vertical.
 		//An item is spawned by events
 		//An item is delivered on the cargo shuttle
 		//An item is purchased or dispensed from a vendor (Those things contain premade items and just release them)
+
+
+//Defined here for convenience
+/atom/proc/get_attack_speed_factor()
+	return 1
+
+/atom/proc/get_move_speed_factor()
+	return 1

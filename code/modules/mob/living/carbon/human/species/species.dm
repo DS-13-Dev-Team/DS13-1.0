@@ -29,6 +29,7 @@
 	var/damage_mask =     'icons/mob/human_races/species/human/damage_mask.dmi'
 	var/blood_mask =      'icons/mob/human_races/species/human/blood_mask.dmi'
 
+
 	var/blood_color = COLOR_BLOOD_HUMAN               // Red.
 	var/flesh_color = "#ffc896"               // Pink.
 	var/blood_oxy = 1
@@ -59,6 +60,11 @@
 	var/show_ssd = "fast asleep"
 	var/virus_immune
 
+	var/plane	=	HUMAN_PLANE
+	var/layer = 0
+	var/plane_lying	=	LYING_HUMAN_PLANE
+	var/layer_lying	=	LYING_HUMAN_LAYER
+
 	var/light_sensitive                       // Ditto, but requires sunglasses to fix
 	var/blood_volume = SPECIES_BLOOD_DEFAULT  // Initial blood volume.
 	var/hunger_factor = DEFAULT_HUNGER_FACTOR // Multiplier for hunger.
@@ -77,7 +83,7 @@
 	var/additional_langs                      // Any other languages the species always gets.
 
 	//Audio vars
-	var/step_volume = VOLUME_MID	//Base volume of ALL footstep sounds for this mob
+	var/step_volume = 30	//Base volume of ALL footstep sounds for this mob
 	var/step_range = -1		//Base volume of ALL footstep sounds for this mob. Each point of range adds or subtracts two tiles from the actual audio distance
 	var/step_priority = 0	//Base priority of species-specific footstep sounds. Zero disables them
 	var/pain_audio_threshold = 0	//If a mob takes damage equal to this portion of its total health, (and audio files exist), it will scream in pain
@@ -86,10 +92,13 @@
 		//For example: (sound_1, sound_2 = 0.5) will result in sound_2 being played half as often as sound_1
 	var/list/speech_chance                    // The likelihood of a speech sound playing.
 
-
+	// Health and Defense
+	var/total_health = 120                   // Point at which the mob will enter crit.
+	var/healing_factor	=	0.5				//Base damage healed per organ, per tick
+	var/max_heal_threshold	=	0.5			//Wounds can only autoheal if the damage is less than this * max_damage
+	var/wound_remnant_time = 10 MINUTES	//How long fully-healed wounds stay visible before vanishing
 
 	// Combat vars.
-	var/total_health = 120                   // Point at which the mob will enter crit.
 	var/list/unarmed_types = list(           // Possible unarmed attacks that the mob will use in combat,
 		/datum/unarmed_attack,
 		/datum/unarmed_attack/bite
@@ -113,6 +122,7 @@
 	var/stun_mod =       1                    // Stun period modifier.
 	var/paralysis_mod =  1                    // Paralysis period modifier.
 	var/weaken_mod =     1                    // Weaken period modifier.
+	var/can_obliterate	=	TRUE			  // If false, this mob won't be deleted when gibbed. Though all their limbs will still be blasted off
 
 
 
@@ -819,12 +829,23 @@ These procs should return their entire args list. Best just to return parent in 
 		if (total_damage >= (total_health * pain_audio_threshold))
 			var/mob/living/L = organ.owner
 			if (!L.incapacitated(INCAPACITATION_KNOCKOUT) && L.check_audio_cooldown(SOUND_PAIN)) //Must be conscious to scream
-				play_species_audio(L, SOUND_PAIN, VOLUME_HIGH, 1)
+				play_species_audio(L, SOUND_PAIN, 60, 1)
 				L.set_audio_cooldown(SOUND_PAIN, 3 SECONDS)
 	return args.Copy(2)
 
-
-
+//Does animations for regenerating a limb
+/datum/species/proc/regenerate_limb(var/mob/living/carbon/human/H, var/limb, var/duration)
+	var/regen_icon = get_icobase()
+	var/image/LR = image(regen_icon, H, "[limb]_regen")
+	LR.plane = H.plane
+	LR.layer = H.layer -0.1 //Slightly below the layer of the mob, so that the healthy limb will draw over it
+	flick_overlay(LR, GLOB.clients, duration + 10)
+	//var/obj/aura/limb_regen/LR = new (H, regen_icon,"[limb]_regen")
+	//LAZYADD(H.auras, regen_limb)
+	//H.update_icons()
+	//spawn(duration)
+		//if (!QDELETED(H))
+			//LAZYREMOVE(H.auras, regen_limb)
 
 //Species level audio wrappers
 //--------------------------------

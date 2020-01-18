@@ -51,3 +51,7 @@
 	var/obj/screen/cells = null
 
 	var/last_resist = 0
+
+
+	var/move_speed_factor		=	1	//A multiplier on movespeed, and a divisor on move delays
+	var/attack_speed_factor	=	1	//Multiplier on attackspeed. Used as a divisor on unarmed attack delays, and certain ability cooldowns

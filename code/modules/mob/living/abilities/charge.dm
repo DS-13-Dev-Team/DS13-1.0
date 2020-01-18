@@ -31,8 +31,10 @@
 
 #define CHARGE_TARGET_PRIMARY	"primary"
 #define CHARGE_TARGET_SECONDARY	"secondary"
-#define CHARGE_DAMAGE_BASE	10	//Basic damage of charges dealt to mobs, per power point
+#define CHARGE_DAMAGE_BASE	15	//Basic damage of charges dealt to mobs, per power point
 #define CHARGE_DAMAGE_DIST	2	//Extra damage dealt by charge per tile travelled while charging
+
+
 
 //States of a charge
 #define CHARGE_STATE_WINDUP		"windup"	//We're preparing to charge, maybe screaming a bit
@@ -58,6 +60,7 @@
 	var/power = 0
 	var/cooldown = 20 SECONDS	//After the charge completes, it will stay on the user and block additional charges for this long
 	var/continue_check = TRUE	//Check for incapacitated status every step
+	var/delay
 
 	//Runtime data
 	var/tiles_moved = 0
@@ -77,7 +80,7 @@
 	.=..()
 	user = holder
 	target = _target
-	speed = _speed
+	speed = _speed * user.get_move_speed_factor()
 	lifespan = _lifespan
 	range_left = _maxrange
 	homing = _homing
@@ -86,12 +89,22 @@
 		homing = FALSE
 	power = _power
 	cooldown = _cooldown
+	if (cooldown)
+		cooldown /= user.get_attack_speed_factor() //Factor in attackspeed
 
+	delay = _delay
+
+	if (isliving(user))
+		var/mob/living/L = user
+		L.face_atom(target)
+		L.Stun(max_lifespan()*0.1,TRUE)
 	//Delay handling
-	if (!_delay)
+	if (!delay)
 		//If no delay, start immediately
 		start()
-	else if (isnum(_delay) && _delay > 0)
+	else if (isnum(delay) && delay > 0)
+		delay /= user.get_attack_speed_factor() //Factor in attackspeed
+
 		//If positive delay, wait that long before starting
 		start_timer = addtimer(CALLBACK(src, .proc/start), _delay, TIMER_STOPPABLE)
 
@@ -160,7 +173,10 @@
 
 /datum/extension/charge/proc/finish_cooldown()
 	to_chat(user, SPAN_NOTICE("You are ready to [name] again")) //Use name here so i can reuse this for leaping
-	remove_extension(holder, /datum/extension/charge)
+	if (holder) //Apparently holder can be null here
+		remove_extension(holder, src.type)
+	else
+		qdel(src)
 
 
 
@@ -177,8 +193,11 @@
 		target_type = CHARGE_TARGET_PRIMARY
 
 
-	user.charge_impact(obstacle, get_total_power(), target_type, tiles_moved)
+	if(!user.charge_impact(obstacle, get_total_power(), target_type, tiles_moved))
+		stop_success()
+		return
 	atoms_hit += obstacle
+
 
 	//If that was our intended target, then we win
 	if (target_type == CHARGE_TARGET_PRIMARY)
@@ -302,18 +321,26 @@
 	if (isliving(holder))
 		//Damage the user and stun them
 		var/mob/living/L = holder
-		var/blocked = L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved, 0,0,0, obstacle)
-		L.apply_effect(4*TP, STUN, blocked)
+		L.stunned = 0
+		L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved, 0,0,0, obstacle)
+		L.Stun(3*TP)
 	stop()
 
 //Called when we reach max time or range
 //Drain the user's stamina?
 /datum/extension/charge/proc/stop_peter_out()
+	if (isliving(holder))
+		//Damage the user and stun them
+		var/mob/living/L = holder
+		L.stunned = 0
 	stop()
 
 
 //We have ended the charge by successfully reaching our intended target. This is ideal
 /datum/extension/charge/proc/stop_success()
+	if (isliving(holder))
+		var/mob/living/L = holder
+		L.stunned = 0
 	var/TP = get_total_power()
 	//Screenshake everyone near the impact site
 	for (var/mob/M in range(TP))
@@ -412,7 +439,7 @@
 	return TRUE
 
 /mob/living/can_continue_charge(var/atom/target)
-	if (incapacitated())
+	if (incapacitated(INCAPACITATION_FORCELYING))
 		return FALSE
 	return ..()
 

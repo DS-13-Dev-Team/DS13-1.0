@@ -1,4 +1,4 @@
-/datum/job/ds13seniormedofficer
+/datum/job/smo
 	title = "Senior Medical Officer"
 	head_position = 1
 	department = "Medical"
@@ -12,9 +12,9 @@
 	ideal_character_age = 50
 
 	access = list(access_bridge, access_medical, access_maint_tunnels, access_chemistry, access_surgery)
-	outfit_type = /decl/hierarchy/outfit/job/medical/ds13seniormedofficer
+	outfit_type = /decl/hierarchy/outfit/job/medical/smo
 
-/datum/job/ds13meddoctor
+/datum/job/md
 	title = "Medical Doctor"
 	department = "Medical"
 	department_flag = MED
@@ -25,9 +25,9 @@
 	selection_color = "#013d3b"
 
 	access = list(access_medical, access_chemistry)
-	outfit_type = /decl/hierarchy/outfit/job/medical/ds13meddoctor
+	outfit_type = /decl/hierarchy/outfit/job/medical/md
 
-/datum/job/ds13medsurgeon
+/datum/job/surg
 	title = "Surgeon"
 	department = "Medical"
 	department_flag = MED
@@ -38,7 +38,7 @@
 	selection_color = "#013d3b"
 
 	access = list(access_medical, access_surgery)
-	outfit_type = /decl/hierarchy/outfit/job/medical/ds13medsurgeon
+	outfit_type = /decl/hierarchy/outfit/job/medical/surg
 
 
 ////////////////////////////////////////////////////////////////////////////////

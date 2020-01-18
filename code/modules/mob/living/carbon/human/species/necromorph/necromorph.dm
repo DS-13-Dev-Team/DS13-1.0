@@ -57,7 +57,10 @@
 
 	//Defense
 	total_health = 80
+	healing_factor = 0	//Necromorphs don't naturally heal, but they will be able to heal through certain situational effects
+	wound_remnant_time = 0 //No cuts sitting around forever
 	burn_mod = 1.3	//Takes more damage from burn attacks
+	weaken_mod = 0.75	//Get back up faster
 	blood_oxy = FALSE
 
 	var/list/initial_health_values	//This list is populated once for each species, when a necromorph of that type is created
@@ -106,7 +109,7 @@
 	step_volume = 60 //Necromorphs can't wear shoes, so their base footstep volumes are louder
 	step_range = 1
 	pain_audio_threshold = 0.10
-	speech_chance = 15
+	speech_chance = 100
 
 
 	has_organ = list(    // which required-organ checks are conducted.
@@ -114,7 +117,7 @@
 	BP_LUNGS =    /obj/item/organ/internal/lungs/undead,
 	BP_LIVER =    /obj/item/organ/internal/liver/undead,
 	BP_KIDNEYS =  /obj/item/organ/internal/kidneys/undead,
-	BP_BRAIN =    /obj/item/organ/internal/brain,
+	BP_BRAIN =    /obj/item/organ/internal/brain/undead,
 	BP_EYES =     /obj/item/organ/internal/eyes
 	)
 
@@ -146,11 +149,13 @@
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
 	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
+	H.faction = FACTION_NECROMORPH
 
 
-
-//We don't want to be suffering for the lack of any particular organs
-/datum/species/necromorph/should_have_organ()
+//We don't want to be suffering for the lack of most particular organs
+/datum/species/necromorph/should_have_organ(var/query)
+	if (query in list(BP_EYES))	//Expand this list as needed
+		return ..()
 	return FALSE
 
 

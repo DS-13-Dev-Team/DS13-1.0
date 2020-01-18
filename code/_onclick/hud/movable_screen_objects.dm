@@ -93,6 +93,7 @@
 	else if(findtext(Y,"CENTER"))
 		. = view+1
 
+
 //Debug procs
 /client/proc/test_movable_UI()
 	set category = "Debug"

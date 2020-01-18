@@ -1,4 +1,4 @@
-/datum/job/ds13bartender
+/datum/job/bar
 	title = "Bartender"
 	department_flag = CIV
 	total_positions = 1
@@ -8,21 +8,21 @@
 	ideal_character_age = 21
 
 	access = list(access_service)
-	outfit_type = /decl/hierarchy/outfit/job/ds13bartender
+	outfit_type = /decl/hierarchy/outfit/job/bar
 
-/datum/job/ds13linecook
+/datum/job/line_cook
 	title = "Line Cook"
 	department_flag = CIV
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "the captain"
 	selection_color = "#2f2f7f"
 	ideal_character_age = 21
 
 	access = list(access_service)
-	outfit_type = /decl/hierarchy/outfit/job/ds13linecook
+	outfit_type = /decl/hierarchy/outfit/job/line_cook
 
-/datum/job/ds13dom
+/datum/job/dom
 	title = "Director of Mining"
 	head_position = 1
 	department = "Supply"
@@ -34,10 +34,10 @@
 	minimal_player_age = 3
 	ideal_character_age = 55
 
-	access = list(access_bridge, access_mining, access_cargo)
-	outfit_type = /decl/hierarchy/outfit/job/cargo/ds13dom
+	access = list(access_bridge, access_mining)
+	outfit_type = /decl/hierarchy/outfit/job/cargo/dom
 
-/datum/job/ds13supplyofficer
+/datum/job/so
 	title = "Supply Officer"
 	department = "Supply"
 	department_flag = SUP
@@ -49,10 +49,10 @@
 	ideal_character_age = 40
 
 	access = list(access_bridge, access_cargo)
-	outfit_type = /decl/hierarchy/outfit/job/cargo/ds13supplyofficer
+	outfit_type = /decl/hierarchy/outfit/job/cargo/so
 
-/datum/job/ds13cargojockey
-	title = "Cargo Transport Specialist"
+/datum/job/serviceman
+	title = "Cargo Serviceman"
 	department = "Supply"
 	department_flag = SUP
 	total_positions = 4
@@ -61,10 +61,10 @@
 	selection_color = "#515151"
 
 	access = list(access_cargo)
-	outfit_type = /decl/hierarchy/outfit/job/cargo/ds13cargojockey
+	outfit_type = /decl/hierarchy/outfit/job/cargo/serviceman
 
-/datum/job/ds13gravityman
-	title = "Gravitational Tether Operator" //called them this rather than 'planet crackers'.
+/datum/job/planet_cracker
+	title = "Planet Cracker"
 	department = "Supply"
 	department_flag = SUP
 	total_positions = 4
@@ -73,9 +73,9 @@
 	selection_color = "#515151"
 
 	access = list(access_mining)
-	outfit_type = /decl/hierarchy/outfit/job/cargo/ds13gravityman
+	outfit_type = /decl/hierarchy/outfit/job/cargo/planet_cracker
 
-/datum/job/ds13miningforeman
+/datum/job/foreman
 	title = "Mining Foreman"
 	department = "Supply"
 	department_flag = SUP
@@ -85,19 +85,7 @@
 	selection_color = "#515151"
 
 	access = list(access_bridge, access_mining)
-	outfit_type = /decl/hierarchy/outfit/job/cargo/ds13miningforeman
-
-/datum/job/ds13necromorphbait
-	title = "Aegis VII Colonist" //The idea here is to expand on the colony in some ways, I spoke to Westhybrid about this sort of thing. For now, placeholder, but if colony is decided to be expanded upon and to have more of an impact on the round depending on how it goes, this role is pretty important.
-	department = "Supply"
-	department_flag = SUP
-	total_positions = 20
-	spawn_positions = 20
-	supervisors = "the CEC"
-	selection_color = "#515151"
-
-	access = list()
-	outfit_type = /decl/hierarchy/outfit/job/cargo/ds13necromorphbait
+	outfit_type = /decl/hierarchy/outfit/job/cargo/foreman
 
 
 ////////////////////////////////////////////////////////////////////////////////

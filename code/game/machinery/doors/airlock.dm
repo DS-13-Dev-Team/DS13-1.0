@@ -759,6 +759,11 @@ About the new airlock wires panel:
 			update_icon()
 	return
 
+/obj/machinery/door/airlock/operable()
+	if(!arePowerSystemsOn())
+		return FALSE
+	return ..()
+
 /obj/machinery/door/airlock/attack_ai(mob/user as mob)
 	ui_interact(user)
 
@@ -851,7 +856,7 @@ About the new airlock wires panel:
 			if(src.shock(user, 100))
 				return
 
-	if(src.p_open && user && user.a_intent != I_HURT)
+	if(src.p_open && user && user.a_intent != I_HURT && user.IsAdvancedToolUser())
 		user.set_machine(src)
 		wires.Interact(user)
 	else
@@ -1007,7 +1012,6 @@ About the new airlock wires panel:
 		return 1
 
 /obj/machinery/door/airlock/attackby(var/obj/item/C, var/mob/user)
-
 	if (!ismob(C))
 		// Brace is considered installed on the airlock, so interacting with it is protected from electrification.
 		if(brace && (istype(C.GetIdCard(), /obj/item/weapon/card/id/) || istype(C, /obj/item/weapon/tool/crowbar/brace_jack)))
@@ -1051,7 +1055,7 @@ About the new airlock wires panel:
 				playsound(src, 'sound/items/Welder.ogg', 100, 1)
 				src.update_icon()
 			return
-		else if(isScrewdriver(C))
+		else if(isScrewdriver(C) && C.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_NORMAL))
 			if (src.p_open)
 				if (stat & BROKEN)
 					to_chat(usr, "<span class='warning'>The panel is broken and cannot be closed.</span>")
@@ -1060,6 +1064,7 @@ About the new airlock wires panel:
 			else
 				src.p_open = 1
 			src.update_icon()
+			return
 		else if(isWirecutter(C))
 			return src.attack_hand(user)
 		else if(isMultitool(C))
@@ -1083,7 +1088,7 @@ About the new airlock wires panel:
 				to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
 			else if(brace)
 				to_chat(user, "<span class='notice'>The airlock's brace holds it firmly in place.</span>")
-			else
+			else if (C.use_tool(user, src, WORKTIME_FAST, QUALITY_PRYING, FAILCHANCE_NORMAL))
 				if(density)
 					spawn(0)	open(1)
 				else

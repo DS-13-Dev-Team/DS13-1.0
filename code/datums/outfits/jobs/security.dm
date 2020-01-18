@@ -1,59 +1,33 @@
-/decl/hierarchy/outfit/job/security/ds13chiefsecurityofficer
+/decl/hierarchy/outfit/job/security/cseco
 	name = OUTFIT_JOB_NAME("Chief Security Officer")
-	uniform = /obj/item/clothing/under/security/ds_securityundersuit
-	suit = null
+	uniform = /obj/item/clothing/under/security/deadspace
+	suit = /obj/item/clothing/suit/armor/vest/ds_jacket
 	l_ear = /obj/item/device/radio/headset/heads/hos
-	glasses = /obj/item/clothing/glasses/sunglasses/big
-	gloves = /obj/item/clothing/gloves/ds_securityglove
+	glasses = /obj/item/clothing/glasses/sunglasses/sechud
+	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/weapon/storage/belt/holster/security
 	shoes = /obj/item/clothing/shoes/ds_securityboots
-	l_pocket = /obj/item/clothing/accessory/medal/ds_securitymedal
-	id_type = /obj/item/weapon/card/id/holoidlawfulgood
+	id_type = /obj/item/weapon/card/id/holoidcseco
 
-/decl/hierarchy/outfit/job/security/ds13seniorsecurityofficer
+/decl/hierarchy/outfit/job/security/sso
 	name = OUTFIT_JOB_NAME("Senior Security Officer")
-	uniform = /obj/item/clothing/under/security/ds_securityundersuit
-	suit = null
-	glasses = /obj/item/clothing/glasses/sunglasses/big
-	gloves = /obj/item/clothing/gloves/ds_securityglove
+	uniform = /obj/item/clothing/under/security/deadspace
+	l_ear = /obj/item/device/radio/headset/headset_sec
+	glasses = /obj/item/clothing/glasses/sunglasses/sechud
+	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/weapon/storage/belt/holster/security
 	shoes = /obj/item/clothing/shoes/ds_securityboots
-	l_pocket = /obj/item/clothing/accessory/medal/ds_securitymedal
-	id_type = /obj/item/weapon/card/id/holoidchaoticgood
+	id_type = /obj/item/weapon/card/id/holoidsso
 
-/decl/hierarchy/outfit/job/security/ds13securityofficer
+/decl/hierarchy/outfit/job/security/officer
 	name = OUTFIT_JOB_NAME("Security Officer")
-	uniform = /obj/item/clothing/under/security/ds_securityundersuit
-	suit = null
-	glasses = /obj/item/clothing/glasses/sunglasses/big
-	gloves = /obj/item/clothing/gloves/ds_securityglove
+	uniform = /obj/item/clothing/under/security/deadspace
+	l_ear = /obj/item/device/radio/headset/headset_sec
+	glasses = /obj/item/clothing/glasses/sunglasses/sechud
+	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/weapon/storage/belt/holster/security
 	shoes = /obj/item/clothing/shoes/ds_securityboots
-	l_pocket = /obj/item/clothing/accessory/medal/ds_securitymedal
-	id_type = /obj/item/weapon/card/id/holoidneutralgood
-
-/decl/hierarchy/outfit/job/security/ds13PSECboss
-	name = OUTFIT_JOB_NAME("PSEC Security Chief")
-	uniform = /obj/item/clothing/under/security/ds_securityundersuit
-	suit = null
-	l_ear = /obj/item/device/radio/headset/heads/hos
-	glasses = /obj/item/clothing/glasses/sunglasses/big
-	gloves = /obj/item/clothing/gloves/ds_securityglove
-	belt = /obj/item/weapon/storage/belt/holster/security
-	shoes = /obj/item/clothing/shoes/ds_securityboots
-	l_pocket = /obj/item/clothing/accessory/medal/ds_securitymedal
-	id_type = /obj/item/weapon/card/id/holoiddeadchief
-
-/decl/hierarchy/outfit/job/security/ds13PSECofficer
-	name = OUTFIT_JOB_NAME("PSEC Security Officer")
-	uniform = /obj/item/clothing/under/security/ds_securityundersuit
-	suit = null
-	glasses = /obj/item/clothing/glasses/sunglasses/big
-	gloves = /obj/item/clothing/gloves/ds_securityglove
-	belt = /obj/item/weapon/storage/belt/holster/security
-	shoes = /obj/item/clothing/shoes/ds_securityboots
-	l_pocket = /obj/item/clothing/accessory/medal/ds_securitymedal
-	id_type = /obj/item/weapon/card/id/holoiddeadofficer
+	id_type = /obj/item/weapon/card/id/holoidsecurity
 
 ////////////////////////////////////////////////////////////////////////////////
 ////			DEFAULT OUTFITS BELOW HERE.									////
@@ -61,7 +35,7 @@
 
 
 
-/decl/hierarchy/outfit/job/security
+/*/decl/hierarchy/outfit/job/security
 	hierarchy_type = /decl/hierarchy/outfit/job/security
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud
 	l_ear = /obj/item/device/radio/headset/headset_sec
@@ -115,4 +89,4 @@
 	l_pocket = /obj/item/device/flash
 	r_pocket = /obj/item/weapon/handcuffs
 	id_type = /obj/item/weapon/card/id/security
-	pda_type = /obj/item/modular_computer/pda/security
+	pda_type = /obj/item/modular_computer/pda/security*/

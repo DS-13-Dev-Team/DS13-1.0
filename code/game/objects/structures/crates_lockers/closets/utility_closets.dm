@@ -178,6 +178,21 @@
 		/obj/item/device/geiger = 2,
 		/obj/random/tool)
 
+/obj/structure/closet/radiation/security
+	name = "radiation security suit closet"
+	desc = "It's a storage unit for rad-protective suits for security officers."
+	icon_state = "radsuitcloset_sec"
+	icon_opened = "toolclosetopen"
+	icon_closed = "radsuitcloset_sec"
+
+/obj/structure/closet/radiation/WillContain()
+	return list(
+		/obj/item/weapon/storage/med_pouch/toxin = 2,
+		/obj/item/clothing/suit/radiation,
+		/obj/item/clothing/head/radiation,
+		/obj/item/clothing/suit/radiation,
+		/obj/item/clothing/head/radiation,
+		/obj/item/device/geiger = 2)
 /*
  * Bombsuit closet
  */

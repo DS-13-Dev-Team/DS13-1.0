@@ -240,11 +240,10 @@
 		mymob.nutrition_icon.screen_loc = ui_nutrition
 		hud_elements |= mymob.nutrition_icon
 
-//WORKING POINT 1
-
 	mymob.pain = mymob.overlay_fullscreen("pain", /obj/screen/fullscreen/pain, INFINITY)//new /obj/screen/fullscreen/pain( null )
 	//mymob.pain.set_size(mymob.client)
-	hud_elements |= mymob.pain
+	if (istype(mymob.pain))
+		hud_elements |= mymob.pain
 
 
 	mymob.zone_sel = new /obj/screen/zone_sel( null )
@@ -281,7 +280,10 @@
 	mymob.client.screen = list()
 
 	mymob.client.screen += hud_elements
-	mymob.client.screen += src.adding + src.hotkeybuttons
+
+	mymob.client.screen += src.adding
+
+	mymob.client.screen += src.hotkeybuttons
 	inventory_shown = 0
 
 /mob/living/carbon/human/verb/toggle_hotkey_verbs()

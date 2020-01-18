@@ -1,42 +1,36 @@
-//these guys have been given placeholder clothing for now, they will need adjusting once engineering rigs are ingame as the mining foreman and most of the staff aboard ishimura who worked in regards to mining wore rig suits, due to the insane risks of everyone runinng around with a plasma cutter 
-
-/decl/hierarchy/outfit/job/cargo/ds13dom
+/decl/hierarchy/outfit/job/cargo/dom
 	name = OUTFIT_JOB_NAME("Director of Mining")
-	uniform = /obj/item/clothing/under/miner/deadspace
-	shoes = /obj/item/clothing/shoes/brown
+	uniform = /obj/item/clothing/under/suit_jacket
+	shoes = /obj/item/clothing/shoes/dress
 	glasses = /obj/item/clothing/glasses/sunglasses
-	id_type = /obj/item/weapon/card/id/holoiddirectorofmining
+	id_type = /obj/item/weapon/card/id/holoiddom
 
-/decl/hierarchy/outfit/job/cargo/ds13supplyofficer
+/decl/hierarchy/outfit/job/cargo/so
 	name = OUTFIT_JOB_NAME("Supply Officer")
 	uniform = /obj/item/clothing/under/miner/deadspace
-	shoes = /obj/item/clothing/shoes/brown
+	shoes = /obj/item/clothing/shoes/dutyboots
 	glasses = /obj/item/clothing/glasses/sunglasses
-	id_type = /obj/item/weapon/card/id/holoidsupplyofficer
+	id_type = /obj/item/weapon/card/id/holoidso
 
-/decl/hierarchy/outfit/job/cargo/ds13cargojockey
-	name = OUTFIT_JOB_NAME("Cargo Transport Specialist")
+/decl/hierarchy/outfit/job/cargo/serviceman
+	name = OUTFIT_JOB_NAME("Cargo Serviceman")
 	uniform = /obj/item/clothing/under/miner/deadspace
+	shoes = /obj/item/clothing/shoes/dutyboots
 	glasses = /obj/item/clothing/glasses/sunglasses
-	id_type = /obj/item/weapon/card/id/holoidcargotransportspecs
+	id_type = /obj/item/weapon/card/id/holoidserviceman
 
-/decl/hierarchy/outfit/job/cargo/ds13gravityman
-	name = OUTFIT_JOB_NAME("Gravitational Tether Operator")
+/decl/hierarchy/outfit/job/cargo/planet_cracker
+	name = OUTFIT_JOB_NAME("Planet Cracker")
 	uniform = /obj/item/clothing/under/miner/deadspace
-	glasses = /obj/item/clothing/glasses/sunglasses
-	id_type = /obj/item/weapon/card/id/holoidgravityman
+	shoes = /obj/item/clothing/shoes/dutyboots
+	id_type = /obj/item/weapon/card/id/holoidplanetcracker
 
-/decl/hierarchy/outfit/job/cargo/ds13miningforeman
+/decl/hierarchy/outfit/job/cargo/foreman
 	name = OUTFIT_JOB_NAME("Mining Foreman")
 	uniform = /obj/item/clothing/under/miner/deadspace
+	shoes = /obj/item/clothing/shoes/dutyboots
 	glasses = /obj/item/clothing/glasses/sunglasses
-	id_type = /obj/item/weapon/card/id/holoidminingforeman
-	
-/decl/hierarchy/outfit/job/cargo/ds13necromorphbait
-	name = OUTFIT_JOB_NAME("Aegis VII Colonist")
-	uniform = /obj/item/clothing/under/miner/deadspace
-	glasses = /obj/item/clothing/glasses/sunglasses
-	id_type = /obj/item/weapon/card/id/holoidaegiscolonist
+	id_type = /obj/item/weapon/card/id/holoidforeman
 
 
 

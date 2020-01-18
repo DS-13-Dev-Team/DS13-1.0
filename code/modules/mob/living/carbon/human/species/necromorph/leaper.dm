@@ -42,7 +42,7 @@
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper))
 
-	slowdown = 4
+	slowdown = 4.5
 
 	//Leaper has no legs, it moves with arms and tail
 	locomotion_limbs = list(BP_R_ARM, BP_L_ARM, BP_TAIL)
@@ -171,15 +171,16 @@
 	.=..()	//We call the parent charge impact too, all the following effects are in addition to the default behaviour
 
 	shake_camera(user,5,3)
-
+	.=TRUE //We stop on the first hit either way
 	//To be considered a success, we must leap onto a mob, and they must be the one we intended to hit
-	if (isliving(obstacle) && target_type == CHARGE_TARGET_PRIMARY)
+	if (isliving(obstacle))
 		var/mob/living/L = obstacle
 		L.Weaken(5) //Down they go!
 		L.apply_damage(3*(distance_travelled+1), used_weapon = user) //We apply damage based on the distance. We add 1 to the distance because we're moving into their tile too
 		shake_camera(L,5,3)
 		//And lets also land ontop of them
 		user.play_species_audio(user, SOUND_SHOUT, 100, 1, 3) //Victory scream
+		.=FALSE
 		spawn(2)
 			user.Move(obstacle.loc)
 	else if (obstacle.density)
@@ -187,7 +188,7 @@
 		user.Weaken(5)
 		user.apply_damage(20, used_weapon = obstacle) //ow
 		user.play_species_audio(user, SOUND_PAIN, 100, 1, 3) //It huuurts
-
+		.=FALSE
 
 
 //Tailstrike attack

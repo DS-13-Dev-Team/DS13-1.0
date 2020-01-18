@@ -159,7 +159,13 @@
 			dir = olddir
 			set_dir(direct)
 
-		src.move_speed = world.time - src.l_move_time
+		//This is an actual speed in metres per second
+		var/last_move_delta = world.time - src.l_move_time
+		if (last_move_delta)
+			src.move_speed = 10 / last_move_delta
+		else
+			move_speed = 0
+
 		src.l_move_time = world.time
 		src.m_flag = 1
 		if ((A != src.loc && A && A.z == src.z))

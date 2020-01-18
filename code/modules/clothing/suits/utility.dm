@@ -124,3 +124,32 @@
 /obj/item/clothing/suit/radiation/New()
 	..()
 	slowdown_per_slot[slot_shoes] = 1.5
+
+/obj/item/clothing/head/radiation/security
+	name = "Security Radiation Hood"
+	icon_state = "rad_sec"
+	desc = "A hood with radiation protective properties. The red highlights on it show it is meant to be warn by security personnel. Label: Made with lead, do not eat insulation."
+	flags_inv = BLOCKHAIR
+	body_parts_covered = HEAD|FACE|EYES
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 100)
+
+
+/obj/item/clothing/suit/radiation/security
+	name = "Radiation suit"
+	desc = "A suit that protects against radiation. The red highlights on it show it is meant to be warn by security personnel. Label: Made with lead, do not eat insulation."
+	icon_state = "rad_sec"
+	item_state_slots = list(
+		slot_l_hand_str = "rad_suit",
+		slot_r_hand_str = "rad_suit",
+	)
+	w_class = ITEM_SIZE_HUGE//bulky item
+	gas_transfer_coefficient = 0.90
+	permeability_coefficient = 0.50
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/emergency,/obj/item/clothing/head/radiation,/obj/item/clothing/head/radiation/security,/obj/item/clothing/mask/gas)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 100)
+	flags_inv = HIDEJUMPSUIT|HIDETAIL|HIDEGLOVES|HIDESHOES
+
+/obj/item/clothing/suit/radiation/security/New()
+	..()
+	slowdown_per_slot[slot_shoes] = 1.5

@@ -224,6 +224,7 @@ var/list/gamemode_cache = list()
 	var/auto_observe = FALSE
 	var/auto_bst = FALSE
 	var/no_overmap = FALSE
+	var/debug_verbs = FALSE
 
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
@@ -285,6 +286,9 @@ var/list/gamemode_cache = list()
 					//Mapping subsystem loads before config, so we'll set this here
 					if (GLOB.using_map)
 						GLOB.using_map.use_overmap = FALSE
+
+				if ("debug_verbs")
+					config.debug_verbs = TRUE
 
 				//-------------------------
 

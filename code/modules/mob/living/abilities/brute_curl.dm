@@ -46,6 +46,7 @@
 	force_time = _force_time
 	automatic = _automatic
 	animtime = _animtime
+	animtime /= user.get_attack_speed_factor()
 
 	start()
 

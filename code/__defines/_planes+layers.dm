@@ -142,6 +142,7 @@ What is the naming convention for planes or layers?
 	#define BASE_ABOVE_OBJ_LAYER 0
 
 #define HUMAN_PLANE                   -11 // For Humans that are standing up.
+	#define HUMAN_LAYER	0
 	// MOB_LAYER 4
 
 #define MOB_PLANE                      -7 // For Mobs.
@@ -152,6 +153,11 @@ What is the naming convention for planes or layers?
 	#define ABOVE_HUMAN_LAYER  0
 	#define VEHICLE_LOAD_LAYER 1
 	#define CAMERA_LAYER       2
+
+
+#define LARGE_MOB_PLANE				   -5.5
+
+	#define LARGE_MOB_LAYER				1
 
 #define BLOB_PLANE                     -5 // For Blobs, which are above humans.
 

@@ -118,7 +118,7 @@
 	seeds += random_map.small_flora_types
 	if(random_map.big_flora_types)
 		seeds += random_map.big_flora_types
-	for(var/mob/living/simple_animal/A in GLOB.living_mob_list_)
+	for(var/mob/living/simple_animal/A in GLOB.living_mob_list)
 		if(A.z in map_z)
 			animals += A
 			GLOB.death_event.register(A, src, /obj/effect/overmap/sector/exoplanet/proc/remove_animal)
