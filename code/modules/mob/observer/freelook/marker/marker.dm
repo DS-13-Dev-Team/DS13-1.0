@@ -99,7 +99,7 @@
 	//Adds a new biomass source, can specify type
 
 	//First create it
-	var/datum/biomass_source/BS = new sourcetype(source, total_mass, duration)
+	var/datum/biomass_source/BS = new sourcetype(source, src, total_mass, duration)
 
 	//Don't add it if its a duplicate
 	if (BS.is_duplicate(biomass_sources))
@@ -136,9 +136,11 @@
 
 	if (isliving(AM))
 		var/mob/living/L = AM
-		if (!L.is_necromorph() && L.stat == DEAD)
+		if (!L.is_necromorph())
 			//Yes we can
-			add_biomass_source(L, L.mass, 1 MINUTES, /datum/biomass_source/convergence)
+			add_biomass_source(L, L.mass, 10 MINUTES, /datum/biomass_source/convergence)
+			//We can only absorb dead mobs, but we don't check that here
+			//We'll add a still-living mob to the list and it'll be checked each tick to see if it died yet
 
 
 /obj/machinery/marker/proc/pay_biomass(var/purpose, var/amount)
