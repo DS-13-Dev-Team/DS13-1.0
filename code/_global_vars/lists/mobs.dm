@@ -11,3 +11,5 @@ BP_L_HAND = BP_L_ARM,
 BP_R_HAND = BP_R_ARM,
 BP_EYES = BP_HEAD,
 BP_MOUTH = BP_HEAD))
+
+GLOBAL_LIST_INIT(key_to_mob, list())

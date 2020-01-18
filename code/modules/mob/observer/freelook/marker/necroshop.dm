@@ -102,7 +102,8 @@
 
 
 	if (href_list["spawn"])
-		start_spawn()
+		if (authorised_to_spawn(usr))
+			start_spawn()
 
 	if (href_list["toggle-queue"])
 		necroqueue_fill = !necroqueue_fill

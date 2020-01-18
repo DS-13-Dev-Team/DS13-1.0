@@ -48,8 +48,12 @@
 	open_shop(user)
 
 /obj/machinery/marker/update_icon()
-	icon_state = "marker_giant_active_anim"
-	set_light(1, 1, 12, 2, light_colour)
+	if (player)
+		icon_state = "marker_giant_active_anim"
+		set_light(1, 1, 12, 2, light_colour)
+	else
+		icon_state = "marker_giant_dormant"
+		set_light(0)
 
 
 //Each process tick, we'll loop through all biomass sources and absorb their income
@@ -62,11 +66,12 @@
 /obj/machinery/marker/verb/shop_verb()
 	set name = "Spawning Menu"
 	set src in view()
+	set category = null
+
 	open_shop(usr)
 
 //Biomass handling
 //---------------------------------
-
 //Rather than calculating and adding mass now, this proc calculates the mass to be added NEXT tick	(and also adds whatever we calculated last tick)
 //This allows us to display an accurate preview of mass income in player-facing UIs
 /obj/machinery/marker/proc/handle_biomass_tick()
@@ -105,21 +110,24 @@
 
 
 /obj/machinery/marker/proc/become_master_signal(var/mob/M)
+	message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
 	var/mob/observer/eye/signal/master/S = new(M)
 	player = S.key
 	playermob = S
 	qdel(M)
+	update_icon()
 	return S
 
 
 /obj/machinery/marker/proc/vacate_master_signal()
 	if (playermob)
+		message_necromorphs(SPAN_NOTICE("[player] has stepped down, nobody is controlling the marker now."))
 		var/mob/observer/eye/signal/S = new(playermob)
 		player = null
 		QDEL_NULL(playermob)
+		update_icon()
 		return S
 
-///obj/machinery/marker/attack_ghost(var/mob/user)
 
 
 

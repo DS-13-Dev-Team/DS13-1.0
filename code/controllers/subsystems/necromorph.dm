@@ -13,6 +13,9 @@ SUBSYSTEM_DEF(necromorph)
 	//Marker
 	var/obj/machinery/marker/marker
 
+	//Players
+	var/list/necromorph_players = list()	//This is a list of keys and mobs of players on the necromorph team
+
 
 /datum/controller/subsystem/necromorph/proc/join_necroqueue(var/mob/M)
 	if (is_marker_master(M))
@@ -40,3 +43,9 @@ SUBSYSTEM_DEF(necromorph)
 		qdel(M)
 		return TRUE
 	return FALSE	//Return false if we failed to find anyone
+
+
+/proc/message_necromorphs(var/message)
+	for (var/key in SSnecromorph.necromorph_players)
+		var/mob/M = SSnecromorph.necromorph_players[key]
+		to_chat(M, message)
