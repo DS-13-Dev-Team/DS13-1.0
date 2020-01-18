@@ -59,7 +59,12 @@
 
 
 /mob/proc/join_marker()
+	if (key)
+		SSnecromorph.necromorph_players |= key
+
+	message_necromorphs(SPAN_NOTICE("[key] has joined the necromorph horde."))
 	var/mob/observer/eye/signal/S = new(src)
+
 	return S
 
 
@@ -72,6 +77,10 @@
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
 
+
+	if (key)
+		SSnecromorph.necromorph_players -= key
+		message_necromorphs(SPAN_NOTICE("[key] has left the necromorph horde."))
 	var/mob/observer/ghost/ghost = ghostize(0)
 	qdel(src)
 	return ghost
@@ -79,6 +88,7 @@
 
 
 //Posession and evacuating
+//-------------------------------
 /mob/observer/eye/signal/verb/necro_possess(var/mob/living/L)
 	set name = "Posess"
 	set category = "Necromorph"
@@ -93,6 +103,7 @@
 		return
 
 	//Seems clear
+	message_necromorphs(SPAN_NOTICE("[key] has taken control of [L]."))
 	L.key = key
 	qdel(src)
 
@@ -122,17 +133,39 @@
 	return src
 
 
+
+
+
+//Necroqueue Handling
+//---------------------------
 /mob/observer/eye/signal/Login()
 	.=..()
 	//Todo, check preferences for autoqueue here
-
-	SSnecromorph.join_necroqueue(src)
+	spawn(1)	//Prevents issues when downgrading from master
+		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
+			SSnecromorph.join_necroqueue(src)
 
 
 /mob/observer/eye/signal/Logout()
-	SSnecromorph.remove_from_necroqueue(src)
+	if (!istype(src, /mob/observer/eye/signal/master))
+		SSnecromorph.remove_from_necroqueue(src)
 	.=..()
 
 /mob/observer/eye/signal/Destroy()
 	SSnecromorph.remove_from_necroqueue(src)
 	.=..()
+
+
+
+
+//Misc Verbs
+//--------------------------------
+/mob/observer/eye/signal/verb/jump_to_marker()
+	set name = "Jump to Marker"
+	set category = SPECIES_NECROMORPH
+
+	if (SSnecromorph.marker)
+		forceMove(get_turf(SSnecromorph.marker))
+		return
+
+	to_chat(src, SPAN_DANGER("Error: No marker found!"))

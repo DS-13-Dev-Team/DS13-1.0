@@ -68,3 +68,12 @@
 	if (istype(species, /datum/species/necromorph))
 		return TRUE
 	return FALSE
+
+
+
+
+/mob/Login()
+	.=..()
+	//Update the necromorph players list
+	if (is_necromorph())
+		SSnecromorph.necromorph_players[key] = src
