@@ -4,10 +4,12 @@
 	var/remaining_mass	=	0	//How much total mass is left to be absorbed
 	var/mass_tick	=	1	//How much mass is taken at each tick. IE, per second
 	var/datum/source = null	//The atom or thing we are drawing biomass from. Optional
+	var/datum/target	=	null	//The thing that is absorbing the source. Generally this is a marker
 
-/datum/biomass_source/New(var/datum/_source = null, var/total_mass = 0, var/duration = 1 SECOND)
+/datum/biomass_source/New(var/datum/_source = null, var/datum/_target = null, var/total_mass = 0, var/duration = 1 SECOND)
 	.=..()
 	source = _source
+	target = _target
 	initial_mass = total_mass
 	remaining_mass = total_mass
 	calculate_tick(total_mass, duration)
@@ -81,6 +83,15 @@
 //Todo here: Check if the human body is near enough to the marker, or some sort of corruption-corpse-deposit node
 //If its too far away, return pause
 /datum/biomass_source/convergence/can_absorb()
+	//Lets check if its dead
+	var/mob/living/L = source
+	if (L.stat != DEAD)
+		return MASS_PAUSE	//If we're still alive, keep waiting
+
+	//Are we still near the marker?
+	if (get_dist(source, target) > 10)
+		return MASS_PAUSE
+
 	return ..()
 
 /datum/biomass_source/convergence/absorb()
