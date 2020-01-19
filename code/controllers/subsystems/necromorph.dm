@@ -17,16 +17,20 @@ SUBSYSTEM_DEF(necromorph)
 	var/list/necromorph_players = list()	//This is a list of keys and mobs of players on the necromorph team
 
 
-/datum/controller/subsystem/necromorph/proc/join_necroqueue(var/mob/M)
+/datum/controller/subsystem/necromorph/proc/join_necroqueue(var/mob/observer/eye/signal/M)
 	if (is_marker_master(M))
 		//The master may not queue. They can still posess things if really needed though
 		return FALSE
 	necroqueue |= M
+	M.verbs -= /mob/observer/eye/signal/proc/join_necroqueue
+	M.verbs |= /mob/observer/eye/signal/proc/leave_necroqueue
 	to_chat(M, SPAN_NOTICE("You are now in the necroqueue. When a necromorph vessel is available, you will be automatically placed in control of it. You can still manually posess necromorphs."))
 
 
 
-/datum/controller/subsystem/necromorph/proc/remove_from_necroqueue(var/mob/M)
+/datum/controller/subsystem/necromorph/proc/remove_from_necroqueue(var/mob/observer/eye/signal/M)
+	M.verbs |= /mob/observer/eye/signal/proc/join_necroqueue
+	M.verbs -= /mob/observer/eye/signal/proc/leave_necroqueue
 	necroqueue -= M
 
 
