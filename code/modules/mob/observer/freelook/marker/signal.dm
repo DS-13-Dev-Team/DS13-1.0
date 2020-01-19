@@ -143,7 +143,9 @@
 	//Todo, check preferences for autoqueue here
 	spawn(1)	//Prevents issues when downgrading from master
 		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
+			verbs += /mob/observer/eye/signal/proc/join_necroqueue
 			SSnecromorph.join_necroqueue(src)
+
 
 
 /mob/observer/eye/signal/Logout()
@@ -156,7 +158,18 @@
 	.=..()
 
 
+/mob/observer/eye/signal/proc/join_necroqueue()
+	set name = "Join Necroqueue"
+	set category = SPECIES_NECROMORPH
 
+	SSnecromorph.join_necroqueue(src)
+
+
+/mob/observer/eye/signal/proc/leave_necroqueue()
+	set name = "Leave Necroqueue"
+	set category = SPECIES_NECROMORPH
+
+	SSnecromorph.remove_from_necroqueue(src)
 
 //Misc Verbs
 //--------------------------------
