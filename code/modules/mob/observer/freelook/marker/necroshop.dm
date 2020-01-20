@@ -187,7 +187,7 @@
 		to_chat(user, SPAN_NOTICE("Successfully spawned [newthing] at [jumplink(targetloc)]"))
 
 		if (params["queue"] && necroqueue_fill)
-			SSnecromorph.fill_vessel_from_queue(newthing)
+			SSnecromorph.fill_vessel_from_queue(newthing, params["name"])
 
 
 //Attempts to subtract the relevant quantity of biomass from the host marker or whatever else
