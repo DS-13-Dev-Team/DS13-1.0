@@ -35,12 +35,14 @@ SUBSYSTEM_DEF(necromorph)
 
 
 
-/datum/controller/subsystem/necromorph/proc/fill_vessel_from_queue(var/mob/vessel)
+/datum/controller/subsystem/necromorph/proc/fill_vessel_from_queue(var/mob/vessel, var/vessel_id)
 	for (var/mob/observer/eye/signal/M in necroqueue)
 		if (!M.client || !M.key)
 			continue	//Gotta be connected
 
-		//TODO here: Preferences checks to see if they're willing to play this type
+		//The id is used to check preferences
+		if (vessel_id in M.client.prefs.never_be_special_role)
+			continue	//They don't wanna be this kind of necro, skip them
 
 		//If we get here, they'll do.
 		vessel.key = M.key	//Move into the mob and delete the old
