@@ -6,7 +6,7 @@
 	announced = FALSE
 	create_record = FALSE
 	total_positions = 4
-	outfit_type = /decl/hierarchy/outfit/job/assistant
+	outfit_type = null
 	hud_icon = "hudblank"
 
 	var/info = "You have survived a terrible disaster. Make the best of things that you can."

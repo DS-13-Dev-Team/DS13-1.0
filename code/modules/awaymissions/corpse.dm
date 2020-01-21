@@ -115,42 +115,28 @@
 
 /obj/effect/landmark/corpse/chef
 	name = "Chef"
-	corpse_outfits = list(/decl/hierarchy/outfit/job/service/chef)
+	corpse_outfits = /decl/hierarchy/outfit/job/line_cook
 
 /obj/effect/landmark/corpse/doctor
 	name = "Doctor"
-	corpse_outfits = list(/decl/hierarchy/outfit/job/medical/doctor)
+	corpse_outfits = /decl/hierarchy/outfit/job/medical/md
 
 /obj/effect/landmark/corpse/engineer
 	name = "Engineer"
-	corpse_outfits = list(/decl/hierarchy/outfit/job/engineering/engineer)
+	corpse_outfits = /decl/hierarchy/outfit/job/engineering/tech_engineer
 
 /obj/effect/landmark/corpse/scientist
 	name = "Scientist"
-	corpse_outfits = list(/decl/hierarchy/outfit/job/science/scientist)
-
-/obj/effect/landmark/corpse/engineer/rig
-	corpse_outfits = list(/decl/hierarchy/outfit/job/engineering/engineer/void)
-
-/obj/effect/landmark/corpse/clown
-	name = "Clown"
-	corpse_outfits = list(/decl/hierarchy/outfit/clown)
+	corpse_outfits = /decl/hierarchy/outfit/job/science/ra
 
 /obj/effect/landmark/corpse/miner
 	name = "Miner"
-	corpse_outfits = list(/decl/hierarchy/outfit/job/cargo/mining)
-
-/obj/effect/landmark/corpse/miner/rig
-	corpse_outfits = list(/decl/hierarchy/outfit/job/cargo/mining/void)
-
+	corpse_outfits = /decl/hierarchy/outfit/job/cargo/planet_cracker
 
 /obj/effect/landmark/corpse/bridgeofficer
 	name = "Bridge Officer"
-	corpse_outfits = list(/decl/hierarchy/outfit/nanotrasen/officer)
+	corpse_outfits = /decl/hierarchy/outfit/job/bo
 
-/obj/effect/landmark/corpse/commander
-	name = "Commander"
-	corpse_outfits = list(/decl/hierarchy/outfit/nanotrasen/commander)
 
 
 /obj/effect/landmark/corpse/pirate

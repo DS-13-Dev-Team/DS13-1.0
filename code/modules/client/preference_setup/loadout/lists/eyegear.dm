@@ -70,7 +70,7 @@
 /datum/gear/eyes/meson
 	display_name = "Meson Goggles"
 	path = /obj/item/clothing/glasses/meson
-	allowed_roles = list(/datum/job/chief_engineer, /datum/job/engineer, /datum/job/mining, /datum/job/scientist, /datum/job/rd)
+	allowed_roles = null
 
 /datum/gear/eyes/meson/prescription
 	display_name = "Meson Goggles, prescription"
@@ -80,11 +80,6 @@
 	display_name = "HUDpatch, Meson"
 	path = /obj/item/clothing/glasses/eyepatch/hud/meson
 	cost = 2
-
-/datum/gear/eyes/material
-	display_name = "Material Goggles"
-	path = /obj/item/clothing/glasses/material
-	allowed_roles = list(/datum/job/chief_engineer, /datum/job/engineer, /datum/job/mining)
 
 /datum/gear/eyes/shades/
 	display_name = "sunglasses"
