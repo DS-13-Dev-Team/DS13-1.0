@@ -49,6 +49,11 @@ a.white:hover
 	background: #40628a;
 }
 
+.checkbox, .checkbox:hover {width: 10px !important;
+height: 10px !important;
+background: transparent !important;
+}
+
 .linkOn, a.linkOn:link, a.linkOn:visited, a.linkOn:active, a.linkOn:hover
 { 
 	color: #ffffff; 

@@ -140,11 +140,13 @@
 //---------------------------
 /mob/observer/eye/signal/Login()
 	.=..()
-	//Todo, check preferences for autoqueue here
 	spawn(1)	//Prevents issues when downgrading from master
 		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
+
+
 			verbs += /mob/observer/eye/signal/proc/join_necroqueue
-			SSnecromorph.join_necroqueue(src)
+			if (client && client.prefs && client.prefs.auto_necroqueue)
+				SSnecromorph.join_necroqueue(src)
 
 
 
