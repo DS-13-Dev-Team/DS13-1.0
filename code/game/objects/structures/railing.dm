@@ -11,8 +11,8 @@
 
 	var/material/material
 	var/broken =    FALSE
-	var/health =    70
-	var/maxhealth = 70
+	health =    70
+	max_health = 70
 	var/neighbor_status = 0
 
 /obj/structure/railing/mapped
@@ -43,8 +43,8 @@
 
 	name = "[material.display_name] [initial(name)]"
 	desc = "An unremarkable [material.display_name] railing. Guards against human stupidity."
-	maxhealth = round(material.integrity / 5)
-	health = maxhealth
+	max_health = round(material.integrity / 5)
+	health = max_health
 	color = material.icon_colour
 
 	if(material.products_need_process())
@@ -75,8 +75,8 @@
 
 /obj/structure/railing/examine(mob/user)
 	. = ..()
-	if(health < maxhealth)
-		switch(health / maxhealth)
+	if(health < max_health)
+		switch(health / max_health)
 			if(0.0 to 0.5)
 				to_chat(user, "<span class='warning'>It looks severely damaged!</span>")
 			if(0.25 to 0.5)
@@ -84,13 +84,11 @@
 			if(0.5 to 1.0)
 				to_chat(user, "<span class='notice'>It has a few scrapes and dents.</span>")
 
-/obj/structure/railing/proc/take_damage(amount)
-	health -= amount
-	if(health <= 0)
-		visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
-		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		material.place_shard(get_turf(usr))
-		qdel(src)
+/obj/structure/railing/zero_health(amount)
+	visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
+	playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
+	material.place_shard(get_turf(usr))
+	qdel(src)
 
 /obj/structure/railing/proc/NeighborsCheck(var/UpdateNeighbors = 1)
 	neighbor_status = 0
@@ -252,12 +250,12 @@
 
 	// Repair
 	if(isWelder(W))
-		if(health >= maxhealth)
+		if(health >= max_health)
 			to_chat(user, "<span class='warning'>\The [src] does not need repairs.</span>")
 			return
 		if(W.use_tool(user, src, WORKTIME_SLOW, QUALITY_WELDING, FAILCHANCE_NORMAL))
 			user.visible_message("<span class='notice'>\The [user] repairs some damage to \the [src].</span>", "<span class='notice'>You repair some damage to \the [src].</span>")
-			health = min(health+(maxhealth/5), maxhealth)
+			health = min(health+(max_health/5), max_health)
 
 
 	// Install
@@ -270,15 +268,8 @@
 			update_icon()
 		return
 
-	if(W.force && (W.damtype == "fire" || W.damtype == "brute"))
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		visible_message("<span class='danger'>\The [src] has been [LAZYLEN(W.attack_verb) ? pick(W.attack_verb) : "attacked"] with \the [W] by \the [user]!</span>")
-		take_damage(W.force)
-		return
 	. = ..()
 
-/obj/structure/railing/ex_act(severity)
-	qdel(src)
 
 /obj/structure/railing/do_climb(var/mob/living/user)
 	if(!can_climb(user))
@@ -307,5 +298,5 @@
 
 	user.visible_message("<span class='danger'>\The [user] climbed over \the [src]!</span>")
 	if(!anchored || material.is_brittle())
-		take_damage(maxhealth) // Fatboy
+		take_damage(max_health) // Fatboy
 	climbers -= user

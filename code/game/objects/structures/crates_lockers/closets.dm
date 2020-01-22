@@ -16,12 +16,14 @@
 	var/welded = 0
 	var/large = 1
 	var/wall_mounted = 0 //never solid (You can always pass over it)
-	var/health = 100
+	health = 100
+	resistance = 10
 	var/breakout = 0 //if someone is currently breaking out. mutex
 	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
 	var/open_sound = 'sound/effects/closet_open.ogg'
 	var/close_sound = 'sound/effects/closet_close.ogg'
+	hitsound = 'sound/effects/grillehit.ogg'
 
 	var/storage_types = CLOSET_STORAGE_ALL
 	var/setup = CLOSET_CAN_BE_WELDED
@@ -38,6 +40,9 @@
 		verbs += /obj/structure/closet/proc/togglelock_verb
 
 	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/closet/Destroy()
+	dump_contents()
 
 /obj/structure/closet/LateInitialize(mapload, ...)
 	var/list/will_contain = WillContain()
@@ -215,39 +220,10 @@
 		to_chat(user, "<span class='notice'>It won't budge!</span>")
 		update_icon()
 
-// this should probably use dump_contents()
-/obj/structure/closet/ex_act(severity, var/atom/epicentre)
-	switch(severity)
-		if(1)
-			for(var/atom/movable/A in src)//pulls everything out of the locker and hits it with an explosion
-				A.forceMove(src.loc)
-				A.ex_act(severity + 1,epicentre)
-			qdel(src)
-		if(2)
-			if(prob(50))
-				for (var/atom/movable/A in src)
-					A.forceMove(src.loc)
-					A.ex_act(severity + 1,epicentre)
-				qdel(src)
-		if(3)
-			if(prob(5))
-				for(var/atom/movable/A in src)
-					A.forceMove(src.loc)
-				qdel(src)
 
-/obj/structure/closet/proc/damage(var/damage)
-	health -= damage
-	if(health <= 0)
-		for(var/atom/movable/A in src)
-			A.forceMove(src.loc)
-		qdel(src)
 
 /obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
-	var/proj_damage = Proj.get_structure_damage()
-	if(proj_damage)
-		..()
-		damage(proj_damage)
-
+	..()
 	if(Proj.penetrating)
 		var/distance = get_dist(Proj.starting, get_turf(loc))
 		for(var/mob/living/L in contents)
@@ -301,7 +277,10 @@
 	else if(setup & CLOSET_HAS_LOCK)
 		src.togglelock(user, W)
 	else
-		src.attack_hand(user)
+		if (user.a_intent == I_HURT)
+			.=..()
+		else
+			src.attack_hand(user)
 
 /obj/structure/closet/proc/slice_into_parts(var/obj/WT, mob/user)
 	if (WT.use_tool(user, src, WORKTIME_SLOW, QUALITY_WELDING, FAILCHANCE_NORMAL))
@@ -348,6 +327,7 @@
 /obj/structure/closet/attack_hand(mob/user as mob)
 	src.add_fingerprint(user)
 	src.toggle(user)
+	.=..()
 
 // tk grab then use on self
 /obj/structure/closet/attack_self_tk(mob/user as mob)

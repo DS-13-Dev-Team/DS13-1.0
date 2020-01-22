@@ -650,7 +650,7 @@
 	level = 1			// underfloor only
 	var/dpdir = 0		// bitmask of pipe directions
 	dir = 0				// dir will contain dominant direction for junction pipes
-	var/health = 10 	// health points 0-10
+	health = 10 	// health points 0-10
 	alpha = 192 // Plane and alpha modified for mapping, reset to normal on spawn.
 	plane = ABOVE_TURF_PLANE
 	layer = DISPOSALS_PIPE_LAYER
@@ -840,22 +840,13 @@
 				broken(0)
 				return
 			if(2.0)
-				health -= rand(5,15)
-				healthcheck()
+				take_damage(rand(5,15))
 				return
 			if(3.0)
-				health -= rand(0,15)
-				healthcheck()
+				take_damage(rand(0,15))
 				return
 
 
-	// test health for brokenness
-	proc/healthcheck()
-		if(health < -2)
-			broken(0)
-		else if(health<1)
-			broken(1)
-		return
 
 	//attack by item
 	//weldingtool: unfasten and convert to obj/disposalconstruct
@@ -870,6 +861,9 @@
 			if (I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
 				welded()
+
+	zero_health()
+		broken(1)
 
 	// called when pipe is cut with welder
 	proc/welded()

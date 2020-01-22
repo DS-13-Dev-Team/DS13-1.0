@@ -37,9 +37,10 @@
 	opacity = 0
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "wall"
-
+	hitsound = 'sound/effects/Glasshit.ogg'
+	resistance = 15
 	var/undeploy_path = null
-	var/health = 50.0
+	health = 20.0
 
 /obj/structure/inflatable/wall
 	name = "inflatable wall"
@@ -56,50 +57,37 @@
 /obj/structure/inflatable/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	return 0
 
-/obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
-	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage) return
 
-	health -= proj_damage
-	..()
-	if(health <= 0)
-		deflate(1)
-	return
 
-/obj/structure/inflatable/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			deflate(1)
-			return
-		if(3.0)
-			if(prob(50))
-				deflate(1)
-				return
+//Inflatables have no defense against sharp tools
+/obj/structure/inflatable/take_damage(var/amount, var/damtype = BRUTE, var/mob/user, var/used_weapon, var/bypass_resist = FALSE)
+
+	if (isitem(used_weapon))
+		var/obj/item/I = used_weapon
+		if (I.sharp)
+			user.visible_message(SPAN_DANGER("[user] punctures the [src] with their [I.name]"))
+			bypass_resist = TRUE
+
+	else if (istype(used_weapon, /datum/unarmed_attack))
+		var/datum/unarmed_attack/UA = used_weapon
+		if (UA.sharp)
+			user.visible_message(SPAN_DANGER("[user] punctures the [src] with their [pick(UA.attack_noun)]"))
+			bypass_resist = TRUE
+	.=..(amount, damtype, user, used_weapon, bypass_resist)
+
+/obj/structure/inflatable/zero_health()
+	deflate(1)
 
 /obj/structure/inflatable/attack_hand(mob/user as mob)
 	add_fingerprint(user)
-	return
+	.=..()
+	return ..()
 
 /obj/structure/inflatable/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(!istype(W) || istype(W, /obj/item/weapon/inflatable_dispenser)) return
 
-	if((W.damtype == BRUTE || W.damtype == BURN) && W.can_puncture())
-		..()
-		if(hit(W.force))
-			visible_message("<span class='danger'>[user] pierces [src] with [W]!</span>")
-	return
+	return ..()
 
-/obj/structure/inflatable/proc/hit(var/damage, var/sound_effect = 1)
-	health = max(0, health - damage)
-	if(sound_effect)
-		playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
-	if(health <= 0)
-		deflate(1)
-		return 1
-	return 0
 
 /obj/structure/inflatable/CtrlClick()
 	hand_deflate()
@@ -131,15 +119,6 @@
 	verbs -= /obj/structure/inflatable/verb/hand_deflate
 	deflate()
 
-/obj/structure/inflatable/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	health -= damage
-	attack_animation(user)
-	if(health <= 0)
-		user.visible_message("<span class='danger'>[user] [attack_verb] open the [src]!</span>")
-		spawn(1) deflate(1)
-	else
-		user.visible_message("<span class='danger'>[user] [attack_verb] at [src]!</span>")
-	return 1
 
 /obj/structure/inflatable/door //Based on mineral door code
 	name = "inflatable door"
