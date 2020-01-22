@@ -2,8 +2,10 @@
 	//The master signal is the player who controls the marker. Essentially the leader of the necromorphs
 */
 /mob/observer/eye/signal/master
-	icon = 'icons/mob/eye.dmi'
-	icon_state = "AI-eye"
+	icon = 'icons/mob/necromorph/mastersignal.dmi'
+	icon_state = "mastersignal"
+	pixel_x = -7
+	pixel_y = -7
 
 /mob/observer/eye/signal/master/Initialize()
 	.=..()
