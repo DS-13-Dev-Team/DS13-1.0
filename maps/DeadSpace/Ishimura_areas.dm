@@ -27,23 +27,26 @@
 	name = "\improper Engineering"
 	icon_state = "engibase"
 
-/area/ishimura/upper/engineering/bay
-	name = "\improper Engineering Bay"
-
-/area/ishimura/upper/engineering/breakroom
-	name = "\improper Engineering Breakroom"
-
 /area/ishimura/upper/engineering/atmospherics
 	name = "\improper Atmospherics"
+	icon_state = "atmos"
 
 /area/ishimura/upper/engineering/atmospherics/storage
 	name = "\improper Spare Tank Storage"
+
+/area/ishimura/upper/engineering/bay
+	name = "\improper Engineering Bay"
+	icon_state = "engi_bay"
+
+/area/ishimura/upper/engineering/breakroom
+	name = "\improper Engineering Breakroom"
 
 /area/ishimura/upper/engineering/chief_office
 	name = "\improper Chief Engineer's Office"
 
 /area/ishimura/upper/engineering/engine_room
 	name = "\improper Engine Room"
+	icon_state = "engine"
 
 /area/ishimura/upper/engineering/engine_room/airlock_one
 	name = "\improper Engine Airlock One"
@@ -62,6 +65,7 @@
 
 /area/ishimura/upper/engineering/spare_storage
 	name = "\improper Machining Room Storage"
+	icon_state = "storage"
 
 /area/ishimura/upper/engineering/spare_storage/port
 	name = "\improper Upper Deck Port Power Storage"
@@ -80,9 +84,11 @@
 
 /area/ishimura/upper/engineering/tcomms
 	name = "\improper Telecommunications"
+	icon_state = "t_comm"
 
 /area/ishimura/upper/engineering/tcomms/control
 	name = "\improper Telecommunications Control Room"
+	icon_state = "t_comm_control"
 
 /area/ishimura/upper/engineering/waste_tank_room
 	name = "\improper Waste Tank Temporary Storage"
@@ -388,6 +394,7 @@
 
 /area/ishimura/lower/engineering/storage_closet
 	name = "\improper Storage"
+	icon_state = "storage"
 
 /area/ishimura/lower/engineering/storage_closet/air
 	name = "\improper Spare Air Circulation Storage"
@@ -395,15 +402,17 @@
 
 /area/ishimura/lower/engineering/storage_closet/battery
 	name = "\improper Spare Battery Storage"
+	icon_state = "battery_storage"
+
+/area/ishimura/lower/engineering/storage_closet/electronics
+	name = "\improper Electronic Parts Storage"
+	icon_state = "electronics_storage"
 
 /area/ishimura/lower/engineering/storage_closet/fore
 	name = "\improper Fore Parts Storage"
 
 /area/ishimura/lower/engineering/storage_closet/midship
 	name = "\improper Midship Parts Storage"
-
-/area/ishimura/lower/engineering/storage_closet/electronics
-	name = "\improper Electronic Parts Storage"
 
 /area/ishimura/lower/engineering/substation/crew
 	name = "\improper Crew Quarters Substation"
@@ -432,6 +441,9 @@
 
 /area/ishimura/lower/maintenance/fore_starboard
 	name = "\improper Lower Deck Fore-Starboard Maintenance"
+
+/area/ishimura/lower/maintenance/messhall
+	name = "\improper Messhall Maintenance"
 
 /area/ishimura/lower/maintenance/port
 	name = "\improper Lower Deck Port Maintenace"
@@ -500,6 +512,12 @@
 	name = "\improper Misc"
 	icon_state = "miscbase"
 
+/area/ishimura/lower/misc/abandon_hydroponics
+	name = "\improper Decommissioned Hydroponics"
+
+/area/ishimura/lower/misc/abandon_hydroponics/lobby
+	name = "\improper Decommissioned Hydroponics Lobby"
+
 /area/ishimura/lower/misc/abandon_surgery
 	name = "\improper Abandoned Surgical Suite"
 
@@ -508,6 +526,9 @@
 
 /area/ishimura/lower/misc/bathroom/aft
 	name = "\improper Lower Deck Unisex Bathroom"
+
+/area/ishimura/lower/misc/bathroom/fore
+	name = "\improper Bathroom"
 
 /area/ishimura/lower/misc/bathroom/fore/male
 	name = "\improper Crew Quarters - Men's Bathroom"
