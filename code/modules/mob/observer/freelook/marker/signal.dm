@@ -1,7 +1,8 @@
 /mob/observer/eye/signal
 	name = "Signal"
 	icon = 'icons/mob/eye.dmi'
-	icon_state = "default-eye"
+	icon_state = "markersignal"
+	plane = ABOVE_OBSCURITY_PLANE
 
 	movement_handlers = list(
 		/datum/movement_handler/mob/incorporeal/eye
