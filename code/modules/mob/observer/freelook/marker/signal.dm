@@ -53,8 +53,8 @@
 	if (!response || response == "No")
 		return
 
-	join_marker()	//This cannot fail, do safety checks first
-
+	var/mob/observer/eye/signal/S = join_marker()	//This cannot fail, do safety checks first
+	S.jump_to_marker()
 	qdel(src)
 
 
