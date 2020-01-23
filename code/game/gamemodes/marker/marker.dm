@@ -18,6 +18,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	var/evac_points = 0
 	var/evac_threshold = 85 //2 hours until you get to evac.
 	var/mob/living/simple_animal/marker/themarker = null
+	var/datum/mind/marker_candidate = null //This will become a null reference if the selected player logs out.
 
 /obj/effect/landmark/marker_spawn //Landmark to keep track of marker spawns
 	name = "Marker spawn point"
@@ -35,8 +36,6 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 //	icon_living = "spacewormhead1"
 	//psychosis_immune = TRUE
 
-
-
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
 	. = ..()
 	if(!GLOB.marker_spawns.len)
@@ -44,12 +43,26 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 		return
 	var/turf/T = get_turf(pick(GLOB.marker_spawns))
 	themarker = new /mob/living/simple_animal/marker(T)
+	pick_marker_player()
 	command_announcement.Announce("We shipped you a spooky looking alien thing, our delivery intern left it at [get_area(themarker)].","Exposition machine") //Placeholder
 	addtimer(CALLBACK(src, .proc/activate_marker), rand(20 MINUTES, 35 MINUTES)) //We have to spawn the marker quite late, so guess we'd best wait :)
 
+/datum/game_mode/marker/proc/pick_marker_player(late)
+	var/mob/M = pick(GLOB.unitologists_list)
+	if(!M || !M.mind)
+		pick_marker_player() //Call recursively until we find a suitable player
+		return
+	if(late)
+		to_chat(M, "<span class='warning'>You have been selected to become the marker when it activates! In around 5 minutes, you will begin controlling the marker. Spend this time to coordinate with your fellow unitologists.</span>")
+		return
+	to_chat(M, "<span class='warning'>You have been selected to become the marker when it activates! In around 20 minutes, you will begin controlling the marker. Spend this time to coordinate with your fellow unitologists.</span>")
 
 /datum/game_mode/marker/proc/activate_marker()
 	charge_evac_points()
+	if(!marker_candidate || QDELETED(marker_candidate))
+		pick_marker_player(late = TRUE)
+		addtimer(CALLBACK(src, .proc/activate_marker), rand(2 MINUTES, 5 MINUTES)) //We have to spawn the marker quite late, so guess we'd best wait for someone to actually take it over
+		return
 	if(themarker.mind)
 		GLOB.unitologists.add_antagonist(themarker.mind)
 
@@ -57,8 +70,11 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	addtimer(CALLBACK(src, .proc/charge_evac_points), 1 MINUTE) //Recursive function that will slowly tick down the clock until the valour comes to rescue the ishimura's crew.
 	evac_points += GLOB.shipsystem.get_point_gen()
 	if(evac_points >= evac_threshold)
-		return
-		//Call shuttle
+		if(evacuation_controller.call_evacuation(null, _emergency_evac = TRUE))
+			return TRUE
+		message_admins("The shuttle was unable to be called, despite the crew accruing enough evac points. Please investigate. Trying again in 1 minute.")
+		addtimer(CALLBACK(src, .proc/charge_evac_points), 1 MINUTE) //Shuttle was unable to be called. Try again recursively.
+	return FALSE
 
 //Datum to model ship systems. Disable these to lower evac point generation for the survivors
 

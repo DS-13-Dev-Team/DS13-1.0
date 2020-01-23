@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	set src = usr
 	var/message = input("Say what?","Text") as null|text
 	message = sanitize(message)
-	for(var/mob/living/M in GLOB.unitologists_list)
+	for(var/atom/M in GLOB.unitologists_list)
 		to_chat(M, "<span class='cult'>[src]: [message]</span>")
 
 /datum/antagonist/unitologist
