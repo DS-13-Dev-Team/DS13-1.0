@@ -38,6 +38,9 @@
 	PT.register_turfs()
 	set_extension(src, /datum/extension/proximity_manager, PT)
 
+	//Start spreading corruption
+	start_corruption()
+
 /obj/machinery/marker/proc/open_shop(var/mob/user)
 	shop.ui_interact(user)
 
@@ -153,3 +156,23 @@
 		biomass -= amount
 		return TRUE
 	return FALSE
+
+
+//Corruption Handling
+
+/obj/machinery/marker/proc/start_corruption()
+	var/datum/seed/seed = new /datum/seed/corruption()
+	new /obj/effect/vine/corruption(get_turf(src),seed, start_matured = 1)
+
+
+
+
+
+
+
+
+//Necrovision
+
+//The marker reveals an area around it, seeing through walls
+/obj/machinery/marker/get_visualnet_tiles(var/datum/visualnet/network)
+	return trange(10, src)

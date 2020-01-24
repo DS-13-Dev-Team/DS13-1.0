@@ -22,11 +22,11 @@
 
 	return zlevel_neighbors
 
-/obj/effect/vine/proc/get_neighbors()
+/obj/effect/vine/proc/get_neighbors(var/zcheck = TRUE, var/bounds = TRUE)
 	var/list/neighbors = list()
 
 	for(var/turf/simulated/floor in get_cardinal_neighbors())
-		if(get_dist(parent, floor) > spread_distance)
+		if(bounds && get_dist(parent, floor) > spread_distance)
 			continue
 
 		var/blocked = 0
@@ -37,17 +37,19 @@
 		if(blocked)
 			continue
 
-		if(floor.density)
-			if(!isnull(seed.chems[/datum/reagent/acid/polyacid]))
-				spawn(rand(5,25)) floor.ex_act(3)
-			continue
+		//Deleted polyacid code, world interactions should not be in getter functions
+		//It was also really bad anyways, i dealt with that mess on eris. plants causing hull breaches is dumb and nobody enjoys it
+		//If someone really wants it, it could be brought back, but not here
+			//~Nanako
 
 		if(!Adjacent(floor) || !floor.Enter(src))
 			continue
 
-		neighbors |= floor
 
-	neighbors |= get_zlevel_neighbors()
+
+		neighbors |= floor
+	if (zcheck)
+		neighbors |= get_zlevel_neighbors()
 	return neighbors
 
 /obj/effect/vine/Process()
@@ -67,7 +69,7 @@
 
 	//Growing up
 	if(health < max_health)
-		adjust_health(1)
+		adjust_health(max_health / (mature_time *0.1))
 		if(growth_threshold && !(health % growth_threshold))
 			update_icon()
 
@@ -125,12 +127,13 @@
 //spreading vines aren't created on their final turf.
 //Instead, they are created at their parent and then move to their destination.
 /obj/effect/vine/proc/spread_to(turf/target_turf)
-	var/obj/effect/vine/child = new(get_turf(src),seed,parent) // This should do a little bit of animation.
+	var/obj/effect/vine/child = new type(get_turf(src),seed,parent) // This should do a little bit of animation.
 	//move out to the destination
 	if(child.forceMove(target_turf))
 		child.update_icon()
 		child.set_dir(child.calc_dir())
-		child.update_icon()
+		child.wake_neighbors() //Update surrounding tiles to handle edges
+		update_icon()	//We don't need one of our edges now, update to get rid of it
 		// Some plants eat through plating.
 		if(islist(seed.chems) && !isnull(seed.chems[/datum/reagent/acid/polyacid]))
 			target_turf.ex_act(prob(80) ? 3 : 2)
@@ -144,6 +147,7 @@
 			continue
 		for(var/obj/effect/vine/neighbor in check_turf.contents)
 			START_PROCESSING(SSvines, neighbor)
+			neighbor.update_icon() //Do an immediate update to clear unnecessary edge overlays
 
 /obj/effect/vine/proc/targets_in_range()
 	var/mob/list/targets = list()

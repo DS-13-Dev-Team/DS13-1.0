@@ -84,6 +84,18 @@
 	if(!seed)
 		return INITIALIZE_HINT_QDEL
 	name = seed.display_name
+	calculate_growth()
+	update_icon()
+
+	START_PROCESSING(SSvines, src)
+
+/obj/effect/vine/Destroy()
+	wake_neighbors()
+	STOP_PROCESSING(SSvines, src)
+	return ..()
+
+//Move all this messy organic calculation into an overrideable proc
+/obj/effect/vine/proc/calculate_growth()
 	max_health = round(seed.get_trait(TRAIT_ENDURANCE)/2)
 	if(seed.get_trait(TRAIT_SPREAD) == 2)
 		mouse_opacity = 2
@@ -101,14 +113,6 @@
 	spread_chance = seed.get_trait(TRAIT_POTENCY)
 	spread_distance = (growth_type ? round(spread_chance*0.6) : round(spread_chance*0.3))
 	possible_children = seed.get_trait(TRAIT_POTENCY)
-	update_icon()
-
-	START_PROCESSING(SSvines, src)
-
-/obj/effect/vine/Destroy()
-	wake_neighbors()
-	STOP_PROCESSING(SSvines, src)
-	return ..()
 
 /obj/effect/vine/update_icon()
 	overlays.Cut()

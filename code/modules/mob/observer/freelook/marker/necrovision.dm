@@ -3,24 +3,12 @@
 */
 
 /datum/visualnet/necrovision
-	valid_source_types = list(/mob/living/, /obj/machinery/marker)
+	valid_source_types = list(/mob/living/, /obj/machinery/marker, /obj/effect/vine/corruption)
 	chunk_type = /datum/chunk/necrovision
 
 /datum/chunk/necrovision/acquire_visible_turfs(var/list/visible)
-	for(var/source in sources)
-		var/viewrange = world.view
-		if(istype(source, /mob/living))
-			var/mob/living/L = source
-			if(L.stat == DEAD)
-				remove_source(source, FALSE)	//Dead necros can't be revived, remove them from the list. just inert meat now
-				continue
+	for(var/datum/source as anything in sources)
+		for(var/t in source.get_visualnet_tiles(visualnet)) //The marker has decent vision around itself
+			visible[t] = t
 
-			for(var/t in L.turfs_in_view())
-				visible[t] = t
-		else if (istype(source, /obj/machinery/marker))
-			for(var/t in range(10, source)) //The marker has decent vision around itself
-				visible[t] = t
-		else
-			for(var/t in seen_turfs_in_range(source, viewrange))
-				visible[t] = t
 

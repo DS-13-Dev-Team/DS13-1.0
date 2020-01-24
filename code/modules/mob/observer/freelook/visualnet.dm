@@ -183,3 +183,10 @@
 	if(GLOB.cameranet.is_chunk_generated(x, y, z))
 		var/datum/chunk/chunk = GLOB.cameranet.get_chunk(x, y, z)
 		chunk.visibility_changed(TRUE)
+
+//Overrideable proc for any datum to return what turfs it can "see" for visualnets
+/datum/proc/get_visualnet_tiles(var/datum/visualnet/network)
+	return list()
+
+/atom/get_visualnet_tiles(var/datum/visualnet/network)
+	return turfs_in_view()
