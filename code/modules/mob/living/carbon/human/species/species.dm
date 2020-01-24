@@ -911,12 +911,14 @@ These procs should return their entire args list. Best just to return parent in 
 	LR.plane = H.plane
 	LR.layer = H.layer -0.1 //Slightly below the layer of the mob, so that the healthy limb will draw over it
 	flick_overlay(LR, GLOB.clients, duration + 10)
-	//var/obj/aura/limb_regen/LR = new (H, regen_icon,"[limb]_regen")
-	//LAZYADD(H.auras, regen_limb)
-	//H.update_icons()
-	//spawn(duration)
-		//if (!QDELETED(H))
-			//LAZYREMOVE(H.auras, regen_limb)
+
+
+
+//Ported from upstream bay
+/datum/species/proc/check_no_slip(var/mob/living/carbon/human/H)
+	if(can_overcome_gravity(H))
+		return TRUE
+	return (species_flags & SPECIES_FLAG_NO_SLIP)
 
 //Species level audio wrappers
 //--------------------------------
