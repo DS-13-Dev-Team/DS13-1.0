@@ -131,7 +131,12 @@
 		update_icon()
 		return S
 
+//This is defined at atom level to enable non-marker spawning systems in future
+/atom/proc/get_available_biomass()
+	return 0
 
+/obj/machinery/marker/get_available_biomass()
+	return biomass
 
 
 //A mob was detected nearby, can we absorb it?

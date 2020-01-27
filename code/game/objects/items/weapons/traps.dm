@@ -165,6 +165,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 
 //Attempting to resist out of a beartrap will not work, and you'll get nothing but pain for trying
 /obj/item/weapon/beartrap/resist_buckle(var/mob/user)
+	crash_with("beartrap crash")
 	if (user == buckled_mob && !user.stunned)
 		//We check stunned here, and a failure stuns the victim. This prevents someone from just spam-resisting and instantly killing themselves
 		if (user.client)
@@ -256,7 +257,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	var/blocked = L.run_armor_check(target_zone, "melee")
 	if(blocked < 100)
 
-		var/success = L.apply_damage(base_damage, BRUTE, target_zone, blocked, src)
+		var/success = L.apply_damage(base_damage, BRUTE, target_zone, blocked, DAM_SHARP, src)
 		if(success)
 			shake_camera(L, 2, 1)
 

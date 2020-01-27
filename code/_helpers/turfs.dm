@@ -12,13 +12,25 @@
 /proc/isfloor(turf/T)
 	return (istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor))
 
-/proc/turf_clear(turf/T)
+/proc/turf_clear(turf/T, var/ignore_mobs = FALSE)
 	if (T.density)
-		return 0
+		return FALSE
 	for(var/atom/A in T)
 		if(A.density)
-			return 0
-	return 1
+			if (ignore_mobs && ismob(A))
+				continue
+			return FALSE
+	return TRUE
+
+
+/proc/turf_corrupted(var/atom/A)
+	var/turf/T = get_turf(A)
+	for (var/obj/effect/vine/corruption/C in T)
+		//TODO here: Check that the corruption is still linked to an undestroyed node. Fail if it is orphaned
+
+		return TRUE
+
+	return FALSE
 
 // Picks a turf without a mob from the given list of turfs, if one exists.
 // If no such turf exists, picks any random turf from the given list of turfs.

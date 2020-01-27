@@ -68,8 +68,8 @@
 		var/image/I = image(icon, src, "corruption-edge", layer+1, direction)
 		I.pixel_x = offset.x
 		I.pixel_y = offset.y
-		I.appearance_flags = RESET_TRANSFORM | RESET_ALPHA	//We use reset transform to not carry over the rotation
-		I.alpha = min(alpha*1.4, max_alpha) //Edges have a slightly higher alpha than the core
+		I.appearance_flags = RESET_TRANSFORM	//We use reset transform to not carry over the rotation
+
 		I.transform = I.transform.Scale(vine_scale)	//We must reapply the scale
 		overlays.Add(I)
 
@@ -86,6 +86,7 @@
 /datum/seed/corruption
 	display_name = "Corruption"
 	no_icon = TRUE
+	growth_stages = 1
 
 
 /datum/seed/corruption/New()

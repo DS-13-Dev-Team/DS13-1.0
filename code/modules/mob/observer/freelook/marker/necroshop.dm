@@ -4,13 +4,18 @@
 	The marker player uses this shop to spend their stored biomass to create new units and corruption nodes
 */
 
+/atom/proc/get_necroshop()
+	return null
 
+/obj/machinery/marker/get_necroshop()
+	return shop
 
 
 /datum/necroshop
 	var/obj/machinery/marker/host	//Where do we draw our biomass from?
 	var/datum/necroshop_item/current	//What do we currently have selected for spawning or more detailed viewing?
 	var/list/spawnable_necromorphs = list()
+	var/list/spawnable_structures = list()
 	var/datum/necrospawn/selected_spawn = null
 	var/list/content_data	=	list()	//No need to regenerate this every second
 	var/necroqueue_fill	 = TRUE//Shop-level toggle for using necroqueue to fill new spawns
@@ -39,9 +44,27 @@
 		//And add it to the list
 		spawnable_necromorphs[I.name] = I
 
-		selected_spawn = new(host, host.name)
+	//Corruption nodes next
+	for (var/spath in subtypesof(/obj/structure/corruption_node))
+		var/obj/structure/corruption_node/N = new spath()
+		if (!initial(N.marker_spawnable))
+			continue	//Check this one is spawnable
 
-	//TODO: Corruption nodes next
+		//Ok lets create a shop datum for them
+		var/datum/necroshop_item/I = new()
+		I.name = initial(N.name)
+		I.desc = N.get_long_description()
+		I.price = initial(N.biomass)
+		I.spawn_method = SPAWN_PLACE
+		I.spawn_path = spath
+		I.queue_fill = FALSE
+
+		//And add it to the list
+		spawnable_structures[I.name] = I
+		qdel(N)
+
+	selected_spawn = new(host, host.name)
+
 
 	//Now cache the display data for the above
 	generate_content_data()
@@ -66,13 +89,15 @@
 	var/list/data = content_data.Copy()
 	if (current)
 		data["current"] = list("name" = current.name, "desc" = current.desc, "price" = current.price)
-
+		if (current.spawn_method == SPAWN_PLACE)
+			data["place"] = TRUE
 	data["biomass"]	=	round(host.biomass, 0.1)
 	data["income"] = round(host.biomass_tick, 0.01)
 
 	data["spawn"] = list("name" = selected_spawn.name, "x" = selected_spawn.spawnpoint.x, "y" = selected_spawn.spawnpoint.y, "z" = selected_spawn.spawnpoint.z)
 	if (authorised_to_spawn(user))
 		data["authorised"] = TRUE
+
 
 	if (necroqueue_fill)
 		data["queue"]	=	"checked"	//Used in html
@@ -99,6 +124,8 @@
 		return
 	if (href_list["select"])
 		current = spawnable_necromorphs[href_list["select"]]
+		if (!current)
+			current = spawnable_structures[href_list["select"]]
 
 
 	if (href_list["spawn"])
@@ -116,15 +143,21 @@
 	content_data = list()
 
 	var/list/listed_necromorphs = list()
-
 	for(var/a in spawnable_necromorphs)
 		var/datum/necroshop_item/I = spawnable_necromorphs[a]
 
 		listed_necromorphs.Add(list(list("name" = I.name,
 			"price" = I.price)))
-
 	content_data["necromorphs"] = listed_necromorphs
 
+
+	var/list/listed_structures = list()
+	for(var/a in spawnable_structures)
+		var/datum/necroshop_item/I = spawnable_structures[a]
+
+		listed_structures.Add(list(list("name" = I.name,
+			"price" = I.price)))
+	content_data["structures"] = listed_structures
 
 
 //Safety Checks
@@ -232,3 +265,6 @@
 		params["user"] = usr	//Who is responsible for this ? Who shall we show error messages to
 		params["queue"] = queue_fill
 		return params
+
+	if (spawn_method == SPAWN_PLACE)
+		create_necromorph_placement_handler(usr, spawn_path, /datum/click_handler/placement/necromorph, snap = TRUE, biomass_source = caller.host, name = name, biomass_cost = price, require_corruption = TRUE)

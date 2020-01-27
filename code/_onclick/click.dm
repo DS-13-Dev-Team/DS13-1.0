@@ -7,62 +7,6 @@
 /mob/var/next_click = 0
 
 
-/client/MouseDown(object,location,control,params)
-	var/datum/stack/click_handlers
-
-	if (mob)
-		click_handlers = mob.GetClickHandlers()
-
-
-	while (click_handlers.Num())
-		var/datum/click_handler/CH = click_handlers.Pop()
-		if (CH)
-			if (!CH.MouseDown(object,location,control,params))
-				return
-	.=..()
-
-/client/MouseUp(object,location,control,params)
-	var/datum/stack/click_handlers
-
-	if (mob)
-		click_handlers = mob.GetClickHandlers()
-
-
-	while (click_handlers.Num())
-		var/datum/click_handler/CH = click_handlers.Pop()
-		if (CH)
-			if (!CH.MouseUp(object,location,control,params))
-				return
-	.=..()
-
-
-/client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
-	var/datum/stack/click_handlers
-
-	if (mob)
-		click_handlers = mob.GetClickHandlers()
-
-
-	while (click_handlers.Num())
-		var/datum/click_handler/CH = click_handlers.Pop()
-		if (CH)
-			if (!CH.MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params) )
-				return
-	.=..()
-
-/client/MouseMove(src_object,over_object,src_location,over_location,src_control,over_control,params)
-	var/datum/stack/click_handlers
-
-	if (mob)
-		click_handlers = mob.GetClickHandlers()
-
-
-	while (click_handlers.Num())
-		var/datum/click_handler/CH = click_handlers.Pop()
-		if (CH)
-			if (!CH.MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params) )
-				return
-	.=..()
 
 
 
@@ -135,6 +79,9 @@
 	if(modifiers["middle"])
 		MiddleClickOn(A, params)
 		return 1
+	if(modifiers["right"])
+		RightClickOn(A, params)
+		return 1
 	if(modifiers["shift"])
 		ShiftClickOn(A, params)
 		return 0
@@ -144,6 +91,23 @@
 	if(modifiers["ctrl"])
 		CtrlClickOn(A, params)
 		return 1
+	if(modifiers["left"])
+		.=LeftClickOn(A, params)
+		return 1
+
+
+/mob/proc/LeftClickOn(var/atom/A, var/params)
+	var/datum/stack/click_handlers
+
+	click_handlers = src.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.OnLeftClick(A,params))
+				return
+
 	if(stat || paralysis || stunned || weakened)
 		return
 	face_atom(A) // change direction to face what you clicked on
@@ -301,6 +265,26 @@
 	swap_hand()
 	return
 
+
+/*
+	Right Click
+	Only used for cancelling placement click handler
+*/
+/mob/proc/RightClickOn(var/atom/A, var/params)
+	var/datum/stack/click_handlers
+
+	click_handlers = src.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.OnRightClick(A,params))
+				return
+
+	return
+
+
 // In case of use break glass
 /*
 /atom/proc/MiddleClick(var/mob/M as mob)
@@ -382,6 +366,67 @@
 			user.listed_turf = T
 			user.client.statpanel = "Turf"
 	return 1
+
+
+
+/client/MouseDown(object,location,control,params)
+	var/datum/stack/click_handlers
+
+	if (mob)
+		click_handlers = mob.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.MouseDown(object,location,control,params))
+				return
+	.=..()
+
+/client/MouseUp(object,location,control,params)
+	var/datum/stack/click_handlers
+
+	if (mob)
+		click_handlers = mob.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.MouseUp(object,location,control,params))
+				return
+	.=..()
+
+
+/client/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
+	var/datum/stack/click_handlers
+
+	if (mob)
+		click_handlers = mob.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params) )
+				return
+	.=..()
+
+/client/MouseMove(object,location,control,params)
+	var/datum/stack/click_handlers
+
+	if (mob)
+		click_handlers = mob.GetClickHandlers()
+
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH)
+			if (!CH.MouseMove(object,location,control,params) )
+				return
+	.=..()
+
+
 
 /mob/proc/TurfAdjacent(var/turf/T)
 	return T.AdjacentQuick(src)

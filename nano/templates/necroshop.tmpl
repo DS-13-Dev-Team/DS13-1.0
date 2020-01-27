@@ -57,6 +57,15 @@ h2 {
 				
 			{{/for}}
 			
+			<h2>Structures</h2>
+			<hr>
+			{{for data.structures}}
+				<div class="item" style="vertical-align: top; text-align: center;">
+					{{:helper.link(value.name+' (' + value.price + ')', 'circle-arrow-s', { "select" : value.name }, null, "linkFixed")}}
+				</div>
+				
+			{{/for}}
+			
 			</div>
 		</td>
 	</tr>	
@@ -65,7 +74,7 @@ h2 {
 			<div class="itemLabel" style = "display:inline-block; overflow: hidden; width: 60%;"><b>Selected Spawnpoint</b>: </div> <div style = "display:inline-block;">{{:data.spawn.name}} ({{:data.spawn.x}}, {{:data.spawn.y}}, {{:data.spawn.z}})</div>
 		</td>
 		<td style="width: 25%; vertical-align: top; text-align: center;">
-			{{:helper.link('Spawn', null, { "spawn" : value.name }, (data.authorised &&(!data.current || data.biomass > data.current.price)) ? null : 'disabled', "linkMax")}}
+			{{:helper.link((data.place ? 'Place' : 'Spawn'), null, { "spawn" : value.name }, (data.authorised &&(!data.current || data.biomass > data.current.price)) ? null : 'disabled', "linkMax")}}
 		</td>
 	</tr >
 </table>
