@@ -67,7 +67,8 @@
 	else
 		parent = newparent
 		parent.possible_children = max(0, parent.possible_children - 1)
-	seed = newseed
+	if (newseed)
+		seed = newseed
 	if(start_matured)
 		mature_time = 0
 		health = max_health

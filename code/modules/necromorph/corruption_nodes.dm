@@ -1,5 +1,6 @@
 /obj/structure/corruption_node
 	anchored = TRUE
+	layer = ABOVE_OBJ_LAYER	//Make sure nodes draw ontop of corruption
 	icon = 'icons/effects/corruption.dmi'
 	var/marker_spawnable = TRUE	//When true, this automatically shows in the necroshop
 	var/biomass = 10
@@ -10,6 +11,10 @@
 
 	//TEMPORARY. Replace this once i rebase to unified structure damage
 	var/max_health = 200
+
+/obj/structure/corruption_node/Destroy()
+	if (SSnecromorph.marker)
+		SSnecromorph.marker
 
 
 /obj/structure/corruption_node/proc/get_blurb()
@@ -26,13 +31,17 @@
 	max_health = 200
 	icon_state = "growth"
 	density = FALSE
-	name = "Growth"
+	name = "Propagator"
 	desc = "Corruption spreads out in all directions from this horrible mass."
+	var/corruption_plant
+
+/obj/structure/corruption_node/growth/Destroy()
+	QDEL_NULL(corruption_plant)
+	.=..()
 
 /obj/structure/corruption_node/growth/Initialize()
 	.=..()
-	var/datum/seed/seed = new /datum/seed/corruption()
-	new /obj/effect/vine/corruption(get_turf(src),seed, start_matured = 1)
+	new /obj/effect/vine/corruption(get_turf(src),GLOB.corruption_seed, start_matured = 1)
 
 /obj/structure/corruption_node/growth/get_blurb()
-	. = "This node acts as a heart for corruption spread, allowing it to extend out up to 7 tiles in all directions from the node. It must be placed on existing corruption from another growth node, or from the marker."
+	. = "This node acts as a heart for corruption spread, allowing it to extend out up to 7 tiles in all directions from the node. It must be placed on existing corruption from another propagator node, or from the marker."

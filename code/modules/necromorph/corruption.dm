@@ -3,7 +3,7 @@
 
 	Corrupted tiles spread out gradually from the marker, and from any placed nodes, up to a certain radius
 */
-
+GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //We'll be using a subtype in addition to a seed, becuase there's a lot of special case behaviour here
 /obj/effect/vine/corruption
@@ -14,7 +14,7 @@
 	max_health = 80
 	max_growth = 1
 
-	var/max_alpha = 225
+	var/max_alpha = 215
 	var/min_alpha = 20
 
 	spread_chance = 100	//No randomness in this, spread as soon as its ready
@@ -26,8 +26,9 @@
 /obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/newparent, var/start_matured = 0)
 	alpha = min_alpha
 	GLOB.necrovision.add_source(src)	//Corruption tiles add vision
-	if (!newseed)
-		seed = new /datum/seed/corruption()
+	if (!GLOB.corruption_seed)
+		GLOB.corruption_seed = new /datum/seed/corruption()
+	seed = GLOB.corruption_seed
 	.=..()
 
 //Corruption tiles reveal their own tile, and surrounding dense obstacles. They will not reveal surrounding clear tiles
@@ -42,9 +43,9 @@
 
 //No calculating, we'll input all these values in the variables above
 /obj/effect/vine/corruption/calculate_growth()
-	mature_time = rand_between(15 SECONDS, 30 SECONDS)	//How long it takes for one tile to mature and be ready to spread into its neighbors.
-	if (parent != src)
-		mature_time *= 1 + (0.2 * get_dist(src, parent))//Expansion gets slower as you get farther out. Additively stacking 20% increase per tile
+	mature_time = rand_between(20 SECONDS, 35 SECONDS)	//How long it takes for one tile to mature and be ready to spread into its neighbors.
+	if (plant)
+		mature_time *= 1 + (0.2 * get_dist(src, plant))//Expansion gets slower as you get farther out. Additively stacking 20% increase per tile
 	growth_threshold = max_health
 	var/sidelength = (spread_distance * 2)+1
 	possible_children = (sidelength * sidelength)
@@ -81,6 +82,62 @@
 		var/healthpercent = health / max_health
 		alpha = min_alpha + ((max_alpha - min_alpha) * healthpercent)
 
+
+//This proc finds something nearby to use as an origin point for this corruption tile.
+//If none is found, we are orphaned and will start gradually dying
+/obj/effect/vine/corruption/proc/find_corruption_host()
+	var/min_dist = INFINITY
+	var/closest = null
+	for (var/a in range(spread_distance, src))
+		if (istype(a, /obj/structure/corruption_node/growth) || istype(a, /obj/machinery/marker))
+			var/distance = get_dist(src, a)
+			if (distance < min_dist)
+				min_dist = distance
+				closest = a
+
+	return closest
+
+
+
+//Gradually dies off without a nearby host
+/obj/effect/vine/corruption/Process()
+	.=..()
+	if (!plant)
+		adjust_health(-(SSplants.wait*0.1))	//Plant subsystem has a 6 second delay oddly, so compensate for it here
+
+
+/obj/effect/vine/corruption/can_regen()
+	.=..()
+	if (.)
+		if (!plant)
+			return FALSE
+
+//In addition to normal checks, we need a place to put our plant
+/obj/effect/vine/corruption/can_spawn_plant()
+	if (!plant)
+		if (find_corruption_host())
+			return TRUE
+	return FALSE
+
+//We can only place plants under a marker or growth node
+//And before placing, we should look for an existing one
+/obj/effect/vine/corruption/spawn_plant()
+	var/atom/A = find_corruption_host()
+	if (!A)
+		return
+	var/turf/T = get_turf(A)
+	for (var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/I in T)
+		if (istype(I.seed, /datum/seed/corruption))
+			plant = I
+			calculate_growth()
+			return
+
+
+	//If there's no existing one, we'll create it on the host tile
+	..(T)
+	//And lets set the appropriate var on the corruption host, ensuring it will be deleted if host is destroyed
+	A:corruption_plant = plant
+	calculate_growth()
 
 /* The seed */
 /datum/seed/corruption

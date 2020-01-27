@@ -68,8 +68,8 @@
 			other.vine_overrun(seed, src)
 
 	//Growing up
-	if(health < max_health)
-		adjust_health(max_health / (mature_time *0.1))
+	if(can_regen())
+		adjust_health(max_health / (mature_time * (1 / SSplants.wait)))//Adjust for plant subsystem delay to keep the healing over time consistent
 		if(growth_threshold && !(health % growth_threshold))
 			update_icon()
 
@@ -92,24 +92,35 @@
 			if(neighbors.len)
 				spread_to(pick(neighbors))
 
-		//Try to settle down
-		if(can_spawn_plant())
-			plant = new(T,seed)
-			plant.dir = src.dir
-			plant.transform = src.transform
-			plant.age = seed.get_trait(TRAIT_MATURATION)-1
-			plant.update_icon()
-			if(growth_type==0) //Vines do not become invisible.
-				set_invisibility(INVISIBILITY_MAXIMUM)
-			else
-				plant.layer = layer + 0.1
+	//Try to settle down
+	if(can_spawn_plant())
+		spawn_plant(T)
+
 
 	if(should_sleep())
 		STOP_PROCESSING(SSvines, src)
 
+/obj/effect/vine/proc/can_regen()
+	if(health < max_health)
+		return TRUE
+
 /obj/effect/vine/proc/can_spawn_plant()
+	if (!is_mature())
+		return FALSE
 	var/turf/simulated/T = get_turf(src)
 	return parent == src && health == max_health && !plant && istype(T) && !T.CanZPass(src, DOWN)
+
+/obj/effect/vine/proc/spawn_plant(var/turf/T)
+	plant = new(T,seed)
+	plant.dir = src.dir
+	plant.transform = src.transform
+	plant.age = seed.get_trait(TRAIT_MATURATION)-1
+	plant.update_icon()
+	if(growth_type==0) //Vines do not become invisible.
+		set_invisibility(INVISIBILITY_MAXIMUM)
+	else
+		plant.layer = layer + 0.1
+	return plant
 
 /obj/effect/vine/proc/should_sleep()
 	if(buckled_mob) //got a victim to fondle
@@ -139,6 +150,10 @@
 			target_turf.ex_act(prob(80) ? 3 : 2)
 	else
 		qdel(child)
+
+/obj/effect/vine/proc/wake_up()
+	START_PROCESSING(SSvines, src)
+	wake_neighbors()
 
 /obj/effect/vine/proc/wake_neighbors()
 	// This turf is clear now, let our buddies know.

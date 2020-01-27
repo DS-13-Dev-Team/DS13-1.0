@@ -459,6 +459,10 @@
 	set_opacity(0)
 	operating = 0
 
+	//Wakeup nearby vines so they can start growing through the open space
+	for (var/obj/effect/vine/V in range(1, src))
+		V.wake_up()
+
 	if(autoclose)
 		close_door_at = next_close_time()
 

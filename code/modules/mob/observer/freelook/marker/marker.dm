@@ -13,6 +13,7 @@
 	var/light_colour = "#FF9999"
 	var/player	//Ckey of the player controlling the marker
 	var/mob/observer/eye/signal/master/playermob	//Signal mob of the player controlling the marker
+	var/corruption_plant
 
 	//Biomass handling
 	//--------------------------
@@ -166,8 +167,7 @@
 //Corruption Handling
 
 /obj/machinery/marker/proc/start_corruption()
-	var/datum/seed/seed = new /datum/seed/corruption()
-	new /obj/effect/vine/corruption(get_turf(src),seed, start_matured = 1)
+	new /obj/effect/vine/corruption(get_turf(src),GLOB.corruption_seed, start_matured = 1)
 
 
 
