@@ -5,10 +5,14 @@
 	var/mass_tick	=	1	//How much mass is taken at each tick. IE, per second
 	var/datum/source = null	//The atom or thing we are drawing biomass from. Optional
 	var/datum/target	=	null	//The thing that is absorbing the source. Generally this is a marker
+	var/sourcename
 
 /datum/biomass_source/New(var/datum/_source = null, var/datum/_target = null, var/total_mass = 0, var/duration = 1 SECOND)
 	.=..()
-	source = _source
+	source = "\ref[_source]"
+	if (istype(_source, /atom))
+		var/atom/A = _source
+		sourcename = A.name
 	target = _target
 	initial_mass = total_mass
 	remaining_mass = total_mass
@@ -75,7 +79,6 @@
 /datum/biomass_source/reclaim
 
 
-
 //Absorbing dead humans
 //------------------------
 /datum/biomass_source/convergence
@@ -84,7 +87,7 @@
 //If its too far away, return pause
 /datum/biomass_source/convergence/can_absorb()
 	//Lets check if its dead
-	var/mob/living/L = source
+	var/mob/living/L = locate(source)
 	if (L.stat != DEAD)
 		return MASS_PAUSE	//If we're still alive, keep waiting
 
@@ -98,7 +101,7 @@
 	.=..()
 	if (ishuman(source) && remaining_mass)
 
-		var/mob/living/carbon/human/H = source
+		var/mob/living/carbon/human/H = locate(source)
 		//As a human is absorbed, lets remove their limbs one by one
 		//1. figure out how far along the absorbing process we are
 		var/remaining = 	remaining_mass / initial_mass

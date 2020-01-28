@@ -13,8 +13,10 @@
 	var/max_health = 200
 
 /obj/structure/corruption_node/Destroy()
-	if (SSnecromorph.marker)
-		SSnecromorph.marker
+	if (SSnecromorph.marker && biomass_reclamation)
+		SSnecromorph.marker.add_biomass_source(src, biomass*biomass_reclamation, reclamation_time, /datum/biomass_source/reclaim)
+
+	.=..()
 
 
 /obj/structure/corruption_node/proc/get_blurb()

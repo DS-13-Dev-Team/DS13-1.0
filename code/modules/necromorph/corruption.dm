@@ -83,6 +83,14 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		alpha = min_alpha + ((max_alpha - min_alpha) * healthpercent)
 
 
+//Add the effect from being on corruption
+/obj/effect/vine/corruption/Crossed(atom/movable/O)
+	if (isliving(O))
+		var/mob/living/L = O
+		if (!has_extension(L, /datum/extension/corruption_effect) && L.stat != DEAD)
+			set_extension(L, /datum/extension/corruption_effect)
+
+
 //This proc finds something nearby to use as an origin point for this corruption tile.
 //If none is found, we are orphaned and will start gradually dying
 /obj/effect/vine/corruption/proc/find_corruption_host()
@@ -139,7 +147,9 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	A:corruption_plant = plant
 	calculate_growth()
 
+
 /* The seed */
+//-------------------
 /datum/seed/corruption
 	display_name = "Corruption"
 	no_icon = TRUE
@@ -170,3 +180,69 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 /datum/seed/corruption/update_growth_stages()
 	growth_stages = 1
+
+
+
+
+/* Crossing Effect */
+//-------------------
+//Any mob that walks over a corrupted tile recieves this effect. It does varying things
+	//On most mobs, it applies a slow to movespeed
+	//On necromorphs, it applies a passive healing instead
+
+/datum/extension/corruption_effect
+	name = "Corruption Effect"
+	expected_type = /mob/living
+	flags = EXTENSION_FLAG_IMMEDIATE
+
+	//Effects on necromorphs
+	var/healing_per_tick = 1
+	var/speedup = 1.15
+
+	//Effects on non necros
+	var/slowdown = 0.7	//Multiply speed by this
+
+
+	var/speed_delta	//What absolute value we removed from the movespeed factor. This is cached so we can reverse it later
+
+	var/necro = FALSE
+
+
+/datum/extension/corruption_effect/New(var/datum/holder)
+	.=..()
+	var/mob/living/L = holder
+	var/speed_factor = 0
+	if (L.is_necromorph())
+		necro = TRUE
+		speed_factor = speedup //Necros are sped up
+		to_chat(L, SPAN_DANGER("The corruption beneath speeds your passage and mends your vessel."))
+	else
+		to_chat(L, SPAN_DANGER("This growth underfoot is sticky and slows you down."))
+		speed_factor = slowdown	//humans are slowed down
+
+	var/newspeed = L.move_speed_factor * speed_factor
+	speed_delta = L.move_speed_factor - newspeed
+	L.move_speed_factor = newspeed
+
+	START_PROCESSING(SSprocessing, src)
+
+
+/datum/extension/corruption_effect/Process()
+	var/mob/living/L = holder
+	if (!L || !turf_corrupted(L) || L.stat == DEAD)
+		//If the mob is no longer standing on a corrupted tile, we stop
+		//Likewise if they're dead or gone
+		remove_extension(holder, type)
+		return PROCESS_KILL
+
+	var/mob/living/L = holder
+	if (necro)
+		L.heal_overall_damage(healing_per_tick)
+
+
+/datum/extension/corruption_effect/Destroy()
+	var/mob/living/L = holder
+	if (istype(L))
+		L.move_speed_factor += speed_delta	//Restore the movespeed to normal
+
+	.=..()
