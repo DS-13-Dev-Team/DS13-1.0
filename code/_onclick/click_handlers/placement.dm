@@ -193,6 +193,8 @@ GLOBAL_LIST_EMPTY(placement_previews)
 			CH.rotate()
 			return
 
+/*
+//Debugging verbs, kept for future use
 /client/verb/debug_placement_snap()
 	set category = "Commands"
 
@@ -203,7 +205,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	set category = "Commands"
 
 	create_placement_handler(usr, /obj/machinery/power/emitter)
-
+*/
 
 
 //Variants

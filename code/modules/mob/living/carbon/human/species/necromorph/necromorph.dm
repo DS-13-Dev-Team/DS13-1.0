@@ -153,10 +153,11 @@
 	return icon_template //We don't need to duplicate the same dmi path twice
 
 
-//Add the verb to vacate the body. its really just a copy of ghost
+
 /datum/species/necromorph/add_inherent_verbs(var/mob/living/carbon/human/H)
 	.=..()
-	H.verbs |= /mob/proc/necro_evacuate
+	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
+	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
 
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()

@@ -96,6 +96,8 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 			var/atom/target = locate(href_list["track"])
 			if(istype(target))
 				ManualFollow(target)
+	else
+		.=..()
 
 /*
 Transfer_mind is there to check if mob is being deleted/not going to have a body.

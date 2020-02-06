@@ -36,6 +36,8 @@
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
+	verbs |= /mob/proc/prey_sightings
+
 	forceMove(T)
 
 

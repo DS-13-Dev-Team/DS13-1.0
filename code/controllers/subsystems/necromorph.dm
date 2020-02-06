@@ -16,6 +16,9 @@ SUBSYSTEM_DEF(necromorph)
 	//Players
 	var/list/necromorph_players = list()	//This is a list of keys and mobs of players on the necromorph team
 
+	//Sightings of prey. See  code/modules/necromorph/corruption/eye.dm
+	var/list/sightings = list()
+
 
 /datum/controller/subsystem/necromorph/proc/join_necroqueue(var/mob/observer/eye/signal/M)
 	if (is_marker_master(M))
@@ -35,6 +38,7 @@ SUBSYSTEM_DEF(necromorph)
 
 
 
+
 /datum/controller/subsystem/necromorph/proc/fill_vessel_from_queue(var/mob/vessel, var/vessel_id)
 	for (var/mob/observer/eye/signal/M in necroqueue)
 		if (!M.client || !M.key)
@@ -49,6 +53,36 @@ SUBSYSTEM_DEF(necromorph)
 		qdel(M)
 		return TRUE
 	return FALSE	//Return false if we failed to find anyone
+
+
+
+//Sighting handling
+//-----------------------
+/*
+	Keeping track of last known locations of live humans
+*/
+/datum/controller/subsystem/necromorph/proc/update_sighting(var/mob/living/AM)
+	//We don't record dead mobs, remove them from this list
+	if (AM.stat == DEAD)
+		sightings.Remove(AM)
+		return 0	//This is numerically zero, not just false
+
+	//If we've ever seen this mob before, get their data from the list
+	var/datum/sighting/S = sightings[AM]
+	if (!istype(S))
+		//If we get here, they're new
+		S = new()
+		S.thing = AM
+		sightings[AM] = S
+
+	var/last_time = S.last_time
+
+	S.last_time = world.time
+	S.last_location = get_turf(AM)
+
+	//We will return the difference between last and current time. Eyes may do something with this
+	return (S.last_time - last_time)
+
 
 
 /proc/message_necromorphs(var/message)
