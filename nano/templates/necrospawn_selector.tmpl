@@ -1,0 +1,27 @@
+<style>
+	div {height: 100%; width: 100%; overflow: hidden; padding: 0px; margin: 0px;}
+	td {height: 100%;}
+	a {color: #CCCCFF}
+</style>
+
+<table style="width: 90%; margin: 5px; border-collapse: collapse; ">
+	{{for data.spawnpoints}}
+		<tr style="height: 20px;">
+			<td>
+				<div>
+					<!--	Todo: Insert preview image here	-->
+				</div>
+			</td>
+			<td>
+				<div>
+					{{:value.name}}
+				</div>
+			</td>
+			<td>
+				<div>
+					{{:helper.link("Select", null, { "select_spawn" : value.id }, (data.id == value.id ? 'disabled' : null))}}
+				</div>
+			</td>
+		</tr>
+	{{/for}}
+</table>

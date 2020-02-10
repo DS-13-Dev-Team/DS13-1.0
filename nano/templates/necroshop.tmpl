@@ -70,8 +70,17 @@ h2 {
 		</td>
 	</tr>	
 	<tr style="height: 7vh;">
-		<td style="width: 75%; vertical-align: middle; font-size: 1.2em; padding-left: 80px;">
-			<div class="itemLabel" style = "display:inline-block; overflow: hidden; width: 60%;"><b>Selected Spawnpoint</b>: </div> <div style = "display:inline-block;">{{:data.spawn.name}} ({{:data.spawn.x}}, {{:data.spawn.y}}, {{:data.spawn.z}})</div>
+		<td style="width: 75%; vertical-align: middle;">
+			<table ><tr>
+			<td style="width: 90%; vertical-align: middle; font-size: 1.2em; padding-left: 80px; border-style: none;">
+				<div class="itemLabel" style = "display:inline-block; overflow: hidden; width: 50%; "><b>Selected Spawnpoint</b>: </div> 
+				<div style = "display:inline-block;">{{:data.spawn.name}} ({{:data.spawn.x}}, {{:data.spawn.y}}, {{:data.spawn.z}})</div>
+				
+			</td>
+			<td style="width: 10%; border-style: none;">
+				<div style = "display:inline-block;">{{:helper.link('Change', null, { "select_spawn" : 1 }, (data.authorised) ? null : 'disabled')}}</div>
+			</td>
+			</tr></table>
 		</td>
 		<td style="width: 25%; vertical-align: top; text-align: center;">
 			{{:helper.link((data.place ? 'Place' : 'Spawn'), null, { "spawn" : value.name }, (data.authorised &&(!data.current || data.biomass > data.current.price)) ? null : 'disabled', "linkMax")}}

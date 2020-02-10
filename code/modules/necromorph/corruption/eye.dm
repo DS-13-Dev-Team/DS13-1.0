@@ -38,6 +38,12 @@
 				H.playsound_local(get_turf(H), get_sfx("hiss"), 50)
 				message_necromorphs(SPAN_WARNING("[H] detected at [jumplink(AM)]"))
 
+/obj/structure/corruption_node/eye/get_blurb()
+	. = "This node is effectively an organic camera. It massively increases the view range of the necrovision network by [view_range] tiles.<br><br>\
+	 In addition, it will notify all necromorph players when it sees a live human. <br><br>\
+	Finally, and most significantly, all eye nodes will keep track of every human they see, storing that information centrally in the Prey Sightings menu. This can be used by all necromorphs to direct and coordinate their hunting efforts."
+
+
 /datum/sighting
 	var/atom/movable/thing
 	var/turf/last_location

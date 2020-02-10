@@ -3,6 +3,7 @@
 
 	Corrupted tiles spread out gradually from the marker, and from any placed nodes, up to a certain radius
 */
+
 GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //We'll be using a subtype in addition to a seed, becuase there's a lot of special case behaviour here
@@ -18,7 +19,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	var/min_alpha = 20
 
 	spread_chance = 100	//No randomness in this, spread as soon as its ready
-	spread_distance = 7	//One node creates a screen-sized patch of corruption
+	spread_distance = CORRUPTION_SPREAD_RANGE	//One node creates a screen-sized patch of corruption
 	growth_type = 0
 	var/vine_scale = 1.1
 

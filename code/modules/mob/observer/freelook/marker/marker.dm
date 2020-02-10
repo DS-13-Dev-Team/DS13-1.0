@@ -10,7 +10,7 @@
 	plane = ABOVE_HUMAN_PLANE
 	density = TRUE
 	anchored = TRUE
-	var/light_colour = "#FF9999"
+	var/light_colour = "#FF4444"
 	var/player	//Ckey of the player controlling the marker
 	var/mob/observer/eye/signal/master/playermob	//Signal mob of the player controlling the marker
 	var/corruption_plant
@@ -110,6 +110,7 @@
 		qdel(BS)
 		return
 	biomass_sources.Add(BS)
+	return BS	//Return the source
 
 
 
@@ -181,3 +182,16 @@
 //The marker reveals an area around it, seeing through walls
 /obj/machinery/marker/get_visualnet_tiles(var/datum/visualnet/network)
 	return trange(10, src)
+
+
+
+//Spawnpoints
+/obj/machinery/marker/proc/add_spawnpoint(var/atom/source)
+	if (shop)
+		shop.possible_spawnpoints += new /datum/necrospawn(source, source.name)
+
+/obj/machinery/marker/proc/remove_spawnpoint(var/atom/source)
+	if (shop)
+		for (var/datum/necrospawn/N in shop.possible_spawnpoints)
+			if (N.spawnpoint == source)
+				shop.possible_spawnpoints.Remove(N)

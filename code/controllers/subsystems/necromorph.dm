@@ -85,7 +85,15 @@ SUBSYSTEM_DEF(necromorph)
 
 
 
+
+//Global Necromorph Procs
+//-------------------------
 /proc/message_necromorphs(var/message)
 	for (var/key in SSnecromorph.necromorph_players)
 		var/mob/M = SSnecromorph.necromorph_players[key]
 		to_chat(M, message)
+
+//Possible future todo: Allow this to take some kind of faction id in order to allow a necros vs necros gamemode
+/proc/get_marker()
+	if (SSnecromorph)
+		return SSnecromorph.marker

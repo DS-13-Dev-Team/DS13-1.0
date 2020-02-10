@@ -35,7 +35,7 @@
 	M = M.Scale(scale)	//We scale up the sprite so it slightly overlaps neighboring corruption tiles
 	var/rotation = 0
 	if (random_rotation)
-		rotation = pick(list(0,90,180,270))//Randomly rotate it
+		rotation = pick(list(0,45,90,135,180,225,270,315))//Randomly rotate it
 	transform = turn(M, rotation)
 
 /obj/structure/corruption_node/proc/get_blurb()
@@ -45,6 +45,7 @@
 	.+="<b>Biomass</b>: [biomass]kg[biomass_reclamation ? " . If destroyed, reclaim [biomass_reclamation*100]% biomass over [reclamation_time/600] minutes" : ""]<br>"
 	if (requires_corruption)
 		.+= SPAN_WARNING("Must be placed on a corrupted tile <br>")
+	.+= "<br><br>"
 	.+= get_blurb()
 	.+="<br><hr>"
 
@@ -66,4 +67,4 @@
 		new /obj/effect/vine/corruption(get_turf(src),GLOB.corruption_seed, start_matured = 1)
 
 /obj/structure/corruption_node/growth/get_blurb()
-	. = "This node acts as a heart for corruption spread, allowing it to extend out up to 7 tiles in all directions from the node. It must be placed on existing corruption from another propagator node, or from the marker."
+	. = "This node acts as a heart for corruption spread, allowing it to extend out up to [CORRUPTION_SPREAD_RANGE] tiles in all directions from the node. It must be placed on existing corruption from another propagator node, or from the marker."

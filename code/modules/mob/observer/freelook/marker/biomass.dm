@@ -92,16 +92,19 @@
 		return MASS_PAUSE	//If we're still alive, keep waiting
 
 	//Are we still near the marker?
-	if (get_dist(source, target) > 10)
+	if (get_dist(L, target) > 10)
+		for (var/obj/structure/corruption_node/maw/M in range(MAW_EAT_RANGE, L))
+			return ..()
 		return MASS_PAUSE
 
 	return ..()
 
 /datum/biomass_source/convergence/absorb()
 	.=..()
-	if (ishuman(source) && remaining_mass)
+	var/mob/L = locate(source)
+	if (ishuman(L) && remaining_mass)
 
-		var/mob/living/carbon/human/H = locate(source)
+		var/mob/living/carbon/human/H = L
 		//As a human is absorbed, lets remove their limbs one by one
 		//1. figure out how far along the absorbing process we are
 		var/remaining = 	remaining_mass / initial_mass

@@ -17,6 +17,7 @@
 	var/list/spawnable_necromorphs = list()
 	var/list/spawnable_structures = list()
 	var/datum/necrospawn/selected_spawn = null
+	var/list/possible_spawnpoints = list()
 	var/list/content_data	=	list()	//No need to regenerate this every second
 	var/necroqueue_fill	 = TRUE//Shop-level toggle for using necroqueue to fill new spawns
 
@@ -64,7 +65,7 @@
 		qdel(N)
 
 	selected_spawn = new(host, host.name)
-
+	possible_spawnpoints += selected_spawn
 
 	//Now cache the display data for the above
 	generate_content_data()
@@ -72,16 +73,60 @@
 
 
 
-//Datum for spawnpoints
+//Datums for spawnpoints
 /datum/necrospawn
+	var/id
 	var/atom/spawnpoint				//Where are we spawning things?
 	var/name = "Marker"				//What do we call this spawn location?
 	//TODO: Support for a preview image of the area
 
-/datum/necrospawn/New(var/atom/origin, var/newname)
-	.=..()
+/datum/necrospawn/New(var/atom/origin, var/_name)
 	spawnpoint = origin
-	name = newname
+	name = _name
+	id = "\ref[spawnpoint]"
+
+
+
+
+//Datum to hold the spawnpoint selection menu, one is created for each user
+/datum/necrospawn_selector
+	var/datum/necroshop/host
+
+/datum/necrospawn_selector/New(var/datum/necroshop/_host)
+	host = _host
+
+/datum/necrospawn_selector/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	var/list/data = list()
+	for (var/datum/necrospawn/N in host.possible_spawnpoints)
+		data["spawnpoints"] += list(list("name" = "[N.name]	[jumplink_public(user, N.spawnpoint)]", "id" = N.id))
+
+	data["selected_id"] = host.selected_spawn.id
+
+	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	if (!ui)
+		ui = new(user, src, ui_key, "necrospawn_selector.tmpl", "Spawning Menu", 800, 700, state = GLOB.interactive_state)
+		ui.set_initial_data(data)
+		ui.set_auto_update(0)
+		ui.open()
+
+/datum/necrospawn_selector/Topic(href, href_list)
+	if(..())
+		return
+
+	if (href_list["select_spawn"])	//This will be an id of a spawnpoint. lets find it
+		for (var/datum/necrospawn/N in host.possible_spawnpoints)
+			if (N.id == href_list["select_spawn"])	//We found it!
+				//Set it on the host
+				host.selected_spawn = N
+
+				//Close this window
+				var/datum/nanoui/ui = SSnano.get_open_ui(usr, src, "main")
+				ui.close()
+
+				//And refresh the parent window
+				SSnano.update_uis(host)
+				return
+
 
 /datum/necroshop/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if (!authorised_to_view(user))
@@ -134,6 +179,11 @@
 
 	if (href_list["toggle-queue"])
 		necroqueue_fill = !necroqueue_fill
+
+	if (href_list["select_spawn"])
+		var/datum/necrospawn_selector/NS = new (src)
+		NS.ui_interact(usr)
+
 	SSnano.update_uis(src)
 
 

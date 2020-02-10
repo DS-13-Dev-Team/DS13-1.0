@@ -375,7 +375,7 @@ This function restores all organs.
 			organ = def_zone
 		else
 			if(!def_zone)	def_zone = ran_zone(def_zone)
-			organ = get_organ(check_zone(def_zone))
+			organ = find_target_organ(check_zone(def_zone))
 
 	//Handle other types of damage
 	if(!(damagetype in list(BRUTE, BURN, PAIN, CLONE)))
