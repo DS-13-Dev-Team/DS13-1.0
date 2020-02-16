@@ -18,6 +18,8 @@
 
 	var/light_colour = "#FFFF00"
 	scale = 1.4
+	max_health = 200	//Takes a while to kill
+	resistance = 8
 
 
 /obj/structure/corruption_node/nest/Initialize()

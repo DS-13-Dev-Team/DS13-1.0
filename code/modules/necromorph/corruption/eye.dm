@@ -9,7 +9,7 @@
 	name = "Eye"
 	desc = "It knows you. You cannot escape its gaze."
 	icon_state = "eye"
-
+	max_health = 25	//fragile
 	var/view_range = 14
 	var/minimum_notify_delay = 3 MINUTES	//Minimum time that must pass between sightings before we resend notifications
 	scale = 1.6

@@ -12,7 +12,9 @@
 	name = "Cyst"
 	icon_state = "cyst-full"
 	max_health = 50
+	resistance = 5
 	desc = "That looks dangerous."
+	plane = EFFECTS_BELOW_LIGHTING_PLANE //Cysts need to draw over many things
 	var/obj/item/ammo_casing/cystbomb/payload = null
 
 	biomass = 5
@@ -56,9 +58,7 @@
 	  The damage dealt is a combination of brute force from direct impact, melee burn damage, and chemical burn damage from acid splashing on the victim. It is very difficult to fully defend against, but acid-resistant gear will reduce the damage significantly."
 
 
-//A cyst must be mounted on some kind of hard surface
-/obj/structure/corruption_node/cyst/on_mount(var/atom/A)
-	set_offset_to(A, CYST_ATTACH_OFFSET)
+
 
 
 
@@ -70,13 +70,20 @@
 	if (!payload)
 		return	//Can't fire if we don't have a bomb ready
 
+	if (AM == src || AM == attached)	//Don't fire at ourselves or what we're stuck to
+		return
+
 	if (AM.is_necromorph())
 		return	//Necromorphs don't trigger firing
 
 	if (AM.pulledby && AM.pulledby.is_necromorph())
 		return	//Corpses and objects dragged by necros don't trigger it
 
+	if (ismob(AM) && !isliving(AM))
+		return //Make sure ghosts don't trigger it
+
 	//Possible todo: minimum size check?
+
 
 	//Once we get here, we've decided to fire!
 	fire()
@@ -142,7 +149,8 @@
 	var/blast_power = CYST_BLAST_POWER
 	damage = CYST_IMPACT_DAMAGE	//The direct on-hit damage is minor, most of the effect is in a resulting explosion
 	var/exploded = FALSE
-
+	check_armour = "bomb"
+	step_delay = 2.5
 
 /obj/item/projectile/bullet/biobomb/is_necromorph()
 	return TRUE
@@ -164,8 +172,7 @@
 */
 /obj/item/projectile/bullet/biobomb/cyst
 	muzzle_type = /obj/effect/projectile/bio/muzzle
-	check_armour = "bomb"
-	step_delay = 2
+
 
 	var/obj/structure/corruption_node/cyst/launcher
 	muzzle_type	= /obj/effect/projectile/bio/muzzle
@@ -198,10 +205,26 @@
 /datum/click_handler/placement/necromorph/cyst/spawn_result(var/turf/site)
 	var/atom/movable/result = ..()
 	var/mountpoint = get_wallmount_target_at_direction(result, dir)
-	mount_to_atom(result, mountpoint)
+	mount_to_atom(result, mountpoint, /datum/extension/mount/cyst)
 
 /datum/click_handler/placement/necromorph/cyst/update_pixel_offset()
 	if (mount_target)
 		pixel_offset = last_location.get_offset_to(mount_target, CYST_ATTACH_OFFSET)
 	else
 		pixel_offset = new /vector2(0,0)
+
+
+/*
+	Extension to manage things
+*/
+/datum/extension/mount/cyst/on_dismount()
+	.=..()
+	qdel(holder)
+
+
+//A cyst must be mounted on some kind of hard surface
+/datum/extension/mount/cyst/on_mount()
+	.=..()
+	var/obj/structure/corruption_node/cyst/C = mountee
+	C.attached = mountpoint
+	C.set_offset_to(mountpoint, CYST_ATTACH_OFFSET)

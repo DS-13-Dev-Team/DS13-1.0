@@ -15,7 +15,8 @@
 
 
 	//TEMPORARY. Replace this once i rebase to unified structure damage
-	var/max_health = 200
+	max_health = 100
+	resistance = 0
 
 /obj/structure/corruption_node/Initialize()
 	.=..()
@@ -51,7 +52,8 @@
 	.+="<br><hr>"
 
 /obj/structure/corruption_node/growth
-	max_health = 200
+	max_health = 200	//Takes a while to kill
+	resistance = 8
 	icon_state = "growth"
 	density = FALSE
 	name = "Propagator"
