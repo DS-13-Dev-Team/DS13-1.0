@@ -9,6 +9,7 @@
 	var/requires_corruption = TRUE
 	var/random_rotation = TRUE	//If true, set rotation randomly on spawn
 	var/scale = 1
+	var/placement_type = /datum/click_handler/placement/necromorph
 
 	var/dummy = FALSE
 

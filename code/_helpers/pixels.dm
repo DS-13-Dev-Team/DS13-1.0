@@ -141,3 +141,18 @@
 	return bounds
 
 
+/atom/proc/set_offset_to(var/atom/target, var/distance)
+	pixel_x = 0
+	pixel_y = 0
+	offset_to(target, distance)
+
+/atom/proc/offset_to(var/atom/target, var/distance)
+	var/vector2/delta = get_offset_to(target, distance)
+	pixel_x += delta.x
+	pixel_y += delta.y
+
+
+/atom/proc/get_offset_to(var/atom/target, var/distance)
+	var/vector2/delta = Vector2.FromDir(get_dir(src, target))
+	delta *= distance
+	return delta

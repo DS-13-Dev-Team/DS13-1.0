@@ -69,6 +69,7 @@
 	burn_mod = 1.3	//Takes more damage from burn attacks
 	weaken_mod = 0.75	//Get back up faster
 	blood_oxy = FALSE
+	reagent_tag = IS_NECROMORPH
 
 	var/list/initial_health_values	//This list is populated once for each species, when a necromorph of that type is created
 	//It stores the starting max health values of each limb this necromorph has

@@ -171,6 +171,19 @@
 
 
 //----------------------------
+// Biological projectiles
+//----------------------------
+/obj/effect/projectile/bio/muzzle
+	light_outer_range = 0
+	light_max_bright = 0
+	light_color = COLOR_MUZZLE_FLASH
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "spray"
+	color = "#c3933f"
+	alpha = 255
+
+
+//----------------------------
 // Sustained tracer beams
 //----------------------------
 //There is some special code here

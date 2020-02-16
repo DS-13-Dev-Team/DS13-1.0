@@ -14,8 +14,11 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	var/snap_to_grid	//If true, the preview will snap to the centre of whatever tile the user hovers over
 	var/stopped = FALSE	//Used to prevent running stop code twice
 	var/vector2/pixel_offset = new /vector2(0,0)	//Is our preview image offset from the mouse cursor?
+	var/turf/last_location
+	var/rotate_angle = 90
 	flags = CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT
 	var/message = ""
+	var/last_move_params	//Cached params from last mousemove event
 
 
 /datum/click_handler/placement/New(var/mob/user)
@@ -96,17 +99,26 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	PLACEMENT_SAFETY
 	if (!isturf(location))
 		return
-	sync_screen_loc_to_mouse(preview, params, snap_to_grid, pixel_offset)
+	last_location = location
 	message = placement_blocked(location)
+	update_pixel_offset()
+	last_move_params = params
+	sync_screen_loc_to_mouse(preview, params, snap_to_grid, pixel_offset)
+
 
 	set_preview_color((message ? FALSE : TRUE))
 
 
 //Called by pressing R
 /datum/click_handler/placement/proc/rotate()
-	dir = turn(dir, 90)	//Possible todo: Future support for 8-directional sprites here
+	dir = turn(dir, rotate_angle)	//Possible todo: Future support for 8-directional sprites here
 	if (preview)
 		preview.dir = dir
+		if (last_location)
+			message = placement_blocked(last_location)
+			set_preview_color((message ? FALSE : TRUE))
+			update_pixel_offset()
+			sync_screen_loc_to_mouse(preview, last_move_params, snap_to_grid, pixel_offset)
 
 
 //Safety checking
@@ -148,7 +160,8 @@ GLOBAL_LIST_EMPTY(placement_previews)
 		preview.color = "#CC8888"
 
 
-
+/datum/click_handler/placement/proc/update_pixel_offset()
+	return
 
 
 //Spawning
@@ -171,6 +184,8 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	if (!istype(_user))
 		return
 
+	_user.RemoveClickHandlersByType(/datum/click_handler/placement)	//Remove any old placement handlers first, a mob should never have more than one of these
+
 	var/datum/click_handler/placement/P = _user.PushClickHandler(_handler_type)
 
 	P.result_path = _result
@@ -178,6 +193,9 @@ GLOBAL_LIST_EMPTY(placement_previews)
 
 	P.generate_preview_image(P.result_path)
 	P.start_placement()
+
+	winset(_user, "mapwindow.map", "focus=true")
+
 
 
 /mob/verb/placement_rotate()
@@ -254,12 +272,14 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	else
 		params["queue"] = FALSE
 
-	NS.finalize_spawn(params)
+	return NS.finalize_spawn(params)
 
 
 /proc/create_necromorph_placement_handler(var/mob/_user, var/_result, var/_handler_type = /datum/click_handler/placement/necromorph, var/snap = TRUE, var/atom/biomass_source, var/name, var/biomass_cost, var/require_corruption)
 	if (!istype(_user))
 		return
+
+	_user.RemoveClickHandlersByType(/datum/click_handler/placement)	//Remove any old placement handlers first, a mob should never have more than one of these
 
 	var/datum/click_handler/placement/necromorph/P = _user.PushClickHandler(_handler_type)
 	P.result_path = _result
@@ -271,3 +291,5 @@ GLOBAL_LIST_EMPTY(placement_previews)
 
 	P.generate_preview_image(P.result_path)
 	P.start_placement()
+
+	winset(_user, "mapwindow.map", "focus=true")

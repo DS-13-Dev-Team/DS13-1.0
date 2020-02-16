@@ -59,6 +59,7 @@
 		I.spawn_method = SPAWN_PLACE
 		I.spawn_path = spath
 		I.queue_fill = FALSE
+		I.placement_type = N.placement_type
 
 		//And add it to the list
 		spawnable_structures[I.name] = I
@@ -176,6 +177,7 @@
 	if (href_list["spawn"])
 		if (authorised_to_spawn(usr))
 			start_spawn()
+			return //Don't update the UIs
 
 	if (href_list["toggle-queue"])
 		necroqueue_fill = !necroqueue_fill
@@ -272,6 +274,8 @@
 		if (params["queue"] && necroqueue_fill)
 			SSnecromorph.fill_vessel_from_queue(newthing, params["name"])
 
+	return newthing	//Return the newthing to the caller so it can do stuff
+
 
 //Attempts to subtract the relevant quantity of biomass from the host marker or whatever else
 //Make sure this is the last step before spawning, it can't be allowed to fail after this
@@ -290,6 +294,7 @@
 	var/desc = "stuff"
 	var/price	=	1	//price in biomass
 	var/spawn_method	= SPAWN_POINT	//Do we spawn around a point or manual placement?
+	var/placement_type = /datum/click_handler/placement/necromorph	//If manual placement, which subtype of placement handler will we use?
 	var/spawn_path		=	null		//What atom will we actually spawn?
 	var/queue_fill	=	FALSE	//Can this thing be populated by a ghost from the necroqueue?
 
@@ -317,4 +322,4 @@
 		return params
 
 	if (spawn_method == SPAWN_PLACE)
-		create_necromorph_placement_handler(usr, spawn_path, /datum/click_handler/placement/necromorph, snap = TRUE, biomass_source = caller.host, name = name, biomass_cost = price, require_corruption = TRUE)
+		create_necromorph_placement_handler(usr, spawn_path, placement_type, snap = TRUE, biomass_source = caller.host, name = name, biomass_cost = price, require_corruption = TRUE)

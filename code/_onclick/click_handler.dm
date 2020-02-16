@@ -142,6 +142,14 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	if(click_handler)
 		click_handler.Enter()
 
+/mob/proc/RemoveClickHandlersByType(var/typepath)
+	if(!click_handlers)
+		return
+
+	for (var/thing in click_handlers.stack)
+		if (istype(thing, typepath))
+			click_handlers.Remove(thing)
+			qdel(thing)
 
 /mob/proc/PopClickHandler()
 	if(!click_handlers)

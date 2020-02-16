@@ -44,7 +44,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //No calculating, we'll input all these values in the variables above
 /obj/effect/vine/corruption/calculate_growth()
-	mature_time = rand_between(2 SECONDS, 3 SECONDS) //TODO: Change these to tenfold	//How long it takes for one tile to mature and be ready to spread into its neighbors.
+	mature_time = rand_between(20 SECONDS, 30 SECONDS) //How long it takes for one tile to mature and be ready to spread into its neighbors.
 	if (plant)
 		mature_time *= 1 + (0.2 * get_dist(src, plant))//Expansion gets slower as you get farther out. Additively stacking 20% increase per tile
 	growth_threshold = max_health

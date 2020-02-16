@@ -37,6 +37,7 @@
 #define IS_XENOS   6
 #define IS_SLIME   8
 #define IS_NABBER  9
+#define IS_NECROMORPH	10
 
 #define CE_STABLE        "stable"       // Inaprovaline
 #define CE_ANTIBIOTIC    "antibiotic"   // Spaceacilin
