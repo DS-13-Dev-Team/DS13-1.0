@@ -13,7 +13,7 @@
 	selection_color = "515151"
 	access = list()
 	minimal_access = list()
-	outfit_type = /decl/hierarchy/outfit/job/chaplain
+	outfit_type = null
 
 	equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
 		. = ..()

@@ -140,6 +140,7 @@
 	damage = 25
 	airlock_force_power = 5
 	airlock_force_speed = 2.5
+	structure_damage_mult = 1.5	//Wrecks obstacles
 	shredding = TRUE //Better environment interactions, even if not sharp
 
 //Brute punch causes knockback on any mob smaller than itself

@@ -84,7 +84,7 @@
 	anchored = 1
 	plane = ABOVE_TURF_PLANE//on the floor
 	layer = CATWALK_LAYER//probably? Should cover cables, pipes and the rest of objects that are secured on the floor
-	var/health = 100
+	health = 100
 
 obj/structure/net/Initialize(var/mapload)
 	. = ..()
@@ -117,20 +117,14 @@ obj/structure/net/Initialize(var/mapload)
 			if (!do_after(user, 20, src))
 				visible_message("<span class='warning'>[user] stops cutting through \the [src] with \the [W]!</span>")
 				return
-			health -= 20 * (1 + (SH.force-10)/10)//the sharper the faster, every point of force above 10 adds 10 % to damage
+			take_damage(20 * (1 + (SH.force-10)/10))//the sharper the faster, every point of force above 10 adds 10 % to damage
 		visible_message("<span class='warning'>[user] cuts through \the [src]!</span>")
 		new /obj/item/stack/net(src.loc)
 		qdel(src)
 
 /obj/structure/net/bullet_act(obj/item/projectile/P)
 	. = PROJECTILE_CONTINUE //few cloth ribbons won't stop bullet or energy ray
-	if(P.damage_type != BURN)//beams, lasers, fire. Bullets won't make a lot of damage to the few hanging belts.
-		return
-	visible_message("<span class='warning'>\The [P] hits \the [src] and tears it!</span>")
-	health -= P.damage
-	if (health < 0)
-		visible_message("<span class='warning'>\The [src] is torn apart!</span>")
-		qdel(src)
+	.=..()
 
 /obj/structure/net/update_connections()//maybe this should also be called when any of the walls nearby is removed but no idea how I can make it happen
 	overlays.Cut()

@@ -2,8 +2,12 @@
 	icon = 'icons/obj/structures.dmi'
 	w_class = ITEM_SIZE_NO_CONTAINER
 
-	var/breakable
+	var/breakable = TRUE
+	var/resistance = 5
+	var/health
+	var/max_health = 20
 	var/parts
+	var/hitsound = 'sound/weapons/smash.ogg'
 
 	var/list/connections = list("0", "0", "0", "0")
 	var/list/other_connections = list("0", "0", "0", "0")
@@ -12,26 +16,23 @@
 
 	var/list/footstep_sounds	//footstep sounds when stepped on
 	var/step_priority = 1	//Priority of the sound attached to this
-	var/obj_integrity = 100
-	var/max_integrity = 100
-
-/obj/structure/proc/take_damage(amount)
-	obj_integrity -= amount
-	update_icon()
-	if(obj_integrity <= 0 && breakable)
-		qdel(src)
 
 /obj/structure/proc/repair_damage(amount)
-	if(obj_integrity + amount > max_integrity)
-		obj_integrity = max_integrity
+	if(health + amount > max_health)
+		health = max_health
 		return
-	obj_integrity += obj_integrity
+	health += amount
 
 /obj/structure/proc/get_footstep_sound()
 	if(LAZYLEN(footstep_sounds)) return pick(footstep_sounds)
 
 /obj/structure/New()
 	.=..()
+	if (max_health) //Not everything sets both of these. either will do
+		health = max_health
+	else if (health)
+		max_health = health
+
 	if(LAZYLEN(footstep_sounds) && istype(loc, /turf/simulated/floor))
 		var/turf/simulated/floor/T = get_turf(src)
 		T.step_structures |= src
@@ -46,37 +47,20 @@
 
 /obj/structure/attack_hand(mob/user)
 	..()
-	if(breakable)
-		if(HULK in user.mutations)
-			user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
-			attack_generic(user,1,"smashes")
-		else if(istype(user,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = user
-			if(H.species.can_shred(user))
-				attack_generic(user,1,"slices")
+	if(breakable && user.a_intent == I_HURT)
+		user.strike_structure(src)
+		return 1
 	return ..()
 
 /obj/structure/attack_tk()
 	return
 
-/obj/structure/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if(prob(50))
-				qdel(src)
-				return
-		if(3.0)
-			return
-
 /obj/structure/attack_generic(var/mob/user, var/damage, var/attack_verb, var/wallbreaker)
-	if(!breakable || !damage || !wallbreaker)
+	if(!breakable || !damage)
 		return 0
-	visible_message("<span class='danger'>[user] [attack_verb] the [src] apart!</span>")
+	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
 	attack_animation(user)
-	spawn(1) qdel(src)
+	take_damage(damage, BRUTE, user, user)
 	return 1
 
 /obj/structure/proc/can_visually_connect()
@@ -148,15 +132,64 @@
 				AM.loc = loc
 				AM.ex_act(severity++, epicentre)
 
-			qdel(src)
-			return
+			take_damage(rand(150,300), BRUTE, null, epicentre)
 		if(2.0)
 			if(prob(50))
 				for(var/atom/movable/AM in contents)
 					AM.loc = loc
 					AM.ex_act(severity++, epicentre)
 
-				qdel(src)
-				return
+			take_damage(rand(60,150), BRUTE, null, epicentre)
+
 		if(3.0)
-			return
+			take_damage(rand(25,60), BRUTE, null, epicentre)
+
+/obj/structure/bullet_act(var/obj/item/projectile/P)
+	take_damage(P.get_structure_damage(), user = P.firer, used_weapon = P)
+
+
+/obj/structure/attackby(var/obj/item/C, var/mob/user)
+	if (breakable && user.a_intent == I_HURT)
+		playsound(src, hitsound, VOLUME_MID, 1)
+		user.do_attack_animation(src)
+		take_damage(C.force, C.damtype, user, C)
+		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		return
+	.=..()
+
+/obj/structure/hitby(AM as mob|obj, var/speed=THROWFORCE_SPEED_DIVISOR)
+	..()
+	if(ismob(AM))
+		return
+	var/obj/O = AM
+	var/tforce = O.throwforce * (speed/THROWFORCE_SPEED_DIVISOR)
+
+	take_damage(tforce, BRUTE, O.thrower, O)
+
+//Called when a structure takes damage
+/obj/structure/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	if (!bypass_resist)
+		amount -= resistance
+
+	if (amount <= 0)
+		return FALSE
+
+	health -= amount
+
+	if (health <= 0)
+		health = 0
+		return zero_health(amount, damtype, user, used_weapon, bypass_resist)//Some zero health overrides do things with a return value
+	else
+		update_icon()
+		return TRUE
+
+/obj/structure/proc/updatehealth()
+	if (health <= 0)
+		health = 0
+		return zero_health()
+
+//Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
+/obj/structure/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
+	if (breakable)
+		qdel(src)
+	return TRUE

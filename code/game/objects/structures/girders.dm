@@ -6,7 +6,7 @@
 	layer = BELOW_OBJ_LAYER
 	w_class = ITEM_SIZE_NO_CONTAINER
 	var/state = 0
-	var/health = 200
+	health = 200
 	var/cover = 50 //how much cover the girder provides against projectiles.
 	var/material/reinf_material
 	var/reinforcing = 0
@@ -34,19 +34,10 @@
 	if(Proj.original != src && !prob(cover))
 		return PROJECTILE_CONTINUE //pass through
 
-	var/damage = Proj.get_structure_damage()
-	if(!damage)
-		return
+	.=..()
 
-	if(!istype(Proj, /obj/item/projectile/beam))
-		damage *= 0.4 //non beams do reduced damage
-
-	health -= damage
-	..()
-	if(health <= 0)
-		dismantle()
-
-	return
+/obj/structure/girder/zero_health()
+	dismantle()
 
 /obj/structure/girder/proc/reset_girder()
 	anchored = 1

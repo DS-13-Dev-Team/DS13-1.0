@@ -82,8 +82,8 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	name = "ship engine computer"
 	desc = "A component critical to the operation of a starship."
 	icon_state = "enginemachine"
-	obj_integrity = 300
-	max_integrity = 300 //Tough.
+	health = 300
+	max_health = 300 //Tough.
 	var/state = 1
 	var/operational = TRUE
 
@@ -145,7 +145,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 					operational = TRUE
 					update_icon()
 					enable_system()
-					repair_damage(max_integrity)
+					repair_damage(max_health)
 
 /obj/structure/ship_component/New()
 	. = ..()
@@ -184,14 +184,13 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	GLOB.shipsystem.comms_enabled = TRUE
 
 /obj/structure/ship_component/take_damage(amount)
-	if(obj_integrity <= amount)
-		obj_integrity = 5
+	if(health <= amount)
+		health = 5
 		operational = FALSE
 		update_icon()
 		disable_system()
 		return FALSE
-	else
-		. = ..()
+	. = ..()
 
 /datum/ship_subsystems
 	var/name = "Ishimura subsystems"

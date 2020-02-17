@@ -9,8 +9,7 @@
 	layer = TABLE_LAYER
 	throwpass = 1
 	var/flipped = 0
-	obj_integrity = 10
-	max_integrity = 10
+	max_health = 30
 
 	// For racks.
 	var/can_reinforce = 1
@@ -46,18 +45,18 @@
 			take_damage(rand(75, 125))//Enough to break a plastic table and sometimes a marble one
 
 /obj/structure/table/proc/update_material()
-	var/old_maxhealth = max_integrity
+	var/old_max_health = max_health
 	if(!material)
-		max_integrity = 10
+		max_health = 10
 	else
-		max_integrity = material.integrity / 2
+		max_health = material.integrity / 2
 
 		if(reinforced)
-			max_integrity += reinforced.integrity / 2
+			max_health += reinforced.integrity / 2
 
-	obj_integrity += max_integrity - old_maxhealth
+	health += max_health - old_max_health
 
-/obj/structure/table/take_damage(amount)
+/obj/structure/table/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
 	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
 	if(material && material.is_brittle())
 		if(reinforced)
@@ -65,10 +64,10 @@
 				amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
 		else
 			amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
-	obj_integrity -= amount
-	if(obj_integrity <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		return break_to_parts() // if we break and form shards, return them to the caller to do !FUN! things with
+	.=..() // if we break and form shards, return them to the caller to do !FUN! things with
+
+/obj/structure/table/zero_health()
+	return break_to_parts()
 
 /obj/structure/table/Initialize()
 	. = ..()
@@ -99,8 +98,8 @@
 
 /obj/structure/table/examine(mob/user)
 	. = ..()
-	if(obj_integrity < max_integrity)
-		switch(obj_integrity / max_integrity)
+	if(health < max_health)
+		switch(health / max_health)
 			if(0.0 to 0.5)
 				to_chat(user, "<span class='warning'>It looks severely damaged!</span>")
 			if(0.25 to 0.5)
@@ -150,12 +149,12 @@
 		dismantle(W, user)
 		return 1
 
-	if(obj_integrity < max_integrity && isWelder(W))
+	if(health < max_health && isWelder(W))
 		to_chat(user, "<span class='notice'>You begin reparing damage to \the [src].</span>")
 		if (W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
 			user.visible_message("<span class='notice'>\The [user] repairs some damage to \the [src].</span>",
 			                              "<span class='notice'>You repair some damage to \the [src].</span>")
-			obj_integrity = max(obj_integrity+(max_integrity/5), max_integrity) // 20% repair per application
+			health = max(health+(max_health/5), max_health) // 20% repair per application
 			return 1
 
 	if(!material && can_plate && istype(W, /obj/item/stack/material))
