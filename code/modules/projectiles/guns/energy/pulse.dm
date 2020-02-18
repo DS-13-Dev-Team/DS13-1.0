@@ -1,3 +1,4 @@
+//Note: This file unincluded by nanako on 2020-02-17 due to name ambiguity with dead space's pulse rifle
 /obj/item/weapon/gun/energy/pulse_rifle
 	name = "pulse rifle"
 	desc = "A weapon that uses advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."

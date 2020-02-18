@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	var/charge_cost = 20 //How much energy is needed to fire.
 	var/max_shots = 10 //Determines the capacity of the weapon's power cell. Specifying a cell_type overrides this value.
 	var/cell_type = null
-	var/projectile_type = /obj/item/projectile/beam/practice
+	projectile_type = /obj/item/projectile/beam/practice
 	var/modifystate
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
 
@@ -95,6 +95,12 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	var/shots_remaining = round(power_supply.charge / charge_cost)
 	to_chat(user, "Has [shots_remaining] shot\s remaining.")
 	return
+
+/obj/item/weapon/gun/energy/has_ammo()
+	if(!power_supply)
+		return FALSE
+	return (power_supply.charge >= charge_cost)
+
 
 /obj/item/weapon/gun/energy/update_icon()
 	..()

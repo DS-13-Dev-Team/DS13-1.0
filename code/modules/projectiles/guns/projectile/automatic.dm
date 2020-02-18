@@ -295,6 +295,7 @@
 /datum/firemode/automatic
 	settings = list(burst = 1, suppress_delay_warning = TRUE, dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2))
 	//The full auto clickhandler we have
+	var/minimum_shots = 0
 	var/datum/click_handler/fullauto/CH = null
 
 /datum/firemode/automatic/update(var/force_state = null)
@@ -316,14 +317,11 @@
 			//Lets also make sure it can fire
 			var/can_fire = TRUE
 
-			//Safety stops it
-			//if (gun.safety)
-				//can_fire = FALSE
 
 			//Projectile weapons need to have enough ammo to fire
 			if(istype(gun, /obj/item/weapon/gun/projectile))
 				var/obj/item/weapon/gun/projectile/P = gun
-				if (!P.getAmmo())
+				if (!P.can_ever_fire())
 					can_fire = FALSE
 
 			//TODO: Centralise all this into some can_fire proc
@@ -355,3 +353,4 @@
 		CH = L.PushClickHandler(/datum/click_handler/fullauto)
 		CH.reciever = gun //Reciever is the gun that gets the fire events
 		CH.user = L //And tell it where it is
+		CH.minimum_shots = minimum_shots

@@ -219,3 +219,6 @@
 	spent_icon = "empshell-spent"
 	projectile_type  = /obj/item/projectile/ion
 	matter = list(MATERIAL_STEEL = 260, "uranium" = 200)
+
+
+

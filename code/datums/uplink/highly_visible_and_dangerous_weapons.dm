@@ -111,13 +111,13 @@
 	name = "Holdout Revolver"
 	item_cost = 38
 	path = /obj/item/weapon/gun/projectile/revolver/detective
-
+/*
 /datum/uplink_item/item/visible_weapons/pulserifle
 	name = "Pulse Rifle"
 	item_cost = 68
 	antag_costs = list(MODE_MERCENARY = 30)
 	path = /obj/item/weapon/gun/energy/pulse_rifle
-
+*/
 /datum/uplink_item/item/visible_weapons/flechetterifle
 	name = "Flechette Rifle"
 	item_cost = 60

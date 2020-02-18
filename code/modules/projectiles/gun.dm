@@ -33,6 +33,12 @@
 			gun.vars[propname] = settings[propname]
 
 
+/datum/firemode/proc/unapply_to(obj/item/weapon/gun/_gun)
+	gun = _gun
+	for(var/propname in settings)
+		if (propname in gun.vars)
+			gun.vars[propname] = initial(gun.vars[propname])
+
 //Called whenever the firemode is switched to, or the gun is picked up while its active
 /datum/firemode/proc/update()
 	return
@@ -98,6 +104,9 @@
 	var/safety_state = 0
 	var/has_safety = TRUE
 
+	var/projectile_type = null	//What type of projectile will we fire when the trigger is pulled? If this is set, it overrides default ammo-based typing in projectile guns
+	var/ammo_cost = 1	//How many shots' worth of ammo do we consume to fire once?
+
 /obj/item/weapon/gun/New()
 	..()
 	for(var/i in 1 to firemodes.len)
@@ -139,6 +148,7 @@
 			else
 				item_state_slots[slot_l_hand_str] = initial(item_state)
 				item_state_slots[slot_r_hand_str] = initial(item_state)
+			update_wear_icon()
 		if(M.skill_check(SKILL_WEAPONS,SKILL_BASIC))
 			overlays += image(icon,"safety[safety()]")
 
@@ -179,6 +189,7 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
+//Return true if we successfully fired
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, adjacent, params, var/vector2/world_pixel_click)
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
 
@@ -191,9 +202,11 @@
 
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
-		return
+		return TRUE
 
 	Fire(A,user,params) //Otherwise, fire normally.
+
+	return TRUE
 
 /obj/item/weapon/gun/attack(atom/A, mob/living/user, def_zone)
 
@@ -215,7 +228,7 @@
 	return ..()
 
 
-//Return true if firing is okay
+//Return true if firing is okay right now
 /obj/item/weapon/gun/proc/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
 	if(world.time < next_fire_time)
 		if (!silent && !suppress_delay_warning && world.time % 3) //to prevent spam
@@ -225,15 +238,31 @@
 	if(target && user && (target.z != user.z))
 		return FALSE
 
-	if(safety())
-		if (!silent)
-			handle_click_empty(user)
+	if(safety() || !has_ammo())
 		return FALSE
 
 	if (!special_check(user))
 		return FALSE
 
 	return TRUE
+
+//Returns true if the gun can fire now, or will become able to fire in the near future without any active intervention
+//This is true even when the gun is cooling down between shots
+//It is false when safety is on, or ammo has run out
+/obj/item/weapon/gun/proc/can_ever_fire(mob/living/user)
+	if(safety() || !has_ammo())
+		return FALSE
+
+	//We'll only do the special check if a user is supplied
+	if (user && !special_check(user))
+		return FALSE
+
+	return TRUE
+
+
+/obj/item/weapon/gun/proc/has_ammo()	//Does this gun have enough ammo/power/resources to fire at least once?
+	return TRUE
+
 
 
 //Safety checks are done by the time fire is called
@@ -285,6 +314,10 @@
 
 //obtains the next projectile to fire
 /obj/item/weapon/gun/proc/consume_next_projectile()
+	return null
+
+//Attempts to consume a specified number of projectiles. Returns false if the gun doesn't have enough ammo
+/obj/item/weapon/gun/proc/consume_projectiles(var/number = 1)
 	return null
 
 //used by aiming code
@@ -528,7 +561,9 @@
 	var/next_mode = get_next_firemode()
 	if(!next_mode || next_mode == sel_mode)
 		return null
+	var/datum/firemode/current_mode = firemodes[sel_mode]
 	update_firemode(FALSE) //Disable the old firing mode before we switch away from it
+	current_mode.unapply_to(src)	//Set any vars the firemode altered back to default
 	sel_mode = next_mode
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
@@ -598,6 +633,7 @@
 //Updating firing modes at appropriate times
 /obj/item/weapon/gun/equipped(var/mob/user, var/slot)
 	.=..()
+	update_icon()
 	update_firemode()
 
 /obj/item/weapon/gun/dropped(mob/user)
@@ -606,13 +642,19 @@
 
 /obj/item/weapon/gun/swapped_from()
 	.=..()
+	update_icon()
 	update_firemode(FALSE)
 
 /obj/item/weapon/gun/swapped_to()
 	.=..()
+	update_icon()
 	update_firemode()
 
 
 //Used by sustained weapons. Call to make the gun stop doing its thing
 /obj/item/weapon/gun/proc/stop_firing()
 	update_firemode()
+
+
+
+

@@ -53,19 +53,23 @@
 	update_icon()
 
 /obj/item/weapon/gun/projectile/consume_next_projectile()
-	if(!is_jammed && prob(jam_chance))
-		src.visible_message("<span class='danger'>\The [src] jams!</span>")
-		is_jammed = 1
-		var/mob/user = loc
-		if(istype(user))
-			if(prob(user.skill_fail_chance(SKILL_WEAPONS, 100, SKILL_PROF)))
-				return null
-			else
-				to_chat(user, "<span class='notice'>You reflexively clear the jam on \the [src].</span>")
-				is_jammed = 0
-				playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
-	if(is_jammed)
-		return null
+	if (!handle_jamming())
+		return FALSE
+
+	//Handling multiple ammocosts and alternate projectile types
+	if (ammo_cost > 1)
+		var/list/manyprojectiles = consume_projectiles(ammo_cost)
+		if (!manyprojectiles || !manyprojectiles.len)
+			//Oh no, not enough ammo to fire!
+			//Possibly handle click empty here
+			return null
+
+		if (!projectile_type)	//If we're spending multiple rounds, but firing a normal bullet
+			return manyprojectiles[1]	//Just return the projectile that's top in the list, the rest will be GCed
+
+		return new projectile_type(src)	//If we're using a special projectile type, spawn it
+
+
 	//get the next casing
 	if(loaded.len)
 		chambered = loaded[1] //load next casing.
@@ -79,6 +83,77 @@
 	if (chambered)
 		return chambered.BB
 	return null
+
+
+//Expends a specified number of rounds, deleting their casings, and returning their projectiles to be fired, if desired
+/obj/item/weapon/gun/projectile/consume_projectiles(var/number = 1)
+	if (getAmmo() < number)
+		return FALSE
+
+	.=list()
+	if (chambered)
+		var/newproj=get_projectile_from_casing(chambered)
+		if (newproj != chambered)
+			qdel(chambered)
+		chambered = null
+		.+=newproj
+		number--
+		if (number <= 0)
+			return
+
+	//Since we now know that the gun has enough, we'll start deleting things
+	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+		for (var/thing in ammo_magazine.stored_ammo)
+			var/newproj=get_projectile_from_casing(thing)
+			ammo_magazine.stored_ammo.Remove(thing)
+			if (newproj != thing)
+				qdel(thing)
+
+			.+=newproj
+			number--
+			if (number <= 0)
+				return
+
+	if(loaded.len)
+		for (var/thing in loaded)
+			var/newproj=get_projectile_from_casing(thing)
+			loaded.Remove(thing)
+			if (newproj != thing)
+				qdel(thing)
+			.+=newproj
+			number--
+			if (number <= 0)
+				return
+
+
+
+	//We cannot possibly have not reduced number to zero by this point
+	return
+
+/proc/get_projectile_from_casing(var/atom/A)
+	if (istype(A, /obj/item/ammo_casing))
+		var/obj/item/ammo_casing/AC = A
+		if (AC.BB)
+			return AC.BB
+
+	return A
+
+/obj/item/weapon/gun/projectile/proc/handle_jamming()
+	if(!is_jammed && prob(jam_chance))
+		src.visible_message("<span class='danger'>\The [src] jams!</span>")
+		is_jammed = 1
+		var/mob/user = loc
+		if(istype(user))
+			if(prob(user.skill_fail_chance(SKILL_WEAPONS, 100, SKILL_PROF)))
+				return null
+			else
+				to_chat(user, "<span class='notice'>You reflexively clear the jam on \the [src].</span>")
+				is_jammed = 0
+				playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
+	if(is_jammed)
+		return FALSE
+
+	return TRUE
 
 /obj/item/weapon/gun/projectile/handle_post_fire()
 	..()
@@ -215,7 +290,7 @@
 		return ..()
 
 /obj/item/weapon/gun/projectile/afterattack(atom/A, mob/living/user)
-	..()
+	.=..()
 	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
 		ammo_magazine.loc = get_turf(src.loc)
 		user.visible_message(
@@ -247,6 +322,10 @@
 	if(chambered)
 		bullets += 1
 	return bullets
+
+/obj/item/weapon/gun/projectile/has_ammo()
+	return (getAmmo() > 0)
+
 
 /* Unneeded -- so far.
 //in case the weapon has firemodes and can't unload using attack_hand()

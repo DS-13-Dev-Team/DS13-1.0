@@ -37,3 +37,8 @@
 //Quick defines for rapid fire
 #define FULL_AUTO_400	list(mode_name="full auto",  mode_type = /datum/firemode/automatic, fire_delay=1.5)
 #define FULL_AUTO_600	list(mode_name="full auto",  mode_type = /datum/firemode/automatic, fire_delay=1)
+
+//Defines used for how bullets expire
+#define EXPIRY_DELETE	1	//Delete the bullet as soon as it's done
+#define EXPIRY_FADEOUT	2	//Fade to zero alpha over some time, then delete
+#define EXPIRY_ANIMATION	3	//Play an animation over some time, then delete

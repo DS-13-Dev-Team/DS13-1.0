@@ -189,14 +189,21 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	var/firing = FALSE
 	var/obj/item/weapon/gun/reciever //The thing we send firing signals to.
 	//Todo: Make this work with callbacks
+	var/minimum_shots = 0
+	var/shots_fired = 0
 
+	var/user_trying_to_fire = FALSE
 
 /datum/click_handler/fullauto/proc/start_firing()
-	firing = TRUE
-	while (firing && target)
-		do_fire()
-		sleep(0.5) //Keep spamming events every frame as long as the button is held
-	stop_firing()
+	if (!firing)
+		firing = TRUE
+		shots_fired = 0
+		while (firing && target)
+			if (can_stop_firing())
+				break
+			do_fire()
+			sleep(0.5) //Keep spamming events every frame as long as the button is held
+		stop_firing()
 
 //Next loop will notice these vars and stop shooting
 /datum/click_handler/fullauto/proc/stop_firing()
@@ -204,33 +211,51 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	target = null
 
 /datum/click_handler/fullauto/proc/do_fire()
-	reciever.afterattack(target, user, FALSE)
+	if (reciever.afterattack(target, user, FALSE))
+		shots_fired++
 
 /datum/click_handler/fullauto/MouseDown(object,location,control,params)
 	object = resolve_world_target(object)
 	if (object)
 		target = object
 		user.face_atom(target)
+		user_trying_to_fire = TRUE
 		spawn()
 			start_firing()
 		return FALSE
 	return TRUE
 
 /datum/click_handler/fullauto/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
-	src_location = resolve_world_target(src_location)
-	if (src_location && firing)
+	src_location = resolve_world_target(over_object)
+	if (over_object && firing)
 		target = src_location //This var contains the thing the user is hovering over, oddly
 		user.face_atom(target)
 		return FALSE
 	return TRUE
 
 /datum/click_handler/fullauto/MouseUp(object,location,control,params)
-	stop_firing()
+	user_trying_to_fire = FALSE	//When we release the button, stop attempting to fire. it may still go if there's minimum shots remaining
 	return TRUE
 
 /datum/click_handler/fullauto/Destroy()
 	stop_firing()//Without this it keeps firing in an infinite loop when deleted
 	.=..()
+
+
+/datum/click_handler/fullauto/proc/can_stop_firing()
+	if (!reciever || !reciever.can_ever_fire())	//If the gun loses the ability to fire, we stop immediately
+		return TRUE
+
+	//If the user is still holding down the button, keep going
+	if (user_trying_to_fire)
+		return FALSE
+
+	//If we haven't fired the minimum yet, we may be forced to continue. But only if the gun is in condition to do so
+	if (minimum_shots && (shots_fired < minimum_shots))
+		return FALSE
+
+	return TRUE
+
 
 
 
@@ -282,9 +307,9 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 /datum/click_handler/sustained/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
 	last_params = params
-	src_location = resolve_world_target(src_location)
-	if (src_location && firing)
-		target = src_location //This var contains the thing the user is hovering over, oddly
+	over_object = resolve_world_target(over_object)
+	if (over_object && firing)
+		target = over_object //This var contains the thing the user is hovering over, oddly
 		user.face_atom(target)
 		do_fire()
 		return FALSE
