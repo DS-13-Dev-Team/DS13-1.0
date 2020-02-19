@@ -316,6 +316,8 @@
 	icon_state = "revolver"
 
 /obj/random/projectile/item_to_spawn()
+	return pickweight(list(/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1))
+	/*
 	return pickweight(list(/obj/item/weapon/gun/projectile/shotgun/pump = 3,
 				/obj/item/weapon/gun/projectile/automatic/c20r = 2,
 				/obj/item/weapon/gun/projectile/automatic/sts35 = 2,
@@ -333,7 +335,7 @@
 				/obj/item/weapon/gun/projectile/shotgun/doublebarrel = 4,
 				/obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn = 3,
 				/obj/item/weapon/gun/projectile/heavysniper = 1,
-				/obj/item/weapon/gun/projectile/shotgun/pump/combat = 2))
+				/obj/item/weapon/gun/projectile/shotgun/pump/combat = 2))*/
 
 /obj/random/handgun
 	name = "Random Handgun"
@@ -357,15 +359,7 @@
 	icon_state = "45-10"
 
 /obj/random/ammo/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/storage/box/beanbags = 6,
-				/obj/item/weapon/storage/box/shotgunammo = 2,
-				/obj/item/weapon/storage/box/shotgunshells = 4,
-				/obj/item/weapon/storage/box/stunshells = 1,
-				/obj/item/ammo_magazine/c45m = 2,
-				/obj/item/ammo_magazine/c45m/rubber = 4,
-				/obj/item/ammo_magazine/c45m/flash = 4,
-				/obj/item/ammo_magazine/mc9mmt = 2,
-				/obj/item/ammo_magazine/mc9mmt/rubber = 6))
+	return pickweight(list(/obj/item/ammo_magazine/pulse = 2, /obj/item/ammo_magazine/sawblades = 1))
 
 /obj/random/action_figure
 	name = "random action figure"

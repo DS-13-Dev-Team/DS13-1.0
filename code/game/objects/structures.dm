@@ -141,6 +141,9 @@
 
 /obj/structure/bullet_act(var/obj/item/projectile/P)
 	take_damage(P.get_structure_damage(), user = P.firer, used_weapon = P)
+	if (health > 0)
+		return FALSE
+	return TRUE
 
 
 /obj/structure/attackby(var/obj/item/C, var/mob/user)

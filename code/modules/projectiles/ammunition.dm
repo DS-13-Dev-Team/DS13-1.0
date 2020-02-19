@@ -101,6 +101,8 @@
 	var/mag_type = SPEEDLOADER //ammo_magazines can only be used with compatible guns. This is not a bitflag, the load_method var on guns is.
 	var/caliber = "357"
 	var/max_ammo = 7
+	var/delete_when_empty = FALSE	//If true, this magazine or speedloader ceases to exist as soon as it no longer contains any casings
+		//Currently only implemented for speedloaders
 
 	var/ammo_type = /obj/item/ammo_casing //ammo type that is initially loaded
 	var/initial_ammo = null

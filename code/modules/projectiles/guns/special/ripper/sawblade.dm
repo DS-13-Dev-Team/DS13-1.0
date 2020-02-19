@@ -178,6 +178,26 @@
 	desc = "This glittering blade was once a durable cutting edge, it must have seen heavy use to end up like this. May still contain some valueable materials to recycle"
 	matter = list(MATERIAL_STEEL = 300, MATERIAL_PLASTEEL = 80, MATERIAL_DIAMOND = 40) //The broken versions contain roughly a third of the original matter when recycled
 
+/*-----------------------------------
+	Speed Loader
+------------------------------------*/
+/obj/item/ammo_magazine/sawblades
+	name = "ripper blades"
+	desc = "A pack of replacement sawblades"
+	icon_state = "ripper_blades"
+	caliber = "saw"
+	ammo_type = /obj/item/ammo_casing/sawblade
+	matter = list(MATERIAL_STEEL = 1260)
+	max_ammo = 4
+	multiple_sprites = 0
+	mag_type = SPEEDLOADER
+	delete_when_empty = TRUE
+
+
+
+
+
+
 //We don't need to stop the looping audio here, it will do that itself
 /obj/item/projectile/sawblade/Destroy()
 	.=..()

@@ -222,6 +222,9 @@
 					user.visible_message("[user] reloads [src].", "<span class='notice'>You load [count] round\s into [src].</span>")
 					playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 					update_firemode()
+
+				if (AM.stored_ammo.len == 0 && AM.delete_when_empty)
+					qdel(AM)
 		AM.update_icon()
 	else if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A

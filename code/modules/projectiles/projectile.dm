@@ -30,11 +30,14 @@
 	//var/p_y = 16 // the pixel location of the tile that the player clicked. Default is the center
 	var/vector2/pixel_click = new /vector2(16, 16)
 
+	randpixel = 4	//Offset randomly on spawn by up to this much
+
 	var/accuracy = 0
 	var/dispersion = 0.0
 
 	var/damage = 10
 	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY, CLONE, PAIN are the only things that should be in here
+	var/structure_damage_factor = 1
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
 	var/check_armour = "bullet" //Defines what armor to use when it hits things.  Must be set to bullet, laser, energy,or bomb	//Cael - bio and rad are also valid
 	var/projectile_type = /obj/item/projectile
@@ -61,6 +64,11 @@
 	var/tracer_type
 	var/impact_type
 
+	//	Bullet Expiry
+	var/expiry_method = EXPIRY_DELETE
+	var/expiry_time = 0.2 SECONDS
+	var/expired	=	FALSE	//If true, this bullet is being deleted. make it stop moving
+
 	var/fire_sound
 	var/miss_sounds
 
@@ -75,8 +83,25 @@
 	damtype = damage_type //TODO unify these vars properly
 	if(!hitscan)
 		animate_movement = SLIDE_STEPS
-	else animate_movement = NO_STEPS
+		if(randpixel && (!pixel_x && !pixel_y)) //hopefully this will prevent us from messing with mapper-set pixel_x/y
+			pixel_x = rand(-randpixel, randpixel)
+			pixel_y = rand(-randpixel, randpixel)
+	else
+		animate_movement = NO_STEPS
 	. = ..()
+
+//Called when this projectile is to be deleted during normal gameplay, ie when it hits stuff
+/obj/item/projectile/proc/expire()
+	set_density(0)
+	expired = TRUE
+	switch(expiry_method)
+		if (EXPIRY_DELETE)
+			set_invisibility(101)
+			qdel(src)
+			return
+		if (EXPIRY_FADEOUT)
+			animate(src, alpha = 0, time = expiry_time)
+			QDEL_IN(src, expiry_time)
 
 /obj/item/projectile/Destroy()
 	return ..()
@@ -123,7 +148,7 @@
 
 /obj/item/projectile/proc/get_structure_damage()
 	if(damage_type == BRUTE || damage_type == BURN)
-		return damage
+		return damage * structure_damage_factor
 	return 0
 
 //return 1 if the projectile should be allowed to pass through after all, 0 if not.
@@ -159,7 +184,7 @@
 	if(targloc == curloc) //Shooting something in the same turf
 		target.bullet_act(src, target_zone)
 		on_impact(target)
-		qdel(src)
+		qdel(src)	//Don't bother with expire here, since it never becomes visible
 		return 0
 
 	original = target
@@ -178,7 +203,7 @@
 /obj/item/projectile/proc/launch_from_gun(atom/target, mob/user, obj/item/weapon/gun/launcher, var/target_zone, var/x_offset=0, var/y_offset=0)
 	if(user == target) //Shooting yourself
 		user.bullet_act(src, target_zone)
-		qdel(src)
+		qdel(src)	//Never visible, no expire
 		return 0
 
 	last_loc = loc
@@ -350,10 +375,9 @@
 	//stop flying
 	on_impact(A)
 
-	set_density(0)
-	set_invisibility(101)
 
-	qdel(src)
+
+	expire()
 	return 1
 
 /obj/item/projectile/ex_act()
@@ -365,15 +389,15 @@
 /obj/item/projectile/Process()
 	var/first_step = 1
 
-	spawn while(src && src.loc)
+	spawn while(src && src.loc && !expired)
 		if(kill_count-- < 1)
 			on_impact(src.loc) //for any final impact behaviours
-			qdel(src)
+			expire()
 			return
 		if((!( current ) || loc == current))
 			current = locate(min(max(x + xo, 1), world.maxx), min(max(y + yo, 1), world.maxy), z)
 		if((x == 1 || x == world.maxx || y == 1 || y == world.maxy))
-			qdel(src)
+			qdel(src)	//Instadelete if we leave map
 			return
 
 		trajectory.increment()	// increment the current location
@@ -384,7 +408,7 @@
 			return
 
 		if (is_below_sound_pressure(get_turf(src)) && !vacuum_traversal) //Deletes projectiles that aren't supposed to bein vacuum if they leave pressurised areas
-			qdel(src)
+			expire()
 			return
 
 		before_move()
@@ -445,7 +469,8 @@
 			M.pixel_x = round(location.pixel_x, 1)
 			M.pixel_y = round(location.pixel_y, 1)
 			if(!hitscan) //Bullets don't hit their target instantly, so we can't link the deletion of the muzzle flash to the bullet's Destroy()
-				QDEL_IN(M,1)
+				animate(M, alpha = 0, time = 2)
+				QDEL_IN(M,2)
 			else
 				segments += M
 

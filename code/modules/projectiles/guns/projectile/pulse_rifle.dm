@@ -51,15 +51,20 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force, 
 
 /obj/item/projectile/bullet/pulse
 	icon_state = "pulse"
-	damage = 5
+	damage = 7.5
 	embed = 0
+	structure_damage_factor = 0.5
 	penetration_modifier = 0
+	penetrating = FALSE
 	step_delay = 1.5
+	expiry_method = EXPIRY_FADEOUT
+	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
 
 /obj/item/ammo_magazine/pulse
 	name = "Pulse Rounds"
 	desc = "With a distinctive \"Bell and stock\" design, pulse magazines can be inserted and removed from the Pulse Rifle with minimal effort and risk. "
-	icon_state = "38"
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "pulse_rounds_empty"
 	caliber = "pulse"
 	ammo_type = /obj/item/ammo_casing/pulse
 	matter = list(MATERIAL_STEEL = 1260)
@@ -67,7 +72,11 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force, 
 	multiple_sprites = FALSE
 	mag_type = MAGAZINE
 
-
+/obj/item/ammo_magazine/pulse/update_icon()
+	if (stored_ammo.len)
+		icon_state = "pulse_rounds"
+	else
+		icon_state = "pulse_rounds_empty"
 
 /*-----------------------
 	Ammo
@@ -79,17 +88,26 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force, 
 	damage = 5
 	check_armour = "bomb"
 	var/exploded = FALSE
-	step_delay = 3.5
+	step_delay = 2.5
 
 
 /obj/item/projectile/bullet/impact_grenade/on_hit(var/atom/target, var/blocked = 0)
 	if (!exploded)
 		exploded = TRUE
-		explosion(target, -1, 0, 2)
+		explosion(target, -1, 1, 2)
 	return 1
 
 /obj/item/projectile/bullet/impact_grenade/on_impact(var/atom/target, var/blocked = 0)
 	if (!exploded)
 		exploded = TRUE
-		explosion(target, -1, 0, 2)
+		explosion(target, -1, 1, 2)
 	return 1
+
+
+//----------------------------
+// Pulse muzzle effect only
+//----------------------------
+/obj/effect/projectile/pulse/muzzle/light
+	icon_state = "muzzle_pulse_light"
+	light_max_bright = 2
+	light_color = COLOR_DEEP_SKY_BLUE
