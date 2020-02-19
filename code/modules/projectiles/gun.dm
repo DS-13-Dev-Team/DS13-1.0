@@ -233,7 +233,7 @@
 	if(world.time < next_fire_time)
 		if (!silent && !suppress_delay_warning && world.time % 3) //to prevent spam
 			user << SPAN_WARNING("[src] is not ready to fire again!")
-			return FALSE
+		return FALSE
 
 	if(target && user && (target.z != user.z))
 		return FALSE

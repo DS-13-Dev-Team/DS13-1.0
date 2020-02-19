@@ -359,7 +359,9 @@
 	icon_state = "45-10"
 
 /obj/random/ammo/item_to_spawn()
-	return pickweight(list(/obj/item/ammo_magazine/pulse = 2, /obj/item/ammo_magazine/sawblades = 1))
+	return pickweight(list(/obj/item/ammo_magazine/pulse = 2,
+	/obj/item/ammo_magazine/sawblades = 1,
+	/obj/item/ammo_magazine/bullpup = 1))
 
 /obj/random/action_figure
 	name = "random action figure"
