@@ -2,6 +2,11 @@
 	icon = 'icons/debug/pixelmarkers.dmi'
 	var/lifetime = 0.3
 
+/obj/effect/pixelmarker/New(var/location, var/_lifetime)
+	if (_lifetime)
+		lifetime = _lifetime
+	.=..()
+
 /obj/effect/pixelmarker/Initialize()
 	..()
 	spawn(lifetime)
@@ -13,3 +18,8 @@
 	forceMove(locate(tilecoords.x, tilecoords.y, z))
 	pixel_x = (coords.x % tilecoords.x)
 	pixel_y = (coords.y % tilecoords.y)
+
+
+
+/obj/effect/pixelmarker/tile
+	icon_state = "green"

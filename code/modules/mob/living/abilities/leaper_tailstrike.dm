@@ -245,5 +245,5 @@
 		return FALSE
 	//Ok we've passed all safety checks, let's commence strike!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/tailstrike, /datum/extension/tailstrike, _target, _damage,  _windup_time, _winddown_time, _cooldown)
+	set_extension(src, /datum/extension/tailstrike, _target, _damage,  _windup_time, _winddown_time, _cooldown)
 	return TRUE

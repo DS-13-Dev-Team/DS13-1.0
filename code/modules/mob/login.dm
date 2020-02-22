@@ -58,6 +58,8 @@
 /mob/Login()
 
 	GLOB.player_list |= src
+	GLOB.key_to_mob[key] = src
+
 	update_Login_details()
 	world.update_status()
 
@@ -92,6 +94,7 @@
 	reload_fullscreen() // Reload any fullscreen overlays this mob has.
 	add_click_catcher()
 	update_action_buttons()
+	GetClickHandlers()	//Just call this to create the default handler, prevents an unpleasant edge case where it never gets created a
 
 	//set macro to normal incase it was overriden (like cyborg currently does)
 	winset(src, null, "mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true input.background-color=#d3b5b5")

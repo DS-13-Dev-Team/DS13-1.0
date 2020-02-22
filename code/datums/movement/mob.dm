@@ -54,8 +54,27 @@
 	if(!mob.forceMove(T))
 		return
 
+
 	mob.set_dir(direction)
 	mob.PostIncorporealMovement()
+
+//Variation of incorporeal movement for signal eyes. Uses eyemove instead of forcemove
+/datum/movement_handler/mob/incorporeal/eye/DoMove(var/direction)
+	. = MOVEMENT_HANDLED
+	direction = mob.AdjustMovementDirection(direction)
+
+	var/turf/T = get_step(mob, direction)
+	if(!mob.MayEnterTurf(T))
+		return
+
+	if(!mob.eyeobj)
+		return
+	mob.eyeobj.EyeMove(direction)
+
+	mob.set_dir(direction)
+	mob.PostIncorporealMovement()
+
+
 
 /mob/proc/PostIncorporealMovement()
 	return
@@ -134,16 +153,24 @@
 // Movement delay
 /datum/movement_handler/mob/delay
 	var/next_move
+	var/overflow = 0
 
 /datum/movement_handler/mob/delay/DoMove(var/direction, var/mover, var/is_external)
 	if(is_external)
 		return
-	next_move = world.time + max(1, mob.movement_delay())
+	next_move = world.time + max(1, mob.movement_delay()-overflow)
 
 /datum/movement_handler/mob/delay/MayMove(var/mover, var/is_external)
 	if(IS_NOT_SELF(mover) && is_external)
 		return MOVEMENT_PROCEED
-	return ((mover && mover != mob) ||  world.time >= next_move) ? MOVEMENT_PROCEED : MOVEMENT_STOP
+	if ((mover && mover != mob) ||  world.time >= next_move)
+		var/extra = world.time - next_move
+		if (extra > 0  && extra < 1)
+			overflow = extra
+		return MOVEMENT_PROCEED
+
+	else
+		return MOVEMENT_STOP
 
 /datum/movement_handler/mob/delay/proc/SetDelay(var/delay)
 	next_move = max(next_move, world.time + delay)

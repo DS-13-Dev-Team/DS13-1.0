@@ -16,7 +16,7 @@
 			var/mob/living/silicon/ai/AI = source
 			if(AI.stat == DEAD)
 				continue
-			for(var/turf/t in seen_turfs_in_range(AI, world.view))
+			for(var/t in seen_turfs_in_range(AI, world.view))
 				visible[t] = t
 		else
 			log_visualnet("Contained an unhandled source", source)

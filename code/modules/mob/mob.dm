@@ -558,9 +558,25 @@
 		onclose(usr, "[name]")
 	if(href_list["flavor_change"])
 		update_flavor_text()
+	if(href_list["jump_to"])
+		var/canjump = FALSE
+		if (can_jump_to_link())
+			canjump = TRUE
+		else if (client && check_rights(R_ADMIN|R_MOD|R_DEBUG))
+			//Possible todo: notify admins here?
+			canjump = TRUE
+		if (canjump)
+			var/x = text2num(href_list["X"])
+			var/y = text2num(href_list["Y"])
+			var/z = text2num(href_list["Z"])
+			var/turf/T = locate(x,y,z)
+			if (istype(T))
+				jumpTo(T)
 
-//	..()
-	return
+
+//Is this mob allowed to jump to links?
+/mob/proc/can_jump_to_link()
+	return FALSE
 
 /mob/proc/pull_damage()
 	return 0

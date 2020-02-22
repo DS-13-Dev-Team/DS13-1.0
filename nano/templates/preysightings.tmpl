@@ -1,0 +1,44 @@
+<style>
+	div {height: 100%; width: 100%; overflow: hidden; padding: 0px; margin: 0px;}
+	td {height: 100%;}
+	a {color: #CCCCFF}
+</style>
+
+<table style="width: 100%; margin: 5px; border-collapse: collapse; ">
+	<tr style="height: 30px; border-bottom: 1px solid #FFFFFF">
+		<td>
+			<div>
+			Name:
+			</div>
+		</td>
+		<td>
+			<div>
+			Last known location:
+			</div>
+		</td>
+		<td>
+			<div>
+			Last Seen:
+			</div>
+		</td>
+	</tr>
+	{{for data.prey}}
+		<tr style="height: 20px;">
+			<td>
+				<div>
+					{{:value.who}}
+				</div>
+			</td>
+			<td>
+				<div>
+					{{:value.where}}
+				</div>
+			</td>
+			<td>
+				<div>
+					{{:value.when}}
+				</div>
+			</td>
+		</tr>
+	{{/for}}
+</table>

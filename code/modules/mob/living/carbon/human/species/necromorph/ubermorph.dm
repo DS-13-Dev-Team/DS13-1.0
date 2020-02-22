@@ -1,5 +1,6 @@
 /datum/species/necromorph/ubermorph
 	name = SPECIES_NECROMORPH_UBERMORPH
+	mob_type	=	/mob/living/carbon/human/necromorph/ubermorph
 	name_plural =  "Ubermorphs"
 	blurb = "A juvenile hivemind. Constantly regenerating, a nigh-immortal leader of the necromorph army. "
 
@@ -7,6 +8,7 @@
 	total_health = INFINITY	//This number doesn't matter, it won't ever be used
 	can_obliterate = FALSE
 	healing_factor = 4	//Lots of constant healing
+	biomass	=	1600	//Endgame, real expensive
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
 	single_icon = FALSE
@@ -90,6 +92,9 @@
 	inherent_verbs = list(/mob/living/carbon/human/proc/ubermorph_battlecry, /mob/living/carbon/human/proc/ubermorph_regenerate, /mob/living/carbon/human/proc/ubermorph_lunge, /mob/proc/shout, /mob/proc/sense_verb)
 	modifier_verbs = list(KEY_CTRLALT = list(/mob/living/carbon/human/proc/ubermorph_battlecry), KEY_CTRLSHIFT = list(/mob/proc/sense_verb), KEY_ALT = list(/mob/living/carbon/human/proc/ubermorph_lunge))
 
+/datum/species/necromorph/ubermorph/get_healthstring()
+	return "&#8734;"	//The ubermorph has infinite health, lets try to communicate that
+
 /datum/species/necromorph/ubermorph/handle_death_check(var/mob/living/carbon/human/H)
 	//No
 	return FALSE
@@ -98,6 +103,8 @@
 	Basic attack isn't a huge deal, but its powerful anyway because endgame monster
 */
 /datum/unarmed_attack/claws/ubermorph
+	name = "Piercing talons"
+	desc = "An impaling pair of spikes that can punch through flesh and steel."
 	damage = 20
 	airlock_force_power = 5
 	airlock_force_speed = 2.5
@@ -178,7 +185,7 @@
 	play_species_audio(src, SOUND_SHOUT, VOLUME_MID, 1, 3)
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/charge/lunge, /datum/extension/charge/lunge, A, 8, 2 SECONDS, 3, FALSE, TRUE, 1, 0, 0.75 SECONDS)
+	set_extension(src, /datum/extension/charge/lunge, A, 8, 2 SECONDS, 3, FALSE, TRUE, 1, 0, 0.75 SECONDS)
 
 	return TRUE
 
@@ -234,5 +241,5 @@
 	var/datum/extension/sense/S = get_extension(src, /datum/extension/sense)
 	if (S)
 		return
-	set_extension(src, /datum/extension/sense, /datum/extension/sense, 9, 9, FACTION_NECROMORPH, 9 SECONDS, 12 SECONDS)
+	set_extension(src, /datum/extension/sense, 9, 9, FACTION_NECROMORPH, 9 SECONDS, 12 SECONDS)
 	play_species_audio(src, SOUND_SPEECH, VOLUME_MID, 1, 3)

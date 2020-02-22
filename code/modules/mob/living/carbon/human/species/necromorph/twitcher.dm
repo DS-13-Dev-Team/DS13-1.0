@@ -15,13 +15,17 @@
 */
 /datum/species/necromorph/slasher/twitcher
 	name = SPECIES_NECROMORPH_TWITCHER
+	mob_type	=	/mob/living/carbon/human/necromorph/twitcher
 	name_plural = "Twitchers"
-	blurb = "The infection process is doing something strange to these soldiers. They all had built-in Stasis units in their body armor. The infection is merging the Stasis unit into their flesh or something... making them move fast... real fast. Be careful."
+	blurb = "An elite soldier displaced in time, blinks around randomly and is difficult to hit. Charges extremely quickly"
 	icon_template = 'icons/mob/necromorph/48x48necros.dmi'
 	icon_normal = "twitcher"
 	icon_lying = "twitcher"
 	icon_dead = "twitcher"
 	single_icon = TRUE
+
+	biomass	=	150
+
 
 	slowdown = 1.5
 	view_offset = 3 * WORLD_ICON_SIZE //Forward view offset allows longer-ranged charges
@@ -82,7 +86,7 @@
 //Setup the twitch extension which handles a lot of the special behaviour
 /datum/species/necromorph/slasher/twitcher/add_inherent_verbs(var/mob/living/carbon/human/H)
 	.=..()
-	set_extension(H, /datum/extension/twitch, /datum/extension/twitch)
+	set_extension(H, /datum/extension/twitch)
 
 
 

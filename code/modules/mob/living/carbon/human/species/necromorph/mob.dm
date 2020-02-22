@@ -56,3 +56,24 @@
 		icon_state = N.icon_lying
 	else
 		icon_state = N.icon_normal
+
+
+
+//Generic proc to see if a thing is aligned with the necromorph faction
+/atom/proc/is_necromorph()
+	return FALSE
+
+
+/mob/living/carbon/human/is_necromorph()
+	if (istype(species, /datum/species/necromorph))
+		return TRUE
+	return FALSE
+
+
+
+
+/mob/Login()
+	.=..()
+	//Update the necromorph players list
+	if (is_necromorph())
+		SSnecromorph.necromorph_players[key] = src

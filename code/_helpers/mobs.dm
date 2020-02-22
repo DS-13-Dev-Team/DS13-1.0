@@ -209,12 +209,7 @@ proc/age2agedescription(age)
 	if (progbar)
 		qdel(progbar)
 
-/proc/able_mobs_in_oview(var/origin)
-	var/list/mobs = list()
-	for(var/mob/living/M in oview(origin)) // Only living mobs are considered able.
-		if(!M.is_physically_disabled())
-			mobs += M
-	return mobs
+
 
 // Returns true if M was not already in the dead mob list
 /mob/proc/switch_from_living_to_dead_mob_list()
@@ -280,3 +275,6 @@ proc/age2agedescription(age)
 				selected = M
 				break
 	return selected
+
+
+

@@ -38,6 +38,10 @@ var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 		updateallghostimages()
 	. = ..()
 
+//Observers of all kinds can jump to things, since they have inherent teleporting and incorporeal movement
+/mob/observer/can_jump_to_link()
+	return TRUE
+
 mob/observer/check_airflow_movable()
 	return FALSE
 

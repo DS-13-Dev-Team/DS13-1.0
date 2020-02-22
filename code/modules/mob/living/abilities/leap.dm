@@ -62,6 +62,6 @@
 
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/charge/leap, /datum/extension/charge/leap, _target, _speed, _lifespan, _maxrange, _homing, _inertia, _power, _cooldown, _delay)
+	set_extension(src, /datum/extension/charge/leap, _target, _speed, _lifespan, _maxrange, _homing, _inertia, _power, _cooldown, _delay)
 
 	return TRUE
