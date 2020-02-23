@@ -26,6 +26,19 @@
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
 
+
+/*
+ * Engineering
+ */
+
+/obj/item/clothing/under/d_engineer
+	name = "engineer's uniform"
+	item_state = "ds_engineer"
+	worn_state = "ds_engineer"
+	icon_state = "ds_engineer"
+	permeability_coefficient = 0.50
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
+
 /*
  * Medical
  */
@@ -75,11 +88,11 @@
 /*
  * Spare Crew
  */
-/obj/item/clothing/under/dsspareishimura1
-	name = "crew uniform"
-	item_state = "ds_spare1"
-	worn_state = "ds_spare1"
-	icon_state = "ds_spare1"
+/obj/item/clothing/under/cargo_deadspace
+	name = "cargo uniform"
+	item_state = "ds_cargo"
+	worn_state = "ds_cargo"
+	icon_state = "ds_cargo"
 
 /obj/item/clothing/under/dsspareishimura2
 	name = "crew uniform"

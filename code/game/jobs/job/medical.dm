@@ -2,13 +2,13 @@
 	title = "Senior Medical Officer"
 	head_position = 1
 	department = "Medical"
-	department_flag = MED|COM
+	department_flag = COM|MED
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "the Captain"
 	selection_color = "#026865"
 	req_admin_notify = 1
-	minimal_player_age = 7
+	minimal_player_age = 18
 	ideal_character_age = 50
 
 	access = list(access_bridge, access_medical, access_maint_tunnels, access_chemistry, access_surgery)
@@ -18,11 +18,11 @@
 	title = "Medical Doctor"
 	department = "Medical"
 	department_flag = MED
-	minimal_player_age = 5
 	total_positions = 6
 	spawn_positions = 6
-	supervisors = "the senior medical officer"
+	supervisors = "the Senior Medical Officer"
 	selection_color = "#013d3b"
+	minimal_player_age = 18
 
 	access = list(access_medical, access_chemistry)
 	outfit_type = /decl/hierarchy/outfit/job/medical/md
@@ -31,11 +31,11 @@
 	title = "Surgeon"
 	department = "Medical"
 	department_flag = MED
-	minimal_player_age = 7
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the senior medical officer"
+	supervisors = "the Senior Medical Officer"
 	selection_color = "#013d3b"
+	minimal_player_age = 18
 
 	access = list(access_medical, access_surgery)
 	outfit_type = /decl/hierarchy/outfit/job/medical/surg

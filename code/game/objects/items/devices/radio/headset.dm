@@ -204,8 +204,8 @@
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/heads/rd
 
-/obj/item/device/radio/headset/heads/hos
-	name = "head of security's headset"
+/obj/item/device/radio/headset/heads/cseco
+	name = "chief security officer's headset"
 	desc = "The headset of the man who protects your worthless lives."
 	icon_state = "com_headset"
 	item_state = "headset"
@@ -213,7 +213,7 @@
 
 /obj/item/device/radio/headset/heads/ce
 	name = "chief engineer's headset"
-	desc = "The headset of the guy who is in charge of morons."
+	desc = "The headset of the guy with the most techincal experience and head of the engineering department."
 	icon_state = "com_headset"
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/heads/ce
@@ -223,9 +223,9 @@
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
 
-/obj/item/device/radio/headset/heads/cmo
-	name = "chief medical officer's headset"
-	desc = "The headset of the highly trained medical chief."
+/obj/item/device/radio/headset/heads/smo
+	name = "senior medical officer's headset"
+	desc = "The headset of the highly trained medical officer."
 	icon_state = "com_headset"
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/heads/cmo
@@ -235,8 +235,8 @@
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
 
-/obj/item/device/radio/headset/heads/hop
-	name = "head of personnel's headset"
+/obj/item/device/radio/headset/heads/fl
+	name = "first lieutenant's headset"
 	desc = "The headset of the guy who will one day be captain."
 	icon_state = "com_headset"
 	item_state = "headset"

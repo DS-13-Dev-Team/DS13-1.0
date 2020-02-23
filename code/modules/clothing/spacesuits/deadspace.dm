@@ -31,6 +31,7 @@
 /obj/item/clothing/head/helmet/space/unitologist/berserker
 	name = "heavy helmet"
 	icon_state = "unizerk"
+	item_state = "unizerk"
 	desc = "A square, black helmet with a few crimson highlights, it seems to be a custom design made of parts from a Fuel Carrier RIG. The words, 'Schofield Tools' are stamped on the bottom-back of the helmet. Despite the helmet's non-standard nature, the work done putting it together seems professional."
 	item_state_slots = list(
 		slot_l_hand_str = "s_suit",
@@ -51,6 +52,7 @@
 /obj/item/clothing/head/helmet/space/unitologist/deacon
 	name = "ornate helmet"
 	icon_state = "unideac"
+	item_state = "unideac"
 	desc = "An odd, cylindrical, black helmet with a few crimson highlights, covered heavily in strange symbols. Despite the fancier adornments, the helmet doesn't look like it would provide more than the bare minimum protection."
 	item_state_slots = list(
 		slot_l_hand_str = "s_suit",
@@ -71,6 +73,7 @@
 /obj/item/clothing/head/helmet/space/unitologist/healer
 	name = "blood helmet"
 	icon_state = "unimedic"
+	item_state = "unimedic"
 	desc = "A gray helmet with several crimson highlights, it seems to just be a repainted Security RIG. The letters, 'T.E.A.K' are stamped on the bottom-back of the helmet. Despite the helmet's non-standard nature, the work done putting it together seems professional."
 	item_state_slots = list(
 		slot_l_hand_str = "s_suit",
@@ -89,6 +92,7 @@
 /obj/item/clothing/head/helmet/space/unitologist/mechanic
 	name = "refitted helmet"
 	icon_state = "uniengie"
+	item_state = "uniengie"
 	desc = "A black, rounded helmet with a crimson highlight along the top. The words, 'Timson Tools' are stamped on the bottom-back of the helmet. It looks like the helmet has been refitted and repainted somewhat recently, though there is still some rust spotted around the helmet. Clearly it hasn't been kept in the greatest shape. "
 	item_state_slots = list(
 		slot_l_hand_str = "s_suit",
@@ -139,6 +143,7 @@
 /obj/item/clothing/head/helmet/space/edf/commander
 	name = "MDH-C7 Command Helmet"
 	icon_state = "edfcomm"
+	item_state = "edfcomm"
 	desc = "A blocky, white helmet with a red stripe above the eye. This helmet is given to officers, providing more protection due to the extra plating near the jaw and forhead. The letters, 'T.E.A.K' are stamped on the bottom-back of the helmet."
 	item_state_slots = list(
 		slot_l_hand_str = "s_suit",
@@ -158,6 +163,7 @@
 /obj/item/clothing/head/helmet/space/edf/engineer
 	name = "MDH-E7 Engineer Helmet"
 	icon_state = "edfengie"
+	item_state = "edfengie"
 	desc = "A blocky, white helmet with a yellow stripe above the eye. The letters, 'T.E.A.K' are stamped on the bottom-back of the helmet."
 	item_state_slots = list(
 		slot_l_hand_str = "s_suit",
@@ -177,6 +183,7 @@
 /obj/item/clothing/head/helmet/space/edf/medic
 	name = "MDH-M7 Medic Helmet"
 	icon_state = "edfmedic"
+	item_state = "edfmedic"
 	desc = "A blocky, white helmet with a red cross in the center of the forehead. The letters, 'T.E.A.K' are stamped on the bottom-back of the helmet."
 	item_state_slots = list(
 		slot_l_hand_str = "s_suit",

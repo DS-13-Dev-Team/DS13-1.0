@@ -1,13 +1,13 @@
 #define RANDOM_SCRUBS new/datum/atom_creator/weighted(list( \
-				list(/obj/item/clothing/under/rank/medical/scrubs, /obj/item/clothing/head/surgery), \
-				list(/obj/item/clothing/under/rank/medical/scrubs/blue, /obj/item/clothing/head/surgery/blue), \
-				list(/obj/item/clothing/under/rank/medical/scrubs/green, /obj/item/clothing/head/surgery/green), \
-				list(/obj/item/clothing/under/rank/medical/scrubs/purple, /obj/item/clothing/head/surgery/purple), \
-				list(/obj/item/clothing/under/rank/medical/scrubs/black, /obj/item/clothing/head/surgery/black), \
-				list(/obj/item/clothing/under/rank/medical/scrubs/lilac, /obj/item/clothing/head/surgery/lilac), \
-				list(/obj/item/clothing/under/rank/medical/scrubs/teal, /obj/item/clothing/head/surgery/teal), \
-				list(/obj/item/clothing/under/rank/medical/scrubs/heliodor, /obj/item/clothing/head/surgery/heliodor), \
-				list(/obj/item/clothing/under/rank/medical/scrubs/navyblue, /obj/item/clothing/head/surgery/navyblue)\
+				list(/obj/item/clothing/head/surgery), \
+				list(/obj/item/clothing/head/surgery/blue), \
+				list(/obj/item/clothing/head/surgery/green), \
+				list(/obj/item/clothing/head/surgery/purple), \
+				list(/obj/item/clothing/head/surgery/black), \
+				list(/obj/item/clothing/head/surgery/lilac), \
+				list(/obj/item/clothing/head/surgery/teal), \
+				list(/obj/item/clothing/head/surgery/heliodor), \
+				list(/obj/item/clothing/head/surgery/navyblue)\
 			) \
 		)
 
@@ -29,9 +29,7 @@
 		/obj/item/weapon/reagent_containers/glass/beaker = 2,
 		/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 2,
 		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 2,
-		/obj/random/firstaid,
-		/obj/item/weapon/storage/box/masks,
-		/obj/item/weapon/storage/box/gloves
+		/obj/random/firstaid
 	)
 
 /obj/structure/closet/secure_closet/medical2
@@ -63,19 +61,12 @@
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/medic, /obj/item/weapon/storage/backpack/satchel_med)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/med, 50),
-		/obj/item/clothing/under/rank/nursesuit,
-		/obj/item/clothing/head/nursehat,
-		/obj/item/clothing/under/rank/medical,
-		/obj/item/clothing/under/rank/nurse,
-		/obj/item/clothing/under/rank/orderly,
-		/obj/item/clothing/suit/storage/toggle/labcoat,
-		/obj/item/clothing/suit/storage/toggle/fr_jacket,
+		/obj/item/clothing/under/medical_doctor,
 		/obj/item/clothing/shoes/white,
+		/obj/item/device/flashlight,
 		/obj/item/device/radio/headset/headset_med,
 		/obj/item/taperoll/medical,
 		/obj/item/weapon/storage/belt/medical/emt,
-		RANDOM_SCRUBS,
-		RANDOM_SCRUBS
 	)
 
 /obj/structure/closet/secure_closet/paramedic
@@ -111,16 +102,16 @@
 	    /obj/item/clothing/accessory/storage/white_vest,
 	)
 
-/obj/structure/closet/secure_closet/CMO
-	name = "chief medical officer's locker"
-	req_access = list(access_cmo)
+/obj/structure/closet/secure_closet/SMO
+	name = "senior medical officer's locker"
+	req_access = list(access_smo)
 	icon_state = "cmosecure1"
 	icon_closed = "cmosecure"
 	icon_locked = "cmosecure1"
 	icon_opened = "cmosecureopen"
 	icon_off = "cmosecureoff"
 
-/obj/structure/closet/secure_closet/CMO/WillContain()
+/obj/structure/closet/secure_closet/SMO/WillContain()
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/medic, /obj/item/weapon/storage/backpack/satchel_med)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/med, 50),

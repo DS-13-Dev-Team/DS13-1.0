@@ -17,7 +17,7 @@ var/list/airlock_overlays = list()
 
 /obj/machinery/door/airlock
 	name = "airlock"
-	icon = 'icons/obj/doors/station/door.dmi'
+	icon = 'ds13/icons/obj/doors/station/door_medsec.dmi'
 	icon_state = "closed"
 	power_channel = ENVIRON
 
@@ -75,15 +75,15 @@ var/list/airlock_overlays = list()
 	var/stripe_color = null
 	var/symbol_color = null
 
-	var/fill_file = 'icons/obj/doors/station/fill_steel.dmi'
-	var/color_file = 'icons/obj/doors/station/color.dmi'
-	var/color_fill_file = 'icons/obj/doors/station/fill_color.dmi'
-	var/stripe_file = 'icons/obj/doors/station/stripe.dmi'
-	var/stripe_fill_file = 'icons/obj/doors/station/fill_stripe.dmi'
-	var/glass_file = 'icons/obj/doors/station/fill_glass.dmi'
+	var/fill_file = null
+	var/color_file = null
+	var/color_fill_file = null
+	var/stripe_file = 'ds13/icons/obj/doors/station/color.dmi'
+	var/stripe_fill_file = 'ds13/icons/obj/doors/station/color.dmi'
+	var/glass_file = null
 	var/bolts_file = 'icons/obj/doors/station/lights_bolts.dmi'
-	var/deny_file = 'icons/obj/doors/station/lights_deny.dmi'
-	var/lights_file = 'icons/obj/doors/station/lights_green.dmi'
+	var/deny_file = 'ds13/icons/obj/doors/station/lights_deny_med.dmi'
+	var/lights_file = 'ds13/icons/obj/doors/station/lights_green_med.dmi'
 	var/panel_file = 'icons/obj/doors/station/panel.dmi'
 	var/sparks_damaged_file = 'icons/obj/doors/station/sparks_damaged.dmi'
 	var/sparks_broken_file = 'icons/obj/doors/station/sparks_broken.dmi'
@@ -112,53 +112,66 @@ var/list/airlock_overlays = list()
 //regular airlock presets
 
 /obj/machinery/door/airlock/command
-	door_color = COLOR_COMMAND_BLUE
+	stripe_color = COLOR_COMMAND_BLUE
+	req_access = list(11)
 
 /obj/machinery/door/airlock/security
-	door_color = COLOR_NT_RED
+	stripe_color = COLOR_NT_RED
+	req_access = list(2)
 
 /obj/machinery/door/airlock/engineering
 	name = "Maintenance Hatch"
-	door_color = COLOR_AMBER
+	stripe_color = COLOR_AMBER
+	req_access = list(4)
 
 /obj/machinery/door/airlock/medical
-	door_color = COLOR_WHITE
 	stripe_color = COLOR_DEEP_SKY_BLUE
+	req_access = list(3)
 
 /obj/machinery/door/airlock/virology
-	door_color = COLOR_WHITE
 	stripe_color = COLOR_GREEN
+	req_access = list(4)
 
 /obj/machinery/door/airlock/mining
 	name = "Mining Airlock"
-	door_color = COLOR_PALE_ORANGE
+/*	door_color = COLOR_PALE_ORANGE*/
 	stripe_color = COLOR_BEASTY_BROWN
+	req_access = list(48)
 
 /obj/machinery/door/airlock/atmos
-	door_color = COLOR_AMBER
 	stripe_color = COLOR_CYAN
+	req_access = list(5)
 
 /obj/machinery/door/airlock/research
-	door_color = COLOR_WHITE
-	stripe_color = COLOR_NT_RED
+	stripe_color = COLOR_WHITE
+	req_access = list(4)
 
 /obj/machinery/door/airlock/science
-	door_color = COLOR_WHITE
 	stripe_color = COLOR_VIOLET
+	req_access = list(4)
 
 /obj/machinery/door/airlock/sol
 	door_color = COLOR_BLUE_GRAY
+
+/obj/machinery/door/airlock/cargo
+	stripe_color = COLOR_PALE_ORANGE
+	req_access = list(7)
 
 /obj/machinery/door/airlock/civilian
 	stripe_color = COLOR_CIVIE_GREEN
 
 /obj/machinery/door/airlock/freezer
 	name = "Freezer Airlock"
-	door_color = COLOR_WHITE
+	stripe_color = COLOR_WHITE
 
 /obj/machinery/door/airlock/maintenance
 	name = "Maintenance Access"
-	stripe_color = COLOR_AMBER
+	icon = 'ds13/icons/obj/doors/station/dulldoor.dmi'
+	icon_state = "closed"
+	deny_file = 'ds13/icons/obj/doors/station/lights_deny.dmi'
+	lights_file = 'ds13/icons/obj/doors/station/lights_green.dmi'
+	stripe_color = COLOR_PALE_ORANGE
+	req_access = list(1)
 
 //Glass airlock presets
 
@@ -348,8 +361,11 @@ var/list/airlock_overlays = list()
 /obj/machinery/door/airlock/vault
 	airlock_type = "vault"
 	name = "Vault"
-	icon = 'icons/obj/doors/vault/door.dmi'
-	fill_file = 'icons/obj/doors/vault/fill_steel.dmi'
+	icon = 'ds13/icons/obj/doors/station/metaldoor.dmi'
+	stripe_file = 'ds13/icons/obj/doors/station/color.dmi'
+	stripe_fill_file = 'ds13/icons/obj/doors/station/color.dmi'
+	deny_file = 'ds13/icons/obj/doors/station/lights_deny.dmi'
+	lights_file = 'ds13/icons/obj/doors/station/lights_green.dmi'
 	explosion_resistance = 20
 	opacity = 1
 	secured_wires = 1
@@ -358,6 +374,15 @@ var/list/airlock_overlays = list()
 
 /obj/machinery/door/airlock/vault/bolted
 	locked = 1
+
+/obj/machinery/door/airlock/vault/security
+	name = "Security Armory"
+	stripe_color = COLOR_NT_RED
+	req_access = list(2)
+
+/obj/machinery/door/airlock/vault/engineering
+	stripe_color = COLOR_AMBER
+	req_access = list(4)
 
 /obj/machinery/door/airlock/Process()
 	if(main_power_lost_until > 0 && world.time >= main_power_lost_until)
