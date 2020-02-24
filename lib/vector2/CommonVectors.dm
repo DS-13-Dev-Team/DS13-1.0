@@ -39,6 +39,13 @@ Vector2
 			return delta
 
 	proc
+		//Returns a directional vector and a magnitude between
+		DirMagBetween(var/atom/A, var/atom/B)
+			if (get_turf(A) == get_turf(B))
+				return list("direction" = Vector2.Zero, "magnitude" = 0)
+			var/vector2/delta = new /vector2(B.x - A.x, B.y - A.y)
+			return list("direction" = delta.ToMagnitude(1), "magnitude" = delta.Magnitude())
+	proc
 		MagnitudeBetween(var/atom/A, var/atom/B, var/magnitude)
 			var/vector2/delta = new /vector2(B.x - A.x, B.y - A.y)
 			delta = delta.ToMagnitude(magnitude)
@@ -48,3 +55,8 @@ Vector2
 		TurfAtMagnitudeBetween(var/atom/A, var/atom/B, var/magnitude)
 			var/vector2/delta = MagnitudeBetween(A, B, magnitude)
 			return locate(A.x + delta.x, A.y + delta.y, A.z)
+
+	proc
+		RandomDirection()
+			var/vector2/delta = new /vector2(rand(), rand())
+			return delta.ToMagnitude(1)

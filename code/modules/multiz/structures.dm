@@ -17,6 +17,7 @@
 
 	var/const/climb_time = 2 SECONDS
 	var/static/list/climbsounds = list('sound/effects/ladder.ogg','sound/effects/ladder2.ogg','sound/effects/ladder3.ogg','sound/effects/ladder4.ogg')
+	mass = 10	//Structures tend to be heavier, baseline 10kg mass
 
 /obj/structure/ladder/Initialize()
 	. = ..()

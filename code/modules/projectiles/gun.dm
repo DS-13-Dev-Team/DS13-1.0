@@ -9,6 +9,8 @@
 	var/name = "default"
 	var/list/settings = list()
 	var/obj/item/weapon/gun/gun = null
+	var/override_fire = FALSE	//If true, this firemode has its own firing proc which replaces that of the gun
+	var/list/original_vars = list()
 
 /datum/firemode/New(obj/item/weapon/gun/_gun, list/properties = null)
 	..()
@@ -30,6 +32,7 @@
 	gun = _gun
 	for(var/propname in settings)
 		if (propname in gun.vars)
+			original_vars[propname] = gun.vars[propname]
 			gun.vars[propname] = settings[propname]
 
 
@@ -37,7 +40,10 @@
 	gun = _gun
 	for(var/propname in settings)
 		if (propname in gun.vars)
-			gun.vars[propname] = initial(gun.vars[propname])
+			gun.vars[propname] = original_vars[propname]
+
+/datum/firemode/proc/fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+	return
 
 //Called whenever the firemode is switched to, or the gun is picked up while its active
 /datum/firemode/proc/update()
@@ -70,6 +76,8 @@
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
 	var/burst_delay = 2	//delay between shots, if firing in bursts
+	var/windup_time	= 0	//A delay between pressing the button, and actually firing
+	var/windup_sound	//Sound played during windup time
 	var/move_delay = 1
 	var/fire_sound = 'sound/weapons/gunshot/gunshot.ogg'
 	var/fire_sound_text = "gunshot"
@@ -106,6 +114,9 @@
 
 	var/projectile_type = null	//What type of projectile will we fire when the trigger is pulled? If this is set, it overrides default ammo-based typing in projectile guns
 	var/ammo_cost = 1	//How many shots' worth of ammo do we consume to fire once?
+
+	var/mag_insert_sound
+	var/mag_remove_sound
 
 /obj/item/weapon/gun/New()
 	..()
@@ -263,11 +274,20 @@
 /obj/item/weapon/gun/proc/has_ammo()	//Does this gun have enough ammo/power/resources to fire at least once?
 	return TRUE
 
-
+/obj/item/weapon/gun/is_held_twohanded(var/mob/user)
+	.=..()
+	if (.)
+		if (!user.can_wield_item(src))
+			return FALSE
 
 //Safety checks are done by the time fire is called
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
-	if(!user || !target) return
+	var/datum/firemode/current = firemodes[sel_mode]
+	if (current.override_fire)
+		current.fire(target, user, clickparams, pointblank, reflex)
+		return
+
+	if(!user || !target) return	//Except this one, apparently
 
 
 	add_fingerprint(user)
@@ -277,11 +297,16 @@
 
 	last_safety_check = world.time
 	var/shoot_time = (burst - 1)* burst_delay
-	user.setClickCooldown(shoot_time) //no clicking on things while shooting
-	user.SetMoveCooldown(shoot_time) //no moving while shooting either
-	next_fire_time = world.time + shoot_time
+	user.setClickCooldown(shoot_time+windup_time) //no clicking on things while shooting
+	user.SetMoveCooldown(shoot_time+windup_time) //no moving while shooting either
+	next_fire_time = world.time + shoot_time + windup_time
 
-	var/held_twohanded = (user.can_wield_item(src) && src.is_held_twohanded(user))
+	var/held_twohanded = is_held_twohanded(user)
+
+	if (windup_time)
+		if (windup_sound)
+			playsound(user, windup_sound, 100, 1)
+		sleep(windup_time)
 
 	//actually attempt to shoot
 	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
@@ -657,4 +682,14 @@
 
 
 
+
+//Ammo handling, used by most types of weapons
+/obj/item/weapon/gun/proc/unload_ammo(mob/user)
+	playsound(loc, mag_remove_sound, 50, 1)
+
+/obj/item/weapon/gun/proc/load_ammo(var/obj/item/A, mob/user)
+	playsound(loc, mag_insert_sound, 50, 1)
+
+/obj/item/weapon/gun/attackby(var/obj/item/A as obj, mob/user as mob)
+	load_ammo(A, user)
 

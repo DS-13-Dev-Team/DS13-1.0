@@ -16,6 +16,7 @@
 
 	var/list/footstep_sounds	//footstep sounds when stepped on
 	var/step_priority = 1	//Priority of the sound attached to this
+	mass = 10
 
 
 /obj/structure/proc/get_footstep_sound()

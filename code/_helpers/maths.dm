@@ -172,6 +172,38 @@
 	return output
 
 
+//This proc returns all turfs which fall inside a cone stretching Distance tiles from origin, in direction, and being angle degrees wide
+/proc/get_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
+
+	if (!istype(direction))
+		direction = Vector2.FromDir(direction)	//One of the byond direction constants may be passed in
+
+	angle *= 0.5//We split the angle in two for the arc function
+
+	if (!istype(origin))
+		origin = get_turf(origin)
+
+	//First of all, lets find a centre point. Halfway between origin and the edge of the cone
+	var/turf/halfpoint = locate(origin.x + (direction.x * distance * 0.5), origin.y + (direction.y * distance * 0.5), origin.z)
+
+	//And from this halfpoint, lets get a square area of turfs which is every possible turf that could be in the cone
+	//We use half the distance as radius, +1 to account for any rounding errors. Its not a big deal if we get some unnecessary turfs in here
+	var/list/turfs = trange(((distance*0.5) + 1), halfpoint)
+
+	//Alright next up, we loop through the turfs. for each one:
+
+	for (var/turf/T as anything in turfs)
+		//1. We check if its distance is less than the requirement. This is cheap. If it is...
+		var/dist_delta = get_dist_euclidian(origin, T)
+		if (dist_delta > distance)
+			turfs -= T
+
+		//2. We check if it falls within the desired angle
+		if (!target_in_arc(origin, T, direction, angle))
+			turfs -= T
+
+	//Alright we've removed all the turfs which aren't in the cone!
+	return turfs
 
 #define CLAMP(CLVALUE,CLMIN,CLMAX) ( max( (CLMIN), min((CLVALUE), (CLMAX)) ) )
 

@@ -17,16 +17,15 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force, 
 	caliber = "pulse"
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/pulse
-	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
-	mag_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
+	mag_insert_sound = 'sound/weapons/guns/interaction/pulse_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'
 	one_hand_penalty = 6	//Don't try to fire this with one hand
-	dispersion = list()
 
 	screen_shake = 0	//It is good with recoil
 
 	firemodes = list(
 		list(mode_name="full auto",  mode_type = /datum/firemode/automatic/pulserifle, fire_delay=1),
-		list(mode_name="grenade launcher",  ammo_cost = 25, projectile_type = /obj/item/projectile/bullet/impact_grenade, fire_delay=20)
+		list(mode_name="grenade launcher",  ammo_cost = 25, windup_time = 0.5 SECONDS, windup_sound = 'sound/weapons/guns/fire/pulse_grenade_windup.ogg', projectile_type = /obj/item/projectile/bullet/impact_grenade, fire_delay=20)
 		)
 
 /*-----------------------
@@ -59,6 +58,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force, 
 	step_delay = 1.5
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
+	fire_sound='sound/weapons/guns/fire/pulse_shot.ogg'
 
 /obj/item/ammo_magazine/pulse
 	name = "Pulse Rounds"
@@ -89,7 +89,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force, 
 	check_armour = "bomb"
 	var/exploded = FALSE
 	step_delay = 2.5
-
+	fire_sound='sound/weapons/guns/fire/pulse_grenade.ogg'
 
 /obj/item/projectile/bullet/impact_grenade/on_hit(var/atom/target, var/blocked = 0)
 	if (!exploded)
@@ -109,5 +109,5 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force, 
 //----------------------------
 /obj/effect/projectile/pulse/muzzle/light
 	icon_state = "muzzle_pulse_light"
-	light_max_bright = 2
+	light_max_bright = 1
 	light_color = COLOR_DEEP_SKY_BLUE
