@@ -94,7 +94,7 @@
 	containername = "\improper Medical surplus equipment"
 	access = access_medical
 
-/decl/hierarchy/supply_pack/medical/cmogear
+/decl/hierarchy/supply_pack/medical/smogear
 	name = "Chief medical officer equipment"
 	contains = list(/obj/item/weapon/storage/belt/medical,
 					/obj/item/device/radio/headset/heads/cmo,
@@ -112,8 +112,8 @@
 					/obj/item/weapon/reagent_containers/syringe)
 	cost = 60
 	containertype = /obj/structure/closet/crate/secure
-	containername = "\improper Chief medical officer equipment"
-	access = access_cmo
+	containername = "\improper Senior medical officer equipment"
+	access = access_smo
 
 /decl/hierarchy/supply_pack/medical/doctorgear
 	name = "Medical Doctor equipment"

@@ -45,10 +45,6 @@
 	icon_state = "pda-m"
 	icon_state_unpowered = "pda-m"
 
-/obj/item/modular_computer/pda/chemistry
-	icon_state = "pda-m"
-	icon_state_unpowered = "pda-m"
-
 /obj/item/modular_computer/pda/engineering
 	icon_state = "pda-e"
 	icon_state_unpowered = "pda-e"
@@ -57,13 +53,9 @@
 	icon_state = "pda-s"
 	icon_state_unpowered = "pda-s"
 
-/obj/item/modular_computer/pda/forensics
-	icon_state = "pda-s"
-	icon_state_unpowered = "pda-s"
-
 /obj/item/modular_computer/pda/science
-	icon_state = "pda-nt"
-	icon_state_unpowered = "pda-nt"
+	icon_state = "pda-sci"
+	icon_state_unpowered = "pda-sci"
 
 /obj/item/modular_computer/pda/heads
 	name = "command PDA"
@@ -73,25 +65,33 @@
 /obj/item/modular_computer/pda/heads/paperpusher
 	stored_pen = /obj/item/weapon/pen/fancy
 
-/obj/item/modular_computer/pda/heads/hop
-	icon_state = "pda-hop"
-	icon_state_unpowered = "pda-hop"
+/obj/item/modular_computer/pda/heads/fl
+	icon_state = "pda-fl"
+	icon_state_unpowered = "pda-fl"
 
-/obj/item/modular_computer/pda/heads/hos
-	icon_state = "pda-hos"
-	icon_state_unpowered = "pda-hos"
+/obj/item/modular_computer/pda/heads/cseco
+	icon_state = "pda-cseco"
+	icon_state_unpowered = "pda-cseco"
 
 /obj/item/modular_computer/pda/heads/ce
 	icon_state = "pda-ce"
 	icon_state_unpowered = "pda-ce"
 
-/obj/item/modular_computer/pda/heads/cmo
-	icon_state = "pda-cmo"
-	icon_state_unpowered = "pda-cmo"
+/obj/item/modular_computer/pda/heads/smo
+	icon_state = "pda-smo"
+	icon_state_unpowered = "pda-smo"
 
-/obj/item/modular_computer/pda/heads/rd
-	icon_state = "pda-rd"
-	icon_state_unpowered = "pda-rd"
+/obj/item/modular_computer/pda/heads/cscio
+	icon_state = "pda-cscio"
+	icon_state_unpowered = "pda-cscio"
+
+/obj/item/modular_computer/pda/heads/so
+	icon_state = "pda-so"
+	icon_state_unpowered = "pda-so"
+
+/obj/item/modular_computer/pda/heads/dom
+	icon_state = "pda-dom"
+	icon_state_unpowered = "pda-dom"
 
 /obj/item/modular_computer/pda/captain
 	icon_state = "pda-c"
@@ -105,10 +105,6 @@
 	icon_state = "pda-sup"
 	icon_state_unpowered = "pda-sup"
 
-/obj/item/modular_computer/pda/syndicate
-	icon_state = "pda-syn"
-	icon_state_unpowered = "pda-syn"
-
-/obj/item/modular_computer/pda/roboticist
-	icon_state = "pda-robot"
-	icon_state_unpowered = "pda-robot"
+/obj/item/modular_computer/pda/mining
+	icon_state = "pda-mine"
+	icon_state_unpowered = "pda-mine"

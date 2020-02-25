@@ -42,16 +42,16 @@
 		/obj/random/tool
 	)
 
-/obj/structure/closet/secure_closet/RD
-	name = "research director's locker"
-	req_access = list(access_rd)
+/obj/structure/closet/secure_closet/CSCIO
+	name = "chief science officer's locker"
+	req_access = list(access_cscio)
 	icon_state = "rdsecure1"
 	icon_closed = "rdsecure"
 	icon_locked = "rdsecure1"
 	icon_opened = "rdsecureopen"
 	icon_off = "rdsecureoff"
 
-/obj/structure/closet/secure_closet/RD/WillContain()
+/obj/structure/closet/secure_closet/CSCIO/WillContain()
 	return list(
 		/obj/item/clothing/suit/bio_suit/scientist = 2,
 		/obj/item/clothing/under/rank/research_director,

@@ -115,7 +115,7 @@
 
 /obj/effect/landmark/corpse/chef
 	name = "Chef"
-	corpse_outfits = /decl/hierarchy/outfit/job/line_cook
+	corpse_outfits = /decl/hierarchy/outfit/job/service/line_cook
 
 /obj/effect/landmark/corpse/doctor
 	name = "Doctor"
@@ -131,7 +131,7 @@
 
 /obj/effect/landmark/corpse/miner
 	name = "Miner"
-	corpse_outfits = /decl/hierarchy/outfit/job/cargo/planet_cracker
+	corpse_outfits = /decl/hierarchy/outfit/job/mining/planet_cracker
 
 /obj/effect/landmark/corpse/bridgeofficer
 	name = "Bridge Officer"

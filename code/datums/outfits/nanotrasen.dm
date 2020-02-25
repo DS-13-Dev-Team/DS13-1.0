@@ -3,7 +3,7 @@
 	uniform = /obj/item/clothing/under/rank/centcom
 	shoes = /obj/item/clothing/shoes/laceup
 	gloves = /obj/item/clothing/gloves/white
-	l_ear = /obj/item/device/radio/headset/heads/hop
+	l_ear = /obj/item/device/radio/headset/heads/fl
 	glasses = /obj/item/clothing/glasses/sunglasses
 
 	id_slot = slot_wear_id

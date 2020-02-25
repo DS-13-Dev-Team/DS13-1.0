@@ -8,8 +8,8 @@
 	supervisors = "the CEC"
 	selection_color = "#1d1d4f"
 	req_admin_notify = 1
-	minimal_player_age = 14
-	ideal_character_age = 60
+	minimal_player_age = 18
+	ideal_character_age = 50
 
 	access = list(access_bridge, access_security, access_maint_tunnels, access_service,
 				access_cargo, access_mining, access_engineering,
@@ -19,14 +19,14 @@
 
 /datum/job/fl
 	title = "First Lieutenant"
-	department_flag = COM|CIV
+	department_flag = COM
 	head_position = 1
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "the Captain"
 	selection_color = "#2f2f7f"
 	req_admin_notify = 1
-	minimal_player_age = 7
+	minimal_player_age = 18
 	ideal_character_age = 35
 
 	access = list(access_bridge, access_security, access_armory, access_maint_tunnels)
@@ -34,13 +34,13 @@
 
 /datum/job/bo
 	title = "Bridge Ensign"
-	department_flag = CIV
+	department_flag = COM
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the captain and the first lieutenant"
+	supervisors = "the Captain and First Lieutenant"
 	selection_color = "#2f2f7f"
-	minimal_player_age = 2
-	ideal_character_age = 22
+	minimal_player_age = 18
+	ideal_character_age = 27
 
 	access = list(access_bridge, access_security, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/bo
