@@ -30,6 +30,7 @@
 
 /datum/firemode/proc/apply_to(obj/item/weapon/gun/_gun)
 	gun = _gun
+	gun.current_firemode = src
 	for(var/propname in settings)
 		if (propname in gun.vars)
 			original_vars[propname] = gun.vars[propname]
@@ -38,11 +39,16 @@
 
 /datum/firemode/proc/unapply_to(obj/item/weapon/gun/_gun)
 	gun = _gun
+	if (gun.current_firemode == src)
+		gun.current_firemode = null
 	for(var/propname in settings)
 		if (propname in gun.vars)
 			gun.vars[propname] = original_vars[propname]
 
 /datum/firemode/proc/fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+	return
+
+/datum/firemode/proc/on_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	return
 
 //Called whenever the firemode is switched to, or the gun is picked up while its active
@@ -96,6 +102,7 @@
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
+	var/datum/firemode/current_firemode
 	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 	var/firing = FALSE //True if currently firing, limited implementation, mostly for sustained/automatic weapons
 
@@ -209,6 +216,9 @@
 
 	//Check that the gun is able to fire
 	if (!can_fire(A, user, params))
+		//If its not able to fire, lets check why
+		if(safety() || !has_ammo())
+			handle_click_empty()
 		return
 
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
@@ -282,9 +292,9 @@
 
 //Safety checks are done by the time fire is called
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
-	var/datum/firemode/current = firemodes[sel_mode]
-	if (current.override_fire)
-		current.fire(target, user, clickparams, pointblank, reflex)
+
+	if (current_firemode.override_fire)
+		current_firemode.fire(target, user, clickparams, pointblank, reflex)
 		return
 
 	if(!user || !target) return	//Except this one, apparently
@@ -314,23 +324,31 @@
 		var/obj/projectile = consume_next_projectile(user)
 		if(!projectile)
 			handle_click_empty(user)
+			current_firemode.on_fire(target, user, clickparams, pointblank, reflex, FALSE)	//Tell the firemode that we tried and failed to fire
 			break
 
-		process_accuracy(projectile, user, target, i, held_twohanded)
+		//Consume next projectile may just return TRUE instead of an object. In that case we don't launch any bullets, but still count it as a successful fire
+		if (istype(projectile))
 
-		if(pointblank)
-			process_point_blank(projectile, user, target)
+			process_accuracy(projectile, user, target, i, held_twohanded)
 
-		if(process_projectile(projectile, user, target, user.zone_sel.selecting, clickparams))
-			handle_post_fire(user, target, pointblank, reflex)
-			update_icon()
+			if(pointblank)
+				process_point_blank(projectile, user, target)
 
-		if(i < burst)
-			sleep(burst_delay)
+			process_projectile(projectile, user, target, user.zone_sel.selecting, clickparams)
 
-		if(!(target && target.loc))
-			target = targloc
-			pointblank = 0
+
+			if(i < burst)
+				sleep(burst_delay)
+
+			if(!(target && target.loc))
+				target = targloc
+				pointblank = 0
+
+		play_fire_sound(user,projectile)
+
+		handle_post_fire(user, target, pointblank, reflex)
+		current_firemode.on_fire(target, user, clickparams, pointblank, reflex, TRUE)//Tell the firemode that we successfully fired
 
 	//update timing
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
@@ -492,8 +510,7 @@
 
 	var/launched = !P.launch_from_gun(target, user, src, target_zone, x_offset, y_offset)
 
-	if(launched)
-		play_fire_sound(user,P)
+
 
 	return launched
 

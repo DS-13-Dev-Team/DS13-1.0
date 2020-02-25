@@ -41,7 +41,6 @@
 	var/falloff_factor = 0.9
 	var/effect_type = /obj/effect/effect/forceblast
 	var/windup_time = 0
-	override_fire = TRUE
 
 /datum/firemode/forcegun/blast
 	firing_cone = 80
@@ -62,26 +61,11 @@
 	effect_type = /obj/effect/effect/forceblast_focus_spawner
 	windup_time = 1.5 SECONDS
 
-/datum/firemode/forcegun/fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
-	world << "Doing forcegun fire [target], [user]"
-	if (!gun.consume_next_projectile(user))
-		gun.handle_click_empty(user)
+/datum/firemode/forcegun/on_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0, var/fired = TRUE)
+	if (!fired)
 		return
 
-	//update timing
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-	user.SetMoveCooldown(gun.move_delay)
-	gun.next_fire_time = world.time + windup_time
-
-	if (windup_time)
-		if (gun.windup_sound)
-			playsound(user, gun.windup_sound, 100, 1)
-		user.shake_animation(40)
-		sleep(windup_time)
-
-	gun.play_fire_sound(user,null)
-	gun.next_fire_time = world.time + gun.fire_delay
-	var/held_twohanded = gun.is_held_twohanded(user)//We'll use this in a moment
+	var/held_twohanded = gun.is_held_twohanded(user)
 
 	var/turf/origin = get_turf(user)
 
@@ -89,7 +73,7 @@
 	var/list/affected_turfs = get_cone(origin, fire_direction, firing_range, firing_cone)
 
 	//Spawn the effect, and also rotate it
-	var/obj/effect/effect/forceblast/FB = new effect_type(origin, 0.6 SECONDS, fire_direction.Rotation())
+	new effect_type(origin, 0.6 SECONDS, fire_direction.Rotation())
 
 	for (var/turf/T as anything in affected_turfs)
 		//debug_mark_turf(T)
@@ -135,7 +119,6 @@
 	var/fadeout_time = 0.2 SECONDS
 
 /obj/effect/effect/forceblast/New(var/atom/location, var/_lifespan = 2 SECOND, var/matrix/rotation)
-	world << "Forceblast effect created at [jumplink(loc)]"
 	lifespan = _lifespan
 	if (rotation)
 		transform = rotation
@@ -143,7 +126,6 @@
 	target_scale = max_length / 4
 	target_scale_minus_one = (max_length - 1) / 4
 
-	world << "Target scale is [target_scale]"
 
 	//How fast is the scale growing? We'll use this to calculate something
 	scale_growth = lifespan / max_length

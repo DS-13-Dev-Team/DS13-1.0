@@ -325,7 +325,7 @@
 	return bullets
 
 /obj/item/weapon/gun/projectile/has_ammo()
-	return (getAmmo() > ammo_cost)
+	return (getAmmo() >= ammo_cost)
 
 
 /* Unneeded -- so far.
