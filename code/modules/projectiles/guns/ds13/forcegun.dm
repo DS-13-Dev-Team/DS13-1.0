@@ -10,13 +10,12 @@
 /obj/item/weapon/gun/energy/forcegun
 	name = "Handheld Graviton Accelerator"
 	desc = "A basic energy-based gun."
-	icon_state = "energy"
-	fire_sound = 'sound/weapons/Taser.ogg'
-	fire_sound_text = "laser blast"
+	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
+	icon_state = "forcegun"
+	item_state = "forcegun"
 
-	charge_cost = 40 //How much energy is needed to fire.
-	max_shots = 5 //Determines the capacity of the weapon's power cell. Specifying a cell_type overrides this value.
-	cell_type = null	//TODO: Add specific cell type as ammo
+	charge_cost = 1000 //Five shots per battery
+	cell_type = /obj/item/weapon/cell/force
 	projectile_type = null
 	charge_meter = FALSE	//if set, the icon state will be chosen based on the current charge
 	mag_insert_sound = 'sound/weapons/guns/interaction/force_magin.ogg'
@@ -93,7 +92,7 @@
 	if (!held_twohanded)
 		user.unEquip(gun)
 		gun.throw_at(pick(trange(8, user)), 8, 1, null)
-		user.visible_message(SPAN_DANGER("The [src] goes flying out of [user]'s weak grip!"),SPAN_DANGER("The [src] goes flying out of your weak grip!"))
+		user.visible_message(SPAN_DANGER("The [gun] goes flying out of [user]'s weak grip!"),SPAN_DANGER("The [gun] goes flying out of your weak grip!"))
 
 
 
@@ -156,3 +155,27 @@
 			new /obj/effect/effect/forceblast/focus(location, _lifespan, rotation)
 			sleep(rand_between(1,3))
 		qdel(src)
+
+
+/*--------------------------
+	Ammo
+---------------------------*/
+
+/obj/item/weapon/cell/force
+	name = "force energy"
+	desc = "A heavy power pack designed for use with the handheld graviton accelerator"
+	origin_tech = list(TECH_POWER = 6)
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "forcebattery"
+	w_class = ITEM_SIZE_LARGE
+	maxcharge = 5000
+	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
+
+/obj/item/weapon/cell/force/update_icon()
+	overlays.Cut()
+	var/overlay_state
+	var/percentage = percent()
+	if (percentage >= 20)
+		overlay_state = "fb-[round(percentage, 20)]"
+	if(overlay_state)
+		overlays += image('icons/obj/ammo.dmi', overlay_state)

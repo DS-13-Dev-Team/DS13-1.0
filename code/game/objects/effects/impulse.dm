@@ -45,6 +45,20 @@
 	spawn()
 		throw_at(pushtarget, pushdist, 1, null)
 
+/mob/living/var/knockdown_threshold_factor = 2	//Requires a force at least this * mass to knock down this mob
+
+/mob/living/apply_impulse(var/direction, var/strength)
+	//First of all since living creatures are unpredictable, strength gets some random variance
+	strength *= rand_between(0.85, 1.15)
+
+	.=..()	//Call parent to push us
+
+
+	//We may be knocked off our feet by the force
+	var/knockdown_time = floor(strength / (mass * knockdown_threshold_factor))
+	if (knockdown_time >= 1)
+		Weaken(knockdown_time)
+
 /*---------------------------------------------------------
 	Helper Procs
 ----------------------------------------------------------*/

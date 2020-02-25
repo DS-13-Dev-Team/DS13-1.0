@@ -296,7 +296,8 @@
 	icon_state = "energykill100"
 
 /obj/random/energy/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/gun/energy/laser = 4,
+	return pickweight(list(/obj/item/weapon/gun/energy/forcegun = 1))
+	/*return pickweight(list(/obj/item/weapon/gun/energy/laser = 4,
 				/obj/item/weapon/gun/energy/gun = 3,
 				/obj/item/weapon/gun/energy/retro = 2,
 				/obj/item/weapon/gun/energy/lasercannon = 2,
@@ -307,7 +308,7 @@
 				/obj/item/weapon/gun/energy/toxgun = 3,
 				/obj/item/weapon/gun/energy/taser = 4,
 				/obj/item/weapon/gun/energy/crossbow/largecrossbow = 2,
-				/obj/item/weapon/gun/energy/stunrevolver = 4))
+				/obj/item/weapon/gun/energy/stunrevolver = 4))*/
 
 /obj/random/projectile
 	name = "Random Projectile Weapon"
@@ -316,7 +317,9 @@
 	icon_state = "revolver"
 
 /obj/random/projectile/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1))
+	return pickweight(list(/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1,
+	/obj/item/weapon/gun/projectile/automatic/bullpup = 0.5,
+	/obj/item/weapon/gun/projectile/ripper = 1))
 	/*
 	return pickweight(list(/obj/item/weapon/gun/projectile/shotgun/pump = 3,
 				/obj/item/weapon/gun/projectile/automatic/c20r = 2,
@@ -361,7 +364,8 @@
 /obj/random/ammo/item_to_spawn()
 	return pickweight(list(/obj/item/ammo_magazine/pulse = 2,
 	/obj/item/ammo_magazine/sawblades = 1,
-	/obj/item/ammo_magazine/bullpup = 1))
+	/obj/item/ammo_magazine/bullpup = 1,
+	/obj/item/weapon/cell/force = 0.5))
 
 /obj/random/action_figure
 	name = "random action figure"
