@@ -770,11 +770,14 @@
 		var/mob/living/user = loc
 
 		active_aiming_mode = set_extension(user, selected_aiming_mode, src)
+		return TRUE	//Return true if we changed aiming state
+
 
 /obj/item/weapon/gun/proc/disable_aiming_mode()
 	if (active_aiming_mode)
 		active_aiming_mode.remove()
 		active_aiming_mode = null
+		return TRUE	//Return true if we changed aiming state
 
 //Switches to the next aiming mode
 /obj/item/weapon/gun/proc/cycle_aiming_mode()

@@ -27,6 +27,7 @@
 	var/damage_mod	=	0	//A percentage of penalty/bonus damage applied to the gun while aiming. Generally -1 to 1 range. 0.1 = 10% bonus
 
 
+
 /datum/extension/aim_mode/New(var/atom/holder, var/obj/item/weapon/gun/_gun)
 	user = holder
 	gun = _gun
@@ -54,7 +55,7 @@
 
 //Long guns are better at this
 /datum/extension/aim_mode/rifle
-	view_offset	=	3*WORLD_ICON_SIZE
+	view_offset	=	4*WORLD_ICON_SIZE
 	accuracy_mod	=	10
 	move_mod	=	-0.6
 
