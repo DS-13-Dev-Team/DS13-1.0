@@ -90,11 +90,11 @@
 	var/fire_anim = null
 	var/screen_shake = 0 //shouldn't be greater than 2 unless zoomed
 	var/silenced = 0
-	var/accuracy = 0   //accuracy is measured in tiles. +1 accuracy means that everything is effectively one tile closer for the purpose of miss chance, -1 means the opposite. launchers are not supported, at the moment.
-	var/scoped_accuracy = null
-	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
+	var/move_accuracy_mod	=	-10	//Modifier applied to accuracy while moving. Should generally be negative
+
+
 	var/list/dispersion = list(0)
-	var/one_hand_penalty
+
 	var/wielded_item_state
 	var/combustion	//whether it creates hotspot when fired
 
@@ -106,11 +106,28 @@
 	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 	var/firing = FALSE //True if currently firing, limited implementation, mostly for sustained/automatic weapons
 
+	//Accuracy handling
+	var/accuracy = 0   //Default 0: Percentage bonus or penalty to accuracy, this is applied to the base accuracy of projectiles (usually 100)
+	var/one_hand_penalty
+	var/scoped_accuracy = null
+	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
+
+	//Damage handling
+	var/damage_factor = 1	//Multiplier on damage
+
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
 						//0 for one bullet after tarrget moves and aim is lowered
 	var/multi_aim = 0 //Used to determine if you can target multiple people.
 	var/tmp/list/mob/living/aim_targets //List of who yer targeting.
+
+
+	//Aiming Modes: Scopes, ironsights, etc
+	var/selected_aiming_mode	//Typepath of the aiming mode datum we will create when we activate aiming mode
+	var/datum/extension/aim_mode/active_aiming_mode	//Reference to an aiming mode extension we are currently using.
+	var/list/aiming_modes = list(/datum/extension/aim_mode/basic)	//Possible aiming modes this gun can use
+	var/datum/click_handler/rmb_aim/ACH	//Click handler used for rightclick toggling
+
 	var/tmp/mob/living/last_moved_mob //Used to fire faster at more than one person.
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
@@ -141,6 +158,9 @@
 	if (firemodes.len)
 		var/datum/firemode/F = firemodes[sel_mode]
 		F.apply_to(src)
+
+	if (aiming_modes.len)
+		selected_aiming_mode = aiming_modes[1]
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
@@ -455,35 +475,33 @@
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
 
-	var/acc_mod = burst_accuracy[min(burst, burst_accuracy.len)]
+	P.damage *= damage_factor
+	var/acc_mod = accuracy
+	if (burst_accuracy)
+		acc_mod += burst_accuracy[min(burst, burst_accuracy.len)]
 	var/disp_mod = dispersion[min(burst, dispersion.len)]
 	var/stood_still = round((world.time - user.l_move_time)/15)
-	if(stood_still)
-		acc_mod += 1 * max(2, stood_still)
-		if(stood_still > 5)
-			acc_mod += accuracy
+	if(stood_still < 1 SECOND)
+		acc_mod += move_accuracy_mod
 
-	if(one_hand_penalty)
-		if(!stood_still)
-			acc_mod -= 1
-		if(!held_twohanded)
-			acc_mod += -ceil(one_hand_penalty/2)
-			disp_mod += one_hand_penalty*0.5 //dispersion per point of two-handedness
+	if(one_hand_penalty && !held_twohanded)
+		acc_mod += one_hand_penalty
+		disp_mod += one_hand_penalty*0.5 //dispersion per point of two-handedness
 
 	if(burst > 1 && !user.skill_check(SKILL_WEAPONS, SKILL_ADEPT))
 		acc_mod -= 1
 		disp_mod += 0.5
 
 	//Accuracy modifiers
-	P.accuracy = accuracy + acc_mod
+	P.accuracy += acc_mod
 	P.dispersion = disp_mod
 
-	//accuracy bonus from aiming
+	/*accuracy bonus from aiming
 	if (aim_targets && (target in aim_targets))
 		//If you aim at someone beforehead, it'll hit more often.
 		//Kinda balanced by fact you need like 2 seconds to aim
 		//As opposed to no-delay pew pew
-		P.accuracy += 2
+		P.accuracy += 2*/
 
 	P.accuracy += user.ranged_accuracy_mods()
 
@@ -671,32 +689,35 @@
 		new_mode.update(force_state)
 
 
-
 //Updating firing modes at appropriate times
 /obj/item/weapon/gun/equipped(var/mob/user, var/slot)
 	.=..()
 	update_icon()
 	update_firemode()
+	update_aiming_mode()
 
 /obj/item/weapon/gun/dropped(mob/user)
 	.=..()
 	update_firemode(FALSE)
+	update_aiming_mode()
 
 /obj/item/weapon/gun/swapped_from()
 	.=..()
 	update_icon()
 	update_firemode(FALSE)
+	update_aiming_mode()
 
 /obj/item/weapon/gun/swapped_to()
 	.=..()
 	update_icon()
 	update_firemode()
+	update_aiming_mode()
 
 
 //Used by sustained weapons. Call to make the gun stop doing its thing
 /obj/item/weapon/gun/proc/stop_firing()
 	update_firemode()
-
+	update_aiming_mode()
 
 
 
@@ -710,3 +731,78 @@
 /obj/item/weapon/gun/attackby(var/obj/item/A as obj, mob/user as mob)
 	load_ammo(A, user)
 
+
+
+/*------------------------
+	Aiming Mode Handling
+-------------------------*/
+#define AIM_NO_CLICKHANDLER	1	//We're fine to enter aiming modes, but not to use the RMB click handler
+#define AIM_FINE	2	//We're fine for aiming and click handler
+//Check any existing aiming mode, and click handler. Called regularly from lots of places
+/obj/item/weapon/gun/proc/update_aiming_mode()
+	if (active_aiming_mode)
+		active_aiming_mode.safety()
+
+	.=aiming_safety()
+
+	//If we're good to aim and don't already have a click handler
+	if (.==AIM_FINE && !ACH)
+		//Then lets make one
+		var/mob/living/user = loc
+		ACH = user.PushClickHandler(/datum/click_handler/rmb_aim)
+		ACH.gun = src
+
+//Enables if not enabled
+//Disables if enabled
+/obj/item/weapon/gun/proc/toggle_aiming_mode()
+	if (active_aiming_mode)
+		disable_aiming_mode()
+	else
+		enable_aiming_mode()
+
+/obj/item/weapon/gun/proc/enable_aiming_mode()
+	.=update_aiming_mode()	//First of all, update. If theres an existing one gone stale, this will remove it
+	if (active_aiming_mode)
+		return	//If one still exists, leave it in place, we are done here
+
+	//Okay lets create the aim extension on the user!
+	if (.)//Update aiming mode did the safety checks for us
+		var/mob/living/user = loc
+
+		active_aiming_mode = set_extension(user, selected_aiming_mode, src)
+
+/obj/item/weapon/gun/proc/disable_aiming_mode()
+	if (active_aiming_mode)
+		active_aiming_mode.remove()
+		active_aiming_mode = null
+
+
+/obj/item/weapon/gun/AltClick(var/mob/user)
+	if (user == loc && is_held())
+		toggle_aiming_mode()
+
+
+/obj/item/weapon/gun/proc/aiming_safety()
+	if (is_held())
+		.=AIM_FINE	//
+		var/mob/user = loc
+		if (ACH)
+			var/remove = FALSE
+			if (ACH.user != user)
+				remove = TRUE 	//If the click handler has the wrong user, terminate it
+				//But we can still make another immediately after this proc, so don't change return yet
+
+			if (safety())
+				remove = TRUE	//Click handler is not active while safety is on
+				.=AIM_NO_CLICKHANDLER
+
+			else if (user.get_active_hand() != src)
+				remove = TRUE	//Gun must be in active hand to use click handler
+				.=AIM_NO_CLICKHANDLER
+
+			if (remove)
+				QDEL_NULL(ACH)
+
+		return
+
+	return FALSE

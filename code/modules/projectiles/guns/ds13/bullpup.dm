@@ -21,6 +21,7 @@
 	one_hand_penalty = 6	//Don't try to fire this with one hand
 	dispersion = list()
 
+	aiming_modes = list(/datum/extension/aim_mode/rifle)
 
 	firemodes = list(
 		FULL_AUTO_300,

@@ -17,7 +17,7 @@
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
-	accuracy = 0.35
+	accuracy = 5
 	fire_delay = 6.5
 
 /obj/item/weapon/gun/projectile/military/update_icon()
@@ -34,7 +34,7 @@
 	magazine_type = /obj/item/ammo_magazine/c45m/flash
 	allowed_magazines = /obj/item/ammo_magazine/c45m
 	caliber = ".45"
-	accuracy = -0.35
+	accuracy = -5
 	fire_delay = 5.5
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
@@ -131,7 +131,7 @@
 	caliber = "9mm"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
-	accuracy = 0.35
+	accuracy = 5
 
 /obj/item/weapon/gun/projectile/beretta/update_icon()
 	..()

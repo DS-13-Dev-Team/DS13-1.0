@@ -13,8 +13,8 @@
 	load_method = SINGLE_CASING
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a145
-	one_hand_penalty = 6
-	accuracy = -2
+	one_hand_penalty = -30
+	accuracy = -10
 	scoped_accuracy = 5 //increased accuracy over the LWAP because only one shot
 	var/bolt_open = 0
 	wielded_item_state = "heavysniper-wielded" //sort of placeholder

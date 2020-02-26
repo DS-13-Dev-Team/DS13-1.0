@@ -456,6 +456,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/setup_movement(var/mob/living/carbon/human/H)
 	H.slow_turning = slow_turning
+	H.evasion = evasion
 
 /datum/species/proc/setup_vision(var/mob/living/carbon/human/H)
 	H.view_offset = view_offset

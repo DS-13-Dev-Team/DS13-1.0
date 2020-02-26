@@ -1,0 +1,80 @@
+/obj/item/weapon/gun/projectile/seeker
+	name = "Seeker Rifle"
+	desc = "The Seeker Rifle is a riot control device that is meant for accuracy at long-range. Comes with a built in scope"
+	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
+	icon_state = "seeker"
+	item_state = "seeker"
+	wielded_item_state = "seeker-wielded"
+	w_class = ITEM_SIZE_HUGE
+	handle_casings = CLEAR_CASINGS
+	magazine_type = /obj/item/ammo_magazine/seeker
+	allowed_magazines = /obj/item/ammo_magazine/seeker
+	load_method = MAGAZINE
+	caliber = "seeker"
+	slot_flags = SLOT_BACK
+	ammo_type = /obj/item/ammo_casing/seeker
+	mag_insert_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'
+	one_hand_penalty = 30	//Don't try to fire this with one hand
+	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
+	aiming_modes = list(/datum/extension/aim_mode/sniper/seeker)
+
+
+	firemodes = list(
+		list(mode_name="semi-automatic",  fire_delay=10),
+		)
+
+
+
+/*-----------------------
+	Ammo
+------------------------*/
+
+/obj/item/ammo_casing/seeker
+	name = "seeker shell"
+	desc = "A low caliber round designed for the SWS motorized seeker rifle"
+	icon_state = "empshell"
+	spent_icon = "empshell-spent"
+	projectile_type  = /obj/item/projectile/bullet/seeker
+
+
+/obj/item/projectile/bullet/seeker
+	icon_state = "seeker"
+	damage = 50
+	embed = 1
+	structure_damage_factor = 3
+	penetration_modifier = 1.25
+	penetrating = TRUE
+	step_delay = 0.5	//Real fast
+	expiry_method = EXPIRY_FADEOUT
+	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
+	stun = 3
+	weaken = 3
+	penetrating = 5
+	armor_penetration = 20
+
+
+/obj/item/ammo_magazine/seeker
+	name = "seeker shells"
+	desc = "High caliber armor piercing shells designed for use in the Seeker Rifle"
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "seekerclip"
+	caliber = "seeker"
+	ammo_type = /obj/item/ammo_casing/seeker
+	matter = list(MATERIAL_STEEL = 1260)
+	max_ammo = 5
+	multiple_sprites = TRUE
+	mag_type = MAGAZINE
+
+/obj/item/ammo_magazine/seeker/update_icon()
+	overlays.Cut()
+	if (stored_ammo.len)
+		overlays += image('icons/obj/ammo.dmi', "sc-[stored_ammo.len]")
+
+
+
+/*------------------
+	Aiming Mode
+------------------*/
+/datum/extension/aim_mode/sniper/seeker
+	damage_mod = 0.5	//The seeker does far more damage when scoped

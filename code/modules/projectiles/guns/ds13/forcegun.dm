@@ -26,6 +26,8 @@
 		list(mode_name = "focus", mode_type = /datum/firemode/forcegun/focus, windup_time = 1.5 SECONDS, windup_sound = 'sound/weapons/guns/fire/force_windup.ogg', fire_sound = 'sound/weapons/guns/fire/force_focus.ogg',fire_delay = 1.5 SECONDS)
 		)
 
+
+	aiming_modes = list(/datum/extension/aim_mode/heavy)
 /*
 	Firemodes
 */

@@ -178,9 +178,6 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 
 
-
-
-
 /****************************
 	Full auto gunfire
 *****************************/

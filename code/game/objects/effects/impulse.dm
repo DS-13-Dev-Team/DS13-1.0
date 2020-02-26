@@ -55,7 +55,7 @@
 
 
 	//We may be knocked off our feet by the force
-	var/knockdown_time = floor(strength / (mass * knockdown_threshold_factor))
+	var/knockdown_time = Floor(strength / (mass * knockdown_threshold_factor))
 	if (knockdown_time >= 1)
 		Weaken(knockdown_time)
 

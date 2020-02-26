@@ -13,6 +13,7 @@
 	artery_name = "basilic vein"
 	arterial_bleed_severity = 0.75
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE
+	base_miss_chance = 10
 
 /obj/item/organ/external/arm/blade/right
 	organ_tag = BP_R_ARM
@@ -27,10 +28,11 @@
 
 //Giant limbs
 //---------------
-//Used by brute, these limbs have 4x the health
+//Used by brute, these limbs have 4x the health, and half the evasion values
 /obj/item/organ/external/head/giant
 	max_damage = 260
 	min_broken_damage = 140
+	base_miss_chance = 10
 
 /obj/item/organ/external/chest/giant
 	max_damage = 360
@@ -43,6 +45,7 @@
 /obj/item/organ/external/arm/giant
 	max_damage = 180
 	min_broken_damage = 100
+	base_miss_chance = 6
 
 /obj/item/organ/external/arm/right/giant
 	max_damage = 180
@@ -51,6 +54,7 @@
 /obj/item/organ/external/leg/giant
 	max_damage = 180
 	min_broken_damage = 100
+	base_miss_chance = 4
 
 /obj/item/organ/external/leg/right/giant
 	max_damage = 180
@@ -60,6 +64,7 @@
 /obj/item/organ/external/foot/giant
 	max_damage = 180
 	min_broken_damage = 100
+	base_miss_chance = 7.5
 
 /obj/item/organ/external/foot/right/giant
 	max_damage = 180
@@ -68,6 +73,7 @@
 /obj/item/organ/external/hand/giant
 	max_damage = 180
 	min_broken_damage = 100
+	base_miss_chance = 7.5
 
 /obj/item/organ/external/hand/right/giant
 	max_damage = 180

@@ -69,6 +69,7 @@
 	artery_name = "basilic vein"
 	arterial_bleed_severity = 0.75
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP
+	base_miss_chance = 12
 
 /obj/item/organ/external/arm/right
 	organ_tag = BP_R_ARM
@@ -94,6 +95,7 @@
 	artery_name = "femoral artery"
 	arterial_bleed_severity = 0.75
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
+	base_miss_chance = 5
 
 /obj/item/organ/external/leg/right
 	organ_tag = BP_R_LEG
@@ -119,6 +121,7 @@
 	tendon_name = "Achilles tendon"
 	arterial_bleed_severity = 0.5
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
+	base_miss_chance = 15
 
 /obj/item/organ/external/foot/right
 	organ_tag = BP_R_FOOT
@@ -144,6 +147,7 @@
 	tendon_name = "carpal ligament"
 	arterial_bleed_severity = 0.5
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_FINGERPRINT
+	base_miss_chance = 15
 
 /obj/item/organ/external/hand/right
 	organ_tag = BP_R_HAND
@@ -167,3 +171,4 @@
 	max_damage = 90
 	min_broken_damage = 50
 	w_class = ITEM_SIZE_HUGE
+	base_miss_chance = 20

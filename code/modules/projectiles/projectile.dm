@@ -32,7 +32,8 @@
 
 	randpixel = 4	//Offset randomly on spawn by up to this much
 
-	var/accuracy = 0
+	var/accuracy = 100	//Base chance to hit, before various modifiers are applied. This can be above 100
+	var/distance_accuracy_falloff	=	2	//Amount subtracted from accuracy for each tile travelled
 	var/dispersion = 0.0
 
 	var/damage = 10
@@ -253,8 +254,12 @@
 		return
 
 	//roll to-hit
-	miss_modifier = max(15*(distance-2) - round(15*accuracy) + miss_modifier, 0)
-	var/hit_zone = get_zone_with_miss_chance(def_zone, target_mob, miss_modifier, ranged_attack=(distance > 1 || original != target_mob)) //if the projectile hits a target we weren't originally aiming at then retain the chance to miss
+	//miss_modifier = max(15*(distance-2) - round(15*accuracy) + miss_modifier, 0)
+	var/hit_chance = accuracy	//The chance that this projectile will hit. Any projectile-specific modifiers should be applied here
+	//Any mob-specific modifiers will be applied by that mob in the proc we're about to call
+	hit_chance -= distance * distance_accuracy_falloff
+
+	var/hit_zone = target_mob.get_zone_with_miss_chance(hit_chance, def_zone, src)
 
 	var/result = PROJECTILE_FORCE_MISS
 	if(hit_zone)
