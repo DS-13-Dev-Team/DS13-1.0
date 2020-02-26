@@ -9,7 +9,7 @@
 	var/rescale = FALSE
 	var/obj/screen/fullscreen/screen = screens[category]
 
-	if (client.view != world.view)
+	if (client.temp_view != world.view)
 		rescale = TRUE
 
 
@@ -100,10 +100,10 @@
 
 /obj/screen/fullscreen/proc/set_size(var/client/C)
 	//Here we select (and if needed, generate) the icon for the right size
-	if (C.view == world.view)
+	if (C.temp_view == world.view)
 		return	//No special sizing needed
 
-	icon = get_or_create_fullscreen(C.view)
+	icon = get_or_create_fullscreen(C.temp_view)
 
 
 

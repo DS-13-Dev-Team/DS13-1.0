@@ -12,12 +12,13 @@
 	load_method = MAGAZINE
 	caliber = "seeker"
 	slot_flags = SLOT_BACK
+	accuracy = -30	//Don't try to hipfire
 	ammo_type = /obj/item/ammo_casing/seeker
 	mag_insert_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'
-	one_hand_penalty = 30	//Don't try to fire this with one hand
+	one_hand_penalty = -30	//Don't try to fire this with one hand
 	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
-	aiming_modes = list(/datum/extension/aim_mode/sniper/seeker)
+	aiming_modes = list(/datum/extension/aim_mode/sniper/seeker, /datum/extension/aim_mode/sniper/seeker/far, /datum/extension/aim_mode/sniper/seeker/near)
 
 
 	firemodes = list(
@@ -40,12 +41,12 @@
 
 /obj/item/projectile/bullet/seeker
 	icon_state = "seeker"
-	damage = 50
+	damage = 60
 	embed = 1
 	structure_damage_factor = 3
 	penetration_modifier = 1.25
 	penetrating = TRUE
-	step_delay = 0.5	//Real fast
+	step_delay = 0.75	//Real fast
 	expiry_method = EXPIRY_FADEOUT
 	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
 	stun = 3
@@ -74,7 +75,27 @@
 
 
 /*------------------
-	Aiming Mode
+	Aiming Modes
 ------------------*/
 /datum/extension/aim_mode/sniper/seeker
+	name = "2x Zoom"
 	damage_mod = 0.5	//The seeker does far more damage when scoped
+	view_offset	=	8*WORLD_ICON_SIZE
+	view_range = -2
+	accuracy_mod	=	70
+	move_mod	=	-0.85
+
+/datum/extension/aim_mode/sniper/seeker/far
+	name = "4x Zoom"
+	damage_mod = 0.6
+	accuracy_mod	=	80
+	view_offset	=	16*WORLD_ICON_SIZE
+	view_range = -3
+
+/datum/extension/aim_mode/sniper/seeker/near
+	name = "reflex sight"
+	damage_mod = 0.25
+	view_offset	=	4*WORLD_ICON_SIZE
+	view_range = -1
+	accuracy_mod	=	60
+	move_mod	=	-0.85

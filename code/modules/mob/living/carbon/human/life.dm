@@ -633,7 +633,7 @@
 
 	return 1
 
-/mob/living/carbon/human/handle_regular_hud_updates()
+/mob/living/carbon/human/handle_regular_hud_updates(var/update_vision = TRUE)
 	if(hud_updateflag) // update our mob's hud overlays, AKA what others see flaoting above our head
 		handle_hud_list()
 

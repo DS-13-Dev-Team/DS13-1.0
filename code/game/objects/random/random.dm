@@ -319,7 +319,8 @@
 /obj/random/projectile/item_to_spawn()
 	return pickweight(list(/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1,
 	/obj/item/weapon/gun/projectile/automatic/bullpup = 0.5,
-	/obj/item/weapon/gun/projectile/ripper = 1))
+	/obj/item/weapon/gun/projectile/ripper = 1,
+	/obj/item/weapon/gun/projectile/seeker = 1))
 	/*
 	return pickweight(list(/obj/item/weapon/gun/projectile/shotgun/pump = 3,
 				/obj/item/weapon/gun/projectile/automatic/c20r = 2,
@@ -365,7 +366,8 @@
 	return pickweight(list(/obj/item/ammo_magazine/pulse = 2,
 	/obj/item/ammo_magazine/sawblades = 1,
 	/obj/item/ammo_magazine/bullpup = 1,
-	/obj/item/weapon/cell/force = 0.5))
+	/obj/item/weapon/cell/force = 0.5,
+	/obj/item/ammo_magazine/seeker = 1))
 
 /obj/random/action_figure
 	name = "random action figure"

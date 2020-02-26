@@ -6,6 +6,7 @@
 		The mob doing the aiming, they must remain able bodied and upright
 */
 /datum/extension/aim_mode
+	name = "Iron Sights"
 	expected_type = /mob/living
 	flags = EXTENSION_FLAG_IMMEDIATE
 	base_type = /datum/extension/aim_mode
@@ -59,13 +60,11 @@
 
 //Sniper rifles are REALLY good at this, but the move penalty is crippling
 /datum/extension/aim_mode/sniper
+	name = "Scope"
 	view_offset	=	8*WORLD_ICON_SIZE
 	view_range = -2
 	accuracy_mod	=	40
 	move_mod	=	-0.85
-
-/datum/extension/aim_mode/sniper/seeker
-	damage_mod = 0.6	//The seeker does far more damage when scoped
 
 
 /*

@@ -13,18 +13,29 @@
 /mob/observer/virtual/get_client()
 	return host.get_client()
 
+
+/client/var/temp_view = 7
 /client/proc/set_view_range(var/radius)
 
 	if (view != radius && isnum(radius))
 		//If radius has changed, we'll return true
 		.=TRUE
-		view = radius
+
+		temp_view = radius
+
 		remake_click_catcher()
 
 		if (mob)
 			mob.reload_fullscreen()
 			if (mob.l_general)//It may not exist during login
 				mob.l_general.resize(src)
+			if (isliving(mob))
+				var/mob/living/L = mob
+				L.handle_regular_hud_updates(FALSE)//Pass false here to not call update vision and avoid an infinite loop
+
+
+		spawn()
+			view = temp_view
 
 
 /client/proc/set_view_offset(var/direction, var/magnitude)
@@ -36,7 +47,7 @@
 
 /client/proc/setup_click_catcher()
 	if(!void)
-		void = create_click_catcher(view)
+		void = create_click_catcher(temp_view)
 	if(!screen)
 		screen = list()
 	screen |= void

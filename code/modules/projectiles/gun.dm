@@ -776,11 +776,31 @@
 		active_aiming_mode.remove()
 		active_aiming_mode = null
 
+//Switches to the next aiming mode
+/obj/item/weapon/gun/proc/cycle_aiming_mode()
+	if (!aiming_modes || aiming_modes.len <= 1 || !selected_aiming_mode)
+		return
+
+	var/element = aiming_modes.Find(selected_aiming_mode)
+	element = Wrap(element+1, 1, aiming_modes.len+1)
+	selected_aiming_mode = aiming_modes[element]
+	playsound(src, 'sound/weapons/flipblade.ogg', 30, 1)
+	var/datum/extension/aim_mode/AR = selected_aiming_mode
+	if (usr)
+		to_chat(usr, SPAN_NOTICE("Selected [initial(AR.name)]"))
 
 /obj/item/weapon/gun/AltClick(var/mob/user)
-	if (user == loc && is_held())
+	if (user == loc && is_held() && selected_aiming_mode)
 		toggle_aiming_mode()
+		return
+	.=..()
 
+
+/obj/item/weapon/gun/CtrlAltClick(var/mob/user)
+	if (user == loc && is_held() && aiming_modes.len > 1)
+		cycle_aiming_mode()
+		return
+	.=..()
 
 /obj/item/weapon/gun/proc/aiming_safety()
 	if (is_held())

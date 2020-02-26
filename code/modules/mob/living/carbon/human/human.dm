@@ -1165,10 +1165,10 @@
 		to_chat(S, "<span class='danger'>[U] pops your [current_limb.joint] back in!</span>")
 	current_limb.undislocate()
 
-/mob/living/carbon/human/reset_view(atom/A, update_hud = 1)
+/*/mob/living/carbon/human/reset_view(atom/A, update_hud = 1)
 	..()
 	if(update_hud)
-		handle_regular_hud_updates()
+		handle_regular_hud_updates()*/
 
 
 /mob/living/carbon/human/can_stand_overridden()
