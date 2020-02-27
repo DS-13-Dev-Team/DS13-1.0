@@ -49,7 +49,7 @@
 		else
 			. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];add_never=[necro_id]'>No</a></br>"
 		. += "</td></tr>"
-	/*
+	. += "<br>"
 	var/list/all_antag_types = GLOB.all_antag_types_
 	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
@@ -80,7 +80,7 @@
 		else
 			. += "<a href='?src=\ref[src];add_special=[ghost_trap.pref_check]'>High</a> <span class='linkOn'>Low</span> <a href='?src=\ref[src];add_never=[ghost_trap.pref_check]'>Never</a></br>"
 		. += "</td></tr>"
-	*/
+
 	. += "</table>"
 	. = jointext(.,null)
 
