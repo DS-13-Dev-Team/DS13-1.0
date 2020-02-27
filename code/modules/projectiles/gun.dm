@@ -694,30 +694,50 @@
 	.=..()
 	update_icon()
 	update_firemode()
-	update_aiming_mode()
+	var/check = update_aiming_mode()
+	if (check == AIM_FINE)
+		update_click_handlers()
+	else
+		remove_click_handlers()
 
 /obj/item/weapon/gun/dropped(mob/user)
 	.=..()
 	update_firemode(FALSE)
-	update_aiming_mode()
+	var/check = update_aiming_mode()
+	if (check == AIM_FINE)
+		update_click_handlers()
+	else
+		remove_click_handlers()
 
 /obj/item/weapon/gun/swapped_from()
 	.=..()
 	update_icon()
 	update_firemode(FALSE)
-	update_aiming_mode()
+	var/check = update_aiming_mode()
+	if (check == AIM_FINE)
+		update_click_handlers()
+	else
+		remove_click_handlers()
 
 /obj/item/weapon/gun/swapped_to()
 	.=..()
 	update_icon()
 	update_firemode()
-	update_aiming_mode()
+	var/check = update_aiming_mode()
+	if (check == AIM_FINE)
+		update_click_handlers()
+	else
+		remove_click_handlers()
 
 
 //Used by sustained weapons. Call to make the gun stop doing its thing
 /obj/item/weapon/gun/proc/stop_firing()
 	update_firemode()
-	update_aiming_mode()
+	var/check = update_aiming_mode()
+	if (check == AIM_FINE)
+		update_click_handlers()
+	else
+		remove_click_handlers()
 
 
 
@@ -746,11 +766,8 @@
 	.=aiming_safety()
 
 	//If we're good to aim and don't already have a click handler
-	if (.==AIM_FINE && !ACH)
-		//Then lets make one
-		var/mob/living/user = loc
-		ACH = user.PushClickHandler(/datum/click_handler/rmb_aim)
-		ACH.gun = src
+
+
 
 //Enables if not enabled
 //Disables if enabled
@@ -809,23 +826,32 @@
 	if (is_held())
 		.=AIM_FINE	//
 		var/mob/user = loc
-		if (ACH)
-			var/remove = FALSE
-			if (ACH.user != user)
-				remove = TRUE 	//If the click handler has the wrong user, terminate it
-				//But we can still make another immediately after this proc, so don't change return yet
+		if (safety())
+			.=AIM_NO_CLICKHANDLER
 
-			if (safety())
-				remove = TRUE	//Click handler is not active while safety is on
-				.=AIM_NO_CLICKHANDLER
+		else if (user.get_active_hand() != src)
+			.=AIM_NO_CLICKHANDLER
 
-			else if (user.get_active_hand() != src)
-				remove = TRUE	//Gun must be in active hand to use click handler
-				.=AIM_NO_CLICKHANDLER
-
-			if (remove)
-				QDEL_NULL(ACH)
 
 		return
 
 	return FALSE
+
+
+/*------------------------
+	Clickhandler Stuff
+-------------------------*/
+
+//Here we create all click handlers that are needed and don't currently exist. Check if they do exist.
+//All other safety checks are already done. At this point we know that:
+	//The gun is in the user's active hand
+	//The gun safety is disabled
+/obj/item/weapon/gun/proc/update_click_handlers()
+	var/mob/living/user = loc
+
+	if (ACH && (ACH.user != user))
+		QDEL_NULL(ACH)
+	if (selected_aiming_mode && !ACH)
+		//Then lets make one
+		ACH = user.PushClickHandler(/datum/click_handler/rmb_aim)
+		ACH.gun = src
