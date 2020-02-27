@@ -1,4 +1,3 @@
-GLOBAL_LIST_EMPTY(marker_spawns)
 GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 
 /datum/game_mode/marker
@@ -12,39 +11,19 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	required_enemies = 0
 	end_on_antag_death = 0
 	auto_recall_shuttle = 1
-	antag_tags = list(MODE_MARKER, MODE_UNITOLOGIST)
+	antag_tags = list(MODE_UNITOLOGIST)
 	latejoin_antag_tags = list(MODE_UNITOLOGIST)
 	auto_recall_shuttle = TRUE //No escape
 	var/evac_points = 0
 	var/evac_threshold = 85 //2 hours until you get to evac.
-	var/mob/living/simple_animal/marker/themarker = null
-	var/datum/mind/marker_candidate = null //This will become a null reference if the selected player logs out.
-
-/obj/effect/landmark/marker_spawn //Landmark to keep track of marker spawns
-	name = "Marker spawn point"
-
-/obj/effect/landmark/marker_spawn/New()
-	. = ..()
-	GLOB.marker_spawns += src
-
-/mob/living/simple_animal/marker
-	name = "Spooky alien thing"
-	desc = "RUN!"
-	icon_state = "spacewormhead1"
-	dir = 1
-	anchored = TRUE
-//	icon_living = "spacewormhead1"
-	//psychosis_immune = TRUE
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
 	. = ..()
-	if(!GLOB.marker_spawns.len)
-		message_admins("There are no marker spawns on this map!")
+	if(!SSnecromorph.marker)
+		message_admins("There are no markers on this map!")
 		return
-	var/turf/T = get_turf(pick(GLOB.marker_spawns))
-	themarker = new /mob/living/simple_animal/marker(T)
 	pick_marker_player()
-	command_announcement.Announce("We shipped you a spooky looking alien thing, our delivery intern left it at [get_area(themarker)].","Exposition machine") //Placeholder
+	command_announcement.Announce("Delivery of alien artifact successful at [get_area(SSnecromorph.marker)].","Ishimura Deliveries Subsystem") //Placeholder
 	addtimer(CALLBACK(src, .proc/activate_marker), rand(20 MINUTES, 35 MINUTES)) //We have to spawn the marker quite late, so guess we'd best wait :)
 
 /datum/game_mode/marker/proc/pick_marker_player(late)
@@ -59,17 +38,21 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 
 /datum/game_mode/marker/proc/activate_marker()
 	charge_evac_points()
-	if(!marker_candidate || QDELETED(marker_candidate))
+	var/mob/M = pick(GLOB.unitologists_list)
+	if(!M || !M.client || QDELETED(M))
 		pick_marker_player(late = TRUE)
 		addtimer(CALLBACK(src, .proc/activate_marker), rand(2 MINUTES, 5 MINUTES)) //We have to spawn the marker quite late, so guess we'd best wait for someone to actually take it over
-		return
-	if(themarker.mind)
-		GLOB.unitologists.add_antagonist(themarker.mind)
+		return FALSE
+	var/mob/observer/ghost/ghost = M.ghostize(TRUE)
+	SSnecromorph.marker.become_master_signal(ghost)
+	GLOB.unitologists.add_antagonist(SSnecromorph.marker.playermob.mind)
+	return TRUE
 
 /datum/game_mode/marker/proc/charge_evac_points()
 	addtimer(CALLBACK(src, .proc/charge_evac_points), 1 MINUTE) //Recursive function that will slowly tick down the clock until the valour comes to rescue the ishimura's crew.
 	evac_points += GLOB.shipsystem.get_point_gen()
 	if(evac_points >= evac_threshold)
+		auto_recall_shuttle = FALSE //Allow shuttles now.
 		if(evacuation_controller.call_evacuation(null, _emergency_evac = TRUE))
 			return TRUE
 		message_admins("The shuttle was unable to be called, despite the crew accruing enough evac points. Please investigate. Trying again in 1 minute.")
