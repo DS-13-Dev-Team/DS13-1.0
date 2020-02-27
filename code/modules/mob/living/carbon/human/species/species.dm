@@ -871,7 +871,10 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/get_ability_descriptions()
 	return ""
 
+//Should this species be affected by traumatic sights? Necromorphs aren't, for example.
 
+/datum/species/proc/psychosis_vulnerable()
+	return TRUE
 
 
 /*
