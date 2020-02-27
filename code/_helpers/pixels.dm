@@ -1,4 +1,4 @@
-//Takes click params as input, returns a list of global x and y pixel offsets, from world zero
+//Takes click params as input, returns a vector2 of pixel location relative to client lowerleft corner
 /proc/get_screen_pixel_click_location(var/params)
 	var/screen_loc = params2list(params)["screen-loc"]
 	/* This regex matches a screen-loc of the form
@@ -17,7 +17,6 @@
 
 	return position
 
-
 //Gets a global-context pixel location. This requires a client to use
 /proc/get_global_pixel_click_location(var/params, var/client/client)
 	var/vector2/world_loc = new /vector2(0,0)
@@ -27,6 +26,24 @@
 	world_loc = get_screen_pixel_click_location(params)
 	world_loc = client.ViewportToWorldPoint(world_loc)
 	return world_loc
+
+//This mildly complicated proc attempts to move thing to where the user's mouse cursor is
+//Thing must be an atom that is already onscreen - ie, in a client's screen list
+/proc/sync_screen_loc_to_mouse(var/atom/movable/thing, var/params, var/tilesnap = FALSE, var/vector2/offset = Vector2.Zero)
+	var/screen_loc = params2list(params)["screen-loc"]
+	var/global/regex/ScreenLocRegex = regex("(\\d+):(\\d+),(\\d+):(\\d+)")
+	if(ScreenLocRegex.Find(screen_loc))
+		var/list/data = ScreenLocRegex.group
+		if (!tilesnap)
+			thing.screen_loc = "[data[1]]:[text2num(data[2])+offset.x],[data[3]]:[text2num(data[4])+offset.y]"
+		else
+			thing.screen_loc = "[data[1]]:[offset.x],[data[3]]:[offset.y]"
+		//This will fill screen loc with a string in the form:
+			//"TileX:PixelX,TileY:PixelY"
+
+
+
+
 
 
 /atom/proc/get_global_pixel_loc()
@@ -53,6 +70,15 @@
 	if (newpix.x < -24 || newpix.x > 24 || newpix.y < -24 || newpix.y > 24)
 		return TRUE
 
+//Returns the turf over which the mob's view is centred. Only relevant if view offset is set
+/mob/proc/get_view_centre()
+	if (!view_offset)
+		return get_turf(src)
+
+	var/vector2/offset = (Vector2.FromDir(dir))*view_offset
+	return get_turf_at_pixel_offset(offset)
+
+
 
 //Given a pixel offset relative to this atom, finds the turf under the target point.
 //This does not account for the object's existing pixel offsets, roll them into the input first if you wish
@@ -69,7 +95,9 @@
 	coords = new /vector2(round(coords.x / world.icon_size)+1, round(coords.y / world.icon_size)+1)
 	return locate(coords.x, coords.y, zlevel)
 
-
+/proc/get_turf_at_mouse(var/clickparams, var/client/C)
+	var/vector2/pixels = get_global_pixel_click_location(clickparams, C)
+	return get_turf_at_pixel_coords(pixels, C.mob.z)
 
 //Client Procs
 
@@ -111,3 +139,20 @@
 			corner = corner.FloorVec()
 		bounds[thing] = corner
 	return bounds
+
+
+/atom/proc/set_offset_to(var/atom/target, var/distance)
+	pixel_x = 0
+	pixel_y = 0
+	offset_to(target, distance)
+
+/atom/proc/offset_to(var/atom/target, var/distance)
+	var/vector2/delta = get_offset_to(target, distance)
+	pixel_x += delta.x
+	pixel_y += delta.y
+
+
+/atom/proc/get_offset_to(var/atom/target, var/distance)
+	var/vector2/delta = Vector2.FromDir(get_dir(src, target))
+	delta *= distance
+	return delta

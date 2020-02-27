@@ -81,7 +81,7 @@
 	update_nearby_tiles(need_rebuild=1)
 
 /obj/machinery/door/Initialize()
-	set_extension(src, /datum/extension/penetration, /datum/extension/penetration/proc_call, .proc/CheckPenetration)
+	set_extension(src, /datum/extension/penetration/proc_call, .proc/CheckPenetration)
 	. = ..()
 
 /obj/machinery/door/Destroy()
@@ -458,6 +458,10 @@
 	update_icon()
 	set_opacity(0)
 	operating = 0
+
+	//Wakeup nearby vines so they can start growing through the open space
+	for (var/obj/effect/vine/V in range(1, src))
+		V.wake_up()
 
 	if(autoclose)
 		close_door_at = next_close_time()

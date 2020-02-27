@@ -106,12 +106,23 @@
 	desc = "Captain"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_rd = 101
-/datum/access/rd
-	id = access_rd
-	desc = "Research Director"
+/var/const/access_cscio = 101
+/datum/access/cscio
+	id = access_cscio
+	desc = "Chief Science Officer"
+	region = ACCESS_REGION_COMMAND
+
+/var/const/access_smo = 102
+/datum/access/smo
+	id = access_smo
+	desc = "Senior Medical Officer"
 	region = ACCESS_REGION_RESEARCH
 
+/var/const/access_so = 103
+/datum/access/smo
+	id = access_so
+	desc = "Supply Officer"
+	region = ACCESS_REGION_SUPPLY
 
 
 
@@ -132,11 +143,9 @@
 
 
 
-/var/const/access_cmo = 40
-/datum/access/cmo
-	id = access_cmo
-	desc = "Chief Medical Officer"
-	region = ACCESS_REGION_COMMAND
+
+
+
 
 
 
@@ -153,16 +162,16 @@
 	desc = "Chief Engineer"
 	region = ACCESS_REGION_ENGINEERING
 
-/var/const/access_hop = 57
-/datum/access/hop
-	id = access_hop
-	desc = "Head of Personnel"
+/var/const/access_fl = 57
+/datum/access/fl
+	id = access_fl
+	desc = "First Lieutenant"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_hos = 58
-/datum/access/hos
-	id = access_hos
-	desc = "Head of Security"
+/var/const/access_cseco = 58
+/datum/access/cseco
+	id = access_cseco
+	desc = "Chief Security Officer"
 	region = ACCESS_REGION_SECURITY
 
 /var/const/access_RC_announce = 59 //Request console announcements

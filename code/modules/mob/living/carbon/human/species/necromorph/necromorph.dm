@@ -10,6 +10,13 @@
 	blurb = "Mutated and reanimated corpses, reshaped into horrific new forms by a recombinant extraterrestrial infection. \
 	The resulting creatures are extremely aggressive and will attack any uninfected organism on sight."
 
+	//Spawning and biomass
+	var/marker_spawnable = TRUE	//Set this to true to allow the marker to spawn this type of necro. Be sure to unset it on the enhanced version unless desired
+	biomass = 80	//This var is defined for all species
+	var/biomass_reclamation	=	1	//The marker recovers cost*reclamation
+	var/biomass_reclamation_time	=	10 MINUTES	//How long does it take for all of the reclaimed biomass to return to the marker? This is a pseudo respawn timer
+	var/spawn_method = SPAWN_POINT	//What method of spawning from marker should be used? At a point or manual placement? check _defines/necromorph.dm
+	var/major_vessel = TRUE	//If true, we can fill this mob from the necroqueue
 
 	strength    = STR_HIGH
 	show_ssd = "dead" //If its not moving, it looks like a corpse
@@ -62,6 +69,7 @@
 	burn_mod = 1.3	//Takes more damage from burn attacks
 	weaken_mod = 0.75	//Get back up faster
 	blood_oxy = FALSE
+	reagent_tag = IS_NECROMORPH
 
 	var/list/initial_health_values	//This list is populated once for each species, when a necromorph of that type is created
 	//It stores the starting max health values of each limb this necromorph has
@@ -146,10 +154,21 @@
 	return icon_template //We don't need to duplicate the same dmi path twice
 
 
+
+/datum/species/necromorph/add_inherent_verbs(var/mob/living/carbon/human/H)
+	.=..()
+	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
+	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
+
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
 	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
 	H.faction = FACTION_NECROMORPH
+
+//Add this necro as a vision node for the marker and signals
+/datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
+	.=..()
+	GLOB.necrovision.add_source(H)
 
 
 //We don't want to be suffering for the lack of most particular organs
@@ -178,6 +197,14 @@
 		return TRUE
 
 	return FALSE
+
+
+/datum/species/necromorph/handle_death(var/mob/living/carbon/human/H)
+	//We just died? Lets start getting absorbed by the marker
+	if (!SSnecromorph.marker)	//Gotta have one
+		return
+
+	SSnecromorph.marker.add_biomass_source(H, biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
 
 //How much damage has this necromorph taken?
 //We'll loop through each organ tag in the species' initial health values list, which should definitely be populated already, and try to get the organ for each

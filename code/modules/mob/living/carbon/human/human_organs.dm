@@ -242,3 +242,18 @@
 		else
 			return found_organ
 	return null
+
+
+//Returns a list of all organs which have no children
+/mob/living/carbon/human/proc/get_extremities()
+	var/list/extremities = organs.Copy()
+	for (var/obj/item/organ/external/E in extremities)
+		if (E.is_stump() || E.loc != src)
+			//Stumps don't count as organs, remove it from this list
+			extremities.Remove(E)
+			continue
+
+		if (E.parent)
+			extremities.Remove(E.parent)	//If this organ has a parent, that parent becomes ineligible
+
+	return extremities

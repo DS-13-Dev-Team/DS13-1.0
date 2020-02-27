@@ -47,6 +47,7 @@
 	name = "Charge"
 	var/verb_name = "Charging"
 	var/verb_action = "charges"
+	base_type = /datum/extension/charge
 	expected_type = /atom/movable
 	flags = EXTENSION_FLAG_IMMEDIATE
 	var/status = CHARGE_STATE_WINDUP
@@ -451,7 +452,7 @@
 
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/charge, /datum/extension/charge, _target, _speed, _lifespan, _maxrange, _homing, _inertia, _power, _cooldown, _delay)
+	set_extension(src, /datum/extension/charge, _target, _speed, _lifespan, _maxrange, _homing, _inertia, _power, _cooldown, _delay)
 
 	return TRUE
 

@@ -175,6 +175,9 @@
 
 /proc/seen_turfs_in_range(var/source, var/range)
 	var/turf/pos = get_turf(source)
-	return hear(range, pos)
+	var/list/things = hear(range, pos)
+	for (var/a in things)
+		if (!isturf(a))
+			things.Remove(a)
 
 #undef UPDATE_BUFFER

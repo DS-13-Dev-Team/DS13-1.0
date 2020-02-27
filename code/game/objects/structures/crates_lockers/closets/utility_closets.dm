@@ -180,9 +180,9 @@
 
 /obj/structure/closet/radiation/security
 	name = "radiation security suit closet"
-	desc = "It's a storage unit for rad-protective suits for security officers."
+	desc = "It's a storage unit containing rad-protective suits for security officers."
 	icon_state = "radsuitcloset_sec"
-	icon_opened = "toolclosetopen"
+	icon_opened = "radsuitcloset_sec_open"
 	icon_closed = "radsuitcloset_sec"
 
 /obj/structure/closet/radiation/WillContain()
@@ -242,7 +242,6 @@
 
 /obj/structure/closet/hydrant/WillContain()
 	return list(
-		/obj/item/inflatable/door = 2,
 		/obj/item/weapon/storage/med_pouch/burn = 2,
 		/obj/item/clothing/suit/fire/firefighter,
 		/obj/item/clothing/mask/gas/half,

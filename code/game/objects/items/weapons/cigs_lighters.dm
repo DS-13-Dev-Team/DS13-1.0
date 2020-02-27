@@ -1017,7 +1017,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	..()
 	create_reagents(max_fuel)
 	reagents.add_reagent(/datum/reagent/fuel, max_fuel)
-	set_extension(src, /datum/extension/base_icon_state, /datum/extension/base_icon_state, icon_state)
+	set_extension(src, /datum/extension/base_icon_state, icon_state)
 	update_icon()
 
 /obj/item/weapon/flame/lighter/proc/light(mob/user)

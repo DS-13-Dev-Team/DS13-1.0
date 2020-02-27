@@ -44,6 +44,6 @@
 	return TRUE
 
 /obj/test/extensions/New()
-	set_extension(src, /datum/extension, /datum/extension)
-	set_extension(src, /datum/extension/interactive/multitool, /datum/extension/interactive/multitool/items/cable, list(/proc/is_operable, /proc/is_operable))
+	set_extension(src, /datum/extension)
+	set_extension(src, /datum/extension/interactive/multitool/items/cable, list(/proc/is_operable, /proc/is_operable))
 	..()

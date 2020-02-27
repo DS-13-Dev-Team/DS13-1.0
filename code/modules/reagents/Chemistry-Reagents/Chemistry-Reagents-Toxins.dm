@@ -249,6 +249,26 @@
 	power = 10
 	meltdose = 4
 
+
+/datum/reagent/acid/necromorph
+	name = "Biological acid"
+	description = "A corrosive chemical of organic origin"
+	taste_description = "acid"
+	reagent_state = LIQUID
+	color = "#669900"
+	metabolism = 1	//1 unit per second
+	touch_met = 1
+	power = NECROMORPH_ACID_POWER
+	meltdose = 30 // How much is needed to melt
+
+/datum/reagent/acid/necromorph/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if (alien == IS_NECROMORPH)
+		removed *= NECROMORPH_FRIENDLY_FIRE_FACTOR	//Necromorph acid deals reduced friendly fire, but not nothing
+	.=..()
+
+/datum/reagent/acid/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.take_organ_damage(0, removed * power * 2)
+
 /datum/reagent/lexorin
 	name = "Lexorin"
 	description = "Lexorin temporarily stops respiration. Causes tissue damage."

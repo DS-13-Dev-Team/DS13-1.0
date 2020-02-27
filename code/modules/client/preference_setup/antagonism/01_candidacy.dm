@@ -1,6 +1,7 @@
 /datum/preferences
 	var/list/never_be_special_role
 	var/list/be_special_role
+	var/auto_necroqueue = TRUE
 
 /datum/category_item/player_setup_item/antagonism/candidacy
 	name = "Candidacy"
@@ -9,10 +10,12 @@
 /datum/category_item/player_setup_item/antagonism/candidacy/load_character(var/savefile/S)
 	from_file(S["be_special"],           pref.be_special_role)
 	from_file(S["never_be_special"],     pref.never_be_special_role)
+	from_file(S["auto_necroqueue"],           pref.auto_necroqueue)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/save_character(var/savefile/S)
 	to_file(S["be_special"],             pref.be_special_role)
 	to_file(S["never_be_special"],       pref.never_be_special_role)
+	to_file(S["auto_necroqueue"],           pref.auto_necroqueue)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/sanitize_character()
 	if(!istype(pref.be_special_role))
@@ -32,8 +35,21 @@
 
 /datum/category_item/player_setup_item/antagonism/candidacy/content(var/mob/user)
 	. = list()
+	. += "Auto Join Necroqueue:"
+	. += {"<a class='linkActive noIcon checkbox' unselectable='on' title='If ticked, you will automatically be placed in the necroqueue when joining the necromorph team, or leaving a necromorph body.'  style='display:inline-block;' onclick='document.location="?src=\ref[src];auto_necroqueue=[pref.auto_necroqueue ? "false" : "true"]"' ><div><form><input type='checkbox' [pref.auto_necroqueue ? "checked" : ""]></form></div></a><br>"}
+
 	. += "<b>Special Role Availability:</b><br>"
 	. += "<table>"
+	for(var/ntype in subtypesof(/datum/species/necromorph))
+		var/datum/species/necromorph/N = ntype
+		var/necro_id = initial(N.name)
+		. += "<tr><td>[necro_id]: </td><td>"
+		if(necro_id in pref.never_be_special_role)
+			. += "<a href='?src=\ref[src];del_special=[necro_id]'>Yes</a> <span class='linkOn'>No</span></br>"
+		else
+			. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];add_never=[necro_id]'>No</a></br>"
+		. += "</td></tr>"
+	/*
 	var/list/all_antag_types = GLOB.all_antag_types_
 	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
@@ -64,6 +80,7 @@
 		else
 			. += "<a href='?src=\ref[src];add_special=[ghost_trap.pref_check]'>High</a> <span class='linkOn'>Low</span> <a href='?src=\ref[src];add_never=[ghost_trap.pref_check]'>Never</a></br>"
 		. += "</td></tr>"
+	*/
 	. += "</table>"
 	. = jointext(.,null)
 
@@ -93,10 +110,21 @@
 		pref.never_be_special_role |= href_list["add_never"]
 		return TOPIC_REFRESH
 
+	if(href_list["auto_necroqueue"])
+		if(href_list["auto_necroqueue"] == "false")
+			pref.auto_necroqueue = FALSE
+		if(href_list["auto_necroqueue"] == "true")
+			pref.auto_necroqueue = TRUE
+		return TOPIC_REFRESH
+
 	return ..()
 
 /datum/category_item/player_setup_item/antagonism/candidacy/proc/valid_special_roles()
 	var/list/private_valid_special_roles = list()
+
+	for(var/ntype in subtypesof(/datum/species/necromorph))
+		var/datum/species/necromorph/N = ntype
+		private_valid_special_roles += initial(N.name)
 
 	for(var/antag_type in GLOB.all_antag_types_)
 		private_valid_special_roles += antag_type

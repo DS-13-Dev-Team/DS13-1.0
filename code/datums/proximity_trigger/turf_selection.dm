@@ -19,3 +19,7 @@
 		return
 	for(var/turf/T in trange(range, center))
 		. += T
+
+
+/decl/turf_selection/view/get_turfs(var/atom/origin, var/range)
+	return origin.turfs_in_view(range)

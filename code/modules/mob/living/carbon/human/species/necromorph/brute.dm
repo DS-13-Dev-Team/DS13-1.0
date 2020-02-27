@@ -1,9 +1,10 @@
 /datum/species/necromorph/brute
 	name = SPECIES_NECROMORPH_BRUTE
+	mob_type	=	/mob/living/carbon/human/necromorph/brute
 	name_plural =  "Brutes"
-	blurb = "The Brute is a large Necromorph composed of multiple human corpses. It has heavy organic armor in its front and possesses extreme physical \
-	strength, making it a deadly foe in combat. "
-	total_health = 300
+	blurb = "A powerful linebreaker and assault specialist, the brute can smash through almost any obstacle, and its tough frontal armor makes it perfect for assaulting entrenched positions. \n\
+	Very vulnerable to flanking attacks"
+	total_health = 400
 	torso_damage_mult = 1 //Hitting centre mass is fine for brute
 
 	icon_template = 'icons/mob/necromorph/64x64necros.dmi'
@@ -14,6 +15,9 @@
 	pixel_offset_x = -16
 	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
+
+	biomass = 500
+	biomass_reclamation_time	=	20 MINUTES
 
 
 	//Collision and bulk
@@ -136,6 +140,8 @@
 	Brute punch, heavy damage, slow
 */
 /datum/unarmed_attack/punch/brute
+	name = "Heavy punch"
+	desc = "A powerful punch that hits like a truck. Human-sized creatures will be sent flying and stunnned. Deals massive damage to airlocks and structures."
 	delay = 25
 	damage = 25
 	airlock_force_power = 5

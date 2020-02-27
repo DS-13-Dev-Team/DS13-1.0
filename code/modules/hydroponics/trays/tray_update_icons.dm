@@ -10,6 +10,8 @@
 		SetName(initial(name))
 
 	overlays.Cut()
+	if (seed && seed.no_icon)
+		return
 	var/new_overlays = list()
 	// Updates the plant overlay.
 	if(seed)

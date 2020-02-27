@@ -15,7 +15,7 @@
 	var/growth_stages = 0          // Number of stages the plant passes through before it is mature.
 	var/list/traits = list()       // Initialized in New()
 	var/list/mutants               // Possible predefined mutant varieties, if any.
-	var/list/chems                 // Chemicals that plant produces in products/injects into victim.
+	var/list/chems = list()        // Chemicals that plant produces in products/injects into victim.
 	var/list/consume_gasses        // The plant will absorb these gasses during its life.
 	var/list/exude_gasses          // The plant will exude these gasses during its life.
 	var/kitchen_tag                // Used by the reagent grinder.
@@ -23,6 +23,7 @@
 	var/splat_type = /obj/effect/decal/cleanable/fruit_smudge // Graffiti decal.
 	var/has_mob_product
 	var/force_layer
+	var/no_icon	=	FALSE	//If true, just draw nothing for this, and terminate any icon updating
 
 /datum/seed/New()
 
@@ -426,7 +427,7 @@
 		var/gas = pick("oxygen","nitrogen",MATERIAL_PHORON,"carbon_dioxide")
 		exude_gasses[gas] = rand(3,9)
 
-	chems = list()
+
 	if(prob(80))
 		chems[/datum/reagent/nutriment] = list(rand(1,10),rand(10,20))
 

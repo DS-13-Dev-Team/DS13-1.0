@@ -172,6 +172,9 @@
 /area/ishimura/upper/research/chief_science_office
 	name = "\improper Chief Science Officer Office"
 
+/area/ishimura/upper/research/storage
+	name = "\improper Protective Suit Storage"
+
 /area/ishimura/upper/research/virology
 	name = "\improper Virology"
 
@@ -190,7 +193,7 @@
 	name = "\improper Upper Deck Bathroom"
 
 /area/ishimura/upper/misc/breakroom
-	name = "\improper Upper Deck Break Room"
+	name = "\improper Upper Deck Breakroom"
 
 /area/ishimura/upper/misc/escape
 	name = "\improper Escape Wing"
@@ -414,6 +417,9 @@
 /area/ishimura/lower/engineering/storage_closet/midship
 	name = "\improper Midship Parts Storage"
 
+/area/ishimura/lower/engineering/storage_closet/paint
+	name = "\improper Paint Storage"
+
 /area/ishimura/lower/engineering/substation/crew
 	name = "\improper Crew Quarters Substation"
 	icon_state = "crew_engistation"
@@ -435,6 +441,9 @@
 
 /area/ishimura/lower/maintenance/aft_starboard
 	name = "\improper Lower Deck Aft-Starboard Maintenance"
+
+/area/ishimura/lower/maintenance/engineering
+	name = "\improper Lower Deck Engineering-Port Maintenance"
 
 /area/ishimura/lower/maintenance/fore_central
 	name = "\improper Lower Deck Fore-Central Maintenance"
@@ -565,6 +574,9 @@
 
 /area/ishimura/lower/misc/janitorcloset/midship
 	name = "\improper Midship Janitorial Closet"
+
+/area/ishimura/lower/misc/marker
+	name = "\improper Large Storage Room"
 
 /area/ishimura/lower/misc/observationroom
 	name = "\improper Observation Room"

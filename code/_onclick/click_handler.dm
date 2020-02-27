@@ -37,6 +37,12 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 /datum/click_handler/proc/OnMiddleClick(var/atom/A, var/params)
 	return TRUE
 
+/datum/click_handler/proc/OnLeftClick(var/atom/A, var/params)
+	return TRUE
+
+/datum/click_handler/proc/OnRightClick(var/atom/A, var/params)
+	return TRUE
+
 /datum/click_handler/proc/OnDblClick(var/atom/A, var/params)
 	return TRUE
 
@@ -64,7 +70,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 /datum/click_handler/proc/MouseUp(object,location,control,params)
 	return TRUE
 
-/datum/click_handler/proc/MouseMove(src_object,over_object,src_location,over_location,src_control,over_control,params)
+/datum/click_handler/proc/MouseMove(object,location,control,params)
 	return TRUE
 
 
@@ -136,6 +142,14 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	if(click_handler)
 		click_handler.Enter()
 
+/mob/proc/RemoveClickHandlersByType(var/typepath)
+	if(!click_handlers)
+		return
+
+	for (var/thing in click_handlers.stack)
+		if (istype(thing, typepath))
+			click_handlers.Remove(thing)
+			qdel(thing)
 
 /mob/proc/PopClickHandler()
 	if(!click_handlers)
@@ -276,11 +290,11 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		return FALSE
 	return TRUE
 
-/datum/click_handler/sustained/MouseMove(src_object,over_object,src_location,over_location,src_control,over_control,params)
+/datum/click_handler/sustained/MouseMove(object,location,control,params)
 	last_params = params
-	src_location = resolve_world_target(src_location)
-	if (src_location && firing)
-		target = src_location //This var contains the thing the user is hovering over, oddly
+	location = resolve_world_target(location)
+	if (location && firing)
+		target = location //This var contains the thing the user is hovering over, oddly
 		user.face_atom(target)
 		do_fire()
 		return FALSE
