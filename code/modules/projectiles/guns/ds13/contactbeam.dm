@@ -86,23 +86,13 @@
 /datum/click_handler/contact/MouseDown(object,location,control,params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["left"])
-		deltimer(interval_timer_handle)
-		var/delta = world.time - last_change
-		if (delta < min_interval)
-			interval_timer_handle = addtimer(CALLBACK(src, .proc/start_aiming), min_interval - delta, TIMER_STOPPABLE)
-		else
-			start_aiming()
+		start_aiming()
 		return FALSE
 	return TRUE
 
 /datum/click_handler/contact/MouseUp(object,location,control,params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["left"])
-		deltimer(interval_timer_handle)
-		var/delta = world.time - last_change
-		if (delta < min_interval)
-			interval_timer_handle = addtimer(CALLBACK(src, .proc/stop_aiming), min_interval - delta, TIMER_STOPPABLE)
-		else
-			stop_aiming()
+		gun.fire_charged(location, params)
 		return FALSE
 	return TRUE
