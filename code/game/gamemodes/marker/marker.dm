@@ -43,7 +43,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 		pick_marker_player(late = TRUE)
 		addtimer(CALLBACK(src, .proc/activate_marker), rand(2 MINUTES, 5 MINUTES)) //We have to spawn the marker quite late, so guess we'd best wait for someone to actually take it over
 		return FALSE
-	var/mob/observer/ghost/ghost = M.ghostize(TRUE)
+	var/mob/observer/ghost/ghost = M.ghostize(TRUE) //Ghost the player and put them in control of the marker.
 	SSnecromorph.marker.become_master_signal(ghost)
 	GLOB.unitologists.add_antagonist(SSnecromorph.marker.playermob.mind)
 	return TRUE
