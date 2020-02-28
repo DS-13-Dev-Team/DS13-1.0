@@ -17,6 +17,7 @@
 	charge_cost = 1000 //Five shots per battery
 	cell_type = /obj/item/weapon/cell/force
 	projectile_type = null
+	slot_flags = SLOT_BACK
 	charge_meter = FALSE	//if set, the icon state will be chosen based on the current charge
 	mag_insert_sound = 'sound/weapons/guns/interaction/force_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/force_magout.ogg'
