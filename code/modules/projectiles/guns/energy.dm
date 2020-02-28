@@ -10,8 +10,8 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 
 	var/obj/item/weapon/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 20 //How much energy is needed to fire.
-	var/max_shots = 10 //Determines the capacity of the weapon's power cell. Specifying a cell_type overrides this value.
-	var/cell_type = null
+	var/max_shots = 10 //Determines the capacity of the weapon's power cell. Specifying a default_cell_type overrides this value.
+	var/default_cell_type = null
 	var/projectile_type = /obj/item/projectile/beam/practice
 	var/modifystate
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
@@ -33,8 +33,8 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 
 /obj/item/weapon/gun/energy/New()
 	..()
-	if(cell_type)
-		power_supply = new cell_type(src)
+	if(default_cell_type)
+		power_supply = new default_cell_type(src)
 	else
 		power_supply = new /obj/item/weapon/cell/device/variable(src, max_shots*charge_cost)
 	if(self_recharge)
