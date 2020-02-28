@@ -14,6 +14,7 @@
 
 	projectile_type = /obj/item/projectile/temp
 	default_cell_type = /obj/item/weapon/cell/high
+	cell_types = list(/obj/item/weapon/cell/potato)
 	combustion = 0
 
 

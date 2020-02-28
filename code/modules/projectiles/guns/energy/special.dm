@@ -102,6 +102,7 @@
 	w_class = ITEM_SIZE_HUGE
 	projectile_type = /obj/item/projectile/meteor
 	default_cell_type = /obj/item/weapon/cell/potato
+	cell_types = list(/obj/item/weapon/cell/potato)
 	self_recharge = 1
 	recharge_time = 5 //Time it takes for shots to recharge (in ticks)
 	charge_meter = 0

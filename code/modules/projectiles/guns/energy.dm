@@ -12,6 +12,7 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	var/charge_cost = 20 //How much energy is needed to fire.
 	var/max_shots = 10 //Determines the capacity of the weapon's power cell. Specifying a default_cell_type overrides this value.
 	var/default_cell_type = null
+	var/list/cell_types // The valid cell types that can be put inside of the energy gun
 	var/projectile_type = /obj/item/projectile/beam/practice
 	var/modifystate
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
@@ -21,6 +22,8 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	var/use_external_power = 0 //if set, the weapon will look for an external power source to draw from, otherwise it recharges magically
 	var/recharge_time = 4
 	var/charge_tick = 0
+
+	var/removable_cell = FALSE // Whether the cell that powers the gun is removable/replaceable
 
 /obj/item/weapon/gun/energy/switch_firemodes()
 	. = ..()
@@ -45,6 +48,17 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	if(self_recharge)
 		STOP_PROCESSING(SSobj, src)
 	return ..()
+
+/obj/item/weapon/gun/energy/proc/insert_cell(obj/item/weapon/cell/cell)
+	power_supply = cell
+	cell.forceMove(src)
+
+/obj/item/weapon/gun/energy/proc/remove_cell(mob/destination)
+	if(destination)
+		destination.put_in_hands(power_supply)
+	else
+		power_supply.forceMove(get_turf(src))
+	power_supply = null
 
 /obj/item/weapon/gun/energy/get_cell()
 	return power_supply
@@ -111,3 +125,22 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 			icon_state = "[modifystate][ratio]"
 		else
 			icon_state = "[initial(icon_state)][ratio]"
+
+/obj/item/weapon/gun/energy/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(removable_cell)
+		if(istype(W, /obj/item/weapon/cell))
+			if(power_supply)
+				to_chat(user, SPAN_WARNING("\The [power_supply] is already powering \the [src]!"))
+				return
+			if(!cell_types || !(W.type in cell_types))
+				to_chat(user, SPAN_WARNING("\The [W] does not fit inside \the [src]!"))
+				return
+			user.drop_from_inventory(W)
+			insert_cell(W)
+			return
+		if(istype(W, /obj/item/weapon/tool/screwdriver) && power_supply)
+			to_chat(user, SPAN_NOTICE("\The [power_supply] is removed from \the [src]."))
+			remove_cell(user)
+			return
+	..()
+		
