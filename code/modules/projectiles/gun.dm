@@ -1,59 +1,5 @@
-/*
-	Defines a firing mode for a gun.
-
-	A firemode is created from a list of fire mode settings. Each setting modifies the value of the gun var with the same name.
-	If the fire mode value for a setting is null, it will be replaced with the initial value of that gun's variable when the firemode is created.
-	Obviously not compatible with variables that take a null value. If a setting is not present, then the corresponding var will not be modified.
-*/
-/datum/firemode
-	var/name = "default"
-	var/list/settings = list()
-	var/obj/item/weapon/gun/gun = null
-	var/override_fire = FALSE	//If true, this firemode has its own firing proc which replaces that of the gun
-	var/list/original_vars = list()
-
-/datum/firemode/New(obj/item/weapon/gun/_gun, list/properties = null)
-	..()
-	if(!properties) return
-
-	gun = _gun //Cache the weapon
-
-	for(var/propname in properties)
-		var/propvalue = properties[propname]
-
-		if(propname == "mode_name")
-			name = propvalue
-		else if(isnull(propvalue))
-			settings[propname] = gun.vars[propname] //better than initial() as it handles list vars like burst_accuracy
-		else
-			settings[propname] = propvalue
-
-/datum/firemode/proc/apply_to(obj/item/weapon/gun/_gun)
-	gun = _gun
-	gun.current_firemode = src
-	for(var/propname in settings)
-		if (propname in gun.vars)
-			original_vars[propname] = gun.vars[propname]
-			gun.vars[propname] = settings[propname]
-
-
-/datum/firemode/proc/unapply_to(obj/item/weapon/gun/_gun)
-	gun = _gun
-	if (gun.current_firemode == src)
-		gun.current_firemode = null
-	for(var/propname in settings)
-		if (propname in gun.vars)
-			gun.vars[propname] = original_vars[propname]
-
-/datum/firemode/proc/fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
-	return
-
-/datum/firemode/proc/on_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
-	return
-
-//Called whenever the firemode is switched to, or the gun is picked up while its active
-/datum/firemode/proc/update()
-	return
+#define AIM_NO_CLICKHANDLER	1	//We're fine to enter aiming modes, but not to use the RMB click handler
+#define AIM_FINE	2	//We're fine for aiming and click handler
 
 
 //Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
@@ -611,7 +557,7 @@
 	. = ..()
 	if(user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		if(firemodes.len > 1)
-			var/datum/firemode/current_mode = firemodes[sel_mode]
+			var/datum/firemode/current_mode = current_firemode
 			to_chat(user, "The fire selector is set to [current_mode.name].")
 	to_chat(user, "The safety is [safety() ? "on" : "off"].")
 	last_safety_check = world.time
@@ -628,6 +574,7 @@
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
 	new_mode.update()
+	update_click_handlers()
 	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
@@ -655,7 +602,8 @@
 		to_chat(user, "<span class='notice'>You switch the safety [safety_state ? "on" : "off"] on [src].</span>")
 		last_safety_check = world.time
 		playsound(src, 'sound/weapons/flipblade.ogg', 30, 1)
-		update_firemode()
+	update_firemode()
+	update_click_handlers()
 
 /obj/item/weapon/gun/verb/toggle_safety_verb()
 	set src in usr
@@ -694,50 +642,30 @@
 	.=..()
 	update_icon()
 	update_firemode()
-	var/check = update_aiming_mode()
-	if (check == AIM_FINE)
-		update_click_handlers()
-	else
-		remove_click_handlers()
+	update_click_handlers()
 
 /obj/item/weapon/gun/dropped(mob/user)
 	.=..()
 	update_firemode(FALSE)
-	var/check = update_aiming_mode()
-	if (check == AIM_FINE)
-		update_click_handlers()
-	else
-		remove_click_handlers()
+	update_click_handlers()
 
 /obj/item/weapon/gun/swapped_from()
 	.=..()
 	update_icon()
 	update_firemode(FALSE)
-	var/check = update_aiming_mode()
-	if (check == AIM_FINE)
-		update_click_handlers()
-	else
-		remove_click_handlers()
+	update_click_handlers()
 
 /obj/item/weapon/gun/swapped_to()
 	.=..()
 	update_icon()
 	update_firemode()
-	var/check = update_aiming_mode()
-	if (check == AIM_FINE)
-		update_click_handlers()
-	else
-		remove_click_handlers()
+	update_click_handlers()
 
 
 //Used by sustained weapons. Call to make the gun stop doing its thing
 /obj/item/weapon/gun/proc/stop_firing()
 	update_firemode()
-	var/check = update_aiming_mode()
-	if (check == AIM_FINE)
-		update_click_handlers()
-	else
-		remove_click_handlers()
+	update_click_handlers()
 
 
 
@@ -756,8 +684,7 @@
 /*------------------------
 	Aiming Mode Handling
 -------------------------*/
-#define AIM_NO_CLICKHANDLER	1	//We're fine to enter aiming modes, but not to use the RMB click handler
-#define AIM_FINE	2	//We're fine for aiming and click handler
+
 //Check any existing aiming mode, and click handler. Called regularly from lots of places
 /obj/item/weapon/gun/proc/update_aiming_mode()
 	if (active_aiming_mode)
@@ -765,7 +692,6 @@
 
 	.=aiming_safety()
 
-	//If we're good to aim and don't already have a click handler
 
 
 
@@ -842,11 +768,18 @@
 	Clickhandler Stuff
 -------------------------*/
 
+/obj/item/weapon/gun/proc/update_click_handlers()
+	var/check = update_aiming_mode()
+	if (check == AIM_FINE)
+		create_click_handlers()
+	else
+		remove_click_handlers()
+
 //Here we create all click handlers that are needed and don't currently exist. Check if they do exist.
 //All other safety checks are already done. At this point we know that:
 	//The gun is in the user's active hand
 	//The gun safety is disabled
-/obj/item/weapon/gun/proc/update_click_handlers()
+/obj/item/weapon/gun/proc/create_click_handlers()
 	var/mob/living/user = loc
 
 	if (ACH && (ACH.user != user))
@@ -855,3 +788,8 @@
 		//Then lets make one
 		ACH = user.PushClickHandler(/datum/click_handler/rmb_aim)
 		ACH.gun = src
+
+
+/obj/item/weapon/gun/proc/remove_click_handlers()
+	if (ACH)
+		QDEL_NULL(ACH)
