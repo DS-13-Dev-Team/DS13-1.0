@@ -289,6 +289,15 @@
 				/obj/item/weapon/reagent_containers/food/drinks/bottle/patron))
 
 
+/obj/random/gun
+	name = "Random Gun"
+	desc = "This is a random gun."
+	icon = 'icons/obj/gun.dmi'
+	icon_state = "energykill100"
+
+/obj/random/gun/item_to_spawn()
+	return pickweight(list(/obj/random/energy = 1, /obj/random/projectile = 2, /obj/random/handgun = 1.5))
+
 /obj/random/energy
 	name = "Random Energy Weapon"
 	desc = "This is a random energy weapon."
@@ -349,13 +358,7 @@
 	icon_state = "secgundark"
 
 /obj/random/handgun/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/gun/projectile/sec = 3,
-				/obj/item/weapon/gun/energy/gun = 2,
-				/obj/item/weapon/gun/projectile/beretta = 2,
-				/obj/item/weapon/gun/projectile/colt = 2,
-				/obj/item/weapon/gun/projectile/pistol = 2,
-				/obj/item/weapon/gun/energy/retro = 1,
-				/obj/item/weapon/gun/projectile/sec/wood = 1))
+	return pickweight(list(/obj/item/weapon/gun/projectile/divet = 1))
 
 /obj/random/ammo
 	name = "Random Ammunition"
@@ -364,12 +367,13 @@
 	icon_state = "45-10"
 
 /obj/random/ammo/item_to_spawn()
-	return pickweight(list(/obj/item/ammo_magazine/pulse = 2,
+	return pickweight(list(/obj/item/ammo_magazine/pulse = 1.5,
 	/obj/item/ammo_magazine/sawblades = 1,
 	/obj/item/ammo_magazine/bullpup = 1,
-	/obj/item/weapon/cell/force = 0.5,
+	/obj/item/weapon/cell/force = 0.75,
 	/obj/item/ammo_magazine/seeker = 1,
-	/obj/item/weapon/cell/contact = 0.5))
+	/obj/item/weapon/cell/contact = 0.75,
+	/obj/item/ammo_magazine/divet = 1.5))
 
 /obj/random/action_figure
 	name = "random action figure"
