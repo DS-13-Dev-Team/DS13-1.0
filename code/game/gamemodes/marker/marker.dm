@@ -5,8 +5,8 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	round_description = "The USG Ishimura has unearthed a strange artifact and is tasked with discovering what its purpose is."
 	extended_round_description = "The crew must survive the marker's onslaught, or destroy the marker."
 	config_tag = "marker"
-	required_players = 1
-	required_enemies = 1
+	required_players = 5
+	required_enemies = 3
 	end_on_antag_death = 0
 	auto_recall_shuttle = 1
 	antag_tags = list(MODE_UNITOLOGIST)
