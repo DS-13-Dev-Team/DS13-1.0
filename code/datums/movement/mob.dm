@@ -264,10 +264,11 @@
 	mob.moving = 1
 
 	direction = mob.AdjustMovementDirection(direction)
+	var/turf/old_turf = get_turf(mob)
 	step(mob, direction)
 
 	// Something with pulling things
-	var/extra_delay = HandleGrabs(direction)
+	var/extra_delay = HandleGrabs(direction, old_turf)
 	mob.ExtraMoveCooldown(extra_delay)
 
 	for (var/obj/item/grab/G in mob)
@@ -282,10 +283,12 @@
 /datum/movement_handler/mob/movement/MayMove(var/mob/mover)
 	return IS_SELF(mover) &&  mob.moving ? MOVEMENT_STOP : MOVEMENT_PROCEED
 
-/datum/movement_handler/mob/movement/proc/HandleGrabs(var/direction)
+/datum/movement_handler/mob/movement/proc/HandleGrabs(var/direction, var/old_turf)
 	. = 0
 	// TODO: Look into making grabs use movement events instead, this is a mess.
 	for (var/obj/item/grab/G in mob)
+		if(G.assailant == G.affecting)
+			return
 		. = max(., G.grab_slowdown())
 		var/list/L = mob.ret_grab()
 		if(istype(L, /list))
@@ -293,15 +296,10 @@
 				L -= mob
 				var/mob/M = L[1]
 				if(M)
-					if ((get_dist(mob, M) <= 1 || M.loc == mob.loc))
-						var/turf/T = mob.loc
-						if (isturf(M.loc))
-							var/diag = get_dir(mob, M)
-							if ((diag - 1) & diag)
-							else
-								diag = null
-							if ((get_dist(mob, M) > 1 || diag))
-								step(M, get_dir(M.loc, T))
+					if (get_dist(old_turf, M) <= 1)
+						if (isturf(M.loc) && isturf(mob.loc))
+							if (mob.loc != old_turf && M.loc != mob.loc)
+								step(M, get_dir(M.loc, old_turf))
 			else
 				for(var/mob/M in L)
 					M.other_mobs = 1
