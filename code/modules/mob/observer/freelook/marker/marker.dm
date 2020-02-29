@@ -39,6 +39,8 @@
 	visible_message(SPAN_WARNING("[src] starts to pulsate in a strange way..."))
 	//Start spreading corruption
 	start_corruption()
+	update_icon()
+	set_traumatic_sight(TRUE, 5) //Marker is pretty hard to look at.
 
 /obj/machinery/marker/Initialize()
 	.=..()
