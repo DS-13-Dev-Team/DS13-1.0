@@ -7,7 +7,7 @@
 	supervisors = "the Captain"
 	selection_color = "#515151"
 	minimal_player_age = 18
-	ideal_character_age = 40
+	ideal_character_age = 30
 
 	access = list(access_bridge, access_mining)
 	outfit_type = /decl/hierarchy/outfit/job/mining/dom
@@ -16,8 +16,8 @@
 	title = "Mining Foreman"
 	department = "Supply"
 	department_flag = SUP
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 1
+	spawn_positions = 1
 	supervisors = "the Director of Mining"
 	selection_color = "#515151"
 	minimal_player_age = 18
@@ -29,8 +29,8 @@
 	title = "Planet Cracker"
 	department = "Supply"
 	department_flag = SUP
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 14
+	spawn_positions = 14
 	supervisors = "the Director of Mining"
 	selection_color = "#515151"
 	minimal_player_age = 18

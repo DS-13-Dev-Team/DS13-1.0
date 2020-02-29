@@ -225,7 +225,7 @@
 
 /obj/item/device/radio/headset/heads/smo
 	name = "senior medical officer's headset"
-	desc = "The headset of the highly trained medical officer."
+	desc = "The headset of the highest trained medical officer."
 	icon_state = "com_headset"
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/heads/cmo
