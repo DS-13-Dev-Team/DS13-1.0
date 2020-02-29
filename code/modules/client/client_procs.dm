@@ -129,6 +129,12 @@
 			log_admin("[ckey] tried to join and was turned away due to the server being full (player_limit=[config.player_limit])")
 			qdel(src)
 			return
+	//DS13 - Give locally logged in users host status
+	var/localhost_addresses = list("127.0.0.1", "::1")
+	if(isnull(address) || (address in localhost_addresses))
+		var/rights = admin_ranks["Host"]
+		var/datum/admins/D = new /datum/admins("Host", rights, ckey)
+		D.associate(src)
 
 	// Change the way they should download resources.
 	if(config.resource_urls && config.resource_urls.len)

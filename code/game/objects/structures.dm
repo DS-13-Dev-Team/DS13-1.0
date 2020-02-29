@@ -17,6 +17,11 @@
 	var/list/footstep_sounds	//footstep sounds when stepped on
 	var/step_priority = 1	//Priority of the sound attached to this
 
+/obj/structure/proc/repair_damage(amount)
+	if(health + amount > max_health)
+		health = max_health
+		return
+	health += amount
 
 /obj/structure/proc/get_footstep_sound()
 	if(LAZYLEN(footstep_sounds)) return pick(footstep_sounds)
