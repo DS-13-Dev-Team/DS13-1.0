@@ -135,7 +135,7 @@
 
 /obj/effect/landmark/corpse/bridgeofficer
 	name = "Bridge Officer"
-	corpse_outfits = /decl/hierarchy/outfit/job/bo
+	corpse_outfits = /decl/hierarchy/outfit/job/command/bo
 
 
 

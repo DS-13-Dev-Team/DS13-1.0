@@ -2773,6 +2773,7 @@
 #include "code\unit_tests\zas_tests.dm"
 #include "code\unit_tests\~helpers.dm"
 #include "code\unit_tests\~unit_test_types.dm"
+#include "ds13\code\modules\mob\living\psychosis_new.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "lib\hypot\Hypot.dm"

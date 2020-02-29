@@ -23,6 +23,16 @@
 		/obj/item/weapon/spacecash/bundle/c50,
 		)
 
+/obj/item/weapon/storage/bible/unitology
+	name = "accipiens lunam"
+	desc = "A series of codes and tenants compiled into one book, given to select members of the Unitologist faith."
+	icon_state ="unitology"
+	deity_name = "Altman"
+
+	startswith = list(
+		/obj/item/weapon/storage/fancy/candle_box
+		)
+
 /obj/item/weapon/storage/bible/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity) return
 	if(user.mind && (user.mind.assigned_role == "Chaplain"))
@@ -72,4 +82,3 @@
 						break
 				if(i == 0)
 					icon_changed = 1
-					

@@ -240,6 +240,15 @@
 		..()
 		reagents.add_reagent(/datum/reagent/ethanol/rum, 100)
 
+/obj/item/weapon/reagent_containers/food/drinks/bottle/marinerdescent
+	name = "Mariner's Descent"
+	desc = "This isn't just rum, oh no. It's practically GRIFF in a bottle."
+	icon_state = "marinerbottle"
+	center_of_mass = "x=16;y=8"
+	New()
+		..()
+		reagents.add_reagent(/datum/reagent/space_drugs, 100)
+
 /obj/item/weapon/reagent_containers/food/drinks/bottle/holywater
 	name = "Flask of Holy Water"
 	desc = "A flask of the chaplain's holy water."
@@ -486,10 +495,10 @@
 /obj/item/weapon/reagent_containers/food/drinks/bottle/oiljug/New()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/lube/oil, 100)
-	
-	
-	
-	
+
+
+
+
 /obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel
 	name = "medical pack"
 	desc = "A standard medi-gel container to treat life threatening injuries."

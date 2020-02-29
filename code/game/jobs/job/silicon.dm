@@ -27,8 +27,8 @@
 	title = "Robot"
 	department_flag = MSC
 
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "your laws and the AI"	//Nodrak
 	selection_color = "#254c25"
 	minimal_player_age = 7

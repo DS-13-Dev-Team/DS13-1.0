@@ -274,3 +274,6 @@
 		M.shake_animation(40)
 		shake_camera(M, duration = 4 SECONDS, strength = 5)
 		return
+
+/datum/species/necromorph/brute/make_scary(mob/living/carbon/human/H)
+	H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though

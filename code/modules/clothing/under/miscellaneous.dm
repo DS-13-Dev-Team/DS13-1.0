@@ -155,7 +155,7 @@
 	item_state = "bl_suit"
 	worn_state = "psysuit"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	
+
 /obj/item/clothing/under/rigunder
 	name = "rig undersuit"
 	desc = "A tight bodysuit designed to be worn under a RIG suit in order to protect the less armoured areas of the body from heat and exposure to the elements."
@@ -488,13 +488,13 @@
 	item_state = "gy_suit"
 	worn_state = "assistant_formal"
 
-/obj/item/clothing/under/suit_jacket/charcoal
-	name = "charcoal suit"
+/obj/item/clothing/under/suit_jacket/dom
+	name = "director of mining's formal suit"
 	desc = "A charcoal suit and red tie. Very professional."
 	icon_state = "charcoal_suit"
 	item_state = "bl_suit"
 	worn_state = "charcoal_suit"
-	starting_accessories = list(/obj/item/clothing/accessory/navy, /obj/item/clothing/accessory/toggleable/charcoal_jacket)
+	starting_accessories = list(/obj/item/clothing/accessory/red, /obj/item/clothing/accessory/toggleable/charcoal_jacket)
 
 /obj/item/clothing/under/suit_jacket/navy
 	name = "navy suit"
@@ -580,9 +580,9 @@
 	item_state = "jensensuit"
 	worn_state = "pcrcsuit"
 
-/obj/item/clothing/under/grayson
-	name = "\improper Grayson overalls"
-	desc = "A set of overalls belonging to Grayson Manufactories, a manufacturing and mining company."
+/obj/item/clothing/under/foreman
+	name = "\improper Foreman's overalls"
+	desc = "A set of overalls that seem nicer than the average planet cracker's."
 	icon_state = "grayson"
 	worn_state = "grayson"
 

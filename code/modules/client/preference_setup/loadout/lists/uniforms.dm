@@ -37,7 +37,6 @@
 	suits += /obj/item/clothing/under/suit_jacket
 	suits += /obj/item/clothing/under/lawyer/blue
 	suits += /obj/item/clothing/under/suit_jacket/burgundy
-	suits += /obj/item/clothing/under/suit_jacket/charcoal
 	suits += /obj/item/clothing/under/suit_jacket/checkered
 	suits += /obj/item/clothing/under/suit_jacket/really_black
 	suits += /obj/item/clothing/under/suit_jacket/female
@@ -165,7 +164,6 @@
 	corps += /obj/item/clothing/under/pcrc
 	corps += /obj/item/clothing/under/pcrcsuit
 	corps += /obj/item/clothing/under/wardt
-	corps += /obj/item/clothing/under/grayson
 	corps += /obj/item/clothing/under/focal
 	corps += /obj/item/clothing/under/rank/ntwork
 	corps += /obj/item/clothing/under/morpheus
