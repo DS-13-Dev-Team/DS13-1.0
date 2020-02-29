@@ -140,6 +140,8 @@
 	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple)
 	)
 
+/datum/species/necromorph/psychosis_vulnerable()
+	return FALSE
 
 /datum/species/necromorph/New()
 	.=..()
@@ -153,12 +155,14 @@
 /datum/species/necromorph/get_icobase(var/mob/living/carbon/human/H)
 	return icon_template //We don't need to duplicate the same dmi path twice
 
-
-
 /datum/species/necromorph/add_inherent_verbs(var/mob/living/carbon/human/H)
 	.=..()
 	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
 	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
+	make_scary(H)
+
+/datum/species/necromorph/proc/make_scary(mob/living/carbon/human/H)
+	H.set_traumatic_sight(TRUE) //All necrmorphs are scary. Some are more scary than others though
 
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
