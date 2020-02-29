@@ -219,6 +219,7 @@
 		return FALSE
 	else
 		current_grab.adjust_position(src)
+		return TRUE
 
 /obj/item/grab/proc/reset_position()
 	current_grab.reset_position(src)

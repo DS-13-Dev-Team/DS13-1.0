@@ -232,8 +232,7 @@
 		qdel(G)
 		return 0
 
-	if(G.can_grab())
-		G.init()
+	if(G.can_grab() && G.init())
 		return 1
 	else
 		qdel(G)
