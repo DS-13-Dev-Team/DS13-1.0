@@ -35,7 +35,7 @@
 	minimal_player_age = 18
 	ideal_character_age = 40
 
-	access = list(access_bridge, access_cargo, access_so)
+	access = list(access_so, access_bridge, access_cargo)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/so
 
 /datum/job/serviceman
