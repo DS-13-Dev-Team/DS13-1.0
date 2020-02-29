@@ -121,8 +121,8 @@
 	name = "\improper Clinic"
 	icon_state = "medicalbase"
 
-/area/ishimura/upper/medical/chief_medical_office
-	name = "\improper Chief Medical Officer Office"
+/area/ishimura/upper/medical/senior_medical_office
+	name = "\improper Senior Medical Officer's Office"
 
 /area/ishimura/upper/medical/lobby
 	name = "\improper Clinic Waiting Room"

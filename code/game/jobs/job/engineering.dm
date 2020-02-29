@@ -11,7 +11,7 @@
 	minimal_player_age = 18
 	ideal_character_age = 45
 
-	access = list(access_bridge, access_engineering, access_maint_tunnels, access_external_airlocks)
+	access = list(access_ce, access_bridge, access_engineering, access_maint_tunnels, access_external_airlocks, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/engineering/ce
 
 /datum/job/tech_engineer

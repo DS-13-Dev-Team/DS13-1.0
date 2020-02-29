@@ -14,7 +14,7 @@
 	access = list(access_captain, access_bridge, access_security, access_armory, access_service,
 				access_cargo, access_mining, access_engineering,
 				access_external_airlocks, access_medical, access_research,
-				access_chemistry, access_surgery, access_maint_tunnels)
+				access_chemistry, access_surgery, access_maint_tunnels, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/command/cap
 
 /datum/job/fl
@@ -29,7 +29,8 @@
 	minimal_player_age = 18
 	ideal_character_age = 35
 
-	access = list(access_fl, access_bridge, access_security, access_armory, access_maint_tunnels)
+	access = list(access_fl, access_bridge, access_security, access_armory, access_maint_tunnels,
+				access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/command/fl
 
 /datum/job/bo

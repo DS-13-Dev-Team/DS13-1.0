@@ -11,7 +11,8 @@
 	minimal_player_age = 18
 	ideal_character_age = 50
 
-	access = list(access_bridge, access_medical, access_maint_tunnels, access_chemistry, access_surgery)
+	access = list(access_smo, access_bridge, access_maint_tunnels, access_medical, access_chemistry,
+				access_surgery)
 	outfit_type = /decl/hierarchy/outfit/job/medical/smo
 
 /datum/job/md
