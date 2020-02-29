@@ -21,6 +21,8 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair)
 
+	slowdown = 1.5
+
 /datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
 	return SPECIES_HUMAN
 

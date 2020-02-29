@@ -2323,6 +2323,7 @@
 #include "code\modules\projectiles\guns\projectile.dm"
 #include "code\modules\projectiles\guns\ds13\bullpup.dm"
 #include "code\modules\projectiles\guns\ds13\contactbeam.dm"
+#include "code\modules\projectiles\guns\ds13\divet.dm"
 #include "code\modules\projectiles\guns\ds13\forcegun.dm"
 #include "code\modules\projectiles\guns\ds13\pulse_rifle.dm"
 #include "code\modules\projectiles\guns\ds13\seeker.dm"
