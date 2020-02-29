@@ -419,7 +419,6 @@
 
 /obj/structure/closet/wardrobe/suit/New()
 	..()
-	new /obj/item/clothing/under/suit_jacket/charcoal(src)
 	new /obj/item/clothing/under/suit_jacket/navy(src)
 	new /obj/item/clothing/under/suit_jacket/burgundy(src)
 	new /obj/item/clothing/under/suit_jacket/checkered(src)
