@@ -45,11 +45,14 @@
 /obj/machinery/marker/proc/open_shop(var/mob/user)
 	shop.ui_interact(user)
 
+/*
+
 /obj/machinery/marker/attack_hand(var/mob/user)//Temporary
 	open_shop(user)
 
 /obj/machinery/marker/attack_ghost(var/mob/user)//Temporary
 	open_shop(user)
+*/
 
 /obj/machinery/marker/update_icon()
 	if (player)
