@@ -9,7 +9,7 @@
 	minimal_player_age = 18
 	ideal_character_age = 30
 
-	access = list(access_bridge, access_mining)
+	access = list(access_dom, access_bridge, access_mining)
 	outfit_type = /decl/hierarchy/outfit/job/mining/dom
 
 /datum/job/foreman

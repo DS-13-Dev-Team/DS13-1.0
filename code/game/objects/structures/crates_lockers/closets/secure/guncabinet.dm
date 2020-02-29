@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/guncabinet
 	name = "gun cabinet"
-	req_access = list(access_armory)
+	req_access = list(access_security)
 	icon = 'icons/obj/guncabinet.dmi'
 	icon_state = "base"
 	icon_off ="base"
@@ -8,6 +8,14 @@
 	icon_locked ="base"
 	icon_closed ="base"
 	icon_opened = "base"
+
+/obj/structure/closet/secure_closet/guncabinet/WillContain()
+	return list(
+		/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
+		/obj/item/ammo_magazine/pulse,
+		/obj/item/ammo_magazine/pulse,
+		/obj/item/ammo_magazine/pulse
+	)
 
 /obj/structure/closet/secure_closet/guncabinet/Initialize()
 	. = ..()

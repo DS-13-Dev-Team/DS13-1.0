@@ -119,8 +119,14 @@
 	region = ACCESS_REGION_RESEARCH
 
 /var/const/access_so = 103
-/datum/access/smo
+/datum/access/so
 	id = access_so
+	desc = "Supply Officer"
+	region = ACCESS_REGION_SUPPLY
+
+/var/const/access_dom = 104
+/datum/access/dom
+	id = access_dom
 	desc = "Supply Officer"
 	region = ACCESS_REGION_SUPPLY
 
