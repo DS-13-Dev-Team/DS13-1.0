@@ -5,15 +5,15 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	round_description = "The USG Ishimura has unearthed a strange artifact and is tasked with discovering what its purpose is."
 	extended_round_description = "The crew must survive the marker's onslaught, or destroy the marker."
 	config_tag = "marker"
-//	required_players = 10 Commented out so I can test it.
-//	required_enemies = 3 //1 marker, 2 unitologists.
-	required_players = 0
+	required_players = 1
 	required_enemies = 1
 	end_on_antag_death = 0
 	auto_recall_shuttle = 1
 	antag_tags = list(MODE_UNITOLOGIST)
 	latejoin_antag_tags = list(MODE_UNITOLOGIST)
+	antag_templates = list(/datum/antagonist/unitologist)
 	auto_recall_shuttle = TRUE //No escape
+	require_all_templates = TRUE
 	var/evac_points = 0
 	var/evac_threshold = 85 //2 hours until you get to evac.
 
@@ -28,6 +28,22 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 
 /datum/game_mode/marker/proc/pick_marker_player(late)
 	var/mob/M = pick(GLOB.unitologists_list)
+	if(!GLOB.unitologists_list.len) //Oh boy. That's not good. Time to force-create antags.
+		message_admins("Unable to find any unitologists. Attempting to force spawn them.")
+		var/datum/antagonist/antag
+		for(var/antag_type in GLOB.all_antag_types_)
+			var/datum/antagonist/temp = GLOB.all_antag_types_[antag_type]
+			if(istype(temp, /datum/antagonist/unitologist))
+				antag = temp
+				break
+		if(!antag)
+			message_admins("Something has gone awfully wrong")
+			return FALSE
+		if(!antag.can_late_spawn())
+			message_admins("Unitologist config error! Unable to automatically spawn unitologist antags. Cancelling.")
+			return FALSE
+		antag.attempt_random_spawn()
+		return FALSE
 	if(!M || !M.mind)
 		pick_marker_player() //Call recursively until we find a suitable player
 		return
@@ -45,7 +61,6 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 		return FALSE
 	var/mob/observer/ghost/ghost = M.ghostize(TRUE) //Ghost the player and put them in control of the marker.
 	SSnecromorph.marker.become_master_signal(ghost)
-	GLOB.unitologists.add_antagonist(SSnecromorph.marker.playermob.mind)
 	return TRUE
 
 /datum/game_mode/marker/proc/charge_evac_points()

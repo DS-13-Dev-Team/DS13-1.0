@@ -39,14 +39,17 @@
 
 	SSnecromorph.marker.vacate_master_signal()
 
-
-
 /mob/observer/eye/signal/master/verb/shop_verb()
 	set name = "Spawning Menu"
 	set category = SPECIES_NECROMORPH
 
 	SSnecromorph.marker.open_shop(src)
 
+/mob/observer/eye/signal/master/verb/message_servants()
+	set name = "Contact servants"
+	set src = usr
+	set category = SPECIES_NECROMORPH
+	usr.message_unitologists()
 
 //Finds out if the passed thing is the marker player.
 //The thing can be a mob, client, or ckey. They will all work

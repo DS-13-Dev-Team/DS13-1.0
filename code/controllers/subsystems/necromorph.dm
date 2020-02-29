@@ -51,6 +51,7 @@ SUBSYSTEM_DEF(necromorph)
 		//If we get here, they'll do.
 		vessel.key = M.key	//Move into the mob and delete the old
 		qdel(M)
+		GLOB.unitologists.add_antagonist(vessel.mind)
 		return TRUE
 	return FALSE	//Return false if we failed to find anyone
 
@@ -89,9 +90,13 @@ SUBSYSTEM_DEF(necromorph)
 //Global Necromorph Procs
 //-------------------------
 /proc/message_necromorphs(var/message)
+	//Message all the necromorphs
 	for (var/key in SSnecromorph.necromorph_players)
 		var/mob/M = SSnecromorph.necromorph_players[key]
 		to_chat(M, message)
+	//Message all the unitologists too
+	for(var/atom/M in GLOB.unitologists_list)
+		to_chat(M, "<span class='cult'>[src]: [message]</span>")
 
 //Possible future todo: Allow this to take some kind of faction id in order to allow a necros vs necros gamemode
 /proc/get_marker()

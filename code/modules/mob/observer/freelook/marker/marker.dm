@@ -121,6 +121,7 @@
 	playermob = S
 	qdel(M)
 	update_icon()
+	GLOB.unitologists.add_antagonist(playermob.mind)
 	return S
 
 
@@ -128,6 +129,7 @@
 	if (playermob)
 		message_necromorphs(SPAN_NOTICE("[player] has stepped down, nobody is controlling the marker now."))
 		var/mob/observer/eye/signal/S = new(playermob)
+		GLOB.unitologists.remove_antagonist(playermob.mind)
 		player = null
 		QDEL_NULL(playermob)
 		update_icon()

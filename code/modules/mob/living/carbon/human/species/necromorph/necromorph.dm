@@ -159,6 +159,7 @@
 	.=..()
 	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
 	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
+	H.verbs |= /mob/proc/message_unitologists
 
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
