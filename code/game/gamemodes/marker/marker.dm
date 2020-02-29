@@ -5,8 +5,8 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	round_description = "The USG Ishimura has unearthed a strange artifact and is tasked with discovering what its purpose is."
 	extended_round_description = "The crew must survive the marker's onslaught, or destroy the marker."
 	config_tag = "marker"
-	required_players = 5
-	required_enemies = 3
+	required_players = 1
+	required_enemies = 1
 	end_on_antag_death = 0
 	auto_recall_shuttle = 1
 	antag_tags = list(MODE_UNITOLOGIST)
@@ -60,6 +60,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 		addtimer(CALLBACK(src, .proc/activate_marker), rand(2 MINUTES, 5 MINUTES)) //We have to spawn the marker quite late, so guess we'd best wait for someone to actually take it over
 		return FALSE
 	var/mob/observer/ghost/ghost = M.ghostize(TRUE) //Ghost the player and put them in control of the marker.
+	SSnecromorph.marker.make_active() //Allow controlling
 	SSnecromorph.marker.become_master_signal(ghost)
 	return TRUE
 

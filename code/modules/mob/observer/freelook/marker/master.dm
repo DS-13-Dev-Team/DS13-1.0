@@ -2,6 +2,7 @@
 	//The master signal is the player who controls the marker. Essentially the leader of the necromorphs
 */
 /mob/observer/eye/signal/master
+	name = "The marker"
 	icon = 'icons/mob/necromorph/mastersignal.dmi'
 	icon_state = "mastersignal"
 	pixel_x = -7
@@ -12,6 +13,9 @@
 	//Lets remove some verbs that don't make sense here, you get these back if you downgrade to signal
 	verbs -= /mob/observer/eye/signal/verb/become_master_signal_verb
 	verbs -= /mob/observer/eye/signal/verb/leave_marker_verb
+
+/mob/observer/eye/signal/master/set_name(mob/body)
+	return FALSE
 
 /mob/observer/eye/signal/verb/become_master_signal_verb()
 	set name = "Become Master Signal"
