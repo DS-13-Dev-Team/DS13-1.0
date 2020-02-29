@@ -9,10 +9,11 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	fire_sound_text = "laser blast"
 
 	var/obj/item/weapon/cell/power_supply //What type of power cell this uses
+	var/removeable_cell = FALSE	//If true, the cell can be removed and replaced
 	var/charge_cost = 20 //How much energy is needed to fire.
 	var/max_shots = 10 //Determines the capacity of the weapon's power cell. Specifying a cell_type overrides this value.
 	var/cell_type = null
-	var/projectile_type = /obj/item/projectile/beam/practice
+	projectile_type = /obj/item/projectile/beam/practice
 	var/modifystate
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
 
@@ -21,6 +22,42 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	var/use_external_power = 0 //if set, the weapon will look for an external power source to draw from, otherwise it recharges magically
 	var/recharge_time = 4
 	var/charge_tick = 0
+
+
+
+/obj/item/weapon/gun/energy/unload_ammo(mob/user)
+	if(power_supply && removeable_cell)
+		user.put_in_hands(power_supply)
+		user.visible_message("[user] removes [power_supply] from [src].", "<span class='notice'>You remove [power_supply] from [src].</span>")
+		playsound(loc, mag_remove_sound, 50, 1)
+		power_supply.update_icon()
+		power_supply = null
+
+/obj/item/weapon/gun/energy/load_ammo(var/obj/item/A, mob/user)
+	if (istype(A, /obj/item/weapon/cell))
+		if (power_supply)
+			return	//Already got a cell
+
+
+		if (cell_type && !istype(A, cell_type))
+			to_chat(user, SPAN_WARNING("That is the wrong type for this weapon!"))
+			return
+
+		if(!user.unEquip(A, src))
+			return
+
+		power_supply = A
+		.=..()
+
+/obj/item/weapon/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
+	load_ammo(A, user)
+
+/obj/item/weapon/gun/energy/attack_hand(mob/user as mob)
+	if(user.get_inactive_hand() == src && removeable_cell)
+		unload_ammo(user)
+	else
+		return ..()
+
 
 /obj/item/weapon/gun/energy/switch_firemodes()
 	. = ..()
@@ -69,9 +106,11 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 
 /obj/item/weapon/gun/energy/consume_next_projectile()
 	if(!power_supply) return null
-	if(!ispath(projectile_type)) return null
 	if(!power_supply.checked_use(charge_cost)) return null
-	return new projectile_type(src)
+	if (projectile_type)
+		return new projectile_type(src)
+	else
+		return TRUE	//If this gun doesnt use a projectile, just return true to indicate we consumed the power
 
 /obj/item/weapon/gun/energy/proc/get_external_power_supply()
 	if(isrobot(src.loc))
@@ -95,6 +134,12 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	var/shots_remaining = round(power_supply.charge / charge_cost)
 	to_chat(user, "Has [shots_remaining] shot\s remaining.")
 	return
+
+/obj/item/weapon/gun/energy/has_ammo()
+	if(!power_supply)
+		return FALSE
+	return (power_supply.charge >= charge_cost)
+
 
 /obj/item/weapon/gun/energy/update_icon()
 	..()

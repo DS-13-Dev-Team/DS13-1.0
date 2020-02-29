@@ -155,11 +155,12 @@
 
 
 //this handles hud updates. Calls update_vision() and handle_hud_icons()
-/mob/living/proc/handle_regular_hud_updates()
+/mob/living/proc/handle_regular_hud_updates(var/update_vision = TRUE)
 	if(!client)	return 0
 
 	handle_hud_icons()
-	handle_vision()
+	if (update_vision)
+		handle_vision()
 
 	return 1
 

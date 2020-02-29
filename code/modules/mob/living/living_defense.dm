@@ -406,3 +406,20 @@
 	fire_act(air, temperature)
 	FireBurn(0.4*vsc.fire_firelevel_multiplier, temperature, pressure)
 	. =  (health <= 0) ? ..() : FALSE
+
+
+/*-------------------------------
+	Projectile accuracy handling
+---------------------------------*/
+//Takes an accuracy value, a targeted bodypart, and the projectile, tool or mob doing the hitting.
+/mob/living/proc/get_zone_with_miss_chance(var/accuracy, var/desired_zone, var/weapon)
+	//Mobs at living level don't have targetable limbs, so we'll just do a simple accuracy - evasion check
+	var/evasion_mod = evasion
+	if (lying)
+		evasion_mod *= 0.5
+	accuracy -= evasion_mod
+
+	if (prob(accuracy))
+		return	BP_CHEST	//The default bodypart
+	else
+		return null	//It missed!

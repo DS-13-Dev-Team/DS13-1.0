@@ -192,5 +192,6 @@
 	var/view_range = 7
 	var/lock_view = FALSE	//Used in mob/mob.dm, to tell reset_view not to do certain things
 
-	//Physics
-	var/mass	=	1	//Mass of mob, in kilograms
+
+	//Combat
+	var/evasion = 15	//A base percentage chance of avoiding attacks which would otherwise hit

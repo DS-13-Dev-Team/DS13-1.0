@@ -559,3 +559,13 @@
 	if (user.loc == target.loc)
 		return TRUE
 	return (round(Vector2.FromDir(user.dir).Dot(new/vector2(target.x - user.x, target.y - user.y).Normalized()),0.000001) >= round(cos(arc),0.000001))
+
+
+//Checks if target is within arc degrees either side of a specified direction vector from user. All parameters are mandatory
+//Rounding explained above
+/proc/target_in_arc(var/atom/origin, var/atom/target, var/vector2/direction, var/arc)
+	origin = get_turf(origin)
+	target = get_turf(target)
+	if (origin == target)
+		return TRUE
+	return (round(direction.Dot(new/vector2(target.x - origin.x, target.y - origin.y).Normalized()),0.000001) >= round(cos(arc),0.000001))

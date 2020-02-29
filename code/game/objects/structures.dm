@@ -16,6 +16,7 @@
 
 	var/list/footstep_sounds	//footstep sounds when stepped on
 	var/step_priority = 1	//Priority of the sound attached to this
+	mass = 10
 
 /obj/structure/proc/repair_damage(amount)
 	if(health + amount > max_health)
@@ -146,6 +147,9 @@
 
 /obj/structure/bullet_act(var/obj/item/projectile/P)
 	take_damage(P.get_structure_damage(), user = P.firer, used_weapon = P)
+	if (health > 0)
+		return FALSE
+	return TRUE
 
 
 /obj/structure/attackby(var/obj/item/C, var/mob/user)

@@ -7,6 +7,34 @@ meteor_act
 
 */
 
+/*-------------------------------
+	Projectile accuracy handling
+---------------------------------*/
+//Takes an accuracy value, a targeted bodypart, and the projectile, tool or mob doing the hitting.
+/mob/living/carbon/human/get_zone_with_miss_chance(var/accuracy, var/desired_zone, var/weapon)
+	//Mobs on the floor are less good at evading
+	var/evasion_mod = evasion
+	if (lying)
+		evasion_mod *= 0.5
+	accuracy -= evasion_mod
+
+	//Individual organs have varying difficulty to hit them
+	var/obj/item/organ/external/organ = get_organ(desired_zone)
+	if (organ)
+		accuracy -= organ.base_miss_chance
+
+	//For humans, we run the accuracy check twice
+	//1. To see whether we hit anything at all. Fail, and the attack misses.
+	if (!prob(accuracy))
+		return	null
+
+	//2. To see whether we hit the desired bodypart. Fail, and we'll hit a random bodypart instead
+		//If no particular bodypart is desired, we skip this and just pick random
+	if (desired_zone && prob(accuracy))
+		return desired_zone	//It missed!
+	else
+		return pick(organs)	//Check if this is valid
+
 /mob/living/carbon/human/bullet_act(var/obj/item/projectile/P, var/def_zone)
 
 	def_zone = check_zone(def_zone)

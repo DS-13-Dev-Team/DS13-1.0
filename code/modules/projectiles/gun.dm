@@ -1,41 +1,5 @@
-/*
-	Defines a firing mode for a gun.
-
-	A firemode is created from a list of fire mode settings. Each setting modifies the value of the gun var with the same name.
-	If the fire mode value for a setting is null, it will be replaced with the initial value of that gun's variable when the firemode is created.
-	Obviously not compatible with variables that take a null value. If a setting is not present, then the corresponding var will not be modified.
-*/
-/datum/firemode
-	var/name = "default"
-	var/list/settings = list()
-	var/obj/item/weapon/gun/gun = null
-
-/datum/firemode/New(obj/item/weapon/gun/_gun, list/properties = null)
-	..()
-	if(!properties) return
-
-	gun = _gun //Cache the weapon
-
-	for(var/propname in properties)
-		var/propvalue = properties[propname]
-
-		if(propname == "mode_name")
-			name = propvalue
-		else if(isnull(propvalue))
-			settings[propname] = gun.vars[propname] //better than initial() as it handles list vars like burst_accuracy
-		else
-			settings[propname] = propvalue
-
-/datum/firemode/proc/apply_to(obj/item/weapon/gun/_gun)
-	gun = _gun
-	for(var/propname in settings)
-		if (propname in gun.vars)
-			gun.vars[propname] = settings[propname]
-
-
-//Called whenever the firemode is switched to, or the gun is picked up while its active
-/datum/firemode/proc/update()
-	return
+#define AIM_NO_CLICKHANDLER	1	//We're fine to enter aiming modes, but not to use the RMB click handler
+#define AIM_FINE	2	//We're fine for aiming and click handler
 
 
 //Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
@@ -64,17 +28,19 @@
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
 	var/burst_delay = 2	//delay between shots, if firing in bursts
+	var/windup_time	= 0	//A delay between pressing the button, and actually firing
+	var/windup_sound	//Sound played during windup time
 	var/move_delay = 1
 	var/fire_sound = 'sound/weapons/gunshot/gunshot.ogg'
 	var/fire_sound_text = "gunshot"
 	var/fire_anim = null
 	var/screen_shake = 0 //shouldn't be greater than 2 unless zoomed
 	var/silenced = 0
-	var/accuracy = 0   //accuracy is measured in tiles. +1 accuracy means that everything is effectively one tile closer for the purpose of miss chance, -1 means the opposite. launchers are not supported, at the moment.
-	var/scoped_accuracy = null
-	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
+	var/move_accuracy_mod	=	-10	//Modifier applied to accuracy while moving. Should generally be negative
+
+
 	var/list/dispersion = list(0)
-	var/one_hand_penalty
+
 	var/wielded_item_state
 	var/combustion	//whether it creates hotspot when fired
 
@@ -82,14 +48,32 @@
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
+	var/datum/firemode/current_firemode
 	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 	var/firing = FALSE //True if currently firing, limited implementation, mostly for sustained/automatic weapons
+
+	//Accuracy handling
+	var/accuracy = 0   //Default 0: Percentage bonus or penalty to accuracy, this is applied to the base accuracy of projectiles (usually 100)
+	var/one_hand_penalty
+	var/scoped_accuracy = null
+	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
+
+	//Damage handling
+	var/damage_factor = 1	//Multiplier on damage
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
 						//0 for one bullet after tarrget moves and aim is lowered
 	var/multi_aim = 0 //Used to determine if you can target multiple people.
 	var/tmp/list/mob/living/aim_targets //List of who yer targeting.
+
+
+	//Aiming Modes: Scopes, ironsights, etc
+	var/selected_aiming_mode	//Typepath of the aiming mode datum we will create when we activate aiming mode
+	var/datum/extension/aim_mode/active_aiming_mode	//Reference to an aiming mode extension we are currently using.
+	var/list/aiming_modes = list(/datum/extension/aim_mode/basic)	//Possible aiming modes this gun can use
+	var/datum/click_handler/rmb_aim/ACH	//Click handler used for rightclick toggling
+
 	var/tmp/mob/living/last_moved_mob //Used to fire faster at more than one person.
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
@@ -97,6 +81,12 @@
 	var/suppress_delay_warning = FALSE
 	var/safety_state = 0
 	var/has_safety = TRUE
+
+	var/projectile_type = null	//What type of projectile will we fire when the trigger is pulled? If this is set, it overrides default ammo-based typing in projectile guns
+	var/ammo_cost = 1	//How many shots' worth of ammo do we consume to fire once?
+
+	var/mag_insert_sound
+	var/mag_remove_sound
 
 /obj/item/weapon/gun/New()
 	..()
@@ -114,6 +104,9 @@
 	if (firemodes.len)
 		var/datum/firemode/F = firemodes[sel_mode]
 		F.apply_to(src)
+
+	if (aiming_modes.len)
+		selected_aiming_mode = aiming_modes[1]
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
@@ -139,6 +132,7 @@
 			else
 				item_state_slots[slot_l_hand_str] = initial(item_state)
 				item_state_slots[slot_r_hand_str] = initial(item_state)
+			update_wear_icon()
 		if(M.skill_check(SKILL_WEAPONS,SKILL_BASIC))
 			overlays += image(icon,"safety[safety()]")
 
@@ -179,6 +173,7 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
+//Return true if we successfully fired
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, adjacent, params, var/vector2/world_pixel_click)
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
 
@@ -187,13 +182,18 @@
 
 	//Check that the gun is able to fire
 	if (!can_fire(A, user, params))
+		//If its not able to fire, lets check why
+		if(safety() || !has_ammo())
+			handle_click_empty()
 		return
 
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
-		return
+		return TRUE
 
 	Fire(A,user,params) //Otherwise, fire normally.
+
+	return TRUE
 
 /obj/item/weapon/gun/attack(atom/A, mob/living/user, def_zone)
 
@@ -215,19 +215,17 @@
 	return ..()
 
 
-//Return true if firing is okay
+//Return true if firing is okay right now
 /obj/item/weapon/gun/proc/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
 	if(world.time < next_fire_time)
 		if (!silent && !suppress_delay_warning && world.time % 3) //to prevent spam
 			user << SPAN_WARNING("[src] is not ready to fire again!")
-			return FALSE
+		return FALSE
 
 	if(target && user && (target.z != user.z))
 		return FALSE
 
-	if(safety())
-		if (!silent)
-			handle_click_empty(user)
+	if(safety() || !has_ammo())
 		return FALSE
 
 	if (!special_check(user))
@@ -235,10 +233,37 @@
 
 	return TRUE
 
+//Returns true if the gun can fire now, or will become able to fire in the near future without any active intervention
+//This is true even when the gun is cooling down between shots
+//It is false when safety is on, or ammo has run out
+/obj/item/weapon/gun/proc/can_ever_fire(mob/living/user)
+	if(safety() || !has_ammo())
+		return FALSE
+
+	//We'll only do the special check if a user is supplied
+	if (user && !special_check(user))
+		return FALSE
+
+	return TRUE
+
+
+/obj/item/weapon/gun/proc/has_ammo()	//Does this gun have enough ammo/power/resources to fire at least once?
+	return TRUE
+
+/obj/item/weapon/gun/is_held_twohanded(var/mob/user)
+	.=..()
+	if (.)
+		if (!user.can_wield_item(src))
+			return FALSE
 
 //Safety checks are done by the time fire is called
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
-	if(!user || !target) return
+
+	if (current_firemode.override_fire)
+		current_firemode.fire(target, user, clickparams, pointblank, reflex)
+		return
+
+	if(!user || !target) return	//Except this one, apparently
 
 
 	add_fingerprint(user)
@@ -248,11 +273,16 @@
 
 	last_safety_check = world.time
 	var/shoot_time = (burst - 1)* burst_delay
-	user.setClickCooldown(shoot_time) //no clicking on things while shooting
-	user.SetMoveCooldown(shoot_time) //no moving while shooting either
-	next_fire_time = world.time + shoot_time
+	user.setClickCooldown(shoot_time+windup_time) //no clicking on things while shooting
+	user.SetMoveCooldown(shoot_time+windup_time) //no moving while shooting either
+	next_fire_time = world.time + shoot_time + windup_time
 
-	var/held_twohanded = (user.can_wield_item(src) && src.is_held_twohanded(user))
+	var/held_twohanded = is_held_twohanded(user)
+
+	if (windup_time)
+		if (windup_sound)
+			playsound(user, windup_sound, 100, 1)
+		sleep(windup_time)
 
 	//actually attempt to shoot
 	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
@@ -260,23 +290,31 @@
 		var/obj/projectile = consume_next_projectile(user)
 		if(!projectile)
 			handle_click_empty(user)
+			current_firemode.on_fire(target, user, clickparams, pointblank, reflex, FALSE)	//Tell the firemode that we tried and failed to fire
 			break
 
-		process_accuracy(projectile, user, target, i, held_twohanded)
+		//Consume next projectile may just return TRUE instead of an object. In that case we don't launch any bullets, but still count it as a successful fire
+		if (istype(projectile))
 
-		if(pointblank)
-			process_point_blank(projectile, user, target)
+			process_accuracy(projectile, user, target, i, held_twohanded)
 
-		if(process_projectile(projectile, user, target, user.zone_sel.selecting, clickparams))
-			handle_post_fire(user, target, pointblank, reflex)
-			update_icon()
+			if(pointblank)
+				process_point_blank(projectile, user, target)
 
-		if(i < burst)
-			sleep(burst_delay)
+			process_projectile(projectile, user, target, user.zone_sel.selecting, clickparams)
 
-		if(!(target && target.loc))
-			target = targloc
-			pointblank = 0
+
+			if(i < burst)
+				sleep(burst_delay)
+
+			if(!(target && target.loc))
+				target = targloc
+				pointblank = 0
+
+		play_fire_sound(user,projectile)
+
+		handle_post_fire(user, target, pointblank, reflex)
+		current_firemode.on_fire(target, user, clickparams, pointblank, reflex, TRUE)//Tell the firemode that we successfully fired
 
 	//update timing
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
@@ -285,6 +323,10 @@
 
 //obtains the next projectile to fire
 /obj/item/weapon/gun/proc/consume_next_projectile()
+	return null
+
+//Attempts to consume a specified number of projectiles. Returns false if the gun doesn't have enough ammo
+/obj/item/weapon/gun/proc/consume_projectiles(var/number = 1)
 	return null
 
 //used by aiming code
@@ -379,35 +421,33 @@
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
 
-	var/acc_mod = burst_accuracy[min(burst, burst_accuracy.len)]
+	P.damage *= damage_factor
+	var/acc_mod = accuracy
+	if (burst_accuracy)
+		acc_mod += burst_accuracy[min(burst, burst_accuracy.len)]
 	var/disp_mod = dispersion[min(burst, dispersion.len)]
 	var/stood_still = round((world.time - user.l_move_time)/15)
-	if(stood_still)
-		acc_mod += 1 * max(2, stood_still)
-		if(stood_still > 5)
-			acc_mod += accuracy
+	if(stood_still < 1 SECOND)
+		acc_mod += move_accuracy_mod
 
-	if(one_hand_penalty)
-		if(!stood_still)
-			acc_mod -= 1
-		if(!held_twohanded)
-			acc_mod += -ceil(one_hand_penalty/2)
-			disp_mod += one_hand_penalty*0.5 //dispersion per point of two-handedness
+	if(one_hand_penalty && !held_twohanded)
+		acc_mod += one_hand_penalty
+		disp_mod += one_hand_penalty*0.5 //dispersion per point of two-handedness
 
 	if(burst > 1 && !user.skill_check(SKILL_WEAPONS, SKILL_ADEPT))
 		acc_mod -= 1
 		disp_mod += 0.5
 
 	//Accuracy modifiers
-	P.accuracy = accuracy + acc_mod
+	P.accuracy += acc_mod
 	P.dispersion = disp_mod
 
-	//accuracy bonus from aiming
+	/*accuracy bonus from aiming
 	if (aim_targets && (target in aim_targets))
 		//If you aim at someone beforehead, it'll hit more often.
 		//Kinda balanced by fact you need like 2 seconds to aim
 		//As opposed to no-delay pew pew
-		P.accuracy += 2
+		P.accuracy += 2*/
 
 	P.accuracy += user.ranged_accuracy_mods()
 
@@ -434,8 +474,7 @@
 
 	var/launched = !P.launch_from_gun(target, user, src, target_zone, x_offset, y_offset)
 
-	if(launched)
-		play_fire_sound(user,P)
+
 
 	return launched
 
@@ -518,7 +557,7 @@
 	. = ..()
 	if(user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		if(firemodes.len > 1)
-			var/datum/firemode/current_mode = firemodes[sel_mode]
+			var/datum/firemode/current_mode = current_firemode
 			to_chat(user, "The fire selector is set to [current_mode.name].")
 	to_chat(user, "The safety is [safety() ? "on" : "off"].")
 	last_safety_check = world.time
@@ -528,11 +567,14 @@
 	var/next_mode = get_next_firemode()
 	if(!next_mode || next_mode == sel_mode)
 		return null
+	var/datum/firemode/current_mode = firemodes[sel_mode]
 	update_firemode(FALSE) //Disable the old firing mode before we switch away from it
+	current_mode.unapply_to(src)	//Set any vars the firemode altered back to default
 	sel_mode = next_mode
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
 	new_mode.update()
+	update_click_handlers()
 	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
@@ -560,7 +602,8 @@
 		to_chat(user, "<span class='notice'>You switch the safety [safety_state ? "on" : "off"] on [src].</span>")
 		last_safety_check = world.time
 		playsound(src, 'sound/weapons/flipblade.ogg', 30, 1)
-		update_firemode()
+	update_firemode()
+	update_click_handlers()
 
 /obj/item/weapon/gun/verb/toggle_safety_verb()
 	set src in usr
@@ -594,25 +637,159 @@
 		new_mode.update(force_state)
 
 
-
 //Updating firing modes at appropriate times
 /obj/item/weapon/gun/equipped(var/mob/user, var/slot)
 	.=..()
+	update_icon()
 	update_firemode()
+	update_click_handlers()
 
 /obj/item/weapon/gun/dropped(mob/user)
 	.=..()
 	update_firemode(FALSE)
+	update_click_handlers()
 
 /obj/item/weapon/gun/swapped_from()
 	.=..()
+	update_icon()
 	update_firemode(FALSE)
+	update_click_handlers()
 
 /obj/item/weapon/gun/swapped_to()
 	.=..()
+	update_icon()
 	update_firemode()
+	update_click_handlers()
 
 
 //Used by sustained weapons. Call to make the gun stop doing its thing
 /obj/item/weapon/gun/proc/stop_firing()
 	update_firemode()
+	update_click_handlers()
+
+
+
+//Ammo handling, used by most types of weapons
+/obj/item/weapon/gun/proc/unload_ammo(mob/user)
+	playsound(loc, mag_remove_sound, 50, 1)
+
+/obj/item/weapon/gun/proc/load_ammo(var/obj/item/A, mob/user)
+	playsound(loc, mag_insert_sound, 50, 1)
+
+/obj/item/weapon/gun/attackby(var/obj/item/A as obj, mob/user as mob)
+	load_ammo(A, user)
+
+
+
+/*------------------------
+	Aiming Mode Handling
+-------------------------*/
+
+//Check any existing aiming mode, and click handler. Called regularly from lots of places
+/obj/item/weapon/gun/proc/update_aiming_mode()
+	if (active_aiming_mode)
+		active_aiming_mode.safety()
+
+	.=aiming_safety()
+
+
+
+
+//Enables if not enabled
+//Disables if enabled
+/obj/item/weapon/gun/proc/toggle_aiming_mode()
+	if (active_aiming_mode)
+		disable_aiming_mode()
+	else
+		enable_aiming_mode()
+
+/obj/item/weapon/gun/proc/enable_aiming_mode()
+	.=update_aiming_mode()	//First of all, update. If theres an existing one gone stale, this will remove it
+	if (active_aiming_mode)
+		return	//If one still exists, leave it in place, we are done here
+
+	//Okay lets create the aim extension on the user!
+	if (.)//Update aiming mode did the safety checks for us
+		var/mob/living/user = loc
+
+		active_aiming_mode = set_extension(user, selected_aiming_mode, src)
+		return TRUE	//Return true if we changed aiming state
+
+
+/obj/item/weapon/gun/proc/disable_aiming_mode()
+	if (active_aiming_mode)
+		active_aiming_mode.remove()
+		active_aiming_mode = null
+		return TRUE	//Return true if we changed aiming state
+
+//Switches to the next aiming mode
+/obj/item/weapon/gun/proc/cycle_aiming_mode()
+	if (!aiming_modes || aiming_modes.len <= 1 || !selected_aiming_mode)
+		return
+
+	var/element = aiming_modes.Find(selected_aiming_mode)
+	element = Wrap(element+1, 1, aiming_modes.len+1)
+	selected_aiming_mode = aiming_modes[element]
+	playsound(src, 'sound/weapons/flipblade.ogg', 30, 1)
+	var/datum/extension/aim_mode/AR = selected_aiming_mode
+	if (usr)
+		to_chat(usr, SPAN_NOTICE("Selected [initial(AR.name)]"))
+
+/obj/item/weapon/gun/AltClick(var/mob/user)
+	if (user == loc && is_held() && selected_aiming_mode)
+		toggle_aiming_mode()
+		return
+	.=..()
+
+
+/obj/item/weapon/gun/CtrlAltClick(var/mob/user)
+	if (user == loc && is_held() && aiming_modes.len > 1)
+		cycle_aiming_mode()
+		return
+	.=..()
+
+/obj/item/weapon/gun/proc/aiming_safety()
+	if (is_held())
+		.=AIM_FINE	//
+		var/mob/user = loc
+		if (safety())
+			.=AIM_NO_CLICKHANDLER
+
+		else if (user.get_active_hand() != src)
+			.=AIM_NO_CLICKHANDLER
+
+
+		return
+
+	return FALSE
+
+
+/*------------------------
+	Clickhandler Stuff
+-------------------------*/
+
+/obj/item/weapon/gun/proc/update_click_handlers()
+	var/check = update_aiming_mode()
+	if (check == AIM_FINE)
+		create_click_handlers()
+	else
+		remove_click_handlers()
+
+//Here we create all click handlers that are needed and don't currently exist. Check if they do exist.
+//All other safety checks are already done. At this point we know that:
+	//The gun is in the user's active hand
+	//The gun safety is disabled
+/obj/item/weapon/gun/proc/create_click_handlers()
+	var/mob/living/user = loc
+
+	if (ACH && (ACH.user != user))
+		QDEL_NULL(ACH)
+	if (selected_aiming_mode && !ACH)
+		//Then lets make one
+		ACH = user.PushClickHandler(/datum/click_handler/rmb_aim)
+		ACH.gun = src
+
+
+/obj/item/weapon/gun/proc/remove_click_handlers()
+	if (ACH)
+		QDEL_NULL(ACH)

@@ -51,7 +51,7 @@
 		else
 			to_chat(user, "<span class='notice'>There is a thick layer of silicate covering it.</span>")
 
-/obj/structure/window/take_damage(var/damage = 0,  var/sound_effect = 1)
+/obj/structure/window/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
 	playsound(loc, hitsound, 100, 1)
 	.=..()
 

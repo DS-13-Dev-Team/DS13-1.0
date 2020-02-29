@@ -5,7 +5,8 @@
 	has_postspawn = TRUE
 
 /obj/random/tool/item_to_spawn()
-	return pickweight(list(///obj/random/rare = 1,
+	return pickweight(list(/obj/random/rare = 1,
+				/obj/random/ammo	=	10,
 				/obj/item/weapon/tool/screwdriver = 8,
 				/obj/item/weapon/tool/screwdriver/electric = 2,
 				/obj/item/weapon/tool/screwdriver/combi_driver = 1,

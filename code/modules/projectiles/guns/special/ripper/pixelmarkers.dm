@@ -1,6 +1,7 @@
 /obj/effect/pixelmarker
 	icon = 'icons/debug/pixelmarkers.dmi'
 	var/lifetime = 0.3
+	anchored = TRUE
 
 /obj/effect/pixelmarker/New(var/location, var/_lifetime)
 	if (_lifetime)
@@ -18,6 +19,7 @@
 	forceMove(locate(tilecoords.x, tilecoords.y, z))
 	pixel_x = (coords.x % tilecoords.x)
 	pixel_y = (coords.y % tilecoords.y)
+
 
 
 

@@ -17,7 +17,7 @@
 	//machine pistol, easier to one-hand with
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=0, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    one_hand_penalty=1, burst_accuracy=list(0,-1,-1),       dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    one_hand_penalty=-5, burst_accuracy=list(0,-5,-6),       dispersion=list(0.0, 0.6, 1.0)),
 		FULL_AUTO_400
 		)
 
@@ -37,7 +37,7 @@
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=0, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    one_hand_penalty=1, burst_accuracy=list(0,-1,-1),       dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    one_hand_penalty=-5, burst_accuracy=list(0,-5,-6),       dispersion=list(0.0, 0.6, 1.0)),
 		FULL_AUTO_400)
 
 /obj/item/weapon/gun/projectile/automatic/mini_uzi/update_icon()
@@ -67,8 +67,8 @@
 	//SMG
 	firemodes = list(
 		FULL_AUTO_400,
-		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=2, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    one_hand_penalty=3, burst_accuracy=list(0,-1,-1),       dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=-10, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    one_hand_penalty=-15, burst_accuracy=list(0,-5,-6),       dispersion=list(0.0, 0.6, 1.0)),
 		FULL_AUTO_600)
 
 /obj/item/weapon/gun/projectile/automatic/c20r/update_icon()
@@ -99,8 +99,8 @@
 
 	//Assault rifle, burst fire degrades quicker than SMG, worse one-handing penalty, slightly increased move delay
 	firemodes = list(
-		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=4, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=6,    one_hand_penalty=5, burst_accuracy=list(0,-1,-1),       dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=-20, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=6,    one_hand_penalty=-25, burst_accuracy=list(0,-5,-6),       dispersion=list(0.0, 0.6, 1.0)),
 		FULL_AUTO_400)
 
 /obj/item/weapon/gun/projectile/automatic/sts35/update_icon()
@@ -125,7 +125,7 @@
 	//machine pistol, like SMG but easier to one-hand with
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=0, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    one_hand_penalty=1, burst_accuracy=list(0,-1,-1),       dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    one_hand_penalty=-5, burst_accuracy=list(0,-5,-6),       dispersion=list(0.0, 0.6, 1.0)),
 		FULL_AUTO_400)
 
 /obj/item/weapon/gun/projectile/automatic/wt550/update_icon()
@@ -157,12 +157,12 @@
 	wielded_item_state = "z8carbine-wielded"
 	mag_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
-	//would have one_hand_penalty=4,5 but the added weight of a grenade launcher makes one-handing even harder
+	//would have one_hand_penalty=-20,5 but the added weight of a grenade launcher makes one-handing even harder
 	firemodes = list(
-		list(mode_name="semiauto",       burst=1,    fire_delay=0,    move_delay=null, use_launcher=null, one_hand_penalty=5, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3,    fire_delay=null, move_delay=6,    use_launcher=null, one_hand_penalty=6, burst_accuracy=list(0,-1,-1), dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="semiauto",       burst=1,    fire_delay=0,    move_delay=null, use_launcher=null, one_hand_penalty=-25, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3,    fire_delay=null, move_delay=6,    use_launcher=null, one_hand_penalty=-30, burst_accuracy=list(0,-5,-6), dispersion=list(0.0, 0.6, 1.0)),
 		FULL_AUTO_600,
-		list(mode_name="fire grenades",  burst=null, fire_delay=null, move_delay=null, use_launcher=1,    one_hand_penalty=5, burst_accuracy=null, dispersion=null)
+		list(mode_name="fire grenades",  burst=null, fire_delay=null, move_delay=null, use_launcher=1,    one_hand_penalty=-25, burst_accuracy=null, dispersion=null)
 		)
 
 	var/use_launcher = 0
@@ -295,6 +295,7 @@
 /datum/firemode/automatic
 	settings = list(burst = 1, suppress_delay_warning = TRUE, dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2))
 	//The full auto clickhandler we have
+	var/minimum_shots = 0
 	var/datum/click_handler/fullauto/CH = null
 
 /datum/firemode/automatic/update(var/force_state = null)
@@ -316,14 +317,11 @@
 			//Lets also make sure it can fire
 			var/can_fire = TRUE
 
-			//Safety stops it
-			//if (gun.safety)
-				//can_fire = FALSE
 
 			//Projectile weapons need to have enough ammo to fire
 			if(istype(gun, /obj/item/weapon/gun/projectile))
 				var/obj/item/weapon/gun/projectile/P = gun
-				if (!P.getAmmo())
+				if (!P.can_ever_fire())
 					can_fire = FALSE
 
 			//TODO: Centralise all this into some can_fire proc
@@ -355,3 +353,4 @@
 		CH = L.PushClickHandler(/datum/click_handler/fullauto)
 		CH.reciever = gun //Reciever is the gun that gets the fire events
 		CH.user = L //And tell it where it is
+		CH.minimum_shots = minimum_shots

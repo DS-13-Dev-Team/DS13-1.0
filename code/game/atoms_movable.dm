@@ -22,6 +22,10 @@
 	var/item_state = null // Used to specify the item state for the on-mob overlays.
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 
+
+	//Mass is measured in kilograms. It should never be zero
+	var/mass = 1
+
 /atom/movable/Destroy()
 	. = ..()
 	for(var/atom/movable/AM in src)
