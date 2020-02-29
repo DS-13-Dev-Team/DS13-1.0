@@ -11,7 +11,7 @@
 /obj/structure/closet/secure_closet/DOM/WillContain()
 	return list(
 		/obj/item/device/radio/headset/headset_cargo,
-		/obj/item/clothing/under/suit_jacket/charcoal,
+		/obj/item/clothing/under/suit_jacket/dom,
 		/obj/item/clothing/shoes/dress,
 		/obj/item/weapon/storage/secure/briefcase/money,
 		/obj/item/weapon/storage/briefcase,
@@ -32,7 +32,7 @@
 /obj/structure/closet/secure_closet/foreman/WillContain()
 		return list(
 		/obj/item/device/radio/headset/headset_cargo,
-		/obj/item/clothing/under/grayson,
+		/obj/item/clothing/under/foreman,
 		/obj/item/clothing/shoes/dutyboots,
 		/obj/item/clothing/gloves/thick,
 		/obj/item/weapon/storage/ore,

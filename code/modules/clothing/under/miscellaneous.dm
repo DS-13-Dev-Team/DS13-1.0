@@ -580,9 +580,9 @@
 	item_state = "jensensuit"
 	worn_state = "pcrcsuit"
 
-/obj/item/clothing/under/grayson
-	name = "\improper Grayson overalls"
-	desc = "A set of overalls belonging to Grayson Manufactories, a manufacturing and mining company."
+/obj/item/clothing/under/foreman
+	name = "\improper Foreman's overalls"
+	desc = "A set of overalls that seem nicer than the average planet cracker's."
 	icon_state = "grayson"
 	worn_state = "grayson"
 
