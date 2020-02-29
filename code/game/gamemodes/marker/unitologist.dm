@@ -2,20 +2,19 @@ GLOBAL_DATUM_INIT(unitologists, /datum/antagonist/unitologist, new)
 GLOBAL_LIST_EMPTY(unitologists_list)
 
 /mob/proc/message_unitologists()
-	set category = "Unitologist"
+	set category = SPECIES_NECROMORPH
 	set name = "Commune with the marker"
 	set src = usr
 	var/message = input("Say what?","Text") as null|text
 	message = sanitize(message)
-	for(var/atom/M in GLOB.unitologists_list)
-		to_chat(M, "<span class='cult'>[src]: [message]</span>")
+	message_necromorphs("<span class='cult'><b>Marker hivemind -</b> [usr]: [message]</span>")
 
 /datum/antagonist/unitologist
 	role_text = "Unitologist"
 	role_text_plural = "Unitologists"
 	welcome_text = "You are part of a new religion which worships strange alien artifacts, believing that only through them can humanity truly transcend. You have been blessed with a psychic connection created by the <b>marker</b>, one of these artifacts. Serve the marker's will at all costs by bringing it human sacrifices and remember that its objectives come before your own..."
 	id = MODE_UNITOLOGIST
-	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
+	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE | ANTAG_OVERRIDE_JOB
 	skill_setter = /datum/antag_skill_setter/station
 	antaghud_indicator = "hudunitologist" // Used by the ghost antagHUD.
 	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
@@ -40,7 +39,7 @@ datum/objective/unitologist
 	return
 
 /datum/antagonist/unitologist/proc/give_collaborators(mob/living/our_owner)
-	our_owner.verbs += /mob/proc/message_unitologists
+	our_owner.verbs |= /mob/proc/message_unitologists
 	to_chat(our_owner, "<span class='warning'>The marker has established a psychic link between you and your fellow unitologists.</span>")
 	to_chat(our_owner, "<span class='warning'><i>Your mind is flooded with several names, these people must also share a connection to the marker...</i></span>")
 	for(var/mob/living/minion in GLOB.unitologists_list)

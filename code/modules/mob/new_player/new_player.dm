@@ -141,7 +141,7 @@
 		if(!check_species_allowed(S))
 			return 0
 
-		AttemptLateSpawn(job, client.prefs.spawnpoint)
+		AttemptLateSpawn(job, "Cryogenic Storage") //Overridden from client.prefs.spawnpoint as no other spawnpoints are supported. For the record, I hate that I have to do this at all ~K.
 		return
 
 	if(href_list["privacy_poll"])
