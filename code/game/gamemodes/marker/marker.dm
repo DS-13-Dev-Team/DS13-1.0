@@ -8,7 +8,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 //	required_players = 10 Commented out so I can test it.
 //	required_enemies = 3 //1 marker, 2 unitologists.
 	required_players = 0
-	required_enemies = 0
+	required_enemies = 1
 	end_on_antag_death = 0
 	auto_recall_shuttle = 1
 	antag_tags = list(MODE_UNITOLOGIST)
