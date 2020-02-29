@@ -23,16 +23,7 @@
 	if(ismob(body))
 		key = body.key
 		possess(src) //Possess thyself
-		if(body.mind && body.mind.name)
-			name = body.mind.name
-		else
-			if(body.real_name)
-				name = body.real_name
-			else
-				if(gender == MALE)
-					name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
-				else
-					name = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+		set_name(body)
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
@@ -40,9 +31,23 @@
 
 	forceMove(T)
 
+/**
 
+	Method to set the name of this signal observer to that of the one who's controlling it. Overridden by the "master signal" who should just be called "the marker".
 
+*/
 
+/mob/observer/eye/signal/proc/set_name(mob/body)
+	if(body.mind && body.mind.name)
+		name = body.mind.name
+	else
+		if(body.real_name)
+			name = body.real_name
+		else
+			if(gender == MALE)
+				name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
+			else
+				name = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 
 //Joining and leaving
 //-------------------------------

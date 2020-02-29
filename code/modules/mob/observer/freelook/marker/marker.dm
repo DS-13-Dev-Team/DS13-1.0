@@ -22,11 +22,25 @@
 	var/list/biomass_sources = list()	//A list of various sources (mostly necromorph corpses) from which we are gradually gaining biomass. These are finite
 
 	var/datum/necroshop/shop
+	var/active = FALSE //Marker must activate first
 
 /obj/machinery/marker/New()
 	SSnecromorph.marker = src	//Populate the global var with ourselves
 	..()
 
+/**
+
+	Method which allows the marker to become player controlled, and which starts its corruption spread.
+
+*/
+
+/obj/machinery/marker/proc/make_active()
+	active = TRUE
+	visible_message(SPAN_WARNING("[src] starts to pulsate in a strange way..."))
+	//Start spreading corruption
+	start_corruption()
+	update_icon()
+	set_traumatic_sight(TRUE, 5) //Marker is pretty hard to look at.
 
 /obj/machinery/marker/Initialize()
 	.=..()
@@ -38,9 +52,6 @@
 	var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/machinery/marker/proc/nearby_movement, range = 10)
 	PT.register_turfs()
 	set_extension(src, /datum/extension/proximity_manager, PT)
-
-	//Start spreading corruption
-	start_corruption()
 
 /obj/machinery/marker/proc/open_shop(var/mob/user)
 	shop.ui_interact(user)
@@ -55,7 +66,7 @@
 */
 
 /obj/machinery/marker/update_icon()
-	if (player)
+	if (player && active)
 		icon_state = "marker_giant_active_anim"
 		set_light(1, 1, 12, 2, light_colour)
 	else
@@ -118,6 +129,8 @@
 
 
 /obj/machinery/marker/proc/become_master_signal(var/mob/M)
+	if(!active)
+		return
 	message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
 	var/mob/observer/eye/signal/master/S = new(M)
 	player = S.key
@@ -169,26 +182,16 @@
 		return TRUE
 	return FALSE
 
-
 //Corruption Handling
 
 /obj/machinery/marker/proc/start_corruption()
 	new /obj/effect/vine/corruption(get_turf(src),GLOB.corruption_seed, start_matured = 1)
-
-
-
-
-
-
-
 
 //Necrovision
 
 //The marker reveals an area around it, seeing through walls
 /obj/machinery/marker/get_visualnet_tiles(var/datum/visualnet/network)
 	return trange(10, src)
-
-
 
 //Spawnpoints
 /obj/machinery/marker/proc/add_spawnpoint(var/atom/source)
