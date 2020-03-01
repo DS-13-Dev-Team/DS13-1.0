@@ -8,9 +8,10 @@
 
 
 
-
-
-
+//It sucks that we have to do this
+/client/Click(object,location,control,params)
+	object = resolve_drag(object, params)
+	.=..(object, location, control, params)
 
 /*
 	Before anything else, defer these calls to a per-mobtype handler.  This allows us to
@@ -63,6 +64,7 @@
 		return
 
 	next_click = world.time + 1
+
 
 	//Limited click arc handling here
 	if (limited_click_arc && !target_in_frontal_arc(src, A, limited_click_arc))

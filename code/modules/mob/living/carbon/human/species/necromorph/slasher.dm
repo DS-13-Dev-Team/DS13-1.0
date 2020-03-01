@@ -13,7 +13,7 @@
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE
-	evasion = 5	//Below the normal human value of 15, because they're slow
+	evasion = 0	//Below the normal human value of 10, because they're slow
 
 	override_limb_types = list(
 	BP_L_ARM =  /obj/item/organ/external/arm/blade,
