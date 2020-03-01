@@ -122,6 +122,11 @@
 // This only works on broken doors or doors without power. Also allows repair with Plasteel.
 /obj/machinery/door/blast/attackby(obj/item/weapon/C as obj, mob/user as mob)
 	src.add_fingerprint(user, 0, C)
+	//Attacking with empty hands
+	if (C == user)
+		check_unarmed_force(C)
+		return
+
 	if(isCrowbar(C) || (istype(C, /obj/item/weapon/material/twohanded/fireaxe) && C:wielded == 1))
 		if(((stat & NOPOWER) || (stat & BROKEN)) && !( src.operating ))
 			force_toggle()
@@ -151,11 +156,11 @@
 // Proc: open()
 // Parameters: None
 // Description: Opens the door. Does necessary checks. Automatically closes if autoclose is true
-/obj/machinery/door/blast/open()
-	if (src.operating || (stat & BROKEN || stat & NOPOWER))
+/obj/machinery/door/blast/open(var/forced = FALSE)
+	if (src.operating || (!forced && (stat & BROKEN || stat & NOPOWER)))
 		return
 	force_open()
-	if(autoclose)
+	if(autoclose && !forced)
 		spawn(150)
 			close()
 	return 1
@@ -193,7 +198,7 @@
 	icon_state_closing = "pdoorc1"
 	icon_state = "pdoor1"
 	min_force = 30
-	maxhealth = 1000
+	maxhealth = 500
 	block_air_zones = 1
 
 /obj/machinery/door/blast/regular/open
@@ -211,7 +216,7 @@
 	open_sound = 'sound/machines/shutters_open.ogg'
 	close_sound = 'sound/machines/shutters_close.ogg'
 	min_force = 15
-	maxhealth = 500
+	maxhealth = 100
 	explosion_resistance = 10
 
 /obj/machinery/door/blast/shutters/open

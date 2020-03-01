@@ -22,7 +22,7 @@
 	var/normalspeed = 1
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
-	var/maxhealth = 300
+	var/maxhealth = 150
 	var/health
 
 	var/destroy_hits = 10 //How many strong hits it takes to destroy the door
@@ -390,17 +390,17 @@
 /obj/machinery/door/ex_act(severity)
 	switch(severity)
 		if(1)
-			take_damage(500)
+			take_damage(rand_between(500, 650))
 		if(2)
-			take_damage(300)
+			take_damage(rand_between(300, 400))
 		if(3)
 			if(prob(80))
 				var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 				s.set_up(2, 1, src)
 				s.start()
 			else
-				take_damage(100)
-			take_damage(100)
+				take_damage(rand_between(100, 150))
+			take_damage(rand_between(100, 150))
 
 
 /obj/machinery/door/update_icon()
@@ -443,6 +443,7 @@
 
 
 /obj/machinery/door/proc/open(var/forced = 0)
+	set waitfor = FALSE
 	if(!can_open(forced))
 		return
 	operating = 1
