@@ -255,27 +255,28 @@
 	hud_elements |= mymob.zone_sel
 
 	//Handle the gun settings buttons
-	mymob.gun_setting_icon = new /obj/screen/gun/mode(null)
-	mymob.gun_setting_icon.icon = ui_style
-	mymob.gun_setting_icon.color = ui_color
-	mymob.gun_setting_icon.alpha = ui_alpha
-	hud_elements |= mymob.gun_setting_icon
-	//FAIL POINT 1
+	if(hud_data.has_guns)
+		mymob.gun_setting_icon = new /obj/screen/gun/mode(null)
+		mymob.gun_setting_icon.icon = ui_style
+		mymob.gun_setting_icon.color = ui_color
+		mymob.gun_setting_icon.alpha = ui_alpha
+		hud_elements |= mymob.gun_setting_icon
+		//FAIL POINT 1
 
-	mymob.item_use_icon = new /obj/screen/gun/item(null)
-	mymob.item_use_icon.icon = ui_style
-	mymob.item_use_icon.color = ui_color
-	mymob.item_use_icon.alpha = ui_alpha
+		mymob.item_use_icon = new /obj/screen/gun/item(null)
+		mymob.item_use_icon.icon = ui_style
+		mymob.item_use_icon.color = ui_color
+		mymob.item_use_icon.alpha = ui_alpha
 
-	mymob.gun_move_icon = new /obj/screen/gun/move(null)
-	mymob.gun_move_icon.icon = ui_style
-	mymob.gun_move_icon.color = ui_color
-	mymob.gun_move_icon.alpha = ui_alpha
+		mymob.gun_move_icon = new /obj/screen/gun/move(null)
+		mymob.gun_move_icon.icon = ui_style
+		mymob.gun_move_icon.color = ui_color
+		mymob.gun_move_icon.alpha = ui_alpha
 
-	mymob.radio_use_icon = new /obj/screen/gun/radio(null)
-	mymob.radio_use_icon.icon = ui_style
-	mymob.radio_use_icon.color = ui_color
-	mymob.radio_use_icon.alpha = ui_alpha
+		mymob.radio_use_icon = new /obj/screen/gun/radio(null)
+		mymob.radio_use_icon.icon = ui_style
+		mymob.radio_use_icon.color = ui_color
+		mymob.radio_use_icon.alpha = ui_alpha
 
 	mymob.client.screen = list()
 

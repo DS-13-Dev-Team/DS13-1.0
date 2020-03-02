@@ -11,6 +11,7 @@
 	var/has_throw = 1     // Set to draw throw button.
 	var/has_resist = 1    // Set to draw resist button.
 	var/has_internals = 1 // Set to draw the internals toggle button.
+	var/has_guns	=	1	//Set to draw the gun/aiming toggle buttons
 	var/list/equip_slots = list() // Checked by mob_can_equip().
 
 	// Contains information on the position and tag for all inventory slots
@@ -92,3 +93,10 @@
 		"mask" =         list("loc" = ui_shoes,     "name" = "Mask", "slot" = slot_wear_mask, "state" = "mask",  "toggle" = 1),
 		"back" =         list("loc" = ui_sstore1,   "name" = "Back", "slot" = slot_back,      "state" = "back"),
 		)
+
+
+/datum/hud_data/necromorph
+	gear = list()
+	has_internals = FALSE
+	has_nutrition = FALSE
+	has_guns = FALSE
