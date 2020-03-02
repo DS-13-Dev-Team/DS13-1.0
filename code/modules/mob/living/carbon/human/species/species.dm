@@ -215,15 +215,7 @@
 	var/stomach_capacity = 5      // How much stuff they can stick in their stomach
 	var/rarity_value = 1          // Relative rarity/collector value for this species.
 	                              // Determines the organs that the species spawns with and
-	var/list/has_organ = list(    // which required-organ checks are conducted.
-		BP_HEART =    /obj/item/organ/internal/heart,
-		BP_LUNGS =    /obj/item/organ/internal/lungs,
-		BP_LIVER =    /obj/item/organ/internal/liver,
-		BP_KIDNEYS =  /obj/item/organ/internal/kidneys,
-		BP_BRAIN =    /obj/item/organ/internal/brain,
-		BP_APPENDIX = /obj/item/organ/internal/appendix,
-		BP_EYES =     /obj/item/organ/internal/eyes
-		)
+
 	var/vision_organ              // If set, this organ is required for vision. Defaults to "eyes" if the species has them.
 	var/breathing_organ           // If set, this organ is required for breathing. Defaults to "lungs" if the species has them.
 	var/can_vomit = TRUE		//Whether this mob can vomit, added to disable it on necromorphs
@@ -232,6 +224,10 @@
 
 	var/list/skin_overlays = list()
 
+
+	/*--------------------------
+		ORGAN HANDLING
+	--------------------------*/
 	var/list/has_limbs = list(
 		BP_CHEST =  list("path" = /obj/item/organ/external/chest),
 		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
@@ -265,6 +261,20 @@
 		BP_L_HAND   = list(/obj/item/organ/external/hand,       40),
 		BP_R_HAND   = list(/obj/item/organ/external/hand/right, 40)
 		)
+
+	var/list/has_organ = list(    // which required-organ checks are conducted.
+		BP_HEART =    /obj/item/organ/internal/heart,
+		BP_LUNGS =    /obj/item/organ/internal/lungs,
+		BP_LIVER =    /obj/item/organ/internal/liver,
+		BP_KIDNEYS =  /obj/item/organ/internal/kidneys,
+		BP_BRAIN =    /obj/item/organ/internal/brain,
+		BP_APPENDIX = /obj/item/organ/internal/appendix,
+		BP_EYES =     /obj/item/organ/internal/eyes
+		)
+
+	//Used for species which have alternate organs in place of some default. For example, the leaper which has a tail instead of legs
+	//This list should be in the format BP_ORIGINAL_ORGAN_TAG = BP_REPLACEMENT_ORGAN_TAG
+	var/list/organ_substitutions = list()
 
 	// The basic skin colours this species uses
 	var/list/base_skin_colours
@@ -898,6 +908,8 @@ These procs should return their entire args list. Best just to return parent in 
 
 //Override damage values here as a one stop catch-all solution
 /datum/species/proc/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+	GLOB.damage_hit_event.raise_event(organ.owner, organ, brute, burn, damage_flags, used_weapon)
+
 	//Here we'll handle pain audio
 	if (pain_audio_threshold)
 		var/total_damage = brute+burn

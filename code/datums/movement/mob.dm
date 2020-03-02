@@ -178,6 +178,9 @@
 /datum/movement_handler/mob/delay/proc/AddDelay(var/delay)
 	next_move += max(0, delay)
 
+/datum/movement_handler/mob/delay/proc/ResetDelay()
+	next_move = world.time - 1
+
 // Stop effect
 /datum/movement_handler/mob/stop_effect/DoMove()
 	if(MayMove() == MOVEMENT_STOP)

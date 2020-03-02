@@ -6,7 +6,7 @@
 //<visible_verb>
 //<expected_type>
 /datum/extension/<name>
-	name = <visible_name>
+	name = "<visible_name>"
 	base_type = /datum/extension/<name>
 	expected_type = <expected_type>
 	flags = EXTENSION_FLAG_IMMEDIATE
@@ -20,13 +20,9 @@
 	var/started_at
 	var/stopped_at
 
+	var/ongoing_timer
 
-/***********************
-	Access Proc
-************************/
-<expected_type>/proc/<name>_ability(var/_duration, var/_cooldown, var/_power)
-	if (can_<name>())
-		set_extension(src, /datum/extension/<name>, _duration,_cooldown,_power)
+
 
 /datum/extension/<name>/New(var<expected_type>/_user, var/_duration, var/_cooldown, var/_power)
 	.=..()
@@ -38,18 +34,18 @@
 
 
 /datum/extension/<name>/proc/start()
-	started_at = world.time
-
-	addtimer(CALLBACK(src, /datum/extension/<name>/proc/stop), duration)
+	started_at	=	world.time
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/stop), duration)
 
 
 /datum/extension/<name>/proc/stop()
- 	stopped_at = world.time
-
- 	addtimer(CALLBACK(src, /datum/extension/<name>/proc/finish_cooldown), cooldown)
+	deltimer(ongoing_timer)
+	stopped_at = world.time
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/finish_cooldown), cooldown)
 
 
 /datum/extension/<name>/proc/finish_cooldown()
+	deltimer(ongoing_timer)
 	remove_extension(holder, base_type)
 
 
