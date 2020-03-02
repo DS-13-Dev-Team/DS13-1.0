@@ -166,3 +166,15 @@
 		M.forceMove(new_turf)
 
 	return new_turf
+
+//Takes a list of turfs, randomly picks from it til we find one that passes turf_clear
+/proc/clear_turf_in_list(var/list/turfs, var/ignore_mobs = FALSE)
+	if (!turfs || !turfs.len)
+		return null
+
+	while (turfs.len)
+		var/turf/T = pick(turfs)
+		if (turf_clear(T, ignore_mobs))
+			return T
+		else
+			turfs -= T

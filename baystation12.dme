@@ -1741,6 +1741,7 @@
 #include "code\modules\mob\living\say.dm"
 #include "code\modules\mob\living\abilities\brute_curl.dm"
 #include "code\modules\mob\living\abilities\charge.dm"
+#include "code\modules\mob\living\abilities\dodge.dm"
 #include "code\modules\mob\living\abilities\frenzy_shout.dm"
 #include "code\modules\mob\living\abilities\leap.dm"
 #include "code\modules\mob\living\abilities\leaper_tailstrike.dm"

@@ -1,19 +1,23 @@
 /*
 	Slasher variant, the most common necromorph. Has an additional pair of arms with scything blades on the end
 */
+
+#define SLASHER_DODGE_EVASION	60
+#define SLASHER_DODGE_DURATION	1.5 SECONDS
 /datum/species/necromorph/slasher
 	name = SPECIES_NECROMORPH_SLASHER
 	name_plural =  "Slashers"
 	mob_type = /mob/living/carbon/human/necromorph/slasher
 	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
-	total_health = 80
+	total_health = 70
+	biomass = 70
 
 	icon_template = 'icons/mob/necromorph/slasher.dmi'
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE
-	evasion = 5	//Below the normal human value of 15, because they're slow
+	evasion = 0	//No natural evasion
 
 	override_limb_types = list(
 	BP_L_ARM =  /obj/item/organ/external/arm/blade,
@@ -53,8 +57,9 @@
 
 	slowdown = 3.5
 
-	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/proc/shout)
-	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/slasher_charge))
+	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/living/proc/slasher_dodge, /mob/proc/shout)
+	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge),
+	KEY_ALT = list(/mob/living/proc/slasher_dodge))
 
 /datum/species/necromorph/slasher/enhanced
 	name = SPECIES_NECROMORPH_SLASHER_ENHANCED
@@ -95,13 +100,15 @@
 	damage = 22
 	delay = 10
 
-
+/*
+	Abilities
+*/
 /atom/movable/proc/slasher_charge(var/atom/A)
 	set name = "Charge"
 	set category = "Abilities"
 
 
-	.= charge_attack(A, _delay = 1.5 SECONDS, _speed = 4)
+	.= charge_attack(A, _delay = 1.25 SECONDS, _speed = 4.5, _lifespan = 6 SECONDS)
 	if (.)
 		var/mob/H = src
 		if (istype(H))
@@ -114,6 +121,13 @@
 				H.play_species_audio(src, SOUND_SHOUT, VOLUME_HIGH, 1, 3)
 		shake_animation(30)
 
+
+/mob/living/proc/slasher_dodge()
+	set name = "Dodge"
+	set category = "Abilities"
+
+
+	.= dodge_ability(_duration = SLASHER_DODGE_DURATION, _cooldown = 6 SECONDS, _power = SLASHER_DODGE_EVASION)
 
 /*
 	Slashers have a special charge impact. Each of their blade arms gets a free hit on impact with the primary target
@@ -142,9 +156,17 @@
 
 
 
+
+
+
 //Special death condition: Slashers die when they lose both blade arms
 /datum/species/necromorph/slasher/handle_death_check(var/mob/living/carbon/human/H)
 	.=..()
 	if (!.)
 		if (!H.has_organ(BP_L_ARM) && !H.has_organ(BP_R_ARM))
 			return TRUE
+
+
+
+#undef SLASHER_DODGE_EVASION
+#undef SLASHER_DODGE_DURATION

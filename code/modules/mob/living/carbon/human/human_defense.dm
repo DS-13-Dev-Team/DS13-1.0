@@ -23,6 +23,8 @@ meteor_act
 	if (organ)
 		accuracy -= organ.base_miss_chance
 
+	world << "Projectile accuracy is: [accuracy]%"
+
 	//For humans, we run the accuracy check twice
 	//1. To see whether we hit anything at all. Fail, and the attack misses.
 	if (!prob(accuracy))
