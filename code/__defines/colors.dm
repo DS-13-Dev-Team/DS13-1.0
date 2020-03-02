@@ -90,4 +90,6 @@
 #define COLOR_BLOOD_HUMAN      "#a10808"
 #define COLOR_BLOOD_NECRO      "#583001"
 
+#define COLOR_NECRO_YELLOW		"#FFFF00"
+
 #define RANDOM_RGB rgb(rand(0,255), rand(0,255), rand(0,255))

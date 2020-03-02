@@ -16,7 +16,6 @@
 	biomass_reclamation = 0.3
 	reclamation_time = 5 MINUTES
 
-	var/light_colour = "#FFFF00"
 	scale = 1.4
 	max_health = 200	//Takes a while to kill
 	resistance = 8
@@ -29,7 +28,7 @@
 		if (SSnecromorph.marker)
 			SSnecromorph.marker.add_spawnpoint(src)
 
-		set_light(1, 1, 6, 2, light_colour)
+		set_light(1, 1, 7, 2, COLOR_NECRO_YELLOW)
 
 
 
