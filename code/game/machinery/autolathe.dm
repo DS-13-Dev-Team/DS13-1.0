@@ -236,18 +236,24 @@
 
 	if(!current_file || paused)
 		if(href_list["eject_material"])
-			var/material = href_list["eject_material"]
-			var/material/M = get_material_by_name(material)
-
-			if(!M.stack_type)
-				return
-
-			var/num = input("Enter sheets number to eject. 0-[stored_material[material]]","Eject",0) as num
-
 			if(!Adjacent(usr))
 				return
 
-			num = min(max(num,0), stored_material[material])
+			var/material = href_list["eject_material"]
+			var/material/M = get_material_by_name(material)
+
+			var/numsheets = ejectable_sheets(material)
+
+			if(!M.stack_type || !numsheets)
+				return
+
+			var/num = input("Enter sheets number to eject. 0-[numsheets]","Eject",0) as num
+			num = Floor(num)
+
+			num = min(max(num,0), numsheets)
+
+			if (!num)
+				return
 
 			eject(material, num)
 
@@ -320,6 +326,10 @@
 			unfolded = href_list["unfold"]
 
 	return 1
+
+/obj/machinery/autolathe/proc/ejectable_sheets(var/material)
+	if (stored_material[material])
+		return Floor(stored_material[material] / SHEET_MATERIAL_AMOUNT)
 
 /obj/machinery/autolathe/proc/insert_disk(mob/living/user)
 	if(!istype(user))
@@ -606,7 +616,7 @@
 
 	if(!M.stack_type)
 		return
-	amount = min(amount, stored_material[material])
+	amount = min(amount, ejectable_sheets(material))
 
 	var/whole_amount = round(amount)
 	var/remainder = amount - whole_amount
@@ -634,7 +644,7 @@
 		new /obj/item/weapon/material/shard(loc, material, _amount = remainder)
 
 	//The stored material gets the amount (whole+remainder) subtracted
-	stored_material[material] -= amount
+	stored_material[material] -= amount * SHEET_MATERIAL_AMOUNT
 
 
 
