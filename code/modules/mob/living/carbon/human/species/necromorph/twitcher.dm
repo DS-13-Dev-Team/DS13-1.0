@@ -31,8 +31,9 @@
 	view_offset = 3 * WORLD_ICON_SIZE //Forward view offset allows longer-ranged charges
 
 	evasion = 25
-	inherent_verbs = list(/mob/living/carbon/human/proc/twitcher_charge, /mob/proc/shout)
-	modifier_verbs = list(KEY_ALT = list(/mob/living/carbon/human/proc/twitcher_charge))
+	inherent_verbs = list(/mob/living/carbon/human/proc/twitcher_charge, /mob/living/carbon/human/proc/twitcher_step_strike, /mob/proc/shout)
+	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/carbon/human/proc/twitcher_step_strike),
+	KEY_CTRLALT = list(/mob/living/carbon/human/proc/twitcher_charge))
 
 	var/blink_damage_mult = 0.20 	//When the twitcher dodges an attack, the incoming damage is multiplied by this value
 
@@ -90,10 +91,6 @@
 
 
 
-//Their own version of blade attack. Same damage, but lower delay
-/datum/unarmed_attack/blades/fast
-	delay = 8
-
 
 //Twitcher charge
 //Aside from being faster moving, it also kicks off with a shortrange teleport, and has a much lower cooldown
@@ -126,6 +123,17 @@
 			if (blink_target)
 				var/datum/extension/twitch/T = get_extension(src, /datum/extension/twitch)
 				T.move_to(blink_target, speed = 12)
+
+
+
+/mob/living/carbon/human/proc/twitcher_step_strike(var/atom/A)
+	set name = "Step Strike"
+	set category = "Abilities"
+
+
+	.= step_strike_ability(A, _distance = 2, _cooldown = 3 SECONDS)
+	if (.)
+		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
 
 
