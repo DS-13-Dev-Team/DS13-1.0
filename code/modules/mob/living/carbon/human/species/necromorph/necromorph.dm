@@ -140,6 +140,10 @@
 	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple)
 	)
 
+
+	//HUD Handling
+	hud_type = /datum/hud_data/necromorph
+
 /datum/species/necromorph/psychosis_vulnerable()
 	return FALSE
 
