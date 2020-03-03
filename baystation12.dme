@@ -1052,6 +1052,7 @@
 #include "code\game\objects\random\misc.dm"
 #include "code\game\objects\random\random.dm"
 #include "code\game\objects\random\tools.dm"
+#include "code\game\objects\random\weapons.dm"
 #include "code\game\objects\structures\barsign.dm"
 #include "code\game\objects\structures\bedsheet_bin.dm"
 #include "code\game\objects\structures\catwalk.dm"
