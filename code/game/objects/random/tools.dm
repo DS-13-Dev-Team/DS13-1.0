@@ -6,7 +6,7 @@
 
 /obj/random/tool/item_to_spawn()
 	return pickweight(list(/obj/random/rare = 3.5,
-				/obj/random/ammo	=	10,
+				/obj/random/ammo	=	12,
 				/obj/item/weapon/tool/screwdriver = 8,
 				/obj/item/weapon/tool/screwdriver/electric = 2,
 				/obj/item/weapon/tool/screwdriver/combi_driver = 1,
@@ -68,7 +68,6 @@
 				/obj/random/tool_upgrade = 25,
 				/obj/random/lathe_disk = 10,
 				/obj/random/gun_tool = 5,
-				/obj/random/ammo = 10,
 				///obj/random/mecha_equipment = 5
 				))
 
