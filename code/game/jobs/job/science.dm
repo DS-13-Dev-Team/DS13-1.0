@@ -11,7 +11,7 @@
 	minimal_player_age = 18
 	ideal_character_age = 50
 
-	access = list(access_bridge, access_research, access_medical)
+	access = list(access_cscio, access_bridge, access_research, access_medical)
 	outfit_type = /decl/hierarchy/outfit/job/science/cscio
 
 /datum/job/ra
