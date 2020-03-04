@@ -21,16 +21,21 @@
 	. = ..()
 
 /obj/effect/lobby_image/proc/change_image()
-	fade_out()
-	sleep(fade_time)
+	var/list/possible_options = GLOB.using_map.lobby_screens
+	possible_options -= icon_state
 
-	if(GLOB.using_map.lobby_screens.len)
+	if (possible_options.len)
+		fade_out()
+		sleep(fade_time)
+
+
+
 		icon_state = pick(GLOB.using_map.lobby_screens)
 
 
-	fade_in()
-	sleep(fade_time)
-	addtimer(CALLBACK(src, /obj/effect/lobby_image/proc/change_image), change_interval)
+		fade_in()
+		sleep(fade_time)
+		addtimer(CALLBACK(src, /obj/effect/lobby_image/proc/change_image), change_interval)
 
 /obj/effect/lobby_image/proc/fade_out()
 	animate(src, color = "#000000", time = fade_time)
