@@ -97,6 +97,8 @@ mob/observer/check_airflow_movable()
 	if(!M.client)
 		return null
 
+	deltimer(M.client.lobby_trackchange_timer) //Ensures that the client doesn't attempt to start another lobby music track
+
 	var/mob/new_player/N
 	if (istype(M, /mob/new_player))
 		N = M

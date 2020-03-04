@@ -78,3 +78,44 @@
 	setup_click_catcher()
 
 
+
+//Plays lobby music in sequence
+/client/proc/playtitlemusic()
+	if (QDELETED(src))
+		return
+
+	if(!get_preference_value(/datum/client_preference/play_lobby_music) == GLOB.PREF_YES)
+		return
+
+	if (!istype(mob, /mob/new_player))	//Don't play it if we aren't in the lobby
+		return
+
+	//First of all, stop any previous lobby track we were playing
+	sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))
+
+	var/tracktype = GLOB.using_map.get_lobby_track(played_lobby_tracks)
+	var/music_track/MT = decls_repository.get_decl(tracktype)
+	LAZYDISTINCTADD(played_lobby_tracks,tracktype)
+
+	MT.play_to(src, play_looped = FALSE)
+
+
+
+	//Queue up the next song
+	deltimer(lobby_trackchange_timer)
+	var/delay = MT.get_duration(src) + MUSIC_INTERVAL_DURATION
+	lobby_trackchange_timer = addtimer(CALLBACK(src, /client/proc/playtitlemusic), delay, TIMER_STOPPABLE)
+
+
+//This is an awkward proc working within byond limitations.
+//This client proc attempts to find the length of a specified audio file
+//It will only work if that audio file is already being played by this client
+/client/proc/get_audio_length(var/filepath)
+	var/list/playing_sounds = SoundQuery()
+	for (var/sound/S in playing_sounds)
+		if (S.file == filepath)
+			//We found it!
+			if (S.len)
+				return S.len*10	//Convert to deciseconds
+
+	return 0	//Return zero if we failed to get it

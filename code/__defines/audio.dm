@@ -15,3 +15,8 @@
 #define SOUND_DEATH			"death"
 #define SOUND_SPEECH		"speech"
 #define SOUND_REGEN			"regenerate"
+
+
+
+//How much time of complete silence is left between ending one song and starting the next. Time is in deciseconds, can't use the SECONDS define here
+#define MUSIC_INTERVAL_DURATION	100

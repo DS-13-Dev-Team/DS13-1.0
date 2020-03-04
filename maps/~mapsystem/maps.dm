@@ -155,6 +155,15 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	lobby_track = decls_repository.get_decl(lobby_track_type)
 	world.update_status()
 
+//Gets a random lobby track, excluding a list of tracks we've already heard
+/datum/map/proc/get_lobby_track(var/list/played)
+	var/list/possible_tracks = lobby_tracks - played
+	if (!possible_tracks.len)
+		possible_tracks = lobby_tracks	//If we've already heard them all, this no-repeat feature does nothing
+
+	return pick(possible_tracks)
+
+
 /datum/map/proc/send_welcome()
 	return
 
