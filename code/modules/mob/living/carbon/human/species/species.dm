@@ -101,6 +101,7 @@
 	var/healing_factor	=	0.1				//Base damage healed per organ, per tick
 	var/max_heal_threshold	=	0.5			//Wounds can only autoheal if the damage is less than this * max_damage
 	var/wound_remnant_time = 10 MINUTES	//How long fully-healed wounds stay visible before vanishing
+	var/limb_health_factor	=	1	//Multiplier on max health of limbs
 
 	// Combat vars.
 	var/list/unarmed_types = list(           // Possible unarmed attacks that the mob will use in combat,
@@ -290,6 +291,8 @@
 	var/list/prone_overlay_offset = list(0, 0) // amount to shift overlays when lying
 	var/job_skill_buffs = list()				// A list containing jobs (/datum/job), with values the extra points that job recieves.
 
+
+
 /*
 These are all the things that can be adjusted for equipping stuff and
 each one can be in the NORTH, SOUTH, EAST, and WEST direction. Specify
@@ -370,7 +373,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	for(var/limb_type in has_limbs)
 		var/list/organ_data = has_limbs[limb_type]
 		var/limb_path = organ_data["path"]
-		new limb_path(H)
+		var/obj/item/organ/O = new limb_path(H)
+		O.max_damage *= limb_health_factor
 
 	for(var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]
