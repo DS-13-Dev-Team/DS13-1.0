@@ -16,6 +16,8 @@
 	..(new_loc, new_species)
 
 /mob/living/carbon/human/necromorph/brute/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_BRUTE)
+	if (prob(50))
+		new_species = SPECIES_NECROMORPH_BRUTE_FLESH
 	..(new_loc, new_species)
 
 /mob/living/carbon/human/necromorph/leaper/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER)
