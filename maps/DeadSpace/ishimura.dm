@@ -1,5 +1,13 @@
 #define using_map_DATUM /datum/map/ishimura
 /datum/map/ishimura
+
+	path = "ishimura"
+	station_levels = list(1,2)
+	contact_levels = list(1,2,3)
+	player_levels = list(1,2,3)
+	admin_levels = list()
+	empty_levels = list(5)
+	accessible_z_levels = list("1"=1,"2"=1,"3"=2,"4"=3)
 	/*
 	base_floor_type = /turf/simulated/floor/reinforced/airless
 	base_floor_area = /area/maintenance/exterior
