@@ -25,7 +25,7 @@
 	pixel_offset_x = -16
 	pixel_offset_y = -20
 
-	evasion = 25	//Harder to hit than usual
+	evasion = 20	//Harder to hit than usual
 
 	view_range = 8
 	view_offset = (WORLD_ICON_SIZE*3)	//Can see much farther than usual
