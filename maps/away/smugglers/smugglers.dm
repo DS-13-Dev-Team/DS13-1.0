@@ -126,5 +126,5 @@
 		/obj/random/handgun,
 		/obj/random/handgun,
 		/obj/random/handgun,
-		/obj/random/projectile,
-		/obj/random/projectile)
+		/obj/random/gun,
+		/obj/random/gun)

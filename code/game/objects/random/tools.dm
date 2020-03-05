@@ -5,8 +5,8 @@
 	has_postspawn = TRUE
 
 /obj/random/tool/item_to_spawn()
-	return pickweight(list(/obj/random/rare = 1,
-				/obj/random/ammo	=	10,
+	return pickweight(list(/obj/random/rare = 3.5,
+				/obj/random/ammo	=	12,
 				/obj/item/weapon/tool/screwdriver = 8,
 				/obj/item/weapon/tool/screwdriver/electric = 2,
 				/obj/item/weapon/tool/screwdriver/combi_driver = 1,
@@ -21,17 +21,18 @@
 				/obj/item/weapon/tool/crowbar/pneumatic = 2,
 				/obj/item/weapon/tool/wrench = 8,
 				/obj/item/weapon/tool/wrench/big_wrench = 2,
-				/obj/item/weapon/tool/saw = 8,
-				/obj/item/weapon/tool/saw/circular = 2,
-				/obj/item/weapon/tool/saw/advanced_circular = 1,
-				/obj/item/weapon/tool/saw/plasma = 2,
+				///obj/item/weapon/tool/saw = 8,
+				///obj/item/weapon/tool/saw/circular = 2,
+				///obj/item/weapon/tool/saw/advanced_circular = 1,
+				/obj/item/weapon/tool/saw/plasma = 13,
 				/obj/item/weapon/tool/shovel = 5,
 				/obj/item/weapon/tool/shovel/spade = 2.5,
-				/obj/item/weapon/tool/pickaxe = 2,
-				/obj/item/weapon/tool/pickaxe/jackhammer = 1,
-				/obj/item/weapon/tool/pickaxe/drill = 1,
-				/obj/item/weapon/tool/pickaxe/diamonddrill = 0.5,
-				/obj/item/weapon/tool/pickaxe/excavation = 1,
+				///obj/item/weapon/tool/pickaxe = 2,
+				///obj/item/weapon/tool/pickaxe/jackhammer = 1,
+				///obj/item/weapon/tool/pickaxe/drill = 1,
+				///obj/item/weapon/tool/pickaxe/diamonddrill = 0.5,
+				///obj/item/weapon/tool/pickaxe/excavation = 1,
+				/obj/item/weapon/tool/pickaxe/ds_rocksaw = 5.5,
 				/obj/item/weapon/tool/tape_roll = 12,
 				/obj/item/weapon/tool/tape_roll/fiber = 2,
 				/obj/item/weapon/storage/belt/utility = 5,
@@ -66,9 +67,8 @@
 				///obj/random/pouch = 5,
 				/obj/random/tool_upgrade = 25,
 				/obj/random/lathe_disk = 10,
-				///obj/random/rig_module = 5,
+				/obj/random/gun_tool = 5,
 				///obj/random/mecha_equipment = 5
-				/obj/item/stack/power_node = 5
 				))
 
 

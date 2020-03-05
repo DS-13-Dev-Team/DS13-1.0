@@ -289,91 +289,7 @@
 				/obj/item/weapon/reagent_containers/food/drinks/bottle/patron))
 
 
-/obj/random/gun
-	name = "Random Gun"
-	desc = "This is a random gun."
-	icon = 'icons/obj/gun.dmi'
-	icon_state = "energykill100"
 
-/obj/random/gun/item_to_spawn()
-	return pickweight(list(/obj/random/energy = 1, /obj/random/projectile = 2, /obj/random/handgun = 1.5))
-
-/obj/random/energy
-	name = "Random Energy Weapon"
-	desc = "This is a random energy weapon."
-	icon = 'icons/obj/gun.dmi'
-	icon_state = "energykill100"
-
-/obj/random/energy/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/gun/energy/forcegun = 1,
-	/obj/item/weapon/gun/energy/contact = 1))
-	/*return pickweight(list(/obj/item/weapon/gun/energy/laser = 4,
-				/obj/item/weapon/gun/energy/gun = 3,
-				/obj/item/weapon/gun/energy/retro = 2,
-				/obj/item/weapon/gun/energy/lasercannon = 2,
-				/obj/item/weapon/gun/energy/xray = 3,
-				/obj/item/weapon/gun/energy/sniperrifle = 1,
-				/obj/item/weapon/gun/energy/gun/nuclear = 1,
-				/obj/item/weapon/gun/energy/ionrifle = 2,
-				/obj/item/weapon/gun/energy/toxgun = 3,
-				/obj/item/weapon/gun/energy/taser = 4,
-				/obj/item/weapon/gun/energy/crossbow/largecrossbow = 2,
-				/obj/item/weapon/gun/energy/stunrevolver = 4))*/
-
-/obj/random/projectile
-	name = "Random Projectile Weapon"
-	desc = "This is a random projectile weapon."
-	icon = 'icons/obj/gun.dmi'
-	icon_state = "revolver"
-
-/obj/random/projectile/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1,
-	/obj/item/weapon/gun/projectile/automatic/bullpup = 0.5,
-	/obj/item/weapon/gun/projectile/ripper = 1,
-	/obj/item/weapon/gun/projectile/seeker = 1))
-	/*
-	return pickweight(list(/obj/item/weapon/gun/projectile/shotgun/pump = 3,
-				/obj/item/weapon/gun/projectile/automatic/c20r = 2,
-				/obj/item/weapon/gun/projectile/automatic/sts35 = 2,
-				/obj/item/weapon/gun/projectile/automatic/z8 = 2,
-				/obj/item/weapon/gun/projectile/beretta = 4,
-				/obj/item/weapon/gun/projectile/colt = 4,
-				/obj/item/weapon/gun/projectile/sec = 4,
-				/obj/item/weapon/gun/projectile/sec/wood = 3,
-				/obj/item/weapon/gun/projectile/pistol = 4,
-				/obj/item/weapon/gun/projectile/pirate = 5,
-				/obj/item/weapon/gun/projectile/revolver = 2,
-				/obj/item/weapon/gun/projectile/automatic/wt550 = 3,
-				/obj/item/weapon/gun/projectile/revolver/detective = 4,
-				/obj/item/weapon/gun/projectile/revolver/mateba = 2,
-				/obj/item/weapon/gun/projectile/shotgun/doublebarrel = 4,
-				/obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn = 3,
-				/obj/item/weapon/gun/projectile/heavysniper = 1,
-				/obj/item/weapon/gun/projectile/shotgun/pump/combat = 2))*/
-
-/obj/random/handgun
-	name = "Random Handgun"
-	desc = "This is a random sidearm."
-	icon = 'icons/obj/gun.dmi'
-	icon_state = "secgundark"
-
-/obj/random/handgun/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/gun/projectile/divet = 1))
-
-/obj/random/ammo
-	name = "Random Ammunition"
-	desc = "This is random ammunition."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "45-10"
-
-/obj/random/ammo/item_to_spawn()
-	return pickweight(list(/obj/item/ammo_magazine/pulse = 1.5,
-	/obj/item/ammo_magazine/sawblades = 1,
-	/obj/item/ammo_magazine/bullpup = 1,
-	/obj/item/weapon/cell/force = 0.75,
-	/obj/item/ammo_magazine/seeker = 1,
-	/obj/item/weapon/cell/contact = 0.75,
-	/obj/item/ammo_magazine/divet = 1.5))
 
 /obj/random/action_figure
 	name = "random action figure"
@@ -899,57 +815,7 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/weapon/spacecash/bundle/c100 = 2,
 				/obj/item/weapon/spacecash/bundle/c1000 = 1))
 
-/obj/random/maintenance //Clutter and loot for maintenance and away missions
-	name = "random maintenance item"
-	desc = "This is a random maintenance item."
-	icon = 'icons/obj/items.dmi'
-	icon_state = "gift1"
 
-/obj/random/maintenance/item_to_spawn()
-	return pickweight(list(/obj/random/junk = 4,
-				/obj/random/trash = 4,
-				/obj/random/maintenance/clean = 5))
-
-/obj/random/maintenance/clean
-/*Maintenance loot lists without the trash, for use inside things.
-Individual items to add to the maintenance list should go here, if you add
-something, make sure it's not in one of the other lists.*/
-	name = "random clean maintenance item"
-	desc = "This is a random clean maintenance item."
-	icon = 'icons/obj/items.dmi'
-	icon_state = "gift2"
-
-/obj/random/maintenance/clean/item_to_spawn()
-	return pickweight(list(/obj/random/tech_supply = 100,
-				/obj/random/medical = 40,
-				/obj/random/medical/lite = 80,
-				/obj/random/firstaid = 20,
-				/obj/random/powercell = 50,
-				/obj/random/technology_scanner = 80,
-				/obj/random/bomb_supply = 80,
-				/obj/random/contraband = 1,
-				/obj/random/action_figure = 2,
-				/obj/random/plushie = 2,
-				/obj/random/material = 40,
-				/obj/random/coin = 5,
-				/obj/random/toy = 20,
-				/obj/random/tank = 20,
-				/obj/random/soap = 5,
-				/obj/random/drinkbottle = 5,
-				/obj/random/loot = 1,
-				/obj/random/advdevice = 50,
-				/obj/random/smokes = 30,
-				/obj/random/masks = 10,
-				/obj/random/snack = 60,
-				/obj/random/storage = 30,
-				/obj/random/shoes = 20,
-				/obj/random/gloves = 10,
-				/obj/random/glasses = 20,
-				/obj/random/hat = 10,
-				/obj/random/suit = 20,
-				/obj/random/clothing = 30,
-				/obj/random/accessory = 20,
-				/obj/random/cash = 10))
 
 /obj/random/loot /*Better loot for away missions and salvage */
 	name = "random loot"
@@ -958,7 +824,7 @@ something, make sure it's not in one of the other lists.*/
 	icon_state = "gift3"
 
 /obj/random/loot/item_to_spawn()
-	return pickweight(list(/obj/random/projectile = 10,
+	return pickweight(list(/obj/random/rare = 10,
 				/obj/random/voidhelmet = 10,
 				/obj/random/voidsuit = 10,
 				/obj/random/hardsuit = 10,
