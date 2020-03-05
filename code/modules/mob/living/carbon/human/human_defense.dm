@@ -23,6 +23,7 @@ meteor_act
 	if (organ)
 		accuracy -= organ.base_miss_chance
 
+
 	//For humans, we run the accuracy check twice
 	//1. To see whether we hit anything at all. Fail, and the attack misses.
 	if (!prob(accuracy))
@@ -33,7 +34,7 @@ meteor_act
 	if (desired_zone && prob(accuracy))
 		return desired_zone	//It hit!
 	else
-		return pick(organs)	//Check if this is valid
+		return pick(organs_by_name)	//Check if this is valid
 
 /mob/living/carbon/human/bullet_act(var/obj/item/projectile/P, var/def_zone)
 

@@ -1,9 +1,10 @@
 /*
-	The eye node serves three main purposes
+	The eye node serves four main purposes
 
 	1. It provides necrovision in a broad area around it
 	2. It alerts necromorphs of any humans that come near
 	3. It tracks sightings of humans, storing that data and making it acessible to all necro players
+	4. It provides light, allowing necromorphs to find their way around dark halls
 */
 /obj/structure/corruption_node/eye
 	name = "Eye"
@@ -23,6 +24,8 @@
 		var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/structure/corruption_node/eye/proc/nearby_movement, range = view_range)
 		PT.register_turfs()
 		set_extension(src, /datum/extension/proximity_manager, PT)
+
+		set_light(1, 1, 8, 2, COLOR_NECRO_YELLOW)
 
 /obj/structure/corruption_node/eye/get_visualnet_tiles(var/datum/visualnet/network)
 	return turfs_in_view(view_range)
