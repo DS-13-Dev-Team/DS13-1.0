@@ -17,7 +17,7 @@ var/list/airlock_overlays = list()
 
 /obj/machinery/door/airlock
 	name = "airlock"
-	icon = 'ds13/icons/obj/doors/station/door_medsec.dmi'
+	icon = 'icons/obj/doors/station/door_medsec.dmi'
 	icon_state = "closed"
 	power_channel = ENVIRON
 
@@ -78,8 +78,8 @@ var/list/airlock_overlays = list()
 	var/fill_file = null
 	var/color_file = null
 	var/color_fill_file = null
-	var/stripe_file = 'ds13/icons/obj/doors/station/color.dmi'
-	var/stripe_fill_file = 'ds13/icons/obj/doors/station/color.dmi'
+	var/stripe_file = 'icons/obj/doors/station/color.dmi'
+	var/stripe_fill_file = 'icons/obj/doors/station/color.dmi'
 	var/glass_file = null
 	var/bolts_file = 'icons/obj/doors/station/lights_bolts.dmi'
 	var/deny_file = 'icons/obj/doors/station/lights_deny.dmi'
@@ -166,7 +166,7 @@ var/list/airlock_overlays = list()
 
 /obj/machinery/door/airlock/maintenance
 	name = "Maintenance Access"
-	icon = 'ds13/icons/obj/doors/station/dulldoor.dmi'
+	icon = 'icons/obj/doors/station/dulldoor.dmi'
 	icon_state = "closed"
 	deny_file = 'icons/obj/doors/station/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/station/lights_green.dmi'
@@ -361,9 +361,9 @@ var/list/airlock_overlays = list()
 /obj/machinery/door/airlock/vault
 	airlock_type = "vault"
 	name = "Vault"
-	icon = 'ds13/icons/obj/doors/station/metaldoor.dmi'
-	stripe_file = 'ds13/icons/obj/doors/station/color.dmi'
-	stripe_fill_file = 'ds13/icons/obj/doors/station/color.dmi'
+	icon = 'icons/obj/doors/station/metaldoor.dmi'
+	stripe_file = 'icons/obj/doors/station/color.dmi'
+	stripe_fill_file = 'icons/obj/doors/station/color.dmi'
 	deny_file = 'icons/obj/doors/station/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/station/lights_green.dmi'
 	explosion_resistance = 20
