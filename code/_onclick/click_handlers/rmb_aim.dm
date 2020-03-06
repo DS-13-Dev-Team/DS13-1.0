@@ -19,6 +19,7 @@
 /datum/click_handler/rmb_aim/MouseDown(object,location,control,params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["right"])
+		object = user.client.resolve_drag(object, params)
 		deltimer(interval_timer_handle)
 		var/delta = world.time - last_change
 		if (delta < min_interval)
@@ -31,6 +32,7 @@
 /datum/click_handler/rmb_aim/MouseUp(object,location,control,params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["right"])
+		object = user.client.resolve_drag(object, params)
 		deltimer(interval_timer_handle)
 		var/delta = world.time - last_change
 		if (delta < min_interval)
@@ -38,6 +40,13 @@
 		else
 			stop_aiming()
 		return FALSE
+	return TRUE
+
+
+/datum/click_handler/rmb_aim/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
+	var/list/modifiers = params2list(params)
+	if(modifiers["right"])
+		over_object = resolve_world_target(over_object, params)
 	return TRUE
 
 

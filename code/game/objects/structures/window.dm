@@ -284,7 +284,7 @@
 		set_dir(start_dir)
 
 	if(is_fulltile())
-		max_health *= 4
+		max_health *= 2
 
 	health = max_health
 
@@ -409,7 +409,7 @@
 	glasstype = /obj/item/stack/material/glass/phoronglass
 	maximal_heat = T0C + 2000
 	damage_per_fire_tick = 1.0
-	max_health = 40.0
+	max_health = 30.0
 	material_color = GLASS_COLOR_PHORON
 	color = GLASS_COLOR_PHORON
 
@@ -427,7 +427,7 @@
 	reinf = 1
 	maximal_heat = T0C + 4000
 	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that borosilicate windows have something like ablative layer that protects them for a while.
-	max_health = 80.0
+	max_health = 40.0
 	material_color = GLASS_COLOR_PHORON
 	color = GLASS_COLOR_PHORON
 
@@ -440,7 +440,7 @@
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
 	icon_state = "rwindow"
 	basestate = "rwindow"
-	max_health = 40.0
+	max_health = 30.0
 	reinf = 1
 	maximal_heat = T0C + 750
 	damage_per_fire_tick = 2.0

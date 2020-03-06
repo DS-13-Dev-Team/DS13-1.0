@@ -93,7 +93,7 @@
 	icon_state = "default"
 	screen_loc = "BOTTOMLEFT"
 	plane = FULLSCREEN_PLANE
-	mouse_opacity = 1
+	mouse_opacity = 0
 	var/small_icon = FALSE	//True on any that don't use screen_full.dmi
 	var/severity = 0
 	var/allstate = 0 //shows if it should show up for dead people too

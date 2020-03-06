@@ -4,12 +4,9 @@
 */
 
 
-#define NECROMORPH_ACID_POWER	5
-#define NECROMORPH_FRIENDLY_FIRE_FACTOR	0.5	//All damage dealt by necromorphs TO necromorphs, is multiplied by this
 
-#define BIOBLAST_TIER_1	120
-#define BIOBLAST_TIER_2	60
-#define BIOBLAST_TIER_3	30
+
+
 
 //Reagent holders need a host atom. Lets cache one globally to save on constantly remaking them
 GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)

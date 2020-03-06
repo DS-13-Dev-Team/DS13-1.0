@@ -32,7 +32,7 @@
 	bump_flag 	= HEAVY	// What are we considered to be when bumped?
 	push_flags 	= ALLMOBS	// What can we push?
 	swap_flags 	= ALLMOBS	// What can we swap place with?
-	evasion = 0	//Big target, easier to shoot
+	evasion = -5	//Big target, easier to shoot
 
 	slowdown = 1.5 //Modest speed, but he has no charge ability
 

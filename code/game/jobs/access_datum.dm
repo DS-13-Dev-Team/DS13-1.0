@@ -127,7 +127,7 @@
 /var/const/access_dom = 104
 /datum/access/dom
 	id = access_dom
-	desc = "Supply Officer"
+	desc = "Director of Mining"
 	region = ACCESS_REGION_SUPPLY
 
 

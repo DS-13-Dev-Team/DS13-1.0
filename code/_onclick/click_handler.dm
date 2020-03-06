@@ -85,7 +85,11 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 //Tests whether the target thing is valid, and returns it if so.
 //If its not valid, null will be returned
 //In the case of click catchers, we resolve and return the turf under it
-/datum/click_handler/proc/resolve_world_target(var/a)
+/datum/click_handler/proc/resolve_world_target(var/a, var/params)
+	if (params && user && user.client)
+		var/b = user.client.resolve_drag(a, params)
+		if (a != b)
+			return b
 
 	if (istype(a, /obj/screen/click_catcher))
 		var/obj/screen/click_catcher/CC = a
@@ -212,7 +216,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		shots_fired++
 
 /datum/click_handler/fullauto/MouseDown(object,location,control,params)
-	object = resolve_world_target(object)
+	object = resolve_world_target(object, params)
 	if (object)
 		target = object
 		user.face_atom(target)
@@ -223,9 +227,9 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	return TRUE
 
 /datum/click_handler/fullauto/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
-	src_location = resolve_world_target(over_object)
+	over_object = resolve_world_target(over_object, params)
 	if (over_object && firing)
-		target = src_location //This var contains the thing the user is hovering over, oddly
+		target = over_object
 		user.face_atom(target)
 		return FALSE
 	return TRUE
@@ -294,7 +298,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 /datum/click_handler/sustained/MouseDown(object,location,control,params)
 	last_params = params
-	object = resolve_world_target(object)
+	object = resolve_world_target(object, params)
 	if (object)
 		target = object
 		user.face_atom(target)
@@ -304,7 +308,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 /datum/click_handler/sustained/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
 	last_params = params
-	over_object = resolve_world_target(over_object)
+	over_object = resolve_world_target(over_object, params)
 	if (over_object && firing)
 		target = over_object //This var contains the thing the user is hovering over, oddly
 		user.face_atom(target)
@@ -314,8 +318,8 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 /datum/click_handler/sustained/MouseMove(object,location,control,params)
 	last_params = params
-	location = resolve_world_target(location)
-	if (location && firing)
+	object = resolve_world_target(object, params)
+	if (object && firing)
 		target = location //This var contains the thing the user is hovering over, oddly
 		user.face_atom(target)
 		do_fire()

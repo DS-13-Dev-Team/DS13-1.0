@@ -1,5 +1,9 @@
-<h1>Welcome to Space Station 13!</h1>
+<h1>Welcome to Dead Space 13</h1>
 
--<i>This server is running <a href="http://baystation12.net/">Baystation 12's</a> modification of the <a href="http://ss13.eu/">/tg/station13</a> SS13 code.</i>
-<br><br>
-<strong>Bugtracker:</strong> <a href="http://baystation12.net/forums/threads/issue-tracker-report-template.110/">for posting of bugs and issues.</a>
+-<i>This server is an unaffiliated fan project based on the Dead Space video game series by Visceral Games and EA. DS13 is a survival-horror roleplay/action game, set aboard the USG Ishimura, prior to the events of Dead Space.
+DS13 is running on a heavily modified version of baystation12 code</i>
+<br>
+
+<strong>Discord:</strong> <a href="https://discord.gg/FSrhSq6">come and join the community!</a>
+<strong>Bugtracker:</strong> <a href="https://github.com/DS-13-Dev-Team/DS13/issues">for posting of bugs and issues.</a>
+<strong>Patreon:</strong> <a href="https://www.patreon.com/user?u=31268725&fan_landing=true">your donations help fund farther development.</a>

@@ -173,7 +173,7 @@
 	name = "\improper Chief Science Officer Office"
 
 /area/ishimura/upper/research/storage
-	name = "\improper Protective Suit Storage"
+	name = "\improper Research Supply Storage"
 
 /area/ishimura/upper/research/virology
 	name = "\improper Virology"

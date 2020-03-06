@@ -135,6 +135,7 @@ Method to finish up the psychosis effects, clear any screen effects we put on th
 	icon_state = "insane"
 	layer = DAMAGE_LAYER
 	alpha = 180
+	mouse_opacity = 0
 
 /**
 

@@ -7,17 +7,17 @@
 	total_health = 400
 	torso_damage_mult = 1 //Hitting centre mass is fine for brute
 
-	icon_template = 'icons/mob/necromorph/64x64necros.dmi'
-	icon_normal = "brute"
-	icon_lying = "brute"//Temporary icon so its not invisible lying down
-	icon_dead = "brute"
+	icon_template = 'icons/mob/necromorph/brute.dmi'
+	icon_normal = "brute-d"
+	icon_lying = "brute-d-dead"//Temporary icon so its not invisible lying down
+	icon_dead = "brute-d-dead"
 
 	pixel_offset_x = -16
 	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 
 	biomass = 500
-	biomass_reclamation_time	=	20 MINUTES
+	biomass_reclamation_time	=	15 MINUTES
 
 
 	//Collision and bulk
@@ -96,6 +96,14 @@
 	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/brute/brute_shout_long.ogg')
 	)
 
+
+/datum/species/necromorph/brute/fleshy
+	name = SPECIES_NECROMORPH_BRUTE_FLESH
+	icon_normal = "brute-f"
+	icon_lying = "brute-f-dead"//Temporary icon so its not invisible lying down
+	icon_dead = "brute-f-dead"
+
+
 /*
 	Brute charge: Slower but more powerful due to mob size.
 	Shorter windup time making it deadly at close range
@@ -106,7 +114,7 @@
 	set category = "Abilities"
 
 
-	.= charge_attack(A, _delay = 1.5 SECONDS, _speed = 3, _lifespan = 8 SECONDS, _inertia = TRUE)
+	.= brute_charge_attack(A, _delay = 1.5 SECONDS, _speed = 3.5, _lifespan = 8 SECONDS, _inertia = TRUE)
 	if (.)
 		var/mob/living/carbon/human/H = src
 		if (istype(H))
@@ -127,7 +135,7 @@
 		A = get_step(src, dir)
 
 
-	.=slam_attack(A, _damage = 35, _power = 1, _cooldown = 10 SECONDS)
+	.=slam_attack(A, _damage = 35, _power = 1, _cooldown = 8 SECONDS)
 	if (.)
 		var/mob/living/carbon/human/H = src
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_HIGH, 1, 3)
@@ -146,7 +154,7 @@
 	damage = 25
 	airlock_force_power = 5
 	airlock_force_speed = 2.5
-	structure_damage_mult = 1.5	//Wrecks obstacles
+	structure_damage_mult = 2.5	//Wrecks obstacles
 	shredding = TRUE //Better environment interactions, even if not sharp
 
 //Brute punch causes knockback on any mob smaller than itself

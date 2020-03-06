@@ -30,7 +30,8 @@
 	slowdown = 1.5
 	view_offset = 3 * WORLD_ICON_SIZE //Forward view offset allows longer-ranged charges
 
-	evasion = 25
+
+	evasion = 20
 	inherent_verbs = list(/mob/living/carbon/human/proc/twitcher_charge, /mob/living/carbon/human/proc/twitcher_step_strike, /mob/proc/shout)
 	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/carbon/human/proc/twitcher_step_strike),
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/twitcher_charge))
