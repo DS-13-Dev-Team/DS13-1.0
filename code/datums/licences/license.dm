@@ -23,3 +23,7 @@
 	name = "Grandfathered In"
 	url = "https://en.wikipedia.org/wiki/Grandfather_clause"
 	attribution_mandatory = FALSE
+
+/decl/license/unlicensed
+	name = "Used without licence"
+	attribution_mandatory = FALSE

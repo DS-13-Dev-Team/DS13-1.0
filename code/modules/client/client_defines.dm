@@ -24,6 +24,8 @@
 		///////////////
 	var/ambience_playing= null
 	var/played			= 0
+	var/list/played_lobby_tracks	//List of tracks we've already heard this session. Used to sort-of prevent a user from hearing the same track more than once per round
+	var/lobby_trackchange_timer			//Timer handle for queued lobby track change. This must be deleted when the client leaves the lobby
 
 		////////////
 		//SECURITY//

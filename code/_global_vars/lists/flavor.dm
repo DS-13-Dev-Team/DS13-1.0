@@ -103,7 +103,14 @@ GLOBAL_LIST_INIT(music_tracks, list(
 	"Treacherous Voyage" = /music_track/treacherous_voyage,
 	"Wake" = /music_track/wake,
 	"phoron will make us rich" = /music_track/pwmur,
-	"every light is blinking at once" = /music_track/elibao
+	"every light is blinking at once" = /music_track/elibao,
+	"Twinkle Twinkle Little Star" = /music_track/ds13/twinkle,
+	"Nicole's Farewell" = /music_track/ds13/nicole,
+	"Dead Space 3: Jacob Danik Introduction" = /music_track/ds13/danik,
+	"Pensive" = /music_track/ds13/pensive,
+	"Dead Space 2: End Credits" = /music_track/ds13/rock,
+	"Isaac Are You There?" = /music_track/ds13/violin,
+	"Church of Unitology" = /music_track/ds13/unitology
 ))
 
 /proc/setup_music_tracks(var/list/tracks)

@@ -28,12 +28,10 @@
 
 	lobby_icon = 'maps/DeadSpace/icons/lobby.dmi'
 	lobby_screens = list("lobby1","lobby2","lobby3","lobby4", "lobby5")
-	lobby_tracks = list(
-		/music_track/chasing_time,
-		/music_track/torch,
-		/music_track/human,
-		/music_track/marhaba,
-		/music_track/treacherous_voyage,
-		/music_track/comet_haley,
-		/music_track/lysendraa,
-		/music_track/lasers)
+	lobby_tracks = list(/music_track/ds13/twinkle,
+/music_track/ds13/nicole,
+/music_track/ds13/danik,
+/music_track/ds13/pensive,
+/music_track/ds13/rock,
+/music_track/ds13/violin,
+/music_track/ds13/unitology)
