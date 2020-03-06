@@ -34,7 +34,7 @@ var/global/list/sparring_attack_cache = list()
 	var/airlock_force_speed = 1
 
 	var/structure_damage_mult = 1
-	
+
 /datum/unarmed_attack/New()
 	.=..()
 	if (edge)
@@ -178,7 +178,7 @@ var/global/list/sparring_attack_cache = list()
 			return 0
 		last_attack = world.time
 		setClickCooldown(u_attack.delay)
-		var/damage_done = target.hit(src, null, u_attack.damage) //TODO Later: Add in an attack flag for ignoring resistance?
+		var/damage_done = target.hit(src, null, u_attack.damage*u_attack.structure_damage_mult) //TODO Later: Add in an attack flag for ignoring resistance?
 		u_attack.show_attack(src, target, null, damage_done)
 
 

@@ -75,50 +75,14 @@
 		/obj/item/clothing/head/caphat/hop
 	)
 
-/obj/structure/closet/secure_closet/hos
-	name = "head of security's locker"
-	req_access = list(access_cseco)
+/obj/structure/closet/secure_closet/CSECO
+	name = "chief security officer's locker"
+	req_access = list(access_armory)
 	icon_state = "hossecure1"
 	icon_closed = "hossecure"
 	icon_locked = "hossecure1"
 	icon_opened = "hossecureopen"
 	icon_off = "hossecureoff"
-
-/obj/structure/closet/secure_closet/hos/WillContain()
-	return list(
-		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
-		/obj/item/clothing/head/HoS,
-		/obj/item/clothing/head/helmet/nt,
-		/obj/item/clothing/suit/armor/vest/nt,
-		/obj/item/clothing/suit/storage/vest/nt/hos,
-		/obj/item/clothing/under/rank/head_of_security/jensen,
-		/obj/item/clothing/under/rank/head_of_security/corp,
-		/obj/item/clothing/suit/armor/hos/jensen,
-		/obj/item/clothing/suit/armor/hos,
-		/obj/item/clothing/head/HoS/dermal,
-		/obj/item/device/radio/headset/heads/cseco,
-		/obj/item/clothing/glasses/sunglasses/sechud,
-		/obj/item/taperoll/police,
-		/obj/item/weapon/shield/riot,
-		/obj/item/weapon/storage/box/flashbangs,
-		/obj/item/weapon/storage/belt/holster/security,
-		/obj/item/device/flash,
-		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/weapon/gun/energy/gun,
-		/obj/item/clothing/accessory/storage/holster/waist,
-		/obj/item/weapon/melee/telebaton,
-		/obj/item/clothing/head/beret/sec/corporate/hos,
-		/obj/item/device/holowarrant
-	)
-
-/obj/structure/closet/secure_closet/CSECO
-	name = "chief security officer's locker"
-	req_access = list(access_armory)
-	icon_state = "wardensecure1"
-	icon_closed = "wardensecure"
-	icon_locked = "wardensecure1"
-	icon_opened = "wardensecureopen"
-	icon_off = "wardensecureoff"
 
 /obj/structure/closet/secure_closet/CSECO/WillContain()
 	return list(
@@ -129,8 +93,7 @@
 		/obj/item/device/radio/headset/heads/cseco,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/weapon/gun/projectile/divet,
-		/obj/item/ammo_magazine/divet,
-		/obj/item/ammo_magazine/divet,
+		/obj/item/ammo_magazine/divet = 2,
 		/obj/item/taperoll/police,
 		/obj/item/weapon/storage/box/flashbangs,
 		/obj/item/weapon/storage/box/teargas,
@@ -140,35 +103,6 @@
 		/obj/item/weapon/storage/box/holobadge,
 		/obj/item/device/holowarrant,
 		/obj/random/tool
-	)
-
-/obj/structure/closet/secure_closet/brigofficer
-	name = "brig officer's locker"
-	req_access = list(access_armory)
-	icon_state = "wardensecure1"
-	icon_closed = "wardensecure"
-	icon_locked = "wardensecure1"
-	icon_opened = "wardensecureopen"
-	icon_off = "wardensecureoff"
-
-/obj/structure/closet/secure_closet/brigofficer/WillContain()
-	return list(
-		/obj/item/device/radio/headset/headset_sec,
-		/obj/item/clothing/glasses/sunglasses/sechud/goggles,
-		/obj/item/taperoll/police,
-		/obj/item/weapon/storage/belt/holster/security,
-		/obj/item/weapon/reagent_containers/spray/pepper,
-		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/clothing/accessory/storage/black_vest,
-		/obj/item/weapon/handcuffs,
-		/obj/item/device/hailer,
-		/obj/item/device/flash,
-		/obj/item/device/megaphone,
-		/obj/item/device/holowarrant,
-		/obj/item/clothing/gloves/combat,
-		/obj/item/device/flashlight/maglight,
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec))
 	)
 
 /obj/structure/closet/secure_closet/security
@@ -189,7 +123,6 @@
 		/obj/item/ammo_magazine/divet,
 		/obj/item/ammo_magazine/divet,
 		/obj/item/weapon/storage/belt/holster/security,
-		/obj/item/device/flash,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/grenade/chem_grenade/teargas,
 		/obj/item/weapon/melee/baton/loaded,
@@ -200,6 +133,7 @@
 		/obj/item/clothing/under/security/deadspace,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/device/holowarrant,
+		/obj/item/device/flash
 	)
 
 /obj/structure/closet/secure_closet/security/cargo/WillContain()

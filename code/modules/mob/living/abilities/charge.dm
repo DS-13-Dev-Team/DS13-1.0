@@ -175,7 +175,7 @@
 /datum/extension/charge/proc/finish_cooldown()
 	to_chat(user, SPAN_NOTICE("You are ready to [name] again")) //Use name here so i can reuse this for leaping
 	if (holder) //Apparently holder can be null here
-		remove_extension(holder, src.type)
+		remove_extension(holder, src.base_type)
 	else
 		qdel(src)
 
@@ -196,7 +196,7 @@
 
 	if(!user.charge_impact(obstacle, get_total_power(), target_type, tiles_moved))
 		stop_success()
-		return
+		return FALSE
 	atoms_hit += obstacle
 
 
@@ -206,7 +206,7 @@
 		//If this charge has inertia, we don't stop until we ARE stopped.
 		if (!inertia)
 			stop_success()
-			return
+			return FALSE
 
 	//We stop if:
 	//the obstacle still exists, it still will not give way, and it hasn't moved
@@ -219,7 +219,7 @@
 		var/atom/movable/AM = obstacle
 		if (!istype(AM))
 			stop_obstacle(obstacle)
-			return
+			return FALSE
 
 
 		//If the object hasn't moved, it may be blocking us.
@@ -228,29 +228,34 @@
 			//If it's anchored it'll never move
 			if (AM.anchored)
 				stop_obstacle(obstacle)
-				return
+				return FALSE
 			else
 				//If unanchored, it might move. We're going to spawn, and then redo all the checks
 				spawn(1)
 					if ((obstacle && !QDELETED(obstacle)) && !obstacle.CanPass(user, get_turf(obstacle), 1) && obstacle.loc == obstacle_oldloc)
 						stop_obstacle(obstacle)
-						return
+						return FALSE
+
+	//Return true if we have not stopped, and will keep going
+	return TRUE
 
 
 
 
 /datum/extension/charge/proc/moved(var/atom/mover, var/oldloc, var/newloc)
+	.=TRUE
 	//When we move, deplete the remaining range, and abort if we run out
 	tiles_moved++
 	if (isnum(range_left))
 		range_left --
 		if (range_left <= 0)
 			stop_peter_out()
+			return FALSE
 
 
 	//If we have entered the same turf as our target then it must have been nondense. Let's hit it
 	if (user.loc == target.loc)
-		bump(user, target, TRUE) //Passing true here indicates we crossed over the target rather than crashing into them. This affects whether we'll stop in inertia mode
+		.=bump(user, target, TRUE) //Passing true here indicates we crossed over the target rather than crashing into them. This affects whether we'll stop in inertia mode
 	else
 		//Light shake with each step
 		shake_camera(src,1.5,0.5)
@@ -260,6 +265,8 @@
 	//Now we'll check if we're able to continue
 	if (!user || (continue_check && !user.can_continue_charge(target)))
 		stop_peter_out()
+		return FALSE
+
 
 /datum/extension/charge/proc/get_total_power()
 	var/total = power
@@ -362,7 +369,7 @@
 
 
 //Mobs take some damage and get stunned
-/mob/living/charge_act(var/atom/mover, var/power, var/dist)
+/mob/living/charge_act(var/atom/movable/mover, var/power, var/dist)
 	shake_camera(src,10*power,1)
 	if (isliving(mover))
 		var/mob/living/L = mover
@@ -372,6 +379,7 @@
 
 	take_overall_damage((CHARGE_DAMAGE_BASE*power), 0,0,0, mover)
 	apply_effect(3*power, STUN)
+	apply_push_impulse_from(mover, mover.mass, 0)
 	return TRUE
 
 

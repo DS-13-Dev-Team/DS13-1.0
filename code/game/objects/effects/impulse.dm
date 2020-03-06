@@ -94,6 +94,7 @@
 
 	return target
 
+/*
 /client/verb/impulse_test()
 	set category = "Debug"
 	set name = "Impulse Test"
@@ -108,3 +109,4 @@
 	var/list/turfs = get_cone(mob, mob.dir,5, 90)
 	for (var/turf/T as anything in turfs)
 		debug_mark_turf(T)
+		*/
