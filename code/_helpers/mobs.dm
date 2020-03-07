@@ -277,4 +277,8 @@ proc/age2agedescription(age)
 	return selected
 
 
-
+//Returns true if the two passed mobs are on the same "team".
+//For the purposes of DS13, this is only true if both are necromorphs
+/atom/proc/is_allied(var/atom/B)
+	if (is_necromorph() && B.is_necromorph())
+		return TRUE
