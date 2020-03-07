@@ -103,7 +103,7 @@
 	icon_lying = "brute-f-dead"//Temporary icon so its not invisible lying down
 	icon_dead = "brute-f-dead"
 
-
+	marker_spawnable = FALSE
 /*
 	Brute charge: Slower but more powerful due to mob size.
 	Shorter windup time making it deadly at close range
