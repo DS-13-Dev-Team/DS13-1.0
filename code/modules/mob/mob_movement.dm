@@ -2,6 +2,7 @@
 	var/moving           = FALSE
 
 /mob/proc/SelfMove(var/direction)
+
 	if (facedir(direction) && slow_turning)
 		return TRUE
 
@@ -19,6 +20,13 @@
 	else
 		return (!mover.density || !density || (lying && !density_lying()))
 	return
+
+
+//Sets next move time to now, so a mob can move immediately
+/mob/proc/ResetMoveCooldown(var/timeout)
+	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
+	if(delay)
+		delay.ResetDelay(timeout)
 
 /mob/proc/SetMoveCooldown(var/timeout)
 	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)

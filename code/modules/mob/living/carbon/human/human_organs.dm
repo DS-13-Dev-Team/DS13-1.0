@@ -225,9 +225,14 @@
 			return TRUE
 	return FALSE
 
-//Used when we target a missing organ but still want to hit something. Tries to find the next organ up the hierarchy to hit instea
+//Used when we target a missing organ but still want to hit something. Tries to find the next organ up the hierarchy to hit instead
+//Also handles substitution for targeting something invalid. EG, legs on a leaper
 //External only
 /mob/living/carbon/human/proc/find_target_organ(var/hit_zone)
+
+	if (species.organ_substitutions[hit_zone])
+		hit_zone = species.organ_substitutions[hit_zone]
+
 	var/depth = 3 //Max repetitions to search
 	var/obj/item/organ/external/found_organ = null
 	while (!found_organ && depth)

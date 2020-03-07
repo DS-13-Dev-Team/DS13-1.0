@@ -203,7 +203,7 @@
 /datum/species/necromorph/handle_death_check(var/mob/living/carbon/human/H)
 
 	var/damage = get_weighted_total_limb_damage(H)
-	if (damage >= total_health)
+	if (damage >= H.maxHealth)
 		return TRUE
 
 	return FALSE
@@ -236,9 +236,9 @@
 			//Its here
 			subtotal = E.damage
 
-		//Is it a torso part?
-		if ((E.organ_tag in BP_TORSO))
-			subtotal *= torso_damage_mult
+			//Is it a torso part?
+			if ((E.organ_tag in BP_TORSO))
+				subtotal *= torso_damage_mult
 
 		//And now add to total
 		total += subtotal

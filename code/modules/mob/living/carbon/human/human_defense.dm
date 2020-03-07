@@ -174,12 +174,12 @@ meteor_act
 	if(user == src) // Attacking yourself can't miss
 		return target_zone
 
-	var/accuracy_penalty = user.melee_accuracy_mods()
-	accuracy_penalty += 10*get_skill_difference(SKILL_COMBAT, user)
-	accuracy_penalty += 10*(I.w_class - ITEM_SIZE_NORMAL)
-	accuracy_penalty -= I.melee_accuracy_bonus
+	var/accuracy = 100 - user.melee_accuracy_mods()
+	accuracy -= 10*get_skill_difference(SKILL_COMBAT, user)
+	accuracy -= 10*(I.w_class - ITEM_SIZE_NORMAL)
+	accuracy += I.melee_accuracy_bonus
 
-	var/hit_zone = get_zone_with_miss_chance(target_zone, src, accuracy_penalty)
+	var/hit_zone = get_zone_with_miss_chance(accuracy, target_zone, I )
 
 	if(!hit_zone)
 		visible_message("<span class='danger'>\The [user] misses [src] with \the [I]!</span>")

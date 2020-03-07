@@ -19,28 +19,33 @@
 	biomass = 100
 
 	icon_template = 'icons/mob/necromorph/leaper.dmi'
-	icon_normal = "leaper"
-	icon_lying = "leaper"
-	icon_dead = "leaper"
+	icon_lying = "_lying"
+	single_icon = FALSE
+
 	pixel_offset_x = -16
-	pixel_offset_y = -20
 
 	evasion = 20	//Harder to hit than usual
 
 	view_range = 8
 	view_offset = (WORLD_ICON_SIZE*3)	//Can see much farther than usual
 
+
 	has_limbs = list(
-	BP_CHEST =  list("path" = /obj/item/organ/external/chest),
-	BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-	BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/leaper),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/leaper),
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple),
+	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple),
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple),
 	BP_TAIL =  list("path" = /obj/item/organ/external/tail/leaper)
 	)
 
-	inherent_verbs = list(/atom/movable/proc/leaper_leap, /mob/living/carbon/human/proc/tailstrike_leaper, /mob/proc/shout)
+	organ_substitutions = list(BP_L_LEG = BP_TAIL,
+	BP_R_LEG = BP_TAIL,
+	BP_L_FOOT = BP_TAIL,
+	BP_R_FOOT = BP_TAIL)
+
+	inherent_verbs = list(/atom/movable/proc/leaper_leap, /mob/living/carbon/human/proc/tailstrike_leaper, /mob/living/proc/leaper_gallop, /mob/proc/shout)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap),
+	KEY_CTRLSHIFT = list(/mob/living/proc/leaper_gallop),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper))
 
 	slowdown = 4.5
@@ -115,6 +120,11 @@
 
 //The leaper has a tail instead of legs
 /obj/item/organ/external/tail/leaper
+	max_damage = 75
+	min_broken_damage = 40
+	throwforce = 30 //The leaper's tail makes an excellent weapon if thrown after severing
+	edge = TRUE
+	sharp = TRUE
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_GRASP
 
 
@@ -147,7 +157,7 @@
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 2 SECONDS, _speed = 5, _maxrange = 11,_lifespan = 8 SECONDS, _maxrange = 20)
+	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 1.5 SECONDS, _speed = 6, _maxrange = 11,_lifespan = 8 SECONDS, _maxrange = 20)
 
 
 /atom/movable/proc/leaper_leap_enhanced(var/atom/A)
@@ -168,7 +178,7 @@
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 5, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
+	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 6, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
 
 
 //Special effects for leaper impact, its pretty powerful if it lands on the primary target mob, but it backfires if it was blocked by anything else
@@ -190,9 +200,9 @@
 			user.Move(obstacle.loc)
 	else if (obstacle.density)
 	//If something else blocked our leap, or if we hit a dense object (even intentionally) we get pretty rattled
-		user.Weaken(5)
-		user.apply_damage(20, used_weapon = obstacle) //ow
-		user.play_species_audio(user, SOUND_PAIN, 100, 1, 3) //It huuurts
+		user.Weaken(3)
+		user.apply_damage(15, used_weapon = obstacle) //ow
+		user.play_species_audio(user, SOUND_PAIN, VOLUME_MID, 1, 3) //It huuurts
 		.=FALSE
 
 
@@ -207,7 +217,7 @@
 	//The sound has a randomised delay
 	spawn(rand_between(0, 2 SECONDS))
 		play_species_audio(src, SOUND_ATTACK, 30, 1)
-	return tailstrike_attack(A, _damage = 25, _windup_time = 0.75 SECONDS, _winddown_time = 1.2 SECONDS, _cooldown = 0)
+	return tailstrike_attack(A, _damage = 22.5, _windup_time = 0.75 SECONDS, _winddown_time = 1.2 SECONDS, _cooldown = 0.5)
 
 
 /mob/living/carbon/human/proc/tailstrike_leaper_enhanced(var/atom/A)
@@ -218,6 +228,22 @@
 		A = get_step(src, dir)
 
 	//The sound has a randomised delay
-	spawn(rand_between(0, 1.8 SECONDS))
-		play_species_audio(src, SOUND_ATTACK, 30, 1)
-	return tailstrike_attack(A, _damage = 28, _windup_time = 0.6 SECONDS, _winddown_time = 1 SECONDS, _cooldown = 0)
+	if(tailstrike_attack(A, _damage = 28, _windup_time = 0.6 SECONDS, _winddown_time = 1 SECONDS, _cooldown = 0))
+		spawn(rand_between(0, 1.8 SECONDS))
+			play_species_audio(src, SOUND_ATTACK, 30, 1)
+
+
+
+//Gallop ability
+/mob/living/proc/leaper_gallop()
+	set name = "Gallop"
+	set category = "Abilities"
+	set desc = "Gives a huge burst of speed, but makes you vulnerable"
+	var/mob/living/carbon/human/H = src
+	if (!H.has_organ(BP_L_ARM) || !H.has_organ(BP_R_ARM) || !H.has_organ(BP_TAIL))
+		to_chat(H, SPAN_WARNING("You require a tail and both arms to use this ability!"))
+		return
+
+
+	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 10 SECONDS, _power = 3))
+		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
