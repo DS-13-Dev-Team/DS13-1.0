@@ -13,7 +13,7 @@ GLOBAL_VAR(spawntypes)
 /datum/spawnpoint
 	var/msg		  //Message to display on the arrivals computer.
 	var/list/turfs   //List of turfs to spawn on.
-	var/display_name //Name used in preference setup.
+	var/display_name //Name used in preference setup. These names are defines from _defines/mobs.dm
 	var/always_visible = FALSE	// Whether this spawn point is always visible in selection, ignoring map-specific settings.
 	var/list/restrict_job = null
 	var/list/disallow_job = null
@@ -54,7 +54,7 @@ GLOBAL_VAR(spawntypes)
 	turfs = GLOB.latejoin_gateway
 
 /datum/spawnpoint/cryo
-	display_name = "Cryogenic Storage"
+	display_name = SPAWNPOINT_CRYO
 	msg = "has completed cryogenic revival"
 	disallow_job = list("Robot")
 
