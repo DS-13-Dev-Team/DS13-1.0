@@ -1,14 +1,14 @@
 GLOBAL_DATUM_INIT(unitologists, /datum/antagonist/unitologist, new)
 GLOBAL_LIST_EMPTY(unitologists_list)
-
+/*
 /mob/proc/message_unitologists()
 	set category = SPECIES_NECROMORPH
 	set name = "Commune with the marker"
 	set src = usr
 	var/message = input("Say what?","Text") as null|text
 	message = sanitize(message)
-	message_necromorphs("<span class='cult'><b>Marker hivemind -</b> [usr]: [message]</span>")
-
+	message_necromorphs("<span class='cult'>[usr]: [message]</span>")
+*/
 /datum/antagonist/unitologist
 	role_text = "Unitologist"
 	role_text_plural = "Unitologists"
@@ -39,7 +39,7 @@ datum/objective/unitologist
 	return
 
 /datum/antagonist/unitologist/proc/give_collaborators(mob/living/our_owner)
-	our_owner.verbs |= /mob/proc/message_unitologists
+	//our_owner.verbs |= /mob/proc/message_unitologists
 	to_chat(our_owner, "<span class='warning'>The marker has established a psychic link between you and your fellow unitologists.</span>")
 	to_chat(our_owner, "<span class='warning'><i>Your mind is flooded with several names, these people must also share a connection to the marker...</i></span>")
 	for(var/mob/living/minion in GLOB.unitologists_list)

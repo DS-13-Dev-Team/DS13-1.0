@@ -38,7 +38,6 @@
 
 	step_priority = 1	//We'll play our footstep sounds on hard surfaces only
 	step_volume = VOLUME_NEAR_SILENT
-	speech_chance = 100 //Lots of these sounds
 	species_audio = list(
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/twitcher/twitcher_attack_1.ogg',
 	'sound/effects/creatures/necromorph/twitcher/twitcher_attack_2.ogg',
