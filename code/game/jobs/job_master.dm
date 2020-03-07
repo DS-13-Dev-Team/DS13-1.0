@@ -23,8 +23,6 @@ var/global/datum/controller/occupations/job_master
 		occupations_by_type = list()
 		occupations_by_title = list()
 		var/list/all_jobs = list(/datum/job/assistant) | GLOB.using_map.allowed_jobs
-		world << "All jobs length is [all_jobs.len]"
-		world << "Using map is [GLOB.using_map] And jobs are [english_list(GLOB.using_map.allowed_jobs)]"
 		if(!all_jobs.len)
 			log_error("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return 0
