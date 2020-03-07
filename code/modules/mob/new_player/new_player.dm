@@ -141,7 +141,10 @@
 		if(!check_species_allowed(S))
 			return 0
 
-		AttemptLateSpawn(job, "Cryogenic Storage") //Overridden from client.prefs.spawnpoint as no other spawnpoints are supported. For the record, I hate that I have to do this at all ~K.
+		//Sanitize the spawnpoint incase an invalid value is saved in
+		client.prefs.spawnpoint = sanitize_inlist(client.prefs.spawnpoint, spawntypes(), initial(client.prefs.spawnpoint))
+
+		AttemptLateSpawn(job, client.prefs.spawnpoint)
 		return
 
 	if(href_list["privacy_poll"])
@@ -395,6 +398,9 @@
 /mob/new_player/proc/create_character(var/turf/spawn_turf)
 	spawning = 1
 	close_spawn_windows()
+
+	//Sanitize the spawnpoint incase an invalid value is saved in
+	client.prefs.spawnpoint = sanitize_inlist(client.prefs.spawnpoint, spawntypes(), initial(client.prefs.spawnpoint))
 
 	var/mob/living/carbon/human/new_character
 

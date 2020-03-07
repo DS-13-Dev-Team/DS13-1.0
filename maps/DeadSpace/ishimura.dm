@@ -1,6 +1,7 @@
 #define using_map_DATUM /datum/map/ishimura
 /datum/map/ishimura
-
+	name = "Ishimura"
+	full_name = "SEV Torch"
 	path = "ishimura"
 	station_levels = list(1,2)
 	contact_levels = list(1,2,3)
@@ -25,6 +26,10 @@
 	)
 	*/
 	//Todo: Find good values for these
+
+	//Spawnpoints:
+	//These are display names of spawnpoint datums, taken from preferences_spawnpoints.dm
+	allowed_spawns = list(SPAWNPOINT_CRYO)
 
 	lobby_icon = 'maps/DeadSpace/icons/lobby.dmi'
 	lobby_screens = list("lobby1","lobby2","lobby3","lobby4", "lobby5")

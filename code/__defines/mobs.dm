@@ -293,3 +293,7 @@
 
 //Faction strings
 #define FACTION_NECROMORPH	"necromorph"
+
+
+//Spawnpoint Names
+#define SPAWNPOINT_CRYO	"Cryogenic Storage"
