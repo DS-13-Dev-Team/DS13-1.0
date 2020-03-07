@@ -160,35 +160,9 @@
 	icon_state = "medicalbelt"
 	item_state = "medical"
 	can_hold = list(
-		/obj/item/device/healthanalyzer,
-		/obj/item/weapon/reagent_containers/dropper,
-		/obj/item/weapon/reagent_containers/glass/beaker,
-		/obj/item/weapon/reagent_containers/glass/bottle,
-		/obj/item/weapon/reagent_containers/pill,
-		/obj/item/weapon/reagent_containers/syringe,
-		/obj/item/weapon/flame/lighter/zippo,
-		/obj/item/weapon/storage/fancy/cigarettes,
-		/obj/item/weapon/storage/pill_bottle,
-		/obj/item/stack/medical,
 		/obj/item/device/flashlight/pen,
-		/obj/item/clothing/mask/surgical,
-		/obj/item/clothing/head/surgery,
-		/obj/item/clothing/gloves/latex,
-		/obj/item/weapon/reagent_containers/hypospray,
-		/obj/item/clothing/glasses/hud/health,
-		/obj/item/weapon/tool/crowbar,
-		/obj/item/device/flashlight,
-		/obj/item/taperoll,
-		/obj/item/weapon/extinguisher/mini,
-		/obj/item/weapon/storage/med_pouch,
-		/obj/item/bodybag
+		/obj/item/weapon/storage/med_pouch
 		)
-
-/obj/item/weapon/storage/belt/medical/emt
-	name = "EMT belt"
-	desc = "A sturdy black webbing belt with attached pouches."
-	icon_state = "emsbelt"
-	item_state = "emsbelt"
 
 /obj/item/weapon/storage/belt/holster/security
 	name = "security holster belt"

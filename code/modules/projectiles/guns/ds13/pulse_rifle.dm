@@ -3,8 +3,8 @@
 ------------------------*/
 /obj/item/weapon/gun/projectile/automatic/pulse_rifle
 	name = "SWS Motorized Pulse Rifle"
-	desc = "The SWS Motorized Pulse Rifle is a military-grade, triple-barreled assault rifle with a rapid rate of fire and large magazine ammunition capacity.\
-The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force, and is also common among EarthGov security forces, corporate security officers, and civilians. "
+	desc = "The SWS Motorized Pulse Rifle is a military-grade, triple-barreled assault rifle, manufactured by Winchester Arms, is capable of a rapid rate of fire. \
+The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force and is also common among corporate security officers. "
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
 	icon_state = "pulserifle"
 	item_state = "pulserifle"
@@ -63,8 +63,8 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force, 
 	fire_sound='sound/weapons/guns/fire/pulse_shot.ogg'
 
 /obj/item/ammo_magazine/pulse
-	name = "Pulse Rounds"
-	desc = "With a distinctive \"Bell and stock\" design, pulse magazines can be inserted and removed from the Pulse Rifle with minimal effort and risk. "
+	name = "magazine (rifle slug)"
+	desc = "With a distinctive \"bell and stock\" design, pulse magazines can be inserted and removed from the Pulse Rifle with minimal effort and risk. "
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "pulse_rounds_empty"
 	caliber = "pulse"

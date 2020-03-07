@@ -1,7 +1,10 @@
 #define using_map_DATUM /datum/map/ishimura
+
+//#include "DeadSpace/job.dm"
+
 /datum/map/ishimura
 	name = "Ishimura"
-	full_name = "SEV Torch"
+	full_name = "USG Ishimura"
 	path = "ishimura"
 	station_levels = list(1,2)
 	contact_levels = list(1,2,3)
@@ -40,3 +43,11 @@
 /music_track/ds13/rock,
 /music_track/ds13/violin,
 /music_track/ds13/unitology)
+
+	allowed_jobs = list(/datum/job/cap, /datum/job/fl, /datum/job/bo, /datum/job/cseco,
+						/datum/job/sso, /datum/job/security_officer, /datum/job/smo,
+						/datum/job/md, /datum/job/surg, /datum/job/cscio, /datum/job/ra,
+						/datum/job/ce, /datum/job/tech_engineer, /datum/job/so,
+						/datum/job/serviceman, /datum/job/dom, /datum/job/foreman,
+						/datum/job/planet_cracker, /datum/job/line_cook, /datum/job/bar,
+						)

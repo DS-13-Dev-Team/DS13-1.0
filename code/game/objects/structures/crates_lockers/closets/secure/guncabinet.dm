@@ -12,9 +12,27 @@
 /obj/structure/closet/secure_closet/guncabinet/WillContain()
 	return list(
 		/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
-		/obj/item/ammo_magazine/pulse,
-		/obj/item/ammo_magazine/pulse,
-		/obj/item/ammo_magazine/pulse
+		/obj/item/ammo_magazine/pulse = 3
+	)
+
+/obj/structure/closet/secure_closet/guncabinet/military
+	name = "military gun cabinet"
+	req_access = list(access_security)
+	icon = 'icons/obj/guncabinet.dmi'
+	icon_state = "base"
+	icon_off ="base"
+	icon_broken ="base"
+	icon_locked ="base"
+	icon_closed ="base"
+	icon_opened = "base"
+
+/obj/structure/closet/secure_closet/guncabinet/military/WillContain()
+	return list(
+		/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
+		/obj/item/ammo_magazine/pulse = 6,
+		/obj/item/weapon/storage/belt/holster/security,
+
+
 	)
 
 /obj/structure/closet/secure_closet/guncabinet/Initialize()

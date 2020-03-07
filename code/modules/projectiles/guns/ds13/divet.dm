@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/projectile/divet
-	name = "divet"
-	desc = "A compact pistol with fully automatic fire. The Divet fired laser-sliced slugs composed of lead alloy in primary fire mode and shot three slugs simultaneously in secondary fire mode."
+	name = "divet pistol"
+	desc = "A Winchester Arms NK-series pistol capable of fully automatic fire."
 	icon_state = "divet"
 	magazine_type = /obj/item/ammo_magazine/divet
 	allowed_magazines = /obj/item/ammo_magazine/divet
@@ -29,8 +29,8 @@
 
 
 /obj/item/ammo_magazine/divet
-	name = "laser sliced slugs"
-	icon_state = "45"
+	name = "magazine (pistol slug)"
+	icon_state = "45ds"
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/ls_slug
 	matter = list(MATERIAL_STEEL = 525) //metal costs are very roughly based around 1 .45 casing = 75 metal
