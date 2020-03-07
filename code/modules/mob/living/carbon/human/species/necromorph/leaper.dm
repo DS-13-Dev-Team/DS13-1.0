@@ -86,7 +86,6 @@
 	'sound/effects/creatures/necromorph/leaper/leaper_speech_3.ogg',
 	'sound/effects/creatures/necromorph/leaper/leaper_speech_4.ogg')
 	)
-	speech_chance = 50
 
 /datum/species/necromorph/leaper/enhanced
 	name = SPECIES_NECROMORPH_LEAPER_ENHANCED

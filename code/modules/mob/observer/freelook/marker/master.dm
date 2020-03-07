@@ -2,7 +2,7 @@
 	//The master signal is the player who controls the marker. Essentially the leader of the necromorphs
 */
 /mob/observer/eye/signal/master
-	name = "The marker"
+	name = "Marker"
 	icon = 'icons/mob/necromorph/mastersignal.dmi'
 	icon_state = "mastersignal"
 	pixel_x = -7
@@ -14,8 +14,6 @@
 	verbs -= /mob/observer/eye/signal/verb/become_master_signal_verb
 	verbs -= /mob/observer/eye/signal/verb/leave_marker_verb
 
-/mob/observer/eye/signal/master/set_name(mob/body)
-	return FALSE
 
 /mob/observer/eye/signal/verb/become_master_signal_verb()
 	set name = "Become Master Signal"
@@ -49,11 +47,13 @@
 
 	SSnecromorph.marker.open_shop(src)
 
+/*
 /mob/observer/eye/signal/master/verb/message_servants()
 	set name = "Contact servants"
 	set src = usr
 	set category = SPECIES_NECROMORPH
 	usr.message_unitologists()
+*/
 
 //Finds out if the passed thing is the marker player.
 //The thing can be a mob, client, or ckey. They will all work

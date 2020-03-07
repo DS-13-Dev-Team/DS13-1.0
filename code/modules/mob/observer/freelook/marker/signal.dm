@@ -23,31 +23,13 @@
 	if(ismob(body))
 		key = body.key
 		possess(src) //Possess thyself
-		set_name(body)
+		SetName("[initial(name)] ([key])")
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
 	verbs |= /mob/proc/prey_sightings
 
 	forceMove(T)
-
-/**
-
-	Method to set the name of this signal observer to that of the one who's controlling it. Overridden by the "master signal" who should just be called "the marker".
-
-*/
-
-/mob/observer/eye/signal/proc/set_name(mob/body)
-	if(body.mind && body.mind.name)
-		name = body.mind.name
-	else
-		if(body.real_name)
-			name = body.real_name
-		else
-			if(gender == MALE)
-				name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
-			else
-				name = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 
 //Joining and leaving
 //-------------------------------
@@ -67,11 +49,9 @@
 
 
 /mob/proc/join_marker()
-	if (key)
-		SSnecromorph.necromorph_players |= key
-
 	message_necromorphs(SPAN_NOTICE("[key] has joined the necromorph horde."))
 	var/mob/observer/eye/signal/S = new(src)
+
 
 	return S
 
@@ -146,8 +126,12 @@
 
 //Necroqueue Handling
 //---------------------------
+
+
 /mob/observer/eye/signal/Login()
 	.=..()
+	SSnecromorph.necromorph_players[key] = src
+
 	spawn(1)	//Prevents issues when downgrading from master
 		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
 
@@ -192,3 +176,7 @@
 		return
 
 	to_chat(src, SPAN_DANGER("Error: No marker found!"))
+
+
+
+

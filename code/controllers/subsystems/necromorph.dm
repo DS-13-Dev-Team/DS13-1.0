@@ -87,16 +87,7 @@ SUBSYSTEM_DEF(necromorph)
 
 
 
-//Global Necromorph Procs
-//-------------------------
-/proc/message_necromorphs(var/message)
-	//Message all the necromorphs
-	for (var/key in SSnecromorph.necromorph_players)
-		var/mob/M = SSnecromorph.necromorph_players[key]
-		to_chat(M, message)
-	//Message all the unitologists too
-	for(var/atom/M in GLOB.unitologists_list)
-		to_chat(M, "<span class='cult'>[src]: [message]</span>")
+
 
 //Possible future todo: Allow this to take some kind of faction id in order to allow a necros vs necros gamemode
 /proc/get_marker()

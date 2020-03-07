@@ -164,7 +164,7 @@
 	.=..()
 	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
 	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
-	H.verbs |= /mob/proc/message_unitologists
+	//H.verbs |= /mob/proc/message_unitologists
 	make_scary(H)
 
 /datum/species/necromorph/proc/make_scary(mob/living/carbon/human/H)
@@ -247,5 +247,13 @@
 
 //Individual necromorphs are identified only by their species
 /datum/species/necromorph/get_random_name()
-	return src.name
+	return "[src.name] [rand(0,999)]"
 
+// Used to update alien icons for aliens.
+/datum/species/necromorph/handle_login_special(var/mob/living/carbon/human/H)
+	SSnecromorph.necromorph_players[H.key] = H
+
+// As above.
+/datum/species/necromorph/handle_logout_special(var/mob/living/carbon/human/H)
+	if (SSnecromorph.necromorph_players[H.key] == H)
+		SSnecromorph.necromorph_players -= H.key	//If they're evacuating to become a signal, they will be re-added to the list immediately
