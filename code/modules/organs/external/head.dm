@@ -18,6 +18,7 @@
 
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_GENDERED_ICON | ORGAN_FLAG_HEALS_OVERKILL
 
+	var/normal_eyes = TRUE	//Not exclusive with glowing eyes
 	var/glowing_eyes = FALSE
 	var/can_intake_reagents = 1
 	var/eye_icon_location = 'icons/mob/human_races/species/default_eyes.dmi'
@@ -37,7 +38,7 @@
 	return last_eye_cache_key
 
 /obj/item/organ/external/head/proc/get_eye_overlay()
-	if(glowing_eyes && owner && !owner.stat) //Eyes only glow when the head is attached to an alive, conscious creature
+	if(glowing_eyes && owner && !owner.stat && !owner.lying) //Eyes only glow when the head is attached to an alive, conscious creature
 		var/icon/I = get_eyes()
 		if(I)
 			var/cache_key = "[last_eye_cache_key]-glow"
@@ -123,10 +124,11 @@
 
 	if(owner)
 		// Base eye icon.
-		var/icon/I = get_eyes()
-		if(I)
-			overlays |= I
-			mob_icon.Blend(I, ICON_OVERLAY)
+		if (normal_eyes)
+			var/icon/I = get_eyes()
+			if(I)
+				overlays |= I
+				mob_icon.Blend(I, ICON_OVERLAY)
 
 		// Floating eyes or other effects.
 		var/image/eye_glow = get_eye_overlay()

@@ -100,3 +100,9 @@
 		glowing_eyes = TRUE
 		eye_icon_location = eye_icon
 		owner.update_body(TRUE)
+
+
+/obj/item/organ/external/head/simple/slasher_enhanced
+	normal_eyes = FALSE
+	glowing_eyes = TRUE
+	eye_icon_location = 'icons/mob/necromorph/slasher_enhanced.dmi'
