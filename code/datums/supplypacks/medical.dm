@@ -157,8 +157,7 @@
 
 /decl/hierarchy/supply_pack/medical/paramedicgear
 	name = "Paramedic equipment"
-	contains = list(/obj/item/weapon/storage/belt/medical/emt,
-					/obj/item/device/radio/headset/headset_med,
+	contains = list(/obj/item/device/radio/headset/headset_med,
 					/obj/item/clothing/under/rank/medical/scrubs/black,
 					/obj/item/clothing/accessory/armband/medgreen,
 					/obj/item/clothing/glasses/hud/health,

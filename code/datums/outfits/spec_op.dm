@@ -7,7 +7,7 @@
 	uniform = /obj/item/clothing/under/rigunder
 	suit = /obj/item/clothing/suit/space/edf/commander
 	l_ear = /obj/item/device/radio/headset/ert
-	glasses = null
+	glasses = /obj/item/clothing/glasses/hud/security
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/edf/commander
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
@@ -25,7 +25,7 @@
 	suit = /obj/item/clothing/suit/space/edf/medic
 	l_ear = /obj/item/device/radio/headset/ert
 	l_hand = /obj/item/weapon/storage/firstaid/ds_healkitcombat
-	glasses = null
+	glasses = /obj/item/clothing/glasses/hud/health/visor
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/edf/medic
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
@@ -59,7 +59,7 @@
 	uniform = /obj/item/clothing/under/rigunder
 	suit = /obj/item/clothing/suit/space/edf
 	l_ear = /obj/item/device/radio/headset/ert
-	glasses = null
+	glasses = /obj/item/clothing/glasses/hud/security
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/edf
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
@@ -80,7 +80,6 @@
 	uniform = /obj/item/clothing/under/rigunder
 	suit = /obj/item/clothing/suit/space/unitologist
 	l_ear = null
-	glasses = null
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/unitologist
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
@@ -97,7 +96,7 @@
 	uniform = /obj/item/clothing/under/rigunder
 	suit = /obj/item/clothing/suit/space/unitologist/healer
 	l_ear = null
-	glasses = null
+	glasses = /obj/item/clothing/glasses/hud/health
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/unitologist/healer
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
@@ -114,7 +113,7 @@
 	uniform = /obj/item/clothing/under/rigunder
 	suit = /obj/item/clothing/suit/space/unitologist/mechanic
 	l_ear = null
-	glasses = null
+	glasses = /obj/item/clothing/glasses/welding
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/unitologist/mechanic
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
@@ -131,7 +130,6 @@
 	uniform = /obj/item/clothing/under/rigunder
 	suit = /obj/item/clothing/suit/space/unitologist/berserker
 	l_ear = null
-	glasses = null
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/unitologist/berserker
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
@@ -148,7 +146,6 @@
 	uniform = /obj/item/clothing/under/rigunder
 	suit = /obj/item/clothing/suit/space/unitologist/deacon
 	l_ear = null
-	glasses = null
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/unitologist/deacon
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical

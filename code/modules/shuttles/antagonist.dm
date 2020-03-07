@@ -28,4 +28,4 @@
 
 /obj/machinery/computer/shuttle_control/multi/valor
 	name = "military shuttle control console"
-	shuttle_tag = "valor"
+	shuttle_tag = "Valor"

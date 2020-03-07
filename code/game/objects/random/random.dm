@@ -652,7 +652,6 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/weapon/storage/wallet = 1,
 				/obj/item/weapon/storage/ore = 2,
 				/obj/item/weapon/storage/belt/utility/full = 2,
-				/obj/item/weapon/storage/belt/medical/emt = 2,
 				/obj/item/weapon/storage/belt/medical = 2,
 				/obj/item/weapon/storage/belt/holster/security = 2,
 				/obj/item/weapon/storage/belt/holster/security/tactical = 1))

@@ -30,11 +30,11 @@
 	req_access = list(access_security)
 
 /obj/machinery/turretid/stun
-	enabled = 1
+	enabled = 0
 	icon_state = "control_stun"
 
 /obj/machinery/turretid/lethal
-	enabled = 1
+	enabled = 0
 	lethal = 1
 	icon_state = "control_kill"
 

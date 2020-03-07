@@ -25,11 +25,7 @@
 	return list(
 		/obj/item/weapon/storage/box/autoinjectors,
 		/obj/item/weapon/storage/box/syringes,
-		/obj/item/weapon/reagent_containers/dropper = 2,
-		/obj/item/weapon/reagent_containers/glass/beaker = 2,
-		/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 2,
-		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 2,
-		/obj/random/firstaid
+		/obj/random/firstaid = 3
 	)
 
 /obj/structure/closet/secure_closet/medical2
@@ -66,7 +62,8 @@
 		/obj/item/device/flashlight,
 		/obj/item/device/radio/headset/headset_med,
 		/obj/item/taperoll/medical,
-		/obj/item/weapon/storage/belt/medical/emt,
+		/obj/item/weapon/storage/belt/medical,
+		/obj/item/clothing/glasses/hud/health
 	)
 
 /obj/structure/closet/secure_closet/paramedic
@@ -85,7 +82,6 @@
 	    /obj/item/weapon/storage/box/syringes,
 	    /obj/item/weapon/reagent_containers/glass/bottle/inaprovaline,
 	    /obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
-	    /obj/item/weapon/storage/belt/medical/emt,
 	    /obj/item/clothing/mask/gas,
 	    /obj/item/clothing/suit/storage/toggle/fr_jacket,
 	    /obj/item/clothing/suit/storage/toggle/labcoat,
