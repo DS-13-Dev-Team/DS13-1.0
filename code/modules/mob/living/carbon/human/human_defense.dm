@@ -24,7 +24,7 @@ meteor_act
 		accuracy -= organ.base_miss_chance
 
 
-	world << "[weapon] 	[accuracy]% acc against [src]"
+	//world << "[weapon] 	[accuracy]% acc against [src]"
 
 	//For humans, we run the accuracy check twice
 	//1. To see whether we hit anything at all. Fail, and the attack misses.
