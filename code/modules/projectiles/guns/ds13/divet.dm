@@ -47,7 +47,7 @@
 
 /obj/item/projectile/bullet/ls_slug
 	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
-	damage = 20
+	damage = 22.5
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
 	fire_sound='sound/weapons/guns/fire/pulse_shot.ogg'

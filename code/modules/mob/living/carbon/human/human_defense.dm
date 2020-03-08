@@ -24,6 +24,8 @@ meteor_act
 		accuracy -= organ.base_miss_chance
 
 
+	world << "[weapon] 	[accuracy]% acc against [src]"
+
 	//For humans, we run the accuracy check twice
 	//1. To see whether we hit anything at all. Fail, and the attack misses.
 	if (!prob(accuracy))
@@ -51,7 +53,7 @@ meteor_act
 			P.on_hit(src, 100, def_zone)
 			return 100
 
-	var/obj/item/organ/external/organ = get_organ(def_zone)
+	var/obj/item/organ/external/organ = find_target_organ(def_zone)
 	var/armor = getarmor_organ(organ, P.check_armour)
 	var/penetrating_damage = ((P.damage + P.armor_penetration) * P.penetration_modifier) - armor
 

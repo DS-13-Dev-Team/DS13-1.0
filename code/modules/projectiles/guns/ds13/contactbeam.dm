@@ -223,8 +223,9 @@
 	Projectile
 */
 /obj/item/projectile/beam/contact
-	damage = 60
+	damage = 70
 	armor_penetration = 10
+	accuracy	=	110
 
 
 

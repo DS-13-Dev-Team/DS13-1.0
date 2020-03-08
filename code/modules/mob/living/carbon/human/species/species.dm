@@ -63,6 +63,7 @@
 	var/virus_immune
 	var/biomass	=	80	//How much biomass does it cost to spawn this (for necros) and how much does it yield when absorbed by a marker
 		//This is in kilograms, and is thus approximately the mass of an average human male adult
+	var/mass = 80	//Actual mass of the resulting mob
 
 	var/plane	=	HUMAN_PLANE
 	var/layer = 0

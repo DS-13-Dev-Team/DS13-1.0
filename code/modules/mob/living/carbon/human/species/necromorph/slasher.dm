@@ -12,6 +12,7 @@
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	total_health = 70
 	biomass = 70
+	mass = 70
 
 	biomass_reclamation_time	=	7.5 MINUTES
 
@@ -77,6 +78,7 @@
 	total_health = 175
 	slowdown = 2.8
 	biomass = 175
+	mass = 120
 	mob_size	= MOB_LARGE
 	bump_flag 	= HEAVY
 
@@ -148,8 +150,8 @@
 	sharp = TRUE
 	edge = TRUE
 	shredding = TRUE
-	damage = 15
-	delay = 12
+	damage = 14
+	delay = 13
 	airlock_force_power = 2
 
 //Can't slash things without arms
@@ -159,8 +161,8 @@
 	return TRUE
 
 /datum/unarmed_attack/blades/strong
-	damage = 22
-	delay = 10
+	damage = 20
+	delay = 11
 	airlock_force_power = 3
 
 
