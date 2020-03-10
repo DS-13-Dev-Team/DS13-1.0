@@ -55,11 +55,22 @@
 			view = temp_view
 
 
+//Returns the total distance infront of the mob that this client can see, taking into account view radius and offset
+/client/proc/get_view_length()
+	return temp_view + (view_offset_magnitude / WORLD_ICON_SIZE)
+
+
 /client/proc/set_view_offset(var/direction, var/magnitude)
+	view_offset_magnitude = magnitude //Cache this
 	var/vector2/offset = (Vector2.FromDir(direction))*magnitude
 	if (pixel_x != offset.x || pixel_y != offset.y) //If the values already match the target, don't interrupt the animation by repeating it
 		.=TRUE //Offset has changed, return true
-		animate(src, pixel_x = offset.x, pixel_y = offset.y, time = 5, easing = SINE_EASING)
+		var/saccade_time = SACCADE_BASE_SPEED / text2num(get_preference_value(/datum/client_preference/saccade_speed))
+		world << "Saccade time before dist [saccade_time]"
+		var/saccade_distance = sqrt((get_view_length()**2)*2)	//Pythagoras helps us find the distance of the saccade. Hypotenuse = square root of A squared + B squared
+		saccade_time *= saccade_distance
+		world << "Saccade dist	[saccade_distance]	Time After:[saccade_time]"
+		animate(src, pixel_x = offset.x, pixel_y = offset.y, time = saccade_time, easing = SINE_EASING)
 
 
 /client/proc/setup_click_catcher()

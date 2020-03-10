@@ -53,3 +53,8 @@
 		//MOUSE HANDLING//
 		////////////
 	var/last_click_atom	//The atom we last clicked, if it was on a turf
+
+	/*-------------------------------
+		View Handling
+	--------------------------------*/
+	var/view_offset_magnitude	//Cached when view offset is set

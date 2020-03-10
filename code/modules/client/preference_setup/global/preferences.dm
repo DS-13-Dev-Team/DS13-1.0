@@ -194,9 +194,16 @@ var/list/_client_preferences_by_type
 	key = "HARDSUIT_ACTIVATION"
 	options = list(GLOB.PREF_MIDDLE_CLICK, GLOB.PREF_CTRL_CLICK, GLOB.PREF_ALT_CLICK, GLOB.PREF_CTRL_SHIFT_CLICK)
 
+/datum/client_preference/saccade_speed
+	description = "Saccade Speed"
+	key = "SACCADE_SPEED"
+	options = list("0.2", "0.3", "0.5", "0.75", "0.9", "1", "1.25", "1.5", "2", "2.5", "3")
+	default_value = "1"
+
 /datum/client_preference/show_credits
 	description = "Show End Titles"
 	key = "SHOW_CREDITS"
+
 
 
 /********************
