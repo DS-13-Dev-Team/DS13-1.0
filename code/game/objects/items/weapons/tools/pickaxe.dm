@@ -77,7 +77,7 @@
 	icon_state = "ds_rocksaw0"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
-	switched_on_force = WEAPON_FORCE_DANGEROUS
+	switched_on_force = WEAPON_FORCE_ROBUST
 	force = WEAPON_FORCE_NORMAL
 	throwforce = WEAPON_FORCE_NORMAL
 	item_state = "ds_rocksaw0"

@@ -168,3 +168,13 @@
 
 /obj/item/organ/external/head/no_eyes
 	eye_icon_location = null
+
+
+/obj/item/organ/external/head/removed(var/mob/living/user, var/ignore_children = 0)
+	var/mob/living/carbon/human/former_owner = owner
+	.=..()
+	spawn()
+		//This immediately updates hud stuff, so people go blind instantly upon head removal, rather than a few seconds later
+		if (istype(former_owner) && !QDELETED(former_owner))
+			former_owner.handle_disabilities()
+			former_owner.handle_regular_hud_updates()

@@ -169,7 +169,7 @@
 	else if(!vision || (vision && !vision.is_usable()))   // Vision organs cut out or broken? Permablind.
 		eye_blind =  1
 		blinded =    1
-		eye_blurry = 1
+		eye_blurry = 0	//No blur and blind at the same time, one or the other
 	else
 		//blindness
 		if(!(sdisabilities & BLIND))
