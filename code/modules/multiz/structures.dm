@@ -10,6 +10,7 @@
 	density = 0
 	opacity = 0
 	anchored = 1
+	layer = ABOVE_OBJ_LAYER
 
 	var/allowed_directions = DOWN
 	var/obj/structure/ladder/target_up
@@ -17,7 +18,8 @@
 
 	var/const/climb_time = 2 SECONDS
 	var/static/list/climbsounds = list('sound/effects/ladder.ogg','sound/effects/ladder2.ogg','sound/effects/ladder3.ogg','sound/effects/ladder4.ogg')
-	mass = 10	//Structures tend to be heavier, baseline 10kg mass
+	resistance = 20
+	health = 100	//Hard to break
 
 /obj/structure/ladder/Initialize()
 	. = ..()
