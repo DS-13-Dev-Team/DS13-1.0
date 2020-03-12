@@ -216,26 +216,32 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		shots_fired++
 
 /datum/click_handler/fullauto/MouseDown(object,location,control,params)
-	object = resolve_world_target(object, params)
-	if (object)
-		target = object
-		user.face_atom(target)
-		user_trying_to_fire = TRUE
-		spawn()
-			start_firing()
-		return FALSE
+	var/list/modifiers = params2list(params)
+	if(modifiers["left"])
+		object = resolve_world_target(object, params)
+		if (object)
+			target = object
+			user.face_atom(target)
+			user_trying_to_fire = TRUE
+			spawn()
+				start_firing()
+			return FALSE
 	return TRUE
 
 /datum/click_handler/fullauto/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
-	over_object = resolve_world_target(over_object, params)
-	if (over_object && firing)
-		target = over_object
-		user.face_atom(target)
-		return FALSE
+	var/list/modifiers = params2list(params)
+	if(modifiers["left"])
+		over_object = resolve_world_target(over_object, params)
+		if (over_object && firing)
+			target = over_object
+			user.face_atom(target)
+			return FALSE
 	return TRUE
 
 /datum/click_handler/fullauto/MouseUp(object,location,control,params)
-	user_trying_to_fire = FALSE	//When we release the button, stop attempting to fire. it may still go if there's minimum shots remaining
+	var/list/modifiers = params2list(params)
+	if(modifiers["left"])
+		user_trying_to_fire = FALSE	//When we release the button, stop attempting to fire. it may still go if there's minimum shots remaining
 	return TRUE
 
 /datum/click_handler/fullauto/Destroy()
