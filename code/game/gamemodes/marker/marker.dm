@@ -18,7 +18,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	votable = TRUE
 	var/evac_points = 0
 	var/evac_threshold = 85 //2 hours until you get to evac.
-	var/marker_setup_time = 20 SECONDS	//TODO: Change this to 25 mins ish?
+	var/marker_setup_time = 25 MINUTES
 
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
@@ -28,10 +28,8 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 		return
 	command_announcement.Announce("Delivery of alien artifact successful at [get_area(SSnecromorph.marker)].","Ishimura Deliveries Subsystem") //Placeholder
 	addtimer(CALLBACK(src, .proc/activate_marker), rand_between(0.85, 1.15)*marker_setup_time) //We have to spawn the marker quite late, so guess we'd best wait :)
-	crash_with("MARKER POST SETUP")
 
 /datum/game_mode/marker/proc/pick_marker_player()
-	crash_with("PICK MARKER PLAYER")
 	if (SSnecromorph.marker.player)
 		return	//There's already a marker player
 
