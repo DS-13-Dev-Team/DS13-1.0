@@ -137,7 +137,7 @@
 /mob/observer/eye/signal/Login()
 	.=..()
 	SSnecromorph.necromorph_players[key] = src
-	//client.show_popup_menus = FALSE	//TODO: Figure out a way to not need this
+	SSnecromorph.signals |= src
 
 	spawn(1)	//Prevents issues when downgrading from master
 		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
@@ -153,9 +153,13 @@
 	if (!istype(src, /mob/observer/eye/signal/master))
 		SSnecromorph.remove_from_necroqueue(src)
 	.=..()
+	spawn()
+		if (!QDELETED(src))
+			qdel(src)	//A signal shouldn't exist with nobody in it
 
 /mob/observer/eye/signal/Destroy()
 	SSnecromorph.remove_from_necroqueue(src)
+	SSnecromorph.signals -= src
 	.=..()
 
 

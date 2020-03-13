@@ -42,6 +42,8 @@
 	. += "<table>"
 	for(var/ntype in subtypesof(/datum/species/necromorph))
 		var/datum/species/necromorph/N = ntype
+		if (!initial(N.marker_spawnable))
+			continue
 		var/necro_id = initial(N.name)
 		. += "<tr><td>[necro_id]: </td><td>"
 		if(necro_id in pref.never_be_special_role)
@@ -53,6 +55,8 @@
 	var/list/all_antag_types = GLOB.all_antag_types_
 	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
+		if (!antag.preference_candidacy_toggle)
+			continue
 		. += "<tr><td>[antag.role_text]: </td><td>"
 		if(jobban_isbanned(preference_mob(), antag.id) || (antag.id == MODE_MALFUNCTION && jobban_isbanned(preference_mob(), "AI")))
 			. += "<span class='danger'>\[BANNED\]</span><br>"

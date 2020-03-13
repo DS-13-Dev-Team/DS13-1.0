@@ -27,7 +27,7 @@ var/list/ghost_traps
 	var/ghost_trap_message = "They are occupying a positronic brain now."
 	var/ghost_trap_role = "Positronic Brain"
 	var/can_set_own_name = TRUE
-	var/list_as_special_role = TRUE	// If true, this entry will be listed as a special role in the character setup
+	var/list_as_special_role = FALSE	// If true, this entry will be listed as a special role in the character setup
 
 	var/list/request_timeouts
 

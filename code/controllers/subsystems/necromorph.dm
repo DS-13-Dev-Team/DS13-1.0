@@ -8,6 +8,7 @@ SUBSYSTEM_DEF(necromorph)
 	var/list/minor_vessels	=	list()	//Necromorphs that have AI and don't need a player, but can be posessed anyway if someone wants to do manual control
 
 	//Signal Lists
+	var/list/signals	=	list()	//List of all signal players
 	var/list/necroqueue = list()	//This is a list of signal players who are waiting to be put into the first available major vessel
 
 	//Marker

@@ -1,67 +1,64 @@
 GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 
 /datum/game_mode/marker
-	name = "The marker"
+	name = "Containment"
 	round_description = "The USG Ishimura has unearthed a strange artifact and is tasked with discovering what its purpose is."
-	extended_round_description = "The crew must survive the marker's onslaught, or destroy the marker."
-	config_tag = "marker"
-	required_players = 5
-	required_enemies = 3
+	extended_round_description = "The crew must holdout until help arrives"
+	config_tag = "containment"
+	required_players = 0
+	required_enemies = 0
 	end_on_antag_death = 0
+	round_autoantag = TRUE
 	auto_recall_shuttle = 1
 	antag_tags = list(MODE_UNITOLOGIST)
 	latejoin_antag_tags = list(MODE_UNITOLOGIST)
 	antag_templates = list(/datum/antagonist/unitologist)
 	auto_recall_shuttle = TRUE //No escape
-	require_all_templates = TRUE
+	require_all_templates = FALSE
+	votable = TRUE
 	var/evac_points = 0
 	var/evac_threshold = 85 //2 hours until you get to evac.
+	var/marker_setup_time = 20 SECONDS	//TODO: Change this to 25 mins ish?
+
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
 	. = ..()
 	if(!SSnecromorph.marker)
 		message_admins("There are no markers on this map!")
 		return
-	pick_marker_player()
 	command_announcement.Announce("Delivery of alien artifact successful at [get_area(SSnecromorph.marker)].","Ishimura Deliveries Subsystem") //Placeholder
-	addtimer(CALLBACK(src, .proc/activate_marker), rand(20 MINUTES, 35 MINUTES)) //We have to spawn the marker quite late, so guess we'd best wait :)
+	addtimer(CALLBACK(src, .proc/activate_marker), rand_between(0.85, 1.15)*marker_setup_time) //We have to spawn the marker quite late, so guess we'd best wait :)
+	crash_with("MARKER POST SETUP")
 
-/datum/game_mode/marker/proc/pick_marker_player(late)
-	var/mob/M = pick(GLOB.unitologists_list)
-	if(!GLOB.unitologists_list.len) //Oh boy. That's not good. Time to force-create antags.
-		message_admins("Unable to find any unitologists. Attempting to force spawn them.")
-		var/datum/antagonist/antag
-		for(var/antag_type in GLOB.all_antag_types_)
-			var/datum/antagonist/temp = GLOB.all_antag_types_[antag_type]
-			if(istype(temp, /datum/antagonist/unitologist))
-				antag = temp
-				break
-		if(!antag)
-			message_admins("Something has gone awfully wrong")
-			return FALSE
-		if(!antag.can_late_spawn())
-			message_admins("Unitologist config error! Unable to automatically spawn unitologist antags. Cancelling.")
-			return FALSE
-		antag.attempt_random_spawn()
+/datum/game_mode/marker/proc/pick_marker_player()
+	crash_with("PICK MARKER PLAYER")
+	if (SSnecromorph.marker.player)
+		return	//There's already a marker player
+
+	var/mob/M
+	if(!SSnecromorph.signals.len) //No signals? We can't pick one
+		message_admins("No signals, unable to pick a marker player! The marker is now active and awaiting anyone who wishes to control it")
 		return FALSE
-	if(!M || !M.mind)
-		pick_marker_player() //Call recursively until we find a suitable player
-		return
-	if(late)
-		to_chat(M, "<span class='warning'>You have been selected to become the marker when it activates! In around 5 minutes, you will begin controlling the marker. Spend this time to coordinate with your fellow unitologists.</span>")
-		return
-	to_chat(M, "<span class='warning'>You have been selected to become the marker when it activates! In around 20 minutes, you will begin controlling the marker. Spend this time to coordinate with your fellow unitologists.</span>")
+
+	var/list/marker_candidates = SSnecromorph.signals.Copy()
+	while (marker_candidates.len)
+		M = pick_n_take(marker_candidates)
+		if (!M.client)
+			continue
+
+
+		//Alright pick them!
+		to_chat(M, "<span class='warning'>You have been selected to become the marker!</span>")
+		SSnecromorph.marker.become_master_signal(M)
+		return M
+
+	message_admins("No signals, unable to pick a marker player! The marker is now active and awaiting anyone who wishes to control it")
+	return FALSE
 
 /datum/game_mode/marker/proc/activate_marker()
 	charge_evac_points()
-	var/mob/M = pick(GLOB.unitologists_list)
-	if(!M || !M.client || QDELETED(M))
-		pick_marker_player(late = TRUE)
-		addtimer(CALLBACK(src, .proc/activate_marker), rand(2 MINUTES, 5 MINUTES)) //We have to spawn the marker quite late, so guess we'd best wait for someone to actually take it over
-		return FALSE
-	var/mob/observer/ghost/ghost = M.ghostize(TRUE) //Ghost the player and put them in control of the marker.
 	SSnecromorph.marker.make_active() //Allow controlling
-	SSnecromorph.marker.become_master_signal(ghost)
+	pick_marker_player()
 	return TRUE
 
 /datum/game_mode/marker/proc/charge_evac_points()
