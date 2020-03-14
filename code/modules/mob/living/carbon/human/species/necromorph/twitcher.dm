@@ -24,7 +24,7 @@
 	icon_dead = "twitcher"
 	single_icon = TRUE
 
-	biomass	=	150
+	biomass	=	130
 
 
 	slowdown = 1.5
@@ -99,7 +99,7 @@
 	set category = "Abilities"
 
 
-	.= charge_attack(A, _delay = 1.3 SECONDS, _speed = 6, _cooldown = 6 SECONDS)
+	.= charge_attack(A, _delay = 1.3 SECONDS, _speed = 7, _cooldown = 6 SECONDS)
 	if (.)
 		face_atom(A)
 		//Long shout when targeting mobs, normal when targeting objects
