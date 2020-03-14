@@ -108,12 +108,7 @@
 	item_state = "utility"
 	overlay_flags = BELT_OVERLAY_ITEMS
 	can_hold = list(
-		///obj/item/weapon/combitool,
-		/obj/item/weapon/tool/crowbar,
-		/obj/item/weapon/tool/screwdriver,
-		/obj/item/weapon/tool/weldingtool,
-		/obj/item/weapon/tool/wirecutters,
-		/obj/item/weapon/tool/wrench,
+		/obj/item/weapon/tool,
 		/obj/item/device/multitool,
 		/obj/item/device/flashlight,
 		/obj/item/stack/cable_coil,
@@ -160,8 +155,28 @@
 	icon_state = "medicalbelt"
 	item_state = "medical"
 	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/weapon/reagent_containers/dropper,
+		/obj/item/weapon/reagent_containers/glass/beaker,
+		/obj/item/weapon/reagent_containers/glass/bottle,
+		/obj/item/weapon/reagent_containers/pill,
+		/obj/item/weapon/reagent_containers/syringe,
+		/obj/item/weapon/flame/lighter/zippo,
+		/obj/item/weapon/storage/fancy/cigarettes,
+		/obj/item/weapon/storage/pill_bottle,
+		/obj/item/stack/medical,
 		/obj/item/device/flashlight/pen,
-		/obj/item/weapon/storage/med_pouch
+		/obj/item/clothing/mask/surgical,
+		/obj/item/clothing/head/surgery,
+		/obj/item/clothing/gloves/latex,
+		/obj/item/weapon/reagent_containers/hypospray,
+		/obj/item/clothing/glasses/hud/health,
+		/obj/item/weapon/tool/crowbar,
+		/obj/item/device/flashlight,
+		/obj/item/taperoll,
+		/obj/item/weapon/extinguisher/mini,
+		/obj/item/weapon/storage/med_pouch,
+		/obj/item/bodybag
 		)
 
 /obj/item/weapon/storage/belt/holster/security
@@ -169,9 +184,33 @@
 	desc = "Can hold security gear like handcuffs and flashes."
 	icon_state = "securitybelt"
 	item_state = "security"
-	storage_slots = 10
-	can_hold = list()
+	storage_slots = 7
 	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
+	can_hold = list(
+		/obj/item/weapon/tool/crowbar,
+		/obj/item/weapon/grenade,
+		/obj/item/weapon/reagent_containers/spray/pepper,
+		/obj/item/weapon/handcuffs,
+		/obj/item/device/flash,
+		/obj/item/clothing/glasses,
+		/obj/item/ammo_casing/shotgun,
+		/obj/item/ammo_magazine,
+		/obj/item/weapon/reagent_containers/food/snacks/donut/,
+		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/melee/telebaton,
+		/obj/item/weapon/flame/lighter,
+		/obj/item/clothing/glasses/hud/security,
+		/obj/item/device/flashlight,
+		/obj/item/modular_computer/pda,
+		/obj/item/device/radio/headset,
+		/obj/item/device/hailer,
+		/obj/item/device/megaphone,
+		/obj/item/weapon/melee,
+		/obj/item/taperoll,
+		/obj/item/device/holowarrant,
+		/obj/item/weapon/magnetic_ammo,
+		/obj/item/device/binoculars
+		)
 
 /obj/item/weapon/storage/belt/general
 	name = "equipment belt"
@@ -245,7 +284,7 @@
 	desc = "Can hold forensic gear like fingerprint powder and luminol."
 	icon_state = "forensicbelt"
 	item_state = "forensic"
-	storage_slots = 8
+	storage_slots = 7
 	overlay_flags = BELT_OVERLAY_HOLSTER
 	can_hold = list(
 		/obj/item/weapon/reagent_containers/spray/luminol,
@@ -333,8 +372,7 @@
 	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
 	icon_state = "swatbelt"
 	item_state = "swatbelt"
-	storage_slots = 18
-	can_hold = list()
+	storage_slots = 10
 
 /obj/item/weapon/storage/belt/waistpack
 	name = "waist pack"
