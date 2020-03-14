@@ -67,6 +67,7 @@
 	var/list/global_objectives =   list()   // Universal objectives if any.
 	var/list/candidates =          list()   // Potential candidates.
 	var/list/faction_members =     list()   // Semi-antags (in-round revs, borer thralls)
+	var/preference_candidacy_toggle = FALSE	// Whether to show an option in preferences to toggle candidacy
 
 	// ID card stuff.
 	var/default_access = list()
@@ -123,7 +124,6 @@
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are already an antagonist!")
 		else
 			candidates |= player
-
 	return candidates
 
 // Builds a list of potential antags without actually setting them. Used to test mode viability.

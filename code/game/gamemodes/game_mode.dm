@@ -6,7 +6,7 @@ var/global/list/additional_antag_types = list()
 	var/round_description = "How did you even vote this in?"
 	var/extended_round_description = "This roundtype should not be spawned, let alone votable. Someone contact a developer and tell them the game's broken again."
 	var/config_tag = null
-	var/votable = 1
+	var/votable = FALSE
 	var/probability = 0
 
 	var/required_players = 0                 // Minimum players for round to start if voted in.
@@ -401,7 +401,7 @@ var/global/list/additional_antag_types = list()
 				players -= player
 
 		// If we don't have enough antags, draft people who voted for the round.
-		if(candidates.len < required_enemies)
+		if(candidates.len < max(required_enemies, antag_template.initial_spawn_target))
 			for(var/mob/new_player/player in players)
 				if(!antag_id || !(antag_id in player.client.prefs.never_be_special_role))
 					log_debug("[player.key] has not selected never for this role, so we are drafting them.")
@@ -409,6 +409,7 @@ var/global/list/additional_antag_types = list()
 					players -= player
 					if(candidates.len == required_enemies || players.len == 0)
 						break
+
 
 	return candidates		// Returns: The number of people who had the antagonist role set to yes, regardless of recomended_enemies, if that number is greater than required_enemies
 							//			required_enemies if the number of people with that role set to yes is less than recomended_enemies,

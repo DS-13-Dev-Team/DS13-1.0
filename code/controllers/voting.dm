@@ -89,6 +89,11 @@
 		var/third_greatest_votes = 0
 		var/total_votes = 0
 
+		//Short circuit it for only a single choice, just return that choice as the only winner
+		if (choices.len == 1)
+			return list(list(choices[1]), list(), list())
+
+
 		//default-vote for everyone who didn't vote
 		if(!config.vote_no_default && choices.len)
 			var/non_voters = (GLOB.clients.len - total_votes)
@@ -320,7 +325,7 @@
 							continue
 						gamemode_names[M.config_tag] = capitalize(M.name) //It's ugly to put this here but it works
 						additional_text.Add("<td align = 'center'>[M.required_players]</td>")
-					gamemode_names["secret"] = "Secret"
+					//gamemode_names["secret"] = "Secret"
 				if("crew_transfer")
 					if(!evacuation_controller || !evacuation_controller.should_call_autotransfer_vote())
 						return 0
@@ -374,21 +379,25 @@
 			mode = vote_type
 			initiator = initiator_key
 			started_time = world.time
-			var/text = "[capitalize(mode)] vote started by [initiator]."
-			if(mode == "custom")
-				text += "\n[question]"
 
-			log_vote(text)
-			to_world("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config.vote_period/10] seconds to vote.</font>")
+			if (choices.len > 1)
+				var/text = "[capitalize(mode)] vote started by [initiator]."
+				if(mode == "custom")
+					text += "\n[question]"
 
-			to_world(sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = GLOB.vote_sound_channel))
+				log_vote(text)
+				to_world("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config.vote_period/10] seconds to vote.</font>")
 
-			if(mode == "gamemode" && round_progressing)
-				round_progressing = 0
-				to_world("<font color='red'><b>Round start has been delayed.</b></font>")
+				to_world(sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = GLOB.vote_sound_channel))
+
+				if(mode == "gamemode" && round_progressing)
+					round_progressing = 0
+					to_world("<font color='red'><b>Round start has been delayed.</b></font>")
 
 
-			time_remaining = round(config.vote_period/10)
+				time_remaining = round(config.vote_period/10)
+			else
+				time_remaining = round(0)//If there's only one choice it will win
 			return 1
 		return 0
 

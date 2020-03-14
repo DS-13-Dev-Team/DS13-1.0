@@ -14,10 +14,11 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	role_text_plural = "Unitologists"
 	welcome_text = "You are part of a new religion which worships strange alien artifacts, believing that only through them can humanity truly transcend. You have been blessed with a psychic connection created by the <b>marker</b>, one of these artifacts. Serve the marker's will at all costs by bringing it human sacrifices and remember that its objectives come before your own..."
 	id = MODE_UNITOLOGIST
-	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE | ANTAG_OVERRIDE_JOB
+	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	skill_setter = /datum/antag_skill_setter/station
 	antaghud_indicator = "hudunitologist" // Used by the ghost antagHUD.
 	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
+	preference_candidacy_toggle = TRUE
 
 datum/objective/unitologist
 	explanation_text = "Serve the marker at all costs."
@@ -46,12 +47,3 @@ datum/objective/unitologist
 		if(minion && minion != our_owner)
 			to_chat(our_owner, "Fellow unitologist: [minion.real_name]")
 			our_owner.mind.store_memory("<b>Fellow unitologist</b>: [minion.real_name]")
-
-/*
-/datum/antagonist/rogue_ai/build_candidate_list()
-	..()
-	for(var/datum/mind/player in candidates)
-		if(player.assigned_role && player.assigned_role != "AI")
-			candidates -= player
-	return candidates
-*/ //Useful code that lets you force candidate selection. Use this for marker?
