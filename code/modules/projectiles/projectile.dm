@@ -33,7 +33,7 @@
 	randpixel = 4	//Offset randomly on spawn by up to this much
 
 	var/accuracy = 100	//Base chance to hit, before various modifiers are applied. This can be above 100
-	var/distance_accuracy_falloff	=	2	//Amount subtracted from accuracy for each tile travelled
+	var/distance_accuracy_falloff	=	1.75	//Amount subtracted from accuracy for each tile travelled
 	var/dispersion = 0.0
 
 	var/damage = 10

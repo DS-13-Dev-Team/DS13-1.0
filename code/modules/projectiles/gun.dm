@@ -36,7 +36,7 @@
 	var/fire_anim = null
 	var/screen_shake = 0 //shouldn't be greater than 2 unless zoomed
 	var/silenced = 0
-	var/move_accuracy_mod	=	-10	//Modifier applied to accuracy while moving. Should generally be negative
+	var/move_accuracy_mod	=	-7.5	//Modifier applied to accuracy while moving. Should generally be negative
 
 
 	var/list/dispersion = list(0)

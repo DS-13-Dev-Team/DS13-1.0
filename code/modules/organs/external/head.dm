@@ -3,8 +3,8 @@
 	icon_name = "head"
 	name = "head"
 	slot_flags = SLOT_BELT
-	max_damage = 65 //after 65 damage it goes SPLAT. noticably squishy when unarmored, a lot more durable when armored.
-	min_broken_damage = 35
+	max_damage = 75
+	min_broken_damage = 45
 	w_class = ITEM_SIZE_NORMAL
 	body_part = HEAD
 	parent_organ = BP_CHEST

@@ -9,6 +9,7 @@
 	can_obliterate = FALSE
 	healing_factor = 4	//Lots of constant healing
 	biomass	=	1600	//Endgame, real expensive
+	mass = 130
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
 	single_icon = FALSE

@@ -17,6 +17,7 @@
 	layer = LARGE_MOB_LAYER
 
 	biomass = 500
+	mass = 250
 	biomass_reclamation_time	=	15 MINUTES
 
 
@@ -114,7 +115,7 @@
 	set category = "Abilities"
 
 
-	.= brute_charge_attack(A, _delay = 1.5 SECONDS, _speed = 3.5, _lifespan = 8 SECONDS, _inertia = TRUE)
+	.= brute_charge_attack(A, _delay = 1.25 SECONDS, _speed = 3.5, _lifespan = 8 SECONDS, _inertia = TRUE)
 	if (.)
 		var/mob/living/carbon/human/H = src
 		if (istype(H))

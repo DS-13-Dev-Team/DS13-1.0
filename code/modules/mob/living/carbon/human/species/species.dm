@@ -63,6 +63,7 @@
 	var/virus_immune
 	var/biomass	=	80	//How much biomass does it cost to spawn this (for necros) and how much does it yield when absorbed by a marker
 		//This is in kilograms, and is thus approximately the mass of an average human male adult
+	var/mass = 80	//Actual mass of the resulting mob
 
 	var/plane	=	HUMAN_PLANE
 	var/layer = 0
@@ -365,7 +366,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
 
 	H.mob_size = mob_size
-	H.mass = biomass
+	H.mass = src.mass
 	for(var/obj/item/organ/organ in H.contents)
 		if((organ in H.organs) || (organ in H.internal_organs))
 			qdel(organ)
