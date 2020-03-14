@@ -93,6 +93,19 @@
 /area/ishimura/upper/engineering/waste_tank_room
 	name = "\improper Waste Tank Temporary Storage"
 
+//------------------Escape Vehicles - Upper------------------//
+/area/shuttle/escape_pod1/station
+	name = "Escape Pod One"
+	area_flags = AREA_FLAG_RAD_SHIELDED
+
+/area/shuttle/escape_pod2/station
+	name = "Escape Pod Two"
+	area_flags = AREA_FLAG_RAD_SHIELDED
+
+/area/shuttle/escape_pod3/station
+	name = "Escape Pod Three"
+	area_flags = AREA_FLAG_RAD_SHIELDED
+
 //------------------Maintenance - Upper------------------//
 /area/ishimura/upper/maintenance
 	name = "\improper Maintenance"
@@ -428,6 +441,31 @@
 	name = "\improper Lower Engineering Port Substation"
 	icon_state = "port_engistation"
 
+//------------------Escape Vehicles - Lower------------------//
+//Pods
+/area/shuttle/escape_pod4/station
+	name = "Escape Pod Four"
+	area_flags = AREA_FLAG_RAD_SHIELDED
+
+/area/shuttle/escape_pod5/station
+	name = "Escape Pod Five"
+	area_flags = AREA_FLAG_RAD_SHIELDED
+
+/area/shuttle/escape_pod6/station
+	name = "Escape Pod Six"
+	area_flags = AREA_FLAG_RAD_SHIELDED
+
+/area/shuttle/escape_pod7/station
+	name = "Escape Pod Seven"
+	area_flags = AREA_FLAG_RAD_SHIELDED
+
+/area/shuttle/escape_pod8/station
+	name = "Escape Pod Eight"
+	area_flags = AREA_FLAG_RAD_SHIELDED
+
+/area/shuttle/escape_pod9/station
+	name = "Escape Pod Nine"
+	area_flags = AREA_FLAG_RAD_SHIELDED
 //------------------Maintenance------------------//
 /area/ishimura/lower/maintenance
 	name = "\improper Maintenance"
