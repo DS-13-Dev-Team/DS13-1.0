@@ -11,6 +11,7 @@
 	var/heal_burn = 0
 	var/animal_heal = 3
 	var/apply_sounds
+	item_flags = ITEM_FLAG_NO_BLUDGEON
 
 /obj/item/stack/medical/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if (!istype(M))

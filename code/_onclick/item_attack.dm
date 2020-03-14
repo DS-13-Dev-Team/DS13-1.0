@@ -40,8 +40,9 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /mob/living/attackby(obj/item/I, mob/user)
 	if(!ismob(user))
 		return 0
-	if(can_operate(src,user) && I.do_surgery(src,user)) //Surgery
-		return 1
+	if(can_operate(src,user))
+		if (I.do_surgery(src,user) || (user.a_intent == I_HELP && !(I.item_flags & ITEM_FLAG_NO_BLUDGEON))) //Surgery
+			return TRUE
 	return I.attack(src, user, user.zone_sel.selecting)
 
 /mob/living/carbon/human/attackby(obj/item/I, mob/user)
