@@ -243,4 +243,4 @@
 	play_species_audio(src, SOUND_SPEECH, VOLUME_MID, 1, 3)
 
 /datum/species/necromorph/ubermorph/make_scary(mob/living/carbon/human/H)
-	H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though
+	//H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though

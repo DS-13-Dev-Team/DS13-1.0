@@ -150,4 +150,4 @@
 	return ..()
 
 /datum/species/necromorph/slasher/twitcher/make_scary(mob/living/carbon/human/H)
-	H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though
+	//H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though

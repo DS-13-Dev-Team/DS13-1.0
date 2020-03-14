@@ -168,7 +168,7 @@
 	make_scary(H)
 
 /datum/species/necromorph/proc/make_scary(mob/living/carbon/human/H)
-	H.set_traumatic_sight(TRUE) //All necrmorphs are scary. Some are more scary than others though
+	//H.set_traumatic_sight(TRUE) //All necrmorphs are scary. Some are more scary than others though
 
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
