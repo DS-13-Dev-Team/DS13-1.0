@@ -71,7 +71,7 @@
 	hitsound = WORKSOUND_CHAINSAW
 	worksound = WORKSOUND_CHAINSAW
 	force = WEAPON_FORCE_HARMLESS
-	switched_on_force = WEAPON_FORCE_DANGEROUS
+	switched_on_force = WEAPON_FORCE_DANGEROUS * 1.15
 	matter = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 3000)
 	tool_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20)
 	max_upgrades = 4
