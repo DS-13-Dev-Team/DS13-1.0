@@ -36,7 +36,7 @@
 	req_one_access = null
 	req_access = list(access_bearcat)
 
-/obj/structure/closet/secure_closet/freezer/fridge/bearcat
+/obj/structure/closet/secure_closet/freezer/bearcat
 	req_one_access = null
 	req_access = list(access_bearcat)
 

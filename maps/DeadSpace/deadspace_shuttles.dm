@@ -68,6 +68,146 @@
 	base_area = /area/ishimura/lower/cargo/bay
 	base_turf = /turf/simulated/floor/plating
 
+//////// ESCAPE SHUTTLES/PODS \\\\\\\\
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod
+	category = /datum/shuttle/autodock/ferry/escape_pod/ishimurapod
+	sound_takeoff = 'sound/effects/rocket.ogg'
+	sound_landing = 'sound/effects/rocket_backwards.ogg'
+	var/number
+
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/New()
+	name = "Escape Pod [number]"
+	dock_target = "escape_pod_[number]"
+	arming_controller = "escape_pod_[number]_berth"
+	waypoint_station = "escape_pod_[number]_start"
+	landmark_transition = "escape_pod_[number]_internim"
+	waypoint_offsite = "escape_pod_[number]_out"
+	..()
+
+/obj/effect/shuttle_landmark/escape_pod/
+	var/number
+
+/obj/effect/shuttle_landmark/escape_pod/start
+	name = "Docked"
+
+/obj/effect/shuttle_landmark/escape_pod/start/New()
+	landmark_tag = "escape_pod_[number]_start"
+	docking_controller = "escape_pod_[number]_berth"
+	..()
+
+/obj/effect/shuttle_landmark/escape_pod/transit
+	name = "In transit"
+
+/obj/effect/shuttle_landmark/escape_pod/transit/New()
+	landmark_tag = "escape_pod_[number]_internim"
+	..()
+
+/obj/effect/shuttle_landmark/escape_pod/out
+	name = "Escaped"
+
+/obj/effect/shuttle_landmark/escape_pod/out/New()
+	landmark_tag = "escape_pod_[number]_out"
+	..()
+
+//PODS\\
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod1
+	warmup_time = 10
+	shuttle_area = /area/shuttle/escape_pod1/station
+	number = 1
+/obj/effect/shuttle_landmark/escape_pod/start/pod1
+	number = 1
+/obj/effect/shuttle_landmark/escape_pod/out/pod1
+	number = 1
+/obj/effect/shuttle_landmark/escape_pod/transit/pod1
+	number = 1
+
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod2
+	warmup_time = 10
+	shuttle_area = /area/shuttle/escape_pod2/station
+	number = 2
+/obj/effect/shuttle_landmark/escape_pod/start/pod2
+	number = 2
+/obj/effect/shuttle_landmark/escape_pod/out/pod2
+	number = 2
+/obj/effect/shuttle_landmark/escape_pod/transit/pod2
+	number = 2
+
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod3
+	warmup_time = 10
+	shuttle_area = /area/shuttle/escape_pod3/station
+	number = 3
+/obj/effect/shuttle_landmark/escape_pod/start/pod3
+	number = 3
+/obj/effect/shuttle_landmark/escape_pod/out/pod3
+	number = 3
+/obj/effect/shuttle_landmark/escape_pod/transit/pod3
+	number = 3
+
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod4
+	warmup_time = 10
+	shuttle_area = /area/shuttle/escape_pod4/station
+	number = 4
+/obj/effect/shuttle_landmark/escape_pod/start/pod4
+	number = 4
+/obj/effect/shuttle_landmark/escape_pod/out/pod4
+	number = 4
+/obj/effect/shuttle_landmark/escape_pod/transit/pod4
+	number = 4
+
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod5
+	warmup_time = 10
+	shuttle_area = /area/shuttle/escape_pod5/station
+	number = 5
+/obj/effect/shuttle_landmark/escape_pod/start/pod5
+	number = 5
+/obj/effect/shuttle_landmark/escape_pod/out/pod5
+	number = 5
+/obj/effect/shuttle_landmark/escape_pod/transit/pod5
+	number = 5
+
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod6
+	warmup_time = 10
+	shuttle_area = /area/shuttle/escape_pod6/station
+	number = 6
+/obj/effect/shuttle_landmark/escape_pod/start/pod6
+	number = 6
+/obj/effect/shuttle_landmark/escape_pod/out/pod6
+	number = 6
+/obj/effect/shuttle_landmark/escape_pod/transit/pod6
+	number = 6
+
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod7
+	warmup_time = 10
+	shuttle_area = /area/shuttle/escape_pod7/station
+	number = 7
+/obj/effect/shuttle_landmark/escape_pod/start/pod7
+	number = 7
+/obj/effect/shuttle_landmark/escape_pod/out/pod7
+	number = 7
+/obj/effect/shuttle_landmark/escape_pod/transit/pod7
+	number = 7
+
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod8
+	warmup_time = 10
+	shuttle_area = /area/shuttle/escape_pod8/station
+	number = 8
+/obj/effect/shuttle_landmark/escape_pod/start/pod8
+	number = 8
+/obj/effect/shuttle_landmark/escape_pod/out/pod8
+	number = 8
+/obj/effect/shuttle_landmark/escape_pod/transit/pod8
+	number = 8
+
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod9
+	warmup_time = 10
+	shuttle_area = /area/shuttle/escape_pod9/station
+	number = 9
+/obj/effect/shuttle_landmark/escape_pod/start/pod9
+	number = 9
+/obj/effect/shuttle_landmark/escape_pod/out/pod9
+	number = 9
+/obj/effect/shuttle_landmark/escape_pod/transit/pod9
+	number = 9
 
 //////// ERT SHUTTLES \\\\\\\\
 

@@ -300,56 +300,6 @@
 	icon_state = "shuttle"
 	name = "\improper Transport Shuttle Centcom"
 
-//torch large pods
-/area/shuttle/escape_pod6/station
-	name = "Escape Pod One"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod7/station
-	name = "Escape Pod Two"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod8/station
-	name = "Escape Pod Three"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod9/station
-	name = "Escape Pod Four"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod10/station
-	name = "Escape Pod Five"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod11/station
-	name = "Escape Pod Six"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-//torch small pods
-/area/shuttle/escape_pod12/station
-	name = "Escape Pod Seven"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod13/station
-	name = "Escape Pod Eight"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod14/station
-	name = "Escape Pod Nine"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod15/station
-	name = "Escape Pod Ten"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod16/station
-	name = "Escape Pod Eleven"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod17/station
-	name = "Escape Pod Twelve"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
 //Charon
 
 /area/exploration_shuttle/
