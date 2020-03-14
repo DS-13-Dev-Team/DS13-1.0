@@ -31,6 +31,8 @@
 
 	forceMove(T)
 
+	PushClickHandler(/datum/click_handler/signal)
+
 //Joining and leaving
 //-------------------------------
 /mob/observer/ghost/verb/join_marker_verb()
@@ -82,6 +84,10 @@
 	set category = "Necromorph"
 	set desc = "Take control of a necromorph vessel"
 
+	if (!istype(L))
+		to_chat(src, SPAN_DANGER("That can't be posessed!"))
+		return
+
 	if (!L.is_necromorph())
 		to_chat(src, SPAN_DANGER("You can only posess necromorph units."))
 		return
@@ -131,6 +137,7 @@
 /mob/observer/eye/signal/Login()
 	.=..()
 	SSnecromorph.necromorph_players[key] = src
+	//client.show_popup_menus = FALSE	//TODO: Figure out a way to not need this
 
 	spawn(1)	//Prevents issues when downgrading from master
 		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
@@ -180,3 +187,18 @@
 
 
 
+
+
+/*
+	Interaction
+*/
+/datum/click_handler/signal
+
+/datum/click_handler/signal/OnLeftClick(var/atom/A, var/params)
+	return A.attack_signal(user)
+
+/datum/click_handler/signal/OnShiftClick(var/atom/A, var/params)
+	return user.examinate(A)
+
+/atom/proc/attack_signal(var/mob/observer/eye/signal/user)
+	return TRUE
