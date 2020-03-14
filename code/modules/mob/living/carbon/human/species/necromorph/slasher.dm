@@ -11,7 +11,7 @@
 	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	total_health = 70
-	biomass = 70
+	biomass = 60
 	mass = 70
 
 	biomass_reclamation_time	=	7.5 MINUTES
@@ -174,7 +174,7 @@
 	set category = "Abilities"
 
 
-	.= charge_attack(A, _delay = 1.25 SECONDS, _speed = 4.5, _lifespan = 6 SECONDS)
+	.= charge_attack(A, _delay = 1 SECONDS, _speed = 5.5, _lifespan = 6 SECONDS)
 	if (.)
 		var/mob/H = src
 		if (istype(H))
@@ -193,7 +193,7 @@
 	set category = "Abilities"
 
 
-	.= charge_attack(A, _delay = 1 SECONDS, _speed = 5.5, _lifespan = 6 SECONDS)
+	.= charge_attack(A, _delay = 0.75 SECONDS, _speed = 6.5, _lifespan = 6 SECONDS)
 	if (.)
 		var/mob/H = src
 		if (istype(H))
