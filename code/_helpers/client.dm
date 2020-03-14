@@ -66,10 +66,8 @@
 	if (pixel_x != offset.x || pixel_y != offset.y) //If the values already match the target, don't interrupt the animation by repeating it
 		.=TRUE //Offset has changed, return true
 		var/saccade_time = SACCADE_BASE_SPEED / text2num(get_preference_value(/datum/client_preference/saccade_speed))
-		world << "Saccade time before dist [saccade_time]"
 		var/saccade_distance = sqrt((get_view_length()**2)*2)	//Pythagoras helps us find the distance of the saccade. Hypotenuse = square root of A squared + B squared
 		saccade_time *= saccade_distance
-		world << "Saccade dist	[saccade_distance]	Time After:[saccade_time]"
 		animate(src, pixel_x = offset.x, pixel_y = offset.y, time = saccade_time, easing = SINE_EASING)
 
 
