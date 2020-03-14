@@ -8,3 +8,5 @@
 #define KEY_MIDDLE	/datum/click_handler/modifier/middle
 #define KEY_CTRLALT	/datum/click_handler/modifier/ctrlalt
 #define KEY_CTRLSHIFT	/datum/click_handler/modifier/ctrlshift
+
+#define SACCADE_BASE_SPEED	0.45	//Time in deciseconds to move the camera over one tile
