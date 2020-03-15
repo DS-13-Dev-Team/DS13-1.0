@@ -45,7 +45,6 @@
 
 
 /datum/click_handler/rmb_aim/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
-	var/list/modifiers = params2list(params)
 	over_object = resolve_world_target(over_object, params)
 	user.face_atom(over_object)
 	return TRUE

@@ -230,7 +230,6 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 //In the case of drag events we should always return true, incase there are multiple drag handlers in the sta
 /datum/click_handler/fullauto/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
-	var/list/modifiers = params2list(params)
 	over_object = resolve_world_target(over_object, params)
 	if (over_object && firing)
 		target = over_object
