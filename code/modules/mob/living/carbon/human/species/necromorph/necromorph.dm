@@ -76,7 +76,7 @@
 	//It stores the starting max health values of each limb this necromorph has
 	//It is an associative list in the format organ_tag = initial health
 
-	var/torso_damage_mult	=	0.3
+	var/torso_damage_mult	=	0.25
 	/*
 		For the purpose of determining whether or not the necromorph has taken enough damage to be killed:
 			Damage to the chest and groin is treated as being multiplied by this,
