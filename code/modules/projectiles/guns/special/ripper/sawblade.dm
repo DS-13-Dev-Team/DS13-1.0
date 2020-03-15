@@ -25,10 +25,10 @@
 	desc = "Oh god, run, RUN!"
 	damage_type = BRUTE
 	//The compile time damage var is only used for blade launch mode. It will be replaced with a calculated value in remote control mode
-	damage = 30
+	damage = 35
 
 	//How much Damage Per Second is dealt to targets the blade hits in remote control mode. This is broken up into many small hits based on tick interval
-	var/dps	=	30
+	var/dps	=	27
 	check_armour = "melee" //Its a cutting blade, melee armor helps most
 	dispersion = 0
 	icon = 'icons/effects/projectiles.dmi'
@@ -102,8 +102,8 @@
 
 //The advanced version. A bit more damage, a LOT more durability
 /obj/item/projectile/sawblade/diamond
-	damage = 40
-	dps = 40
+	damage = 50
+	dps = 36
 	health = DIAMONDBLADE_HEALTH
 	name = "diamond blade"
 	desc = "glittering death approaches"
