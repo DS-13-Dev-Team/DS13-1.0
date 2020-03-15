@@ -49,7 +49,6 @@
 
 
 //////// SUPPLY ELEVATOR \\\\\\\\
-
 /datum/shuttle/autodock/ferry/supply/drone
 	name = "Supply Drone"
 	location = 1
@@ -120,7 +119,7 @@
 	number = 1
 /obj/effect/shuttle_landmark/escape_pod/transit/pod1
 	number = 1
-
+/*
 /datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod2
 	warmup_time = 10
 	shuttle_area = /area/shuttle/escape_pod2/station
@@ -208,6 +207,7 @@
 	number = 9
 /obj/effect/shuttle_landmark/escape_pod/transit/pod9
 	number = 9
+*/
 
 //////// ERT SHUTTLES \\\\\\\\
 
@@ -234,6 +234,7 @@
 /obj/effect/shuttle_landmark/deliverance/landing
 	name = "Ishimura Hangar #2"
 	landmark_tag = "deliverance_landing"
+	base_turf = /turf/simulated/floor/plating
 
 /datum/shuttle/autodock/multi/antag/kellion
 	name = "Kellion"
@@ -258,6 +259,7 @@
 /obj/effect/shuttle_landmark/kellion/landing
 	name = "Ishimura Hangar #3"
 	landmark_tag = "kellion_landing"
+	base_turf = /turf/simulated/floor/plating
 
 /datum/shuttle/autodock/multi/antag/valor
 	name = "Valor"
@@ -274,6 +276,7 @@
 /obj/effect/shuttle_landmark/valor/start
 	name = "Space"
 	landmark_tag = "valor_start"
+	base_turf = /turf/simulated/floor/plating
 
 /obj/effect/shuttle_landmark/valor/transition
 	name = "In transit"
@@ -282,3 +285,4 @@
 /obj/effect/shuttle_landmark/valor/landing
 	name = "Ishimura Hangar #1"
 	landmark_tag = "valor_landing"
+	base_turf = /turf/simulated/floor/plating
