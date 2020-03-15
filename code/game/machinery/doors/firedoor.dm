@@ -22,7 +22,8 @@
 	open_layer = BELOW_DOOR_LAYER
 	closed_layer = ABOVE_WINDOW_LAYER
 
-	maxhealth = 150
+	maxhealth = 50
+	min_force = 12
 
 	//These are frequenly used with windows, so make sure zones can pass.
 	//Generally if a firedoor is at a place where there should be a zone boundery then there will be a regular door underneath it.
@@ -144,6 +145,9 @@
 		if(A.fire || A.air_doors_activated)
 			alarmed = 1
 
+	if (check_unarmed_force(user))
+		return
+
 	//Firelock confirmation window removed. It is unimmersive HRP nonsense which doesn't belong here
 	//Also, necromorphs can't read warning labels
 
@@ -157,10 +161,7 @@
 	if(alarmed && density && lockdown && !allowed(user))
 		to_chat(user, "<span class='warning'>Access denied. Please wait for authorities to arrive, or for the alert to clear.</span>")
 		return
-	else
-		user.visible_message("<span class='notice'>\The [src] [density ? "open" : "close"]s for \the [user].</span>",\
-		"\The [src] [density ? "open" : "close"]s.",\
-		"You hear a beep, and a door opening.")
+
 
 	var/needs_to_close = 0
 	if(density)
@@ -338,8 +339,9 @@
 	return
 
 /obj/machinery/door/firedoor/close()
+
 	latetoggle()
-	return ..()
+	.= ..()
 
 /obj/machinery/door/firedoor/open(var/forced = 0)
 	if(hatch_open)
