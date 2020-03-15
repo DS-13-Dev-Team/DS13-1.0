@@ -215,6 +215,7 @@
 		return
 
 	SSnecromorph.marker.add_biomass_source(H, biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
+	GLOB.necrovision.remove_source(H)
 
 //How much damage has this necromorph taken?
 //We'll loop through each organ tag in the species' initial health values list, which should definitely be populated already, and try to get the organ for each
