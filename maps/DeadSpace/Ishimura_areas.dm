@@ -5,6 +5,36 @@
 /area/ishimura/hull
 	name = "\improper Ishimura Hull"
 
+/area/supply/dock
+	name = "Supply Shuttle"
+	icon_state = "shuttle3"
+	requires_power = 0
+
+// Thunderdome
+
+/area/tdome
+	name = "\improper Thunderdome"
+	icon_state = "thunder"
+	requires_power = 0
+	dynamic_lighting = 0
+	sound_env = ARENA
+
+/area/tdome/tdome1
+	name = "\improper Thunderdome (Team 1)"
+	icon_state = "green"
+
+/area/tdome/tdome2
+	name = "\improper Thunderdome (Team 2)"
+	icon_state = "yellow"
+
+/area/tdome/tdomeadmin
+	name = "\improper Thunderdome (Admin.)"
+	icon_state = "purple"
+
+/area/tdome/tdomeobserve
+	name = "\improper Thunderdome (Observer.)"
+	icon_state = "purple"
+
 //---------------------------------------------------UPPER--AREAS---------------------------------------------------//
 /area/ishimura/upper
 	name = "\improper Upper Deck"
