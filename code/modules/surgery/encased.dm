@@ -18,7 +18,6 @@
 		return 0
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	world << "Affected openness = [affected.how_open()] retracted: [SURGERY_RETRACTED]"
 	return affected && !BP_IS_ROBOTIC(affected) && !BP_IS_CRYSTAL(affected) && affected.encased && affected.how_open() >= SURGERY_RETRACTED
 
 //////////////////////////////////////////////////////////////////
