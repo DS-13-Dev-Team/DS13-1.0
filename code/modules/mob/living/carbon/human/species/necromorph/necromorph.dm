@@ -17,6 +17,7 @@
 	var/biomass_reclamation_time	=	10 MINUTES	//How long does it take for all of the reclaimed biomass to return to the marker? This is a pseudo respawn timer
 	var/spawn_method = SPAWN_POINT	//What method of spawning from marker should be used? At a point or manual placement? check _defines/necromorph.dm
 	var/major_vessel = TRUE	//If true, we can fill this mob from the necroqueue
+	var/spawner_spawnable = FALSE	//If true, a nest can be upgraded to autospawn this unit
 
 	strength    = STR_HIGH
 	show_ssd = "dead" //If its not moving, it looks like a corpse
