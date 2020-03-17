@@ -27,9 +27,9 @@
 	var/max_spawns = 1
 
 	//If we're currently growing a new necromorph, when did we start?
-	var/growth_started
+	var/growth_started = 0
 	//When will/did current/last growth finish?
-	var/growth_end
+	var/growth_end = 0
 
 	var/upgrade_level = 1
 
@@ -106,18 +106,18 @@
 		if (N.spawner_spawnable)
 			spawn_possibilities["[N.name]    [N.biomass]"] = N
 
-	spawn_possibilities.Add(CANCEL)
-
 	var/choice = input(user, "You can upgrade this nest to automatically respawn a specified necromorph unit.\n\
 	 This will cost the same biomass as that necromorph would normally cost to spawn, and once the creature dies, it will take the same time to grow another as that creature would normally take to be reabsorbed\n\
 	  You will get the biomass back if the nest is destroyed\n\
 	  \n\
 	  Signal players can click the nest to spawn the creature when it is available.", "Spawner Upgrade Menu") as null|anything in spawn_possibilities
 
-	if (choice == CANCEL)
+	if (!choice)
 		return
 
 	var/datum/species/necromorph/N = spawn_possibilities[choice]
+	if (!istype(N))
+		return
 	//Right, lets deduct the biomass cost
 	if (!SSnecromorph.marker.pay_biomass("Nest upgrade [x],[y],[z]", N.biomass * upgrade_multipliers[upgrade_level]))
 		to_chat(user, SPAN_WARNING("Oh no, you don't have enough biomass for the upgrade!"))
@@ -138,8 +138,7 @@
 		return
 
 	if (world.time > growth_end)//No current growth
-		if (total_spawns() >= max_spawns)
-			start_growth()	//We have enough free spawns to start a new growth
+		start_growth()	//We have enough free spawns to start a new growth
 		return
 
 	deltimer(growth_timer_handle)
@@ -164,6 +163,7 @@
 		return	//This should never happen
 	deltimer(growth_timer_handle)
 	spawns_ready += 1
+	growth_end = world.time
 
 	var/message = "There "
 	if (spawns_ready == 1)
