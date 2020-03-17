@@ -1,0 +1,1 @@
+#define CANCEL	"\[-Cancel-\]"

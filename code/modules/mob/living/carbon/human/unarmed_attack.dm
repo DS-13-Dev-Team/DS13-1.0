@@ -180,7 +180,7 @@ var/global/list/sparring_attack_cache = list()
 		setClickCooldown(u_attack.delay)
 		var/damage_done = target.hit(src, null, u_attack.damage*u_attack.structure_damage_mult) //TODO Later: Add in an attack flag for ignoring resistance?
 		u_attack.show_attack(src, target, null, damage_done)
-
+		return TRUE
 
 
 

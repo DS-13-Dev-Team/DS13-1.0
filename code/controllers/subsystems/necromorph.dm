@@ -63,9 +63,9 @@ SUBSYSTEM_DEF(necromorph)
 /*
 	Keeping track of last known locations of live humans
 */
-/datum/controller/subsystem/necromorph/proc/update_sighting(var/mob/living/AM)
+/datum/controller/subsystem/necromorph/proc/update_sighting(var/mob/living/AM, var/obj/structure/corruption_node/eye/spotter)
 	//We don't record dead mobs, remove them from this list
-	if (AM.stat == DEAD)
+	if (AM.stat == DEAD || QDELETED(AM))
 		sightings.Remove(AM)
 		return 0	//This is numerically zero, not just false
 
@@ -82,8 +82,19 @@ SUBSYSTEM_DEF(necromorph)
 	S.last_time = world.time
 	S.last_location = get_turf(AM)
 
+	var/difference = S.last_time - last_time
+
+	//Message all the necros with a useable jumplink
+	if (istype(spotter))
+		if (difference >= spotter.minimum_notify_delay)
+			for (var/key in SSnecromorph.necromorph_players)
+				var/mob/M = SSnecromorph.necromorph_players[key]
+				to_chat(M, SPAN_WARNING("[AM] detected at [jumplink_public(M, S.last_location)]"))
+
+
 	//We will return the difference between last and current time. Eyes may do something with this
-	return (S.last_time - last_time)
+	return (difference)
+
 
 
 

@@ -943,3 +943,12 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 	var/icon/loaded = new(icon_file)	//Load the specified icon file into memory to use as a container
 	loaded.Scale(new_x, new_y)
 	return loaded
+
+
+/image/proc/rotate_random(var/cardinal = FALSE)
+	var/newrot
+	if (cardinal)
+		newrot = pick(list(0, 90, 180, 270))
+	else
+		newrot = rand(0, 360)
+	transform = turn(transform, newrot)

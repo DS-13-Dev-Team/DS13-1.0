@@ -37,15 +37,17 @@
 	//Alright, the force is strong enough to push us, lets see how far!
 	var/pushdist = strength / pushmass
 
+
 	//And to avoid small objects being launched crazy distances, lets softcap this to roughly simulate drag
-	pushdist = soft_cap(pushdist, 1, 1, 0.85)
+	pushdist = soft_cap(pushdist, 1, 1, 0.92)
+
 
 	var/turf/pushtarget = get_turf_in_direction(src, direction, pushdist)
 
 	spawn()
 		throw_at(pushtarget, pushdist, 1, null)
 
-/mob/living/var/knockdown_threshold_factor = 2	//Requires a force at least this * mass to knock down this mob
+/mob/living/var/knockdown_threshold_factor = 1.5	//Requires a force at least this * mass to knock down this mob
 
 /mob/living/apply_impulse(var/direction, var/strength)
 	//First of all since living creatures are unpredictable, strength gets some random variance
@@ -66,7 +68,7 @@
 	Applies an impulse to this atom, originating from origin, to push it away from origin
 	Distance is optional, it will be calculated. But if specified, calculations
 */
-/atom/movable/proc/apply_push_impulse_from(var/atom/origin, var/strength, var/falloff_factor = 1)
+/atom/proc/apply_push_impulse_from(var/atom/origin, var/strength, var/falloff_factor = 1)
 	var/list/data = Vector2.DirMagBetween(origin, src)
 	var/vector2/direction = data["direction"]
 	var/distance = data["magnitude"]

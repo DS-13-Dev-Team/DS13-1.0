@@ -43,6 +43,7 @@
 
 /obj/structure/closet/Destroy()
 	dump_contents()
+	.=..()
 
 /obj/structure/closet/LateInitialize(mapload, ...)
 	var/list/will_contain = WillContain()

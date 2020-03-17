@@ -973,10 +973,6 @@ About the new airlock wires panel:
 	if(isWelder(item))
 		cut_verb = "cutting"
 		cut_sound = 'sound/items/Welder.ogg'
-	else if(istype(item,/obj/item/weapon/gun/energy/plasmacutter)) //They could probably just shoot them out, but who cares!
-		cut_verb = "cutting"
-		cut_sound = 'sound/items/Welder.ogg'
-		cut_delay *= 0.66
 	else if(istype(item,/obj/item/weapon/melee/energy/blade) || istype(item,/obj/item/weapon/melee/energy/sword))
 		cut_verb = "slicing"
 		cut_sound = "sparks"
@@ -1113,6 +1109,8 @@ About the new airlock wires panel:
 				to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
 			else if(brace)
 				to_chat(user, "<span class='notice'>The airlock's brace holds it firmly in place.</span>")
+			else if((stat & BROKEN) && !density)//Broken doors must be open, they cannot be forced closed
+				to_chat(user, "<span class='notice'>The [src] is too damaged to be closed!</span>")
 			else if (C.use_tool(user, src, WORKTIME_FAST, QUALITY_PRYING, FAILCHANCE_NORMAL))
 				if(density)
 					spawn(0)	open(1)
@@ -1192,6 +1190,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/set_broken()
 	src.p_open = 1
+	welded = 0
 	stat |= BROKEN
 	if (secured_wires)
 		lock()

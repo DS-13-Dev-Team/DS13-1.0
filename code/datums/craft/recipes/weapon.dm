@@ -119,3 +119,16 @@
 	list(CRAFT_STACK, /obj/item/stack/power_node, 1)
 	)
 
+
+/datum/craft_recipe/weapon/plasmacutter
+	name = "Plasma Cutter"
+	result = /obj/item/weapon/gun/energy/cutter/plasma
+	flags = CRAFT_ON_SURFACE
+	passive_steps = list(
+	list(CRAFT_PASSIVE, QUALITY_WORKBENCH, 1, 0)
+	)
+	time = 200
+	steps = list(
+	list(CRAFT_OBJECT, /obj/item/weapon/gun/energy/cutter),
+	list(CRAFT_STACK, /obj/item/stack/power_node, 1)
+	)

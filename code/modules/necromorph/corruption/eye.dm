@@ -11,14 +11,14 @@
 	desc = "It knows you. You cannot escape its gaze."
 	icon_state = "eye"
 	max_health = 25	//fragile
-	var/view_range = 14
+	var/view_range = 20
 	var/minimum_notify_delay = 3 MINUTES	//Minimum time that must pass between sightings before we resend notifications
 	scale = 1.6
 
 /obj/structure/corruption_node/eye/Initialize()
 	.=..()
 	if (!dummy)	//Don't do this stuff if its a dummy for placement preview
-		GLOB.necrovision.add_source(src)	//Add it as a vision source
+		GLOB.necrovision.add_source(src, TRUE, TRUE, chunk_update_radius = 2)	//Add it as a vision source
 
 		//Setup a trigger to track nearby mobs
 		var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/structure/corruption_node/eye/proc/nearby_movement, range = view_range)
@@ -28,18 +28,22 @@
 		set_light(1, 1, 8, 2, COLOR_NECRO_YELLOW)
 
 /obj/structure/corruption_node/eye/get_visualnet_tiles(var/datum/visualnet/network)
+
 	return turfs_in_view(view_range)
 
+
+/obj/structure/corruption_node/eye/proc/mark_turfs()
+	for (var/turf/T in turfs_in_view(view_range))
+		debug_mark_turf(T)
 
 /obj/structure/corruption_node/eye/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
 	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if (!H.is_necromorph())
-			var/delta = SSnecromorph.update_sighting(AM)
+			var/delta = SSnecromorph.update_sighting(AM, src)
 			if (delta > minimum_notify_delay)
 				to_chat(H, SPAN_NOTICE("A shiver runs down your spine. You are being watched."))
 				H.playsound_local(get_turf(H), get_sfx("hiss"), 50)
-				message_necromorphs(SPAN_WARNING("[H] detected at [jumplink(AM)]"))
 
 /obj/structure/corruption_node/eye/get_blurb()
 	. = "This node is effectively an organic camera. It massively increases the view range of the necrovision network by [view_range] tiles.<br><br>\

@@ -39,7 +39,7 @@
 	var/firing_cone = 80
 	var/firing_range = 4
 	var/damage = 45
-	var/force	=	200
+	var/force	=	350
 	var/falloff_factor = 0.9
 	var/effect_type = /obj/effect/effect/forceblast
 	var/windup_time = 0
@@ -48,7 +48,7 @@
 	firing_cone = 80
 	firing_range = 4
 	damage = 45	//Bear in mind that damage values are heavily affected by falloff. Even at pointblank range, they will never be as high as this number
-	force	=	200
+	force	=	350
 	falloff_factor = 0.7
 
 /*
@@ -58,8 +58,8 @@
 	firing_cone = 15
 	firing_range = 8
 	damage = 75
-	force	=	350
-	falloff_factor = 0.4
+	force	=	500
+	falloff_factor = 0.35
 	effect_type = /obj/effect/effect/forceblast_focus_spawner
 	windup_time = 1.5 SECONDS
 
@@ -83,6 +83,7 @@
 			continue	//Don't hit yourself!
 		var/distance = get_dist_euclidian(origin, T)	//Calculate distance and damage for things in this turf
 		var/turf_damage = force_falloff(damage, distance, falloff_factor)
+		T.apply_push_impulse_from(origin, force, falloff_factor)
 		for (var/atom/movable/AM in T)
 			AM.apply_push_impulse_from(origin, force, falloff_factor)	//Push the thing. This will shove objects, stagger/knockdown mobs
 			if (isliving(AM))

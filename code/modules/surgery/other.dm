@@ -100,7 +100,6 @@
 	allowed_tools = list(
 		/obj/item/weapon/tool/weldingtool = 80,
 		/obj/item/weapon/circular_saw = 60,
-		/obj/item/weapon/gun/energy/plasmacutter = 30
 		)
 
 	priority = 3

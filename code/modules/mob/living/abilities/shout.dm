@@ -2,6 +2,9 @@
 /mob/proc/shout()
 	set name = "Shout"
 	set category = "Abilities"
+	if (incapacitated(INCAPACITATION_KNOCKOUT))
+		return
+
 	if (check_audio_cooldown(SOUND_SHOUT))
 		if (play_species_audio(src, SOUND_SHOUT, VOLUME_HIGH, 1, 2))
 			src.Stun(2)
@@ -20,6 +23,9 @@
 /mob/proc/shout_long()
 	set name = "Scream"
 	set category = "Abilities"
+	if (incapacitated(INCAPACITATION_KNOCKOUT))
+		return
+
 	if (check_audio_cooldown(SOUND_SHOUT_LONG))
 		if (play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_HIGH, 1, 2))
 			src.Stun(2)

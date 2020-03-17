@@ -4,7 +4,7 @@
 	var/active_throwforce
 	sharp = 0
 	edge = 0
-	armor_penetration = 50
+	armor_penetration = 5
 	atom_flags = ATOM_FLAG_NO_BLOOD
 	item_flags= ITEM_FLAG_NO_EMBED
 
@@ -173,7 +173,7 @@
 	desc = "A concentrated beam of energy in the shape of a blade. Very stylish... and lethal."
 	icon_state = "blade"
 	force = 40 //Normal attacks deal very high damage - about the same as wielded fire axe
-	armor_penetration = 100
+	armor_penetration = 8
 	sharp = 1
 	edge = 1
 	anchored = 1    // Never spawned outside of inventory, should be fine.

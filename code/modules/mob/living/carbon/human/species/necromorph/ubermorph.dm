@@ -109,6 +109,7 @@
 	damage = 20
 	airlock_force_power = 5
 	airlock_force_speed = 2.5
+	structure_damage_mult = 2.5	//Wrecks obstacles
 	shredding = TRUE //Better environment interactions, even if not sharp
 
 /*
@@ -137,12 +138,16 @@
 /mob/living/carbon/human/proc/ubermorph_battlecry()
 	set name = "Battle Cry"
 	set category = "Abilities"
-	set desc = "Grants a 30% move and attackspeed buff to other nearby necromorphs. Doesn't affect yourself, HK: Ctrl+Alt+Click"
+	set desc = "Grants a 30% move and attackspeed buff to other nearby necromorphs, damages non necromorphs. HK: Ctrl+Alt+Click"
 
 	.=frenzy_shout_ability(60 SECONDS, 0.3, 30 SECONDS, FACTION_NECROMORPH, 9)
 	if (.)
 		play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_MAX, 1, 6)//Very loud, heard far away
 		shake_camera(src, 6, 4)
+
+		for (var/mob/living/L in view(species.view_range, src))
+			if (!L.is_necromorph() && L.stat != DEAD)
+				L.take_overall_damage(15)
 
 		//Lets do some cool effects
 		var/obj/effect/effect/expanding_circle/EC = new /obj/effect/effect/expanding_circle(loc, 1.5, 1.5 SECOND,"#ff0000")
@@ -166,7 +171,7 @@
 	set desc = "A shortrange charge which causes heavy internal damage to one victim. Often fatal. HK: Alt+Click:"
 
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
-	var/datum/extension/charge/EC = get_extension(src, /datum/extension/charge/lunge)
+	var/datum/extension/charge/EC = get_extension(src, /datum/extension/charge)
 	if(istype(EC))
 		if (EC.status == CHARGE_STATE_COOLDOWN)
 			to_chat(src, "[EC.name] is cooling down. You can use it again in [EC.get_cooldown_time() /10] seconds")
@@ -186,7 +191,7 @@
 	play_species_audio(src, SOUND_SHOUT, VOLUME_MID, 1, 3)
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/charge/lunge, A, 8, 2 SECONDS, 3, FALSE, TRUE, 1, 0, 0.75 SECONDS)
+	set_extension(src, /datum/extension/charge/lunge, A, 8, 2 SECONDS, 3, FALSE, TRUE, 1, 0, 0.5 SECONDS)
 
 	return TRUE
 

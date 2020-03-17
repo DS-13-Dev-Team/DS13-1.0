@@ -657,9 +657,7 @@ var/list/global/slot_flags_enumeration = list(
 		I.showoff(src)
 
 /*
-For zooming with scope or binoculars. This is called from
-modules/mob/mob_movement.dm if you move you will be zoomed out
-modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
+THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 */
 //Looking through a scope or binoculars should /not/ improve your periphereal vision. Still, increase viewsize a tiny bit so that sniping isn't as restricted to NSEW
 /obj/item/proc/zoom(mob/user, var/tileoffset = 14,var/viewsize = 9) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
@@ -683,7 +681,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 	if(user.hud_used.hud_shown)
 		user.toggle_zoom_hud()	// If the user has already limited their HUD this avoids them having a HUD when they zoom in
-	user.client.view = viewsize
+	//user.client.view = viewsize
 	zoom = 1
 
 	var/viewoffset = WORLD_ICON_SIZE * tileoffset
@@ -732,7 +730,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(!user.client)
 		return
 
-	user.client.view = world.view
+	//user.client.view = world.view
 	if(!user.hud_used.hud_shown)
 		user.toggle_zoom_hud()
 

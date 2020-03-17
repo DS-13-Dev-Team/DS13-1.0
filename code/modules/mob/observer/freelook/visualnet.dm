@@ -110,7 +110,7 @@
 /datum/visualnet/proc/major_chunk_change(var/atom/source)
 	for_all_chunks_in_range(source, /datum/chunk/proc/visibility_changed, list())
 
-/datum/visualnet/proc/add_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE)
+/datum/visualnet/proc/add_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE, var/chunk_update_radius = 1)
 	if(!(source && is_type_in_list(source, valid_source_types)))
 		log_visualnet("Was given an unhandled source", source)
 		return FALSE
@@ -119,18 +119,18 @@
 	sources += source
 	GLOB.moved_event.register(source, src, /datum/visualnet/proc/source_moved)
 	GLOB.destroyed_event.register(source, src, /datum/visualnet/proc/remove_source)
-	for_all_chunks_in_range(source, /datum/chunk/proc/add_source, list(source))
+	for_all_chunks_in_range(source, /datum/chunk/proc/add_source, list(source), update_radius = chunk_update_radius)
 	if(update_visibility)
 		update_visibility(source, opacity_check)
 	return TRUE
 
-/datum/visualnet/proc/remove_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE)
+/datum/visualnet/proc/remove_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE, var/chunk_update_radius = 1)
 	if(!sources.Remove(source))
 		return FALSE
 
 	GLOB.moved_event.unregister(source, src, /datum/visualnet/proc/source_moved)
 	GLOB.destroyed_event.unregister(source, src, /datum/visualnet/proc/remove_source)
-	for_all_chunks_in_range(source, /datum/chunk/proc/remove_source, list(source))
+	for_all_chunks_in_range(source, /datum/chunk/proc/remove_source, list(source), update_radius = chunk_update_radius)
 	if(update_visibility)
 		update_visibility(source, opacity_check)
 	return TRUE
@@ -149,21 +149,22 @@
 	if(new_turf)
 		for_all_chunks_in_range(source, /datum/chunk/proc/add_source, list(source), new_turf)
 
-/datum/visualnet/proc/for_all_chunks_in_range(var/atom/source, var/proc_call, var/list/proc_args, var/turf/T)
+
+/datum/visualnet/proc/for_all_chunks_in_range(var/atom/source, var/proc_call, var/list/proc_args, var/turf/T, var/update_radius = 0)
+
 	T = T ? T : get_turf(source)
 	if(!T)
 		return
 
-	var/x1 = max(0, T.x - 8) & ~0xf
-	var/y1 = max(0, T.y - 8) & ~0xf
-	var/x2 = min(world.maxx, T.x + 8) & ~0xf
-	var/y2 = min(world.maxy, T.y + 8) & ~0xf
+	var/x1 = round(max(0, T.x - (8 + (16*update_radius))), 16)// & ~0xf
+	var/y1 = round(max(0, T.y - (8 + (16*update_radius))), 16)// & ~0xf
+	var/x2 = round(min(world.maxx, T.x + (8 + (16*update_radius))), 16)// & ~0xf
+	var/y2 = round(min(world.maxy, T.y + (8 + (16*update_radius))), 16)// & ~0xf
 
 	for(var/x = x1; x <= x2; x += 16)
 		for(var/y = y1; y <= y2; y += 16)
-			if(is_chunk_generated(x, y, T.z))
-				var/datum/chunk/c = get_chunk(x, y, T.z)
-				call(c, proc_call)(arglist(proc_args))
+			var/datum/chunk/c = get_chunk(x, y, T.z)
+			call(c, proc_call)(arglist(proc_args))
 
 // Debug verb for VVing the chunk that the turf is in.
 /turf/proc/view_chunk()

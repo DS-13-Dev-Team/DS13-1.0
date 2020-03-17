@@ -38,7 +38,8 @@
 		/obj/item/weapon/storage/ore,
 		/obj/item/weapon/shovel,
 		/obj/item/weapon/tool/saw/plasma,
-		/obj/item/device/flashlight/maglight
+		/obj/item/device/flashlight/maglight,
+		/obj/item/weapon/gun/energy/cutter
 )
 
 /obj/structure/closet/secure_closet/planet_cracker
@@ -61,3 +62,10 @@
 		/obj/item/weapon/tool/saw/plasma,
 		/obj/item/device/flashlight/maglight
 	)
+
+
+/obj/structure/closet/secure_closet/planet_cracker/New(var/atom/location)
+	if (prob(20))	//Not all planet crackers get a cutter
+		new /obj/item/weapon/gun/energy/cutter(src)
+
+	.=..()

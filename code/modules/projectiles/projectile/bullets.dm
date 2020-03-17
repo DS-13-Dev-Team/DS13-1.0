@@ -141,11 +141,10 @@
 /obj/item/projectile/bullet/pistol/strong //matebas
 	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
 	damage = 60 //.50AE
-	armor_penetration = 30
 
 /obj/item/projectile/bullet/pistol/strong/revolver //revolvers
 	damage = 50 //Revolvers get snowflake bullets, to keep them relevant
-	armor_penetration = 20
+
 
 /obj/item/projectile/bullet/pistol/rubber //"rubber" bullets
 	name = "rubber bullet"
@@ -161,7 +160,6 @@
 	name = "slug"
 	fire_sound = 'sound/weapons/gunshot/shotgun.ogg'
 	damage = 55
-	armor_penetration = 20
 
 /obj/item/projectile/bullet/shotgun/beanbag		//because beanbags are not bullets
 	name = "beanbag"
@@ -170,7 +168,6 @@
 	agony = 60
 	embed = 0
 	sharp = 0
-	armor_penetration = 0
 
 //Should do about 80 damage at 1 tile distance (adjacent), and 50 damage at 3 tiles distance.
 //Overall less damage than slugs in exchange for more damage at very close range and more embedding
@@ -195,7 +192,7 @@
 /obj/item/projectile/bullet/rifle/a762
 	fire_sound = 'sound/weapons/gunshot/gunshot2.ogg'
 	damage = 35
-	armor_penetration = 30
+	armor_penetration = 3
 
 /obj/item/projectile/bullet/rifle/a145
 	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
@@ -203,14 +200,14 @@
 	stun = 3
 	weaken = 3
 	penetrating = 5
-	armor_penetration = 80
+	armor_penetration = 8
 	hitscan = 1 //so the PTR isn't useless as a sniper weapon
 	penetration_modifier = 1.25
 
 /obj/item/projectile/bullet/rifle/a145/apds
 	damage = 75
 	penetrating = 6
-	armor_penetration = 95
+	armor_penetration = 15
 	penetration_modifier = 1.5
 
 /* Miscellaneous */
@@ -274,7 +271,6 @@
 	name = "micrometeor"
 	icon_state = "rock"
 	damage = 40
-	armor_penetration = 25
 	kill_count = 255
 
 /obj/item/projectile/bullet/rock/New()
