@@ -214,8 +214,8 @@
 	//We just died? Lets start getting absorbed by the marker
 	if (!SSnecromorph.marker)	//Gotta have one
 		return
-
-	SSnecromorph.marker.add_biomass_source(H, biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
+	if (H.biomass)
+		SSnecromorph.marker.add_biomass_source(H, H.biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
 	GLOB.necrovision.remove_source(H)
 
 //How much damage has this necromorph taken?

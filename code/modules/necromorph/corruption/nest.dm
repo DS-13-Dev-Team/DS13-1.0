@@ -211,6 +211,7 @@
 	var/mob/living/L = new spawner_species.mob_type(loc)
 	GLOB.death_event.register(L, src, /obj/structure/corruption_node/nest/proc/start_growth)
 	GLOB.destroyed_event.register(L, src, /obj/structure/corruption_node/nest/proc/start_growth)
+	L.biomass = 0	//This won't give anything when slain
 	return L
 
 /obj/structure/corruption_node/nest/attack_signal(var/mob/observer/eye/signal/user)
