@@ -441,7 +441,7 @@ This function completely restores a damaged organ to perfect condition.
 		I.remove_rejuv()
 	..()
 
-/obj/item/organ/external/proc/createwound(var/type = CUT, var/damage, var/surgical)
+/obj/item/organ/external/proc/createwound(var/type = CUT, var/damage, var/surgical, var/forced_type = null)
 
 	// Handle some status-based damage multipliers.
 	if(type == BRUISE && BP_IS_BRITTLE(src))
@@ -514,7 +514,9 @@ This function completely restores a damaged organ to perfect condition.
 				return W
 
 	//Creating wound
-	var/wound_type = get_wound_type(type, damage)
+	var/wound_type = forced_type
+	if (!wound_type)
+		wound_type = get_wound_type(type, damage)
 
 	if(wound_type)
 		var/datum/wound/W = new wound_type(damage, src)
@@ -1017,7 +1019,10 @@ obj/item/organ/external/proc/remove_clamps()
 		return
 	if(BP_IS_ROBOTIC(src))
 		return	//ORGAN_BROKEN doesn't have the same meaning for robot limbs
-	if((status & ORGAN_BROKEN) || !(limb_flags & ORGAN_FLAG_CAN_BREAK))
+	if((status & ORGAN_BROKEN))
+		return
+
+	if (!(limb_flags & ORGAN_FLAG_CAN_BREAK))
 		return
 
 	if(owner)
@@ -1287,16 +1292,14 @@ obj/item/organ/external/proc/remove_clamps()
 	. = 0
 	if(!incision)
 		return 0
-	var/smol_threshold = min_broken_damage * 0.4
-	var/beeg_threshold = min_broken_damage * 0.6
-	if(!incision.autoheal_cutoff == 0) //not clean incision
-		smol_threshold *= 1.5
-		beeg_threshold = max(beeg_threshold, min(beeg_threshold * 1.5, incision.damage_list[1])) //wounds can't achieve bigger
-	if(incision.damage >= smol_threshold) //smol incision
+
+	var/incision_threshold = min_broken_damage * DAMAGE_MULT_INCISION
+	var/retracted_threshold = min_broken_damage * DAMAGE_MULT_RETRACTED
+	if(incision.damage >= incision_threshold) //smol incision
 		. = SURGERY_OPEN
 	if(incision.damage >= beeg_threshold) //beeg incision
 		. = SURGERY_RETRACTED
-	if(. == SURGERY_RETRACTED && encased && (status & ORGAN_BROKEN))
+	if(. == SURGERY_RETRACTED && encased == ENCASED_OPEN)
 		. = SURGERY_ENCASED
 
 /obj/item/organ/external/proc/jostle_bone(force)

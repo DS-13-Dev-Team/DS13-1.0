@@ -18,11 +18,19 @@
 		return 0
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	world << "Affected openness = [affected.how_open()] retracted: [SURGERY_RETRACTED]"
 	return affected && !BP_IS_ROBOTIC(affected) && !BP_IS_CRYSTAL(affected) && affected.encased && affected.how_open() >= SURGERY_RETRACTED
 
 //////////////////////////////////////////////////////////////////
 //	ribcage sawing surgery step
 //////////////////////////////////////////////////////////////////
+/datum/surgery_step/open_encased/saw/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	.=..()
+	if (.)
+		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		if (affected.how_open() != SURGERY_RETRACTED)
+			return FALSE
+
 /datum/surgery_step/open_encased/saw
 	allowed_tools = list(
 	/obj/item/weapon/circular_saw = 100,
@@ -59,7 +67,7 @@
 
 	user.visible_message("<span class='notice'>[user] has cut [target]'s [affected.encased] open with \the [tool].</span>",		\
 	"<span class='notice'>You have cut [target]'s [affected.encased] open with \the [tool].</span>")
-	affected.fracture()
+	affected.encased = ENCASED_OPEN
 
 /datum/surgery_step/open_encased/saw/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 
