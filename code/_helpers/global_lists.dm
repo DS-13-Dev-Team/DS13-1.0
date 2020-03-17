@@ -14,6 +14,7 @@ var/global/list/joblist = list()					//list of all jobstypes, minus borg and AI
 
 //Languages/species/whitelist.
 var/global/list/all_species[0]
+GLOBAL_LIST_EMPTY(all_necromorph_species)
 var/global/list/all_languages[0]
 var/global/list/language_keys[0]					// Table of say codes for all languages
 var/global/list/whitelisted_species = list(SPECIES_HUMAN) // Species that require a whitelist check.
@@ -154,6 +155,9 @@ var/global/list/string_slot_flags = list(
 		S = new T
 		S.race_key = rkey //Used in mob icon caching.
 		all_species[S.name] = S
+
+		if (istype(S, /datum/species/necromorph))
+			GLOB.all_necromorph_species[S.name] = S
 
 		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
 			playable_species += S.name
