@@ -117,8 +117,8 @@
 
 /*
  * Circular Saw
- */
-/obj/item/weapon/circular_saw
+	Deprecated in favor of tool subtype version. See saws.dm
+/obj/item/weapon/tool/saw/circular
 	name = "circular saw"
 	desc = "For heavy duty cutting."
 	icon = 'icons/obj/surgery.dmi'
@@ -135,6 +135,7 @@
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
 	sharp = 1
 	edge = 1
+ */
 
 //misc, formerly from code/defines/weapons.dm
 /obj/item/weapon/bonegel

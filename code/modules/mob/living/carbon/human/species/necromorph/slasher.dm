@@ -21,6 +21,7 @@
 	pixel_offset_x = -8
 	single_icon = FALSE
 	evasion = 0	//No natural evasion
+	spawner_spawnable = TRUE
 
 	override_limb_types = list(
 	BP_L_ARM =  /obj/item/organ/external/arm/blade,
@@ -81,6 +82,7 @@
 	mass = 120
 	mob_size	= MOB_LARGE
 	bump_flag 	= HEAVY
+	spawner_spawnable = FALSE
 
 	icon_template = 'icons/mob/necromorph/slasher_enhanced.dmi'
 	icon_lying = "_lying"

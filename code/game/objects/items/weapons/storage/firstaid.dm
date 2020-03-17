@@ -141,7 +141,7 @@
 	can_hold = list(
 		/obj/item/weapon/bonesetter,
 		/obj/item/weapon/cautery,
-		/obj/item/weapon/circular_saw,
+		/obj/item/weapon/tool/saw/circular,
 		/obj/item/weapon/hemostat,
 		/obj/item/weapon/retractor,
 		/obj/item/weapon/scalpel,
@@ -155,7 +155,7 @@
 	startswith = list(
 		/obj/item/weapon/bonesetter,
 		/obj/item/weapon/cautery,
-		/obj/item/weapon/circular_saw,
+		/obj/item/weapon/tool/saw/circular,
 		/obj/item/weapon/hemostat,
 		/obj/item/weapon/retractor,
 		/obj/item/weapon/scalpel,
@@ -200,7 +200,7 @@
 			remove_from_storage(P)
 			P.attack(target,user)
 			return 1
-	
+
 /obj/item/weapon/storage/pill_bottle/Initialize()
 	. = ..()
 	update_icon()
@@ -331,7 +331,7 @@
 			/obj/item/weapon/reagent_containers/pill/kelotane = 2,
 			/obj/item/weapon/reagent_containers/pill/hyronalin
 		)
-		
+
 /obj/item/weapon/storage/pill_bottle/nanoblood
 	name = "pill bottle (Nanoblood)"
 	desc = "A pillbottle containing nanoblood pills, capable of rapidly restoring lost blood."

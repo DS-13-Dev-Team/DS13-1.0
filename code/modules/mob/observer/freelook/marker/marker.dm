@@ -28,6 +28,12 @@
 	SSnecromorph.marker = src	//Populate the global var with ourselves
 	..()
 
+
+/obj/machinery/marker/ex_act()
+	return null	//We do not break
+
+/obj/machinery/marker/bullet_act()
+	return null	//We do NOT break
 /**
 
 	Method which allows the marker to become player controlled, and which starts its corruption spread.

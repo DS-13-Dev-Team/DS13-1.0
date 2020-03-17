@@ -441,7 +441,7 @@ This function completely restores a damaged organ to perfect condition.
 		I.remove_rejuv()
 	..()
 
-/obj/item/organ/external/proc/createwound(var/type = CUT, var/damage, var/surgical)
+/obj/item/organ/external/proc/createwound(var/type = CUT, var/damage, var/surgical, var/forced_type = null)
 
 	// Handle some status-based damage multipliers.
 	if(type == BRUISE && BP_IS_BRITTLE(src))
@@ -514,7 +514,9 @@ This function completely restores a damaged organ to perfect condition.
 				return W
 
 	//Creating wound
-	var/wound_type = get_wound_type(type, damage)
+	var/wound_type = forced_type
+	if (!wound_type)
+		wound_type = get_wound_type(type, damage)
 
 	if(wound_type)
 		var/datum/wound/W = new wound_type(damage, src)
@@ -1006,7 +1008,7 @@ obj/item/organ/external/proc/remove_clamps()
 /obj/item/organ/external/proc/open_incision()
 	var/datum/wound/W = get_incision()
 	if(!W)	return
-	W.open_wound(min(W.damage * 2, W.damage_list[1] - W.damage))
+	W.open_wound(min((min_broken_damage*DAMAGE_MULT_RETRACTED) - W.damage, W.damage_list[1] - W.damage))
 
 	if(!encased)
 		for(var/obj/item/weapon/implant/I in implants)
@@ -1287,14 +1289,11 @@ obj/item/organ/external/proc/remove_clamps()
 	. = 0
 	if(!incision)
 		return 0
-	var/smol_threshold = min_broken_damage * 0.4
-	var/beeg_threshold = min_broken_damage * 0.6
-	if(!incision.autoheal_cutoff == 0) //not clean incision
-		smol_threshold *= 1.5
-		beeg_threshold = max(beeg_threshold, min(beeg_threshold * 1.5, incision.damage_list[1])) //wounds can't achieve bigger
-	if(incision.damage >= smol_threshold) //smol incision
+	var/incision_threshold = min_broken_damage * DAMAGE_MULT_INCISION
+	var/retracted_threshold = min_broken_damage * DAMAGE_MULT_RETRACTED
+	if(incision.damage >= incision_threshold) //smol incision
 		. = SURGERY_OPEN
-	if(incision.damage >= beeg_threshold) //beeg incision
+	if(incision.damage >= retracted_threshold) //beeg incision
 		. = SURGERY_RETRACTED
 	if(. == SURGERY_RETRACTED && encased && (status & ORGAN_BROKEN))
 		. = SURGERY_ENCASED

@@ -25,20 +25,13 @@
 //////////////////////////////////////////////////////////////////
 /datum/surgery_step/open_encased/saw
 	allowed_tools = list(
-	/obj/item/weapon/circular_saw = 100,
-	/obj/item/weapon/material/knife = 50,
-	/obj/item/weapon/material/hatchet = 75
+	/obj/item/weapon/tool/saw/circular = 100,	//The specific circular saw is best, but less delicate tools will do too
+	/obj/item/weapon/tool/saw = 75
 	)
 
 	min_duration = 50
 	max_duration = 70
 	shock_level = 60
-
-/datum/surgery_step/open_encased/saw/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	if (!hasorgans(target))
-		return
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	return ..() && affected && affected.how_open() == SURGERY_RETRACTED
 
 /datum/surgery_step/open_encased/saw/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 

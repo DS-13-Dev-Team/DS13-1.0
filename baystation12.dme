@@ -62,6 +62,7 @@
 #include "code\__defines\subsystem-priority.dm"
 #include "code\__defines\subsystems.dm"
 #include "code\__defines\targeting.dm"
+#include "code\__defines\text.dm"
 #include "code\__defines\tgui.dm"
 #include "code\__defines\tools_and_qualities.dm"
 #include "code\__defines\topic.dm"
