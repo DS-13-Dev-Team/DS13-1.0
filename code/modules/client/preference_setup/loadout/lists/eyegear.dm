@@ -11,75 +11,13 @@
 	display_name = "eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
 
-/datum/gear/eyes/fashionglasses
-	display_name = "glasses"
-	path = /obj/item/clothing/glasses
-
 /datum/gear/eyes/fashionglasses/New()
 	..()
 	var/glasses = list()
 	glasses["green glasses"] = /obj/item/clothing/glasses/gglasses
 	glasses["hipster glasses"] = /obj/item/clothing/glasses/regular/hipster
 	glasses["monocle"] = /obj/item/clothing/glasses/monocle
-	glasses["scanning goggles"] = /obj/item/clothing/glasses/regular/scanners
 	gear_tweaks += new/datum/gear_tweak/path(glasses)
-
-/datum/gear/eyes/sciencegoggles
-	display_name = "Science Goggles"
-	path = /obj/item/clothing/glasses/science
-
-/datum/gear/eyes/security
-	display_name = "Security HUD"
-	path = /obj/item/clothing/glasses/hud/security
-
-/datum/gear/eyes/security/prescription
-	display_name = "Security HUD, prescription"
-	path = /obj/item/clothing/glasses/hud/security/prescription
-
-/datum/gear/eyes/security/sunglasses
-	display_name = "Security HUD Sunglasses"
-	path = /obj/item/clothing/glasses/sunglasses/sechud
-
-/datum/gear/eyes/security/aviators
-	display_name = "Security HUD Aviators"
-	path = /obj/item/clothing/glasses/sunglasses/sechud/toggle
-
-/datum/gear/eyes/security/ipatch
-	display_name = "HUDpatch, Security"
-	path = /obj/item/clothing/glasses/eyepatch/hud/security
-	cost = 2
-
-/datum/gear/eyes/medical
-	display_name = "Medical HUD"
-	path = /obj/item/clothing/glasses/hud/health
-
-/datum/gear/eyes/medical/prescription
-	display_name = "Medical HUD, prescription"
-	path = /obj/item/clothing/glasses/hud/health/prescription
-
-/datum/gear/eyes/medical/visor
-	display_name = "Medical HUD, Visor"
-	path = /obj/item/clothing/glasses/hud/health/visor
-	cost = 2
-
-/datum/gear/eyes/medical/ipatch
-	display_name = "HUDpatch, Medical"
-	path = /obj/item/clothing/glasses/eyepatch/hud/medical
-	cost = 2
-
-/datum/gear/eyes/meson
-	display_name = "Meson Goggles"
-	path = /obj/item/clothing/glasses/meson
-	allowed_roles = null
-
-/datum/gear/eyes/meson/prescription
-	display_name = "Meson Goggles, prescription"
-	path = /obj/item/clothing/glasses/meson/prescription
-
-/datum/gear/eyes/meson/ipatch
-	display_name = "HUDpatch, Meson"
-	path = /obj/item/clothing/glasses/eyepatch/hud/meson
-	cost = 2
 
 /datum/gear/eyes/shades/
 	display_name = "sunglasses"
@@ -95,7 +33,3 @@
 	display_name = "sunglasses, presciption"
 	path = /obj/item/clothing/glasses/sunglasses/prescription
 	cost = 3
-
-/datum/gear/eyes/hudpatch
-	display_name = "iPatch"
-	path = /obj/item/clothing/glasses/eyepatch/hud
