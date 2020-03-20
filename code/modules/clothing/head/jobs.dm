@@ -88,6 +88,10 @@
 	name = "heliodor surgical cap"
 	color = "#aad539"
 
+/obj/item/clothing/head/surgery/surgeon
+	name = "surgeon's cap"
+	color = "#6f3a3a"
+
 //Berets
 /obj/item/clothing/head/beret
 	name = "beret"
@@ -166,7 +170,7 @@
 	name = "beret"
 	desc = "A simple, solid color beret. This one has no emblems or insignia on it."
 	icon_state = "beret_white"
-	
+
 /obj/item/clothing/head/beret/ishimurasecuritychiefberet
 	name = "chief security officer beret"
 	desc = "A brown beret worn by the Chief Security Officer."
