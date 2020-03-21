@@ -23,9 +23,16 @@
 //////////////////////////////////////////////////////////////////
 //	ribcage sawing surgery step
 //////////////////////////////////////////////////////////////////
+/datum/surgery_step/open_encased/saw/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	.=..()
+	if (.)
+		var/obj/item/organ/external/affected = target.get_organ(target_zone)
+		if (affected.how_open() != SURGERY_RETRACTED)
+			return FALSE
+
 /datum/surgery_step/open_encased/saw
 	allowed_tools = list(
-	/obj/item/weapon/circular_saw = 100,
+	/obj/item/weapon/tool/saw/circular = 100,
 	/obj/item/weapon/material/knife = 50,
 	/obj/item/weapon/material/hatchet = 75
 	)
@@ -59,7 +66,7 @@
 
 	user.visible_message("<span class='notice'>[user] has cut [target]'s [affected.encased] open with \the [tool].</span>",		\
 	"<span class='notice'>You have cut [target]'s [affected.encased] open with \the [tool].</span>")
-	affected.fracture()
+	affected.encased = ENCASED_OPEN
 
 /datum/surgery_step/open_encased/saw/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 

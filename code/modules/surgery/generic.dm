@@ -56,7 +56,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has made a bloodless incision on [target]'s [affected.name] with \the [tool].</span>", \
 	"<span class='notice'>You have made a bloodless incision on [target]'s [affected.name] with \the [tool].</span>",)
-	affected.createwound(CUT, affected.min_broken_damage/2, 1)
+	affected.createwound(CUT, affected.min_broken_damage*DAMAGE_MULT_INCISION, 1, forced_type = /datum/wound/cut/incision)
 	affected.clamp_wounds()
 	spread_germs_to_organ(affected, user)
 
@@ -96,7 +96,7 @@
 	user.visible_message("<span class='notice'>[user] has constructed a prepared incision on and within [target]'s [affected.name] with \the [tool].</span>", \
 	"<span class='notice'>You have constructed a prepared incision on and within [target]'s [affected.name] with \the [tool].</span>",)
 
-	affected.createwound(CUT, affected.min_broken_damage/2, 1) // incision
+	affected.createwound(CUT, affected.min_broken_damage*DAMAGE_MULT_INCISION, 1, forced_type = /datum/wound/cut/incision) // incision
 	affected.clamp_wounds() // clamp
 	affected.open_incision() // retract
 
@@ -143,7 +143,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has made an incision on [target]'s [affected.name] with \the [tool].</span>", \
 	"<span class='notice'>You have made an incision on [target]'s [affected.name] with \the [tool].</span>",)
-	affected.createwound(CUT, affected.min_broken_damage/2, 1)
+	affected.createwound(CUT, affected.min_broken_damage*DAMAGE_MULT_INCISION, 1, forced_type = /datum/wound/cut/incision)
 	playsound(target.loc, 'sound/weapons/bladeslice.ogg', 15, 1)
 
 /datum/surgery_step/generic/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -300,8 +300,8 @@
 //////////////////////////////////////////////////////////////////
 /datum/surgery_step/generic/amputate
 	allowed_tools = list(
-	/obj/item/weapon/circular_saw = 100, \
-	/obj/item/weapon/material/hatchet = 75
+	/obj/item/weapon/tool/saw/circular = 100,	//The specific circular saw is best, but less delicate tools will do too
+	/obj/item/weapon/tool/saw = 75
 	)
 
 	min_duration = 110
@@ -315,10 +315,12 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (affected == null)
 		return 0
+	if (!(affected.limb_flags & ORGAN_FLAG_CAN_AMPUTATE))
+		return 0
 	if (affected.how_open())
 		to_chat(user,"<span class='warning'>You can't get a clean cut with incisions getting in the way.</span>")
-		return SURGERY_FAILURE
-	return (affected.limb_flags & ORGAN_FLAG_CAN_AMPUTATE)
+		return 0
+	return TRUE
 
 /datum/surgery_step/generic/amputate/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)

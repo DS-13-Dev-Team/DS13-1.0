@@ -48,7 +48,7 @@
 	/obj/item/weapon/tool/crowbar,
 	/obj/item/weapon/clipboard,
 	/obj/item/weapon/cell,
-	/obj/item/weapon/circular_saw,
+	/obj/item/weapon/tool/saw/circular,
 	/obj/item/weapon/material/hatchet,
 	/obj/item/weapon/handcuffs,
 	/obj/item/weapon/hemostat,

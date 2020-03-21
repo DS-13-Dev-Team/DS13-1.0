@@ -115,26 +115,6 @@
 	icon_state = "scalpel_manager_on"
 	force = 7.5
 
-/*
- * Circular Saw
- */
-/obj/item/weapon/circular_saw
-	name = "circular saw"
-	desc = "For heavy duty cutting."
-	icon = 'icons/obj/surgery.dmi'
-	icon_state = "saw3"
-	hitsound = 'sound/weapons/circsawhit.ogg'
-	obj_flags = OBJ_FLAG_CONDUCTIBLE
-	force = 15.0
-	w_class = ITEM_SIZE_NORMAL
-	throwforce = 9.0
-	throw_speed = 3
-	throw_range = 5
-	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	matter = list(MATERIAL_STEEL = 20000,MATERIAL_GLASS = 10000)
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
-	sharp = 1
-	edge = 1
 
 //misc, formerly from code/defines/weapons.dm
 /obj/item/weapon/bonegel

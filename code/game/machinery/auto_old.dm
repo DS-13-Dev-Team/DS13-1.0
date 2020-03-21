@@ -248,7 +248,7 @@ var/const/EXTRA_COST_FACTOR = 1.25
 
 /datum/autolathe/recipe/circularsaw
 	name = "circular saw"
-	path = /obj/item/weapon/circular_saw
+	path = /obj/item/weapon/tool/saw/circular
 	category = "Medical"
 
 /datum/autolathe/recipe/surgicaldrill

@@ -82,7 +82,7 @@
 
 #define INFECTION_LEVEL_ONE   2500000
 #define INFECTION_LEVEL_TWO   5000000 // infections are now pretty much disabled
-#define INFECTION_LEVEL_THREE 10000000 
+#define INFECTION_LEVEL_THREE 10000000
 
 //Blood levels. These are percentages based on the species blood_volume far.
 #define BLOOD_VOLUME_SAFE    55
@@ -90,3 +90,11 @@
 #define BLOOD_VOLUME_BAD     35
 #define BLOOD_VOLUME_SURVIVE 25
 
+
+//These are pretty dumb. Incision stage of an organ is defined by having an open wound which has this proportion of the organ's max damage
+#define DAMAGE_MULT_INCISION	0.4
+#define DAMAGE_MULT_RETRACTED 	0.6
+
+//Values for the encased var
+#define ENCASED_CLOSED	1
+#define ENCASED_OPEN	2

@@ -1098,7 +1098,7 @@
 	req_access = list(access_research)
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/oiljug = 5,
 					/obj/item/stack/cable_coil = 4,/obj/item/device/flash/synthetic = 4,/obj/item/weapon/cell = 4,/obj/item/device/healthanalyzer = 2,
-					/obj/item/weapon/scalpel = 1,/obj/item/weapon/circular_saw = 1,/obj/item/weapon/tank/anesthetic = 2,/obj/item/clothing/mask/breath/medical = 5,
+					/obj/item/weapon/scalpel = 1,/obj/item/weapon/tool/saw/circular = 1,/obj/item/weapon/tank/anesthetic = 2,/obj/item/clothing/mask/breath/medical = 5,
 					/obj/item/weapon/tool/screwdriver = 2,/obj/item/weapon/tool/crowbar = 2)
 	contraband = list(/obj/item/device/flash = 2)
 

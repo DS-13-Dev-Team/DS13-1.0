@@ -93,6 +93,18 @@
 		"small scab" = 0
 		)
 
+
+/datum/wound/cut/incision
+	max_bleeding_stage = 5
+	stages = list(
+		"infinite wound" = 999,
+		"gaping incision" = 25,
+		"large incision" = 15,
+		"small incision" = 2,
+		"small angry scar" = 1,
+		"small straight scar" = 0
+		)
+
 /datum/wound/cut/deep
 	max_bleeding_stage = 3
 	stages = list(
