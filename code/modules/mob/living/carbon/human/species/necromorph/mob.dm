@@ -6,6 +6,9 @@
 */
 /mob/living/carbon/human/necromorph
 
+/mob/living/carbon/human/necromorph/spitter/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SPITTER)
+	..(new_loc, new_species)
+
 /mob/living/carbon/human/necromorph/slasher/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER)
 	..(new_loc, new_species)
 
