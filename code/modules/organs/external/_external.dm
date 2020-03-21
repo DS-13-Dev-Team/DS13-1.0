@@ -1297,7 +1297,7 @@ obj/item/organ/external/proc/remove_clamps()
 	var/retracted_threshold = min_broken_damage * DAMAGE_MULT_RETRACTED
 	if(incision.damage >= incision_threshold) //smol incision
 		. = SURGERY_OPEN
-	if(incision.damage >= beeg_threshold) //beeg incision
+	if(incision.damage >= retracted_threshold) //beeg incision
 		. = SURGERY_RETRACTED
 	if(. == SURGERY_RETRACTED && encased == ENCASED_OPEN)
 		. = SURGERY_ENCASED

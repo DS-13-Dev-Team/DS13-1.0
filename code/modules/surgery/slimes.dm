@@ -78,7 +78,7 @@
 /datum/surgery_step/slime/saw_core
 	allowed_tools = list(
 	/obj/item/weapon/scalpel/manager = 100, \
-	/obj/item/weapon/circular_saw = 100, \
+	/obj/item/weapon/tool/saw/circular = 100, \
 	/obj/item/weapon/material/hatchet = 75
 	)
 

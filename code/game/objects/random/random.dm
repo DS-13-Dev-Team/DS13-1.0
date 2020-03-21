@@ -855,7 +855,7 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/weapon/cautery = 7,
 				/obj/item/weapon/bonesetter = 7,
 				/obj/item/weapon/bonegel = 7,
-				/obj/item/weapon/circular_saw = 7,
+				/obj/item/weapon/tool/saw/circular = 7,
 				/obj/item/weapon/scalpel = 7,
 				/obj/item/weapon/melee/baton/loaded = 9))
 

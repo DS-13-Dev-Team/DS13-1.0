@@ -82,7 +82,7 @@
 
 #define INFECTION_LEVEL_ONE   2500000
 #define INFECTION_LEVEL_TWO   5000000 // infections are now pretty much disabled
-#define INFECTION_LEVEL_THREE 10000000 
+#define INFECTION_LEVEL_THREE 10000000
 
 //Blood levels. These are percentages based on the species blood_volume far.
 #define BLOOD_VOLUME_SAFE    55
@@ -97,3 +97,4 @@
 
 //Values for the encased var
 #define ENCASED_CLOSED	1
+#define ENCASED_OPEN	2
