@@ -11,7 +11,7 @@
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/edf/commander
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
-	back = null
+	back = /obj/item/weapon/storage/backpack/satchel/grey
 	shoes = /obj/item/clothing/shoes/dutyboots
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -29,7 +29,7 @@
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/edf/medic
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
-	back = null
+	back = /obj/item/weapon/storage/backpack/medic
 	shoes = /obj/item/clothing/shoes/dutyboots
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -63,7 +63,7 @@
 	mask = /obj/item/clothing/mask/breath
 	head = /obj/item/clothing/head/helmet/space/edf
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
-	back = null
+	back = /obj/item/weapon/storage/backpack/satchel/grey
 	shoes = /obj/item/clothing/shoes/dutyboots
 	gloves = /obj/item/clothing/gloves/combat
 
