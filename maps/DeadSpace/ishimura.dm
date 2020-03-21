@@ -52,3 +52,14 @@
 						/datum/job/serviceman, /datum/job/dom, /datum/job/foreman,
 						/datum/job/planet_cracker, /datum/job/line_cook, /datum/job/bar,
 						)
+/turf/simulated/wall
+	name = "bulkhead"
+
+/turf/simulated/floor
+	name = "bare deck"
+
+/turf/simulated/floor/tiled
+	name = "deck"
+
+/decl/flooring/tiling
+	name = "deck"
