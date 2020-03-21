@@ -183,8 +183,7 @@
 //////////////////////////////////////////////////////////////////
 /datum/surgery_step/robotics/repair_brute
 	allowed_tools = list(
-		/obj/item/weapon/tool/weldingtool = 100,
-		/obj/item/weapon/gun/energy/plasmacutter = 50
+		/obj/item/weapon/tool/weldingtool = 100
 	)
 
 	min_duration = 50

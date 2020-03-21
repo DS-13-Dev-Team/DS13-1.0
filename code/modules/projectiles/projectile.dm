@@ -473,10 +473,7 @@
 			M.set_transform(T)
 			M.pixel_x = round(location.pixel_x, 1)
 			M.pixel_y = round(location.pixel_y, 1)
-			if(!hitscan) //Bullets don't hit their target instantly, so we can't link the deletion of the muzzle flash to the bullet's Destroy()
-				animate(M, alpha = 0, time = 2)
-				QDEL_IN(M,2)
-			else
+			if(hitscan) //Bullets don't hit their target instantly, so we can't link the deletion of the muzzle flash to the bullet's Destroy()
 				segments += M
 
 /obj/item/projectile/proc/tracer_effect(var/matrix/M)
@@ -487,9 +484,7 @@
 			P.set_transform(M)
 			P.pixel_x = round(location.pixel_x, 1)
 			P.pixel_y = round(location.pixel_y, 1)
-			if(!hitscan)
-				QDEL_IN(M,1)
-			else
+			if(hitscan)
 				segments += P
 
 /obj/item/projectile/proc/impact_effect(var/matrix/M)
@@ -501,6 +496,9 @@
 			P.pixel_x = round(location.pixel_x, 1)
 			P.pixel_y = round(location.pixel_y, 1)
 			segments += P
+
+			//animate(P, alpha = 0, time = 2)
+			//QDEL_IN(P,2)
 
 //"Tracing" projectile
 /obj/item/projectile/test //Used to see if you can hit them.

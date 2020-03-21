@@ -83,6 +83,7 @@
 			continue	//Don't hit yourself!
 		var/distance = get_dist_euclidian(origin, T)	//Calculate distance and damage for things in this turf
 		var/turf_damage = force_falloff(damage, distance, falloff_factor)
+		T.apply_push_impulse_from(origin, force, falloff_factor)
 		for (var/atom/movable/AM in T)
 			AM.apply_push_impulse_from(origin, force, falloff_factor)	//Push the thing. This will shove objects, stagger/knockdown mobs
 			if (isliving(AM))

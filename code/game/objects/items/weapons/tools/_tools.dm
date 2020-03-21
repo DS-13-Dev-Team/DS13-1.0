@@ -208,13 +208,15 @@
 
 //Simple form ideal for basic use. That proc will return TRUE only when everything was done right, and FALSE if something went wrong, ot user was unlucky.
 //Editionaly, handle_failure proc will be called for a critical failure roll.
-/obj/proc/use_tool(var/mob/living/user, var/atom/target, var/base_time, var/required_quality, var/fail_chance, var/required_stat, var/instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5)
+/obj/proc/use_tool(var/mob/living/user, var/atom/target, var/base_time, var/required_quality, var/fail_chance, var/required_stat, var/instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS)
 	var/obj/item/weapon/tool/T
 	if (istool(src))
 		T = src
+		if (T.tool_in_use)
+			return FALSE
 		T.tool_in_use = TRUE
 
-	var/result = use_tool_extended(user, target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier, forced_sound)
+	var/result = use_tool_extended(user, target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier, forced_sound, sound_repeat)
 
 	if (T)
 		T.tool_in_use = FALSE
@@ -263,7 +265,7 @@
 	//Precalculate worktime here
 	var/time_to_finish = 0
 	if (base_time)
-		time_to_finish = base_time - get_tool_quality(required_quality) - 30//TODO: Factor in bay skills here user.stats.getStat(required_stat)
+		time_to_finish = base_time / (1 + (get_tool_quality(required_quality)/100))//TODO: Factor in bay skills here user.stats.getStat(required_stat)
 
 		//Workspeed var, can be improved by upgrades
 		if (T && T.workspeed > 0)
@@ -295,7 +297,7 @@
 
 		if (sound_repeat && time_to_finish)
 			//It will repeat roughly every 2.5 seconds until our tool finishes
-			toolsound = new/datum/repeating_sound(sound_repeat,time_to_finish,0.15, src, soundfile, volume, 1, extrarange)
+			toolsound = new/datum/repeating_sound(sound_repeat,time_to_finish,0.15, src, soundfile, volume, TRUE, extrarange)
 		else
 			playsound(src.loc, soundfile, volume, 1, extrarange)
 
@@ -336,6 +338,7 @@
 	var/stat_modifer = 0
 	if(required_stat)
 		stat_modifer = 30//TODO: Factor in bay skills here //user.stats.getStat(required_stat)
+
 	fail_chance = fail_chance - get_tool_quality(required_quality) - stat_modifer
 
 	//Unreliability increases failure rates, and precision reduces it
@@ -545,6 +548,20 @@
 *******************************/
 /obj/proc/has_quality(quality_id)
 	return quality_id in tool_qualities
+
+//Takes a list of qualities,
+//Returns a assoc list which contains quality = value for the qualities we do have, and the ones we don't have removed
+/obj/proc/has_qualities(var/list/qualities)
+	if (tool_qualities && tool_qualities.len)
+		for (var/quality in qualities)
+			var/value = tool_qualities[quality]
+			if (value)
+				qualities[quality] = value
+			else
+				qualities -= quality
+		return qualities
+	else
+		return list()
 
 
 /obj/proc/ever_has_quality(quality_id)

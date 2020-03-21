@@ -259,7 +259,7 @@
 //Safety checks are done by the time fire is called
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 
-	if (current_firemode.override_fire)
+	if (current_firemode && current_firemode.override_fire)
 		current_firemode.fire(target, user, clickparams, pointblank, reflex)
 		return
 
@@ -290,7 +290,8 @@
 		var/obj/projectile = consume_next_projectile(user)
 		if(!projectile)
 			handle_click_empty(user)
-			current_firemode.on_fire(target, user, clickparams, pointblank, reflex, FALSE)	//Tell the firemode that we tried and failed to fire
+			if (current_firemode)
+				current_firemode.on_fire(target, user, clickparams, pointblank, reflex, FALSE)	//Tell the firemode that we tried and failed to fire
 			break
 
 		//Consume next projectile may just return TRUE instead of an object. In that case we don't launch any bullets, but still count it as a successful fire
@@ -314,7 +315,7 @@
 		play_fire_sound(user,projectile)
 
 		handle_post_fire(user, target, pointblank, reflex)
-		current_firemode.on_fire(target, user, clickparams, pointblank, reflex, TRUE)//Tell the firemode that we successfully fired
+		if (current_firemode)	current_firemode.on_fire(target, user, clickparams, pointblank, reflex, TRUE)//Tell the firemode that we successfully fired
 
 	//update timing
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)

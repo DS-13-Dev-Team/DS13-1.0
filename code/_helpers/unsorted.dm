@@ -882,9 +882,9 @@ var/global/list/common_tools = list(
 /obj/item/weapon/tool/crowbar)
 
 /proc/istool(O)
-	if(O && is_type_in_list(O, common_tools))
-		return 1
-	return 0
+	if (istype(O, /obj/item/weapon/tool))
+		return TRUE
+	return FALSE
 
 //Deprecated. Use obj/is_hot instead where
 /proc/is_hot(obj/item/W as obj)
@@ -904,8 +904,6 @@ var/global/list/common_tools = list(
 				return 1000
 			else
 				return 0
-		if(/obj/item/weapon/gun/energy/plasmacutter)
-			return 3800
 		if(/obj/item/weapon/melee/energy)
 			return 3500
 		else

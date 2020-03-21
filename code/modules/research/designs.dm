@@ -290,11 +290,11 @@
 	build_path = /obj/item/weapon/pickaxe/drill
 	sort_string = "KAAAB"
 
-/datum/design/item/mining/plasmacutter
-	id = "plasmacutter"
+/datum/design/item/mining/miningcutter
+	id = "miningcutter"
 	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
 	materials = list(MATERIAL_STEEL = 1500, MATERIAL_GLASS = 500, MATERIAL_GOLD = 500, MATERIAL_PHORON = 500)
-	build_path = /obj/item/weapon/gun/energy/plasmacutter
+	build_path = /obj/item/weapon/gun/energy/cutter
 	sort_string = "KAAAC"
 
 /datum/design/item/mining/pick_diamond
@@ -1379,15 +1379,6 @@
 	materials = list(MATERIAL_STEEL = 3500, MATERIAL_GLASS = 1500, MATERIAL_DIAMOND = 2000, "plastic" = 1000)
 	build_path = /obj/item/rig_module/device/drill
 	sort_string = "WCCAA"
-
-/datum/design/item/rig/plasmacutter
-	name = "Plasma Cutter"
-	desc = "A rock cutter that projects bursts of hot plasma, mountable on a RIG."
-	id = "rig_plasmacutter"
-	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 6, TECH_COMBAT = 4)
-	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 1000, "plastic" = 1000, MATERIAL_GOLD = 700, MATERIAL_PHORON = 500)
-	build_path = /obj/item/rig_module/mounted/plasmacutter
-	sort_string = "VCCAB"
 
 /datum/design/item/rig/orescanner
 	name = "Ore Scanner"

@@ -257,7 +257,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 		return
 
 	//Actually play the sound
-	playsound(playfrom, soundin, vol, vary, extrarange, falloff, is_global, use_pressure)
+	playsound(playfrom, soundin, vol, vary, null, falloff, is_global, extrarange)
 
 	//Setup the next sound
 	var/nextinterval = interval
