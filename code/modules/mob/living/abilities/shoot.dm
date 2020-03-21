@@ -64,8 +64,10 @@
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/shoot/proc/stop), duration)
 
 	var/mob/living/L
+	var/target_zone = BP_CHEST
 	if (isliving(user))
 		L = user
+		target_zone = L.zone_sel.selecting
 
 	//First of all, if nomove is set, lets paralyse the user
 	if (nomove && L)
@@ -78,16 +80,23 @@
 
 	//Now lets windup the shot(s)
 	if (windup_time)
-		if (windup_sound)
-			playsound(user, windup_sound, 100, 1)
+
 		sleep(windup_time)
 
 	//And start the main event
-	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
+	var/turf/targloc = get_turf(target)
 	for(shot_num in 1 to total_shots)
 		var/obj/projectile/P = new projectile_type(user.loc)
 		P.accuracy = accuracy
 		P.dispersion = get_dispersion()
+		P.firer = user
+		P.original = target
+		P.shot_from = user
+
+		P.launch(target, target_zone)
+
+		if (fire_sound)
+			playsound(user, fire_sound, 100, 1)
 
 //If its a single number, just return that
 /datum/extension/shoot/proc/get_dispersion()
