@@ -18,7 +18,7 @@
 	var/fire_sound
 	var/power = 1
 	var/cooldown = 1 SECOND
-	var/duration = 1 SECOND
+	var/nomove	=	0
 
 	var/started_at
 	var/stopped_at
@@ -43,25 +43,24 @@
 	nomove: optional, default false. If true, the user can't move during windup. If a number, the user can't move during windup and for that long after firing
 */
 
-/datum/extension/shoot/New(var/atom/user, var/atom/target, var/projectile_type, var/accuracy = 100, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE)
-
+/datum/extension/shoot/New(var/atom/user, var/atom/target, var/projectile_type, var/accuracy = 100, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE, var/cooldown = 0)
 	.=..()
 	src.user = user
 	src.target = target
 	src.projectile_type = projectile_type
-	src.accuracy = accuracy
+	src.base_accuracy = accuracy
 	src.dispersion = dispersion
-	src.numleft = num
+	src.total_shots = num
 	src.windup_time = windup_time
 	src.fire_sound = fire_sound
 	src.nomove = nomove
 	src.cooldown = cooldown
+
 	start()
 
 
 /datum/extension/shoot/proc/start()
 	started_at	=	world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/shoot/proc/stop), duration)
 
 	var/mob/living/L
 	var/target_zone = BP_CHEST
@@ -86,24 +85,28 @@
 	//And start the main event
 	var/turf/targloc = get_turf(target)
 	for(shot_num in 1 to total_shots)
-		var/obj/projectile/P = new projectile_type(user.loc)
-		P.accuracy = accuracy
+		var/obj/item/projectile/P = new projectile_type(user.loc)
+		P.accuracy = base_accuracy
 		P.dispersion = get_dispersion()
 		P.firer = user
-		P.original = target
 		P.shot_from = user
 
-		P.launch(target, target_zone)
+		if (QDELETED(target))
+			P.launch(targloc, target_zone)
+		else
+			P.launch(target, target_zone)
 
 		if (fire_sound)
 			playsound(user, fire_sound, 100, 1)
+
+	stop()
 
 //If its a single number, just return that
 /datum/extension/shoot/proc/get_dispersion()
 	if (isnum(dispersion))
 		return dispersion
 
-	else
+
 
 
 /datum/extension/shoot/proc/stop()
@@ -129,11 +132,13 @@
 	Safety Checks
 ************************/
 //Access Proc
-/atom/proc/can_shoot(var/error_messages = TRUE)
-	if (incapacitated())
-		return FALSE
+/atom/proc/can_shoot(var/error_messages = TRUE, var/subtype = /datum/extension/shoot)
+	if (isliving(src))
+		var/mob/living/L = src
+		if (L.incapacitated())
+			return FALSE
 
-	var/datum/extension/shoot/E = get_extension(src, /datum/extension/shoot)
+	var/datum/extension/shoot/E = get_extension(src, subtype)
 	if(istype(E))
 		if (error_messages)
 			if (E.stopped_at)
@@ -141,5 +146,20 @@
 			else
 				to_chat(src, SPAN_NOTICE("You're already shooting"))
 		return FALSE
+
+	return TRUE
+
+
+/***********************
+	Using
+************************/
+/atom/movable/proc/shoot_ability(var/subtype, var/atom/target, var/projectile_type, var/accuracy = 100, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE, var/cooldown = 0)
+	//First of all, lets check if we're currently able to charge
+	if (!can_shoot(TRUE, subtype))
+		return FALSE
+
+	//Ok we've passed all safety checks, let's commence charging!
+	//We simply create the extension on the movable atom, and everything works from there
+	set_extension(src, subtype, target, projectile_type, accuracy, dispersion, num, windup_time, fire_sound, nomove, cooldown)
 
 	return TRUE

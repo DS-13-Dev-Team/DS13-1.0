@@ -246,7 +246,7 @@
 	taste_description = "acid"
 	reagent_state = LIQUID
 	color = "#8e18a9"
-	power = 10
+	power = 5
 	meltdose = 4
 
 
@@ -267,7 +267,7 @@
 	.=..()
 
 /datum/reagent/acid/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.take_organ_damage(0, removed * power * 2)
+	M.take_organ_damage(0, removed * power)
 
 /datum/reagent/lexorin
 	name = "Lexorin"
