@@ -1,9 +1,6 @@
 var/global/list/ore_data = list()
 var/global/list/ores_by_type = list()
 
-/hook/startup/proc/initialise_ore_data()
-	ensure_ore_data_initialised()
-	return 1
 
 /proc/ensure_ore_data_initialised()
 	if(ore_data && ore_data.len) return

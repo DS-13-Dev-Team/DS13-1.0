@@ -68,7 +68,7 @@
 	Applies an impulse to this atom, originating from origin, to push it away from origin
 	Distance is optional, it will be calculated. But if specified, calculations
 */
-/atom/movable/proc/apply_push_impulse_from(var/atom/origin, var/strength, var/falloff_factor = 1)
+/atom/proc/apply_push_impulse_from(var/atom/origin, var/strength, var/falloff_factor = 1)
 	var/list/data = Vector2.DirMagBetween(origin, src)
 	var/vector2/direction = data["direction"]
 	var/distance = data["magnitude"]

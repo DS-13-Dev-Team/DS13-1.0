@@ -98,6 +98,9 @@ var/global/list/string_slot_flags = list(
 /hook/global_init/proc/makeDatumRefLists()
 	var/list/paths
 
+	//Initialize data for mining
+	ensure_ore_data_initialised()
+
 	//Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
 	paths = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
 	for(var/path in paths)

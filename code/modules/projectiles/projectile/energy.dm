@@ -74,7 +74,7 @@
 	damage = 15
 	agony = 70
 	damage_type = BURN
-	armor_penetration = 10
+	armor_penetration = 5
 
 /obj/item/projectile/energy/declone
 	name = "decloner beam"
@@ -128,7 +128,7 @@
 	name = "plasma pulse"
 	icon_state = "plasma_stun"
 	fire_sound = 'sound/weapons/blaster.ogg'
-	armor_penetration = 10
+	armor_penetration = 5
 	kill_count = 4
 	damage = 5
 	agony = 70

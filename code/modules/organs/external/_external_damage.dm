@@ -35,14 +35,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 			if(spillover > 0)
 				burn = max(burn - spillover, 0)
 	owner.updatehealth() //droplimb will call updatehealth() again if it does end up being called
-	//If limb took enough damage, try to cut or tear it off
-	if(owner && loc == owner && !is_stump())
-		if((limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && config.limbs_can_break)
-			var/total_damage = brute_dam + burn_dam + brute + burn + spillover
-			var/threshold = max_damage * config.organ_health_multiplier
-			if(total_damage > threshold)
-				if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*3))
-					return
+
 
 	if(status & ORGAN_BROKEN && brute)
 		jostle_bone(brute)
@@ -96,6 +89,15 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	// sync the organ's damage with its wounds
 	update_damages()
 	owner.updatehealth()
+
+	//If limb took enough damage, try to cut or tear it off
+	if(owner && loc == owner && !is_stump())
+		if((limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && config.limbs_can_break)
+			var/total_damage = brute_dam + burn_dam + brute + burn + spillover
+			var/threshold = max_damage * config.organ_health_multiplier
+			if(total_damage > threshold)
+				if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*3))
+					return
 
 	if(owner && update_damstate())
 		owner.UpdateDamageIcon()
@@ -301,7 +303,6 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		return TRUE
 	else
 		//Lets handle cumulative damage. No probabilities, guaranteed effect if enough damage accumulates
-
 		//Any edge weapon can cut off a limb if its been thoroughly broken
 		if (edge && damage >= max_damage * DROPLIMB_CUMULATIVE_TEAROFF)
 			droplimb(0, DROPLIMB_EDGE)

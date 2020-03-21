@@ -23,18 +23,15 @@
 
 /obj/item/projectile/beam/smalllaser
 	damage = 25
-	armor_penetration = 10
 
 /obj/item/projectile/beam/midlaser
 	damage = 50
-	armor_penetration = 20
 
 /obj/item/projectile/beam/heavylaser
 	name = "heavy laser"
 	icon_state = "heavylaser"
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 	damage = 60
-	armor_penetration = 30
 
 	muzzle_type = /obj/effect/projectile/laser/heavy/muzzle
 	tracer_type = /obj/effect/projectile/laser/heavy/tracer
@@ -45,7 +42,6 @@
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/laser3.ogg'
 	damage = 30
-	armor_penetration = 30
 	penetration_modifier = 0.8
 
 	muzzle_type = /obj/effect/projectile/laser/xray/muzzle
@@ -54,7 +50,6 @@
 
 /obj/item/projectile/beam/xray/midlaser
 	damage = 30
-	armor_penetration = 50
 
 /obj/item/projectile/beam/pulse
 	name = "pulse"
@@ -75,7 +70,6 @@
 /obj/item/projectile/beam/pulse/destroy
 	name = "destroyer pulse"
 	damage = 100 //badmins be badmins I don't give a fuck
-	armor_penetration = 100
 
 /obj/item/projectile/beam/pulse/destroy/on_hit(var/atom/target, var/blocked = 0)
 	if(isturf(target))
@@ -190,58 +184,4 @@
 	damage = 20
 	agony  = 10
 
-/obj/item/projectile/beam/deadspaceminingcutter
-	name = "plasma arc"
-	icon_state = "omnilaser"
-	fire_sound = 'sound/weapons/plasma_cutter.ogg'
-	damage = 15
-	armor_penetration = 65 //mining plasma is dense enough to pierce heavy rock - it will go through most armour like paper
-	sharp = 1
-	edge = 1
-	damage_type = BRUTE //plasma is a physical object with mass, rather than purely burning. this also means you can decapitate/sever limbs, not just ash them.
-	check_armour = "laser"
-	kill_count = 2 //mining tools are not exactly known for their ability to replace firearms, they're good against necros, not so much against anything else.
-	pass_flags = PASS_FLAG_TABLE
 
-	muzzle_type = /obj/effect/projectile/trilaser/muzzle
-	tracer_type = /obj/effect/projectile/trilaser/tracer
-	impact_type = /obj/effect/projectile/trilaser/impact
-
-/obj/item/projectile/beam/miningcutter/on_impact(var/atom/A)
-	if(istype(A, /turf/simulated/mineral))
-		var/turf/simulated/mineral/M = A
-		if(prob(33))
-			M.GetDrilled(1)
-			return
-		else
-			M.emitter_blasts_taken += 2
-	. = ..()
-
-
-
-/obj/item/projectile/beam/deadspaceplasmacutter
-	name = "plasma arc"
-	icon_state = "omnilaser"
-	fire_sound = 'sound/weapons/plasma_cutter.ogg'
-	damage = 25
-	armor_penetration = 100 //plasma cutter is shown to pierce even EDF armor in dead space aftermath so
-	sharp = 1
-	edge = 1
-	damage_type = BRUTE //physical object with mass, etc.
-	check_armour = "laser"
-	kill_count = 3 //an upgrade over the mining cutter, used for engineering work, but still not a proper firearm
-	pass_flags = PASS_FLAG_TABLE
-
-	muzzle_type = /obj/effect/projectile/trilaser/muzzle
-	tracer_type = /obj/effect/projectile/trilaser/tracer
-	impact_type = /obj/effect/projectile/trilaser/impact
-
-/obj/item/projectile/beam/deadspaceplasmacutter/on_impact(var/atom/A)
-	if(istype(A, /turf/simulated/mineral))
-		var/turf/simulated/mineral/M = A
-		if(prob(33))
-			M.GetDrilled(1)
-			return
-		else
-			M.emitter_blasts_taken += 2
-	. = ..()

@@ -100,7 +100,7 @@
 	new /obj/item/clothing/glasses/meson(src)
 	new /obj/item/weapon/pickaxe(src)
 	new /obj/item/device/measuring_tape(src)
-	new /obj/item/weapon/pickaxe/xeno/hand(src)
+	new /obj/item/weapon/tool/pickaxe/excavation(src)
 	new /obj/item/weapon/storage/bag/fossils(src)
 	new /obj/item/weapon/hand_labeler(src)
 	new /obj/item/taperoll/research(src)

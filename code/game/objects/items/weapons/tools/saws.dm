@@ -68,12 +68,13 @@
 	desc = "The SH-B1 Plasma Saw is designed for dissection of heavy duty materials in both on and off-site locations. Users are advised to always wear protective clothing when the saw is in use."
 	icon_state = "plasma_saw_off"
 	item_state = "plasma_saw_off"
-	hitsound = WORKSOUND_CHAINSAW
-	worksound = WORKSOUND_CHAINSAW
+	hitsound = WORKSOUND_CIRCULAR_SAW
+	worksound = WORKSOUND_CIRCULAR_SAW
 	force = WEAPON_FORCE_HARMLESS
 	switched_on_force = WEAPON_FORCE_DANGEROUS * 1.15
 	matter = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 3000)
-	tool_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20)
+	tool_qualities = list()
+	switched_on_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20, QUALITY_DIGGING = 35)
 	max_upgrades = 4
 	degradation = 0.05
 	use_power_cost = 0.22

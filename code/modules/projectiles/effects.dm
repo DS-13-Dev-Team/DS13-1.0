@@ -9,6 +9,13 @@
 	light_color = "#ff00dc"
 
 	mouse_opacity = 0
+	var/lifespan = 3.5
+
+/obj/effect/projectile/Initialize()
+	animate(src, alpha = 0, time = lifespan)
+	QDEL_IN(src,lifespan)
+
+	return ..()
 
 /obj/effect/projectile/proc/set_transform(var/matrix/M)
 	if(istype(M))
@@ -128,6 +135,9 @@
 
 /obj/effect/projectile/trilaser/impact
 	icon_state = "impact_plasmacutter"
+
+
+
 
 //----------------------------
 // Emitter beam

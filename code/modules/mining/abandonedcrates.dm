@@ -94,7 +94,7 @@
 		if(79 to 80)
 			new/obj/item/weapon/pickaxe/gold(src)
 		if(81 to 82)
-			new/obj/item/weapon/gun/energy/plasmacutter(src)
+			new/obj/item/weapon/gun/energy/cutter/plasma(src)
 		if(83 to 84)
 			new/obj/item/toy/katana(src)
 		if(85 to 86)

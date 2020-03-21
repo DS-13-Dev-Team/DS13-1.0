@@ -26,25 +26,40 @@ var/list/mining_floors = list()
 	var/emitter_blasts_taken = 0 // EMITTER MINING! Muhehe.
 
 	var/datum/geosample/geologic_data
-	var/excavation_level = 0
+	//var/excavation_level = 0
 	var/list/finds
 	var/next_rock = 0
-	var/archaeo_overlay = ""
-	var/excav_overlay = ""
+
 	var/obj/item/weapon/last_find
 	var/datum/artifact_find/artifact_find
-	var/image/ore_overlay
+
 
 	has_resources = 1
 
+	//Defense and damage
+	//FUTURE TODO: MAke these apply to all turfs. and eventually, all atoms
+	var/health
+	var/max_health = 200
+	var/resistance	=	5
+
+	//Overlays
+	var/image/ore_overlay		//Handled in update_mineral, never needs to be touched again. Only disappears when the turf is changed
+	var/image/archaeo_overlay	//Handled in update_archaeo_overlay, updated whenever a find is dug out
+	var/image/excav_overlay		//Handled in update_excavation_overlay, updated every time dig is called
+
 /turf/simulated/mineral/New()
+	health = max_health
+
+/turf/simulated/mineral/Initialize()
+
 	if (!mining_walls["[src.z]"])
 		mining_walls["[src.z]"] = list()
 	mining_walls["[src.z]"] += src
-	spawn(0)
-		MineralSpread()
-	spawn(2)
+	MineralSpread()
+	update_archaeo_overlay()
+	spawn()
 		update_icon(1)
+	.=..()
 
 /turf/simulated/mineral/Destroy()
 	if (mining_walls["[src.z]"])
@@ -97,22 +112,20 @@ var/list/mining_floors = list()
 /turf/simulated/mineral/ex_act(severity)
 	switch(severity)
 		if(2.0)
-			if (prob(70))
-				mined_ore = 1 //some of the stuff gets blown up
-				GetDrilled()
+			dig(rand(150,400))
 		if(1.0)
-			mined_ore = 2 //some of the stuff gets blown up
-			GetDrilled()
+			dig(rand(50,300))
 
-/turf/simulated/mineral/bullet_act(var/obj/item/projectile/Proj)
+/turf/simulated/mineral/apply_impulse(var/direction, var/strength)
 
-	// Emitter blasts
-	if(istype(Proj, /obj/item/projectile/beam/emitter))
-		emitter_blasts_taken++
+	var/dig_power = (rand_between(0.85,1.15)*strength)*1.5
+	dig(dig_power)
 
-		if(emitter_blasts_taken > 2) // 3 blasts per tile
-			mined_ore = 1
-			GetDrilled()
+/turf/simulated/mineral/bullet_act(var/obj/item/projectile/proj)
+	dig(proj.damage)
+	if (health <= 0)
+		return PROJECTILE_CONTINUE
+	.=..()
 
 /turf/simulated/mineral/Bumped(AM)
 	. = ..()
@@ -143,143 +156,60 @@ var/list/mining_floors = list()
 					target_turf.UpdateMineral()
 					target_turf.MineralSpread()
 
+/turf/simulated/mineral/proc/excavation_level()
+	return (max_health - health)
+
 
 /turf/simulated/mineral/proc/UpdateMineral()
 	clear_ore_effects()
 	ore_overlay = image('icons/obj/mining.dmi', "rock_[mineral.icon_tag]")
 	ore_overlay.appearance_flags = RESET_COLOR
 	ore_overlay.turf_decal_layerise()
+	ore_overlay.rotate_random()
 	update_icon()
 
-//Not even going to touch this pile of spaghetti
-/turf/simulated/mineral/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
-		return
 
-	if (istype(W, /obj/item/device/core_sampler))
+//Completely remaking this pile of spaghetti	~Nanako
+/turf/simulated/mineral/attackby(var/obj/item/I, var/mob/living/user)
+	if (istype(I))
+		var/list/valid_qualities = I.has_qualities(list(QUALITY_DIGGING, QUALITY_EXCAVATION))
+		if (QUALITY_DIGGING in valid_qualities)
+			//We got a digging tool here!
+			dig_with_tool(I, user)
+			return TRUE
+
+	//Archeology tools
+	if (istype(I, /obj/item/device/core_sampler))
 		geologic_data.UpdateNearbyArtifactInfo(src)
-		var/obj/item/device/core_sampler/C = W
+		var/obj/item/device/core_sampler/C = I
 		C.sample_item(src, user)
 		return
 
-	if (istype(W, /obj/item/device/depth_scanner))
-		var/obj/item/device/depth_scanner/C = W
+	if (istype(I, /obj/item/device/depth_scanner))
+		var/obj/item/device/depth_scanner/C = I
 		C.scan_atom(user, src)
 		return
 
-	if (istype(W, /obj/item/device/measuring_tape))
-		var/obj/item/device/measuring_tape/P = W
+	if (istype(I, /obj/item/device/measuring_tape))
+		var/obj/item/device/measuring_tape/P = I
 		user.visible_message("<span class='notice'>\The [user] extends [P] towards [src].</span>","<span class='notice'>You extend [P] towards [src].</span>")
 		if(do_after(user,10, src))
-			to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [excavation_level]cm.</span>")
+			to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [excavation_level()]cm.</span>")
 		return
 
-	if (istype(W, /obj/item/weapon/pickaxe))
-		if(!istype(user.loc, /turf))
-			return
 
-		var/obj/item/weapon/pickaxe/P = W
-		if(last_act + P.digspeed > world.time)//prevents message spam
-			return
-		last_act = world.time
-
-		playsound(user, P.drill_sound, 20, 1)
-
-		var/newDepth = excavation_level + P.excavation_amount // Used commonly below
-		//handle any archaeological finds we might uncover
-		var/fail_message = ""
-		if(finds && finds.len)
-			var/datum/find/F = finds[1]
-			if(newDepth > F.excavation_required) // Digging too deep can break the item. At least you won't summon a Balrog (probably)
-				fail_message = ". <b>[pick("There is a crunching noise","[W] collides with some different rock","Part of the rock face crumbles away","Something breaks under [W]")]</b>"
-
-		to_chat(user, "<span class='notice'>You start [P.drill_verb][fail_message].</span>")
-
-		if(fail_message && prob(90))
-			if(prob(25))
-				excavate_find(prob(5), finds[1])
-			else if(prob(50))
-				finds.Remove(finds[1])
-				if(prob(50))
-					artifact_debris()
-
-		if(do_after(user,P.digspeed, src))
-			if(finds && finds.len)
-				var/datum/find/F = finds[1]
-				if(newDepth == F.excavation_required) // When the pick hits that edge just right, you extract your find perfectly, it's never confined in a rock
-					excavate_find(1, F)
-				else if(newDepth > F.excavation_required - F.clearance_range) // Not quite right but you still extract your find, the closer to the bottom the better, but not above 80%
-					excavate_find(prob(80 * (F.excavation_required - newDepth) / F.clearance_range), F)
-
-			to_chat(user, "<span class='notice'>You finish [P.drill_verb] \the [src].</span>")
-
-			if(newDepth >= 200) // This means the rock is mined out fully
-				var/obj/structure/boulder/B
-				if(artifact_find)
-					if( excavation_level > 0 || prob(15) )
-						//boulder with an artifact inside
-						B = new(src)
-						if(artifact_find)
-							B.artifact_find = artifact_find
-					else
-						artifact_debris(1)
-				else if(prob(5))
-					//empty boulder
-					B = new(src)
-
-				if(B)
-					GetDrilled(0)
-				else
-					GetDrilled(1)
-				return
-
-			excavation_level += P.excavation_amount
-			var/updateIcon = 0
-
-			//archaeo overlays
-			if(!archaeo_overlay && finds && finds.len)
-				var/datum/find/F = finds[1]
-				if(F.excavation_required <= excavation_level + F.view_range)
-					archaeo_overlay = "overlay_archaeo[rand(1,3)]"
-					updateIcon = 1
-
-			else if(archaeo_overlay && (!finds || !finds.len))
-				archaeo_overlay = null
-				updateIcon = 1
-
-			//there's got to be a better way to do this
-			var/update_excav_overlay = 0
-			if(excavation_level >= 150)
-				if(excavation_level - P.excavation_amount < 150)
-					update_excav_overlay = 1
-			else if(excavation_level >= 100)
-				if(excavation_level - P.excavation_amount < 100)
-					update_excav_overlay = 1
-			else if(excavation_level >= 50)
-				if(excavation_level - P.excavation_amount < 50)
-					update_excav_overlay = 1
-
-			//update overlays displaying excavation level
-			if( !(excav_overlay && excavation_level > 0) || update_excav_overlay )
-				var/excav_quadrant = round(excavation_level / 50) + 1
-				excav_overlay = "overlay_excv[excav_quadrant]_[rand(1,3)]"
-				updateIcon = 1
-
-			if(updateIcon)
-				update_icon()
-
-			//drop some rocks
-			next_rock += P.excavation_amount
-			while(next_rock > 50)
-				next_rock -= 50
-				var/obj/item/weapon/ore/O = new(src)
-				geologic_data.UpdateNearbyArtifactInfo(src)
-				O.geologic_data = geologic_data
-
+//Alt-clicking a mining turf does the opposite of what your tool normally does.
+	//If it defaults full dig, altclick does a single strike
+	//And if it defaults single strike, altclick does a full dig
+/turf/simulated/mineral/AltClick(var/mob/user)
+	var/obj/item/I = user.get_active_hand()
+	if (istype(I,/obj/item/weapon/tool/pickaxe))
+		var/obj/item/weapon/tool/pickaxe/P = I
+		return dig_with_tool(P, user, (!P.default_full_dig))
 	else
-		return ..()
+		return .=..()
+
 
 /turf/simulated/mineral/proc/clear_ore_effects()
 	overlays -= ore_overlay
@@ -296,7 +226,112 @@ var/list/mining_floors = list()
 		O.geologic_data = geologic_data
 	return O
 
-/turf/simulated/mineral/proc/GetDrilled(var/artifact_fail = 0)
+//The full dig var determines whether we're digging out the whole turf or just hitting it once
+/turf/simulated/mineral/proc/dig_with_tool(var/obj/item/I, var/mob/living/user, var/full_dig = null)
+	if (isnull(full_dig))
+		full_dig = TRUE
+		if (istype(I, /obj/item/weapon/tool/pickaxe))
+			var/obj/item/weapon/tool/pickaxe/P = I
+			full_dig = P.default_full_dig
+
+
+	var/dig_power = 0
+	dig_power = I.get_tool_quality(QUALITY_DIGGING)
+	var/effective_resistance = max(0, resistance - I.armor_penetration)
+
+	if (dig_power <= effective_resistance)
+		to_chat(user, SPAN_WARNING("[src] is too tough for this tool to dig through! You need a better tool."))
+		return
+
+	var/dig_time = (health / (dig_power - effective_resistance)) SECONDS
+	if (!full_dig)
+		dig_time = min(dig_time, 1 SECOND)
+
+	var/start_time = world.time
+	if (I.use_tool(user, src, dig_time, QUALITY_DIGGING, FAILCHANCE_EASY, sound_repeat = 1 SECONDS))
+		if (full_dig)	//If its a full dig, take all of our health
+			dig(health, user, I, TRUE)
+		else
+			dig(dig_power, user, I, FALSE)
+	else
+		//If the user aborts or fails the digging, the rock is still partially dug out, equal to 75% of the time spent digging
+		var/seconds_spent_digging = (0.75 * (world.time - start_time))*0.1
+		dig(dig_power * seconds_spent_digging)
+
+/turf/simulated/mineral/proc/dig(var/power, var/user, var/used_weapon, var/ignore_resistance = FALSE)
+	take_damage(power, BRUTE, user, used_weapon, ignore_resistance)
+	update_icon()
+
+	//The type of the turf will change if it is completely dug out
+	if (istype(src, /turf/simulated/mineral))
+		handle_finds(user)
+		update_excavation_overlay()
+		update_icon()
+
+/turf/simulated/mineral/proc/update_excavation_overlay()
+	//update overlays displaying excavation level
+	if( excavation_level() > 0)
+		var/excav_quadrant = round(excavation_level() / 50) + 1
+		excav_overlay = image('icons/turf/walls.dmi', "overlay_excv[excav_quadrant]_[rand(1,3)]")
+		excav_overlay.appearance_flags = RESET_COLOR
+		excav_overlay.turf_decal_layerise()
+		excav_overlay.rotate_random()
+
+/turf/simulated/mineral/proc/update_archaeo_overlay()
+	if (!LAZYLEN(finds))
+		archaeo_overlay = null
+	else
+		archaeo_overlay = image('icons/turf/walls.dmi', "overlay_archaeo[rand(1,3)]")
+		archaeo_overlay.appearance_flags = RESET_COLOR
+		archaeo_overlay.turf_decal_layerise()
+		archaeo_overlay.rotate_random()
+
+
+/turf/simulated/mineral/proc/handle_finds(var/mob/user)
+	if (!LAZYLEN(finds))
+		return
+
+	var/depth = excavation_level()
+	for (var/datum/find/F in finds)
+		if(depth > F.excavation_required) // Digging too deep can break the item. At least you won't summon a Balrog (probably)
+			var/fail_message = ". <b>[pick("There is a crunching noise","Part of the rock face crumbles away","Something breaks under your assault", "That didn't feel right")]</b>"
+
+			to_chat(user, SPAN_WARNING(fail_message))
+			if(prob(90))
+				if(prob(25))
+					excavate_find(prob(5), F)
+				else if(prob(50))
+					finds.Remove(F)
+					if(prob(50))
+						artifact_debris()
+		else if (depth == F.excavation_required)
+			excavate_find(TRUE, F)
+
+
+/turf/simulated/mineral/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/ignore_resistance = FALSE)
+	if (!ignore_resistance)
+		var/AP = 0
+		if (istype(used_weapon, /obj))
+			var/obj/O = used_weapon
+			AP = O.armor_penetration
+		var/effective_resistance = max(0, resistance - AP)
+		amount -= effective_resistance
+	if (amount <= 0)
+		return FALSE
+
+	health -= amount
+
+	if (health <= 0)
+		health = 0
+		return zero_health(amount, damtype, user, used_weapon, ignore_resistance)//Some zero health overrides do things with a return value
+	else
+		update_icon()
+		return TRUE
+
+/turf/simulated/mineral/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/ignore_resistance)
+	finish_mining()
+
+/turf/simulated/mineral/proc/finish_mining()
 	//var/destroyed = 0 //used for breaking strange rocks
 	if (mineral && mineral.result_amount)
 
@@ -304,30 +339,30 @@ var/list/mining_floors = list()
 		for (var/i = 1 to mineral.result_amount - mined_ore)
 			DropMineral()
 
-	//destroyed artifacts have weird, unpleasant effects
-	//make sure to destroy them before changing the turf though
-	if(artifact_find && artifact_fail)
-		var/pain = 0
-		if(prob(50))
-			pain = 1
-		for(var/mob/living/M in range(src, 200))
-			to_chat(M, "<font color='red'><b>[pick("A high pitched [pick("keening","wailing","whistle")]","A rumbling noise like [pick("thunder","heavy machinery")]")] somehow penetrates your mind before fading away!</b></font>")
-			if(pain)
-				flick("pain",M.pain)
-				if(prob(50))
-					M.adjustBruteLoss(5)
-			else
-				M.flash_eyes()
-				if(prob(50))
-					M.Stun(5)
-		SSradiation.flat_radiate(src, 25, 200)
-	//Add some rubble,  you did just clear out a big chunk of rock.
+	var/obj/structure/boulder/B
+	if(artifact_find)
+		if(prob(15))
+			//boulder with an artifact inside
+			B = new(src)
+			if(artifact_find)
+				B.artifact_find = artifact_find
+		else
+			artifact_debris(1)
+	else if(prob(5))
+		//empty boulder
+		B = new(src)
 
-	var/turf/simulated/floor/asteroid/N = ChangeTurf(mined_turf)
+	density = FALSE
+	opacity = FALSE
 
-	if(istype(N))
-		N.overlay_detail = "asteroid[rand(0,9)]"
-		N.updateMineralOverlays(1)
+	spawn()
+		var/turf/simulated/floor/asteroid/N = ChangeTurf(mined_turf)
+
+		if(istype(N))
+			N.overlay_detail = "asteroid[rand(0,9)]"
+			N.updateMineralOverlays(1)
+
+
 
 /turf/simulated/mineral/proc/excavate_find(var/prob_clean = 0, var/datum/find/F)
 
@@ -337,6 +372,7 @@ var/list/mining_floors = list()
 		if(!S)
 			visible_message("<span class='danger'>[pick("An object in the rock crumbles away into dust.","Something falls out of the rock and shatters onto the ground.")]</span>")
 			finds.Remove(F)
+			update_archaeo_overlay()
 			return
 
 	//with skill and luck, players can cleanly extract finds
@@ -350,6 +386,7 @@ var/list/mining_floors = list()
 		rock.geologic_data = geologic_data
 
 	finds.Remove(F)
+	update_archaeo_overlay()
 
 
 /turf/simulated/mineral/proc/artifact_debris(var/severity = 0)
@@ -389,12 +426,18 @@ var/list/mining_floors = list()
 				var/obj/item/stack/material/uranium/R = new(src)
 				R.amount = rand(5,25)
 
+
+
 /turf/simulated/mineral/random
 	name = "Mineral deposit"
 	var/mineralSpawnChanceList = list("Uranium" = 5, "Platinum" = 5, "Iron" = 35, "Carbon" = 35, MATERIAL_DIAMOND = 1, MATERIAL_GOLD = 5, MATERIAL_SILVER = 5, MATERIAL_PHORON = 10)
-	var/mineralChance = 100 //10 //means 10% chance of this plot changing to a mineral deposit
+	var/mineralChance = 1.5 //means 1% chance of this plot changing to a mineral deposit
 
-/turf/simulated/mineral/random/New()
+/turf/simulated/mineral/random/Initialize()
+	pick_mineral()
+	.=..()
+
+/turf/simulated/mineral/random/proc/pick_mineral()
 	if (prob(mineralChance) && !mineral)
 		var/mineral_name = pickweight(mineralSpawnChanceList) //temp mineral name
 		mineral_name = lowertext(mineral_name)
@@ -402,10 +445,8 @@ var/list/mining_floors = list()
 			mineral = ore_data[mineral_name]
 			UpdateMineral()
 
-	. = ..()
-
 /turf/simulated/mineral/random/high_chance
-	mineralChance = 100 //25
+	mineralChance = 25
 	mineralSpawnChanceList = list("Uranium" = 10, "Platinum" = 10, "Iron" = 20, "Carbon" = 20, MATERIAL_DIAMOND = 2, MATERIAL_GOLD = 10, MATERIAL_SILVER = 10, MATERIAL_PHORON = 20)
 
 
