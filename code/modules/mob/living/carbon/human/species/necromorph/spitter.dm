@@ -167,6 +167,7 @@
 
 //Longshot projectile. Good damage, no range limits, slower moving
 /obj/item/projectile/bullet/acid/spitter_long
+	name = "acid blast"
 	icon_state = "acid_large"
 	step_delay = 2
 	damage = 20
