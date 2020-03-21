@@ -29,18 +29,9 @@
 	folders["yellow folder"] = /obj/item/weapon/folder/yellow
 	gear_tweaks += new/datum/gear_tweak/path(folders)
 
-/datum/gear/utility/paicard
-	display_name = "personal AI device"
-	path = /obj/item/device/paicard
-
 /datum/gear/utility/camera
 	display_name = "camera"
 	path = /obj/item/device/camera
-
-/datum/gear/accessory/stethoscope
-	display_name = "stethoscope (medical)"
-	path = /obj/item/clothing/accessory/stethoscope
-	cost = 2
 
 /****************
 modular computers
