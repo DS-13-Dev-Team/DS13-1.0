@@ -559,3 +559,11 @@ proc/TextPreview(var/string,var/len=40)
 	var/where = "[A? A.name : "Unknown Location"] | [T.x], [T.y], [T.z]"
 	var/whereLink = "<A HREF='?src=\ref[user];jump_to=1;X=[T.x];Y=[T.y];Z=[T.z]'>[where]</a>"
 	return whereLink
+
+
+/proc/link_necromorphs_to(var/message, var/target)
+	for (var/key in SSnecromorph.necromorph_players)
+		var/mob/M = SSnecromorph.necromorph_players[key]
+		var/personal_message = replacetext(message, "LINK", jumplink_public(M, target))
+		to_chat(M, personal_message)
+

@@ -269,7 +269,7 @@
 	var/mob/user = params["user"]
 	if (!QDELETED(newthing))
 		newthing.set_dir(params["dir"])
-		to_chat(user, SPAN_NOTICE("Successfully spawned [newthing] at [jumplink(targetloc)]"))
+		to_chat(user, SPAN_NOTICE("Successfully spawned [newthing] at [jumplink_public(user, targetloc)]"))
 
 		if (params["queue"] && necroqueue_fill)
 			SSnecromorph.fill_vessel_from_queue(newthing, params["name"])

@@ -367,6 +367,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 	H.mob_size = mob_size
 	H.mass = src.mass
+	H.biomass = src.biomass
 	for(var/obj/item/organ/organ in H.contents)
 		if((organ in H.organs) || (organ in H.internal_organs))
 			qdel(organ)

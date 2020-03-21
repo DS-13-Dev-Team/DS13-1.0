@@ -21,6 +21,7 @@
 	icon_template = 'icons/mob/necromorph/leaper.dmi'
 	icon_lying = "_lying"
 	single_icon = FALSE
+	spawner_spawnable = TRUE
 
 	pixel_offset_x = -16
 
@@ -103,6 +104,7 @@
 
 	biomass = 240
 	biomass_reclamation = 0.75
+	spawner_spawnable = FALSE
 
 	inherent_verbs = list(/atom/movable/proc/leaper_leap_enhanced, /mob/living/carbon/human/proc/tailstrike_leaper_enhanced)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap_enhanced),

@@ -23,6 +23,7 @@
 	icon_lying = "twitcher"
 	icon_dead = "twitcher"
 	single_icon = TRUE
+	spawner_spawnable = FALSE
 
 	biomass	=	130
 
