@@ -62,6 +62,8 @@
 	var/cooldown = 20 SECONDS	//After the charge completes, it will stay on the user and block additional charges for this long
 	var/continue_check = TRUE	//Check for incapacitated status every step
 	var/delay
+	var/nomove_timeout	=	0.75 SECONDS	//After the charge starts, if we go this long without taking a step, end the charge
+	var/nomove_timer
 
 	//Runtime data
 	var/tiles_moved = 0
@@ -151,6 +153,8 @@
 
 	walk_towards(holder, move_target, SPEED_TO_TICKS(speed))
 
+	nomove_timer = addtimer(CALLBACK(src, .proc/stop_peter_out), nomove_timeout, TIMER_STOPPABLE)
+
 
 
 /datum/extension/charge/proc/stop()
@@ -163,6 +167,8 @@
 	stopped_at = world.time
 	if (lifespan_timer)
 		deltimer(lifespan_timer)
+
+	deltimer(nomove_timer)
 
 	//When we finish, we go on cooldown
 	if (cooldown && cooldown > 0)
@@ -267,6 +273,9 @@
 		stop_peter_out()
 		return FALSE
 
+	//Update the nomove timer when we move
+	deltimer(nomove_timer)
+	nomove_timer = addtimer(CALLBACK(src, .proc/stop_peter_out), nomove_timeout, TIMER_STOPPABLE)
 
 /datum/extension/charge/proc/get_total_power()
 	var/total = power
@@ -331,14 +340,13 @@
 		var/mob/living/L = holder
 		L.stunned = 0
 		L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved, 0,0,0, obstacle)
-		L.Stun(3*TP)
+		L.Stun(2*TP)
 	stop()
 
 //Called when we reach max time or range
 //Drain the user's stamina?
 /datum/extension/charge/proc/stop_peter_out()
 	if (isliving(holder))
-		//Damage the user and stun them
 		var/mob/living/L = holder
 		L.stunned = 0
 	stop()

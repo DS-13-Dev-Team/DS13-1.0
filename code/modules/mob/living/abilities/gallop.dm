@@ -82,7 +82,7 @@
 		user.visible_message(SPAN_DANGER("[user] crumples under the impact [istype(used_weapon, /obj) ? "of":"from"] [used_weapon]"))
 		stop_crash(used_weapon)
 
-/datum/extension/gallop/proc/user_bumped(var/atom/obstacle)
+/datum/extension/gallop/proc/user_bumped(var/mob/user, var/atom/obstacle)
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crashes into [obstacle]"))
 		stop_crash(obstacle)

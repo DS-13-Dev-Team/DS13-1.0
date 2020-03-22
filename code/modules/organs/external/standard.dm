@@ -42,8 +42,8 @@
 	name = "lower body"
 	organ_tag = BP_GROIN
 	icon_name = "groin"
-	max_damage = 45
-	min_broken_damage = 25
+	max_damage = 90
+	min_broken_damage = 50
 	w_class = ITEM_SIZE_LARGE
 	body_part = LOWER_TORSO
 	parent_organ = BP_CHEST
