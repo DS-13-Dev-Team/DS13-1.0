@@ -56,7 +56,8 @@
 	src.nomove = nomove
 	src.cooldown = cooldown
 
-	start()
+	spawn()
+		start()
 
 
 /datum/extension/shoot/proc/start()
