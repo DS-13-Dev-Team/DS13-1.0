@@ -15,7 +15,7 @@
 	.=..()
 	//Parent will return false if something stopped our charge
 	if (.)
-		//When the brute moves, it also impacts things in tiles either side of it
+		//When the brute moves, it also impacts mobs in tiles either side of it
 		var/charge_direction = get_dir(oldloc, newloc)
 		var/list/turfs = list(get_step(mover, turn(charge_direction, 90)), get_step(mover, turn(charge_direction, -90)))
 
@@ -24,14 +24,8 @@
 			if (!continue_charge)
 				break
 
-			if (T.density)
-				continue_charge = src.bump(mover, T)
-
-			if (!continue_charge)
-				break
-
-			for (var/atom/A in T)
-				if (ismob(A) || A.density)
+			for (var/mob/A in T)
+				if (ismob(A))
 					continue_charge = src.bump(mover, A)
 
 				if (!continue_charge)
