@@ -2039,6 +2039,7 @@
 #include "code\modules\mob\observer\freelook\ai\update_triggers.dm"
 #include "code\modules\mob\observer\freelook\cult\cultnet.dm"
 #include "code\modules\mob\observer\freelook\cult\mask.dm"
+#include "code\modules\mob\observer\freelook\marker\_defines.dm"
 #include "code\modules\mob\observer\freelook\marker\biomass.dm"
 #include "code\modules\mob\observer\freelook\marker\marker.dm"
 #include "code\modules\mob\observer\freelook\marker\master.dm"
