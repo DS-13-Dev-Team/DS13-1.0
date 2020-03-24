@@ -256,6 +256,7 @@
 #include "code\datums\communication\pray.dm"
 #include "code\datums\communication\~defines.dm"
 #include "code\datums\craft\item.dm"
+#include "code\datums\craft\lockout.dm"
 #include "code\datums\craft\menu.dm"
 #include "code\datums\craft\recipe.dm"
 #include "code\datums\craft\step.dm"
