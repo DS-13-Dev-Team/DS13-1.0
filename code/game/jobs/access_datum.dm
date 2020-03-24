@@ -81,7 +81,7 @@
 	desc = "Operating Theatre"
 	region = ACCESS_REGION_MEDBAY
 
-/var/const/access_tech_storage =14
+/var/const/access_tech_storage = 14
 /datum/access/tech_storage
 	id = access_tech_storage
 	desc = "Technical Storage"

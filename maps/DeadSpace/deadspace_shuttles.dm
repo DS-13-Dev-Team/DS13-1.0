@@ -147,8 +147,7 @@
 	number = 3
 /obj/effect/shuttle_landmark/escape_pod/transit/pod3
 	number = 3
-*/
-/*
+
 /datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod4
 	warmup_time = 10
 	shuttle_area = /area/shuttle/escape_pod4/station

@@ -1,9 +1,13 @@
 //Aegis VII Areas//
 /area/aegis
 	name = "\improper Aegis VII"
+	icon = 'maps/DeadSpace/ishimura_areas.dmi'
 
 /area/aegis/colony
 	name = "\improper Aegis Colony"
+
+/area/aegis/colony/airlock
+	name = "\improper Aegis External Airlock"
 
 /area/aegis/colony/breakroom
 	name = "\improper Colony Break Room"
@@ -39,12 +43,15 @@
 
 /area/aegis/colony/medical
 	name = "\improper Aegis Colony Medical Bay"
+	icon_state = "medicalbase"
 
 /area/aegis/colony/medical/surgery
 	name = "\improper Aegis Colony Surgical Suite"
+	icon_state = "surgery_one"
 
 /area/aegis/colony/security
 	name = "\improper Aegis Colony Security"
+	icon_state = "brig"
 
 /area/aegis/colony/spare_storage
 	name = "\improper Aegis Colony Spare Miner Supply"
