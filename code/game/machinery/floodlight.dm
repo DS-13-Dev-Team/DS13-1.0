@@ -157,3 +157,9 @@
 
 /obj/machinery/floodlight/AltClick()
 	rotate()
+
+/obj/machinery/floodlight/on
+    use = 50
+
+/obj/machinery/floodlight/on/Initialize()
+    turn_on()
