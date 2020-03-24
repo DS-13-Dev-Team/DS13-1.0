@@ -59,8 +59,14 @@
 /datum/craft_step/proc/can_apply(obj/item/I, mob/living/user, atom/target = null)
 	//User can't craft things if they're restrained
 	//However, we ignore this check if there is no user. Crafting could be done automatically by a script
-	if (user && user.incapacitated())
-		return FALSE
+	if (user)
+		if (user.incapacitated())
+			return FALSE
+
+		var/datum/extension/craft_lockout/CL = get_extension(user, /datum/extension/craft_lockout)
+		if (istype(CL))
+			//Already crafting
+			return FALSE
 
 	//The item needs to be close to the target object
 	//A bunch of extra safety checks for target, it might be nonexistent or in nullspace
@@ -87,11 +93,15 @@
 	if (!user)
 		return TRUE //Automated crafting by code
 
+	//Prevent spamclicking
+	apply_craft_lockout(user, time)
+
 	//A doafter for the work time
 	if (do_after(user, time, ( (target && isturf(target.loc)) ? target : user) ) ) //We use the target as the target if it exists, and isn't in nullspace
-		return TRUE
-
-	return FALSE
+		.= TRUE
+	else
+		.= FALSE
+	release_craft_lockout(user)
 
 
 //In post apply, we consume resources, delete ingredients, etc

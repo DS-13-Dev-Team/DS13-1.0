@@ -79,6 +79,11 @@
 	if (!T)
 		return FALSE
 
+	var/datum/extension/craft_lockout/CL = get_extension(user, /datum/extension/craft_lockout)
+	if (istype(CL))
+		//Already crafting
+		return FALSE
+
 	//CRAFT_ON_SURFACE flag requires you to work on a table or bench. It must be on the tile directly infront of the user
 	//This check is skipped if there is no user
 	if (user && (flags & CRAFT_ON_SURFACE))

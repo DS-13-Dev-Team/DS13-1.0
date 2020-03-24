@@ -76,9 +76,9 @@
 	tool_qualities = list()
 	switched_on_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20, QUALITY_DIGGING = 35)
 	max_upgrades = 4
-	degradation = 0.05
-	use_power_cost = 0.22
-	passive_power_cost = 0.03
+	degradation = 0.1
+	use_power_cost = 0.44
+	passive_power_cost = 0.04
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
 	atom_flags = ATOM_FLAG_NO_BLOOD

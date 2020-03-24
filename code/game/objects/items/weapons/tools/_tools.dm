@@ -722,7 +722,7 @@
 ****************************/
 /obj/item/weapon/tool/proc/refresh_upgrades()
 //First of all, lets reset any var that could possibly be altered by an upgrade
-	degradation = initial(degradation) * 1.05 ** repair_frequency //Degradation gets slightly worse each time the tool is repaired
+	degradation = initial(degradation) * 1.10 ** repair_frequency //Degradation gets slightly worse each time the tool is repaired
 	workspeed = initial(workspeed)
 	precision = initial(precision)
 	suitable_cell = initial(suitable_cell)
