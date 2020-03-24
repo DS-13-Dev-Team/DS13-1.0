@@ -147,6 +147,6 @@ mob/observer/check_airflow_movable()
 
 	//Get rid of any view offsets from the last mob we inhabited
 	if (client)
-		client.set_view_range(world.view)
+		client.set_view_range(world.view, TRUE)
 		client.pixel_x = 0
 		client.pixel_y = 0
