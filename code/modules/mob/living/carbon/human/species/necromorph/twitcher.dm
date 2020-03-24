@@ -95,9 +95,13 @@
 
 //Twitcher charge
 //Aside from being faster moving, it also kicks off with a shortrange teleport, and has a much lower cooldown
-/mob/living/carbon/human/proc/twitcher_charge(var/atom/A)
+/mob/living/carbon/human/proc/twitcher_charge(var/mob/living/A)
 	set name = "Charge"
 	set category = "Abilities"
+
+	//Charge autotargets enemies within one tile of the clickpoint
+	if (!isliving(A))
+		A = autotarget_enemy_mob(A, 1, src, 999)
 
 
 	.= charge_attack(A, _delay = 1.3 SECONDS, _speed = 7, _cooldown = 6 SECONDS)

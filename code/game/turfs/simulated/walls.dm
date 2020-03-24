@@ -210,11 +210,11 @@
 /turf/simulated/wall/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			take_damage(rand(250, 400))
+			take_damage(rand(500, 800))
 		if(2.0)
-			take_damage(rand(150, 250))
+			take_damage(rand(250, 400))
 		if(3.0)
-			take_damage(rand(0, 150))
+			take_damage(rand(100, 200))
 		else
 	return
 

@@ -171,9 +171,13 @@
 /*
 	Abilities
 */
-/atom/movable/proc/slasher_charge(var/atom/A)
+/atom/movable/proc/slasher_charge(var/mob/living/A)
 	set name = "Charge"
 	set category = "Abilities"
+
+	//Charge autotargets enemies within one tile of the clickpoint
+	if (!isliving(A))
+		A = autotarget_enemy_mob(A, 1, src, 999)
 
 
 	.= charge_attack(A, _delay = 1 SECONDS, _speed = 5.5, _lifespan = 6 SECONDS)
@@ -190,10 +194,13 @@
 		shake_animation(30)
 
 
-/atom/movable/proc/slasher_charge_enhanced(var/atom/A)
+/atom/movable/proc/slasher_charge_enhanced(var/mob/living/A)
 	set name = "Charge"
 	set category = "Abilities"
 
+	//Charge autotargets enemies within one tile of the clickpoint
+	if (!isliving(A))
+		A = autotarget_enemy_mob(A, 1, src, 999)
 
 	.= charge_attack(A, _delay = 0.75 SECONDS, _speed = 6.5, _lifespan = 6 SECONDS)
 	if (.)

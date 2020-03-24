@@ -140,9 +140,13 @@
 
 
 //Leap attack
-/atom/movable/proc/leaper_leap(var/atom/A)
+/atom/movable/proc/leaper_leap(var/mob/living/A)
 	set name = "Leap"
 	set category = "Abilities"
+
+	//Leap autotargets enemies within one tile of the clickpoint
+	if (!isliving(A))
+		A = autotarget_enemy_mob(A, 1, src, 999)
 
 	var/mob/living/carbon/human/H = src
 
@@ -162,9 +166,13 @@
 	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 1.5 SECONDS, _speed = 6, _maxrange = 11,_lifespan = 8 SECONDS, _maxrange = 20)
 
 
-/atom/movable/proc/leaper_leap_enhanced(var/atom/A)
+/atom/movable/proc/leaper_leap_enhanced(var/mob/living/A)
 	set name = "Leap"
 	set category = "Abilities"
+
+	//Leap autotargets enemies within one tile of the clickpoint
+	if (!isliving(A))
+		A = autotarget_enemy_mob(A, 1, src, 999)
 
 	var/mob/living/carbon/human/H = src
 
