@@ -1,4 +1,4 @@
-//DO NOT INCLUDE THIS FILE
+w//DO NOT INCLUDE THIS FILE
 //ITs here as a template for abilites to copypaste
 
 //spray
@@ -29,6 +29,9 @@
 	var/ongoing_timer
 
 	var/list/affected_turfs
+
+	var/obj/effect/chem_spray/FX
+	var/direction
 
 /*
 Vars/
@@ -67,12 +70,15 @@ Vars/
 
 /datum/extension/spray/proc/recalculate_cone()
 	affected_turfs = list()
-	var/vector2/direction = VecDirectionBetween(holder.get_global_pixel_loc(), target)
+	direction = VecDirectionBetween(holder.get_global_pixel_loc(), target)
 	affected_turfs = get_cone(holder, direction, length, angle)
 
 /datum/extension/spray/proc/start()
 	started_at	=	world.time
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/stop), duration)
+
+	//Lets create the chemspray fx
+	fx = new
 
 
 /datum/extension/spray/proc/stop()
@@ -118,9 +124,63 @@ Vars/
 /***********************
 	Spray visual effect
 ************************/
-/obj/effect/chem_spray
-	var/cached_rotation
-	var/vector2/target_point
+/*
+	Particle System
+*/
+/obj/effect/particle_system
+	var/angle
+	var/direction
+	var/atom/origin
+	var/tick_delay = 0.2 SECONDS
+	var/particles_per_tick = 3
+	var/particle_lifetime = 0.85
+	var/particle_type = /obj/effect/particle
+	var/randpixel = 5
+
+/obj/effect/chem_spray(var/atom/location, var/atom/host, var/initial_target)
+	origin = host
+	if (initial(target))
+
+
+/obj/effect/chem_spray/set_target(var/vector2/target)
+	target_point = target
+	direction = VecDirectionBetween(origin.get_global_pixel_loc(), target)
+	cached_rotation = direction.Rotation()
+
+/obj/effect/chem_spray/tick()
+	if (loc != origin.loc)
+		forceMove(origin.loc)
+
+	for (var/i in 1 to particles_per_tick)
+
+		//Lets calculate a random angle for this particle
+		var/particle_angle = rand_between(0, angle) - angle*0.5	//We subtract half the angle to centre it
+		var/particle_direction = direction.Turn(particle_angle)
+
+		var/obj/effect/particle/S = new(loc, direction, var/lifespan)
+
+
+
+/*
+	Individual Particle
+*/
+/obj/effect/particle/spray
+	name = "spray"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "spray"
+	density = 0
+	dir = NORTH
+	randpixel
+
+/obj/effect/spray_particle/New(var/location, var/direction, var/lifespan)
+	transform = turn(transform, starting_rotation)
+	//Sprays will reach the target length with half movement and half stretching)
+	var/matrix/target_transform = new(transform)
+	target_transform = transform.Scale(0, 0.5*length)
+	animate(src, transform = target_transform, alpha = 0, time = lifespan)
+	QDEL_IN(src, lifespan)
+	.=..()
+
 
 
 /*-----------------------
