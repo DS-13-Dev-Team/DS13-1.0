@@ -229,7 +229,8 @@ var/global/list/additional_antag_types = list()
 		antag.post_spawn()
 
 	if(evacuation_controller && auto_recall_shuttle)
-		evacuation_controller.recall = 1
+		evacuation_controller.auto_recall(auto_recall_shuttle)
+
 
 	feedback_set_details("round_start","[time2text(world.realtime)]")
 	if(ticker && ticker.mode)

@@ -248,6 +248,8 @@ var/list/airlock_overlays = list()
 	assembly_type = /obj/structure/door_assembly/door_assembly_ext
 	door_color = COLOR_NT_RED
 	paintable = AIRLOCK_PAINTABLE
+	min_force = 18	//These external airlocks are veeery tough, slashers will probably not be able to break through in any reasonable period
+	health = 350
 
 /obj/machinery/door/airlock/external/bolted
 	locked = 1
@@ -1244,8 +1246,12 @@ About the new airlock wires panel:
 	return ..()
 
 /obj/machinery/door/airlock/close(var/forced=0)
+
 	if(!can_close(forced))
 		return 0
+
+	crash_with("Airlock closing at [x] [y] [z]")
+	world << "Airlock closing at [jumplink(src)]"
 
 	if(safe)
 		for(var/turf/turf in locs)

@@ -28,23 +28,22 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/Topic(href, href_list)
-	if(..())
-		return 1
+/obj/machinery/embedded_controller/radio/simple_docking_controller/OnTopic(user, href_list)
 
-	usr.set_machine(src)
-
-	var/clean = 0
+	world << "Escape pod toggle override 1?[href_list["command"]]"
+	var/clean = FALSE
 	switch(href_list["command"])	//anti-HTML-hacking checks
 		if("force_door")
 			clean = 1
 		if("toggle_override")
+			world << "Escape pod toggle override? 2 "
 			clean = 1
 
 	if(clean)
 		program.receive_user_command(href_list["command"])
+		return TOPIC_REFRESH
 
-	return 0
+	return ..()
 
 
 //A docking controller program for a simple door based docking port
@@ -84,6 +83,7 @@
 				else
 					open_door()
 		if("toggle_override")
+			world << "Escape pod toggle override? 3 "
 			if (override_enabled)
 				disable_override()
 			else
