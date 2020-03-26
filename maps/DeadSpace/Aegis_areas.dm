@@ -1,25 +1,32 @@
 //Aegis VII Areas//
+
 /area/aegis
 	name = "\improper Aegis VII"
 	icon = 'maps/DeadSpace/ishimura_areas.dmi'
+	icon_state = "aegis"
 
 /area/aegis/colony
 	name = "\improper Aegis Colony"
+	icon_state = "crewbase"
 
 /area/aegis/colony/airlock
 	name = "\improper Aegis External Airlock"
+	icon_state = "miscbase"
 
 /area/aegis/colony/breakroom
 	name = "\improper Colony Break Room"
+	icon_state = "crewbase"
 
 /area/aegis/colony/engineering
 	name = "\improper Aegis Colony Engineering"
+	icon_state = "engibase"
 
 /area/aegis/colony/engineering/maintenance
 	name = "\improper Aegis Colony Maintenance - North"
 
 /area/aegis/colony/hangar
 	name = "\improper Aegis Colony Hangar"
+	icon_state = "miscbase"
 
 /area/aegis/colony/hangar/entrance
 	name = "\improper Hangar Entrance"
@@ -31,6 +38,7 @@
 	name = "\improper Hangar Entrance Two"
 
 /area/aegis/colony/maintenance
+	icon_state = "maintbase"
 
 /area/aegis/colony/maintenance/north
 	name = "\improper Aegis Colony Maintenance - North"
@@ -55,3 +63,4 @@
 
 /area/aegis/colony/spare_storage
 	name = "\improper Aegis Colony Spare Miner Supply"
+	icon_state = "miningbase"
