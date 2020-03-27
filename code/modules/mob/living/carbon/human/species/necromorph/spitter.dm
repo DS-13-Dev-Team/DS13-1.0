@@ -70,6 +70,34 @@
 	delay = 16
 	airlock_force_power = 1.5
 
+#define SPITTER_PASSIVE	"<h2>PASSIVE: No Friendly Fire:</h2><br>\
+All projectiles fired by this necromorph will harmlessly pass over other necromorphs, and will only hit enemies."
+
+
+#define SPITTER_SNAP_DESC	"<h2>Snapshot:</h2><br>\
+<h3>Hotkey: Middle Click </h3><br>\
+<h3>Cooldown: 3 seconds</h3><br>\
+Fires an instant autoaimed shot at a target within a 5 tile range, dealing 10 burn damage on hit. <br>\
+In addition, it douses the victim in acid, dealing up to 10 additional burn damage over time <br>\
+<br>\
+Snapshot requires no manual aiming at all, and is thusly great to use in the middle of a chaotic brawl, to deal extra damage to humans who are already in melee"
+
+
+#define SPITTER_LONGSHOT_DESC "<h2>Long Shot:</h2><br>\
+<h3>Hotkey: Alt+Click</h3><br>\
+After a half-second windup, Fires a long ranged unguided bolt of acid, dealing 20 burn damage on hit<br>\
+In addition, it douses the victim in acid, dealing up to 20 additional burn damage over time <br>\
+Long shot is powerful and has no cooldown, but is easily dodged<br>\
+
+Best used for harassment, skirmishing and initiating fights from afar against unwary targets"
+
+/datum/species/necromorph/slasher/spitter/get_ability_descriptions()
+	.= ""
+	. += SPITTER_PASSIVE
+	. += "<hr>"
+	. += SPITTER_SNAP_DESC
+	. += "<hr>"
+	. += SPITTER_LONGSHOT_DESC
 
 /*
 	Snapshot fires a highly accurate projectile which autoaims at a nearby target.

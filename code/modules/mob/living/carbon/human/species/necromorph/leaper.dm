@@ -93,6 +93,43 @@
 	'sound/effects/creatures/necromorph/leaper/leaper_speech_4.ogg')
 	)
 
+#define LEAPER_LEAP_DESC	"<h2>Leap:</h2><br>\
+<h3>Hotkey: Ctrl+Alt+Click </h3><br>\
+<h3>Cooldown: 6 seconds</h3><br>\
+The user screams for a few seconds, then leaps through the air towards the target at high speed. If they successfully hit the target, that target is knocked down, leaving them vulnerable to followup attacks.<br>\
+Leap has some autoaim, clicking within 1 tile of a living mob is enough to target them. It will not home in on targets though, so you're in trouble if they move after you start.<br>\
+While in the air, the leaper doesn't count as touching the ground, and will harmlessly soar over ground traps and barricades<br>\
+If the user hits a solid obstacle while leaping, they will be knocked down and take some moderate damage. The obstacle will also be hit hard, and destroyed in some cases. <br>\
+<br>\
+Leap is best used to initiate a fight by ambushing an unaware opponent. Combined with the leaper's long vision range, you can jump on someone before they've even seen you, and catch them by surprise"
+
+
+#define LEAPER_TAILSTRIKE_DESC "<h2>Tailstrike:</h2><br>\
+<h3>Hotkey: Alt+Click</h3><br>\
+<h3>Cooldown: 2.5 seconds</h3><br>\
+The leaper stands on its arms, swinging its tail around over 0.75 seconds to deal a powerful hit to a target up to 2 tiles away.<br>\
+Tailstrike hits hard, and can even destroy obstacles, but it is slow, heavily telegraphed, and easy to dodge. Very difficult to land on a target that won't stay still<br>\
+
+Best used to finish off stunned/downed/injured victims, or for smashing a path through doors and terrain"
+
+#define LEAPER_GALLOP_DESC "<h2>Gallop:</h2><br>\
+<h3>Hotkey: Ctrl+Shift+Click</h3><br>\
+<h3>Cooldown: 10 seconds</h3><br>\
+The leaper breaks into a gallop, gaining a HUGE boost to speed for 4 seconds. During this time it briefly becomes the fastest of all necromorphs.<br>\
+While galloping, the leaper is very vulnerable. Taking any damage, or bumping into any obstacles, will cause it to collapse and become stunned for a while<br>\
+
+Gallop is great to use to follow up a Leap into battle, allowing you to quickly escape before your victim gets their bearings and hits you. <br>\
+It can be used to chase down a fleeing opponent, to move along long hallways quickly, and it also allows the leaper to serve as a beast of burden, dragging corpses back faster than anyone else can."
+
+/datum/species/necromorph/leaper/get_ability_descriptions()
+	.= ""
+	. += LEAPER_LEAP_DESC
+	. += "<hr>"
+	. += LEAPER_TAILSTRIKE_DESC
+	. += "<hr>"
+	. += LEAPER_GALLOP_DESC
+
+
 /datum/species/necromorph/leaper/enhanced
 	name = SPECIES_NECROMORPH_LEAPER_ENHANCED
 	marker_spawnable = FALSE 	//Enable this once we have sprites for it

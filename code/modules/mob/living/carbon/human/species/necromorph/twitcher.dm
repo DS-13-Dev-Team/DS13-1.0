@@ -85,6 +85,42 @@
 	'sound/effects/footstep/twitcher_footstep_4.ogg')
 	)
 
+#define TWITCHER_PASSIVE	"<h2>PASSIVE: Temporal Displacement:</h2><br>\
+The twitcher is out of phase with normal time as a result of a stasis module embedded in their body. This causes them to randomly displace in a random direction periodically while moving<br>\
+
+When hit by any attack, a defensive effect triggers, that attack deals 75% less damage, and the twitcher blinks one tile in a random direction. <br>\
+This defensive effect has a cooldown of 3 seconds."
+
+
+#define TWITCHER_CHARGE_DESC	"<h2>Charge:</h2><br>\
+<h3>Hotkey: Ctrl+Alt+Click </h3><br>\
+<h3>Cooldown: 6 seconds</h3><br>\
+The user screams for a few seconds, teleports 2 tiles towards the target, then runs the rest of the distance towards the target at extreme speed. If they successfully hit the target, they deal two free melee attacks on impact.<br>\
+Charge has some autoaim, clicking within 1 tile of a living mob is enough to target them. It will also attempt to home in on targets, but will not path around obstacles<br>\
+If the user hits a solid obstacle while charging, they will be stunned and take some minor damage. The obstacle will also be hit hard, and destroyed in some cases. <br>\
+<br>\
+Charge is a great move to initiate a fight, or to damage obstacles blocking your path. If you manage to land that first hit on a human, it is devastating, and often fatal."
+
+
+#define TWITCHER_STEPSTRIKE_DESC "<h2>Step Strike:</h2><br>\
+<h3>Hotkey: Middle Click</h3><br>\
+<h3>Cooldown: 3 seconds</h3><br>\
+The user teleports up to 2 tiles towards a nearby enemy, and then deals a free melee attack to them.<br>\
+This ability is completely autoaimed, picking a random target, and always moving to a new position even if the target is already in reach. Naturally, this constant movement makes the user hard to shoot at.<br>\
+Step strike puts your melee attack on cooldown, but it can still be used if your attack is already cooling. So for optimal damage output, use it immediately after landing a normal hit.<br>\
+
+All of these properties combined make Step Strike tricky and disorienting to use, but when used properly, the twitcher is a master close combatant"
+
+/datum/species/necromorph/slasher/twitcher/get_ability_descriptions()
+	.= ""
+	. += TWITCHER_PASSIVE
+	. += "<hr>"
+	. += TWITCHER_CHARGE_DESC
+	. += "<hr>"
+	. += TWITCHER_STEPSTRIKE_DESC
+
+
+
 //Setup the twitch extension which handles a lot of the special behaviour
 /datum/species/necromorph/slasher/twitcher/add_inherent_verbs(var/mob/living/carbon/human/H)
 	.=..()

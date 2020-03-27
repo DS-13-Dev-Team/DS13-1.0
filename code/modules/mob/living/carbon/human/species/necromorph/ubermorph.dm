@@ -93,6 +93,51 @@
 	inherent_verbs = list(/mob/living/carbon/human/proc/ubermorph_battlecry, /mob/living/carbon/human/proc/ubermorph_regenerate, /mob/living/carbon/human/proc/ubermorph_lunge, /mob/proc/shout, /mob/proc/sense_verb)
 	modifier_verbs = list(KEY_CTRLALT = list(/mob/living/carbon/human/proc/ubermorph_battlecry), KEY_CTRLSHIFT = list(/mob/proc/sense_verb), KEY_ALT = list(/mob/living/carbon/human/proc/ubermorph_lunge))
 
+#define UBERMORPH_PASSIVE	"<h2>PASSIVE: Immortal:</h2><br>\
+The Ubermorph cannot be killed by any means. While it can be dismembered, those limbs can always grow back, and its chest can never be destroyed. <br>\
+No amount of damage can finish it off, not even massive explosives can do the trick. Any damage dealt is just delaying the inevitable, ubermorph cannot die.<br>\
+<br>\
+In addition, the ubermorph passively regenerates 4 health per second."
+
+#define UBERMORPH_REGENERATE_DESC	"<h2>Regenerate:</h2><br>\
+The Ubermorph starts shaking and screaming in pain, as it regrows a missing limb and heals 40 health, over a period of 4 seconds. Even the head can be regrown."
+
+
+#define UBERMORPH_LUNGE_DESC	"<h2>Lunge:</h2><br>\
+<h3>Hotkey: Alt+Click </h3><br>\
+The user rears back for half a second, then stabs forward up to two tiles, punching through any human in the way. The victim takes 30 brute damage, and also heavy damage to an internal organ.<br>\
+Targeted at the chest or head, this will cause an injury that will usually result in inevitable death. It can also be used to deal heavy damage to obstacles, enabling doors and walls to be quickly broken down"
+
+
+#define UBERMORPH_BATTLECRY_DESC "<h2>Battlecry:</h2><br>\
+<h3>Hotkey: Ctrl+Alt+Click</h3><br>\
+<h3>Cooldown: 30 seconds</h3><br>\
+The ubermorph drives all nearby allies into a psychic frenzy, granting them a 30% increase to movespeed and attackspeed. Note that attackspeed affects cooldowns of attacks and abilities, and windup times on abilities.<br>\
+This effect lasts for 60 seconds. Multiple applications will refresh the duration, but do not stack.<br>\
+In addition, battlecry deals 15 damage to all visible enemies.<br>\
+Battlecry is best used just before an assault to break the last of the human resistance. If things somehow go south, the damage effect can also be used to scare off people attempting to hold the ubermorph hostage by repeatedly dismembering it."
+
+#define UBERMORPH_SENSE_DESC "<h2>Sense:</h2><br>\
+<h3>Hotkey: Ctrl+Shift+Click</h3><br>\
+<h3>Cooldown: 12 seconds</h3><br>\
+The ubermorph sends out a psychic pulse, detecting all living beings in a radius of 9 tiles. Any humans detected in this matter will be shown onscreen, both to the ubermorph,and to any other nearby necromorphs.<br>\
+Sense does not require line of sight, and it can detect people in other rooms, behind walls, in total darkness, or hiding inside objects, like lockers, morgue-drawers, vehicles, etc.<br>\
+<br>\
+Best used near the end, when all seems quiet, to help the necromorphs hunt down any last survivors that are trying to hide."
+
+
+/datum/species/necromorph/ubermorph/get_ability_descriptions()
+	.= ""
+	. += UBERMORPH_PASSIVE
+	. += "<hr>"
+	. += UBERMORPH_REGENERATE_DESC
+	. += "<hr>"
+	. += UBERMORPH_LUNGE_DESC
+	. += "<hr>"
+	. += UBERMORPH_BATTLECRY_DESC
+	. += "<hr>"
+	. += UBERMORPH_SENSE_DESC
+
 /datum/species/necromorph/ubermorph/get_healthstring()
 	return "&#8734;"	//The ubermorph has infinite health, lets try to communicate that
 
