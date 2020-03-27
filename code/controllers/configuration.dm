@@ -5,6 +5,7 @@ var/list/gamemode_cache = list()
 	var/server_suffix = 0				// generate numeric suffix based on server port
 
 	var/log_ooc = 0						// log OOC channel
+	var/log_necro = 0					// log necrochat
 	var/log_access = 0					// log login/logout
 	var/log_say = 0						// log client say
 	var/log_admin = 0					// log admin actions
@@ -315,6 +316,9 @@ var/list/gamemode_cache = list()
 
 				if ("log_ooc")
 					config.log_ooc = TRUE
+
+				if ("log_necro")
+					config.log_necro = TRUE
 
 				if ("log_access")
 					config.log_access = TRUE

@@ -79,6 +79,11 @@
 	if (config.log_ooc)
 		game_log("OOC", text)
 
+
+/proc/log_necro(text)
+	if (config.log_necro)
+		game_log("NECRO", text)
+
 /proc/log_whisper(text)
 	if (config.log_whisper)
 		game_log("WHISPER", text)
