@@ -1246,12 +1246,9 @@ About the new airlock wires panel:
 	return ..()
 
 /obj/machinery/door/airlock/close(var/forced=0)
-
 	if(!can_close(forced))
 		return 0
 
-	crash_with("Airlock closing at [x] [y] [z]")
-	world << "Airlock closing at [jumplink(src)]"
 
 	if(safe)
 		for(var/turf/turf in locs)
