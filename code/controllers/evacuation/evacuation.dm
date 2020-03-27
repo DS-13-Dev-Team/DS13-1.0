@@ -1,9 +1,4 @@
-#define EVAC_IDLE       0
-#define EVAC_PREPPING   1
-#define EVAC_LAUNCHING  2
-#define EVAC_IN_TRANSIT 3
-#define EVAC_COOLDOWN   4
-#define EVAC_COMPLETE   5
+
 
 var/datum/evacuation_controller/evacuation_controller
 
@@ -12,7 +7,7 @@ var/datum/evacuation_controller/evacuation_controller
 	var/name = "generic evac controller"
 	var/state = EVAC_IDLE
 	var/deny
-	var/recall
+	var/recall = FALSE
 	var/auto_recall_time
 	var/emergency_evacuation
 
@@ -95,7 +90,7 @@ var/datum/evacuation_controller/evacuation_controller
 		if(!skip_announce)
 			GLOB.using_map.emergency_shuttle_called_announcement()
 	else
-		if(!skip_announce)
+		if(!skip_announce && GLOB.using_map.shuttle_called_message)
 			priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_called_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[round(get_eta()/60)] minute\s"))
 
 	return 1
@@ -131,7 +126,8 @@ var/datum/evacuation_controller/evacuation_controller
 
 	var/estimated_time = round(get_eta()/60,1)
 	if (emergency_evacuation)
-		evac_waiting.Announce(replacetext(GLOB.using_map.emergency_shuttle_docked_message, "%ETD%", "[estimated_time] minute\s"), new_sound = sound('sound/effects/Evacuation.ogg', volume = 35))
+		if (GLOB.using_map.emergency_shuttle_docked_message)
+			evac_waiting.Announce(replacetext(GLOB.using_map.emergency_shuttle_docked_message, "%ETD%", "[estimated_time] minute\s"), new_sound = sound('sound/effects/Evacuation.ogg', volume = 35))
 	else
 		priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_docked_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
 	if(config.announce_shuttle_dock_to_irc)

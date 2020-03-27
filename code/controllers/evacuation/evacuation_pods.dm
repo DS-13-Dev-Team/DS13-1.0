@@ -8,8 +8,8 @@
 /datum/evacuation_controller/starship
 	name = "escape pod controller"
 
-	evac_prep_delay    = 5 MINUTES
-	evac_launch_delay  = 3 MINUTES
+	evac_prep_delay    = 0
+	evac_launch_delay  = 8 MINUTES
 	evac_transit_delay = 2 MINUTES
 
 	transfer_prep_additional_delay     = 15 MINUTES
@@ -30,6 +30,11 @@
 		for (var/datum/shuttle/autodock/ferry/escape_pod/pod in escape_pods)
 			if (pod.arming_controller)
 				pod.arming_controller.arm()
+
+/datum/evacuation_controller/starship/get_eta()
+	if(state == EVAC_PREPPING)
+		return (evac_launch_time ? (evac_launch_time - world.time)/10 : -1)
+	return ..()
 
 /datum/evacuation_controller/starship/launch_evacuation()
 
