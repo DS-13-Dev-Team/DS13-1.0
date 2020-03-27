@@ -1,5 +1,6 @@
 
 #define CELL_VOLUME        2500 // Liters in a cell.
+#define CELL_HEIGHT       	2.5 // Height of a turf in metres
 #define MOLES_CELLSTANDARD (ONE_ATMOSPHERE*CELL_VOLUME/(T20C*R_IDEAL_GAS_EQUATION)) // Moles in a 2.5 m^3 cell at 101.325 kPa and 20 C.
 
 #define O2STANDARD 0.21 // Percentage.
