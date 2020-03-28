@@ -2,7 +2,7 @@ datum/map/ishimura
 	emergency_shuttle_docked_message = ""
 	emergency_shuttle_leaving_dock = "Attention all hands: the escape pods have been launched, arriving at rendezvous point in %ETA%."
 
-	emergency_shuttle_called_message = "Attention all hands: emergency evacuation procedures are now in effect. The escape pods are now unlocked. You have %ETA% to board the escape pods."
+	emergency_shuttle_called_message = "Attention all hands: emergency evacuation procedures are now in effect. The escape pods are now unlocked, you have %ETA%"
 	emergency_shuttle_called_sound = sound('sound/AI/torch/abandonship.ogg', volume = 45)
 
 	emergency_shuttle_recall_message = "Attention all hands: emergency evacuation sequence aborted. Return to normal operating conditions."

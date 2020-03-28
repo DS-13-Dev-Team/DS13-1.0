@@ -123,7 +123,7 @@
 /obj/effect/shuttle_landmark/escape_pod/transit/pod1
 	number = 1
 
-/*
+
 /datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod2
 	warmup_time = 10
 	shuttle_area = /area/shuttle/escape_pod2/station
@@ -219,7 +219,7 @@
 	number = 9
 /obj/effect/shuttle_landmark/escape_pod/transit/pod9
 	number = 9
-*/
+
 
 //////// ERT SHUTTLES \\\\\\\\
 
