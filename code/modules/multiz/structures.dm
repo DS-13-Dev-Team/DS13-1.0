@@ -103,15 +103,15 @@
 
 	var/action_time = climb_time
 	if (M.pulling)
-		action_time += M.pulling.mass
+		action_time += M.pulling.mass * 1.5
 		to_chat(M, SPAN_WARNING("Dragging [M.pulling] along with you makes climbing slow"))
 
 	for(var/obj/item/grab/G in M)
 		if (G.affecting)
-			action_time += G.affecting.mass
+			action_time += G.affecting.mass * 1.5
 			to_chat(M, SPAN_WARNING("Dragging [G.affecting] along with you makes climbing slow"))
 
-	if(do_after(M, climb_time, src))
+	if(do_after(M, action_time, src))
 		climbLadder(M, target_ladder)
 		for (var/obj/item/grab/G in M)
 			G.adjust_position(force = 1)
