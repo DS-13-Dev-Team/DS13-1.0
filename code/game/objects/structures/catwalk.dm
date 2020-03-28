@@ -16,14 +16,27 @@
 		'sound/effects/footstep/catwalk4.ogg',
 		'sound/effects/footstep/catwalk5.ogg')
 
+/obj/structure/catwalk/register_zstructure(var/turf/T)
+	LAZYSET(T.zstructures, src, 1)	//Ladders have a ztransition priority of 2 to overrule other things
+
 /obj/structure/catwalk/Initialize()
 	. = ..()
 	for(var/obj/structure/catwalk/C in get_turf(src))
 		if(C != src)
 			qdel(C)
+	var/turf/T = get_turf(src)
+	register_zstructure(T)
 	update_connections(1)
 	update_icon()
 
+
+/obj/structure/catwalk/CanZPass(atom/A, direction)
+	if(z == A.z)
+		if(direction == DOWN)
+			return FALSE
+	else if(direction == UP)
+		return FALSE
+	return ZTRANSITION_MAYBE
 
 /obj/structure/catwalk/Destroy()
 	redraw_nearby_catwalks()

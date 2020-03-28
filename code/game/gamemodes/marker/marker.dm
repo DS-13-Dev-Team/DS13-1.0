@@ -9,11 +9,10 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	required_enemies = 0
 	end_on_antag_death = 0
 	round_autoantag = TRUE
-	auto_recall_shuttle = 1
+	auto_recall_shuttle = FALSE
 	antag_tags = list(MODE_UNITOLOGIST)
 	latejoin_antag_tags = list(MODE_UNITOLOGIST)
 	antag_templates = list(/datum/antagonist/unitologist)
-	auto_recall_shuttle = TRUE //No escape
 	require_all_templates = FALSE
 	votable = TRUE
 	var/evac_points = 0
