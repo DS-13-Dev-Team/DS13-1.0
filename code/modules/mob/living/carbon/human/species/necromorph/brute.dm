@@ -98,6 +98,53 @@
 	)
 
 
+#define BRUTE_PASSIVE_1	"<h2>PASSIVE: Tunnel Vision:</h2><br>\
+The brute has extremely restricted vision, able only to see a few tiles infront of it, and none behind it. This makes it very vulnerable to flanking attacks. Keep the enemy infront of you!"
+
+#define BRUTE_PASSIVE_2	"<h2>PASSIVE: Organic Plating:</h2><br>\
+The brute's front and side are covered in tough armor, impenetrable to most light weapons. This armor has a 95% chance to intercept attacks, and blocks a flat 25 damage at the front, or 15 at the side.<br>\
+Any projectiles completely blocked in this matter will ricochet off and possibly hit something else. Melee attackers will be stunned, opening them to a counter attack.<br>\
+<br>\
+The unarmored areas are extremely vulnerable, and there's no armor on the rear. Any hit that isn't caused by armor will send the brute into a forced curl for 5 seconds. This forcing effect has a 1 minute cooldown."
+
+
+#define BRUTE_CHARGE_DESC	"<h2>Charge:</h2><br>\
+<h3>Hotkey: Ctrl+Alt+Click </h3><br>\
+<h3>Cooldown: 20 seconds</h3><br>\
+The user screams for a few seconds, then starts barrelling towards the target at moderate speed. While charging, the brute will hit all mobs it passes near.<br>\
+This charge has high momentum, and will keep going for a long time, or until stopped by an obstacle<br>\
+If the user hits a solid obstacle while charging, they will be stunned and take some minor damage. The obstacle will also be hit hard, and destroyed in some cases. <br>\
+<br>\
+The brute's charge is a high risk move. If used correctly, it's like bowling people, allowing you to smash through a crowd and send them flying. But you will be stunned and vulnerable afterwards, and easily surrounded."
+
+
+#define BRUTE_SLAM_DESC "<h2>Slam:</h2><br>\
+<h3>Hotkey: Alt Click</h3><br>\
+<h3>Cooldown: 8 seconds</h3><br>\
+The brute's signature move. Slam causes the user to rear back over 1.25 seconds, and then smash down in a devastating hit. The resulting strike hits a 3x2 area of effect infront of the user.<br>\
+Mobs hit by slam will take up to 40 damage depending on distance, and will be knocked down. This damage is doubled if the victim was already lying down when hit, making it an excellent finishing move<br>\
+<br>\
+Slam deals massive damage to any objects caught in its radius, making it an excellent obstacle-clearing ability. It will easily break through doors, barricades, machinery, girders, windows, etc. With repeated uses and some patience, you can even dig your way through solid walls, creating new paths<br>\
+Slam is heavily telegraphed, and hard to land hits with. Don't count on reliably hitting humans with it if they have any space to dodge"
+
+#define BRUTE_CURL "<h2>Curl:</h2><br>\
+<h3>Hotkey: Ctrl+Shift+Click</h3><br>\
+The user curls up into a ball, attempting to shield their vulnerable parts from damage, but becoming unable to turn, move or attack. While curled up, the strength of the brute's organic armor is massively increased (75% more!) and its coverage is increased to 100%<br>\
+This causes the brute to be practically invincible to attacks from the front and side, however the rear is still completely undefended.<br>\
+Brute will be forced into a reflexive curl under certain circumstances, but it can also be used manually. With the right timing, you can tank an entire firing squad while they waste ammo and deal no damage to you, leaving them vulnerable for your allies to attack from another angle."
+
+/datum/species/necromorph/brute/get_ability_descriptions()
+	.= ""
+	. += BRUTE_PASSIVE_1
+	. += "<hr>"
+	. += BRUTE_PASSIVE_2
+	. += "<hr>"
+	. += BRUTE_CHARGE_DESC
+	. += "<hr>"
+	. += BRUTE_SLAM_DESC
+	. += "<hr>"
+	. += BRUTE_CURL
+
 /datum/species/necromorph/brute/fleshy
 	name = SPECIES_NECROMORPH_BRUTE_FLESH
 	icon_normal = "brute-f"

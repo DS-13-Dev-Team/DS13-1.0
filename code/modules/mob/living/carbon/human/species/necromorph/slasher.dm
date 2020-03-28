@@ -4,6 +4,7 @@
 
 #define SLASHER_DODGE_EVASION	60
 #define SLASHER_DODGE_DURATION	1.5 SECONDS
+
 /datum/species/necromorph/slasher
 	name = SPECIES_NECROMORPH_SLASHER
 	name_plural =  "Slashers"
@@ -155,6 +156,31 @@
 	damage = 14
 	delay = 13
 	airlock_force_power = 2
+
+#define SLASHER_CHARGE_DESC	"<h2>Charge:</h2><br>\
+<h3>Hotkey: Ctrl+Alt+Click </h3><br>\
+<h3>Cooldown: 20 seconds</h3><br>\
+The user screams for a few seconds, then runs towards the target at high speed. If they successfully hit the target, they deal two free melee attacks on impact.<br>\
+Charge has some autoaim, clicking within 1 tile of a living mob is enough to target them. It will also attempt to home in on targets, but will not path around obstacles<br>\
+If the user hits a solid obstacle while charging, they will be stunned and take some minor damage. The obstacle will also be hit hard, and destroyed in some cases. <br>\
+<br>\
+Charge is a great move to initiate a fight, or to damage obstacles blocking your path. If you manage to land that first hit on a human, it is devastating, and often fatal."
+
+
+#define SLASHER_DODGE_DESC "<h2>Dodge:</h2><br>\
+<h3>Hotkey: Alt+Click</h3><br>\
+<h3>Cooldown: 6 seconds</h3><br>\
+A simple trick, dodge causes the user to leap one tile to the side, and gain a large but brief bonus to evasion, making them almost impossible to hit.<br>\
+The evasion bonus only lasts 1.5 seconds, so it's best used while an enemy is already firing at you. <br>\
+
+Dodge is a skill that requires careful timing, but if used correctly, it can allow you to assault an entrenched firing line, and get close enough to land a few hits."
+
+/datum/species/necromorph/slasher/get_ability_descriptions()
+	.= ""
+	. += SLASHER_CHARGE_DESC
+	. += "<hr>"
+	. += SLASHER_DODGE_DESC
+
 
 //Can't slash things without arms
 /datum/unarmed_attack/blades/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)

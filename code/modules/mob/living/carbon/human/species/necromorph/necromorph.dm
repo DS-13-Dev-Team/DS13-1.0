@@ -165,6 +165,7 @@
 	.=..()
 	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
 	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
+	H.verbs |= /datum/proc/help //Verb to see your own abilities
 	//H.verbs |= /mob/proc/message_unitologists
 	make_scary(H)
 
@@ -254,6 +255,10 @@
 // Used to update alien icons for aliens.
 /datum/species/necromorph/handle_login_special(var/mob/living/carbon/human/H)
 	SSnecromorph.necromorph_players[H.key] = H
+	to_chat(H, "You are a [name]. \n\
+	[blurb]\n\
+	\n\
+	Check the Abilities tab, use the Help ability to find out what your controls and abilities do!")
 
 // As above.
 /datum/species/necromorph/handle_logout_special(var/mob/living/carbon/human/H)

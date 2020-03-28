@@ -4,11 +4,19 @@
 	var/list/host_predicates
 	var/list/user_predicates
 
+	//UI values
+	var/list/content_data = list()
+	var/list/data  = list()
+	var/template
+	var/title
+	var/vector2/dimensions
+
 /datum/extension/interactive/New(var/datum/holder, var/host_predicates = list(), var/user_predicates = list())
 	..()
 
 	src.host_predicates = host_predicates ? host_predicates : list()
 	src.user_predicates = user_predicates ? user_predicates : list()
+	generate_content_data()
 
 /datum/extension/interactive/Destroy()
 	host_predicates.Cut()
@@ -34,3 +42,27 @@
 	if(..())
 		return TRUE
 	return extension_act(href, href_list, usr)
+
+
+
+/datum/extension/interactive/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+
+	data = content_data
+	data += ui_data(user)
+	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	if (!ui)
+		ui = new(user, src, ui_key, template, title, dimensions.x, dimensions.y, state = GLOB.interactive_state)
+		ui.set_initial_data(data)
+		ui.set_auto_update(1)
+		ui.open()
+
+
+
+
+
+//Generate and cache the common data once
+/datum/extension/interactive/proc/generate_content_data()
+	return
+
+/datum/extension/interactive/ui_data(var/mob/user)
+	return list()

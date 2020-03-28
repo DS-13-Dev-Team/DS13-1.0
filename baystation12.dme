@@ -2043,6 +2043,7 @@
 #include "code\modules\mob\observer\freelook\marker\marker.dm"
 #include "code\modules\mob\observer\freelook\marker\master.dm"
 #include "code\modules\mob\observer\freelook\marker\necrochat.dm"
+#include "code\modules\mob\observer\freelook\marker\necrohelp.dm"
 #include "code\modules\mob\observer\freelook\marker\necroshop.dm"
 #include "code\modules\mob\observer\freelook\marker\necrovision.dm"
 #include "code\modules\mob\observer\freelook\marker\signal.dm"
