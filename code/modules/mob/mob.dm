@@ -607,7 +607,7 @@
 
 	set name = "Stop Pulling"
 	set category = "IC"
-
+	crash_with("Stopped pulling")
 	if(pulling)
 		pulling.pulledby = null
 		pulling = null

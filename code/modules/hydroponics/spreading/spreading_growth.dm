@@ -26,7 +26,7 @@
 	var/list/neighbors = list()
 
 	for(var/turf/simulated/floor in get_cardinal_neighbors())
-		if(bounds && get_dist(parent, floor) > spread_distance)
+		if(bounds && get_dist_3D(parent, floor) > spread_distance)
 			continue
 
 		var/blocked = 0

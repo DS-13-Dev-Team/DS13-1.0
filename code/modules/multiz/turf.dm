@@ -1,29 +1,48 @@
-/turf/proc/CanZPass(atom/A, direction)
+/turf/var/list/zstructures	//A list of structures that may allow or interfere with ztransitions
+
+/atom/proc/CanZPass(atom/A, direction)
+	return TRUE
+
+/turf/CanZPass(atom/A, direction)
 	if(z == A.z) //moving FROM this turf
-		return direction == UP //can't go below
+		.= direction == UP //can't go below
 	else
 		if(direction == UP) //on a turf below, trying to enter
-			return 0
+			.=FALSE
 		if(direction == DOWN) //on a turf above, trying to enter
-			return !density
+			.= !density
+
+	if (LAZYLEN(zstructures))
+		var/highest_priority = 0
+		for (var/atom/B in zstructures)
+			if (zstructures[B] > highest_priority)
+				var/result=B.CanZPass(A, direction)
+				if (result != ZTRANSITION_MAYBE)
+					highest_priority = zstructures[B]
+					.=result
 
 /turf/simulated/open/CanZPass(atom/A, direction)
-	if(locate(/obj/structure/catwalk, src))
-		if(z == A.z)
-			if(direction == DOWN)
-				return 0
-		else if(direction == UP)
-			return 0
-	return 1
+	.=TRUE
+	if (LAZYLEN(zstructures))
+		var/highest_priority = 0
+		for (var/atom/B in zstructures)
+			if (zstructures[B] > highest_priority)
+				var/result=B.CanZPass(A, direction)
+				if (result != ZTRANSITION_MAYBE)
+					highest_priority = zstructures[B]
+					.=result
+
 
 /turf/space/CanZPass(atom/A, direction)
-	if(locate(/obj/structure/catwalk, src))
-		if(z == A.z)
-			if(direction == DOWN)
-				return 0
-		else if(direction == UP)
-			return 0
-	return 1
+	.=TRUE
+	if (LAZYLEN(zstructures))
+		var/highest_priority = 0
+		for (var/atom/B in zstructures)
+			if (zstructures[B] > highest_priority)
+				var/result=B.CanZPass(A, direction)
+				if (result != ZTRANSITION_MAYBE)
+					highest_priority = zstructures[B]
+					.=result
 
 /turf/simulated/open
 	name = "open space"

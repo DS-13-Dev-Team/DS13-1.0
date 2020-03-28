@@ -16,7 +16,7 @@
 	var/shield_assailant = 0					// Whether the person you're grabbing will shield you from bullets.,,
 	var/point_blank_mult = 1					// How much the grab increases point blank damage.
 	var/same_tile = 0							// If the grabbed person and the grabbing person are on the same tile.
-	var/ladder_carry = 0						// If the grabber can carry the grabbed person up or down ladders.
+	var/ladder_carry = TRUE						// If the grabber can carry the grabbed person up or down ladders.
 	var/can_throw = 0							// If the grabber can throw the person grabbed.
 	var/downgrade_on_action = 0					// If the grab needs to be downgraded when the grabber does stuff.
 	var/downgrade_on_move = 0					// If the grab needs to be downgraded when the grabber moves.

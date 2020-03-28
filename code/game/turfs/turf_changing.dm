@@ -49,6 +49,10 @@
 
 	var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
 
+	//The zstructurtes list is wiped when a turf is changed, so lets rebuild it
+	for (var/atom/A in W)
+		A.register_zstructure(W)
+
 	W.opaque_counter = opaque_counter
 
 	if(ispath(N, /turf/simulated))

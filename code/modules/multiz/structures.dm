@@ -1,3 +1,5 @@
+/atom/proc/register_zstructure(var/turf/T)
+	return
 //////////////////////////////
 //Contents: Ladders, Stairs.//
 //////////////////////////////
@@ -21,15 +23,21 @@
 	resistance = 20
 	health = 100	//Hard to break
 
+
+/obj/structure/ladder/register_zstructure(var/turf/T)
+	LAZYSET(T.zstructures, src, 2)	//Ladders have a ztransition priority of 2 to overrule other things
+
 /obj/structure/ladder/Initialize()
 	. = ..()
+	var/turf/T = get_turf(src)
+	register_zstructure(T)
+
 	// the upper will connect to the lower
 	if(allowed_directions & DOWN) //we only want to do the top one, as it will initialize the ones before it.
 		for(var/obj/structure/ladder/L in GetBelow(src))
 			if(L.allowed_directions & UP)
 				target_down = L
 				L.target_up = src
-				var/turf/T = get_turf(src)
 				T.ReplaceWithLattice()
 				return
 	update_icon()
@@ -42,6 +50,12 @@
 		target_up.target_down = null
 		target_up = null
 	return ..()
+
+/obj/structure/ladder/CanZPass(atom/A, direction)
+	if (z == A.z)
+		return(allowed_directions & direction)	//Ladder allows climbing through other obstacles#
+	else
+		return(allowed_directions & GLOB.reverse_dir[direction])
 
 /obj/structure/ladder/attackby(obj/item/C as obj, mob/user as mob)
 	climb(user)
@@ -86,6 +100,16 @@
 	"You hear the grunting and clanging of a metal ladder being used.")
 
 	target_ladder.audible_message("<span class='notice'>You hear something coming [direction] \the [src]</span>")
+
+	var/action_time = climb_time
+	if (M.pulling)
+		action_time += M.pulling.mass
+		to_chat(M, SPAN_WARNING("Dragging [M.pulling] along with you makes climbing slow"))
+
+	for(var/obj/item/grab/G in M)
+		if (G.affecting)
+			action_time += G.affecting.mass
+			to_chat(M, SPAN_WARNING("Dragging [G.affecting] along with you makes climbing slow"))
 
 	if(do_after(M, climb_time, src))
 		climbLadder(M, target_ladder)
@@ -148,7 +172,14 @@
 			return FALSE
 	playsound(src, pick(climbsounds), 50)
 	playsound(target_ladder, pick(climbsounds), 50)
-	return M.Move(T)
+	var/atom/movable/pulled_atom
+	if (M.pulling)
+		pulled_atom = M.pulling
+	.= M.Move(T)
+
+	if (pulled_atom)
+		pulled_atom.Move(T)
+		M.start_pulling(pulled_atom)
 
 /obj/structure/ladder/CanPass(obj/mover, turf/source, height, airflow)
 	return airflow || !density
