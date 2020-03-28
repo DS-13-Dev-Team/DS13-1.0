@@ -523,7 +523,6 @@ default behaviour is:
 		if (!M.grabbed_by.len)
 			M.handle_pull_damage(src)
 
-			var/atom/movable/t = M.pulling
 
 	step(pulling, get_dir(pulling.loc, old_loc))
 
