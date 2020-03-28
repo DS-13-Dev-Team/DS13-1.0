@@ -607,7 +607,6 @@
 
 	set name = "Stop Pulling"
 	set category = "IC"
-
 	if(pulling)
 		pulling.pulledby = null
 		pulling = null

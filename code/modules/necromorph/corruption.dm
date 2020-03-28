@@ -46,7 +46,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /obj/effect/vine/corruption/calculate_growth()
 	mature_time = rand_between(20 SECONDS, 30 SECONDS) //How long it takes for one tile to mature and be ready to spread into its neighbors.
 	if (plant)
-		mature_time *= 1 + (0.15 * get_dist(src, plant))//Expansion gets slower as you get farther out. Additively stacking 15% increase per tile
+		mature_time *= 1 + (0.15 * get_dist_3D(src, plant))//Expansion gets slower as you get farther out. Additively stacking 15% increase per tile
 	growth_threshold = max_health
 	var/sidelength = (spread_distance * 2)+1
 	possible_children = (sidelength * sidelength)
@@ -94,15 +94,20 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //This proc finds something nearby to use as an origin point for this corruption tile.
 //If none is found, we are orphaned and will start gradually dying
+//We search around both ourselves, and our parent. But in both cases we check the distance specifically to ourself
 /obj/effect/vine/corruption/proc/find_corruption_host()
 	var/min_dist = INFINITY
 	var/closest = null
-	for (var/a in range(spread_distance, src))
-		if (istype(a, /obj/structure/corruption_node/growth) || istype(a, /obj/machinery/marker))
-			var/distance = get_dist(src, a)
-			if (distance < min_dist)
-				min_dist = distance
-				closest = a
+	var/list/search_locations = list(get_turf(src))
+	if (parent)
+		search_locations |= get_turf(parent)
+	for (var/turf/T in search_locations)
+		for (var/a in range(CORRUPTION_SPREAD_RANGE, T))
+			if (istype(a, /obj/structure/corruption_node/growth) || istype(a, /obj/machinery/marker))
+				var/distance = get_dist_3D(src, a)
+				if (distance < min_dist)
+					min_dist = distance
+					closest = a
 
 	return closest
 

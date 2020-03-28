@@ -239,6 +239,16 @@ proc
 
 	var/dist = sqrt(dx**2 + dy**2)
 
+
+	return dist
+
+/proc/get_dist_3D(var/atom/A, var/atom/B)
+	var/dist = get_dist_euclidian(A, B)
+
+	//If on different zlevels, we do some extra math
+	if (A.z != B.z)
+		dist = sqrt(dist**2 + ((A.z - B.z)*CELL_HEIGHT)**2)
+
 	return dist
 
 /proc/circlerangeturfs(center=usr,radius=3)
