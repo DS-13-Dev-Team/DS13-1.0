@@ -73,6 +73,8 @@
 #define SPITTER_PASSIVE	"<h2>PASSIVE: No Friendly Fire:</h2><br>\
 All projectiles fired by this necromorph will harmlessly pass over other necromorphs, and will only hit enemies."
 
+#define SPITTER_PASSIVE_2	"<h2>PASSIVE: Crippling Acid:</h2><br>\
+All of your abilities douse the victims in acid, which slows their movement speed by 30% as long as its on them."
 
 #define SPITTER_SNAP_DESC	"<h2>Snapshot:</h2><br>\
 <h3>Hotkey: Middle Click </h3><br>\
@@ -94,6 +96,8 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 /datum/species/necromorph/slasher/spitter/get_ability_descriptions()
 	.= ""
 	. += SPITTER_PASSIVE
+	. += "<hr>"
+	. += SPITTER_PASSIVE_2
 	. += "<hr>"
 	. += SPITTER_SNAP_DESC
 	. += "<hr>"

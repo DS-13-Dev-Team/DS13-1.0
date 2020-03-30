@@ -86,7 +86,7 @@ Vars/
 /datum/extension/spray/proc/recalculate_cone()
 	affected_turfs = list()
 	direction = Vector2.VecDirectionBetween(source.get_global_pixel_loc(), target)
-	affected_turfs = get_cone(source, direction, length, angle)
+	affected_turfs = get_view_cone(source, direction, length, angle)
 	affected_turfs -= get_turf(source)
 	if (fx)
 		fx.set_direction(direction)

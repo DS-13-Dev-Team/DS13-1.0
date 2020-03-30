@@ -138,16 +138,23 @@
 ******************/
 /obj/effect/decal/cleanable/acid_spill
 	name = "Biological acid"
+	desc = "That looks dangerous to walk on."
 	color = NECROMORPH_ACID_COLOR
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "spill"
-	var/stored_volume = 0
-	var/saturation_point = 25
+	layer = BLOOD_LAYER	//Its a liquid, close enough
+	var/saturation_point = 20
 	var/rotation = 0
-	var/drying_tick = 0.1
+	var/drying_tick = 0.2
 	var/randpixel = 6
 	var/chemical
 	var/datum/reagents/R
+
+/obj/effect/decal/cleanable/acid_spill/examine(var/mob/user)
+	.=..()
+	var/stored_volume = R.total_volume
+	var/time_remaining = ((stored_volume/drying_tick)*10)
+	to_chat(user, SPAN_NOTICE("Will dry up in [time2text(time_remaining, "mm:ss")]"))
 
 /obj/effect/decal/cleanable/acid_spill/Initialize()
 	.=..()
@@ -202,12 +209,18 @@
 /obj/effect/decal/cleanable/acid_spill/Crossed(var/atom/mover)
 	.=..()
 	if (iscarbon(mover) && !mover.is_necromorph())
+		var/sound = pick(list('sound/effects/footstep/footstep_wet_1.ogg',
+		'sound/effects/footstep/footstep_wet_2.ogg',
+		'sound/effects/footstep/footstep_wet_3.ogg'))
+		playsound(src, sound, VOLUME_QUIET, TRUE)
 		R.trans_to(mover, min(1, R.total_volume))
 		set_rotation()
 		update_icon()
 
 
-
+/*****************
+	Slowing Effect
+******************/
 
 /datum/reagent/acid/necromorph/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	.=..()
@@ -220,7 +233,7 @@
 
 
 /datum/extension/acid_slow
-	var/speed_factor = 0.65
+	var/speed_factor = 0.7
 	var/speed_delta
 	var/duration	=	2.5 SECONDS
 
