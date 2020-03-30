@@ -130,7 +130,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 				process_reactions()
 			if(my_atom)
 				my_atom.on_reagent_change()
-			return 1
+			return current
 	if(ispath(reagent_type, /datum/reagent))
 		var/datum/reagent/R = new reagent_type(src)
 		reagent_list += R
@@ -141,10 +141,10 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 			process_reactions()
 		if(my_atom)
 			my_atom.on_reagent_change()
-		return 1
+		return R
 	else
 		warning("[log_info_line(my_atom)] attempted to add a reagent of type '[reagent_type]' which doesn't exist. ([usr])")
-	return 0
+	return FALSE
 
 /datum/reagents/proc/remove_reagent(var/reagent_type, var/amount, var/safety = 0)
 	if(!isnum(amount))
@@ -278,7 +278,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 //If for some reason touch effects are bypassed (e.g. injecting stuff directly into a reagent container or person),
 //call the appropriate trans_to_*() proc.
 /datum/reagents/proc/trans_to(var/atom/target, var/amount = 1, var/multiplier = 1, var/copy = 0)
-	touch(target) //First, handle mere touch effects
+	touch(target, amount) //First, handle mere touch effects
 
 	if(ismob(target))
 		return splash_mob(target, amount, copy)
@@ -321,39 +321,40 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 // This does not handle transferring reagents to things.
 // For example, splashing someone with water will get them wet and extinguish them if they are on fire,
 // even if they are wearing an impermeable suit that prevents the reagents from contacting the skin.
-/datum/reagents/proc/touch(var/atom/target)
+/datum/reagents/proc/touch(var/atom/target, var/amount)
 	if(ismob(target))
-		touch_mob(target)
+		touch_mob(target,amount)
 	if(isturf(target))
-		touch_turf(target)
+		touch_turf(target,amount)
 	if(isobj(target))
-		touch_obj(target)
+		touch_obj(target,amount)
 	return
 
-/datum/reagents/proc/touch_mob(var/mob/target)
+/datum/reagents/proc/touch_mob(var/mob/target, var/amount)
+
 	if(!target || !istype(target) || !target.simulated)
 		return
 
 	for(var/datum/reagent/current in reagent_list)
-		current.touch_mob(target, current.volume)
+		current.touch_mob(target, amount ? amount : current.volume)
 
 	update_total()
 
-/datum/reagents/proc/touch_turf(var/turf/target)
+/datum/reagents/proc/touch_turf(var/turf/target, var/amount)
 	if(!target || !istype(target) || !target.simulated)
 		return
 
 	for(var/datum/reagent/current in reagent_list)
-		current.touch_turf(target, current.volume)
+		current.touch_turf(target, amount ? amount : current.volume)
 
 	update_total()
 
-/datum/reagents/proc/touch_obj(var/obj/target)
+/datum/reagents/proc/touch_obj(var/obj/target, var/amount)
 	if(!target || !istype(target) || !target.simulated)
 		return
 
 	for(var/datum/reagent/current in reagent_list)
-		current.touch_obj(target, current.volume)
+		current.touch_obj(target, amount ? amount : current.volume)
 
 	update_total()
 

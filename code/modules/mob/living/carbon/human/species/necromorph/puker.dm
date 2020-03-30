@@ -1,24 +1,29 @@
 #define PUKER_SNAPSHOT_RANGE	6
-/datum/species/necromorph/slasher/puker
-	name = SPECIES_NECROMORPH_puker
+/datum/species/necromorph/puker
+	name = SPECIES_NECROMORPH_PUKER
 	name_plural = "pukers"
 	total_health = 200
 	biomass = 130
 	mass = 120
 	view_range = 9
+	limb_health_factor = 1.15
 	icon_template = 'icons/mob/necromorph/puker.dmi'
-	blurb = "A tanky ranged elite who is effective at medium or long range. Good for crowd control and direct firefights,"
-	unarmed_types = list(/datum/unarmed_attack/claws)
+	icon_lying = "_lying"
+	pixel_offset_x = -8
+	single_icon = FALSE
+	blurb = "A tanky and flexible elite who is effective at all ranges. Good for crowd control and direct firefights,"
+	unarmed_types = list(/datum/unarmed_attack/claws/puker)
 
 	mob_type = /mob/living/carbon/human/necromorph/puker
 
-	inherent_verbs = list(/mob/living/proc/puker_snapshot, /mob/living/proc/puker_longshot, /mob/proc/shout, /mob/proc/shout_long)
+	inherent_verbs = list(/mob/living/proc/puker_snapshot, /mob/living/proc/puker_longshot, /mob/living/proc/puker_vomit, /mob/proc/shout, /mob/proc/shout_long)
 	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/proc/puker_snapshot),
-	KEY_ALT = list(/mob/living/proc/puker_longshot))
+	KEY_ALT = list(/mob/living/proc/puker_longshot),
+	KEY_CTRLALT = list(/mob/living/proc/puker_vomit))
 
 	//Slightly faster than a slasher
 	slowdown = 3
-
+	/*
 	species_audio = list(
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/puker/puker_attack_1.ogg',
 	'sound/effects/creatures/necromorph/puker/puker_attack_2.ogg',
@@ -58,17 +63,14 @@
 	'sound/effects/creatures/necromorph/puker/puker_speech_4.ogg',
 	'sound/effects/creatures/necromorph/puker/puker_speech_5.ogg')
 	)
-
+	*/
 /*
 	Unarmed Attacks
 */
 //Weaker version of slasher blades
-/datum/unarmed_attack/blades/weak
-	name = "slashing blades"
-	desc = "These modest sized blades can cut off a limb or two."
-	damage = 12
-	delay = 16
-	airlock_force_power = 1.5
+//Light claw attack, not its main means of damage
+/datum/unarmed_attack/claws/puker
+	damage = 7
 
 
 /*
@@ -111,6 +113,18 @@
 	.= shoot_ability(/datum/extension/shoot/longshot, A , /obj/item/projectile/bullet/acid/puker_long, accuracy = 150, dispersion = 0, num = 1, windup_time = 0.5 SECONDS, fire_sound = null, nomove = 1 SECOND, cooldown = 1 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
+
+
+/mob/living/proc/puker_vomit(var/atom/A)
+	set name = "Vomit"
+	set category = "Abilities"
+	set desc = "A powerful projectile for longrange shooting. HK: Alt+Click"
+
+	if (!can_spray())
+		return
+	face_atom(A)
+	play_species_audio(src, SOUND_SHOUT, VOLUME_MID, 1, 3)
+	.= spray_ability(A , angle = 90, length = 5, chemical = /datum/reagent/acid/necromorph, volume = 4, tick_delay = 0.2 SECONDS, stun = TRUE, duration = 3.5 SECONDS, cooldown = 12 SECONDS, windup = 1 SECOND)
 
 
 

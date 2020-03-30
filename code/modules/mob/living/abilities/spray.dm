@@ -10,7 +10,7 @@ w//DO NOT INCLUDE THIS FILE
 	base_type = /datum/extension/spray
 	expected_type = /atom
 	flags = EXTENSION_FLAG_IMMEDIATE
-
+	var/atom/source
 	var/status
 	var/mob/living/user
 	var/vector2/target
@@ -27,11 +27,18 @@ w//DO NOT INCLUDE THIS FILE
 	var/stopped_at
 
 	var/ongoing_timer
+	var/tick_timer
 
 	var/list/affected_turfs
+	var/vector2/direction
 
-	var/obj/effect/chem_spray/FX
-	var/direction
+
+	//Registry:
+	var/datum/click_handler/spray/spray_handler	//Click handler for aiming the spray
+	var/obj/effect/particle_system/chemspray/fx	//Particle system for chem particles
+
+	var/obj/item/chem_atom
+	var/datum/reagents/chem_holder
 
 /*
 Vars/
@@ -49,9 +56,15 @@ Vars/
 
 /datum/extension/spray/New(var/atom/source, var/atom/target, var/angle, var/length, var/chemical, var/volume, var/tick_delay, var/stun, var/duration, var/cooldown)
 	.=..()
+	src.source = source
 	if (isliving(source))
 		user = source
+		if (user.client)
+			spray_handler = user.PushClickHandler(/datum/click_handler/spray)
+			spray_handler.host = src
 	set_target_loc(target.get_global_pixel_loc())
+	src.angle = angle
+	src.length = length
 	src.chemical = chemical
 	src.tick_delay = tick_delay
 	src.volume_tick = volume / ((1 SECOND) / tick_delay)
@@ -59,32 +72,65 @@ Vars/
 	src.stun	=	stun
 	src.duration = duration
 	src.cooldown = cooldown
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/start), 0)
-	start()
+	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/start), 0)
 
 
-/datum/extension/spray/proc/set_target_loc(var/vector2/newloc)
-	//TODO: Rotate the visual effect here
-	//TODO: Recalculate the cone
+
+/datum/extension/spray/proc/set_target_loc(var/vector2/newloc, var/target_object)
 	target = newloc
+	if (user && target_object)
+		user.face_atom(target_object)
+	recalculate_cone()
+
 
 /datum/extension/spray/proc/recalculate_cone()
 	affected_turfs = list()
-	direction = VecDirectionBetween(holder.get_global_pixel_loc(), target)
-	affected_turfs = get_cone(holder, direction, length, angle)
+	direction = Vector2.VecDirectionBetween(source.get_global_pixel_loc(), target)
+	affected_turfs = get_cone(source, direction, length, angle)
+	affected_turfs -= get_turf(source)
+	if (fx)
+		fx.set_direction(direction)
 
 /datum/extension/spray/proc/start()
-	started_at	=	world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/stop), duration)
+	if (!started_at)
+		started_at	=	world.time
+		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/stop), duration, TIMER_STOPPABLE)
 
-	//Lets create the chemspray fx
-	fx = new
+		recalculate_cone()
 
+		chem_atom = new(source)
+		chem_holder = new (2**24, chem_atom)
+		var/datum/reagent/R = chem_holder.add_reagent(/datum/reagent/acid/necromorph, chem_holder.maximum_volume, safety = TRUE)
+
+		//Lets create the chemspray fx
+		fx = new(source, direction, duration, length, angle)
+		fx.particle_color = R.color
+		fx.start()
+
+		if (stun && user)
+			user.SetMoveCooldown(duration)
+
+		tick()	//Start the first tick
 
 /datum/extension/spray/proc/stop()
 	deltimer(ongoing_timer)
+	deltimer(tick_timer)
+	if (spray_handler && user)
+		user.RemoveClickHandlersByType(/datum/click_handler/spray)
 	stopped_at = world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/finish_cooldown), cooldown)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
+	QDEL_NULL(fx)
+	QDEL_NULL(chem_holder)
+	QDEL_NULL(chem_atom)
+
+
+/datum/extension/spray/proc/tick()
+	for (var/t in affected_turfs)
+		var/turf/T = t
+		chem_holder.trans_to(T, volume_tick)
+		for (var/atom/A in T)
+			chem_holder.trans_to(A, volume_tick)
+	tick_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/tick), tick_delay, TIMER_STOPPABLE)
 
 
 /datum/extension/spray/proc/finish_cooldown()
@@ -105,9 +151,6 @@ Vars/
 ************************/
 //Access Proc
 /atom/proc/can_spray(var/error_messages = TRUE)
-	if (incapacitated())
-		return FALSE
-
 	var/datum/extension/spray/E = get_extension(src, /datum/extension/spray)
 	if(istype(E))
 		if (error_messages)
@@ -119,7 +162,18 @@ Vars/
 
 	return TRUE
 
+/mob/living/can_spray(var/error_messages = TRUE)
+	if (incapacitated())
+		return FALSE
+	.=..()
 
+/atom/proc/spray_ability(var/atom/target, var/angle, var/length, var/chemical, var/volume, var/tick_delay, var/stun, var/duration, var/cooldown, var/windup)
+	if (!can_spray())
+		return FALSE
+	var/datum/extension/spray/S = set_extension(src, /datum/extension/spray,target, angle, length, chemical, volume, tick_delay, stun, duration, cooldown)
+	spawn(windup)
+		S.start()
+	return TRUE
 
 /***********************
 	Spray visual effect
@@ -127,59 +181,24 @@ Vars/
 /*
 	Particle System
 */
-/obj/effect/particle_system
-	var/angle
-	var/direction
-	var/atom/origin
-	var/tick_delay = 0.2 SECONDS
-	var/particles_per_tick = 3
-	var/particle_lifetime = 0.85
-	var/particle_type = /obj/effect/particle
-	var/randpixel = 5
-
-/obj/effect/chem_spray(var/atom/location, var/atom/host, var/initial_target)
-	origin = host
-	if (initial(target))
-
-
-/obj/effect/chem_spray/set_target(var/vector2/target)
-	target_point = target
-	direction = VecDirectionBetween(origin.get_global_pixel_loc(), target)
-	cached_rotation = direction.Rotation()
-
-/obj/effect/chem_spray/tick()
-	if (loc != origin.loc)
-		forceMove(origin.loc)
-
-	for (var/i in 1 to particles_per_tick)
-
-		//Lets calculate a random angle for this particle
-		var/particle_angle = rand_between(0, angle) - angle*0.5	//We subtract half the angle to centre it
-		var/particle_direction = direction.Turn(particle_angle)
-
-		var/obj/effect/particle/S = new(loc, direction, var/lifespan)
+/obj/effect/particle_system/chemspray
+	particle_type = /obj/effect/particle/spray
+	autostart = FALSE
+	tick_delay = 0.15 SECONDS
+	particles_per_tick = 5
+	randpixel = 12
 
 
 
-/*
-	Individual Particle
-*/
+
 /obj/effect/particle/spray
 	name = "spray"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "spray"
-	density = 0
-	dir = NORTH
-	randpixel
+	scale_x_end = 2
+	scale_y_end = 4
+	color = "#FF0000"
 
-/obj/effect/spray_particle/New(var/location, var/direction, var/lifespan)
-	transform = turn(transform, starting_rotation)
-	//Sprays will reach the target length with half movement and half stretching)
-	var/matrix/target_transform = new(transform)
-	target_transform = transform.Scale(0, 0.5*length)
-	animate(src, transform = target_transform, alpha = 0, time = lifespan)
-	QDEL_IN(src, lifespan)
-	.=..()
 
 
 
@@ -190,5 +209,6 @@ Vars/
 	var/datum/extension/spray/host
 
 /datum/click_handler/spray/MouseMove(object,location,control,params)
-	var/vector2/mouseloc = get_global_pixel_click_location(params, holder.client)
-	host.set_target_loc(mouseloc)
+	if (host && user && user.client)
+		var/vector2/mouseloc = get_global_pixel_click_location(params, user.client)
+		host.set_target_loc(mouseloc, object)
