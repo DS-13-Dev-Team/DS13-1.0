@@ -185,7 +185,7 @@ Vars/
 	particle_type = /obj/effect/particle/spray
 	autostart = FALSE
 	tick_delay = 0.15 SECONDS
-	particles_per_tick = 5
+	particles_per_tick = 6
 	randpixel = 12
 
 

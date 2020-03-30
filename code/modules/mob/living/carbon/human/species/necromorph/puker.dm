@@ -14,12 +14,14 @@
 	blurb = "A tanky and flexible elite who is effective at all ranges. Good for crowd control and direct firefights,"
 	unarmed_types = list(/datum/unarmed_attack/claws/puker)
 
+	vision_organ = null	//Acid has long since burned out its eyes, somehow the puker sees without them
+
 	mob_type = /mob/living/carbon/human/necromorph/puker
 
-	inherent_verbs = list(/mob/living/proc/puker_snapshot, /mob/living/proc/puker_longshot, /mob/living/proc/puker_vomit, /mob/proc/shout, /mob/proc/shout_long)
+	inherent_verbs = list(/mob/living/proc/puker_snapshot, /mob/living/proc/puker_longshot, /mob/living/carbon/human/proc/puker_vomit, /mob/proc/shout, /mob/proc/shout_long)
 	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/proc/puker_snapshot),
 	KEY_ALT = list(/mob/living/proc/puker_longshot),
-	KEY_CTRLALT = list(/mob/living/proc/puker_vomit))
+	KEY_CTRLALT = list(/mob/living/carbon/human/proc/puker_vomit))
 
 	//Slightly faster than a slasher
 	slowdown = 3
@@ -115,7 +117,7 @@
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
 
-/mob/living/proc/puker_vomit(var/atom/A)
+/mob/living/carbon/human/proc/puker_vomit(var/atom/A)
 	set name = "Vomit"
 	set category = "Abilities"
 	set desc = "A powerful projectile for longrange shooting. HK: Alt+Click"
@@ -123,8 +125,16 @@
 	if (!can_spray())
 		return
 	face_atom(A)
+	var/vangle = 70
+	var/vlength = 5
+	if (!has_organ(BP_HEAD))
+		to_chat(src, SPAN_WARNING("Without a mouth to focus it, the pressure of your acid is reduced!"))
+		vangle = 100
+		vlength = 2.5
 	play_species_audio(src, SOUND_SHOUT, VOLUME_MID, 1, 3)
-	.= spray_ability(A , angle = 90, length = 5, chemical = /datum/reagent/acid/necromorph, volume = 4, tick_delay = 0.2 SECONDS, stun = TRUE, duration = 3.5 SECONDS, cooldown = 12 SECONDS, windup = 1 SECOND)
+	.= spray_ability(A , angle = vangle, length = vlength, chemical = /datum/reagent/acid/necromorph, volume = 4, tick_delay = 0.2 SECONDS, stun = TRUE, duration = 3.5 SECONDS, cooldown = 12 SECONDS, windup = 1 SECOND)
+
+
 
 
 
@@ -142,5 +152,29 @@
 	icon_state = "acid_large"
 	step_delay = 1.75
 	damage = 35
+
+
+/*
+	Acid Blood
+*/
+/mob/living/proc/puker_acidblood()
+	var/target = pick(view(1, src))	//Pick literally anything as target, it doesnt matter. We just need something to avoid runtimes
+	var/datum/extension/spray/defensive/S = set_extension(src, /datum/extension/spray/defensive, target,
+	360, //Angle
+	1.5, //Range
+	/datum/reagent/acid/necromorph, //Chem
+	15, //Volume
+	0.1, //Tickdelay
+	FALSE,	//Stun
+	0.8 SECOND,	//Duration
+	0)//Cooldown
+	S.start()
+
+/datum/extension/spray/defensive
+	flags = EXTENSION_FLAG_IMMEDIATE | EXTENSION_FLAG_MULTIPLE_INSTANCES	//This version is allowed
+
+
+/datum/species/necromorph/puker/handle_amputated(var/mob/living/carbon/human/H,var/obj/item/organ/external/E, var/clean, var/disintegrate, var/ignore_children, var/silent)
+	H.puker_acidblood()
 
 #undef PUKER_SNAPSHOT_RANGE

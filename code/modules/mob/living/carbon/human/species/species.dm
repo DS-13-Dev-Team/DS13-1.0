@@ -935,6 +935,11 @@ These procs should return their entire args list. Best just to return parent in 
 	flick_overlay(LR, GLOB.clients, duration + 10)
 
 
+/*
+	Called just after a limb is severed
+*/
+/datum/species/proc/handle_amputated(var/mob/living/carbon/human/H, var/obj/item/organ/external/E, var/clean, var/disintegrate, var/ignore_children, var/silent)
+	return
 
 //Ported from upstream bay
 /datum/species/proc/check_no_slip(var/mob/living/carbon/human/H)
