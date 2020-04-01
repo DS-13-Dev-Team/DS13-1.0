@@ -7,6 +7,7 @@
 	icon_state = "mastersignal"
 	pixel_x = -7
 	pixel_y = -7
+	energy_extension_type = /datum/extension/psi_energy/marker	//Stores and accumulates energy for abilities
 
 /mob/observer/eye/signal/master/Initialize()
 	.=..()

@@ -63,6 +63,8 @@
 
 #define isrobot(A) istype(A, /mob/living/silicon/robot)
 
+#define issignal(A) istype(A, /mob/observer/eye/signal)
+
 #define issilicon(A) istype(A, /mob/living/silicon)
 
 #define isslime(A) istype(A, /mob/living/carbon/slime)

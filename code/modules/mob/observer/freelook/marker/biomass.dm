@@ -86,8 +86,12 @@
 //Todo here: Check if the human body is near enough to the marker, or some sort of corruption-corpse-deposit node
 //If its too far away, return pause
 /datum/biomass_source/convergence/can_absorb()
-	//Lets check if its dead
+
 	var/mob/living/L = locate(source)
+	if (!L || QDELETED(L))
+		return MASS_FAIL	//Its gone!
+
+	//Lets check if its dead
 	if (L.stat != DEAD)
 		return MASS_PAUSE	//If we're still alive, keep waiting
 

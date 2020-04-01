@@ -57,8 +57,8 @@
 
 /mob/Login()
 
-	GLOB.player_list |= src
-	GLOB.key_to_mob[key] = src
+	player_login()
+
 
 	update_Login_details()
 	world.update_status()

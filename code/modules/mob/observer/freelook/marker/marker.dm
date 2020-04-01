@@ -15,6 +15,7 @@
 	var/mob/observer/eye/signal/master/playermob	//Signal mob of the player controlling the marker
 	var/corruption_plant
 
+
 	//Biomass handling
 	//--------------------------
 	var/biomass	= 80//Current actual quantity of biomass we have stored. Start with enough to spawn a slasher
@@ -138,6 +139,11 @@
 	if(!active)
 		return
 	message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
+
+	//Get rid of the old energy handler
+	var/datum/player/P = get_or_create_player(M.key)
+	remove_extension(P, /datum/extension/psi_energy/signal)
+
 	var/mob/observer/eye/signal/master/S = new(M)
 	player = S.key
 	playermob = S
@@ -149,6 +155,11 @@
 
 /obj/machinery/marker/proc/vacate_master_signal()
 	if (playermob)
+
+		//Get rid of the old player's energy handler
+		var/datum/player/P = get_or_create_player(player)
+		remove_extension(P, /datum/extension/psi_energy/marker)//Remove the handler
+
 		message_necromorphs(SPAN_NOTICE("[player] has stepped down, nobody is controlling the marker now."))
 		var/mob/observer/eye/signal/S = new(playermob)
 		GLOB.unitologists.remove_antagonist(playermob.mind)
