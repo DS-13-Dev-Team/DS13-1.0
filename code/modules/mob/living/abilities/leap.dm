@@ -19,6 +19,7 @@
 	var/cached_transform
 	var/vector2/cached_pixel_offset
 	continue_check = FALSE	//We're not gonna be stopped if we die mid air, the leap continues til it impacts
+	blur_filter_strength = 4
 
 /datum/extension/charge/leap/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
 	.=..()
@@ -33,7 +34,7 @@
 	cached_pixel_offset = new /vector2(user.pixel_x, user.pixel_y)
 
 	//The sprite moves up into the air and a bit closer to the camera
-	animate(user, transform = user.transform.Scale(1.18), pixel_y = user.pixel_y + 24, time = max_lifespan())
+	animate(user, transform = user.transform.Scale(1.18), pixel_y = user.pixel_y + 24, time = max_lifespan(), flags = ANIMATION_PARALLEL)
 	user.pass_flags |= (PASS_FLAG_TABLE | PASS_FLAG_FLYING)
 	user.plane = ABOVE_HUMAN_PLANE	//Draw over most mobs and objects
 	..()

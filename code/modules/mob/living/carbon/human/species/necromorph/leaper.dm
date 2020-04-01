@@ -191,7 +191,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	//The time is equal to the windup time of the attack, plus 0.5 seconds to prevent a brief stop and ensure launching is a fluid motion
 	var/vector2/pixel_offset = Vector2.DirectionBetween(src, A) * -16
 	var/vector2/cached_pixels = new /vector2(src.pixel_x, src.pixel_y)
-	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 1.7 SECONDS, easing = BACK_EASING)
+	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 1.7 SECONDS, easing = BACK_EASING, flags = ANIMATION_PARALLEL)
 	animate(pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = 0.3 SECONDS)
 
 	//Long shout when targeting mobs, normal when targeting objects
@@ -216,7 +216,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	//Do a chargeup animation
 	var/vector2/pixel_offset = Vector2.DirectionBetween(src, A) * -16
 	var/vector2/cached_pixels = new /vector2(src.pixel_x, src.pixel_y)
-	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 0.7 SECONDS, easing = BACK_EASING)
+	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 0.7 SECONDS, easing = BACK_EASING, flags = ANIMATION_PARALLEL)
 	animate(pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = 0.3 SECONDS)
 
 	//Long shout when targeting mobs, normal when targeting objects
