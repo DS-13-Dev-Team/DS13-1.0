@@ -14,7 +14,6 @@
 	var/dummy = FALSE
 
 
-	//TEMPORARY. Replace this once i rebase to unified structure damage
 	max_health = 100
 	resistance = 0
 

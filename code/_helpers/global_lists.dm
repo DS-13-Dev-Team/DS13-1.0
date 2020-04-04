@@ -52,6 +52,10 @@ var/global/list/rune_list = new()
 var/global/list/endgame_exits = list()
 var/global/list/endgame_safespawns = list()
 
+
+//Signal Abilities/spells
+GLOBAL_LIST_EMPTY(signal_abilities)
+
 var/global/list/syndicate_access = list(access_maint_tunnels, access_external_airlocks)//,access_syndicate)
 
 // Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
@@ -182,6 +186,16 @@ var/global/list/string_slot_flags = list(
 	for(var/grabstate_name in all_grabstates)
 		var/datum/grab/G = all_grabstates[grabstate_name]
 		G.refresh_updown()
+
+
+	//Signal Abilities
+	for (var/subtype in subtypesof(/datum/signal_ability))
+		var/datum/signal_ability/SA = subtype
+		if (initial(SA.base_type) == subtype)
+			continue	//If base type matches type, its an abstract parent class, do not instantiate
+
+		SA = new subtype()
+		GLOB.signal_abilities[lowertext(SA.name)] = SA
 
 	return 1
 

@@ -21,11 +21,7 @@
 /datum/player/get_client()
 	return locate(client)
 
-/proc/get_or_create_player(var/key)
-	key = ckey(key)
-	if (!GLOB.players[key])
-		GLOB.players[key] = new /datum/player(key)
-	return GLOB.players[key]
+
 
 /mob/proc/register_client_and_player()
 	if (!client || !ckey)
@@ -49,3 +45,20 @@
 	var/datum/player/me = get_or_create_player(key)
 	me.Login()
 
+
+
+/*
+	Getter procs
+*/
+/proc/get_or_create_player(var/key)
+	key = ckey(key)
+	if (!GLOB.players[key])
+		GLOB.players[key] = new /datum/player(key)
+	return GLOB.players[key]
+
+
+/mob/proc/get_player()
+	if (!client)	//TODO: Figure out how to make this work for disconnected players in future. I know the key field is not nulled
+		return null
+
+	return get_or_create_player(client.ckey)

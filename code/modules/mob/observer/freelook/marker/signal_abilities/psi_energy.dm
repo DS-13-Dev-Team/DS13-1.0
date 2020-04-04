@@ -36,7 +36,7 @@
 	if (!safety_check())
 		return FALSE
 
-	energy = min(max_energy, energy+energy_per_tick)
+	change_energy(energy_per_tick)
 
 
 /datum/extension/psi_energy/proc/start_ticking()
@@ -52,6 +52,17 @@
 /datum/extension/psi_energy/proc/can_stop_ticking()
 	return TRUE
 
+
+/*
+	Energy Handling
+*/
+/datum/extension/psi_energy/proc/change_energy(var/adjustment)
+	energy = CLAMP(energy+energy_per_tick, 0, max_energy)
+
+//The source is included for the possibility of discounts based on spell types in future
+/datum/extension/psi_energy/proc/can_afford_energy_cost(var/cost, var/datum/source)
+	if (energy >= cost)
+		return TRUE
 
 /*
 	Signal Specific
