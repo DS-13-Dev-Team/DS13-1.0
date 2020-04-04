@@ -10,7 +10,7 @@
 	req_admin_notify = 1
 	minimal_player_age = 18
 
-	access = list(access_bridge, access_armory, access_security, access_maint_tunnels,
+	access = list(access_bridge, access_cseco, access_armory, access_security, access_maint_tunnels,
 					access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/security/cseco
 

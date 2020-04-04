@@ -34,12 +34,15 @@
 		/obj/item/device/radio/headset/headset_cargo,
 		/obj/item/clothing/under/foreman,
 		/obj/item/clothing/shoes/dutyboots,
+		/obj/item/clothing/glasses/meson,
 		/obj/item/clothing/gloves/thick,
+		/obj/item/weapon/mining_scanner,
 		/obj/item/weapon/storage/ore,
 		/obj/item/weapon/shovel,
 		/obj/item/weapon/tool/saw/plasma,
+		/obj/item/weapon/gun/energy/cutter/plasma,
+		/obj/item/weapon/cell/plasmacutter = 2,
 		/obj/item/device/flashlight/maglight,
-		/obj/item/weapon/gun/energy/cutter
 )
 
 /obj/structure/closet/secure_closet/planet_cracker
@@ -56,12 +59,12 @@
 		/obj/item/device/radio/headset/headset_cargo,
 		/obj/item/clothing/under/miner/deadspace,
 		/obj/item/clothing/shoes/dutyboots,
+		/obj/item/clothing/glasses/meson,
 		/obj/item/clothing/gloves/thick,
+		/obj/item/weapon/mining_scanner,
 		/obj/item/weapon/storage/ore,
 		/obj/item/weapon/shovel,
 		/obj/item/weapon/tool/saw/plasma,
-		/obj/item/weapon/gun/energy/cutter/plasma,
-		/obj/item/weapon/cell/plasmacutter = 2,
 		/obj/item/device/flashlight/maglight
 	)
 

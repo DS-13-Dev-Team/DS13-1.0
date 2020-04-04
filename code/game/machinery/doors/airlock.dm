@@ -384,7 +384,7 @@ var/list/airlock_overlays = list()
 
 /obj/machinery/door/airlock/vault/engineering
 	stripe_color = COLOR_AMBER
-	req_access = list(4)
+	req_one_access = list(56,57,58,100)
 
 /obj/machinery/door/airlock/Process()
 	if(main_power_lost_until > 0 && world.time >= main_power_lost_until)

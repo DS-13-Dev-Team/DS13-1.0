@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/bar
-	name = "booze closet"
+	name = "bartender's closet"
 	req_access = list(access_service)
 	icon_state = "cabinetdetective_locked"
 	icon_closed = "cabinetdetective"
@@ -9,4 +9,10 @@
 	icon_off = "cabinetdetective_broken"
 
 /obj/structure/closet/secure_closet/bar/WillContain()
-	return list(/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer = 10)
+	return list(
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer = 10,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/marinerdescent,
+	/obj/item/clothing/under/rank/bartender,
+	/obj/item/clothing/shoes/black,
+	/obj/item/device/radio/headset/headset_service
+	)
