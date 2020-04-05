@@ -423,3 +423,14 @@
 		return	BP_CHEST	//The default bodypart
 	else
 		return null	//It missed!
+
+
+
+//Simple proc, causes a mob to fall over and hit the floor
+/mob/living/proc/trip()
+	//Cant fall if already down
+	if (lying)
+		return
+
+	Weaken(2)
+	playsound(src.loc, 'sound/effects/bang.ogg', VOLUME_HIGH, 1, 3)
