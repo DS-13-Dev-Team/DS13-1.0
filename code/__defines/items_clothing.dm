@@ -3,6 +3,7 @@
 #define CANDLE_LUM 3 // For how bright candles are.
 
 // Item inventory slot bitmasks.
+#define SLOT_NONE		0
 #define SLOT_OCLOTHING  0x1
 #define SLOT_ICLOTHING  0x2
 #define SLOT_GLOVES     0x4

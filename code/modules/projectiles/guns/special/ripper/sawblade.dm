@@ -43,6 +43,8 @@
 
 	var/mob/user
 
+	slot_flags = SLOT_NONE	//No wearing it on your ear
+
 	//If true we have dropped a remnant
 	var/dropped = FALSE
 

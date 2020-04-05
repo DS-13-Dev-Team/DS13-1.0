@@ -262,3 +262,22 @@
 			extremities.Remove(E.parent)	//If this organ has a parent, that parent becomes ineligible
 
 	return extremities
+
+
+//This proc tells how many legs we have
+/mob/proc/get_locomotion_limbs(var/include_stump = FALSE)
+	return list()
+
+/mob/living/carbon/human/get_locomotion_limbs(var/include_stump = FALSE)
+	var/found = list()
+	for (var/organ_tag in species.locomotion_limbs)
+		var/obj/item/organ/external/E = get_organ(organ_tag)
+		if (!E)
+			continue
+
+		if (!include_stump && E.is_stump())
+			continue
+
+		found |= E
+
+	return found

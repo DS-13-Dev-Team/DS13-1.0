@@ -71,6 +71,7 @@
 	var/lifespan_timer
 	var/start_timer
 	var/atom/movable/user
+	var/mob/living/L
 	var/started_at = 0
 	var/stopped_at
 	var/range_left = null //Null value means we're not using range limits
@@ -80,6 +81,8 @@
 
 	var/blur_filter_strength = 2
 	var/dm_filter/blur
+	var/starting_locomotion_limbs = 0	//How many legs or similar appendages we had when we started. We will abort the charge if this value decreases
+
 
 
 /datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
@@ -101,9 +104,10 @@
 	delay = _delay
 
 	if (isliving(user))
-		var/mob/living/L = user
+		L = user
 		L.face_atom(target)
 		L.Stun(max_lifespan()*0.1,TRUE)
+		starting_locomotion_limbs = length(L.get_locomotion_limbs(FALSE))
 	//Delay handling
 	if (!delay)
 		//If no delay, start immediately
@@ -114,6 +118,16 @@
 		//If positive delay, wait that long before starting
 		start_timer = addtimer(CALLBACK(src, .proc/start), _delay, TIMER_STOPPABLE)
 
+/datum/extension/charge/proc/check_limbs(var/trip = FALSE)
+	if (L)
+		var/num_legs = length(L.get_locomotion_limbs(FALSE))
+		if (num_legs < starting_locomotion_limbs)
+			if (trip)
+				L.trip()
+			return FALSE
+
+	return TRUE
+
 /datum/extension/charge/proc/start()
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -122,10 +136,14 @@
 	if (start_timer)
 		deltimer(start_timer)
 
+	if (!check_limbs(TRUE))
+		stop()
+		return FALSE
+
 	//Something may have disabled us between windup and starting
 	if (!user || (continue_check && !user.can_continue_charge(target)))
 		stop()
-		return
+		return FALSE
 
 	status = CHARGE_STATE_CHARGING
 	GLOB.bump_event.register(holder, src, /datum/extension/charge/proc/bump)
@@ -257,6 +275,17 @@
 
 /datum/extension/charge/proc/moved(var/atom/mover, var/oldloc, var/newloc)
 	.=TRUE
+
+
+
+
+
+	//First of all, make us fall over if we lost a limb
+	if (!check_limbs(TRUE))
+		stop_peter_out()
+		return FALSE
+
+
 	//When we move, deplete the remaining range, and abort if we run out
 	tiles_moved++
 	if (isnum(range_left))
@@ -496,6 +525,7 @@
 /mob/living/can_continue_charge(var/atom/target)
 	if (incapacitated(INCAPACITATION_FORCELYING))
 		return FALSE
+
 	return ..()
 
 /atom/movable/proc/charge_attack(var/atom/_target, var/_speed = 7, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)

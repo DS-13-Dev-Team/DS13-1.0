@@ -45,6 +45,9 @@
 	user.plane = cached_plane	//Draw over most mobs and objects
 	.=..()
 
+//Leap won't be stopped by losing limbs mid flight
+/datum/extension/charge/leap/check_limbs()
+	return TRUE
 
 //Triggering
 /atom/movable/proc/leap_verb(var/atom/A)
