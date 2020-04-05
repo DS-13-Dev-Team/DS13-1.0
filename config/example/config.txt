@@ -33,6 +33,9 @@ JOBS_HAVE_MINIMAL_ACCESS
 ## log OOC channel
 LOG_OOC
 
+## log necrochat
+LOG_NECRO
+
 ## log client Say
 LOG_SAY
 

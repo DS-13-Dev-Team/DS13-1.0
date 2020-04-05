@@ -53,6 +53,8 @@
 
 #define isprojectile(A)	istype(A, /obj/item/projectile)
 
+#define issignal(A) istype(A, /mob/observer/eye/signal)
+
 #define isstack(A) istype(A, /obj/item/stack)
 
 #define isspace(A) istype(A, /area/space)

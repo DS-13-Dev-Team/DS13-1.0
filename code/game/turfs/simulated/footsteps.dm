@@ -110,7 +110,8 @@
 	if(buckled || lying || throwing)
 		return //people flying, lying down or sitting do not step
 
-
+	if (pass_flags & PASS_FLAG_FLYING)
+		return	//No footstep sounds if we aren't touching the ground
 
 	if(species.silent_steps)
 		return //species is silent
