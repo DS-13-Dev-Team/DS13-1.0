@@ -3,7 +3,6 @@
 	belt = /obj/item/weapon/storage/belt/utility/full
 	shoes = /obj/item/clothing/shoes/workboots
 	pda_slot = slot_l_store
-	back = /obj/item/weapon/storage/backpack/satchel_eng
 	backpack_contents = list(/obj/item/stack/power_node = 1)
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
 

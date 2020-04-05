@@ -216,8 +216,8 @@
 	)
 
 
-/obj/structure/closet/secure_closet/forensics
-	name = "forensics technician's locker"
+/obj/structure/closet/secure_closet/SSO
+	name = "senior security officer's locker"
 	req_access = list(access_security)
 	icon_state = "sec1"
 	icon_closed = "sec"
@@ -225,18 +225,26 @@
 	icon_opened = "secopen"
 	icon_off = "secoff"
 
-/obj/structure/closet/secure_closet/forensics/WillContain()
+/obj/structure/closet/secure_closet/SSO/WillContain()
 	return list(
-		/obj/item/clothing/gloves/forensic,
 		/obj/item/device/radio/headset/headset_sec,
-		/obj/item/device/flash,
-		/obj/item/weapon/melee/baton/loaded,
+		/obj/item/weapon/gun/energy/taser,
+		/obj/item/weapon/gun/projectile/divet,
+		/obj/item/ammo_magazine/divet = 2,
 		/obj/item/weapon/reagent_containers/spray/pepper,
+		/obj/item/weapon/melee/baton/loaded,
+		/obj/item/clothing/accessory/storage/black_vest,
+		/obj/item/clothing/glasses/sunglasses/sechud/goggles,
+		/obj/item/clothing/gloves/forensic,
+		/obj/item/clothing/under/security/deadspace,
+		/obj/item/clothing/accessory/storage/black_vest,
+		/obj/item/clothing/under/security/deadspace,
 		/obj/item/taperoll/police,
-		/obj/item/device/tape/random = 3,
-		/obj/item/clothing/glasses/sunglasses/sechud/toggle,
+		/obj/item/device/hailer,
 		/obj/item/device/holowarrant,
+		/obj/item/device/flash,
 		/obj/item/device/flashlight/maglight,
+		/obj/item/device/tape/random = 3,
 		/obj/item/weapon/storage/belt/holster/forensic,
 		/obj/item/weapon/storage/belt/holster/security,
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),

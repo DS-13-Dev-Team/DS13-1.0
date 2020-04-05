@@ -8,7 +8,7 @@
 	minimal_player_age = 18
 	ideal_character_age = 30
 
-	access = list(access_service)
+	access = list(access_service, access_bartender)
 	outfit_type = /decl/hierarchy/outfit/job/service/bar
 
 /datum/job/line_cook

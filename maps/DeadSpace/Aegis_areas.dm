@@ -10,11 +10,11 @@
 	icon_state = "crewbase"
 
 /area/aegis/colony/airlock
-	name = "\improper Aegis External Airlock"
+	name = "\improper Aegis Colony External Airlock"
 	icon_state = "miscbase"
 
 /area/aegis/colony/breakroom
-	name = "\improper Colony Break Room"
+	name = "\improper Aegis Colony Break Room"
 	icon_state = "crewbase"
 
 /area/aegis/colony/engineering
@@ -29,13 +29,13 @@
 	icon_state = "miscbase"
 
 /area/aegis/colony/hangar/entrance
-	name = "\improper Hangar Entrance"
+	name = "\improper Aegis Colony Hangar Entrance"
 
 /area/aegis/colony/hangar/entrance/one
-	name = "\improper Hangar Entrance One"
+	name = "\improper Aegis Colony Hangar Entrance One"
 
 /area/aegis/colony/hangar/entrance/two
-	name = "\improper Hangar Entrance Two"
+	name = "\improper Aegis Colony Hangar Entrance Two"
 
 /area/aegis/colony/maintenance
 	icon_state = "maintbase"

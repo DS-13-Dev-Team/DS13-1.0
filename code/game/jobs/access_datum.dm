@@ -161,6 +161,11 @@
 	desc = "Mining"
 	region = ACCESS_REGION_SUPPLY
 
+/var/const/access_bartender = 49
+/datum/access/bartender
+	id = access_bartender
+	desc = "Bartender"
+	region = ACCESS_REGION_SUPPLY
 
 /var/const/access_ce = 56
 /datum/access/ce

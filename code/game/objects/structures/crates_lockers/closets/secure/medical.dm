@@ -66,38 +66,6 @@
 		/obj/item/clothing/glasses/hud/health
 	)
 
-/obj/structure/closet/secure_closet/paramedic
-	name = "paramedic locker"
-	desc = "Supplies for a first responder."
-	icon_state = "medical1"
-	icon_closed = "medical"
-	icon_locked = "medical1"
-	icon_opened = "medicalopen"
-	icon_off = "medicaloff"
-	req_access = list(access_medical)
-
-/obj/structure/closet/secure_closet/paramedic/WillContain()
-	return list(
-	    /obj/item/weapon/storage/box/autoinjectors,
-	    /obj/item/weapon/storage/box/syringes,
-	    /obj/item/weapon/reagent_containers/glass/bottle/inaprovaline,
-	    /obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
-	    /obj/item/clothing/mask/gas,
-	    /obj/item/clothing/suit/storage/toggle/fr_jacket,
-	    /obj/item/clothing/suit/storage/toggle/labcoat,
-	    /obj/item/device/radio/headset/headset_med,
-	    /obj/item/device/flashlight,
-	    /obj/item/weapon/tank/emergency/oxygen/engi,
-	    /obj/item/clothing/glasses/hud/health,
-	    /obj/item/device/healthanalyzer,
-	    /obj/item/device/radio/off,
-	    /obj/random/medical,
-	    /obj/item/weapon/tool/crowbar,
-	    /obj/item/weapon/extinguisher/mini,
-	    /obj/item/weapon/storage/box/freezer,
-	    /obj/item/clothing/accessory/storage/white_vest,
-	)
-
 /obj/structure/closet/secure_closet/SMO
 	name = "senior medical officer's locker"
 	req_access = list(access_smo)
