@@ -33,5 +33,5 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - tweak: "The Marker, currently-posessed necromorphs, and signals now each have their own chat style in necrochat, prioritised in that order, so it's easier to tell who's speaking."
+  - rscadd: "The Marker, currently-posessed necromorphs, and signals now each have their own chat style in necrochat, prioritised in that order, so it's easier to tell who's speaking."
   - tweak: "Admins can now read and mute necrochat"
