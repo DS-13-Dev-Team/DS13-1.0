@@ -12,7 +12,7 @@
 	speed /= 3      //Gives us 3 equal time segments for our three turns.
 	                //Why not one turn? Because byond will see that the start and finish are the same place and do nothing
 	                //Why not two turns? Because byond will do a flip instead of a turn
-	animate(src, transform = m120, time = speed, loops)
+	animate(src, transform = m120, time = speed, loops,flags = ANIMATION_PARALLEL)
 	animate(transform = m240, time = speed)
 	animate(transform = m360, time = speed)
 
@@ -24,7 +24,7 @@
 	var/offset = 1+soft_cap(intensity*0.3, 1, 1, 0.8)
 	var/time = 2+soft_cap(intensity*0.3, 2, 1, 0.92)
 	animate(src, transform=turn(transform, rotation*shake_dir), pixel_x=init_px + offset*shake_dir, time=1)
-	animate(transform=initial_transform, pixel_x=init_px, time=time, easing=ELASTIC_EASING)
+	animate(transform=initial_transform, pixel_x=init_px, time=time, easing=ELASTIC_EASING,flags = ANIMATION_PARALLEL)
 
 
 //Duration is in deciseconds
@@ -41,7 +41,7 @@
 		var/px_y = rand(0, strength*world.icon_size) * pick(-1, 1)
 		var/px_x = rand(0, strength*world.icon_size) * pick(-1, 1)
 		var/vector2/init_px = new /vector2(M.client.pixel_x, M.client.pixel_y)
-		animate(M.client, pixel_x=init_px.x + px_x, pixel_y=init_px.y + px_y, time=1)
+		animate(M.client, pixel_x=init_px.x + px_x, pixel_y=init_px.y + px_y, time=1,flags = ANIMATION_PARALLEL)
 		animate(pixel_x=init_px.x, pixel_y=init_px.y, time=duration, easing=ELASTIC_EASING)
 
 
@@ -174,9 +174,9 @@
 	//due to being pixel-offset to exactly where we came from
 
 	var/animtime  = (pixel_distance / pixels_per_decisecond)
-	animate(mover, pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = animtime)
+	animate(mover, pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = animtime,flags = ANIMATION_PARALLEL)
 	if (C)
-		animate(C, pixel_x = cached_client_pixels.x, pixel_y = cached_client_pixels.y, time = (animtime / client_lag))
+		animate(C, pixel_x = cached_client_pixels.x, pixel_y = cached_client_pixels.y, time = (animtime / client_lag),flags = ANIMATION_PARALLEL)
 
 	//Lets make sure view stays locked until we're done animating client
 	if (C && istype(L))

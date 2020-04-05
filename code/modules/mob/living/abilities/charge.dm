@@ -78,6 +78,9 @@
 	var/step_interval = 1	//Replaces the user's step interval for the duration of the charge
 	var/cached_step_interval
 
+	var/blur_filter_strength = 2
+	var/dm_filter/blur
+
 
 /datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
 	.=..()
@@ -170,6 +173,10 @@
 
 	deltimer(nomove_timer)
 
+	if (blur)
+		user.filters.Remove(blur)
+		blur = null
+
 	//When we finish, we go on cooldown
 	if (cooldown && cooldown > 0)
 		status = CHARGE_STATE_COOLDOWN
@@ -259,6 +266,8 @@
 			return FALSE
 
 
+
+
 	//If we have entered the same turf as our target then it must have been nondense. Let's hit it
 	if (user.loc == target.loc)
 		.=bump(user, target, TRUE) //Passing true here indicates we crossed over the target rather than crashing into them. This affects whether we'll stop in inertia mode
@@ -276,6 +285,7 @@
 	//Update the nomove timer when we move
 	deltimer(nomove_timer)
 	nomove_timer = addtimer(CALLBACK(src, .proc/stop_peter_out), nomove_timeout, TIMER_STOPPABLE)
+	update_blur_filter(mover,oldloc,newloc)
 
 /datum/extension/charge/proc/get_total_power()
 	var/total = power
@@ -362,6 +372,34 @@
 	for (var/mob/M in range(TP))
 		shake_camera(M,10*TP,2)
 	stop()
+
+
+
+
+
+
+//Visual Filters
+//------------------------
+/datum/extension/charge/proc/update_blur_filter(var/atom/mover,	var/atom/oldloc,	var/atom/newloc)
+	if (stopped_at || !blur_filter_strength)
+		return
+
+	if (!blur)
+		var/newfilter = filter(type="motion_blur", x=1,y=1)
+		mover.filters.Add(newfilter)
+		blur = mover.filters[mover.filters.len]
+
+	var/vector2/direction = Vector2.DirectionBetween(oldloc, newloc)
+	direction *= blur_filter_strength
+
+	blur.x = direction.x
+	blur.y = direction.y
+
+
+
+
+
+
 
 //Extra procs
 //---------------------------
