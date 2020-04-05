@@ -47,7 +47,7 @@ var/list/admin_datums = list()
 
 /datum/admins/proc/reassociate()
 	if(owner)
-		GLOB.admins += owner
+		GLOB.admins |= owner
 		owner.holder = src
 		owner.deadmin_holder = null
 		owner.add_admin_verbs()
