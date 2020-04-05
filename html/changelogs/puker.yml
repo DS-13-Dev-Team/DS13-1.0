@@ -22,7 +22,7 @@
 #################################
 
 # Your name.  
-author: Unknown
+author: Nanako
 
 # Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
 delete-after: True
@@ -35,5 +35,5 @@ delete-after: True
 changes: 
   - rscadd: "Implemented the Puker, a brand new Tier 2 ranged necromorph. Puker is slow, but a flexible fighter and effective at all ranges"
   - tweak: "All necromorph acid attacks now slow the movespeed of their victims while coating the body. This currently applies to spitter, puker, and cysts"
-  - tweak: "Slightly reduced necromorph limb health."
+  - tweak: "Slightly reduced necromorph limb health."   
   - soundadd: "Added firing audio for cyst corruption nodes."
