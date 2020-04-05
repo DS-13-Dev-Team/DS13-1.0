@@ -41,7 +41,7 @@
 	if(!source.extensions)
 		source.extensions = list()
 	var/datum/extension/existing_extension = source.extensions[extension_base_type]
-	if(istype(existing_extension))
+	if(istype(existing_extension) && !(existing_extension.flags & EXTENSION_FLAG_MULTIPLE_INSTANCES))
 		qdel(existing_extension)
 
 	if(initial(extension_base_type.flags) & EXTENSION_FLAG_IMMEDIATE)

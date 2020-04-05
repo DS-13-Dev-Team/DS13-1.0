@@ -92,6 +92,12 @@
 	if (!payload)
 		return	//Can't fire if we don't have a bomb ready
 
+	var/sound = pick(list('sound/effects/creatures/necromorph/cyst/cyst_fire_1.ogg',
+	'sound/effects/creatures/necromorph/cyst/cyst_fire_2.ogg',
+	'sound/effects/creatures/necromorph/cyst/cyst_fire_3.ogg',
+	'sound/effects/creatures/necromorph/cyst/cyst_fire_4.ogg'))
+	playsound(src, sound, VOLUME_HIGH, TRUE)
+
 	//Move the projectile out of us
 	var/obj/item/projectile/bullet/biobomb/cyst/C = payload.BB
 	C.forceMove(get_turf(src))

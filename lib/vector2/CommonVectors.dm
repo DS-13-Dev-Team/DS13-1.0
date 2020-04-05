@@ -39,6 +39,12 @@ Vector2
 			return delta
 
 	proc
+		VecDirectionBetween(var/vector2/A, var/vector2/B)
+			var/vector2/delta = new /vector2(B.x - A.x, B.y - A.y)
+			delta = delta.ToMagnitude(1)
+			return delta
+
+	proc
 		//Returns a directional vector and a magnitude between
 		DirMagBetween(var/atom/A, var/atom/B)
 			if (get_turf(A) == get_turf(B))
