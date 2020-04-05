@@ -240,34 +240,7 @@
 	if(alien == IS_DIONA)
 		M.adjustToxLoss(50 * removed)
 
-/datum/reagent/acid/polyacid
-	name = "Polytrinic acid"
-	description = "Polytrinic acid is a an extremely corrosive chemical substance."
-	taste_description = "acid"
-	reagent_state = LIQUID
-	color = "#8e18a9"
-	power = 5
-	meltdose = 4
 
-
-/datum/reagent/acid/necromorph
-	name = "Biological acid"
-	description = "A corrosive chemical of organic origin"
-	taste_description = "acid"
-	reagent_state = LIQUID
-	color = "#669900"
-	metabolism = 1	//1 unit per second
-	touch_met = 1
-	power = NECROMORPH_ACID_POWER
-	meltdose = 30 // How much is needed to melt
-
-/datum/reagent/acid/necromorph/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if (alien == IS_NECROMORPH)
-		removed *= NECROMORPH_FRIENDLY_FIRE_FACTOR	//Necromorph acid deals reduced friendly fire, but not nothing
-	.=..()
-
-/datum/reagent/acid/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.take_organ_damage(0, removed * power)
 
 /datum/reagent/lexorin
 	name = "Lexorin"

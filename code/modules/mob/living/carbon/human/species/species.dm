@@ -264,6 +264,8 @@
 		BP_R_HAND   = list(/obj/item/organ/external/hand/right, 40)
 		)
 
+	var/list/override_organ_types // Used for species that only need to change one or two entries in has_organ
+
 	var/list/has_organ = list(    // which required-organ checks are conducted.
 		BP_HEART =    /obj/item/organ/internal/heart,
 		BP_LUNGS =    /obj/item/organ/internal/lungs,
@@ -330,6 +332,21 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	else
 		hud = new()
 
+	// Modify organ lists if necessary.
+	if(islist(override_limb_types))
+		for(var/ltag in override_limb_types)
+			if (override_limb_types[ltag])
+				has_limbs[ltag] = list("path" = override_limb_types[ltag])
+			else
+				has_limbs.Remove(ltag)
+
+	if(islist(override_organ_types))
+		for(var/ltag in override_organ_types)
+			if (override_organ_types[ltag])
+				has_organ[ltag] = list("path" = override_organ_types[ltag])
+			else
+				has_organ.Remove(ltag)
+
 	//If the species has eyes, they are the default vision organ
 	if(!vision_organ && has_organ[BP_EYES])
 		vision_organ = BP_EYES
@@ -341,10 +358,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	for(var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
 
-	// Modify organ lists if necessary.
-	if(islist(override_limb_types))
-		for(var/ltag in override_limb_types)
-			has_limbs[ltag] = list("path" = override_limb_types[ltag])
+
+
 
 	//Build organ descriptors
 	for(var/limb_type in has_limbs)
@@ -935,6 +950,11 @@ These procs should return their entire args list. Best just to return parent in 
 	flick_overlay(LR, GLOB.clients, duration + 10)
 
 
+/*
+	Called just after a limb is severed
+*/
+/datum/species/proc/handle_amputated(var/mob/living/carbon/human/H, var/obj/item/organ/external/E, var/clean, var/disintegrate, var/ignore_children, var/silent)
+	return
 
 //Ported from upstream bay
 /datum/species/proc/check_no_slip(var/mob/living/carbon/human/H)

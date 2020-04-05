@@ -841,11 +841,16 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/mob/living/carbon/human/victim = owner //Keep a reference for post-removed().
 	var/obj/item/organ/external/parent_organ = parent
 
+
+
 	var/use_flesh_colour = species.get_flesh_colour(owner)
 	var/use_blood_colour = species.get_blood_colour(owner)
 
 	removed(null, ignore_children)
 	add_pain(60)
+	if (victim && victim.species)
+		victim.species.handle_amputated(victim, src, clean, disintegrate, ignore_children, silent)
+
 	if(!clean)
 		victim.shock_stage += min_broken_damage
 

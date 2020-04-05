@@ -30,6 +30,7 @@
 	duration = _duration
 	cooldown = _cooldown
 	power = _power
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/start), 0)
 	start()
 
 

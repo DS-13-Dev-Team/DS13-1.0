@@ -205,6 +205,14 @@
 	//Alright we've removed all the turfs which aren't in the cone!
 	return turfs
 
+/proc/get_view_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
+	if (!istype(origin))
+		origin = get_turf(origin)
+	var/list/viewlist = origin.turfs_in_view(distance)
+	var/list/conelist = get_cone(origin, direction, distance, angle)
+
+	return (viewlist & conelist)
+
 #define CLAMP(CLVALUE,CLMIN,CLMAX) ( max( (CLMIN), min((CLVALUE), (CLMAX)) ) )
 
 // Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive
