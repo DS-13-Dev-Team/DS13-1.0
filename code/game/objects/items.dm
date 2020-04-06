@@ -7,7 +7,13 @@
 	var/image/blood_overlay = null //this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/randpixel = 6
 	var/r_speed = 1.0
-	var/health = null
+
+	//Defense
+	var/max_health = 20
+	var/health = 20
+	var/resistance = 0
+	var/acid_resistance = 1	//Incoming acid damage is divided by this value
+
 	var/burn_point = null
 	var/burning = null
 	var/hitsound = null
@@ -86,10 +92,15 @@
 	var/list/sprite_sheets_obj = list()
 
 /obj/item/New()
+	if (w_class != ITEM_SIZE_NO_CONTAINER)	//This is infinity, would cause errors
+		max_health *= w_class	//Bigger items are harder to break
+	health = max_health
 	..()
 	if(randpixel && (!pixel_x && !pixel_y) && isturf(loc)) //hopefully this will prevent us from messing with mapper-set pixel_x/y
 		pixel_x = rand(-randpixel, randpixel)
 		pixel_y = rand(-randpixel, randpixel)
+
+
 
 /obj/item/Destroy()
 	qdel(hidden_uplink)
@@ -855,3 +866,36 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	if (ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.update_slot(equip_slot)
+
+
+
+//Called when a structure takes damage
+/obj/item/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	if (!bypass_resist)
+		amount -= resistance
+
+	if (amount <= 0)
+		return FALSE
+
+	health -= amount
+
+	if (health <= 0)
+		health = 0
+		return zero_health(amount, damtype, user, used_weapon, bypass_resist)//Some zero health overrides do things with a return value
+	else
+		update_icon()
+		return TRUE
+
+
+
+/obj/item/proc/updatehealth()
+	if (health <= 0)
+		health = 0
+		return zero_health()
+
+
+
+//Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
+/obj/item/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
+	qdel(src)
+	return TRUE

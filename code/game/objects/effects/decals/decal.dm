@@ -1,6 +1,7 @@
 /obj/effect/decal
 	plane = ABOVE_TURF_PLANE
 	layer = DECAL_LAYER
+	anchored = TRUE	//Why was this not set true
 
 
 /obj/effect/decal/fall_damage()

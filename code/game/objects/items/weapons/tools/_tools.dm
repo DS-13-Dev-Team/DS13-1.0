@@ -639,6 +639,9 @@
 /*********************
 	Resource Consumption
 **********************/
+
+
+
 /obj/proc/consume_resources(var/timespent, var/user)
 	return
 
@@ -984,3 +987,8 @@
 							QUALITY_CUTTING = 100)
 
 
+
+//Tools take heavy damage from being soaked in acid
+/obj/item/weapon/tool/acid_act(var/datum/reagent/acid/acid, var/volume)
+	var/acid_damage = acid.power * volume
+	unreliability += rand_between(0, degradation*acid_damage)

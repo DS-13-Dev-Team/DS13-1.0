@@ -23,6 +23,8 @@
 
 #define isclient(A) istype(A, /client)
 
+#define isclothing(A)	istype(A, /obj/item/clothing)
+
 #define iscorgi(A) istype(A, /mob/living/simple_animal/corgi)
 
 #define is_drone(A) istype(A, /mob/living/silicon/robot/drone)
