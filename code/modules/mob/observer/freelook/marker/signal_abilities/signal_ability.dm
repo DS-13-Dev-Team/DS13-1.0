@@ -8,9 +8,11 @@
 
 
 /datum/signal_ability
-	name = "Ability"
+	var/name = "Ability"
 
 	var/id = "ability"	//ID should be unique and all lowercase
+
+	var/desc = "Does stuff!"
 
 	//Cost of casting it. Can be zero
 	var/energy_cost = 60

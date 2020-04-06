@@ -1,3 +1,4 @@
+/*
 /datum/signal_ability/placement
 	energy_cost = 300
 	targeting_method	=	TARGET_PLACEMENT
@@ -16,3 +17,4 @@
 	name = "Growth"
 	id = "Growth"
 	placement_atom = /obj/structure/corruption_node/growth
+*/
