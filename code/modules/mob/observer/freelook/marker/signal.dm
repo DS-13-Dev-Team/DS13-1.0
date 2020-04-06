@@ -68,8 +68,8 @@
 	icon_state = "ghost"
 
 
-	if (key)
-		SSnecromorph.necromorph_players -= key
+	if (ckey)
+		SSnecromorph.necromorph_players -= ckey
 		message_necromorphs(SPAN_NOTICE("[key] has left the necromorph horde."))
 	var/mob/observer/ghost/ghost = ghostize(0)
 	qdel(src)
@@ -136,7 +136,7 @@
 
 /mob/observer/eye/signal/Login()
 	.=..()
-	SSnecromorph.necromorph_players[key] = src
+	SSnecromorph.necromorph_players[ckey] = src
 	SSnecromorph.signals |= src
 
 	spawn(1)	//Prevents issues when downgrading from master

@@ -84,4 +84,4 @@
 	.=..()
 	//Update the necromorph players list
 	if (is_necromorph())
-		SSnecromorph.necromorph_players[key] = src
+		SSnecromorph.necromorph_players[ckey] = src
