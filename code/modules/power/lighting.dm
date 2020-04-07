@@ -385,18 +385,30 @@
 	var/area/A = get_area(src)
 	return A && A.lightswitch && ..(power_channel)
 
-/obj/machinery/light/proc/flicker(var/amount = rand(10, 20))
+/obj/machinery/light/proc/flicker(var/amount = rand(6, 12))
 	if(flickering) return
 	flickering = 1
 	spawn(0)
 		if(on && get_status() == LIGHT_OK)
 			for(var/i = 0; i < amount; i++)
 				if(get_status() != LIGHT_OK) break
+
+				//We turn the light off
 				on = !on
 				update_icon(0)
-				sleep(rand(5, 15))
-			on = (get_status() == LIGHT_OK)
-			update_icon(0)
+
+				//Sleep a very brief period
+				sleep(rand(1, 4))
+
+				//And back on, thats one flicker cycle
+				on = (get_status() == LIGHT_OK)
+				update_icon(0)
+
+				//Now lets decide how long until the next flicker.
+				if (prob(85))
+					sleep(rand(2, 6))	//High chance of a short period, under half a second
+				else
+					sleep(rand(10, 30))	//Lower chance of a long period, 1-3 seconds
 		flickering = 0
 
 // ai attack - make lights flicker, because why not

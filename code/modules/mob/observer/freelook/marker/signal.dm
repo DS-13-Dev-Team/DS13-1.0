@@ -4,6 +4,7 @@
 	icon_state = "markersignal"
 	plane = ABOVE_OBSCURITY_PLANE
 	var/energy_extension_type = /datum/extension/psi_energy/signal
+	var/datum/extension/psi_energy/psi_energy
 
 	movement_handlers = list(
 		/datum/movement_handler/mob/incorporeal/eye
@@ -217,5 +218,14 @@
 	if (!key)
 		return	//Logged in players only
 	var/datum/player/myself = get_or_create_player(key)
-	var/datum/extension/psi_energy/PE = get_or_create_extension(myself, energy_extension_type)
-	PE.start_ticking()
+	psi_energy = get_or_create_extension(myself, energy_extension_type)
+	psi_energy.start_ticking()
+
+
+
+
+/mob/observer/eye/signal/Stat()
+	.=..()
+	if(.)
+		if(statpanel("Status"))
+			stat("Psi Energy", "[psi_energy.energy]/[psi_energy.max_energy]")

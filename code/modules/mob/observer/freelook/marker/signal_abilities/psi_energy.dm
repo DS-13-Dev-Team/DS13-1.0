@@ -93,3 +93,22 @@
 /*
 	Helper procs
 */
+/datum/proc/get_energy_extension()
+	for (var/subtype in extensions)
+		var/datum/extension/E = extensions[subtype]
+		if (istype(E, /datum/extension/psi_energy))
+			return E
+
+	return null
+
+
+/mob/get_energy_extension()
+	var/datum/player/P = get_player()
+	if (P)
+		return P.get_energy_extension()
+
+
+/mob/observer/eye/signal/get_energy_extension()
+	var/datum/player/P = get_player()
+	if (P)
+		return get_extension(P, energy_extension_type)

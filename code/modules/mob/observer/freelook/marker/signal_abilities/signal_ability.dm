@@ -7,6 +7,7 @@
 */
 
 
+
 /datum/signal_ability
 	var/name = "Ability"
 
@@ -21,7 +22,10 @@
 
 	//If the user clicks something which isn't a valid target, we'll search in this radius around the clickpoint to find a valid target.
 	//A value of zero still works, and will search only in the clicked turf. Set to null to disable autotargeting.
-	//UNIMPLEMENTED//var/autotarget_range = 1
+	var/autotarget_range = 1
+
+	//If true, autotargeting only selects things in view of the clicked place. If false, things in range are selected regardless of LOS
+	var/target_view = FALSE
 
 	//Many spells have cooldowns in addition to costs
 	//UNIMPLEMENTED//var/cooldown = 10 SECONDS
@@ -32,7 +36,7 @@
 
 	//If set to true or false, this requires the target to be an ally or not-ally of the user, respectively,
 	//Only used when targeting mobs. Leave it null to disable this behaviour
-	//UNIMPLEMENTED//var/allied_check = null
+	var/allied_check = null
 
 
 	//If true, can only be cast on turfs currently in the necrovision network.
@@ -87,11 +91,25 @@
 /datum/signal_ability/proc/on_cast(var/atom/target, var/mob/user, var/list/data)
 	return
 
+//Return true if the passed thing is a valid target
+/datum/signal_ability/proc/special_check(var/atom/thing)
+	return TRUE
 
 
+/*----------------------------------------------------------------------
+	Core Code: Be very careful about overrriding these, best not to
+----------------------------------------------------------------------*/
 //Entrypoint to this code, called when user clicks the button to start a spell.
 //This code creates the click handler
 /datum/signal_ability/proc/start_casting(var/mob/user)
+
+	var/check = can_cast_now(user)
+	//Validate before casting
+	if (check != TRUE)
+		to_chat(user, SPAN_WARNING(check))
+		return
+
+	to_chat(user, SPAN_NOTICE("Now Casting [name], click on a target."))
 	switch(targeting_method)
 		if (TARGET_CLICK)
 			//We make a target clickhandler, this callback is sent through to the handler's /New. User will be maintained as the first argument
@@ -105,11 +123,12 @@
 		if (TARGET_SELF)
 			select_target(user, user)
 
+
+
 //Path to the end of the cast
 /datum/signal_ability/proc/finish_casting(var/atom/target, var/mob/user, var/list/data)
-
 	//Pay the energy costs
-	if (!pay_cost())
+	if (!pay_cost(user))
 		//TODO: Abort casting, we failed
 		return
 
@@ -132,10 +151,23 @@
 //Called from the click handler when the user clicks a potential target.
 //Data is an associative list of any miscellaneous data. It contains the direction for placement handlers
 /datum/signal_ability/proc/select_target(var/candidate, var/mob/user, var/list/data)
+	world << "Selecting target [candidate], user: [user]. Data [english_list(data)]"
 	var/newtarget = candidate
 	if (!is_valid_target(newtarget))	//If its not right, then find a better one
-		newtarget = get_valid_target(candidate)
+		newtarget = null
+		world << "Target is invalid, we are looking for: [english_list(target_types)]"
+		var/list/allied_data = null
+		if (!isnull(allied_check))
+			allied_data = list(user, allied_check)
+		var/visualnet = null
+		if (require_necrovision)
+			visualnet = GLOB.necrovision
 
+		var/list/things = get_valid_target(candidate, autotarget_range, target_types,	allied_data, visualnet, require_corruption, target_view, 1, CALLBACK(src, /datum/signal_ability/proc/special_check))
+
+		if (things.len)
+			newtarget = things[1]
+			world << "Got new target [newtarget]"
 	if (!newtarget)
 		return FALSE
 
@@ -149,7 +181,33 @@
 
 
 
+/*
+	Actually deducts energy, sets cooldowns, and makes any other costs as a result of casting. Returns true if all succeed
+*/
+/datum/signal_ability/proc/pay_cost(var/mob/user)
+	.= FALSE
 
+
+	//TODO 1: Set cooldown here
+
+
+	//Pay energy cost last
+	var/datum/player/P = user.get_player()
+	if (energy_cost)
+		world << "Trying to pay cost, player is [P]"
+		var/datum/extension/psi_energy/PE = user.get_energy_extension()
+		if (!PE)
+			world << "Failed to get energy extension from player?"
+			return
+
+		if (!(PE.can_afford_energy_cost(energy_cost, src)))
+			world << "Player cant afford energy cost"
+			return
+
+		PE.change_energy(-energy_cost)
+
+
+	return TRUE
 
 
 
@@ -198,9 +256,9 @@
 	if (!user)	//If there's no user, maybe we're casting it via script. Just let it through
 		return
 
-	var/datum/player/P = user.get_player()
+	//var/datum/player/P = user.get_player()
 	if (energy_cost)
-		var/datum/extension/psi_energy/PE = get_extension(P, /datum/extension/psi_energy)
+		var/datum/extension/psi_energy/PE = user.get_energy_extension()
 		if (!PE)
 			return "You have no energy!"
 
@@ -222,6 +280,8 @@
 	if (!correct_type)
 		return FALSE
 
+	if (!special_check(thing))
+		return FALSE
 
 	var/turf/T = get_turf(thing)
 	if (require_corruption)
@@ -231,35 +291,17 @@
 	else if (require_necrovision)
 		if (!T.is_in_visualnet(GLOB.necrovision))
 			return FALSE
-	//TODO 1: Check Necrovision requirement
+
 	//TODO 1: Check allied status
 
-	return TRUE
-
-/*
-	Actually deducts energy, sets cooldowns, and makes any other costs as a result of casting. Returns true if all succeed
-*/
-/datum/signal_ability/proc/pay_cost(var/mob/user)
-	.= FALSE
-
-
-	//TODO 1: Set cooldown here
-
-
-	//Pay energy cost last
-	var/datum/player/P = user.get_player()
-	if (energy_cost)
-		var/datum/extension/psi_energy/PE = get_extension(P, /datum/extension/psi_energy)
-		if (!PE)
-			return
-
-		if (!(PE.can_afford_energy_cost(energy_cost, src)))
-			return
-
-		PE.change_energy(-energy_cost)
 
 
 	return TRUE
+
+
+
+
+
 
 
 

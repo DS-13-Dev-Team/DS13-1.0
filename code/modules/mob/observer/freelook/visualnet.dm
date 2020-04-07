@@ -195,7 +195,8 @@
 
 /turf/proc/is_in_visualnet(var/datum/visualnet/V)
 	var/numsearched = 0
-	for (var/datum/chunk/C as anything in chunks)
+	for (var/coord as anything in V.chunks)
+		var/datum/chunk/C = V.chunks[coord]
 		for (var/turf/T as anything in C.visibleTurfs)
 			numsearched++
 			if (T == src)

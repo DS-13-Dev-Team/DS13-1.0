@@ -195,7 +195,7 @@ var/global/list/string_slot_flags = list(
 			continue	//If base type matches type, its an abstract parent class, do not instantiate
 
 		SA = new subtype()
-		GLOB.signal_abilities[lowertext(SA.name)] = SA
+		GLOB.signal_abilities[SA.id] = SA
 
 	return 1
 
