@@ -11,7 +11,7 @@
 /mob/observer/eye/signal/Initialize()
 	..()
 	var/i = rand(1,15)
-	icon_state = markersignal-[i]
+	icon_state = "markersignal-[i]"
 
 /mob/observer/eye/signal/is_necromorph()
 	return TRUE
