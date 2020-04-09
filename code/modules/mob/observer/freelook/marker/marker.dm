@@ -29,6 +29,10 @@
 	SSnecromorph.marker = src	//Populate the global var with ourselves
 	..()
 
+/obj/machinery/marker/Initialize()
+	.=..()
+	if (config.marker_auto_activate)
+		make_active()
 
 /obj/machinery/marker/ex_act()
 	return null	//We do not break

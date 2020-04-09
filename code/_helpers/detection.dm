@@ -289,7 +289,7 @@ proc
 	View:	If true, limit the searching to turfs in view of origin. When false, searches in a range
 	Num:	How many targets to find? We'll keep searching til we get this many or have examined every turf's contents. Any false value counts as infinity, search everything
 */
-/proc/get_valid_target(var/atom/origin, var/radius, var/list/valid_types = list(/turf), var/list/allied = null, var/datum/visualnet/visualnet = null, var/require_corruption = FALSE, var/view_limit = FALSE, var/num_required = 1, var/datum/callback/special_check = null)
+/proc/get_valid_target(var/atom/origin, var/radius, var/list/valid_types = list(/turf), var/list/allied = null, var/datum/visualnet/visualnet = null, var/require_corruption = FALSE, var/view_limit = FALSE, var/LOS_block = FALSE, var/num_required = 1, var/datum/callback/special_check = null)
 	var/list/results = list()
 	var/list/haystack
 	if (view_limit)
@@ -331,7 +331,9 @@ proc
 
 		//TODO: Check allied status
 
-
+		if (LOS_block)
+			if (T.is_seen_by_crew())
+				continue
 
 
 		//If we get here, then the item is valid. Add it to our results list

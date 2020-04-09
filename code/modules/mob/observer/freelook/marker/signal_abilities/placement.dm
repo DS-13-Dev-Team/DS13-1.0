@@ -28,6 +28,7 @@
 	base_type = /datum/signal_ability/placement/corruption
 	target_string = "any corrupted tile"
 	marker_active_required = TRUE
+	LOS_blocked	=	TRUE
 
 //We'll copy the long description from corruption nodes
 /datum/signal_ability/placement/corruption/New()
@@ -35,7 +36,7 @@
 	if (ispath(placement_atom, /obj/structure/corruption_node))
 		var/obj/structure/corruption_node/C = new placement_atom()
 		C.biomass = 0
-		desc = C.get_long_description()
+		desc = "<hr>[C.get_long_description()]"
 		qdel(C)
 
 

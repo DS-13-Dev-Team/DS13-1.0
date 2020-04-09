@@ -52,7 +52,7 @@
 	var/require_corruption = FALSE
 
 	//When true, the turf which contains/is the target must not be visible to any conscious crewmember
-	//UNIMPLEMENTED//var/LOS_blocked	=	TRUE
+	var/LOS_blocked	=	FALSE
 
 	//When set to a number, the spell must be cast at least this distance away from a conscious crewmember
 	//UNIMPLEMENTED//var/distance_blocked = 1
@@ -171,7 +171,16 @@
 		if (require_necrovision)
 			visualnet = GLOB.necrovision
 
-		var/list/things = get_valid_target(candidate, autotarget_range, target_types,	allied_data, visualnet, require_corruption, target_view, 1, CALLBACK(src, /datum/signal_ability/proc/special_check))
+		var/list/things = get_valid_target(origin = candidate,
+		radius = autotarget_range,
+		valid_types = target_types,
+		allied = allied_data,
+		visualnet = visualnet,
+		require_corruption = require_corruption,
+		view_limit = target_view,
+		LOS_block = LOS_blocked,
+		num_required = 1,
+		special_check = CALLBACK(src, /datum/signal_ability/proc/special_check))
 
 		if (things.len)
 			newtarget = things[1]
@@ -199,7 +208,8 @@
 		.+="<b>Cooldown</b>: [descriptive_time(cooldown)]<br>"
 	.+="<b>Target</b>: [target_string]<br>"
 	if (autotarget_range)
-		.+="<b>Autotarget Range</b>: [autotarget_range]%<br>"
+		.+="<b>Autotarget Range</b>: [autotarget_range]<br>"
+	.="<br>"
 	.+= desc
 	long_desc = .
 
@@ -345,6 +355,11 @@
 			return FALSE
 	else if (require_necrovision)
 		if (!T.is_in_visualnet(GLOB.necrovision))
+			return FALSE
+
+
+	if (LOS_blocked)
+		if (T.is_seen_by_crew())
 			return FALSE
 
 	//TODO 1: Check allied status

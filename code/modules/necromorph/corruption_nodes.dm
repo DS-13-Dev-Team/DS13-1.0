@@ -13,7 +13,7 @@
 
 	var/dummy = FALSE
 
-
+	var/cached_rotation = 0
 	max_health = 100
 	resistance = 0
 
@@ -34,9 +34,14 @@
 	.=..()
 	var/matrix/M = matrix()
 	M = M.Scale(scale)	//We scale up the sprite so it slightly overlaps neighboring corruption tiles
-	var/rotation = 0
+	transform = M
 	if (random_rotation)
-		rotation = pick(list(0,45,90,135,180,225,270,315))//Randomly rotate it
+		set_rotation()
+
+/obj/structure/corruption_node/proc/set_rotation()
+	var/matrix/M = matrix()
+	var/rotation = pick(list(0,45,90,135,180,225,270,315))//Randomly rotate it
+	cached_rotation += rotation
 	transform = turn(M, rotation)
 
 /obj/structure/corruption_node/proc/get_blurb()

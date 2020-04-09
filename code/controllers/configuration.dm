@@ -226,6 +226,7 @@ var/list/gamemode_cache = list()
 	var/auto_bst = FALSE
 	var/no_overmap = FALSE
 	var/debug_verbs = FALSE
+	var/marker_auto_activate = FALSE
 
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
@@ -291,6 +292,8 @@ var/list/gamemode_cache = list()
 				if ("debug_verbs")
 					config.debug_verbs = TRUE
 
+				if ("marker_auto_activate")
+					config.marker_auto_activate = TRUE
 				//-------------------------
 
 				if ("resource_urls")
