@@ -8,6 +8,11 @@
 		/datum/movement_handler/mob/incorporeal/eye
 	)
 
+/mob/observer/eye/signal/Initialize()
+	..()
+	var/i = rand(1,15)
+	icon_state = markersignal-[i]
+
 /mob/observer/eye/signal/is_necromorph()
 	return TRUE
 
