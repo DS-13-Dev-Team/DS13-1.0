@@ -6,16 +6,24 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	var/mob/user
 	var/flags = 0
 	var/id	//Used by signal abilities
+	var/cursor_override
+	var/cached_cursor
 
 /datum/click_handler/New(var/mob/user)
 	..()
 	src.user = user
 	if(flags & (CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
 		GLOB.logged_out_event.register(user, src, /datum/click_handler/proc/OnMobLogout)
+	if (cursor_override && user.client)
+		cached_cursor = user.client.mouse_pointer_icon
+		user.client.mouse_pointer_icon = cursor_override
 
 /datum/click_handler/Destroy()
 	if(flags & (CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
 		GLOB.logged_out_event.unregister(user, src, /datum/click_handler/proc/OnMobLogout)
+	if (cursor_override && user.client)
+		user.client.mouse_pointer_icon = cached_cursor
+
 	if (user)
 		user.click_handlers.Remove(src)
 	user = null

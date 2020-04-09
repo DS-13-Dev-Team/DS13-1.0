@@ -207,3 +207,12 @@
 				continue
 
 		return TRUE
+
+
+/atom/proc/get_cardinal_corruption()
+	var/list/turfs = get_cardinal()
+	for (var/turf/T in turfs)
+		if (!turf_corrupted(T))
+			turfs -= T
+
+	return turfs

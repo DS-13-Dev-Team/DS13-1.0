@@ -29,7 +29,7 @@
 	var/target_view = FALSE
 
 	//Many spells have cooldowns in addition to costs
-	var/cooldown = 10 SECONDS
+	var/cooldown = 0
 
 	//What types of atom we are allowed to target with this ability. This will be used for autotargeting
 	//Any number of valid types can be put in this list
@@ -99,6 +99,8 @@
 	return
 
 //Return true if the passed thing is a valid target
+//Return false to fail silently
+//Return a string to fail with an error message shown to user
 /datum/signal_ability/proc/special_check(var/atom/thing)
 	return TRUE
 
@@ -160,7 +162,7 @@
 //Data is an associative list of any miscellaneous data. It contains the direction for placement handlers
 /datum/signal_ability/proc/select_target(var/mob/user, var/candidate,  var/list/data)
 	var/newtarget = candidate
-	if (!is_valid_target(newtarget))	//If its not right, then find a better one
+	if (!is_valid_target(newtarget, user))	//If its not right, then find a better one
 		newtarget = null
 		var/list/allied_data = null
 		if (!isnull(allied_check))
@@ -174,7 +176,9 @@
 		if (things.len)
 			newtarget = things[1]
 	if (!newtarget)
+		to_chat(user, SPAN_WARNING("No valid target found"))
 		return FALSE
+
 
 	.=TRUE
 	//TODO 2:	Add add a flag to not instacast here
@@ -206,14 +210,17 @@
 /datum/signal_ability/proc/pay_cost(var/mob/user)
 	.= FALSE
 
-
-	//TODO 1: Set cooldown here
-
-
 	//Pay energy cost last
-	var/datum/player/P = user.get_player()
+	//var/datum/player/P = user.get_player()
+	var/datum/extension/psi_energy/PE = user.get_energy_extension()
+
+	//We set right now as the last casting time, used for cooldowns
+	PE.abilities[id] = world.time
+
+
+
 	if (energy_cost)
-		var/datum/extension/psi_energy/PE = user.get_energy_extension()
+
 		if (!PE)
 			return
 
@@ -270,16 +277,22 @@
 		return
 
 	//var/datum/player/P = user.get_player()
+	var/datum/extension/psi_energy/PE = user.get_energy_extension()
 	if (energy_cost)
-		var/datum/extension/psi_energy/PE = user.get_energy_extension()
+
 		if (!PE)
 			return "You have no energy!"
 
 		if (!(PE.can_afford_energy_cost(energy_cost, src)))
 			return "Insufficient energy."
 
-
-	//TODO 1: Check cooldown
+	if (cooldown)
+		var/last_cast = PE.abilities[id]	//When was it last cast?
+		var/next_allowed = last_cast + cooldown	//Based on that, when will it next be ready to cast?
+		//If the gametime isnt past that point yet, then the spell is still cooling
+		if (world.time <= next_allowed)
+			var/time_remaining = "[time2text(next_allowed - world.time, "mm:ss")]"
+			return "This spell is still cooling down. It will be ready in [time_remaining]"
 
 
 /*
@@ -293,21 +306,22 @@
 
 */
 /datum/signal_ability/proc/is_valid_user(var/mob/user)
-	if (user)	//If there's no user, maybe we're casting it via script. Just let it through
+	if (!user)	//If there's no user, maybe we're casting it via script. Just let it through
 		return TRUE
 
-		if (marker_only && !is_marker_master(user))
-			return FALSE
+	if (marker_only && !is_marker_master(user))
+		return FALSE
+
 
 	if (marker_active_required)
 		var/obj/machinery/marker/M = get_marker()
 		if (M && !M.active)
 			return FALSE
 
-	return FALSE
+	return TRUE
 
 //Does a lot of checking to see if the specified target is valid
-/datum/signal_ability/proc/is_valid_target(var/atom/thing)
+/datum/signal_ability/proc/is_valid_target(var/atom/thing, var/mob/user, var/silent = FALSE)
 	var/correct_type = FALSE
 	for (var/typepath in target_types)
 		if (istype(thing, typepath))
@@ -317,8 +331,12 @@
 	if (!correct_type)
 		return FALSE
 
-	if (!special_check(thing))
+	var/result = special_check(thing)
+	if (result != TRUE)
+		if (result != FALSE && !silent && user)
+			to_chat(user, SPAN_WARNING(result))
 		return FALSE
+
 
 	var/turf/T = get_turf(thing)
 	if (require_corruption)
@@ -338,15 +356,3 @@
 
 
 
-
-
-
-
-/client/verb/cast_ability(var/aname as text)
-	set name = "Cast Ability"
-	set category = "Debug"
-
-	aname = lowertext(aname)
-	var/datum/signal_ability/SA = GLOB.signal_abilities[aname]
-	if (SA)
-		SA.start_casting(mob)

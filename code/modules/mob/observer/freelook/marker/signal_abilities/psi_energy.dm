@@ -124,14 +124,22 @@
 /*----------------------
 	Ability List
 ----------------------*/
-/datum/extension/psi_energy/proc/build_ability_list()
-	abilities = list()
+/datum/extension/psi_energy/proc/build_ability_list(var/clear = TRUE)
+	if (clear)
+		abilities = list()
 	for (var/id in GLOB.signal_abilities)
 		var/datum/signal_ability/SA = GLOB.signal_abilities[id]
 
 		if (SA.is_valid_user(host.get_mob()))
 			//We can use this ability
-			abilities += id
+			abilities[id] = world.time
+			//This time is the last-cast time for the spell, used to check cooldowns
+			//By setting it to worldtime now, spells with cooldowns can only be cast at least cooldown time after taking control of the mob
+			//This prevents exploits with long-cooldown spells
+		else
+			abilities -= id
+
+	sort_abilities()
 	generate_content_data()
 
 /datum/extension/psi_energy/proc/generate_content_data()
@@ -143,6 +151,29 @@
 		spells.Add(list(spell))
 
 	content_data["abilities"] = spells
+
+//Sorts the list of abilities by ascending cost
+/datum/extension/psi_energy/proc/sort_abilities()
+	var/list/sorted_abilities = list()
+	for (var/id in abilities)
+
+		var/datum/signal_ability/SA = GLOB.signal_abilities[id]
+		var/newcost = SA.energy_cost
+		var/inserted = FALSE
+		for (var/i = 1; i <= sorted_abilities.len; i++)
+			var/sid = sorted_abilities[i]
+			var/datum/signal_ability/SA2 = GLOB.signal_abilities[sid]
+			if (SA2.energy_cost > newcost)
+				inserted = TRUE
+				sorted_abilities.Insert(i, id)
+				sorted_abilities[id] = abilities[id]
+				break
+
+		if (!inserted)
+			sorted_abilities.Add(id)
+			sorted_abilities[id] = abilities[id]
+
+	abilities = sorted_abilities
 
 /*----------------------
 	Abilities Menu
@@ -156,13 +187,12 @@
 	if (selected_ability)
 		var/datum/signal_ability/SA = GLOB.signal_abilities[selected_ability]
 		data["current"] = list("name" = SA.name, "desc" = SA.get_long_description(), "id" = selected_ability)
-	//data["current"] = host.selected_spawn.id
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "signal_abilities.tmpl", "Abilities Menu", 600, 600, state = GLOB.interactive_state)
 		ui.set_initial_data(data)
-		ui.set_auto_update(0)
+		ui.set_auto_update(TRUE)
 		ui.open()
 
 

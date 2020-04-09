@@ -4,15 +4,18 @@
 /datum/click_handler/target
 	var/datum/callback/call_on_click
 	var/stopped = FALSE
+	cursor_override = 'icons/misc/cursor_signal_ability.dmi'
 
 /datum/click_handler/target/New(var/mob/user, var/datum/callback/C)
 	.=..()
 	call_on_click = C
+	start()
 
 
 /datum/click_handler/target/OnLeftClick(var/atom/A, var/params)
-	call_on_click.Invoke(A, params)
-	stop()
+	. = call_on_click.Invoke(A, params)
+	if (.)
+		stop()
 
 //Shift click does not terminate, allowing multiple casts
 /datum/click_handler/target/OnShiftClick(var/atom/A, var/params)

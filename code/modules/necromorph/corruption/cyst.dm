@@ -247,7 +247,7 @@
 /datum/signal_ability/placement/corruption/cyst
 	name = "Cyst"
 	id = "cyst"
-	energy_cost = 3
+	energy_cost = 300
 	placement_atom = /obj/structure/corruption_node/cyst
 	click_handler_type = /datum/click_handler/placement/ability/cyst
 

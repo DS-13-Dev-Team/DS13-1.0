@@ -26,6 +26,8 @@
 //Variant for placing corruption nodes
 /datum/signal_ability/placement/corruption
 	base_type = /datum/signal_ability/placement/corruption
+	target_string = "any corrupted tile"
+	marker_active_required = TRUE
 
 //We'll copy the long description from corruption nodes
 /datum/signal_ability/placement/corruption/New()

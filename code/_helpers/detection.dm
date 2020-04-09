@@ -317,7 +317,7 @@ proc
 
 		//Special check is a callback that can be passed in, to do fancy things
 		if (special_check)
-			if (!special_check.Invoke(A))
+			if (special_check.Invoke(A) != TRUE)
 				continue
 
 		var/turf/T = get_turf(A)
@@ -346,3 +346,10 @@ proc
 
 
 	return results
+
+
+/atom/proc/get_cardinal()
+	.=list()
+	for (var/direction in GLOB.cardinal)
+		var/turf/T = get_step(src, direction)
+		.+=T

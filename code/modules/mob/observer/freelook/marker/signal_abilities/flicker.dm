@@ -21,7 +21,7 @@
 	desc = "Causes all lights in an area to flicker"
 	target_string = "A tile in the target area"
 	energy_cost = 120
-
+	cooldown = 10 SECONDS
 	target_types = list(/turf)
 
 	targeting_method	=	TARGET_CLICK

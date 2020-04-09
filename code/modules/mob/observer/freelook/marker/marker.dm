@@ -43,6 +43,7 @@
 
 /obj/machinery/marker/proc/make_active()
 	active = TRUE
+	SSnecromorph.update_all_ability_lists(FALSE)	//Unlock new spells for signals
 	visible_message(SPAN_WARNING("[src] starts to pulsate in a strange way..."))
 	//Start spreading corruption
 	start_corruption()

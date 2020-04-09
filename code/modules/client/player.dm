@@ -62,3 +62,8 @@
 		return null
 
 	return get_or_create_player(client.ckey)
+
+
+/proc/get_player_from_key(var/key)
+	key = ckey(key)
+	return GLOB.players[key]
