@@ -196,6 +196,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	P.start_placement()
 
 	winset(_user, "mapwindow.map", "focus=true")
+	return P
 
 
 
@@ -294,3 +295,4 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	P.start_placement()
 
 	winset(_user, "mapwindow.map", "focus=true")
+	return P

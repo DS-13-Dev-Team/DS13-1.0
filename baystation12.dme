@@ -2056,7 +2056,7 @@
 #include "code\modules\mob\observer\freelook\marker\signal.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\_defines.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\flicker.dm"
-#include "code\modules\mob\observer\freelook\marker\signal_abilities\growth.dm"
+#include "code\modules\mob\observer\freelook\marker\signal_abilities\placement.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\psi_energy.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\signal_ability.dm"
 #include "code\modules\mob\observer\ghost\follow.dm"

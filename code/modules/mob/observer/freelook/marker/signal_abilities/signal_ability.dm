@@ -14,6 +14,7 @@
 	var/id = "ability"	//ID should be unique and all lowercase
 
 	var/desc = "Does stuff!"
+	var/long_desc = ""
 
 	//Cost of casting it. Can be zero
 	var/energy_cost = 60
@@ -28,11 +29,14 @@
 	var/target_view = FALSE
 
 	//Many spells have cooldowns in addition to costs
-	//UNIMPLEMENTED//var/cooldown = 10 SECONDS
+	var/cooldown = 10 SECONDS
 
 	//What types of atom we are allowed to target with this ability. This will be used for autotargeting
 	//Any number of valid types can be put in this list
 	var/target_types = list(/turf)
+
+	//A string telling the user what to click on/near
+	var/target_string = "any visible tile"
 
 	//If set to true or false, this requires the target to be an ally or not-ally of the user, respectively,
 	//Only used when targeting mobs. Leave it null to disable this behaviour
@@ -55,12 +59,15 @@
 
 	//If true, this spell can only be cast after the marker has activated
 	//If false, it can be cast anytime from roundstart
-	//UNIMPLEMENTED//var/marker_active_required = FALSE
+	var/marker_active_required = FALSE
 
 
 	//How many targets this spell needs. This may allow casting on multiple things at once, or tracing a path. Default 1
 	//UNIMPLEMENTED//var/num_targets
 
+
+	//If true, signals cannot cast this spell. Only the marker player can do it
+	var/marker_only	= FALSE
 
 	//Targeting Handling:
 	//--------------------------
@@ -88,7 +95,7 @@
 	Override these in subclasses to do things
 -----------------------------------------------*/
 //This does nothing in the base class, override it and put spell effects here
-/datum/signal_ability/proc/on_cast(var/atom/target, var/mob/user, var/list/data)
+/datum/signal_ability/proc/on_cast(var/mob/user, var/atom/target, var/list/data)
 	return
 
 //Return true if the passed thing is a valid target
@@ -118,7 +125,7 @@
 			CH.id = "[src.type]"
 		if (TARGET_PLACEMENT)
 			//Make the placement handler, passing in atom to show. Callback is propagated through and will link its clicks back here
-			var/datum/click_handler/CH = create_placement_handler(user, placement_atom, click_handler_type ? click_handler_type : /datum/click_handler/placement/ability, placement_snap, CALLBACK(src, /datum/signal_ability/proc/placement_click, user))
+			var/datum/click_handler/CH = create_ability_placement_handler(user, placement_atom, click_handler_type ? click_handler_type : /datum/click_handler/placement/ability, placement_snap, require_corruption, CALLBACK(src, /datum/signal_ability/proc/placement_click, user))
 			CH.id = "[src.type]"
 		if (TARGET_SELF)
 			select_target(user, user)
@@ -126,14 +133,15 @@
 
 
 //Path to the end of the cast
-/datum/signal_ability/proc/finish_casting(var/atom/target, var/mob/user, var/list/data)
+/datum/signal_ability/proc/finish_casting(var/mob/user, var/atom/target,  var/list/data)
 	//Pay the energy costs
 	if (!pay_cost(user))
 		//TODO: Abort casting, we failed
 		return
 
+
 	//And do the actual effect of the spell
-	on_cast(target, user, data)
+	on_cast(user, target,  data)
 
 	//TODO 1: Call a cleanup/abort proc to finish
 	stop_casting(user)
@@ -150,12 +158,10 @@
 
 //Called from the click handler when the user clicks a potential target.
 //Data is an associative list of any miscellaneous data. It contains the direction for placement handlers
-/datum/signal_ability/proc/select_target(var/candidate, var/mob/user, var/list/data)
-	world << "Selecting target [candidate], user: [user]. Data [english_list(data)]"
+/datum/signal_ability/proc/select_target(var/mob/user, var/candidate,  var/list/data)
 	var/newtarget = candidate
 	if (!is_valid_target(newtarget))	//If its not right, then find a better one
 		newtarget = null
-		world << "Target is invalid, we are looking for: [english_list(target_types)]"
 		var/list/allied_data = null
 		if (!isnull(allied_check))
 			allied_data = list(user, allied_check)
@@ -167,18 +173,31 @@
 
 		if (things.len)
 			newtarget = things[1]
-			world << "Got new target [newtarget]"
 	if (!newtarget)
 		return FALSE
 
 	.=TRUE
 	//TODO 2:	Add add a flag to not instacast here
 
-	finish_casting(newtarget, user, data)
+	finish_casting(user, newtarget,  data)
 
 
 
 
+/*
+	Returns a paragraph or two of text explaining what this spell does
+*/
+/datum/signal_ability/proc/get_long_description(var/mob/user)
+	if (long_desc)
+		return long_desc
+	.="<b>Cost</b>: [energy_cost]<br>"
+	if (cooldown)
+		.+="<b>Cooldown</b>: [descriptive_time(cooldown)]<br>"
+	.+="<b>Target</b>: [target_string]<br>"
+	if (autotarget_range)
+		.+="<b>Autotarget Range</b>: [autotarget_range]%<br>"
+	.+= desc
+	long_desc = .
 
 
 /*
@@ -194,18 +213,14 @@
 	//Pay energy cost last
 	var/datum/player/P = user.get_player()
 	if (energy_cost)
-		world << "Trying to pay cost, player is [P]"
 		var/datum/extension/psi_energy/PE = user.get_energy_extension()
 		if (!PE)
-			world << "Failed to get energy extension from player?"
 			return
 
 		if (!(PE.can_afford_energy_cost(energy_cost, src)))
-			world << "Player cant afford energy cost"
 			return
 
 		PE.change_energy(-energy_cost)
-
 
 	return TRUE
 
@@ -221,16 +236,13 @@
 
 //Called from a click handler using the TARGET_CLICK method
 /datum/signal_ability/proc/target_click(var/mob/user, var/atom/target, var/params)
-	return select_target(target, user)
+	return select_target(user, target)
 
 
-//Special clickhandler variant used to place ability items
-/datum/click_handler/placement/ability/spawn_result(var/turf/site)
-	//We should have done all necessary checks here, so we are clear to proceed
-	call_on_place.Invoke(site, user, dir)
 
-/datum/signal_ability/proc/placement_click(var/mob/user, var/atom/target, var/direction)
-	return select_target(target, user, list("direction" = direction))
+
+/datum/signal_ability/proc/placement_click(var/mob/user, var/atom/target, var/list/data)
+	return select_target(user, target,  data)
 
 
 
@@ -252,8 +264,9 @@
 	This proc will either return TRUE if no problem, or an error message if there is a problem
 */
 /datum/signal_ability/proc/can_cast_now(var/mob/user)
-	.=TRUE
-	if (!user)	//If there's no user, maybe we're casting it via script. Just let it through
+	.=is_valid_user(user)
+
+	if (!.)
 		return
 
 	//var/datum/player/P = user.get_player()
@@ -266,8 +279,32 @@
 			return "Insufficient energy."
 
 
-	//TODO 1: Check cooldown, mob type and marker activity requirement
+	//TODO 1: Check cooldown
 
+
+/*
+	Checks whether the user will be able to cast this spell in the near future, without outside assistance or changing circumstances
+	This is mainly used for deciding whether or not to add it to our spell list
+	Checks:
+		-Correct mob type
+		-Marker activity requirement
+
+	Does not check energy cost, cooldown, or other ephemeral qualities
+
+*/
+/datum/signal_ability/proc/is_valid_user(var/mob/user)
+	if (user)	//If there's no user, maybe we're casting it via script. Just let it through
+		return TRUE
+
+		if (marker_only && !is_marker_master(user))
+			return FALSE
+
+	if (marker_active_required)
+		var/obj/machinery/marker/M = get_marker()
+		if (M && !M.active)
+			return FALSE
+
+	return FALSE
 
 //Does a lot of checking to see if the specified target is valid
 /datum/signal_ability/proc/is_valid_target(var/atom/thing)

@@ -43,7 +43,8 @@
 
 /obj/structure/corruption_node/proc/get_long_description()
 	.="<b>Health</b>: [max_health]<br>"
-	.+="<b>Biomass</b>: [biomass]kg[biomass_reclamation ? " . If destroyed, reclaim [biomass_reclamation*100]% biomass over [reclamation_time/600] minutes" : ""]<br>"
+	if (biomass)
+		.+="<b>Biomass</b>: [biomass]kg[biomass_reclamation ? " . If destroyed, reclaim [biomass_reclamation*100]% biomass over [reclamation_time/600] minutes" : ""]<br>"
 	if (requires_corruption)
 		.+= SPAN_WARNING("Must be placed on a corrupted tile <br>")
 	.+= "<br><br>"

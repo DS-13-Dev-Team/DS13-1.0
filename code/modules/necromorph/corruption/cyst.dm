@@ -6,7 +6,7 @@
 
 #define CYST_ATTACH_OFFSET	8	//How many pixels the cyst offsets towards a wall or object its attached
 #define CYST_IMPACT_DAMAGE	10
-#define CYST_BLAST_POWER	50
+#define CYST_BLAST_POWER	40
 
 /obj/structure/corruption_node/cyst
 	name = "Cyst"
@@ -234,3 +234,50 @@
 	var/obj/structure/corruption_node/cyst/C = mountee
 	C.attached = mountpoint
 	C.set_offset_to(mountpoint, CYST_ATTACH_OFFSET)
+
+
+
+
+
+
+
+/*
+	Cyst can also be placed with signal ability
+*/
+/datum/signal_ability/placement/corruption/cyst
+	name = "Cyst"
+	id = "cyst"
+	energy_cost = 3
+	placement_atom = /obj/structure/corruption_node/cyst
+	click_handler_type = /datum/click_handler/placement/ability/cyst
+
+
+/datum/signal_ability/placement/corruption/cyst/on_cast(var/atom/target, var/mob/user, var/list/data)
+	.=..()
+	var/atom/A = .
+	var/mountpoint = get_wallmount_target_at_direction(A, data["direction"])
+	mount_to_atom(A, mountpoint, /datum/extension/mount/cyst)
+
+
+/*
+	Mostly copypaste of above clickhandler
+*/
+/datum/click_handler/placement/ability/cyst
+	rotate_angle = 45	//8 directions supported
+	var/atom/mount_target
+
+//Check we have a surface to place it on
+/datum/click_handler/placement/ability/cyst/placement_blocked(var/turf/candidate)
+	mount_target = get_wallmount_target_at_direction(candidate, dir)
+	if (!mount_target)
+		return "This must be placed against a wall or similar hard surface"
+
+	.=..()
+
+
+
+/datum/click_handler/placement/ability/cyst/update_pixel_offset()
+	if (mount_target)
+		pixel_offset = last_location.get_offset_to(mount_target, CYST_ATTACH_OFFSET)
+	else
+		pixel_offset = new /vector2(0,0)

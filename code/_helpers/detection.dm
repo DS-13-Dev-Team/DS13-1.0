@@ -323,11 +323,11 @@ proc
 		var/turf/T = get_turf(A)
 		if (require_corruption)
 			if (!turf_corrupted(T))
-				return FALSE
+				continue
 
 		if (visualnet)
 			if (!T.is_in_visualnet(visualnet))
-				return FALSE
+				continue
 
 		//TODO: Check allied status
 

@@ -229,3 +229,13 @@
 	if(.)
 		if(statpanel("Status"))
 			stat("Psi Energy", "[psi_energy.energy]/[psi_energy.max_energy]")
+
+
+/mob/observer/eye/signal/verb/ability_menu()
+	set name = "Ability Menu"
+	set desc = "Opens the menu to cast abilities using your psi energy"
+	set category = "Abilities"
+
+
+	var/datum/extension/psi_energy/PE	= get_energy_extension()
+	PE.ui_interact(src)

@@ -13,9 +13,15 @@
 	var/max_energy = 900	//Stores 15 minutes worth of energy
 	var/ticking = FALSE
 
+	var/list/abilities = list()
+
+	var/list/content_data = list() //Cached list of stuff that doesn't change between UI refreshes
+	var/selected_ability	//What is the user currently looking at in the menu
+
 /datum/extension/psi_energy/New()
 	.=..()
 	host = holder
+	build_ability_list()
 
 /datum/extension/psi_energy/proc/is_valid_mob(var/mob/M)
 	return TRUE
@@ -57,7 +63,7 @@
 	Energy Handling
 */
 /datum/extension/psi_energy/proc/change_energy(var/adjustment)
-	energy = CLAMP(energy+energy_per_tick, 0, max_energy)
+	energy = CLAMP(energy+adjustment, 0, max_energy)
 
 //The source is included for the possibility of discounts based on spell types in future
 /datum/extension/psi_energy/proc/can_afford_energy_cost(var/cost, var/datum/source)
@@ -90,9 +96,9 @@
 	return TRUE	//Always gives energy regardless of mob
 
 
-/*
+/*----------------------
 	Helper procs
-*/
+----------------------*/
 /datum/proc/get_energy_extension()
 	for (var/subtype in extensions)
 		var/datum/extension/E = extensions[subtype]
@@ -112,3 +118,71 @@
 	var/datum/player/P = get_player()
 	if (P)
 		return get_extension(P, energy_extension_type)
+
+
+
+/*----------------------
+	Ability List
+----------------------*/
+/datum/extension/psi_energy/proc/build_ability_list()
+	abilities = list()
+	for (var/id in GLOB.signal_abilities)
+		var/datum/signal_ability/SA = GLOB.signal_abilities[id]
+
+		if (SA.is_valid_user(host.get_mob()))
+			//We can use this ability
+			abilities += id
+	generate_content_data()
+
+/datum/extension/psi_energy/proc/generate_content_data()
+	var/list/spells = list()
+	for (var/id in abilities)
+
+		var/datum/signal_ability/SA = GLOB.signal_abilities[id]
+		var/list/spell = list("name" = SA.name, "id" = SA.id, "cost" = SA.energy_cost)
+		spells.Add(list(spell))
+
+	content_data["abilities"] = spells
+
+/*----------------------
+	Abilities Menu
+----------------------*/
+
+/datum/extension/psi_energy/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	var/list/data = content_data
+	data["energy"] = energy
+	data["income"] = energy_per_tick
+	data["max_energy"]= max_energy
+	if (selected_ability)
+		var/datum/signal_ability/SA = GLOB.signal_abilities[selected_ability]
+		data["current"] = list("name" = SA.name, "desc" = SA.get_long_description(), "id" = selected_ability)
+	//data["current"] = host.selected_spawn.id
+
+	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	if (!ui)
+		ui = new(user, src, ui_key, "signal_abilities.tmpl", "Abilities Menu", 600, 600, state = GLOB.interactive_state)
+		ui.set_initial_data(data)
+		ui.set_auto_update(0)
+		ui.open()
+
+
+/datum/extension/psi_energy/Topic(href, href_list)
+	if(..())
+		return
+	if (href_list["select"])
+		if  (href_list["select"] in abilities)
+			selected_ability = href_list["select"]
+
+	if (href_list["cast"])
+		cast_ability(href_list["cast"])
+
+	SSnano.update_uis(src)
+
+
+/*
+	The ability datum handles all safety checks. tell it we want to start and thats all
+*/
+/datum/extension/psi_energy/proc/cast_ability(var/ability_id)
+	var/mob/user = host.get_mob()
+	var/datum/signal_ability/SA = GLOB.signal_abilities[ability_id]
+	SA.start_casting(user)
