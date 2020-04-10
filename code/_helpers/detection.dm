@@ -329,7 +329,10 @@ proc
 			if (!T.is_in_visualnet(visualnet))
 				continue
 
-		//TODO: Check allied status
+		if (allied)
+			var/mob/user = allied[1]
+			if ((user.is_allied(A) != allied[2]))
+				continue
 
 		if (LOS_block)
 			if (T.is_seen_by_crew())

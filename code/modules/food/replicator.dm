@@ -8,7 +8,7 @@
 	use_power = 1
 	idle_power_usage = 40
 	obj_flags = OBJ_FLAG_ANCHORABLE
-	var/biomass = 100
+	biomass = 100
 	var/biomass_max = 100
 	var/biomass_per = 10
 	var/deconstruct_eff = 0.5

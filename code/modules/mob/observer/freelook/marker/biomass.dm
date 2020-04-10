@@ -125,3 +125,57 @@
 //This will consume worn equipment too, maybe thats desireable
 /datum/biomass_source/convergence/mass_exhausted()
 	qdel(source)
+
+
+
+
+/*
+	Helper Procs
+*/
+
+/proc/get_biomass_sources()
+	var/list/sources = list()
+	var/obj/machinery/marker/M	= get_marker()
+	sources += M.biomass_sources
+
+	//Possible future todo here: Support for multiple markers or biomass holders
+
+	return sources
+
+//Called when the biomass of a live mob changes at any time other than initial spawning
+/mob/living/proc/adjust_biomass(var/change)
+	//Account for the possibility of going sub zero
+	if ((biomass + change) < 0)
+		change = biomass * -1
+
+	//Set the biomass
+	biomass += change
+
+	//Now we search through all biomass sources to find one where the source equals us
+	var/list/sources = get_biomass_sources()
+	for (var/datum/biomass_source/BS in sources)
+		var/atom/A = locate(BS.source)
+		if (!A)
+			continue
+
+		//Ding!
+		if (A == src)
+			BS.initial_mass += change
+			BS.remaining_mass += change
+
+
+//How much biomass is this object worth?
+/atom/proc/get_biomass()
+	return 0
+
+
+/mob/living/get_biomass()
+	return biomass
+
+
+/obj/get_biomass()
+	return biomass
+
+
+/obj/item/weapon/reagent_containers/food/snacks/get_biomass()
+	return (nutriment_amt * 0.1)

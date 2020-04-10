@@ -14,7 +14,7 @@
 	var/id = "ability"	//ID should be unique and all lowercase
 
 	var/desc = "Does stuff!"
-	var/long_desc = ""
+	var/long_desc
 
 	//Cost of casting it. Can be zero
 	var/energy_cost = 60
@@ -118,18 +118,21 @@
 		to_chat(user, SPAN_WARNING(check))
 		return
 
-	to_chat(user, SPAN_NOTICE("Now Casting [name], click on a target."))
+
 	switch(targeting_method)
 		if (TARGET_CLICK)
+			to_chat(user, SPAN_NOTICE("Now Casting [name], click on a target. Right click to cancel. Hold shift to cast multiple times."))
 			//We make a target clickhandler, this callback is sent through to the handler's /New. User will be maintained as the first argument
 			//When the user clicks, it will call target_click, passing back the user, as well as the thing they clicked on, and clickparams
 			var/datum/click_handler/CH = user.PushClickHandler((click_handler_type ? click_handler_type : /datum/click_handler/target), CALLBACK(src, /datum/signal_ability/proc/target_click, user))
 			CH.id = "[src.type]"
 		if (TARGET_PLACEMENT)
+			to_chat(user, SPAN_NOTICE("Now Placing [name], click on a target. Right click to cancel. Hold shift to place multiple copies, press R to rotate"))
 			//Make the placement handler, passing in atom to show. Callback is propagated through and will link its clicks back here
 			var/datum/click_handler/CH = create_ability_placement_handler(user, placement_atom, click_handler_type ? click_handler_type : /datum/click_handler/placement/ability, placement_snap, require_corruption, CALLBACK(src, /datum/signal_ability/proc/placement_click, user))
 			CH.id = "[src.type]"
 		if (TARGET_SELF)
+			to_chat(user, SPAN_NOTICE("Now Casting [name]!"))
 			select_target(user, user)
 
 
@@ -161,6 +164,12 @@
 //Called from the click handler when the user clicks a potential target.
 //Data is an associative list of any miscellaneous data. It contains the direction for placement handlers
 /datum/signal_ability/proc/select_target(var/mob/user, var/candidate,  var/list/data)
+	var/check = can_cast_now(user)
+	//Validate before casting
+	if (check != TRUE)
+		to_chat(user, SPAN_WARNING(check))
+		return
+
 	var/newtarget = candidate
 	if (!is_valid_target(newtarget, user))	//If its not right, then find a better one
 		newtarget = null
@@ -209,7 +218,7 @@
 	.+="<b>Target</b>: [target_string]<br>"
 	if (autotarget_range)
 		.+="<b>Autotarget Range</b>: [autotarget_range]<br>"
-	.="<br>"
+	.+="<br>"
 	.+= desc
 	long_desc = .
 
@@ -243,8 +252,15 @@
 
 
 
-
-
+/*
+	To be called only from on_cast, or some other point where costs have already been paid.
+	Gives the user their energy and cooldowns back
+*/
+/datum/signal_ability/proc/refund(var/mob/user)
+	var/datum/extension/psi_energy/PE = user.get_energy_extension()
+	PE.abilities[id] = 0	//ready to recast immediately
+	if (energy_cost)
+		PE.change_energy(energy_cost)
 
 
 /*-----------------------------
@@ -363,7 +379,10 @@
 			return FALSE
 
 	//TODO 1: Check allied status
-
+	if (!isnull(allied_check))
+		if ((user.is_allied(thing) != allied_check))
+			world << "Allied result is [user.is_allied(thing)]"
+			return FALSE
 
 
 	return TRUE

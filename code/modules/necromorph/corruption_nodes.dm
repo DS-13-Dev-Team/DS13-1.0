@@ -3,7 +3,7 @@
 	layer = ABOVE_OBJ_LAYER	//Make sure nodes draw ontop of corruption
 	icon = 'icons/effects/corruption.dmi'
 	var/marker_spawnable = TRUE	//When true, this automatically shows in the necroshop
-	var/biomass = 10
+	biomass = 10
 	var/biomass_reclamation = 0.9
 	var/reclamation_time = 10 MINUTES
 	var/requires_corruption = TRUE

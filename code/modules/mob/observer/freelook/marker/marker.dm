@@ -18,7 +18,7 @@
 
 	//Biomass handling
 	//--------------------------
-	var/biomass	= 80//Current actual quantity of biomass we have stored. Start with enough to spawn a slasher
+	biomass	= 100//Current actual quantity of biomass we have stored. Start with enough to spawn a slasher
 	var/biomass_tick = 0	//Current amount of mass we're gaining each second. This shouldn't be edited as it is regularly recalculated
 	var/list/biomass_sources = list()	//A list of various sources (mostly necromorph corpses) from which we are gradually gaining biomass. These are finite
 
@@ -193,11 +193,7 @@
 			//We can only absorb dead mobs, but we don't check that here
 			//We'll add a still-living mob to the list and it'll be checked each tick to see if it died yet
 
-	//Organs and blood are succed up instantly but don't yield biomass
-	if (istype(AM, /obj/item/organ) || istype(AM, /obj/effect/decal/cleanable/blood))
-		spawn(1)
-			if (!QDELETED(AM))
-				qdel(AM)
+
 
 /obj/machinery/marker/proc/pay_biomass(var/purpose, var/amount)
 	if (biomass >= amount)

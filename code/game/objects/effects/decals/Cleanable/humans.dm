@@ -20,6 +20,7 @@ var/global/list/image/splatter_cache=list()
 	var/list/datum/disease2/disease/virus2 = list()
 	var/amount = 5
 	var/drytime
+	biomass = 0.2
 
 /obj/effect/decal/cleanable/blood/reveal_blood()
 	if(!fluorescent)
@@ -148,6 +149,7 @@ var/global/list/image/splatter_cache=list()
 	random_icon_states = list("1","2","3","4","5")
 	amount = 0
 	var/list/drips
+	biomass = 0.1
 
 /obj/effect/decal/cleanable/blood/drip/Initialize()
 	. = ..()
@@ -160,6 +162,7 @@ var/global/list/image/splatter_cache=list()
 	random_icon_states = list("writing1","writing2","writing3","writing4","writing5")
 	amount = 0
 	var/message
+	biomass = 0
 
 /obj/effect/decal/cleanable/blood/writing/New()
 	..()
@@ -184,6 +187,7 @@ var/global/list/image/splatter_cache=list()
 	icon_state = "gibbl5"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib5", "gib6")
 	var/fleshcolor = "#ffffff"
+	biomass = 0.5
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()
 
@@ -236,6 +240,7 @@ var/global/list/image/splatter_cache=list()
 	anchored = 1
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mucus"
+	biomass = 0.2
 
 	var/list/datum/disease2/disease/virus2 = list()
 	var/dry=0 // Keeps the lag down
