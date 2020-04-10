@@ -205,7 +205,7 @@
 /datum/species/necromorph/handle_death_check(var/mob/living/carbon/human/H)
 
 	var/damage = get_weighted_total_limb_damage(H)
-	if (damage >= H.maxHealth)
+	if (damage >= H.max_health)
 		return TRUE
 
 	return FALSE

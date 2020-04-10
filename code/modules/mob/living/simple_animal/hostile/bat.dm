@@ -13,7 +13,7 @@
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
 	speed = 4
-	maxHealth = 20
+	max_health = 20
 	health = 20
 
 	harm_intent_damage = 8

@@ -6,7 +6,7 @@
 	icon_state = "alien"
 	pass_flags = PASS_FLAG_TABLE
 	health = 100
-	maxHealth = 100
+	max_health = 100
 	mob_size = 4
 	species_language = "Xenophage"
 

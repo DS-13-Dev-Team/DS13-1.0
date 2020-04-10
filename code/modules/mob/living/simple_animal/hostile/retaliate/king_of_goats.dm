@@ -18,7 +18,7 @@
 	response_harm   = "assaults"
 	attacktext = "brutalized"
 	health = 500
-	maxHealth = 500
+	max_health = 500
 	melee_damage_lower = 35
 	melee_damage_upper = 55
 	mob_size = MOB_LARGE
@@ -32,7 +32,7 @@
 	meat_amount = 36
 	turns_per_move = 13
 	health = 750
-	maxHealth = 750
+	max_health = 750
 	melee_damage_lower = 40
 	melee_damage_upper = 60
 	default_pixel_y = 5
@@ -57,7 +57,7 @@
 	icon_living = "goat_guard"
 	icon_dead = "goat_guard_dead"
 	health = 125
-	maxHealth = 125
+	max_health = 125
 	turns_per_move = 8
 	melee_damage_lower = 10
 	melee_damage_upper = 15
@@ -66,7 +66,7 @@
 	name = "master of the guard"
 	desc = "A very handsome and noble beast - the most trusted of all the king's men."
 	health = 200
-	maxHealth = 200
+	max_health = 200
 	turns_per_move = 10
 	melee_damage_lower = 15
 	melee_damage_upper = 20

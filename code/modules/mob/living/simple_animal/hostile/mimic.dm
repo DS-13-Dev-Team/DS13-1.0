@@ -28,7 +28,7 @@ var/global/list/protected_objects = list(/obj/machinery,
 	response_disarm = "pushes"
 	response_harm = "hits"
 	speed = 4
-	maxHealth = 100
+	max_health = 100
 	health = 100
 
 	harm_intent_damage = 5
@@ -90,7 +90,7 @@ var/global/list/protected_objects = list(/obj/machinery,
 			melee_damage_upper = 2 + I.force
 			move_to_delay = 2 * I.w_class
 
-		maxHealth = health
+		max_health = health
 		if(creator)
 			src.creator = weakref(creator)
 			faction = "\ref[creator]" // very unique

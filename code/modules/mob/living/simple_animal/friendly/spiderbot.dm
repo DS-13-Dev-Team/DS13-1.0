@@ -24,7 +24,7 @@
 	wander = 0
 
 	health = 10
-	maxHealth = 10
+	max_health = 10
 
 	attacktext = "shocked"
 	melee_damage_lower = 1
@@ -98,10 +98,10 @@
 
 	if(isWelder(O))
 		if (O.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
-			if(health < maxHealth)
+			if(health < max_health)
 				health += pick(1,1,1,2,2,3)
-				if(health > maxHealth)
-					health = maxHealth
+				if(health > max_health)
+					health = max_health
 				add_fingerprint(user)
 				src.visible_message("<span class='notice'>\The [user] has spot-welded some of the damage to \the [src]!</span>")
 			else

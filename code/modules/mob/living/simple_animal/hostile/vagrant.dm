@@ -7,7 +7,7 @@
 	icon_living = "vagrant"
 	icon_dead = "vagrant"
 	icon_gib = "vagrant"
-	maxHealth = 65
+	max_health = 65
 	health = 40
 	speed = 5
 	speak_chance = 0
@@ -61,7 +61,7 @@
 			var/blood_volume = round(gripping.vessel.get_reagent_amount(/datum/reagent/blood))
 			if(blood_volume > 5)
 				gripping.vessel.remove_reagent(/datum/reagent/blood, blood_per_tick)
-				health = min(health + health_per_tick, maxHealth)
+				health = min(health + health_per_tick, max_health)
 				if(prob(15))
 					to_chat(gripping, "<span class='danger'>You feel your fluids being drained!</span>")
 			else
@@ -73,7 +73,7 @@
 	if(stance == HOSTILE_STANCE_IDLE && !cloaked)
 		cloaked = 1
 		update_icon()
-	if(health == maxHealth)
+	if(health == max_health)
 		new/mob/living/simple_animal/hostile/vagrant(src.loc)
 		new/mob/living/simple_animal/hostile/vagrant(src.loc)
 		gib()
@@ -103,7 +103,7 @@
 			return
 		//This line ensures there's always a reasonable chance of grabbing, while still
 		//Factoring in health
-		if(!gripping && (cloaked || prob(health + ((maxHealth - health) * 2))))
+		if(!gripping && (cloaked || prob(health + ((max_health - health) * 2))))
 			gripping = H
 			cloaked = 0
 			update_icon()

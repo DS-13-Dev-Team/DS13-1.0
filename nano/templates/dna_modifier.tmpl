@@ -27,7 +27,7 @@ Used In File(s): D:\Development\SS13-BS12\code\game\dna\dna_modifier.dm
 			<div class="line">
 				<div class="statusLabel">Health:</div>
 					{{if data.occupant.health >= 0}}
-						{{:helper.displayBar(data.occupant.health, 0, data.occupant.maxHealth, 'good')}}
+						{{:helper.displayBar(data.occupant.health, 0, data.occupant.max_health, 'good')}}
 					{{else}}
 						{{:helper.displayBar(data.occupant.health, 0, data.occupant.minHealth, 'average alignRight')}}
 					{{/if}}

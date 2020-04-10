@@ -11,7 +11,7 @@
 	response_harm = "hits"
 	speed = -1
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/xenomeat
-	maxHealth = 100
+	max_health = 100
 	health = 100
 	harm_intent_damage = 5
 	melee_damage_lower = 25
@@ -60,7 +60,7 @@
 	icon_living = "alienq_running"
 	icon_dead = "alienq_dead"
 	health = 250
-	maxHealth = 250
+	max_health = 250
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	ranged = 1
@@ -77,7 +77,7 @@
 	icon_living = "queen_s"
 	icon_dead = "queen_dead"
 	move_to_delay = 4
-	maxHealth = 400
+	max_health = 400
 	health = 400
 
 /obj/item/projectile/neurotox

@@ -57,7 +57,7 @@
 
 /mob/living/simple_animal/construct/attack_generic(var/mob/user)
 	if(istype(user, /mob/living/simple_animal/construct/builder))
-		if(health < maxHealth)
+		if(health < max_health)
 			adjustBruteLoss(-5)
 			user.visible_message("<span class='notice'>\The [user] mends some of \the [src]'s wounds.</span>")
 		else
@@ -68,9 +68,9 @@
 /mob/living/simple_animal/construct/examine(mob/user)
 	. = ..(user)
 	var/msg = "<span cass='info'>*---------*\nThis is \icon[src] \a <EM>[src]</EM>!\n"
-	if (src.health < src.maxHealth)
+	if (src.health < src.max_health)
 		msg += "<span class='warning'>"
-		if (src.health >= src.maxHealth/2)
+		if (src.health >= src.max_health/2)
 			msg += "It looks slightly dented.\n"
 		else
 			msg += "<B>It looks severely dented!</B>\n"
@@ -97,7 +97,7 @@
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "behemoth"
 	icon_living = "behemoth"
-	maxHealth = 250
+	max_health = 250
 	health = 250
 	speak_emote = list("rumbles")
 	response_harm   = "harmlessly punches"
@@ -153,7 +153,7 @@
 	icon_state = "floating"
 	icon_living = "floating"
 	icon_dead = "floating_dead"
-	maxHealth = 75
+	max_health = 75
 	health = 75
 	melee_damage_lower = 25
 	melee_damage_upper = 25
@@ -176,7 +176,7 @@
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "artificer"
 	icon_living = "artificer"
-	maxHealth = 50
+	max_health = 50
 	health = 50
 	response_harm = "viciously beaten"
 	harm_intent_damage = 5
@@ -204,7 +204,7 @@
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "behemoth"
 	icon_living = "behemoth"
-	maxHealth = 750
+	max_health = 750
 	health = 750
 	speak_emote = list("rumbles")
 	response_harm   = "harmlessly punched"
@@ -233,7 +233,7 @@
 	icon_state = "harvester"
 	icon_living = "harvester"
 	icon_dead = "harvester_dead"
-	maxHealth = 150
+	max_health = 150
 	health = 150
 	melee_damage_lower = 25
 	melee_damage_upper = 25

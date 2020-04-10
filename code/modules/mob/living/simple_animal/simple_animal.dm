@@ -2,7 +2,7 @@
 	name = "animal"
 	icon = 'icons/mob/animal.dmi'
 	health = 20
-	maxHealth = 20
+	max_health = 20
 
 	mob_bump_flag = SIMPLE_ANIMAL
 	mob_swap_flags = MONKEY|SLIME|SIMPLE_ANIMAL
@@ -82,8 +82,8 @@
 		death()
 		return
 
-	if(health > maxHealth)
-		health = maxHealth
+	if(health > max_health)
+		health = max_health
 
 
 	handle_stunned()
@@ -222,7 +222,7 @@
 			if(!MED.animal_heal)
 				to_chat(user, "<span class='notice'>That [MED] won't help \the [src] at all!</span>")
 				return
-			if(health < maxHealth)
+			if(health < max_health)
 				if(MED.can_use(1))
 					adjustBruteLoss(-MED.animal_heal)
 					visible_message("<span class='notice'>[user] applies the [MED] on [src].</span>")
@@ -274,13 +274,13 @@
 	. = ..()
 
 	if(statpanel("Status") && show_stat_health)
-		stat(null, "Health: [round((health / maxHealth) * 100)]%")
+		stat(null, "Health: [round((health / max_health) * 100)]%")
 
 /mob/living/simple_animal/death(gibbed, deathmessage = "dies!", show_dead_message)
 	icon_state = icon_dead
 	update_icon()
 	density = 0
-	adjustBruteLoss(maxHealth) //Make sure dey dead.
+	adjustBruteLoss(max_health) //Make sure dey dead.
 	walk_to(src,0)
 	return ..(gibbed,deathmessage,show_dead_message)
 

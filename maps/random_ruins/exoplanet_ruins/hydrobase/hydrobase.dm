@@ -79,7 +79,7 @@
 	name = "strange goat"
 	desc = "An impressive goat, in size and coat. His horns look pretty serious!"
 	health = 450
-	maxHealth = 450
+	max_health = 450
 	melee_damage_lower = 25
 	melee_damage_upper = 45
 	faction = "farmbots"
@@ -96,7 +96,7 @@
 	faction = "farmbots"
 	rapid = 0
 	health = 225
-	maxHealth = 225
+	max_health = 225
 	malfunctioning = 0
 
 /mob/living/simple_animal/hostile/retaliate/malf_drone/hydro/Initialize()

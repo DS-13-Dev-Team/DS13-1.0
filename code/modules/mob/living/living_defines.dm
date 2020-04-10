@@ -3,7 +3,7 @@
 	see_invisible = SEE_INVISIBLE_LIVING
 
 	//Health and life related vars
-	var/maxHealth = 100 //Maximum health that should be possible.
+	var/max_health = 100 //Maximum health that should be possible.
 	var/health = 100 	//A mob's health
 
 	var/biomass = 1	//How much biomass is this mob worth when absorbed

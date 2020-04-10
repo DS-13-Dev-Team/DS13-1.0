@@ -21,12 +21,12 @@
       <span class='{{occupantStatState}}'>{{data.occupant.stat == 0 ? "Conscious" : data.occupant.stat == 1 ? "Unconcious" : "Dead"}}</span>
   	</ui-section>
     <ui-section label='Health'>
-      <ui-bar min='{{data.occupant.minHealth}}' max='{{data.occupant.maxHealth}}' value='{{data.occupant.health}}'
+      <ui-bar min='{{data.occupant.minHealth}}' max='{{data.occupant.max_health}}' value='{{data.occupant.health}}'
         state='{{data.occupant.health >= 0 ? "good" : "average"}}'>{{Math.round(adata.occupant.health)}}</ui-bar>
     </ui-section>
     {{#each [{label: "Brute", type: "bruteLoss"}, {label: "Respiratory", type: "oxyLoss"}, {label: "Toxin", type: "toxLoss"}, {label: "Burn", type: "fireLoss"}]}}
       <ui-section label='{{label}}'>
-        <ui-bar min='0' max='{{data.occupant.maxHealth}}' value='{{data.occupant[type]}}' state='bad'>{{Math.round(adata.occupant[type])}}</ui-bar>
+        <ui-bar min='0' max='{{data.occupant.max_health}}' value='{{data.occupant[type]}}' state='bad'>{{Math.round(adata.occupant[type])}}</ui-bar>
       </ui-section>
     {{/each}}
     <ui-section label='Cells'>

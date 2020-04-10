@@ -43,8 +43,8 @@
 		return
 	else if(health < 1)
 		Die()
-	else if(health > maxHealth)
-		health = maxHealth
+	else if(health > max_health)
+		health = max_health
 	for(var/mob/A in viewers(world.view,src))
 		if(A.ckey)
 			say_something(A)

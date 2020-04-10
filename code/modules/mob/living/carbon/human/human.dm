@@ -918,7 +918,7 @@
 	species.create_organs(src)
 	species.handle_post_spawn(src)
 
-	maxHealth = species.total_health
+	max_health = species.total_health
 
 	default_pixel_x = initial(pixel_x) + species.pixel_offset_x
 	default_pixel_y = initial(pixel_y) + species.pixel_offset_y
@@ -1379,7 +1379,7 @@
 
 //Point at which you dun breathe no more. Separate from asystole crit, which is heart-related.
 /mob/living/carbon/human/proc/nervous_system_failure()
-	return getBrainLoss() >= maxHealth * 0.75
+	return getBrainLoss() >= max_health * 0.75
 
 /mob/living/carbon/human/melee_accuracy_mods()
 	. = ..()

@@ -72,12 +72,12 @@
 		if (!M.key)
 			//If theres no key its not the master
 			return FALSE
-		check_key = M.key
+		check_key = ckey(M.key)
 	else if (isclient(check))
 		var/client/C = check
 		check_key = C.ckey
 	else
-		check_key = check
+		check_key = ckey(check)
 
 	if (!check_key)
 		return FALSE

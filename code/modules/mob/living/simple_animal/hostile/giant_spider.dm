@@ -21,7 +21,7 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "pokes"
 	stop_automated_movement_when_pulled = 0
-	maxHealth = 200
+	max_health = 200
 	health = 200
 	melee_damage_lower = 15
 	melee_damage_upper = 20
@@ -44,7 +44,7 @@
 	icon_state = "nurse"
 	icon_living = "nurse"
 	icon_dead = "nurse_dead"
-	maxHealth = 40
+	max_health = 40
 	health = 40
 	melee_damage_lower = 5
 	melee_damage_upper = 10
@@ -59,7 +59,7 @@
 	icon_state = "hunter"
 	icon_living = "hunter"
 	icon_dead = "hunter_dead"
-	maxHealth = 120
+	max_health = 120
 	health = 120
 	melee_damage_lower = 10
 	melee_damage_upper = 20

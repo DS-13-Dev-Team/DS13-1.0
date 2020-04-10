@@ -8,7 +8,7 @@
 	layer = MOB_LAYER
 	density = 1
 	health = 100
-	maxHealth = 100
+	max_health = 100
 
 	is_ranged = 1
 	preparing_arrest_sounds = new()

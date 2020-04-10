@@ -10,7 +10,7 @@
 	icon_living = "basic"
 	icon_dead = "basic"
 	health = 15
-	maxHealth = 15
+	max_health = 15
 	melee_damage_lower = 2
 	melee_damage_upper = 3
 	attacktext = "clawed"
@@ -54,7 +54,7 @@
 	icon_state = "def_radar-off"
 	icon_living = "def_radar-off"
 	health = 200
-	maxHealth = 200
+	max_health = 200
 	status_flags = 0
 	anchored = 1
 	stop_automated_movement = 1

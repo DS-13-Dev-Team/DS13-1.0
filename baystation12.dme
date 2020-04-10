@@ -2055,6 +2055,7 @@
 #include "code\modules\mob\observer\freelook\marker\necrovision.dm"
 #include "code\modules\mob\observer\freelook\marker\signal.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\_defines.dm"
+#include "code\modules\mob\observer\freelook\marker\signal_abilities\assault_wave.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\breach.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\flicker.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\placement.dm"

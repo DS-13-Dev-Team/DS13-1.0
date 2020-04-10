@@ -8,7 +8,7 @@
 	icon_gib = "brownbear_gib"
 
 	health = 75
-	maxHealth = 75
+	max_health = 75
 
 	density = 1
 

@@ -14,7 +14,7 @@ Small, little HP, poisonous.
 	response_harm   = "stamps on"
 	destroy_surroundings = 0
 	health = 15
-	maxHealth = 15
+	max_health = 15
 	speed = 0
 	move_to_delay = 0
 	density = 1

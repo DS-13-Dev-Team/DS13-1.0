@@ -31,7 +31,6 @@
 	me.client = "\ref[src.client]"
 	me.mob = "\ref[src]"
 
-	world << "Client and mob registered: 	[me.client]	[me.mob]|[me.get_mob()]"
 
 	//Existing stuff i might replace
 	GLOB.player_list |= src

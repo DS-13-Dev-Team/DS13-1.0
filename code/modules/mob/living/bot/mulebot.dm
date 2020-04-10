@@ -17,7 +17,7 @@
 	anchored = 1
 	density = 1
 	health = 150
-	maxHealth = 150
+	max_health = 150
 	mob_bump_flag = HEAVY
 
 	min_target_dist = 0

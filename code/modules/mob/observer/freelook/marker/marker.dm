@@ -144,17 +144,18 @@
 	if(!active)
 		return
 	message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
+	player = ckey(M.key)
 
 	//Get rid of the old energy handler
 	var/datum/player/P = get_or_create_player(M.key)
 	remove_extension(P, /datum/extension/psi_energy/signal)
 
 	var/mob/observer/eye/signal/master/S = new(M)
-	player = S.key
+
 	playermob = S
 	qdel(M)
 	update_icon()
-	GLOB.unitologists.add_antagonist(playermob.mind)
+	//GLOB.unitologists.add_antagonist(playermob.mind)
 	return S
 
 
@@ -167,7 +168,7 @@
 
 		message_necromorphs(SPAN_NOTICE("[player] has stepped down, nobody is controlling the marker now."))
 		var/mob/observer/eye/signal/S = new(playermob)
-		GLOB.unitologists.remove_antagonist(playermob.mind)
+		//GLOB.unitologists.remove_antagonist(playermob.mind)
 		player = null
 		QDEL_NULL(playermob)
 		update_icon()

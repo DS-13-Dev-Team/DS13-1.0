@@ -22,7 +22,7 @@
 	var/normalspeed = 1
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
-	var/maxhealth = 150
+	var/max_health = 150
 	var/health
 
 	var/destroy_hits = 10 //How many strong hits it takes to destroy the door
@@ -74,7 +74,7 @@
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
 
-	health = maxhealth
+	health = max_health
 	update_connections(1)
 	update_icon()
 
@@ -217,7 +217,7 @@
 		if(stat & BROKEN)
 			to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
 			return
-		if(health >= maxhealth)
+		if(health >= max_health)
 			to_chat(user, "<span class='notice'>Nothing to fix!</span>")
 			return
 		if(!density)
@@ -225,7 +225,7 @@
 			return
 
 		//figure out how much metal we need
-		var/amount_needed = (maxhealth - health) / DOOR_REPAIR_AMOUNT
+		var/amount_needed = (max_health - health) / DOOR_REPAIR_AMOUNT
 		amount_needed = ceil(amount_needed)
 
 		var/obj/item/stack/stack = I
@@ -254,7 +254,7 @@
 		to_chat(user, "<span class='notice'>You start to fix dents and weld \the [repairing] into place.</span>")
 		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
 			to_chat(user, "<span class='notice'>You finish repairing the damage to \the [src].</span>")
-			health = between(health, health + repairing.amount*DOOR_REPAIR_AMOUNT, maxhealth)
+			health = between(health, health + repairing.amount*DOOR_REPAIR_AMOUNT, max_health)
 			update_icon()
 			qdel(repairing)
 			repairing = null
@@ -333,11 +333,11 @@
 
 
 
-		if(health < maxhealth * 0.25)
+		if(health < max_health * 0.25)
 			visible_message("\The [src] looks like it's about to break!" )
-		else if(health < maxhealth * 0.5)
+		else if(health < max_health * 0.5)
 			visible_message("\The [src] looks seriously damaged!" )
-		else if(health < maxhealth * 0.75)
+		else if(health < max_health * 0.75)
 			visible_message("\The [src] shows signs of damage!" )
 
 		return reduced_damage
@@ -368,11 +368,11 @@
 	. = ..()
 	if(health <= 0)
 		to_chat(user, "\The [src] is broken!")
-	else if(health < maxhealth / 4)
+	else if(health < max_health / 4)
 		to_chat(user, "\The [src] looks like it's about to break!")
-	else if(health < maxhealth / 2)
+	else if(health < max_health / 2)
 		to_chat(user, "\The [src] looks seriously damaged!")
-	else if(health < maxhealth * 3/4)
+	else if(health < max_health * 3/4)
 		to_chat(user, "\The [src] shows signs of damage!")
 
 //When a door takes catastrophic damage it will open
@@ -533,7 +533,7 @@
 		deconstruct(null, TRUE)
 
 /obj/machinery/door/proc/CheckPenetration(var/base_chance, var/damage)
-	. = damage/maxhealth*180
+	. = damage/max_health*180
 	if(glass)
 		. *= 2
 	. = round(.)

@@ -172,7 +172,7 @@
 	icon = 'icons/mob/parrot_grey.dmi'
 	gender = FEMALE
 	health = 750 //how sweet it is to be a god!
-	maxHealth = 750
+	max_health = 750
 	mob_size = MOB_LARGE
 	speak_emote = list("professes","speaks unto you","elaborates","proclaims")
 	emote_hear = list("sings a song to herself", "preens herself")

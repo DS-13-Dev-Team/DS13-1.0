@@ -11,7 +11,7 @@
 	item_state = "nymph"
 	death_msg = "expires with a pitiful chirrup..."
 	health = 60
-	maxHealth = 60
+	max_health = 60
 
 	language = LANGUAGE_GUTTER
 	species_language = LANGUAGE_GUTTER

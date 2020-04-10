@@ -15,7 +15,7 @@
 	pixel_x = -16
 
 	health = 150
-	maxHealth = 150
+	max_health = 150
 
 	harm_intent_damage = 5
 	melee_damage_lower = 20

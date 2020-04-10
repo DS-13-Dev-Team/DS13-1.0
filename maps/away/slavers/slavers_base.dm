@@ -147,7 +147,7 @@
 	response_harm = "hits"
 	speed = 4
 	stop_automated_movement_when_pulled = 0
-	maxHealth = 100
+	max_health = 100
 	health = 100
 	harm_intent_damage = 5
 	melee_damage_lower = 10

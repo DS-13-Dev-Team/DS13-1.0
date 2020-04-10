@@ -110,8 +110,8 @@
 	corpse.name = "Captain"
 	var/decl/hierarchy/outfit/outfit = outfit_by_type(/decl/hierarchy/outfit/deadcap)
 	outfit.equip(corpse)
-	corpse.adjustOxyLoss(corpse.maxHealth)
-	corpse.setBrainLoss(corpse.maxHealth)
+	corpse.adjustOxyLoss(corpse.max_health)
+	corpse.setBrainLoss(corpse.max_health)
 	var/obj/structure/bed/chair/C = locate() in T
 	if(C)
 		C.buckle_mob(corpse)

@@ -5,7 +5,7 @@
 	speak_emote = list("hisses")
 	icon_state = "larva"
 	language = "Hivemind"
-	maxHealth = 25
+	max_health = 25
 	health = 25
 
 	var/adult_form = /mob/living/carbon/human

@@ -74,6 +74,7 @@ h1.alert, h2.alert		{color: #000000;}
 .disarm					{color: #990000;}
 .passive				{color: #660000;}
 
+.critical				{color: #ff0000; font-weight: bold; font-size: 14px}
 .danger					{color: #ff0000; font-weight: bold;}
 .warning				{color: #ff0000; font-style: italic;}
 .boldannounce			{color: #ff0000; font-weight: bold;}
