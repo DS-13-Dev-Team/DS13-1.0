@@ -339,3 +339,10 @@
 		name = "[charge.display_name] ([charge.charges]C) - Change"
 		return 1
 	return 0
+
+
+/obj/item/rig_module/proc/rig_equipped(var/mob/user, var/slot)
+	return
+
+/obj/item/rig_module/proc/rig_unequipped(var/mob/user, var/slot)
+	return

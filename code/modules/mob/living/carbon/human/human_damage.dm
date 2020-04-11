@@ -8,6 +8,8 @@
 
 	health = max_health - getBrainLoss()
 
+	GLOB.updatehealth_event.raise_event(src)
+
 	handle_death_check()	//This is where people die
 
 	//TODO: fix husking

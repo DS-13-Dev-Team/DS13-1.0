@@ -10,3 +10,8 @@
 	suit_overlay_active = "healthbar_100"
 	suit_overlay_used = "healthbar_100"
 	suit_overlay = "healthbar_100"
+	var/mob/living/carbon/human/user
+
+
+/obj/item/rig_module/healthbar/proc/register_user(var/mob/newuser)
+	user = newuser
