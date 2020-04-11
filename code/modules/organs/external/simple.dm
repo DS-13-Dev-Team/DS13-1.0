@@ -51,6 +51,7 @@
 
 /obj/item/organ/external/groin/fodder
 	parent_organ = BP_CHEST
+	limb_flags = ORGAN_FLAG_CAN_AMPUTATE
 
 /obj/item/organ/external/leg/fodder
 	parent_organ = BP_GROIN
