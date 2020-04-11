@@ -32,3 +32,34 @@
 /obj/item/organ/external/leg/right/simple
 	parent_organ = BP_CHEST
 
+//fodder simple limbs.
+/obj/item/organ/external/arm/fodder
+	limb_flags = ORGAN_FLAG_CAN_AMPUTATE
+	parent_organ = BP_CHEST
+
+/obj/item/organ/external/arm/right/fodder
+	limb_flags = ORGAN_FLAG_CAN_AMPUTATE
+	parent_organ = BP_CHEST
+
+/obj/item/organ/external/hand/fodder
+	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_FINGERPRINT
+	parent_organ = BP_L_ARM
+
+/obj/item/organ/external/hand/right/fodder
+	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_FINGERPRINT
+	parent_organ = BP_R_ARM
+
+/obj/item/organ/external/groin/fodder
+	parent_organ = BP_CHEST
+
+/obj/item/organ/external/leg/fodder
+	parent_organ = BP_GROIN
+
+/obj/item/organ/external/leg/right/fodder
+	parent_organ = BP_GROIN
+
+/obj/item/organ/external/foot/fodder
+	parent_organ = BP_L_LEG
+
+/obj/item/organ/external/foot/right/fodder
+	parent_organ = BP_R_LEG
