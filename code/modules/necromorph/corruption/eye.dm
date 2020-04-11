@@ -113,6 +113,7 @@
 	minimum_notify_delay = 3 MINUTES	//Minimum time that must pass between sightings before we resend notifications
 	scale = 1
 	light_range = 2
+	marker_spawnable = FALSE
 
 
 /obj/structure/corruption_node/eye/small/get_blurb()
