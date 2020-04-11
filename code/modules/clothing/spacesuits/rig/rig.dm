@@ -12,6 +12,7 @@
 	icon = 'icons/obj/rig_modules.dmi'
 	desc = "A back-mounted hardsuit deployment and control mechanism."
 	slot_flags = SLOT_BACK
+	var/desired_slot = slot_back
 	req_one_access = list()
 	req_access = list()
 	w_class = ITEM_SIZE_HUGE
@@ -36,7 +37,7 @@
 
 	// Keeps track of what this rig should spawn with.
 	var/suit_type = "hardsuit"
-	var/list/initial_modules
+	var/list/initial_modules = list(/obj/item/rig_module/healthbar)
 	var/chest_type = /obj/item/clothing/suit/space/rig
 	var/helm_type =  /obj/item/clothing/head/helmet/space/rig
 	var/boot_type =  /obj/item/clothing/shoes/magboots/rig
@@ -395,6 +396,7 @@
 	var/go_offline = (!istype(wearer) || loc != wearer || wearer.back != src || canremove || sealing || !cell || cell.charge <= 0)
 	if(offline != go_offline)
 		offline = go_offline
+		update_wear_icon()
 		return 1
 	return 0
 
@@ -521,6 +523,7 @@
 	if(equipment_overlay_icon && LAZYLEN(installed_modules))
 		for(var/obj/item/rig_module/module in installed_modules)
 			if(module.suit_overlay)
+
 				chest.overlays += image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", "dir" = SOUTH)
 
 	if(wearer)
@@ -535,7 +538,7 @@
 
 /obj/item/weapon/rig/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
-	if(slot != slot_back_str || offline)
+	if(is_held() || offline)
 		return ret
 
 	if(equipment_overlay_icon && LAZYLEN(installed_modules))
@@ -609,8 +612,10 @@
 			to_chat(module.integrated_ai, "[message]")
 			. = 1
 
-/obj/item/weapon/rig/equipped(mob/living/carbon/human/M)
+/obj/item/weapon/rig/equipped(mob/living/carbon/human/M, var/slot)
+	var/slot_before = equip_slot
 	..()
+
 
 	if(seal_delay > 0 && istype(M) && M.back == src)
 		M.visible_message("<font color='blue'>[M] starts putting on \the [src]...</font>", "<font color='blue'>You start putting on \the [src]...</font>")
@@ -626,6 +631,12 @@
 		wearer = M
 		wearer.wearing_rig = src
 		update_icon()
+
+	for(var/obj/item/rig_module/module in installed_modules)
+		if (slot == desired_slot)	//If we've been placed into our desired slot, call equipped on modules
+			module.rig_equipped(M, slot)
+		else if (slot_before == desired_slot)	//If we've been removed from our desired slot, call unequipped on modules
+			module.rig_unequipped(M, slot)
 
 /obj/item/weapon/rig/proc/toggle_piece(var/piece, var/mob/initiator, var/deploy_mode)
 

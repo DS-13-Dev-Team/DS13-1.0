@@ -30,7 +30,8 @@
 		/obj/item/rig_module/device/paperdispenser,
 		/obj/item/rig_module/device/pen,
 		/obj/item/rig_module/device/stamp,
-		/obj/item/rig_module/cooling_unit
+		/obj/item/rig_module/cooling_unit,
+		/obj/item/rig_module/healthbar
 		)
 
 	glove_type = null
@@ -80,7 +81,8 @@
 		/obj/item/rig_module/device/orescanner,
 		/obj/item/rig_module/device/rcd,
 		/obj/item/rig_module/vision/meson,
-		/obj/item/rig_module/cooling_unit
+		/obj/item/rig_module/cooling_unit,
+		/obj/item/rig_module/healthbar
 		)
 
 /obj/item/weapon/rig/eva
@@ -142,7 +144,8 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/rcd,
 		/obj/item/rig_module/vision/meson,
-		/obj/item/rig_module/cooling_unit
+		/obj/item/rig_module/cooling_unit,
+		/obj/item/rig_module/healthbar
 		)
 
 /obj/item/weapon/rig/ce
@@ -175,7 +178,8 @@
 		/obj/item/rig_module/device/flash,
 		/obj/item/rig_module/vision/meson,
 		/obj/item/rig_module/grenade_launcher/mfoam,
-		/obj/item/rig_module/cooling_unit
+		/obj/item/rig_module/cooling_unit,
+		/obj/item/rig_module/healthbar
 		)
 
 /obj/item/clothing/head/helmet/space/rig/ce
@@ -227,6 +231,7 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/anomaly_scanner,
 		/obj/item/rig_module/cooling_unit,
+		/obj/item/rig_module/healthbar
 		)
 
 /obj/item/weapon/rig/medical
@@ -286,7 +291,8 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/healthscanner,
 		/obj/item/rig_module/vision/medhud,
-		/obj/item/rig_module/cooling_unit
+		/obj/item/rig_module/cooling_unit,
+		/obj/item/rig_module/healthbar
 		)
 
 /obj/item/weapon/rig/hazard
@@ -330,5 +336,6 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/grenade_launcher,
 		/obj/item/rig_module/mounted/taser,
-		/obj/item/rig_module/cooling_unit
+		/obj/item/rig_module/cooling_unit,
+		/obj/item/rig_module/healthbar
 		)

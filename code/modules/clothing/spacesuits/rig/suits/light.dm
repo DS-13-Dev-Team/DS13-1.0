@@ -53,7 +53,8 @@
 		/obj/item/rig_module/electrowarfare_suite,
 		/obj/item/rig_module/voice,
 		/obj/item/rig_module/vision,
-		/obj/item/rig_module/cooling_unit
+		/obj/item/rig_module/cooling_unit,
+		/obj/item/rig_module/healthbar
 		)
 
 //The cybersuit is not space-proof. It does however, have good siemens_coefficient values
@@ -149,5 +150,6 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/stealth_field,
-		/obj/item/rig_module/vision
+		/obj/item/rig_module/vision,
+		/obj/item/rig_module/healthbar
 		)

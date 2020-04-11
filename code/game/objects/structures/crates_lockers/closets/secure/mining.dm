@@ -17,7 +17,8 @@
 		/obj/item/weapon/storage/briefcase,
 		/obj/item/weapon/clipboard,
 		/obj/item/weapon/staff/gentcane,
-		/obj/item/device/flashlight/maglight
+		/obj/item/device/flashlight/maglight,
+		/obj/item/weapon/rig/vintage
 )
 
 /obj/structure/closet/secure_closet/foreman

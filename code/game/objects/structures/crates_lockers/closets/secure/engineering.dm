@@ -22,7 +22,8 @@
 		/obj/item/device/multitool,
 		/obj/item/device/flash,
 		/obj/item/taperoll/engineering,
-		/obj/item/weapon/tool/crowbar/brace_jack
+		/obj/item/weapon/tool/crowbar/brace_jack,
+		/obj/item/weapon/rig/vintage
 	)
 
 /obj/structure/closet/secure_closet/engineering_chief/Initialize()
