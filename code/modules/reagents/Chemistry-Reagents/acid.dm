@@ -71,16 +71,7 @@
 					H.emote("scream")
 				affecting.status |= ORGAN_DISFIGURED
 
-/datum/reagent/acid/touch_obj(var/obj/O)
-	if(O.unacidable)
-		return
-	if((istype(O, /obj/item) || istype(O, /obj/effect/vine)) && (volume > meltdose))
-		var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
-		I.desc = "Looks like this was \an [O] some time ago."
-		for(var/mob/M in viewers(5, O))
-			to_chat(M, "<span class='warning'>\The [O] melts.</span>")
-		qdel(O)
-		remove_self(meltdose) // 10 units of acid will not melt EVERYTHING on the tile
+
 
 /datum/reagent/acid/hydrochloric //Like sulfuric, but less toxic and more acidic.
 	name = "Hydrochloric Acid"
@@ -124,12 +115,51 @@
 	if (!AS)
 		AS = new(T)
 
+	AS.chemical = src.type
 	AS.adjust_volume(amount, type)
 
 
+/datum/reagent/acid/touch_obj(var/obj/O, var/amount)
+	O.acid_act(src, amount)
 
 
 
+
+/atom/proc/acid_act(var/datum/reagent/acid/acid, var/volume)
+	return TRUE
+
+/obj/acid_act(var/datum/reagent/acid/acid, var/volume)
+	if (unacidable)
+		return FALSE
+	.=..()
+
+/obj/item/acid_act(var/datum/reagent/acid/acid, var/volume)
+	.=..()
+	if (.)//The unacidable flag is checked in parent
+		var/melt = FALSE
+		var/turf/T = get_turf(src)
+		var/ourname = "[src]"
+		var/ourplane = src.plane
+		var/ourlayer = src.layer
+
+
+		//We'll make the item take damage from the acid.
+		take_damage((acid.power*volume)/acid_resistance, BURN)
+
+		//If taking damage caused it to be deleted, then we'll do the melting effect
+		if (health <= 0 || QDELETED(src))
+			melt = TRUE
+
+		if (melt)
+			world << "Melting item [src]"
+			var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(T)
+			I.desc = "Looks like this was \an [src] some time ago."
+			I.plane = ourplane
+			I.plane = ourlayer
+			for(var/mob/M in viewers(5, T))
+				to_chat(M, "<span class='warning'>\The [ourname] melts.</span>")
+			if (!QDELETED(src))
+				qdel(src)
 
 
 
@@ -138,19 +168,25 @@
 ******************/
 /obj/effect/decal/cleanable/acid_spill
 	name = "Biological acid"
-	desc = "That looks dangerous to walk on."
+	desc = ""
 	color = NECROMORPH_ACID_COLOR
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "spill"
 	layer = BLOOD_LAYER	//Its a liquid, close enough
-	var/saturation_point = 20
+	var/saturation_point = 13
 	var/rotation = 0
-	var/drying_tick = 0.2
+	var/drying_tick = 0.10
 	var/randpixel = 6
 	var/chemical
 	var/datum/reagents/R
+	var/min_alpha = 50	//Its not fun to have an invisible patch of acid. It will only have harmful effects while alpha is above this value
 
 /obj/effect/decal/cleanable/acid_spill/examine(var/mob/user)
+
+	if (alpha > min_alpha)
+		desc = SPAN_WARNING("That looks dangerous to walk on.")
+	else
+		desc = "It's probably dried enough to be safe now,"
 	.=..()
 	var/stored_volume = R.total_volume
 	var/time_remaining = ((stored_volume/drying_tick)*10)
@@ -176,6 +212,10 @@
 	if (!R)
 		R = new (99999, src)
 
+	if (!src.chemical)
+		src.chemical = chemical
+
+
 	if (change > 0)
 		R.add_reagent(chemical, change)
 	else
@@ -196,9 +236,9 @@
 	var/matrix/M = matrix()
 	var/scale_factor = 2.5
 	if (stored_volume > saturation_point)
-		scale_factor += 0.012 * (stored_volume - saturation_point)
+		scale_factor += 0.010 * (stored_volume - saturation_point)
 	else
-		alpha = (stored_volume / saturation_point) *255
+		alpha = (stored_volume / saturation_point) * 255
 	M.Scale(scale_factor)
 	M.Turn(rotation)
 	transform = M
@@ -208,7 +248,7 @@
 
 /obj/effect/decal/cleanable/acid_spill/Crossed(var/atom/mover)
 	.=..()
-	if (iscarbon(mover) && !mover.is_necromorph())
+	if (iscarbon(mover) && !mover.is_necromorph() && alpha > min_alpha)
 		var/sound = pick(list('sound/effects/footstep/footstep_wet_1.ogg',
 		'sound/effects/footstep/footstep_wet_2.ogg',
 		'sound/effects/footstep/footstep_wet_3.ogg'))

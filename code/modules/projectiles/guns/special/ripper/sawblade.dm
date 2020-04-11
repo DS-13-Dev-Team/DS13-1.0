@@ -376,10 +376,9 @@
 	if (!QDELETED(A))
 		grind_atoms += list(list(A, EX3_TOTAL, EX2_TOTAL, EX1_TOTAL))
 
-/obj/item/projectile/sawblade/proc/updatehealth()
-	if (health <= 0)
-		if (launcher && launcher.blade == src)
-			launcher.stop_firing()
+/obj/item/projectile/sawblade/zero_health()
+	if (launcher && launcher.blade == src)
+		launcher.stop_firing()
 
 //Override this so it doesn't delete itself when touching anything
 /obj/item/projectile/sawblade/Bump(atom/A as mob|obj|turf|area, forced=0)

@@ -2,6 +2,7 @@
 	plane = ABOVE_TURF_PLANE
 	layer = DECAL_LAYER
 	biomass = 0	//Used for blood and other organic smears
+	anchored = TRUE	//Why was this not set true
 
 /obj/effect/decal/fall_damage()
 	return 0

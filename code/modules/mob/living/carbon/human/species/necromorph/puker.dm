@@ -203,7 +203,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 		shake_animation(30)
 	spawn(20)
 		play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_HIGH, 1, 3)
-	.= spray_ability(A , angle = vangle, length = vlength, chemical = /datum/reagent/acid/necromorph, volume = 4.5, tick_delay = 0.2 SECONDS, stun = TRUE, duration = 3 SECONDS, cooldown = 12 SECONDS, windup = 2 SECOND)
+	.= spray_ability(A , angle = vangle, length = vlength, chemical = /datum/reagent/acid/necromorph, volume = 5.5, tick_delay = 0.2 SECONDS, stun = TRUE, duration = 3 SECONDS, cooldown = 12 SECONDS, windup = 2 SECOND)
 
 
 
@@ -234,7 +234,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	360, //Angle
 	1.5, //Range
 	/datum/reagent/acid/necromorph, //Chem
-	15, //Volume
+	20, //Volume
 	0.1, //Tickdelay
 	FALSE,	//Stun
 	0.8 SECOND,	//Duration

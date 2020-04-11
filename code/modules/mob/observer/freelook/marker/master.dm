@@ -11,6 +11,7 @@
 
 /mob/observer/eye/signal/master/Initialize()
 	.=..()
+	icon_state = "mastersignal"
 	//Lets remove some verbs that don't make sense here, you get these back if you downgrade to signal
 	verbs -= /mob/observer/eye/signal/verb/become_master_signal_verb
 	verbs -= /mob/observer/eye/signal/verb/leave_marker_verb

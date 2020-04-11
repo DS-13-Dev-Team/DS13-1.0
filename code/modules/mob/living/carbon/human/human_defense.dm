@@ -502,19 +502,19 @@ meteor_act
 		if(C.permeability_coefficient == 1 || !C.body_parts_covered)
 			continue
 		if(C.body_parts_covered & HEAD)
-			perm_by_part["head"] *= C.permeability_coefficient
+			perm_by_part["head"] *= C.get_permeability()
 		if(C.body_parts_covered & UPPER_TORSO)
-			perm_by_part["upper_torso"] *= C.permeability_coefficient
+			perm_by_part["upper_torso"] *= C.get_permeability()
 		if(C.body_parts_covered & LOWER_TORSO)
-			perm_by_part["lower_torso"] *= C.permeability_coefficient
+			perm_by_part["lower_torso"] *= C.get_permeability()
 		if(C.body_parts_covered & LEGS)
-			perm_by_part["legs"] *= C.permeability_coefficient
+			perm_by_part["legs"] *= C.get_permeability()
 		if(C.body_parts_covered & FEET)
-			perm_by_part["feet"] *= C.permeability_coefficient
+			perm_by_part["feet"] *= C.get_permeability()
 		if(C.body_parts_covered & ARMS)
-			perm_by_part["arms"] *= C.permeability_coefficient
+			perm_by_part["arms"] *= C.get_permeability()
 		if(C.body_parts_covered & HANDS)
-			perm_by_part["hands"] *= C.permeability_coefficient
+			perm_by_part["hands"] *= C.get_permeability()
 
 	for(var/part in perm_by_part)
 		perm += perm_by_part[part]
