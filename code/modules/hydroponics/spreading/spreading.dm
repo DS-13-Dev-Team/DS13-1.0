@@ -57,6 +57,7 @@
 	var/evolve_chance = 2
 	var/mature_time		//minimum maturation time
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
+	var/list/neighbors
 
 /obj/effect/vine/single
 	spread_chance = 0
@@ -86,6 +87,7 @@
 		return INITIALIZE_HINT_QDEL
 	name = seed.display_name
 	calculate_growth()
+	update_neighbors()
 	update_icon()
 
 	START_PROCESSING(SSvines, src)

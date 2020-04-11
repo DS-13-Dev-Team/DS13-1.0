@@ -15,18 +15,22 @@
 	var/turf/up = GetAbove(loc)
 	var/turf/down = GetBelow(loc)
 
-	if(start && start.CanZPass(src, DOWN))
+	if(start && start.CanZPass(src, DOWN) && can_spread_to(down))
 		zlevel_neighbors += down
-	if(up && up.CanZPass(src, UP))
+	if(up && up.CanZPass(src, UP) && can_spread_to(up))
 		zlevel_neighbors += up
 
 	return zlevel_neighbors
 
+/obj/effect/vine/proc/update_neighbors()
+	neighbors = list()
+	neighbors = get_neighbors(TRUE, TRUE)
+
 /obj/effect/vine/proc/get_neighbors(var/zcheck = TRUE, var/bounds = TRUE)
-	var/list/neighbors = list()
+	var/list/newneighbors = list()
 
 	for(var/turf/simulated/floor in get_cardinal_neighbors())
-		if(bounds && get_dist_3D(parent, floor) > spread_distance)
+		if(bounds && !can_spread_to(floor))
 			continue
 
 		var/blocked = 0
@@ -47,10 +51,12 @@
 
 
 
-		neighbors |= floor
+		newneighbors |= floor
 	if (zcheck)
-		neighbors |= get_zlevel_neighbors()
-	return neighbors
+		newneighbors |= get_zlevel_neighbors()
+
+	return newneighbors
+
 
 /obj/effect/vine/Process()
 	var/turf/simulated/T = get_turf(src)
@@ -88,7 +94,6 @@
 
 		//Try to spread
 		if(parent && parent.possible_children && prob(spread_chance))
-			var/list/neighbors = get_neighbors()
 			if(neighbors.len)
 				spread_to(pick(neighbors))
 
@@ -125,7 +130,7 @@
 /obj/effect/vine/proc/should_sleep()
 	if(buckled_mob) //got a victim to fondle
 		return FALSE
-	if(get_neighbors().len) //got places to spread to
+	if(neighbors.len) //got places to spread to
 		return FALSE
 	if(health < max_health) //got some growth to do
 		return FALSE
@@ -134,6 +139,13 @@
 	if(can_spawn_plant()) //should settle down and spawn a tray
 		return FALSE
 	return TRUE
+
+
+/obj/effect/vine/proc/can_spread_to(var/turf/floor)
+	if (get_dist_3D(parent, floor) <= spread_distance)
+		return TRUE
+	return FALSE
+
 
 //spreading vines aren't created on their final turf.
 //Instead, they are created at their parent and then move to their destination.
@@ -148,12 +160,18 @@
 		// Some plants eat through plating.
 		if(islist(seed.chems) && !isnull(seed.chems[/datum/reagent/acid/polyacid]))
 			target_turf.ex_act(prob(80) ? 3 : 2)
+
+		//Update our neighbors list
+		update_neighbors()
 	else
 		qdel(child)
 
-/obj/effect/vine/proc/wake_up()
+/obj/effect/vine/proc/wake_up(var/wake_adjacent = TRUE)
+	update_neighbors()
+	update_icon()
 	START_PROCESSING(SSvines, src)
-	wake_neighbors()
+	if (wake_adjacent)
+		wake_neighbors()
 
 /obj/effect/vine/proc/wake_neighbors()
 	// This turf is clear now, let our buddies know.
@@ -161,8 +179,7 @@
 		if(!istype(check_turf))
 			continue
 		for(var/obj/effect/vine/neighbor in check_turf.contents)
-			START_PROCESSING(SSvines, neighbor)
-			neighbor.update_icon() //Do an immediate update to clear unnecessary edge overlays
+			wake_up(FALSE)
 
 /obj/effect/vine/proc/targets_in_range()
 	var/mob/list/targets = list()
@@ -175,8 +192,7 @@
 		return targets
 
 /obj/effect/vine/proc/die_off()
-	// Kill off our plant.
-	if(plant) plant.die()
+
 	wake_neighbors()
 	qdel(src)
 

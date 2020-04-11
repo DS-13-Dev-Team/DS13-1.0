@@ -34,7 +34,7 @@
 	move_to_delay = 5
 	speed = -1
 	health = 280
-	maxHealth = 280
+	max_health = 280
 	can_escape = 1
 
 	harm_intent_damage = 8

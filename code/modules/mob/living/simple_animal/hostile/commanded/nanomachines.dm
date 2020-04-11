@@ -8,7 +8,7 @@
 	icon_state = "blobsquiggle_grey"
 	attacktext = "swarmed"
 	health = 10
-	maxHealth = 10
+	max_health = 10
 	var/regen_time = 0
 	melee_damage_lower = 1
 	melee_damage_upper = 2
@@ -22,7 +22,7 @@
 
 /mob/living/simple_animal/hostile/commanded/nanomachine/Life()
 	regen_time++
-	if(regen_time == 2 && health < maxHealth) //slow regen
+	if(regen_time == 2 && health < max_health) //slow regen
 		regen_time = 0
 		health++
 	. = ..()
@@ -54,7 +54,7 @@
 	if(!Adjacent(target_mob) || SA_attackable(target_mob))
 		stance = COMMANDED_HEAL
 		return 0
-	if(target_mob.stat || target_mob.health >= target_mob.maxHealth) //he's either dead or healthy, move along.
+	if(target_mob.stat || target_mob.health >= target_mob.max_health) //he's either dead or healthy, move along.
 		allowed_targets -= target_mob
 		target_mob = null
 		stance = COMMANDED_HEAL

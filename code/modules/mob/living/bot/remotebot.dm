@@ -4,7 +4,7 @@
 	icon = 'icons/mob/bot/fetchbot.dmi'
 	icon_state = "fetchbot1"
 	health = 15
-	maxHealth = 15
+	max_health = 15
 
 	var/working = 0
 	var/next_movement_time = 0

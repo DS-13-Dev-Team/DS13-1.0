@@ -96,7 +96,7 @@
 	if((!repair || fully_repaired()) && charging.cell.fully_charged())
 		stop_charging()
 
-// An ugly proc, but apparently mechs don't have maxhealth var of any kind.
+// An ugly proc, but apparently mechs don't have max_health var of any kind.
 /obj/machinery/mech_recharger/proc/fully_repaired()
 	return charging && (charging.health == initial(charging.health))
 

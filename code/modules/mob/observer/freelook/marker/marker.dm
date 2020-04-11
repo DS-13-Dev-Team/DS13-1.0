@@ -15,9 +15,10 @@
 	var/mob/observer/eye/signal/master/playermob	//Signal mob of the player controlling the marker
 	var/corruption_plant
 
+
 	//Biomass handling
 	//--------------------------
-	var/biomass	= 80//Current actual quantity of biomass we have stored. Start with enough to spawn a slasher
+	biomass	= 100//Current actual quantity of biomass we have stored. Start with enough to spawn a slasher
 	var/biomass_tick = 0	//Current amount of mass we're gaining each second. This shouldn't be edited as it is regularly recalculated
 	var/list/biomass_sources = list()	//A list of various sources (mostly necromorph corpses) from which we are gradually gaining biomass. These are finite
 
@@ -42,6 +43,7 @@
 
 /obj/machinery/marker/proc/make_active()
 	active = TRUE
+	SSnecromorph.update_all_ability_lists(FALSE)	//Unlock new spells for signals
 	visible_message(SPAN_WARNING("[src] starts to pulsate in a strange way..."))
 	//Start spreading corruption
 	start_corruption()
@@ -58,6 +60,10 @@
 	var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/machinery/marker/proc/nearby_movement, range = 10)
 	PT.register_turfs()
 	set_extension(src, /datum/extension/proximity_manager, PT)
+
+	if (config.marker_auto_activate)
+		spawn(100)
+			make_active()
 
 /obj/machinery/marker/proc/open_shop(var/mob/user)
 	shop.ui_interact(user)
@@ -138,20 +144,31 @@
 	if(!active)
 		return
 	message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
+	player = ckey(M.key)
+
+	//Get rid of the old energy handler
+	var/datum/player/P = get_or_create_player(M.key)
+	remove_extension(P, /datum/extension/psi_energy/signal)
+
 	var/mob/observer/eye/signal/master/S = new(M)
-	player = S.key
+
 	playermob = S
 	qdel(M)
 	update_icon()
-	GLOB.unitologists.add_antagonist(playermob.mind)
+	//GLOB.unitologists.add_antagonist(playermob.mind)
 	return S
 
 
 /obj/machinery/marker/proc/vacate_master_signal()
 	if (playermob)
+
+		//Get rid of the old player's energy handler
+		var/datum/player/P = get_or_create_player(player)
+		remove_extension(P, /datum/extension/psi_energy/marker)//Remove the handler
+
 		message_necromorphs(SPAN_NOTICE("[player] has stepped down, nobody is controlling the marker now."))
 		var/mob/observer/eye/signal/S = new(playermob)
-		GLOB.unitologists.remove_antagonist(playermob.mind)
+		//GLOB.unitologists.remove_antagonist(playermob.mind)
 		player = null
 		QDEL_NULL(playermob)
 		update_icon()
@@ -176,11 +193,7 @@
 			//We can only absorb dead mobs, but we don't check that here
 			//We'll add a still-living mob to the list and it'll be checked each tick to see if it died yet
 
-	//Organs and blood are succed up instantly but don't yield biomass
-	if (istype(AM, /obj/item/organ) || istype(AM, /obj/effect/decal/cleanable/blood))
-		spawn(1)
-			if (!QDELETED(AM))
-				qdel(AM)
+
 
 /obj/machinery/marker/proc/pay_biomass(var/purpose, var/amount)
 	if (biomass >= amount)
@@ -191,7 +204,8 @@
 //Corruption Handling
 
 /obj/machinery/marker/proc/start_corruption()
-	new /obj/effect/vine/corruption(get_turf(src),GLOB.corruption_seed, start_matured = 1)
+	set_extension(src, /datum/extension/corruption_source, 12)
+
 
 //Necrovision
 

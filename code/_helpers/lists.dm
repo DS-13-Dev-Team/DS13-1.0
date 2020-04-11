@@ -11,6 +11,8 @@
 
 //Returns a list in plain english as a string
 /proc/english_list(var/list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "," )
+	if (!input)
+		return ""
 	switch(input.len)
 		if(0) return nothing_text
 		if(1) return "[input[1]]"
@@ -627,7 +629,7 @@ proc/dd_sortedTextList(list/incoming)
 /datum/alarm/dd_SortValue()
 	return "[sanitize_old(last_name)]"
 
-#define subtypesof(prototype) (typesof(prototype) - prototype)
+
 
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.

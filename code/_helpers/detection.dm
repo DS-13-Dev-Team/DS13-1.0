@@ -276,3 +276,85 @@ proc
 		if(dx*dx + dy*dy <= rsq)
 			turfs += T
 	return turfs
+
+
+/*A complicated proc!
+/This attempts to find something meeting a variety of conditions. Vars:
+	Origin: Where we start looking. Search around origin
+	Radius: How far out to look?
+	Valid Types:	A list of various typepaths which are valid
+	Allied:	A list. First value contains a mob to compare with, second value must be true or false. An atom is only considered valid if it gets a matching result for is_allied
+	Visualnet:	If not null, a qualifying atom must be located on a turf which is seen by this visualnet
+	Corruption:	If true, qualifying atom must be, or be on, a corrupted tile
+	View:	If true, limit the searching to turfs in view of origin. When false, searches in a range
+	Num:	How many targets to find? We'll keep searching til we get this many or have examined every turf's contents. Any false value counts as infinity, search everything
+*/
+/proc/get_valid_target(var/atom/origin, var/radius, var/list/valid_types = list(/turf), var/list/allied = null, var/datum/visualnet/visualnet = null, var/require_corruption = FALSE, var/view_limit = FALSE, var/LOS_block = FALSE, var/num_required = 1, var/datum/callback/special_check = null)
+	var/list/results = list()
+	var/list/haystack
+	if (view_limit)
+		haystack = origin.atoms_in_view(radius)
+	else
+		haystack = range(radius, origin)
+
+	//Possible future todo: Optimise haystack selection based on valid types
+
+	//Okay now we have our list to search through
+
+	for (var/atom/A as anything in haystack)
+
+		//Check if it matches one of our required types
+		var/typematch = FALSE
+		for (var/v in valid_types)
+			if (istype(A, v))
+				typematch = TRUE
+				break
+
+		if (!typematch)
+			continue	//If not, abort
+
+
+
+		//Special check is a callback that can be passed in, to do fancy things
+		if (special_check)
+			if (special_check.Invoke(A) != TRUE)
+				continue
+
+		var/turf/T = get_turf(A)
+		if (require_corruption)
+			if (!turf_corrupted(T))
+				continue
+
+		if (visualnet)
+			if (!T.is_in_visualnet(visualnet))
+				continue
+
+		if (allied)
+			var/mob/user = allied[1]
+			if ((user.is_allied(A) != allied[2]))
+				continue
+
+		if (LOS_block)
+			if (T.is_seen_by_crew())
+				continue
+
+
+		//If we get here, then the item is valid. Add it to our results list
+		results += A
+
+		//If we've set a defined target of results, and now meet or exceed that target, then break out and return
+		if (num_required && results.len >= num_required)
+			break
+
+
+
+
+
+	return results
+
+
+/atom/proc/get_cardinal()
+	.=list()
+	for (var/direction in GLOB.cardinal)
+		var/turf/T = get_step(src, direction)
+		.+=T

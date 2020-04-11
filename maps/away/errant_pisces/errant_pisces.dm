@@ -27,7 +27,7 @@
 	turns_per_move = 8
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	speed = 8
-	maxHealth = 75
+	max_health = 75
 	health = 75
 	harm_intent_damage = 20
 	melee_damage_lower = 20

@@ -3,7 +3,7 @@
 
 	Corrupted tiles spread out gradually from the marker, and from any placed nodes, up to a certain radius
 */
-
+GLOBAL_LIST_EMPTY(corruption_sources)
 GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //We'll be using a subtype in addition to a seed, becuase there's a lot of special case behaviour here
@@ -22,14 +22,22 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	spread_distance = CORRUPTION_SPREAD_RANGE	//One node creates a screen-sized patch of corruption
 	growth_type = 0
 	var/vine_scale = 1.1
+	var/datum/extension/corruption_source/source
 
 
-/obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/newparent, var/start_matured = 0)
+/obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/corruption/newparent, var/start_matured = 0, var/datum/extension/corruption_source/newsource)
+
 	alpha = min_alpha
 	GLOB.necrovision.add_source(src)	//Corruption tiles add vision
+
 	if (!GLOB.corruption_seed)
 		GLOB.corruption_seed = new /datum/seed/corruption()
 	seed = GLOB.corruption_seed
+
+	source = newsource
+	if (!newsource)
+		source = newparent.source
+	source.register(src)
 	.=..()
 
 //Corruption tiles reveal their own tile, and surrounding dense obstacles. They will not reveal surrounding clear tiles
@@ -44,12 +52,12 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //No calculating, we'll input all these values in the variables above
 /obj/effect/vine/corruption/calculate_growth()
-	mature_time = rand_between(20 SECONDS, 30 SECONDS) //How long it takes for one tile to mature and be ready to spread into its neighbors.
-	if (plant)
-		mature_time *= 1 + (0.15 * get_dist_3D(src, plant))//Expansion gets slower as you get farther out. Additively stacking 15% increase per tile
+
+	mature_time = rand_between(20 SECONDS, 30 SECONDS) / source.growth_speed	//How long it takes for one tile to mature and be ready to spread into its neighbors.
+	mature_time *= 1 + (source.growth_distance_falloff * get_dist_3D(src, plant))	//Expansion gets slower as you get farther out. Additively stacking 15% increase per tile
+
 	growth_threshold = max_health
-	var/sidelength = (spread_distance * 2)+1
-	possible_children = (sidelength * sidelength)
+	possible_children = INFINITY
 	return
 
 /obj/effect/vine/corruption/update_icon()
@@ -92,24 +100,14 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 			set_extension(L, /datum/extension/corruption_effect)
 
 
-//This proc finds something nearby to use as an origin point for this corruption tile.
-//If none is found, we are orphaned and will start gradually dying
-//We search around both ourselves, and our parent. But in both cases we check the distance specifically to ourself
+//This proc finds any viable corruption source to use for us
 /obj/effect/vine/corruption/proc/find_corruption_host()
-	var/min_dist = INFINITY
-	var/closest = null
-	var/list/search_locations = list(get_turf(src))
-	if (parent)
-		search_locations |= get_turf(parent)
-	for (var/turf/T in search_locations)
-		for (var/a in range(CORRUPTION_SPREAD_RANGE, T))
-			if (istype(a, /obj/structure/corruption_node/growth) || istype(a, /obj/machinery/marker))
-				var/distance = get_dist_3D(src, a)
-				if (distance < min_dist)
-					min_dist = distance
-					closest = a
 
-	return closest
+	for (var/datum/extension/corruption_source/CS in GLOB.corruption_sources)
+		if (CS.can_support(src))
+			return CS
+
+	return null
 
 
 
@@ -123,39 +121,123 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /obj/effect/vine/corruption/can_regen()
 	.=..()
 	if (.)
-		if (!plant)
+		if (!plant || QDELETED(plant))
 			return FALSE
 
 //In addition to normal checks, we need a place to put our plant
 /obj/effect/vine/corruption/can_spawn_plant()
-	if (!plant)
-		if (find_corruption_host())
-			return TRUE
+	if (!plant || QDELETED(plant))
+		return TRUE
 	return FALSE
 
 //We can only place plants under a marker or growth node
 //And before placing, we should look for an existing one
 /obj/effect/vine/corruption/spawn_plant()
-	var/atom/A = find_corruption_host()
-	if (!A)
+	var/datum/extension/corruption_source/CS = find_corruption_host()
+	if (!CS)
+		plant = null
 		return
-	var/turf/T = get_turf(A)
-	for (var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/I in T)
-		if (istype(I.seed, /datum/seed/corruption))
-			plant = I
-			calculate_growth()
-			return
+	if (CS.register(src))
+		calculate_growth()
 
-
-	//If there's no existing one, we'll create it on the host tile
-	..(T)
-	//And lets set the appropriate var on the corruption host, ensuring it will be deleted if host is destroyed
-	A:corruption_plant = plant
-	calculate_growth()
 
 
 /obj/effect/vine/corruption/is_necromorph()
 	return TRUE
+
+/obj/effect/vine/corruption/can_spread_to(var/turf/floor)
+	if (source.can_support(floor))
+		return TRUE
+
+	//Possible future todo: See if any other nodes can support it if our parent can't?
+
+	return FALSE
+
+
+/obj/effect/vine/corruption/wake_up(var/wake_adjacent = TRUE)
+	.=..()
+	if (plant && !QDELETED(plant))
+		calculate_growth()
+
+
+/*
+	Spreading Logic
+*/
+/datum/extension/corruption_source
+	expected_type = /atom
+	flags = EXTENSION_FLAG_IMMEDIATE
+	var/range = 12
+	var/growth_speed = 1	//Multiplier on growth speed
+	var/growth_distance_falloff = 0.15	//15% added to growth time for each tile of distance from the source
+	var/atom/source
+	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
+	var/list/corruption_vines = list()	//A list of all the vines we're currently supporting
+
+
+/datum/extension/corruption_source/New(var/atom/holder, var/range, var/speed, var/falloff)
+	source = holder
+	GLOB.corruption_sources |= src
+	plant = new (source.loc, GLOB.corruption_seed)
+	GLOB.moved_event.register(source, src, /datum/extension/corruption_source/proc/source_moved)
+	if (range)
+		src.range = range
+	if (speed)
+		growth_speed = speed
+	if (falloff)
+		growth_distance_falloff = falloff
+
+
+	new /obj/effect/vine/corruption(get_turf(source),GLOB.corruption_seed, start_matured = 1, newsource = src)
+
+/datum/extension/corruption_source/Destroy()
+	GLOB.corruption_sources -= src
+	qdel(plant)
+	update_vines()
+	.=..()
+
+
+
+/datum/extension/corruption_source/proc/register(var/obj/effect/vine/corruption/applicant)
+
+	if (!can_support(applicant))
+
+		return FALSE
+	corruption_vines |= applicant
+	applicant.plant = plant
+	applicant.source = src
+
+
+//Is this source able to provide support to a specified turf or corruption vine?
+/datum/extension/corruption_source/proc/can_support(var/atom/A)
+
+	var/turf/T = get_turf(A)
+	var/distance = get_dist_3D(get_turf(source), T)
+	//We check distance fist, it's quick and efficient
+	if (distance > range)
+		return FALSE
+
+	//TODO Future:
+		//View restricting
+		//Hard limit on supported quantity
+
+	return TRUE
+
+
+/datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, var/old_loc, var/new_loc)
+	plant.forceMove(new_loc)
+	update_vines()
+
+
+//Called when a source moves, gets deleted, changes its radius or other parameters.
+//Tells all the associated vines to update various things, and/or find a new parent to support them now that we're gone
+//If we are being deleted, plant will be nulled out before calling this
+/datum/extension/corruption_source/proc/update_vines()
+	for (var/obj/effect/vine/corruption/C as anything in corruption_vines)
+		C.wake_up(FALSE)
+
+
+
+
 
 /* The seed */
 //-------------------

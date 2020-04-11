@@ -8,7 +8,7 @@
 	icon_dead = "armalis_naked_dead"
 
 	health = 225
-	maxHealth = 225
+	max_health = 225
 	resistance = 5
 
 	response_help   = "pats"
@@ -37,6 +37,6 @@
 	icon_dead = "armalis_armored_dead"
 
 	health = 275
-	maxHealth = 275
+	max_health = 275
 	resistance = 8
 	speed = 3

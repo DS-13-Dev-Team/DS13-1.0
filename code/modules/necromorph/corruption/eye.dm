@@ -10,10 +10,11 @@
 	name = "Eye"
 	desc = "It knows you. You cannot escape its gaze."
 	icon_state = "eye"
-	max_health = 25	//fragile
+	max_health = 60	//fragile
 	var/view_range = 20
 	var/minimum_notify_delay = 3 MINUTES	//Minimum time that must pass between sightings before we resend notifications
 	scale = 1.6
+	var/light_range = 8
 
 /obj/structure/corruption_node/eye/Initialize()
 	.=..()
@@ -25,7 +26,7 @@
 		PT.register_turfs()
 		set_extension(src, /datum/extension/proximity_manager, PT)
 
-		set_light(1, 1, 8, 2, COLOR_NECRO_YELLOW)
+		set_light(1, 1, light_range, 2, COLOR_NECRO_YELLOW)
 
 /obj/structure/corruption_node/eye/get_visualnet_tiles(var/datum/visualnet/network)
 
@@ -101,3 +102,30 @@
 
 	var/datum/sighting_menu/SM = new()
 	SM.ui_interact(src)
+
+
+/obj/structure/corruption_node/eye/small
+	name = "Gaze"
+	desc = "The abyss stares back"
+	icon_state = "minieye"
+	max_health = 20	//fragile
+	view_range = 8
+	minimum_notify_delay = 3 MINUTES	//Minimum time that must pass between sightings before we resend notifications
+	scale = 1
+	light_range = 2
+
+
+/obj/structure/corruption_node/eye/small/get_blurb()
+	. = "This node is effectively an organic camera, a smaller version of the Eye node. It moderately increases the view range of the necrovision network by [view_range] tiles.<br><br>\
+	 In addition, it will notify all necromorph players when it sees a live human. <br><br>\
+	Finally, and most significantly, all eye nodes will keep track of every human they see, storing that information centrally in the Prey Sightings menu. This can be used by all necromorphs to direct and coordinate their hunting efforts."
+
+
+/*
+	Signal ability
+*/
+/datum/signal_ability/placement/corruption/gaze
+	name = "Gaze"
+	id = "gaze"
+	energy_cost = 200
+	placement_atom = /obj/structure/corruption_node/eye/small

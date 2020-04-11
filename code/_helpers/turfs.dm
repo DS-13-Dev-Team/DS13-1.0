@@ -178,3 +178,41 @@
 			return T
 		else
 			turfs -= T
+
+
+/*
+	Very specific use case. This proc returns true if the turf is currently visible to any conscious, living, human crewmember
+	It does not return true if seen by:
+		Animals
+		Necromorphs
+		Ghosts/signals
+*/
+/turf/proc/is_seen_by_crew()
+	.=FALSE
+	for (var/mob/living/carbon/human/H in view(20, src))
+		if (!H.client)
+			//Disconnected people don't see
+			continue
+
+		if (H.is_necromorph())
+			//Necromorphs don't count
+			continue
+
+		if (H.stat == DEAD)
+			continue	//The dead can't see
+
+		if (H.stat == UNCONSCIOUS)
+			//Sleeping people can see one tile around them
+			if (get_dist(src, H) >= 2)
+				continue
+
+		return TRUE
+
+
+/atom/proc/get_cardinal_corruption()
+	var/list/turfs = get_cardinal()
+	for (var/turf/T in turfs)
+		if (!turf_corrupted(T))
+			turfs -= T
+
+	return turfs

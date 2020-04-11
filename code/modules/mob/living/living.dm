@@ -187,8 +187,8 @@ default behaviour is:
 
 /mob/living/verb/succumb()
 	set hidden = 1
-	if ((src.health < src.maxHealth/2)) // Health below half of maxhealth.
-		src.adjustBrainLoss(src.health + src.maxHealth * 2) // Deal 2x health in BrainLoss damage, as before but variable.
+	if ((src.health < src.max_health/2)) // Health below half of max_health.
+		src.adjustBrainLoss(src.health + src.max_health * 2) // Deal 2x health in BrainLoss damage, as before but variable.
 		updatehealth()
 		to_chat(src, "<span class='notice'>You have given up life and succumbed to death.</span>")
 
@@ -197,7 +197,7 @@ default behaviour is:
 		health = 100
 		set_stat(CONSCIOUS)
 	else
-		health = maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - getHalLoss()
+		health = max_health - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - getHalLoss()
 
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
@@ -232,12 +232,12 @@ default behaviour is:
 	return temperature
 
 /mob/living/proc/getBruteLoss()
-	return maxHealth - health
+	return max_health - health
 
 /mob/living/proc/adjustBruteLoss(var/amount)
 	if (status_flags & GODMODE)
 		return
-	health = Clamp(health - amount, 0, maxHealth)
+	health = Clamp(health - amount, 0, max_health)
 
 /mob/living/proc/getOxyLoss()
 	return 0
@@ -293,11 +293,11 @@ default behaviour is:
 /mob/living/proc/adjustCloneLoss(var/amount)
 	return
 
-/mob/living/proc/getMaxHealth()
-	return maxHealth
+/mob/living/proc/get_max_health()
+	return max_health
 
-/mob/living/proc/setMaxHealth(var/newMaxHealth)
-	maxHealth = newMaxHealth
+/mob/living/proc/set_max_health(var/newmax_health)
+	max_health = newmax_health
 
 
 /mob/living/is_injectable(allowmobs = TRUE)

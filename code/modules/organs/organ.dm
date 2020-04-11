@@ -28,6 +28,8 @@ var/list/organ_cache = list()
 
 	var/death_time
 
+	biomass = 0						//How much biomass this organ is worth to the marker.
+
 /obj/item/organ/Destroy()
 
 	owner = null
@@ -259,6 +261,10 @@ var/list/organ_cache = list()
 
 	if(!istype(owner))
 		return
+
+	if (owner.biomass > 1)
+		biomass = 1
+		owner.adjust_biomass(-1)
 
 	action_button_name = null
 

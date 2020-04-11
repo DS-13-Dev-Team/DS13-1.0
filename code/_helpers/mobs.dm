@@ -282,6 +282,7 @@ proc/age2agedescription(age)
 /atom/proc/is_allied(var/atom/B)
 	if (is_necromorph() && B.is_necromorph())
 		return TRUE
+	return FALSE
 
 
 

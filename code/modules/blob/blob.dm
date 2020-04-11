@@ -14,7 +14,7 @@
 	plane = BLOB_PLANE
 	layer = BLOB_SHIELD_LAYER
 
-	var/maxHealth = 30
+	var/max_health = 30
 	var/health
 	var/regen_rate = 5
 	var/brute_resist = 4
@@ -24,7 +24,7 @@
 	var/secondary_core_growth_chance = 5 //% chance to grow a secondary blob core instead of whatever was suposed to grown. Secondary cores are considerably weaker, but still nasty.
 
 /obj/effect/blob/New(loc)
-	health = maxHealth
+	health = max_health
 	update_icon()
 	return ..(loc)
 
@@ -43,7 +43,7 @@
 			take_damage(rand(20, 60) / brute_resist)
 
 /obj/effect/blob/update_icon()
-	if(health > maxHealth / 2)
+	if(health > max_health / 2)
 		icon_state = "blob"
 	else
 		icon_state = "blob_damaged"
@@ -57,7 +57,7 @@
 		update_icon()
 
 /obj/effect/blob/proc/regen()
-	health = min(health + regen_rate, maxHealth)
+	health = min(health + regen_rate, max_health)
 	update_icon()
 
 /obj/effect/blob/proc/expand(var/turf/T)
@@ -164,7 +164,7 @@
 	name = "blob core"
 	icon = 'icons/mob/blob.dmi'
 	icon_state = "blob_core"
-	maxHealth = 200
+	max_health = 200
 	brute_resist = 2
 	fire_resist = 2
 	laser_resist = 8
@@ -178,7 +178,7 @@
 
 // Rough icon state changes that reflect the core's health
 /obj/effect/blob/core/update_icon()
-	var/health_percent = (health / maxHealth) * 100
+	var/health_percent = (health / max_health) * 100
 	switch(health_percent)
 		if(66 to INFINITY)
 			icon_state = "blob_core"
@@ -212,7 +212,7 @@
 	name = "small blob core"
 	icon = 'icons/mob/blob.dmi'
 	icon_state = "blob_node"
-	maxHealth = 100
+	max_health = 100
 	brute_resist = 1
 	fire_resist = 1
 	laser_resist = 5
@@ -222,14 +222,14 @@
 	layer = BLOB_NODE_LAYER
 
 /obj/effect/blob/core/secondary/update_icon()
-	icon_state = (health / maxHealth >= 0.5) ? "blob_node" : "blob_factory"
+	icon_state = (health / max_health >= 0.5) ? "blob_node" : "blob_factory"
 
 /obj/effect/blob/shield
 	name = "strong blob"
 	icon = 'icons/mob/blob.dmi'
 	icon_state = "blob_idle"
 	desc = "Some blob creature thingy."
-	maxHealth = 60
+	max_health = 60
 	brute_resist = 1
 	fire_resist = 2
 	laser_resist = 6
@@ -243,9 +243,9 @@
 	..()
 
 /obj/effect/blob/shield/update_icon()
-	if(health > maxHealth * 2 / 3)
+	if(health > max_health * 2 / 3)
 		icon_state = "blob_idle"
-	else if(health > maxHealth / 3)
+	else if(health > max_health / 3)
 		icon_state = "blob"
 	else
 		icon_state = "blob_damaged"

@@ -30,7 +30,7 @@
 		if(H.species.species_flags & (SPECIES_FLAG_NO_POISON|SPECIES_FLAG_NO_SCAN))
 			//they can't take clone or tox damage, then for the most part they aren't affected by being fed on - and presumably feeding on them would not affect the slime either
 			return "This subject does not have an edible life energy..."
-	if (istype(M, /mob/living/carbon) && M.getCloneLoss() >= M.maxHealth * 1.5 || istype(M, /mob/living/simple_animal) && M.stat == DEAD)
+	if (istype(M, /mob/living/carbon) && M.getCloneLoss() >= M.max_health * 1.5 || istype(M, /mob/living/simple_animal) && M.stat == DEAD)
 		return "This subject does not have an edible life energy..."
 	for(var/mob/living/carbon/slime/met in view())
 		if(met.Victim == M && met != src)
@@ -131,7 +131,7 @@
 	if(!is_adult)
 		if(amount_grown >= 10)
 			is_adult = 1
-			maxHealth = 200
+			max_health = 200
 			amount_grown = 0
 			regenerate_icons()
 			SetName(text("[colour] [is_adult ? "adult" : "baby"] slime ([number])"))

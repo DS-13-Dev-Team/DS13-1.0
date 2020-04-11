@@ -3,6 +3,8 @@
 	icon = 'icons/mob/eye.dmi'
 	icon_state = "markersignal"
 	plane = ABOVE_OBSCURITY_PLANE
+	var/energy_extension_type = /datum/extension/psi_energy/signal
+	var/datum/extension/psi_energy/psi_energy
 
 	movement_handlers = list(
 		/datum/movement_handler/mob/incorporeal/eye
@@ -143,6 +145,7 @@
 	.=..()
 	SSnecromorph.necromorph_players[ckey] = src
 	SSnecromorph.signals |= src
+	start_energy_tick()
 
 	spawn(1)	//Prevents issues when downgrading from master
 		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
@@ -211,3 +214,33 @@
 
 /atom/proc/attack_signal(var/mob/observer/eye/signal/user)
 	return TRUE
+
+
+/*
+	Energy Handling
+*/
+/mob/observer/eye/signal/proc/start_energy_tick()
+	if (!key)
+		return	//Logged in players only
+	var/datum/player/myself = get_or_create_player(key)
+	psi_energy = get_or_create_extension(myself, energy_extension_type)
+	psi_energy.start_ticking()
+
+
+
+
+/mob/observer/eye/signal/Stat()
+	.=..()
+	if(.)
+		if(statpanel("Status"))
+			stat("Psi Energy", "[psi_energy.energy]/[psi_energy.max_energy]")
+
+
+/mob/observer/eye/signal/verb/ability_menu()
+	set name = "Ability Menu"
+	set desc = "Opens the menu to cast abilities using your psi energy"
+	set category = "Abilities"
+
+
+	var/datum/extension/psi_energy/PE	= get_energy_extension()
+	PE.ui_interact(src)

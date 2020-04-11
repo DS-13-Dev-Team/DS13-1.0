@@ -18,7 +18,7 @@
 	a_intent = I_HURT
 	stop_automated_movement_when_pulled = 0
 	health = 300
-	maxHealth = 300
+	max_health = 300
 	speed = 8
 	projectiletype = /obj/item/projectile/beam/drone
 	projectilesound = 'sound/weapons/laser3.ogg'
@@ -104,16 +104,16 @@
 	//sometimes our targetting sensors malfunction, and we attack anyone nearby
 	Haywire()
 
-	if(health / maxHealth > 0.9)
+	if(health / max_health > 0.9)
 		icon_state = "[initial(icon_state)]"
 		explode_chance = 0
-	else if(health / maxHealth > 0.7)
+	else if(health / max_health > 0.7)
 		icon_state = "[initial(icon_state)]2"
 		explode_chance = 0
-	else if(health / maxHealth > 0.5)
+	else if(health / max_health > 0.5)
 		icon_state = "[initial(icon_state)]1"
 		explode_chance = 0.5
-	else if(health / maxHealth > 0.3)
+	else if(health / max_health > 0.3)
 		icon_state = "[initial(icon_state)]0"
 		explode_chance = 5
 	else if(health > 0)

@@ -59,6 +59,16 @@ hr {
 	padding-top: 12px !important;
 }
 
+.linkCompact {
+	float: none;
+    min-width: 15px;
+    height: 12px;
+    padding: 0px;
+    margin: 0px;
+	font-size: 9px;
+	line-height: 80%;
+}
+
 .checkbox, .checkbox:hover {width: 10px !important;
 height: 10px !important;
 background: transparent !important;

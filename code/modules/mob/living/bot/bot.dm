@@ -1,7 +1,7 @@
 /mob/living/bot
 	name = "Bot"
 	health = 20
-	maxHealth = 20
+	max_health = 20
 	icon = 'icons/mob/bot/placeholder.dmi'
 	universal_speak = 1
 	density = 0
@@ -73,10 +73,10 @@
 
 /mob/living/bot/updatehealth()
 	if(status_flags & GODMODE)
-		health = maxHealth
+		health = max_health
 		set_stat(CONSCIOUS)
 	else
-		health = maxHealth - getFireLoss() - getBruteLoss()
+		health = max_health - getFireLoss() - getBruteLoss()
 	setOxyLoss(0)
 	setToxLoss(0)
 
@@ -103,9 +103,9 @@
 			to_chat(user, "<span class='notice'>You need to unlock the controls first.</span>")
 		return
 	else if(isWelder(O))
-		if(health < maxHealth)
+		if(health < max_health)
 			if(open)
-				health = min(maxHealth, health + 10)
+				health = min(max_health, health + 10)
 				user.visible_message("<span class='notice'>\The [user] repairs \the [src].</span>","<span class='notice'>You repair \the [src].</span>")
 			else
 				to_chat(user, "<span class='notice'>Unable to repair with the maintenance panel closed.</span>")

@@ -22,7 +22,7 @@
 	open_layer = BELOW_DOOR_LAYER
 	closed_layer = ABOVE_WINDOW_LAYER
 
-	maxhealth = 50
+	max_health = 50
 	min_force = 12
 
 	//These are frequenly used with windows, so make sure zones can pass.

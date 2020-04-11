@@ -5,16 +5,25 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 /datum/click_handler
 	var/mob/user
 	var/flags = 0
+	var/id	//Used by signal abilities
+	var/cursor_override
+	var/cached_cursor
 
 /datum/click_handler/New(var/mob/user)
 	..()
 	src.user = user
 	if(flags & (CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
 		GLOB.logged_out_event.register(user, src, /datum/click_handler/proc/OnMobLogout)
+	if (cursor_override && user.client)
+		cached_cursor = user.client.mouse_pointer_icon
+		user.client.mouse_pointer_icon = cursor_override
 
 /datum/click_handler/Destroy()
 	if(flags & (CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
 		GLOB.logged_out_event.unregister(user, src, /datum/click_handler/proc/OnMobLogout)
+	if (cursor_override && user.client)
+		user.client.mouse_pointer_icon = cached_cursor
+
 	if (user)
 		user.click_handlers.Remove(src)
 	user = null
@@ -160,7 +169,12 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		return
 	RemoveClickHandler(click_handlers.Top())
 
+//Extra variables can be passed in here, and they will be propagated through to clickhandler /New
 /mob/proc/PushClickHandler(var/datum/click_handler/new_click_handler_type)
+	var/list/newarguments = list(src)
+	if (length(args) > 1)
+		newarguments = newarguments + args.Copy(2)
+
 	if((initial(new_click_handler_type.flags) & CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT) && !client)
 		return FALSE
 	if(!click_handlers)
@@ -169,7 +183,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	if(click_handler)
 		click_handler.Exit()
 
-	click_handler = new new_click_handler_type(src)
+	click_handler = new new_click_handler_type(arglist(newarguments))
 	click_handler.Enter()
 	click_handlers.Push(click_handler)
 	return click_handler

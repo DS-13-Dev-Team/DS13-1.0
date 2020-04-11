@@ -9,7 +9,7 @@
 	icon = 'icons/mob/bot/farmbot.dmi'
 	icon_state = "farmbot0"
 	health = 50
-	maxHealth = 50
+	max_health = 50
 	req_one_access = list(access_service, access_research)
 
 	var/action = "" // Used to update icon

@@ -105,3 +105,12 @@ SUBSYSTEM_DEF(necromorph)
 /proc/get_marker()
 	if (SSnecromorph)
 		return SSnecromorph.marker
+
+
+//Updates the energy holders of all necromorph players, refreshing their spell list
+/datum/controller/subsystem/necromorph/proc/update_all_ability_lists(var/clear = FALSE)
+	for (var/key in SSnecromorph.necromorph_players)
+		var/datum/player/P = get_player_from_key(key)
+		var/datum/extension/psi_energy/PE = P.get_energy_extension()
+		PE.build_ability_list(clear)
+		to_chat(P.get_mob(), "<span class='necromarker'>The marker has awoken, new abilities are unlocked. Check your abilities menu!</span>")

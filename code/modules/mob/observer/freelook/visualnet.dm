@@ -191,3 +191,15 @@
 
 /atom/get_visualnet_tiles(var/datum/visualnet/network)
 	return turfs_in_view()
+
+
+/turf/proc/is_in_visualnet(var/datum/visualnet/V)
+	var/numsearched = 0
+	for (var/coord as anything in V.chunks)
+		var/datum/chunk/C = V.chunks[coord]
+		for (var/turf/T as anything in C.visibleTurfs)
+			numsearched++
+			if (T == src)
+				return TRUE
+
+	return FALSE

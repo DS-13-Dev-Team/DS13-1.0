@@ -32,6 +32,9 @@
 	for(var/turf/simulated/turf in locs)
 		SSair.mark_for_update(turf)
 
+	for (var/obj/effect/vine/V in range(1, src))
+		V.wake_up()
+
 	return 1
 
 //Basically another way of calling CanPass(null, other, 0, 0) and CanPass(null, other, 1.5, 1).
@@ -53,7 +56,7 @@ turf/c_airblock(turf/other)
 	#endif
 	if(((blocks_air & AIR_BLOCKED) || (other.blocks_air & AIR_BLOCKED)))
 		return BLOCKED
-	
+
 	//Z-level handling code. Always block if there isn't an open space.
 	#ifdef MULTIZAS
 	if(other.z != src.z)

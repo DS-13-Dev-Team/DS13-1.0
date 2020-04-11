@@ -178,7 +178,7 @@ var/list/airlock_overlays = list()
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
 	hitsound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
+	max_health = 300
 	explosion_resistance = 5
 	opacity = 0
 	glass = 1
@@ -264,7 +264,7 @@ var/list/airlock_overlays = list()
 	opacity = 0
 
 /obj/machinery/door/airlock/external/glass
-	maxhealth = 300
+	max_health = 300
 	explosion_resistance = 5
 	opacity = 0
 	glass = 1
@@ -688,7 +688,7 @@ About the new airlock wires panel:
 				weld_overlay = welded_file
 			if(stat & BROKEN)
 				damage_overlay = sparks_broken_file
-			else if(health < maxhealth * 3/4)
+			else if(health < max_health * 3/4)
 				damage_overlay = sparks_damaged_file
 			if(lights && src.arePowerSystemsOn())
 				if(locked)
@@ -702,7 +702,7 @@ About the new airlock wires panel:
 				panel_overlay = panel_file
 			if(stat & BROKEN)
 				damage_overlay = sparks_broken_file
-			else if(health < maxhealth * 3/4)
+			else if(health < max_health * 3/4)
 				damage_overlay = sparks_damaged_file
 			if(welded)
 				weld_overlay = welded_file
@@ -716,7 +716,7 @@ About the new airlock wires panel:
 				panel_overlay = panel_file
 			if(stat & BROKEN)
 				damage_overlay = sparks_broken_file
-			else if(health < maxhealth * 3/4)
+			else if(health < max_health * 3/4)
 				damage_overlay = sparks_damaged_file
 			if(welded)
 				weld_overlay = welded_file
@@ -731,7 +731,7 @@ About the new airlock wires panel:
 		if(AIRLOCK_OPEN)
 			if(stat & BROKEN)
 				damage_overlay = sparks_broken_file
-			else if(health < maxhealth * 3/4)
+			else if(health < max_health * 3/4)
 				damage_overlay = sparks_damaged_file
 
 		if(AIRLOCK_OPENING)
@@ -1120,7 +1120,7 @@ About the new airlock wires panel:
 					spawn(0)	close(1)
 
 				//if door is unbroken, but at half health or less, hit with fire axe using harm intent
-		else if (istype(C, /obj/item/weapon/material/twohanded/fireaxe) && !(stat & BROKEN) && (src.health <= src.maxhealth / 2) && user.a_intent == I_HURT)
+		else if (istype(C, /obj/item/weapon/material/twohanded/fireaxe) && !(stat & BROKEN) && (src.health <= src.max_health / 2) && user.a_intent == I_HURT)
 			var/obj/item/weapon/material/twohanded/fireaxe/F = C
 			if (F.wielded)
 				playsound(src, 'sound/weapons/smash.ogg', 100, 1)

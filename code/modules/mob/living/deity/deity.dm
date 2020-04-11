@@ -6,7 +6,7 @@
 	pixel_x = -128
 	pixel_y = -128
 	health = 100
-	maxHealth = 100 //I dunno what to do with health at this point.
+	max_health = 100 //I dunno what to do with health at this point.
 	universal_understand = 1
 	var/eye_type = /mob/observer/eye/cult
 	var/list/minions = list() //Minds of those who follow him

@@ -65,6 +65,8 @@
 
 #define isrobot(A) istype(A, /mob/living/silicon/robot)
 
+#define issignal(A) istype(A, /mob/observer/eye/signal)
+
 #define issilicon(A) istype(A, /mob/living/silicon)
 
 #define isslime(A) istype(A, /mob/living/carbon/slime)
@@ -203,3 +205,4 @@
 //Used to set all the arguments of the currently executing proc, to a list
 #define SET_ARGS(L) var/list/newargs = L; for(var/i in 1 to length(newargs)) { args[i] = newargs[i] };
 
+#define subtypesof(prototype) (typesof(prototype) - prototype)

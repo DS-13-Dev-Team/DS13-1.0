@@ -10,7 +10,7 @@
 	var/attack_state = "secbot-c"
 	plane = MOB_PLANE
 	layer = MOB_LAYER
-	maxHealth = 50
+	max_health = 50
 	health = 50
 	req_one_access = list(access_security)
 	botcard_access = list(access_security, access_maint_tunnels)

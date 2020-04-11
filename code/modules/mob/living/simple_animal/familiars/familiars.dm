@@ -34,7 +34,7 @@
 
 
 	health = 200
-	maxHealth = 200
+	max_health = 200
 	melee_damage_lower = 10
 	melee_damage_upper = 15
 	attacktext = "pinches"
@@ -57,7 +57,7 @@
 	speak_emote = list("gnashes")
 
 	health = 100
-	maxHealth = 100
+	max_health = 100
 	melee_damage_lower = 10
 	melee_damage_upper = 10
 	can_escape = 1
@@ -81,7 +81,7 @@
 	response_help = "thinks better of touching"
 
 	health = 150
-	maxHealth = 150
+	max_health = 150
 	melee_damage_lower = 5
 	melee_damage_upper = 8
 	attacktext = "touches"
@@ -108,7 +108,7 @@
 	mob_size = MOB_SMALL
 
 	health = 25
-	maxHealth = 25
+	max_health = 25
 
 	wizardy_spells = list(/spell/targeted/heal_target,
 						/spell/targeted/heal_target/area)
@@ -142,7 +142,7 @@
 	response_harm = "stamps on"
 
 	health = 15
-	maxHealth = 15
+	max_health = 15
 	melee_damage_lower = 1
 	melee_damage_upper = 1
 	can_escape = 1
@@ -170,7 +170,7 @@
 	mob_size = MOB_SMALL
 
 	health = 25
-	maxHealth = 25
+	max_health = 25
 	melee_damage_lower = 3
 	melee_damage_upper = 4
 	attacktext = "claws"

@@ -120,3 +120,28 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 	while (world.tick_usage > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
 
 #undef DELTA_CALC
+
+
+/proc/descriptive_time(var/time, var/divider = ", ")
+	var/list/components = list()
+	if (time >= 1 HOUR)
+		var/hours = Floor(time / 36000)
+		components += "[hours] [hours > 1 ? "hours" : "hour"]"
+		time -= hours HOURS
+	if (time >= 1 MINUTE)
+		var/minutes = Floor(time / 600)
+		components += "[minutes] [minutes > 1 ? "minutes" : "minute"]"
+		time -= minutes MINUTES
+	if (time > 0)
+		var/seconds = time / 10	//No floor, we will show decimals for seconds
+		components += "[seconds] [seconds > 1 ? "seconds" : "second"]"
+		time -= seconds SECONDS
+
+	var/finalstring = ""
+	for (var/component in components)
+		if (finalstring)
+			finalstring += divider
+
+		finalstring += component
+
+	return finalstring
