@@ -2,7 +2,7 @@
 #define SPAWN_POINT		1	//The thing is spawned in a random clear tile around a specified spawnpoint
 #define SPAWN_PLACE		2	//The thing is manually placed by the user on a viable corruption tile
 
-#define NECROMORPH_ACID_POWER	4	//Damage per unit of necromorph organic acid, used by many things
+#define NECROMORPH_ACID_POWER	3.5	//Damage per unit of necromorph organic acid, used by many things
 #define NECROMORPH_FRIENDLY_FIRE_FACTOR	0.5	//All damage dealt by necromorphs TO necromorphs, is multiplied by this
 #define NECROMORPH_ACID_COLOR	"#946b36"
 

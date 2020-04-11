@@ -284,7 +284,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 		return splash_mob(target, amount, copy)
 	if(isturf(target))
 		return trans_to_turf(target, amount, multiplier, copy)
-	if(isobj(target) && target.is_open_container())
+	if(isobj(target))
 		return trans_to_obj(target, amount, multiplier, copy)
 	return 0
 
@@ -366,7 +366,49 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	if(isliving(target)) //will we ever even need to tranfer reagents to non-living mobs?
 		var/mob/living/L = target
 		perm = L.reagent_permeability()
-	return trans_to_mob(target, amount * perm, CHEM_TOUCH, 1, copy)
+	.= trans_to_mob(target, amount * perm, CHEM_TOUCH, 1, copy)	//Reagents that go through the mob's clothes will affect the skin
+
+
+	var/leftover = amount * (1-perm)	//The quantity that doesn't go through clothes will affect those clothes instead of the mob
+	//Right, lets  get a list of eligible equipment pieces
+	var/list/worn_items = target.get_equipped_items()
+	if (!worn_items.len)
+		return	//If nothing can be splashed, we are done
+
+	//Lets figure out how much of a share each item will absorb
+	var/total_weight = 0
+	for (var/obj/item/I in worn_items)
+		var/weight = I.w_class	//Use size as the basic measure of weight
+
+		//The weight of each clothing is multiplied by its coverage
+		if (isclothing(I))
+			var/obj/item/clothing/C = I
+			weight *= C.coverage
+		else
+			weight *= 0.1	//If its not clothing, it must be held in the hands. Cut weight down so it doesn't recieve an unduly huge share of the chemical
+
+		if (!weight)	//If this item has no absorption weight, it won't be splashed
+			worn_items.Remove(I)
+			continue
+
+		world << "[I] weight: [weight]"
+		//If it covers anything, we'll record its wieght for use in the next step
+		worn_items[I] = weight
+		total_weight += weight
+
+	//Nothing eligible? Stop here
+	if (!total_weight)
+		return
+
+
+	//Alrighty, now how much will be given. per weight unit, to each of the remaining items
+
+	var/share = leftover / total_weight
+	world << "Total: [total_weight]	Share: [share]"
+	for (var/obj/item/I in worn_items)
+		var/weight = worn_items[I]
+		world << "Splashing [I] with [share*weight]"
+		trans_to_obj(I, share*weight)	//Splash each of those items
 
 /datum/reagents/proc/trans_to_mob(var/mob/target, var/amount = 1, var/type = CHEM_BLOOD, var/multiplier = 1, var/copy = 0) // Transfer after checking into which holder...
 	if(!target || !istype(target) || !target.simulated)
@@ -402,7 +444,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	if(!target || !target.simulated)
 		return
 
-	if(!target.reagents)
+	if(!(target.reagents))
 		var/datum/reagents/R = new /datum/reagents(amount * multiplier, GLOB.temp_reagents_holder)
 		. = trans_to_holder(R, amount, multiplier, copy)
 		R.touch_obj(target)

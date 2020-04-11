@@ -15,6 +15,8 @@
 	var/ironed_state = WRINKLES_DEFAULT
 
 	var/move_trail = /obj/effect/decal/cleanable/blood/tracks/footprints // if this item covers the feet, the footprints it should leave
+	var/permeability_threshold = 0.8	//As long as health is above this proportion of max health, reagent permeability is unaffected. Below that value it increases rapidly
+	var/coverage = null	//Calculate this at runtime
 
 // Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
@@ -67,6 +69,8 @@
 		for(var/T in starting_accessories)
 			var/obj/item/clothing/accessory/tie = new T(src)
 			src.attach_accessory(null, tie)
+
+	coverage = get_coverage()
 
 //BS12: Species-restricted clothing check.
 /obj/item/clothing/mob_can_equip(M as mob, slot, disable_warning = 0)
@@ -159,6 +163,46 @@
 				ties += "\icon[accessory] \a [accessory]"
 			to_chat(user, "Attached to \the [src] are [english_list(ties)].")
 		return TOPIC_HANDLED
+
+
+//Clothing that is damaged is more permeable
+/obj/item/clothing/proc/get_permeability()
+	if (health >= (max_health * permeability_threshold))
+		return permeability_coefficient
+
+	if (health <= 0 || max_health <= 0 || permeability_threshold <= 0 || permeability_coefficient >= 1)
+		return 1	//Safety check to prevent division by zero errors. If any of these numbers are bad, just let everything through
+
+	//Alright, this piece of clothing is sufficiently damaged that it has holes and is letting liquids through. Lets see how much
+	var/blockage = 1 - permeability_coefficient	//Invert this to get how much it blocks
+	var/healthpercent = health / (max_health * permeability_threshold)	//Find our percentage between zero and threshold
+	blockage *= healthpercent	//Apply to blockage
+	return 1 - blockage	//And invert it once more for the return
+
+
+
+//Returns a value in the range 0 to 1, representing how much of the wearer's body is covered by this piece of clothing
+/obj/item/clothing/proc/get_coverage()
+	. = 0
+	//These defines represent how much of the body each segment is equal to. Add them together to get our total coverage
+	if(!body_parts_covered)
+		return
+	if(body_parts_covered & HEAD)
+		.+=THERMAL_PROTECTION_HEAD
+	if(body_parts_covered & UPPER_TORSO)
+		.+=THERMAL_PROTECTION_UPPER_TORSO
+	if(body_parts_covered & LOWER_TORSO)
+		.+=THERMAL_PROTECTION_LOWER_TORSO
+	if(body_parts_covered & LEGS)
+		.+=(THERMAL_PROTECTION_LEG_LEFT + THERMAL_PROTECTION_LEG_RIGHT)
+	if(body_parts_covered & FEET)
+		.+=(THERMAL_PROTECTION_FOOT_LEFT + THERMAL_PROTECTION_FOOT_RIGHT)
+	if(body_parts_covered & ARMS)
+		.+=(THERMAL_PROTECTION_ARM_LEFT + THERMAL_PROTECTION_ARM_RIGHT)
+	if(body_parts_covered & HANDS)
+		.+=(THERMAL_PROTECTION_HAND_LEFT + THERMAL_PROTECTION_HAND_RIGHT)
+
+
 
 ///////////////////////////////////////////////////////////////////////
 // Ears: headsets, earmuffs and tiny objects
