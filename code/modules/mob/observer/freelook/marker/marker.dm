@@ -29,10 +29,6 @@
 	SSnecromorph.marker = src	//Populate the global var with ourselves
 	..()
 
-/obj/machinery/marker/Initialize()
-	.=..()
-	if (config.marker_auto_activate)
-		make_active()
 
 /obj/machinery/marker/ex_act()
 	return null	//We do not break
@@ -64,6 +60,10 @@
 	var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/machinery/marker/proc/nearby_movement, range = 10)
 	PT.register_turfs()
 	set_extension(src, /datum/extension/proximity_manager, PT)
+
+	if (config.marker_auto_activate)
+		spawn(100)
+			make_active()
 
 /obj/machinery/marker/proc/open_shop(var/mob/user)
 	shop.ui_interact(user)
@@ -204,7 +204,8 @@
 //Corruption Handling
 
 /obj/machinery/marker/proc/start_corruption()
-	new /obj/effect/vine/corruption(get_turf(src),GLOB.corruption_seed, start_matured = 1)
+	set_extension(src, /datum/extension/corruption_source, 12)
+
 
 //Necrovision
 

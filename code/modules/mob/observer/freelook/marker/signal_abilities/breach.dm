@@ -1,6 +1,6 @@
 /datum/signal_ability/breach
 	name = "Breaching Growth"
-	energy_cost = 180
+	energy_cost = 250
 	target_string = "an airlock on or near a corrupted tile"
 	desc = "Breaching Growth allows you to slowly break open an airlock by having corruption force it with repeated hits. <br>\
 	This takes quite a long time to work, generally 5-10 minutes. It will be cancelled if anyone opens the door, or removes the corruption around it, but any damage dealt up to that point will remain."

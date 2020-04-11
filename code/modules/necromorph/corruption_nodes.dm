@@ -56,23 +56,3 @@
 	.+= get_blurb()
 	.+="<br><hr>"
 
-/obj/structure/corruption_node/growth
-	max_health = 200	//Takes a while to kill
-	resistance = 8
-	icon_state = "growth"
-	density = FALSE
-	name = "Propagator"
-	desc = "Corruption spreads out in all directions from this horrible mass."
-	var/corruption_plant
-
-/obj/structure/corruption_node/growth/Destroy()
-	QDEL_NULL(corruption_plant)
-	.=..()
-
-/obj/structure/corruption_node/growth/Initialize()
-	.=..()
-	if (!dummy)	//Don't do this stuff if its a dummy for placement preview
-		new /obj/effect/vine/corruption(get_turf(src),GLOB.corruption_seed, start_matured = 1)
-
-/obj/structure/corruption_node/growth/get_blurb()
-	. = "This node acts as a heart for corruption spread, allowing it to extend out up to [CORRUPTION_SPREAD_RANGE] tiles in all directions from the node. It must be placed on existing corruption from another propagator node, or from the marker."

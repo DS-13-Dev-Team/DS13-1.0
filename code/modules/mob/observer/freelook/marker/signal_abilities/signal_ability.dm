@@ -381,7 +381,6 @@
 	//TODO 1: Check allied status
 	if (!isnull(allied_check))
 		if ((user.is_allied(thing) != allied_check))
-			world << "Allied result is [user.is_allied(thing)]"
 			return FALSE
 
 
