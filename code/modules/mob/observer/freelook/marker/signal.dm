@@ -84,19 +84,19 @@
 
 
 
-//Posession and evacuating
+//Possession and evacuating
 //-------------------------------
 /mob/observer/eye/signal/verb/necro_possess(var/mob/living/L)
-	set name = "Posess"
+	set name = "Possess"
 	set category = "Necromorph"
 	set desc = "Take control of a necromorph vessel"
 
 	if (!istype(L))
-		to_chat(src, SPAN_DANGER("That can't be posessed!"))
+		to_chat(src, SPAN_DANGER("That can't be possessed!"))
 		return
 
 	if (!L.is_necromorph())
-		to_chat(src, SPAN_DANGER("You can only posess necromorph units."))
+		to_chat(src, SPAN_DANGER("You can only possess necromorph units."))
 		return
 
 	if (L.client)
