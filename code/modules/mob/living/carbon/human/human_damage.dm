@@ -500,3 +500,28 @@ This function restores all organs.
 		else
 			loss_val = 0.05
 		temp.take_external_damage(b_loss * loss_val, f_loss * loss_val, used_weapon = epicentre)
+
+
+/*
+	Used by healthbars. This proc attempts to estimate how wounded a human is.
+
+	It takes several measurements and uses the lowest one
+*/
+/mob/living/carbon/human/healthpercent()
+	var/list/measures = list()
+
+	//This measures braindamage, the final and most important measure
+	var/working_health = clamp(health, 0, max_health)
+	measures += ((working_health / max_health) * 100)
+
+
+	//Direct damage + Pain
+	var/remaining_physical_health = max_health - getFireLoss() - getBruteLoss() - getHalLoss()
+	measures += ((remaining_physical_health / max_health) * 100)
+
+	var/lowest = 100
+	for (var/measure in measures)
+		if (measure < lowest)
+			lowest = measure
+
+	return lowest

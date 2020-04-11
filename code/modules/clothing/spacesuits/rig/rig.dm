@@ -12,7 +12,7 @@
 	icon = 'icons/obj/rig_modules.dmi'
 	desc = "A back-mounted hardsuit deployment and control mechanism."
 	slot_flags = SLOT_BACK
-	var/desired_slot = SLOT_BACK
+	var/desired_slot = slot_back
 	req_one_access = list()
 	req_access = list()
 	w_class = ITEM_SIZE_HUGE
@@ -37,7 +37,7 @@
 
 	// Keeps track of what this rig should spawn with.
 	var/suit_type = "hardsuit"
-	var/list/initial_modules
+	var/list/initial_modules = list(/obj/item/rig_module/healthbar)
 	var/chest_type = /obj/item/clothing/suit/space/rig
 	var/helm_type =  /obj/item/clothing/head/helmet/space/rig
 	var/boot_type =  /obj/item/clothing/shoes/magboots/rig

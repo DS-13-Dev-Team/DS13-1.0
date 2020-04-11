@@ -201,6 +201,10 @@ default behaviour is:
 
 	GLOB.updatehealth_event.raise_event(src)
 
+/mob/living/proc/healthpercent()
+	var/working_health = clamp(health, 0, max_health)
+	return ((working_health / max_health) * 100)
+
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
