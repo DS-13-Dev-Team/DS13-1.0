@@ -32,6 +32,7 @@
 	resistance = 6
 	icon_state = "minigrowth"
 	density = FALSE
+	biomass = 5
 
 	range = 6
 	speed = 0.9
