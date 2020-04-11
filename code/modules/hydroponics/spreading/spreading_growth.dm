@@ -94,8 +94,10 @@
 
 		//Try to spread
 		if(parent && parent.possible_children && prob(spread_chance))
-			if(neighbors.len)
-				spread_to(pick(neighbors))
+			if(neighbors && neighbors.len)
+				update_neighbors()//This is a bit of a dirty fix, i couldn't make it work right in the available time
+				if(neighbors.len)
+					spread_to(pick(neighbors))
 
 	//Try to settle down
 	if(can_spawn_plant())
