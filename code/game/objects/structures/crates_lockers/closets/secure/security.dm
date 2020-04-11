@@ -26,6 +26,7 @@
 		/obj/item/clothing/under/dress/dress_cap,
 		/obj/item/clothing/head/caphat/formal,
 		/obj/item/clothing/under/captainformal,
+		/obj/item/weapon/rig/vintage,
 		/obj/random/tool = 3
 	)
 
