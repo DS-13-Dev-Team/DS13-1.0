@@ -391,7 +391,6 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 			worn_items.Remove(I)
 			continue
 
-		world << "[I] weight: [weight]"
 		//If it covers anything, we'll record its wieght for use in the next step
 		worn_items[I] = weight
 		total_weight += weight
@@ -404,10 +403,8 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	//Alrighty, now how much will be given. per weight unit, to each of the remaining items
 
 	var/share = leftover / total_weight
-	world << "Total: [total_weight]	Share: [share]"
 	for (var/obj/item/I in worn_items)
 		var/weight = worn_items[I]
-		world << "Splashing [I] with [share*weight]"
 		trans_to_obj(I, share*weight)	//Splash each of those items
 
 /datum/reagents/proc/trans_to_mob(var/mob/target, var/amount = 1, var/type = CHEM_BLOOD, var/multiplier = 1, var/copy = 0) // Transfer after checking into which holder...

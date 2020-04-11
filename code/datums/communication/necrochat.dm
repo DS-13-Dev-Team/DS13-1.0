@@ -44,7 +44,6 @@
 	for (var/ckey in SSnecromorph.necromorph_players)
 
 		var/mob/M = SSnecromorph.necromorph_players[ckey]
-		world << "Getting mob [M] for key [ckey]"
 		var/client/target = M.get_client()
 		if (target)
 			receive_communication(C, target, message)
@@ -52,7 +51,6 @@
 
 	var/list/valid_admins = GLOB.admins - messaged
 	for(var/client/target in valid_admins)
-		world << "Messaging admin [target]"
 		receive_communication(C, target, message)
 
 

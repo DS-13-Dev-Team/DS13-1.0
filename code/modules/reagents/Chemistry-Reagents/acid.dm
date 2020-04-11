@@ -151,7 +151,6 @@
 			melt = TRUE
 
 		if (melt)
-			world << "Melting item [src]"
 			var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(T)
 			I.desc = "Looks like this was \an [src] some time ago."
 			I.plane = ourplane
