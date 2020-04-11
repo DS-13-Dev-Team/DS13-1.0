@@ -202,5 +202,4 @@
 			if (T == src)
 				return TRUE
 
-	world << "Searched [numsearched] tiles in visualnet"
 	return FALSE

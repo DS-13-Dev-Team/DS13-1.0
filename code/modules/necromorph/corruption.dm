@@ -209,9 +209,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //Is this source able to provide support to a specified turf or corruption vine?
 /datum/extension/corruption_source/proc/can_support(var/atom/A)
-	//var/obj/effect/vine/corruption/C
-	//if (istype(A, /obj/effect/vine/corruption))
-		//C = A
+
 	var/turf/T = get_turf(A)
 	var/distance = get_dist_3D(get_turf(source), T)
 	//We check distance fist, it's quick and efficient

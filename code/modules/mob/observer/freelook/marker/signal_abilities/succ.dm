@@ -2,7 +2,7 @@
 	name = "Absorb	"
 	id = "succ"
 	desc = "Absorbs a piece of biological matter, claiming some biomass for the marker. The item to be absorbed must be located within corruption"
-	target_string = "A severed organ, a organic stain, or a piece of food"
+	target_string = "A severed organ, an organic stain, or a piece of food"
 	energy_cost = 30
 	cooldown = 20 SECONDS
 	require_corruption = TRUE

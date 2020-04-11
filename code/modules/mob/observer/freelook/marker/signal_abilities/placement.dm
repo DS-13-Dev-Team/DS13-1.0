@@ -45,12 +45,7 @@
 	var/obj/structure/corruption_node/C = .
 	if (istype(C))
 		C.biomass = 0
-/*
-/datum/signal_ability/placement/growth
-	name = "Growth"
-	id = "Growth"
-	placement_atom = /obj/structure/corruption_node/growth
-*/
+
 
 
 /*

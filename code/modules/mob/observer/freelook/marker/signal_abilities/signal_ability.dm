@@ -148,7 +148,6 @@
 	//And do the actual effect of the spell
 	on_cast(user, target,  data)
 
-	//TODO 1: Call a cleanup/abort proc to finish
 	stop_casting(user)
 
 //This is called after finish, or at any point during casting if things fail.
@@ -378,7 +377,6 @@
 		if (T.is_seen_by_crew())
 			return FALSE
 
-	//TODO 1: Check allied status
 	if (!isnull(allied_check))
 		if ((user.is_allied(thing) != allied_check))
 			return FALSE

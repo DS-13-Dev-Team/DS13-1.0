@@ -293,10 +293,10 @@ default behaviour is:
 /mob/living/proc/adjustCloneLoss(var/amount)
 	return
 
-/mob/living/proc/getmax_health()
+/mob/living/proc/get_max_health()
 	return max_health
 
-/mob/living/proc/setmax_health(var/newmax_health)
+/mob/living/proc/set_max_health(var/newmax_health)
 	max_health = newmax_health
 
 
