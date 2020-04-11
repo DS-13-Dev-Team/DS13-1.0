@@ -7,3 +7,6 @@
 	use_power_cost = 0
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 3, TECH_ENGINEERING = 5)
 	suit_overlay_inactive = "healthbar_100"
+	suit_overlay_active = "healthbar_100"
+	suit_overlay_used = "healthbar_100"
+	suit_overlay = "healthbar_100"

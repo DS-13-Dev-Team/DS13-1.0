@@ -395,6 +395,7 @@
 	var/go_offline = (!istype(wearer) || loc != wearer || wearer.back != src || canremove || sealing || !cell || cell.charge <= 0)
 	if(offline != go_offline)
 		offline = go_offline
+		update_wear_icon()
 		return 1
 	return 0
 
@@ -521,6 +522,7 @@
 	if(equipment_overlay_icon && LAZYLEN(installed_modules))
 		for(var/obj/item/rig_module/module in installed_modules)
 			if(module.suit_overlay)
+
 				chest.overlays += image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", "dir" = SOUTH)
 
 	if(wearer)
@@ -535,7 +537,7 @@
 
 /obj/item/weapon/rig/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
-	if(slot != slot_back_str || offline)
+	if(is_held() || offline)
 		return ret
 
 	if(equipment_overlay_icon && LAZYLEN(installed_modules))
