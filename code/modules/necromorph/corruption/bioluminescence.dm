@@ -9,7 +9,7 @@
 	max_health = 20	//fragile
 	scale = 1.6
 	var/light_range = 8
-	biomass = 5
+	marker_spawnable = FALSE
 
 
 
