@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(necromorph)
 
 	//Necromorph Lists
 	var/list/major_vessels = list()	//Necromorphs that need a player to control them. they are inert husks without one.
-	var/list/minor_vessels	=	list()	//Necromorphs that have AI and don't need a player, but can be posessed anyway if someone wants to do manual control
+	var/list/minor_vessels	=	list()	//Necromorphs that have AI and don't need a player, but can be possessed anyway if someone wants to do manual control
 
 	//Signal Lists
 	var/list/signals	=	list()	//List of all signal players
@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(necromorph)
 
 /datum/controller/subsystem/necromorph/proc/join_necroqueue(var/mob/observer/eye/signal/M)
 	if (is_marker_master(M))
-		//The master may not queue. They can still posess things if really needed though
+		//The master may not queue. They can still possess things if really needed though
 		return FALSE
 	necroqueue |= M
 	M.verbs -= /mob/observer/eye/signal/proc/join_necroqueue
