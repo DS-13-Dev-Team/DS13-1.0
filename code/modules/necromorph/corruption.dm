@@ -107,7 +107,6 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //This proc finds any viable corruption source to use for us
 /obj/effect/vine/corruption/proc/find_corruption_host()
-
 	for (var/datum/extension/corruption_source/CS in GLOB.corruption_sources)
 		if (CS.can_support(src))
 			return CS
