@@ -2063,6 +2063,7 @@
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\flicker.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\placement.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\psi_energy.dm"
+#include "code\modules\mob\observer\freelook\marker\signal_abilities\rapid_growth.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\reposess.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\signal_ability.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\succ.dm"
