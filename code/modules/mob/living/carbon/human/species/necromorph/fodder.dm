@@ -6,7 +6,7 @@
 	To remain looking human, they sacrifice the usual benefitial arm-blades like slashers. Less biomass is removed from the body overall, and their clothes help protect the fodder from damage. \n\
 	In order to make up for the lack of blades, they retain enough primitive intelligence to pick up weapons and bludgeon survivors. Unlike humans, their nervous system doesn't restrain their strength."
 	total_health = 140
-	biomass = 80
+	biomass = 100
 	mass = 70
 
 	biomass_reclamation_time	=	7.5 MINUTES
@@ -16,7 +16,7 @@
 	single_icon = FALSE
 	evasion = 0	//No natural evasion
 
-	slowdown = 3.2
+	slowdown = 3
 
 	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/living/proc/slasher_dodge)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge),
@@ -41,3 +41,25 @@
 	BP_R_FOOT =  list("path" = /obj/item/organ/external/foot/right/fodder),
 	BP_GROIN =	list("path" = /obj/item/organ/external/groin/fodder)
 	)
+
+	hud_type = null
+
+/*
+/datum/species/necromorph/handle_death(var/mob/living/carbon/human/H) // fodders don't actually die when they die, they continue!
+	if (!SSnecromorph.marker)
+		return
+	if (H.biomass)
+		SSnecromorph.marker.add_biomass_source(H, H.biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
+	GLOB.necrovision.remove_source(H)
+	H.change_mob_type(/mob/living/carbon/human/necromorph/fodderbottom)
+*/
+
+/datum/species/necromorph/handle_death_check(var/mob/living/carbon/human/H)
+
+	var/damage = get_weighted_total_limb_damage(H)
+	if (damage >= H.maxHealth)
+		return TRUE
+	if (TRUE)
+		H.change_mob_type(/mob/living/carbon/human/necromorph/fodderbottom)
+
+	return FALSE
