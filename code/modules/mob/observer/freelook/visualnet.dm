@@ -166,23 +166,36 @@
 			var/datum/chunk/c = get_chunk(x, y, T.z)
 			call(c, proc_call)(arglist(proc_args))
 
+
+/client/proc/view_chunk()
+	set name = "View Chunk"
+	set category = "Debug"
+	var/turf/T = get_turf(mob)
+	T.view_chunk()
+
 // Debug verb for VVing the chunk that the turf is in.
 /turf/proc/view_chunk()
 	set name = "View Chunk"
 	set category = "Debug"
 	set src in world
 
-	if(GLOB.cameranet.is_chunk_generated(x, y, z))
-		var/datum/chunk/chunk = GLOB.cameranet.get_chunk(x, y, z)
+	if(GLOB.necrovision.is_chunk_generated(x, y, z))
+		var/datum/chunk/chunk = GLOB.necrovision.get_chunk(x, y, z)
 		usr.client.debug_variables(chunk)
+
+/client/proc/update_chunk()
+	set name = "Update Chunk"
+	set category = "Debug"
+	var/turf/T = get_turf(mob)
+	T.update_chunk()
 
 /turf/proc/update_chunk()
 	set name = "Update Chunk"
 	set category = "Debug"
 	set src in world
 
-	if(GLOB.cameranet.is_chunk_generated(x, y, z))
-		var/datum/chunk/chunk = GLOB.cameranet.get_chunk(x, y, z)
+	if(GLOB.necrovision.is_chunk_generated(x, y, z))
+		var/datum/chunk/chunk = GLOB.necrovision.get_chunk(x, y, z)
 		chunk.visibility_changed(TRUE)
 
 //Overrideable proc for any datum to return what turfs it can "see" for visualnets
