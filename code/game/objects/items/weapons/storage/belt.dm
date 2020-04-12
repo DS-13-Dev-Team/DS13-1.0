@@ -109,7 +109,7 @@
 	overlay_flags = BELT_OVERLAY_ITEMS
 	can_hold = list(
 		/obj/item/weapon/tool,
-		/obj/item/device/multitool,
+		/obj/item/weapon/tool/multitool,
 		/obj/item/device/flashlight,
 		/obj/item/stack/cable_coil,
 		/obj/item/device/t_scanner,

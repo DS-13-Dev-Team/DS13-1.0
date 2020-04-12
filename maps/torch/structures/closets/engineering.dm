@@ -24,7 +24,7 @@
 		/obj/item/weapon/storage/belt/general,
 		/obj/item/clothing/suit/storage/hazardvest,
 		/obj/item/clothing/mask/gas,
-		/obj/item/device/multitool,
+		/obj/item/weapon/tool/multitool,
 		/obj/item/device/flash,
 		/obj/item/taperoll/engineering,
 		/obj/item/device/megaphone,
