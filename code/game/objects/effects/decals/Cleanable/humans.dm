@@ -163,6 +163,7 @@ var/global/list/image/splatter_cache=list()
 	amount = 0
 	var/message
 	biomass = 0
+	appearance_flags = PIXEL_SCALE
 
 /obj/effect/decal/cleanable/blood/writing/New()
 	..()
@@ -172,6 +173,9 @@ var/global/list/image/splatter_cache=list()
 		icon_state = pick(random_icon_states)
 	else
 		icon_state = "writing1"
+
+	alpha = 0
+	animate(src, alpha = 255, time = 1 SECOND, flags = ANIMATION_PARALLEL)	//Cool fade in effect
 
 /obj/effect/decal/cleanable/blood/writing/examine(mob/user)
 	. = ..(user)

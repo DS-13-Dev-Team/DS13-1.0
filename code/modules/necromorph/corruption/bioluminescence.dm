@@ -33,5 +33,5 @@
 /datum/signal_ability/placement/corruption/bioluminescence
 	name = "Bioluminescence"
 	id = "bioluminescence"
-	energy_cost = 80
+	energy_cost = 40
 	placement_atom = /obj/structure/corruption_node/bioluminescence

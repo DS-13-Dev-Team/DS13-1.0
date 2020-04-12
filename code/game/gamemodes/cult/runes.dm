@@ -18,6 +18,8 @@
 	bcolor = blcolor
 	blood = nblood
 	update_icon()
+	alpha = 0
+	animate(src, alpha = 255, time = 1 SECOND, flags = ANIMATION_PARALLEL)	//Cool fade in effect
 
 /obj/effect/rune/update_icon()
 	overlays.Cut()

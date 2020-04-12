@@ -28,7 +28,7 @@
 	base_type = /datum/signal_ability/placement/corruption
 	target_string = "any corrupted tile"
 	marker_active_required = TRUE
-	LOS_blocked	=	TRUE
+	LOS_block	=	TRUE
 
 //We'll copy the long description from corruption nodes
 /datum/signal_ability/placement/corruption/New()
@@ -48,19 +48,28 @@
 
 
 
-/*
+
+
+
+
+/*----------------------------------
 	The actual clickhandler
-*/
+-----------------------------------*/
 //Special clickhandler variant used to place ability items
 /datum/click_handler/placement/ability
 	var/require_corruption = FALSE
-
+	var/LOS_block = TRUE
 
 /datum/click_handler/placement/ability/placement_blocked(var/turf/candidate)
 	.=..()
 	if (!.)
 		if (require_corruption && !turf_corrupted(candidate))
 			return "This can only be placed on corrupted tiles."
+
+		if (LOS_block)
+			var/mob/M = candidate.is_seen_by_crew()
+			if (M)
+				return "Placement here is blocked, because [M] can see this tile. Must be placed out of sight"
 
 /datum/click_handler/placement/ability/spawn_result(var/turf/site)
 	//We should have done all necessary checks here, so we are clear to proceed
@@ -70,7 +79,11 @@
 
 
 
-/proc/create_ability_placement_handler(var/mob/_user, var/_result, var/_handler_type = /datum/click_handler/placement, var/snap = FALSE, var/require_corruption = FALSE, var/datum/callback/C)
+
+
+
+
+/proc/create_ability_placement_handler(var/mob/_user, var/_result, var/_handler_type = /datum/click_handler/placement, var/snap = FALSE, var/require_corruption = FALSE, var/LOS_block = TRUE, var/datum/callback/C)
 	if (!istype(_user))
 		return
 
@@ -81,6 +94,7 @@
 	P.result_path = _result
 	P.snap_to_grid = snap
 	P.require_corruption = require_corruption
+	P.LOS_block = LOS_block
 
 	P.generate_preview_image(P.result_path)
 	P.start_placement()

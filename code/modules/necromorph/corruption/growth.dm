@@ -48,7 +48,7 @@
 	name = "Branch"
 	id = "branch"
 	desc = ""
-	energy_cost = 200
+	energy_cost = 150
 	placement_atom = /obj/structure/corruption_node/growth/branch
 
 

@@ -206,7 +206,11 @@
 			if (get_dist(src, H) >= 2)
 				continue
 
-		return TRUE
+		//Onscreen check is the most expensive, we'll do that last, and only for conscious people
+		else if (!H.client.is_on_screen(src))
+			continue
+
+		return H
 
 
 /atom/proc/get_cardinal_corruption()
