@@ -1295,7 +1295,8 @@
 		var/z = text2num(href_list["Z"])
 
 		var/client/C = usr.client
-		if(!isghost(usr))	C.admin_ghost()
+		if(!isghost(usr) && !isobserver(usr))
+			C.admin_ghost()
 		sleep(2)
 		C.jumptocoord(x,y,z)
 
