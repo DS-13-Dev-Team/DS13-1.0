@@ -287,9 +287,12 @@ proc
 	Visualnet:	If not null, a qualifying atom must be located on a turf which is seen by this visualnet
 	Corruption:	If true, qualifying atom must be, or be on, a corrupted tile
 	View:	If true, limit the searching to turfs in view of origin. When false, searches in a range
+	LOS Block:	If true, blocked by live crew seeing
 	Num:	How many targets to find? We'll keep searching til we get this many or have examined every turf's contents. Any false value counts as infinity, search everything
+	Special Check: A callback for additional specific checks
+	Error User:	A user to show failure messages to, if we fail
 */
-/proc/get_valid_target(var/atom/origin, var/radius, var/list/valid_types = list(/turf), var/list/allied = null, var/datum/visualnet/visualnet = null, var/require_corruption = FALSE, var/view_limit = FALSE, var/LOS_block = FALSE, var/num_required = 1, var/datum/callback/special_check = null)
+/proc/get_valid_target(var/atom/origin, var/radius, var/list/valid_types = list(/turf), var/list/allied = null, var/datum/visualnet/visualnet = null, var/require_corruption = FALSE, var/view_limit = FALSE, var/LOS_block = FALSE, var/num_required = 1, var/datum/callback/special_check = null, var/mob/error_user)
 	var/list/results = list()
 	var/list/haystack
 	if (view_limit)
@@ -298,6 +301,10 @@ proc
 		haystack = range(radius, origin)
 
 	//Possible future todo: Optimise haystack selection based on valid types
+
+	//In the case of LOS block, a list of mobs that see us. used only to give messages to players
+	var/list/viewers = list()
+
 
 	//Okay now we have our list to search through
 
@@ -335,7 +342,9 @@ proc
 				continue
 
 		if (LOS_block)
-			if (T.is_seen_by_crew())
+			var/mob/M = T.is_seen_by_crew()
+			if (M)
+				viewers |= M
 				continue
 
 
@@ -347,7 +356,10 @@ proc
 			break
 
 
-
+	//In the case we failed to find any/enough targets, lets try to explain to the user why
+	if (error_user && results.len <= num_required)
+		if (viewers)
+			to_chat(error_user, SPAN_WARNING("Casting here is blocked because the tile is seen by [english_list(viewers)]"))
 
 
 	return results

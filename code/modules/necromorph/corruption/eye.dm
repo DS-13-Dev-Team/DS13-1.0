@@ -128,5 +128,5 @@
 /datum/signal_ability/placement/corruption/gaze
 	name = "Gaze"
 	id = "gaze"
-	energy_cost = 200
+	energy_cost = 150
 	placement_atom = /obj/structure/corruption_node/eye/small

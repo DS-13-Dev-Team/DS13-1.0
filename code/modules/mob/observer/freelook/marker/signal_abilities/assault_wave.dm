@@ -1,5 +1,5 @@
 /datum/signal_ability/assault_wave
-	name = "Assault Wave"
+	name = "Assault Resonance"
 	id = "assault"
 	desc	=	"This powerful spell applies a long-lasting buff to all necromorphs in existence, having the following effects:<br><br>\
 		-Duration: 3 Minutes<br>\

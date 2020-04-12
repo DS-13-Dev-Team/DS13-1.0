@@ -3,7 +3,7 @@
 	id = "succ"
 	desc = "Absorbs a piece of biological matter, claiming some biomass for the marker. The item to be absorbed must be located within corruption"
 	target_string = "A severed organ, an organic stain, or a piece of food"
-	energy_cost = 15
+	energy_cost = 6
 	require_corruption = TRUE
 	autotarget_range = 2
 

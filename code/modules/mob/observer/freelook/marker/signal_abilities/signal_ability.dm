@@ -188,7 +188,8 @@
 		view_limit = target_view,
 		LOS_block = LOS_blocked,
 		num_required = 1,
-		special_check = CALLBACK(src, /datum/signal_ability/proc/special_check))
+		special_check = CALLBACK(src, /datum/signal_ability/proc/special_check),
+		error_user = user)
 
 		if (things.len)
 			newtarget = things[1]
@@ -374,7 +375,9 @@
 
 
 	if (LOS_blocked)
-		if (T.is_seen_by_crew())
+		var/mob/M = T.is_seen_by_crew()
+		if (M)
+			to_chat(user, SPAN_WARNING("Casting here is blocked because the tile is seen by [M]"))
 			return FALSE
 
 	if (!isnull(allied_check))

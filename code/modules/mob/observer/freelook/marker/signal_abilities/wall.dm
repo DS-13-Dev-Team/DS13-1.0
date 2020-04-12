@@ -2,7 +2,7 @@
 	name = "Hardened Growth"
 	id = "wall"
 	desc = "Creates an impassable object to block a tile"
-	energy_cost = 80
+	energy_cost = 70
 	placement_atom = /obj/structure/corruption_node/wall
 
 
