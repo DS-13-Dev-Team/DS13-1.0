@@ -102,8 +102,8 @@
 
 // The visual net is responsible for adding/removing eyes.
 /datum/chunk/proc/add_eye(mob/observer/eye/eye)
-	seenby += eye
-	eye.visibleChunks += src
+	seenby |= eye
+	eye.visibleChunks |= src
 	if(eye.owner && eye.owner.client)
 		eye.owner.client.images += obscured
 
