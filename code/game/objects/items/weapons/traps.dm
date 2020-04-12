@@ -22,7 +22,6 @@
 	var/min_size = 5 //Mobs smaller than this won't trigger the trap
 	var/struggle_prob = 2
 
-
 /obj/item/weapon/beartrap/Initialize()
 	.=..()
 	update_icon()
@@ -153,7 +152,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	.=..()
 
 /obj/item/weapon/beartrap/proc/can_use(mob/user)
-	return (user.IsAdvancedToolUser() && !user.stat && user.Adjacent(src))
+	return (!user.stat && user.Adjacent(src))
 
 /obj/item/weapon/beartrap/proc/release_mob()
 	//user.visible_message("<span class='notice'>\The [buckled_mob] has been freed from \the [src] by \the [user].</span>")
@@ -162,6 +161,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	can_buckle = initial(can_buckle)
 	update_icon()
 	STOP_PROCESSING(SSobj, src)
+	GLOB.updatehealth_event.unregister(buckled_mob, src, /obj/item/weapon/beartrap/proc/check_grip)
 
 //Attempting to resist out of a beartrap will not work, and you'll get nothing but pain for trying
 /obj/item/weapon/beartrap/resist_buckle(var/mob/user)
@@ -217,7 +217,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	//armour
 	var/blocked = L.run_armor_check(target_zone, "melee")
 	if(blocked < 100)
-		L.apply_damage(fail_damage, BRUTE, target_zone, blocked, src)
+		L.apply_damage(fail_damage, BRUTE, target_zone, blocked, DAM_EDGE|DAM_SHARP, src)
 		L.Stun(4) //A short stun prevents spamming failure attempts
 		shake_camera(user, 2, 1)
 
@@ -228,11 +228,13 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 		visible_message(SPAN_DANGER("\The [src] snaps back, digging deeper into [buckled_mob.name]"))
 
 	playsound(src, 'sound/effects/impacts/beartrap_shut.ogg', 10, 1,-2,-2)//Fairly quiet snapping sound
-
+	if (!check_grip())
+		return
 	if (difficulty)
 		user << SPAN_NOTICE("You failed to release the trap. There was a [round(100 - difficulty)]% chance of success")
 		if (user == buckled_mob)
 			user << SPAN_NOTICE("Freeing yourself is very difficult. Perhaps you should call for help?")
+
 
 
 
@@ -256,7 +258,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	var/blocked = L.run_armor_check(target_zone, "melee")
 	if(blocked < 100)
 
-		var/success = L.apply_damage(base_damage, BRUTE, target_zone, blocked, DAM_SHARP, src)
+		var/success = L.apply_damage(base_damage, BRUTE, target_zone, blocked, DAM_EDGE|DAM_SHARP, src)
 		if(success)
 			shake_camera(L, 2, 1)
 
@@ -264,14 +266,29 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	set_dir(L.dir)
 	can_buckle = 1
 	buckle_mob(L)
-	L << "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>"
+	GLOB.updatehealth_event.register(L, src, /obj/item/weapon/beartrap/proc/check_grip)
+	if (check_grip())
+		L << "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>"
 
 
-	//If the victim is nonhuman and has no client, start processing.
-	if (!ishuman(L) && !L.client)
-		START_PROCESSING(SSobj, src)
+
+		//If the victim is nonhuman and has no client, start processing.
+		if (!ishuman(L) && !L.client)
+			START_PROCESSING(SSobj, src)
 
 
+//Checks if we can still hold onto this mob
+/obj/item/weapon/beartrap/proc/check_grip()
+	if (!ishuman(buckled_mob))
+		return TRUE
+
+	var/mob/living/carbon/human/H = buckled_mob
+	var/obj/item/organ/external/E = H.get_organ(target_zone)
+	if (!E || E.is_stump())
+		release_mob()
+		return FALSE
+
+	return TRUE
 
 /*
 Beartraps process when a clientless mob is trapped in them.
@@ -285,6 +302,9 @@ Very rarely it might escape
 	//Also stop if a player took control of it, they can try to free themselves
 	if (QDELETED(L) || L.stat == DEAD || L.loc != loc || L.client)
 		release_mob()		// Reset the trap properly if the roach was gibbed during the processing.
+		return PROCESS_KILL
+
+	if (!check_grip())
 		return PROCESS_KILL
 
 	if (L.incapacitated())
