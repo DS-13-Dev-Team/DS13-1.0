@@ -6,7 +6,7 @@
 	energy_cost = 15
 	require_corruption = FALSE
 	autotarget_range = 0
-	LOS_blocked = FALSE	//This is for spooking people, we want them to see it happen
+	LOS_block = FALSE	//This is for spooking people, we want them to see it happen
 
 
 

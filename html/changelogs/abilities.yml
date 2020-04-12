@@ -36,3 +36,4 @@ changes:
   - bugfix: "Made vision-blocking by crew work better and be more clearly explained"
   - tweak: "Reduced energy cost of many signal abilities."
   - rscadd: "Added two spooky abilities for roleplaying"
+  - bugfix: "Corruption nodes can no longer be placed while humans are watching"

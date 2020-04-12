@@ -52,7 +52,7 @@
 	var/require_corruption = FALSE
 
 	//When true, the turf which contains/is the target must not be visible to any conscious crewmember
-	var/LOS_blocked	=	FALSE
+	var/LOS_block	=	FALSE
 
 	//When set to a number, the spell must be cast at least this distance away from a conscious crewmember
 	//UNIMPLEMENTED//var/distance_blocked = 1
@@ -129,7 +129,7 @@
 		if (TARGET_PLACEMENT)
 			to_chat(user, SPAN_NOTICE("Now Placing [name], click on a target. Right click to cancel. Hold shift to place multiple copies, press R to rotate"))
 			//Make the placement handler, passing in atom to show. Callback is propagated through and will link its clicks back here
-			var/datum/click_handler/CH = create_ability_placement_handler(user, placement_atom, click_handler_type ? click_handler_type : /datum/click_handler/placement/ability, placement_snap, require_corruption, CALLBACK(src, /datum/signal_ability/proc/placement_click, user))
+			var/datum/click_handler/CH = create_ability_placement_handler(user, placement_atom, click_handler_type ? click_handler_type : /datum/click_handler/placement/ability, placement_snap, require_corruption, LOS_block, CALLBACK(src, /datum/signal_ability/proc/placement_click, user))
 			CH.id = "[src.type]"
 		if (TARGET_SELF)
 			to_chat(user, SPAN_NOTICE("Now Casting [name]!"))
@@ -186,7 +186,7 @@
 		visualnet = visualnet,
 		require_corruption = require_corruption,
 		view_limit = target_view,
-		LOS_block = LOS_blocked,
+		LOS_block = LOS_block,
 		num_required = 1,
 		special_check = CALLBACK(src, /datum/signal_ability/proc/special_check),
 		error_user = user)
@@ -374,7 +374,7 @@
 			return FALSE
 
 
-	if (LOS_blocked)
+	if (LOS_block)
 		var/mob/M = T.is_seen_by_crew()
 		if (M)
 			to_chat(user, SPAN_WARNING("Casting here is blocked because the tile is seen by [M]"))
