@@ -12,4 +12,4 @@
 		/obj/item/clothing/suit/space/void,
 		/obj/item/weapon/tool/crowbar,
 		/obj/item/weapon/cell,
-		/obj/item/device/multitool)
+		/obj/item/weapon/tool/multitool)

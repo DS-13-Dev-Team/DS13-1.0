@@ -58,7 +58,7 @@ var/list/ai_verbs_default = list(
 	var/icon/holo_icon//Blue hologram. Face is assigned when AI is created.
 	var/icon/holo_icon_longrange //Yellow hologram.
 	var/holo_icon_malf = FALSE // for new hologram system
-	var/obj/item/device/multitool/aiMulti = null
+	var/obj/item/weapon/tool/multitool/aiMulti = null
 
 	silicon_camera = /obj/item/device/camera/siliconcam/ai_camera
 	silicon_radio = /obj/item/device/radio/headset/heads/ai_integrated

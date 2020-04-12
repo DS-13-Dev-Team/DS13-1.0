@@ -224,11 +224,11 @@
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 
-/obj/item/device/multitool/uplink/New(var/loc, var/owner)
+/obj/item/weapon/tool/multitool/uplink/New(var/loc, var/owner)
 	..()
 	hidden_uplink = new(src, owner)
 
-/obj/item/device/multitool/uplink/attack_self(mob/user as mob)
+/obj/item/weapon/tool/multitool/uplink/attack_self(mob/user as mob)
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 

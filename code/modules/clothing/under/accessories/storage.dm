@@ -142,7 +142,7 @@
 		/obj/item/weapon/plastique,
 		/obj/item/clothing/mask/smokable,
 		/obj/item/weapon/tool/screwdriver,
-		/obj/item/device/multitool,
+		/obj/item/weapon/tool/multitool,
 		/obj/item/weapon/magnetic_ammo,
 		/obj/item/ammo_magazine,
 		/obj/item/weapon/net_shell,
