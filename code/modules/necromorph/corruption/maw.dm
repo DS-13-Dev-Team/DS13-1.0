@@ -21,7 +21,7 @@
 
 	var/eat_range = MAW_EAT_RANGE
 	var/list/eating = list()	//Things we're currently eating. Keep chewing as long as one is nearby
-	var/chomp_chance = 20	//The chance, per tick, per mob, to do a chomp animation. max 1 per tick
+	var/chomp_chance = 10	//The chance, per tick, per mob, to do a chomp animation. max 1 per tick
 	//Also used as the chance to damage trapped mobs
 
 	var/base_damage = 15
@@ -170,8 +170,9 @@
 	can_buckle = initial(can_buckle)
 	update_icon()
 	STOP_PROCESSING(SSobj, src)
+	GLOB.updatehealth_event.unregister(buckled_mob, src, /obj/structure/corruption_node/maw/proc/check_grip)
 
-//Attempting to resist out of a beartrap will not work, and you'll get nothing but pain for trying
+//Attempting to resist out of a maw will not work, and you'll get nothing but pain for trying
 /obj/structure/corruption_node/maw/resist_buckle(var/mob/user)
 	if (user == buckled_mob && !user.stunned)
 		//We check stunned here, and a failure stuns the victim. This prevents someone from just spam-resisting and instantly killing themselves
@@ -201,7 +202,8 @@
 		visible_message(SPAN_DANGER("\The [src] snaps back, digging deeper into [buckled_mob.name]"))
 
 
-
+	if (!check_grip())
+		return
 	if (difficulty)
 		user << SPAN_NOTICE("You failed break free. There was a [round(100 - difficulty)]% chance of success")
 		if (user == buckled_mob)
@@ -216,6 +218,7 @@
 		L.Stun(3) //A short stun prevents spamming failure attempts
 		shake_camera(L, 2, 1)
 	animate_chomp()
+	check_grip()
 
 /obj/structure/corruption_node/maw/proc/attack_mob(mob/living/L)
 	//Small mobs won't trigger the trap
@@ -240,19 +243,34 @@
 		if(success)
 			shake_camera(L, 2, 1)
 
+
 	//trap the victim in place
 	set_dir(L.dir)
 	can_buckle = 1
+	GLOB.updatehealth_event.register(L, src, /obj/structure/corruption_node/maw/proc/check_grip)
 	buckle_mob(L)
-	L << "<span class='danger'>The jaws beneath bite into you, trapping you in place!</span>"
+	if (check_grip())
+		L << "<span class='danger'>The jaws beneath bite into you, trapping you in place!</span>"
 
 
-	START_PROCESSING(SSobj, src)
+		START_PROCESSING(SSobj, src)
 
 
+//Checks if we can still hold onto this mob
+/obj/structure/corruption_node/maw/proc/check_grip()
+	if (!ishuman(buckled_mob))
+		return TRUE
+
+	var/mob/living/carbon/human/H = buckled_mob
+	var/obj/item/organ/external/E = H.get_organ(target_zone)
+	if (!E || E.is_stump())
+		release_mob()
+		return FALSE
+
+	return TRUE
 
 /obj/structure/corruption_node/maw/proc/attempt_release(var/mob/living/user, var/obj/item/I)
-	if (!buckled_mob || QDELETED(buckled_mob))
+	if (!buckled_mob || QDELETED(buckled_mob) || !check_grip())
 		return //Nobody there to rescue?
 
 	if (!user)
