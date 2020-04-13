@@ -2,6 +2,7 @@
 	Player datums are created and stored on a one-per-ckey basis. They persist for the entire session, across any number of reconnects and mobs.
 	Use them to store data which needs to persist in such a manner.
 */
+
 /datum/player
 	var/key
 	var/client

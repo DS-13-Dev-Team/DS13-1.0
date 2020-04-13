@@ -254,13 +254,9 @@
 
 // Used to update alien icons for aliens.
 /datum/species/necromorph/handle_login_special(var/mob/living/carbon/human/H)
-	SSnecromorph.necromorph_players[H.ckey] = H
+	SSnecromorph.necromorph_players[H.ckey] = get_or_create_player(H.ckey)
 	to_chat(H, "You are a [name]. \n\
 	[blurb]\n\
 	\n\
 	Check the Abilities tab, use the Help ability to find out what your controls and abilities do!")
 
-// As above.
-/datum/species/necromorph/handle_logout_special(var/mob/living/carbon/human/H)
-	if (SSnecromorph.necromorph_players[H.ckey] == H)
-		SSnecromorph.necromorph_players -= H.ckey	//If they're evacuating to become a signal, they will be re-added to the list immediately
