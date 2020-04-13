@@ -614,3 +614,65 @@ meteor_act
 				return traced_organs
 
 	return traced_organs
+
+
+
+/mob/living/carbon/human/proc/handle_shock()
+	..()
+	if(status_flags & GODMODE)	return 0	//godmode
+	if(!can_feel_pain())
+		shock_stage = 0
+		return
+
+	if(is_asystole())
+		shock_stage = max(shock_stage + 1, 61)
+	var/traumatic_shock = get_shock()
+	if(traumatic_shock >= max(pain_shock_threshold, 0.8*shock_stage))
+		shock_stage += 1
+	else if (!is_asystole())
+		shock_stage = min(shock_stage, 160)
+		var/recovery = 1
+		if(traumatic_shock < 0.5 * shock_stage) //lower shock faster if pain is gone completely
+			recovery++
+		if(traumatic_shock < 0.25 * shock_stage)
+			recovery++
+		shock_stage = max(shock_stage - recovery, 0)
+		return
+	if(stat) return 0
+
+	if(shock_stage == 10)
+		// Please be very careful when calling custom_pain() from within code that relies on pain/trauma values. There's the
+		// possibility of a feedback loop from custom_pain() being called with a positive power, incrementing pain on a limb,
+		// which triggers this proc, which calls custom_pain(), etc. Make sure you call it with nohalloss = TRUE in these cases!
+		custom_pain("[pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")]!", 10, nohalloss = TRUE)
+
+	if(shock_stage >= 30)
+		if(shock_stage == 30) visible_message("<b>[src]</b> is having trouble keeping \his eyes open.")
+		if(prob(30))
+			eye_blurry = max(2, eye_blurry)
+			stuttering = max(stuttering, 5)
+
+	if(shock_stage == 40)
+		custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", 40, nohalloss = TRUE)
+	if (shock_stage >= 60)
+		if(shock_stage == 60) visible_message("<b>[src]</b>'s body becomes limp.")
+		if (prob(2))
+			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", shock_stage, nohalloss = TRUE)
+			Weaken(10)
+
+	if(shock_stage >= 80)
+		if (prob(5))
+			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", shock_stage, nohalloss = TRUE)
+			Weaken(20)
+
+	if(shock_stage >= 120)
+		if (prob(2))
+			custom_pain("[pick("You black out", "You feel like you could die any moment now", "You're about to lose consciousness")]!", shock_stage, nohalloss = TRUE)
+			Paralyse(5)
+
+	if(shock_stage == 150)
+		visible_message("<b>[src]</b> can no longer stand, collapsing!")
+		Weaken(20)
+
+	if(shock_stage >= 150)
+		Weaken(20)

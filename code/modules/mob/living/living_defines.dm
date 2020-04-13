@@ -5,6 +5,7 @@
 	//Health and life related vars
 	var/max_health = 100 //Maximum health that should be possible.
 	var/health = 100 	//A mob's health
+	var/pain_shock_threshold = 30	//Pain above this threshold will cause the mob to start going into shock
 
 	var/biomass = 1	//How much biomass is this mob worth when absorbed
 

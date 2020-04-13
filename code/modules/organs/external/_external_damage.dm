@@ -68,7 +68,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 			createwound(BURN, burn)
 
 	//Initial pain spike
-	add_pain(0.6*burn + 0.4*brute)
+	add_pain(0.5*burn + 0.4*brute)
 
 	//Disturb treated burns
 	if(brute > 5)
@@ -80,7 +80,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 				disturbed += W.damage
 		if(disturbed)
 			to_chat(owner,"<span class='warning'>Ow! Your burns were disturbed.</span>")
-			add_pain(0.5*disturbed)
+			add_pain(0.3*disturbed)
 
 	//If there are still hurties to dispense
 	if (spillover)
