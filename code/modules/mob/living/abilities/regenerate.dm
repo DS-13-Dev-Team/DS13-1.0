@@ -20,6 +20,8 @@
 	var/tick_interval = 0.2 SECONDS
 	var/shake_interval = 0.6 SECONDS
 
+	var/finish_time
+
 	//Runtime stuff
 	var/list/regenerating_organs = list()
 	var/tick_timer
@@ -38,6 +40,7 @@
 
 //Lets regrow limbs
 /datum/extension/regenerate/proc/start()
+	finish_time = world.time + duration
 	tick_step = duration / tick_interval
 	var/list/missing_limbs = list()
 
@@ -85,14 +88,13 @@
 	tick_timer = addtimer(CALLBACK(src, .proc/tick), tick_interval, TIMER_STOPPABLE)
 
 /datum/extension/regenerate/proc/tick()
-	duration -= tick_interval
 	shake_interval -= tick_interval
 	user.heal_overall_damage(heal_amount * tick_step)
 	if (shake_interval <= 0)
 		shake_interval = initial(shake_interval)
 		user.shake_animation(30)
 
-	if (duration > 0) //Queue next tick
+	if (world.time < finish_time) //Queue next tick
 		tick_timer = addtimer(CALLBACK(src, .proc/tick), tick_interval, TIMER_STOPPABLE)
 	else
 		finish()

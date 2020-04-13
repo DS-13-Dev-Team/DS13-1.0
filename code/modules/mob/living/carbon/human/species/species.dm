@@ -947,7 +947,7 @@ These procs should return their entire args list. Best just to return parent in 
 	var/image/LR = image(regen_icon, H, "[limb]_regen")
 	LR.plane = H.plane
 	LR.layer = H.layer -0.1 //Slightly below the layer of the mob, so that the healthy limb will draw over it
-	flick_overlay(LR, GLOB.clients, duration + 10)
+	flick_overlay(LR, GLOB.clients, duration + 2)
 
 
 /*

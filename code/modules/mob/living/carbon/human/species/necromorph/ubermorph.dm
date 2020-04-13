@@ -10,6 +10,7 @@
 	healing_factor = 4	//Lots of constant healing
 	biomass	=	1600	//Endgame, real expensive
 	mass = 130
+	limb_health_factor = 1	//Not as fragile as a slasher
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
 	single_icon = FALSE
@@ -223,6 +224,10 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 			return
 		to_chat(src, "You're already [EC.verb_name]!")
 		return FALSE
+
+	//Charge autotargets enemies within one tile of the clickpoint
+	if (!isliving(A))
+		A = autotarget_enemy_mob(A, 1, src, 999)
 
 	var/dist = get_dist(src, A)
 	if (dist < 1) //This is changed from <= , A distance of 1 is allowed
