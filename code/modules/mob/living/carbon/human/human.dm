@@ -952,7 +952,7 @@
 	//recheck species-restricted clothing
 	for(var/slot in slot_first to slot_last)
 		var/obj/item/clothing/C = get_equipped_item(slot)
-		if(istype(C) && !C.mob_can_equip(src, slot, 1))
+		if(istype(C) && !C.mob_can_equip(src, slot, disable_warning = TRUE, force = TRUE))	//Without the force flag, nothing can remain equipped
 			unEquip(C)
 
 	return 1

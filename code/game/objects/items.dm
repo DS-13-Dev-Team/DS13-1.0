@@ -362,7 +362,7 @@ var/list/global/slot_flags_enumeration = list(
 //Set disable_warning to 1 if you wish it to not give you outputs.
 //Should probably move the bulk of this into mob code some time, as most of it is related to the definition of slots and not item-specific
 //set force to ignore blocking overwear and occupied slots
-/obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = 0, force = 0)
+/obj/item/proc/mob_can_equip(var/mob/M, var/slot, var/disable_warning = 0, var/force = 0)
 	if(!slot) return 0
 	if(!M) return 0
 
@@ -375,6 +375,9 @@ var/list/global/slot_flags_enumeration = list(
 
 	if(H.species && !(slot in mob_equip))
 		return 0
+
+	if (!H.has_organ_for_slot(slot))
+		return FALSE
 
 	//First check if the item can be equipped to the desired slot.
 	if("[slot]" in slot_flags_enumeration)
@@ -391,6 +394,7 @@ var/list/global/slot_flags_enumeration = list(
 		var/mob/_user = disable_warning? null : H
 		if(!H.slot_is_accessible(slot, src, _user))
 			return 0
+
 
 	//Lastly, check special rules for the desired slot.
 	switch(slot)
@@ -458,6 +462,7 @@ var/list/global/slot_flags_enumeration = list(
 					if (!disable_warning)
 						to_chat(H, "<span class='warning'>You cannot equip \the [src] to \the [suit].</span>")
 					return 0
+
 
 	return 1
 
