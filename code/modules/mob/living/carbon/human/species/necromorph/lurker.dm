@@ -1,3 +1,9 @@
+#define VIEW_RANGE_CLOSED	6
+#define VIEW_OFFSET_CLOSED	0
+#define VIEW_RANGE_OPEN	9
+#define VIEW_OFFSET_OPEN	(WORLD_ICON_SIZE*4)
+
+#define MOVESPEED_OPEN		0.25
 /*
 	Lurker:
 
@@ -20,8 +26,8 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/lurker
 	blurb = "Long range fire-support. The lurker is tough and hard to hit as long as its retractible armor is closed. When open it is slow and vulnerable, but fires sharp spines in waves of three."
 	unarmed_types = list(/datum/unarmed_attack/claws) //Bite attack is a backup if blades are severed
-	total_health = 90
-	biomass = 85
+	total_health = 60
+	biomass = 50
 
 	icon_template = 'icons/mob/necromorph/lurker.dmi'
 	icon_lying = "_lying"
@@ -32,8 +38,8 @@
 
 	evasion = 10	//Doesn't move much, but small target
 
-	view_range = 9
-	view_offset = (WORLD_ICON_SIZE*3)	//Can see much farther than usual
+	view_range = VIEW_RANGE_CLOSED
+	view_offset = VIEW_OFFSET_CLOSED
 
 
 	has_limbs = list(
@@ -54,13 +60,11 @@
 	BP_R_LEG = BP_CHEST,
 	BP_L_FOOT = BP_CHEST,
 	BP_R_FOOT = BP_CHEST)
-	/*
-	inherent_verbs = list(/atom/movable/proc/lurker_leap, /mob/living/carbon/human/proc/tailstrike_lurker, /mob/living/proc/lurker_gallop, /mob/proc/shout)
-	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/lurker_leap),
-	KEY_CTRLSHIFT = list(/mob/living/proc/lurker_gallop),
-	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_lurker))
-	*/
-	slowdown = 4.5
+
+	inherent_verbs = list(/mob/living/carbon/human/proc/retract_shell, /mob/proc/shout)
+	modifier_verbs = list(KEY_ALT = list(/mob/living/carbon/human/proc/toggle_shell))
+
+	slowdown = 2.75
 
 	//Lurker's "legs" are part of the body sprite
 	locomotion_limbs = list(BP_CHEST)
@@ -157,13 +161,19 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 */
 /obj/item/organ/external/arm/tentacle/slim/lurker1
+	organ_tag = BP_L_ARM
 	icon_name = "tentacle_1"
+	retracted = TRUE
 
 /obj/item/organ/external/arm/tentacle/slim/lurker2
+	organ_tag = BP_HEAD
 	icon_name = "tentacle_2"
+	retracted = TRUE
 
 /obj/item/organ/external/arm/tentacle/slim/lurker3
+	organ_tag = BP_R_ARM
 	icon_name = "tentacle_3"
+	retracted = TRUE
 
 /obj/item/organ/internal/brain/undead/lurker
 	parent_organ = BP_CHEST
@@ -171,6 +181,44 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 /obj/item/organ/internal/eyes/lurker
 	parent_organ = BP_CHEST
 
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------
+
+	Retracting
+	User calls these procs, they tell the extension to do stuff.
+	The extension manages the limbs, shell-clothing-item, and updating icons
+----------------------------------------*/
+/mob/living/carbon/human/proc/toggle_shell()
+	var/datum/extension/retractable_cover/lurker/RL = get_extension(src, /datum/extension/retractable_cover)
+	if (RL.open)
+		RL.start_closing()
+	else
+		RL.start_opening()
+
+/mob/living/carbon/human/proc/retract_shell()
+	set name = "Retract Shell"
+	set category = "Abilities"
+	set desc = "Retracts your protective plating, exposing your offensive tentacle weapons."
+
+	var/datum/extension/retractable_cover/lurker/RL = get_extension(src, /datum/extension/retractable_cover)
+	RL.start_opening()
+
+/mob/living/carbon/human/proc/close_shell()
+	set name = "Close Shell"
+	set category = "Abilities"
+	set desc = "Closes your protective plating,protecting the tentacles."
+
+	var/datum/extension/retractable_cover/lurker/RL = get_extension(src, /datum/extension/retractable_cover)
+	RL.start_closing()
 
 
 /*
@@ -192,12 +240,69 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		SPECIES_NECROMORPH_LURKER = 'icons/mob/necromorph/lurker.dmi'
 		)
 
+/obj/item/clothing/lurker_shell/proc/close()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)
+	armor = initial(armor)
+	update_wear_icon()
 
-
+/obj/item/clothing/lurker_shell/proc/open()
+	icon_state = ""
+	item_state = ""
+	armor = list()
+	update_wear_icon()
 
 /datum/species/necromorph/lurker/handle_post_spawn(var/mob/living/carbon/human/H)
 	.=..()
 
 	var/obj/item/clothing/lurker_shell/shell = new(H)
-	var/result = H.equip_to_slot_or_del(shell, slot_back)
+	H.equip_to_slot_or_del(shell, slot_back)
 
+	set_extension(H, /datum/extension/retractable_cover/lurker, shell, list(BP_HEAD, BP_L_ARM, BP_R_ARM))
+
+
+
+/*
+
+	Extension to manage the retracting
+
+*/
+/datum/extension/retractable_cover/lurker
+	var/speed_delta = 0
+
+
+/datum/extension/retractable_cover/lurker/close()
+	var/obj/item/clothing/lurker_shell/LS = cover
+	LS.close()
+	.=..()
+	user.verbs -= /mob/living/carbon/human/proc/close_shell
+	user.verbs |= /mob/living/carbon/human/proc/retract_shell
+	user.view_range = VIEW_RANGE_CLOSED
+	user.view_offset = VIEW_OFFSET_CLOSED
+	user.reset_view()
+
+	//Reset movespeed
+	user.move_speed_factor += speed_delta
+	speed_delta = 0
+
+
+/datum/extension/retractable_cover/lurker/open()
+	var/obj/item/clothing/lurker_shell/LS = cover
+	LS.open()
+	.=..()
+	user.verbs |= /mob/living/carbon/human/proc/close_shell
+	user.verbs -= /mob/living/carbon/human/proc/retract_shell
+	user.view_range = VIEW_RANGE_OPEN
+	user.view_offset = VIEW_OFFSET_OPEN
+	user.reset_view()
+
+	//Lets set the speed
+	var/newspeed = user.move_speed_factor * MOVESPEED_OPEN
+	speed_delta = user.move_speed_factor - newspeed
+	user.move_speed_factor = newspeed
+
+
+#undef VIEW_RANGE_CLOSED
+#undef VIEW_OFFSET_CLOSED
+#undef VIEW_RANGE_OPEN
+#undef VIEW_OFFSET_OPEN

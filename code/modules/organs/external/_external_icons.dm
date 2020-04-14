@@ -123,6 +123,8 @@ var/list/limb_icon_cache = list()
 	icon = mob_icon
 
 /obj/item/organ/external/proc/get_icon()
+	if (retracted)
+		return null
 	update_icon()
 	return mob_icon
 
