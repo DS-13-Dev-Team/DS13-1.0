@@ -55,6 +55,7 @@
 	var/agony = 0
 	var/embed = 0 // whether or not the projectile can embed itself in the mob
 	var/penetration_modifier = 0.2 //How much internal damage this projectile can deal, as a multiplier.
+	var/embed_mult	=	1	//Multiplier on the chance of embedding
 
 	var/hitscan = 0		// whether the projectile should be hitscan
 	var/step_delay = 1	// the delay between iterations if not a hitscan projectile
@@ -80,16 +81,30 @@
 	var/matrix/effect_transform			// matrix to rotate and scale projectile effects - putting it here so it doesn't
 										//  have to be recreated multiple times
 
+	var/shrapnel_type = /obj/item/weapon/material/shard/shrapnel	//When this projectile embeds in a mob, what kind of shrapnel does it turn into?	The actual projectile will be deleted
+
 /obj/item/projectile/Initialize()
 	damtype = damage_type //TODO unify these vars properly
 	if(!hitscan)
 		animate_movement = SLIDE_STEPS
-		if(randpixel && (!pixel_x && !pixel_y)) //hopefully this will prevent us from messing with mapper-set pixel_x/y
-			pixel_x = rand(-randpixel, randpixel)
-			pixel_y = rand(-randpixel, randpixel)
+
 	else
 		animate_movement = NO_STEPS
 	. = ..()
+
+/obj/item/projectile/proc/set_pixel_offset()
+	var/vector2/newpixels = new /vector2(0,0)
+	//Future todo: Get toplevel atom of firer
+	if (firer && isturf(firer.loc))
+		newpixels.x = firer.pixel_x
+		newpixels.y = firer.pixel_y
+
+	if(randpixel) //hopefully this will prevent us from messing with mapper-set pixel_x/y
+		newpixels.x += rand(-randpixel, randpixel)
+		newpixels.y += rand(-randpixel, randpixel)
+
+	pixel_x = newpixels.x
+	pixel_y = newpixels.y
 
 //Called when this projectile is to be deleted during normal gameplay, ie when it hits stuff
 /obj/item/projectile/proc/expire()
@@ -177,6 +192,7 @@
 
 //called to launch a projectile
 /obj/item/projectile/proc/launch(atom/target, var/target_zone, var/x_offset=0, var/y_offset=0, var/angle_offset=0)
+	set_pixel_offset()
 	var/turf/curloc = get_turf(src)
 	var/turf/targloc = get_turf(target)
 	if (!istype(targloc) || !istype(curloc))
