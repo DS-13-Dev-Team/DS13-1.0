@@ -17,7 +17,7 @@
 		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
 		/obj/item/rig_module/device/flash,
 		/obj/item/rig_module/mounted/taser,
-		/obj/item/rig_module/device/paperdispenser,
+		/obj/item/rig_module/device/paperdispenser,	//For warrants and paperwork
 		/obj/item/rig_module/device/pen,
 		/obj/item/rig_module/vision/nvg,
 		/obj/item/rig_module/vision/sechud
