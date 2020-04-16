@@ -69,7 +69,7 @@
 
 
 	//We do the windup animation. This involves the user slowly rising into the air, and tilting back if striking horizontally
-	animate(slammer, transform=turn(matrix(), 25*(x_direction*-1)),pixel_y = cached_pixels.y + 16, time = windup_time)
+	animate(slammer, transform=turn(matrix(), slammer.default_rotation + (25*(x_direction*-1))),pixel_y = cached_pixels.y + 16, time = windup_time)
 
 	//Start a timer
 	slam_timer = addtimer(CALLBACK(src, .proc/finish), windup_time, TIMER_STOPPABLE)
@@ -90,7 +90,7 @@
 /datum/extension/slam/proc/finish()
 	//Lets finish the slamming animation. We drop sharply back to the floor
 	//And, if we had an x offset, we'll also strike there
-	animate(slammer, transform=turn(matrix(), 35*x_direction), pixel_y = cached_pixels.y-8, pixel_x = cached_pixels.x + 24*x_direction, time = 3, easing = BACK_EASING)
+	animate(slammer, transform=turn(matrix(), slammer.default_rotation + (35*x_direction)), pixel_y = cached_pixels.y-8, pixel_x = cached_pixels.x + 24*x_direction, time = 3, easing = BACK_EASING)
 
 	sleep(2)
 	//Wait a little, then we strike

@@ -952,3 +952,8 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 	else
 		newrot = rand(0, 360)
 	transform = turn(transform, newrot)
+
+
+/atom/proc/get_icon_size()
+	var/icon/I = new(icon)
+	return new /vector2(I.Width(), I.Height())

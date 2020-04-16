@@ -23,7 +23,17 @@
 
 	var/list/climbers = list()
 
+	//Graphical Vars
+	//Baseline values. These are used as the zero point for transforms and offsets
+	var/default_pixel_x = 0
+	var/default_pixel_y = 0
+	var/default_rotation = 0
+	var/default_alpha = 255
+	var/default_scale = 1
+
 /atom/New(loc, ...)
+	default_alpha = alpha	//Set this to the initial value
+
 	//atom creation method that preloads variables at creation
 	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		GLOB._preloader.load(src)
@@ -44,6 +54,8 @@
 
 	if(opacity)
 		updateVisibility(src)
+
+
 
 //Called after New if the map is being loaded. mapload = TRUE
 //Called from base of New if the map is not being loaded. mapload = FALSE
@@ -588,3 +600,10 @@ its easier to just keep the beam vertical.
 
 /atom/proc/get_move_speed_factor()
 	return 1
+
+//Returns a transform with all vars set to their default
+/atom/proc/get_default_transform()
+	var/matrix/M = matrix()
+	M.Scale(default_scale)
+	M.Turn(default_rotation)
+	return M

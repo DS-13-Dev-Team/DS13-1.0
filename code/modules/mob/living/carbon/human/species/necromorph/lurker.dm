@@ -3,7 +3,7 @@
 #define VIEW_RANGE_OPEN	9
 #define VIEW_OFFSET_OPEN	(WORLD_ICON_SIZE*5)
 
-#define MOVESPEED_OPEN		0.25
+#define MOVESPEED_OPEN		0.35
 #define SPINE_WINDUP	(1 SECOND)
 #define SPINE_COOLDOWN	(2.5 SECONDS)
 /*
@@ -63,8 +63,8 @@
 	BP_L_FOOT = BP_CHEST,
 	BP_R_FOOT = BP_CHEST)
 
-	inherent_verbs = list(/mob/living/carbon/human/proc/retract_shell, /mob/living/proc/lurker_spinelaunch, /mob/proc/shout)
-	modifier_verbs = list(KEY_ALT = list(/mob/living/proc/lurker_spinelaunch),
+	inherent_verbs = list(/mob/living/carbon/human/proc/retract_shell, /mob/living/carbon/human/proc/lurker_spinelaunch, /mob/proc/shout)
+	modifier_verbs = list(KEY_ALT = list(/mob/living/carbon/human/proc/lurker_spinelaunch),
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/toggle_shell))
 
 	slowdown = 2.75
@@ -85,6 +85,12 @@
 	'sound/effects/creatures/necromorph/lurker/lurker_attack_7.ogg',
 	'sound/effects/creatures/necromorph/lurker/lurker_attack_8.ogg',
 	'sound/effects/creatures/necromorph/lurker/lurker_attack_9.ogg'),
+	SOUND_CLIMB = list('sound/effects/footstep/wall_climb_1.ogg',
+	'sound/effects/footstep/wall_climb_2.ogg',
+	'sound/effects/footstep/wall_climb_3.ogg',
+	'sound/effects/footstep/wall_climb_4.ogg',
+	'sound/effects/footstep/wall_climb_5.ogg',
+	'sound/effects/footstep/wall_climb_6.ogg'),
 	SOUND_DEATH = list('sound/effects/creatures/necromorph/lurker/lurker_death_1.ogg',
 	'sound/effects/creatures/necromorph/lurker/lurker_death_2.ogg',
 	'sound/effects/creatures/necromorph/lurker/lurker_death_3.ogg'),
@@ -119,6 +125,7 @@
 	)
 
 
+
 #define LURKER_SHELL_DESC	"<h2>Retractable Shell:</h2><br>\
 <h3>Hotkey: Ctrl+Alt+Click </h3><br>\
 The lurker is covered in a retractible armored shell that protects its fragile interior. Activating this ability will close or retract the shell, toggling between two modes:<br>\
@@ -140,6 +147,8 @@ The Lurker can only fire spines while its shell is open"
 
 /datum/species/necromorph/lurker/get_ability_descriptions()
 	.= ""
+	. += WALLRUN_DESC
+	. += "<hr>"
 	. += LURKER_SHELL_DESC
 	. += "<hr>"
 	. += LURKER_SPINES_DESC
@@ -155,6 +164,15 @@ The Lurker can only fire spines while its shell is open"
 	Lurker has three tentacles, and brain+eyes in its "chest"
 
 */
+/datum/species/necromorph/lurker/proc/num_tentacles(var/mob/living/carbon/human/H)
+	var/num = 0
+	for (var/organ_tag in list(BP_HEAD, BP_L_ARM, BP_R_ARM))
+		var/obj/item/organ/external/E = H.get_organ(organ_tag)
+		if (istype(E) && !E.is_stump() && !E.retracted)
+			num++
+
+	return num
+
 /obj/item/organ/external/arm/tentacle/slim/lurker1
 	organ_tag = BP_L_ARM
 	icon_name = "tentacle_1"
@@ -177,11 +195,19 @@ The Lurker can only fire spines while its shell is open"
 	parent_organ = BP_CHEST
 
 
+//Special death condition: Lurkers die if they lose all three tentacles
+/datum/species/necromorph/lurker/handle_death_check(var/mob/living/carbon/human/H)
+	.=..()
+	if (!.)
+		if (num_tentacles(H) <= 0)
+			return TRUE
 
 
-/*
+
+
+/*--------------------------
 	Spine Launch
-*/
+-----------------------------*/
 
 //Shrapnel version. Doctors can pull this out of patients
 /obj/item/weapon/arrow/spine
@@ -219,7 +245,7 @@ The Lurker can only fire spines while its shell is open"
 
 
 //The lurker launches up to three spines - one for each remaining tentacle. The first one flies true, the others have significant random dispersion
-/mob/living/proc/lurker_spinelaunch(var/atom/A)
+/mob/living/carbon/human/proc/lurker_spinelaunch(var/atom/A)
 	set name = "Spine launch"
 	set category = "Abilities"
 	set desc = "A three-shot spread of bone spines, with varying accuracy. HK: Altclick"
@@ -229,16 +255,13 @@ The Lurker can only fire spines while its shell is open"
 	if (!isliving(A))
 		A = autotarget_enemy_mob(A, 1, src, 999)
 
-	var/datum/extension/retractable_cover/lurker/RL = get_extension(src, /datum/extension/retractable_cover)
-	if (!RL.open)
+	if (!shell_open())
 		to_chat(src, SPAN_WARNING("You must retract your shell before you can launch spines!"))
 		return
 
-	var/numspines = 0
-	for (var/organ_tag in list(BP_HEAD, BP_L_ARM, BP_R_ARM))
-		var/obj/item/organ/external/E = get_organ(organ_tag)
-		if (istype(E) && !E.is_stump() && !E.retracted)
-			numspines++
+	var/datum/species/necromorph/lurker/NL = species
+	var/numspines = NL.num_tentacles(src)
+
 
 	if (!numspines)
 		to_chat(src, SPAN_WARNING("You have no tentacles left to launch with!"))
@@ -279,15 +302,15 @@ The Lurker can only fire spines while its shell is open"
 
 
 	//We do the windup animation. This involves the user slowly rising into the air, and tilting back if striking horizontally
-	animate(user, transform=turn(matrix(), 20*(x_direction*-1)),pixel_y = cached_pixels.y + 14, time = windup_anim_time, flags = ANIMATION_PARALLEL)
+	animate(user, transform=turn(matrix(), user.default_rotation + (20*(x_direction*-1))),pixel_y = cached_pixels.y + 14, time = windup_anim_time, flags = ANIMATION_PARALLEL)
 
 
 	sleep(windup_anim_time)
 
 /datum/extension/shoot/lurker/fire_animation()
 	//Slam back down to the ground quickly to fire
-	animate(user, transform=turn(matrix(), 30*x_direction), pixel_y = cached_pixels.y-6, pixel_x = cached_pixels.x + 22*x_direction, time = fire_time, easing = BACK_EASING, flags = ANIMATION_PARALLEL)
-	animate(transform=matrix(), pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = 5)	//Afterwards, reset to normal position
+	animate(user, transform=turn(matrix(), user.default_rotation +(30*x_direction)), pixel_y = cached_pixels.y-6, pixel_x = cached_pixels.x + 22*x_direction, time = fire_time, easing = BACK_EASING, flags = ANIMATION_PARALLEL)
+	animate(transform=turn(matrix(), user.default_rotation), pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = 5)	//Afterwards, reset to normal position
 	sleep(fire_time)
 
 
@@ -318,9 +341,18 @@ The Lurker can only fire spines while its shell is open"
 	set name = "Close Shell"
 	set category = "Abilities"
 	set desc = "Closes your protective plating,protecting the tentacles."
-	user.shake_animation(20)
+	shake_animation(20)
 	var/datum/extension/retractable_cover/lurker/RL = get_extension(src, /datum/extension/retractable_cover)
 	RL.start_closing()
+
+/mob/living/proc/shell_open()
+	var/datum/extension/retractable_cover/lurker/RL = get_extension(src, /datum/extension/retractable_cover)
+	if (!RL.open)
+		return FALSE
+	return TRUE
+
+
+
 
 
 /*
@@ -389,6 +421,12 @@ The Lurker can only fire spines while its shell is open"
 	speed_delta = 0
 	user.slow_turning = FALSE
 
+	//Update wallrun speed handling
+	if (user.is_on_wall())
+		var/datum/extension/wallrun/W = get_extension(user, /datum/extension/wallrun)
+		W.unapply_stats()
+		W.apply_stats()
+
 	user.play_species_audio(user, SOUND_PAIN, VOLUME_MID, 1)
 
 
@@ -402,11 +440,21 @@ The Lurker can only fire spines while its shell is open"
 	user.view_offset = VIEW_OFFSET_OPEN
 	user.reset_view()
 
+	//Slow turning when not wallmounted
+	if (!user.is_on_wall())
+		user.slow_turning = TRUE
+	else
+		//Update wallrun speed handling
+		var/datum/extension/wallrun/W = get_extension(user, /datum/extension/wallrun)
+		W.unapply_stats()
+		W.apply_stats()
+
 	//Lets set the speed
 	var/newspeed = user.move_speed_factor * MOVESPEED_OPEN
 	speed_delta = user.move_speed_factor - newspeed
 	user.move_speed_factor = newspeed
-	user.slow_turning = TRUE
+
+
 
 	//Loudly announce our presence
 	user.play_species_audio(user, SOUND_SHOUT_LONG, VOLUME_HIGH, 1, 3)
@@ -422,11 +470,30 @@ The Lurker can only fire spines while its shell is open"
 //Twice as many legs, twice as many footstep sounds
 /datum/species/necromorph/lurker/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 	.=..()
-	if (audio_type == SOUND_FOOTSTEP)
-		spawn(3)
+	if (audio_type == SOUND_FOOTSTEP || audio_type == SOUND_CLIMB)
+		spawn(4)
 			var/soundin = get_species_audio(audio_type)
 			if (soundin)
 				playsound(source, soundin, vol, vary, extrarange, falloff, is_global, frequency, is_ambiance)
+
+
+
+/*---------------------
+	Wallcrawling
+-----------------------*/
+/datum/species/necromorph/lurker/setup_movement(var/mob/living/carbon/human/H)
+	set_extension(H, /datum/extension/wallrun/lurker)
+
+
+/datum/extension/wallrun/lurker/mount_to_atom(var/atom/target)
+	.=..()
+	if (mountpoint)
+		user.slow_turning = FALSE
+
+/datum/extension/wallrun/lurker/unmount()
+	.=..()
+	if (user.shell_open())
+		user.slow_turning = TRUE
 
 #undef VIEW_RANGE_CLOSED
 #undef VIEW_OFFSET_CLOSED

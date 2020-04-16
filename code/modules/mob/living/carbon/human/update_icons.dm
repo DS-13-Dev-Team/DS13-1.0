@@ -192,14 +192,12 @@ Please contact me on #coderbus IRC. ~Carn x
 
 	overlays = overlays_to_apply
 
-	var/matrix/M = matrix()
+	var/matrix/M = get_default_transform()
 	if(lying)
 		M.Turn(species.lying_rotation)
-		M.Scale(size_multiplier)
 		M.Translate(1,-6)
 	else
-		M.Scale(size_multiplier)
-		M.Translate(0, 16*(size_multiplier-1))
+		M.Translate(0, 16*(default_scale-1))
 	transform = M
 
 var/global/list/damage_icon_parts = list()

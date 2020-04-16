@@ -677,6 +677,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 */
 //Looking through a scope or binoculars should /not/ improve your periphereal vision. Still, increase viewsize a tiny bit so that sniping isn't as restricted to NSEW
 /obj/item/proc/zoom(mob/user, var/tileoffset = 14,var/viewsize = 9) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
+	/*
 	if(!user.client)
 		return
 	if(zoom)
@@ -722,6 +723,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	GLOB.dir_set_event.register(src, src, /obj/item/proc/unzoom)
 	GLOB.item_unequipped_event.register(src, src, /obj/item/proc/zoom_drop)
 	GLOB.stat_set_event.register(user, src, /obj/item/proc/unzoom)
+	*/
 
 /obj/item/proc/zoom_drop(var/obj/item/I, var/mob/user)
 	unzoom(user)
