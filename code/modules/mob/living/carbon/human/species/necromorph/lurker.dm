@@ -238,6 +238,13 @@ The Lurker can only fire spines while its shell is open"
 	'sound/effects/creatures/necromorph/lurker/spine_fire_2.ogg',
 	'sound/effects/creatures/necromorph/lurker/spine_fire_3.ogg')
 
+/obj/item/projectile/bullet/spine/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+	if (firer.is_allied(target_mob))	//The bullet passes through our own allies harmlessly
+		return TRUE
+
+	return ..()
+
+
 //Spines make wooshy sounds as they fly
 /obj/item/projectile/bullet/spine/Move(var/new_loc, var/new_dir)
 	playsound(src, pick(woosh_sounds), VOLUME_QUIET, 1, -2)
