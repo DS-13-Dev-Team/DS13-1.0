@@ -1,4 +1,6 @@
 #define NEIGHBOR_REFRESH_TIME 100
+/obj/effect/vine/var/debug_vine = FALSE
+
 
 /obj/effect/vine/proc/get_cardinal_neighbors()
 	var/list/cardinal_neighbors = list()
@@ -15,9 +17,10 @@
 	var/turf/up = GetAbove(loc)
 	var/turf/down = GetBelow(loc)
 
-	if(start && start.CanZPass(src, DOWN) && can_spread_to(down))
+	if(down && start && start.CanZPass(src, DOWN))
 		zlevel_neighbors += down
-	if(up && up.CanZPass(src, UP) && can_spread_to(up))
+
+	if(up && up.CanZPass(src, UP))
 		zlevel_neighbors += up
 
 	return zlevel_neighbors
@@ -28,9 +31,12 @@
 
 /obj/effect/vine/proc/get_neighbors(var/zcheck = TRUE, var/bounds = TRUE)
 	var/list/newneighbors = list()
+	var/list/candidates = get_cardinal_neighbors()
+	if (zcheck)
+		candidates |= get_zlevel_neighbors()
 
-	for(var/turf/simulated/floor in get_cardinal_neighbors())
-		if(bounds && !can_spread_to(floor))
+	for(var/turf/simulated/floor in candidates)
+		if(!can_spread_to(floor))
 			continue
 
 		var/blocked = 0
@@ -46,14 +52,13 @@
 		//If someone really wants it, it could be brought back, but not here
 			//~Nanako
 
-		if(!Adjacent(floor) || !floor.Enter(src))
+		if(!floor.Enter(src))
 			continue
 
 
 
 		newneighbors |= floor
-	if (zcheck)
-		newneighbors |= get_zlevel_neighbors()
+
 
 	return newneighbors
 
