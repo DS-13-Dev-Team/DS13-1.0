@@ -1,5 +1,5 @@
 /datum/signal_ability/succ
-	name = "Absorb	"
+	name = "Absorb"
 	id = "succ"
 	desc = "Absorbs a piece of biological matter, claiming some biomass for the marker. The item to be absorbed must be located within corruption"
 	target_string = "A severed organ, an organic stain, or a piece of food"

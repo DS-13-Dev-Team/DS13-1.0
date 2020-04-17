@@ -3,7 +3,12 @@
 */
 
 /datum/visualnet/necrovision
-	valid_source_types = list(/mob/living/, /obj/machinery/marker, /obj/effect/vine/corruption, /obj/structure/corruption_node)
+	valid_source_types = list(/mob/living/,
+	/obj/machinery/marker,
+	/obj/effect/vine/corruption,
+	/obj/structure/corruption_node,
+	/obj/effect/scry_eye,
+	/obj/effect/psychic_tracer)
 	chunk_type = /datum/chunk/necrovision
 
 /datum/chunk/necrovision/acquire_visible_turfs(var/list/visible)

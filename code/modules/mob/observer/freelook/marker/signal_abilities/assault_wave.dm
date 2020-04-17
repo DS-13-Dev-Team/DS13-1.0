@@ -46,11 +46,6 @@
 			L.shout()
 
 
-/* Crossing Effect */
-//-------------------
-//Any mob that walks over a corrupted tile recieves this effect. It does varying things
-	//On most mobs, it applies a slow to movespeed
-	//On necromorphs, it applies a passive healing instead
 
 /datum/extension/assault_wave
 	name = "Corruption Effect"
