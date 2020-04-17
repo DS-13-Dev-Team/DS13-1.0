@@ -66,6 +66,9 @@
 /decl/flooring/wood/footstep_type = FOOTSTEP_WOOD
 /decl/flooring/reinforced/footstep_type = FOOTSTEP_PLATING
 
+//ds13 sounds
+/decl/flooring/tiling_ds/footstep_type = FOOTSTEP_TILES
+
 /turf/simulated/floor/proc/get_footstep_sound()
 	if(is_plating())
 		return safepick(footstep_sounds[FOOTSTEP_PLATING])
