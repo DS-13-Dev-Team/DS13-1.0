@@ -42,8 +42,8 @@
 	message = "<span class='[style]'>[sender_name]: [message]</span>"
 
 	for (var/ckey in SSnecromorph.necromorph_players)
-
-		var/mob/M = SSnecromorph.necromorph_players[ckey]
+		var/datum/player/P = SSnecromorph.necromorph_players[ckey]
+		var/mob/M = P.get_mob()
 		var/client/target = M.get_client()
 		if (target)
 			receive_communication(C, target, message)
@@ -75,7 +75,8 @@
 /proc/message_necromorphs(var/message)
 	//Message all the necromorphs
 	for (var/ckey in SSnecromorph.necromorph_players)
-		var/mob/M = SSnecromorph.necromorph_players[ckey]
+		var/datum/player/P = SSnecromorph.necromorph_players[ckey]
+		var/mob/M = P.get_mob()
 		to_chat(M, message)
 	//Message all the unitologists too
 	/*
