@@ -103,6 +103,7 @@
 	var/max_heal_threshold	=	0.5			//Wounds can only autoheal if the damage is less than this * max_damage
 	var/wound_remnant_time = 10 MINUTES	//How long fully-healed wounds stay visible before vanishing
 	var/limb_health_factor	=	1	//Multiplier on max health of limbs
+	var/pain_shock_threshold	=	50	//The mob starts going into shock when total pain reaches this value
 
 	// Combat vars.
 	var/list/unarmed_types = list(           // Possible unarmed attacks that the mob will use in combat,
@@ -367,6 +368,33 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		var/obj/item/organ/limb_path = organ_data["path"]
 		organ_data["descriptor"] = initial(limb_path.name)
 
+
+
+/*
+	Setup Procs:
+	Copying over vars to the mob, and doing any initial calculations
+*/
+/datum/species/proc/setup_defense(var/mob/living/carbon/human/H)
+	H.pain_shock_threshold = pain_shock_threshold
+	H.max_health = total_health
+
+/datum/species/proc/setup_interaction(var/mob/living/carbon/human/H)
+	H.limited_click_arc = limited_click_arc
+	H.opacity = opacity
+
+/datum/species/proc/setup_movement(var/mob/living/carbon/human/H)
+	H.slow_turning = slow_turning
+	H.evasion = evasion
+
+/datum/species/proc/setup_vision(var/mob/living/carbon/human/H)
+	H.view_offset = view_offset
+	H.view_range = view_range
+
+
+
+
+
+
 /datum/species/proc/sanitize_name(var/name)
 	return sanitizeName(name)
 
@@ -481,17 +509,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			//Modclick takes key type, function name, function priority, and a list of extra arguments
 			H.add_modclick_verb(arglist(input_args))
 
-/datum/species/proc/setup_interaction(var/mob/living/carbon/human/H)
-	H.limited_click_arc = limited_click_arc
-	H.opacity = opacity
 
-/datum/species/proc/setup_movement(var/mob/living/carbon/human/H)
-	H.slow_turning = slow_turning
-	H.evasion = evasion
-
-/datum/species/proc/setup_vision(var/mob/living/carbon/human/H)
-	H.view_offset = view_offset
-	H.view_range = view_range
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
