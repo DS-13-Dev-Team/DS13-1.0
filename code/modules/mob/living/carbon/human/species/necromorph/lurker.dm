@@ -138,9 +138,9 @@ The lurker is covered in a retractible armored shell that protects its fragile i
 #define LURKER_SPINES_DESC "<h2>Spine Launch:</h2><br>\
 <h3>Hotkey: Alt+Click</h3><br>\
 <h3>Cooldown: [SPINE_COOLDOWN * 0.1] seconds</h3><br>\
-<h3>Damage: 15x3</h3><br>\
+<h3>Damage: 13x3</h3><br>\
 The lurker rears back and launches a fan of up to three sharpened bony spines, one for each tentacle. Less spines will be fired if some tentacles have been lost.<br>\
-Spines deal 15 ballistic brute damage each, and have a doubled chance to embed in their victim.<br>\
+Spines deal 13 ballistic brute damage each, and have a 1.5x chance to embed in their victim.<br>\
 <br>\
 The Lurker can only fire spines while its shell is open"
 
@@ -216,13 +216,13 @@ The Lurker can only fire spines while its shell is open"
 	icon = 'icons/mob/necromorph/lurker.dmi'
 	icon_state = "spine"
 	item_state = "spine"
-	throwforce = 15
+	throwforce = 13
 
 //Projectile version, higher chance of embedding
 /obj/item/projectile/bullet/spine
-	damage =	15
+	damage =	13
 	armor_penetration = 5
-	embed_mult = 2
+	embed_mult = 1.5
 	step_delay  = 1.6
 	icon = 'icons/mob/necromorph/lurker.dmi'
 	icon_state = "spine_projectile"
