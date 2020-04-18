@@ -7,14 +7,17 @@
 	Future Plans:
 	Once the system is available, make duration based on psych damage instead. Lasting longer on people who are less sane
 */
-
+#define TRACER_MAX_RANGE	10
 
 /datum/signal_ability/psychic_tracer
 	name = "Psychic Tracer"
 	id = "psychic_tracer"
-	desc = "Plants a psychic tracer on a target mob, causing them to act as a visual relay for necrovision. This allows signals to see in a radius "
+	desc = "Plants a psychic tracer on a target mob, causing them to act as a visual relay for necrovision. This allows signals to see in a radius around them. <br>\
+	This can last up to 10 minutes, but it will expire faster the more human crewmembers are near the target. Visual radius will gradually dwindle as the duration runs out.<br>\
+	<br>\
+	Casting it again on a target who already has a tracer will refresh the duration and range"
 	target_string = "any living mob or crewmember"
-	energy_cost = 1//20
+	energy_cost = 120
 	require_corruption = FALSE
 	require_necrovision = TRUE
 	autotarget_range = 1
@@ -41,6 +44,7 @@
 */
 /obj/effect/psychic_tracer
 	var/datum/extension/psychic_tracer/EM
+	visualnet_range = TRACER_MAX_RANGE
 
 
 /obj/effect/psychic_tracer/get_visualnet_tiles(var/datum/visualnet/network)
@@ -60,7 +64,7 @@
 	var/atom/A
 	var/tick_interval_seconds = 4	//This serves a dual purpose
 	var/initial_duration = 10 MINUTES
-	var/initial_radius = 10
+	var/initial_radius = TRACER_MAX_RANGE
 	var/radius
 
 	var/duration
@@ -84,9 +88,11 @@
 
 
 /datum/extension/psychic_tracer/proc/tick()
-	var/numcrew = 0//get_visible_crew()
+	var/numcrew = get_visible_crew()
 
 	change_duration((tick_interval_seconds SECONDS) * (1 + (numcrew * crew_multiplier))*-1)
+	if (duration > 0)
+		addtimer(CALLBACK(src, /datum/extension/psychic_tracer/proc/tick), tick_interval_seconds SECONDS)
 
 
 
@@ -116,10 +122,10 @@
 
 	//Remove and re-add ourselves to update the necrovision
 	GLOB.necrovision.remove_source(object, TRUE, TRUE)
+	object.visualnet_range = radius
 	GLOB.necrovision.add_source(object, TRUE, TRUE)
 
 /datum/extension/psychic_tracer/get_visualnet_tiles(var/datum/visualnet/network)
-
 	return A.turfs_in_view(radius)
 
 
@@ -142,6 +148,11 @@
 		if (H.is_necromorph())
 			continue
 
+		if (H == A)
+			continue
+
 		num++
 
 	return num
+
+#undef TRACER_MAX_RANGE

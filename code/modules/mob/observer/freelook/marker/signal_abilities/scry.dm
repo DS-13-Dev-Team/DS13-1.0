@@ -28,7 +28,12 @@
 	new /obj/effect/scry_eye(target)
 	link_necromorphs_to(SPAN_NOTICE("[user] cast Scry at LINK"), target)
 
+
 //An invisible object that allows the necrovision to see around it. Deletes itself after 1 minute
+/obj/effect/scry_eye
+	visualnet_range = 6
+
+
 /obj/effect/scry_eye/Initialize()
 	.=..()
 	GLOB.necrovision.add_source(src, TRUE, TRUE)	//Add it as a vision source
@@ -39,4 +44,4 @@
 
 /obj/effect/scry_eye/get_visualnet_tiles(var/datum/visualnet/network)
 
-	return turfs_in_view(6)
+	return turfs_in_view(visualnet_range)

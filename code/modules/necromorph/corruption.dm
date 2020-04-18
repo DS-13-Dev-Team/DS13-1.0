@@ -23,6 +23,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	growth_type = 0
 	var/vine_scale = 1.1
 	var/datum/extension/corruption_source/source
+	visualnet_range = 1
 
 
 /obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/corruption/newparent, var/start_matured = 0, var/datum/extension/corruption_source/newsource)

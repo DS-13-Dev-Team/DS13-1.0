@@ -11,7 +11,7 @@
 	desc = "It knows you. You cannot escape its gaze."
 	icon_state = "eye"
 	max_health = 60	//fragile
-	var/view_range = 20
+	visualnet_range = 20
 	var/minimum_notify_delay = 3 MINUTES	//Minimum time that must pass between sightings before we resend notifications
 	scale = 1.6
 	var/light_range = 8
@@ -19,10 +19,10 @@
 /obj/structure/corruption_node/eye/Initialize()
 	.=..()
 	if (!dummy)	//Don't do this stuff if its a dummy for placement preview
-		GLOB.necrovision.add_source(src, TRUE, TRUE, chunk_update_radius = 2)	//Add it as a vision source
+		GLOB.necrovision.add_source(src, TRUE, TRUE)	//Add it as a vision source
 
 		//Setup a trigger to track nearby mobs
-		var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/structure/corruption_node/eye/proc/nearby_movement, range = view_range)
+		var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/structure/corruption_node/eye/proc/nearby_movement, range = visualnet_range)
 		PT.register_turfs()
 		set_extension(src, /datum/extension/proximity_manager, PT)
 
@@ -30,11 +30,11 @@
 
 /obj/structure/corruption_node/eye/get_visualnet_tiles(var/datum/visualnet/network)
 
-	return turfs_in_view(view_range)
+	return turfs_in_view(visualnet_range)
 
 
 /obj/structure/corruption_node/eye/proc/mark_turfs()
-	for (var/turf/T in turfs_in_view(view_range))
+	for (var/turf/T in turfs_in_view(visualnet_range))
 		debug_mark_turf(T)
 
 /obj/structure/corruption_node/eye/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
@@ -47,7 +47,7 @@
 				H.playsound_local(get_turf(H), get_sfx("hiss"), 50)
 
 /obj/structure/corruption_node/eye/get_blurb()
-	. = "This node is effectively an organic camera. It massively increases the view range of the necrovision network by [view_range] tiles.<br><br>\
+	. = "This node is effectively an organic camera. It massively increases the view range of the necrovision network by [visualnet_range] tiles.<br><br>\
 	 In addition, it will notify all necromorph players when it sees a live human. <br><br>\
 	Finally, and most significantly, all eye nodes will keep track of every human they see, storing that information centrally in the Prey Sightings menu. This can be used by all necromorphs to direct and coordinate their hunting efforts."
 
@@ -109,7 +109,7 @@
 	desc = "The abyss stares back"
 	icon_state = "minieye"
 	max_health = 20	//fragile
-	view_range = 8
+	visualnet_range = 8
 	minimum_notify_delay = 3 MINUTES	//Minimum time that must pass between sightings before we resend notifications
 	scale = 1
 	light_range = 2
@@ -117,7 +117,7 @@
 
 
 /obj/structure/corruption_node/eye/small/get_blurb()
-	. = "This node is effectively an organic camera, a smaller version of the Eye node. It moderately increases the view range of the necrovision network by [view_range] tiles.<br><br>\
+	. = "This node is effectively an organic camera, a smaller version of the Eye node. It moderately increases the view range of the necrovision network by [visualnet_range] tiles.<br><br>\
 	 In addition, it will notify all necromorph players when it sees a live human. <br><br>\
 	Finally, and most significantly, all eye nodes will keep track of every human they see, storing that information centrally in the Prey Sightings menu. This can be used by all necromorphs to direct and coordinate their hunting efforts."
 
