@@ -176,3 +176,9 @@
 /obj/effect/catwalk_plated/white
 	icon_state = "catwalk_platedwhite"
 	plating_type = /decl/flooring/tiling/mono/white
+
+//ds13 variants
+
+/obj/effect/catwalk_plated/dank
+	icon_state = "catwalk_platedgrim"
+	plating_type = /decl/flooring/tiling/mono/dark
