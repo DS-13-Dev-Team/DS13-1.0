@@ -1,4 +1,4 @@
-#define UPDATE_BUFFER 25 // 2.5 seconds
+#define UPDATE_BUFFER 30 // 3 seconds
 
 // CHUNK
 //
@@ -47,6 +47,7 @@
 	var/y = 0
 	var/z = 0
 	var/datum/obfuscation/obfuscation = new()
+	var/last_update = 0
 
 // Create a new chunk, since the chunks are made as they are needed.
 /datum/chunk/New(var/datum/visualnet/visualnet, x, y, z)
@@ -83,7 +84,7 @@
 	var/turf/center = locate(x + 8, y + 8, z)
 	for(var/entry in sources)
 		var/atom/A = entry
-		if(get_dist(get_turf(A), center) > 16)
+		if(get_dist(get_turf(A), center) > (8+A.get_visualnet_range()))
 			continue
 		add_source(A)
 
@@ -102,8 +103,11 @@
 
 // The visual net is responsible for adding/removing eyes.
 /datum/chunk/proc/add_eye(mob/observer/eye/eye)
+
 	seenby |= eye
 	eye.visibleChunks |= src
+	if (dirty)
+		update()
 	if(eye.owner && eye.owner.client)
 		eye.owner.client.images += obscured
 
@@ -117,6 +121,7 @@
 // instead be flagged to update the next time an AI Eye moves near it.
 
 /datum/chunk/proc/visibility_changed(var/update_now = FALSE)
+
 	if(update_now)
 		update()
 		return
@@ -125,16 +130,24 @@
 		return
 
 	if(seenby.len)
-		updating = TRUE
-		spawn(UPDATE_BUFFER) // Batch large changes, such as many doors opening or closing at once
-			if(updating)     // Check if we're still updating, a forced update may have occured.
-				update()
+		//If we haven't updated recently, then we don't need to wait
+		var/delta = world.time - last_update
+		if (delta > UPDATE_BUFFER)
+			update()
+		else
+			updating = TRUE
+			spawn(UPDATE_BUFFER) // Batch large changes, such as many doors opening or closing at once
+				if(updating)     // Check if we're still updating, a forced update may have occured.
+					update()
 	else
 		dirty = TRUE // If this chunk is seen by noone, simply mark it as dirty and do nothing
 
 // The actual updating.
 
 /datum/chunk/proc/update()
+	updating = TRUE	//Immediately set updating true to block additional attempts
+	dirty = FALSE //Set dirty false to block additional attempts
+
 	var/list/newVisibleTurfs = new()
 	acquire_visible_turfs(newVisibleTurfs)
 
@@ -167,7 +180,7 @@
 				if(m && m.owner && m.owner.client)
 					m.owner.client.images += obfuscation_image
 
-	dirty = FALSE
+
 	updating = FALSE
 
 /datum/chunk/proc/acquire_visible_turfs(var/list/visible)
@@ -179,5 +192,18 @@
 	for (var/a in things)
 		if (!isturf(a))
 			things.Remove(a)
+
+/datum/chunk/proc/debug_mark(var/marktype = "all", var/duration = 20 SECONDS)
+	var/list/to_mark = list()
+	if (marktype == "all")
+		to_mark = turfs
+	if (marktype == "visible")
+		to_mark = visibleTurfs
+	if (marktype == "obscured")
+		to_mark = obscuredTurfs
+
+
+	for (var/T in to_mark)
+		debug_mark_turf(T, duration)
 
 #undef UPDATE_BUFFER

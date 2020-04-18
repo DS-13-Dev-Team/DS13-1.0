@@ -357,8 +357,8 @@ proc
 
 
 	//In the case we failed to find any/enough targets, lets try to explain to the user why
-	if (error_user && results.len <= num_required)
-		if (viewers)
+	if (error_user && results.len < num_required)
+		if (viewers.len)
 			to_chat(error_user, SPAN_WARNING("Casting here is blocked because the tile is seen by [english_list(viewers)]"))
 
 
