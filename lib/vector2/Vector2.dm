@@ -132,6 +132,25 @@ vector2
 
 			else CRASH("Invalid 'from' vector.")
 
+
+
+		/* Get the angle that rotates north to point in this direction.
+			this can be fed into the Turn proc to apply to matrices and vectors
+		*/
+		Angle()	return RotationFrom(Vector2.North)
+
+
+
+		/* Get the matrix that rotates from_vector to point in this direction.
+			Also accepts a dir.
+		*/
+		AngleFrom(vector2/from_vector = Vector2.North)
+			var vector2/to_vector = Normalized()
+
+			if(isnum(from_vector)) from_vector = Vector2.FromDir(from_vector)
+
+			return (Atan2(to_vector.y, to_vector.x) - Atan2(from_vector.y, from_vector.x))
+
 		/* Get a vector with the same magnitude rotated by a clockwise angle in degrees.
 		*/
 		Turn(angle) return src * matrix().Turn(angle)

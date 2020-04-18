@@ -59,6 +59,12 @@
 	'sound/effects/footstep/leaper_footstep_3.ogg',
 	'sound/effects/footstep/leaper_footstep_4.ogg',
 	'sound/effects/footstep/leaper_footstep_5.ogg'),
+	SOUND_CLIMB = list('sound/effects/footstep/wall_climb_1.ogg',
+	'sound/effects/footstep/wall_climb_2.ogg',
+	'sound/effects/footstep/wall_climb_3.ogg',
+	'sound/effects/footstep/wall_climb_4.ogg',
+	'sound/effects/footstep/wall_climb_5.ogg',
+	'sound/effects/footstep/wall_climb_6.ogg'),
 	SOUND_PAIN = list('sound/effects/creatures/necromorph/leaper/leaper_pain_1.ogg',
 	 'sound/effects/creatures/necromorph/leaper/leaper_pain_2.ogg',
 	 'sound/effects/creatures/necromorph/leaper/leaper_pain_3.ogg',
@@ -123,6 +129,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 /datum/species/necromorph/leaper/get_ability_descriptions()
 	.= ""
+	. += WALLRUN_DESC
+	. += "<hr>"
 	. += LEAPER_LEAP_DESC
 	. += "<hr>"
 	. += LEAPER_TAILSTRIKE_DESC
@@ -294,3 +302,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 10 SECONDS, _power = 3))
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
+
+
+//Wallrunning
+/datum/species/necromorph/leaper/setup_movement(var/mob/living/carbon/human/H)
+	set_extension(H, /datum/extension/wallrun)

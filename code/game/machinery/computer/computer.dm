@@ -19,6 +19,14 @@
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	clicksound = "keyboard"
 
+/obj/machinery/computer/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+	if(air_group || (height==0)) return 1
+	if(istype(mover,/obj/item/projectile))
+		return ..()
+	if(istype(mover) && mover.checkpass(PASS_FLAG_TABLE))
+		return 1
+	return .=..()
+
 /obj/machinery/computer/New()
 	overlay_layer = layer
 	..()

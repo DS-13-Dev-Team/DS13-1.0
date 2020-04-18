@@ -10,6 +10,11 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	take_external_damage(amount)
 
 /obj/item/organ/external/proc/take_external_damage(brute, burn, damage_flags, used_weapon = null)
+
+	//If this limb is retracted, pass all hits directly to our parent
+	if (retracted && parent)
+		return parent.take_external_damage(brute, burn, damage_flags, used_weapon)
+
 	SET_ARGS(owner.species.handle_organ_external_damage(arglist(list(src)+args)))
 	brute = round(brute * get_brute_mod(), 0.35)
 	burn = round(burn * get_burn_mod(), 0.35)

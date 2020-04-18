@@ -73,7 +73,7 @@
 	coverage = get_coverage()
 
 //BS12: Species-restricted clothing check.
-/obj/item/clothing/mob_can_equip(M as mob, slot, disable_warning = 0)
+/obj/item/clothing/mob_can_equip(var/mob/M, var/slot, var/disable_warning = 0, var/force = 0)
 
 	//if we can't equip the item anyway, don't bother with species_restricted (cuts down on spam)
 	if (!..())

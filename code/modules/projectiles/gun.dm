@@ -482,6 +482,8 @@
 
 /obj/item/weapon/gun/proc/play_fire_sound(var/mob/user, var/obj/item/projectile/P)
 	var/shot_sound = (istype(P) && P.fire_sound)? P.fire_sound : fire_sound
+	if (islist(shot_sound))
+		shot_sound = pick(shot_sound)
 	if(silenced)
 		playsound(user, shot_sound, 10, 1)
 	else

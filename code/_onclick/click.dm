@@ -192,6 +192,9 @@
 /mob/proc/setClickCooldown(var/timeout)
 	next_move = max(world.time + timeout, next_move)
 
+/mob/proc/addClickCooldown(var/timeout)
+	next_move += timeout
+
 /mob/proc/canClick()
 	if(config.no_click_cooldown || next_move <= world.time)
 		return 1
