@@ -192,14 +192,12 @@ Please contact me on #coderbus IRC. ~Carn x
 
 	overlays = overlays_to_apply
 
-	var/matrix/M = matrix()
+	var/matrix/M = get_default_transform()
 	if(lying)
 		M.Turn(species.lying_rotation)
-		M.Scale(size_multiplier)
 		M.Translate(1,-6)
 	else
-		M.Scale(size_multiplier)
-		M.Translate(0, 16*(size_multiplier-1))
+		M.Translate(0, 16*(default_scale-1))
 	transform = M
 
 var/global/list/damage_icon_parts = list()
@@ -287,7 +285,7 @@ var/global/list/damage_icon_parts = list()
 
 	for(var/organ_tag in species.has_limbs)
 		var/obj/item/organ/external/part = organs_by_name[organ_tag]
-		if(isnull(part) || part.is_stump())
+		if(isnull(part) || part.is_stump() || part.retracted)
 			icon_key += "0"
 			continue
 		for(var/M in part.markings)
@@ -328,6 +326,9 @@ var/global/list/damage_icon_parts = list()
 
 		for(var/obj/item/organ/external/part in (organs-chest))
 			var/icon/temp = part.get_icon()
+
+			if (isnull(temp))
+				continue
 			//That part makes left and right legs drawn topmost and lowermost when human looks WEST or EAST
 			//And no change in rendering for other parts (they icon_position is 0, so goes to 'else' part)
 			if(part.icon_position & (LEFT | RIGHT))
@@ -399,7 +400,7 @@ var/global/list/damage_icon_parts = list()
 	overlays_standing[HAIR_LAYER]	= null
 
 	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
-	if(!head_organ || head_organ.is_stump() )
+	if(!istype(head_organ) || head_organ.is_stump() )
 		if(update_icons)
 			queue_icon_update()
 		return

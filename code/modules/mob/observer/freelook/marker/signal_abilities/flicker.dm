@@ -3,7 +3,7 @@
 	id = "flicker"
 	desc = "Causes a targeted light to flicker"
 	target_string = "A wall light"
-	energy_cost = 20
+	energy_cost = 10
 
 	target_types = list(/obj/machinery/light)
 
@@ -20,7 +20,7 @@
 	id = "flickermass"
 	desc = "Causes all lights in an area to flicker"
 	target_string = "A tile in the target area"
-	energy_cost = 120
+	energy_cost = 60
 	cooldown = 10 SECONDS
 	target_types = list(/turf)
 

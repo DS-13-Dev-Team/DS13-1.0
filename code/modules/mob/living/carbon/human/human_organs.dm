@@ -244,6 +244,9 @@
 			if (!hit_zone) //Something went wrong
 				return null
 
+		//In the case of retracted limbs, we move upwards
+		else if (found_organ.retracted && found_organ.parent)
+			hit_zone = found_organ.parent.organ_tag
 		else
 			return found_organ
 	return null

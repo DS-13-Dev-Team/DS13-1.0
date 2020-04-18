@@ -15,6 +15,7 @@
 #define SOUND_DEATH			"death"
 #define SOUND_SPEECH		"speech"
 #define SOUND_REGEN			"regenerate"
+#define SOUND_CLIMB			"climb"
 
 
 

@@ -143,7 +143,7 @@
 
 /mob/observer/eye/signal/Login()
 	.=..()
-	SSnecromorph.necromorph_players[ckey] = src
+	SSnecromorph.necromorph_players[ckey] = get_or_create_player(ckey)
 	SSnecromorph.signals |= src
 	start_energy_tick()
 

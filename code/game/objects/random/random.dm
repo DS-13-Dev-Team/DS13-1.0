@@ -154,7 +154,7 @@
 				/obj/item/device/assembly/prox_sensor,
 				/obj/item/device/assembly/signaler,
 				/obj/item/device/assembly/timer,
-				/obj/item/device/multitool))
+				/obj/item/weapon/tool/multitool))
 
 
 
@@ -847,7 +847,7 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/stack/material/plasteel/ten = 9,
 				/obj/item/weapon/storage/box/monkeycubes = 5,
 				/obj/item/weapon/storage/firstaid/surgery = 4,
-				/obj/item/device/multitool/hacktool = 2,
+				/obj/item/weapon/tool/multitool/hacktool = 2,
 				/obj/item/weapon/surgicaldrill = 7,
 				/obj/item/weapon/FixOVein = 7,
 				/obj/item/weapon/retractor = 7,

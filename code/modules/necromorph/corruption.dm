@@ -23,6 +23,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	growth_type = 0
 	var/vine_scale = 1.1
 	var/datum/extension/corruption_source/source
+	visualnet_range = 1
 
 
 /obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/corruption/newparent, var/start_matured = 0, var/datum/extension/corruption_source/newsource)
@@ -38,6 +39,11 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	if (!newsource)
 		source = newparent.source
 	source.register(src)
+	.=..()
+
+/obj/effect/vine/corruption/Destroy()
+	if (source)
+		source.unregister(src)
 	.=..()
 
 //Corruption tiles reveal their own tile, and surrounding dense obstacles. They will not reveal surrounding clear tiles
@@ -102,7 +108,6 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //This proc finds any viable corruption source to use for us
 /obj/effect/vine/corruption/proc/find_corruption_host()
-
 	for (var/datum/extension/corruption_source/CS in GLOB.corruption_sources)
 		if (CS.can_support(src))
 			return CS
@@ -160,6 +165,16 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		calculate_growth()
 
 
+
+
+
+
+
+
+
+
+
+
 /*
 	Spreading Logic
 */
@@ -169,12 +184,13 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	var/range = 12
 	var/growth_speed = 1	//Multiplier on growth speed
 	var/growth_distance_falloff = 0.15	//15% added to growth time for each tile of distance from the source
+	var/support_limit = null
 	var/atom/source
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 	var/list/corruption_vines = list()	//A list of all the vines we're currently supporting
 
 
-/datum/extension/corruption_source/New(var/atom/holder, var/range, var/speed, var/falloff)
+/datum/extension/corruption_source/New(var/atom/holder, var/range, var/speed, var/falloff, var/limit)
 	source = holder
 	GLOB.corruption_sources |= src
 	plant = new (source.loc, GLOB.corruption_seed)
@@ -185,7 +201,8 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		growth_speed = speed
 	if (falloff)
 		growth_distance_falloff = falloff
-
+	if (limit)
+		support_limit = limit
 
 	new /obj/effect/vine/corruption(get_turf(source),GLOB.corruption_seed, start_matured = 1, newsource = src)
 
@@ -198,17 +215,32 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 
 /datum/extension/corruption_source/proc/register(var/obj/effect/vine/corruption/applicant)
-
 	if (!can_support(applicant))
-
 		return FALSE
+
+	//If its switching sources, remove from the old one first
+	if (applicant.source)
+		applicant.source.unregister(applicant)
+
 	corruption_vines |= applicant
 	applicant.plant = plant
 	applicant.source = src
 
+/datum/extension/corruption_source/proc/unregister(var/obj/effect/vine/corruption/applicant)
+	corruption_vines -= applicant
+	if (applicant.plant == plant)
+		applicant.plant = null
+	if (applicant.source == src)
+		applicant.source = src
+
 
 //Is this source able to provide support to a specified turf or corruption vine?
 /datum/extension/corruption_source/proc/can_support(var/atom/A)
+
+	//Hard numerical limits
+	if (support_limit)
+		if (corruption_vines.len >= support_limit)
+			return FALSE
 
 	var/turf/T = get_turf(A)
 	var/distance = get_dist_3D(get_turf(source), T)
@@ -216,9 +248,10 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	if (distance > range)
 		return FALSE
 
+
 	//TODO Future:
 		//View restricting
-		//Hard limit on supported quantity
+
 
 	return TRUE
 

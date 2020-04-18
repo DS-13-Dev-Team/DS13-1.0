@@ -100,3 +100,9 @@
 	has_internals = FALSE
 	has_nutrition = FALSE
 	has_guns = FALSE
+
+
+/datum/hud_data/necromorph/lurker
+	gear = list(
+		"back" =         list("loc" = ui_sstore1,   "name" = "Back", "slot" = slot_back,      "state" = "back"),
+		)

@@ -95,8 +95,9 @@
 		shadow.sync_icon(src)
 
 //Copy direction
-/mob/zshadow/proc/update_dir()
-	set_dir(owner.dir)
+/mob/zshadow/proc/update_dir(var/atom/a, var/old_dir, var/new_dir)
+	if (old_dir != new_dir)
+		set_dir(owner.dir)
 
 
 //Change name of shadow if it's updated too (generally moving will sync but static updates are handy)

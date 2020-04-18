@@ -879,6 +879,7 @@
 	species = all_species[new_species]
 	species.handle_pre_spawn(src)
 
+	species.setup_defense(src)
 	species.setup_interaction(src)
 	species.setup_movement(src)
 	species.setup_vision(src)
@@ -918,7 +919,7 @@
 	species.create_organs(src)
 	species.handle_post_spawn(src)
 
-	max_health = species.total_health
+
 
 	default_pixel_x = initial(pixel_x) + species.pixel_offset_x
 	default_pixel_y = initial(pixel_y) + species.pixel_offset_y
@@ -951,7 +952,7 @@
 	//recheck species-restricted clothing
 	for(var/slot in slot_first to slot_last)
 		var/obj/item/clothing/C = get_equipped_item(slot)
-		if(istype(C) && !C.mob_can_equip(src, slot, 1))
+		if(istype(C) && !C.mob_can_equip(src, slot, disable_warning = TRUE, force = TRUE))	//Without the force flag, nothing can remain equipped
 			unEquip(C)
 
 	return 1

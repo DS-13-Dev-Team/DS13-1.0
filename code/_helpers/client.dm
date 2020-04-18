@@ -128,3 +128,42 @@
 				return S.len*10	//Convert to deciseconds
 
 	return 0	//Return zero if we failed to get it
+
+
+/*
+	Tells us whether a specified atom is on a this client's screen.
+	Specifically, if its inside their view window. doesn't check invisibility or blocked line of sight
+*/
+/client/proc/is_on_screen(var/atom/A)
+	.=FALSE
+	if (!A)
+		return FALSE
+
+	if (!isturf(A.loc))
+		A = get_turf(A) //If its hidden inside an object, we move to its tile
+
+	//Ok, now lets see if the target is onscreen,
+	//First we've got to figure out what onscreen is
+	var/atom/origin = get_view_centre()
+
+	//Lets get how far the screen extends around the origin
+	var/list/bound_offsets = get_tile_bounds(FALSE) //Cut off partial tiles or they might stretch the screen
+	var/vector2/delta = new /vector2(A.x - origin.x, A.y - origin.y)	//Lets get the position delta from origin to target
+	//Now check whether or not that would put it onscreen
+	//Bottomleft first
+	var/vector2/BL = bound_offsets["BL"]
+	if (delta.x < BL.x || delta.y < BL.y)
+		//Its offscreen
+		return
+
+
+	//Then topright
+	var/vector2/TR = bound_offsets["TR"]
+	if (delta.x > TR.x || delta.y > TR.y)
+		//Its offscreen
+		return
+
+
+	//If we get here, the target is on our screen!
+	return TRUE
+

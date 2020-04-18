@@ -115,7 +115,7 @@ var/const/EXTRA_COST_FACTOR = 1.25
 
 /datum/autolathe/recipe/multitool
 	name = "multitool"
-	path = /obj/item/device/multitool
+	path = /obj/item/weapon/tool/multitool
 	category = "Tools"
 
 /datum/autolathe/recipe/t_scanner

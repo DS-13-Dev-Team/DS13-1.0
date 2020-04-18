@@ -185,6 +185,14 @@
 	C.charge = 0 //shouldn't produce power out of thin air.
 	return C
 
+/datum/design/item/powercell/contact
+	name = "contact energy"
+	id = "contact_energy"
+	req_tech = list(TECH_POWER = 3, TECH_MATERIAL = 2)
+	materials = list(MATERIAL_STEEL = 700, MATERIAL_GLASS = 70)
+	build_path = /obj/item/weapon/cell/contact
+	sort_string = "DAAAA"
+
 /datum/design/item/powercell/basic
 	name = "basic power cell"
 	id = "basic_cell"
@@ -305,6 +313,14 @@
 	build_path = /obj/item/weapon/pickaxe/drill
 	sort_string = "KAAAB"
 */
+/datum/design/item/mining/miningcutter
+	name = "mining cutter"
+	id = "miningcutter"
+	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
+	materials = list(MATERIAL_STEEL = 1500, MATERIAL_GLASS = 500, MATERIAL_GOLD = 500, MATERIAL_PHORON = 500)
+	build_path = /obj/item/weapon/gun/energy/cutter
+	sort_string = "KAAAC"
+
 /datum/design/item/mining/miningcutter
 	name = "mining cutter"
 	id = "miningcutter"
@@ -564,6 +580,14 @@
 	build_path = /obj/item/weapon/gun/energy/stunrevolver/rifle
 	sort_string = "TADAC"
 
+/datum/design/item/weapon/contactbeam
+	name = "C99 Supercollider Contact Beam"
+	id = "contactbeam"
+	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
+	materials = list(MATERIAL_STEEL = 10000, MATERIAL_GLASS = 1000, MATERIAL_DIAMOND = 2000)
+	build_path = /obj/item/weapon/gun/energy/contact
+	sort_string = "TAEAA"
+
 /datum/design/item/weapon/nuclear_gun
 	name = "WH-9 Prototype Pistol"
 	id = "nuclear_gun"
@@ -572,14 +596,6 @@
 	build_path = /obj/item/weapon/gun/energy/gun/nuclear
 	sort_string = "TAEAA"
 
-/datum/design/item/weapon/lasercannon
-	name = "Model 7 Prototype Canon"
-	desc = "The lasing medium of this prototype is enclosed in a tube lined with uranium-235 and subjected to high neutron flux in a nuclear reactor core."
-	id = "lasercannon"
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
-	materials = list(MATERIAL_STEEL = 10000, MATERIAL_GLASS = 1000, MATERIAL_DIAMOND = 2000)
-	build_path = /obj/item/weapon/gun/energy/lasercannon
-	sort_string = "TAEAB"
 
 /datum/design/item/weapon/grenadelauncher
 	name = "junk grenade launcher"

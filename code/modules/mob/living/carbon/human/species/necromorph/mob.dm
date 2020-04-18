@@ -32,6 +32,9 @@
 /mob/living/carbon/human/necromorph/leaper/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER_ENHANCED)
 	..(new_loc, new_species)
 
+/mob/living/carbon/human/necromorph/lurker/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LURKER)
+	..(new_loc, new_species)
+
 /mob/living/carbon/human/necromorph/ubermorph/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_UBERMORPH)
 	..(new_loc, new_species)
 
@@ -84,4 +87,4 @@
 	.=..()
 	//Update the necromorph players list
 	if (is_necromorph())
-		SSnecromorph.necromorph_players[ckey] = src
+		SSnecromorph.necromorph_players[ckey] = get_or_create_player(ckey)

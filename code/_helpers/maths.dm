@@ -33,8 +33,15 @@
 /proc/Floor(x)
 	return round(x)
 
+
+/proc/floor_to_multiple(x, multiple)
+	return (x - (x % multiple))
+
 /proc/Ceiling(x)
 	return -round(-x)
+
+/proc/ceiling_to_multiple(x, multiple)
+	return ((x - (x % multiple)) + multiple)
 
 // Greatest Common Divisor: Euclid's algorithm.
 /proc/Gcd(a, b)

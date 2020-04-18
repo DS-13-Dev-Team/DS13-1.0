@@ -183,6 +183,11 @@
 		spawn(animtime / client_lag)
 			L.lock_view = FALSE
 
+//Returns the rotation necessary to point source's forward_direction at target
+//The default value of south, will point the source's feet at the target
+/proc/rotation_to_target(var/atom/source, var/atom/target, var/forward_direction = SOUTH)
+	var/vector2/direction = Vector2.DirectionBetween(source, target)
+	return direction.AngleFrom(Vector2.FromDir(forward_direction))
 #undef LUMR
 #undef LUMG
 #undef LUMB

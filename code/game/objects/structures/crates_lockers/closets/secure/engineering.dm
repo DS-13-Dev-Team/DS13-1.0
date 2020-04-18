@@ -19,7 +19,7 @@
 		/obj/item/clothing/gloves/insulated,
 		/obj/item/clothing/mask/gas,
 		/obj/item/device/radio/headset/heads/ce,
-		/obj/item/device/multitool,
+		/obj/item/weapon/tool/multitool,
 		/obj/item/device/flash,
 		/obj/item/taperoll/engineering,
 		/obj/item/weapon/tool/crowbar/brace_jack,
@@ -45,7 +45,7 @@
 		/obj/item/clothing/gloves/insulated = 3,
 		/obj/item/weapon/storage/toolbox/electrical = 3,
 		/obj/item/weapon/module/power_control = 3,
-		/obj/item/device/multitool = 3,
+		/obj/item/weapon/tool/multitool = 3,
 		/obj/random/tool = 1
 	)
 

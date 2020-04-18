@@ -13,7 +13,8 @@
 		forceMove(T)
 
 /atom/proc/recursive_dir_set(var/atom/a, var/old_dir, var/new_dir)
-	set_dir(new_dir)
+	if (new_dir != old_dir)
+		set_dir(new_dir)
 
 // Sometimes you just want to end yourself
 /datum/proc/qdel_self()

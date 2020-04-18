@@ -81,7 +81,9 @@
 	//Now lets windup the shot(s)
 	if (windup_time)
 
-		sleep(windup_time)
+		windup_animation()
+
+	fire_animation()
 
 	//And start the main event
 	var/turf/targloc = get_turf(target)
@@ -98,7 +100,10 @@
 			P.launch(target, target_zone)
 
 		if (fire_sound)
-			playsound(user, fire_sound, 100, 1)
+			if (islist(fire_sound))
+				playsound(user, pick(fire_sound), VOLUME_MID, 1)
+			else
+				playsound(user, fire_sound, VOLUME_MID, 1)
 
 	stop()
 
@@ -107,8 +112,15 @@
 	if (isnum(dispersion))
 		return dispersion
 
+	if (islist(dispersion))
+		return dispersion[shot_num]
 
 
+/datum/extension/shoot/proc/windup_animation()
+	sleep(windup_time)
+
+/datum/extension/shoot/proc/fire_animation()
+	return
 
 /datum/extension/shoot/proc/stop()
 	deltimer(ongoing_timer)

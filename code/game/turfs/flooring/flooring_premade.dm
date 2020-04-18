@@ -328,3 +328,25 @@
 /turf/simulated/floor/beach/water/New()
 	..()
 	overlays += image("icon"='icons/misc/beach.dmi',"icon_state"="water5","layer"=MOB_LAYER+0.1)
+
+//ds13 floors
+/turf/simulated/floor/dank
+	name = "grim floor"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "dank_tile"
+	initial_flooring = /decl/flooring/tiling_ds
+
+	base_name = "grim plating"
+	base_desc = "The naked, ancient hull."
+	base_icon_state = "dank_plating"
+	base_icon = 'icons/turf/floors_ds13.dmi'
+
+/turf/simulated/floor/dank/roller
+	name = "roller floor"
+	icon_state = "dank_roller"
+	initial_flooring = /decl/flooring/tiling_ds/roller
+
+/turf/simulated/floor/dank/heavy
+	name = "grim heavy floor"
+	icon_state = "dank_tile_heavy"
+	initial_flooring = /decl/flooring/tiling_ds/heavy

@@ -79,6 +79,9 @@
 	return get_turf_at_pixel_offset(offset)
 
 
+//Returns the turf over which the mob's view is centred. Only relevant if view offset is set
+/client/proc/get_view_centre()
+	return mob.get_view_centre()
 
 //Given a pixel offset relative to this atom, finds the turf under the target point.
 //This does not account for the object's existing pixel offsets, roll them into the input first if you wish

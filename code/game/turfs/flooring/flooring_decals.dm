@@ -1120,3 +1120,29 @@ var/list/floor_decals = list()
 	name = "hole right"
 	icon_state = "techfloor_hole_right"
 
+//ds13 variants
+
+/obj/effect/floor_decal/dank
+	name = "scratches"
+	icon = 'icons/turf/marks_ds13.dmi'
+	icon_state = "scratches"
+
+/obj/effect/floor_decal/dank/dent
+	name = "dent"
+	icon_state = "dent"
+
+/obj/effect/floor_decal/dank/dent_big
+	name = "dent"
+	icon_state = "dent_big"
+
+/obj/effect/floor_decal/dank/bent
+	name = "bent tile"
+	icon_state = "bent"
+
+/obj/effect/floor_decal/dank/bent2
+	name = "bent tile"
+	icon_state = "bent2"
+
+/obj/effect/floor_decal/dank/missing
+	name = "gap"
+	icon_state = "missing"

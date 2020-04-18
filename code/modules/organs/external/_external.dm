@@ -21,6 +21,7 @@
 	var/last_dam = -1                  // used in healing/processing calculations.
 	var/pain = 0                       // How much the limb hurts.
 	var/pain_disability_threshold      // Point at which a limb becomes unusable due to pain.
+	var/retracted	=	FALSE			//	Is this limb retracted into its parent?  If true, the limb is not rendered and all hits are passed to parent
 
 	// A bitfield for a collection of limb behavior flags.
 	var/limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_BREAK
@@ -50,6 +51,7 @@
 	var/list/implants = list()         // Currently implanted objects.
 	var/base_miss_chance = 0          // Chance of missing.
 	var/genetic_degradation = 0
+
 
 	//Forensics stuff
 	var/list/autopsy_data = list()    // Trauma data for forensics.

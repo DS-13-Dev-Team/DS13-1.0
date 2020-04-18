@@ -2,6 +2,8 @@
 //
 // The datum containing all the chunks.
 
+#define CHUNK_SIZE	16
+
 /datum/visualnet
 	// The chunks of the map, mapping the areas that an object can see.
 	var/list/chunks = list()
@@ -50,13 +52,13 @@
 	var/turf/T = get_turf(eye)
 	if(T)
 		// 0xf = 15
-		var/x1 = max(0, T.x - 16) & ~0xf
-		var/y1 = max(0, T.y - 16) & ~0xf
-		var/x2 = min(world.maxx, T.x + 16) & ~0xf
-		var/y2 = min(world.maxy, T.y + 16) & ~0xf
+		var/x1 = max(0, T.x - CHUNK_SIZE) & ~0xf
+		var/y1 = max(0, T.y - CHUNK_SIZE) & ~0xf
+		var/x2 = min(world.maxx, T.x + CHUNK_SIZE) & ~0xf
+		var/y2 = min(world.maxy, T.y + CHUNK_SIZE) & ~0xf
 
-		for(var/x = x1; x <= x2; x += 16)
-			for(var/y = y1; y <= y2; y += 16)
+		for(var/x = x1; x <= x2; x += CHUNK_SIZE)
+			for(var/y = y1; y <= y2; y += CHUNK_SIZE)
 				. += get_chunk(x, y, T.z)
 
 	if(full_update)
@@ -110,7 +112,7 @@
 /datum/visualnet/proc/major_chunk_change(var/atom/source)
 	for_all_chunks_in_range(source, /datum/chunk/proc/visibility_changed, list())
 
-/datum/visualnet/proc/add_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE, var/chunk_update_radius = 1)
+/datum/visualnet/proc/add_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE)
 	if(!(source && is_type_in_list(source, valid_source_types)))
 		log_visualnet("Was given an unhandled source", source)
 		return FALSE
@@ -119,18 +121,18 @@
 	sources += source
 	GLOB.moved_event.register(source, src, /datum/visualnet/proc/source_moved)
 	GLOB.destroyed_event.register(source, src, /datum/visualnet/proc/remove_source)
-	for_all_chunks_in_range(source, /datum/chunk/proc/add_source, list(source), update_radius = chunk_update_radius)
+	for_all_chunks_in_range(source, /datum/chunk/proc/add_source, list(source), null, source.get_visualnet_range(src))
 	if(update_visibility)
 		update_visibility(source, opacity_check)
 	return TRUE
 
-/datum/visualnet/proc/remove_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE, var/chunk_update_radius = 1)
+/datum/visualnet/proc/remove_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE)
 	if(!sources.Remove(source))
 		return FALSE
 
 	GLOB.moved_event.unregister(source, src, /datum/visualnet/proc/source_moved)
 	GLOB.destroyed_event.unregister(source, src, /datum/visualnet/proc/remove_source)
-	for_all_chunks_in_range(source, /datum/chunk/proc/remove_source, list(source), update_radius = chunk_update_radius)
+	for_all_chunks_in_range(source, /datum/chunk/proc/remove_source, list(source), null, source.get_visualnet_range(src))
 	if(update_visibility)
 		update_visibility(source, opacity_check)
 	return TRUE
@@ -150,21 +152,30 @@
 		for_all_chunks_in_range(source, /datum/chunk/proc/add_source, list(source), new_turf)
 
 
-/datum/visualnet/proc/for_all_chunks_in_range(var/atom/source, var/proc_call, var/list/proc_args, var/turf/T, var/update_radius = 0)
-
+/datum/visualnet/proc/for_all_chunks_in_range(var/atom/source, var/proc_call, var/list/proc_args, var/turf/T, var/range)
 	T = T ? T : get_turf(source)
 	if(!T)
 		return
 
-	var/x1 = round(max(0, T.x - (8 + (16*update_radius))), 16)// & ~0xf
-	var/y1 = round(max(0, T.y - (8 + (16*update_radius))), 16)// & ~0xf
-	var/x2 = round(min(world.maxx, T.x + (8 + (16*update_radius))), 16)// & ~0xf
-	var/y2 = round(min(world.maxy, T.y + (8 + (16*update_radius))), 16)// & ~0xf
+	if (!range)
+		range = CHUNK_SIZE
 
-	for(var/x = x1; x <= x2; x += 16)
-		for(var/y = y1; y <= y2; y += 16)
+	var/x1 = floor_to_multiple(max(0, T.x - range), CHUNK_SIZE)// & ~0xf
+	var/y1 = floor_to_multiple(max(0, T.y - range), CHUNK_SIZE)// & ~0xf
+	var/x2 = ceiling_to_multiple(min(world.maxx, T.x + range), CHUNK_SIZE)// & ~0xf
+	var/y2 = ceiling_to_multiple(min(world.maxy, T.y + range), CHUNK_SIZE)// & ~0xf
+
+	for(var/x = x1; x <= x2; x += CHUNK_SIZE)
+		for(var/y = y1; y <= y2; y += CHUNK_SIZE)
 			var/datum/chunk/c = get_chunk(x, y, T.z)
 			call(c, proc_call)(arglist(proc_args))
+
+
+/client/proc/view_chunk()
+	set name = "View Chunk"
+	set category = "Debug"
+	var/turf/T = get_turf(mob)
+	T.view_chunk()
 
 // Debug verb for VVing the chunk that the turf is in.
 /turf/proc/view_chunk()
@@ -172,25 +183,25 @@
 	set category = "Debug"
 	set src in world
 
-	if(GLOB.cameranet.is_chunk_generated(x, y, z))
-		var/datum/chunk/chunk = GLOB.cameranet.get_chunk(x, y, z)
+	if(GLOB.necrovision.is_chunk_generated(x, y, z))
+		var/datum/chunk/chunk = GLOB.necrovision.get_chunk(x, y, z)
 		usr.client.debug_variables(chunk)
+
+/client/proc/update_chunk()
+	set name = "Update Chunk"
+	set category = "Debug"
+	var/turf/T = get_turf(mob)
+	T.update_chunk()
 
 /turf/proc/update_chunk()
 	set name = "Update Chunk"
 	set category = "Debug"
 	set src in world
 
-	if(GLOB.cameranet.is_chunk_generated(x, y, z))
-		var/datum/chunk/chunk = GLOB.cameranet.get_chunk(x, y, z)
+	if(GLOB.necrovision.is_chunk_generated(x, y, z))
+		var/datum/chunk/chunk = GLOB.necrovision.get_chunk(x, y, z)
 		chunk.visibility_changed(TRUE)
 
-//Overrideable proc for any datum to return what turfs it can "see" for visualnets
-/datum/proc/get_visualnet_tiles(var/datum/visualnet/network)
-	return list()
-
-/atom/get_visualnet_tiles(var/datum/visualnet/network)
-	return turfs_in_view()
 
 
 /turf/proc/is_in_visualnet(var/datum/visualnet/V)

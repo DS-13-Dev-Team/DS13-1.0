@@ -227,3 +227,41 @@
 
 /obj/item/stack/tile/carpetred/fifty
 	amount = 50
+
+//ds13 tiles
+
+/obj/item/stack/tile/dank
+	name = "grim floor tile"
+	desc = "A grim tile, supposedly ancient."
+	singular_name = "grim floor tile"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "dank"
+	matter = list(MATERIAL_STEEL = 937.5)
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+
+/obj/item/stack/tile/dank/fifty
+	amount = 50
+
+/obj/item/stack/tile/dankroller
+	name = "grim roller floor tile"
+	desc = "Should theoretically help moving heavy objects. Should, if not for the scathing."
+	singular_name = "grim roller floor tile"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "roller"
+	matter = list(MATERIAL_STEEL = 937.5)
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+
+/obj/item/stack/tile/dankroller/fifty
+	amount = 50
+
+/obj/item/stack/tile/dankheavy
+	name = "grim heavy floor tile"
+	desc = "Ancient but reinforced, might hold together unlike the rest of the ship."
+	singular_name = "grim heavy floor tile"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "dank_heavy"
+	matter = list(MATERIAL_STEEL = 937.5)
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+
+/obj/item/stack/tile/dankheavy/fifty
+	amount = 50

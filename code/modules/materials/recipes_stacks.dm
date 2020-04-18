@@ -57,3 +57,17 @@
 	res_amount = 2
 	max_res_amount = 60
 	time = 5
+
+//ds13 tile recipes
+
+/datum/stack_recipe/tile/metal/dank
+	title = "grim floor tile"
+	result_type = /obj/item/stack/tile/dank
+
+/datum/stack_recipe/tile/metal/dank_roller
+	title = "roller floor tile"
+	result_type = /obj/item/stack/tile/dankroller
+
+/datum/stack_recipe/tile/metal/dank_heavy
+	title = "grim heavy floor tile"
+	result_type = /obj/item/stack/tile/dankheavy

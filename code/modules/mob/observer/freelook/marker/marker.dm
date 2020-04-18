@@ -25,6 +25,10 @@
 	var/datum/necroshop/shop
 	var/active = FALSE //Marker must activate first
 
+
+	//Necrovision
+	visualnet_range = 12
+
 /obj/machinery/marker/New()
 	SSnecromorph.marker = src	//Populate the global var with ourselves
 	..()
@@ -211,7 +215,7 @@
 
 //The marker reveals an area around it, seeing through walls
 /obj/machinery/marker/get_visualnet_tiles(var/datum/visualnet/network)
-	return trange(10, src)
+	return trange(visualnet_range, src)
 
 //Spawnpoints
 /obj/machinery/marker/proc/add_spawnpoint(var/atom/source)

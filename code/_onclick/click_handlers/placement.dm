@@ -240,6 +240,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	var/obj/machinery/marker/biomass_source
 	var/biomass_cost = 0
 	var/require_corruption = TRUE
+	var/LOS_block = TRUE
 
 /datum/click_handler/placement/necromorph/placement_blocked(var/turf/candidate)
 	.=..()
@@ -252,6 +253,11 @@ GLOBAL_LIST_EMPTY(placement_previews)
 
 		if (require_corruption && !turf_corrupted(candidate))
 			return "This can only be placed on corrupted tiles."
+
+		if (LOS_block)
+			var/mob/M = candidate.is_seen_by_crew()
+			if (M)
+				return "Placement here is blocked, because [M] can see this tile. Must be placed out of sight"
 
 
 //Here, we won't spawn the item ourselves. Instead we assemble a spawn params list and pass it to the marker's necroshop to finish

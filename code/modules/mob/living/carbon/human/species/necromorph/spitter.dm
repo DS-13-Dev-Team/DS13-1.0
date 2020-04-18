@@ -158,6 +158,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 	On impact, the damage is applied immediately as burn, and the victim is doused in enough acid to deal that same amount of damage again over time.
 	The effectiveness of the acid component is heavily dependant on worn equipment
 */
+//This probably shouldn't be defined here, all acid projectiles are a child of this one, and it's not a logical place to look to find the parent. Perhaps a necro_projectiles.dm?
 /obj/item/projectile/bullet/acid
 	name = "acid bolt"
 	icon_state = "acid_small"
@@ -165,7 +166,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 	damage = 15
 	damage_type = BURN
 	nodamage = 0
-	check_armour = "bio"
+	check_armour = "laser"
 	embed = FALSE
 	sharp = FALSE
 	penetration_modifier = 0

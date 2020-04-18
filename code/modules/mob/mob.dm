@@ -286,6 +286,7 @@
 
 		if (ismob(client.eye))
 			var/mob/M = client.eye
+			visualnet_range = M.view_range
 			var/view_changed = FALSE
 			if (client.set_view_range(M.view_range))
 				view_changed = TRUE
