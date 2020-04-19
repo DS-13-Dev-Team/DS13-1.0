@@ -9,6 +9,10 @@
 
 	var/holy = 0
 
+	//Set this false when the turf is dense, or contains any dense atom
+	//A null value is maybe, it means we should check to find out. Set it null whenever any change happens to contents
+	var/clear = null
+
 	// Initial air contents (in moles)
 	var/list/initial_gas
 

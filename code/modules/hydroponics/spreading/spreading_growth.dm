@@ -1,5 +1,34 @@
 #define NEIGHBOR_REFRESH_TIME 100
-/obj/effect/vine/var/debug_vine = FALSE
+
+/*
+	Tile monitoring
+*/
+/obj/effect/vine
+	var/list/watched_tiles = list()	//What tiles are we watching for clarity updates?
+
+
+//This is called when we find a blocking obstacle, like a wall/window/door.
+//We set an observation on it so that, at some point, if it ever changes, we will wake up and try to spread into it again
+/obj/effect/vine/proc/watch_tile(var/turf/T)
+	if ((T in watched_tiles))
+		return	//Don't watch the same tile twice
+
+	GLOB.clarity_set_event.register(T, src, /obj/effect/vine/proc/watched_tile_updated)
+	watched_tiles += T
+
+//Remove the observations from tiles we're watching
+/obj/effect/vine/proc/unwatch_tiles()
+	for (var/turf/T in watched_tiles)
+		GLOB.clarity_set_event.unregister(T, src, /obj/effect/vine/proc/watched_tile_updated)
+
+	watched_tiles = list()
+
+//If a watched tile changes, lets wake up. This will wipe watched tiles, and start checks anew
+/obj/effect/vine/proc/watched_tile_updated(var/turf/T)
+	wake_up()
+
+
+
 
 
 /obj/effect/vine/proc/get_cardinal_neighbors()
@@ -35,32 +64,39 @@
 	if (zcheck)
 		candidates |= get_zlevel_neighbors()
 
-	for(var/turf/simulated/floor in candidates)
-		if(!can_spread_to(floor))
+	for(var/turf/T as anything in candidates)
+		var/result = can_spread_to(T, bounds)
+		//The special result of -1 is returned when we can't spread there yet, but maybe we can in future
+		if (result == -1)
+			watch_tile(T)
 			continue
-
-		var/blocked = 0
-		for(var/obj/effect/vine/other in floor.contents)
-			if(other.seed == src.seed)
-				blocked = 1
-				break
-		if(blocked)
-			continue
-
-		//Deleted polyacid code, world interactions should not be in getter functions
-		//It was also really bad anyways, i dealt with that mess on eris. plants causing hull breaches is dumb and nobody enjoys it
-		//If someone really wants it, it could be brought back, but not here
-			//~Nanako
-
-		if(!floor.Enter(src))
+		else if (result == FALSE)
 			continue
 
 
-
-		newneighbors |= floor
+		newneighbors |= T
 
 
 	return newneighbors
+
+
+/obj/effect/vine/proc/can_spread_to(var/turf/floor, var/bounds)
+	if(bounds && !can_reach(floor))
+		return FALSE
+
+	var/blocked = 0
+	for(var/obj/effect/vine/other in floor.contents)
+		if(other.seed == src.seed)
+			blocked = 1
+			break
+	if(blocked)
+		return FALSE
+
+	if(!floor.Enter(src))
+		watch_tile(floor)
+		return -1	//Special result
+
+	return TRUE
 
 
 /obj/effect/vine/Process()
@@ -148,7 +184,7 @@
 	return TRUE
 
 
-/obj/effect/vine/proc/can_spread_to(var/turf/floor)
+/obj/effect/vine/proc/can_reach(var/turf/floor)
 	if (get_dist_3D(parent, floor) <= spread_distance)
 		return TRUE
 	return FALSE
@@ -174,6 +210,7 @@
 		qdel(child)
 
 /obj/effect/vine/proc/wake_up(var/wake_adjacent = TRUE)
+	unwatch_tiles()	//Wipe our watched tiles so we can re-watch them, possibly less of them
 	update_neighbors()
 	update_icon()
 	START_PROCESSING(SSvines, src)

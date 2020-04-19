@@ -118,6 +118,7 @@
 		return FALSE
 	if(source in sources)
 		return FALSE
+
 	sources += source
 	GLOB.moved_event.register(source, src, /datum/visualnet/proc/source_moved)
 	GLOB.destroyed_event.register(source, src, /datum/visualnet/proc/remove_source)
@@ -193,12 +194,16 @@
 	var/turf/T = get_turf(mob)
 	T.update_chunk()
 
-/turf/proc/update_chunk()
+/turf/proc/update_chunk(var/force_update = TRUE, var/datum/visualnet/V)
 	set name = "Update Chunk"
 	set category = "Debug"
 	set src in world
 
-	if(GLOB.necrovision.is_chunk_generated(x, y, z))
+	if (!V)
+		V = GLOB.necrovision
+
+
+	if(V.is_chunk_generated(x, y, z))
 		var/datum/chunk/chunk = GLOB.necrovision.get_chunk(x, y, z)
 		chunk.visibility_changed(TRUE)
 

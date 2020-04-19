@@ -23,13 +23,13 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	growth_type = 0
 	var/vine_scale = 1.1
 	var/datum/extension/corruption_source/source
-	visualnet_range = 1
+
 
 
 /obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/corruption/newparent, var/start_matured = 0, var/datum/extension/corruption_source/newsource)
 
 	alpha = min_alpha
-	GLOB.necrovision.add_source(src)	//Corruption tiles add vision
+
 
 	if (!GLOB.corruption_seed)
 		GLOB.corruption_seed = new /datum/seed/corruption()
@@ -46,14 +46,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		source.unregister(src)
 	.=..()
 
-//Corruption tiles reveal their own tile, and surrounding dense obstacles. They will not reveal surrounding clear tiles
-/obj/effect/vine/corruption/get_visualnet_tiles(var/datum/visualnet/network)
-	var/list/visible_tiles = list(get_turf(src))
-	for (var/turf/T in orange(1, src))
-		if (!turf_clear(T))
-			visible_tiles.Add(T)
 
-	return visible_tiles
 
 
 //No calculating, we'll input all these values in the variables above
@@ -150,7 +143,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /obj/effect/vine/corruption/is_necromorph()
 	return TRUE
 
-/obj/effect/vine/corruption/can_spread_to(var/turf/floor)
+/obj/effect/vine/corruption/can_reach(var/turf/floor)
 	if (source.can_support(floor))
 		return TRUE
 
@@ -171,104 +164,20 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 
 
+/* Visualnet Handling */
+//-------------------
+//Corruption tiles reveal their own tile, and surrounding dense obstacles. They will not reveal surrounding clear tiles
+/obj/effect/vine/corruption/get_visualnet_tiles(var/datum/visualnet/network)
+	var/list/visible_tiles = list(get_turf(src))
+	for (var/turf/T in orange(1, src))
+		if (!turf_clear(T))
+			visible_tiles.Add(T)
 
+	return visible_tiles
 
-
-
-/*
-	Spreading Logic
-*/
-/datum/extension/corruption_source
-	expected_type = /atom
-	flags = EXTENSION_FLAG_IMMEDIATE
-	var/range = 12
-	var/growth_speed = 1	//Multiplier on growth speed
-	var/growth_distance_falloff = 0.15	//15% added to growth time for each tile of distance from the source
-	var/support_limit = null
-	var/atom/source
-	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
-	var/list/corruption_vines = list()	//A list of all the vines we're currently supporting
-
-
-/datum/extension/corruption_source/New(var/atom/holder, var/range, var/speed, var/falloff, var/limit)
-	source = holder
-	GLOB.corruption_sources |= src
-	plant = new (source.loc, GLOB.corruption_seed)
-	GLOB.moved_event.register(source, src, /datum/extension/corruption_source/proc/source_moved)
-	if (range)
-		src.range = range
-	if (speed)
-		growth_speed = speed
-	if (falloff)
-		growth_distance_falloff = falloff
-	if (limit)
-		support_limit = limit
-
-	new /obj/effect/vine/corruption(get_turf(source),GLOB.corruption_seed, start_matured = 1, newsource = src)
-
-/datum/extension/corruption_source/Destroy()
-	GLOB.corruption_sources -= src
-	qdel(plant)
-	update_vines()
+/obj/effect/vine/corruption/watched_tile_updated(var/turf/T)
+	source.needs_update = TRUE
 	.=..()
-
-
-
-/datum/extension/corruption_source/proc/register(var/obj/effect/vine/corruption/applicant)
-	if (!can_support(applicant))
-		return FALSE
-
-	//If its switching sources, remove from the old one first
-	if (applicant.source)
-		applicant.source.unregister(applicant)
-
-	corruption_vines |= applicant
-	applicant.plant = plant
-	applicant.source = src
-
-/datum/extension/corruption_source/proc/unregister(var/obj/effect/vine/corruption/applicant)
-	corruption_vines -= applicant
-	if (applicant.plant == plant)
-		applicant.plant = null
-	if (applicant.source == src)
-		applicant.source = src
-
-
-//Is this source able to provide support to a specified turf or corruption vine?
-/datum/extension/corruption_source/proc/can_support(var/atom/A)
-
-	//Hard numerical limits
-	if (support_limit)
-		if (corruption_vines.len >= support_limit)
-			return FALSE
-
-	var/turf/T = get_turf(A)
-	var/distance = get_dist_3D(get_turf(source), T)
-	//We check distance fist, it's quick and efficient
-	if (distance > range)
-		return FALSE
-
-
-	//TODO Future:
-		//View restricting
-
-
-	return TRUE
-
-
-/datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, var/old_loc, var/new_loc)
-	plant.forceMove(new_loc)
-	update_vines()
-
-
-//Called when a source moves, gets deleted, changes its radius or other parameters.
-//Tells all the associated vines to update various things, and/or find a new parent to support them now that we're gone
-//If we are being deleted, plant will be nulled out before calling this
-/datum/extension/corruption_source/proc/update_vines()
-	for (var/obj/effect/vine/corruption/C as anything in corruption_vines)
-		C.wake_up(FALSE)
-
-
 
 
 
