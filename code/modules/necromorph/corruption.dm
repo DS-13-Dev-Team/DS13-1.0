@@ -24,6 +24,10 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	var/vine_scale = 1.1
 	var/datum/extension/corruption_source/source
 
+	//This is only used for the uncommon edge case where this vine is on the border between multiple chunks
+	//Don't give it a value if unused, saves memory
+	var/list/chunks
+
 
 
 /obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/corruption/newparent, var/start_matured = 0, var/datum/extension/corruption_source/newsource)
@@ -159,26 +163,47 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 
 
-
+/obj/effect/vine/corruption/spread_to(turf/target_turf)
+	.=..()
+	var/obj/effect/vine/corruption/child = .
+	if (istype(child))
+		child.get_chunks()	//Populate the nearby chunks list, for later visual updates
 
 
 
 
 /* Visualnet Handling */
 //-------------------
-//Corruption tiles reveal their own tile, and surrounding dense obstacles. They will not reveal surrounding clear tiles
 /obj/effect/vine/corruption/get_visualnet_tiles(var/datum/visualnet/network)
-	var/list/visible_tiles = list(get_turf(src))
-	for (var/turf/T in orange(1, src))
-		if (!turf_clear(T))
-			visible_tiles.Add(T)
-
-	return visible_tiles
+	return trange(1, src)
 
 /obj/effect/vine/corruption/watched_tile_updated(var/turf/T)
 	source.needs_update = TRUE
 	.=..()
 
+//Finds all visualnet chunks that this vine could possibly infringe on.
+/obj/effect/vine/corruption/proc/get_chunks()
+	var/list/chunksfound = list(GLOB.necrovision.get_chunk(x, y, z))
+	for (var/direction in list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
+		var/turf/T = get_step(src, direction)
+		var/datum/chunk/newchunk = GLOB.necrovision.get_chunk(T.x, T.y, T.z)
+		if (istype(newchunk))
+			chunksfound |= newchunk
+
+
+	//We only care if there's more than one chunk
+	if (chunksfound.len > 1)
+		chunks = chunksfound
+
+/obj/effect/vine/corruption/proc/update_chunks()
+	//Clear the necrovision cache
+	GLOB.necrovision.visibility_cache = list()
+	if (chunks)
+		for (var/datum/chunk/C as anything in chunks)
+			C.visibility_changed()
+	else
+		var/turf/T = loc
+		T.update_chunk(FALSE)
 
 
 /* The seed */

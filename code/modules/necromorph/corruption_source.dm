@@ -62,8 +62,7 @@
 
 	//When we gain or lose a vine, our visualnet has changed
 	needs_update = TRUE
-	var/turf/T = applicant.loc
-	T.update_chunk(FALSE)	//Lets also update the chunk the vine is in. the false flag will ensure it only updates if someone is looking
+	applicant.update_chunks()	//Lets also update the chunk(s) the vine is in/next to
 
 /datum/extension/corruption_source/proc/unregister(var/obj/effect/vine/corruption/applicant)
 	corruption_vines -= applicant
@@ -74,8 +73,7 @@
 
 	//When we gain or lose a vine, our visualnet has changed
 	needs_update = TRUE
-	var/turf/T = applicant.loc
-	T.update_chunk(FALSE)	//Lets also update the chunk the vine is in. the false flag will ensure it only updates if someone is looking
+	applicant.update_chunks()	//Lets also update the chunk(s) the vine is in/next to
 
 
 //Is this source able to provide support to a specified turf or corruption vine?

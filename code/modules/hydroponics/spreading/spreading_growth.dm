@@ -206,6 +206,7 @@
 
 		//Update our neighbors list
 		update_neighbors()
+		return child
 	else
 		qdel(child)
 

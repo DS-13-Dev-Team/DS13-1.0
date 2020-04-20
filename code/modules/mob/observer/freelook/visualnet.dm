@@ -11,6 +11,10 @@
 	var/chunk_type = /datum/chunk
 	var/list/valid_source_types
 
+	//Temporary cache. Whenever a chunk updates, it tries to fetch data from here before asking the object directly,
+	//This cache is erased at the end of every major chunk update
+	var/list/visibility_cache = list()
+
 /datum/visualnet/New()
 	..()
 	GLOB.visual_nets += src
@@ -171,6 +175,11 @@
 			var/datum/chunk/c = get_chunk(x, y, T.z)
 			call(c, proc_call)(arglist(proc_args))
 
+	//Clear the cache after one major chunk update cycle
+	//This means we're getting less efficiency than we could have, but its simple and prevents bugs
+	//Possible future todo: Let it be cleared less often
+	visibility_cache = list()
+
 
 /client/proc/view_chunk()
 	set name = "View Chunk"
@@ -202,10 +211,12 @@
 	if (!V)
 		V = GLOB.necrovision
 
+	//Clear the cache when we do this. Its only for batching, not single chunk updates
+	V.visibility_cache = list()
 
 	if(V.is_chunk_generated(x, y, z))
 		var/datum/chunk/chunk = GLOB.necrovision.get_chunk(x, y, z)
-		chunk.visibility_changed(TRUE)
+		chunk.visibility_changed(force_update)
 
 
 
