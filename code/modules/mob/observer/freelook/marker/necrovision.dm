@@ -11,12 +11,15 @@
 	/obj/effect/psychic_tracer)
 	chunk_type = /datum/chunk/necrovision
 
+
+
+
 /datum/chunk/necrovision/acquire_visible_turfs(var/list/visible)
 	for(var/datum/source as anything in sources)
 		if (!istype(source))
 			sources.Remove(source)
 			continue
-		for(var/t in source.get_visualnet_tiles(visualnet)) //The marker has decent vision around itself
+		for(var/t in get_datum_visible_turfs(source))//source.get_visualnet_tiles(visualnet))
 			visible[t] = t
 
 

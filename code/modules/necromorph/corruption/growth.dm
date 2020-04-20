@@ -23,6 +23,12 @@
 	. = "This node acts as a heart for corruption spread, allowing it to extend out up to [range] tiles in all directions from the node. It must be placed on existing corruption from another propagator node, or from the marker."
 
 
+/obj/structure/corruption_node/growth/get_visualnet_tiles(var/datum/visualnet/network)
+	var/datum/extension/corruption_source/CS = get_extension(src, /datum/extension/corruption_source)
+	if (CS)
+		return CS.get_visualnet_tiles(network)
+	return list()
+
 /*
 	Smaller version for signals
 */

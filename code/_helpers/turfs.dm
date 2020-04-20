@@ -13,13 +13,21 @@
 	return (istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor))
 
 /proc/turf_clear(turf/T, var/ignore_mobs = FALSE)
+	if (!isnull(T.clear))
+		return T.clear
+
 	if (T.density)
+		T.clear = FALSE
 		return FALSE
 	for(var/atom/A in T)
 		if(A.density)
+			T.clear = FALSE
 			if (ignore_mobs && ismob(A))
 				continue
 			return FALSE
+
+	if (isnull(T.clear))
+		T.clear = TRUE
 	return TRUE
 
 

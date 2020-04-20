@@ -107,7 +107,7 @@
 	seenby |= eye
 	eye.visibleChunks |= src
 	if (dirty)
-		update()
+		update(FALSE)
 	if(eye.owner && eye.owner.client)
 		eye.owner.client.images += obscured
 
@@ -185,6 +185,15 @@
 
 /datum/chunk/proc/acquire_visible_turfs(var/list/visible)
 	return
+
+
+//Attempt to fetch from cache before asking the object to recalculate things
+/datum/chunk/proc/get_datum_visible_turfs(var/datum/A)
+	if (!visualnet.visibility_cache[A])
+		visualnet.visibility_cache[A] = A.get_visualnet_tiles(visualnet)
+	return visualnet.visibility_cache[A]
+
+
 
 /proc/seen_turfs_in_range(var/source, var/range)
 	var/turf/pos = get_turf(source)
