@@ -32,16 +32,19 @@
 //An invisible object that allows the necrovision to see around it. Deletes itself after 1 minute
 /obj/effect/scry_eye
 	visualnet_range = 6
-
+	var/lifespan = 1 MINUTE
 
 /obj/effect/scry_eye/Initialize()
 	.=..()
 	GLOB.necrovision.add_source(src, TRUE, TRUE)	//Add it as a vision source
 
 	set_light(1, 1, 6, 2, COLOR_NECRO_YELLOW)
-	QDEL_IN(src, 1 MINUTE)
+	QDEL_IN(src, lifespan)
 
+//Prevent it getting blown up
+/obj/effect/scry_eye/ex_act()
+	return null
 
 /obj/effect/scry_eye/get_visualnet_tiles(var/datum/visualnet/network)
 
-	return turfs_in_view(visualnet_range)
+	return trange(visualnet_range, src)

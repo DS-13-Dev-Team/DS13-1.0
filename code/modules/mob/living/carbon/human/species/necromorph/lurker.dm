@@ -54,8 +54,8 @@
 	has_organ = list(    // which required-organ checks are conducted.
 	BP_HEART =    /obj/item/organ/internal/heart/undead,
 	BP_LUNGS =    /obj/item/organ/internal/lungs/undead,
-	BP_BRAIN =    /obj/item/organ/internal/brain/undead/lurker,
-	BP_EYES =     /obj/item/organ/internal/eyes/lurker
+	BP_BRAIN =    /obj/item/organ/internal/brain/undead/torso,
+	BP_EYES =     /obj/item/organ/internal/eyes/torso
 	)
 
 	organ_substitutions = list(BP_L_LEG = BP_CHEST,
@@ -188,11 +188,7 @@ The Lurker can only fire spines while its shell is open"
 	icon_name = "tentacle_3"
 	retracted = TRUE
 
-/obj/item/organ/internal/brain/undead/lurker
-	parent_organ = BP_CHEST
 
-/obj/item/organ/internal/eyes/lurker
-	parent_organ = BP_CHEST
 
 
 //Special death condition: Lurkers die if they lose all three tentacles

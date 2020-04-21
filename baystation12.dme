@@ -1749,6 +1749,7 @@
 #include "code\modules\mob\living\logout.dm"
 #include "code\modules\mob\living\psychosis_new.dm"
 #include "code\modules\mob\living\say.dm"
+#include "code\modules\mob\living\abilities\auto_sound.dm"
 #include "code\modules\mob\living\abilities\brute_curl.dm"
 #include "code\modules\mob\living\abilities\charge.dm"
 #include "code\modules\mob\living\abilities\charge_brute.dm"

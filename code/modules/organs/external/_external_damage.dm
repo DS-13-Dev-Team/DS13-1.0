@@ -1,6 +1,13 @@
 /****************************************************
 			   DAMAGE PROCS
 ****************************************************/
+//Organ bullet act. Only used for organs already on the ground when they are shot
+/obj/item/organ/external/bullet_act(var/obj/item/projectile/P, var/def_zone)
+	if (P.damtype == BRUTE)
+		take_external_damage(P.damage, 0, P.damage_flags(), P)
+	else if (P.damtype == BURN)
+		take_external_damage(0, P.damage, P.damage_flags(), P)
+
 
 /obj/item/organ/external/proc/is_damageable(var/additional_damage = 0)
 	//Continued damage to vital organs can kill you, and robot organs don't count towards total damage so no need to cap them.
@@ -39,13 +46,17 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 			spillover = brute_dam + burn_dam + brute + burn - max_damage
 			if(spillover > 0)
 				burn = max(burn - spillover, 0)
-	owner.updatehealth() //droplimb will call updatehealth() again if it does end up being called
 
+	//There may not be an owner if this organ is severed and taking damage while on the floor
+	if (owner)
+		owner.updatehealth() //droplimb will call updatehealth() again if it does end up being called
 
-	if(status & ORGAN_BROKEN && brute)
-		jostle_bone(brute)
-		if(can_feel_pain() && prob(40))
-			owner.emote("scream")	//getting hit on broken hand hurts
+	//There may not be an owner if this organ is severed and taking damage while on the floor
+	if (owner)
+		if(status & ORGAN_BROKEN && brute)
+			jostle_bone(brute)
+			if(can_feel_pain() && prob(40))
+				owner.emote("scream")	//getting hit on broken hand hurts
 
 	if(brute_dam > min_broken_damage && prob(brute_dam + brute * (1+blunt)) ) //blunt damage is gud at fracturing
 		fracture()
@@ -67,45 +78,52 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	if(burn)
 		if(laser)
 			createwound(LASER, burn)
-			if(prob(40))
+			if(prob(40) && owner)
 				owner.IgniteMob()
 		else
 			createwound(BURN, burn)
 
-	//Initial pain spike
-	add_pain(0.5*burn + 0.4*brute)
 
-	//Disturb treated burns
-	if(brute > 5)
-		var/disturbed = 0
-		for(var/datum/wound/burn/W in wounds)
-			if((W.disinfected || W.salved) && prob(brute + W.damage))
-				W.disinfected = 0
-				W.salved = 0
-				disturbed += W.damage
-		if(disturbed)
-			to_chat(owner,"<span class='warning'>Ow! Your burns were disturbed.</span>")
-			add_pain(0.3*disturbed)
-
-	//If there are still hurties to dispense
-	if (spillover)
-		owner.shock_stage += spillover * config.organ_damage_spillover_multiplier
 
 	// sync the organ's damage with its wounds
 	update_damages()
-	owner.updatehealth()
 
-	//If limb took enough damage, try to cut or tear it off
-	if(owner && loc == owner && !is_stump())
-		if((limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && config.limbs_can_break)
-			var/total_damage = brute_dam + burn_dam + brute + burn + spillover
-			var/threshold = max_damage * config.organ_health_multiplier
-			if(total_damage > threshold)
-				if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*3))
-					return
+	//There may not be an owner if this organ is severed and taking damage while on the floor
+	if (owner)
+		//Initial pain spike
+		add_pain(0.5*burn + 0.4*brute)
 
-	if(owner && update_damstate())
-		owner.UpdateDamageIcon()
+		//Disturb treated burns
+		if(owner && brute > 5)
+			var/disturbed = 0
+			for(var/datum/wound/burn/W in wounds)
+				if((W.disinfected || W.salved) && prob(brute + W.damage))
+					W.disinfected = 0
+					W.salved = 0
+					disturbed += W.damage
+			if(disturbed)
+				to_chat(owner,"<span class='warning'>Ow! Your burns were disturbed.</span>")
+				add_pain(0.3*disturbed)
+
+		//If there are still hurties to dispense
+		if (spillover && owner)
+			owner.shock_stage += spillover * config.organ_damage_spillover_multiplier
+
+
+
+		owner.updatehealth()
+
+		//If limb took enough damage, try to cut or tear it off
+		if(loc == owner && !is_stump())
+			if((limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && config.limbs_can_break)
+				var/total_damage = brute_dam + burn_dam + brute + burn + spillover
+				var/threshold = max_damage * config.organ_health_multiplier
+				if(total_damage > threshold)
+					if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*3))
+						return
+
+		if(owner && update_damstate())
+			owner.UpdateDamageIcon()
 
 	return created_wound
 
