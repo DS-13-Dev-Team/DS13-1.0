@@ -165,7 +165,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	tendon_name = "carpal ligament"
 	arterial_bleed_severity = 0.5
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE
-	base_miss_chance = -5	//Big target
+	base_miss_chance = -5	//Big  target
 	var/exploded = FALSE
 
 //The pustule casts soft yellow light in a broad area
