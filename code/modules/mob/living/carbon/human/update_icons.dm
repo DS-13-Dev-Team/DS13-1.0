@@ -255,7 +255,6 @@ var/global/list/damage_icon_parts = list()
 
 	//Maybe we were just gibbed
 	if (QDELETED(src))
-		world << "human gibbed, returning"
 		return
 
 	var/husk_color_mod = rgb(96,88,80)

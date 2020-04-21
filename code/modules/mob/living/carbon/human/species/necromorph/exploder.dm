@@ -1,10 +1,6 @@
 /*
 	Exploder variant, the most common necromorph.
 
-	TODO:
-		Light
-		Charge attack
-		audio
 */
 
 /datum/species/necromorph/exploder
@@ -28,7 +24,7 @@
 	spawner_spawnable = TRUE
 
 	//Audio
-	step_volume = 100
+	step_volume = VOLUME_QUIET
 	step_range = 6	//We want to hear it coming
 	step_priority = 3
 
@@ -169,7 +165,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	tendon_name = "carpal ligament"
 	arterial_bleed_severity = 0.5
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE
-	base_miss_chance = 5
+	base_miss_chance = -5	//Big target
 	var/exploded = FALSE
 
 //The pustule casts soft yellow light in a broad area
@@ -290,7 +286,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 /obj/item/organ/external/arm/simple/exploder
 	w_class = ITEM_SIZE_SMALL
 	arterial_bleed_severity = 0
-	base_miss_chance = 0	//Easy to hit, missing this would feel unfair
+	base_miss_chance = 20	//Thin and hard target, trying to shoot this is a risky move
 
 //When severed, the arm is always cut cleanly, so that the pustule drops off without detonating
 /obj/item/organ/external/arm/simple/exploder/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent)
