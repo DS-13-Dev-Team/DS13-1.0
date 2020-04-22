@@ -232,7 +232,7 @@ ALLOW_HOLIDAYS
 TICKLAG 0.7
 
 ##Defines world FPS. Defaults to 20.
-# FPS 20
+FPS 20
 
 ## Whether the server will talk to other processes through socket_talk
 SOCKET_TALK 0
