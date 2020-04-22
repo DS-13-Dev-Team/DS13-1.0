@@ -66,7 +66,7 @@
 	//Defense
 	total_health = 80
 	healing_factor = 0	//Necromorphs don't naturally heal, but they will be able to heal through certain situational effects
-	limb_health_factor = 0.65	//Limbs easier to cut off
+	limb_health_factor = 0.60	//Limbs easier to cut off
 	wound_remnant_time = 0 //No cuts sitting around forever
 	burn_mod = 1.3	//Takes more damage from burn attacks
 	weaken_mod = 0.75	//Get back up faster
@@ -83,7 +83,7 @@
 			Damage to the chest and groin is treated as being multiplied by this,
 	*/
 
-	var/dismember_mult = 1.4
+	var/dismember_mult = 1.3
 	/*
 		For the purpose of determining whether or not the necromorph has taken enough damage to be killed:
 			A limb which is completely severed counts as its max damage multiplied by this

@@ -1,6 +1,40 @@
 ///This file is for procs which find atoms in the world near other atoms. View, range, etc
 //I got sick of these being scattered far and wide
 
+/*
+	Dview
+*/
+GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
+
+//Version of view() which ignores darkness, because BYOND doesn't have it.
+/proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
+	if(!center)
+		return
+
+	GLOB.dview_mob.loc = center
+	GLOB.dview_mob.see_invisible = invis_flags
+	. = view(range, GLOB.dview_mob)
+	GLOB.dview_mob.loc = null
+
+/mob/dview
+	invisibility = 101
+	density = 0
+
+	anchored = 1
+	simulated = 0
+
+	see_in_dark = 1e6
+
+	virtual_mob = null
+
+/mob/dview/Destroy()
+	crash_with("Prevented attempt to delete dview mob: [log_info_line(src)]")
+	return QDEL_HINT_LETMELIVE // Prevents destruction
+
+
+
+
+
 //Mob
 
 /atom/proc/atoms_in_view(var/check_range = world.view)
@@ -370,3 +404,57 @@ proc
 	for (var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
 		.+=T
+
+
+//This proc attempts to get all mobs who are able to see this atom
+//Set required type to /mob/living to exclude ghosts
+/atom/proc/get_viewers(var/maxrange = 20, var/required_type = /mob, var/once_only = FALSE)
+	var/list/our_viewers = list()
+	//Make this variable but don't generate it yet
+	var/list/view_area
+
+	var/turf/origin = get_turf(src)
+
+	//This is a list of all mobs with clients. At any given time it might contain 0-100 things
+	//Searching this is much cheaper than searching the contents of a view call, which is often several thousand atoms
+	for (var/mob/A as anything in GLOB.player_list)
+		//A mob seeing itself doesnt count
+		if (A == src)
+			continue
+
+		if (!istype(A, required_type))
+			continue
+		//No support for cross-zlevel viewing yet
+		if (A.z != src.z)
+			continue
+
+		//Distance checks are simplest
+		if (get_dist(src, A) > maxrange)
+			continue
+
+		//Alright if we get here, then someone might possibly be able to see this object, here we start the more expensive checks
+		var/client/C = A.get_client()
+		if (!C)
+			continue
+
+		//Lets see if this item falls within the candidate's screen
+		if (!C.is_on_screen(src))
+			continue
+
+		//TODO HERE: Check if the viewer has xray vision?
+
+		//Aaand finally, the most expensive of all, view calls. We've deferred generating view_area so far incase we didn't need to get this far.
+		//now we need it, so generate it
+		if (!view_area)
+			view_area = dview(maxrange, origin)
+
+		var/turf/T = get_turf(A)
+		if (!(T in view_area))
+			continue
+
+		//Alright we're done. If we've reached this point, then this guy can see us
+		our_viewers |= A
+
+		if (once_only)
+			break
+	return our_viewers

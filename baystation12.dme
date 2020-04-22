@@ -278,6 +278,7 @@
 #include "code\datums\extensions\label.dm"
 #include "code\datums\extensions\penetration.dm"
 #include "code\datums\extensions\proximity.dm"
+#include "code\datums\extensions\unseen_deletion.dm"
 #include "code\datums\extensions\wallmount.dm"
 #include "code\datums\extensions\appearance\appearance.dm"
 #include "code\datums\extensions\appearance\base_icon_state.dm"

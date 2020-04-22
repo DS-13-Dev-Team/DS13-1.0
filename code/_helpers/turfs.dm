@@ -197,26 +197,14 @@
 */
 /turf/proc/is_seen_by_crew()
 	.=FALSE
-	for (var/mob/living/carbon/human/H in view(20, src))
-		if (!H.client)
-			//Disconnected people don't see
-			continue
-
+	for (var/mob/living/carbon/human/H as anything in get_viewers(20, /mob/living/carbon/human))
 		if (H.is_necromorph())
 			//Necromorphs don't count
 			continue
-
-		if (H.stat == DEAD)
-			continue	//The dead can't see
-
 		if (H.stat == UNCONSCIOUS)
 			//Sleeping people can see one tile around them
 			if (get_dist(src, H) >= 2)
 				continue
-
-		//Onscreen check is the most expensive, we'll do that last, and only for conscious people
-		else if (!H.client.is_on_screen(src))
-			continue
 
 		return H
 

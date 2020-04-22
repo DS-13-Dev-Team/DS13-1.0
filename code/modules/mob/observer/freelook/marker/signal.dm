@@ -95,6 +95,10 @@
 		to_chat(src, SPAN_DANGER("That can't be possessed!"))
 		return
 
+	if (L.stat == DEAD)
+		to_chat(src, SPAN_DANGER("That vessel is damaged beyond usefulness"))
+		return
+
 	if (!L.is_necromorph())
 		to_chat(src, SPAN_DANGER("You can only possess necromorph units."))
 		return
