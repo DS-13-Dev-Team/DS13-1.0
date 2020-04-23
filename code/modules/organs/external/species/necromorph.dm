@@ -106,3 +106,14 @@
 	normal_eyes = FALSE
 	glowing_eyes = TRUE
 	eye_icon_location = 'icons/mob/necromorph/slasher_enhanced.dmi'
+
+
+
+//Torso Eyes and Brain
+//-----------------------
+//For mobs without a head, or whose head simply isn't considered a seperate bodypart in technical terms
+/obj/item/organ/internal/brain/undead/torso
+	parent_organ = BP_CHEST
+
+/obj/item/organ/internal/eyes/torso
+	parent_organ = BP_CHEST

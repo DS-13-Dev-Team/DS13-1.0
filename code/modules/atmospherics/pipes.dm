@@ -17,6 +17,11 @@
 	buckle_lying = -1
 	var/datum/sound_token/sound_token
 
+//Added by nanako, makes pipes immune to explosions.
+//They're everywhere, blowing them up is functionally irreparable damage, and one bomb ruins the game. its not worth it
+/obj/machinery/atmospherics/pipe/ex_act()
+	return FALSE
+
 /obj/machinery/atmospherics/pipe/drain_power()
 	return -1
 

@@ -79,7 +79,7 @@
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 175
 	slowdown = 2.8
-	biomass = 175
+	biomass = 150
 	mass = 120
 	mob_size	= MOB_LARGE
 	bump_flag 	= HEAVY

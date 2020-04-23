@@ -23,9 +23,26 @@
 	var/rotation = 2+soft_cap(intensity, 1, 1, 0.94)
 	var/offset = 1+soft_cap(intensity*0.3, 1, 1, 0.8)
 	var/time = 2+soft_cap(intensity*0.3, 2, 1, 0.92)
-	animate(src, transform=turn(transform, rotation*shake_dir), pixel_x=init_px + offset*shake_dir, time=1)
-	animate(transform=initial_transform, pixel_x=init_px, time=time, easing=ELASTIC_EASING,flags = ANIMATION_PARALLEL)
+	animate(src, transform=turn(transform, rotation*shake_dir), pixel_x=init_px + offset*shake_dir, time=1, flags = ANIMATION_PARALLEL)
+	animate(transform=initial_transform, pixel_x=init_px, time=time, easing=ELASTIC_EASING)
 
+
+/atom/proc/custom_shake_animation(var/rotation = 15, var/offset = 3, var/time = 10, var/y_offset = TRUE, var/parallel = TRUE)
+	var/initial_transform = new/matrix(transform)
+	var/vector2/init_px = new /vector2(pixel_x, pixel_y)
+
+	var/shake_dir = pick(-1, 1)
+
+	var/vector2/newpix = new /vector2(init_px.x, init_px.y)
+	newpix.x += offset * pick(-1, 1)
+	if (y_offset)
+		newpix.y += offset * pick(-1, 1)
+
+	var/aflags = 0
+	if (parallel)
+		aflags |= ANIMATION_PARALLEL
+	animate(src, transform=turn(transform, rotation*shake_dir), pixel_x=newpix.x, pixel_y = newpix.y + offset*shake_dir, time=1, flags = aflags)
+	animate(transform=initial_transform, pixel_x=init_px.x, pixel_y=init_px.y, time=(time-1), easing=ELASTIC_EASING)
 
 //Duration is in deciseconds
 //Strength is an offset in tiles
