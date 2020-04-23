@@ -1,13 +1,22 @@
+/obj/machinery/camera/network/cargo
+	network = list(NETWORK_CARGO)
+
+/obj/machinery/camera/network/crew
+	network = list(NETWORK_CREW)
+
 /obj/machinery/camera/network/engineering
 	network = list(NETWORK_ENGINEERING)
 
-/obj/machinery/camera/network/ert
+/obj/machinery/camera/network/ert			//Unused
 	network = list(NETWORK_ERT)
+
+/obj/machinery/camera/network/maintenance
+	network = list(NETWORK_MAINTENANCE)
 
 /obj/machinery/camera/network/medbay
 	network = list(NETWORK_MEDICAL)
 
-/obj/machinery/camera/network/mercenary
+/obj/machinery/camera/network/mercenary		//Unused
 	network = list(NETWORK_MERCENARY)
 
 /obj/machinery/camera/network/mining
