@@ -79,9 +79,19 @@
 /datum/biomass_source/reclaim
 
 
+
+//Once we've completely absorbed our source, make the body quietly vanish when nobody is looking
+/datum/biomass_source/reclaim/mass_exhausted()
+	var/mob/M = locate(source)
+	if (!QDELETED(M))
+		DELETE_UNSEEN(M)
+
+
+
 //Absorbing dead humans
 //------------------------
 /datum/biomass_source/convergence
+
 
 //Todo here: Check if the human body is near enough to the marker, or some sort of corruption-corpse-deposit node
 //If its too far away, return pause

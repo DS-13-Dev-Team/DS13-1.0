@@ -17,7 +17,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	votable = TRUE
 	var/evac_points = 0
 	var/evac_threshold = 85 //2 hours until you get to evac.
-	var/marker_setup_time = 25 MINUTES
+	var/marker_setup_time = 45 MINUTES
 
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
