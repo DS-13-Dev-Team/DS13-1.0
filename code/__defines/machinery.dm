@@ -32,15 +32,19 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define AI_CAMERA_LUMINOSITY 6
 
 // Camera networks
-#define NETWORK_CRESCENT "Crescent"
+#define NETWORK_CARGO "Cargo"
+#define NETWORK_COMMON "Common"
+#define NETWORK_CREW "Crew"
+#define NETWORK_CRESCENT "Crescent"             //Unused
 #define NETWORK_ENGINEERING "Engineering"
-#define NETWORK_ERT "ZeEmergencyResponseTeam"
-#define NETWORK_EXODUS "Exodus"
+#define NETWORK_ERT "ZeEmergencyResponseTeam"   //Unused
+#define NETWORK_EXODUS "Exodus"                 //Unused
+#define NETWORK_MAINTENANCE "Maintenance"
 #define NETWORK_MEDICAL "Medical"
-#define NETWORK_MERCENARY "MercurialNet"
+#define NETWORK_MERCENARY "MercurialNet"        //Unused
 #define NETWORK_MINE "Mining"
 #define NETWORK_RESEARCH "Research"
-#define NETWORK_ROBOTS "Robots"
+#define NETWORK_ROBOTS "Robots"                 //Unused
 #define NETWORK_SECURITY "Security"
 #define NETWORK_THUNDER "Thunderdome"
 

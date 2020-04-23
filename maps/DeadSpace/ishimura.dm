@@ -12,6 +12,18 @@
 	admin_levels = list()
 	empty_levels = list(5)
 	accessible_z_levels = list("1"=1,"2"=1,"3"=2,"4"=3)
+	station_networks = list(
+		NETWORK_CARGO,
+		NETWORK_COMMON,
+		NETWORK_CREW,
+		NETWORK_ENGINEERING,
+		NETWORK_MAINTENANCE,
+		NETWORK_MEDICAL,
+		NETWORK_MINE,
+		NETWORK_RESEARCH,
+		NETWORK_SECURITY,
+		NETWORK_THUNDER,
+	)
 	/*
 	base_floor_type = /turf/simulated/floor/reinforced/airless
 	base_floor_area = /area/maintenance/exterior
