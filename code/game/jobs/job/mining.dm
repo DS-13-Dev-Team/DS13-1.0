@@ -8,6 +8,7 @@
 	selection_color = "#515151"
 	minimal_player_age = 18
 	ideal_character_age = 30
+	starting_credits = 7620
 
 	access = list(access_dom, access_bridge, access_mining)
 	outfit_type = /decl/hierarchy/outfit/job/mining/dom
@@ -21,6 +22,7 @@
 	supervisors = "the Director of Mining"
 	selection_color = "#515151"
 	minimal_player_age = 18
+	starting_credits = 2400
 
 	access = list(access_mining)
 	outfit_type = /decl/hierarchy/outfit/job/mining/foreman
@@ -34,6 +36,7 @@
 	supervisors = "the Director of Mining"
 	selection_color = "#515151"
 	minimal_player_age = 18
+	starting_credits = 670
 
 	access = list(access_mining)
 	outfit_type = /decl/hierarchy/outfit/job/mining/planet_cracker

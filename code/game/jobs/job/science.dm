@@ -10,6 +10,7 @@
 	req_admin_notify = 1
 	minimal_player_age = 18
 	ideal_character_age = 50
+	starting_credits = 4995
 
 	access = list(access_cscio, access_bridge, access_research, access_medical)
 	outfit_type = /decl/hierarchy/outfit/job/science/cscio
@@ -24,6 +25,7 @@
 	selection_color = "#633d63"
 	minimal_player_age = 18
 	ideal_character_age = 26
+	starting_credits = 2690
 
 	access = list(access_research, access_medical)
 	outfit_type = /decl/hierarchy/outfit/job/science/ra

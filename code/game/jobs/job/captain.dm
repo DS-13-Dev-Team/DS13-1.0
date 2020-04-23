@@ -10,6 +10,7 @@
 	req_admin_notify = 1
 	minimal_player_age = 18
 	ideal_character_age = 50
+	starting_credits = 9070
 
 	access = list(access_captain, access_bridge, access_security, access_armory, access_service,
 				access_cargo, access_mining, access_engineering,
@@ -28,6 +29,7 @@
 	req_admin_notify = 1
 	minimal_player_age = 18
 	ideal_character_age = 35
+	starting_credits = 6480
 
 	access = list(access_fl, access_bridge, access_security, access_armory, access_maint_tunnels,
 				access_keycard_auth)
@@ -42,6 +44,7 @@
 	selection_color = "#2f2f7f"
 	minimal_player_age = 18
 	ideal_character_age = 27
+	starting_credits = 3400
 
 	access = list(access_bridge, access_security, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/command/bo

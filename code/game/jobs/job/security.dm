@@ -9,6 +9,7 @@
 	selection_color = "#8e2929"
 	req_admin_notify = 1
 	minimal_player_age = 18
+	starting_credits = 4595
 
 	access = list(access_bridge, access_cseco, access_armory, access_security, access_maint_tunnels,
 					access_external_airlocks)
@@ -23,6 +24,7 @@
 	supervisors = "the Chief Security Officer"
 	selection_color = "#601c1c"
 	minimal_player_age = 18
+	starting_credits = 3400
 
 	access = list(access_armory, access_security, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/security/sso
@@ -36,6 +38,7 @@
 	supervisors = "the Chief Security Officer and Senior Security Officer"
 	selection_color = "#601c1c"
 	minimal_player_age = 18
+	starting_credits = 3072
 
 	access = list(access_security, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/security/officer

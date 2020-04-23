@@ -10,6 +10,7 @@
 	req_admin_notify = 1
 	minimal_player_age = 18
 	ideal_character_age = 50
+	starting_credits = 5080
 
 	access = list(access_smo, access_bridge, access_maint_tunnels, access_medical, access_chemistry,
 				access_surgery)
@@ -24,6 +25,7 @@
 	supervisors = "the Senior Medical Officer"
 	selection_color = "#013d3b"
 	minimal_player_age = 18
+	starting_credits = 3500
 
 	access = list(access_medical, access_chemistry)
 	outfit_type = /decl/hierarchy/outfit/job/medical/md
@@ -37,6 +39,7 @@
 	supervisors = "the Senior Medical Officer"
 	selection_color = "#013d3b"
 	minimal_player_age = 18
+	starting_credits = 4440
 
 	access = list(access_medical, access_surgery)
 	outfit_type = /decl/hierarchy/outfit/job/medical/surg
