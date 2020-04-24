@@ -8,7 +8,7 @@ var/const/MSC               =(1<<6)
 var/const/SRV               =(1<<7)
 var/const/SUP               =(1<<8)
 var/const/SPT               =(1<<9)
-var/const/EXP               =(1<<10)
+var/const/MIN               =(1<<10)
 
 GLOBAL_LIST_EMPTY(assistant_occupations)
 
@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(supply_positions)
 
 GLOBAL_LIST_EMPTY(support_positions)
 
-GLOBAL_LIST_EMPTY(exploration_positions)
+GLOBAL_LIST_EMPTY(mining_positions)
 
 GLOBAL_LIST_EMPTY(unsorted_positions) // for nano manifest
 

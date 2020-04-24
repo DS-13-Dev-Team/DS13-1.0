@@ -1,7 +1,7 @@
 /datum/job/dom
 	title = "Director of Mining"
-	department = "Supply"
-	department_flag = SUP
+	department = "Mining"
+	department_flag = MIN
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Captain"
@@ -15,8 +15,8 @@
 
 /datum/job/foreman
 	title = "Mining Foreman"
-	department = "Supply"
-	department_flag = SUP
+	department = "MINING"
+	department_flag = MIN
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Director of Mining"
@@ -29,8 +29,8 @@
 
 /datum/job/planet_cracker
 	title = "Planet Cracker"
-	department = "Supply"
-	department_flag = SUP
+	department = "Mining"
+	department_flag = MIN
 	total_positions = 14
 	spawn_positions = 14
 	supervisors = "the Director of Mining"

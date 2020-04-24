@@ -159,7 +159,7 @@
 
 /decl/hierarchy/mil_uniform/ec/exp
 	name = "EC exploration"
-	departments = EXP
+	departments = MIN
 
 	utility_extra = list(/obj/item/clothing/head/beret/solgov/expedition/exploration, /obj/item/clothing/head/ushanka/solgov, /obj/item/clothing/suit/storage/hooded/wintercoat/solgov)
 	utility_under = /obj/item/clothing/under/solgov/utility/expeditionary/exploration

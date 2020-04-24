@@ -159,9 +159,9 @@
 			</td>
 		  </tr>
 		  <tr>
-			<th style="color: '#68099e';">Exploration</th>
+			<th style="color: '#68099e';">Mining</th>
 			<td>
-			  {{for data.exploration_jobs}}
+			  {{for data.mining_jobs}}
 				{{:helper.link(value.display_name, '', {'action' : 'assign', 'assign_target' : value.job}, data.id_rank == value.job ? 'disabled' : null)}}
 			  {{/for}}
 			</td>

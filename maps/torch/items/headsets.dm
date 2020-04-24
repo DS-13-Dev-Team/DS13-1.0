@@ -68,7 +68,7 @@
 
 /obj/item/device/radio/headset/bridgeofficer
 	name = "bridge officer's headset"
-	desc = "A headset with access to the command, engineering and exploration channels."
+	desc = "A headset with access to the command, engineering and mining channels."
 	icon_state = "com_headset"
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/bridgeofficer
@@ -79,22 +79,22 @@
 	item_state = "com_headset_alt"
 	max_keys = 4
 
-/obj/item/device/radio/headset/exploration
-	name = "exploration headset"
-	desc = "A headset for real tools, with access to the exploration channel. It has an inbuilt subspace antenna for better reception."
+/obj/item/device/radio/headset/mining
+	name = "mining headset"
+	desc = "A headset for real tools, with access to the mining channel. It has an inbuilt subspace antenna for better reception."
 	icon_state = "exp_headset"
 	item_state = "headset"
-	ks1type = /obj/item/device/encryptionkey/exploration
+	ks1type = /obj/item/device/encryptionkey/mining
 
-/obj/item/device/radio/headset/exploration/alt
-	name = "exploration bowman headset"
-	desc = "A headset for real tools, with access to the exploration channel. It has an inbuilt subspace antenna for better reception."
+/obj/item/device/radio/headset/mining/alt
+	name = "mining bowman headset"
+	desc = "A headset for real tools, with access to the mining channel. It has an inbuilt subspace antenna for better reception."
 	icon_state = "exp_headset_alt"
 	item_state = "exp_headset_alt"
 
 /obj/item/device/radio/headset/pathfinder
 	name = "pathfinder's headset"
-	desc = "A headset with access to the command and exploration channels. It has an inbuilt subspace antenna for better reception."
+	desc = "A headset with access to the command and mining channels. It has an inbuilt subspace antenna for better reception."
 	icon_state = "exp_headset"
 	item_state = "exp_headset"
 	ks1type = /obj/item/device/encryptionkey/pathfinder

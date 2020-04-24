@@ -470,10 +470,10 @@
 				counter = 0
 		jobs += "</tr></table>"
 
-	//Exploration (Pale Purple)
+	//Mining (Pale Purple)
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='b784a7'><th colspan='[length(GLOB.exploration_positions)]'><a href='?src=\ref[src];jobban3=explorationdept;jobban4=\ref[M]'>Exploration Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in GLOB.exploration_positions)
+		jobs += "<tr bgcolor='b784a7'><th colspan='[length(GLOB.mining_positions)]'><a href='?src=\ref[src];jobban3=miningdept;jobban4=\ref[M]'>Mining Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in GLOB.mining_positions)
 			if(!jobPos)	continue
 			var/datum/job/job = job_master.GetJob(jobPos)
 			if(!job) continue
@@ -684,8 +684,8 @@
 					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
 					joblist += temp.title
-			if("explorationdept")
-				for(var/jobPos in GLOB.exploration_positions)
+			if("miningdept")
+				for(var/jobPos in GLOB.mining_positions)
 					if(!jobPos)	continue
 					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
