@@ -20,11 +20,12 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
 	preference_candidacy_toggle = TRUE
 
-datum/objective/unitologist
+/datum/objective/unitologist
 	explanation_text = "Serve the marker at all costs."
 
 /datum/antagonist/unitologist/create_objectives(var/datum/mind/marker_minion)
-	if(!..())
+	.=..()
+	if(!.)
 		return
 	for(var/I=0,I<rand(1,3), I++) //Generate some random kill objectives. They have to listen to the marker above all though.
 		var/datum/objective/assassinate/kill_objective = new
@@ -47,3 +48,34 @@ datum/objective/unitologist
 		if(minion && minion != our_owner)
 			to_chat(our_owner, "Fellow unitologist: [minion.real_name]")
 			our_owner.mind.store_memory("<b>Fellow unitologist</b>: [minion.real_name]")
+
+
+GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
+/*
+	The Shardbearer
+*/
+/datum/antagonist/unitologist/shardbearer
+	role_text = "Unitologist Shardbearer"
+	role_text_plural = "Shardbearers"
+	preference_candidacy_toggle = TRUE
+	id = MODE_UNITOLOGIST_SHARD
+	flags = 0
+	welcome_text = "While on a planetary survey team on Aegis VII below, you uncovered the Holy Marker. It spoke to you, and you followed its directions, chipping off a piece and smuggling it aboard with you. <br>\
+	The shard still speaks to you now. It tells you to hide it. Plant it somewhere in a dark, hidden corner of the Ishimura, where it will not be discovered"
+
+/datum/antagonist/unitologist/shardbearer/equip(var/mob/living/carbon/human/H)
+	.=..()
+	H.equip_to_storage_or_drop(new /obj/item/marker_shard)
+
+
+
+
+/datum/antagonist/unitologist/shardbearer/create_objectives(var/datum/mind/marker_minion)
+	if(!..())
+		return
+	var/datum/objective/unitologist/shard/unitologist_objective = new
+	marker_minion.objectives += unitologist_objective
+
+
+/datum/objective/unitologist/shard
+	explanation_text = "Plant the marker shard in a secret place and let it grow."

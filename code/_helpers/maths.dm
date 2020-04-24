@@ -5,6 +5,8 @@
 
 // min is inclusive, max is exclusive
 /proc/Wrap(val, min, max)
+	if (max == min)
+		return min
 	var/d = max - min
 	var/t = Floor((val - min) / d)
 	return val - (t * d)

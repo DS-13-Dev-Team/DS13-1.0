@@ -91,5 +91,6 @@
 #define COLOR_BLOOD_NECRO      "#583001"
 
 #define COLOR_NECRO_YELLOW		"#FFFF00"
+#define COLOR_MARKER_RED		"#FF4444"
 
 #define RANDOM_RGB rgb(rand(0,255), rand(0,255), rand(0,255))

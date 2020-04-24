@@ -49,6 +49,7 @@
 	skillset = new skillset(src)
 	move_intent = decls_repository.get_decl(move_intent)
 	START_PROCESSING(SSmobs, src)
+	update_verbs()
 
 /mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 	if(!client)	return
@@ -1187,3 +1188,11 @@
 
 /mob/proc/has_chem_effect(chem, threshold)
 	return FALSE
+
+
+/*
+	Simple generic proc to simplify verb adding/removal logic.
+	Always call parent in overrides!
+*/
+/mob/proc/update_verbs()
+	return

@@ -1,11 +1,12 @@
 SUBSYSTEM_DEF(necromorph)
 	name = "Necromorph"
-	init_order = SS_INIT_DEFAULT
+	init_order = SS_INIT_NECROMORPH	//Initializes before atoms
 	flags = SS_NO_FIRE
 
 	//Necromorph Lists
 	var/list/major_vessels = list()	//Necromorphs that need a player to control them. they are inert husks without one.
 	var/list/minor_vessels	=	list()	//Necromorphs that have AI and don't need a player, but can be possessed anyway if someone wants to do manual control
+	var/list/shards = list()	//Marker shards in the world
 
 	//Signal Lists
 	var/list/signals	=	list()	//List of all signal players
@@ -13,6 +14,8 @@ SUBSYSTEM_DEF(necromorph)
 
 	//Marker
 	var/obj/machinery/marker/marker
+	var/list/marker_spawns_ishimura = list()	//Possible spawn locations aboard ishimura
+	var/list/marker_spawns_aegis = list()	//Possible spawn locations on Aegis VII
 
 	//Players
 	var/list/necromorph_players = list()	//This is a list of keys and mobs of players on the necromorph team
@@ -20,6 +23,14 @@ SUBSYSTEM_DEF(necromorph)
 	//Sightings of prey. See  code/modules/necromorph/corruption/eye.dm
 	var/list/sightings = list()
 
+	//Misc
+
+	//Tiny bit of a hack. This shared global variable is used to cycle through the shards list.
+	//Under the mostly likely assumption that two people generally won't be jumping to shards at the same time
+	var/last_shard_jumped_to = 1
+
+/datum/controller/subsystem/necromorph/stat_entry()
+	..("Click to debug!")
 
 /datum/controller/subsystem/necromorph/proc/join_necroqueue(var/mob/observer/eye/signal/M)
 	if (is_marker_master(M))
@@ -115,3 +126,30 @@ SUBSYSTEM_DEF(necromorph)
 		if (PE)
 			PE.build_ability_list(clear)
 			to_chat(P.get_mob(), "<span class='necromarker'>The marker has awoken, new abilities are unlocked. Check your abilities menu!</span>")
+
+		var/mob/observer/eye/signal/S = P.get_mob()
+		if (istype(S))
+			S.update_verbs()
+
+
+
+
+//Shard handling
+/datum/controller/subsystem/necromorph/proc/register_shard(var/obj/item/marker_shard/MS)
+	var/shardsbefore = shards.len
+
+	shards |= MS
+
+	//When the number of shards in the world switches between zero and nonzero, we update ability lists
+	if (shardsbefore == 0)
+		update_all_ability_lists()
+
+
+/datum/controller/subsystem/necromorph/proc/unregister_shard(var/obj/item/marker_shard/MS)
+	var/shardsbefore = shards.len
+
+	shards -= MS
+
+	//When the number of shards in the world switches between zero and nonzero, we update ability lists
+	if ((shardsbefore > 0) && (shards.len <= 0))
+		update_all_ability_lists()
