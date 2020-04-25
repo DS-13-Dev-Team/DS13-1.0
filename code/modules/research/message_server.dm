@@ -244,7 +244,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 	var/list/msg_raider = list()
 	var/list/msg_cargo = list()
 	var/list/msg_service = list()
-	var/list/msg_exploration = list()
+	var/list/msg_mining = list()
 
 	var/list/datum/feedback_variable/feedback = new()
 

@@ -155,7 +155,7 @@
 
 /decl/hierarchy/mil_uniform/fleet/srv
 	name = "Fleet exploration"
-	departments = EXP
+	departments = MIN
 
 	utility_under = /obj/item/clothing/under/solgov/utility/fleet/exploration
 	utility_extra = list(/obj/item/clothing/head/beret/solgov/fleet/exploration, /obj/item/clothing/head/ushanka/solgov/fleet, /obj/item/clothing/suit/storage/hooded/wintercoat/solgov/fleet, /obj/item/clothing/head/soft/solgov/fleet)

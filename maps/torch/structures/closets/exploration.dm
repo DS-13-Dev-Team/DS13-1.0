@@ -31,7 +31,7 @@
 		/obj/item/device/flash,
 		/obj/item/device/radio/headset/pathfinder,
 		/obj/item/device/radio/headset/pathfinder/alt,
-		/obj/item/weapon/storage/box/encryptionkey/exploration,
+		/obj/item/weapon/storage/box/encryptionkey/mining,
 		/obj/item/device/binoculars,
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack, /obj/item/weapon/storage/backpack/satchel/grey)),
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag, /obj/item/weapon/storage/backpack/messenger)),
@@ -40,7 +40,7 @@
 
 /obj/structure/closet/secure_closet/explorer
 	name = "explorer's locker"
-	req_access = list(access_explorer)
+	req_access = list(access_mining)
 	icon_state = "exp1"
 	icon_closed = "exp"
 	icon_locked = "exp1"
@@ -56,8 +56,8 @@
 		/obj/item/device/spaceflare,
 		/obj/item/clothing/accessory/storage/webbing_large,
 		/obj/item/device/analyzer,
-		/obj/item/device/radio/headset/exploration,
-		/obj/item/device/radio/headset/exploration/alt,
+		/obj/item/device/radio/headset/mining,
+		/obj/item/device/radio/headset/mining/alt,
 		/obj/item/device/binoculars,
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack, /obj/item/weapon/storage/backpack/satchel/grey)),
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag, /obj/item/weapon/storage/backpack/messenger)),

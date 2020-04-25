@@ -26,7 +26,7 @@ var/const/NETWORK_THIRD_DECK  = "Third Deck"
 		if(NETWORK_HANGAR)
 			return access_hangar
 		if(NETWORK_EXPLO)
-			return access_explorer
+			return access_mining
 	return get_shared_network_access(network) || ..()
 
 /datum/map/torch
@@ -217,5 +217,5 @@ var/const/NETWORK_ENGINEERING_OUTPOST = "Engineering Outpost"
 		num2text(SCI_FREQ)   = list(access_research,access_research,access_research),
 		num2text(SUP_FREQ)   = list(access_cargo),
 		num2text(SRV_FREQ)   = list(access_janitor, access_service),
-		num2text(EXP_FREQ)   = list(access_explorer)
+		num2text(MIN_FREQ)   = list(access_mining)
 	)

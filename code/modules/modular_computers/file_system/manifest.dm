@@ -8,7 +8,7 @@
 		list("names" = list(), "header" = "Medical", "flag" = MED),
 		list("names" = list(), "header" = "Engineering", "flag" = ENG),
 		list("names" = list(), "header" = "Supply", "flag" = SUP),
-		list("names" = list(), "header" = "Exploration", "flag" = EXP),
+		list("names" = list(), "header" = "Mining", "flag" = MIN),
 		list("names" = list(), "header" = "Service", "flag" = SRV),
 		list("names" = list(), "header" = "Civilian", "flag" = CIV),
 		list("names" = list(), "header" = "Miscellaneous", "flag" = MSC),
@@ -133,7 +133,7 @@
 		"eng" = filtered_nano_crew_manifest(GLOB.engineering_positions),\
 		"med" = filtered_nano_crew_manifest(GLOB.medical_positions),\
 		"sup" = filtered_nano_crew_manifest(GLOB.supply_positions),\
-		"exp" = filtered_nano_crew_manifest(GLOB.exploration_positions),\
+		"min" = filtered_nano_crew_manifest(GLOB.mining_positions),\
 		"srv" = filtered_nano_crew_manifest(GLOB.service_positions),\
 		"bot" = silicon_nano_crew_manifest(GLOB.nonhuman_positions),\
 		"civ" = filtered_nano_crew_manifest(GLOB.civilian_positions),\

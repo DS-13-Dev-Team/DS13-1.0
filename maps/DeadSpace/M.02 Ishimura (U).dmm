@@ -2848,7 +2848,7 @@
 "bcN" = (/turf/simulated/shuttle/wall{icon_state = "wall3"},/area/shuttle/escape_pod2/station)
 "bcO" = (/obj/machinery/door/airlock/external{frequency = 1380; id_tag = "escape_pod_1_hatch"; locked = 1; name = "Escape Pod One Hatch"; req_access = list(15)},/turf/simulated/floor/shuttle/black,/area/shuttle/escape_pod1/station)
 "bcP" = (/obj/structure/bed/chair/shuttle,/obj/item/device/radio/intercom{dir = 8; pixel_x = 21},/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{frequency = 1380; id_tag = "escape_pod_1"; name = "escape pod one controller"; pixel_x = -32; tag_door = "escape_pod_1_hatch"},/obj/effect/shuttle_landmark/escape_pod/start/pod1,/turf/simulated/floor/plating,/area/shuttle/escape_pod1/station)
-"bcQ" = (/obj/machinery/telecomms/server/presets/exploration,/turf/simulated/floor/tiled/techfloor/grid,/area/ishimura/upper/engineering/tcomms)
+"bcQ" = (/obj/machinery/telecomms/server/presets/mining,/turf/simulated/floor/tiled/techfloor/grid,/area/ishimura/upper/engineering/tcomms)
 "bcR" = (/turf/simulated/floor/plating,/turf/simulated/shuttle/wall/corner/dark/se,/area/shuttle/escape_pod3/station)
 "bcS" = (/obj/effect/wallframe_spawn/reinforced,/turf/simulated/floor/airless,/area/shuttle/escape_pod1/station)
 "bcT" = (/turf/simulated/floor/plating,/turf/simulated/shuttle/wall/corner/dark/sw,/area/shuttle/escape_pod2/station)

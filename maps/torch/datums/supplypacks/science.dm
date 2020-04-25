@@ -36,4 +36,4 @@
 	cost = 120
 	containername = "\improper Exploration voidsuit crate"
 	containertype = /obj/structure/closet/crate/secure/large
-	access = access_explorer
+	access = access_mining
