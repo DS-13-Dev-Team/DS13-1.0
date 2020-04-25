@@ -2,6 +2,7 @@
 	title = "Senior Medical Officer"
 	head_position = 1
 	department = "Medical"
+	abbreviation = "SMO"
 	department_flag = COM|MED
 	total_positions = 1
 	spawn_positions = 1
@@ -19,6 +20,7 @@
 /datum/job/md
 	title = "Medical Doctor"
 	department = "Medical"
+	abbreviation = "MD"
 	department_flag = MED
 	total_positions = 6
 	spawn_positions = 6
@@ -33,6 +35,7 @@
 /datum/job/surg
 	title = "Surgeon"
 	department = "Medical"
+	abbreviation = "SRG"
 	department_flag = MED
 	total_positions = 2
 	spawn_positions = 2

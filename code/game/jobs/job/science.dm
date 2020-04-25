@@ -2,6 +2,7 @@
 	title = "Chief Science Officer"
 	head_position = 1
 	department = "Science"
+	abbreviation = "CSCIO"
 	department_flag = COM|SCI
 	total_positions = 1
 	spawn_positions = 1
@@ -18,6 +19,7 @@
 /datum/job/ra
 	title = "Research Assistant"
 	department = "Science"
+	abbreviation = "RA"
 	department_flag = SCI
 	total_positions = 4
 	spawn_positions = 4

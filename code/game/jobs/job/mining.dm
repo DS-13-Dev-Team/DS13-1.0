@@ -1,6 +1,7 @@
 /datum/job/dom
 	title = "Director of Mining"
 	department = "Mining"
+	abbreviation = "DOM"
 	department_flag = MIN
 	total_positions = 1
 	spawn_positions = 1
@@ -16,6 +17,7 @@
 /datum/job/foreman
 	title = "Mining Foreman"
 	department = "MINING"
+	abbreviation = "FMN"
 	department_flag = MIN
 	total_positions = 1
 	spawn_positions = 1
@@ -30,6 +32,7 @@
 /datum/job/planet_cracker
 	title = "Planet Cracker"
 	department = "Mining"
+	abbreviation = "PC"
 	department_flag = MIN
 	total_positions = 14
 	spawn_positions = 14

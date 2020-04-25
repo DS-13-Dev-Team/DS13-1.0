@@ -144,6 +144,12 @@
 	if(hard_to_hear)
 		speaker_name = "unknown"
 
+	//Abbreviation Prefix
+	if(speaker)
+		var/mob/living/carbon/human/R = speaker
+		var/title = job_master.GetJob(R.get_assignment()).abbreviation
+		speaker_name = "[title] [speaker.name]"
+
 	var/changed_voice
 
 	if(istype(src, /mob/living/silicon/ai) && !hard_to_hear)

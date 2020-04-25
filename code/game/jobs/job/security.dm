@@ -2,6 +2,7 @@
 	title = "Chief Security Officer"
 	head_position = 1
 	department = "Security"
+	abbreviation = "CSECO"
 	department_flag = SEC|COM
 	total_positions = 1
 	spawn_positions = 1
@@ -18,6 +19,7 @@
 /datum/job/sso
 	title = "Senior Security Officer"
 	department = "Security"
+	abbreviation = "SSO"
 	department_flag = SEC
 	total_positions = 1
 	spawn_positions = 1
@@ -32,6 +34,7 @@
 /datum/job/security_officer
 	title = "Security Officer"
 	department = "Security"
+	abbreviation = "SEC"
 	department_flag = SEC
 	total_positions = 4
 	spawn_positions = 4

@@ -1,6 +1,7 @@
 /datum/job/cap
 	title = "Captain"
 	department = "Command"
+	abbreviation = "CPT"
 	head_position = 1
 	department_flag = COM
 	total_positions = 1
@@ -20,6 +21,7 @@
 
 /datum/job/fl
 	title = "First Lieutenant"
+	abbreviation = "FL"
 	department_flag = COM
 	head_position = 1
 	total_positions = 1
@@ -37,6 +39,7 @@
 
 /datum/job/bo
 	title = "Bridge Ensign"
+	abbreviation = "BE"
 	department_flag = COM
 	total_positions = 4
 	spawn_positions = 4

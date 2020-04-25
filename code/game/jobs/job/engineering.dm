@@ -2,6 +2,7 @@
 	title = "Chief Engineer"
 	head_position = 1
 	department = "Engineering"
+	abbreviation = "CE"
 	department_flag = COM|ENG
 	total_positions = 1
 	spawn_positions = 1
@@ -18,6 +19,7 @@
 /datum/job/tech_engineer
 	title = "Technical Engineer"
 	department = "Engineering"
+	abbreviation = "TE"
 	department_flag = ENG
 	total_positions = 4
 	spawn_positions = 4

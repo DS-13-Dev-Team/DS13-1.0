@@ -1,5 +1,6 @@
 /datum/job/bar
 	title = "Bartender"
+	abbreviation = "BTR"
 	department_flag = CIV
 	total_positions = 1
 	spawn_positions = 1
@@ -14,6 +15,7 @@
 
 /datum/job/line_cook
 	title = "Line Cook"
+	abbreviation = "LC"
 	department_flag = CIV
 	total_positions = 3
 	spawn_positions = 3
@@ -29,6 +31,7 @@
 /datum/job/so
 	title = "Supply Officer"
 	department = "Supply"
+	abbreviation = "SO"
 	department_flag = SUP
 	total_positions = 1
 	spawn_positions = 1
@@ -44,6 +47,7 @@
 /datum/job/serviceman
 	title = "Cargo Serviceman"
 	department = "Supply"
+	abbreviation = "CS"
 	department_flag = SUP
 	total_positions = 4
 	spawn_positions = 4
