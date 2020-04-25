@@ -23,7 +23,7 @@
 /datum/extension/corruption_source/New(var/atom/holder, var/range, var/speed, var/falloff, var/limit)
 	source = holder
 	GLOB.corruption_sources |= src
-	plant = new (source.loc, GLOB.corruption_seed)
+	plant = new (get_turf(source), GLOB.corruption_seed)
 	GLOB.moved_event.register(source, src, /datum/extension/corruption_source/proc/source_moved)
 	if (range)
 		src.range = range
@@ -99,7 +99,7 @@
 
 
 /datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, var/old_loc, var/new_loc)
-	plant.forceMove(new_loc)
+	plant.forceMove(get_turf(new_loc))
 	update_vines()
 
 

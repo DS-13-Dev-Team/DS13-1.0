@@ -243,8 +243,16 @@
 /mob/observer/eye/signal/verb/ability_menu()
 	set name = "Ability Menu"
 	set desc = "Opens the menu to cast abilities using your psi energy"
-	set category = "Abilities"
+	set category = "Necromorph"
 
 
 	var/datum/extension/psi_energy/PE	= get_energy_extension()
 	PE.ui_interact(src)
+
+
+/*
+	Verb handling
+*/
+/mob/observer/eye/signal/update_verbs()
+	.=..()
+	update_verb(/mob/proc/jump_to_shard, (SSnecromorph.shards.len > 0))	//Give us the verb to jump to shards, if there are any

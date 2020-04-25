@@ -10,7 +10,7 @@
 	plane = ABOVE_HUMAN_PLANE
 	density = TRUE
 	anchored = TRUE
-	var/light_colour = "#FF4444"
+	var/light_colour = COLOR_MARKER_RED
 	var/player	//Ckey of the player controlling the marker
 	var/mob/observer/eye/signal/master/playermob	//Signal mob of the player controlling the marker
 	var/corruption_plant
@@ -47,7 +47,13 @@
 
 /obj/machinery/marker/proc/make_active()
 	active = TRUE
+
+	//Any shards in the world become active
+	for (var/obj/item/marker_shard/MS in SSnecromorph.shards)
+		MS.activate()
+
 	SSnecromorph.update_all_ability_lists(FALSE)	//Unlock new spells for signals
+
 	visible_message(SPAN_WARNING("[src] starts to pulsate in a strange way..."))
 	//Start spreading corruption
 	start_corruption()
@@ -227,3 +233,21 @@
 		for (var/datum/necrospawn/N in shop.possible_spawnpoints)
 			if (N.spawnpoint == source)
 				shop.possible_spawnpoints.Remove(N)
+
+
+
+
+
+//Marker spawning landmarks
+/obj/effect/landmark/marker
+	delete_me = TRUE
+
+/obj/effect/landmark/marker/ishimura/Initialize()
+	log_world ("Ishimura marker initialize [SSnecromorph] Subsystem!")
+	SSnecromorph.marker_spawns_ishimura |= get_turf(src)
+	.=..()
+
+
+/obj/effect/landmark/marker/aegis/Initialize()
+	SSnecromorph.marker_spawns_aegis |= get_turf(src)
+	.=..()

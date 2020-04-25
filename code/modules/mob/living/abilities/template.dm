@@ -30,19 +30,19 @@
 	duration = _duration
 	cooldown = _cooldown
 	power = _power
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/start), 0)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/start), 0, TIMER_STOPPABLE)
 	start()
 
 
 /datum/extension/<name>/proc/start()
 	started_at	=	world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/stop), duration)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/stop), duration, TIMER_STOPPABLE)
 
 
 /datum/extension/<name>/proc/stop()
 	deltimer(ongoing_timer)
 	stopped_at = world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/finish_cooldown), cooldown)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 
 
 /datum/extension/<name>/proc/finish_cooldown()

@@ -47,6 +47,7 @@
 #define SS_INIT_PLANTS           7
 #define SS_INIT_ANTAGS           6
 #define SS_INIT_SKYBOX           5
+#define SS_INIT_NECROMORPH       4
 #define SS_INIT_MAPPING          4
 #define SS_INIT_ATOMS            3
 #define SS_INIT_ICON_UPDATE      2

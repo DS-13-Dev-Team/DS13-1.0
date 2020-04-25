@@ -8,7 +8,8 @@
 	/obj/effect/vine/corruption,
 	/obj/structure/corruption_node,
 	/obj/effect/scry_eye,
-	/obj/effect/psychic_tracer)
+	/obj/effect/psychic_tracer,
+	/obj/item/marker_shard)
 	chunk_type = /datum/chunk/necrovision
 
 

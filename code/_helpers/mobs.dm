@@ -325,3 +325,12 @@ proc/age2agedescription(age)
 
 	else
 		return origin
+
+
+
+//Adds verb path to our verbs if condition is true, removes it if false
+/mob/proc/update_verb(var/verb_path, var/condition)
+	if (condition)
+		verbs |= verb_path
+	else
+		verbs -= verb_path
