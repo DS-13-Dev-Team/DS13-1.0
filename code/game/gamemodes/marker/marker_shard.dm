@@ -102,6 +102,7 @@
 //This should never fail, do safety checks first
 /obj/item/marker_shard/proc/deploy()
 	CS = set_extension(src, /datum/extension/corruption_source, corruption_range, corruption_speed, corruption_falloff, corruption_limit)
+	link_necromorphs_to("A marker shard has started growing corruption at LINK", src)
 
 //Here we check if we've stayed still since our location was last updated
 /obj/item/marker_shard/proc/attempt_deploy()
