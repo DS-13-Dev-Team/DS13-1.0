@@ -95,6 +95,14 @@
 		name = "\improper blood pack [blood_type]"
 		reagents.add_reagent(/datum/reagent/blood, volume, list("donor" = null, "blood_DNA" = null, "blood_type" = blood_type, "trace_chem" = null, "virus2" = list(), "antibodies" = list()))
 
+/obj/item/weapon/reagent_containers/ivbag/blood/ABPlus
+	name = "\improper blood pack AB+"
+	blood_type = "AB+"
+
+/obj/item/weapon/reagent_containers/ivbag/blood/ABMinus
+	name = "\improper blood pack AB-"
+	blood_type = "AB-"
+
 /obj/item/weapon/reagent_containers/ivbag/blood/APlus
 	name = "\improper blood pack A+"
 	blood_type = "A+"

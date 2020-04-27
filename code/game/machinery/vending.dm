@@ -882,7 +882,8 @@
 	vend_delay = 18
 	product_ads = "B Positive!;Blood is a renewable resource!;GMO Free!;Donate today!"
 	req_access = list(access_medical)
-	products = list(/obj/item/weapon/reagent_containers/ivbag/blood/APlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/AMinus = 5,
+	products = list(/obj/item/weapon/reagent_containers/ivbag/blood/ABPlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/ABMinus = 5,
+					/obj/item/weapon/reagent_containers/ivbag/blood/APlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/AMinus = 5,
 					/obj/item/weapon/reagent_containers/ivbag/blood/BPlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/BMinus = 5,
 					/obj/item/weapon/reagent_containers/ivbag/blood/OPlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/OMinus = 5,
 					/obj/item/weapon/storage/box/bloodpacks = 5, /obj/item/weapon/reagent_containers/ivbag/blood = 5)
