@@ -873,6 +873,21 @@
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 
+/obj/machinery/vending/bloodbank
+	name = "\improper Blood Bank"
+	desc = "Contains a lot of blood bags. You probably shouldn't shake it"
+	icon_state = "blood"
+	icon_deny = "blood-deny"
+	icon_vend = "blood-vend"
+	vend_delay = 18
+	product_ads = "B Positive!;Blood is a renewable resource!;GMO Free!;Donate today!"
+	req_access = list(access_medical)
+	products = list(/obj/item/weapon/reagent_containers/ivbag/blood/APlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/AMinus = 5,
+					/obj/item/weapon/reagent_containers/ivbag/blood/BPlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/BMinus = 5,
+					/obj/item/weapon/reagent_containers/ivbag/blood/OPlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/OMinus = 5,
+					/obj/item/weapon/storage/box/bloodpacks = 5, /obj/item/weapon/reagent_containers/ivbag/blood = 5)
+	idle_power_usage = 211
+
 //This one's from bay12
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"

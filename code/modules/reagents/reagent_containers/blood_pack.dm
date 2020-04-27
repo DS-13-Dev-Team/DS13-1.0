@@ -86,29 +86,35 @@
 	reagents.add_reagent(/datum/reagent/nanoblood, volume)
 
 /obj/item/weapon/reagent_containers/ivbag/blood
-	name = "blood pack"
+	name = "\improper blood pack"
 	var/blood_type = null
 
 /obj/item/weapon/reagent_containers/ivbag/blood/New()
 	..()
 	if(blood_type)
-		name = "blood pack [blood_type]"
+		name = "\improper blood pack [blood_type]"
 		reagents.add_reagent(/datum/reagent/blood, volume, list("donor" = null, "blood_DNA" = null, "blood_type" = blood_type, "trace_chem" = null, "virus2" = list(), "antibodies" = list()))
 
 /obj/item/weapon/reagent_containers/ivbag/blood/APlus
+	name = "\improper blood pack A+"
 	blood_type = "A+"
 
 /obj/item/weapon/reagent_containers/ivbag/blood/AMinus
+	name = "\improper blood pack A-"
 	blood_type = "A-"
 
 /obj/item/weapon/reagent_containers/ivbag/blood/BPlus
+	name = "\improper blood pack B+"
 	blood_type = "B+"
 
 /obj/item/weapon/reagent_containers/ivbag/blood/BMinus
+	name = "\improper blood pack B-"
 	blood_type = "B-"
 
 /obj/item/weapon/reagent_containers/ivbag/blood/OPlus
+	name = "\improper blood pack O+"
 	blood_type = "O+"
 
 /obj/item/weapon/reagent_containers/ivbag/blood/OMinus
+	name = "\improper blood pack O-"
 	blood_type = "O-"
