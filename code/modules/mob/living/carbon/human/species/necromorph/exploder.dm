@@ -13,7 +13,7 @@
 	biomass = 40
 	mass = 50
 
-	biomass_reclamation_time	=	3 MINUTES
+	biomass_reclamation_time	=	5 MINUTES
 	view_range = 6
 
 	icon_template = 'icons/mob/necromorph/exploder.dmi'
