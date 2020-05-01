@@ -1475,7 +1475,7 @@
 "aCs" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled,/area/ishimura/upper/security/brig)
 "aCt" = (/obj/structure/table/standard,/obj/item/weapon/deck/cards,/turf/simulated/floor/tiled/monotile,/area/ishimura/upper/security/brig)
 "aCu" = (/obj/structure/table/standard,/obj/item/weapon/storage/box/evidence,/turf/simulated/floor/tiled/monotile,/area/ishimura/upper/security/brig)
-"aCv" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable/green{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/effect/catwalk_plated/dark,/obj/machinery/turretid/lethal{control_area = "Bridge Hallway"; pixel_x = -32},/turf/simulated/floor/plating,/area/ishimura/upper/command/captain_area)
+"aCv" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable/green{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/effect/catwalk_plated/dark,/turf/simulated/floor/plating,/area/ishimura/upper/command/captain_area)
 "aCw" = (/obj/structure/table/standard,/obj/item/weapon/storage/box/handcuffs,/turf/simulated/floor/tiled/monotile,/area/ishimura/upper/security/brig)
 "aCx" = (/obj/machinery/washing_machine,/obj/machinery/light{dir = 8},/obj/effect/floor_decal/corner/grey/mono,/turf/simulated/floor/tiled/white/monotile,/area/ishimura/upper/research/virology/quarantine)
 "aCy" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 1; layer = 2.4; level = 2},/obj/structure/bedsheetbin,/obj/structure/table/glass,/turf/simulated/floor/tiled/white/monotile,/area/ishimura/upper/research/virology/quarantine)

@@ -7,7 +7,7 @@
 
 /datum/craft_recipe/fortification/pulse_turret
 	name = "pulse turret"
-	result = /obj/machinery/turret/covered/pulse
+	result = /obj/machinery/turret/covered/pulse/active
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL, 15),
