@@ -354,8 +354,10 @@
 			return //needs power to open unless it was forced
 		else
 			use_power(360)
-	else
-		log_and_message_admins("has forced open an emergency shutter.")
+
+	//Removed admin force message here, its unnecessary spam, especially during explosions
+
+
 	latetoggle()
 	return ..()
 
