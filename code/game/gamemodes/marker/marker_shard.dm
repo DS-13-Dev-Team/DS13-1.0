@@ -15,7 +15,7 @@
 	plane = ABOVE_OBJ_PLANE
 
 	//How long does the shard have to remain in one spot before it starts spreading corruption?
-	var/deploy_time = 3// MINUTES
+	var/deploy_time = 3 MINUTES
 	var/deploy_timer
 
 	//Thing we're usign to manage our corruption
@@ -79,7 +79,7 @@
 /obj/item/marker_shard/proc/set_deploy_timer()
 	deltimer(deploy_timer)
 	if (active)
-		deploy_timer = addtimer(CALLBACK(src, /obj/item/marker_shard/proc/attempt_deploy),  deploy_time)
+		deploy_timer = addtimer(CALLBACK(src, /obj/item/marker_shard/proc/attempt_deploy),  deploy_time, TIMER_STOPPABLE)
 
 //Whenever we move, reset the timer
 /obj/item/marker_shard/moved()
@@ -102,9 +102,11 @@
 //This should never fail, do safety checks first
 /obj/item/marker_shard/proc/deploy()
 	CS = set_extension(src, /datum/extension/corruption_source, corruption_range, corruption_speed, corruption_falloff, corruption_limit)
+	link_necromorphs_to("A marker shard has started growing corruption at LINK", src)
 
 //Here we check if we've stayed still since our location was last updated
 /obj/item/marker_shard/proc/attempt_deploy()
+	deltimer(deploy_timer)
 	if (!active)
 		return
 
