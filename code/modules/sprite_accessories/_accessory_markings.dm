@@ -18,21 +18,6 @@
 	var/body_parts = list() //A list of bodyparts this covers, in organ_tag defines
 	//Reminder: BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_CHEST,BP_GROIN,BP_HEAD
 
-/datum/sprite_accessory/marking/bands
-	name = "Color Bands"
-	icon_state = "bands"
-	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_CHEST,BP_GROIN)
-
-/datum/sprite_accessory/marking/bandsface
-	name = "Color Bands (Face)"
-	icon_state = "bandsface"
-	body_parts = list(BP_HEAD)
-
-/datum/sprite_accessory/marking/backstripe
-	name = "Back Stripe"
-	icon_state = "backstripe"
-	body_parts = list(BP_CHEST)
-
 /datum/sprite_accessory/marking/human
 	name = "Tattoo (Heart, Torso)"
 	icon_state = "tat_heart"
