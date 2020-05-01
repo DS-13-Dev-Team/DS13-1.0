@@ -197,10 +197,10 @@
 	var/var/obj/item/stack/I = required_type
 	var/name = (required_quantity > 1?initial(I.name):initial(I.singular_name))
 
-	if (required_quantity > 1)
+	if (required_quantity == 1)
 		desc = "Apply [name]"
 	else
-		desc = "Apply [required_quantity] [name]\s"
+		desc = "Apply [required_quantity] [name]"
 
 	start_msg = "%USER% starts applying %ITEM% to %TARGET%"
 	end_msg = "%USER% applied %ITEM% to %TARGET%"

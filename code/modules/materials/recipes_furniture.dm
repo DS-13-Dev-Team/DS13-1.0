@@ -187,12 +187,7 @@ ARMCHAIR(yellow)
 	time = 25
 	send_material_data = 0
 
-/datum/stack_recipe/furniture/turret
-	title = "turret frame"
-	result_type = /obj/machinery/porta_turret_construct
-	req_amount = 5
-	time = 25
-	send_material_data = 0
+
 
 /datum/stack_recipe/furniture/door_assembly
 	req_amount = 4

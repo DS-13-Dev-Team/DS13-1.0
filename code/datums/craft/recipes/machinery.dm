@@ -64,12 +64,7 @@
 		list(CRAFT_MATERIAL, MATERIAL_GLASS, 6),
 	)
 
-/datum/craft_recipe/machinery/turret_frame
-	name = "turret frame"
-	result = /obj/machinery/porta_turret_construct
-	steps = list(
-		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10)
-	)
+
 
 
 

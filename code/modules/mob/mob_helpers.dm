@@ -497,6 +497,10 @@ proc/is_blind(A)
 	else if(id && istype(id, /obj/item/weapon/card/id/centcom))
 		return SAFE_PERP
 
+	//Bluespace techs are always authorised
+	else if(id && istype(id, /obj/item/weapon/card/id/bst))
+		return SAFE_PERP
+
 	if(check_access && !access_obj.allowed(src))
 		threatcount += 4
 
