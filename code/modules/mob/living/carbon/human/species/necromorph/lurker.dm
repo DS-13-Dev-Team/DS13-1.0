@@ -168,7 +168,7 @@ The Lurker can only fire spines while its shell is open"
 	var/num = 0
 	for (var/organ_tag in list(BP_HEAD, BP_L_ARM, BP_R_ARM))
 		var/obj/item/organ/external/E = H.get_organ(organ_tag)
-		if (istype(E) && !E.is_stump() && !E.retracted)
+		if (istype(E) && !E.is_stump())
 			num++
 
 	return num
@@ -271,7 +271,7 @@ The Lurker can only fire spines while its shell is open"
 		return
 
 	face_atom(A)
-	.= shoot_ability(/datum/extension/shoot/lurker, A , /obj/item/projectile/bullet/spine, accuracy = 120, dispersion = list(0,2,2.5), num = numspines, windup_time = SPINE_WINDUP, fire_sound  = list('sound/effects/creatures/necromorph/lurker/spine_fire_1.ogg',
+	.= shoot_ability(/datum/extension/shoot/lurker, A , /obj/item/projectile/bullet/spine, accuracy = 20, dispersion = list(0,2,2.5), num = numspines, windup_time = SPINE_WINDUP, fire_sound  = list('sound/effects/creatures/necromorph/lurker/spine_fire_1.ogg',
 	'sound/effects/creatures/necromorph/lurker/spine_fire_2.ogg',
 	'sound/effects/creatures/necromorph/lurker/spine_fire_3.ogg'), nomove = 0, cooldown = SPINE_COOLDOWN)
 	if (.)

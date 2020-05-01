@@ -12,11 +12,11 @@
 		return 0
 	return check_access_list(M.GetAccess())
 
-/atom/movable/proc/GetAccess()
+/atom/proc/GetAccess()
 	var/obj/item/weapon/card/id/id = GetIdCard()
 	return id ? id.GetAccess() : list()
 
-/atom/movable/proc/GetIdCard()
+/atom/proc/GetIdCard()
 	return null
 
 /obj/proc/check_access(obj/item/I)

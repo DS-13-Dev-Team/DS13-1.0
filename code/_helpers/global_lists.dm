@@ -53,6 +53,9 @@ var/global/list/endgame_exits = list()
 var/global/list/endgame_safespawns = list()
 
 
+//Targeting profiles, mainly for turrets
+GLOBAL_LIST_EMPTY(targeting_profiles)
+
 //Signal Abilities/spells
 GLOBAL_LIST_EMPTY(signal_abilities)
 
@@ -196,6 +199,17 @@ var/global/list/string_slot_flags = list(
 
 		SA = new subtype()
 		GLOB.signal_abilities[SA.id] = SA
+
+
+
+
+	for (var/subtype in subtypesof(/datum/targeting_profile))
+		var/datum/targeting_profile/SA = subtype
+		if (initial(SA.base_type) == subtype)
+			continue	//If base type matches type, its an abstract parent class, do not instantiate
+
+		SA = new subtype()
+		GLOB.targeting_profiles[SA.id] = SA
 
 	return 1
 

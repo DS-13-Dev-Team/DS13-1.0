@@ -1,0 +1,3 @@
+#define PRIORITY_TARGET 2
+#define SECONDARY_TARGET 1
+#define NOT_TARGET 0

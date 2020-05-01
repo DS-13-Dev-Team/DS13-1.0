@@ -1,3 +1,7 @@
+#define SHOOT_STATUS_READY	0
+#define	SHOOT_STATUS_PREFIRE	1
+#define	SHOOT_STATUS_FIRING	2
+#define	SHOOT_STATUS_COOLING	3
 /*
 	Generic Shoot Extension. Make subtypes for things which shouldn't share a cooldown
 */
@@ -7,7 +11,8 @@
 	expected_type = /atom
 	flags = EXTENSION_FLAG_IMMEDIATE
 
-	var/status
+
+	var/status = SHOOT_STATUS_READY
 	var/atom/user
 	var/atom/target
 	var/projectile_type
@@ -28,6 +33,9 @@
 	//Data generated during runtime
 	var/shot_num = 1
 
+	//When false, this extension is deleted when cooldown finishes
+	//If true, the extension will remain, and can be used to fire repeqatedly without remaking it
+	var/persist = FALSE
 
 
 /*
@@ -43,7 +51,7 @@
 	nomove: optional, default false. If true, the user can't move during windup. If a number, the user can't move during windup and for that long after firing
 */
 
-/datum/extension/shoot/New(var/atom/user, var/atom/target, var/projectile_type, var/accuracy = 100, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE, var/cooldown = 0)
+/datum/extension/shoot/New(var/atom/user, var/atom/target, var/projectile_type, var/accuracy = 0, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE, var/cooldown = 0)
 	.=..()
 	src.user = user
 	src.target = target
@@ -56,11 +64,37 @@
 	src.nomove = nomove
 	src.cooldown = cooldown
 
+	if (!persist)
+		status = SHOOT_STATUS_PREFIRE
+		spawn()
+			start()
+
+
+
+
+
+
+//The repeat subtype is designed to not be deleted after firing and cooling down. instead the extension remains
+//Call fire repeatedly to make it fire again
+/datum/extension/shoot/repeat
+	persist = TRUE
+
+/datum/extension/shoot/repeat/proc/fire(var/atom/newtarget)
+	if (!can_fire())
+		return FALSE
+
+	status = SHOOT_STATUS_PREFIRE
+	target = newtarget
 	spawn()
 		start()
 
+	return TRUE
+
+
+
 
 /datum/extension/shoot/proc/start()
+	status = SHOOT_STATUS_PREFIRE
 	started_at	=	world.time
 
 	var/mob/living/L
@@ -87,9 +121,10 @@
 
 	//And start the main event
 	var/turf/targloc = get_turf(target)
+	status = SHOOT_STATUS_FIRING
 	for(shot_num in 1 to total_shots)
 		var/obj/item/projectile/P = new projectile_type(user.loc)
-		P.accuracy = base_accuracy
+		P.accuracy += base_accuracy
 		P.dispersion = get_dispersion()
 		P.firer = user
 		P.shot_from = user
@@ -123,14 +158,17 @@
 	return
 
 /datum/extension/shoot/proc/stop()
+	status = SHOOT_STATUS_COOLING
 	deltimer(ongoing_timer)
 	stopped_at = world.time
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/shoot/proc/finish_cooldown), cooldown)
 
 
 /datum/extension/shoot/proc/finish_cooldown()
+	status = SHOOT_STATUS_READY
 	deltimer(ongoing_timer)
-	remove_extension(holder, base_type)
+	if (!persist)
+		remove_extension(holder, base_type)
 
 
 /datum/extension/shoot/proc/get_cooldown_time()
@@ -162,6 +200,13 @@
 
 	return TRUE
 
+
+//Only used for repeat shooting
+/datum/extension/shoot/proc/can_fire()
+	if (status != SHOOT_STATUS_READY)
+		return FALSE
+
+	return TRUE
 
 /***********************
 	Using

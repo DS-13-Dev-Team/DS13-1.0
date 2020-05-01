@@ -29,6 +29,18 @@
 
 	req_access = list(access_security)
 
+	//Which profiles can this control apply to turrets?
+	//The first one in the list is automatically picked
+	var/list/targeting_profiles = list(/datum/targeting_profile/turret/crew,
+	/datum/targeting_profile/turret,
+	/datum/targeting_profile/turret/authorized)
+	var/selected_profile
+
+	var/embedded = FALSE
+
+/obj/machinery/turretid/embedded
+	embedded = TRUE
+
 /obj/machinery/turretid/stun
 	enabled = 0
 	icon_state = "control_stun"
@@ -37,6 +49,72 @@
 	enabled = 0
 	lethal = 1
 	icon_state = "control_kill"
+
+
+/obj/machinery/turretid/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	var/data[0]
+	data["access"] = !isLocked(user)
+	data["locked"] = locked
+	data["enabled"] = enabled
+
+
+	if(data["access"])
+		var/list/profiles = list()
+		for (var/id in targeting_profiles)
+			var/datum/targeting_profile/TP = targeting_profiles[id]
+
+			profiles += list(list("name" = TP.name, "id" = TP.id))
+
+			if (TP.id == selected_profile)
+				data["selected_desc"] = TP.desc
+
+		data["profiles"] = profiles
+		data["selected"] = selected_profile
+
+
+	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	if (!ui)
+		if (embedded)
+			ui = new(user, src, ui_key, "turret_control.tmpl", "Turret Controls", 500, 300, state = GLOB.interactive_state)
+		else
+			ui = new(user, src, ui_key, "turret_control.tmpl", "Turret Controls", 500, 300)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(0)
+
+/obj/machinery/turretid/Topic(href, href_list)
+	if(..())
+		return 1
+
+
+	if(href_list["command"] && href_list["value"])
+		var/log_action = null
+
+		var/list/toggle = list("disabled","enabled")
+
+		var/value = text2num(href_list["value"])
+		if(href_list["command"] == "enable")
+			enabled = value
+			log_action = "[toggle[enabled+1]] the turrets"
+
+		if(!isnull(log_action))
+			log_admin("[key_name(usr)] has [log_action]")
+			message_admins("[key_name_admin(usr)] has [log_action]", 1)
+
+		update_turrets()
+		SSnano.update_uis(src)
+		return 1
+
+	if(href_list["select_profile"])
+		selected_profile = href_list["select_profile"]
+		update_turrets()
+		SSnano.update_uis(src)
+
+/obj/machinery/turretid/CanUseTopic(user, state)
+	if (embedded)
+		return STATUS_INTERACTIVE
+	.=..()
+
 
 /obj/machinery/turretid/Destroy()
 	if(control_area)
@@ -61,8 +139,19 @@
 		else
 			control_area = null
 
+	//Fill out the targeting profiles list
+	var/templist = targeting_profiles.Copy()
+	targeting_profiles = list()
+	for (var/tptype in templist)
+		var/datum/targeting_profile/TP = tptype
+		TP = GLOB.targeting_profiles[initial(TP.id)]
+		targeting_profiles[TP.id] = TP
+
+	selected_profile = targeting_profiles[1]
+
 	power_change() //Checks power and initial settings
 	. = ..()
+	update_turrets()
 
 /obj/machinery/turretid/proc/isLocked(mob/user)
 	if(ailock && issilicon(user))
@@ -120,69 +209,9 @@
 
 	ui_interact(user)
 
-/obj/machinery/turretid/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
-	data["access"] = !isLocked(user)
-	data["locked"] = locked
-	data["enabled"] = enabled
-	data["is_lethal"] = 1
-	data["lethal"] = lethal
-
-	if(data["access"])
-		var/settings[0]
-		settings[++settings.len] = list("category" = "Neutralize All Non-Synthetics", "setting" = "check_synth", "value" = check_synth)
-		settings[++settings.len] = list("category" = "Check Weapon Authorization", "setting" = "check_weapons", "value" = check_weapons)
-		settings[++settings.len] = list("category" = "Check Security Records", "setting" = "check_records", "value" = check_records)
-		settings[++settings.len] = list("category" = "Check Arrest Status", "setting" = "check_arrest", "value" = check_arrest)
-		settings[++settings.len] = list("category" = "Check Access Authorization", "setting" = "check_access", "value" = check_access)
-		settings[++settings.len] = list("category" = "Check misc. Lifeforms", "setting" = "check_anomalies", "value" = check_anomalies)
-		data["settings"] = settings
-
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "turret_control.tmpl", "Turret Controls", 500, 300)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
-
-/obj/machinery/turretid/Topic(href, href_list)
-	if(..())
-		return 1
 
 
-	if(href_list["command"] && href_list["value"])
-		var/log_action = null
-
-		var/list/toggle = list("disabled","enabled")
-
-		var/value = text2num(href_list["value"])
-		if(href_list["command"] == "enable")
-			enabled = value
-			log_action = "[toggle[enabled+1]] the turrets"
-		else if(href_list["command"] == "lethal")
-			lethal = value
-			log_action = "[toggle[lethal+1]] the turrets lethal mode."
-		else if(href_list["command"] == "check_synth")
-			check_synth = value
-		else if(href_list["command"] == "check_weapons")
-			check_weapons = value
-		else if(href_list["command"] == "check_records")
-			check_records = value
-		else if(href_list["command"] == "check_arrest")
-			check_arrest = value
-		else if(href_list["command"] == "check_access")
-			check_access = value
-		else if(href_list["command"] == "check_anomalies")
-			check_anomalies = value
-
-		if(!isnull(log_action))
-			log_admin("[key_name(usr)] has [log_action]")
-			message_admins("[key_name_admin(usr)] has [log_action]", 1)
-
-		updateTurrets()
-		return 1
-
-/obj/machinery/turretid/proc/updateTurrets()
+/obj/machinery/turretid/proc/update_turrets()
 	var/datum/turret_checks/TC = new
 	TC.enabled = enabled
 	TC.lethal = lethal
@@ -195,15 +224,17 @@
 	TC.ailock = ailock
 
 	if(istype(control_area))
-		for (var/obj/machinery/porta_turret/aTurret in control_area)
+		for (var/obj/machinery/turret/aTurret in control_area)
 			aTurret.setState(TC)
+			aTurret.targeting_profile = targeting_profiles[selected_profile]
+			aTurret.handle_targets()
 
 	update_icon()
 
 /obj/machinery/turretid/power_change()
 	. = ..()
 	if(.)
-		updateTurrets()
+		update_turrets()
 
 /obj/machinery/turretid/update_icon()
 	..()
@@ -233,12 +264,12 @@
 		check_anomalies = pick(0, 1)
 
 		enabled=0
-		updateTurrets()
+		update_turrets()
 
 		spawn(rand(60,600))
 			if(!enabled)
 				enabled=1
-				updateTurrets()
+				update_turrets()
 
 	..()
 

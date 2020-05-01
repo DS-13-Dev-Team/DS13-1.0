@@ -15,26 +15,19 @@
 		</div>
 	</div>	
 
-    {{if data.is_lethal}}
+	<div class="itemLabelWide">
+		Targeting Profiles
+	</div>
+	</br>
+	<hr>
+	{{:data.selected_desc}}
+    {{for data.profiles}}
         <div class="item">
             <div class="itemLabelWide">
-                Lethal Mode:
+                {{:value.name}}
             </div>
             <div class="itemContentNarrow">
-                {{:helper.link('On', null, {'command' : 'lethal', 'value' : 1},  data.lethal ?'redButton' : null)}}
-                {{:helper.link('Off',null, {'command' : 'lethal', 'value' : 0}, !data.lethal ? 'selected' : null)}}
-            </div>
-        </div>	
-    {{/if}}
-    
-    {{for data.settings}}
-        <div class="item">
-            <div class="itemLabelWide">
-                {{:value.category}}
-            </div>
-            <div class="itemContentNarrow">
-                {{:helper.link('On', null, {'command' : value.setting, 'value' : 1},  value.value ? 'selected' : null)}}
-                {{:helper.link('Off',null, {'command' : value.setting, 'value' : 0}, !value.value ? 'selected' : null)}}
+                {{:helper.link('Select', null, {'select_profile' : value.id, 'value' : 1},  (value.id == data.selected) ? 'selected' : null)}}
             </div>
         </div>
     {{/for}}
