@@ -106,7 +106,6 @@
 		return 1
 
 	if(href_list["select_profile"])
-		world  << "Select profile [href_list["select_profile"]]"
 		selected_profile = href_list["select_profile"]
 		update_turrets()
 		SSnano.update_uis(src)
