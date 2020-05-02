@@ -25,7 +25,14 @@
 	return client
 
 /mob/observer/eye/get_client()
-	. = client || (owner && owner.get_client())
+	if (client)
+		return client
+
+	if (owner && owner != src)
+		return owner.get_client()
+
+/mob/observer/eye/signal/get_client()
+	return client
 
 /mob/observer/virtual/get_client()
 	return host.get_client()
