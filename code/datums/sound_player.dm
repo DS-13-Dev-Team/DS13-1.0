@@ -189,7 +189,7 @@ datum/sound_token/proc/Mute()
 	status = new_status
 	PrivUpdateListeners()
 
-datum/sound_token/proc/PrivAddListener(var/atom/listener)
+/datum/sound_token/proc/PrivAddListener(var/atom/listener)
 	if(isvirtualmob(listener))
 		var/mob/observer/virtual/v = listener
 		if(!(v.abilities & VIRTUAL_ABILITY_HEAR))
@@ -206,13 +206,21 @@ datum/sound_token/proc/PrivAddListener(var/atom/listener)
 	PrivUpdateListenerLoc(listener, FALSE)
 
 /datum/sound_token/proc/PrivRemoveListener(var/atom/listener, var/sound/null_sound)
-	null_sound = null_sound || new(channel = sound.channel)
-	sound_to(listener, null_sound)
-	GLOB.moved_event.unregister(listener, src, /datum/sound_token/proc/PrivUpdateListenerLoc)
-	GLOB.destroyed_event.unregister(listener, src, /datum/sound_token/proc/PrivRemoveListener)
+	if (!QDELETED(listener))
+		null_sound = null_sound || new(channel = sound.channel)
+		sound_to(listener, null_sound)
+		GLOB.moved_event.unregister(listener, src, /datum/sound_token/proc/PrivUpdateListenerLoc)
+		GLOB.destroyed_event.unregister(listener, src, /datum/sound_token/proc/PrivRemoveListener)
 	listeners -= listener
 
 /datum/sound_token/proc/PrivUpdateListenerLoc(var/atom/listener, var/update_sound = TRUE)
+	if (QDELETED(source))
+		return
+
+	if (QDELETED(listener))
+		PrivRemoveListener(listener)
+		return
+
 	var/turf/source_turf = get_turf(source)
 	var/turf/listener_turf = get_turf(listener)
 

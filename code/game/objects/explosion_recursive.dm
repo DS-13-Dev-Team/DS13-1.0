@@ -9,7 +9,7 @@ var/explosion_epicentre
 var/explosion_in_progress = 0
 
 
-proc/explosion_rec(turf/epicenter, power, shaped)
+proc/explosion_rec(turf/epicenter, power, var/falloff = 1, shaped)
 	var/loopbreak = 0
 	while(explosion_in_progress)
 		if(loopbreak >= 15) return
@@ -44,7 +44,7 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 			else
 				adj_power *= 0.45
 
-		T.explosion_spread(adj_power, direction)
+		T.explosion_spread(adj_power, direction, falloff)
 		CHECK_TICK
 
 
@@ -63,10 +63,14 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 		var/turf_power = explosion_turfs[T]	//This value is somewhere between 0..power
 		if (turf_power <= 0)
 			continue
-		var/power_percent = turf_power / power	//This value is somewhere between 0..1
-		var/severity = power_percent * 3	//This value is somewhere between 0..3
-		severity = Ceiling(severity)	//This value is somewhere between 1..3
-		severity = 4 - severity 	//As above, but inverted. 3 becomes 1, etc
+
+		var/severity = 4
+		if (turf_power >= POWER_DEV)
+			severity = 1
+		else if (turf_power >= POWER_HEAVY)
+			severity = 2
+		else if (turf_power >= POWER_LIGHT)
+			severity = 3
 
 
 		var/x = T.x
@@ -96,7 +100,7 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 
 //Code-wise, a safe value for power is something up to ~25 or ~30.. This does quite a bit of damage to the station.
 //direction is the direction that the spread took to come to this tile. So it is pointing in the main blast direction - meaning where this tile should spread most of it's force.
-/turf/proc/explosion_spread(power, direction)
+/turf/proc/explosion_spread(power, direction, var/falloff = 1)
 	if(power <= 0)
 		return
 
@@ -108,7 +112,7 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 
 	explosion_max_range = max(explosion_max_range, get_dist(src, explosion_epicentre))
 
-	var/spread_power = power - src.get_explosion_resistance() //This is the amount of power that will be spread to the tile in the direction of the blast
+	var/spread_power = power - (falloff*src.get_explosion_resistance()) //This is the amount of power that will be spread to the tile in the direction of the blast
 
 	CHECK_TICK
 	var/turf/T = get_step(src, direction)
