@@ -127,9 +127,14 @@
 	set desc = "Cycles between marker shards active in the world"
 	set category = "Necromorph"
 
+	if (!LAZYLEN(SSnecromorph.shards))
+		to_chat(src, SPAN_WARNING("There are no marker shards in the world."))
+		return
 
 	//This lets us use the verb repeatedly to cycle through shards
-	SSnecromorph.last_shard_jumped_to = Wrap(SSnecromorph.last_shard_jumped_to+1, 1, SSnecromorph.shards.len)
+
+	SSnecromorph.last_shard_jumped_to = Wrap(SSnecromorph.last_shard_jumped_to+1, 1, SSnecromorph.shards.len+1)	//We must do +1 on the length because wrap is exclusive at the max point
+	to_chat(src, SPAN_NOTICE("Jumping to shard [SSnecromorph.last_shard_jumped_to] of [SSnecromorph.shards.len]"))
 	var/obj/item/marker_shard/MS = SSnecromorph.shards[SSnecromorph.last_shard_jumped_to]
 	if (MS)
 		jumpTo(get_turf(MS))
