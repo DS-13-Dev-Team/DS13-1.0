@@ -24,6 +24,7 @@ sql/test_db
 # vscode
 .vscode/*
 .history
+*.code-workspace
 
 # swap
 [._]*.s[a-v][a-z]
