@@ -62,7 +62,7 @@ var/const/Represents a special statement in the code triggered by a keyword.
 		kwIf
 			Parse(n_Parser/nS_Parser/parser)
 				.=KW_PASS
-				var/node/statement/IfStatement/stmt=new
+				var/node/statement/IfStatement/stmt=new()
 				parser.NextToken()  //skip 'if' token
 				stmt.cond=parser.ParseParenExpression()
 				if(!parser.CheckToken(")", /token/symbol))
@@ -70,7 +70,27 @@ var/const/Represents a special statement in the code triggered by a keyword.
 				if(!parser.CheckToken("{", /token/symbol, skip=0)) //Token needs to be preserved for parse loop, so skip=0
 					return KW_ERR
 				parser.curBlock.statements+=stmt
-				stmt.block=new
+				stmt.block=new()
+				parser.AddBlock(stmt.block)
+
+		kwElseIf
+			Parse(n_Parser/nS_Parser/parser)
+				.=KW_PASS
+				var/list/L=parser.curBlock.statements
+				var/node/statement/IfStatement/stmt
+				if(L&&L.len) stmt=L[L.len] //Get the last statement in the current block
+				if(!stmt || !istype(stmt) || stmt.else_block) //Ensure that it is an if or elseif statement
+					parser.errors+=new/scriptError/ExpectedToken("if or elseif statement",parser.curToken)
+					return KW_FAIL
+				stmt=new()
+				parser.NextToken()         //skip 'else' token
+				stmt.cond=parser.ParseParenExpression()
+				if(!parser.CheckToken(")", /token/symbol))
+					return KW_FAIL
+				if(!parser.CheckToken("{", /token/symbol, skip=0)) //Token needs to be preserved for parse loop, so skip=0
+					return KW_ERR
+				parser.curBlock.statements+=stmt
+				stmt.block=new()
 				parser.AddBlock(stmt.block)
 
 		kwElse
@@ -79,8 +99,8 @@ var/const/Represents a special statement in the code triggered by a keyword.
 				var/list/L=parser.curBlock.statements
 				var/node/statement/IfStatement/stmt
 				if(L&&L.len) stmt=L[L.len] //Get the last statement in the current block
-				if(!stmt || !istype(stmt) || stmt.else_block) //Ensure that it is an if statement
-					parser.errors+=new/scriptError/ExpectedToken("if statement",parser.curToken)
+				if(!stmt || !istype(stmt) || stmt.else_block) //Ensure that it is an if or elseif statement
+					parser.errors+=new/scriptError/ExpectedToken("if or elseif statement",parser.curToken)
 					return KW_FAIL
 				parser.NextToken()         //skip 'else' token
 				if(!parser.CheckToken("{", /token/symbol, skip=0))
