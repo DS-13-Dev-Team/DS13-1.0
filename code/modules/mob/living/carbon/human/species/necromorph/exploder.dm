@@ -13,7 +13,7 @@
 	biomass = 40
 	mass = 50
 
-	biomass_reclamation_time	=	3 MINUTES
+	biomass_reclamation_time	=	4 MINUTES
 	view_range = 6
 
 	icon_template = 'icons/mob/necromorph/exploder.dmi'
@@ -173,7 +173,9 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	set_light(1, 1, 9, 2, COLOR_NECRO_YELLOW)
 	.=..()
 
-
+/*
+	The actual explosion!
+*/
 //A multi-level explosion using a broad variety of cool mechanics
 /obj/item/organ/external/hand/exploder_pustule/proc/explode()
 	if (exploded)
@@ -192,7 +194,8 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 
 	//A normal explosion
 	spawn()
-		explosion(T, 0, 2, 4, 6)
+		//-1 devastation range because hull breaches are not cool
+		explosion(T, -1, 3, 5, 6)
 
 	//Make sure the pustule is deleted if these explosions don't destroy it
 	spawn()

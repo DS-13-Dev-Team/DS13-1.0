@@ -128,7 +128,7 @@ meteor_act
 	if(!type || !def_zone) return 0
 	if(!istype(def_zone))
 		def_zone = get_organ(check_zone(def_zone))
-	if(!def_zone)
+	if(!def_zone || !def_zone.species)
 		return 0
 	var/protection = def_zone.species.natural_armour_values ? def_zone.species.natural_armour_values[type] : 0
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
@@ -363,7 +363,8 @@ meteor_act
 		if (O.throw_source)
 			var/distance = get_dist(O.throw_source, loc)
 			miss_chance += max(5*(distance-2), 0)
-		zone = get_zone_with_miss_chance(zone, src, miss_chance, ranged_attack=1)
+		var/accuracy = 100 - miss_chance
+		zone = get_zone_with_miss_chance(accuracy, zone, AM)
 
 		if(zone && O.thrower != src)
 			var/shield_check = check_shields(throw_damage, O, thrower, zone, "[O]")

@@ -449,19 +449,32 @@ This function completely restores a damaged organ to perfect condition.
 	if(type == BRUISE && BP_IS_BRITTLE(src))
 		damage = Floor(damage * 1.5)
 
-	if(BP_IS_CRYSTAL(src))
-		// this needs to cover type == BURN because lasers don't use LASER, but with the way bodytemp
-		// damage is handled currently that isn't really possible without an infinite feedback loop.
-		if(type == LASER)
-			owner.bodytemperature += ceil(damage/10)
-			if(prob(25))
-				owner.visible_message("<span class='warning'>\The [owner]'s crystalline [name] shines with absorbed energy!</span>")
-			return
-		damage = Floor(damage * 0.8)
-		type = SHATTER
+
 
 	if(damage <= 0)
 		return
+
+	if (owner)
+		if(BP_IS_CRYSTAL(src))
+			// this needs to cover type == BURN because lasers don't use LASER, but with the way bodytemp
+			// damage is handled currently that isn't really possible without an infinite feedback loop.
+			if(type == LASER)
+				owner.bodytemperature += ceil(damage/10)
+				if(prob(25))
+					owner.visible_message("<span class='warning'>\The [owner]'s crystalline [name] shines with absorbed energy!</span>")
+				return
+			damage = Floor(damage * 0.8)
+			type = SHATTER
+
+
+		//Burn damage can cause fluid loss due to blistering and cook-off
+		if((type in list(BURN, LASER)) && (damage > 5 || damage + burn_dam >= 15) && !BP_IS_ROBOTIC(src))
+			var/fluid_loss_severity
+			switch(type)
+				if(BURN)  fluid_loss_severity = FLUIDLOSS_WIDE_BURN
+				if(LASER) fluid_loss_severity = FLUIDLOSS_CONC_BURN
+			var/fluid_loss = (damage/(owner.max_health - config.health_threshold_dead)) * SPECIES_BLOOD_DEFAULT * fluid_loss_severity
+			owner.remove_blood(fluid_loss)
 
 	if(loc && type == SHATTER)
 		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 40, 1) // Crash!
@@ -476,17 +489,10 @@ This function completely restores a damaged organ to perfect condition.
 			internal_damage = TRUE
 		if(prob(ceil(damage/4)) && sever_tendon())
 			internal_damage = TRUE
-		if(internal_damage)
+		if(internal_damage && owner)
 			owner.custom_pain("You feel something rip in your [name]!", 50, affecting = src)
 
-	//Burn damage can cause fluid loss due to blistering and cook-off
-	if((type in list(BURN, LASER)) && (damage > 5 || damage + burn_dam >= 15) && !BP_IS_ROBOTIC(src))
-		var/fluid_loss_severity
-		switch(type)
-			if(BURN)  fluid_loss_severity = FLUIDLOSS_WIDE_BURN
-			if(LASER) fluid_loss_severity = FLUIDLOSS_CONC_BURN
-		var/fluid_loss = (damage/(owner.max_health - config.health_threshold_dead)) * SPECIES_BLOOD_DEFAULT * fluid_loss_severity
-		owner.remove_blood(fluid_loss)
+
 
 	// first check whether we can widen an existing wound
 	if(!surgical && wounds && wounds.len > 0 && prob(max(50+(number_wounds-1)*10,90)))
@@ -500,7 +506,7 @@ This function completely restores a damaged organ to perfect condition.
 			if(compatible_wounds.len)
 				var/datum/wound/W = pick(compatible_wounds)
 				W.open_wound(damage)
-				if(prob(25))
+				if(owner && prob(25))
 					if(BP_IS_CRYSTAL(src))
 						owner.visible_message("<span class='danger'>The cracks in \the [owner]'s [name] spread.</span>",\
 						"<span class='danger'>The cracks in your [name] spread.</span>",\
