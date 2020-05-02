@@ -456,15 +456,15 @@ This function completely restores a damaged organ to perfect condition.
 
 	if (owner)
 		if(BP_IS_CRYSTAL(src))
-		// this needs to cover type == BURN because lasers don't use LASER, but with the way bodytemp
-		// damage is handled currently that isn't really possible without an infinite feedback loop.
-		if(type == LASER)
-			owner.bodytemperature += ceil(damage/10)
-			if(prob(25))
-				owner.visible_message("<span class='warning'>\The [owner]'s crystalline [name] shines with absorbed energy!</span>")
-			return
-		damage = Floor(damage * 0.8)
-		type = SHATTER
+			// this needs to cover type == BURN because lasers don't use LASER, but with the way bodytemp
+			// damage is handled currently that isn't really possible without an infinite feedback loop.
+			if(type == LASER)
+				owner.bodytemperature += ceil(damage/10)
+				if(prob(25))
+					owner.visible_message("<span class='warning'>\The [owner]'s crystalline [name] shines with absorbed energy!</span>")
+				return
+			damage = Floor(damage * 0.8)
+			type = SHATTER
 
 
 		//Burn damage can cause fluid loss due to blistering and cook-off
