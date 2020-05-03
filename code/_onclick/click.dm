@@ -94,7 +94,7 @@
 		CtrlClickOn(A, params)
 		return 1
 	if(modifiers["left"])
-		.=LeftClickOn(A, params)
+		LeftClickOn(A, params)
 		return 1
 
 
