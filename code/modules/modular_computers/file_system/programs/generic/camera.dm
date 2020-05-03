@@ -9,6 +9,8 @@
 	switch(network)
 		if(NETWORK_CARGO)
 			return access_cargo
+		if(NETWORK_COMMAND)
+			return access_bridge
 		if(NETWORK_COMMON)
 			return 0
 		if(NETWORK_CREW)

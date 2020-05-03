@@ -14,6 +14,7 @@
 	accessible_z_levels = list("1"=1,"2"=1,"3"=2,"4"=3)
 	station_networks = list(
 		NETWORK_CARGO,
+		NETWORK_COMMAND,
 		NETWORK_COMMON,
 		NETWORK_CREW,
 		NETWORK_ENGINEERING,
