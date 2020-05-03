@@ -59,8 +59,11 @@
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/med, 50),
 		/obj/item/clothing/under/medical_doctor,
 		/obj/item/clothing/shoes/white,
+		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight,
+		/obj/item/device/flashlight/pen,
 		/obj/item/device/radio/headset/headset_med,
+		/obj/item/device/healthanalyzer,
 		/obj/item/taperoll/medical,
 		/obj/item/weapon/storage/belt/medical,
 		/obj/item/clothing/glasses/hud/health
@@ -86,11 +89,16 @@
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmoalt,
 		/obj/item/clothing/gloves/latex,
-		/obj/item/clothing/shoes/brown,
-		/obj/item/device/radio/headset/heads/cmo,
+		/obj/item/clothing/accessory/stethoscope,
+		/obj/item/device/radio/headset/heads/smo,
+		/obj/item/taperoll/medical,
 		/obj/item/device/flash,
-		/obj/item/weapon/reagent_containers/hypospray/vial,
-		RANDOM_SCRUBS
+		/obj/item/device/flashlight,
+		/obj/item/device/flashlight/pen,
+		/obj/item/device/healthanalyzer,
+		/obj/item/weapon/storage/belt/medical,
+		/obj/item/clothing/glasses/hud/health,
+		/obj/item/weapon/reagent_containers/hypospray/vial
 	)
 
 /obj/structure/closet/secure_closet/chemical
