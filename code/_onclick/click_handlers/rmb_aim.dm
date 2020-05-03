@@ -5,6 +5,7 @@
 	var/interval_timer_handle
 	var/last_change = 0
 
+
 /datum/click_handler/rmb_aim/New(var/mob/user)
 	.=..()
 	user.client.show_popup_menus = FALSE

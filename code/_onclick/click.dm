@@ -418,17 +418,18 @@
 	.=..()
 
 /client/MouseMove(object,location,control,params)
-	var/datum/stack/click_handlers
+	//Optimisation, prevent the below code if we dont have this flag set
+	if (mob && mob.has_mousemove_click_handler)
+		var/datum/stack/click_handlers
 
-	if (mob)
 		click_handlers = mob.GetClickHandlers()
 
 
-	while (click_handlers.Num())
-		var/datum/click_handler/CH = click_handlers.Pop()
-		if (CH)
-			if (!CH.MouseMove(object,location,control,params) )
-				return
+		while (click_handlers.Num())
+			var/datum/click_handler/CH = click_handlers.Pop()
+			if (CH)
+				if (!CH.MouseMove(object,location,control,params) )
+					return
 	.=..()
 
 
@@ -540,18 +541,7 @@
 	var/turf/T = screen_loc2turf(screen_loc, get_turf(user))
 	return T
 
-/*
-	Custom click handling
-*/
 
-/mob
-	var/datum/stack/click_handlers
-
-/mob/Destroy()
-	if(click_handlers)
-		click_handlers.QdelClear()
-		QDEL_NULL(click_handlers)
-	. = ..()
 
 
 //Checks if target is within arc degrees either side of user's forward vector.

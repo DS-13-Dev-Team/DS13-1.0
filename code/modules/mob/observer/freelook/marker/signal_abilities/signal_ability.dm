@@ -118,6 +118,8 @@
 		to_chat(user, SPAN_WARNING(check))
 		return
 
+	user.RemoveClickHandlersByType(/datum/click_handler/placement/ability)	//Remove any old placement handlers first, a mob should never have more than one of these
+	user.RemoveClickHandlersByType(/datum/click_handler/target)	//Remove targeting handlers too
 
 	switch(targeting_method)
 		if (TARGET_CLICK)

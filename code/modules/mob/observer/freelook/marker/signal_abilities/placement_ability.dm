@@ -87,8 +87,6 @@
 	if (!istype(_user))
 		return
 
-	_user.RemoveClickHandlersByType(/datum/click_handler/placement/ability)	//Remove any old placement handlers first, a mob should never have more than one of these
-
 	var/datum/click_handler/placement/ability/P = _user.PushClickHandler(_handler_type, C)
 
 	P.result_path = _result

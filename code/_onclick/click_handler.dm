@@ -2,12 +2,42 @@ var/const/CLICK_HANDLER_NONE                 = 0
 var/const/CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT = 1
 var/const/CLICK_HANDLER_ALL                  = (~0)
 
+/*
+	Custom click handling
+*/
+
+/mob
+	var/datum/stack/click_handlers
+	var/has_mousemove_click_handler = FALSE
+
+/mob/Destroy()
+	if(click_handlers)
+		click_handlers.QdelClear()
+		QDEL_NULL(click_handlers)
+	. = ..()
+
+//Called when click handlers are added or removed
+/mob/proc/update_click_handler_flags()
+	has_mousemove_click_handler = FALSE
+
+	var/datum/stack/click_handlers
+
+	click_handlers = src.GetClickHandlers()
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (CH.has_mousemove)
+			has_mousemove_click_handler = TRUE
+
 /datum/click_handler
 	var/mob/user
 	var/flags = 0
 	var/id	//Used by signal abilities
 	var/cursor_override
 	var/cached_cursor
+
+	//Flags, used to optimise
+	var/has_mousemove = FALSE
 
 /datum/click_handler/New(var/mob/user)
 	..()
@@ -117,7 +147,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 /mob/proc/GetClickHandler(var/datum/click_handler/popped_handler)
 	if(!click_handlers)
 		click_handlers = new()
-	if(click_handlers.is_empty())
+	if(IS_EMPTY(click_handlers))
 		PushClickHandler(/datum/click_handler/default)
 	return click_handlers.Top()
 
@@ -134,7 +164,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 /mob/proc/GetClickHandlers()
 	if(!click_handlers)
 		click_handlers = new()
-	if(click_handlers.is_empty())
+	if(IS_EMPTY(click_handlers.stack))
 		PushClickHandler(/datum/click_handler/default)
 	return click_handlers.Copy()
 
@@ -148,6 +178,8 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		click_handler.Exit()
 	click_handlers.Remove(click_handler)
 	qdel(click_handler)
+
+	update_click_handler_flags()
 
 	if(!was_top)
 		return
@@ -186,6 +218,9 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	click_handler = new new_click_handler_type(arglist(newarguments))
 	click_handler.Enter()
 	click_handlers.Push(click_handler)
+
+	update_click_handler_flags()
+
 	return click_handler
 
 
@@ -208,6 +243,8 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	var/shots_fired = 0
 
 	var/user_trying_to_fire = FALSE
+
+
 
 /datum/click_handler/fullauto/proc/start_firing()
 	if (!firing)
@@ -294,6 +331,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	var/last_params
 	//Todo: Make this work with callbacks
 
+	has_mousemove = TRUE
 
 /datum/click_handler/sustained/proc/start_firing()
 

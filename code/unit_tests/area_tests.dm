@@ -35,7 +35,7 @@
 	. = list()
 	var/datum/stack/turfs_to_check = new()
 	turfs_to_check.Push(origin)
-	while(!turfs_to_check.is_empty())
+	while(!IS_EMPTY(turfs_to_check.stack))
 		var/turf/T = turfs_to_check.Pop()
 		. |= T
 		var/turf/neighbour
