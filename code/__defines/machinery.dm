@@ -33,6 +33,7 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 
 // Camera networks
 #define NETWORK_CARGO "Cargo"
+#define NETWORK_COMMAND "Command"
 #define NETWORK_COMMON "Common"
 #define NETWORK_CREW "Crew"
 #define NETWORK_CRESCENT "Crescent"             //Unused
