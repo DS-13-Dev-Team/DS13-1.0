@@ -21,7 +21,7 @@
 
 /obj/item/weapon/tank/jetpack/Destroy()
 	QDEL_NULL(ion_trail)
-	..()
+	.=..()
 
 /obj/item/weapon/tank/jetpack/examine(mob/living/user)
 	. = ..()

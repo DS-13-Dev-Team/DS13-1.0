@@ -38,6 +38,16 @@
 
 	if(.) update_light()
 
+/atom/proc/remove_light()
+	light_max_bright = 0
+	for (var/datum/light_source/LS in light_sources)
+		LS.destroy()
+	light_sources = list()
+	if (light)
+		light.destroy()
+		light = null
+
+
 #undef NONSENSICAL_VALUE
 #undef DEFAULT_FALLOFF_CURVE
 
@@ -67,7 +77,7 @@
 		light.destroy()
 		light = null
 	return ..()
-	
+
 /atom/set_opacity()
 	. = ..()
 	if(.)

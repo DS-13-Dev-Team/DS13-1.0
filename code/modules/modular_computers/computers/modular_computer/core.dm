@@ -72,6 +72,7 @@
 	. = ..()
 
 /obj/item/modular_computer/Destroy()
+
 	kill_program(1)
 	STOP_PROCESSING(SSobj, src)
 	if(istype(stored_pen))
@@ -79,6 +80,7 @@
 	for(var/obj/item/weapon/computer_hardware/CH in src.get_all_components())
 		uninstall_component(null, CH)
 		qdel(CH)
+	remove_light()
 	return ..()
 
 /obj/item/modular_computer/emag_act(var/remaining_charges, var/mob/user)
