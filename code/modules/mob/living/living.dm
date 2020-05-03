@@ -518,7 +518,6 @@ default behaviour is:
 		return
 
 	if (isliving(pulling))
-
 		var/mob/living/M = pulling
 		if(M.grabbed_by.len)
 			if (prob(75))
@@ -530,7 +529,7 @@ default behaviour is:
 			M.handle_pull_damage(src)
 
 
-	step(pulling, get_dir(pulling.loc, old_loc))
+	step_to(pulling, old_loc)
 
 
 

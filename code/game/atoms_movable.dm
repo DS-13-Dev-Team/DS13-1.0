@@ -21,6 +21,7 @@
 	var/mob/pulledby = null
 	var/item_state = null // Used to specify the item state for the on-mob overlays.
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
+	var/mid_diag_move = FALSE // Whether the atom is in the first step of diagonal movement
 
 
 	//Mass is measured in kilograms. It should never be zero
