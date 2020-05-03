@@ -1,10 +1,3 @@
-/proc/dragged(var/params)
-	var/list/L = params2list(params)
-	var/dragged = L["drag"]
-	if(dragged && !L[dragged])
-		return	TRUE
-	return FALSE
-
 /client/proc/resolve_drag(var/atom/A, var/params)
 	var/list/L = params2list(params)
 	var/dragged = L["drag"]

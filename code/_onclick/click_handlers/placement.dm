@@ -48,8 +48,11 @@ GLOBAL_LIST_EMPTY(placement_previews)
 			user.verbs -= /mob/verb/placement_rotate
 			user.client.show_popup_menus = TRUE
 			user.client.screen -= preview
+
 			qdel(preview)
-		user.RemoveClickHandler(src)
+
+		if (!QDELETED(src))
+			user.RemoveClickHandler(src)
 
 
 //If we'ere removed by some other means, make sure we stop

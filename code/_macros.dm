@@ -167,6 +167,8 @@
 // Null-safe L.Cut()
 #define LAZYCLEARLIST(L) if(L) L.Cut()
 
+#define	IS_EMPTY(L)	!(L?.len)
+
 //Sets the value of a key in an assoc list
 #define LAZYASET(L,K,V) if(!L) { L = list(); } L[K] = V;
 

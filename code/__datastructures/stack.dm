@@ -13,7 +13,7 @@
 	. = ..()
 
 /datum/stack/proc/Pop()
-	if(is_empty())
+	if(IS_EMPTY(stack))
 		return null
 	. = stack[stack.len]
 	stack.Cut(stack.len,0)
@@ -24,19 +24,20 @@
 	stack += element
 
 /datum/stack/proc/Top()
-	if(is_empty())
+	if(IS_EMPTY(stack))
 		return null
 	. = stack[stack.len]
 
 /datum/stack/proc/Remove(element)
 	stack -= element
 
-/datum/stack/proc/is_empty()
-	. = stack.len ? 0 : 1
+///datum/stack/proc/is_empty()
+	//. = stack.len ? 0 : 1
+	//return stack?.len
 
 //Rotate entire stack left with the leftmost looping around to the right
 /datum/stack/proc/RotateLeft()
-	if(is_empty())
+	if(IS_EMPTY(stack))
 		return 0
 	. = stack[1]
 	stack.Cut(1,2)
@@ -44,7 +45,7 @@
 
 //Rotate entire stack to the right with the rightmost looping around to the left
 /datum/stack/proc/RotateRight()
-	if(is_empty())
+	if(IS_EMPTY(stack))
 		return 0
 	. = stack[stack.len]
 	stack.Cut(stack.len,0)
