@@ -21,8 +21,7 @@
 		NETWORK_MEDICAL,
 		NETWORK_MINE,
 		NETWORK_RESEARCH,
-		NETWORK_SECURITY,
-		NETWORK_THUNDER,
+		NETWORK_SECURITY
 	)
 	/*
 	base_floor_type = /turf/simulated/floor/reinforced/airless
