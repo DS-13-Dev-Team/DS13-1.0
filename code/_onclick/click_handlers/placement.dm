@@ -21,6 +21,9 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	var/last_move_params	//Cached params from last mousemove event
 	var/datum/callback/call_on_place
 
+
+	has_mousemove = TRUE
+
 /datum/click_handler/placement/New(var/mob/user, var/datum/callback/C)
 	if (C)
 		call_on_place = C
@@ -111,6 +114,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 
 
 	set_preview_color((message ? FALSE : TRUE))
+
 
 
 //Called by pressing R
