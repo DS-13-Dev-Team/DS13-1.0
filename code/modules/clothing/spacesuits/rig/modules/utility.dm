@@ -26,6 +26,10 @@
 	var/device_type
 	var/obj/item/device
 
+/obj/item/rig_module/device/Destroy()
+	QDEL_NULL(device)
+	.=..()
+
 /obj/item/rig_module/device/healthscanner
 	name = "health scanner module"
 	desc = "A hardsuit-mounted health scanner."
@@ -276,6 +280,10 @@
 	voice_holder = new(src)
 	voice_holder.active = 0
 
+/obj/item/rig_module/voice/Destroy()
+	QDEL_NULL(voice_holder)
+	.=..()
+
 /obj/item/rig_module/voice/installed()
 	..()
 	holder.speech = src
@@ -329,6 +337,10 @@
 	interface_desc = "An inbuilt EVA maneuvering system that runs off the rig air supply."
 	origin_tech = list(TECH_MATERIAL = 6,  TECH_ENGINEERING = 7)
 	var/obj/item/weapon/tank/jetpack/rig/jets
+
+/obj/item/rig_module/maneuvering_jets/Destroy()
+	QDEL_NULL(jets)
+	.=..()
 
 /obj/item/rig_module/maneuvering_jets/engage()
 	if(!..())
