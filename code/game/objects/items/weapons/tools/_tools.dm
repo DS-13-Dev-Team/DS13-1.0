@@ -60,7 +60,7 @@
 *******************************/
 //Fuel and cell spawn
 /obj/item/weapon/tool/New()
-	..()
+
 	if(!cell && suitable_cell)
 		cell = new suitable_cell(src)
 
@@ -71,16 +71,17 @@
 
 	if (use_stock_cost)
 		stock = max_stock
-
-	update_icon()
-	return
+	.=..()
 
 /obj/item/weapon/tool/Initialize()
-	..()
+
 	for(var/modtype in preinstalled_mods)
 		var/obj/item/weapon/tool_upgrade/TU = new modtype(src)
 		TU.apply(src)
 		TU.removeable = FALSE //Preinstalled mods are permanant
+
+	update_icon()
+	.=..()
 
 //Fuel and cell spawn
 /obj/item/weapon/tool/Created()
@@ -92,6 +93,9 @@
 
 //For killing processes like hot spots
 /obj/item/weapon/tool/Destroy()
+	QDEL_NULL(cell)
+	QDEL_NULL_LIST(upgrades)
+	QDEL_NULL(reagents)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -704,6 +708,10 @@
 	return reagents.get_reagent_amount(/datum/reagent/fuel)
 
 /obj/item/weapon/tool/proc/consume_fuel(var/volume)
+	//This will only happen if we're not finished initializing
+	if (!reagents)
+		return FALSE
+
 	if (get_fuel() >= volume)
 		reagents.remove_reagent(/datum/reagent/fuel, volume)
 		return TRUE

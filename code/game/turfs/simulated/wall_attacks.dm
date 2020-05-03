@@ -197,12 +197,12 @@
 			dismantle_sound = "sparks"
 			dismantle_verb = "slicing"
 			cut_delay *= 0.5
-		else if(istype(W,/obj/item/weapon/pickaxe))
+		else if(istype(W,/obj/item/weapon/tool/pickaxe))
 			req_quality = QUALITY_DIGGING
-			var/obj/item/weapon/pickaxe/P = W
-			dismantle_verb = P.drill_verb
-			dismantle_sound = P.drill_sound
-			cut_delay -= P.digspeed
+			var/obj/item/weapon/tool/pickaxe/P = W
+			dismantle_verb = "digging"
+			dismantle_sound = P.worksound
+			cut_delay -= P.get_tool_quality(QUALITY_DIGGING)
 
 		if(dismantle_verb)
 

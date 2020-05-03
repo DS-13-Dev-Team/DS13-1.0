@@ -42,8 +42,8 @@
 	//var/list/icon_keys = list()		//keys
 	//var/list/ammo_states = list()	//values
 
-/obj/item/weapon/gun/projectile/New()
-	..()
+/obj/item/weapon/gun/projectile/Initialize()
+	.=..()
 	if (starts_loaded)
 		if(ispath(ammo_type) && (load_method & (SINGLE_CASING|SPEEDLOADER)))
 			for(var/i in 1 to max_shells)
@@ -51,6 +51,11 @@
 		if(ispath(magazine_type) && (load_method & MAGAZINE))
 			ammo_magazine = new magazine_type(src)
 	update_icon()
+
+/obj/item/weapon/gun/projectile/Destroy()
+	QDEL_NULL_LIST(loaded)
+	QDEL_NULL(ammo_magazine)
+	.=..()
 
 /obj/item/weapon/gun/projectile/consume_next_projectile()
 	if (!handle_jamming())

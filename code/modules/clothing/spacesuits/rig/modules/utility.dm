@@ -46,7 +46,7 @@
 	suit_overlay_inactive = "mounted-drill"
 	use_power_cost = 75
 	origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 4, TECH_ENGINEERING = 6)
-	device_type = /obj/item/weapon/pickaxe/diamonddrill
+	device_type = /obj/item/weapon/tool/pickaxe/diamonddrill
 
 /obj/item/rig_module/device/anomaly_scanner
 	name = "hardsuit anomaly scanner"

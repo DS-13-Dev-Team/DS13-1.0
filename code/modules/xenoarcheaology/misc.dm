@@ -98,7 +98,7 @@
 	new /obj/item/weapon/pinpointer/radio(src)
 	new /obj/item/device/radio/beacon(src)
 	new /obj/item/clothing/glasses/meson(src)
-	new /obj/item/weapon/pickaxe(src)
+	new /obj/item/weapon/tool/pickaxe(src)
 	new /obj/item/device/measuring_tape(src)
 	new /obj/item/weapon/tool/pickaxe/excavation(src)
 	new /obj/item/weapon/storage/bag/fossils(src)

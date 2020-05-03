@@ -16,13 +16,20 @@
 	var/spent_icon = "s-casing-spent"
 	var/fall_sounds = list('sound/weapons/guns/casingfall1.ogg','sound/weapons/guns/casingfall2.ogg','sound/weapons/guns/casingfall3.ogg')
 
-/obj/item/ammo_casing/New()
-	..()
+/obj/item/ammo_casing/Initialize()
+	.=..()
+	if (!loc)
+		return INITIALIZE_HINT_QDEL
 	if(ispath(projectile_type))
 		BB = new projectile_type(src)
 	if(randpixel)
 		pixel_x = rand(-randpixel, randpixel)
 		pixel_y = rand(-randpixel, randpixel)
+
+/obj/item/ammo_casing/Destroy()
+	if (BB)
+		QDEL_NULL(BB)
+	.=..()
 
 //removes the projectile from the ammo casing
 /obj/item/ammo_casing/proc/expend()

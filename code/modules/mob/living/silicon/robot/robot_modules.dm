@@ -600,7 +600,6 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/tool/wrench(src)
 	src.modules += new /obj/item/weapon/tool/screwdriver(src)
 	src.modules += new /obj/item/weapon/storage/ore(src)
-	src.modules += new /obj/item/weapon/pickaxe/borgdrill(src)
 	src.modules += new /obj/item/weapon/storage/sheetsnatcher/borg(src)
 	src.modules += new /obj/item/weapon/gripper/miner(src)
 	src.modules += new /obj/item/weapon/mining_scanner(src)

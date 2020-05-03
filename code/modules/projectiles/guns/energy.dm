@@ -79,9 +79,10 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	update_icon()
 
 /obj/item/weapon/gun/energy/Destroy()
+	QDEL_NULL(power_supply)
 	if(self_recharge)
 		STOP_PROCESSING(SSobj, src)
-	return ..()
+	.=..()
 
 /obj/item/weapon/gun/energy/get_cell()
 	return power_supply
