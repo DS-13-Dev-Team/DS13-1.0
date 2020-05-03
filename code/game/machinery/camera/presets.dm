@@ -1,6 +1,9 @@
 /obj/machinery/camera/network/cargo
 	network = list(NETWORK_CARGO)
 
+/obj/machinery/camera/network/command
+	network = list(NETWORK_COMMAND)
+
 /obj/machinery/camera/network/common
 	network = list(NETWORK_COMMON)
 
