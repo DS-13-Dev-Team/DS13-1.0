@@ -117,7 +117,7 @@
 				turn_off()
 
 		if (passive_power_cost)
-			if (!consume_power(passive_power_cost)) //sir this doesnt work
+			if(!consume_resources(1))
 				turn_off()
 
 //Cell reload
