@@ -117,7 +117,7 @@
 				turn_off()
 
 		if (passive_power_cost)
-			if(!consume_resources(1))
+			if(!consume_power(passive_power_cost))
 				turn_off()
 
 //Cell reload
@@ -679,6 +679,8 @@
 	//Gradual degradation
 	if (degradation)
 		unreliability += rand_between(0, degradation)
+	
+	return TRUE
 
 //Power and fuel drain, sparks spawn
 /obj/item/weapon/tool/proc/check_tool_effects(mob/living/user, var/time)
