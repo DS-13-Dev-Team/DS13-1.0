@@ -220,7 +220,7 @@
 /obj/item/weapon/gun/proc/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
 	if(world.time < next_fire_time)
 		if (!silent && !suppress_delay_warning && world.time % 3) //to prevent spam
-			user << SPAN_WARNING("[src] is not ready to fire again!")
+			to_chat(user, SPAN_WARNING("[src] is not ready to fire again!"))
 		return FALSE
 
 	if(target && user && (target.z != user.z))

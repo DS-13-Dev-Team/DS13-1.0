@@ -129,35 +129,24 @@
 //This proc should never be overridden elsewhere at /atom/movable to keep directions sane.
 /atom/movable/Move(newloc, direct)
 	if (direct & (direct - 1))
+		src.mid_diag_move = TRUE
+
+		var/vert_dir = SOUTH
 		if (direct & 1)
-			if (direct & 4)
-				if (step(src, NORTH))
-					step(src, EAST)
-				else
-					if (step(src, EAST))
-						step(src, NORTH)
-			else
-				if (direct & 8)
-					if (step(src, NORTH))
-						step(src, WEST)
-					else
-						if (step(src, WEST))
-							step(src, NORTH)
-		else
-			if (direct & 2)
-				if (direct & 4)
-					if (step(src, SOUTH))
-						step(src, EAST)
-					else
-						if (step(src, EAST))
-							step(src, SOUTH)
-				else
-					if (direct & 8)
-						if (step(src, SOUTH))
-							step(src, WEST)
-						else
-							if (step(src, WEST))
-								step(src, SOUTH)
+			vert_dir = NORTH
+		
+		var/hor_dir = WEST
+		if (direct & 4)
+			hor_dir = EAST
+
+		if (step(src, vert_dir))
+			src.mid_diag_move = FALSE
+			step(src, hor_dir)
+		else if (step(src, hor_dir))
+			src.mid_diag_move = FALSE
+			step(src, vert_dir)
+
+		src.mid_diag_move = FALSE // In case diagonal movement does not actually happen
 	else
 		var/atom/A = src.loc
 

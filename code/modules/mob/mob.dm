@@ -606,10 +606,10 @@
 
 
 /mob/verb/stop_pulling()
-
 	set name = "Stop Pulling"
 	set category = "IC"
 	if(pulling)
+		GLOB.moved_event.unregister(pulling, src, /mob/proc/pulling_moved)
 		pulling.pulledby = null
 		pulling = null
 		if(pullin)
@@ -658,7 +658,6 @@
 
 
 /mob/proc/start_pulling(var/atom/movable/AM)
-
 	if (!usr || !can_pull(AM))	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
@@ -679,10 +678,17 @@
 		var/mob/living/carbon/human/H = AM
 		if(H.pull_damage())
 			to_chat(src, "<span class='danger'>Pulling \the [H] in their current condition would probably be a bad idea.</span>")
+
+	GLOB.moved_event.register(AM, src, /mob/proc/pulling_moved)
+
 	//Attempted fix for people flying away through space when cuffed and dragged.
 	if(ismob(AM))
 		var/mob/pulled = AM
 		pulled.inertia_dir = 0
+
+/mob/proc/pulling_moved()
+	if(!pulling.mid_diag_move && get_dist(src, pulling) > 1)
+		stop_pulling()
 
 /mob/proc/can_use_hands()
 	return
