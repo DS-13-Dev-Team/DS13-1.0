@@ -84,26 +84,37 @@
 
 	update_nearby_tiles(need_rebuild=1)
 
-/obj/machinery/door/Initialize()
+/obj/machinery/door/Initialize(var/mapload)
 	set_extension(src, /datum/extension/penetration/proc_call, .proc/CheckPenetration)
 	if (isturf(loc))
-		update_areas()
+		if (mapload)
+			SSslow.doors_needing_areas.Add(src)	//Add ourselves for area updating later
+		else
+			update_areas()
 	. = ..()
 
-
+//Since this is a crazy expensive proc to run, we space it out in random intervals over the first five minutes of the round
 /obj/machinery/door/proc/update_areas()
 	for (var/area/AB in border_areas)
 		AB.unregister_door(src)
 
-	border_areas = list()
-	//TODO: Unregister us from old areas
+	border_areas = list(get_area(src))//Always add our own area
+
+	var/list/raytrace_turfs = list()
+
 	for (var/turf/T as anything in turfs_in_view(world.view))
 		var/area/A = get_area(T)
 		if (!(A in border_areas))
-			if (check_trajectory(T, src, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING))
-				border_areas |= A
+			raytrace_turfs += T
 
-		CHECK_TICK
+	//34.2 with
+	//25.1 without
+	//43.5 with sleep
+	raytrace_turfs = check_trajectory_mass(raytrace_turfs, src, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING, allow_sleep = TRUE)
+
+	for (var/turf/T as anything in raytrace_turfs)
+		if (raytrace_turfs[T])
+			border_areas |= get_area(T)
 
 	for (var/area/AB in border_areas)
 		AB.register_door(src)

@@ -1283,8 +1283,8 @@ About the new airlock wires panel:
 	if (lock_cut_state == BOLTS_CUT) return 0 //what bolts?
 
 	src.locked = 1
-	playsound(src, bolts_dropping, 30, 0, -6)
-	audible_message("You hear a click from the bottom of the door.", hearing_distance = 1)
+	playsound(src, bolts_dropping, VOLUME_MID, 0)
+	audible_message("You hear a click from the bottom of the door.", hearing_distance = 7)
 	update_icon()
 	return 1
 
@@ -1297,8 +1297,8 @@ About the new airlock wires panel:
 			return
 
 	src.locked = 0
-	playsound(src, bolts_rising, 30, 0, -6)
-	audible_message("You hear a click from the bottom of the door.", hearing_distance = 1)
+	playsound(src, bolts_rising, VOLUME_MID, 0)
+	audible_message("You hear a click from the bottom of the door.",hearing_distance = 7)
 	update_icon()
 	return 1
 

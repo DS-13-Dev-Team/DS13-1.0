@@ -20,7 +20,7 @@
 	id = "flickermass"
 	desc = "Causes all lights in an area to flicker"
 	target_string = "A tile in the target area"
-	energy_cost = 60
+	energy_cost = 50
 	cooldown = 10 SECONDS
 	target_types = list(/turf)
 

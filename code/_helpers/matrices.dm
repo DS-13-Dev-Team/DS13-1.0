@@ -205,6 +205,11 @@
 /proc/rotation_to_target(var/atom/source, var/atom/target, var/forward_direction = SOUTH)
 	var/vector2/direction = Vector2.DirectionBetween(source, target)
 	return direction.AngleFrom(Vector2.FromDir(forward_direction))
+
+
+/obj/proc/animate_fade_in(var/animtime = 10)
+	alpha = 0
+	animate(src, alpha = 255, time = animtime, flags = ANIMATION_PARALLEL)	//Cool fade in effect
 #undef LUMR
 #undef LUMG
 #undef LUMB
