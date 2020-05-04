@@ -112,7 +112,9 @@
 				turn_off()
 
 		if (passive_power_cost)
-			if (!cell.checked_use(passive_power_cost))
+			if(cell.charge <= passive_power_cost)
+				turn_off()//this can be overridden elsewhere
+			if (!cell.checked_use(passive_power_cost)) //sir this doesnt work
 				turn_off()
 
 //Cell reload
