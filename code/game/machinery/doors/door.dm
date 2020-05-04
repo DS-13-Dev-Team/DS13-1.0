@@ -46,6 +46,10 @@
 
 	atmos_canpass = CANPASS_PROC
 
+
+	//A list of areas we are on or bordering
+	var/list/border_areas = list()
+
 /obj/machinery/door/attack_generic(var/mob/user, var/damage, var/attack_verb, var/environment_smash)
 	if(environment_smash >= 1)
 		damage = max(damage, min_force)
@@ -82,7 +86,27 @@
 
 /obj/machinery/door/Initialize()
 	set_extension(src, /datum/extension/penetration/proc_call, .proc/CheckPenetration)
+	if (isturf(loc))
+		update_areas()
 	. = ..()
+
+
+/obj/machinery/door/proc/update_areas()
+	for (var/area/AB in border_areas)
+		AB.unregister_door(src)
+
+	border_areas = list()
+	//TODO: Unregister us from old areas
+	for (var/turf/T as anything in turfs_in_view(world.view))
+		var/area/A = get_area(T)
+		if (!(A in border_areas))
+			if (check_trajectory(T, src, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING))
+				border_areas |= A
+
+		CHECK_TICK
+
+	for (var/area/AB in border_areas)
+		AB.register_door(src)
 
 /obj/machinery/door/Destroy()
 	set_density(0)

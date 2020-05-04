@@ -8,6 +8,11 @@
 	var/uid
 	var/area_flags
 
+	//This is a list of all doors/airlocks which are in or on the border of this area.
+	//On the border counts if there is a clear, unobstructed path from this area, to that door.
+	//Note that windows counts as an obstruction
+	var/list/bordering_doors = list()
+
 /area/New()
 	icon_state = ""
 	uid = ++global_uid
@@ -31,6 +36,12 @@
 		power_equip = 0
 		power_environ = 0
 	power_change()		// all machines set to current power level, also updates lighting icon
+
+/area/proc/register_door(var/obj/machinery/door/D)
+	bordering_doors |= D
+
+/area/proc/unregister_door(var/obj/machinery/door/D)
+	bordering_doors -= D
 
 /area/proc/get_contents()
 	return contents

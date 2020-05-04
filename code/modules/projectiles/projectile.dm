@@ -520,7 +520,7 @@
 	invisibility = 101 //Nope!  Can't see me!
 	yo = null
 	xo = null
-	var/result = 0 //To pass the message back to the gun.
+	var/result = null //To pass the message back to the gun.
 
 /obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area)
 	if(A == firer)
@@ -529,10 +529,10 @@
 		return //cannot shoot yourself
 	if(istype(A, /obj/item/projectile))
 		return
-	if(istype(A, /mob/living) || istype(A, /obj/mecha) || istype(A, /obj/vehicle))
-		result = 2 //We hit someone, return 1!
+	if(A == original)
+		result = TRUE
 		return
-	result = 1
+	result = FALSE
 	return
 
 /obj/item/projectile/test/launch(atom/target)
@@ -549,8 +549,8 @@
 
 /obj/item/projectile/test/Process(var/turf/targloc)
 	while(src) //Loop on through!
-		if(result)
-			return (result - 1)
+		if(!isnull(result))
+			return result
 		if((!( targloc ) || loc == targloc))
 			targloc = locate(min(max(x + xo, 1), world.maxx), min(max(y + yo, 1), world.maxy), z) //Finding the target turf at map edge
 
@@ -559,21 +559,28 @@
 
 		Move(location.return_turf())
 
-		var/mob/living/M = locate() in get_turf(src)
-		if(istype(M)) //If there is someting living...
-			return 1 //Return 1
-		else
-			M = locate() in get_step(src,targloc)
-			if(istype(M))
-				return 1
+
+		var/turf/T = get_turf(src)
+		if (T == original)
+			return TRUE
+
+		var/atom/A = locate(original) in T
+		if(A) //We are on our target's turf, we can hit them
+			return TRUE
 
 //Helper proc to check if you can hit them or not.
 /proc/check_trajectory(atom/target as mob|obj, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE, item_flags = null, obj_flags = null)
 	if(!istype(target) || !istype(firer))
 		return 0
 
-	var/obj/item/projectile/test/trace = new /obj/item/projectile/test(get_turf(firer)) //Making the test....
+	//If its in the same turf, just say yes
+	if (get_turf(target) == get_turf(firer))
+		return TRUE
 
+
+
+
+	var/obj/item/projectile/test/trace = new /obj/item/projectile/test(get_turf(firer)) //Making the test....
 	//Set the flags and pass flags to that of the real projectile...
 	if(!isnull(item_flags))
 		trace.item_flags = item_flags
