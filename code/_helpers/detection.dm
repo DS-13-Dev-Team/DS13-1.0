@@ -6,6 +6,7 @@
 */
 GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
+
 //Version of view() which ignores darkness, because BYOND doesn't have it.
 /proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
 	if(!center)
@@ -38,47 +39,55 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 //Mob
 
 /atom/proc/atoms_in_view(var/check_range = world.view)
-	return dview(check_range, get_turf(src))
+	GLOB.dview_mob.loc = get_turf(src)
+	GLOB.dview_mob.see_invisible = 0
+	return view(check_range, GLOB.dview_mob)
 
 /mob/atoms_in_view(var/check_range = null)
-
-	var/list/things
+	var/range = (check_range ? check_range : view_range)
+	var/origin
 	if (!view_offset)
-		things = hear((check_range? check_range : view_range), src)
+		origin = get_turf(src)
 	else
-		//View offset makes things much more complex
+		origin = get_view_centre()
 
-		var/turf/origin = get_view_centre()
-		things = dview((check_range? check_range : view_range), origin, see_invisible)
-
-	return things
+	GLOB.dview_mob.loc = origin
+	GLOB.dview_mob.see_invisible = 0
+	return view(range, GLOB.dview_mob)
 
 //Returns a list of all turfs this mob can see, accounting for view radius and offset
 /atom/proc/turfs_in_view(var/check_range = world.view)
-	var/list/things = atoms_in_view(check_range)
-	for (var/a in things)
-		if (!isturf(a))
-			things.Remove(a)
-
-	return things
-
-//As above, but specifically finds turfs without dense objects blocking them
-/atom/proc/clear_turfs_in_view(var/check_range = world.view)
-	var/list/things = atoms_in_view(check_range)
-	for (var/a in things)
-		if (!isturf(a))
-			things.Remove(a)
-			continue
-
-		if (!turf_clear(a))
-			things.Remove(a)
-
+	var/list/things = list()
+	FOR_DVIEW(var/turf/T, check_range, get_turf(src), 0)
+		things += T
+	END_FOR_DVIEW
 	return things
 
 /mob/turfs_in_view(var/check_range = null)
-	.=..()
+	var/range = (check_range ? check_range : view_range)
+	var/origin
+	if (!view_offset)
+		origin = get_turf(src)
+	else
+		origin = get_view_centre()
 
-/mob/clear_turfs_in_view(var/check_range = null)
+	var/list/things = list()
+	FOR_DVIEW(var/turf/T, range, origin, 0)
+		things += T
+	END_FOR_DVIEW
+	return things
+
+
+//As above, but specifically finds turfs without dense objects blocking them
+/atom/proc/clear_turfs_in_view(var/check_range = world.view)
+	var/list/things = list()
+	for (var/turf/T as anything in turfs_in_view(check_range))
+		if (turf_clear(T))
+			things += T
+
+	return things
+
+
 
 //Generic
 
