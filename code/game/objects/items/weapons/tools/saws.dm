@@ -95,11 +95,15 @@
 
 
 /obj/item/weapon/tool/saw/plasma/turn_on()
-	.=..()
-	flick("plasma_saw_ignite", src)
-	playsound(get_turf(src), 'sound/weapons/saberon.ogg', 20, 1, -2)
+	if(!cell || cell.charge <= 100) // ideally, this should be handled globally, but may require a tools refactor.
+		visible_message(SPAN_NOTICE("\The Plasma sheath fails to ignite on [src]"))
+		return FALSE
+	else
+		.=..()
+		flick("plasma_saw_ignite", src)
+		playsound(get_turf(src), 'sound/weapons/saberon.ogg', 20, 1, -2)
 
 
-/obj/item/weapon/tool/saw/plasma/turn_off()
+/obj/item/weapon/tool/saw/plasma/turn_off() // no need to check cell charge here.
 	.=..()
 	playsound(get_turf(src), 'sound/weapons/saberoff.ogg', 20, 1, -2)
