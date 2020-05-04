@@ -39,7 +39,7 @@
 		/obj/item/clothing/gloves/thick,
 		/obj/item/weapon/mining_scanner,
 		/obj/item/weapon/storage/ore,
-		/obj/item/weapon/shovel,
+		/obj/item/weapon/tool/shovel,
 		/obj/item/weapon/tool/saw/plasma,
 		/obj/item/weapon/gun/energy/cutter/plasma,
 		/obj/item/weapon/cell/plasmacutter = 2,
@@ -64,7 +64,7 @@
 		/obj/item/clothing/gloves/thick,
 		/obj/item/weapon/mining_scanner,
 		/obj/item/weapon/storage/ore,
-		/obj/item/weapon/shovel,
+		/obj/item/weapon/tool/shovel,
 		/obj/item/weapon/tool/saw/plasma,
 		/obj/item/device/flashlight/maglight
 	)

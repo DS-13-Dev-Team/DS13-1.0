@@ -82,9 +82,17 @@
 	force_update()
 	if(source_atom && source_atom.light_sources)
 		source_atom.light_sources -= src
+		if (source_atom.light == src)
+			source_atom.light = null
 
 	if(top_atom && top_atom.light_sources)
 		top_atom.light_sources    -= src
+		if (top_atom.light == src)
+			top_atom.light = null
+
+	source_atom = null
+	source_turf = null
+	top_atom = null
 
 // Call it dirty, I don't care.
 // This is here so there's no performance loss on non-instant updates from the fact that the engine can also do instant updates.

@@ -13,6 +13,10 @@
 	var/mode
 	var/obj/item/clothing/glasses/glasses
 
+/datum/rig_vision/Destroy()
+	QDEL_NULL(glasses)
+	.=..()
+
 /datum/rig_vision/New()
 	if(ispath(glasses))
 		glasses = new glasses
@@ -64,6 +68,10 @@
 		)
 
 	var/vision_index
+
+/obj/item/rig_module/vision/Destroy()
+	QDEL_NULL(vision)
+	.=..()
 
 /obj/item/rig_module/vision/multi
 

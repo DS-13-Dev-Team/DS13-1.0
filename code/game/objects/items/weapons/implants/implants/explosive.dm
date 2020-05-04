@@ -172,6 +172,7 @@
 		malfunction = 0
 
 /obj/item/weapon/implant/explosive/Destroy()
+	radio_controller.remove_object(src, frequency)
 	removed()
 	GLOB.listening_objects -= src
 	return ..()

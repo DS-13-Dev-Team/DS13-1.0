@@ -164,6 +164,7 @@
 	update_icon(1)
 
 /obj/item/weapon/rig/Destroy()
+	QDEL_NULL_LIST(installed_modules)
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
 		qdel(piece)
 	STOP_PROCESSING(SSobj, src)

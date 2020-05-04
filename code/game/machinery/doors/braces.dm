@@ -62,7 +62,7 @@
 		airlock = null
 	qdel(electronics)
 	electronics = null
-	..()
+	.=..()
 
 
 // Interact with the electronics to set access requirements.

@@ -119,8 +119,7 @@
 			animate(src, alpha = 0, time = expiry_time)
 			QDEL_IN(src, expiry_time)
 
-/obj/item/projectile/Destroy()
-	return ..()
+
 
 /obj/item/projectile/Move(NewLoc,Dir=0)
 	last_loc = loc

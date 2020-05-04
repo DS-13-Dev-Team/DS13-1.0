@@ -28,6 +28,11 @@
 		else
 			settings[propname] = propvalue
 
+/datum/firemode/Destroy()
+	gun = null
+	original_vars = list()
+	.=..()
+
 /datum/firemode/proc/apply_to(obj/item/weapon/gun/_gun)
 	gun = _gun
 	gun.current_firemode = src

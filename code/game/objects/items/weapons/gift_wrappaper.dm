@@ -58,7 +58,7 @@
 		/obj/item/weapon/storage/backpack/holding,
 		/obj/item/weapon/storage/belt/champion,
 		/obj/item/weapon/soap/deluxe,
-		/obj/item/weapon/pickaxe/silver,
+		/obj/item/weapon/tool/pickaxe,
 		/obj/item/weapon/pen/invisible,
 		/obj/item/weapon/lipstick/random,
 		/obj/item/weapon/grenade/smokebomb,

@@ -74,9 +74,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	decryptkey = GenerateKey()
 	..()
 
-/obj/machinery/message_server/Destroy()
-	message_servers -= src
-	return ..()
+
 
 /obj/machinery/message_server/Process()
 	if(active && (stat & (BROKEN|NOPOWER)))
@@ -249,13 +247,18 @@ var/obj/machinery/blackbox_recorder/blackbox
 	var/list/datum/feedback_variable/feedback = new()
 
 	//Only one can exist in the world!
-/obj/machinery/blackbox_recorder/New()
+/obj/machinery/blackbox_recorder/Initialize()
+	.=..()
+	if (!loc)
+		return INITIALIZE_HINT_QDEL
+
 	if(blackbox)
 		if(istype(blackbox,/obj/machinery/blackbox_recorder))
-			qdel(src)
+			return INITIALIZE_HINT_QDEL
 	blackbox = src
 
 /obj/machinery/blackbox_recorder/Destroy()
+	message_servers -= src
 	var/turf/T = locate(1,1,2)
 	if(T)
 		blackbox = null
@@ -275,7 +278,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 		BR.messages_admin = messages_admin
 		if(blackbox != BR)
 			blackbox = BR
-	..()
+	.=..()
 
 /obj/machinery/blackbox_recorder/proc/find_feedback_datum(var/variable)
 	for(var/datum/feedback_variable/FV in feedback)

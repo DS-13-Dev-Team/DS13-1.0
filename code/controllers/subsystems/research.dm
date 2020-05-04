@@ -16,29 +16,7 @@ SUBSYSTEM_DEF(research)
 	var/list/design_files_to_init = list()
 
 /datum/controller/subsystem/research/Initialize()
-	for(var/R in subtypesof(/datum/design))
-		var/datum/design/design = new R
-		design.AssembleDesignInfo()
-		if(!design.build_path)
-			continue
 
-		all_designs += design
-
-		// Design ID is string or path.
-		// If path, make it accessible in both path and text form.
-		design_ids[design.id] = design
-		design_ids["[design.id]"] = design
-
-	generate_integrated_circuit_designs()
-
-	for(var/d in all_designs)
-		var/datum/design/design = d
-		var/datum/computer_file/binary/design/design_file = new
-		design_file.design = design
-		design_file.on_design_set()
-		design.file = design_file
-
-	designs_initialized = TRUE
 
 	// Initialize research holders that were created before
 	/*
@@ -47,10 +25,7 @@ SUBSYSTEM_DEF(research)
 	research_holders_to_init = list()
 	*/
 
-	// Initialize design files that were created before
-	for(var/file in design_files_to_init)
-		initialize_design_file(file)
-	design_files_to_init = list()
+
 
 	return ..()
 
@@ -112,3 +87,6 @@ SUBSYSTEM_DEF(research)
 
 	else
 		design_files_to_init += design_file
+
+
+/atom/research_design_initializer

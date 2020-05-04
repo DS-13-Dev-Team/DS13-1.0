@@ -20,8 +20,8 @@
 	ion_trail.set_up(src)
 
 /obj/item/weapon/tank/jetpack/Destroy()
-	qdel(ion_trail)
-	..()
+	QDEL_NULL(ion_trail)
+	.=..()
 
 /obj/item/weapon/tank/jetpack/examine(mob/living/user)
 	. = ..()
@@ -96,6 +96,10 @@
 /obj/item/weapon/tank/jetpack/rig
 	name = "jetpack"
 	var/obj/item/weapon/rig/holder
+
+/obj/item/weapon/tank/jetpack/rig/Destroy()
+	holder = null
+	.=..()
 
 /obj/item/weapon/tank/jetpack/rig/examine()
 	. = ..()

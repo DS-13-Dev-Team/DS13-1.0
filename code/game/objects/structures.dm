@@ -44,7 +44,7 @@
 		T.step_structures -= src
 	if(parts)
 		new parts(loc)
-	. = ..()
+	.=..()
 
 /obj/structure/attack_hand(mob/user)
 	..()

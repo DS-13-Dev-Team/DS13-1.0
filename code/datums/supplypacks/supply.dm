@@ -83,8 +83,8 @@
 					/obj/item/device/analyzer,
 					/obj/item/weapon/storage/ore,
 					/obj/item/device/flashlight/lantern,
-					/obj/item/weapon/shovel,
-					/obj/item/weapon/pickaxe,
+					/obj/item/weapon/tool/shovel,
+					/obj/item/weapon/tool/pickaxe,
 					/obj/item/weapon/mining_scanner,
 					/obj/item/clothing/glasses/material,
 					/obj/item/clothing/glasses/meson)

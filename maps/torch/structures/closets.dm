@@ -22,7 +22,7 @@
 		/obj/item/device/radio/beacon,
 		/obj/item/clothing/glasses/meson,
 		/obj/item/clothing/glasses/science,
-		/obj/item/weapon/pickaxe,
+		/obj/item/weapon/tool/pickaxe,
 		/obj/item/device/measuring_tape,
 		/obj/item/weapon/tool/pickaxe/xeno/hand,
 		/obj/item/weapon/storage/bag/fossils,

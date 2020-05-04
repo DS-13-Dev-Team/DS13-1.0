@@ -53,7 +53,7 @@
 	var/activate_string = "Activate"
 	var/deactivate_string = "Deactivate"
 
-	var/list/stat_rig_module/stat_modules = new()
+	var/list/datum/stat_rig_module/stat_modules = new()
 
 /obj/item/rig_module/examine()
 	. = ..()
@@ -129,14 +129,16 @@
 
 		charges = processed_charges
 
-	stat_modules +=	new/stat_rig_module/activate(src)
-	stat_modules +=	new/stat_rig_module/deactivate(src)
-	stat_modules +=	new/stat_rig_module/engage(src)
-	stat_modules +=	new/stat_rig_module/select(src)
-	stat_modules +=	new/stat_rig_module/charge(src)
+	stat_modules +=	new /datum/stat_rig_module/activate(src)
+	stat_modules +=	new /datum/stat_rig_module/deactivate(src)
+	stat_modules +=	new /datum/stat_rig_module/engage(src)
+	stat_modules +=	new /datum/stat_rig_module/select(src)
+	stat_modules +=	new /datum/stat_rig_module/charge(src)
 
 /obj/item/rig_module/Destroy()
 	deactivate()
+	QDEL_NULL_LIST(stat_modules)
+	holder = null
 	. = ..()
 
 // Called when the module is installed into a suit.
@@ -244,27 +246,31 @@
 		stat("Suit charge", cell_status)
 		for(var/obj/item/rig_module/module in R.installed_modules)
 		{
-			for(var/stat_rig_module/SRM in module.stat_modules)
+			for(var/datum/stat_rig_module/SRM in module.stat_modules)
 				if(SRM.CanUse())
 					stat(SRM.module.interface_name,SRM)
 		}
 
-/stat_rig_module
+/datum/stat_rig_module
 	parent_type = /atom/movable
 	var/module_mode = ""
 	var/obj/item/rig_module/module
 
-/stat_rig_module/New(var/obj/item/rig_module/module)
+/datum/stat_rig_module/New(var/obj/item/rig_module/module)
 	..()
 	src.module = module
 
-/stat_rig_module/proc/AddHref(var/list/href_list)
+/datum/stat_rig_module/Destroy()
+	module = null
+	.=..()
+
+/datum/stat_rig_module/proc/AddHref(var/list/href_list)
 	return
 
-/stat_rig_module/proc/CanUse()
+/datum/stat_rig_module/proc/CanUse()
 	return 0
 
-/stat_rig_module/Click()
+/datum/stat_rig_module/Click()
 	if(CanUse())
 		var/list/href_list = list(
 							"interact_module" = module.holder.installed_modules.Find(module),
@@ -273,20 +279,20 @@
 		AddHref(href_list)
 		module.holder.Topic(usr, href_list)
 
-/stat_rig_module/DblClick()
+/datum/stat_rig_module/DblClick()
 	return Click()
 
-/stat_rig_module/activate/New(var/obj/item/rig_module/module)
+/datum/stat_rig_module/activate/New(var/obj/item/rig_module/module)
 	..()
 	name = module.activate_string
 	if(module.active_power_cost)
 		name += " ([module.active_power_cost*10]A)"
 	module_mode = "activate"
 
-/stat_rig_module/activate/CanUse()
+/datum/stat_rig_module/activate/CanUse()
 	return module.toggleable && !module.active
 
-/stat_rig_module/deactivate/New(var/obj/item/rig_module/module)
+/datum/stat_rig_module/deactivate/New(var/obj/item/rig_module/module)
 	..()
 	name = module.deactivate_string
 	// Show cost despite being 0, if it means changing from an active cost.
@@ -295,36 +301,36 @@
 
 	module_mode = "deactivate"
 
-/stat_rig_module/deactivate/CanUse()
+/datum/stat_rig_module/deactivate/CanUse()
 	return module.toggleable && module.active
 
-/stat_rig_module/engage/New(var/obj/item/rig_module/module)
+/datum/stat_rig_module/engage/New(var/obj/item/rig_module/module)
 	..()
 	name = module.engage_string
 	if(module.use_power_cost)
 		name += " ([module.use_power_cost*10]E)"
 	module_mode = "engage"
 
-/stat_rig_module/engage/CanUse()
+/datum/stat_rig_module/engage/CanUse()
 	return module.usable
 
-/stat_rig_module/select/New()
+/datum/stat_rig_module/select/New()
 	..()
 	name = "Select"
 	module_mode = "select"
 
-/stat_rig_module/select/CanUse()
+/datum/stat_rig_module/select/CanUse()
 	if(module.selectable)
 		name = module.holder.selected_module == module ? "Selected" : "Select"
 		return 1
 	return 0
 
-/stat_rig_module/charge/New()
+/datum/stat_rig_module/charge/New()
 	..()
 	name = "Change Charge"
 	module_mode = "select_charge_type"
 
-/stat_rig_module/charge/AddHref(var/list/href_list)
+/datum/stat_rig_module/charge/AddHref(var/list/href_list)
 	var/charge_index = module.charges.Find(module.charge_selected)
 	if(!charge_index)
 		charge_index = 0
@@ -333,7 +339,7 @@
 
 	href_list["charge_type"] = module.charges[charge_index]
 
-/stat_rig_module/charge/CanUse()
+/datum/stat_rig_module/charge/CanUse()
 	if(module.charges && module.charges.len)
 		var/datum/rig_charge/charge = module.charges[module.charge_selected]
 		name = "[charge.display_name] ([charge.charges]C) - Change"

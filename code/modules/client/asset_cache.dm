@@ -315,3 +315,35 @@ var/decl/asset_cache/asset_cache = new()
 					var/icon/I = getFlatTypeIcon(CS.icon_type)
 					register_asset(filename, I)
 					assets[filename] = I
+
+
+
+/datum/asset/simple/research_designs/register()
+	for(var/R in subtypesof(/datum/design))
+		var/datum/design/design = new R
+		design.AssembleDesignInfo()
+		if(!design.build_path)
+			continue
+
+		SSresearch.all_designs += design
+
+		// Design ID is string or path.
+		// If path, make it accessible in both path and text form.
+		SSresearch.design_ids[design.id] = design
+		SSresearch.design_ids["[design.id]"] = design
+
+	SSresearch.generate_integrated_circuit_designs()
+
+	for(var/d in SSresearch.all_designs)
+		var/datum/design/design = d
+		var/datum/computer_file/binary/design/design_file = new
+		design_file.design = design
+		design_file.on_design_set()
+		design.file = design_file
+
+	SSresearch.designs_initialized = TRUE
+
+	// Initialize design files that were created before
+	for(var/file in SSresearch.design_files_to_init)
+		SSresearch.initialize_design_file(file)
+	SSresearch.design_files_to_init = list()
