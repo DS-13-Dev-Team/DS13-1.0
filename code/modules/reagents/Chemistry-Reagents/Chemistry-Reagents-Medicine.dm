@@ -36,7 +36,7 @@
 
 /datum/reagent/bicaridine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
-		M.heal_organ_damage(6 * removed, 0)
+		M.heal_organ_damage(4.5 * removed, 0)
 		M.add_chemical_effect(CE_PAINKILLER, 10)
 
 /datum/reagent/bicaridine/overdose(var/mob/living/carbon/M, var/alien)
@@ -60,7 +60,7 @@
 
 /datum/reagent/kelotane/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 6 * removed)
+		M.heal_organ_damage(0, 4.5 * removed)
 
 /datum/reagent/dermaline
 	name = "Dermaline"
@@ -75,7 +75,7 @@
 
 /datum/reagent/dermaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 12 * removed)
+		M.heal_organ_damage(0, 9 * removed)
 
 /datum/reagent/dylovene
 	name = "Dylovene"
@@ -96,7 +96,7 @@
 	M.adjust_hallucination(-9 * removed)
 	M.add_up_to_chemical_effect(CE_ANTITOX, 1)
 
-	var/removing = (4 * removed)
+	var/removing = (3 * removed)
 	for(var/datum/reagent/R in M.ingested.reagent_list)
 		if(istype(R, /datum/reagent/toxin) || (R.type in remove_toxins))
 			M.ingested.remove_reagent(R.type, removing)
@@ -121,7 +121,7 @@
 		M.adjustToxLoss(removed * 6)
 	else if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_OXYGENATED, 1)
-	holder.remove_reagent(/datum/reagent/lexorin, 2 * removed)
+	holder.remove_reagent(/datum/reagent/lexorin, 1.5 * removed)
 
 /datum/reagent/dexalinp
 	name = "Dexalin Plus"
@@ -138,7 +138,7 @@
 		M.adjustToxLoss(removed * 9)
 	else if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_OXYGENATED, 2)
-	holder.remove_reagent(/datum/reagent/lexorin, 3 * removed)
+	holder.remove_reagent(/datum/reagent/lexorin, 2.25 * removed)
 
 /datum/reagent/tricordrazine
 	name = "Tricordrazine"
@@ -153,7 +153,7 @@
 
 /datum/reagent/tricordrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
-		M.heal_organ_damage(5 * removed, 5 * removed)
+		M.heal_organ_damage(3.75 * removed, 3.75 * removed)
 
 /datum/reagent/cryoxadone
 	name = "Cryoxadone"
@@ -170,7 +170,7 @@
 	if(M.bodytemperature < 170)
 		M.adjustCloneLoss(-100 * removed)
 		M.add_chemical_effect(CE_OXYGENATED, 1)
-		M.heal_organ_damage(10 * removed, 10 * removed)
+		M.heal_organ_damage(7.5 * removed, 7.5 * removed)
 		M.add_chemical_effect(CE_PULSE, -2)
 
 /datum/reagent/clonexadone
@@ -188,7 +188,7 @@
 	if(M.bodytemperature < 170)
 		M.adjustCloneLoss(-300 * removed)
 		M.add_chemical_effect(CE_OXYGENATED, 2)
-		M.heal_organ_damage(30 * removed, 30 * removed)
+		M.heal_organ_damage(22.5 * removed, 22.5 * removed)
 		M.add_chemical_effect(CE_PULSE, -2)
 
 /* Painkillers */
