@@ -32,11 +32,15 @@
 /datum/announcement/proc/Announce(var/message as text, var/new_title = "", var/new_sound = null, var/do_newscast = newscast, var/msg_sanitized = 0, var/zlevels = GLOB.using_map.contact_levels)
 	if(!message)
 		return
+
+	if (contains_links(message))
+		to_chat(usr, SPAN_DANGER("Links are not allowed in in-character messages"))
+		return FALSE
 	var/message_title = new_title ? new_title : title
 	var/message_sound = new_sound ? new_sound : sound
 
 	if(!msg_sanitized)
-		message = sanitize(message, extra = 0)
+		message = sanitize(message, extra = 0, allow_links = FALSE)	//No links in IC communication
 	message_title = sanitizeSafe(message_title)
 
 	var/msg = FormMessage(message, message_title)
