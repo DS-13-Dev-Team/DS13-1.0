@@ -34,3 +34,5 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - tweak: "Reduced healing values by 25% for the following medicines: Bicaridine, Kelotane, Dermaline, Dylovene, Dexalin, Dexalin Plus, Tricordrazine, Cryoxadone, Clonexadone"
+  - tweak: "Blood types now show in body scanners & health analyzers"
+  - rscadd: "IV/Blood bags can now be written on"

@@ -307,6 +307,7 @@
 		dat += "<span class='danger'>Severe blood loss detected.</span>"
 	dat += "<b>Blood pressure:</b> [H.get_blood_pressure()] ([H.get_blood_oxygenation()]% blood oxygenation)"
 	dat += "<b>Blood volume:</b> [H.vessel.get_reagent_amount(/datum/reagent/blood)]/[H.species.blood_volume]u"
+	dat += "<b>Blood type:</b> [H.b_type]"
 
 	// Body temperature.
 	dat += "<b>Body temperature:</b> [H.bodytemperature-T0C]&deg;C ([H.bodytemperature*1.8-459.67]&deg;F)"

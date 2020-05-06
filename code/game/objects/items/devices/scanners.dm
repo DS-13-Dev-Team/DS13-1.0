@@ -153,6 +153,7 @@ REAGENT SCANNER
 		if(H.get_blood_volume() <= 70)
 			dat += "<span class='scan_danger'>Severe blood loss detected.</span>"
 		dat += "[b]Blood pressure:[endb] [H.get_blood_pressure()] ([H.get_blood_oxygenation()]% blood oxygenation)"
+		dat += "[b]Blood type:[endb] [H.b_type]"
 	else
 		dat += "[b]Blood pressure:[endb] N/A"
 

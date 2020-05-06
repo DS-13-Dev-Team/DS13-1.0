@@ -7,6 +7,7 @@
 /obj/item/weapon/reagent_containers/ivbag
 	name = "\improper IV bag"
 	desc = "Flexible bag for IV injectors."
+	var/written_info
 	icon = 'icons/obj/bloodpack.dmi'
 	icon_state = "empty"
 	w_class = ITEM_SIZE_SMALL
@@ -29,7 +30,13 @@
 	else
 		w_class = ITEM_SIZE_SMALL
 
-/obj/item/weapon/reagent_containers/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/weapon/reagent_containers/ivbag/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/weapon/pen))
+		written_info = sanitize(input("Notes: ", text("IV Bag")))
+		if(written_info)
+			desc = "Flexible bag for IV injectors.\nA note is scribbled on the bag. \"[written_info]\""
+		else
+			desc = "Flexible bag for IV injectors."
 
 /obj/item/weapon/reagent_containers/ivbag/update_icon()
 	overlays.Cut()
