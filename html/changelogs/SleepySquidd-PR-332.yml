@@ -33,6 +33,8 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
+  - rscadd: "IV/Blood bags can now be written on"
   - tweak: "Reduced healing values by 25% for the following medicines: Bicaridine, Kelotane, Dermaline, Dylovene, Dexalin, Dexalin Plus, Tricordrazine, Cryoxadone, Clonexadone"
   - tweak: "Blood types now show in body scanners & health analyzers"
-  - rscadd: "IV/Blood bags can now be written on"
+  - tweak: "Blood Banks now carry 15 empty blood packs instead of 5 blood pack boxes"
+  - tweak: "Professional level in medicine is now required to view reagents in containers instead of expert"

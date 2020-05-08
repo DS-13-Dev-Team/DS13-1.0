@@ -37,6 +37,8 @@
 			desc = "Flexible bag for IV injectors.\nA note is scribbled on the bag. \"[written_info]\""
 		else
 			desc = "Flexible bag for IV injectors."
+		return TRUE
+	. = ..()
 
 /obj/item/weapon/reagent_containers/ivbag/update_icon()
 	overlays.Cut()
