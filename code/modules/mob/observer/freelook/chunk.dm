@@ -1,4 +1,4 @@
-#define UPDATE_BUFFER 30 // 3 seconds
+#define UPDATE_BUFFER 25 // 2.5 seconds
 
 // CHUNK
 //
@@ -181,6 +181,7 @@
 					m.owner.client.images += obfuscation_image
 
 
+	last_update = world.time
 	updating = FALSE
 
 /datum/chunk/proc/acquire_visible_turfs(var/list/visible)
