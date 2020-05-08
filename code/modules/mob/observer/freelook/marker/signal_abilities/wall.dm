@@ -2,9 +2,16 @@
 	name = "Hardened Growth"
 	id = "wall"
 	desc = "Creates an impassable object to block a tile"
-	energy_cost = 70
+	energy_cost = 50
 	placement_atom = /obj/structure/corruption_node/wall
 
+
+/datum/signal_ability/placement/corruption/wall/visible
+	name = "Frantic Growth"
+	id = "wall2"
+	energy_cost = 125
+	LOS_block = FALSE
+	placement_atom = /obj/structure/corruption_node/wall/visible
 
 /*
 	The actual atom
@@ -54,3 +61,12 @@
 /obj/structure/corruption_node/wall/get_blurb()
 	. = "This node acts as a defensive wall, blocking movement and vision on the tile it's placed. The hardened growth can stall attackers for a few seconds, but it is not very durable, and easily overcome with hand tools.<br>\
 	It does offer several creative possibilities. They can be placed to guard nothing in order to waste people's time, or hide cysts behind them that will fire as soon as they have a clear line of sight."
+
+
+/obj/structure/corruption_node/wall/visible/get_blurb()
+	. = "Creates an impassable object to block a tile. This ability is almost identical to hardened growth, except for two key differences:<br>\
+	<br>\
+	1. It is far more expensive.<br>\
+	2. It can be placed on tiles that are currently visible to crew.<br>\
+	<br>\
+	Frantic growth can allow signals to construct a quick screen behind which other things can be placed, buying a few precious seconds of time to mount a defense."

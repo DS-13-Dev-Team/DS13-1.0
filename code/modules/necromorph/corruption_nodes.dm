@@ -21,7 +21,11 @@
 	.=..()
 	if (!isturf(loc))
 		dummy = TRUE
+
+
 	update_icon()
+	if (!dummy)
+		animate_fade_in()
 
 /obj/structure/corruption_node/Destroy()
 	if (!dummy && SSnecromorph.marker && biomass_reclamation)

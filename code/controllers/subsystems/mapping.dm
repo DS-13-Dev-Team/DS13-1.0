@@ -12,6 +12,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/submaps = list()
 	var/list/submap_archetypes = list()
 
+
+
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	preloadTemplates()
 	for(var/atype in subtypesof(/decl/submap_archetype))

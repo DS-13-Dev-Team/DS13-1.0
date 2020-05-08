@@ -6,6 +6,11 @@ SUBSYSTEM_DEF(misc_late)
 	init_order = SS_INIT_MISC_LATE
 	flags = SS_NO_FIRE
 
+
 /datum/controller/subsystem/misc_late/Initialize()
 	GLOB.using_map.build_exoplanets()
+	//calculate_door_areas()
 	. = ..()
+
+
+
