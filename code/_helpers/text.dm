@@ -32,7 +32,7 @@
 
 //Used for preprocessing entered text
 //Added in an additional check to alert players if input is too long
-/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1)
+/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1, var/allow_links = TRUE)
 	if(!input)
 		return
 
@@ -43,6 +43,9 @@
 			to_chat(usr, "<span class='warning'>Your message is too long by [overflow] character\s.</span>")
 			return
 		input = copytext(input,1,max_length)
+
+	if (!allow_links)
+		input = replace_characters(input, list("://"=" ","href"=" "))
 
 	if(extra)
 		input = replace_characters(input, list("\n"=" ","\t"=" "))
@@ -68,8 +71,8 @@
 //Best used for sanitize object names, window titles.
 //If you have a problem with sanitize() in chat, when quotes and >, < are displayed as html entites -
 //this is a problem of double-encode(when & becomes &amp;), use sanitize() with encode=0, but not the sanitizeSafe()!
-/proc/sanitizeSafe(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1)
-	return sanitize(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra)
+/proc/sanitizeSafe(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1, var/allow_links = TRUE)
+	return sanitize(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra,  allow_links)
 
 //Filters out undesirable characters from names
 /proc/sanitizeName(var/input, var/max_length = MAX_NAME_LEN, var/allow_numbers = 0, var/force_first_letter_uppercase = TRUE)
@@ -569,3 +572,11 @@ proc/TextPreview(var/string,var/len=40)
 			var/personal_message = replacetext(message, "LINK", jumplink_public(M, target))
 			to_chat(M, personal_message)
 
+
+
+/proc/contains_links(var/message)
+	if (findtext(message, "://"))
+		return TRUE
+	if (findtext(message, "href"))
+		return TRUE
+	return FALSE
