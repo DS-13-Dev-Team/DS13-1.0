@@ -886,7 +886,7 @@
 					/obj/item/weapon/reagent_containers/ivbag/blood/APlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/AMinus = 5,
 					/obj/item/weapon/reagent_containers/ivbag/blood/BPlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/BMinus = 5,
 					/obj/item/weapon/reagent_containers/ivbag/blood/OPlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/OMinus = 5,
-					/obj/item/weapon/storage/box/bloodpacks = 5, /obj/item/weapon/reagent_containers/ivbag/blood = 5)
+					/obj/item/weapon/reagent_containers/ivbag = 5, /obj/item/weapon/reagent_containers/ivbag/blood = 15)
 	idle_power_usage = 211
 
 //This one's from bay12
