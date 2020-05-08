@@ -27,7 +27,6 @@
 	name = "medicine dispenser"
 	spawn_cartridges = list(
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/inaprov,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ryetalyn,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/paracetamol,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tramadol,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/oxycodone,
@@ -47,7 +46,6 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/peridaxon,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/bicaridine,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/hyperzine,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/rezadone,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/spaceacillin,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ethylredox,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/sleeptox,
