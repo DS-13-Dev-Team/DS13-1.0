@@ -43,3 +43,10 @@
 #define EXPIRY_DELETE	1	//Delete the bullet as soon as it's done
 #define EXPIRY_FADEOUT	2	//Fade to zero alpha over some time, then delete
 #define EXPIRY_ANIMATION	3	//Play an animation over some time, then delete
+
+
+
+//Gun loading types
+#define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
+#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
+#define MAGAZINE 		4	//The magazine item itself goes inside the gun

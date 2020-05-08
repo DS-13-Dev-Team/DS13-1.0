@@ -53,71 +53,7 @@ for reference:
 
 */
 
-//Barricades!
-/obj/structure/barricade
-	name = "barricade"
-	desc = "This space is blocked off by a barricade."
-	icon = 'icons/obj/structures.dmi'
-	icon_state = "barricade"
-	anchored = 1.0
-	density = 1
-	max_health = 100
-	var/material/material
-	atom_flags = ATOM_FLAG_CLIMBABLE
-	layer = ABOVE_WINDOW_LAYER
 
-/obj/structure/barricade/New(var/newloc, var/material_name)
-	..(newloc)
-	if(!material_name)
-		material_name = "wood"
-	material = get_material_by_name("[material_name]")
-	if(!material)
-		qdel(src)
-		return
-	name = "[material.display_name] barricade"
-	desc = "This space is blocked off by a barricade made of [material.display_name]."
-	color = material.icon_colour
-	max_health = material.integrity
-	health = max_health
-
-/obj/structure/barricade/get_material()
-	return material
-
-/obj/structure/barricade/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/stack))
-		var/obj/item/stack/D = W
-		if(D.get_material_name() != material.name)
-			return 	TRUE
-		if (health < max_health)
-			if (D.get_amount() < 1)
-				to_chat(user, "<span class='warning'>You need one sheet of [material.display_name] to repair \the [src].</span>")
-				return	TRUE
-			visible_message("<span class='notice'>[user] begins to repair \the [src].</span>")
-			if(do_after(user,20,src) && health < max_health)
-				if (D.use(1))
-					health = max_health
-					visible_message("<span class='notice'>[user] repairs \the [src].</span>")
-				return	TRUE
-		return	TRUE
-	else
-		.=..()
-
-/obj/structure/barricade/zero_health()
-	dismantle()
-
-/obj/structure/barricade/proc/dismantle()
-	material.place_dismantled_product(get_turf(src))
-	qdel(src)
-	return
-
-
-/obj/structure/barricade/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)//So bullets will fly over and stuff.
-	if(air_group || (height==0))
-		return 1
-	if(istype(mover) && mover.checkpass(PASS_FLAG_TABLE))
-		return 1
-	else
-		return 0
 
 //Actual Deployable machinery stuff
 /obj/machinery/deployable

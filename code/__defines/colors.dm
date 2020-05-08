@@ -93,4 +93,9 @@
 #define COLOR_NECRO_YELLOW		"#FFFF00"
 #define COLOR_MARKER_RED		"#FF4444"
 
+// Codex category colours.
+#define CODEX_COLOR_LORE      "#abdb9b"
+#define CODEX_COLOR_MECHANICS "#9ebcd8"
+#define CODEX_COLOR_ANTAG     "#e5a2a2"
+
 #define RANDOM_RGB rgb(rand(0,255), rand(0,255), rand(0,255))
