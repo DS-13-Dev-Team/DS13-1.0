@@ -1,3 +1,4 @@
+GLOBAL_LIST_INIT(whispered, list())
 /datum/signal_ability/whisper
 	name = "Whisper"
 	id = "whisper"
@@ -52,4 +53,28 @@
 	var/message = sanitize(input(user, "Write a message to send to [target.name]", "Subliminal Message", ""))
 
 	to_chat(target, "<span class='necromorph'>[message]</span>")
+	message_necromorphs("[user] -> [target] <span class='necromorph'>[message]</span>", TRUE, list(target))
 
+
+	//If this is the first time this round that this person has been whispered, link them to the codex
+	if (!(target in GLOB.whispered))
+		to_chat(target, "<span class='notice'>This is a <b><a href='?src=\ref[SScodex];show_examined_info=\ref[SScodex.get_entry_by_string("whisper")];show_to=\ref[target]'>whisper</a></b>.</span>")
+		GLOB.whispered += target
+
+
+/datum/codex_entry/concept/whisper
+	display_name = "Whisper"
+	category = CATEGORY_CONCEPTS
+	associated_strings = list("whisper")
+	lore_text = "You hear a voice in your head. Is it your own, or a message from the outside? It may tell you helpful things, it may lie to you, \
+	it may threaten to harm you. And it may give orders. If you told someone, they'd surely think you were crazy, you might get locked up."
+	mechanics_text = "Whispers are messages from players on the necromorph team. Signals bent on mischief, interesting roleplay, or perhaps just meaningless slaughter<br>\
+	When they speak to you, remember the golden rule: No killing innocents<br>\
+	Don't do anything that would probably lead to the death of a fellow crewmember. <br>\
+	Aside from that, you're generally allowed to deal with these voices in your head however you wish. The one speaking to you will often be watching and listening, <br>\
+	You may speak your reply aloud to an empty room and there's a possibility they'll hear you, though you'll certainly look a little crazy. If they tell you to do things, its generally your choice of whether or not to follow their directions. As long as you don't kill people, you won't get in trouble with admins<br>\
+	The voices can see more than you, if they give you advice or tell you things, it may be a good idea to listen. Of course, they might be lying too.<br>\
+	Whatever you do, try to make interesting roleplay out of it. Just ignoring them is pretty boring."
+	antag_text = "If you're a unitologist, the no killing rule does not apply. Whispers should be considered direct orders from the marker, and you should try your best to fulfil them.<br>\
+	Exactly how you do that is at your discretion. If the voices tell you to kill someone, it doesn't necessarily mean you have to rush screaming across the room and start stabbing. You could stalk them for a while, wait for a moment to catch them alone.<br>\
+	As long as you're not breaking server rules (like destroying the supermatter engine), you can mostly do whatever the voices tell you. Even orders telling you to kill yourself are perfectly valid. Remember, you are roleplaying a mad cultist."

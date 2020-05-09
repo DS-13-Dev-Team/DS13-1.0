@@ -109,6 +109,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	var/station_departments = list()//Gets filled automatically depending on jobs allowed
 
 	var/supply_currency_name = "Credits"
+	var/local_currency_name = "credits"
 	var/supply_currency_name_short = "Cr."
 
 	//Factions prefs stuff
