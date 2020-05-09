@@ -248,9 +248,6 @@
 /area/ishimura/upper/misc/hallway/aft
 	name = "\improper Upper Deck Aft Hallway"
 
-/area/ishimura/upper/misc/hallway/bridge
-	name = "\improper Bridge Hallway"
-
 /area/ishimura/upper/misc/hallway/central
 	name = "\improper Upper Deck Central Hallway"
 
@@ -298,7 +295,7 @@
 	icon_state = "checkpoint"
 
 /area/ishimura/upper/security/checkpoint/bridge
-	name = "\improper Bridge Security Station"
+	name = "\improper Bridge Checkpoint"
 
 /area/ishimura/upper/security/checkpoint/engineering
 	name = "\improper Engineering Security Station"
