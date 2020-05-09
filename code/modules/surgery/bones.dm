@@ -26,7 +26,7 @@
 	if (!hasorgans(target))
 		return 0
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	return affected && !BP_IS_ROBOTIC(affected) && !BP_IS_CRYSTAL(affected) && affected.how_open() >= 2 && (BP_IS_BRITTLE(affected) || affected.stage == 0 || affected.encased == ENCASED_OPEN)
+	return affected && !BP_IS_ROBOTIC(affected) && !BP_IS_CRYSTAL(affected) && affected.how_open() >= 2 && (BP_IS_BRITTLE(affected) || affected.stage == 0)
 
 /datum/surgery_step/glue_bone/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -44,8 +44,6 @@
 		"<span class='notice'>You apply some [tool.name] to [bone].</span>")
 	if(affected.stage == 0)
 		affected.stage = 1
-	if (affected.encased)	//If this is an encased bodypart, make sure we seal it closed
-		affected.encased = ENCASED_CLOSED
 	affected.status &= ~ORGAN_BRITTLE
 
 /datum/surgery_step/glue_bone/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -88,7 +86,8 @@
 	if (affected.status & ORGAN_BROKEN)
 		user.visible_message("<span class='notice'>[user] sets the [bone] n place with \the [tool].</span>", \
 			"<span class='notice'>You set the [bone] in place with \the [tool].</span>")
-		affected.stage = 2
+		affected.status &= ~ORGAN_BROKEN
+		affected.stage = 0
 	else
 		user.visible_message("<span class='notice'>[user] sets the [bone]</span> <span class='warning'>in the WRONG place with \the [tool].</span>", \
 			"<span class='notice'>You set the [bone]</span> <span class='warning'>in the WRONG place with \the [tool].</span>")
@@ -131,7 +130,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] sets [target]'s skull with \the [tool].</span>" , \
 		"<span class='notice'>You set [target]'s skull with \the [tool].</span>")
-	affected.stage = 2
+	affected.status &= ~ORGAN_BROKEN
+	affected.stage = 0
 
 /datum/surgery_step/mend_skull/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)

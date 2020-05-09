@@ -20,7 +20,7 @@
 	encased = "ribcage"
 	artery_name = "aorta"
 	cavity_name = "thoracic"
-	limb_flags = ORGAN_FLAG_GENDERED_ICON | ORGAN_FLAG_HEALS_OVERKILL
+	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_GENDERED_ICON | ORGAN_FLAG_HEALS_OVERKILL
 
 /obj/item/organ/external/chest/proc/get_current_skin()
 	return
@@ -52,7 +52,7 @@
 	dislocated = -1
 	artery_name = "iliac artery"
 	cavity_name = "abdominal"
-	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_GENDERED_ICON
+	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_GENDERED_ICON
 
 /obj/item/organ/external/arm
 	organ_tag = BP_L_ARM
@@ -68,7 +68,7 @@
 	tendon_name = "palmaris longus tendon"
 	artery_name = "basilic vein"
 	arterial_bleed_severity = 0.75
-	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP
+	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP
 	base_miss_chance = 12
 
 /obj/item/organ/external/arm/right
@@ -94,7 +94,7 @@
 	tendon_name = "cruciate ligament"
 	artery_name = "femoral artery"
 	arterial_bleed_severity = 0.75
-	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
+	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
 	base_miss_chance = 5
 
 /obj/item/organ/external/leg/right
@@ -120,7 +120,7 @@
 	amputation_point = "left ankle"
 	tendon_name = "Achilles tendon"
 	arterial_bleed_severity = 0.5
-	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
+	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
 	base_miss_chance = 15
 
 /obj/item/organ/external/foot/right
@@ -146,7 +146,7 @@
 	amputation_point = "left wrist"
 	tendon_name = "carpal ligament"
 	arterial_bleed_severity = 0.5
-	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_FINGERPRINT
+	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_FINGERPRINT
 	base_miss_chance = 15
 
 /obj/item/organ/external/hand/right
