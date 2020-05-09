@@ -264,12 +264,6 @@
 	required_reagents = list(/datum/reagent/sugar = 1, /datum/reagent/phosphorus = 1, /datum/reagent/sulfur = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/ryetalyn
-	name = "Ryetalyn"
-	result = /datum/reagent/ryetalyn
-	required_reagents = list(/datum/reagent/arithrazine = 1, /datum/reagent/carbon = 1)
-	result_amount = 2
-
 /datum/chemical_reaction/cryoxadone
 	name = "Cryoxadone"
 	result = /datum/reagent/cryoxadone
@@ -398,12 +392,6 @@
 	required_reagents = list(/datum/reagent/tungsten = 1, /datum/reagent/acetone = 1, /datum/reagent/water = 1)
 	result_amount = 3
 	log_is_important = 1
-
-/datum/chemical_reaction/rezadone
-	name = "Rezadone"
-	result = /datum/reagent/rezadone
-	required_reagents = list(/datum/reagent/toxin/carpotoxin = 1, /datum/reagent/cryptobiolin = 1, /datum/reagent/copper = 1)
-	result_amount = 3
 
 /datum/chemical_reaction/lexorin
 	name = "Lexorin"

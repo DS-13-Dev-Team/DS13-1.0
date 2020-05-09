@@ -94,7 +94,3 @@
 //These are pretty dumb. Incision stage of an organ is defined by having an open wound which has this proportion of the organ's max damage
 #define DAMAGE_MULT_INCISION	0.4
 #define DAMAGE_MULT_RETRACTED 	0.6
-
-//Values for the encased var
-#define ENCASED_CLOSED	1
-#define ENCASED_OPEN	2

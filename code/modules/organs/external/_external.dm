@@ -1312,7 +1312,7 @@ obj/item/organ/external/proc/remove_clamps()
 		. = SURGERY_OPEN
 	if(incision.damage >= retracted_threshold) //beeg incision
 		. = SURGERY_RETRACTED
-	if(. == SURGERY_RETRACTED && encased == ENCASED_OPEN)
+	if(. == SURGERY_RETRACTED && encased && (status & ORGAN_BROKEN))
 		. = SURGERY_ENCASED
 
 /obj/item/organ/external/proc/jostle_bone(force)

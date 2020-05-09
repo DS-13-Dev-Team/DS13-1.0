@@ -201,5 +201,5 @@
 	if(hasHUD(user, HUD_SCIENCE))
 		var/prec = user.skill_fail_chance(SKILL_MEDICAL, 10)
 		to_chat(user, "<span class='notice'>The [src] contains: [reagents.get_reagents(precision = prec)].</span>")
-	else if((loc == user) && user.skill_check(SKILL_MEDICAL, SKILL_PROF))
+	else if((loc == user) && user.skill_check(SKILL_MEDICAL, SKILL_EXPERT))
 		to_chat(user, "<span class='notice'>Using your chemistry knowledge, you indentify the following reagents in \the [src]: [reagents.get_reagents(0, 5)].</span>")
