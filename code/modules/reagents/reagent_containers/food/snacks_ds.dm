@@ -97,6 +97,20 @@
 	bitesize = 0.01 //impossible to eat
 	reagents.add_reagent("carbon", 5)
 
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/shark
+	name = "a measelshark"
+	desc = "this beast used to terrorize the sea with its pathogens, incredibly tasty seeing humans can't catch sea-measels."
+	icon_state = "sharkmeat_chunk"
+	icon = 'icons/obj/food_shark.dmi'
+	nutriment_amt = 5
+	w_class = ITEM_SIZE_HUGE
+	slice_path = /obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk
+	slices_num = 6
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/shark/Initialize()
+	..()
+	bitesize = 0.01
+
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk
 	name = "chunk of shark meat"
 	desc = "still rough, needs to be cut into even smaller chunks."
