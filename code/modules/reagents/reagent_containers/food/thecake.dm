@@ -2,7 +2,7 @@
 
 /datum/recipe/chaoscake_layerone
 	reagents = list("flour" = 30,"milk" = 20, "sugar" = 10, "egg" = 3)
-	fruit = list("berries" = 1, "cherries" =  1)
+	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/meat/,
 			/obj/item/weapon/reagent_containers/food/snacks/meat/,
@@ -13,7 +13,7 @@
 
 /datum/recipe/chaoscake_layertwo
 	reagents = list("flour" = 30, "milk" = 20, "sugar" = 10, "egg" = 3, )
-	fruit = list("banana" = 1)
+	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -24,7 +24,7 @@
 
 /datum/recipe/chaoscake_layerthree
 	reagents = list("flour" = 25, "milk" = 15, "sugar" = 10, "egg" = 3)
-	fruit = list("grapes" = 1)
+	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -34,7 +34,7 @@
 
 /datum/recipe/chaoscake_layerfour
 	reagents = list("flour" = 25, "milk" = 15, "sugar" = 10, "egg" = 3, "milkshake" = 10)
-	fruit = list("rice" = 1)
+	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -44,13 +44,15 @@
 
 /datum/recipe/chaoscake_layerfive
 	reagents = list("flour" = 20, "milk" = 10, "sugar" = 10, "egg" = 3, "blood" = 10)
-	fruit = list("tomato" = 1)
-	items = list() //supposed to be made with lobster, still has to be ported.
+	fruit = list()
+	items = list(
+			/obj/item/weapon/reagent_containers/food/snacks/lobster
+		)
 	result = /obj/item/weapon/chaoscake_layer/five
 
 /datum/recipe/chaoscake_layersix
 	reagents = list("flour" = 20, "milk" = 10, "sugar" = 10, "egg" = 3, "sprinkles" = 10)
-	fruit = list("apple" = 1)
+	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -63,7 +65,7 @@
 
 /datum/recipe/chaoscake_layerseven
 	reagents = list("flour" = 15, "milk" = 5, "sugar" = 5, "egg" = 3, "devilskiss" = 10)
-	fruit = list("potato" = 1)
+	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -83,7 +85,7 @@
 
 /datum/recipe/chaoscake_layernine
 	reagents = list("water" = 10, "blood" = 10)
-	fruit = list("goldapple" = 1)
+	fruit = list()
 	items = list()
 	result = /obj/item/weapon/chaoscake_layer/nine
 

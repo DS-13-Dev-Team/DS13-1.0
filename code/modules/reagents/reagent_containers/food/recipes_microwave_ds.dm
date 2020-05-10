@@ -1,5 +1,5 @@
 /datum/recipe/microwave/lobster
-	fruit = list("lemon" = 1, "cabbage" = 1)
+	fruit = list()
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/lobster
 	)
@@ -12,7 +12,7 @@
 	result = /obj/item/weapon/reagent_containers/food/snacks/cuttlefishcooked
 
 /datum/recipe/microwave/monkfish
-	fruit = list("chili" = 1, "onion" = 1)
+	fruit = list()
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/monkfishfillet
 	)
@@ -27,7 +27,7 @@
 
 /datum/recipe/microwave/sharkdip
 	reagents = list("sodiumchloride" = 1)
-	fruit = list("chili" = 1)
+	fruit = list()
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	)
@@ -35,7 +35,7 @@
 
 /datum/recipe/microwave/sharkcubes
 	reagents = list("soysauce" = 5, "sodiumchloride" = 1)
-	fruit = list("potato" = 1)
+	fruit = list()
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	)
