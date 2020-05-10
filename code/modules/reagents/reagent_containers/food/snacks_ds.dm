@@ -195,7 +195,7 @@
 	qdel(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/cube/on_reagent_change()
-	if(reagents.has_reagent(datum/reagent/water))
+	if(reagents.has_reagent(/datum/reagent/water))
 		Expand()
 
 /obj/item/weapon/reagent_containers/food/snacks/cube/protein
