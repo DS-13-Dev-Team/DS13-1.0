@@ -1,7 +1,7 @@
 // Chaos cake
 
 /datum/recipe/chaoscake_layerone
-	reagents = list("flour" = 30,"milk" = 20, "sugar" = 10, "egg" = 3)
+	reagents = list(/datum/reagent/nutriment/flour = 30,/datum/reagent/drink/milk = 20, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/meat/,
@@ -12,7 +12,7 @@
 	result = /obj/structure/chaoscake
 
 /datum/recipe/chaoscake_layertwo
-	reagents = list("flour" = 30, "milk" = 20, "sugar" = 10, "egg" = 3, )
+	reagents = list(/datum/reagent/nutriment/flour = 30, /datum/reagent/drink/milk = 20, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3, )
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -23,7 +23,7 @@
 	result = /obj/item/weapon/chaoscake_layer
 
 /datum/recipe/chaoscake_layerthree
-	reagents = list("flour" = 25, "milk" = 15, "sugar" = 10, "egg" = 3)
+	reagents = list(/datum/reagent/nutriment/flour = 25, /datum/reagent/drink/milk = 15, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -33,7 +33,7 @@
 	result = /obj/item/weapon/chaoscake_layer/three
 
 /datum/recipe/chaoscake_layerfour
-	reagents = list("flour" = 25, "milk" = 15, "sugar" = 10, "egg" = 3, "milkshake" = 10)
+	reagents = list(/datum/reagent/nutriment/flour = 25, /datum/reagent/drink/milk = 15, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3, /datum/reagent/drink/milkshake = 10)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -43,7 +43,7 @@
 	result = /obj/item/weapon/chaoscake_layer/four
 
 /datum/recipe/chaoscake_layerfive
-	reagents = list("flour" = 20, "milk" = 10, "sugar" = 10, "egg" = 3, "blood" = 10)
+	reagents = list(/datum/reagent/nutriment/flour = 20, /datum/reagent/drink/milk = 10, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3, /datum/reagent/blood = 10)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/lobster
@@ -51,7 +51,7 @@
 	result = /obj/item/weapon/chaoscake_layer/five
 
 /datum/recipe/chaoscake_layersix
-	reagents = list("flour" = 20, "milk" = 10, "sugar" = 10, "egg" = 3, "sprinkles" = 10)
+	reagents = list(/datum/reagent/nutriment/flour = 20, /datum/reagent/drink/milk = 10, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3, /datum/reagent/nutriment/sprinkles = 10)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -64,7 +64,7 @@
 	result = /obj/item/weapon/chaoscake_layer/six
 
 /datum/recipe/chaoscake_layerseven
-	reagents = list("flour" = 15, "milk" = 5, "sugar" = 5, "egg" = 3, "devilskiss" = 10)
+	reagents = list(/datum/reagent/nutriment/flour = 15, /datum/reagent/drink/milk = 5, /datum/reagent/sugar = 5, /datum/reagent/nutriment/protein/egg = 3, /datum/reagent/ethanol/devilskiss = 10)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -74,7 +74,7 @@
 	result = /obj/item/weapon/chaoscake_layer/seven
 
 /datum/recipe/chaoscake_layereight
-	reagents = list("flour" = 15, "milk" = 5, "sugar" = 5, "egg" = 3, "cream" = 10)
+	reagents = list(/datum/reagent/nutriment/flour = 15, /datum/reagent/drink/milk = 5, /datum/reagent/sugar = 5, /datum/reagent/nutriment/protein/egg = 3, /datum/reagent/drink/milk/cream = 10)
 	fruit = list("lemon" = 1)
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -84,7 +84,7 @@
 	result = /obj/item/weapon/chaoscake_layer/eight
 
 /datum/recipe/chaoscake_layernine
-	reagents = list("water" = 10, "blood" = 10)
+	reagents = list(/datum/reagent/water = 10, /datum/reagent/blood = 10)
 	fruit = list()
 	items = list()
 	result = /obj/item/weapon/chaoscake_layer/nine
@@ -214,7 +214,7 @@
 			name = "Slice Of Evil" //acidic
 			desc = "A menacing slice, smelling clearly of copper, blood clots float on top."
 			nutriment_desc = list("Infernal Rage" = 10)
-			reagents.add_reagent("blood", 20)
+			reagents.add_reagent(/datum/reagent/blood, 20)
 			reagents.add_reagent("stomacid", 10)
 			reagents.add_reagent("mutagen", 4)
 			reagents.add_reagent("thirteenloko", 20)
@@ -224,23 +224,23 @@
 			name = "Slice Of Good" //anti-tox
 			desc = "A colourful slice, smelling of pear and coated in delicious cream."
 			nutriment_desc = list("Hapiness" = 10)
-			reagents.add_reagent("anti_toxin", 2)
-			reagents.add_reagent("tricordrazine", 2)
+			reagents.add_reagent(datum/reagent/dylovene, 2)
+			reagents.add_reagent(datum/reagent/tricordazine, 2)
 			bitesize = 3
 		if(5)
 			name = "Slice Of Good" //anti-oxy
 			desc = "A light slice, it's pretty to look at and smells of vanilla."
 			nutriment_desc = list("Freedom" = 10)
-			reagents.add_reagent("dexalinp", 2)
-			reagents.add_reagent("tricordrazine", 2)
+			reagents.add_reagent(datum/reagent/dexalinp, 2)
+			reagents.add_reagent(datum/reagent/tricordazine, 2)
 			bitesize = 3
 		if(6)
 			name = "Slice Of Good" //anti-burn/brute
 			desc = "A hearty slice, it smells of chocolate and strawberries."
 			nutriment_desc = list("Love" = 10)
-			reagents.add_reagent("bicaridine", 2)
-			reagents.add_reagent("tricordrazine", 2)
-			reagents.add_reagent("kelotane", 2)
+			reagents.add_reagent(datum/reagent/bicardine, 2)
+			reagents.add_reagent(datum/reagent/tricordazine, 2)
+			reagents.add_reagent(datum/reagent/kelotane, 2)
 			bitesize = 4
 
 /obj/structure/chaoscake/attackby(var/obj/item/weapon/W, var/mob/living/user)

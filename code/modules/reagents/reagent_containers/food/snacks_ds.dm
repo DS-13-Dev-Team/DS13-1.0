@@ -19,9 +19,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/lobstercooked/Initialize()
 	..()
 	bitesize = 5
-	reagents.add_reagent("protein", 20)
-	reagents.add_reagent("tricordrazine", 5)
-	reagents.add_reagent("iron", 5)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 20)
 
 /obj/item/weapon/reagent_containers/food/snacks/cuttlefish
 	name = "raw cuttlefish"
@@ -43,7 +41,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/cuttlefishcooked/Initialize()
 	..()
 	bitesize = 5
-	reagents.add_reagent("protein", 10)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfish
 	name = "extra large monkfish"
@@ -68,7 +66,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/monkfishfillet/Initialize()
 	..()
 	bitesize = 3
-	reagents.add_reagent("protein", 1)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 1)
 
 /obj/item/weapon/reagent_containers/food/snacks/monkfishcooked
 	name = "seasoned monkfish"
@@ -81,7 +79,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/monkfishcooked/Initialize()
 	..()
 	bitesize = 4
-	reagents.add_reagent("protein", 5)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfishremains
 	name = "monkfish remains"
@@ -95,7 +93,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfishremains/Initialize()
 	..()
 	bitesize = 0.01 //impossible to eat
-	reagents.add_reagent("carbon", 5)
+	reagents.add_reagent(/datum/reagent/carbon, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/shark
 	name = "a measelshark"
@@ -123,7 +121,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk/Initialize()
 	..()
 	bitesize = 3
-	reagents.add_reagent("protein", 20)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 20)
 
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	name = "a slice of sharkmeat"
@@ -134,7 +132,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeat/Initialize()
 	..()
 	bitesize = 3
-	reagents.add_reagent("protein", 2)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 2)
 
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeatcooked
 	name = "shark steak"
@@ -147,7 +145,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeatcooked/Initialize()
 	..()
 	bitesize = 3
-	reagents.add_reagent("protein", 8)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 8)
 
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeatdip
 	name = "hot shark shank"
@@ -160,8 +158,8 @@
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeatdip/Initialize()
 	..()
 	bitesize = 3
-	reagents.add_reagent("capsaicin", 4)
-	reagents.add_reagent("protein", 4)
+	reagents.add_reagent(/datum/reagent/capsaicin, 4)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 4)
 
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeatcubes
 	name = "shark cubes"
@@ -174,7 +172,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeatcubes/Initialize()
 	..()
 	bitesize = 10
-	reagents.add_reagent("potatojuice", 30) // for people who want to get fat, FAST.
+	reagents.add_reagent(/datum/reagent/drink/juice/potato, 30) // for people who want to get fat, FAST.
 
 /obj/item/weapon/reagent_containers/food/snacks/cube
 	name = "protein cube"
@@ -204,7 +202,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/cube/protein/Initialize()
 	. = ..()
-	reagents.add_reagent("meatcolony", 5)
+	reagents.add_reagent(/datum/reagent/toxin/meatcolony, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/proteinslab
 	name = "Protein slab"
@@ -216,7 +214,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/proteinslab/Initialize()
 	..()
-	reagents.add_reagent("protein", 30)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 30)
 
 /obj/item/weapon/reagent_containers/food/snacks/cube/nutriment
 	name = "Nutriment cube"
@@ -226,7 +224,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/cube/nutriment/Initialize()
 	. = ..()
-	reagents.add_reagent("plantcolony", 5)
+	reagents.add_reagent(/datum/reagent/toxin/plantcolony, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/nutrimentslab
 	name = "Nutriment slab"

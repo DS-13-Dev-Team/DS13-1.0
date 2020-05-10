@@ -19,14 +19,14 @@
 	result = /obj/item/weapon/reagent_containers/food/snacks/monkfishcooked
 
 /datum/recipe/microwave/sharksteak
-	reagents = list("blackpepper"= 1, "sodiumchloride" = 1)
+	reagents = list(/datum/reagent/blackpepper = 1, /datum/reagent/sodiumchloride = 1)
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/sharkmeatcooked
 
 /datum/recipe/microwave/sharkdip
-	reagents = list("sodiumchloride" = 1)
+	reagents = list(/datum/reagent/sodiumchloride = 1)
 	fruit = list()
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/sharkmeat
@@ -34,7 +34,7 @@
 	result = /obj/item/weapon/reagent_containers/food/snacks/sharkmeatdip
 
 /datum/recipe/microwave/sharkcubes
-	reagents = list("soysauce" = 5, "sodiumchloride" = 1)
+	reagents = list(/datum/reagent/nutriment/soysauce = 5, /datum/reagent/sodiumchloride = 1)
 	fruit = list()
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/sharkmeat
@@ -42,6 +42,6 @@
 	result = /obj/item/weapon/reagent_containers/food/snacks/sharkmeatcubes
 
 /datum/recipe/microwave/foodcubes
-	reagents = list("enzyme" = 20, "virusfood" = 5, "nutriment" = 15, "protein" = 15) // labor intensive
+	reagents = list(/datum/reagent/enzyme = 20, /datum/reagent/nutriment/virus_food = 5, /datum/reagent/nutriment = 15, /datum/reagent/nutriment/protein = 15) // labor intensive
 	items = list()
 	result = /obj/item/weapon/storage/box/tray
