@@ -98,7 +98,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/shark
 	name = "a measelshark"
 	desc = "this beast used to terrorize the sea with its pathogens, incredibly tasty seeing humans can't catch sea-measels."
-	icon_state = "sharkmeat_chunk"
+	icon_state = "measelshark"
 	icon = 'icons/obj/food_shark.dmi'
 	nutriment_amt = 5
 	w_class = ITEM_SIZE_HUGE
