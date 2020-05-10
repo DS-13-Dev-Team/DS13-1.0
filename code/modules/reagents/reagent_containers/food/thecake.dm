@@ -1,57 +1,62 @@
 // Chaos cake
 
 /datum/recipe/chaoscake_layerone
-	reagents = list(/datum/reagent/nutriment/flour = 30,/datum/reagent/drink/milk = 20, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3)
+	reagents = list(/datum/reagent/nutriment/flour = 30,/datum/reagent/drink/milk = 20, /datum/reagent/sugar = 10)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/meat/,
 			/obj/item/weapon/reagent_containers/food/snacks/meat/,
 			/obj/item/weapon/reagent_containers/food/snacks/meat/,
-			/obj/item/weapon/reagent_containers/food/snacks/meat/
+			/obj/item/weapon/reagent_containers/food/snacks/meat/,
+			/obj/item/weapon/reagent_containers/food/snacks/egg
 		)
 	result = /obj/structure/chaoscake
 
 /datum/recipe/chaoscake_layertwo
-	reagents = list(/datum/reagent/nutriment/flour = 30, /datum/reagent/drink/milk = 20, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3, )
+	reagents = list(/datum/reagent/nutriment/flour = 30, /datum/reagent/drink/milk = 20, /datum/reagent/sugar = 10)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
-			/obj/item/weapon/reagent_containers/food/snacks/dough
+			/obj/item/weapon/reagent_containers/food/snacks/dough,
+			/obj/item/weapon/reagent_containers/food/snacks/egg
 		)
 	result = /obj/item/weapon/chaoscake_layer
 
 /datum/recipe/chaoscake_layerthree
-	reagents = list(/datum/reagent/nutriment/flour = 25, /datum/reagent/drink/milk = 15, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3)
+	reagents = list(/datum/reagent/nutriment/flour = 25, /datum/reagent/drink/milk = 15, /datum/reagent/sugar = 10)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
-			/obj/item/weapon/reagent_containers/food/snacks/dough
+			/obj/item/weapon/reagent_containers/food/snacks/dough,
+			/obj/item/weapon/reagent_containers/food/snacks/egg
 		)
 	result = /obj/item/weapon/chaoscake_layer/three
 
 /datum/recipe/chaoscake_layerfour
-	reagents = list(/datum/reagent/nutriment/flour = 25, /datum/reagent/drink/milk = 15, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3, /datum/reagent/drink/milkshake = 10)
+	reagents = list(/datum/reagent/nutriment/flour = 25, /datum/reagent/drink/milk = 15, /datum/reagent/sugar = 10, /datum/reagent/drink/milkshake = 10)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
-			/obj/item/weapon/reagent_containers/food/snacks/dough
+			/obj/item/weapon/reagent_containers/food/snacks/dough,
+			/obj/item/weapon/reagent_containers/food/snacks/egg
 		)
 	result = /obj/item/weapon/chaoscake_layer/four
 
 /datum/recipe/chaoscake_layerfive
-	reagents = list(/datum/reagent/nutriment/flour = 20, /datum/reagent/drink/milk = 10, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3, /datum/reagent/blood = 10)
+	reagents = list(/datum/reagent/nutriment/flour = 20, /datum/reagent/drink/milk = 10, /datum/reagent/sugar = 10, /datum/reagent/blood = 10)
 	fruit = list()
 	items = list(
-			/obj/item/weapon/reagent_containers/food/snacks/lobster
+			/obj/item/weapon/reagent_containers/food/snacks/lobster,
+			/obj/item/weapon/reagent_containers/food/snacks/egg
 		)
 	result = /obj/item/weapon/chaoscake_layer/five
 
 /datum/recipe/chaoscake_layersix
-	reagents = list(/datum/reagent/nutriment/flour = 20, /datum/reagent/drink/milk = 10, /datum/reagent/sugar = 10, /datum/reagent/nutriment/protein/egg = 3, /datum/reagent/nutriment/sprinkles = 10)
+	reagents = list(/datum/reagent/nutriment/flour = 20, /datum/reagent/drink/milk = 10, /datum/reagent/sugar = 10, /datum/reagent/nutriment/sprinkles = 10)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
@@ -59,27 +64,30 @@
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/chocolatebar,
 			/obj/item/weapon/reagent_containers/food/snacks/chocolatebar,
-			/obj/item/weapon/reagent_containers/food/snacks/chocolatebar
+			/obj/item/weapon/reagent_containers/food/snacks/chocolatebar,
+			/obj/item/weapon/reagent_containers/food/snacks/egg
 		)
 	result = /obj/item/weapon/chaoscake_layer/six
 
 /datum/recipe/chaoscake_layerseven
-	reagents = list(/datum/reagent/nutriment/flour = 15, /datum/reagent/drink/milk = 5, /datum/reagent/sugar = 5, /datum/reagent/nutriment/protein/egg = 3, /datum/reagent/ethanol/devilskiss = 10)
+	reagents = list(/datum/reagent/nutriment/flour = 15, /datum/reagent/drink/milk = 5, /datum/reagent/sugar = 5, /datum/reagent/ethanol/devilskiss = 10)
 	fruit = list()
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
-			/obj/item/weapon/reagent_containers/food/snacks/dough
+			/obj/item/weapon/reagent_containers/food/snacks/dough,
+			/obj/item/weapon/reagent_containers/food/snacks/egg
 		)
 	result = /obj/item/weapon/chaoscake_layer/seven
 
 /datum/recipe/chaoscake_layereight
-	reagents = list(/datum/reagent/nutriment/flour = 15, /datum/reagent/drink/milk = 5, /datum/reagent/sugar = 5, /datum/reagent/nutriment/protein/egg = 3, /datum/reagent/drink/milk/cream = 10)
+	reagents = list(/datum/reagent/nutriment/flour = 15, /datum/reagent/drink/milk = 5, /datum/reagent/sugar = 5, /datum/reagent/drink/milk/cream = 10)
 	fruit = list("lemon" = 1)
 	items = list(
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
 			/obj/item/weapon/reagent_containers/food/snacks/dough,
-			/obj/item/weapon/reagent_containers/food/snacks/dough
+			/obj/item/weapon/reagent_containers/food/snacks/dough,
+			/obj/item/weapon/reagent_containers/food/snacks/egg
 		)
 	result = /obj/item/weapon/chaoscake_layer/eight
 
