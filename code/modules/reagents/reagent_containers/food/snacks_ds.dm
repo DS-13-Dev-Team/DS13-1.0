@@ -4,7 +4,7 @@
 	icon_state = "lobster_raw"
 	nutriment_amt = 5
 
-/obj/item/weapon/reagent_containers/food/snacks/lobster/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/lobster/New()
 	..()
 	bitesize = 0.1
 
@@ -16,7 +16,7 @@
 	nutriment_amt = 20
 	nutriment_desc = list("lemon" = 2, "lobster" = 5, "salad" = 2)
 
-/obj/item/weapon/reagent_containers/food/snacks/lobstercooked/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/lobstercooked/New()
 	..()
 	bitesize = 5
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 20)
@@ -27,7 +27,7 @@
 	icon_state = "cuttlefish_raw"
 	nutriment_amt = 5
 
-/obj/item/weapon/reagent_containers/food/snacks/cuttlefish/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/cuttlefish/New()
 	..()
 	bitesize = 10
 
@@ -38,7 +38,7 @@
 	nutriment_amt = 20
 	nutriment_desc = list("cuttlefish" = 5, "rubber" = 5, "grease" = 1)
 
-/obj/item/weapon/reagent_containers/food/snacks/cuttlefishcooked/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/cuttlefishcooked/New()
 	..()
 	bitesize = 5
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
@@ -53,7 +53,7 @@
 	slices_num = 6
 	trash = /obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfishremains
 
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfish/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfish/New()
 	..()
 	bitesize = 2
 
@@ -63,7 +63,7 @@
 	icon_state = "monkfish_fillet"
 	nutriment_amt = 5
 
-/obj/item/weapon/reagent_containers/food/snacks/monkfishfillet/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/monkfishfillet/New()
 	..()
 	bitesize = 3
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 1)
@@ -76,7 +76,7 @@
 	nutriment_desc = list("fish" = 3, "oil" = 1, "sweet chili" = 3, "spring onion" = 2)
 	trash = /obj/item/trash/fancyplate
 
-/obj/item/weapon/reagent_containers/food/snacks/monkfishcooked/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/monkfishcooked/New()
 	..()
 	bitesize = 4
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
@@ -90,7 +90,7 @@
 	slice_path = /obj/item/clothing/head/fish
 	slices_num = 1
 
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfishremains/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfishremains/New()
 	..()
 	bitesize = 0.01 //impossible to eat
 	reagents.add_reagent(/datum/reagent/carbon, 5)
@@ -105,7 +105,7 @@
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk
 	slices_num = 6
 
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/shark/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/shark/New()
 	..()
 	bitesize = 0.01
 
@@ -118,7 +118,7 @@
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	slices_num = 5
 
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk/New()
 	..()
 	bitesize = 3
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 20)
@@ -129,7 +129,7 @@
 	icon_state = "sharkmeat"
 	nutriment_amt = 2
 
-/obj/item/weapon/reagent_containers/food/snacks/sharkmeat/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/sharkmeat/New()
 	..()
 	bitesize = 3
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 2)
@@ -142,7 +142,7 @@
 	trash = /obj/item/trash/plate
 	nutriment_desc = list("manliness" = 1, "fish oil" = 2, "shark" = 2)
 
-/obj/item/weapon/reagent_containers/food/snacks/sharkmeatcooked/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/sharkmeatcooked/New()
 	..()
 	bitesize = 3
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 8)
@@ -155,7 +155,7 @@
 	trash = /obj/item/trash/snack_bowl
 	nutriment_desc = list("salt" = 1, "fish oil" = 2, "spicy shark" = 2)
 
-/obj/item/weapon/reagent_containers/food/snacks/sharkmeatdip/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/sharkmeatdip/New()
 	..()
 	bitesize = 3
 	reagents.add_reagent(/datum/reagent/capsaicin, 4)
@@ -169,7 +169,7 @@
 	trash = /obj/item/trash/plate
 	nutriment_desc = list("viking spirit" = 1, "rot" = 2, "fermented sauce" = 2)
 
-/obj/item/weapon/reagent_containers/food/snacks/sharkmeatcubes/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/sharkmeatcubes/New()
 	..()
 	bitesize = 10
 	reagents.add_reagent(/datum/reagent/drink/juice/potato, 30) // for people who want to get fat, FAST.
@@ -186,7 +186,7 @@
 
 	var/food_type = "/obj/item/weapon/reagent_containers/food/snacks/proteinslab"
 
-/obj/item/weapon/reagent_containers/food/snacks/cube/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/cube/New()
 	. = ..()
 
 /obj/item/weapon/reagent_containers/food/snacks/cube/proc/Expand()
@@ -200,7 +200,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/cube/protein
 
-/obj/item/weapon/reagent_containers/food/snacks/cube/protein/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/cube/protein/New()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/toxin/meatcolony, 5)
 
@@ -212,7 +212,7 @@
 	nutriment_amt = 5
 	nutriment_desc = list("bitter chyme" = 50)
 
-/obj/item/weapon/reagent_containers/food/snacks/proteinslab/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/proteinslab/New()
 	..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 30)
 
@@ -222,7 +222,7 @@
 	icon_state = "nutrimentcube"
 	food_type = "/obj/item/weapon/reagent_containers/food/snacks/nutrimentslab"
 
-/obj/item/weapon/reagent_containers/food/snacks/cube/nutriment/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/cube/nutriment/New()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/toxin/plantcolony, 5)
 
