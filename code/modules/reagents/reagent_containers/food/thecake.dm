@@ -193,54 +193,54 @@
 			name = "Slice Of Evil" //Pretty damn poisonous, takes a lot of work to make safe for consumption, useful for medical.
 			desc = "An odd slice, despite the grease and cherries oozing off the top, it smells delicious."
 			nutriment_desc = list("The desire to consume" = 10) // You won't even taste the poison.
-			reagents.add_reagent("neurotoxic_protein", 2)
-			reagents.add_reagent("shockchem", 2)
-			reagents.add_reagent("amatoxin", 2)
-			reagents.add_reagent("carpotoxin", 2)
-			reagents.add_reagent("spidertoxin", 2)
+			reagents.add_reagent(/datum/reagent/toxin, 2)
+			reagents.add_reagent(/datum/reagent/toxin/plasticide, 2)
+			reagents.add_reagent(/datum/reagent/toxin/amatoxin, 2)
+			reagents.add_reagent(/datum/reagent/toxin/carpotoxin, 2)
+			reagents.add_reagent(/datum/reagent/toxin/phoron, 2)
 			bitesize = 7
 		if(2)
 			name = "Slice Of Evil" //A bad trip
 			desc = "A mysterious slice, coated in purple frosting that smells like grapes."
 			nutriment_desc = list("The desire to show off an party" = 10)
-			reagents.add_reagent("stoxin", 2)
-			reagents.add_reagent("space_drugs", 10)
-			reagents.add_reagent("serotrotium", 4)
-			reagents.add_reagent("cryptobiolin", 8)
-			reagents.add_reagent("mindbreaker", 10)
-			reagents.add_reagent("psilocybin", 10)
+			reagents.add_reagent(/datum/reagent/soporific, 2)
+			reagents.add_reagent(/datum/reagent/space_drugs, 10)
+			reagents.add_reagent(/datum/reagent/serotrotium, 4)
+			reagents.add_reagent(/datum/reagent/cryptobiolin, 8)
+			reagents.add_reagent(/datum/reagent/mindbreaker, 10)
+			reagents.add_reagent(/datum/reagent/psilocybin, 10)
 			bitesize = 30 //even a single bite won't make you escape fate.
 		if(3)
 			name = "Slice Of Evil" //acidic
 			desc = "A menacing slice, smelling clearly of copper, blood clots float on top."
 			nutriment_desc = list("Infernal Rage" = 10)
 			reagents.add_reagent(/datum/reagent/blood, 20)
-			reagents.add_reagent("stomacid", 10)
-			reagents.add_reagent("mutagen", 4)
-			reagents.add_reagent("thirteenloko", 20)
-			reagents.add_reagent("hyperzine", 10)
+			reagents.add_reagent(/datum/reagent/acid/necromorph, 10)
+			reagents.add_reagent(/datum/reagent/mutagen, 4)
+			reagents.add_reagent(/datum/reagent/ethanol/thirteenloko, 20)
+			reagents.add_reagent(/datum/reagent/hyperzine, 10)
 			bitesize = 30
 		if(4)
 			name = "Slice Of Good" //anti-tox
 			desc = "A colourful slice, smelling of pear and coated in delicious cream."
 			nutriment_desc = list("Hapiness" = 10)
-			reagents.add_reagent(datum/reagent/dylovene, 2)
-			reagents.add_reagent(datum/reagent/tricordazine, 2)
+			reagents.add_reagent(/datum/reagent/dylovene, 2)
+			reagents.add_reagent(/datum/reagent/tricordrazine, 2)
 			bitesize = 3
 		if(5)
 			name = "Slice Of Good" //anti-oxy
 			desc = "A light slice, it's pretty to look at and smells of vanilla."
 			nutriment_desc = list("Freedom" = 10)
-			reagents.add_reagent(datum/reagent/dexalinp, 2)
-			reagents.add_reagent(datum/reagent/tricordazine, 2)
+			reagents.add_reagent(/datum/reagent/dexalinp, 2)
+			reagents.add_reagent(/datum/reagent/tricordrazine, 2)
 			bitesize = 3
 		if(6)
 			name = "Slice Of Good" //anti-burn/brute
 			desc = "A hearty slice, it smells of chocolate and strawberries."
 			nutriment_desc = list("Love" = 10)
-			reagents.add_reagent(datum/reagent/bicardine, 2)
-			reagents.add_reagent(datum/reagent/tricordazine, 2)
-			reagents.add_reagent(datum/reagent/kelotane, 2)
+			reagents.add_reagent(/datum/reagent/bicaridine, 2)
+			reagents.add_reagent(/datum/reagent/tricordrazine, 2)
+			reagents.add_reagent(/datum/reagent/kelotane, 2)
 			bitesize = 4
 
 /obj/structure/chaoscake/attackby(var/obj/item/weapon/W, var/mob/living/user)
