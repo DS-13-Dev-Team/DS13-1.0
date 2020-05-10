@@ -192,7 +192,7 @@
 	nutriment_amt = 4
 	volume = 80
 
-/obj/item/weapon/reagent_containers/food/snacks/chaoscakeslice/Initialize()
+/obj/item/weapon/reagent_containers/food/snacks/chaoscakeslice/New()
 	..()
 	var/i = rand(1,6)
 	icon_state = "chaoscake_slice-[i]"
@@ -261,7 +261,7 @@
 			else
 				user << "You cut a slice of the cake. The slice looks like the cake was just baked, and you can see before your eyes as the spot where you cut the slice slowly regenerates!"
 				slices = slices - 1
-				icon_state = "chaoscake-[slices]"
+				// icon_state = "chaoscake-[slices]" - doesn't work properly yet, will fix later
 				new /obj/item/weapon/reagent_containers/food/snacks/chaoscakeslice(src.loc)
 
 		else
@@ -284,6 +284,9 @@
 			qdel(W)
 			stage++
 			desc = desclist2[stage]
-			icon_state = "chaoscake_stage-[stage]"
+			icon_state = "chaoscake_unfinished-[stage]"
 		else
 			user << "Hmm, doesnt seem like this layer is supposed to be added there?"
+
+/obj/structure/chaoscake/update_icon()
+	icon_state = "chaoscake_stage-[stage]"
