@@ -199,6 +199,8 @@
 	name = "Stairs"
 	desc = "Stairs leading to another deck.  Not too useful if the gravity goes out."
 	icon = 'icons/obj/stairs.dmi'
+	breakable = FALSE
+	unacidable = 1
 	density = 0
 	opacity = 0
 	anchored = 1
@@ -237,6 +239,10 @@
 
 /obj/structure/stairs/CanPass(obj/mover, turf/source, height, airflow)
 	return airflow || !density
+
+/obj/structure/stairs/Click()
+	if(istype(usr,/mob/observer))
+		usr.forceMove(GetAbove(src))
 
 // type paths to make mapping easier.
 /obj/structure/stairs/north
