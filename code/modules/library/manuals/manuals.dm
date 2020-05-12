@@ -205,3 +205,111 @@
 				</body>
 			</html>
 			"}
+
+/obj/item/weapon/book/manual/digitallog/surgery
+	name = "\improper Surgical Guide log"
+	icon_state = "digitallog"
+	author = "Maurene Jesse"
+	title = "\improper Surgical Guide log"
+
+	dat = {"<html>
+				<head>
+				<style>
+				h1 {font-size: 18px; margin: 15px 0px 5px;}
+				h2 {font-size: 15px; margin: 15px 0px 5px;}
+				h3 {font-size: 13px; margin: 15px 0px 5px;}
+				li {margin: 2px 0px 2px 15px;}
+				ul {margin: 5px; padding: 0px;}
+				ol {margin: 5px; padding: 0px 15px;}
+				body {background: #272727 url(uiBackground.png) 50% 0 repeat-x; color: #ffffff; font-size: 13px; font-family: Verdana; padding-top: 5%;}
+				.important {color: #ff0000;}
+				.smallheader {font-size: 10px;}
+				</style>
+				</head>
+				<body>
+
+				<h1>Surgical Overview</h1>
+				A step by step guide on various surgeries
+				<br>
+				<i class="smallheader">Brain, Eyes - Head</i><br>
+				<i class="smallheader">Heart, Lungs - Chest</i><br>
+				<i class="smallheader">Liver, Kidneys, Appendix - groin</i><br>
+
+				<h3>Facial Reconstruction</h3>
+				<ol>
+					<li>Make an incision on the mouth with a scalpel to cut open the face</li>
+					<li>Mend the vocal chords with a hemostat</li>
+					<li>Pull the  skin back into place with a retractor</li>
+					<li>Cauterize the incision</li>
+				</ol>
+
+				<h3>Shrapnel Removal</h3>
+				<ol>
+					<li>Make an incision with a scalpel</li>
+					<li>Use a hemostat to clamp the bleeders</li>
+					<li>Use a retractor to open the incision</li>
+					<li>Search the cavity with a hemostat</li>
+					<li>Cauterize the incision</li>
+				</ol>
+
+				<h3>Limb Amputation</h3>
+				<ul>
+					<li>Cut through the limb with a circular saw</li>
+				</ul>
+
+				<h3>Limb Replacement & Reattachment</h3>
+				<ol>
+					<li>Affix the replacement limb to the patient</li>
+					<li>Use a hemostat to reconnect the tendons and muscles</li>
+				</ol>
+
+				<h3>Bone Repair</h3>
+				<ol>
+					<li>Make an incision with a scalpel</li>
+					<li>Use a hemostat to clamp the bleeders</li>
+					<li>Use a retractor to open the incision</li>
+					<li>Smear bone gel on the broken bones</li>
+					<li>Use a bone setter to reposition the bones</li>
+					<li>Cauterize the incision</li>
+				</ol>
+
+				<h3>Organ Repair</h3>
+				<i>Necrotic organs need to be replaced</i>
+				<ol>
+					<li>Make an incision with a scalpel</li>
+					<li>Use a hemostat to clamp the bleeders</li>
+					<li>Use a retractor to open the incision</li>
+					<li><b class="important">(HEAD/CHEST ONLY)</b> Use a circular saw to cut through the bones</li>
+					<li>Patch up the damaged organ with a dropper of peridaxon or a trauma pack</li>
+					<li><b class="important">(HEAD/CHEST ONLY)</b> Smear bone gel on the sawed through bones</li>
+					<li><b class="important">(HEAD/CHEST ONLY)</b> Use a bone setter to reposition the bones</li>
+					<li>Cauterize the incision</li>
+				</ol>
+
+				<h3>Organ Replacement Surgery</h3>
+				<i>This is a complicated surgery. Get a surgeon to do this</i>
+				<ol>
+					<li>Make an incision with a scalpel</li>
+					<li>Use a hemostat to clamp the bleeders</li>
+					<li><b class="important">(HEAD/CHEST ONLY)</b> Use a circular saw to cut through the bones</li>
+					<li>Detach the organ with a scalpel</li>
+					<li>Remove the organ with a hemostat</li>
+					<li>Place the new organ in the patient</li>
+					<li>Reconnect the organ using a Fix O' Vein</li>
+					<li>Repair any injuries from the surgery with a trauma pack</li>
+					<li><b class="important">(HEAD/CHEST ONLY)</b> Smear bone gel on the sawed through bones</li>
+					<li><b class="important">(HEAD/CHEST ONLY)</b> Use a bone setter to reposition the bones</li>
+					<li>Cauterize the incision</li>
+				</ol>
+
+				<h3>Torn Tendons & Internal Bleeding</h3>
+				<ol>
+					<li>Make an incision with a scalpel</li>
+					<li>Use a hemostat to clamp the bleeders</li>
+					<li>Use a retractor to open the incision</li>
+					<li>Use a Fix O' Vein to patch the damage</li>
+					<li>Cauterize the incision</li>
+				</ol>
+				</body>
+			</html>
+			"}

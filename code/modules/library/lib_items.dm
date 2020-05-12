@@ -232,3 +232,38 @@
 /obj/item/weapon/book/manual
 	icon = 'icons/obj/library.dmi'
 	unique = 1   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
+
+/*
+ * Digital Logs - Book alternative
+ */
+/obj/item/weapon/book/manual/digitallog
+	name = "Digital log"
+	icon_state = "digitallog"
+
+//Slight wording change so logs aren't refered to as books in chat
+/obj/item/weapon/book/manual/digitallog/attack_self(var/mob/user as mob)
+	if(carved)
+		if(store)
+			to_chat(user, "<span class='notice'>[store] falls out of [title]!</span>")
+			store.loc = get_turf(src.loc)
+			store = null
+			return
+		else
+			to_chat(user, "<span class='notice'>The pages of [title] have been cut out!</span>")
+			return
+	if(src.dat)
+		user << browse(dat, "window=digitallog;file=[src.title];size=500x550")
+		user.visible_message("[user] begins reading \the [src.title]")
+		onclose(user, "digitallog")
+	else
+		to_chat(user, "This book is completely blank!")
+
+/obj/item/weapon/book/manual/digitallog/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	to_chat(user, "<span class='notice'>You feel like you shouldn't hit \the [src.title] with \the [W]")
+
+/obj/item/weapon/book/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+	if(user.zone_sel.selecting == BP_EYES)
+		user.visible_message("<span class='notice'>You hold up \the [src.title] and show it to [M]. </span>", \
+			"<span class='notice'> [user] holds up \the [src.title] and shows it to [M]. </span>")
+		M << browse(dat, "window=digitallog;size=500x550")
+		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
