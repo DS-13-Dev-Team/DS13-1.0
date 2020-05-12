@@ -98,3 +98,7 @@
 
 /obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
 	return
+
+/obj/item/trash/fancyplate
+	name = "dirty fancy plate"
+	icon_state = "fancyplate"
