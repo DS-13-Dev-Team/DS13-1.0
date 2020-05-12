@@ -105,6 +105,9 @@
 
 
 
+/turf/simulated/open/Click()
+	if(istype(usr,/mob/observer))
+		usr.forceMove(GetBelow(src))
 /**
 * Update icon and overlays of open space to be that of the turf below, plus any visible objects on that turf.
 */
