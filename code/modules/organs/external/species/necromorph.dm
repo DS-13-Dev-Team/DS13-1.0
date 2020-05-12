@@ -37,6 +37,7 @@
 /obj/item/organ/external/chest/giant
 	max_damage = 360
 	min_broken_damage = 180
+	limb_flags = ORGAN_FLAG_HEALS_OVERKILL //| ORGAN_FLAG_GENDERED_ICON 	//No gendered icon
 
 /obj/item/organ/external/groin/giant
 	max_damage = 180

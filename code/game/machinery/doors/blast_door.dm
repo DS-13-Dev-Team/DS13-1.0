@@ -124,6 +124,7 @@
 	src.add_fingerprint(user, 0, C)
 	//Attacking with empty hands
 	if (C == user)
+		world << "Blast door checking unarmed force"
 		check_unarmed_force(C)
 		return
 

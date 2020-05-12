@@ -8,7 +8,7 @@
 	name_plural =  "Exploders"
 	mob_type = /mob/living/carbon/human/necromorph/exploder
 	blurb = "An expendable suicide bomber, the exploder's sole purpose is to go out in a blaze of glory, and hopefully take a few people with it."
-	unarmed_types = list(/datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
+	unarmed_types = list(/datum/unarmed_attack/bite/weak/exploder) //Bite attack is a backup if blades are severed
 	total_health = 85	//It has high health for the sake of making it a bit harder to destroy without targeting the pustule. Exploding the pustule is always an instakill
 	biomass = 40
 	mass = 50
@@ -144,6 +144,9 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 /datum/extension/auto_sound/exploder
 	valid_sounds = list(SOUND_SHOUT, SOUND_PAIN)
 
+
+/datum/unarmed_attack/bite/weak/exploder
+	irequired_limb = list(BP_CHEST)
 
 /*---------------------
 	Pustule

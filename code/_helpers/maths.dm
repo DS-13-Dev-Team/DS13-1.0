@@ -222,6 +222,9 @@
 
 	return (viewlist & conelist)
 
+
+/proc/shortest_angle(var/delta)
+	return (delta - round(delta, 360))
 #define CLAMP(CLVALUE,CLMIN,CLMAX) ( max( (CLMIN), min((CLVALUE), (CLMAX)) ) )
 
 // Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive
