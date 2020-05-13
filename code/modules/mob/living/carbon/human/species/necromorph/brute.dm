@@ -1,3 +1,6 @@
+#define BRUTE_BIOBOMB_IMPACT_DAMAGE	10
+#define BRUTE_BIOBOMB_BLAST_DAMAGE	25
+
 /datum/species/necromorph/brute
 	name = SPECIES_NECROMORPH_BRUTE
 	mob_type	=	/mob/living/carbon/human/necromorph/brute
@@ -35,8 +38,9 @@
 	weaken_mod = 0.3
 	paralysis_mod = 0.3
 
-	inherent_verbs = list(/atom/movable/proc/brute_charge, /atom/movable/proc/brute_slam, /atom/movable/proc/curl_verb, /mob/proc/shout)
-	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/brute_charge),
+	inherent_verbs = list(/atom/movable/proc/brute_charge, /atom/movable/proc/brute_slam, /atom/movable/proc/curl_verb, /mob/living/carbon/human/proc/biobomb, /mob/proc/shout)
+	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/carbon/human/proc/biobomb),
+	KEY_ALT = list(/atom/movable/proc/brute_charge),
 	KEY_CTRLALT = list(/atom/movable/proc/brute_slam),
 	KEY_CTRLSHIFT = list(/atom/movable/proc/curl_verb))
 
@@ -127,6 +131,14 @@ Mobs hit by slam will take up to 40 damage depending on distance, and will be kn
 Slam deals massive damage to any objects caught in its radius, making it an excellent obstacle-clearing ability. It will easily break through doors, barricades, machinery, girders, windows, etc. With repeated uses and some patience, you can even dig your way through solid walls, creating new paths<br>\
 Slam is heavily telegraphed, and hard to land hits with. Don't count on reliably hitting humans with it if they have any space to dodge"
 
+#define BRUTE_BOMB_DESC	"<h2>Bio-bomb:</h2><br>\
+<h3>Hotkey: Middle Click </h3><br>\
+<h3>Cooldown: 10 seconds</h3><br>\
+The user rears back, and launches an organic explosive from their belly. Deals 10 damage on direct impact, and an additional variable damage (up to 25) in burn and acid over a small area of effect.<br>\
+Biobomb is a weak, low risk poking and initiation ability, intended to force the enemy to charge at you. It can be used as a way to deal damage and slow down agile humans who keep at a distance. <br>\
+It is certainly no use in close combat, and is generally easy to dodge due to being heavily telegraphed. Use it to force a fight up close, and then switch to your melee abilities for serious damage dealing."
+
+
 #define BRUTE_CURL "<h2>Curl:</h2><br>\
 <h3>Hotkey: Ctrl+Shift+Click</h3><br>\
 The user curls up into a ball, attempting to shield their vulnerable parts from damage, but becoming unable to turn, move or attack. While curled up, the strength of the brute's organic armor is massively increased (75% more!) and its coverage is increased to 100%<br>\
@@ -142,6 +154,8 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	. += BRUTE_CHARGE_DESC
 	. += "<hr>"
 	. += BRUTE_SLAM_DESC
+	. += "<hr>"
+	. += BRUTE_BOMB_DESC
 	. += "<hr>"
 	. += BRUTE_CURL
 
@@ -333,3 +347,50 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 
 /datum/species/necromorph/brute/make_scary(mob/living/carbon/human/H)
 	//H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though
+
+
+
+/*
+	Bio-bomb
+*/
+/mob/living/carbon/human/proc/biobomb(var/atom/A)
+	set name = "Bio-bomb"
+	set category = "Abilities"
+	set desc = "A moderate-strength projectile for longrange shooting. HK: Middleclick"
+
+	//Don't do anything unless we're sure we can fire
+	if (!can_shoot(FALSE))
+		return
+
+	var/firesound = pick(list('sound/effects/creatures/necromorph/cyst/cyst_fire_1.ogg',
+	'sound/effects/creatures/necromorph/cyst/cyst_fire_2.ogg',
+	'sound/effects/creatures/necromorph/cyst/cyst_fire_3.ogg',
+	'sound/effects/creatures/necromorph/cyst/cyst_fire_4.ogg'))
+
+	face_atom(A)
+	.= shoot_ability(/datum/extension/shoot/brute_biobomb, A , /obj/item/projectile/bullet/biobomb/weak, accuracy = 50, dispersion = 0, num = 1, windup_time = 1.5 SECONDS, fire_sound = firesound, nomove = 2 SECOND, cooldown = 12 SECONDS)
+	if (.)
+		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
+
+
+/datum/extension/shoot/brute_biobomb/windup_animation()
+	var/mob/living/L = user
+	var/x_direction
+	if (target.x > L.x)
+		x_direction = 1
+	else if (target.x < L.x)
+		x_direction = -1
+
+
+	//We do the windup animation. This involves the user slowly rising into the air, and tilting back if striking horizontally
+	animate(L, transform=turn(matrix(), L.default_rotation + (25*(x_direction*-1))),pixel_x = L.default_pixel_x + 8*(x_direction*-1), time = windup_time, flags = ANIMATION_PARALLEL)
+	sleep(windup_time)
+
+/datum/extension/shoot/brute_biobomb/fire_animation()
+	spawn(5)
+		var/mob/living/L = user
+		animate(L, transform=L.get_default_transform(),pixel_x = L.default_pixel_x, time = 1 SECOND, flags = ANIMATION_PARALLEL)
+
+/obj/item/projectile/bullet/biobomb/weak
+	blast_power = BRUTE_BIOBOMB_BLAST_DAMAGE
+	damage = BRUTE_BIOBOMB_IMPACT_DAMAGE
