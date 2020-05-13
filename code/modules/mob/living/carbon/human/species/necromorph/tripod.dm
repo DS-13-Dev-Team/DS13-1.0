@@ -1,3 +1,7 @@
+#define LEAP_SHOCKWAVE_DAMAGE	10
+#define LEAP_CONE_DAMAGE	10
+#define LEAP_CONE_WEAKEN	2
+#define LEAP_REDUCED_COOLDOWN	3 SECONDS
 /datum/species/necromorph/tripod
 	name = SPECIES_NECROMORPH_TRIPOD
 	mob_type	=	/mob/living/carbon/human/necromorph/tripod
@@ -32,19 +36,18 @@
 	weaken_mod = 0.3
 	paralysis_mod = 0.3
 
-	/*
-	inherent_verbs = list(/atom/movable/proc/tripod_charge, /atom/movable/proc/tripod_slam, /atom/movable/proc/curl_verb, /mob/proc/shout)
-	modifier_verbs = list(KEY_ALT = list(/atom/movable/proc/tripod_charge),
-	KEY_CTRLALT = list(/atom/movable/proc/tripod_slam),
-	KEY_CTRLSHIFT = list(/atom/movable/proc/curl_verb))
-	*/
+
+	inherent_verbs = list(/mob/living/carbon/human/proc/tripod_leap, /mob/proc/shout)
+	modifier_verbs = list(
+	KEY_CTRLALT = list(/mob/living/carbon/human/proc/tripod_leap))
+
 
 	unarmed_types = list(/datum/unarmed_attack/punch/tripod)
 
 	slowdown = 6 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
 
 	//Vision
-	view_range = 10
+	view_range = 12
 
 
 	has_limbs = list(
@@ -174,8 +177,61 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 	shredding = TRUE //Better environment interactions, even if not sharp
 	edge = TRUE
 
-//TODO: Why cant we force doors?
 
+/*--------------------------------
+	Leap
+--------------------------------*/
+/mob/living/carbon/human/proc/tripod_leap(var/atom/target)
+	set name = "High Leap"
+	set desc = "Leaps to a target location, dealing damage around the landing point, and knockdown in a frontal cone"
+	set category = "Abilities"
+
+	high_leap_ability(target, windup_time = 0.8 SECOND, winddown_time = 0.8 SECOND, cooldown = 6 SECONDS, minimum_range = 3, travel_speed = 5.25)
+
+/datum/species/necromorph/tripod/high_leap_impact(var/mob/living/user, var/atom/target, var/distance)
+
+	//The leap impact deals two burst of damage.
+
+	//Firstly, to mobs within 1 tile of us
+	new /obj/effect/effect/expanding_circle(user.loc, -0.65, 0.5 SECONDS)
+	for (var/mob/living/L in range(1, user))
+		if (L == user)
+			continue
+
+		shake_camera(src,8,2)
+
+		L.take_overall_damage(LEAP_SHOCKWAVE_DAMAGE)
+
+	var/vector2/direction = Vector2.FromDir(user.dir)
+
+	var/conehit = FALSE
+
+	//Secondly, to mobs in a frontal cone
+	new /obj/effect/effect/forceblast/tripod(user.loc, 0.65 SECOND, direction.Rotation())
+	spawn(1.5)
+		new /obj/effect/effect/forceblast/tripod(user.loc, 0.65 SECOND, direction.Rotation())
+	spawn(3)
+		new /obj/effect/effect/forceblast/tripod(user.loc, 0.75 SECOND, direction.Rotation())
+	for (var/turf/T as anything in get_cone(user.loc, direction, 3, 80))
+		for (var/mob/living/L in T)
+			if (L == user)
+				continue
+
+			L.take_overall_damage(LEAP_CONE_DAMAGE)
+			L.Weaken(LEAP_CONE_WEAKEN)
+			shake_camera(src,10,3)
+			conehit = TRUE
+
+	if (conehit)
+		//If we managed to hit any mob with the cone, we get rewarded with half cooldown on the leap
+		var/datum/extension/high_leap/E = get_extension(user, /datum/extension/high_leap)
+		if (E)
+			E.cooldown = LEAP_REDUCED_COOLDOWN
+
+
+/obj/effect/effect/forceblast/tripod
+	color = "#EE0000"
+	max_length = 4
 
 /datum/species/necromorph/tripod/make_scary(mob/living/carbon/human/H)
 	//H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though

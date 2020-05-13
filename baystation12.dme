@@ -1798,6 +1798,7 @@
 #include "code\modules\mob\living\abilities\dodge.dm"
 #include "code\modules\mob\living\abilities\frenzy_shout.dm"
 #include "code\modules\mob\living\abilities\gallop.dm"
+#include "code\modules\mob\living\abilities\high_leap.dm"
 #include "code\modules\mob\living\abilities\leap.dm"
 #include "code\modules\mob\living\abilities\leaper_tailstrike.dm"
 #include "code\modules\mob\living\abilities\lunge.dm"

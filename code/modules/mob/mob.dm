@@ -854,6 +854,12 @@
 /mob/proc/IsAdvancedToolUser()
 	return 0
 
+
+//Like stun, but doesn't set the stun var. Just sets move and click cooldowns
+/mob/proc/disable(stoptime)
+	SetMoveCooldown(stoptime)
+	setClickCooldown(stoptime)
+
 /mob/proc/Stun(amount)
 	if(status_flags & CANSTUN)
 		facing_dir = null

@@ -146,7 +146,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 
 
 /datum/unarmed_attack/bite/weak/exploder
-	irequired_limb = list(BP_CHEST)
+	required_limb = list(BP_CHEST)
 
 /*---------------------
 	Pustule
