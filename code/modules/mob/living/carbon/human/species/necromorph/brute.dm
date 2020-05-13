@@ -131,6 +131,14 @@ Mobs hit by slam will take up to 40 damage depending on distance, and will be kn
 Slam deals massive damage to any objects caught in its radius, making it an excellent obstacle-clearing ability. It will easily break through doors, barricades, machinery, girders, windows, etc. With repeated uses and some patience, you can even dig your way through solid walls, creating new paths<br>\
 Slam is heavily telegraphed, and hard to land hits with. Don't count on reliably hitting humans with it if they have any space to dodge"
 
+#define BRUTE_BOMB_DESC	"<h2>Bio-bomb:</h2><br>\
+<h3>Hotkey: Middle Click </h3><br>\
+<h3>Cooldown: 10 seconds</h3><br>\
+The user rears back, and launches an organic explosive from their belly. Deals 10 damage on direct impact, and an additional variable damage (up to 25) in burn and acid over a small area of effect.<br>\
+Biobomb is a weak, low risk poking and initiation ability, intended to force the enemy to charge at you. It can be used as a way to deal damage and slow down agile humans who keep at a distance. <br>\
+It is certainly no use in close combat, and is generally easy to dodge due to being heavily telegraphed. Use it to force a fight up close, and then switch to your melee abilities for serious damage dealing."
+
+
 #define BRUTE_CURL "<h2>Curl:</h2><br>\
 <h3>Hotkey: Ctrl+Shift+Click</h3><br>\
 The user curls up into a ball, attempting to shield their vulnerable parts from damage, but becoming unable to turn, move or attack. While curled up, the strength of the brute's organic armor is massively increased (75% more!) and its coverage is increased to 100%<br>\
@@ -146,6 +154,8 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	. += BRUTE_CHARGE_DESC
 	. += "<hr>"
 	. += BRUTE_SLAM_DESC
+	. += "<hr>"
+	. += BRUTE_BOMB_DESC
 	. += "<hr>"
 	. += BRUTE_CURL
 
