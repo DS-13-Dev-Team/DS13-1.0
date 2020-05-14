@@ -88,31 +88,5 @@
 	damage = between(0, damage, max_damage)		// Clamp the value.
 
 // This is called whenever hardware is inserted into a modular computer.
-// Currently only has a use for 'manual' flash drives
+// Currently only has a use for 'autorun' flash drives
 /obj/item/weapon/computer_hardware/proc/installed(var/obj/item/modular_computer/M)
-	if(istype(src, /obj/item/weapon/computer_hardware/hard_drive/portable/manual))
-		//Define the src as a portable flash drive
-		var/obj/item/weapon/computer_hardware/hard_drive/portable/flash = src
-		//Find the word processor
-		var/datum/computer_file/program/wordprocessor/WP = M.hard_drive.find_file_by_name("wordprocessor")
-		//List of added programs
-		var/list/addedProgs = list()
-		//Find all stored guides in the flash drive and transfer them over
-		for(var/datum/computer_file/data/text/manual/F in flash.stored_files)
-			//Don't add unnecessary copies
-			if(!M.hard_drive.stored_files.Find(F))
-				M.hard_drive.store_file(F)
-			addedProgs.Add(F.filename)
-		//Reset the word processors data in case anything is currently inside it.
-		//This generates a 'changelog' to show whats been added
-		WP.open_file = "Added files"
-		WP.loaded_data = "Files added from \the [src]\[br\]\[list\]"
-		for(var/f in addedProgs)
-			WP.loaded_data += "- [f]"
-		WP.loaded_data += "\[/list\]"
-		usr.audible_message("\The [src] beeps and flashes as it transfers [flash.stored_files.len > 1 ? "several files" : "a file"] to \the [usr]'s \the [M]",
-							"\The [src] beeps and flashes as it transfers [flash.stored_files.len > 1 ? "several files" : "a file"] to \the [M]")
-		M.portable_drive = null
-		if(!usr.put_in_hands(src))
-			M.uninstall_component(null, src)
-		M.run_program("wordprocessor")
