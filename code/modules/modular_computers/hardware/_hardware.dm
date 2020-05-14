@@ -87,3 +87,6 @@
 	damage += round(amount) 					// We want nice rounded numbers here.
 	damage = between(0, damage, max_damage)		// Clamp the value.
 
+// This is called whenever hardware is inserted into a modular computer.
+// Currently only has a use for 'autorun' flash drives
+/obj/item/weapon/computer_hardware/proc/installed(var/obj/item/modular_computer/M)

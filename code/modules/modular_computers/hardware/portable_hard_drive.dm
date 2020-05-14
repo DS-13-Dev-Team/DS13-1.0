@@ -33,6 +33,48 @@
 	max_capacity = 256
 	origin_tech = list(TECH_DATA = 4)
 
+/obj/item/weapon/computer_hardware/hard_drive/portable/autorun
+	name = "\improper autorun flash drive"
+	desc = "A flash drive that automatically runs when plugged in"
+	power_usage = 20
+	hardware_size = 1
+	max_capacity = 64
+
+/obj/item/weapon/computer_hardware/hard_drive/portable/autorun/manual/surgery
+	name = "\improper surgical flash drive"
+	desc = "A flash drive with step by step instructions for surgery"
+	default_files = list(/datum/computer_file/data/text/manual/surgery)
+
+//We don't want or need any default programs on this drive
+/obj/item/weapon/computer_hardware/hard_drive/portable/autorun/manual/install_default_programs()
+
+/obj/item/weapon/computer_hardware/hard_drive/portable/autorun/installed(var/obj/item/modular_computer/M)
+	//Find the word processor
+	var/datum/computer_file/program/wordprocessor/WP = M.hard_drive.find_file_by_name("wordprocessor")
+	var/size = 0
+	var/lastfile
+	if(!WP.open_file)
+		WP.open_file = "Autorun Changelog"
+		WP.loaded_data = "Files added from \the [src]"
+	//Find all stored guides and transfer them over
+	for(var/datum/computer_file/F in stored_files)
+		//Don't add unnecessary copies
+		if(!M.hard_drive.stored_files.Find(F))
+			M.hard_drive.store_file(F)
+			lastfile = F.filename
+			//If a file is open then don't bother running this
+			if(!WP.open_file)
+				WP.loaded_data += "- [F.filename]\[br\]"
+			size++
+	usr.audible_message("\The [src] beeps and flashes as it transfers [size > 1 ? "several files" : "a file"] to \the [usr]'s \the [M]",
+						"\The [src] beeps and flashes as it transfers [size > 1 ? "several files" : "a file"] to \the [M]")
+	M.portable_drive = null
+	if(!usr.put_in_hands(src))
+		M.uninstall_component(null, src)
+	M.run_program("wordprocessor")
+	if(size < 2)
+		WP.open_file(lastfile)
+
 /obj/item/weapon/computer_hardware/hard_drive/portable/Initialize()
 	. = ..()
 	if(disk_name)
