@@ -19,6 +19,18 @@
 				access_chemistry, access_surgery, access_maint_tunnels, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/command/cap
 
+	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
+						SKILL_WEAPONS     = SKILL_BASIC,
+	                    SKILL_COMPUTER    = SKILL_ADEPT)
+
+	max_skill = list(   SKILL_HAULING     = SKILL_MAX,
+						SKILL_WEAPONS     = SKILL_MAX,
+	                    SKILL_COMPUTER    = SKILL_MAX)
+	skill_points = 20
+
+datum/job/cap/get_description_blurb()
+	return "You are the Captain. You are in charge of the overall situation aboard your ship. You are there to ensure that, overall, the ship's operations are safe and productive. You only answer to the CEC and work with the Director of Mining, normally."
+
 /datum/job/fl
 	title = "First Lieutenant"
 	abbreviation = "FL"
@@ -37,6 +49,18 @@
 				access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/command/fl
 
+	min_skill = list(   SKILL_HAULING     = SKILL_ADEPT,
+						SKILL_WEAPONS     = SKILL_BASIC,
+	                    SKILL_COMPUTER    = SKILL_ADEPT)
+
+	max_skill = list(   SKILL_HAULING     = SKILL_MAX,
+						SKILL_WEAPONS     = SKILL_MAX,
+	                    SKILL_COMPUTER    = SKILL_MAX)
+	skill_points = 20
+
+datum/job/fl/get_description_blurb()
+	return "You are the First Lieutenant. You are the second-in-command to the Captain and, should the Captain be unavailable, inccapacitated, or killed, the person next in line to command the ship. Your job, normally, is organize department heads and hand out orders and directives from the Captain to the ship overall. You are subordinate to the Captain."
+
 /datum/job/bo
 	title = "Bridge Ensign"
 	abbreviation = "BE"
@@ -52,8 +76,17 @@
 	access = list(access_bridge, access_security, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/command/bo
 
+	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
+						SKILL_PILOT       = SKILL_ADEPT,
+	                    SKILL_COMPUTER    = SKILL_EXPERT)
 
+	max_skill = list(   SKILL_HAULING     = SKILL_MAX,
+						SKILL_PILOT       = SKILL_MAX,
+	                    SKILL_COMPUTER    = SKILL_MAX)
+	skill_points = 20
 
+datum/job/bo/get_description_blurb()
+	return "You are a Bridge Ensign. You are the members of the crew that support Commmand and assist them in their endeavours. You are not in the line of succession if the Captain and First Lieutenant are unable to complete their duties. You are subordinate to the Captain and First Lieutenant."
 
 
 

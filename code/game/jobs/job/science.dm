@@ -16,6 +16,18 @@
 	access = list(access_cscio, access_bridge, access_research, access_medical)
 	outfit_type = /decl/hierarchy/outfit/job/science/cscio
 
+	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
+						SKILL_MEDICAL	  = SKILL_ADEPT,
+						SKILL_COMPUTER	  = SKILL_ADEPT,
+	                    SKILL_DEVICES	  = SKILL_BASIC)
+
+	max_skill = list(   SKILL_COMPUTER	  = SKILL_MAX,
+	                    SKILL_DEVICES	  = SKILL_MAX)
+	skill_points = 20
+
+datum/job/cscio/get_description_blurb()
+	return "You are the Chief Science Officer. You are in charge of the research department. Your job is to direct your assistants, do science, and further the scientific field. You are subordinate to the Captain and First Lieutenant."
+
 /datum/job/ra
 	title = "Research Assistant"
 	department = "Science"
@@ -31,3 +43,15 @@
 
 	access = list(access_research, access_medical)
 	outfit_type = /decl/hierarchy/outfit/job/science/ra
+
+	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
+						SKILL_MEDICAL	  = SKILL_BASIC,
+						SKILL_COMPUTER	  = SKILL_ADEPT,
+	                    SKILL_DEVICES	  = SKILL_BASIC)
+
+	max_skill = list(   SKILL_COMPUTER	  = SKILL_MAX,
+	                    SKILL_DEVICES	  = SKILL_MAX)
+	skill_points = 20
+
+datum/job/ra/get_description_blurb()
+	return "You are a Research Assistant. You are a member of the research department. Your job is to do science, assist the Chief Science Officer, and attempt to further your personal career. You are subodinate to the Chief Science Officer."

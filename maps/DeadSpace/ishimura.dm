@@ -6,12 +6,12 @@
 	name = "Ishimura"
 	full_name = "USG Ishimura"
 	path = "ishimura"
-	station_levels = list(1,2)
-	contact_levels = list(1,2,3)
-	player_levels = list(1,2,3)
+	station_levels = list(1,2,3)
+	contact_levels = list(1,2,3,4)
+	player_levels = list(1,2,3,4)
 	admin_levels = list()
-	empty_levels = list(5)
-	accessible_z_levels = list("1"=1,"2"=1,"3"=2,"4"=3)
+	empty_levels = list(6)
+	accessible_z_levels = list("1"=1,"2"=1,"3"=1,"4"=2,"5"=3)
 	local_currency_name = "credits"
 	station_networks = list(
 		NETWORK_CARGO,
