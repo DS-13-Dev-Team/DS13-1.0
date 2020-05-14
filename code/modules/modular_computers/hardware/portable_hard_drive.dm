@@ -33,6 +33,21 @@
 	max_capacity = 256
 	origin_tech = list(TECH_DATA = 4)
 
+/obj/item/weapon/computer_hardware/hard_drive/portable/manual
+	name = "\improper manual flash drive"
+	desc = "An empty flash drive thats used to store step by step instructions"
+	power_usage = 20
+	hardware_size = 1
+	max_capacity = 64
+
+/obj/item/weapon/computer_hardware/hard_drive/portable/manual/surgery
+	name = "\improper surgical flash drive"
+	desc = "A flash drive with step by step instructions for surgery"
+	stored_files = list(new /datum/computer_file/data/text/manual/surgery)
+
+//We don't want or need any files on this drive. It's just a proxy to transfer one file
+/obj/item/weapon/computer_hardware/hard_drive/portable/manual/install_default_programs()
+
 /obj/item/weapon/computer_hardware/hard_drive/portable/Initialize()
 	. = ..()
 	if(disk_name)
