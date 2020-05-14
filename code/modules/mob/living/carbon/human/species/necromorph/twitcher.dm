@@ -24,7 +24,7 @@
 	icon_dead = "twitcher"
 	single_icon = TRUE
 	spawner_spawnable = FALSE
-
+	virus_immune = 1
 	biomass	=	130
 
 

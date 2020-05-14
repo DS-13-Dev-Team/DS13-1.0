@@ -22,6 +22,7 @@
 	single_icon = FALSE
 	evasion = 10	//Awkward movemetn makes it a tricky target
 	spawner_spawnable = TRUE
+	virus_immune = 1
 
 	//Audio
 	step_volume = VOLUME_QUIET
