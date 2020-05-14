@@ -183,9 +183,15 @@ obj/structure/closet/crate
 	name = "emergency rations"
 	desc = "A crate of emergency rations."
 
-
 /obj/structure/closet/crate/freezer/rations/WillContain()
 	return list(/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 4)
+
+/obj/structure/closet/crate/freezer/chocolate
+	name = "chocolate bars"
+	desc = "A crate of chocolate bars."
+
+/obj/structure/closet/crate/freezer/chocolate/WillContain()
+	return list(/obj/item/weapon/reagent_containers/food/snacks/chocolatebar = 15)
 
 /obj/structure/closet/crate/bin
 	name = "large bin"
