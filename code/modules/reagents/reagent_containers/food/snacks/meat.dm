@@ -40,3 +40,5 @@
 /obj/item/weapon/reagent_containers/food/snacks/meat/chicken
 	name = "chicken piece"
 	desc = "It tastes like you'd expect."
+	icon = 'icons/obj/food_ingredients.dmi'
+	icon_state = "chicken"
