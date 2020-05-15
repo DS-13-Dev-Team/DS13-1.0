@@ -6,6 +6,7 @@
 //These are used to position the arm sprite during swing
 #define LEFT_ARM_OFFSETS	list("[NORTH]" = new /vector2(-4, 12), "[SOUTH]" = new /vector2(8, 8), "[EAST]" = new /vector2(14, 2), "[WEST]" = new /vector2(8, 6))
 #define RIGHT_ARM_OFFSETS	list("[NORTH]" = new /vector2(12, 12), "[SOUTH]" = new /vector2(-8, 6), "[EAST]" = new /vector2(-2, 4), "[WEST]" = new /vector2(-6, 6))
+#define TONGUE_OFFSETS	list("[NORTH]" = new /vector2(6, 16), "[SOUTH]" = new /vector2(-2, 8), "[EAST]" = new /vector2(26, 10), "[WEST]" = new /vector2(-14, 10))
 
 /datum/species/necromorph/tripod
 	name = SPECIES_NECROMORPH_TRIPOD
@@ -42,10 +43,14 @@
 	paralysis_mod = 0.3
 
 
-	inherent_verbs = list(/mob/living/carbon/human/proc/tripod_leap, /mob/living/carbon/human/proc/tripod_arm_swing,  /mob/proc/shout)
+	inherent_verbs = list(/mob/living/carbon/human/proc/tripod_leap,
+	/mob/living/carbon/human/proc/tripod_arm_swing,
+	/mob/living/carbon/human/proc/tripod_tongue_lash,
+	/mob/proc/shout)
 	modifier_verbs = list(
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/tripod_leap),
-	KEY_ALT = list(/mob/living/carbon/human/proc/tripod_arm_swing))
+	KEY_ALT = list(/mob/living/carbon/human/proc/tripod_arm_swing),
+	KEY_MIDDLE = list(/mob/living/carbon/human/proc/tripod_tongue_lash))
 
 
 	unarmed_types = list(/datum/unarmed_attack/punch/tripod)
@@ -57,6 +62,7 @@
 
 
 	has_limbs = list(
+	BP_HEAD = list("path" = /obj/item/organ/external/arm/tentacle/tripod_tongue),
 	BP_CHEST =  list("path" = /obj/item/organ/external/chest/giant),
 	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/giant),
 	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/giant)
@@ -121,19 +127,17 @@ Deals a small amount of damage to victims in a 1 tile radius around the landing 
 <h3>Damage: 20</h3><br>\
 The Tripod swings one of its huge arms around in a vast arc, hitting mobs and objects infront of it. Swing deals good knockback and has a 3-tile range, however it has a few downsides:<br>\
 -Arm swing hits around waist height, and thus will not hit mobs which are already lying on the floor<br>\
+-With such a huge arm, precise aiming is impossible. When striking humans, arm swing will hit random bodyparts, not a specified location<br>\
 -Arm swing does not have the force to break through obstacles. The attack will stop on hitting any dense object that blocks the swing.<br>\
 -Friendly fire is fully active, be careful not to hit your fellow necromorphs!"
 
-#define TRIPOD_TONGUE_DESC "<h2>Slam:</h2><br>\
-<h3>Hotkey: Alt Click</h3><br>\
-<h3>Cooldown: 3 seconds</h3><br>\
-The tripod's signature move. Slam causes the user to rear back over 1.25 seconds, and then smash down in a devastating hit. The resulting strike hits a 3x2 area of effect infront of the user.<br>\
-Mobs hit by slam will take up to 40 damage depending on distance, and will be knocked down. This damage is doubled if the victim was already lying down when hit, making it an excellent finishing move<br>\
-<br>\
-Slam deals massive damage to any objects caught in its radius, making it an excellent obstacle-clearing ability. It will easily break through doors, barricades, machinery, girders, windows, etc. With repeated uses and some patience, you can even dig your way through solid walls, creating new paths<br>\
-Slam is heavily telegraphed, and hard to land hits with. Don't count on reliably hitting humans with it if they have any space to dodge"
+#define TRIPOD_TONGUE_DESC "<h2>Tongue Lash:</h2><br>\
+<h3>Hotkey: Middle Click</h3><br>\
+<h3>Cooldown: 6 seconds</h3><br>\
+The tripod swings its tongue around quickly, slashing anyone caught in its path. Though not as powerful as an arm swing, <br>\
+the tongue strikes much more quickly, can hit downed targets, and most importantly, auto-aims at nearby victims. In addition, the tongue is precise and can hit where you aim."
 
-#define TRIPOD_DEATHKISS_DESC "<h2>Curl:</h2><br>\
+#define TRIPOD_DEATHKISS_DESC "<h2>Kiss of Death:</h2><br>\
 <h3>Hotkey: Ctrl+Shift+Click</h3><br>\
 The user curls up into a ball, attempting to shield their vulnerable parts from damage, but becoming unable to turn, move or attack. While curled up, the strength of the tripod's organic armor is massively increased (75% more!) and its coverage is increased to 100%<br>\
 This causes the tripod to be practically invincible to attacks from the front and side, however the rear is still completely undefended.<br>\
@@ -152,6 +156,14 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 	. += TRIPOD_TONGUE_DESC
 	. += "<hr>"
 	. += TRIPOD_DEATHKISS_DESC
+
+/*--------------------------------
+	Organs
+--------------------------------*/
+/obj/item/organ/external/arm/tentacle/tripod_tongue
+	organ_tag = BP_HEAD
+	icon_name = "tongue"
+	retracted = TRUE
 
 
 /*--------------------------------
@@ -180,12 +192,12 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 */
 /datum/unarmed_attack/punch/tripod
 	name = "Claw Strike"
-	desc = "A powerful punch that hits like a truck. Human-sized creatures will be sent flying and stunnned. Deals massive damage to airlocks and structures."
-	delay = 18
-	damage = 16
+	desc = "A modestly powerful punch that is cumbersome to use"
+	delay = 20
+	damage = 14
 	airlock_force_power = 3
 	airlock_force_speed = 1.5
-	structure_damage_mult = 1.25	//Slightly annoys obstacles
+	structure_damage_mult = 1.5	//Slightly annoys obstacles
 	shredding = TRUE //Better environment interactions, even if not sharp
 	edge = TRUE
 
@@ -244,6 +256,11 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 /obj/effect/effect/forceblast/tripod
 	color = "#EE0000"
 	max_length = 4
+
+
+
+
+
 
 
 
@@ -424,6 +441,83 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 	if (E)
 		E.retracted = FALSE
 		H.update_body(TRUE)
+
+
+
+/*--------------------------------
+	Tongue Lash
+--------------------------------*/
+/mob/living/carbon/human/proc/tripod_tongue_lash(var/atom/target)
+	set name = "Tongue Lash"
+	set desc = "Your bladed tongue swings in a moderate arc around you, automatically seeking nearby victims"
+	set category = "Abilities"
+
+	//First of all, lets be sure we have the tongue organ
+	var/obj/item/organ/external/arm/tentacle/tripod_tongue/E = get_organ(BP_HEAD)
+	if (!istype(E) || E.is_stump())
+		to_chat(src, SPAN_DANGER("You have no tongue to swing with!"))
+		return
+
+
+	//Alright lets find a nearby target
+	var/list/possible_targets = get_valid_target(origin = src,
+	radius = 2,
+	valid_types = list(/mob/living),
+	allied = list(src, FALSE),
+	visualnet = null,
+	require_corruption = FALSE,
+	view_limit = TRUE,
+	LOS_block = FALSE,
+	num_required = 0,
+	special_check = null)
+
+	//If we found anything we'll use it.
+	//Otherwise just aim at the clickpoint
+	if (possible_targets.len)
+		target = possible_targets[1]
+
+	//If no clickpoint and no nearby mobs, just swing at the air infront of us
+	if (!target)
+		target = src.dir
+
+	//Okay lets actually start the swing
+	.=swing_attack(swing_type = /datum/extension/swing/tripod_tongue,
+	source = src,
+	target = target,
+	angle = 120,
+	range = 2,
+	duration = 0.5 SECOND,
+	windup = 0,
+	cooldown = 6 SECONDS,
+	effect_type = /obj/effect/effect/swing/tripod_tongue,
+	damage = 18,
+	damage_flags = DAM_EDGE | DAM_SHARP,
+	stages = 4,
+	swing_direction = pick(CLOCKWISE, ANTICLOCKWISE))
+
+
+//Extension subtype
+/datum/extension/swing/tripod_tongue
+	base_type = /datum/extension/swing/tripod_tongue
+	effect_cleanup_delay = 0.4 SECONDS
+	precise = TRUE
+
+
+
+
+/datum/extension/swing/tripod_tongue/setup_effect()
+	.=..()
+	//The parent code will move the effect object to the centre of our sprite, now we will offset it farther to the appropriate shoulder joint
+	var/vector2/offset = TONGUE_OFFSETS["[user.dir]"]
+	effect.pixel_x += offset.x
+	effect.pixel_y += offset.y
+
+//Tongue effect
+/obj/effect/effect/swing/tripod_tongue
+	icon_state = "tongue"
+	default_scale = 1.5
+	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
+
 
 /datum/species/necromorph/tripod/make_scary(mob/living/carbon/human/H)
 	//H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though

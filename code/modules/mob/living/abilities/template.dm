@@ -30,8 +30,10 @@
 		src.user = user
 	src.duration = duration
 	src.cooldown = cooldown
+
+
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/start), 0, TIMER_STOPPABLE)
-	start()
+
 
 
 /datum/extension/<name>/proc/start()

@@ -28,8 +28,17 @@
 	var/cooldown = 1 SECOND
 	var/duration = 1 SECOND
 
+
+	//Authortime
+	//------------------
 	//After the attack finishes, leave the effect there for this time before deleting it
 	var/effect_cleanup_delay = 	0.75 SECONDS
+
+	var/hitsound = 'sound/weapons/slice.ogg'
+
+	//IF true, this attack hits where the user is aiming
+	//Default behaviour targets a random bodypart
+	var/precise = FALSE
 
 
 	var/obj/effect/effect/swing/effect
@@ -39,6 +48,8 @@
 	var/step_delay
 
 	var/progress
+
+
 
 
 /datum/extension/swing/New(var/atom/user, var/atom/source, var/atom/target, var/angle = 90, var/range = 3, var/duration = 1 SECOND, var/windup = 0, var/cooldown = 0,  var/effect_type, var/damage = 1, var/damage_flags = 0, var/stages = 8, var/swing_direction = CLOCKWISE)
@@ -186,9 +197,15 @@
 /datum/extension/swing/proc/hit_mob(var/mob/living/L)
 	if (L == user)
 		return FALSE
-	L.apply_damage(damage = damage, damagetype = BRUTE, def_zone = pick(BP_ALL_LIMBS), blocked = null, damage_flags = flags, used_weapon = holder)
+	L.apply_damage(damage = damage, damagetype = BRUTE, def_zone = get_target_zone(L), blocked = null, damage_flags = flags, used_weapon = holder)
+	playsound(L, hitsound, VOLUME_MID, 1)
 	return TRUE
 
+/datum/extension/swing/proc/get_target_zone(var/mob/living/target)
+	if (precise && user && user.zone_sel && user.zone_sel.selecting)
+		return user.zone_sel.selecting
+	else
+		return pick(BP_ALL_LIMBS)
 
 
 /datum/extension/swing/proc/stop()
