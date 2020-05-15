@@ -198,8 +198,6 @@ GLOBAL_DATUM_INIT(raiders, /datum/antagonist/raider, new)
 	if(!..())
 		return 0
 
-	if(player.species && player.species.get_bodytype(player) == SPECIES_VOX)
-		equip_vox(player)
 	else
 		var/new_shoes =   pick(raider_shoes)
 		var/new_uniform = pick(raider_uniforms)
@@ -284,21 +282,3 @@ GLOBAL_DATUM_INIT(raiders, /datum/antagonist/raider, new)
 				new bullet_thrower.ammo_type(ammobox)
 			player.put_in_any_hand_if_possible(ammobox)
 		return
-
-/datum/antagonist/raider/proc/equip_vox(var/mob/living/carbon/human/player)
-
-	var/uniform_type = pick(list(/obj/item/clothing/under/vox/vox_robes,/obj/item/clothing/under/vox/vox_casual))
-
-	player.equip_to_slot_or_del(new uniform_type(player), slot_w_uniform)
-	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots/vox(player), slot_shoes) // REPLACE THESE WITH CODED VOX ALTERNATIVES.
-	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/vox(player), slot_gloves) // AS ABOVE.
-	player.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/swat/vox(player), slot_wear_mask)
-	player.equip_to_slot_or_del(new /obj/item/weapon/tank/nitrogen(player), slot_back)
-	player.equip_to_slot_or_del(new /obj/item/device/flashlight(player), slot_r_store)
-
-	player.internal = locate(/obj/item/weapon/tank) in player.contents
-	if(istype(player.internal,/obj/item/weapon/tank) && player.internals)
-		player.internals.icon_state = "internal1"
-
-	return 1
-

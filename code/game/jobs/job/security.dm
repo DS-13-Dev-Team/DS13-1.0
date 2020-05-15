@@ -13,7 +13,7 @@
 	starting_credits = 4595
 
 	access = list(access_bridge, access_cseco, access_armory, access_security, access_maint_tunnels,
-					access_external_airlocks)
+					access_external_airlocks, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/security/cseco
 
 	min_skill = list(   SKILL_WEAPONS     = SKILL_EXPERT,

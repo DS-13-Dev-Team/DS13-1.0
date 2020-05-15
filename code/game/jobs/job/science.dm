@@ -13,7 +13,7 @@
 	ideal_character_age = 50
 	starting_credits = 4995
 
-	access = list(access_cscio, access_bridge, access_research, access_medical)
+	access = list(access_cscio, access_bridge, access_research, access_medical, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/science/cscio
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,

@@ -13,7 +13,7 @@
 	ideal_character_age = 30
 	starting_credits = 7620
 
-	access = list(access_dom, access_bridge, access_mining)
+	access = list(access_dom, access_bridge, access_mining, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/mining/dom
 
 	min_skill = list(   SKILL_COMPUTER	  = SKILL_BASIC,
