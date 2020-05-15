@@ -2,6 +2,11 @@
 #define LEAP_CONE_DAMAGE	10
 #define LEAP_CONE_WEAKEN	2
 #define LEAP_REDUCED_COOLDOWN	3 SECONDS
+
+//These are used to position the arm sprite during swing
+#define LEFT_ARM_OFFSETS	list("[NORTH]" = new /vector2(-4, 12), "[SOUTH]" = new /vector2(8, 8), "[EAST]" = new /vector2(14, 2), "[WEST]" = new /vector2(8, 6))
+#define RIGHT_ARM_OFFSETS	list("[NORTH]" = new /vector2(12, 12), "[SOUTH]" = new /vector2(-8, 6), "[EAST]" = new /vector2(-2, 4), "[WEST]" = new /vector2(-6, 6))
+
 /datum/species/necromorph/tripod
 	name = SPECIES_NECROMORPH_TRIPOD
 	mob_type	=	/mob/living/carbon/human/necromorph/tripod
@@ -37,9 +42,10 @@
 	paralysis_mod = 0.3
 
 
-	inherent_verbs = list(/mob/living/carbon/human/proc/tripod_leap, /mob/proc/shout)
+	inherent_verbs = list(/mob/living/carbon/human/proc/tripod_leap, /mob/living/carbon/human/proc/tripod_arm_swing,  /mob/proc/shout)
 	modifier_verbs = list(
-	KEY_CTRLALT = list(/mob/living/carbon/human/proc/tripod_leap))
+	KEY_CTRLALT = list(/mob/living/carbon/human/proc/tripod_leap),
+	KEY_ALT = list(/mob/living/carbon/human/proc/tripod_arm_swing))
 
 
 	unarmed_types = list(/datum/unarmed_attack/punch/tripod)
@@ -103,14 +109,20 @@ This speed bonus is lost if you stop moving in a straight line"
 
 #define TRIPOD_LEAP_DESC	"<h2>High Leap:</h2><br>\
 <h3>Hotkey: Ctrl+Alt+Click </h3><br>\
+<h3>Damage: 10 radial + 10 cone</h3><br>\
 <h3>Cooldown: 6 seconds</h3><br>\
 The tripod's signature ability. Leaps high into the air and briefly out of view, before landing hard at the designated spot. <br>\
 Deals a small amount of damage to victims in a 1 tile radius around the landing point, and additional damage+knockdown to a cone shaped area infront of the tripod as it lands"
 
 
-#define TRIPOD_SWING_DESC 	"<h2>High Leap:</h2><br>\
+#define TRIPOD_SWING_DESC 	"<h2>Arm Swing:</h2><br>\
 <h3>Hotkey: Ctrl+Alt+Click </h3><br>\
-<h3>Cooldown: 6 seconds</h3><br>"
+<h3>Cooldown: 3 seconds</h3><br>\
+<h3>Damage: 20</h3><br>\
+The Tripod swings one of its huge arms around in a vast arc, hitting mobs and objects infront of it. Swing deals good knockback and has a 3-tile range, however it has a few downsides:<br>\
+-Arm swing hits around waist height, and thus will not hit mobs which are already lying on the floor<br>\
+-Arm swing does not have the force to break through obstacles. The attack will stop on hitting any dense object that blocks the swing.<br>\
+-Friendly fire is fully active, be careful not to hit your fellow necromorphs!"
 
 #define TRIPOD_TONGUE_DESC "<h2>Slam:</h2><br>\
 <h3>Hotkey: Alt Click</h3><br>\
@@ -233,5 +245,195 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 	color = "#EE0000"
 	max_length = 4
 
+
+
+/*--------------------------------
+	Arm Swing
+--------------------------------*/
+/mob/living/carbon/human/proc/tripod_arm_swing(var/atom/target)
+	set name = "Arm Swing"
+	set desc = "Swings an arm in a wide radius"
+	set category = "Abilities"
+
+	world << "Targeting [target]"
+
+	if (!target)
+		target = dir
+
+	var/num_arms = 0
+	var/selected_arm
+	//Alright lets check our arm status first
+	var/obj/item/organ/external/arm/left = get_organ(BP_L_ARM)
+	var/obj/item/organ/external/arm/right = get_organ(BP_R_ARM)
+
+	if (QDELETED(left) || left.is_stump() || left.retracted)
+		left = null
+	else
+		num_arms++
+
+	if (QDELETED(right) || right.is_stump() || right.retracted)
+		right = null
+	else
+		num_arms++
+
+	if (num_arms <= 0)
+		to_chat(src, SPAN_DANGER("You have no arms to swing!"))
+		return
+
+	else if (num_arms == 1)
+		if (left)
+			selected_arm = BP_L_ARM
+		else
+			selected_arm = BP_R_ARM
+	else
+		//If we have both arms, then the user gets to choose which to swing based on their selected hand
+		if (hand)
+			selected_arm = BP_L_ARM
+		else
+			selected_arm = BP_R_ARM
+
+
+
+	var/swing_dir = CLOCKWISE
+	var/effect
+	//Alright we have finally chosen what arm to swing with, what will that affect?
+	if (selected_arm == BP_L_ARM)
+		swing_dir = CLOCKWISE
+		effect = /obj/effect/effect/swing/tripod_left
+	else
+		swing_dir = ANTICLOCKWISE
+		effect = /obj/effect/effect/swing/tripod_right
+
+	world << "Selected arm 	[selected_arm]"
+
+	//Okay lets actually start the swing
+	.=swing_attack(swing_type = /datum/extension/swing/tripod_arm,
+	source = src,
+	target = target,
+	angle = 150,
+	range = 3,
+	duration = 0.85 SECOND,
+	windup = 0.8 SECONDS,
+	cooldown = 3 SECONDS,
+	effect_type = effect,
+	damage = 20,
+	damage_flags = DAM_EDGE,
+	stages = 8,
+	swing_direction = swing_dir)
+
+
+//Swing FX
+/obj/effect/effect/swing/tripod_left
+	icon_state = "tripod_left"
+	default_scale = 1.65
+	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
+
+/obj/effect/effect/swing/tripod_right
+	icon_state = "tripod_right"
+	default_scale = 1.65
+	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
+
+
+//Extension subtype
+/datum/extension/swing/tripod_arm
+	base_type = /datum/extension/swing/tripod_arm
+	var/limb_used
+
+
+//The arm swing may be terminated early by obstacles
+/datum/extension/swing/tripod_arm/hit_turf(var/turf/T)
+	var/timepercent = current_stage / stages
+
+	//To make it feel less janky, we'll only do this bumping effect if at least 30% of the swing has happened. So no being blocked right at the start
+	if (timepercent > 0.3)
+		var/list/tocheck = list(T)
+		tocheck += T.contents
+
+		for (var/atom/A in tocheck)
+			if (ismob(A))
+				continue
+
+			//If something solid in the turf would block us, we terminate the swing
+			if (A.density)
+				if (!A.CanPass(effect))	//We use the effect object as the collision tester
+					A.shake_animation(60)
+					to_chat(user, "Your arm bounces sharply off of [A]")
+					//TODO: Sound here
+					return FALSE
+
+	.=..()
+
+
+/datum/extension/swing/tripod_arm/hit_mob(var/mob/living/L)
+	//We harmlessly swooce over lying targets
+	if (L.lying)
+		return FALSE
+	.=..()
+	if (.)
+		//If we hit someone, we'll knock them away diagonally in the direction of our swing
+		var/push_angle = 45
+		if (swing_direction == ANTICLOCKWISE)
+			push_angle *= -1
+
+		var/vector2/push_direction = target_direction.Turn(push_angle)
+		L.apply_impulse(push_direction, 200)
+
+/datum/extension/swing/tripod_arm/windup_animation()
+	var/vector2/back_offset = target_direction.Turn(180) * 16
+	animate(user, pixel_x = user.pixel_x + back_offset.x, pixel_y = user.pixel_y + back_offset.y, easing = BACK_EASING, time = windup * 0.3)
+	var/vector2/forward_offset = target_direction * 48
+	animate(pixel_x = user.pixel_x + forward_offset.x, pixel_y = user.pixel_y + forward_offset.y, easing = QUAD_EASING, time = windup * 0.7)
+	sleep(windup)
+
+	switch (swing_direction)
+		//Cache the limb used
+		if (CLOCKWISE)
+			limb_used = BP_L_ARM
+		else
+			limb_used = BP_R_ARM
+
+	var/mob/living/carbon/human/H = user
+	//We will temporarily retract the arm from the sprite
+	var/obj/item/organ/external/E = H.get_organ(limb_used)
+	if (E)
+		E.retracted = TRUE
+		H.update_body(TRUE)
+
+
+/datum/extension/swing/tripod_arm/setup_effect()
+	.=..()
+	//The parent code will move the effect object to the centre of our sprite, now we will offset it farther to the appropriate shoulder joint
+	var/vector2/offset
+	if (limb_used == BP_L_ARM)
+		offset = LEFT_ARM_OFFSETS["[user.dir]"]
+	else
+		offset = RIGHT_ARM_OFFSETS["[user.dir]"]
+	world << "Adding offset [offset.x], [offset.y]"
+
+	effect.pixel_x += offset.x
+	effect.pixel_y += offset.y
+
+/datum/extension/swing/tripod_arm/cleanup_effect()
+	.=..()
+	var/mob/living/carbon/human/H = user
+
+	//Slide back to normal position
+	animate(H, pixel_x = H.default_pixel_x, pixel_y = H.default_pixel_y, time = 5)
+	//Put the arm back now
+	var/obj/item/organ/external/E = H.get_organ(limb_used)
+	if (E)
+		E.retracted = FALSE
+		H.update_body(TRUE)
+
 /datum/species/necromorph/tripod/make_scary(mob/living/carbon/human/H)
 	//H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though
+
+
+
+#undef LEAP_SHOCKWAVE_DAMAGE
+#undef LEAP_CONE_DAMAGE
+#undef LEAP_CONE_WEAKEN
+#undef LEAP_REDUCED_COOLDOWN
+
+#undef LEFT_ARM_OFFSETS
+#undef RIGHT_ARM_OFFSETS

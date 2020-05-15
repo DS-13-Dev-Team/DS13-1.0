@@ -222,9 +222,56 @@
 
 	return (viewlist & conelist)
 
+//This hella complex proc gets a cone, but divided into several smaller cones. Returns a list of lists, each containing the tiles of the subcone
+//No overlapping is allowed, each subcone contains a unique list
+/proc/get_multistage_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle, var/stages = 5, var/clock_direction = CLOCKWISE)
+	var/subcone_angle = angle / stages
+	var/vector2/subcone_direction
+
+	//If clockwise, we rotate anticlockwise to the start, by half of the main angle minus half of the subcone angle
+	if (clock_direction == CLOCKWISE)
+		//And after this we'll add the subcone angle to eacch direction to get the next subcone centre
+		subcone_direction = direction.Turn((angle*0.5 - subcone_angle*0.5)*-1)
+
+	//If clockwise, we rotate clockwise to the end, by half of the main angle minus half of the subcone angle
+	else if (clock_direction == ANTICLOCKWISE)
+		subcone_direction = direction.Turn(angle*0.5 - subcone_angle*0.5)
+		subcone_angle *= -1	//And we invert the subcone angle, since we'll still be adding it
+
+
+	var/list/subcones = list()
+	var/list/all_tiles = list()
+	for (var/i in 1 to stages)
+		//For each stage, we'll get the subcone
+		var/list/subcone = get_cone(origin, subcone_direction, distance, abs(subcone_angle))
+		subcone -= all_tiles	//Filter out any tiles that are already in another subcone
+
+		//Don't add empty cones to lists
+		if (length(subcone) > 0)
+			all_tiles += subcone	//Then add ours to the global list
+			subcones += list(subcone)	//And add this cone to the list of all the cones
+
+		subcone_direction = subcone_direction.Turn(subcone_angle)
+
+	return subcones
 
 /proc/shortest_angle(var/delta)
 	return (delta - round(delta, 360))
 #define CLAMP(CLVALUE,CLMIN,CLMAX) ( max( (CLMIN), min((CLVALUE), (CLMAX)) ) )
 
 // Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive
+
+
+/client/verb/multistage_cone_test()
+
+
+
+	var/vector2/direction = new /vector2(rand(), rand())
+	direction = direction.Normalized()
+
+	var/list/C = get_multistage_cone(get_turf(mob), direction, 6, 120, 20, CLOCKWISE)
+
+	for (var/list/subcone in C)
+		var/newcolor = RANDOM_RGB
+		for (var/turf/T in subcone)
+			debug_mark_turf(T, 30, newcolor)

@@ -1810,6 +1810,7 @@
 #include "code\modules\mob\living\abilities\slam.dm"
 #include "code\modules\mob\living\abilities\spray.dm"
 #include "code\modules\mob\living\abilities\step_strike.dm"
+#include "code\modules\mob\living\abilities\swing.dm"
 #include "code\modules\mob\living\abilities\tripod_evasion.dm"
 #include "code\modules\mob\living\abilities\twitch_blink.dm"
 #include "code\modules\mob\living\abilities\wallrun.dm"

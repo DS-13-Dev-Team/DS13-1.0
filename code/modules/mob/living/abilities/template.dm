@@ -24,12 +24,12 @@
 
 
 
-/datum/extension/<name>/New(var<expected_type>/_user, var/_duration, var/_cooldown, var/_power)
+/datum/extension/<name>/New(var<expected_type>/user, var/duration, var/cooldown)
 	.=..()
-	user = _user
-	duration = _duration
-	cooldown = _cooldown
-	power = _power
+	if (isliving(user))
+		src.user = user
+	src.duration = duration
+	src.cooldown = cooldown
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/start), 0, TIMER_STOPPABLE)
 	start()
 

@@ -137,7 +137,7 @@ vector2
 		/* Get the angle that rotates north to point in this direction.
 			this can be fed into the Turn proc to apply to matrices and vectors
 		*/
-		//Angle()	return RotationFrom(Vector2.North)
+		Angle()	return AngleFrom(Vector2.North)
 
 
 

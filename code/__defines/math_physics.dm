@@ -33,3 +33,8 @@
 
 // Determines the exchange ratio of reagents being converted to gas and vice versa.
 #define REAGENT_GAS_EXCHANGE_FACTOR 10
+
+
+//Clock directions, used for multistage cones
+#define CLOCKWISE	1
+#define ANTICLOCKWISE	-1
