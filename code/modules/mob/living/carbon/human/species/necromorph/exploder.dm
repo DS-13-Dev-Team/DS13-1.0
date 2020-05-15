@@ -190,13 +190,13 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	spawn()
 		bioblast(epicentre = T,
 		power = 60,
-		maxrange = 4,
+		maxrange = 5,
 		falloff_factor = 0.3)
 
 	//A normal explosion
 	spawn()
 		//-1 devastation range because hull breaches are not cool
-		explosion(T, -1, 3, 5, 6)
+		explosion(T, -1, 1, 6, 7)
 
 	//Make sure the pustule is deleted if these explosions don't destroy it
 	spawn()
