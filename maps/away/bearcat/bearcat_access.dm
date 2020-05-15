@@ -36,14 +36,6 @@
 	req_one_access = null
 	req_access = list(access_bearcat)
 
-/obj/structure/closet/secure_closet/freezer/bearcat
-	req_one_access = null
-	req_access = list(access_bearcat)
-
-/obj/structure/closet/secure_closet/freezer/meat/bearcat
-	req_one_access = null
-	req_access = list(access_bearcat)
-
 /obj/machinery/vending/engineering/bearcat
 	req_one_access = null
 	req_access = list(access_bearcat)

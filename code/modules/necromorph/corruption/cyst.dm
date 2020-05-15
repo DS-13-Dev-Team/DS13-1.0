@@ -100,6 +100,10 @@
 
 	//Move the projectile out of us
 	var/obj/item/projectile/bullet/biobomb/cyst/C = payload.BB
+	payload.BB = null	//Null this so that the payload doesnt take the bullet with it
+
+
+
 	C.forceMove(get_turf(src))
 	C.launcher = src
 
@@ -157,6 +161,7 @@
 	var/exploded = FALSE
 	check_armour = "bomb"
 	step_delay = 2.5
+	muzzle_type = /obj/effect/projectile/bio/muzzle
 
 /obj/item/projectile/bullet/biobomb/is_necromorph()
 	return TRUE
@@ -177,7 +182,7 @@
 	Cyst specific subclass of biobomb
 */
 /obj/item/projectile/bullet/biobomb/cyst
-	muzzle_type = /obj/effect/projectile/bio/muzzle
+
 
 
 	var/obj/structure/corruption_node/cyst/launcher

@@ -74,8 +74,8 @@
 	precision = 20
 
 
-/obj/item/weapon/tool/pickaxe/ds_rocksaw
-	name = "rock saw"
+/obj/item/weapon/tool/pickaxe/laser
+	name = "laser pick"
 	desc = "An energised mining tool for surveying and retrieval of objects embedded in otherwise dense material. Very dangerous, will cut through flesh and bone with ease."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "ds_rocksaw0"
@@ -100,7 +100,7 @@
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
 
-/obj/item/weapon/tool/pickaxe/ds_rocksaw/update_icon()
+/obj/item/weapon/tool/pickaxe/laser/update_icon()
 	if (switched_on)
 		icon_state = "ds_rocksaw1"
 		item_state = "ds_rocksaw1"
@@ -109,12 +109,12 @@
 		item_state = "ds_rocksaw0"
 
 
-/obj/item/weapon/tool/pickaxe/ds_rocksaw/turn_on()
+/obj/item/weapon/tool/pickaxe/laser/turn_on()
 	.=..()
 	playsound(get_turf(src), 'sound/weapons/saberon.ogg', 20, 1, -2)
 
 
-/obj/item/weapon/tool/pickaxe/ds_rocksaw/turn_off()
+/obj/item/weapon/tool/pickaxe/laser/turn_off()
 	.=..()
 	playsound(get_turf(src), 'sound/weapons/saberoff.ogg', 20, 1, -2)
 

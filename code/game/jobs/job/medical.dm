@@ -17,6 +17,17 @@
 				access_surgery)
 	outfit_type = /decl/hierarchy/outfit/job/medical/smo
 
+	min_skill = list(   SKILL_ANATOMY     = SKILL_EXPERT,
+						SKILL_MEDICAL	  = SKILL_EXPERT,
+	                    SKILL_DEVICES	  = SKILL_ADEPT)
+
+	max_skill = list(   SKILL_ANATOMY	  = SKILL_MAX,
+	                    SKILL_MEDICAL     = SKILL_MAX)
+	skill_points = 25
+
+datum/job/smo/get_description_blurb()
+	return "You are the Senior Medical Officer. You are chiefly responsible for the health and well-being of all crewmembers aboard the ship. You are subordinate to the Captain and First Lieutenant."
+
 /datum/job/md
 	title = "Medical Doctor"
 	department = "Medical"
@@ -32,6 +43,17 @@
 	access = list(access_medical, access_chemistry)
 	outfit_type = /decl/hierarchy/outfit/job/medical/md
 
+	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
+						SKILL_MEDICAL	  = SKILL_ADEPT,
+	                    SKILL_DEVICES	  = SKILL_BASIC)
+
+	max_skill = list(   SKILL_ANATOMY	  = SKILL_MAX,
+	                    SKILL_MEDICAL     = SKILL_MAX)
+	skill_points = 20
+
+datum/job/md/get_description_blurb()
+	return "You are a Medical Doctor. Your job is to treat and diagnose injured crewmembers, applying the appropriate skills and supplies to heal them. You may assist a Surgeon with surgery, if you have the appropriate skills. You are subordinate to the Senior Medical Officer."
+
 /datum/job/surg
 	title = "Surgeon"
 	department = "Medical"
@@ -46,3 +68,14 @@
 
 	access = list(access_medical, access_surgery)
 	outfit_type = /decl/hierarchy/outfit/job/medical/surg
+
+	min_skill = list(   SKILL_ANATOMY     = SKILL_PROF,
+						SKILL_MEDICAL	  = SKILL_ADEPT,
+	                    SKILL_DEVICES	  = SKILL_BASIC)
+
+	max_skill = list(   SKILL_ANATOMY	  = SKILL_MAX,
+	                    SKILL_MEDICAL     = SKILL_MAX)
+	skill_points = 20
+
+datum/job/surg/get_description_blurb()
+	return "You are a Surgeon. Your job is to perform surgery on any wounded crewmembers who require it and are one of the few people given access to the surgical suites. You are subordinate to the Senior Medical Officer."

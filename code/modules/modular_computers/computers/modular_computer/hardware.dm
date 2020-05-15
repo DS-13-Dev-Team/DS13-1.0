@@ -69,6 +69,7 @@
 	if(found && user.unEquip(H, src))
 		to_chat(user, "You install \the [H] into \the [src]")
 		H.holder2 = src
+		H.installed(src)
 		update_verbs()
 
 // Uninstalls component. Found and Critical vars may be passed by parent types, if they have additional hardware.

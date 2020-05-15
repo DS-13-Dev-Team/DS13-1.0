@@ -409,8 +409,8 @@
 	src.bitesize = 6
 
 /obj/item/weapon/reagent_containers/food/snacks/carpmeat/safe
-	name = "carp fillet"
-	desc = "A fillet of carp meat. Synthesized from ancient Earth genetic archives."
+	name = "fish fillet"
+	desc = "A fillet of fish meat"
 	icon_state = "fishfillet"
 	filling_color = "#ffdefe"
 	center_of_mass = "x=17;y=13"

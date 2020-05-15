@@ -22,7 +22,7 @@
 	icon_state = "engibase"
 
 /area/aegis/colony/engineering/maintenance
-	name = "\improper Aegis Colony Maintenance - North"
+	name = "\improper Aegis Colony Power"
 
 /area/aegis/colony/hangar
 	name = "\improper Aegis Colony Hangar"

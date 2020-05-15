@@ -82,6 +82,9 @@
 	//Manually editing the control params
 	var/obj/machinery/turretid/embedded/embedded_controller
 
+	//Handles the proximity triggers
+	var/datum/extension/proximity_manager/PM
+
 /obj/machinery/turret/crescent
 	enabled = 0
 	ailock = 1
@@ -590,23 +593,22 @@ var/list/turret_icons
 	Activation and Deactivation
 */
 /obj/machinery/turret/proc/activate()
-	if (enabled)
-		return
+
 	enabled = TRUE
 
-	//Lets create a proximity tracker to detect people entering the vicinity
-	var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/machinery/turret/proc/nearby_movement, range = 10)
-	PT.register_turfs()
-	set_extension(src, /datum/extension/proximity_manager, PT)
+	if (!PM)
+		//Lets create a proximity tracker to detect people entering the vicinity
+		var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/machinery/turret/proc/nearby_movement, range = 10)
+		PT.register_turfs()
+		PM = set_extension(src, /datum/extension/proximity_manager, PT)
 
 
 /obj/machinery/turret/proc/deactivate()
-	if (!enabled)
-		return
 	enabled = FALSE
 
 	//Lets create a proximity tracker to detect people entering the vicinity
 	remove_extension(src, /datum/extension/proximity_manager)
+	PM = null
 
 
 

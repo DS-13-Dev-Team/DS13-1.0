@@ -14,6 +14,7 @@
 	total_health = 75
 	biomass = 60
 	mass = 70
+	virus_immune = 1
 
 	biomass_reclamation_time	=	7.5 MINUTES
 
