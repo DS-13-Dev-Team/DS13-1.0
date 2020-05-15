@@ -23,7 +23,7 @@
 	show_ssd = "dead" //If its not moving, it looks like a corpse
 	hunger_factor = 0 // Necros don't eat
 	taste_sensitivity = 0      // no eat
-
+	virus_immune = 1 // immune to viruses
 
 
 	death_message = ""

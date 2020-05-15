@@ -16,6 +16,7 @@
 	unarmed_types = list(/datum/unarmed_attack/claws/puker)
 	step_priority = 2
 	step_volume = 10
+	virus_immune = 1
 
 	//Acid has long since burned out its eyes, somehow the puker sees without them
 	override_organ_types = list(BP_EYES = null)

@@ -22,7 +22,7 @@
 	biomass = 400
 	mass = 250
 	biomass_reclamation_time	=	15 MINUTES
-
+	virus_immune = 1
 
 	//Collision and bulk
 	strength    = STR_VHIGH

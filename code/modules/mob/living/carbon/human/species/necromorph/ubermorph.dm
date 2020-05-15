@@ -11,6 +11,7 @@
 	biomass	=	1600	//Endgame, real expensive
 	mass = 130
 	limb_health_factor = 1	//Not as fragile as a slasher
+	virus_immune = 1
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
 	single_icon = FALSE

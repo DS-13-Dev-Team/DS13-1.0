@@ -22,7 +22,7 @@
 	icon_lying = "_lying"
 	single_icon = FALSE
 	spawner_spawnable = TRUE
-
+	virus_immune = 1
 	pixel_offset_x = -16
 
 	evasion = 20	//Harder to hit than usual
