@@ -71,6 +71,30 @@ datum/job/line_cook/get_description_blurb()
 datum/job/so/get_description_blurb()
 	return "You are the Supply Officer. Your job is to direct Cargo Serviceman and balance the requests of the rest of the crew to the ship's requisition points. You are subordinate the Captain and First Lieutenant."
 
+/datum/job/janitor
+	title = "Janitor"
+	abbreviation = "JN"
+	department_flag = CIV
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the Captain"
+	selection_color = "#2f2f7f"
+	minimal_player_age = 18
+	ideal_character_age = 21
+	starting_credits = 732
+
+	access = list(access_service, access_maint_tunnels)
+	outfit_type = /decl/hierarchy/outfit/job/service/janitor
+
+	min_skill = list(  	SKILL_HAULING     = SKILL_EXPERT)
+	max_skill = list(   SKILL_HAULING     = SKILL_MAX)
+
+	skill_points = 20
+
+datum/job/janitor/get_description_blurb()
+	return "You are a Janitor. Your job is to clean up the ship, going where you are called. You don't have a department head and are subordinate to the Captain and First Lieutenant."
+
+
 /datum/job/serviceman
 	title = "Cargo Serviceman"
 	department = "Supply"

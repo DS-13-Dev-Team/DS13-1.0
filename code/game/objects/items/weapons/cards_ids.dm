@@ -438,6 +438,13 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/line_cook
 
+/obj/item/weapon/card/id/holo/civilian/janitor
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Janitor."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/janitor
+
 /obj/item/weapon/card/id/holo/command
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Bridge Ensign."
