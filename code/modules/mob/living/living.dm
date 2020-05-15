@@ -529,7 +529,7 @@ default behaviour is:
 			M.handle_pull_damage(src)
 
 
-	step_to(pulling, old_loc)
+	step(pulling, get_dir(pulling.loc, old_loc))
 
 
 
