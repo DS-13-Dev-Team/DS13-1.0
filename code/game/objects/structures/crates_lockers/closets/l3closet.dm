@@ -64,7 +64,10 @@
 		/obj/item/clothing/suit/bio_suit/janitor,
 		/obj/item/clothing/head/bio_hood/janitor,
 		/obj/item/clothing/mask/gas/half,
-		/obj/item/weapon/tank/emergency/oxygen/engi
+		/obj/item/weapon/tank/emergency/oxygen/engi,
+		/obj/item/weapon/mop = 2,
+		/obj/item/weapon/storage/bag/trash = 2,
+		/obj/item/device/lightreplacer = 2
 	)
 
 /obj/structure/closet/l3closet/scientist

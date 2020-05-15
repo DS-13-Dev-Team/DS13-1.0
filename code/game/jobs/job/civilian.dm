@@ -28,6 +28,21 @@
 	access = list(access_service)
 	outfit_type = /decl/hierarchy/outfit/job/service/line_cook
 
+/datum/job/janitor
+	title = "Janitor"
+	abbreviation = "JN"
+	department_flag = CIV
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the Captain"
+	selection_color = "#2f2f7f"
+	minimal_player_age = 18
+	ideal_character_age = 21
+	starting_credits = 732
+
+	access = list(access_service, access_maint_tunnels)
+	outfit_type = /decl/hierarchy/outfit/job/service/janitor
+
 /datum/job/so
 	title = "Supply Officer"
 	department = "Supply"
