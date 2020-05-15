@@ -232,6 +232,7 @@ var/list/admin_verbs_rejuv = list(
 
 //verbs which can be hidden - needs work
 var/list/admin_verbs_hideable = list(
+	/client/proc/edit_admin_permissions,
 	/client/proc/allow_character_respawn,
 	/client/proc/toggle_view_range,
 	/client/proc/stealth,
