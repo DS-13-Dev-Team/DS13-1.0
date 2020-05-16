@@ -35,4 +35,5 @@ delete-after: True
 changes: 
   - rscadd: "Cargo can now order all of the dead space guns, ammunition, and ranged mining tools. Some of the guns require the ship to be on blue alert."
   - tweak: "Slightly buffed the damage of Divet and Force Gun"
+  - tweak: "Cargo passive supply point generation increased from 1 to 1.25 per 20 second interval"
   - rscdel: "Removed several defunct old guns and ammo from the cargo list."
