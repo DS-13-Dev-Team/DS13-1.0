@@ -127,6 +127,7 @@
 		to_chat(user, "This nest will now create [spawner_species.name_plural]")
 
 /obj/structure/corruption_node/nest/proc/set_spawn_species(var/datum/species/necromorph/N)
+	world << "setting species [N.type]"
 	spawner_species = N
 	biomass = initial(biomass) + N.biomass * upgrade_multipliers[upgrade_level]
 	finish_growth()	//Immediately make the first one available to spawn
@@ -137,13 +138,14 @@
 	if (total_spawns() >= max_spawns)
 		return
 
-	if (world.time > growth_end)//No current growth
+	if (!growth_started)//No current growth
 		start_growth()	//We have enough free spawns to start a new growth
 		return
 
+	//If we get here, there was already a growth ongoing
 	deltimer(growth_timer_handle)
 	growth_end = growth_started + spawner_species.biomass_reclamation_time * upgrade_multipliers[upgrade_level]
-	if (world.time > growth_end)	//We were reduced to an instant finish
+	if (world.time >= growth_end)	//We were reduced to an instant finish
 		finish_growth()
 		return
 	growth_timer_handle = addtimer(CALLBACK(src, /obj/structure/corruption_node/nest/proc/finish_growth), growth_end - world.time, TIMER_STOPPABLE)
@@ -153,17 +155,24 @@
 	if (total_spawns() >= max_spawns)
 		return
 
+	//Don't restart growing if we're already doing one
+	if (growth_started)
+		return
+
 	deltimer(growth_timer_handle)
 	growth_started = world.time
 	growth_end = world.time + spawner_species.biomass_reclamation_time * upgrade_multipliers[upgrade_level]
 	growth_timer_handle = addtimer(CALLBACK(src, /obj/structure/corruption_node/nest/proc/finish_growth), spawner_species.biomass_reclamation_time, TIMER_STOPPABLE)
 
 /obj/structure/corruption_node/nest/proc/finish_growth()
+	growth_started = FALSE	//This indicates we're not currently growing anything
+
 	if (total_spawns() >= max_spawns)
 		return	//This should never happen
 	deltimer(growth_timer_handle)
 	spawns_ready += 1
 	growth_end = world.time
+
 
 	var/message = "There "
 	if (spawns_ready == 1)
@@ -174,6 +183,7 @@
 
 	link_necromorphs_to(message, src)
 
+	//Immediately attempt to start growing another, if possible
 	start_growth()
 
 /obj/structure/corruption_node/nest/proc/total_spawns()

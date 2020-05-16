@@ -12,6 +12,7 @@
 
 /datum/species/necromorph/leaper
 	name = SPECIES_NECROMORPH_LEAPER
+	name_plural =  "Leapers"
 	mob_type	=	/mob/living/carbon/human/necromorph/leaper
 	blurb = "A long range ambusher, the leaper can leap on unsuspecting victims from afar, knock them down, and tear them apart with its bladed tail. Not good for prolonged combat though."
 	unarmed_types = list(/datum/unarmed_attack/claws) //Bite attack is a backup if blades are severed
