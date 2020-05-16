@@ -368,7 +368,7 @@ The Lurker can only fire spines while its shell is open"
 	siemens_coefficient = 0.9
 	species_restricted = FALSE
 	permeability_threshold = 0.8	//As long as health is above this proportion of max health, reagent permeability is unaffected. Below that value it increases rapidly
-	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 50, bio = 50, rad = 50)
+	armor = list(melee = 45, bullet = 45, laser = 45, energy = 45, bomb = 45, bio = 45, rad = 45)
 	icon = 'icons/mob/necromorph/lurker.dmi'
 	icon_state = "lurker_shell"
 	item_state = "lurker_shell"
