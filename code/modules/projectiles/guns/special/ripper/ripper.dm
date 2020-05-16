@@ -20,7 +20,6 @@
 		)
 
 
-
 	//Maximum distance, in pixels, that the blade is allowed to be from the gun/user.
 	var/max_range = 100
 
@@ -221,3 +220,24 @@
 		CH = L.PushClickHandler(/datum/click_handler/sustained)
 		CH.reciever = gun //Reciever is the gun that gets the fire events
 		CH.user = L //And tell it where it is
+
+
+
+/*
+	Acquisition
+*/
+/decl/hierarchy/supply_pack/mining/ripper_blades
+	name = "Sawblades"
+	contains = list(/obj/item/ammo_magazine/sawblades = 6)
+	cost = 80
+	containertype = /obj/structure/closet/crate
+	containername = "\improper sawblade crate"
+
+
+/decl/hierarchy/supply_pack/mining/ripper
+	name = "Mining Tool - RC-DS Disc Ripper"
+	contains = list(/obj/item/ammo_magazine/sawblades = 3,
+	/obj/item/weapon/gun/projectile/ripper = 1)
+	cost = 80
+	containertype = /obj/structure/closet/crate
+	containername = "\improper Disc Ripper crate"

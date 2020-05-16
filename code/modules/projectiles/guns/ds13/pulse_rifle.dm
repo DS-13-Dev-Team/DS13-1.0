@@ -30,6 +30,10 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 		list(mode_name="grenade launcher",  ammo_cost = 25, windup_time = 0.5 SECONDS, windup_sound = 'sound/weapons/guns/fire/pulse_grenade_windup.ogg', projectile_type = /obj/item/projectile/bullet/impact_grenade, fire_delay=20)
 		)
 
+
+/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty
+	magazine_type = null
+
 /*-----------------------
 	Firemode
 ------------------------*/
@@ -113,3 +117,30 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	icon_state = "muzzle_pulse_light"
 	light_max_bright = 1
 	light_color = COLOR_DEEP_SKY_BLUE
+
+
+
+
+/*
+	Acquisition
+*/
+
+/decl/hierarchy/supply_pack/security/pulse_ammo
+	name = "Ammunition - Pulse Rounds"
+	contains = list(/obj/item/ammo_magazine/pulse = 6)
+	cost = 60
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper pulse ammunition crate"
+	access = access_security
+	security_level = SUPPLY_SECURITY_ELEVATED
+
+
+/decl/hierarchy/supply_pack/security/pulse_rifle
+	name = "Weapon - Pulse Rifle"
+	contains = list(/obj/item/ammo_magazine/pulse = 3,
+	/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1)
+	cost = 60
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper pulse rifle crate"
+	access = access_security
+	security_level = SUPPLY_SECURITY_ELEVATED

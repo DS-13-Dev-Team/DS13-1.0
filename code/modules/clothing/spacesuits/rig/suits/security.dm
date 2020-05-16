@@ -34,3 +34,14 @@
 
 /obj/item/clothing/head/helmet/space/rig/security
 	name = "hood"
+
+
+
+
+/decl/hierarchy/supply_pack/security/rig
+	name = "Armor - Security rig"
+	contains = list(/obj/item/weapon/rig/security)
+	cost = 120
+	containername = "\improper Security rig crate"
+	containertype = /obj/structure/closet/crate/secure/large
+	access = access_security
