@@ -11,8 +11,8 @@
 
 /obj/structure/closet/secure_closet/guncabinet/WillContain()
 	return list(
-		/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
-		/obj/item/ammo_magazine/pulse = 3
+		/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty,
+		/obj/item/ammo_magazine/pulse = 4
 	)
 
 /obj/structure/closet/secure_closet/guncabinet/military
@@ -28,8 +28,8 @@
 
 /obj/structure/closet/secure_closet/guncabinet/military/WillContain()
 	return list(
-		/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
-		/obj/item/ammo_magazine/pulse = 6,
+		/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty,
+		/obj/item/ammo_magazine/pulse = 7,
 		/obj/item/weapon/storage/belt/holster/security,
 
 

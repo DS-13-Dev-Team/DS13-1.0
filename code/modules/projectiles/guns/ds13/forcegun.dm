@@ -29,6 +29,11 @@
 
 
 	aiming_modes = list(/datum/extension/aim_mode/heavy)
+
+
+/obj/item/weapon/gun/energy/forcegun/empty
+	cell_type = null
+
 /*
 	Firemodes
 */
@@ -38,7 +43,7 @@
 /datum/firemode/forcegun
 	var/firing_cone = 80
 	var/firing_range = 4
-	var/damage = 45
+	var/damage = 59
 	var/force	=	350
 	var/falloff_factor = 0.9
 	var/effect_type = /obj/effect/effect/forceblast
@@ -47,7 +52,7 @@
 /datum/firemode/forcegun/blast
 	firing_cone = 80
 	firing_range = 4
-	damage = 45	//Bear in mind that damage values are heavily affected by falloff. Even at pointblank range, they will never be as high as this number
+	damage = 50	//Bear in mind that damage values are heavily affected by falloff. Even at pointblank range, they will never be as high as this number
 	force	=	350
 	falloff_factor = 0.7
 
@@ -57,7 +62,7 @@
 /datum/firemode/forcegun/focus
 	firing_cone = 15
 	firing_range = 8
-	damage = 75
+	damage = 80
 	force	=	500
 	falloff_factor = 0.35
 	effect_type = /obj/effect/effect/forceblast_focus_spawner
@@ -183,3 +188,26 @@
 		overlay_state = "fb-[round(percentage, 20)]"
 	if(overlay_state)
 		overlays += image('icons/obj/ammo.dmi', overlay_state)
+
+
+
+
+
+/*
+	Acquisition
+*/
+/decl/hierarchy/supply_pack/mining/force_energy
+	name = "Power - Force Energy"
+	contains = list(/obj/item/weapon/cell/force = 4)
+	cost = 80
+	containertype = /obj/structure/closet/crate
+	containername = "\improper force energy crate"
+
+
+/decl/hierarchy/supply_pack/mining/force_gun
+	name = "Mining Tool - Graviton Accelerator"
+	contains = list(/obj/item/weapon/cell/force = 2,
+	/obj/item/weapon/gun/energy/forcegun/empty = 1)
+	cost = 80
+	containertype = /obj/structure/closet/crate
+	containername = "\improper Graviton Accelerator crate"

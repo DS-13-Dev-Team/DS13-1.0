@@ -42,6 +42,8 @@
 	var/datum/click_handler/contact/CHC
 	var/charge_projectile_type = /obj/item/projectile/beam/contact
 
+/obj/item/weapon/gun/energy/contact/empty
+	cell_type = null
 
 /*--------------------------------
 	Charge Handling
@@ -250,3 +252,24 @@
 
 	for (var/atom/movable/AM in oview(2, location))
 		AM.apply_push_impulse_from(location, 200, 0.3)
+
+
+
+/*
+	Acquisition
+*/
+/decl/hierarchy/supply_pack/mining/contact_energy
+	name = "Power - Contact Energy"
+	contains = list(/obj/item/weapon/cell/contact = 4)
+	cost = 80
+	containertype = /obj/structure/closet/crate
+	containername = "\improper contact energy crate"
+
+
+/decl/hierarchy/supply_pack/mining/contact_beam
+	name = "Mining Tool - C99 Supercollider Contact Beam"
+	contains = list(/obj/item/weapon/cell/contact = 2,
+	/obj/item/weapon/gun/energy/contact/empty = 1)
+	cost = 80
+	containertype = /obj/structure/closet/crate
+	containername = "\improper contact beam crate"
