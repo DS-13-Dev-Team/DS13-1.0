@@ -21,11 +21,12 @@
 
 //Here, do safety checks to see if everything is in order for being able to advance to the next stage. Return true/false appropriately
 /datum/execution_stage/proc/can_advance()
-
 	return TRUE
 
 
-
+//Here, do safety checks to see if its okay to continue the execution move
+/datum/execution_stage/proc/safety()
+	return TRUE
 
 //Called when we finish this stage and move to the next one
 /datum/execution_stage/proc/exit()
