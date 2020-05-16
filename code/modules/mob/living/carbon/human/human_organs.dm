@@ -229,7 +229,6 @@
 //Also handles substitution for targeting something invalid. EG, legs on a leaper
 //External only
 /mob/living/carbon/human/proc/find_target_organ(var/hit_zone)
-
 	if (species.organ_substitutions[hit_zone])
 		hit_zone = species.organ_substitutions[hit_zone]
 
@@ -247,6 +246,7 @@
 		//In the case of retracted limbs, we move upwards
 		else if (found_organ.retracted && found_organ.parent)
 			hit_zone = found_organ.parent.organ_tag
+			found_organ = null
 		else
 			return found_organ
 	return null

@@ -144,7 +144,6 @@ SUBSYSTEM_DEF(codex)
 //Called when we initialize an entry which should be assigned to a category.
 //This is part 1 of a 2 step process. We cache these entries in this temporary list before we've initialised the categories
 /datum/controller/subsystem/codex/proc/pre_register_category_entry(var/datum/codex_entry/entry)
-	world << "Pre registering entry with category [entry.type]"
 	var/list/category_entries = category_unassigned_entries[entry.category]
 	if (!category_entries)
 		category_entries = list()
@@ -157,5 +156,4 @@ SUBSYSTEM_DEF(codex)
 	if (!category_entries)
 		return
 	for (var/datum/codex_entry/entry in category_entries)
-		world << "Post registering entry"
 		category.items += entry.display_name
