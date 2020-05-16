@@ -1814,6 +1814,8 @@
 #include "code\modules\mob\living\abilities\tripod_evasion.dm"
 #include "code\modules\mob\living\abilities\twitch_blink.dm"
 #include "code\modules\mob\living\abilities\wallrun.dm"
+#include "code\modules\mob\living\abilities\execution\execution.dm"
+#include "code\modules\mob\living\abilities\execution\execution_stage.dm"
 #include "code\modules\mob\living\abilities\particles\particle.dm"
 #include "code\modules\mob\living\abilities\particles\system.dm"
 #include "code\modules\mob\living\bot\bot.dm"

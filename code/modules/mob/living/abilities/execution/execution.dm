@@ -40,10 +40,13 @@
 
 */
 
-//execution
-//Execution
-//Executing
-///atom
+//Safety check flags
+#define EXECUTION_CANCEL	-1	//The whole move has gone wrong, abort
+#define EXECUTION_RETRY		0	//Its not right yet but will probably fix itself, delay and keep trying
+#define EXECUTION_CONTINUE	1	//Its fine, keep going
+#define EXECUTION_SAFETY	{var/result = safety();\
+if (result != EXECUTION_CONTINUE)\
+	return}
 /datum/extension/execution
 	name = "Execution"
 	base_type = /datum/extension/execution
@@ -62,8 +65,20 @@
 
 	var/ongoing_timer
 
-	//The stages in the process section. This should be a list of typepaths
+	//All the stages that we will eventually execute
+	//This should be a list of typepaths
 	var/list/all_stages = list()
+
+
+	//List of execution stage datums that have been started
+	//We'll consult these for safety checks, cancelling, completing, etc
+	var/list/entered_stages = list()
+
+	//What entry in the all stages list we're currently working on
+	var/current_stage_index = 0
+
+	//The datum of the current stage
+	var/datum/execution_stage/current_stage
 
 
 /datum/extension/execution/New(var/atom/user, var/duration, var/cooldown)
@@ -73,7 +88,7 @@
 	src.duration = duration
 	src.cooldown = cooldown
 
-	//Lets compile the lists of stages
+	//Lets compile the list of stages
 	for (var/i in 1 to all_stages.len)
 		var/stagetype = all_stages[i]
 		all_stages[i] = new stagetype(src)
@@ -83,6 +98,13 @@
 
 /datum/extension/execution/proc/start()
 	started_at	=	world.time
+
+/datum/extension/execution/proc/try_advance_stage()
+	EXECUTION_SAFETY
+
+	if (current_stage && current_stage_index)
+		//If there's a current stage, ask it whether its ready to advance
+
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/stop), duration, TIMER_STOPPABLE)
 
 
