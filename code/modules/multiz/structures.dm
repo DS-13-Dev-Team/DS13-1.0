@@ -9,6 +9,8 @@
 	desc = "A ladder. You can climb it up and down."
 	icon_state = "ladder01"
 	icon = 'icons/obj/structures.dmi'
+	breakable = FALSE
+	unacidable = 1
 	density = 0
 	opacity = 0
 	anchored = 1
