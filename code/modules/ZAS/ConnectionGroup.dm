@@ -102,12 +102,12 @@ Class Procs:
 		if(M.last_airflow > world.time - vsc.airflow_delay) continue
 		if(M.airflow_speed) continue
 
-		//Check for knocking people over
-		if(ismob(M) && differential > vsc.airflow_stun_pressure)
-			if(M:status_flags & GODMODE) continue
-			M:airflow_stun()
-
 		if(M.check_airflow_movable(differential))
+			//Check for knocking people over
+			if(ismob(M) && differential > vsc.airflow_stun_pressure)
+				if(M:status_flags & GODMODE) continue
+				M:airflow_stun()
+
 			//Check for things that are in range of the midpoint turfs.
 			var/list/close_turfs = list()
 			for(var/turf/U in connecting_turfs)

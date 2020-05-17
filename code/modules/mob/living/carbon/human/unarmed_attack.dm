@@ -84,6 +84,10 @@ var/global/list/sparring_attack_cache = list()
 		if(H.stat == DEAD)
 			return
 
+		//Can't knockdown people bigger than you
+		if (H.mob_size > user.mob_size)
+			return
+
 		var/stun_chance = rand(0, 100)
 
 		if(attack_damage >= 5 && armour < 100 && !(H == user) && stun_chance <= attack_damage * 5) // 25% standard chance

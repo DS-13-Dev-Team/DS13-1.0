@@ -340,6 +340,7 @@ var/list/turret_icons
 	health = 0
 	stat |= BROKEN	//enables the BROKEN bit
 	spark_system.start()	//creates some sparks because they look cool
+	last_target_check = 0	//This will force a check on the next attempt to fire
 	update_icon()
 	atom_flags |= ATOM_FLAG_CLIMBABLE // they're now climbable
 
@@ -752,7 +753,7 @@ var/list/turret_icons
 
 //Returns false if the turret has any problems that will not go away on their own. Like being turned off/broken. In future, being out of ammo too
 /obj/machinery/turret/proc/can_ever_fire()
-	if (disabled)
+	if (disabled || stat & BROKEN)
 		return FALSE
 	return TRUE
 

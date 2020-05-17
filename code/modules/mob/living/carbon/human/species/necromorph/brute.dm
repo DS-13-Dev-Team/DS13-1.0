@@ -7,7 +7,7 @@
 	name_plural =  "Brutes"
 	blurb = "A powerful linebreaker and assault specialist, the brute can smash through almost any obstacle, and its tough frontal armor makes it perfect for assaulting entrenched positions. \n\
 	Very vulnerable to flanking attacks"
-	total_health = 400
+	total_health = 350
 	torso_damage_mult = 1 //Hitting centre mass is fine for brute
 
 	icon_template = 'icons/mob/necromorph/brute.dmi'
@@ -38,10 +38,13 @@
 	weaken_mod = 0.3
 	paralysis_mod = 0.3
 
+	//Big targets are less vulnerable to fire and explosions
+	burn_mod = 0.85
+
 	inherent_verbs = list(/atom/movable/proc/brute_charge, /atom/movable/proc/brute_slam, /atom/movable/proc/curl_verb, /mob/living/carbon/human/proc/biobomb, /mob/proc/shout)
 	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/carbon/human/proc/biobomb),
-	KEY_ALT = list(/atom/movable/proc/brute_charge),
-	KEY_CTRLALT = list(/atom/movable/proc/brute_slam),
+	KEY_CTRLALT = list(/atom/movable/proc/brute_charge),
+	KEY_ALT = list(/atom/movable/proc/brute_slam),
 	KEY_CTRLSHIFT = list(/atom/movable/proc/curl_verb))
 
 	unarmed_types = list(/datum/unarmed_attack/punch/brute)
@@ -188,16 +191,15 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 		shake_animation(50)
 
 
-/atom/movable/proc/brute_slam()
+/atom/movable/proc/brute_slam(var/atom/A)
 	set name = "Slam"
 	set category = "Abilities"
 
-	var/A = LAZYACCESS(args, 1)
-	if (!A)
-		A = get_step(src, dir)
+	var/direction = get_dir(src, A)
+	A = get_step(src, direction)
 
 
-	.=slam_attack(A, _damage = 35, _power = 1, _cooldown = 8 SECONDS)
+	.=slam_attack(A, _damage = 35, _power = 1, _windup_time = 1.65 SECONDS,  _cooldown = 7 SECONDS)
 	if (.)
 		var/mob/living/carbon/human/H = src
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_HIGH, 1, 3)

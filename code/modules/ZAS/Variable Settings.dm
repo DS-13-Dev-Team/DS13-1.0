@@ -38,6 +38,10 @@ var/global/vs_control/vsc = new
 	var/airflow_dense_pressure_NAME = "Airflow - Dense Movement Threshold %"
 	var/airflow_dense_pressure_DESC = "Percent of 1 Atm. at which items with canisters and closets will move."
 
+	var/airflow_extreme_pressure = 120
+	var/airflow_extreme_pressure_NAME = "Airflow - Extreme Movement Threshold %"
+	var/airflow_extreme_pressure_DESC = "Percent of 1 Atm. at which large mobs will move"
+
 	var/airflow_stun_pressure = 60
 	var/airflow_stun_pressure_NAME = "Airflow - Mob Stunning Threshold %"
 	var/airflow_stun_pressure_DESC = "Percent of 1 Atm. at which mobs will be stunned by airflow."

@@ -2,9 +2,13 @@
 	var/moving           = FALSE
 
 /mob/proc/SelfMove(var/direction)
-
-	if (facedir(direction) && slow_turning)
-		return TRUE
+	///Mobs with slow turning take a move to turn in place.
+	//We will attempt to turn towards the target if our movement is off cooldown
+	if (slow_turning)
+		if (CheckMoveCooldown() && facedir(direction))
+			return TRUE
+		else if (!(dir & direction))
+			return FALSE
 
 	if(DoMove(direction, src) & MOVEMENT_HANDLED)
 		return TRUE // Doesn't necessarily mean the mob physically moved
@@ -41,7 +45,7 @@
 /mob/proc/CheckMoveCooldown()
 	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
 	if(delay)
-		return delay.MayMove()
+		return (delay.MayMove(src) == MOVEMENT_PROCEED)
 
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
@@ -134,7 +138,7 @@
 		var/vert_dir = SOUTH
 		if (direct & 1)
 			vert_dir = NORTH
-		
+
 		var/hor_dir = WEST
 		if (direct & 4)
 			hor_dir = EAST

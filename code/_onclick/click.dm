@@ -103,7 +103,6 @@
 
 	click_handlers = src.GetClickHandlers()
 
-
 	while (click_handlers.Num())
 		var/datum/click_handler/CH = click_handlers.Pop()
 		if (CH)
@@ -112,7 +111,10 @@
 
 	if(stat || paralysis || stunned || weakened)
 		return
-	face_atom(A) // change direction to face what you clicked on
+
+	//Limited arcs do their facing earlier
+	if (!limited_click_arc)
+		face_atom(A) // change direction to face what you clicked on
 	if(!canClick()) // in the year 2000...
 		return
 	if(istype(loc, /obj/mecha))
@@ -185,6 +187,10 @@
 				W.afterattack(A, src, 0, params) // 0: not Adjacent
 			else
 				RangedAttack(A, params)
+
+			//Once more with the limited arc behaviour. turn towards distant tiles we click
+			if (limited_click_arc)
+				face_atom(A)
 
 			trigger_aiming(TARGET_CAN_CLICK)
 	return 1
@@ -553,6 +559,7 @@
 	//You are allowed to click yourself and things in your own turf
 	if (user.loc == target.loc)
 		return TRUE
+
 	return (round(Vector2.FromDir(user.dir).Dot(new/vector2(target.x - user.x, target.y - user.y).Normalized()),0.000001) >= round(cos(arc),0.000001))
 
 

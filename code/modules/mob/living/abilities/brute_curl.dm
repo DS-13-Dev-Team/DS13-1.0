@@ -26,7 +26,7 @@
 
 	var/status = 0
 	var/force_time	=	0				//How long are we forced to stay curled up? There should always be a minimum on this to prevent spam. It shouldn't be
-	var/forced_cooldown = 1 MINUTE		//After an automatic curl, how long before we can be forced to do it again?
+	var/forced_cooldown = 1.5 MINUTE		//After an automatic curl, how long before we can be forced to do it again?
 	var/automatic = FALSE				//Did we curl up manually or automatically
 	var/animtime = 1 SECOND //How long the animation to curl/uncurl actually takes
 
@@ -71,14 +71,15 @@
 	cached_view_range = user.view_range
 	cached_view_offset = user.view_offset
 
-	var/matrix/M = user.transform
-	M.Turn(rotation)//The brute will tilt forward, if in a side facing
-	M.Scale(0.9) //Sprite will shrink a bit
+	user.default_rotation = rotation
+	user.default_scale = 0.9
+
+
 
 
 
 	//AAAnd do the animation
-	animate(user, transform = M, pixel_x = user.pixel_x + offset_dir.x, pixel_y = user.pixel_y + offset_dir.y, time = animtime)
+	animate(user, transform = user.get_default_transform(), pixel_x = user.pixel_x + offset_dir.x, pixel_y = user.pixel_y + offset_dir.y, time = animtime)
 
 	//Reduce the user's vision
 	user.view_range -= 1
@@ -116,7 +117,9 @@
 
 /datum/extension/curl/proc/uncurl()
 	status = CURLING //We're in an animation, so set this again
-	animate(user, transform = cached_transform, pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = animtime)
+	user.default_rotation = 0
+	user.default_scale = 1
+	animate(user, transform = user.get_default_transform(), pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = animtime)
 	user.view_range = cached_view_range
 	user.view_offset = cached_view_offset
 	user.reset_view()
@@ -134,7 +137,7 @@
 
 
 /datum/extension/curl/proc/notify_forced()
-	to_chat(user, SPAN_NOTICE("You can now use Curl again to uncurl and move"))
+	uncurl()
 
 //	Triggering
 //------------------------
