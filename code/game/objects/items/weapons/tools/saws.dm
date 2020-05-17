@@ -96,9 +96,9 @@
 
 /obj/item/weapon/tool/saw/plasma/turn_on()
 	.=..()
-	flick("plasma_saw_ignite", src)
-	playsound(get_turf(src), 'sound/weapons/saberon.ogg', 20, 1, -2)
-
+	if(.)
+		flick("plasma_saw_ignite", src)
+		playsound(get_turf(src), 'sound/weapons/saberon.ogg', 20, 1, -2)
 
 /obj/item/weapon/tool/saw/plasma/turn_off()
 	.=..()

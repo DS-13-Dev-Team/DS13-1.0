@@ -59,6 +59,11 @@
 	/* Core Procs */
 *******************************/
 //Fuel and cell spawn
+/obj/item/weapon/tool/proc/consume_power(var/power_usage) // its time
+    if(!cell)
+        return FALSE
+    return cell.checked_use(power_usage)
+    
 /obj/item/weapon/tool/New()
 
 	if(!cell && suitable_cell)
@@ -116,7 +121,7 @@
 				turn_off()
 
 		if (passive_power_cost)
-			if (!cell.checked_use(passive_power_cost))
+			if(!consume_power(passive_power_cost))
 				turn_off()
 
 //Cell reload
@@ -614,6 +619,11 @@
 
 
 /obj/item/weapon/tool/proc/turn_on(mob/user)
+	if(passive_power_cost || passive_fuel_cost) //handle tool consumption
+		if(!consume_resources(1 SECOND,user))
+			visible_message(SPAN_NOTICE("\The [src] splutters, and then goes quiet."))
+			return FALSE
+	.=TRUE //assume if those checks pass its going to succeed anyway.
 	switched_on = TRUE
 	tool_qualities = switched_on_qualities
 	if (!isnull(switched_on_force))
@@ -655,7 +665,7 @@
 		timespent = 5
 
 	if(use_power_cost)
-		if (!cell.checked_use(use_power_cost*timespent))
+		if (!consume_power(use_power_cost*timespent))
 			user << SPAN_WARNING("[src] battery is dead or missing.")
 			return FALSE
 
@@ -673,6 +683,8 @@
 	//Gradual degradation
 	if (degradation)
 		unreliability += rand_between(0, degradation)
+	
+	return TRUE
 
 //Power and fuel drain, sparks spawn
 /obj/item/weapon/tool/proc/check_tool_effects(mob/living/user, var/time)
