@@ -109,8 +109,10 @@
 	var/innate_heal = 1
 	var/shock_stage
 
-	var/obj/item/grab/current_grab_type 	// What type of grab they use when they grab someone.
+
 
 	//vars for fountain of youth examine lines
 	var/became_older
 	var/became_younger
+
+

@@ -51,6 +51,8 @@
 	//The exploder has only one fused leg, but the right arm is also used to support movement
 	locomotion_limbs = list(BP_R_ARM, BP_L_LEG)
 
+	//Only one of the exploder's arms ends in a hand
+	grasping_limbs = list(BP_R_ARM)
 
 
 	species_audio = list(

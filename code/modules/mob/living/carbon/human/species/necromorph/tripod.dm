@@ -2,6 +2,7 @@
 #define LEAP_CONE_DAMAGE	10
 #define LEAP_CONE_WEAKEN	2
 #define LEAP_REDUCED_COOLDOWN	3 SECONDS
+#define TONGUE_EXTEND_TIME 5 SECONDS	//How long the tongue stays out and visible after any tongue move
 
 //These are used to position the arm sprite during swing
 #define LEFT_ARM_OFFSETS	list("[NORTH]" = new /vector2(-4, 12), "[SOUTH]" = new /vector2(8, 8), "[EAST]" = new /vector2(14, 2), "[WEST]" = new /vector2(8, 6))
@@ -69,6 +70,8 @@
 	)
 
 	locomotion_limbs = list(BP_R_ARM, BP_L_ARM)
+
+	grasping_limbs = list(BP_R_ARM, BP_L_ARM)
 
 	has_organ = list(    // which required-organ checks are conducted.
 	BP_HEART =    /obj/item/organ/internal/heart/undead,
@@ -272,7 +275,6 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 	set desc = "Swings an arm in a wide radius"
 	set category = "Abilities"
 
-	world << "Targeting [target]"
 
 	if (!target)
 		target = dir
@@ -321,7 +323,6 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 		swing_dir = ANTICLOCKWISE
 		effect = /obj/effect/effect/swing/tripod_right
 
-	world << "Selected arm 	[selected_arm]"
 
 	//Okay lets actually start the swing
 	.=swing_attack(swing_type = /datum/extension/swing/tripod_arm,
@@ -425,7 +426,6 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 		offset = LEFT_ARM_OFFSETS["[user.dir]"]
 	else
 		offset = RIGHT_ARM_OFFSETS["[user.dir]"]
-	world << "Adding offset [offset.x], [offset.y]"
 
 	effect.pixel_x += offset.x
 	effect.pixel_y += offset.y
@@ -512,11 +512,20 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 	effect.pixel_x += offset.x
 	effect.pixel_y += offset.y
 
+/datum/extension/swing/tripod_tongue/cleanup_effect()
+	.=..()
+	//As the tongue swing ends, the tongue is extended as a targetable organ for a while
+	var/obj/item/organ/external/arm/tentacle/tripod_tongue/E = user.get_organ(BP_HEAD)
+	if (!istype(E) || E.is_stump())
+		return
+	E.extend_for(TONGUE_EXTEND_TIME)
+
 //Tongue effect
 /obj/effect/effect/swing/tripod_tongue
 	icon_state = "tongue"
 	default_scale = 1.5
 	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
+
 
 
 /datum/species/necromorph/tripod/make_scary(mob/living/carbon/human/H)
@@ -528,6 +537,8 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 #undef LEAP_CONE_DAMAGE
 #undef LEAP_CONE_WEAKEN
 #undef LEAP_REDUCED_COOLDOWN
+#undef TONGUE_EXTEND_TIME
 
 #undef LEFT_ARM_OFFSETS
 #undef RIGHT_ARM_OFFSETS
+#undef TONGUE_OFFSETS

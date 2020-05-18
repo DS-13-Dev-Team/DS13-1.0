@@ -19,7 +19,7 @@
 	var/major_vessel = TRUE	//If true, we can fill this mob from the necroqueue
 	var/spawner_spawnable = FALSE	//If true, a nest can be upgraded to autospawn this unit
 
-	strength    = STR_HIGH
+	strength    = STR_MEDIUM
 	show_ssd = "dead" //If its not moving, it looks like a corpse
 	hunger_factor = 0 // Necros don't eat
 	taste_sensitivity = 0      // no eat
@@ -142,6 +142,11 @@
 	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple)
 	)
 
+	//Necromorphs can't grab people or pick things up unless otherwise noted
+	grasping_limbs = list()
+
+	organ_substitutions = list(BP_L_HAND = BP_L_ARM,
+	BP_R_HAND = BP_R_ARM)
 
 	//HUD Handling
 	hud_type = /datum/hud_data/necromorph

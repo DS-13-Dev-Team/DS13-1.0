@@ -22,6 +22,9 @@
 	override_organ_types = list(BP_EYES = null)
 	vision_organ = null
 
+	//The puker has functional arms to grapple with
+	grasping_limbs = list(BP_R_ARM, BP_L_ARM)
+
 	mob_type = /mob/living/carbon/human/necromorph/puker
 
 	inherent_verbs = list(/mob/living/proc/puker_snapshot, /mob/living/proc/puker_longshot, /mob/living/carbon/human/proc/puker_vomit, /mob/proc/shout, /mob/proc/shout_long)

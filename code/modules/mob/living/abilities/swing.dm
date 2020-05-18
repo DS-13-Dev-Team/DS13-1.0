@@ -59,9 +59,13 @@
 
 	//Target could be an atom to aim at, or a direction to swing in
 	if (isatom(target))
-		target_direction = Vector2.DirectionBetween(holder, target)
-		if (src.user)
-			src.user.face_atom(target)
+		if ((get_turf(source) == get_turf(target))
+			//If source and target are on the same turf, we cant aim at the target
+			target_direction = Vector2.FromDir(user.dir)
+		else
+			target_direction = Vector2.DirectionBetween(holder, target)
+			if (src.user)
+				src.user.face_atom(target)
 	else
 		target_direction = Vector2.FromDir(target)
 
@@ -159,14 +163,11 @@
 	//Get the direction it started at
 	var/vector2/starting_direction = get_effect_starting_direction()
 
-	world <<"Interrupting to start angle [starting_direction.Angle()]"
 
 	//Figure out how far it should be rotated, and do so
 	var/turn_angle = angle * 1.1 * swing_direction * timepercent
-	world << "Turning by [turn_angle], time is [timepercent]"
 	starting_direction = starting_direction.Turn(turn_angle*0.8)	//We'll do 80% of this instantly, and animate the last 20%
 
-	world <<"Interrupting to final angle [starting_direction.Angle()]"
 
 	//Setup the transform
 	var/matrix/M = starting_direction.Rotation()
@@ -257,7 +258,6 @@
 /atom/proc/swing_attack(var/swing_type = /datum/extension/swing, var/atom/source, var/atom/target, var/angle = 90, var/range = 3, var/duration = 1 SECOND, var/windup = 0, var/cooldown = 0,  var/effect_type, var/damage = 1, var/damage_flags = 0, var/stages = 8, var/swing_direction = CLOCKWISE)
 	if (!can_swing(swing_type))
 		return FALSE
-	world << "Can swing, doing it!"
 
 	set_extension(src, swing_type, source, target, angle, range, duration, windup, cooldown, effect_type, damage, damage_flags, stages, swing_direction)
 	return TRUE

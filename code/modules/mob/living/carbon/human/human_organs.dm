@@ -1,3 +1,25 @@
+
+
+/mob/living/carbon/human/proc/has_organ(name)
+	var/obj/item/organ/external/O = organs_by_name[name]
+	return (O && !O.is_stump())
+
+
+/mob/living/carbon/human/proc/has_organ_or_replacement(var/organ_tag)
+	if (organ_tag in species.organ_substitutions)
+		organ_tag = species.organ_substitutions[organ_tag]
+
+	return has_organ(organ_tag)
+
+
+/mob/living/carbon/human/proc/get_active_grasping_limb()
+	var/numtocheck = 1 + hand //This feels hacky
+
+	var/obj/item/organ/external/E = get_organ(species.grasping_limbs[min(species.grasping_limbs.len, numtocheck)])
+	if(!E || E.retracted || E.is_stump())
+		return null
+	return E
+
 /mob/living/carbon/human/proc/update_eyes()
 	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[species.vision_organ ? species.vision_organ : BP_EYES]
 	if(eyes)
@@ -121,20 +143,16 @@
 
 	// You should not be able to pick anything up, but stranger things have happened.
 	if(l_hand)
-		for(var/limb_tag in list(BP_L_HAND, BP_L_ARM))
-			var/obj/item/organ/external/E = get_organ(limb_tag)
-			if(!E)
-				visible_message("<span class='danger'>Lacking a functioning left hand, \the [src] drops \the [l_hand].</span>")
-				drop_from_inventory(l_hand)
-				break
+		var/obj/item/organ/external/E = get_organ(species.grasping_limbs[min(species.grasping_limbs.len, 2)])
+		if(!E || E.retracted || E.is_stump())
+			visible_message("<span class='danger'>Lacking a functioning left hand, \the [src] drops \the [l_hand].</span>")
+			drop_from_inventory(l_hand)
 
 	if(r_hand)
-		for(var/limb_tag in list(BP_R_HAND, BP_R_ARM))
-			var/obj/item/organ/external/E = get_organ(limb_tag)
-			if(!E)
-				visible_message("<span class='danger'>Lacking a functioning right hand, \the [src] drops \the [r_hand].</span>")
-				drop_from_inventory(r_hand)
-				break
+		var/obj/item/organ/external/E = get_organ(species.grasping_limbs[min(species.grasping_limbs.len, 1)])
+		if(!E || E.retracted || E.is_stump())
+			visible_message("<span class='danger'>Lacking a functioning right hand, \the [src] drops \the [r_hand].</span>")
+			drop_from_inventory(r_hand)
 
 	// Check again...
 	if(!l_hand && !r_hand)

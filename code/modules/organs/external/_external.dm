@@ -21,7 +21,11 @@
 	var/last_dam = -1                  // used in healing/processing calculations.
 	var/pain = 0                       // How much the limb hurts.
 	var/pain_disability_threshold      // Point at which a limb becomes unusable due to pain.
+
+
+	//Retraction handling
 	var/retracted	=	FALSE			//	Is this limb retracted into its parent?  If true, the limb is not rendered and all hits are passed to parent
+	var/retract_timer					//	A timer handle used for temporary retractions or extensions
 
 	// A bitfield for a collection of limb behavior flags.
 	var/limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_BREAK
@@ -1519,3 +1523,32 @@ obj/item/organ/external/proc/remove_clamps()
 
 /obj/item/organ/external/proc/has_genitals()
 	return !BP_IS_ROBOTIC(src) && species && species.sexybits_location == organ_tag
+
+
+
+/obj/item/organ/external/proc/extend(var/update = TRUE)
+	if (!retracted)
+		return
+	retracted = FALSE
+	if (update && owner)
+		owner.update_body(TRUE)
+
+
+/obj/item/organ/external/proc/retract(var/update = TRUE)
+	if (retracted)
+		return
+	retracted = TRUE
+	if (update && owner)
+		owner.update_body(TRUE)
+
+/obj/item/organ/external/proc/extend_for(var/time)
+	deltimer(retract_timer)
+	extend()
+
+	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/retract), time, TIMER_STOPPABLE)
+
+/obj/item/organ/external/proc/retract_for(var/time)
+	deltimer(retract_timer)
+	retract()
+
+	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/extend), time, TIMER_STOPPABLE)

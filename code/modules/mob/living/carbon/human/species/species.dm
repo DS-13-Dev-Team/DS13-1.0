@@ -193,7 +193,7 @@
 
 	//Interaction
 	var/limited_click_arc = 0	  //If nonzero, the mob is limited to clicking on things in X degrees arc infront of it. Best combined with slow turning. Recommended values, 45 or 90
-
+	var/list/grasping_limbs = list(BP_R_HAND, BP_L_HAND)	//What limbs does this mob use for interacting with objects?
 
 	//Vision
 	var/view_offset = 0			  //How far forward the mob's view is offset, in pixels.

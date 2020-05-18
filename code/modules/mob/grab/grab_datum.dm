@@ -274,7 +274,7 @@
 		to_chat(G.assailant, "<span class='warning'>You can't resist in your current state!</span>")
 	var/skill_mod = Clamp(affecting.get_skill_difference(SKILL_COMBAT, assailant), -1, 1)
 	var/break_strength = breakability + size_difference(affecting, assailant) + skill_mod
-
+	break_strength -= mob_strength_difference(assailant, affecting)
 	if(affecting.incapacitated(INCAPACITATION_ALL))
 		break_strength--
 	if(affecting.confused)

@@ -47,9 +47,9 @@ This saves us from having to call add_fingerprint() any time something is put in
 	return ..()
 
 /mob/living/carbon/human/put_in_l_hand(var/obj/item/W)
-	if(!..() || l_hand)
+	if(!..() || l_hand || !LAZYLEN(species.grasping_limbs))
 		return 0
-	var/obj/item/organ/external/hand = organs_by_name["l_hand"]
+	var/obj/item/organ/external/hand = get_organ(species.grasping_limbs[min(species.grasping_limbs.len, 2)])//
 	if(!hand || !hand.is_usable())
 		return 0
 	equip_to_slot(W,slot_l_hand)
@@ -57,9 +57,9 @@ This saves us from having to call add_fingerprint() any time something is put in
 	return 1
 
 /mob/living/carbon/human/put_in_r_hand(var/obj/item/W)
-	if(!..() || r_hand)
+	if(!..() || l_hand || !LAZYLEN(species.grasping_limbs))
 		return 0
-	var/obj/item/organ/external/hand = organs_by_name["r_hand"]
+	var/obj/item/organ/external/hand = get_organ(species.grasping_limbs[min(species.grasping_limbs.len, 1)])
 	if(!hand || !hand.is_usable())
 		return 0
 
@@ -67,51 +67,48 @@ This saves us from having to call add_fingerprint() any time something is put in
 	W.add_fingerprint(src)
 	return 1
 
-/mob/living/carbon/human/proc/has_organ(name)
-	var/obj/item/organ/external/O = organs_by_name[name]
-	return (O && !O.is_stump())
 
 /mob/living/carbon/human/proc/has_organ_for_slot(slot)
 	switch(slot)
 		if(slot_back)
-			return has_organ(BP_CHEST)
+			return has_organ_or_replacement(BP_CHEST)
 		if(slot_wear_mask)
-			return has_organ(BP_HEAD)
+			return has_organ_or_replacement(BP_HEAD)
 		if(slot_handcuffed)
-			return has_organ(BP_L_HAND) && has_organ(BP_R_HAND)
+			return has_organ_or_replacement(BP_L_HAND) && has_organ_or_replacement(BP_R_HAND)
 		if(slot_legcuffed)
-			return has_organ(BP_L_FOOT) && has_organ(BP_R_FOOT)
+			return has_organ_or_replacement(BP_L_FOOT) && has_organ_or_replacement(BP_R_FOOT)
 		if(slot_l_hand)
-			return has_organ(BP_L_HAND)
+			return has_organ_or_replacement(BP_L_HAND)
 		if(slot_r_hand)
-			return has_organ(BP_R_HAND)
+			return has_organ_or_replacement(BP_R_HAND)
 		if(slot_belt)
-			return has_organ(BP_CHEST)
+			return has_organ_or_replacement(BP_CHEST)
 		if(slot_wear_id)
 			// the only relevant check for this is the uniform check
 			return 1
 		if(slot_l_ear)
-			return has_organ(BP_HEAD)
+			return has_organ_or_replacement(BP_HEAD)
 		if(slot_r_ear)
-			return has_organ(BP_HEAD)
+			return has_organ_or_replacement(BP_HEAD)
 		if(slot_glasses)
-			return has_organ(BP_HEAD)
+			return has_organ_or_replacement(BP_HEAD)
 		if(slot_gloves)
-			return has_organ(BP_L_HAND) || has_organ(BP_R_HAND)
+			return has_organ_or_replacement(BP_L_HAND) || has_organ_or_replacement(BP_R_HAND)
 		if(slot_head)
-			return has_organ(BP_HEAD)
+			return has_organ_or_replacement(BP_HEAD)
 		if(slot_shoes)
-			return has_organ(BP_L_FOOT) || has_organ(BP_R_FOOT)
+			return has_organ_or_replacement(BP_L_FOOT) || has_organ_or_replacement(BP_R_FOOT)
 		if(slot_wear_suit)
-			return has_organ(BP_CHEST)
+			return has_organ_or_replacement(BP_CHEST)
 		if(slot_w_uniform)
-			return has_organ(BP_CHEST)
+			return has_organ_or_replacement(BP_CHEST)
 		if(slot_l_store)
-			return has_organ(BP_CHEST)
+			return has_organ_or_replacement(BP_CHEST)
 		if(slot_r_store)
-			return has_organ(BP_CHEST)
+			return has_organ_or_replacement(BP_CHEST)
 		if(slot_s_store)
-			return has_organ(BP_CHEST)
+			return has_organ_or_replacement(BP_CHEST)
 		if(slot_in_backpack)
 			return 1
 		if(slot_tie)

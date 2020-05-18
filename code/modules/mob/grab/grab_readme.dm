@@ -21,10 +21,30 @@ get their general behaviours from their parent /datum/grab/normal.
 
 
 
+Codepath:
+	When a human clicks another human in grab intent, it calls the grabber's species.attempt_grab. found in species_grab.dm
+		This takes grabber, target, and a tag for a type of grab to make, the type is usually left null though
+		this calls /mob/living/carbon/human/proc/make_grab()
+
+	make_grab is found in grab_create.dm
+	This long function does a ton of checks
+		if a tag is passed, it grabs the appropriate grab type from a global list and creates a new instance of it.
+		If no tag, then it spawns an instance of the attacker's current_grab_type var. This var is set during set_species at human spawning
+
+
+	Either way, a grab object is created in the grabber, targeting the victim.
+	The new grab sets its name, target organ, etc. but doesn't do much else on its own
+
+	Now the safety checks. If any of these three return false, the grab fails and is qdel'd
+	-----------------
+	Next up, we run /obj/item/grab/proc/pre_check on the new grab.
+	This checks that the target is valid and we have a free hand.
+
+	Next, we run can_grab, This checks that the victim is the correct type, that neither attacker nor victim is anchored
+	It checks if the assailant is adjacent to the victim (Possible future todo: Make this a less specific check to see if they're in reach, accounting for longer arms)
+	Checks if the assailaint can pull the victim
 
 
 
-
-
-
+	----
 */
