@@ -47,11 +47,13 @@
 	inherent_verbs = list(/mob/living/carbon/human/proc/tripod_leap,
 	/mob/living/carbon/human/proc/tripod_arm_swing,
 	/mob/living/carbon/human/proc/tripod_tongue_lash,
+	/mob/living/carbon/human/proc/tripod_kiss,
 	/mob/proc/shout)
 	modifier_verbs = list(
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/tripod_leap),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tripod_arm_swing),
-	KEY_MIDDLE = list(/mob/living/carbon/human/proc/tripod_tongue_lash))
+	KEY_MIDDLE = list(/mob/living/carbon/human/proc/tripod_tongue_lash,
+	KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/tripod_kiss)))
 
 
 	unarmed_types = list(/datum/unarmed_attack/punch/tripod)
@@ -140,11 +142,9 @@ The Tripod swings one of its huge arms around in a vast arc, hitting mobs and ob
 The tripod swings its tongue around quickly, slashing anyone caught in its path. Though not as powerful as an arm swing, <br>\
 the tongue strikes much more quickly, can hit downed targets, and most importantly, auto-aims at nearby victims. In addition, the tongue is precise and can hit where you aim."
 
-#define TRIPOD_DEATHKISS_DESC "<h2>Kiss of Death:</h2><br>\
+#define TRIPOD_DEATHKISS_DESC "<h2>Execution: Kiss of Death:</h2><br>\
 <h3>Hotkey: Ctrl+Shift+Click</h3><br>\
-The user curls up into a ball, attempting to shield their vulnerable parts from damage, but becoming unable to turn, move or attack. While curled up, the strength of the tripod's organic armor is massively increased (75% more!) and its coverage is increased to 100%<br>\
-This causes the tripod to be practically invincible to attacks from the front and side, however the rear is still completely undefended.<br>\
-Tripod will be forced into a reflexive curl under certain circumstances, but it can also be used manually. With the right timing, you can tank an entire firing squad while they waste ammo and deal no damage to you, leaving them vulnerable for your allies to attack from another angle."
+An elaborate finishing move performed on a downed victim. The tripod forces its tongue down the victim's throat, tearing their head off from inside, and ripping their body in two."
 
 /datum/species/necromorph/tripod/get_ability_descriptions()
 	.= ""
@@ -444,6 +444,11 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 
 
 
+
+
+
+
+
 /*--------------------------------
 	Tongue Lash
 --------------------------------*/
@@ -528,8 +533,260 @@ Tripod will be forced into a reflexive curl under certain circumstances, but it 
 
 
 
+
+
+
+
+
+
+
+/*--------------------------------
+	The Kiss of Death
+--------------------------------*/
+
+
+/*
+	The tripod's execution move.
+		-Pins the target down with an impaling claw
+		-Screams
+		-Forces its huge tongue down the victim's throat (muting them at this point)
+		-Pulls the tongue out rapidly, tearing the victim's head off (finisher stage)
+		-Tear the victim in half at the waist (post finisher)
+
+	Requires the target to be lying down in order to start
+	Requires us to have the tongue and at least one arm intact
+*/
+/mob/living/carbon/human/proc/tripod_kiss(var/mob/living/carbon/human/target)
+	set name = "Kiss of Death"
+	set desc = "An elaborate multistage execution that rewards extra biomass on success"
+	set category = "Abilities"
+
+	if (!istype(target) || target.stat == DEAD || !target.lying)
+		target = null
+		var/list/possible_targets = get_valid_target(origin = src,
+		radius = 1,
+		valid_types = list(/mob/living/carbon/human),
+		allied = list(src, FALSE),
+		visualnet = null,
+		require_corruption = FALSE,
+		view_limit = TRUE,
+		LOS_block = FALSE,
+		num_required = 0,
+		special_check = null)
+
+		for (var/mob/living/carbon/human/H in possible_targets)
+			if (H.stat == DEAD && H.lying)
+				target = H
+				break
+
+		if (!target)
+			return
+
+	perform_execution(/datum/extension/execution/tripod_kiss, target)
+
+
+
+
+
+
+/datum/extension/execution/tripod_kiss
+	name = "Kiss of Death"
+
+	all_stages = list(/datum/execution_stage/tripod_claw_pin,
+	/datum/execution_stage/tripod_scream,
+	/datum/execution_stage/tripod_tongue_force,
+	/datum/execution_stage/finisher/tripod_tongue_pull,
+	/datum/execution_stage/tripod_bisect)
+
+
+	vision_mod = -6
+
+
+
+
+
+/datum/extension/execution/tripod_kiss/can_start()
+	//Lets check that we have what we need
+
+	//The victim must be lying on the floor
+	if (!victim.lying)
+		return FALSE
+
+	//We need our tongue still attached
+	var/obj/item/organ/external/tongue = user.get_organ(BP_HEAD)
+	if (!LAZYLIMB(tongue))
+		return FALSE
+
+	//We require at least one arm intact
+	var/obj/item/organ/external/arm/left = user.get_organ(BP_L_ARM)
+	var/obj/item/organ/external/arm/right = user.get_organ(BP_R_ARM)
+	if (!LAZYLIMB(left) && !LAZYLIMB(right))
+		return FALSE
+
+	.=..()
+
+/datum/extension/execution/tripod_kiss/acquire_target()
+
+	.=..()
+	if (.)
+		//We must face sideways to perform this move.
+		if (victim.x > user.x)
+			user.facedir(EAST)
+		else
+			user.facedir(WEST)
+
+		//We extend our tongue indefinitely
+		var/obj/item/organ/external/arm/tentacle/tripod_tongue/E = user.get_organ(BP_HEAD)
+		if (!istype(E) || E.is_stump())
+			return
+		E.extend()
+
+
+/datum/extension/execution/tripod_kiss/stop()
+	.=..()
+	//Once we're done, we'll retract the tongue after some time
+	var/obj/item/organ/external/arm/tentacle/tripod_tongue/E = user.get_organ(BP_HEAD)
+	if (!istype(E) || E.is_stump())
+		return
+	//We call extend_for even though its already extended, this will set a timer to retract it
+	E.extend_for(TONGUE_EXTEND_TIME)
+
+
+
+
+
+//Claw pin: Deals some heavy damage and stuns the victim
+//----------------------------------------------------
+/datum/execution_stage/tripod_claw_pin
+	duration = 2.5 SECOND
+
+	//Rises up into the air then comes down upon the victim fast
+/datum/execution_stage/tripod_claw_pin/enter()
+	animate(host.user, pixel_y = host.user.pixel_y + 16, time = duration * 0.7)
+	animate(pixel_y = host.user.pixel_y - 18, time = duration * 0.3, easing = BACK_EASING)
+	spawn(duration*0.9)
+
+		//After a delay we must redo safety checks
+		if (host.safety_check() == EXECUTION_CONTINUE)
+			//Okay lets hit 'em
+			host.victim.apply_damage(25, BRUTE, BP_GROIN, 0, DAM_SHARP, host.user)
+			host.victim.Stun(8)
+			host.victim.Weaken(8)	//Lets make sure they stay down
+			host.user.visible_message(SPAN_EXECUTION("[host.user] impales [host.victim] through the groin with a vast claw, pinning them to the floor!"))
+			playsound(host.victim, 'sound/weapons/slice.ogg', VOLUME_MID, 1)
+
+
+/datum/execution_stage/tripod_claw_pin/interrupt()
+
+	host.victim.stunned = 0
+	host.victim.weakened = 0
+
+
+
+
+
+//Scream: Just calls shout_long, no stun to self
+//----------------------------------------------------
+/datum/execution_stage/tripod_scream
+	duration = 2 SECOND
+
+/datum/execution_stage/tripod_scream/enter()
+	host.user.shout_long(FALSE)
+
+
+
+
+
+//Tongue Force: Slowly forces the tongue into the victim's mouth
+//Animation makes the user go down and tilt forward
+//----------------------------------------------------
+/datum/execution_stage/tripod_tongue_force
+	duration = 5 SECOND
+
+/datum/execution_stage/tripod_tongue_force/enter()
+	//We will gradually tilt forward
+	var/angle = 30
+	if (host.user.dir & WEST)
+		angle *= -1
+	animate(host.user, pixel_y = host.user.pixel_y - 16, transform = turn(host.user.get_default_transform(), angle), time = duration)
+
+	//You can't speak with a massive sword-like tongue down your throat
+	host.victim.silent += 10
+
+	host.user.visible_message(SPAN_EXECUTION("[host.user] starts forcing its tongue down [host.victim]'s throat!"))
+
+
+
+/datum/execution_stage/tripod_tongue_force/interrupt()
+
+	host.victim.silent =0
+
+
+
+
+//Tongue Pull: Rips the tongue out sharply, victim's head is torn off
+//Animation makes the user go down and tilt forward
+//----------------------------------------------------
+/datum/execution_stage/finisher/tripod_tongue_pull
+	duration = 2 SECOND
+
+/datum/execution_stage/finisher/tripod_tongue_pull/enter()
+	var/angle = -55
+	if (host.user.dir & WEST)
+		angle *= -1
+
+	//Swing back and up like a shampoo advert
+	animate(host.user, pixel_y = host.user.pixel_y + 24, transform = turn(host.user.get_default_transform(), angle), time = 12, easing = BACK_EASING)
+
+	spawn(4)
+		var/obj/item/organ/external/head = host.victim.get_organ(BP_HEAD)
+		if (istype(head))
+			head.droplimb()
+			host.user.visible_message(SPAN_EXECUTION("[host.user] whips back, violent tearing [host.victim]'s head off!"))
+
+
+
+
+	.=..()
+
+
+
+
+//Tongue Pull: Rips the tongue out sharply, victim's head is torn off
+//Animation makes the user go down and tilt forward
+//----------------------------------------------------
+/datum/execution_stage/tripod_bisect
+	duration = 5 SECOND
+
+/datum/execution_stage/tripod_bisect/enter()
+	var/x_offset = -48
+	var/angle = 30
+	if (host.user.dir & WEST)
+		angle *= -1
+		x_offset *= -1
+
+	var/slamtime = 8
+	//Slam down one last time
+	animate(host.user, pixel_y = host.user.default_pixel_y - 16, transform = turn(host.user.get_default_transform(), angle), time = slamtime, easing = BACK_EASING)
+	//Pause briefly
+	animate(time = 6)
+	//And then pull back to tear off the lower body
+	animate(pixel_x = host.user.pixel_x + x_offset, time = 10, easing = CIRCULAR_EASING)
+
+	spawn(slamtime)
+		if (host.safety_check() == EXECUTION_CONTINUE)
+			var/obj/item/organ/external/groin = host.victim.get_organ(BP_GROIN)
+			if (istype(groin))
+				groin.droplimb()
+				host.user.visible_message(SPAN_EXECUTION("[host.user] drags its massive claw backwards, brutally tearing [host.victim] in half!"))
+
 /datum/species/necromorph/tripod/make_scary(mob/living/carbon/human/H)
 	//H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though
+
+
+
+
+
 
 
 

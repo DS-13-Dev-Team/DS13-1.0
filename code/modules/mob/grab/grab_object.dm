@@ -250,3 +250,15 @@
 /obj/item/grab/proc/resolve_openhand_attack()
 		return current_grab.resolve_openhand_attack(src)
 
+
+
+
+/obj/item/grab/proc/safety_check()
+	.=TRUE
+	if (QDELETED(src) || QDELETED(assailant) || QDELETED(affecting))
+		.=FALSE
+	//Future todo: Convert adjacent checks into reach checks
+	else if (!assailant.Adjacent(affecting))
+		.=FALSE
+
+	//TODO: Delete self if return value is false?

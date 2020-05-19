@@ -59,7 +59,7 @@
 
 	//Target could be an atom to aim at, or a direction to swing in
 	if (isatom(target))
-		if ((get_turf(source) == get_turf(target))
+		if ((get_turf(source) == get_turf(target)))
 			//If source and target are on the same turf, we cant aim at the target
 			target_direction = Vector2.FromDir(user.dir)
 		else

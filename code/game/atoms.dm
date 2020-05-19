@@ -599,9 +599,3 @@ its easier to just keep the beam vertical.
 /atom/proc/get_move_speed_factor()
 	return 1
 
-//Returns a transform with all vars set to their default
-/atom/proc/get_default_transform()
-	var/matrix/M = matrix()
-	M.Scale(default_scale)
-	M.Turn(default_rotation)
-	return M

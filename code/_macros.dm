@@ -167,6 +167,8 @@
 // Null-safe L.Cut()
 #define LAZYCLEARLIST(L) if(L) L.Cut()
 
+#define LAZYLIMB(L) (L ? L.is_usable() : FALSE)
+
 #define	IS_EMPTY(L)	!(L?.len)
 
 //Sets the value of a key in an assoc list
@@ -200,6 +202,9 @@
 #define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
 
 #define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+
+#define SPAN_EXECUTION(X) "<span class='execution'>[X]</span>"
+
 
 //Makes span tags easier
 #define span(class, text) ("<span class='[class]'>[text]</span>")

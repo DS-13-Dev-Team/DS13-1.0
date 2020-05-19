@@ -1,5 +1,5 @@
 //Simple ability that makes a loud screaming noise, causes screenshake in everyone nearby.
-/mob/proc/shout()
+/mob/proc/shout(var/do_stun = TRUE)
 	set name = "Shout"
 	set category = "Abilities"
 	if (incapacitated(INCAPACITATION_KNOCKOUT))
@@ -7,7 +7,8 @@
 
 	if (check_audio_cooldown(SOUND_SHOUT))
 		if (play_species_audio(src, SOUND_SHOUT, VOLUME_HIGH, 1, 2))
-			src.Stun(1)
+			if (do_stun)
+				src.Stun(1)
 			src.shake_animation(40)
 			set_audio_cooldown(SOUND_SHOUT, 8 SECONDS)
 			new /obj/effect/effect/expanding_circle(loc, 2, 2 SECOND)	//Visual effect
@@ -20,7 +21,7 @@
 
 
 //Simple ability that makes a louder screaming noise, causes more screenshake in everyone nearby.
-/mob/proc/shout_long()
+/mob/proc/shout_long(var/do_stun = TRUE)
 	set name = "Scream"
 	set category = "Abilities"
 	if (incapacitated(INCAPACITATION_KNOCKOUT))
@@ -28,7 +29,8 @@
 
 	if (check_audio_cooldown(SOUND_SHOUT_LONG))
 		if (play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_HIGH, 1, 2))
-			src.Stun(1)
+			if (do_stun)
+				src.Stun(1)
 			src.shake_animation(40)
 			set_audio_cooldown(SOUND_SHOUT_LONG, 8 SECONDS)
 			new /obj/effect/effect/expanding_circle(loc, 2, 3 SECOND)	//Visual effect

@@ -210,6 +210,19 @@
 /obj/proc/animate_fade_in(var/animtime = 10)
 	alpha = 0
 	animate(src, alpha = 255, time = animtime, flags = ANIMATION_PARALLEL)	//Cool fade in effect
+
+
+//Returns a transform with all vars set to their default
+/atom/proc/get_default_transform()
+	var/matrix/M = matrix()
+	M.Scale(default_scale)
+	M.Turn(default_rotation)
+	return M
+
+
+//Returns a transform with all vars set to their default
+/atom/proc/animate_to_default(var/animtime = 5)
+	animate(src, transform = get_default_transform(), pixel_x = default_pixel_x, pixel_y = default_pixel_y, time = animtime)
 #undef LUMR
 #undef LUMG
 #undef LUMB
