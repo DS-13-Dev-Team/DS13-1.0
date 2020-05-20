@@ -82,7 +82,7 @@ if (result == EXECUTION_CANCEL){\
 	var/range = 1
 
 	//A delay before acquisition happens
-	var/windup_time = 1 SECOND
+	var/windup_time = 0
 
 	//If the user of this is a necromorph, send a message on necromorph channel telling everyone to come watch
 	var/notify_necromorphs = TRUE

@@ -1537,6 +1537,7 @@ obj/item/organ/external/proc/remove_clamps()
 
 
 /obj/item/organ/external/proc/extend(var/update = TRUE)
+	deltimer(retract_timer)
 	if (!retracted)
 		return
 	retracted = FALSE
@@ -1547,6 +1548,7 @@ obj/item/organ/external/proc/remove_clamps()
 
 
 /obj/item/organ/external/proc/retract(var/update = TRUE)
+	deltimer(retract_timer)
 	if (retracted)
 		return
 	retracted = TRUE
@@ -1555,13 +1557,11 @@ obj/item/organ/external/proc/remove_clamps()
 		owner.update_body(TRUE)
 
 /obj/item/organ/external/proc/extend_for(var/time)
-	deltimer(retract_timer)
 	extend()
 
 	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/retract), time, TIMER_STOPPABLE)
 
 /obj/item/organ/external/proc/retract_for(var/time)
-	deltimer(retract_timer)
 	retract()
 
 	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/extend), time, TIMER_STOPPABLE)

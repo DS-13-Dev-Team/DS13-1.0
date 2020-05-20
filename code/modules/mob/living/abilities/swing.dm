@@ -49,6 +49,8 @@
 
 	var/progress
 
+	var/raytrace = TRUE
+
 
 
 
@@ -197,6 +199,9 @@
 
 /datum/extension/swing/proc/hit_mob(var/mob/living/L)
 	if (L == user)
+		return FALSE
+	var/atom/A = holder
+	if (raytrace && !check_trajectory(A, L, pass_flags = A.pass_flags))
 		return FALSE
 	L.apply_damage(damage = damage, damagetype = BRUTE, def_zone = get_target_zone(L), blocked = null, damage_flags = flags, used_weapon = holder)
 	playsound(L, hitsound, VOLUME_MID, 1)
