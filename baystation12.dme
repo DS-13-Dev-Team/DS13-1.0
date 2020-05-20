@@ -2277,7 +2277,6 @@
 #include "code\modules\necromorph\corruption\maw.dm"
 #include "code\modules\necromorph\corruption\nest.dm"
 #include "code\modules\necromorph\corruption\zundef.dm"
-#include "code\modules\organs\_organ_setup.dm"
 #include "code\modules\organs\blood.dm"
 #include "code\modules\organs\organ.dm"
 #include "code\modules\organs\pain.dm"

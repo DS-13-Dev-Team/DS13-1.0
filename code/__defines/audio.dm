@@ -5,6 +5,11 @@
 #define VOLUME_QUIET	5
 #define VOLUME_NEAR_SILENT	2.5
 
+//Alternate defines
+#define VOLUME_LOUD	VOLUME_HIGH
+#define VOLUME_MEDIUM	VOLUME_MID
+#define VOLUME_NORMAL	VOLUME_MID
+
 
 //Species soundtype defines
 #define SOUND_FOOTSTEP		"footstep"

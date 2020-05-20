@@ -32,8 +32,9 @@
 #define EXECUTION_RETRY		0	//Its not right yet but will probably fix itself, delay and keep trying
 #define EXECUTION_CONTINUE	1	//Its fine, keep going
 #define EXECUTION_SAFETY	var/result = safety_check();\
-if (result != EXECUTION_CONTINUE)\
-	return
+if (result == EXECUTION_CANCEL){\
+	interrupt();\
+	return}
 /datum/extension/execution
 	name = "Execution"
 	base_type = /datum/extension/execution
@@ -49,6 +50,15 @@ if (result != EXECUTION_CONTINUE)\
 	var/stopped_at
 
 	var/ongoing_timer
+
+	//Reward Handling
+	//-------------------
+	//Used to make sure finish only runs once
+	var/finished = FALSE
+
+	var/reward_biomass = 0
+	var/reward_energy	=	0
+	var/reward_heal	=	0
 
 
 	//Stat modifiers
@@ -74,8 +84,8 @@ if (result != EXECUTION_CONTINUE)\
 	//A delay before acquisition happens
 	var/windup_time = 1 SECOND
 
-
-
+	//If the user of this is a necromorph, send a message on necromorph channel telling everyone to come watch
+	var/notify_necromorphs = TRUE
 
 
 
@@ -113,8 +123,6 @@ if (result != EXECUTION_CONTINUE)\
 	var/obj/item/grab/grab	//The grab object we're using to hold the victim
 
 
-	//Used to make sure finish only runs once
-	var/finished = FALSE
 
 
 /datum/extension/execution/New(var/atom/user, var/mob/living/victim)
@@ -134,21 +142,25 @@ if (result != EXECUTION_CONTINUE)\
 /datum/extension/execution/proc/start()
 	if (!can_start())
 		stop()
+		return
 
 	started_at	=	world.time
 
 	//First of all, we do windup
 	windup()
 
-	world << "target aquisition start"
 	//If we failed to aquire a target, just stop immediately
 	if (acquire_target() != EXECUTION_CONTINUE)
-		world << "target aquisition fail"
 		stop()
 		return
 
-	//Alright we're clear to proceed
 
+
+
+	//Alright we're clear to proceed
+	if (user.is_necromorph() && notify_necromorphs)
+		link_necromorphs_to(SPAN_EXECUTION("[user] is performing [name] at LINK"), victim)
+	//Modify user stats
 	user.evasion += evasion_mod
 	evasion_delta = evasion_mod
 
@@ -165,6 +177,7 @@ if (result != EXECUTION_CONTINUE)\
 
 
 /datum/extension/execution/proc/stop()
+
 	deltimer(ongoing_timer)
 	stopped_at = world.time
 
@@ -175,7 +188,6 @@ if (result != EXECUTION_CONTINUE)\
 	for (var/datum/execution_stage/ES as anything in entered_stages)
 		ES.stop()
 
-	world << "Restoring user to default"
 	//Fix the user back to default animation
 	user.animate_to_default(1 SECOND)
 
@@ -209,15 +221,41 @@ if (result != EXECUTION_CONTINUE)\
 //This is called when a finisher stage is entered, or if we complete all the stages
 //It will never be called in the case of an interruption
 /datum/extension/execution/proc/complete()
+	if (finished)
+		return
+
+	finished = TRUE
+
 	//We are past the point of no return now
 	can_interrupt = FALSE
 
 	for (var/datum/execution_stage/ES as anything in entered_stages)
 		ES.complete()
 
+	distribute_rewards()
 	//We don't call stop here, we may have a few more post-completion stages
 
 
+//Here we payout any rewards
+/datum/extension/execution/proc/distribute_rewards()
+	if (reward_biomass)
+		var/obj/machinery/marker/M = SSnecromorph.marker
+		if (istype(M))
+			M.biomass += reward_biomass
+			message_necromorphs(SPAN_EXECUTION("The marker gains [reward_biomass]kg biomass from [user] completing [name]"))
+			reward_biomass = 0
+
+	if (reward_heal)
+		user.heal_overall_damage(reward_heal)
+		to_chat(user, SPAN_EXECUTION("Execution complete, you have recovered [reward_heal] health!"))
+		reward_heal = 0
+
+	if (reward_energy)
+		for (var/mob/observer/eye/signal/S in trange(10, user))
+			var/datum/extension/psi_energy/PE	= get_energy_extension()
+			if (PE)
+				to_chat(S, SPAN_EXECUTION("You are invigorated by the spectacle before you, and gain [reward_energy] energy!"))
+				PE.energy += reward_energy
 
 
 /datum/extension/execution/proc/get_cooldown_time()
@@ -254,7 +292,6 @@ if (result != EXECUTION_CONTINUE)\
 	Stages
 ---------------------*/
 /datum/extension/execution/proc/try_advance_stage()
-	world << "advancing stage [current_stage_index]"
 	EXECUTION_SAFETY
 
 	deltimer(ongoing_timer)
@@ -268,17 +305,18 @@ if (result != EXECUTION_CONTINUE)\
 
 		//Exit the previous stage
 		current_stage.exit()
+		current_stage = null
 
 	//Okay we're advancing
 	current_stage_index++
 	if (current_stage_index > all_stages.len)
 		//We just finished the last stage, time to stop.
+		complete()
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/stop), 0, TIMER_STOPPABLE)
 		return
 
 	//Here's our new current stage, enter it
 	current_stage = all_stages[current_stage_index]
-	world << "entering new stage [current_stage.type]"
 	current_stage.enter()
 	entered_stages += current_stage
 
@@ -295,29 +333,25 @@ if (result != EXECUTION_CONTINUE)\
 ************************/
 /datum/extension/execution/proc/safety_check()
 	.=EXECUTION_CONTINUE
-	world << "Doing safety check, fine so far"
 	//If we needed a grab, check that we have it and its valid
 	if (require_grab)
 		if (!grab || !grab.safety_check())
 			return EXECUTION_CANCEL
 
-	world << "grab fine"
 	//Gotta be close enough
 	if (get_dist(user, victim) > range)
 		return EXECUTION_CANCEL
 
-	world << "Dist fine"
 	for (var/datum/execution_stage/ES as anything in entered_stages)
 		var/result = ES.safety()
 		if (result != EXECUTION_CONTINUE)
 			return result
-	world << "stages fine"
 
 //Called if the attacker takes a damaging impact while performing an execution
 /datum/extension/execution/proc/user_damaged(var/mob/living/damaged_user, var/obj/item/organ/external/organ, var/brute, var/burn, var/damage_flags, var/used_weapon)
 	hit_damage_taken += (brute + burn)
-
-	if (can_interrupt && hit_damage_taken >= interrupt_damage_threshold)
+	if (can_interrupt && (hit_damage_taken >= interrupt_damage_threshold))
+		to_chat(user, SPAN_WARNING("You took too much damage, execution interrupted! [hit_damage_taken] >= [interrupt_damage_threshold]"))
 		interrupt()
 
 /datum/extension/execution/proc/can_start()

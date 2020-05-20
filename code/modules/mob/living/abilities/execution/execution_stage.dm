@@ -65,3 +65,7 @@
 
 */
 /datum/execution_stage/finisher
+
+
+/datum/execution_stage/finisher/enter()
+	host.complete()

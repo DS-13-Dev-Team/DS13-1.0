@@ -2,7 +2,7 @@
 #define LEAP_CONE_DAMAGE	10
 #define LEAP_CONE_WEAKEN	2
 #define LEAP_REDUCED_COOLDOWN	3 SECONDS
-#define TONGUE_EXTEND_TIME 5 SECONDS	//How long the tongue stays out and visible after any tongue move
+#define TONGUE_EXTEND_TIME 7 SECONDS	//How long the tongue stays out and visible after any tongue move
 
 //These are used to position the arm sprite during swing
 #define LEFT_ARM_OFFSETS	list("[NORTH]" = new /vector2(-4, 12), "[SOUTH]" = new /vector2(8, 8), "[EAST]" = new /vector2(14, 2), "[WEST]" = new /vector2(8, 6))
@@ -26,7 +26,7 @@
 	layer = LARGE_MOB_LAYER
 
 	biomass = 350
-	mass = 200
+	mass = 250
 	biomass_reclamation_time	=	15 MINUTES
 
 
@@ -48,12 +48,13 @@
 	/mob/living/carbon/human/proc/tripod_arm_swing,
 	/mob/living/carbon/human/proc/tripod_tongue_lash,
 	/mob/living/carbon/human/proc/tripod_kiss,
-	/mob/proc/shout)
+	/mob/proc/shout,/mob/proc/shout_long)
+
 	modifier_verbs = list(
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/tripod_leap),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tripod_arm_swing),
-	KEY_MIDDLE = list(/mob/living/carbon/human/proc/tripod_tongue_lash,
-	KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/tripod_kiss)))
+	KEY_MIDDLE = list(/mob/living/carbon/human/proc/tripod_tongue_lash),
+	KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/tripod_kiss))
 
 
 	unarmed_types = list(/datum/unarmed_attack/punch/tripod)
@@ -83,31 +84,49 @@
 	)
 
 	//Audio
-	/*
-	step_volume = 10 //Tripod stomps are low pitched and resonant, don't want them loud
+
+	step_volume = VOLUME_QUIET //Tripod stomps are low pitched and resonant, don't want them loud
 	step_range = 4
 	step_priority = 5
 	pain_audio_threshold = 0.03 //Gotta set this low to compensate for his high health
-	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/tripod_step_1.ogg',
-	'sound/effects/footstep/tripod_step_2.ogg',
-	'sound/effects/footstep/tripod_step_3.ogg',
-	'sound/effects/footstep/tripod_step_4.ogg',
-	'sound/effects/footstep/tripod_step_5.ogg',
-	'sound/effects/footstep/tripod_step_6.ogg'),
+	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/tripod_footstep_1.ogg',
+	'sound/effects/footstep/tripod_footstep_2.ogg',
+	'sound/effects/footstep/tripod_footstep_3.ogg',
+	'sound/effects/footstep/tripod_footstep_4.ogg',
+	'sound/effects/footstep/tripod_footstep_5.ogg',
+	'sound/effects/footstep/tripod_footstep_6.ogg'),
+	SOUND_ATTACK = list('sound/effects/creatures/necromorph/tripod/tripod_attack_1.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_attack_2.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_attack_3.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_attack_4.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_attack_5.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_attack_6.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_attack_7.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_attack_8.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_attack_9.ogg'),
+	SOUND_DEATH = list('sound/effects/creatures/necromorph/tripod/tripod_death_1.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_death_2.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_death_3.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_death_4.ogg'),
 	SOUND_PAIN = list('sound/effects/creatures/necromorph/tripod/tripod_pain_1.ogg',
 	 'sound/effects/creatures/necromorph/tripod/tripod_pain_2.ogg',
 	 'sound/effects/creatures/necromorph/tripod/tripod_pain_3.ogg',
-	 'sound/effects/creatures/necromorph/tripod/tripod_pain_extreme.ogg' = 0.2),
-	SOUND_DEATH = list('sound/effects/creatures/necromorph/tripod/tripod_death.ogg'),
-	SOUND_ATTACK = list('sound/effects/creatures/necromorph/tripod/tripod_attack_1.ogg',
-	'sound/effects/creatures/necromorph/tripod/tripod_attack_2.ogg',
-	'sound/effects/creatures/necromorph/tripod/tripod_attack_3.ogg'),
+	 'sound/effects/creatures/necromorph/tripod/tripod_pain_4.ogg',
+	 'sound/effects/creatures/necromorph/tripod/tripod_pain_5.ogg',),
 	SOUND_SHOUT = list('sound/effects/creatures/necromorph/tripod/tripod_shout_1.ogg',
 	'sound/effects/creatures/necromorph/tripod/tripod_shout_2.ogg',
-	'sound/effects/creatures/necromorph/tripod/tripod_shout_3.ogg'),
-	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/tripod/tripod_shout_long.ogg')
+	'sound/effects/creatures/necromorph/tripod/tripod_shout_3.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_shout_4.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_shout_5.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_shout_6.ogg'),
+	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/tripod/tripod_shout_long_1.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_shout_long_2.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_shout_long_3.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_shout_long_4.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_shout_long_5.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_shout_long_6.ogg')
 	)
-	*/
+
 
 
 #define TRIPOD_PASSIVE_1	"<h2>PASSIVE: Personal Space:</h2><br>\
@@ -144,7 +163,9 @@ the tongue strikes much more quickly, can hit downed targets, and most important
 
 #define TRIPOD_DEATHKISS_DESC "<h2>Execution: Kiss of Death:</h2><br>\
 <h3>Hotkey: Ctrl+Shift+Click</h3><br>\
-An elaborate finishing move performed on a downed victim. The tripod forces its tongue down the victim's throat, tearing their head off from inside, and ripping their body in two."
+<h3>Cooldown: 1 minute</h3><br>\
+An elaborate finishing move performed on a downed victim. The tripod forces its tongue down the victim's throat, tearing their head off from inside, and ripping their body in two.<br>\
+If performed successfully on a live crewman, it yields a bonus of 10kg biomass for the marker, "
 
 /datum/species/necromorph/tripod/get_ability_descriptions()
 	.= ""
@@ -168,6 +189,22 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 	icon_name = "tongue"
 	retracted = TRUE
 
+//The tongue has a slithering noise for when it goes in and out
+/obj/item/organ/external/arm/tentacle/tripod_tongue/retract()
+	.=..()
+	if (. && owner)
+		var/tonguesound = pick(list('sound/effects/creatures/necromorph/tripod/tripod_tongue_extract_1.ogg',
+		'sound/effects/creatures/necromorph/tripod/tripod_tongue_extract_2.ogg',
+		'sound/effects/creatures/necromorph/tripod/tripod_tongue_extract_3.ogg'))
+		playsound(owner, tonguesound, VOLUME_LOW, TRUE)
+
+/obj/item/organ/external/arm/tentacle/tripod_tongue/extend()
+	.=..()
+	if (. && owner)
+		var/tonguesound = pick(list('sound/effects/creatures/necromorph/tripod/tripod_tongue_extract_1.ogg',
+		'sound/effects/creatures/necromorph/tripod/tripod_tongue_extract_2.ogg',
+		'sound/effects/creatures/necromorph/tripod/tripod_tongue_extract_3.ogg'))
+		playsound(owner, tonguesound, VOLUME_MID, TRUE)
 
 /*--------------------------------
 	Cadence
@@ -213,9 +250,18 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 	set desc = "Leaps to a target location, dealing damage around the landing point, and knockdown in a frontal cone"
 	set category = "Abilities"
 
-	high_leap_ability(target, windup_time = 0.8 SECOND, winddown_time = 0.8 SECOND, cooldown = 6 SECONDS, minimum_range = 3, travel_speed = 5.25)
+	.=high_leap_ability(target, windup_time = 0.8 SECOND, winddown_time = 0.8 SECOND, cooldown = 6 SECONDS, minimum_range = 3, travel_speed = 5.25)
+	if(.)
+		play_species_audio(src, SOUND_SHOUT, VOLUME_MID, 1, 2)
 
 /datum/species/necromorph/tripod/high_leap_impact(var/mob/living/user, var/atom/target, var/distance)
+
+	//We play a sound!
+	var/sound_file = pick(list('sound/effects/impacts/hard_impact_1.ogg',
+	'sound/effects/impacts/hard_impact_2.ogg',
+	'sound/effects/impacts/low_impact_1.ogg',
+	'sound/effects/impacts/low_impact_2.ogg'))
+	playsound(user, sound_file, VOLUME_MID, TRUE)
 
 	//The leap impact deals two burst of damage.
 
@@ -339,6 +385,16 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 	stages = 8,
 	swing_direction = swing_dir)
 
+	if (.)
+		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 2)
+		spawn(0.8 SECONDS)
+			var/sound_effect = pick(list('sound/effects/attacks/big_swoosh_1.ogg',
+			'sound/effects/attacks/big_swoosh_2.ogg',
+			'sound/effects/attacks/big_swoosh_3.ogg',))
+			playsound(src, sound_effect, VOLUME_LOW, TRUE)
+
+
+
 
 //Swing FX
 /obj/effect/effect/swing/tripod_left
@@ -376,6 +432,7 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 				if (!A.CanPass(effect))	//We use the effect object as the collision tester
 					A.shake_animation(60)
 					to_chat(user, "Your arm bounces sharply off of [A]")
+					playsound(A, "thud", VOLUME_LOUD, TRUE)
 					//TODO: Sound here
 					return FALSE
 
@@ -501,6 +558,13 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 	swing_direction = pick(CLOCKWISE, ANTICLOCKWISE))
 
 
+	var/sound_effect = pick(list('sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_1.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_2.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_3.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_4.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_5.ogg'))
+	playsound(src, sound_effect, VOLUME_MID, TRUE)
+
 //Extension subtype
 /datum/extension/swing/tripod_tongue
 	base_type = /datum/extension/swing/tripod_tongue
@@ -530,6 +594,13 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 	icon_state = "tongue"
 	default_scale = 1.5
 	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
+
+
+
+
+
+
+
 
 
 
@@ -592,6 +663,12 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 /datum/extension/execution/tripod_kiss
 	name = "Kiss of Death"
 
+	cooldown = 1 MINUTE
+
+	reward_biomass = 10
+	reward_energy = 150
+	reward_heal = 40
+
 	all_stages = list(/datum/execution_stage/tripod_claw_pin,
 	/datum/execution_stage/tripod_scream,
 	/datum/execution_stage/tripod_tongue_force,
@@ -602,8 +679,9 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 	vision_mod = -6
 
 
-
-
+/datum/extension/execution/tripod_kiss/interrupt()
+	.=..()
+	user.play_species_audio(src, SOUND_PAIN, VOLUME_MID, 1, 2)
 
 /datum/extension/execution/tripod_kiss/can_start()
 	//Lets check that we have what we need
@@ -658,7 +736,7 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 //Claw pin: Deals some heavy damage and stuns the victim
 //----------------------------------------------------
 /datum/execution_stage/tripod_claw_pin
-	duration = 2.5 SECOND
+	duration = 3.5 SECOND
 
 	//Rises up into the air then comes down upon the victim fast
 /datum/execution_stage/tripod_claw_pin/enter()
@@ -691,7 +769,7 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 	duration = 2 SECOND
 
 /datum/execution_stage/tripod_scream/enter()
-	host.user.shout_long(FALSE)
+	host.user.do_shout(SOUND_SHOUT_LONG, FALSE)
 
 
 
@@ -714,7 +792,11 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 	host.victim.silent += 10
 
 	host.user.visible_message(SPAN_EXECUTION("[host.user] starts forcing its tongue down [host.victim]'s throat!"))
-
+	spawn(8)
+		var/tonguesound = pick(list('sound/effects/creatures/necromorph/tripod/tripod_tongueforce_1.ogg',
+		'sound/effects/creatures/necromorph/tripod/tripod_tongueforce_2.ogg',
+		'sound/effects/creatures/necromorph/tripod/tripod_tongueforce_3.ogg'))
+		playsound(host.victim, tonguesound, VOLUME_LOUD, TRUE)
 
 
 /datum/execution_stage/tripod_tongue_force/interrupt()
@@ -736,14 +818,19 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 		angle *= -1
 
 	//Swing back and up like a shampoo advert
-	animate(host.user, pixel_y = host.user.pixel_y + 24, transform = turn(host.user.get_default_transform(), angle), time = 12, easing = BACK_EASING)
+	animate(host.user, pixel_y = host.user.pixel_y + 12, transform = turn(host.user.get_default_transform(), angle*0.3), time = 6, easing = BACK_EASING)
+	animate(pixel_y = host.user.pixel_y + 12, transform = turn(host.user.get_default_transform(), angle*0.6), time = 6,)
 
 	spawn(4)
 		var/obj/item/organ/external/head = host.victim.get_organ(BP_HEAD)
 		if (istype(head))
-			head.droplimb()
-			host.user.visible_message(SPAN_EXECUTION("[host.user] whips back, violent tearing [host.victim]'s head off!"))
+			head.droplimb(cutter = host.user)
+			host.user.visible_message(SPAN_EXECUTION("[host.user] whips back, violently tearing [host.victim]'s head off!"))
 
+			var/sound_effect = pick(list('sound/effects/organic/flesh_tear_1.ogg',
+			'sound/effects/organic/flesh_tear_2.ogg',
+			'sound/effects/organic/flesh_tear_3.ogg',))
+			playsound(host.victim, sound_effect, VOLUME_MID, TRUE)
 
 
 
@@ -767,18 +854,24 @@ An elaborate finishing move performed on a downed victim. The tripod forces its 
 
 	var/slamtime = 8
 	//Slam down one last time
-	animate(host.user, pixel_y = host.user.default_pixel_y - 16, transform = turn(host.user.get_default_transform(), angle), time = slamtime, easing = BACK_EASING)
+	animate(host.user, pixel_y = host.user.default_pixel_y - 8, transform = turn(host.user.get_default_transform(), angle*-0.2), time = slamtime, easing = BACK_EASING)
+	animate(host.user, pixel_y = host.user.default_pixel_y - 8, transform = turn(host.user.get_default_transform(), angle*1.2), time = slamtime)
+
 	//Pause briefly
 	animate(time = 6)
 	//And then pull back to tear off the lower body
 	animate(pixel_x = host.user.pixel_x + x_offset, time = 10, easing = CIRCULAR_EASING)
 
-	spawn(slamtime)
+	spawn(slamtime+6)
 		if (host.safety_check() == EXECUTION_CONTINUE)
 			var/obj/item/organ/external/groin = host.victim.get_organ(BP_GROIN)
 			if (istype(groin))
-				groin.droplimb()
+				groin.droplimb(cutter = host.user)
 				host.user.visible_message(SPAN_EXECUTION("[host.user] drags its massive claw backwards, brutally tearing [host.victim] in half!"))
+				var/sound_effect = pick(list('sound/effects/organic/flesh_tear_1.ogg',
+				'sound/effects/organic/flesh_tear_2.ogg',
+				'sound/effects/organic/flesh_tear_3.ogg',))
+				playsound(host.victim, sound_effect, VOLUME_HIGH, TRUE)
 
 /datum/species/necromorph/tripod/make_scary(mob/living/carbon/human/H)
 	//H.set_traumatic_sight(TRUE, 5) //All necrmorphs are scary. Some are more scary than others though

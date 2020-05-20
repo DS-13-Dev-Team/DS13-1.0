@@ -259,19 +259,8 @@
 	return (delta - round(delta, 360))
 #define CLAMP(CLVALUE,CLMIN,CLMAX) ( max( (CLMIN), min((CLVALUE), (CLMAX)) ) )
 
-// Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive
 
-
-/client/verb/multistage_cone_test()
-
-
-
-	var/vector2/direction = new /vector2(rand(), rand())
-	direction = direction.Normalized()
-
-	var/list/C = get_multistage_cone(get_turf(mob), direction, 6, 120, 20, CLOCKWISE)
-
-	for (var/list/subcone in C)
-		var/newcolor = RANDOM_RGB
-		for (var/turf/T in subcone)
-			debug_mark_turf(T, 30, newcolor)
+//Runs get cone and then picks a random tile from it
+/proc/random_tile_in_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
+	var/list/tiles = get_cone(origin, direction, distance, angle)
+	return pick(tiles)

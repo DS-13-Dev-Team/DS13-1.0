@@ -836,7 +836,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 					)
 
 //Handles dismemberment
-/obj/item/organ/external/proc/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent)
+/obj/item/organ/external/proc/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent, var/atom/cutter)
 
 	if(!(limb_flags & ORGAN_FLAG_CAN_AMPUTATE) || !owner)
 		return
@@ -901,7 +901,17 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!clean)
 				// Throw limb around.
 				if(src && istype(loc,/turf))
-					throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
+					var/target_turf
+					var/distance = rand(1,3)
+					if (cutter && get_turf(cutter) != get_turf(src))
+						//If a specific atom on another turf responsible for removing this limb, we will not throw the limb at the cutter
+						//Instead we'll throw it at a random tile in a 270 degree arc pointed away from the cutter
+						target_turf = random_tile_in_cone(get_turf(cutter), Vector2.DirectionBetween(cutter, src),3, 270)
+						distance = 4	//We'll max out the distance, since this will pick a tile which may be less than max distance.
+						//No point randomising it twice or it'd just weight towards the low end
+					else
+						target_turf = get_edge_target_turf(src,pick(GLOB.alldirs))
+					throw_at(target_turf,distance,5)
 				dir = 2
 		if(DROPLIMB_BURN)
 			new /obj/effect/decal/cleanable/ash(get_turf(victim))
@@ -1530,14 +1540,17 @@ obj/item/organ/external/proc/remove_clamps()
 	if (!retracted)
 		return
 	retracted = FALSE
+	.=TRUE
 	if (update && owner)
 		owner.update_body(TRUE)
+
 
 
 /obj/item/organ/external/proc/retract(var/update = TRUE)
 	if (retracted)
 		return
 	retracted = TRUE
+	.=TRUE
 	if (update && owner)
 		owner.update_body(TRUE)
 
