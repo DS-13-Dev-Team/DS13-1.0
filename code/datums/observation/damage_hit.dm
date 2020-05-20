@@ -10,7 +10,7 @@
 //			burn:	Burn damage taken
 //			damage_flags:	Flags of the damage event
 //			used_weapon:	What did the damage. Could be a weapon, a projectile, or the attacking mob if it was an unarmed attack
-//
+//			/proc/damage_hit(var/obj/item/organ/external/organ, var/brute, var/burn, var/damage_flags, var/used_weapon)
 
 GLOBAL_DATUM_INIT(damage_hit_event, /decl/observ/damage_hit, new)
 

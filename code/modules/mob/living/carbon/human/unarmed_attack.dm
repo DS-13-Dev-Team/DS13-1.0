@@ -14,7 +14,7 @@ var/global/list/sparring_attack_cache = list()
 	var/sharp = 0
 	var/edge = 0
 	var/delay = 1 SECOND	//Default delay, overrideable
-
+	var/required_limb = list(BP_L_ARM, BP_R_ARM)	//The mob must have any of these limbs to do this attack
 
 	var/deal_halloss
 	var/sparring_variant_type = /datum/unarmed_attack/light_strike
@@ -58,15 +58,16 @@ var/global/list/sparring_attack_cache = list()
 		return 0
 
 	// Check if they have a functioning hand.
-	var/obj/item/organ/external/E = user.organs_by_name[BP_L_HAND]
-	if(E && !E.is_stump())
-		return 1
+	var/has_required_organ = FALSE
+	for (var/organ_tag in required_limb)
+		var/obj/item/organ/external/E = user.organs_by_name[organ_tag]
+		if(E && !E.is_stump() && !E.retracted)
+			has_required_organ = TRUE
 
-	E = user.organs_by_name[BP_R_HAND]
-	if(E && !E.is_stump())
-		return 1
+	if (!has_required_organ)
+		return FALSE
 
-	return 0
+	return TRUE
 
 /datum/unarmed_attack/proc/get_unarmed_damage()
 	return damage
@@ -178,7 +179,6 @@ var/global/list/sparring_attack_cache = list()
 	var/datum/unarmed_attack/u_attack = get_unarmed_attack(target)
 	if (u_attack)
 		if(world.time < last_attack + u_attack.delay)
-			to_chat(src, "<span class='notice'>You can't attack again so soon.</span>")
 			return 0
 		last_attack = world.time
 		setClickCooldown(u_attack.delay)
@@ -264,6 +264,7 @@ var/global/list/sparring_attack_cache = list()
 	damage = 0
 	sharp = 0
 	edge = 0
+	required_limb = list(BP_HEAD)
 
 /datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 
@@ -274,7 +275,7 @@ var/global/list/sparring_attack_cache = list()
 			return 0 //prevent biting through a space helmet or similar
 	if (user == target && (zone == BP_HEAD || zone == BP_EYES || zone == BP_MOUTH))
 		return 0 //how do you bite yourself in the head?
-	return 1
+	.=..()
 
 /datum/unarmed_attack/punch
 	name = "Punch"
@@ -333,20 +334,13 @@ var/global/list/sparring_attack_cache = list()
 	attack_noun = list("kick", "kick", "kick", "knee strike")
 	attack_sound = "swing_hit"
 	damage = 0
+	required_limb = list(BP_L_LEG, BP_R_LEG)
 
 /datum/unarmed_attack/kick/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 	if(!(zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT, BP_GROIN)))
 		return 0
 
-	var/obj/item/organ/external/E = user.organs_by_name[BP_L_FOOT]
-	if(E && !E.is_stump())
-		return 1
-
-	E = user.organs_by_name[BP_R_FOOT]
-	if(E && !E.is_stump())
-		return 1
-
-	return 0
+	.=..()
 
 /datum/unarmed_attack/kick/get_unarmed_damage(var/mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes
@@ -370,6 +364,7 @@ var/global/list/sparring_attack_cache = list()
 	attack_noun = list("stomp")
 	attack_sound = "swing_hit"
 	damage = 0
+	required_limb = list(BP_L_LEG, BP_R_LEG)
 
 /datum/unarmed_attack/stomp/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 	if(!istype(target))
@@ -378,15 +373,7 @@ var/global/list/sparring_attack_cache = list()
 	if (!user.lying && (target.lying || (zone in list(BP_L_FOOT, BP_R_FOOT))))
 		if(target.grabbed_by == user && target.lying)
 			return 0
-		var/obj/item/organ/external/E = user.organs_by_name[BP_L_FOOT]
-		if(E && !E.is_stump())
-			return 1
-
-		E = user.organs_by_name[BP_R_FOOT]
-		if(E && !E.is_stump())
-			return 1
-
-		return 0
+		.=..()
 
 /datum/unarmed_attack/stomp/get_unarmed_damage(var/mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes

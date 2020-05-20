@@ -28,7 +28,7 @@
 	name_plural =  "Lurkers"
 	mob_type	=	/mob/living/carbon/human/necromorph/lurker
 	blurb = "Long range fire-support. The lurker is tough and hard to hit as long as its retractible armor is closed. When open it is slow and vulnerable, but fires sharp spines in waves of three."
-	unarmed_types = list(/datum/unarmed_attack/claws/lurker) //Bite attack is a backup if blades are severed
+	unarmed_types = list(/datum/unarmed_attack/bite/lurker) //Bite attack is a backup if blades are severed
 	total_health = 60
 	biomass = 50
 
@@ -156,8 +156,9 @@ The Lurker can only fire spines while its shell is open"
 
 
 //Light claw attack, not its main means of damage
-/datum/unarmed_attack/claws/lurker
+/datum/unarmed_attack/bite/lurker
 	damage = 4
+	required_limb = list(BP_CHEST)
 
 
 /*

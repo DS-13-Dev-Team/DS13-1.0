@@ -117,7 +117,7 @@
 			if (!can_grasp_with_selected())
 				to_chat(H, "<span class='warning'>You can't use your hand.</span>")
 				return
-			return H.species.attempt_grab(H, src)
+			return H.grab(src)
 
 		if(I_HURT)
 

@@ -318,24 +318,30 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		return TRUE
 
 	if((edge_eligible && brute >= max_damage / DROPLIMB_THRESHOLD_EDGE) && prob(brute))
-		droplimb(0, DROPLIMB_EDGE)
+		droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
 		return TRUE
 	else if((burn >= max_damage / DROPLIMB_THRESHOLD_DESTROY) && prob(burn/3))
-		droplimb(0, DROPLIMB_BURN)
+		droplimb(0, DROPLIMB_BURN, cutter = used_weapon)
 		return TRUE
 	else if((brute >= max_damage / DROPLIMB_THRESHOLD_DESTROY) && prob(brute))
-		droplimb(0, DROPLIMB_BLUNT)
+		droplimb(0, DROPLIMB_BLUNT, cutter = used_weapon)
 		return TRUE
 	else if((brute >= max_damage / DROPLIMB_THRESHOLD_TEAROFF) && prob(brute/3))
-		droplimb(0, DROPLIMB_EDGE)
+		droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
 		return TRUE
 	else
 		//Lets handle cumulative damage. No probabilities, guaranteed effect if enough damage accumulates
 		//Any edge weapon can cut off a limb if its been thoroughly broken
 		if (edge && damage >= max_damage * DROPLIMB_CUMULATIVE_TEAROFF)
-			droplimb(0, DROPLIMB_EDGE)
+			droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
 			return TRUE
-		//Any limb can be beaten to a pulp with enough repeated hits
+
+		//Non-edged weapons can snap off limbs with enough hits
+		else if (damage >= max_damage * DROPLIMB_CUMULATIVE_BREAKOFF)
+			droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
+			return TRUE
+
+		//Any limb can be beaten to a pulp with enough repeated hits. This is fairly uncommon since it will usually breakoff first
 		else if (damage >= max_damage * DROPLIMB_CUMULATIVE_DESTROY)
-			droplimb(0, DROPLIMB_BLUNT)
+			droplimb(0, DROPLIMB_BLUNT, cutter = used_weapon)
 			return TRUE

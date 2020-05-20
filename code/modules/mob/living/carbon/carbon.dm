@@ -102,6 +102,7 @@
 	var/obj/item/prev_held = get_active_hand()
 
 	//Now we do the hand swapping
+	//Possible future todo: Make this cycle through a list of hands instead, to support creatures with many arms
 	src.hand = !( src.hand )
 	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
 		if(hand)	//This being 1 means the left hand is in use

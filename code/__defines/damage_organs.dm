@@ -94,3 +94,18 @@
 //These are pretty dumb. Incision stage of an organ is defined by having an open wound which has this proportion of the organ's max damage
 #define DAMAGE_MULT_INCISION	0.4
 #define DAMAGE_MULT_RETRACTED 	0.6
+
+//Values for the encased var
+#define ENCASED_CLOSED	1
+#define ENCASED_OPEN	2
+
+//These control the damage thresholds for the various ways of removing limbs
+#define DROPLIMB_THRESHOLD_EDGE 5
+#define DROPLIMB_THRESHOLD_TEAROFF 2
+#define DROPLIMB_THRESHOLD_DESTROY 1
+
+#define DROPLIMB_CUMULATIVE_TEAROFF	0.9
+#define DROPLIMB_CUMULATIVE_BREAKOFF	1.25
+#define DROPLIMB_CUMULATIVE_DESTROY	1.75
+
+#define ORGAN_RECOVERY_THRESHOLD (5 MINUTES)

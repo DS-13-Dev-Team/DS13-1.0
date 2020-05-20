@@ -41,7 +41,8 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define ITEM_FLAG_NO_EMBED				 0x2000	// This item can't embed in people
 
 // Flags for pass_flags.
-#define PASS_FLAG_TABLE  0x1			//Small, crawly things that can go under or over tables and similar shaped objects
-#define PASS_FLAG_GLASS  0x2			//Lasers, light
-#define PASS_FLAG_GRILLE 0x4			//Generally gases and very tiny things
-#define PASS_FLAG_FLYING 0x8			//Objects that are not touching the ground
+#define PASS_FLAG_TABLE  	0x1			//Small, crawly things that can go under or over tables and similar shaped objects
+#define PASS_FLAG_GLASS  	0x2			//Lasers, light
+#define PASS_FLAG_GRILLE 	0x4			//Generally gases and very tiny things
+#define PASS_FLAG_FLYING 	0x8			//Objects that are not touching the ground
+#define PASS_FLAG_NOMOB		0x10		//For things that don't collide with mobs at all

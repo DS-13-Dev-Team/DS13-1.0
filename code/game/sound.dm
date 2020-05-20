@@ -52,10 +52,12 @@ GLOBAL_LIST_INIT(keystroke_sound,list('sound/machines/keyboard/keystroke1.ogg','
 GLOBAL_LIST_INIT(switch_sound,list('sound/machines/switch1.ogg','sound/machines/switch2.ogg','sound/machines/switch3.ogg','sound/machines/switch4.ogg'))
 GLOBAL_LIST_INIT(button_sound,list('sound/machines/button1.ogg','sound/machines/button2.ogg','sound/machines/button3.ogg','sound/machines/button4.ogg'))
 GLOBAL_LIST_INIT(chop_sound,list('sound/weapons/chop1.ogg','sound/weapons/chop2.ogg','sound/weapons/chop3.ogg'))
+GLOBAL_LIST_INIT(thud_sound,list('sound/effects/impacts/thud1.ogg','sound/effects/impacts/thud2.ogg','sound/effects/impacts/thud3.ogg'))
 
 /proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
-	soundin = get_sfx(soundin) // same sound for everyone
+	if(istext(soundin))
+		soundin = get_sfx(soundin) // same sound for everyone
 
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
@@ -163,24 +165,24 @@ var/const/FALLOFF_SOUNDS = 0.5
 	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
 
 /proc/get_sfx(soundin)
-	if(istext(soundin))
-		switch(soundin)
-			if ("shatter") soundin = pick(GLOB.shatter_sound)
-			if ("explosion") soundin = pick(GLOB.explosion_sound)
-			if ("sparks") soundin = pick(GLOB.spark_sound)
-			if ("rustle") soundin = pick(GLOB.rustle_sound)
-			if ("punch") soundin = pick(GLOB.punch_sound)
-			if ("clownstep") soundin = pick(GLOB.clown_sound)
-			if ("swing_hit") soundin = pick(GLOB.swing_hit_sound)
-			if ("hiss") soundin = pick(GLOB.hiss_sound)
-			if ("pageturn") soundin = pick(GLOB.page_sound)
-			if ("fracture") soundin = pick(GLOB.fracture_sound)
-			if ("light_bic") soundin = pick(GLOB.lighter_sound)
-			if ("keyboard") soundin = pick(GLOB.keyboard_sound)
-			if ("keystroke") soundin = pick(GLOB.keystroke_sound)
-			if ("switch") soundin = pick(GLOB.switch_sound)
-			if ("button") soundin = pick(GLOB.button_sound)
-			if ("chop") soundin = pick(GLOB.chop_sound)
+	switch(soundin)
+		if ("shatter") soundin = pick(GLOB.shatter_sound)
+		if ("explosion") soundin = pick(GLOB.explosion_sound)
+		if ("sparks") soundin = pick(GLOB.spark_sound)
+		if ("rustle") soundin = pick(GLOB.rustle_sound)
+		if ("punch") soundin = pick(GLOB.punch_sound)
+		if ("clownstep") soundin = pick(GLOB.clown_sound)
+		if ("swing_hit") soundin = pick(GLOB.swing_hit_sound)
+		if ("hiss") soundin = pick(GLOB.hiss_sound)
+		if ("pageturn") soundin = pick(GLOB.page_sound)
+		if ("fracture") soundin = pick(GLOB.fracture_sound)
+		if ("light_bic") soundin = pick(GLOB.lighter_sound)
+		if ("keyboard") soundin = pick(GLOB.keyboard_sound)
+		if ("keystroke") soundin = pick(GLOB.keystroke_sound)
+		if ("switch") soundin = pick(GLOB.switch_sound)
+		if ("button") soundin = pick(GLOB.button_sound)
+		if ("chop") soundin = pick(GLOB.chop_sound)
+		if ("thud") soundin = pick(GLOB.thud_sound)
 	return soundin
 
 

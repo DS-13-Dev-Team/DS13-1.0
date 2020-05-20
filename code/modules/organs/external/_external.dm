@@ -21,7 +21,11 @@
 	var/last_dam = -1                  // used in healing/processing calculations.
 	var/pain = 0                       // How much the limb hurts.
 	var/pain_disability_threshold      // Point at which a limb becomes unusable due to pain.
+
+
+	//Retraction handling
 	var/retracted	=	FALSE			//	Is this limb retracted into its parent?  If true, the limb is not rendered and all hits are passed to parent
+	var/retract_timer					//	A timer handle used for temporary retractions or extensions
 
 	// A bitfield for a collection of limb behavior flags.
 	var/limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_BREAK
@@ -832,7 +836,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 					)
 
 //Handles dismemberment
-/obj/item/organ/external/proc/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent)
+/obj/item/organ/external/proc/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent, var/atom/cutter)
 
 	if(!(limb_flags & ORGAN_FLAG_CAN_AMPUTATE) || !owner)
 		return
@@ -897,7 +901,17 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!clean)
 				// Throw limb around.
 				if(src && istype(loc,/turf))
-					throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
+					var/target_turf
+					var/distance = rand(1,3)
+					if (cutter && get_turf(cutter) != get_turf(src))
+						//If a specific atom on another turf responsible for removing this limb, we will not throw the limb at the cutter
+						//Instead we'll throw it at a random tile in a 270 degree arc pointed away from the cutter
+						target_turf = random_tile_in_cone(get_turf(cutter), Vector2.DirectionBetween(cutter, src),3, 270)
+						distance = 4	//We'll max out the distance, since this will pick a tile which may be less than max distance.
+						//No point randomising it twice or it'd just weight towards the low end
+					else
+						target_turf = get_edge_target_turf(src,pick(GLOB.alldirs))
+					throw_at(target_turf,distance,5)
 				dir = 2
 		if(DROPLIMB_BURN)
 			new /obj/effect/decal/cleanable/ash(get_turf(victim))
@@ -1519,3 +1533,35 @@ obj/item/organ/external/proc/remove_clamps()
 
 /obj/item/organ/external/proc/has_genitals()
 	return !BP_IS_ROBOTIC(src) && species && species.sexybits_location == organ_tag
+
+
+
+/obj/item/organ/external/proc/extend(var/update = TRUE)
+	if (!retracted)
+		return
+	retracted = FALSE
+	.=TRUE
+	if (update && owner)
+		owner.update_body(TRUE)
+
+
+
+/obj/item/organ/external/proc/retract(var/update = TRUE)
+	if (retracted)
+		return
+	retracted = TRUE
+	.=TRUE
+	if (update && owner)
+		owner.update_body(TRUE)
+
+/obj/item/organ/external/proc/extend_for(var/time)
+	deltimer(retract_timer)
+	extend()
+
+	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/retract), time, TIMER_STOPPABLE)
+
+/obj/item/organ/external/proc/retract_for(var/time)
+	deltimer(retract_timer)
+	retract()
+
+	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/extend), time, TIMER_STOPPABLE)

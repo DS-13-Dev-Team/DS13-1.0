@@ -162,9 +162,9 @@
 //Speed is in metres (tiles) per second
 //Client lag is a divisor on client animation time. Lower values will cause it to take longer to catch up with the mob, this is a cool effect for conveying speed
 /proc/animate_movement(var/atom/movable/mover, var/atom/target, var/speed, var/client_lag = 1.0)
-	var/target_pixel_loc = target.get_global_pixel_loc()
+	var/vector2/target_pixel_loc = target.get_global_pixel_loc() + new /vector2(mover.default_pixel_x, mover.default_pixel_y)
 	var/vector2/pixel_delta = mover.get_global_pixel_loc() - target_pixel_loc //This is an inverse delta that gives the offset FROM target TO mover
-	var/vector2/cached_pixels = new /vector2(mover.pixel_x, mover.pixel_y)
+	var/vector2/cached_pixels = new /vector2(mover.default_pixel_x, mover.default_pixel_y)
 	var/pixel_distance = pixel_delta.Magnitude()
 	var/pixels_per_decisecond = (world.icon_size * speed) * 0.1
 
@@ -210,6 +210,19 @@
 /obj/proc/animate_fade_in(var/animtime = 10)
 	alpha = 0
 	animate(src, alpha = 255, time = animtime, flags = ANIMATION_PARALLEL)	//Cool fade in effect
+
+
+//Returns a transform with all vars set to their default
+/atom/proc/get_default_transform()
+	var/matrix/M = matrix()
+	M.Scale(default_scale)
+	M.Turn(default_rotation)
+	return M
+
+
+//Returns a transform with all vars set to their default
+/atom/proc/animate_to_default(var/animtime = 5)
+	animate(src, transform = get_default_transform(), pixel_x = default_pixel_x, pixel_y = default_pixel_y, time = animtime)
 #undef LUMR
 #undef LUMG
 #undef LUMB

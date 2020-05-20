@@ -87,32 +87,7 @@
 /obj/item/grab/proc/force_drop()
 	assailant.drop_from_inventory(src)
 
-/obj/item/grab/proc/can_grab()
 
-	// can't grab non-carbon/human/'s
-	if(!istype(affecting))
-		return FALSE
-
-	if(assailant.anchored || affecting.anchored)
-		return FALSE
-
-	if(!assailant.Adjacent(affecting))
-		return FALSE
-
-	if (!assailant.can_pull(affecting))
-		return FALSE
-
-	var/datum/species/S = assailant.get_species_datum()
-	if (S && !S.can_pickup)
-		return FALSE	//You need to be able to pick things up to hold a grab object
-
-	for(var/obj/item/grab/G in affecting.grabbed_by)
-		if(G.assailant == assailant && G.target_zone == target_zone)
-			var/obj/O = G.get_targeted_organ()
-			to_chat(assailant, "<span class='notice'>You already grabbed [affecting]'s [O.name].</span>")
-			return FALSE
-
-	return 1
 
 // This is for all the sorts of things that need to be checked for pretty much every
 // grab made. Feel free to override it but it stops a lot of situations that could
@@ -125,6 +100,12 @@
 	if(assailant == affecting)
 		to_chat(assailant, "<span class='notice'>You can't grab yourself.</span>")
 		return FALSE
+
+	//Lets make sure we actually have the limb we're attempting to use to grab the target with
+	if (!assailant.get_active_grasping_limb())
+		to_chat(assailant, "<span class='notice'>You have no limb to grab with!.</span>")
+		return FALSE
+
 
 	if(assailant.get_active_hand())
 		to_chat(assailant, "<span class='notice'>You can't grab someone if your hand is full.</span>")
@@ -269,3 +250,15 @@
 /obj/item/grab/proc/resolve_openhand_attack()
 		return current_grab.resolve_openhand_attack(src)
 
+
+
+
+/obj/item/grab/proc/safety_check()
+	.=TRUE
+	if (QDELETED(src) || QDELETED(assailant) || QDELETED(affecting))
+		.=FALSE
+	//Future todo: Convert adjacent checks into reach checks
+	else if (!assailant.Adjacent(affecting))
+		.=FALSE
+
+	//TODO: Delete self if return value is false?

@@ -3,9 +3,11 @@
 	var/lifetime = 0.3
 	anchored = TRUE
 
-/obj/effect/pixelmarker/New(var/location, var/_lifetime)
+/obj/effect/pixelmarker/New(var/location, var/_lifetime, var/newcolor = "#00FF00")
 	if (_lifetime)
 		lifetime = _lifetime
+
+	color = newcolor
 	.=..()
 
 /obj/effect/pixelmarker/Initialize()
@@ -24,4 +26,4 @@
 
 
 /obj/effect/pixelmarker/tile
-	icon_state = "green"
+	icon_state = "white"

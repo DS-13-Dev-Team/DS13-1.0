@@ -18,6 +18,9 @@
 /mob/living/carbon/human/necromorph/slasher/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER_ENHANCED)
 	..(new_loc, new_species)
 
+/mob/living/carbon/human/necromorph/tripod/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_TRIPOD)
+	..(new_loc, new_species)
+
 /mob/living/carbon/human/necromorph/twitcher/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_TWITCHER)
 	..(new_loc, new_species)
 

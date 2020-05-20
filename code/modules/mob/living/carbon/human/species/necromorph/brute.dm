@@ -7,7 +7,7 @@
 	name_plural =  "Brutes"
 	blurb = "A powerful linebreaker and assault specialist, the brute can smash through almost any obstacle, and its tough frontal armor makes it perfect for assaulting entrenched positions. \n\
 	Very vulnerable to flanking attacks"
-	total_health = 350
+	total_health = 400
 	torso_damage_mult = 1 //Hitting centre mass is fine for brute
 
 	icon_template = 'icons/mob/necromorph/brute.dmi'
@@ -19,7 +19,7 @@
 	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 
-	biomass = 400
+	biomass = 350
 	mass = 250
 	biomass_reclamation_time	=	15 MINUTES
 	virus_immune = 1
@@ -61,7 +61,7 @@
 	var/armor_front = 30	//Flat reduction applied to incoming damage within a 45 degree cone infront
 	var/armor_flank = 20	//Flat reduction applied to incoming damage within a 90 degree cone infront. Doesnt stack with front
 	var/curl_armor_mult = 1.5	//Multiplier applied to armor when we are curled up
-	var/armor_coverage = 95 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
+	var/armor_coverage = 96 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
 
 
 	has_limbs = list(
@@ -199,7 +199,11 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	A = get_step(src, direction)
 
 
-	.=slam_attack(A, _damage = 35, _power = 1, _windup_time = 1.65 SECONDS,  _cooldown = 7 SECONDS)
+	if (!A)
+		A = get_step(src, dir)
+
+
+	.=slam_attack(A, _damage = 35, _power = 1, _cooldown = 8 SECONDS, _windup_time = 1.65 SECONDS)
 	if (.)
 		var/mob/living/carbon/human/H = src
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_HIGH, 1, 3)

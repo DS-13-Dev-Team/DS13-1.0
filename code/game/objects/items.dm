@@ -218,14 +218,27 @@
 		var/mob/living/carbon/human/H
 		if (istype(user, /mob/living/carbon/human))
 			H = user
-		if (H && !H.species.can_pickup)
-			to_chat(user, "<span class='warning'>You lack the manual dexterity to pick up objects!</span>")
+		else
+			//There is currently no support for non humans picking up items.
+			//If there is ever a need to add that functionality, then this logic should be moved to procs on the mob,
+			//the last thing we need is a pile of if/else mob checks here
 			return
-		var/organ_name = BP_R_HAND
+
+		//Cant pick things up with no hands, arms, or tentacles
+		if(!(LAZYLEN(H.species.grasping_limbs)))
+			return
+
+		//If this person can't normally pick things up, lets see if we are an exception
+		if (H && !H.species.can_pickup)
+			if (!is_type_in_list(src, GLOB.pickup_whitelist))
+				to_chat(user, "<span class='warning'>You lack the manual dexterity to pick up objects!</span>")
+				return
+		var/organ_name = H.species.grasping_limbs[1]
 
 		if (user.hand)
-			organ_name = BP_L_HAND
-		var/obj/item/organ/external/temp = H.organs_by_name[organ_name]
+			organ_name = H.species.grasping_limbs[2]
+
+		var/obj/item/organ/external/temp = H.get_organ(organ_name)
 
 
 		if(temp && !temp.is_usable())

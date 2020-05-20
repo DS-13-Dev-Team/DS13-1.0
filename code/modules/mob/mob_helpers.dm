@@ -15,6 +15,19 @@
 /proc/mob_size_difference(var/mob_size_A, var/mob_size_B)
 	return round(log(2, mob_size_A/mob_size_B), 1)
 
+/proc/mob_strength_difference(var/mob/A, var/mob/B)
+	var/strength1 = STR_MEDIUM
+	if (ishuman(A))
+		var/mob/living/carbon/human/H = A
+		strength1 = H.species.strength
+
+	var/strength2  = STR_MEDIUM
+	if (ishuman(B))
+		var/mob/living/carbon/human/H = B
+		strength2= H.species.strength
+
+	return strength1 - strength2
+
 /mob/proc/can_wield_item(obj/item/W)
 	if(W.w_class >= ITEM_SIZE_LARGE && issmall(src))
 		return FALSE //M is too small to wield this

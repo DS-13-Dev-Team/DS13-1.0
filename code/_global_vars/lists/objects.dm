@@ -45,3 +45,18 @@ QUALITY_LASER_CUTTING = /obj/item/weapon/tool/scalpel/laser,//laser scalpels and
 QUALITY_ADHESIVE = /obj/item/weapon/tool/tape_roll,
 QUALITY_SEALING = /obj/item/weapon/tool/tape_roll,
 QUALITY_WORKBENCH = /obj/structure/table/workbench))
+
+
+
+
+//If a human has a species which doesn't let them pickup items, things in this list can be picked up anyway
+GLOBAL_LIST_INIT(pickup_whitelist,list(/obj/item/grab))
+
+
+//A list of limbs, and the inventory slot which is most often associated with them. Only one slot per limb.
+//Not every slot or limb is represented here
+GLOBAL_LIST_INIT(limb_to_slot,
+list(BP_L_HAND = slot_l_hand,
+BP_L_ARM = slot_l_hand,
+BP_R_HAND = slot_r_hand,
+BP_R_ARM = slot_r_hand))

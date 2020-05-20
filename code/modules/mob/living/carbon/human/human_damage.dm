@@ -1,3 +1,66 @@
+
+/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null)
+	SET_ARGS(species.handle_apply_damage(arglist(list(src)+args)))
+	var/obj/item/organ/external/organ = given_organ
+	if(!organ)
+		if(isorgan(def_zone))
+			organ = def_zone
+		else
+			if(!def_zone)	def_zone = ran_zone(def_zone)
+			organ = find_target_organ(check_zone(def_zone))
+
+	//Handle other types of damage
+	if(!(damagetype in list(BRUTE, BURN, PAIN, CLONE)))
+		..(damage, damagetype, def_zone, blocked)
+		return 1
+
+	handle_suit_punctures(damagetype, damage, def_zone)
+
+	if(blocked >= 100)	return 0
+
+	if(!organ)	return 0
+
+	if(blocked)
+		damage *= blocked_mult(blocked)
+
+	if(damage > 15 && prob(damage*4))
+		make_reagent(round(damage/10), /datum/reagent/adrenaline)
+	var/datum/wound/created_wound
+	damageoverlaytemp = 20
+	switch(damagetype)
+		if(BRUTE)
+			damage = damage*species.brute_mod
+			created_wound = organ.take_external_damage(damage, 0, damage_flags, used_weapon)	//This calls update health
+		if(BURN)
+			damage = damage*species.burn_mod
+			created_wound = organ.take_external_damage(0, damage, damage_flags, used_weapon)	//This calls update health
+		if(PAIN)
+			organ.add_pain(damage)	//This calls update health
+		if(CLONE)
+			organ.add_genetic_damage(damage)	//This calls update health
+
+
+	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
+	//Updatehealth is called by all the above procs, we don't call it here
+	BITSET(hud_updateflag, HEALTH_HUD)
+	return created_wound
+
+// Find out in how much pain the mob is at the moment.
+/mob/living/carbon/human/proc/get_shock()
+
+	if (!can_feel_pain())
+		return 0
+
+	var/traumatic_shock = getHalLoss()                 // Pain.
+	traumatic_shock -= chem_effects[CE_PAINKILLER] // TODO: check what is actually stored here.
+
+	if(stat == UNCONSCIOUS)
+		traumatic_shock *= 0.6
+	return max(0,traumatic_shock)
+
+
+
+
 //Updates the mob's health from organs and mob damage variables
 /mob/living/carbon/human/updatehealth()
 
@@ -375,64 +438,6 @@ This function restores all organs.
 /mob/living/carbon/human/get_organ(var/zone)
 	return organs_by_name[check_zone(zone)]
 
-/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null)
-	SET_ARGS(species.handle_apply_damage(arglist(list(src)+args)))
-	var/obj/item/organ/external/organ = given_organ
-	if(!organ)
-		if(isorgan(def_zone))
-			organ = def_zone
-		else
-			if(!def_zone)	def_zone = ran_zone(def_zone)
-			organ = find_target_organ(check_zone(def_zone))
-
-	//Handle other types of damage
-	if(!(damagetype in list(BRUTE, BURN, PAIN, CLONE)))
-		..(damage, damagetype, def_zone, blocked)
-		return 1
-
-	handle_suit_punctures(damagetype, damage, def_zone)
-
-	if(blocked >= 100)	return 0
-
-	if(!organ)	return 0
-
-	if(blocked)
-		damage *= blocked_mult(blocked)
-
-	if(damage > 15 && prob(damage*4))
-		make_reagent(round(damage/10), /datum/reagent/adrenaline)
-	var/datum/wound/created_wound
-	damageoverlaytemp = 20
-	switch(damagetype)
-		if(BRUTE)
-			damage = damage*species.brute_mod
-			created_wound = organ.take_external_damage(damage, 0, damage_flags, used_weapon)	//This calls update health
-		if(BURN)
-			damage = damage*species.burn_mod
-			created_wound = organ.take_external_damage(0, damage, damage_flags, used_weapon)	//This calls update health
-		if(PAIN)
-			organ.add_pain(damage)	//This calls update health
-		if(CLONE)
-			organ.add_genetic_damage(damage)	//This calls update health
-
-
-	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
-	//Updatehealth is called by all the above procs, we don't call it here
-	BITSET(hud_updateflag, HEALTH_HUD)
-	return created_wound
-
-// Find out in how much pain the mob is at the moment.
-/mob/living/carbon/human/proc/get_shock()
-
-	if (!can_feel_pain())
-		return 0
-
-	var/traumatic_shock = getHalLoss()                 // Pain.
-	traumatic_shock -= chem_effects[CE_PAINKILLER] // TODO: check what is actually stored here.
-
-	if(stat == UNCONSCIOUS)
-		traumatic_shock *= 0.6
-	return max(0,traumatic_shock)
 
 /mob/living/carbon/human/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0)
 	if(effecttype == IRRADIATE && (effect * blocked_mult(blocked) <= RAD_LEVEL_LOW))
