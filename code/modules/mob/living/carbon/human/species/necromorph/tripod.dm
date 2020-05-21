@@ -4,6 +4,8 @@
 #define LEAP_REDUCED_COOLDOWN	3 SECONDS
 #define TONGUE_EXTEND_TIME 7 SECONDS	//How long the tongue stays out and visible after any tongue move
 
+#define ARM_SWING_RANGE	4
+
 //These are used to position the arm sprite during swing
 #define LEFT_ARM_OFFSETS	list("[NORTH]" = new /vector2(-4, 12), "[SOUTH]" = new /vector2(8, 8), "[EAST]" = new /vector2(14, 2), "[WEST]" = new /vector2(8, 6))
 #define RIGHT_ARM_OFFSETS	list("[NORTH]" = new /vector2(12, 12), "[SOUTH]" = new /vector2(-8, 6), "[EAST]" = new /vector2(-2, 4), "[WEST]" = new /vector2(-6, 6))
@@ -14,7 +16,7 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/tripod
 	name_plural =  "Tripods"
 	blurb = "A heavy skirmisher, the tripod is adept at leaping around open spaces and fighting against multiple distant targets."
-	total_health = 400
+	total_health = 500
 	torso_damage_mult = 1 //Hitting centre mass is fine for tripod
 
 	icon_template = 'icons/mob/necromorph/tripod.dmi'
@@ -254,7 +256,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	if(.)
 		play_species_audio(src, SOUND_SHOUT, VOLUME_MID, 1, 2)
 
-/datum/species/necromorph/tripod/high_leap_impact(var/mob/living/user, var/atom/target, var/distance)
+/datum/species/necromorph/tripod/high_leap_impact(var/mob/living/user, var/atom/target, var/distance, var/start_location)
 
 	//We play a sound!
 	var/sound_file = pick(list('sound/effects/impacts/hard_impact_1.ogg',
@@ -275,7 +277,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 		L.take_overall_damage(LEAP_SHOCKWAVE_DAMAGE)
 
-	var/vector2/direction = Vector2.FromDir(user.dir)
+	var/vector2/direction = Vector2.DirectionBetween(start_location, get_turf(user))
 
 	var/conehit = FALSE
 
@@ -375,7 +377,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	source = src,
 	target = target,
 	angle = 150,
-	range = 3,
+	range = ARM_SWING_RANGE,
 	duration = 0.85 SECOND,
 	windup = 0.8 SECONDS,
 	cooldown = 3 SECONDS,
@@ -417,9 +419,11 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 //The arm swing may be terminated early by obstacles
 /datum/extension/swing/tripod_arm/hit_turf(var/turf/T)
 	var/timepercent = current_stage / stages
+	var/range = get_dist(user, T)
 
 	//To make it feel less janky, we'll only do this bumping effect if at least 30% of the swing has happened. So no being blocked right at the start
-	if (timepercent > 0.3)
+	//In addition we won't be blocked by things at the limit of our range
+	if (timepercent > 0.3	&& range < ARM_SWING_RANGE)
 		var/list/tocheck = list(T)
 		tocheck += T.contents
 
@@ -736,7 +740,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 //Claw pin: Deals some heavy damage and stuns the victim
 //----------------------------------------------------
 /datum/execution_stage/tripod_claw_pin
-	duration = 3.5 SECOND
+	duration = 3 SECOND
 
 	//Rises up into the air then comes down upon the victim fast
 /datum/execution_stage/tripod_claw_pin/enter()
@@ -803,7 +807,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 	host.victim.silent =0
 
-
+https://bigmemes.funnyjunk.com/pictures/Long+boi_073bf6_7722185.jpg
 
 
 //Tongue Pull: Rips the tongue out sharply, victim's head is torn off

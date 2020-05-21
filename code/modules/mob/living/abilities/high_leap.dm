@@ -24,6 +24,8 @@
 
 	var/ongoing_timer
 
+	var/turf/start_location
+
 	//Must travel at least this far
 	var/minimum_range = 3
 
@@ -67,6 +69,10 @@
 	src.travel_speed = travel_speed
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/high_leap/proc/windup), 0, TIMER_STOPPABLE)
 
+/datum/extension/high_leap/Destroy()
+	if (user)
+		user.evasion -= evasion_delta
+		evasion_delta = 0
 
 /*----------------------------------
 	Windup
@@ -74,8 +80,6 @@
 /datum/extension/high_leap/proc/windup()
 
 
-	if (user)
-		user.disable(windup_time)
 
 	var/atom/A = holder
 	started_at	=	world.time
@@ -91,6 +95,10 @@
 
 		target_loc = locate(A.x + direction.x, A.y + direction.y, A.z)
 	user.face_atom(target_loc)
+
+	if (user)
+		user.disable(windup_time)
+
 
 	//Alright now secondly, lets look for obstacles that might block us
 	var/list/results = check_trajectory_verbose(target_loc, holder, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING|PASS_FLAG_NOMOB)
@@ -132,7 +140,7 @@
 		user.evasion += 200	//The user becomes impossible to hit while in the air
 		evasion_delta = 200
 
-
+	start_location = get_turf(A)
 
 
 
@@ -182,11 +190,14 @@
 
 	//TODO: Impact here
 	var/atom/movable/A = holder
-	A.high_leap_impact(target_loc, distance)
+	A.high_leap_impact(target_loc, distance, start_location)
 
 	//If an obstacle blocked the leap from going its full distance, we crash into that on landing
 	if (obstacle)
 		A.charge_impact(obstacle, 1, CHARGE_TARGET_SECONDARY, distance)
+
+	user.evasion -= evasion_delta
+	evasion_delta = 0
 
 	//Do the final stage
 	winddown()
@@ -243,18 +254,18 @@
 /*----------------------------------
 	Impact
 -----------------------------------*/
-/atom/movable/proc/high_leap_impact(var/atom/target, var/distance)
+/atom/movable/proc/high_leap_impact(var/atom/target, var/distance, var/start_location)
 	return
 
 //When a human does it, we call the same proc on their species. This allows various people to do stuff
-/mob/living/carbon/human/high_leap_impact(var/atom/target, var/distance)
+/mob/living/carbon/human/high_leap_impact(var/atom/target, var/distance, var/start_location)
 	shake_camera(src,3,1)
 	if (species)
-		return species.high_leap_impact(src, target, distance)
+		return species.high_leap_impact(src, target, distance, start_location)
 	return ..()
 
 
-/datum/species/proc/high_leap_impact(var/mob/living/user, var/atom/target, var/distance)
+/datum/species/proc/high_leap_impact(var/mob/living/user, var/atom/target, var/distance, var/start_location)
 	return
 
 /***********************
