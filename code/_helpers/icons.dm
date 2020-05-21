@@ -944,6 +944,10 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 	loaded.Scale(new_x, new_y)
 	return loaded
 
+/proc/rescale_icon_scalar(var/icon_file, var/new_x, var/new_y)
+	var/icon/loaded = new(icon_file)	//Load the specified icon file into memory to use as a container
+	loaded.Scale(new_x*loaded.Width(), new_y*loaded.Height())
+	return loaded
 
 /image/proc/rotate_random(var/cardinal = FALSE)
 	var/newrot

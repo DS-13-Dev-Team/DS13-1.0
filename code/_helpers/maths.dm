@@ -264,3 +264,8 @@
 /proc/random_tile_in_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
 	var/list/tiles = get_cone(origin, direction, distance, angle)
 	return pick(tiles)
+
+
+//Takes a view range. Produces a multiplier of how much bigger or smaller a screen edge would be with that range, compared to a baseline
+/proc/view_scalar(var/range, var/base = world.view)
+	return ((range*2)+1) / ((base*2)+1)

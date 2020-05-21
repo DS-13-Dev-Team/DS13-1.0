@@ -1,71 +1,83 @@
+#define DEFAULT_SKYBOX_SIZE	736
+#define BASE_BUFFER_TILES	15
 /obj/skybox
 	name = "skybox"
 	mouse_opacity = 0
-	blend_mode = BLEND_MULTIPLY
+	anchored = TRUE
+	simulated = FALSE
+	screen_loc = "CENTER:-224,CENTER:-224"
 	plane = SKYBOX_PLANE
-//	invisibility = 101
-	anchored = 1
-	var/mob/owner
-	var/image/image
-	var/image/stars
+	blend_mode = BLEND_MULTIPLY
 
-/obj/skybox/Initialize()
-	. = ..()
-	var/mob/M = loc
-	SSskybox.skyboxes += src
-	owner = M
-	loc = null
-	SSskybox.skyboxes += src
-	color = SSskybox.BGcolor
-	image = image('icons/turf/skybox.dmi', src, "background_[SSskybox.BGstate]")
-	overlays += image
+	var/side_motion
+	var/slide_range = -224
+	var/scalar = 1
 
-	if(SSskybox.use_stars)
-		stars = image('icons/turf/skybox.dmi', src, SSskybox.star_state)
-		stars.appearance_flags = RESET_COLOR
-		overlays += stars
-	DoRotate()
-	update()
+	//Even at the map edge, a mob must always remain this-many tiles from the map edge.
+	var/buffer_tiles = 15
 
-/obj/skybox/proc/update()
-	if(isnull(owner) || isnull(owner.client))
-		qdel(src)
-	else
-		var/turf/T = get_turf(owner.client.eye)
-		screen_loc = "CENTER:[-224-(T&&T.x)],CENTER:[-224-(T&&T.y)]"
+	//By default the skybox positions its own lowerleft corner where we point to. So we must additionally offset it by this in both directions to centre it
+	var/base_offset= -368
 
-/obj/skybox/proc/DoRotate()
-	var/matrix/rotation = matrix()
-	rotation.TurnTo(SSskybox.BGrot)
-	appearance = rotation
-
-/obj/skybox/Destroy()
-	owner = null
-	SSskybox.skyboxes -= src
-	return ..()
-
-/mob
+/client
 	var/obj/skybox/skybox
 
-/mob/Move()
-	. = ..()
-	if(. && skybox)
-		skybox.update()
+/client/proc/update_skybox(var/rebuild = FALSE)
+	if(!skybox)
+		skybox = new()
+		screen += skybox
+		rebuild = 1
 
-/mob/forceMove()
-	. = ..()
-	if(. && skybox)
-		skybox.update()
+	var/turf/T = get_turf(eye)
+	if(T)
+		if(rebuild)
+			skybox.overlays.Cut()
+			skybox.overlays += SSskybox.get_skybox(T.z, max(world.view, temp_view))
+			screen |= skybox
+			skybox.scalar = view_scalar(temp_view)
+
+			skybox.buffer_tiles = BASE_BUFFER_TILES + temp_view
+
+			//Alright, time for some math. First of all, how big is the skybox image now, in pixels
+			var/skybox_side_size = DEFAULT_SKYBOX_SIZE * skybox.scalar
+
+			//Here's the minimum distance in pixels we need to be from the edge, to not-see whitespace
+			var/buffer_pixels = temp_view * WORLD_ICON_SIZE
+
+			//And here's the farthest we're allowed to slide on both axes before we see whitespace. Inverting it makes math easier
+			skybox.slide_range = ((skybox_side_size *0.5) - buffer_pixels)	*-1
+
+			skybox.base_offset = skybox_side_size * -0.5
+
+
+		//This gets a percentage of how far we are along the side of the map, in a range between 0 to 1
+		//Buffer is added to our own position, because we're position+buffer away from the lower sides
+		//Buffer is added TWICE to the world maxx/y values, because the percentage is measured as a whole along that line
+		//Because of the buffer, neither of the values will ever be 0 or 1
+		var/vector2/locpercent = new /vector2(
+		(skybox.buffer_tiles + T.x) / (world.maxx + skybox.buffer_tiles*2),
+		(skybox.buffer_tiles + T.y) / (world.maxy + skybox.buffer_tiles*2)
+		)
+
+		//Now we double the values and then subtract 1. This rescales it to a value between -1 to 1
+		locpercent *= 2
+		locpercent.x -= 1
+		locpercent.y -= 1
+		skybox.screen_loc = "CENTER:[round(skybox.base_offset + (skybox.slide_range * locpercent.x))],CENTER:[round(skybox.base_offset + (skybox.slide_range* locpercent.y))]"
+
 
 /mob/Login()
-	if(!skybox)
-		skybox = new(src)
-		skybox.owner = src
-	client.screen += skybox
 	..()
+	client.update_skybox(TRUE)
 
-/mob/Destroy()
-	if(client)
-		client.screen -= skybox
-	QDEL_NULL(skybox)
-	return ..()
+/mob/Move()
+	var/old_z = get_z(src)
+	. = ..()
+	if(. && client)
+		client.update_skybox(old_z != get_z(src))
+
+/mob/forceMove()
+	var/old_z = get_z(src)
+	. = ..()
+	if(. && client)
+		client.update_skybox(old_z != get_z(src))
