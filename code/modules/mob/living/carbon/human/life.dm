@@ -691,43 +691,6 @@
 		else
 			clear_fullscreen("brute")
 
-		if(healths)
-			if (chem_effects[CE_PAINKILLER] > 100)
-				healths.overlays.Cut()
-				healths.icon_state = "health_numb"
-			else
-				// Generate a by-limb health display.
-				healths.icon_state = "blank"
-				healths.overlays = null
-
-				var/no_damage = 1
-				var/trauma_val = 0 // Used in calculating softcrit/hardcrit indicators.
-				if(can_feel_pain())
-					trauma_val = max(shock_stage,get_shock())/(species.total_health-100)
-				// Collect and apply the images all at once to avoid appearance churn.
-				var/list/health_images = list()
-				for(var/obj/item/organ/external/E in organs)
-					if(no_damage && (E.brute_dam || E.burn_dam))
-						no_damage = 0
-					health_images += E.get_damage_hud_image()
-
-				// Apply a fire overlay if we're burning.
-				if(on_fire)
-					health_images += image('icons/mob/screen1_health.dmi',"burning")
-
-				// Show a general pain/crit indicator if needed.
-				if(is_asystole())
-					health_images += image('icons/mob/screen1_health.dmi',"hardcrit")
-				else if(trauma_val)
-					if(can_feel_pain())
-						if(trauma_val > 0.7)
-							health_images += image('icons/mob/screen1_health.dmi',"softcrit")
-						if(trauma_val >= 1)
-							health_images += image('icons/mob/screen1_health.dmi',"hardcrit")
-				else if(no_damage)
-					health_images += image('icons/mob/screen1_health.dmi',"fullhealth")
-
-				healths.overlays += health_images
 
 		if(nutrition_icon)
 			switch(nutrition)

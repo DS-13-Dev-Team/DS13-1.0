@@ -163,6 +163,7 @@
 			if (MED_HUD)
 				process_med_hud(src,0)
 
+	//Deprecated, but we don't use these
 	if (src.healths)
 		if (src.stat != 2)
 			if(istype(src,/mob/living/silicon/robot/drone))

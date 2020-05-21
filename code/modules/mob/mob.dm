@@ -33,7 +33,7 @@
 	toxin = null
 	fire = null
 	bodytemp = null
-	healths = null
+	QDEL_NULL(healths)
 	throw_icon = null
 	nutrition_icon = null
 	pressure = null
