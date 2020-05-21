@@ -42,6 +42,8 @@
 
 		remake_click_catcher()
 
+		update_skybox(TRUE)
+
 		if (mob)
 			mob.reload_fullscreen()
 			if (mob.l_general)//It may not exist during login
