@@ -18,6 +18,9 @@
 	var/husk_icon =    'icons/mob/human_races/species/default_husk.dmi'
 	var/lying_rotation = 90 //How much to rotate the icon when lying down
 	var/mob_type = /mob/living/carbon/human	//The mob we spawn in order to create a member of this species instantly
+	var/health_doll_offset	= WORLD_ICON_SIZE+8	//For this species, the hud health doll is offset this many pixels to the right.
+	//This default value is fine for humans and anything roughly the same width as a human, larger creatures will require different numbers
+	//The value required depends not only on overall icon size, but also on the empty space on -both- sides of the sprite. Trial and error is the best way to find the right number
 
 	//This icon_lying var pulls several duties
 	//First, if its non-null, it indicates this species has some kind of special behaviour when lying down. This will trigger extra updates and things

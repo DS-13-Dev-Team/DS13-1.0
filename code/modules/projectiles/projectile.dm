@@ -127,7 +127,7 @@
 
 /obj/item/projectile/forceMove()
 	..()
-	if(istype(loc, /turf/space/) && istype(loc.loc, /area/space))
+	if(!vacuum_traversal && istype(loc, /turf/space/) && istype(loc.loc, /area/space))
 		qdel(src)
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not

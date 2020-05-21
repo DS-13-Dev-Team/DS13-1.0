@@ -84,6 +84,9 @@
 
 /mob/living/carbon/alien/handle_regular_hud_updates()
 	update_sight()
+
+
+	//Deprecated, but we don't use these
 	if (healths)
 		if(stat != DEAD)
 			switch(health)

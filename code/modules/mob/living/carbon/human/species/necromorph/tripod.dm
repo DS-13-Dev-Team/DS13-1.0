@@ -23,6 +23,7 @@
 	icon_lying = "_lying"
 	pixel_offset_x = -54
 	single_icon = FALSE
+	health_doll_offset	= 56
 
 	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER

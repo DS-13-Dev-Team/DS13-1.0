@@ -138,10 +138,16 @@ var/list/robot_hud_colours = list("#ffffff","#cccccc","#aaaaaa","#888888","#6666
 
 /obj/item/organ/external/proc/get_damage_hud_image()
 
+
+
 	// Generate the greyscale base icon and cache it for later.
 	// icon_cache_key is set by any get_icon() calls that are made.
 	// This looks convoluted, but it's this way to avoid icon proc calls.
 	if(!hud_damage_image)
+		//To cope with lying icons, we briefly set it false
+		var/prev_lying = owner.lying
+		owner.lying = FALSE
+
 		var/cache_key = "dambase-[icon_cache_key]"
 		if(!icon_cache_key || !limb_icon_cache[cache_key])
 			limb_icon_cache[cache_key] = icon(get_icon(), null, SOUTH)
@@ -155,6 +161,7 @@ var/list/robot_hud_colours = list("#ffffff","#cccccc","#aaaaaa","#888888","#6666
 		hud_damage_image = image(null)
 		hud_damage_image.overlays += temp
 
+		owner.lying = prev_lying
 
 	// Calculate the required color index.
 	var/dam_state = min(1,((brute_dam+burn_dam)/max(1,max_damage)))
@@ -164,6 +171,8 @@ var/list/robot_hud_colours = list("#ffffff","#cccccc","#aaaaaa","#888888","#6666
 	// Apply colour and return product.
 	var/list/hud_colours = !BP_IS_ROBOTIC(src) ? flesh_hud_colours : robot_hud_colours
 	hud_damage_image.color = hud_colours[max(1,min(ceil(dam_state*hud_colours.len),hud_colours.len))]
+
+
 	return hud_damage_image
 
 /obj/item/organ/external/proc/apply_colouration(var/icon/applying)

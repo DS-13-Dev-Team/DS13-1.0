@@ -81,6 +81,9 @@
 	img.alpha = silicate * 255 / 100
 	overlays += img
 
+/obj/structure/window/zero_health()
+	shatter()
+
 /obj/structure/window/proc/shatter(var/display_message = 1)
 	playsound(src, "shatter", 70, 1)
 	if(display_message)

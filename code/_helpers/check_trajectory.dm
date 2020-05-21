@@ -92,6 +92,11 @@
 	xo = null
 	var/obstacle = null
 	var/result = null //To pass the message back to the gun.
+	vacuum_traversal = TRUE
+
+//This shouldn't be called on a test projectile
+/obj/item/projectile/test/expire()
+	return
 
 /obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area)
 	if(A == firer)
@@ -125,7 +130,7 @@
 	return Process(targloc)
 
 /obj/item/projectile/test/Process(var/turf/targloc)
-	while(src) //Loop on through!
+	while(!QDELETED(src)) //Loop on through!
 		if(!isnull(result))
 			return result
 		if((!( targloc ) || loc == targloc))
@@ -154,3 +159,9 @@
 
 		//If we get here, lets set our location to the newloc and ignore blockers
 		loc = newloc
+
+
+/obj/item/projectile/test/Destroy()
+	obstacle = null
+	result = null
+	.=..()

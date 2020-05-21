@@ -31,6 +31,7 @@
 	unarmed_types = list(/datum/unarmed_attack/bite/lurker) //Bite attack is a backup if blades are severed
 	total_health = 60
 	biomass = 50
+	health_doll_offset	= 50
 
 	icon_template = 'icons/mob/necromorph/lurker.dmi'
 	icon_lying = "_lying"

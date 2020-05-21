@@ -14,6 +14,7 @@
 	icon_normal = "brute-d"
 	icon_lying = "brute-d-dead"//Temporary icon so its not invisible lying down
 	icon_dead = "brute-d-dead"
+	health_doll_offset	= 74
 
 	pixel_offset_x = -16
 	plane = LARGE_MOB_PLANE

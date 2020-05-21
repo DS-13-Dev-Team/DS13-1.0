@@ -1,6 +1,28 @@
 /mob/living/carbon/human
 	hud_type = /datum/hud/human
 
+/datum/hud/human/Destroy()
+	if (mymob)
+		QDEL_NULL(mymob.throw_icon)
+		QDEL_NULL(mymob.pullin)
+		QDEL_NULL(mymob.internals)
+		QDEL_NULL(mymob.internals)
+		QDEL_NULL(mymob.oxygen)
+		QDEL_NULL(mymob.toxin)
+		QDEL_NULL(mymob.fire)
+		QDEL_NULL(mymob.healths)
+		QDEL_NULL(mymob.pressure)
+		QDEL_NULL(mymob.bodytemp)
+		QDEL_NULL(mymob.nutrition_icon)
+		QDEL_NULL(mymob.pain)
+		QDEL_NULL(mymob.zone_sel)
+		QDEL_NULL(mymob.gun_setting_icon)
+		QDEL_NULL(mymob.item_use_icon)
+		QDEL_NULL(mymob.gun_move_icon)
+		QDEL_NULL(mymob.radio_use_icon)
+
+	.=..()
+
 /datum/hud/human/FinalizeInstantiation(var/ui_style='icons/mob/screen1_White.dmi', var/ui_color = "#ffffff", var/ui_alpha = 255)
 	var/mob/living/carbon/human/target = mymob
 	var/datum/hud_data/hud_data
@@ -201,11 +223,8 @@
 		mymob.fire.screen_loc = ui_fire
 		hud_elements |= mymob.fire
 
-		mymob.healths = new /obj/screen()
+		mymob.healths = new /obj/screen/health_doll/human(mymob)
 		mymob.healths.icon = ui_style
-		mymob.healths.icon_state = "health0"
-		mymob.healths.SetName("health")
-		mymob.healths.screen_loc = ui_health
 		hud_elements |= mymob.healths
 
 	if(hud_data.has_pressure)

@@ -49,6 +49,8 @@
 	action_intent = new /obj/screen/intent/diona_nymph()
 	adding += action_intent
 
+	//This is deprecated, see health_doll.dm
+	//If these are ever re-activated a new version will be needed
 	mymob.healths = new /obj/screen()
 	mymob.healths.icon = 'icons/mob/gestalt.dmi'
 	mymob.healths.icon_state = "health0"

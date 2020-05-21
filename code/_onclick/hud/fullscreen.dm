@@ -24,6 +24,7 @@
 
 	if(!screen)
 		screen = new type()
+		screen.owner = src
 
 	screen.icon_state = "[initial(screen.icon_state)][severity]"
 	screen.severity = severity
@@ -97,6 +98,7 @@
 	var/small_icon = FALSE	//True on any that don't use screen_full.dmi
 	var/severity = 0
 	var/allstate = 0 //shows if it should show up for dead people too
+	var/mob/owner
 
 /obj/screen/fullscreen/proc/set_size(var/client/C)
 	//Here we select (and if needed, generate) the icon for the right size
@@ -109,6 +111,7 @@
 
 /obj/screen/fullscreen/Destroy()
 	severity = 0
+	owner = null
 	return ..()
 
 /obj/screen/fullscreen/brute
@@ -141,6 +144,11 @@
 /obj/screen/fullscreen/pain
 	icon_state = "brutedamageoverlay6"
 	alpha = 0
+
+/obj/screen/fullscreen/pain/Destroy()
+	if (owner && owner.pain == src)
+		owner.pain = null
+	.= ..()
 
 
 //Small icons

@@ -35,7 +35,7 @@
 /datum/unarmed_attack/claws/show_attack(var/mob/living/carbon/human/user, var/atom/target, var/zone, var/attack_damage)
 	if (ishuman(target))
 		var/mob/living/carbon/human/H = target
-		var/obj/item/organ/external/affecting = H.get_organ(zone)
+		var/obj/item/organ/external/affecting = H.find_target_organ(zone)
 
 		attack_damage = Clamp(attack_damage, 1, 5)
 
