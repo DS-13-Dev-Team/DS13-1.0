@@ -13,8 +13,8 @@
 	ideal_character_age = 50
 	starting_credits = 5080
 
-	access = list(access_smo, access_bridge, access_maint_tunnels, access_medical, access_chemistry,
-				access_surgery, access_keycard_auth)
+	access = list(access_smo, access_bridge, access_maint_tunnels, access_medical, access_surgery, access_research, access_chemistry,
+					access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/medical/smo
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_EXPERT,

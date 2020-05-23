@@ -61,7 +61,7 @@
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/shoes/leather,
 		/obj/item/clothing/gloves/latex,
-		/obj/item/device/radio/headset/heads/rd,
+		/obj/item/device/radio/headset/heads/cscio,
 		/obj/item/clothing/mask/gas,
 		/obj/item/device/flash,
 		/obj/item/weapon/clipboard,

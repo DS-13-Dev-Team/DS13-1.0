@@ -12,7 +12,7 @@
 /decl/hierarchy/outfit/job/medical/smo
 	name = OUTFIT_JOB_NAME("Senior Medical Officer")
 	l_ear = /obj/item/device/radio/headset/heads/smo
-	uniform = /obj/item/clothing/under/senior_medical_officer/deadspace
+	uniform = /obj/item/clothing/under/senior_medical_officer
 	id_type = /obj/item/weapon/card/id/holo/medical/smo
 	pda_type = /obj/item/modular_computer/pda/heads/cmo
 

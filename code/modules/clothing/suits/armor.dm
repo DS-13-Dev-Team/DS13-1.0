@@ -182,7 +182,16 @@
 		holster.unholster(usr)
 */
 
-//Non-hardsuit ERT armor.
+//Non-hardsuit ERT armor
+//Kellion - Grunt
+/obj/item/clothing/suit/armor/vest/kellion
+	name = "asset protection command armor"
+	desc = "A set of armor worn by many corporate and private asset protection forces. Has blue highlights."
+	icon_state = "kellion_grunt"
+	item_state = "armor"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor = list(melee = 60, bullet = 60, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)
+
 //Commander
 /obj/item/clothing/suit/armor/vest/ert
 	name = "asset protection command armor"
@@ -406,6 +415,9 @@
 			P.redirect(new_x, new_y, curloc, user)
 
 			return PROJECTILE_CONTINUE // complete projectile permutation
+
+
+
 
 //All of the armor below is mostly unused
 

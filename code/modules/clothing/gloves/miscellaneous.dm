@@ -144,3 +144,17 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 	armor = list(melee = 40, bullet = 40, laser = 0, energy = 0, bomb = 20, bio = 10, rad = 0)
+
+/obj/item/clothing/gloves/kellion
+	desc = "A pair of thick, armored gloves designed to protect the wearer and keep blood off."
+	name = "armored gloves"
+	icon_state = "grunt_gloves"
+	item_state = "grunt_gloves"
+	siemens_coefficient = 0.50
+	permeability_coefficient = 0.05
+	item_flags = ITEM_FLAG_THICKMATERIAL
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
+	heat_protection = HANDS
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
+	armor = list(melee = 40, bullet = 40, laser = 0, energy = 0, bomb = 20, bio = 10, rad = 0)

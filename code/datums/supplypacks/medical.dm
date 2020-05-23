@@ -97,7 +97,7 @@
 /decl/hierarchy/supply_pack/medical/smogear
 	name = "Chief medical officer equipment"
 	contains = list(/obj/item/weapon/storage/belt/medical,
-					/obj/item/device/radio/headset/heads/cmo,
+					/obj/item/device/radio/headset/heads/smo,
 					/obj/item/clothing/under/rank/chief_medical_officer,
 					/obj/item/weapon/reagent_containers/hypospray/vial,
 					/obj/item/clothing/accessory/stethoscope,
