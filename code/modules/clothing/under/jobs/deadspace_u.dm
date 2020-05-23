@@ -45,7 +45,7 @@
 /*
  * Medical
  */
-/obj/item/clothing/under/senior_medical_officer/deadspace
+/obj/item/clothing/under/senior_medical_officer
 	name = "senior medical officer's uniform"
 	desc = "A white uniform with a bright blue collar, symbolizing this uniform belongs to the Senior Medical Officer.."
 	item_state = "ds_senior_med_officer"
@@ -124,12 +124,32 @@
 /*
  * Security
  */
-/obj/item/clothing/under/security/deadspace
+/obj/item/clothing/under/security
 	name = "security jumpsuit"
 	desc = "A dark brown uniform issued to security officers. It offers some light ballistic protection due to the light armor plates sewn into the chest and thighs."
 	item_state = "ds_securityjumpsuit"
 	worn_state = "ds_securityjumpsuit"
 	icon_state = "ds_securityjumpsuit"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	permeability_coefficient = 0.25
 	armor = list(melee = 35, bullet = 55, laser = 0, energy = 20, bomb = 45, bio = 0, rad = 0)
+
+
+/*
+ * ERT Uniforms
+ */
+/obj/item/clothing/under/kellion
+	name = "security jumpsuit"
+	desc = "A dark brown uniform issued to security officers. It offers some light ballistic protection due to the light armor plates sewn into the chest and thighs."
+	item_state = "o_suit"
+	worn_state = "kellion_jumpsuit"
+	icon_state = "kellion_jumpsuit"
+	permeability_coefficient = 0.25
+	armor = list(melee = 35, bullet = 55, laser = 0, energy = 20, bomb = 45, bio = 0, rad = 0)
+
+/obj/item/clothing/under/kellion/leader
+	name = "asset protection command armor"
+	desc = "A set of armor worn by many corporate and private asset protection forces. Has blue highlights."
+	item_state = "kellion_lead"
+	worn_state = "kellion_lead"
+	icon_state = "kellion_lead"
+	armor = list(melee = 60, bullet = 60, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)

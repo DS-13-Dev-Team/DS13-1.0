@@ -107,7 +107,7 @@
 
 /obj/item/device/radio/headset/headset_eng
 	name = "engineering radio headset"
-	desc = "When the engineers wish to chat like girls."
+	desc = "A headset used by engineers, used often for screaming at one another about technical issues."
 	icon_state = "eng_headset"
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/headset_eng
@@ -126,7 +126,7 @@
 
 /obj/item/device/radio/headset/headset_med
 	name = "medical radio headset"
-	desc = "A headset for the trained staff of the medbay."
+	desc = "A headset for the trained staff of the clinic."
 	icon_state = "med_headset"
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/headset_med
@@ -138,7 +138,7 @@
 
 /obj/item/device/radio/headset/headset_sci
 	name = "science radio headset"
-	desc = "A sciency headset. Like usual."
+	desc = "A headest for the research staff, with technobabble heard on it often."
 	icon_state = "com_headset"
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/headset_sci
@@ -197,9 +197,9 @@
 		return -1 //Transciever Disabled.
 	return ..(freq, level, 1)
 
-/obj/item/device/radio/headset/heads/rd
-	name = "research director's headset"
-	desc = "Headset of the researching God."
+/obj/item/device/radio/headset/heads/cscio
+	name = "chief science officer's headset"
+	desc = "Headset of the head of research."
 	icon_state = "com_headset"
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/heads/rd
@@ -230,10 +230,17 @@
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/heads/cmo
 
-/obj/item/device/radio/headset/heads/cmo/alt
+/obj/item/device/radio/headset/heads/smo/alt
 	name = "chief medical officer's bowman headset"
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
+
+/obj/item/device/radio/headset/heads/so
+	name = "supply officer's headset"
+	desc = "The headset of the chief box pusher."
+	icon_state = "cargo_headset"
+	item_state = "headset"
+	ks1type = /obj/item/device/encryptionkey/headset_deckofficer
 
 /obj/item/device/radio/headset/heads/fl
 	name = "first lieutenant's headset"

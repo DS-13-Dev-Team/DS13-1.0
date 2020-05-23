@@ -139,6 +139,10 @@
 
 //------------------Maintenance - Upper------------------//
 /area/ishimura/upper/maintenance
+	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = TUNNEL_ENCLOSED
+	turf_initializer = /decl/turf_initializer/maintenance
+	forced_ambience = list('sound/ambience/maintambience.ogg')
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
 
@@ -261,10 +265,10 @@
 	name = "\improper Hangar Hallway"
 
 /area/ishimura/upper/misc/hangar
-	name = "\improper Ishimura Hangar"
+	name = "\improper Hangar"
 
 /area/ishimura/upper/misc/hangar/reception
-	name = "\improper Hangar Reception Lobby"
+	name = "\improper Hangar Lobby"
 
 /area/ishimura/upper/misc/janitorcloset
 	name = "\improper Janitorial Closet"
@@ -498,6 +502,10 @@
 
 //------------------Maintenance------------------//
 /area/ishimura/lower/maintenance
+	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = TUNNEL_ENCLOSED
+	turf_initializer = /decl/turf_initializer/maintenance
+	forced_ambience = list('sound/ambience/maintambience.ogg')
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
 

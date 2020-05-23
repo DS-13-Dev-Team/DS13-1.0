@@ -28,19 +28,19 @@
 	/*
 	base_floor_type = /turf/simulated/floor/reinforced/airless
 	base_floor_area = /area/maintenance/exterior
-
-	post_round_safe_areas = list (
-		/area/centcom,
-		/area/shuttle/escape/centcom,
-		/area/shuttle/escape_pod1/centcom,
-		/area/shuttle/escape_pod2/centcom,
-		/area/shuttle/escape_pod3/centcom,
-		/area/shuttle/escape_pod5/centcom,
-		/area/shuttle/transport1/centcom,
-		/area/shuttle/administration/centcom,
-		/area/shuttle/specops/centcom,
-	)
 	*/
+	post_round_safe_areas = list (
+		/area/shuttle/escape_pod1/station,
+		/area/shuttle/escape_pod2/station,
+		/area/shuttle/escape_pod3/station,
+		/area/shuttle/escape_pod4/station,
+		/area/shuttle/escape_pod5/station,
+		/area/shuttle/escape_pod6/station,
+		/area/shuttle/escape_pod7/station,
+		/area/shuttle/escape_pod8/station,
+		/area/shuttle/escape_pod9/station,
+	)
+
 	//Todo: Find good values for these
 
 	//Spawnpoints:

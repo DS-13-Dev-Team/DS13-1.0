@@ -117,7 +117,7 @@ var/list/airlock_overlays = list()
 
 /obj/machinery/door/airlock/security
 	stripe_color = COLOR_NT_RED
-	req_access = list(2)
+	req_one_access = list(2,57,100)
 
 /obj/machinery/door/airlock/engineering
 	name = "Maintenance Hatch"

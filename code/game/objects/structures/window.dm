@@ -94,6 +94,8 @@
 	qdel(src)
 	return
 
+/obj/structure/window/zero_health()
+    shatter()
 
 
 //TODO: Make full windows a separate type of window.
