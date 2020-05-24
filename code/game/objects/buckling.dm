@@ -27,6 +27,11 @@
 		return 0
 	if(!istype(M) || (M.loc != loc) || M.buckled || M.pinned.len || (buckle_require_restraints && !M.restrained()))
 		return 0
+
+	//For now, hard restriction on buckling large mobs.
+	//In future, maybe refactoring
+	if (M.mob_size > MOB_MEDIUM)
+		return 0
 	if(ismob(src))
 		var/mob/living/carbon/C = src //Don't wanna forget the xenos.
 		if(M != src && C.incapacitated())

@@ -17,7 +17,7 @@
 	name_plural =  "Tripods"
 	blurb = "A heavy skirmisher, the tripod is adept at leaping around open spaces and fighting against multiple distant targets."
 	total_health = 500
-	torso_damage_mult = 1 //Hitting centre mass is fine for tripod
+	torso_damage_mult = 0.65 //Hitting centre mass is fine for tripod
 
 	icon_template = 'icons/mob/necromorph/tripod.dmi'
 	icon_lying = "_lying"
@@ -31,6 +31,7 @@
 	biomass = 350
 	mass = 250
 	biomass_reclamation_time	=	15 MINUTES
+	marker_spawnable = TRUE
 
 
 	//Collision and bulk
@@ -62,17 +63,18 @@
 
 	unarmed_types = list(/datum/unarmed_attack/punch/tripod)
 
-	slowdown = 6 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
+	slowdown = 5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
 
 	//Vision
 	view_range = 12
 
 
 	has_limbs = list(
-	BP_HEAD = list("path" = /obj/item/organ/external/arm/tentacle/tripod_tongue),
+
 	BP_CHEST =  list("path" = /obj/item/organ/external/chest/giant),
 	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/giant),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/giant)
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/giant),
+	BP_HEAD = list("path" = /obj/item/organ/external/arm/tentacle/tripod_tongue),
 	)
 
 	locomotion_limbs = list(BP_R_ARM, BP_L_ARM)
@@ -188,9 +190,11 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	Organs
 --------------------------------*/
 /obj/item/organ/external/arm/tentacle/tripod_tongue
+	name = "tongue"
 	organ_tag = BP_HEAD
 	icon_name = "tongue"
 	retracted = TRUE
+	parent_organ = BP_CHEST
 
 //The tongue has a slithering noise for when it goes in and out
 /obj/item/organ/external/arm/tentacle/tripod_tongue/retract()
@@ -381,7 +385,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	range = ARM_SWING_RANGE,
 	duration = 0.85 SECOND,
 	windup = 0.8 SECONDS,
-	cooldown = 3 SECONDS,
+	cooldown = 3.5 SECONDS,
 	effect_type = effect,
 	damage = 20,
 	damage_flags = DAM_EDGE,

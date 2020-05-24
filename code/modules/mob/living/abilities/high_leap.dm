@@ -74,6 +74,8 @@
 		user.evasion -= evasion_delta
 		evasion_delta = 0
 
+	.=..()
+
 /*----------------------------------
 	Windup
 -----------------------------------*/
@@ -105,6 +107,7 @@
 	if (results[3] != target_loc)
 		//Uh oh, there's an obstacle here
 		obstacle = results[3]	//We will crash into this later
+
 
 	target_loc = results[2]	//We'll set our target to wherever the projectile reached
 
