@@ -21,6 +21,7 @@
 	var/breakout = 0 //if someone is currently breaking out. mutex
 	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
+	var/max_mob_size = MOB_MEDIUM
 	var/open_sound = 'sound/effects/closet_open.ogg'
 	var/close_sound = 'sound/effects/closet_close.ogg'
 	hitsound = 'sound/effects/grillehit.ogg'
@@ -166,6 +167,8 @@
 	. = 0
 	for(var/mob/living/M in loc)
 		if(M.buckled || M.pinned.len || M.anchored)
+			continue
+		if (M.mob_size > max_mob_size)
 			continue
 		var/mob_size = content_size(M)
 		if(CLOSET_CHECK_TOO_BIG(mob_size))

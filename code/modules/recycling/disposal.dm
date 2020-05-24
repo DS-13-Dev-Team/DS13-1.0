@@ -28,6 +28,7 @@
 	active_power_usage = 2200	//the pneumatic pump power. 3 HP ~ 2200W
 	idle_power_usage = 100
 	atom_flags = ATOM_FLAG_CLIMBABLE
+	var/max_mob_size = MOB_MEDIUM
 
 // create a new disposal
 // find the attached trunk (if present) and init gas resvr.
@@ -49,6 +50,35 @@
 	if(trunk)
 		trunk.linked = null
 	return ..()
+
+/obj/machinery/disposal/proc/try_insert_mob(var/mob/victim, var/mob/user)
+	if (victim.mob_size > max_mob_size || victim.buckled || (user && user.incapacitated()))
+		return
+
+
+	if (user)
+		if (user != victim)
+			visible_message(SPAN_WARNING("[user] starts putting [victim] into the disposal."))
+		else
+			visible_message(SPAN_WARNING("[user] starts climbing into the disposal."))
+
+		if (!do_after(user, 6 SECONDS, src))
+			return
+
+	//If we get here it succeeds
+	insert_mob(victim)
+
+	if (user)
+		if (user != victim)
+			visible_message(SPAN_WARNING("[victim] has been placed into the disposal.by [user]"))
+			admin_attack_log(user, victim, "Placed the victim into \the [src].", "Was placed into \the [src] by the attacker.", "stuffed \the [src] with")
+
+/obj/machinery/disposal/proc/insert_mob(var/mob/victim)
+	if (victim.client)
+		victim.client.perspective = EYE_PERSPECTIVE
+		victim.client.eye = src
+	victim.forceMove(src)
+
 
 // attack by item places it in to disposal
 /obj/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
@@ -105,19 +135,9 @@
 	var/obj/item/grab/G = I
 	if(istype(G))	// handle grabbed mob
 		if(ismob(G.affecting))
-			var/mob/GM = G.affecting
-			for (var/mob/V in viewers(usr))
-				V.show_message("[usr] starts putting [GM.name] into the disposal.", 3)
-			if(do_after(usr, 20, src))
-				if (GM.client)
-					GM.client.perspective = EYE_PERSPECTIVE
-					GM.client.eye = src
-				GM.forceMove(src)
-				for (var/mob/C in viewers(src))
-					C.show_message("<span class='warning'>[GM.name] has been placed in the [src] by [user].</span>", 3)
-				qdel(G)
-				admin_attack_log(usr, GM, "Placed the victim into \the [src].", "Was placed into \the [src] by the attacker.", "stuffed \the [src] with")
-		return
+			try_insert_mob(G.affecting, user)
+			return
+
 
 	if(isrobot(user))
 		return
@@ -143,17 +163,12 @@
 	if(stat & BROKEN || !CanMouseDrop(AM, user, incapacitation_flags) || AM.anchored || !isturf(user.loc))
 		return
 
-	// Animals can only put themself in
-	if(isanimal(user) && AM != user)
-		return
-
 	// Determine object type and run necessary checks
 	var/mob/M = AM
 	var/is_dangerous // To determine css style in messages
 	if(istype(M))
-		is_dangerous = TRUE
-		if(M.buckled)
-			return
+		try_insert_mob(M, user)
+		return
 	else if(istype(AM, /obj/item))
 		attackby(AM, user)
 		return
