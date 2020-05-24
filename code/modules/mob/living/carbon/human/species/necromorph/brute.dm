@@ -79,7 +79,7 @@
 	BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/giant)
 	)
 
-
+	grasping_limbs = list(BP_R_HAND, BP_L_HAND)
 	//Audio
 	step_volume = 10 //Brute stomps are low pitched and resonant, don't want them loud
 	step_range = 4
