@@ -59,7 +59,6 @@
 
 	var/hitscan = 0		// whether the projectile should be hitscan
 	var/step_delay = 1	// the delay between iterations if not a hitscan projectile
-	var/cached_rotation = 0 //This is used to prevent rotation changes from accumulating on redirects
 
 	// effect types to be used
 	var/muzzle_type
@@ -326,6 +325,10 @@
 
 	return 0
 
+
+/obj/item/projectile/proc/attack_atom(var/atom/A,  var/distance, var/miss_modifier=0)
+	return A.bullet_act(src, def_zone)
+
 /obj/item/projectile/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == src)
 		return 0 //no
@@ -356,10 +359,10 @@
 		else
 			passthrough = 1 //so ghosts don't stop bullets
 	else
-		passthrough = (A.bullet_act(src, def_zone) == PROJECTILE_CONTINUE) //backwards compatibility
+		passthrough = (attack_atom(A, distance) == PROJECTILE_CONTINUE) //backwards compatibility
 		if(isturf(A))
 			for(var/obj/O in A)
-				O.bullet_act(src)
+				attack_atom(O, distance)
 			for(var/mob/living/M in A)
 				var/p = attack_mob(M, distance)
 				if (passthrough == TRUE)
@@ -474,8 +477,8 @@
 	effect_transform.Turn(round(-trajectory.return_angle(), 0.1))		//no idea why this has to be inverted, but it works
 
 	var/newrot = (-(trajectory.return_angle() + 90))
-	transform = turn(transform, newrot - cached_rotation) //Bullets are turned because their sprites are drawn side-facing
-	cached_rotation = newrot
+	transform = turn(transform, newrot - default_rotation) //Bullets are turned because their sprites are drawn side-facing
+	default_rotation = newrot
 
 /obj/item/projectile/proc/muzzle_effect(var/matrix/T)
 	if(silenced)

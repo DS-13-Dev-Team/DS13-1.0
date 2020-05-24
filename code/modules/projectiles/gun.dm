@@ -67,7 +67,7 @@
 						//0 for one bullet after tarrget moves and aim is lowered
 	var/multi_aim = 0 //Used to determine if you can target multiple people.
 	var/tmp/list/mob/living/aim_targets //List of who yer targeting.
-
+	var/require_aiming = FALSE	//If true, this gun can ONLY be fired while in ironsights mode. it will fail to fire if not aiming down the sights
 
 	//Aiming Modes: Scopes, ironsights, etc
 	var/selected_aiming_mode	//Typepath of the aiming mode datum we will create when we activate aiming mode
@@ -245,6 +245,9 @@
 	if (!special_check(user))
 		return FALSE
 
+	if (require_aim && !active_aiming_mode)
+		return FALSE
+
 	return TRUE
 
 //Returns true if the gun can fire now, or will become able to fire in the near future without any active intervention
@@ -302,6 +305,7 @@
 	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
 	for(var/i in 1 to burst)
 		var/obj/projectile = consume_next_projectile(user)
+		.=projectile	//We'll return the projectile
 		if(!projectile)
 			handle_click_empty(user)
 			if (current_firemode)
@@ -329,7 +333,7 @@
 		play_fire_sound(user,projectile)
 
 		handle_post_fire(user, target, pointblank, reflex)
-		if (current_firemode)	current_firemode.on_fire(target, user, clickparams, pointblank, reflex, TRUE)//Tell the firemode that we successfully fired
+		if (current_firemode)	current_firemode.on_fire(target, user, clickparams, pointblank, reflex, TRUE, projectile)//Tell the firemode that we successfully fired
 
 	//update timing
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
