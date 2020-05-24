@@ -62,7 +62,7 @@
 		else
 			visible_message(SPAN_WARNING("[user] starts climbing into the disposal."))
 
-		if (!do_after(user, 3 SECONDS, src))
+		if (!do_after(user, 6 SECONDS, src))
 			return
 
 	//If we get here it succeeds
@@ -77,7 +77,7 @@
 	if (victim.client)
 		victim.client.perspective = EYE_PERSPECTIVE
 		victim.client.eye = src
-		victim.forceMove(src)
+	victim.forceMove(src)
 
 
 // attack by item places it in to disposal
