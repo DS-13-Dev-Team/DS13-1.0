@@ -57,7 +57,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 	return 1
 
 /mob/living/carbon/human/put_in_r_hand(var/obj/item/W)
-	if(!..() || l_hand || !LAZYLEN(species.grasping_limbs))
+	if(!..() || r_hand || !LAZYLEN(species.grasping_limbs))
 		return 0
 	var/obj/item/organ/external/hand = get_organ(species.grasping_limbs[min(species.grasping_limbs.len, 1)])
 	if(!hand || !hand.is_usable())
