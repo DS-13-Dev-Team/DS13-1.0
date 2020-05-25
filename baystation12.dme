@@ -2427,6 +2427,7 @@
 #include "code\modules\projectiles\guns\ds13\plasma_cutter.dm"
 #include "code\modules\projectiles\guns\ds13\pulse_rifle.dm"
 #include "code\modules\projectiles\guns\ds13\seeker.dm"
+#include "code\modules\projectiles\guns\ds13\line_cutter\wave.dm"
 #include "code\modules\projectiles\guns\energy\laser.dm"
 #include "code\modules\projectiles\guns\energy\nuclear.dm"
 #include "code\modules\projectiles\guns\energy\secure.dm"

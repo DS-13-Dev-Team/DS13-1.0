@@ -245,7 +245,7 @@
 	if (!special_check(user))
 		return FALSE
 
-	if (require_aim && !active_aiming_mode)
+	if (require_aiming && !active_aiming_mode)
 		return FALSE
 
 	return TRUE

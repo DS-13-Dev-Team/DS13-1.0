@@ -93,6 +93,21 @@ vector2
 			if(isnum(m)) return src * (m / Magnitude())
 			else CRASH("Invalid args.")
 
+		/*
+			Get a vector in the same direction, with its magnitude clamped between minimum and maximum
+		*/
+		ClampMag(var/minimum, var/maximum)
+
+			var/current_magnitude = Magnitude()
+			if (current_magnitude < minimum)
+				return ToMagnitude(minimum)
+
+			if (current_magnitude > maximum)
+				return ToMagnitude(maximum)
+
+			//If we're within range, do this anyway to return a copy of ourselves
+			.=src.ToMagnitude(current_magnitude)
+
 		/* Get a vector in the same direction but with magnitude 1.
 		*/
 		Normalized() return ToMagnitude(1)
@@ -140,6 +155,15 @@ vector2
 		Angle()	return AngleFrom(Vector2.North)
 
 
+		//Projects this vector onto another
+		Projection(var/vector2/onto)
+			var/vector2/result = (onto*(src.Dot(onto) / onto.Dot(onto)))
+			return result
+
+
+		Rejection(var/vector2/onto)
+			var/vector2/result = src - Projection(onto)
+			return result
 
 		/* Get the matrix that rotates from_vector to point in this direction.
 			Also accepts a dir.

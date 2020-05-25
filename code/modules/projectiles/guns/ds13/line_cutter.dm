@@ -14,17 +14,12 @@
 	icon_state = "linecutter"
 	item_state = "linecutter"
 
-	charge_cost = 1000 //Five shots per battery
 	ammo_type = /obj/item/ammo_casing/linerack
 	slot_flags = SLOT_BACK
-	charge_meter = FALSE	//if set, the icon state will be chosen based on the current charge
 	mag_insert_sound = 'sound/weapons/guns/interaction/force_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/force_magout.ogg'
-	removeable_cell = TRUE
 	firemodes = list(
-		list(mode_name = "blast", mode_type = /datum/firemode/linecutter/blast, fire_sound = 'sound/weapons/guns/fire/force_shot.ogg', fire_delay = 1.5 SECONDS),
-		list(mode_name = "focus", mode_type = /datum/firemode/linecutter/focus, windup_time = 1.5 SECONDS, windup_sound = 'sound/weapons/guns/fire/force_windup.ogg', fire_sound = 'sound/weapons/guns/fire/force_focus.ogg',fire_delay = 1.5 SECONDS)
-		)
+		list(mode_name = "line cutter", fire_sound = 'sound/weapons/guns/fire/force_shot.ogg', fire_delay = 1.5 SECONDS))
 
 	icon_state = "linecutter"
 	item_state = "linecutter"
@@ -34,7 +29,7 @@
 	load_method = SPEEDLOADER
 	caliber = "linerack"
 	slot_flags = SLOT_BACK
-	ammo_type = /obj/item/ammo_casing/pulse
+	ammo_type = /obj/item/ammo_casing/linerack
 	mag_insert_sound = 'sound/weapons/guns/interaction/pulse_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'
 	one_hand_penalty = 6	//Don't try to fire this with one hand
@@ -43,7 +38,7 @@
 	aiming_modes = list(/datum/extension/aim_mode/heavy)
 
 	//The linegun opens when you enter ironsights mode
-	require_aim = TRUE
+	require_aiming = TRUE
 
 /obj/item/weapon/gun/projectile/linecutter/empty
 	ammo_type = null
@@ -54,26 +49,31 @@
 	.=..()
 	if (.)
 		if (!is_held_twohanded(loc))
+			return FALSE
 
 /*
 	Firemodes
 */
 /*
-	Blast is a close range shotgun attack.
+	Projectile
 */
-/datum/firemode/linecut
+/obj/item/projectile/wave/linecutter
+	damage = 40
+	penetrating = TRUE
+	icon = 'icons/obj/weapons/ds13_projectiles_large.dmi'
+	icon_state = "linecutter_48"
+	step_delay = 2
+	kill_count = 10	//Short ranged
 
+/obj/item/projectile/wave/linecutter/update_icon()
+	if (backstop)
+		return
 
-
-
-/datum/firemode/linecut/on_fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0, var/obj/projectile)
-
-
-
-
-
-
-
+	switch(side)
+		if (LEFT)
+			icon_state = "linecutter_left"
+		if (RIGHT)
+			icon_state = "linecutter_right"
 
 /*--------------------------
 	Ammo
@@ -92,8 +92,17 @@
 	delete_when_empty = TRUE
 
 
+/obj/item/ammo_casing/linerack
+	name = "line rack"
+	desc = "An assemblage of metal and wires with a built in power supply"
+	icon_state = "linerack"
+	spent_icon = "linerack"
+	projectile_type  = /obj/item/projectile/wavespawner/linecutter
 
 
+/obj/item/projectile/wavespawner/linecutter
+	wave_type = /obj/item/projectile/wave/linecutter
+	width = 3
 
 /*
 	Acquisition

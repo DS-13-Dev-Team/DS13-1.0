@@ -20,14 +20,19 @@
 -----------------------------*/
 //Actually creates and launches a wave.
 //Width should be an odd number or it will skew to the right
-/proc/launch_wave(var/atom/source, var/atom/target, var/projectile_type = /obj/item/projectile/wave, var/width = 3)
+/proc/launch_wave(var/atom/source, var/atom/target, var/projectile_type = /obj/item/projectile/wave, var/width = 3, var/mob/living/user, var/obj/item/weapon/gun/launcher)
 
 	var/datum/projectile_wave/wave = new()
 	wave.origin = source
 	wave.target = target
+	wave.projectile_type = projectile_type
+
+	wave.target_zone = get_zone_sel(user)
 
 	var/vector2/direction = Vector2.DirectionBetween(source, target)
-	var/start_turf = origin.get_turf_at_pixel_offset(direction * WORLD_ICON_SIZE)
+	wave.direction = direction
+	wave.perpendicular_direction = direction.Turn(90)
+	var/turf/start_turf = wave.origin.get_turf_at_pixel_offset(direction * WORLD_ICON_SIZE)
 
 	//Lets make our first/master projectile
 	var/obj/item/projectile/wave/W = new projectile_type(start_turf)
@@ -41,42 +46,87 @@
 	while(width > 0)
 		steps_out++
 
-		//We go to the right first
-		var/turf/T = start_turf.get_turf_at_pixel_offset(direction_right * WORLD_ICON_SIZE * steps_out)
+		//We go to the left first
+		var/turf/T = start_turf.get_turf_at_pixel_offset(direction_left * WORLD_ICON_SIZE * steps_out)
 		W = new projectile_type(T)
 		wave.register(W, FALSE)
+		W.side = LEFT
 		width--
 
-		if (!width <= 0)
+		if (width <= 0)
 			break
 
-		//Then we go left
+		//Then we go right
 		T = start_turf.get_turf_at_pixel_offset(direction_right * WORLD_ICON_SIZE * steps_out)
 		W = new projectile_type(T)
 		wave.register(W, FALSE)
+		W.side = RIGHT
 		width--
 
 	//Alright we have now created all the mainline projectiles that we need.
 	wave.update_connections()	//This will create backstops as needed
 
 	//Now finally, the wave is ready to fire!
+	for (W as anything in wave.projectiles)
+		//Each tile aims at a tile offset from the base target, equal to its offset from the master projectile
+		var/turf/target_loc = target.get_turf_at_offset(W.offset)
+
+
+		//We can't do launch_from_gun for positional reasons. But if a gun is supplied, we'll populate the variables that proc would
+		if (launcher)
+			W.last_loc = W.loc
+			W.shot_from = launcher
+
+		if (user)
+			W.firer = user
+
+		W.launch(target_loc, wave.target_zone)
+
+
+//This projectile creates a wave and then deletes itself()
+/obj/item/projectile/wavespawner
+	var/wave_type = /obj/item/projectile/wave
+	var/width = 3
+
+/obj/item/projectile/wavespawner/finalize_launch(var/turf/curloc, var/turf/targloc, var/x_offset, var/y_offset, var/angle_offset)
+
+	launch_wave(firer, original, wave_type, width, firer, shot_from)
+	expire()
 
 
 
+
+
+/*----------------------------
+	Wave Datum
+-----------------------------*/
 /datum/projectile_wave
+	var/projectile_type = /obj/item/projectile/wave
 	var/list/projectiles = list()	//All the projectiles in the list
 	var/obj/item/projectile/wave/master	//The specific projectile which is designated master
+
+	var/vector2/direction
+	var/vector2/perpendicular_direction
+
+	var/width = 3
 
 	var/atom/origin //Where is this wave being fired from?
 	var/atom/target	//Where is this wave being fired -at- ? The master projectile will go straight here, the others will target a tile appropriately offset from it
 
 	//A list of things that have already been hit by this wave.
 	//These atoms can't be damaged a second time, although they can still block parts of the wave
-	var/damaged_atoms = list()
+	var/list/damaged_atoms = list()
 
 
 	//A temporary list used during split handling
 	var/list/connected = list()
+
+
+	//What bodypart is the wave aimed at
+	var/target_zone = BP_CHEST
+
+	//If a projectile is more than WORLD_ICON_SIZE pixels away from the master, it may move up to this many towards it, to make the wave more whole
+	var/squish = 16
 
 /*
 	Adds a projectile to this wave
@@ -88,6 +138,7 @@
 
 	//And we put it in our list
 	projectiles |= A
+
 
 
 	//This is optional so that we can batch-add many projectiles during wave creation
@@ -113,6 +164,12 @@
 	A.clear_connections()
 	A.PW = null
 	projectiles -= A
+
+
+	//If we just lost our last projectile, we have no more reason to exist
+	if (!projectiles.len)
+		qdel(src)
+		return
 
 	if (split && do_split)
 		handle_split()
@@ -167,6 +224,8 @@
 	if (master)
 		for (var/obj/item/projectile/wave/W as anything in projectiles)
 			W.update_offset()
+
+
 
 
 //This assumes that each projectiles' connections list is up to date. If they might not be, update them with update_connections before calling it
@@ -248,18 +307,28 @@
 /obj/item/projectile/wave
 	var/backstop = FALSE	//If true, this is a hole-filler and it can't form its own wave
 	var/datum/projectile_wave/PW	//The datum that coordinates us
-	var/connections = list()
-	var/primary_connections()	//This holds a list of all non-backstop projectiles we're connected to. Even diagonally!
-
+	var/list/connections = list()
+	var/list/primary_connections = list()	//This holds a list of all non-backstop projectiles we're connected to. Even diagonally!
+	var/backstop_state = ""
 	//Our offset from the master of the wave. 0 if we are the master
 	var/vector2/offset = new /vector2(0,0)
+	randpixel = 0	//These need to sync up
+
+	var/side = null	//Left or right
+
+//When deleted, unregister ourselves from the wave
+/obj/item/projectile/wave/Destroy()
+	if (PW)
+		PW.remove(src)
+
+	.=..()
 
 //Connects this projectile to others around it
 /obj/item/projectile/wave/proc/connect_projectile(var/create_backstops = TRUE)
 
 
 	//1. First of all, connect to all wave projectiles in cardinal directions, which are part of the same wave as us
-	for (var/turf/T as anything in W.get_cardinal_turfs())
+	for (var/turf/T as anything in get_cardinal_turfs())
 		for (var/obj/item/projectile/wave/W in T)
 
 			//If its part of a different wave, we don't want to know
@@ -271,7 +340,7 @@
 
 
 	//2. Secondly, find non-backstop projectiles in diagonal directions from us
-	for (var/turf/T as anything in W.get_diagonal_turfs())
+	for (var/turf/T as anything in get_diagonal_turfs())
 		for (var/obj/item/projectile/wave/W in T)
 			if (W.backstop)
 				continue	//We don't care about diagonal backstops
@@ -305,6 +374,9 @@
 	if (backstop && !connections.len)
 		qdel(src)
 
+	else
+		update_icon()
+
 
 /obj/item/projectile/wave/proc/clear_connections()
 	for (var/obj/item/projectile/wave/W2 as anything in connections)
@@ -314,6 +386,11 @@
 	connections = list()
 	primary_connections = list()
 
+
+//Connects to another cardinally
+/obj/item/projectile/wave/proc/connect_to(var/obj/item/projectile/wave/W)
+	connections |= W
+	W.connections |= src
 
 //Connects this projectile another one diagonally, by creating a backstop on a tile they share cardinally.
 //This proc expects both projectiles to be exactly one tile apart diagonally
@@ -330,8 +407,10 @@
 
 	//Now lets create the backstop
 	var/obj/item/projectile/wave/B = new /obj/item/projectile/wave(T)
-	B.backstop = TRUE
+	B.designated_backstop(TRUE)
 	PW.register(B)	//And register it
+
+
 
 
 /*--------------------------------
@@ -339,10 +418,28 @@
 ---------------------------------*/
 /obj/item/projectile/wave/proc/designated_master()
 
+/obj/item/projectile/wave/proc/designated_backstop(var/newsetting)
+	backstop = newsetting
+	icon_state = backstop_state
+
+
 /obj/item/projectile/wave/proc/update_offset()
 	offset.x = x - PW.master.x
 	offset.y = y - PW.master.y
 
+
+/obj/item/projectile/wave/set_pixel_offset()
+	//Lets align it with the master
+	if (PW && PW.master && src != PW.master)
+		place_on_projection_line(PW.master, PW.perpendicular_direction * PW.width * WORLD_ICON_SIZE, src)
+
+		//And now lets handle squish
+		if (PW.squish)
+			var/vector2/offset = get_global_pixel_offset(PW.master)
+			var/distance = offset.Magnitude() - WORLD_ICON_SIZE
+			if (distance > 0)
+				offset = offset.ClampMag(0, min(PW.squish, distance))
+				modify_pixels(offset*-1)
 
 /*
 */

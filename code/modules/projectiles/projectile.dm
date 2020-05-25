@@ -82,6 +82,12 @@
 
 	var/shrapnel_type = /obj/item/weapon/material/shard/shrapnel	//When this projectile embeds in a mob, what kind of shrapnel does it turn into?	The actual projectile will be deleted
 
+/obj/item/projectile/New(var/atom/location)
+	//To prevent visual glitches, projectiles start off invisible
+	default_alpha = alpha
+	alpha = 0
+	.=..()
+
 /obj/item/projectile/Initialize()
 	damtype = damage_type //TODO unify these vars properly
 	if(!hitscan)
@@ -209,7 +215,9 @@
 	return 0
 
 /obj/item/projectile/proc/finalize_launch(var/turf/curloc, var/turf/targloc, var/x_offset, var/y_offset, var/angle_offset)
+
 	setup_trajectory(curloc, targloc, x_offset, y_offset, angle_offset) //plot the initial trajectory
+	alpha = default_alpha	//The projectile becomes visible now, when its ready to start moving
 	Process()
 	spawn(SEGMENT_DELETION_DELAY) //running this from a proc wasn't working.
 		QDEL_NULL_LIST(segments)
