@@ -161,7 +161,53 @@
 ///KELLION OUTFITS///
 /////////////////////
 
-//PLACEHOLDER WAITING FOR KELLION OUTFIT SPRITES, ENGINEERING SUITS AND SUCH
+/decl/hierarchy/outfit/kellion_sec
+	name = "Kellion Security"
+	uniform = /obj/item/clothing/under/kellion
+	suit = /obj/item/clothing/suit/armor/vest/kellion
+	l_ear = null
+	mask = null
+	head = null
+	belt = null
+	back = /obj/item/weapon/storage/backpack/rucksack/green
+	shoes = /obj/item/clothing/shoes/kellion
+	gloves = /obj/item/clothing/gloves/kellion
+
+	id_slot = slot_wear_id
+	id_type = /obj/item/weapon/card/id/holo/kellion_sec
+	id_desc = "Kellion Security"
+
+/decl/hierarchy/outfit/kellion_sec_leader
+	name = "Kellion Security Leader"
+	uniform = /obj/item/clothing/under/kellion/leader
+	suit = null
+	l_ear = null
+	mask = null
+	head = null
+	belt = /obj/item/weapon/storage/belt/holster/security/tactical
+	back = /obj/item/weapon/storage/backpack/rucksack/green
+	shoes = /obj/item/clothing/shoes/kellion/lead
+	gloves = /obj/item/clothing/gloves/kellion
+
+	id_slot = slot_wear_id
+	id_type = /obj/item/weapon/card/id/holo/kellion_sec_leader
+	id_desc = "Kellion Security Team Leader"
+
+/decl/hierarchy/outfit/isaac
+	name = "Kellion Engineer"
+	uniform = /obj/item/clothing/under/rigunder
+	suit = /obj/item/clothing/suit/space/unitologist/deacon
+	l_ear = null
+	mask = /obj/item/clothing/mask/breath
+	head = /obj/item/clothing/head/helmet/space/unitologist/deacon
+	belt = /obj/item/weapon/storage/belt/utility/full
+	back = /obj/item/weapon/rig/vintage
+	shoes = /obj/item/clothing/shoes/workboots
+	gloves = /obj/item/clothing/gloves/insulated
+
+	id_slot = slot_wear_id
+	id_type = /obj/item/weapon/card/id/holo/isaac
+	id_desc = "Kellion Engineer"
 
 
 ///////////////////////////////////////////////////

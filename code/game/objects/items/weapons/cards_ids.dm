@@ -569,28 +569,40 @@ var/const/NO_EMAG_ACT = -50
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as a Marine in the Earth Defense Force's Uxor Battalion."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = null
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/edf/medic
 	name = "EDF medic's holographic id"
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as a Medic in the Earth Defense Force's Uxor Battalion."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = null
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/edf/engineer
 	name = "EDF engineer's holographic id"
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as an Engineer in the Earth Defense Force's Uxor Battalion."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	access = list(access_bridge, access_external_airlocks)
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/edf/commander
 	name = "EDF lieutenant's holographic id"
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as a Lieutenant in the Earth Defense Force's Uxor Battalion."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	access = list(access_bridge, access_external_airlocks)
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
 
 //uni//
 
@@ -599,36 +611,80 @@ var/const/NO_EMAG_ACT = -50
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Faithful' scratched on it."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	access = list(access_engineering, access_external_airlocks)
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/berserker
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Berserker' scratched in."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	access = list(access_engineering, access_external_airlocks)
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/mechanic
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Mechanic' scratched in."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	access = list(access_engineering, access_external_airlocks)
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/healer
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Healer' scratched in."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	access = list(access_engineering, access_external_airlocks)
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/deacon
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one bears no official markings but contains unitologist iconography. It has the word 'Deacon' scratched in."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	access = list(access_engineering, access_external_airlocks)
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
 
 //kellion//
 
-//placeholder for kellion stuff
+/obj/item/weapon/card/id/holo/kellion_sec
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as a C.E.C. Maintenance Team Security Grunt."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
+
+/obj/item/weapon/card/id/holo/kellion_sec_leader
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as a C.E.C. Maintenance Team Security Leader."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
+
+/obj/item/weapon/card/id/holo/isaac
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as a C.E.C. Maintenance Team Engineer."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
+
