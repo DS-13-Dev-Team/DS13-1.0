@@ -69,12 +69,10 @@
 	view_range = 12
 
 
-	has_limbs = list(
-
-	BP_CHEST =  list("path" = /obj/item/organ/external/chest/giant),
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/giant),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/giant),
-	BP_HEAD = list("path" = /obj/item/organ/external/arm/tentacle/tripod_tongue),
+	has_limbs = list(BP_CHEST =  list("path" = /obj/item/organ/external/chest/giant, "height" = new /vector2(0, 2.5)),
+	BP_HEAD = list("path" = /obj/item/organ/external/arm/tentacle/tripod_tongue, "height" = new /vector2(1.5, 2.5)),	//The tripod is tall and all of its limbs are too
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/giant, "height" = new /vector2(0, 2.0)),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/giant, "height" = new /vector2(0, 2.0))
 	)
 
 	locomotion_limbs = list(BP_R_ARM, BP_L_ARM)

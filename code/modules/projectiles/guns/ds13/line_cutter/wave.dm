@@ -23,6 +23,9 @@
 /proc/launch_wave(var/atom/source, var/atom/target, var/projectile_type = /obj/item/projectile/wave, var/width = 3, var/mob/living/user, var/obj/item/weapon/gun/launcher)
 
 	var/datum/projectile_wave/wave = new()
+
+	if (user)
+		wave.altitude = get_aiming_height(user, target)
 	wave.origin = source
 	wave.target = target
 	wave.projectile_type = projectile_type
@@ -36,6 +39,7 @@
 
 	//Lets make our first/master projectile
 	var/obj/item/projectile/wave/W = new projectile_type(start_turf)
+	W.altitude = wave.altitude
 	wave.register(W, FALSE)
 	wave.select_master()
 	width--
@@ -51,6 +55,7 @@
 		W = new projectile_type(T)
 		wave.register(W, FALSE)
 		W.side = LEFT
+		W.altitude = wave.altitude
 		width--
 
 		if (width <= 0)
@@ -61,6 +66,7 @@
 		W = new projectile_type(T)
 		wave.register(W, FALSE)
 		W.side = RIGHT
+		W.altitude = wave.altitude
 		width--
 
 	//Alright we have now created all the mainline projectiles that we need.
@@ -127,6 +133,9 @@
 
 	//If a projectile is more than WORLD_ICON_SIZE pixels away from the master, it may move up to this many towards it, to make the wave more whole
 	var/squish = 16
+
+	//How high above the ground is this travelling
+	var/altitude = 1
 
 /*
 	Adds a projectile to this wave

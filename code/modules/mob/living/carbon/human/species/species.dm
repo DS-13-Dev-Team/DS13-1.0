@@ -234,21 +234,25 @@
 	/*--------------------------
 		ORGAN HANDLING
 	--------------------------*/
+
+
 	var/list/has_limbs = list(
-		BP_CHEST =  list("path" = /obj/item/organ/external/chest),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+		BP_CHEST =  list("path" = /obj/item/organ/external/chest, "height" = new /vector2(1.25,1.65)),
+		BP_GROIN =  list("path" = /obj/item/organ/external/groin, "height" = new /vector2(1,1.25)),
+		BP_HEAD =   list("path" = /obj/item/organ/external/head, "height" = new /vector2(1.65,1.85)),
+		BP_L_ARM =  list("path" = /obj/item/organ/external/arm, "height" = new /vector2(0.9,1.60)),
+		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right, "height" = new /vector2(0.9,1.60)),
+		BP_L_LEG =  list("path" = /obj/item/organ/external/leg, "height" = new /vector2(0.1,1)),
+		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right, "height" = new /vector2(0.1,1)),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand, "height" = new /vector2(0.8,0.9)),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right, "height" = new /vector2(0.8,0.9)),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot, "height" = new /vector2(0,0.1)),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right, "height" = new /vector2(0,0.1))
 		)
 
-	var/list/override_limb_types // Used for species that only need to change one or two entries in has_limbs.
+
+
+	var/list/override_limb_types 	// Used for species that only need to change one or two entries in has_limbs.
 
 	// The list for the bioprinter to print based on species
 	var/list/bioprint_products = list(
@@ -340,7 +344,10 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	if(islist(override_limb_types))
 		for(var/ltag in override_limb_types)
 			if (override_limb_types[ltag])
-				has_limbs[ltag] = list("path" = override_limb_types[ltag])
+				if (islist(override_limb_types[ltag]))
+					has_limbs[ltag] = override_limb_types[ltag]
+				else
+					has_limbs[ltag] = list("path" = override_limb_types[ltag])
 			else
 				has_limbs.Remove(ltag)
 
@@ -433,6 +440,12 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		var/limb_path = organ_data["path"]
 		var/obj/item/organ/O = new limb_path(H)
 		O.max_damage *= limb_health_factor
+
+		//The list may contain height data
+		var/vector2/organ_height = organ_data["height"]
+		if (organ_height && istype(O, /obj/item/organ/external))
+			var/obj/item/organ/external/E = O
+			E.limb_height = organ_height
 
 	for(var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]

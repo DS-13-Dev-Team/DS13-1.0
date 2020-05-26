@@ -21,6 +21,7 @@
 	artery_name = "aorta"
 	cavity_name = "thoracic"
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_GENDERED_ICON | ORGAN_FLAG_HEALS_OVERKILL
+	limb_height = new /vector2(1.25,1.65)	//40cm from upper abdomen to neck
 
 /obj/item/organ/external/chest/proc/get_current_skin()
 	return
@@ -53,6 +54,7 @@
 	artery_name = "iliac artery"
 	cavity_name = "abdominal"
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_GENDERED_ICON
+	limb_height = new /vector2(1,1.25)	//25cm from bottom of groin to upper abdomen
 
 /obj/item/organ/external/arm
 	organ_tag = BP_L_ARM
@@ -70,6 +72,7 @@
 	arterial_bleed_severity = 0.75
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP
 	base_miss_chance = 12
+	limb_height = new /vector2(0.9,1.60) //80cm long, assuming theyre hanging down
 
 /obj/item/organ/external/arm/right
 	organ_tag = BP_R_ARM
@@ -96,6 +99,7 @@
 	arterial_bleed_severity = 0.75
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
 	base_miss_chance = 5
+	limb_height = new /vector2(0.1,1)	//Approx 90cm from ankle to groin
 
 /obj/item/organ/external/leg/right
 	organ_tag = BP_R_LEG
@@ -122,6 +126,7 @@
 	arterial_bleed_severity = 0.5
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
 	base_miss_chance = 15
+	limb_height = new /vector2(0,0.1)	//about 10cm from sole to ankle
 
 /obj/item/organ/external/foot/right
 	organ_tag = BP_R_FOOT
@@ -148,6 +153,7 @@
 	arterial_bleed_severity = 0.5
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_FINGERPRINT
 	base_miss_chance = 15
+	limb_height = new /vector2(0.8,0.9)	//10cm long, hanging down in middle of leg
 
 /obj/item/organ/external/hand/right
 	organ_tag = BP_R_HAND
@@ -172,3 +178,4 @@
 	min_broken_damage = 50
 	w_class = ITEM_SIZE_HUGE
 	base_miss_chance = 20
+	limb_height = new /vector2(0,1)	//Assuming a tail on a humanoid, extends from waist to floor

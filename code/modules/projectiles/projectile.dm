@@ -30,6 +30,9 @@
 	//var/p_y = 16 // the pixel location of the tile that the player clicked. Default is the center
 	var/vector2/pixel_click = new /vector2(16, 16)
 
+	var/altitude = 1	//How high off the ground is this projectile?
+	var/height = 0.02	//How tall is this projectile? Default 2cm, which seems about right for a bullet
+
 	randpixel = 4	//Offset randomly on spawn by up to this much
 
 	var/accuracy = 100	//Base chance to hit, before various modifiers are applied. This can be above 100
@@ -196,7 +199,7 @@
 
 //called to launch a projectile
 /obj/item/projectile/proc/launch(atom/target, var/target_zone, var/x_offset=0, var/y_offset=0, var/angle_offset=0)
-	set_pixel_offset()
+
 	var/turf/curloc = get_turf(src)
 	var/turf/targloc = get_turf(target)
 	if (!istype(targloc) || !istype(curloc))
@@ -231,6 +234,7 @@
 
 	last_loc = loc
 	loc = get_turf(user) //move the projectile out into the world
+	altitude = get_aiming_height(user, target) //Set the height of the bullet
 
 	firer = user
 	shot_from = launcher.name

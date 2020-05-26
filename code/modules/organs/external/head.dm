@@ -28,6 +28,7 @@
 	var/tmp/last_cached_eye_colour
 	var/tmp/last_eye_cache_key
 	var/apply_eye_colour = TRUE
+	limb_height = new /vector2(1.65,1.85)	//20cm tall
 
 /obj/item/organ/external/head/proc/get_eye_cache_key()
 	last_cached_eye_colour = rgb(128,0,0)

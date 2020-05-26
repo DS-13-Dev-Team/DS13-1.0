@@ -253,3 +253,12 @@
 	containername = "\improper Engineering voidsuit crate"
 	containertype = /obj/structure/closet/crate/secure/large
 	access = access_engineering
+
+
+/decl/hierarchy/supply_pack/engineering/toolmods
+	name = "Tool Modification Kit"
+	contains = list(/obj/random/tool_upgrade = 5,
+	/obj/random/tool_upgrade/rare = 1)
+	cost = 50
+	containertype = /obj/structure/closet/crate
+	containername = "\improper tool modification kit"
