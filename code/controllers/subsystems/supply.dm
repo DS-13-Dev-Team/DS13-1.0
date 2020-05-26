@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(supply)
 
 	//supply points
 	var/points = 50
-	var/points_per_process = 1.25
+	var/points_per_process = 1.5
 	var/points_per_slip = 2
 	var/material_buy_prices = list(
 		/material/platinum = 5,
