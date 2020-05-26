@@ -223,6 +223,7 @@
 	desc = "An assemblage of metal and wires with a built in power supply"
 	icon_state = "linerack"
 	spent_icon = "linerack"
+	caliber = "linerack"
 	projectile_type  = /obj/item/projectile/wavespawner/linecutter
 
 
