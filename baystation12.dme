@@ -1922,6 +1922,8 @@
 #include "code\modules\mob\living\carbon\human\species\necromorph\tripod.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\twitcher.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\ubermorph.dm"
+#include "code\modules\mob\living\carbon\human\species\necromorph\slasher\clothing.dm"
+#include "code\modules\mob\living\carbon\human\species\necromorph\slasher\mobgen.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\random.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\shadow.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\starlight.dm"

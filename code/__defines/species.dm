@@ -62,6 +62,7 @@
 //Necromorph species
 #define SPECIES_NECROMORPH 	"Necromorph"
 #define SPECIES_NECROMORPH_SLASHER 	"Slasher"
+#define SPECIES_NECROMORPH_SLASHER_DESICCATED "Ancient Slasher"
 #define SPECIES_NECROMORPH_SLASHER_ENHANCED 	"Enhanced Slasher"
 #define SPECIES_NECROMORPH_SPITTER	"Spitter"
 #define SPECIES_NECROMORPH_PUKER	"Puker"
