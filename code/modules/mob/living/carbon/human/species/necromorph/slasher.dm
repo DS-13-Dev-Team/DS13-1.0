@@ -18,7 +18,7 @@
 
 	biomass_reclamation_time	=	7.5 MINUTES
 
-	icon_template = 'icons/mob/necromorph/slasher.dmi'
+	icon_template = 'icons/mob/necromorph/slasher/fleshy.dmi'
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE
@@ -31,6 +31,7 @@
 	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right, "height" = (new /vector2(1.6,2)))
 	)
 
+	hud_type = /datum/hud_data/necromorph/slasher
 
 
 	species_audio = list(
@@ -82,6 +83,12 @@
 	body_part = ARM_RIGHT
 	joint = "right elbow"
 	amputation_point = "right shoulder"
+
+//Ancient version, formerly default, now uncommon
+/datum/species/necromorph/slasher/desiccated
+	name = SPECIES_NECROMORPH_SLASHER_DESICCATED
+	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
+
 
 /*Roughly speaking, enhanced versions of necromorphs have:
 	250% biomass cost and max health

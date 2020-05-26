@@ -791,6 +791,12 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 		mob_state = item_state
 	else
 		mob_state = icon_state
+
+	var/mob/living/carbon/human/user_human
+	if(ishuman(user_mob))
+		user_human = user_mob
+		if (user_human.lying && user_human.species.icon_lying)
+			mob_state = "[mob_state][user_human.species.icon_lying]"
 	return mob_state
 
 
