@@ -47,10 +47,10 @@
 
 
 	has_limbs = list(
-	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple),
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/tentacle/slim/lurker1),
-	BP_HEAD =   list("path" = /obj/item/organ/external/arm/tentacle/slim/lurker2),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/tentacle/slim/lurker3)
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(0, 0.5)),	//Half a metre high
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/tentacle/slim/lurker1, "height" = new /vector2(0.5, 1.5)),	//Tentacles extend one metre above the body
+	BP_HEAD =   list("path" = /obj/item/organ/external/arm/tentacle/slim/lurker2, "height" = new /vector2(0.5, 1.5)),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/tentacle/slim/lurker3, "height" = new /vector2(0.5, 1.5))
 	)
 
 	has_organ = list(    // which required-organ checks are conducted.

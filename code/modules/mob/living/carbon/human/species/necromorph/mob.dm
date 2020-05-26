@@ -6,17 +6,35 @@
 */
 /mob/living/carbon/human/necromorph
 
+
+/*
+	Slasher Mob setup
+*/
+/mob/living/carbon/human/necromorph/slasher/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER)
+	..(new_loc, new_species)
+
+/mob/living/carbon/human/necromorph/slasher/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER_ENHANCED)
+	..(new_loc, new_species)
+
+//A dummy version of slasher for target practise
+/mob/living/carbon/human/necromorph/slasher/dummy
+	status_flags = GODMODE|CANPUSH
+	virtual_mob = null
+
+/mob/living/carbon/human/necromorph/slasher/dummy/Initialize()
+	. = ..()
+	STOP_PROCESSING(SSmobs, src)
+
+
+
+
 /mob/living/carbon/human/necromorph/spitter/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SPITTER)
 	..(new_loc, new_species)
 
 /mob/living/carbon/human/necromorph/puker/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_PUKER)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/slasher/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER)
-	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/slasher/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER_ENHANCED)
-	..(new_loc, new_species)
 
 /mob/living/carbon/human/necromorph/tripod/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_TRIPOD)
 	..(new_loc, new_species)

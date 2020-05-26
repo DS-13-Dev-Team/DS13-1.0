@@ -1,4 +1,5 @@
 /obj/item/organ/external/arm/blade
+	limb_height = new /vector2(1.6,2)	//Slashers hold their blade arms high
 	organ_tag = BP_L_ARM
 	name = "left blade"
 	icon_name = "l_arm"

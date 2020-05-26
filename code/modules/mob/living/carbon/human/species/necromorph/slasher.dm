@@ -25,10 +25,12 @@
 	evasion = 0	//No natural evasion
 	spawner_spawnable = TRUE
 
+	//Slashers hold their arms up in an overhead pose, so they override height too
 	override_limb_types = list(
-	BP_L_ARM =  /obj/item/organ/external/arm/blade,
-	BP_R_ARM =  /obj/item/organ/external/arm/blade/right,
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/blade, "height" = (new /vector2(1.6,2))),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right, "height" = (new /vector2(1.6,2)))
 	)
+
 
 
 	species_audio = list(
@@ -67,6 +69,19 @@
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge),
 	KEY_ALT = list(/mob/living/proc/slasher_dodge))
 
+/*
+
+*/
+/obj/item/organ/external/arm/blade/slasher
+	limb_height = new /vector2(1.6,2)	//Slashers hold their blade arms high
+
+/obj/item/organ/external/arm/blade/slasher/right
+	organ_tag = BP_R_ARM
+	name = "right arm"
+	icon_name = "r_arm"
+	body_part = ARM_RIGHT
+	joint = "right elbow"
+	amputation_point = "right shoulder"
 
 /*Roughly speaking, enhanced versions of necromorphs have:
 	250% biomass cost and max health

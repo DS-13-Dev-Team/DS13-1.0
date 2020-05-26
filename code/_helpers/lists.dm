@@ -187,6 +187,29 @@ Checks if a list has the same entries and values as an element of big.
 			return L[i+1]
 	return L[1]
 
+
+//Given a list of atoms, returns the single one from that list which is the smallest distance from origin
+/proc/pick_closest(var/list/L, var/atom/origin)
+	//The list contains all of L
+	var/list/closest = list()
+	var/list/min_dist = INFINITY
+	for (var/atom/A in L)
+		var/dist = get_dist(origin, A)
+		if (dist > min_dist)
+			continue
+
+		//If its less than the minimum, we clear the list and set the new minimum
+		if (dist < min_dist)
+			closest = list()
+			min_dist = dist
+
+		//And whether its less or equal, we add A to the closest list
+		closest += A
+
+
+	return pick(closest)
+
+
 /*
  * Sorting
  */

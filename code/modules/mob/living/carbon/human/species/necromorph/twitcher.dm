@@ -31,6 +31,10 @@
 	slowdown = 1.5
 	view_offset = 3 * WORLD_ICON_SIZE //Forward view offset allows longer-ranged charges
 
+	override_limb_types = list(
+	BP_L_ARM =  /obj/item/organ/external/arm/blade,
+	BP_R_ARM =  /obj/item/organ/external/arm/blade/right,
+	)
 
 	evasion = 20
 	inherent_verbs = list(/mob/living/carbon/human/proc/twitcher_charge, /mob/living/carbon/human/proc/twitcher_step_strike, /mob/proc/shout)

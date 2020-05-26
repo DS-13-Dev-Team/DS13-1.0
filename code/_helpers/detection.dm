@@ -408,12 +408,25 @@ proc
 	return results
 
 
+//These are literally just the same function with slightly different names, for convenience
 /atom/proc/get_cardinal()
 	.=list()
 	for (var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
 		.+=T
 
+/atom/proc/get_cardinal_turfs()
+	.=list()
+	for (var/direction in GLOB.cardinal)
+		var/turf/T = get_step(src, direction)
+		.+=T
+
+
+/atom/proc/get_diagonal_turfs()
+	.=list()
+	for (var/direction in GLOB.cornerdirs)
+		var/turf/T = get_step(src, direction)
+		.+=T
 
 //This proc attempts to get all mobs who are able to see this atom
 //Set required type to /mob/living to exclude ghosts
@@ -467,3 +480,50 @@ proc
 		if (once_only)
 			break
 	return our_viewers
+
+
+
+/atom/proc/get_turf_at_offset(var/vector2/offset)
+	return locate(x + offset.x, y + offset.y, z)
+
+
+//When passed a mob, returns the bodypart this mob is aiming its attacks at
+//This is a generic proc to allow it to handle null users
+/proc/get_zone_sel(var/mob/user)
+	.= BP_CHEST
+	if (user && user.zone_sel && user.zone_sel.selecting)
+		return user.zone_sel.selecting
+
+
+
+/*
+	This attempts to figure out what height a mob is aiming at
+	User is mandatory, target is optional.
+
+	If no target, we will take the user's aimed zone and grab the height from GLOB.organ_altitudes
+	If we're aiming at a human target, we'll take the aimed zone, and use it to read a height from the target's species' has limbs
+*/
+/proc/get_aiming_height(var/mob/user, var/mob/living/carbon/human/target)
+	if (!user)
+		return GLOB.organ_altitudes[BP_CHEST]
+
+	var/aiming_zone = get_zone_sel(user)
+	if (istype(target))
+
+		//We will do substitutions of course
+		//But we won't run find_target_organ, we will allow things to be aimed at already-severed limbs
+		if (target.species.organ_substitutions[aiming_zone])
+			aiming_zone = target.species.organ_substitutions[aiming_zone]
+
+
+		//Get the list of data, this contains typepath and height vector
+		var/list/organ_data = target.species.has_limbs[aiming_zone]
+
+		//Check that the data exists
+		if(organ_data["height"])
+			//This is a vector range, we'll average it out
+			return Vector2.VectorAverage(organ_data["height"])
+
+	else
+		//No human target, get whatever we're aiming towards if it were human
+		return GLOB.organ_altitudes[aiming_zone]

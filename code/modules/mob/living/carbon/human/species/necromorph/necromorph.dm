@@ -134,13 +134,15 @@
 	locomotion_limbs = list(BP_L_LEG, BP_R_LEG)
 
 	has_limbs = list(
-	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple),
-	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple),
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple),
-	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple),
-	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple)
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(1,1.65)),
+	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple, "height" = new /vector2(1.65,1.85)),
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple, "height" = new /vector2(0.8,1.60)),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple, "height" = new /vector2(0.8,1.60)),
+	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple, "height" = new /vector2(0,1)),
+	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple, "height" = new /vector2(0,1))
 	)
+
+
 
 	//Necromorphs can't grab people or pick things up unless otherwise noted
 	grasping_limbs = list()

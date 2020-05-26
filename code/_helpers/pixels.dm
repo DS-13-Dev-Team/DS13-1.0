@@ -49,7 +49,8 @@
 /atom/proc/get_global_pixel_loc()
 	return new /vector2(((x-1)*world.icon_size) + pixel_x + 16, ((y-1)*world.icon_size) + pixel_y + 16)
 
-
+/atom/proc/get_global_pixel_offset(var/atom/from)
+	return (get_global_pixel_loc() - from.get_global_pixel_loc())
 
 //Given a set of global pixel coords as input, this moves the atom and sets its pixel offsets so that it sits exactly on the specified point
 /atom/movable/proc/set_global_pixel_loc(var/vector2/coords)
@@ -159,3 +160,20 @@
 	var/vector2/delta = Vector2.FromDir(get_dir(src, target))
 	delta *= distance
 	return delta
+
+/atom/proc/modify_pixels(var/vector2/delta)
+	pixel_x += delta.x
+	pixel_y += delta.y
+
+//Variables:
+//Source: The source of the line
+//Line: Vector2, the vector we will project ourselves onto
+//Mover: The thing that will move onto the line. The magnitude of the line should be measured in pixels and it must be long enough
+//Adjusts pixel offsets to place mover onto the nearest point along Line
+/proc/place_on_projection_line(var/atom/source, var/vector2/line, var/atom/mover)
+
+	//First of all, where is the mover relative to the source
+	var/vector2/pixel_offset = mover.get_global_pixel_offset(source)
+
+	var/vector2/rejection = pixel_offset.Rejection(line)
+	mover.modify_pixels(rejection*-1)

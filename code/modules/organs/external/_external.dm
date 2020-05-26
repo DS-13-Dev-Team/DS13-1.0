@@ -22,6 +22,11 @@
 	var/pain = 0                       // How much the limb hurts.
 	var/pain_disability_threshold      // Point at which a limb becomes unusable due to pain.
 
+	// Physics
+	var/vector2/limb_height = new /vector2(0,1)	//Height is a range of where the limb extends vertically. The first value is the lower bound, second is the upper
+	//Height values assume the mob is in its normal pose standing on the ground
+	//All height values are in metres, and also tiles. A turf is 1 metre by 1 metre
+
 
 	//Retraction handling
 	var/retracted	=	FALSE			//	Is this limb retracted into its parent?  If true, the limb is not rendered and all hits are passed to parent

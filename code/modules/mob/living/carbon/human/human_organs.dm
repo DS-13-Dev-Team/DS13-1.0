@@ -302,3 +302,29 @@
 		found |= E
 
 	return found
+
+
+
+//Used to get limbs that intersect with a plane.
+//Altitude is how high the plane is off the ground
+//Height is how tall the plane is
+/mob/living/carbon/human/proc/get_limbs_at_height(var/altitude, var/height = 0.01)
+	var/vector2/ourheight = new /vector2(altitude, altitude+height)
+
+	var/list/limbs = list()
+
+	//Todo: Pick a better sublist for this
+	for (var/obj/item/organ/external/E in organs)
+
+		//If its below our entire height range, we don't overlap
+		if (E.limb_height.y < ourheight.x)
+			continue
+
+		//Likewise if above
+		if (E.limb_height.x > ourheight.y)
+			continue
+
+		//Alright we collide
+		limbs += E
+
+	return limbs

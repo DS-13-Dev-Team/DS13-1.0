@@ -31,12 +31,15 @@
 
 
 	has_limbs = list(
-	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple),
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple/exploder),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple),
-	BP_L_HAND = list("path" = /obj/item/organ/external/hand/exploder_pustule),
-	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple)
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(1,1.65)),
+	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple, "height" = new /vector2(1.65,1.85)),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple, "height" = new /vector2(0,1.60)),	//The exploder's right arm reaches the floor
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple/exploder, "height" = new /vector2(0.8,1.60)),
+	BP_L_HAND = list("path" = /obj/item/organ/external/hand/exploder_pustule, "height" = new /vector2(0,0.8)),
+	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple, "height" = new /vector2(0,1))
 	)
+
+
 
 	has_organ = list(    // which required-organ checks are conducted.
 	BP_HEART =    /obj/item/organ/internal/heart/undead,

@@ -104,7 +104,7 @@
 	name = "clown shoes"
 	icon_state = "clown"
 	item_state = "clown"
-	force = 0
+	force = -10
 	var/footstep = 1	//used for squeeks whilst walking
 	species_restricted = null
 
