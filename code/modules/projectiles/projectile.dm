@@ -30,6 +30,9 @@
 	//var/p_y = 16 // the pixel location of the tile that the player clicked. Default is the center
 	var/vector2/pixel_click = new /vector2(16, 16)
 
+	var/altitude = 1	//How high off the ground is this projectile?
+	var/height = 0.02	//How tall is this projectile? Default 2cm, which seems about right for a bullet
+
 	randpixel = 4	//Offset randomly on spawn by up to this much
 
 	var/accuracy = 100	//Base chance to hit, before various modifiers are applied. This can be above 100
@@ -59,7 +62,6 @@
 
 	var/hitscan = 0		// whether the projectile should be hitscan
 	var/step_delay = 1	// the delay between iterations if not a hitscan projectile
-	var/cached_rotation = 0 //This is used to prevent rotation changes from accumulating on redirects
 
 	// effect types to be used
 	var/muzzle_type
@@ -82,6 +84,12 @@
 										//  have to be recreated multiple times
 
 	var/shrapnel_type = /obj/item/weapon/material/shard/shrapnel	//When this projectile embeds in a mob, what kind of shrapnel does it turn into?	The actual projectile will be deleted
+
+/obj/item/projectile/New(var/atom/location)
+	//To prevent visual glitches, projectiles start off invisible
+	default_alpha = alpha
+	alpha = 0
+	.=..()
 
 /obj/item/projectile/Initialize()
 	damtype = damage_type //TODO unify these vars properly
@@ -191,7 +199,7 @@
 
 //called to launch a projectile
 /obj/item/projectile/proc/launch(atom/target, var/target_zone, var/x_offset=0, var/y_offset=0, var/angle_offset=0)
-	set_pixel_offset()
+
 	var/turf/curloc = get_turf(src)
 	var/turf/targloc = get_turf(target)
 	if (!istype(targloc) || !istype(curloc))
@@ -210,7 +218,9 @@
 	return 0
 
 /obj/item/projectile/proc/finalize_launch(var/turf/curloc, var/turf/targloc, var/x_offset, var/y_offset, var/angle_offset)
+
 	setup_trajectory(curloc, targloc, x_offset, y_offset, angle_offset) //plot the initial trajectory
+	alpha = default_alpha	//The projectile becomes visible now, when its ready to start moving
 	Process()
 	spawn(SEGMENT_DELETION_DELAY) //running this from a proc wasn't working.
 		QDEL_NULL_LIST(segments)
@@ -224,6 +234,7 @@
 
 	last_loc = loc
 	loc = get_turf(user) //move the projectile out into the world
+	altitude = get_aiming_height(user, target) //Set the height of the bullet
 
 	firer = user
 	shot_from = launcher.name
@@ -326,6 +337,10 @@
 
 	return 0
 
+
+/obj/item/projectile/proc/attack_atom(var/atom/A,  var/distance, var/miss_modifier=0)
+	return A.bullet_act(src, def_zone)
+
 /obj/item/projectile/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == src)
 		return 0 //no
@@ -356,10 +371,10 @@
 		else
 			passthrough = 1 //so ghosts don't stop bullets
 	else
-		passthrough = (A.bullet_act(src, def_zone) == PROJECTILE_CONTINUE) //backwards compatibility
+		passthrough = (attack_atom(A, distance) == PROJECTILE_CONTINUE) //backwards compatibility
 		if(isturf(A))
 			for(var/obj/O in A)
-				O.bullet_act(src)
+				attack_atom(O, distance)
 			for(var/mob/living/M in A)
 				var/p = attack_mob(M, distance)
 				if (passthrough == TRUE)
@@ -474,8 +489,8 @@
 	effect_transform.Turn(round(-trajectory.return_angle(), 0.1))		//no idea why this has to be inverted, but it works
 
 	var/newrot = (-(trajectory.return_angle() + 90))
-	transform = turn(transform, newrot - cached_rotation) //Bullets are turned because their sprites are drawn side-facing
-	cached_rotation = newrot
+	transform = turn(transform, newrot - default_rotation) //Bullets are turned because their sprites are drawn side-facing
+	default_rotation = newrot
 
 /obj/item/projectile/proc/muzzle_effect(var/matrix/T)
 	if(silenced)

@@ -40,7 +40,8 @@
 	/obj/item/weapon/gun/projectile/ripper = 0.5,
 	/obj/item/weapon/gun/energy/forcegun = 0.5,
 	/obj/item/weapon/gun/energy/cutter = 1,
-	/obj/item/weapon/gun/energy/cutter/plasma = 0.5))
+	/obj/item/weapon/gun/energy/cutter/plasma = 0.5,
+	/obj/item/weapon/gun/projectile/linecutter = 0.5))
 
 /obj/random/handgun
 	name = "Random Handgun"
@@ -65,4 +66,5 @@
 	/obj/item/weapon/cell/force = 0.75,
 	/obj/item/ammo_magazine/seeker = 1,
 	/obj/item/weapon/cell/contact = 0.75,
-	/obj/item/ammo_magazine/divet = 1.5))
+	/obj/item/ammo_magazine/divet = 1.5,
+	/obj/item/ammo_magazine/lineracks = 1))

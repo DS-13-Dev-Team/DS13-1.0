@@ -18,17 +18,20 @@
 
 	biomass_reclamation_time	=	7.5 MINUTES
 
-	icon_template = 'icons/mob/necromorph/slasher.dmi'
+	icon_template = 'icons/mob/necromorph/slasher/fleshy.dmi'
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE
 	evasion = 0	//No natural evasion
 	spawner_spawnable = TRUE
 
+	//Slashers hold their arms up in an overhead pose, so they override height too
 	override_limb_types = list(
-	BP_L_ARM =  /obj/item/organ/external/arm/blade,
-	BP_R_ARM =  /obj/item/organ/external/arm/blade/right,
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/blade, "height" = (new /vector2(1.6,2))),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right, "height" = (new /vector2(1.6,2)))
 	)
+
+	hud_type = /datum/hud_data/necromorph/slasher
 
 
 	species_audio = list(
@@ -66,6 +69,25 @@
 	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/living/proc/slasher_dodge, /mob/proc/shout)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge),
 	KEY_ALT = list(/mob/living/proc/slasher_dodge))
+
+/*
+
+*/
+/obj/item/organ/external/arm/blade/slasher
+	limb_height = new /vector2(1.6,2)	//Slashers hold their blade arms high
+
+/obj/item/organ/external/arm/blade/slasher/right
+	organ_tag = BP_R_ARM
+	name = "right arm"
+	icon_name = "r_arm"
+	body_part = ARM_RIGHT
+	joint = "right elbow"
+	amputation_point = "right shoulder"
+
+//Ancient version, formerly default, now uncommon
+/datum/species/necromorph/slasher/desiccated
+	name = SPECIES_NECROMORPH_SLASHER_DESICCATED
+	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
 
 
 /*Roughly speaking, enhanced versions of necromorphs have:

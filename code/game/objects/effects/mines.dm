@@ -6,25 +6,40 @@
 	plane = OBJ_PLANE
 	layer = OBJ_LAYER
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "uglymine"
+	icon_state = "uglyminearmed"
 	var/triggerproc = "explode" //name of the proc thats called when the mine is triggered
 	var/triggered = 0
+	var/step_detonate = TRUE
+	var/fuse_timer = 0
 
-/obj/effect/mine/New()
-	icon_state = "uglyminearmed"
+/obj/effect/mine/Initialize()
+	.=..()
+
+	if (fuse_timer)
+		addtimer(CALLBACK(src, /obj/effect/mine/proc/detonate), fuse_timer, TIMER_STOPPABLE)
 
 /obj/effect/mine/Crossed(AM as mob|obj)
 	Bumped(AM)
 
 /obj/effect/mine/Bumped(mob/M as mob|obj)
 
-	if(triggered) return
+	if(triggered)
+		return
 
-	if(istype(M, /mob/living/carbon/human))
-		for(var/mob/O in viewers(world.view, src.loc))
-			to_chat(O, "<span class='warning'>\The [M] triggered the \icon[src] [src]</span>")
-		triggered = 1
-		call(src,triggerproc)(M)
+	if (!step_detonate)
+		return
+
+	detonate(M)
+
+
+/obj/effect/mine/proc/detonate(var/tripper)
+	if (triggered)
+		return
+
+	if (tripper)
+		visible_message(SPAN_DANGER("[tripper] triggers the [src]!"))
+	triggered = 1
+	call(src,triggerproc)(tripper)
 
 /obj/effect/mine/proc/triggerrad(obj)
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread()

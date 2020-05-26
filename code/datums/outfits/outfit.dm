@@ -89,7 +89,7 @@ var/list/outfits_decls_by_type_
 
 	// Gloves
 	if (gloves && !H.get_equipped_item(slot_gloves)) // does mob not have gloves, despite the outfit has one specified?
-		var/obj/item/clothing/gloves/G = new gloves(H) // we've no use of a null object, instantize one
+		var/obj/item/clothing/gloves/G = create_item(gloves, H) // we've no use of a null object, instantize one
 		if (S.get_bodytype(H) in G.species_restricted) // what was the problem?
 			if ("exclude" in G.species_restricted) // are they excluded?
 				G.cut_fingertops()
@@ -115,7 +115,7 @@ var/list/outfits_decls_by_type_
 	for(var/path in backpack_contents)
 		var/number = backpack_contents[path]
 		for(var/i=0,i<number,i++)
-			H.equip_to_slot_or_store_or_drop(new path(H), slot_in_backpack)
+			H.equip_to_slot_or_store_or_drop(create_item(path, H), slot_in_backpack)
 
 	if(!(OUTFIT_ADJUSTMENT_SKIP_POST_EQUIP & equip_adjustments))
 		post_equip(H)
@@ -129,41 +129,41 @@ var/list/outfits_decls_by_type_
 
 	//Start with uniform,suit,backpack for additional slots
 	if(uniform)
-		H.equip_to_slot_or_del(new uniform(H),slot_w_uniform)
+		H.equip_to_slot_or_del(create_item(uniform, H),slot_w_uniform)
 	if(back)
-		H.equip_to_slot_or_del(new back(H),slot_back)
+		H.equip_to_slot_or_del(create_item(back, H),slot_back)
 	if(belt)
-		H.equip_to_slot_or_del(new belt(H),slot_belt)
+		H.equip_to_slot_or_del(create_item(belt, H),slot_belt)
 	if(shoes)
-		H.equip_to_slot_or_del(new shoes(H),slot_shoes)
+		H.equip_to_slot_or_del(create_item(shoes, H),slot_shoes)
 	if(gloves)
-		H.equip_to_slot_or_del(new gloves(H),slot_gloves)
+		H.equip_to_slot_or_del(create_item(gloves, H),slot_gloves)
 	if(mask)
-		H.equip_to_slot_or_del(new mask(H),slot_wear_mask)
+		H.equip_to_slot_or_del(create_item(mask, H),slot_wear_mask)
 	if(head)
-		H.equip_to_slot_or_del(new head(H),slot_head)
+		H.equip_to_slot_or_del(create_item(head, H),slot_head)
 	if(l_ear)
 		var/l_ear_path = (OUTFIT_ADJUSTMENT_PLAIN_HEADSET & equip_adjustments) && ispath(l_ear, /obj/item/device/radio/headset) ? /obj/item/device/radio/headset : l_ear
-		H.equip_to_slot_or_del(new l_ear_path(H),slot_l_ear)
+		H.equip_to_slot_or_del(create_item(l_ear_path, H),slot_l_ear)
 	if(r_ear)
 		var/r_ear_path = (OUTFIT_ADJUSTMENT_PLAIN_HEADSET & equip_adjustments) && ispath(r_ear, /obj/item/device/radio/headset) ? /obj/item/device/radio/headset : r_ear
-		H.equip_to_slot_or_del(new r_ear_path(H),slot_r_ear)
+		H.equip_to_slot_or_del(create_item(r_ear_path, H),slot_r_ear)
 	if(glasses)
-		H.equip_to_slot_or_del(new glasses(H),slot_glasses)
+		H.equip_to_slot_or_del(create_item(glasses, H),slot_glasses)
 	if(id)
-		H.equip_to_slot_or_del(new id(H),slot_wear_id)
+		H.equip_to_slot_or_del(create_item(id, H),slot_wear_id)
 	if(l_pocket)
-		H.equip_to_slot_or_del(new l_pocket(H),slot_l_store)
+		H.equip_to_slot_or_del(create_item(l_pocket, H),slot_l_store)
 	if(r_pocket)
-		H.equip_to_slot_or_del(new r_pocket(H),slot_r_store)
+		H.equip_to_slot_or_del(create_item(r_pocket, H),slot_r_store)
 	if(suit)
-		H.equip_to_slot_or_del(new suit(H),slot_wear_suit)
+		H.equip_to_slot_or_del(create_item(suit, H),slot_wear_suit)
 	if(suit_store)
-		H.equip_to_slot_or_del(new suit_store(H),slot_s_store)
+		H.equip_to_slot_or_del(create_item(suit_store, H),slot_s_store)
 	if(l_hand)
-		H.put_in_l_hand(new l_hand(H))
+		H.put_in_l_hand(create_item(l_hand, H))
 	if(r_hand)
-		H.put_in_r_hand(new r_hand(H))
+		H.put_in_r_hand(create_item(r_hand, H))
 
 	if((flags & OUTFIT_HAS_BACKPACK) && !(OUTFIT_ADJUSTMENT_SKIP_BACKPACK & equip_adjustments))
 		var/decl/backpack_outfit/bo
@@ -194,7 +194,7 @@ var/list/outfits_decls_by_type_
 		return
 	if(OUTFIT_ADJUSTMENT_SKIP_ID_PDA & equip_adjustments)
 		return
-	var/obj/item/weapon/card/id/W = new id_type(H)
+	var/obj/item/weapon/card/id/W = create_item(id_type, H)
 	if(id_desc)
 		W.desc = id_desc
 	if(rank)
@@ -210,9 +210,14 @@ var/list/outfits_decls_by_type_
 		return
 	if(OUTFIT_ADJUSTMENT_SKIP_ID_PDA & equip_adjustments)
 		return
-	var/obj/item/modular_computer/pda/pda = new pda_type(H)
+	var/obj/item/modular_computer/pda/pda = create_item(pda_type, H)
 	if(H.equip_to_slot_or_store_or_drop(pda, pda_slot))
 		return pda
 
 /decl/hierarchy/outfit/dd_SortValue()
 	return name
+
+
+//Wrapper for creating, so that we can manipulate the items
+/decl/hierarchy/outfit/proc/create_item(var/path, var/location)
+	return new path(location)

@@ -12,6 +12,25 @@ BP_R_HAND = BP_R_ARM,
 BP_EYES = BP_HEAD,
 BP_MOUTH = BP_HEAD))
 
+//This list is used for firing guns when not targeting a human mob.
+//The altitude of the projectile is chosen from this list, which represents average altitudes of a normal human
+//When a specific human is targeted, the heights will be taken from that mob's species datum instead, so this list is only a fallback
+//All heights are in metres
+GLOBAL_LIST_INIT(organ_altitudes, list(BP_L_FOOT = 0.05,
+BP_R_FOOT = 0.05,
+BP_R_LEG = 0.75,
+BP_L_LEG = 0.75,
+BP_TAIL = 0.75,
+BP_GROIN = 1.1,
+BP_CHEST = 1.5,
+BP_HEAD = 1.7,
+BP_L_ARM = 1.35,
+BP_R_ARM = 1.35,
+BP_L_HAND = 0.85,
+BP_R_HAND = 0.85,
+BP_EYES = 1.7,
+BP_MOUTH = 1.7,))
+
 GLOBAL_LIST_INIT(key_to_mob, list())
 
 GLOBAL_LIST_INIT(players, list())

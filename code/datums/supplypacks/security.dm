@@ -242,3 +242,19 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Security biohazard gear crate"
 	access = access_security
+
+
+/decl/hierarchy/supply_pack/security/random_weapon
+	name = "Weapons - Assorted Surplus"
+	contains = list(/obj/random/gun = 2)
+	cost = 50
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper surplus weapons crate"
+
+
+/decl/hierarchy/supply_pack/security/random_ammo
+	name = "Ammunition - Assorted Surplus"
+	contains = list(/obj/random/ammo = 7)
+	cost = 50
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper surplus ammunition crate"

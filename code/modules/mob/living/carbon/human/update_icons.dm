@@ -155,7 +155,7 @@ Please contact me on #coderbus IRC. ~Carn x
 	var/list/overlays_to_apply = list()
 	if (icon_update)
 		if (species.icon_lying && lying != lying_prev)
-			update_body(TRUE)
+			regenerate_icons()
 
 		var/list/visible_overlays
 		if(is_cloaked())

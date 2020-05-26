@@ -147,22 +147,70 @@ Checks if a list has the same entries and values as an element of big.
 		else
 			.[key] = call(merge_method)(.[key], b_value)
 
-//Pretends to pick an element based on its weight but really just seems to pick a random element.
-/proc/pickweight(list/L)
+//Picks a random element from a list based on a weighting system:
+//1. Adds up the total of weights for each element
+//2. Generates a random value between 0% to 100% of previous total value.
+//3. For each element in the list, subtracts its weighting from that number
+//4. If that makes the number 0 or less, return that element.
+/proc/pickweight(list/L, base_weight = 1)
 	var/total = 0
 	var/item
 	for (item in L)
 		if (!L[item])
-			L[item] = 1
+			L[item] = base_weight
 		total += L[item]
 
-	total = rand(1, total)
+	total = rand() * total
 	for (item in L)
-		total -=L [item]
+		total -= L[item]
 		if (total <= 0)
 			return item
 
-	return null
+
+//Picks a number of elements from a list based on weight.
+//This is highly optimised and good for things like grabbing 200 items from a list of 40,000
+//Much more efficient than many pickweight calls
+/proc/pickweight_mult(list/L, quantity, base_weight = 1)
+	var/total = 0
+	var/item
+	for (item in L)
+		if (!L[item])
+			L[item] = base_weight
+		total += L[item]
+
+	//Next we will make a list of randomly generated numbers, called Requests
+	//It is critical that this list be sorted in ascending order, so we will build it in that order. First one is free, so we start counting at 2
+	var/list/requests = list(rand(1, total))
+	for (var/i in 2 to quantity)
+		//Each time we generate the next request
+		var/newreq = rand()* total
+
+		for (var/j in 1 to requests.len)	//We will loop through all existing requests
+
+			if (requests[j] > newreq)	//We keep going through the list until we find an element which is bigger than the one we want to add
+				requests.Insert(j, newreq)	//And then we insert the newqreq at that point, pushing everything else forward
+				break
+
+
+
+	//We have a list of random numbers sorted in ascending order.
+	var/list/results = list()
+
+	total = 0
+
+	//Now we will iterate forward through the items list, adding each weight to the total
+	for (item in L)
+		total += L[item]
+
+		//After each item we do a while loop
+		while (requests.len && total >= requests[1])
+			//If the total is higher than the value of the first request
+			results += item //We add this item to the results list
+			requests.Cut(1,2) //And we cut off the top of the requests list
+
+			//This while loop will repeat until the next request is higher than the total. The current item might be added to the results list many times, in this process
+
+	return results
 
 //Pick a random element from the list and remove it from the list.
 /proc/pick_n_take(list/listfrom)
@@ -186,6 +234,29 @@ Checks if a list has the same entries and values as an element of big.
 		if(L[i] == element)
 			return L[i+1]
 	return L[1]
+
+
+//Given a list of atoms, returns the single one from that list which is the smallest distance from origin
+/proc/pick_closest(var/list/L, var/atom/origin)
+	//The list contains all of L
+	var/list/closest = list()
+	var/list/min_dist = INFINITY
+	for (var/atom/A in L)
+		var/dist = get_dist(origin, A)
+		if (dist > min_dist)
+			continue
+
+		//If its less than the minimum, we clear the list and set the new minimum
+		if (dist < min_dist)
+			closest = list()
+			min_dist = dist
+
+		//And whether its less or equal, we add A to the closest list
+		closest += A
+
+
+	return pick(closest)
+
 
 /*
  * Sorting

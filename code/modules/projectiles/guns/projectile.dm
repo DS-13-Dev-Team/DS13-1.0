@@ -86,6 +86,8 @@
 			ammo_magazine.stored_ammo -= chambered
 
 	if (chambered)
+		if (projectile_type)
+			return new projectile_type(src)
 		return chambered.BB
 	return null
 

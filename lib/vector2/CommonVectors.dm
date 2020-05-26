@@ -66,3 +66,8 @@ Vector2
 		RandomDirection()
 			var/vector2/delta = new /vector2(rand(), rand())
 			return delta.ToMagnitude(1)
+
+	proc
+		VectorAverage(var/vector2/A)
+			if (A)
+				return (A.x + A.y) / 2

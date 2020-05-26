@@ -1102,7 +1102,7 @@
 			return 1
 	return 0
 
-/mob/living/carbon/human/slip(var/slipped_on, stun_duration=8)
+/mob/living/carbon/human/slip(var/slipped_on, stun_duration=2)
 	if((species.species_flags & SPECIES_FLAG_NO_SLIP) || (shoes && (shoes.item_flags & ITEM_FLAG_NOSLIP)))
 		return 0
 	return !!(..(slipped_on,stun_duration))
