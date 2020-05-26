@@ -766,12 +766,18 @@ BLIND     // can't see anything
 		verbs -= /obj/item/clothing/under/verb/rollsleeves
 
 /obj/item/clothing/under/get_icon_state(mob/user_mob, slot)
-	var/ret
+	var/mob_state
 	if(item_state_slots && item_state_slots[slot])
-		ret = item_state_slots[slot]
+		mob_state = item_state_slots[slot]
 	else
-		ret = icon_state
-	return "[ret]_s"
+		mob_state = icon_state
+
+	var/mob/living/carbon/human/user_human
+	if(ishuman(user_mob))
+		user_human = user_mob
+		if (user_human.lying && user_human.species.icon_lying)
+			mob_state = "[mob_state][user_human.species.icon_lying]"
+	return "[mob_state]_s"
 
 /obj/item/clothing/under/attack_hand(var/mob/user)
 	if(accessories && accessories.len)

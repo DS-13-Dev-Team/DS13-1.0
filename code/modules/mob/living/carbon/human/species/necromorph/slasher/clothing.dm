@@ -4,6 +4,7 @@
 */
 /decl/hierarchy/outfit/necromorph
 	hierarchy_type = /decl/hierarchy/outfit/necromorph
+	id_slot = slot_wear_id
 
 /decl/hierarchy/outfit/necromorph/create_item(var/path, var/location)
 	.=..()
@@ -36,7 +37,7 @@
 	uniform = /obj/item/clothing/under/security
 	id_type = /obj/item/weapon/card/id/holo/security
 
-/obj/item/clothing/under/security/deadspace
+/obj/item/clothing/under/security
 	sprite_sheets = list(
 		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
 		)
