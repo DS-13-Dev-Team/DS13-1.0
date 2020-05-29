@@ -209,7 +209,7 @@
 	desc = "This is a random simple medical item."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "brutepack"
-	spawn_nothing_percentage = 25
+	spawn_nothing_percentage = 0
 
 /obj/random/medical/lite/item_to_spawn()
 	return pickweight(list(/obj/item/stack/medical/bruise_pack = 4,
@@ -494,15 +494,35 @@ obj/random/closet/item_to_spawn()
 				/obj/item/stack/material/wood/ten,
 				/obj/item/stack/material/cardboard/ten,
 				/obj/item/stack/rods/ten,
-				/obj/item/stack/material/plasteel/ten,
-				/obj/item/stack/material/steel/fifty,
-				/obj/item/stack/material/glass/fifty,
-				/obj/item/stack/material/glass/reinforced/fifty,
-				/obj/item/stack/material/plastic/fifty,
-				/obj/item/stack/material/wood/fifty,
-				/obj/item/stack/material/cardboard/fifty,
-				/obj/item/stack/rods/fifty,
-				/obj/item/stack/material/plasteel/fifty))
+				/obj/item/stack/material/plasteel/ten = 0.5,
+				/obj/item/stack/material/steel/fifty = 0.2,
+				/obj/item/stack/material/glass/fifty = 0.2,
+				/obj/item/stack/material/glass/reinforced/fifty = 0.2,
+				/obj/item/stack/material/plastic/fifty = 0.2,
+				/obj/item/stack/material/wood/fifty = 0.2,
+				/obj/item/stack/material/cardboard/fifty = 0.2,
+				/obj/item/stack/rods/fifty = 0.2,
+				/obj/item/stack/material/plasteel/fifty = 0.1))
+
+
+/obj/random/material/rare //Random materials for building stuff
+	name = "random material"
+	desc = "This is a random material."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "sheet-metal"
+
+/obj/random/material/rare/item_to_spawn()
+	pickweight(list(/obj/item/stack/material/diamond/ten = 7,
+				/obj/item/stack/material/glass/phoronrglass/ten = 7,
+				/obj/item/stack/material/phoron/ten = 7,
+				/obj/item/stack/material/gold/ten = 7,
+				/obj/item/stack/material/silver/ten = 7,
+				/obj/item/stack/material/osmium/ten = 7,
+				/obj/item/stack/material/platinum/ten = 8,
+				/obj/item/stack/material/tritium/ten = 7,
+				/obj/item/stack/material/mhydrogen/ten = 6,
+				/obj/item/stack/material/plasteel/ten = 9,))
+
 
 /obj/random/soap
 	name = "Random Cleaning Supplies"
@@ -816,49 +836,6 @@ obj/random/obstruction/item_to_spawn()
 
 
 
-/obj/random/loot /*Better loot for away missions and salvage */
-	name = "random loot"
-	desc = "This is some random loot."
-	icon = 'icons/obj/items.dmi'
-	icon_state = "gift3"
-
-/obj/random/loot/item_to_spawn()
-	return pickweight(list(/obj/random/rare = 10,
-				/obj/random/voidhelmet = 10,
-				/obj/random/voidsuit = 10,
-				/obj/random/hardsuit = 10,
-				/obj/item/clothing/mask/muzzle = 7,
-				/obj/item/clothing/glasses/night = 3,
-				/obj/item/clothing/glasses/thermal = 1,
-				/obj/item/clothing/glasses/welding/superior = 7,
-				/obj/item/clothing/head/collectable/petehat = 4,
-				/obj/item/clothing/suit/storage/vest/merc = 3,
-				/obj/item/clothing/suit/straight_jacket = 6,
-				/obj/item/clothing/head/helmet/merc = 3,
-				/obj/item/stack/material/diamond/ten = 7,
-				/obj/item/stack/material/glass/phoronrglass/ten = 7,
-				/obj/item/stack/material/phoron/ten = 7,
-				/obj/item/stack/material/gold/ten = 7,
-				/obj/item/stack/material/silver/ten = 7,
-				/obj/item/stack/material/osmium/ten = 7,
-				/obj/item/stack/material/platinum/ten = 8,
-				/obj/item/stack/material/tritium/ten = 7,
-				/obj/item/stack/material/mhydrogen/ten = 6,
-				/obj/item/stack/material/plasteel/ten = 9,
-				/obj/item/weapon/storage/box/monkeycubes = 5,
-				/obj/item/weapon/storage/firstaid/surgery = 4,
-				/obj/item/weapon/tool/multitool/hacktool = 2,
-				/obj/item/weapon/surgicaldrill = 7,
-				/obj/item/weapon/FixOVein = 7,
-				/obj/item/weapon/retractor = 7,
-				/obj/item/weapon/hemostat = 7,
-				/obj/item/weapon/cautery = 7,
-				/obj/item/weapon/bonesetter = 7,
-				/obj/item/weapon/bonegel = 7,
-				/obj/item/weapon/tool/saw/circular = 7,
-				/obj/item/weapon/scalpel = 7,
-				/obj/item/weapon/melee/baton/loaded = 9))
-
 /obj/random/voidhelmet
 	name = "Random Voidsuit Helmet"
 	desc = "This is a random voidsuit helmet."
@@ -908,7 +885,9 @@ obj/random/obstruction/item_to_spawn()
 	icon_state = "generic"
 
 /obj/random/hardsuit/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/rig/industrial,
+	return pickweight(list(/obj/item/weapon/rig/security,
+				/obj/item/weapon/rig/vintage,
+				/obj/item/weapon/rig/industrial,
 				/obj/item/weapon/rig/eva,
 				/obj/item/weapon/rig/light/hacker,
 				/obj/item/weapon/rig/light/stealth,

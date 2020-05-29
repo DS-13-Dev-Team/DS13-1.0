@@ -92,9 +92,9 @@
 
 /obj/item/weapon/tool_upgrade/proc/try_apply(var/obj/item/weapon/tool/O, var/mob/user)
 	if (!can_apply(O, user))
-		return
+		return FALSE
 
-	apply(O, user)
+	return apply(O, user)
 
 
 /obj/item/weapon/tool_upgrade/proc/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
@@ -156,7 +156,7 @@
 	if (user)
 		user.visible_message(SPAN_NOTICE("[user] starts applying the [src] to [T]"), SPAN_NOTICE("You start applying the [src] to [T]"))
 		if (!use_tool(user = user, target =  T, base_time = WORKTIME_NORMAL, required_quality = null, fail_chance = FAILCHANCE_EASY+T.unreliability, required_stat = "construction", forced_sound = WORKSOUND_WRENCHING))
-			return
+			return FALSE
 		user << SPAN_NOTICE("You have successfully installed [src] in [T]")
 		user.drop_from_inventory(src)
 	//If we get here, we succeeded in the applying
@@ -164,7 +164,7 @@
 	forceMove(T)
 	T.upgrades.Add(src)
 	T.refresh_upgrades()
-
+	return TRUE
 
 //This does the actual numerical changes.
 //The tool itself asks us to call this, and it resets itself before doing so

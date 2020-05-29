@@ -94,6 +94,8 @@
 	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 	slot = ACCESSORY_SLOT_ARMOR_A
 
+
+
 /obj/item/clothing/accessory/armguards/blue
 	desc = "A pair of blue arm pads reinforced with armor plating. Attaches to a plate carrier."
 	icon_state = "armguards_blue"
