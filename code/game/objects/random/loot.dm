@@ -1,15 +1,15 @@
 //Spawn nothing chances
 #define USUALLY	15
 #define OFTEN	40
-#define SOMETIMES	65
+#define SOMETIMES	60
 #define RARELY	85
 /*
 	Main loot table.
 	Most random items are distributed using this entry point
 */
 /obj/random/loot/item_to_spawn()
-	return pickweight(list(/obj/random/common_loot = 80,
-				/obj/random/uncommon_loot = 15,
+	return pickweight(list(/obj/random/common_loot = 75,
+				/obj/random/uncommon_loot = 20,
 				/obj/random/rare_loot = 5))
 
 /obj/random/loot/usually
