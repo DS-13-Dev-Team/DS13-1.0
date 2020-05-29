@@ -1,8 +1,8 @@
 //Spawn nothing chances
-#define USUALLY	20
-#define OFTEN	50
-#define SOMETIMES	70
-#define RARELY	90
+#define USUALLY	15
+#define OFTEN	40
+#define SOMETIMES	65
+#define RARELY	85
 /*
 	Main loot table.
 	Most random items are distributed using this entry point
@@ -12,9 +12,17 @@
 				/obj/random/uncommon_loot = 15,
 				/obj/random/rare_loot = 5))
 
+/obj/random/loot/usually
+	spawn_nothing_percentage = USUALLY
 
+/obj/random/loot/often
+	spawn_nothing_percentage = OFTEN
 
+/obj/random/loot/sometimes
+	spawn_nothing_percentage = SOMETIMES
 
+/obj/random/loot/rarely
+	spawn_nothing_percentage = RARELY
 
 
 
@@ -32,8 +40,11 @@
 				/obj/random/smokes= 1,
 				/obj/random/snack = 1,
 				/obj/random/storage = 1,
-				/obj/random/cash = 1
+				/obj/random/cash = 0.5,
+				/obj/random/light = 2
 				))
+
+
 
 
 /obj/random/uncommon_loot/item_to_spawn()
@@ -45,7 +56,9 @@
 	/obj/random/accessory = 1,
 	/obj/random/voidsuit = 1,
 	/obj/random/armor = 1,
-	/obj/random/pouch = 2))
+	/obj/random/pouch = 2,
+	/obj/random/tool/advanced = 1,
+	/obj/random/toolbox = 1))
 
 /obj/random/rare_loot/item_to_spawn()
 	return pickweight(list( /obj/item/stack/power_node = 2,
@@ -53,3 +66,16 @@
 	/obj/random/hardsuit = 1,
 	/obj/random/material/rare = 1))
 	//Future todo: Special variants of guns with enhanced stats
+
+
+/obj/random/rare_loot/usually
+	spawn_nothing_percentage = USUALLY
+
+/obj/random/rare_loot/often
+	spawn_nothing_percentage = OFTEN
+
+/obj/random/rare_loot/sometimes
+	spawn_nothing_percentage = SOMETIMES
+
+/obj/random/rare_loot/rarely
+	spawn_nothing_percentage = RARELY

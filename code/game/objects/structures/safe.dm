@@ -29,8 +29,10 @@ FLOOR SAFES
 	tumbler_2_pos = rand(0, 72)
 	tumbler_2_open = rand(0, 72)
 
-
 /obj/structure/safe/Initialize()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/safe/LateInitialize()
 	for(var/obj/item/I in loc)
 		if(space >= maxspace)
 			return

@@ -512,7 +512,7 @@ obj/random/closet/item_to_spawn()
 	icon_state = "sheet-metal"
 
 /obj/random/material/rare/item_to_spawn()
-	pickweight(list(/obj/item/stack/material/diamond/ten = 7,
+	return	pickweight(list(/obj/item/stack/material/diamond/ten = 7,
 				/obj/item/stack/material/glass/phoronrglass/ten = 7,
 				/obj/item/stack/material/phoron/ten = 7,
 				/obj/item/stack/material/gold/ten = 7,
@@ -583,8 +583,28 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/device/radio/headset,
 				/obj/item/device/flashlight/flare/glowstick/yellow,
 				/obj/item/device/flashlight/flare/glowstick/orange,
-				/obj/item/weapon/grenade/light,
 				/obj/item/device/oxycandle))
+
+
+/obj/random/light
+	name = "random light"
+	desc = "This is a random advanced device."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "game_kit"
+
+/obj/random/light/item_to_spawn()
+	return pickweight(list(/obj/item/device/flashlight/lantern,
+			/obj/item/device/flashlight/flare,
+			/obj/item/device/flashlight/pen,
+			/obj/item/weapon/storage/box/glowsticks,
+			/obj/item/device/flashlight/upgraded = 0.5,
+			/obj/item/device/flashlight/flashdark = 0.1,
+			/obj/item/device/flashlight/maglight,
+			/obj/item/device/flashlight/lamp,
+			/obj/item/device/flashlight/slime,
+			/obj/item/device/flashlight/lamp = 0.5,
+			/obj/item/device/flashlight = 2))
+
 
 /obj/random/smokes
 	name = "random smokeable"
