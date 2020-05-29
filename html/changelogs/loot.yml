@@ -39,3 +39,4 @@ changes:
   - tweak: "The captain's personal safe now contains a few rare treasures."
   - rscadd: "Added pouches, ported from eris. These little bags fit in your pockets, and generally carry more than a pocket normally would, though with various nuances and limitations."
   - tweak: "Cargo crew now get maintenance access so they can gather things up for distribution."
+  - tweak: "arm and leg guards can now be attached to all types of armor vests, and are added to random pools."
