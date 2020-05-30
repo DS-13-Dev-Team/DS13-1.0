@@ -23,7 +23,7 @@
 
 /obj/structure/closet/emcloset/New()
 	..()
-	new /obj/random/tool(src)
+	new /obj/random/loot/often(src)
 	switch (pickweight(list("small" = 50, "aid" = 25, "tank" = 10, "large" = 5, "both" = 10)))
 		if ("small")
 			new /obj/item/weapon/tank/emergency/oxygen(src)
@@ -97,7 +97,8 @@
 		/obj/item/weapon/tank/oxygen/red,
 		/obj/item/weapon/extinguisher,
 		/obj/item/clothing/head/hardhat/red,
-		/obj/random/tool)
+		/obj/random/armor,
+		/obj/random/loot/often)
 
 /obj/structure/closet/firecloset/update_icon()
 	if(!opened)
@@ -120,11 +121,12 @@
 	new /obj/random/tool(src)
 	new /obj/random/tool(src)
 	new /obj/random/tool(src)
+	new /obj/random/loot/often(src)
 	new /obj/random/tool_upgrade(src) //Guaranteeed toolmod
 	if(prob(50))
 		new /obj/random/tool_upgrade(src)//Good chance for another
 	if(prob(10))
-		new /obj/random/tool_upgrade(src)//Small chance for a thirdf
+		new /obj/random/tool_upgrade(src)//Small chance for a third
 
 	if(prob(40))
 		new /obj/item/clothing/suit/storage/hazardvest(src)
@@ -249,7 +251,8 @@
 		/obj/item/weapon/tank/oxygen/red,
 		/obj/item/weapon/extinguisher,
 		/obj/item/clothing/head/hardhat/red,
-		/obj/random/tool = 2)
+		/obj/random/armor = 1,
+		/obj/random/loot/often)
 
 /*
  * First Aid

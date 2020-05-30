@@ -108,7 +108,7 @@
 		if(istype(user,/mob/living/silicon/robot))
 			return FALSE
 		if(affected && affected.cavity)
-			var/max_volume = base_storage_capacity(affected.cavity_max_w_class)
+			var/max_volume = BASE_STORAGE_CAPACITY(affected.cavity_max_w_class)
 
 			if(tool.w_class > affected.cavity_max_w_class)
 				to_chat(user, "<span class='warning'>\The [tool] is too big for [affected.cavity_name] cavity.</span>")

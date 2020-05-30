@@ -57,7 +57,7 @@ datum/job/line_cook/get_description_blurb()
 	ideal_character_age = 40
 	starting_credits = 2380
 
-	access = list(access_so, access_bridge, access_cargo)
+	access = list(access_so, access_bridge, access_cargo, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/so
 
 	min_skill = list(   SKILL_HAULING     = SKILL_ADEPT,
@@ -83,7 +83,7 @@ datum/job/so/get_description_blurb()
 	minimal_player_age = 18
 	starting_credits = 1970
 
-	access = list(access_cargo)
+	access = list(access_cargo, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/serviceman
 
 	min_skill = list(   SKILL_HAULING     = SKILL_EXPERT,

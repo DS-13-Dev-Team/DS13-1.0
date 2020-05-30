@@ -226,7 +226,10 @@
 	icon_state = "kvest"
 	item_state = "armor"
 	armor = list(melee = 25, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0)
-	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
+	//valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
+	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S)
+
 
 /obj/item/clothing/suit/armor/vest/nt
 	name = "\improper NanoTrasen armored vest"
@@ -307,8 +310,6 @@
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	item_icons = list(slot_wear_suit_str = 'icons/mob/onmob/modular_armor.dmi')
 	icon_state = "pcarrier"
-	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S)
 	blood_overlay_type = "armor"
 
 /obj/item/clothing/suit/armor/pcarrier/light

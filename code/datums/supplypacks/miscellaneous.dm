@@ -323,3 +323,21 @@
 	contains = list(/obj/item/weapon/grenade/light = 8)
 	cost = 20
 	containername = "\improper Illumination grenade crate"
+
+
+//A crate of completely random stuff for cargo to sort
+/decl/hierarchy/supply_pack/miscellaneous/stuff
+	name = "Mystery Crate"
+	contains = list(/obj/random/loot,
+					/obj/random/loot,
+					/obj/random/loot,
+					/obj/random/loot,
+					/obj/random/loot,
+					/obj/random/loot,
+					/obj/random/loot,
+					/obj/random/loot,
+					/obj/random/loot,
+					/obj/random/loot,
+					/obj/random/loot,)
+	cost = 20
+	containername = "\improper Mystery"
