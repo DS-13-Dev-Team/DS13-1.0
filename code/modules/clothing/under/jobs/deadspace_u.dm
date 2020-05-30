@@ -138,18 +138,18 @@
  * ERT Uniforms
  */
 /obj/item/clothing/under/kellion
-	name = "security jumpsuit"
-	desc = "A dark brown uniform issued to security officers. It offers some light ballistic protection due to the light armor plates sewn into the chest and thighs."
-	item_state = "o_suit"
+	name = "C.E.C. security contractor jumpsuit"
+	desc = "A dark green uniform issued to C.E.C. security contractors."
+	item_state = "kellion_jumpsuit"
 	worn_state = "kellion_jumpsuit"
 	icon_state = "kellion_jumpsuit"
 	permeability_coefficient = 0.25
-	armor = list(melee = 35, bullet = 55, laser = 0, energy = 20, bomb = 45, bio = 0, rad = 0)
+	armor = list(melee = 35, bullet = 35, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)
 
 /obj/item/clothing/under/kellion/leader
-	name = "asset protection command armor"
-	desc = "A set of armor worn by many corporate and private asset protection forces. Has blue highlights."
+	name = "C.E.C. security leader jumpsuit"
+	desc = "A drab, yellow-gray uniform issued to C.E.C. security team leaders. It provides more protection due to the armored plates sown into it."
 	item_state = "kellion_lead"
 	worn_state = "kellion_lead"
 	icon_state = "kellion_lead"
-	armor = list(melee = 60, bullet = 60, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)
+	armor = list(melee = 60, bullet = 60, laser = 0, energy = 0, bomb = 35, bio = 20, rad = 0)

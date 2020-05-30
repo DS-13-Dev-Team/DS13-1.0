@@ -185,8 +185,8 @@
 //Non-hardsuit ERT armor
 //Kellion - Grunt
 /obj/item/clothing/suit/armor/vest/kellion
-	name = "asset protection command armor"
-	desc = "A set of armor worn by many corporate and private asset protection forces. Has blue highlights."
+	name = "C.E.C. armored vest"
+	desc = "A set of armor issued to security teams assigned to guarding C.E.C. maintenance teams."
 	icon_state = "kellion_grunt"
 	item_state = "armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS

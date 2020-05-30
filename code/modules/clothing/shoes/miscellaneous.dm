@@ -188,7 +188,7 @@
 
 /obj/item/clothing/shoes/ds_securityboots
 	name = "combat boots"
-	desc = "A pair of standard, CEC issue combat boots. Stomping on secession since the Mars Riots."
+	desc = "A pair of standard, CEC issue, combat boots. Stomping on secession since the Mars Riots."
 	icon_state = "ds_securityjackboots"
 	force = 3
 	armor = list(melee = 80, bullet = 60, laser = 0,energy = 0, bomb = 50, bio = 10, rad = 0)
@@ -198,18 +198,18 @@
 
 /obj/item/clothing/shoes/kellion
 	name = "combat boots"
-	desc = "A pair of standard, CEC issue combat boots. Stomping on secession since the Mars Riots."
+	desc = "A variant of standard, CEC issue, combat boots, this pair is for use in hazardous areas that still have breathable atmosphere, with a rubber sole."
 	icon_state = "kellion_grunt_boots"
 	force = 3
-	armor = list(melee = 80, bullet = 60, laser = 0,energy = 0, bomb = 50, bio = 10, rad = 0)
+	armor = list(melee = 80, bullet = 60, laser = 0,energy = 0, bomb = 55, bio = 10, rad = 0)
 	item_flags = ITEM_FLAG_NOSLIP
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/shoes/kellion/lead
 	name = "combat boots"
-	desc = "A pair of standard, CEC issue combat boots. Stomping on secession since the Mars Riots."
+	desc = "A premium variant of standard, CEC issue, combat boots, this pair is for use in hazardous areas that still have breathable atmosphere, with a rubber sole and extra padding."
 	icon_state = "kellion_lead_boots"
 	force = 3
-	armor = list(melee = 80, bullet = 60, laser = 0,energy = 0, bomb = 50, bio = 10, rad = 0)
+	armor = list(melee = 80, bullet = 70, laser = 0,energy = 0, bomb = 55, bio = 10, rad = 0)
 	item_flags = ITEM_FLAG_NOSLIP
 	siemens_coefficient = 0.
