@@ -196,6 +196,11 @@
 	if (master && (master in projectiles))
 		return
 
+	if (!projectiles.len)
+		if (!QDELETED(src))
+			qdel(src)
+		return
+
 	if (projectiles.len == 1)
 		master = projectiles[1]
 	else
