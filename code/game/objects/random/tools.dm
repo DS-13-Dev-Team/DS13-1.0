@@ -234,4 +234,4 @@
 		//Success or fail, remove this mod from the list. we can't have two of the same mod anyway
 		possible_mods -= modtype
 
-	return T
+	return list(T)

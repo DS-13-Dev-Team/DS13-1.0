@@ -12,7 +12,7 @@
 	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	total_health = 75
-	biomass = 60
+	biomass = 55
 	mass = 70
 	virus_immune = 1
 

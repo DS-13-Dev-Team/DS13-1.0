@@ -127,7 +127,6 @@
 		to_chat(user, "This nest will now create [spawner_species.name_plural]")
 
 /obj/structure/corruption_node/nest/proc/set_spawn_species(var/datum/species/necromorph/N)
-	world << "setting species [N.type]"
 	spawner_species = N
 	biomass = initial(biomass) + N.biomass * upgrade_multipliers[upgrade_level]
 	finish_growth()	//Immediately make the first one available to spawn
