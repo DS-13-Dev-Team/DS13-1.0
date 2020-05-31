@@ -16,7 +16,6 @@
 	charge_cost = 250
 
 	cell_type = /obj/item/weapon/cell/plasmacutter
-	projectile_type = null
 	slot_flags = SLOT_BACK
 	charge_meter = FALSE	//if set, the icon state will be chosen based on the current charge
 	mag_insert_sound = 'sound/weapons/guns/interaction/force_magin.ogg'
@@ -40,7 +39,7 @@
 
 /obj/item/projectile/beam/cutter
 	name = "plasma arc"
-	damage = 14
+	damage = 16
 	accuracy = 130	//Its a broad arc, easy to land hits on limbs with
 	edge = 1
 	damage_type = BRUTE //plasma is a physical object with mass, rather than purely burning. this also means you can decapitate/sever limbs, not just ash them.
@@ -49,7 +48,7 @@
 	pass_flags = PASS_FLAG_TABLE
 	structure_damage_factor = 3.5
 
-	var/dig_power = 400
+	var/dig_power = 600
 
 	muzzle_type = /obj/effect/projectile/trilaser/muzzle
 	tracer_type = null
@@ -70,13 +69,9 @@
 /obj/item/projectile/beam/cutter/plasma
 	damage = 21
 	kill_count = 9 //an upgrade over the mining cutter, used for engineering work, but still not a proper firearm
-	dig_power = 600
+	dig_power = 900
 
-/obj/item/projectile/beam/miningcutter/on_impact(var/atom/A)
-	if(istype(A, /turf/simulated/mineral))
-		var/turf/simulated/mineral/M = A
-		M.dig(250)
-	. = ..()
+
 
 
 //----------------------------
