@@ -35,6 +35,9 @@ var/global/list/sparring_attack_cache = list()
 
 	var/structure_damage_mult = 1
 
+	var/lying_cooldown_factor	=	2
+	var/lying_damage_factor	=	0.75
+
 /datum/unarmed_attack/New()
 	.=..()
 	if (edge)
@@ -69,13 +72,18 @@ var/global/list/sparring_attack_cache = list()
 
 	return TRUE
 
-/datum/unarmed_attack/proc/get_unarmed_damage()
-	return damage
+/datum/unarmed_attack/proc/get_unarmed_damage(var/mob/living/user)
+	.= damage
+	if (user && user.lying)
+		.*=lying_damage_factor
+
 
 //Factor in attackspeed here
 /datum/unarmed_attack/proc/get_delay(var/mob/living/user)
 	if (isnum(delay) && delay > 0)
-		return delay / user.get_attack_speed_factor()
+		.=delay / user.get_attack_speed_factor()
+		if (user.lying)
+			delay *= lying_cooldown_factor
 	return 0
 
 /datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/atom/target,var/armour,var/attack_damage,var/zone)
@@ -346,7 +354,7 @@ var/global/list/sparring_attack_cache = list()
 	var/obj/item/clothing/shoes = user.shoes
 	if(!istype(shoes))
 		return damage
-	return damage + (shoes ? shoes.force : 0)
+	return (..() + (shoes ? shoes.force : 0))
 
 /datum/unarmed_attack/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
@@ -377,7 +385,7 @@ var/global/list/sparring_attack_cache = list()
 
 /datum/unarmed_attack/stomp/get_unarmed_damage(var/mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes
-	return damage + (shoes ? shoes.force : 0)
+	return .=..() + (shoes ? shoes.force : 0)
 
 /datum/unarmed_attack/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)

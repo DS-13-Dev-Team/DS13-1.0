@@ -109,7 +109,7 @@
 			if (!CH.OnLeftClick(A,params))
 				return
 
-	if(stat || paralysis || stunned || weakened)
+	if(incapacitated(INCAPACITATION_DISABLED))
 		return
 
 	//Limited arcs do their facing earlier
@@ -229,7 +229,7 @@
 		to_chat(src, "You cannot attack people before the game has started.")
 		return 0
 
-	if(stat)
+	if(incapacitated())
 		return 0
 
 	return 1

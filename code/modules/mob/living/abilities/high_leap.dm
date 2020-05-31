@@ -290,7 +290,7 @@
 	return TRUE
 
 /mob/living/can_high_leap(var/error_messages = TRUE)
-	if (incapacitated())
+	if (incapacitated(INCAPACITATION_IMMOBILE))
 		return FALSE
 
 	.=..()

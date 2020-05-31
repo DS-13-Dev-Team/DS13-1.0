@@ -1394,19 +1394,21 @@
 /mob/living/carbon/human/ranged_accuracy_mods()
 	. = ..()
 	if(get_shock() > 10 && !skill_check(SKILL_WEAPONS, SKILL_ADEPT))
-		. -= 1
+		. -= 3
 	if(get_shock() > 50)
-		. -= 1
+		. -= 3
 	if(shock_stage > 10)
-		. -= 1
+		. -= 3
 	if(shock_stage > 30)
-		. -= 1
+		. -= 3
+	if (lying)
+		. -= 10	//Aiming from the ground is trickier
 	if(skill_check(SKILL_WEAPONS, SKILL_ADEPT))
-		. += 1
+		. += 4
 	if(skill_check(SKILL_WEAPONS, SKILL_EXPERT))
-		. += 1
+		. += 4
 	if(skill_check(SKILL_WEAPONS, SKILL_PROF))
-		. += 2
+		. += 7
 
 
 

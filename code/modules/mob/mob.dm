@@ -794,8 +794,9 @@
 
 	if(lying)
 		set_density(density_lying())
-		if(l_hand) unEquip(l_hand)
-		if(r_hand) unEquip(r_hand)
+		if (incapacitated(INCAPACITATION_KNOCKOUT))
+			if(l_hand) unEquip(l_hand)
+			if(r_hand) unEquip(r_hand)
 	else
 		set_density(initial(density))
 	reset_layer()
