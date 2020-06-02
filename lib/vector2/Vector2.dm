@@ -2,7 +2,8 @@
 */
 
 vector2
-	var x, y
+	var x
+	var y
 
 	/* Takes 2 numbers or a vector2 to copy.
 	*/
