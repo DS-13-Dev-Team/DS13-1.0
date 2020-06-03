@@ -98,10 +98,10 @@
  */
 /obj/item/clothing/under/cargo_deadspace
 	name = "cargo uniform"
-	desc = "A white uniform with a dull, yellow collar, symbolizing this uniform belongs to the cargo department."
-	item_state = "ds_cargo"
-	worn_state = "ds_cargo"
-	icon_state = "ds_cargo"
+	desc = "A white-grey uniform, plain and unassuming, perfect for the cargo department."
+	item_state = "cargo_jumpsuit"
+	worn_state = "cargo_jumpsuit"
+	icon_state = "cargo_jumpsuit"
 
 /obj/item/clothing/under/dsspareishimura2
 	name = "crew uniform"
@@ -153,3 +153,11 @@
 	worn_state = "kellion_lead"
 	icon_state = "kellion_lead"
 	armor = list(melee = 60, bullet = 60, laser = 0, energy = 0, bomb = 35, bio = 20, rad = 0)
+
+/obj/item/clothing/under/kellion/tech
+	name = "sweatshirt"
+	desc = "A tight-fitting sweatshirt with no sleeves."
+	item_state = "kellion_tech"
+	worn_state = "kellion_tech"
+	icon_state = "kellion_tech"
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)

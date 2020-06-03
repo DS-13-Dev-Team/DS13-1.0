@@ -211,3 +211,14 @@
 	allowed = list(/obj/item/stack/medical, /obj/item/weapon/reagent_containers/dropper, /obj/item/weapon/reagent_containers/hypospray, /obj/item/weapon/reagent_containers/syringe, \
 	/obj/item/device/healthanalyzer, /obj/item/device/flashlight, /obj/item/device/radio, /obj/item/weapon/tank/emergency,/obj/item/weapon/scalpel,/obj/item/weapon/retractor,/obj/item/weapon/hemostat, \
 	/obj/item/weapon/cautery,/obj/item/weapon/bonegel,/obj/item/weapon/FixOVein)
+
+//Cargo
+/obj/item/clothing/suit/storage/toggle/cargo_jacket
+	name = "fur-lined coat"
+	desc = "A snazzy coat with a nice fur lining on the inside and near the neck. The zipper looks like gold."
+	icon_state = "cargojacket"
+	item_state = "cargojacket"
+	icon_open = "cargojacket_open"
+	icon_closed = "cargojacket"
+	blood_overlay_type = "coat"
+	body_parts_covered = UPPER_TORSO|ARMS
