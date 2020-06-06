@@ -27,7 +27,7 @@
 	wielded_item_state = ""
 	w_class = ITEM_SIZE_HUGE
 	handle_casings = CLEAR_CASINGS
-	load_method = SPEEDLOADER
+	load_method = SINGLE_CASING|SPEEDLOADER
 	caliber = "linerack"
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/linerack
@@ -93,6 +93,8 @@
 	kill_count = 10	//Short ranged
 	height = 0.1	//10cm thick wave
 
+	var/dig_power = 1800
+
 /obj/item/projectile/wave/linecutter/update_icon()
 	if (backstop)
 		return
@@ -126,6 +128,15 @@
 			H.bullet_act(src, E.organ_tag)
 
 
+
+/obj/item/projectile/wave/linecutter/Bump(var/atom/A)
+	if(istype(A, /turf/simulated/mineral))
+		var/turf/simulated/mineral/M = A
+		if (dig_power)
+			var/dig_amount = min(dig_power, (M.health+M.resistance))
+			dig_power -= dig_amount
+			M.dig(dig_amount)
+	. = ..()
 /*--------------------------
 	Plasma Mine
 --------------------------*/
@@ -221,8 +232,8 @@
 /obj/item/ammo_casing/linerack
 	name = "line rack"
 	desc = "An assemblage of metal and wires with a built in power supply"
-	icon_state = "linerack"
-	spent_icon = "linerack"
+	icon_state = "line_rack"
+	spent_icon = "line_rack"
 	caliber = "linerack"
 	projectile_type  = /obj/item/projectile/wavespawner/linecutter
 

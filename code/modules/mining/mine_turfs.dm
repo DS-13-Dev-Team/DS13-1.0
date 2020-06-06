@@ -356,11 +356,12 @@ var/list/mining_floors = list()
 	opacity = FALSE
 
 	spawn()
-		var/turf/simulated/floor/asteroid/N = ChangeTurf(mined_turf)
+		if (!QDELETED(src) && istype(src, /turf/simulated/mineral))
+			var/turf/simulated/floor/asteroid/N = ChangeTurf(mined_turf)
 
-		if(istype(N))
-			N.overlay_detail = "asteroid[rand(0,9)]"
-			N.updateMineralOverlays(1)
+			if(istype(N))
+				N.overlay_detail = "asteroid[rand(0,9)]"
+				N.updateMineralOverlays(1)
 
 
 
