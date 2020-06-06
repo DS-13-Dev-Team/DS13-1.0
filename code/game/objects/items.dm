@@ -252,6 +252,7 @@
 			return
 
 
+
 	var/old_loc = src.loc
 
 	src.pickup(user)
@@ -266,6 +267,7 @@
 	else
 		if(isliving(src.loc))
 			return
+
 
 	if(user.put_in_active_hand(src))
 		if (isturf(old_loc))

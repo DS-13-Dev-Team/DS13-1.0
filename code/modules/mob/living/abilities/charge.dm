@@ -510,7 +510,7 @@
 	return TRUE
 
 /mob/living/can_charge(var/atom/target, var/error_messages = TRUE)
-	if (incapacitated())
+	if (incapacitated(INCAPACITATION_IMMOBILE))
 		return FALSE
 
 	.=..()
@@ -523,7 +523,7 @@
 	return TRUE
 
 /mob/living/can_continue_charge(var/atom/target)
-	if (incapacitated(INCAPACITATION_FORCELYING))
+	if (incapacitated(INCAPACITATION_IMMOBILE))
 		return FALSE
 
 	return ..()
