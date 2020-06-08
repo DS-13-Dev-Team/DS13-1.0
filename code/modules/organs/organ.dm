@@ -30,6 +30,8 @@ var/list/organ_cache = list()
 
 	biomass = 0						//How much biomass this organ is worth to the marker.
 
+	var/preserved = FALSE			//Set true when this organ is inside some kind of safe storage. A growth tank, freezer, etc, which will prevent it from decaying
+
 /obj/item/organ/Destroy()
 
 	owner = null
@@ -77,7 +79,13 @@ var/list/organ_cache = list()
 	create_reagents(5 * (w_class-1)**2)
 	reagents.add_reagent(/datum/reagent/nutriment/protein, reagents.maximum_volume)
 
+	setup_children()
+
 	update_icon()
+
+//for overriding only
+/obj/item/organ/proc/setup_children()
+	return
 
 /obj/item/organ/proc/set_dna(var/datum/dna/new_dna)
 	if(new_dna)
@@ -107,7 +115,7 @@ var/list/organ_cache = list()
 	if(status & ORGAN_DEAD)
 		return
 	// Don't process if we're in a freezer, an MMI or a stasis bag.or a freezer or something I dunno
-	if(is_preserved())
+	if(preserved)
 		return
 	//Process infections
 	if (BP_IS_ROBOTIC(src) || (owner && owner.species && (owner.species.species_flags & SPECIES_FLAG_IS_PLANT)))
@@ -140,9 +148,10 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/is_preserved()
 	if(istype(loc,/obj/item/organ))
 		var/obj/item/organ/O = loc
-		return O.is_preserved()
+		return O.preserved
 	else
-		return (istype(loc,/obj/item/device/mmi) || istype(loc,/obj/structure/closet/body_bag/cryobag) || istype(loc,/obj/structure/closet/crate/freezer) || istype(loc,/obj/item/weapon/storage/box/freezer))
+		return preserved
+		//(istype(loc,/obj/item/device/mmi) || istype(loc,/obj/structure/closet/body_bag/cryobag) || istype(loc,/obj/structure/closet/crate/freezer) || istype(loc,/obj/item/weapon/storage/box/freezer))
 
 /obj/item/organ/examine(mob/user)
 	. = ..(user)
@@ -289,7 +298,9 @@ var/list/organ_cache = list()
 	owner = target
 	action_button_name = initial(action_button_name)
 	forceMove(owner) //just in case
-	if(BP_IS_ROBOTIC(src))
+
+	//If we have no dna of our own, take it from the owner
+	if(!dna || BP_IS_ROBOTIC(src))
 		set_dna(owner.dna)
 	return 1
 

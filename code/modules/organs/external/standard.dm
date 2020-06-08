@@ -73,6 +73,8 @@
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP
 	base_miss_chance = 12
 	limb_height = new /vector2(0.9,1.60) //80cm long, assuming theyre hanging down
+	best_direction	=	WEST
+
 
 /obj/item/organ/external/arm/right
 	organ_tag = BP_R_ARM
@@ -81,6 +83,7 @@
 	body_part = ARM_RIGHT
 	joint = "right elbow"
 	amputation_point = "right shoulder"
+	best_direction	=	EAST
 
 /obj/item/organ/external/leg
 	organ_tag = BP_L_LEG
@@ -100,6 +103,7 @@
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
 	base_miss_chance = 5
 	limb_height = new /vector2(0.1,1)	//Approx 90cm from ankle to groin
+	best_direction	=	WEST
 
 /obj/item/organ/external/leg/right
 	organ_tag = BP_R_LEG
@@ -109,6 +113,7 @@
 	icon_position = RIGHT
 	joint = "right knee"
 	amputation_point = "right hip"
+	best_direction	=	EAST
 
 /obj/item/organ/external/foot
 	organ_tag = BP_L_FOOT
