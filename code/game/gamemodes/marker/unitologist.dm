@@ -27,11 +27,6 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	.=..()
 	if(!.)
 		return
-	for(var/I=0,I<rand(1,3), I++) //Generate some random kill objectives. They have to listen to the marker above all though.
-		var/datum/objective/assassinate/kill_objective = new
-		kill_objective.owner = marker_minion
-		kill_objective.find_target()
-		marker_minion.objectives += kill_objective
 //	marker_minion.current?.psychosis_immune = TRUE //PENDING PSYCHOSIS MERGE.
 	var/datum/objective/unitologist/unitologist_objective = new
 	marker_minion.objectives += unitologist_objective
