@@ -123,6 +123,10 @@ Class Procs:
 	//The specified circuitboard will be created in Initialize
 	var/obj/item/weapon/circuitboard/circuit = null
 
+
+	var/list/processing_parts // Component parts queued for processing by the machine. Expected type: /obj/item/weapon/stock_parts
+	var/processing_flags         // What is being processed
+
 /obj/machinery/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 
 
@@ -174,6 +178,20 @@ Class Procs:
 			else // Otherwise we assume they were dropped to the ground during deconstruction, and were not removed from the component_parts list by deconstruction code.
 				component_parts -= A
 	. = ..()
+
+/obj/machinery/proc/ProcessAll(var/wait)
+	//Bay part processing, not fully ported. Investigate in future to see if worthwhile
+	/*
+	if(processing_flags & MACHINERY_PROCESS_COMPONENTS)
+		for(var/thing in processing_parts)
+			var/obj/item/weapon/stock_parts/part = thing
+			if(part.machine_process(src) == PROCESS_KILL)
+				part.stop_processing()
+
+	*/
+
+	if((processing_flags & MACHINERY_PROCESS_SELF) && Process(wait) == PROCESS_KILL)
+		STOP_PROCESSING_MACHINE(src, MACHINERY_PROCESS_SELF)
 
 /obj/machinery/Process()//If you dont use process or power why are you here
 	if(!(use_power || idle_power_usage || active_power_usage))
