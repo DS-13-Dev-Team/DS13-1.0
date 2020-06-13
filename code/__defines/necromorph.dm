@@ -23,9 +23,3 @@
 
 #define CORRUPTION_SPREAD_RANGE	12	//How far from the source corruption spreads
 #define MAW_EAT_RANGE	2	//Nom distance of a maw node
-
-
-//One unit (10ml) of purified liquid biomass can be multiplied by this value to create one kilogram of solid biomass
-#define REAGENT_TO_BIOMASS	0.01
-
-#define BIOMASS_TO_REAGENT	100

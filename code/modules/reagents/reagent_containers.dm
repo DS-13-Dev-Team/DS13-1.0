@@ -159,7 +159,7 @@
 
 	return 0
 
-/obj/item/weapon/reagent_containers/proc/standard_pour_into(var/mob/user, var/atom/target, var/quantity_override = null) // This goes into afterattack and yes, it's atom-level
+/obj/item/weapon/reagent_containers/proc/standard_pour_into(var/mob/user, var/atom/target) // This goes into afterattack and yes, it's atom-level
 	if(!target.reagents)
 		return 0
 
@@ -179,7 +179,7 @@
 		to_chat(user, "<span class='notice'>[target] is full.</span>")
 		return 1
 
-	var/trans = reagents.trans_to(target, quantity_override ? quantity_override : amount_per_transfer_from_this)
+	var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
 	playsound(src, 'sound/effects/pour.ogg', 25, 1)
 	to_chat(user, "<span class='notice'>You transfer [trans] unit\s of the solution to \the [target].</span>")
 	return 1
