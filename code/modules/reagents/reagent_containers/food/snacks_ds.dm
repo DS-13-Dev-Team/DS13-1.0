@@ -173,3 +173,91 @@
 	..()
 	bitesize = 10
 	reagents.add_reagent(/datum/reagent/drink/juice/potato, 30) // for people who want to get fat, FAST.
+
+/obj/item/weapon/reagent_containers/food/snacks/cube
+	name = "protein cube"
+	desc = "A colony of meat cells, Just add water!"
+	icon_state = "proteincube"
+	w_class = ITEM_SIZE_TINY
+	atom_flags = ATOM_FLAG_OPEN_CONTAINER
+	bitesize = 12
+	filling_color = "#ADAC7F"
+	center_of_mass = list("x"=16, "y"=14)
+
+	var/food_type = "/obj/item/weapon/reagent_containers/food/snacks/proteinslab"
+
+/obj/item/weapon/reagent_containers/food/snacks/cube/New()
+	. = ..()
+
+/obj/item/weapon/reagent_containers/food/snacks/cube/proc/Expand()
+	src.visible_message("<span class='notice'>\The [src] expands!</span>")
+	new food_type(get_turf(src))
+	qdel(src)
+
+/obj/item/weapon/reagent_containers/food/snacks/cube/on_reagent_change()
+	if(reagents.has_reagent(/datum/reagent/water))
+		Expand()
+
+/obj/item/weapon/reagent_containers/food/snacks/cube/protein
+
+/obj/item/weapon/reagent_containers/food/snacks/cube/protein/New()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/toxin/meatcolony, 5)
+
+/obj/item/weapon/reagent_containers/food/snacks/proteinslab
+	name = "Protein slab"
+	desc = "A slab of near pure protein, extremely artificial, and thoroughly disgusting."
+	icon_state = "proteinslab"
+	bitesize = 10
+	nutriment_amt = 5
+	nutriment_desc = list("bitter chyme" = 50)
+
+/obj/item/weapon/reagent_containers/food/snacks/proteinslab/New()
+	..()
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 30)
+
+/obj/item/weapon/reagent_containers/food/snacks/cube/nutriment
+	name = "Nutriment cube"
+	desc = "A colony of plant cells, Just add water!"
+	icon_state = "nutrimentcube"
+	food_type = "/obj/item/weapon/reagent_containers/food/snacks/nutrimentslab"
+
+/obj/item/weapon/reagent_containers/food/snacks/cube/nutriment/New()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/toxin/plantcolony, 5)
+
+/obj/item/weapon/reagent_containers/food/snacks/nutrimentslab
+	name = "Nutriment slab"
+	desc = "A slab of near pure plant-based nutrients, extremely artificial, and thoroughly disgusting."
+	icon_state = "nutrimentslab"
+	bitesize = 10
+	nutriment_amt = 20
+	nutriment_desc = list("compost" = 50)
+
+/obj/item/weapon/storage/box/tray
+	name = "ration cube tray"
+	desc = "A tray of food cubes, the label warns not to consume before adding water or mixing with virusfood."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "tray8"
+	var/icon_base = "tray"
+	startswith = 8
+	w_class = ITEM_SIZE_SMALL
+	startswith = list(
+		/obj/item/weapon/reagent_containers/food/snacks/cube/protein = 4,
+		/obj/item/weapon/reagent_containers/food/snacks/cube/nutriment = 4
+	)
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/cube/protein,
+					/obj/item/weapon/reagent_containers/food/snacks/cube/nutriment)
+	foldable = null
+
+/obj/item/weapon/storage/box/tray/Initialize()
+	..()
+	for(var/i=1 to startswith)
+	update_icon()
+	return
+
+/obj/item/weapon/storage/box/tray/update_icon()
+	var/i = 0
+	for(var/obj/item/weapon/reagent_containers/food/snacks/W in contents)
+		i++
+	icon_state = "[icon_base][i]"

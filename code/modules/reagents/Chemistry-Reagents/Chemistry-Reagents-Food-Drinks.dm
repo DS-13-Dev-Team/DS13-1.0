@@ -6,12 +6,9 @@
 	taste_mult = 4
 	reagent_state = SOLID
 	metabolism = REM * 4
-	var/nutriment_factor = 4 // Per unit
+	var/nutriment_factor = 10 // Per unit
 	var/injectable = 0
 	color = "#664330"
-	biomass = 0.01
-
-
 
 /datum/reagent/nutriment/mix_data(var/list/newdata, var/newamount)
 
@@ -98,7 +95,7 @@
 	name = "Honey"
 	description = "A golden yellow syrup, loaded with sugary sweetness."
 	taste_description = "sweetness"
-	nutriment_factor = 4
+	nutriment_factor = 10
 	color = "#ffff00"
 
 /datum/reagent/nutriment/honey/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -123,7 +120,7 @@
 	description = "This is what you rub all over yourself to pretend to be a ghost."
 	taste_description = "chalky wheat"
 	reagent_state = SOLID
-	nutriment_factor = 4
+	nutriment_factor = 1
 	color = "#ffffff"
 
 /datum/reagent/nutriment/flour/touch_turf(var/turf/simulated/T)
@@ -139,7 +136,7 @@
 	description = "A gooey mixture of eggs and flour, a base for turning wheat into food."
 	taste_description = "blandness"
 	reagent_state = LIQUID
-	nutriment_factor = 5
+	nutriment_factor = 3
 	color = "#ffd592"
 
 /datum/reagent/nutriment/batter/touch_turf(var/turf/simulated/T)
@@ -162,7 +159,7 @@
 	taste_description = "bitterness"
 	taste_mult = 1.3
 	reagent_state = SOLID
-	nutriment_factor = 3
+	nutriment_factor = 5
 	color = "#302000"
 
 /datum/reagent/nutriment/soysauce
@@ -187,7 +184,7 @@
 	description = "Barbecue sauce for barbecues and long shifts."
 	taste_description = "barbecue"
 	reagent_state = LIQUID
-	nutriment_factor = 3
+	nutriment_factor = 5
 	color = "#4f330f"
 
 /datum/reagent/nutriment/garlicsauce
@@ -204,7 +201,7 @@
 	taste_description = "rice"
 	taste_mult = 0.4
 	reagent_state = SOLID
-	nutriment_factor = 4
+	nutriment_factor = 1
 	color = "#ffffff"
 
 /datum/reagent/nutriment/cherryjelly
@@ -213,7 +210,7 @@
 	taste_description = "cherry"
 	taste_mult = 1.3
 	reagent_state = LIQUID
-	nutriment_factor = 3
+	nutriment_factor = 1
 	color = "#801e28"
 
 /datum/reagent/nutriment/cornoil
@@ -222,7 +219,7 @@
 	taste_description = "slime"
 	taste_mult = 0.1
 	reagent_state = LIQUID
-	nutriment_factor = 9
+	nutriment_factor = 20
 	color = "#302000"
 
 /datum/reagent/nutriment/cornoil/touch_turf(var/turf/simulated/T)
@@ -246,14 +243,14 @@
 	taste_description = "vomit"
 	taste_mult = 2
 	reagent_state = LIQUID
-	nutriment_factor = 3
+	nutriment_factor = 2
 	color = "#899613"
 
 /datum/reagent/nutriment/sprinkles
 	name = "Sprinkles"
 	description = "Multi-colored little bits of sugar, commonly found on donuts. Loved by cops."
 	taste_description = "childhood whimsy"
-	nutriment_factor = 4
+	nutriment_factor = 1
 	color = "#ff00ff"
 
 /datum/reagent/nutriment/mint
@@ -1137,7 +1134,7 @@
 	taste_description = "piss water"
 	color = "#ffd300"
 	strength = 50
-	nutriment_factor = 2
+	nutriment_factor = 1
 
 	glass_name = "beer"
 	glass_desc = "A freezing container of beer"
@@ -1290,7 +1287,7 @@
 	taste_description = "jitters and death"
 	color = "#102000"
 	strength = 25
-	nutriment_factor = 4
+	nutriment_factor = 1
 
 	glass_name = "Thirteen Loko"
 	glass_desc = "This is a glass of Thirteen Loko, it appears to be of the highest quality. The drink, not the glass."
