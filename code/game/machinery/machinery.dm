@@ -143,7 +143,8 @@ Class Procs:
 	if(d)
 		set_dir(d)
 	InitCircuit()
-	START_PROCESSING(SSmachines, src)
+	START_PROCESSING_MACHINE(src, MACHINERY_PROCESS_SELF) // It's safe to remove machines from here, but only if base machinery/Process returned PROCESS_KILL.
+	SSmachines.machinery += src // All machines should remain in this list, always.
 
 
 /obj/machinery/proc/InitCircuit()
@@ -170,7 +171,8 @@ Class Procs:
 
 
 /obj/machinery/Destroy()
-	STOP_PROCESSING(SSmachines, src)
+	SSmachines.machinery -= src
+	STOP_PROCESSING_MACHINE(src, MACHINERY_PROCESS_ALL)
 	if(component_parts)
 		for(var/atom/A in component_parts)
 			if(A.loc == src) // If the components are inside the machine, delete them.

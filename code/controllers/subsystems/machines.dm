@@ -98,6 +98,7 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 			propagate_network(PC,PC.powernet)
 
 /datum/controller/subsystem/machines/proc/setup_atmos_machinery(list/machines)
+
 	set background=1
 
 	report_progress("Initializing atmos machinery")
@@ -105,10 +106,22 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 		A.atmos_init()
 		CHECK_TICK
 
+
 	report_progress("Initializing pipe networks")
 	for(var/obj/machinery/atmospherics/machine in machines)
 		machine.build_network()
 		CHECK_TICK
+
+	for(var/obj/machinery/atmospherics/unary/U in machines)
+		if(istype(U, /obj/machinery/atmospherics/unary/vent_pump))
+			var/obj/machinery/atmospherics/unary/vent_pump/T = U
+			T.broadcast_status()
+		else if(istype(U, /obj/machinery/atmospherics/unary/vent_scrubber))
+			var/obj/machinery/atmospherics/unary/vent_scrubber/T = U
+			T.broadcast_status()
+		CHECK_TICK
+
+
 
 /datum/controller/subsystem/machines/stat_entry()
 	var/msg = list()
