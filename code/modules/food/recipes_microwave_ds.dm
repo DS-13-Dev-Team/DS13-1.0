@@ -41,7 +41,9 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/sharkmeatcubes
 
+/*
 /datum/recipe/microwave/foodcubes
 	reagents = list(/datum/reagent/enzyme = 20, /datum/reagent/nutriment/virus_food = 5, /datum/reagent/nutriment = 15, /datum/reagent/nutriment/protein = 15) // labor intensive
 	items = list()
 	result = /obj/item/weapon/storage/box/tray
+*/
