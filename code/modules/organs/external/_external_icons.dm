@@ -1,5 +1,6 @@
 var/list/limb_icon_cache = list()
 
+
 /obj/item/organ/external/set_dir()
 	return
 
@@ -80,7 +81,7 @@ var/list/limb_icon_cache = list()
 		icon_state += species.base_skin_colours[s_base]
 
 	//Lying down icons per organ
-	if (owner.lying && species.icon_lying)
+	if (owner && owner.lying && species.icon_lying)
 		icon_state += species.icon_lying
 
 	icon_cache_key = "[icon_state]_[species ? species.name : SPECIES_HUMAN]"
@@ -95,7 +96,7 @@ var/list/limb_icon_cache = list()
 		icon = species.deform
 	else if (owner && (SKELETON in owner.mutations))
 		icon = 'icons/mob/human_races/species/human/skeleton.dmi'
-	else
+	else if (species)
 		icon = species.get_icobase(owner)
 
 	mob_icon = apply_colouration(new/icon(icon, icon_state))
@@ -119,14 +120,20 @@ var/list/limb_icon_cache = list()
 
 	if(model)
 		icon_cache_key += "_model_[model]"
-	dir = EAST
-	icon = mob_icon
+	dir = best_direction
+	if (istype(mob_icon))
+
+		icon = mob_icon
 
 /obj/item/organ/external/proc/get_icon()
 	if (retracted)
 		return null
 	update_icon()
-	return mob_icon
+	if(mob_icon)
+		return mob_icon
+
+	else
+		return icon
 
 // Returns an image for use by the human health dolly HUD element.
 // If the limb is in pain, it will be used as a minimum damage

@@ -15,6 +15,8 @@
 	var/color = "#000000"
 	var/color_weight = 1
 	var/flags = 0
+	var/biomass = 0	//How much biomass one unit of this reagent is worth.
+	//Since biomass is measured in kg, and one reagent unit is 10ml, this value should usually not be above 0.01
 
 	var/glass_icon = DRINK_ICON_DEFAULT
 	var/glass_name = "something"
@@ -35,6 +37,9 @@
 		CRASH("Invalid reagents holder: [log_info_line(holder)]")
 	src.holder = holder
 	..()
+
+/datum/reagent/get_biomass()
+	return biomass*volume
 
 /datum/reagent/proc/remove_self(var/amount) // Shortcut
 	holder.remove_reagent(type, amount)

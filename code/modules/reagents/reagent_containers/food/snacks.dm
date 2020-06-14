@@ -16,11 +16,43 @@
 	var/list/nutriment_desc = list("food" = 1)
 	center_of_mass = "x=16;y=16"
 	w_class = ITEM_SIZE_SMALL
+	biomass = null
 
 /obj/item/weapon/reagent_containers/food/snacks/New()
 	..()
 	if(nutriment_amt)
 		reagents.add_reagent(/datum/reagent/nutriment,nutriment_amt,nutriment_desc)
+
+
+/obj/item/weapon/reagent_containers/food/adjust_biomass(var/change)
+
+	if (!biomass)
+		return 0
+	//Assuming that our biomass value is uptodate
+	var/percentage_to_remove = change / biomass
+	var/biomass_before = biomass
+
+	if (percentage_to_remove < 0)	//Currently no support for increasing biomass
+		percentage_to_remove = abs(percentage_to_remove)
+		//Remove the appropriate percentage of our reagents
+		reagents.remove_any(reagents.total_volume * percentage_to_remove)	//Biomass will auto-recalculate through reagent change
+
+		//Return the actual change in our biomass
+	return get_biomass() - biomass_before
+
+
+
+/obj/item/weapon/reagent_containers/food/get_biomass()
+	if (isnull(biomass))
+		return calculate_biomass()
+	return biomass
+
+/obj/item/weapon/reagent_containers/food/on_reagent_change()
+	calculate_biomass()
+
+/obj/item/weapon/reagent_containers/food/calculate_biomass()
+	biomass = reagents.get_biomass()
+	return biomass
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 /obj/item/weapon/reagent_containers/food/snacks/proc/On_Consume(var/mob/M)
@@ -181,6 +213,7 @@
 			for(var/i=1 to (slices_num-slices_lost))
 				var/obj/slice = new slice_path (src.loc)
 				reagents.trans_to_obj(slice, reagents_per_slice)
+
 			qdel(src)
 			return
 

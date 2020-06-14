@@ -1,4 +1,4 @@
-/****************************************************
+	/****************************************************
 				EXTERNAL ORGANS
 ****************************************************/
 
@@ -49,6 +49,7 @@
 	var/list/h_col                     // hair colour
 	var/body_hair                      // Icon blend for body hair if any.
 	var/list/markings = list()         // Markings (body_markings) to apply to the icon
+	var/best_direction	=	EAST		//When severed, draw the icon facing in this direction
 
 	// Wound and structural data.
 	var/wound_update_accuracy = 1      // how often wounds should be updated, a higher number means less often
@@ -60,6 +61,7 @@
 	var/list/implants = list()         // Currently implanted objects.
 	var/base_miss_chance = 0          // Chance of missing.
 	var/genetic_degradation = 0
+	biomass = 2	//By default, external organs are worth 2kg of biomass. Hella inaccurate, could find more exact values
 
 
 	//Forensics stuff
@@ -316,7 +318,6 @@
 	..()
 
 	if(istype(owner))
-
 		if(limb_flags & ORGAN_FLAG_CAN_GRASP) owner.grasp_limbs[src] = TRUE
 		if(limb_flags & ORGAN_FLAG_CAN_STAND) owner.stance_limbs[src] = TRUE
 		owner.organs_by_name[organ_tag] = src
@@ -337,6 +338,8 @@
 
 		for(var/obj/item/organ/external/organ in children)
 			organ.replaced(owner)
+
+
 
 	if(!parent && parent_organ)
 		parent = owner.organs_by_name[src.parent_organ]
@@ -1286,6 +1289,16 @@ obj/item/organ/external/proc/remove_clamps()
 		qdel(src)
 	else if(is_stump())
 		qdel(src)
+
+//Adds a new child organ to this one. Can pass either a type to create, or an existing organ to insert
+/obj/item/organ/external/proc/add_child(var/newtype)
+	var/obj/item/organ/external/E = newtype
+	if (ispath(newtype))
+		E = new newtype(src)
+
+	E.forceMove(src)
+	LAZYADD(children,E)
+	E.parent = src
 
 /obj/item/organ/external/proc/disfigure(var/type = "brute")
 	if(status & ORGAN_DISFIGURED)
