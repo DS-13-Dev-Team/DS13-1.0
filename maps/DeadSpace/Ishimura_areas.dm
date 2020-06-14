@@ -169,6 +169,9 @@
 	name = "\improper Clinic"
 	icon_state = "medicalbase"
 
+area/ishimura/upper/medical/bpc
+	name = "\improper Biological Prosthetics Center"
+
 /area/ishimura/upper/medical/senior_medical_office
 	name = "\improper Senior Medical Officer's Office"
 
@@ -209,10 +212,6 @@
 
 /area/ishimura/upper/research/chemistry
 	name = "\improper Chemistry Lab"
-
-/*area/ishimura/upper/research/bpc
-	name = "\improper Biological Prosthetics Center"
-*/
 
 /area/ishimura/upper/research/biolab
 	name = "\improper Biolab"

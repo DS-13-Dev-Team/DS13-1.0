@@ -4,7 +4,7 @@
 
 /obj/item/clothing/head/helmet/space
 	name = "EVA helmet"
-	icon_state = "eva"
+	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
 	item_flags = ITEM_FLAG_STOPPRESSUREDAMAGE | ITEM_FLAG_THICKMATERIAL | ITEM_FLAG_AIRTIGHT
 	flags_inv = BLOCKHAIR

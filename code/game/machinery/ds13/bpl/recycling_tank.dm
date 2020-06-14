@@ -6,7 +6,7 @@
 */
 /obj/machinery/recycling_tank
 	name = "recycling tank"
-	desc = "It is every citizen's final duty to go into the tanks, and to become one with all the people."
+	desc = "A organic-breakdown machine that takes organic matter and turns it into a substance known simply as 'biomass' which it then automatically feeds into the storage tank next to it."
 	icon = 'icons/obj/machines/ds13/bpl.dmi'
 	icon_state = "biogen-empty"
 
