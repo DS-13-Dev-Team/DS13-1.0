@@ -36,6 +36,7 @@ changes:
   - rscadd: "Added the Bioprosthetics Lab (BPL) to the Clinic, courtesy of Nanako."
   - rscadd: "Added a box of syringes to the Kitchen."
   - rscadd: "Added a box of donuts to the Kitchen."
+  - bugfix: "The Wiki button at the top of the screen now sends you to the DS13 Wiki."
   - bugfix: "Added vents, scrubbers, and air alarms to areas that did not have them, this should help with refilling hallways with air significantly (assuming the breach is fixed)."
   - bugfix: "Fixed the EVA helmet's sprite from the Suit Storage Units not showing up."
   - maptweak: "Chemistry slightly rearranged to fit the BPL."
