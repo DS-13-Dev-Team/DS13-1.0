@@ -61,6 +61,19 @@
 		return 1
 	return 0
 
+/obj/machinery/smartfridge/secure/biolab
+	name = "\improper Biolab Stem Cell Storage"
+	desc = "A refrigerated storage unit for storing stem cells."
+	icon_state = "smartfridge" //To fix the icon in the map editor.
+	icon_on = "smartfridge_chem"
+	req_one_access = list(access_medical,access_chemistry)
+
+
+/obj/machinery/smartfridge/secure/biolab/accept_check(var/obj/item/O as obj)
+	if(istype(O,/obj/item/weapon/reagent_containers/glass/))
+		return 1
+	return 0
+
 /obj/machinery/smartfridge/secure/extract
 	name = "\improper Slime Extract Storage"
 	desc = "A refrigerated storage unit for slime extracts."

@@ -62,7 +62,6 @@
 
 /obj/random/rare_loot/item_to_spawn()
 	return pickweight(list( /obj/item/stack/power_node = 2,
-	/obj/random/tool/modded = 1,
 	/obj/random/material/rare = 1))
 
 
