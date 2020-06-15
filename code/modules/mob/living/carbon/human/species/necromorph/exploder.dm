@@ -218,7 +218,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	return TRUE
 
 //When severed, the pustule always explodes, no clean cutting off
-/obj/item/organ/external/hand/exploder_pustule/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent)
+/obj/item/organ/external/hand/exploder_pustule/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent, var/atom/cutter)
 	if (!explode())
 		.=..(FALSE, DROPLIMB_BLUNT, ignore_children, silent)	//We pass false to clean, and droplimb blunt to make sure its detonated
 
@@ -301,7 +301,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	base_miss_chance = 20	//Thin and hard target, trying to shoot this is a risky move
 
 //When severed, the arm is always cut cleanly, so that the pustule drops off without detonating
-/obj/item/organ/external/arm/simple/exploder/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent)
+/obj/item/organ/external/arm/simple/exploder/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent, var/atom/cutter)
 	.=..(TRUE, DROPLIMB_EDGE, ignore_children, silent)	//We pass true to clean, and droplimb edge to make sure its cleanly cut
 
 
