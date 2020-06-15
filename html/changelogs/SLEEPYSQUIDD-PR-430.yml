@@ -35,4 +35,4 @@ delete-after: True
 changes: 
   - rsctweak: "Clicking inside a storage object now stashes that object"
   - rsctweak: "Pills can be fed to anyone on a stretcher or op table"
-  - rscdel: "Removed the following random events: Brand Intelligence, Carp Migration, Carp School, Vermin Infestation, Spider Infestation, Space Cold Outbreak, Rogue Drones, Blob, and Space Vines"
+  - rscdel: "Removed the following random events: Brand Intelligence, Carp Migration, Carp School, Vermin Infestation, Spider Infestation, Space Cold Outbreak, Radiation Storm, Rogue Drones, Blob, and Space Vines"
