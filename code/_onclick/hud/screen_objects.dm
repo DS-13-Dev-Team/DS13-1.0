@@ -79,7 +79,7 @@
 	if(master)
 		var/obj/item/I = usr.get_active_hand()
 		if(I)
-			usr.ClickOn(master)
+			master.attackby(I, usr)
 	return 1
 
 /obj/screen/zone_sel
