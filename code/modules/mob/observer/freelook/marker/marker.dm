@@ -46,6 +46,8 @@
 */
 
 /obj/machinery/marker/proc/make_active()
+	if (active)
+		return
 	active = TRUE
 
 	//Any shards in the world become active
@@ -59,6 +61,12 @@
 	start_corruption()
 	update_icon()
 	set_traumatic_sight(TRUE, 5) //Marker is pretty hard to look at.
+
+	//If the marker is activated manually, tell the gamemode to activate itself too.
+	//This is a circular process, activate_marker will call this proc, hence the check for active at the start
+	var/datum/game_mode/marker/GM = ticker.mode
+	if (GM && !GM.marker_active)
+		GM.activate_marker()
 
 /obj/machinery/marker/Initialize()
 	.=..()
