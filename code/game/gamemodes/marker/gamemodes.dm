@@ -27,6 +27,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	votable = TRUE
 	antag_tags = list(MODE_UNITOLOGIST_SHARD)
 
+
 /datum/game_mode/marker/enemy_within/get_marker_location()
 	return pick(SSnecromorph.marker_spawns_aegis)
 
@@ -48,6 +49,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	require_all_templates = FALSE
 	votable = FALSE
 	var/marker_setup_time = 45 MINUTES
+	var/marker_active = FALSE
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
 	. = ..()
@@ -57,6 +59,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	if(!SSnecromorph.marker)
 		message_admins("There are no markers on this map!")
 		return
+	evacuation_controller.add_can_call_predicate(new /datum/evacuation_predicate/travel_points)
 	command_announcement.Announce("Delivery of alien artifact successful at [get_area(SSnecromorph.marker)].","Ishimura Deliveries Subsystem") //Placeholder
 	addtimer(CALLBACK(src, .proc/activate_marker), rand_between(0.85, 1.15)*marker_setup_time) //We have to spawn the marker quite late, so guess we'd best wait :)
 
@@ -95,10 +98,28 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	return FALSE
 
 /datum/game_mode/marker/proc/activate_marker()
-	last_pointgain = world.timeofday
-	evacuation_controller.add_can_call_predicate(new /datum/evacuation_predicate/travel_points)	//This handles preventing evac until we have enough points
+	last_pointgain_time = world.timeofday
+		//This handles preventing evac until we have enough points
 	charge_evac_points()
 	SSnecromorph.marker.make_active() //Allow controlling
 	pick_marker_player()
+	marker_active = TRUE
 	return TRUE
 
+
+
+
+
+/client/proc/activate_marker()
+	set name = "Activate Marker"
+	set category = "Admin"
+	set desc = "Forces the marker to immediately activate"
+
+	var/datum/game_mode/marker/GM = ticker.mode
+	if (!istype(GM))
+		return
+
+	if (GM.marker_active)
+		to_chat(src, "The marker is already active")
+		return
+	GM.activate_marker()
