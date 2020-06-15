@@ -911,7 +911,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				if(src && istype(loc,/turf))
 					var/target_turf
 					var/distance = rand(1,3)
-					if (cutter && get_turf(cutter) != get_turf(src))
+					if (istype(cutter) && get_turf(cutter) != get_turf(src))
 						//If a specific atom on another turf responsible for removing this limb, we will not throw the limb at the cutter
 						//Instead we'll throw it at a random tile in a 270 degree arc pointed away from the cutter
 						target_turf = random_tile_in_cone(get_turf(cutter), Vector2.DirectionBetween(cutter, src),3, 270)

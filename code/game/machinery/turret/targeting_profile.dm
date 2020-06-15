@@ -30,6 +30,10 @@
 	if(L.invisibility >= INVISIBILITY_LEVEL_ONE) // Cannot see him. see_invisible is a mob-var
 		return NOT_TARGET
 
+	//We can't shoot at things on the same turf as us
+	if (get_turf(A) == get_turf(source))
+		return NOT_TARGET
+
 	//TODO: Check how this works
 	if(!check_trajectory(L, source, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING))	//check if we have true line of sight
 		return NOT_TARGET
