@@ -45,6 +45,8 @@
 		//And add it to the list
 		spawnable_necromorphs[I.name] = I
 
+	sortTim(spawnable_necromorphs, /proc/cmp_necroshop_item, TRUE)
+
 	//Corruption nodes next
 	for (var/spath in subtypesof(/obj/structure/corruption_node))
 		var/obj/structure/corruption_node/N = new spath()
@@ -64,6 +66,8 @@
 		//And add it to the list
 		spawnable_structures[I.name] = I
 		qdel(N)
+
+	sortTim(spawnable_structures, /proc/cmp_necroshop_item, TRUE)
 
 	selected_spawn = new(host, host.name)
 	possible_spawnpoints += selected_spawn

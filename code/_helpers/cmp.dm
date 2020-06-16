@@ -63,3 +63,7 @@
 
 /proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
 	return a.timeToRun - b.timeToRun
+
+
+/proc/cmp_necroshop_item(var/datum/necroshop_item/a, var/datum/necroshop_item/b)
+	return a.price - b.price

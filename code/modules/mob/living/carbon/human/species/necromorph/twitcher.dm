@@ -25,7 +25,7 @@
 	single_icon = TRUE
 	spawner_spawnable = FALSE
 	virus_immune = 1
-	biomass	=	130
+	biomass	=	120
 
 
 	slowdown = 1.5

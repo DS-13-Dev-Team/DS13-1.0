@@ -12,11 +12,11 @@
 	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	total_health = 75
-	biomass = 55
+	biomass = 50
 	mass = 70
 	virus_immune = 1
 
-	biomass_reclamation_time	=	7.5 MINUTES
+	biomass_reclamation_time	=	8 MINUTES
 
 	icon_template = 'icons/mob/necromorph/slasher/fleshy.dmi'
 	icon_lying = "_lying"
@@ -88,6 +88,7 @@
 /datum/species/necromorph/slasher/desiccated
 	name = SPECIES_NECROMORPH_SLASHER_DESICCATED
 	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
+	marker_spawnable = FALSE
 
 
 /*Roughly speaking, enhanced versions of necromorphs have:
@@ -102,7 +103,8 @@
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 187.5
 	slowdown = 2.8
-	biomass = 150
+	biomass = 125
+	view_range = 8
 	mass = 120
 	mob_size	= MOB_LARGE
 	bump_flag 	= HEAVY
@@ -112,7 +114,7 @@
 	icon_lying = "_lying"
 	//lying_rotation = 90
 
-	biomass_reclamation_time	=	15 MINUTES
+	biomass_reclamation_time	=	12 MINUTES
 
 	limb_health_factor = 1.75
 

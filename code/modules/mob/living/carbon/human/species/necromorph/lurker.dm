@@ -4,8 +4,8 @@
 #define VIEW_OFFSET_OPEN	(WORLD_ICON_SIZE*5)
 
 #define MOVESPEED_OPEN		0.35
-#define SPINE_WINDUP	(1 SECOND)
-#define SPINE_COOLDOWN	(2.5 SECONDS)
+#define SPINE_WINDUP	(0.85 SECOND)
+#define SPINE_COOLDOWN	(2.3 SECONDS)
 /*
 	Lurker:
 
@@ -30,7 +30,7 @@
 	blurb = "Long range fire-support. The lurker is tough and hard to hit as long as its retractible armor is closed. When open it is slow and vulnerable, but fires sharp spines in waves of three."
 	unarmed_types = list(/datum/unarmed_attack/bite/lurker) //Bite attack is a backup if blades are severed
 	total_health = 60
-	biomass = 50
+	biomass = 55
 	health_doll_offset	= 50
 
 	icon_template = 'icons/mob/necromorph/lurker.dmi'
@@ -215,11 +215,11 @@ The Lurker can only fire spines while its shell is open"
 	icon = 'icons/mob/necromorph/lurker.dmi'
 	icon_state = "spine"
 	item_state = "spine"
-	throwforce = 13
+	throwforce = 14
 
 //Projectile version, higher chance of embedding
 /obj/item/projectile/bullet/spine
-	damage =	13
+	damage =	14
 	armor_penetration = 5
 	embed_mult = 1.5
 	step_delay  = 1.6
