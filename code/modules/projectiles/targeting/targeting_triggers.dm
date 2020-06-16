@@ -23,7 +23,7 @@
 		to_chat(owner, "<span class='warning'>You fumble with the gun, throwing your aim off!</span>")
 		owner.stop_aiming(aiming_with)
 		return
-	owner.setClickCooldown(DEFAULT_QUICK_COOLDOWN) // Spam prevention, essentially.
+	owner.set_click_cooldown(DEFAULT_QUICK_COOLDOWN) // Spam prevention, essentially.
 	owner.visible_message("<span class='danger'>\The [owner] pulls the trigger reflexively!</span>")
 	var/obj/item/weapon/gun/G = aiming_with
 	if(istype(G))

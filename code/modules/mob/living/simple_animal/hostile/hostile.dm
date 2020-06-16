@@ -96,7 +96,7 @@
 		return 1
 
 /mob/living/simple_animal/hostile/proc/AttackingTarget()
-	setClickCooldown(attack_delay)
+	set_click_cooldown(attack_delay)
 	if(!Adjacent(target_mob))
 		return
 	if(isliving(target_mob))

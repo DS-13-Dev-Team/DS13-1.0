@@ -87,7 +87,7 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/weapon/stool/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
 	if (prob(5))
 		user.visible_message("<span class='danger'>[user] breaks [src] over [target]'s back!</span>")
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 		user.do_attack_animation(target)
 		dismantle() //This deletes self.
 

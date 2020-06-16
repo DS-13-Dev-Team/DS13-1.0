@@ -72,7 +72,7 @@
 	if(escapee.stat || escapee.restrained())
 		return
 
-	escapee.setClickCooldown(100)
+	escapee.set_click_cooldown(100)
 	to_chat(escapee, "<span class='warning'>You start digging your way out of \the [src] (this will take about [breakout_time] minute\s)</span>")
 	visible_message("<span class='danger'>Something is scratching its way out of \the [src]!</span>")
 

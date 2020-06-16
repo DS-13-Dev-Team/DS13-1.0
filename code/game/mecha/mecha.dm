@@ -805,12 +805,12 @@
 			if (hasInternalDamage(MECHA_INT_TANK_BREACH))
 				clearInternalDamage(MECHA_INT_TANK_BREACH)
 				to_chat(user, "<span class='notice'>You repair the damaged gas tank.</span>")
-				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+				user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 		else
 			return
 		if(src.health<initial(src.health))
 			to_chat(user, "<span class='notice'>You repair some damage to [src.name].</span>")
-			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+			user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 			src.health += min(10, initial(src.health)-src.health)
 		else
 			to_chat(user, "The [src.name] is at full integrity")
@@ -823,7 +823,7 @@
 	else
 		src.log_message("Attacked by [W]. Attacker - [user]")
 
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 		if(deflect_hit(is_melee=1))
 			to_chat(user, "<span class='danger'>\The [W] bounces off [src.name].</span>")
 			src.log_append_to_last("Armor saved.")

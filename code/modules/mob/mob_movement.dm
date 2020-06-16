@@ -31,17 +31,17 @@
 
 
 //Sets next move time to now, so a mob can move immediately
-/mob/proc/ResetMoveCooldown(var/timeout)
+/mob/proc/reset_move_cooldown()
 	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
 	if(delay)
-		delay.ResetDelay(timeout)
+		delay.ResetDelay()
 
-/mob/proc/SetMoveCooldown(var/timeout)
+/mob/proc/set_move_cooldown(var/timeout)
 	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
 	if(delay)
 		delay.SetDelay(timeout)
 
-/mob/proc/ExtraMoveCooldown(var/timeout)
+/mob/proc/extra_move_cooldown(var/timeout)
 	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
 	if(delay)
 		delay.AddDelay(timeout)

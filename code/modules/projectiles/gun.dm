@@ -290,8 +290,8 @@
 
 	last_safety_check = world.time
 	var/shoot_time = (burst - 1)* burst_delay
-	user.setClickCooldown(shoot_time+windup_time) //no clicking on things while shooting
-	user.SetMoveCooldown(shoot_time+windup_time) //no moving while shooting either
+	user.set_click_cooldown(shoot_time+windup_time) //no clicking on things while shooting
+	user.set_move_cooldown(shoot_time+windup_time) //no moving while shooting either
 	next_fire_time = world.time + shoot_time + windup_time
 
 	var/held_twohanded = is_held_twohanded(user)
@@ -336,8 +336,8 @@
 		if (current_firemode)	current_firemode.on_fire(target, user, clickparams, pointblank, reflex, TRUE, projectile)//Tell the firemode that we successfully fired
 
 	//update timing
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-	user.SetMoveCooldown(move_delay)
+	user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
+	user.set_move_cooldown(move_delay)
 	next_fire_time = world.time + fire_delay
 
 //obtains the next projectile to fire

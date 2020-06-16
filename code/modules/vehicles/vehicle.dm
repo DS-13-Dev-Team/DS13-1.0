@@ -91,14 +91,14 @@
 		if(health < max_health && W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
 			if(open)
 				health = min(max_health, health+10)
-				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+				user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 				user.visible_message("<span class='warning'>\The [user] repairs \the [src]!</span>","<span class='notice'>You repair \the [src]!</span>")
 			else
 				to_chat(user, "<span class='notice'>Unable to repair with the maintenance panel closed.</span>")
 		else
 			to_chat(user, "<span class='notice'>[src] does not need a repair.</span>")
 	else if(hasvar(W,"force") && hasvar(W,"damtype"))
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 		switch(W.damtype)
 			if("fire")
 				health -= W.force * fire_dam_coeff

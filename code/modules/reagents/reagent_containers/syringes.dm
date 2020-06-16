@@ -158,7 +158,7 @@
 				return
 
 			injtime *= user.skill_delay_mult(SKILL_MEDICAL)
-			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(target)
 
 			if(!do_mob(user, target, injtime))
@@ -236,7 +236,7 @@
 		else
 			user.visible_message("<span class='warning'>\The [user] is trying to inject [target] with [visible_name]!</span>")
 
-		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+		user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
 		user.do_attack_animation(trackTarget)
 
 		if(!user.do_skilled(injtime, SKILL_MEDICAL, trackTarget))

@@ -40,7 +40,7 @@
 
 	Spray_at(A, user, proximity)
 
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
 
 	if(reagents.has_reagent(/datum/reagent/acid))
 		message_admins("[key_name_admin(user)] fired sulphuric acid from \a [src].")

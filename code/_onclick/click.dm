@@ -124,7 +124,7 @@
 		return M.click_action(A, src)
 
 	if(restrained())
-		setClickCooldown(10)
+		set_click_cooldown(10)
 		RestrainedClickOn(A)
 		return 1
 
@@ -156,7 +156,7 @@
 				W.afterattack(A, src, 1, params) // 1 indicates adjacency
 		else
 			if(ismob(A)) // No instant mob attacking
-				setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+				set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 			UnarmedAttack(A, 1)
 
 		trigger_aiming(TARGET_CAN_CLICK)
@@ -177,7 +177,7 @@
 					W.afterattack(A, src, 1, params) // 1: clicking something Adjacent
 			else
 				if(ismob(A)) // No instant mob attacking
-					setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+					set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 				UnarmedAttack(A, 1)
 
 			trigger_aiming(TARGET_CAN_CLICK)
@@ -195,11 +195,14 @@
 			trigger_aiming(TARGET_CAN_CLICK)
 	return 1
 
-/mob/proc/setClickCooldown(var/timeout)
+/mob/proc/set_click_cooldown(var/timeout)
 	next_move = max(world.time + timeout, next_move)
 
-/mob/proc/addClickCooldown(var/timeout)
+/mob/proc/add_click_cooldown(var/timeout)
 	next_move += timeout
+
+/mob/proc/reset_click_cooldown(var/timeout)
+	next_move = world.time
 
 /mob/proc/canClick()
 	if(config.no_click_cooldown || next_move <= world.time)
@@ -247,7 +250,7 @@
 	if((LASER in mutations) && a_intent == I_HURT)
 		LaserEyes(A) // moved into a proc below
 	else if(TK in mutations)
-		setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 		A.attack_tk(src)
 /*
 	Restrained ClickOn
@@ -497,7 +500,7 @@
 	return
 
 /mob/living/LaserEyes(atom/A)
-	setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
 	var/turf/T = get_turf(src)
 
 	var/obj/item/projectile/beam/LE = new (T)

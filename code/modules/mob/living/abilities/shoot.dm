@@ -110,7 +110,7 @@
 			stoptime += nomove
 
 		if (stoptime)
-			L.SetMoveCooldown(stoptime)
+			L.set_move_cooldown(stoptime)
 
 	//Now lets windup the shot(s)
 	if (windup_time)

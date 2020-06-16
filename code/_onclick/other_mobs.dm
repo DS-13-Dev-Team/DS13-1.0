@@ -76,7 +76,7 @@
 	if(!..())
 		return 0
 
-	setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	A.attack_generic(src,rand(5,6),"bitten")
 
 /*
@@ -99,7 +99,7 @@
 		return
 
 	//should have already been set if we are attacking a mob, but it doesn't hurt and will cover attacking non-mobs too
-	setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	var/mob/living/M = A
 	if(!istype(M))
 		A.attack_generic(src, (is_adult ? rand(20,40) : rand(5,25)), "glomped") // Basic attack.
@@ -160,7 +160,7 @@
 			return
 		if(ckey)
 			admin_attack_log(src, A, "Has [attacktext] its victim.", "Has been [attacktext] by its attacker.", attacktext)
-	setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	var/damage = rand(melee_damage_lower, melee_damage_upper)
 	if(A.attack_generic(src, damage, attacktext, environment_smash, damtype, defense) && loc && attack_sound)
 		playsound(loc, attack_sound, 50, 1, 1)

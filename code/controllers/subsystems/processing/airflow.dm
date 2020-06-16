@@ -93,7 +93,7 @@ PROCESSING_SUBSYSTEM_DEF(airflow)
 		step_towards(target, target.airflow_dest)
 		if (ismob(target))
 			var/mob/M = target
-			M.SetMoveCooldown(vsc.airflow_mob_slowdown)
+			M.set_move_cooldown(vsc.airflow_mob_slowdown)
 
 		if (MC_TICK_CHECK)
 			return

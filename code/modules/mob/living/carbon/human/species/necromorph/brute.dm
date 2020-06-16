@@ -174,6 +174,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	Brute charge: Slower but more powerful due to mob size.
 	Shorter windup time making it deadly at close range
 	Inertia is enabled, it will keep going til it faceplants into a wall
+	Unlike other mobs, the brute's charge has no autotargeting
 */
 /atom/movable/proc/brute_charge(var/atom/A)
 	set name = "Charge"

@@ -57,7 +57,7 @@
 	return 1
 
 /turf/attack_hand(mob/user)
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
 
 	if(user.restrained())
 		return 0

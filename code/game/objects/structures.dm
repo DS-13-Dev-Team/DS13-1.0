@@ -157,7 +157,7 @@
 		playsound(src, hitsound, VOLUME_MID, 1)
 		user.do_attack_animation(src)
 		take_damage(C.force, C.damtype, user, C)
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 		return
 	.=..()
 

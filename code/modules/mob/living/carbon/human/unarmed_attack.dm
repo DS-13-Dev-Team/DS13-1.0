@@ -189,7 +189,7 @@ var/global/list/sparring_attack_cache = list()
 		if(world.time < last_attack + u_attack.delay)
 			return 0
 		last_attack = world.time
-		setClickCooldown(u_attack.delay)
+		set_click_cooldown(u_attack.delay)
 		var/damage_done = target.hit(src, null, u_attack.damage*u_attack.structure_damage_mult) //TODO Later: Add in an attack flag for ignoring resistance?
 		u_attack.show_attack(src, target, null, damage_done)
 		return TRUE
@@ -251,7 +251,7 @@ var/global/list/sparring_attack_cache = list()
 			to_chat(src, "<span class='notice'>You can't attack again so soon.</span>")
 			return 0
 		last_attack = world.time
-		setClickCooldown(u_attack.delay)
+		set_click_cooldown(u_attack.delay)
 		var/damage_done = u_attack.damage*u_attack.structure_damage_mult
 		if (target.take_damage(damage_done, BRUTE, src, u_attack))
 			u_attack.show_attack(src, target, null, damage_done-target.resistance)

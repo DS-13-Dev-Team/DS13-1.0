@@ -35,7 +35,7 @@
 	attackpylon(user, W.force)
 
 /obj/structure/cult/pylon/proc/attackpylon(mob/user as mob, var/damage)
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(!isbroken)
 		if(prob(1+ damage * 5))
 			user.visible_message(

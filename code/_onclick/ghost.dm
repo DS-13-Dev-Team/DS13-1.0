@@ -26,7 +26,7 @@
 
 /mob/observer/ghost/ClickOn(var/atom/A, var/params)
 	if(!canClick()) return
-	setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
 
 	// You are responsible for checking config.ghost_interaction when you override this function
 	// Not all of them require checking, see below

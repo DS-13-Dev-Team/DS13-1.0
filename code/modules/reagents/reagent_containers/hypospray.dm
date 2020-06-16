@@ -44,7 +44,7 @@
 			to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
 			return
 
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
 	user.do_attack_animation(M)
 	to_chat(user, "<span class='notice'>You inject [M] with [src].</span>")
 	to_chat(M, "<span class='notice'>You feel a tiny prick!</span>")

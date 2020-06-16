@@ -29,7 +29,7 @@
 
 /mob/living/carbon/alien/diona/UnarmedAttack(var/atom/A)
 
-	setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 
 	if(istype(loc, /obj/structure/diona_gestalt))
 		var/obj/structure/diona_gestalt/gestalt = loc
@@ -75,7 +75,7 @@
 
 /mob/living/carbon/alien/diona/RangedAttack(atom/A)
 	if((a_intent == I_HURT || a_intent == I_GRAB) && holding_item)
-		setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 		visible_message("<span class='danger'>\The [src] spits \a [holding_item] at \the [A]!</span>")
 		var/atom/movable/temp = holding_item
 		unEquip(holding_item)

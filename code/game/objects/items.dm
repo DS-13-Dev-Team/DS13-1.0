@@ -573,7 +573,7 @@ var/list/global/slot_flags_enumeration = list(
 
 	admin_attack_log(user, M, "Attacked using \a [src]", "Was attacked with \a [src]", "used \a [src] to attack")
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)

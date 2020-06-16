@@ -49,6 +49,6 @@
 				return 0
 		rig.selected_module.engage(A, alert_ai)
 		if(ismob(A)) // No instant mob attacking - though modules have their own cooldowns
-			setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+			set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 		return 1
 	return 0
