@@ -272,7 +272,7 @@
 
 	// Something with pulling things
 	var/extra_delay = HandleGrabs(direction, old_turf)
-	mob.ExtraMoveCooldown(extra_delay)
+	mob.extra_move_cooldown(extra_delay)
 
 	for (var/obj/item/grab/G in mob)
 		if (G.assailant_reverse_facing())

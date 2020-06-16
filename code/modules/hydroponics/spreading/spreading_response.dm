@@ -48,7 +48,7 @@
 				"<span class='warning'>You hear shredding and ripping.</span>")
 			unbuckle_mob()
 	else
-		user.setClickCooldown(100)
+		user.set_click_cooldown(100)
 		var/breakouttime = rand(600, 1200) //1 to 2 minutes.
 
 		user.visible_message(

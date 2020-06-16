@@ -38,7 +38,7 @@
 
 	//This line represent a significant buff to grabs...
 	// We don't have to check the click cooldown because /mob/living/verb/resist() has done it for us, we can simply set the delay
-	setClickCooldown(100)
+	set_click_cooldown(100)
 
 	if(can_break_cuffs()) //Don't want to do a lot of logic gating here.
 		break_handcuffs()
@@ -114,7 +114,7 @@
 		buckled.user_unbuckle_mob(src)
 
 /mob/living/carbon/escape_buckle()
-	setClickCooldown(100)
+	set_click_cooldown(100)
 	if(!buckled) return
 
 	if(!restrained())
@@ -140,7 +140,7 @@
 		N.escape_net(src) //super snowflake but is literally used NOWHERE ELSE.-Luke
 		return
 
-	setClickCooldown(100)
+	set_click_cooldown(100)
 	if(!buckled) return
 
 	if(!restrained())

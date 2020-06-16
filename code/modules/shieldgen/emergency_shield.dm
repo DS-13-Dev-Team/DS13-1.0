@@ -56,7 +56,7 @@
 	check_failure()
 	set_opacity(1)
 	spawn(20) if(!QDELETED(src)) set_opacity(0)
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 
 	..()
 

@@ -858,8 +858,12 @@
 
 //Like stun, but doesn't set the stun var. Just sets move and click cooldowns
 /mob/proc/disable(stoptime)
-	SetMoveCooldown(stoptime)
-	setClickCooldown(stoptime)
+	set_move_cooldown(stoptime)
+	set_click_cooldown(stoptime)
+
+/mob/proc/enable()
+	reset_move_cooldown()
+	reset_click_cooldown()
 
 /mob/proc/Stun(amount)
 	if(status_flags & CANSTUN)
@@ -966,7 +970,7 @@
 
 	if(!isliving(usr) || !usr.canClick())
 		return
-	usr.setClickCooldown(20)
+	usr.set_click_cooldown(20)
 
 	if(usr.stat == 1)
 		to_chat(usr, "You are unconcious and cannot do that!")

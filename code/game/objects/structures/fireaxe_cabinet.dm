@@ -94,7 +94,7 @@
 			return
 
 	if(O.force)
-		user.setClickCooldown(10)
+		user.set_click_cooldown(10)
 		attack_generic(user, O.force, "bashes")
 		return
 
@@ -105,7 +105,7 @@
 		open = 1
 		unlocked = 1
 	else
-		user.setClickCooldown(10)
+		user.set_click_cooldown(10)
 		open = !open
 		to_chat(user, "<span class='notice'>You [open ? "open" : "close"] \the [src].</span>")
 	update_icon()
@@ -120,7 +120,7 @@
 		open = 1
 		unlocked = 1
 	else
-		user.setClickCooldown(10)
+		user.set_click_cooldown(10)
 		to_chat(user, "<span class='notice'>You begin [unlocked ? "enabling" : "disabling"] \the [src]'s maglock.</span>")
 
 		if(!do_after(user, 20,src))

@@ -192,15 +192,18 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 	//Leap autotargets enemies within one tile of the clickpoint
 	if (!isliving(A))
-		A = autotarget_enemy_mob(A, 1, src, 999)
+		A = autotarget_enemy_mob(A, 2, src, 999)
 
 	var/mob/living/carbon/human/H = src
+
+	if (!H.can_charge(A))
+		return
 
 	//Do a chargeup animation. Pulls back and then launches forwards
 	//The time is equal to the windup time of the attack, plus 0.5 seconds to prevent a brief stop and ensure launching is a fluid motion
 	var/vector2/pixel_offset = Vector2.DirectionBetween(src, A) * -16
 	var/vector2/cached_pixels = new /vector2(src.pixel_x, src.pixel_y)
-	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 1.7 SECONDS, easing = BACK_EASING, flags = ANIMATION_PARALLEL)
+	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 1.5 SECONDS, easing = BACK_EASING, flags = ANIMATION_PARALLEL)
 	animate(pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = 0.3 SECONDS)
 
 	//Long shout when targeting mobs, normal when targeting objects
@@ -209,7 +212,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 1.5 SECONDS, _speed = 6, _maxrange = 11,_lifespan = 8 SECONDS, _maxrange = 20)
+	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 1.3 SECONDS, _speed = 7, _maxrange = 11,_lifespan = 8 SECONDS, _maxrange = 20)
 
 
 /atom/movable/proc/leaper_leap_enhanced(var/mob/living/A)
@@ -234,7 +237,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 6, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
+	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 8, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
 
 
 //Special effects for leaper impact, its pretty powerful if it lands on the primary target mob, but it backfires if it was blocked by anything else

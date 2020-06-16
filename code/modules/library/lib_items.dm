@@ -224,7 +224,7 @@
 		user.visible_message("<span class='notice'>You open up the book and show it to [M]. </span>", \
 			"<span class='notice'> [user] opens up a book and shows it to [M]. </span>")
 		M << browse("<i>Author: [author].</i><br><br>" + "[dat]", "window=book;size=1000x550")
-		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
+		user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 /*
  * Manual Base Object

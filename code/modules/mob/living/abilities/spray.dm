@@ -108,7 +108,7 @@ Vars/
 		fx.start()
 
 		if (stun && user)
-			user.SetMoveCooldown(duration)
+			user.set_move_cooldown(duration)
 
 		tick()	//Start the first tick
 

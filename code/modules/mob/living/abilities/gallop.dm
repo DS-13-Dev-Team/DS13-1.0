@@ -45,7 +45,7 @@
 
 
 		user.move_speed_factor += power
-		user.ResetMoveCooldown()//Allow nextmove immediately
+		user.reset_move_cooldown()//Allow nextmove immediately
 		GLOB.damage_hit_event.register(user, src, /datum/extension/gallop/proc/user_hit)
 		GLOB.bump_event.register(user, src, /datum/extension/gallop/proc/user_bumped)
 		GLOB.moved_event.register(user, src, /datum/extension/gallop/proc/user_moved)

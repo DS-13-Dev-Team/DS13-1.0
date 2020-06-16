@@ -406,7 +406,7 @@
 		else if (S.strength > 0)
 			breakout_time /= 1 + (S.strength*2)
 
-	escapee.setClickCooldown(100)
+	escapee.set_click_cooldown(100)
 
 	//okay, so the closet is either welded or locked... resist!!!
 	to_chat(escapee, "<span class='warning'>You lean on the back of \the [src] and start pushing the door open. (this will take about [breakout_time*0.1] seconds)</span>")

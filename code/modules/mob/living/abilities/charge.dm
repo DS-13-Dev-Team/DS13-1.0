@@ -106,7 +106,7 @@
 	if (isliving(user))
 		L = user
 		L.face_atom(target)
-		L.Stun(max_lifespan()*0.1,TRUE)
+		L.disable(max_lifespan())
 		starting_locomotion_limbs = length(L.get_locomotion_limbs(FALSE))
 	//Delay handling
 	if (!delay)
@@ -172,16 +172,19 @@
 
 	user.visible_message(SPAN_DANGER("[user] [verb_action] at [target]!"))
 
-	walk_towards(holder, move_target, SPEED_TO_TICKS(speed))
+	walk_towards(holder, move_target, SPEED_TO_DELAY(speed))
 
 	nomove_timer = addtimer(CALLBACK(src, .proc/stop_peter_out), nomove_timeout, TIMER_STOPPABLE)
 
 
 
 /datum/extension/charge/proc/stop()
-	if (ishuman(user))
-		var/mob/living/carbon/human/H = user
-		H.step_interval = cached_step_interval
+	if (isliving(user))
+		if (ishuman(user))
+			var/mob/living/carbon/human/H = user
+			H.step_interval = cached_step_interval
+		L.enable()
+
 	GLOB.bump_event.unregister(holder, src, /datum/extension/charge/proc/bump)
 	GLOB.moved_event.unregister(holder, src, /datum/extension/charge/proc/moved)
 	walk(holder, 0)

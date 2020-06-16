@@ -337,7 +337,7 @@
 /obj/machinery/door/proc/check_force(obj/item/I as obj, mob/user as mob)
 	if(density &&  user.a_intent == I_HURT && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/card))
 		var/obj/item/weapon/W = I
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 
 		if(W.damtype == BRUTE || W.damtype == BURN)
 			hit(user, W, W.force)

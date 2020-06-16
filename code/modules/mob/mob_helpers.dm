@@ -749,8 +749,8 @@ proc/is_blind(A)
 		buckled.set_dir(ndir)
 	if (. && slow_turning)	//Only mobs with slow turning set will set their move cooldown when changing dir
 		var/turntime = movement_delay()
-		SetMoveCooldown(turntime)
-		setClickCooldown(max(turntime,DEFAULT_ATTACK_COOLDOWN))
+		set_move_cooldown(turntime)
+		set_click_cooldown(max(turntime,DEFAULT_ATTACK_COOLDOWN))
 
 //Mobs with offset view should update it every time they turn
 /mob/set_dir(new_dir)

@@ -141,7 +141,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 
 	//Charge autotargets enemies within one tile of the clickpoint
 	if (!isliving(A))
-		A = autotarget_enemy_mob(A, 1, src, 999)
+		A = autotarget_enemy_mob(A, 2, src, 999)
 
 
 	.= charge_attack(A, _delay = 1.3 SECONDS, _speed = 7, _cooldown = 6 SECONDS)

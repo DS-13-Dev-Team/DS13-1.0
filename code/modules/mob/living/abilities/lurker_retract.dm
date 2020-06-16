@@ -57,8 +57,8 @@
 /datum/extension/retractable_cover/proc/start_closing()
 
 	if (user)
-		user.ExtraMoveCooldown(close_time)
-		user.addClickCooldown(close_time)
+		user.extra_move_cooldown(close_time)
+		user.add_click_cooldown(close_time)
 	sleep(close_time)
 	close()
 
@@ -84,8 +84,8 @@
 */
 /datum/extension/retractable_cover/proc/start_opening()
 	if (user)
-		user.ExtraMoveCooldown(open_time)
-		user.addClickCooldown(open_time)
+		user.extra_move_cooldown(open_time)
+		user.add_click_cooldown(open_time)
 	sleep(open_time)
 	open()
 
