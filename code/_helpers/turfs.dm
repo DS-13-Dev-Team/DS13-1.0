@@ -40,6 +40,17 @@
 
 	return FALSE
 
+//Returns true if this turf is corrupted, OR is near a corrupted tile
+/proc/turf_near_corrupted(var/atom/A, var/range = 2)
+	if (turf_corrupted(A))
+		return TRUE
+
+	for (var/obj/effect/vine/corruption/C in dview(1, src))
+		//TODO here: Check that the corruption is still linked to an undestroyed node. Fail if it is orphaned
+		return TRUE
+
+	return FALSE
+
 // Picks a turf without a mob from the given list of turfs, if one exists.
 // If no such turf exists, picks any random turf from the given list of turfs.
 /proc/pick_mobless_turf_if_exists(var/list/start_turfs)
