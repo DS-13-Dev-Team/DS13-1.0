@@ -43,3 +43,4 @@ changes:
   - tweak: "Slasher biomass cost reduced from 55 to 50. It is now the cheapest of all necromorphs and will remain so."
   - tweak: "Slasher biomass reclamation time slightly increased from 7.5 mins to 8 mins"
   - tweak: "Twitcher biomass cost slightly reduced, from 130 to 120"
+  - bugfix: "Removed ancient slasher from spawning menu. It can still spawn as a random variant of a slasher."
