@@ -173,6 +173,8 @@
 
 /client/proc/remove_screen_elements()
 	var/list/types = compile_types_in_list(screen)
+	if (!LAZYLEN(types))
+		return
 
 	var/selected = input(usr, "pick a thing", "Deletion of things on screen") as null|anything in types
 	if (!selected)
@@ -197,3 +199,5 @@
 				to_chat(usr, "a hundred things...")
 
 	to_chat(usr, "Removed [removed] objects")
+	//Recursive as long as you don't cancel
+	remove_screen_elements()
