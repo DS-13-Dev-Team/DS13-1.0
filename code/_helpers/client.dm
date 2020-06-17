@@ -169,3 +169,31 @@
 	//If we get here, the target is on our screen!
 	return TRUE
 
+
+
+/client/proc/remove_screen_elements()
+	var/list/types = compile_types_in_list(screen)
+
+	var/selected = input(usr, "pick a thing", "Deletion of things on screen") as null|anything in types
+	if (!selected)
+		return
+
+	var/removed = 0
+	for (var/obj/thing as anything in screen)
+		if (istype(thing, selected))
+			if (removed < 10)
+				to_chat(usr, "Removed [thing]|[thing.type]")
+
+			screen -= thing
+			qdel(thing)
+			removed++
+			if (removed == 10)
+				to_chat(usr, "and several more things...")
+
+			if (removed == 50)
+				to_chat(usr, "many more things...")
+
+			if (removed == 100)
+				to_chat(usr, "a hundred things...")
+
+	to_chat(usr, "Removed [removed] objects")

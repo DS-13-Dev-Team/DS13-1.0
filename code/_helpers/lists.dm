@@ -817,4 +817,27 @@ proc/dd_sortedTextList(list/incoming)
 		if(islist(.[i]))
 			.[i] = .(.[i])
 
+
+/*
+	Takes a list of datums
+	Returns a list which contains every unique typepath shared by the things in the first list, including parent types
+*/
+/proc/compile_types_in_list(var/list/sourcelist)
+	var/list/typeslist = list()
+	//This is a little complex
+	for (var/datum/D as anything in sourcelist)
+		//We split the path into a list of components by using / as delimiter
+
+		var/list/components = splittext("[D.type]", "/", 2)	//We start from character 2 so that it doesnt detect an empty string before the first slash
+		for (var/i = 1; i < components.len; i++)
+			var/stringpath = ""
+			for (var/j in 1 to i)
+				stringpath += "/[components[j]]"
+
+			var/typepath = text2path(stringpath)
+			typeslist |= typepath
+
+	return typeslist
+
+
 #define IS_VALID_INDEX(list, index) (list.len && index > 0 && index <= list.len)

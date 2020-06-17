@@ -669,7 +669,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 /datum/extension/execution/tripod_kiss
 	name = "Kiss of Death"
-
+	base_type = /datum/extension/execution/tripod_kiss
 	cooldown = 1 MINUTE
 
 	reward_biomass = 10
