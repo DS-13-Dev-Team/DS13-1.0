@@ -265,3 +265,27 @@
 
 /obj/item/stack/tile/dankheavy/fifty
 	amount = 50
+
+/obj/item/stack/tile/dankmedical
+	name = "grim medical tile"
+	desc = "These remind you of the asylum..."
+	singular_name = "grim medical tiles"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "dank_medical"
+	matter = list(MATERIAL_STEEL = 937.5)
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+
+/obj/item/stack/tile/dankmedical/fifty
+	amount = 50
+
+/obj/item/stack/tile/dankmono
+	name = "grim tile"
+	desc = "Grimy but smooth."
+	singular_name = "grim mono tiles"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "dank_mono"
+	matter = list(MATERIAL_STEEL = 937.5)
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+
+/obj/item/stack/tile/dankmono/fifty
+	amount = 50

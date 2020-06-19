@@ -1146,3 +1146,87 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/dank/missing
 	name = "gap"
 	icon_state = "missing"
+
+/obj/effect/floor_decal/dank/single
+	name = "single tile"
+	icon_state = "single"
+
+/obj/effect/floor_decal/dank/single_mirrored
+	name = "single mirrored tile"
+	icon_state = "single_mirrored"
+
+/obj/effect/floor_decal/dank/double
+	name = "double tile"
+	icon_state = "double"
+
+/obj/effect/floor_decal/dank/border
+	name = "border"
+	icon_state = "border"
+
+/obj/effect/floor_decal/dank/border_corner
+	name = "border corner"
+	icon_state = "border_corner"
+
+/obj/effect/floor_decal/dank/border_corner_i
+	name = "border corner inverted"
+	icon_state = "border_corner_i"
+
+/obj/effect/floor_decal/dank/border_half
+	name = "half border"
+	icon_state = "border_half"
+
+/obj/effect/floor_decal/dank/border_corner_half
+	name = "half border corner"
+	icon_state = "border_corner_half"
+
+/obj/effect/floor_decal/dank/mono_half
+	name = "mono half"
+	icon_state = "mono_half"
+
+/obj/effect/floor_decal/dank/mono_corner
+	name = "mono corner"
+	icon_state = "mono_corner"
+
+/obj/effect/floor_decal/dank/mono_tri
+	name = "mono tri"
+	icon_state = "mono_tri"
+
+/obj/effect/floor_decal/dank/asylum_scratch
+	name = "asylum scratch"
+	icon_state = "asylum_scratch"
+
+/obj/effect/floor_decal/dank/asylum_missing
+	name = "asylum  missing"
+	icon_state = "asylum_missing"
+
+/obj/effect/floor_decal/cleanable/dank
+	icon = 'icons/turf/marks_ds13.dmi'
+	name = "asylum  filth"
+	icon_state = "asylum_filth"
+
+/obj/effect/floor_decal/cleanable/dank/asylum_filth
+	name = "asylum  filth 2"
+	icon_state = "asylum_filth2"
+
+/obj/effect/floor_decal/cleanable/dank/asylum_blood
+	name = "asylum  blood"
+	icon_state = "asylum_blood"
+
+/obj/effect/floor_decal/cleanable/dank/asylum_blood2
+	name = "asylum  blood 2"
+	icon_state = "asylum_blood2"
+
+/obj/effect/floor_decal/dank/outline
+	name = "dark outline"
+	icon_state = "outline"
+	alpha = 220
+
+/obj/effect/floor_decal/dank/outline_striped
+	name = "dark striped outline"
+	icon_state = "outline_striped"
+	alpha = 220
+
+/obj/effect/floor_decal/dank/outline_striped_soft
+	name = "soft dark striped outline"
+	icon_state = "outline_striped_soft"
+	alpha = 230

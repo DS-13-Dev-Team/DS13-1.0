@@ -31,3 +31,15 @@
 	desc = "Scuffed from the passage of countless planet crackers, it looks ancient and sturdy."
 	icon_base = "dank_tile_heavy"
 	build_type = /obj/item/stack/tile/dankheavy
+
+/decl/flooring/tiling_ds/medical
+	name = "medical floor"
+	desc = "Scuffed from the passage of countless planet crackers, it reminds you of the asylum..."
+	icon_base = "dank_tile_medical"
+	build_type = /obj/item/stack/tile/dankmedical
+
+/decl/flooring/tiling_ds/mono
+	name = "floor"
+	desc = "Scuffed from the passage of countless planet crackers, it looks grimy and smooth."
+	icon_base = "dank_tile_mono"
+	build_type = /obj/item/stack/tile/dankmono
