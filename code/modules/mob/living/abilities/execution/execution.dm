@@ -175,6 +175,12 @@ if (result == EXECUTION_CANCEL){\
 
 	try_advance_stage()
 
+/datum/extension/execution/Destroy()
+	current_stage = null
+	QDEL_NULL_LIST(all_stages)
+	entered_stages = null
+	.=..()
+
 
 /datum/extension/execution/proc/stop()
 

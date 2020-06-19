@@ -26,6 +26,10 @@
 	src.host = host
 	.=..()
 
+/datum/execution_stage/Destroy()
+	host = null
+	.=..()
+
 /datum/execution_stage/proc/enter()
 	return TRUE
 
