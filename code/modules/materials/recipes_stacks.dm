@@ -71,3 +71,11 @@
 /datum/stack_recipe/tile/metal/dank_heavy
 	title = "grim heavy floor tile"
 	result_type = /obj/item/stack/tile/dankheavy
+
+/datum/stack_recipe/tile/metal/dank_medical
+	title = "grim medical floor tile"
+	result_type = /obj/item/stack/tile/dankmedical
+
+/datum/stack_recipe/tile/metal/dank_mono
+	title = "grim floor tile"
+	result_type = /obj/item/stack/tile/dankmono

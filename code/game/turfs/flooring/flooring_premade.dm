@@ -350,3 +350,13 @@
 	name = "grim heavy floor"
 	icon_state = "dank_tile_heavy"
 	initial_flooring = /decl/flooring/tiling_ds/heavy
+
+/turf/simulated/floor/dank/medical
+	name = "grim medical floor"
+	icon_state = "dank_tile_medical"
+	initial_flooring = /decl/flooring/tiling_ds/medical
+
+/turf/simulated/floor/dank/mono
+	name = "grim floor"
+	icon_state = "dank_tile_mono"
+	initial_flooring = /decl/flooring/tiling_ds/mono
