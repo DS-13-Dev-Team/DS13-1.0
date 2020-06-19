@@ -33,6 +33,10 @@
 	SSnecromorph.marker = src	//Populate the global var with ourselves
 	..()
 
+//Its not made of meat, despite containing hundreds of kilos of biomass
+/obj/machinery/marker/get_biomass()
+	return null
+
 
 /obj/machinery/marker/ex_act()
 	return null	//We do not break
