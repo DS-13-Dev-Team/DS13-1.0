@@ -27,6 +27,10 @@
 	if (!dummy)
 		animate_fade_in()
 
+
+/obj/structure/corruption_node/get_biomass()
+	return 0	//This is not edible
+
 /obj/structure/corruption_node/Destroy()
 	if (!dummy && SSnecromorph.marker && biomass_reclamation)
 		SSnecromorph.marker.add_biomass_source(src, biomass*biomass_reclamation, reclamation_time, /datum/biomass_source/reclaim)

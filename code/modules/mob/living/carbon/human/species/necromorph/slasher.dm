@@ -99,7 +99,7 @@
 /datum/species/necromorph/slasher/enhanced
 	name = SPECIES_NECROMORPH_SLASHER_ENHANCED
 	marker_spawnable = TRUE 	//Enable this once we have sprites for it
-	mob_type = /mob/living/carbon/human/necromorph/slasher/enhanced
+	mob_type = /mob/living/carbon/human/necromorph/slasher_enhanced
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 187.5
 	slowdown = 2.8
