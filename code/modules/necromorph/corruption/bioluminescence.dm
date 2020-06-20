@@ -16,7 +16,7 @@
 /obj/structure/corruption_node/bioluminescence/Initialize()
 	.=..()
 	if (!dummy)	//Don't do this stuff if its a dummy for placement preview
-		set_light(1, 1, light_range, 2, "#33bd84")
+		set_light(1, 1, light_range, 2, COLOR_BIOLUMINESCENT_ORANGE)
 
 
 /obj/structure/corruption_node/bioluminescence/get_blurb()
