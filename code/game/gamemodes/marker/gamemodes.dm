@@ -50,6 +50,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	votable = FALSE
 	var/marker_setup_time = 45 MINUTES
 	var/marker_active = FALSE
+	antag_scaling_coeff = 8
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
 	. = ..()
