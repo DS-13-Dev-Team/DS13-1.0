@@ -25,6 +25,11 @@
 		var/embed_chance = weapon_sharp? damage/I.w_class : damage/(I.w_class*3)
 		var/embed_threshold = weapon_sharp? 5*I.w_class : 15*I.w_class
 
+		//Thrown objects are FAR more likely to be embedded since there's no hand trying to hold them back
+		if (I.throwing && weapon_sharp)
+			embed_chance *= 2
+			embed_threshold /= 2
+
 		//Sharp objects will always embed if they do enough damage.
 		if((weapon_sharp && damage > (10*I.w_class)) || (damage > embed_threshold && prob(embed_chance)))
 			src.embed(I, hit_zone, supplied_wound = created_wound)

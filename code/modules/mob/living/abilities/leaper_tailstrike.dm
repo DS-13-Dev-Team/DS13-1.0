@@ -124,7 +124,7 @@
 	victim.shake_animation(damage)
 	if (isliving(victim))
 		var/mob/living/L = victim
-		L.apply_damage(damage, def_zone = user.zone_sel.selecting, damage_flags = DAM_SHARP | DAM_EDGE) //Note: Due to limitations in the damage system, this ignores all armor. Some reworking is required to support it properly
+		user.launch_strike(L, damage, user.get_organ(BP_TAIL), damage_flags = DAM_SHARP | DAM_EDGE)
 
 	else
 		victim.ex_act(3)

@@ -14,7 +14,7 @@
 	var/verb_name = "Slamming"
 	expected_type = /atom/movable
 	flags = EXTENSION_FLAG_IMMEDIATE
-	var/atom/movable/slammer	//The mob or thing doing the slam attack
+	var/atom/movable/user	//The mob or thing doing the slam attack
 	var/turf/epicentre			//The turf we've targeted with the slam
 	var/damage	=	40			//Base damage dealt
 	var/power = 1				//Used for damage to atoms
@@ -33,7 +33,7 @@
 
 /datum/extension/slam/New(var/atom/movable/user, var/atom/target, var/_damage, var/_down_factor, var/_weaken_time, var/_power, var/_windup_time, var/_cooldown)
 	..()
-	slammer = user
+	src.user = user
 	epicentre = get_turf(target) //This attack can be dodged. If we target a mob, we'll hit where they were standing at the initiation time, whether they're still there or not
 	damage = _damage
 	down_factor = _down_factor
@@ -46,9 +46,9 @@
 	start()
 
 /datum/extension/slam/proc/start()
-	if (isliving(slammer))
+	if (isliving(user))
 		//Lets face the thing
-		var/mob/living/L = slammer
+		var/mob/living/L = user
 		L.face_atom(epicentre)
 
 		//We'll stun the user so they can't move during the animation
@@ -57,29 +57,29 @@
 		L.Stun(stuntime, TRUE) //Passing true here bypasses species resistance
 
 	//Here we start the windup.
-	cached_pixels = new /vector2(slammer.pixel_x, slammer.pixel_y)
+	cached_pixels = new /vector2(user.pixel_x, user.pixel_y)
 
 
 
 	//If the epicentre is offset on our X axis, we'll have an extra factor on the animation
-	if (epicentre.x > slammer.x)
+	if (epicentre.x > user.x)
 		x_direction = 1
-	else if (epicentre.x < slammer.x)
+	else if (epicentre.x < user.x)
 		x_direction = -1
 
 
 	//We do the windup animation. This involves the user slowly rising into the air, and tilting back if striking horizontally
-	animate(slammer, transform=turn(matrix(), slammer.default_rotation + (25*(x_direction*-1))),pixel_y = cached_pixels.y + 16, time = windup_time)
+	animate(user, transform=turn(matrix(), user.default_rotation + (25*(x_direction*-1))),pixel_y = cached_pixels.y + 16, time = windup_time)
 
 	//Start a timer
 	slam_timer = addtimer(CALLBACK(src, .proc/finish), windup_time, TIMER_STOPPABLE)
 
 	//While that's running, lets quickly calculate the affected turfs
 	LAZYADD(affected_turfs, epicentre)
-	var/dir2centre = get_dir(slammer, epicentre)
+	var/dir2centre = get_dir(user, epicentre)
 	//We add the turfs that are at + and - 45 degrees from that direction
-	LAZYADD(affected_turfs, get_step(slammer, turn(dir2centre, 45)))
-	LAZYADD(affected_turfs, get_step(slammer, turn(dir2centre, -45)))
+	LAZYADD(affected_turfs, get_step(user, turn(dir2centre, 45)))
+	LAZYADD(affected_turfs, get_step(user, turn(dir2centre, -45)))
 
 	//Next lets add secondary turfs
 	for (var/turf/T in affected_turfs)
@@ -90,7 +90,7 @@
 /datum/extension/slam/proc/finish()
 	//Lets finish the slamming animation. We drop sharply back to the floor
 	//And, if we had an x offset, we'll also strike there
-	animate(slammer, transform=turn(matrix(), slammer.default_rotation + (35*x_direction)), pixel_y = cached_pixels.y-8, pixel_x = cached_pixels.x + 24*x_direction, time = 3, easing = BACK_EASING)
+	animate(user, transform=turn(matrix(), user.default_rotation + (35*x_direction)), pixel_y = cached_pixels.y-8, pixel_x = cached_pixels.x + 24*x_direction, time = 3, easing = BACK_EASING)
 
 	sleep(2)
 	//Wait a little, then we strike
@@ -119,15 +119,15 @@
 				if (L.lying)
 					tempdamage *= down_factor
 				L.Weaken(weaken_time)
-				L.take_overall_damage(tempdamage, 0,0,0, slammer)
+				L.take_overall_damage(tempdamage, 0,0,0, user)
 				shake_camera(L, 3, damage/10) //Shake camera of mobs too
 			else
 				//Atoms get ex_acted
-				if (power)A.ex_act(4-power, slammer)
+				if (power)A.ex_act(4-power, user)
 
 		T.shake_animation(damage)	//Shake the turf itself
 		if (power)
-			T.ex_act(4-power, slammer)
+			T.ex_act(4-power, user)
 
 
 	//Now we weaken these values for the next round
@@ -148,15 +148,16 @@
 				if (L.lying)
 					tempdamage *= down_factor
 				L.Weaken(weaken_time)
-				L.take_overall_damage(tempdamage, 0,0,0, slammer)
+				user.launch_strike(L, damage, user, target_zone = BP_CHEST)//Slam is too big to be precisely targeted, always aims center mass
+				//L.take_overall_damage(tempdamage, 0,0,0, user)
 				shake_camera(L, 3, damage/10) //Shake camera of mobs too
 			else
 				//Atoms get ex_acted
-				if (power)A.ex_act(4-power, slammer)
+				if (power)A.ex_act(4-power, user)
 
 		T.shake_animation(damage)	//Shake the turf itself
 		if (power)
-			T.ex_act(4-power, slammer)
+			T.ex_act(4-power, user)
 
 
 	//Wait a bit longer before we return to neutral
@@ -171,9 +172,9 @@
 	stopped_at = world.time
 
 	//Lets smoothly slide back to a normal stance
-	animate(slammer, transform=matrix(), pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = 7)
+	animate(user, transform=matrix(), pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = 7)
 	spawn(7)
-		var/mob/living/L = slammer
+		var/mob/living/L = user
 		if (istype(L))
 			L.stunned = 0
 
@@ -185,7 +186,7 @@
 
 
 /datum/extension/slam/proc/finish_cooldown()
-	to_chat(slammer, SPAN_NOTICE("You are ready to [name] again")) //Use name here so i can reuse this for leaping
+	to_chat(user, SPAN_NOTICE("You are ready to [name] again")) //Use name here so i can reuse this for leaping
 	remove_extension(holder, /datum/extension/slam)
 
 

@@ -11,6 +11,7 @@ meteor_act
 	Projectile accuracy handling
 ---------------------------------*/
 //Takes an accuracy value, a targeted bodypart, and the projectile, tool or mob doing the hitting.
+//Calculate all bonuses on the attacker's side before calling this, this proc handles the evasion on the defensive side
 /mob/living/carbon/human/get_zone_with_miss_chance(var/accuracy, var/desired_zone, var/weapon)
 	//Mobs on the floor are less good at evading
 	var/evasion_mod = evasion
@@ -44,6 +45,7 @@ meteor_act
 		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
 
 	//Shields
+	/* //TODO: Make projectiles use strikes too
 	var/shield_check = check_shields(P.damage, P, null, def_zone, "the [P.name]")
 	if(shield_check)
 		if(shield_check < 0)
@@ -51,6 +53,7 @@ meteor_act
 		else
 			P.on_hit(src, 100, def_zone)
 			return 100
+	*/
 
 	var/obj/item/organ/external/organ = find_target_organ(def_zone)
 	var/armor = getarmor_organ(organ, P.check_armour)
@@ -159,12 +162,6 @@ meteor_act
 			return gear
 	return null
 
-/mob/living/carbon/human/proc/check_shields(var/damage = 0, var/atom/damage_source = null, var/mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	for(var/obj/item/shield in list(l_hand, r_hand, wear_suit))
-		if(!shield) continue
-		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
-		if(.) return
-	return 0
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
 
@@ -172,21 +169,23 @@ meteor_act
 		if(G.resolve_item_attack(user, I, target_zone))
 			return null
 
+	return target_zone
+
+	//Accuracy handling is being moved elsewhere. this proc only exists to do special interactions like throat cutting
+
+	/*
 	if(user == src) // Attacking yourself can't miss
 		return target_zone
 
-	var/accuracy = 100 - user.melee_accuracy_mods()
-	accuracy -= 10*get_skill_difference(SKILL_COMBAT, user)
-	accuracy -= 10*(I.w_class - ITEM_SIZE_NORMAL)
+	var/accuracy = 100 + user.melee_accuracy_mods()
+	accuracy -= 8*get_skill_difference(SKILL_COMBAT, user)
+	accuracy -= 8*(I.w_class - ITEM_SIZE_NORMAL)
 	accuracy += I.melee_accuracy_bonus
 
 	var/hit_zone = get_zone_with_miss_chance(accuracy, target_zone, I )
 
 	if(!hit_zone)
 		visible_message("<span class='danger'>\The [user] misses [src] with \the [I]!</span>")
-		return null
-
-	if(check_shields(I.force, I, user, target_zone, "the [I.name]"))
 		return null
 
 	var/obj/item/organ/external/affecting = find_target_organ(hit_zone)
@@ -196,18 +195,11 @@ meteor_act
 
 
 	return affecting.organ_tag
+	*/
 
-/mob/living/carbon/human/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	var/obj/item/organ/external/affecting = get_organ(hit_zone)
-	if(!affecting)
-		return //should be prevented by attacked_with_item() but for sanity.
+/mob/living/carbon/human/hit_with_weapon(var/datum/strike/implement/strike)
+	standard_weapon_hit_effects(strike.used_item, strike.user, strike.get_final_damage(), strike.blocked, strike.target_zone)
 
-	visible_message("<span class='danger'>[src] has been [I.attack_verb.len? pick(I.attack_verb) : "attacked"] in the [affecting.name] with [I.name] by [user]!</span>")
-
-	var/blocked = run_armor_check(hit_zone, "melee", I.armor_penetration, "Your armor has protected your [affecting.name].", "Your armor has softened the blow to your [affecting.name].")
-	standard_weapon_hit_effects(I, user, effective_force, blocked, hit_zone)
-
-	return blocked
 
 /mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/hit_zone)
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
@@ -347,101 +339,7 @@ meteor_act
 					throw_mode_off()
 					return
 
-		var/dtype = O.damtype
-		var/throw_damage = O.throwforce*(speed/THROWFORCE_SPEED_DIVISOR)
-
-		var/zone
-		if (istype(O.thrower, /mob/living))
-			var/mob/living/L = O.thrower
-			zone = check_zone(L.zone_sel.selecting)
-		else
-			zone = ran_zone(BP_CHEST,75)	//Hits a random part of the body, geared towards the chest
-
-		//check if we hit
-		var/miss_chance = species.evasion
-		if (O.throw_source)
-			var/distance = get_dist(O.throw_source, loc)
-			miss_chance += max(5*(distance-2), 0)
-		var/accuracy = 100 - miss_chance
-		zone = get_zone_with_miss_chance(accuracy, zone, AM)
-
-		if(zone && O.thrower != src)
-			var/shield_check = check_shields(throw_damage, O, thrower, zone, "[O]")
-			if(shield_check == PROJECTILE_FORCE_MISS)
-				zone = null
-			else if(shield_check)
-				return
-
-		if(!zone)
-			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
-			return
-
-		O.throwing = 0		//it hit, so stop moving
-
-		var/obj/item/organ/external/affecting = find_target_organ(zone)
-
-		if (!affecting)
-			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
-			return
-
-		var/hit_area = affecting.name
-		var/datum/wound/created_wound
-
-		src.visible_message("<span class='warning'>\The [src] has been hit in the [hit_area] by \the [O].</span>")
-		var/armor = run_armor_check(affecting, "melee", O.armor_penetration, "Your armor has protected your [hit_area].", "Your armor has softened hit to your [hit_area].") //I guess "melee" is the best fit here
-		if(armor < 100)
-			var/damage_flags = O.damage_flags()
-			if(prob(armor))
-				damage_flags &= ~(DAM_SHARP|DAM_EDGE)
-			created_wound = apply_damage(throw_damage, dtype, zone, armor, damage_flags, O)
-
-		if(ismob(O.thrower))
-			var/mob/M = O.thrower
-			var/client/assailant = M.client
-			if(assailant)
-				admin_attack_log(M, src, "Threw \an [O] at their victim.", "Had \an [O] thrown at them", "threw \an [O] at")
-
-		//thrown weapon embedded object code.
-		if(dtype == BRUTE && istype(O,/obj/item))
-			var/obj/item/I = O
-			if (!is_robot_module(I) && !(I.item_flags & ITEM_FLAG_NO_EMBED))
-				var/sharp = is_sharp(I)
-				var/damage = throw_damage //the effective damage used for embedding purposes, no actual damage is dealt here
-				if (armor)
-					damage *= blocked_mult(armor)
-
-				//blunt objects should really not be embedding in things unless a huge amount of force is involved
-				var/embed_chance = sharp? damage/I.w_class : damage/(I.w_class*3)
-				var/embed_threshold = sharp? 5*I.w_class : 15*I.w_class
-
-				//Sharp objects will always embed if they do enough damage.
-				//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
-				if((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance)))
-					affecting.embed(I, supplied_wound = created_wound)
-
-		// Begin BS12 momentum-transfer code.
-		var/mass = 1.5
-		if(istype(O, /obj/item))
-			var/obj/item/I = O
-			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
-		var/momentum = speed*mass
-
-		if(O.throw_source && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
-			var/dir = get_dir(O.throw_source, src)
-
-			visible_message("<span class='warning'>\The [src] staggers under the impact!</span>","<span class='warning'>You stagger under the impact!</span>")
-			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
-
-			if(!O || !src) return
-
-			if(O.loc == src && O.sharp) //Projectile is embedded and suitable for pinning.
-				var/turf/T = near_wall(dir,2)
-
-				if(T)
-					src.loc = T
-					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
-					src.anchored = 1
-					src.pinned += O
+	AM.launch_throw_strike(src, speed)
 
 /mob/living/carbon/human/embed(var/obj/O, var/def_zone=null, var/datum/wound/supplied_wound)
 	if(!def_zone) ..()
@@ -676,3 +574,109 @@ meteor_act
 
 	if(shock_stage >= 150)
 		Weaken(20)
+
+
+
+/*-------------------------------
+	Strike Defense
+---------------------------------*/
+/*
+	Defensive instincts system. Humans will use their limbs to shield their squishy core parts from hits.
+	If successful, the attack is redirected to the limb, AND its damage is reduced a little.
+	An attack aimed at the face, but blocked by an arm hurts the arm less than an attack specifically aimed at that arm
+*/
+/mob/living/carbon/human/handle_strike_defense(var/datum/strike/strike)
+	if (!can_defend(strike))
+		return
+
+
+
+
+	//Alright we've discovered that we can possibly defend, next lets figure out the factors that affect our chance of doing so
+	var/block_chance_modifier = strike.difficulty * -1
+	if (strike.melee)
+		block_chance_modifier += 4*get_skill_difference(SKILL_COMBAT, strike.user)
+	else
+		block_chance_modifier += 3*get_skill_value(SKILL_COMBAT)
+
+	//The intent we're in slightly affects blocking chances
+	switch(src.a_intent)
+		if(I_HELP)
+			block_chance_modifier -= 5
+		if(I_HURT, I_GRAB)
+			block_chance_modifier += 5
+
+	if (src.grabbed_by.len)
+		block_chance_modifier -= 30	//If someone's holding you, guarding is near impossible
+
+
+
+
+
+	//We can block with exactly one object or limb per attack.
+	//Objects are -far- more effective so we check those first
+	var/list/items = list(l_hand, r_hand)
+	for (var/obj/item/I in items)
+		if (I.can_block(src))
+			var/item_block_chance = I.get_block_chance(src) + block_chance_modifier
+			if (prob(item_block_chance))
+				I.handle_block(strike)
+				return	//Only block with one item
+
+
+
+
+
+	//Okay now we'll account for defending with a limb
+	var/limb_block_chance = BASE_DEFENSE_CHANCE + block_chance_modifier
+
+
+	//First up, is this a part that we care to guard at all? We check this here because, in the case of blocking with a shield, we'd defend all attacks
+	if (strike.affecting && strike.affecting.defensive_group)
+		if (prob(limb_block_chance))
+			//It is! Alright, lets get the list of limbs that can be used to defend this one
+			var/list/possible_defenses = species.defensive_limbs[strike.affecting.defensive_group].Copy()
+			if (!LAZYLEN(possible_defenses))
+				return
+			var/obj/item/organ/external/blocker = null
+
+			//Right lets loop through them and try to find one to block with
+			while (!blocker && possible_defenses.len)
+				var/organ_tag = pick_n_take(possible_defenses)
+				blocker = get_organ(organ_tag)
+				if (blocker && blocker.is_usable() && !blocker.retracted)
+					//If this organ is fine, we're done with the loop,
+					break
+				else
+					//Organ is missing or otherwise unuseable
+					blocker = null
+
+
+			if (!blocker)
+				return
+
+			//Alright block successful!
+			strike.blocked_damage += blocker.block_reduction	//This will be subtracted from the eventual damage
+			strike.target_zone = blocker.organ_tag	//The attack is redirected to our blocking limb
+			strike.blocker = blocker	//And the limb is set on the attack too
+
+/*
+	This proc checks if this person can defend against an incoming strike
+*/
+/mob/living/carbon/human/can_defend(var/datum/strike/strike)
+
+	//First of all, we must be conscious
+	if (incapacitated(INCAPACITATION_KNOCKOUT))
+		return FALSE
+
+	//Does our species ever defend?
+	if (!species.can_defend(src, strike))
+		return FALSE
+
+	//We have to be roughly facing the attacker, unless we're lying down. We have omnidirectional defense when curled up on the floor
+	if (!lying)
+		//200 degree frontal arc covers all the tiles infront of us, and directly to sides. 5/8 possible directions are defensible
+		if (!target_in_frontal_arc(src, strike.origin, 200))
+			return FALSE
+
+	return TRUE

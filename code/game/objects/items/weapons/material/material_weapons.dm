@@ -70,24 +70,8 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/weapon/material/apply_hit_effect()
-	. = ..()
-	check_shatter()
-
-/obj/item/weapon/material/on_parry()
-	check_shatter()
-
-/obj/item/weapon/material/proc/check_shatter()
-	if(!unbreakable && prob(material.hardness))
-		if(material.is_brittle())
-			health = 0
-		else
-			health--
-		check_health()
-
-/obj/item/weapon/material/proc/check_health(var/consumed)
-	if(health<=0)
-		shatter(consumed)
+/obj/item/weapon/material/zero_health()
+	shatter()
 
 /obj/item/weapon/material/proc/shatter(var/consumed)
 	var/turf/T = get_turf(src)

@@ -8,6 +8,7 @@
 	verb_name = "lunging"
 	name = "Lunge"
 	var/vector2/cached_pixels
+	force_multiplier = 0 //No knockback
 
 /datum/extension/charge/lunge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
 	..()

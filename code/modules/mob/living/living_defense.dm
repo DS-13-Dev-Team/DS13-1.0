@@ -138,32 +138,14 @@
 
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	visible_message("<span class='danger'>[src] has been [I.attack_verb.len? pick(I.attack_verb) : "attacked"] with [I.name] by [user]!</span>")
-
-	var/blocked = run_armor_check(hit_zone, "melee")
-	standard_weapon_hit_effects(I, user, effective_force, blocked, hit_zone)
-
-	if(I.damtype == BRUTE && prob(33)) // Added blood for whacking non-humans too
+	if(I.damtype == BRUTE && prob(effective_force*2.5)) // Added blood for whacking non-humans too
 		var/turf/simulated/location = get_turf(src)
 		if(istype(location)) location.add_blood_floor(src)
-
-	return blocked
 
 //returns 0 if the effects failed to apply for some reason, 1 otherwise.
 /mob/living/proc/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/hit_zone)
 	if(!effective_force || blocked >= 100)
 		return 0
-
-	//Hulk modifier
-	if(HULK in user.mutations)
-		effective_force *= 2
-
-	//Apply weapon damage
-	var/damage_flags = I.damage_flags()
-	if(prob(blocked)) //armour provides a chance to turn sharp/edge weapon attacks into blunt ones
-		damage_flags &= ~(DAM_SHARP|DAM_EDGE)
-
-	apply_damage(effective_force, I.damtype, hit_zone, blocked, damage_flags, used_weapon=I)
 
 	return 1
 
@@ -434,3 +416,16 @@
 
 	Weaken(2)
 	playsound(src.loc, 'sound/effects/bang.ogg', VOLUME_HIGH, 1, 3)
+
+
+
+/*-------------------------------
+	Strike Defense
+---------------------------------*/
+//These are base procs defined here for convenience, actual function is in human_defense
+/mob/living/proc/handle_strike_defense(var/datum/strike)
+	return null
+
+
+/mob/living/proc/can_defend(var/datum/strike)
+	return FALSE

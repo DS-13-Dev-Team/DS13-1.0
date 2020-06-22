@@ -59,6 +59,7 @@
 	var/homing = TRUE
 	var/inertia = FALSE
 	var/power = 0
+	var/force_multiplier = 1	//A multiplier on the physical force applied to shove victims away. Set to 0 to disable
 	var/cooldown = 20 SECONDS	//After the charge completes, it will stay on the user and block additional charges for this long
 	var/continue_check = TRUE	//Check for incapacitated status every step
 	var/delay
@@ -66,7 +67,7 @@
 	var/nomove_timer
 
 	//Runtime data
-	var/tiles_moved = 0
+	var/distance_travelled = 0
 	var/list/atoms_hit = list()//Bumped observation may make duplicate calls. We'll use this to filter them out
 	var/lifespan_timer
 	var/start_timer
@@ -83,6 +84,8 @@
 	var/dm_filter/blur
 	var/starting_locomotion_limbs = 0	//How many legs or similar appendages we had when we started. We will abort the charge if this value decreases
 
+	var/atom/last_obstacle
+	var/last_target_type
 
 
 /datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
@@ -219,23 +222,24 @@
 	if (obstacle in atoms_hit)
 		return //Don't hit the same atom more than once
 
-
+	//Cache this, other things will check it
+	last_obstacle = obstacle
 
 	var/obstacle_oldloc = obstacle.loc//Cache where the obstacle is
 
-	var/target_type = CHARGE_TARGET_SECONDARY
+	last_target_type = CHARGE_TARGET_SECONDARY
 	if (obstacle == target)
-		target_type = CHARGE_TARGET_PRIMARY
+		last_target_type = CHARGE_TARGET_PRIMARY
 
 
-	if(!user.charge_impact(obstacle, get_total_power(), target_type, tiles_moved))
+	if(!user.charge_impact(src))
 		stop_success()
 		return FALSE
 	atoms_hit += obstacle
 
 
 	//If that was our intended target, then we win
-	if (target_type == CHARGE_TARGET_PRIMARY)
+	if (last_target_type == CHARGE_TARGET_PRIMARY)
 		//However, there's an exception here.
 		//If this charge has inertia, we don't stop until we ARE stopped.
 		if (!inertia)
@@ -290,7 +294,7 @@
 
 
 	//When we move, deplete the remaining range, and abort if we run out
-	tiles_moved++
+	distance_travelled++
 	if (isnum(range_left))
 		range_left --
 		if (range_left <= 0)
@@ -381,7 +385,7 @@
 		//Damage the user and stun them
 		var/mob/living/L = holder
 		L.stunned = 0
-		L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*tiles_moved, 0,0,0, obstacle)
+		L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*distance_travelled, 0,0,0, obstacle)
 		L.Stun(2*TP)
 	stop()
 
@@ -439,25 +443,26 @@
 ///Called when this atom is hit by a charging mob
 //Return false if you want to stop the charge for some special reason.
 //Note that the reason of: "We are dense and not broken so you can't get past" is already checked for. It's gotta be something other than that
-/atom/proc/charge_act(var/atom/mover, var/power)
-	if (power > 0)
-		ex_act(max(4-power, 1)) //Ex act has tons of interactions already, we'll use it
+/atom/proc/charge_act(var/datum/extension/charge/charge)
+	if (charge.power > 0)
+		ex_act(max(4-charge.power, 1)) //Ex act has tons of interactions already, we'll use it
 
 	return TRUE
 
 
 //Mobs take some damage and get stunned
-/mob/living/charge_act(var/atom/movable/mover, var/power, var/dist)
-	shake_camera(src,10*power,1)
-	if (isliving(mover))
-		var/mob/living/L = mover
+/mob/living/charge_act(var/datum/extension/charge/charge)
+	shake_camera(src,10*charge.power,1)
+	if (isliving(charge.user))
+		var/mob/living/L = charge.user
 		//We can't be hurt by things smaller than ourselves. they bounce off
 		if (L.mob_size < mob_size)
 			return FALSE
 
-	take_overall_damage((CHARGE_DAMAGE_BASE*power), 0,0,0, mover)
-	apply_effect(3*power, STUN)
-	apply_push_impulse_from(mover, mover.mass, 0)
+		L.launch_strike(src, CHARGE_DAMAGE_BASE*charge.power, L)
+		//take_overall_damage((CHARGE_DAMAGE_BASE*power), 0,0,0, mover)
+	apply_effect(3*charge.power, STUN)
+	apply_push_impulse_from(charge.user, charge.user.mass*charge.force_multiplier, 0)
 	return TRUE
 
 
@@ -465,22 +470,22 @@
 //target type will either be primary or secondary
 	//Primary = The thing our charge was aimed at
 	//Secondary = Something that got in the way while enroute to the primary target
-/atom/movable/proc/charge_impact(var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
+/atom/movable/proc/charge_impact(var/datum/extension/charge/charge)
 	shake_camera(src,3,1)
-	return obstacle.charge_act(src, power, distance_travelled)
+	return charge.last_obstacle.charge_act(src, charge.power, charge.distance_travelled)
 
 
 //When a human does it, we call the same proc on their species. This allows various people to do stuff
-/mob/living/carbon/human/charge_impact(var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
+/mob/living/carbon/human/charge_impact(var/datum/extension/charge/charge)
 	shake_camera(src,3,1)
 	if (species)
-		return species.charge_impact(src, obstacle, power, target_type, distance_travelled)
+		return species.charge_impact(charge)
 	return ..()
 
 
 
-/datum/species/proc/charge_impact(var/mob/living/user, var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
-	return obstacle.charge_act(user, power, distance_travelled)
+/datum/species/proc/charge_impact(var/datum/extension/charge/charge)
+	return charge.last_obstacle.charge_act(charge)
 
 
 

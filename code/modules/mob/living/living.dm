@@ -757,13 +757,13 @@ default behaviour is:
 /mob/living/proc/melee_accuracy_mods()
 	. = 0
 	if(eye_blind)
-		. += 75
+		. -= 30
 	if(eye_blurry)
-		. += 15
+		. -= 15
 	if(confused)
-		. += 30
+		. -= 20
 	if(CLUMSY in mutations)
-		. += 40
+		. -= 30
 
 /mob/living/proc/ranged_accuracy_mods()
 	. = 0
@@ -772,7 +772,7 @@ default behaviour is:
 	if(confused)
 		. -= 2
 	if(eye_blind)
-		. -= 5
+		. -= 10
 	if(eye_blurry)
 		. -= 1
 	if(CLUMSY in mutations)

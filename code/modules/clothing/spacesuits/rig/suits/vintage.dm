@@ -2,7 +2,7 @@
 	name = "antique CEC suit"
 	desc = "An extremely bulky, durable vintage suit that has mostly been replaced by sleeker modern designs. Some collectors still value the good old days though."
 	icon_state = "vintage_rig"
-	armor = list(melee = 90, bullet = 80, laser = 80, energy = 25, bomb = 90, bio = 100, rad = 70)
+	armor = list(melee = 70, bullet = 70, laser = 70, energy = 25, bomb = 90, bio = 100, rad = 70)
 	offline_slowdown = 5
 	online_slowdown = 3.5
 

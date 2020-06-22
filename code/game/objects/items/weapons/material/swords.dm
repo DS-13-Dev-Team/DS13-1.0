@@ -10,6 +10,7 @@
 	sharp = 1
 	edge = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_noun = list("attack", "slash", "stab", "slice", "tear", "rip", "dice", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	base_parry_chance = 50
 	melee_accuracy_bonus = 10

@@ -153,10 +153,11 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 /datum/unarmed_attack/claws/ubermorph
 	name = "Piercing talons"
 	desc = "An impaling pair of spikes that can punch through flesh and steel."
-	damage = 20
+	damage = 25
 	airlock_force_power = 5
 	airlock_force_speed = 2.5
-	structure_damage_mult = 2.5	//Wrecks obstacles
+	structure_damage_mult = 3	//Wrecks obstacles
+	armor_penetration = 30	//No armor will protect you
 	shredding = TRUE //Better environment interactions, even if not sharp
 
 /*
@@ -248,9 +249,10 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 
 
 //The impale
-/datum/species/necromorph/ubermorph/charge_impact(var/mob/living/user, var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
-	if (isliving(obstacle))
-		var/mob/living/L = obstacle
+/datum/species/necromorph/ubermorph/charge_impact(var/datum/extension/charge/charge)
+	var/mob/living/carbon/human/ubermorph = charge.user
+	if (isliving(charge.last_obstacle))
+		var/mob/living/L = charge.last_obstacle
 		.=FALSE	//We won't keep charging after this
 		var/targetstring = "[L.name]"
 
@@ -259,13 +261,14 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 			var/mob/living/carbon/human/H = L
 
 			//Lets deal heavy damage to one external organ
-			var/obj/item/organ/external/found_organ = H.find_target_organ(user.zone_sel.selecting)
+			var/obj/item/organ/external/found_organ = H.find_target_organ(get_zone_sel(ubermorph))
 
 			//Find target organ should never fail, we won't bother checking
 			targetstring = "[H]'s [found_organ]"
 
+			playsound(charge., 'sound/weapons/slice.ogg', VOLUME_MAX, 1)
 			//Handle the external damage
-			L.apply_damage(30, BRUTE, user.zone_sel.selecting, 0, DAM_SHARP, user, found_organ)
+			ubermorph.launch_strike(L, 30, ubermorph, damage_flags = DAM_SHARP, armor_penetration = 30)//Huge armor penetration to punch through resistance
 
 			//Next, we will also deal damage to one internal organ within the target area, if such exists
 			var/obj/item/organ/internal/I = safepick(found_organ.internal_organs)
@@ -277,11 +280,12 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 
 		else
 			//If its not human, just deal external damage
-			L.apply_damage(40, BRUTE, user.zone_sel.selecting, 0, DAM_SHARP, user)
+			ubermorph.launch_strike(L, 30, ubermorph, damage_flags = DAM_SHARP, armor_penetration = 30)
 
-		user.Stun(3, TRUE) //User is stunned for a few seconds, giving some time for a desperate and probably doomed escape attempt
-		play_species_audio(user, SOUND_ATTACK, VOLUME_MID, 1, 3)
-		user.visible_message(SPAN_DANGER("[user] punches through [targetstring] with an impaling claw"))
+		ubermorph.Stun(3, TRUE) //User and victim are stunned for a few seconds, giving third parties an opportunity to flee
+		L.Stun(3, TRUE)
+		play_species_audio(ubermorph, SOUND_ATTACK, VOLUME_MID, 1, 3)
+		ubermorph.visible_message(SPAN_DANGER("[ubermorph] punches through [targetstring] with an impaling claw"))
 
 	else
 		..()

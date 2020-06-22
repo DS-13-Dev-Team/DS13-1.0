@@ -55,6 +55,7 @@
 	cavity_name = "abdominal"
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_GENDERED_ICON
 	limb_height = new /vector2(1,1.25)	//25cm from bottom of groin to upper abdomen
+	defensive_group = LOWERBODY
 
 /obj/item/organ/external/arm
 	organ_tag = BP_L_ARM
@@ -74,7 +75,7 @@
 	base_miss_chance = 12
 	limb_height = new /vector2(0.9,1.60) //80cm long, assuming theyre hanging down
 	best_direction	=	WEST
-
+	defensive_group = null
 
 /obj/item/organ/external/arm/right
 	organ_tag = BP_R_ARM
@@ -104,6 +105,7 @@
 	base_miss_chance = 5
 	limb_height = new /vector2(0.1,1)	//Approx 90cm from ankle to groin
 	best_direction	=	WEST
+	defensive_group = null
 
 /obj/item/organ/external/leg/right
 	organ_tag = BP_R_LEG
@@ -132,6 +134,7 @@
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND
 	base_miss_chance = 15
 	limb_height = new /vector2(0,0.1)	//about 10cm from sole to ankle
+	defensive_group = null
 
 /obj/item/organ/external/foot/right
 	organ_tag = BP_R_FOOT
@@ -159,6 +162,7 @@
 	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_FINGERPRINT
 	base_miss_chance = 15
 	limb_height = new /vector2(0.8,0.9)	//10cm long, hanging down in middle of leg
+	defensive_group = null
 
 /obj/item/organ/external/hand/right
 	organ_tag = BP_R_HAND
@@ -184,3 +188,4 @@
 	w_class = ITEM_SIZE_HUGE
 	base_miss_chance = 20
 	limb_height = new /vector2(0,1)	//Assuming a tail on a humanoid, extends from waist to floor
+	defensive_group = null

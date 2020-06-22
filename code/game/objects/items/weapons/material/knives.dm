@@ -26,6 +26,7 @@
 		icon_state += "_open"
 		w_class = ITEM_SIZE_NORMAL
 		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+		attack_noun = list("attack", "slash", "stab", "slice", "tear", "rip", "dice", "cut")
 	else
 		force = initial(force)
 		edge = initial(edge)
@@ -73,6 +74,7 @@
 	matter = list(MATERIAL_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_noun = list("attack", "slash", "stab", "slice", "tear", "rip", "dice", "cut")
 	unbreakable = 1
 	tool_qualities = list(QUALITY_CUTTING, 30)
 	unbreakable = 1
@@ -99,5 +101,6 @@
 	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown-by-products."
 	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_noun = list("attack", "slash", "stab", "slice", "tear", "rip", "dice", "cut")
 	tool_qualities = list(QUALITY_CUTTING, 40)
 	unbreakable = 1

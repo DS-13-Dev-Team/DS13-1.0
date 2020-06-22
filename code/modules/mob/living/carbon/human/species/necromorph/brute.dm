@@ -221,37 +221,19 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	name = "Heavy punch"
 	desc = "A powerful punch that hits like a truck. Human-sized creatures will be sent flying and stunnned. Deals massive damage to airlocks and structures."
 	delay = 25
-	damage = 25
+	damage = 28
 	airlock_force_power = 5
 	airlock_force_speed = 2.5
 	structure_damage_mult = 2.5	//Wrecks obstacles
 	shredding = TRUE //Better environment interactions, even if not sharp
 
 //Brute punch causes knockback on any mob smaller than itself
-/datum/unarmed_attack/punch/brute/apply_effects(var/mob/living/carbon/human/user,var/atom/target,var/armour,var/attack_damage,var/zone)
-
-	if (isliving(target))
-		var/mob/living/L = target
-		if (user.mob_size > L.mob_size)
-			//Ok we will knock it back! Lets do some math
-
-			//Get a vector representing the offset from us to target
-			var/vector2/delta
-			if (get_turf(user) == get_turf(target))
-				var/turf/T = get_step(user, user.dir)
-				delta = new(T.x - user.x, T.y - user.y)
-			else
-				delta = new(L.x - user.x, L.y - user.y)
-			delta = delta.ToMagnitude(5) //Rescale it to a length of 5 tiles. This is our approximate knockback distance, although it may end up shorter with rounding and diagonals
-
-			var/turf/target_turf = locate(user.x + delta.x, user.y + delta.y, user.z) //Get the target turf to knock them towards
-			if (target_turf)
-				//Throw the victim towards the target
-				L.throw_at(target_turf, 5, 1, user)
-
-				//Note, a speed of 1 here means travel 1 tile then sleep(1)
-				//This is really awful, and throw_at badly needs redesigned. But for now we will make do
-				return TRUE
+/datum/unarmed_attack/punch/brute/apply_effects(var/datum/strike/strike)
+	if (istype(strike.target, /atom/movable))
+		var/mob/living/carbon/human/user = strike.user
+		var/atom/movable/AM = strike.target
+		AM.apply_push_impulse_from(strike.user, user.mass, 0)
+		return TRUE
 
 	//Return parent as a fallback if something went wrong
 	return ..()

@@ -110,7 +110,7 @@
 	//Interaction
 	has_fine_manipulation = FALSE //Can't use most objects
 	can_pickup = FALSE	//Can't pickup objects
-	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON         // Various specific features.
+	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK      // Various specific features.
 	appearance_flags = 0      // Appearance/display related features.
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN           // Flags that specify who can spawn as this specie
 
@@ -142,6 +142,8 @@
 	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple, "height" = new /vector2(0,1))
 	)
 
+	defensive_limbs = list(UPPERBODY = list(BP_L_ARM, BP_R_ARM), //Arms and hands are used to shield the face and body
+	LOWERBODY = list(BP_L_LEG, BP_R_LEG))
 
 
 	//Necromorphs can't grab people or pick things up unless otherwise noted

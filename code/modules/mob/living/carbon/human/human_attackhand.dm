@@ -16,37 +16,9 @@
 
 	..()
 	remove_cloaking_source(species)
-	// Should this all be in Touch()?
-		//No it shouldn't
-	if(H)
-		if(H != src && H.zone_sel && check_shields(0, null, H, H.zone_sel.selecting, H.name))
-			H.do_attack_animation(src)
-			return 0
 
-		//This is awful code, why is it here
-		if(istype(H.gloves, /obj/item/clothing/gloves/boxing/hologlove))
-			H.do_attack_animation(src)
-			var/damage = rand(0, 9)
-			if(!damage)
-				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-				visible_message("<span class='danger'>\The [H] has attempted to punch \the [src]!</span>")
-				return 0
-			var/obj/item/organ/external/affecting = get_organ(ran_zone(H.zone_sel.selecting))
-			var/armor_block = run_armor_check(affecting, "melee")
 
-			if(HULK in H.mutations)
-				damage += 5
 
-			playsound(loc, "punch", 25, 1, -1)
-
-			visible_message("<span class='danger'>[H] has punched \the [src]!</span>")
-
-			apply_damage(damage, PAIN, affecting, armor_block, used_weapon = M)
-			if(damage >= 9)
-				visible_message("<span class='danger'>[H] has weakened \the [src]!</span>")
-				apply_effect(4, WEAKEN, armor_block)
-
-			return
 
 	if(istype(M,/mob/living/carbon))
 		M.spread_disease_to(src, "Contact")
@@ -120,137 +92,12 @@
 			return H.grab(src)
 
 		if(I_HURT)
-
-			//This whole thing below here is a mess.
-			/*
-				All this logic shouldn't be in attackhand
-				there's no reason for unarmed attack datums to not work on nonhuman mobs
-				The flat 1-5 random damage is bad
-				Unarmed attacks are never consulted about the potential target
-				Random blocking/evading adds nothing if its not user controlled
-
-				The entire rest of this function needs to be refactored, trimmed down and cut into several more atomic procs
-				But not today
-					~Nanako
-			*/
-			if(!H)
-				attack_generic(H,rand(1,3),"punched")
-				return
-
-			var/rand_damage = rand(1, 5)
-			var/block = 0
-			var/accurate = 0
 			var/hit_zone = H.zone_sel.selecting
-			var/obj/item/organ/external/affecting = find_target_organ(hit_zone)
-
-			// See what attack they use
 			var/datum/unarmed_attack/attack = H.get_unarmed_attack(src, hit_zone)
 			if(!attack)
 				return 0
-			if(world.time < H.last_attack + attack.get_delay(H))
-				to_chat(H, "<span class='notice'>You can't attack again so soon.</span>")
-				return 0
-			else
-				H.last_attack = world.time
 
-			if(!affecting || affecting.is_stump())
-				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
-				return 1
-
-			switch(src.a_intent)
-				if(I_HELP)
-					// We didn't see this coming, so we get the full blow
-					rand_damage = 5
-					accurate = 1
-				if(I_HURT, I_GRAB)
-					// We're in a fighting stance, there's a chance we block
-					if(MayMove() && src!=H && prob(20))
-						block = 1
-
-			if (M.grabbed_by.len)
-				// Someone got a good grip on them, they won't be able to do much damage
-				rand_damage = max(1, rand_damage - 2)
-
-			if(src.grabbed_by.len || !src.MayMove() || src==H || H.species.species_flags & SPECIES_FLAG_NO_BLOCK)
-				accurate = 1 // certain circumstances make it impossible for us to evade punches
-				rand_damage = 5
-
-			//Here seems a good enough place for attack audio
-			//Its not impact sounds, but screams of rage while swinging
-			if (H && H.check_audio_cooldown(SOUND_ATTACK))
-				H.play_species_audio(H, SOUND_ATTACK, VOLUME_MID, 1)
-				H.set_audio_cooldown(SOUND_ATTACK, 3 SECONDS)
-
-
-			// Process evasion and blocking
-			var/miss_type = 0
-			var/attack_message
-			if(!accurate)
-				/* ~Hubblenaut
-					This place is kind of convoluted and will need some explaining.
-					ran_zone() will pick out of 11 zones, thus the chance for hitting
-					our target where we want to hit them is circa 9.1%.
-
-					Now since we want to statistically hit our target organ a bit more
-					often than other organs, we add a base chance of 20% for hitting it.
-
-					This leaves us with the following chances:
-
-					If aiming for chest:
-						27.3% chance you hit your target organ
-						70.5% chance you hit a random other organ
-						 2.2% chance you miss
-
-					If aiming for something else:
-						23.2% chance you hit your target organ
-						56.8% chance you hit a random other organ
-						15.0% chance you miss
-
-					Note: We don't use get_zone_with_miss_chance() here since the chances
-						  were made for projectiles.
-					TODO: proc for melee combat miss chances depending on organ?
-				*/
-				if(prob(80))
-					hit_zone = ran_zone(hit_zone)
-				if(prob(15) && hit_zone != BP_CHEST) // Missed!
-					if(!src.lying)
-						attack_message = "[H] attempted to strike [src], but missed!"
-					else
-						attack_message = "[H] attempted to strike [src], but \he rolled out of the way!"
-						src.set_dir(pick(GLOB.cardinal))
-					miss_type = 1
-
-			if(!miss_type && block)
-				attack_message = "[H] went for [src]'s [affecting.name] but was blocked!"
-				miss_type = 2
-
-			H.do_attack_animation(src)
-			if(!attack_message)
-				attack.show_attack(H, src, hit_zone, rand_damage)
-			else
-				H.visible_message("<span class='danger'>[attack_message]</span>")
-
-			playsound(loc, ((miss_type) ? (miss_type == 1 ? attack.miss_sound : 'sound/weapons/thudswoosh.ogg') : attack.attack_sound), 25, 1, -1)
-			admin_attack_log(H, src, "[miss_type ? (miss_type == 1 ? "Has missed" : "Was blocked by") : "Has [pick(attack.attack_verb)]"] their victim.", "[miss_type ? (miss_type == 1 ? "Missed" : "Blocked") : "[pick(attack.attack_verb)]"] their attacker", "[miss_type ? (miss_type == 1 ? "has missed" : "was blocked by") : "has [pick(attack.attack_verb)]"]")
-
-			if(miss_type)
-				return 0
-
-			var/real_damage = rand_damage
-			real_damage += attack.get_unarmed_damage(H)
-			real_damage *= damage_multiplier
-			rand_damage *= damage_multiplier
-			if(HULK in H.mutations)
-				real_damage *= 2 // Hulks do twice the damage
-				rand_damage *= 2
-			real_damage = max(1, real_damage)
-
-			var/armour = run_armor_check(hit_zone, "melee")
-			// Apply additional unarmed effects.
-			attack.apply_effects(H, src, armour, rand_damage, hit_zone)
-
-			// Finally, apply damage to target
-			apply_damage(real_damage, attack.get_damage_type(), hit_zone, armour, damage_flags=attack.damage_flags(),used_weapon = M)
+			H.launch_unarmed_strike(src, attack)
 
 		if(I_DISARM)
 			if(H.species)

@@ -170,7 +170,7 @@
 	name = "Scything blades"
 	desc = "These colossal blades can cleave a man in half."
 	attack_verb = list("slashed", "scythed", "cleaved")
-	attack_noun = list("blades")
+	attack_noun = list("slash", "cut", "cleave", "chop", "stab")
 	eye_attack_text = "impales"
 	eye_attack_text_victim = "blade"
 	attack_sound = 'sound/weapons/slice.ogg'
@@ -178,7 +178,7 @@
 	sharp = TRUE
 	edge = TRUE
 	shredding = TRUE
-	damage = 14
+	damage = 16
 	delay = 13
 	airlock_force_power = 2
 
@@ -214,7 +214,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 	return TRUE
 
 /datum/unarmed_attack/blades/strong
-	damage = 20
+	damage = 24
 	delay = 11
 	airlock_force_power = 3
 
@@ -285,10 +285,10 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 /*
 	Slashers have a special charge impact. Each of their blade arms gets a free hit on impact with the primary target
 */
-/datum/species/necromorph/slasher/charge_impact(var/mob/living/charger, var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
-	if (target_type == CHARGE_TARGET_PRIMARY && isliving(obstacle))
-		var/mob/living/carbon/human/H = charger
-		var/mob/living/L = obstacle
+/datum/species/necromorph/slasher/charge_impact(var/datum/extension/charge/charge)
+	if (charge.last_target_type == CHARGE_TARGET_PRIMARY && isliving(charge.last_obstacle))
+		var/mob/living/carbon/human/H = charge.user
+		var/mob/living/L = charge.last_obstacle
 
 		//We need to be in harm intent for this, set it if its not already
 		if (H.a_intent != I_HURT)

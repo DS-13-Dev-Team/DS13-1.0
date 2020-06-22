@@ -10,7 +10,6 @@
 //Generally, sub-1 values indicate wheels, low friction, etc
 /atom/movable/var/push_threshold_factor = 1
 
-
 /*
 	Actual impulse handling
 
@@ -43,11 +42,12 @@
 
 
 	var/turf/pushtarget = get_turf_in_direction(src, direction, pushdist)
-
+	return TRUE
 	spawn()
 		throw_at(pushtarget, pushdist, 1, null)
 
 /mob/living/var/knockdown_threshold_factor = 1.5	//Requires a force at least this * mass to knock down this mob
+/mob/living/var/stagger_threshold_factor = 0.1	//
 
 /mob/living/apply_impulse(var/direction, var/strength)
 	//First of all since living creatures are unpredictable, strength gets some random variance
@@ -60,6 +60,13 @@
 	var/knockdown_time = Floor(strength / (mass * knockdown_threshold_factor))
 	if (knockdown_time >= 1)
 		Weaken(knockdown_time)
+	else if (!.)
+		//If the force wasn't strong enough to send us flying, or to knock us over
+		//Maybe its just enough to make us stagger one tile
+		var/turf/target_turf = random_tile_in_cone(get_turf(src), direction,2, 180)
+		//No point randomising it twice or it'd just weight towards the low end
+		throw_at(target_turf,1,5)
+		return TRUE
 
 /*---------------------------------------------------------
 	Helper Procs
