@@ -20,6 +20,13 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
 	preference_candidacy_toggle = TRUE
 
+	// Spawn values (autotraitor and game mode)
+	//Hard cap of 6 will only be reached at really high playercounts
+	hard_cap = 6                        // Autotraitor var. Won't spawn more than this many antags.
+	hard_cap_round = 6                  // As above but 'core' round antags ie. roundstart.
+	initial_spawn_req = 0               // Gamemode using this template won't start without this # candidates.
+	initial_spawn_target = 3            // Gamemode will attempt to spawn this many antags.
+
 /datum/objective/unitologist
 	explanation_text = "Serve the marker at all costs."
 
@@ -55,6 +62,7 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	preference_candidacy_toggle = TRUE
 	id = MODE_UNITOLOGIST_SHARD
 	flags = 0
+	initial_spawn_req = 1
 	welcome_text = "While on a planetary survey team on Aegis VII below, you uncovered the Holy Marker. It spoke to you, and you followed its directions, chipping off a piece and smuggling it aboard with you. <br>\
 	The shard still speaks to you now. It tells you to hide it. Plant it somewhere in a dark, hidden corner of the Ishimura, where it will not be discovered"
 
