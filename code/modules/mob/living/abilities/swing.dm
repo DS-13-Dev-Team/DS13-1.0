@@ -203,7 +203,7 @@
 	var/atom/A = holder
 	if (raytrace && !check_trajectory(A, L, pass_flags = A.pass_flags))
 		return FALSE
-	L.apply_damage(damage = damage, damagetype = BRUTE, def_zone = get_target_zone(L), blocked = null, damage_flags = flags, used_weapon = holder)
+	user.launch_strike(L, damage, holder, damage_flags = flags)
 	playsound(L, hitsound, VOLUME_MID, 1)
 	return TRUE
 

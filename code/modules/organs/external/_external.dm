@@ -21,6 +21,8 @@
 	var/last_dam = -1                  // used in healing/processing calculations.
 	var/pain = 0                       // How much the limb hurts.
 	var/pain_disability_threshold      // Point at which a limb becomes unusable due to pain.
+	var/defensive_group	= UPPERBODY	   // If set, this dictates which set of limbs will be used in an attempt to shield this bodypart from attack. Should only be set on core parts, not limbs
+	var/block_reduction = 3			   // When this limb is used to block a strike, this flat number is subtracted from the damage of the incoming hit
 
 	// Physics
 	var/vector2/limb_height = new /vector2(0,1)	//Height is a range of where the limb extends vertically. The first value is the lower bound, second is the upper
@@ -50,6 +52,7 @@
 	var/body_hair                      // Icon blend for body hair if any.
 	var/list/markings = list()         // Markings (body_markings) to apply to the icon
 	var/best_direction	=	EAST		//When severed, draw the icon facing in this direction
+	blocksound = 'sound/effects/impacts/block.ogg'
 
 	// Wound and structural data.
 	var/wound_update_accuracy = 1      // how often wounds should be updated, a higher number means less often

@@ -14,6 +14,7 @@
 	origin_tech = list(TECH_ENGINEERING = 1)
 	matter = list(MATERIAL_STEEL = 400)
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
+	attack_noun = list("attack", "bash", "batter", "bludgeon", "whack")
 	tool_qualities = list(QUALITY_PRYING = 25, QUALITY_DIGGING = 10)
 
 //Comes with preapplied red paint

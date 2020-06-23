@@ -10,6 +10,7 @@
 	w_class = ITEM_SIZE_SMALL
 	matter = list(MATERIAL_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
+	attack_noun = list("bludgeon", "whack", "discipline", "thrash")
 
 /obj/item/weapon/cane/concealed
 	var/concealed_blade

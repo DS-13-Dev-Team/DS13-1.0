@@ -12,6 +12,7 @@
 	tool_qualities = list(QUALITY_DIGGING = 30, QUALITY_PRYING = 20, QUALITY_EXCAVATION = 10)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("hit", "pierced", "sliced", "attacked")
+	attack_noun = list("hit", "pierce", "slice", "attack")
 	sharp = 1
 	var/default_full_dig = TRUE
 	//structure_damage_factor = 3 //Drills and picks are made for getting through hard materials
@@ -91,6 +92,7 @@
 	switched_on_qualities = list(QUALITY_DIGGING = 50, QUALITY_DRILLING = 20, QUALITY_EXCAVATION = 15, QUALITY_SAWING = 60, QUALITY_CUTTING = 50)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
+	attack_noun = list("attack", "chop", "cleave", "tear", "cut")
 	sharp = 1
 	edge = 1
 	max_upgrades = 4

@@ -40,7 +40,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /mob/living/attackby(obj/item/I, mob/user)
 	if(!ismob(user))
 		return 0
-	if(can_operate(src,user) && !istype(I, /obj/item/weapon/reagent_containers/pill))
+	if(can_operate(src,user))
 		if (I.do_surgery(src,user) || (user.a_intent == I_HELP && !(I.item_flags & ITEM_FLAG_NO_BLUDGEON))) //Surgery
 			return TRUE
 	return I.attack(src, user, user.zone_sel.selecting)
@@ -67,29 +67,23 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(M == user && user.a_intent != I_HURT)
 		return 0
 
+	if(!user.aura_check(AURA_TYPE_WEAPON, src, user))
+		return 0
+
+	//This does special interactions like throat cutting
+	if (!M.resolve_item_attack(src, user, target_zone))
+		return 1
+
+
+	user.launch_weapon_strike(M, src)
 	/////////////////////////
 
 	if(!no_attack_log)
 		admin_attack_log(user, M, "Attacked using \a [src] (DAMTYE: [uppertext(damtype)])", "Was attacked with \a [src] (DAMTYE: [uppertext(damtype)])", "used \a [src] (DAMTYE: [uppertext(damtype)]) to attack")
 	/////////////////////////
-	user.set_click_cooldown(attack_cooldown + w_class)
-	user.do_attack_animation(M)
-	if(!user.aura_check(AURA_TYPE_WEAPON, src, user))
-		return 0
-
-	var/hit_zone = M.resolve_item_attack(src, user, target_zone)
-	if(hit_zone)
-		apply_hit_effect(M, user, hit_zone)
-
 	return 1
 
-//Called when a weapon is used to make a successful melee attack on a mob. Returns the blocked result
+//Called when a weapon is used to make a successful melee attack on a mob. This is only for special effecyts, damage is handled elsewgere
 /obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	if(hitsound)
-		playsound(loc, hitsound, 50, 1, -1)
-
-	var/power = force
-	if(HULK in user.mutations)
-		power *= 2
-	return target.hit_with_weapon(src, user, power, hit_zone)
+	return
 

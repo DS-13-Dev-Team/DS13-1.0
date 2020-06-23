@@ -50,3 +50,8 @@
 #define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
 #define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
 #define MAGAZINE 		4	//The magazine item itself goes inside the gun
+
+
+
+#define BASE_DEFENSE_CHANCE	85	//The basic chance of a human to block incoming hits, assuming they're conscious and facing the right direction
+//This is extremely high so that humans will reliably lose limbs before core parts in combat.

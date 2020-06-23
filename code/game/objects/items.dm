@@ -1,6 +1,7 @@
 /obj/item
 	name = "item"
 	icon = 'icons/obj/items.dmi'
+	var/break_message = "SELF breaks apart!"
 	w_class = ITEM_SIZE_NORMAL
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
@@ -17,6 +18,7 @@
 	var/burn_point = null
 	var/burning = null
 	var/hitsound = null
+	var/blocksound = 'sound/weapons/Genhit.ogg'
 
 	var/slot_flags = 0		//This is used to determine on which slots an item can fit.
 	var/equip_slot = slot_none	//What slot this item was last equipped into
@@ -27,6 +29,7 @@
 	var/obj/item/master = null
 	var/list/origin_tech = null	//Used by R&D to determine what research bonuses it grants.
 	var/list/attack_verb = list("hit") //Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	var/list/attack_noun = list("hit")
 	var/lock_picking_level = 0 //used to determine whether something can pick a lock, and how well.
 	var/force = 0
 	var/attack_cooldown = DEFAULT_WEAPON_COOLDOWN
@@ -62,7 +65,7 @@
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
 	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
 
-	var/base_parry_chance	// Will allow weapon to parry melee attacks if non-zero
+	var/base_parry_chance = 0	// Will allow weapon to parry melee attacks if non-zero
 	var/icon_override = null  //Used to override hardcoded clothing dmis in human clothing proc.
 
 	var/use_alt_layer = FALSE // Use the slot's alternative layer when rendering on a mob
@@ -92,13 +95,21 @@
 	var/list/sprite_sheets_obj = list()
 
 /obj/item/New()
-	if (w_class != ITEM_SIZE_NO_CONTAINER)	//This is infinity, would cause errors
-		max_health *= w_class	//Bigger items are harder to break
+	if (!max_health)
+		if (w_class != ITEM_SIZE_NO_CONTAINER)	//This is infinity, would cause errors
+			max_health = 20 * w_class	//Bigger items are harder to break
+		else
+			max_health = 150
 	health = max_health
 	..()
 	if(randpixel && (!pixel_x && !pixel_y) && isturf(loc)) //hopefully this will prevent us from messing with mapper-set pixel_x/y
 		pixel_x = rand(-randpixel, randpixel)
 		pixel_y = rand(-randpixel, randpixel)
+
+	//Normal or larger objects have some parry chance if none is set
+	//Explicitly setting a null parry chance prevents the item from being used to parry
+	if (w_class >= ITEM_SIZE_NORMAL && !base_parry_chance && !isnull(base_parry_chance))
+		base_parry_chance = 15
 
 
 
@@ -529,27 +540,6 @@ var/list/global/slot_flags_enumeration = list(
 /obj/item/proc/ui_action_click()
 	attack_self(usr)
 
-//RETURN VALUES
-//handle_shield should return a positive value to indicate that the attack is blocked and should be prevented.
-//If a negative value is returned, it should be treated as a special return value for bullet_act() and handled appropriately.
-//For non-projectile attacks this usually means the attack is blocked.
-//Otherwise should return 0 to indicate that the attack is not affected in any way.
-/obj/item/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(get_parry_chance(user))
-		if(default_parry_check(user, attacker, damage_source) && prob(get_parry_chance()))
-			user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-			playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-			on_parry()
-			return 1
-	return 0
-
-/obj/item/proc/on_parry()
-	return
-
-/obj/item/proc/get_parry_chance(mob/user)
-	. = base_parry_chance
-	if(user)
-		. += 15 * (user.get_skill_value(SKILL_COMBAT) - SKILL_BASIC)
 
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc
@@ -904,7 +894,6 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 	if (amount <= 0)
 		return FALSE
-
 	health -= amount
 
 	if (health <= 0)
@@ -925,5 +914,40 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 //Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
 /obj/item/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
+
+	//To cut down on spam, we'll only display a message for items broken while attached to a mob, So that we don't get a million messages from an explosion
+	if (ismob(loc))
+		var/mob/M = loc
+		M.visible_message(SPAN_WARNING(replacetext(break_message, "SELF", src.name)))
 	qdel(src)
 	return TRUE
+
+
+
+/*
+	Defensive handling
+*/
+/obj/item/proc/handle_block(var/datum/strike/strike)
+	var/blocked_damage = max(w_class*3, min(health+resistance, strike.damage))
+	strike.blocked_damage += blocked_damage
+	strike.blocker = src
+	spawn()
+		take_damage(blocked_damage, strike.damage_type, strike.user, strike.used_weapon, bypass_resist = FALSE)
+
+//Items must be a certain minimum size to be used for blocking
+/obj/item/proc/can_block(var/datum/strike/strike)
+	if (base_parry_chance > 0)
+		return TRUE
+	return FALSE
+
+//Items which aren't especially designed for melee combat have a pretty low block chance.
+/obj/item/proc/get_block_chance(var/datum/strike/strike)
+	return base_parry_chance
+
+//When swinging this weapon, this cooldown
+/obj/item/proc/get_delay(var/mob/living/user)
+	var/delay = attack_cooldown + w_class
+	if (user)
+		delay /= user.attack_speed_factor
+
+	return delay

@@ -7,7 +7,8 @@ var/global/list/sparring_attack_cache = list()
 	var/desc = ""	//Make this short, typically one sentance
 	var/attack_verb = list("attack")	// Empty hand hurt intent verb.
 	var/attack_noun = list("fist")
-	var/damage = 0						// Extra empty hand attack damage.
+	var/damage = 4				// Extra empty hand attack damage.
+	var/rand_damage = 2			//The attack can deal this much damage more or less than standard
 	var/attack_sound = "punch"
 	var/miss_sound = 'sound/weapons/punchmiss.ogg'
 	var/shredding = 0 // Calls the old attack_alien() behavior on objects/mobs when on harm intent.
@@ -37,6 +38,8 @@ var/global/list/sparring_attack_cache = list()
 
 	var/lying_cooldown_factor	=	2
 	var/lying_damage_factor	=	0.75
+
+	var/armor_penetration = 0
 
 /datum/unarmed_attack/New()
 	.=..()
@@ -86,10 +89,13 @@ var/global/list/sparring_attack_cache = list()
 			delay *= lying_cooldown_factor
 	return 0
 
-/datum/unarmed_attack/proc/apply_effects(var/mob/living/carbon/human/user,var/atom/target,var/armour,var/attack_damage,var/zone)
+/datum/unarmed_attack/proc/apply_effects(var/datum/strike/strike)
 
-	if (ishuman(target))
-		var/mob/living/carbon/human/H = target
+	var/mob/living/user = strike.user
+	var/attack_damage = strike.get_final_damage()
+
+	if (ishuman(strike.target))
+		var/mob/living/carbon/human/H = strike.target
 		if(H.stat == DEAD)
 			return
 
@@ -98,13 +104,15 @@ var/global/list/sparring_attack_cache = list()
 			return
 
 		var/stun_chance = rand(0, 100)
+		if (strike.blocker)
+			stun_chance *= 0.5	//Attacks which are blocked are much less likely to have special effects
 
-		if(attack_damage >= 5 && armour < 100 && !(H == user) && stun_chance <= attack_damage * 5) // 25% standard chance
-			switch(zone) // strong punches can have effects depending on where they hit
+		if(attack_damage >= 5 && strike.blocked < 100 && !(H == user) && stun_chance <= attack_damage * 5) // 25% standard chance
+			switch(strike.target_zone) // strong punches can have effects depending on where they hit
 				if(BP_HEAD, BP_EYES, BP_MOUTH)
 					// Induce blurriness
 					H.visible_message("<span class='danger'>[H] looks momentarily disoriented.</span>", "<span class='danger'>You see stars.</span>")
-					H.apply_effect(attack_damage*2, EYE_BLUR, armour)
+					H.apply_effect(attack_damage*2, EYE_BLUR, strike.blocked)
 				if(BP_L_ARM, BP_L_HAND)
 					if (H.l_hand)
 						// Disarm left hand
@@ -124,33 +132,36 @@ var/global/list/sparring_attack_cache = list()
 							H.visible_message("<span class='danger'>[pick("[H] was sent flying backward!", "[H] staggers back from the impact!")]</span>")
 						if(prob(50))
 							H.set_dir(GLOB.reverse_dir[H.dir])
-						H.apply_effect(attack_damage * 0.4, WEAKEN, armour)
+						H.apply_effect(attack_damage * 0.4, WEAKEN, strike.blocked)
 				if(BP_GROIN)
 					H.visible_message("<span class='warning'>[H] looks like \he is in pain!</span>", "<span class='warning'>[(H.gender=="female") ? "Oh god that hurt!" : "Oh no, not your[pick("testicles", "crown jewels", "clockweights", "family jewels", "marbles", "bean bags", "teabags", "sweetmeats", "goolies")]!"]</span>")
-					H.apply_effects(stutter = attack_damage * 2, agony = attack_damage* 3, blocked = armour)
+					H.apply_effects(stutter = attack_damage * 2, agony = attack_damage* 3, blocked = strike.blocked)
 				if(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT)
 					if(!H.lying)
 						H.visible_message("<span class='warning'>[H] gives way slightly.</span>")
-						H.apply_effect(attack_damage*3, PAIN, armour)
-		else if(attack_damage >= 5 && !(H == user) && (stun_chance + attack_damage * 5 >= 100) && armour < 100) // Chance to get the usual throwdown as well (25% standard chance)
+						H.apply_effect(attack_damage*3, PAIN, strike.blocked)
+		else if(attack_damage >= 5 && !(H == user) && (stun_chance + attack_damage * 5 >= 100) && strike.blocked < 100) // Chance to get the usual throwdown as well (25% standard chance)
 			if(!H.lying)
 				H.visible_message("<span class='danger'>[H] [pick("slumps", "falls", "drops")] down to the ground!</span>")
 			else
 				H.visible_message("<span class='danger'>[H] has been weakened!</span>")
-			H.apply_effect(3, WEAKEN, armour)
+			H.apply_effect(3, WEAKEN, strike.blocked)
 
-/datum/unarmed_attack/proc/show_attack(var/mob/living/carbon/human/user, var/atom/target, var/zone, var/attack_damage)
-	if (ishuman(target))
-		var/mob/living/carbon/human/H = target
-		var/obj/item/organ/external/affecting = H.get_organ(zone)
-		user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [target] in the [affecting.name]!</span>")
+/datum/unarmed_attack/proc/show_attack(var/datum/strike/strike)
+	if (ishuman(strike.target))
+		var/mob/living/carbon/human/H = strike.target
+		var/obj/item/organ/external/affecting = H.get_organ(strike.target_zone)
+		if (strike.blocker)
+			var/obj/item/organ/external/original = H.get_organ(strike.original_target_zone)
+			strike.user.visible_message("<span class='minorwarning'>[strike.user] tried to [pick(attack_noun)] [strike.target] in the [original.name] but was blocked by [H.get_pronoun(POSESSIVE_ADJECTIVE)] [strike.blocker.name]!</span>")
+		else
+			strike.user.visible_message("<span class='warning'>[strike.user] [pick(attack_verb)] [strike.target] in the [affecting.name]!</span>")
 	else
-		user.visible_message("<span class='warning'>[user] [pick(attack_verb)] [target][attack_damage?"":", to no effect"]!</span>")
-	user.do_attack_animation(target)
-	if (attack_damage)
-		playsound(user.loc, attack_sound, 25, 1, -1)
-	else
-		playsound(user.loc, attack_sound, VOLUME_NEAR_SILENT, 1, -2)//If we deal 0 damage, the attacksound is much quieter
+		strike.user.visible_message("<span class='warning'>[strike.user] [pick(attack_verb)] [strike.target][strike.damage?"":", to no effect"]!</span>")
+	if (strike.luser)
+		strike.luser.do_attack_animation(strike.target)
+
+
 
 /datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
 	var/obj/item/organ/internal/eyes/eyes = target.internal_organs_by_name[BP_EYES]
@@ -186,13 +197,8 @@ var/global/list/sparring_attack_cache = list()
 /mob/living/carbon/human/strike_door(var/obj/machinery/door/target)
 	var/datum/unarmed_attack/u_attack = get_unarmed_attack(target)
 	if (u_attack)
-		if(world.time < last_attack + u_attack.delay)
-			return 0
-		last_attack = world.time
-		set_click_cooldown(u_attack.delay)
-		var/damage_done = target.hit(src, null, u_attack.damage*u_attack.structure_damage_mult) //TODO Later: Add in an attack flag for ignoring resistance?
-		u_attack.show_attack(src, target, null, damage_done)
-		return TRUE
+		var/datum/strike/strike = launch_unarmed_strike(target, u_attack)
+		return strike
 
 
 
@@ -247,16 +253,9 @@ var/global/list/sparring_attack_cache = list()
 /mob/living/carbon/human/strike_structure(var/obj/structure/target)
 	var/datum/unarmed_attack/u_attack = get_unarmed_attack(target)
 	if (u_attack)
-		if(world.time < last_attack + u_attack.delay)
-			to_chat(src, "<span class='notice'>You can't attack again so soon.</span>")
-			return 0
-		last_attack = world.time
-		set_click_cooldown(u_attack.delay)
-		var/damage_done = u_attack.damage*u_attack.structure_damage_mult
-		if (target.take_damage(damage_done, BRUTE, src, u_attack))
-			u_attack.show_attack(src, target, null, damage_done-target.resistance)
-		else
-			u_attack.show_attack(src, target, null, 0)
+		var/datum/strike/strike = launch_unarmed_strike(target, u_attack)
+
+		return strike
 
 
 
@@ -269,8 +268,7 @@ var/global/list/sparring_attack_cache = list()
 	attack_verb = list("teeth")
 	attack_sound = 'sound/weapons/bite.ogg'
 	shredding = 0
-	damage = 0
-	sharp = 0
+	sharp = TRUE
 	edge = 0
 	required_limb = list(BP_HEAD)
 
@@ -289,37 +287,46 @@ var/global/list/sparring_attack_cache = list()
 	name = "Punch"
 	desc = "Requires arms"
 	attack_verb = list("punched")
-	attack_noun = list("fist")
+	attack_noun = list("punch")
 	eye_attack_text = "fingers"
 	eye_attack_text_victim = "digits"
-	damage = 0
 
-/datum/unarmed_attack/punch/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 
-	if (ishuman(target))
-		var/obj/item/organ/external/affecting = target.get_organ(zone)
+/datum/unarmed_attack/punch/show_attack(var/datum/strike/strike)
+
+	if (strike.luser)
+		strike.luser.do_attack_animation(strike.target)
+	if (strike.H)
+		var/obj/item/organ/external/affecting = strike.H.get_organ(strike.target_zone)
+		var/mob/living/user = strike.luser
+		var/mob/living/carbon/human/target = strike.H
 		var/organ = affecting.name
 
-		attack_damage = Clamp(attack_damage, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
+		var/attack_damage = Clamp(round(strike.get_final_damage(),1), 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
 
-		if(target == user)
-			user.visible_message("<span class='danger'>[user] [pick(attack_verb)] \himself in the [organ]!</span>")
+		if(strike.target == strike.user)
+			user.visible_message("<span class='danger'>[strike.user] [pick(attack_verb)] \himself in the [organ]!</span>")
 			return 0
 
-		if(!target.lying)
-			switch(zone)
+		if (strike.blocker)
+			var/obj/item/organ/external/original = target.get_organ(strike.original_target_zone)
+			strike.user.visible_message("<span class='minorwarning'>[strike.user] tried to [pick(attack_noun)] [strike.target] in the [original.name] but was blocked by [target.get_pronoun(POSESSIVE_ADJECTIVE)] [strike.blocker.name]!</span>")
+			return
+
+		if(!strike.L.lying)
+			switch(strike.target_zone)
 				if(BP_HEAD, BP_MOUTH, BP_EYES)
 					// ----- HEAD ----- //
 					switch(attack_damage)
-						if(1 to 2)
+						if(2 to 3)
 							user.visible_message("<span class='danger'>[user] slapped [target] across \his cheek!</span>")
-						if(3 to 4)
+						if(4 to 5)
 							user.visible_message(pick(
 								80; "<span class='danger'>[user] [pick(attack_verb)] [target] in the head!</span>",
 								20; "<span class='danger'>[user] struck [target] in the head[pick("", " with a closed fist")]!</span>",
 								50; "<span class='danger'>[user] threw a hook against [target]'s head!</span>"
 								))
-						if(5)
+						if(6)
 							user.visible_message(pick(
 								10; "<span class='danger'>[user] gave [target] a solid slap across \his face!</span>",
 								90; "<span class='danger'>[user] smashed \his [pick(attack_noun)] into [target]'s [pick("[organ]", "face", "jaw")]!</span>"
@@ -327,9 +334,9 @@ var/global/list/sparring_attack_cache = list()
 				else
 					// ----- BODY ----- //
 					switch(attack_damage)
-						if(1 to 2)	user.visible_message("<span class='danger'>[user] threw a glancing punch at [target]'s [organ]!</span>")
-						if(1 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target] in \his [organ]!</span>")
-						if(5)		user.visible_message("<span class='danger'>[user] smashed \his [pick(attack_noun)] into [target]'s [organ]!</span>")
+						if(1 to 3)	user.visible_message("<span class='danger'>[user] threw a glancing punch at [target]'s [organ]!</span>")
+						if(4 to 5)	user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target] in \his [organ]!</span>")
+						if(6)		user.visible_message("<span class='danger'>[user] smashed \his [pick(attack_noun)] into [target]'s [organ]!</span>")
 		else
 			user.visible_message("<span class='danger'>[user] [pick("punched", "threw a punch at", "struck", "slammed their [pick(attack_noun)] into")] [target]'s [organ]!</span>") //why do we have a separate set of verbs for lying targets?
 	else
@@ -341,7 +348,7 @@ var/global/list/sparring_attack_cache = list()
 	attack_verb = list("kicked", "kicked", "kicked", "kneed")
 	attack_noun = list("kick", "kick", "kick", "knee strike")
 	attack_sound = "swing_hit"
-	damage = 0
+
 	required_limb = list(BP_L_LEG, BP_R_LEG)
 
 /datum/unarmed_attack/kick/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
@@ -356,22 +363,11 @@ var/global/list/sparring_attack_cache = list()
 		return damage
 	return (..() + (shoes ? shoes.force : 0))
 
-/datum/unarmed_attack/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
-	var/organ = affecting.name
-
-	attack_damage = Clamp(attack_damage, 1, 5)
-
-	switch(attack_damage)
-		if(1 to 2)	user.visible_message("<span class='danger'>[user] threw [target] a glancing [pick(attack_noun)] to the [organ]!</span>") //it's not that they're kicking lightly, it's that the kick didn't quite connect
-		if(3 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [target] in \his [organ]!</span>")
-		if(5)		user.visible_message("<span class='danger'>[user] landed a strong [pick(attack_noun)] against [target]'s [organ]!</span>")
-
 /datum/unarmed_attack/stomp
-	attack_verb = list("stomped on")
+	attack_verb = list("stomped")
 	attack_noun = list("stomp")
 	attack_sound = "swing_hit"
-	damage = 0
+
 	required_limb = list(BP_L_LEG, BP_R_LEG)
 
 /datum/unarmed_attack/stomp/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
@@ -387,23 +383,6 @@ var/global/list/sparring_attack_cache = list()
 	var/obj/item/clothing/shoes = user.shoes
 	return .=..() + (shoes ? shoes.force : 0)
 
-/datum/unarmed_attack/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
-	var/organ = affecting.name
-	var/obj/item/clothing/shoes = user.shoes
-
-	attack_damage = Clamp(attack_damage, 1, 5)
-
-	var/shoe_text = shoes ? copytext(shoes.name, 1, -1) : "foot"
-	switch(attack_damage)
-		if(1 to 4)
-			user.visible_message(pick(
-				"<span class='danger'>[user] stomped on [target]'s [organ][pick("", "with their [shoe_text]")]!</span>",
-				"<span class='danger'>[user] stomped \his [shoe_text] down onto [target]'s [organ]!</span>"))
-		if(5)
-			user.visible_message(pick(
-				"<span class='danger'>[user] stomped down hard onto [target]'s [organ][pick("", "with their [shoe_text]")]!</span>",
-				"<span class='danger'>[user] slammed \his [shoe_text] down onto [target]'s [organ]!</span>"))
 
 /datum/unarmed_attack/light_strike
 	deal_halloss = 3
@@ -411,6 +390,5 @@ var/global/list/sparring_attack_cache = list()
 	attack_verb = list("tapped", "lightly struck")
 	damage = 2
 	shredding = 0
-	damage = 0
 	sharp = 0
 	edge = 0

@@ -10,6 +10,7 @@
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	attack_verb = list("attack", "slash", "saw", "cut")
 	sharp = TRUE
 	edge = TRUE
 	tool_qualities = list(QUALITY_SAWING = 30, QUALITY_CUTTING = 20, QUALITY_WIRE_CUTTING = 20)

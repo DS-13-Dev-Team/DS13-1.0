@@ -144,14 +144,14 @@
 	attack_verb = list()
 	icon_state = initial(icon_state)
 
-/obj/item/weapon/melee/energy/sword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/weapon/melee/energy/sword/handle_block(var/datum/strike/strike)
 	if(.)
 		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
-		spark_system.set_up(5, 0, user.loc)
+		spark_system.set_up(5, 0, get_turf(src))
 		spark_system.start()
-		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
+		playsound(get_turf(src), 'sound/weapons/blade1.ogg', 50, 1)
 
-/obj/item/weapon/melee/energy/sword/get_parry_chance(mob/user)
+/obj/item/weapon/melee/energy/sword/get_block_chance(mob/user)
 	return active ? ..() : 0
 
 /obj/item/weapon/melee/energy/sword/pirate

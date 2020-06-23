@@ -102,8 +102,8 @@
 
 	// Health and Defense
 	var/total_health = 120                   // Point at which the mob will enter crit.
-	var/healing_factor	=	0.1				//Base damage healed per organ, per tick
-	var/max_heal_threshold	=	0.5			//Wounds can only autoheal if the damage is less than this * max_damage
+	var/healing_factor	=	0.07				//Base damage healed per organ, per tick
+	var/max_heal_threshold	=	0.6			//Wounds can only autoheal if the damage is less than this * max_damage
 	var/wound_remnant_time = 10 MINUTES	//How long fully-healed wounds stay visible before vanishing
 	var/limb_health_factor	=	1	//Multiplier on max health of limbs
 	var/pain_shock_threshold	=	50	//The mob starts going into shock when total pain reaches this value
@@ -133,8 +133,6 @@
 	var/paralysis_mod =  1                    // Paralysis period modifier.
 	var/weaken_mod =     1                    // Weaken period modifier.
 	var/can_obliterate	=	TRUE			  // If false, this mob won't be deleted when gibbed. Though all their limbs will still be blasted off
-
-
 
 	// Death vars.
 	var/meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/human
@@ -231,6 +229,7 @@
 	var/list/skin_overlays = list()
 
 
+
 	/*--------------------------
 		ORGAN HANDLING
 	--------------------------*/
@@ -283,6 +282,11 @@
 		BP_APPENDIX = /obj/item/organ/internal/appendix,
 		BP_EYES =     /obj/item/organ/internal/eyes
 		)
+
+	//Stores organs that this species will use to defend itself from incoming strikes
+	//An associative list of sublists, with the key being a category
+	var/list/defensive_limbs = list(UPPERBODY = list(BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND), //Arms and hands are used to shield the face and body
+	LOWERBODY = list(BP_L_LEG, BP_R_LEG))	//Legs, but not feet, are used to guard the groin
 
 	//Used for species which have alternate organs in place of some default. For example, the leaper which has a tail instead of legs
 	//This list should be in the format BP_ORIGINAL_ORGAN_TAG = BP_REPLACEMENT_ORGAN_TAG
@@ -984,6 +988,10 @@ These procs should return their entire args list. Best just to return parent in 
 	flick_overlay(LR, GLOB.clients, duration + 2)
 
 
+//Can this species defend itself against blows using its limbs?
+//This is a proc so it can be overridden for special case behaviour
+/datum/species/proc/can_defend(var/mob/living/carbon/human/H, var/datum/strike/strike)
+	return !(species_flags & SPECIES_FLAG_NO_BLOCK)
 /*
 	Called just after a limb is severed
 */
@@ -1023,3 +1031,5 @@ These procs should return their entire args list. Best just to return parent in 
 
 /mob/living/carbon/human/get_species_audio(var/audio_type)
 	return species.get_species_audio(arglist(args.Copy()))
+
+

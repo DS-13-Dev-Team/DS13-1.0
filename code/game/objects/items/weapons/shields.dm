@@ -1,75 +1,40 @@
-//** Shield Helpers
-//These are shared by various items that have shield-like behaviour
-
-//bad_arc is the ABSOLUTE arc of directions from which we cannot block. If you want to fix it to e.g. the user's facing you will need to rotate the dirs yourself.
-/proc/check_shield_arc(mob/user, var/bad_arc, atom/damage_source = null, mob/attacker = null)
-	//check attack direction
-	var/attack_dir = 0 //direction from the user to the source of the attack
-	if(istype(damage_source, /obj/item/projectile))
-		var/obj/item/projectile/P = damage_source
-		attack_dir = get_dir(get_turf(user), P.starting)
-	else if(attacker)
-		attack_dir = get_dir(get_turf(user), get_turf(attacker))
-	else if(damage_source)
-		attack_dir = get_dir(get_turf(user), get_turf(damage_source))
-
-	if(!(attack_dir && (attack_dir & bad_arc)))
-		return 1
-	return 0
-
-/proc/default_parry_check(mob/user, mob/attacker, atom/damage_source)
-	//parry only melee attacks
-	if(istype(damage_source, /obj/item/projectile) || (attacker && get_dist(user, attacker) > 1) || user.incapacitated())
-		return 0
-
-	//block as long as they are not directly behind us
-	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
-	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
-		return 0
-
-	return 1
+/*
+	Shields are items held in hand which have tremendously high block chances and maximum block values, they are reliable protection until they break
+*/
 
 /obj/item/weapon/shield
 	name = "shield"
-	var/base_block_chance = 50
-	var/max_block = 10
-	var/impact_sound = 'sound/effects/shieldbash.ogg'
+	var/base_block_chance = 80
+	var/max_block = 20
 
-/obj/item/weapon/shield/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(user.incapacitated())
-		return 0
-
-	//block as long as they are not directly behind us
-	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
-	if(check_shield_arc(user, bad_arc, damage_source, attacker))
-		if(prob(get_block_chance(user, damage, damage_source, attacker)))
-			return handle_block(user, damage, damage_source, attacker, def_zone, attack_text)
-	return 0
-
-
-
-//Called when the shield successfully blocks a hit
-/obj/item/weapon/shield/proc/handle_block(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(istype(damage_source, /obj/item/projectile))
-		//Shield reduces the damage of a projectile
-		var/obj/item/projectile/P = damage_source
-		P.damage -= max_block
-
-		if (P.damage <= 0)
-			P.damage = 0
-			playsound(user.loc,impact_sound, 50, 1)
-			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
-			return 1 //Returning 1 prevents the attack from continuing
-		else
-			playsound(user.loc,impact_sound, 5, 1)
-			return 0
-	return 1
+	max_health = 100
+	resistance = 3
 
 
 
 
-/obj/item/weapon/shield/proc/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
+
+/obj/item/weapon/shield/handle_block(var/datum/strike/strike)
+	var/blocked_damage = min(max_block, min(health+resistance, strike.damage))
+	strike.blocked_damage += blocked_damage
+	strike.blocker = src
+	playsound(get_turf(src),blocksound, VOLUME_HIGH, 1)
+
+	//We spawn off the damage taking so it'll happen after, that way the shield's name can be retrieved for stuff
+	spawn()
+		take_damage(blocked_damage, strike.damage_type, strike.user, strike.used_weapon, bypass_resist = FALSE)
+
+/obj/item/weapon/shield/can_block(var/datum/strike/strike)
+	return (health > 0)
+
+/obj/item/weapon/shield/get_block_chance(var/datum/strike/strike)
 	return base_block_chance
+
+
+
+
+
+
 
 /obj/item/weapon/shield/riot
 	name = "riot shield"
@@ -87,9 +52,11 @@
 	matter = list(MATERIAL_GLASS = 7500, MATERIAL_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
-	max_block = 20
-	base_block_chance = 70
-	impact_sound = 'sound/weapons/Genhit.ogg'
+	max_block = 25
+	base_block_chance = 100
+	max_health = 150
+	blocksound = 'sound/effects/Glasshit.ogg'
+	resistance = 3
 
 
 /obj/item/weapon/shield/riot/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -111,11 +78,12 @@
 	throw_range = 3
 	w_class = ITEM_SIZE_HUGE
 	matter = list(MATERIAL_PLASTEEL = 8500)
-	max_block = 35
-	base_block_chance = 70
+	max_block = 30
+	max_health = 200
 	slowdown_general = 1.5
+	resistance = 5
+	blocksound = 'sound/items/trayhit2.ogg'
 
-/o
 
 /*
  * Handmade shield
@@ -128,20 +96,25 @@
 	throw_speed = 2
 	throw_range = 6
 	matter = list(MATERIAL_STEEL = 6)
-	base_block_chance = 35
+	base_block_chance = 65
+	max_health = 100
 	max_block = 15
+	resistance = 5
 
 
 
 /obj/item/weapon/shield/tray
 	name = "tray shield"
-	desc = "This one is thin, but compensate it with a good size."
+	desc = "A thin metal tray held on the arm, won't endure much punishment"
 	icon_state = "tray_shield"
 	throw_speed = 2
 	throw_range = 4
 	matter = list(MATERIAL_STEEL = 4)
-	base_block_chance = 60
-	max_block = 8
+	base_block_chance = 80
+	max_health = 65
+	max_block = 10
+	resistance = 1
+	blocksound = 'sound/items/trayhit2.ogg'
 
 
 
@@ -162,20 +135,25 @@
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_ILLEGAL = 4)
 	attack_verb = list("shoved", "bashed")
-	base_block_chance = 60
+	base_block_chance = 90
 	max_block = 45
 	var/active = 0
+	resistance = 6
+	blocksound = 'sound/effects/impacts/shield_impact_1.ogg'
 
-/obj/item/weapon/shield/energy/handle_shield(mob/user)
+/obj/item/weapon/shield/energy/can_block()
+	return active
+
+/obj/item/weapon/shield/energy/handle_block(var/datum/strike/strike)
 	if(!active)
 		return 0 //turn it on first!
 	. = ..()
 
 	if(.)
 		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
-		spark_system.set_up(5, 0, user.loc)
+		spark_system.set_up(5, 0, get_turf(src))
 		spark_system.start()
-		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
+		playsound(get_turf(src), 'sound/weapons/blade1.ogg', 50, 1)
 
 /obj/item/weapon/shield/energy/attack_self(mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
@@ -210,4 +188,5 @@
 		set_light(0.4, 0.1, 1, 2, "#006aff")
 	else
 		set_light(0)
+
 

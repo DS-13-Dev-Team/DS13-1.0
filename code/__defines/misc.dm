@@ -240,3 +240,5 @@
 //Built-in email accounts
 #define EMAIL_DOCUMENTS "document.server@internal-services.nt"
 #define EMAIL_BROADCAST "broadcast@internal-services.nt"
+
+#define RANDOM	"random"

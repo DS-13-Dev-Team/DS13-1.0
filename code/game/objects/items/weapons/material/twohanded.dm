@@ -26,7 +26,7 @@
 	var/base_icon
 	var/base_name
 	var/unwielded_force_divisor = 0.25
-	var/wielded_parry_bonus = 15
+	var/wielded_parry_bonus = 25
 
 /obj/item/weapon/material/twohanded/update_twohanding()
 	var/mob/living/M = loc
@@ -52,7 +52,7 @@
 	..()
 	update_icon()
 
-/obj/item/weapon/material/twohanded/get_parry_chance(mob/user)
+/obj/item/weapon/material/twohanded/get_block_chance(var/datum/strike/strike)
 	. = ..()
 	if(wielded)
 		. += wielded_parry_bonus
@@ -79,6 +79,7 @@
 	slot_flags = SLOT_BACK
 	force_wielded = 30
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
+	attack_noun = list("attack", "slash", "chop", "slice", "tear", "rip", "dice", "cut")
 	applies_material_colour = 0
 	unbreakable = 1
 
@@ -116,6 +117,7 @@
 	sharp = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
+	attack_noun = list("attack", "poke", "jab", "tear", "gore")
 	default_material = MATERIAL_GLASS
 
 /obj/item/weapon/material/twohanded/spear/shatter(var/consumed)
