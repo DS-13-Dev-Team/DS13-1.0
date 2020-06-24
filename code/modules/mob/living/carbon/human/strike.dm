@@ -377,8 +377,9 @@
 		damage_type = used_item.damtype
 		damage_flags = used_item.damage_flags()
 		armor_penetration = used_item.armor_penetration
-	damage = used_item.throwforce*(speed/THROWFORCE_SPEED_DIVISOR)//Damage depends on how fast it was going
 	src.speed = speed
+	damage = used_item.throwforce*(soft_cap(speed, 1, 1, 0.92))//Damage depends on how fast it was going, with some falloff
+
 
 
 /datum/strike/thrown/impact_target()

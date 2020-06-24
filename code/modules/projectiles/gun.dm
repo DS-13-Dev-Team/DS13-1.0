@@ -26,6 +26,8 @@
 	zoomdevicename = "scope"
 	unacidable = TRUE	//Guns melting is too powerful
 
+	resistance = 5	//Guns are not intended as melee weapons, but they're moderately tough
+
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
 	var/burst_delay = 2	//delay between shots, if firing in bursts
