@@ -95,7 +95,7 @@
 
 
 //Generic proc to see if a thing is aligned with the necromorph faction
-/atom/proc/is_necromorph()
+/datum/proc/is_necromorph()
 	return FALSE
 
 
@@ -111,4 +111,4 @@
 	.=..()
 	//Update the necromorph players list
 	if (is_necromorph())
-		SSnecromorph.necromorph_players[ckey] = get_or_create_player(ckey)
+		set_necromorph(TRUE)

@@ -7,6 +7,10 @@
 	var/key
 	var/client
 	var/mob
+	var/is_necromorph = FALSE
+
+	//Last cached coordinates, set on logout
+	var/list/last_location = list("x" = 0, "y" = 0, "z" = 0)
 
 /datum/player/New(var/newkey)
 	src.key = newkey
@@ -22,7 +26,11 @@
 /datum/player/get_client()
 	return locate(client)
 
+/datum/player/proc/cache_location(var/atom/location)
+	last_location = list("x" = location.x, "y" = location.y, "z" = location.z)
 
+/datum/player/proc/get_last_location()
+	return locate(last_location["x"],last_location["y"],last_location["z"])
 
 /mob/proc/register_client_and_player()
 	if (!client || !ckey)
@@ -67,3 +75,20 @@
 /proc/get_player_from_key(var/key)
 	key = ckey(key)
 	return GLOB.players[key]
+
+
+/*
+	Necromorph helpers
+*/
+
+/datum/player/is_necromorph()
+	return is_necromorph
+
+/mob/proc/set_necromorph(var/state)
+	var/datum/player/P = get_or_create_player(ckey)
+	if (P)
+		P.is_necromorph = state
+		if (P.is_necromorph())
+			SSnecromorph.necromorph_players[ckey] = P
+		else
+			SSnecromorph.necromorph_players -= ckey

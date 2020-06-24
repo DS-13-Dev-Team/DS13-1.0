@@ -75,6 +75,7 @@
 	var/list/original_name_cache = list()
 
 /datum/species/adherent/New()
+	/*
 	equip_adjust = list(
 		"[slot_l_hand_str]" = list(NORTH = list("x" = 0, "y" = 14), EAST = list("x" = 0, "y" = 14), SOUTH = list("x" = 0, "y" = 14), WEST = list("x" = 0, "y" = 14)),
 		"[slot_r_hand_str]" = list(NORTH = list("x" = 0, "y" = 14), EAST = list("x" = 0, "y" = 14), SOUTH = list("x" = 0, "y" = 14), WEST = list("x" = 0, "y" = 14)),
@@ -84,6 +85,7 @@
 		"[slot_l_ear_str]" =  list(NORTH = list("x" = 0, "y" = 14), EAST = list("x" = 0, "y" = 14), SOUTH = list("x" = 0, "y" = 14), WEST = list("x" = 0, "y" = 14)),
 		"[slot_r_ear_str]" =  list(NORTH = list("x" = 0, "y" = 14), EAST = list("x" = 0, "y" = 14), SOUTH = list("x" = 0, "y" = 14), WEST = list("x" = 0, "y" = 14))
 	)
+	*/	//Disabled because runtime errors, you can't use direction defines as list indices
 	..()
 
 /datum/species/adherent/proc/sync_ident_to_role(var/mob/living/carbon/human/H)

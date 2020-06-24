@@ -492,7 +492,8 @@
 
 /mob/new_player/proc/close_spawn_windows()
 	src << browse(null, "window=latechoices") //closes late choices window
-	panel.close()
+	if (panel)
+		panel.close()
 
 /mob/new_player/proc/has_admin_rights()
 	return check_rights(R_ADMIN, 0, src)

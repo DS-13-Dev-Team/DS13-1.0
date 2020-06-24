@@ -60,7 +60,7 @@
 /mob/proc/join_marker()
 	message_necromorphs(SPAN_NOTICE("[key] has joined the necromorph horde."))
 	var/mob/observer/eye/signal/S = new(src)
-
+	set_necromorph(TRUE)
 
 	return S
 
@@ -76,12 +76,19 @@
 
 
 	if (ckey)
-		SSnecromorph.necromorph_players -= ckey
 		message_necromorphs(SPAN_NOTICE("[key] has left the necromorph horde."))
+		set_necromorph(FALSE)
 	var/mob/observer/ghost/ghost = ghostize(0)
 	qdel(src)
 	return ghost
 
+
+//Signals don't leave behind ghosts if they are clientless
+/mob/observer/eye/signal/ghostize(var/can_reenter_corpse = CORPSE_CAN_REENTER)
+	if (!client)
+		return null
+
+	.=..()
 
 
 //Possession and evacuating
@@ -147,7 +154,7 @@
 
 /mob/observer/eye/signal/Login()
 	.=..()
-	SSnecromorph.necromorph_players[ckey] = get_or_create_player(ckey)
+	set_necromorph(TRUE)
 	SSnecromorph.signals |= src
 	start_energy_tick()
 
@@ -170,10 +177,11 @@
 			qdel(src)	//A signal shouldn't exist with nobody in it
 
 /mob/observer/eye/signal/Destroy()
+
 	SSnecromorph.remove_from_necroqueue(src)
 	SSnecromorph.signals -= src
-	.=..()
-
+	..()
+	return QDEL_HINT_HARDDEL_NOW
 
 /mob/observer/eye/signal/proc/join_necroqueue()
 	set name = "Join Necroqueue"
@@ -256,3 +264,23 @@
 /mob/observer/eye/signal/update_verbs()
 	.=..()
 	update_verb(/mob/proc/jump_to_shard, (SSnecromorph.shards.len > 0))	//Give us the verb to jump to shards, if there are any
+
+
+/*
+	Helper
+*/
+
+//Called from new_player/New when a player disconnects and then reconnects while playing as signal/marker
+//This proc recreates the appropriate mob type and puts them in it
+/mob/proc/create_signal()
+	if (is_marker_master(src))
+		return SSnecromorph.marker.become_master_signal(src)
+	else
+		return join_marker()
+
+
+/mob/new_player/create_signal()
+	spawning = TRUE
+	if (!QDELETED(src))
+		close_spawn_windows()
+	.=..()
