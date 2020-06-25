@@ -12,7 +12,6 @@
 	glove_type = /obj/item/clothing/gloves/rig/vintage
 
 	initial_modules = list(
-		/obj/item/rig_module/device/drill,
 		/obj/item/rig_module/device/orescanner,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/vision/meson,
