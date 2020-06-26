@@ -21,6 +21,8 @@
 	var/datum/biomass_source/passive_datum
 	var/datum/biomass_source/active_datum
 
+	var/refresh_timer
+
 /obj/structure/corruption_node/harvester/Initialize()
 	.=..()
 	register_sources()
@@ -31,6 +33,14 @@
 
 
 //Registration and listeners
+//----------------------------
+
+/obj/structure/corruption_node/harvester/proc/refresh_sources()
+	deltimer(refresh_timer)
+	refresh_timer = null
+	unregister_sources()
+	register_sources()
+
 /obj/structure/corruption_node/harvester/proc/register_sources()
 	var/list/stuff = get_harvestable_biomass_sources(src, FALSE)
 	passive_sources = stuff[1]
@@ -50,6 +60,18 @@
 	passive_sources = list()
 	active_sources = list()
 	all_sources = list()
+
+//When a source moves, we update, but with a delay for batching
+/obj/structure/corruption_node/harvester/proc/source_moved()
+	if (refresh_timer)
+		return
+	refresh_timer = addtimer(CALLBACK(src, /obj/structure/corruption_node/harvester/proc/refresh_sources), 3 SECONDS, timer_stoppable)
+
+//If a source is deleted we refresh immediately
+/obj/structure/corruption_node/harvester/proc/source_deleted()
+	refresh_sources()
+
+
 
 /obj/structure/corruption_node/harvester/get_blurb()
 	return "The Harvester is a node for securiting territory and extracting biomass from certain objects. \

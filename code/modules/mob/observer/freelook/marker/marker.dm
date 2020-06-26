@@ -151,7 +151,11 @@
 	biomass_sources.Add(BS)
 	return BS	//Return the source
 
-
+/obj/machinery/marker/proc/remove_biomass_source(var/datum/biomass_source/source = null)
+	biomass_sources.Remove(source)
+	source.target = null //Its no longer attached to us
+	if (!QDELETED(source))
+		qdel(source)
 
 /obj/machinery/marker/proc/become_master_signal(var/mob/M)
 	if(!active)

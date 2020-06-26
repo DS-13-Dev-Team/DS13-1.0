@@ -32,6 +32,17 @@
 	remaining_mass -= quantity
 	return quantity
 
+/datum/biomass_source/Destroy()
+	if (target && istype(target, /obj/machinery/marker))
+		var/obj/machinery/marker/M = target
+		target.remove_biomass_source(src)
+
+	source = null
+	target = null
+
+	.=..()
+
+
 
 //Takes a list of existing biomass sources, returns true if we are a duplicate of one already in there
 //Override this proc to alter or disable this behaviour
