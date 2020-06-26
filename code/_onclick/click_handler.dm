@@ -246,15 +246,17 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 
 
+
 /datum/click_handler/fullauto/proc/start_firing()
 	if (!firing)
 		firing = TRUE
 		shots_fired = 0
+		reciever.started_firing()
 		while (firing && target)
 			if (can_stop_firing())
 				break
 			do_fire()
-			sleep(0.5) //Keep spamming events every frame as long as the button is held
+			sleep(reciever.fire_delay) //Keep spamming events every frame as long as the button is held
 		stop_firing()
 
 //Next loop will notice these vars and stop shooting

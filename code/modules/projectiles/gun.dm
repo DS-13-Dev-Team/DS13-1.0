@@ -88,6 +88,7 @@
 
 	var/mag_insert_sound
 	var/mag_remove_sound
+	var/empty_sound = 'sound/weapons/empty.ogg'
 
 /obj/item/weapon/gun/Initialize()
 	.=..()
@@ -263,9 +264,10 @@
 
 	return TRUE
 
-
-/obj/item/weapon/gun/proc/has_ammo()	//Does this gun have enough ammo/power/resources to fire at least once?
+//Does this gun have enough ammo/power/resources to fire at least once?
+/obj/item/weapon/gun/proc/has_ammo()
 	return TRUE
+
 
 /obj/item/weapon/gun/is_held_twohanded(var/mob/user)
 	.=..()
@@ -358,11 +360,14 @@
 
 //called if there was no projectile to shoot
 /obj/item/weapon/gun/proc/handle_click_empty(mob/user)
-	if (user)
-		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
-	else
-		src.visible_message("*click click*")
-	playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
+	if (check_audio_cooldown("gunclick"))
+		if (user)
+			user.visible_message("*click click*", "<span class='danger'>*click*</span>")
+		else
+			src.visible_message("*click click*")
+
+		playsound(src.loc, empty_sound, VOLUME_MID, 1, 2)
+		set_audio_cooldown("gunclick", 4 SECONDS)
 	update_firemode() //Stops automatic weapons spamming this endlessly
 
 //called after successfully firing
@@ -814,3 +819,9 @@
 /obj/item/weapon/gun/proc/remove_click_handlers()
 	if (ACH)
 		QDEL_NULL(ACH)
+
+
+//This is called on automatic weapons when the user pulls the trigger
+//It will only be triggered once per mouseclick, no matter how long they hold it down
+/obj/item/weapon/gun/proc/started_firing()
+	return

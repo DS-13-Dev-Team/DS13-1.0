@@ -2437,6 +2437,7 @@
 #include "code\modules\projectiles\guns\ds13\contactbeam.dm"
 #include "code\modules\projectiles\guns\ds13\divet.dm"
 #include "code\modules\projectiles\guns\ds13\forcegun.dm"
+#include "code\modules\projectiles\guns\ds13\heavy_pulse.dm"
 #include "code\modules\projectiles\guns\ds13\line_cutter.dm"
 #include "code\modules\projectiles\guns\ds13\plasma_cutter.dm"
 #include "code\modules\projectiles\guns\ds13\pulse_rifle.dm"
