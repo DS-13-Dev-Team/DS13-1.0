@@ -10,8 +10,8 @@
 	var/r_speed = 1.0
 
 	//Defense
-	var/max_health = 20
-	var/health = 20
+	var/max_health = 0	//This is autocalculated based on size
+	var/health = 0
 	var/resistance = 0
 	var/acid_resistance = 1	//Incoming acid damage is divided by this value
 
@@ -97,9 +97,9 @@
 /obj/item/New()
 	if (!max_health)
 		if (w_class != ITEM_SIZE_NO_CONTAINER)	//This is infinity, would cause errors
-			max_health = 20 * w_class	//Bigger items are harder to break
+			max_health = 30 * w_class	//Bigger items are harder to break
 		else
-			max_health = 150
+			max_health = 250
 	health = max_health
 	..()
 	if(randpixel && (!pixel_x && !pixel_y) && isturf(loc)) //hopefully this will prevent us from messing with mapper-set pixel_x/y

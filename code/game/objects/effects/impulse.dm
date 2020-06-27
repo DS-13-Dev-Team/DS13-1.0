@@ -33,6 +33,7 @@
 		//Possibly do shake animation here to indicate that it tried.
 		return
 
+
 	//Alright, the force is strong enough to push us, lets see how far!
 	var/pushdist = strength / pushmass
 
@@ -42,7 +43,7 @@
 
 
 	var/turf/pushtarget = get_turf_in_direction(src, direction, pushdist)
-	return TRUE
+	.=TRUE
 	spawn()
 		throw_at(pushtarget, pushdist, 1, null)
 
@@ -60,7 +61,7 @@
 	var/knockdown_time = Floor(strength / (mass * knockdown_threshold_factor))
 	if (knockdown_time >= 1)
 		Weaken(knockdown_time)
-	else if (!.)
+	else if (!. && strength >= (mass*stagger_threshold_factor))
 		//If the force wasn't strong enough to send us flying, or to knock us over
 		//Maybe its just enough to make us stagger one tile
 		var/turf/target_turf = random_tile_in_cone(get_turf(src), direction,2, 180)
