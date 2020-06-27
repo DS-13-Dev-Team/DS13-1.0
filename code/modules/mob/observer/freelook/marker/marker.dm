@@ -165,7 +165,8 @@
 /obj/machinery/marker/proc/become_master_signal(var/mob/M)
 	if(!active)
 		return
-	message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
+	if (player != ckey(M.key))
+		message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
 	player = ckey(M.key)
 
 	//Get rid of the old energy handler
@@ -255,7 +256,6 @@
 	delete_me = TRUE
 
 /obj/effect/landmark/marker/ishimura/Initialize()
-	log_world ("Ishimura marker initialize [SSnecromorph] Subsystem!")
 	SSnecromorph.marker_spawns_ishimura |= get_turf(src)
 	.=..()
 

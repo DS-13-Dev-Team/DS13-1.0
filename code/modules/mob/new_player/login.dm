@@ -46,7 +46,24 @@
 
 
 /mob/new_player/Login()
+	player_login()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
+
+	//Here, before anything else, we'll handle signal continuance.
+	//If this player is already marked as part of the necromorph team, it can mean only one thing: They disconnected while playing as a signal or master signal.
+	//In that case we want to put them straight back into that body
+	var/datum/player/P = get_player()
+	if (P && P.is_necromorph)
+		var/mob/observer/eye/signal/S = create_signal()
+
+		var/turf/last_location = P.get_last_location()
+		if (istype(S) && istype(last_location))
+			S.forceMove(last_location)
+
+		qdel(src)
+		return
+
+
 	if(join_motd)
 		to_chat(src, "<div class=\"motd\">[join_motd]</div>")
 	to_chat(src, "<div class='info'>Game ID: <div class='danger'>[game_id]</div></div>")

@@ -1,5 +1,12 @@
 /mob/Logout()
 
+	//Cache our last location on the player datum, incase this mob is deleted before we log in again
+	if (ckey)
+		var/datum/player/P = get_player_from_key(ckey)
+		if (P)
+			P.cache_location(src)
+
+
 	SSnano.user_logout(src) // this is used to clean up (remove) this user's Nano UIs
 	SStgui && SStgui.on_logout(src)
 	GLOB.player_list -= src
