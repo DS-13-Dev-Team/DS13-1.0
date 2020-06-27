@@ -326,6 +326,7 @@
 
 			//TODO: Centralise all this into some can_fire proc
 			if (can_fire)
+
 				enable = TRUE
 		else
 			enable = FALSE

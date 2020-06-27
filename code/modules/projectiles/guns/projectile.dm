@@ -315,11 +315,14 @@
 	. = ..(user)
 	if(is_jammed && user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		to_chat(user, "<span class='warning'>It looks jammed.</span>")
+	show_remaining_ammo(user)
+	return
+
+/obj/item/weapon/gun/projectile/proc/show_remaining_ammo(var/mob/living/user)
 	if(ammo_magazine)
 		to_chat(user, "It has \a [ammo_magazine] loaded.")
 	if(user.skill_check(SKILL_WEAPONS, SKILL_ADEPT))
 		to_chat(user, "Has [getAmmo()] round\s remaining.")
-	return
 
 /obj/item/weapon/gun/projectile/proc/getAmmo()
 	var/bullets = 0
