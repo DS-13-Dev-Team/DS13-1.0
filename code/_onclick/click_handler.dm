@@ -147,7 +147,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 /mob/proc/GetClickHandler(var/datum/click_handler/popped_handler)
 	if(!click_handlers)
 		click_handlers = new()
-	if(IS_EMPTY(click_handlers))
+	if(IS_EMPTY(click_handlers.stack))
 		PushClickHandler(/datum/click_handler/default)
 	return click_handlers.Top()
 
