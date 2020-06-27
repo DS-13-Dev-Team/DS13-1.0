@@ -70,8 +70,21 @@
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge),
 	KEY_ALT = list(/mob/living/proc/slasher_dodge))
 
-/*
+//slasher variants share a bodytype with the base slasher, same clothes fit all
+/datum/species/necromorph/slasher/get_bodytype()
+	return SPECIES_NECROMORPH_SLASHER
 
+
+//Ancient version, formerly default, now uncommon
+/datum/species/necromorph/slasher/desiccated
+	name = SPECIES_NECROMORPH_SLASHER_DESICCATED
+	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
+	marker_spawnable = FALSE
+
+
+
+/*
+	Blade Arm
 */
 /obj/item/organ/external/arm/blade/slasher
 	limb_height = new /vector2(1.6,2)	//Slashers hold their blade arms high
@@ -84,11 +97,8 @@
 	joint = "right elbow"
 	amputation_point = "right shoulder"
 
-//Ancient version, formerly default, now uncommon
-/datum/species/necromorph/slasher/desiccated
-	name = SPECIES_NECROMORPH_SLASHER_DESICCATED
-	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
-	marker_spawnable = FALSE
+
+
 
 
 /*Roughly speaking, enhanced versions of necromorphs have:
