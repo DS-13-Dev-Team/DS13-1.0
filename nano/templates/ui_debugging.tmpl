@@ -1,0 +1,55 @@
+<style>
+	div {height: 100%; width: 100%; overflow: hidden; padding: 0px; margin: 0px;}
+	td {height: 100%;}
+	a {color: #CCCCFF}
+</style>
+
+<table style="width: 100%; margin: 0px; border-collapse: collapse; ">
+	<tr style="height: 30px; border-bottom: 1px solid #FFFFFF">
+		<td >
+			<div style="width: 40px">
+			Name:
+			</div>
+		</td>
+		<td >
+			<div>
+			Type:
+			</div>
+		</td>
+		<td>
+			<div>
+			Icon/state:
+			</div>
+		</td>
+		<td>
+			<div>
+			Action:
+			</div>
+		</td>
+	</tr>
+	{{for data.screenobjects}}
+		<tr style="height: 20px;">
+			<td>
+				<div style="width: 80px;">
+					{{:value.name}}
+				</div>
+			</td>
+			<td>
+				<div style="width: 160px; overflow: auto;">
+					{{:value.type}}
+				</div>
+			</td>
+			<td>
+				<div>
+					{{:value.icon}}
+				</div>
+			</td>
+			<td>
+				<div>
+					{{:helper.link("Delete", 'circle-arrow-s', { "delete" : value.ref }, null, "linkFixed")}}
+					{{:helper.link("View Vars", 'circle-arrow-s', { "vv" : value.ref }, null, "linkFixed")}}
+				</div>
+			</td>
+		</tr>
+	{{/for}}
+</table>
