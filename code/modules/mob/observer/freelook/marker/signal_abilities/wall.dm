@@ -29,20 +29,16 @@
 	biomass = 0
 	requires_corruption = TRUE
 	random_rotation = TRUE	//If true, set rotation randomly on spawn
-	scale = 2.5
+	default_scale = 2.5
 	pixel_y = 6
 
 	max_health = 60
 	resistance = 6
 
 //Wall has a smaller random rotation range
-/obj/structure/corruption_node/wall/set_rotation()
-	var/matrix/M = matrix()
-	var/rotation = rand_between(-25, 25)//Randomly rotate it
+/obj/structure/corruption_node/wall/get_rotation()
+	return rand_between(-25, 25)//Randomly rotate it
 
-	transform = turn(M, rotation - cached_rotation)
-
-	cached_rotation = rotation
 
 /obj/structure/corruption_node/wall/update_icon()
 	overlays.Cut()

@@ -623,3 +623,16 @@
 	lastcycle = world.time
 	qdel(S)
 	check_health()
+
+
+/obj/machinery/portable_atmospherics/can_harvest_biomass()
+	return MASS_READY
+
+/obj/machinery/portable_atmospherics/harvest_biomass()
+	return BIOMASS_HARVEST_MEDIUM
+
+
+
+//This is set so corruption cant harvest itself
+/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/can_harvest_biomass()
+	return MASS_FAIL

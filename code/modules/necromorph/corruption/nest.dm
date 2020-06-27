@@ -17,7 +17,7 @@
 	biomass = 30
 	reclamation_time = 10 MINUTES
 
-	scale = 1.4
+	default_scale = 1.4
 	max_health = 200	//Takes a while to kill
 	resistance = 8
 

@@ -20,6 +20,13 @@
 	var/obj/structure/m_tray/connected = null
 	anchored = 1.0
 
+
+/obj/structure/morgue/can_harvest_biomass()
+	return MASS_READY
+
+/obj/structure/morgue/harvest_biomass()
+	return BIOMASS_HARVEST_SMALL
+
 /obj/structure/morgue/Destroy()
 	if(connected)
 		qdel(connected)

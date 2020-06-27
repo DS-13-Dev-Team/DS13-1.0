@@ -6,6 +6,7 @@
 	var/datum/source = null	//The atom or thing we are drawing biomass from. Optional
 	var/datum/target	=	null	//The thing that is absorbing the source. Generally this is a marker
 	var/sourcename
+	var/last_absorb = 0	//How much was absorbed during the last tick?
 
 /datum/biomass_source/New(var/datum/_source = null, var/datum/_target = null, var/total_mass = 0, var/duration = 1 SECOND)
 	.=..()
@@ -19,14 +20,14 @@
 	calculate_tick(total_mass, duration)
 
 //Do any desired checks here
-/datum/biomass_source/proc/can_absorb()
+/datum/biomass_source/proc/can_absorb(var/ticks = 1)
 	if (remaining_mass > 0)
 		return MASS_READY
 	else
 		return MASS_EXHAUST
 
 //Subtracts mass from the total and returns it
-/datum/biomass_source/proc/absorb()
+/datum/biomass_source/proc/absorb(var/ticks = 1)
 
 	var/quantity = min(mass_tick, remaining_mass)
 	remaining_mass -= quantity
@@ -35,7 +36,7 @@
 /datum/biomass_source/Destroy()
 	if (target && istype(target, /obj/machinery/marker))
 		var/obj/machinery/marker/M = target
-		target.remove_biomass_source(src)
+		M.remove_biomass_source(src)
 
 	source = null
 	target = null
@@ -77,7 +78,7 @@
 	remaining_mass = initial(remaining_mass)
 	mass_tick = initial(mass_tick)
 
-/datum/biomass_source/baseline/absorb()
+/datum/biomass_source/baseline/absorb(var/ticks = 1)
 	return mass_tick
 
 /datum/biomass_source/baseline/calculate_tick()
@@ -106,7 +107,7 @@
 
 //Todo here: Check if the human body is near enough to the marker, or some sort of corruption-corpse-deposit node
 //If its too far away, return pause
-/datum/biomass_source/convergence/can_absorb()
+/datum/biomass_source/convergence/can_absorb(var/ticks = 1)
 
 	var/mob/living/L = locate(source)
 	if (!L || QDELETED(L))
@@ -124,7 +125,7 @@
 
 	return ..()
 
-/datum/biomass_source/convergence/absorb()
+/datum/biomass_source/convergence/absorb(var/ticks = 1)
 	.=..()
 	var/mob/L = locate(source)
 	if (ishuman(L) && remaining_mass)
@@ -149,6 +150,39 @@
 
 
 
+//Harvest (Passive)
+//Used for drawing biomass from hydroponics, BPL, morgue, cryostorage
+//--------------------------------------------------------------------
+/datum/biomass_source/harvest
+	var/obj/structure/corruption_node/harvester/harvester
+
+/datum/biomass_source/harvest/New(var/datum/_source = null, var/datum/_target = null, var/total_mass = 0, var/duration = 1 SECOND)
+	harvester = _source
+	.=..()
+
+/datum/biomass_source/harvest/can_absorb(var/ticks = 1)
+	//If the harvester is gone, we stop
+	if (QDELETED(harvester))
+		return MASS_FAIL
+
+	//The harvester must be in healthy condition
+	if (harvester.health < harvester.max_health)
+		return MASS_PAUSE
+
+	return MASS_READY
+
+//Passive harvesting just returns the same value each tick.
+//The harvester node will intially set this value
+/datum/biomass_source/harvest/absorb(var/ticks = 1)
+	return last_absorb
+
+//Harvest (Active)
+//Used for drawing biomass from vending machines, biomass storage tank, and anything else containing limited quantities
+//------------------------------------------------------------------------------------------------------------------
+
+
+/datum/biomass_source/harvest/active/absorb(var/ticks)
+	return harvester.handle_active_absorb(ticks)
 
 /*
 	Helper Procs

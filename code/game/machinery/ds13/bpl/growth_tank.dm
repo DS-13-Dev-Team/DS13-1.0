@@ -385,3 +385,10 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 		else
 			turn_on()
 		return
+
+
+/obj/machinery/growth_tank/can_harvest_biomass()
+	return MASS_READY
+
+/obj/machinery/growth_tank/harvest_biomass()
+	return BIOMASS_HARVEST_LARGE

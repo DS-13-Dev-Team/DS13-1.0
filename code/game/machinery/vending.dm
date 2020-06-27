@@ -657,6 +657,9 @@
 	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
 	req_access = list(access_service)
 
+
+
+
 /obj/machinery/vending/assist
 	products = list(	/obj/item/device/assembly/prox_sensor = 5,/obj/item/device/assembly/igniter = 3,/obj/item/device/assembly/signaler = 4,
 						/obj/item/weapon/tool/wirecutters = 1)
@@ -685,7 +688,6 @@
 
 
 
-
 /obj/machinery/vending/snack
 	name = "Getmore Chocolate Corp"
 	desc = "A snack machine courtesy of the Getmore Chocolate Corporation, based out of Mars."
@@ -709,7 +711,6 @@
 					/obj/item/weapon/reagent_containers/food/snacks/cheesiehonkers = 1, /obj/item/weapon/reagent_containers/food/snacks/tastybread = 2)
 
 
-
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
 	desc = "A softdrink vendor provided by Robust Industries, LLC."
@@ -728,6 +729,7 @@
 					/obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle = 2,/obj/item/weapon/reagent_containers/food/drinks/cans/space_up = 1,
 					/obj/item/weapon/reagent_containers/food/drinks/cans/iced_tea = 1,/obj/item/weapon/reagent_containers/food/drinks/cans/grape_juice = 1)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+
 
 /obj/machinery/vending/fitness
 	name = "SweatMAX"
@@ -756,6 +758,7 @@
 					/obj/item/weapon/towel/random = 40)
 
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/steroid = 4)
+
 
 /obj/machinery/vending/cigarette
 	name = "Cigarette machine" //OCD had to be uppercase to look nice with the new formating
@@ -889,6 +892,7 @@
 					/obj/item/weapon/reagent_containers/ivbag = 5, /obj/item/weapon/reagent_containers/ivbag/blood = 15)
 	idle_power_usage = 211
 
+
 //This one's from bay12
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
@@ -961,6 +965,7 @@
 	premium = list(/obj/item/weapon/reagent_containers/glass/bottle/ammonia = 10,/obj/item/weapon/reagent_containers/glass/bottle/diethylamine = 5)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
+
 /obj/machinery/vending/hydroseeds
 	name = "MegaSeed Servitor"
 	desc = "When you need seeds fast!"
@@ -978,6 +983,8 @@
 	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
 					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,)
 	premium = list(/obj/item/weapon/reagent_containers/spray/waterflower = 1)
+
+
 
 /**
  *  Populate hydroseeds product_records
@@ -1228,14 +1235,16 @@
 	vend_delay = 40
 
 	icon_state = "hotfood"
-	products = list(/obj/item/weapon/reagent_containers/food/snacks/old/pizza = 1,
-					/obj/item/weapon/reagent_containers/food/snacks/old/burger = 1,
-					/obj/item/weapon/reagent_containers/food/snacks/old/hamburger = 1,
-					/obj/item/weapon/reagent_containers/food/snacks/old/fries = 1,
-					/obj/item/weapon/reagent_containers/food/snacks/old/hotdog = 1,
-					/obj/item/weapon/reagent_containers/food/snacks/old/taco = 1
+	products = list(/obj/item/weapon/reagent_containers/food/snacks/old/pizza = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/old/burger = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/old/hamburger = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/old/fries = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/old/hotdog = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/old/taco = 3
 					)
 
+/obj/machinery/vending/hotfood/can_harvest_biomass()
+	return MASS_ACTIVE
 
 
 /obj/machinery/vending/printomat
@@ -1254,3 +1263,70 @@
 					/obj/item/weapon/computer_hardware/hard_drive/portable/design/adv_tools = 1800, /obj/item/weapon/computer_hardware/hard_drive/portable/design/circuits = 600, /obj/item/weapon/computer_hardware/hard_drive/portable/design/medical = 400,
 					/obj/item/weapon/computer_hardware/hard_drive/portable/design/computer = 500,
 					/obj/item/weapon/circuitboard/autolathe = 700,)
+
+
+
+/*
+	Biomass Handling
+*/
+/*
+	Biomass in vendors is a bit complicated since they contain a bunch of unspawned typepaths
+	From the contents, one virtual object will be picked at random. That object is briefly spawned so we can measure the biomass it would be worth
+
+	That biomass is moved into a cache within the vendor, then the object is deleted.
+	When a harvester draws biomass, it comes from that cache, as long as said cache can supply the demand. When demand is above supply, we cannibalize another item.
+	Repeat until all items are gone, then the cache only returns what it has left and the vendor is exhausted
+
+	In the case of vendors that contain a mixture of food and nonfood items, tough luck. Nonfood items will be destroyed without giving biomass. The complexity to avoid this isnt worth the effort
+*/
+/obj/machinery/vending
+	var/biomass_cache = 0
+	var/contains_biomass = FALSE
+
+
+/obj/machinery/vending/boozeomat/contains_biomass = TRUE
+/obj/machinery/vending/coffee/contains_biomass = TRUE
+/obj/machinery/vending/snack/contains_biomass = TRUE
+/obj/machinery/vending/cola/contains_biomass = TRUE
+/obj/machinery/vending/fitness/contains_biomass = TRUE
+/obj/machinery/vending/bloodbank/contains_biomass = TRUE
+/obj/machinery/vending/hydronutrients/contains_biomass = TRUE
+/obj/machinery/vending/hydroseeds/contains_biomass = TRUE
+/obj/machinery/vending/snix/contains_biomass = TRUE
+/obj/machinery/vending/hotfood/contains_biomass = TRUE
+
+/obj/machinery/vending/can_harvest_biomass()
+	if (contains_biomass && (LAZYLEN(products) || biomass_cache))
+		return MASS_ACTIVE
+	else
+		return MASS_FAIL
+
+/obj/machinery/vending/harvest_biomass(var/ticks)
+	var/target_biomass = ticks * BIOMASS_HARVEST_SMALL
+	while (products.len && target_biomass > biomass_cache)
+		//We don't have enough, lets pick something to spawn
+		var/newtype = pickweight(products)
+
+		//Now we shall either decrement or remove it from the list
+		var/remove = FALSE
+		if (isnum(products[newtype]))
+			products[newtype] -= 1
+			if (products[newtype] <= 0)
+				remove = TRUE
+		else
+			remove = TRUE
+
+		if (remove)
+			products -= newtype
+
+		//Anyways, lets spawn the product and succ it for biomass
+		var/atom/A = new newtype(src)
+		biomass_cache += (A.get_biomass() * VENDOR_BIOMASS_MULT)
+		world << "[src] cannibalizing [A], cache now [biomass_cache]"
+		//We're done with it now
+		QDEL_NULL(A)
+
+	//By the time we get here, we either have enough biomass to pay the harvest, or we ran out of things to recycle
+	var/yielded_biomass = min(target_biomass, biomass_cache)
+	biomass_cache -= yielded_biomass
+	return yielded_biomass

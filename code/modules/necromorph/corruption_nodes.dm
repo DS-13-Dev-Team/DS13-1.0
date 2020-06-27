@@ -8,14 +8,18 @@
 	var/reclamation_time = 10 MINUTES
 	var/requires_corruption = TRUE
 	var/random_rotation = TRUE	//If true, set rotation randomly on spawn
-	var/scale = 1
+
 	var/placement_type = /datum/click_handler/placement/necromorph
 
 	var/dummy = FALSE
 
-	var/cached_rotation = 0
+	default_rotation = 0
 	max_health = 100
 	resistance = 0
+	var/regen = 1
+	var/degen = 0.5
+
+	var/processing = FALSE
 
 /obj/structure/corruption_node/Initialize()
 	.=..()
@@ -41,15 +45,17 @@
 /obj/structure/corruption_node/update_icon()
 	.=..()
 	var/matrix/M = matrix()
-	M = M.Scale(scale)	//We scale up the sprite so it slightly overlaps neighboring corruption tiles
+	M = M.Scale(default_scale)	//We scale up the sprite so it slightly overlaps neighboring corruption tiles
+	M = turn(M, get_rotation())
 	transform = M
-	if (random_rotation)
-		set_rotation()
 
-/obj/structure/corruption_node/proc/set_rotation()
+
+/obj/structure/corruption_node/proc/get_rotation()
+	if (!random_rotation)
+		return 0
 	var/matrix/M = matrix()
 	var/rotation = pick(list(0,45,90,135,180,225,270,315))//Randomly rotate it
-	cached_rotation += rotation
+	default_rotation = rotation
 	transform = turn(M, rotation)
 
 /obj/structure/corruption_node/proc/get_blurb()
@@ -64,3 +70,26 @@
 	.+= get_blurb()
 	.+="<br><hr>"
 
+/obj/structure/corruption_node/Process()
+	if (turf_corrupted(src, TRUE))
+		regenerate()
+		if (can_stop_processing())
+			return PROCESS_KILL
+	else
+		degenerate()
+
+/obj/structure/corruption_node/proc/regenerate()
+	health = clamp(health+regen, 0, max_health)
+
+/obj/structure/corruption_node/proc/degenerate()
+	take_damage(degen, BRUTE, null, null, bypass_resist = TRUE)
+
+
+/obj/structure/corruption_node/proc/can_stop_processing()
+	if (health < max_health)
+		return FALSE
+
+	if (!turf_corrupted(src, TRUE))
+		return FALSE
+
+	return TRUE

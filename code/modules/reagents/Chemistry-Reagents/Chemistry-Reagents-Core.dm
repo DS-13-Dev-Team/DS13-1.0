@@ -19,6 +19,7 @@
 	taste_mult = 1.3
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
+	biomass = 0.01
 
 /datum/reagent/blood/initialize_data(var/newdata)
 	..()

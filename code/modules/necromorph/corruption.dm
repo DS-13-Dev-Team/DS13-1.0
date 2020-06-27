@@ -178,6 +178,21 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		child.get_chunks()	//Populate the nearby chunks list, for later visual updates
 
 
+//Checks if this tile of corruption is supported by a valid/existing source.
+//Optionally, a source can be passed in, then it returns true if we're connected to THAT source specifically and false if any other, or not at all
+/obj/effect/vine/corruption/proc/is_supported(var/datum/extension/corruption_source/compare)
+	if (compare && source != compare)
+		return FALSE
+
+	//If we have no source? welp
+	if (QDELETED(source))
+		return FALSE
+
+	if (!source.enabled)
+		return FALSE
+
+	return TRUE
+
 
 
 /* Visualnet Handling */

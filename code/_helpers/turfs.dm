@@ -31,21 +31,24 @@
 	return TRUE
 
 
-/proc/turf_corrupted(var/atom/A)
+/proc/turf_corrupted(var/atom/A, var/require_support = TRUE)
 	var/turf/T = get_turf(A)
 	for (var/obj/effect/vine/corruption/C in T)
-		//TODO here: Check that the corruption is still linked to an undestroyed node. Fail if it is orphaned
+		if (require_support && !C.is_supported())
+			return FALSE
 
 		return TRUE
 
 	return FALSE
 
 //Returns true if this turf is corrupted, OR is near a corrupted tile
-/proc/turf_near_corrupted(var/atom/A, var/range = 2)
+/proc/turf_near_corrupted(var/atom/A, var/range = 2, var/require_support = TRUE)
 	if (turf_corrupted(A))
 		return TRUE
 
 	for (var/obj/effect/vine/corruption/C in dview(1, src))
+		if (require_support && !C.is_supported())
+			continue
 		//TODO here: Check that the corruption is still linked to an undestroyed node. Fail if it is orphaned
 		return TRUE
 

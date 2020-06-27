@@ -134,7 +134,9 @@
 			continue
 
 		//If we got here, it's ready.
-		biomass_tick += S.absorb()
+		var/quantity = S.absorb()
+		S.last_absorb = quantity
+		biomass_tick += quantity
 
 	//We will actually add this biomass next tick
 

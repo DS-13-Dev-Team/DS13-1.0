@@ -20,6 +20,9 @@
 	var/needs_update = TRUE	//A dirty bit. Set true when our list of vines changes
 	//If its true when visualnets update, we'll re-fetch all the tiles from the corruption
 
+	//Is this source currently active?
+	var/enabled = TRUE
+
 /datum/extension/corruption_source/New(var/atom/holder, var/range, var/speed, var/falloff, var/limit)
 	source = holder
 	GLOB.corruption_sources |= src
@@ -81,6 +84,9 @@
 
 //Is this source able to provide support to a specified turf or corruption vine?
 /datum/extension/corruption_source/proc/can_support(var/atom/A)
+	//If we're turned off we cant support anyone
+	if (!enabled)
+		return FALSE
 
 	//Hard numerical limits
 	if (support_limit)
