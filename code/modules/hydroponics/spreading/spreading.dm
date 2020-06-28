@@ -58,6 +58,7 @@
 	var/mature_time		//minimum maturation time
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 	var/list/neighbors
+	var/can_cut = TRUE
 
 /obj/effect/vine/single
 	spread_chance = 0
@@ -219,12 +220,13 @@
 		seed.harvest(user,0,1)
 		health -= (rand(3,5)*5)
 	else
-		..()
-		var/damage = W.force
-		if(W.edge)
-			damage *= 2
-		adjust_health(-damage)
-		playsound(get_turf(src), W.hitsound, 100, 1)
+		.=..()
+		if (can_cut)
+			var/damage = W.force
+			if(W.edge)
+				damage *= 2
+			adjust_health(-damage)
+			playsound(get_turf(src), W.hitsound, 100, 1)
 
 /obj/effect/vine/AltClick(var/mob/user)
 	if(!CanPhysicallyInteract(user) || user.incapacitated())

@@ -29,6 +29,10 @@
 		return CS.get_visualnet_tiles(network)
 	return list()
 
+/obj/structure/corruption_node/growth/Destroy()
+	remove_extension(src, /datum/extension/corruption_source)
+	.=..()
+
 /*
 	Smaller version for signals
 */

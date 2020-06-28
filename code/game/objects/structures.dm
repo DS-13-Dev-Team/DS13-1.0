@@ -47,7 +47,6 @@
 	.=..()
 
 /obj/structure/attack_hand(mob/user)
-	..()
 	if(breakable && user.a_intent == I_HURT)
 		user.strike_structure(src)
 		return 1
@@ -172,8 +171,11 @@
 
 //Called when a structure takes damage
 /obj/structure/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	world << "Structure taking [amount] damage"
 	if (!bypass_resist)
 		amount -= resistance
+
+	world << "Structure taking [amount] damage after resistance"
 
 	if (amount <= 0)
 		return FALSE
@@ -185,7 +187,7 @@
 		return zero_health(amount, damtype, user, used_weapon, bypass_resist)//Some zero health overrides do things with a return value
 	else
 		update_icon()
-		return TRUE
+		return amount
 
 /obj/structure/proc/updatehealth()
 	if (health <= 0)

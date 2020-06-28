@@ -56,15 +56,7 @@
 
 	health += max_health - old_max_health
 
-/obj/structure/table/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
-	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
-	if(material && material.is_brittle())
-		if(reinforced)
-			if(reinforced.is_brittle())
-				amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
-		else
-			amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
-	.=..() // if we break and form shards, return them to the caller to do !FUN! things with
+
 
 /obj/structure/table/zero_health()
 	return break_to_parts()

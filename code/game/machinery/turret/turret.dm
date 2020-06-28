@@ -287,6 +287,7 @@ var/list/turret_icons
 	spark_system.start()
 	if(health <= 0)
 		die()	//the death process :(
+	return force
 
 
 /obj/machinery/turret/bullet_act(obj/item/projectile/Proj)

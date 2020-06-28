@@ -25,6 +25,7 @@
 	GLOB.corruption_sources |= src
 	plant = new (get_turf(source), GLOB.corruption_seed)
 	GLOB.moved_event.register(source, src, /datum/extension/corruption_source/proc/source_moved)
+	GLOB.destroyed_event.register(source, src, /datum/extension/corruption_source/proc/source_deleted)
 	if (range)
 		src.range = range
 	if (speed)
@@ -42,8 +43,10 @@
 
 /datum/extension/corruption_source/Destroy()
 	GLOB.corruption_sources -= src
-	qdel(plant)
+	QDEL_NULL(plant)
 	update_vines()
+	corruption_vines = list()
+	source = null
 	.=..()
 
 
@@ -101,6 +104,9 @@
 /datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, var/old_loc, var/new_loc)
 	plant.forceMove(get_turf(new_loc))
 	update_vines()
+
+/datum/extension/corruption_source/proc/source_deleted()
+	qdel(src)
 
 
 //Called when a source moves, gets deleted, changes its radius or other parameters.
