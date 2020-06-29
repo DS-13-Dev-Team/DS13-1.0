@@ -9,6 +9,8 @@
 
 #define UPDATE_DELAY	fire_delay = base_delay / (1+(heat * heat_delay_multiplier))
 
+#define HP_BASE_DELAY 1.25
+
 /obj/item/weapon/gun/projectile/automatic/pulse_heavy
 	name = "Heavy Pulse Rifle"
 	desc = "A colossal weapon capable of firing infinitely, but requiring a significant cooldown period. It is optimised for continuous fire, and will overheat more quickly if used in bursts."
@@ -27,6 +29,8 @@
 	mag_insert_sound = 'sound/weapons/guns/interaction/pulse_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'
 	one_hand_penalty = 10	//Don't try to fire this with one hand
+	accuracy = 15
+	damage_factor = 1.15
 
 	projectile_type  = /obj/item/projectile/bullet/pulse
 
@@ -35,13 +39,13 @@
 	screen_shake = 1
 
 	firemodes = list(
-		list(mode_name="full auto",  mode_type = /datum/firemode/automatic/pulserifle, fire_delay=1.25, dispersion = list(2)),
+		list(mode_name="full auto",  mode_type = /datum/firemode/automatic/pulserifle, fire_delay=HP_BASE_DELAY, dispersion = list(2)),
 		)
 
 	empty_sound = 'sound/weapons/guns/misc/overheat.ogg'
 
 
-	var/base_delay
+	var/base_delay = HP_BASE_DELAY
 
 	//How hot it is
 	heat = 0
@@ -58,11 +62,11 @@
 	//When overheating, we exit the overheat state if heat drops below this value
 	var/overheat_min = 0.5
 
-	//Loses this much heat per second. Approx 300 seconds to cooldown completely
-	var/cooldown_per_second	=	0.003
+	//Loses this much heat per second. Approx 250 seconds to cooldown completely
+	var/cooldown_per_second	=	0.004
 
 	//Heat gained per bullet fired
-	var/heat_per_shot = 0.008
+	var/heat_per_shot = 0.005
 
 	//Heat gained each time the trigger is pulled
 	var/heat_per_burst = 0.07
