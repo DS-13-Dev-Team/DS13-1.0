@@ -11,6 +11,7 @@
 	possible_transfer_amounts = null
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
+	item_flags = ITEM_FLAG_NO_BLUDGEON
 	volume = 60
 
 /obj/item/weapon/reagent_containers/pill/New()
@@ -340,8 +341,8 @@ obj/item/weapon/reagent_containers/pill/noexcutite/New()
 /obj/item/weapon/reagent_containers/pill/detergent/New()
 	..()
 	reagents.add_reagent(/datum/reagent/ammonia, 30)
-	
-	
+
+
 /obj/item/weapon/reagent_containers/pill/nanoblood
 	name = "Nanoblood (20u)"
 	desc = "Used to rapidly restore lost blood."

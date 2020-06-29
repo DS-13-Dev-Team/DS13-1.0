@@ -8,3 +8,4 @@
 	volume = 50 //Sets the default container amount for all food items.
 	var/filling_color = "#ffffff" //Used by sandwiches.
 	var/trash = null
+	item_flags = ITEM_FLAG_NO_BLUDGEON
