@@ -31,7 +31,6 @@
 	var/mob/living/carbon/human/H
 	if (ishuman(src))
 		H = src
-		world << "Attacking with delay [method.get_delay(H)]"
 		if(world.time < H.last_attack + method.get_delay(H))
 			to_chat(H, "<span class='notice'>You can't attack again so soon.</span>")
 			return null
@@ -40,7 +39,6 @@
 
 		H.set_click_cooldown(method.get_delay(H))
 
-	world << "starting strike 1"
 	var/datum/strike/unarmed/strike = new /datum/strike/unarmed(src, target, method)
 	strike.start()
 
@@ -194,21 +192,17 @@
 
 
 /datum/strike/proc/start()
-	world << "starting strike 2"
 	if (ismob(target))
 		setup_difficulty()
 		handle_target_zone()
-	world << "starting strike 3"
 	handle_accuracy()
 	if (!missed)
-		world << "starting strike 4"
 		if (ismob(target))
 			handle_defense()
 			handle_armor()
 		impact_target()
 
 	else
-		world << "starting strike 5"
 		handle_miss()
 	show_result()
 	end()
@@ -529,7 +523,6 @@
 //These are the final stage, called to deal damage to the victim
 
 /datum/strike/proc/impact_target()
-	world << "about to impact target"
 	if (L)
 		impact_mob()
 
@@ -537,7 +530,6 @@
 		impact_door()
 
 	else if (istype(target, /obj/structure))
-		world << "about to impact structure"
 		impact_structure()
 
 //This is called when the target is a living mob, so we can assume L is populated
@@ -556,13 +548,9 @@
 	damage_done = D.hit(user, used_weapon, get_final_damage()) //TODO Later: Add in an attack flag for ignoring resistance?
 
 /datum/strike/proc/impact_structure()
-	world << "Impacting structure"
 	var/obj/structure/S = target
 	damage_done = get_final_damage()
-	world << "About to impact structure with [damage_done]"
 	damage_done = S.take_damage(damage_done, BRUTE, user, used_weapon)
-	world << "We did [damage_done]"
-
 
 //Result Showing
 /datum/strike/proc/show_result()
