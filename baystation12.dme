@@ -1477,6 +1477,7 @@
 #include "code\modules\clothing\spacesuits\rig\modules\ds13\healthbar.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\alien.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\combat.dm"
+#include "code\modules\clothing\spacesuits\rig\suits\engineering.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\ert.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\light.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\merc.dm"
