@@ -84,9 +84,10 @@ var/global/list/sparring_attack_cache = list()
 //Factor in attackspeed here
 /datum/unarmed_attack/proc/get_delay(var/mob/living/user)
 	if (isnum(delay) && delay > 0)
-		.=delay / user.get_attack_speed_factor()
+		.= (delay / user.get_attack_speed_factor())
 		if (user.lying)
-			delay *= lying_cooldown_factor
+			. *= lying_cooldown_factor
+		return
 	return 0
 
 /datum/unarmed_attack/proc/apply_effects(var/datum/strike/strike)
@@ -157,7 +158,7 @@ var/global/list/sparring_attack_cache = list()
 		else
 			strike.user.visible_message("<span class='warning'>[strike.user] [pick(attack_verb)] [strike.target] in the [affecting.name]!</span>")
 	else
-		strike.user.visible_message("<span class='warning'>[strike.user] [pick(attack_verb)] [strike.target][strike.damage?"":", to no effect"]!</span>")
+		strike.user.visible_message("<span class='warning'>[strike.user] [pick(attack_verb)] [strike.target][strike.damage_done?"":", to no effect"]!</span>")
 	if (strike.luser)
 		strike.luser.do_attack_animation(strike.target)
 

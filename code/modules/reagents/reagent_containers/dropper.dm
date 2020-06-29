@@ -11,6 +11,7 @@
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 	volume = 5
+	item_flags = ITEM_FLAG_NO_BLUDGEON
 
 	afterattack(var/obj/target, var/mob/user, var/proximity)
 		if(!target.reagents || !proximity) return

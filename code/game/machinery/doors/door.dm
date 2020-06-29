@@ -357,16 +357,12 @@
 		user.do_attack_animation(src)
 	var/reduced_damage = apply_resistance(damage, ignore_resistance)
 	if(reduced_damage <= 0)
-		if (user && hitter) user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [hitter] with no visible effect.</span>")
 		return 0
 	else
-		if (user && hitter) user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [hitter]!</span>")
 		playsound(loc, hitsound, reduced_damage, 1) //Volume of sound depends how hard we hit it
 		//Heavy hits will shake the door.
 		shake_animation(round(reduced_damage*0.5))
 		take_damage(damage, ignore_resistance)
-
-
 
 		if(health < max_health * 0.25)
 			visible_message("\The [src] looks like it's about to break!" )

@@ -28,7 +28,7 @@
 			electrocute_act(damage, used_weapon, 1.0, def_zone)
 
 	updatehealth()
-	return 1
+	return damage
 
 
 /mob/living/proc/apply_damages(var/brute = 0, var/burn = 0, var/tox = 0, var/oxy = 0, var/clone = 0, var/halloss = 0, var/def_zone = null, var/blocked = 0, var/damage_flags = 0)

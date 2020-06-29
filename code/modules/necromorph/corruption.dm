@@ -28,6 +28,12 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	//Don't give it a value if unused, saves memory
 	var/list/chunks
 
+	//To remove corruption, destroy the nodes that are spreading it
+	can_cut = FALSE
+
+
+	//No clicking this
+	mouse_opacity = 0
 
 
 /obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/corruption/newparent, var/start_matured = 0, var/datum/extension/corruption_source/newsource)
@@ -148,7 +154,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	return TRUE
 
 /obj/effect/vine/corruption/can_reach(var/turf/floor)
-	if (source.can_support(floor))
+	if (!QDELETED(source) && source.can_support(floor))
 		return TRUE
 
 	//Possible future todo: See if any other nodes can support it if our parent can't?
@@ -157,6 +163,8 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 
 /obj/effect/vine/corruption/wake_up(var/wake_adjacent = TRUE)
+	if (QDELETED(source))
+		source = null
 	.=..()
 	if (plant && !QDELETED(plant))
 		calculate_growth()

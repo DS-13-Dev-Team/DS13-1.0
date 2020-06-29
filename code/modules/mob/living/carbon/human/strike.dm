@@ -31,6 +31,7 @@
 	var/mob/living/carbon/human/H
 	if (ishuman(src))
 		H = src
+		world << "Attacking with delay [method.get_delay(H)]"
 		if(world.time < H.last_attack + method.get_delay(H))
 			to_chat(H, "<span class='notice'>You can't attack again so soon.</span>")
 			return null
@@ -38,6 +39,8 @@
 			H.last_attack = world.time
 
 		H.set_click_cooldown(method.get_delay(H))
+
+	world << "starting strike 1"
 	var/datum/strike/unarmed/strike = new /datum/strike/unarmed(src, target, method)
 	strike.start()
 
@@ -86,6 +89,9 @@
 	var/mob/living/carbon/human/huser
 
 	var/damage = 0
+
+	//Only set after we have impacted, this contains the actual final quantity of health we removed from the target
+	var/damage_done = null
 
 	var/atom/used_weapon
 
@@ -181,28 +187,50 @@
 	//In an uncommon special case, the weapon and target may be in the same location. In this case, the origin is where the origin atom came from
 	origin = get_step(origin_atom_turf, GLOB.reverse_dir[origin_atom.last_move])
 
+
+
+
+
+
+
 /datum/strike/proc/start()
+	world << "starting strike 2"
 	if (ismob(target))
 		setup_difficulty()
 		handle_target_zone()
-
+	world << "starting strike 3"
 	handle_accuracy()
-	if (target_zone)
+	if (!missed)
+		world << "starting strike 4"
 		if (ismob(target))
 			handle_defense()
 			handle_armor()
 		impact_target()
 
 	else
+		world << "starting strike 5"
 		handle_miss()
 	show_result()
 	end()
 
+
+
+
+
+
+
+
+
+
 /datum/strike/proc/end()
 	qdel(src)
 
-//Returns the damage this will actually deal, accounting for blocks
+//Returns the damage this will probably deal, accounting for blocks, but before resistance
+//If we have already impacted, it returns the damage we actually dealt
 /datum/strike/proc/get_final_damage()
+	if (!isnull(damage_done))
+		return damage_done
+
 	return max(damage - blocked_damage, 0)
 
 /datum/strike/proc/get_impact_sound()
@@ -231,7 +259,7 @@
 	src.attack = attack
 	name = pick(attack.attack_noun)
 
-	src.damage = attack.get_unarmed_damage()
+	src.damage = attack.get_unarmed_damage(user)
 	if (attack.rand_damage)
 		damage += rand_between(attack.rand_damage*-1, attack.rand_damage)
 
@@ -265,18 +293,14 @@
 		if (sound)	playsound(target, sound, VOLUME_HIGH, 1, 1)
 		target.shake_animation(3)
 		user.shake_animation(3)
+	else if (!damage_done)
+		if (sound)	playsound(target, sound, VOLUME_QUIET, 1)
 	else
 		if (sound)	playsound(target, sound, VOLUME_HIGH, 1, 1)
 		target.shake_animation(8)
 	attack.show_attack(src)
 
-/datum/strike/unarmed/impact_structure()
-	var/damage_done = ..()
-	var/obj/structure/S = target
-	if (damage_done)
-		attack.show_attack(src, target, null, get_final_damage()-S.resistance)
-	else
-		attack.show_attack(src, target, null, 0)
+
 
 //Implement
 //--------
@@ -300,25 +324,27 @@
 
 /datum/strike/implement/impact_mob()
 	.=..()
-	if (.)
+	if (damage_done)
 		used_item.apply_hit_effect(target, user, target_zone)
 		L.hit_with_weapon(src)
 
 /datum/strike/implement/show_result()
 	var/sound = get_impact_sound()
-	if (blocker)
-		if (sound)	playsound(target, sound, VOLUME_HIGH, 1, 1)
-		target.shake_animation(3)
-		user.shake_animation(3)
-		var/obj/item/organ/external/original = H.get_organ(original_target_zone)
-		user.visible_message("<span class='minorwarning'>[user] tried to [pick(used_item.attack_noun)] [target] in the [original.name] but was blocked by [H.get_pronoun(POSESSIVE_ADJECTIVE)] [blocker.name]!</span>")
+	if (L)
+		if (blocker)
+			if (sound)	playsound(target, sound, VOLUME_HIGH, 1, 1)
+			target.shake_animation(3)
+			user.shake_animation(3)
+			var/obj/item/organ/external/original = H.get_organ(original_target_zone)
+			user.visible_message("<span class='minorwarning'>[user] tried to [pick(used_item.attack_noun)] [target] in the [original.name] but was blocked by [H.get_pronoun(POSESSIVE_ADJECTIVE)] [blocker.name]!</span>")
 
 
+		else
+			if (sound)	playsound(target, sound, VOLUME_HIGH, 1, 1)
+			target.shake_animation(8)
+			user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] in the [affecting.name]!</span>")
 	else
-		if (sound)	playsound(target, sound, VOLUME_HIGH, 1, 1)
-		target.shake_animation(8)
-		user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] in the [affecting.name]!</span>")
-
+		user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] in the [affecting.name][damage_done?"":", to no effect"]!</span>")
 
 
 /datum/strike/implement/setup_difficulty()
@@ -476,6 +502,8 @@
 
 	if (L)
 		target_zone = L.get_zone_with_miss_chance(accuracy, target_zone, used_weapon)
+		if (!target_zone)
+			missed = TRUE
 
 //Currently unused
 /datum/strike/proc/handle_miss()
@@ -501,6 +529,7 @@
 //These are the final stage, called to deal damage to the victim
 
 /datum/strike/proc/impact_target()
+	world << "about to impact target"
 	if (L)
 		impact_mob()
 
@@ -508,6 +537,7 @@
 		impact_door()
 
 	else if (istype(target, /obj/structure))
+		world << "about to impact structure"
 		impact_structure()
 
 //This is called when the target is a living mob, so we can assume L is populated
@@ -517,18 +547,21 @@
 	if (final_damage <= 0)
 		return FALSE
 	// Finally, apply damage to target
-	L.apply_damage(final_damage, damage_type, target_zone, blocked, damage_flags=src.damage_flags,used_weapon = used_weapon)
+	damage_done = L.apply_damage(final_damage, damage_type, target_zone, blocked, damage_flags=src.damage_flags,used_weapon = used_weapon)
 	return TRUE
 
 
 /datum/strike/proc/impact_door()
 	var/obj/machinery/door/D = target
-	D.hit(src, null, get_final_damage()) //TODO Later: Add in an attack flag for ignoring resistance?
+	damage_done = D.hit(user, used_weapon, get_final_damage()) //TODO Later: Add in an attack flag for ignoring resistance?
 
 /datum/strike/proc/impact_structure()
+	world << "Impacting structure"
 	var/obj/structure/S = target
-	var/damage_done = get_final_damage()
+	damage_done = get_final_damage()
+	world << "About to impact structure with [damage_done]"
 	damage_done = S.take_damage(damage_done, BRUTE, user, used_weapon)
+	world << "We did [damage_done]"
 
 
 //Result Showing
