@@ -171,11 +171,8 @@
 
 //Called when a structure takes damage
 /obj/structure/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
-	world << "Structure taking [amount] damage"
 	if (!bypass_resist)
 		amount -= resistance
-
-	world << "Structure taking [amount] damage after resistance"
 
 	if (amount <= 0)
 		return FALSE
