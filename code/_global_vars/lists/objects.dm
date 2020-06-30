@@ -74,3 +74,5 @@ list(
 "Leg" = list("type" = list("Left Leg" = /obj/item/organ/external/leg/full, "Right Leg" = /obj/item/organ/external/leg/right/full), "icon" = "leg", "name" = "Leg", "stemcells"  = 10)
 ))
 
+
+GLOBAL_LIST_INIT(click_catchers, list())

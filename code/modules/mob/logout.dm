@@ -15,9 +15,11 @@
 	if(my_client)
 		my_client.screen -= l_general
 		my_client.screen -= l_plane
+		my_client.thorough_remove_click_catcher()
 	QDEL_NULL(l_general)
 	QDEL_NULL(l_plane)
 	hide_client_images()
+
 	..()
 
 	my_client = null

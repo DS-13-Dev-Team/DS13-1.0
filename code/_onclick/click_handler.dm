@@ -130,9 +130,8 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		if (a != b)
 			return b
 
-	if (istype(a, /obj/screen/click_catcher))
-		var/obj/screen/click_catcher/CC = a
-		return CC.resolve(user)
+		if (istype(a, /obj/screen/click_catcher))
+			return RESOLVE_CLICK_CATCHER(params, user.client)
 
 	if (istype(a, /turf))
 		return a
