@@ -38,6 +38,10 @@ var/global/list/additional_antag_types = list()
 	var/waittime_l = 60 SECONDS				 // Lower bound on time before start of shift report
 	var/waittime_h = 180 SECONDS		     // Upper bounds on time before start of shift report
 
+	//Used for modes which end when everyone dies.
+	var/list/dead_players = list()
+	var/player_count = 0
+
 /datum/game_mode/New()
 	..()
 	// Enforce some formatting.
@@ -49,6 +53,7 @@ var/global/list/additional_antag_types = list()
 		latejoin_antag_tags = antag_tags.Copy()
 	else if(!round_autoantag && latejoin_antag_tags.len)
 		round_autoantag = TRUE
+	player_count = GLOB.all_crew_records.len
 
 /datum/game_mode/Topic(href, href_list[])
 	if(..())
@@ -541,3 +546,19 @@ proc/get_nt_opposed()
 			to_chat(usr, "[ticker.mode.extended_round_description]")
 	else
 		to_chat(usr, "<i>Shhhh</i>. It's a secret.")
+
+//Handlers for people dying / being revived.
+/datum/game_mode/proc/on_crew_death(mob/living/carbon/human/H)
+	if(!H)
+		return
+	player_count = GLOB.all_crew_records.len
+	dead_players += H
+	check_finished()
+
+/datum/game_mode/proc/on_crew_revive(mob/living/carbon/human/H)
+	if(!H)
+		return
+	player_count = GLOB.all_crew_records.len
+	for(var/mob/M in dead_players) //Hacky, yes. But more consistent than locate() in whatever.
+		if(M == H)
+			dead_players -= H
