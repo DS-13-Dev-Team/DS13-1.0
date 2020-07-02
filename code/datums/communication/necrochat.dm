@@ -8,7 +8,7 @@
 /decl/communication_channel/necrochat/can_ignore(var/client/C)
 	.=..()
 	if (.)
-		if (C.mob.is_necromorph())
+		if (C.mob && C.mob.is_necromorph())
 			return FALSE	//Necromorphs must listen to the necrochat
 
 
@@ -18,7 +18,7 @@
 		return
 
 	if(!C.holder)
-		if (!C.mob.is_necromorph()) //Gotta be a necromorph to use this
+		if (!C.mob || !C.mob.is_necromorph()) //Gotta be a necromorph to use this
 			return FALSE
 
 
@@ -27,27 +27,35 @@
 	var/list/messaged = list()	//Clients we've already sent to. Used to prevent doublesending to admins who are also playing necromorphs
 
 	var/style = "necromorph"
-	var/sender_name = C.mob.name
-	if (issignal(C.mob))
+	var/sender_name = ""
+	if (C && C.mob)
+
+		if (issignal(C.mob))
 
 
-		if (is_marker_master(C.mob))
-			style = "necromarker"
-			sender_name = "Marker([C.ckey])"
+			if (is_marker_master(C.mob))
+				style = "necromarker"
+				sender_name = "Marker([C.ckey])"
+			else
+				style = "necrosignal"
+				sender_name = "Signal([C.ckey])"
 		else
-			style = "necrosignal"
-			sender_name = "Signal([C.ckey])"
+			sender_name = C.mob.name
 
 
-	message = "<span class='[style]'>[sender_name]: [message]</span>"
+	message = "<span class='[style]'>[sender_name ? sender_name+": ":""][message]</span>"
 
 	for (var/ckey in SSnecromorph.necromorph_players)
 		var/datum/player/P = SSnecromorph.necromorph_players[ckey]
-		var/mob/M = P.get_mob()
-		var/client/target = M.get_client()
-		if (target)
-			receive_communication(C, target, message)
-			messaged += target
+		if (P)
+			var/client/target = P.get_client()
+			if (target)
+				receive_communication(C, target, message)
+				messaged += target
+		else
+			//Shouldn't happen
+			log_debug("Found invalid necromorph player key with no associated player datum [ckey]")
+			SSnecromorph.necromorph_players -= ckey
 
 	var/list/valid_admins = GLOB.admins - messaged
 	for(var/client/target in valid_admins)

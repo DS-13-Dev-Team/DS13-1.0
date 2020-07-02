@@ -7,7 +7,7 @@
 	require_corruption = FALSE
 	autotarget_range = 0
 	LOS_block = FALSE	//This is for spooking people, we want them to see it happen
-
+	target_types = list(/turf/simulated)
 
 /datum/signal_ability/runes/on_cast(var/mob/user, var/atom/target, var/list/data)
 	GLOB.cult.powerless = TRUE //Just in case. This makes sure the runes don't do anything

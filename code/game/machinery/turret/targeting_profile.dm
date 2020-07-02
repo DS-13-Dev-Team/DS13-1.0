@@ -70,10 +70,10 @@
 		if(L.is_necromorph() || isalien(L)) // Xenos are dangerous
 			return PRIORITY_TARGET
 
-		if(ishuman(L))	//if the target is a human, analyze threat level
-			var/threat = source.assess_perp(L)
-			if(threat < 4)
-				return NOT_TARGET	//if threat level < 4, keep going
+		if(ishuman(L))	//if the target is a human, ignore them as long as they have an ID card
+			var/list/target_access = A.GetAccess()
+			if (LAZYLEN(target_access))
+				return NOT_TARGET
 
 		if(L.lying)		//if the perp is lying down, it's still a target but a less-important target
 			return source.lethal ? SECONDARY_TARGET : NOT_TARGET

@@ -7,7 +7,7 @@
 	require_corruption = FALSE
 	autotarget_range = 0
 	LOS_block = FALSE	//This is for spooking people, we want them to see it happen
-
+	target_types = list(/turf/simulated)
 
 
 /datum/signal_ability/writing/special_check(var/turf/target)
