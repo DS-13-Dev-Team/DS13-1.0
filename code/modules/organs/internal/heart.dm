@@ -39,6 +39,10 @@
 /obj/item/organ/internal/heart/undead/is_working()
 	return TRUE //This prevents necromorphs going into crit from having a dead heart
 
+/obj/item/organ/internal/heart/undead/handle_pulse()
+	return
+
+
 /obj/item/organ/internal/heart/die()
 	if(dead_icon)
 		icon_state = dead_icon

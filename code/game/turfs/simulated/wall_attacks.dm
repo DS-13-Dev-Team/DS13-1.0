@@ -225,14 +225,15 @@
 	else
 		switch(construction_stage)
 			if(6)
-				to_chat(user, "<span class='notice'>You begin cutting the outer grille.</span>")
-				if(isWirecutter(W) && W.use_tool(user, src, WORKTIME_VERY_SLOW, QUALITY_WIRE_CUTTING, FAILCHANCE_NORMAL))
-					playsound(src, 'sound/items/Wirecutter.ogg', 100, 1)
-					construction_stage = 5
-					new /obj/item/stack/rods( src )
-					to_chat(user, "<span class='notice'>You cut the outer grille.</span>")
-					update_icon()
-					return
+				if(isWirecutter(W))
+					to_chat(user, "<span class='notice'>You begin cutting the outer grille.</span>")
+					if(W.use_tool(user, src, WORKTIME_VERY_SLOW, QUALITY_WIRE_CUTTING, FAILCHANCE_NORMAL))
+						playsound(src, 'sound/items/Wirecutter.ogg', 100, 1)
+						construction_stage = 5
+						new /obj/item/stack/rods( src )
+						to_chat(user, "<span class='notice'>You cut the outer grille.</span>")
+						update_icon()
+						return
 			if(5)
 				if(isScrewdriver(W) )
 					to_chat(user, "<span class='notice'>You begin removing the support lines.</span>")
