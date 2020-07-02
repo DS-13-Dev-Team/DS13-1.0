@@ -92,6 +92,7 @@
 
 	refresh_client_images()
 	reload_fullscreen() // Reload any fullscreen overlays this mob has.
+
 	add_click_catcher()
 	update_action_buttons()
 	GetClickHandlers()	//Just call this to create the default handler, prevents an unpleasant edge case where it never gets created a

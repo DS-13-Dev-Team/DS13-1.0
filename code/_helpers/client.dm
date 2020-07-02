@@ -73,20 +73,7 @@
 		animate(src, pixel_x = offset.x, pixel_y = offset.y, time = saccade_time, easing = SINE_EASING)
 
 
-/client/proc/setup_click_catcher()
-	if(!void)
-		void = create_click_catcher(temp_view)
-	if(!screen)
-		screen = list()
-	screen |= void
 
-/client/proc/remove_click_catcher()
-	screen -= void
-	void = null
-
-/client/proc/remake_click_catcher()
-	remove_click_catcher()
-	setup_click_catcher()
 
 
 

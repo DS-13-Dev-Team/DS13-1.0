@@ -10,3 +10,6 @@
 #define KEY_CTRLSHIFT	/datum/click_handler/modifier/ctrlshift
 
 #define SACCADE_BASE_SPEED	0.45	//Time in deciseconds to move the camera over one tile
+
+//This exists just to save on proc-call overhead
+#define RESOLVE_CLICK_CATCHER(params, C)	get_turf_at_mouse(params,C);

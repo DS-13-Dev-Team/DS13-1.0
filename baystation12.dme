@@ -122,6 +122,7 @@
 #include "code\_onclick\adjacent.dm"
 #include "code\_onclick\ai.dm"
 #include "code\_onclick\click.dm"
+#include "code\_onclick\click_catcher.dm"
 #include "code\_onclick\click_handler.dm"
 #include "code\_onclick\cyborg.dm"
 #include "code\_onclick\drag_drop.dm"

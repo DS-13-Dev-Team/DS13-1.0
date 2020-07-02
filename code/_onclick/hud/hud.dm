@@ -253,10 +253,3 @@
 	hud_used.persistant_inventory_update()
 	update_action_buttons()
 
-/mob/proc/add_click_catcher()
-	if (client)
-		client.setup_click_catcher()
-
-
-/mob/new_player/add_click_catcher()
-	return
