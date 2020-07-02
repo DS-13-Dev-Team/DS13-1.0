@@ -16,6 +16,9 @@
 	open = 1
 
 //Undead version for necromorphs
+/obj/item/organ/internal/heart/undead
+	pulse = 0
+
 /obj/item/organ/internal/heart/undead/Initialize()
 	.=..()
 	die()
