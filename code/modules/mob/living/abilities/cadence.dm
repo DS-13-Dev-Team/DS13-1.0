@@ -51,7 +51,7 @@
 
 /datum/extension/cadence/proc/start()
 	started_at	=	world.time
-
+	register_movemod(STATMOD_MOVESPEED_ADDITIVE)
 	GLOB.moved_event.register(holder, src, /datum/extension/cadence/proc/holder_moved)
 
 
@@ -59,6 +59,7 @@
 /datum/extension/cadence/proc/stop()
 	deltimer(ongoing_timer)
 	stopped_at = world.time
+
 	modify_speed(-max_steps)//This sets the speed buff to zero
 
 
@@ -66,6 +67,7 @@
 
 
 /datum/extension/cadence/proc/holder_moved(var/atom/movable/am, var/atom/old_loc, var/atom/new_loc)
+
 	var/move_direction = get_dir(old_loc, new_loc)
 	var/vector2/move_direction_vector = Vector2.DirectionBetween(old_loc, new_loc)
 	//If we've moved in a straight line, increase our speed
@@ -96,42 +98,28 @@
 
 //Increase or decrease the speed by a number of steps
 /datum/extension/cadence/proc/modify_speed(var/steps)
+	//If the mob has been deleted, we will be soon too. all is well, do nothing
+	if (QDELETED(user))
+		return
+
+	//If the mob is asleep or dead, no speed buffs
+	if (user.stat)
+		current_speed_buff = 0
+		return
+
 	//Cache the prior value
 	var/prev_speed = current_speed_buff
 	var/delta = steps * step_amount
 	current_speed_buff = clamp(current_speed_buff+delta, 0, max_speed_buff)
 
-	//We'll only update this if we've actually changed
 	if (current_speed_buff != prev_speed)
-		sync_speed()
-
-//This actually sets movespeed on the holder mob
-/datum/extension/cadence/proc/sync_speed()
-	var/mob/living/L = holder
-
-	//If the mob has been deleted, we will be soon too. all is well, do nothing
-	if (QDELETED(L))
-		return
-
-	//Remove any existing speedboost so the mob goes back to baseline, then we will apply the new boost after that
-	remove_speed()
-
-	//If the mob is asleep or dead, no speed buffs
-	if (L.stat)
-		current_speed_buff = 0
-		return
-
-	add_speed()
+		user.update_movespeed_factor()
 
 
-//Assumes safety checks are done
-/datum/extension/cadence/proc/remove_speed()
-	var/mob/living/L = holder
-	L.move_speed_factor -= speed_delta
-	speed_delta = 0
+//Just return the speed we've cached
+/datum/extension/cadence/movespeed_mod()
+	return current_speed_buff
 
-//Assumes safety checks are done, and that speed was removed before it was added
-/datum/extension/cadence/proc/add_speed()
-	var/mob/living/L = holder
-	L.move_speed_factor += current_speed_buff
-	speed_delta = current_speed_buff
+/datum/extension/cadence/Destroy()
+	unregister_movemod(STATMOD_MOVESPEED_ADDITIVE)
+	.=..()
