@@ -117,7 +117,7 @@
 
 
 // Check if we should die.
-/mob/living/carbon/human/proc/handle_death_check()
+/mob/living/carbon/human/handle_death_check()
 	//Prevent potential loops
 	if (stat == DEAD)
 		return

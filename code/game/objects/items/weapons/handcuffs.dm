@@ -29,7 +29,7 @@
 
 /obj/item/weapon/handcuffs/attack(var/mob/living/carbon/C, var/mob/living/user)
 
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		return
 
 	if ((CLUMSY in user.mutations) && prob(50))

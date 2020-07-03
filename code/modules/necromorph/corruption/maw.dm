@@ -163,7 +163,7 @@
 
 
 /obj/structure/corruption_node/maw/proc/can_use(mob/user)
-	return (user.IsAdvancedToolUser() && !user.stat && user.Adjacent(src))
+	return (user.is_advanced_tool_user() && !user.stat && user.Adjacent(src))
 
 /obj/structure/corruption_node/maw/proc/release_mob()
 	unbuckle_mob()

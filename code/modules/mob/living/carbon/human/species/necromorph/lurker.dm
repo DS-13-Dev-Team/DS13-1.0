@@ -33,6 +33,10 @@
 	biomass = 55
 	health_doll_offset	= 50
 
+	//Normal necromorph flags plus no slip
+	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
+	stability = 2
+
 	icon_template = 'icons/mob/necromorph/lurker.dmi'
 	icon_lying = "_lying"
 	single_icon = FALSE

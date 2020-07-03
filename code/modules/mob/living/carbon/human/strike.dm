@@ -28,6 +28,14 @@
 	return strike
 
 /atom/proc/launch_unarmed_strike(var/atom/target, var/datum/unarmed_attack/method)
+	if (!method)
+		if (ishuman(src))
+			var/mob/living/carbon/human/H = src
+			var/hit_zone = get_zone_sel(H)
+			method = H.get_unarmed_attack(src, hit_zone)
+		if(!method)
+			return 0
+
 	var/mob/living/carbon/human/H
 	if (ishuman(src))
 		H = src

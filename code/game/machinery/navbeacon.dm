@@ -67,7 +67,7 @@ var/global/list/navbeacons = list()
 
 /obj/machinery/navbeacon/attack_hand(var/mob/user)
 
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		return 0
 
 	interact(user, 0)

@@ -199,7 +199,13 @@ default behaviour is:
 	else
 		health = max_health - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - getHalLoss()
 
+
+	if (health <= 0)
+		zero_health()
 	GLOB.updatehealth_event.raise_event(src)
+
+/mob/living/proc/zero_health()
+	handle_death_check()
 
 /mob/living/proc/healthpercent()
 	var/working_health = clamp(health, 0, max_health)

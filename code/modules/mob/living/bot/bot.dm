@@ -60,9 +60,7 @@
 
 /mob/living/bot/Life()
 	..()
-	if(health <= 0)
-		death()
-		return
+
 	weakened = 0
 	stunned = 0
 	paralysis = 0
@@ -71,14 +69,7 @@
 		spawn(0)
 			handleAI()
 
-/mob/living/bot/updatehealth()
-	if(status_flags & GODMODE)
-		health = max_health
-		set_stat(CONSCIOUS)
-	else
-		health = max_health - getFireLoss() - getBruteLoss()
-	setOxyLoss(0)
-	setToxLoss(0)
+
 
 /mob/living/bot/death()
 	explode()
@@ -119,7 +110,10 @@
 	Interact(user)
 
 /mob/living/bot/attack_hand(var/mob/user)
-	Interact(user)
+	if (user.is_advanced_tool_user() && user.a_intent != I_HURT)
+		return Interact(user)
+	else
+		user.launch_unarmed_strike(src)
 
 /mob/living/bot/proc/Interact(var/mob/user)
 	add_fingerprint(user)

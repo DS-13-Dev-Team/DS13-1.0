@@ -84,7 +84,7 @@
 	if(hat)
 		to_chat(user, "<span class='notice'>It is wearing \icon[hat] \a [hat].</span>")
 
-/mob/living/carbon/alien/diona/IsAdvancedToolUser()
+/mob/living/carbon/alien/diona/is_advanced_tool_user()
 	return FALSE
 
 /mob/living/carbon/alien/diona/proc/handle_npc(var/mob/living/carbon/alien/diona/D)

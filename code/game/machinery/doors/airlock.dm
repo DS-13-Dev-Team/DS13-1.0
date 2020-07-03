@@ -883,7 +883,7 @@ About the new airlock wires panel:
 			if(src.shock(user, 100))
 				return
 
-	if(src.p_open && user && user.a_intent != I_HURT && user.IsAdvancedToolUser())
+	if(src.p_open && user && user.a_intent != I_HURT && user.is_advanced_tool_user())
 		user.set_machine(src)
 		wires.Interact(user)
 	else

@@ -199,7 +199,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	if(inoperable())
 		return
 
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		return 0
 
 	if(istype(user, /mob/living/carbon/human) || istype(user,/mob/living/silicon) )

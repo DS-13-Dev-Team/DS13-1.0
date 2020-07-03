@@ -852,7 +852,7 @@
 
 
 //This might need a rename but it should replace the can this mob use things check
-/mob/proc/IsAdvancedToolUser()
+/mob/proc/is_advanced_tool_user()
 	return 0
 
 

@@ -385,7 +385,7 @@
 		to_chat(user, "This device is not powered.")
 		return
 
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		return 0
 
 	currentarea = get_area(src.loc)
