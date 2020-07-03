@@ -189,7 +189,7 @@
 	name = "contact energy"
 	id = "contact_energy"
 	req_tech = list(TECH_POWER = 3, TECH_MATERIAL = 2)
-	materials = list(MATERIAL_STEEL = 700, MATERIAL_GLASS = 70)
+	materials = list(MATERIAL_STEEL = 1250, MATERIAL_GLASS = 250, "uranium" = 125)
 	build_path = /obj/item/weapon/cell/contact
 	sort_string = "DAAAA"
 
@@ -584,17 +584,11 @@
 	name = "C99 Supercollider Contact Beam"
 	id = "contactbeam"
 	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
-	materials = list(MATERIAL_STEEL = 10000, MATERIAL_GLASS = 1000, MATERIAL_DIAMOND = 2000)
+	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000, "uranium" = 500)
 	build_path = /obj/item/weapon/gun/energy/contact
 	sort_string = "TAEAA"
 
-/datum/design/item/weapon/nuclear_gun
-	name = "WH-9 Prototype Pistol"
-	id = "nuclear_gun"
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_POWER = 3)
-	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000, "uranium" = 500)
-	build_path = /obj/item/weapon/gun/energy/gun/nuclear
-	sort_string = "TAEAA"
+
 
 
 /datum/design/item/weapon/grenadelauncher
