@@ -583,7 +583,7 @@
 /datum/design/item/weapon/contactbeam
 	name = "C99 Supercollider Contact Beam"
 	id = "contactbeam"
-	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_POWER = 3)
 	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000, "uranium" = 500)
 	build_path = /obj/item/weapon/gun/energy/contact
 	sort_string = "TAEAA"
