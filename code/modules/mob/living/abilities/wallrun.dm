@@ -73,10 +73,7 @@
 		user.evasion  += evasion_mod
 		evasion_delta  += evasion_mod
 
-	if (!movespeed_delta)
-		var/newspeed = user.move_speed_factor * movespeed_mod
-		movespeed_delta = newspeed - user.move_speed_factor
-		user.move_speed_factor = newspeed
+	holder.update_movespeed_factor()
 
 	if (!view_range_delta)
 		user.view_range += view_range_mod
@@ -92,9 +89,7 @@
 		user.evasion  -= evasion_delta
 		evasion_delta  = 0
 
-	if (movespeed_delta)
-		user.move_speed_factor -= movespeed_delta
-		movespeed_delta = 0
+	holder.update_movespeed_factor()
 
 	if (view_range_delta)
 		user.view_range -= view_range_delta
@@ -116,17 +111,20 @@
 /datum/extension/wallrun/proc/start()
 	started_at	=	world.time
 	GLOB.bump_event.register(A, src, /datum/extension/wallrun/proc/on_bumped)
-
+	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 
 /datum/extension/wallrun/proc/stop()
 	GLOB.bump_event.unregister(A, src, /datum/extension/wallrun/proc/on_bumped)
 	remove_extension(holder, base_type)
+	unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 
 
-
-
+/datum/extension/wallrun/movespeed_mod()
+	if (mountpoint)
+		return movespeed_mod
+	return 1
 
 
 
@@ -491,7 +489,7 @@
 
 
 	if (mounted && user)
-		user.play_species_audio(user, SOUND_CLIMB, VOLUME_MID, 1)
+		user.play_species_audio(user, SOUND_CLIMB, VOLUME_LOW, 1)
 
 
 //An attempt to make directional facings meaningful
