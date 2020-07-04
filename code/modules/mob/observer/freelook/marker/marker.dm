@@ -18,7 +18,7 @@
 
 	//Biomass handling
 	//--------------------------
-	biomass	= 200//Current actual quantity of biomass we have stored. Start with enough to spawn a small expeditionary force
+	biomass	= 250//Current actual quantity of biomass we have stored. Start with enough to spawn a small expeditionary force
 	var/biomass_tick = 0	//Current amount of mass we're gaining each second. This shouldn't be edited as it is regularly recalculated
 	var/list/biomass_sources = list()	//A list of various sources (mostly necromorph corpses) from which we are gradually gaining biomass. These are finite
 
