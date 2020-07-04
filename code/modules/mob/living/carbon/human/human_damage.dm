@@ -23,9 +23,8 @@
 	if(blocked)
 		damage *= blocked_mult(blocked)
 
-	if(damage > 15 && prob(damage*4))
+	if(damage > 5 && prob(damage*4))
 		make_reagent(round(damage/10), /datum/reagent/adrenaline)
-	var/datum/wound/created_wound
 	damageoverlaytemp = 20
 	switch(damagetype)
 		if(BRUTE)
@@ -43,7 +42,7 @@
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
 	//Updatehealth is called by all the above procs, we don't call it here
 	BITSET(hud_updateflag, HEALTH_HUD)
-	return created_wound
+	return damage
 
 // Find out in how much pain the mob is at the moment.
 /mob/living/carbon/human/proc/get_shock()

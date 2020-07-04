@@ -117,6 +117,7 @@ Vars/
 	deltimer(tick_timer)
 	if (spray_handler && user)
 		user.RemoveClickHandlersByType(/datum/click_handler/spray)
+		spray_handler = null
 	stopped_at = world.time
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 	QDEL_NULL(fx)
@@ -207,6 +208,13 @@ Vars/
 -----------------------*/
 /datum/click_handler/spray
 	var/datum/extension/spray/host
+	has_mousemove = TRUE
+
+/datum/click_handler/spray/New(var/mob/user)
+	.=..()
+
+/datum/click_handler/spray/Destroy()
+	.=..()
 
 /datum/click_handler/spray/MouseMove(object,location,control,params)
 	if (host && user && user.client)

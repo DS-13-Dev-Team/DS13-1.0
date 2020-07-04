@@ -273,7 +273,6 @@
 
 /datum/extension/acid_slow
 	var/speed_factor = 0.7
-	var/speed_delta
 	var/duration	=	2.5 SECONDS
 
 	var/removal_timer
@@ -281,6 +280,7 @@
 /datum/extension/acid_slow/New(var/datum/holder)
 	.=..()
 	var/mob/living/carbon/L = holder
+	//Does not affect necromorphs
 	if (L.is_necromorph())
 		remove_extension(holder, /datum/extension/acid_slow)
 		return
@@ -288,11 +288,13 @@
 		to_chat(L, SPAN_DANGER("The acid underfoot is sticky and slows you down"))
 
 
-	var/newspeed = L.move_speed_factor * speed_factor
-	speed_delta = L.move_speed_factor - newspeed
-	L.move_speed_factor = newspeed
+	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
-	START_PROCESSING(SSprocessing, src)
+	var/lifetime = duration
+	if (L && L.touching)
+		var/total_volume = L.touching.get_reagent_amount(/datum/reagent/acid/necromorph)
+		lifetime =  duration + (total_volume SECONDS)
+	removal_timer = addtimer(CALLBACK(src, /datum/extension/acid_slow/proc/stop),lifetime, flags = TIMER_STOPPABLE)
 
 /datum/extension/acid_slow/proc/stop()
 	var/mob/living/carbon/L = holder
@@ -313,10 +315,11 @@
 
 
 /datum/extension/acid_slow/Destroy()
-	var/mob/living/L = holder
-	if (speed_delta && istype(L))
-		L.move_speed_factor += speed_delta	//Restore the movespeed to normal
-		speed_delta = 0
+	unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
+	deltimer(removal_timer)
 
 
 	.=..()
+
+/datum/extension/acid_slow/movespeed_mod()
+	return speed_factor

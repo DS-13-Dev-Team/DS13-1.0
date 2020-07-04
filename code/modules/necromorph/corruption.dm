@@ -262,14 +262,14 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	flags = EXTENSION_FLAG_IMMEDIATE
 
 	//Effects on necromorphs
-	var/healing_per_tick = 1
-	var/speedup = 1.15
+	var/healing_per_tick = 1.2
+	var/speedup = 1.2
 
 	//Effects on non necros
-	var/slowdown = 0.7	//Multiply speed by this
+	var/slowdown = 0.65	//Multiply speed by this
 
+	var/speed_factor = 0
 
-	var/speed_delta	//What absolute value we removed from the movespeed factor. This is cached so we can reverse it later
 
 	var/necro = FALSE
 
@@ -277,7 +277,6 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /datum/extension/corruption_effect/New(var/datum/holder)
 	.=..()
 	var/mob/living/L = holder
-	var/speed_factor = 0
 	if (L.is_necromorph())
 		necro = TRUE
 		speed_factor = speedup //Necros are sped up
@@ -286,9 +285,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		to_chat(L, SPAN_DANGER("This growth underfoot is sticky and slows you down."))
 		speed_factor = slowdown	//humans are slowed down
 
-	var/newspeed = L.move_speed_factor * speed_factor
-	speed_delta = L.move_speed_factor - newspeed
-	L.move_speed_factor = newspeed
+	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 	START_PROCESSING(SSprocessing, src)
 
@@ -306,8 +303,9 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 
 /datum/extension/corruption_effect/Destroy()
-	var/mob/living/L = holder
-	if (istype(L))
-		L.move_speed_factor += speed_delta	//Restore the movespeed to normal
+	unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 	.=..()
+
+/datum/extension/corruption_effect/movespeed_mod()
+	return speed_factor

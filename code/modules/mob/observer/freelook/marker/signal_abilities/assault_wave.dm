@@ -70,11 +70,9 @@
 	.=..()
 	var/mob/living/L = holder
 
-	var/newval = L.move_speed_factor * speed_factor
-	speed_delta = L.move_speed_factor - newval
-	L.move_speed_factor = newval
+	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
-	newval = L.attack_speed_factor * attackspeed_factor
+	var/newval = L.attack_speed_factor * attackspeed_factor
 	attackspeed_delta = L.attack_speed_factor - newval
 	L.attack_speed_factor = newval
 
@@ -94,7 +92,7 @@
 /datum/extension/assault_wave/Destroy()
 	var/mob/living/L = holder
 	if (istype(L))
-		L.move_speed_factor += speed_delta	//Restore the movespeed to normal
+		unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 		L.attack_speed_factor += attackspeed_delta
 		L.max_health += health_delta
 		L.evasion -= evasion_bonus
@@ -103,3 +101,7 @@
 		to_chat(L, "<span class = 'critical'>Your enhanced power wears off..</span>")
 
 	.=..()
+
+
+/datum/extension/assault_wave/movespeed_mod()
+	return speed_factor
