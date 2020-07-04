@@ -228,6 +228,10 @@
 	if(H.stat == DEAD) // He's dead, Jim
 		return 0
 
+	//Can't heal the dead
+	if (H.is_necromorph())
+		return FALSE
+
 	if(emagged)
 		return treatment_emag
 

@@ -33,16 +33,7 @@
 	SSnecromorph.marker = src	//Populate the global var with ourselves
 	..()
 
-//Its not made of meat, despite containing hundreds of kilos of biomass
-/obj/machinery/marker/get_biomass()
-	return null
 
-
-/obj/machinery/marker/ex_act()
-	return null	//We do not break
-
-/obj/machinery/marker/bullet_act()
-	return null	//We do NOT break
 /**
 
 	Method which allows the marker to become player controlled, and which starts its corruption spread.
@@ -263,3 +254,35 @@
 /obj/effect/landmark/marker/aegis/Initialize()
 	SSnecromorph.marker_spawns_aegis |= get_turf(src)
 	.=..()
+
+
+
+/*
+	Interaction short circuits
+*/
+//Function stubs just to make sure it doesn't behave like other machines when it shouldn't
+//Its not made of meat, despite containing hundreds of kilos of biomass
+/obj/machinery/marker/get_biomass()
+	return null
+
+
+/obj/machinery/marker/ex_act()
+	return null	//We do not break
+
+/obj/machinery/marker/emp_act()
+	return null	//We do not break
+
+/obj/machinery/marker/bullet_act()
+	return null	//We do NOT break
+
+/obj/machinery/marker/default_deconstruction_crowbar(var/mob/user, var/obj/item/weapon/tool/crowbar/C)
+	return
+
+/obj/machinery/marker/default_deconstruction_screwdriver(var/mob/user, var/obj/item/weapon/tool/screwdriver/S)
+	return
+
+/obj/machinery/marker/default_part_replacement(var/mob/user, var/obj/item/weapon/storage/part_replacer/R)
+	return
+
+/obj/machinery/marker/dismantle()
+	return

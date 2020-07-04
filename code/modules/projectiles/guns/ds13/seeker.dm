@@ -34,10 +34,11 @@
 
 /obj/item/ammo_casing/seeker
 	name = "seeker shell"
-	desc = "A low caliber round designed for the SWS motorized seeker rifle"
+	desc = "A high caliber round designed for the Seeker marksman rifle"
 	icon_state = "empshell"
 	spent_icon = "empshell-spent"
 	projectile_type  = /obj/item/projectile/bullet/seeker
+	caliber = "seeker"
 
 
 /obj/item/projectile/bullet/seeker
