@@ -96,9 +96,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank/oxygen/red,
 		/obj/item/weapon/extinguisher,
-		/obj/item/clothing/head/hardhat/red,
-		/obj/random/armor,
-		/obj/random/loot/often)
+		/obj/item/clothing/head/hardhat/red)
 
 /obj/structure/closet/firecloset/update_icon()
 	if(!opened)

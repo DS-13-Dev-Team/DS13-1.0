@@ -23,7 +23,7 @@
 		/obj/item/device/flash,
 		/obj/item/taperoll/engineering,
 		/obj/item/weapon/tool/crowbar/brace_jack,
-		/obj/item/weapon/rig/vintage
+		/obj/item/weapon/rig/engineering
 	)
 
 /obj/structure/closet/secure_closet/engineering_chief/Initialize()
@@ -82,6 +82,7 @@
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/industrial, /obj/item/weapon/storage/backpack/satchel_eng)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/eng, 50),
 		/obj/item/clothing/under/d_engineer,
+
 		/obj/item/clothing/accessory/storage/webbing,
 		/obj/item/clothing/gloves/insulated,
 		/obj/item/clothing/mask/gas,
@@ -89,7 +90,8 @@
 		/obj/item/device/radio/headset/headset_eng,
 		/obj/item/taperoll/engineering,
 		/obj/item/device/flashlight,
-		/obj/item/weapon/storage/belt/utility/full
+		/obj/item/weapon/storage/belt/utility/full,
+		/obj/item/weapon/rig/engineering
 	)
 
 /obj/structure/closet/secure_closet/atmos_personal
