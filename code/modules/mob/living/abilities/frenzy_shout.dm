@@ -21,7 +21,7 @@
 	..()
 	user = holder
 	intensity = _intensity
-	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
+	user.move_speed_factor += intensity
 	user.attack_speed_factor += intensity
 	set_timer(_duration)
 	to_chat(user, SPAN_NOTICE("You feel your muscles twitch with renewed energy!"))
@@ -35,11 +35,10 @@
 
 /datum/extension/frenzy_buff/proc/finish()
 	to_chat(user, SPAN_NOTICE("You feel your body slowing down as your muscles relax"))
-
 	remove_extension(holder, /datum/extension/frenzy_buff)
 
 /datum/extension/frenzy_buff/Destroy()
-	unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
+	user.move_speed_factor -= intensity
 	user.attack_speed_factor -= intensity
 	.=..()
 
@@ -63,11 +62,6 @@
 
 /datum/extension/frenzy_cooldown/proc/finish()
 	remove_extension(holder, /datum/extension/frenzy_cooldown)
-
-//Just return the speed we've cached
-/datum/extension/frenzy_buff/movespeed_mod()
-	return 1+intensity
-
 
 
 //Now, the ability to actually do things!
@@ -125,4 +119,3 @@
 		to_chat(src, SPAN_NOTICE("Nobody hears your call."))
 
 	return TRUE
-

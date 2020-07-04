@@ -32,10 +32,6 @@
 
 	var/open = FALSE
 
-	var/speed_open = 1
-	var/speed_closed = 1
-
-
 
 /datum/extension/retractable_cover/New(var/atom/_user, var/cover, var/list/limbs)
 	.=..()
@@ -43,14 +39,11 @@
 		user = _user
 	retract_limbs = limbs
 	src.cover = cover
-	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
-/datum/extension/retractable_cover/Destroy()
-	unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
-	.=..()
 
-/datum/extension/retractable_cover/movespeed_mod()
-	return (open ? speed_open : speed_closed)
+
+
+
 
 
 
@@ -71,7 +64,6 @@
 
 /datum/extension/retractable_cover/proc/close()
 	open = FALSE
-	holder.update_movespeed_factor()
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		for (var/organ_tag in retract_limbs)
@@ -99,7 +91,6 @@
 
 /datum/extension/retractable_cover/proc/open()
 	open = TRUE
-	holder.update_movespeed_factor()
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		for (var/organ_tag in retract_limbs)
