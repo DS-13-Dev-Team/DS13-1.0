@@ -305,7 +305,9 @@ var/list/organ_cache = list()
 	return 1
 
 /obj/item/organ/attack(var/mob/target, var/mob/user)
-
+	//This cannibalism code is temporarily disabled. We will bring it back in future, but with a psychosis requirement
+	.=..()
+	/*
 	if(status & ORGAN_ROBOTIC || !istype(target) || !istype(user) || (user != target && user.a_intent == I_HELP))
 		return ..()
 
@@ -327,6 +329,7 @@ var/list/organ_cache = list()
 	user.put_in_active_hand(O)
 	qdel(src)
 	target.attackby(O, user)
+	*/
 
 /obj/item/organ/proc/can_feel_pain()
 	return (!BP_IS_ROBOTIC(src) && (!species || !(species.species_flags & SPECIES_FLAG_NO_PAIN)))

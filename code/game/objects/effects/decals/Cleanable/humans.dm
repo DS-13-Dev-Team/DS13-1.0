@@ -116,7 +116,7 @@ var/global/list/image/splatter_cache=list()
 /obj/effect/decal/cleanable/blood/proc/dry()
 	name = dryname
 	desc = drydesc
-	color = adjust_brightness(color, -50)
+	color = adjust_brightness(color, -40)
 	amount = 0
 	STOP_PROCESSING(SSobj, src)
 
