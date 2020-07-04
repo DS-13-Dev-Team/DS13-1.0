@@ -29,7 +29,6 @@
 
 
 /datum/extension/aim_mode/New(var/atom/holder, var/obj/item/weapon/gun/_gun)
-	.=..()
 	user = holder
 	gun = _gun
 	activate()
@@ -72,9 +71,6 @@
 /*
 	Core Code
 */
-/datum/extension/aim_mode/movespeed_mod()
-	return move_mod
-
 /datum/extension/aim_mode/proc/safety()
 	//Run periodically
 	if (user && gun)
@@ -93,7 +89,7 @@
 	active = TRUE
 	user.view_range += src.view_range
 	user.view_offset += src.view_offset
-	register_movemod(STATMOD_MOVESPEED_ADDITIVE)
+	user.move_speed_factor += move_mod
 	user.reset_view()
 
 	gun.accuracy += accuracy_mod
@@ -109,7 +105,7 @@
 	if (user)
 		user.view_range -= src.view_range
 		user.view_offset -= src.view_offset
-		unregister_movemod(STATMOD_MOVESPEED_ADDITIVE)
+		user.move_speed_factor -= move_mod
 		user.reset_view()
 
 	if (gun)

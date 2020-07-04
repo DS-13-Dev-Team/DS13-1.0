@@ -28,7 +28,7 @@
 
 	evasion = 20	//Harder to hit than usual
 
-	view_range = 9
+	view_range = 8
 	view_offset = (WORLD_ICON_SIZE*3)	//Can see much farther than usual
 
 
@@ -241,27 +241,27 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 
 //Special effects for leaper impact, its pretty powerful if it lands on the primary target mob, but it backfires if it was blocked by anything else
-/datum/species/necromorph/leaper/charge_impact(var/datum/extension/charge/leap/charge)
+/datum/species/necromorph/leaper/charge_impact(var/mob/living/user, var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
 	.=..()	//We call the parent charge impact too, all the following effects are in addition to the default behaviour
-	var/mob/living/carbon/human/H = charge.user
-	shake_camera(charge.user,5,3)
+
+	shake_camera(user,5,3)
 	.=TRUE //We stop on the first hit either way
 	//To be considered a success, we must leap onto a mob, and they must be the one we intended to hit
-	if (isliving(charge.last_obstacle))
-		var/mob/living/L = charge.last_obstacle
+	if (isliving(obstacle))
+		var/mob/living/L = obstacle
 		L.Weaken(5) //Down they go!
-		L.apply_damage(3*(charge.distance_travelled+1), used_weapon = charge.user) //We apply damage based on the distance. We add 1 to the distance because we're moving into their tile too
+		L.apply_damage(3*(distance_travelled+1), used_weapon = user) //We apply damage based on the distance. We add 1 to the distance because we're moving into their tile too
 		shake_camera(L,5,3)
 		//And lets also land ontop of them
-		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3) //Victory scream
+		user.play_species_audio(user, SOUND_SHOUT, 100, 1, 3) //Victory scream
 		.=FALSE
 		spawn(2)
-			H.Move(charge.last_obstacle.loc)
-	else if (charge.last_obstacle.density)
+			user.Move(obstacle.loc)
+	else if (obstacle.density)
 	//If something else blocked our leap, or if we hit a dense object (even intentionally) we get pretty rattled
-		H.Weaken(2)
-		H.apply_damage(15, used_weapon = charge.last_obstacle) //ow
-		H.play_species_audio(H, SOUND_PAIN, VOLUME_MID, 1, 3) //It huuurts
+		user.Weaken(3)
+		user.apply_damage(15, used_weapon = obstacle) //ow
+		user.play_species_audio(user, SOUND_PAIN, VOLUME_MID, 1, 3) //It huuurts
 		.=FALSE
 
 
