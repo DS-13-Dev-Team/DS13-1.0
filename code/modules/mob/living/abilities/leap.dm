@@ -39,7 +39,7 @@
 	..()
 
 /datum/extension/charge/leap/stop()
-	animate(user, transform = get_default_transform(), pixel_y = user.default_pixel.y, time = 0.5 SECONDS)
+	animate(user, transform = user.get_default_transform(), pixel_y = user.default_pixel_y, time = 0.5 SECONDS)
 	user.pass_flags = cached_pass_flags
 	user.plane = cached_plane	//Draw over most mobs and objects
 	.=..()

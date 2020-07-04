@@ -223,7 +223,7 @@
 //Returns a transform with all vars set to their default
 /atom/proc/animate_to_default(var/animtime = 5)
 	if (animtime > 0)
-		animate(src, transform = get_default_transform(), pixel_x = default_pixel_x, pixel_y = default_pixel_y, alpha = default_alpha time = animtime)
+		animate(src, transform = get_default_transform(), pixel_x = default_pixel_x, pixel_y = default_pixel_y, alpha = default_alpha, time = animtime)
 	else
 		transform = get_default_transform()
 		pixel_x = default_pixel_x
