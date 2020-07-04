@@ -253,6 +253,24 @@
 	unmount_animation()
 	unmount()
 
+//Called when unmounting as part of some other action, like performing a leap off a wall
+/datum/extension/wallrun/proc/unmount_silent()
+	unmount()
+	//Visuals
+	A.default_rotation = cached_rotation
+	cached_rotation = 0
+
+	A.default_pixel_x = cached_pixels.x
+	A.default_pixel_y = cached_pixels.y
+	cached_pixels = null
+
+	A.default_alpha = cached_alpha
+	cached_alpha = null
+
+
+	A.animate_to_default(0)
+
+
 
 /datum/extension/wallrun/proc/cache_data()
 	cached_pixels = new /vector2(A.default_pixel_x, A.default_pixel_y)
@@ -508,3 +526,8 @@
 	if (W && W.mountpoint)
 		return TRUE
 	return FALSE
+
+/atom/proc/unmount_from_wall()
+	var/datum/extension/wallrun/W = get_extension(src, /datum/extension/wallrun)
+	if (W && W.mountpoint)
+		W.unmount_silent()

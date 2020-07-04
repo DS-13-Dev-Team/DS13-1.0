@@ -16,8 +16,6 @@
 	name = "Leap"
 	var/cached_pass_flags
 	var/cached_plane
-	var/cached_transform
-	var/vector2/cached_pixel_offset
 	continue_check = FALSE	//We're not gonna be stopped if we die mid air, the leap continues til it impacts
 	blur_filter_strength = 4
 
@@ -28,10 +26,11 @@
 
 
 /datum/extension/charge/leap/start()
+	//If we are currently wallcrawling, stop it
+	user.unmount_from_wall()
+
 	cached_pass_flags = user.pass_flags
 	cached_plane = user.plane
-	cached_transform = user.transform
-	cached_pixel_offset = new /vector2(user.pixel_x, user.pixel_y)
 
 	//The sprite moves up into the air and a bit closer to the camera
 	animate(user, transform = user.transform.Scale(1.18), pixel_y = user.pixel_y + 24, time = max_lifespan(), flags = ANIMATION_PARALLEL)
@@ -40,7 +39,7 @@
 	..()
 
 /datum/extension/charge/leap/stop()
-	animate(user, transform = cached_transform, pixel_y = cached_pixel_offset.y, time = 0.5 SECONDS)
+	animate(user, transform = get_default_transform(), pixel_y = user.default_pixel.y, time = 0.5 SECONDS)
 	user.pass_flags = cached_pass_flags
 	user.plane = cached_plane	//Draw over most mobs and objects
 	.=..()
