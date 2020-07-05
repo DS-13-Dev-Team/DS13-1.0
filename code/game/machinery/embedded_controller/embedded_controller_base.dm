@@ -35,7 +35,7 @@ obj/machinery/embedded_controller/radio/Destroy()
 
 /obj/machinery/embedded_controller/attack_hand(mob/user as mob)
 
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		return 0
 
 	src.ui_interact(user)

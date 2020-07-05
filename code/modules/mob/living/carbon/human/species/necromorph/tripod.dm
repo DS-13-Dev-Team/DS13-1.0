@@ -19,6 +19,10 @@
 	total_health = 500
 	torso_damage_mult = 0.65 //Hitting centre mass is fine for tripod
 
+	//Normal necromorph flags plus no slip
+	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
+	stability = 2
+
 	icon_template = 'icons/mob/necromorph/tripod.dmi'
 	icon_lying = "_lying"
 	pixel_offset_x = -54

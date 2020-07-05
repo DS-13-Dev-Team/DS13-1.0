@@ -105,7 +105,7 @@
 /mob/living/silicon/proc/damage_mob(var/brute = 0, var/fire = 0, var/tox = 0)
 	return
 
-/mob/living/silicon/IsAdvancedToolUser()
+/mob/living/silicon/is_advanced_tool_user()
 	return 1
 
 /mob/living/silicon/bullet_act(var/obj/item/projectile/Proj)

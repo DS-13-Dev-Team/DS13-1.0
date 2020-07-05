@@ -54,7 +54,7 @@
 /obj/item/stack/material/glass/proc/construct_window(mob/user as mob)
 	if(!user || !src)	return 0
 	if(!istype(user.loc,/turf)) return 0
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		return 0
 	var/title = "Sheet-[name]"
 	title += " ([src.get_amount()] sheet\s left)"

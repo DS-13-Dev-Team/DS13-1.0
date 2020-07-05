@@ -171,7 +171,7 @@
 	return matter
 
 /obj/proc/eject_item(var/obj/item/I, var/mob/living/M)
-	if(!I || !M.IsAdvancedToolUser())
+	if(!I || !M.is_advanced_tool_user())
 		return FALSE
 	M.put_in_hands(I)
 	playsound(src.loc, 'sound/weapons/guns/interact/pistol_magin.ogg', 75, 1)

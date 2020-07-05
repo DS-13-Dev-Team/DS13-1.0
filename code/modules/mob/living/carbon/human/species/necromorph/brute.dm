@@ -10,6 +10,10 @@
 	total_health = 400
 	torso_damage_mult = 1 //Hitting centre mass is fine for brute
 
+	//Normal necromorph flags plus no slip
+	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
+	stability = 2
+
 	icon_template = 'icons/mob/necromorph/brute.dmi'
 	icon_normal = "brute-d"
 	icon_lying = "brute-d-dead"//Temporary icon so its not invisible lying down

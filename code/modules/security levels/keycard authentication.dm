@@ -51,7 +51,7 @@
 	if(stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		return 0
 	if(busy)
 		to_chat(user, "This device is busy.")
@@ -94,7 +94,7 @@
 	if(busy)
 		to_chat(user, "This device is busy.")
 		return STATUS_CLOSE
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		to_chat(user, FEEDBACK_YOU_LACK_DEXTERITY)
 		return min(..(), STATUS_UPDATE)
 	return ..()

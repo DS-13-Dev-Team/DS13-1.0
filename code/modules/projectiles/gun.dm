@@ -160,7 +160,7 @@
 
 	if(!istype(user, /mob/living))
 		return 0
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		return 0
 
 	var/mob/living/M = user

@@ -139,7 +139,7 @@
 
 
 /mob/living/carbon/human/show_inv(mob/user as mob)
-	if(user.incapacitated()  || !user.Adjacent(src) || !user.IsAdvancedToolUser())
+	if(user.incapacitated()  || !user.Adjacent(src) || !user.is_advanced_tool_user())
 		return
 
 	user.set_machine(src)
@@ -438,7 +438,7 @@
 
 	return 1
 
-/mob/living/carbon/human/IsAdvancedToolUser(var/silent)
+/mob/living/carbon/human/is_advanced_tool_user(var/silent)
 	if(species.has_fine_manipulation(src))
 		return 1
 	if(!silent)

@@ -466,7 +466,7 @@ var/list/name_to_material
 	if(!user || !used_stack || !created_window || !window_options.len)
 		return 0
 
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		to_chat(user, "<span class='warning'>This task is too complex for your clumsy hands.</span>")
 		return 1
 

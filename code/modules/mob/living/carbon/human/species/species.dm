@@ -107,6 +107,7 @@
 	var/wound_remnant_time = 10 MINUTES	//How long fully-healed wounds stay visible before vanishing
 	var/limb_health_factor	=	1	//Multiplier on max health of limbs
 	var/pain_shock_threshold	=	50	//The mob starts going into shock when total pain reaches this value
+	var/stability = 1	//Multiplier on resistance to physical forces. Higher value makes someone harder to knock down with forcegun/etc
 
 	// Combat vars.
 	var/list/unarmed_types = list(           // Possible unarmed attacks that the mob will use in combat,
@@ -391,6 +392,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/setup_defense(var/mob/living/carbon/human/H)
 	H.pain_shock_threshold = pain_shock_threshold
 	H.max_health = total_health
+	H.push_threshold_factor *= stability
+	H.knockdown_threshold_factor *= stability
+	H.stagger_threshold_factor *= stability
 
 /datum/species/proc/setup_interaction(var/mob/living/carbon/human/H)
 	H.limited_click_arc = limited_click_arc

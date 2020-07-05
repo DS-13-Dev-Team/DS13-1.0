@@ -38,7 +38,7 @@ REAGENT SCANNER
 	medical_scan_action(target, user, src, mode)
 
 /proc/medical_scan_action(atom/target, mob/living/user, obj/scanner, var/verbose)
-	if (!user.IsAdvancedToolUser())
+	if (!user.is_advanced_tool_user())
 		to_chat(user, "<span class='warning'>You are not nimble enough to use this device.</span>")
 		return
 
@@ -372,7 +372,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 
 	if (user.incapacitated())
 		return
-	if (!user.IsAdvancedToolUser())
+	if (!user.is_advanced_tool_user())
 		return
 
 	analyze_gases(user.loc, user,advanced_mode)
@@ -383,7 +383,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 		return
 	if (user.incapacitated())
 		return
-	if (!user.IsAdvancedToolUser())
+	if (!user.is_advanced_tool_user())
 		return
 	if(istype(O) && O.simulated)
 		analyze_gases(O, user, advanced_mode)
@@ -422,7 +422,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 /obj/item/device/mass_spectrometer/attack_self(mob/user as mob)
 	if (user.incapacitated())
 		return
-	if (!user.IsAdvancedToolUser())
+	if (!user.is_advanced_tool_user())
 		return
 	if(reagents.total_volume)
 		var/list/blood_traces = list()
@@ -480,7 +480,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 		return
 	if (user.incapacitated())
 		return
-	if (!user.IsAdvancedToolUser())
+	if (!user.is_advanced_tool_user())
 		return
 	if(!istype(O))
 		return

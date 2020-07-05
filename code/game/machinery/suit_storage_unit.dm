@@ -205,7 +205,7 @@
 /obj/machinery/suit_storage_unit/attack_hand(mob/user as mob)
 	..()
 	var/dat
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		return 0
 	if(panelopen) //The maintenance panel is open. Time for some shady stuff
 		dat+= "<HEAD><TITLE>Suit storage unit: Maintenance panel</TITLE></HEAD>"
@@ -831,7 +831,7 @@
 	if(..() || stat & (BROKEN|NOPOWER))
 		return
 
-	if(!user.IsAdvancedToolUser())
+	if(!user.is_advanced_tool_user())
 		return 0
 
 	if(electrified != 0)
