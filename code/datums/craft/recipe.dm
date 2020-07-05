@@ -48,7 +48,7 @@
 /datum/craft_recipe/proc/spawn_result(obj/item/craft/C, mob/living/user)
 	var/atom/movable/M = new result(get_turf(C))
 	M.Created()
-	M.dir = user.dir
+	M.set_dir(user.dir)
 	var/slot = user.get_inventory_slot(C)
 	qdel(C)
 	if(! (flags & CRAFT_ON_FLOOR) && (slot in list(slot_r_hand, slot_l_hand)))

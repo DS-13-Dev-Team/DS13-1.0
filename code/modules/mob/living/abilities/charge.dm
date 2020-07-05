@@ -91,6 +91,9 @@
 /datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
 	.=..()
 	user = holder
+
+
+
 	target = _target
 	speed = _speed * user.get_move_speed_factor()
 	lifespan = _lifespan
@@ -132,6 +135,9 @@
 	return TRUE
 
 /datum/extension/charge/proc/start()
+
+	//If we are currently wallcrawling, stop it
+	user.unmount_from_wall()
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		cached_step_interval = H.step_interval

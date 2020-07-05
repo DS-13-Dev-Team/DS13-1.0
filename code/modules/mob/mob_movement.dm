@@ -158,10 +158,8 @@
 	else
 		var/atom/A = src.loc
 
-		var/olddir = dir //we can't override this without sacrificing the rest of movable/New()
 		. = ..()
-		if(direct != olddir)
-			dir = olddir
+		if(direct != get_visual_dir())
 			set_dir(direct)
 
 		//This is an actual speed in metres per second

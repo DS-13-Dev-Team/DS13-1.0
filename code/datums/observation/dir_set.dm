@@ -1,7 +1,8 @@
 //	Observer Pattern Implementation: Direction Set
 //		Registration type: /atom
 //
-//		Raised when: An /atom changes dir using the set_dir() proc.
+//		Raised when: An /atom attempts to change dir using the set_dir() proc.
+//		Event is raised even if the new dir is the same as the old dir. The recieving proc should compare the two to see if any change was actually made
 //
 //		Arguments that the called proc should expect:
 //			/atom/dir_changer: The instance that changed direction

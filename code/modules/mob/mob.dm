@@ -291,7 +291,7 @@
 			var/view_changed = FALSE
 			if (client.set_view_range(M.view_range))
 				view_changed = TRUE
-			if (client.set_view_offset(M.dir, M.view_offset))
+			if (client.set_view_offset(M.get_visual_dir(), M.view_offset))
 				view_changed = TRUE
 
 			if (view_changed)

@@ -53,6 +53,7 @@
 	var/vector2/centre_offset //What offset do we add to our sprite to centre it in the tile? Calculated based on dmi size. This is applied flatly regardless of rotation
 	var/vector2/base_offset	//What offset do we add to place our feet against the edge of the tile? This is rotated before applying
 	var/cached_density
+	var/visual_dir = SOUTH	//Which direction is our sprite facing? This may be different from the normal dir value
 
 	//Bonus stats
 	var/evasion_mod	=	10
@@ -156,6 +157,8 @@
 	GLOB.pre_move_event.register(A, src, /datum/extension/wallrun/proc/on_premove)
 	GLOB.moved_event.register(A, src, /datum/extension/wallrun/proc/on_move)
 	GLOB.dir_set_event.register(A, src, /datum/extension/wallrun/proc/dir_set)
+	GLOB.death_event.register(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
+
 
 	A.pass_flags |= passflag_delta
 	apply_stats()
@@ -240,6 +243,8 @@
 		GLOB.density_set_event.unregister(mountpoint, src, /datum/extension/wallrun/proc/on_density_set)
 		GLOB.pre_move_event.unregister(A, src, /datum/extension/wallrun/proc/on_premove)
 		GLOB.moved_event.unregister(A, src, /datum/extension/wallrun/proc/on_move)
+		GLOB.death_event.unregister(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
+
 
 	mountpoint = null
 
@@ -249,9 +254,28 @@
 
 //Called to end mounting and return to standing on the floor
 /datum/extension/wallrun/proc/unmount_to_floor()
-	A.visible_message(SPAN_NOTICE("[A] climbs down from \the [mountpoint]"))
+	if (user && !user.stat)
+		user.visible_message(SPAN_NOTICE("[A] climbs down from \the [mountpoint]"))
 	unmount_animation()
 	unmount()
+
+//Called when unmounting as part of some other action, like performing a leap off a wall
+/datum/extension/wallrun/proc/unmount_silent()
+	unmount()
+	//Visuals
+	A.default_rotation = cached_rotation
+	cached_rotation = 0
+
+	A.default_pixel_x = cached_pixels.x
+	A.default_pixel_y = cached_pixels.y
+	cached_pixels = null
+
+	A.default_alpha = cached_alpha
+	cached_alpha = null
+
+
+	A.animate_to_default(0)
+
 
 
 /datum/extension/wallrun/proc/cache_data()
@@ -493,10 +517,27 @@
 	if (mounted && user)
 		user.play_species_audio(user, SOUND_CLIMB, VOLUME_MID, 1)
 
+		//Since the native behaviour of Move causes the mob to change direction, we must compensate and fix their direction by attempting to turn towards the cached visual dir
+		dir_set(user, visual_dir, visual_dir)
 
 //An attempt to make directional facings meaningful
 /datum/extension/wallrun/proc/dir_set(var/atom/mover, var/old_dir, var/new_dir)
-	A.dir = turn(new_dir, round(A.default_rotation, 90))
+	if (mountpoint)
+		//We get the normal direction of the wall
+		var/vector2/current_wall_normal = new /vector2(mover.x - mountpoint.x, mover.y - mountpoint.y)
+
+		//Lets get the direction of the target now
+		var/vector2/desired_dir = Vector2.FromDir(new_dir)
+
+		//Alright next up, we get the angle between these two
+		var/desired_angle = desired_dir.AngleFrom(current_wall_normal)
+
+		//We only want cardinal directions, round it off
+		desired_angle = round(desired_angle, 90)
+
+		var/actual_dir = turn(SOUTH, desired_angle)
+		A.dir = actual_dir
+	visual_dir = new_dir
 
 
 
@@ -506,5 +547,18 @@
 /atom/proc/is_on_wall()
 	var/datum/extension/wallrun/W = get_extension(src, /datum/extension/wallrun)
 	if (W && W.mountpoint)
-		return TRUE
+		return W
 	return FALSE
+
+/atom/proc/unmount_from_wall()
+	var/datum/extension/wallrun/W = get_extension(src, /datum/extension/wallrun)
+	if (W && W.mountpoint)
+		W.unmount_silent()
+
+//Returns what direction this atom -appears- to be facing
+/atom/proc/get_visual_dir()
+	var/datum/extension/wallrun/W = is_on_wall()
+	if (W)
+		return W.visual_dir
+	else
+		return dir

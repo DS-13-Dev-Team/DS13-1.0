@@ -21,7 +21,7 @@
 		target = locate(/obj/machinery/atmospherics/pipe/simple) in loc
 	if(target)
 		update_networks()
-		dir = target.dir
+		set_dir(target.dir)
 	return 1
 
 /obj/machinery/clamp/proc/update_networks()
