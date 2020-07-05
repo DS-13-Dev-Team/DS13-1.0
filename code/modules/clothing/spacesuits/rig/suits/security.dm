@@ -2,7 +2,7 @@
 	name = "security rig"
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "ds_security_rig"
-	armor = list(melee = 55, bullet = 55, laser = 55, energy = 25, bomb = 60, bio = 100, rad = 60)
+	armor = list(melee = 50, bullet = 55, laser = 55, energy = 25, bomb = 60, bio = 100, rad = 60)
 	offline_slowdown = 4
 	online_slowdown = 2
 	acid_resistance = 1.75	//Contains a fair bit of plastic

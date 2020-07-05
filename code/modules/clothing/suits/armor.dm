@@ -19,7 +19,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	heat_protection = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 50, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 45, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/vest/old/security
 	name = "security armor"
@@ -35,7 +35,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	heat_protection = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 50, bullet = 40, laser = 50, energy = 0, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 45, bullet = 40, laser = 50, energy = 0, bomb = 25, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/vest/ds_jacket
 	name = "stylish security jacket"
@@ -52,7 +52,7 @@
 	desc = "An armoured jacket with silver rank pips and livery."
 	icon_state = "warden_jacket"
 	//item_state = "armor"
-	armor = list(melee = 50, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 45, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -62,7 +62,7 @@
 	desc = "An armored vest of uncertain quality. Provides a good protection against physical damage, for piece of crap."
 	icon_state = "hm_armorvest"
 	item_state = "hm_armorvest"
-	armor = list(melee = 40, bullet = 35, laser = 30, energy = 15, bomb = 15, bio = 0, rad = 0)
+	armor = list(melee = 35, bullet = 35, laser = 30, energy = 15, bomb = 15, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/swat/officer
 	name = "officer jacket"
@@ -83,7 +83,7 @@
 	//item_state = "armor"
 	blood_overlay_type = "armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 50, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 45, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
 
 
 //Reactive armor
@@ -191,7 +191,7 @@
 	icon_state = "kellion_grunt"
 	item_state = "armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 60, bullet = 60, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)
+	armor = list(melee = 55, bullet = 60, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)
 
 //Commander
 /obj/item/clothing/suit/armor/vest/ert
@@ -200,7 +200,7 @@
 	icon_state = "ertarmor_cmd"
 	item_state = "armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 20, bio = 0, rad = 0)
+	armor = list(melee = 55, bullet = 60, laser = 60, energy = 40, bomb = 20, bio = 0, rad = 0)
 
 //Security
 /obj/item/clothing/suit/armor/vest/ert/security
@@ -256,7 +256,7 @@
 	name = "webbed armor vest"
 	desc = "A synthetic armor vest. This one has added webbing and ballistic plates."
 	icon_state = "webvest"
-	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
+	armor = list(melee = 35, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
 	allowed = list(/obj/item/weapon/gun/energy,/obj/item/device/radio,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/gun/magnetic)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
@@ -292,14 +292,14 @@
 	desc = "A heavy armored vest in a fetching tan. It is surprisingly flexible and light, even with the extra webbing and advanced ceramic plates."
 	icon_state = "tacwebvest"
 	item_state = "tacwebvest"
-	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
+	armor = list(melee = 35, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/storage/vest/merc
 	name = "heavy combat armor"
 	desc = "A high-quality armored vest made from a hard synthetic material. It is surprisingly flexible and light, despite formidable armor plating."
 	icon_state = "mercwebvest"
 	item_state = "mercwebvest"
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	armor = list(melee = 55, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS //now covers legs with new sprite
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS

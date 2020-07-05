@@ -154,7 +154,7 @@
 	suit_type = "engineering hardsuit"
 	desc = "An advanced hardsuit that protects against hazardous, low pressure environments. Shines with a high polish. Appears compatible with the physiology of most species."
 	icon_state = "ce_rig"
-	armor = list(melee = 40, bullet = 25, laser = 30, energy = 25, bomb = 40, bio = 100, rad = 100)
+	armor = list(melee = 45, bullet = 25, laser = 30, energy = 25, bomb = 40, bio = 100, rad = 100)
 	online_slowdown = 0
 	offline_slowdown = 0
 	offline_vision_restriction = TINT_HEAVY

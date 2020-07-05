@@ -7,7 +7,7 @@
 	var/base_block_chance = 80
 	var/max_block = 20
 
-	max_health = 150
+	max_health = 130
 	resistance = 3
 
 
@@ -54,7 +54,7 @@
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 	max_block = 25
 	base_block_chance = 100
-	max_health = 220
+	max_health = 190
 	blocksound = 'sound/effects/Glasshit.ogg'
 	resistance = 4
 
@@ -79,7 +79,7 @@
 	w_class = ITEM_SIZE_HUGE
 	matter = list(MATERIAL_PLASTEEL = 8500)
 	max_block = 30
-	max_health = 300
+	max_health = 255
 	slowdown_general = 1.5
 	resistance = 6
 	blocksound = 'sound/items/trayhit2.ogg'
@@ -97,7 +97,7 @@
 	throw_range = 6
 	matter = list(MATERIAL_STEEL = 6)
 	base_block_chance = 65
-	max_health = 100
+	max_health = 85
 	max_block = 15
 	resistance = 5
 
@@ -111,7 +111,7 @@
 	throw_range = 4
 	matter = list(MATERIAL_STEEL = 4)
 	base_block_chance = 80
-	max_health = 120
+	max_health = 90
 	max_block = 10
 	resistance = 2
 	blocksound = 'sound/items/trayhit2.ogg'
@@ -139,7 +139,7 @@
 	max_block = 45
 	var/active = 0
 	resistance = 8
-	max_health = 400
+	max_health = 340
 	blocksound = 'sound/effects/impacts/shield_impact_1.ogg'
 
 /obj/item/weapon/shield/energy/can_block()
