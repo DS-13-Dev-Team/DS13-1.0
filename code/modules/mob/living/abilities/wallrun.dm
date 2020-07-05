@@ -156,6 +156,8 @@
 	GLOB.pre_move_event.register(A, src, /datum/extension/wallrun/proc/on_premove)
 	GLOB.moved_event.register(A, src, /datum/extension/wallrun/proc/on_move)
 	GLOB.dir_set_event.register(A, src, /datum/extension/wallrun/proc/dir_set)
+	GLOB.death_event.register(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
+
 
 	A.pass_flags |= passflag_delta
 	apply_stats()
@@ -240,6 +242,8 @@
 		GLOB.density_set_event.unregister(mountpoint, src, /datum/extension/wallrun/proc/on_density_set)
 		GLOB.pre_move_event.unregister(A, src, /datum/extension/wallrun/proc/on_premove)
 		GLOB.moved_event.unregister(A, src, /datum/extension/wallrun/proc/on_move)
+		GLOB.death_event.unregister(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
+
 
 	mountpoint = null
 
@@ -249,7 +253,8 @@
 
 //Called to end mounting and return to standing on the floor
 /datum/extension/wallrun/proc/unmount_to_floor()
-	A.visible_message(SPAN_NOTICE("[A] climbs down from \the [mountpoint]"))
+	if (user && !user.stat)
+		user.visible_message(SPAN_NOTICE("[A] climbs down from \the [mountpoint]"))
 	unmount_animation()
 	unmount()
 
