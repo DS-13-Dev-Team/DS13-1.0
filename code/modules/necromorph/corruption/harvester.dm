@@ -366,6 +366,7 @@
 	 two or more signals should man each harvester during combat<br>\
 	<br>\
 	The harvester fires a sharp bony spine, dealing ballistic damage on impact."
+	cooldown = HARVESTER_SPINE_COOLDOWN*2
 
 
 /datum/signal_ability/harvester/spine/on_cast(var/mob/user, var/atom/target, var/list/data)
@@ -407,7 +408,7 @@
 	<br>\
 	The harvester fires a narrow stream of acid over two seconds, with good range."
 
-
+	cooldown = HARVESTER_ACID_COOLDOWN*2
 
 /datum/signal_ability/harvester/acid/on_cast(var/mob/user, var/atom/target, var/list/data)
 	var/list/harvesters = ..()
@@ -451,7 +452,7 @@
 	<br>\
 	The harvester swings one of its tentacles in a wide arc, striking humans nearby."
 
-
+	cooldown = HARVESTER_WHIP_COOLDOWN*2
 
 /datum/signal_ability/harvester/tentacle/on_cast(var/mob/user, var/atom/target, var/list/data)
 	var/list/harvesters = ..()
@@ -476,7 +477,7 @@
 		stages = 8)
 
 		if (fired)
-			spawn(0.8 SECONDS)
+			spawn(0.4 SECONDS)
 				var/sound_effect = pick(list('sound/effects/attacks/big_swoosh_1.ogg',
 				'sound/effects/attacks/big_swoosh_2.ogg',
 				'sound/effects/attacks/big_swoosh_3.ogg',))
@@ -495,7 +496,7 @@
 	icon_state = "harvester_tentacle"
 	default_scale = 1.65
 	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
-	plane = LARGE_MOB_PLANE
+	plane = ABOVE_HUMAN_PLANE
 	layer = BELOW_LARGE_MOB_LAYER
 	inherit_order = FALSE
 
@@ -525,5 +526,4 @@
 /datum/extension/swing/harvester_tentacle/setup_effect()
 	.=..()
 	effect.pixel_y -= 32
-	effect.plane = LARGE_MOB_PLANE
-	effect.layer = BELOW_LARGE_MOB_LAYER
+	effect.pixel_x -= 32

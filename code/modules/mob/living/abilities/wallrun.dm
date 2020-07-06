@@ -261,8 +261,7 @@
 /datum/extension/wallrun/proc/unmount_silent()
 	unmount()
 	//Visuals
-	A.default_rotation = cached_rotation
-	cached_rotation = 0
+	A.default_rotation = 0
 
 	A.default_pixel_x = cached_pixels.x
 	A.default_pixel_y = cached_pixels.y
