@@ -36,6 +36,7 @@
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
 	stability = 2
+	step_volume = VOLUME_MID
 
 	icon_template = 'icons/mob/necromorph/lurker.dmi'
 	icon_lying = "_lying"
@@ -412,8 +413,8 @@ The Lurker can only fire spines while its shell is open"
 
 */
 /datum/extension/retractable_cover/lurker
-	var/speed_delta = 0
 	close_time = 0.5 SECONDS
+	speed_open = MOVESPEED_OPEN
 
 
 /datum/extension/retractable_cover/lurker/close()
@@ -426,16 +427,7 @@ The Lurker can only fire spines while its shell is open"
 	user.view_offset = VIEW_OFFSET_CLOSED
 	user.reset_view()
 
-	//Reset movespeed
-	user.move_speed_factor += speed_delta
-	speed_delta = 0
 	user.slow_turning = FALSE
-
-	//Update wallrun speed handling
-	if (user.is_on_wall())
-		var/datum/extension/wallrun/W = get_extension(user, /datum/extension/wallrun)
-		W.unapply_stats()
-		W.apply_stats()
 
 	user.play_species_audio(user, SOUND_PAIN, VOLUME_MID, 1)
 
@@ -450,19 +442,8 @@ The Lurker can only fire spines while its shell is open"
 	user.view_offset = VIEW_OFFSET_OPEN
 	user.reset_view()
 
-	//Slow turning when not wallmounted
-	if (!user.is_on_wall())
-		user.slow_turning = TRUE
-	else
-		//Update wallrun speed handling
-		var/datum/extension/wallrun/W = get_extension(user, /datum/extension/wallrun)
-		W.unapply_stats()
-		W.apply_stats()
+	user.slow_turning = TRUE
 
-	//Lets set the speed
-	var/newspeed = user.move_speed_factor * MOVESPEED_OPEN
-	speed_delta = user.move_speed_factor - newspeed
-	user.move_speed_factor = newspeed
 
 
 
@@ -481,7 +462,7 @@ The Lurker can only fire spines while its shell is open"
 /datum/species/necromorph/lurker/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 	.=..()
 	if (audio_type == SOUND_FOOTSTEP || audio_type == SOUND_CLIMB)
-		spawn(4)
+		spawn(5)
 			var/soundin = get_species_audio(audio_type)
 			if (soundin)
 				playsound(source, soundin, vol, vary, extrarange, falloff, is_global, frequency, is_ambiance)

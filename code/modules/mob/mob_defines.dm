@@ -187,6 +187,7 @@
 
 	//Movement
 	var/slow_turning = FALSE //If true, mob goes on move+click cooldown when rotating in place, and can't turn+move in the same step
+	var/move_speed_factor		=	1	//A multiplier on movespeed, and a divisor on move delays
 
 	//Vision
 	var/view_offset = 0
@@ -196,3 +197,6 @@
 
 	//Combat
 	var/evasion = 15	//A base percentage chance of avoiding attacks which would otherwise hit
+
+	//Misc:
+	var/list/statmods	//This is a list which we don't initialise to save on object creating costs. use lazyprocs to init at runtime when needed

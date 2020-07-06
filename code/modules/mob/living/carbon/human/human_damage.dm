@@ -23,17 +23,16 @@
 	if(blocked)
 		damage *= blocked_mult(blocked)
 
-	if(damage > 15 && prob(damage*4))
+	if(damage > 5 && prob(damage*4))
 		make_reagent(round(damage/10), /datum/reagent/adrenaline)
-	var/datum/wound/created_wound
 	damageoverlaytemp = 20
 	switch(damagetype)
 		if(BRUTE)
 			damage = damage*species.brute_mod
-			created_wound = organ.take_external_damage(damage, 0, damage_flags, used_weapon)	//This calls update health
+			organ.take_external_damage(damage, 0, damage_flags, used_weapon)	//This calls update health
 		if(BURN)
 			damage = damage*species.burn_mod
-			created_wound = organ.take_external_damage(0, damage, damage_flags, used_weapon)	//This calls update health
+			organ.take_external_damage(0, damage, damage_flags, used_weapon)	//This calls update health
 		if(PAIN)
 			organ.add_pain(damage)	//This calls update health
 		if(CLONE)
@@ -43,7 +42,7 @@
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
 	//Updatehealth is called by all the above procs, we don't call it here
 	BITSET(hud_updateflag, HEALTH_HUD)
-	return created_wound
+	return damage
 
 // Find out in how much pain the mob is at the moment.
 /mob/living/carbon/human/proc/get_shock()

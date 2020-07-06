@@ -42,9 +42,8 @@
 	if (!started_at)
 		started_at = world.time
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/stop), duration)
+		register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
-
-		user.move_speed_factor += power
 		user.reset_move_cooldown()//Allow nextmove immediately
 		GLOB.damage_hit_event.register(user, src, /datum/extension/gallop/proc/user_hit)
 		GLOB.bump_event.register(user, src, /datum/extension/gallop/proc/user_bumped)
@@ -56,12 +55,15 @@
 	.=..()
 
 
+/datum/extension/gallop/movespeed_mod()
+	return 1+power
+
 /datum/extension/gallop/proc/stop()
 	if (!stopped_at)
 		deltimer(ongoing_timer)
 		stopped_at = world.time
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/finish_cooldown), cooldown)
-		user.move_speed_factor -= power
+		unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 		GLOB.damage_hit_event.unregister(user, src, /datum/extension/gallop/proc/user_hit)
 		GLOB.bump_event.unregister(user, src, /datum/extension/gallop/proc/user_bumped)
 		GLOB.moved_event.unregister(user, src, /datum/extension/gallop/proc/user_moved)
