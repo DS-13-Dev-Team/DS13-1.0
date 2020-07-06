@@ -17,14 +17,16 @@
 	desc = "It will take its due"
 	max_health = 300
 	resistance = 30	//Extremely tough, basically immune to small arms fire
-	icon = 'icons/effects/corruption48x48.dmi'
+	icon = 'icons/effects/corruption96x96.dmi'
 	icon_state = "harvester"
 	density = TRUE
+
+	appearance_flags = PIXEL_SCALE
 
 	biomass = 30
 	biomass_reclamation = 0.0
 	placement_type = /datum/click_handler/placement/necromorph/harvester
-	default_scale = 2
+	default_scale = 1
 	random_rotation = FALSE
 
 	var/list/passive_sources = list()
@@ -39,9 +41,31 @@
 	//Harvester dies fast without corruption support
 	degen = 5
 
+	var/deployed = TRUE
+
+/obj/structure/corruption_node/harvester/update_icon()
+	set waitfor = FALSE
+
+	.=..()
+
+	underlays.Cut()
+	overlays.Cut()
+
+	if (deployed)
+		overlays += image(icon, src, "beak")
+		underlays += image(icon, src, "tentacle_1")
+		sleep(1)
+		underlays += image(icon, src, "tentacle_2")
+		sleep(1)
+		underlays += image(icon, src, "tentacle_3")
+		sleep(1)
+		underlays += image(icon, src, "tentacle_4")
+
+
 /obj/structure/corruption_node/harvester/Initialize()
 	.=..()
 	register_sources()
+	update_icon()
 
 /obj/structure/corruption_node/harvester/Destroy()
 	unregister_sources()
