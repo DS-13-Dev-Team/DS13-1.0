@@ -165,8 +165,8 @@
 	if (QDELETED(harvester))
 		return MASS_FAIL
 
-	//The harvester must be in healthy condition
-	if (harvester.health < harvester.max_health)
+	//The harvester must be ready and on corruption, signalled by the deployed var
+	if (!harvester.deployed)
 		return MASS_PAUSE
 
 	return MASS_READY

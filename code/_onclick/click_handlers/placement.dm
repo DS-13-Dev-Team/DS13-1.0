@@ -20,6 +20,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	var/message = ""
 	var/last_move_params	//Cached params from last mousemove event
 	var/datum/callback/call_on_place
+	var/placement_location = PLACEMENT_FLOOR
 
 
 	has_mousemove = TRUE
@@ -249,6 +250,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	var/require_corruption = TRUE
 	var/LOS_block = TRUE
 
+
 /datum/click_handler/placement/necromorph/placement_blocked(var/turf/candidate)
 	.=..()
 	if (!.)
@@ -260,6 +262,10 @@ GLOBAL_LIST_EMPTY(placement_previews)
 
 		if (require_corruption && !turf_corrupted(candidate))
 			return "This can only be placed on corrupted tiles."
+
+		for (var/obj/structure/corruption_node/CN in candidate)
+			if (CN.placement_location == src.placement_location)
+				return "Only one corruption node can be placed per tile."
 
 		if (LOS_block)
 			var/mob/M = candidate.is_seen_by_crew()

@@ -12,19 +12,27 @@
 */
 
 #define HARVESTER_HARVEST_RANGE	10
+
+#define HARVESTER_SPINE_COOLDOWN 5 SECONDS
+#define HARVESTER_ACID_COOLDOWN 15 SECONDS
+#define HARVESTER_WHIP_COOLDOWN 3 SECONDS
+
 /obj/structure/corruption_node/harvester
 	name = "Harvester"
 	desc = "It will take its due"
-	max_health = 300
-	resistance = 30	//Extremely tough, basically immune to small arms fire
+	max_health = 500
+	resistance = 10	//Extremely tough, basically immune to small arms fire
 	icon = 'icons/effects/corruption96x96.dmi'
 	icon_state = "harvester"
 	density = TRUE
 
 	appearance_flags = PIXEL_SCALE
 
-	biomass = 30
-	biomass_reclamation = 0.0
+	default_pixel_x = -32
+	pixel_x = -32
+
+	biomass = 50
+	reclamation_time = 20 MINUTES
 	placement_type = /datum/click_handler/placement/necromorph/harvester
 	default_scale = 1
 	random_rotation = FALSE
@@ -41,7 +49,16 @@
 	//Harvester dies fast without corruption support
 	degen = 5
 
-	var/deployed = TRUE
+	//The harvester needs to exist for this long before it fully deploys
+	var/deployment_time = 1 MINUTE
+
+
+	var/deployed = FALSE
+
+
+	plane = LARGE_MOB_PLANE
+	layer = LARGE_MOB_LAYER
+
 
 /obj/structure/corruption_node/harvester/update_icon()
 	set waitfor = FALSE
@@ -60,6 +77,8 @@
 		underlays += image(icon, src, "tentacle_3")
 		sleep(1)
 		underlays += image(icon, src, "tentacle_4")
+	else
+		overlays += image(icon, src, "beak_closed")
 
 
 /obj/structure/corruption_node/harvester/Initialize()
@@ -71,6 +90,25 @@
 	unregister_sources()
 	.=..()
 
+/obj/structure/corruption_node/harvester/Process()
+
+	if (!deployed)
+		if (deployment_time > 0)
+			deployment_time -= 1 SECOND
+
+		if (deployment_time <= 0 && turf_corrupted(src, TRUE))
+			deployed = TRUE
+			update_icon()
+	else if (!turf_corrupted(src, TRUE))
+		deployed = FALSE
+		update_icon()
+
+	.=..()
+
+
+/obj/structure/corruption_node/harvester/can_stop_processing()
+	if (!deployed)
+		return FALSE
 
 //Registration and listeners
 //----------------------------
@@ -92,6 +130,7 @@
 	for (var/atom/A as anything in all_sources)
 		GLOB.moved_event.register(A, src, /obj/structure/corruption_node/harvester/proc/source_moved)
 		GLOB.destroyed_event.register(A, src, /obj/structure/corruption_node/harvester/proc/source_deleted)
+		set_extension(A, /datum/extension/being_harvested)
 
 	//Alright lets create the biomass sources on the marker
 	var/obj/machinery/marker/M = get_marker()
@@ -121,6 +160,7 @@
 			GLOB.moved_event.unregister(A, src, /obj/structure/corruption_node/harvester/proc/source_moved)
 			GLOB.destroyed_event.unregister(A, src, /obj/structure/corruption_node/harvester/proc/source_deleted)
 			A.filters.Remove(all_sources[A])	//Remove the visual filter we created earlier by using its stored reference
+			remove_extension(A, /datum/extension/being_harvested)
 
 	passive_sources = list()
 	active_sources = list()
@@ -143,8 +183,13 @@
 
 
 /obj/structure/corruption_node/harvester/get_blurb()
-	return "The Harvester is a node for securiting territory and extracting biomass from certain objects. \
-	It is dense and near-indestructible, mostly it can only be destroyed by cutting it off from corruption, at which point it will stop working, starve and die.<br>\
+	return "The Harvester is a node for securiting territory and extracting biomass from certain objects. It is expensive and takes a long \
+	time to refund if destroyed, but is generally extremely tough and can withstand a lot of damage. It requires a clear area to place in, and can't be placed too close to another harvester\
+	When placed, the harvester requires a 1 minute warmup period to take root before it becomes active.<br>\
+	It serves two main functions: <br>\
+	<br>\
+	<br>\
+	1. Biomass Extraction<br>\
 	<br>\
 	The harvester can draw biomass slowly, but infinitely, from the following kinds of objects:<br>\
 		-Cryostorage beds<br>\
@@ -154,19 +199,31 @@
 	<br>\
 	In addition, the Harvester can draw biomass more rapidly - but in limited total quantities, from the following objects:<br>\
 		-Food/Snack/Drink/fertilizer vending machiness<br>\
-		-Biomass Storage tank"
+		-Biomass Storage tank<br>\
+	<br>\
+	<br>\
+	2. Securing Territory:<br>\
+	The harvester is the most durable of all corruption nodes, many smaller weapons will bounce harmlessly off of it, and bigger things will \
+	need a lot of time and ammo to outdamage its regeneration and high health pool.<br>\
+	<br>\
+	In addition to this, the harvester has three powerful attacks to help it fight back against people attempting to get past it or destroy it.\
+		-Tentacle Whip<br>\
+		-Spine Launch<br>\
+		-Acid Spray<br>\
+	The harvester has no intelligence though, all of these weapons must be manually activated by signal spells. \
+	 At least two signals working in tandem are required to operate the weapons at maximum efficiency. If used correctly, the harvester is an immovable object<br>\
+	 <br>\
+	 The harvester has only one weakness. It depends heavily on corruption support. Like any other node, it will starve and die-off if the corruption nodes nearby are removed"
 
 /*
 	Biomass Absorbing
 */
 /obj/structure/corruption_node/harvester/proc/handle_active_absorb(var/ticks = 1)
-	world << "Doing active absorb"
 	//If anything returns MASS_FAIL, we will have to redo our sources
 	var/failed = FALSE
 	var/total = 0
 	for (var/datum/D as anything in active_sources)
 		var/result = D.can_harvest_biomass()
-		world << "Result for [D] is [result]"
 		//This thing is no longer viable
 		if (result == MASS_FAIL)
 			failed = TRUE
@@ -179,7 +236,6 @@
 		else
 			//Alright we can absorb!
 			total += D.harvest_biomass(ticks)
-			world << "Absorbing, total now [total]"
 
 	.=total	//We'll return the total
 
@@ -196,9 +252,19 @@
 /datum/click_handler/placement/necromorph/harvester/placement_blocked(var/turf/candidate)
 	.=..()
 	if (!.)
+		/*
 		var/found_food = get_harvestable_biomass_sources(candidate, TRUE)
 		if (!found_food)
 			return "There are no objects within range of this location which contain harvestable biomass."
+		*/
+
+		for (var/obj/structure/corruption_node/harvester/H in range(4, candidate))
+			return "Cannot be placed within 4 tiles of an existing harvester."
+
+		for (var/turf/T in trange(1, candidate))
+			if (!turf_clear(T, TRUE))
+				return "Requires a 3x3 clear area to place within."
+
 
 //Helper Proc
 //This searched for nearby things that could be used by a harvester node.
@@ -210,6 +276,10 @@
 	for (var/atom/O in view(HARVESTER_HARVEST_RANGE, source))
 		var/result = O.can_harvest_biomass()
 		if (result == MASS_FAIL)
+			continue
+
+		var/datum/extension/being_harvested/BH = get_extension(O, /datum/extension/being_harvested)
+		if (BH)
 			continue
 
 		if (single_check)
@@ -228,6 +298,8 @@
 
 
 
+//Simple extension to mark an object as the property of a specific harvester, so that two of them can't draw from the same thing
+/datum/extension/being_harvested
 
 
 
@@ -253,3 +325,205 @@
 //The ticks var contains the number of ticks (seconds) since the last time biomass was absorbed. This should be applied as a multiplier on the biomass taken and returned
 /datum/proc/harvest_biomass(var/ticks = 1)
 	return 0
+
+
+/*
+	Signal Abilities
+*/
+/datum/signal_ability/harvester
+
+	target_string = "Any tile within the view field of a harvester node."
+	base_type = /datum/signal_ability/harvester
+	targeting_method	=	TARGET_CLICK
+	energy_cost = 25
+
+/datum/signal_ability/harvester/proc/get_harvesters(var/atom/origin)
+	var/list/harvesters = list()
+	var/turf/T = get_turf(origin)
+	for (var/obj/structure/corruption_node/harvester/H in range(10, T))
+		harvesters += H
+
+	return harvesters
+
+/datum/signal_ability/harvester/on_cast(var/mob/user, var/atom/target, var/list/data)
+	var/list/harvesters = get_harvesters(target)
+	if (!harvesters || !harvesters.len)
+		to_chat(user, SPAN_WARNING("No nearby harvesters found to attack from."))
+		refund(user)
+		return FALSE
+
+	return harvesters
+
+
+
+
+//Spinelaunch: Identical to lurker spines, throws a single projectile
+/datum/signal_ability/harvester/spine
+	name = "Harvester: Spine Launch"
+	id = "h_spine"
+	desc = "This ability is a trigger for functions on a Harvester node. It requires a harvester somewhere near your target location. \
+	The cooldown on these harvester abilities is longer than what the harvester itself can do, so for best results;\
+	 two or more signals should man each harvester during combat<br>\
+	<br>\
+	The harvester fires a sharp bony spine, dealing ballistic damage on impact."
+
+
+/datum/signal_ability/harvester/spine/on_cast(var/mob/user, var/atom/target, var/list/data)
+	var/list/harvesters = ..()
+	if (!harvesters)
+		return
+
+	var/fired = FALSE
+
+	//In case of multiple nearby harvesters, we will loop through them in hopes of finding one off cooldown
+	for (var/obj/structure/corruption_node/harvester/H in harvesters)
+		fired = H.shoot_ability(/datum/extension/shoot/harvester_spine, target , /obj/item/projectile/bullet/spine, accuracy = 20, dispersion = list(0), num = 1, windup_time = 0, fire_sound  = list('sound/effects/creatures/necromorph/lurker/spine_fire_1.ogg',
+		'sound/effects/creatures/necromorph/lurker/spine_fire_2.ogg',
+		'sound/effects/creatures/necromorph/lurker/spine_fire_3.ogg'), nomove = 0, cooldown = HARVESTER_SPINE_COOLDOWN)
+
+		if (fired)
+			break
+
+	if (!fired)
+		to_chat(user, SPAN_WARNING("Nearby harvester is not ready to fire spines yet."))
+		refund(user)
+		return
+
+
+/datum/extension/shoot/harvester_spine
+	base_type = /datum/extension/shoot/harvester_spine
+
+
+
+
+
+
+/datum/signal_ability/harvester/acid
+	name = "Harvester: Acid Spray"
+	id = "h_acid"
+	desc = "This ability is a trigger for functions on a Harvester node. It requires a harvester somewhere near your target location. \
+	The cooldown on these harvester abilities is longer than what the harvester itself can do, so for best results;\
+	 two or more signals should man each harvester during combat<br>\
+	<br>\
+	The harvester fires a narrow stream of acid over two seconds, with good range."
+
+
+
+/datum/signal_ability/harvester/acid/on_cast(var/mob/user, var/atom/target, var/list/data)
+	var/list/harvesters = ..()
+	if (!harvesters)
+		return
+
+	var/fired = FALSE
+
+	//In case of multiple nearby harvesters, we will loop through them in hopes of finding one off cooldown
+	for (var/obj/structure/corruption_node/harvester/H in harvesters)
+		fired = H.spray_ability(target , angle = 25, length = 6, chemical = /datum/reagent/acid/necromorph, volume = 5, tick_delay = 0.2 SECONDS, stun = TRUE, duration = 2 SECONDS, cooldown = HARVESTER_ACID_COOLDOWN, windup = 0, override_user = user)
+
+		if (fired)
+			break
+
+
+	if (!fired)
+		to_chat(user, SPAN_WARNING("Nearby harvester is not ready to spray acid yet."))
+		refund(user)
+		return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/datum/signal_ability/harvester/tentacle
+	name = "Harvester: Tentacle"
+	id = "h_tentacle"
+	desc = "This ability is a trigger for functions on a Harvester node. It requires a harvester somewhere near your target location. \
+	The cooldown on these harvester abilities is longer than what the harvester itself can do, so for best results;\
+	 two or more signals should man each harvester during combat<br>\
+	<br>\
+	The harvester swings one of its tentacles in a wide arc, striking humans nearby."
+
+
+
+/datum/signal_ability/harvester/tentacle/on_cast(var/mob/user, var/atom/target, var/list/data)
+	var/list/harvesters = ..()
+	if (!harvesters)
+		return
+
+	var/fired = FALSE
+
+	//In case of multiple nearby harvesters, we will loop through them in hopes of finding one off cooldown
+	for (var/obj/structure/corruption_node/harvester/H in harvesters)
+		fired = H.swing_attack(swing_type = /datum/extension/swing/harvester_tentacle,
+		source = H,
+		target = target,
+		angle = 150,
+		range = 3,
+		duration = 0.85 SECOND,
+		windup = 0,
+		cooldown = HARVESTER_WHIP_COOLDOWN,
+		effect_type = /obj/effect/effect/swing/harvester_tentacle,
+		damage = 15,
+		damage_flags = DAM_EDGE,
+		stages = 8)
+
+		if (fired)
+			spawn(0.8 SECONDS)
+				var/sound_effect = pick(list('sound/effects/attacks/big_swoosh_1.ogg',
+				'sound/effects/attacks/big_swoosh_2.ogg',
+				'sound/effects/attacks/big_swoosh_3.ogg',))
+				playsound(H, sound_effect, VOLUME_LOW, TRUE)
+
+			break
+
+
+	if (!fired)
+		to_chat(user, SPAN_WARNING("Nearby harvester is not ready to swing a tentacle yet."))
+		refund(user)
+		return
+
+
+/obj/effect/effect/swing/harvester_tentacle
+	icon_state = "harvester_tentacle"
+	default_scale = 1.65
+	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
+	plane = LARGE_MOB_PLANE
+	layer = BELOW_LARGE_MOB_LAYER
+	inherit_order = FALSE
+
+/datum/extension/swing/harvester_tentacle
+	base_type = /datum/extension/swing/harvester_tentacle
+	var/limb_used
+
+
+
+/datum/extension/swing/harvester_tentacle/hit_mob(var/mob/living/L)
+	//We harmlessly swooce over lying targets
+	if (L.lying)
+		return FALSE
+	.=..()
+	if (.)
+		//If we hit someone, we'll knock them away diagonally in the direction of our swing
+		var/push_angle = 45
+		if (swing_direction == ANTICLOCKWISE)
+			push_angle *= -1
+
+		var/vector2/push_direction = target_direction.Turn(push_angle)
+		L.apply_impulse(push_direction, 200)
+
+
+
+
+/datum/extension/swing/harvester_tentacle/setup_effect()
+	.=..()
+	effect.pixel_y -= 32
+	effect.plane = LARGE_MOB_PLANE
+	effect.layer = BELOW_LARGE_MOB_LAYER

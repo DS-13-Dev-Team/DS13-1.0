@@ -146,8 +146,9 @@
 	//TODO: Create the arm effect
 	effect = new effect_type(get_turf(source), source, starting_direction.Rotation())
 	var/atom/A = holder
-	effect.layer = A.layer+0.1
-	effect.plane = A.plane+0.1
+	if (effect.inherit_order)
+		effect.layer = A.layer+0.1
+		effect.plane = A.plane+0.1
 
 	animate(effect, transform = effect.transform.Turn(turn_angle), time = duration, easing = CIRCULAR_EASING)
 
@@ -203,7 +204,7 @@
 	var/atom/A = holder
 	if (raytrace && !check_trajectory(A, L, pass_flags = A.pass_flags))
 		return FALSE
-	user.launch_strike(L, damage, holder, damage_flags = flags)
+	source.launch_strike(L, damage, holder, damage_flags = flags)
 	playsound(L, hitsound, VOLUME_MID, 1)
 	return TRUE
 
@@ -274,7 +275,7 @@
 
 /obj/effect/effect/swing
 	icon = 'icons/mob/necromorph/swinging_limbs.dmi'
-
+	var/inherit_order = TRUE
 
 /obj/effect/effect/swing/New(var/location, var/atom/holder, var/matrix/starting_rotation)
 	//TODO: Make the effect move with the holder atom

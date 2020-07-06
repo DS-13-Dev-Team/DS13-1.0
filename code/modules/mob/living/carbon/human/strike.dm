@@ -17,7 +17,7 @@
 			{H = target;}\
 	if (isliving(user))\
 		{luser = user;}\
-		if (ishuman(target))\
+		if (ishuman(user))\
 			{huser = user;\
 			damage *= huser.damage_multiplier}
 //Helper Procs

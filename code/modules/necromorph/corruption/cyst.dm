@@ -60,6 +60,13 @@
 
 
 
+//Cysts can stack if they dont share directions
+/obj/structure/corruption_node/cyst/check_overlap(var/datum/click_handler/placement/P)
+	if (placement_location == P.placement_location)
+		if (dir == P.dir)
+			return FALSE
+	return TRUE
+
 
 
 /obj/structure/corruption_node/cyst/proc/generate_payload()
@@ -270,6 +277,7 @@
 /datum/click_handler/placement/ability/cyst
 	rotate_angle = 45	//8 directions supported
 	var/atom/mount_target
+	placement_location = PLACEMENT_WALL
 
 //Check we have a surface to place it on
 /datum/click_handler/placement/ability/cyst/placement_blocked(var/turf/candidate)

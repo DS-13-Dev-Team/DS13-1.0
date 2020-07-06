@@ -10,6 +10,8 @@
 	var/random_rotation = TRUE	//If true, set rotation randomly on spawn
 
 	var/placement_type = /datum/click_handler/placement/necromorph
+	var/placement_location = PLACEMENT_FLOOR
+
 
 	var/dummy = FALSE
 
@@ -21,6 +23,8 @@
 
 	var/processing = FALSE
 
+
+
 /obj/structure/corruption_node/Initialize()
 	.=..()
 	if (!isturf(loc))
@@ -30,6 +34,8 @@
 	update_icon()
 	if (!dummy)
 		animate_fade_in()
+
+	start_processing()
 
 
 /obj/structure/corruption_node/get_biomass()
@@ -74,6 +80,7 @@
 	if (turf_corrupted(src, TRUE))
 		regenerate()
 		if (can_stop_processing())
+			processing = FALSE
 			return PROCESS_KILL
 	else
 		degenerate()
@@ -84,6 +91,19 @@
 /obj/structure/corruption_node/proc/degenerate()
 	take_damage(degen, BRUTE, null, null, bypass_resist = TRUE)
 
+/obj/structure/corruption_node/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	.=..()
+	if (.)
+		start_processing()
+
+
+/*
+	Process Handling
+*/
+/obj/structure/corruption_node/proc/start_processing()
+	if (!processing)
+		processing = TRUE
+		START_PROCESSING(SSobj, src)
 
 /obj/structure/corruption_node/proc/can_stop_processing()
 	if (health < max_health)
@@ -92,4 +112,17 @@
 	if (!turf_corrupted(src, TRUE))
 		return FALSE
 
+	return TRUE
+
+
+/obj/structure/corruption_node/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
+	if (istype(mover, /obj/effect/vine/corruption))
+		return TRUE
+
+	.=..()
+
+//Checks if a a structure about to be placed would overlap with ourselves. Return false to block the placement, true to allow it
+/obj/structure/corruption_node/proc/check_overlap(var/datum/click_handler/placement/P)
+	if (placement_location == P.placement_location)
+		return FALSE
 	return TRUE

@@ -43,3 +43,8 @@
 #define REAGENT_TO_BIOMASS	0.01
 
 #define BIOMASS_TO_REAGENT	100
+
+
+
+#define PLACEMENT_FLOOR	"floor"
+#define PLACEMENT_WALL	"wall"
