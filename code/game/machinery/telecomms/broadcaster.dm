@@ -434,13 +434,15 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	return 1
 
-/proc/Broadcast_SimpleMessage(var/source, var/frequency, var/text, var/data, var/mob/M, var/compression, var/level, var/channel_tag, var/channel_color)
-
+/proc/Broadcast_SimpleMessage(var/source, var/frequency, var/text, var/data, var/mob/M, var/compression, var/level, var/channel_tag, var/channel_color, var/class)
+	world << "Broadcast simple message [source] [text]"
   /* ###### Prepare the radio connection ###### */
 
+	/* Not needed, the message is heard with a null mob
 	if(!M)
 		var/mob/living/carbon/human/H = new
 		M = H
+	*/
 
 	var/datum/radio_frequency/connection = radio_controller.return_frequency(frequency)
 
@@ -483,6 +485,11 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	// --- Broadcast to ALL radio devices ---
 
+	else if(data == -1)
+		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+			receive |= R.send_hear(display_freq)
+
+	// --- Broadcast to ALL radio devices on a zlevel ---
 	else
 		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
 			var/turf/position = get_turf(R)
@@ -529,11 +536,16 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		var/freq_text = format_frequency(display_freq)
 		if(channel_tag)
 			freq_text = channel_tag
+		var/part_a
+		if (class)
+			part_a = "<span class='[class]'>"
+		else
+			if(!channel_color)
+				channel_color = channel_color_presets["Global Green"]
+			part_a = "<span style='color: [channel_color]'>"
 
-		if(!channel_color)
-			channel_color = channel_color_presets["Global Green"]
 
-		var/part_a = "<span style='color: [channel_color]'><span class='name'>" // goes in the actual output
+		part_a += "<span class='name'>" // goes in the actual output
 
 		// --- Some more pre-message formatting ---
 
