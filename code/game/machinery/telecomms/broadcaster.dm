@@ -434,8 +434,23 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	return 1
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /proc/Broadcast_SimpleMessage(var/source, var/frequency, var/text, var/data, var/mob/M, var/compression, var/level, var/channel_tag, var/channel_color, var/class)
-	world << "Broadcast simple message [source] [text]"
   /* ###### Prepare the radio connection ###### */
 
 	/* Not needed, the message is heard with a null mob
@@ -480,14 +495,16 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
 				var/turf/position = get_turf(R)
 				if(position && position.z == level)
-					receive |= R.send_hear(freq)
+					receive |= R.send_hear(freq, R.z)
 
 
 	// --- Broadcast to ALL radio devices ---
 
 	else if(data == -1)
 		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
-			receive |= R.send_hear(display_freq)
+			var/list/found_mobs = R.send_hear(display_freq)
+			if (found_mobs.len)
+			receive |= found_mobs
 
 	// --- Broadcast to ALL radio devices on a zlevel ---
 	else
@@ -507,7 +524,6 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	var/list/heard_gibberish= list() // completely screwed over message (ie "F%! (O*# *#!<>&**%!")
 
 	for (var/mob/R in receive)
-
 	  /* --- Loop through the receivers and categorize them --- */
 		// --- Check for compression ---
 		if(compression > 0)

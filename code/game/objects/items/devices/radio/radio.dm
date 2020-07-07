@@ -502,7 +502,7 @@
 		return -1
 	if(!listening)
 		return -1
-	if(!(0 in level))
+	if(level && !(0 in level))
 		var/turf/position = get_turf(src)
 		if(!position || !(position.z in level))
 			return -1
@@ -512,8 +512,7 @@
 	if (!on)
 		return -1
 	if (!freq) //recieved on main frequency
-		if (!listening)
-			return -1
+		return -1
 	else
 		var/accept = (freq==frequency && listening)
 		if (!accept)
@@ -530,8 +529,9 @@
 
 	var/range = receive_range(freq, level)
 	if(range > -1)
-		return get_mobs_or_objects_in_view(canhear_range, src)
 
+		return get_mobs_or_objects_in_view(range, src)
+	return list()
 
 /obj/item/device/radio/examine(mob/user)
 	. = ..()
