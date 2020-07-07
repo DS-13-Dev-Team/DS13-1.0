@@ -549,16 +549,22 @@ proc/get_nt_opposed()
 
 //Handlers for people dying / being revived.
 /datum/game_mode/proc/on_crew_death(mob/living/carbon/human/H)
-	if(!H)
-		return
+	if(!H?.client)
+		return FALSE
+	for(var/X in dead_players) //Hacky, yes. But more consistent than locate() in whatever.
+		if(X == H.client.ckey)
+			return FALSE
 	player_count = GLOB.all_crew_records.len
-	dead_players += H
+	dead_players += H.client.ckey
 	check_finished()
+	return TRUE
 
 /datum/game_mode/proc/on_crew_revive(mob/living/carbon/human/H)
-	if(!H)
-		return
+	if(!H?.client)
+		return FALSE
 	player_count = GLOB.all_crew_records.len
-	for(var/mob/M in dead_players) //Hacky, yes. But more consistent than locate() in whatever.
-		if(M == H)
+	for(var/X in dead_players) //Hacky, yes. But more consistent than locate() in whatever.
+		if(X == H.client.ckey)
 			dead_players -= H
+	check_finished()
+	return TRUE
