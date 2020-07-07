@@ -171,11 +171,20 @@
 /datum/species/necromorph/get_icobase(var/mob/living/carbon/human/H)
 	return icon_template //We don't need to duplicate the same dmi path twice
 
+/mob/proc/night_vision()
+	set name = "Toggle night-vision"
+	set desc = "This doesn't actually turn up anywhere, so hi!"
+	set category = SPECIES_NECROMORPH
+	var/toggled = (see_in_dark > 0)
+	to_chat(src, "<span class='notice'>You [toggled ? "disable" : "enable"] your night-vision.</span>")
+	set_see_in_dark( (toggled) ? 0 : 100 )
+
 /datum/species/necromorph/add_inherent_verbs(var/mob/living/carbon/human/H)
 	.=..()
 	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
 	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
 	H.verbs |= /datum/proc/help //Verb to see your own abilities
+	H.verbs |= /mob/proc/night_vision //Lets you enable / disable your night vision
 	//H.verbs |= /mob/proc/message_unitologists
 	make_scary(H)
 
