@@ -502,9 +502,10 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	else if(data == -1)
 		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+			world << "Checking device [R]"
 			var/list/found_mobs = R.send_hear(display_freq)
 			if (found_mobs.len)
-			receive |= found_mobs
+				receive |= found_mobs
 
 	// --- Broadcast to ALL radio devices on a zlevel ---
 	else

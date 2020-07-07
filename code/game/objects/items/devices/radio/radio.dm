@@ -5,15 +5,16 @@
 	icon_state = "walkietalkie"
 	item_state = "walkietalkie"
 
-	var/on = 1 // 0 for off
+	var/on = TRUE // 0 for off
+	var/active = FALSE	//Whether this radio is actually recieving messages in a technical sense, used for code optimisation
+	var/listening = FALSE
 	var/last_transmission
 	var/frequency = PUB_FREQ //common chat
 	var/traitor_frequency = 0 //tune to frequency to unlock traitor supplies
 	var/canhear_range = 3 // the range which mobs can hear this radio from
 	var/datum/wires/radio/wires = null
 	var/b_stat = 0
-	var/broadcasting = 0
-	var/listening = 1
+	var/broadcasting = FALSE
 	var/list/channels = list() //see communications.dm for full list. First channel is a "default" for :h
 	var/subspace_transmission = 0
 	var/syndie = 0//Holder to see if it's a syndicate encrypted radio
@@ -37,7 +38,8 @@
 /obj/item/device/radio/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
-	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
+	update_active()
+
 
 /obj/item/device/radio/Initialize()
 	. = ..()
@@ -45,22 +47,61 @@
 	if(ispath(cell))
 		cell = new(src)
 	internal_channels = GLOB.using_map.default_internal_channels()
-	GLOB.listening_objects += src
+
 
 	if(frequency < RADIO_LOW_FREQ || frequency > RADIO_HIGH_FREQ)
 		frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
 	set_frequency(frequency)
 
+
+
+//Optimisation!
+/obj/item/device/radio/proc/update_active()
+	if (can_activate())
+		activate()
+
+	else
+		deactivate()
+
+/obj/item/device/radio/proc/activate()
+	if (active)
+		return
+
+	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
+
+	GLOB.listening_objects |= src
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
+	active = TRUE
+
+/obj/item/device/radio/proc/can_activate()
+	if (!on)
+		return FALSE
+
+	if (!broadcasting && !listening)
+		return FALSE
+
+	if (power_usage && !cell)
+		return FALSE
+	return TRUE
+
+
+
+/obj/item/device/radio/proc/deactivate()
+	radio_controller.remove_object(src, frequency, RADIO_CHAT)
+
+	GLOB.listening_objects -= src
+	for (var/ch_name in channels)
+		radio_controller.remove_object(src, radiochannels[ch_name])
+
+	active = FALSE
+
+
+
 /obj/item/device/radio/Destroy()
 	QDEL_NULL(wires)
-	GLOB.listening_objects -= src
-	if(radio_controller)
-		radio_controller.remove_object(src, frequency)
-		for (var/ch_name in channels)
-			radio_controller.remove_object(src, radiochannels[ch_name])
+	deactivate()
 	return ..()
 
 /obj/item/device/radio/attack_self(mob/user as mob)
@@ -70,6 +111,7 @@
 /obj/item/device/radio/interact(mob/user)
 	if(!user)
 		return 0
+
 
 	if(b_stat)
 		wires.Interact(user)
@@ -158,9 +200,11 @@
 
 /obj/item/device/radio/proc/ToggleBroadcast()
 	broadcasting = !broadcasting && !(wires.IsIndexCut(WIRE_TRANSMIT) || wires.IsIndexCut(WIRE_SIGNAL))
+	update_active()
 
 /obj/item/device/radio/proc/ToggleReception()
 	listening = !listening && !(wires.IsIndexCut(WIRE_RECEIVE) || wires.IsIndexCut(WIRE_SIGNAL))
+	update_active()
 
 /obj/item/device/radio/CanUseTopic()
 	if(!on)
@@ -200,6 +244,7 @@
 				channels[chan_name] &= ~FREQ_LISTENING
 			else
 				channels[chan_name] |= FREQ_LISTENING
+				update_active()
 		. = 1
 	else if(href_list["spec_freq"])
 		var freq = href_list["spec_freq"]
@@ -215,6 +260,7 @@
 			user.put_in_hands(cell)
 			to_chat(user, "<span class='notice'>You remove [cell] from \the [src].</span>")
 			cell = null
+			update_active()
 		return 1
 
 	if(.)
@@ -557,6 +603,7 @@
 	if(!cell && power_usage && istype(W, /obj/item/weapon/cell/device) && user.unEquip(W, target = src))
 		to_chat(user, "<span class='notice'>You put [W] in \the [src].</span>")
 		cell = W
+		update_active()
 		return
 
 /obj/item/device/radio/emp_act(severity)
