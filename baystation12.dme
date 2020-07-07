@@ -2293,6 +2293,7 @@
 #include "code\modules\necromorph\corruption\harvester.dm"
 #include "code\modules\necromorph\corruption\maw.dm"
 #include "code\modules\necromorph\corruption\nest.dm"
+#include "code\modules\necromorph\corruption\snare.dm"
 #include "code\modules\necromorph\corruption\zundef.dm"
 #include "code\modules\organs\blood.dm"
 #include "code\modules\organs\organ.dm"
