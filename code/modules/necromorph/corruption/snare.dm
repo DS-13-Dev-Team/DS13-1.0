@@ -32,7 +32,7 @@
 
 /obj/structure/corruption_node/snare/get_blurb()
 	. = "Places a trap on the floor which attempts to trip crewmembers who walk over it.<br>\
-	If successful, the victim is knocked down for quite a long time and takes some damage. Snares are single use, and will vanish after successfully tripping someone<br>\<br>\
+	If successful, the victim is knocked down for a few seconds and takes some damage, while an alert is sent notifying necromorphs and signals that the trap caught someone. Snares are single use, and will vanish after successfully tripping someone<br>\<br>\
 	Although snare can be placed near live crew, it must be placed at least [SNARE_PLACEMENT_BUFFER] tiles away<br>\<br>\
 	The snare can only trip people as long as they don't notice it. If a human clicks on it or examines it, that specific snare becomes unable to trip them for the next few minutes, allowing them to harmlessly walk over it.<br>\
 	<br>\
@@ -82,7 +82,8 @@
 	H.take_overall_damage(20)
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
 	H.Weaken(5)
-
+	link_necromorphs_to(SPAN_NOTICE("[H] tripped over snare at LINK"), src)
+	qdel(src)
 
 
 /*
