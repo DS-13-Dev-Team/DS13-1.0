@@ -491,7 +491,7 @@ proc
 //This is a generic proc to allow it to handle null users
 /proc/get_zone_sel(var/mob/user)
 	.= BP_CHEST
-	if (user && user.zone_sel && user.zone_sel.selecting)
+	if (istype(user) && user.zone_sel && user.zone_sel.selecting)
 		return user.zone_sel.selecting
 
 

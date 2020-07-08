@@ -9,7 +9,7 @@
 	icon_state = "maw"
 	name = "Maw"
 	desc = "The abyss stares back at you."
-	scale = 1.4
+	default_scale = 1.4
 	biomass = 8
 	biomass_reclamation = 1
 	reclamation_time = 5 MINUTES

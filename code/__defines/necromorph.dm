@@ -15,6 +15,7 @@
 
 //Errorcodes returned from a biomass source
 #define MASS_READY	"ready"	//Nothing is wrong, ready to absorb
+#define MASS_ACTIVE	"active"//The source is ready to absorb, but it needs to be handled carefully and asked each time you absorb from it
 #define MASS_PAUSE	"pause"	//Not ready to deliver, but keep this source in the list and check again next tick
 #define MASS_EXHAUST	"exhaust"	//All mass is gone, delete this source
 #define MASS_FAIL	"fail"	//The source can't deliver anymore, maybe its not in range of where it needs to be
@@ -25,7 +26,25 @@
 #define MAW_EAT_RANGE	2	//Nom distance of a maw node
 
 
+//Biomass harvest defines. These are quantites per second that a machine gives when under the grip of a harvester
+//Remember that there are often 10+ of any such machine in its appropriate room, and each gives a quantity
+#define BIOMASS_HARVEST_LARGE	0.04
+#define BIOMASS_HARVEST_MEDIUM	0.03
+#define BIOMASS_HARVEST_SMALL	0.015
+
+//This is intended for use with active sources which have a limited total quantity to distribute.
+//Don't allow infinite sources to give out biomass at this rate
+#define BIOMASS_HARVEST_ACTIVE	0.1
+
+//Items in vendors are worth this* their usual biomass, to make them last longer as sources
+#define VENDOR_BIOMASS_MULT	5
+
 //One unit (10ml) of purified liquid biomass can be multiplied by this value to create one kilogram of solid biomass
 #define REAGENT_TO_BIOMASS	0.01
 
 #define BIOMASS_TO_REAGENT	100
+
+
+
+#define PLACEMENT_FLOOR	"floor"
+#define PLACEMENT_WALL	"wall"

@@ -28,6 +28,13 @@
 	use_sound = 'sound/effects/storage/box.ogg'
 	var/foldable = /obj/item/stack/material/cardboard	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
 
+//Boxes are cardboard, so biodegradeable
+/obj/item/weapon/storage/box/get_biomass()
+	var/total = 0.2	//Little bit of cardboard is biomass itself
+	for (var/datum/D as anything in contents)
+		total += D.get_biomass()
+	return total
+
 /obj/item/weapon/storage/box/large
 	name = "large box"
 	icon_state = "largebox"

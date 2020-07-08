@@ -54,14 +54,18 @@ Vars/
 	Cooldown:	Starts after duration
 */
 
-/datum/extension/spray/New(var/atom/source, var/atom/target, var/angle, var/length, var/chemical, var/volume, var/tick_delay, var/stun, var/duration, var/cooldown)
+/datum/extension/spray/New(var/atom/source, var/atom/target, var/angle, var/length, var/chemical, var/volume, var/tick_delay, var/stun, var/duration, var/cooldown, var/mob/override_user = null)
 	.=..()
 	src.source = source
-	if (isliving(source))
+	if (override_user)
+		user = override_user
+	else if (isliving(source))
 		user = source
-		if (user.client)
-			spray_handler = user.PushClickHandler(/datum/click_handler/spray)
-			spray_handler.host = src
+
+	if (user && user.client)
+		spray_handler = user.PushClickHandler(/datum/click_handler/spray)
+		spray_handler.host = src
+
 	set_target_loc(target.get_global_pixel_loc())
 	src.angle = angle
 	src.length = length
@@ -78,7 +82,7 @@ Vars/
 
 /datum/extension/spray/proc/set_target_loc(var/vector2/newloc, var/target_object)
 	target = newloc
-	if (user && target_object)
+	if (isliving(user) && target_object)
 		user.face_atom(target_object)
 	recalculate_cone()
 
@@ -107,7 +111,7 @@ Vars/
 		fx.particle_color = R.color
 		fx.start()
 
-		if (stun && user)
+		if (stun && isliving(user))
 			user.set_move_cooldown(duration)
 
 		tick()	//Start the first tick
@@ -168,10 +172,10 @@ Vars/
 		return FALSE
 	.=..()
 
-/atom/proc/spray_ability(var/atom/target, var/angle, var/length, var/chemical, var/volume, var/tick_delay, var/stun, var/duration, var/cooldown, var/windup)
+/atom/proc/spray_ability(var/atom/target, var/angle, var/length, var/chemical, var/volume, var/tick_delay, var/stun, var/duration, var/cooldown, var/windup, var/mob/override_user = null)
 	if (!can_spray())
 		return FALSE
-	var/datum/extension/spray/S = set_extension(src, /datum/extension/spray,target, angle, length, chemical, volume, tick_delay, stun, duration, cooldown)
+	var/datum/extension/spray/S = set_extension(src, /datum/extension/spray,target, angle, length, chemical, volume, tick_delay, stun, duration, cooldown, override_user)
 	spawn(windup)
 		S.start()
 	return TRUE
@@ -209,12 +213,6 @@ Vars/
 /datum/click_handler/spray
 	var/datum/extension/spray/host
 	has_mousemove = TRUE
-
-/datum/click_handler/spray/New(var/mob/user)
-	.=..()
-
-/datum/click_handler/spray/Destroy()
-	.=..()
 
 /datum/click_handler/spray/MouseMove(object,location,control,params)
 	if (host && user && user.client)

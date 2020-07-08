@@ -72,7 +72,7 @@
 /obj/effect/chem_spray/set_target(var/vector2/target)
 	target_point = target
 	direction = VecDirectionBetween(origin.get_global_pixel_loc(), target)
-	cached_rotation = direction.Rotation()
+	default_rotation = direction.Rotation()
 
 
 */

@@ -13,7 +13,7 @@
 	max_health = 60	//fragile
 	visualnet_range = 20
 	var/minimum_notify_delay = 3 MINUTES	//Minimum time that must pass between sightings before we resend notifications
-	scale = 1.6
+	default_scale = 1.6
 	var/light_range = 8
 
 /obj/structure/corruption_node/eye/Initialize()
@@ -111,7 +111,7 @@
 	max_health = 20	//fragile
 	visualnet_range = 8
 	minimum_notify_delay = 3 MINUTES	//Minimum time that must pass between sightings before we resend notifications
-	scale = 1
+	default_scale = 1
 	light_range = 2
 	marker_spawnable = FALSE
 

@@ -9,8 +9,20 @@
 	var/nutriment_factor = 4 // Per unit
 	var/injectable = 0
 	color = "#664330"
-	biomass = 0.01
+	biomass = 0.04
 
+
+/datum/reagent/drink
+	name = "Drink"
+	description = "Uh, some kind of drink."
+	reagent_state = LIQUID
+	color = "#e78108"
+	var/nutrition = 0 // Per unit
+	var/adj_dizzy = 0 // Per tick
+	var/adj_drowsy = 0
+	var/adj_sleepy = 0
+	var/adj_temp = 0
+	biomass = 0.02	//Watered down so less than solid reagents
 
 
 /datum/reagent/nutriment/mix_data(var/list/newdata, var/newamount)
@@ -62,6 +74,7 @@
 	name = "animal protein"
 	taste_description = "some sort of protein"
 	color = "#440000"
+	biomass = 0.08
 
 /datum/reagent/nutriment/protein/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	switch(alien)
@@ -437,16 +450,7 @@
 
 /* Drinks */
 
-/datum/reagent/drink
-	name = "Drink"
-	description = "Uh, some kind of drink."
-	reagent_state = LIQUID
-	color = "#e78108"
-	var/nutrition = 0 // Per unit
-	var/adj_dizzy = 0 // Per tick
-	var/adj_drowsy = 0
-	var/adj_sleepy = 0
-	var/adj_temp = 0
+
 
 /datum/reagent/drink/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustToxLoss(removed) // Probably not a good idea; not very deadly though

@@ -2290,6 +2290,7 @@
 #include "code\modules\necromorph\corruption\cyst.dm"
 #include "code\modules\necromorph\corruption\eye.dm"
 #include "code\modules\necromorph\corruption\growth.dm"
+#include "code\modules\necromorph\corruption\harvester.dm"
 #include "code\modules\necromorph\corruption\maw.dm"
 #include "code\modules\necromorph\corruption\nest.dm"
 #include "code\modules\necromorph\corruption\zundef.dm"

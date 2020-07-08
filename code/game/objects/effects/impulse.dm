@@ -43,9 +43,10 @@
 
 
 	var/turf/pushtarget = get_turf_in_direction(src, direction, pushdist)
-	.=TRUE
+
 	spawn()
 		throw_at(pushtarget, pushdist, 1, null)
+	return TRUE
 
 /mob/living/var/knockdown_threshold_factor = 1.5	//Requires a force at least this * mass to knock down this mob
 /mob/living/var/stagger_threshold_factor = 0.1	//

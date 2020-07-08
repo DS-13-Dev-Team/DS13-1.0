@@ -559,3 +559,11 @@
 
 	SetName("[name] ([occupant])")
 	icon_state = occupied_icon_state
+
+
+
+/obj/machinery/cryopod/can_harvest_biomass()
+	return MASS_READY
+
+/obj/machinery/cryopod/harvest_biomass()
+	return BIOMASS_HARVEST_SMALL //To offset the fact that there's a lot of cryopods

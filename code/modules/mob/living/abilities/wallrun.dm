@@ -46,7 +46,7 @@
 
 	//These hold cached values of the user's default - not current - variables, at the time we mounted a wall
 	var/vector2/cached_pixels
-	var/cached_rotation
+	var/default_rotation
 	var/cached_alpha
 	var/cached_passflags
 	var/passflag_delta	//Holds flying and table passflags, but only if the user doesn't have them naturally. Used to apply/remove them
@@ -261,8 +261,7 @@
 /datum/extension/wallrun/proc/unmount_silent()
 	unmount()
 	//Visuals
-	A.default_rotation = cached_rotation
-	cached_rotation = 0
+	A.default_rotation = 0
 
 	A.default_pixel_x = cached_pixels.x
 	A.default_pixel_y = cached_pixels.y
@@ -278,7 +277,7 @@
 
 /datum/extension/wallrun/proc/cache_data()
 	cached_pixels = new /vector2(A.default_pixel_x, A.default_pixel_y)
-	cached_rotation = A.default_rotation
+	default_rotation = A.default_rotation
 	cached_alpha = A.default_alpha
 	cached_passflags = A.pass_flags
 	if (!(cached_passflags & PASS_FLAG_TABLE))
@@ -303,8 +302,8 @@
 
 /datum/extension/wallrun/proc/unmount_animation()
 	//Visuals
-	A.default_rotation = cached_rotation
-	cached_rotation = 0
+	A.default_rotation = default_rotation
+	default_rotation = 0
 
 	A.default_pixel_x = cached_pixels.x
 	A.default_pixel_y = cached_pixels.y

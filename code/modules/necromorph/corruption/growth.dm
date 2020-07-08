@@ -6,9 +6,9 @@
 	icon_state = "growth"
 	density = FALSE
 
-	var/range = 12
-	var/speed = 1
-	var/falloff = 0.15
+	var/range = 14
+	var/speed = 1.25
+	var/falloff = 0.1
 	var/limit = null	//Maximum number of tiles it can support
 
 
@@ -45,9 +45,9 @@
 	density = FALSE
 	marker_spawnable = FALSE
 
-	range = 6
-	speed = 0.9
-	falloff = 0.2
+	range = 7
+	speed = 1
+	falloff = 0.15
 
 
 /obj/structure/corruption_node/growth/branch/get_blurb()
@@ -77,7 +77,7 @@
 	range = 40
 	speed = 3
 	falloff = 0.025
-	limit = 50
+	limit = 60
 
 
 /obj/structure/corruption_node/growth/root/get_blurb()

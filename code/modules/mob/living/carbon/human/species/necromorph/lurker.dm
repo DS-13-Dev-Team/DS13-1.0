@@ -224,6 +224,7 @@ The Lurker can only fire spines while its shell is open"
 
 //Projectile version, higher chance of embedding
 /obj/item/projectile/bullet/spine
+	name = "spine"
 	damage =	14
 	armor_penetration = 5
 	embed_mult = 1.5

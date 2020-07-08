@@ -175,7 +175,7 @@
 		amount -= resistance
 
 	if (amount <= 0)
-		return FALSE
+		return 0
 
 	health -= amount
 
