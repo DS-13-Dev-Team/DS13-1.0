@@ -48,6 +48,7 @@
 	range = 7
 	speed = 1
 	falloff = 0.15
+	randpixel = 4
 
 
 /obj/structure/corruption_node/growth/branch/get_blurb()
@@ -78,6 +79,7 @@
 	speed = 3
 	falloff = 0.025
 	limit = 60
+	randpixel = 4
 
 
 /obj/structure/corruption_node/growth/root/get_blurb()

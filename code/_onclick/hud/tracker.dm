@@ -9,18 +9,34 @@
 	alpha = 128
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "health6"
+	var/lifetimer
+	mouse_opacity = 0
 
-/obj/screen/movable/tracker/New(var/mob/host, var/atom/_tracked)
+/obj/screen/movable/tracker/New(var/mob/host, var/atom/_tracked, var/lifetime)
 	if (host.client)
 		origin = host
 		C = origin.client
 		tracked = _tracked
+		setup()
 		C.screen |= src
+		if (lifetime)
+			set_lifetime(lifetime)
 		.=..()
 	else
 		//Can't add it to a mob without a client
 		qdel(src)
 		return
+
+/obj/screen/movable/tracker/proc/setup()
+	return
+
+/obj/screen/movable/tracker/proc/set_lifetime(var/lifetime)
+	deltimer(lifetimer)
+	lifetimer = addtimer(CALLBACK(src, /obj/screen/movable/tracker/proc/end), lifetime,  TIMER_STOPPABLE)
+
+/obj/screen/movable/tracker/proc/end()
+	deltimer(lifetimer)
+	qdel(src)
 
 /obj/screen/movable/tracker/Initialize()
 	.=..()

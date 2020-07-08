@@ -55,7 +55,7 @@
 	var/LOS_block	=	FALSE
 
 	//When set to a number, the spell must be cast at least this distance away from a conscious crewmember
-	//UNIMPLEMENTED//var/distance_blocked = 1
+	//var/distance_blocked = 0
 
 	//If true, this spell can only be cast after the marker has activated
 	//If false, it can be cast anytime from roundstart

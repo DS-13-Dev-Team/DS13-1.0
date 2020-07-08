@@ -39,7 +39,7 @@
 		for (var/mob/living/S in seers)
 			if (L == S)
 				continue //Don't see yourself
-			var/obj/screen/movable/tracker/TR = new (S,L)
+			var/obj/screen/movable/tracker/TR = new (S,L, duration)
 			TR.appearance = new /mutable_appearance(L)
 			trackers += TR
 

@@ -21,6 +21,8 @@
 	var/regen = 1
 	var/degen = 0.5
 
+	var/randpixel = 0
+
 	var/processing = FALSE
 
 
@@ -53,16 +55,18 @@
 	var/matrix/M = matrix()
 	M = M.Scale(default_scale)	//We scale up the sprite so it slightly overlaps neighboring corruption tiles
 	M = turn(M, get_rotation())
+	if (randpixel)
+		pixel_x = default_pixel_x + rand_between(-randpixel, randpixel)
+		pixel_y = default_pixel_y + rand_between(-randpixel, randpixel)
 	transform = M
 
 
 /obj/structure/corruption_node/proc/get_rotation()
 	if (!random_rotation)
 		return 0
-	var/matrix/M = matrix()
-	var/rotation = pick(list(0,45,90,135,180,225,270,315))//Randomly rotate it
-	default_rotation = rotation
-	transform = turn(M, rotation)
+	default_rotation = pick(list(0,45,90,135,180,225,270,315))//Randomly rotate it
+
+	return default_rotation
 
 /obj/structure/corruption_node/proc/get_blurb()
 

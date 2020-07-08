@@ -568,7 +568,7 @@ proc/TextPreview(var/string,var/len=40)
 	for (var/ckey in SSnecromorph.necromorph_players)
 		var/datum/player/P = get_or_create_player(ckey)
 		var/mob/M = P.get_mob()
-		if (M.client)
+		if (M && M.client)
 			var/personal_message = replacetext(message, "LINK", jumplink_public(M, target))
 			to_chat(M, personal_message)
 
