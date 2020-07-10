@@ -81,4 +81,8 @@
 	if(ticker && ticker.mode)
 		ticker.mode.check_win()
 	to_chat(src,"<span class='deadsay'>[show_dead_message]</span>")
-	return 1
+	var/datum/computer_file/report/crew_record/R = get_crewmember_record(real_name) //Try get a crew manifest for this mob
+	if(!R)
+		return FALSE //Not on the manifest? You don't exist.
+
+	return FALSE

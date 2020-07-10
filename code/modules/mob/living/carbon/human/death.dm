@@ -29,6 +29,8 @@
 
 /mob/living/carbon/human/death(gibbed,deathmessage="seizes up and falls limp...", show_dead_message = "You have died.")
 	if(stat == DEAD) return
+
+
 	BITSET(hud_updateflag, HEALTH_HUD)
 	BITSET(hud_updateflag, STATUS_HUD)
 	BITSET(hud_updateflag, LIFE_HUD)
@@ -67,6 +69,7 @@
 
 	if(ticker && ticker.mode)
 		sql_report_death(src)
+
 		ticker.mode.check_win()
 
 	if(wearing_rig)
@@ -78,6 +81,9 @@
 		play_species_audio(loc, SOUND_DEATH, 80, 1, 2)
 
 	handle_hud_list()
+
+	//TODO Future: Check if this was actually a crewmember
+	ticker.mode.on_crew_death(src)
 
 /mob/living/carbon/human/proc/ChangeToHusk()
 	if(HUSK in mutations)	return

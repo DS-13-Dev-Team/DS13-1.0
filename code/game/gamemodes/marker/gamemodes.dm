@@ -27,11 +27,8 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	votable = TRUE
 	antag_tags = list(MODE_UNITOLOGIST_SHARD)
 
-
 /datum/game_mode/marker/enemy_within/get_marker_location()
 	return pick(SSnecromorph.marker_spawns_aegis)
-
-
 
 /datum/game_mode/marker
 	name = "unnamed"
@@ -51,6 +48,13 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	var/marker_setup_time = 45 MINUTES
 	var/marker_active = FALSE
 	antag_scaling_coeff = 8
+
+	//Auto End condition stuff. To make the round auto end when necromorphs kill everyone
+
+	//For it to trigger, there needs to have been at least this many crewmembers in total over the round
+	//This includes the living, and the dead
+	var/minimum_historic_crew	=	5
+	var/minimum_alive_percentage = 0.1 //0.1 = 10%
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
 	. = ..()
@@ -107,10 +111,6 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	marker_active = TRUE
 	return TRUE
 
-
-
-
-
 /client/proc/activate_marker()
 	set name = "Activate Marker"
 	set category = "Admin"
@@ -124,3 +124,21 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 		to_chat(src, "The marker is already active")
 		return
 	GM.activate_marker()
+
+/**
+
+There is probably a better way to do this, but I've added some more stringent checks to the gamemode win conditions to prevent things like:
+Admin characters being counted as crew, and on their deletion, ending the game
+Non-critical characters like any ghost-roles you may wish to add, or even antags, from counting as "dead crew" (Antags fallback to their own "are the antags dead checks"
+
+*/
+
+//Marker gamemode can end when necros kill most of the crew
+/datum/game_mode/marker/check_finished()
+	if(marker_active)	//Marker must be active
+		if (get_historic_crew_total() >= minimum_historic_crew)	//We need to have had a minimum total crewcount
+			var/minimum_living_crew = Ceiling(get_historic_crew_total() * minimum_alive_percentage)	//This many crew players at least, need to be left alive
+			if (get_living_crew_total() < minimum_living_crew)
+				return TRUE
+
+	return ..() //Fallback to the default game end conditions like all antags dying, shuttles being docked, etc.
