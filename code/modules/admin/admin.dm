@@ -1294,7 +1294,7 @@ var/global/floorIsLava = 0
 		M = whom
 		C = M.client
 	else
-		return "<b>(*not a mob*)</b>"
+		return "<b>(*N/A*)</b>"
 	switch(detail)
 		if(0)
 			return "<b>[key_name(C, link, name, highlight_special, ticket)]</b>"

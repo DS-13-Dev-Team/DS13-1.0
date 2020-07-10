@@ -13,7 +13,9 @@ var/list/admin_verbs_default = list(
 //	/client/proc/check_antagonists,		//shows all antags,
 	/client/proc/cmd_mentor_check_new_players,
 //	/client/proc/deadchat				//toggles deadchat on/off,
-	/client/proc/cmd_dev_bst
+	/client/proc/cmd_dev_bst,
+	/client/proc/admin_communicate
+
 	)
 var/list/admin_verbs_admin = list(
 	/client/proc/activate_marker,		//Activates The Marker

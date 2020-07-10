@@ -1,0 +1,30 @@
+<!-- 
+Title: Admin Communicate
+Used In File(s): \code\modules\admin\admin_communicate.dm
+-->
+{{:helper.form('grid', 'margin:0;')}}
+	<label for="name">Name:</label><br>
+	<input type="text"  id="name" name="name" style="width:300px;" value="{{:data.pseudonym}}"><br>
+	<br>
+	Radio Channels:
+	<div>
+	{{for data.radio}}
+		{{:helper.link(value,null, {'select' : value, 'select_type' : 'radio'}, (data.selected != value ? null : 'disabled'))}}
+	{{/for}}
+	</div>
+	<br>
+	<br>
+	<br>
+	Meta Channels:
+	<div>
+	{{for data.channels}}
+		{{:helper.link(value,null, {'select' : value, 'select_type' : 'meta'}, (data.selected != value ? null : 'disabled'))}}
+	{{/for}}
+	</div>
+	<hr style="width:100%">
+	<br>
+	
+	<label for="message">Message:</label><br>
+	<textarea id="message" name="message" style="height:180px ; width: 750px;" value="">{{:data.message != "" ? data.message : ""}}</textarea><br><br>
+	<input type="submit"  value="Save">	<input type="submit" name = "send" value="Send">
+</form>

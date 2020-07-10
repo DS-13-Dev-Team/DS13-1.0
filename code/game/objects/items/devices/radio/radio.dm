@@ -63,6 +63,11 @@
 	else
 		deactivate()
 
+//Turns off first, then tries to turn back on
+/obj/item/device/radio/proc/reactivate()
+	deactivate()
+	update_active()
+
 /obj/item/device/radio/proc/activate()
 	if (active)
 		return

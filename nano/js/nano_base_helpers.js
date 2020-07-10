@@ -15,6 +15,11 @@ NanoBaseHelpers = function ()
 
 				return '';
 			},
+			form: function(name, style){
+				return '<form name="' + name + '" style="' + style + '" method="get" action=""><input type="hidden" name="src" value="'+NanoUtility.get_src()+'">';
+				
+				
+			},
 			// Generate a Byond link
 			link: function( text, icon, parameters, status, elementClass, elementId) {
 

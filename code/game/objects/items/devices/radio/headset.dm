@@ -29,6 +29,7 @@
 		encryption_keys += new ks1type(src)
 	if(ks2type)
 		encryption_keys += new ks2type(src)
+
 	recalculateChannels(1)
 
 /obj/item/device/radio/headset/Destroy()
@@ -352,7 +353,7 @@
 	src.syndie = 0
 	for(var/obj/ekey in encryption_keys)
 		import_key_data(ekey)
-	update_active()
+	reactivate()
 
 	if(setDescription)
 		setupRadioDescription()
@@ -394,4 +395,6 @@
 /obj/item/device/radio/headset/can_activate()
 	if (!istype(loc, /mob))	//Headsets are only active when worn
 		return FALSE
+
 	.=..()
+

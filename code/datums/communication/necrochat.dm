@@ -1,6 +1,6 @@
 /decl/communication_channel/necrochat
 	name = "Necrochat"
-	expected_communicator_type = /client
+	expected_communicator_type = list(/client, /datum)
 	flags = COMMUNICATION_NO_GUESTS
 	log_proc = /proc/log_necro
 	show_preference_setting = /datum/client_preference/show_necrochat
@@ -12,35 +12,40 @@
 			return FALSE	//Necromorphs must listen to the necrochat
 
 
-/decl/communication_channel/necrochat/can_communicate(var/client/C, var/message)
+/decl/communication_channel/necrochat/can_communicate(var/A, var/message)
 	. = ..()
 	if(!.)
 		return
+	if (istype(A, /client))
+		var/client/C = A
+		if(!C.holder)	//Admins are exempt
+			if (!C.mob || !C.mob.is_necromorph()) //Gotta be a necromorph to use this
+				return FALSE
 
-	if(!C.holder)
-		if (!C.mob || !C.mob.is_necromorph()) //Gotta be a necromorph to use this
-			return FALSE
 
-
-/decl/communication_channel/necrochat/do_communicate(var/client/C, var/message)
+/decl/communication_channel/necrochat/do_communicate(A, var/message, var/sender_override = null)
 
 	var/list/messaged = list()	//Clients we've already sent to. Used to prevent doublesending to admins who are also playing necromorphs
 
 	var/style = "necromorph"
 	var/sender_name = ""
-	if (C && C.mob)
+	if (sender_override)
+		sender_name = sender_override
+		if (isclient(A))
+			var/client/C = A
+			if (C && C.mob)
 
-		if (issignal(C.mob))
+				if (issignal(C.mob))
 
 
-			if (is_marker_master(C.mob))
-				style = "necromarker"
-				sender_name = "Marker([C.ckey])"
-			else
-				style = "necrosignal"
-				sender_name = "Signal([C.ckey])"
-		else
-			sender_name = C.mob.name
+					if (is_marker_master(C.mob))
+						style = "necromarker"
+						sender_name = "Marker([C.ckey])"
+					else
+						style = "necrosignal"
+						sender_name = "Signal([C.ckey])"
+				else
+					sender_name = C.mob.name
 
 
 	message = "<span class='[style]'>[sender_name ? sender_name+": ":""][message]</span>"
@@ -50,7 +55,7 @@
 		if (P)
 			var/client/target = P.get_client()
 			if (target)
-				receive_communication(C, target, message)
+				receive_communication(A, target, message)
 				messaged += target
 		else
 			//Shouldn't happen
@@ -59,7 +64,7 @@
 
 	var/list/valid_admins = GLOB.admins - messaged
 	for(var/client/target in valid_admins)
-		receive_communication(C, target, message)
+		receive_communication(A, target, message)
 
 
 
