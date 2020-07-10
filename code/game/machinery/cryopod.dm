@@ -385,12 +385,14 @@
 
 	//Handle job slot/tater cleanup.
 	if(occupant.mind)
+
 		var/job = occupant.mind.assigned_role
 		job_master.FreeRole(job)
 
 		if(occupant.mind.objectives.len)
 			occupant.mind.objectives = null
 			occupant.mind.special_role = null
+
 	//else
 		//if(ticker.mode.name == "AutoTraitor")
 			//var/datum/game_mode/traitor/autotraitor/current_mode = ticker.mode
@@ -425,6 +427,7 @@
 
 	// Delete the mob.
 	qdel(occupant)
+	ticker.mode.on_crew_despawn(occupant)	//Update the living mobs list
 	set_occupant(null)
 
 

@@ -323,6 +323,8 @@
 	if(job_master.ShouldCreateRecords(job.title))
 		if(character.mind.assigned_role != "Robot")
 			CreateModularRecord(character)
+
+
 			ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 			AnnounceArrival(character, job, spawnpoint.msg)
 		else
@@ -445,6 +447,7 @@
 	deltimer(client.lobby_trackchange_timer) //Ensures that the client doesn't attempt to start another lobby music track
 
 	if(mind)
+		world << "Creating character mind [mind] \ref[mind]"
 		mind.active = 0					//we wish to transfer the key manually
 		mind.original = new_character
 		if(client.prefs.memory)
@@ -456,6 +459,15 @@
 				R.holder = mind
 				R.info = client.prefs.relations_info[T]
 			mind.gen_relations_info = client.prefs.relations_info["general"]
+
+
+		world << "Creating character2 mind [mind] \ref[mind]"
+		//Here we add them to the all crew list
+		//Possible future TODO: Check if they have an assigned role which is actually part of crew.
+		//Not needed now since there are no noncrew roles except response teams
+		GLOB.all_crew |= mind
+		GLOB.living_crew |= mind
+
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
 
 	new_character.SetName(real_name)

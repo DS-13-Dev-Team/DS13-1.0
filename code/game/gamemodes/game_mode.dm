@@ -287,7 +287,7 @@ var/global/list/additional_antag_types = list()
 	command_announcement.Announce("The presence of [pick(reasons)] in the region is tying up all available local emergency resources; emergency response teams cannot be called at this time, and post-evacuation recovery efforts will be substantially delayed.","Emergency Transmission")
 
 /datum/game_mode/proc/check_finished()
-	if(evacuation_controller.round_over() || station_was_nuked)
+	if(station_was_nuked)
 		return 1
 	if(end_on_antag_death && antag_templates && antag_templates.len)
 		var/has_antags = 0
@@ -549,22 +549,22 @@ proc/get_nt_opposed()
 
 //Handlers for people dying / being revived.
 /datum/game_mode/proc/on_crew_death(mob/living/carbon/human/H)
-	if(!H?.client)
-		return FALSE
-	for(var/X in dead_players) //Hacky, yes. But more consistent than locate() in whatever.
-		if(X == H.client.ckey)
-			return FALSE
-	player_count = GLOB.all_crew_records.len
-	dead_players += H.client.ckey
-	check_finished()
+	update_living_crew()
 	return TRUE
 
 /datum/game_mode/proc/on_crew_revive(mob/living/carbon/human/H)
-	if(!H?.client)
-		return FALSE
-	player_count = GLOB.all_crew_records.len
-	for(var/X in dead_players) //Hacky, yes. But more consistent than locate() in whatever.
-		if(X == H.client.ckey)
-			dead_players -= H
-	check_finished()
+	update_living_crew()
 	return TRUE
+
+/datum/game_mode/proc/on_crew_despawn(mob/living/carbon/human/H)
+	update_living_crew()
+	return TRUE
+
+
+/datum/game_mode/proc/update_living_crew()
+	GLOB.living_crew = list()
+	for (var/datum/mind/M in GLOB.all_crew)
+		if (M && !QDELETED(M.current) && ishuman(M.current))
+			var/mob/living/L = M.current
+			if (L.stat != DEAD) //They're alive!
+				GLOB.living_crew |= M

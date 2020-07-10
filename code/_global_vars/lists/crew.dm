@@ -1,0 +1,2 @@
+GLOBAL_LIST_EMPTY(all_crew)
+GLOBAL_LIST_EMPTY(living_crew)
