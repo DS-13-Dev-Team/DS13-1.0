@@ -51,6 +51,8 @@
 	view_offset = VIEW_OFFSET_CLOSED
 
 
+	darksight_tint = DARKTINT_GOOD
+
 	has_limbs = list(
 	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(0, 0.5)),	//Half a metre high
 	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/tentacle/slim/lurker1, "height" = new /vector2(0.5, 1.5)),	//Tentacles extend one metre above the body

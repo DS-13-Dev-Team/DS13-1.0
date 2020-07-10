@@ -13,6 +13,7 @@
 	limb_health_factor = 1	//Not as fragile as a slasher
 	virus_immune = 1
 
+
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
 	single_icon = FALSE
 	lying_rotation = 90
@@ -41,6 +42,7 @@
 
 	//Vision
 	view_range = 9
+	darksight_tint = DARKTINT_EXCEPTIONAL	//It has psychic senses, can't hide in the dark
 
 
 	//Audio

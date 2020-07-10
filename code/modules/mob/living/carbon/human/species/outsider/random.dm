@@ -71,7 +71,7 @@
 
 	//Misc traits
 	darksight_range = rand(1,8)
-	darksight_tint = pick(DARKTINT_NONE,DARKTINT_MODERATE,DARKTINT_GOOD)
+	darksight_tint = pick(DARKTINT_NONE,DARKTINT_POOR,DARKTINT_MODERATE)
 	if(prob(40))
 		genders = list(PLURAL)
 	if(prob(10))

@@ -35,6 +35,7 @@
 	view_range = 9
 	view_offset = (WORLD_ICON_SIZE*3)	//Can see much farther than usual
 
+	darksight_tint = DARKTINT_GOOD
 
 	has_limbs = list(
 	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple),

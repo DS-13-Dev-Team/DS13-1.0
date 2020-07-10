@@ -15,6 +15,7 @@
 
 	biomass_reclamation_time	=	4.5 MINUTES
 	view_range = 6
+	darksight_tint = DARKTINT_POOR
 
 	icon_template = 'icons/mob/necromorph/exploder.dmi'
 	icon_lying = "_lying"
@@ -28,6 +29,7 @@
 	step_volume = VOLUME_QUIET
 	step_range = 6	//We want to hear it coming
 	step_priority = 3
+
 
 
 	has_limbs = list(
