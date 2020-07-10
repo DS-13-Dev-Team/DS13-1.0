@@ -100,4 +100,6 @@
 #define CODEX_COLOR_MECHANICS "#9ebcd8"
 #define CODEX_COLOR_ANTAG     "#e5a2a2"
 
+#define COLOR_OOC	"#960018"
+
 #define RANDOM_RGB rgb(rand(0,255), rand(0,255), rand(0,255))

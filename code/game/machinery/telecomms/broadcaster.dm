@@ -434,13 +434,30 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	return 1
 
-/proc/Broadcast_SimpleMessage(var/source, var/frequency, var/text, var/data, var/mob/M, var/compression, var/level, var/channel_tag, var/channel_color)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/proc/Broadcast_SimpleMessage(var/source, var/frequency, var/text, var/data, var/mob/M, var/compression, var/level, var/channel_tag, var/channel_color, var/class)
   /* ###### Prepare the radio connection ###### */
 
+	/* Not needed, the message is heard with a null mob
 	if(!M)
 		var/mob/living/carbon/human/H = new
 		M = H
+	*/
 
 	var/datum/radio_frequency/connection = radio_controller.return_frequency(frequency)
 
@@ -478,11 +495,18 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
 				var/turf/position = get_turf(R)
 				if(position && position.z == level)
-					receive |= R.send_hear(freq)
+					receive |= R.send_hear(freq, R.z)
 
 
 	// --- Broadcast to ALL radio devices ---
 
+	else if(data == -1)
+		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+			var/list/found_mobs = R.send_hear(display_freq)
+			if (found_mobs.len)
+				receive |= found_mobs
+
+	// --- Broadcast to ALL radio devices on a zlevel ---
 	else
 		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
 			var/turf/position = get_turf(R)
@@ -500,7 +524,6 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	var/list/heard_gibberish= list() // completely screwed over message (ie "F%! (O*# *#!<>&**%!")
 
 	for (var/mob/R in receive)
-
 	  /* --- Loop through the receivers and categorize them --- */
 		// --- Check for compression ---
 		if(compression > 0)
@@ -529,11 +552,16 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		var/freq_text = format_frequency(display_freq)
 		if(channel_tag)
 			freq_text = channel_tag
+		var/part_a
+		if (class)
+			part_a = "<span class='[class]'>"
+		else
+			if(!channel_color)
+				channel_color = channel_color_presets["Global Green"]
+			part_a = "<span style='color: [channel_color]'>"
 
-		if(!channel_color)
-			channel_color = channel_color_presets["Global Green"]
 
-		var/part_a = "<span style='color: [channel_color]'><span class='name'>" // goes in the actual output
+		part_a += "<span class='name'>" // goes in the actual output
 
 		// --- Some more pre-message formatting ---
 

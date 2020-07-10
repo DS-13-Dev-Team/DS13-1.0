@@ -4,16 +4,16 @@
 /decl/communication_channel/dsay
 	name = "DSAY"
 	config_setting = "dsay_allowed"
-	expected_communicator_type = /client
+	expected_communicator_type = list(/client, /datum)
 	flags = COMMUNICATION_LOG_CHANNEL_NAME
 	log_proc = /proc/log_say
 	mute_setting = MUTE_DEADCHAT
 	show_preference_setting = /datum/client_preference/show_dsay
 
-/decl/communication_channel/dsay/communicate(communicator, message, speech_method = /decl/dsay_communication/say)
-	..()
+/decl/communication_channel/dsay/communicate(communicator, message, var/sender_override = null, speech_method = /decl/dsay_communication/say)
+	.=..()
 
-/decl/communication_channel/dsay/can_communicate(var/client/communicator, var/message, var/speech_method_type)
+/decl/communication_channel/dsay/can_communicate(var/client/communicator, var/message, var/sender_override = null, var/speech_method_type)
 	var/decl/dsay_communication/speech_method = decls_repository.get_decl(speech_method_type)
 	switch(speech_method.can_communicate(communicator, message))
 		if(DSAY_CAN_COMMUNICATE)
@@ -21,7 +21,7 @@
 		if(DSAY_ASK_BASE)
 			return ..()
 
-/decl/communication_channel/dsay/do_communicate(var/client/communicator, var/message, var/speech_method_type)
+/decl/communication_channel/dsay/do_communicate(var/client/communicator, var/message, var/sender_override = null, var/speech_method_type)
 	var/decl/dsay_communication/speech_method = decls_repository.get_decl(speech_method_type)
 
 	speech_method.adjust_channel(src)
@@ -29,12 +29,12 @@
 	for(var/mob/M in GLOB.player_list)
 		if(!speech_method.can_receive(communicator, M))
 			continue
-		var/sent_message = speech_method.get_message(communicator, M, message)
+		var/sent_message = speech_method.get_message(communicator, M, message, sender_override)
 		receive_communication(communicator, M, "<span class='deadsay'>" + create_text_tag("dead", "DEAD:", M.client) + " [sent_message]</span>")
 
 /decl/dsay_communication/proc/can_communicate(var/client/communicator, var/message)
 	if(!istype(communicator))
-		return FALSE
+		return TRUE
 	if(communicator.mob.stat != DEAD)
 		to_chat(communicator, "<span class='warning'>You're not sufficiently dead to use DSAY!</span>")
 		return FALSE
@@ -87,12 +87,12 @@
 			lname = name
 	return "<span class='name'>[lname]</span>"
 
-/decl/dsay_communication/proc/get_message(var/client/C, var/mob/M, var/message)
-	var say_verb = pick("complains","moans","whines","laments","blubbers")
-	return "[get_name(C, M)] [say_verb], <span class='message'>\"[message]\"</span>"
+/decl/dsay_communication/proc/get_message(var/client/C, var/mob/M, var/message, var/sender_override)
+	var/say_verb = pick("complains","moans","whines","laments","blubbers")
+	return "[sender_override ? sender_override : get_name(C, M)] [say_verb], <span class='message'>\"[message]\"</span>"
 
-/decl/dsay_communication/emote/get_message(var/client/C, var/mob/M, var/message)
-	return "[get_name(C, M)] <span class='message'>[message]</span>"
+/decl/dsay_communication/emote/get_message(var/client/C, var/mob/M, var/message, var/sender_override)
+	return "[sender_override ? sender_override : get_name(C, M)] <span class='message'>[message]</span>"
 
 /decl/dsay_communication/proc/adjust_channel(var/decl/communication_channel/dsay)
 	dsay.flags |= COMMUNICATION_ADMIN_FOLLOW|COMMUNICATION_GHOST_FOLLOW // Add admin and ghost follow
@@ -107,15 +107,18 @@
 
 /decl/dsay_communication/admin/can_communicate(var/client/communicator, var/message, var/decl/communication_channel/dsay)
 	if(!istype(communicator))
-		return FALSE
+		return TRUE	//Unhandled type means admin shenanigans, let it through
 	if(!communicator.holder)
 		to_chat(communicator, "<span class='warning'>You do not have sufficent permissions to use DSAY!</span>")
 		return FALSE
 	return DSAY_ASK_BASE
 
-/decl/dsay_communication/admin/get_message(var/client/communicator, var/mob/M, var/message)
-	var/stafftype = uppertext(communicator.holder.rank)
-	return "<span class='name'>[stafftype]([communicator.key])</span> says, <span class='message'>\"[message]\"</span>"
+/decl/dsay_communication/admin/get_message(var/client/communicator, var/mob/M, var/message, var/sender_override)
+	if (sender_override)
+		return "<span class='name'>[sender_override])</span> says, <span class='message'>\"[message]\"</span>"
+	else
+		var/stafftype = uppertext(communicator.holder.rank)
+		return "<span class='name'>[stafftype]([communicator.key])</span> says, <span class='message'>\"[message]\"</span>"
 
 /decl/dsay_communication/admin/adjust_channel(var/decl/communication_channel/dsay)
 	dsay.log_proc = /proc/log_say
@@ -129,8 +132,21 @@
 /decl/dsay_communication/direct/can_communicate()
 	return DSAY_CAN_COMMUNICATE
 
-/decl/dsay_communication/direct/get_message(var/client/communicator, var/mob/M, var/message)
+/decl/dsay_communication/direct/get_message(var/client/communicator, var/mob/M, var/message, var/sender_override)
 	return message
 
 #undef DSAY_CAN_COMMUNICATE
 #undef DSAY_ASK_BASE
+
+
+/client/proc/dsay(msg as text)
+	set category = "Special Verbs"
+	set name = "Dsay" //Gave this shit a shorter name so you only have to time out "dsay" rather than "dead say" to use it --NeoFite
+	set hidden = 1
+
+	if(!src.holder)
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	sanitize_and_communicate(/decl/communication_channel/dsay, src, msg, null, /decl/dsay_communication/admin)
+	feedback_add_details("admin_verb","D") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

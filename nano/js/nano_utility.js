@@ -10,6 +10,10 @@ var NanoUtility = function ()
 
 			_urlParameters = body.data('urlParameters');
         },
+		get_src: function (parameters)
+		{
+			return _urlParameters['src'];
+		},
 		// generate a Byond href, combines _urlParameters with parameters
 		generateHref: function (parameters)
 		{

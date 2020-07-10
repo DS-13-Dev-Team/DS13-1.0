@@ -7,9 +7,8 @@
 	matter = list(MATERIAL_STEEL = 75)
 	subspace_transmission = 1
 	canhear_range = 0 // can't hear headsets from very far away
-
+	listening = TRUE
 	slot_flags = SLOT_EARS
-	cell = null
 	power_usage = 0
 	var/translate_binary = 0
 	var/translate_hive = 0
@@ -30,6 +29,7 @@
 		encryption_keys += new ks1type(src)
 	if(ks2type)
 		encryption_keys += new ks2type(src)
+
 	recalculateChannels(1)
 
 /obj/item/device/radio/headset/Destroy()
@@ -353,13 +353,7 @@
 	src.syndie = 0
 	for(var/obj/ekey in encryption_keys)
 		import_key_data(ekey)
-	for (var/ch_name in channels)
-		if(!radio_controller)
-			sleep(30) // Waiting for the radio_controller to be created.
-		if(!radio_controller)
-			src.SetName("broken radio headset")
-			return
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+	reactivate()
 
 	if(setDescription)
 		setupRadioDescription()
@@ -388,3 +382,19 @@
 			radio_text += ", "
 
 	radio_desc = radio_text
+
+
+/obj/item/device/radio/headset/equipped(var/mob/user, var/slot)
+	update_active()
+	.=..()
+
+/obj/item/device/radio/headset/dropped(var/mob/user)
+	update_active()
+	.=..()
+
+/obj/item/device/radio/headset/can_activate()
+	if (!istype(loc, /mob))	//Headsets are only active when worn
+		return FALSE
+
+	.=..()
+

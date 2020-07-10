@@ -56,6 +56,7 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
+
 /obj/item/device/radio/intercom/department/medbay/Initialize()
 	. = ..()
 	internal_channels = GLOB.default_medbay_channels.Copy()
@@ -134,12 +135,17 @@
 
 		if(!src.loc)
 			on = 0
+			update_active()
 		else
 			var/area/A = get_area(src)
 			if(!A)
 				on = 0
+				update_active()
 			else
+				var/prev = on
 				on = A.powered(EQUIP) // set "on" to the power status
+				if (on != prev)
+					update_active()
 
 		if(!on)
 			icon_state = "intercom-p"

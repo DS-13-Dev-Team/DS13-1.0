@@ -3,11 +3,13 @@
 	config_setting = "looc_allowed"
 	flags = COMMUNICATION_NO_GUESTS|COMMUNICATION_LOG_CHANNEL_NAME|COMMUNICATION_ADMIN_FOLLOW
 	show_preference_setting = /datum/client_preference/show_looc
+	allow_admincomm = FALSE
 
 /decl/communication_channel/ooc/looc/can_communicate(var/client/C, var/message)
 	. = ..()
 	if(!.)
 		return
+
 	var/mob/M = C.mob ? C.mob.get_looc_mob() : null
 	if(!M)
 		to_chat(C, "<span class='danger'>You cannot use [name] without a mob.</span>")
