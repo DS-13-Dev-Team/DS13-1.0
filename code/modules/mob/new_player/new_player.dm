@@ -447,7 +447,6 @@
 	deltimer(client.lobby_trackchange_timer) //Ensures that the client doesn't attempt to start another lobby music track
 
 	if(mind)
-		world << "Creating character mind [mind] \ref[mind]"
 		mind.active = 0					//we wish to transfer the key manually
 		mind.original = new_character
 		if(client.prefs.memory)
@@ -461,7 +460,6 @@
 			mind.gen_relations_info = client.prefs.relations_info["general"]
 
 
-		world << "Creating character2 mind [mind] \ref[mind]"
 		//Here we add them to the all crew list
 		//Possible future TODO: Check if they have an assigned role which is actually part of crew.
 		//Not needed now since there are no noncrew roles except response teams
