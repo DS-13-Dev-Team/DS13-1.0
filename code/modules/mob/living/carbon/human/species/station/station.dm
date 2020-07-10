@@ -86,7 +86,7 @@
 	default_h_style = "Tajaran Ears"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite/sharp)
 	darksight_range = 8
-	darksight_tint = DARKTINT_GOOD
+	darksight_tint = DARKTINT_MODERATE
 	slowdown = -0.5
 	brute_mod = 1.15
 	burn_mod =  1.15
@@ -181,7 +181,7 @@
 	body_temperature = null // cold-blooded, implemented the same way nabbers do it
 
 	darksight_range = 4
-	darksight_tint = DARKTINT_MODERATE
+	darksight_tint = DARKTINT_POOR
 
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR

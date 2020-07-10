@@ -34,8 +34,8 @@
 
 
 	//Vision
-	darksight_range = 5 //Decent dark vision
-
+	darksight_range = -1
+	darksight_tint = DARKTINT_MODERATE
 
 	//Sprites
 	damage_overlays = null
@@ -264,6 +264,7 @@
 
 // Used to update alien icons for aliens.
 /datum/species/necromorph/handle_login_special(var/mob/living/carbon/human/H)
+	.=..()
 	SSnecromorph.necromorph_players[H.ckey] = get_or_create_player(H.ckey)
 	to_chat(H, "You are a [name]. \n\
 	[blurb]\n\

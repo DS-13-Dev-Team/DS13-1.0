@@ -40,8 +40,10 @@
 // Darkvision Levels these are inverted from normal so pure white is the darkest
 // possible and pure black is none
 #define DARKTINT_NONE      "#ffffff"
-#define DARKTINT_MODERATE  "#f9f9f5"
-#define DARKTINT_GOOD      "#ebebe6"
+#define DARKTINT_POOR  		"#cccccc"
+#define DARKTINT_MODERATE      "#aaaaaa"
+#define DARKTINT_GOOD			"#8C8C8C"
+#define DARKTINT_EXCEPTIONAL	"#666666"
 
 
 

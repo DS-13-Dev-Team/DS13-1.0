@@ -46,8 +46,14 @@
 
 		if (mob)
 			mob.reload_fullscreen()
+
+			//This thing handles nightvision, it is set to a certain size and does not scale with the screen
+			//BUT, we can't allow it to be bigger than the screen, so we resize it here to the size it already is
+			//It will check our screen limit and cap itself to that
 			if (mob.l_general)//It may not exist during login
-				mob.l_general.resize(src)
+				mob.l_general.resize(mob.l_general.size, src)
+
+
 			if (isliving(mob))
 				var/mob/living/L = mob
 				L.handle_regular_hud_updates(FALSE)//Pass false here to not call update vision and avoid an infinite loop

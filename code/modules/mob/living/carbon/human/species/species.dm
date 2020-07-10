@@ -408,7 +408,14 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.view_offset = view_offset
 	H.view_range = view_range
 
+	if (darksight_tint != DARKTINT_NONE)
+		H.set_darksight_color(darksight_tint)
 
+		//-1 range is a special value that means fullscreen
+		if (darksight_range == -1)
+			H.set_darksight_range(view_range)
+		else
+			H.set_darksight_range(darksight_range)
 
 
 
@@ -515,6 +522,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			var/list/L = modifier_verbs[hotkey]
 			H.remove_modclick_verb(hotkey, L[1])
 
+	H.verbs -= /mob/living/carbon/human/proc/toggle_darkvision
+
 /datum/species/proc/add_inherent_verbs(var/mob/living/carbon/human/H)
 	if(inherent_verbs)
 		for(var/verb_path in inherent_verbs)
@@ -532,6 +541,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			//We use input_args here since we're doing voodoo with passing arguments.
 			//Modclick takes key type, function name, function priority, and a list of extra arguments
 			H.add_modclick_verb(arglist(input_args))
+
+	if (darksight_tint != DARKTINT_NONE)
+		H.verbs.Add(/mob/living/carbon/human/proc/toggle_darkvision)
 
 
 
@@ -564,6 +576,13 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 // Used to update alien icons for aliens.
 /datum/species/proc/handle_login_special(var/mob/living/carbon/human/H)
+	if (H.l_general)
+		H.set_darksight_color(darksight_tint)
+		//-1 range is a special value that means fullscreen
+		if (darksight_range == -1)
+			H.set_darksight_range(view_range)
+		else
+			H.set_darksight_range(darksight_range)
 	return
 
 // As above.
@@ -610,7 +629,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/handle_vision(var/mob/living/carbon/human/H)
 	H.update_sight()
 	H.set_sight(H.sight|get_vision_flags(H)|H.equipment_vision_flags)
-	H.change_light_colour(darksight_tint)
+
+
+
 
 	if(H.stat == DEAD)
 		return 1
