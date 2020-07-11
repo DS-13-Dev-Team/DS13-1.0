@@ -49,7 +49,7 @@
 	evac_controller_type = /datum/evacuation_controller/starship
 
 	lobby_icon = 'maps/DeadSpace/icons/lobby.dmi'
-	lobby_screens = list("lobby1","lobby2","lobby3","lobby4", "lobby5")
+	lobby_screens = list("lobby1")
 	lobby_tracks = list(/music_track/ds13/twinkle,
 /music_track/ds13/nicole,
 /music_track/ds13/danik,
