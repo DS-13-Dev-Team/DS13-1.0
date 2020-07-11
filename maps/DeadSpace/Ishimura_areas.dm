@@ -87,6 +87,9 @@
 /area/ishimura/upper/engineering/engine_smes
 	name = "\improper Engine SMES Room"
 
+/area/ishimura/upper/engineering/hub
+	name = "\improper Engineering Hub"
+
 /area/ishimura/upper/engineering/lobby
 	name = "\improper Engineering Lobby"
 

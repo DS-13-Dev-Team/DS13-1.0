@@ -4,8 +4,6 @@
 	name = "Baystation12"
 	desc = "This shouldn't be read."
 	screen_loc = "WEST,SOUTH"
-	var/change_interval = 1 MINUTE
-	var/fade_time = 2 SECOND	//This fade time is used twice, so effectively doubled
 
 /obj/effect/lobby_image/Initialize()
 	icon = GLOB.using_map.lobby_icon
@@ -16,34 +14,12 @@
 			error("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
 			GLOB.using_map.lobby_screens -= lobby_screen
 
-	change_image()
+	if(GLOB.using_map.lobby_screens.len)
+		icon_state = pick(GLOB.using_map.lobby_screens)
+	else
+		icon_state = known_icon_states[1]
 
 	. = ..()
-
-/obj/effect/lobby_image/proc/change_image()
-	var/list/possible_options = GLOB.using_map.lobby_screens
-	possible_options -= icon_state
-
-	if (possible_options.len)
-		fade_out()
-		sleep(fade_time)
-
-
-
-		icon_state = pick(GLOB.using_map.lobby_screens)
-
-
-		fade_in()
-		sleep(fade_time)
-		addtimer(CALLBACK(src, /obj/effect/lobby_image/proc/change_image), change_interval)
-
-/obj/effect/lobby_image/proc/fade_out()
-	animate(src, color = "#000000", time = fade_time)
-
-
-/obj/effect/lobby_image/proc/fade_in()
-	animate(src, color = "#FFFFFF", time = fade_time)
-
 
 /mob/new_player/Login()
 	player_login()
