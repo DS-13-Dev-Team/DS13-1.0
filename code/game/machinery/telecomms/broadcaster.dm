@@ -547,7 +547,6 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
   /* ###### Begin formatting and sending the message ###### */
 	if (length(heard_normal) || length(heard_garbled) || length(heard_gibberish))
-
 	  /* --- Some miscellaneous variables to format the string output --- */
 		var/freq_text = format_frequency(display_freq)
 		if(channel_tag)
@@ -561,7 +560,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			part_a = "<span style='color: [channel_color]'>"
 
 
-		part_a += "<span class='name'>" // goes in the actual output
+
 
 		// --- Some more pre-message formatting ---
 
@@ -572,11 +571,12 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		// Create a radio headset for the sole purpose of using its icon
 		var/obj/item/device/radio/headset/radio = new
 
-		var/part_b = "</span><b> \icon[radio]\[[freq_text]\][part_b_extra]</b> <span class='message'>" // Tweaked for security headsets -- TLE
-		var/part_blackbox_b = "</span><b> \[[freq_text]\]</b> <span class='message'>" // Tweaked for security headsets -- TLE
-		var/part_c = "</span></span>"
+		var/part_b = "<b>\icon[radio]\[[freq_text]\][part_b_extra]</b> " // Tweaked for security headsets -- TLE
+		var/part_blackbox_b = "<b> \[[freq_text]\]</b> " // Tweaked for security headsets -- TLE
+		var/part_c = "<span class='name'>[source]</span><span class='message'>" // goes in the actual output
+		var/part_d = "</span></span>"
 
-		var/blackbox_msg = "[part_a][source][part_blackbox_b]\"[text]\"[part_c]"
+		var/blackbox_msg = "[part_a][part_blackbox_b][part_c] \"[text]\"[part_d]"
 
 		//BR.messages_admin += blackbox_admin_msg
 		if(istype(blackbox))
@@ -615,7 +615,8 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		/* --- Process all the mobs that heard the voice normally (understood) --- */
 
 		if (length(heard_normal))
-			var/rendered = "[part_a][source][part_b]\"[text]\"[part_c]"
+			var/rendered = "[part_a][part_b][part_c] \"[text]\"[part_d]"
+
 
 			for (var/mob/R in heard_normal)
 				R.show_message(rendered, 2)
@@ -625,7 +626,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 		if (length(heard_garbled))
 			var/quotedmsg = "\"[stars(text)]\""
-			var/rendered = "[part_a][source][part_b][quotedmsg][part_c]"
+			var/rendered = "[part_a][part_b][part_c] [quotedmsg][part_d]"
 
 			for (var/mob/R in heard_garbled)
 				R.show_message(rendered, 2)
@@ -635,7 +636,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 		if (length(heard_gibberish))
 			var/quotedmsg = "\"[Gibberish(text, compression + 50)]\""
-			var/rendered = "[part_a][Gibberish(source, compression + 50)][part_b][quotedmsg][part_c]"
+			var/rendered = "[part_a][Gibberish(source, compression + 50)][part_b][part_c] [quotedmsg][part_d]"
 
 			for (var/mob/R in heard_gibberish)
 				R.show_message(rendered, 2)
