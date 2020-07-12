@@ -1322,7 +1322,6 @@
 		//Anyways, lets spawn the product and succ it for biomass
 		var/atom/A = new newtype(src)
 		biomass_cache += (A.get_biomass() * VENDOR_BIOMASS_MULT)
-		world << "[src] cannibalizing [A], cache now [biomass_cache]"
 		//We're done with it now
 		QDEL_NULL(A)
 

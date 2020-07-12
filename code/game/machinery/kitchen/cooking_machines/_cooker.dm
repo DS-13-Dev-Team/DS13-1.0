@@ -235,3 +235,11 @@
 			I.color = food_color
 		product.overlays += I
 
+
+
+
+/obj/machinery/cooker/can_harvest_biomass()
+	return MASS_READY
+
+/obj/machinery/cooker/harvest_biomass()
+	return BIOMASS_HARVEST_SMALL

@@ -17,6 +17,13 @@
 	idle_power_usage = 2
 	active_power_usage = 500
 
+/obj/machinery/gibber/can_harvest_biomass()
+	return MASS_READY
+
+/obj/machinery/gibber/harvest_biomass()
+	return BIOMASS_HARVEST_SMALL
+
+
 //auto-gibs anything that bumps into it
 /obj/machinery/gibber/autogibber
 	var/turf/input_plate

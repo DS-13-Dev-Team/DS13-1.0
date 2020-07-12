@@ -196,6 +196,7 @@
 		-Bioprosthetic Growth Tanks<br>\
 		-Morgue Drawers<br>\
 		-Hydroponics Trays<br>\
+		-Kitchen Appliances<br>\
 	<br>\
 	In addition, the Harvester can draw biomass more rapidly - but in limited total quantities, from the following objects:<br>\
 		-Food/Snack/Drink/fertilizer vending machiness<br>\

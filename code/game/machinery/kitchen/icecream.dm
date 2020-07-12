@@ -24,6 +24,13 @@
 	var/dispense_flavour = ICECREAM_VANILLA
 	var/flavour_name = "vanilla"
 
+
+/obj/machinery/icecream_vat/can_harvest_biomass()
+	return MASS_READY
+
+/obj/machinery/icecream_vat/harvest_biomass()
+	return BIOMASS_HARVEST_SMALL
+
 /obj/machinery/icecream_vat/proc/get_ingredient_list(var/type)
 	switch(type)
 		if(ICECREAM_CHOCOLATE)
