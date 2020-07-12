@@ -459,7 +459,7 @@ proc/is_blind(A)
 			message = "The ghost of <span class='name'>[name]</span> now [pick("skulks","lurks","prowls","creeps","stalks")] among the dead[diedat]. [message]"
 		else
 			message = "<span class='name'>[name]</span> no longer [pick("skulks","lurks","prowls","creeps","stalks")] in the realm of the dead. [message]"
-		communicate(/decl/communication_channel/dsay, C || O, message, /decl/dsay_communication/direct)
+		communicate(/decl/communication_channel/dsay, C || O, message, null, /decl/dsay_communication/direct)
 
 /mob/proc/switch_to_camera(var/obj/machinery/camera/C)
 	if (!C.can_use() || stat || (get_dist(C, src) > 1 || machine != src || blinded))
