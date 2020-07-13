@@ -30,7 +30,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	var/ghostvision = 1 //is the ghost able to see things humans can't?
 	var/seedarkness = 1
 
-	var/obj/item/weapon/tool/multitool/ghost_multitool
+	var/obj/item/weapon/tool/multitool/ghost/ghost_multitool
 	var/list/hud_images // A list of hud images
 
 /mob/observer/ghost/New(mob/body)
@@ -580,3 +580,16 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	log_and_message_admins("has respawned.", M)
 
 
+//special multitool used so admin ghosts can fiddle with doors
+/obj/item/weapon/tool/multitool/ghost
+	var/mob/observer/ghost/ghost
+
+/obj/item/weapon/tool/multitool/ghost/New(var/mob/observer/ghost/ghost)
+	src.ghost = ghost
+	.=..()
+
+/obj/item/weapon/tool/multitool/ghost/Destroy()
+	if (ghost && ghost.ghost_multitool == src)
+		ghost.ghost_multitool = null
+
+	.=..()
