@@ -31,21 +31,21 @@
 	var/sender_name = ""
 	if (sender_override)
 		sender_name = sender_override
-		if (isclient(A))
-			var/client/C = A
-			if (C && C.mob)
+	else if (isclient(A))
+		var/client/C = A
+		if (C && C.mob)
 
-				if (issignal(C.mob))
+			if (issignal(C.mob))
 
 
-					if (is_marker_master(C.mob))
-						style = "necromarker"
-						sender_name = "Marker([C.ckey])"
-					else
-						style = "necrosignal"
-						sender_name = "Signal([C.ckey])"
+				if (is_marker_master(C.mob))
+					style = "necromarker"
+					sender_name = "Marker([C.ckey])"
 				else
-					sender_name = C.mob.name
+					style = "necrosignal"
+					sender_name = "Signal([C.ckey])"
+			else
+				sender_name = C.mob.name
 
 
 	message = "<span class='[style]'>[sender_name ? sender_name+": ":""][message]</span>"
