@@ -19,8 +19,7 @@
 		/obj/item/rig_module/mounted/taser,
 		/obj/item/rig_module/device/paperdispenser,	//For warrants and paperwork
 		/obj/item/rig_module/device/pen,
-		/obj/item/rig_module/vision/nvg,
-		/obj/item/rig_module/vision/sechud
+		/obj/item/rig_module/vision/nvgsec
 		)
 
 /obj/item/clothing/suit/space/rig/security
