@@ -572,3 +572,12 @@
 
 	images -= powernet_markers
 	QDEL_NULL_LIST(powernet_markers)
+
+
+/client/proc/gc_stress()
+	set category = "Debug"
+	set name = "Stress Test Garbage Collection"
+	set desc = "Mass deletes objects onscreen to stress-test garbage collection."
+
+	for (var/obj/O in range(world.view, mob))
+		qdel(O)

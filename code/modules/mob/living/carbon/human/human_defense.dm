@@ -207,7 +207,7 @@ meteor_act
 		return 0
 
 	// Handle striking to cripple.
-	if(user.a_intent == I_DISARM)
+	if(user && user.a_intent == I_DISARM)
 		effective_force *= 0.66 //reduced effective force...
 		if(!..(I, user, effective_force, blocked, hit_zone))
 			return 0
@@ -676,7 +676,7 @@ meteor_act
 	//We have to be roughly facing the attacker, unless we're lying down. We have omnidirectional defense when curled up on the floor
 	if (!lying)
 		//200 degree frontal arc covers all the tiles infront of us, and directly to sides. 5/8 possible directions are defensible
-		if (!target_in_frontal_arc(src, strike.origin, 200))
+		if (strike.origin != loc && !target_in_frontal_arc(src, strike.origin, 200))
 			return FALSE
 
 	return TRUE

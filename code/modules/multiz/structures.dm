@@ -1,5 +1,9 @@
 /atom/proc/register_zstructure(var/turf/T)
 	return
+
+/atom/proc/unregister_zstructure(var/turf/T)
+	if (T)
+		LAZYREMOVE(T.zstructures, src)
 //////////////////////////////
 //Contents: Ladders, Stairs.//
 //////////////////////////////
@@ -29,6 +33,8 @@
 /obj/structure/ladder/register_zstructure(var/turf/T)
 	LAZYSET(T.zstructures, src, 2)	//Ladders have a ztransition priority of 2 to overrule other things
 
+
+
 /obj/structure/ladder/Initialize()
 	. = ..()
 	var/turf/T = get_turf(src)
@@ -51,6 +57,10 @@
 	if(target_up)
 		target_up.target_down = null
 		target_up = null
+
+
+	unregister_zstructure(get_turf(src))
+
 	return ..()
 
 /obj/structure/ladder/CanZPass(atom/A, direction)
@@ -216,6 +226,10 @@
 		if(!istype(above))
 			above.ChangeTurf(/turf/simulated/open)
 	. = ..()
+
+/obj/structure/stairs/Destroy()
+	unregister_zstructure(get_turf(src))
+	.=..()
 
 /obj/structure/stairs/Exit(atom/movable/A)
 	if(A.dir == dir && upperStep(A.loc))

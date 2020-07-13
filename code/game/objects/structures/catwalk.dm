@@ -29,6 +29,10 @@
 	update_connections(1)
 	update_icon()
 
+/obj/structure/catwalk/Destroy()
+
+	unregister_zstructure(get_turf(src))
+	.=..()
 
 /obj/structure/catwalk/CanZPass(atom/A, direction)
 	if(z == A.z)

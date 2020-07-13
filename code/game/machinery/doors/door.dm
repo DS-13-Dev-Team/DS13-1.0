@@ -120,6 +120,9 @@
 		AB.register_door(src)
 
 /obj/machinery/door/Destroy()
+	for (var/area/AB in border_areas)
+		AB.unregister_door(src)
+	border_areas = list()
 	set_density(0)
 	update_nearby_tiles()
 	. = ..()
