@@ -216,6 +216,7 @@
 	anchored = 1
 	plane = ABOVE_TURF_PLANE
 	layer = RUNE_LAYER
+	var/debug = FALSE
 
 /obj/structure/stairs/Initialize()
 	for(var/turf/turf in locs)
@@ -232,12 +233,14 @@
 	.=..()
 
 /obj/structure/stairs/Exit(atom/movable/A)
+	if (debug)	world << "Stairs triggering exit"
 	if(A.dir == dir && upperStep(A.loc))
 		// This is hackish but whatever.
 		var/turf/target = get_step(GetAbove(A), dir)
 		var/turf/source = A.loc
 		var/turf/above = GetAbove(A)
 		if(above.CanZPass(source, UP) && target.Enter(A, source))
+			if (debug)	world << "successfully exited, doing forcemove"
 			A.forceMove(target)
 			if(isliving(A))
 				var/mob/living/L = A
@@ -246,6 +249,13 @@
 		else
 			to_chat(A, "<span class='warning'>Something blocks the path.</span>")
 		return 0
+	else
+		if (debug)
+			if (A.dir != dir)
+				if (debug)	world << "Stair exit failed, wrong direction"
+			if (!upperStep(A.loc))
+				if (debug)	world << "Stair exit failed, no upperstep"
+
 	return 1
 
 /obj/structure/stairs/proc/upperStep(var/turf/T)
