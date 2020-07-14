@@ -128,6 +128,19 @@
 
 	vision_modes = list(/datum/rig_vision/nvg)
 
+/obj/item/rig_module/vision/nvgsec
+
+	name = "security night vision interface"
+	desc = "A multi input night vision system for a hardsuit."
+	icon_state = "night"
+	origin_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6)
+	usable = 0
+
+	interface_name = "night vision hud interface"
+	interface_desc = "An integrated night vision and security hud system."
+
+	vision_modes = list(/datum/rig_vision/nvg, /datum/rig_vision/sechud)
+
 /obj/item/rig_module/vision/sechud
 
 	name = "hardsuit security hud"
@@ -170,6 +183,7 @@
 	// Don't cycle if this engage() is being called by activate().
 	if(starting_up)
 		to_chat(holder.wearer, "<font color='blue'>You activate your visual sensors.</font>")
+		playsound(get_turf(holder, vision.glasses.activation_sound
 		return 1
 
 	if(vision_modes.len > 1)
