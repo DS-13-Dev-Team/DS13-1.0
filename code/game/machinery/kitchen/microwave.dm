@@ -20,6 +20,12 @@
 	var/global/max_n_of_items = 0
 
 
+/obj/machinery/microwave/can_harvest_biomass()
+	return MASS_READY
+
+/obj/machinery/microwave/harvest_biomass()
+	return BIOMASS_HARVEST_SMALL
+
 // see code/modules/food/recipes_microwave.dm for recipes
 
 /*******************

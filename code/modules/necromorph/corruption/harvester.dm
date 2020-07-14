@@ -13,8 +13,8 @@
 
 #define HARVESTER_HARVEST_RANGE	10
 
-#define HARVESTER_SPINE_COOLDOWN 5 SECONDS
-#define HARVESTER_ACID_COOLDOWN 15 SECONDS
+#define HARVESTER_SPINE_COOLDOWN 3 SECONDS
+#define HARVESTER_ACID_COOLDOWN 14 SECONDS
 #define HARVESTER_WHIP_COOLDOWN 3 SECONDS
 
 /obj/structure/corruption_node/harvester
@@ -196,6 +196,7 @@
 		-Bioprosthetic Growth Tanks<br>\
 		-Morgue Drawers<br>\
 		-Hydroponics Trays<br>\
+		-Kitchen Appliances<br>\
 	<br>\
 	In addition, the Harvester can draw biomass more rapidly - but in limited total quantities, from the following objects:<br>\
 		-Food/Snack/Drink/fertilizer vending machiness<br>\
@@ -340,7 +341,7 @@
 /datum/signal_ability/harvester/proc/get_harvesters(var/atom/origin)
 	var/list/harvesters = list()
 	var/turf/T = get_turf(origin)
-	for (var/obj/structure/corruption_node/harvester/H in range(10, T))
+	for (var/obj/structure/corruption_node/harvester/H in range(15, T))
 		harvesters += H
 
 	return harvesters
@@ -366,7 +367,7 @@
 	 two or more signals should man each harvester during combat<br>\
 	<br>\
 	The harvester fires a sharp bony spine, dealing ballistic damage on impact."
-	cooldown = HARVESTER_SPINE_COOLDOWN*2
+	cooldown = HARVESTER_SPINE_COOLDOWN*1.5
 
 
 /datum/signal_ability/harvester/spine/on_cast(var/mob/user, var/atom/target, var/list/data)
@@ -472,7 +473,7 @@
 		windup = 0,
 		cooldown = HARVESTER_WHIP_COOLDOWN,
 		effect_type = /obj/effect/effect/swing/harvester_tentacle,
-		damage = 15,
+		damage = 20,
 		damage_flags = DAM_EDGE,
 		stages = 8)
 
