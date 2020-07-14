@@ -183,7 +183,7 @@
 	// Don't cycle if this engage() is being called by activate().
 	if(starting_up)
 		to_chat(holder.wearer, "<font color='blue'>You activate your visual sensors.</font>")
-		playsound(get_turf(holder, vision.glasses.activation_sound
+		playsound(get_turf(holder), vision.glasses.activation_sound, VOLUME_MID, TRUE)
 		return 1
 
 	if(vision_modes.len > 1)
