@@ -350,13 +350,14 @@
 	if(istype(AM, /mob/living/carbon) && prob(10))
 		src.spread_disease_to(AM, "Contact")
 
-/mob/living/carbon/slip(var/slipped_on,stun_duration=8)
+/mob/living/carbon/slip(var/slipped_on,stun_duration=4)
 	if(buckled)
 		return 0
 	stop_pulling()
 	to_chat(src, "<span class='warning'>You slipped on [slipped_on]!</span>")
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
-	Weaken(Floor(stun_duration/2))
+	Weaken(stun_duration)
+	shake_camera(src, stun_duration SECONDS, 2)
 	return 1
 
 /mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1)

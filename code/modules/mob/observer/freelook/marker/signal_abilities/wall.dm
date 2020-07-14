@@ -29,7 +29,7 @@
 	biomass = 0
 	requires_corruption = TRUE
 	random_rotation = TRUE	//If true, set rotation randomly on spawn
-	default_scale = 2.5
+	default_scale = 1
 	pixel_y = 6
 
 	max_health = 60
