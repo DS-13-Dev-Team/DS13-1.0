@@ -52,6 +52,11 @@
 /atom/proc/get_global_pixel_offset(var/atom/from)
 	return (get_global_pixel_loc() - from.get_global_pixel_loc())
 
+//Returns a float value of pixels between two objects
+/atom/proc/get_global_pixel_distance(var/atom/from)
+	var/vector2/offset = new /vector2(get_global_pixel_loc() - from.get_global_pixel_loc())
+	return offset.Magnitude()
+
 //Given a set of global pixel coords as input, this moves the atom and sets its pixel offsets so that it sits exactly on the specified point
 /atom/movable/proc/set_global_pixel_loc(var/vector2/coords)
 

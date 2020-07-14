@@ -827,3 +827,7 @@
 //It will only be triggered once per mouseclick, no matter how long they hold it down
 /obj/item/weapon/gun/proc/started_firing()
 	return
+
+//just a wrapper, used in click handler callbacks
+/obj/item/weapon/gun/proc/is_firing()
+	return firing
