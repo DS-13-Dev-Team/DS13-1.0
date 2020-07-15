@@ -134,10 +134,18 @@
 		//As a human is absorbed, lets remove their limbs one by one
 		//1. figure out how far along the absorbing process we are
 		var/remaining = 	remaining_mass / initial_mass
+
 		//2. Now that we have a percentage, lets figure out how many remaining limbs that equates to
 		var/remaining_organs = Ceiling(H.species.has_limbs.len * remaining)
+
+		var/current_organs=  0
+		for (var/obj/item/organ/external/E in H.organs)
+			if (E.is_stump())
+				continue
+			current_organs++
+
 		//3. If the number of organs we have is above that number, then we'll lose one
-		if (LAZYLEN(H.organs) > remaining_organs)
+		if (current_organs > remaining_organs)
 			var/obj/item/organ/external/toremove = pick(H.get_extremities())
 			toremove.droplimb(clean = TRUE, silent = TRUE)
 			qdel(toremove)//It is devoured, no trace left
@@ -146,7 +154,10 @@
 //Once we've completely absorbed our source, there's nothing left. Delete them.
 //This will consume worn equipment too, maybe thats desireable
 /datum/biomass_source/convergence/mass_exhausted()
-	qdel(source)
+	var/atom/A = locate(source)
+	if (A)
+		qdel(A)
+	source = null
 
 
 

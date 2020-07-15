@@ -36,6 +36,9 @@
 //Don't allow infinite sources to give out biomass at this rate
 #define BIOMASS_HARVEST_ACTIVE	0.1
 
+//Not for gameplay use, debugging only
+#define BIOMASS_HARVEST_DEBUG	10
+
 //Items in vendors are worth this* their usual biomass, to make them last longer as sources
 #define VENDOR_BIOMASS_MULT	5
 
