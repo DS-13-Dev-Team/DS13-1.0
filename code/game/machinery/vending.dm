@@ -1296,31 +1296,23 @@
 /obj/machinery/vending/hotfood/contains_biomass = TRUE
 
 /obj/machinery/vending/can_harvest_biomass()
-	if (contains_biomass && (LAZYLEN(products) || biomass_cache))
+	if (contains_biomass && (LAZYLEN(product_records) || biomass_cache))
 		return MASS_ACTIVE
 	else
 		return MASS_FAIL
 
 /obj/machinery/vending/harvest_biomass(var/ticks)
 	var/target_biomass = ticks * BIOMASS_HARVEST_SMALL
-	while (products.len && target_biomass > biomass_cache)
+	while (product_records.len && target_biomass > biomass_cache)
 		//We don't have enough, lets pick something to spawn
-		var/newtype = pickweight(products)
+		var/datum/stored_items/vending_products/R = pick(product_records)
 
-		//Now we shall either decrement or remove it from the list
-		var/remove = FALSE
-		if (isnum(products[newtype]))
-			products[newtype] -= 1
-			if (products[newtype] <= 0)
-				remove = TRUE
-		else
-			remove = TRUE
+		var/atom/A = R.get_product(loc)
+		//If it failed to produce anything, it must have run out
+		if (!istype(A))
+			product_records -= R
+			continue
 
-		if (remove)
-			products -= newtype
-
-		//Anyways, lets spawn the product and succ it for biomass
-		var/atom/A = new newtype(src)
 		biomass_cache += (A.get_biomass() * VENDOR_BIOMASS_MULT)
 		//We're done with it now
 		QDEL_NULL(A)

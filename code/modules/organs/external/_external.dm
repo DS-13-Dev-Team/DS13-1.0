@@ -127,6 +127,8 @@
 
 	if(children)
 		for(var/obj/item/organ/external/C in children)
+			if (C.parent == src)
+				C.parent = null
 			qdel(C)
 
 	if(internal_organs)
@@ -1255,7 +1257,13 @@ obj/item/organ/external/proc/remove_clamps()
 	if(!ignore_children)
 		for(var/obj/item/organ/external/O in children)
 			O.removed()
+
+
 			if(O)
+				if (O.is_stump())
+					qdel(O)	//We don't want stumped limbs to be maintained when not attached to a whole mob
+					continue
+
 				O.forceMove(src)
 
 				// if we didn't lose the organ we still want it as a child

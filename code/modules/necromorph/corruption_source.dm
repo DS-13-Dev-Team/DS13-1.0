@@ -72,10 +72,9 @@
 
 /datum/extension/corruption_source/proc/unregister(var/obj/effect/vine/corruption/applicant)
 	corruption_vines -= applicant
-	if (applicant.plant == plant)
-		applicant.plant = null
 	if (applicant.source == src)
-		applicant.source = src
+		applicant.source = null
+		applicant.plant = null
 
 	//When we gain or lose a vine, our visualnet has changed
 	needs_update = TRUE

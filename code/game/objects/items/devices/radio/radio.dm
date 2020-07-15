@@ -95,10 +95,13 @@
 
 /obj/item/device/radio/proc/deactivate()
 	radio_controller.remove_object(src, frequency, RADIO_CHAT)
+	radio_connection = null
 
 	GLOB.listening_objects -= src
 	for (var/ch_name in channels)
 		radio_controller.remove_object(src, radiochannels[ch_name])
+
+	secure_radio_connections = list()
 
 	active = FALSE
 

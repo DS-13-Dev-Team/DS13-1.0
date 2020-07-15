@@ -78,6 +78,9 @@
 //While eating mobs, the maw will do chomp animations
 /obj/structure/corruption_node/maw/Process()
 	for (var/datum/biomass_source/S as anything in eating)
+		if (QDELETED(S))
+			eating -= S
+			continue
 		var/check = S.can_absorb()
 		if (check == MASS_READY)
 			if (prob(chomp_chance))
@@ -90,7 +93,7 @@
 			if (check == MASS_PAUSE)
 				continue	//ITs paused, just keep going
 
-			if (check == MASS_EXHAUST)
+			if (check == MASS_EXHAUST || check == MASS_FAIL)
 				eating.Remove(S)
 
 	if (buckled_mob)
