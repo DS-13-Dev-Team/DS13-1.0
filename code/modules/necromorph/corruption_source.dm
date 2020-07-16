@@ -12,7 +12,6 @@
 	var/growth_distance_falloff = 0.15	//15% added to growth time for each tile of distance from the source
 	var/support_limit = null
 	var/atom/source
-	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 	var/list/corruption_vines = list()	//A list of all the vines we're currently supporting
 
 	//What tiles are revealed to the visualnet by our corruption vines?
@@ -26,7 +25,6 @@
 /datum/extension/corruption_source/New(var/atom/holder, var/range, var/speed, var/falloff, var/limit)
 	source = holder
 	GLOB.corruption_sources |= src
-	plant = new (get_turf(source), GLOB.corruption_seed)
 	GLOB.moved_event.register(source, src, /datum/extension/corruption_source/proc/source_moved)
 	GLOB.destroyed_event.register(source, src, /datum/extension/corruption_source/proc/source_deleted)
 	if (range)
@@ -46,7 +44,6 @@
 
 /datum/extension/corruption_source/Destroy()
 	GLOB.corruption_sources -= src
-	QDEL_NULL(plant)
 	update_vines()
 	corruption_vines = list()
 	source = null
@@ -105,7 +102,6 @@
 
 
 /datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, var/old_loc, var/new_loc)
-	plant.forceMove(get_turf(new_loc))
 	update_vines()
 
 /datum/extension/corruption_source/proc/source_deleted()
