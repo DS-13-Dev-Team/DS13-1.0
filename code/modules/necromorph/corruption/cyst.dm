@@ -211,6 +211,7 @@
 /datum/click_handler/placement/necromorph/cyst
 	rotate_angle = 45	//8 directions supported
 	var/atom/mount_target
+	placement_location = PLACEMENT_WALL
 
 //Check we have a surface to place it on
 /datum/click_handler/placement/necromorph/cyst/placement_blocked(var/turf/candidate)
