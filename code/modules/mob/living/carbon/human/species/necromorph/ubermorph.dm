@@ -302,7 +302,7 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 	var/datum/extension/sense/S = get_extension(src, /datum/extension/sense)
 	if (S)
 		return
-	set_extension(src, /datum/extension/sense, 9, 9, FACTION_NECROMORPH, 9 SECONDS, 12 SECONDS)
+	set_extension(src, /datum/extension/sense, 9, 9, FACTION_NECROMORPH, 9 SECONDS, 3 SECONDS)
 	play_species_audio(src, SOUND_SPEECH, VOLUME_MID, 1, 3)
 
 /datum/species/necromorph/ubermorph/make_scary(mob/living/carbon/human/H)

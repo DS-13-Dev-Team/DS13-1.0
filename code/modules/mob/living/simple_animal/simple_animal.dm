@@ -280,9 +280,8 @@
 	icon_state = icon_dead
 	update_icon()
 	density = 0
-	adjustBruteLoss(max_health) //Make sure dey dead.
 	walk_to(src,0)
-	return ..(gibbed,deathmessage,show_dead_message)
+	.= ..(gibbed,deathmessage,show_dead_message)
 
 /mob/living/simple_animal/ex_act(severity)
 	if(!blinded)

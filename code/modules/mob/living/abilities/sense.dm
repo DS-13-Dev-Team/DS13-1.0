@@ -57,6 +57,36 @@
 			EC = new /obj/effect/effect/expanding_circle(user.loc, 2, 2 SECOND)
 			EC.pixel_y += 40	//Offset it so it appears to be at our mob's head
 
+	var/found = null
+	//And finally lets search for a living crewmember
+	for (var/datum/mind/M as anything in GLOB.living_crew)
+		if (ishuman(M.current))
+
+			//We dont care about the dead
+			var/mob/living/carbon/human/H = M.current
+			if (H.stat == DEAD)
+				continue
+
+			//Only detect people on our floor
+			if (H.z != user.z)
+				continue
+
+			//If they were deposited in a maw, we don't care
+			var/inmaw = FALSE
+			for (var/obj/structure/corruption_node/maw/maw in get_turf(H))
+				inmaw = TRUE
+				break
+			if (inmaw)
+				continue
+
+			//Got one!
+			found =  H
+			break
+	if (found)
+		to_chat(user, SPAN_NOTICE("There is a living human [get_dist(user, found)]m away!"))
+	else
+		to_chat(user, SPAN_NOTICE("There are no living prey on this floor"))
+
 /datum/extension/sense/proc/finish()
 	QDEL_NULL_LIST(trackers)
 

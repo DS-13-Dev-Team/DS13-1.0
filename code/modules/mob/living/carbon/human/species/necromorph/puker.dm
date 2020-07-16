@@ -159,6 +159,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	if (!isliving(A))
 		A = autotarget_enemy_mob(A, 17, src, PUKER_SNAPSHOT_RANGE)
 
+
 	if (!isliving(A))
 		to_chat(src, SPAN_WARNING("No valid targets found within [PUKER_SNAPSHOT_RANGE] range"))
 		return FALSE
