@@ -244,7 +244,8 @@
 
 
 
-
+//Walking over the acid spill soaks some of it up.
+//Crawling over it soaks up a lot more
 /obj/effect/decal/cleanable/acid_spill/Crossed(var/atom/mover)
 	.=..()
 	if (iscarbon(mover) && !mover.is_necromorph() && alpha > min_alpha)
@@ -252,7 +253,11 @@
 		'sound/effects/footstep/footstep_wet_2.ogg',
 		'sound/effects/footstep/footstep_wet_3.ogg'))
 		playsound(src, sound, VOLUME_QUIET, TRUE)
-		R.trans_to(mover, min(1, R.total_volume))
+		var/transfer_volume = 1
+		var/mob/living/L = mover
+		if (L.lying)
+			transfer_volume = 3
+		R.trans_to(mover, min(transfer_volume, R.total_volume))
 		set_rotation()
 		update_icon()
 

@@ -63,7 +63,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /obj/effect/vine/corruption/calculate_growth()
 
 	mature_time = rand_between(20 SECONDS, 30 SECONDS) / source.growth_speed	//How long it takes for one tile to mature and be ready to spread into its neighbors.
-	mature_time *= 1 + (source.growth_distance_falloff * get_dist_3D(src, plant))	//Expansion gets slower as you get farther out. Additively stacking 15% increase per tile
+	mature_time *= 1 + (source.growth_distance_falloff * get_dist_3D(src, source.source))	//Expansion gets slower as you get farther out. Additively stacking 15% increase per tile
 
 	growth_threshold = max_health
 	possible_children = INFINITY
@@ -122,21 +122,19 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 //Gradually dies off without a nearby host
 /obj/effect/vine/corruption/Process()
 	.=..()
-	if (!plant)
+	if (!source)
 		adjust_health(-(SSplants.wait*0.1))	//Plant subsystem has a 6 second delay oddly, so compensate for it here
 
 
 /obj/effect/vine/corruption/can_regen()
 	.=..()
 	if (.)
-		if (!plant || QDELETED(plant))
+		if (!source)
 			return FALSE
 
-//In addition to normal checks, we need a place to put our plant
+//Vines themselves don't do this
 /obj/effect/vine/corruption/can_spawn_plant()
-	if (!plant || QDELETED(plant))
-		return TRUE
-	return FALSE
+	return (!source)
 
 //We can only place plants under a marker or growth node
 //And before placing, we should look for an existing one
@@ -166,7 +164,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	if (QDELETED(source))
 		source = null
 	.=..()
-	if (plant && !QDELETED(plant))
+	if (source)
 		calculate_growth()
 
 

@@ -63,7 +63,6 @@
 		applicant.source.unregister(applicant)
 
 	corruption_vines |= applicant
-	applicant.plant = plant
 	applicant.source = src
 
 	//When we gain or lose a vine, our visualnet has changed
@@ -74,7 +73,6 @@
 	corruption_vines -= applicant
 	if (applicant.source == src)
 		applicant.source = null
-		applicant.plant = null
 
 	//When we gain or lose a vine, our visualnet has changed
 	needs_update = TRUE

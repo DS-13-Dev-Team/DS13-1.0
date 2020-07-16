@@ -65,6 +65,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 /mob/turfs_in_view(var/check_range = null)
 	var/range = (check_range ? check_range : view_range)
+	if (!isnum(range) || range < 0)
+		range = world.view
+	else
+		range = Ceiling(range)	//Just incase a noninteger value was passed
 	var/origin
 	if (!view_offset)
 		origin = get_turf(src)

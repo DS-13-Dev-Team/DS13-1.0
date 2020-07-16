@@ -15,3 +15,7 @@
 /datum/extension/proximity_manager/New(var/atom/holder, var/datum/proximity_trigger/P)
 	.=..()
 	triggers.Add(P)
+
+/datum/extension/proximity_manager/Destroy()
+	QDEL_NULL_LIST(triggers)
+	.=..()
