@@ -3,9 +3,6 @@
 	if(!effective_force || blocked >= 100)
 		return 0
 
-	//Hulk modifier
-	if(HULK in user.mutations)
-		effective_force *= 2
 
 	//Apply weapon damage
 	var/damage_flags = I.damage_flags()

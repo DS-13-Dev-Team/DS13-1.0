@@ -51,7 +51,7 @@
 	)
 
 	organ_substitutions = list(BP_R_LEG = BP_L_LEG,
-	BP_HEAD = BP_TORSO)
+	BP_HEAD = BP_CHEST)
 
 	//The exploder has only one fused leg, but the right arm is also used to support movement
 	locomotion_limbs = list(BP_R_ARM, BP_L_LEG)

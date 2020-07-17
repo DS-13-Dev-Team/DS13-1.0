@@ -437,8 +437,7 @@
 		if (blocker)
 			if (sound)	playsound(target, sound, VOLUME_HIGH, 1, 1)
 			target.shake_animation(3)
-			user.shake_animation(3)
-			user.visible_message("<span class='minorwarning'>[target] blocked the [used_weapon] with their [blocker]!</span>")
+			target.visible_message("<span class='minorwarning'>[target] blocked the [used_weapon] with their [blocker]!</span>")
 
 
 		else
