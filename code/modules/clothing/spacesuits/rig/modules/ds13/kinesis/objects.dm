@@ -19,7 +19,7 @@
 		By default, 40 = 1 second of time with the default kinesis module
 */
 /atom/movable/proc/can_rip_free(var/obj/item/rig_module/kinesis/gripper)
-	retun null
+	return null
 
 
 /*

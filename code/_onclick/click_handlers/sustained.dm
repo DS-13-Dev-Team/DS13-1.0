@@ -13,9 +13,9 @@
 	var/last_params
 
 	var/fire_proc = /obj/item/weapon/gun/afterattack
-	var/start_proc = /obj/item/weapon/gun/start_firing
-	var/stop_proc = /obj/item/weapon/gun/stop_firing
-	var/get_firing_proc = /obj/item/weapon/gun/is_firing
+	//var/start_proc = /obj/item/weapon/gun/proc/start_firing
+	var/stop_proc = /obj/item/weapon/gun/proc/stop_firing
+	var/get_firing_proc = /obj/item/weapon/gun/proc/is_firing
 
 	has_mousemove = TRUE
 
@@ -24,7 +24,7 @@
 	if (reciever && istype(reciever.loc, /mob))
 		GLOB.moved_event.register(reciever.loc, reciever, /obj/item/weapon/gun/proc/user_moved)
 	do_fire()
-	firing = call(reciever, get_firing_proc)
+	firing = call(reciever, get_firing_proc)()
 
 //Next loop will notice these vars and stop shooting
 /datum/click_handler/sustained/proc/stop_firing()

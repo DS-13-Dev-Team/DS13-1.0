@@ -32,8 +32,7 @@
 	//What are we currently moving, or trying to rip free?
 	var/atom/movable/subject	=	null
 
-	//The graphical filter we assigned to the held item
-	var/dm_filter/filter
+
 
 
 
@@ -110,10 +109,11 @@
 			return FALSE
 
 		//Alright we are able to pull it free
-		rip_health = result
+		rip_health = riptest
 		//Spawn off this process, it will take time
-		spawn()
-			rip_free()
+		//TODO: Implement this when there's a use for it
+		//spawn()
+			//rip_free()
 
 	//We are ready to grip it.
 	//Even if its anchored, we can start the grip, the object won't move until we pull it loose
@@ -124,9 +124,7 @@
 	subject = AM
 	subject.telegripped(src)	//Tell the object it was picked up
 
-	filter = filter(type = "ripple", radius = 0, size = 1)
-	subject.filters.Add(filter)
-	animate(filter, radius = 2, size = 0, time = 3, loop = -1)
+	set_extension(subject, /datum/extension/kinesis_gripped)
 
 	if (!target)
 		target = subject.get_global_pixel_loc()
@@ -145,10 +143,12 @@
 		return FALSE
 
 	//If its anchored and we can't rip it out, continue
-	if (A.anchored && A.can_rip_free == null)
+	if (A.anchored && A.can_rip_free() == null)
 		return FALSE
 
 	return TRUE
+
+
 
 /*
 	Grip: Release
@@ -156,9 +156,12 @@
 //Main release proc, drops the item but does nothing with it
 /obj/item/rig_module/kinesis/proc/release()
 	.=subject
+	remove_extension(subject, /datum/extension/kinesis_gripped)
 	subject = null
 	target = null
 	stop_processing()
+
+
 
 
 
@@ -180,7 +183,9 @@
 	STOP_PROCESSING(SSfastprocess, src)
 
 
-/obj/item/rig_module/kinesis/Process()
+/obj/item/rig_module/kinesis/Process(var/wait)
+	wait *= 0.1	//Convert this to seconds
+
 	//Don't need to do anything if we're at the goal
 	if(at_rest)
 		return
@@ -188,7 +193,7 @@
 	if (!safety_checks())
 		release()
 
-	accelerate()
+	accelerate(wait)
 
 
 
@@ -208,10 +213,13 @@
 	return TRUE
 
 
+
+
+
 /*
 	Motion and Physics
 */
-/obj/item/rig_module/kinesis/proc/accelerate()
+/obj/item/rig_module/kinesis/proc/accelerate(var/delta)
 	//First of all, lets get the distance from subject to target point
 	var/vector2/offset = subject.get_global_pixel_loc() - target
 	var/distance = offset.Magnitude()
@@ -223,12 +231,53 @@
 	if (control_percentage  < 1)
 		effective_force *= control_percentage
 
-	//Alright, how much will we change the speed
+	//Alright, how much will we change the speed per second?
 	var/acceleration = effective_force / subject.get_mass()
+	acceleration = min(acceleration, max_acceleration)	//This is hardcapped
+
+	//Now how much acceleration are we actually adding this tick ? Just multiply by the time delta, which will usually be 0.2
+	acceleration *= delta
+
+
+	//Okay now that we have the magnitude of the acceleration, lets create a velocity delta.
+	offset.ToMagnitude(acceleration)
+
+
+	//Now we adjust the velocity
+	velocity += offset
+
+	//And we clamp its magnitude to our max speed
+	velocity.ClampMag(0, max_speed)
+
+	//We're done with velocity calculations, but we haven't moved yet
+
+
+//This proc actually adjusts the subject's position, based on the calculated velocity
+/obj/item/rig_module/kinesis/proc/move_subject(var/time_delta)
+	var/vector2/position_delta = new /vector2(velocity)	//Copy the velocity first, we don't want to modify it here
+
+	//Velocity is in metres, we work in pixels, so lets convert it
+	position_delta *= WORLD_ICON_SIZE
+
+	//The velocity is per second, but we're working on a sub-second frame interval, so multiply by our time delta
+	position_delta *= time_delta
+
+	//We now have the actual pixels we're going to add to our position
+	//Lets do it with animate
+
+
+
 
 /*
 	Click Handler Stuff
 */
+
+/datum/click_handler/sustained/kinesis
+
+	fire_proc = /obj/item/rig_module/kinesis/proc/update
+	//var/start_proc = /obj/item/weapon/gun/proc/start_firing
+	stop_proc = /obj/item/rig_module/kinesis/proc/release
+	get_firing_proc = /obj/item/rig_module/kinesis/proc/is_gripping
 
 /*
 	This proc is called for two scenarios/purposes
@@ -259,13 +308,25 @@
 	else
 		//Okay we're trying to grab a new item, first lets find out what
 		var/atom/movable/target_atom
-		if(can_grip(A)_
+		if(can_grip(A))
 			target_atom = A
 		else
 			target_atom = find_target(A)
 
 		if (target_atom)
 			attempt_grip(target_atom)
+
+
+/obj/item/rig_module/kinesis/proc/is_gripping()
+	if (subject)
+		return TRUE
+	return FALSE
+
+
+/obj/item/rig_module/kinesis/rig_equipped(var/mob/user, var/slot)
+
+
+
 /*
 	Target selection
 */
@@ -277,8 +338,9 @@
 	var/list/nearby_stuff = range(2, origin)
 
 	for (var/target_type in target_priority)
-		for (var/atom/movable/A as target_type in nearby_stuff)
-
+		for (var/atom/movable/A in nearby_stuff)
+			if (!istype(A, target_type))
+				continue
 			if (!can_grip(A))
 				nearby_stuff -= A
 				continue

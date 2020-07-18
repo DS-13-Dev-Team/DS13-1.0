@@ -182,3 +182,61 @@
 
 	var/vector2/rejection = pixel_offset.Rejection(line)
 	mover.modify_pixels(rejection*-1)
+
+
+
+
+/*
+	Pixel motion
+	This function moves an object by a number of pixels supplied as a vector2 delta
+
+	In the process of moving, the object's tile location will be updated if it enters a new tile, and it will stop on the edge and trigger bumps if not
+
+*/
+/atom/movable/proc/pixel_move(var/vector2/position_delta, var/time_delta)
+
+	//Now before we do animating, lets check if this movement is going to put us into a different tile
+	var/vector2/newpix = new /vector2((pixel_x + position_delta.x), (pixel_y + position_delta.y))
+	var/blocked = FALSE
+	.=TRUE
+	if (is_outside_cell(newpix))
+		//Yes it will, lets find that tile
+		var/turf/newtile = get_turf_at_pixel_offset(newpix)
+
+		//There's no tile there? We must be at the edge of the map, abort!
+		if (!newtile)
+			return
+
+		var/turf/oldloc = get_turf(src)
+
+
+		//First of all, can we leave our old tile
+		var/exit_allowed = oldloc.Exit(src, newtile)
+		if (!exit_allowed)
+			blocked = TRUE
+			//TODO Here: Find what prevented us from exiting
+
+		//Secondly, lets see if we can enter the new tile
+		var/enter_allowed = newtile.Enter(src, oldloc)
+		if (!enter_allowed)
+			blocked = TRUE
+			//TODO: Run the below function to test blocker
+			//This function tests that and, if blocked, will return the first solid thing we would bump into
+			//var/atom/blocker = newtile.can_enter(src)
+
+
+
+		//Something blocked us!
+		if (blocked)
+			.= FALSE
+			//TODO Here: Cap the magnitude of the movement so that it stops at the edge of the tile
+
+			//For now, just
+			return
+		else
+			//If nothing blocks us, then we're clear to just swooce right into that tile.
+			//We want the animation to finish first though so lets spawn it
+			spawn(time_delta)
+				set_global_pixel_loc(get_global_pixel_loc()) //This will move us into the tile while maintaining our global pixel coords
+
+	animate(src, pixel_x = newpix.x, pixel_y = newpix.y, time = time_delta)
