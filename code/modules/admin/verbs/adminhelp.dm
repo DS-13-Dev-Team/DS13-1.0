@@ -309,13 +309,23 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << mentor_msg
 			if(modholders.len)
-				for(var/client/X in modholders) // Admins get the full monty
+				for(var/client/X in modholders) // Mods
+					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
+						X << 'sound/effects/adminhelp_new.ogg'
+					X << msg
+			if(adminholders.len)
+				for(var/client/X in adminholders) // Admins get the full monty
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << msg
 		if("Rule Issue")
 			if(modholders.len)
 				for(var/client/X in modholders) // Mods
+					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
+						X << 'sound/effects/adminhelp_new.ogg'
+					X << msg
+			if(adminholders.len)
+				for(var/client/X in adminholders) // Mods
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << msg
