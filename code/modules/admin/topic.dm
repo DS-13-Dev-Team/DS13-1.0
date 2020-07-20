@@ -9,7 +9,7 @@
 	if(ticker.mode && ticker.mode.check_antagonists_topic(href, href_list))
 		check_antagonists()
 		return
-
+/*
 	if(href_list["autoresponse"]) // new verb on the Ahelp.  Will tell the person their message was received, and they probably won't get a response
 		var/mob/ref_person = locate(href_list["autoresponse"])
 		if(!ref_person || !istype(ref_person) || !ref_person.client)
@@ -26,7 +26,7 @@
 			return
 
 //		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Guilty", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "D: Joining disabled", "M: Macros")
-		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed","Thanks!", "A: GitHub Issue", "A: Requesting to be an SCP", "A: Becoming an SCP", "A: RUST Engine", "A: D-Class Riot", "A: D-Class Cells", "A: Directions/Lost", "A: Character setup", "A: Website and Discord information")
+//		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed","Thanks!", "A: GitHub Issue", "A: Requesting to be an SCP", "A: Becoming an SCP", "A: RUST Engine", "A: D-Class Riot", "A: D-Class Cells", "A: Directions/Lost", "A: Character setup", "A: Website and Discord information")
 
 
 		var/msgplayer
@@ -57,7 +57,7 @@
 				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. In order to join the game, you are required to select a branch and rank, found in the top area of the character set up. Once you have done this, you can join the jobs that are allowed for that rank. It is best to experiment for a moment to see which rank suits you best, since some jobs allow multiple.</b>"
 			if("A: Website and Discord information")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Hello, and welcome! Our website is located at: https://scp13.site, our wiki is located at: wiki.scp13.site, and our Discord is located at: https://discord.gg/kJ7UfvM . Hope to see you soon!</b>"
-/*			if("Thanks")
+			if("Thanks")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b>"
 			if("Guilty")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. You broke Marine Law.</b>"
@@ -81,14 +81,14 @@
 				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. A staff member has disabled joining for new players as the current round is coming to an end, you can observe while it ends and wait for a new round to start.</b>"
 			if("M: Macros")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. To set a macro right click the title bar, select Client->Macros. Binding unique-action to a key is useful for pumping shotguns etc; Binding load-from-attachment will activate any scopes etc; Binding resist and give to seperate keys is also handy. For more information on macros, head over to our guide, at: http://cm-ss13.com/wiki/Macros</b>"
-				*/
+
 			else return
 
 		message_staff("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>. They have been shown the following:\n[msgplayer]", 1)
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-reply.ogg')
 		ticket.close(usr.client)
-
+*/
 	if(href_list["dbsearchckey"] || href_list["dbsearchadmin"])
 
 		var/adminckey = href_list["dbsearchadmin"]
