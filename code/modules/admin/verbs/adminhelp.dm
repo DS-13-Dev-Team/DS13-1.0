@@ -324,17 +324,6 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << msg
-		if("Other")
-			if(mentorholders.len)
-				for(var/client/X in mentorholders) // Admins of course get everything in their helps
-					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
-						X << 'sound/effects/adminhelp_new.ogg'
-					X << mentor_msg
-			if(adminholders.len)
-				for(var/client/X in adminholders) // Admins get the full monty
-					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
-						X << 'sound/effects/adminhelp_new.ogg'
-					X << msg
 
 
 
