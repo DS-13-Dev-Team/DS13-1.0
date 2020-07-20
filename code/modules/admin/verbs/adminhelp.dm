@@ -147,6 +147,8 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 //This is a list of words which are ignored by the parser when comparing message contents for names. MUST BE IN LOWER CASE!
 var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","alien","as")
 
+// Keywords are used to list character names as clickable types for ease of search. i.e.: Jones Joe is breaking the rules! A character with that name will then be listed in black,
+// and an admin can immediately jump to said player by clicking the ?. - Lion
 /proc/generate_ahelp_key_words(var/mob/mob, var/msg)
 	var/list/surnames = list()
 	var/list/forenames = list()
