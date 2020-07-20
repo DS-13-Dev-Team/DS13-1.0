@@ -58,7 +58,7 @@
 
 	msg += "<b>Total Players: [length(Lines)]</b>"
 	to_chat(src, msg)
-
+/*
 /client/verb/staffwho()
 	set category = "Admin"
 	set name = "Staffwho"
@@ -108,3 +108,53 @@
 		to_chat(src, "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game try anyway and an admin on IRC may see it and respond.</span>")
 	to_chat(src, "<b>Current Staff ([active_staff]/[total_staff]):</b>")
 	to_chat(src, jointext(msg,"\n"))
+*/
+//New SEXY Staffwho verb
+/client/verb/staffwho()
+	set category = "Admin"
+	set name = "StaffWho"
+	var/adminwho = ""
+	var/modwho = ""
+	var/mentwho = ""
+	var/devwho = ""
+	var/admin_count = 0
+	var/mod_count = 0
+	var/ment_count = 0
+	var/dev_count = 0
+
+	for(var/client in GLOB.admins)
+		var/client/C = client
+		if(C.is_stealthed() && !check_rights(R_MOD|R_ADMIN, 0, src)) // Normal players and mentors can't see stealthmins
+			continue
+
+		var/extra = ""
+		if(holder)
+			if(C.is_stealthed())
+				extra += " (Stealthed)"
+			if(isobserver(C.mob))
+				extra += " - Observing"
+			else if(istype(C.mob,/mob/new_player))
+				extra += " - Lobby"
+			else
+				extra += " - Playing"
+			if(C.is_afk())
+				extra += " (AFK)"
+
+		if(R_ADMIN & C.holder.rights)
+			adminwho += "\t[C] is a <b>[C.holder.rank]</b>[extra]\n"
+			admin_count++
+		else if (R_MOD & C.holder.rights)
+			modwho += "\t[C] is a <i>[C.holder.rank]</i>[extra]\n"
+			mod_count++
+		else if (R_MENTOR & C.holder.rights)
+			mentwho += "\t[C] is a [C.holder.rank][extra]\n"
+			ment_count++
+		else if (R_DEBUG & C.holder.rights)
+			devwho += "\t[C] is a [C.holder.rank][extra]\n"
+			dev_count++
+
+	to_chat(src, "<b><big>Online staff:</big></b>")
+	to_chat(src, "<b>Current Admins ([admin_count]):</b><br>[adminwho]<br>")
+	to_chat(src, "<b>Current Moderators ([mod_count]):</b><br>[modwho]<br>")
+	to_chat(src, "<b>Current Mentors ([ment_count]):</b><br>[mentwho]<br>")
+	to_chat(src, "<b>Current Developers ([dev_count]):</b><br>[devwho]<br>")
