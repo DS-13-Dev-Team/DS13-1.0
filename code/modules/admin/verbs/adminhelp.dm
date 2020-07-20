@@ -213,7 +213,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 
 // Select a category
 	var/msg
-	var/list/type = list ("Gameplay/Job Inquiries", "Rule Issue", "Other")
+	var/list/type = list ("Gameplay/Job Inquiries", "Rule Issue")
 	var/selected_type = input("Pick a category.", "Admin Help", null, null) as null|anything in type
 	if(selected_type)
 		msg = input("Please enter your message:", "Admin Help", null, null) as text
