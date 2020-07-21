@@ -38,4 +38,3 @@ changes:
   - tweak: "Gas masks can now be placed inside the security holster that you spawn with. Currently does not work on other holster. Fixes point 1 through 3. Rest will not be pursued."
   - tweak: "Security now starts with Bowman headsets. Regular headsets remain inside the lockers."
   - bugfix: "Attaches the Complex Devices skill to Research, instead of None."
-  - bugfix: "Fixed plate carriers not accepting valid attachments."
