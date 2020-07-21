@@ -1,7 +1,7 @@
 /decl/hierarchy/outfit/job/security
 	hierarchy_type = /decl/hierarchy/outfit/job/security
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud
-	l_ear = /obj/item/device/radio/headset/headset_sec/alt
+	l_ear = /obj/item/device/radio/headset/headset_sec
 	uniform = /obj/item/clothing/under/security
 	gloves = /obj/item/clothing/gloves/combat
 	shoes = /obj/item/clothing/shoes/ds_securityboots
