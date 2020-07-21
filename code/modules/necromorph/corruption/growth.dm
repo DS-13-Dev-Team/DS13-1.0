@@ -1,5 +1,5 @@
 /obj/structure/corruption_node/growth
-	name = "Propagator"
+	name = "propagator"
 	desc = "Corruption spreads out in all directions from this horrible mass."
 	max_health = 200	//Takes a while to kill
 	resistance = 8
@@ -37,7 +37,7 @@
 	Smaller version for signals
 */
 /obj/structure/corruption_node/growth/branch
-	name = "Branch"
+	name = "branch"
 	desc = "This is just a tribute"
 	max_health = 60//Takes a while to kill
 	resistance = 6
@@ -56,7 +56,7 @@
 
 
 /datum/signal_ability/placement/corruption/branch
-	name = "Branch"
+	name = "branch"
 	id = "branch"
 	desc = ""
 	energy_cost = 150
@@ -67,7 +67,7 @@
 	Root: An alternate version for tight spaces
 */
 /obj/structure/corruption_node/growth/root
-	name = "Root"
+	name = "root"
 	desc = "The root of all evil"
 	max_health = 60//Takes a while to kill
 	resistance = 6

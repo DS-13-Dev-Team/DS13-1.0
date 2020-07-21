@@ -7,7 +7,7 @@
 	4. It provides light, allowing necromorphs to find their way around dark halls
 */
 /obj/structure/corruption_node/eye
-	name = "Eye"
+	name = "eye"
 	desc = "It knows you. You cannot escape its gaze."
 	icon_state = "eye"
 	max_health = 60	//fragile
