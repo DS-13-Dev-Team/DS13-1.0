@@ -33,9 +33,9 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - spellcheck: "Replaced a lot of uppercase starters for necromorph structures. Fixes issue #125 (Reported by SnypeHunter)."
-  - rscadd: "Gas masks now spawn in Security lockers. Closes suggestion #307. (Requested by All-I-Do-Is-Nguyen.)"
-  - tweak: "Gas masks can now be placed inside the security holster that you spawn with. Currently does not work on other holster. Fixes point 1 through 3. Rest will not be pursued. Closes suggestion #307. (Requested by All-I-Do-Is-Nguyen.)"
-  - tweak: "Security now starts with Bowman headsets. Regular headsets remain inside the lockers. Closes suggestion #307. (Requested by All-I-Do-Is-Nguyen.)"
+  - spellcheck: "Replaced a lot of uppercase starters for necromorph structures."
+  - rscadd: "Gas masks now spawn in Security lockers."
+  - tweak: "Gas masks can now be placed inside the security holster that you spawn with. Currently untested on other holsters."
+  - tweak: "Security now starts with Bowman headsets. Regular headsets remain inside the lockers."
   - tweak: "Changed security jumpsuit to armored security jumpsuit. Fixes issue #446. (Reported by Aetsuki.)"
   - bugfix: "Attaches the Complex Devices skill to Research, instead of None. Fixes issue #554."
