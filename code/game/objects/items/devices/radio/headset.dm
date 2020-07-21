@@ -211,6 +211,11 @@
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/heads/hos
 
+/obj/item/device/radio/headset/heads/cseco/alt
+	name = "chief security officer's bowman headset"
+	icon_state = "com_headset_alt"
+	item_state = "com_headset_alt"
+
 /obj/item/device/radio/headset/heads/ce
 	name = "chief engineer's headset"
 	desc = "The headset of the guy with the most techincal experience and head of the engineering department."

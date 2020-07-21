@@ -92,6 +92,7 @@
 		/obj/item/clothing/under/security,
 		/obj/item/clothing/shoes/ds_securityboots,
 		/obj/item/device/radio/headset/heads/cseco,
+		/obj/item/device/radio/headset/heads/cos/alt,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/weapon/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
@@ -122,6 +123,7 @@
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/sec, 50),
 		/obj/item/device/radio/headset/headset_sec,
+		/obj/item/device/radio/headset/headset_sec/alt,
 		/obj/item/weapon/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
 		/obj/item/weapon/storage/belt/holster/security,
@@ -233,6 +235,7 @@
 /obj/structure/closet/secure_closet/SSO/WillContain()
 	return list(
 		/obj/item/device/radio/headset/headset_sec,
+		/obj/item/device/radio/headset/headset_sec/alt,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/clothing/mask/gas,
 		/obj/item/weapon/gun/projectile/divet,

@@ -34,3 +34,6 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - spellcheck: "Replaced a lot of uppercase starters for necromorph structures. Fixes issue #125 (Reported by SnypeHunter)."
+  - rscadd: "Gas masks now spawn in Security lockers."
+  - tweak: "Gas masks can now be placed inside the security holster that you spawn with. Currently does not work on other holster. Fixes point 1 through 3. Rest will not be pursued."
+  - tweak: "Security now starts with Bowman headsets. Regular headsets remain inside the lockers."
