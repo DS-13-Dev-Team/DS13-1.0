@@ -542,9 +542,6 @@ var/list/gamemode_cache = list()
 				if("use_cortical_stacks")
 					config.use_cortical_stacks = TRUE
 
-				if("law_zero")
-					law_zero = value
-
 				if ("probability")
 					var/prob_pos = findtext(value, " ")
 					var/prob_name = null
