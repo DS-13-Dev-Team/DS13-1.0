@@ -168,7 +168,7 @@
 		if("admin_verbs_spawn")
 			return global.admin_verbs_spawn;
 		if("adminhelp_ignored_words")
-			return global.adminhelp_ignored_words;
+			return GLOB.adminhelp_ignored_words;
 		if("adminlog")
 			return global.adminlog;
 		if("ai_list")
@@ -989,7 +989,7 @@
 			return global.z_levels;
 		if("zone_blocked")
 			return global.zone_blocked;
-		
+
 /proc/writeglobal(which, newval)
 	switch(which)
 		if("ALL_ANTIGENS")
@@ -1159,7 +1159,7 @@
 		if("admin_verbs_spawn")
 			global.admin_verbs_spawn=newval;
 		if("adminhelp_ignored_words")
-			global.adminhelp_ignored_words=newval;
+			GLOB.adminhelp_ignored_words=newval;
 		if("adminlog")
 			global.adminlog=newval;
 		if("ai_list")
@@ -1980,7 +1980,7 @@
 			global.z_levels=newval;
 		if("zone_blocked")
 			global.zone_blocked=newval;
-		
+
 /var/list/_all_globals=list(
 	"ALL_ANTIGENS",
 	"ANTAG_FREQS",

@@ -143,7 +143,6 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 
 */
 
-
 // Keywords are used to list character names as clickable types for ease of search. i.e.: Jones Joe is breaking the rules! A character with that name will then be listed in black,
 // and an admin can immediately jump to said player by clicking the ?. - Lion
 /proc/generate_ahelp_key_words(var/mob/mob, var/msg)
@@ -182,7 +181,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 	for(var/original_word in msglist)
 		var/word = ckey(original_word)
 		if(word)
-			if(!(word in adminhelp_ignored_words))
+			if(!(word in GLOB.adminhelp_ignored_words))
 				if(word == "ai" && !ai_found)
 					ai_found = 1
 					msg += "<b>[original_word] <A HREF='?_src_=holder;adminchecklaws=\ref[mob]'>(CL)</A></b> "
