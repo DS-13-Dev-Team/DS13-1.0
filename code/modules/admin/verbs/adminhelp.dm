@@ -66,7 +66,7 @@
 
 // Select a category
 	var/msg
-	var/list/type = list ("Gameplay/Job Inquiries", "Rule Issue")
+	var/list/type = list ("Mentors: Gameplay/Job Inquiries", "Mods/Admins: Rule Issue")
 	var/selected_type = input("Pick a category.", "Admin Help", null, null) as null|anything in type
 	if(selected_type)
 		msg = input("Please enter your message:", "Admin Help", null, null) as text
