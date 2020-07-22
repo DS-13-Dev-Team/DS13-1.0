@@ -1231,16 +1231,15 @@
 
 /obj/machinery/vending/hotfood
 	name = "Hot Foods"
-	desc = "An old vending machine promising 'hot foods'. You doubt any of its contents are still edible."
+	desc = "An old vending machine promising 'hot foods'. It looks dubious, but what's inside seems alright!"
 	vend_delay = 40
 
 	icon_state = "hotfood"
-	products = list(/obj/item/weapon/reagent_containers/food/snacks/old/pizza = 3,
-					/obj/item/weapon/reagent_containers/food/snacks/old/burger = 3,
-					/obj/item/weapon/reagent_containers/food/snacks/old/hamburger = 3,
-					/obj/item/weapon/reagent_containers/food/snacks/old/fries = 3,
-					/obj/item/weapon/reagent_containers/food/snacks/old/hotdog = 3,
-					/obj/item/weapon/reagent_containers/food/snacks/old/taco = 3
+	products = list(/obj/item/weapon/reagent_containers/food/snacks/slice/margherita = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/hamburger = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/fries = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/hotdog = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/taco = 3
 					)
 
 /obj/machinery/vending/hotfood/can_harvest_biomass()
