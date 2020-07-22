@@ -98,6 +98,7 @@ var/list/gamemode_cache = list()
 	var/wikiurl
 	var/forumurl
 	var/githuburl
+	var/discord_url
 
 	var/forbid_singulo_possession = 0
 
@@ -451,6 +452,9 @@ var/list/gamemode_cache = list()
 				if ("serverurl")
 					config.serverurl = value
 
+				if("discord_url")
+					config.discord_url = value
+
 				if ("server")
 					config.server = value
 
@@ -537,6 +541,9 @@ var/list/gamemode_cache = list()
 
 				if("use_cortical_stacks")
 					config.use_cortical_stacks = TRUE
+
+				if("law_zero")
+					law_zero = value
 
 				if ("probability")
 					var/prob_pos = findtext(value, " ")
