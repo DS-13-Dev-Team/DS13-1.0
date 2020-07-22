@@ -25,63 +25,14 @@
 			to_chat(usr, "<b>This ticket no longer exists.</b>")
 			return
 
-//		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Guilty", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "D: Joining disabled", "M: Macros")
-//		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed","Thanks!", "A: GitHub Issue", "A: Requesting to be an SCP", "A: Becoming an SCP", "A: RUST Engine", "A: D-Class Riot", "A: D-Class Cells", "A: Directions/Lost", "A: Character setup", "A: Website and Discord information")
+//		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue")
+//		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue"")
 
 
 		var/msgplayer
 		switch(choice)
-			if("IC Issue")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This issue has been deemed an IC (In-Character) issue, and will not be handled by staff. In case it's relevant, you may wish to ask your <a href='http://wiki.scp13.site/index.php?title=Rank'>Chain Of Command</a> about your issue if you believe <a href='http://wiki.scp13.site/index.php?title=Foundation_Law'>Foundation Law</a> has been broken.</b>"
-			if("Being Handled")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already being dealt with.</b>"
-			if("Fixed")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already fixed.</b>"
-			if("Thanks!")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Have a SCP day!</b>"
-			if("A: Requesting to be an SCP")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Only under certain circumstances will an admin put you into an SCP. Examples of these circumstances are: Imminent Test or gross negligence in containment. Do not repeatedly ask to become an SCP, as this might get you a mute.</b>"
-			if("A: Becoming an SCP")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. In order to become an SCP, the alert level should be above red, and you should be dead for at least 5 minutes.</b>"
-			if("A: GitHub Issue")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Thanks for reporting this issue! Though, for maximum effectivity, please create an issue report on our GitHub: https://github.com/SS13-SCP13/SS13-SCP13/issues</b>"
-			if("A: RUST Engine")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The RUST Engine can be set up by finding the placed manual in the chamber area's, or alternatively you can visit <a href='http://wiki.scp13.site/index.php?title=RUST_MK.3_Engine'>the wiki guide on this engine</a>.</b>"
-			if("A: D-Class Riot")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. D-Class may only riot with permission from a member of staff, and needs a good reason. If you wish to start a riot, you are to adminhelp again, outlining your reason. A member of staff will take your request under advisement.</b>"
-			if("A: D-Class Cells")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. You can only get out if the on-duty guards feel like releasing you. It's best to wait and watch a YouTube video until such time.</b>"
-			if("A: Directions/Lost")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you are lost, it is best to keep an eye on directional signs, ask a fellow player or find Holomaps, if they have been added to the current map.</b>"
-			if("A: Character setup")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. In order to join the game, you are required to select a branch and rank, found in the top area of the character set up. Once you have done this, you can join the jobs that are allowed for that rank. It is best to experiment for a moment to see which rank suits you best, since some jobs allow multiple.</b>"
-			if("A: Website and Discord information")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Hello, and welcome! Our website is located at: https://scp13.site, our wiki is located at: wiki.scp13.site, and our Discord is located at: https://discord.gg/kJ7UfvM . Hope to see you soon!</b>"
-			if("Thanks")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b>"
-			if("Guilty")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. You broke Marine Law.</b>"
-			if("L: Xeno Quickstart Guide")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Xeno_Quickstart_Guide'>Check it out here.</a></b>"
-			if("L: Marine quickstart guide")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Marine_Quickstart_Guide'>Check it out here.</a></b>"
-			if("L: Current Map")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you need a map to the current game, you can (usually) find them on the front page of our wiki in the 'Maps' section. <a href='http://cm-ss13.com/wiki/Main_Page'>Check it out here.</a> If the map is not listed, it's a new or rare map and the overview hasn't been finished yet.</b>"
-			if("A: No plasma regen")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone.</b>"
-			if("A: Devour as Xeno")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin devouring. The host can resist by breaking out of your belly, so make sure your target is incapacitated or only have them devoured for a short time. Also, the devoured host will eventually be digested (~5 minutes), which results in you killing a viable host to grow the hive. To release your target, click 'Regurgitate' on the HUD to throw them back up.</b>"
-			if("J: Job bans")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. All job bans, including xeno bans, are permenant until appealed. you can appeal it over on the forums at http://cm-ss13.com/viewforum.php?f=76</b>"
-			if("E: Event in progress")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member.</b>"
-			if("R: Radios")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Radios have been changed, the prefix for all squad marines is now ; to access your squad radio. Squad Medics have access to the medical channel using :m, Engineers have :e and the (acting) Squad Leader has :v for command.  Examine your radio headset to get a listing of the channels you have access to.</b>"
-			if("D: Joining disabled")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. A staff member has disabled joining for new players as the current round is coming to an end, you can observe while it ends and wait for a new round to start.</b>"
-			if("M: Macros")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. To set a macro right click the title bar, select Client->Macros. Binding unique-action to a key is useful for pumping shotguns etc; Binding load-from-attachment will activate any scopes etc; Binding resist and give to seperate keys is also handy. For more information on macros, head over to our guide, at: http://cm-ss13.com/wiki/Macros</b>"
-
+			if("DEV EXAMPLE")
+				msgplayer = "<span class='notice'> <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This issue has been deemed an IC (In-Character) issue, and will not be handled by staff. In case it's relevant, you may wish to ask your <a href='http://wiki.scp13.site/index.php?title=Rank'>Chain Of Command</a> about your issue if you believe <a href='http://wiki.scp13.site/index.php?title=Foundation_Law'>Foundation Law</a> has been broken.</b></span>"
 			else return
 
 		message_staff("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>. They have been shown the following:\n[msgplayer]", 1)
