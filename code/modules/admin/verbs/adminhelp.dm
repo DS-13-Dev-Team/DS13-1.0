@@ -175,6 +175,11 @@
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << msg
 		if("Rule Issue")
+			if(mentorholders.len)
+				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
+					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
+						X << 'sound/effects/adminhelp_new.ogg'
+					X << mentor_msg
 			if(modholders.len)
 				for(var/client/X in modholders) // Mods
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
