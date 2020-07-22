@@ -9,11 +9,13 @@
 	if(ticker.mode && ticker.mode.check_antagonists_topic(href, href_list))
 		check_antagonists()
 		return
+
+// Below: Remains WIP! Do not remove. - Lion
 /*
 	if(href_list["autoresponse"]) // new verb on the Ahelp.  Will tell the person their message was received, and they probably won't get a response
 		var/mob/ref_person = locate(href_list["autoresponse"])
 		if(!ref_person || !istype(ref_person) || !ref_person.client)
-			to_chat(usr, "\blue Looks like that person stopped existing!")
+			to_chat(usr, "<span class='notice'> Looks like that person stopped existing!</span>")
 			return
 
 		var/datum/ticket/ticket = get_open_ticket_by_client(ref_person.client)
@@ -25,14 +27,17 @@
 			to_chat(usr, "<b>This ticket no longer exists.</b>")
 			return
 
-//		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue")
-//		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue"")
+		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue"")
 
 
 		var/msgplayer
 		switch(choice)
-			if("DEV EXAMPLE")
-				msgplayer = "<span class='notice'> <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This issue has been deemed an IC (In-Character) issue, and will not be handled by staff. In case it's relevant, you may wish to ask your <a href='http://wiki.scp13.site/index.php?title=Rank'>Chain Of Command</a> about your issue if you believe <a href='http://wiki.scp13.site/index.php?title=Foundation_Law'>Foundation Law</a> has been broken.</b></span>"
+			if("A: Rig Locations")
+				msgplayer = "<span class='notice'> <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. RIGs are commonly placed around Engineering, Security and Mining bay.</b></span>"
+			if("A: When and where does the necromorphs appear?")
+				msgplayer = "<span class='notice'> <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The marker starts to turn on 40+ minutes into the round, it is advised to not be meta about it.</b></span>"
+			if("A: How do you Toggle your RIG?")
+				msgplayer = "<span class='notice'> <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Hardsuit/RIG tab, and switch it on.</b></span>"
 			else return
 
 		message_staff("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>. They have been shown the following:\n[msgplayer]", 1)
