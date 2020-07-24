@@ -95,9 +95,12 @@
 	//Once we get here, we've decided to fire!
 	fire()
 
-/obj/structure/corruption_node/cyst/proc/fire(var/target_atom)
+/obj/structure/corruption_node/cyst/proc/fire(var/atom/target_atom)
 	if (!payload)
 		return	//Can't fire if we don't have a bomb ready
+
+	if (QDELETED(target_atom))
+		return
 
 	var/sound = pick(list('sound/effects/creatures/necromorph/cyst/cyst_fire_1.ogg',
 	'sound/effects/creatures/necromorph/cyst/cyst_fire_2.ogg',
@@ -169,6 +172,9 @@
 	check_armour = "bomb"
 	step_delay = 2.5
 	muzzle_type = /obj/effect/projectile/bio/muzzle
+	grippable = TRUE
+
+
 
 /obj/item/projectile/bullet/biobomb/is_necromorph()
 	return TRUE
@@ -260,7 +266,7 @@
 /datum/signal_ability/placement/corruption/cyst
 	name = "Cyst"
 	id = "cyst"
-	energy_cost = 180
+	energy_cost = 60
 	placement_atom = /obj/structure/corruption_node/cyst
 	click_handler_type = /datum/click_handler/placement/ability/cyst
 

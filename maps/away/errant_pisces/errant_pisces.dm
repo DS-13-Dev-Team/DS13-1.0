@@ -167,7 +167,7 @@ obj/structure/net/Initialize(var/mapload)
 	w_class = ITEM_SIZE_LARGE
 	force = 3.0
 	throwforce = 5.0
-	throw_speed = 5
+	
 	throw_range = 10
 	matter = list("cloth" = 1875, MATERIAL_PLASTEEL = 350)
 	max_amount = 30

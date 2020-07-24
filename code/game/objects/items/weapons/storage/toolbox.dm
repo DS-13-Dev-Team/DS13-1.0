@@ -12,7 +12,7 @@
 	attack_cooldown = 21
 	melee_accuracy_bonus = -20
 	throwforce = 10
-	throw_speed = 1
+	
 	throw_range = 7
 	w_class = ITEM_SIZE_LARGE
 	max_w_class = ITEM_SIZE_NORMAL

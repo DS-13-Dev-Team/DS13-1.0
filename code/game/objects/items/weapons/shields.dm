@@ -45,7 +45,7 @@
 	slot_flags = SLOT_BACK
 	force = 5.0
 	throwforce = 5.0
-	throw_speed = 1
+	
 	throw_range = 4
 	w_class = ITEM_SIZE_HUGE
 	origin_tech = list(TECH_MATERIAL = 2)
@@ -93,7 +93,7 @@
 	name = "round handmade shield"
 	desc = "A handmade stout shield, but with a small size."
 	icon_state = "buckler"
-	throw_speed = 2
+	
 	throw_range = 6
 	matter = list(MATERIAL_STEEL = 6)
 	base_block_chance = 65
@@ -107,7 +107,7 @@
 	name = "tray shield"
 	desc = "A thin metal tray held on the arm, won't endure much punishment"
 	icon_state = "tray_shield"
-	throw_speed = 2
+	
 	throw_range = 4
 	matter = list(MATERIAL_STEEL = 4)
 	base_block_chance = 80
@@ -130,7 +130,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	force = 3.0
 	throwforce = 5.0
-	throw_speed = 1
+	
 	throw_range = 4
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_ILLEGAL = 4)

@@ -5,7 +5,7 @@
 	icon_state = "staff"
 	force = 3.0
 	throwforce = 5.0
-	throw_speed = 1
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("bludgeoned", "whacked", "disciplined")

@@ -209,7 +209,7 @@
 	name = "summoning stone"
 	desc = "a small non-descript stone of dubious origin."
 	icon_state = "stone"
-	throw_speed = 5
+	
 	throw_range = 10
 	w_class = ITEM_SIZE_TINY
 

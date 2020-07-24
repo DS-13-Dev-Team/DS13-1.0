@@ -272,6 +272,7 @@
 	icon_state = "rock"
 	damage = 40
 	kill_count = 255
+	grippable = TRUE
 
 /obj/item/projectile/bullet/rock/New()
 	icon_state = "rock[rand(1,3)]"

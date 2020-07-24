@@ -55,6 +55,7 @@
 	damage_type = BRUTE
 	nodamage = 1
 	check_armour = "bullet"
+	grippable = TRUE
 
 	Bump(atom/A as mob|obj|turf|area)
 		if(A == firer)

@@ -9,7 +9,7 @@
 	//Firing events are generated on every mousemove
 	var/atom/target = null
 	var/firing = FALSE
-	var/obj/item/weapon/gun/reciever //The thing we send firing signals to.
+	var/atom/reciever //The thing we send firing signals to.
 	var/last_params
 
 	var/fire_proc = /obj/item/weapon/gun/afterattack
@@ -33,7 +33,7 @@
 			GLOB.moved_event.unregister(reciever.loc, reciever, /obj/item/weapon/gun/proc/user_moved)
 		firing = FALSE
 		target = null
-		reciever.stop_firing()
+		call(reciever, stop_proc)()
 
 /datum/click_handler/sustained/proc/do_fire()
 	call(reciever,fire_proc)(target, user, FALSE, last_params, get_global_pixel_click_location(last_params, user ? user.client : null))

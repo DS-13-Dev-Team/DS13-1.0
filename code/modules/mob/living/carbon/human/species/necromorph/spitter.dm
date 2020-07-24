@@ -205,6 +205,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 	icon_state = "acid_large"
 	step_delay = 2
 	damage = 20
+	grippable = TRUE
 
 
 #undef SPITTER_SNAPSHOT_RANGE

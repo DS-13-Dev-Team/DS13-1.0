@@ -219,9 +219,17 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	click_handlers.Push(click_handler)
 
 	update_click_handler_flags()
-
 	return click_handler
 
+//Creates a new click handler of the supplied type, but only if the mob does not already have one.
+//If one exists, the existing is returned instead
+/mob/proc/PushUniqueClickHandler(var/datum/click_handler/new_click_handler_type)
+	var/existing = GetClickHandlerByType(new_click_handler_type)
+	if (existing)
+		return existing
+
+
+	return PushClickHandler(arglist(args))
 
 
 

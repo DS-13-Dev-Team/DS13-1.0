@@ -13,3 +13,8 @@
 
 //Returned by structures which have no opinion on whether to allow/block ztransition, when asked
 #define ZTRANSITION_MAYBE	-1
+
+//Used for kinesis releasing
+#define RELEASE_DROP	"drop"	//Drop on the floor right below us
+#define RELEASE_THROW	"throw"	//Inherit velocity and continue flying
+#define RELEASE_LAUNCH	"launch"	//Explicitly launched with a powerful burst of force. Like throw but faster, and rougher start

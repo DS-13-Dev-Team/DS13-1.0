@@ -55,3 +55,7 @@
 
 #define BASE_DEFENSE_CHANCE	85	//The basic chance of a human to block incoming hits, assuming they're conscious and facing the right direction
 //This is extremely high so that humans will reliably lose limbs before core parts in combat.
+
+
+//How fast most objects are thrown by an ordinary human, measured in metres per second
+#define BASE_THROW_SPEED	6

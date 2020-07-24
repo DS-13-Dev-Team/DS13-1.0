@@ -14,6 +14,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_mentor_check_new_players,
 //	/client/proc/deadchat				//toggles deadchat on/off,
 	/client/proc/cmd_dev_bst,
+	/client/proc/cmd_dev_bse,
 	/client/proc/admin_communicate
 
 	)

@@ -15,7 +15,7 @@ LINEN BINS
 	plane = ABOVE_OBJ_PLANE
 	layer = BASE_ABOVE_OBJ_LAYER
 	throwforce = 1
-	throw_speed = 1
+	
 	throw_range = 2
 	w_class = ITEM_SIZE_SMALL
 

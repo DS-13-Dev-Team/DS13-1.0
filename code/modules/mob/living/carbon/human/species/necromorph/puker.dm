@@ -228,6 +228,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	icon_state = "acid_large"
 	step_delay = 1.75
 	damage = 35
+	grippable = TRUE
 
 
 /*

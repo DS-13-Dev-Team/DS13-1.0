@@ -80,7 +80,7 @@
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 	throwforce = 5.0
-	throw_speed = 3
+	
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	matter = list(MATERIAL_STEEL = 10000, MATERIAL_GLASS = 5000)
@@ -141,7 +141,7 @@
 	icon_state = "bone setter"
 	force = 8.0
 	throwforce = 9.0
-	throw_speed = 3
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("attacked", "hit", "bludgeoned")

@@ -26,7 +26,7 @@
 /obj/item/toy
 	icon = 'icons/obj/toy.dmi'
 	throwforce = 0
-	throw_speed = 4
+	
 	throw_range = 20
 	force = 0
 
@@ -97,7 +97,7 @@
 	name = "\improper 'criminal' balloon"
 	desc = "FUK NT!11!"
 	throwforce = 0
-	throw_speed = 4
+	
 	throw_range = 20
 	force = 0
 	icon = 'icons/obj/weapons.dmi'

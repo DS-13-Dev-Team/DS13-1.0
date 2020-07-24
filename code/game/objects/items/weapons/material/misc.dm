@@ -78,7 +78,7 @@
 	thrown_force_divisor = 0.25 // 5 with weight 20 (steel)
 	sharp = 1
 	edge = 1
-	throw_speed = 1
+	
 	throw_range = 3
 	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BACK

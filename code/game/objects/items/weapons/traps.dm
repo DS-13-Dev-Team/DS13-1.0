@@ -1,6 +1,6 @@
 /obj/item/weapon/beartrap
 	name = "mechanical trap"
-	throw_speed = 2
+	
 	throw_range = 1
 	gender = PLURAL
 	icon = 'icons/obj/traps.dmi'

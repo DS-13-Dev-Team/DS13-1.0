@@ -27,3 +27,10 @@
 	It may want to stop moving, start spinning aimlessly on the spot, etc
 */
 /atom/movable/proc/telegripped(var/obj/item/rig_module/kinesis/gripper)
+
+
+/*
+	Called when this object is released from a kinesis grip.
+	Projectiles will drop and hit the floor
+*/
+/atom/movable/proc/telegrip_released(var/obj/item/rig_module/kinesis/gripper)
