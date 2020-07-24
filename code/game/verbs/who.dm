@@ -58,58 +58,9 @@
 
 	msg += "<b>Total Players: [length(Lines)]</b>"
 	to_chat(src, msg)
-/*
-/client/verb/staffwho()
-	set category = "Admin"
-	set name = "Staffwho"
 
-	var/list/msg = list()
-	var/active_staff = 0
-	var/total_staff = 0
-	var/can_investigate = check_rights(R_INVESTIGATE, 0)
 
-	for(var/client/C in GLOB.admins)
-		var/line = list()
-		if(!can_investigate && C.is_stealthed())
-			continue
-		total_staff++
-		if(check_rights(R_ADMIN,0,C))
-			line += "\t[C] is \an <b>["\improper[C.holder.rank]"]</b>"
-		else
-			line += "\t[C] is \an ["\improper[C.holder.rank]"]"
-		if(!C.is_afk())
-			active_staff++
-		if(can_investigate)
-			if(C.is_afk())
-				line += " (AFK - [C.inactivity2text()])"
-			if(isghost(C.mob))
-				line += " - Observing"
-			else if(istype(C.mob,/mob/new_player))
-				line += " - Lobby"
-			else
-				line += " - Playing"
-			if(C.is_stealthed())
-				line += " (Stealthed)"
-			if(C.get_preference_value(/datum/client_preference/show_ooc) == GLOB.PREF_HIDE)
-				line += " <font color='#002eb8'><b><s>(OOC)</s></b></font>"
-			if(C.get_preference_value(/datum/client_preference/show_looc) == GLOB.PREF_HIDE)
-				line += " <font color='#3a9696'><b><s>(LOOC)</s></b></font>"
-			if(C.get_preference_value(/datum/client_preference/show_aooc) == GLOB.PREF_HIDE)
-				line += " <font color='#960018'><b><s>(AOOC)</s></b></font>"
-			if(C.get_preference_value(/datum/client_preference/show_dsay) == GLOB.PREF_HIDE)
-				line += " <font color='#530fad'><b><s>(DSAY)</s></b></font>"
-		line = jointext(line,null)
-		if(check_rights(R_ADMIN,0,C))
-			msg.Insert(1, line)
-		else
-			msg += line
-
-	if(config.admin_irc)
-		to_chat(src, "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game try anyway and an admin on IRC may see it and respond.</span>")
-	to_chat(src, "<b>Current Staff ([active_staff]/[total_staff]):</b>")
-	to_chat(src, jointext(msg,"\n"))
-*/
-//New SEXY Staffwho verb
+// Staffwho verb. Displays online staff. Hides stealthed or AFK staff members automatically.
 /client/verb/staffwho()
 	set category = "Admin"
 	set name = "StaffWho"
