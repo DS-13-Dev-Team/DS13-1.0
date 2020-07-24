@@ -23,7 +23,6 @@
 \[list\] - \[/list\] : A list. (Does not work with crayons)<br>
 \[*\] : A dot used for lists. (Does not work with crayons)<br>
 \[logo\] - Inserts regular CEC logo image.<br>
-\[ceclogo\] - Inserts the formal CEC Logo image. This logo is only used for official, outbound or external documents. Not commonly used internally.<br>
 \[ntlogo\] - Inserts the NT logo image.<br>
 \[bluelogo\] - Inserts blue NT logo image.<br>
 \[solcrest\] - Inserts SCG crest image.<br>
