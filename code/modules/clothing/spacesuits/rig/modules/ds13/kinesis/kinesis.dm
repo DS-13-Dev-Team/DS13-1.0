@@ -90,7 +90,7 @@
 	//When an object is fully accelerated, how fast can it possibly move while we're gripping it?
 	//This is a hard cap and it will be reached fairly easily with half a second or so of accelerating
 	//In metres per second
-	var/max_speed = 5
+	var/max_speed = 4
 
 	//When we launch the object, it can reach this much total speed
 	var/max_launch_speed = 8
@@ -99,7 +99,7 @@
 	//How fast can the object's speed increase? Measured in metres per second per second
 	//That was not a typo.
 	//This needs to be limited to prevent small/light objects just going nuts
-	var/max_acceleration = 5
+	var/max_acceleration = 4
 
 	//Multiply velocity by this each tick, before acceleration
 	var/velocity_decay = 0.95

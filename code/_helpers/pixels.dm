@@ -303,6 +303,8 @@
 		animate_movement = initial(animate_movement)
 
 
-	animate(src, pixel_x = newpix.x, pixel_y = newpix.y, time = time_delta)//, flags = ANIMATION_END_NOW)
+	animate(src, pixel_x = newpix.x, pixel_y = newpix.y, time = time_delta - min(time_delta*0.2, 0.5))
+	//To reduce visual artefacts resulting from lag, we want the movement to finish slightly early
+	//half a decisecond is ideal, but no more than 20% of the total time
 
 
