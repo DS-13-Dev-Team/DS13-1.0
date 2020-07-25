@@ -10,6 +10,41 @@
 		check_antagonists()
 		return
 
+// Below: Remains WIP! Do not remove. - Lion
+/*
+	if(href_list["autoresponse"]) // new verb on the Ahelp.  Will tell the person their message was received, and they probably won't get a response
+		var/mob/ref_person = locate(href_list["autoresponse"])
+		if(!ref_person || !istype(ref_person) || !ref_person.client)
+			to_chat(usr, "<span class='notice'> Looks like that person stopped existing!</span>")
+			return
+
+		var/datum/ticket/ticket = get_open_ticket_by_client(ref_person.client)
+		if(ticket && ticket.assigned_admins.len)
+			to_chat(usr, "<b>This adminhelp is already being handled, but continue if you wish.</b>")
+			if(alert(usr, "Are you sure you want to autoreply to this marked adminhelp?", "Confirmation", "Yes", "No") == "No")
+				return
+		else if (!ticket)
+			to_chat(usr, "<b>This ticket no longer exists.</b>")
+			return
+
+		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue"")
+
+
+		var/msgplayer
+		switch(choice)
+			if("A: Rig Locations")
+				msgplayer = "<span class='notice'> <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. RIGs are commonly placed around Engineering, Security and Mining bay.</b></span>"
+			if("A: When and where does the necromorphs appear?")
+				msgplayer = "<span class='notice'> <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The marker starts to turn on 40+ minutes into the round, it is advised to not be meta about it.</b></span>"
+			if("A: How do you Toggle your RIG?")
+				msgplayer = "<span class='notice'> <b>NOTICE: <font color=red>[usr.key]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Hardsuit/RIG tab, and switch it on.</b></span>"
+			else return
+
+		message_staff("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>. They have been shown the following:\n[msgplayer]", 1)
+		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
+		ref_person << sound('sound/effects/adminhelp-reply.ogg')
+		ticket.close(usr.client)
+*/
 	if(href_list["dbsearchckey"] || href_list["dbsearchadmin"])
 
 		var/adminckey = href_list["dbsearchadmin"]
