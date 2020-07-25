@@ -132,7 +132,6 @@
 	var/admin_number_afk = 0
 
 	var/list/mentorholders = list()
-	var/list/debugholders = list()
 	var/list/modholders = list()
 	var/list/adminholders = list()
 	for(var/client/X in GLOB.admins)
@@ -140,12 +139,6 @@
 			mentorholders += X
 			if(X.is_afk())
 				admin_number_afk++
-		if(R_DEBUG & X.holder.rights || R_DEBUG & X.holder.rights) // Looking for anyone with +Debug which will be admins, developers, and developer mentors
-			debugholders += X
-			if(!(R_ADMIN & X.holder.rights))
-				if(X.is_afk())
-					admin_number_afk++
-
 		if(R_MOD & X.holder.rights || R_BAN & X.holder.rights) // Looking for anyone with +Ban which will be full mods and admins.
 			if(!(R_ADMIN & X.holder.rights))
 				modholders += X
@@ -157,34 +150,25 @@
 				admin_number_afk++
 
 
+
 	switch(selected_type)
-		if("Gameplay/Job Inquiries")
+		if("Mentors: Gameplay/Job Inquiries")
 			if(mentorholders.len)
 				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << mentor_msg
-			if(modholders.len)
-				for(var/client/X in modholders) // Mods
-					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
-						X << 'sound/effects/adminhelp_new.ogg'
-					X << msg
 			if(adminholders.len)
 				for(var/client/X in adminholders) // Admins get the full monty
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << msg
-		if("Rule Issue")
+		if("Mods/Admins: Rule Issue")
 			if(mentorholders.len)
 				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << mentor_msg
-			if(modholders.len)
-				for(var/client/X in modholders) // Mods
-					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
-						X << 'sound/effects/adminhelp_new.ogg'
-					X << msg
 			if(adminholders.len)
 				for(var/client/X in adminholders) // Mods
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
