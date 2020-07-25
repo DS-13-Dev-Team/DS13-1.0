@@ -30,9 +30,7 @@
 	return list(
 		/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty,
 		/obj/item/ammo_magazine/pulse = 7,
-		/obj/item/weapon/storage/belt/holster/security,
-
-
+		/obj/item/weapon/storage/belt/holster/security
 	)
 
 /obj/structure/closet/secure_closet/guncabinet/Initialize()

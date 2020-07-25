@@ -6,7 +6,7 @@
 	It is very precious and should be well protected
 */
 /obj/structure/corruption_node/nest
-	name = "Nest"
+	name = "nest"
 	desc = "A wretched hive."
 	icon_state = "nest"
 	icon = 'icons/effects/corruption64.dmi'
