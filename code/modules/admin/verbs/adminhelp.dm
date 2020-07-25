@@ -118,14 +118,6 @@
 
 	//Options bar:  mob, details ( admin = 2, dev = 3, mentor = 4, character name (0 = just ckey, 1 = ckey and character name), link? (0 no don't make it a link, 1 do so),
 	//		highlight special roles (0 = everyone has same looking name, 1 = antags / special roles get a golden name)
-
-// Below are option bars WITH autoresponse added. This will stay in as commented out until it can replace the current version WITHOUT autoresponses. - Lion
-/*
-
-	var/mentor_msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 4, 1, 1, 0, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>) (<a href='?_src_=holder;autoresponse=\ref[mob]'>AutoResponse...</a>):</b> [msg]</span>"
-	msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 2, 1, 1, 1, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>) (<a href='?_src_=holder;autoresponse=\ref[mob]'>AutoResponse...</a>):</b> [msg]</span>"
-*/
-
 	var/mentor_msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 4, 1, 1, 0, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>):</b> [msg]</span>"
 	msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 2, 1, 1, 1, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>):</b> [msg]</span>"
 
