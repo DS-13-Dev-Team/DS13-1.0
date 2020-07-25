@@ -1,5 +1,7 @@
-// Keywords are used to list character names as clickable types for ease of search. i.e.: Jones Joe is breaking the rules! A character with that name will then be listed in black,
-// and an admin can immediately jump to said player by clicking the ?. - Lion
+
+//This is a list of words which are ignored by the parser when comparing message contents for names. MUST BE IN LOWER CASE!
+var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","alien","as")
+
 /proc/generate_ahelp_key_words(var/mob/mob, var/msg)
 	var/list/surnames = list()
 	var/list/forenames = list()
@@ -36,7 +38,7 @@
 	for(var/original_word in msglist)
 		var/word = ckey(original_word)
 		if(word)
-			if(!(word in GLOB.adminhelp_ignored_words))
+			if(!(word in adminhelp_ignored_words))
 				if(word == "ai" && !ai_found)
 					ai_found = 1
 					msg += "<b>[original_word] <A HREF='?_src_=holder;adminchecklaws=\ref[mob]'>(CL)</A></b> "
@@ -66,7 +68,7 @@
 
 // Select a category
 	var/msg
-	var/list/type = list ("Mentors: Gameplay/Job Inquiries", "Mods/Admins: Rule Issue")
+	var/list/type = list ("Gameplay/Job Inquiries", "Rule Issue")
 	var/selected_type = input("Pick a category.", "Admin Help", null, null) as null|anything in type
 	if(selected_type)
 		msg = input("Please enter your message:", "Admin Help", null, null) as text
@@ -119,15 +121,11 @@
 	//Options bar:  mob, details ( admin = 2, dev = 3, mentor = 4, character name (0 = just ckey, 1 = ckey and character name), link? (0 no don't make it a link, 1 do so),
 	//		highlight special roles (0 = everyone has same looking name, 1 = antags / special roles get a golden name)
 
-// Below are option bars WITH autoresponse added. This will stay in as commented out until it can replace the current version WITHOUT autoresponses. - Lion
-/*
-
-	var/mentor_msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 4, 1, 1, 0, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>) (<a href='?_src_=holder;autoresponse=\ref[mob]'>AutoResponse...</a>):</b> [msg]</span>"
-	msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 2, 1, 1, 1, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>) (<a href='?_src_=holder;autoresponse=\ref[mob]'>AutoResponse...</a>):</b> [msg]</span>"
-*/
-
 	var/mentor_msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 4, 1, 1, 0, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>):</b> [msg]</span>"
 	msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 2, 1, 1, 1, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>):</b> [msg]</span>"
+
+//	var/mentor_msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 4, 1, 1, 0, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>) (<a href='?_src_=holder;autoresponse=\ref[mob]'>AutoResponse...</a>):</b> [msg]</span>"
+//	msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 2, 1, 1, 1, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>) (<a href='?_src_=holder;autoresponse=\ref[mob]'>AutoResponse...</a>):</b> [msg]</span>"
 
 	var/admin_number_afk = 0
 
@@ -136,7 +134,7 @@
 	var/list/modholders = list()
 	var/list/adminholders = list()
 	for(var/client/X in GLOB.admins)
-		if(R_MENTOR & X.holder.rights && !(R_ADMIN & X.holder.rights)) // we don't want to count admins twice. This list should be JUST mentors
+		if(R_MENTOR & X.holder.rights && !(R_MOD & X.holder.rights)) // we don't want to count admins twice. This list should be JUST mentors
 			mentorholders += X
 			if(X.is_afk())
 				admin_number_afk++
@@ -186,11 +184,23 @@
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << msg
 			if(adminholders.len)
-				for(var/client/X in adminholders) // Mods
+				for(var/client/X in adminholders) // Admins get the full monty
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << msg
 
+
+
+/*	for(var/client/X in GLOB.admins)
+		if((R_ADMIN|R_MOD|R_MENTOR) & X.holder.rights)
+			if(X.is_afk())
+				admin_number_afk++
+			if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping) == GLOB.PREF_HEAR)
+				sound_to(X, 'sound/effects/adminhelp.ogg')
+			if(X.holder.rights == R_MENTOR)
+				to_chat(X, mentor_msg)// Mentors won't see coloring of names on people with special_roles (Antags, etc.)
+			else
+				to_chat(X, msg)*/
 	//show it to the person adminhelping too
 	to_chat(src, "<font color='blue'>PM to-<b>Staff</b> (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>): [original_msg]</font>")
 	var/admin_number_present = GLOB.admins.len - admin_number_afk
