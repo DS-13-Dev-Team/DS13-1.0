@@ -208,6 +208,9 @@ GUEST_BAN
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
 # BANAPPEALS http://example.com
 
+## Discord URL - Used for the "Join the Discord" verb in OOC.
+# DISCORD_URL https://discord.gg/example
+
 ## In-game features
 ## spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
 # FEATURE_OBJECT_SPELL_SYSTEM
