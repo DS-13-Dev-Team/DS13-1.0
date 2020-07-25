@@ -8,7 +8,7 @@
 */
 
 /obj/item/rig_module/kinesis
-	name = "G.R.I.P kinesis module module"
+	name = "G.R.I.P kinesis module"
 	desc = "An engineering tool that uses microgravity fields to manipulate objects at distances of several metres."
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "module"
@@ -17,7 +17,10 @@
 	module_cooldown = 0
 	active = FALSE
 
-	active_power_cost = 300           // Power used while manipulating an object
+	var/grip_power_cost = 30	//Cost to pickup an object
+	var/sustain_power_cost = 3	//Cost per second to hold in midair
+	var/force_power_cost = 0.5	//Cost per second per newton of force, when moving an object
+	var/launch_power_cost = 2000	//Cost to repulse launch
 
 
 	//The kinesis module tries to grab certain items in an order of priority
@@ -38,6 +41,9 @@
 	var/datum/click_handler/sustained/kinesis/CHK
 
 	var/hotkeys_set = FALSE
+
+	//The gravity tether, a beam of lightning which connects gun and blade
+	var/obj/effect/projectile/sustained/tether = null
 
 
 //Data:
@@ -60,7 +66,15 @@
 	//In what manner are we releasing the thing we're holding? See defines/movement.dm
 	var/release_type = RELEASE_DROP
 
+	var/cached_pass_flags
+	var/cached_density
+
+	var/list/bumped_atoms = list()
+
 //Config
+	//Cooldown between hitting mobs
+	var/bump_cooldown = 1.5 SECONDS
+
 	//How far away can we grip objects?
 	//Measured in metres. Also note tiles are 1x1 metre
 	var/range = 4
@@ -93,7 +107,7 @@
 	var/max_speed = 4
 
 	//When we launch the object, it can reach this much total speed
-	var/max_launch_speed = 8
+	var/max_launch_speed = 9
 
 
 	//How fast can the object's speed increase? Measured in metres per second per second
@@ -106,10 +120,22 @@
 
 	//When our held subject collides with an obstacle, it will only generate impact events if its speed is at least this high
 	//In metres per second
-	var/min_impact_speed = 0.3
+	var/min_impact_speed = 0.85
 
 
 	process_with_rig = FALSE
+
+//slightly stronger version
+/obj/item/rig_module/kinesis/advanced
+	name = "G.R.I.P advanced kinesis module"
+	desc = "An engineering tool that uses microgravity fields to manipulate objects at distances of several metres. This version has improved range and power."
+	range = 6
+	drop_range = 7
+	max_force = 15
+	launch_force = 40
+	max_speed = 5
+
+	max_launch_speed = 11
 
 /*
 	Activation and Engaging
@@ -135,11 +161,15 @@
 
 //When the kinesis module is activated, it gets its click handler and
 /obj/item/rig_module/kinesis/activate()
+	if (!holder || !holder.cell || !holder.cell.check_charge(grip_power_cost * CELLRATE))
+		to_chat(usr, "<span class='danger'>Cannot engage kinesis, the rig is out of power!.</span>")
+		return
 	.=..()
 	if (.)
 		var/mob/living/carbon/human/user = holder.wearer
 		CHK = user.PushUniqueClickHandler(/datum/click_handler/sustained/kinesis)
 		CHK.reciever = src
+		to_chat(user, SPAN_NOTICE("Kinesis activated.(F)"))
 
 /obj/item/rig_module/kinesis/deactivate()
 	.=..()
@@ -147,6 +177,7 @@
 		var/mob/living/carbon/human/user = holder.wearer
 		user.RemoveClickHandler(CHK)
 		CHK = null
+		to_chat(user, SPAN_NOTICE("Kinesis deactivated.(F)"))
 
 /*
 	Grip: Starting off
@@ -157,18 +188,28 @@
 		return FALSE
 
 
+	//Here we do sound, visual FX and powercost for grabbing. Even if we can't grab the object! The attempt alone triggers these
+	if (!use_power(grip_power_cost))
+		power_fail()
+		return
 
+	target = AM.get_global_pixel_loc()
+
+	var/obj/effect/projectile/sustained/newtether = new /obj/effect/projectile/sustained/lightning(get_turf(src))
+	newtether.set_ends(holder.wearer.get_global_pixel_loc(), target)
+
+	var/fail = FALSE
 	//Can we pick it up? (assuming its unanchored)
 	if (!AM.can_telegrip(src))
-		return FALSE
+		fail = TRUE
 
 	//If its anchored, do we have what it takes to rip it from its moorings?
-	if (AM.anchored)
+	else if (AM.anchored)
 		var/riptest = AM.can_rip_free(src)
 
 		//Can't be ripped free?
 		if (isnull(riptest) || !isnum(riptest))
-			return FALSE
+			fail = TRUE
 
 		//Alright we are able to pull it free
 		rip_health = riptest
@@ -176,6 +217,16 @@
 		//TODO: Implement this when there's a use for it
 		//spawn()
 			//rip_free()
+
+	if (fail)
+		playsound(src, 'sound/effects/rig/modules/kinesis_grabfail.ogg', VOLUME_MID, 1)
+		newtether.animate_fade_out(3)
+		newtether = null
+		return FALSE
+	else
+		playsound(src, 'sound/effects/rig/modules/kinesis_grab.ogg', VOLUME_MID, 1)
+
+	tether = newtether
 
 	//We are ready to grip it.
 	//Even if its anchored, we can start the grip, the object won't move until we pull it loose
@@ -190,10 +241,26 @@
 	subject.telegripped(src)	//Tell the object it was picked up
 	subject.throwing = TRUE
 
+	//Cache these before we change them
+	cached_pass_flags = subject.pass_flags
+	cached_density = subject.density
+
+	//Held objects fly over some stuff
+	subject.pass_flags |= (PASS_FLAG_TABLE | PASS_FLAG_FLYING)
+	//They must be dense to collide with mobs
+	subject.density = TRUE
+
+
+
+
+
+
 	set_extension(subject, /datum/extension/kinesis_gripped)
 
 	if (!target)
 		target = subject.get_global_pixel_loc()
+
+
 	release_type = RELEASE_DROP
 
 	//We need to register some listeners
@@ -240,11 +307,25 @@
 		GLOB.destroyed_event.unregister(subject, src, /obj/item/rig_module/kinesis/proc/release_grip)
 		GLOB.bump_event.unregister(subject, src, /obj/item/rig_module/kinesis/proc/subject_collision)
 		remove_extension(subject, /datum/extension/kinesis_gripped)
+		//Restore these
+		subject.pass_flags = cached_pass_flags
+		subject.density = cached_density
+
+
 		subject.telegrip_released(src)
 		subject.throwing = FALSE
+
+
 		subject = null
+
+	if (tether)
+		tether.animate_fade_out(3)
+		tether = null	//It will delete itself
 	target = null
 	stop_processing()
+	bumped_atoms = list()
+	if (CHK.firing)
+		CHK.stop_firing()
 
 
 //The default entrypoint, a wrapper for release
@@ -258,7 +339,8 @@
 	var/atom/movable/thing = release()	//Release it first, it will be returned here
 
 	//If it deleted itself in the process of being released, we're done
-	if (QDELETED(thing))
+	//We also don't do anything if it ended up not on a turf, like if someone caught it
+	if (QDELETED(thing) || !isturf(thing.loc))
 		return
 
 	//When released the object will fly through the air for one second, if possible.
@@ -272,12 +354,26 @@
 
 
 //Called when user presses the toggle key while holding an item
-//The object is thrown based on its velocity, plus an additional burst of speed
+//The object is thrown based on its velocity, plus a large additional burst of speed in the direction away from the user
 //We just set the release type and velocity, then call release grip as normal
 /obj/item/rig_module/kinesis/proc/launch()
+	if (!holder || !holder.wearer)
+		return
+
+	if (!use_power(launch_power_cost))
+		power_fail()
+		return
+
+	new /obj/effect/effect/expanding_circle(subject.loc, _expansion_rate = -0.7, 	_lifespan = 6, _color = COLOR_KINESIS_INDIGO_PALE)
+	spawn(1)
+		new /obj/effect/effect/expanding_circle(subject.loc, _expansion_rate = -0.7, 	_lifespan = 6, _color = COLOR_KINESIS_INDIGO_PALE)
+		sleep(1)
+		new /obj/effect/effect/expanding_circle(subject.loc, _expansion_rate = -0.7, 	_lifespan = 6, _color = COLOR_KINESIS_INDIGO_PALE)
+	playsound(subject, 'sound/effects/rig/modules/kinesis_launch.ogg', VOLUME_HIGH, 1)
+
 	release_type = RELEASE_LAUNCH
 	var/acceleration = launch_force / subject.get_mass()
-	var/vector2/target_direction = target - subject.get_global_pixel_loc()
+	var/vector2/target_direction =  subject.get_global_pixel_loc() - holder.wearer.get_global_pixel_loc()
 	target_direction = target_direction.Normalized()
 	velocity += target_direction * acceleration
 
@@ -285,7 +381,6 @@
 	if (speed > max_launch_speed)
 		velocity = velocity.ToMagnitude(max_launch_speed)
 
-	//Todo here: Sound and visual effect for launching
 
 	release_grip()
 
@@ -308,22 +403,31 @@
 
 /obj/item/rig_module/kinesis/Process(var/wait)
 
-	wait *= 0.1	//Convert this to seconds
 
-	//Don't need to do anything if we're at the goal
-	if(at_rest)
-		return
+	var/tick_cost = 0
+	if (subject)
+		tick_cost += sustain_power_cost
+	wait *= 0.1	//Convert this to seconds
 
 	if (!safety_checks())
 		release_grip()
 		return
 
-	accelerate(wait)
-	if(at_rest)
+	//Don't need to do anything if we're at the goal
+	if(!at_rest)
+
+
+
+
+		tick_cost += force_power_cost * accelerate(wait) * wait	//Accelerate returns the force used
+
+
+	if (tick_cost && !use_power(tick_cost))
+		power_fail()
 		return
 
-	move_subject(wait)
-
+	if(!at_rest)
+		move_subject(wait)
 
 
 /obj/item/rig_module/kinesis/proc/safety_checks()
@@ -342,9 +446,11 @@
 
 	return TRUE
 
-
-
-
+//Called when the rig runs out of power
+/obj/item/rig_module/kinesis/proc/power_fail()
+	playsound(src, 'sound/effects/rig/modules/kinesis_powerloss.ogg', VOLUME_MID, 0)
+	release_grip()
+	deactivate()
 
 /*
 	Motion and Physics
@@ -419,7 +525,7 @@
 			remaining_force -= accelerating_force
 			//Acceleration calculations
 			var/acceleration = accelerating_force / subject_mass
-			acceleration = min(acceleration, max_acceleration)
+			acceleration = min(acceleration, max_acceleration*delta)
 
 			//And finally, modify the velocity
 			velocity -= (velocity_away_from_target.Normalized() * acceleration)
@@ -462,7 +568,7 @@
 			remaining_force -= accelerating_force
 			//Acceleration calculations
 			var/acceleration = accelerating_force / subject_mass
-			acceleration = min(acceleration, max_acceleration)
+			acceleration = min(acceleration, max_acceleration*delta)
 
 			//And finally, modify the velocity
 			velocity += direction * acceleration
@@ -473,7 +579,7 @@
 	else
 		//Alright, how much will we change the speed per second?
 		var/acceleration = max_force / subject_mass
-		acceleration = min(acceleration, max_acceleration)	//This is hardcapped
+		acceleration = min(acceleration, max_acceleration*delta)	//This is hardcapped
 
 		//Now how much acceleration are we actually adding this tick ? Just multiply by the time delta, which will usually be 0.2
 		acceleration *= delta
@@ -511,15 +617,26 @@
 
 //We collide with a thing
 /obj/item/rig_module/kinesis/proc/subject_collision(var/atom/movable/mover, var/atom/obstacle)
+
+	var/ref = "\ref[obstacle]"
+
+	//Cooldowns
+	var/last_bump = bumped_atoms[ref]
 	var/turf/old_loc = get_turf(obstacle)
-	var/curspeed = velocity.Magnitude()
-	if (curspeed >= min_impact_speed)
-		subject.throw_impact(obstacle, curspeed)
+	if (!isnum(last_bump) || (last_bump + bump_cooldown) < world.time)
+		var/curspeed = velocity.Magnitude()
+		if (curspeed >= min_impact_speed)
+			subject.throw_impact(obstacle, curspeed*0.5)//The speed counts as lower than it is due to the controlled nature and no followthrough
+
+
+	//Record this whether we impacted or not, so it will stall forever if you hold the object up against someone
+	bumped_atoms[ref] = world.time
 
 	//If the object didn't break or move and still won't let us through, then we lose our velocity towards the object
 	if (!QDELETED(obstacle))
 		if (get_turf(obstacle) == old_loc)
-			if (!obstacle.CanPass(subject, obstacle.loc))
+			//Mobs don't block canpass so we'll be stopped by them if they didn't move, regardless of what canpass says
+			if (!obstacle.CanPass(subject, obstacle.loc) || isliving(obstacle))
 				var/vector2/offset = obstacle.get_global_pixel_loc() - subject.get_global_pixel_loc()
 				var/vector2/direction = offset.SafeNormalized()
 				var/vector2/velocity_towards_target = velocity.SafeProjection(direction)
@@ -562,11 +679,16 @@
 */
 /obj/item/rig_module/kinesis/proc/update(var/atom/A, mob/living/user, adjacent, params, var/vector2/global_clickpoint)
 
-	if (subject)
+	if (subject && holder && holder.wearer)
 		//Lets see if the clickpoint has actually changed
 		if (global_clickpoint.x != target.x || global_clickpoint.y != target.y)
 			//It has! Set the new target, and if we were at rest, we start moving again
 			target = global_clickpoint
+			var/vector2/userloc = holder.wearer.get_global_pixel_loc()
+			var/vector2/tether_end = target - userloc
+			tether_end = tether_end.ClampMag(0, drop_range*WORLD_ICON_SIZE)
+			tether_end += userloc
+			tether.set_ends(userloc, tether_end)
 			at_rest = FALSE
 
 	else
@@ -599,7 +721,7 @@
 	update_hotkeys()
 
 /obj/item/rig_module/kinesis/rig_unequipped(var/mob/user, var/slot)
-	remove_hotkeys()
+	remove_hotkeys(user)
 
 
 
@@ -625,6 +747,7 @@
 	hotkeys_set = TRUE
 
 /obj/item/rig_module/kinesis/proc/remove_hotkeys(var/mob/living/carbon/human/user)
+
 	winset(user, "macro.kinesis_toggle", "parent=")
 	winset(user, "hotkeymode.kinesis_toggle", "parent=")
 	user.verbs -= /mob/living/carbon/human/verb/kinesis_toggle
@@ -651,7 +774,7 @@
 	We will make several passes through the list, first grabbing things that might be important like projectiles in flight
 */
 /obj/item/rig_module/kinesis/proc/find_target(var/atom/origin)
-	var/list/nearby_stuff = range(2, origin)
+	var/list/nearby_stuff = range(1, origin)
 
 	for (var/target_type in target_priority)
 		for (var/atom/movable/A in nearby_stuff)

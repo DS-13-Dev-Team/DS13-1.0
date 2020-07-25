@@ -4,6 +4,8 @@
 /atom/movable/proc/can_telegrip(var/obj/item/rig_module/kinesis/gripper)
 	return TRUE
 
+
+
 /mob/living/can_telegrip(var/obj/item/rig_module/kinesis/gripper)
 	if (!gripper.can_grip_live() && stat != DEAD)
 		return FALSE
@@ -34,3 +36,17 @@
 	Projectiles will drop and hit the floor
 */
 /atom/movable/proc/telegrip_released(var/obj/item/rig_module/kinesis/gripper)
+
+
+//Things which should never be gripped
+//Nonliving mobs
+/mob/can_telegrip(var/obj/item/rig_module/kinesis/gripper)
+	return FALSE
+
+//Hud objects
+/obj/screen/can_telegrip(var/obj/item/rig_module/kinesis/gripper)
+	return FALSE
+
+//Lighting
+/atom/movable/lighting_overlay/can_telegrip(var/obj/item/rig_module/kinesis/gripper)
+	return FALSE

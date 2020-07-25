@@ -353,3 +353,11 @@
 
 /obj/item/rig_module/proc/rig_unequipped(var/mob/user, var/slot)
 	return
+
+//Consumes power, returns true if it works
+/obj/item/rig_module/proc/use_power(var/cost)
+	.=FALSE
+	if (holder && holder.cell)
+		if(holder.cell.check_charge(cost * CELLRATE))
+			holder.cell.use(cost * CELLRATE)
+			return TRUE

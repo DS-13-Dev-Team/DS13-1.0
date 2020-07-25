@@ -12,8 +12,9 @@
 	var/lifespan = 3.5
 
 /obj/effect/projectile/Initialize()
-	animate(src, alpha = 0, time = lifespan)
-	QDEL_IN(src,lifespan)
+	if (lifespan)
+		animate(src, alpha = 0, time = lifespan)
+		QDEL_IN(src,lifespan)
 
 	return ..()
 
@@ -206,8 +207,10 @@
 	//Start and endpoints are in world pixel coordinates
 	var/vector2/start
 	var/vector2/end
-	var/vector2/offset = new /vector2(16,16)
+	var/vector2/offset = new /vector2(0,0)
 	animate_movement = 0
+	lifespan = 0
+	var/base_length = WORLD_ICON_SIZE
 
 //Takes start and endpoint as vector2s of global pixel coords
 /obj/effect/projectile/sustained/proc/set_ends(var/vector2/_start = null, var/vector2/_end = null)
@@ -226,7 +229,7 @@
 
 	//Figuring out scale
 	var/length = delta.Magnitude()
-	var/scale = length / world.icon_size //The length of the beam
+	var/scale = length / base_length //The length of the beam
 	M.Scale(scale, 1)
 
 	//Now rotation
@@ -237,4 +240,7 @@
 	transform = M
 
 	//And finally, place our location halfway along the delta line
-	set_global_pixel_loc(start + (delta*0.5))
+	set_global_pixel_loc(start + (delta*0.5) + offset)
+
+/obj/effect/projectile/sustained/Destroy()
+	.=..()

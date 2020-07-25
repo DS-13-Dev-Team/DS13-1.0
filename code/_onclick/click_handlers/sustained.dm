@@ -33,7 +33,8 @@
 			GLOB.moved_event.unregister(reciever.loc, reciever, /obj/item/weapon/gun/proc/user_moved)
 		firing = FALSE
 		target = null
-		call(reciever, stop_proc)()
+		if (call(reciever, get_firing_proc)())
+			call(reciever, stop_proc)()
 
 /datum/click_handler/sustained/proc/do_fire()
 	call(reciever,fire_proc)(target, user, FALSE, last_params, get_global_pixel_click_location(last_params, user ? user.client : null))

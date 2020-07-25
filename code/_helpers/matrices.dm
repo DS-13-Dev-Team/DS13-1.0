@@ -211,6 +211,12 @@
 	alpha = 0
 	animate(src, alpha = 255, time = animtime, flags = ANIMATION_PARALLEL)	//Cool fade in effect
 
+//Clear references before calling this
+/obj/proc/animate_fade_out(var/animtime = 10)
+	set waitfor = FALSE
+	animate(src, alpha = 0, time = animtime, flags = ANIMATION_PARALLEL)	//Cool fade in effect
+	sleep(animtime)
+	qdel(src)
 
 //Returns a transform with all vars set to their default
 /atom/proc/get_default_transform()

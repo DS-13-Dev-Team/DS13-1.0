@@ -222,7 +222,6 @@
 	This will always be either two points or zero points, no other value is possible
 */
 /proc/ray_turf_intersect(var/vector2/origin, var/vector2/ray, var/turf/target)
-	//world << "About to do ray turf intersect, target is [jumplink(target)]"
 	//debug_mark_turf(target)
 	//First of all, passing in a turf is just a convenience, what we actually need are the pixel coordinates of its lowerleft and upper right corners
 
@@ -249,7 +248,6 @@
 	ray = linemax - linemin
 
 
-	world << "Lines: [vstr(linemin)] [vstr(linemax)] Ray:[vstr(ray)]"
 
 	//Next up, this piece of black magic code determines the four points at which our ray passes through the planes of this box's edges
 	//These are float values, they represent percentage distances along the ray at which we intersect
@@ -260,7 +258,6 @@
 	var/by = ray.y ? ((UR.y - linemin.y) / ray.y)	:	null
 
 
-	world << "Intersects are [ax],[ay]		[bx],[by]"
 
 	//We dont need to do any miss checks, we know we hit before this function was called
 

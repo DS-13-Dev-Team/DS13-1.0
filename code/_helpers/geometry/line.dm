@@ -8,7 +8,6 @@
 		target = locate(target.x, target.y, source.z)
 
 	if (source == target)
-		world << "Tried to find line between a turf and itself!"
 		return list(source)
 
 	var/list/line = list(source)	//Source is always in the list
@@ -16,12 +15,10 @@
 	var/turf/current = source
 	var/turf/next
 
-	world << "Target is [jumplink(target)]"
 	if (allow_diagonal)
 		next = get_step_towards(current, target)
 	else
 		next = get_cardinal_step_towards(current, target)
-		world << "Cardinal step gave us [jumplink(next)]"
 
 	line += next
 
@@ -32,7 +29,6 @@
 			next = get_step_towards(current, target)
 		else
 			next = get_cardinal_step_towards(current, target)
-			world << "Cardinal step gave us [jumplink(next)]"
 
 		dist_remaining--
 
