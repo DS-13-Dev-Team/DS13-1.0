@@ -125,7 +125,7 @@
  * Security
  */
 /obj/item/clothing/under/security
-	name = "security jumpsuit"
+	name = "armored security jumpsuit"
 	desc = "A dark brown uniform issued to security officers. It offers some light ballistic protection due to the light armor plates sewn into the chest and thighs."
 	item_state = "ds_securityjumpsuit"
 	worn_state = "ds_securityjumpsuit"

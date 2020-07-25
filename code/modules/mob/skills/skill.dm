@@ -61,6 +61,11 @@ GLOBAL_LIST_EMPTY(skills)
 	ID	 = "medical"
 	default_max = SKILL_MAX
 
+/decl/hierarchy/skill/research
+	name = "Research"
+	ID	 = "research"
+	default_max = SKILL_MAX
+
 // ONLY SKILL DEFINITIONS BELOW THIS LINE
 // Category: General
 

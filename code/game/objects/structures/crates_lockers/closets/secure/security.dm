@@ -96,6 +96,7 @@
 		/obj/item/weapon/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
 		/obj/item/taperoll/police,
+		/obj/item/clothing/mask/gas,
 		/obj/item/weapon/storage/box/flashbangs,
 		/obj/item/weapon/storage/box/teargas,
 		/obj/item/weapon/storage/belt/holster/security,
@@ -126,6 +127,7 @@
 		/obj/item/weapon/storage/belt/holster/security,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/loaded,
+		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/glasses/sunglasses/sechud/goggles,
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,
@@ -232,6 +234,7 @@
 	return list(
 		/obj/item/device/radio/headset/headset_sec,
 		/obj/item/weapon/gun/energy/taser,
+		/obj/item/clothing/mask/gas,
 		/obj/item/weapon/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
 		/obj/item/weapon/reagent_containers/spray/pepper,

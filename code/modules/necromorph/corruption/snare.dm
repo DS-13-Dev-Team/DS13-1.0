@@ -10,7 +10,7 @@
 */
 #define SNARE_PLACEMENT_BUFFER	3
 /obj/structure/corruption_node/snare
-	name = "Snare"
+	name = "snare"
 	desc = "<span class='notice'>That looks dangerous, good thing you noticed before tripping over it! Should be safe to step over it now</span>"
 	icon_state = "snare"
 	max_health = 50

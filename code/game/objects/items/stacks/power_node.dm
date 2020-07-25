@@ -1,6 +1,6 @@
 /obj/item/stack/power_node
 	name = "power nodes"
-	desc = "It seems to radiating a lot of energy."
+	desc = "It seems to be radiating a lot of energy."
 	singular_name = "power node"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "powernode"

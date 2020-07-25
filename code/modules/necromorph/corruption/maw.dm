@@ -7,7 +7,7 @@
 
 /obj/structure/corruption_node/maw
 	icon_state = "maw"
-	name = "Maw"
+	name = "maw"
 	desc = "The abyss stares back at you."
 	default_scale = 1.4
 	biomass = 8
