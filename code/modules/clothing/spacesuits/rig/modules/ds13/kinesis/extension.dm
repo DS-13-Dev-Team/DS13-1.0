@@ -43,7 +43,7 @@
 	subject.default_scale += 0.15
 	subject.plane = ABOVE_HUMAN_PLANE
 
-	hum = GLOB.sound_player.PlayLoopingSound(subject, "[rand(0, 99999)]", 'sound/effects/rig/modules/kinesis_hold.ogg', VOLUME_HIGH, world.view)
+	hum = GLOB.sound_player.PlayLoopingSound(subject, "[rand(0, 99999)]", 'sound/effects/rig/modules/kinesis_hold.ogg', VOLUME_MID_HIGH, world.view)
 
 	subject.animate_to_default(3, FALSE)
 
@@ -54,6 +54,7 @@
 		subject.filters.Remove(outline)
 		subject.default_alpha = cached_alpha
 		subject.default_scale = cached_scale
-		subject.plane = cached_plane
+		if (subject.plane == ABOVE_HUMAN_PLANE)
+			subject.plane = cached_plane
 		subject.animate_to_default(3, FALSE)
 	.=..()

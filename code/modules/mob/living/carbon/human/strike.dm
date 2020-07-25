@@ -451,7 +451,7 @@
 			target.shake_animation(8)
 			if (H)
 				var/obj/item/organ/external/affecting = H.find_target_organ(target_zone)
-				H.visible_message("<span class='warning'>\The [H] has been hit in the [affecting.name] by \the [used_weapon].</span>")
+				H.visible_message("<span class='warning'>\The [H] has been hit [affecting ? "in the [affecting.name] " : ""]by \the [used_weapon].</span>")
 		/*
 
 

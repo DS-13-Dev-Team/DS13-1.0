@@ -104,7 +104,7 @@
 	//When an object is fully accelerated, how fast can it possibly move while we're gripping it?
 	//This is a hard cap and it will be reached fairly easily with half a second or so of accelerating
 	//In metres per second
-	var/max_speed = 4
+	var/max_speed = 4.5
 
 	//When we launch the object, it can reach this much total speed
 	var/max_launch_speed = 9
@@ -120,7 +120,7 @@
 
 	//When our held subject collides with an obstacle, it will only generate impact events if its speed is at least this high
 	//In metres per second
-	var/min_impact_speed = 0.85
+	var/min_impact_speed = 0.5
 
 
 	process_with_rig = FALSE
@@ -133,7 +133,7 @@
 	drop_range = 7
 	max_force = 15
 	launch_force = 40
-	max_speed = 5
+	max_speed = 5.5
 
 	max_launch_speed = 11
 
@@ -617,6 +617,8 @@
 
 //We collide with a thing
 /obj/item/rig_module/kinesis/proc/subject_collision(var/atom/movable/mover, var/atom/obstacle)
+	if (QDELETED(subject) || !isturf(subject.loc))
+		return
 
 	var/ref = "\ref[obstacle]"
 
@@ -629,11 +631,13 @@
 			subject.throw_impact(obstacle, curspeed*0.5)//The speed counts as lower than it is due to the controlled nature and no followthrough
 
 
+
+
 	//Record this whether we impacted or not, so it will stall forever if you hold the object up against someone
 	bumped_atoms[ref] = world.time
 
 	//If the object didn't break or move and still won't let us through, then we lose our velocity towards the object
-	if (!QDELETED(obstacle))
+	if (!QDELETED(obstacle) && !QDELETED(subject) && isturf(subject.loc))
 		if (get_turf(obstacle) == old_loc)
 			//Mobs don't block canpass so we'll be stopped by them if they didn't move, regardless of what canpass says
 			if (!obstacle.CanPass(subject, obstacle.loc) || isliving(obstacle))
