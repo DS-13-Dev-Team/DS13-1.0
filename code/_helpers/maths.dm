@@ -202,17 +202,6 @@
 
 
 /*
-	THIS FUNCTION IS BUGGED, BUT IT STILL WORKS
-
-	The bug is that it frequently produces false positive intersections to the sides of the actual ray path.
-	It still produces two correct intersections as well though.
-	It is of limited utility until i figure out how to fix this bug, but it works for its original purpose of pixel movement
-
-	The nearest intersection is always correct
-	If there are three others, only one of them is also correct and it's impossible to tell which
-
-	------------------------------
-
 	Intended to work in global pixels.
 	This takes a global pixel coordinate as an origin point
 	A vector measured in pixels to express the length and direction of the ray
