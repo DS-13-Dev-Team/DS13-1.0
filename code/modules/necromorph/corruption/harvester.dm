@@ -18,7 +18,7 @@
 #define HARVESTER_WHIP_COOLDOWN 3 SECONDS
 
 /obj/structure/corruption_node/harvester
-	name = "Harvester"
+	name = "harvester"
 	desc = "It will take its due"
 	max_health = 500
 	resistance = 10	//Extremely tough, basically immune to small arms fire

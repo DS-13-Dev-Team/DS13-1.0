@@ -9,7 +9,7 @@
 #define CYST_BLAST_POWER	40
 
 /obj/structure/corruption_node/cyst
-	name = "Cyst"
+	name = "cyst"
 	icon_state = "cyst-full"
 	max_health = 50
 	resistance = 5
