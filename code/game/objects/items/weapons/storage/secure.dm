@@ -193,6 +193,6 @@
 	attack_hand(mob/user as mob)
 		return attack_self(user)
 
-/obj/item/weapon/storage/secure/safe/HoS/New()
-	..()
-	//new /obj/item/weapon/storage/lockbox/clusterbang(src) This item is currently broken... and probably shouldnt exist to begin with (even though it's cool)
+/obj/item/weapon/storage/secure/safe/CSECO/New()
+		new /obj/item/weapon/gun/projectile/automatic/pulse_heavy(src)
+		..()
