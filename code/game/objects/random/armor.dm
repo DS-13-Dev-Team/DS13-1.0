@@ -1,7 +1,7 @@
 /obj/random/armor/item_to_spawn()
 	return pickweight(
-	list(/obj/random/legguard = 3,
-	/obj/random/armguard  = 3,
+	list(/obj/random/legguard = 5,
+	/obj/random/armguard  = 5,
 
 	/obj/item/clothing/accessory/armorplate = 4,
 	/obj/item/clothing/accessory/armorplate/medium = 3,
