@@ -13,8 +13,8 @@
 	/obj/item/clothing/suit/armor/vest = 1,
 	/obj/item/clothing/suit/armor/pcarrier/medium = 0.5,
 	/obj/item/clothing/suit/armor/pcarrier/light = 1,
-	/obj/item/clothing/suit/armor/riot = 0.5,
-	/obj/item/clothing/suit/armor/bulletproof = 0.5,
+	/obj/item/clothing/suit/armor/riot/vest = 0.5,
+	/obj/item/clothing/suit/armor/bulletproof/vest = 0.5,
 
 	//Head
 	/obj/item/clothing/head/hardhat = 6,
