@@ -118,21 +118,12 @@
 
 	//Options bar:  mob, details ( admin = 2, dev = 3, mentor = 4, character name (0 = just ckey, 1 = ckey and character name), link? (0 no don't make it a link, 1 do so),
 	//		highlight special roles (0 = everyone has same looking name, 1 = antags / special roles get a golden name)
-
-// Below are option bars WITH autoresponse added. This will stay in as commented out until it can replace the current version WITHOUT autoresponses. - Lion
-/*
-
-	var/mentor_msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 4, 1, 1, 0, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>) (<a href='?_src_=holder;autoresponse=\ref[mob]'>AutoResponse...</a>):</b> [msg]</span>"
-	msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 2, 1, 1, 1, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>) (<a href='?_src_=holder;autoresponse=\ref[mob]'>AutoResponse...</a>):</b> [msg]</span>"
-*/
-
 	var/mentor_msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 4, 1, 1, 0, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>):</b> [msg]</span>"
 	msg = "<span class='notice'><b><font color=red>[selected_type]: </font>[get_options_bar(mob, 2, 1, 1, 1, ticket)] (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>):</b> [msg]</span>"
 
 	var/admin_number_afk = 0
 
 	var/list/mentorholders = list()
-	var/list/debugholders = list()
 	var/list/modholders = list()
 	var/list/adminholders = list()
 	for(var/client/X in GLOB.admins)
@@ -140,12 +131,6 @@
 			mentorholders += X
 			if(X.is_afk())
 				admin_number_afk++
-		if(R_DEBUG & X.holder.rights || R_DEBUG & X.holder.rights) // Looking for anyone with +Debug which will be admins, developers, and developer mentors
-			debugholders += X
-			if(!(R_ADMIN & X.holder.rights))
-				if(X.is_afk())
-					admin_number_afk++
-
 		if(R_MOD & X.holder.rights || R_BAN & X.holder.rights) // Looking for anyone with +Ban which will be full mods and admins.
 			if(!(R_ADMIN & X.holder.rights))
 				modholders += X
@@ -157,34 +142,25 @@
 				admin_number_afk++
 
 
+
 	switch(selected_type)
-		if("Gameplay/Job Inquiries")
+		if("Mentors: Gameplay/Job Inquiries")
 			if(mentorholders.len)
 				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << mentor_msg
-			if(modholders.len)
-				for(var/client/X in modholders) // Mods
-					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
-						X << 'sound/effects/adminhelp_new.ogg'
-					X << msg
 			if(adminholders.len)
 				for(var/client/X in adminholders) // Admins get the full monty
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << msg
-		if("Rule Issue")
+		if("Mods/Admins: Rule Issue")
 			if(mentorholders.len)
 				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << mentor_msg
-			if(modholders.len)
-				for(var/client/X in modholders) // Mods
-					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
-						X << 'sound/effects/adminhelp_new.ogg'
-					X << msg
 			if(adminholders.len)
 				for(var/client/X in adminholders) // Mods
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
