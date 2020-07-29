@@ -13,6 +13,10 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
+	mag_insert_sound = 'sound/weapons/guns/interaction/divet_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/divet_magout.ogg'
+
+
 	firemodes = list(
 		FULL_AUTO_300,
 		list(mode_name="3-round bursts", burst=3, fire_delay=3, move_delay=4, one_hand_penalty=0, burst_accuracy=list(0,-2,-4),       dispersion=list(0.0, 0.6, 1.0)),
@@ -49,11 +53,10 @@
 
 
 /obj/item/projectile/bullet/ls_slug
-	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
 	damage = 24
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
-	fire_sound='sound/weapons/guns/fire/pulse_shot.ogg'
+	fire_sound='sound/weapons/guns/fire/divet_fire.ogg'
 	armor_penetration = 5
 	structure_damage_factor = 1.5
 	penetration_modifier = 1.1
