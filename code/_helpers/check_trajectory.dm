@@ -29,6 +29,8 @@
 
 
 //Version optimised for mass testing
+//Takes a list of target atoms to test
+//Returns back the same list as an associative, with target as key, and true/false as value telling us whether we succeeded or failed in hitting
 /proc/check_trajectory_mass(var/list/targets, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE, item_flags = null, obj_flags = null, var/allow_sleep = FALSE)
 	if(!istype(firer))
 		return 0

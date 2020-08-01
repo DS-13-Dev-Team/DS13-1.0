@@ -34,6 +34,8 @@
 	var/opened = FALSE
 	var/locked = FALSE
 
+	mass = 15
+
 /obj/structure/closet/Initialize()
 	.=..()
 
@@ -540,3 +542,12 @@
 	locked = FALSE
 	desc += " It appears to be broken."
 	return TRUE
+
+
+//Closets weigh as much as everything in them
+/obj/structure/closet/get_mass()
+
+	.=mass
+	for (var/a in contents)
+		var/atom/movable/AM = a
+		.+=AM.get_mass()

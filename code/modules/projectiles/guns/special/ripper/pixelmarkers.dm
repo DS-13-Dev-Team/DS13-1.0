@@ -27,7 +27,6 @@
 
 
 /proc/pixelmark(var/turf/source, var/iconstate, var/vector2/coords)
-	world << "Creating pixelmark at [jumplink(source)]"
 	var/obj/effect/pixelmarker/P = new /obj/effect/pixelmarker(source, 3 SECOND)
 	P.icon_state = iconstate
 	if (coords)

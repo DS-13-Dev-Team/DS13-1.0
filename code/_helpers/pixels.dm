@@ -248,8 +248,6 @@
 			oldloc = turfs[endpoint-1]
 			var/turf/newloc = turfs[endpoint]
 
-			//pixelmark(oldloc, "[endpoint-1]")
-			//pixelmark(newloc, "[endpoint]")
 			endpoint++
 			var/vector2/cached_global_pixels = get_global_pixel_loc()
 
@@ -274,7 +272,6 @@
 				//This will contain exactly two elements
 				//We find which one is closest to our current position, that's the face we collide with
 				for (var/vector2/intersection as anything in intersections)
-					//pixelmark(newloc, "point", intersection)
 					var/vector2/delta = intersection - current_pixel_loc
 					var/mag = delta.Magnitude()
 					if (mag < closest_magnitude)

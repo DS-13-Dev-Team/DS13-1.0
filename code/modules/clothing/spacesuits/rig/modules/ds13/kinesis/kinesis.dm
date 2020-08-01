@@ -9,7 +9,9 @@
 
 /obj/item/rig_module/kinesis
 	name = "G.R.I.P kinesis module"
+	interface_name = "Kinesis"
 	desc = "An engineering tool that uses microgravity fields to manipulate objects at distances of several metres."
+	interface_desc = "An engineering tool that uses microgravity fields to manipulate objects at distances of several metres."
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "module"
 	//matter = list(MATERIAL_STEEL = 20000, "plastic" = 30000, MATERIAL_GLASS = 5000)
@@ -22,6 +24,10 @@
 	var/force_power_cost = 0.5	//Cost per second per newton of force, when moving an object
 	var/launch_power_cost = 2000	//Cost to repulse launch
 
+	activate_string = "Activate Kinesis Mode"
+	deactivate_string = "Deactivate Kinesis Mode"
+
+	toggleable = TRUE
 
 	//The kinesis module tries to grab certain items in an order of priority
 	var/list/target_priority = list(/obj/item/projectile,
@@ -217,6 +223,36 @@
 		//TODO: Implement this when there's a use for it
 		//spawn()
 			//rip_free()
+
+	//Line of sight check.
+	//This is fairly permissive, we can grab it if we have LOS to any of the tiles around it
+	if (!fail)
+		//First we get a list of turfs in range 1 around the atom
+		var/list/raytrace_turfs = trange(1, AM)
+
+
+		//Second, we see which of those have a clear line of sight to the atom, possibly creating a reduced list
+		raytrace_turfs = check_trajectory_mass(raytrace_turfs, AM, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING, allow_sleep = FALSE)
+
+		//Now remove the ones from the list which failed to hit
+		for (var/t in raytrace_turfs)
+			if (!raytrace_turfs[t])
+				raytrace_turfs -= t
+			else
+				debug_mark_turf(t)
+
+
+		//Thirdly, we see which of those have a clear LOS to us
+		var/list/hit_turfs = check_trajectory_mass(raytrace_turfs, src, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING, allow_sleep = FALSE)
+
+		for (var/t in hit_turfs)
+			if (!hit_turfs[t])
+				raytrace_turfs -= t
+			else
+				break
+
+		if (!hit_turfs.len)
+			fail = TRUE
 
 	if (fail)
 		playsound(src, 'sound/effects/rig/modules/kinesis_grabfail.ogg', VOLUME_MID, 1)
