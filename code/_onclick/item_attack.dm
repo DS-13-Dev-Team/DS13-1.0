@@ -87,3 +87,6 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
 	return
 
+
+/obj/item/proc/get_strike_damage(var/datum/strike/strike)
+	strike.damage = force
