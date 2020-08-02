@@ -112,7 +112,7 @@
 	force_divisor = 0.33
 	unwielded_force_divisor = 0.20
 	thrown_force_divisor = 1.5 // 20 when thrown with weight 15 (glass)
-	throw_speed = 3
+	
 	edge = 0
 	sharp = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'

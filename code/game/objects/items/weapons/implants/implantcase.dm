@@ -6,7 +6,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implantcase-0"
 	item_state = "implantcase"
-	throw_speed = 1
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_TINY
 	var/obj/item/weapon/implant/imp = null

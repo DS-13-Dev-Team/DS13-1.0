@@ -7,7 +7,7 @@
 	slot_flags = SLOT_BELT | SLOT_EARS
 	w_class = ITEM_SIZE_TINY
 	sharp = TRUE
-	throw_speed = 3
+	
 	throw_range = 5
 	matter = list(MATERIAL_STEEL = 800, MATERIAL_PLASTIC = 400)
 	attack_verb = list("stabbed")

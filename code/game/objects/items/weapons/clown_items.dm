@@ -22,7 +22,7 @@
 	item_state = "bike_horn"
 	throwforce = 3
 	w_class = ITEM_SIZE_SMALL
-	throw_speed = 3
+	
 	throw_range = 15
 	attack_verb = list("HONKED")
 	var/spam_flag = 0

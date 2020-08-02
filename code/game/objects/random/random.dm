@@ -898,20 +898,7 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/clothing/suit/space/void/medical,
 				/obj/item/clothing/suit/space/void/medical/alt))
 
-/obj/random/hardsuit
-	name = "Random Hardsuit"
-	desc = "This is a random hardsuit control module."
-	icon = 'icons/obj/rig_modules.dmi'
-	icon_state = "generic"
 
-/obj/random/hardsuit/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/rig/security,
-				/obj/item/weapon/rig/vintage,
-				/obj/item/weapon/rig/industrial,
-				/obj/item/weapon/rig/eva,
-				/obj/item/weapon/rig/light/hacker,
-				/obj/item/weapon/rig/light/stealth,
-				/obj/item/weapon/rig/light))
 
 /obj/random/hostile
 	name = "Random Hostile Mob"

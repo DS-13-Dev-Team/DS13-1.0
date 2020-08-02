@@ -28,6 +28,7 @@
 	var/permanent                       // If set, the module can't be removed.
 	var/disruptive = 1                  // Can disrupt by other effects.
 	var/activates_on_touch              // If set, unarmed attacks will call engage() on the target.
+	var/process_with_rig = TRUE			// If true, this calls process every tick when the rig does
 
 	var/active                          // Basic module status
 	var/disruptable                     // Will deactivate if some other powers are used.
@@ -161,7 +162,7 @@
 		to_chat(usr, "<span class='warning'>The suit is not initialized.</span>")
 		return 0
 
-	if(usr.lying || usr.stat || usr.stunned || usr.paralysis || usr.weakened)
+	if(usr.stat || usr.stunned || usr.paralysis)
 		to_chat(usr, "<span class='warning'>You cannot use the suit in this state.</span>")
 		return 0
 
@@ -352,3 +353,11 @@
 
 /obj/item/rig_module/proc/rig_unequipped(var/mob/user, var/slot)
 	return
+
+//Consumes power, returns true if it works
+/obj/item/rig_module/proc/use_power(var/cost)
+	.=FALSE
+	if (holder && holder.cell)
+		if(holder.cell.check_charge(cost * CELLRATE))
+			holder.cell.use(cost * CELLRATE)
+			return TRUE

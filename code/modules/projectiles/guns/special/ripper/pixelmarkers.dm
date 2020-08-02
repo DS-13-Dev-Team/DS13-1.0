@@ -3,7 +3,7 @@
 	var/lifetime = 0.3
 	anchored = TRUE
 
-/obj/effect/pixelmarker/New(var/location, var/_lifetime, var/newcolor = "#00FF00")
+/obj/effect/pixelmarker/New(var/location, var/_lifetime, var/newcolor = "#FFFFFF")
 	if (_lifetime)
 		lifetime = _lifetime
 
@@ -16,14 +16,18 @@
 		qdel(src)
 
 //Sets the pixelmarker to be on the target pixel exactly
-/obj/effect/pixelmarker/proc/set_world_pixel_coords(var/vector2/coords)
-	var/vector2/tilecoords = new /vector2(round(coords.x / world.icon_size), round(coords.y / world.icon_size))
-	forceMove(locate(tilecoords.x, tilecoords.y, z))
-	pixel_x = (coords.x % tilecoords.x)
-	pixel_y = (coords.y % tilecoords.y)
+/obj/effect/pixelmarker/set_global_pixel_loc(var/vector2/coords)
+	..(coords + new /vector2(16, 16))
 
 
 
 
 /obj/effect/pixelmarker/tile
 	icon_state = "white"
+
+
+/proc/pixelmark(var/turf/source, var/iconstate, var/vector2/coords)
+	var/obj/effect/pixelmarker/P = new /obj/effect/pixelmarker(source, 3 SECOND)
+	P.icon_state = iconstate
+	if (coords)
+		P.set_global_pixel_loc(coords)

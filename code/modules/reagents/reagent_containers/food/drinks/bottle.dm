@@ -155,7 +155,7 @@
 	icon_state = "broken_bottle"
 	force = 9
 	throwforce = 5
-	throw_speed = 3
+	
 	throw_range = 5
 	item_state = "beer"
 	attack_verb = list("stabbed", "slashed", "attacked")

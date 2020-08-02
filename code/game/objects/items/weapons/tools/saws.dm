@@ -6,7 +6,7 @@
 	throwforce = WEAPON_FORCE_NORMAL
 	worksound = WORKSOUND_SIMPLE_SAW
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
-	throw_speed = 3
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	attack_verb = list("attacked", "slashed", "sawed", "cut")

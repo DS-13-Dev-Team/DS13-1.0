@@ -3,8 +3,8 @@
 	id = "blowout"
 	desc = "Destroys a target wall light, with an explosion of sparks. Be careful with overusing this ability, necromorphs need light to see, too. destroying too many lights can harm your own team"
 	target_string = "A wall light"
-	energy_cost = 70
-	cooldown = 10 SECONDS
+	energy_cost = 40
+	cooldown = 3 SECONDS
 
 	target_types = list(/obj/machinery/light)
 

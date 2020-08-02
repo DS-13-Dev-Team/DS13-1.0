@@ -11,6 +11,7 @@
 	suit_overlay_used = "healthbar_100"
 	suit_overlay = "healthbar_100"
 	var/mob/living/carbon/human/user
+	process_with_rig = FALSE
 
 
 /obj/item/rig_module/healthbar/proc/register_user(var/mob/newuser)

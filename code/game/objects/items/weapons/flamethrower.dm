@@ -7,7 +7,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	force = 3.0
 	throwforce = 10.0
-	throw_speed = 1
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_LARGE
 	origin_tech = list(TECH_COMBAT = 1)

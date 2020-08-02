@@ -531,3 +531,6 @@ proc
 	else
 		//No human target, get whatever we're aiming towards if it were human
 		return GLOB.organ_altitudes[aiming_zone]
+
+
+

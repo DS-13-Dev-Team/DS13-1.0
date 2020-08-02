@@ -83,6 +83,12 @@
 	var/matrix/effect_transform			// matrix to rotate and scale projectile effects - putting it here so it doesn't
 										//  have to be recreated multiple times
 
+
+	var/flying = TRUE	//Set this false to make the projectile stop in midair
+	var/grippable = FALSE	//This should be set true on any large, physical projectiles. Rockets, bombs, grenades, cannonballs, etc
+	//It should be false for small things like normal bullets, spines
+	//It should be false for non physical things, energy, lasers, etc
+
 	var/shrapnel_type = /obj/item/weapon/material/shard/shrapnel	//When this projectile embeds in a mob, what kind of shrapnel does it turn into?	The actual projectile will be deleted
 
 /obj/item/projectile/New(var/atom/location)
@@ -116,6 +122,7 @@
 
 //Called when this projectile is to be deleted during normal gameplay, ie when it hits stuff
 /obj/item/projectile/proc/expire()
+	flying = FALSE
 	set_density(0)
 	expired = TRUE
 	switch(expiry_method)
@@ -424,7 +431,7 @@
 /obj/item/projectile/Process()
 	var/first_step = 1
 
-	spawn while(src && src.loc && !expired)
+	spawn while(src && src.loc && flying)
 		if(kill_count-- < 1)
 			on_impact(src.loc) //for any final impact behaviours
 			expire()
@@ -530,3 +537,22 @@
 			//animate(P, alpha = 0, time = 2)
 			//QDEL_IN(P,2)
 
+/*
+	Kinesis Code
+*/
+/obj/item/projectile/can_telegrip()
+	if (grippable)
+		//Normally its bad to set things in a checking function, but projectiles use anchored in an unintended manner. A hack for a hack.
+		anchored = FALSE
+		return TRUE
+	return FALSE
+
+/obj/item/projectile/telegripped()
+	flying = FALSE	//Stop flying so it can be moved around
+
+
+/obj/item/projectile/telegrip_released(var/obj/item/rig_module/kinesis/gripper)
+	//Drop and hit the floor beneath us if we were dropped
+	if (gripper.release_type == RELEASE_DROP)
+		var/turf/T = get_turf(src)
+		Bump(T)

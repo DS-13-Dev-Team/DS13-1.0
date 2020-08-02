@@ -417,6 +417,7 @@
 	engage_string = "Change color"
 	usable = 1
 	device_type = /obj/item/weapon/pen/multi
+	process_with_rig = FALSE
 
 /obj/item/rig_module/device/stamp
 	name = "mounted internal affairs stamp"
@@ -428,6 +429,7 @@
 	usable = 1
 	var/iastamp
 	var/deniedstamp
+	process_with_rig = FALSE
 
 /obj/item/rig_module/device/stamp/Initialize()
 	. = ..()
@@ -456,6 +458,7 @@
 	interface_desc = "Eats trash like no one's business."
 	origin_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 5)
 	device_type = /obj/item/weapon/matter_decompiler
+	process_with_rig = FALSE
 
 /obj/item/rig_module/cooling_unit
 	name = "mounted cooling unit"

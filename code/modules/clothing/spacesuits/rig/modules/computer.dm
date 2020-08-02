@@ -241,6 +241,8 @@
 	interface_desc = "An induction-powered high-throughput datalink suitable for hacking encrypted networks."
 	var/list/stored_research
 
+	process_with_rig = FALSE
+
 /obj/item/rig_module/datajack/Initialize()
 	. =..()
 	stored_research = list()

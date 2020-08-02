@@ -399,14 +399,20 @@
 	if (istype(user, /mob/living))
 		target_zone = get_zone_sel(user)
 
+	src.speed = speed
+
 	//If the thing isnt an item, all these values will be left at their quite-suitable defaults
 	if (istype(self, /obj/item))
 		used_item = self
 		damage_type = used_item.damtype
 		damage_flags = used_item.damage_flags()
 		armor_penetration = used_item.armor_penetration
-	src.speed = speed
-	damage = used_item.throwforce*(soft_cap(speed, 1, 1, 0.92))//Damage depends on how fast it was going, with some falloff
+		damage = used_item.throwforce*(soft_cap(speed/BASE_THROW_SPEED, 1, 1, 0.95))//Damage depends on how fast it was going, with some falloff
+
+	else if (istype(self, /atom/movable))
+		var/atom/movable/A = self
+
+		damage = A.get_mass()*(soft_cap(speed/BASE_THROW_SPEED, 1, 1, 0.95))
 
 
 
@@ -445,7 +451,7 @@
 			target.shake_animation(8)
 			if (H)
 				var/obj/item/organ/external/affecting = H.find_target_organ(target_zone)
-				H.visible_message("<span class='warning'>\The [H] has been hit in the [affecting.name] by \the [used_weapon].</span>")
+				H.visible_message("<span class='warning'>\The [H] has been hit [affecting ? "in the [affecting.name] " : ""]by \the [used_weapon].</span>")
 		/*
 
 

@@ -98,7 +98,7 @@ Unique items
 	icon = 'icons/obj/library.dmi'
 	icon_state = "booknanoregs"
 	attack_verb = list("bashed", "whacked", "educated")
-	throw_speed = 1
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	max_w_class = ITEM_SIZE_SMALL

@@ -87,6 +87,8 @@
 			if(!user.unEquip(mod)) return
 			to_chat(user, "You install \the [mod] into \the [src].")
 			installed_modules |= mod
+			if (mod.process_with_rig)
+				processing_modules |= mod
 			mod.forceMove(src)
 			mod.installed(src)
 			update_icon()
@@ -161,6 +163,7 @@
 					removed.forceMove(get_turf(src))
 					removed.removed()
 					installed_modules -= removed
+					processing_modules -= removed
 					update_icon()
 
 		else if(istype(W,/obj/item/stack/nanopaste)) //EMP repair

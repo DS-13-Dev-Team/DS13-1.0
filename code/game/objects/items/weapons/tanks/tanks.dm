@@ -17,7 +17,7 @@ var/list/global/tank_gauge_cache = list()
 
 	force = 5.0
 	throwforce = 10.0
-	throw_speed = 1
+	
 	throw_range = 4
 
 	var/datum/gas_mixture/air_contents = null

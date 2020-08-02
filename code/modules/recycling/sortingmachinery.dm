@@ -251,7 +251,7 @@
 	icon_state = "c_tube"
 	throwforce = 1
 	w_class = ITEM_SIZE_SMALL
-	throw_speed = 4
+	
 	throw_range = 5
 
 /obj/item/stack/package_wrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)

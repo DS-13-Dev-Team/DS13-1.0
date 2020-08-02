@@ -54,15 +54,18 @@
 	/obj/random/glasses = 1,
 	/obj/random/clothing = 1,
 	/obj/random/accessory = 1,
-	/obj/random/voidsuit = 1,
+	/obj/random/voidsuit = 0.2,
 	/obj/random/armor = 1,
 	/obj/random/pouch = 2,
 	/obj/random/tool/advanced = 1,
-	/obj/random/toolbox = 1))
+	/obj/random/toolbox = 1,
+	/obj/random/rig_module = 0.5))
 
 /obj/random/rare_loot/item_to_spawn()
 	return pickweight(list( /obj/item/stack/power_node = 2,
-	/obj/random/material/rare = 1))
+	/obj/random/tool/modded = 1,
+	/obj/random/material/rare = 1,
+	/obj/random/hardsuit = 1))
 
 
 /obj/random/rare_loot/usually

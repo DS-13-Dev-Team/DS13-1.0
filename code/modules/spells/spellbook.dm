@@ -22,7 +22,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 	desc = "The legendary book of spells of the wizard."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "spellbook"
-	throw_speed = 1
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	var/uses = 1

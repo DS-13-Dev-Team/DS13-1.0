@@ -19,6 +19,7 @@
 	interface_desc = "Disorientates your target by blinding them with a bright light."
 	device_type = /obj/item/device/flash
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 3, TECH_ENGINEERING = 5)
+	process_with_rig = FALSE
 
 /obj/item/rig_module/device/flash/advanced
 	name = "advanced mounted flash"
@@ -37,6 +38,8 @@
 
 	var/fire_force = 30
 	var/fire_distance = 10
+
+	process_with_rig = FALSE
 
 	charges = list(
 		list("flashbang",   "flashbang",   /obj/item/weapon/grenade/flashbang,  3),
