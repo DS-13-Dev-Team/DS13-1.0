@@ -1,4 +1,4 @@
-	/****************************************************
+/****************************************************
 				EXTERNAL ORGANS
 ****************************************************/
 
@@ -319,7 +319,7 @@
 	return
 
 
-/obj/item/organ/external/replaced(var/mob/living/carbon/human/target)
+/obj/item/organ/external/replaced(var/mob/living/carbon/human/target, var/update = TRUE)
 	..()
 
 	if(istype(owner))
@@ -342,9 +342,10 @@
 				imp_device.implanted = 1
 
 		for(var/obj/item/organ/external/organ in children)
-			organ.replaced(owner)
+			organ.replaced(owner, FALSE)
 
-
+		if (update)
+			owner.update_missing_limbs()
 
 	if(!parent && parent_organ)
 		parent = owner.organs_by_name[src.parent_organ]
@@ -897,6 +898,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(disintegrate != DROPLIMB_BURN)
 				stump.sever_artery()
 			stump.update_damages()
+
+	victim.update_missing_limbs()
 	spawn(1)
 		victim.updatehealth()
 		victim.UpdateDamageIcon()

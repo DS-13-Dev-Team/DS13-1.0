@@ -47,3 +47,6 @@ GLOBAL_LIST_EMPTY(silicon_mob_list) //List of all silicon mobs, including client
 GLOBAL_LIST_EMPTY(living_mob_list) //List of all alive mobs, including clientless. Excludes /mob/new_player
 GLOBAL_LIST_EMPTY(dead_mob_list)   //List of all dead mobs, including clientless. Excludes /mob/new_player
 GLOBAL_LIST_EMPTY(ghost_mob_list)   //List of all ghosts, including clientless. Excludes /mob/new_player
+
+
+GLOBAL_LIST_EMPTY(limb_masks)	//List of combined icon files for masking out sections of clothes where the wearer is missing that limb

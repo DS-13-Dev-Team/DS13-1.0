@@ -44,6 +44,10 @@
 			var/image/bloodsies	= overlay_image(user_human.species.blood_mask, blood_overlay_type, blood_color, RESET_COLOR)
 			ret.overlays	+= bloodsies
 
+		if (user_human.missing_limbs & body_parts_covered)
+			world << "Clothing [src] being clipped by limb mask"
+			ret.filters += user_human.limb_mask
+
 	if(accessories.len)
 		for(var/obj/item/clothing/accessory/A in accessories)
 			ret.overlays |= A.get_mob_overlay(user_mob, slot)
