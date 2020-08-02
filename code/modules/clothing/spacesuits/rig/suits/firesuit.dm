@@ -7,6 +7,7 @@
 	online_slowdown = 1 //lightweight materials.
 	acid_resistance = 2.5	//Designed to take burns well.
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE // equivalent to the firesuits
+	seal_delay = 15 //double as fast to deploy thanks to flexible materials
 
 	chest_type = /obj/item/clothing/suit/space/rig/firesuit
 	helm_type =  /obj/item/clothing/head/helmet/space/rig/firesuit
