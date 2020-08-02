@@ -5,10 +5,10 @@
 	icon_state = "stunbaton"
 	item_state = "baton"
 	slot_flags = SLOT_BELT
-	force = 15
+	force = 3
 	sharp = 0
 	edge = 0
-	throwforce = 7
+	throwforce = 1
 	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
@@ -129,6 +129,10 @@
 		user.Weaken(30)
 		deductcharge(hitcost)
 		return
+	if(user.a_intent != I_HURT || status == 1)
+		force = 1
+	else
+		force = 3
 	return ..()
 
 /obj/item/weapon/melee/baton/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
