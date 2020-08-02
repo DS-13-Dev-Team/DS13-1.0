@@ -321,14 +321,18 @@
 	CACHE_USER
 	src.used_weapon = used_weapon
 	used_item = used_weapon
+
 	damage_flags = used_weapon.damage_flags()
 	armor_penetration = used_item.armor_penetration
 
+	//The item will modify the strike
+	if (istype(used_item))
+		used_item.get_strike_damage(src)
+
+
 /datum/strike/implement/impact_mob()
-	.=..()
-	if (damage_done)
-		used_item.apply_hit_effect(target, user, target_zone)
-		L.hit_with_weapon(src)
+	used_item.apply_hit_effect(target, user, target_zone)
+	L.hit_with_weapon(src)
 
 /datum/strike/implement/show_result()
 	var/sound = get_impact_sound()

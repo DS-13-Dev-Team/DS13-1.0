@@ -198,7 +198,7 @@ meteor_act
 	*/
 
 /mob/living/carbon/human/hit_with_weapon(var/datum/strike/implement/strike)
-	standard_weapon_hit_effects(strike.used_item, strike.user, strike.get_final_damage(), strike.blocked, strike.target_zone)
+	return standard_weapon_hit_effects(strike.used_item, strike.user, strike.get_final_damage(), strike.blocked, strike.target_zone)
 
 
 /mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/hit_zone)
@@ -209,14 +209,19 @@ meteor_act
 	// Handle striking to cripple.
 	if(user && user.a_intent == I_DISARM)
 		effective_force *= 0.66 //reduced effective force...
-		if(!..(I, user, effective_force, blocked, hit_zone))
-			return 0
+		.=..(I, user, effective_force, blocked, hit_zone)
+		if(!.)
+			return
 
 		//set the dislocate mult less than the effective force mult so that
 		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
 		attack_joint(affecting, I, effective_force, 0.5, blocked) //...but can dislocate joints
-	else if(!..())
-		return 0
+	else
+		.=..(I, user, effective_force, blocked, hit_zone)
+		if(!.)
+			return
+
+	effective_force = .
 
 	if(effective_force > 10 || effective_force >= 5 && prob(33))
 		forcesay(GLOB.hit_appends)	//forcesay checks stat already
@@ -238,7 +243,6 @@ meteor_act
 		//Apply blood
 		attack_bloody(I, user, effective_force, hit_zone)
 
-	return 1
 
 /mob/living/carbon/human/proc/attack_bloody(obj/item/W, mob/living/attacker, var/effective_force, var/hit_zone)
 	if(W.damtype != BRUTE)
