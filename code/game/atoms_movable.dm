@@ -225,3 +225,7 @@
 
 /atom/movable/proc/get_mass()
 	return mass
+
+
+/atom/movable/proc/reset_move_animation()
+	animate_movement = SLIDE_STEPS

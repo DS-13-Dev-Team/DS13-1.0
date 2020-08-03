@@ -238,8 +238,6 @@
 		for (var/t in raytrace_turfs)
 			if (!raytrace_turfs[t])
 				raytrace_turfs -= t
-			else
-				debug_mark_turf(t)
 
 
 		//Thirdly, we see which of those have a clear LOS to us
@@ -276,6 +274,7 @@
 	subject = AM
 	subject.telegripped(src)	//Tell the object it was picked up
 	subject.throwing = TRUE
+	subject.animate_movement = NO_STEPS	//Needed for pixel movement to be smoother
 
 	//Cache these before we change them
 	cached_pass_flags = subject.pass_flags
@@ -385,6 +384,10 @@
 	if (release_type != RELEASE_DROP)
 		var/turf/throw_target = thing.get_turf_at_pixel_offset(velocity * WORLD_ICON_SIZE)
 		thing.throw_at(throw_target, speed, speed, null)
+	else
+		//We need to reset the animate_movement var if we are dropping it precisely
+		//If its being thrown, pixel movement will do this
+		set_delayed_move_animation_reset(thing, 4)
 
 
 

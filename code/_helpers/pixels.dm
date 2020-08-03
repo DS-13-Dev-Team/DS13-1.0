@@ -297,11 +297,20 @@
 				newpix.x = (pixel_x + position_delta.x)
 				newpix.y = (pixel_y + position_delta.y)
 
-		animate_movement = initial(animate_movement)
+
 
 
 	animate(src, pixel_x = newpix.x, pixel_y = newpix.y, time = time_delta - min(time_delta*0.2, 0.5))
 	//To reduce visual artefacts resulting from lag, we want the movement to finish slightly early
 	//half a decisecond is ideal, but no more than 20% of the total time
+
+	//We need to reset the animate_movement var, but not immediately,
+	set_delayed_move_animation_reset(src, time_delta+2)
+
+
+//Mobs that get their pixel offset messed up will be able to walk it off
+/mob/living/pixel_move(var/vector2/position_delta, var/time_delta)
+	.=..()
+	set_extension(src, /datum/extension/conditionalmove/pixel_align)
 
 
