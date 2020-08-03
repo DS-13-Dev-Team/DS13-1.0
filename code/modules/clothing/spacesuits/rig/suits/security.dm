@@ -24,6 +24,8 @@
 
 /obj/item/clothing/suit/space/rig/security
 	name = "suit"
+	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S)
 
 /obj/item/clothing/gloves/rig/security
 	name = "gloves"
