@@ -336,14 +336,21 @@
 	var/prior_missing_limbs = missing_limbs
 	missing_limbs = 0
 
+
 	//This list will briefly hold the icon names of missing organs, so we can fetch the appropriate iconstate from their damage mask
 	var/list/missing_icon_names = list()
+
+	//Special handling for mobs that have lying down icons
+	var/suffix = ""
+	if (lying && species.icon_lying)
+		suffix = species.icon_lying
 
 	//Lets go through all the organs we're supposed to have
 	for (var/organ_tag in species.has_limbs)
 		var/obj/item/organ/external/E = get_organ(organ_tag)
+
 		//If we still have the organ, we're cool, continue
-		if (!E || !E.is_stump())
+		if (E && !E.is_stump())
 			continue
 
 		//Alright its not there, now lets figure out what bodyparts it represents, or represented
@@ -353,7 +360,8 @@
 		//We fetch the initial bodypart flags and add to our missing limbs
 		//We are assuming that the represented bodyparts of a limb never change after initialisation
 		missing_limbs |= initial(typepath.body_part)
-		missing_icon_names += initial(typepath.icon_name)
+
+		missing_icon_names += initial(typepath.icon_name)+suffix
 
 
 
@@ -373,7 +381,7 @@
 
 	//Alright, the configuration of missing limbs has changed, so we must update our limb mask
 	//This will create a cache key unique to our bodytype and missing limb config
-	var/cache_index = "[species.get_bodytype(src)]_[missing_limbs]"
+	var/cache_index = "[species.get_bodytype(src)]_[missing_limbs][suffix]"
 
 	//We will try to retrieve it from global cache
 	var/icon/I = GLOB.limb_masks[cache_index]
