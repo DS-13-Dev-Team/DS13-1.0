@@ -177,3 +177,9 @@
 
 	var/vector2/rejection = pixel_offset.Rejection(line)
 	mover.modify_pixels(rejection*-1)
+
+
+// Currently something for Ishimura Signs.
+/atom/proc/set_pixels(var/vector2/delta)
+    pixel_x = delta.x
+    pixel_y = delta.y
