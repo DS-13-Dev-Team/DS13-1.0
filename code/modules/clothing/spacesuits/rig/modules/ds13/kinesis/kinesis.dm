@@ -101,7 +101,7 @@
 		//The maximum mass we can lift and move
 		//How fast things are thrown when we release them
 	//In newtons
-	var/max_force	=	10
+	var/max_force	=	20
 
 	//When we launch the object, this much impulse is applied in a burst
 	var/launch_force	=	30
@@ -119,7 +119,7 @@
 	//How fast can the object's speed increase? Measured in metres per second per second
 	//That was not a typo.
 	//This needs to be limited to prevent small/light objects just going nuts
-	var/max_acceleration = 4
+	var/max_acceleration = 6
 
 	//Multiply velocity by this each tick, before acceleration
 	var/velocity_decay = 0.95
@@ -137,7 +137,7 @@
 	desc = "An engineering tool that uses microgravity fields to manipulate objects at distances of several metres. This version has improved range and power."
 	range = 6
 	drop_range = 7
-	max_force = 15
+	max_force = 30
 	launch_force = 40
 	max_speed = 5.5
 
@@ -618,16 +618,19 @@
 	else
 		//Alright, how much will we change the speed per second?
 		var/acceleration = max_force / subject_mass
-		acceleration = min(acceleration, max_acceleration*delta)	//This is hardcapped
+		acceleration = min(acceleration, max_acceleration)	//This is hardcapped
+
 
 		//Now how much acceleration are we actually adding this tick ? Just multiply by the time delta, which will usually be 0.2
 		acceleration *= delta
 
 
+
 		//Okay now that we have the magnitude of the acceleration, lets create a velocity delta.
 		if (acceleration > 0 && distance > 0)
 
-			offset.ToMagnitude(acceleration)
+			offset = offset.ToMagnitude(acceleration)
+
 
 
 			//Now we adjust the velocity
