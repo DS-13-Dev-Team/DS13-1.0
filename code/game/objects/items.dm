@@ -741,7 +741,6 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 	user = user == src ? loc : (user || loc)
 	if(!istype(user))
-		crash_with("[log_info_line(src)]: Zoom user lost]")
 		return
 
 	GLOB.stat_set_event.unregister(user, src, /obj/item/proc/unzoom)

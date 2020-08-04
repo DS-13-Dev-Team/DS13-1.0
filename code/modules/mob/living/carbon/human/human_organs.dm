@@ -370,6 +370,9 @@
 		//If no change, return
 		return
 
+	//Drop relevant items
+	update_clothing_limbs()
+
 	//We're going to remake the limb mask, toss the old one
 	if (limb_mask)
 		filters -= limb_mask
@@ -398,32 +401,15 @@
 
 //This proc combines a list of icon names into a mask
 /proc/create_limb_mask(var/list/missing_icon_names, var/datum/species/species)
-	world << "Create mask: [english_list(missing_icon_names)]"
 	var/icon/base_icon = new(species && species.icon_template ? species.icon_template : 'icons/mob/human.dmi',"blank")
 
 	var/damage_mask_icon = 'icons/mob/human_races/species/human/damage_mask.dmi'
 	if (species)
 		damage_mask_icon = species.damage_mask
-		world << "Damage mask icon is [damage_mask_icon]"
 
 	for (var/iconstate in missing_icon_names)
-		world << "Limb mask [iconstate]"
 		var/icon/limb_icon = new(damage_mask_icon, iconstate)
-		world << "Made limb icon [limb_icon]"
 		base_icon.Blend(limb_icon,ICON_OVERLAY)
 
 	return base_icon
 
-
-
-/client/verb/mask_filter(var/atom/target)
-	set name = "mask_filter"
-
-	var/mob/living/carbon/human/H = src.mob
-	if (H && H.limb_mask)
-		world << "applying limb mask"
-		target.filters.Add(H.limb_mask)
-		return
-	var/icon/I = icon('icons/mob/human_races/species/human/damage_mask.dmi', "torso")
-	var/dm_filter/newmask = filter(type="alpha", icon=I, flags = MASK_INVERSE)
-	target.filters.Add(newmask)

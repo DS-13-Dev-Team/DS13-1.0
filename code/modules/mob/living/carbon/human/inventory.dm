@@ -473,5 +473,11 @@ This saves us from having to call add_fingerprint() any time something is put in
 			update_inv_s_store(redraw_mob)
 
 
+//This proc unequips and drops any clothing that we no longer have the limbs to continue wearing
+//Called when a human loses a limb
+/mob/living/carbon/human/proc/update_clothing_limbs()
+	for (var/obj/item/C in get_equipped_items(FALSE))
+		if (!has_organ_for_slot(C.equip_slot))
+			drop_from_inventory(C)
 
 #undef REMOVE_INTERNALS
