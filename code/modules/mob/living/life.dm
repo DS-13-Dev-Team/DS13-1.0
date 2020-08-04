@@ -27,7 +27,8 @@
 	//Check if we're on fire
 	handle_fire()
 
-	update_pulling()
+	if (pulling)
+		update_pulling()
 
 	for(var/obj/item/grab/G in src)
 		G.Process()
@@ -58,10 +59,10 @@
 /mob/living/proc/handle_stomach()
 	return
 
-/mob/living/proc/update_pulling()
-	if(pulling)
-		if(incapacitated(INCAPACITATION_KNOCKDOWN|INCAPACITATION_DEFAULT))
-			stop_pulling()
+
+
+
+
 
 //This updates the health and status of the mob (conscious, unconscious, dead)
 /mob/living/proc/handle_regular_status_updates()

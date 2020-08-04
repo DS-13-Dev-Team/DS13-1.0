@@ -12,6 +12,7 @@
 	mass = 130
 	limb_health_factor = 1	//Not as fragile as a slasher
 	virus_immune = 1
+	reach = 2
 
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'

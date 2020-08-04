@@ -45,6 +45,7 @@
 	push_flags 	= ALLMOBS	// What can we push?
 	swap_flags 	= ALLMOBS	// What can we swap place with?
 	evasion = 0	//Tripod has no natural evasion, but this value will be constantly modified by a passive ability
+	reach = 2
 
 	//Implacable
 	stun_mod = 0.5

@@ -169,7 +169,7 @@
 	// A is a turf or is on a turf, or in something on a turf (pen in a box); but not something in something on a turf (pen in a box in a backpack)
 	sdepth = A.storage_depth_turf()
 	if(isturf(A) || isturf(A.loc) || (sdepth != -1 && sdepth <= 1))
-		if(A.Adjacent(src)) // see adjacent.dm
+		if(is_within_reach(A)) // see adjacent.dm
 			if(W)
 				// Return 1 in attackby() to prevent afterattack() effects (when safely moving items for example)
 				var/resolved = W.resolve_attackby(A,src, params)
@@ -350,7 +350,7 @@
 	return
 
 /atom/movable/CtrlClick(var/mob/user)
-	if(Adjacent(user))
+	if(user.is_within_reach(src))
 		user.start_pulling(src)
 
 /*
