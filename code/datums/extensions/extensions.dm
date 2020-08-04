@@ -53,7 +53,10 @@
 			extension_data += args.Copy(3)
 		source.extensions[extension_base_type] = extension_data
 
-/proc/get_or_create_extension(var/datum/source, var/base_type, var/extension_type)
+/proc/get_or_create_extension(var/datum/source, var/datum/extension/extension_type)
+	var/datum/extension/base_type = initial(extension_type.base_type)
+	if (!base_type)
+		base_type = extension_type
 	if(!has_extension(source, base_type))
 		set_extension(arglist(args))
 	return get_extension(source, base_type)
