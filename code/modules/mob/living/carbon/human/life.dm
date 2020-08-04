@@ -832,7 +832,7 @@
 
 /mob/living/carbon/human/proc/handle_hud_list()
 	if (BITTEST(hud_updateflag, HEALTH_HUD) && hud_list[HEALTH_HUD])
-		var/image/holder = hud_list[HEALTH_HUD]
+		var/image/hud_overlay/holder = hud_list[HEALTH_HUD]
 		if(stat == DEAD)
 			holder.icon_state = "0" 	// X_X
 		else if(is_asystole())
@@ -842,7 +842,7 @@
 		hud_list[HEALTH_HUD] = holder
 
 	if (BITTEST(hud_updateflag, LIFE_HUD) && hud_list[LIFE_HUD])
-		var/image/holder = hud_list[LIFE_HUD]
+		var/image/hud_overlay/holder = hud_list[LIFE_HUD]
 		if(stat == DEAD)
 			holder.icon_state = "huddead"
 		else
@@ -856,7 +856,7 @@
 				foundVirus = 1
 				break
 
-		var/image/holder = hud_list[STATUS_HUD]
+		var/image/hud_overlay/holder = hud_list[STATUS_HUD]
 		if(stat == DEAD)
 			holder.icon_state = "huddead"
 		else if(status_flags & XENO_HOST)
@@ -872,7 +872,7 @@
 		else
 			holder.icon_state = "hudhealthy"
 
-		var/image/holder2 = hud_list[STATUS_HUD_OOC]
+		var/image/hud_overlay/holder2 = hud_list[STATUS_HUD_OOC]
 		if(stat == DEAD)
 			holder2.icon_state = "huddead"
 		else if(status_flags & XENO_HOST)
@@ -888,7 +888,7 @@
 		hud_list[STATUS_HUD_OOC] = holder2
 
 	if (BITTEST(hud_updateflag, ID_HUD) && hud_list[ID_HUD])
-		var/image/holder = hud_list[ID_HUD]
+		var/image/hud_overlay/holder = hud_list[ID_HUD]
 		holder.icon_state = "hudunknown"
 		if(wear_id)
 			var/obj/item/weapon/card/id/I = wear_id.GetIdCard()
@@ -900,7 +900,7 @@
 		hud_list[ID_HUD] = holder
 
 	if (BITTEST(hud_updateflag, WANTED_HUD) && hud_list[WANTED_HUD])
-		var/image/holder = hud_list[WANTED_HUD]
+		var/image/hud_overlay/holder = hud_list[WANTED_HUD]
 		holder.icon_state = "hudblank"
 		var/perpname = name
 		if(wear_id)
@@ -925,9 +925,9 @@
 	   || BITTEST(hud_updateflag,  IMPCHEM_HUD) \
 	   || BITTEST(hud_updateflag, IMPTRACK_HUD))
 
-		var/image/holder1 = hud_list[IMPTRACK_HUD]
-		var/image/holder2 = hud_list[IMPLOYAL_HUD]
-		var/image/holder3 = hud_list[IMPCHEM_HUD]
+		var/image/hud_overlay/holder1 = hud_list[IMPTRACK_HUD]
+		var/image/hud_overlay/holder2 = hud_list[IMPLOYAL_HUD]
+		var/image/hud_overlay/holder3 = hud_list[IMPCHEM_HUD]
 
 		holder1.icon_state = "hudblank"
 		holder2.icon_state = "hudblank"
@@ -947,7 +947,7 @@
 		hud_list[IMPCHEM_HUD]  = holder3
 
 	if (BITTEST(hud_updateflag, SPECIALROLE_HUD))
-		var/image/holder = hud_list[SPECIALROLE_HUD]
+		var/image/hud_overlay/holder = hud_list[SPECIALROLE_HUD]
 		holder.icon_state = "hudblank"
 		if(mind && mind.special_role)
 			if(GLOB.hud_icon_reference[mind.special_role])

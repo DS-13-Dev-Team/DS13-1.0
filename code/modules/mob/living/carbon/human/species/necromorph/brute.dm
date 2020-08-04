@@ -37,6 +37,7 @@
 	swap_flags 	= ALLMOBS	// What can we swap place with?
 	density_lying = TRUE	//Chunky boi
 	evasion = -10	//Big target, easier to shoot
+	reach = 2
 
 	//Implacable
 	stun_mod = 0.5

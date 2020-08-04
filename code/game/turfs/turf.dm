@@ -56,18 +56,7 @@
 /turf/proc/is_solid_structure()
 	return 1
 
-/turf/attack_hand(mob/user)
-	user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
 
-	if(user.restrained())
-		return 0
-	if(isnull(user.pulling) || user.pulling.anchored || !isturf(user.pulling.loc))
-		return 0
-	if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
-		return 0
-	if(user.pulling)
-		do_pull_click(user, src)
-	return 1
 
 /turf/attack_robot(var/mob/user)
 	if(Adjacent(user))

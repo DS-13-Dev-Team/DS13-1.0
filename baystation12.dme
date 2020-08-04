@@ -1823,6 +1823,7 @@
 #include "code\modules\mob\living\login.dm"
 #include "code\modules\mob\living\logout.dm"
 #include "code\modules\mob\living\psychosis_new.dm"
+#include "code\modules\mob\living\pull.dm"
 #include "code\modules\mob\living\say.dm"
 #include "code\modules\mob\living\abilities\auto_sound.dm"
 #include "code\modules\mob\living\abilities\brute_curl.dm"

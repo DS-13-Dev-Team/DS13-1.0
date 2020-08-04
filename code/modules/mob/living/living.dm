@@ -5,15 +5,7 @@
 	else
 		add_to_living_mob_list()
 
-//mob verbs are faster than object verbs. See mob/verb/examine.
-/mob/living/verb/pulled(atom/movable/AM as mob|obj in oview(1))
-	set name = "Pull"
-	set category = "Object"
 
-	if(AM.Adjacent(src))
-		src.start_pulling(AM)
-
-	return
 
 //mob verbs are faster than object verbs. See above.
 /mob/living/pointed(atom/A as mob|obj|turf in view())
@@ -514,52 +506,6 @@ default behaviour is:
 		for(var/mob/living/carbon/slime/M in view(1,src))
 			M.UpdateFeed()
 
-
-/mob/living/proc/handle_pulling_after_move(turf/old_loc)
-	if(!pulling)
-		return
-
-	if(get_dist(src, pulling) > 2)
-		stop_pulling()
-		return
-
-	if (isliving(pulling))
-		var/mob/living/M = pulling
-		if(M.grabbed_by.len)
-			if (prob(75))
-				var/obj/item/grab/G = pick(M.grabbed_by)
-				if(istype(G))
-					M.visible_message(SPAN_WARNING("[G.affecting] has been pulled from [G.assailant]'s grip by [src]!"), SPAN_WARNING("[G.affecting] has been pulled from your grip by [src]!"))
-					qdel(G)
-		if (!M.grabbed_by.len)
-			M.handle_pull_damage(src)
-
-
-	step(pulling, get_dir(pulling.loc, old_loc))
-
-
-
-	if(!can_pull(pulling) || get_dist(src, pulling) > 1)
-		stop_pulling()
-		return
-
-/mob/living/proc/handle_pull_damage(mob/living/puller)
-	var/area/A = get_area(src)
-	if(!A.has_gravity)
-		return
-	var/turf/location = get_turf(src)
-	if(lying && prob(getBruteLoss() / 6))
-		location.add_blood(src)
-		if(prob(25))
-			src.adjustBruteLoss(1)
-			visible_message("<span class='danger'>\The [src]'s [src.isSynthetic() ? "state worsens": "wounds open more"] from being dragged!</span>")
-			. = TRUE
-	if(src.pull_damage())
-		if(prob(25))
-			src.adjustBruteLoss(2)
-			visible_message("<span class='danger'>\The [src]'s [src.isSynthetic() ? "state" : "wounds"] worsen terribly from being dragged!</span>")
-			location.add_blood(src)
-			. = TRUE
 
 /mob/living/verb/resist()
 	set name = "Resist"

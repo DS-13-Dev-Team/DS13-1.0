@@ -67,7 +67,9 @@
 
 
 /datum/extension/cadence/proc/holder_moved(var/atom/movable/am, var/atom/old_loc, var/atom/new_loc)
-
+	//Going straight up or down a level causes a runtime without this
+	if (old_loc.x == new_loc.x && old_loc.y == new_loc.y)
+		return
 	var/move_direction = get_dir(old_loc, new_loc)
 	var/vector2/move_direction_vector = Vector2.DirectionBetween(old_loc, new_loc)
 	//If we've moved in a straight line, increase our speed
