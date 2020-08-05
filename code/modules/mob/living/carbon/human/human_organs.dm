@@ -328,3 +328,88 @@
 		limbs += E
 
 	return limbs
+
+
+/mob/living/carbon/human/proc/update_missing_limbs()
+
+	//first we cache and reset this
+	var/prior_missing_limbs = missing_limbs
+	missing_limbs = 0
+
+
+	//This list will briefly hold the icon names of missing organs, so we can fetch the appropriate iconstate from their damage mask
+	var/list/missing_icon_names = list()
+
+	//Special handling for mobs that have lying down icons
+	var/suffix = ""
+	if (lying && species.icon_lying)
+		suffix = species.icon_lying
+
+	//Lets go through all the organs we're supposed to have
+	for (var/organ_tag in species.has_limbs)
+		var/obj/item/organ/external/E = get_organ(organ_tag)
+
+		//If we still have the organ, we're cool, continue
+		if (E && !E.is_stump())
+			continue
+
+		//Alright its not there, now lets figure out what bodyparts it represents, or represented
+		var/list/parameters = species.has_limbs[organ_tag]
+		var/obj/item/organ/external/typepath = parameters["path"]
+
+		//We fetch the initial bodypart flags and add to our missing limbs
+		//We are assuming that the represented bodyparts of a limb never change after initialisation
+		missing_limbs |= initial(typepath.body_part)
+
+		missing_icon_names += initial(typepath.icon_name)+suffix
+
+
+
+	//Next up, did anything change?
+	if (prior_missing_limbs == missing_limbs)
+		//If no change, return
+		return
+
+	//Drop relevant items
+	update_clothing_limbs()
+
+	//We're going to remake the limb mask, toss the old one
+	if (limb_mask)
+		filters -= limb_mask
+		limb_mask = null
+
+	//If we're missing nothing, return
+	if (!missing_limbs)
+		return
+
+	//Alright, the configuration of missing limbs has changed, so we must update our limb mask
+	//This will create a cache key unique to our bodytype and missing limb config
+	var/cache_index = "[species.get_bodytype(src)]_[missing_limbs][suffix]"
+
+	//We will try to retrieve it from global cache
+	var/icon/I = GLOB.limb_masks[cache_index]
+
+	//It doesnt exist, time to make it!
+	if (!istype(I))
+		I = create_limb_mask(missing_icon_names, species)
+		GLOB.limb_masks[cache_index] = I
+
+	//Add the filter to us
+	var/dm_filter/newmask = filter(type="alpha", icon=I, flags = MASK_INVERSE)
+	filters.Add(newmask)
+	limb_mask = filters[filters.len]
+
+//This proc combines a list of icon names into a mask
+/proc/create_limb_mask(var/list/missing_icon_names, var/datum/species/species)
+	var/icon/base_icon = new(species && species.icon_template ? species.icon_template : 'icons/mob/human.dmi',"blank")
+
+	var/damage_mask_icon = 'icons/mob/human_races/species/human/damage_mask.dmi'
+	if (species)
+		damage_mask_icon = species.damage_mask
+
+	for (var/iconstate in missing_icon_names)
+		var/icon/limb_icon = new(damage_mask_icon, iconstate)
+		base_icon.Blend(limb_icon,ICON_OVERLAY)
+
+	return base_icon
+
