@@ -94,9 +94,15 @@
 	START_PROCESSING(SSvines, src)
 
 /obj/effect/vine/Destroy()
-	wake_neighbors()
+
 	STOP_PROCESSING(SSvines, src)
-	return ..()
+	unwatch_tiles()
+
+	var/list/nearby_tiles = (get_cardinal_neighbors() | get_zlevel_neighbors())
+	neighbors = list()
+	. = ..()
+	wake_list(nearby_tiles)
+
 
 //Move all this messy organic calculation into an overrideable proc
 /obj/effect/vine/proc/calculate_growth()
