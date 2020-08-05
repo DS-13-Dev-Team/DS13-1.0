@@ -24,6 +24,8 @@
 /obj/random/hardsuit/item_to_spawn()
 	return pickweight(list(/obj/item/rig_module/kinesis = 2,
 	/obj/item/rig_module/kinesis/advanced = 0.5,
+	/obj/item/rig_module/storage = 0.75,
+	/obj/item/rig_module/storage/heavy = 0.5,
 	/obj/item/rig_module/vision = 0.2,
 	/obj/item/rig_module/vision/multi = 0.1,
 	/obj/item/rig_module/vision/nvg = 0.5,

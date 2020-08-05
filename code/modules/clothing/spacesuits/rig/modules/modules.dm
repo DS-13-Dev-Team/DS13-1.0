@@ -142,6 +142,10 @@
 	holder = null
 	. = ..()
 
+
+/obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, var/mob/user, var/feedback = FALSE)
+	return TRUE
+
 // Called when the module is installed into a suit.
 /obj/item/rig_module/proc/installed(var/obj/item/weapon/rig/new_holder)
 	holder = new_holder
@@ -217,7 +221,7 @@
 	return 1
 
 // Called when the module is uninstalled from a suit.
-/obj/item/rig_module/proc/removed()
+/obj/item/rig_module/proc/uninstalled()
 	deactivate()
 	holder = null
 	return

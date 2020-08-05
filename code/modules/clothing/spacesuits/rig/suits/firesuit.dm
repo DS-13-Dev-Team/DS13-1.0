@@ -16,6 +16,7 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage/light,
 		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
 		/obj/item/rig_module/device/flash,
 		/obj/item/rig_module/vision/nvg

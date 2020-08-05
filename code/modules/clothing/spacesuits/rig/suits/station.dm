@@ -25,13 +25,14 @@
 	req_access = list(access_security)
 
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage,
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/device/flash,
 		/obj/item/rig_module/device/paperdispenser,
 		/obj/item/rig_module/device/pen,
 		/obj/item/rig_module/device/stamp,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/healthbar
+		/obj/item/rig_module/cooling_unit
 		)
 
 	glove_type = null
@@ -77,12 +78,13 @@
 /obj/item/weapon/rig/industrial/equipped
 
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage/heavy,
 		/obj/item/rig_module/device/drill,
 		/obj/item/rig_module/device/orescanner,
 		/obj/item/rig_module/device/rcd,
 		/obj/item/rig_module/vision/meson,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/healthbar
+		/obj/item/rig_module/cooling_unit
 		)
 
 /obj/item/weapon/rig/eva
@@ -141,11 +143,12 @@
 	req_access = list(access_engineering)
 
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/rcd,
 		/obj/item/rig_module/vision/meson,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/healthbar
+		/obj/item/rig_module/cooling_unit
 		)
 
 /obj/item/weapon/rig/ce
@@ -172,14 +175,15 @@
 	req_access = list(access_ce)
 
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage/heavy,
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/rcd,
 		/obj/item/rig_module/device/flash,
 		/obj/item/rig_module/vision/meson,
 		/obj/item/rig_module/grenade_launcher/mfoam,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/healthbar
+		/obj/item/rig_module/cooling_unit
 		)
 
 /obj/item/clothing/head/helmet/space/rig/ce
@@ -227,11 +231,12 @@
 	req_access = list(access_cscio)
 
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage,
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/anomaly_scanner,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/healthbar
+		/obj/item/rig_module/cooling_unit
 		)
 
 /obj/item/weapon/rig/medical
@@ -287,12 +292,13 @@
 	req_access = list(access_medical)
 
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage,
 		/obj/item/rig_module/chem_dispenser/injector,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/healthscanner,
 		/obj/item/rig_module/vision/medhud,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/healthbar
+		/obj/item/rig_module/cooling_unit
 		)
 
 /obj/item/weapon/rig/hazard
@@ -332,10 +338,11 @@
 /obj/item/weapon/rig/hazard/equipped
 
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage/heavy,
 		/obj/item/rig_module/vision/sechud,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/grenade_launcher,
 		/obj/item/rig_module/mounted/taser,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/healthbar
+		/obj/item/rig_module/cooling_unit
 		)
