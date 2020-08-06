@@ -148,4 +148,4 @@
 
 /mob/observer/ghost/emote(var/act, var/type, var/message)
 	if(message && act == "me")
-		communicate(/decl/communication_channel/dsay, client, message, /decl/dsay_communication/emote)
+		communicate(/decl/communication_channel/dsay, client, message, null, /decl/dsay_communication/emote)

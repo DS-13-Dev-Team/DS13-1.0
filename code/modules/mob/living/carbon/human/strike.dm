@@ -348,9 +348,9 @@
 		else
 			if (sound)	playsound(target, sound, VOLUME_HIGH, 1, 1)
 			target.shake_animation(8)
-			user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] in the [affecting.name]!</span>")
+			user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] [affecting ? "in the [affecting.name]":""]!</span>")
 	else
-		user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] in the [affecting.name][damage_done?"":", to no effect"]!</span>")
+		user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] [affecting ? "in the [affecting.name]":""][damage_done?"":", to no effect"]!</span>")
 
 
 /datum/strike/implement/setup_difficulty()
