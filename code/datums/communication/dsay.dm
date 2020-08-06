@@ -91,19 +91,42 @@
 	var/say_verb = pick("complains","moans","whines","laments","blubbers")
 	return "[sender_override ? sender_override : get_name(C, M)] [say_verb], <span class='message'>\"[message]\"</span>"
 
-/decl/dsay_communication/emote/get_message(var/client/C, var/mob/M, var/message, var/sender_override)
-	return "[sender_override ? sender_override : get_name(C, M)] <span class='message'>[message]</span>"
+
 
 /decl/dsay_communication/proc/adjust_channel(var/decl/communication_channel/dsay)
 	dsay.flags |= COMMUNICATION_ADMIN_FOLLOW|COMMUNICATION_GHOST_FOLLOW // Add admin and ghost follow
+
+
+
+
+
 
 /decl/dsay_communication/say/adjust_channel(var/decl/communication_channel/dsay)
 	dsay.log_proc = /proc/log_say
 	..()
 
+
+
+
+
+
+/decl/dsay_communication/emote/get_message(var/client/C, var/mob/M, var/message, var/sender_override)
+	return "[sender_override ? sender_override : get_name(C, M)] <span class='message'>[message]</span>"
+
+
 /decl/dsay_communication/emote/adjust_channel(var/decl/communication_channel/dsay)
 	dsay.log_proc = /proc/log_emote
 	..()
+
+
+
+
+
+
+
+
+
+
 
 /decl/dsay_communication/admin/can_communicate(var/client/communicator, var/message, var/decl/communication_channel/dsay)
 	if(!istype(communicator))
@@ -124,6 +147,13 @@
 	dsay.log_proc = /proc/log_say
 	dsay.flags |= COMMUNICATION_ADMIN_FOLLOW  // Add admin follow
 	dsay.flags &= ~COMMUNICATION_GHOST_FOLLOW // Remove ghost follow
+
+
+
+
+
+
+
 
 /decl/dsay_communication/direct/adjust_channel(var/decl/communication_channel/dsay, var/communicator)
 	dsay.log_proc = /proc/log_say
