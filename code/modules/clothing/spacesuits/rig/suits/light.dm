@@ -47,14 +47,15 @@
 	boot_type = /obj/item/clothing/shoes/lightrig/hacker
 
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage/light,
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/power_sink,
 		/obj/item/rig_module/datajack,
 		/obj/item/rig_module/electrowarfare_suite,
 		/obj/item/rig_module/voice,
 		/obj/item/rig_module/vision,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/healthbar
+		/obj/item/rig_module/cooling_unit
 		)
 
 //The cybersuit is not space-proof. It does however, have good siemens_coefficient values
@@ -88,6 +89,8 @@
 
 
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage/light,
 		/obj/item/rig_module/teleporter,
 		/obj/item/rig_module/stealth_field,
 		/obj/item/rig_module/mounted/energy_blade,

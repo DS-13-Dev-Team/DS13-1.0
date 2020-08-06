@@ -16,6 +16,8 @@
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/melee/energy/sword,/obj/item/weapon/handcuffs)
 
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage,
 		/obj/item/rig_module/mounted,
 		/obj/item/rig_module/vision/thermal,
 		/obj/item/rig_module/grenade_launcher,
@@ -23,13 +25,14 @@
 		/obj/item/rig_module/power_sink,
 		/obj/item/rig_module/electrowarfare_suite,
 		/obj/item/rig_module/chem_dispenser/combat,
-		/obj/item/rig_module/fabricator/energy_net,
-		/obj/item/rig_module/healthbar
+		/obj/item/rig_module/fabricator/energy_net
 		)
 
 //Has most of the modules removed
 /obj/item/weapon/rig/merc/empty
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage,
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/electrowarfare_suite, //might as well
 		)
@@ -44,7 +47,8 @@
 
 /obj/item/weapon/rig/merc/heavy/empty
 	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage/heavy,
 		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/electrowarfare_suite,
-		/obj/item/rig_module/healthbar
+		/obj/item/rig_module/electrowarfare_suite
 		)

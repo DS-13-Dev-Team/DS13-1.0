@@ -64,7 +64,7 @@
 
 		// Check if this is a hardsuit upgrade or a modification.
 		else if(istype(W,/obj/item/rig_module))
-
+			var/obj/item/rig_module/RM = W
 			if(istype(src.loc,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = src.loc
 				if(H.back == src)
@@ -77,6 +77,9 @@
 					if(!installed_mod.redundant && istype(installed_mod,W))
 						to_chat(user, "The hardsuit already has a module of that class installed.")
 						return 1
+
+			if (!RM.can_install(src, user, TRUE))
+				return 1
 
 			var/obj/item/rig_module/mod = W
 			to_chat(user, "You begin installing \the [mod] into \the [src].")
@@ -161,7 +164,7 @@
 					var/obj/item/rig_module/removed = possible_removals[removal_choice]
 					to_chat(user, "You detach \the [removed] from \the [src].")
 					removed.forceMove(get_turf(src))
-					removed.removed()
+					removed.uninstalled()
 					installed_modules -= removed
 					processing_modules -= removed
 					update_icon()
@@ -188,12 +191,33 @@
 	..()
 
 
-/obj/item/weapon/rig/attack_hand(var/mob/user)
 
+/obj/item/weapon/rig/attack_hand(var/mob/user)
 	if(electrified != 0)
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.
 			return
-	..()
+
+	//If the rig has a storage module, we can attempt to access it
+	if (storage && (is_worn() || is_held()))
+		//This will return false if we're done, or true to tell us to keep going and call parent attackhand
+		if (!storage.handle_attack_hand(user))
+			return
+	.=..()
+
+
+//For those pesky items which incur effects on the rigsuit, an altclick will force them to go in if possible
+/obj/item/weapon/rig/AltClick(var/mob/user)
+	if (storage && user.get_active_hand())
+		if (user == loc || Adjacent(user)) //Rig must be on or near you
+			storage.accepts_item(user.get_active_hand())
+			return
+	.=..()
+
+//When not wearing a rig, you can drag it onto yourself to access the internal storage
+/obj/item/weapon/rig/MouseDrop(obj/over_object)
+	if (storage && storage.handle_mousedrop(usr, over_object))
+		return TRUE
+	return ..()
 
 /obj/item/weapon/rig/emag_act(var/remaining_charges, var/mob/user)
 	if(!subverted)
