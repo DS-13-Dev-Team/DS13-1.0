@@ -270,6 +270,7 @@
 #include "code\datums\craft\step.dm"
 #include "code\datums\craft\step_types.dm"
 #include "code\datums\craft\recipes\clothing.dm"
+#include "code\datums\craft\recipes\floor.dm"
 #include "code\datums\craft\recipes\fortification.dm"
 #include "code\datums\craft\recipes\furniture.dm"
 #include "code\datums\craft\recipes\machinery.dm"
