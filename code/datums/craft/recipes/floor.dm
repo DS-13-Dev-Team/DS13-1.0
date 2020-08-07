@@ -5,7 +5,7 @@
 /datum/craft_recipe/floor
 	category = "Tiles"
 	steps = list(
-		list(CRAFT_MATERIAL, MATERIAL_STEEL, 1),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 1, "time" = 1),
 	)
 	time = 1 //Crafting individual tiles is fast
 
@@ -15,7 +15,7 @@
 	name = "grim floor tile"
 	result = /obj/item/stack/tile/dank
 	steps = list(
-		list(CRAFT_MATERIAL, MATERIAL_STEEL, 1),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 1, "time" = 1),
 	)
 
 /datum/craft_recipe/floor/dank/heavy
@@ -110,7 +110,7 @@
 	name = "wood floor tile"
 	result = /obj/item/stack/tile/wood
 	steps = list(
-		list(CRAFT_MATERIAL, 1, MATERIAL_WOOD)
+		list(CRAFT_MATERIAL, MATERIAL_WOOD, 1, "time" = 2) // Flex that wood.
 	)
 
 // SPECIAL / UNRELATED
