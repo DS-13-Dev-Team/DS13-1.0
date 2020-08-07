@@ -802,7 +802,7 @@
 	set src in view(1)
 	var/self = 0
 
-	if(usr.stat || usr.restrained() || !isliving(usr) || !is_necromorph(usr)) return
+	if(usr.stat || usr.restrained() || !isliving(usr)) return
 
 	if(usr == src)
 		self = 1
