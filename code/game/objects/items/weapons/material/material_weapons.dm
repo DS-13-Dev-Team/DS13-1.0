@@ -46,8 +46,6 @@
 	force = round(force*force_divisor)
 	throwforce = round(material.get_blunt_damage()*thrown_force_divisor)
 	attack_cooldown = material.get_attack_cooldown() + attack_cooldown_modifier
-	//spawn(1)
-//		log_debug("[src] has force [force] and throwforce [throwforce] when made from default material [material.name]")
 
 /obj/item/weapon/material/proc/set_material(var/new_material)
 	material = get_material_by_name(new_material)
