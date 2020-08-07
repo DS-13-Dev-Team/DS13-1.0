@@ -170,7 +170,7 @@
 
 /obj/item/weapon/cell/device/standard
 	name = "standard device power cell"
-	maxcharge = 25
+	maxcharge = 50
 
 /obj/item/weapon/cell/device/high
 	name = "advanced device power cell"

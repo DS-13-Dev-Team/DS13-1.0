@@ -36,3 +36,4 @@ changes:
   - bugfix: "Fixed Linoleum having no world icon."
   - bugfix: "Fixed tiling not appearing as valid crafting options."
   - bugfix: "Nutricube storage containers are now properly named."
+  - tweak: "Increased the standard device powercell to hold 50 max charge instead of 25. Can now be used in stunprods and likeminded devices."
