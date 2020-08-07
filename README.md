@@ -31,7 +31,7 @@ Click [here](https://github.com/Baystation12/Baystation12/archive/dev.zip) to ge
 
 The more complicated and easier to update method is using git.  You'll need to download git or some client from [here](http://git-scm.com/).  When that's installed, right click in any folder and click on "Git Bash".  When that opens, type in:
 
-    git clone https://github.com/DS-13-Dev-Team/DS13
+    git clone https://github.com/DS-13-Dev-Team/DS13.git
 
 (hint: hold down ctrl and press insert to paste into git bash)
 
