@@ -32,7 +32,7 @@ datum/job/bar/get_description_blurb()
 	ideal_character_age = 21
 	starting_credits = 1240
 
-	access = list(access_service)
+	access = list(access_service, access_cook)
 	outfit_type = /decl/hierarchy/outfit/job/service/line_cook
 
 	min_skill = list(   SKILL_COOKING     = SKILL_EXPERT,
