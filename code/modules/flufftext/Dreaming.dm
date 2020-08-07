@@ -13,8 +13,8 @@ var/list/dreams = list(
 	"a beach","a smokey room","a voice","the cold","an operating table","the rain","a beaker of strange liquid","the supermatter", "a creature built completely of stolen flesh",
 	"a GAS", "a being made of light", "the first lieutenant", "the bridge ensign", "the chief security officer",
 	"the earthgov offical",
-	"the stowaway", "an old friend", "the prospector", "the CEC pilot", "the passenger", "the chief security officer",
-	"the master at arms", "the security officer", "the tower", "the man with no face", "a field of flowers", "an old home", "the merc",
+	"an old friend", "the chief security officer",
+	"the security officer", "the tower", "the man with no face", "a field of flowers", "an old home", "the merc",
 	"a surgery table", "a needle", "a blade", "an ocean", "right behind you", "standing above you", "someone near by", "a place forgotten", "the exodus",
 	)
 
