@@ -99,9 +99,6 @@ macro "borghotkeymode"
 		name = "CTRL+D+REP"
 		command = ".moveright"
 	elem 
-		name = "F"
-		command = "a-intent left"
-	elem 
 		name = "CTRL+F"
 		command = "a-intent left"
 	elem 
@@ -497,7 +494,7 @@ macro "hotkeymode"
 		command = "quick-equip"
 	elem 
 		name = "F"
-		command = "a-intent left"
+		command = "kinesis_toggle"
 	elem 
 		name = "CTRL+F"
 		command = "a-intent left"
@@ -609,8 +606,6 @@ macro "hotkeymode"
 	elem 
 		name = "F5"
 		command = "msay"
-	elem 
-		name = "F5+REP"
 	elem 
 		name = "F6"
 		command = "Player-Panel-New"
@@ -1164,7 +1159,6 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false

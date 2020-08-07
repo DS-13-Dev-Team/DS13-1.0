@@ -321,14 +321,18 @@
 	CACHE_USER
 	src.used_weapon = used_weapon
 	used_item = used_weapon
+
 	damage_flags = used_weapon.damage_flags()
 	armor_penetration = used_item.armor_penetration
 
+	//The item will modify the strike
+	if (istype(used_item))
+		used_item.get_strike_damage(src)
+
+
 /datum/strike/implement/impact_mob()
-	.=..()
-	if (damage_done)
-		used_item.apply_hit_effect(target, user, target_zone)
-		L.hit_with_weapon(src)
+	used_item.apply_hit_effect(target, user, target_zone)
+	L.hit_with_weapon(src)
 
 /datum/strike/implement/show_result()
 	var/sound = get_impact_sound()
@@ -344,9 +348,9 @@
 		else
 			if (sound)	playsound(target, sound, VOLUME_HIGH, 1, 1)
 			target.shake_animation(8)
-			user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] in the [affecting.name]!</span>")
+			user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] [affecting ? "in the [affecting.name]":""]!</span>")
 	else
-		user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] in the [affecting.name][damage_done?"":", to no effect"]!</span>")
+		user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] [affecting ? "in the [affecting.name]":""][damage_done?"":", to no effect"]!</span>")
 
 
 /datum/strike/implement/setup_difficulty()
@@ -399,14 +403,20 @@
 	if (istype(user, /mob/living))
 		target_zone = get_zone_sel(user)
 
+	src.speed = speed
+
 	//If the thing isnt an item, all these values will be left at their quite-suitable defaults
 	if (istype(self, /obj/item))
 		used_item = self
 		damage_type = used_item.damtype
 		damage_flags = used_item.damage_flags()
 		armor_penetration = used_item.armor_penetration
-	src.speed = speed
-	damage = used_item.throwforce*(soft_cap(speed, 1, 1, 0.92))//Damage depends on how fast it was going, with some falloff
+		damage = used_item.throwforce*(soft_cap(speed/BASE_THROW_SPEED, 1, 1, 0.95))//Damage depends on how fast it was going, with some falloff
+
+	else if (istype(self, /atom/movable))
+		var/atom/movable/A = self
+
+		damage = A.get_mass()*(soft_cap(speed/BASE_THROW_SPEED, 1, 1, 0.95))
 
 
 
@@ -445,7 +455,7 @@
 			target.shake_animation(8)
 			if (H)
 				var/obj/item/organ/external/affecting = H.find_target_organ(target_zone)
-				H.visible_message("<span class='warning'>\The [H] has been hit in the [affecting.name] by \the [used_weapon].</span>")
+				H.visible_message("<span class='warning'>\The [H] has been hit [affecting ? "in the [affecting.name] " : ""]by \the [used_weapon].</span>")
 		/*
 
 

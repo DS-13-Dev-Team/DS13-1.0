@@ -55,9 +55,13 @@
 	var/obj/item/rig_module/selected_module = null            // Primary system (used with middle-click)
 	var/obj/item/rig_module/vision/visor                      // Kinda shitty to have a var for a module, but saves time.
 	var/obj/item/rig_module/voice/speech                      // As above.
+	var/obj/item/rig_module/storage/storage					  // Internal storage, can only have one
 	var/mob/living/carbon/human/wearer                        // The person currently wearing the rig.
 	var/image/mob_icon                                        // Holder for on-mob icon.
-	var/list/installed_modules = list()                       // Power consumption/use bookkeeping.
+	var/list/installed_modules = list(
+	/obj/item/rig_module/healthbar,
+	/obj/item/rig_module/storage)                       // List of all modules, including those initialized at startup
+	var/list/processing_modules = list()					  // Power consumption/use bookkeeping.
 
 	// Rig status vars.
 	var/open = 0                                              // Access panel status.
@@ -165,6 +169,7 @@
 
 /obj/item/weapon/rig/Destroy()
 	QDEL_NULL_LIST(installed_modules)
+	QDEL_NULL_LIST(processing_modules)
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
 		qdel(piece)
 	STOP_PROCESSING(SSobj, src)
@@ -389,7 +394,7 @@
 			malfunctioning--
 			malfunction()
 
-		for(var/obj/item/rig_module/module in installed_modules)
+		for(var/obj/item/rig_module/module in processing_modules)
 			cell.use(module.Process() * CELLRATE)
 
 //offline should not change outside this proc

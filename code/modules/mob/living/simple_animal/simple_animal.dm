@@ -239,23 +239,21 @@
 		else
 			O.attack(src, user, user.zone_sel.selecting)
 
-/mob/living/simple_animal/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
+/mob/living/simple_animal/standard_weapon_hit_effects(obj/item/O, mob/living/user, var/effective_force, var/blocked, var/hit_zone)
 
-	visible_message("<span class='danger'>\The [src] has been attacked with \the [O] by [user]!</span>")
 
-	if(O.force <= resistance)
+
+	if(effective_force <= resistance)
 		to_chat(user, "<span class='danger'>This weapon is ineffective; it does no damage.</span>")
 		return 2
 
-	var/damage = O.force
+	visible_message("<span class='danger'>\The [src] has been attacked with \the [O] by [user]!</span>")
+
 	if (O.damtype == PAIN)
-		damage = 0
+		effective_force = 0
 	if (O.damtype == STUN)
-		damage = (O.force / 8)
-	if(supernatural && istype(O,/obj/item/weapon/nullrod))
-		damage *= 2
-		purge = 3
-	adjustBruteLoss(damage)
+		effective_force /= 8
+	adjustBruteLoss(effective_force)
 
 	return 0
 

@@ -5,7 +5,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	force = WEAPON_FORCE_WEAK
 	worksound = WORKSOUND_WIRECUTTING
-	throw_speed = 2
+	
 	throw_range = 9
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	matter = list(MATERIAL_STEEL = 1000, MATERIAL_PLASTIC = 800)

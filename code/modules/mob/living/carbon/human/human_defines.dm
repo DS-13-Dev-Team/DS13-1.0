@@ -69,6 +69,12 @@
 	var/last_dam = -1	//Used for determining if we need to process all organs or just some or even none.
 	var/list/bad_external_organs = list()// organs we check until they are good.
 
+	//A bitfield, this uses the bodypart defines in items_clothing.dm marked bitflags for clothing parts
+	//These flags are also set in the body_part var of external organs.
+	//This bitfield collates the bitflags of all the limbs that we don't have, it
+	var/missing_limbs = 0
+	var/dm_filter/limb_mask
+
 	var/xylophone = 0 //For the spoooooooky xylophone cooldown
 
 	var/mob/remoteview_target = null

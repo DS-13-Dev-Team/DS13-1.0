@@ -67,7 +67,7 @@
 	//throwforce = 25
 	force = 20
 	throwforce = 10
-	throw_speed = 1
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	atom_flags = ATOM_FLAG_NO_BLOOD
@@ -100,7 +100,7 @@
 	active_throwforce = 20
 	force = 3
 	throwforce = 5
-	throw_speed = 1
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	atom_flags = ATOM_FLAG_NO_BLOOD
@@ -178,7 +178,7 @@
 	edge = 1
 	anchored = 1    // Never spawned outside of inventory, should be fine.
 	throwforce = 1  //Throwing or dropping the item deletes it.
-	throw_speed = 1
+	
 	throw_range = 1
 	w_class = ITEM_SIZE_TINY //technically it's just energy or something, I dunno
 	atom_flags = ATOM_FLAG_NO_BLOOD

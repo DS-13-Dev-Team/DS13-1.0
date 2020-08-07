@@ -460,7 +460,7 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/regenerate_icons()
 	..()
 	if(HasMovementHandler(/datum/movement_handler/mob/transformation) || QDELETED(src))		return
-
+	update_missing_limbs()
 	update_mutations(0)
 	update_body(0)
 	update_skin(0)

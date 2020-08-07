@@ -1,4 +1,4 @@
-	/****************************************************
+/****************************************************
 				EXTERNAL ORGANS
 ****************************************************/
 
@@ -319,7 +319,7 @@
 	return
 
 
-/obj/item/organ/external/replaced(var/mob/living/carbon/human/target)
+/obj/item/organ/external/replaced(var/mob/living/carbon/human/target, var/update = TRUE)
 	..()
 
 	if(istype(owner))
@@ -342,9 +342,10 @@
 				imp_device.implanted = 1
 
 		for(var/obj/item/organ/external/organ in children)
-			organ.replaced(owner)
+			organ.replaced(owner, FALSE)
 
-
+		if (update)
+			owner.update_missing_limbs()
 
 	if(!parent && parent_organ)
 		parent = owner.organs_by_name[src.parent_organ]
@@ -897,6 +898,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(disintegrate != DROPLIMB_BURN)
 				stump.sever_artery()
 			stump.update_damages()
+
+	victim.update_missing_limbs()
 	spawn(1)
 		victim.updatehealth()
 		victim.UpdateDamageIcon()
@@ -1219,17 +1222,7 @@ obj/item/organ/external/proc/remove_clamps()
 	if(limb_flags & ORGAN_FLAG_CAN_GRASP) owner.grasp_limbs -= src
 	if(limb_flags & ORGAN_FLAG_CAN_STAND) owner.stance_limbs -= src
 
-	switch(body_part)
-		if(FOOT_LEFT, FOOT_RIGHT)
-			owner.drop_from_inventory(owner.shoes)
-		if(HAND_LEFT, HAND_RIGHT)
-			owner.drop_from_inventory(owner.gloves)
-		if(HEAD)
-			owner.drop_from_inventory(owner.glasses)
-			owner.drop_from_inventory(owner.head)
-			owner.drop_from_inventory(owner.l_ear)
-			owner.drop_from_inventory(owner.r_ear)
-			owner.drop_from_inventory(owner.wear_mask)
+	//Hardcoded slot dropping code removed, this is now handled through update_clothing_limbs() which is called from update_missing_limbs
 
 	var/mob/living/carbon/human/victim = owner
 	var/is_robotic = BP_IS_ROBOTIC(src)

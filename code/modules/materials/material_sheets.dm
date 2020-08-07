@@ -3,7 +3,7 @@
 	force = 5.0
 	throwforce = 5
 	w_class = ITEM_SIZE_LARGE
-	throw_speed = 3
+	
 	throw_range = 3
 	max_amount = 60
 	center_of_mass = null
@@ -134,6 +134,7 @@
 	name = "plastic"
 	icon_state = "sheet-plastic"
 	default_type = "plastic"
+	default_type = MATERIAL_PLASTIC
 
 /obj/item/stack/material/plastic/ten
 	amount = 10

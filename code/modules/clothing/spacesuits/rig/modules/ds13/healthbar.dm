@@ -11,15 +11,17 @@
 	suit_overlay_used = "healthbar_100"
 	suit_overlay = "healthbar_100"
 	var/mob/living/carbon/human/user
+	process_with_rig = FALSE
 
 
 /obj/item/rig_module/healthbar/proc/register_user(var/mob/newuser)
 	user = newuser
 	GLOB.updatehealth_event.register(user, src, /obj/item/rig_module/healthbar/proc/update)
-
+	GLOB.death_event.register(user, src, /obj/item/rig_module/healthbar/proc/death)
 
 /obj/item/rig_module/healthbar/proc/unregister_user()
 	GLOB.updatehealth_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/update)
+	GLOB.death_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/death)
 	user = null
 
 /obj/item/rig_module/healthbar/rig_equipped(var/mob/user, var/slot)
@@ -54,3 +56,8 @@
 	suit_overlay_active = "healthbar_[percentage]"
 	suit_overlay_used = "healthbar_[percentage]"
 	holder.update_wear_icon()
+
+
+/obj/item/rig_module/healthbar/proc/death()
+	playsound(src, 'sound/effects/rig/modules/flatline.ogg', VOLUME_MAX, 0, 4)
+	update()

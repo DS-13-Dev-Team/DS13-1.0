@@ -181,91 +181,93 @@
 	return output
 
 
-//This proc returns all turfs which fall inside a cone stretching Distance tiles from origin, in direction, and being angle degrees wide
-/proc/get_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
-
-	if (!istype(direction))
-		direction = Vector2.FromDir(direction)	//One of the byond direction constants may be passed in
-
-	angle *= 0.5//We split the angle in two for the arc function
-
-	if (!istype(origin))
-		origin = get_turf(origin)
-
-	//First of all, lets find a centre point. Halfway between origin and the edge of the cone
-	var/turf/halfpoint = locate(origin.x + (direction.x * distance * 0.5), origin.y + (direction.y * distance * 0.5), origin.z)
-
-	//And from this halfpoint, lets get a square area of turfs which is every possible turf that could be in the cone
-	//We use half the distance as radius, +1 to account for any rounding errors. Its not a big deal if we get some unnecessary turfs in here
-	var/list/turfs = trange(((distance*0.5) + 1), halfpoint)
-
-	//Alright next up, we loop through the turfs. for each one:
-
-	for (var/turf/T as anything in turfs)
-		//1. We check if its distance is less than the requirement. This is cheap. If it is...
-		var/dist_delta = get_dist_euclidian(origin, T)
-		if (dist_delta > distance)
-			turfs -= T
-
-		//2. We check if it falls within the desired angle
-		if (!target_in_arc(origin, T, direction, angle))
-			turfs -= T
-
-	//Alright we've removed all the turfs which aren't in the cone!
-	return turfs
-
-/proc/get_view_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
-	if (!istype(origin))
-		origin = get_turf(origin)
-	var/list/viewlist = origin.turfs_in_view(distance)
-	var/list/conelist = get_cone(origin, direction, distance, angle)
-
-	return (viewlist & conelist)
-
-//This hella complex proc gets a cone, but divided into several smaller cones. Returns a list of lists, each containing the tiles of the subcone
-//No overlapping is allowed, each subcone contains a unique list
-/proc/get_multistage_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle, var/stages = 5, var/clock_direction = CLOCKWISE)
-	var/subcone_angle = angle / stages
-	var/vector2/subcone_direction
-
-	//If clockwise, we rotate anticlockwise to the start, by half of the main angle minus half of the subcone angle
-	if (clock_direction == CLOCKWISE)
-		//And after this we'll add the subcone angle to eacch direction to get the next subcone centre
-		subcone_direction = direction.Turn((angle*0.5 - subcone_angle*0.5)*-1)
-
-	//If clockwise, we rotate clockwise to the end, by half of the main angle minus half of the subcone angle
-	else if (clock_direction == ANTICLOCKWISE)
-		subcone_direction = direction.Turn(angle*0.5 - subcone_angle*0.5)
-		subcone_angle *= -1	//And we invert the subcone angle, since we'll still be adding it
 
 
-	var/list/subcones = list()
-	var/list/all_tiles = list()
-	for (var/i in 1 to stages)
-		//For each stage, we'll get the subcone
-		var/list/subcone = get_cone(origin, subcone_direction, distance, abs(subcone_angle))
-		subcone -= all_tiles	//Filter out any tiles that are already in another subcone
 
-		//Don't add empty cones to lists
-		if (length(subcone) > 0)
-			all_tiles += subcone	//Then add ours to the global list
-			subcones += list(subcone)	//And add this cone to the list of all the cones
 
-		subcone_direction = subcone_direction.Turn(subcone_angle)
 
-	return subcones
+
 
 /proc/shortest_angle(var/delta)
 	return (delta - round(delta, 360))
 #define CLAMP(CLVALUE,CLMIN,CLMAX) ( max( (CLMIN), min((CLVALUE), (CLMAX)) ) )
 
 
-//Runs get cone and then picks a random tile from it
-/proc/random_tile_in_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
-	var/list/tiles = get_cone(origin, direction, distance, angle)
-	return pick(tiles)
+
 
 
 //Takes a view range. Produces a multiplier of how much bigger or smaller a screen edge would be with that range, compared to a baseline
 /proc/view_scalar(var/range, var/base = world.view)
 	return ((range*2)+1) / ((base*2)+1)
+
+
+/*
+	Intended to work in global pixels.
+	This takes a global pixel coordinate as an origin point
+	A vector measured in pixels to express the length and direction of the ray
+	And a turf we'll test as the target
+
+	This will return the points along the edge where this ray intersects the target turf.
+	This will always be either two points or zero points, no other value is possible
+*/
+/proc/ray_turf_intersect(var/vector2/origin, var/vector2/ray, var/turf/target)
+	//debug_mark_turf(target)
+	//First of all, passing in a turf is just a convenience, what we actually need are the pixel coordinates of its lowerleft and upper right corners
+
+	//This gets us the centre of the turf
+	var/vector2/LL = target.get_global_pixel_loc()
+	var/vector2/UR = new (LL)	//Copy it
+	//We subtract 16 from X and Y to get to the lowerleft corner
+	LL.x -= WORLD_ICON_SIZE / 2
+	LL.y -= WORLD_ICON_SIZE / 2
+
+	//And add 16 to get to upper left
+	UR.x += WORLD_ICON_SIZE / 2
+	UR.y += WORLD_ICON_SIZE / 2
+
+	//pixelmark(target, "ll",LL)
+	//pixelmark(target, "ur",UR)
+
+	//---------------------------------
+
+	var/vector2/endpoint = origin + ray
+
+	var/vector2/linemin = new /vector2(min(origin.x, endpoint.x), min(origin.y, endpoint.y))
+	var/vector2/linemax = new /vector2(max(origin.x, endpoint.x), max(origin.y, endpoint.y))
+	ray = linemax - linemin
+
+
+
+	//Next up, this piece of black magic code determines the four points at which our ray passes through the planes of this box's edges
+	//These are float values, they represent percentage distances along the ray at which we intersect
+
+	var/ax = ray.x ? ((LL.x - linemin.x) / ray.x)	:	null
+	var/ay = ray.y ? ((LL.y - linemin.y) / ray.y)	:	null
+	var/bx = ray.x ? ((UR.x - linemin.x) / ray.x)	:	null
+	var/by = ray.y ? ((UR.y - linemin.y) / ray.y)	:	null
+
+
+
+	//We dont need to do any miss checks, we know we hit before this function was called
+
+	var/min_intersect
+	var/max_intersect
+	//Finding the bounds and null handling.
+	if (!isnull(ax) && !isnull(ay))
+		min_intersect = max(ax, ay)
+		max_intersect = min(bx, by)
+	else if (isnull(ax))
+		min_intersect = ay
+		max_intersect = by
+
+	else
+		min_intersect = ax
+		max_intersect = bx
+
+	var/vector2/entry = linemin + (ray * min_intersect)
+	var/vector2/exit = linemin + (ray * max_intersect)
+
+	var/list/intersections = list(entry, exit)
+
+	return intersections
+

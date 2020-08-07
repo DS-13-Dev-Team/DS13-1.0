@@ -764,3 +764,9 @@ proc/is_blind(A)
 
 /mob/living/get_attack_speed_factor()
 	return attack_speed_factor
+
+
+/mob/proc/is_within_reach(var/atom/target)
+	if (get_dist(src, target) <= reach)
+		return TRUE
+	return FALSE

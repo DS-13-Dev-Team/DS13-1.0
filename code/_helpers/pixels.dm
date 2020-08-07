@@ -43,7 +43,10 @@
 
 
 
+/*
+	Getters
 
+*/
 
 
 /atom/proc/get_global_pixel_loc()
@@ -51,6 +54,11 @@
 
 /atom/proc/get_global_pixel_offset(var/atom/from)
 	return (get_global_pixel_loc() - from.get_global_pixel_loc())
+
+//Returns a float value of pixels between two objects
+/atom/proc/get_global_pixel_distance(var/atom/from)
+	var/vector2/offset = new /vector2(get_global_pixel_loc() - from.get_global_pixel_loc())
+	return offset.Magnitude()
 
 //Given a set of global pixel coords as input, this moves the atom and sets its pixel offsets so that it sits exactly on the specified point
 /atom/movable/proc/set_global_pixel_loc(var/vector2/coords)
@@ -102,6 +110,28 @@
 /proc/get_turf_at_mouse(var/clickparams, var/client/C)
 	var/vector2/pixels = get_global_pixel_click_location(clickparams, C)
 	return get_turf_at_pixel_coords(pixels, C.mob.z)
+
+
+
+
+/*
+	Setters
+*/
+//Moves this atom into the specified turf physically, but adjusts its pixel X/Y so that its global pixel loc remains the same
+/atom/movable/proc/set_turf_maintain_pixels(var/turf/T)
+	var/vector2/offset = get_global_pixel_offset(T)
+	//forceMove(T)
+	loc = T
+	pixel_x = offset.x
+	pixel_y = offset.y
+
+//Inverse of the above, sets our global pixel loc to a specified value, but keeps us within the same turf we're currently in
+/atom/movable/proc/set_pixels_maintain_turf(var/vector2/global_pixels)
+	var/vector2/offset = global_pixels - get_global_pixel_loc()
+	pixel_x += offset.x
+	pixel_y += offset.y
+
+
 
 //Client Procs
 
@@ -183,3 +213,108 @@
 /atom/proc/set_pixels(var/vector2/delta)
     pixel_x = delta.x
     pixel_y = delta.y
+
+
+/*
+	Pixel motion
+	This function moves an object by a number of pixels supplied as a vector2 delta
+
+	In the process of moving, the object's tile location will be updated if it enters a new tile, and it will stop on the edge and trigger bumps if not
+
+*/
+/atom/movable/proc/pixel_move(var/vector2/position_delta, var/time_delta)
+
+	//Now before we do animating, lets check if this movement is going to put us into a different tile
+	var/vector2/newpix = new /vector2((pixel_x + position_delta.x), (pixel_y + position_delta.y))
+	var/blocked = FALSE
+	.=TRUE
+	if (is_outside_cell(newpix))
+		//Yes it will, alright we need to do multitile movement
+
+
+		var/turf/target_tile = get_turf_at_pixel_offset(newpix)
+
+		//There's no tile there? We must be at the edge of the map, abort!
+		if (!target_tile)
+			return
+
+		var/turf/oldloc = get_turf(src)
+
+		//get all the turfs between us and the target
+		var/list/turfs = get_line_between(oldloc, target_tile)
+
+		//Used to track our progress through the list
+		var/endpoint = 2
+
+		animate_movement = NO_STEPS
+
+		while (endpoint <= turfs.len)
+			oldloc = turfs[endpoint-1]
+			var/turf/newloc = turfs[endpoint]
+
+			endpoint++
+			var/vector2/cached_global_pixels = get_global_pixel_loc()
+
+			var/moved = Move(newloc)
+			if (!moved)
+				blocked = TRUE
+
+			else
+				set_pixels_maintain_turf(cached_global_pixels)
+
+
+
+			//Something blocked us!
+			//We will move up to it
+			if (blocked)
+				.= FALSE
+				var/closest_magnitude = INFINITY
+				var/vector2/closest_delta
+
+				var/vector2/current_pixel_loc = get_global_pixel_loc()
+				var/list/intersections = ray_turf_intersect(current_pixel_loc, position_delta, newloc)
+				//This will contain exactly two elements
+				//We find which one is closest to our current position, that's the face we collide with
+				for (var/vector2/intersection as anything in intersections)
+					var/vector2/delta = intersection - current_pixel_loc
+					var/mag = delta.Magnitude()
+					if (mag < closest_magnitude)
+						closest_magnitude = mag
+						closest_delta = delta
+
+
+
+				//We reduce the magnitude by 1 pixel to prevent glitching through walls
+				//closest_delta = closest_delta.ToMagnitude(closest_delta.Magnitude() - 1)
+
+				//Okay now we set newpix to the closest point, but clamp it to within our turf
+				newpix.x = clamp(pixel_x + closest_delta.x, -(WORLD_ICON_SIZE/2), (WORLD_ICON_SIZE/2))
+				newpix.y = clamp(pixel_y + closest_delta.y, -(WORLD_ICON_SIZE/2), (WORLD_ICON_SIZE/2))
+
+				//Break out of this loop, we have failed to reach the original target
+				break
+			else
+				//If nothing blocks us, then we're clear to just swooce right into that tile.
+				//We'll instantly set our position into the tile and our offset to where we are, this prevents bugginess
+
+				set_turf_maintain_pixels(newloc)
+				newpix.x = (pixel_x + position_delta.x)
+				newpix.y = (pixel_y + position_delta.y)
+
+
+
+
+	animate(src, pixel_x = newpix.x, pixel_y = newpix.y, time = time_delta - min(time_delta*0.2, 0.5))
+	//To reduce visual artefacts resulting from lag, we want the movement to finish slightly early
+	//half a decisecond is ideal, but no more than 20% of the total time
+
+	//We need to reset the animate_movement var, but not immediately,
+	set_delayed_move_animation_reset(src, time_delta+2)
+
+
+//Mobs that get their pixel offset messed up will be able to walk it off
+/mob/living/pixel_move(var/vector2/position_delta, var/time_delta)
+	.=..()
+	set_extension(src, /datum/extension/conditionalmove/pixel_align)
+
+

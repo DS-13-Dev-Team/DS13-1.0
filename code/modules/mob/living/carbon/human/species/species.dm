@@ -117,6 +117,7 @@
 	var/list/unarmed_attacks = null           // populated at runtime, don't touch
 	var/evasion = 10						//Base chance for projectile attacks to miss this mob
 	var/modifier_verbs						//A list of key modifiers and procs, in the format Key = list(proc path, priority, arg1, arg2, arg3... etc)
+	var/reach = 1	//How many tiles away can this mob grab and hit things. Only partly implemented
 	//Any number of extra arguments allowed. Only key and proc path are mandatory. Default priority is 1 and will be used if none is supplied.
 	//Key must be one of the KEY_XXX defines in defines/client.dm
 
@@ -399,6 +400,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/setup_interaction(var/mob/living/carbon/human/H)
 	H.limited_click_arc = limited_click_arc
 	H.opacity = opacity
+	H.reach = reach
 
 /datum/species/proc/setup_movement(var/mob/living/carbon/human/H)
 	H.slow_turning = slow_turning

@@ -13,7 +13,7 @@
 	throwforce = 0
 	w_class = ITEM_SIZE_TINY
 	throw_range = 1
-	throw_speed = 1
+	
 	layer = ABOVE_OBJ_LAYER
 	slot_flags = SLOT_HEAD
 	body_parts_covered = HEAD

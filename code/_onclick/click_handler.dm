@@ -219,259 +219,27 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	click_handlers.Push(click_handler)
 
 	update_click_handler_flags()
-
 	return click_handler
 
+//Creates a new click handler of the supplied type, but only if the mob does not already have one.
+//If one exists, the existing is returned instead
+/mob/proc/PushUniqueClickHandler(var/datum/click_handler/new_click_handler_type)
+	var/existing = GetClickHandlerByType(new_click_handler_type)
+	if (existing)
+		return existing
 
 
+	return PushClickHandler(arglist(args))
 
 
 
 
 
 
-/****************************
-	Full auto gunfire
-*****************************/
-/datum/click_handler/fullauto
-	var/atom/target = null
-	var/firing = FALSE
-	var/obj/item/weapon/gun/reciever //The thing we send firing signals to.
-	//Todo: Make this work with callbacks
-	var/minimum_shots = 0
-	var/shots_fired = 0
 
-	var/user_trying_to_fire = FALSE
 
 
 
 
-/datum/click_handler/fullauto/proc/start_firing()
-	if (!firing)
-		firing = TRUE
-		shots_fired = 0
-		reciever.started_firing()
-		while (firing && target)
-			if (can_stop_firing())
-				break
-			do_fire()
-			sleep(reciever.fire_delay) //Keep spamming events every frame as long as the button is held
-		stop_firing()
 
-//Next loop will notice these vars and stop shooting
-/datum/click_handler/fullauto/proc/stop_firing()
-	firing = FALSE
-	target = null
 
-/datum/click_handler/fullauto/proc/do_fire()
-	if (reciever.afterattack(target, user, FALSE))
-		shots_fired++
-
-/datum/click_handler/fullauto/MouseDown(object,location,control,params)
-	var/list/modifiers = params2list(params)
-	if(modifiers["left"])
-		object = resolve_world_target(object, params)
-		if (object)
-			target = object
-			user.face_atom(target)
-			user_trying_to_fire = TRUE
-			spawn()
-				start_firing()
-			return FALSE
-	return TRUE
-
-//In the case of drag events we should always return true, incase there are multiple drag handlers in the sta
-/datum/click_handler/fullauto/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
-	over_object = resolve_world_target(over_object, params)
-	if (over_object && firing)
-		target = over_object
-		user.face_atom(target)
-	return TRUE
-
-/datum/click_handler/fullauto/MouseUp(object,location,control,params)
-	var/list/modifiers = params2list(params)
-	if(modifiers["left"])
-		user_trying_to_fire = FALSE	//When we release the button, stop attempting to fire. it may still go if there's minimum shots remaining
-	return TRUE
-
-/datum/click_handler/fullauto/Destroy()
-	stop_firing()//Without this it keeps firing in an infinite loop when deleted
-	.=..()
-
-
-/datum/click_handler/fullauto/proc/can_stop_firing()
-	if (!reciever || !reciever.can_ever_fire())	//If the gun loses the ability to fire, we stop immediately
-		return TRUE
-
-	//If the user is still holding down the button, keep going
-	if (user_trying_to_fire)
-		return FALSE
-
-	//If we haven't fired the minimum yet, we may be forced to continue. But only if the gun is in condition to do so
-	if (minimum_shots && (shots_fired < minimum_shots))
-		return FALSE
-
-	return TRUE
-
-
-
-
-
-
-
-/****************************
-	Sustained Fire
-*****************************/
-/datum/click_handler/sustained
-//Useful for ripper and maybe tracking lasers. Works similar to full auto, but:
-	//Constant firing events are not generated
-	//Firing events are generated on every mousedrag
-	var/atom/target = null
-	var/firing = FALSE
-	var/obj/item/weapon/gun/reciever //The thing we send firing signals to.
-	var/last_params
-	//Todo: Make this work with callbacks
-
-	has_mousemove = TRUE
-
-/datum/click_handler/sustained/proc/start_firing()
-
-	if (reciever && istype(reciever.loc, /mob))
-		GLOB.moved_event.register(reciever.loc, reciever, /obj/item/weapon/gun/proc/user_moved)
-	do_fire()
-	firing = reciever.firing
-
-//Next loop will notice these vars and stop shooting
-/datum/click_handler/sustained/proc/stop_firing()
-	if (firing)
-		if (reciever && istype(reciever.loc, /mob))
-			GLOB.moved_event.unregister(reciever.loc, reciever, /obj/item/weapon/gun/proc/user_moved)
-		firing = FALSE
-		target = null
-		reciever.stop_firing()
-
-/datum/click_handler/sustained/proc/do_fire()
-	reciever.afterattack(target, user, FALSE, last_params, get_global_pixel_click_location(last_params, user ? user.client : null))
-
-/datum/click_handler/sustained/MouseDown(object,location,control,params)
-	last_params = params
-	object = resolve_world_target(object, params)
-	if (object)
-		target = object
-		user.face_atom(target)
-		start_firing()
-		return FALSE
-	return TRUE
-
-/datum/click_handler/sustained/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
-	last_params = params
-	over_object = resolve_world_target(over_object, params)
-	if (over_object && firing)
-		target = over_object //This var contains the thing the user is hovering over, oddly
-		user.face_atom(target)
-		do_fire()
-		return FALSE
-	return TRUE
-
-/datum/click_handler/sustained/MouseMove(object,location,control,params)
-	last_params = params
-	object = resolve_world_target(object, params)
-	if (object && firing)
-		target = location //This var contains the thing the user is hovering over, oddly
-		user.face_atom(target)
-		do_fire()
-		return FALSE
-	return TRUE
-
-
-/datum/click_handler/sustained/MouseUp(object,location,control,params)
-	stop_firing()
-	return TRUE
-
-/datum/click_handler/sustained/Destroy()
-	stop_firing()//Without this it keeps firing in an infinite loop when deleted
-	.=..()
-
-
-
-
-/****************************
-	Modclick Verbs
-*****************************/
-/*
-A generic container for verbs triggered on various modified clicks
-Verbs added this way will recieve the target as their first parameter. and click params as their second
-Each proc expected to handle this and return true or false to indicate whether or not they will take this click.
-
-Use add_modclick_verb to add a verb,
-*/
-/datum/click_handler/modifier
-	var/list/verbs = list()
-
-
-//We call each callback in our verbs list. If it returns true, we return false to terminate the click
-/datum/click_handler/modifier/proc/handle_click(var/atom/A, var/params)
-	for (var/datum/callback/C in verbs)
-		if (C.Invoke(A, params))
-			return FALSE
-	return TRUE
-
-
-
-
-
-//Specific types
-//----------------------------------------
-/datum/click_handler/modifier/alt/OnAltClick(var/atom/A, var/params)
-	return handle_click(A, params)
-
-/datum/click_handler/modifier/ctrl/OnCtrlClick(var/atom/A, var/params)
-	return handle_click(A, params)
-
-/datum/click_handler/modifier/shift/OnShiftClick(var/atom/A, var/params)
-	return handle_click(A, params)
-
-/datum/click_handler/modifier/middle/OnMiddleClick(var/atom/A, var/params)
-	return handle_click(A, params)
-
-/datum/click_handler/modifier/ctrlalt/OnCtrlAltClick(var/atom/A, var/params)
-	return handle_click(A, params)
-
-/datum/click_handler/modifier/ctrlshift/OnCtrlShiftClick(var/atom/A, var/params)
-	return handle_click(A, params)
-
-
-
-/*
-	Adds an altclick verb to the specified datum
-*/
-/mob/proc/add_modclick_verb(var/keytype, var/function, var/priority, var/list/extra_args)
-	//Firstly, lets find or create an altclick verb handler on this mob
-	var/datum/click_handler/modifier/CHM = GetClickHandlerByType(keytype)
-	if (!CHM)
-		CHM = PushClickHandler(keytype)
-
-	//Next we create a callback, which points to the mob, proc to call, and the arguments to pass to it
-	var/list/newargs = list(src, function)
-	if (extra_args)
-		newargs.Add(extra_args)
-	var/datum/callback/C = CALLBACK(arglist(newargs))
-
-	if (!isnum(priority))
-		priority = 1
-	//Add it to the verbs list
-	CHM.verbs[C] = priority
-
-	//And sort that list
-	CHM.verbs = sortTim(CHM.verbs, cmp=/proc/cmp_numeric_dsc, associative = TRUE)
-
-
-//Removing by type.
-/mob/proc/remove_modclick_verb(var/keytype, var/function)
-	var/datum/click_handler/modifier/CHM = GetClickHandlerByType(keytype)
-	if (!CHM)
-		return
-
-	for (var/datum/callback/C in CHM.verbs)
-		if (C.delegate == function)
-			CHM.verbs.Remove(C)

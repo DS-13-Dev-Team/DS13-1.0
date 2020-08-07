@@ -33,5 +33,7 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - imagedel: "Removed base NT logo that appeared with [logo] on paperwork."
-  - imageadd: "Added CEC regular logo for paperwork. It can be used with [logo]."
+  - bugfix: "Fixed Linoleum having no world icon."
+  - bugfix: "Fixed tiling not appearing as valid crafting options."
+  - bugfix: "Nutricube storage containers are now properly named."
+  - tweak: "Increased the standard device powercell to hold 50 max charge instead of 25. Can now be used in stunprods and likeminded devices."

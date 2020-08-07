@@ -5,7 +5,7 @@
 	icon_state = "stunbaton"
 	item_state = "baton"
 	slot_flags = SLOT_BELT
-	force = 15
+	force = 12
 	sharp = 0
 	edge = 0
 	throwforce = 7
@@ -178,6 +178,14 @@
 			H.forcesay(GLOB.hit_appends)
 
 	return 0
+
+
+/obj/item/weapon/melee/baton/get_strike_damage(var/datum/strike/strike)
+	var/mob/living/L = strike.user
+
+	if (L && L.a_intent == I_HURT)
+		return ..()
+	strike.damage = 0	//Baton only deals damage in harm intent
 
 /obj/item/weapon/melee/baton/emp_act(severity)
 	if(bcell)

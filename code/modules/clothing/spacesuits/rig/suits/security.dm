@@ -14,6 +14,7 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage,
 		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
 		/obj/item/rig_module/device/flash,
 		/obj/item/rig_module/mounted/taser,
@@ -24,6 +25,8 @@
 
 /obj/item/clothing/suit/space/rig/security
 	name = "suit"
+	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S)
 
 /obj/item/clothing/gloves/rig/security
 	name = "gloves"

@@ -18,7 +18,7 @@
 
 	force = 1
 	throwforce = 1
-	throw_speed = 5
+	
 	throw_range = 20
 	item_flags = 0
 	obj_flags = 0
@@ -157,7 +157,7 @@
 	name = "linoleum"
 	singular_name = "linoleum"
 	desc = "A piece of linoleum. It is the same size as a normal floor tile!"
-	icon_state = "tile-linoleum"
+	icon_state = "tile_linoleum"
 
 /obj/item/stack/tile/linoleum/fifty
 	amount = 50

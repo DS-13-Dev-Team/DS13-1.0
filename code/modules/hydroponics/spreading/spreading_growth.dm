@@ -86,7 +86,7 @@
 
 	var/blocked = 0
 	for(var/obj/effect/vine/other in floor.contents)
-		if(other.seed == src.seed)
+		if(other.seed == src.seed && !QDELETED(other))
 			blocked = 1
 			break
 	if(blocked)
@@ -224,7 +224,16 @@
 		if(!istype(check_turf))
 			continue
 		for(var/obj/effect/vine/neighbor in check_turf.contents)
-			wake_up(FALSE)
+			neighbor.wake_up(FALSE)
+
+/obj/effect/vine/proc/wake_list(var/list/things)
+	set waitfor = FALSE
+	sleep()
+	for(var/turf/T in things)
+		for (var/obj/effect/vine/neighbor in T)
+			neighbor.wake_up(FALSE)
+			sleep()
+
 
 /obj/effect/vine/proc/targets_in_range()
 	var/mob/list/targets = list()
@@ -238,7 +247,6 @@
 
 /obj/effect/vine/proc/die_off()
 
-	wake_neighbors()
 	qdel(src)
 
 #undef NEIGHBOR_REFRESH_TIME

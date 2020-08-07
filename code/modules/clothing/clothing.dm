@@ -18,6 +18,7 @@
 	var/permeability_threshold = 0.8	//As long as health is above this proportion of max health, reagent permeability is unaffected. Below that value it increases rapidly
 	var/coverage = null	//Calculate this at runtime
 
+
 // Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
 	return
@@ -43,6 +44,9 @@
 		if(blood_DNA && user_human.species.blood_mask)
 			var/image/bloodsies	= overlay_image(user_human.species.blood_mask, blood_overlay_type, blood_color, RESET_COLOR)
 			ret.overlays	+= bloodsies
+
+		if (user_human.missing_limbs & body_parts_covered)
+			ret.filters += user_human.limb_mask
 
 	if(accessories.len)
 		for(var/obj/item/clothing/accessory/A in accessories)

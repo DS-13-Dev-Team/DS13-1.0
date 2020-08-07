@@ -11,6 +11,12 @@
 	var/falloff = 0.1
 	var/limit = null	//Maximum number of tiles it can support
 
+/obj/structure/corruption_node/growth/debug
+	name = "debug propagator"
+	desc = "you shouldn't see this"
+	speed = 9999
+	falloff = 0
+
 
 /obj/structure/corruption_node/growth/Initialize()
 	.=..()

@@ -148,6 +148,7 @@
 	kill_count = 6	//These are generally short ranged
 	var/deploy_type = /obj/effect/mine
 	damage = 0
+	grippable = TRUE
 
 //Mines can be aimed at the floor, they will deploy when they enter the target tile
 /obj/item/projectile/mine/Move(var/atom/new_loc,var/direction)

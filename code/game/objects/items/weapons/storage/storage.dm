@@ -27,6 +27,13 @@
 	var/list/startswith
 	var/datum/storage_ui/storage_ui = /datum/storage_ui/default
 
+
+/obj/item/weapon/storage/get_mass()
+	.=mass
+	for (var/a in contents)
+		var/atom/movable/AM = a
+		.+=AM.get_mass()
+
 /obj/item/weapon/storage/Destroy()
 	if (istype(storage_ui, /datum))
 		QDEL_NULL(storage_ui)

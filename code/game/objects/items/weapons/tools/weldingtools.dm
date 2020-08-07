@@ -7,7 +7,7 @@
 	switched_on_force = WEAPON_FORCE_PAINFUL
 	throwforce = WEAPON_FORCE_WEAK
 	worksound = WORKSOUND_WELDING
-	throw_speed = 1
+	
 	throw_range = 5
 	matter = list(MATERIAL_STEEL = 2000)
 	origin_tech = list(TECH_ENGINEERING = 1)

@@ -19,6 +19,7 @@
 	biomass_reclamation_time	=	8 MINUTES
 
 	icon_template = 'icons/mob/necromorph/slasher/fleshy.dmi'
+	damage_mask = 'icons/mob/necromorph/slasher/damage_mask.dmi'
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE

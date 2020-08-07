@@ -15,7 +15,7 @@
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	force = 10.0
 	throwforce = 10.0
-	throw_speed = 1
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)

@@ -211,6 +211,12 @@
 	alpha = 0
 	animate(src, alpha = 255, time = animtime, flags = ANIMATION_PARALLEL)	//Cool fade in effect
 
+//Clear references before calling this
+/obj/proc/animate_fade_out(var/animtime = 10)
+	set waitfor = FALSE
+	animate(src, alpha = 0, time = animtime, flags = ANIMATION_PARALLEL)	//Cool fade in effect
+	sleep(animtime)
+	qdel(src)
 
 //Returns a transform with all vars set to their default
 /atom/proc/get_default_transform()
@@ -221,14 +227,17 @@
 
 
 //Returns a transform with all vars set to their default
-/atom/proc/animate_to_default(var/animtime = 5)
+/atom/proc/animate_to_default(var/animtime = 5, var/reset_pixels = TRUE)
+
 	if (animtime > 0)
-		animate(src, transform = get_default_transform(), pixel_x = default_pixel_x, pixel_y = default_pixel_y, alpha = default_alpha, time = animtime)
+		animate(src, transform = get_default_transform(), pixel_x = (reset_pixels ? default_pixel_x : pixel_x), pixel_y = (reset_pixels ? default_pixel_y : pixel_y), alpha = default_alpha, time = animtime)
 	else
 		transform = get_default_transform()
-		pixel_x = default_pixel_x
-		pixel_y = default_pixel_y
+		if (reset_pixels)
+			pixel_x = default_pixel_x
+			pixel_y = default_pixel_y
 		alpha = default_alpha
+
 #undef LUMR
 #undef LUMG
 #undef LUMB

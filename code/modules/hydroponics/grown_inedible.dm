@@ -40,7 +40,7 @@
 	item_state = "corncob"
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 0
-	throw_speed = 4
+	
 	throw_range = 20
 
 /obj/item/weapon/corncob/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -59,5 +59,5 @@
 	item_state = "banana_peel"
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 0
-	throw_speed = 4
+	
 	throw_range = 20

@@ -1,5 +1,13 @@
 /* A 2D vector datum with overloaded operators and other common functions.
 */
+//Converts a vector to a string
+/proc/vstr(var/vector2/input)
+	if (istype(input))
+		return "([input.x], [input.y])"
+	else if (isnull(input))
+		return "(null)"
+	else
+		return "(wrongtype)"
 
 vector2
 	var x
@@ -113,6 +121,15 @@ vector2
 		*/
 		Normalized() return ToMagnitude(1)
 
+		/*
+			Safe version of the above that sacrifices performance for robustness
+		*/
+		SafeNormalized()
+			if (NonZero())
+				return ToMagnitude(1)
+			else
+				return new /vector2(0,0)
+
 		/* Convert the vector to text with a specified number of significant figures.
 		*/
 		ToText(SigFig) return "vector2([num2text(x, SigFig)], [num2text(y, SigFig)])"
@@ -166,6 +183,20 @@ vector2
 			var/vector2/result = src - Projection(onto)
 			return result
 
+
+		SafeProjection(var/vector2/onto)
+			if (NonZero() && onto && onto.NonZero())
+				var/vector2/result = (onto*(src.Dot(onto) / onto.Dot(onto)))
+				return result
+			return new /vector2(0,0)
+
+
+		SafeRejection(var/vector2/onto)
+			if (NonZero() && onto && onto.NonZero())
+				var/vector2/result = src - Projection(onto)
+				return result
+			return new /vector2(0,0)
+
 		/* Get the matrix that rotates from_vector to point in this direction.
 			Also accepts a dir.
 		*/
@@ -192,3 +223,8 @@ vector2
 			return new/vector2(Ceiling(x), Ceiling(y))
 
 
+		NonZero()
+			if (x != 0 || y != 0)
+				return TRUE
+			else
+				return FALSE
