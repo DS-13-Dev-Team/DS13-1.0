@@ -134,6 +134,7 @@
 	name = "plastic"
 	icon_state = "sheet-plastic"
 	default_type = "plastic"
+	default_type = MATERIAL_PLASTIC
 
 /obj/item/stack/material/plastic/ten
 	amount = 10
