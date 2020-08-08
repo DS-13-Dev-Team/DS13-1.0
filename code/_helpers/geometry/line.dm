@@ -1,4 +1,4 @@
-/proc/get_line_between(var/turf/source, var/turf/target, var/allow_diagonal = FALSE)
+/proc/get_line_between(var/turf/source, var/turf/target, var/allow_diagonal = FALSE, var/include_source = TRUE)
 
 
 
@@ -10,7 +10,9 @@
 	if (source == target)
 		return list(source)
 
-	var/list/line = list(source)	//Source is always in the list
+	var/list/line = list()
+	if (include_source)
+		line += source
 
 	var/turf/current = source
 	var/turf/next
@@ -19,7 +21,6 @@
 		next = get_step_towards(current, target)
 	else
 		next = get_cardinal_step_towards(current, target)
-
 	line += next
 
 	while (next != target && dist_remaining)
