@@ -22,7 +22,7 @@
 #################################
 
 # Your name.  
-author: Unknown
+author: TheLion1675
 
 # Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
 delete-after: True
@@ -35,3 +35,6 @@ delete-after: True
 changes: 
   - rscdel: "Removed the flashdark gimmick item from sometimes appearing in the random loot list."
   - rscdel: "Removed the slime extract flashlight item from sometimes appearing in the random loot list."
+  - maptweak: "Fixed two off-key windows near the engineering bay on the upper level."
+  - bugfix: "Fixed CSECO and DoM getting a broken fax machine. Damn budgetcuts!"
+  - maptweak: "Added fax machines to: Bridge, SO's Office, CSCIO Office, SMO's office."
