@@ -232,3 +232,107 @@
 	return turfs
 
 
+
+
+//Returns true if this tile is an upper hull tile of the ship. IE, a roof
+/proc/turf_is_upper_hull(var/turf/T)
+	var/turf/B = GetBelow(T)
+	if (!B)
+		//Gotta be something below us if we're a roof
+		return FALSE
+
+	if (!turf_is_external(T))
+		//We must be outdoors. if there's something above us we're not the roof
+		return FALSE
+
+	if (turf_is_external(B))
+		//Got to be containing something underneath us
+		return FALSE
+
+	return TRUE
+
+//Returns true if this is a lower hull of the ship. IE,a floor that has space underneath
+/proc/turf_is_lower_hull(var/turf/T)
+	if (turf_is_external(T))
+		//We must be indoors
+		return FALSE
+
+	var/turf/B = GetBelow(T)
+	if (!B)
+		//If we're on the lowest zlevel, return true
+		return TRUE
+
+	if (turf_is_external(B))
+		//We must be outdoors. if there's something above us we're not the roof
+		return TRUE
+
+
+
+	return FALSE
+
+
+/proc/isOnShipLevel(var/atom/A)
+	if (A && istype(A))
+		if (A.z in GLOB.using_map.station_levels)
+			return TRUE
+	return FALSE
+
+
+/*
+//This is used when you want to check a turf which is a Z transition. For example, an openspace or stairs
+//If this turf conencts to another in that manner, it will return the destination. If not, it will return the input
+/proc/get_connecting_turf(var/turf/T, var/turf/from = null)
+	if (T.is_hole)
+		var/turf/U = GetBelow(T)
+		if (U)
+			return U
+
+	var/obj/effect/portal/P = (locate(/obj/effect/portal) in T)
+	if (P && P.target)
+		return P.get_destination(from)
+
+	var/obj/structure/multiz/stairs/active/SA = (locate(/obj/structure/multiz/stairs/active) in T)
+	if (SA && SA.target)
+		return get_turf(SA.target)
+	return T
+*/
+
+/turf/proc/has_gravity()
+	var/area/A = loc
+	if (A)
+		return A.has_gravity()
+
+	return FALSE
+
+/proc/is_turf_atmos_unsafe(var/turf/T)
+	if(istype(T, /turf/space)) // Space tiles
+		return "Spawn location is open to space."
+	var/datum/gas_mixture/air = T.return_air()
+	if(!air)
+		return "Spawn location lacks atmosphere."
+	return get_atmosphere_issues(air, 1)
+
+
+//Used for border objects. This returns true if this atom is on the border between the two specified turfs
+//This assumes that the atom is located inside the target turf
+/atom/proc/is_between_turfs(var/turf/origin, var/turf/target)
+	if (atom_flags & ATOM_FLAG_CHECKS_BORDER)
+		var/testdir = get_dir(target, origin)
+		return (dir & testdir)
+	return TRUE
+
+
+//This fuzzy proc attempts to determine whether or not this tile is outside the ship
+/proc/turf_is_external(var/turf/T)
+	if (istype(T, /turf/space))
+		return TRUE
+
+	var/area/A = get_area(T)
+	if (A.area_flags & AREA_FLAG_EXTERNAL)
+		return TRUE
+
+	var/datum/gas_mixture/environment = T.return_air()
+	if (!environment || !environment.total_moles)
+		return TRUE
+
+	return FALSE

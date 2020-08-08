@@ -1,13 +1,9 @@
 /turf/simulated/floor/ds
 	name = "grim plating"
+	desc = "The naked, ancient hull."
 	icon = 'icons/turf/floors_ds13.dmi'
 	icon_state = "dank_plating"
 
-	base_name = "grim plating"
-	base_desc = "The naked, ancient hull."
-	icon = 'icons/turf/floors_ds13.dmi'
-	base_icon_state = "dank_plating"
-	base_icon = 'icons/turf/floors_ds13.dmi'
 
 /decl/flooring/tiling_ds
 	name = "floor"
@@ -43,3 +39,47 @@
 	desc = "Scuffed from the passage of countless planet crackers, it looks grimy and smooth."
 	icon_base = "dank_tile_mono"
 	build_type = /obj/item/stack/tile/dankmono
+
+
+
+
+
+/decl/flooring/tiling/mono
+	icon_base = "monotile"
+	build_type = /obj/item/stack/tile/mono
+
+/decl/flooring/tiling/mono/dark
+	color = COLOR_DARK_GRAY
+	build_type = /obj/item/stack/tile/mono/dark
+
+/decl/flooring/tiling/mono/white
+	icon_base = "monotile_light"
+	color = COLOR_OFF_WHITE
+	build_type = /obj/item/stack/tile/mono/white
+/decl/flooring/tiling/new_tile
+	icon_base = "tile_full"
+	color = null
+
+/decl/flooring/tiling/new_tile/cargo_one
+	icon_base = "cargo_one_full"
+
+/decl/flooring/tiling/new_tile/kafel
+	icon_base = "kafel_full"
+
+/decl/flooring/tiling/new_tile/techmaint
+	icon_base = "techmaint"
+	build_type = /obj/item/stack/tile/techmaint
+
+/decl/flooring/tiling/new_tile/monofloor
+	icon_base = "monofloor"
+	color = COLOR_GUNMETAL
+
+/decl/flooring/tiling/new_tile/steel_grid
+	icon_base = "grid"
+	color = COLOR_GUNMETAL
+	build_type = /obj/item/stack/tile/grid
+
+/decl/flooring/tiling/new_tile/steel_ridged
+	icon_base = "ridged"
+	color = COLOR_GUNMETAL
+	build_type = /obj/item/stack/tile/ridge
