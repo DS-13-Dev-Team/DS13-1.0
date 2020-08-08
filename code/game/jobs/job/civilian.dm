@@ -32,7 +32,7 @@ datum/job/bar/get_description_blurb()
 	ideal_character_age = 21
 	starting_credits = 1240
 
-	access = list(access_service)
+	access = list(access_service, access_cook)
 	outfit_type = /decl/hierarchy/outfit/job/service/line_cook
 
 	min_skill = list(   SKILL_COOKING     = SKILL_EXPERT,
@@ -76,8 +76,8 @@ datum/job/so/get_description_blurb()
 	department = "Supply"
 	abbreviation = "CS"
 	department_flag = SUP
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 5
+	spawn_positions = 5
 	supervisors = "the Supply Officer"
 	selection_color = "#515151"
 	minimal_player_age = 18

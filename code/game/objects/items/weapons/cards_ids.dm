@@ -658,6 +658,16 @@ var/const/NO_EMAG_ACT = -50
 
 //kellion//
 
+/obj/item/weapon/card/id/holo/isaac
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as a C.E.C. Maintenance Team Engineer."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
+				access_mining, access_engineering, access_external_airlocks,
+				access_medical, access_research, access_chemistry,
+				access_surgery, access_maint_tunnels, access_keycard_auth)
+
 /obj/item/weapon/card/id/holo/kellion_sec
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as a C.E.C. Maintenance Team Security Grunt."
@@ -678,13 +688,12 @@ var/const/NO_EMAG_ACT = -50
 				access_medical, access_research, access_chemistry,
 				access_surgery, access_maint_tunnels, access_keycard_auth)
 
-/obj/item/weapon/card/id/holo/isaac
+/obj/item/weapon/card/id/holo/kendra
 	name = "holographic id"
-	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as a C.E.C. Maintenance Team Engineer."
+	desc = "A holographic identification badge used in conjunction with a RIG identification system. This particular one denotes the bearer as a C.E.C. Maintenance Team Technician."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
 				access_surgery, access_maint_tunnels, access_keycard_auth)
-

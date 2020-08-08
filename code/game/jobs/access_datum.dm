@@ -155,13 +155,19 @@
 
 
 
-/var/const/access_mining = 48
+/var/const/access_mining = 46
 /datum/access/mining
 	id = access_mining
 	desc = "Mining"
 	region = ACCESS_REGION_SUPPLY
 
-/var/const/access_bartender = 49
+/var/const/access_cook = 47
+/datum/access/cook
+	id = access_cook
+	desc = "Line Cook"
+	region = ACCESS_REGION_SUPPLY
+
+/var/const/access_bartender = 48
 /datum/access/bartender
 	id = access_bartender
 	desc = "Bartender"

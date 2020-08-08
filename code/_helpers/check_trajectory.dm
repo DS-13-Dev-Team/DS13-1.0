@@ -85,6 +85,38 @@
 	return results //Send it back to the gun!
 
 
+//Version optimised for mass testing, and verbose
+//Takes a list of target atoms to test
+//Returns back an associative list of key value pairs in the format:
+/*
+	target = list(success, last_loc, last_obstacle)
+*/
+/proc/check_trajectory_mass_verbose(var/list/targets, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE, item_flags = null, obj_flags = null, var/allow_sleep = FALSE)
+	if(!istype(firer))
+		return 0
+
+	var/turf/origin = get_turf(firer)
+	var/obj/item/projectile/test/trace = new /obj/item/projectile/test(origin) //Making the test....
+
+	//Set the flags and pass flags to that of the real projectile...
+	if(!isnull(item_flags))
+		trace.item_flags = item_flags
+	if(!isnull(obj_flags))
+		trace.obj_flags = obj_flags
+	trace.pass_flags = pass_flags
+
+	for (var/atom/A as anything in targets)
+		if (allow_sleep)
+			CHECK_TICK
+		trace.result = null
+		trace.loc = origin
+		var/output = trace.launch(A) //Test it!
+		targets[A] = list(output, get_turf(trace), trace.obstacle)
+	qdel(trace) //No need for it anymore
+	return targets //Send it back to the gun!
+
+
+
 
 
 //"Tracing" projectile
@@ -95,6 +127,7 @@
 	var/obstacle = null
 	var/result = null //To pass the message back to the gun.
 	vacuum_traversal = TRUE
+
 
 //This shouldn't be called on a test projectile
 /obj/item/projectile/test/expire()
@@ -132,19 +165,38 @@
 	return Process(targloc)
 
 /obj/item/projectile/test/Process(var/turf/targloc)
+
+	//Every step along the trajectory, we may populate this list with sub-steps.
+	//If populated we follow it
+	var/list/steps = list()
 	while(!QDELETED(src)) //Loop on through!
 		if((!( targloc ) || loc == targloc))
 			targloc = locate(min(max(x + xo, 1), world.maxx), min(max(y + yo, 1), world.maxy), z) //Finding the target turf at map edge
 
-		trajectory.increment()	// increment the current location
-		location = trajectory.return_location(location)		// update the locally stored location data
+		var/turf/newloc
+		if (!length(steps))
+			trajectory.increment()	// increment the current location
+			location = trajectory.return_location(location)		// update the locally stored location data
 
-		//TODO: Figure out why this happens
-		if (!location)
-			return FALSE
+			//TODO: Figure out why this happens
+			if (!location)
+				return FALSE
 
-		var/turf/newloc = location.return_turf()
+			newloc = location.return_turf()
+
+			//If we're moving diagonally, then we need some more complex resolution
+			if (!loc.cardinally_adjacent(newloc))
+				steps = get_line_between(loc, newloc, FALSE, FALSE)
+
+				newloc = antipop(steps)
+
+
+		else
+			newloc = antipop(steps)
+
+
 		Move(newloc)
+
 
 		//Check this again, our attempted move may have just set it
 		if(!isnull(result))
@@ -168,3 +220,6 @@
 	obstacle = null
 	result = null
 	.=..()
+
+
+

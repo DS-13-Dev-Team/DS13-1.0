@@ -134,9 +134,8 @@ var/list/airlock_overlays = list()
 
 /obj/machinery/door/airlock/mining
 	name = "Mining Airlock"
-/*	door_color = COLOR_PALE_ORANGE*/
 	stripe_color = COLOR_BEASTY_BROWN
-	req_access = list(48)
+	req_access = list(46)
 
 /obj/machinery/door/airlock/atmos
 	stripe_color = COLOR_CYAN
