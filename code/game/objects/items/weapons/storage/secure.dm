@@ -146,7 +146,7 @@
 	item_state = "sec-case"
 	desc = "A large briefcase with a digital locking system."
 	force = 8.0
-	
+
 	throw_range = 4
 	w_class = ITEM_SIZE_HUGE
 	max_w_class = ITEM_SIZE_NORMAL
@@ -195,4 +195,13 @@
 
 /obj/item/weapon/storage/secure/safe/CSECO/New()
 		new /obj/item/weapon/gun/projectile/automatic/pulse_heavy(src)
+		..()
+
+/obj/item/weapon/storage/secure/safe/captain/New()
+		new /obj/item/weapon/gun/projectile/magnum_pistol(src)
+		new /obj/random/loot/often(src)
+		new /obj/random/loot/sometimes(src)
+		new /obj/random/loot/sometimes(src)
+		new /obj/random/loot/sometimes(src)
+		new /obj/random/rare_loot/rarely(src)
 		..()

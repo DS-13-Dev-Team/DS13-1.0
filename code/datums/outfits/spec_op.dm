@@ -161,6 +161,22 @@
 ///KELLION OUTFITS///
 /////////////////////
 
+/decl/hierarchy/outfit/isaac
+	name = "Kellion Engineer"
+	uniform = /obj/item/clothing/under/rigunder
+	suit = null
+	l_ear = null
+	mask = /obj/item/clothing/mask/breath
+	head = null
+	belt = /obj/item/weapon/storage/belt/utility/full
+	back = /obj/item/weapon/rig/vintage
+	shoes = /obj/item/clothing/shoes/workboots
+	gloves = /obj/item/clothing/gloves/insulated
+
+	id_slot = slot_wear_id
+	id_type = /obj/item/weapon/card/id/holo/isaac
+	id_desc = "Kellion Engineer"
+
 /decl/hierarchy/outfit/kellion_sec
 	name = "Kellion Security"
 	uniform = /obj/item/clothing/under/kellion
@@ -193,21 +209,21 @@
 	id_type = /obj/item/weapon/card/id/holo/kellion_sec_leader
 	id_desc = "Kellion Security Team Leader"
 
-/decl/hierarchy/outfit/isaac
-	name = "Kellion Engineer"
-	uniform = /obj/item/clothing/under/rigunder
-	suit = /obj/item/clothing/suit/space/unitologist/deacon
+/decl/hierarchy/outfit/kendra
+	name = "Kellion Technician"
+	uniform = /obj/item/clothing/under/kellion/tech
+	suit = /obj/item/clothing/suit/storage/kellion_jacket
 	l_ear = null
-	mask = /obj/item/clothing/mask/breath
-	head = /obj/item/clothing/head/helmet/space/unitologist/deacon
-	belt = /obj/item/weapon/storage/belt/utility/full
-	back = /obj/item/weapon/rig/vintage
+	mask = null
+	head = null
+	belt = null
+	back = /obj/item/weapon/storage/backpack/satchel/grey
 	shoes = /obj/item/clothing/shoes/workboots
-	gloves = /obj/item/clothing/gloves/insulated
+	gloves = null
 
 	id_slot = slot_wear_id
-	id_type = /obj/item/weapon/card/id/holo/isaac
-	id_desc = "Kellion Engineer"
+	id_type = /obj/item/weapon/card/id/holo/kendra
+	id_desc = "Kellion Technician"
 
 
 ///////////////////////////////////////////////////

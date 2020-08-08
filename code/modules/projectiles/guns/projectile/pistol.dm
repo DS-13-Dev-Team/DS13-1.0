@@ -78,8 +78,8 @@
 	allowed_magazines = /obj/item/ammo_magazine/c45m
 
 /obj/item/weapon/gun/projectile/magnum_pistol
-	name = ".50 magnum pistol"
-	desc = "The HelTek Magnus, a robust Terran handgun that uses .50 AE ammo."
+	name = "antique heavy pistol"
+	desc = "An antique, heavy pistol with the manufacturer brand worn off from use. Despite it's age and use of non-pulse ammunition, it packs a powerful punch."
 	icon_state = "magnum"
 	item_state = "revolver"
 	force = 9
