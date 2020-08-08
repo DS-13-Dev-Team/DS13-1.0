@@ -35,7 +35,10 @@ delete-after: True
 changes: 
   - rscadd: "Added an air alarm to the Processing Room."
   - rscadd: "Added a pistol to the Captain's safe, as a last resort."
-  - rscadd: "Added a standard device power cell to the Supply Officer's locker to power the Stick of Discipline."
+  - rscadd: "Added medical wall lockers to the Aegis Colony."
+  - rscadd: "Added a standard device power cell to the Supply Officer's locker to power the Stick of Discipline. Remember that the abuse of the SoD will result in being arrested by Security."
+  - tweak: "Added six more Planet Cracker slots. Due to space constraints, six of the Planet Crackers voidsuit storage units are on Aegis."
+  - tweak: "Added another Cargo Serviceman slot."
   - maptweak: "Changed the Captain's safe to a modern, wall-safe."
   - maptweak: "The Kitchen door now requires Line Cook access to open."
   - bugfix: "Fixed the Monitoring Room door bolt button not working."

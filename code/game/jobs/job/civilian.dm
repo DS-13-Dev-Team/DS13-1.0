@@ -76,8 +76,8 @@ datum/job/so/get_description_blurb()
 	department = "Supply"
 	abbreviation = "CS"
 	department_flag = SUP
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 5
+	spawn_positions = 5
 	supervisors = "the Supply Officer"
 	selection_color = "#515151"
 	minimal_player_age = 18
