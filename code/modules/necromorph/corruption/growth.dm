@@ -16,6 +16,7 @@
 	desc = "you shouldn't see this"
 	speed = 9999
 	falloff = 0
+	marker_spawnable = FALSE
 
 
 /obj/structure/corruption_node/growth/Initialize()
