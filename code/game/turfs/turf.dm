@@ -8,6 +8,12 @@
 	var/turf_flags
 
 	var/holy = 0
+	var/is_hole = FALSE			// If true, turf is open to vertical transitions through it.
+	var/is_wall = FALSE			// If true, this turf is, or contains, a solid wall.
+
+	var/health
+	var/max_health = 100
+	var/resistance
 
 	//Set this false when the turf is dense, or contains any dense atom
 	//A null value is maybe, it means we should check to find out. Set it null whenever any change happens to contents
