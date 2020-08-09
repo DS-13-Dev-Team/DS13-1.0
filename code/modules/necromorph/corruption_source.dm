@@ -36,7 +36,7 @@
 	if (limit)
 		support_limit = limit
 
-	new /obj/effect/vine/corruption(get_turf(source),GLOB.corruption_seed, start_matured = 1, newsource = src)
+	new /obj/effect/vine/corruption(get_turf(source),GLOB.corruption_seed, null, start_matured = 1, newsource = src)
 
 	//Corruption tiles add vision
 	source.visualnet_range = range

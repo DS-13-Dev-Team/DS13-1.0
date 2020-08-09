@@ -55,7 +55,7 @@
 	var/spread_chance = 30
 	var/spread_distance = 4
 	var/evolve_chance = 2
-	var/mature_time		//minimum maturation time
+	var/mature_time	= 10000	//minimum maturation time
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 	var/list/neighbors
 	var/can_cut = TRUE
