@@ -56,6 +56,7 @@
 	icon_base = "monotile_light"
 	color = COLOR_OFF_WHITE
 	build_type = /obj/item/stack/tile/mono/white
+
 /decl/flooring/tiling/new_tile
 	icon_base = "tile_full"
 	color = null

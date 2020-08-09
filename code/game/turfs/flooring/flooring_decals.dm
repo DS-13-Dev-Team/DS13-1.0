@@ -489,6 +489,16 @@ var/list/floor_decals = list()
 	icon = 'icons/turf/marks_ds13.dmi'
 	icon_state = "scratches"
 
+/obj/effect/floor_decal/dank/outline
+	name = "dark outline"
+	icon_state = "outline"
+	alpha = 220
+
+/obj/effect/floor_decal/dank/outline_striped
+	name = "dark striped outline"
+	icon_state = "outline_striped"
+	alpha = 220
+
 /obj/effect/floor_decal/dank/dent
 	name = "dent"
 	icon_state = "dent"

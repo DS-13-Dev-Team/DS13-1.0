@@ -23,6 +23,8 @@ var/list/flooring_types
 	var/icon
 	var/icon_base
 
+	var/step_priority
+
 	var/footstep_sound = "floor"
 	var/hit_sound = null
 
@@ -126,39 +128,7 @@ var/list/flooring_types
 /decl/flooring/proc/Entered(mob/living/M as mob)
 	return
 
-/decl/flooring/grass
-	name = "grass"
-	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
-	icon = 'icons/turf/flooring/grass.dmi'
-	icon_base = "grass"
-	has_base_range = 3
-	damage_temperature = T0C+80
-	flags = TURF_REMOVE_SHOVEL | TURF_EDGES_EXTERNAL | TURF_HAS_CORNERS
-	build_type = /obj/item/stack/tile/grass
-	plating_type = /decl/flooring/dirt
-	footstep_sound = "grass"
-	floor_smooth = SMOOTH_NONE
-	space_smooth = SMOOTH_NONE
 
-/decl/flooring/dirt
-	name = "dirt"
-	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
-	icon = 'icons/turf/flooring/dirt.dmi'
-	icon_base = "dirt"
-	flags = TURF_REMOVE_SHOVEL
-	build_type = null //Todo: add bags of fertilised soil or something to create dirt floors
-	footstep_sound = "gravel"
-
-/decl/flooring/asteroid
-	name = "coarse sand"
-	desc = "Gritty and unpleasant."
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_base = "asteroid"
-	flags = TURF_REMOVE_SHOVEL | TURF_CAN_BURN | TURF_CAN_BREAK
-	build_type = null
-	footstep_sound = "asteroid"
-
-//=========PLATING==========
 
 /decl/flooring/reinforced/plating
 	name = "plating"
@@ -297,79 +267,113 @@ var/list/flooring_types
 	else
 		return null //This should never happen, hull plating should only be on the exterior
 
-//==========CARPET==============
+
+/decl/flooring/grass
+	name = "grass"
+	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
+	icon = 'icons/turf/flooring/grass.dmi'
+	icon_base = "grass"
+	has_base_range = 3
+	damage_temperature = T0C+80
+	flags = TURF_REMOVE_SHOVEL
+	build_type = /obj/item/stack/tile/grass
+
+/decl/flooring/asteroid
+	name = "coarse sand"
+	desc = "Gritty and unpleasant."
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_base = "asteroid"
+	flags = TURF_REMOVE_SHOVEL
+	build_type = null
+	step_priority = 2 //Soft surfaces have more distinctive sounds
 
 /decl/flooring/carpet
-	name = "red carpet"
-	desc = "Imported and comfy."
+	name = "brown carpet"
+	desc = "Comfy and fancy carpeting."
 	icon = 'icons/turf/flooring/carpet.dmi'
-	icon_base = "carpet"
-	footstep_sound = "carpet"
+	icon_base = "brown"
 	build_type = /obj/item/stack/tile/carpet
 	damage_temperature = T0C+200
-	flags = TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN | TURF_HIDES_THINGS
-	floor_smooth = SMOOTH_NONE
-	wall_smooth = SMOOTH_NONE
-	space_smooth = SMOOTH_NONE
-	smooth_movable_atom = SMOOTH_NONE
+	flags = TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
+	step_priority = 2 //Soft surfaces have more distinctive sounds
 
-/decl/flooring/carpet/bcarpet
-	name = "black carpet"
-	icon_base = "bcarpet"
-	build_type = /obj/item/stack/tile/carpet/bcarpet
-
-/decl/flooring/carpet/blucarpet
+/decl/flooring/carpet/blue
 	name = "blue carpet"
-	icon_base = "blucarpet"
-	build_type = /obj/item/stack/tile/carpet/blucarpet
-
-/decl/flooring/carpet/turcarpet
-	name = "turquoise carpet"
-	icon_base = "turcarpet"
-	build_type = /obj/item/stack/tile/carpet/turcarpet
-
-/decl/flooring/carpet/sblucarpet
-	name = "silver blue carpet"
-	icon_base = "sblucarpet"
-	build_type = /obj/item/stack/tile/carpet/sblucarpet
+	icon_base = "blue1"
+	build_type = /obj/item/stack/tile/carpetblue
 
 /decl/flooring/carpet/blue2
 	name = "pale blue carpet"
 	icon_base = "blue2"
 	build_type = /obj/item/stack/tile/carpetblue2
 
-/decl/flooring/carpet/gaycarpet
-	name = "clown carpet"
-	icon_base = "gaycarpet"
-	build_type = /obj/item/stack/tile/carpet/gaycarpet
-
-/decl/flooring/carpet/purcarpet
+/decl/flooring/carpet/purple
 	name = "purple carpet"
-	icon_base = "purcarpet"
-	build_type = /obj/item/stack/tile/carpet/purcarpet
+	icon_base = "purple"
+	build_type = /obj/item/stack/tile/carpetpurple
 
-/decl/flooring/carpet/oracarpet
+/decl/flooring/carpet/orange
 	name = "orange carpet"
-	icon_base = "oracarpet"
-	build_type = /obj/item/stack/tile/carpet/oracarpet
+	icon_base = "orange"
+	build_type = /obj/item/stack/tile/carpetorange
 
-//==========TILING==============
+/decl/flooring/carpet/green
+	name = "green carpet"
+	icon_base = "green"
+	build_type = /obj/item/stack/tile/carpetgreen
+
+/decl/flooring/carpet/red
+	name = "red carpet"
+	icon_base = "red"
+	build_type = /obj/item/stack/tile/carpetred
+
+/decl/flooring/linoleum
+	name = "linoleum"
+	desc = "It's like the 2390's all over again."
+	icon = 'icons/turf/flooring/linoleum.dmi'
+	icon_base = "lino"
+	can_paint = 1
+	build_type = /obj/item/stack/tile/linoleum
+	flags = TURF_REMOVE_SCREWDRIVER
 
 /decl/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
 	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_base = "tiles"
-	has_damage_range = 2 //RECHECK THIS. MAYBE MISTAKE
+	icon_base = "tiled"
+	color = COLOR_DARK_GUNMETAL
+	has_damage_range = 4
 	damage_temperature = T0C+1400
-	flags = TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN | TURF_HIDES_THINGS
+	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
 	build_type = /obj/item/stack/tile/floor
 	can_paint = 1
-	resistance = RESISTANCE_FRAGILE
 
-	floor_smooth = SMOOTH_NONE
-	wall_smooth = SMOOTH_NONE
-	space_smooth = SMOOTH_NONE
+/decl/flooring/tiling/mono
+	icon_base = "monotile"
+	build_type = /obj/item/stack/tile/mono
+
+/decl/flooring/tiling/mono/dark
+	color = COLOR_DARK_GRAY
+	build_type = /obj/item/stack/tile/mono/dark
+
+/decl/flooring/tiling/mono/white
+	icon_base = "monotile_light"
+	color = COLOR_OFF_WHITE
+	build_type = /obj/item/stack/tile/mono/white
+
+/decl/flooring/tiling/white
+	icon_base = "tiled_light"
+	desc = "How sterile."
+	color = COLOR_OFF_WHITE
+	build_type = /obj/item/stack/tile/floor_white
+
+/decl/flooring/tiling/dark
+	desc = "How ominous."
+	color = COLOR_DARK_GRAY
+	build_type = /obj/item/stack/tile/floor_dark
+
+/decl/flooring/tiling/dark/mono
+	icon_base = "monotile"
 
 /decl/flooring/tiling/freezer
 	desc = "Don't slip."
@@ -389,311 +393,67 @@ var/list/flooring_types
 	icon_base = "techfloor_grid"
 	build_type = /obj/item/stack/tile/techgrid
 
+/decl/flooring/tiling/new_tile
+	icon_base = "tile_full"
+	color = null
 
-/decl/flooring/tiling/steel
-	name = "floor"
-	icon_base = "tiles"
-	icon = 'icons/turf/flooring/tiles_steel.dmi'
-	build_type = /obj/item/stack/tile/floor/steel
-	footstep_sound = "floor"
+/decl/flooring/tiling/new_tile/cargo_one
+	icon_base = "cargo_one_full"
 
-/decl/flooring/tiling/steel/panels
-	icon_base = "panels"
-	build_type = /obj/item/stack/tile/floor/steel/panels
+/decl/flooring/tiling/new_tile/kafel
+	icon_base = "kafel_full"
 
-/decl/flooring/tiling/steel/techfloor
-	icon_base = "techfloor"
-	build_type = /obj/item/stack/tile/floor/steel/techfloor
-
-/decl/flooring/tiling/steel/techfloor_grid
-	icon_base = "techfloor_grid"
-	build_type = /obj/item/stack/tile/floor/steel/techfloor_grid
-
-/decl/flooring/tiling/steel/brown_perforated
-	icon_base = "brown_perforated"
-	build_type = /obj/item/stack/tile/floor/steel/brown_perforated
-
-/decl/flooring/tiling/steel/gray_perforated
-	icon_base = "gray_perforated"
-	build_type = /obj/item/stack/tile/floor/steel/gray_perforated
-
-/decl/flooring/tiling/steel/cargo
-	icon_base = "cargo"
-	build_type = /obj/item/stack/tile/floor/steel/cargo
-
-/decl/flooring/tiling/steel/brown_platform
-	icon_base = "brown_platform"
-	build_type = /obj/item/stack/tile/floor/steel/brown_platform
-
-/decl/flooring/tiling/steel/gray_platform
-	icon_base = "gray_platform"
-	build_type = /obj/item/stack/tile/floor/steel/gray_platform
-
-/decl/flooring/tiling/steel/danger
-	icon_base = "danger"
-	build_type = /obj/item/stack/tile/floor/steel/danger
-
-/decl/flooring/tiling/steel/golden
-	icon_base = "golden"
-	build_type = /obj/item/stack/tile/floor/steel/golden
-
-/decl/flooring/tiling/steel/bluecorner
-	icon_base = "bluecorner"
-	build_type = /obj/item/stack/tile/floor/steel/bluecorner
-
-/decl/flooring/tiling/steel/orangecorner
-	icon_base = "orangecorner"
-	build_type = /obj/item/stack/tile/floor/steel/orangecorner
-
-/decl/flooring/tiling/steel/cyancorner
-	icon_base = "cyancorner"
-	build_type = /obj/item/stack/tile/floor/steel/cyancorner
-
-/decl/flooring/tiling/steel/violetcorener
-	icon_base = "violetcorener"
-	build_type = /obj/item/stack/tile/floor/steel/violetcorener
-
-/decl/flooring/tiling/steel/monofloor
-	icon_base = "monofloor"
-	build_type = /obj/item/stack/tile/floor/steel/monofloor
-	has_base_range = 15
-
-/decl/flooring/tiling/steel/bar_flat
-	icon_base = "bar_flat"
-	build_type = /obj/item/stack/tile/floor/steel/bar_flat
-
-/decl/flooring/tiling/steel/bar_dance
-	icon_base = "bar_dance"
-	build_type = /obj/item/stack/tile/floor/steel/bar_dance
-
-/decl/flooring/tiling/steel/bar_light
-	icon_base = "bar_light"
-	build_type = /obj/item/stack/tile/floor/steel/bar_light
-
-/decl/flooring/tiling/white
-	name = "floor"
-	icon_base = "tiles"
-	icon = 'icons/turf/flooring/tiles_white.dmi'
-	build_type = /obj/item/stack/tile/floor/white
-	footstep_sound = "tile" //those are made from plastic, so they sound different
-
-/decl/flooring/tiling/white/panels
-	icon_base = "panels"
-	build_type = /obj/item/stack/tile/floor/white/panels
-
-/decl/flooring/tiling/white/techfloor
-	icon_base = "techfloor"
-	build_type = /obj/item/stack/tile/floor/white/techfloor
-
-/decl/flooring/tiling/white/techfloor_grid
-	icon_base = "techfloor_grid"
-	build_type = /obj/item/stack/tile/floor/white/techfloor_grid
-
-/decl/flooring/tiling/white/brown_perforated
-	icon_base = "brown_perforated"
-	build_type = /obj/item/stack/tile/floor/white/brown_perforated
-
-/decl/flooring/tiling/white/gray_perforated
-	icon_base = "gray_perforated"
-	build_type = /obj/item/stack/tile/floor/white/gray_perforated
-
-/decl/flooring/tiling/white/cargo
-	icon_base = "cargo"
-	build_type = /obj/item/stack/tile/floor/white/cargo
-
-/decl/flooring/tiling/white/brown_platform
-	icon_base = "brown_platform"
-	build_type = /obj/item/stack/tile/floor/white/brown_platform
-
-/decl/flooring/tiling/white/gray_platform
-	icon_base = "gray_platform"
-	build_type = /obj/item/stack/tile/floor/white/gray_platform
-
-/decl/flooring/tiling/white/danger
-	icon_base = "danger"
-	build_type = /obj/item/stack/tile/floor/white/danger
-
-/decl/flooring/tiling/white/golden
-	icon_base = "golden"
-	build_type = /obj/item/stack/tile/floor/white/golden
-
-/decl/flooring/tiling/white/bluecorner
-	icon_base = "bluecorner"
-	build_type = /obj/item/stack/tile/floor/white/bluecorner
-
-/decl/flooring/tiling/white/orangecorner
-	icon_base = "orangecorner"
-	build_type = /obj/item/stack/tile/floor/white/orangecorner
-
-/decl/flooring/tiling/white/cyancorner
-	icon_base = "cyancorner"
-	build_type = /obj/item/stack/tile/floor/white/cyancorner
-
-/decl/flooring/tiling/white/violetcorener
-	icon_base = "violetcorener"
-	build_type = /obj/item/stack/tile/floor/white/violetcorener
-
-/decl/flooring/tiling/white/monofloor
-	icon_base = "monofloor"
-	build_type = /obj/item/stack/tile/floor/white/monofloor
-	has_base_range = 15
-
-/decl/flooring/tiling/dark
-	name = "floor"
-	icon_base = "tiles"
-	icon = 'icons/turf/flooring/tiles_dark.dmi'
-	build_type = /obj/item/stack/tile/floor/dark
-	footstep_sound = "floor"
-
-/decl/flooring/tiling/dark/panels
-	icon_base = "panels"
-	build_type = /obj/item/stack/tile/floor/dark/panels
-
-/decl/flooring/tiling/dark/techfloor
-	icon_base = "techfloor"
-	build_type = /obj/item/stack/tile/floor/dark/techfloor
-
-/decl/flooring/tiling/dark/techfloor_grid
-	icon_base = "techfloor_grid"
-	build_type = /obj/item/stack/tile/floor/dark/techfloor_grid
-
-/decl/flooring/tiling/dark/brown_perforated
-	icon_base = "brown_perforated"
-	build_type = /obj/item/stack/tile/floor/dark/brown_perforated
-
-/decl/flooring/tiling/dark/gray_perforated
-	icon_base = "gray_perforated"
-	build_type = /obj/item/stack/tile/floor/dark/gray_perforated
-
-/decl/flooring/tiling/dark/cargo
-	icon_base = "cargo"
-	build_type = /obj/item/stack/tile/floor/dark/cargo
-
-/decl/flooring/tiling/dark/brown_platform
-	icon_base = "brown_platform"
-	build_type = /obj/item/stack/tile/floor/dark/brown_platform
-
-/decl/flooring/tiling/dark/gray_platform
-	icon_base = "gray_platform"
-	build_type = /obj/item/stack/tile/floor/dark/gray_platform
-
-/decl/flooring/tiling/dark/danger
-	icon_base = "danger"
-	build_type = /obj/item/stack/tile/floor/dark/danger
-
-/decl/flooring/tiling/dark/golden
-	icon_base = "golden"
-	build_type = /obj/item/stack/tile/floor/dark/golden
-
-/decl/flooring/tiling/dark/bluecorner
-	icon_base = "bluecorner"
-	build_type = /obj/item/stack/tile/floor/dark/bluecorner
-
-/decl/flooring/tiling/dark/orangecorner
-	icon_base = "orangecorner"
-	build_type = /obj/item/stack/tile/floor/dark/orangecorner
-
-/decl/flooring/tiling/dark/cyancorner
-	icon_base = "cyancorner"
-	build_type = /obj/item/stack/tile/floor/dark/cyancorner
-
-/decl/flooring/tiling/dark/violetcorener
-	icon_base = "violetcorener"
-	build_type = /obj/item/stack/tile/floor/dark/violetcorener
-
-/decl/flooring/tiling/dark/monofloor
-	icon_base = "monofloor"
-	build_type = /obj/item/stack/tile/floor/dark/monofloor
-	has_base_range = 15
-
-/decl/flooring/tiling/cafe
-	name = "floor"
-	icon_base = "cafe"
-	icon = 'icons/turf/flooring/tiles.dmi'
-	build_type = /obj/item/stack/tile/floor/cafe
-	footstep_sound = "floor"
-
-/decl/flooring/tiling/techmaint
-	name = "floor"
+/decl/flooring/tiling/new_tile/techmaint
 	icon_base = "techmaint"
-	icon = 'icons/turf/flooring/tiles_maint.dmi'
-	build_type = /obj/item/stack/tile/floor/techmaint
-	footstep_sound = "floor"
+	build_type = /obj/item/stack/tile/techmaint
 
-	floor_smooth = SMOOTH_WHITELIST
-	flooring_whitelist = list(/decl/flooring/tiling/techmaint_perforated, /decl/flooring/tiling/techmaint_panels)
+/decl/flooring/tiling/new_tile/monofloor
+	icon_base = "monofloor"
+	color = COLOR_GUNMETAL
 
-/decl/flooring/tiling/techmaint_perforated
-	name = "floor"
-	icon_base = "techmaint_perforated"
-	icon = 'icons/turf/flooring/tiles_maint.dmi'
-	build_type = /obj/item/stack/tile/floor/techmaint/perforated
-	footstep_sound = "floor"
+/decl/flooring/tiling/new_tile/steel_grid
+	icon_base = "grid"
+	color = COLOR_GUNMETAL
+	build_type = /obj/item/stack/tile/grid
 
-	floor_smooth = SMOOTH_WHITELIST
-	flooring_whitelist = list(/decl/flooring/tiling/techmaint, /decl/flooring/tiling/techmaint_panels)
-
-/decl/flooring/tiling/techmaint_panels
-	name = "floor"
-	icon_base = "techmaint_panels"
-	icon = 'icons/turf/flooring/tiles_maint.dmi'
-	build_type = /obj/item/stack/tile/floor/techmaint/panels
-	footstep_sound = "floor"
-
-	floor_smooth = SMOOTH_WHITELIST
-	flooring_whitelist = list(/decl/flooring/tiling/techmaint_perforated, /decl/flooring/tiling/techmaint)
-
-/decl/flooring/tiling/techmaint_cargo
-	name = "floor"
-	icon_base = "techmaint_cargo"
-	icon = 'icons/turf/flooring/tiles_maint.dmi'
-	build_type = /obj/item/stack/tile/floor/techmaint/cargo
-	footstep_sound = "floor"
-
-//==========MISC==============
+/decl/flooring/tiling/new_tile/steel_ridged
+	icon_base = "ridged"
+	color = COLOR_GUNMETAL
+	build_type = /obj/item/stack/tile/ridge
 
 /decl/flooring/wood
 	name = "wooden floor"
 	desc = "Polished redwood planks."
-	footstep_sound = "wood"
 	icon = 'icons/turf/flooring/wood.dmi'
 	icon_base = "wood"
 	has_damage_range = 6
 	damage_temperature = T0C+200
 	descriptor = "planks"
 	build_type = /obj/item/stack/tile/wood
-	smooth_nothing = TRUE
-	flags = TURF_CAN_BREAK | TURF_CAN_BURN | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER | TURF_HIDES_THINGS
+	flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER
 
 /decl/flooring/reinforced
 	name = "reinforced floor"
-	desc = "Heavily reinforced with steel rods."
+	desc = "Heavily reinforced with steel plating."
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_base = "reinforced"
-	flags = TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS | TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE | TURF_CAN_BURN | TURF_CAN_BREAK | TURF_HIDES_THINGS |TURF_HIDES_THINGS
-	build_type = /obj/item/stack/rods
-	build_cost = 2
+	flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
+	build_type = /obj/item/stack/material/steel
+	build_cost = 1
 	build_time = 30
 	apply_thermal_conductivity = 0.025
 	apply_heat_capacity = 325000
 	can_paint = 1
-	resistance = RESISTANCE_TOUGH
-	footstep_sound = "plating"
 
 /decl/flooring/reinforced/circuit
 	name = "processing strata"
 	icon = 'icons/turf/flooring/circuit.dmi'
 	icon_base = "bcircuit"
 	build_type = null
-	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS |TURF_HIDES_THINGS
+	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_WRENCH
 	can_paint = 1
 
-	floor_smooth = SMOOTH_NONE
-	wall_smooth = SMOOTH_NONE
-	space_smooth = SMOOTH_NONE
-
 /decl/flooring/reinforced/circuit/green
-	name = "processing strata"
 	icon_base = "gcircuit"
 
 /decl/flooring/reinforced/circuit/red
@@ -701,40 +461,30 @@ var/list/flooring_types
 	flags = TURF_ACID_IMMUNE
 	can_paint = 0
 
-/decl/flooring/reinforced/cult
-	name = "engraved floor"
-	desc = "Unsettling whispers waver from the surface..."
-	icon = 'icons/turf/flooring/cult.dmi'
-	icon_base = "cult"
+/decl/flooring/reinforced/shuttle
+	name = "floor"
+	icon = 'icons/turf/shuttle.dmi'
 	build_type = null
-	has_damage_range = 6
-	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_HIDES_THINGS
-	can_paint = null
+	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_WRENCH
+	can_paint = 1
 
-//==========Derelict==============
+/decl/flooring/reinforced/shuttle/blue
+	icon_base = "floor"
 
-/decl/flooring/tiling/derelict
-	name = "floor"
-	icon_base = "derelict1"
-	icon = 'icons/turf/flooring/derelict.dmi'
-	footstep_sound = "floor"
+/decl/flooring/reinforced/shuttle/yellow
+	icon_base = "floor2"
 
-/decl/flooring/tiling/derelict/white_red_edges
-	name = "floor"
-	icon_base = "derelict1"
-	build_type = /obj/item/stack/tile/derelict/white_red_edges
+/decl/flooring/reinforced/shuttle/white
+	icon_base = "floor3"
 
-/decl/flooring/tiling/derelict/white_small_edges
-	name = "floor"
-	icon_base = "derelict2"
-	build_type = /obj/item/stack/tile/derelict/white_small_edges
+/decl/flooring/reinforced/shuttle/red
+	icon_base = "floor4"
 
-/decl/flooring/tiling/derelict/red_white_edges
-	name = "floor"
-	icon_base = "derelict3"
-	build_type = /obj/item/stack/tile/derelict/red_white_edges
+/decl/flooring/reinforced/shuttle/purple
+	icon_base = "floor5"
 
-/decl/flooring/tiling/derelict/white_big_edges
-	name = "floor"
-	icon_base = "derelict4"
-	build_type = /obj/item/stack/tile/derelict/white_big_edges
+/decl/flooring/reinforced/shuttle/darkred
+	icon_base = "floor6"
+
+/decl/flooring/reinforced/shuttle/black
+	icon_base = "floor7"
