@@ -37,8 +37,7 @@
 
 	// Keeps track of what this rig should spawn with.
 	var/suit_type = "hardsuit"
-	var/list/initial_modules = list(/obj/item/rig_module/healthbar,
-	/obj/item/rig_module/storage)
+	var/list/initial_modules = list(/obj/item/rig_module/healthbar)
 	var/chest_type = /obj/item/clothing/suit/space/rig
 	var/helm_type =  /obj/item/clothing/head/helmet/space/rig
 	var/boot_type =  /obj/item/clothing/shoes/magboots/rig
@@ -59,7 +58,9 @@
 	var/obj/item/rig_module/storage/storage					  // Internal storage, can only have one
 	var/mob/living/carbon/human/wearer                        // The person currently wearing the rig.
 	var/image/mob_icon                                        // Holder for on-mob icon.
-	var/list/installed_modules = list()                       // List of all modules, including those initialized at startup
+	var/list/installed_modules = list(
+	/obj/item/rig_module/healthbar,
+	/obj/item/rig_module/storage)                       // List of all modules, including those initialized at startup
 	var/list/processing_modules = list()					  // Power consumption/use bookkeeping.
 
 	// Rig status vars.

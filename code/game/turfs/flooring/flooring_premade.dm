@@ -11,7 +11,7 @@
 	icon_state = "bcircuit"
 	initial_flooring = /decl/flooring/reinforced/circuit
 	light_outer_range = 2
-	light_max_bright = 1
+	light_max_bright = 3
 	light_color = COLOR_BLUE
 
 /turf/simulated/floor/bluegrid/airless
@@ -23,7 +23,7 @@
 	icon_state = "gcircuit"
 	initial_flooring = /decl/flooring/reinforced/circuit/green
 	light_outer_range = 2
-	light_max_bright = 1
+	light_max_bright = 3
 	light_color = COLOR_GREEN
 
 /turf/simulated/floor/blackgrid
@@ -32,7 +32,7 @@
 	icon_state = "rcircuit"
 	initial_flooring = /decl/flooring/reinforced/circuit/red
 	light_outer_range = 2
-	light_max_bright = 1
+	light_max_bright = 2
 	light_color = COLOR_RED
 
 /turf/simulated/floor/greengrid/airless
@@ -127,6 +127,14 @@
 	initial_gas = list("sleeping_agent" = ATMOSTANK_NITROUSOXIDE)
 
 
+/turf/simulated/floor/cult
+	name = "engraved floor"
+	icon = 'icons/turf/flooring/cult.dmi'
+	icon_state = "cult"
+	initial_flooring = /decl/flooring/reinforced/cult
+
+/turf/simulated/floor/cult/cultify()
+	return
 
 //Tiled floor + sub-types
 
@@ -328,7 +336,10 @@
 	icon_state = "dank_tile"
 	initial_flooring = /decl/flooring/tiling_ds
 
-	desc = "The naked, ancient hull."
+	base_name = "grim plating"
+	base_desc = "The naked, ancient hull."
+	base_icon_state = "dank_plating"
+	base_icon = 'icons/turf/floors_ds13.dmi'
 
 /turf/simulated/floor/dank/roller
 	name = "roller floor"
