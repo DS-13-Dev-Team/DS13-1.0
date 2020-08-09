@@ -493,7 +493,6 @@ Kirkson
 Picard
 Riker
 Spock
-Skywalker
 Vader
 Muggins
 Buttersworth

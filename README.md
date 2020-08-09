@@ -1,6 +1,6 @@
-# baystation12
+# DS13
 
-[Website](http://baystation12.net/) - [Code](http://github.com/Baystation12/Baystation12/) - [IRC](irc://irc.sorcery.net/#codershuttle)
+[Website](https://ds-ss13.com/) - [Code](https://github.com/DS-13-Dev-Team/DS13) - [Discord](https://discord.gg/T6YfAfu)
 
 ---
 
@@ -31,7 +31,7 @@ Click [here](https://github.com/Baystation12/Baystation12/archive/dev.zip) to ge
 
 The more complicated and easier to update method is using git.  You'll need to download git or some client from [here](http://git-scm.com/).  When that's installed, right click in any folder and click on "Git Bash".  When that opens, type in:
 
-    git clone https://github.com/Baystation12/Baystation12.git
+    git clone https://github.com/DS-13-Dev-Team/DS13.git
 
 (hint: hold down ctrl and press insert to paste into git bash)
 
@@ -49,11 +49,11 @@ This is a sourcecode-only release, so the next step is to compile the server fil
     
     baystation12.dmb - 0 errors, 0 warnings
 
-If you see any errors or warnings, something has gone wrong - possibly a corrupt download or the files extracted wrong, or a code issue on the main repo.  Ask on IRC.
+If you see any errors or warnings, something has gone wrong - possibly a corrupt download or the files extracted wrong, or a code issue on the main repo.  Ask on Discord.
 
 Once that's done, open up the config folder.  You'll want to edit config.txt to set the probabilities for different gamemodes in Secret and to set your server location so that all your players don't get disconnected at the end of each round.  It's recommended you don't turn on the gamemodes with probability 0, as they have various issues and aren't currently being tested, so they may have unknown and bizarre bugs.
 
-You'll also want to edit admins.txt to remove the default admins and add your own.  "Game Master" is the highest level of access, and the other recommended admin levels for now are "Game Admin" and "Moderator".  The format is:
+You'll also want to edit admins.txt to remove the default admins and add your own.  "Host" is the highest level of access, along with "Head Admin" and "Head Developer". The format is:
 
     byondkey - Rank
 

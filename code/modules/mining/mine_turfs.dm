@@ -37,10 +37,8 @@ var/list/mining_floors = list()
 	has_resources = 1
 
 	//Defense and damage
-	//FUTURE TODO: MAke these apply to all turfs. and eventually, all atoms
-	var/health
-	var/max_health = 200
-	var/resistance	=	5
+	max_health = 200
+	resistance	=	5
 
 	//Overlays
 	var/image/ore_overlay		//Handled in update_mineral, never needs to be touched again. Only disappears when the turf is changed
@@ -459,10 +457,7 @@ var/list/mining_floors = list()
 	name = "sand"
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
-	base_name = "sand"
-	base_desc = "Gritty and unpleasant."
-	base_icon = 'icons/turf/flooring/asteroid.dmi'
-	base_icon_state = "asteroid"
+
 
 	initial_flooring = null
 	initial_gas = null

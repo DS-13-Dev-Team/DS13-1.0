@@ -598,10 +598,8 @@ obj/random/obstruction/item_to_spawn()
 			/obj/item/device/flashlight/pen,
 			/obj/item/weapon/storage/box/glowsticks,
 			/obj/item/device/flashlight/upgraded = 0.5,
-			/obj/item/device/flashlight/flashdark = 0.1,
 			/obj/item/device/flashlight/maglight,
 			/obj/item/device/flashlight/lamp,
-			/obj/item/device/flashlight/slime,
 			/obj/item/device/flashlight/lamp = 0.5,
 			/obj/item/device/flashlight = 2))
 
