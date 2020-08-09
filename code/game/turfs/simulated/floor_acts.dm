@@ -1,3 +1,10 @@
+/*Rough floor health values:
+	Tiles: 50
+	Plating: 100
+	Underplating: 200
+	Hull: 700
+*/
+
 //EX act uses new damage type blast, which allows it to get burn AND damage overlays simultaneously
 /turf/simulated/floor/ex_act(severity)
 
@@ -5,11 +12,11 @@
 
 	switch(severity)
 		if(1.0)
-			take_damage(rand(300, 600), BLAST) //Breaks through 3 - 4 layers
+			take_damage(rand(150, 300), BLAST) //Breaks through 3 - 4 layers
 		if(2.0)
-			take_damage(rand(115, 430), BLAST) //Breaks through 2 - 3 layers
+			take_damage(rand(50, 200), BLAST) //Breaks through 2 - 3 layers
 		if(3.0)
-			take_damage(rand(20, 120), BLAST) //Breaks 1-2 layers
+			take_damage(rand(20, 100), BLAST) //Breaks 1-2 layers
 
 
 /turf/simulated/floor/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)

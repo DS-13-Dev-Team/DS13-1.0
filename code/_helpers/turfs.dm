@@ -251,6 +251,7 @@
 
 	return TRUE
 
+
 //Returns true if this is a lower hull of the ship. IE,a floor that has space underneath
 /proc/turf_is_lower_hull(var/turf/T)
 	if (turf_is_external(T))
@@ -331,8 +332,7 @@
 	if (A.area_flags & AREA_FLAG_EXTERNAL)
 		return TRUE
 
-	var/datum/gas_mixture/environment = T.return_air()
-	if (!environment || !environment.total_moles)
+	if (isnull(T.initial_gas))
 		return TRUE
 
 	return FALSE

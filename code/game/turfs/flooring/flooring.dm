@@ -59,7 +59,7 @@ var/list/flooring_types
 	var/removal_time = WORKTIME_FAST * 0.75
 
 	//Flooring Icon vars
-	var/smooth_nothing = FALSE //True/false only, optimisation
+	var/smooth_nothing = TRUE //True/false only, optimisation
 	//If true, all smoothing logic is entirely skipped
 
 	//The rest of these x_smooth vars use one of the following options
@@ -75,7 +75,7 @@ var/list/flooring_types
 	var/list/flooring_blacklist = list() //Smooth with everything except the contents of this list
 
 	//How we smooth with walls
-	var/wall_smooth = SMOOTH_NONE
+	var/wall_smooth = SMOOTH_ALL	//Set the default to smooth with walls because we don't have borders at all
 	//There are no lists for walls at this time
 
 	//How we smooth with space and openspace tiles
@@ -136,7 +136,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/plating.dmi'
 	icon_base = "plating"
 	build_type = /obj/item/stack/material/steel
-	flags = TURF_REMOVE_WELDER | TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS | TURF_CAN_BURN | TURF_CAN_BREAK
+	flags = TURF_REMOVE_WELDER | TURF_CAN_BURN | TURF_CAN_BREAK //| TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS
 	can_paint = 1
 	plating_type = /decl/flooring/reinforced/plating/under
 	is_plating = TRUE
@@ -145,13 +145,15 @@ var/list/flooring_types
 	removal_time = 150
 	health = 100
 	has_base_range = 18
-	floor_smooth = SMOOTH_BLACKLIST
-	flooring_blacklist = list(/decl/flooring/reinforced/plating/under,/decl/flooring/reinforced/plating/hull) //Smooth with everything except the contents of this list
-	smooth_movable_atom = SMOOTH_GREYLIST
-	movable_atom_blacklist = list(
+	smooth_nothing = TRUE
+	//floor_smooth = SMOOTH_BLACKLIST
+	//flooring_blacklist = list(/decl/flooring/reinforced/plating/under,/decl/flooring/reinforced/plating/hull) //Smooth with everything except the contents of this list
+	//smooth_movable_atom = SMOOTH_GREYLIST
+	/*movable_atom_blacklist = list(
 		list(/obj, list("density" = TRUE, "anchored" = TRUE), 1)
 		)
 	movable_atom_whitelist = list(list(/obj/machinery/door/airlock, list(), 2))
+	*/
 
 //Normal plating allows anything, except other types of plating
 /decl/flooring/reinforced/plating/can_build_floor(var/decl/flooring/newfloor)
@@ -184,6 +186,7 @@ var/list/flooring_types
 	space_smooth = SMOOTH_ALL
 	floor_smooth = SMOOTH_NONE
 	smooth_movable_atom = SMOOTH_NONE
+	smooth_nothing = FALSE
 
 //Underplating can only be upgraded to normal plating
 /decl/flooring/reinforced/plating/under/can_build_floor(var/decl/flooring/newfloor)
@@ -247,13 +250,14 @@ var/list/flooring_types
 	//try_update_icon = 0
 	plating_type = null
 	is_plating = TRUE
-	health = 350
+	health = 700	//Virtually indestructible
 	resistance = RESISTANCE_HEAVILY_ARMOURED
 	removal_time = 1 MINUTES //Cutting through the hull is very slow work
 	footstep_sound = "hull"
 	wall_smooth = SMOOTH_ALL
 	space_smooth = SMOOTH_NONE
 	smooth_movable_atom = SMOOTH_NONE
+	smooth_nothing = FALSE
 
 //Hull can upgrade to underplating
 /decl/flooring/reinforced/plating/hull/can_build_floor(var/decl/flooring/newfloor)

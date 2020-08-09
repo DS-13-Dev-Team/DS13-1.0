@@ -13,8 +13,6 @@ var/list/flooring_cache = list()
 /turf/simulated/floor/update_icon(var/update_neighbors)
 	icon_updates_count++
 	var/has_smooth = 0 //This is just the has_border bitfield inverted for easier logic
-	if(lava) //Wtf why
-		return
 
 	if(flooring)
 		// Set initial icon and strings.
