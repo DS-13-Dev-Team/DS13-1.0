@@ -33,8 +33,10 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
+  - rscadd: "Added a P.C.S.I. Security armor tag and helmet cover."
   - rscdel: "Removed the flashdark gimmick item from sometimes appearing in the random loot list."
   - rscdel: "Removed the slime extract flashlight item from sometimes appearing in the random loot list."
+  - rscdel: "Removed a good chunk of lore-breaking or inappropriate armor decorations. They are now longer in the spawn loadout menu."
   - maptweak: "Fixed two off-key windows near the engineering bay on the upper level."
-  - bugfix: "Fixed CSECO and DoM getting a broken fax machine. Damn budgetcuts!"
   - maptweak: "Added fax machines to: Bridge, SO's Office, CSCIO Office, SMO's office."
+  - bugfix: "Fixed CSECO and DoM getting a broken fax machine. Damn budgetcuts!"
