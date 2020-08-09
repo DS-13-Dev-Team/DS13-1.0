@@ -62,8 +62,11 @@
 
 /turf/simulated/floor/holofloor/snow
 	name = "snow"
+	base_name = "snow"
 	icon = 'icons/turf/floors.dmi'
+	base_icon = 'icons/turf/floors.dmi'
 	icon_state = "snow"
+	base_icon_state = "snow"
 
 /turf/simulated/floor/holofloor/space
 	icon = 'icons/turf/space.dmi'
@@ -80,26 +83,37 @@
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 /turf/simulated/floor/holofloor/beach
+	desc = "Uncomfortably gritty for a hologram."
+	base_desc = "Uncomfortably gritty for a hologram."
 	icon = 'icons/misc/beach.dmi'
+	base_icon = 'icons/misc/beach.dmi'
 	initial_flooring = null
 
 /turf/simulated/floor/holofloor/beach/sand
 	name = "sand"
 	icon_state = "desert0"
+	base_icon_state = "desert0"
 
 /turf/simulated/floor/holofloor/beach/coastline
 	name = "coastline"
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "sandwater"
+	base_icon_state = "sandwater"
+
 /turf/simulated/floor/holofloor/beach/water
 	name = "water"
 	icon_state = "seashallow"
+	base_icon_state = "seashallow"
 
 /turf/simulated/floor/holofloor/desert
 	name = "desert sand"
+	base_name = "desert sand"
 	desc = "Uncomfortably gritty for a hologram."
+	base_desc = "Uncomfortably gritty for a hologram."
 	icon_state = "asteroid"
+	base_icon_state = "asteroid"
 	icon = 'icons/turf/flooring/asteroid.dmi'
+	base_icon = 'icons/turf/flooring/asteroid.dmi'
 	initial_flooring = null
 
 /turf/simulated/floor/holofloor/desert/New()
@@ -188,7 +202,8 @@
 		else
 			close()
 
-
+	else if (src.density)
+		flick(text("[]deny", src.base_state), src)
 
 	return
 
@@ -216,7 +231,7 @@
 	desc = "May the force be within you. Sorta."
 	icon_state = "sword0"
 	force = 3.0
-
+	
 	throw_range = 5
 	throwforce = 0
 	w_class = ITEM_SIZE_SMALL

@@ -15,7 +15,7 @@
 	var/color_picker = 0
 
 	var/list/decals = list(
-		//Commented out due to compile errors //"quarter-turf" =      list("path" = /obj/effect/floor_decal/corner, "precise" = 1, "coloured" = 1),
+		"quarter-turf" =      list("path" = /obj/effect/floor_decal/corner, "precise" = 1, "coloured" = 1),
 		"hazard stripes" =    list("path" = /obj/effect/floor_decal/industrial/warning),
 		"corner, hazard" =    list("path" = /obj/effect/floor_decal/industrial/warning/corner),
 		"hatched marking" =   list("path" = /obj/effect/floor_decal/industrial/hatch, "coloured" = 1),
@@ -253,4 +253,3 @@
 		to_chat(usr, "<span class='notice'>You set \the [src] to color picker mode, scanning colors off objects.</span>")
 	else
 		to_chat(usr, "<span class='notice'>You set \the [src] to painting mode.</span>")
-

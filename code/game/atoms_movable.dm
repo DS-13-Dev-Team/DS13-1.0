@@ -229,8 +229,3 @@
 
 /atom/movable/proc/reset_move_animation()
 	animate_movement = SLIDE_STEPS
-
-
-// if this returns true, interaction to turf will be redirected to src instead
-/atom/movable/proc/preventsTurfInteractions()
-	return (density && anchored && !(atom_flags & ATOM_FLAG_CHECKS_BORDER))

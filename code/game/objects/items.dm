@@ -9,8 +9,6 @@
 	var/randpixel = 6
 	var/r_speed = 1.0
 
-	var/structure_damage_factor = 1	//Damage dealt to doors, walls, floors, structures and other hard targets is multiplied by this
-
 	//Defense
 	var/max_health = 0	//This is autocalculated based on size
 	var/health = 0
