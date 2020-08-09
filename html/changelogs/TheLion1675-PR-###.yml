@@ -39,4 +39,5 @@ changes:
   - rscdel: "Removed a good chunk of lore-breaking or inappropriate armor decorations. They are now longer in the spawn loadout menu."
   - maptweak: "Fixed two off-key windows near the engineering bay on the upper level."
   - maptweak: "Added fax machines to: Bridge, SO's Office, CSCIO Office, SMO's office."
+  - maptweak: "Added a disposal delivery system for Mining directly to Cargo. The starting point of this can be found in the processing room. The end point can be found in the shuttle delivery area."
   - bugfix: "Fixed CSECO and DoM getting a broken fax machine. Damn budgetcuts!"
