@@ -250,7 +250,7 @@ var/list/_client_preferences_by_type
 	description = "Attack Log Messages"
 	key = "CHAT_ATTACKLOGS"
 	options = list(GLOB.PREF_SHOW, GLOB.PREF_HIDE)
-	flags = R_ADMIN
+	flags = R_MOD
 	default_value = GLOB.PREF_HIDE
 
 /********************
