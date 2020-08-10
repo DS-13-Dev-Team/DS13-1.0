@@ -173,6 +173,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 	penetration_modifier = 0
 
 	muzzle_type = /obj/effect/projectile/bio/muzzle
+	impact_type = /obj/effect/projectile/acid/impact
 	miss_sounds = list('sound/weapons/guns/miss1.ogg','sound/weapons/guns/miss2.ogg','sound/weapons/guns/miss3.ogg','sound/weapons/guns/miss4.ogg')
 
 
@@ -197,6 +198,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 	damage = 10
 	step_delay = 1.5
 	kill_count = SPITTER_SNAPSHOT_RANGE
+	impact_type = /obj/effect/projectile/acid/impact/small
 
 
 //Longshot projectile. Good damage, no range limits, slower moving
