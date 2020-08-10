@@ -8,13 +8,15 @@
 proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = UP|DOWN, shaped)
 	set waitfor = FALSE
 
-	var/multi_z_scalar = 0.35
+	//var/multi_z_scalar = 0.35
 	src = null	//so we don't abort once src is deleted
 
 	epicenter = get_turf(epicenter)
 	if(!epicenter) return
 
 	// Handles recursive propagation of explosions.
+	//Disabled for now, needs some more reworking
+	/*
 	if(z_transfer)
 		var/adj_dev   = max(0, (multi_z_scalar * devastation_range) - (shaped ? 2 : 0) )
 		var/adj_heavy = max(0, (multi_z_scalar * heavy_impact_range) - (shaped ? 2 : 0) )
@@ -27,6 +29,10 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 				explosion(GetAbove(epicenter), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, UP, shaped)
 			if(HasBelow(epicenter.z) && z_transfer & DOWN)
 				explosion(GetBelow(epicenter), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, DOWN, shaped)
+
+	*/
+
+
 
 	//This calculates roughly how far our explosion will extend. This is more correctly defined as "minimum range over empty terrain"
 	//It may be much shorter if obstacles are involved, or slightly longer if they aren't.
