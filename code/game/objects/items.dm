@@ -96,6 +96,9 @@
 	// Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
 	var/list/sprite_sheets_obj = list()
 
+	//Items are not dense typically
+	can_block_movement = FALSE
+
 /obj/item/New()
 	if (!max_health)
 		if (w_class != ITEM_SIZE_NO_CONTAINER)	//This is infinity, would cause errors
@@ -103,6 +106,8 @@
 		else
 			max_health = 250
 	health = max_health
+
+
 	..()
 	if(randpixel && (!pixel_x && !pixel_y) && isturf(loc)) //hopefully this will prevent us from messing with mapper-set pixel_x/y
 		pixel_x = rand(-randpixel, randpixel)
