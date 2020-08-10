@@ -752,7 +752,7 @@
 
 	if (subject && holder && holder.wearer)
 		//Lets see if the clickpoint has actually changed
-		if (global_clickpoint.x != target.x || global_clickpoint.y != target.y)
+		if (!target || global_clickpoint.x != target.x || global_clickpoint.y != target.y)
 			//It has! Set the new target, and if we were at rest, we start moving again
 			target = global_clickpoint
 			var/vector2/userloc = holder.wearer.get_global_pixel_loc()
