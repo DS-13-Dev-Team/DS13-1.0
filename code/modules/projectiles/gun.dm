@@ -18,7 +18,7 @@
 	matter = list(MATERIAL_STEEL = 2000)
 	w_class = ITEM_SIZE_NORMAL
 	throwforce = 5
-	
+
 	throw_range = 5
 	force = 5
 	origin_tech = list(TECH_COMBAT = 1)
@@ -384,13 +384,8 @@
 				"<span class='reflex_shoot'>You fire \the [src] by reflex!</span>",
 				"You hear a [fire_sound_text]!"
 			)
-		else
-			user.visible_message(
-				"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""]!</span>",
-				"<span class='warning'>You fire \the [src]!</span>",
-				"You hear a [fire_sound_text]!"
-				)
 
+	/*
 	if(one_hand_penalty)
 		if(!src.is_held_twohanded(user))
 			switch(one_hand_penalty)
@@ -414,7 +409,7 @@
 					to_chat(user, "<span class='warning'>You have trouble holding \the [src] steady.</span>")
 				if(4 to INFINITY)
 					to_chat(user, "<span class='warning'>You struggle to hold \the [src] steady!</span>")
-
+	*/
 	if(screen_shake)
 		spawn()
 			shake_camera(user, screen_shake+1, screen_shake)

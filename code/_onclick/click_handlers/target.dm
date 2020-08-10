@@ -32,6 +32,7 @@
 /datum/click_handler/target/proc/stop()
 	if (!stopped)
 		stopped = TRUE
-		if (user && user.client)
-			user.client.show_popup_menus = TRUE
-		user.RemoveClickHandler(src)
+		if (user)
+			if (user.client)
+				user.client.show_popup_menus = TRUE
+			user.RemoveClickHandler(src)
