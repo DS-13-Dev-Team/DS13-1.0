@@ -22,7 +22,7 @@
 #################################
 
 # Your name.  
-author: TheLion1675
+author: Unknown
 
 # Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
 delete-after: True
@@ -33,13 +33,4 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - rscadd: "Added a P.C.S.I. Security armor tag and helmet cover."
-  - rscadd: "Added maglights to regular security lockers and the CSECO locker."
-  - rscdel: "Removed the flashdark gimmick item from sometimes appearing in the random loot list."
-  - rscdel: "Removed the slime extract flashlight item from sometimes appearing in the random loot list."
-  - rscdel: "Removed a good chunk of lore-breaking or inappropriate armor decorations. They are now longer in the spawn loadout menu."
-  - maptweak: "Fixed two off-key windows near the engineering bay on the upper level."
-  - maptweak: "Added fax machines to: Bridge, SO's Office, CSCIO Office, SMO's office, CE's office."
-  - maptweak: "Added a disposal delivery system for Mining directly to Cargo. The starting point of this can be found in the processing room. The end point can be found in the shuttle delivery area."
-  - bugfix: "Fixed CSECO and DoM getting a broken fax machine. Damn budgetcuts!"
-  - tweak: "Attack logs are now visible for Mod+ instead of previously only Admin+."
+  - bugfix: "Nutricube storage containers are once more visible."
