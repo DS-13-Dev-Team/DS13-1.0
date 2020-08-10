@@ -14,7 +14,7 @@
 	pixel_x = -16
 	pixel_y = -16
 
-	biomass = 30
+	biomass = 25
 	reclamation_time = 10 MINUTES
 
 	default_scale = 1.4

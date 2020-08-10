@@ -17,7 +17,7 @@
 	<br>\
 	Casting it again on a target who already has a tracer will refresh the duration and range"
 	target_string = "any living mob or crewmember"
-	energy_cost = 120
+	energy_cost = 110
 	require_corruption = FALSE
 	require_necrovision = TRUE
 	autotarget_range = 1

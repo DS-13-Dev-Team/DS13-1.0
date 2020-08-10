@@ -3,7 +3,7 @@
 	id = "rune"
 	desc = "Creates a spooky rune. Has no functional effects, just for decoration"
 	target_string = "a wall or floor"
-	energy_cost = 15
+	energy_cost = 16
 	require_corruption = FALSE
 	autotarget_range = 0
 	LOS_block = FALSE	//This is for spooking people, we want them to see it happen
