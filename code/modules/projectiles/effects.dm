@@ -11,12 +11,19 @@
 	mouse_opacity = 0
 	var/lifespan = 3.5
 
+	var/list/random_iconstate
+
 /obj/effect/projectile/Initialize()
+	.= ..()
+	//We need a tiny sleep for random icons to be setup
+	if (random_iconstate)
+		icon_state = pick(random_iconstate)
+
+
 	if (lifespan)
-		animate(src, alpha = 0, time = lifespan)
+		animate(src, alpha = 0, time = lifespan, flags = ANIMATION_END_NOW)
 		QDEL_IN(src,lifespan)
 
-	return ..()
 
 /obj/effect/projectile/proc/set_transform(var/matrix/M)
 	if(istype(M))
@@ -244,3 +251,23 @@
 
 /obj/effect/projectile/sustained/Destroy()
 	.=..()
+
+
+//----------------------------
+// Acid Bolts
+//----------------------------
+/obj/effect/projectile/acid/impact
+	icon_state = "impact_acid_1"
+	light_color = "#ff00dc"
+	light_max_bright = 0
+	light_outer_range = 0
+	lifespan = 12
+	random_iconstate = list("impact_acid_1","impact_acid_2","impact_acid_3","impact_acid_4")
+
+/obj/effect/projectile/acid/impact/set_transform(var/matrix/M)
+	M *= default_scale
+	.=..()
+
+
+/obj/effect/projectile/acid/impact/small
+	default_scale = 0.75
