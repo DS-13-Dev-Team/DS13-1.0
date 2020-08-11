@@ -3,6 +3,8 @@
 
 var/global/send_emergency_team = 0 // Used for automagic response teams
 								   // 'admin_emergency_team' for admin-spawned response teams
+var/global/datum/antagonist/ert/current_ert // Used to determine the ert to join.
+var/global/list/ert_options = list(GLOB.ert, GLOB.uni_ert, GLOB.kellion)
 var/ert_base_chance = 10 // Default base chance. Will be incremented by increment ERT chance.
 var/can_call_ert
 
@@ -35,8 +37,19 @@ var/can_call_ert
 		to_chat(usr, "<span class='danger'>Looks like somebody beat you to it!</span>")
 		return
 
-	message_admins("[key_name_admin(usr)] is dispatching an Emergency Response Team.", 1)
-	log_admin("[key_name(usr)] used Dispatch Response Team.")
+	var/choice = input(usr, "Select type of strike team:") as null|anything in list("Earth Defence Force", "Unitologists", "Kellion Response Team", "Random")
+
+	switch(choice)
+		if("Earth Defence Force")
+			current_ert = GLOB.ert
+		if("Unitologists")
+			current_ert = GLOB.uni_ert
+		if("Kellion Response Team")
+			current_ert = GLOB.kellion
+		else
+			current_ert = 0
+	message_admins("[key_name_admin(usr)] is dispatching an Emergency Response Team. ([choice])", 1)
+	log_admin("[key_name(usr)] used Dispatch Response Team. ([choice])")
 	trigger_armed_response_team(1)
 
 client/verb/JoinResponseTeam()
@@ -55,10 +68,8 @@ client/verb/JoinResponseTeam()
 		if(jobban_isbanned(usr, MODE_ERT) || jobban_isbanned(usr, "Security Officer"))
 			to_chat(usr, "<span class='danger'>You are jobbanned from the emergency reponse team!</span>")
 			return
-		if(GLOB.ert.current_antagonists.len >= GLOB.ert.hard_cap)
-			to_chat(usr, "The emergency response team is already full!")
-			return
-		GLOB.ert.create_default(usr)
+		current_ert.add_candidate(usr)
+		to_chat(usr, "You have added yourself to the candidate list.")
 	else
 		to_chat(usr, "You need to be an observer or new player to use this.")
 
@@ -101,7 +112,8 @@ proc/trigger_armed_response_team(var/force = 0)
 		return
 	if(send_emergency_team)
 		return
-
+	if(!current_ert)
+		current_ert = pick(ert_options)
 	var/send_team_chance = ert_base_chance // Is incremented by increment_ert_chance.
 	send_team_chance += 2*percentage_dead() // the more people are dead, the higher the chance
 	send_team_chance += percentage_antagonists() // the more antagonists, the higher the chance
@@ -121,8 +133,10 @@ proc/trigger_armed_response_team(var/force = 0)
 	can_call_ert = 0 // Only one call per round, gentleman.
 	send_emergency_team = 1
 
-	sleep(600 * 5)
+	sleep(100) // reminder to change back.
 	send_emergency_team = 0 // Can no longer join the ERT.
+	current_ert.pick_candidates()
+
 
 /datum/evacuation_predicate/ert
 	var/prevent_until
