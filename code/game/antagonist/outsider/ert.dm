@@ -58,12 +58,12 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	candidates += source
 
 /datum/antagonist/ert/proc/pick_candidates()
-	/*
+
 	if(!outfits || outfits.len > candidates.len)
 		message_admins("Ert aborted. Not enough candidates.", 1)
 		log_admin("Ert aborted. Not enough candidates.")
 		return 0
-	*/
+
 	for(var/i = 0; i < outfits.len; i++)
 		if(candidates.len == 0)
 			break

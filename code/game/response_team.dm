@@ -65,7 +65,7 @@ client/verb/JoinResponseTeam()
 		if(!send_emergency_team)
 			to_chat(usr, "No emergency response team is currently being sent.")
 			return
-		if(jobban_isbanned(usr, MODE_ERT) || jobban_isbanned(usr, "Security Officer"))
+		if(jobban_isbanned(usr, MODE_EDF) || jobban_isbanned(usr, "Security Officer"))
 			to_chat(usr, "<span class='danger'>You are jobbanned from the emergency reponse team!</span>")
 			return
 		current_ert.add_candidate(usr)
