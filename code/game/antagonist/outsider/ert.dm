@@ -88,30 +88,30 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 
 /datum/antagonist/ert/kellion
 	id = MODE_MRT
-    role_text = "Maintenance Response Team"
-    role_text_plural = "Maintenance Response Team"
-    antag_text = "Placeholder"
-    leader_welcome_text = "Placeholder"
-    landmark_id = "Kellion Team"
-    outfits = list(
-        /decl/hierarchy/outfit/isaac,
-        /decl/hierarchy/outfit/kellion_sec,
+	role_text = "Maintenance Response Team"
+	role_text_plural = "Maintenance Response Team"
+	antag_text = "Placeholder"
+	leader_welcome_text = "Placeholder"
+	landmark_id = "Kellion Team"
+	outfits = list(
+		/decl/hierarchy/outfit/isaac,
 		/decl/hierarchy/outfit/kellion_sec,
-        /decl/hierarchy/outfit/kellion_sec_leader,
-        /decl/hierarchy/outfit/kendra)
+		/decl/hierarchy/outfit/kellion_sec,
+		/decl/hierarchy/outfit/kellion_sec_leader,
+		/decl/hierarchy/outfit/kendra)
 
 /datum/antagonist/ert/unitologists
 	id = MODE_UNI_ERT
-    role_text = "Unitologist"
-    role_text_plural = "Unitologists"
-    antag_text = "Placeholder"
-    leader_welcome_text = "Placeholder"
-    landmark_id = "Unitologists Team"
-    antaghud_indicator = "hudunitologist" // Used by the ghost antagHUD.
-    antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
-    outfits = list(
-        /decl/hierarchy/outfit/faithful,
-        /decl/hierarchy/outfit/healer,
-        /decl/hierarchy/outfit/mechanic,
-        /decl/hierarchy/outfit/berserker,
-        /decl/hierarchy/outfit/deacon)
+	role_text = "Unitologist"
+	role_text_plural = "Unitologists"
+	antag_text = "Placeholder"
+	leader_welcome_text = "Placeholder"
+	landmark_id = "Unitologists Team"
+	antaghud_indicator = "hudunitologist" // Used by the ghost antagHUD.
+	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
+	outfits = list(
+		/decl/hierarchy/outfit/faithful,
+		/decl/hierarchy/outfit/healer,
+		/decl/hierarchy/outfit/mechanic,
+		/decl/hierarchy/outfit/berserker,
+		/decl/hierarchy/outfit/deacon)
