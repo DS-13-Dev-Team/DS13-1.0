@@ -118,14 +118,14 @@
 /datum/job/proc/available_in_days(client/C)
 	if(C && config.use_age_restriction_for_jobs && isnull(C.holder) && isnum(C.player_age) && isnum(minimal_player_age))
 		return max(0, minimal_player_age - C.player_age)
-	return 0
+	return FALSE
 
 /datum/job/proc/apply_fingerprints(var/mob/living/carbon/human/target)
 	if(!istype(target))
-		return 0
+		return FALSE
 	for(var/obj/item/item in target.contents)
 		apply_fingerprints_to_item(target, item)
-	return 1
+	return TRUE
 
 /datum/job/proc/apply_fingerprints_to_item(var/mob/living/carbon/human/holder, var/obj/item/item)
 	item.add_fingerprint(holder,1)
@@ -192,20 +192,20 @@
  */
 /datum/job/proc/is_branch_allowed(var/branch_name)
 	if(!allowed_branches || !GLOB.using_map || !(GLOB.using_map.flags & MAP_HAS_BRANCH))
-		return 1
+		return TRUE
 	if(branch_name == "None")
-		return 0
+		return FALSE
 
 	var/datum/mil_branch/branch = mil_branches.get_branch(branch_name)
 
 	if(!branch)
 		crash_with("unknown branch \"[branch_name]\" passed to is_branch_allowed()")
-		return 0
+		return FALSE
 
 	if(is_type_in_list(branch, allowed_branches))
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /**
  *  Check if people with given rank are allowed in this job
@@ -217,20 +217,20 @@
  */
 /datum/job/proc/is_rank_allowed(var/branch_name, var/rank_name)
 	if(!allowed_ranks || !GLOB.using_map || !(GLOB.using_map.flags & MAP_HAS_RANK))
-		return 1
+		return TRUE
 	if(branch_name == "None" || rank_name == "None")
-		return 0
+		return FALSE
 
 	var/datum/mil_rank/rank = mil_branches.get_rank(branch_name, rank_name)
 
 	if(!rank)
 		crash_with("unknown rank \"[rank_name]\" in branch \"[branch_name]\" passed to is_rank_allowed()")
-		return 0
+		return FALSE
 
 	if(is_type_in_list(rank, allowed_ranks))
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 //Returns human-readable list of branches this job allows.
 /datum/job/proc/get_branches()

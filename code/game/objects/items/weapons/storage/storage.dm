@@ -115,34 +115,34 @@
 	for(var/obj/item/I in contents)
 		. += I.get_storage_cost()
 
-//This proc return 1 if the item can be picked up and 0 if it can't.
+//This proc return TRUE if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
 /obj/item/weapon/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = 0)
 	if(!istype(W)) return //Not an item
 
 	if(user && user.isEquipped(W) && !user.canUnEquip(W))
-		return 0
+		return FALSE
 
 	if(src.loc == W)
-		return 0 //Means the item is already in the storage item
+		return FALSE //Means the item is already in the storage item
 	if(storage_slots != null && contents.len >= storage_slots)
 		if(!stop_messages)
 			to_chat(user, "<span class='notice'>\The [src] is full, make some space.</span>")
-		return 0 //Storage item is full
+		return FALSE //Storage item is full
 
 	if(W.anchored)
-		return 0
+		return FALSE
 
 	if(can_hold.len)
 		if(!is_type_in_list(W, can_hold))
 			if(!stop_messages && ! istype(W, /obj/item/weapon/hand_labeler))
 				to_chat(user, "<span class='notice'>\The [src] cannot hold \the [W].</span>")
-			return 0
+			return FALSE
 		var/max_instances = can_hold[W.type]
 		if(max_instances && instances_of_type_in_list(W, contents) >= max_instances)
 			if(!stop_messages && !istype(W, /obj/item/weapon/hand_labeler))
 				to_chat(user, "<span class='notice'>\The [src] has no more space specifically for \the [W].</span>")
-			return 0
+			return FALSE
 
 	// Don't allow insertion of unsafed compressed matter implants
 	// Since they are sucking something up now, their afterattack will delete the storage
@@ -150,38 +150,38 @@
 		var/obj/item/weapon/implanter/compressed/impr = W
 		if(!impr.safe)
 			stop_messages = 1
-			return 0
+			return FALSE
 
 	if(cant_hold.len && is_type_in_list(W, cant_hold))
 		if(!stop_messages)
 			to_chat(user, "<span class='notice'>\The [src] cannot hold \the [W].</span>")
-		return 0
+		return FALSE
 
 	if (max_w_class != null && W.w_class > max_w_class)
 		if(!stop_messages)
 			to_chat(user, "<span class='notice'>\The [W] is too big for this [src.name].</span>")
-		return 0
+		return FALSE
 
 	var/total_storage_space = W.get_storage_cost()
 	if(total_storage_space == ITEM_SIZE_NO_CONTAINER)
 		if(!stop_messages)
 			to_chat(user, "<span class='notice'>\The [W] cannot be placed in [src].</span>")
-		return 0
+		return FALSE
 
 	total_storage_space += storage_space_used() //Adds up the combined w_classes which will be in the storage item if the item is added to it.
 	if(total_storage_space > max_storage_space)
 		if(!stop_messages)
 			to_chat(user, "<span class='notice'>\The [src] is too full, make some space.</span>")
-		return 0
+		return FALSE
 
-	return 1
+	return TRUE
 
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
 //The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
 //such as when picking up all the items on a tile with one click.
 /obj/item/weapon/storage/proc/handle_item_insertion(var/obj/item/W, var/prevent_warning = 0, var/NoUpdate = 0)
 	if(!istype(W))
-		return 0
+		return FALSE
 	if(istype(W.loc, /mob))
 		var/mob/M = W.loc
 		if(!M.unEquip(W))
@@ -203,7 +203,13 @@
 		if(!NoUpdate)
 			update_ui_after_item_insertion()
 	update_icon()
-	return 1
+	return TRUE
+
+/obj/item/weapon/storage/store_item(var/obj/item/input, var/mob/user)
+	if (can_be_inserted(input, user))
+		handle_item_insertion(input, FALSE)
+		return TRUE
+	return FALSE
 
 /obj/item/weapon/storage/proc/update_ui_after_item_insertion()
 	prepare_ui()
@@ -217,7 +223,7 @@
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
 /obj/item/weapon/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, var/NoUpdate = 0)
-	if(!istype(W)) return 0
+	if(!istype(W)) return FALSE
 	new_location = new_location || get_turf(src)
 
 	if(storage_ui)
@@ -238,7 +244,7 @@
 	W.on_exit_storage(src)
 	if(!NoUpdate)
 		update_icon()
-	return 1
+	return TRUE
 
 //Run once after using remove_from_storage with NoUpdate = 1
 /obj/item/weapon/storage/proc/finish_bulk_removal()
@@ -364,7 +370,7 @@
 	if(user.get_active_hand() == src)
 		if(src.verbs.Find(/obj/item/weapon/storage/verb/quick_empty))
 			src.quick_empty()
-			return 1
+			return TRUE
 
 /obj/item/weapon/storage/proc/make_exact_fit()
 	storage_slots = contents.len

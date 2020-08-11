@@ -40,32 +40,32 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 /mob/living/carbon/human/put_in_hands(var/obj/item/W)
 	if(!W)
-		return 0
+		return FALSE
 	if(put_in_active_hand(W) || put_in_inactive_hand(W))
 		W.update_held_icon()
-		return 1
+		return TRUE
 	return ..()
 
 /mob/living/carbon/human/put_in_l_hand(var/obj/item/W)
 	if(!..() || l_hand || !LAZYLEN(species.grasping_limbs))
-		return 0
+		return FALSE
 	var/obj/item/organ/external/hand = get_organ(species.grasping_limbs[min(species.grasping_limbs.len, 2)])//
 	if(!hand || !hand.is_usable())
-		return 0
+		return FALSE
 	equip_to_slot(W,slot_l_hand)
 	W.add_fingerprint(src)
-	return 1
+	return TRUE
 
 /mob/living/carbon/human/put_in_r_hand(var/obj/item/W)
 	if(!..() || r_hand || !LAZYLEN(species.grasping_limbs))
-		return 0
+		return FALSE
 	var/obj/item/organ/external/hand = get_organ(species.grasping_limbs[min(species.grasping_limbs.len, 1)])
 	if(!hand || !hand.is_usable())
-		return 0
+		return FALSE
 
 	equip_to_slot(W,slot_r_hand)
 	W.add_fingerprint(src)
-	return 1
+	return TRUE
 
 
 /mob/living/carbon/human/proc/has_organ_for_slot(slot)
@@ -86,7 +86,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			return has_organ_or_replacement(BP_CHEST)
 		if(slot_wear_id)
 			// the only relevant check for this is the uniform check
-			return 1
+			return TRUE
 		if(slot_l_ear)
 			return has_organ_or_replacement(BP_HEAD)
 		if(slot_r_ear)
@@ -110,12 +110,12 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(slot_s_store)
 			return has_organ_or_replacement(BP_CHEST)
 		if(slot_in_backpack)
-			return 1
+			return TRUE
 		if(slot_tie)
-			return 1
+			return TRUE
 
 /mob/living/carbon/human/u_equip(obj/W as obj)
-	if(!W)	return 0
+	if(!W)	return FALSE
 
 	if (W == wear_suit)
 		if(s_store)
@@ -210,10 +210,10 @@ This saves us from having to call add_fingerprint() any time something is put in
 			update_inv_l_hand()
 		update_inv_l_hand()
 	else
-		return 0
+		return FALSE
 
 	update_action_buttons()
-	return 1
+	return TRUE
 
 
 
@@ -329,7 +329,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(slot_in_backpack)
 			if(src.get_active_hand() == W)
 				src.remove_from_mob(W)
-			W.forceMove(src.back)
+			src.back.store_item(W)
 		if(slot_tie)
 			var/obj/item/clothing/under/uniform = src.w_uniform
 			if(uniform)
@@ -337,7 +337,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 		else
 			to_chat(src, "<span class='danger'>You are trying to eqip this item to an unsupported inventory slot. If possible, please write a ticket with steps to reproduce. Slot was: [slot]</span>")
 			return
-
 	if((W == src.l_hand) && (slot != slot_l_hand))
 		src.l_hand = null
 		update_inv_l_hand() //So items actually disappear from hands.
@@ -357,7 +356,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 	if(old_item)
 		qdel(old_item)
 
-	return 1
+
+	return TRUE
 
 //Checks if a given slot can be accessed at this time, either to equip or unequip I
 /mob/living/carbon/human/slot_is_accessible(var/slot, var/obj/item/I, mob/user=null)
@@ -376,8 +376,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 	if(covering && (covering.body_parts_covered & (I.body_parts_covered|check_flags)))
 		to_chat(user, "<span class='warning'>\The [covering] is in the way.</span>")
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /mob/living/carbon/human/get_equipped_item(var/slot)
 	switch(slot)
