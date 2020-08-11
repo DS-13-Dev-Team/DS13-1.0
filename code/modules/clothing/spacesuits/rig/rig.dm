@@ -195,16 +195,16 @@
 
 /obj/item/weapon/rig/proc/suit_is_deployed()
 	if(!istype(wearer) || src.loc != wearer || wearer.back != src)
-		return 0
+		return FALSE
 	if(helm_type && !(helmet && wearer.head == helmet))
-		return 0
+		return FALSE
 	if(glove_type && !(gloves && wearer.gloves == gloves))
-		return 0
+		return FALSE
 	if(boot_type && !(boots && wearer.shoes == boots))
-		return 0
+		return FALSE
 	if(chest_type && !(chest && wearer.wear_suit == chest))
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/item/weapon/rig/proc/reset()
 	canremove = 1
@@ -224,10 +224,10 @@
 	// Seal toggling can be initiated by the suit AI, too
 	if(!wearer)
 		to_chat(initiator, "<span class='danger'>Cannot toggle suit: The suit is currently not being worn by anyone.</span>")
-		return 0
+		return FALSE
 
 	if(!check_power_cost(wearer, 1))
-		return 0
+		return FALSE
 
 	deploy(wearer,instant)
 
@@ -311,7 +311,7 @@
 		if(airtight)
 			update_component_sealed()
 		update_icon(1)
-		return 0
+		return FALSE
 
 	// Success!
 	canremove = seal_target
@@ -402,13 +402,13 @@
 	if(offline != go_offline)
 		offline = go_offline
 		update_wear_icon()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/item/weapon/rig/proc/check_power_cost(var/mob/living/user, var/cost, var/use_unconcious, var/obj/item/rig_module/mod, var/user_is_ai)
 
 	if(!istype(user))
-		return 0
+		return FALSE
 
 	var/fail_msg
 
@@ -427,7 +427,7 @@
 
 	if(fail_msg)
 		to_chat(user, "[fail_msg]")
-		return 0
+		return FALSE
 
 	// This is largely for cancelling stealth and whatever.
 	if(mod && mod.disruptive)
@@ -436,7 +436,7 @@
 				module.deactivate()
 
 	cell.use(cost * CELLRATE)
-	return 1
+	return TRUE
 
 /obj/item/weapon/rig/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/nano_state = GLOB.inventory_state)
 	if(!user)
@@ -525,13 +525,17 @@
 			species_icon =  sprite_sheets[wearer.species.get_bodytype(wearer)]
 		mob_icon = image("icon" = species_icon, "icon_state" = "[icon_state]")
 
-	if(equipment_overlay_icon && LAZYLEN(installed_modules))
-		for(var/obj/item/rig_module/module in installed_modules)
-			if(module.suit_overlay)
-
-				chest.overlays += image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", "dir" = SOUTH)
 
 	if(wearer)
+		if(equipment_overlay_icon && LAZYLEN(installed_modules))
+			for(var/obj/item/rig_module/module in installed_modules)
+				if(module.suit_overlay)
+					var/image/overlay = image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", "dir" = SOUTH)
+					if (chest)
+						//Some rigs dont have a chestpiece
+						chest.overlays += overlay
+					else
+						src.overlays += overlay
 		wearer.update_inv_shoes()
 		wearer.update_inv_gloves()
 		wearer.update_inv_head()
@@ -555,36 +559,36 @@
 /obj/item/weapon/rig/proc/check_suit_access(var/mob/living/carbon/human/user)
 
 	if(!security_check_enabled)
-		return 1
+		return TRUE
 
 	if(istype(user))
 		if(!canremove)
-			return 1
+			return TRUE
 		if(malfunction_check(user))
-			return 0
+			return FALSE
 		if(user.back != src)
-			return 0
+			return FALSE
 		else if(!src.allowed(user))
 			to_chat(user, "<span class='danger'>Unauthorized user. Access denied.</span>")
-			return 0
+			return FALSE
 
 	else if(!ai_override_enabled)
 		to_chat(user, "<span class='danger'>Synthetic access disabled. Please consult hardware provider.</span>")
-		return 0
+		return FALSE
 
-	return 1
+	return TRUE
 
 //TODO: Fix Topic vulnerabilities for malfunction and AI override.
 /obj/item/weapon/rig/Topic(href,href_list)
 	if(!check_suit_access(usr))
-		return 0
+		return FALSE
 
 	if(href_list["toggle_piece"])
 		toggle_piece(href_list["toggle_piece"], usr)
-		return 1
+		return TRUE
 	if(href_list["toggle_seals"])
 		toggle_seals(usr)
-		return 1
+		return TRUE
 	if(href_list["interact_module"])
 
 		var/module_index = text2num(href_list["interact_module"])
@@ -602,14 +606,14 @@
 					selected_module = module
 				if("select_charge_type")
 					module.charge_selected = href_list["charge_type"]
-		return 1
+		return TRUE
 	if(href_list["toggle_ai_control"])
 		ai_override_enabled = !ai_override_enabled
 		notify_ai("Synthetic suit control has been [ai_override_enabled ? "enabled" : "disabled"].")
-		return 1
+		return TRUE
 	if(href_list["toggle_suit_lock"])
 		locked = !locked
-		return 1
+		return TRUE
 
 /obj/item/weapon/rig/proc/notify_ai(var/message)
 	for(var/obj/item/rig_module/ai_container/module in installed_modules)
@@ -619,7 +623,7 @@
 
 /obj/item/weapon/rig/equipped(mob/living/carbon/human/M, var/slot)
 	var/slot_before = equip_slot
-	..()
+	.=..()
 
 
 	if(seal_delay > 0 && istype(M) && M.back == src)
@@ -627,9 +631,9 @@
 		if(!do_after(M,seal_delay,src))
 			if(M && M.back == src)
 				if(!M.unEquip(src))
-					return
+					return FALSE
 			src.forceMove(get_turf(src))
-			return
+			return FALSE
 
 	if(istype(M) && M.back == src)
 		M.visible_message("<font color='blue'><b>[M] struggles into \the [src].</b></font>", "<font color='blue'><b>You struggle into \the [src].</b></font>")
@@ -717,23 +721,25 @@
 	if(H.back != src)
 		return
 
+	//Future todo: Make these pieces move inside the rig instead of being deleted
+
 	if(sealed)
-		if(H.head)
+		if(helm_type && H.head && istype(H.head, helm_type))
 			var/obj/item/garbage = H.head
 			H.head = null
 			qdel(garbage)
 
-		if(H.gloves)
+		if(glove_type && H.gloves && istype(H.gloves, glove_type))
 			var/obj/item/garbage = H.gloves
 			H.gloves = null
 			qdel(garbage)
 
-		if(H.shoes)
+		if(boot_type && H.shoes && istype(H.shoes, boot_type))
 			var/obj/item/garbage = H.shoes
 			H.shoes = null
 			qdel(garbage)
 
-		if(H.wear_suit)
+		if(chest_type && H.wear_suit && istype(H.wear_suit, chest_type))
 			var/obj/item/garbage = H.wear_suit
 			H.wear_suit = null
 			qdel(garbage)
@@ -751,7 +757,7 @@
 
 //Todo
 /obj/item/weapon/rig/proc/malfunction()
-	return 0
+	return FALSE
 
 /obj/item/weapon/rig/emp_act(severity_class)
 	//set malfunctioning
@@ -770,8 +776,8 @@
 	if (electrocute_mob(user, cell, src)) //electrocute_mob() handles removing charge from the cell, no need to do that here.
 		spark_system.start()
 		if(user.stunned)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/item/weapon/rig/proc/take_hit(damage, source, is_emp=0)
 
@@ -828,14 +834,14 @@
 			to_chat(user, "<span class='danger'>The suit is completely unresponsive.</span>")
 		else
 			to_chat(user, "<span class='danger'>ERROR: Hardware fault. Rebooting interface...</span>")
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/item/weapon/rig/proc/ai_can_move_suit(var/mob/user, var/check_user_module = 0, var/check_for_ai = 0)
 
 	if(check_for_ai)
 		if(!(locate(/obj/item/rig_module/ai_container) in contents))
-			return 0
+			return FALSE
 		var/found_ai
 		for(var/obj/item/rig_module/ai_container/module in contents)
 			if(module.damage >= 2)
@@ -844,26 +850,26 @@
 				found_ai = 1
 				break
 		if(!found_ai)
-			return 0
+			return FALSE
 
 	if(check_user_module)
 		if(!user || !user.loc || !user.loc.loc)
-			return 0
+			return FALSE
 		var/obj/item/rig_module/ai_container/module = user.loc.loc
 		if(!istype(module) || module.damage >= 2)
 			to_chat(user, "<span class='warning'>Your host module is unable to interface with the suit.</span>")
-			return 0
+			return FALSE
 
 	if(offline || !cell || !cell.charge || locked_down)
 		if(user) to_chat(user, "<span class='warning'>Your host rig is unpowered and unresponsive.</span>")
-		return 0
+		return FALSE
 	if(!wearer || wearer.back != src)
 		if(user) to_chat(user, "<span class='warning'>Your host rig is not being worn.</span>")
-		return 0
+		return FALSE
 	if(!wearer.stat && !control_overridden && !ai_override_enabled)
 		if(user) to_chat(user, "<span class='warning'>You are locked out of the suit servo controller.</span>")
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/item/weapon/rig/check_access(obj/item/I)
 	return TRUE
@@ -901,6 +907,12 @@
 
 /mob/living/carbon/human/get_rig()
 	return wearing_rig
+
+/obj/item/weapon/rig/store_item(var/obj/item/input, var/mob/user)
+	if (storage && storage.container.can_be_inserted(input, user))
+		storage.container.handle_item_insertion(input, FALSE)
+		return TRUE
+	return FALSE
 
 #undef ONLY_DEPLOY
 #undef ONLY_RETRACT

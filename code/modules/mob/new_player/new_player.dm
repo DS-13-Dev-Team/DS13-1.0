@@ -95,11 +95,11 @@
 				if(player.ready)totalPlayersReady++
 
 /mob/new_player/Topic(href, href_list[])
-	if(!client)	return 0
+	if(!client)	return FALSE
 
 	if(href_list["show_preferences"])
 		client.prefs.ShowChoices(src)
-		return 1
+		return TRUE
 
 	if(href_list["ready"])
 		if(!ticker || ticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
@@ -139,7 +139,7 @@
 
 		var/datum/species/S = all_species[client.prefs.species]
 		if(!check_species_allowed(S))
-			return 0
+			return FALSE
 
 		//Sanitize the spawnpoint incase an invalid value is saved in
 		client.prefs.spawnpoint = sanitize_inlist(client.prefs.spawnpoint, spawntypes(), initial(client.prefs.spawnpoint))
@@ -261,17 +261,17 @@
 /mob/new_player/proc/AttemptLateSpawn(var/datum/job/job, var/spawning_at)
 
 	if(src != usr)
-		return 0
+		return FALSE
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
-		return 0
+		return FALSE
 	if(!config.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
-		return 0
+		return FALSE
 
 	if(!job || !job.is_available(client))
 		alert("[job.title] is not available. Please try another.")
-		return 0
+		return FALSE
 	if(job.is_restricted(client.prefs, src))
 		return
 
@@ -287,13 +287,13 @@
 	// Just in case someone stole our position while we were waiting for input from alert() proc
 	if(!job || !job.is_available(client))
 		to_chat(src, alert("[job.title] is not available. Please try another."))
-		return 0
+		return FALSE
 
 	job_master.AssignRole(src, job.title, 1)
 
 	var/mob/living/character = create_character(spawn_turf)	//creates the human and transfers vars and mind
 	if(!character)
-		return 0
+		return FALSE
 
 	character = job_master.EquipRank(character, job.title, 1)					//equips the human
 	equip_custom_items(character)
@@ -498,7 +498,7 @@
 	popup.open()
 
 /mob/new_player/Move()
-	return 0
+	return FALSE
 
 /mob/new_player/proc/close_spawn_windows()
 	src << browse(null, "window=latechoices") //closes late choices window
@@ -512,12 +512,12 @@
 	if(!(S.spawn_flags & SPECIES_CAN_JOIN) && !has_admin_rights())
 		if(show_alert)
 			to_chat(src, alert("Your current species, [client.prefs.species], is not available for play."))
-		return 0
+		return FALSE
 	if(!is_alien_whitelisted(src, S))
 		if(show_alert)
 			to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /mob/new_player/get_species()
 	var/datum/species/chosen_species
@@ -546,7 +546,7 @@
 	return
 
 mob/new_player/MayRespawn()
-	return 1
+	return TRUE
 
 /mob/new_player/touch_map_edge()
 	return

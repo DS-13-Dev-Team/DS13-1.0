@@ -122,7 +122,7 @@ var/list/outfits_decls_by_type_
 	H.regenerate_icons()
 	if(W) // We set ID info last to ensure the ID photo is as correct as possible.
 		H.set_id_info(W)
-	return 1
+	return TRUE
 
 /decl/hierarchy/outfit/proc/equip_base(mob/living/carbon/human/H, var/equip_adjustments)
 	pre_equip(H)
