@@ -11,7 +11,7 @@ GLOBAL_DATUM_INIT(uni_ert, /datum/antagonist/ert/unitologists, new)
 GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 
 /datum/antagonist/ert
-	id = MODE_ERT
+	id = MODE_EDF
 	role_text = "EDF Responder"
 	role_text_plural = "EDF Responders"
 	antag_text = "You are an <b>anti</b> antagonist! Within the rules, \
@@ -65,7 +65,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		return 0
 	*/
 	for(var/i = 0; i < outfits.len; i++)
-		if(!candidates)
+		if(candidates.len == 0)
 			break
 		var/candidate = pick(candidates)
 		create_default(candidate)
@@ -87,6 +87,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	return 1
 
 /datum/antagonist/ert/kellion
+	id = MODE_MRT
     role_text = "Maintenance Response Team"
     role_text_plural = "Maintenance Response Team"
     antag_text = "Placeholder"
@@ -100,6 +101,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
         /decl/hierarchy/outfit/kendra)
 
 /datum/antagonist/ert/unitologists
+	id = MODE_UNI_ERT
     role_text = "Unitologist"
     role_text_plural = "Unitologists"
     antag_text = "Placeholder"

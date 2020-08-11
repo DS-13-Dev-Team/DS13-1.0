@@ -27,7 +27,6 @@
 #define MODE_LOYALIST "loyalist"
 #define MODE_COMMANDO "commando"
 #define MODE_DEATHSQUAD "deathsquad"
-#define MODE_ERT "ert"
 #define MODE_ACTOR "actor"
 #define MODE_MERCENARY "mercenary"
 #define MODE_NINJA "ninja"
@@ -45,6 +44,9 @@
 #define MODE_MARKER "marker"
 #define MODE_UNITOLOGIST "unitologist"
 #define MODE_UNITOLOGIST_SHARD "unitologist_shardbearer"
+#define MODE_EDF "earth_defence_force"
+#define MODE_UNI_ERT "unitologist_ert"
+#define MODE_MRT "kellion_team"
 
 #define DEFAULT_TELECRYSTAL_AMOUNT 130
 #define IMPLANT_TELECRYSTAL_AMOUNT(x) (round(x * 0.49)) // If this cost is ever greater than half of DEFAULT_TELECRYSTAL_AMOUNT then it is possible to buy more TC than you spend
