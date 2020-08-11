@@ -1,7 +1,7 @@
 /datum/game_mode/marker
 	var/evac_points = 0
 	var/evac_threshold = 100
-	var/minimum_evac_time = 60// in minutes. How soon after marker setup that evac can be called, assuming all systems remain working (they won't)
+	var/config.evac_min_time// in minutes. How soon after marker setup that evac can be called, assuming all systems remain working (they won't)
 
 
 	var/last_pointgain_time	= 0
@@ -15,7 +15,7 @@
 	var/pointgain = GLOB.shipsystem.get_point_gen()
 
 	//The minimum time is used as a scalar on this
-	pointgain *= evac_threshold / minimum_evac_time
+	pointgain *= evac_threshold / config.evac_min_time
 
 	//And finally, we'll factor in the real time that has passed to compensate for lag and/or time dilation
 	var/minutes_passed = (world.timeofday - last_pointgain_time) / 600	//In ideal circumstances, this value will be 1, but it may be more than 1 if server is lagging

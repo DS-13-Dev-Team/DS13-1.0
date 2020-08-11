@@ -91,6 +91,7 @@ var/list/gamemode_cache = list()
 	var/allow_extra_antags = 0
 	var/guests_allowed = TRUE
 	var/debugparanoid = 0
+	var/evac_min_time = 0
 
 	var/serverurl
 	var/server
@@ -743,6 +744,8 @@ var/list/gamemode_cache = list()
 				if("radiation_lower_limit")
 					radiation_lower_limit = text2num(value)
 
+				if("evac_min_time")
+					evac_min_time = text2num(value)
 
 				if("error_cooldown")
 					error_cooldown = text2num(value)
