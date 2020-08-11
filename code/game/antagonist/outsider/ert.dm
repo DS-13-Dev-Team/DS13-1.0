@@ -20,7 +20,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		and before taking extreme actions, please try to also contact the administration! \
 		Think through your actions and make the roleplay immersive! <b>Please remember all \
 		rules aside from those without explicit exceptions apply to the ERT.</b>"
-	welcome_text = "You shouldn't see this"
+	welcome_text = "Placeholder"
 	leader_welcome_text = "As leader of the Emergency Response Team, you are part of the Earth Defence Force, and are there with the intention of restoring normal operation to the vessel or the safe evacuation of crew and passengers. You should, to this effect, aid the Commanding Officer or ranking officer aboard in their endeavours to achieve this."
 	landmark_id = "EDF Team"
 	id_type = /obj/item/weapon/card/id/centcom/ERT
@@ -65,6 +65,8 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		return 0
 	*/
 	for(var/i = 0; i < outfits.len; i++)
+		if(!candidates)
+			break
 		var/candidate = pick(candidates)
 		create_default(candidate)
 		candidates -= candidate
