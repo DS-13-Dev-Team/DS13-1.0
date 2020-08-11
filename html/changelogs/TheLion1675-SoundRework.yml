@@ -35,3 +35,5 @@ delete-after: False
 changes: 
   - wip: "This changelog reflects on-going work for sounds."
   - soundadd: "New sounds for locker opening and closing."
+  - soundadd: "Two new airalarm sounds when they are on red. Credit to Squid for helping me."
+  - experiment: "The Marker will now intermittently play a throbbing sound. This is currently set at 3 minutes at a probability of 30%. Feedback is appreciated. Credit to Squid for helping me."
