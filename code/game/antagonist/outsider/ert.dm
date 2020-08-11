@@ -21,7 +21,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		Think through your actions and make the roleplay immersive! <b>Please remember all \
 		rules aside from those without explicit exceptions apply to the ERT.</b>"
 	leader_welcome_text = "As leader of the Emergency Response Team, you are part of the Earth Defence Force, and are there with the intention of restoring normal operation to the vessel or the safe evacuation of crew and passengers. You should, to this effect, aid the Commanding Officer or ranking officer aboard in their endeavours to achieve this."
-	landmark_id = "EDFTeam"
+	landmark_id = "edfteam"
 	valid_species = list(SPECIES_HUMAN)
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_SET_APPEARANCE | ANTAG_HAS_LEADER | ANTAG_CHOOSE_NAME | ANTAG_RANDOM_EXCEPTED
 	antaghud_indicator = "hudloyalist"
@@ -81,9 +81,10 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	return 1
 
 /datum/antagonist/ert/kellion
+	id = "Kellionteam"
 	role_text = "Maintenance Response Team"
 	role_text_plural = "Maintenance Response Team"
-	leader_welcome_text = leader_welcome_text = "As leader of the Emergency Response Team, you are part of the Kellion Response Team, and are there with the intention of restoring normal operation to the vessel or the safe evacuation of crew and passengers. You should, to this effect, aid the Commanding Officer or ranking officer aboard in their endeavours to achieve this."
+	leader_welcome_text = "As leader of the Emergency Response Team, you are part of the Kellion Response Team, and are there with the intention of restoring normal operation to the vessel or the safe evacuation of crew and passengers. You should, to this effect, aid the Commanding Officer or ranking officer aboard in their endeavours to achieve this."
 	landmark_id = "kellionteam"
 	outfits = list(
 		/decl/hierarchy/outfit/isaac,
@@ -93,6 +94,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		/decl/hierarchy/outfit/kendra)
 
 /datum/antagonist/ert/unitologists
+	id = "Unitologiststeam"
 	role_text = "Unitologist"
 	role_text_plural = "Unitologists"
 	antag_text = "You are part of a new religion which worships strange alien artifacts, believing that only through them can humanity truly transcend. You have been blessed with a psychic connection created by the <b>marker</b>, one of these artifacts. Serve the marker's will at all costs by bringing it human sacrifices and remember that its objectives come before your own..."
