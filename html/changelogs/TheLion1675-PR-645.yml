@@ -35,3 +35,4 @@ delete-after: True
 changes: 
   - bugfix: "Nutricube storage containers are once more visible."
   - rscdel: "Removed Clarke from name list."
+  - tweak: "Added a confirmation prompt for when staff manually activate the marker. This to prevent misclicks from happening."
