@@ -83,8 +83,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 /datum/antagonist/ert/kellion
 	role_text = "Maintenance Response Team"
 	role_text_plural = "Maintenance Response Team"
-	antag_text = "Placeholder"
-	leader_welcome_text = "Placeholder"
+	leader_welcome_text = leader_welcome_text = "As leader of the Emergency Response Team, you are part of the Kellion Response Team, and are there with the intention of restoring normal operation to the vessel or the safe evacuation of crew and passengers. You should, to this effect, aid the Commanding Officer or ranking officer aboard in their endeavours to achieve this."
 	landmark_id = "kellionteam"
 	outfits = list(
 		/decl/hierarchy/outfit/isaac,
@@ -96,8 +95,8 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 /datum/antagonist/ert/unitologists
 	role_text = "Unitologist"
 	role_text_plural = "Unitologists"
-	antag_text = "Placeholder"
-	leader_welcome_text = "Placeholder"
+	antag_text = "You are part of a new religion which worships strange alien artifacts, believing that only through them can humanity truly transcend. You have been blessed with a psychic connection created by the <b>marker</b>, one of these artifacts. Serve the marker's will at all costs by bringing it human sacrifices and remember that its objectives come before your own..."
+	leader_welcome_text = "You are the leader of this response team. Work with the marker instead of against it."
 	landmark_id = "unitologiststeam"
 	antaghud_indicator = "hudunitologist" // Used by the ghost antagHUD.
 	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
