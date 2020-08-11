@@ -35,4 +35,5 @@ delete-after: True
 changes: 
   - bugfix: "Nutricube storage containers are once more visible."
   - rscdel: "Removed Clarke from name list."
+  - rscdel: "Removed the option to initiate bluespace jump from the command and communications program."
   - tweak: "Added a confirmation prompt for when staff manually activate the marker. This to prevent misclicks from happening."
