@@ -11,7 +11,7 @@ GLOBAL_DATUM_INIT(uni_ert, /datum/antagonist/ert/unitologists, new)
 GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 
 /datum/antagonist/ert
-	id = MODE_EDF
+	id = MODE_ERT
 	role_text = "EDF Responder"
 	role_text_plural = "EDF Responders"
 	antag_text = "You are an <b>anti</b> antagonist! Within the rules, \
@@ -20,17 +20,11 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		and before taking extreme actions, please try to also contact the administration! \
 		Think through your actions and make the roleplay immersive! <b>Please remember all \
 		rules aside from those without explicit exceptions apply to the ERT.</b>"
-	welcome_text = "Placeholder"
 	leader_welcome_text = "As leader of the Emergency Response Team, you are part of the Earth Defence Force, and are there with the intention of restoring normal operation to the vessel or the safe evacuation of crew and passengers. You should, to this effect, aid the Commanding Officer or ranking officer aboard in their endeavours to achieve this."
-	landmark_id = "EDF Team"
-	id_type = /obj/item/weapon/card/id/centcom/ERT
+	landmark_id = "EDFTeam"
 	valid_species = list(SPECIES_HUMAN)
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_SET_APPEARANCE | ANTAG_HAS_LEADER | ANTAG_CHOOSE_NAME | ANTAG_RANDOM_EXCEPTED
 	antaghud_indicator = "hudloyalist"
-	hard_cap = 99
-	hard_cap_round = 99
-	initial_spawn_req = 99
-	initial_spawn_target = 99
 	show_objectives_on_creation = 0 //we are not antagonists, we do not need the antagonist shpiel/objectives
 
 	var/list/outfits = list(
@@ -64,7 +58,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		log_admin("Ert aborted. Not enough candidates.")
 		return 0
 
-	for(var/i = 0; i < outfits.len; i++)
+	for(var/i = 0; i <= outfits.len; i++)
 		if(candidates.len == 0)
 			break
 		var/candidate = pick(candidates)
@@ -87,12 +81,11 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	return 1
 
 /datum/antagonist/ert/kellion
-	id = MODE_MRT
 	role_text = "Maintenance Response Team"
 	role_text_plural = "Maintenance Response Team"
 	antag_text = "Placeholder"
 	leader_welcome_text = "Placeholder"
-	landmark_id = "Kellion Team"
+	landmark_id = "kellionteam"
 	outfits = list(
 		/decl/hierarchy/outfit/isaac,
 		/decl/hierarchy/outfit/kellion_sec,
@@ -101,12 +94,11 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		/decl/hierarchy/outfit/kendra)
 
 /datum/antagonist/ert/unitologists
-	id = MODE_UNI_ERT
 	role_text = "Unitologist"
 	role_text_plural = "Unitologists"
 	antag_text = "Placeholder"
 	leader_welcome_text = "Placeholder"
-	landmark_id = "Unitologists Team"
+	landmark_id = "unitologiststeam"
 	antaghud_indicator = "hudunitologist" // Used by the ghost antagHUD.
 	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
 	outfits = list(
