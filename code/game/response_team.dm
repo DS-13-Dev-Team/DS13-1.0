@@ -68,6 +68,9 @@ client/verb/JoinResponseTeam()
 		if(jobban_isbanned(usr, MODE_ERT) || jobban_isbanned(usr, "Security Officer"))
 			to_chat(usr, "<span class='danger'>You are jobbanned from the emergency reponse team!</span>")
 			return
+		if(current_ert.candidates.Find(usr))
+			to_chat(usr, "You can only join it once.")
+			return
 		current_ert.add_candidate(usr)
 		to_chat(usr, "You have added yourself to the candidate list.")
 	else
