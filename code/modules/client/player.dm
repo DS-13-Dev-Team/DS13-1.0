@@ -9,6 +9,10 @@
 	var/mob
 	var/is_necromorph = FALSE
 
+	//If true, this player is registered as a donor, and gets access to certain perks
+	//most of these perks can also be accessed by admins, without donor status
+	var/donor = FALSE
+
 	//Last cached coordinates, set on logout
 	var/list/last_location = list("x" = 0, "y" = 0, "z" = 0)
 
@@ -44,11 +48,14 @@
 	//Existing stuff i might replace
 	GLOB.player_list |= src
 	GLOB.key_to_mob[key] = src
-
+	if ((key in GLOB.donor_keys))
+		me.donor = TRUE
 
 
 /mob/proc/player_login()
 	register_client_and_player()
+
+
 
 	var/datum/player/me = get_or_create_player(key)
 	me.Login()

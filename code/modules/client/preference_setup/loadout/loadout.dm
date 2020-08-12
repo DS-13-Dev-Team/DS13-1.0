@@ -74,6 +74,8 @@ var/list/gear_datums = list()
 		. += gear_name
 
 /datum/category_item/player_setup_item/loadout/sanitize_character()
+	var/datum/player/P = get_player_from_key(pref.client_ckey)
+
 	pref.gear_slot = sanitize_integer(pref.gear_slot, 1, config.loadout_slots, initial(pref.gear_slot))
 	if(!islist(pref.gear_list)) pref.gear_list = list()
 
@@ -96,6 +98,12 @@ var/list/gear_datums = list()
 					gears -= gear_name
 				else
 					var/datum/gear/G = gear_datums[gear_name]
+
+					//If donor status is needed, check that we have it
+					if (P && G.donor_only && !P.donor)
+						gears -= gear_name
+						continue
+
 					if(total_cost + G.cost > config.max_gear_cost)
 						gears -= gear_name
 					else
@@ -115,7 +123,7 @@ var/list/gear_datums = list()
 	var/fcolor =  "#3366cc"
 	if(total_cost < config.max_gear_cost)
 		fcolor = "#e67300"
-	. += "<table align = 'center' width = 100%>"
+	. += "<table align = 'center' width = 100% style = 'border-collapse: collapse;'>"
 	. += "<tr><td colspan=3><center>"
 	. += "<a href='?src=\ref[src];prev_slot=1'>\<\<</a><b><font color = '[fcolor]'>\[[pref.gear_slot]\]</font> </b><a href='?src=\ref[src];next_slot=1'>\>\></a>"
 
@@ -161,13 +169,27 @@ var/list/gear_datums = list()
 			var/datum/job/J = job_master.occupations_by_title[job_title]
 			if(J)
 				dd_insertObjectList(jobs, J)
+
+	//TODO: Fetch this from player datum
+	var/datum/player/P = get_player_from_key(pref.client_ckey)
+	var/is_donor = (P ? P.donor	: FALSE)
+
 	for(var/gear_name in LC.gear)
 		if(!(gear_name in valid_gear_choices()))
 			continue
 		var/list/entry = list()
 		var/datum/gear/G = LC.gear[gear_name]
 		var/ticked = (G.display_name in pref.gear_list[pref.gear_slot])
-		entry += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(G.display_name)]'>[G.display_name]</a></td>"
+		entry += "<tr style='[G.donor_only ? " border-style: outset; border-color: [COLOR_GOLD];":""]'>"
+		var/button_info = "<td width=25%>"
+
+		//If this is a donor item and the player isn't a donor, then the button goes to a codex page
+		if (G.donor_only && !is_donor)
+			button_info += "<a style='white-space:normal;' href='?src=\ref[SScodex];show_examined_info=\ref[SScodex.get_entry_by_string("patron")];show_to=\ref[pref.client]'>[G.display_name]</a></td>"
+		else
+			button_info += "<a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(G.display_name)]'>[G.display_name]</a></td>"
+		entry += button_info
+
 		entry += "<td width = 10% style='vertical-align:top'>[G.cost]</td>"
 		entry += "<td><font size=2>[G.get_description(get_gear_metadata(G,1))]</font>"
 		var/allowed = 1
@@ -300,6 +322,7 @@ var/list/gear_datums = list()
 	var/list/allowed_roles //Roles that can spawn with this item.
 	var/list/allowed_branches //Service branches that can spawn with it.
 	var/whitelisted        //Term to check the whitelist for..
+	var/donor_only
 	var/sort_category = "General"
 	var/flags              //Special tweaks in new
 	var/category
