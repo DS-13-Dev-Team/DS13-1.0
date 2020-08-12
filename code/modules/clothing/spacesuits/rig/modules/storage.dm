@@ -80,6 +80,7 @@
 	return container.handle_mousedrop(user, over_object)
 
 
+
 /*****************************
 	External handling
 *****************************/

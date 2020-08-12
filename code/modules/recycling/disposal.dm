@@ -156,6 +156,10 @@
 	update_icon()
 
 /obj/machinery/disposal/MouseDrop_T(atom/movable/AM, mob/user)
+	//People frequently drag turfs onto this, was causing runtime errors
+	if (!istype(AM))
+		return
+
 	var/incapacitation_flags = INCAPACITATION_DEFAULT
 	if(AM == user)
 		incapacitation_flags &= ~INCAPACITATION_RESTRAINED

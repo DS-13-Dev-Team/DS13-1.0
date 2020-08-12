@@ -12,7 +12,8 @@
 				/obj/item/weapon/rig/eva,
 				/obj/item/weapon/rig/light/hacker,
 				/obj/item/weapon/rig/light/stealth,
-				/obj/item/weapon/rig/light))
+				/obj/item/weapon/rig/light,
+				/obj/item/weapon/rig/civilian))
 
 
 /obj/random/rig_module
@@ -21,7 +22,7 @@
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "generic"
 
-/obj/random/hardsuit/item_to_spawn()
+/obj/random/rig_module/item_to_spawn()
 	return pickweight(list(/obj/item/rig_module/kinesis = 2,
 	/obj/item/rig_module/kinesis/advanced = 0.5,
 	/obj/item/rig_module/storage = 0.75,

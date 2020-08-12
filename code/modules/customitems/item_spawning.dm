@@ -193,7 +193,7 @@
 				current_data.kit_icon = field_data
 			if("additional_data")
 				current_data.additional_data = field_data
-	return 1
+	return TRUE
 
 //gets the relevant list for the key from the listlist if it exists, check to make sure they are meant to have it and then calls the giving function
 /proc/equip_custom_items(mob/living/carbon/human/M)

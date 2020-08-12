@@ -8,6 +8,12 @@
 	var/turf_flags
 
 	var/holy = 0
+	var/is_hole = FALSE			// If true, turf is open to vertical transitions through it.
+	var/is_wall = FALSE			// If true, this turf is, or contains, a solid wall.
+
+	var/health
+	var/max_health = 100
+	var/resistance
 
 	//Set this false when the turf is dense, or contains any dense atom
 	//A null value is maybe, it means we should check to find out. Set it null whenever any change happens to contents
@@ -28,6 +34,9 @@
 	var/icon_old = null
 	var/pathweight = 1          // How much does it cost to pathfind over this turf?
 	var/blessed = 0             // Has the turf been blessed?
+
+	//List of everything that could possibly block movement
+	var/list/movement_blocking_atoms = list()
 
 	var/list/decals
 
@@ -77,20 +86,17 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (!mover || !isturf(mover.loc) || isobserver(mover))
 		return FALSE
 
-	//First, check objects to block exit that are not on the border
-	for(var/obj/obstacle in mover.loc)
-		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER) && (mover != obstacle) && (forget != obstacle))
+	var/turf/origin = mover.loc
+
+	//First, check objects to block exit . border or not
+	for(var/obj/obstacle in origin.movement_blocking_atoms)
+		if((mover != obstacle) && (forget != obstacle))
 			if(!obstacle.CheckExit(mover, src))
 				return obstacle
 
-	//Now, check objects to block exit that are on the border
-	for(var/obj/border_obstacle in mover.loc)
-		if((border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER) && (mover != border_obstacle) && (forget != border_obstacle))
-			if(!border_obstacle.CheckExit(mover, src))
-				return border_obstacle
 
 	//Next, check objects to block entry that are on the border
-	for(var/obj/border_obstacle in src)
+	for(var/obj/border_obstacle in src.movement_blocking_atoms)
 		if(border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER)
 			if(!border_obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != border_obstacle))
 				return border_obstacle
@@ -100,7 +106,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		return src
 
 	//Finally, check objects/mobs to block entry that are not on the border
-	for(var/atom/movable/obstacle in src)
+	for(var/atom/movable/obstacle in src.movement_blocking_atoms)
 		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER))
 			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
 				return obstacle
@@ -114,22 +120,16 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (!mover || !isturf(mover.loc) || isobserver(mover))
 		return 1
 
-	//First, check objects to block exit that are not on the border
-	for(var/obj/obstacle in mover.loc)
-		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER) && (mover != obstacle) && (forget != obstacle))
-			if(!obstacle.CheckExit(mover, src))
-				mover.Bump(obstacle, 1)
-				return 0
+	var/turf/origin = mover.loc
 
-	//Now, check objects to block exit that are on the border
-	for(var/obj/border_obstacle in mover.loc)
-		if((border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER) && (mover != border_obstacle) && (forget != border_obstacle))
-			if(!border_obstacle.CheckExit(mover, src))
-				mover.Bump(border_obstacle, 1)
-				return 0
+	//First, check objects to block exit . border or not
+	for(var/obj/obstacle in origin.movement_blocking_atoms)
+		if((mover != obstacle) && (forget != obstacle))
+			if(!obstacle.CheckExit(mover, src))
+				return obstacle
 
 	//Next, check objects to block entry that are on the border
-	for(var/obj/border_obstacle in src)
+	for(var/obj/border_obstacle in src.movement_blocking_atoms)
 		if(border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER)
 			if(!border_obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != border_obstacle))
 				mover.Bump(border_obstacle, 1)
@@ -141,7 +141,10 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		return 0
 
 	//Finally, check objects/mobs to block entry that are not on the border
-	for(var/atom/movable/obstacle in src)
+	for(var/atom/movable/obstacle in src.movement_blocking_atoms)
+		if (QDELETED(obstacle) || obstacle.loc != src)
+			movement_blocking_atoms -= obstacle
+			continue
 		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER))
 			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
 				mover.Bump(obstacle, 1)
@@ -152,6 +155,9 @@ var/const/enterloopsanity = 100
 /turf/Entered(atom/atom as mob|obj)
 
 	..()
+
+	if (atom.can_block_movement)
+		movement_blocking_atoms |= atom
 
 	if(!istype(atom, /atom/movable))
 		return
@@ -180,6 +186,14 @@ var/const/enterloopsanity = 100
 					if ((thing && A) && (thing.movable_flags & MOVABLE_FLAG_PROXMOVE))
 						thing.HasProximity(A, 1)
 	return
+
+/turf/Exited(atom/atom as mob|obj)
+	if (atom.can_block_movement)
+
+		movement_blocking_atoms -= atom
+
+	.=..()
+
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
 	return

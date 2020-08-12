@@ -89,7 +89,7 @@
 	icon_opened = "fireclosetopen"
 
 /obj/structure/closet/firecloset/WillContain()
-	return list(
+	var/list/things = list(
 		/obj/item/weapon/storage/med_pouch/burn,
 		/obj/item/clothing/suit/fire/firefighter,
 		/obj/item/clothing/mask/gas,
@@ -99,6 +99,9 @@
 		/obj/item/clothing/head/hardhat/red,
 		/obj/random/armor,
 		/obj/random/loot/often)
+	if (prob(10))
+		things += /obj/item/weapon/rig/firesuit
+	return things
 
 /obj/structure/closet/firecloset/update_icon()
 	if(!opened)

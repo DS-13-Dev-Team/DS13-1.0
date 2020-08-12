@@ -5,7 +5,7 @@
 	item_state = "nullrod"
 	slot_flags = SLOT_BELT
 	force = 10
-	
+
 	throw_range = 4
 	throwforce = 7
 	w_class = ITEM_SIZE_NORMAL
@@ -41,7 +41,7 @@
 /obj/item/weapon/nullrod/afterattack(var/atom/A, var/mob/user, var/proximity)
 	if(!proximity)
 		return
-
+	/* 	Removed due to compile errors
 	if(istype(A, /obj/structure/deity/altar))
 		var/obj/structure/deity/altar/altar = A
 		if(!altar.linked_god.silenced) //Don't want them to infinity spam it.
@@ -58,6 +58,7 @@
 		var/turf/simulated/floor/cult/F = A
 		user.visible_message("<span class='notice'>\The [user] touches \the [A] with \the [src], and the enchantment affecting it fizzles away.</span>", "<span class='notice'>You touch \the [A] with \the [src], and the enchantment affecting it fizzles away.</span>")
 		F.ChangeTurf(/turf/simulated/floor)
+	*/
 
 
 /obj/item/weapon/energy_net

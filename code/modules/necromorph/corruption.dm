@@ -24,6 +24,11 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	var/vine_scale = 1.1
 	var/datum/extension/corruption_source/source
 
+	//This contains a list of other corruption sources which might be able to support us - or new vines we create, if our main source can't
+	var/list/alternatives
+
+	var/growth_mult = 1
+
 	//This is only used for the uncommon edge case where this vine is on the border between multiple chunks
 	//Don't give it a value if unused, saves memory
 	var/list/chunks
@@ -34,6 +39,11 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 	//No clicking this
 	mouse_opacity = 0
+
+	//A temporary variable, set and then used just before and during the spawning of a new vine
+	var/next_source
+
+	can_block_movement = FALSE
 
 
 /obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/corruption/newparent, var/start_matured = 0, var/datum/extension/corruption_source/newsource)
@@ -46,8 +56,6 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	seed = GLOB.corruption_seed
 
 	source = newsource
-	if (!newsource)
-		source = newparent.source
 	source.register(src)
 	.=..()
 
@@ -62,8 +70,9 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 //No calculating, we'll input all these values in the variables above
 /obj/effect/vine/corruption/calculate_growth()
 
-	mature_time = rand_between(20 SECONDS, 30 SECONDS) / source.growth_speed	//How long it takes for one tile to mature and be ready to spread into its neighbors.
-	mature_time *= 1 + (source.growth_distance_falloff * get_dist_3D(src, source.source))	//Expansion gets slower as you get farther out. Additively stacking 15% increase per tile
+	growth_mult = source.get_growthtime_multiplier(src)
+	mature_time = rand_between(30 SECONDS, 45 SECONDS) * growth_mult/// source.growth_speed	//How long it takes for one tile to mature and be ready to spread into its neighbors.
+	//mature_time *= 1 + (source.growth_distance_falloff * get_dist_3D(src, source.source))	//Expansion gets slower as you get farther out. Additively stacking 15% increase per tile
 
 	growth_threshold = max_health
 	possible_children = INFINITY
@@ -111,6 +120,12 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //This proc finds any viable corruption source to use for us
 /obj/effect/vine/corruption/proc/find_corruption_host()
+	//Search our alternatives list first
+	if (LAZYLEN(alternatives))
+		var/alternative = get_viable_alternative(src)
+		if (alternative)
+			return alternative
+
 	for (var/datum/extension/corruption_source/CS in GLOB.corruption_sources)
 		if (CS.can_support(src))
 			return CS
@@ -153,9 +168,14 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 /obj/effect/vine/corruption/can_reach(var/turf/floor)
 	if (!QDELETED(source) && source.can_support(floor))
+		next_source = source
 		return TRUE
 
-	//Possible future todo: See if any other nodes can support it if our parent can't?
+	else
+		//If our own source can't support it, lets see if any of our alternatives can take over
+		next_source = get_viable_alternative(floor)
+		if (next_source)
+			return TRUE
 
 	return FALSE
 
@@ -170,10 +190,20 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 
 /obj/effect/vine/corruption/spread_to(turf/target_turf)
-	.=..()
-	var/obj/effect/vine/corruption/child = .
-	if (istype(child))
-		child.get_chunks()	//Populate the nearby chunks list, for later visual updates
+	var/obj/effect/vine/corruption/child = new type(target_turf,seed,parent, FALSE, (next_source ? next_source : source)) // This should do a little bit of animation.
+	child.update_icon()
+	child.set_dir(child.calc_dir())
+	child.wake_neighbors() //Update surrounding tiles to handle edges
+	update_icon()	//We don't need one of our edges now, update to get rid of it
+	// Some plants eat through plating.
+	if(islist(seed.chems) && !isnull(seed.chems[/datum/reagent/acid/polyacid]))
+		target_turf.ex_act(prob(80) ? 3 : 2)
+
+	//Update our neighbors list
+	update_neighbors()
+	child.get_chunks()	//Populate the nearby chunks list, for later visual updates
+	return child
+
 
 
 //Checks if this tile of corruption is supported by a valid/existing source.
@@ -190,6 +220,37 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		return FALSE
 
 	return TRUE
+
+
+//Alternative Handling
+//This attempts to find an alternative source to fit a target turf
+/obj/effect/vine/corruption/proc/get_viable_alternative(var/turf/T)
+	if (!LAZYLEN(alternatives))
+		return null
+	var/best_multiplier = 9999999999999
+	var/best_source = null
+	for (var/ref in alternatives)
+		var/datum/extension/corruption_source/CS = locate(ref)
+		if (QDELETED(CS) || !istype(CS))
+			//No longer valid
+			alternatives -= ref
+			continue
+
+
+		//Its temporarily deactivated, ignore but keep it in the list
+		if (!CS.enabled)
+			continue
+
+		if (!CS.can_support(T))
+			continue
+
+		//Okay it can support us, lets see how well
+		var/mult = CS.get_growthtime_multiplier(T)
+		if (mult < best_multiplier)
+			best_multiplier = mult
+			best_source = CS
+
+	return best_source
 
 
 

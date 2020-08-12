@@ -9,6 +9,8 @@
 	var/randpixel = 6
 	var/r_speed = 1.0
 
+	var/structure_damage_factor = 1	//Damage dealt to doors, walls, floors, structures and other hard targets is multiplied by this
+
 	//Defense
 	var/max_health = 0	//This is autocalculated based on size
 	var/health = 0
@@ -94,6 +96,9 @@
 	// Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
 	var/list/sprite_sheets_obj = list()
 
+	//Items are not dense typically
+	can_block_movement = FALSE
+
 /obj/item/New()
 	if (!max_health)
 		if (w_class != ITEM_SIZE_NO_CONTAINER)	//This is infinity, would cause errors
@@ -101,6 +106,8 @@
 		else
 			max_health = 250
 	health = max_health
+
+
 	..()
 	if(randpixel && (!pixel_x && !pixel_y) && isturf(loc)) //hopefully this will prevent us from messing with mapper-set pixel_x/y
 		pixel_x = rand(-randpixel, randpixel)
@@ -394,16 +401,19 @@ var/list/global/slot_flags_enumeration = list(
 
 	if(!ishuman(M)) return 0
 
+
 	var/mob/living/carbon/human/H = M
 	var/list/mob_equip = list()
 	if(H.species.hud && H.species.hud.equip_slots)
 		mob_equip = H.species.hud.equip_slots
+
 
 	if(H.species && !(slot in mob_equip))
 		return 0
 
 	if (!H.has_organ_for_slot(slot))
 		return FALSE
+
 
 	//First check if the item can be equipped to the desired slot.
 	if("[slot]" in slot_flags_enumeration)
@@ -420,6 +430,7 @@ var/list/global/slot_flags_enumeration = list(
 		var/mob/_user = disable_warning? null : H
 		if(!H.slot_is_accessible(slot, src, _user))
 			return 0
+
 
 
 	//Lastly, check special rules for the desired slot.
@@ -464,10 +475,16 @@ var/list/global/slot_flags_enumeration = list(
 				return 0
 		if(slot_in_backpack) //used entirely for equipping spawned mobs or at round start
 			var/allow = 0
-			if(H.back && istype(H.back, /obj/item/weapon/storage/backpack))
-				var/obj/item/weapon/storage/backpack/B = H.back
-				if(B.can_be_inserted(src,M,1))
-					allow = 1
+			if(H.back)
+				if(istype(H.back, /obj/item/weapon/storage/backpack))
+					var/obj/item/weapon/storage/backpack/B = H.back
+					if(B.can_be_inserted(src,M,1))
+						allow = 1
+
+				else if(istype(H.back, /obj/item/weapon/rig))
+					var/obj/item/weapon/rig/rig = H.back
+					if (rig.storage && rig.storage.container.can_be_inserted(src,M,1))
+						allow = 1
 			if(!allow)
 				return 0
 		if(slot_tie)
@@ -946,3 +963,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 		delay /= user.attack_speed_factor
 
 	return delay
+
+
+/obj/item/proc/store_item(var/obj/item/input, var/mob/user)
+	return FALSE

@@ -6,6 +6,7 @@
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bullet"
 	density = 1
+	can_block_movement = FALSE	//Projectiles don't recieve collisions usually, they move into other things
 	unacidable = 1
 	anchored = 1 //There's a reason this is here, Mport. God fucking damn it -Agouri. Find&Fix by Pete. The reason this is here is to stop the curving of emitter shots.
 	pass_flags = PASS_FLAG_TABLE
@@ -41,7 +42,7 @@
 
 	var/damage = 10
 	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY, CLONE, PAIN are the only things that should be in here
-	var/structure_damage_factor = 1
+	structure_damage_factor = 1
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
 	var/check_armour = "bullet" //Defines what armor to use when it hits things.  Must be set to bullet, laser, energy,or bomb	//Cael - bio and rad are also valid
 	var/projectile_type = /obj/item/projectile

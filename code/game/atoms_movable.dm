@@ -27,8 +27,24 @@
 	//Mass is measured in kilograms. It should never be zero
 	var/mass = 1
 
+
+/atom/movable/Initialize(var/mapload)
+	if (can_block_movement && isturf(loc))
+		var/turf/T = loc
+		T.movement_blocking_atoms |= src
+
+
+	.=..()
+
 /atom/movable/Destroy()
+	if (can_block_movement)
+		var/turf/T = get_turf(src)
+		if (T)
+			T.movement_blocking_atoms -= src
+
 	. = ..()
+
+
 	for(var/atom/movable/AM in src)
 		qdel(AM)
 
@@ -40,8 +56,8 @@
 
 /atom/movable/Bump(var/atom/A, yes)
 	if(src.throwing)
-		src.throw_impact(A)
-		src.throwing = 0
+		src.throw_impact(A, src.throwing)
+		src.throwing = FALSE
 	GLOB.bump_event.raise_event(src, A)
 
 	spawn(0)
@@ -120,7 +136,7 @@
 	var/interval = 10 / speed
 	var/sleep_debt = 0
 	//use a modified version of Bresenham's algorithm to get from the atom's current position to that of the target
-	src.throwing = 1
+	src.throwing = speed
 	src.thrower = thrower
 	src.throw_source = get_turf(src)	//store the origin turf
 	src.pixel_z = 0
@@ -156,7 +172,8 @@
 			src.SpinAnimation(speed = 4, loops = 1)
 
 	//done throwing, either because it hit something or it finished moving
-	if(isobj(src)) src.throw_impact(get_turf(src),speed)
+	if(isobj(src) && throwing)
+		src.throw_impact(get_turf(src),speed)
 	src.throwing = 0
 	src.thrower = null
 	src.throw_source = null
@@ -229,3 +246,8 @@
 
 /atom/movable/proc/reset_move_animation()
 	animate_movement = SLIDE_STEPS
+
+
+// if this returns true, interaction to turf will be redirected to src instead
+/atom/movable/proc/preventsTurfInteractions()
+	return (density && anchored && !(atom_flags & ATOM_FLAG_CHECKS_BORDER))
