@@ -70,7 +70,7 @@
 
 /atom/movable/proc/forceMove(atom/destination)
 	if(loc == destination)
-		return 0
+		return FALSE
 	var/is_origin_turf = isturf(loc)
 	var/is_destination_turf = isturf(destination)
 	// It is a new area if:
@@ -97,7 +97,7 @@
 					AM.Crossed(src)
 			if(is_new_area && is_destination_turf)
 				destination.loc.Entered(src, origin)
-	return 1
+	return TRUE
 
 //called when src is thrown into hit_atom
 /atom/movable/proc/throw_impact(atom/hit_atom, var/speed)
@@ -129,9 +129,9 @@
 /atom/movable/proc/throw_at(atom/target, range, speed, thrower)
 	set waitfor = FALSE
 	if(!target || !src)
-		return 0
+		return FALSE
 	if(target.z != src.z)
-		return 0
+		return FALSE
 
 	var/interval = 10 / speed
 	var/sleep_debt = 0

@@ -60,10 +60,10 @@
 	return QDEL_HINT_IWILLGC
 
 /turf/ex_act(severity)
-	return 0
+	return FALSE
 
 /turf/proc/is_solid_structure()
-	return 1
+	return TRUE
 
 
 
@@ -118,7 +118,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 
 	if (!mover || !isturf(mover.loc) || isobserver(mover))
-		return 1
+		return TRUE
 
 	var/turf/origin = mover.loc
 
@@ -126,19 +126,19 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	for(var/obj/obstacle in origin.movement_blocking_atoms)
 		if((mover != obstacle) && (forget != obstacle))
 			if(!obstacle.CheckExit(mover, src))
-				return obstacle
+				return FALSE
 
 	//Next, check objects to block entry that are on the border
 	for(var/obj/border_obstacle in src.movement_blocking_atoms)
 		if(border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER)
 			if(!border_obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != border_obstacle))
 				mover.Bump(border_obstacle, 1)
-				return 0
+				return FALSE
 
 	//Then, check the turf itself
 	if (!src.CanPass(mover, src))
 		mover.Bump(src, 1)
-		return 0
+		return FALSE
 
 	//Finally, check objects/mobs to block entry that are not on the border
 	for(var/atom/movable/obstacle in src.movement_blocking_atoms)
@@ -148,8 +148,8 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER))
 			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
 				mover.Bump(obstacle, 1)
-				return 0
-	return 1 //Nothing found to block so return success!
+				return FALSE
+	return TRUE //Nothing found to block so return success!
 
 var/const/enterloopsanity = 100
 /turf/Entered(atom/atom as mob|obj)
@@ -199,7 +199,7 @@ var/const/enterloopsanity = 100
 	return
 
 /turf/proc/is_plating()
-	return 0
+	return FALSE
 
 /turf/proc/protects_atom(var/atom/A)
 	return FALSE
@@ -257,11 +257,11 @@ var/const/enterloopsanity = 100
 
 /turf/proc/contains_dense_objects()
 	if(density)
-		return 1
+		return TRUE
 	for(var/atom/A in src)
 		if(A.density && !(A.atom_flags & ATOM_FLAG_CHECKS_BORDER))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 //expects an atom containing the reagents used to clean the turf
 /turf/proc/clean(atom/source, mob/user = null)

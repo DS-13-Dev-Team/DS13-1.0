@@ -95,8 +95,8 @@
 
 /mob/living/carbon/human/proc/handle_some_updates()
 	if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /mob/living/carbon/human/breathe()
 	var/species_organ = species.breathing_organ
@@ -369,7 +369,7 @@
 	if(bodytemperature >= getSpeciesOrSynthTemp(HEAT_LEVEL_1))
 		//Body temperature is too hot.
 		fire_alert = max(fire_alert, 1)
-		if(status_flags & GODMODE)	return 1	//godmode
+		if(status_flags & GODMODE)	return TRUE	//godmode
 		var/burn_dam = 0
 		if(bodytemperature < getSpeciesOrSynthTemp(HEAT_LEVEL_2))
 			burn_dam = HEAT_DAMAGE_LEVEL_1
@@ -382,7 +382,7 @@
 
 	else if(bodytemperature <= getSpeciesOrSynthTemp(COLD_LEVEL_1))
 		fire_alert = max(fire_alert, 1)
-		if(status_flags & GODMODE)	return 1	//godmode
+		if(status_flags & GODMODE)	return TRUE	//godmode
 
 		var/burn_dam = 0
 
@@ -399,7 +399,7 @@
 
 	// Account for massive pressure differences.  Done by Polymorph
 	// Made it possible to actually have something that can protect against high pressure... Done by Errorage. Polymorph now has an axe sticking from his head for his previous hardcoded nonsense!
-	if(status_flags & GODMODE)	return 1	//godmode
+	if(status_flags & GODMODE)	return TRUE	//godmode
 
 	if(adjusted_pressure >= species.hazard_high_pressure)
 		var/pressure_damage = min( ( (adjusted_pressure / species.hazard_high_pressure) -1 )*PRESSURE_DAMAGE_COEFFICIENT , MAX_HIGH_PRESSURE_DAMAGE)
@@ -479,7 +479,7 @@
 
 /mob/living/carbon/human/get_cold_protection(temperature)
 	if(COLD_RESISTANCE in mutations)
-		return 1 //Fully protected from the cold.
+		return TRUE //Fully protected from the cold.
 
 	temperature = max(temperature, 2.7) //There is an occasional bug where the temperature is miscalculated in ares with a small amount of gas on them, so this is necessary to ensure that that bug does not affect this calculation. Space's temperature is 2.7K and most suits that are intended to protect against any cold, protect down to 2.0K.
 	var/thermal_protection_flags = get_cold_protection_flags(temperature)
@@ -517,7 +517,7 @@
 	chem_effects.Cut()
 
 	if(status_flags & GODMODE)
-		return 0
+		return FALSE
 
 	if(isSynthetic())
 		return
@@ -544,9 +544,9 @@
 //DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
 /mob/living/carbon/human/handle_regular_status_updates()
 	if(!handle_some_updates())
-		return 0
+		return FALSE
 
-	if(status_flags & GODMODE)	return 0
+	if(status_flags & GODMODE)	return FALSE
 
 	//SSD check, if a logged player is awake put them back to sleep!
 	if(ssd_check() && species.get_ssd(src))
@@ -631,7 +631,7 @@
 			if(!stat && prob(1))
 				to_chat(src, "<span class='notice'>You feel slow and sluggish...</span>")
 
-	return 1
+	return TRUE
 
 /mob/living/carbon/human/handle_regular_hud_updates(var/update_vision = TRUE)
 	if(hud_updateflag) // update our mob's hud overlays, AKA what others see flaoting above our head
@@ -766,7 +766,7 @@
 						bodytemp.icon_state = "temp-1"
 					else
 						bodytemp.icon_state = "temp0"
-	return 1
+	return TRUE
 
 /mob/living/carbon/human/handle_random_events()
 	// Puke if toxloss is too high
@@ -976,7 +976,7 @@
 	if (BITTEST(hud_updateflag, SPECIALROLE_HUD))
 		var/image/hud_overlay/holder = hud_list[SPECIALROLE_HUD]
 		if (!holder)
-			new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
+			holder = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 		holder.icon_state = "hudblank"
 		if(mind && mind.special_role)
 			if(GLOB.hud_icon_reference[mind.special_role])
