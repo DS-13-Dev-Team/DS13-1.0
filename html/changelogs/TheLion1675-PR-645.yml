@@ -35,7 +35,7 @@ delete-after: True
 changes: 
   - bugfix: "Nutricube storage containers are once more visible."
   - rscdel: "Removed Clarke from name list."
-  - rscdel: "Removed the option to initiate bluespace jump from the command and communications program. No blue allowed."
+  - rscdel: "Removed bluespace jump as an escape method. This will be reworked in due time."
   - rscdel: "Removed the Wallrot random event."
   - rscdel: "Removed the Vermin, Mice and Spider infestation random event."
   - tweak: "Added a confirmation prompt for when staff manually activate the marker. This to prevent misclicks from happening."
@@ -43,5 +43,4 @@ changes:
   - maptweak: "Fixed incorrect windows on both deck sometimes being used."
   - maptweak: "Fixed a few missing emergency shutters in lower deck paint storage."
   - maptweak: "Fixed a missing wall in atmospherics."
-  - rscdel: "Removed the option to initiate bluespace jump from the command and communications program."
-  - tweak: "Added a confirmation prompt for when staff manually activate the marker. This to prevent misclicks from happening."
+
