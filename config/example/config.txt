@@ -409,6 +409,3 @@ RADIATION_LOWER_LIMIT 0.15
 
 ## Uncomment this with a numerical value to instate a player limit. This CAN be changed in the round by changing the configuration.
 #PLAYER_LIMIT 60
-
-## Time limit in MINUTES until the evacuation can be called post-marker activation. Preset option is 105 minutes. 45 minutes = marker activation + 1 hour.
-EVAC_MIN_TIME 105
