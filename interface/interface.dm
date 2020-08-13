@@ -1,4 +1,5 @@
 //Please use mob or src (not usr) in these procs. This way they can be called in the same fashion as procs.
+
 /client/verb/wiki()
 	set name = "Wiki"
 	set desc = "Visit the wiki."
@@ -9,6 +10,18 @@
 		src << link(config.wikiurl)
 	else
 		to_chat(src, "<span class='warning'>The wiki URL is not set in the server configuration.</span>")
+	return
+
+client/verb/discord()
+	set name ="Join the Discord"
+	set desc = "Join our Discord server."
+	set hidden = 1
+	if( config.discord_url )
+		if(alert("This will open the Dead Space 13 Discord invite in your Browser. Are you sure?",,"Yes","No")=="No")
+			return
+		src << link(config.discord_url)
+	else
+		to_chat(src, "<span class='warning'>The Discord URL is not set in the server configuration. Please contact a developer.</span>")
 	return
 
 /client/verb/forum()
