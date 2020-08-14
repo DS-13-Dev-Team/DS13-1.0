@@ -34,13 +34,16 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - bugfix: "Nutricube storage containers are once more visible."
+  - bugfix: "Removed the freemail.nt e-mail domain, and replaced it with ishimura.cec."
   - rscdel: "Removed Clarke from name list."
   - rscdel: "Removed bluespace jump as an escape method. This will be reworked in due time."
   - rscdel: "Removed the Wallrot random event."
   - rscdel: "Removed the Vermin, Mice and Spider infestation random event."
   - tweak: "Added a confirmation prompt for when staff manually activate the marker. This to prevent misclicks from happening."
   - tweak: "Moved the Discord verb from the OOC tab to the upper right area. Now 100% more visible!"
+  - tweak: "Made the Bartender and Line Cook's selection color from the main menu brown instead of blue."
+  - tweak: "Made the Supply Officer's selection color darker, to indicate being at the head of cargo crewmen."
+  - tweak: "Assigned the Bartender and Line Cook to the Service department, instead of Civilian."
   - maptweak: "Fixed incorrect windows on both deck sometimes being used."
   - maptweak: "Fixed a few missing emergency shutters in lower deck paint storage."
   - maptweak: "Fixed a missing wall in atmospherics."
-
