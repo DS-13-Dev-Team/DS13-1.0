@@ -18,9 +18,11 @@
 		if(copytext(line,1,2) == "#")
 			continue
 
-		var/list/line_list = splittext(line, "    ")
+		var/list/line_list = splittext(line, "	")
 		if(!line_list.len)
 			continue
+
+		log_world("Line list is [english_list(line_list)]")
 
 		//We now have a list containing two things:
 			//1. Ckey of a donor player

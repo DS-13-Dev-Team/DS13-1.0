@@ -1,14 +1,4 @@
-#define SECOND *10
-#define SECONDS *10
 
-#define MINUTE *600
-#define MINUTES *600
-
-#define HOUR *36000
-#define HOURS *36000
-
-#define DAY *864000
-#define DAYS *864000
 
 #define TimeOfGame (get_game_time())
 #define TimeOfTick (world.tick_usage*0.01*world.tick_lag)
@@ -147,24 +137,3 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 	return finalstring
 
 
-/*
-	Takes a date in the format "YYYY-MM-DD"
-	returns true if the current date is past that
-*/
-/proc/is_past_date(var/input_date)
-	var/list/current_date = splittext(time2text(world.realtime,"YYYY-MM-DD"), "-")
-	var/list/target_date = splittext(time2text(input_date,"YYYY-MM-DD"), "-")
-
-	//Compare year
-	if (text2num(target_date[1]) > text2num(current_date[1]))
-		return FALSE
-
-	//Compare month
-	if (text2num(target_date[2]) > text2num(current_date[2]))
-		return FALSE
-
-	//Finally when comparing day, we use <=
-	if (text2num(target_date[1]) >= text2num(current_date[1]))
-		return FALSE
-
-	return TRUE

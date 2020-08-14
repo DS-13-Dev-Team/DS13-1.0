@@ -18,7 +18,17 @@
 
 /datum/player/New(var/newkey)
 	src.key = newkey
+	update_donor()
+
 	.=..()
+
+/datum/player/proc/update_donor()
+	if ((key in GLOB.donor_keys))
+		log_world("Player set donor status TRUE")
+		donor = TRUE
+	else
+		donor = FALSE
+		log_world("Player key [key] not in donors, they are [english_list(GLOB.donor_keys)]")
 
 /datum/player/proc/Login()
 	GLOB.logged_in_event.raise_event(src)
@@ -48,8 +58,7 @@
 	//Existing stuff i might replace
 	GLOB.player_list |= src
 	GLOB.key_to_mob[key] = src
-	if ((key in GLOB.donor_keys))
-		me.donor = TRUE
+
 
 
 /mob/proc/player_login()
