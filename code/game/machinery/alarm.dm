@@ -84,7 +84,6 @@
 	var/other_dangerlevel = 0
 
 	var/report_danger_level = 1
-	can_block_movement = FALSE
 
 /obj/machinery/alarm/cold
 	target_temperature = T0C+4

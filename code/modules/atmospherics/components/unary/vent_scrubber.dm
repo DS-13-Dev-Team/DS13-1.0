@@ -12,8 +12,6 @@
 
 	level = 1
 
-	can_block_movement = FALSE //Its on the floor
-
 	var/area/initial_loc
 	var/id_tag = null
 	var/frequency = 1439

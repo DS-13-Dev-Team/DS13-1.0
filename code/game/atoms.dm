@@ -31,19 +31,6 @@
 	var/default_alpha = 255
 	var/default_scale = 1
 
-
-
-	/*
-		OPTIMISATION
-			If set false, this atom will never be checked to recieve collisions. Everything will move through it as if it isnt there and canpass will never be called.
-
-			It can still collide with others when itself is the one moving
-
-			This flag doesn't necessarily mean it will block any specific thing at any specific time, CanPass still handles that.
-			Set this true for anything that could ever collide at any time in its normal life
-	*/
-	var/can_block_movement	=	TRUE
-
 /atom/New(loc, ...)
 	//atom creation method that preloads variables at creation
 	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
@@ -91,7 +78,6 @@
 
 /atom/Destroy()
 	QDEL_NULL(reagents)
-
 	. = ..()
 
 /atom/proc/reveal_blood()
