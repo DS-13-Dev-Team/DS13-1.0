@@ -113,7 +113,7 @@
 //Otherwise return a negative number to indicate that the view should be cancelled.
 /atom/proc/check_eye(user as mob)
 	if (istype(user, /mob/living/silicon/ai)) // WHYYYY
-		return FALSE
+		return 0
 	return -1
 
 /atom/proc/on_reagent_change()
@@ -150,7 +150,7 @@
 */
 
 /atom/proc/CheckExit()
-	return TRUE
+	return 1
 
 // If you want to use this, the atom must have the PROXMOVE flag, and the moving
 // atom must also have the PROXMOVE flag currently to help with lag. ~ ComicIronic
@@ -171,9 +171,9 @@
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
 	if(ispath(container))
 		if(istype(src.loc, container))
-			return TRUE
+			return 1
 	else if(src in container)
-		return TRUE
+		return 1
 	return
 
 /*
@@ -343,7 +343,7 @@ its easier to just keep the beam vertical.
 //returns 1 if made bloody, returns 0 otherwise
 /atom/proc/add_blood(mob/living/carbon/human/M as mob)
 	if(atom_flags & ATOM_FLAG_NO_BLOOD)
-		return FALSE
+		return 0
 
 	if(!blood_DNA || !istype(blood_DNA, /list))	//if our list of DNA doesn't exist yet (or isn't a list) initialise it.
 		blood_DNA = list()
@@ -357,7 +357,7 @@ its easier to just keep the beam vertical.
 		M.check_dna()
 		blood_color = M.species.get_blood_colour(M)
 	. = 1
-	return TRUE
+	return 1
 
 /atom/proc/add_vomit_floor(mob/living/carbon/M as mob, var/toxvomit = 0)
 	if( istype(src, /turf/simulated) )
@@ -374,7 +374,7 @@ its easier to just keep the beam vertical.
 	src.germ_level = 0
 	if(istype(blood_DNA, /list))
 		blood_DNA = null
-		return TRUE
+		return 1
 
 /atom/proc/get_global_map_pos()
 	if(!islist(GLOB.global_map) || isemptylist(GLOB.global_map)) return
@@ -391,16 +391,16 @@ its easier to just keep the beam vertical.
 	if(cur_x && cur_y)
 		return list("x"=cur_x,"y"=cur_y)
 	else
-		return FALSE
+		return 0
 
 /atom/proc/checkpass(passflag)
 	return pass_flags&passflag
 
 /atom/proc/isinspace()
 	if(istype(get_turf(src), /turf/space))
-		return TRUE
+		return 1
 	else
-		return FALSE
+		return 0
 
 
 // Show a message to all mobs and objects in sight of this atom
@@ -479,43 +479,43 @@ its easier to just keep the beam vertical.
 
 /atom/proc/can_climb(var/mob/living/user, post_climb_check=0)
 	if (!(atom_flags & ATOM_FLAG_CLIMBABLE) || !can_touch(user) || (!post_climb_check && (user in climbers)))
-		return FALSE
+		return 0
 
 	if (!user.Adjacent(src))
 		to_chat(user, "<span class='danger'>You can't climb there, the way is blocked.</span>")
-		return FALSE
+		return 0
 
 	var/obj/occupied = turf_is_crowded()
 	if(occupied)
 		to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
-		return FALSE
-	return TRUE
+		return 0
+	return 1
 
 /atom/proc/can_touch(var/mob/user)
 	if (!user)
-		return FALSE
+		return 0
 	if(!Adjacent(user))
-		return FALSE
+		return 0
 	if (user.restrained() || user.buckled)
 		to_chat(user, "<span class='notice'>You need your hands and legs free for this.</span>")
-		return FALSE
+		return 0
 	if (user.incapacitated())
-		return FALSE
+		return 0
 	if (issilicon(user))
 		to_chat(user, "<span class='notice'>You need hands for this.</span>")
-		return FALSE
-	return TRUE
+		return 0
+	return 1
 
 /atom/proc/turf_is_crowded()
 	var/turf/T = get_turf(src)
 	if(!T || !istype(T))
-		return FALSE
+		return 0
 	for(var/atom/A in T.contents)
 		if(A.atom_flags & ATOM_FLAG_CLIMBABLE)
 			continue
 		if(A.density && !(A.atom_flags & ATOM_FLAG_CHECKS_BORDER)) //ON_BORDER structures are handled by the Adjacent() check.
 			return A
-	return FALSE
+	return 0
 
 /atom/proc/do_climb(var/mob/living/user)
 	if (!can_climb(user))
@@ -608,8 +608,8 @@ its easier to just keep the beam vertical.
 
 //Defined here for convenience
 /atom/proc/get_attack_speed_factor()
-	return TRUE
+	return 1
 
 /atom/proc/get_move_speed_factor()
-	return TRUE
+	return 1
 

@@ -213,16 +213,3 @@
 #define SET_ARGS(L) var/list/newargs = L; for(var/i in 1 to length(newargs)) { args[i] = newargs[i] };
 
 #define subtypesof(prototype) (typesof(prototype) - prototype)
-
-
-//Takes a list of images, and a flag.
-/*
-	Checks if target's hudlist has an image for the supplied hud image type
-		If so, adds that image to the supplied list
-		If not, sets an update
-*/
-#define	add_hudlist(outputlist, mobref, hudtype)	if (mobref.hud_list[hudtype])\
-{outputlist += mobref.hud_list[hudtype]}\
-else\
-{\
-BITSET(mobref.hud_updateflag, hudtype)}
