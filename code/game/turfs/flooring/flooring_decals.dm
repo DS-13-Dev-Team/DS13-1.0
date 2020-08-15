@@ -133,6 +133,82 @@ var/list/floor_decals = list()
 	name = "loading area"
 	icon_state = "loadingarea"
 
+
+/obj/effect/floor_decal/industrial/warning
+	name = "hazard stripes"
+	icon_state = "warning"
+
+/obj/effect/floor_decal/industrial/warning/corner
+	icon_state = "warningcorner"
+
+/obj/effect/floor_decal/industrial/warning/full
+	icon_state = "warningfull"
+
+/obj/effect/floor_decal/industrial/warning/cee
+	icon_state = "warningcee"
+
+/obj/effect/floor_decal/industrial/warning/fulltile
+	icon_state = "warningfulltile"
+
+/obj/effect/floor_decal/industrial/warning/dust
+	name = "hazard stripes"
+	icon_state = "warning_dust"
+
+/obj/effect/floor_decal/industrial/warning/dust/corner
+	name = "hazard stripes"
+	icon_state = "warningcorner_dust"
+
+/obj/effect/floor_decal/industrial/hatch
+	name = "hatched marking"
+	icon_state = "delivery"
+	alpha = 229
+
+/obj/effect/floor_decal/industrial/hatch/yellow
+	color = "#cfcf55"
+
+/obj/effect/floor_decal/industrial/hatch/red
+	color = COLOR_RED_GRAY
+
+/obj/effect/floor_decal/industrial/hatch/orange
+	color = COLOR_DARK_ORANGE
+
+/obj/effect/floor_decal/industrial/hatch/blue
+	color = COLOR_BLUE_GRAY
+
+/obj/effect/floor_decal/industrial/shutoff
+	name = "shutoff valve marker"
+	icon_state = "shutoff"
+
+/obj/effect/floor_decal/industrial/outline
+	name = "white outline"
+	icon_state = "outline"
+	alpha = 229
+
+/obj/effect/floor_decal/industrial/outline/blue
+	name = "blue outline"
+	color = "#00b8b2"
+
+/obj/effect/floor_decal/industrial/outline/yellow
+	name = "yellow outline"
+	color = "#cfcf55"
+
+/obj/effect/floor_decal/industrial/outline/grey
+	name = "grey outline"
+	color = "#808080"
+
+/obj/effect/floor_decal/industrial/outline/red
+	name = "red outline"
+	color = COLOR_RED_GRAY
+
+/obj/effect/floor_decal/industrial/outline/orange
+	name = "orange outline"
+	color = COLOR_DARK_ORANGE
+
+/obj/effect/floor_decal/industrial/loading
+	name = "loading area"
+	icon_state = "loadingarea"
+	alpha = 229
+
 /obj/effect/floor_decal/plaque
 	name = "plaque"
 	icon_state = "plaque"

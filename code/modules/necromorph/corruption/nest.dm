@@ -14,7 +14,7 @@
 	pixel_x = -16
 	pixel_y = -16
 
-	biomass = 30
+	biomass = 25
 	reclamation_time = 10 MINUTES
 
 	default_scale = 1.4
@@ -35,6 +35,8 @@
 
 	var/list/upgrade_multipliers = list(1, 0.9, 0.75)
 	var/growth_timer_handle
+
+	can_block_movement = TRUE
 
 /obj/structure/corruption_node/nest/Initialize()
 	//Add ourselves as a possible spawnpoint for the marker

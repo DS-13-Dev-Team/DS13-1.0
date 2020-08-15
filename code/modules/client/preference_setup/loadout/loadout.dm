@@ -39,7 +39,7 @@ var/list/gear_datums = list()
 	for(var/loadout_category in loadout_categories)
 		var/datum/loadout_category/LC = loadout_categories[loadout_category]
 		LC.gear = sortAssoc(LC.gear)
-	return 1
+	return TRUE
 
 /datum/category_item/player_setup_item/loadout
 	name = "Loadout"
@@ -275,7 +275,7 @@ var/list/gear_datums = list()
 			if(!istype(pref.gear_list)) pref.gear_list = list()
 			if(!pref.gear_list.len) pref.gear_list.len++
 			pref.gear_list[1] = old_gear
-		return 1
+		return TRUE
 
 	if(preferences["version"] < 15)
 		if(istype(pref.gear_list))
@@ -289,7 +289,7 @@ var/list/gear_datums = list()
 					continue
 				var/value = pref.gear_list[key]
 				pref.gear_list[index] = value
-		return 1
+		return TRUE
 
 /datum/gear
 	var/display_name       //Name/index. Must be unique.
@@ -311,13 +311,23 @@ var/list/gear_datums = list()
 	if(!description)
 		var/obj/O = path
 		description = initial(O.desc)
+
+	//Initialize gear tweaks
+	var/list/typepaths = gear_tweaks.Copy()
+	gear_tweaks = list()
+	for (var/thing in typepaths)
+		if (ispath(thing))
+			gear_tweaks += new thing()
+		else
+			gear_tweaks += thing	//Incase it did its own initializing
+
 	if(flags & GEAR_HAS_COLOR_SELECTION)
 		gear_tweaks += gear_tweak_free_color_choice()
 	if(flags & GEAR_HAS_TYPE_SELECTION)
 		gear_tweaks += new/datum/gear_tweak/path/type(path)
 	if(flags & GEAR_HAS_SUBTYPE_SELECTION)
 		gear_tweaks += new/datum/gear_tweak/path/subtype(path)
-		
+
 /datum/gear/proc/get_description(var/metadata)
 	. = description
 	for(var/datum/gear_tweak/gt in gear_tweaks)
@@ -333,18 +343,24 @@ var/list/gear_datums = list()
 
 /datum/gear/proc/spawn_item(var/location, var/metadata)
 	var/datum/gear_data/gd = new(path, location)
-	for(var/datum/gear_tweak/gt in gear_tweaks)
-		gt.tweak_gear_data(metadata["[gt]"], gd)
+	if (metadata)
+		for(var/datum/gear_tweak/gt in gear_tweaks)
+			gt.tweak_gear_data(metadata["[gt]"], gd)
 	var/item = new gd.path(gd.location)
 	for(var/datum/gear_tweak/gt in gear_tweaks)
-		gt.tweak_item(item, metadata["[gt]"])
+		gt.tweak_item(item, (metadata ? metadata["[gt]"] : null), location)
 	return item
 
 /datum/gear/proc/spawn_on_mob(var/mob/living/carbon/human/H, var/metadata)
+
 	var/obj/item/item = spawn_item(H, metadata)
 
-	if(H.equip_to_slot_if_possible(item, slot, del_on_fail = 1, force = 1))
+	var/result =H.equip_to_slot_if_possible(item, slot, del_on_fail = 1, force = 1)
+	if(result)
 		to_chat(H, "<span class='notice'>Equipping you with \the [item]!</span>")
+
+		for(var/datum/gear_tweak/gt in gear_tweaks)
+			gt.tweak_postequip(H, item, slot)
 		return TRUE
 
 	return FALSE

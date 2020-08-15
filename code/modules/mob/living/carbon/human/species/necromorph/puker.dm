@@ -220,6 +220,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	damage = 17.5
 	step_delay = 1.25
 	kill_count = PUKER_SNAPSHOT_RANGE
+	impact_type = /obj/effect/projectile/acid/impact/small
 
 
 //Longshot projectile. Good damage, no range limits, slower moving

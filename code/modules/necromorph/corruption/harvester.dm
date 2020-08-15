@@ -59,6 +59,8 @@
 	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 
+	can_block_movement = TRUE
+
 
 /obj/structure/corruption_node/harvester/update_icon()
 	set waitfor = FALSE

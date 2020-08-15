@@ -34,6 +34,7 @@
 
 	max_health = 60
 	resistance = 6
+	can_block_movement = TRUE
 
 //Wall has a smaller random rotation range
 /obj/structure/corruption_node/wall/get_rotation()

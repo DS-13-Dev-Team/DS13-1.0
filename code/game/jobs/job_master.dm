@@ -25,7 +25,7 @@ var/global/datum/controller/occupations/job_master
 		var/list/all_jobs = list(/datum/job/assistant) | GLOB.using_map.allowed_jobs
 		if(!all_jobs.len)
 			log_error("<span class='warning'>Error setting up jobs, no job datums found!</span>")
-			return 0
+			return FALSE
 		for(var/J in all_jobs)
 			var/datum/job/job = decls_repository.get_decl(J)
 			if(!job)	continue
@@ -63,14 +63,14 @@ var/global/datum/controller/occupations/job_master
 			decls_repository.get_decl(/decl/hierarchy/skill)
 		if(!GLOB.skills.len)
 			log_error("<span class='warning'>Error setting up job skill requirements, no skill datums found!</span>")
-			return 0
-		return 1
+			return FALSE
+		return TRUE
 
 
 	proc/Debug(var/text)
-		if(!Debug2)	return 0
+		if(!Debug2)	return FALSE
 		job_debug.Add(text)
-		return 1
+		return TRUE
 
 
 	proc/GetJob(var/rank)
@@ -81,9 +81,9 @@ var/global/datum/controller/occupations/job_master
 		return null
 
 	proc/ShouldCreateRecords(var/rank)
-		if(!rank) return 0
+		if(!rank) return FALSE
 		var/datum/job/job = GetJob(rank)
-		if(!job) return 0
+		if(!job) return FALSE
 		return job.create_record
 
 	proc/GetPlayerAltTitle(mob/new_player/player, rank)
@@ -139,15 +139,15 @@ var/global/datum/controller/occupations/job_master
 		if(player && player.mind && rank)
 			var/datum/job/job = GetJob(rank)
 			if(!job)
-				return 0
+				return FALSE
 			if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
-				return 0
+				return FALSE
 			if(jobban_isbanned(player, rank))
-				return 0
+				return FALSE
 			if(!job.player_old_enough(player.client))
-				return 0
+				return FALSE
 			if(job.is_restricted(player.client.prefs))
-				return 0
+				return FALSE
 
 			var/position_limit = job.total_positions
 			if(!latejoin)
@@ -158,16 +158,16 @@ var/global/datum/controller/occupations/job_master
 				player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
 				unassigned -= player
 				job.current_positions++
-				return 1
+				return TRUE
 		Debug("AR has failed, Player: [player], Rank: [rank]")
-		return 0
+		return FALSE
 
 	proc/FreeRole(var/rank)	//making additional slot on the fly
 		var/datum/job/job = GetJob(rank)
 		if(job && !job.is_position_available())
 			job.make_position_available()
-			return 1
-		return 0
+			return TRUE
+		return FALSE
 
 	proc/FindOccupationCandidates(datum/job/job, level, flag)
 		Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
@@ -269,8 +269,8 @@ var/global/datum/controller/occupations/job_master
 
 				var/mob/new_player/candidate = pickweight(weightedCandidates)
 				if(AssignRole(candidate, command_position))
-					return 1
-		return 0
+					return TRUE
+		return FALSE
 
 
 	///This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
@@ -307,7 +307,7 @@ var/global/datum/controller/occupations/job_master
 				unassigned += player
 
 		Debug("DO, Len: [unassigned.len]")
-		if(unassigned.len == 0)	return 0
+		if(unassigned.len == 0)	return FALSE
 
 		//Shuffle players and jobs
 		unassigned = shuffle(unassigned)
@@ -397,7 +397,7 @@ var/global/datum/controller/occupations/job_master
 				player.ready = 0
 				player.new_player_panel_proc()
 				unassigned -= player
-		return 1
+		return TRUE
 
 	proc/EquipCustomLoadout(var/mob/living/carbon/human/H, var/datum/job/job)
 
@@ -568,7 +568,7 @@ var/global/datum/controller/occupations/job_master
 
 	proc/LoadJobs(jobsfile) //ran during round setup, reads info from jobs.txt -- Urist
 		if(!config.load_jobs_from_txt)
-			return 0
+			return FALSE
 
 		var/list/jobEntries = file2list(jobsfile)
 
@@ -598,7 +598,7 @@ var/global/datum/controller/occupations/job_master
 				if(name == "AI" || name == "Robot")//I dont like this here but it will do for now
 					J.total_positions = 0
 
-		return 1
+		return TRUE
 
 
 	proc/HandleFeedbackGathering()

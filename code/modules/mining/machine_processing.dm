@@ -8,7 +8,7 @@
 	anchored = 1
 
 	var/obj/machinery/mineral/processing_unit/machine = null
-	var/machinedir = NORTH
+	var/machinedir = EAST
 	var/show_all_ores = 0
 
 /obj/machinery/mineral/processing_unit_console/New()

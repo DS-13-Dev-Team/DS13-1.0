@@ -28,6 +28,7 @@
 	var/stage = 1
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
+	can_block_movement = FALSE
 
 /obj/machinery/light_construct/New(atom/newloc, var/newdir, atom/fixture = null)
 	..(newloc)
@@ -156,6 +157,7 @@
 	var/obj/item/weapon/light/lightbulb
 
 	var/current_mode = null
+	can_block_movement = FALSE
 
 // the smaller bulb light fixture
 /obj/machinery/light/small
@@ -429,7 +431,7 @@
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
-			visible_message("<span class='warning'>[user.name] smashed the light!</span>", 3, "You hear a tinkle of breaking glass")
+			visible_message("<span class='warning'>[user.name] smashed the light!</span>", "You hear a tinkle of breaking glass", range = 3)
 			broken()
 			return
 

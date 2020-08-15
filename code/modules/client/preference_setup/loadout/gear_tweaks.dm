@@ -10,7 +10,10 @@
 /datum/gear_tweak/proc/tweak_gear_data(var/metadata, var/datum/gear_data)
 	return
 
-/datum/gear_tweak/proc/tweak_item(var/obj/item/I, var/metadata)
+/datum/gear_tweak/proc/tweak_item(var/obj/item/I, var/metadata, var/spawn_location)
+	return
+
+/datum/gear_tweak/proc/tweak_postequip(var/mob/living/carbon/human/H, var/obj/item/I, var/equip_slot)
 	return
 
 /datum/gear_tweak/proc/tweak_description(var/description, var/metadata)
@@ -325,3 +328,44 @@
 	if(ValidTeslaLinks[metadata[7]])
 		var/t = ValidTeslaLinks[metadata[7]]
 		I.tesla_link = new t(I)
+
+
+
+/*
+	RIG equipping
+*/
+//Replace any worn backpack
+/datum/gear_tweak/RIG/tweak_item(var/obj/item/I, var/metadata, var/spawn_location)
+	var/obj/item/weapon/rig/rig = I
+	rig.seal_delay = 0	//We zero this to remove the equipping time
+	if (ishuman(spawn_location))
+		var/mob/living/carbon/human/H = spawn_location
+		if (H.back)
+			var/obj/item/backthing = H.back
+			H.drop_from_inventory(backthing)	//Remove the backpack
+
+			//If the backpack had anything in it, we transfer those items over
+			if (rig.storage && istype(backthing, /obj/item/weapon/storage))
+				var/obj/item/weapon/storage/S = backthing
+				for (var/obj/item/J in S.contents)
+					S.remove_from_storage(J, H.loc)
+					if (rig.storage.container.can_be_inserted(J, null, 1))
+						rig.storage.container.handle_item_insertion(J, TRUE)
+					else
+						H.equip_to_storage_or_drop(J)
+			qdel(backthing)
+
+
+/datum/gear_tweak/RIG/tweak_postequip(var/mob/living/carbon/human/H, var/obj/item/I, var/equip_slot)
+	var/obj/item/weapon/rig/rig = I
+	rig.seal_delay = initial(rig.seal_delay)
+
+/*
+	RIG Activation
+*/
+/datum/gear_tweak/RIG/active/tweak_postequip(var/mob/living/carbon/human/H, var/obj/item/I, var/equip_slot)
+	var/obj/item/weapon/rig/rig = I
+	if (istype(rig))
+		rig.toggle_seals(H, TRUE)
+
+	.=..()
