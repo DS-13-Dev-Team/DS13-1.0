@@ -16,7 +16,7 @@
 	Typically, gear datums take precedence, and may disable or displace parts of the outfit
 
 	This datum also validates the gear, making sure the user isn't trying to take two rigs, two pairs of shoes, or
-	donor items when they're not a donor
+	patron items when they're not a patron
 
 	After the mixing is done, then the whole loadout is equipped onto the player in this order:,
 		1. modified-outfit
@@ -31,7 +31,7 @@
 	var/list/gear_list 			//Custom/fluff item loadouts.
 	var/datum/outfit/outfit		//The base job outfit
 
-	var/is_donor	= FALSE	//The player has donor status
+	var/is_patron	= FALSE	//The player has patron status
 
 	var/datum/preferences/prefs
 
@@ -49,10 +49,10 @@
 	prefs = input
 	gear_slot = input.gear_slot
 
-	//Set donor status
+	//Set patron status
 	var/datum/player/P = get_player_from_key(prefs.client_ckey)
-	if (P.donor)
-		is_donor = TRUE
+	if (P.patron)
+		is_patron = TRUE
 
 
 	//Lets validate and add all the gear
@@ -98,7 +98,7 @@
 	if (points < G.cost)
 		return FALSE
 
-	if (G.donor_only && !is_donor)
+	if (G.patron_only && !is_patron)
 		return FALSE
 	//TODO: Safety Checks
 
@@ -152,8 +152,8 @@
 				else
 					var/datum/gear/G = gear_datums[gear_name]
 
-					//If donor status is needed, check that we have it
-					if (P && G.donor_only && !P.donor)
+					//If patron status is needed, check that we have it
+					if (P && G.patron_only && !P.patron)
 						gears -= gear_name
 						continue
 

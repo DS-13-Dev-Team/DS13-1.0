@@ -1,7 +1,7 @@
 /datum/codex_entry/concept/patron
 	display_name = "Patron"
 	category = CATEGORY_CONCEPTS
-	associated_strings = list("patron", "donor", "supporter")
+	associated_strings = list("patron", "patron", "supporter")
 	lore_text = ""
 	mechanics_text = "Lovely people who help support our work get access to special content! \
 	Please visit our patreon to find out more!"

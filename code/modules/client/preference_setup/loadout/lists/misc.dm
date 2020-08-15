@@ -164,4 +164,4 @@
 	display_name = "10,000 credits"
 	path = /obj/item/weapon/spacecash/bundle/c10000
 	cost = 2
-	donor_only = TRUE
+	patron_only = TRUE

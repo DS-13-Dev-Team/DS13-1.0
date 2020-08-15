@@ -142,8 +142,8 @@
 
 	//TODO: Fetch this from player datum
 	var/datum/player/P = get_player_from_key(pref.client_ckey)
-	world << "Menu Fetching donor status: [P] [(P ? P.donor	: FALSE)]"
-	var/is_donor = (P ? P.donor	: FALSE)
+	world << "Menu Fetching patron status: [P] [(P ? P.patron	: FALSE)]"
+	var/is_patron = (P ? P.patron	: FALSE)
 
 	for(var/gear_name in LC.gear)
 		if(!(gear_name in valid_gear_choices()))
@@ -151,11 +151,11 @@
 		var/list/entry = list()
 		var/datum/gear/G = LC.gear[gear_name]
 		var/ticked = (G.display_name in pref.gear_list[pref.gear_slot])
-		entry += "<tr style='[G.donor_only ? " border-style: outset; border-color: [COLOR_GOLD];":""]'>"
+		entry += "<tr style='[G.patron_only ? " border-style: outset; border-color: [COLOR_GOLD];":""]'>"
 		var/button_info = "<td width=25%>"
 
-		//If this is a donor item and the player isn't a donor, then the button goes to a codex page
-		if (G.donor_only && !is_donor)
+		//If this is a patron item and the player isn't a patron, then the button goes to a codex page
+		if (G.patron_only && !is_patron)
 			button_info += "<a style='white-space:normal;' href='?src=\ref[SScodex];show_examined_info=\ref[SScodex.get_entry_by_string("patron")];show_to=\ref[pref.client]'>[G.display_name]</a></td>"
 		else
 			button_info += "<a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(G.display_name)]'>[G.display_name]</a></td>"

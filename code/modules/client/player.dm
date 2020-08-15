@@ -9,26 +9,26 @@
 	var/mob
 	var/is_necromorph = FALSE
 
-	//If true, this player is registered as a donor, and gets access to certain perks
-	//most of these perks can also be accessed by admins, without donor status
-	var/donor = FALSE
+	//If true, this player is registered as a patron, and gets access to certain perks
+	//most of these perks can also be accessed by admins, without patron status
+	var/patron = FALSE
 
 	//Last cached coordinates, set on logout
 	var/list/last_location = list("x" = 0, "y" = 0, "z" = 0)
 
 /datum/player/New(var/newkey)
 	src.key = newkey
-	update_donor()
+	update_patron()
 
 	.=..()
 
-/datum/player/proc/update_donor()
-	if ((key in GLOB.donor_keys))
-		log_world("Player set donor status TRUE")
-		donor = TRUE
+/datum/player/proc/update_patron()
+	if ((key in GLOB.patron_keys))
+		log_world("Player set patron status TRUE")
+		patron = TRUE
 	else
-		donor = FALSE
-		log_world("Player key [key] not in donors, they are [english_list(GLOB.donor_keys)]")
+		patron = FALSE
+		log_world("Player key [key] not in patrons, they are [english_list(GLOB.patron_keys)]")
 
 /datum/player/proc/Login()
 	GLOB.logged_in_event.raise_event(src)

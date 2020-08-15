@@ -28,7 +28,7 @@
 		leap = TRUE
 	//We now have the time up to the start of the specified year
 
-	world << "Total seconds from years: [total_seconds]"
+
 
 	//Lets handle months next
 	var/month = text2num(datelist[2])
@@ -36,7 +36,6 @@
 		total_seconds += GLOB.month_seconds_cumulative_leap[month]
 	else
 		total_seconds += GLOB.month_seconds_cumulative[month]
-
 
 	//Finally days
 	var/days = text2num(datelist[3])
@@ -82,8 +81,7 @@
 	//Time remaining
 	//Leap (true/false)
 /proc/time_to_years(var/time)
-	world << "Initial time [time]"
-	var/initial_time = time
+
 	//First lets knock off as many leap blocks as we can. Each is 4 years
 	var/leap_blocks = Floor(time / LEAP_BLOCK)
 
@@ -103,7 +101,6 @@
 	else
 		leap = TRUE
 
-	world << "Time to years Y: [years] Timespent: [initial_time - time], remaining: [time]"
 
 	return list(years, time, leap)
 
@@ -117,7 +114,7 @@
 		-Time remaining
 */
 /proc/time_to_calendar_month(var/time, var/leap = FALSE)
-
+	var/initial_time = time
 	//We will iterate backwards through the list of cumulative monthlengths, until we find one that is <= remaining time
 	var/list/monthlist
 	if (leap)
@@ -126,9 +123,11 @@
 		monthlist = GLOB.month_seconds_cumulative
 	var/month
 	for (month = 12; month >= 1; month--)
-		if (time >= monthlist[month])
-			time -= monthlist[month]
+		var/monthtime = text2num(monthlist[month])
+		if (time >= monthtime)
+			time -= monthtime
 			break
+
 
 	return list(month, time)
 
@@ -151,7 +150,7 @@
 	returns true if the current date is past that
 */
 /proc/is_past_date(var/input_date)
-	var/list/current_date = splittext(time2text(world.realtime,"YYYY-MM-DD"), "-")
+	var/list/current_date = current_date()
 	var/list/target_date = splittext(time2text(input_date,"YYYY-MM-DD"), "-")
 
 	//Compare year
@@ -169,13 +168,42 @@
 	return TRUE
 
 
+/*
+	Returns today's date in the format "YYYY-MM-DD"
+*/
+/proc/current_date()
+	return splittext(time2text(world.realtime,"YYYY-MM-DD"), "-")
+
+
+/*
+	Returns the byond time between two dates
+*/
+/proc/time_between_dates(var/date1, var/date2)
+	var/time1 = date_to_byond(date1)
+	var/time2 = date_to_byond(date2)
+
+	return time2 - time1
+
+/*
+	Adds a certain amount of time to a date, returning it as a date
+*/
+/proc/add_time_to_date(var/date, var/timedelta)
+	var/timedate = date_to_byond(date)
+	timedate += timedelta
+	return byond_to_date(timedate)
+
+
+/*
+	Returns the number of days time between two dates
+*/
+/proc/days_between_dates(var/date1, var/date2)
+	var/time = abs(time_between_dates(date1, date2))
+	return Floor(time / (1 DAY))
+
 /client/verb/date_test(var/date as text)
 	set name = "Date to time"
 
-	world << "[date] converts to [num2text(date_to_byond(date),1000)]"
 
 
 /client/verb/time_test(var/time as num)
 	set name = "Time to Date"
-
-	world << "[time] converts to [byond_to_date(time)]"

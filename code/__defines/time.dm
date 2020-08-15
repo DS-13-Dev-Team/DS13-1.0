@@ -7,8 +7,8 @@
 #define HOUR *36000
 #define HOURS *36000
 
-#define DAY *864000
-#define DAYS *864000
+#define DAY *86400
+#define DAYS *86400
 
 #define YEAR	*31536000
 #define YEARS	*31536000
@@ -16,6 +16,9 @@
 
 //Number of seconds in four years, including the extra day in the leap year
 #define LEAP_BLOCK	 ((4 YEARS) + (1 DAY))
+
+//A date which is far enough in the future that we don't need to worry
+#define FOREVER	"2100-01-01"
 
 GLOBAL_LIST_INIT(month_seconds, list(
 31 DAYS,//January
