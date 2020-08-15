@@ -279,7 +279,10 @@
 
 	if (environment_pressure <= pressure_levels[1])		//low pressures
 		if (!(mode == AALARM_MODE_PANIC || mode == AALARM_MODE_CYCLE))
-			playsound(src.loc, 'sound/machines/airalarm.ogg', 25, 0, 4)
+			if (prob(50))
+				playsound(src.loc, 'sound/machines/airalarm.ogg', 25, 0, 4)
+			else
+				playsound(src.loc, 'sound/machines/airalarm2.ogg', 25, 0, 4)
 			return 1
 
 	return 0
