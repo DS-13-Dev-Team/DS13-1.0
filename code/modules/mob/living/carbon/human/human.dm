@@ -54,7 +54,6 @@
 		sync_organ_dna()
 	make_blood()
 
-
 /mob/living/carbon/human/Destroy()
 	GLOB.human_mob_list -= src
 	worn_underwear = null
@@ -118,17 +117,17 @@
 		if(istype(L, /obj/item/weapon/implant/loyalty))
 			for(var/obj/item/organ/external/O in M.organs)
 				if(L in O.implants)
-					return TRUE
-	return FALSE
+					return 1
+	return 0
 
 /mob/living/carbon/human/restrained()
 	if (handcuffed)
-		return TRUE
+		return 1
 	if(grab_restrained())
-		return TRUE
+		return 1
 	if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
-		return TRUE
-	return FALSE
+		return 1
+	return 0
 
 /mob/living/carbon/human/proc/grab_restrained()
 	for (var/obj/item/grab/G in grabbed_by)
@@ -427,24 +426,24 @@
 
 	target_zone = check_zone(target_zone)
 	if(!affecting || affecting.parent_organ != target_zone)
-		return FALSE
+		return 0
 
 	//if the parent organ is significantly larger than the brain organ, then hitting it is not guaranteed
 	var/obj/item/organ/parent = get_organ(target_zone)
 	if(!parent)
-		return FALSE
+		return 0
 
 	if(parent.w_class > affecting.w_class + 1)
 		return prob(100 / 2**(parent.w_class - affecting.w_class - 1))
 
-	return TRUE
+	return 1
 
 /mob/living/carbon/human/is_advanced_tool_user(var/silent)
 	if(species.has_fine_manipulation(src))
-		return TRUE
+		return 1
 	if(!silent)
 		to_chat(src, "<span class='warning'>You don't have the dexterity to use that!</span>")
-	return FALSE
+	return 0
 
 /mob/living/carbon/human/abiotic(var/full_body = TRUE)
 	if(full_body)
@@ -478,14 +477,14 @@
 
 /mob/living/proc/check_has_mouth()
 	// mobs do not have mouths by default
-	return FALSE
+	return 0
 
 /mob/living/carbon/human/check_has_mouth()
 	// Todo, check stomach organ when implemented.
 	var/obj/item/organ/external/head/H = get_organ(BP_HEAD)
 	if(!H || !istype(H) || !H.can_intake_reagents)
-		return FALSE
-	return TRUE
+		return 0
+	return 1
 
 /mob/living/carbon/human/proc/vomit(var/toxvomit = 0, var/timevomit = 1, var/level = 3)
 	set waitfor = 0
@@ -725,7 +724,7 @@
 
 /mob/living/carbon/human/add_blood(mob/living/carbon/human/M as mob)
 	if (!..())
-		return FALSE
+		return 0
 	//if this blood isn't already in the list, add it
 	if(istype(M))
 		if(!blood_DNA[M.dna.unique_enzymes])
@@ -733,7 +732,7 @@
 	hand_blood_color = blood_color
 	src.update_inv_gloves()	//handles bloody hands overlays and updating
 	verbs += /mob/living/carbon/human/proc/bloody_doodle
-	return TRUE //we applied blood to the item
+	return 1 //we applied blood to the item
 
 /mob/living/carbon/human/clean_blood(var/clean_feet)
 	.=..()
@@ -742,7 +741,7 @@
 		feet_blood_color = null
 		feet_blood_DNA = null
 		update_inv_shoes(1)
-		return TRUE
+		return 1
 
 /mob/living/carbon/human/get_visible_implants(var/class = 0)
 
@@ -758,8 +757,8 @@
 	for(var/obj/item/organ/external/organ in src.organs)
 		for(var/obj/item/O in organ.implants)
 			if(!istype(O, /obj/item/weapon/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
-				return TRUE
-	return FALSE
+				return 1
+	return 0
 
 /mob/living/carbon/human/proc/handle_embedded_and_stomach_objects()
 	for(var/obj/item/organ/external/organ in src.organs)
@@ -956,7 +955,7 @@
 		if(istype(C) && !C.mob_can_equip(src, slot, disable_warning = TRUE, force = TRUE))	//Without the force flag, nothing can remain equipped
 			unEquip(C)
 
-	return TRUE
+	return 1
 
 /mob/living/carbon/human/proc/bloody_doodle()
 	set category = "IC"
@@ -967,7 +966,7 @@
 		return
 
 	if (usr != src)
-		return FALSE //something is terribly wrong
+		return 0 //something is terribly wrong
 
 	if (!bloody_hands)
 		verbs -= /mob/living/carbon/human/proc/bloody_doodle
@@ -1019,11 +1018,11 @@
 
 	if(!affecting)
 		to_chat(user, "<span class='warning'>They are missing that limb.</span>")
-		return FALSE
+		return 0
 
 	if(BP_IS_ROBOTIC(affecting))
 		to_chat(user, "<span class='warning'>That limb is robotic.</span>")
-		return FALSE
+		return 0
 
 	. = CAN_INJECT
 	for(var/obj/item/clothing/C in list(head, wear_mask, wear_suit, w_uniform, gloves, shoes))
@@ -1032,7 +1031,7 @@
 				. = INJECTION_PORT //it was going to block us, but it's a space suit so it doesn't because it has some kind of port
 			else
 				to_chat(user, "<span class='warning'>There is no exposed flesh or thin material on [src]'s [affecting.name] to inject into.</span>")
-				return FALSE
+				return 0
 
 
 /mob/living/carbon/human/print_flavor_text(var/shrink = 1)
@@ -1093,19 +1092,19 @@
 	if(internal_organs_by_name[BP_BRAIN])
 		var/obj/item/organ/internal/brain = internal_organs_by_name[BP_BRAIN]
 		if(brain && istype(brain))
-			return TRUE
-	return FALSE
+			return 1
+	return 0
 
 /mob/living/carbon/human/has_eyes()
 	if(internal_organs_by_name[BP_EYES])
 		var/obj/item/organ/internal/eyes = internal_organs_by_name[BP_EYES]
 		if(eyes && eyes.is_usable())
-			return TRUE
-	return FALSE
+			return 1
+	return 0
 
 /mob/living/carbon/human/slip(var/slipped_on, stun_duration=2)
 	if((species.species_flags & SPECIES_FLAG_NO_SLIP) || (shoes && (shoes.item_flags & ITEM_FLAG_NOSLIP)))
-		return FALSE
+		return 0
 	return !!(..(slipped_on,stun_duration))
 
 /mob/living/carbon/human/check_slipmove()
@@ -1179,9 +1178,9 @@
 		for(var/limbcheck in list(BP_L_LEG,BP_R_LEG))
 			var/obj/item/organ/affecting = get_organ(limbcheck)
 			if(!affecting)
-				return FALSE
-		return TRUE
-	return FALSE
+				return 0
+		return 1
+	return 0
 
 /mob/living/carbon/human/verb/pull_punches()
 	set name = "Switch Stance"
@@ -1264,15 +1263,15 @@
 		affecting = organs_by_name[BP_GROIN]
 
 	if(affecting && BP_IS_ROBOTIC(affecting))
-		return FALSE
+		return 0
 	return (species && species.should_have_organ(organ_check))
 
 /mob/living/carbon/human/can_feel_pain(var/obj/item/organ/check_organ)
 	if(isSynthetic())
-		return FALSE
+		return 0
 	if(check_organ)
 		if(!istype(check_organ))
-			return FALSE
+			return 0
 		return check_organ.can_feel_pain()
 	return !(species.species_flags & SPECIES_FLAG_NO_PAIN)
 
@@ -1284,9 +1283,9 @@
 
 /mob/living/carbon/human/need_breathe()
 	if(!(mNobreath in mutations) && species.breathing_organ && should_have_organ(species.breathing_organ))
-		return TRUE
+		return 1
 	else
-		return FALSE
+		return 0
 
 /mob/living/carbon/human/get_adjusted_metabolism(metabolism)
 	return ..() * (species ? species.metabolism_mod : 1)
