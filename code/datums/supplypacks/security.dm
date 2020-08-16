@@ -94,15 +94,6 @@
 	containername = "\improper Ballistic suit crate"
 	access = access_armory
 
-/decl/hierarchy/supply_pack/security/ablativearmor
-	name = "Armor - Ablative"
-	contains = list(/obj/item/clothing/head/helmet/ablative = 4,
-					/obj/item/clothing/suit/armor/laserproof = 4)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure
-	containername = "\improper Ablative suit crate"
-	access = access_armory
-
 /decl/hierarchy/supply_pack/security/weapons
 	name = "Weapons - Security basic"
 	contains = list(/obj/item/device/flash = 4,
@@ -195,6 +186,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper surplus weapons crate"
+	access = access_security
 
 
 /decl/hierarchy/supply_pack/security/random_ammo
@@ -203,3 +195,4 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper surplus ammunition crate"
+	access = access_security

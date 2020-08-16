@@ -89,11 +89,9 @@
 
 /decl/hierarchy/supply_pack/hydroponics/exoticseeds
 	name = "Exotic seeds crate"
-	contains = list(/obj/item/seeds/replicapod = 2,
-					/obj/item/seeds/libertymycelium,
+	contains = list(/obj/item/seeds/libertymycelium,
 					/obj/item/seeds/reishimycelium,
-					/obj/item/seeds/random = 6,
-					/obj/item/seeds/kudzuseed)
+					/obj/item/seeds/random = 6)
 	cost = 15
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Exotic Seeds crate"
@@ -158,14 +156,3 @@
 	containertype = /obj/structure/closet/crate/large/hydroponics
 	containername = "\improper Potted plant crate"
 	supply_method = /decl/supply_method/randomized
-
-/decl/hierarchy/supply_pack/hydroponics/fish
-	name = "Fish supply crate"
-	contains = list(
-			/obj/item/weapon/reagent_containers/food/snacks/lobster = 6,
-			/obj/item/weapon/reagent_containers/food/snacks/cuttlefish = 8,
-			/obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfish = 1
-			)
-	cost = 20
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Fish crate"

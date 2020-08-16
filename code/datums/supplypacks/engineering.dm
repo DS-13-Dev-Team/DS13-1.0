@@ -79,14 +79,6 @@
 	containername = "\improper Emitter crate"
 	access = access_engineering
 
-/decl/hierarchy/supply_pack/engineering/sing_gen
-	name = "Singularity Generator crate"
-	contains = list(/obj/machinery/the_singularitygen)
-	cost = 10
-	containertype = /obj/structure/closet/crate/secure/large
-	containername = "\improper Singularity Generator crate"
-	access = access_ce
-
 /decl/hierarchy/supply_pack/engineering/collector
 	name = "Collector crate"
 	contains = list(/obj/machinery/power/rad_collector = 2)

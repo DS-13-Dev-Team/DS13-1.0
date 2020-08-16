@@ -110,7 +110,7 @@
 					/obj/item/weapon/reagent_containers/syringe)
 	cost = 60
 	containertype = /obj/structure/closet/crate/secure
-	containername = "\improper Senior medical officer equipment"
+	containername = "\improper Senior Medical Officer equipment"
 	access = access_smo
 
 /decl/hierarchy/supply_pack/medical/doctorgear
