@@ -30,6 +30,10 @@
 		patron = FALSE
 		log_world("Player key [key] not in patrons, they are [english_list(GLOB.patron_keys)]")
 
+	var/client/C = get_client()
+	if (C && C.prefs && C.prefs.loadout)
+		C.prefs.loadout.set_prefs(C.prefs)
+
 /datum/player/proc/Login()
 	GLOB.logged_in_event.raise_event(src)
 	return

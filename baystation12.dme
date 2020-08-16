@@ -103,6 +103,7 @@
 #include "code\_helpers\date.dm"
 #include "code\_helpers\debug.dm"
 #include "code\_helpers\detection.dm"
+#include "code\_helpers\external.dm"
 #include "code\_helpers\files.dm"
 #include "code\_helpers\functional.dm"
 #include "code\_helpers\game.dm"

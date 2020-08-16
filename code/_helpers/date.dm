@@ -72,6 +72,15 @@
 
 	//We are done! Lets return it
 
+	//And just some leading 0's if necessary
+	month = "[month]"
+	if (length(month) < 2)
+		month = "0[month]"
+
+	day = "[day]"
+	if (length(day) < 2)
+		day = "0[day]"
+
 	return "[year]-[month]-[day]"
 
 
@@ -85,7 +94,7 @@
 	//First lets knock off as many leap blocks as we can. Each is 4 years
 	var/leap_blocks = Floor(time / LEAP_BLOCK)
 
-	var/years = (leap_blocks * 4)
+	var/years = 2000 + (leap_blocks * 4)
 	time -= leap_blocks * LEAP_BLOCK
 
 	var/leap = FALSE
@@ -114,7 +123,6 @@
 		-Time remaining
 */
 /proc/time_to_calendar_month(var/time, var/leap = FALSE)
-	var/initial_time = time
 	//We will iterate backwards through the list of cumulative monthlengths, until we find one that is <= remaining time
 	var/list/monthlist
 	if (leap)
@@ -172,7 +180,7 @@
 	Returns today's date in the format "YYYY-MM-DD"
 */
 /proc/current_date()
-	return splittext(time2text(world.realtime,"YYYY-MM-DD"), "-")
+	return time2text(world.realtime,"YYYY-MM-DD")
 
 
 /*
@@ -200,10 +208,34 @@
 	var/time = abs(time_between_dates(date1, date2))
 	return Floor(time / (1 DAY))
 
-/client/verb/date_test(var/date as text)
-	set name = "Date to time"
 
+/*
+	Returns true if passed a correct date in the format YYYY-MM-DD
+*/
+/proc/sanitize_date(var/date)
+	var/list/datelist = splittext(date, "-")
+	if (!datelist || datelist.len != 3)
+		return FALSE
 
+	var/year = Floor(text2num(datelist[1]))
+	if (year < 2000)
+		return FALSE
 
-/client/verb/time_test(var/time as num)
-	set name = "Time to Date"
+	var/month = Floor(text2num(datelist[2]))
+	if (month < 1 || month > 12)
+		return FALSE
+
+	var/day = Floor(text2num(datelist[3]))
+	if (day < 1 || day > (GLOB.month_seconds_leap[month] / (1 DAY)))
+		return FALSE
+
+	//And just some leading 0's if necessary
+	month = "[month]"
+	if (length(month) < 2)
+		month = "0[month]"
+
+	day = "[day]"
+	if (length(day) < 2)
+		day = "0[day]"
+
+	return "[year]-[month]-[day]"

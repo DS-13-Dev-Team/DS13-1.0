@@ -1,7 +1,7 @@
 /*
 	This file contains preferences and UI handling for the loadout menu
 */
-#define LOADOUT_CHECK	if (!loadout) {if (!loadout)loadout = create_loadout_from_preferences((pref.client.mob ? pref.client.mob : pref.client), pref)}
+#define LOADOUT_CHECK	if (!pref.loadout) {pref.loadout = create_loadout_from_preferences((pref.client.mob ? pref.client.mob : pref.client), pref)}
 /hook/startup/proc/populate_gear_list()
 
 	//create a list of gear datums to sort
@@ -39,7 +39,6 @@
 	sort_order = 1
 	var/current_tab = "General"
 	var/hide_unavailable_gear = 0
-	var/datum/extension/loadout/loadout
 
 /datum/category_item/player_setup_item/loadout/load_character(var/savefile/S)
 	from_file(S["gear_list"], pref.gear_list)
@@ -78,27 +77,22 @@
 
 	//Loadout only sanitizes the current slot
 	LOADOUT_CHECK
-	loadout.sanitize()
+	pref.loadout.sanitize()
 
 
 /datum/category_item/player_setup_item/loadout/content()
 	. = list()
-	var/total_cost = 0
-	var/list/gears = pref.gear_list[pref.gear_slot]
-	for(var/i = 1; i <= gears.len; i++)
-		var/datum/gear/G = GLOB.gear_datums[gears[i]]
-		if(G)
-			total_cost += G.cost
+	LOADOUT_CHECK
 
 	var/fcolor =  "#3366cc"
-	if(loadout.points > 0)
+	if(pref.loadout.points > 0)
 		fcolor = "#e67300"
 	. += "<table align = 'center' width = 100% style = 'border-collapse: collapse;'>"
 	. += "<tr><td colspan=3><center>"
 	. += "<a href='?src=\ref[src];prev_slot=1'>\<\<</a><b><font color = '[fcolor]'>\[[pref.gear_slot]\]</font> </b><a href='?src=\ref[src];next_slot=1'>\>\></a>"
 
 	if(config.max_gear_cost < INFINITY)
-		. += "<b><font color = '[fcolor]'>[loadout.max_points - loadout.points]/[loadout.max_points]</font> loadout points spent.</b>"
+		. += "<b><font color = '[fcolor]'>[pref.loadout.max_points - pref.loadout.points]/[pref.loadout.max_points]</font> loadout points spent.</b>"
 
 	. += "<a href='?src=\ref[src];clear_loadout=1'>Clear Loadout</a>"
 	. += "<a href='?src=\ref[src];toggle_hiding=1'>[hide_unavailable_gear ? "Show all" : "Hide unavailable"]</a></center></td></tr>"
@@ -244,7 +238,7 @@
 	if(href_list["clear_loadout"])
 		var/list/gear = pref.gear_list[pref.gear_slot]
 		gear.Cut()
-		loadout.clear_data()
+		pref.loadout.clear_data()
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	if(href_list["toggle_hiding"])
 		hide_unavailable_gear = !hide_unavailable_gear
@@ -271,9 +265,9 @@
 	var/datum/gear/TG = GLOB.gear_datums[gearname]
 
 	//If the gear is enabled, disable it
-	if((TG.display_name in pref.gear_list[pref.gear_slot]) && loadout.remove_gear(TG))
+	if((TG.display_name in pref.gear_list[pref.gear_slot]) && pref.loadout.remove_gear(TG))
 		pref.gear_list[pref.gear_slot] -= TG.display_name
-	else if (loadout.add_gear(TG))
+	else if (pref.loadout.add_gear(TG))
 		pref.gear_list[pref.gear_slot] += TG.display_name
 
 
@@ -281,7 +275,7 @@
 	newslot = clamp(newslot, 1, config.loadout_slots)
 	if(pref.gear_slot != newslot)
 		pref.gear_slot = newslot
-		loadout.set_prefs(pref)	//Remake the loadout datum
+		pref.loadout.set_prefs(pref)	//Remake the loadout datum
 
 
 

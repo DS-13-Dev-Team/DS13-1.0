@@ -34,7 +34,7 @@ datum/preferences
 	var/list/gear_list //Custom/fluff item loadouts.
 	var/gear_slot = 1  //The current gear save slot
 
-	var/datum/extension/loadout
+	var/datum/extension/loadout/loadout
 
 /datum/preferences/New(client/C)
 	if(!length(GLOB.skills))
