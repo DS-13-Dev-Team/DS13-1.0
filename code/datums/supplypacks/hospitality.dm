@@ -12,12 +12,9 @@
 			/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
 			/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey,
 			/obj/item/weapon/storage/fancy/cigarettes/dromedaryco,
-			/obj/item/weapon/lipstick/random,
 			/obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale = 2,
 			/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer = 4,
-			/obj/item/weapon/storage/box/glowsticks = 2,
-			/obj/item/weapon/clothingbag/rubbermask,
-			/obj/item/weapon/clothingbag/rubbersuit)
+			/obj/item/weapon/storage/box/glowsticks = 2)
 	cost = 20
 	containername = "\improper Party equipment"
 
@@ -47,16 +44,6 @@
 			)
 	cost = 10
 	containername = "crate of bar supplies"
-
-/decl/hierarchy/supply_pack/hospitality/lasertag
-	name = "Lasertag equipment"
-	contains = list(/obj/item/weapon/gun/energy/lasertag/red = 3,
-					/obj/item/clothing/suit/redtag = 3,
-					/obj/item/weapon/gun/energy/lasertag/blue = 3,
-					/obj/item/clothing/suit/bluetag = 3)
-	cost = 20
-	containertype = /obj/structure/closet
-	containername = "\improper Lasertag Closet"
 
 /decl/hierarchy/supply_pack/hospitality/pizza
 	num_contained = 5

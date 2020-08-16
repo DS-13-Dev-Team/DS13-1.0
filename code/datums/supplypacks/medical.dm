@@ -98,12 +98,10 @@
 	name = "Chief medical officer equipment"
 	contains = list(/obj/item/weapon/storage/belt/medical,
 					/obj/item/device/radio/headset/heads/smo,
-					/obj/item/clothing/under/rank/chief_medical_officer,
+					/obj/item/clothing/under/senior_medical_officer,
 					/obj/item/weapon/reagent_containers/hypospray/vial,
 					/obj/item/clothing/accessory/stethoscope,
 					/obj/item/clothing/glasses/hud/health,
-					/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
-					/obj/item/clothing/suit/storage/toggle/labcoat/cmoalt,
 					/obj/item/clothing/mask/surgical,
 					/obj/item/clothing/shoes/white,
 					/obj/item/clothing/gloves/latex,
@@ -119,10 +117,9 @@
 	name = "Medical Doctor equipment"
 	contains = list(/obj/item/weapon/storage/belt/medical,
 					/obj/item/device/radio/headset/headset_med,
-					/obj/item/clothing/under/rank/medical,
+					/obj/item/clothing/under/medical_doctor,
 					/obj/item/clothing/accessory/stethoscope,
 					/obj/item/clothing/glasses/hud/health,
-					/obj/item/clothing/suit/storage/toggle/labcoat,
 					/obj/item/clothing/mask/surgical,
 					/obj/item/weapon/storage/firstaid/adv,
 					/obj/item/clothing/shoes/white,
@@ -133,50 +130,6 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Medical Doctor equipment"
-	access = access_medical
-
-/decl/hierarchy/supply_pack/medical/chemistgear
-	name = "Chemist equipment"
-	contains = list(/obj/item/weapon/storage/box/beakers,
-					/obj/item/device/radio/headset/headset_med,
-					/obj/item/weapon/storage/box/autoinjectors,
-					/obj/item/clothing/under/rank/chemist,
-					/obj/item/clothing/glasses/science,
-					/obj/item/clothing/suit/storage/toggle/labcoat/chemist,
-					/obj/item/clothing/mask/surgical,
-					/obj/item/clothing/shoes/white,
-					/obj/item/clothing/gloves/latex,
-					/obj/item/weapon/reagent_containers/dropper,
-					/obj/item/device/healthanalyzer,
-					/obj/item/weapon/storage/box/pillbottles,
-					/obj/item/weapon/reagent_containers/syringe)
-	cost = 15
-	containertype = /obj/structure/closet/crate/secure
-	containername = "\improper Chemist equipment"
-	access = access_chemistry
-
-/decl/hierarchy/supply_pack/medical/paramedicgear
-	name = "Paramedic equipment"
-	contains = list(/obj/item/device/radio/headset/headset_med,
-					/obj/item/clothing/under/rank/medical/scrubs/black,
-					/obj/item/clothing/accessory/armband/medgreen,
-					/obj/item/clothing/glasses/hud/health,
-					/obj/item/clothing/suit/storage/toggle/labcoat,
-					/obj/item/clothing/under/rank/medical/paramedic,
-					/obj/item/clothing/suit/storage/toggle/fr_jacket,
-					/obj/item/clothing/mask/gas,
-					/obj/item/clothing/under/rank/medical/paramedic,
-					/obj/item/clothing/accessory/stethoscope,
-					/obj/item/weapon/storage/firstaid/adv,
-					/obj/item/clothing/shoes/jackboots,
-					/obj/item/clothing/gloves/latex,
-					/obj/item/device/healthanalyzer,
-					/obj/item/device/flashlight/pen,
-					/obj/item/weapon/reagent_containers/syringe,
-					/obj/item/clothing/accessory/storage/white_vest)
-	cost = 20
-	containertype = /obj/structure/closet/crate/secure
-	containername = "\improper Paramedic equipment"
 	access = access_medical
 
 /decl/hierarchy/supply_pack/medical/psychiatristgear
@@ -231,20 +184,9 @@
 /decl/hierarchy/supply_pack/medical/medicaluniforms
 	name = "Medical uniforms"
 	contains = list(/obj/item/clothing/shoes/white = 3,
-					/obj/item/clothing/under/rank/chief_medical_officer,
-					/obj/item/clothing/under/rank/geneticist,
-					/obj/item/clothing/under/rank/virologist,
-					/obj/item/clothing/under/rank/nursesuit,
-					/obj/item/clothing/under/rank/nurse,
-					/obj/item/clothing/under/rank/orderly,
-					/obj/item/clothing/under/rank/medical = 3,
-					/obj/item/clothing/under/rank/medical/paramedic = 3,
-					/obj/item/clothing/suit/storage/toggle/labcoat = 3,
-					/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
-					/obj/item/clothing/suit/storage/toggle/labcoat/cmoalt,
-					/obj/item/clothing/suit/storage/toggle/labcoat/genetics,
-					/obj/item/clothing/suit/storage/toggle/labcoat/virologist,
-					/obj/item/clothing/suit/storage/toggle/labcoat/chemist,
+					/obj/item/clothing/under/surgeon = 2,
+					/obj/item/clothing/under/medical_doctor = 4,
+					/obj/item/clothing/under/senior_medical_officer,
 					/obj/item/weapon/storage/box/masks,
 					/obj/item/weapon/storage/box/gloves)
 	cost = 15

@@ -79,14 +79,6 @@
 	containername = "\improper Emitter crate"
 	access = access_engineering
 
-/decl/hierarchy/supply_pack/engineering/field_gen
-	name = "Field Generator crate"
-	contains = list(/obj/machinery/field_generator = 2)
-	containertype = /obj/structure/closet/crate/large
-	cost = 10
-	containername = "\improper Field Generator crate"
-	access = access_ce
-
 /decl/hierarchy/supply_pack/engineering/sing_gen
 	name = "Singularity Generator crate"
 	contains = list(/obj/machinery/the_singularitygen)
@@ -171,14 +163,6 @@
 	containername = "\improper Disposal Dispenser Crate"
 	access = access_engineering
 
-/decl/hierarchy/supply_pack/engineering/shield_generator
-	name = "Shield Generator Construction Kit"
-	contains = list(/obj/item/weapon/circuitboard/shield_generator, /obj/item/weapon/stock_parts/capacitor, /obj/item/weapon/stock_parts/micro_laser, /obj/item/weapon/smes_coil, /obj/item/weapon/stock_parts/console_screen)
-	cost = 50
-	containertype = /obj/structure/closet/crate/secure
-	containername = "\improper shield generator construction kit crate"
-	access = access_engineering
-
 /decl/hierarchy/supply_pack/engineering/smbig
 	name = "Supermatter Core"
 	contains = list(/obj/machinery/power/supermatter)
@@ -193,17 +177,6 @@
 	cost = 8
 	containertype = /obj/structure/largecrate
 	containername = "\improper fuel tank crate"
-
-/decl/hierarchy/supply_pack/engineering/robotics
-	name = "Robotics assembly crate"
-	contains = list(/obj/item/device/assembly/prox_sensor = 3,
-					/obj/item/weapon/storage/toolbox/electrical,
-					/obj/item/device/flash = 4,
-					/obj/item/weapon/cell/high = 2)
-	cost = 10
-	containertype = /obj/structure/closet/crate/secure/gear
-	containername = "\improper Robotics assembly"
-	access = access_research
 
 /decl/hierarchy/supply_pack/engineering/radsuit
 	name = "Radiation protection gear"
@@ -243,17 +216,6 @@
 	cost = 20
 	containertype = /obj/structure/closet/firecloset
 	containername = "\improper fire-safety closet"
-
-/decl/hierarchy/supply_pack/engineering/voidsuit
-	name = "Engineering voidsuit"
-	contains = list(/obj/item/clothing/suit/space/void/engineering/alt,
-					/obj/item/clothing/head/helmet/space/void/engineering/alt,
-					/obj/item/clothing/shoes/magboots)
-	cost = 120
-	containername = "\improper Engineering voidsuit crate"
-	containertype = /obj/structure/closet/crate/secure/large
-	access = access_engineering
-
 
 /decl/hierarchy/supply_pack/engineering/toolmods
 	name = "Tool Modification Kit"
