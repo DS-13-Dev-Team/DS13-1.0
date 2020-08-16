@@ -36,6 +36,8 @@
 	var/list/upgrade_multipliers = list(1, 0.9, 0.75)
 	var/growth_timer_handle
 
+	can_block_movement = TRUE
+
 /obj/structure/corruption_node/nest/Initialize()
 	//Add ourselves as a possible spawnpoint for the marker
 	.=..()
