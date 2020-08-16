@@ -265,37 +265,8 @@ armbands
 /*****************
 armour attachments
 *****************/
-/obj/item/clothing/accessory/armor/tag/solgov
-	name = "\improper SCG Flag"
-	desc = "An emblem depicting the Sol Central Government's flag."
-	icon_override = 'maps/torch/icons/obj/solgov-accessory.dmi'
-	icon = 'maps/torch/icons/obj/solgov-accessory.dmi'
-	accessory_icons = list(slot_tie_str = 'maps/torch/icons/mob/solgov-accessory.dmi', slot_w_uniform_str = 'maps/torch/icons/mob/solgov-accessory.dmi', slot_wear_suit_str = 'maps/torch/icons/mob/solgov-accessory.dmi')
-	icon_state = "solflag"
-	slot = ACCESSORY_SLOT_ARMOR_M
 
-/obj/item/clothing/accessory/armor/tag/solgov/ec
-	name = "\improper Expeditionary Corps crest"
-	desc = "An emblem depicting the crest of the SCG Expeditionary Corps."
-	icon_state = "ecflag"
-
-/obj/item/clothing/accessory/armor/tag/solgov/sec
-	name = "\improper POLICE tag"
-	desc = "An armor tag with the word POLICE printed in silver lettering on it."
-	icon_state = "sectag"
-
-/obj/item/clothing/accessory/armor/tag/solgov/com
-	name = "\improper SCG tag"
-	desc = "An armor tag with the words SOL CENTRAL GOVERNMENT printed in gold lettering on it."
-	icon_state = "comtag"
-
-/obj/item/clothing/accessory/armor/tag/solgov/com/sec
-	name = "\improper POLICE tag"
-	desc = "An armor tag with the words POLICE printed in gold lettering on it."
-
-/obj/item/clothing/accessory/armor/helmcover/blue/sol
-	name = "peacekeeper helmet cover"
-	desc = "A fabric cover for armored helmets. This one is in SCG peacekeeper colors."
+// These were SOLGOV related attachies for armor and helmets. Removed by Lion on 09-AUG-2020 to prevent them appearing in the loadout menu.
 
 /**************
 department tags

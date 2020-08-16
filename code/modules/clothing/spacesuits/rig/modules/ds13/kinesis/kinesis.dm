@@ -19,9 +19,9 @@
 	module_cooldown = 0
 	active = FALSE
 
-	var/grip_power_cost = 30	//Cost to pickup an object
-	var/sustain_power_cost = 3	//Cost per second to hold in midair
-	var/force_power_cost = 0.5	//Cost per second per newton of force, when moving an object
+	var/grip_power_cost = 60	//Cost to pickup an object
+	var/sustain_power_cost = 4	//Cost per second to hold in midair
+	var/force_power_cost = 0.8	//Cost per second per newton of force, when moving an object
 	var/launch_power_cost = 2000	//Cost to repulse launch
 
 	activate_string = "Activate Kinesis Mode"
@@ -83,11 +83,11 @@
 
 	//How far away can we grip objects?
 	//Measured in metres. Also note tiles are 1x1 metre
-	var/range = 4
+	var/range = 4.5
 
 	//Held items that get this far away are dropped on the floor
 	//Measured in metres
-	var/drop_range = 5
+	var/drop_range = 6
 
 	//If we are less than this distance from the target point, we will slow down as we approach it so we don't overshoot it
 	//In Metres
@@ -135,7 +135,7 @@
 /obj/item/rig_module/kinesis/advanced
 	name = "G.R.I.P advanced kinesis module"
 	desc = "An engineering tool that uses microgravity fields to manipulate objects at distances of several metres. This version has improved range and power."
-	range = 6
+	range = 6.5
 	drop_range = 7
 	max_force = 30
 	launch_force = 40
@@ -194,6 +194,7 @@
 		return FALSE
 
 
+
 	//Here we do sound, visual FX and powercost for grabbing. Even if we can't grab the object! The attempt alone triggers these
 	if (!use_power(grip_power_cost))
 		power_fail()
@@ -206,7 +207,9 @@
 
 	var/fail = FALSE
 	//Can we pick it up? (assuming its unanchored)
-	if (!AM.can_telegrip(src))
+	if (!istype(AM))
+		fail = TRUE
+	else if (!AM.can_telegrip(src))
 		fail = TRUE
 
 	//If its anchored, do we have what it takes to rip it from its moorings?
@@ -224,35 +227,57 @@
 		//spawn()
 			//rip_free()
 
-	//Line of sight check.
-	//This is fairly permissive, we can grab it if we have LOS to any of the tiles around it
+
 	if (!fail)
-		//First we get a list of turfs in range 1 around the atom
-		var/list/raytrace_turfs = trange(1, AM)
 
-
-		//Second, we see which of those have a clear line of sight to the atom, possibly creating a reduced list
-		raytrace_turfs = check_trajectory_mass(raytrace_turfs, AM, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING, allow_sleep = FALSE)
-
-		//Now remove the ones from the list which failed to hit
-		for (var/t in raytrace_turfs)
-			if (!raytrace_turfs[t])
-				raytrace_turfs -= t
-
-
-		//Thirdly, we see which of those have a clear LOS to us
-		var/list/hit_turfs = check_trajectory_mass(raytrace_turfs, src, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING, allow_sleep = FALSE)
-
-		for (var/t in hit_turfs)
-			if (!hit_turfs[t])
-				raytrace_turfs -= t
-			else
-				break
-
-		if (!hit_turfs.len)
+		var/distance  = holder.wearer.get_global_pixel_distance(AM)
+		//Too far from user
+		if (distance > (range * WORLD_ICON_SIZE))
 			fail = TRUE
 
+
+
+		//Line of sight check.
+		//This is fairly permissive, we can grab it if we have LOS to any of the tiles around it
+		else
+			//First we get a list of turfs in range 1 around the atom
+			var/list/raytrace_turfs = trange(1, AM)
+
+
+			//Second, we see which of those have a clear line of sight to the atom, possibly creating a reduced list
+			raytrace_turfs = check_trajectory_mass_verbose(raytrace_turfs, AM, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING, allow_sleep = FALSE)
+
+			//Now remove the ones from the list which failed to hit
+			for (var/t in raytrace_turfs)
+				var/list/params = raytrace_turfs[t]
+				if (!params[1])	//First param is a true/false of if we got to it
+					raytrace_turfs -= t
+				else if (params[2] != t)	//Second param is the turf this trace actually reached. If we hit the target turf but didn't step into it, then we failed
+					raytrace_turfs -= t
+
+
+
+
+			//Thirdly, we see which of those have a clear LOS to us
+			var/list/hit_turfs = check_trajectory_mass(raytrace_turfs, src, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING, allow_sleep = FALSE)
+
+			for (var/t in hit_turfs)
+				if (!hit_turfs[t])
+					raytrace_turfs -= t
+				else
+					break
+
+
+			if (!hit_turfs.len)
+				fail = TRUE
+
+	//Here we do some visual effects for a failed grab
 	if (fail)
+		//As a punishment for your bad aim and/or spamming, failing costs an extra 50% power
+		if (!use_power(grip_power_cost*0.5))
+			power_fail()
+			return
+
 		playsound(src, 'sound/effects/rig/modules/kinesis_grabfail.ogg', VOLUME_MID, 1)
 		newtether.animate_fade_out(3)
 		newtether = null
@@ -727,7 +752,7 @@
 
 	if (subject && holder && holder.wearer)
 		//Lets see if the clickpoint has actually changed
-		if (global_clickpoint.x != target.x || global_clickpoint.y != target.y)
+		if (!target || global_clickpoint.x != target.x || global_clickpoint.y != target.y)
 			//It has! Set the new target, and if we were at rest, we start moving again
 			target = global_clickpoint
 			var/vector2/userloc = holder.wearer.get_global_pixel_loc()
@@ -740,10 +765,15 @@
 	else
 		//Okay we're trying to grab a new item, first lets find out what
 		var/atom/movable/target_atom
+		var/atom/original
+		if (istype(A, /atom/movable))
+			original = A
 		if(can_grip(A))
 			target_atom = A
 		else
 			target_atom = find_target(A)
+			if (!original)
+				original = target_atom
 
 		if (target_atom)
 			attempt_grip(target_atom)
@@ -818,14 +848,29 @@
 
 /*
 	We will make several passes through the list, first grabbing things that might be important like projectiles in flight
-*/
-/obj/item/rig_module/kinesis/proc/find_target(var/atom/origin)
-	var/list/nearby_stuff = range(1, origin)
 
+	if find_anything is true, we will try to return some kind of object even if its unsuitable, so that we can do a failed-grab for visual fx
+*/
+/obj/item/rig_module/kinesis/proc/find_target(var/atom/origin, var/find_anything = TRUE)
+	var/list/nearby_stuff = range(1, origin)
+	var/atom/anything = null
 	for (var/target_type in target_priority)
 		for (var/atom/movable/A in nearby_stuff)
 			if (!istype(A, target_type))
 				continue
+
+			if (!anything && find_anything)
+				anything = A
+
+			var/distance  = holder.wearer.get_global_pixel_distance(A)
+			//Too far from user
+			if (distance > (range * WORLD_ICON_SIZE))
+				continue
+
+			//A better candidate
+			if (find_anything)
+				anything = A
+
 			if (!can_grip(A))
 				nearby_stuff -= A
 				continue
@@ -834,4 +879,8 @@
 			//If we get this far, we've found a valid item matching the highest possible priority, we are done!
 			return A
 
-	return null
+	if (!anything && find_anything)
+		anything = origin
+
+	//Here we return anything vaguely fitting
+	return anything

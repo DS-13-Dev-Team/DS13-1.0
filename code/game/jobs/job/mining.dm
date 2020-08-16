@@ -57,8 +57,8 @@ datum/job/foreman/get_description_blurb()
 	department = "Mining"
 	abbreviation = "PC"
 	department_flag = MIN
-	total_positions = 14
-	spawn_positions = 14
+	total_positions = 25
+	spawn_positions = 25
 	supervisors = "the Director of Mining"
 	selection_color = "#515151"
 	minimal_player_age = 18

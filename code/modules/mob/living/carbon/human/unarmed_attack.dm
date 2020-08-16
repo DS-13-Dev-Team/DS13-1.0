@@ -265,8 +265,8 @@ var/global/list/sparring_attack_cache = list()
 	Specific Types
 */
 /datum/unarmed_attack/bite
-	attack_verb = list("bit")
-	attack_verb = list("teeth")
+	attack_verb = list("bit", "gnawed", "chomped")
+	attack_noun = list("bite", "chomp")
 	attack_sound = 'sound/weapons/bite.ogg'
 	shredding = 0
 	sharp = TRUE

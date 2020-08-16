@@ -22,6 +22,10 @@
 	//Is this source currently active?
 	var/enabled = TRUE
 
+
+/*
+	Initialization
+*/
 /datum/extension/corruption_source/New(var/atom/holder, var/range, var/speed, var/falloff, var/limit)
 	source = holder
 	GLOB.corruption_sources |= src
@@ -36,11 +40,22 @@
 	if (limit)
 		support_limit = limit
 
-	new /obj/effect/vine/corruption(get_turf(source),GLOB.corruption_seed, start_matured = 1, newsource = src)
+	var/obj/effect/vine/corruption/basevine = (locate(/obj/effect/vine/corruption) in get_turf(source))
+	if (!basevine)
+		basevine = new /obj/effect/vine/corruption(get_turf(source),GLOB.corruption_seed, null, start_matured = 1, newsource = src)
+
+
+	evaluate_existing()
 
 	//Corruption tiles add vision
 	source.visualnet_range = range
 	GLOB.necrovision.add_source(source)
+
+
+
+
+
+
 
 /datum/extension/corruption_source/Destroy()
 	GLOB.corruption_sources -= src
@@ -75,6 +90,13 @@
 	needs_update = TRUE
 	applicant.update_chunks()	//Lets also update the chunk(s) the vine is in/next to
 
+
+//Removes a specified patch from its old source and registers us as the new source
+/datum/extension/corruption_source/proc/take_posession(var/obj/effect/vine/corruption/applicant)
+	if (applicant.source)
+		applicant.source.unregister(applicant)
+
+	register(applicant)
 
 //Is this source able to provide support to a specified turf or corruption vine?
 /datum/extension/corruption_source/proc/can_support(var/atom/A)
@@ -117,6 +139,50 @@
 
 
 
+
+
+
+//Existing handling
+//-------------------------
+//Called when we're first created, this examines all the existing nearby corruption vines.
+/datum/extension/corruption_source/proc/evaluate_existing()
+	for (var/obj/effect/vine/corruption/C as anything in get_reachable())
+		//We'll take control of any that lack a source
+		if (!source)
+			register(C)
+			continue
+
+		//Those that have a source, we test to see if we'd be better, and take control if so
+		var/potential_growth_mult = get_growthtime_multiplier(C)
+
+		//A lower multiplier is better
+		if (potential_growth_mult < C.growth_mult)
+			take_posession(C)
+		else
+			//If not, we add ourselves as an alternative
+			LAZYDISTINCTADD(C.alternatives,"\ref[src]")
+
+		//Make sure its awake again, however briefly
+		if (!C.is_processing)
+			C.wake_up(FALSE)
+
+
+//This finds a list of all existing corruption vines that we could possibly reach, whether they're ours or not
+/datum/extension/corruption_source/proc/get_reachable()
+	.=list()
+	for (var/turf/T in trange(range, source))
+		for (var/obj/effect/vine/corruption/C in T)
+			.+=C
+
+
+//Figures out what multiplier to apply to this applicant's growth time, based on our speed, and relative distance
+//They will apply this multiplier to their own semi-randomly generated growth time
+//It can be passed a specific vine, or a turf that vine is on
+/datum/extension/corruption_source/proc/get_growthtime_multiplier(var/atom/site)
+	var/multiplier = 1 + (growth_distance_falloff * get_dist_3D(site, source))
+	multiplier /= growth_speed
+
+	return multiplier
 
 /* Visualnet Handling */
 //-------------------
