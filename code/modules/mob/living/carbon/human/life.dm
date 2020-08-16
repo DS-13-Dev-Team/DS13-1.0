@@ -831,8 +831,11 @@
 
 
 /mob/living/carbon/human/proc/handle_hud_list()
-	if (BITTEST(hud_updateflag, HEALTH_HUD) && hud_list[HEALTH_HUD])
+	if (BITTEST(hud_updateflag, HEALTH_HUD))
 		var/image/hud_overlay/holder = hud_list[HEALTH_HUD]
+		if (!holder)
+			holder = new /image/hud_overlay('icons/mob/hud_med.dmi', src, "100")
+
 		if(stat == DEAD)
 			holder.icon_state = "0" 	// X_X
 		else if(is_asystole())
@@ -842,14 +845,21 @@
 		hud_list[HEALTH_HUD] = holder
 
 	if (BITTEST(hud_updateflag, LIFE_HUD) && hud_list[LIFE_HUD])
+
+
 		var/image/hud_overlay/holder = hud_list[LIFE_HUD]
+		if (!holder)
+			holder = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
+
 		if(stat == DEAD)
 			holder.icon_state = "huddead"
 		else
 			holder.icon_state = "hudhealthy"
 		hud_list[LIFE_HUD] = holder
 
-	if (BITTEST(hud_updateflag, STATUS_HUD) && hud_list[STATUS_HUD] && hud_list[STATUS_HUD_OOC])
+	if (BITTEST(hud_updateflag, STATUS_HUD))
+
+
 		var/foundVirus = 0
 		for (var/ID in virus2)
 			if (ID in virusDB)
@@ -857,6 +867,9 @@
 				break
 
 		var/image/hud_overlay/holder = hud_list[STATUS_HUD]
+		if (!holder)
+			holder = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
+
 		if(stat == DEAD)
 			holder.icon_state = "huddead"
 		else if(status_flags & XENO_HOST)
@@ -873,6 +886,8 @@
 			holder.icon_state = "hudhealthy"
 
 		var/image/hud_overlay/holder2 = hud_list[STATUS_HUD_OOC]
+		if (!holder2)
+			holder2 = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
 		if(stat == DEAD)
 			holder2.icon_state = "huddead"
 		else if(status_flags & XENO_HOST)
@@ -887,8 +902,10 @@
 		hud_list[STATUS_HUD] = holder
 		hud_list[STATUS_HUD_OOC] = holder2
 
-	if (BITTEST(hud_updateflag, ID_HUD) && hud_list[ID_HUD])
+	if (BITTEST(hud_updateflag, ID_HUD))
 		var/image/hud_overlay/holder = hud_list[ID_HUD]
+		if (!holder)
+			holder = new /image/hud_overlay(GLOB.using_map.id_hud_icons, src, "hudunknown")
 		holder.icon_state = "hudunknown"
 		if(wear_id)
 			var/obj/item/weapon/card/id/I = wear_id.GetIdCard()
@@ -899,8 +916,11 @@
 
 		hud_list[ID_HUD] = holder
 
-	if (BITTEST(hud_updateflag, WANTED_HUD) && hud_list[WANTED_HUD])
+	if (BITTEST(hud_updateflag, WANTED_HUD))
 		var/image/hud_overlay/holder = hud_list[WANTED_HUD]
+		if (!holder)
+			holder = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
+
 		holder.icon_state = "hudblank"
 		var/perpname = name
 		if(wear_id)
@@ -926,10 +946,17 @@
 	   || BITTEST(hud_updateflag, IMPTRACK_HUD))
 
 		var/image/hud_overlay/holder1 = hud_list[IMPTRACK_HUD]
+		if (!holder1)
+			holder1 = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 		var/image/hud_overlay/holder2 = hud_list[IMPLOYAL_HUD]
+		if (!holder2)
+			holder2 = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 		var/image/hud_overlay/holder3 = hud_list[IMPCHEM_HUD]
+		if (!holder3)
+			holder3 = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 
 		holder1.icon_state = "hudblank"
+
 		holder2.icon_state = "hudblank"
 		holder3.icon_state = "hudblank"
 
