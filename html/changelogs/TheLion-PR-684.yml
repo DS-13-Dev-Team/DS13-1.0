@@ -38,3 +38,4 @@ changes:
   - tweak: "Slightly decreased the firing speed of the Line Gun's secondary mode."
   - tweak: "Slightly increased the price of Line Gun crates."
   - tweak: "Slightly increased the price of Line Racks crates."
+  - bugfix: "Fixed CSCIO not getting Medical channel."
