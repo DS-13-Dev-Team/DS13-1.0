@@ -44,22 +44,28 @@
 */
 //Takes a preference input and sets ourself up
 /datum/extension/loadout/proc/set_prefs(var/datum/preferences/input)
-	clear_data()
 
 	prefs = input
-	gear_slot = input.gear_slot
 
 	//Set patron status
+	is_patron = FALSE
 	var/datum/player/P = get_player_from_key(prefs.client_ckey)
 	if (P.patron)
 		is_patron = TRUE
+
+
+	clear_data()
+
+
+	gear_slot = input.gear_slot
+
+
 
 
 	//Lets validate and add all the gear
 	for (var/thing in prefs.Gear())
 		//This is a list of gear names, we must retrieve the datums from a global list, they are singletons
 		var/datum/gear/G = GLOB.gear_datums[thing]
-
 		//Each retrieved thing is added to our loadout datum
 		//If this returns false, adding failed, the item was invalid. In this case it must be removed from preferences too
 		if (!add_gear(G))
@@ -67,6 +73,7 @@
 
 //Clears out old data in preparation for changing prefs or slot
 /datum/extension/loadout/proc/clear_data()
+
 	reset_points()
 	gear_list = list()	//Reset this
 	update_gear()

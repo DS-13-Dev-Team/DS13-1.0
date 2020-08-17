@@ -159,9 +159,3 @@
 	display_name = "electronic cigarette, deluxe"
 	path = /obj/item/clothing/mask/smokable/ecig/deluxe
 	cost = 2
-
-/datum/gear/cash
-	display_name = "10,000 credits"
-	path = /obj/item/weapon/spacecash/bundle/c10000
-	cost = 2
-	patron_only = TRUE

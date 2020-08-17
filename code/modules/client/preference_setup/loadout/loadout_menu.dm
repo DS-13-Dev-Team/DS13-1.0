@@ -136,7 +136,6 @@
 
 	//TODO: Fetch this from player datum
 	var/datum/player/P = get_player_from_key(pref.client_ckey)
-	world << "Menu Fetching patron status: [P] [(P ? P.patron	: FALSE)]"
 	var/is_patron = (P ? P.patron	: FALSE)
 
 	for(var/gear_name in LC.gear)
