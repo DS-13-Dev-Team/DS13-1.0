@@ -406,3 +406,9 @@ RADIATION_MATERIAL_RESISTANCE_DIVISOR 2
 
 ## Below this point, radiation is ignored
 RADIATION_LOWER_LIMIT 0.15
+
+## Uncomment this with a numerical value to instate a player limit. This CAN be changed in the round by changing the configuration.
+#PLAYER_LIMIT 60
+
+## Uncomment this to allow patron players to bypass the player limit, and connect even if server is full. Only works if a player limit is set
+#ALWAYS_ADMIT_PATRONS
