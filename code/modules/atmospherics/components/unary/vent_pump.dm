@@ -19,8 +19,6 @@
 
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY //connects to regular and supply pipes
 
-	can_block_movement = FALSE //Its on the floor
-
 	var/area/initial_loc
 	level = 1
 	var/area_uid

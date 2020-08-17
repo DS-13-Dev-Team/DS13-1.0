@@ -14,7 +14,7 @@
 	var/player	//Ckey of the player controlling the marker
 	var/mob/observer/eye/signal/master/playermob	//Signal mob of the player controlling the marker
 	var/corruption_plant
-
+	var/last_throb = 0
 
 	//Biomass handling
 	//--------------------------
@@ -98,10 +98,10 @@
 		icon_state = "marker_giant_dormant"
 		set_light(0)
 
-
 //Each process tick, we'll loop through all biomass sources and absorb their income
 /obj/machinery/marker/Process()
 	handle_biomass_tick()
+	throb()
 
 /obj/machinery/marker/is_necromorph()
 	return TRUE
@@ -112,6 +112,16 @@
 	set category = null
 
 	open_shop(usr)
+
+// Below is a check for intermittent "throbbing". If the check passes with all the conditions, it throbs. Please don't kill me. - Lion
+
+/obj/machinery/marker/proc/throb()
+	if (player && active)
+		if(world.time - last_throb > 3 MINUTES && prob(30))
+			last_throb = world.time
+			playsound(src.loc, 'sound/effects/markerthrob.ogg', 25, 0)
+			visible_message("<span class='critical'>The marker is audibly throbbing!</span><br><br><span class='minorwarning'>It fills you with fear and paranoia...</span>", "<span class='critical'>The marker is audibly throbbing!</span></large><br><br><span class='minorwarning'>It fills you with fear and paranoia...</span>", 20)
+
 
 //Biomass handling
 //---------------------------------
