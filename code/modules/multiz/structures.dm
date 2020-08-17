@@ -232,7 +232,7 @@
 	unregister_zstructure(get_turf(src))
 	.=..()
 
-/obj/structure/stairs/Exit(atom/movable/A)
+/obj/structure/stairs/Uncross(atom/movable/A)
 	if (debug)	world << "Stairs triggering exit"
 	if(A.dir == dir && upperStep(A.loc))
 		// This is hackish but whatever.

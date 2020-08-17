@@ -116,6 +116,10 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	set category = "Admin"
 	set desc = "Forces the marker to immediately activate"
 
+	var/confirm = alert(src, "You will be activating the marker. Are you super duper sure?", "Make us Whole?", "Send in the Necromorphs!", "On second thought, maybe not...")
+	if(confirm != "Send in the Necromorphs!")
+		return
+
 	var/datum/game_mode/marker/GM = ticker.mode
 	if (!istype(GM))
 		return

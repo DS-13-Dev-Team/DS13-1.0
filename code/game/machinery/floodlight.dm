@@ -15,8 +15,6 @@
 	var/l_inner_range = 1 //inner range of light when on, can be negative
 	var/l_outer_range = 6 //outer range of light when on, can be negative
 
-	can_block_movement = TRUE
-
 /obj/machinery/floodlight/New()
 	cell = new/obj/item/weapon/cell/crap(src)
 	..()

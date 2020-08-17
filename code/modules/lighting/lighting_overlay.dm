@@ -20,8 +20,6 @@
 
 	var/needs_update = FALSE
 
-	can_block_movement = FALSE //Its not a real object
-
 /atom/movable/lighting_overlay/Initialize()
 	// doesn't need special init
 	atom_flags |= ATOM_FLAG_INITIALIZED

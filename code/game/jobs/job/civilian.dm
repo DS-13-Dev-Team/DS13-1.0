@@ -1,11 +1,11 @@
 /datum/job/bar
 	title = "Bartender"
 	abbreviation = "BTR"
-	department_flag = CIV
+	department_flag = SRV
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Captain"
-	selection_color = "#2f2f7f"
+	selection_color = "#5e4215"
 	minimal_player_age = 18
 	ideal_character_age = 30
 	starting_credits = 943
@@ -23,11 +23,11 @@ datum/job/bar/get_description_blurb()
 /datum/job/line_cook
 	title = "Line Cook"
 	abbreviation = "LC"
-	department_flag = CIV
+	department_flag = SRV
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the Captain"
-	selection_color = "#2f2f7f"
+	selection_color = "#5e4215"
 	minimal_player_age = 18
 	ideal_character_age = 21
 	starting_credits = 1240
@@ -52,7 +52,7 @@ datum/job/line_cook/get_description_blurb()
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Captain"
-	selection_color = "#515151"
+	selection_color = "#3b3b3b"
 	minimal_player_age = 18
 	ideal_character_age = 40
 	starting_credits = 2380

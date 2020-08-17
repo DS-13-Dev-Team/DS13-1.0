@@ -84,5 +84,5 @@
 /obj/item/weapon/storage/fancy/nutricube_tray/filled
 	name = "Nutricube Storage Tray"
 	desc = "A tray full of nutrient cubes, this is much heavier than it looks."
-	icon_state = "tray8"
+	icon_state = "tray"
 	startswith = list(/obj/item/weapon/reagent_containers/food/snacks/cube = 4, /obj/item/weapon/reagent_containers/food/snacks/cube/veg = 4)

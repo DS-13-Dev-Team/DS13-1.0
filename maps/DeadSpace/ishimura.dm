@@ -25,10 +25,22 @@
 		NETWORK_RESEARCH,
 		NETWORK_SECURITY
 	)
-	/*
+	usable_email_tlds = list("ishimura.cec")
+
+
+	station_name  = "USG Ishimura"
+	station_short = "Ishimura"
+	dock_name     = "Aegis VII"
+	boss_name     = "Concordance Extraction Corporation"
+	boss_short    = "CEC"
+	company_name  = "EarthGov"
+	company_short = "EarthGov"
+	system_name = "Cygnus System"
+
+/*
 	base_floor_type = /turf/simulated/floor/reinforced/airless
 	base_floor_area = /area/maintenance/exterior
-	*/
+*/
 	post_round_safe_areas = list (
 		/area/shuttle/escape_pod1/station,
 		/area/shuttle/escape_pod2/station,

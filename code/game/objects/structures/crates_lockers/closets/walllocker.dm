@@ -12,7 +12,6 @@
 	icon_opened = "wall-lockeropen"
 	storage_types = CLOSET_STORAGE_ITEMS
 	setup = 0
-	can_block_movement = FALSE
 
 //spawns endless (3 sets) amounts of breathmask, emergency oxy tank and crowbar
 
