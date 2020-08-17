@@ -39,9 +39,6 @@ By design, d1 is the smallest direction and d2 is the highest
 	color = COLOR_MAROON
 	var/obj/machinery/power/breakerbox/breaker_box
 
-	//These are underfloor, stop getting involved in movement calculations
-	can_block_movement = FALSE
-
 
 /obj/structure/cable/drain_power(var/drain_check, var/surge, var/amount = 0)
 
@@ -232,8 +229,6 @@ By design, d1 is the smallest direction and d2 is the highest
 
 //explosion handling
 /obj/structure/cable/ex_act(severity)
-	return	//Blowing up cables and losing power is not fun
-	/*
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -245,7 +240,7 @@ By design, d1 is the smallest direction and d2 is the highest
 		if(3.0)
 			if (prob(25))
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
-				qdel(src)*/
+				qdel(src)
 
 obj/structure/cable/proc/cableColor(var/colorC)
 	var/color_n = "#dd0000"
@@ -487,7 +482,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	desc = "A coil of wiring, for delicate electronics use aswell as the more basic cable laying."
 	throwforce = 0
 	w_class = ITEM_SIZE_NORMAL
-
+	
 	throw_range = 5
 	matter = list(MATERIAL_STEEL = 50, MATERIAL_GLASS = 20)
 	obj_flags = OBJ_FLAG_CONDUCTIBLE

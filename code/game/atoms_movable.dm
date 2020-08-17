@@ -27,24 +27,8 @@
 	//Mass is measured in kilograms. It should never be zero
 	var/mass = 1
 
-
-/atom/movable/Initialize(var/mapload)
-	if (can_block_movement && isturf(loc))
-		var/turf/T = loc
-		T.movement_blocking_atoms |= src
-
-
-	.=..()
-
 /atom/movable/Destroy()
-	if (can_block_movement)
-		var/turf/T = get_turf(src)
-		if (T)
-			T.movement_blocking_atoms -= src
-
 	. = ..()
-
-
 	for(var/atom/movable/AM in src)
 		qdel(AM)
 

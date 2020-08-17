@@ -25,7 +25,6 @@
 
 	var/processing = FALSE
 
-	can_block_movement = FALSE
 
 
 /obj/structure/corruption_node/Initialize()
