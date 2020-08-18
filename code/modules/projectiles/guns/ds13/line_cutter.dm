@@ -242,22 +242,3 @@
 /obj/item/projectile/wavespawner/linecutter
 	wave_type = /obj/item/projectile/wave/linecutter
 	width = 3
-
-/*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/mining/line_racks
-	name = "Line Racks"
-	contains = list(/obj/item/ammo_magazine/lineracks = 4)
-	cost = 90
-	containertype = /obj/structure/closet/crate
-	containername = "\improper line rack crate"
-
-
-/decl/hierarchy/supply_pack/mining/line_cutter
-	name = "Mining Tool - Line Cutter"
-	contains = list(/obj/item/ammo_magazine/lineracks = 2,
-	/obj/item/weapon/gun/projectile/linecutter/empty = 1)
-	cost = 90
-	containertype = /obj/structure/closet/crate
-	containername = "\improper Line Cutter crate"
