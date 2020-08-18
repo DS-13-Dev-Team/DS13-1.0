@@ -37,7 +37,7 @@
 
 /obj/item/weapon/storage/pouch/small_generic
 	name = "small generic pouch"
-	desc = "Can hold anything in it, but only about once."
+	desc = "A small pouch which expands a pocket slot, allowing it to hold a couple of little things"
 	icon_state = "small_generic"
 	item_state = "small_generic"
 	storage_slots = null //Uses generic capacity
@@ -46,7 +46,7 @@
 
 /obj/item/weapon/storage/pouch/medium_generic
 	name = "medium generic pouch"
-	desc = "Can hold anything in it, but only about twice."
+	desc = "A small pouch which expands a pocket slot, allowing it to hold several little things"
 	icon_state = "medium_generic"
 	item_state = "medium_generic"
 	storage_slots = null //Uses generic capacity
@@ -55,7 +55,7 @@
 
 /obj/item/weapon/storage/pouch/large_generic
 	name = "large generic pouch"
-	desc = "A mini satchel. Can hold a fair bit, but it won't fit in your pocket"
+	desc = "A mini satchel. Can hold a fair bit, worn around the waist"
 	icon_state = "large_generic"
 	item_state = "large_generic"
 	w_class = ITEM_SIZE_NORMAL
@@ -154,6 +154,23 @@
 		/obj/item/ammo_magazine,
 		/obj/item/ammo_casing
 		)
+
+//Basically for holding forcegun and contact beam ammo
+/obj/item/weapon/storage/pouch/cell
+	name = "energy cell pouch"
+	desc = "Can hold two bulky power cells, whether for devices or the bulky ammunition cells for heavy weapons"
+	icon_state = "energy"
+	item_state = "energy"
+
+	storage_slots = 2
+	w_class = ITEM_SIZE_LARGE
+	max_w_class = ITEM_SIZE_LARGE
+
+	can_hold = list(
+		/obj/item/weapon/cell
+		)
+
+
 
 /obj/item/weapon/storage/pouch/tubular
 	name = "tubular pouch"

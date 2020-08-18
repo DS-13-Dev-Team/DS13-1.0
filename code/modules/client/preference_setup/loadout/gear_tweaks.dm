@@ -1,3 +1,6 @@
+/datum/gear_tweak
+	var/show_in_ui = TRUE
+
 /datum/gear_tweak/proc/get_contents(var/metadata)
 	return
 
@@ -334,6 +337,8 @@
 /*
 	RIG equipping
 */
+/datum/gear_tweak/RIG
+	show_in_ui = FALSE
 //Replace any worn backpack
 /datum/gear_tweak/RIG/tweak_item(var/obj/item/I, var/metadata, var/spawn_location)
 	var/obj/item/weapon/rig/rig = I

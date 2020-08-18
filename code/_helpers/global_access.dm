@@ -443,8 +443,8 @@
 			return global.gamemode_cache;
 		if("gas_data")
 			return global.gas_data;
-		if("gear_datums")
-			return global.gear_datums;
+		if("GLOB.gear_datums")
+			return global.GLOB.gear_datums;
 		if("gear_tweak_free_color_choice_")
 			return global.gear_tweak_free_color_choice_;
 		if("gender_datums")
@@ -527,8 +527,6 @@
 			return global.lighting_overlays_initialised;
 		if("limb_icon_cache")
 			return global.limb_icon_cache;
-		if("loadout_categories")
-			return global.loadout_categories;
 		if("lobby_image")
 			return global.lobby_image;
 		if("log_end")
@@ -1434,8 +1432,8 @@
 			global.gamemode_cache=newval;
 		if("gas_data")
 			global.gas_data=newval;
-		if("gear_datums")
-			global.gear_datums=newval;
+		if("GLOB.gear_datums")
+			global.GLOB.gear_datums=newval;
 		if("gear_tweak_free_color_choice_")
 			global.gear_tweak_free_color_choice_=newval;
 		if("gender_datums")
@@ -1518,8 +1516,6 @@
 			global.lighting_overlays_initialised=newval;
 		if("limb_icon_cache")
 			global.limb_icon_cache=newval;
-		if("loadout_categories")
-			global.loadout_categories=newval;
 		if("lobby_image")
 			global.lobby_image=newval;
 		if("log_end")
@@ -2203,7 +2199,7 @@
 	"game_year",
 	"gamemode_cache",
 	"gas_data",
-	"gear_datums",
+	"GLOB.gear_datums",
 	"gear_tweak_free_color_choice_",
 	"gender_datums",
 	"ghost_darkness_images",

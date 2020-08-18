@@ -97,6 +97,8 @@
 /mob/new_player/Topic(href, href_list[])
 	if(!client)	return FALSE
 
+	.=..()
+
 	if(href_list["show_preferences"])
 		client.prefs.ShowChoices(src)
 		return TRUE

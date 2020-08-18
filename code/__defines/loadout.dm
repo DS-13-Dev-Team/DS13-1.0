@@ -1,0 +1,1 @@
+#define LOADOUT_TAG_RIG	"RIG"
