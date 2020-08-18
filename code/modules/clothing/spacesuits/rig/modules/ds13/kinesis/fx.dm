@@ -8,3 +8,6 @@
 	alpha = 128
 	offset = new /vector2(-48,-8)
 	base_length = 128
+
+/obj/effect/projectile/sustained/lightning/can_telegrip()
+	return FALSE
