@@ -35,9 +35,6 @@
 	var/pathweight = 1          // How much does it cost to pathfind over this turf?
 	var/blessed = 0             // Has the turf been blessed?
 
-	//List of everything that could possibly block movement
-	var/list/movement_blocking_atoms = list()
-
 	var/list/decals
 
 	var/movement_delay
@@ -60,10 +57,10 @@
 	return QDEL_HINT_IWILLGC
 
 /turf/ex_act(severity)
-	return FALSE
+	return 0
 
 /turf/proc/is_solid_structure()
-	return TRUE
+	return 1
 
 
 
@@ -86,17 +83,20 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (!mover || !isturf(mover.loc) || isobserver(mover))
 		return FALSE
 
-	var/turf/origin = mover.loc
-
-	//First, check objects to block exit . border or not
-	for(var/obj/obstacle in origin.movement_blocking_atoms)
-		if((mover != obstacle) && (forget != obstacle))
+	//First, check objects to block exit that are not on the border
+	for(var/obj/obstacle in mover.loc)
+		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER) && (mover != obstacle) && (forget != obstacle))
 			if(!obstacle.CheckExit(mover, src))
 				return obstacle
 
+	//Now, check objects to block exit that are on the border
+	for(var/obj/border_obstacle in mover.loc)
+		if((border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER) && (mover != border_obstacle) && (forget != border_obstacle))
+			if(!border_obstacle.CheckExit(mover, src))
+				return border_obstacle
 
 	//Next, check objects to block entry that are on the border
-	for(var/obj/border_obstacle in src.movement_blocking_atoms)
+	for(var/obj/border_obstacle in src)
 		if(border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER)
 			if(!border_obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != border_obstacle))
 				return border_obstacle
@@ -106,7 +106,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		return src
 
 	//Finally, check objects/mobs to block entry that are not on the border
-	for(var/atom/movable/obstacle in src.movement_blocking_atoms)
+	for(var/atom/movable/obstacle in src)
 		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER))
 			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
 				return obstacle
@@ -118,46 +118,46 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 
 	if (!mover || !isturf(mover.loc) || isobserver(mover))
-		return TRUE
+		return 1
 
-	var/turf/origin = mover.loc
-
-	//First, check objects to block exit . border or not
-	for(var/obj/obstacle in origin.movement_blocking_atoms)
-		if((mover != obstacle) && (forget != obstacle))
+	//First, check objects to block exit that are not on the border
+	for(var/obj/obstacle in mover.loc)
+		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER) && (mover != obstacle) && (forget != obstacle))
 			if(!obstacle.CheckExit(mover, src))
-				return FALSE
+				mover.Bump(obstacle, 1)
+				return 0
+
+	//Now, check objects to block exit that are on the border
+	for(var/obj/border_obstacle in mover.loc)
+		if((border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER) && (mover != border_obstacle) && (forget != border_obstacle))
+			if(!border_obstacle.CheckExit(mover, src))
+				mover.Bump(border_obstacle, 1)
+				return 0
 
 	//Next, check objects to block entry that are on the border
-	for(var/obj/border_obstacle in src.movement_blocking_atoms)
+	for(var/obj/border_obstacle in src)
 		if(border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER)
 			if(!border_obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != border_obstacle))
 				mover.Bump(border_obstacle, 1)
-				return FALSE
+				return 0
 
 	//Then, check the turf itself
 	if (!src.CanPass(mover, src))
 		mover.Bump(src, 1)
-		return FALSE
+		return 0
 
 	//Finally, check objects/mobs to block entry that are not on the border
-	for(var/atom/movable/obstacle in src.movement_blocking_atoms)
-		if (QDELETED(obstacle) || obstacle.loc != src)
-			movement_blocking_atoms -= obstacle
-			continue
+	for(var/atom/movable/obstacle in src)
 		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER))
 			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
 				mover.Bump(obstacle, 1)
-				return FALSE
-	return TRUE //Nothing found to block so return success!
+				return 0
+	return 1 //Nothing found to block so return success!
 
 var/const/enterloopsanity = 100
 /turf/Entered(atom/atom as mob|obj)
 
 	..()
-
-	if (atom.can_block_movement)
-		movement_blocking_atoms |= atom
 
 	if(!istype(atom, /atom/movable))
 		return
@@ -187,19 +187,11 @@ var/const/enterloopsanity = 100
 						thing.HasProximity(A, 1)
 	return
 
-/turf/Exited(atom/atom as mob|obj)
-	if (atom.can_block_movement)
-
-		movement_blocking_atoms -= atom
-
-	.=..()
-
-
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
 	return
 
 /turf/proc/is_plating()
-	return FALSE
+	return 0
 
 /turf/proc/protects_atom(var/atom/A)
 	return FALSE
@@ -257,11 +249,11 @@ var/const/enterloopsanity = 100
 
 /turf/proc/contains_dense_objects()
 	if(density)
-		return TRUE
+		return 1
 	for(var/atom/A in src)
 		if(A.density && !(A.atom_flags & ATOM_FLAG_CHECKS_BORDER))
-			return TRUE
-	return FALSE
+			return 1
+	return 0
 
 //expects an atom containing the reagents used to clean the turf
 /turf/proc/clean(atom/source, mob/user = null)

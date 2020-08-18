@@ -127,8 +127,6 @@
 	var/global/list/status_overlays_environ
 
 
-	can_block_movement = FALSE
-
 /obj/machinery/power/apc/updateDialog()
 	if (stat & (BROKEN|MAINT))
 		return
