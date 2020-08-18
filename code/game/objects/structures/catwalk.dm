@@ -16,6 +16,8 @@
 		'sound/effects/footstep/catwalk4.ogg',
 		'sound/effects/footstep/catwalk5.ogg')
 
+	can_block_movement = FALSE //It IS the floor
+
 /obj/structure/catwalk/register_zstructure(var/turf/T)
 	LAZYSET(T.zstructures, src, 1)	//Ladders have a ztransition priority of 2 to overrule other things
 

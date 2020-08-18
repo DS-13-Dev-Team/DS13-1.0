@@ -13,6 +13,8 @@
 
 	var/list/random_iconstate
 
+	can_block_movement = FALSE //Incorporeal
+
 /obj/effect/projectile/Initialize()
 	.= ..()
 	//We need a tiny sleep for random icons to be setup
