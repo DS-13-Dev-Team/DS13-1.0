@@ -56,8 +56,9 @@
 	container.master_item = holder //When its inside a rig, that rig is the thing we use for location checks
 
 /obj/item/rig_module/storage/uninstalled(var/obj/item/weapon/rig/former, var/mob/living/user)
-	.=..()
 	former.storage = null //Unset the storage mod
+	.=..()
+
 	container.master_item = src //When its outside a rig, use ourselves for location checks
 
 

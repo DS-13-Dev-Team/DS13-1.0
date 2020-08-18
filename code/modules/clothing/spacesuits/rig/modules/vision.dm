@@ -43,8 +43,8 @@
 
 /obj/item/rig_module/vision
 
-	name = "hardsuit visor"
-	desc = "A layered, translucent visor system for a hardsuit."
+	name = "RIG visor"
+	desc = "A layered, translucent visor system for a RIG."
 	icon_state = "optics"
 
 	interface_name = "optical scanners"
@@ -75,7 +75,7 @@
 
 /obj/item/rig_module/vision/multi
 
-	name = "hardsuit optical package"
+	name = "RIG optical package"
 	desc = "A complete visor system of optical scanners and vision modes."
 	icon_state = "fulloptics"
 
@@ -91,8 +91,8 @@
 
 /obj/item/rig_module/vision/meson
 
-	name = "hardsuit meson scanner"
-	desc = "A layered, translucent visor system for a hardsuit."
+	name = "RIG meson scanner"
+	desc = "A layered, translucent visor system for a RIG."
 	icon_state = "meson"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 5)
 	usable = 0
@@ -104,8 +104,8 @@
 
 /obj/item/rig_module/vision/thermal
 
-	name = "hardsuit thermal scanner"
-	desc = "A layered, translucent visor system for a hardsuit."
+	name = "RIG thermal scanner"
+	desc = "A layered, translucent visor system for a RIG."
 	icon_state = "thermal"
 
 	usable = 0
@@ -117,8 +117,8 @@
 
 /obj/item/rig_module/vision/nvg
 
-	name = "hardsuit night vision interface"
-	desc = "A multi input night vision system for a hardsuit."
+	name = "RIG night vision interface"
+	desc = "A multi input night vision system for a RIG."
 	icon_state = "night"
 	origin_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6)
 	usable = 0
@@ -131,7 +131,7 @@
 /obj/item/rig_module/vision/nvgsec
 
 	name = "security night vision interface"
-	desc = "A multi input night vision system for a hardsuit."
+	desc = "A multi input night vision system for a RIG."
 	icon_state = "night"
 	origin_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6)
 	usable = 0
@@ -143,8 +143,8 @@
 
 /obj/item/rig_module/vision/sechud
 
-	name = "hardsuit security hud"
-	desc = "A simple tactical information system for a hardsuit."
+	name = "RIG security hud"
+	desc = "A simple tactical information system for a RIG."
 	icon_state = "securityhud"
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 2, TECH_ENGINEERING = 5)
 	usable = 0
@@ -156,8 +156,8 @@
 
 /obj/item/rig_module/vision/medhud
 
-	name = "hardsuit medical hud"
-	desc = "A simple medical status indicator for a hardsuit."
+	name = "RIG medical hud"
+	desc = "A simple medical status indicator for a RIG."
 	icon_state = "healthhud"
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 2, TECH_ENGINEERING = 5)
 	usable = 0
