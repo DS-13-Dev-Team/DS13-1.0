@@ -35,7 +35,6 @@
 
 	hud_list[HEALTH_HUD]      = new /image/hud_overlay('icons/mob/hud_med.dmi', src, "100")
 	hud_list[STATUS_HUD]      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
-	hud_list[LIFE_HUD]	      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
 	hud_list[ID_HUD]          = new /image/hud_overlay(GLOB.using_map.id_hud_icons, src, "hudunknown")
 	hud_list[WANTED_HUD]      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 	hud_list[IMPLOYAL_HUD]    = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
@@ -43,6 +42,7 @@
 	hud_list[IMPTRACK_HUD]    = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 	hud_list[SPECIALROLE_HUD] = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 	hud_list[STATUS_HUD_OOC]  = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
+	hud_list[LIFE_HUD]	      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
 
 	GLOB.human_mob_list |= src
 	..()
@@ -53,6 +53,7 @@
 		dna.s_base = s_base
 		sync_organ_dna()
 	make_blood()
+
 
 /mob/living/carbon/human/Destroy()
 	GLOB.human_mob_list -= src
@@ -117,17 +118,17 @@
 		if(istype(L, /obj/item/weapon/implant/loyalty))
 			for(var/obj/item/organ/external/O in M.organs)
 				if(L in O.implants)
-					return 1
-	return 0
+					return TRUE
+	return FALSE
 
 /mob/living/carbon/human/restrained()
 	if (handcuffed)
-		return 1
+		return TRUE
 	if(grab_restrained())
-		return 1
+		return TRUE
 	if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/proc/grab_restrained()
 	for (var/obj/item/grab/G in grabbed_by)
@@ -426,24 +427,24 @@
 
 	target_zone = check_zone(target_zone)
 	if(!affecting || affecting.parent_organ != target_zone)
-		return 0
+		return FALSE
 
 	//if the parent organ is significantly larger than the brain organ, then hitting it is not guaranteed
 	var/obj/item/organ/parent = get_organ(target_zone)
 	if(!parent)
-		return 0
+		return FALSE
 
 	if(parent.w_class > affecting.w_class + 1)
 		return prob(100 / 2**(parent.w_class - affecting.w_class - 1))
 
-	return 1
+	return TRUE
 
 /mob/living/carbon/human/is_advanced_tool_user(var/silent)
 	if(species.has_fine_manipulation(src))
-		return 1
+		return TRUE
 	if(!silent)
 		to_chat(src, "<span class='warning'>You don't have the dexterity to use that!</span>")
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/abiotic(var/full_body = TRUE)
 	if(full_body)
@@ -477,14 +478,14 @@
 
 /mob/living/proc/check_has_mouth()
 	// mobs do not have mouths by default
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/check_has_mouth()
 	// Todo, check stomach organ when implemented.
 	var/obj/item/organ/external/head/H = get_organ(BP_HEAD)
 	if(!H || !istype(H) || !H.can_intake_reagents)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /mob/living/carbon/human/proc/vomit(var/toxvomit = 0, var/timevomit = 1, var/level = 3)
 	set waitfor = 0
@@ -724,7 +725,7 @@
 
 /mob/living/carbon/human/add_blood(mob/living/carbon/human/M as mob)
 	if (!..())
-		return 0
+		return FALSE
 	//if this blood isn't already in the list, add it
 	if(istype(M))
 		if(!blood_DNA[M.dna.unique_enzymes])
@@ -732,7 +733,7 @@
 	hand_blood_color = blood_color
 	src.update_inv_gloves()	//handles bloody hands overlays and updating
 	verbs += /mob/living/carbon/human/proc/bloody_doodle
-	return 1 //we applied blood to the item
+	return TRUE //we applied blood to the item
 
 /mob/living/carbon/human/clean_blood(var/clean_feet)
 	.=..()
@@ -741,7 +742,7 @@
 		feet_blood_color = null
 		feet_blood_DNA = null
 		update_inv_shoes(1)
-		return 1
+		return TRUE
 
 /mob/living/carbon/human/get_visible_implants(var/class = 0)
 
@@ -757,8 +758,8 @@
 	for(var/obj/item/organ/external/organ in src.organs)
 		for(var/obj/item/O in organ.implants)
 			if(!istype(O, /obj/item/weapon/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
 /mob/living/carbon/human/proc/handle_embedded_and_stomach_objects()
 	for(var/obj/item/organ/external/organ in src.organs)
@@ -955,7 +956,7 @@
 		if(istype(C) && !C.mob_can_equip(src, slot, disable_warning = TRUE, force = TRUE))	//Without the force flag, nothing can remain equipped
 			unEquip(C)
 
-	return 1
+	return TRUE
 
 /mob/living/carbon/human/proc/bloody_doodle()
 	set category = "IC"
@@ -966,7 +967,7 @@
 		return
 
 	if (usr != src)
-		return 0 //something is terribly wrong
+		return FALSE //something is terribly wrong
 
 	if (!bloody_hands)
 		verbs -= /mob/living/carbon/human/proc/bloody_doodle
@@ -1018,11 +1019,11 @@
 
 	if(!affecting)
 		to_chat(user, "<span class='warning'>They are missing that limb.</span>")
-		return 0
+		return FALSE
 
 	if(BP_IS_ROBOTIC(affecting))
 		to_chat(user, "<span class='warning'>That limb is robotic.</span>")
-		return 0
+		return FALSE
 
 	. = CAN_INJECT
 	for(var/obj/item/clothing/C in list(head, wear_mask, wear_suit, w_uniform, gloves, shoes))
@@ -1031,7 +1032,7 @@
 				. = INJECTION_PORT //it was going to block us, but it's a space suit so it doesn't because it has some kind of port
 			else
 				to_chat(user, "<span class='warning'>There is no exposed flesh or thin material on [src]'s [affecting.name] to inject into.</span>")
-				return 0
+				return FALSE
 
 
 /mob/living/carbon/human/print_flavor_text(var/shrink = 1)
@@ -1092,19 +1093,19 @@
 	if(internal_organs_by_name[BP_BRAIN])
 		var/obj/item/organ/internal/brain = internal_organs_by_name[BP_BRAIN]
 		if(brain && istype(brain))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /mob/living/carbon/human/has_eyes()
 	if(internal_organs_by_name[BP_EYES])
 		var/obj/item/organ/internal/eyes = internal_organs_by_name[BP_EYES]
 		if(eyes && eyes.is_usable())
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /mob/living/carbon/human/slip(var/slipped_on, stun_duration=2)
 	if((species.species_flags & SPECIES_FLAG_NO_SLIP) || (shoes && (shoes.item_flags & ITEM_FLAG_NOSLIP)))
-		return 0
+		return FALSE
 	return !!(..(slipped_on,stun_duration))
 
 /mob/living/carbon/human/check_slipmove()
@@ -1178,9 +1179,9 @@
 		for(var/limbcheck in list(BP_L_LEG,BP_R_LEG))
 			var/obj/item/organ/affecting = get_organ(limbcheck)
 			if(!affecting)
-				return 0
-		return 1
-	return 0
+				return FALSE
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/verb/pull_punches()
 	set name = "Switch Stance"
@@ -1263,15 +1264,15 @@
 		affecting = organs_by_name[BP_GROIN]
 
 	if(affecting && BP_IS_ROBOTIC(affecting))
-		return 0
+		return FALSE
 	return (species && species.should_have_organ(organ_check))
 
 /mob/living/carbon/human/can_feel_pain(var/obj/item/organ/check_organ)
 	if(isSynthetic())
-		return 0
+		return FALSE
 	if(check_organ)
 		if(!istype(check_organ))
-			return 0
+			return FALSE
 		return check_organ.can_feel_pain()
 	return !(species.species_flags & SPECIES_FLAG_NO_PAIN)
 
@@ -1283,9 +1284,9 @@
 
 /mob/living/carbon/human/need_breathe()
 	if(!(mNobreath in mutations) && species.breathing_organ && should_have_organ(species.breathing_organ))
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /mob/living/carbon/human/get_adjusted_metabolism(metabolism)
 	return ..() * (species ? species.metabolism_mod : 1)

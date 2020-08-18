@@ -13,6 +13,8 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	unacidable = 1//So effect are not targeted by alien acid.
 	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_GRILLE
 
+	can_block_movement = FALSE //Incorporeal
+
 /datum/effect/effect/system
 	var/number = 3
 	var/cardinals = 0

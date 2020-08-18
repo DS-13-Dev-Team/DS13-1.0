@@ -28,6 +28,7 @@
 	var/stage = 1
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
+	can_block_movement = FALSE
 
 /obj/machinery/light_construct/New(atom/newloc, var/newdir, atom/fixture = null)
 	..(newloc)
@@ -156,6 +157,7 @@
 	var/obj/item/weapon/light/lightbulb
 
 	var/current_mode = null
+	can_block_movement = FALSE
 
 // the smaller bulb light fixture
 /obj/machinery/light/small

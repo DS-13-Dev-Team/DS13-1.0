@@ -17,6 +17,9 @@
 	broken_damage = 150
 	atom_flags = ATOM_FLAG_CLIMBABLE
 
+	//A rare case of a dense item
+	can_block_movement = TRUE
+
 /obj/item/modular_computer/console/CouldUseTopic(var/mob/user)
 	..()
 	if(istype(user, /mob/living/carbon))

@@ -34,6 +34,8 @@
 	can_pull_size = ITEM_SIZE_TINY
 	can_pull_mobs = MOB_PULL_NONE
 
+	can_block_movement = FALSE
+
 /mob/living/simple_animal/mouse/Life()
 	..()
 	if(!stat && prob(speak_chance))
