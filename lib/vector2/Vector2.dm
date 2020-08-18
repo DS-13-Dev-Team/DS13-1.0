@@ -228,3 +228,48 @@ vector2
 				return TRUE
 			else
 				return FALSE
+
+
+
+		//Self Functions: These modify src instead of creating new vectors. Better for performance in the right circumstances, but less flexible
+		SelfSubtract(var/vector2/delta)
+			x -= delta.x
+			y -= delta.y
+
+		SelfAdd(var/vector2/delta)
+			x += delta.x
+			y += delta.y
+
+		//Scalar only
+		SelfDivide(var/scalar)
+			x /= scalar
+			y /= scalar
+
+		SelfMultiply(var/scalar)
+			x *= scalar
+			y *= scalar
+
+
+		SelfFloor()
+			x = Floor(x)
+			y = Floor(y)
+
+		SelfCeiling()
+			x = Ceiling(x)
+			y = Ceiling(y)
+
+		SelfToMagnitude(var/m)
+			m /= Magnitude()
+			x *= m
+			y *= m
+
+
+		SelfClampMag(var/minimum, var/maximum)
+
+			var/current_magnitude = Magnitude()
+			if (current_magnitude < minimum)
+				SelfToMagnitude(minimum)
+
+
+			else if (current_magnitude > maximum)
+				SelfToMagnitude(maximum)
