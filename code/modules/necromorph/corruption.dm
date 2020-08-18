@@ -286,6 +286,10 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		T.update_chunk(FALSE)
 
 
+
+
+
+
 /* The seed */
 //-------------------
 /datum/seed/corruption

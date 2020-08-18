@@ -119,18 +119,7 @@
 				qdel(src)
 			return
 
-	if(istype(I, /obj/item/weapon/melee/energy/blade))
-		to_chat(user, "You can't place that item inside the disposal unit.")
-		return
 
-	if(istype(I, /obj/item/weapon/storage/bag/trash))
-		var/obj/item/weapon/storage/bag/trash/T = I
-		to_chat(user, "<span class='notice'>You empty the bag.</span>")
-		for(var/obj/item/O in T.contents)
-			T.remove_from_storage(O,src)
-		T.update_icon()
-		update_icon()
-		return
 
 	var/obj/item/grab/G = I
 	if(istype(G))	// handle grabbed mob
@@ -144,6 +133,9 @@
 	if(!I)
 		return
 
+	if (!I.attempt_dispose(src, user))
+		return
+
 	if(!user.unEquip(I, src))
 		return
 
@@ -155,6 +147,7 @@
 
 	update_icon()
 
+
 /obj/machinery/disposal/MouseDrop_T(atom/movable/AM, mob/user)
 	//People frequently drag turfs onto this, was causing runtime errors
 	if (!istype(AM))
@@ -165,6 +158,9 @@
 		incapacitation_flags &= ~INCAPACITATION_RESTRAINED
 
 	if(stat & BROKEN || !CanMouseDrop(AM, user, incapacitation_flags) || AM.anchored || !isturf(user.loc))
+		return
+
+	if (!AM.attempt_dispose(src, user))
 		return
 
 	// Determine object type and run necessary checks
@@ -482,6 +478,8 @@
 		if(istype(I, /obj/item/projectile))
 			return
 		if(prob(75))
+			if (!mover.attempt_dispose(src, mover.thrower))
+				return
 			I.forceMove(src)
 			for(var/mob/M in viewers(src))
 				M.show_message("\The [I] lands in \the [src].", 3)
