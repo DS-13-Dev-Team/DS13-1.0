@@ -12,6 +12,7 @@
 	var/growth_distance_falloff = 0.15	//15% added to growth time for each tile of distance from the source
 	var/support_limit = null
 	var/atom/source
+	var/turf/sourceturf
 	var/list/corruption_vines = list()	//A list of all the vines we're currently supporting
 
 	//What tiles are revealed to the visualnet by our corruption vines?
@@ -28,6 +29,7 @@
 */
 /datum/extension/corruption_source/New(var/atom/holder, var/range, var/speed, var/falloff, var/limit)
 	source = holder
+	sourceturf = get_turf(source)
 	GLOB.corruption_sources |= src
 	GLOB.moved_event.register(source, src, /datum/extension/corruption_source/proc/source_moved)
 	GLOB.destroyed_event.register(source, src, /datum/extension/corruption_source/proc/source_deleted)
@@ -110,7 +112,7 @@
 			return FALSE
 
 	var/turf/T = get_turf(A)
-	var/distance = get_dist_3D(get_turf(source), T)
+	var/distance = get_dist_3D(sourceturf, T)
 	//We check distance fist, it's quick and efficient
 	if (distance > range)
 		return FALSE
@@ -124,6 +126,7 @@
 
 
 /datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, var/old_loc, var/new_loc)
+	sourceturf = get_turf(source)
 	update_vines()
 
 /datum/extension/corruption_source/proc/source_deleted()
@@ -170,7 +173,7 @@
 //This finds a list of all existing corruption vines that we could possibly reach, whether they're ours or not
 /datum/extension/corruption_source/proc/get_reachable()
 	.=list()
-	for (var/turf/T in trange(range, source))
+	for (var/turf/T in trange(range, sourceturf))
 		for (var/obj/effect/vine/corruption/C in T)
 			.+=C
 
@@ -179,7 +182,7 @@
 //They will apply this multiplier to their own semi-randomly generated growth time
 //It can be passed a specific vine, or a turf that vine is on
 /datum/extension/corruption_source/proc/get_growthtime_multiplier(var/atom/site)
-	var/multiplier = 1 + (growth_distance_falloff * get_dist_3D(site, source))
+	var/multiplier = 1 + (growth_distance_falloff * get_dist_3D(site, sourceturf))
 	multiplier /= growth_speed
 
 	return multiplier

@@ -23,11 +23,13 @@
 
 	//Last place we were
 	var/last_known_location
+	var/last_moved = 0 //Last time we were moved
 
 	var/corruption_range = 9
 	var/corruption_speed = 0.8
 	var/corruption_falloff = 0.8
 	var/corruption_limit = 100
+
 
 	visualnet_range = 3
 
@@ -65,9 +67,9 @@
 */
 /obj/item/marker_shard/proc/activate()
 	active = TRUE
-
+	last_known_location = loc
 	GLOB.moved_event.register(src, src, /obj/item/marker_shard/moved)
-	set_deploy_timer()
+	attempt_deploy()
 	update_icon()
 
 /obj/item/marker_shard/proc/deactivate()
@@ -77,16 +79,19 @@
 	update_icon()
 
 /obj/item/marker_shard/proc/set_deploy_timer()
+	world << "Setting deploy timer"
 	deltimer(deploy_timer)
 	if (active)
 		deploy_timer = addtimer(CALLBACK(src, /obj/item/marker_shard/proc/attempt_deploy),  deploy_time, TIMER_STOPPABLE)
 
 //Whenever we move, reset the timer
-/obj/item/marker_shard/moved()
+/obj/item/marker_shard/moved(mob/user as mob, old_loc as turf)
+	world << "moved from [old_loc] to [loc]"
+	last_moved = world.time
 	undeploy()
 	last_known_location = loc
 	set_deploy_timer()
-
+	.=..()
 
 
 /*
@@ -106,14 +111,23 @@
 
 //Here we check if we've stayed still since our location was last updated
 /obj/item/marker_shard/proc/attempt_deploy()
+	world << "Attempting deploy"
 	deltimer(deploy_timer)
 	if (!active)
+		world << "Cant deploy because not active"
 		return
 
-	if (loc == last_known_location)
+	if (loc == last_known_location && (world.time - last_moved) >= deploy_time)
 		//Yes!
 		deploy()
 	else
+		world << "Deploy failed."
+		if (loc == last_known_location)
+			world << "Loc is fine"
+		else
+			world << "Oldloc [jumplink(last_known_location)]/[last_known_location] Is not the same as current [jumplink(loc)]/[loc]"
+		if ((world.time - last_moved) >= deploy_time)
+			world << "We've been still long enough"
 		last_known_location = loc
 		set_deploy_timer()	//Nop, update the location and wait another 3 mins
 
@@ -138,3 +152,21 @@
 	var/obj/item/marker_shard/MS = SSnecromorph.shards[SSnecromorph.last_shard_jumped_to]
 	if (MS)
 		jumpTo(get_turf(MS))
+
+
+
+/*
+	Interactions
+*/
+
+//If you attempt to put a marker shard into a disposal, it hurts you and escapes your grasp!
+/obj/item/marker_shard/attempt_dispose(var/obj/machinery/disposal/D, var/mob/living/user)
+	to_chat(user, span("necromarker", "You are punished for your hubris!"))
+
+	user.stun_effect_act(6, 60, BP_CHEST, src)
+	user.Paralyse(10)
+	user.take_overall_damage(0, 30, src)
+
+	var/list/turfs = clear_turfs_in_view(world.view)
+	if (turfs.len)
+		user.drop_from_inventory(src, pick(turfs))
