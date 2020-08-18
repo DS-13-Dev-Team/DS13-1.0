@@ -9,7 +9,7 @@
 	var/charges = 0
 
 /obj/item/rig_module
-	name = "hardsuit upgrade"
+	name = "RIG upgrade"
 	desc = "It looks pretty sciency."
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "module"
@@ -48,8 +48,8 @@
 	var/suit_overlay_used               // As above, when engaged.
 
 	//Display fluff
-	var/interface_name = "hardsuit upgrade"
-	var/interface_desc = "A generic hardsuit upgrade."
+	var/interface_name = "RIG upgrade"
+	var/interface_desc = "A generic RIG upgrade."
 	var/engage_string = "Engage"
 	var/activate_string = "Activate"
 	var/deactivate_string = "Deactivate"
@@ -130,11 +130,19 @@
 
 		charges = processed_charges
 
-	stat_modules +=	new /datum/stat_rig_module/activate(src)
-	stat_modules +=	new /datum/stat_rig_module/deactivate(src)
-	stat_modules +=	new /datum/stat_rig_module/engage(src)
-	stat_modules +=	new /datum/stat_rig_module/select(src)
-	stat_modules +=	new /datum/stat_rig_module/charge(src)
+		if (charges.len > 1)
+			stat_modules +=	new /datum/stat_rig_module/charge(src)
+
+
+	if (toggleable)
+		stat_modules +=	new /datum/stat_rig_module/activate(src)
+		stat_modules +=	new /datum/stat_rig_module/deactivate(src)
+
+	if (usable)
+		stat_modules +=	new /datum/stat_rig_module/engage(src)
+
+	if (selectable)
+		stat_modules +=	new /datum/stat_rig_module/select(src)
 
 /obj/item/rig_module/Destroy()
 	deactivate()
@@ -226,7 +234,7 @@
 	holder = null
 	return
 
-// Called by the hardsuit each rig process tick.
+// Called by the RIG
 /obj/item/rig_module/Process()
 	if(active)
 		return active_power_cost
@@ -240,21 +248,17 @@
 
 /mob/living/carbon/human/Stat()
 	. = ..()
+	if(. && wearing_rig && statpanel("RIG Modules"))
 
-	if(. && istype(back,/obj/item/weapon/rig))
-		var/obj/item/weapon/rig/R = back
-		SetupStat(R)
-
-/mob/proc/SetupStat(var/obj/item/weapon/rig/R)
-	if(R && !R.canremove && R.installed_modules.len && statpanel("Hardsuit Modules"))
-		var/cell_status = R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "ERROR"
-		stat("Suit charge", cell_status)
-		for(var/obj/item/rig_module/module in R.installed_modules)
-		{
-			for(var/datum/stat_rig_module/SRM in module.stat_modules)
-				if(SRM.CanUse())
-					stat(SRM.module.interface_name,SRM)
-		}
+		if(!wearing_rig.canremove && wearing_rig.installed_modules.len)
+			var/cell_status = wearing_rig.cell ? "[wearing_rig.cell.charge]/[wearing_rig.cell.maxcharge]" : "ERROR"
+			stat("Suit charge", cell_status)
+			for(var/obj/item/rig_module/module in wearing_rig.installed_modules)
+			{
+				for(var/datum/stat_rig_module/SRM as anything in module.stat_modules)
+					if(SRM.CanUse())
+						stat(SRM.module.interface_name,SRM)
+			}
 
 /datum/stat_rig_module
 	parent_type = /atom/movable

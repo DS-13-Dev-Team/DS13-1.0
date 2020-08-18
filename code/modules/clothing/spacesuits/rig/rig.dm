@@ -3,14 +3,14 @@
 #define SEAL_DELAY 30
 
 /*
- * Defines the behavior of hardsuits/rigs/power armour.
+ * Defines the behavior of RIGs
  */
 
 /obj/item/weapon/rig
 
-	name = "hardsuit control module"
+	name = "RIG control module"
 	icon = 'icons/obj/rig_modules.dmi'
-	desc = "A back-mounted hardsuit deployment and control mechanism."
+	desc = "A back-mounted RIG deployment and control mechanism."
 	slot_flags = SLOT_BACK
 	var/desired_slot = slot_back
 	req_one_access = list()
@@ -29,14 +29,14 @@
 	var/equipment_overlay_icon = 'icons/mob/onmob/rig_modules.dmi'
 	var/hides_uniform = 1 	//used to determinate if uniform should be visible whenever the suit is sealed or not
 
-	var/interface_path = "hardsuit.tmpl"
-	var/ai_interface_path = "hardsuit.tmpl"
-	var/interface_title = "Hardsuit Controller"
+	var/interface_path = "rig.tmpl"
+	var/ai_interface_path = "rig.tmpl"
+	var/interface_title = "RIG Controller"
 	var/wearer_move_delay //Used for AI moving.
 	var/ai_controlled_move_delay = 10
 
 	// Keeps track of what this rig should spawn with.
-	var/suit_type = "hardsuit"
+	var/suit_type = "RIG"
 	var/list/initial_modules = list(/obj/item/rig_module/healthbar,
 	/obj/item/rig_module/storage)
 	var/chest_type = /obj/item/clothing/suit/space/rig
@@ -102,7 +102,7 @@
 	if(src.loc == usr)
 		to_chat(usr, "The access panel is [locked? "locked" : "unlocked"].")
 		to_chat(usr, "The maintenance panel is [open ? "open" : "closed"].")
-		to_chat(usr, "Hardsuit systems are [offline ? "<font color='red'>offline</font>" : "<font color='green'>online</font>"].")
+		to_chat(usr, "RIG systems are [offline ? "<font color='red'>offline</font>" : "<font color='green'>online</font>"].")
 
 		if(open)
 			to_chat(usr, "It's equipped with [english_list(installed_modules)].")
@@ -417,7 +417,7 @@
 		if(istype(H) && H.back != src)
 			fail_msg = "<span class='warning'>You must be wearing \the [src] to do this.</span>"
 	if(sealing)
-		fail_msg = "<span class='warning'>The hardsuit is in the process of adjusting seals and cannot be activated.</span>"
+		fail_msg = "<span class='warning'>The RIG is in the process of adjusting seals and cannot be activated.</span>"
 	else if(!fail_msg && ((use_unconcious && user.stat > 1) || (!use_unconcious && user.stat)))
 		fail_msg = "<span class='warning'>You are in no fit state to do that.</span>"
 	else if(!cell)
@@ -792,7 +792,7 @@
 		chance = 2*max(0, damage - damage_resistance)
 	else
 		//Want this to be roughly independant of the number of modules, meaning that X emp hits will disable Y% of the suit's modules on average.
-		//that way people designing hardsuits don't have to worry (as much) about how adding that extra module will affect emp resiliance by 'soaking' hits for other modules
+		//that way people designing RIGs don't have to worry (as much) about how adding that extra module will affect emp resiliance by 'soaking' hits for other modules
 		chance = 2*max(0, damage - emp_protection)*min(installed_modules.len/15, 1)
 
 	if(!prob(chance))
