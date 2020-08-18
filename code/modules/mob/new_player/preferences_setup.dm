@@ -68,7 +68,7 @@
 		// Equip custom gear loadout, replacing any job items
 		var/list/loadout_taken_slots = list()
 		for(var/thing in Gear())
-			var/datum/gear/G = GLOB.gear_datums[thing]
+			var/datum/gear/G = gear_datums[thing]
 			if(G)
 				var/permitted = 0
 				if(G.allowed_roles && G.allowed_roles.len)

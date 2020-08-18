@@ -123,15 +123,9 @@
 		qdel(src)
 		return
 
-	if(config.player_limit != 0 && (GLOB.clients.len >= config.player_limit))
-		var/allowed = FALSE
-		if (ckey in admin_datums)
-			allowed = TRUE
-		if(config.always_admit_patrons && (ckey in GLOB.patron_keys))
-			allowed = TRUE
-
-		if (!allowed)
-			alert(src,"This server is currently full and not accepting new connections. Please try again later!","Server Full","OK")
+	if(config.player_limit != 0)
+		if((GLOB.clients.len >= config.player_limit) && !(ckey in admin_datums))
+			alert(src,"This server is currently full and not accepting new connections.","Server Full","OK")
 			log_admin("[ckey] tried to join and was turned away due to the server being full (player_limit=[config.player_limit])")
 			qdel(src)
 			return

@@ -9,30 +9,12 @@
 	var/mob
 	var/is_necromorph = FALSE
 
-	//If true, this player is registered as a patron, and gets access to certain perks
-	//most of these perks can also be accessed by admins, without patron status
-	var/patron = FALSE
-
 	//Last cached coordinates, set on logout
 	var/list/last_location = list("x" = 0, "y" = 0, "z" = 0)
 
 /datum/player/New(var/newkey)
 	src.key = newkey
-	update_patron()
-
 	.=..()
-
-/datum/player/proc/update_patron()
-	if ((key in GLOB.patron_keys))
-		log_world("Player set patron status TRUE")
-		patron = TRUE
-	else
-		patron = FALSE
-		log_world("Player key [key] not in patrons, they are [english_list(GLOB.patron_keys)]")
-
-	var/client/C = get_client()
-	if (C && C.prefs && C.prefs.loadout)
-		C.prefs.loadout.set_prefs(C.prefs)
 
 /datum/player/proc/Login()
 	GLOB.logged_in_event.raise_event(src)
@@ -67,8 +49,6 @@
 
 /mob/proc/player_login()
 	register_client_and_player()
-
-
 
 	var/datum/player/me = get_or_create_player(key)
 	me.Login()

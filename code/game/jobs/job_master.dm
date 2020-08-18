@@ -409,7 +409,7 @@ var/global/datum/controller/occupations/job_master
 		var/list/loadout_taken_slots = list()
 		if(H.client.prefs.Gear() && job.loadout_allowed)
 			for(var/thing in H.client.prefs.Gear())
-				var/datum/gear/G = GLOB.gear_datums[thing]
+				var/datum/gear/G = gear_datums[thing]
 				if(G)
 					var/permitted = 0
 					if(G.allowed_branches)

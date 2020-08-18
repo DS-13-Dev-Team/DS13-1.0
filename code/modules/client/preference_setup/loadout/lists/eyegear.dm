@@ -11,9 +11,6 @@
 	display_name = "eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
 
-/datum/gear/eyes/fashionglasses
-	display_name = "fashionable eyewear"
-
 /datum/gear/eyes/fashionglasses/New()
 	..()
 	var/glasses = list()

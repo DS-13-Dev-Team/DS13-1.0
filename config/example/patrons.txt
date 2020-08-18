@@ -1,8 +1,0 @@
-#Put lines in this document in the following format with a tab inbetween
-#Ckey	Expiry date
-#Ckey is not case sensitive
-#Date goes in the format YYYY-MM-DD
-#Expiry date is inclusive, patron status wears off the day after the date here
-#For example
-westhybrid	2100-06-02
-

@@ -850,8 +850,7 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/weapon/spacecash/bundle/c20 = 3,
 				/obj/item/weapon/spacecash/bundle/c50 = 2,
 				/obj/item/weapon/spacecash/bundle/c100 = 2,
-				/obj/item/weapon/spacecash/bundle/c1000 = 1,
-				/obj/item/weapon/spacecash/bundle/c10000 = 1))
+				/obj/item/weapon/spacecash/bundle/c1000 = 1))
 
 
 

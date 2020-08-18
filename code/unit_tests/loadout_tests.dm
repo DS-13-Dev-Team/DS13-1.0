@@ -3,8 +3,8 @@ datum/unit_test/loadout_test_shall_have_name_cost_path
 
 datum/unit_test/loadout_test_shall_have_name_cost_path/start_test()
 	var/failed = 0
-	for(var/gear_name in GLOB.gear_datums)
-		var/datum/gear/G = GLOB.gear_datums[gear_name]
+	for(var/gear_name in gear_datums)
+		var/datum/gear/G = gear_datums[gear_name]
 
 		if(!G.display_name)
 			log_unit_test("[G]: Missing display name.")
@@ -27,8 +27,8 @@ datum/unit_test/loadout_test_shall_have_valid_icon_states
 
 datum/unit_test/loadout_test_shall_have_valid_icon_states/start_test()
 	var/failed = FALSE
-	for(var/gear_name in GLOB.gear_datums)
-		var/datum/gear/G = GLOB.gear_datums[gear_name]
+	for(var/gear_name in gear_datums)
+		var/datum/gear/G = gear_datums[gear_name]
 		var/list/path_tweaks = list()
 		for(var/datum/gear_tweak/path/p in G.gear_tweaks)
 			path_tweaks += p
@@ -65,8 +65,8 @@ datum/unit_test/loadout_test_gear_path_tweaks_shall_be_of_gear_path
 
 datum/unit_test/loadout_test_gear_path_tweaks_shall_be_of_gear_path/start_test()
 	var/failed = 0
-	for(var/gear_name in GLOB.gear_datums)
-		var/datum/gear/G = GLOB.gear_datums[gear_name]
+	for(var/gear_name in gear_datums)
+		var/datum/gear/G = gear_datums[gear_name]
 		for(var/datum/gear_tweak/path/p in G.gear_tweaks)
 			for(var/path_name in p.valid_paths)
 				var/path_type = p.valid_paths[path_name]
@@ -86,8 +86,8 @@ datum/unit_test/loadout_test_gear_path_tweaks_shall_have_unique_keys
 datum/unit_test/loadout_test_gear_path_tweaks_shall_have_unique_keys/start_test()
 	var/path_entries_by_gear_path_and_name = list()
 
-	for(var/gear_name in GLOB.gear_datums)
-		var/datum/gear/G = GLOB.gear_datums[gear_name]
+	for(var/gear_name in gear_datums)
+		var/datum/gear/G = gear_datums[gear_name]
 		for(var/datum/gear_tweak/path/p in G.gear_tweaks)
 			for(var/path_name in p.valid_paths)
 				group_by(path_entries_by_gear_path_and_name, "[G] - [p] - [path_name]", path_name)

@@ -124,9 +124,6 @@ SUBSYSTEM_DEF(codex)
 	. = ..()
 	if(!. && href_list["show_examined_info"] && href_list["show_to"])
 		var/mob/showing_mob =   locate(href_list["show_to"])
-		if (isclient(showing_mob))
-			var/client/C = showing_mob
-			showing_mob = C.mob
 		if(!istype(showing_mob) || !showing_mob.can_use_codex())
 			return
 		var/atom/showing_atom = locate(href_list["show_examined_info"])
