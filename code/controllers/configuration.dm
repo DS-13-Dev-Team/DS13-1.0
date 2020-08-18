@@ -162,7 +162,6 @@ var/list/gamemode_cache = list()
 
 	var/enter_allowed = TRUE
 	var/player_limit = 0
-	var/always_admit_patrons = FALSE	//Allow patrons to bypass player limit, if one is set
 
 	var/use_irc_bot = 0
 	var/irc_bot_host = ""
@@ -768,8 +767,6 @@ var/list/gamemode_cache = list()
 					radiation_lower_limit = text2num(value)
 				if("player_limit")
 					player_limit = text2num(value)
-				if("always_admit_patrons")
-					always_admit_patrons = TRUE
 				if("hub")
 					world.update_hub_visibility()
 
