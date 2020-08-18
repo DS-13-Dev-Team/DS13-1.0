@@ -482,5 +482,5 @@
 		return passive_power_cost
 
 	H.bodytemperature -= temp_adj
-	active_power_cost = round((temp_adj/max_cooling)*charge_consumption)
+	active_power_cost = 100
 	return active_power_cost
