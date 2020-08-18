@@ -73,3 +73,6 @@ GLOBAL_LIST_INIT(bpl_growth_organs, list(
 
 
 GLOBAL_LIST_INIT(click_catchers, list())
+
+//Holds loadout gear datum singletons
+GLOBAL_LIST_EMPTY(gear_datums)
