@@ -25,7 +25,7 @@ client
 
 		if(mob.get_preference_value(/datum/client_preference/play_lobby_music) == GLOB.PREF_YES)
 			sound_to(mob, sound(null, channel = GLOB.lobby_sound_channel))
-			sound_to(mob, sound('sound/music/THUNDERDOME.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+			sound_to(mob, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 	sleep(50)
 	var/list/_credits = credits
 	verbs += /client/proc/ClearCredits
