@@ -366,10 +366,12 @@
 					to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly goes dead.</span>")
 				else
 					to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly you're wearing a leaden mass of metal and plastic composites instead of a powered suit.</span>")
-			if(offline_vision_restriction >= TINT_MODERATE)
-				to_chat(wearer, "<span class='danger'>The suit optics flicker and die, leaving you with restricted vision.</span>")
-			else if(offline_vision_restriction >= TINT_BLIND)
-				to_chat(wearer, "<span class='danger'>The suit optics drop out completely, drowning you in darkness.</span>")
+
+			if (helmet && helmet.loc == wearer)
+				if(offline_vision_restriction >= TINT_MODERATE)
+					to_chat(wearer, "<span class='danger'>The suit optics flicker and die, leaving you with restricted vision.</span>")
+				else if(offline_vision_restriction >= TINT_BLIND)
+					to_chat(wearer, "<span class='danger'>The suit optics drop out completely, drowning you in darkness.</span>")
 
 			if(electrified > 0)
 				electrified = 0

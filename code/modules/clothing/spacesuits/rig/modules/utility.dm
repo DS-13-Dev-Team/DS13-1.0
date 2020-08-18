@@ -382,7 +382,7 @@
 	jets.holder = holder
 	jets.ion_trail.set_up(holder)
 
-/obj/item/rig_module/maneuvering_jets/uninstalled()
+/obj/item/rig_module/maneuvering_jets/uninstalled(var/obj/item/weapon/rig/former, var/mob/living/user)
 	..()
 	jets.holder = null
 	jets.ion_trail.set_up(jets)
