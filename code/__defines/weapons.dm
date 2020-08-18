@@ -13,14 +13,14 @@
 
 //Resistance values, used on floors, windows, airlocks, girders, and similar hard targets
 //Reduces the damage they take by flat amounts
-#define RESISTANCE_FRAGILE 				4
-#define RESISTANCE_AVERAGE 				8
-#define RESISTANCE_IMPROVED 			12
-#define RESISTANCE_TOUGH 				15
-#define RESISTANCE_ARMOURED 			20
-#define RESISTANCE_HEAVILY_ARMOURED 	25
-#define RESISTANCE_VAULT 				30
-#define RESISTANCE_UNBREAKABLE 			100
+#define RESISTANCE_FRAGILE 				3
+#define RESISTANCE_AVERAGE 				5
+#define RESISTANCE_IMPROVED 			8
+#define RESISTANCE_TOUGH 				12
+#define RESISTANCE_ARMOURED 			16
+#define RESISTANCE_HEAVILY_ARMOURED 	22
+#define RESISTANCE_VAULT 				28
+#define RESISTANCE_UNBREAKABLE 			40
 
 
 //Structure damage values: Multipliers on base damage for attacking hard targets

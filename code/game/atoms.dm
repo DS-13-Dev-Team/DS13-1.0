@@ -504,6 +504,7 @@ its easier to just keep the beam vertical.
 	return 0
 
 /atom/proc/do_climb(var/mob/living/user)
+	. = FALSE
 	if (!can_climb(user))
 		return
 
@@ -523,6 +524,7 @@ its easier to just keep the beam vertical.
 
 	if (get_turf(user) == get_turf(src))
 		user.visible_message("<span class='warning'>\The [user] climbs onto \the [src]!</span>")
+		.= TRUE
 	climbers -= user
 
 /atom/proc/object_shaken()
