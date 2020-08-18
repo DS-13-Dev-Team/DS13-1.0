@@ -11,6 +11,7 @@
 	anchored = 1
 	density = 1
 	obj_flags = OBJ_FLAG_ANCHORABLE
+	atom_flags = ATOM_FLAG_CLIMBABLE
 	clicksound = "button"
 	clickvol = 40
 
@@ -212,6 +213,8 @@
 	return
 
 /obj/machinery/vending/MouseDrop_T(var/obj/item/I as obj, var/mob/user as mob)
+	if (I == user)
+		return ..()
 	if(!CanMouseDrop(I, user) || (I.loc != user))
 		return
 	return attempt_to_stock(I, user)
