@@ -114,7 +114,6 @@ var/list/name_to_material
 	// Damage values.
 	var/hardness = 60            // Prob of wall destruction by hulk, used for edge damage in weapons.
 	var/weight = 20              // Determines blunt damage/throwforce for weapons.
-	var/resistance = RESISTANCE_FRAGILE			 // Damage reduction vs attacks
 
 	// Noise when someone is faceplanted onto a table made of this material.
 	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
@@ -275,7 +274,6 @@ var/list/name_to_material
 	stack_origin_tech = list(TECH_MATERIAL = 6)
 	conductive = 0
 	construction_difficulty = 2
-	resistance = RESISTANCE_UNBREAKABLE
 
 /material/diamond/crystal
 	name = MATERIAL_CRYSTAL
@@ -296,13 +294,11 @@ var/list/name_to_material
 				/datum/reagent/gold = 20
 				)
 	construction_difficulty = 1
-	resistance = RESISTANCE_IMPROVED
 
 /material/gold/bronze //placeholder for ashtrays
 	name = MATERIAL_BRONZE
 	icon_colour = "#edd12f"
 	construction_difficulty = 1
-	resistance = RESISTANCE_IMPROVED
 
 /material/silver
 	name = MATERIAL_SILVER
@@ -317,7 +313,6 @@ var/list/name_to_material
 				/datum/reagent/silver = 20
 				)
 	construction_difficulty = 1
-	resistance = RESISTANCE_IMPROVED
 
 /material/phoron
 	name = MATERIAL_PHORON
@@ -378,7 +373,6 @@ var/list/name_to_material
 	sheet_plural_name = "bricks"
 	conductive = 0
 	construction_difficulty = 1
-	resistance = RESISTANCE_IMPROVED
 
 /material/stone/marble
 	name = MATERIAL_MARBLE
@@ -402,7 +396,6 @@ var/list/name_to_material
 				/datum/reagent/iron = 15,
 				/datum/reagent/carbon = 5
 				)
-	resistance = RESISTANCE_IMPROVED
 
 /material/steel/holographic
 	name = "holo" + MATERIAL_STEEL
@@ -428,7 +421,6 @@ var/list/name_to_material
 	composite_material = list(MATERIAL_STEEL = SHEET_MATERIAL_AMOUNT*0.5, MATERIAL_PLATINUM = SHEET_MATERIAL_AMOUNT*0.5) //todo
 	hitsound = 'sound/weapons/smash.ogg'
 	construction_difficulty = 1
-	resistance = RESISTANCE_TOUGH
 
 /material/plasteel/titanium
 	name = MATERIAL_TITANIUM
@@ -443,7 +435,6 @@ var/list/name_to_material
 	icon_colour = "#d1e6e3"
 	icon_reinf = "reinf_metal"
 	construction_difficulty = 1
-	resistance = RESISTANCE_TOUGH
 
 
 

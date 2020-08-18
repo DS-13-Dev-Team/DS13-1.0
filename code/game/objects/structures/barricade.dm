@@ -25,8 +25,7 @@
 	name = "[material.display_name] barricade"
 	desc = "This space is blocked off by a barricade made of [material.display_name]."
 	color = material.icon_colour
-	max_health = material.integrity*1.35
-	resistance = material.resistance
+	max_health = material.integrity
 	health = max_health
 	.=..()
 
@@ -36,7 +35,7 @@
 /obj/structure/barricade/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/stack/rods) && !spiky)
 		var/obj/item/stack/rods/R = W
-		if(R.get_amount() < 4)
+		if(R.get_amount() < 5)
 			to_chat(user, "<span class='warning'>You need more rods to build a cheval de frise.</span>")
 			return
 		visible_message("<span class='notice'>\The [user] begins to work on \the [src].</span>")
@@ -104,7 +103,7 @@
 	rod_material = get_material_by_name(MATERIAL_STEEL)
 	SetName("cheval-de-frise")
 	desc = "A rather simple [material.display_name] barrier. It menaces with spikes of [rod_material.display_name]."
-	damage = (rod_material.hardness * 0.45)
+	damage = (rod_material.hardness * 0.2)
 	overlays += overlay_image(icon, spike_overlay, color = rod_material.icon_colour, flags = RESET_COLOR)
 
 /obj/structure/barricade/spike/Bumped(mob/living/victim)
@@ -130,18 +129,8 @@
 
 
 /obj/structure/barricade/spike/attack_hand(var/mob/user)
-	impale_victim(user, 0.5)	//Touching it with your hands hurts, but less than walking into it
+	impale_victim(user, 0.4)	//Touching it with your hands hurts, but less than walking into it
 	.=..()
-
-//Attempting to climb spiked barricades is a bad idea.
-/obj/structure/barricade/spike/do_climb(var/mob/living/user)
-	//First of all, we stab them once while mounting
-	impale_victim(user, 1.5)
-	.=..()	//Then call parent
-	//If the parent returns false, it means they aborted their climbing. We'll let them go
-	//If it returns true, they kept going and finished the climb, we will stab them again to punish this persistence
-	if (.)
-		impale_victim(user, 1.5)
 
 /obj/structure/barricade/spike/proc/impale_victim(var/mob/living/victim, var/damage_mult = 1)
 

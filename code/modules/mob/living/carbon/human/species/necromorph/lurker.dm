@@ -32,7 +32,6 @@
 	total_health = 60
 	biomass = 55
 	health_doll_offset	= 50
-	torso_damage_mult = 0.75
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
@@ -200,10 +199,6 @@ The Lurker can only fire spines while its shell is open"
 	retracted = TRUE
 
 
-/obj/item/organ/external/chest/simple/lurker
-	max_damage = 360
-	min_broken_damage = 180
-	limb_flags = ORGAN_FLAG_HEALS_OVERKILL
 
 
 //Special death condition: Lurkers die if they lose all three tentacles

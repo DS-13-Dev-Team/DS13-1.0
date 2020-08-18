@@ -530,9 +530,7 @@
 		if(equipment_overlay_icon && LAZYLEN(installed_modules))
 			for(var/obj/item/rig_module/module in installed_modules)
 				if(module.suit_overlay)
-					var/image/overlay = image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", "dir" = SOUTH, layer = module.suit_overlay_layer)
-					overlay.plane = module.suit_overlay_plane
-					overlay.appearance_flags = module.suit_overlay_flags
+					var/image/overlay = image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", "dir" = SOUTH)
 					if (chest)
 						//Some rigs dont have a chestpiece
 						chest.overlays += overlay
@@ -555,10 +553,7 @@
 	if(equipment_overlay_icon && LAZYLEN(installed_modules))
 		for(var/obj/item/rig_module/module in installed_modules)
 			if(module.suit_overlay)
-				var/image/overlay = image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", layer = module.suit_overlay_layer)
-				overlay.plane = module.suit_overlay_plane
-				overlay.appearance_flags = module.suit_overlay_flags
-				ret.overlays += overlay
+				ret.overlays += image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]")
 	return ret
 
 /obj/item/weapon/rig/proc/check_suit_access(var/mob/living/carbon/human/user)

@@ -46,9 +46,6 @@
 	var/suit_overlay_active             // If set, drawn over icon and mob when effect is active.
 	var/suit_overlay_inactive           // As above, inactive.
 	var/suit_overlay_used               // As above, when engaged.
-	var/suit_overlay_layer	=	HUMAN_LAYER
-	var/suit_overlay_plane	=	HUMAN_PLANE
-	var/suit_overlay_flags = 0
 
 	//Display fluff
 	var/interface_name = "hardsuit upgrade"
