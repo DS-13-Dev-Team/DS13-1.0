@@ -95,8 +95,8 @@
 
 /mob/living/carbon/human/proc/handle_some_updates()
 	if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle
-		return FALSE
-	return TRUE
+		return 0
+	return 1
 
 /mob/living/carbon/human/breathe()
 	var/species_organ = species.breathing_organ
@@ -369,7 +369,7 @@
 	if(bodytemperature >= getSpeciesOrSynthTemp(HEAT_LEVEL_1))
 		//Body temperature is too hot.
 		fire_alert = max(fire_alert, 1)
-		if(status_flags & GODMODE)	return TRUE	//godmode
+		if(status_flags & GODMODE)	return 1	//godmode
 		var/burn_dam = 0
 		if(bodytemperature < getSpeciesOrSynthTemp(HEAT_LEVEL_2))
 			burn_dam = HEAT_DAMAGE_LEVEL_1
@@ -382,7 +382,7 @@
 
 	else if(bodytemperature <= getSpeciesOrSynthTemp(COLD_LEVEL_1))
 		fire_alert = max(fire_alert, 1)
-		if(status_flags & GODMODE)	return TRUE	//godmode
+		if(status_flags & GODMODE)	return 1	//godmode
 
 		var/burn_dam = 0
 
@@ -399,7 +399,7 @@
 
 	// Account for massive pressure differences.  Done by Polymorph
 	// Made it possible to actually have something that can protect against high pressure... Done by Errorage. Polymorph now has an axe sticking from his head for his previous hardcoded nonsense!
-	if(status_flags & GODMODE)	return TRUE	//godmode
+	if(status_flags & GODMODE)	return 1	//godmode
 
 	if(adjusted_pressure >= species.hazard_high_pressure)
 		var/pressure_damage = min( ( (adjusted_pressure / species.hazard_high_pressure) -1 )*PRESSURE_DAMAGE_COEFFICIENT , MAX_HIGH_PRESSURE_DAMAGE)
@@ -479,7 +479,7 @@
 
 /mob/living/carbon/human/get_cold_protection(temperature)
 	if(COLD_RESISTANCE in mutations)
-		return TRUE //Fully protected from the cold.
+		return 1 //Fully protected from the cold.
 
 	temperature = max(temperature, 2.7) //There is an occasional bug where the temperature is miscalculated in ares with a small amount of gas on them, so this is necessary to ensure that that bug does not affect this calculation. Space's temperature is 2.7K and most suits that are intended to protect against any cold, protect down to 2.0K.
 	var/thermal_protection_flags = get_cold_protection_flags(temperature)
@@ -517,7 +517,7 @@
 	chem_effects.Cut()
 
 	if(status_flags & GODMODE)
-		return FALSE
+		return 0
 
 	if(isSynthetic())
 		return
@@ -544,9 +544,9 @@
 //DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
 /mob/living/carbon/human/handle_regular_status_updates()
 	if(!handle_some_updates())
-		return FALSE
+		return 0
 
-	if(status_flags & GODMODE)	return FALSE
+	if(status_flags & GODMODE)	return 0
 
 	//SSD check, if a logged player is awake put them back to sleep!
 	if(ssd_check() && species.get_ssd(src))
@@ -631,7 +631,7 @@
 			if(!stat && prob(1))
 				to_chat(src, "<span class='notice'>You feel slow and sluggish...</span>")
 
-	return TRUE
+	return 1
 
 /mob/living/carbon/human/handle_regular_hud_updates(var/update_vision = TRUE)
 	if(hud_updateflag) // update our mob's hud overlays, AKA what others see flaoting above our head
@@ -766,7 +766,7 @@
 						bodytemp.icon_state = "temp-1"
 					else
 						bodytemp.icon_state = "temp0"
-	return TRUE
+	return 1
 
 /mob/living/carbon/human/handle_random_events()
 	// Puke if toxloss is too high
@@ -831,11 +831,8 @@
 
 
 /mob/living/carbon/human/proc/handle_hud_list()
-	if (BITTEST(hud_updateflag, HEALTH_HUD))
+	if (BITTEST(hud_updateflag, HEALTH_HUD) && hud_list[HEALTH_HUD])
 		var/image/hud_overlay/holder = hud_list[HEALTH_HUD]
-		if (!holder)
-			holder = new /image/hud_overlay('icons/mob/hud_med.dmi', src, "100")
-
 		if(stat == DEAD)
 			holder.icon_state = "0" 	// X_X
 		else if(is_asystole())
@@ -845,21 +842,14 @@
 		hud_list[HEALTH_HUD] = holder
 
 	if (BITTEST(hud_updateflag, LIFE_HUD) && hud_list[LIFE_HUD])
-
-
 		var/image/hud_overlay/holder = hud_list[LIFE_HUD]
-		if (!holder)
-			holder = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
-
 		if(stat == DEAD)
 			holder.icon_state = "huddead"
 		else
 			holder.icon_state = "hudhealthy"
 		hud_list[LIFE_HUD] = holder
 
-	if (BITTEST(hud_updateflag, STATUS_HUD))
-
-
+	if (BITTEST(hud_updateflag, STATUS_HUD) && hud_list[STATUS_HUD] && hud_list[STATUS_HUD_OOC])
 		var/foundVirus = 0
 		for (var/ID in virus2)
 			if (ID in virusDB)
@@ -867,9 +857,6 @@
 				break
 
 		var/image/hud_overlay/holder = hud_list[STATUS_HUD]
-		if (!holder)
-			holder = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
-
 		if(stat == DEAD)
 			holder.icon_state = "huddead"
 		else if(status_flags & XENO_HOST)
@@ -886,8 +873,6 @@
 			holder.icon_state = "hudhealthy"
 
 		var/image/hud_overlay/holder2 = hud_list[STATUS_HUD_OOC]
-		if (!holder2)
-			holder2 = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
 		if(stat == DEAD)
 			holder2.icon_state = "huddead"
 		else if(status_flags & XENO_HOST)
@@ -902,10 +887,8 @@
 		hud_list[STATUS_HUD] = holder
 		hud_list[STATUS_HUD_OOC] = holder2
 
-	if (BITTEST(hud_updateflag, ID_HUD))
+	if (BITTEST(hud_updateflag, ID_HUD) && hud_list[ID_HUD])
 		var/image/hud_overlay/holder = hud_list[ID_HUD]
-		if (!holder)
-			holder = new /image/hud_overlay(GLOB.using_map.id_hud_icons, src, "hudunknown")
 		holder.icon_state = "hudunknown"
 		if(wear_id)
 			var/obj/item/weapon/card/id/I = wear_id.GetIdCard()
@@ -916,11 +899,8 @@
 
 		hud_list[ID_HUD] = holder
 
-	if (BITTEST(hud_updateflag, WANTED_HUD))
+	if (BITTEST(hud_updateflag, WANTED_HUD) && hud_list[WANTED_HUD])
 		var/image/hud_overlay/holder = hud_list[WANTED_HUD]
-		if (!holder)
-			holder = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-
 		holder.icon_state = "hudblank"
 		var/perpname = name
 		if(wear_id)
@@ -946,17 +926,10 @@
 	   || BITTEST(hud_updateflag, IMPTRACK_HUD))
 
 		var/image/hud_overlay/holder1 = hud_list[IMPTRACK_HUD]
-		if (!holder1)
-			holder1 = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 		var/image/hud_overlay/holder2 = hud_list[IMPLOYAL_HUD]
-		if (!holder2)
-			holder2 = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 		var/image/hud_overlay/holder3 = hud_list[IMPCHEM_HUD]
-		if (!holder3)
-			holder3 = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 
 		holder1.icon_state = "hudblank"
-
 		holder2.icon_state = "hudblank"
 		holder3.icon_state = "hudblank"
 
@@ -975,8 +948,6 @@
 
 	if (BITTEST(hud_updateflag, SPECIALROLE_HUD))
 		var/image/hud_overlay/holder = hud_list[SPECIALROLE_HUD]
-		if (!holder)
-			holder = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 		holder.icon_state = "hudblank"
 		if(mind && mind.special_role)
 			if(GLOB.hud_icon_reference[mind.special_role])

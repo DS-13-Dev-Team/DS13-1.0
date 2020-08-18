@@ -48,8 +48,6 @@
 	var/const/STATUS_DISPLAY_IMAGE = 5
 	var/const/STATUS_DISPLAY_CUSTOM = 99
 
-	can_block_movement = FALSE //Wallmounted
-
 /obj/machinery/status_display/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src,frequency)

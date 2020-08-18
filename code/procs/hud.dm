@@ -18,14 +18,14 @@ proc/process_med_hud(var/mob/M, var/local_scanner, var/mob/Alt)
 			continue
 
 		if(local_scanner)
-			add_hudlist(P.Client.images, patient, HEALTH_HUD)
-			add_hudlist(P.Client.images, patient, STATUS_HUD)
+			P.Client.images += patient.hud_list[HEALTH_HUD]
+			P.Client.images += patient.hud_list[STATUS_HUD]
 		else
 			var/sensor_level = getsensorlevel(patient)
 			if(sensor_level >= SUIT_SENSOR_VITAL)
-				add_hudlist(P.Client.images, patient, HEALTH_HUD)
+				P.Client.images += patient.hud_list[HEALTH_HUD]
 			if(sensor_level >= SUIT_SENSOR_BINARY)
-				add_hudlist(P.Client.images, patient, LIFE_HUD)
+				P.Client.images += patient.hud_list[LIFE_HUD]
 
 //Security HUDs. Pass a value for the second argument to enable implant viewing or other special features.
 proc/process_sec_hud(var/mob/M, var/advanced_mode, var/mob/Alt)
@@ -37,12 +37,12 @@ proc/process_sec_hud(var/mob/M, var/advanced_mode, var/mob/Alt)
 		if(perp.is_invisible_to(P.Mob))
 			continue
 
-		add_hudlist(P.Client.images, perp, ID_HUD)
+		P.Client.images += perp.hud_list[ID_HUD]
 		if(advanced_mode)
-			add_hudlist(P.Client.images, perp, WANTED_HUD)
-			add_hudlist(P.Client.images, perp, IMPTRACK_HUD)
-			add_hudlist(P.Client.images, perp, IMPLOYAL_HUD)
-			add_hudlist(P.Client.images, perp, IMPCHEM_HUD)
+			P.Client.images += perp.hud_list[WANTED_HUD]
+			P.Client.images += perp.hud_list[IMPTRACK_HUD]
+			P.Client.images += perp.hud_list[IMPLOYAL_HUD]
+			P.Client.images += perp.hud_list[IMPCHEM_HUD]
 
 datum/arranged_hud_process
 	var/client/Client

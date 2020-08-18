@@ -27,24 +27,8 @@
 	//Mass is measured in kilograms. It should never be zero
 	var/mass = 1
 
-
-/atom/movable/Initialize(var/mapload)
-	if (can_block_movement && isturf(loc))
-		var/turf/T = loc
-		T.movement_blocking_atoms |= src
-
-
-	.=..()
-
 /atom/movable/Destroy()
-	if (can_block_movement)
-		var/turf/T = get_turf(src)
-		if (T)
-			T.movement_blocking_atoms -= src
-
 	. = ..()
-
-
 	for(var/atom/movable/AM in src)
 		qdel(AM)
 
@@ -70,7 +54,7 @@
 
 /atom/movable/proc/forceMove(atom/destination)
 	if(loc == destination)
-		return FALSE
+		return 0
 	var/is_origin_turf = isturf(loc)
 	var/is_destination_turf = isturf(destination)
 	// It is a new area if:
@@ -97,7 +81,7 @@
 					AM.Crossed(src)
 			if(is_new_area && is_destination_turf)
 				destination.loc.Entered(src, origin)
-	return TRUE
+	return 1
 
 //called when src is thrown into hit_atom
 /atom/movable/proc/throw_impact(atom/hit_atom, var/speed)
@@ -129,9 +113,9 @@
 /atom/movable/proc/throw_at(atom/target, range, speed, thrower)
 	set waitfor = FALSE
 	if(!target || !src)
-		return FALSE
+		return 0
 	if(target.z != src.z)
-		return FALSE
+		return 0
 
 	var/interval = 10 / speed
 	var/sleep_debt = 0

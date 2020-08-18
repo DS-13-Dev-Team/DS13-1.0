@@ -125,15 +125,15 @@ Works together with spawning an observer, noted above.
 /mob/observer/ghost/proc/process_medHUD(var/mob/M)
 	var/client/C = M.client
 	for(var/mob/living/carbon/human/patient in oview(M, 14))
-		add_hudlist(C.images, patient, HEALTH_HUD)
-		add_hudlist(C.images, patient, STATUS_HUD_OOC)
+		C.images += patient.hud_list[HEALTH_HUD]
+		C.images += patient.hud_list[STATUS_HUD_OOC]
 
 /mob/observer/ghost/proc/assess_targets(list/target_list, mob/observer/ghost/U)
 	var/client/C = U.client
 	for(var/mob/living/carbon/human/target in target_list)
-		add_hudlist(C.images, target,SPECIALROLE_HUD)
+		C.images += target.hud_list[SPECIALROLE_HUD]
 	for(var/mob/living/silicon/target in target_list)
-		add_hudlist(C.images, target,SPECIALROLE_HUD)
+		C.images += target.hud_list[SPECIALROLE_HUD]
 	return 1
 
 /mob/proc/ghostize(var/can_reenter_corpse = CORPSE_CAN_REENTER)
