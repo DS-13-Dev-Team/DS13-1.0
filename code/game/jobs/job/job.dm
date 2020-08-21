@@ -58,7 +58,11 @@
 	if(!hud_icon)
 		hud_icon = "hud[ckey(title)]"
 
-/datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title, var/datum/mil_branch/branch, var/datum/mil_rank/grade)
+/datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title, var/datum/mil_branch/branch, var/datum/mil_rank/grade, var/no_outfit = FALSE)
+	//The no outfit flag skips the baseline behaviour, but this proc can still be overridden to do any special/extra functionality
+	if (no_outfit)
+		return TRUE
+
 	var/decl/hierarchy/outfit/outfit = get_outfit(H, alt_title, branch, grade)
 	if(!outfit)
 		return FALSE

@@ -335,7 +335,8 @@ var/global/datum/controller/gameticker/ticker
 					captainless=0
 				if(!player_is_antag(player.mind, only_offstation_roles = 1))
 					job_master.EquipRank(player, player.mind.assigned_role, 0)
-					equip_custom_items(player)
+					//equip_custom_items(player)
+					equip_loadout(player, player.mind.assigned_role, player.client.prefs)
 		if(captainless)
 			for(var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/new_player))

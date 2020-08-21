@@ -480,4 +480,30 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if (!has_organ_for_slot(C.equip_slot))
 			drop_from_inventory(C)
 
+
+
+
+
+/*
+	Takes a list of things, can be datums or typepaths, mixture of both works too#
+*/
+/mob/living/carbon/human/proc/mass_equip_to_storage(var/list/things)
+	var/list/storages = get_all_storages()
+
+	for (var/thing in things)
+		var/obj/item/I = thing
+
+		//If its a path, instantiate it and put it back into the list
+		if (ispath(thing))
+			I = new thing(loc)
+
+		for (var/obj/item/storage in storages)
+			if (storage.store_item(I, src))
+				things -= thing
+				break
+
+
+	//If theres anything left we couldn't store, send it back
+	return things
+
 #undef REMOVE_INTERNALS

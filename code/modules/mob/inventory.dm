@@ -86,26 +86,38 @@ var/list/slot_equipment_priority = list( \
 
 	return FALSE
 
-/mob/proc/equip_to_storage(obj/item/newitem)
-	// Try put it in their backpack
+
+
+//Storage equipping
+//Returns a list of all storages a human has on them, starting with backpack
+//Only counts those directly on the mob, not nested storage
+/mob/proc/get_all_storages()
+	var/list/storages = list()
 	if(istype(src.back,/obj/item/weapon/storage))
-		var/obj/item/weapon/storage/backpack = src.back
-		if(backpack.can_be_inserted(newitem, null, 1))
-			backpack.handle_item_insertion(newitem, TRUE)
-			return backpack
+		storages += back
 
 	//Else if
 	else if(istype(src.back,/obj/item/weapon/rig))
 		var/obj/item/weapon/rig/rig = src.back
-		if (rig.storage && rig.storage.container.can_be_inserted(newitem, null, 1))
-			rig.storage.container.handle_item_insertion(newitem, TRUE)
-			return rig.storage.container
+		if (rig.storage)
+			storages += back
 
-	// Try to place it in any item that can store stuff, on the mob.
-	for(var/obj/item/weapon/storage/S in src.contents)
-		if(S.can_be_inserted(newitem, null, 1))
-			newitem.forceMove(S)
-			return S
+	for (var/obj/item/weapon/storage/S in src)
+		storages |= S
+
+	return storages
+
+
+/mob/proc/equip_to_storage(obj/item/thing)
+	var/list/storages = get_all_storages()
+
+	for (var/obj/item/storage in storages)
+		if (storage.store_item(thing, src))
+			return storage
+
+
+
+
 
 /mob/proc/equip_to_storage_or_drop(obj/item/newitem)
 	var/stored = equip_to_storage(newitem)
@@ -303,3 +315,5 @@ var/list/slot_equipment_priority = list( \
 		var/obj/item/I = entry
 		if(I.body_parts_covered & body_parts)
 			. += I
+
+/mob/proc/delete_worn_item(var/obj/item/I)
