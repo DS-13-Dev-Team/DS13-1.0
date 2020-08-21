@@ -673,9 +673,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	loadout.rank = previewJob.title
 	loadout.assignment = player_alt_titles[previewJob.title]
 	loadout.set_human(mannequin)
-	world << "Setting human [mannequin]"
 	loadout.set_job(previewJob, FALSE)
-	world << "Setting job [previewJob]"
 	loadout.equip_to_mob()
 	/*
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
