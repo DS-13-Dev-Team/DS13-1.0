@@ -103,14 +103,18 @@
 			prefs.gear_list[gear_slot] -= thing
 
 //Takes a job datum or a job name,
-/datum/extension/loadout/proc/set_job(var/datum/job/newjob)
+/datum/extension/loadout/proc/set_job(var/datum/job/newjob, var/set_rank = TRUE)
+	if (job == newjob)
+		return
+
 	if (!istype(newjob))
 		newjob = job_master.GetJob(newjob) //We might have been supplied a jobname instead of a datum
 
 	if (istype(newjob))
 		job = newjob
-
-		set_outfit()
+		if (set_rank)
+			set_rank_and_assignment()
+		set_outfit(set_rank)
 
 //Called whenever mob, job or outfit are set. A cascading series of priorities that determines the rank and assignment used for IDs and pdas
 /datum/extension/loadout/proc/set_rank_and_assignment()
@@ -134,7 +138,7 @@
 
 //Attempts to fetch our outfit from the job datum
 //If the human mob is already set, outfit fetching will have more accurate results
-/datum/extension/loadout/proc/set_outfit()
+/datum/extension/loadout/proc/set_outfit(var/set_rank = TRUE)
 	if (!job)
 		return
 
@@ -145,7 +149,8 @@
 
 	outfit = outfit_original.copy()
 
-	set_rank_and_assignment()
+	if (set_rank)
+		set_rank_and_assignment()
 
 /*
 	Resets our outfit back to the unmodified default.
@@ -161,6 +166,9 @@
 
 */
 /datum/extension/loadout/proc/set_human(var/mob/living/carbon/human/newhuman)
+	if (H == newhuman)
+		return
+
 	if (istype(newhuman))
 		H = newhuman
 		set_rank_and_assignment()
@@ -208,7 +216,7 @@
 
 	gear_list += G
 	if (gear_list.len >= 2)
-		sortTim(gear_list, /proc/cmp_gear_priority, TRUE)
+		sortTim(gear_list, /proc/cmp_gear_priority)
 	update_gear()
 	mix_gear()
 	return TRUE
@@ -291,8 +299,6 @@
 
 /*
 	Actually equip the loadout, after all setup
-	Note that this process is destructive. The loadout will delete parts of itself as it goes, and should be entirely deleted once finished
-	It cannot be reused or farther edited after this point. IF you want to equip it to multiple mobs, make a copy of it before doing so
 */
 /datum/extension/loadout/proc/equip_to_mob()
 
@@ -340,7 +346,7 @@
 	//Sixth, stored items
 	outfit.equip_stored(H, equip_adjustments)
 	for(var/datum/gear/G in spawn_in_storage)
-		G.spawn_in_storage_or_drop(H, H.client.prefs.Gear()[G.display_name])
+		G.spawn_in_storage_or_drop(H, prefs.Gear()[G.display_name])
 
 	//Seventh: Some finishing touches
 	if(!(OUTFIT_ADJUSTMENT_SKIP_POST_EQUIP & equip_adjustments))
@@ -348,6 +354,7 @@
 	H.regenerate_icons()
 	if(W) // We set ID info last to ensure the ID photo is as correct as possible.
 		H.set_id_info(W)
+
 
 
 
@@ -366,11 +373,11 @@
 
 	//Gear wants to do its own snowflake equipping routine. Let it do so, and assume it succeeded
 	if (G.slot == GEAR_EQUIP_SPECIAL)
-		G.spawn_special(H, H.client.prefs.Gear()[G.display_name])
+		G.spawn_special(H, prefs.Gear()[G.display_name])
 		return	//This cannot fail so no need for checks
 
 	//Normal spawning into a mob's equipment slots
-	else if (!G.spawn_on_mob(H, H.client.prefs.Gear()[G.display_name]))
+	else if (!G.spawn_on_mob(H, prefs.Gear()[G.display_name]))
 		//If that fails, it goes into storage
 		spawn_in_storage.Add(G)
 		return

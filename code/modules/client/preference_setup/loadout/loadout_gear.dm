@@ -107,15 +107,16 @@
 
 	var/atom/placed_in = H.equip_to_storage(item)
 	if(placed_in)
-		to_chat(H, "<span class='notice'>Placing \the [item] in your [placed_in.name]!</span>")
+		if (H.client) to_chat(H, "<span class='notice'>Placing \the [item] in your [placed_in.name]!</span>")
 	else if(H.equip_to_appropriate_slot(item))
-		to_chat(H, "<span class='notice'>Placing \the [item] in your inventory!</span>")
+		if (H.client) to_chat(H, "<span class='notice'>Placing \the [item] in your inventory!</span>")
 	else if(H.put_in_hands(item))
-		to_chat(H, "<span class='notice'>Placing \the [item] in your hands!</span>")
+		if (H.client) to_chat(H, "<span class='notice'>Placing \the [item] in your hands!</span>")
 	else
-		to_chat(H, "<span class='danger'>Dropping \the [item] on the ground!</span>")
-		item.forceMove(get_turf(H))
-		item.add_fingerprint(H)
+		if (H.client)
+			to_chat(H, "<span class='danger'>Dropping \the [item] on the ground!</span>")
+			item.forceMove(get_turf(H))
+			item.add_fingerprint(H)
 
 
 
