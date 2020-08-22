@@ -144,3 +144,13 @@
 	path = /obj/item/rig_module/kinesis
 	tags = list(LOADOUT_TAG_RIG_KINESIS)
 	exclusion_tags = list(LOADOUT_TAG_RIG_KINESIS)
+
+
+/datum/gear/RIG/module/siphon
+	display_name = "Power Siphon"
+
+	cost = 2
+
+	path = /obj/item/rig_module/power_sink
+	tags = list(LOADOUT_TAG_RIG_POWERSIPHON)
+	exclusion_tags = list(LOADOUT_TAG_RIG_POWERSIPHON)
