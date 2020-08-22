@@ -42,5 +42,5 @@
 	/obj/item/rig_module/grenade_launcher/mfoam = 0.5,
 	/obj/item/rig_module/grenade_launcher/light = 0.5,
 	/obj/item/rig_module/mounted/taser = 0.5,
-
+	/obj/item/rig_module/hotswap = 0.5
 	))
