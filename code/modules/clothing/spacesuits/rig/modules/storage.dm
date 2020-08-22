@@ -1,6 +1,6 @@
 //The storage module allows a rig to be used as a sort of backpack, by using an internal storage compartment
 /obj/item/rig_module/storage
-	name = "internal storage compartment"
+	name = "standard internal storage compartment"
 	desc = "A storage container designed to be installed in a RIG suit. Has 20 litres of space"
 
 	var/obj/item/weapon/storage/internal/container = null
@@ -17,17 +17,23 @@
 	var/max_storage_space = DEFAULT_NORMAL_STORAGE
 	var/storage_slots = null //The number of storage slots in this container.
 
+	base_type = /obj/item/rig_module/storage
+	loadout_tags = list(LOADOUT_TAG_RIG_STORAGE_2)
+
 /obj/item/rig_module/storage/light
-	name = "small internal storage compartment"
+	name = "compact internal storage compartment"
 	desc = "A storage container designed to be installed in a RIG suit. Has 16 litres of space"
 
 	max_storage_space = DEFAULT_SMALL_STORAGE
+
+	loadout_tags = list(LOADOUT_TAG_RIG_STORAGE_1)
 
 /obj/item/rig_module/storage/heavy
 	name = "expanded internal storage compartment"
 	desc = "A storage container designed to be installed in a RIG suit. Has 25 litres of space, and can fit bigger objects"
 	max_w_class = ITEM_SIZE_LARGE
 	max_storage_space = DEFAULT_BULKY_STORAGE
+	loadout_tags = list(LOADOUT_TAG_RIG_STORAGE_3)
 
 //Create the internal storage and pass on various parameters
 /obj/item/rig_module/storage/New()
@@ -42,13 +48,6 @@
 /*****************************
 	Installation
 *****************************/
-//Installing stuff
-/obj/item/rig_module/storage/can_install(var/obj/item/weapon/rig/rig, var/mob/user, var/feedback = FALSE)
-	if (rig.storage) //If it already has a storage mod installed, then no adding another one
-		if (user && feedback)
-			to_chat(user, SPAN_DANGER("The [rig] already has a storage module installed, you can't fit another one."))
-		return FALSE
-	.=..()
 
 /obj/item/rig_module/storage/installed()
 	.=..()

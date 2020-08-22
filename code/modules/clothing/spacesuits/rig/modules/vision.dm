@@ -47,6 +47,8 @@
 	desc = "A layered, translucent visor system for a RIG."
 	icon_state = "optics"
 
+	base_type = /obj/item/rig_module/vision
+
 	interface_name = "optical scanners"
 	interface_desc = "An integrated multi-mode vision system."
 

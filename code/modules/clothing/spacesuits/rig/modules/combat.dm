@@ -21,6 +21,8 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 3, TECH_ENGINEERING = 5)
 	process_with_rig = FALSE
 
+	base_type = /obj/item/rig_module/device/flash
+
 /obj/item/rig_module/device/flash/advanced
 	name = "advanced mounted flash"
 	device_type = /obj/item/device/flash/advanced

@@ -1,7 +1,6 @@
 /*
 	This file contains preferences and UI handling for the loadout menu
 */
-#define LOADOUT_CHECK	if (!pref.loadout) {pref.loadout = create_loadout_from_preferences((pref.client.mob ? pref.client.mob : pref.client), pref)}
 /hook/startup/proc/populate_gear_list()
 
 	//create a list of gear datums to sort

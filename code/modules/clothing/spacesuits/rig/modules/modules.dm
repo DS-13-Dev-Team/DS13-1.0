@@ -15,6 +15,9 @@
 	icon_state = "module"
 	matter = list(MATERIAL_STEEL = 20000, "plastic" = 30000, MATERIAL_GLASS = 5000)
 
+	//If set, no other module with a matching base type can be installed
+	var/base_type = null
+
 	var/damage = 0
 	var/obj/item/weapon/rig/holder
 
@@ -51,13 +54,22 @@
 	var/suit_overlay_flags = 0
 
 	//Display fluff
-	var/interface_name = "RIG upgrade"
-	var/interface_desc = "A generic RIG upgrade."
+	var/interface_name
+	var/interface_desc = ""
 	var/engage_string = "Engage"
 	var/activate_string = "Activate"
 	var/deactivate_string = "Deactivate"
 
 	var/list/datum/stat_rig_module/stat_modules = new()
+
+/obj/item/rig_module/Initialize()
+	.=..()
+	if (!interface_name)
+		interface_name = name
+
+	if (!interface_desc)
+		interface_desc = desc
+
 
 /obj/item/rig_module/examine()
 	. = ..()
@@ -154,7 +166,40 @@
 	. = ..()
 
 
-/obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, var/mob/user, var/feedback = FALSE)
+/obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, var/mob/user, var/feedback = FALSE, var/check_conflict = TRUE)
+	if (!redundant && check_conflict)
+		for (var/obj/item/rig_module/RM in rig.installed_modules)
+			//Exact duplicates not allowed
+			if (type == RM.type)
+				return FALSE
+
+			//Matching base types count as a duplicate, if non null
+			if (base_type && base_type == RM.base_type)
+				return FALSE
+	return TRUE
+
+//Returns any existing module which blocks the installation of this one
+/obj/item/rig_module/proc/get_conflicting(var/obj/item/weapon/rig/rig)
+	if (!redundant)
+		for (var/obj/item/rig_module/RM in rig.installed_modules)
+			//Exact duplicates not allowed
+			if (type == RM.type)
+				return RM
+
+			//Matching base types count as a duplicate, if non null
+			if (base_type && base_type == RM.base_type)
+				return RM
+
+	return null
+
+
+/*
+	Called to inform this module that its position in rig is about to be replaced with successor.
+	Override this to do any prep work for replacement, like storages transferring contents
+
+	Return false to block the replacement and deny the installation of the sucessor
+*/
+/obj/item/rig_module/proc/pre_replace(var/obj/item/weapon/rig/rig, var/obj/item/rig_module/successor)
 	return TRUE
 
 // Called when the module is installed into a suit.

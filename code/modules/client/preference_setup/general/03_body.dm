@@ -650,7 +650,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 
 /datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin)
-	var/update_icon = FALSE
 	copy_to(mannequin, TRUE)
 
 	var/datum/job/previewJob
@@ -668,44 +667,14 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	mannequin.job = previewJob.title
 
-	LOADOUT_CHECK
+	LOADOUT_CHECK_PREF
 
 	loadout.rank = previewJob.title
 	loadout.assignment = player_alt_titles[previewJob.title]
 	loadout.set_human(mannequin)
 	loadout.set_job(previewJob, FALSE)
 	loadout.equip_to_mob()
-	/*
-	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
-		mannequin.job = previewJob.title
-		//previewJob.equip_preview(mannequin, player_alt_titles[previewJob.title], mannequin.char_branch, mannequin.char_rank)
-		update_icon = TRUE
 
-	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/ai || previewJob.type == /datum/job/cyborg)))
-		// Equip custom gear loadout, replacing any job items
-		var/list/loadout_taken_slots = list()
-		for(var/thing in Gear())
-			var/datum/gear/G = GLOB.gear_datums[thing]
-			if(G)
-				var/permitted = 0
-				if(G.allowed_roles && G.allowed_roles.len)
-					if(previewJob)
-						for(var/job_type in G.allowed_roles)
-							if(previewJob.type == job_type)
-								permitted = 1
-				else
-					permitted = 1
-
-				if(G.whitelisted && (G.whitelisted != mannequin.species.name))
-					permitted = 0
-
-				if(!permitted)
-					continue
-
-				if(G.slot && G.slot != slot_tie && !(G.slot in loadout_taken_slots) && G.spawn_on_mob(mannequin, gear_list[gear_slot][G.display_name]))
-					loadout_taken_slots.Add(G.slot)
-					update_icon = TRUE
-	*/
 	mannequin.update_icons()
 
 

@@ -16,6 +16,8 @@
 	icon_state = "module"
 	//matter = list(MATERIAL_STEEL = 20000, "plastic" = 30000, MATERIAL_GLASS = 5000)
 
+	base_type = /obj/item/rig_module/kinesis
+
 	module_cooldown = 0
 	active = FALSE
 

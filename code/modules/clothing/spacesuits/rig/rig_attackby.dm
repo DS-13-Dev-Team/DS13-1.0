@@ -64,37 +64,8 @@
 
 		// Check if this is a RIG upgrade or a modification.
 		else if(istype(W,/obj/item/rig_module))
-			var/obj/item/rig_module/RM = W
-			if(istype(src.loc,/mob/living/carbon/human))
-				var/mob/living/carbon/human/H = src.loc
-				if(H.back == src)
-					to_chat(user, "<span class='danger'>You can't install a RIG module while the suit is being worn.</span>")
-					return 1
+			attempt_install(W, user, FALSE)
 
-			if(!installed_modules) installed_modules = list()
-			if(installed_modules.len)
-				for(var/obj/item/rig_module/installed_mod in installed_modules)
-					if(!installed_mod.redundant && istype(installed_mod,W))
-						to_chat(user, "The RIG already has a module of that class installed.")
-						return 1
-
-			if (!RM.can_install(src, user, TRUE))
-				return 1
-
-			var/obj/item/rig_module/mod = W
-			to_chat(user, "You begin installing \the [mod] into \the [src].")
-			if(!do_after(user,40,src))
-				return
-			if(!user || !W)
-				return
-			if(!user.unEquip(mod)) return
-			to_chat(user, "You install \the [mod] into \the [src].")
-			installed_modules |= mod
-			if (mod.process_with_rig)
-				processing_modules |= mod
-			mod.forceMove(src)
-			mod.installed(src)
-			update_icon()
 			return 1
 
 		else if(!cell && istype(W,/obj/item/weapon/cell))
@@ -227,3 +198,65 @@
 		subverted = 1
 		to_chat(user, "<span class='danger'>You short out the access protocol for the suit.</span>")
 		return 1
+
+
+/*
+	Central entrypoint to install Rig modules
+*/
+/obj/item/weapon/rig/proc/attempt_install(var/obj/item/rig_module/RM, var/mob/user, var/force = FALSE, var/instant = FALSE, var/delete_replaced = FALSE)
+
+	if(is_worn() && !hotswap && !force)
+		to_chat(user, "<span class='danger'>You can't install a RIG module while the suit is being worn.</span>")
+		return FALSE
+
+
+
+	if (!RM.can_install(src, user, TRUE))
+		var/obj/item/rig_module/conflict = RM.get_conflicting(src)
+
+		//If force is enabled, we check again with conflict detection turned off
+		if (!force || !RM.can_install(src, user, FALSE, FALSE))
+			if (conflict)
+				to_chat(user, "The RIG already has a module of that class installed.")
+			return FALSE
+
+		//If force is enabled, and it -would- be able to install without conflict detection, then we can do a replacement install
+		//Assuming the existing one doesnt block it
+		if (!conflict.pre_replace(src, RM))
+			return FALSE
+
+		//Okay no blocking was done, lets eject the old one
+		uninstall(conflict, delete_replaced)
+
+	if (user)
+		if (!instant)
+			to_chat(user, "You begin installing \the [RM] into \the [src].")
+			if(!do_after(user,40,src))
+				return	FALSE
+		if(!user.unEquip(RM)) return FALSE
+		to_chat(user, "You install \the [RM] into \the [src].")
+	install(RM)
+	return TRUE
+
+
+//This gives no feedback and cannot fail, do safety checks first
+/obj/item/weapon/rig/proc/install(var/obj/item/rig_module/RM)
+	installed_modules |= RM
+	if (RM.process_with_rig)
+		processing_modules |= RM
+	RM.forceMove(src)
+	RM.installed(src)
+	update_icon()
+
+
+/obj/item/weapon/rig/proc/uninstall(var/obj/item/rig_module/RM, var/delete = FALSE)
+	installed_modules -= RM
+	processing_modules -= RM
+
+	RM.uninstalled(src)
+	if (delete)
+		qdel(RM)
+	else
+		RM.forceMove(get_turf(src))
+		.=RM
+	update_icon()
