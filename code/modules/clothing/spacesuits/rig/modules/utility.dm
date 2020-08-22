@@ -13,6 +13,7 @@
  * /obj/item/rig_module/device/paperdispenser
  * /obj/item/rig_module/device/pen
  * /obj/item/rig_module/device/stamp
+ * /obj/item/rig_module/hotswap
  */
 
 /obj/item/rig_module/device
@@ -318,7 +319,7 @@
 /obj/item/rig_module/maneuvering_jets
 
 	name = "RIG maneuvering jets"
-	desc = "A compact gas thruster system for a RIG."
+	desc = "A compact gas thruster system for a RIG. Allows Zero G manoeuvring."
 	icon_state = "thrusters"
 	usable = 1
 	toggleable = 1
@@ -484,3 +485,17 @@
 	H.bodytemperature -= temp_adj
 	active_power_cost = 100
 	return active_power_cost
+
+
+/obj/item/rig_module/hotswap
+	name = "hotswap module"
+	desc = "Allows the RIG frame to be modified while it is worn and active"
+	loadout_tags = list(LOADOUT_TAG_RIG_HOTSWAP)
+
+/obj/item/rig_module/hotswap/installed()
+	.=..()
+	holder.hotswap = TRUE
+
+/obj/item/rig_module/hotswap/uninstalled(var/obj/item/weapon/rig/former, var/mob/living/user)
+	former.hotswap = FALSE
+	.=..()

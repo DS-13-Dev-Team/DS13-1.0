@@ -36,10 +36,10 @@
 	display_name = "pouch, munitions"
 	category = /datum/gear/storage/
 	path = /obj/item/weapon/storage/pouch/ammo
-	cost = 3
+	cost = 2
 
-/datum/gear/storage/pouchammo
+/datum/gear/storage/pouchenergy
 	display_name = "pouch, energy"
 	category = /datum/gear/storage/
 	path = /obj/item/weapon/storage/pouch/cell
-	cost = 3
+	cost = 2

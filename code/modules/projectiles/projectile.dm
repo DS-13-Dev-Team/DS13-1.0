@@ -164,7 +164,8 @@
 
 //called when the projectile stops flying because it collided with something
 /obj/item/projectile/proc/on_impact(var/atom/A)
-	impact_effect(effect_transform)		// generate impact effect
+	if (effect_transform)	//May be null when shooting something in the same tile
+		impact_effect(effect_transform)		// generate impact effect
 	if(damage && damage_type == BURN)
 		var/turf/T = get_turf(A)
 		if(T)

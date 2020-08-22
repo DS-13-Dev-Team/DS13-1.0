@@ -343,22 +343,7 @@
 /datum/gear_tweak/RIG/tweak_item(var/obj/item/I, var/metadata, var/spawn_location)
 	var/obj/item/weapon/rig/rig = I
 	rig.seal_delay = 0	//We zero this to remove the equipping time
-	if (ishuman(spawn_location))
-		var/mob/living/carbon/human/H = spawn_location
-		if (H.back)
-			var/obj/item/backthing = H.back
-			H.drop_from_inventory(backthing)	//Remove the backpack
 
-			//If the backpack had anything in it, we transfer those items over
-			if (rig.storage && istype(backthing, /obj/item/weapon/storage))
-				var/obj/item/weapon/storage/S = backthing
-				for (var/obj/item/J in S.contents)
-					S.remove_from_storage(J, H.loc)
-					if (rig.storage.container.can_be_inserted(J, null, 1))
-						rig.storage.container.handle_item_insertion(J, TRUE)
-					else
-						H.equip_to_storage_or_drop(J)
-			qdel(backthing)
 
 
 /datum/gear_tweak/RIG/tweak_postequip(var/mob/living/carbon/human/H, var/obj/item/I, var/equip_slot)

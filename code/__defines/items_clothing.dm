@@ -245,3 +245,34 @@ var/list/default_onmob_icons = list(
 		slot_s_store_str = 'icons/mob/onmob/belt_mirror.dmi',
 		slot_tie_str = 'icons/mob/onmob/ties.dmi'
 		)
+
+
+//A list of the variable names of all slots people can equip things in. This is used to massively reduce code complexity when checking all slots
+#define ALL_EQUIP_SLOTS list("w_uniform", "wear_suit", "back", "belt", "gloves", "shoes", "head", "wear_mask", "l_ear", "r_ear", \
+"glasses", "wear_id", "l_store", "r_store", "s_store")
+#define ALL_OUTFIT_SLOTS list("uniform", "suit", "back", "belt", "gloves", "shoes", "head", "mask", "l_ear", \
+"glasses", "id", "l_pocket", "r_pocket", "suit_store", "r_hand", "l_hand", "r_ear")
+
+
+/*
+	This proc converts outfit slots (used by outfit decls) to inventory slots (used by the procs to equip items to slots)
+	I lament that this is necessary
+*/
+#define OUTFIT_SLOT_TO_INVENTORY_SLOT	list("back" = slot_back,\
+"mask" = slot_wear_mask,\
+"l_hand" = slot_l_hand,\
+"r_hand" = slot_r_hand,\
+"belt" = slot_belt,\
+"id" = slot_wear_id,\
+"l_ear" = slot_l_ear,\
+"glasses" = slot_glasses,\
+"gloves" = slot_gloves,\
+"head" = slot_head,\
+"shoes" = slot_shoes,\
+"suit" = slot_wear_suit,\
+"uniform" = slot_w_uniform, \
+"l_pocket" = slot_l_store,\
+"r_pocket" = slot_r_store,\
+"suit_store" = slot_s_store,\
+"r_ear" = slot_r_ear)
+

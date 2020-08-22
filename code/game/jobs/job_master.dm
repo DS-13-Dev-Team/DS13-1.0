@@ -411,28 +411,12 @@ var/global/datum/controller/occupations/job_master
 			for(var/thing in H.client.prefs.Gear())
 				var/datum/gear/G = GLOB.gear_datums[thing]
 				if(G)
-					var/permitted = 0
-					if(G.allowed_branches)
-						if(H.char_branch && H.char_branch.type in G.allowed_branches)
-							permitted = 1
-					else
-						permitted = 1
-
-					if(permitted)
-						if(G.allowed_roles)
-							if(job.type in G.allowed_roles)
-								permitted = 1
-							else
-								permitted = 0
-						else
-							permitted = 1
-
-					if(G.whitelisted && (!(H.species.name in G.whitelisted)))
-						permitted = 0
-
-					if(!permitted)
+					if (!G.job_permitted(H, job))
 						to_chat(H, "<span class='warning'>Your current species, job, branch or whitelist status does not permit you to spawn with [thing]!</span>")
 						continue
+
+
+
 
 					if(!G.slot || G.slot == slot_tie || (G.slot in loadout_taken_slots) || !G.spawn_on_mob(H, H.client.prefs.Gear()[G.display_name]))
 						spawn_in_storage.Add(G)
@@ -455,11 +439,13 @@ var/global/datum/controller/occupations/job_master
 
 		return spawn_in_storage
 
-	proc/EquipRank(var/mob/living/carbon/human/H, var/rank, var/joined_late = 0)
+	/*
+		Partially gutted by Nanako, this proc no longer handles equipment or items. IT still does setup of accounts and various nonphysical things
+	*/
+	proc/EquipRank(var/mob/living/carbon/human/H, var/rank, var/joined_late = 0, var/no_outfit = FALSE)
 		if(!H)	return null
 
 		var/datum/job/job = GetJob(rank)
-		var/list/spawn_in_storage
 
 		if(job)
 
@@ -481,9 +467,6 @@ var/global/datum/controller/occupations/job_master
 				ntnet_global.create_email(H, desired_name, domain)
 			// END EMAIL GENERATION
 
-			job.equip(H, H.mind ? H.mind.role_alt_title : "", H.char_branch, H.char_rank)
-			job.apply_fingerprints(H)
-			spawn_in_storage = EquipCustomLoadout(H, job)
 		else
 			to_chat(H, "Your job is [rank] and the game just can't handle it! Please report this bug to an administrator.")
 
@@ -529,9 +512,7 @@ var/global/datum/controller/occupations/job_master
 					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
 					captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)
 
-		if(spawn_in_storage)
-			for(var/datum/gear/G in spawn_in_storage)
-				G.spawn_in_storage_or_drop(H, H.client.prefs.Gear()[G.display_name])
+
 
 		if(istype(H)) //give humans wheelchairs, if they need them.
 			var/obj/item/organ/external/l_foot = H.get_organ(BP_L_FOOT)

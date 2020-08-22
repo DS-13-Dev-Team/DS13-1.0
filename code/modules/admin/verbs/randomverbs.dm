@@ -417,10 +417,13 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!input)
 		return
 
+	var/client/targetclient
+
 	var/mob/observer/ghost/G_found
 	for(var/mob/observer/ghost/G in GLOB.player_list)
 		if(G.ckey == input)
 			G_found = G
+			targetclient = G.client
 			break
 
 	if(!G_found)//If a ghost was not found.
@@ -480,6 +483,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		antag_data.place_mob(new_character)
 	else
 		job_master.EquipRank(new_character, new_character.mind.assigned_role, 1)
+		equip_loadout(new_character, new_character.mind.assigned_role, targetclient.prefs)
 
 	//Announces the character on all the systems, based on the record.
 	if(!issilicon(new_character))//If they are not a cyborg/AI.

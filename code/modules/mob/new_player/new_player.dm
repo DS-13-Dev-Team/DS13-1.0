@@ -261,7 +261,6 @@
 		return client.prefs.char_rank
 
 /mob/new_player/proc/AttemptLateSpawn(var/datum/job/job, var/spawning_at)
-
 	if(src != usr)
 		return FALSE
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
@@ -277,7 +276,7 @@
 	if(job.is_restricted(client.prefs, src))
 		return
 
-	var/datum/spawnpoint/spawnpoint = job_master.get_spawnpoint_for(client, job.title)
+	var/datum/spawnpoint/spawnpoint = job_master.get_spawnpoint_for(client, job.title, client.prefs)
 	var/turf/spawn_turf = pick(spawnpoint.turfs)
 	if(job.latejoin_at_spawnpoints)
 		var/obj/S = job_master.get_roundstart_spawnpoint(job.title)
@@ -291,14 +290,20 @@
 		to_chat(src, alert("[job.title] is not available. Please try another."))
 		return FALSE
 
+
 	job_master.AssignRole(src, job.title, 1)
 
 	var/mob/living/character = create_character(spawn_turf)	//creates the human and transfers vars and mind
 	if(!character)
 		return FALSE
 
+
 	character = job_master.EquipRank(character, job.title, 1)					//equips the human
-	equip_custom_items(character)
+	//equip_custom_items(character)
+	equip_loadout(character, job.title, character.client.prefs)
+
+
+
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
 	if(character.mind.assigned_role == "AI")

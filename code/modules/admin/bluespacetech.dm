@@ -98,7 +98,7 @@
 
 
 	//They get an engineering rig
-	var/obj/item/weapon/rig/engineering/rig = new(bst)
+	var/obj/item/weapon/rig/engineering/debug/rig = new(bst)
 	var/cached_delay = rig.seal_delay
 	rig.seal_delay = 0
 	bst.equip_to_slot_or_del(rig, slot_back)
@@ -138,6 +138,23 @@
 
 	log_admin("Bluespace Tech Spawned: X:[bst.x] Y:[bst.y] Z:[bst.z] User:[src]")
 	return 1
+
+
+/obj/item/weapon/rig/engineering/debug
+	name = "debug engineering rig"
+	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
+
+	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage,
+		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
+		/obj/item/rig_module/maneuvering_jets,
+		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/kinesis,
+		/obj/item/rig_module/hotswap,
+		/obj/item/rig_module/power_sink,
+		/obj/item/rig_module/mounted/egun
+		)
 
 /client/proc/bst_post_spawn(mob/living/carbon/human/bst/bst)
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread

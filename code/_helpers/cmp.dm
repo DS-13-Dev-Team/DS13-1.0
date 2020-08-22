@@ -67,3 +67,6 @@
 
 /proc/cmp_necroshop_item(var/datum/necroshop_item/a, var/datum/necroshop_item/b)
 	return a.price - b.price
+
+/proc/cmp_gear_priority(var/datum/gear/a, var/datum/gear/b)
+	return a.priority - b.priority

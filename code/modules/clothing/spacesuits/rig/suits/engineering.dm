@@ -18,7 +18,8 @@
 		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/vision/meson,
-		/obj/item/rig_module/kinesis
+		/obj/item/rig_module/kinesis,
+		/obj/item/rig_module/hotswap
 		)
 
 /obj/item/clothing/suit/space/rig/engineering

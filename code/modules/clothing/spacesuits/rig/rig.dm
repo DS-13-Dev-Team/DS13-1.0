@@ -75,6 +75,8 @@
 	var/electrified = 0
 	var/locked_down = 0
 	var/aimove_power_usage = 200							  // Power usage per tile traveled when suit is moved by AI in IIS. In joules.
+	var/hotswap = FALSE	//If true, modules can be added/removed while the rig is worn
+
 
 	var/seal_delay = SEAL_DELAY
 	var/sealing                                               // Keeps track of seal status independantly of canremove.
