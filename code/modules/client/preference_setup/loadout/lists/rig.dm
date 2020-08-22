@@ -35,18 +35,16 @@
 	display_name = "civilian RIG"
 	path = /obj/item/weapon/rig/civilian
 
-	cost = 1
-
-
-/datum/gear/RIG/frame/engineering
-	display_name = "engineering RIG"
-	path = /obj/item/weapon/rig/engineering
-
-	cost = 6
+	cost = 0
 
 
 
+/datum/gear/RIG/frame/hacker
+	display_name = "digital infiltration RIG"
+	path = /obj/item/weapon/rig/light/hacker
 
+	cost = 4
+	patron_only = TRUE
 
 
 
@@ -110,3 +108,39 @@
 	//Can't take it if you already have it
 	exclusion_tags = list(LOADOUT_TAG_RIG_STORAGE_3, LOADOUT_TAG_RIG_STORAGE_ANY)
 	tags = list(LOADOUT_TAG_RIG_STORAGE_3, LOADOUT_TAG_RIG_STORAGE_ANY)
+
+
+
+
+/datum/gear/RIG/module/hotswap
+	display_name = "hotswap module"
+	path = /obj/item/rig_module/hotswap
+
+	cost = 1
+
+	//Can't take it if you already have it
+	exclusion_tags = list(LOADOUT_TAG_RIG_HOTSWAP)
+	tags = list(LOADOUT_TAG_RIG_HOTSWAP)
+
+
+
+/datum/gear/RIG/module/maneuvering_jets
+	display_name = "RIG maneuvering jets"
+
+	cost = 1
+
+	path = /obj/item/rig_module/maneuvering_jets
+	tags = list(LOADOUT_TAG_RIG_JETPACK)
+	exclusion_tags = list(LOADOUT_TAG_RIG_JETPACK)
+
+
+
+
+/datum/gear/RIG/module/kinesis
+	display_name = "G.R.I.P kinesis module"
+
+	cost = 3
+
+	path = /obj/item/rig_module/kinesis
+	tags = list(LOADOUT_TAG_RIG_KINESIS)
+	exclusion_tags = list(LOADOUT_TAG_RIG_KINESIS)

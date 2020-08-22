@@ -11,7 +11,7 @@
 		return chest.attackby(W,user)
 
 	// Lock or unlock the access panel.
-	if(W.GetIdCard())
+	if(W.GetIdCard() && can_modify())
 		if(subverted)
 			locked = 0
 			to_chat(user, "<span class='danger'>It looks like the locking system has been shorted out.</span>")
@@ -30,7 +30,7 @@
 		to_chat(user, "You [locked ? "lock" : "unlock"] \the [src] access panel.")
 		return
 
-	else if(isCrowbar(W))
+	else if(isCrowbar(W) && can_modify())
 
 		if(!open && locked)
 			to_chat(user, "The access panel is locked shut.")
@@ -40,7 +40,7 @@
 		to_chat(user, "You [open ? "open" : "close"] the access panel.")
 		return
 
-	if(open)
+	if(open && can_modify())
 
 		// Hacking.
 		if(isWirecutter(W) || isMultitool(W))
@@ -97,11 +97,6 @@
 			if(!to_remove)
 				return
 
-			if(istype(src.loc,/mob/living/carbon/human) && to_remove != "cell")
-				var/mob/living/carbon/human/H = src.loc
-				if(H.back == src)
-					to_chat(user, "You can't remove an installed device while the RIG is being worn.")
-					return
 
 			switch(to_remove)
 
@@ -205,7 +200,7 @@
 */
 /obj/item/weapon/rig/proc/attempt_install(var/obj/item/rig_module/RM, var/mob/user, var/force = FALSE, var/instant = FALSE, var/delete_replaced = FALSE)
 
-	if(is_worn() && !hotswap && !force)
+	if(is_worn() && !can_modify() && !force)
 		to_chat(user, "<span class='danger'>You can't install a RIG module while the suit is being worn.</span>")
 		return FALSE
 
@@ -260,3 +255,10 @@
 		RM.forceMove(get_turf(src))
 		.=RM
 	update_icon()
+
+
+/obj/item/weapon/rig/proc/can_modify()
+	if (is_worn() && !hotswap)
+		return FALSE
+
+	return TRUE

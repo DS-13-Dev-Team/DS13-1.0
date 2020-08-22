@@ -4,7 +4,6 @@
 	desc = "A lighter, less armoured rig suit."
 	icon_state = "ninja_rig"
 	suit_type = "light suit"
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/cell)
 	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
 	siemens_coefficient = 0.4
 	emp_protection = 10
@@ -31,47 +30,6 @@
 /obj/item/clothing/head/helmet/space/rig/light
 	name = "hood"
 
-/obj/item/weapon/rig/light/hacker
-	name = "cybersuit control module"
-	suit_type = "cyber"
-	desc = "An advanced powered armour suit with many cyberwarfare enhancements. Comes with built-in insulated gloves for safely tampering with electronics."
-	icon_state = "hacker_rig"
-
-
-	airtight = 0
-	seal_delay = 5 //not being vaccum-proof has an upside I guess
-
-	helm_type = /obj/item/clothing/head/lightrig/hacker
-	chest_type = /obj/item/clothing/suit/lightrig/hacker
-	glove_type = /obj/item/clothing/gloves/lightrig/hacker
-	boot_type = /obj/item/clothing/shoes/lightrig/hacker
-
-	initial_modules = list(
-		/obj/item/rig_module/healthbar,
-		/obj/item/rig_module/storage/light,
-		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/power_sink,
-		/obj/item/rig_module/datajack,
-		/obj/item/rig_module/electrowarfare_suite,
-		/obj/item/rig_module/voice,
-		/obj/item/rig_module/vision,
-		/obj/item/rig_module/cooling_unit
-		)
-
-//The cybersuit is not space-proof. It does however, have good siemens_coefficient values
-/obj/item/clothing/head/lightrig/hacker
-	name = "HUD"
-	item_flags = 0
-
-/obj/item/clothing/suit/lightrig/hacker
-	siemens_coefficient = 0.2
-
-/obj/item/clothing/shoes/lightrig/hacker
-	siemens_coefficient = 0.2
-	item_flags = ITEM_FLAG_NOSLIP //All the other rigs have magboots anyways, hopefully gives the hacker suit something more going for it.
-
-/obj/item/clothing/gloves/lightrig/hacker
-	siemens_coefficient = 0
 
 /obj/item/weapon/rig/light/ninja
 	name = "ominous suit control module"
