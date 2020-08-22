@@ -501,6 +501,13 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/md
 
+/obj/item/weapon/card/id/holo/medical/cd
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Colony Doctor."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/cd
+
 /obj/item/weapon/card/id/holo/medical/smo
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Senior Medical Officer."
@@ -535,6 +542,13 @@ var/const/NO_EMAG_ACT = -50
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/security_officer
+
+/obj/item/weapon/card/id/holo/security/colony
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to an Ishimura Colony Officer."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/colony_officer
 
 /obj/item/weapon/card/id/holo/security/cseco
 	name = "holographic id"

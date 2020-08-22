@@ -71,11 +71,11 @@
 /music_track/ds13/unitology)
 
 	allowed_jobs = list(/datum/job/cap, /datum/job/fl, /datum/job/bo, /datum/job/cseco,
-						/datum/job/sso, /datum/job/security_officer, /datum/job/smo,
-						/datum/job/md, /datum/job/surg, /datum/job/cscio, /datum/job/ra,
+						/datum/job/sso, /datum/job/security_officer, /datum/job/colony_officer, /datum/job/smo,
+						/datum/job/md, /datum/job/surg, /datum/job/cd, /datum/job/cscio, /datum/job/ra,
 						/datum/job/ce, /datum/job/tech_engineer, /datum/job/so,
 						/datum/job/serviceman, /datum/job/dom, /datum/job/foreman,
-						/datum/job/planet_cracker, /datum/job/line_cook, /datum/job/bar,
+						/datum/job/planet_cracker, /datum/job/line_cook, /datum/job/bar
 						)
 /turf/simulated/wall
 	name = "bulkhead"
