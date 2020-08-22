@@ -35,3 +35,4 @@ delete-after: True
 changes: 
   - rscadd: "Added a variety of useful RIG modules to the loadout menu, allowing some customisation of your RIG. These will be automatically placed into a civilian RIG."
   - rscadd: "Added the Hotswap module, which allows its RIG to be modified while worn. Essential for those who like tinkering!"
+  - bugfix: "Fixed RIG power sink module not working. It is now fully functional and renamed to Power Siphon."
