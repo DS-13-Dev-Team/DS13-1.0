@@ -19,9 +19,11 @@
 
 //Gets a global-context pixel location. This requires a client to use
 /proc/get_global_pixel_click_location(var/params, var/client/client)
-	var/vector2/world_loc = new /vector2(0,0)
+
 	if (!client)
-		return world_loc
+		return new /vector2(0,0)
+
+	var/vector2/world_loc
 
 	world_loc = get_screen_pixel_click_location(params)
 	world_loc = client.ViewportToWorldPoint(world_loc)
@@ -53,11 +55,14 @@
 	return new /vector2(((x-1)*world.icon_size) + pixel_x + 16, ((y-1)*world.icon_size) + pixel_y + 16)
 
 /atom/proc/get_global_pixel_offset(var/atom/from)
-	return (get_global_pixel_loc() - from.get_global_pixel_loc())
+	var/vector2/ourloc = get_global_pixel_loc()
+	ourloc.SelfSubtract(from.get_global_pixel_loc())
+	return ourloc
 
 //Returns a float value of pixels between two objects
 /atom/proc/get_global_pixel_distance(var/atom/from)
-	var/vector2/offset = new /vector2(get_global_pixel_loc() - from.get_global_pixel_loc())
+	var/vector2/offset = get_global_pixel_loc()
+	offset.SelfSubtract(from.get_global_pixel_loc())
 	return offset.Magnitude()
 
 //Given a set of global pixel coords as input, this moves the atom and sets its pixel offsets so that it sits exactly on the specified point
@@ -126,8 +131,8 @@
 	pixel_y = offset.y
 
 //Inverse of the above, sets our global pixel loc to a specified value, but keeps us within the same turf we're currently in
-/atom/movable/proc/set_pixels_maintain_turf(var/vector2/global_pixels)
-	var/vector2/offset = global_pixels - get_global_pixel_loc()
+/atom/movable/proc/set_pixels_maintain_turf(var/vector2/offset)
+	offset.SelfSubtract(get_global_pixel_loc())
 	pixel_x += offset.x
 	pixel_y += offset.y
 
@@ -166,11 +171,11 @@
 	var/list/bounds = get_pixel_bounds()
 	for (var/thing in bounds)
 		var/vector2/corner = bounds[thing]
-		corner /= WORLD_ICON_SIZE
+		corner.SelfDivide(WORLD_ICON_SIZE)
 		if (include_partial)
-			corner = corner.CeilingVec()
+			corner.SelfCeiling()
 		else
-			corner = corner.FloorVec()
+			corner.SelfFloor()
 		bounds[thing] = corner
 	return bounds
 
@@ -273,10 +278,10 @@
 
 				var/vector2/current_pixel_loc = get_global_pixel_loc()
 				var/list/intersections = ray_turf_intersect(current_pixel_loc, position_delta, newloc)
-				//This will contain exactly two elements
+				//This will contain exactly two elements, intersections, but we'll call them deltas here to save on an extra vector
 				//We find which one is closest to our current position, that's the face we collide with
-				for (var/vector2/intersection as anything in intersections)
-					var/vector2/delta = intersection - current_pixel_loc
+				for (var/vector2/delta as anything in intersections)
+					delta.SelfSubtract(current_pixel_loc)
 					var/mag = delta.Magnitude()
 					if (mag < closest_magnitude)
 						closest_magnitude = mag

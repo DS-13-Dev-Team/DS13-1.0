@@ -38,7 +38,7 @@
 					/obj/item/weapon/storage/belt/holster/security/tactical,
 					/obj/item/clothing/shoes/tactical,
 					/obj/item/clothing/gloves/tactical)
-	cost = 45
+	cost = 70
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Tactical armor crate"
 	access = access_armory
@@ -109,28 +109,6 @@
 	containername = "\improper Ballistic suit crate"
 	access = access_armory
 
-/decl/hierarchy/supply_pack/security/ablativearmor
-	name = "Armor - Ablative"
-	contains = list(/obj/item/clothing/head/helmet/ablative = 4,
-					/obj/item/clothing/suit/armor/laserproof = 4)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure
-	containername = "\improper Ablative suit crate"
-	access = access_armory
-
-/decl/hierarchy/supply_pack/security/voidsuit
-	name = "Armor - Security voidsuit"
-	contains = list(/obj/item/clothing/suit/space/void/security/alt,
-					/obj/item/clothing/head/helmet/space/void/security/alt,
-					/obj/item/clothing/shoes/magboots)
-	cost = 60
-	containername = "\improper Security voidsuit crate"
-	containertype = /obj/structure/closet/crate/secure/large
-	access = access_security
-
-
-
-
 /decl/hierarchy/supply_pack/security/weapons
 	name = "Weapons - Security basic"
 	contains = list(/obj/item/device/flash = 4,
@@ -141,15 +119,6 @@
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper Weapons crate"
 	access = access_security
-
-/decl/hierarchy/supply_pack/security/shotgun
-	name = "Weapons - Shotgun"
-	contains = list(/obj/item/weapon/gun/projectile/shotgun/pump/combat = 2)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "\improper Shotgun crate"
-	access = access_armory
-	security_level = SUPPLY_SECURITY_ELEVATED
 
 /decl/hierarchy/supply_pack/security/flashbang
 	name = "Weapons - Flashbangs"
@@ -165,24 +134,6 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper Tear gas grenades crate"
-	access = access_security
-
-/decl/hierarchy/supply_pack/security/shotgunammo
-	name = "Ammunition - Lethal shells"
-	contains = list(/obj/item/weapon/storage/box/shotgunammo = 2,
-					/obj/item/weapon/storage/box/shotgunshells = 2)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "\improper Lethal shotgun shells crate"
-	access = access_security
-	security_level = SUPPLY_SECURITY_ELEVATED
-
-/decl/hierarchy/supply_pack/security/shotgunbeanbag
-	name = "Ammunition - Beanbag shells"
-	contains = list(/obj/item/weapon/storage/box/beanbags = 3)
-	cost = 30
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "\improper Beanbag shotgun shells crate"
 	access = access_security
 
 /decl/hierarchy/supply_pack/security/forensics //Not access-restricted so PIs can use it.
@@ -250,6 +201,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper surplus weapons crate"
+	access = access_security
 
 
 /decl/hierarchy/supply_pack/security/random_ammo
@@ -258,3 +210,4 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper surplus ammunition crate"
+	access = access_security

@@ -376,7 +376,7 @@
 		subject.throwing = FALSE
 
 
-		subject = null
+	subject = null
 
 	if (tether)
 		tether.animate_fade_out(3)
@@ -753,12 +753,13 @@
 	if (subject && holder && holder.wearer)
 		//Lets see if the clickpoint has actually changed
 		if (!target || global_clickpoint.x != target.x || global_clickpoint.y != target.y)
+
 			//It has! Set the new target, and if we were at rest, we start moving again
 			target = global_clickpoint
 			var/vector2/userloc = holder.wearer.get_global_pixel_loc()
-			var/vector2/tether_end = target - userloc
-			tether_end = tether_end.ClampMag(0, drop_range*WORLD_ICON_SIZE)
-			tether_end += userloc
+			var/vector2/tether_end = global_clickpoint - userloc	//Cant use selfsubtract here, need to make a new vector
+			tether_end.SelfClampMag(1, drop_range*WORLD_ICON_SIZE)
+			tether_end.SelfAdd(userloc)
 			tether.set_ends(userloc, tether_end)
 			at_rest = FALSE
 

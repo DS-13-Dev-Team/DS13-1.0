@@ -9,18 +9,18 @@
 /obj/item/ai_verbs
 	name = "AI verb holder"
 
-/obj/item/ai_verbs/verb/hardsuit_interface()
-	set category = "Hardsuit"
-	set name = "Open Hardsuit Interface"
+/obj/item/ai_verbs/verb/RIG_interface()
+	set category = "RIG"
+	set name = "Open RIG Interface"
 	set src in usr
 
 	if(!usr.loc || !usr.loc.loc || !istype(usr.loc.loc, /obj/item/rig_module))
-		to_chat(usr, "You are not loaded into a hardsuit.")
+		to_chat(usr, "You are not loaded into a RIG.")
 		return
 
 	var/obj/item/rig_module/module = usr.loc.loc
 	if(!module.holder)
-		to_chat(usr, "Your module is not installed in a hardsuit.")
+		to_chat(usr, "Your module is not installed in a RIG.")
 		return
 
 	module.holder.ui_interact(usr, nano_state = GLOB.contained_state)
@@ -28,7 +28,7 @@
 /obj/item/rig_module/ai_container
 
 	name = "IIS module"
-	desc = "An integrated intelligence system module suitable for most hardsuits."
+	desc = "An integrated intelligence system module suitable for most RIGs."
 	icon_state = "IIS"
 	toggleable = 1
 	usable = 1
@@ -57,13 +57,6 @@
 			integrated_ai.get_rig_stats = 1
 		else
 			integrated_ai.get_rig_stats = 0
-
-/mob/living/Stat()
-	. = ..()
-	if(. && get_rig_stats)
-		var/obj/item/weapon/rig/rig = get_rig()
-		if(rig)
-			SetupStat(rig)
 
 /obj/item/rig_module/ai_container/proc/update_verb_holder()
 	if(!verb_holder)
@@ -352,7 +345,7 @@
 
 /obj/item/rig_module/power_sink
 
-	name = "hardsuit power sink"
+	name = "RIG power sink"
 	desc = "An heavy-duty power sink."
 	icon_state = "powersink"
 	toggleable = 1
@@ -488,7 +481,7 @@
 	deactivate_string = "Disable active EMP shielding"
 
 	interface_name = "active EMP shielding system"
-	interface_desc = "A highly experimental system that augments the hardsuit's existing EM shielding."
+	interface_desc = "A highly experimental system that augments the RIG's existing EM shielding."
 	var/protection_amount = 20
 
 /obj/item/rig_module/emp_shielding/activate()

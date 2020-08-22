@@ -17,7 +17,7 @@
 
 /obj/item/rig_module/device
 	name = "mounted device"
-	desc = "Some kind of hardsuit mount."
+	desc = "Some kind of RIG mount."
 	usable = 0
 	selectable = 1
 	toggleable = 0
@@ -32,7 +32,7 @@
 
 /obj/item/rig_module/device/healthscanner
 	name = "health scanner module"
-	desc = "A hardsuit-mounted health scanner."
+	desc = "A RIG-mounted health scanner."
 	icon_state = "scanner"
 	interface_name = "health scanner"
 	interface_desc = "Shows an informative health readout when used on a subject."
@@ -41,7 +41,7 @@
 	device_type = /obj/item/device/healthanalyzer
 
 /obj/item/rig_module/device/drill
-	name = "hardsuit drill mount"
+	name = "RIG drill mount"
 	desc = "A very heavy diamond-tipped drill."
 	icon_state = "drill"
 	interface_name = "mounted drill"
@@ -53,7 +53,7 @@
 	device_type = /obj/item/weapon/tool/pickaxe/diamonddrill
 
 /obj/item/rig_module/device/anomaly_scanner
-	name = "hardsuit anomaly scanner"
+	name = "RIG anomaly scanner"
 	desc = "You think it's called an Elder Sarsparilla or something."
 	icon_state = "eldersasparilla"
 	interface_name = "Alden-Saraspova counter"
@@ -80,7 +80,7 @@
 
 /obj/item/rig_module/device/rcd
 	name = "RCD mount"
-	desc = "A cell-powered rapid construction device for a hardsuit."
+	desc = "A cell-powered rapid construction device for a RIG."
 	icon_state = "rcd"
 	interface_name = "mounted RCD"
 	interface_desc = "A device for building or removing walls. Cell-powered."
@@ -114,7 +114,7 @@
 
 /obj/item/rig_module/chem_dispenser
 	name = "mounted chemical dispenser"
-	desc = "A complex web of tubing and needles suitable for hardsuit use."
+	desc = "A complex web of tubing and needles suitable for RIG use."
 	icon_state = "injector"
 	usable = 1
 	selectable = 0
@@ -233,7 +233,7 @@
 /obj/item/rig_module/chem_dispenser/combat
 
 	name = "combat chemical injector"
-	desc = "A complex web of tubing and needles suitable for hardsuit use."
+	desc = "A complex web of tubing and needles suitable for RIG use."
 
 	charges = list(
 		list("synaptizine", "synaptizine", /datum/reagent/synaptizine,       120),
@@ -249,7 +249,7 @@
 /obj/item/rig_module/chem_dispenser/injector
 
 	name = "mounted chemical injector"
-	desc = "A complex web of tubing and a large needle suitable for hardsuit use."
+	desc = "A complex web of tubing and a large needle suitable for RIG use."
 	usable = 0
 	selectable = 1
 	disruptive = 1
@@ -259,7 +259,7 @@
 
 /obj/item/rig_module/voice
 
-	name = "hardsuit voice synthesiser"
+	name = "RIG voice synthesiser"
 	desc = "A speaker box and sound processor."
 	icon_state = "megaphone"
 	usable = 1
@@ -317,8 +317,8 @@
 
 /obj/item/rig_module/maneuvering_jets
 
-	name = "hardsuit maneuvering jets"
-	desc = "A compact gas thruster system for a hardsuit."
+	name = "RIG maneuvering jets"
+	desc = "A compact gas thruster system for a RIG."
 	icon_state = "thrusters"
 	usable = 1
 	toggleable = 1
@@ -382,13 +382,13 @@
 	jets.holder = holder
 	jets.ion_trail.set_up(holder)
 
-/obj/item/rig_module/maneuvering_jets/uninstalled()
+/obj/item/rig_module/maneuvering_jets/uninstalled(var/obj/item/weapon/rig/former, var/mob/living/user)
 	..()
 	jets.holder = null
 	jets.ion_trail.set_up(jets)
 
 /obj/item/rig_module/device/paperdispenser
-	name = "hardsuit paper dispenser"
+	name = "RIG paper dispenser"
 	desc = "Crisp sheets."
 	icon_state = "paper"
 	interface_name = "paper dispenser"
@@ -452,7 +452,7 @@
 
 /obj/item/rig_module/device/decompiler
 	name = "mounted matter decompiler"
-	desc = "A drone matter decompiler reconfigured for hardsuit use."
+	desc = "A drone matter decompiler reconfigured for RIG use."
 	icon_state = "ewar"
 	interface_name = "mounted matter decompiler"
 	interface_desc = "Eats trash like no one's business."
@@ -467,7 +467,6 @@
 	interface_name = "mounted cooling unit"
 	interface_desc = "A heat sink with a liquid cooled radiator and an integrated kinetic battery. Uses kinetic motion to store energy to power the RIG for long term use. Activate to generate power and maintain a cool core temperature."
 	module_cooldown = 0 SECONDS //no cd because its critical for a life-support module
-	var/charge_consumption = -1 MEGAWATTS //rig suits in dead space don't really use power, they are vulnerable to EMPs but my guess is they somehow generate power through a user's body as they will last pretty much forever so long as the user is alive, putting this here so all rig suits with cooling module are considered to have limitless power. hacky way to approach it but much less conflict than stripping out all the hardsuit code relating to power.
 	var/max_cooling = 12
 	var/thermostat = T20C
 
@@ -483,5 +482,5 @@
 		return passive_power_cost
 
 	H.bodytemperature -= temp_adj
-	active_power_cost = round((temp_adj/max_cooling)*charge_consumption)
+	active_power_cost = 100
 	return active_power_cost

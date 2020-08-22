@@ -37,6 +37,8 @@
 
 	var/affected_by_emp_until = 0
 
+	can_block_movement = FALSE
+
 /obj/machinery/camera/examine(mob/user)
 	. = ..()
 	if(stat & BROKEN)

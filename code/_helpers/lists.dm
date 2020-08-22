@@ -847,5 +847,30 @@ proc/dd_sortedTextList(list/incoming)
 
 	return typeslist
 
+/*
+	Outputs the entire contents of an associative list to a string including sublists. Recursive
+*/
+/proc/dump_list(var/list/L, var/depth = 0)
+	var/output = ""
+	var/depthstring = ""
+	for (var/i in 0 to depth)
+		depthstring = "[depthstring]-"
+
+	for (var/element in L)
+		if (islist(element))
+			output += "[dump_list(element, depth+1)]"
+		else if (L[element])
+			var/linestring = "[depthstring][element] = "
+			if (islist(L[element]))
+				linestring += "List:\n"
+				output += linestring
+				output += "[dump_list(L[element], depth+1)]"
+			else
+				linestring += "[L[element]]\n"
+				output += linestring
+		else
+			output += "[depthstring][element]\n"
+
+	return output
 
 #define IS_VALID_INDEX(list, index) (list.len && index > 0 && index <= list.len)
