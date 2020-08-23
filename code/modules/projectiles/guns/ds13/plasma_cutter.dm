@@ -1,5 +1,5 @@
 /obj/item/weapon/gun/energy/cutter
-	name = "mining cutter"
+	name = "210-V mining cutter"
 	desc = "A medium-power mining tool capable of splitting dense material with only a few directed blasts. Unsurprisingly, it is also an extremely deadly tool and should be handled with the utmost care. "
 	charge_meter = 0
 	icon = 'icons/obj/tools.dmi'
@@ -26,7 +26,7 @@
 	cell_type = null
 
 /obj/item/weapon/gun/energy/cutter/plasma
-	name = "industrial plasma cutter"
+	name = "211-V Plasma Cutter"
 	desc = "A high power plasma cutter designed to cut through tungsten reinforced bulkheads during engineering works. Also a rather hazardous improvised weapon, capable of severing limbs in a few shots."
 	projectile_type = /obj/item/projectile/beam/cutter/plasma
 
@@ -39,7 +39,7 @@
 
 /obj/item/projectile/beam/cutter
 	name = "plasma arc"
-	damage = 16
+	damage = 15
 	accuracy = 130	//Its a broad arc, easy to land hits on limbs with
 	edge = 1
 	damage_type = BRUTE //plasma is a physical object with mass, rather than purely burning. this also means you can decapitate/sever limbs, not just ash them.

@@ -967,3 +967,10 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 /obj/item/proc/store_item(var/obj/item/input, var/mob/user)
 	return FALSE
+
+
+
+/obj/item/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+	health = clamp(health+repair_power, 0, max_health)
+	updatehealth()
+	update_icon()

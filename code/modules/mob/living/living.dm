@@ -705,3 +705,6 @@ default behaviour is:
 		. -= 1
 	if(CLUMSY in mutations)
 		. -= 3
+
+/mob/living/is_organic()
+	return TRUE

@@ -194,3 +194,8 @@
 	if (breakable)
 		qdel(src)
 	return TRUE
+
+/obj/structure/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+	health = clamp(health+repair_power, 0, max_health)
+	updatehealth()
+	update_icon()

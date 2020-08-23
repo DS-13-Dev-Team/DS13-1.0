@@ -136,6 +136,16 @@
 	new /obj/item/stack/cable_coil(src,30,pick("red","yellow","orange"))
 	update_icon()
 
+/obj/item/weapon/storage/belt/utility/makeshift/New()
+	..()
+	new /obj/item/weapon/tool/screwdriver/improvised(src)
+	new /obj/item/weapon/tool/wrench/improvised(src)
+	new /obj/item/weapon/tool/weldingtool/improvised(src)
+	new /obj/item/weapon/tool/crowbar/improvised(src)
+	new /obj/item/weapon/tool/wirecutters/improvised(src)
+	new /obj/item/weapon/tool/saw/improvised(src)
+	update_icon()
+
 
 /obj/item/weapon/storage/belt/utility/atmostech/New()
 	..()

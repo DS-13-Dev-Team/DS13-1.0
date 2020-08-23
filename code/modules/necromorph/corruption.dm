@@ -46,6 +46,9 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	can_block_movement = FALSE
 
 
+/obj/effect/vine/is_organic()
+	return TRUE
+
 /obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/corruption/newparent, var/start_matured = 0, var/datum/extension/corruption_source/newsource)
 
 	alpha = min_alpha
