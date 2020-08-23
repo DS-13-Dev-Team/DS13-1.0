@@ -14,8 +14,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_mentor_check_new_players,
 //	/client/proc/deadchat				//toggles deadchat on/off,
 	/client/proc/cmd_dev_bst,
-	/client/proc/cmd_dev_bse,
-	/client/proc/admin_communicate
+	/client/proc/cmd_dev_bse
 
 	)
 var/list/admin_verbs_admin = list(
@@ -106,7 +105,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/add_trader,
 	/client/proc/remove_trader,
 	/datum/admins/proc/sendFax,
-	/client/proc/patrons	//Edit patron subscriptions, host only
+	/client/proc/patrons,	//Edit patron subscriptions, host only
+	/client/proc/admin_communicate
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
