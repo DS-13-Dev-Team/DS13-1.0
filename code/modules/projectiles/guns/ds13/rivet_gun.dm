@@ -52,6 +52,8 @@
 //Adds a rivet to our internal tracking list so we can detonate it later
 /obj/item/weapon/gun/projectile/rivet/proc/register_rivet(var/obj/item/embedded_rivet/ER)
 	//If we have too many, delete them
+
+	world << "gun register rivet [ER]"
 	if (rivets.len >= max_rivets)
 
 		var/obj/item/embedded_rivet/redundant = rivets[1]
@@ -63,6 +65,7 @@
 
 //Remove from our list, called when a rivet is deleted. We don't actually delete it here though
 /obj/item/weapon/gun/projectile/rivet/proc/unregister_rivet(var/obj/item/embedded_rivet/ER)
+	world << "Unregistering rivet"
 	rivets -= ER
 	if (ER.rivetgun == src)
 		ER.rivetgun = null
@@ -81,11 +84,20 @@
 	Firemode
 	Detonates all rivets
 */
-/datum/firemode/rivet_frag/on_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0, var/fired = TRUE)
+/datum/firemode/rivet_frag
+	override_fire = TRUE
+
+/datum/firemode/rivet_frag/fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
 	var/obj/item/weapon/gun/projectile/rivet/R = gun
 	if (R.rivets.len)
+		var/detonated = 0
 		for (var/obj/item/embedded_rivet/ER in R.rivets)
 			ER.detonate()
+			detonated++
+		to_chat(user, SPAN_NOTICE("Detonated [detonated] rivets!"))
+	else
+		to_chat(user, "There are no active rivets.")
+
 /*
 	Ammo Magazine
 */
@@ -123,7 +135,7 @@
 	Projectile
 */
 /obj/item/projectile/bullet/rivet
-	damage = 5	//Slightly weaker than a pulse rifle shot, and lacks full auto
+	damage = 5	//Weaker than a pulse rifle shot, and lacks full auto
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
 	//fire_sound='sound/weapons/guns/fire/divet_fire.ogg'
@@ -131,9 +143,14 @@
 	penetration_modifier = 0
 	penetrating = FALSE
 	var/repair_power = 15
+	var/deployed = FALSE
+
+	var/obj/item/weapon/gun/projectile/rivet/launcher
 
 
-
+/obj/item/projectile/bullet/rivet/launch_from_gun(atom/target, mob/user, obj/item/weapon/gun/launcher, var/target_zone, var/x_offset=0, var/y_offset=0)
+	src.launcher = launcher
+	.=..()
 /*
 	Special Effect:
 	When the rivet gun is fired into non organic objects or turfs, it repairs instead of damaging them
@@ -151,13 +168,14 @@
 		damage = cached_damage
 		return	//We're done here
 
-	else
+	else if (!deployed)
+		deployed = TRUE
 		//Alright, we hit it
 		//Lets fix up that thing
 		A.repair(repair_power, src, firer)
 
 		//And a sound
-		playsound(A, pick(list('sound/weapons/guns/rivet1.ogg','sound/weapons/guns/rivet2.ogg','sound/weapons/guns/rivet3.ogg')), VOLUME_MID, TRUE)
+		playsound(A, pick(list('sound/weapons/guns/rivet1.ogg','sound/weapons/guns/rivet2.ogg','sound/weapons/guns/rivet3.ogg')), VOLUME_HIGH, TRUE)
 
 		//And we also embed a rivet
 		var/obj/item/embedded_rivet/ER = new /obj/item/embedded_rivet(get_turf(A), src)
@@ -174,6 +192,9 @@
 	Object created on hit which can be detonated
 */
 /obj/item/embedded_rivet
+	icon = 'icons/effects/projectiles.dmi'
+	icon_state = "rivet_embed"
+	default_scale = 0.75
 	name = "rivet"
 	mouse_opacity = 0
 	var/obj/item/weapon/gun/projectile/rivet/rivetgun
@@ -181,10 +202,11 @@
 	var/detonated = FALSE
 
 /obj/item/embedded_rivet/New(var/atom/loc, var/obj/item/projectile/bullet/rivet/rivet)
-	if (istype(rivet.shot_from, /obj/item/weapon/gun/projectile/rivet))
-		rivetgun = rivet.shot_from
+	if (istype(rivet.launcher, /obj/item/weapon/gun/projectile/rivet))
+		rivetgun = rivet.launcher
 		rivetgun.register_rivet(src)
 	QDEL_IN(src, lifetime)
+	animate(src, transform = src.transform*default_scale, 3)
 	.=..()
 
 /obj/item/embedded_rivet/proc/detonate()
@@ -205,7 +227,7 @@
 	Fragmentation
 */
 /obj/item/projectile/bullet/pellet/fragment/rivet
-	damage = 2
+	damage = 1.5
 	range_step = 1 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
 
 	base_spread = 0 //causes it to be treated as a shrapnel explosion instead of cone
@@ -215,7 +237,7 @@
 	fire_sound = null
 	no_attack_log = 1
 	muzzle_type = null
-
+	embed_mult = 0	//Embedding is OP, lets not do that
 
 
 

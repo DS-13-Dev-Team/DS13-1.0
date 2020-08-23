@@ -235,6 +235,7 @@
 //Return true if firing is okay right now
 /obj/item/weapon/gun/proc/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
 	if(world.time < next_fire_time)
+		world << "Cant fire because too soon"
 		if (!silent && !suppress_delay_warning && world.time % 3) //to prevent spam
 			to_chat(user, SPAN_WARNING("[src] is not ready to fire again!"))
 		return FALSE
@@ -278,7 +279,7 @@
 			return FALSE
 
 //Safety checks are done by the time fire is called
-/obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+/obj/item/weapon/gun/proc/Fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
 
 	if (current_firemode && current_firemode.override_fire)
 		current_firemode.fire(target, user, clickparams, pointblank, reflex)
@@ -294,9 +295,11 @@
 
 	last_safety_check = world.time
 	var/shoot_time = (burst - 1)* burst_delay
+	world << "Shoot time [shoot_time] windup [windup_time]"
 	user.set_click_cooldown(shoot_time+windup_time) //no clicking on things while shooting
 	user.set_move_cooldown(shoot_time+windup_time) //no moving while shooting either
 	next_fire_time = world.time + shoot_time + windup_time
+	world << "Current time [world.time] next shot [next_fire_time]"
 
 	var/held_twohanded = is_held_twohanded(user)
 

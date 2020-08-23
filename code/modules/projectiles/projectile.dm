@@ -105,6 +105,7 @@
 
 	else
 		animate_movement = NO_STEPS
+	set_pixel_offset
 	. = ..()
 
 /obj/item/projectile/proc/set_pixel_offset()
@@ -247,6 +248,7 @@
 
 	firer = user
 	shot_from = launcher.name
+
 	silenced = launcher.silenced
 
 	return launch(target, target_zone, x_offset, y_offset)
