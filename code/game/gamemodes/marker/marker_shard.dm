@@ -79,14 +79,12 @@
 	update_icon()
 
 /obj/item/marker_shard/proc/set_deploy_timer()
-	world << "Setting deploy timer"
 	deltimer(deploy_timer)
 	if (active)
 		deploy_timer = addtimer(CALLBACK(src, /obj/item/marker_shard/proc/attempt_deploy),  deploy_time, TIMER_STOPPABLE)
 
 //Whenever we move, reset the timer
 /obj/item/marker_shard/moved(mob/user as mob, old_loc as turf)
-	world << "moved from [old_loc] to [loc]"
 	last_moved = world.time
 	undeploy()
 	last_known_location = loc
@@ -111,23 +109,14 @@
 
 //Here we check if we've stayed still since our location was last updated
 /obj/item/marker_shard/proc/attempt_deploy()
-	world << "Attempting deploy"
 	deltimer(deploy_timer)
 	if (!active)
-		world << "Cant deploy because not active"
 		return
 
 	if (loc == last_known_location && (world.time - last_moved) >= deploy_time)
 		//Yes!
 		deploy()
 	else
-		world << "Deploy failed."
-		if (loc == last_known_location)
-			world << "Loc is fine"
-		else
-			world << "Oldloc [jumplink(last_known_location)]/[last_known_location] Is not the same as current [jumplink(loc)]/[loc]"
-		if ((world.time - last_moved) >= deploy_time)
-			world << "We've been still long enough"
 		last_known_location = loc
 		set_deploy_timer()	//Nop, update the location and wait another 3 mins
 
