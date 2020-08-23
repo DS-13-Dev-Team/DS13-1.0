@@ -105,7 +105,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/add_trader,
 	/client/proc/remove_trader,
 	/datum/admins/proc/sendFax,
-	/client/proc/patrons	//Edit patron subscriptions, host only
+	/client/proc/patrons,	//Edit patron subscriptions, host only
 	/client/proc/admin_communicate
 )
 var/list/admin_verbs_ban = list(
