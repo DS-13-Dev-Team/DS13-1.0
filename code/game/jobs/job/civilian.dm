@@ -111,8 +111,8 @@ datum/job/serviceman/get_description_blurb()
 	access = list(access_service)
 	outfit_type = /decl/hierarchy/outfit/job/service/botanist
 
-	min_skill = list(   SKILL_COOKING     = SKILL_ADEPT)
-	max_skill = list(   SKILL_COOKING     = SKILL_MAX)
+	min_skill = list(   SKILL_BOTANY = SKILL_EXPERT)
+	max_skill = list(   SKILL_BOTANY     = SKILL_MAX)
 	skill_points = 20
 
 datum/job/bar/get_description_blurb()
