@@ -24,6 +24,8 @@
 #define SKILL_MEDICAL       /decl/hierarchy/skill/medical/medical
 #define SKILL_ANATOMY       /decl/hierarchy/skill/medical/anatomy
 #define SKILL_DEVICES		/decl/hierarchy/skill/research/devices
+#define SKILL_BOTANY		/decl/hierarchy/skill/service/botany
+#define SKILL_FORENSICS		/decl/hierarchy/skill/security/forensics
 
 //Value modifiers for extensions
 #define STATMOD_MOVESPEED_ADDITIVE	"additive movespeed modifiers"
