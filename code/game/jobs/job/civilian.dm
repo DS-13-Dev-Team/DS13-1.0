@@ -4,7 +4,7 @@
 	department_flag = SRV
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Captain"
+	supervisors = "the First Lieutenant"
 	selection_color = "#5e4215"
 	minimal_player_age = 18
 	ideal_character_age = 30
@@ -18,7 +18,7 @@
 	skill_points = 20
 
 datum/job/bar/get_description_blurb()
-	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You don't have a department head and are subordinate to the Captain and First Lieutenant."
+	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You are subordinate to the First Lieutenant."
 
 /datum/job/line_cook
 	title = "Line Cook"
@@ -26,7 +26,7 @@ datum/job/bar/get_description_blurb()
 	department_flag = SRV
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the Captain"
+	supervisors = "the First Lieutenant"
 	selection_color = "#5e4215"
 	minimal_player_age = 18
 	ideal_character_age = 21
@@ -42,7 +42,7 @@ datum/job/bar/get_description_blurb()
 	skill_points = 20
 
 datum/job/line_cook/get_description_blurb()
-	return "You are a Line Cook. Your job is to cook meals and feed any crewmember that show up to the Cafeteria. You don't have a department head and are subordinate to the Captain and First Lieutenant."
+	return "You are a Line Cook. Your job is to cook meals and feed any crewmember that show up to the Cafeteria. You are subordinate to the First Lieutenant."
 
 /datum/job/so
 	title = "Supply Officer"
@@ -51,7 +51,7 @@ datum/job/line_cook/get_description_blurb()
 	department_flag = SUP
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Captain"
+	supervisors = "the First Lieutenant"
 	selection_color = "#3b3b3b"
 	minimal_player_age = 18
 	ideal_character_age = 40
@@ -69,7 +69,7 @@ datum/job/line_cook/get_description_blurb()
 	skill_points = 20
 
 datum/job/so/get_description_blurb()
-	return "You are the Supply Officer. Your job is to direct Cargo Serviceman and balance the requests of the rest of the crew to the ship's requisition points. You are subordinate the Captain and First Lieutenant."
+	return "You are the Supply Officer. Your job is to direct Cargo Serviceman and balance the requests of the rest of the crew to the ship's requisition points. You are subordinate to the First Lieutenant."
 
 /datum/job/serviceman
 	title = "Cargo Serviceman"
@@ -94,4 +94,26 @@ datum/job/so/get_description_blurb()
 	skill_points = 20
 
 datum/job/serviceman/get_description_blurb()
-	return "You are a Cargo Serviceman. Your job is to haul around cargo according to the Supply Officer's whim and deliver cargo shipments to departments, if needed. You are subordinate to the Supply Officer. "
+	return "You are a Cargo Serviceman. Your job is to haul around cargo according to the Supply Officer's whim and deliver cargo shipments to departments, if needed. You are subordinate to the Supply Officer."
+
+/datum/job/botanist
+	title = "Botanist"
+	abbreviation = "BOT"
+	department_flag = SRV
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "the First Lieutenant"
+	selection_color = "#5e4215"
+	minimal_player_age = 18
+	ideal_character_age = 30
+	starting_credits = 943
+
+	access = list(access_service)
+	outfit_type = /decl/hierarchy/outfit/job/service/botanist
+
+	min_skill = list(   SKILL_BOTANY = SKILL_EXPERT)
+	max_skill = list(   SKILL_BOTANY     = SKILL_MAX)
+	skill_points = 20
+
+datum/job/bar/get_description_blurb()
+	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You don't have a department head and are subordinate to the Captain and First Lieutenant."
