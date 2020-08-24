@@ -91,18 +91,6 @@ GLOBAL_LIST_EMPTY(skills)
 						"Master"		= "In addition to your excellent strength and endurance, you have a lot of experience with the specific physical demands of your job. You may have competitive experience with some form of athletics.")
 	difficulty = SKILL_EASY
 
-/decl/hierarchy/skill/general/pilot
-	ID = "pilot"
-	name = "Piloting"
-	desc = "Describes your experience and understanding of piloting spacecraft, from small and short-range pods to corvette sized vessels."
-	levels = list( "Unskilled"			= "You know what a spacecraft is, and you might have an abstract understanding of the differences between various ships. If your department is involved in the use of spacecraft, you know roughly what their capabilities are. You might be able to fly a spacecraft in a videogame. If you were to take the Helm of a smaller vessel, you might be able to move it with proper guidance.",
-						"Basic"				= "You can pilot a small, short-range craft safely, but larger ships are out of your area of expertise. You are by no means an expert, and probably don't have much training. Skills of this level are typical for deck crew.",
-						"Trained"			= "You are a trained pilot, and can safely operate anything from a small craft to a corvette. You can spend extended periods of time piloting a spacecraft, and you're versed in the abilities of different ships, and what makes them function. You can do basic maintenance on smaller vessels, and perform most basic maneuvers. You can use armed spacecraft. You can make basic calculations relating to piloting. Skills of this level are typical for newer pilots. You have probably received formal piloting training.",
-						"Experienced"		= "You are an experienced pilot, and can safely take the helm of many types of craft. You could probably live in a spacecraft, and you're very well versed in essentially everything related to space-faring vessels. Not only can you fly a ship, but you can perform difficult maneuvers, and make most calculations related to piloting a spacecraft. You can maintain a ship. Skills of this level are typical for very experienced pilots. You have received formal piloting training.",
-						"Master"		= "Not only are you an exceptional pilot, but you have mastered peripheral functions such as stellar navigation and shock point drive course navigation. You have experience performing complex maneuvers, managing squadrons of small craft, and operating in hostile environments.")
-	difficulty = SKILL_AVERAGE
-
-
 /decl/hierarchy/skill/general/computer
 	ID = "computer"
 	name = "Information Technology"
