@@ -22,7 +22,6 @@
 		if(!line_list.len)
 			continue
 
-		log_world("Line list is [english_list(line_list)]")
 
 		//We now have a list containing two things:
 			//1. Ckey of a patron player
@@ -100,19 +99,15 @@
 			var/days = days_between_dates(current_date(), GLOB.patron_keys[ckey])
 
 			patron["delta"] = "In [days] days."
-		world << dump_list(patron)
 		patrons += list(patron)
 
 
 	content_data["patrons"] = patrons
 
 /datum/extension/interactive/patrons/Topic(href, href_list)
-	world << "Patron menu topic [href]"
 	if(..())
-		world << "Parent returned true, cancelling"
 		return
 	if (href_list["extend"])
-		world << "Got extend"
 		var/ckey = href_list["extend"]
 		var/extradays = input(usr, "How many extra days would you like to add to [ckey]'s Patron status?", "A Promise of Days", 0) as num | null
 		if (extradays && (ckey in GLOB.patron_keys))
