@@ -38,5 +38,4 @@ changes:
   - rscadd: "New Forensics skill."
   - bugfix: "Fixed Forensics not functioning."
   - tweak: "Made the Microscope, as used in the forensics lab, depend on the Forensics skill, instead of the Information Technology skill."
-  - tweak: "Security are now forced to take the Forensics skill."
   - maptweak: "Minor changes to allow players to use machinery in the forensics lab."
