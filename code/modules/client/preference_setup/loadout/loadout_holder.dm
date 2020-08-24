@@ -377,7 +377,7 @@
 		return	//This cannot fail so no need for checks
 
 	//Normal spawning into a mob's equipment slots
-	else if (!G.spawn_on_mob(H, prefs.Gear()[G.display_name]))
+	else if (!G.spawn_on_mob(H, G.get_metadata(prefs)))
 		//If that fails, it goes into storage
 		spawn_in_storage.Add(G)
 		return

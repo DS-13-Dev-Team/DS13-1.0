@@ -60,8 +60,9 @@
 
 /datum/gear/proc/get_description(var/metadata)
 	. = description
-	for(var/datum/gear_tweak/gt in gear_tweaks)
-		. = gt.tweak_description(., metadata["[gt]"])
+	if (metadata)
+		for(var/datum/gear_tweak/gt in gear_tweaks)
+			. = gt.tweak_description(., metadata["[gt]"])
 
 /datum/gear_data
 	var/path
@@ -151,3 +152,12 @@
 		permitted = 0
 
 	return permitted
+
+
+/datum/gear/proc/get_metadata(var/datum/preferences/P)
+	var/list/gear = P.Gear()
+
+	if (LAZYLEN(gear))
+		return gear[display_name]
+	else
+		return list()
