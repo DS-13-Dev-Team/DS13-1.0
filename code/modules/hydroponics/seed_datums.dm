@@ -84,7 +84,6 @@
 
 /datum/seed/berry/glow/New()
 	..()
-	set_trait(TRAIT_SPREAD,1)
 	set_trait(TRAIT_BIOLUM,1)
 	set_trait(TRAIT_BIOLUM_COLOUR,"#006622")
 	set_trait(TRAIT_MATURATION,5)
@@ -367,7 +366,6 @@
 
 /datum/seed/mushroom/mold/New()
 	..()
-	set_trait(TRAIT_SPREAD,1)
 	set_trait(TRAIT_MATURATION,10)
 	set_trait(TRAIT_YIELD,-1)
 	set_trait(TRAIT_PRODUCT_ICON,"mushroom5")
@@ -503,7 +501,6 @@
 
 /datum/seed/mushroom/glowshroom/New()
 	..()
-	set_trait(TRAIT_SPREAD,1)
 	set_trait(TRAIT_MATURATION,15)
 	set_trait(TRAIT_YIELD,3)
 	set_trait(TRAIT_POTENCY,30)
@@ -1087,7 +1084,6 @@
 	set_trait(TRAIT_PRODUCTION,6)
 	set_trait(TRAIT_YIELD,4)
 	set_trait(TRAIT_POTENCY,10)
-	set_trait(TRAIT_SPREAD,2)
 	set_trait(TRAIT_PRODUCT_ICON,"treefruit")
 	set_trait(TRAIT_PRODUCT_COLOUR,"#96d278")
 	set_trait(TRAIT_PLANT_COLOUR,"#6f7a63")
@@ -1220,7 +1216,7 @@
 	set_trait(TRAIT_PLANT_COLOUR,"#3d1934")
 	set_trait(TRAIT_PRODUCTION,1)
 	set_trait(TRAIT_YIELD,-1)
-	set_trait(TRAIT_SPREAD,2)
+	set_trait(TRAIT_SPREAD,2) // I'm keeping this in. Not sure if we'll ever use Xenophage. But this is bad to remove. - Lion
 	set_trait(TRAIT_POTENCY,50)
 
 /datum/seed/algae
