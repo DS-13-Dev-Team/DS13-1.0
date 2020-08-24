@@ -276,7 +276,7 @@ var/list/flooring_types
 	name = "grass"
 	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
 	icon = 'icons/turf/flooring/grass.dmi'
-	icon_base = "grass"
+	icon_base = "grass0"
 	has_base_range = 3
 	damage_temperature = T0C+80
 	flags = TURF_REMOVE_SHOVEL
