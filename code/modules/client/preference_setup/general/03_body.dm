@@ -662,7 +662,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 				if(job.title == job_high)
 					previewJob = job
 					break
-	else
+
+	//Can't dress it without a job to draw from
+	if (!previewJob)
 		return
 
 	mannequin.job = previewJob.title

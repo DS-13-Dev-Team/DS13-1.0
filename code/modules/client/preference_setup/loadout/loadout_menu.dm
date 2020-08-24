@@ -193,7 +193,8 @@
 
 /datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(var/datum/gear/G, var/readonly)
 	var/list/gear = pref.gear_list[pref.gear_slot]
-	. = gear[G.display_name]
+	if(gear)
+		. = gear[G.display_name]
 	if(!.)
 		. = list()
 		if(!readonly)
@@ -261,6 +262,8 @@
 //Adds or removes a specified gear item from the user
 /datum/category_item/player_setup_item/loadout/proc/toggle_gear(var/gearname)
 	var/datum/gear/TG = GLOB.gear_datums[gearname]
+
+	LOADOUT_CHECK
 
 	//If the gear is enabled, disable it
 	if((TG.display_name in pref.gear_list[pref.gear_slot]) && pref.loadout.remove_gear(TG))
