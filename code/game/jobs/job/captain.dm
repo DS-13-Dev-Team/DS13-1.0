@@ -77,11 +77,9 @@ datum/job/fl/get_description_blurb()
 	outfit_type = /decl/hierarchy/outfit/job/command/bo
 
 	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
-						SKILL_PILOT       = SKILL_ADEPT,
 	                    SKILL_COMPUTER    = SKILL_EXPERT)
 
 	max_skill = list(   SKILL_HAULING     = SKILL_MAX,
-						SKILL_PILOT       = SKILL_MAX,
 	                    SKILL_COMPUTER    = SKILL_MAX)
 	skill_points = 20
 
