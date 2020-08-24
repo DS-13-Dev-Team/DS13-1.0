@@ -41,6 +41,15 @@
 	var/failed_task = 0
 	var/disk_needs_genes = 0
 
+
+
+/obj/machinery/botany/can_harvest_biomass()
+	return MASS_READY
+
+/obj/machinery/botany/harvest_biomass()
+	return BIOMASS_HARVEST_MEDIUM
+
+
 /obj/machinery/botany/Process()
 
 	..()
@@ -239,7 +248,7 @@
 		degradation += rand(20,60) + user.skill_fail_chance(SKILL_ANATOMY, 100, SKILL_ADEPT)
 		var/expertise = max(0, user.get_skill_value(SKILL_ANATOMY) - SKILL_ADEPT)
 		degradation = max(0, degradation - 10*expertise)
-	
+
 		if(degradation >= 100)
 			failed_task = 1
 			genetics = null
