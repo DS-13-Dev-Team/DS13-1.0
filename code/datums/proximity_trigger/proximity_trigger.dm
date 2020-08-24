@@ -32,6 +32,8 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 
 	var/decl/turf_selection/turf_selection
 
+	var/list/extra_args
+
 /datum/proximity_trigger/line
 	turf_selection = /decl/turf_selection/line
 
@@ -41,7 +43,10 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 /datum/proximity_trigger/view
 	turf_selection = /decl/turf_selection/view
 
-/datum/proximity_trigger/New(var/holder, var/on_turf_entered, var/on_turfs_changed, var/range = 2, var/proximity_flags = 0, var/proc_owner)
+/datum/proximity_trigger/cone
+	turf_selection = /decl/turf_selection/cone
+
+/datum/proximity_trigger/New(var/holder, var/on_turf_entered, var/on_turfs_changed, var/range = 2, var/proximity_flags = 0, var/proc_owner, var/list/extra_args)
 	..()
 	if(!ispath(turf_selection, /decl/turf_selection))
 		CRASH("Invalid turf selection type set: [turf_selection]")
@@ -56,6 +61,9 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 
 	turfs_in_range = list()
 	seen_turfs_ = list()
+
+	//Extra stuff passed to turf selection
+	src.extra_args = extra_args
 
 /datum/proximity_trigger/Destroy()
 	unregister_turfs()
@@ -151,7 +159,10 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 			. += T
 
 /datum/proximity_trigger/proc/acquire_relevant_turfs()
-	. = turf_selection.get_turfs(holder, range_)
+	var/list/selection_args = list(holder, range_)
+	if (extra_args)
+		selection_args += extra_args
+	. = turf_selection.get_turfs(arglist(selection_args))
 	if(proximity_flags & PROXIMITY_EXCLUDE_HOLDER_TURF)
 		. -= get_turf(holder)
 

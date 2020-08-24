@@ -21,8 +21,9 @@
 	biomass_reclamation = 1
 	reclamation_time = 5 MINUTES
 
-	var/max_range = 5
+	var/max_range = 6
 	var/recharge_delay = 5 SECONDS
+	var/cone_angle = 90
 
 	var/atom/attached = null	//What is this cyst attached to, if anything
 	placement_type = /datum/click_handler/placement/necromorph/cyst
@@ -31,7 +32,7 @@
 	.=..()
 	if (!dummy)
 
-		var/datum/proximity_trigger/line/PT = new (holder = src, on_turf_entered = /obj/structure/corruption_node/cyst/proc/nearby_movement, range = 5)
+		var/datum/proximity_trigger/cone/PT = new (holder = src, on_turf_entered = /obj/structure/corruption_node/cyst/proc/nearby_movement, range = 5, extra_args = list(cone_angle, null))
 		PT.register_turfs()
 		set_extension(src, /datum/extension/proximity_manager, PT)
 
@@ -93,7 +94,7 @@
 
 
 	//Once we get here, we've decided to fire!
-	fire()
+	fire(AM)
 
 /obj/structure/corruption_node/cyst/proc/fire(var/atom/target_atom)
 	if (!payload)
@@ -101,7 +102,6 @@
 
 	if (QDELETED(target_atom))
 		return
-
 	var/sound = pick(list('sound/effects/creatures/necromorph/cyst/cyst_fire_1.ogg',
 	'sound/effects/creatures/necromorph/cyst/cyst_fire_2.ogg',
 	'sound/effects/creatures/necromorph/cyst/cyst_fire_3.ogg',
@@ -111,7 +111,6 @@
 	//Move the projectile out of us
 	var/obj/item/projectile/bullet/biobomb/cyst/C = payload.BB
 	payload.BB = null	//Null this so that the payload doesnt take the bullet with it
-
 
 
 	C.forceMove(get_turf(src))
