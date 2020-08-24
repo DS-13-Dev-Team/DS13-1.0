@@ -17,6 +17,7 @@
 	outfit_type = /decl/hierarchy/outfit/job/security/cseco
 
 	min_skill = list(   SKILL_WEAPONS     = SKILL_EXPERT,
+						SKILL_FORENSICS   = SKILL_EXPERT,
 						SKILL_COMBAT	  = SKILL_ADEPT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
@@ -44,6 +45,7 @@ datum/job/cseco/get_description_blurb()
 
 	min_skill = list(   SKILL_WEAPONS     = SKILL_ADEPT,
 						SKILL_COMBAT	  = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_EXPERT,
 	                    SKILL_DEVICES	  = SKILL_ADEPT)
 
 	max_skill = list(   SKILL_WEAPONS     = SKILL_MAX,
@@ -70,6 +72,7 @@ datum/job/sso/get_description_blurb()
 
 	min_skill = list(   SKILL_WEAPONS     = SKILL_ADEPT,
 						SKILL_COMBAT	  = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(   SKILL_WEAPONS     = SKILL_MAX,
