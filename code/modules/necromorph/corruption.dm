@@ -179,6 +179,10 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 	return FALSE
 
+/obj/effect/vine/corruption/can_spread()
+	if(neighbors && neighbors.len)
+		return TRUE
+	return FALSE
 
 /obj/effect/vine/corruption/wake_up(var/wake_adjacent = TRUE)
 	if (QDELETED(source))
@@ -187,7 +191,14 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	if (source)
 		calculate_growth()
 
-
+/obj/effect/vine/corruption/should_sleep()
+	if(neighbors.len) //got places to spread to
+		return FALSE
+	if(health < max_health) //got some growth to do
+		return FALSE
+	if(!is_supported())
+		return FALSE
+	return TRUE
 
 /obj/effect/vine/corruption/spread_to(turf/target_turf)
 	var/obj/effect/vine/corruption/child = new type(target_turf,seed,parent, FALSE, (next_source ? next_source : source)) // This should do a little bit of animation.
