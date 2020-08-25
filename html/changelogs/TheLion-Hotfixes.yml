@@ -34,5 +34,7 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - bugfix: "Fixed a bug where grass tiles would appear as nothing."
+  - bugfix: "Fixed Hydroponics erroneously showing up as Decommissioned still."
   - rscdel: "Removed bags of holding as a valid research creation option."
   - rscdel: "Removed a few xenoarcheology clothing spawns. These were outdated and didn't fit within the universe."
+  - rscadd: "Added security camera's to Hydroponics."
