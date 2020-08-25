@@ -316,16 +316,6 @@
 		item_type = "rough red crystal"
 		new_item.icon_state = "changerock"
 
-/obj/item/weapon/archaeological_find/blade
-	item_type = "blade"
-	find_type = ARCHAEO_CULTBLADE
-	apply_prefix = 0
-	apply_material_decorations = 0
-	apply_image_decorations = 0
-
-/obj/item/weapon/archaeological_find/blade/spawn_item()
-	return new /obj/item/weapon/melee/cultblade(loc)
-
 /obj/item/weapon/archaeological_find/beacon
 	item_type = "device"
 	find_type = ARCHAEO_TELEBEACON
@@ -347,14 +337,6 @@
 /obj/item/weapon/archaeological_find/robes
 	item_type = "garments"
 	find_type = ARCHAEO_CULTROBES
-
-/obj/item/weapon/archaeological_find/robes/spawn_item()
-	var/list/possible_spawns = list(/obj/item/clothing/head/culthood,
-	/obj/item/clothing/head/culthood/magus,
-	/obj/item/clothing/head/culthood/alt,
-	/obj/item/clothing/head/helmet/space/cult)
-	var/new_type = pick(possible_spawns)
-	return new new_type(loc)
 
 /obj/item/weapon/archaeological_find/katana
 	item_type = "blade"
