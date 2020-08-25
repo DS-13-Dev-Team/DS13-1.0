@@ -35,6 +35,7 @@ delete-after: True
 changes: 
   - bugfix: "Fixed a bug where grass tiles would appear as nothing."
   - bugfix: "Fixed Hydroponics erroneously showing up as Decommissioned still."
+  - bugfix: "Fixed runes not being able to be cleaned by normal means."
   - rscdel: "Removed bags of holding as a valid research creation option."
   - rscdel: "Removed a few xenoarcheology clothing spawns. These were outdated and didn't fit within the universe."
   - rscadd: "Added security camera's to Hydroponics."
