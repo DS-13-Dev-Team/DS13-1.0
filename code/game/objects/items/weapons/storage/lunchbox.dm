@@ -83,9 +83,9 @@
 
 /obj/item/weapon/storage/lunchbox/unitology
 	name = "\improper Unitology lunchbox"
-	icon_state = "lunchbox_syndie"
+	icon_state = "lunchbox_unit"
 	item_state = "toolbox_syndi"
-	desc = "A little lunchbox. This one is a sleek black and red, made of a durable steel!"
+	desc = "A little lunchbox. This one is a sleek black and red, with a Marker symbol in the middle of it. made of a durable steel!"
 
 /obj/item/weapon/storage/lunchbox/unitology/filled
 	filled = TRUE
