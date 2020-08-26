@@ -14,7 +14,7 @@
 
 /obj/item/weapon/gun/projectile/rivet
 	name = "711-MarkCL Rivet Gun"
-	desc = "The 711-MarkCL Rivet Gun is the latest refinement from Timson Tools' long line of friendly tools."
+	desc = "The 711-MarkCL Rivet Gun is the latest refinement from Timson Tools' long line of friendly tools. Useful for rapid repairs at a distance!"
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
 	icon_state = "rivetgun"
 	magazine_type = /obj/item/ammo_magazine/rivet
@@ -142,10 +142,13 @@
 	structure_damage_factor = 1
 	penetration_modifier = 0
 	penetrating = FALSE
-	var/repair_power = 15
+	var/repair_power = 80
 	var/deployed = FALSE
 
 	var/obj/item/weapon/gun/projectile/rivet/launcher
+	icon_state = "rivet"
+
+	ricochet_chance = 0
 
 
 /obj/item/projectile/bullet/rivet/launch_from_gun(atom/target, mob/user, obj/item/weapon/gun/launcher, var/target_zone, var/x_offset=0, var/y_offset=0)
@@ -178,9 +181,12 @@
 		playsound(A, pick(list('sound/weapons/guns/rivet1.ogg','sound/weapons/guns/rivet2.ogg','sound/weapons/guns/rivet3.ogg')), VOLUME_HIGH, TRUE)
 
 		//And we also embed a rivet
-		var/obj/item/embedded_rivet/ER = new /obj/item/embedded_rivet(get_turf(A), src)
+		var/ourturf = get_turf(src)
+		var/obj/item/embedded_rivet/ER = new /obj/item/embedded_rivet(ourturf, src)
 		ER.pixel_x = src.pixel_x
 		ER.pixel_y = src.pixel_y
+		if (get_turf(A) != ourturf)
+			ER.offset_to(get_turf(A), WORLD_ICON_SIZE)
 
 
 
@@ -194,12 +200,16 @@
 /obj/item/embedded_rivet
 	icon = 'icons/effects/projectiles.dmi'
 	icon_state = "rivet_embed"
-	default_scale = 0.75
+	default_scale = 0.6
 	name = "rivet"
 	mouse_opacity = 0
 	var/obj/item/weapon/gun/projectile/rivet/rivetgun
 	var/lifetime = 1 MINUTE
 	var/detonated = FALSE
+
+	//Draw above other objects
+	plane = ABOVE_OBJ_PLANE
+	layer = 0
 
 /obj/item/embedded_rivet/New(var/atom/loc, var/obj/item/projectile/bullet/rivet/rivet)
 	if (istype(rivet.launcher, /obj/item/weapon/gun/projectile/rivet))
@@ -212,7 +222,7 @@
 /obj/item/embedded_rivet/proc/detonate()
 	if (!QDELETED(src) && !detonated)
 		detonated = TRUE
-		fragmentate(T=get_turf(src), fragment_number = 30, spreading_range = 4, fragtypes=list(/obj/item/projectile/bullet/pellet/fragment/rivet))
+		fragmentate(T=get_turf(src), fragment_number = 15, spreading_range = 3, fragtypes=list(/obj/item/projectile/bullet/pellet/fragment/rivet))
 		qdel(src)
 
 /obj/item/embedded_rivet/Destroy()
@@ -227,8 +237,8 @@
 	Fragmentation
 */
 /obj/item/projectile/bullet/pellet/fragment/rivet
-	damage = 1.5
-	range_step = 1 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
+	damage = 1.2
+	range_step = 3 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
 
 	base_spread = 0 //causes it to be treated as a shrapnel explosion instead of cone
 	spread_step = 20
@@ -239,7 +249,10 @@
 	muzzle_type = null
 	embed_mult = 0	//Embedding is OP, lets not do that
 
+	kill_count = 16
 
+	//Will probably bounce 2-3 times
+	ricochet_chance = 200
 
 
 

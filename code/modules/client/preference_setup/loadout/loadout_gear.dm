@@ -16,6 +16,7 @@
 	var/whitelisted        //Term to check the whitelist for..
 	var/patron_only
 	var/sort_category = "General"
+	var/subcategory			//Used to seperate things within a category, via a header line
 	var/flags              //Special tweaks in new
 	var/category
 	var/list/gear_tweaks = list() //List of datums which will alter the item after it has been spawned.

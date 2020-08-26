@@ -23,7 +23,8 @@
 	GLOB.loadout_categories = sortAssoc(GLOB.loadout_categories)
 	for(var/loadout_category in GLOB.loadout_categories)
 		var/datum/loadout_category/LC = GLOB.loadout_categories[loadout_category]
-		LC.gear = sortAssoc(LC.gear)
+		sortTim(LC.gear, /proc/cmp_gear_subcategory, TRUE)	//Sort the loadout menu by subcategory
+		//LC.gear = sortAssoc(LC.gear)
 	return TRUE
 
 
@@ -136,14 +137,22 @@
 	//TODO: Fetch this from player datum
 	var/datum/player/P = get_player_from_key(pref.client_ckey)
 	var/is_patron = (P ? P.patron	: FALSE)
-
+	var/current_subcategory
 	for(var/gear_name in LC.gear)
+
 		if(!(gear_name in valid_gear_choices()))
 			continue
 		var/list/entry = list()
 		var/datum/gear/G = LC.gear[gear_name]
 		var/ticked = (G.display_name in pref.gear_list[pref.gear_slot])
-		entry += "<tr style='[G.patron_only ? " border-style: outset; border-color: [COLOR_GOLD];":""]'>"
+		if (G.subcategory && (G.subcategory != current_subcategory))
+			world << "[G.subcategory] != [current_subcategory]"
+			current_subcategory = G.subcategory
+
+			entry += "</table>"
+			entry += "<h1>[current_subcategory]</h1>"
+			entry += "<table align = 'center' width = 100% style = 'border-collapse: collapse;'>"
+		entry += "<tr style='[G.patron_only ? " border-style: outset; border-color: [COLOR_GOLD];":"border-top:1pt solid black;"]'>"
 		var/button_info = "<td width=25%>"
 
 		//If this is a patron item and the player isn't a patron, then the button goes to a codex page

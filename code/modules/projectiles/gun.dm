@@ -224,7 +224,7 @@
 		return ..() //Pistolwhippin'
 
 /obj/item/weapon/gun/dropped(var/mob/living/user)
-	if(istype(user))
+	if(istype(user) && istype(loc, /turf))
 		if(!safety() && prob(5) && !user.skill_check(SKILL_WEAPONS, SKILL_BASIC) && can_fire(null, user, TRUE))
 			to_chat(user, "<span class='warning'>[src] fires on its own!</span>")
 			var/list/targets = list(user)

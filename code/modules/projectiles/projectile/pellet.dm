@@ -7,6 +7,8 @@
 	var/range_step = 2		//projectile will lose a fragment each time it travels this distance. Can be a non-integer.
 	var/base_spread = 90	//lower means the pellets spread more across body parts. If zero then this is considered a shrapnel explosion instead of a shrapnel cone
 	var/spread_step = 10	//higher means the pellets spread more across body parts with distance
+	ricochet_chance = 30
+
 
 /obj/item/projectile/bullet/pellet/Bumped()
 	. = ..()

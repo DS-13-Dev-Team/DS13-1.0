@@ -35,5 +35,6 @@ delete-after: True
 changes: 
   - tweak: "Rebalanced plasma saw and laser pick a bit. Both have slightly lower damage, and higher power consumption, but they now also break more slowly."
   - rscadd: "Lots of new items added to the Tools section of the loadout menu!"
-  - rscadd: "Added the Rivet Gun, a special new tool for patrons."
+  - rscadd: "Added the Rivet Gun, a special new tool for patrons. It can be used for longdistance repairs. amd light but consistent damage output."
   - tweak: "Tool vendors now stock hacksaws, useful for a variety of things, like making barricades!"
+  - rscadd: "Added two new crafting recipes related to rivet bolts."

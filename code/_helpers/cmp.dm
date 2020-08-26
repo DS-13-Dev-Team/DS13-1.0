@@ -70,3 +70,7 @@
 
 /proc/cmp_gear_priority(var/datum/gear/a, var/datum/gear/b)
 	return a.priority - b.priority
+
+
+/proc/cmp_gear_subcategory(var/datum/gear/a, var/datum/gear/b)
+	return sorttext(b.subcategory, a.subcategory)
