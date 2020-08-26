@@ -145,6 +145,8 @@
 	var/repair_power = 80
 	var/deployed = FALSE
 
+	fire_sound='sound/weapons/guns/fire/divet_fire.ogg'	//Placeholder
+
 	var/obj/item/weapon/gun/projectile/rivet/launcher
 	icon_state = "rivet"
 
