@@ -1050,11 +1050,10 @@
 	/obj/item/weapon/storage/lunchbox = 3,
 	/obj/item/weapon/storage/lunchbox/heart = 3,
 	/obj/item/weapon/storage/lunchbox/cat = 3,
-	/obj/item/weapon/storage/lunchbox/nt = 3,
-	/obj/item/weapon/storage/lunchbox/mars = 3,
-	/obj/item/weapon/storage/lunchbox/cti = 3,
-	/obj/item/weapon/storage/lunchbox/nymph = 3,
-	/obj/item/weapon/storage/lunchbox/syndicate = 3)
+	/obj/item/weapon/storage/lunchbox/egov = 3,
+	/obj/item/weapon/storage/lunchbox/scaf = 3,
+	/obj/item/weapon/storage/lunchbox/cec = 3,
+	/obj/item/weapon/storage/lunchbox/unitology = 3)
 
 
 	contraband = list(/obj/item/weapon/material/knife/butch = 2)

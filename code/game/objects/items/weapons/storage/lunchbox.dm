@@ -45,22 +45,22 @@
 /obj/item/weapon/storage/lunchbox/cat/filled
 	filled = TRUE
 
-/obj/item/weapon/storage/lunchbox/nt
-	name = "NanoTrasen brand lunchbox"
-	icon_state = "lunchbox_nanotrasen"
+/obj/item/weapon/storage/lunchbox/egov
+	name = "EarthGov brand lunchbox"
+	icon_state = "lunchbox_egov"
 	item_state = "toolbox_blue"
-	desc = "A little lunchbox. This one is branded with the Nanotrasen logo!"
+	desc = "A little lunchbox. This one is branded with the EarthGov logo!"
 
-/obj/item/weapon/storage/lunchbox/nt/filled
+/obj/item/weapon/storage/lunchbox/egov/filled
 	filled = TRUE
 
-/obj/item/weapon/storage/lunchbox/mars
-	name = "\improper Mariner University lunchbox"
-	icon_state = "lunchbox_marsuniversity"
+/obj/item/weapon/storage/lunchbox/scaf
+	name = "\improper Sovereign Colonies lunchbox"
+	icon_state = "lunchbox_scaf"
 	item_state = "toolbox_red"
-	desc = "A little lunchbox. This one is branded with the Mariner university logo!"
+	desc = "A little lunchbox. This one is branded with the Sovereign Colonies logo! This one looks rather old, almost collectible..."
 
-/obj/item/weapon/storage/lunchbox/mars/filled
+/obj/item/weapon/storage/lunchbox/scaf/filled
 	filled = TRUE
 
 /obj/item/weapon/storage/lunchbox/cti
@@ -72,22 +72,22 @@
 /obj/item/weapon/storage/lunchbox/cti/filled
 	filled = TRUE
 
-/obj/item/weapon/storage/lunchbox/nymph
-	name = "\improper Diona nymph lunchbox"
-	icon_state = "lunchbox_dionanymph"
+/obj/item/weapon/storage/lunchbox/cec
+	name = "\improper CEC lunchbox"
+	icon_state = "lunchbox_cec"
 	item_state = "toolbox_yellow"
-	desc = "A little lunchbox. This one is an adorable Diona nymph on the side!"
+	desc = "A little lunchbox. This one is branded with the CEC logo!"
 
-/obj/item/weapon/storage/lunchbox/nymph/filled
+/obj/item/weapon/storage/lunchbox/cec/filled
 	filled = TRUE
 
-/obj/item/weapon/storage/lunchbox/syndicate
-	name = "black and red lunchbox"
+/obj/item/weapon/storage/lunchbox/unitology
+	name = "\improper Unitology lunchbox"
 	icon_state = "lunchbox_syndie"
 	item_state = "toolbox_syndi"
 	desc = "A little lunchbox. This one is a sleek black and red, made of a durable steel!"
 
-/obj/item/weapon/storage/lunchbox/syndicate/filled
+/obj/item/weapon/storage/lunchbox/unitology/filled
 	filled = TRUE
 
 /obj/item/weapon/storage/lunchbox/TCC
