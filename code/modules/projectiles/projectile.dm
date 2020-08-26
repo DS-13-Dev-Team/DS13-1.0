@@ -105,7 +105,7 @@
 
 	else
 		animate_movement = NO_STEPS
-	set_pixel_offset
+	set_pixel_offset()
 	. = ..()
 
 /obj/item/projectile/proc/set_pixel_offset()

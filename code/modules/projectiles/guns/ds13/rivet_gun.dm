@@ -21,8 +21,8 @@
 	allowed_magazines = /obj/item/ammo_magazine/rivet
 	caliber = "rivet"
 	accuracy = 0
-	fire_delay = 1
-	burst_delay = 1
+	fire_delay = 1	//Up to 10 shots per second if you spamclick
+	burst_delay = 0
 	w_class = ITEM_SIZE_SMALL
 	handle_casings = CLEAR_CASINGS
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -41,6 +41,8 @@
 		list(mode_name = "fragmentate", mode_type = /datum/firemode/rivet_frag)
 		)
 
+	has_safety = FALSE	//Safety switches are for military/police weapons, not for tools
+
 /obj/item/weapon/gun/projectile/rivet/update_icon()
 	..()
 	if(ammo_magazine)
@@ -53,7 +55,6 @@
 /obj/item/weapon/gun/projectile/rivet/proc/register_rivet(var/obj/item/embedded_rivet/ER)
 	//If we have too many, delete them
 
-	world << "gun register rivet [ER]"
 	if (rivets.len >= max_rivets)
 
 		var/obj/item/embedded_rivet/redundant = rivets[1]
@@ -65,7 +66,6 @@
 
 //Remove from our list, called when a rivet is deleted. We don't actually delete it here though
 /obj/item/weapon/gun/projectile/rivet/proc/unregister_rivet(var/obj/item/embedded_rivet/ER)
-	world << "Unregistering rivet"
 	rivets -= ER
 	if (ER.rivetgun == src)
 		ER.rivetgun = null

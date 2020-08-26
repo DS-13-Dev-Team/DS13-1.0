@@ -26,7 +26,7 @@
 		list(mode_name = "blast", mode_type = /datum/firemode/forcegun/blast, fire_sound = 'sound/weapons/guns/fire/force_shot.ogg', fire_delay = 1.5 SECONDS),
 		list(mode_name = "focus", mode_type = /datum/firemode/forcegun/focus, windup_time = 1.5 SECONDS, windup_sound = 'sound/weapons/guns/fire/force_windup.ogg', fire_sound = 'sound/weapons/guns/fire/force_focus.ogg',fire_delay = 1.5 SECONDS)
 		)
-
+	has_safety = FALSE	//Safety switches are for military/police weapons, not for tools
 
 	aiming_modes = list(/datum/extension/aim_mode/heavy)
 

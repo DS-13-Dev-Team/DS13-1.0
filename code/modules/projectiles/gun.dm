@@ -47,6 +47,7 @@
 	var/wielded_item_state
 	var/combustion	//whether it creates hotspot when fired
 
+	var/last_fire_attempt = 0	//Last time afterattack was called, regardless of result
 	var/next_fire_time = 0
 
 	var/sel_mode = 1 //index of the currently selected mode
@@ -192,6 +193,7 @@
 
 //Return true if we successfully fired
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, adjacent, params, var/vector2/world_pixel_click)
+	last_fire_attempt = world.time
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
 
 	if(!user.aiming)
@@ -235,7 +237,6 @@
 //Return true if firing is okay right now
 /obj/item/weapon/gun/proc/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
 	if(world.time < next_fire_time)
-		world << "Cant fire because too soon"
 		if (!silent && !suppress_delay_warning && world.time % 3) //to prevent spam
 			to_chat(user, SPAN_WARNING("[src] is not ready to fire again!"))
 		return FALSE
@@ -295,11 +296,9 @@
 
 	last_safety_check = world.time
 	var/shoot_time = (burst - 1)* burst_delay
-	world << "Shoot time [shoot_time] windup [windup_time]"
 	user.set_click_cooldown(shoot_time+windup_time) //no clicking on things while shooting
 	user.set_move_cooldown(shoot_time+windup_time) //no moving while shooting either
 	next_fire_time = world.time + shoot_time + windup_time
-	world << "Current time [world.time] next shot [next_fire_time]"
 
 	var/held_twohanded = is_held_twohanded(user)
 
@@ -343,8 +342,6 @@
 		if (current_firemode)	current_firemode.on_fire(target, user, clickparams, pointblank, reflex, TRUE, projectile)//Tell the firemode that we successfully fired
 
 	//update timing
-	user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
-	user.set_move_cooldown(move_delay)
 	next_fire_time = world.time + fire_delay
 
 //obtains the next projectile to fire

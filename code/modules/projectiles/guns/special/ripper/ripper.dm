@@ -32,6 +32,8 @@
 	//World pixel coords of where a user last clicked to fire this gun
 	var/vector2/last_clickpoint = new /vector2(0,0)
 
+	has_safety = FALSE	//Safety switches are for military/police weapons, not for tools
+
 /obj/item/weapon/gun/projectile/ripper/update_icon()
 	overlays.Cut()
 	var/ammonum = getAmmo()
