@@ -41,3 +41,4 @@ changes:
   - rscdel: "Removed a few lunchbox items that were unable to be reworked properly, and were against lore."
   - rscadd: "Added security camera's to Hydroponics."
   - imageadd: "Reworked several lunchboxes to be more lore appropriate."
+  - maptweak: "Added an ATM to the kitchen and the bar, for those capitalist folk."
