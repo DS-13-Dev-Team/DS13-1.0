@@ -38,3 +38,4 @@ changes:
   - rscadd: "Added the Rivet Gun, a special new tool for patrons. It can be used for longdistance repairs. amd light but consistent damage output."
   - tweak: "Tool vendors now stock hacksaws, useful for a variety of things, like making barricades!"
   - rscadd: "Added two new crafting recipes related to rivet bolts."
+  - tweak: "Bullets and shrapnel now have a chance to ricochet when hitting solid objects."
