@@ -14,7 +14,7 @@
 /datum/computer_file/binary/design/proc/set_filename(new_name)
 	filename = sanitizeFileName("[new_name]")
 	if(findtext(filename, "datum_design_") == 1)
-		filename = copytext(filename, 14)
+		filename = copytext_char(filename, 14)
 
 /datum/computer_file/binary/design/proc/set_design_type(design_type)
 	set_filename(design_type)

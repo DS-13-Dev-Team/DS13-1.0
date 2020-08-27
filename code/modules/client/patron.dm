@@ -15,10 +15,10 @@
 	for(var/line in Lines)
 		if(!length(line))
 			continue
-		if(copytext(line,1,2) == "#")
+		if(copytext_char(line,1,2) == "#")
 			continue
 
-		var/list/line_list = splittext(line, "	")
+		var/list/line_list = splittext_char(line, "	")
 		if(!line_list.len)
 			continue
 
@@ -50,7 +50,7 @@
 		if(!length(line))
 			text += line
 			continue
-		if(copytext(line,1,2) == "#")
+		if(copytext_char(line,1,2) == "#")
 			text += line
 			continue
 

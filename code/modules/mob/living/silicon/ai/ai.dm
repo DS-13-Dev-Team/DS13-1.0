@@ -226,14 +226,14 @@ var/list/ai_verbs_default = list(
 	LAZYSET(custom_ai_icons_by_ckey_and_name, "[ckey][real_name]", custom_icons)
 
 	var/file = file2text("config/custom_sprites.txt")
-	var/lines = splittext(file, "\n")
+	var/lines = splittext_char(file, "\n")
 
 	var/custom_index = 1
 	var/custom_icon_states = icon_states(CUSTOM_ITEM_SYNTH)
 
 	for(var/line in lines)
 	// split & clean up
-		var/list/Entry = splittext(line, ":")
+		var/list/Entry = splittext_char(line, ":")
 		for(var/i = 1 to Entry.len)
 			Entry[i] = trim(Entry[i])
 

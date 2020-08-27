@@ -930,7 +930,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	//To cut down on spam, we'll only display a message for items broken while attached to a mob, So that we don't get a million messages from an explosion
 	if (ismob(loc))
 		var/mob/M = loc
-		M.visible_message(SPAN_WARNING(replacetext(break_message, "SELF", src.name)))
+		M.visible_message(SPAN_WARNING(replacetext_char(break_message, "SELF", src.name)))
 	qdel(src)
 	return TRUE
 

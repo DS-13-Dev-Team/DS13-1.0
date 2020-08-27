@@ -1,6 +1,6 @@
 //Splits the text of a file at seperator and returns them in a list.
 /world/proc/file2list(filename, seperator="\n")
-	return splittext(file2text(filename), seperator)
+	return splittext_char(file2text(filename), seperator)
 
 
 //Writes a list into a specified file

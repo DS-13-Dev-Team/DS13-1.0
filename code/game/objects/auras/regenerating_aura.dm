@@ -55,7 +55,7 @@
 					regen_organ.damage = max(regen_organ.damage - organ_mult, 0)
 					H.nutrition -= organ_mult
 					if(prob(5))
-						to_chat(H, replacetext(regen_message,"ORGAN", regen_organ.name))
+						to_chat(H, replacetext_char(regen_message,"ORGAN", regen_organ.name))
 
 	if(prob(grow_chance) && H.nutrition > grow_threshold)
 		for(var/limb_type in H.species.has_limbs)

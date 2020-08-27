@@ -110,7 +110,7 @@
 		else if(search_pda && istype(A,/obj/item/modular_computer/pda))
 			var/obj/item/modular_computer/pda/PDA = A
 			if(findtext(PDA.name, old_name))
-				PDA.SetName(replacetext(PDA.name, old_name, new_name))
+				PDA.SetName(replacetext_char(PDA.name, old_name, new_name))
 				search_pda = 0
 
 

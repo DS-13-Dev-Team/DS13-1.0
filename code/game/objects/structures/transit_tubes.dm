@@ -408,7 +408,7 @@
 	else
 		tube_dirs = parse_dirs(icon_state)
 
-		if(copytext(icon_state, 1, 3) == "D-" || findtextEx(icon_state, "Pass"))
+		if(copytext_char(icon_state, 1, 3) == "D-" || findtextEx(icon_state, "Pass"))
 			set_density(0)
 
 
@@ -521,7 +521,7 @@
 	if(text in direction_table)
 		return direction_table[text]
 
-	var/list/split_text = splittext(text, "-")
+	var/list/split_text = splittext_char(text, "-")
 
 	// If the first token is D, the icon_state represents
 	//  a purely decorative tube, and doesn't actually

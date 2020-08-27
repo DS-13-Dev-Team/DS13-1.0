@@ -178,6 +178,7 @@
 		var/list/old_index_to_backpack_type = list(
 			/decl/backpack_outfit/nothing,
 			/decl/backpack_outfit/backpack,
+			/decl/backpack_outfit/rig,
 			/decl/backpack_outfit/satchel,
 			/decl/backpack_outfit/messenger_bag,
 			/decl/backpack_outfit/satchel,

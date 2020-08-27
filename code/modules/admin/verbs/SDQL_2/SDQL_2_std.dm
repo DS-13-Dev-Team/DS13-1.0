@@ -32,8 +32,8 @@
 /proc/_ckeyEx(Key)
 	return ckeyEx(Key)
 
-/proc/_copytext(T, Start = 1, End = 0)
-	return copytext(T, Start, End)
+/proc/_copytext_char(T, Start = 1, End = 0)
+	return copytext_char(T, Start, End)
 
 /proc/_cos(X)
 	return cos(X)
@@ -128,10 +128,10 @@
 /proc/_REGEX_QUOTE_REPLACEMENT(text)
 	return REGEX_QUOTE_REPLACEMENT(text)
 
-/proc/_replacetext(Haystack, Needle, Replacement, Start = 1,End = 0)
-	return replacetext(Haystack, Needle, Replacement, Start, End)
+/proc/_replacetext_char(Haystack, Needle, Replacement, Start = 1,End = 0)
+	return replacetext_char(Haystack, Needle, Replacement, Start, End)
 
-/proc/_replacetextEx(Haystack, Needle, Replacement, Start = 1,End = 0)
+/proc/_replacetext_charEx(Haystack, Needle, Replacement, Start = 1,End = 0)
 	return replacetextEx(Haystack, Needle, Replacement, Start, End)
 
 /proc/_rgb(R, G, B)

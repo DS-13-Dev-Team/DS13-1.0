@@ -191,7 +191,7 @@
 		var/isRoom = 1 //whether we are a room or not
 		for(var/testing = 0, testing < 1000, testing++)
 			if(open_positions.len)
-				var/list/coords = splittext(pick(open_positions), ":") //pop a coord from the list.
+				var/list/coords = splittext_char(pick(open_positions), ":") //pop a coord from the list.
 				newx = text2num(coords[1])
 				newy = text2num(coords[2])
 				open_positions -= "[newx]:[newy]"

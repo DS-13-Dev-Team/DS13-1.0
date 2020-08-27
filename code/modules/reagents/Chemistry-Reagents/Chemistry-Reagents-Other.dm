@@ -80,15 +80,15 @@
 		hex2 += "FF"
 	if(length(hex1) != 9 || length(hex2) != 9)
 		return
-	colors[1] += hex2num(copytext(hex1, 2, 4)) * volume
-	colors[2] += hex2num(copytext(hex1, 4, 6)) * volume
-	colors[3] += hex2num(copytext(hex1, 6, 8)) * volume
-	colors[4] += hex2num(copytext(hex1, 8, 10)) * volume
+	colors[1] += hex2num(copytext_char(hex1, 2, 4)) * volume
+	colors[2] += hex2num(copytext_char(hex1, 4, 6)) * volume
+	colors[3] += hex2num(copytext_char(hex1, 6, 8)) * volume
+	colors[4] += hex2num(copytext_char(hex1, 8, 10)) * volume
 	tot_w += volume
-	colors[1] += hex2num(copytext(hex2, 2, 4)) * newamount
-	colors[2] += hex2num(copytext(hex2, 4, 6)) * newamount
-	colors[3] += hex2num(copytext(hex2, 6, 8)) * newamount
-	colors[4] += hex2num(copytext(hex2, 8, 10)) * newamount
+	colors[1] += hex2num(copytext_char(hex2, 2, 4)) * newamount
+	colors[2] += hex2num(copytext_char(hex2, 4, 6)) * newamount
+	colors[3] += hex2num(copytext_char(hex2, 6, 8)) * newamount
+	colors[4] += hex2num(copytext_char(hex2, 8, 10)) * newamount
 	tot_w += newamount
 
 	color = rgb(colors[1] / tot_w, colors[2] / tot_w, colors[3] / tot_w, colors[4] / tot_w)
@@ -132,7 +132,7 @@
 	M.confused = 0
 	M.sleeping = 0
 	M.jitteriness = 0
-	
+
 /datum/reagent/ds_medicalgelreagent //dead space medical gel chemical
 	name = "Medi-gel"
 	description = "An advanced gel solution that binds damaged tissue and causes rapid repair and regrowth of lost tissue and bone."
@@ -142,10 +142,10 @@
 	scannable = 1
 	metabolism = 1.5
 	overdose = 50
-	
+
 	glass_name = "medi-gel"
 	glass_desc = "An advanced gel solution that binds damaged tissue and causes rapid repair and regrowth of lost tissue and bone."
-	
+
 /datum/reagent/ds_medicalgelreagent/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	affect_blood(M, alien, removed)
 

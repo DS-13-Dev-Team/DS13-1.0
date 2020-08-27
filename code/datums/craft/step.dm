@@ -31,9 +31,9 @@
 
 
 /datum/craft_step/proc/announce_action(var/msg, mob/living/user, obj/item/tool, atom/target)
-	msg = replacetext(msg,"%USER%","[user]")
-	msg = replacetext(msg,"%ITEM%","\improper [tool]")
-	msg = replacetext(msg,"%TARGET%","\improper [target]")
+	msg = replacetext_char(msg,"%USER%","[user]")
+	msg = replacetext_char(msg,"%ITEM%","\improper [tool]")
+	msg = replacetext_char(msg,"%TARGET%","\improper [target]")
 	user.visible_message(
 		msg
 	)

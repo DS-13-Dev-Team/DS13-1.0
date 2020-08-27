@@ -13,5 +13,5 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/healthbar,
-		/obj/item/rig_module/storage/light
+		/obj/item/rig_module/storage/heavy
 		)

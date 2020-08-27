@@ -6,7 +6,7 @@ var/list/robot_custom_icons
 
 /hook/startup/proc/load_robot_custom_sprites()
 	var/config_file = file2text("config/custom_sprites.txt")
-	var/list/lines = splittext(config_file, "\n")
+	var/list/lines = splittext_char(config_file, "\n")
 
 	robot_custom_icons = list()
 	for(var/line in lines)
@@ -15,8 +15,8 @@ var/list/robot_custom_icons
 		if(!split_idx || split_idx == length(line))
 			continue //bad entry
 
-		var/ckey = copytext(line, 1, split_idx)
-		var/real_name = copytext(line, split_idx+1)
+		var/ckey = copytext_char(line, 1, split_idx)
+		var/real_name = copytext_char(line, split_idx+1)
 
 		robot_custom_icons[ckey] = real_name
 	return 1

@@ -27,13 +27,13 @@
 		return
 
 	//Split screen-loc up into X+Pixel_X and Y+Pixel_Y
-	var/list/screen_loc_params = splittext(PM["screen-loc"], ",")
+	var/list/screen_loc_params = splittext_char(PM["screen-loc"], ",")
 
 	//Split X+Pixel_X up into list(X, Pixel_X)
-	var/list/screen_loc_X = splittext(screen_loc_params[1],":")
+	var/list/screen_loc_X = splittext_char(screen_loc_params[1],":")
 	screen_loc_X[1] = encode_screen_X(text2num(screen_loc_X[1]), usr)
 	//Split Y+Pixel_Y up into list(Y, Pixel_Y)
-	var/list/screen_loc_Y = splittext(screen_loc_params[2],":")
+	var/list/screen_loc_Y = splittext_char(screen_loc_params[2],":")
 	screen_loc_Y[1] = encode_screen_Y(text2num(screen_loc_Y[1]), usr)
 
 	if(snap2grid) //Discard Pixel Values
@@ -57,12 +57,12 @@
 	var/view = viewer.client ? viewer.client.view : world.view
 	//Find EAST/WEST implementations
 	if(findtext(X,"EAST-"))
-		var/num = text2num(copytext(X,6)) //Trim EAST-
+		var/num = text2num(copytext_char(X,6)) //Trim EAST-
 		if(!num)
 			num = 0
 		. = view*2 + 1 - num
 	else if(findtext(X,"WEST+"))
-		var/num = text2num(copytext(X,6)) //Trim WEST+
+		var/num = text2num(copytext_char(X,6)) //Trim WEST+
 		if(!num)
 			num = 0
 		. = num+1
@@ -81,12 +81,12 @@
 /obj/screen/movable/proc/decode_screen_Y(var/Y, var/mob/viewer)
 	var/view = viewer.client ? viewer.client.view : world.view
 	if(findtext(Y,"NORTH-"))
-		var/num = text2num(copytext(Y,7)) //Trim NORTH-
+		var/num = text2num(copytext_char(Y,7)) //Trim NORTH-
 		if(!num)
 			num = 0
 		. = view*2 + 1 - num
 	else if(findtext(Y,"SOUTH+"))
-		var/num = text2num(copytext(Y,7)) //Time SOUTH+
+		var/num = text2num(copytext_char(Y,7)) //Time SOUTH+
 		if(!num)
 			num = 0
 		. = num+1
