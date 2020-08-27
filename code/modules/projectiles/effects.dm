@@ -214,8 +214,8 @@
 	icon_state = "gravity_tether"
 
 	//Start and endpoints are in world pixel coordinates
-	var/vector2/start
-	var/vector2/end
+	var/vector2/start = new /vector2(0,0)
+	var/vector2/end = new /vector2(0,0)
 	var/vector2/offset = new /vector2(0,0)
 	animate_movement = 0
 	lifespan = 0
@@ -223,12 +223,11 @@
 
 //Takes start and endpoint as vector2s of global pixel coords
 /obj/effect/projectile/sustained/proc/set_ends(var/vector2/_start = null, var/vector2/_end = null)
-	if (_start != start)
-		start = _start// + offset
+	start.x = _start.x
+	start.y = _start.y
 
-	if (_end != end)
-		end = _end// + offset
-
+	end.x = _end.x// + offset
+	end.y = _end.y
 
 
 	var/matrix/M = matrix()
@@ -252,9 +251,12 @@
 	set_global_pixel_loc(start + (delta*0.5) + offset)
 
 /obj/effect/projectile/sustained/Destroy()
-	release_vector(start)
-	release_vector(end)
-	release_vector(offset)
+	if (start)
+		release_vector(start)
+	if (end)
+		release_vector(end)
+	if (offset)
+		release_vector(offset)
 	.=..()
 
 

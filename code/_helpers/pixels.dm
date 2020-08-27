@@ -72,6 +72,7 @@
 	forceMove(locate(tilecoords.x, tilecoords.y, z))
 	pixel_x = (coords.x % world.icon_size)-16
 	pixel_y = (coords.y % world.icon_size)-16
+	release_vector(tilecoords)
 
 
 //Takes pixel coordinates relative to a tile. Returns true if those coords would offset an object to outside the tile
@@ -90,7 +91,9 @@
 		return get_turf(src)
 
 	var/vector2/offset = (Vector2.FromDir(dir))*view_offset
-	return get_turf_at_pixel_offset(offset)
+	var/turf/T = get_turf_at_pixel_offset(offset)
+	release_vector(offset)
+	return T
 
 
 //Returns the turf over which the mob's view is centred. Only relevant if view offset is set
@@ -103,19 +106,24 @@
 	//First lets just get the global pixel position of where this atom+newpix is
 	var/vector2/new_global_pixel_loc = get_new_vector(((x-1)*world.icon_size) + newpix.x + 16, ((y-1)*world.icon_size) + newpix.y + 16)
 
-	return get_turf_at_pixel_coords(new_global_pixel_loc, z)
+	var/turf/T = get_turf_at_pixel_coords(new_global_pixel_loc, z)
+	release_vector(new_global_pixel_loc)
+	return T
 
 
 
 //Global version of the above, requires a zlevel to check on
 /proc/get_turf_at_pixel_coords(var/vector2/coords, var/zlevel)
 	coords = get_new_vector(round(coords.x / world.icon_size)+1, round(coords.y / world.icon_size)+1)
-	return locate(coords.x, coords.y, zlevel)
+	var/turf/T = locate(coords.x, coords.y, zlevel)
+	release_vector(coords)
+	return T
 
 /proc/get_turf_at_mouse(var/clickparams, var/client/C)
 	var/vector2/pixels = get_global_pixel_click_location(clickparams, C)
-	return get_turf_at_pixel_coords(pixels, C.mob.z)
-
+	var/turf/T = get_turf_at_pixel_coords(pixels, C.mob.z)
+	release_vector(pixels)
+	return T
 
 
 
@@ -129,6 +137,7 @@
 	loc = T
 	pixel_x = offset.x
 	pixel_y = offset.y
+	release_vector(offset)
 
 //Inverse of the above, sets our global pixel loc to a specified value, but keeps us within the same turf we're currently in
 /atom/movable/proc/set_pixels_maintain_turf(var/vector2/offset)
@@ -142,10 +151,12 @@
 
 //This proc gets the client's total pixel offset from its eyeobject
 /client/proc/get_pixel_offset()
-	var/vector2/offset = get_new_vector(0,0)
+	var/vector2/offset
 	if (ismob(eye))
 		var/mob/M = eye
 		offset = (Vector2.FromDir(M.dir))*M.view_offset
+	else
+		offset = get_new_vector(0,0)
 
 	offset.x += pixel_x
 	offset.y += pixel_y
@@ -189,6 +200,7 @@
 	var/vector2/delta = get_offset_to(target, distance)
 	pixel_x += delta.x
 	pixel_y += delta.y
+	release_vector(delta)
 
 
 /atom/proc/get_offset_to(var/atom/target, var/distance)
@@ -212,7 +224,8 @@
 
 	var/vector2/rejection = pixel_offset.Rejection(line)
 	mover.modify_pixels(rejection*-1)
-
+	release_vector(pixel_offset)
+	release_vector(rejection)
 
 
 
@@ -292,6 +305,11 @@
 				newpix.x = clamp(pixel_x + closest_delta.x, -(WORLD_ICON_SIZE/2), (WORLD_ICON_SIZE/2))
 				newpix.y = clamp(pixel_y + closest_delta.y, -(WORLD_ICON_SIZE/2), (WORLD_ICON_SIZE/2))
 
+				release_vector(current_pixel_loc)
+				closest_delta = null //This will be released from the intersections list
+				release_vector_list(intersections)
+
+
 				//Break out of this loop, we have failed to reach the original target
 				break
 			else
@@ -302,7 +320,7 @@
 				newpix.x = (pixel_x + position_delta.x)
 				newpix.y = (pixel_y + position_delta.y)
 
-
+			release_vector(cached_global_pixels)
 
 
 	animate(src, pixel_x = newpix.x, pixel_y = newpix.y, time = time_delta - min(time_delta*0.2, 0.5))
@@ -311,6 +329,7 @@
 
 	//We need to reset the animate_movement var, but not immediately,
 	set_delayed_move_animation_reset(src, time_delta+2)
+	release_vector(newpix)
 
 
 //Mobs that get their pixel offset messed up will be able to walk it off

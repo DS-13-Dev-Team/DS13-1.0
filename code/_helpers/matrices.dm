@@ -43,6 +43,9 @@
 		aflags |= ANIMATION_PARALLEL
 	animate(src, transform=turn(transform, rotation*shake_dir), pixel_x=newpix.x, pixel_y = newpix.y + offset*shake_dir, time=1, flags = aflags)
 	animate(transform=initial_transform, pixel_x=init_px.x, pixel_y=init_px.y, time=(time-1), easing=ELASTIC_EASING)
+	release_vector(newpix)
+	release_vector(init_px)
+
 
 //Duration is in deciseconds
 //Strength is an offset in tiles
@@ -60,7 +63,7 @@
 		var/vector2/init_px = get_new_vector(M.client.pixel_x, M.client.pixel_y)
 		animate(M.client, pixel_x=init_px.x + px_x, pixel_y=init_px.y + px_y, time=1,flags = ANIMATION_PARALLEL)
 		animate(pixel_x=init_px.x, pixel_y=init_px.y, time=duration, easing=ELASTIC_EASING)
-
+		release_vector(init_px)
 
 //The X pixel offset of this matrix
 /matrix/proc/get_x_shift()
@@ -162,11 +165,16 @@
 //Speed is in metres (tiles) per second
 //Client lag is a divisor on client animation time. Lower values will cause it to take longer to catch up with the mob, this is a cool effect for conveying speed
 /proc/animate_movement(var/atom/movable/mover, var/atom/target, var/speed, var/client_lag = 1.0)
-	var/vector2/target_pixel_loc = target.get_global_pixel_loc() + get_new_vector(mover.default_pixel_x, mover.default_pixel_y)
+	var/vector2/target_pixel_loc = target.get_global_pixel_loc()
+	target_pixel_loc.x += mover.default_pixel_x
+	target_pixel_loc.y += mover.default_pixel_y
 	var/vector2/pixel_delta = mover.get_global_pixel_loc() - target_pixel_loc //This is an inverse delta that gives the offset FROM target TO mover
 	var/vector2/cached_pixels = get_new_vector(mover.default_pixel_x, mover.default_pixel_y)
 	var/pixel_distance = pixel_delta.Magnitude()
 	var/pixels_per_decisecond = (world.icon_size * speed) * 0.1
+
+
+
 
 	//Lets handle clients too
 	var/client/C = mover.get_client()
@@ -200,11 +208,18 @@
 		spawn(animtime / client_lag)
 			L.lock_view = FALSE
 
+	release_vector(target_pixel_loc)
+	release_vector(pixel_delta)
+	release_vector(cached_pixels)
+	release_vector(cached_client_pixels)
+
 //Returns the rotation necessary to point source's forward_direction at target
 //The default value of south, will point the source's feet at the target
 /proc/rotation_to_target(var/atom/source, var/atom/target, var/forward_direction = SOUTH)
 	var/vector2/direction = Vector2.DirectionBetween(source, target)
-	return direction.AngleFrom(Vector2.FromDir(forward_direction))
+	var/angle = direction.AngleFrom(Vector2.FromDir(forward_direction))
+	release_vector(direction)
+	return angle
 
 
 /obj/proc/animate_fade_in(var/animtime = 10)

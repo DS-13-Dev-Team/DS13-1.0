@@ -25,9 +25,9 @@ GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 	GLOB.vector_pool_filling = FALSE
 
 /proc/get_new_vector(var/new_x, var/new_y)
-
-	var/vector2/newvec = pop(GLOB.vector_pool)
-	if (newvec)
+	if (length(GLOB.vector_pool))
+		var/vector2/newvec
+		macropop(GLOB.vector_pool, newvec)
 		newvec.x = new_x
 		newvec.y = new_y
 		return newvec
@@ -43,3 +43,10 @@ GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 
 
 //Releasing vectors is handled via a define in _macros.dm
+
+
+
+/client/proc/debug_vectorpool()
+	set category = "Debug"
+	set name = "Vector Pool Debug"
+	to_chat(src, "Vecpool: [length(GLOB.vector_pool)]")

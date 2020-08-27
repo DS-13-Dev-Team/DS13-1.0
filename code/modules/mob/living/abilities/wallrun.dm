@@ -526,7 +526,7 @@
 		var/vector2/current_wall_normal = get_new_vector(mover.x - mountpoint.x, mover.y - mountpoint.y)
 
 		//Lets get the direction of the target now
-		var/vector2/desired_dir = Vector2.FromDir(new_dir)
+		var/vector2/desired_dir = Vector2.FromDir(new_dir)	//This is working with a preexisting global, should NOT be released
 
 		//Alright next up, we get the angle between these two
 		var/desired_angle = desired_dir.AngleFrom(current_wall_normal)
@@ -537,7 +537,6 @@
 		var/actual_dir = turn(SOUTH, desired_angle)
 		A.dir = actual_dir
 		release_vector(current_wall_normal)
-		release_vector(desired_dir)
 	visual_dir = new_dir
 
 

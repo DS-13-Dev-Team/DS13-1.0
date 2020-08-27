@@ -64,7 +64,7 @@
 		locpercent.x -= 1
 		locpercent.y -= 1
 		skybox.screen_loc = "CENTER:[round(skybox.base_offset + (skybox.slide_range * locpercent.x))],CENTER:[round(skybox.base_offset + (skybox.slide_range* locpercent.y))]"
-
+		release_vector(locpercent)
 
 /mob/Login()
 	..()

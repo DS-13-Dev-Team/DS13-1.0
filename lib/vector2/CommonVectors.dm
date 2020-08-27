@@ -31,6 +31,22 @@ Vector2
 				if(SOUTHWEST) return Southwest
 				else CRASH("Invalid direction.")
 
+
+	//Like from dir, but creates a new one which is safe to edit
+	proc
+		NewFromDir(dir)
+			var/vector2/v
+			switch(dir)
+				if(NORTH) v = North
+				if(SOUTH) v = South
+				if(EAST) v = East
+				if(WEST) v = West
+				if(NORTHEAST) v = Northeast
+				if(SOUTHEAST) v = Southeast
+				if(NORTHWEST) v = Northwest
+				if(SOUTHWEST) v = Southwest
+			return get_new_vector(v.x, v.y)
+
 	proc
 		//Gets a directional vector between two atoms
 		DirectionBetween(var/atom/A, var/atom/B)

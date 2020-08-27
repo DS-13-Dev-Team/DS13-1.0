@@ -32,6 +32,10 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	.=..()
 
 
+/datum/click_handler/placement/Destroy()
+	release_vector(pixel_offset)
+	.=..()
+
 //Starting and finishing
 //---------------------------------------
 /datum/click_handler/placement/proc/start_placement()

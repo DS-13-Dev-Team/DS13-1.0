@@ -441,15 +441,17 @@
 	release_type = RELEASE_LAUNCH
 	var/acceleration = launch_force / subject.get_mass()
 	var/vector2/target_direction =  subject.get_global_pixel_loc() - holder.wearer.get_global_pixel_loc()
-	target_direction = target_direction.Normalized()
-	velocity += target_direction * acceleration
+	target_direction.SelfNormalize()
+	target_direction.SelfMultiply(acceleration)
+	velocity.SelfAdd(target_direction)
 
 	var/speed = velocity.Magnitude()
 	if (speed > max_launch_speed)
-		velocity = velocity.ToMagnitude(max_launch_speed)
+		velocity.SelfClampMag(0,max_launch_speed)
 
 
 	release_grip()
+	release_vector(target_direction)
 
 /*
 	Process handling
@@ -545,6 +547,8 @@
 	control_percentage = Interpolate(0.2, 1, control_percentage)
 	if (control_percentage  < 1)
 		var/vector2/velocity_direction = velocity.SafeNormalized()
+
+
 		//How much force we have available to make the changes, shared across both steps
 		var/remaining_force = max_force
 
@@ -561,7 +565,7 @@
 			//Acceleration calculations
 			var/deceleration = slowing_force / subject_mass
 
-			velocity -= velocity_direction * deceleration
+			velocity.SelfSubtract(velocity_direction * deceleration)
 
 			//If we're successfully hit zero velocity, we are done
 			if (!velocity.NonZero())
@@ -576,6 +580,7 @@
 
 
 
+
 		//We do this in three steps:
 			//1. Slow down our velocity away from target
 			//1. Slow down our general velocity if its over the speed limit
@@ -583,6 +588,7 @@
 
 		//Step 1
 		var/vector2/velocity_away_from_target = velocity.SafeRejection(direction)
+
 		var/speed_away_from_target = velocity_away_from_target.Magnitude()
 		if (speed_away_from_target > 0)
 			//We're not moving towards the target as fast as we're allowed to, we can accelerate
@@ -617,7 +623,7 @@
 			var/deceleration = slowing_force / subject_mass
 
 			//And finally, modify the velocity
-			velocity -= velocity_direction * deceleration //We subtract rather than add, since we're slowing it down
+			velocity.SelfSubtract(velocity_direction * deceleration) //We subtract rather than add, since we're slowing it down
 
 
 		//If we used up all our force, we're done
@@ -638,9 +644,12 @@
 			acceleration = min(acceleration, max_acceleration*delta)
 
 			//And finally, modify the velocity
-			velocity += direction * acceleration
+			velocity.SelfAdd(direction * acceleration)
 
-
+		release_vector(velocity_away_from_target)
+		release_vector(velocity_towards_target)
+		release_vector(direction)
+		release_vector(velocity_direction)
 		return max_force - remaining_force
 
 	else
@@ -662,27 +671,28 @@
 
 
 			//Now we adjust the velocity
-			velocity += offset
+			velocity.SelfAdd(offset)
 
 			//And we clamp its magnitude to our max speed
-			velocity = velocity.ClampMag(0, max_speed)
+			velocity.SelfClampMag(0, max_speed)
 
 		//We're done with velocity calculations, but we haven't moved yet
 
+	release_vector(offset)
 	return max_force
 
 //This proc actually adjusts the subject's position, based on the calculated velocity
 /obj/item/rig_module/kinesis/proc/move_subject(var/time_delta)
-	var/vector2/position_delta = get_new_vector(velocity)	//Copy the velocity first, we don't want to modify it here
+	var/vector2/position_delta = get_new_vector(velocity.x, velocity.y)	//Copy the velocity first, we don't want to modify it here
 
 	//Velocity is in metres, we work in pixels, so lets convert it
-	position_delta *= WORLD_ICON_SIZE
-
 	//The velocity is per second, but we're working on a sub-second frame interval, so multiply by our time delta
-	position_delta *= time_delta
+	position_delta.SelfMultiply(time_delta * WORLD_ICON_SIZE)
 
 	//We now have the actual pixels we're going to add to our position
 	subject.pixel_move(position_delta, time_delta*10)//We convert the time delta to deciseconds
+
+	release_vector(position_delta)
 
 
 //We collide with a thing
@@ -715,6 +725,9 @@
 				var/vector2/direction = offset.SafeNormalized()
 				var/vector2/velocity_towards_target = velocity.SafeProjection(direction)
 				velocity -= velocity_towards_target
+				release_vector(offset)
+				release_vector(direction)
+				release_vector(velocity_towards_target)
 /*
 	Click Handler Stuff
 */
@@ -758,12 +771,17 @@
 		if (!target || global_clickpoint.x != target.x || global_clickpoint.y != target.y)
 
 			//It has! Set the new target, and if we were at rest, we start moving again
+			release_vector(target)
 			target = global_clickpoint
 			var/vector2/userloc = holder.wearer.get_global_pixel_loc()
 			var/vector2/tether_end = global_clickpoint - userloc	//Cant use selfsubtract here, need to make a new vector
 			tether_end.SelfClampMag(1, drop_range*WORLD_ICON_SIZE)
 			tether_end.SelfAdd(userloc)
 			tether.set_ends(userloc, tether_end)
+
+			//The tether copies the values into itself, we can dispense with the originals
+			release_vector(userloc)
+			release_vector(tether_end)
 			at_rest = FALSE
 
 	else

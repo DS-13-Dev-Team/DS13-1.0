@@ -216,7 +216,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/cmd_analyse_health_panel,
 	/client/proc/visualpower,
 	/client/proc/visualpower_remove,
-	/client/proc/gc_stress
+	/client/proc/debug_vectorpool
 	)
 
 var/list/admin_verbs_paranoid_debug = list(

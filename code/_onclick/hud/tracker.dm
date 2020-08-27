@@ -104,6 +104,7 @@
 	if (delta.x < BL.x || delta.y < BL.y)
 		//Its offscreen
 		hide()
+		release_vector(delta)
 		return
 
 
@@ -112,6 +113,7 @@
 	if (delta.x > TR.x || delta.y > TR.y)
 		//Its offscreen
 		hide()
+		release_vector(delta)
 		return
 
 
@@ -121,4 +123,5 @@
 	delta.x += C.view + 1
 	delta.y += C.view + 1
 	screen_loc = "[encode_screen_X(delta.x, origin)],[encode_screen_Y(delta.y,origin)]"
+	release_vector(delta)
 	//AAaaand done

@@ -7,6 +7,7 @@
 	direction = direction.Normalized()
 	var/angle = direction.AngleFrom(Vector2.North)
 	angle = round(angle, 90)
+	release_vector(direction)
 	return turn(NORTH, angle)
 
 //duplicated code for speed
@@ -18,4 +19,5 @@
 	var/angle = direction.AngleFrom(Vector2.North)
 	angle = round(angle, 90)
 	var/stepdir = turn(NORTH, -angle)	//Minus angle because turn rotates counterclockwise
+	release_vector(direction)
 	return get_step(A, stepdir)

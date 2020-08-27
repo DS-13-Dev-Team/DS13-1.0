@@ -36,27 +36,27 @@ vector2
 
 		/* Vector addition.
 		*/
-		operator+(vector2/v) return v ? new/vector2(x + v.x, y + v.y) : src
+		operator+(vector2/v) return v ? get_new_vector(x + v.x, y + v.y) : src
 
 		/* Vector subtraction and negation.
 		*/
-		operator-(vector2/v) return v ? new/vector2(x - v.x, y - v.y) : new/vector2(-x, -y)
+		operator-(vector2/v) return v ? get_new_vector(x - v.x, y - v.y) : get_new_vector(-x, -y)
 
 		/* Vector scaling.
 		*/
 		operator*(s)
 			// Scalar
-			if(isnum(s)) return new/vector2(x * s, y * s)
+			if(isnum(s)) return get_new_vector(x * s, y * s)
 
 			// Transform
 			else if(istype(s, /matrix))
 				var matrix/m = s
-				return new/vector2(x * m.a + y * m.b + m.c, x * m.d + y * m.e + m.f)
+				return get_new_vector(x * m.a + y * m.b + m.c, x * m.d + y * m.e + m.f)
 
 			// Component-wise
 			else if(istype(s, /vector2))
 				var vector2/v = s
-				return new/vector2(x * v.x, y * v.y)
+				return get_new_vector(x * v.x, y * v.y)
 
 			else CRASH("Invalid args.")
 
@@ -64,7 +64,7 @@ vector2
 		*/
 		operator/(d)
 			// Scalar
-			if(isnum(d)) return new/vector2(x / d, y / d)
+			if(isnum(d)) return get_new_vector(x / d, y / d)
 
 			// Inverse transform
 			else if(istype(d, /matrix)) return src * ~d
@@ -72,7 +72,7 @@ vector2
 			// Component-wise
 			else if(istype(d, /vector2))
 				var vector2/v = d
-				return new/vector2(x / v.x, y / v.y)
+				return get_new_vector(x / v.x, y / v.y)
 
 			else CRASH("Invalid args.")
 
@@ -257,6 +257,11 @@ vector2
 		SelfCeiling()
 			x = Ceiling(x)
 			y = Ceiling(y)
+
+
+		/* Get a vector in the same direction but with magnitude 1.
+		*/
+		SelfNormalize() SelfToMagnitude(1)
 
 		SelfToMagnitude(var/m)
 			m /= Magnitude()
