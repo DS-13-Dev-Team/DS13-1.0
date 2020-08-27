@@ -232,8 +232,8 @@
 
 	var/vector2/endpoint = origin + ray
 
-	var/vector2/linemin = new /vector2(min(origin.x, endpoint.x), min(origin.y, endpoint.y))
-	var/vector2/linemax = new /vector2(max(origin.x, endpoint.x), max(origin.y, endpoint.y))
+	var/vector2/linemin = get_new_vector(min(origin.x, endpoint.x), min(origin.y, endpoint.y))
+	var/vector2/linemax = get_new_vector(max(origin.x, endpoint.x), max(origin.y, endpoint.y))
 	ray = linemax - linemin
 
 

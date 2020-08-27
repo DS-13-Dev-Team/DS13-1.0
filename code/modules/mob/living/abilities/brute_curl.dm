@@ -66,7 +66,7 @@
 	user.play_species_audio(user, SOUND_PAIN, 60, 1)
 
 	//Lets cache some data too
-	cached_pixels = new /vector2(user.pixel_x, user.pixel_y)
+	cached_pixels = get_new_vector(user.pixel_x, user.pixel_y)
 	cached_transform = user.transform
 	cached_view_range = user.view_range
 	cached_view_offset = user.view_offset
@@ -126,6 +126,8 @@
 	spawn(animtime)
 		user.stunned = 0 //The user is now no longer stunned
 		status = FORCE_COOLDOWN
+
+	release_vector(cached_pixels)
 
 
 

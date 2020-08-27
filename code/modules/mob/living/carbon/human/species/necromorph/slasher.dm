@@ -28,8 +28,8 @@
 
 	//Slashers hold their arms up in an overhead pose, so they override height too
 	override_limb_types = list(
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/blade, "height" = (new /vector2(1.6,2))),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right, "height" = (new /vector2(1.6,2)))
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/blade, "height" = new /vector2(1.6,2)),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right, "height" = new /vector2(1.6,2))
 	)
 
 	hud_type = /datum/hud_data/necromorph/slasher

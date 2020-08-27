@@ -29,11 +29,11 @@
 
 /atom/proc/custom_shake_animation(var/rotation = 15, var/offset = 3, var/time = 10, var/y_offset = TRUE, var/parallel = TRUE)
 	var/initial_transform = new/matrix(transform)
-	var/vector2/init_px = new /vector2(pixel_x, pixel_y)
+	var/vector2/init_px = get_new_vector(pixel_x, pixel_y)
 
 	var/shake_dir = pick(-1, 1)
 
-	var/vector2/newpix = new /vector2(init_px.x, init_px.y)
+	var/vector2/newpix = get_new_vector(init_px.x, init_px.y)
 	newpix.x += offset * pick(-1, 1)
 	if (y_offset)
 		newpix.y += offset * pick(-1, 1)
@@ -57,7 +57,7 @@
 
 		var/px_y = rand(0, strength*world.icon_size) * pick(-1, 1)
 		var/px_x = rand(0, strength*world.icon_size) * pick(-1, 1)
-		var/vector2/init_px = new /vector2(M.client.pixel_x, M.client.pixel_y)
+		var/vector2/init_px = get_new_vector(M.client.pixel_x, M.client.pixel_y)
 		animate(M.client, pixel_x=init_px.x + px_x, pixel_y=init_px.y + px_y, time=1,flags = ANIMATION_PARALLEL)
 		animate(pixel_x=init_px.x, pixel_y=init_px.y, time=duration, easing=ELASTIC_EASING)
 
@@ -162,9 +162,9 @@
 //Speed is in metres (tiles) per second
 //Client lag is a divisor on client animation time. Lower values will cause it to take longer to catch up with the mob, this is a cool effect for conveying speed
 /proc/animate_movement(var/atom/movable/mover, var/atom/target, var/speed, var/client_lag = 1.0)
-	var/vector2/target_pixel_loc = target.get_global_pixel_loc() + new /vector2(mover.default_pixel_x, mover.default_pixel_y)
+	var/vector2/target_pixel_loc = target.get_global_pixel_loc() + get_new_vector(mover.default_pixel_x, mover.default_pixel_y)
 	var/vector2/pixel_delta = mover.get_global_pixel_loc() - target_pixel_loc //This is an inverse delta that gives the offset FROM target TO mover
-	var/vector2/cached_pixels = new /vector2(mover.default_pixel_x, mover.default_pixel_y)
+	var/vector2/cached_pixels = get_new_vector(mover.default_pixel_x, mover.default_pixel_y)
 	var/pixel_distance = pixel_delta.Magnitude()
 	var/pixels_per_decisecond = (world.icon_size * speed) * 0.1
 
@@ -176,7 +176,7 @@
 	if (C)
 		L = mover
 		L.lock_view = TRUE
-		cached_client_pixels = new /vector2(C.pixel_x, C.pixel_y)
+		cached_client_pixels = get_new_vector(C.pixel_x, C.pixel_y)
 
 
 	//Okay, lets set ourselves there

@@ -97,7 +97,7 @@
 
 	//Lets get how far the screen extends around the origin
 	var/list/bound_offsets = C.get_tile_bounds(FALSE) //Cut off partial tiles or they might stretch the screen
-	var/vector2/delta = new /vector2(track_target.x - origin.x, track_target.y - origin.y)	//Lets get the position delta from origin to target
+	var/vector2/delta = get_new_vector(track_target.x - origin.x, track_target.y - origin.y)	//Lets get the position delta from origin to target
 	//Now check whether or not that would put it onscreen
 	//Bottomleft first
 	var/vector2/BL = bound_offsets["BL"]

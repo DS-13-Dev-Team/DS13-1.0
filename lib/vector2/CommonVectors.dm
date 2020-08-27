@@ -34,13 +34,13 @@ Vector2
 	proc
 		//Gets a directional vector between two atoms
 		DirectionBetween(var/atom/A, var/atom/B)
-			var/vector2/delta = new /vector2(B.x - A.x, B.y - A.y)
+			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
 			delta = delta.ToMagnitude(1)
 			return delta
 
 	proc
 		VecDirectionBetween(var/vector2/A, var/vector2/B)
-			var/vector2/delta = new /vector2(B.x - A.x, B.y - A.y)
+			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
 			delta = delta.ToMagnitude(1)
 			return delta
 
@@ -49,11 +49,11 @@ Vector2
 		DirMagBetween(var/atom/A, var/atom/B)
 			if (get_turf(A) == get_turf(B))
 				return list("direction" = Vector2.Zero, "magnitude" = 0)
-			var/vector2/delta = new /vector2(B.x - A.x, B.y - A.y)
+			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
 			return list("direction" = delta.ToMagnitude(1), "magnitude" = delta.Magnitude())
 	proc
 		MagnitudeBetween(var/atom/A, var/atom/B, var/magnitude)
-			var/vector2/delta = new /vector2(B.x - A.x, B.y - A.y)
+			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
 			delta = delta.ToMagnitude(magnitude)
 			return delta
 
@@ -64,7 +64,7 @@ Vector2
 
 	proc
 		RandomDirection()
-			var/vector2/delta = new /vector2(rand(), rand())
+			var/vector2/delta = get_new_vector(rand(), rand())
 			return delta.ToMagnitude(1)
 
 	proc

@@ -128,7 +128,7 @@ vector2
 			if (NonZero())
 				return ToMagnitude(1)
 			else
-				return new /vector2(0,0)
+				return get_new_vector(0,0)
 
 		/* Convert the vector to text with a specified number of significant figures.
 		*/
@@ -188,14 +188,14 @@ vector2
 			if (NonZero() && onto && onto.NonZero())
 				var/vector2/result = (onto*(src.Dot(onto) / onto.Dot(onto)))
 				return result
-			return new /vector2(0,0)
+			return get_new_vector(0,0)
 
 
 		SafeRejection(var/vector2/onto)
 			if (NonZero() && onto && onto.NonZero())
 				var/vector2/result = src - Projection(onto)
 				return result
-			return new /vector2(0,0)
+			return get_new_vector(0,0)
 
 		/* Get the matrix that rotates from_vector to point in this direction.
 			Also accepts a dir.

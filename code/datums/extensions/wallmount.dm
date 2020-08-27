@@ -95,7 +95,7 @@
 	.=..()
 	mountee = holder
 	mountpoint = target
-	offset = new /vector2(mountee.x - mountpoint.x,mountee.y - mountpoint.y)
+	offset = get_new_vector(mountee.x - mountpoint.x,mountee.y - mountpoint.y)
 	if (istype(target, /atom/movable))
 		GLOB.moved_event.register(mountpoint, src, /datum/extension/mount/proc/on_mountpoint_move)
 	GLOB.destroyed_event.register(mountpoint, src, /datum/extension/mount/proc/on_dismount)

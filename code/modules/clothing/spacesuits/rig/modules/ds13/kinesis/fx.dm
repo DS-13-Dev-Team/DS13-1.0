@@ -11,3 +11,7 @@
 
 /obj/effect/projectile/sustained/lightning/can_telegrip()
 	return FALSE
+
+/obj/effect/projectile/sustained/lightning/Destroy()
+	release_vector(offset)
+	.=..()

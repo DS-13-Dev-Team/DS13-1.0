@@ -64,7 +64,7 @@
 		L.Stun(stuntime, TRUE) //Passing true here bypasses species resistance
 
 	//Here we start the windup.
-	cached_pixels = new /vector2(user.pixel_x, user.pixel_y)
+	cached_pixels = get_new_vector(user.pixel_x, user.pixel_y)
 	cached_transform = user.transform
 
 
@@ -111,7 +111,8 @@
 	//Start a timer to do the finishing hit
 	tailstrike_timer = addtimer(CALLBACK(src, .proc/finish), windup_time, TIMER_STOPPABLE)
 
-
+	release_vector(cached_pixels)
+	release_vector(pixel_offset)
 
 
 /datum/extension/tailstrike/proc/finish()

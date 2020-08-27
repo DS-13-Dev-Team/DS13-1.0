@@ -102,6 +102,10 @@
 	alpha = 0
 	.=..()
 
+/obj/item/projectile/Destroy()
+	release_vector(pixel_click)
+	.=..()
+
 /obj/item/projectile/Initialize()
 	damtype = damage_type //TODO unify these vars properly
 	if(!hitscan)
@@ -113,7 +117,7 @@
 	. = ..()
 
 /obj/item/projectile/proc/set_pixel_offset()
-	var/vector2/newpixels = new /vector2(0,0)
+	var/vector2/newpixels = get_new_vector(0,0)
 	//Future todo: Get toplevel atom of firer
 	if (firer && isturf(firer.loc))
 		newpixels.x = firer.pixel_x
@@ -125,6 +129,7 @@
 
 	pixel_x = newpixels.x
 	pixel_y = newpixels.y
+	release_vector(newpixels)
 
 //Called when this projectile is to be deleted during normal gameplay, ie when it hits stuff
 /obj/item/projectile/proc/expire()

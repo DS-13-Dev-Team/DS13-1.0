@@ -252,6 +252,9 @@
 	set_global_pixel_loc(start + (delta*0.5) + offset)
 
 /obj/effect/projectile/sustained/Destroy()
+	release_vector(start)
+	release_vector(end)
+	release_vector(offset)
 	.=..()
 
 

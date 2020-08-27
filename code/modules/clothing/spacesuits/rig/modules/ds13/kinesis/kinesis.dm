@@ -297,7 +297,7 @@
 
 /obj/item/rig_module/kinesis/proc/grip(var/atom/movable/AM)
 
-	velocity = new /vector2(0,0)
+	velocity = get_new_vector(0,0)
 
 	subject = AM
 	subject.telegripped(src)	//Tell the object it was picked up
@@ -673,7 +673,7 @@
 
 //This proc actually adjusts the subject's position, based on the calculated velocity
 /obj/item/rig_module/kinesis/proc/move_subject(var/time_delta)
-	var/vector2/position_delta = new /vector2(velocity)	//Copy the velocity first, we don't want to modify it here
+	var/vector2/position_delta = get_new_vector(velocity)	//Copy the velocity first, we don't want to modify it here
 
 	//Velocity is in metres, we work in pixels, so lets convert it
 	position_delta *= WORLD_ICON_SIZE

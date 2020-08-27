@@ -76,7 +76,7 @@
 
 
 /datum/extension/conditionalmove/pixel_align/conditional_move(var/atom/movable/am, var/atom/old_loc, var/atom/new_loc)
-	var/vector2/target_pixels = new /vector2(L.default_pixel_x, L.default_pixel_y)
+	var/vector2/target_pixels = get_new_vector(L.default_pixel_x, L.default_pixel_y)
 
 	//If we are at the target pixel coords, we are done
 	if (L.pixel_x == target_pixels.x && L.pixel_y == target_pixels.y)
@@ -84,6 +84,9 @@
 		return
 
 	//Alright, lets move towards them
-	var/vector2/delta = new /vector2(target_pixels.x - L.pixel_x, target_pixels.y - L.pixel_y)
+	var/vector2/delta = get_new_vector(target_pixels.x - L.pixel_x, target_pixels.y - L.pixel_y)
 	delta = delta.ClampMag(0, pixels_per_step)
 	animate(L, pixel_x = L.pixel_x + delta.x, pixel_y = L.pixel_y + delta.y, time = animate_time)
+
+	release_vector(delta)
+	release_vector(target_pixels)
