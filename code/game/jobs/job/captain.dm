@@ -29,7 +29,7 @@
 	skill_points = 20
 
 datum/job/cap/get_description_blurb()
-	return "You are the Captain. You are in charge of the overall situation aboard your ship. You are there to ensure that, overall, the ship's operations are safe and productive. You only answer to the CEC and work with the Director of Mining, normally."
+	return "You are the Captain. You are in charge of the overall situation aboard your ship. Your main objective - save your people. Atleast, last of them. You only answer to the CEC and work with the Director of Mining, normally. You know all about Marker, situation on colony and infection core."
 
 /datum/job/fl
 	title = "First Lieutenant"
@@ -59,7 +59,7 @@ datum/job/cap/get_description_blurb()
 	skill_points = 20
 
 datum/job/fl/get_description_blurb()
-	return "You are the First Lieutenant. You are the second-in-command to the Captain and, should the Captain be unavailable, inccapacitated, or killed, the person next in line to command the ship. Your job, normally, is organize department heads and hand out orders and directives from the Captain to the ship overall. You are subordinate to the Captain."
+	return "You are the First Lieutenant. You are the second-in-command to the Captain and, should the Captain be unavailable, inccapacitated, or killed, the person next in line to command the ship. Your job, normally, is organize department heads and hand out orders and directives from the Captain to the ship overall, but for now, your main objective - just follow the captain orders. You know all about Marker, situation on colony and infection core."
 
 /datum/job/bo
 	title = "Bridge Ensign"

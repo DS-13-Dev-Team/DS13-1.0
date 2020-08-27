@@ -26,7 +26,7 @@
 	skill_points = 20
 
 datum/job/cscio/get_description_blurb()
-	return "You are the Chief Science Officer. You are in charge of the research department. Your job is to direct your assistants, do science, and further the scientific field. You are subordinate to the Captain and First Lieutenant."
+	return "You are the Chief Science Officer. You are in charge of the research department. Your job is to direct your assistants, do science, and further the scientific field. You are subordinate to the Captain and First Lieutenant. You know all about Marker, situation on colony and infection core."
 
 /datum/job/ra
 	title = "Research Assistant"
