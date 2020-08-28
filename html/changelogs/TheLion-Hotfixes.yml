@@ -46,3 +46,4 @@ changes:
   - imageadd: "Reworked several lunchboxes to be more lore appropriate."
   - maptweak: "Updated Aegis mines. Ore generation is now completely arbitrary and random within areas specified."
   - maptweak: "Aegis is now surrounded by impassable rocks. This prevents seeing space if you get close enough to the edge."
+  - tweak: "Major buff to random ore generation. Aegis 7 should now be more canonical to lore in being mineral rich."
