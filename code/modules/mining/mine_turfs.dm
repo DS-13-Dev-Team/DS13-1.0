@@ -1,3 +1,4 @@
+
 var/list/mining_walls = list()
 var/list/mining_floors = list()
 
@@ -430,7 +431,7 @@ var/list/mining_floors = list()
 /turf/simulated/mineral/random
 	name = "Mineral deposit"
 	var/mineralSpawnChanceList = list("Uranium" = 5, "Platinum" = 5, "Iron" = 35, "Carbon" = 35, MATERIAL_DIAMOND = 1, MATERIAL_GOLD = 5, MATERIAL_SILVER = 5, MATERIAL_PHORON = 10)
-	var/mineralChance = 1.5 //means 1% chance of this plot changing to a mineral deposit
+	var/mineralChance = 25 //means 25% chance of this plot changing to a mineral deposit
 
 /turf/simulated/mineral/random/Initialize()
 	pick_mineral()
@@ -445,7 +446,7 @@ var/list/mining_floors = list()
 			UpdateMineral()
 
 /turf/simulated/mineral/random/high_chance
-	mineralChance = 25
+	mineralChance = 50
 	mineralSpawnChanceList = list("Uranium" = 10, "Platinum" = 10, "Iron" = 20, "Carbon" = 20, MATERIAL_DIAMOND = 2, MATERIAL_GOLD = 10, MATERIAL_SILVER = 10, MATERIAL_PHORON = 20)
 
 

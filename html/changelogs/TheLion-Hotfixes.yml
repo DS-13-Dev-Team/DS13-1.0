@@ -1,0 +1,52 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: TheLion1675
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - bugfix: "Fixed a bug where grass tiles would appear as nothing."
+  - bugfix: "Fixed Hydroponics erroneously showing up as Decommissioned still."
+  - bugfix: "Fixed runes not being able to be cleaned by normal means."
+  - bugfix: "Aegis asteroid turfs now spawn materials. This also means the mining drill is functional again, and can be used on all turfs. The rewards will be entirely arbitrary."
+  - bugfix: "Fixed the ability to disposal lockers."
+  - bugfix: "Fixed a rare occurence of spaced players finding their way onto old, deprecated Bay away sites."
+  - rscdel: "Removed bags of holding as a valid research creation option."
+  - rscdel: "Removed a few xenoarcheology clothing spawns. These were outdated and didn't fit within the universe."
+  - rscdel: "Removed a few lunchbox items that were unable to be reworked properly, and were against lore."
+  - rscadd: "Added security camera's to Hydroponics."
+  - imageadd: "Reworked several lunchboxes to be more lore appropriate."
+  - maptweak: "Updated Aegis mines. Ore generation is now completely arbitrary and random within areas specified."
+  - maptweak: "Aegis is now surrounded by impassable rocks. This prevents seeing space if you get close enough to the edge."
+  - tweak: "Moderate increase to recharger rates, to prevent the eternal waiting spree of hell."
+  - tweak: "Moderately decreased liver damage sustained from drinking alcohol. This is not a fix for your overindulgence."
+  - tweak: "The ability to drop bombs has now been set to +PERMISSIONS level, which is head devs, head admins and the (vice) host."
+  - experiment: "Significant increase to random ore generation. Aegis 7 should now be more canonical to lore in being mineral rich. Please report issues to Lion."

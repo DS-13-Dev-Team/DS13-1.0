@@ -71,7 +71,7 @@
 		if(owner.reagents.get_reagent_amount(/datum/reagent/ammonia) < 6)
 			owner.reagents.add_reagent(/datum/reagent/ammonia, REM)
 		if(owner.chem_effects[CE_ALCOHOL])
-			owner.adjustToxLoss(0.5 * max(2 - filter_effect, 0) * (owner.chem_effects[CE_ALCOHOL_TOXIC] + 0.5 * owner.chem_effects[CE_ALCOHOL]))
+			owner.adjustToxLoss(0.3 * max(2 - filter_effect, 0) * (owner.chem_effects[CE_ALCOHOL_TOXIC] + 0.3 * owner.chem_effects[CE_ALCOHOL]))
 
 	if(owner.chem_effects[CE_ALCOHOL_TOXIC])
 		take_internal_damage(owner.chem_effects[CE_ALCOHOL_TOXIC], prob(90)) // Chance to warn them

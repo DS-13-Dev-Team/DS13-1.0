@@ -599,11 +599,11 @@ area/ishimura/upper/medical/bpc
 	name = "\improper Misc"
 	icon_state = "miscbase"
 
-/area/ishimura/lower/misc/abandon_hydroponics
-	name = "\improper Decommissioned Hydroponics"
+/area/ishimura/lower/misc/hydroponics
+	name = "\improper Hydroponics Bay"
 
-/area/ishimura/lower/misc/abandon_hydroponics/lobby
-	name = "\improper Decommissioned Hydroponics Lobby"
+/area/ishimura/lower/misc/hydroponics/lobby
+	name = "\improper Hydroponics Lobby"
 
 /area/ishimura/lower/misc/abandon_surgery
 	name = "\improper Abandoned Surgical Suite"
