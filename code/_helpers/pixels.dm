@@ -23,10 +23,11 @@
 	if (!client)
 		return get_new_vector(0,0)
 
-	var/vector2/world_loc
+	var/vector2/screen_loc = get_screen_pixel_click_location(params)
 
-	world_loc = get_screen_pixel_click_location(params)
-	world_loc = client.ViewportToWorldPoint(world_loc)
+
+	var/vector2/world_loc = client.ViewportToWorldPoint(screen_loc)
+	release_vector(screen_loc)
 	return world_loc
 
 //This mildly complicated proc attempts to move thing to where the user's mouse cursor is
@@ -56,13 +57,17 @@
 
 /atom/proc/get_global_pixel_offset(var/atom/from)
 	var/vector2/ourloc = get_global_pixel_loc()
-	ourloc.SelfSubtract(from.get_global_pixel_loc())
+	var/vector2/fromloc = from.get_global_pixel_loc()
+	ourloc.SelfSubtract(fromloc)
+	release_vector(fromloc)
 	return ourloc
 
 //Returns a float value of pixels between two objects
 /atom/proc/get_global_pixel_distance(var/atom/from)
 	var/vector2/offset = get_global_pixel_loc()
-	offset.SelfSubtract(from.get_global_pixel_loc())
+	var/vector2/fromloc = from.get_global_pixel_loc()
+	offset.SelfSubtract(fromloc)
+	release_vector(fromloc)
 	return offset.Magnitude()
 
 //Given a set of global pixel coords as input, this moves the atom and sets its pixel offsets so that it sits exactly on the specified point
@@ -90,7 +95,7 @@
 	if (!view_offset)
 		return get_turf(src)
 
-	var/vector2/offset = (Vector2.FromDir(dir))*view_offset
+	var/vector2/offset = (Vector2.FromDir(dir))*view_offset //Doing the multiply inline here creates a new vector which we need anyway
 	var/turf/T = get_turf_at_pixel_offset(offset)
 	release_vector(offset)
 	return T
@@ -141,10 +146,11 @@
 
 //Inverse of the above, sets our global pixel loc to a specified value, but keeps us within the same turf we're currently in
 /atom/movable/proc/set_pixels_maintain_turf(var/vector2/offset)
-	offset.SelfSubtract(get_global_pixel_loc())
+	var/vector2/ourloc = get_global_pixel_loc()
+	offset.SelfSubtract(ourloc)
 	pixel_x += offset.x
 	pixel_y += offset.y
-
+	release_vector(ourloc)
 
 
 //Client Procs
@@ -170,8 +176,8 @@
 	var/vector2/bottomleft = get_new_vector(-radius, -radius)
 	var/vector2/topright = get_new_vector(radius, radius)
 	var/vector2/offset = get_pixel_offset()
-	bottomleft += offset
-	topright += offset
+	bottomleft.SelfAdd(offset)
+	topright.SelfAdd(offset)
 
 	return list("BL" = bottomleft, "TR" = topright, "OFFSET" = offset)
 
@@ -205,7 +211,7 @@
 
 /atom/proc/get_offset_to(var/atom/target, var/distance)
 	var/vector2/delta = Vector2.FromDir(get_dir(src, target))
-	delta *= distance
+	delta.SelfMultiply(distance)
 	return delta
 
 /atom/proc/modify_pixels(var/vector2/delta)

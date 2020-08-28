@@ -85,7 +85,7 @@
 
 	//Alright, lets move towards them
 	var/vector2/delta = get_new_vector(target_pixels.x - L.pixel_x, target_pixels.y - L.pixel_y)
-	delta = delta.ClampMag(0, pixels_per_step)
+	delta.SelfClampMag(0, pixels_per_step)
 	animate(L, pixel_x = L.pixel_x + delta.x, pixel_y = L.pixel_y + delta.y, time = animate_time)
 
 	release_vector(delta)

@@ -203,10 +203,16 @@
 		power_fail()
 		return
 
+	//Release old target
+	if (target)
+		release_vector(target)
+
 	target = AM.get_global_pixel_loc()
 
 	var/obj/effect/projectile/sustained/newtether = new /obj/effect/projectile/sustained/lightning(get_turf(src))
-	newtether.set_ends(holder.wearer.get_global_pixel_loc(), target)
+	var/vector2/origin_pixels = holder.wearer.get_global_pixel_loc()
+	newtether.set_ends(origin_pixels, target)
+	release_vector(origin_pixels)
 
 	var/fail = FALSE
 	//Can we pick it up? (assuming its unanchored)
@@ -297,7 +303,11 @@
 
 /obj/item/rig_module/kinesis/proc/grip(var/atom/movable/AM)
 
-	velocity = get_new_vector(0,0)
+	if (!velocity)
+		velocity = get_new_vector(0,0)
+	else
+		velocity.x = 0
+		velocity.y = 0
 
 	subject = AM
 	subject.telegripped(src)	//Tell the object it was picked up
@@ -410,7 +420,9 @@
 	//Requires a speed of > 1m/s, so this won't happen if it was brought to a controlled stop before being released
 
 	if (release_type != RELEASE_DROP)
-		var/turf/throw_target = thing.get_turf_at_pixel_offset(velocity * WORLD_ICON_SIZE)
+		var/vector2/velocity_offset = velocity * WORLD_ICON_SIZE
+		var/turf/throw_target = thing.get_turf_at_pixel_offset(velocity_offset)
+		release_vector(velocity_offset)
 		thing.throw_at(throw_target, speed, speed, null)
 	else
 		//We need to reset the animate_movement var if we are dropping it precisely
@@ -440,7 +452,13 @@
 
 	release_type = RELEASE_LAUNCH
 	var/acceleration = launch_force / subject.get_mass()
-	var/vector2/target_direction =  subject.get_global_pixel_loc() - holder.wearer.get_global_pixel_loc()
+
+	//Conserving vectors here
+	var/vector2/target_direction =  subject.get_global_pixel_loc()
+	var/vector2/holderloc = holder.wearer.get_global_pixel_loc()
+	target_direction.SelfSubtract(holderloc)
+	release_vector(holderloc)
+
 	target_direction.SelfNormalize()
 	target_direction.SelfMultiply(acceleration)
 	velocity.SelfAdd(target_direction)
@@ -534,7 +552,9 @@
 	velocity *= velocity_decay
 
 	//First of all, lets get the distance from subject to target point
-	var/vector2/offset = target - subject.get_global_pixel_loc()
+	var/vector2/subjectloc = subject.get_global_pixel_loc()
+	var/vector2/offset = target - subjectloc
+	release_vector(subjectloc)
 	var/distance = offset.Magnitude()
 
 
@@ -601,8 +621,13 @@
 			acceleration = min(acceleration, max_acceleration*delta)
 
 			//And finally, modify the velocity
-			velocity -= (velocity_away_from_target.Normalized() * acceleration)
+			var/vector2/velocity_mod = velocity_away_from_target.Normalized()
+			velocity_mod.SelfMultiply(acceleration)
+			velocity.SelfSubtract(velocity_mod)
+			release_vector(velocity_mod)
 
+			//Release and remake this
+			release_vector(velocity_away_from_target)
 			velocity_away_from_target = velocity.SafeRejection(direction)
 
 
@@ -623,7 +648,9 @@
 			var/deceleration = slowing_force / subject_mass
 
 			//And finally, modify the velocity
-			velocity.SelfSubtract(velocity_direction * deceleration) //We subtract rather than add, since we're slowing it down
+			var/vector2/velocity_mod = velocity_direction * deceleration
+			velocity.SelfSubtract(velocity_mod) //We subtract rather than add, since we're slowing it down
+			release_vector(velocity_mod)
 
 
 		//If we used up all our force, we're done
@@ -644,7 +671,9 @@
 			acceleration = min(acceleration, max_acceleration*delta)
 
 			//And finally, modify the velocity
-			velocity.SelfAdd(direction * acceleration)
+			var/vector2/velmod = direction * acceleration
+			velocity.SelfAdd(velmod)
+			release_vector(velmod)
 
 		release_vector(velocity_away_from_target)
 		release_vector(velocity_towards_target)
@@ -666,7 +695,7 @@
 		//Okay now that we have the magnitude of the acceleration, lets create a velocity delta.
 		if (acceleration > 0 && distance > 0)
 
-			offset = offset.ToMagnitude(acceleration)
+			offset.SelfToMagnitude(acceleration)
 
 
 
@@ -721,10 +750,14 @@
 		if (get_turf(obstacle) == old_loc)
 			//Mobs don't block canpass so we'll be stopped by them if they didn't move, regardless of what canpass says
 			if (!obstacle.CanPass(subject, obstacle.loc) || isliving(obstacle))
-				var/vector2/offset = obstacle.get_global_pixel_loc() - subject.get_global_pixel_loc()
+				var/vector2/offset = obstacle.get_global_pixel_loc()
+				var/vector2/subjectloc = subject.get_global_pixel_loc()
+				offset.SelfSubtract(subjectloc)
+				release_vector(subjectloc)
+
 				var/vector2/direction = offset.SafeNormalized()
 				var/vector2/velocity_towards_target = velocity.SafeProjection(direction)
-				velocity -= velocity_towards_target
+				velocity.SelfSubtract(velocity_towards_target)
 				release_vector(offset)
 				release_vector(direction)
 				release_vector(velocity_towards_target)

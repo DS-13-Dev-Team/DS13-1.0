@@ -4,7 +4,7 @@
 	var/vector2/direction = get_new_vector(B.x - A.x, B.y - A.y)
 	if (!direction.NonZero())	//Error!
 		return SOUTH	//Default value in case of emergencies
-	direction = direction.Normalized()
+	direction.SelfNormalize()
 	var/angle = direction.AngleFrom(Vector2.North)
 	angle = round(angle, 90)
 	release_vector(direction)
@@ -15,7 +15,7 @@
 	var/vector2/direction = get_new_vector(B.x - A.x, B.y - A.y)
 	if (!direction.NonZero())	//Error!
 		return get_step(A, SOUTH)	//Default value in case of emergencies
-	direction = direction.Normalized()
+	direction.SelfNormalize()
 	var/angle = direction.AngleFrom(Vector2.North)
 	angle = round(angle, 90)
 	var/stepdir = turn(NORTH, -angle)	//Minus angle because turn rotates counterclockwise

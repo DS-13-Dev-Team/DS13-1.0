@@ -8,6 +8,9 @@
 GLOBAL_LIST_EMPTY(vector_pool)
 GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 
+//GLOBAL_VAR_INIT(vectors_created, 0)
+//GLOBAL_VAR_INIT(vectors_recycled, 0)
+
 //Fills the pool with fresh vectors for later use. Sleeps while doing so to reduce lag.
 //This can take as long as it needs to, and other procs may extend the time by taking from the pool while it fills
 //If the pool runs empty during the process then vectors will be created on demand
@@ -35,7 +38,7 @@ GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 	else
 		//If we failed to get one from the list, make a new one for almost-immediate return
 		.=new /vector2(new_x,new_y)
-
+		//GLOB.vectors_created++
 		//And start the pool filling if needed
 		if (!GLOB.vector_pool_filling)
 			spawn()
@@ -50,3 +53,5 @@ GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 	set category = "Debug"
 	set name = "Vector Pool Debug"
 	to_chat(src, "Vecpool: [length(GLOB.vector_pool)]")
+	//to_chat(src, "Created: [GLOB.vectors_created]")
+	//to_chat(src, "Recycled: [GLOB.vectors_recycled]")

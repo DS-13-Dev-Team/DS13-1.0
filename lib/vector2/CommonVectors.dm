@@ -51,26 +51,28 @@ Vector2
 		//Gets a directional vector between two atoms
 		DirectionBetween(var/atom/A, var/atom/B)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
-			delta = delta.ToMagnitude(1)
+			delta.SelfToMagnitude(1)
 			return delta
 
 	proc
 		VecDirectionBetween(var/vector2/A, var/vector2/B)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
-			delta = delta.ToMagnitude(1)
+			delta.SelfToMagnitude(1)
 			return delta
 
 	proc
 		//Returns a directional vector and a magnitude between
 		DirMagBetween(var/atom/A, var/atom/B)
 			if (get_turf(A) == get_turf(B))
-				return list("direction" = Vector2.Zero, "magnitude" = 0)
+				return list("direction" = get_new_vector(0, 0), "magnitude" = 0)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
-			return list("direction" = delta.ToMagnitude(1), "magnitude" = delta.Magnitude())
+			var/list/returnlist = list("direction" = delta.ToMagnitude(1), "magnitude" = delta.Magnitude())
+			release_vector(delta)
+			return returnlist
 	proc
 		MagnitudeBetween(var/atom/A, var/atom/B, var/magnitude)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
-			delta = delta.ToMagnitude(magnitude)
+			delta.SelfToMagnitude(magnitude)
 			return delta
 
 	proc
@@ -81,7 +83,7 @@ Vector2
 	proc
 		RandomDirection()
 			var/vector2/delta = get_new_vector(rand(), rand())
-			return delta.ToMagnitude(1)
+			return delta.SelfToMagnitude(1)
 
 	proc
 		VectorAverage(var/vector2/A)

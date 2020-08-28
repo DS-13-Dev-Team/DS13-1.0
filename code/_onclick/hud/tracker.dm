@@ -105,6 +105,7 @@
 		//Its offscreen
 		hide()
 		release_vector(delta)
+		release_vector_assoc_list(bound_offsets)
 		return
 
 
@@ -114,14 +115,16 @@
 		//Its offscreen
 		hide()
 		release_vector(delta)
+		release_vector_assoc_list(bound_offsets)
 		return
 
 
 	//If we get here, the target is on our screen!
 	//Lets place it
-	delta += bound_offsets["OFFSET"]
+	delta.SelfAdd(bound_offsets["OFFSET"])
 	delta.x += C.view + 1
 	delta.y += C.view + 1
 	screen_loc = "[encode_screen_X(delta.x, origin)],[encode_screen_Y(delta.y,origin)]"
 	release_vector(delta)
+	release_vector_assoc_list(bound_offsets)
 	//AAaaand done

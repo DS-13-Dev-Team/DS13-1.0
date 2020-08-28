@@ -149,6 +149,8 @@
 	var/vector2/BL = bound_offsets["BL"]
 	if (delta.x < BL.x || delta.y < BL.y)
 		//Its offscreen
+		release_vector(delta)
+		release_vector_assoc_list(bound_offsets)
 		return
 
 
@@ -156,13 +158,14 @@
 	var/vector2/TR = bound_offsets["TR"]
 	if (delta.x > TR.x || delta.y > TR.y)
 		//Its offscreen
+		release_vector(delta)
+		release_vector_assoc_list(bound_offsets)
 		return
 
 
 
 	release_vector(delta)
-	release_vector(BL)
-	release_vector(TR)
+	release_vector_assoc_list(bound_offsets)
 	//If we get here, the target is on our screen!
 	return TRUE
 

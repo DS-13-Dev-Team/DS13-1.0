@@ -289,17 +289,17 @@
 	if (!direction)
 		return
 
-	base_dir = Vector2.FromDir(direction)
+	base_dir = Vector2.NewFromDir(direction)
 	base_dir = base_dir.Turn(rand_between(-angle, angle))
 
-	base_dir = base_dir.ToMagnitude(15) //Should be a long enough distance to get the angle right
+	base_dir.SelfToMagnitude(15) //Should be a long enough distance to get the angle right
 
 	//Before we redirect, move us into the bounceoff turf
 	last_loc = loc
 	loc = bounce_turf
 
 	redirect(bounceoff.x + base_dir.x, bounceoff.y + base_dir.y, bounce_turf)
-
+	release_vector(base_dir)
 
 #define CHECK_RESULT	if (last_result) { result = last_result; last_result = null}
 

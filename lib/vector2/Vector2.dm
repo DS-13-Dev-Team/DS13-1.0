@@ -154,14 +154,15 @@ vector2
 		RotationFrom(vector2/from_vector = Vector2.North)
 			var vector2/to_vector = Normalized()
 
-			if(isnum(from_vector)) from_vector = Vector2.FromDir(from_vector)
+			if(isnum(from_vector)) from_vector = Vector2.NewFromDir(from_vector)
 
 			if(istype(from_vector, /vector2))
-				from_vector = from_vector.Normalized()
+				from_vector.SelfNormalize()
 				var
 					cos_angle = to_vector.Dot(from_vector)
 					sin_angle = to_vector.Cross(from_vector)
-				return matrix(cos_angle, sin_angle, 0, -sin_angle, cos_angle, 0)
+				.= matrix(cos_angle, sin_angle, 0, -sin_angle, cos_angle, 0)
+				release_vector(to_vector)
 
 			else CRASH("Invalid 'from' vector.")
 
@@ -206,7 +207,7 @@ vector2
 			if(isnum(from_vector)) from_vector = Vector2.FromDir(from_vector)
 
 			var/angle = (Atan2(to_vector.y, to_vector.x) - Atan2(from_vector.y, from_vector.x))
-
+			release_vector(to_vector)
 			if (shorten)
 				angle = shortest_angle(angle)
 
@@ -214,6 +215,7 @@ vector2
 
 		/* Get a vector with the same magnitude rotated by a clockwise angle in degrees.
 		*/
+		//Future TODO: Make and implement a self version of this
 		Turn(angle) return src * matrix().Turn(angle)
 
 		FloorVec()
