@@ -28,8 +28,8 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
-	mag_insert_sound = 'sound/weapons/guns/interaction/divet_magin.ogg'
-	mag_remove_sound = 'sound/weapons/guns/interaction/divet_magout.ogg'
+	mag_insert_sound = 'sound/weapons/guns/interaction/rivet_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/rivet_magout.ogg'
 
 	//How many we can track
 	var/max_rivets = 5
@@ -79,6 +79,12 @@
 	.=..()
 
 
+/obj/item/weapon/gun/projectile/rivet/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
+	if (istype(current_firemode, /datum/firemode/rivet_frag))
+		//The fragmentation firemode doesnt need ammo
+		return TRUE
+
+	.=..()
 
 /*
 	Firemode
@@ -145,7 +151,7 @@
 	var/repair_power = 80
 	var/deployed = FALSE
 
-	fire_sound='sound/weapons/guns/fire/divet_fire.ogg'	//Placeholder
+	fire_sound='sound/weapons/guns/fire/rivet_fire.ogg'	//Placeholder
 
 	var/obj/item/weapon/gun/projectile/rivet/launcher
 	icon_state = "rivet"
@@ -180,7 +186,7 @@
 		A.repair(repair_power, src, firer)
 
 		//And a sound
-		playsound(A, pick(list('sound/weapons/guns/rivet1.ogg','sound/weapons/guns/rivet2.ogg','sound/weapons/guns/rivet3.ogg')), VOLUME_HIGH, TRUE)
+		playsound(A, pick(list('sound/weapons/guns/rivet1.ogg','sound/weapons/guns/rivet2.ogg','sound/weapons/guns/rivet3.ogg')), VOLUME_MID, TRUE)
 
 		//And we also embed a rivet
 		var/ourturf = get_turf(src)

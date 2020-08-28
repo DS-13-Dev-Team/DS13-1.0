@@ -35,11 +35,13 @@
 	var/windup_sound	//Sound played during windup time
 	var/move_delay = 1
 	var/fire_sound = 'sound/weapons/gunshot/gunshot.ogg'
+	var/shot_volume = VOLUME_MID
 	var/fire_sound_text = "gunshot"
 	var/fire_anim = null
 	var/screen_shake = 0 //shouldn't be greater than 2 unless zoomed
 	var/silenced = 0
 	var/move_accuracy_mod	=	-7.5	//Modifier applied to accuracy while moving. Should generally be negative
+
 
 
 	var/list/dispersion = list(0)
@@ -304,7 +306,7 @@
 
 	if (windup_time)
 		if (windup_sound)
-			playsound(user, windup_sound, 100, 1)
+			playsound(user, windup_sound, VOLUME_HIGH, 1)
 		sleep(windup_time)
 
 	//actually attempt to shoot
@@ -504,9 +506,9 @@
 	if (islist(shot_sound))
 		shot_sound = pick(shot_sound)
 	if(silenced)
-		playsound(user, shot_sound, 10, 1)
+		playsound(user, shot_sound, VOLUME_QUIET, 1)
 	else
-		playsound(user, shot_sound, 50, 1)
+		playsound(user, shot_sound, shot_volume, 1)
 
 //Suicide handling.
 /obj/item/weapon/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
