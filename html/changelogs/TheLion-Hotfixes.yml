@@ -48,4 +48,5 @@ changes:
   - maptweak: "Aegis is now surrounded by impassable rocks. This prevents seeing space if you get close enough to the edge."
   - tweak: "Moderate increase to recharger rates, to prevent the eternal waiting spree of hell."
   - tweak: "Moderately decreased liver damage sustained from drinking alcohol. This is not a fix for your overindulgence."
+  - tweak: "The ability to drop bombs has now been set to +PERMISSIONS level, which is head devs, head admins and the (vice) host."
   - experiment: "Significant increase to random ore generation. Aegis 7 should now be more canonical to lore in being mineral rich. Please report issues to Lion."
