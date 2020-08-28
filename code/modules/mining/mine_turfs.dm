@@ -1,3 +1,4 @@
+
 var/list/mining_walls = list()
 var/list/mining_floors = list()
 
