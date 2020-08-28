@@ -39,6 +39,7 @@ changes:
   - bugfix: "Aegis asteroid turfs now spawn materials. This also means the mining drill is functional again, and can be used on all turfs. The rewards will be entirely arbitrary."
   - bugfix: "Fixed an issue where preset admin bombs were far, far too strong for events."
   - bugfix: "Fixed the ability to disposal lockers."
+  - bugfix: "Fixed a rare occurence of spaced players finding their way onto old, deprecated Bay away sites."
   - rscdel: "Removed bags of holding as a valid research creation option."
   - rscdel: "Removed a few xenoarcheology clothing spawns. These were outdated and didn't fit within the universe."
   - rscdel: "Removed a few lunchbox items that were unable to be reworked properly, and were against lore."
