@@ -1,5 +1,3 @@
-#define TESTING	1
-#define GC_FAILURE_HARD_LOOKUP 1
 SUBSYSTEM_DEF(garbage)
 	name = "Garbage"
 	priority = SS_PRIORITY_GARBAGE
