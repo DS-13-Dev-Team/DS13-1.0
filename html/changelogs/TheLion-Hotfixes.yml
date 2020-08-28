@@ -48,6 +48,6 @@ changes:
   - imageadd: "Reworked several lunchboxes to be more lore appropriate."
   - maptweak: "Updated Aegis mines. Ore generation is now completely arbitrary and random within areas specified."
   - maptweak: "Aegis is now surrounded by impassable rocks. This prevents seeing space if you get close enough to the edge."
-  - tweak: "Significant buff to random ore generation. Aegis 7 should now be more canonical to lore in being mineral rich."
-  - tweak: "Moderate buff to recharger rates, to prevent the eternal waiting spree of hell."
+  - tweak: "Moderate increase to recharger rates, to prevent the eternal waiting spree of hell."
   - tweak: "Moderately decreased liver damage sustained from drinking alcohol. This is not a fix for your overindulgence."
+  - experiment: "Significant increase to random ore generation. Aegis 7 should now be more canonical to lore in being mineral rich. Please report issues to Lion."
