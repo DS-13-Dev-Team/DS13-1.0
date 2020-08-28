@@ -146,7 +146,6 @@
 		var/datum/gear/G = LC.gear[gear_name]
 		var/ticked = (G.display_name in pref.gear_list[pref.gear_slot])
 		if (G.subcategory && (G.subcategory != current_subcategory))
-			world << "[G.subcategory] != [current_subcategory]"
 			current_subcategory = G.subcategory
 
 			entry += "</table>"
