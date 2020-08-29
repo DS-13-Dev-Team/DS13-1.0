@@ -10,6 +10,10 @@
 */
 /mob/living/proc/apply_damage(var/damage = 0,var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/used_weapon = null)
 	if(!damage || (blocked >= 100))	return 0
+
+	//Multiply the incoming damage
+	damage *= incoming_damage_mult
+
 	switch(damagetype)
 		if(BRUTE)
 			adjustBruteLoss(damage * blocked_mult(blocked))	//This calls organ damage procs which call updatehealth

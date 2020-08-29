@@ -70,6 +70,7 @@
 	damage = 12
 	delay = 16
 	airlock_force_power = 1.5
+	armor_penetration = 5
 
 #define SPITTER_PASSIVE	"<h2>PASSIVE: No Friendly Fire:</h2><br>\
 All projectiles fired by this necromorph will harmlessly pass over other necromorphs, and will only hit enemies."
