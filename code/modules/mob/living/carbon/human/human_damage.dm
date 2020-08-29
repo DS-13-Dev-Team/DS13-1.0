@@ -14,6 +14,10 @@
 		..(damage, damagetype, def_zone, blocked)
 		return 1
 
+	//If the damage is one of the above types, it will be multiplied in the parent proc.
+	//If not, we multiply it here
+	damage *= incoming_damage_mult
+
 	handle_suit_punctures(damagetype, damage, def_zone)
 
 	if(blocked >= 100)	return 0

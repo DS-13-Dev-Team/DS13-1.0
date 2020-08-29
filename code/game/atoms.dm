@@ -615,3 +615,14 @@ its easier to just keep the beam vertical.
 /atom/proc/get_move_speed_factor()
 	return TRUE
 
+
+
+/*
+	used to restore health to non-organic objects, mobs, and turfs
+*/
+/atom/proc/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+	return TRUE
+
+
+/atom/proc/is_organic()
+	return FALSE

@@ -16,14 +16,14 @@
 obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	take_external_damage(amount)
 
-/obj/item/organ/external/proc/take_external_damage(brute, burn, damage_flags, used_weapon = null)
+/obj/item/organ/external/proc/take_external_damage(var/brute = 0, var/burn = 0, var/damage_flags = 0, var/used_weapon = null, var/allow_dismemberment = TRUE)
 	//We no longer exist, no damage allowed
 	if (QDELETED(src))
 		return
 
 	//If this limb is retracted, pass all hits directly to our parent
 	if (retracted && parent)
-		return parent.take_external_damage(brute, burn, damage_flags, used_weapon)
+		return parent.take_external_damage(brute, burn, damage_flags, used_weapon, allow_dismemberment)
 
 	//These may be null if the organ is taking damage while severed and lying on the ground
 	if (owner && owner.species)
@@ -119,7 +119,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		owner.updatehealth()
 
 		//If limb took enough damage, try to cut or tear it off
-		if(loc == owner && !is_stump())
+		if(allow_dismemberment && loc == owner && !is_stump())
 			if((limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && config.limbs_can_break)
 				var/total_damage = brute_dam + burn_dam + brute + burn + spillover
 				var/threshold = max_damage * config.organ_health_multiplier

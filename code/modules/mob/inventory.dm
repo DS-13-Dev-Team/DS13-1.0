@@ -289,6 +289,12 @@ var/list/slot_equipment_priority = list( \
 		if(l_hand) . += l_hand
 		if(r_hand) . += r_hand
 
+
+/mob/proc/get_held_items()
+	. = list()
+	if(l_hand) . += l_hand
+	if(r_hand) . += r_hand
+
 /mob/proc/delete_inventory(var/include_carried = FALSE)
 	for(var/entry in get_equipped_items(include_carried))
 		drop_from_inventory(entry)

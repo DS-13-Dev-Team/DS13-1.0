@@ -134,11 +134,10 @@
 				seed.do_thorns(buckled_mob,src)
 
 		//Try to spread
-		if(parent && parent.possible_children && prob(spread_chance))
-			if(neighbors && neighbors.len)
-				update_neighbors()//This is a bit of a dirty fix, i couldn't make it work right in the available time
-				if(neighbors.len)
-					spread_to(pick(neighbors))
+		if(can_spread() && prob(spread_chance))
+			update_neighbors()//This is a bit of a dirty fix, i couldn't make it work right in the available time
+			if(neighbors.len)
+				spread_to(pick(neighbors))
 
 	//Try to settle down
 	if(can_spawn_plant())
@@ -183,6 +182,12 @@
 		return FALSE
 	return TRUE
 
+
+/obj/effect/vine/proc/can_spread()
+	if (parent && parent.possible_children)
+		if(neighbors && neighbors.len)
+			return TRUE
+	return FALSE
 
 /obj/effect/vine/proc/can_reach(var/turf/floor)
 	if (get_dist_3D(parent, floor) <= spread_distance)

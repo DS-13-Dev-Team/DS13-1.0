@@ -618,3 +618,10 @@
 
 /obj/machinery/door/proc/get_force_time()
 	. = force_time * get_force_difficulty()
+
+
+/obj/machinery/door/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+	health = clamp(health+repair_power, 0, max_health)
+	if(stat & BROKEN)
+		stat &= ~BROKEN
+	update_icon()

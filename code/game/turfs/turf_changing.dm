@@ -5,9 +5,10 @@
 
 // Removes all signs of lattice on the pos of the turf -Donkieyo
 /turf/proc/RemoveLattice()
-	var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-	if(L)
+
+	for (var/obj/structure/lattice/L in src)
 		qdel(L)
+
 // Called after turf replaces old one
 /turf/proc/post_change()
 	levelupdate()
@@ -47,21 +48,25 @@
 		var/turf/simulated/S = src
 		if(S.zone) S.zone.rebuild()
 
+	if(ispath(N, /turf/simulated/floor))
+		RemoveLattice()
+
 	var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
 
-	//The zstructurtes list is wiped when a turf is changed, so lets rebuild it
-	for (var/atom/A in W)
-		A.register_zstructure(W)
+
 
 	W.opaque_counter = opaque_counter
 
 	if(ispath(N, /turf/simulated))
 		if(old_fire)
 			fire = old_fire
-		if (istype(W,/turf/simulated/floor))
-			W.RemoveLattice()
+
 	else if(old_fire)
 		old_fire.RemoveFire()
+
+	//The zstructures list is wiped when a turf is changed, so lets rebuild it
+	for (var/atom/A in W)
+		A.register_zstructure(W)
 
 	if(tell_universe)
 		GLOB.universe.OnTurfChange(W)

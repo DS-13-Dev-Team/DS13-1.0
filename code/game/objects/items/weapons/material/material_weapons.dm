@@ -53,7 +53,8 @@
 		qdel(src)
 	else
 		SetName("[material.display_name] [initial(name)]")
-		health = round(material.integrity/10)
+		max_health = round(material.integrity)
+		health = max_health
 		if(applies_material_colour)
 			color = material.icon_colour
 		if(material.products_need_process())
@@ -72,6 +73,7 @@
 	shatter()
 
 /obj/item/weapon/material/proc/shatter(var/consumed)
+	crash_with("Shattering")
 	var/turf/T = get_turf(src)
 	if (T)
 		T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")

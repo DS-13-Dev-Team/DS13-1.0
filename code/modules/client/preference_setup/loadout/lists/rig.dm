@@ -1,6 +1,7 @@
 /datum/gear/RIG
 	sort_category = "RIG"
 	category = /datum/gear/RIG
+	subcategory = "Frames"
 
 /*
 	Frames
@@ -64,6 +65,7 @@
 /datum/gear/RIG/module
 
 	category = /datum/gear/RIG/module
+	subcategory = "Modules"
 	priority = 2 //These should come after a frame is equipped
 
 	//They go into a rig frame, so you need to pick one first

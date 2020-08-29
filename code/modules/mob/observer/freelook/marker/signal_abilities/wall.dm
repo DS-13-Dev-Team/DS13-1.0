@@ -9,7 +9,7 @@
 /datum/signal_ability/placement/corruption/wall/visible
 	name = "Frantic Growth"
 	id = "wall2"
-	energy_cost = 125
+	energy_cost = 100
 	LOS_block = FALSE
 	placement_atom = /obj/structure/corruption_node/wall/visible
 
@@ -32,7 +32,7 @@
 	default_scale = 1
 	pixel_y = 6
 
-	max_health = 60
+	max_health = 65
 	resistance = 6
 	can_block_movement = TRUE
 

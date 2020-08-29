@@ -61,7 +61,7 @@
 		playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
 
 
-/obj/structure/cult/pylon/proc/repair(mob/user as mob)
+/obj/structure/cult/pylon/repair(var/repair_power, var/datum/repair_source, var/mob/user)
 	if(isbroken)
 		to_chat(user, "You repair the pylon.")
 		isbroken = 0

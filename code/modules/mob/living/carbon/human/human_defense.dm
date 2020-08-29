@@ -63,10 +63,9 @@ meteor_act
 
 	//Embed or sever artery
 	if(P.can_embed() && !(species.species_flags & SPECIES_FLAG_NO_EMBED) && prob((22.5 + max(penetrating_damage, -10))*P.embed_mult) && !(prob(50) && (organ.sever_artery())))
-		var/obj/item/SP = new P.shrapnel_type()
+		var/obj/item/SP = new P.shrapnel_type(organ, P)
 		SP.SetName((P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel")
 		SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
-		SP.loc = organ
 		organ.embed(SP)
 
 
@@ -621,7 +620,7 @@ meteor_act
 	//Objects are -far- more effective so we check those first
 	var/list/items = list(l_hand, r_hand)
 	for (var/obj/item/I in items)
-		if (I.can_block(src))
+		if (I.can_block(strike))
 			var/item_block_chance = I.get_block_chance(src) + block_chance_modifier
 			if (prob(item_block_chance))
 				I.handle_block(strike)
@@ -668,6 +667,10 @@ meteor_act
 	This proc checks if this person can defend against an incoming strike
 */
 /mob/living/carbon/human/can_defend(var/datum/strike/strike)
+
+	if (strike.luser == src)
+		//We don't block ourselves
+		return FALSE
 
 	//First of all, we must be conscious
 	if (incapacitated(INCAPACITATION_KNOCKOUT))

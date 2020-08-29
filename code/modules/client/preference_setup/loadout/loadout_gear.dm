@@ -16,6 +16,7 @@
 	var/whitelisted        //Term to check the whitelist for..
 	var/patron_only
 	var/sort_category = "General"
+	var/subcategory			//Used to seperate things within a category, via a header line
 	var/flags              //Special tweaks in new
 	var/category
 	var/list/gear_tweaks = list() //List of datums which will alter the item after it has been spawned.
@@ -157,7 +158,8 @@
 /datum/gear/proc/get_metadata(var/datum/preferences/P)
 	var/list/gear = P.Gear()
 
-	if (LAZYLEN(gear))
+
+	if (LAZYLEN(gear) && display_name && istext(display_name))
 		return gear[display_name]
 	else
 		return list()

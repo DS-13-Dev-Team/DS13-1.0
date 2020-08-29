@@ -149,17 +149,28 @@
 //-------------------------
 //Called when we're first created, this examines all the existing nearby corruption vines.
 /datum/extension/corruption_source/proc/evaluate_existing()
+	var/list/sources_to_update = list()
+
 	for (var/obj/effect/vine/corruption/C as anything in get_reachable())
-		//We'll take control of any that lack a source
-		if (!source)
+		//We'll take control of any that lack a source regardless of anything else
+		if (!C.source)
 			register(C)
 			continue
+
+		//If this source has a limit on how many it can support, then we will not take patches with no growth potential. IE, that have no open neighbor spaces
+		if (!isnull(support_limit))
+			var/list/expansion_tiles = C.get_neighbors(FALSE, FALSE)
+			if (!LAZYLEN(expansion_tiles))
+				continue	//It has no empty spaces to grow into, we wont take it from its current source
+
+
 
 		//Those that have a source, we test to see if we'd be better, and take control if so
 		var/potential_growth_mult = get_growthtime_multiplier(C)
 
 		//A lower multiplier is better
 		if (potential_growth_mult < C.growth_mult)
+			//We will take control of C
 			take_posession(C)
 		else
 			//If not, we add ourselves as an alternative

@@ -40,6 +40,9 @@
 	var/distance_accuracy_falloff	=	1.75	//Amount subtracted from accuracy for each tile travelled
 	var/dispersion = 0.0
 
+	//When this projectile hits a dense object, chance to ricochet off it
+	var/ricochet_chance	=	0
+
 	var/damage = 10
 	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY, CLONE, PAIN are the only things that should be in here
 	structure_damage_factor = 1
@@ -59,7 +62,7 @@
 	var/agony = 0
 	var/embed = 0 // whether or not the projectile can embed itself in the mob
 	var/penetration_modifier = 0.2 //How much internal damage this projectile can deal, as a multiplier.
-	var/embed_mult	=	1	//Multiplier on the chance of embedding
+
 
 	var/hitscan = 0		// whether the projectile should be hitscan
 	var/step_delay = 1	// the delay between iterations if not a hitscan projectile
@@ -92,6 +95,7 @@
 
 	var/shrapnel_type = /obj/item/weapon/material/shard/shrapnel	//When this projectile embeds in a mob, what kind of shrapnel does it turn into?	The actual projectile will be deleted
 
+
 /obj/item/projectile/New(var/atom/location)
 	//To prevent visual glitches, projectiles start off invisible
 	default_alpha = alpha
@@ -105,6 +109,7 @@
 
 	else
 		animate_movement = NO_STEPS
+	set_pixel_offset()
 	. = ..()
 
 /obj/item/projectile/proc/set_pixel_offset()
@@ -247,6 +252,7 @@
 
 	firer = user
 	shot_from = launcher.name
+
 	silenced = launcher.silenced
 
 	return launch(target, target_zone, x_offset, y_offset)
@@ -254,31 +260,40 @@
 //Used to change the direction of the projectile in flight.
 /obj/item/projectile/proc/redirect(var/new_x, var/new_y, var/atom/starting_loc, var/mob/new_firer=null)
 	var/turf/new_target = locate(new_x, new_y, src.z)
-
 	original = new_target
 	if(new_firer)
 		firer = src
 
 	setup_trajectory(starting_loc, new_target)
 
-/obj/item/projectile/proc/ricochet_from(var/atom/bounceoff, var/angle = 135)
+/obj/item/projectile/proc/ricochet_from(var/atom/bounceoff, var/angle = 90)
+
+
 	//Causes this projectile to bounce off of the atom in a random angle.
 		//The angle is bidirectional, an input of 90 could go up to a right angle either side
 	//For best results, this should be called from a tile adjacent to the target
 	var/vector2/base_dir
-	if (bounceoff.loc == loc)
-		base_dir = Vector2.FromDir(get_dir(bounceoff, last_loc))
+	var/direction
+	var/bounce_turf = get_turf(bounceoff)
+	if (bounce_turf == get_turf(src))
+		direction = get_dir(bounceoff, last_loc)
 	else
-		base_dir = Vector2.FromDir(get_dir(bounceoff, src))
+		direction = get_dir(bounceoff, src)
 
+	//We were unable to find a direction? We can't do anything then
+	if (!direction)
+		return
+
+	base_dir = Vector2.FromDir(direction)
 	base_dir = base_dir.Turn(rand_between(-angle, angle))
 
 	base_dir = base_dir.ToMagnitude(15) //Should be a long enough distance to get the angle right
 
 	//Before we redirect, move us into the bounceoff turf
 	last_loc = loc
-	loc = bounceoff.loc
-	redirect(bounceoff.x + base_dir.x, bounceoff.y + base_dir.y, bounceoff.loc)
+	loc = bounce_turf
+
+	redirect(bounceoff.x + base_dir.x, bounceoff.y + base_dir.y, bounce_turf)
 
 
 #define CHECK_RESULT	if (last_result) { result = last_result; last_result = null}
@@ -290,7 +305,7 @@
 
 	//roll to-hit
 	//miss_modifier = max(15*(distance-2) - round(15*accuracy) + miss_modifier, 0)
-	var/hit_chance = accuracy	//The chance that this projectile will hit. Any projectile-specific modifiers should be applied here
+	var/hit_chance = accuracy - miss_modifier	//The chance that this projectile will hit. Any projectile-specific modifiers should be applied here
 	//Any mob-specific modifiers will be applied by that mob in the proc we're about to call
 	hit_chance -= distance * distance_accuracy_falloff
 
@@ -348,7 +363,11 @@
 
 
 /obj/item/projectile/proc/attack_atom(var/atom/A,  var/distance, var/miss_modifier=0)
-	return A.bullet_act(src, def_zone)
+	.= A.bullet_act(src, def_zone)
+
+	//A return value of less than zero indicates the projectile missed or penetrated, we won't deflect it in that case
+	if (. >= 0 && prob(ricochet_chance))
+		return PROJECTILE_DEFLECT
 
 /obj/item/projectile/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == src)
@@ -380,14 +399,15 @@
 		else
 			passthrough = 1 //so ghosts don't stop bullets
 	else
-		passthrough = (attack_atom(A, distance) == PROJECTILE_CONTINUE) //backwards compatibility
-		if(isturf(A))
-			for(var/obj/O in A)
-				attack_atom(O, distance)
-			for(var/mob/living/M in A)
-				var/p = attack_mob(M, distance)
-				if (passthrough == TRUE)
-					passthrough = p	//A mob may block or deflect a projectile which was otherwise going to go through
+		passthrough = attack_atom(A, distance)  //backwards compatibility
+		if (passthrough == PROJECTILE_CONTINUE)
+			if(isturf(A))
+				for(var/obj/O in A)
+					attack_atom(O, distance)
+				for(var/mob/living/M in A)
+					var/p = attack_mob(M, distance)
+					if (passthrough == TRUE)
+						passthrough = p	//A mob may block or deflect a projectile which was otherwise going to go through
 
 
 
@@ -399,7 +419,10 @@
 
 	if (passthrough == PROJECTILE_DEFLECT)
 		bumped = 0
+		permutated.Add(A)
 		ricochet_from(A)
+		ricochet_chance *= 0.66	//Ricochet chance is reduced with each bounce
+		return	0//Return here so we dont get deleted
 
 	//the bullet passes through a dense object!
 	if(passthrough)
@@ -451,7 +474,7 @@
 			qdel(src)	// if it's left the world... kill it
 			return
 
-		if (is_below_sound_pressure(get_turf(src)) && !vacuum_traversal) //Deletes projectiles that aren't supposed to bein vacuum if they leave pressurised areas
+		if (!vacuum_traversal && is_below_sound_pressure(get_turf(src))) //Deletes projectiles that aren't supposed to bein vacuum if they leave pressurised areas
 			expire()
 			return
 
@@ -491,6 +514,8 @@
 	// plot the initial trajectory
 	trajectory = new()
 	trajectory.setup(starting, original, pixel_x, pixel_y, angle_offset=offset)
+
+	location = trajectory.return_location(location)
 
 	// generate this now since all visual effects the projectile makes can use it
 	effect_transform = new()

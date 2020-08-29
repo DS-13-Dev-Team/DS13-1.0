@@ -30,6 +30,14 @@
 		return
 	start()
 
+/datum/extension/delete_unseen/Destroy()
+	if (ongoing_timer)
+		deltimer(ongoing_timer)
+		ongoing_timer = null
+
+	subject = null
+
+	.=..()
 
 /datum/extension/delete_unseen/proc/start()
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/delete_unseen/proc/tick), interval)
@@ -52,7 +60,10 @@
 
 
 /datum/extension/delete_unseen/proc/stop()
-	deltimer(ongoing_timer)
+	if (ongoing_timer)
+		deltimer(ongoing_timer)
+		ongoing_timer = null
+
 	if (!QDELETED(subject))
 		remove_extension(holder, base_type)
 

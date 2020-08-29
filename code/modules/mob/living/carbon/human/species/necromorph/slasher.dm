@@ -11,12 +11,12 @@
 	mob_type = /mob/living/carbon/human/necromorph/slasher
 	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
-	total_health = 75
+	total_health = 80
 	biomass = 50
 	mass = 70
 	virus_immune = 1
 
-	biomass_reclamation_time	=	8 MINUTES
+	biomass_reclamation_time	=	7 MINUTES
 
 	icon_template = 'icons/mob/necromorph/slasher/fleshy.dmi'
 	damage_mask = 'icons/mob/necromorph/slasher/damage_mask.dmi'
@@ -112,7 +112,7 @@
 	marker_spawnable = TRUE 	//Enable this once we have sprites for it
 	mob_type = /mob/living/carbon/human/necromorph/slasher_enhanced
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
-	total_health = 187.5
+	total_health = 200
 	slowdown = 2.8
 	biomass = 125
 	view_range = 8
@@ -125,7 +125,7 @@
 	icon_lying = "_lying"
 	//lying_rotation = 90
 
-	biomass_reclamation_time	=	12 MINUTES
+	biomass_reclamation_time	=	11 MINUTES
 
 	limb_health_factor = 1.75
 
@@ -192,6 +192,7 @@
 	damage = 16
 	delay = 13
 	airlock_force_power = 2
+	armor_penetration = 5
 
 #define SLASHER_CHARGE_DESC	"<h2>Charge:</h2><br>\
 <h3>Hotkey: Ctrl+Alt+Click </h3><br>\
@@ -228,7 +229,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 	damage = 24
 	delay = 11
 	airlock_force_power = 3
-
+	armor_penetration = 10
 
 /*
 	Abilities

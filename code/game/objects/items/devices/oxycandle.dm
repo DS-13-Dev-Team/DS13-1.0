@@ -7,7 +7,7 @@
 	w_class = ITEM_SIZE_SMALL // Should fit into internal's box or maybe pocket
 	var/target_pressure = ONE_ATMOSPHERE
 	var/datum/gas_mixture/air_contents = null
-	var/volume = 4600
+	var/volume = 9200
 	var/on = 0
 	var/activation_sound = 'sound/effects/flare.ogg'
 	light_color = "#e58775"
