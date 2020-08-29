@@ -694,8 +694,29 @@
 		vessel.add_reagent(/datum/reagent/blood,species.blood_volume-vessel.total_volume)
 		fixblood()
 
+	//Before we do anything with organs, lets cache the things we were holding and carrying.
+	//This is necessary because the next step will deleted and remake our organs, causing worn/held things to be dropped
+	var/list/worn_things = get_equipped_items(FALSE)
+	var/list/held_things = get_held_items()
+
 	species.create_organs(src) // Reset our organs/limbs.
 	restore_all_organs()       // Reapply robotics/amputated status from preferences.
+
+
+	//Alright, anything that was dropped, lets put it back on
+	for (var/atom/movable/C in worn_things)
+		if (C.loc != src)
+			equip_to_appropriate_slot(C)
+
+	worn_things = list()
+
+	//and pickup things we were holding too.
+	//They might not go back to the same hand, we can tolerate that
+	for (var/obj/item/I in held_things)
+		if (I.loc != src)
+			put_in_hands(I)
+
+	held_things = list()
 
 	if(!client || !key) //Don't boot out anyone already in the mob.
 		for (var/obj/item/organ/internal/brain/H in world)
