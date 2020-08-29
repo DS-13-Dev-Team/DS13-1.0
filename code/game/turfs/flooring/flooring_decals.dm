@@ -8,46 +8,49 @@ var/list/floor_decals = list()
 	icon = 'icons/turf/flooring/decals.dmi'
 	plane = TURF_PLANE
 	layer = DECAL_PLATING_LAYER
+	appearance_flags = RESET_COLOR
 	var/supplied_dir
 	var/variants_amount
+	var/detail_overlay
+	var/detail_color
 
-/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour)
+/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour, var/newappearance)
 	supplied_dir = newdir
+	if(newappearance) appearance = newappearance
 	if(newcolour) color = newcolour
 	..(newloc)
 
 /obj/effect/floor_decal/Initialize()
-	..()
-
-	//Some decals could have a variety of base sprites
-	if(variants_amount)
-		icon_state = "[initial(icon_state)][rand(0,variants_amount)]"
-
 	if(supplied_dir) set_dir(supplied_dir)
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor))
-		var/cache_key = "[alpha]-[color]-[dir]-[icon_state]-[plane]-[layer]"
+		layer = T.is_plating() ? DECAL_PLATING_LAYER : DECAL_LAYER
+		var/cache_key = "[alpha]-[color]-[dir]-[icon_state]-[plane]-[layer]-[detail_overlay]-[detail_color]"
 		if(!floor_decals[cache_key])
 			var/image/I = image(icon = src.icon, icon_state = src.icon_state, dir = src.dir)
-			I.layer = DECAL_PLATING_LAYER
+			I.layer = layer
+			I.appearance_flags = appearance_flags
 			I.color = src.color
 			I.alpha = src.alpha
-			I.plane = src.plane
+			if(detail_overlay)
+				var/image/B = overlay_image(icon, "[detail_overlay]", flags=RESET_COLOR)
+				B.color = detail_color
+				I.overlays |= B
 			floor_decals[cache_key] = I
 		if(!T.decals) T.decals = list()
 		T.decals |= floor_decals[cache_key]
 		T.overlays |= floor_decals[cache_key]
+	atom_flags |= ATOM_FLAG_INITIALIZED
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/floor_decal/reset
 	name = "reset marker"
 
 /obj/effect/floor_decal/reset/Initialize()
-	..()
 	var/turf/T = get_turf(src)
-	if(T.decals && T.decals.len)
-		T.decals.Cut()
-		T.update_icon()
+	T.remove_decals()
+	T.update_icon()
+	atom_flags |= ATOM_FLAG_INITIALIZED
 	return INITIALIZE_HINT_QDEL
 
 
