@@ -69,6 +69,31 @@
 		/obj/item/clothing/glasses/hud/health
 	)
 
+/obj/structure/closet/secure_closet/medical4
+	name = "surgeon's locker"
+	req_access = list(access_medical)
+	icon_state = "securesenmed1"
+	icon_closed = "securesenmed"
+	icon_locked = "securesenmed1"
+	icon_opened = "securesenmedopen"
+	icon_off = "securesenmedoff"
+
+/obj/structure/closet/secure_closet/medical3/WillContain()
+	return list(
+		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/medic, /obj/item/weapon/storage/backpack/satchel_med)),
+		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/med, 50),
+		/obj/item/clothing/under/surgeon,
+		/obj/item/clothing/shoes/white,
+		/obj/item/clothing/accessory/stethoscope,
+		/obj/item/device/flashlight,
+		/obj/item/device/flashlight/pen,
+		/obj/item/device/radio/headset/headset_med,
+		/obj/item/device/healthanalyzer,
+		/obj/item/taperoll/medical,
+		/obj/item/weapon/storage/belt/medical,
+		/obj/item/clothing/glasses/hud/health
+	)
+
 /obj/structure/closet/secure_closet/SMO
 	name = "senior medical officer's locker"
 	req_access = list(access_smo)

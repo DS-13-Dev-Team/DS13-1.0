@@ -437,11 +437,13 @@
 	desc = "A warm, black sweatshirt."
 	color = COLOR_DARK_GRAY
 
-/obj/item/clothing/suit/storage/kellion_jacket
+/obj/item/clothing/suit/storage/toggle/kellion_jacket
 	name = "light jacket"
 	desc = "A thin, white and green jacket."
 	icon_state = "kelliontech_jacket"
 	item_state = "kelliontech_jacket"
+	icon_open = "kelliontech_open"
+	icon_closed = "kelliontech_jacket"
 
 /obj/item/clothing/suit/storage/mbill
 	name = "shipping jacket"

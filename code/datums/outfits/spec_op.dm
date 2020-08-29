@@ -212,13 +212,13 @@
 /decl/hierarchy/outfit/kendra
 	name = "Kellion Technician"
 	uniform = /obj/item/clothing/under/kellion/tech
-	suit = /obj/item/clothing/suit/storage/kellion_jacket
+	suit = /obj/item/clothing/suit/storage/toggle/kellion_jacket
 	l_ear = null
 	mask = null
 	head = null
 	belt = null
 	back = /obj/item/weapon/storage/backpack/satchel/grey
-	shoes = /obj/item/clothing/shoes/workboots
+	shoes = /obj/item/clothing/shoes/dress
 	gloves = null
 
 	id_slot = slot_wear_id
