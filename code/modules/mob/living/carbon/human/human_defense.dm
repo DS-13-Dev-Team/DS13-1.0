@@ -620,7 +620,7 @@ meteor_act
 	//Objects are -far- more effective so we check those first
 	var/list/items = list(l_hand, r_hand)
 	for (var/obj/item/I in items)
-		if (I.can_block(src))
+		if (I.can_block(strike))
 			var/item_block_chance = I.get_block_chance(src) + block_chance_modifier
 			if (prob(item_block_chance))
 				I.handle_block(strike)
@@ -667,6 +667,10 @@ meteor_act
 	This proc checks if this person can defend against an incoming strike
 */
 /mob/living/carbon/human/can_defend(var/datum/strike/strike)
+
+	if (strike.luser == src)
+		//We don't block ourselves
+		return FALSE
 
 	//First of all, we must be conscious
 	if (incapacitated(INCAPACITATION_KNOCKOUT))

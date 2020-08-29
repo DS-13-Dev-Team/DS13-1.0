@@ -19,7 +19,9 @@
 
 		//blunt objects should really not be embedding in things unless a huge amount of force is involved
 		var/embed_chance = weapon_sharp? damage_dealt/I.w_class : damage_dealt/(I.w_class*3)
+		embed_chance *= I.embed_mult
 		var/embed_threshold = weapon_sharp? 5*I.w_class : 15*I.w_class
+		embed_threshold /= I.embed_mult
 
 		//Thrown objects are FAR more likely to be embedded since there's no hand trying to hold them back
 		if (I.throwing && weapon_sharp)
