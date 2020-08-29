@@ -149,7 +149,6 @@
 //-------------------------
 //Called when we're first created, this examines all the existing nearby corruption vines.
 /datum/extension/corruption_source/proc/evaluate_existing()
-	var/list/sources_to_update = list()
 
 	for (var/obj/effect/vine/corruption/C as anything in get_reachable())
 		//We'll take control of any that lack a source regardless of anything else
