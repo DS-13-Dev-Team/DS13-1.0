@@ -158,7 +158,8 @@
 /datum/gear/proc/get_metadata(var/datum/preferences/P)
 	var/list/gear = P.Gear()
 
-	if (LAZYLEN(gear))
+
+	if (LAZYLEN(gear) && display_name && istext(display_name))
 		return gear[display_name]
 	else
 		return list()

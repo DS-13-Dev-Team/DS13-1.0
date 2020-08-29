@@ -93,13 +93,11 @@
 
 	//Lets validate and add all the gear
 	for (var/thing in prefs.Gear())
-
 		//This is a list of gear names, we must retrieve the datums from a global list, they are singletons
 		var/datum/gear/G = GLOB.gear_datums[thing]
-
 		//Each retrieved thing is added to our loadout datum
 		//If this returns false, adding failed, the item was invalid. In this case it must be removed from preferences too
-		if (!add_gear(G))
+		if (!thing || !add_gear(G))
 			prefs.gear_list[gear_slot] -= thing
 
 //Takes a job datum or a job name,
@@ -197,6 +195,9 @@
 */
 //This takes a gear item into our list, after checking it for validity
 /datum/extension/loadout/proc/add_gear(var/datum/gear/G)
+	if (!G)
+		return FALSE
+
 	if (G.exclusion_tags.len)
 		var/list/shared = G.exclusion_tags & gear_tags
 		if (shared && shared.len)
