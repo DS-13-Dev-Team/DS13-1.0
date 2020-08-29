@@ -10,6 +10,7 @@
 	var/r_speed = 1.0
 
 	var/structure_damage_factor = 1	//Damage dealt to doors, walls, floors, structures and other hard targets is multiplied by this
+	var/embed_mult = 1	//Multiplier on chance to  embed
 
 	//Defense
 	var/max_health = 0	//This is autocalculated based on size
@@ -946,8 +947,17 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	spawn()
 		take_damage(blocked_damage, strike.damage_type, strike.user, strike.used_weapon, bypass_resist = FALSE)
 
-//Items must be a certain minimum size to be used for blocking
+
 /obj/item/proc/can_block(var/datum/strike/strike)
+
+	//An object can't block itself
+	if (strike && strike.used_weapon == src)
+		return FALSE
+
+	//Items must be a certain minimum size to be used for blocking
+	if (w_class < ITEM_SIZE_NORMAL)
+		return FALSE
+
 	if (base_parry_chance > 0)
 		return TRUE
 	return FALSE

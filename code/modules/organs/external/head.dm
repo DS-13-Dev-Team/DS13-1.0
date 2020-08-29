@@ -110,7 +110,7 @@
 	. = ..(company, skip_prosthetics, 1)
 	has_lips = null
 
-/obj/item/organ/external/head/take_external_damage(brute, burn, damage_flags, used_weapon = null)
+/obj/item/organ/external/head/take_external_damage(var/brute = 0, var/burn = 0, var/damage_flags = 0, var/used_weapon = null, var/allow_dismemberment = TRUE)
 	. = ..()
 	if (!(status & ORGAN_DISFIGURED))
 		if (brute_dam > 30)
