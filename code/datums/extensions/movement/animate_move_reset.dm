@@ -19,6 +19,13 @@
 	.=..()
 	AM = holder
 
+/datum/extension/reset_move_animation/Destroy()
+	if (reset_handle)
+		deltimer(reset_handle)
+		reset_handle = null
+	AM = null
+	.=..()
+
 /datum/extension/reset_move_animation/proc/update(var/newtime)
 	if (reset_handle)
 		deltimer(reset_handle)
