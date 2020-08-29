@@ -1,12 +1,12 @@
 /obj/item/weapon/tool/saw
-	name = "metal saw"
+	name = "hacksaw"
 	desc = "For cutting wood and other objects to pieces. Or sawing bones, in case of emergency."
 	icon_state = "metal_saw"
 	force = WEAPON_FORCE_NORMAL
 	throwforce = WEAPON_FORCE_NORMAL
 	worksound = WORKSOUND_SIMPLE_SAW
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
@@ -72,14 +72,14 @@
 	hitsound = WORKSOUND_CIRCULAR_SAW
 	worksound = WORKSOUND_CIRCULAR_SAW
 	force = WEAPON_FORCE_HARMLESS
-	switched_on_force = WEAPON_FORCE_DANGEROUS * 1.15
+	switched_on_force = WEAPON_FORCE_DANGEROUS
 	matter = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 3000)
 	tool_qualities = list()
 	switched_on_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20, QUALITY_DIGGING = 35)
 	max_upgrades = 4
-	degradation = 0.1
-	use_power_cost = 0.44
-	passive_power_cost = 0.04
+	degradation = 0.075
+	use_power_cost = 0.66
+	passive_power_cost = 0.06
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
 	atom_flags = ATOM_FLAG_NO_BLOOD

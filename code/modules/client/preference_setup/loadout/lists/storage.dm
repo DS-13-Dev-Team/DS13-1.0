@@ -15,31 +15,44 @@
 
 /datum/gear/storage/pouchsmall
 	display_name = "pouch, small"
-	category = /datum/gear/storage/
 	path = /obj/item/weapon/storage/pouch/small_generic
 	cost = 1
 
 /datum/gear/storage/pouchmed
 	display_name = "pouch, medium"
-	category = /datum/gear/storage/
 	path = /obj/item/weapon/storage/pouch/medium_generic
 	cost = 2
 
 
 /datum/gear/storage/pouchlarge
 	display_name = "pouch, large"
-	category = /datum/gear/storage/
 	path = /obj/item/weapon/storage/pouch/large_generic
 	cost = 2
 
 /datum/gear/storage/pouchammo
 	display_name = "pouch, munitions"
-	category = /datum/gear/storage/
 	path = /obj/item/weapon/storage/pouch/ammo
 	cost = 2
 
 /datum/gear/storage/pouchenergy
 	display_name = "pouch, energy"
-	category = /datum/gear/storage/
 	path = /obj/item/weapon/storage/pouch/cell
 	cost = 2
+
+
+/datum/gear/storage/toolbelt
+	display_name = "toolbelt (empty)"
+	path = /obj/item/weapon/storage/belt/utility
+	cost = 2
+
+
+/datum/gear/storage/toolbelt_makeshift
+	display_name = "toolbelt (improvised tools)"
+	path = /obj/item/weapon/storage/belt/utility/makeshift
+	cost = 4
+
+
+/datum/gear/storage/toolbelt_full
+	display_name = "toolbelt (full)"
+	path = /obj/item/weapon/storage/belt/utility/full
+	cost = 5

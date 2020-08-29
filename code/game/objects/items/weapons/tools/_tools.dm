@@ -63,7 +63,7 @@
     if(!cell)
         return FALSE
     return cell.checked_use(power_usage)
-    
+
 /obj/item/weapon/tool/New()
 
 	if(!cell && suitable_cell)
@@ -683,7 +683,7 @@
 	//Gradual degradation
 	if (degradation)
 		unreliability += rand_between(0, degradation)
-	
+
 	return TRUE
 
 //Power and fuel drain, sparks spawn
@@ -1012,3 +1012,9 @@
 /obj/item/weapon/tool/acid_act(var/datum/reagent/acid/acid, var/volume)
 	var/acid_damage = acid.power * volume
 	unreliability += rand_between(0, degradation*acid_damage)
+
+
+obj/item/weapon/tool/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+	unreliability = clamp(unreliability - degradation*repair_power, 0, 100)
+	updatehealth()
+	update_icon()

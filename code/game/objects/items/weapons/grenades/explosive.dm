@@ -41,14 +41,31 @@
 
 /obj/proc/fragmentate(var/turf/T=get_turf(src), var/fragment_number = 30, var/spreading_range = 5, var/list/fragtypes=list(/obj/item/projectile/bullet/pellet/fragment/))
 	set waitfor = 0
-	var/list/target_turfs = getcircle(T, spreading_range)
-	var/fragments_per_projectile = round(fragment_number/target_turfs.len)
 
-	for(var/turf/O in target_turfs)
+	if (!isnum(fragment_number))
+		fragment_number = 30
+
+	var/list/target_turfs = getcircle(T, spreading_range)
+	var/fragments_per_projectile = Floor(fragment_number/target_turfs.len)
+	if (fragments_per_projectile < 1)
+		fragments_per_projectile = 1
+
+	target_turfs = shuffle(target_turfs)
+
+	for(var/i = 1; i <= target_turfs.len; i++)
+
+		var/turf/O = target_turfs[i]
+
 		sleep(0)
+
+		if (fragment_number <= 0)
+			return
+
+
 		var/fragment_type = pickweight(fragtypes)
 		var/obj/item/projectile/bullet/pellet/fragment/P = new fragment_type(T)
-		P.pellets = fragments_per_projectile
+		P.pellets = min(fragments_per_projectile, fragment_number)
+		fragment_number -= P.pellets
 		P.shot_from = src.name
 
 		P.launch(O)
@@ -58,13 +75,20 @@
 			//lying on a frag grenade while the grenade is on the ground causes you to absorb most of the shrapnel.
 			//you will most likely be dead, but others nearby will be spared the fragments that hit you instead.
 			if(M.lying && isturf(src.loc))
-				P.attack_mob(M, 0, 5)
+				P.attack_mob(M, 0, 20)
 			else if(!M.lying && src.loc != get_turf(src)) //if it's not on the turf, it must be in the mob!
-				P.attack_mob(M, 0, 25) //you're holding a grenade, dude!
+				P.attack_mob(M, 0, 35) //you're holding a grenade, dude!
 			else
-				P.attack_mob(M, 0, 100) //otherwise, allow a decent amount of fragments to pass
+				P.attack_mob(M, 0, 80) //otherwise, allow a decent amount of fragments to pass
 
 
+		if (fragment_number <= 0)
+			return
+
+		else if (i == target_turfs.len)
+			//If we reach the end of the list and we still have fragments left, start over
+			//This will never require more than two passes, and we will almost certainly run out partway through the second pass
+			i = 1
 
 /obj/item/weapon/grenade/frag/proc/on_explosion(var/turf/O)
 	if(explosion_size)
@@ -83,7 +107,7 @@
 	icon_state = "frag"
 
 	w_class = ITEM_SIZE_NORMAL
-	
+
 	throw_range = 5 //heavy, can't be thrown as far
 
 	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment=1,/obj/item/projectile/bullet/pellet/fragment/strong=4)

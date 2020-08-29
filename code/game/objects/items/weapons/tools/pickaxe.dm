@@ -15,7 +15,7 @@
 	attack_noun = list("hit", "pierce", "slice", "attack")
 	sharp = 1
 	var/default_full_dig = TRUE
-	//structure_damage_factor = 3 //Drills and picks are made for getting through hard materials
+	structure_damage_factor = 3 //Drills and picks are made for getting through hard materials
 	//They are the best anti-structure melee weapons
 	//embed_mult = 1.2 //Digs deep
 	worksound = WORKSOUND_PICKAXE
@@ -82,7 +82,7 @@
 	icon_state = "ds_rocksaw0"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
-	switched_on_force = WEAPON_FORCE_ROBUST
+	switched_on_force = WEAPON_FORCE_ROBUST*0.9
 	force = WEAPON_FORCE_NORMAL
 	throwforce = WEAPON_FORCE_NORMAL
 	item_state = "ds_rocksaw0"
@@ -96,9 +96,9 @@
 	sharp = 1
 	edge = 1
 	max_upgrades = 4
-	degradation = 0.10
-	use_power_cost = 0.44
-	passive_power_cost = 0.06
+	degradation = 0.075
+	use_power_cost = 0.66
+	passive_power_cost = 0.075
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
 

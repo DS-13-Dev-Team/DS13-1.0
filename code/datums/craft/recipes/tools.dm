@@ -94,6 +94,28 @@
 		list(CRAFT_OBJECT,/obj/item/weapon/tank/emergency/oxygen, 1)
 	)
 
+/*************************
+	Tool Ammunition and Consumables
+*************************/
+/datum/craft_recipe/tool/rivets
+	name = "Rivet refill"
+	desc = "Takes a (preferably empty) rivet magazine, and fills it with new rivets"
+	result = /obj/item/ammo_magazine/rivet
+
+	steps = list(
+		list(CRAFT_OBJECT,/obj/item/ammo_magazine/rivet, "time" = 60),
+		list(CRAFT_STACK, /obj/item/stack/rods, 4),
+		list(CRAFT_TOOL,QUALITY_SAWING, 10, 120)
+	)
+
+/datum/craft_recipe/tool/rivet_mag
+	name = "Rivet Magazine"
+	desc = "Creates an empty magazine designed to fit the 711-MarkCL Rivet Gun. Rivets to fill it are created seperately"
+	result = /obj/item/ammo_magazine/rivet/empty
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_PLASTIC, 4),
+		list(CRAFT_OBJECT, /obj/item/weapon/cell)
+	)
 
 /*************************
 	TOOL MODS

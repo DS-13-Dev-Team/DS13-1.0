@@ -24,11 +24,9 @@
 
 /datum/player/proc/update_patron()
 	if ((key in GLOB.patron_keys))
-		log_world("Player set patron status TRUE")
 		patron = TRUE
 	else
 		patron = FALSE
-		log_world("Player key [key] not in patrons, they are [english_list(GLOB.patron_keys)]")
 
 	var/client/C = get_client()
 	if (C && C.prefs && C.prefs.loadout)

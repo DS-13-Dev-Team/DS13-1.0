@@ -35,6 +35,7 @@
 	var/windup_sound	//Sound played during windup time
 	var/move_delay = 1
 	var/fire_sound = 'sound/weapons/gunshot/gunshot.ogg'
+	var/shot_volume = VOLUME_MID
 	var/fire_sound_text = "gunshot"
 	var/fire_anim = null
 	var/screen_shake = 0 //shouldn't be greater than 2 unless zoomed
@@ -42,11 +43,13 @@
 	var/move_accuracy_mod	=	-7.5	//Modifier applied to accuracy while moving. Should generally be negative
 
 
+
 	var/list/dispersion = list(0)
 
 	var/wielded_item_state
 	var/combustion	//whether it creates hotspot when fired
 
+	var/last_fire_attempt = 0	//Last time afterattack was called, regardless of result
 	var/next_fire_time = 0
 
 	var/sel_mode = 1 //index of the currently selected mode
@@ -192,6 +195,7 @@
 
 //Return true if we successfully fired
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, adjacent, params, var/vector2/world_pixel_click)
+	last_fire_attempt = world.time
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
 
 	if(!user.aiming)
@@ -222,7 +226,7 @@
 		return ..() //Pistolwhippin'
 
 /obj/item/weapon/gun/dropped(var/mob/living/user)
-	if(istype(user))
+	if(istype(user) && istype(loc, /turf))
 		if(!safety() && prob(5) && !user.skill_check(SKILL_WEAPONS, SKILL_BASIC) && can_fire(null, user, TRUE))
 			to_chat(user, "<span class='warning'>[src] fires on its own!</span>")
 			var/list/targets = list(user)
@@ -278,7 +282,7 @@
 			return FALSE
 
 //Safety checks are done by the time fire is called
-/obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+/obj/item/weapon/gun/proc/Fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
 
 	if (current_firemode && current_firemode.override_fire)
 		current_firemode.fire(target, user, clickparams, pointblank, reflex)
@@ -302,7 +306,7 @@
 
 	if (windup_time)
 		if (windup_sound)
-			playsound(user, windup_sound, 100, 1)
+			playsound(user, windup_sound, VOLUME_HIGH, 1)
 		sleep(windup_time)
 
 	//actually attempt to shoot
@@ -340,8 +344,6 @@
 		if (current_firemode)	current_firemode.on_fire(target, user, clickparams, pointblank, reflex, TRUE, projectile)//Tell the firemode that we successfully fired
 
 	//update timing
-	user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
-	user.set_move_cooldown(move_delay)
 	next_fire_time = world.time + fire_delay
 
 //obtains the next projectile to fire
@@ -504,9 +506,9 @@
 	if (islist(shot_sound))
 		shot_sound = pick(shot_sound)
 	if(silenced)
-		playsound(user, shot_sound, 10, 1)
+		playsound(user, shot_sound, VOLUME_QUIET, 1)
 	else
-		playsound(user, shot_sound, 50, 1)
+		playsound(user, shot_sound, shot_volume, 1)
 
 //Suicide handling.
 /obj/item/weapon/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>

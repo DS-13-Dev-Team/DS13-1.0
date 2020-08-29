@@ -57,6 +57,13 @@
 	return TRUE
 
 
+/datum/click_handler/rmb_aim/OnDblClick(var/atom/A, var/params)
+	if (gun && usr)
+		var/list/modifiers = params2list(params)
+		if(modifiers["left"])
+			if (gun.last_fire_attempt != world.time)
+				gun.afterattack(A, usr, FALSE, params)
+	return TRUE
 
 /datum/click_handler/rmb_aim/proc/start_aiming()
 	if (gun.enable_aiming_mode())

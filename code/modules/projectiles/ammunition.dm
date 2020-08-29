@@ -85,6 +85,21 @@
 		to_chat(user, "This one is spent.")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //An item that holds casings and can be used to put them inside guns
 /obj/item/ammo_magazine
 	name = "magazine"
@@ -97,7 +112,7 @@
 	matter = list(MATERIAL_STEEL = 500)
 	throwforce = 5
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 10
 
 	var/list/stored_ammo = list()
@@ -126,7 +141,7 @@
 	if(isnull(initial_ammo))
 		initial_ammo = max_ammo
 
-	if(initial_ammo)
+	if(initial_ammo && ammo_type)
 		for(var/i in 1 to initial_ammo)
 			stored_ammo += new ammo_type(src)
 	update_icon()
