@@ -310,7 +310,7 @@ The Lurker can only fire spines while its shell is open"
 	var/windup_anim_time = windup_time - fire_time
 
 	//Here we start the windup.
-	cached_pixels = new /vector2(user.pixel_x, user.pixel_y)
+	cached_pixels = get_new_vector(user.pixel_x, user.pixel_y)
 
 	x_direction = 0
 	//If the target is offset on our X axis, we'll have an extra factor on the animation
@@ -331,7 +331,7 @@ The Lurker can only fire spines while its shell is open"
 	animate(user, transform=turn(matrix(), user.default_rotation +(30*x_direction)), pixel_y = cached_pixels.y-6, pixel_x = cached_pixels.x + 22*x_direction, time = fire_time, easing = BACK_EASING, flags = ANIMATION_PARALLEL)
 	animate(transform=turn(matrix(), user.default_rotation), pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = 5)	//Afterwards, reset to normal position
 	sleep(fire_time)
-
+	release_vector(cached_pixels)
 
 
 

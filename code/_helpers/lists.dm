@@ -228,6 +228,9 @@ Checks if a list has the same entries and values as an element of big.
 		return picked
 	return null
 
+//Macro version of pop, no safety checks, ultra fast. Pass in list, and variable to recieve the function
+#define macropop(L, A)	A = L[length(L)];L.len--;
+
 //Returns the bottom(first) element from the list and removes it from the list (typical stack function)
 /proc/antipop(list/listfrom)
 	if (listfrom.len > 0)

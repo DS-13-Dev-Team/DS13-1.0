@@ -169,7 +169,7 @@
 	else
 		//Note: This may fail near the map edge, if it overshoots world bounds. Tricky to fix, probably won't be a problem
 		var/vector2/delta = new(target.x - user.x, target.y - user.y)
-		delta = delta.ToMagnitude(max_range()+1)
+		delta.SelfToMagnitude(max_range()+1)
 		var/turf/target_turf = locate(user.x + delta.x, user.y + delta.y, user.z)
 		if (target_turf)
 			move_target = target_turf

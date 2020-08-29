@@ -17,7 +17,7 @@
 
 //Sets the pixelmarker to be on the target pixel exactly
 /obj/effect/pixelmarker/set_global_pixel_loc(var/vector2/coords)
-	..(coords + new /vector2(16, 16))
+	..(coords + get_new_vector(16, 16))
 
 
 

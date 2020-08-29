@@ -162,12 +162,14 @@ All of these properties combined make Step Strike tricky and disorienting to use
 			if (get_dist(src, A) <= 2)
 				return	//Can't do this if we're too close
 
-			var/vector2/delta = new /vector2(A.x - x, A.y - y)
+			var/vector2/delta = get_new_vector(A.x - x, A.y - y)
 			delta = delta.ToMagnitude(3)
 			var/turf/blink_target = locate(x+delta.x, y+delta.y, z)
 			if (blink_target)
 				var/datum/extension/twitch/T = get_extension(src, /datum/extension/twitch)
 				T.move_to(blink_target, speed = 12)
+
+			release_vector(delta)
 
 
 

@@ -13,7 +13,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	var/result_path		//The atom we'll spawn when placement is successful
 	var/snap_to_grid	//If true, the preview will snap to the centre of whatever tile the user hovers over
 	var/stopped = FALSE	//Used to prevent running stop code twice
-	var/vector2/pixel_offset = new /vector2(0,0)	//Is our preview image offset from the mouse cursor?
+	var/vector2/pixel_offset	//Is our preview image offset from the mouse cursor?
 	var/turf/last_location
 	var/rotate_angle = 90
 	flags = CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT
@@ -28,8 +28,13 @@ GLOBAL_LIST_EMPTY(placement_previews)
 /datum/click_handler/placement/New(var/mob/user, var/datum/callback/C)
 	if (C)
 		call_on_place = C
+	pixel_offset = get_new_vector(0,0)
 	.=..()
 
+
+/datum/click_handler/placement/Destroy()
+	release_vector(pixel_offset)
+	.=..()
 
 //Starting and finishing
 //---------------------------------------
@@ -154,7 +159,8 @@ GLOBAL_LIST_EMPTY(placement_previews)
 		preview = new /atom/movable()
 		var/atom/A = new path()
 		if (!snap_to_grid)
-			pixel_offset = new /vector2/(-WORLD_ICON_SIZE/2, -WORLD_ICON_SIZE/2) //Offset should be at least -16,-16 to center the icon.
+			pixel_offset.x = -WORLD_ICON_SIZE/2
+			pixel_offset.y = -WORLD_ICON_SIZE/2 //Offset should be at least -16,-16 to center the icon.
 		pixel_offset.x += A.pixel_x
 		pixel_offset.y += A.pixel_y
 		preview.appearance = A.appearance

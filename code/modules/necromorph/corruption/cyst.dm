@@ -127,6 +127,8 @@
 		else
 			target_atom = infront //fallback incase of failure
 
+		release_vector(delta)
+
 	QDEL_NULL(payload)	//Delete the payload, so we don't fire again
 
 	//Fire the bomb!
@@ -235,7 +237,7 @@
 	if (mount_target)
 		pixel_offset = last_location.get_offset_to(mount_target, CYST_ATTACH_OFFSET)
 	else
-		pixel_offset = new /vector2(0,0)
+		pixel_offset = get_new_vector(0,0)
 
 
 /*
@@ -299,4 +301,4 @@
 	if (mount_target)
 		pixel_offset = last_location.get_offset_to(mount_target, CYST_ATTACH_OFFSET)
 	else
-		pixel_offset = new /vector2(0,0)
+		pixel_offset = get_new_vector(0,0)

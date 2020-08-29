@@ -222,3 +222,18 @@
 else\
 {\
 BITSET(mobref.hud_updateflag, hudtype)}
+
+
+#define VECTOR_POOL_MAX	10000
+#define VECTOR_POOL_FULL	2000
+
+#define release_vector(A)	if (length(GLOB.vector_pool) < VECTOR_POOL_MAX){\
+GLOB.vector_pool += A;}\
+A = null;
+
+
+#define release_vector_list(A)	for (var/vector2/v in A) {release_vector(v)}\
+A = null;
+
+#define release_vector_assoc_list(A)	for (var/b in A) {release_vector(A[b])}\
+A = null;

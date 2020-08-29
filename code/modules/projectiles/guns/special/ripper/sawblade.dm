@@ -262,7 +262,7 @@
 
 
 	//Now before we do animating, lets check if this movement is going to put us into a different tile
-	var/vector2/newpix = new /vector2((pixel_x + diff.x), (pixel_y + diff.y))
+	var/vector2/newpix = get_new_vector((pixel_x + diff.x), (pixel_y + diff.y))
 	if (is_outside_cell(newpix))
 		//Yes it will, lets find that tile
 		var/turf/newtile = get_turf_at_pixel_offset(newpix)
@@ -298,6 +298,8 @@
 				set_global_pixel_loc(get_global_pixel_loc()) //This will move us into the tile while maintaining our global pixel coords
 
 	animate(src, pixel_x = newpix.x, pixel_y = newpix.y)
+	release_vector(newpix)
+	release_vector(diff)
 
 
 /obj/item/projectile/sawblade/proc/damage_turf()

@@ -2960,6 +2960,7 @@
 #include "lib\vector2\CommonVectors.dm"
 #include "lib\vector2\Vector2.dm"
 #include "lib\vector2\Vector2Matrix.dm"
+#include "lib\vector2\vectorpool.dm"
 #include "lib\viewporttoworldpoint\ViewportToWorldPoint.dm"
 #include "maps\_map_include.dm"
 #include "maps\away\away_sites.dm"

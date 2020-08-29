@@ -36,27 +36,27 @@ vector2
 
 		/* Vector addition.
 		*/
-		operator+(vector2/v) return v ? new/vector2(x + v.x, y + v.y) : src
+		operator+(vector2/v) return v ? get_new_vector(x + v.x, y + v.y) : src
 
 		/* Vector subtraction and negation.
 		*/
-		operator-(vector2/v) return v ? new/vector2(x - v.x, y - v.y) : new/vector2(-x, -y)
+		operator-(vector2/v) return v ? get_new_vector(x - v.x, y - v.y) : get_new_vector(-x, -y)
 
 		/* Vector scaling.
 		*/
 		operator*(s)
 			// Scalar
-			if(isnum(s)) return new/vector2(x * s, y * s)
+			if(isnum(s)) return get_new_vector(x * s, y * s)
 
 			// Transform
 			else if(istype(s, /matrix))
 				var matrix/m = s
-				return new/vector2(x * m.a + y * m.b + m.c, x * m.d + y * m.e + m.f)
+				return get_new_vector(x * m.a + y * m.b + m.c, x * m.d + y * m.e + m.f)
 
 			// Component-wise
 			else if(istype(s, /vector2))
 				var vector2/v = s
-				return new/vector2(x * v.x, y * v.y)
+				return get_new_vector(x * v.x, y * v.y)
 
 			else CRASH("Invalid args.")
 
@@ -64,7 +64,7 @@ vector2
 		*/
 		operator/(d)
 			// Scalar
-			if(isnum(d)) return new/vector2(x / d, y / d)
+			if(isnum(d)) return get_new_vector(x / d, y / d)
 
 			// Inverse transform
 			else if(istype(d, /matrix)) return src * ~d
@@ -72,7 +72,7 @@ vector2
 			// Component-wise
 			else if(istype(d, /vector2))
 				var vector2/v = d
-				return new/vector2(x / v.x, y / v.y)
+				return get_new_vector(x / v.x, y / v.y)
 
 			else CRASH("Invalid args.")
 
@@ -128,7 +128,7 @@ vector2
 			if (NonZero())
 				return ToMagnitude(1)
 			else
-				return new /vector2(0,0)
+				return get_new_vector(0,0)
 
 		/* Convert the vector to text with a specified number of significant figures.
 		*/
@@ -154,14 +154,15 @@ vector2
 		RotationFrom(vector2/from_vector = Vector2.North)
 			var vector2/to_vector = Normalized()
 
-			if(isnum(from_vector)) from_vector = Vector2.FromDir(from_vector)
+			if(isnum(from_vector)) from_vector = Vector2.NewFromDir(from_vector)
 
 			if(istype(from_vector, /vector2))
-				from_vector = from_vector.Normalized()
+				from_vector.SelfNormalize()
 				var
 					cos_angle = to_vector.Dot(from_vector)
 					sin_angle = to_vector.Cross(from_vector)
-				return matrix(cos_angle, sin_angle, 0, -sin_angle, cos_angle, 0)
+				.= matrix(cos_angle, sin_angle, 0, -sin_angle, cos_angle, 0)
+				release_vector(to_vector)
 
 			else CRASH("Invalid 'from' vector.")
 
@@ -188,14 +189,14 @@ vector2
 			if (NonZero() && onto && onto.NonZero())
 				var/vector2/result = (onto*(src.Dot(onto) / onto.Dot(onto)))
 				return result
-			return new /vector2(0,0)
+			return get_new_vector(0,0)
 
 
 		SafeRejection(var/vector2/onto)
 			if (NonZero() && onto && onto.NonZero())
 				var/vector2/result = src - Projection(onto)
 				return result
-			return new /vector2(0,0)
+			return get_new_vector(0,0)
 
 		/* Get the matrix that rotates from_vector to point in this direction.
 			Also accepts a dir.
@@ -206,7 +207,7 @@ vector2
 			if(isnum(from_vector)) from_vector = Vector2.FromDir(from_vector)
 
 			var/angle = (Atan2(to_vector.y, to_vector.x) - Atan2(from_vector.y, from_vector.x))
-
+			release_vector(to_vector)
 			if (shorten)
 				angle = shortest_angle(angle)
 
@@ -214,6 +215,7 @@ vector2
 
 		/* Get a vector with the same magnitude rotated by a clockwise angle in degrees.
 		*/
+		//Future TODO: Make and implement a self version of this
 		Turn(angle) return src * matrix().Turn(angle)
 
 		FloorVec()
@@ -257,6 +259,11 @@ vector2
 		SelfCeiling()
 			x = Ceiling(x)
 			y = Ceiling(y)
+
+
+		/* Get a vector in the same direction but with magnitude 1.
+		*/
+		SelfNormalize() SelfToMagnitude(1)
 
 		SelfToMagnitude(var/m)
 			m /= Magnitude()

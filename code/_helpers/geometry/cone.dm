@@ -70,6 +70,8 @@
 
 		subcone_direction = subcone_direction.Turn(subcone_angle)
 
+	//We only release vectors we created, not those we were given
+	release_vector(subcone_direction)
 	return subcones
 
 //Runs get cone and then picks a random tile from it

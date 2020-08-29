@@ -146,7 +146,9 @@
 //This cannot fail, make sure safety checks are done already
 /datum/extension/wallrun/proc/mount_to_atom(var/atom/target)
 	mountpoint = target
-	offset = new /vector2(A.x - target.x, A.y - target.y)
+	if (offset)
+		release_vector(offset)
+	offset = get_new_vector(A.x - target.x, A.y - target.y)
 
 	if (istype(mountpoint, /atom/movable))
 		GLOB.moved_event.register(mountpoint, src, /datum/extension/wallrun/proc/on_mountpoint_move)
@@ -172,8 +174,7 @@
 	A.default_rotation = mount_angle
 
 
-	var/vector2/newpix = centre_offset	//The centre offset is used flatly without rotation
-	newpix += base_offset.Turn(mount_angle)	//The base offset is used with rotation
+	var/vector2/newpix = (centre_offset + base_offset.Turn(mount_angle))	//The base offset is used with rotation
 
 	A.default_pixel_x = newpix.x
 	A.default_pixel_y = newpix.y
@@ -184,7 +185,7 @@
 	animate(A, transform = A.get_default_transform(), alpha = A.default_alpha, pixel_x = A.default_pixel_x, pixel_y = A.default_pixel_y, time = mount_time, easing = BACK_EASING)
 
 
-
+	release_vector(newpix)
 
 
 
@@ -276,7 +277,7 @@
 
 
 /datum/extension/wallrun/proc/cache_data()
-	cached_pixels = new /vector2(A.default_pixel_x, A.default_pixel_y)
+	cached_pixels = get_new_vector(A.default_pixel_x, A.default_pixel_y)
 	default_rotation = A.default_rotation
 	cached_alpha = A.default_alpha
 	cached_passflags = A.pass_flags
@@ -292,13 +293,14 @@
 
 		//We cut the size in half and then subtract 16,16, which is the centre of a normal 32x32 tile.
 		size *= 0.5
-		size -= new /vector2(WORLD_ICON_SIZE * 0.5, WORLD_ICON_SIZE * 0.5)
+		size -= get_new_vector(WORLD_ICON_SIZE * 0.5, WORLD_ICON_SIZE * 0.5)
 		centre_offset = size*-1
 
 		//Base offset is simple. Its just the inverted Y offset and no X
 		base_offset = size
 		base_offset.x = 0
 		base_offset.y += pixel_offset_magnitude //We can add in the pixel offset here for efficiency too
+		release_vector(size)
 
 /datum/extension/wallrun/proc/unmount_animation()
 	//Visuals
@@ -521,10 +523,10 @@
 /datum/extension/wallrun/proc/dir_set(var/atom/mover, var/old_dir, var/new_dir)
 	if (mountpoint)
 		//We get the normal direction of the wall
-		var/vector2/current_wall_normal = new /vector2(mover.x - mountpoint.x, mover.y - mountpoint.y)
+		var/vector2/current_wall_normal = get_new_vector(mover.x - mountpoint.x, mover.y - mountpoint.y)
 
 		//Lets get the direction of the target now
-		var/vector2/desired_dir = Vector2.FromDir(new_dir)
+		var/vector2/desired_dir = Vector2.FromDir(new_dir)	//This is working with a preexisting global, should NOT be released
 
 		//Alright next up, we get the angle between these two
 		var/desired_angle = desired_dir.AngleFrom(current_wall_normal)
@@ -534,6 +536,7 @@
 
 		var/actual_dir = turn(SOUTH, desired_angle)
 		A.dir = actual_dir
+		release_vector(current_wall_normal)
 	visual_dir = new_dir
 
 

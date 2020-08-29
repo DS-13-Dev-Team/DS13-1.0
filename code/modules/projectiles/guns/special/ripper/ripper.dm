@@ -70,7 +70,7 @@
 		var/vector2/userdiff = last_clickpoint - user_loc
 		//If its farther than the max distance from the user
 		if (userdiff.Magnitude() > max_range)
-			userdiff = userdiff.ToMagnitude(max_range)//We rescale the magnitude of the diff
+			userdiff.SelfToMagnitude(max_range)//We rescale the magnitude of the diff
 			last_clickpoint = user_loc + userdiff //And change clickpoint to the rescaled
 
 		tether.set_ends(user_loc, last_clickpoint) //The tether points to the cursor, the blade catches up with it

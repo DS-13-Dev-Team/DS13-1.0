@@ -57,7 +57,7 @@
 		L.Stun(stuntime, TRUE) //Passing true here bypasses species resistance
 
 	//Here we start the windup.
-	cached_pixels = new /vector2(user.pixel_x, user.pixel_y)
+	cached_pixels = get_new_vector(user.pixel_x, user.pixel_y)
 
 
 

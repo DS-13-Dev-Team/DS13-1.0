@@ -151,6 +151,8 @@
 
 	if(autopsy_data)    autopsy_data.Cut()
 
+	release_vector(limb_height)
+
 	return ..()
 
 /obj/item/organ/external/set_dna(var/datum/dna/new_dna)

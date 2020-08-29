@@ -77,7 +77,7 @@
 		var/saccade_distance = sqrt((get_view_length()**2)*2)	//Pythagoras helps us find the distance of the saccade. Hypotenuse = square root of A squared + B squared
 		saccade_time *= saccade_distance
 		animate(src, pixel_x = offset.x, pixel_y = offset.y, time = saccade_time, easing = SINE_EASING)
-
+	release_vector(offset)
 
 
 
@@ -143,12 +143,14 @@
 
 	//Lets get how far the screen extends around the origin
 	var/list/bound_offsets = get_tile_bounds(FALSE) //Cut off partial tiles or they might stretch the screen
-	var/vector2/delta = new /vector2(A.x - origin.x, A.y - origin.y)	//Lets get the position delta from origin to target
+	var/vector2/delta = get_new_vector(A.x - origin.x, A.y - origin.y)	//Lets get the position delta from origin to target
 	//Now check whether or not that would put it onscreen
 	//Bottomleft first
 	var/vector2/BL = bound_offsets["BL"]
 	if (delta.x < BL.x || delta.y < BL.y)
 		//Its offscreen
+		release_vector(delta)
+		release_vector_assoc_list(bound_offsets)
 		return
 
 
@@ -156,9 +158,14 @@
 	var/vector2/TR = bound_offsets["TR"]
 	if (delta.x > TR.x || delta.y > TR.y)
 		//Its offscreen
+		release_vector(delta)
+		release_vector_assoc_list(bound_offsets)
 		return
 
 
+
+	release_vector(delta)
+	release_vector_assoc_list(bound_offsets)
 	//If we get here, the target is on our screen!
 	return TRUE
 

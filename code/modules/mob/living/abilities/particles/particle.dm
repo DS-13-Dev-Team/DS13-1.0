@@ -34,6 +34,7 @@
 	src.direction = direction
 	if (direction)
 		transform = direction.Rotation()
+		release_vector(direction)
 
 	if (color)
 		src.color = color
@@ -68,3 +69,8 @@
 	time = lifespan,
 	flags = ANIMATION_LINEAR_TRANSFORM)
 
+
+/obj/effect/particle/Destroy()
+	release_vector(destination_pixels)
+	release_vector(origin_pixels)
+	.=..()

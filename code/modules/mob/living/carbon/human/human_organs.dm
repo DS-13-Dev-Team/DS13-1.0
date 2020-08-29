@@ -309,7 +309,7 @@
 //Altitude is how high the plane is off the ground
 //Height is how tall the plane is
 /mob/living/carbon/human/proc/get_limbs_at_height(var/altitude, var/height = 0.01)
-	var/vector2/ourheight = new /vector2(altitude, altitude+height)
+	var/vector2/ourheight = get_new_vector(altitude, altitude+height)
 
 	var/list/limbs = list()
 

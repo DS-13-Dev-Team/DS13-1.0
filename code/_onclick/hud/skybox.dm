@@ -54,7 +54,7 @@
 		//Buffer is added to our own position, because we're position+buffer away from the lower sides
 		//Buffer is added TWICE to the world maxx/y values, because the percentage is measured as a whole along that line
 		//Because of the buffer, neither of the values will ever be 0 or 1
-		var/vector2/locpercent = new /vector2(
+		var/vector2/locpercent = get_new_vector(
 		(skybox.buffer_tiles + T.x) / (world.maxx + skybox.buffer_tiles*2),
 		(skybox.buffer_tiles + T.y) / (world.maxy + skybox.buffer_tiles*2)
 		)
@@ -64,7 +64,7 @@
 		locpercent.x -= 1
 		locpercent.y -= 1
 		skybox.screen_loc = "CENTER:[round(skybox.base_offset + (skybox.slide_range * locpercent.x))],CENTER:[round(skybox.base_offset + (skybox.slide_range* locpercent.y))]"
-
+		release_vector(locpercent)
 
 /mob/Login()
 	..()

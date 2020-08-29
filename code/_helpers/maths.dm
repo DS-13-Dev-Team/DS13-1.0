@@ -216,7 +216,9 @@
 
 	//This gets us the centre of the turf
 	var/vector2/LL = target.get_global_pixel_loc()
-	var/vector2/UR = new (LL)	//Copy it
+	var/vector2/UR = get_new_vector(LL.x, LL.y)	//Copy it
+
+
 	//We subtract 16 from X and Y to get to the lowerleft corner
 	LL.x -= WORLD_ICON_SIZE / 2
 	LL.y -= WORLD_ICON_SIZE / 2
@@ -232,8 +234,8 @@
 
 	var/vector2/endpoint = origin + ray
 
-	var/vector2/linemin = new /vector2(min(origin.x, endpoint.x), min(origin.y, endpoint.y))
-	var/vector2/linemax = new /vector2(max(origin.x, endpoint.x), max(origin.y, endpoint.y))
+	var/vector2/linemin = get_new_vector(min(origin.x, endpoint.x), min(origin.y, endpoint.y))
+	var/vector2/linemax = get_new_vector(max(origin.x, endpoint.x), max(origin.y, endpoint.y))
 	ray = linemax - linemin
 
 
@@ -268,6 +270,13 @@
 	var/vector2/exit = linemin + (ray * max_intersect)
 
 	var/list/intersections = list(entry, exit)
+
+	//Oof, this is way too many vectors to be working with
+	release_vector(LL)
+	release_vector(UR)
+	release_vector(endpoint)
+	release_vector(linemin)
+	release_vector(linemax)
 
 	return intersections
 
