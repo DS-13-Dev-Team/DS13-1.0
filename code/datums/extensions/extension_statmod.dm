@@ -72,3 +72,28 @@
 	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_MOVESPEED_MULTIPLICATIVE))
 		move_speed_factor *= E.movespeed_mod()
 
+
+
+/*
+	Incoming Damage
+*/
+/datum/extension/proc/register_incoming_damage_mod()
+	register_statmod(STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE)
+	holder.update_incoming_damage_factor()
+
+/datum/extension/proc/unregister_incoming_damage_mod()
+	unregister_statmod(STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE)
+	holder.update_incoming_damage_factor()
+
+/datum/extension/proc/incoming_damage_mod()
+	return 1
+
+//Additive modifiers first, then multiplicative
+/datum/proc/update_incoming_damage_factor()
+
+/mob/living/update_incoming_damage_factor()
+	incoming_damage_mult = 1
+
+	//We multiply by the result of each multiplicative modifier
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE))
+		incoming_damage_mult *= E.incoming_damage_mod()

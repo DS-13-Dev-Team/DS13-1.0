@@ -30,3 +30,4 @@
 //Value modifiers for extensions
 #define STATMOD_MOVESPEED_ADDITIVE	"additive movespeed modifiers"
 #define STATMOD_MOVESPEED_MULTIPLICATIVE	"multiplicative movespeed modifiers"
+#define STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	"multiplicative recieved damage modifiers"

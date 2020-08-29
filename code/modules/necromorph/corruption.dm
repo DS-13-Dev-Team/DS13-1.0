@@ -332,7 +332,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 //-------------------
 //Any mob that walks over a corrupted tile recieves this effect. It does varying things
 	//On most mobs, it applies a slow to movespeed
-	//On necromorphs, it applies a passive healing instead
+	//On necromorphs, it applies a speedboost, passive healing and defense buff instead
 
 /datum/extension/corruption_effect
 	name = "Corruption Effect"
@@ -340,11 +340,12 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	flags = EXTENSION_FLAG_IMMEDIATE
 
 	//Effects on necromorphs
-	var/healing_per_tick = 1.2
-	var/speedup = 1.2
+	var/healing_per_tick = 1.2	//Passive Healing
+	var/speedup = 1.25	//Bonus movespeed
+	var/incoming_damage_mod = 0.85	//Incoming damage reduction
 
 	//Effects on non necros
-	var/slowdown = 0.65	//Multiply speed by this
+	var/slowdown = 0.60	//Movespeed Penalty
 
 	var/speed_factor = 0
 
@@ -358,12 +359,14 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	if (L.is_necromorph())
 		necro = TRUE
 		speed_factor = speedup //Necros are sped up
+		register_incoming_damage_mod()
 		to_chat(L, SPAN_DANGER("The corruption beneath speeds your passage and mends your vessel."))
 	else
 		to_chat(L, SPAN_DANGER("This growth underfoot is sticky and slows you down."))
 		speed_factor = slowdown	//humans are slowed down
 
 	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
+
 
 	START_PROCESSING(SSprocessing, src)
 
@@ -382,8 +385,14 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 /datum/extension/corruption_effect/Destroy()
 	unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
-
+	var/mob/living/L = holder
+	if (L.is_necromorph())
+		unregister_incoming_damage_mod()
 	.=..()
 
 /datum/extension/corruption_effect/movespeed_mod()
 	return speed_factor
+
+
+/datum/extension/corruption_effect/incoming_damage_mod()
+	return incoming_damage_mod

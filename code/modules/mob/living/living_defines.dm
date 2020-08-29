@@ -58,3 +58,4 @@
 
 
 	var/attack_speed_factor	=	1	//Multiplier on attackspeed. Used as a divisor on unarmed attack delays, and certain ability cooldowns
+	var/incoming_damage_mult = 1	//Multiplier on all damage recieved, regardless of source

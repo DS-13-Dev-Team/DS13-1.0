@@ -48,6 +48,7 @@
 
 	//Harvester dies fast without corruption support
 	degen = 5
+	regen = 0.75
 
 	//The harvester needs to exist for this long before it fully deploys
 	var/deployment_time = 1 MINUTE
