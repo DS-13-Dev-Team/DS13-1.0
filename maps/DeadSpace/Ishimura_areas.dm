@@ -370,6 +370,9 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/crew/gym
 	name = "\improper Gym"
 
+/area/ishimura/lower/crew/hydroponics
+	name = "\improper Hydroponics Bay"
+
 /area/ishimura/lower/crew/messhall
 	name = "\improper Messhall"
 
@@ -598,12 +601,6 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/misc
 	name = "\improper Misc"
 	icon_state = "miscbase"
-
-/area/ishimura/lower/misc/hydroponics
-	name = "\improper Hydroponics Bay"
-
-/area/ishimura/lower/misc/hydroponics/lobby
-	name = "\improper Hydroponics Lobby"
 
 /area/ishimura/lower/misc/abandon_surgery
 	name = "\improper Abandoned Surgical Suite"
