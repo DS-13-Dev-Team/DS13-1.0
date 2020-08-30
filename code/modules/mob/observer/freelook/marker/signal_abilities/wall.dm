@@ -33,7 +33,7 @@
 	pixel_y = 6
 
 	max_health = 65
-	resistance = 6
+	resistance = 5
 	can_block_movement = TRUE
 
 //Wall has a smaller random rotation range
