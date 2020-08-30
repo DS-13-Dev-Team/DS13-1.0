@@ -76,6 +76,12 @@ vector2
 
 			else CRASH("Invalid args.")
 
+
+
+		Copy()
+			return get_new_vector(x, y)
+
+
 		/* Vector dot product.
 			Returns the cosine of the angle between the vectors.
 		*/

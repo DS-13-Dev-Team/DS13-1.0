@@ -461,6 +461,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 		//The list may contain height data
 		var/vector2/organ_height = organ_data["height"]
+		organ_height = organ_height.Copy()
 		if (organ_height && istype(O, /obj/item/organ/external))
 			var/obj/item/organ/external/E = O
 			E.limb_height = organ_height

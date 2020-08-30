@@ -327,6 +327,7 @@
 		//Alright we collide
 		limbs += E
 
+	release_vector(ourheight)
 	return limbs
 
 
