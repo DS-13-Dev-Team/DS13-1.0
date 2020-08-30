@@ -290,11 +290,12 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	var/conehit = FALSE
 
 	//Secondly, to mobs in a frontal cone
-	new /obj/effect/effect/forceblast/tripod(user.loc, 0.65 SECOND, direction.Rotation())
+	var/matrix/rotation = direction.Rotation()
+	new /obj/effect/effect/forceblast/tripod(user.loc, 0.65 SECOND, rotation)
 	spawn(1.5)
-		new /obj/effect/effect/forceblast/tripod(user.loc, 0.65 SECOND, direction.Rotation())
+		new /obj/effect/effect/forceblast/tripod(user.loc, 0.65 SECOND, rotation)
 	spawn(3)
-		new /obj/effect/effect/forceblast/tripod(user.loc, 0.75 SECOND, direction.Rotation())
+		new /obj/effect/effect/forceblast/tripod(user.loc, 0.75 SECOND, rotation)
 	for (var/turf/T as anything in get_cone(user.loc, direction, 3, 80))
 		for (var/mob/living/L in T)
 			if (L == user)
@@ -310,6 +311,8 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 		var/datum/extension/high_leap/E = get_extension(user, /datum/extension/high_leap)
 		if (E)
 			E.cooldown = LEAP_REDUCED_COOLDOWN
+
+	release_vector(direction)
 
 
 /obj/effect/effect/forceblast/tripod

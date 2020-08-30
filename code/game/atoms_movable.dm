@@ -154,7 +154,9 @@
 		if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 			break
 		//src.Move(step)
-		pixel_move(step.get_global_pixel_offset(src), interval)
+		var/vector2/pixeltarget = step.get_global_pixel_offset(src)
+		pixel_move(pixeltarget, interval)
+		release_vector(pixeltarget)
 		handle_thrown_collision(speed)
 		dist_travelled++
 		sleep_debt += interval

@@ -179,6 +179,7 @@
 
 	//Setup the transform
 	var/matrix/M = starting_direction.Rotation()
+	release_vector(starting_direction)
 	M.Scale(effect.default_scale)
 
 	//And apply it

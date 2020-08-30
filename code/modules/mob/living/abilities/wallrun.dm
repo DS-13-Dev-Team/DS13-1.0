@@ -289,18 +289,26 @@
 
 	//Lets calculate the centre offset, once only
 	if (!centre_offset)
+
+		//Size won't be released in this stack, because its value is transferred into base_offset
 		var/vector2/size = A.get_icon_size()
 
 		//We cut the size in half and then subtract 16,16, which is the centre of a normal 32x32 tile.
 		size *= 0.5
 		size -= get_new_vector(WORLD_ICON_SIZE * 0.5, WORLD_ICON_SIZE * 0.5)
+
+		if (centre_offset)
+			release_vector(centre_offset)
 		centre_offset = size*-1
 
 		//Base offset is simple. Its just the inverted Y offset and no X
+		if (base_offset)
+			release_vector(base_offset)
 		base_offset = size
 		base_offset.x = 0
 		base_offset.y += pixel_offset_magnitude //We can add in the pixel offset here for efficiency too
-		release_vector(size)
+
+
 
 /datum/extension/wallrun/proc/unmount_animation()
 	//Visuals

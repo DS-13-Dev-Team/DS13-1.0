@@ -81,6 +81,7 @@
 	//If we are at the target pixel coords, we are done
 	if (L.pixel_x == target_pixels.x && L.pixel_y == target_pixels.y)
 		end()
+		release_vector(target_pixels)
 		return
 
 	//Alright, lets move towards them

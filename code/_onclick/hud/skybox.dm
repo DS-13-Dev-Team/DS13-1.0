@@ -60,7 +60,7 @@
 		)
 
 		//Now we double the values and then subtract 1. This rescales it to a value between -1 to 1
-		locpercent *= 2
+		locpercent.SelfMultiply(2)
 		locpercent.x -= 1
 		locpercent.y -= 1
 		skybox.screen_loc = "CENTER:[round(skybox.base_offset + (skybox.slide_range * locpercent.x))],CENTER:[round(skybox.base_offset + (skybox.slide_range* locpercent.y))]"

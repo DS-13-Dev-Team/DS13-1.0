@@ -68,7 +68,8 @@
 	var/vector2/fromloc = from.get_global_pixel_loc()
 	offset.SelfSubtract(fromloc)
 	release_vector(fromloc)
-	return offset.Magnitude()
+	. = offset.Magnitude()
+	release_vector(offset)
 
 //Given a set of global pixel coords as input, this moves the atom and sets its pixel offsets so that it sits exactly on the specified point
 /atom/movable/proc/set_global_pixel_loc(var/vector2/coords)
@@ -119,9 +120,9 @@
 
 //Global version of the above, requires a zlevel to check on
 /proc/get_turf_at_pixel_coords(var/vector2/coords, var/zlevel)
-	coords = get_new_vector(round(coords.x / world.icon_size)+1, round(coords.y / world.icon_size)+1)
-	var/turf/T = locate(coords.x, coords.y, zlevel)
-	release_vector(coords)
+	var/vector2/newcoords = get_new_vector(round(coords.x / world.icon_size)+1, round(coords.y / world.icon_size)+1)
+	var/turf/T = locate(newcoords.x, newcoords.y, zlevel)
+	release_vector(newcoords)
 	return T
 
 /proc/get_turf_at_mouse(var/clickparams, var/client/C)
@@ -147,10 +148,11 @@
 //Inverse of the above, sets our global pixel loc to a specified value, but keeps us within the same turf we're currently in
 /atom/movable/proc/set_pixels_maintain_turf(var/vector2/offset)
 	var/vector2/ourloc = get_global_pixel_loc()
-	offset.SelfSubtract(ourloc)
-	pixel_x += offset.x
-	pixel_y += offset.y
+	var/vector2/ouroffset = offset - ourloc
+	pixel_x += ouroffset.x
+	pixel_y += ouroffset.y
 	release_vector(ourloc)
+	release_vector(ouroffset)
 
 
 //Client Procs
