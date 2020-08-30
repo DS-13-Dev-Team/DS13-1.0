@@ -63,13 +63,13 @@
 	if (isatom(target))
 		if ((get_turf(source) == get_turf(target)))
 			//If source and target are on the same turf, we cant aim at the target
-			target_direction = Vector2.FromDir(user.dir)
+			target_direction = Vector2.NewFromDir(user.dir)
 		else
 			target_direction = Vector2.DirectionBetween(holder, target)
 			if (src.user)
 				src.user.face_atom(target)
 	else
-		target_direction = Vector2.FromDir(target)
+		target_direction = Vector2.NewFromDir(target)
 
 	if (!source)
 		src.source = get_turf(holder)
@@ -88,6 +88,10 @@
 	src.swing_direction = swing_direction
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/swing/proc/start), 0, TIMER_STOPPABLE)
 
+
+/datum/extension/swing/Destroy()
+	release_vector(target_direction)
+	.=..()
 
 /datum/extension/swing/proc/start()
 	started_at	=	world.time

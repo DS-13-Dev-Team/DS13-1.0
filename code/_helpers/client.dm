@@ -141,6 +141,10 @@
 	//First we've got to figure out what onscreen is
 	var/atom/origin = get_view_centre()
 
+	//If we fail to get a view centre, something's gone wrong, we definitely cant see anything
+	if (!origin)
+		return
+
 	//Lets get how far the screen extends around the origin
 	var/list/bound_offsets = get_tile_bounds(FALSE) //Cut off partial tiles or they might stretch the screen
 	var/vector2/delta = get_new_vector(A.x - origin.x, A.y - origin.y)	//Lets get the position delta from origin to target

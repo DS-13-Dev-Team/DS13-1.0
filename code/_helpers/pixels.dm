@@ -210,7 +210,7 @@
 
 
 /atom/proc/get_offset_to(var/atom/target, var/distance)
-	var/vector2/delta = Vector2.FromDir(get_dir(src, target))
+	var/vector2/delta = Vector2.NewFromDir(get_dir(src, target))
 	delta.SelfMultiply(distance)
 	return delta
 

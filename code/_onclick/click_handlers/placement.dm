@@ -161,6 +161,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 		if (!snap_to_grid)
 			pixel_offset.x = -WORLD_ICON_SIZE/2
 			pixel_offset.y = -WORLD_ICON_SIZE/2 //Offset should be at least -16,-16 to center the icon.
+
 		pixel_offset.x += A.pixel_x
 		pixel_offset.y += A.pixel_y
 		preview.appearance = A.appearance
