@@ -464,6 +464,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 		var/vector2/push_direction = target_direction.Turn(push_angle)
 		L.apply_impulse(push_direction, 200)
+		release_vector(push_direction)
 
 /datum/extension/swing/tripod_arm/windup_animation()
 	var/vector2/back_offset = target_direction.Turn(180) * 16
@@ -485,6 +486,9 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	if (E)
 		E.retracted = TRUE
 		H.update_body(TRUE)
+
+	release_vector(back_offset)
+	release_vector(forward_offset)
 
 
 /datum/extension/swing/tripod_arm/setup_effect()

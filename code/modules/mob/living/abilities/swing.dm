@@ -149,6 +149,7 @@
 
 	//TODO: Create the arm effect
 	effect = new effect_type(get_turf(source), source, starting_direction.Rotation())
+	release_vector(starting_direction)
 	var/atom/A = holder
 	if (effect.inherit_order)
 		effect.layer = A.layer+0.1
@@ -173,7 +174,7 @@
 
 	//Figure out how far it should be rotated, and do so
 	var/turn_angle = angle * 1.1 * swing_direction * timepercent
-	starting_direction = starting_direction.Turn(turn_angle*0.8)	//We'll do 80% of this instantly, and animate the last 20%
+	starting_direction.SelfTurn(turn_angle*0.8)	//We'll do 80% of this instantly, and animate the last 20%
 
 
 	//Setup the transform

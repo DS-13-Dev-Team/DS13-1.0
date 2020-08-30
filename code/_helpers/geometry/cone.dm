@@ -68,7 +68,7 @@
 			all_tiles += subcone	//Then add ours to the global list
 			subcones += list(subcone)	//And add this cone to the list of all the cones
 
-		subcone_direction = subcone_direction.Turn(subcone_angle)
+		subcone_direction.SelfTurn(subcone_angle)
 
 	//We only release vectors we created, not those we were given
 	release_vector(subcone_direction)

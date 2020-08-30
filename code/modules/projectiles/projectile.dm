@@ -290,7 +290,7 @@
 		return
 
 	base_dir = Vector2.NewFromDir(direction)
-	base_dir = base_dir.Turn(rand_between(-angle, angle))
+	base_dir.SelfTurn(rand_between(-angle, angle))
 
 	base_dir.SelfToMagnitude(15) //Should be a long enough distance to get the angle right
 

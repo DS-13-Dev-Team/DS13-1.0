@@ -174,8 +174,8 @@
 	A.default_rotation = mount_angle
 
 
-	var/vector2/newpix = (centre_offset + base_offset.Turn(mount_angle))	//The base offset is used with rotation
-
+	var/vector2/newpix = base_offset.Turn(mount_angle)
+	newpix.SelfAdd(centre_offset)	//The base offset is used with rotation
 	A.default_pixel_x = newpix.x
 	A.default_pixel_y = newpix.y
 

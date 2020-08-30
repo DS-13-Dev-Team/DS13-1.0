@@ -35,6 +35,8 @@
 	var/vector2/direction = Vector2.DirectionBetween(source, target)
 	wave.direction = direction
 	wave.perpendicular_direction = direction.Turn(90)
+	//These belong to the wave now, so we won't release them
+
 	var/turf/start_turf = wave.origin.get_turf_at_pixel_offset(direction * WORLD_ICON_SIZE)
 
 	//Lets make our first/master projectile
@@ -51,7 +53,9 @@
 		steps_out++
 
 		//We go to the left first
-		var/turf/T = start_turf.get_turf_at_pixel_offset(direction_left * WORLD_ICON_SIZE * steps_out)
+		var/vector2/offset = direction_left * (WORLD_ICON_SIZE * steps_out)
+		var/turf/T = start_turf.get_turf_at_pixel_offset(offset)
+		release_vector(offset)
 		W = new projectile_type(T)
 		wave.register(W, FALSE)
 		W.side = LEFT
@@ -62,12 +66,17 @@
 			break
 
 		//Then we go right
-		T = start_turf.get_turf_at_pixel_offset(direction_right * WORLD_ICON_SIZE * steps_out)
+		offset = direction_right * (WORLD_ICON_SIZE * steps_out)
+		T = start_turf.get_turf_at_pixel_offset(offset)
+		release_vector(offset)
 		W = new projectile_type(T)
 		wave.register(W, FALSE)
 		W.side = RIGHT
 		W.altitude = wave.altitude
 		width--
+
+	release_vector(direction_right)
+	release_vector(direction_left)
 
 	//Alright we have now created all the mainline projectiles that we need.
 	wave.update_connections()	//This will create backstops as needed
@@ -136,6 +145,11 @@
 
 	//How high above the ground is this travelling
 	var/altitude = 1
+
+/datum/projectile_wave/Destroy()
+	release_vector(direction)
+	release_vector(perpendicular_direction)
+	.=..()
 
 /*
 	Adds a projectile to this wave
