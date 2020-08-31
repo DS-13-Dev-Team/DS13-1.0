@@ -1315,15 +1315,6 @@
 	build_path = /obj/item/rig_module/fabricator/energy_net
 	sort_string = "WCKAC"
 
-/datum/design/item/rig/stealth
-	name = "Active Camouflage"
-	desc = "An integrated active camouflage system, mountable on a RIG."
-	id = "rig_stealth"
-	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 6, TECH_MAGNET = 6, TECH_ILLEGAL = 6, TECH_ENGINEERING = 7)
-	materials = list(MATERIAL_STEEL = 6000, MATERIAL_GLASS = 3000, MATERIAL_DIAMOND = 2000, MATERIAL_SILVER = 2000, "uranium" = 2000, MATERIAL_GOLD = 2000, "plastic" = 2000)
-	build_path = /obj/item/rig_module/stealth_field
-	sort_string = "WCLAA"
-
 /datum/design/item/rig/cooling_unit
 	name = "Cooling Unit"
 	desc = "A suit cooling unit, mountable on a RIG."
