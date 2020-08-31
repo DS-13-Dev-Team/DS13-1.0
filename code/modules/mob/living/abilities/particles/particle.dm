@@ -29,6 +29,7 @@
 	if (offset)
 		pixel_x = offset.x
 		pixel_y = offset.y
+		release_vector(offset)
 
 	//Rotate towards facing direction
 	src.direction = direction

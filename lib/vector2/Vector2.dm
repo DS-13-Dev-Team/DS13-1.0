@@ -76,6 +76,12 @@ vector2
 
 			else CRASH("Invalid args.")
 
+
+
+		Copy()
+			return get_new_vector(x, y)
+
+
 		/* Vector dot product.
 			Returns the cosine of the angle between the vectors.
 		*/
@@ -204,7 +210,8 @@ vector2
 		AngleFrom(vector2/from_vector = Vector2.North, var/shorten = FALSE)
 			var vector2/to_vector = Normalized()
 
-			if(isnum(from_vector)) from_vector = Vector2.FromDir(from_vector)
+			if(isnum(from_vector))
+				from_vector = Vector2.FromDir(from_vector) //This is not copied, gotta be careful with it
 
 			var/angle = (Atan2(to_vector.y, to_vector.x) - Atan2(from_vector.y, from_vector.x))
 			release_vector(to_vector)
@@ -217,6 +224,7 @@ vector2
 		*/
 		//Future TODO: Make and implement a self version of this
 		Turn(angle) return src * matrix().Turn(angle)
+
 
 		FloorVec()
 			return new/vector2(Floor(x), Floor(y))
@@ -274,9 +282,25 @@ vector2
 		SelfClampMag(var/minimum, var/maximum)
 
 			var/current_magnitude = Magnitude()
+
+			//Cant rescale a zero vector
+			if (current_magnitude == 0)
+				return
+
 			if (current_magnitude < minimum)
 				SelfToMagnitude(minimum)
 
 
 			else if (current_magnitude > maximum)
 				SelfToMagnitude(maximum)
+
+		SelfZero()
+			x = 0
+			y = 0
+
+		SelfTurn(angle)
+			var/matrix/m = matrix().Turn(angle)
+
+			// Transform
+			x = x * m.a + y * m.b + m.c
+			y = x * m.d + y * m.e + m.f

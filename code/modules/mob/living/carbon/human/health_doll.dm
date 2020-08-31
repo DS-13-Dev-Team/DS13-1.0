@@ -45,6 +45,7 @@
 		var/newscreenloc = "EAST[tile_offset]:[pixel_offset],CENTER:15"
 		screen_loc = newscreenloc
 		update()
+		release_vector(icon_size)
 
 /obj/screen/health_doll/proc/get_offset()
 	return 0

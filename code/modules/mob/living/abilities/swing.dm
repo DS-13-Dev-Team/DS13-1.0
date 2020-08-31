@@ -63,13 +63,13 @@
 	if (isatom(target))
 		if ((get_turf(source) == get_turf(target)))
 			//If source and target are on the same turf, we cant aim at the target
-			target_direction = Vector2.FromDir(user.dir)
+			target_direction = Vector2.NewFromDir(user.dir)
 		else
 			target_direction = Vector2.DirectionBetween(holder, target)
 			if (src.user)
 				src.user.face_atom(target)
 	else
-		target_direction = Vector2.FromDir(target)
+		target_direction = Vector2.NewFromDir(target)
 
 	if (!source)
 		src.source = get_turf(holder)
@@ -88,6 +88,10 @@
 	src.swing_direction = swing_direction
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/swing/proc/start), 0, TIMER_STOPPABLE)
 
+
+/datum/extension/swing/Destroy()
+	release_vector(target_direction)
+	.=..()
 
 /datum/extension/swing/proc/start()
 	started_at	=	world.time
@@ -145,6 +149,7 @@
 
 	//TODO: Create the arm effect
 	effect = new effect_type(get_turf(source), source, starting_direction.Rotation())
+	release_vector(starting_direction)
 	var/atom/A = holder
 	if (effect.inherit_order)
 		effect.layer = A.layer+0.1
@@ -169,11 +174,12 @@
 
 	//Figure out how far it should be rotated, and do so
 	var/turn_angle = angle * 1.1 * swing_direction * timepercent
-	starting_direction = starting_direction.Turn(turn_angle*0.8)	//We'll do 80% of this instantly, and animate the last 20%
+	starting_direction.SelfTurn(turn_angle*0.8)	//We'll do 80% of this instantly, and animate the last 20%
 
 
 	//Setup the transform
 	var/matrix/M = starting_direction.Rotation()
+	release_vector(starting_direction)
 	M.Scale(effect.default_scale)
 
 	//And apply it

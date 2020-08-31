@@ -26,6 +26,10 @@
 
 
 /decl/turf_selection/cone/get_turfs(var/atom/origin, var/range, var/angle = 90, var/vector2/direction = null)
+	var/dirmade = FALSE
 	if (!direction)
-		direction = Vector2.FromDir(origin.dir)
+		dirmade = TRUE
+		direction = Vector2.NewFromDir(origin.dir)
 	. = get_cone(origin, direction, range, angle)
+	if (dirmade)
+		release_vector(direction)

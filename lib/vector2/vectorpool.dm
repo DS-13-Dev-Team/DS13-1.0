@@ -8,6 +8,8 @@
 GLOBAL_LIST_EMPTY(vector_pool)
 GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 
+GLOBAL_VAR_INIT(debug_vector_fetch, FALSE)
+
 //GLOBAL_VAR_INIT(vectors_created, 0)
 //GLOBAL_VAR_INIT(vectors_recycled, 0)
 
@@ -28,6 +30,8 @@ GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 	GLOB.vector_pool_filling = FALSE
 
 /proc/get_new_vector(var/new_x, var/new_y)
+	if (GLOB.debug_vector_fetch)
+		crash_with("Vectorfetch [new_x] [new_y]")
 	if (length(GLOB.vector_pool))
 		var/vector2/newvec
 		macropop(GLOB.vector_pool, newvec)
@@ -55,3 +59,10 @@ GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 	to_chat(src, "Vecpool: [length(GLOB.vector_pool)]")
 	//to_chat(src, "Created: [GLOB.vectors_created]")
 	//to_chat(src, "Recycled: [GLOB.vectors_recycled]")
+
+
+/client/verb/debug_vectorfetch()
+	set category = "Debug"
+	set name = "Vector Fetch Debug"
+
+	GLOB.debug_vector_fetch = !(GLOB.debug_vector_fetch)

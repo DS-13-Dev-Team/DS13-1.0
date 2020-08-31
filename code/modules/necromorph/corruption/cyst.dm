@@ -235,9 +235,10 @@
 
 /datum/click_handler/placement/necromorph/cyst/update_pixel_offset()
 	if (mount_target)
+		release_vector(pixel_offset)
 		pixel_offset = last_location.get_offset_to(mount_target, CYST_ATTACH_OFFSET)
 	else
-		pixel_offset = get_new_vector(0,0)
+		pixel_offset.SelfZero()
 
 
 /*

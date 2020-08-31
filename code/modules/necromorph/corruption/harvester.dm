@@ -523,6 +523,7 @@
 
 		var/vector2/push_direction = target_direction.Turn(push_angle)
 		L.apply_impulse(push_direction, 200)
+		release_vector(push_direction)
 
 
 

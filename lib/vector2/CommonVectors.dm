@@ -78,14 +78,17 @@ Vector2
 	proc
 		TurfAtMagnitudeBetween(var/atom/A, var/atom/B, var/magnitude)
 			var/vector2/delta = MagnitudeBetween(A, B, magnitude)
-			return locate(A.x + delta.x, A.y + delta.y, A.z)
+			var/turf/T = locate(A.x + delta.x, A.y + delta.y, A.z)
+			release_vector(delta)
+			return T
 
 	proc
 		RandomDirection()
 			var/vector2/delta = get_new_vector(rand(), rand())
-			return delta.SelfToMagnitude(1)
+			return (delta.SelfToMagnitude(1))
 
 	proc
 		VectorAverage(var/vector2/A)
 			if (A)
 				return (A.x + A.y) / 2
+			return 0

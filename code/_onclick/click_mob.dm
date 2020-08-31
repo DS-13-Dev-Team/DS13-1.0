@@ -429,7 +429,13 @@
 	if (get_turf(user) == get_turf(target))
 		return TRUE
 
-	return (round(Vector2.FromDir(user.dir).Dot(new/vector2(target.x - user.x, target.y - user.y).Normalized()),0.000001) >= round(cos(arc),0.000001))
+	var/vector2/dirvector = Vector2.NewFromDir(user.dir)
+	var/vector2/dotvector = get_new_vector(target.x - user.x, target.y - user.y)
+	dotvector.SelfNormalize()
+	. = (round(dirvector.Dot(dotvector),0.000001) >= round(cos(arc),0.000001))
+	release_vector(dirvector)
+	release_vector(dotvector)
+
 
 
 //Checks if target is within arc degrees either side of a specified direction vector from user. All parameters are mandatory
@@ -439,4 +445,8 @@
 	target = get_turf(target)
 	if (origin == target)
 		return TRUE
-	return (round(direction.Dot(new/vector2(target.x - origin.x, target.y - origin.y).Normalized()),0.000001) >= round(cos(arc),0.000001))
+
+	var/vector2/dirvector = get_new_vector(target.x - origin.x, target.y - origin.y)
+	dirvector.SelfNormalize()
+	.= (round(direction.Dot(dirvector),0.000001) >= round(cos(arc),0.000001))
+	release_vector(dirvector)

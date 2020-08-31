@@ -57,10 +57,9 @@
 
 	//Lets calculate a random angle for this particle
 	var/particle_angle = rand_between(0, angle) - angle*0.5	//We subtract half the angle to centre it
-	var/particle_direction = direction.Turn(particle_angle)
+	var/vector2/particle_direction = direction.Turn(particle_angle)
 	var/vector2/offset = get_new_vector(rand_between(-randpixel, randpixel), rand_between(-randpixel, randpixel))
 	var/obj/effect/particle/S = new particle_type(loc, particle_direction, particle_lifetime, particle_travel_distance, offset, particle_color)
-
 	return S
 
 /*

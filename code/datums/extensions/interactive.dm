@@ -21,6 +21,7 @@
 /datum/extension/interactive/Destroy()
 	host_predicates.Cut()
 	user_predicates.Cut()
+	release_vector(dimensions)
 	return ..()
 
 /datum/extension/interactive/proc/extension_status(var/mob/user)

@@ -174,8 +174,8 @@
 	A.default_rotation = mount_angle
 
 
-	var/vector2/newpix = (centre_offset + base_offset.Turn(mount_angle))	//The base offset is used with rotation
-
+	var/vector2/newpix = base_offset.Turn(mount_angle)
+	newpix.SelfAdd(centre_offset)	//The base offset is used with rotation
 	A.default_pixel_x = newpix.x
 	A.default_pixel_y = newpix.y
 
@@ -289,18 +289,26 @@
 
 	//Lets calculate the centre offset, once only
 	if (!centre_offset)
+
+		//Size won't be released in this stack, because its value is transferred into base_offset
 		var/vector2/size = A.get_icon_size()
 
 		//We cut the size in half and then subtract 16,16, which is the centre of a normal 32x32 tile.
 		size *= 0.5
 		size -= get_new_vector(WORLD_ICON_SIZE * 0.5, WORLD_ICON_SIZE * 0.5)
+
+		if (centre_offset)
+			release_vector(centre_offset)
 		centre_offset = size*-1
 
 		//Base offset is simple. Its just the inverted Y offset and no X
+		if (base_offset)
+			release_vector(base_offset)
 		base_offset = size
 		base_offset.x = 0
 		base_offset.y += pixel_offset_magnitude //We can add in the pixel offset here for efficiency too
-		release_vector(size)
+
+
 
 /datum/extension/wallrun/proc/unmount_animation()
 	//Visuals
@@ -526,7 +534,7 @@
 		var/vector2/current_wall_normal = get_new_vector(mover.x - mountpoint.x, mover.y - mountpoint.y)
 
 		//Lets get the direction of the target now
-		var/vector2/desired_dir = Vector2.FromDir(new_dir)	//This is working with a preexisting global, should NOT be released
+		var/vector2/desired_dir = Vector2.NewFromDir(new_dir)	//This is working with a preexisting global, should NOT be released
 
 		//Alright next up, we get the angle between these two
 		var/desired_angle = desired_dir.AngleFrom(current_wall_normal)
@@ -536,6 +544,7 @@
 
 		var/actual_dir = turn(SOUTH, desired_angle)
 		A.dir = actual_dir
+		release_vector(desired_dir)
 		release_vector(current_wall_normal)
 	visual_dir = new_dir
 

@@ -94,8 +94,8 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	overlays.Cut()
 	for(var/turf/simulated/floor/floor in get_neighbors(FALSE, FALSE))
 		var/direction = get_dir(src, floor)
-		var/vector2/offset = Vector2.FromDir(direction)
-		offset *= (WORLD_ICON_SIZE * vine_scale)
+		var/vector2/offset = Vector2.NewFromDir(direction)
+		offset.SelfMultiply(WORLD_ICON_SIZE * vine_scale)
 		var/image/I = image(icon, src, "corruption-edge", layer+1, direction)
 		I.pixel_x = offset.x
 		I.pixel_y = offset.y

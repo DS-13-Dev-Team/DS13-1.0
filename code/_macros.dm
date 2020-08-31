@@ -224,10 +224,10 @@ else\
 BITSET(mobref.hud_updateflag, hudtype)}
 
 
-#define VECTOR_POOL_MAX	10000
-#define VECTOR_POOL_FULL	2000
+#define VECTOR_POOL_MAX	20000
+#define VECTOR_POOL_FULL	4000
 
-#define release_vector(A)	if (length(GLOB.vector_pool) < VECTOR_POOL_MAX){\
+#define release_vector(A)	if (A && length(GLOB.vector_pool) < VECTOR_POOL_MAX){\
 GLOB.vector_pool += A;}\
 A = null;
 
