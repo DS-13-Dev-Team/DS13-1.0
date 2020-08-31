@@ -565,7 +565,7 @@
 	sort_string = "TADAA"
 
 /datum/design/item/weapon/stunrevolver
-	name = "stun revlover"
+	name = "stun revolver"
 	id = "stunrevolver"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials = list(MATERIAL_STEEL = 4000)
