@@ -37,8 +37,7 @@ datum/preferences
 	var/datum/extension/loadout/loadout
 
 /datum/preferences/New(client/C)
-	for (var/i in 1 to config.loadout_slots)
-		gear_list += list(list())
+	reset_gear_list()
 	if(!length(GLOB.skills))
 		decls_repository.get_decl(/decl/hierarchy/skill)
 	player_setup = new(src)
@@ -53,6 +52,11 @@ datum/preferences
 			load_path(C.ckey)
 			load_preferences()
 			load_and_update_character()
+
+/datum/preferences/proc/reset_gear_list()
+	gear_list = list()
+	for (var/i in 1 to config.loadout_slots)
+		gear_list += list(list())
 
 /datum/preferences/proc/load_and_update_character(var/slot)
 	load_character(slot)

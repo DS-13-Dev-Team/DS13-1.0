@@ -13,6 +13,7 @@
 
 /datum/gear/eyes/fashionglasses
 	display_name = "fashionable eyewear"
+	path = /obj/item/clothing/glasses/gglasses
 
 /datum/gear/eyes/fashionglasses/New()
 	..()

@@ -374,7 +374,7 @@
 
 	//Gear wants to do its own snowflake equipping routine. Let it do so, and assume it succeeded
 	if (G.slot == GEAR_EQUIP_SPECIAL)
-		G.spawn_special(H, prefs.Gear()[G.display_name])
+		G.spawn_special(H, G.get_metadata(prefs))
 		return	//This cannot fail so no need for checks
 
 	//Normal spawning into a mob's equipment slots

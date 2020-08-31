@@ -70,7 +70,8 @@
 
 
 	pref.gear_slot = sanitize_integer(pref.gear_slot, 1, config.loadout_slots, initial(pref.gear_slot))
-	if(!islist(pref.gear_list)) pref.gear_list = list()
+	if(!islist(pref.gear_list))
+		pref.reset_gear_list()
 
 	if(pref.gear_list.len < config.loadout_slots)
 		pref.gear_list.len = config.loadout_slots
@@ -292,8 +293,8 @@
 	if(preferences["version"] < 14)
 		var/list/old_gear = character["gear"]
 		if(istype(old_gear)) // During updates data isn't sanitized yet, we have to do manual checks
-			if(!istype(pref.gear_list)) pref.gear_list = list()
-			if(!pref.gear_list.len) pref.gear_list.len++
+			if(!istype(pref.gear_list))
+				pref.reset_gear_list()
 			pref.gear_list[1] = old_gear
 		return TRUE
 
