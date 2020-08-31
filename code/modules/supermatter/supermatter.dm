@@ -24,8 +24,8 @@
 
 // Base variants are applied to everyone on the same Z level
 // Range variants are applied on per-range basis: numbers here are on point blank, it scales with the map size (assumes square shaped Z levels)
-#define DETONATION_RADS 20
-#define DETONATION_MOB_CONCUSSION 4			// Value that will be used for Weaken() for mobs.
+#define DETONATION_RADS 200
+#define DETONATION_MOB_CONCUSSION 8			// Value that will be used for Weaken() for mobs.
 
 // Base amount of ticks for which a specific type of machine will be offline for. +- 20% added by RNG.
 // This does pretty much the same thing as an electrical storm, it just affects the whole Z level instantly.
@@ -196,7 +196,8 @@
 
 	// Effect 1: Radiation, weakening to all mobs on Z level
 	for(var/z in affected_z)
-		SSradiation.z_radiate(locate(1, 1, z), DETONATION_RADS, 1)
+		//SSradiation.z_radiate(locate(1, 1, z), DETONATION_RADS, 1)
+		SSradiation.radiate(get_turf(src), DETONATION_RADS)
 
 	for(var/mob/living/mob in GLOB.living_mob_list)
 		var/turf/TM = get_turf(mob)
