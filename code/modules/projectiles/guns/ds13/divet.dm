@@ -53,7 +53,7 @@
 
 
 /obj/item/projectile/bullet/ls_slug
-	damage = 24
+	damage = 22
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
 	fire_sound='sound/weapons/guns/fire/divet_fire.ogg'

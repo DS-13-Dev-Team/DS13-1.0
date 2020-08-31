@@ -496,7 +496,9 @@ proc
 /proc/get_zone_sel(var/mob/user)
 	.= BP_CHEST
 	if (istype(user) && user.zone_sel && user.zone_sel.selecting)
-		return user.zone_sel.selecting
+		.=user.zone_sel.selecting
+		if (. in list(BP_MOUTH,BP_EYES))
+			. = BP_HEAD
 
 
 
