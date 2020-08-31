@@ -1303,8 +1303,8 @@ window "rpane"
 		anchor2 = none
 		font-size = 1
 		font-style = "bold underline"
-		text-color = #00cc00
-		background-color = #0033cc
+		text-color = #ffffff
+		background-color = #663300
 		saved-params = "is-checked"
 		text = "Discord"
 		command = "discord"
