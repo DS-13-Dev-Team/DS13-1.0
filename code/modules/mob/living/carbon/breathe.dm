@@ -24,6 +24,11 @@
 	else
 		//Okay, we can breathe, now check if we can get air
 		var/volume_needed = get_breath_volume()
+
+		//If no volume needed, we're not breathing
+		if (!volume_needed)
+			return
+
 		breath = get_breath_from_internal(volume_needed) //First, check for air from internals
 		if(!breath)
 			breath = get_breath_from_environment(volume_needed) //No breath from internals so let's try to get air from our location
