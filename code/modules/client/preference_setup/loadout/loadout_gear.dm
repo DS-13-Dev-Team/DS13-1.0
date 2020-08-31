@@ -78,6 +78,8 @@
 	if (metadata)
 		for(var/datum/gear_tweak/gt in gear_tweaks)
 			gt.tweak_gear_data(metadata["[gt]"], gd)
+
+
 	var/item = new gd.path(gd.location)
 	for(var/datum/gear_tweak/gt in gear_tweaks)
 		gt.tweak_item(item, (metadata ? metadata["[gt]"] : null), location)
@@ -157,7 +159,6 @@
 
 /datum/gear/proc/get_metadata(var/datum/preferences/P)
 	var/list/gear = P.Gear()
-
 
 	if (LAZYLEN(gear) && display_name && istext(display_name))
 		return gear[display_name]
