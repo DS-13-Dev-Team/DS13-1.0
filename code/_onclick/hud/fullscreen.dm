@@ -9,6 +9,9 @@
 	var/rescale = FALSE
 	var/obj/screen/fullscreen/screen = screens[category]
 
+	if(!client) //The mob needs to be player-controlled to modify the screen
+		return
+
 	if (client.temp_view != world.view)
 		rescale = TRUE
 
