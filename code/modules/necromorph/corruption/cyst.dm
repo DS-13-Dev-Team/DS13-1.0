@@ -19,7 +19,7 @@
 
 	biomass = 15
 	biomass_reclamation = 1
-	reclamation_time = 5 MINUTES
+	reclamation_time = 7.5 MINUTES
 
 	var/max_range = 6
 	var/recharge_delay = 10 SECONDS
