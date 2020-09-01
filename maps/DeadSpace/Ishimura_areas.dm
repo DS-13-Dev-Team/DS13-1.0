@@ -367,6 +367,9 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/crew/cryo
 	name = "\improper Cryo"
 
+/area/ishimura/lower/crew/cryo/upper
+	name = "\improper Upper Cryo"
+
 /area/ishimura/lower/crew/gym
 	name = "\improper Gym"
 
