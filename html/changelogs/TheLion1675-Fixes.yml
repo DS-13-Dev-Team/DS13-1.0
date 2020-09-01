@@ -41,4 +41,5 @@ changes:
   - maptweak: "Adds a new cryogenics area on the upper deck, next to the escape lounge."
   - maptweak: "Fixed an improperly placed fire wallcloset in the escape lounge."
   - maptweak: "Fixed and added several signs intended to direct towards escape pods."
+  - maptweak: "Added emergency medical wallclosets to upper pods and the Brig."
   - bugfix: "Fixed a rare bug where players could automagically teleport into the colony level if reaching edge of space maps."
