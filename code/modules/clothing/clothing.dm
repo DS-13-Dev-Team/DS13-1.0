@@ -18,6 +18,9 @@
 	var/permeability_threshold = 0.8	//As long as health is above this proportion of max health, reagent permeability is unaffected. Below that value it increases rapidly
 	var/coverage = null	//Calculate this at runtime
 
+	//If not null, this piece of clothing belongs to a rig frame
+	var/obj/item/weapon/rig/rig
+
 
 // Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()

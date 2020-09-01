@@ -23,8 +23,13 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.2
-	permeability_coefficient = 0.1
-	unacidable = 1
+	permeability_coefficient = 0.0
+	var/permeability_threshold = 0.7
+	unacidable = FALSE
+	acid_resistance = 2
+	acid_melted = -1 //Prevents it from being turned into a melted object
+
+	max_health = 2500	//These are tough since they tank hits for the whole thing
 
 	var/equipment_overlay_icon = 'icons/mob/onmob/rig_modules.dmi'
 	var/hides_uniform = 1 	//used to determinate if uniform should be visible whenever the suit is sealed or not
@@ -137,20 +142,24 @@
 		air_supply = new air_type(src)
 	if(glove_type)
 		gloves = new glove_type(src)
+		gloves.rig = src
 		verbs |= /obj/item/weapon/rig/proc/toggle_gauntlets
 	if(helm_type)
 		helmet = new helm_type(src)
+		helmet.rig = src
 		verbs |= /obj/item/weapon/rig/proc/toggle_helmet
 	if(boot_type)
 		boots = new boot_type(src)
+		boots.rig = src
 		verbs |= /obj/item/weapon/rig/proc/toggle_boots
 	if(chest_type)
 		chest = new chest_type(src)
+		chest.rig = src
 		if(allowed)
 			chest.allowed = allowed
 		verbs |= /obj/item/weapon/rig/proc/toggle_chest
 
-	for(var/obj/item/piece in list(gloves,helmet,boots,chest))
+	for(var/obj/item/clothing/piece in list(gloves,helmet,boots,chest))
 		if(!istype(piece))
 			continue
 		piece.canremove = 0
@@ -162,7 +171,10 @@
 		if(piece.siemens_coefficient > siemens_coefficient) //So that insulated gloves keep their insulation.
 			piece.siemens_coefficient = siemens_coefficient
 		piece.permeability_coefficient = permeability_coefficient
+		piece.permeability_threshold = permeability_threshold
 		piece.unacidable = unacidable
+		piece.acid_resistance = acid_resistance
+		piece.acid_melted = acid_melted
 		if(islist(armor)) piece.armor = armor.Copy()
 
 	set_slowdown_and_vision(!offline)
@@ -172,6 +184,10 @@
 	QDEL_NULL_LIST(installed_modules)
 	QDEL_NULL_LIST(processing_modules)
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
+		if (piece && isclothing(piece))
+			var/obj/item/clothing/C = piece
+			if (C.rig == src)
+				C.rig = null
 		qdel(piece)
 	STOP_PROCESSING(SSobj, src)
 	qdel(wires)
@@ -179,6 +195,17 @@
 	qdel(spark_system)
 	spark_system = null
 	return ..()
+
+/obj/item/weapon/rig/proc/get_pieces()
+	.=list()
+	if (helmet)
+		.+=helmet
+	if (chest)
+		.+=chest
+	if (gloves)
+		.+=gloves
+	if (boots)
+		.+=boots
 
 /obj/item/weapon/rig/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()

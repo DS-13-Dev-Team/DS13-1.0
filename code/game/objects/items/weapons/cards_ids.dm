@@ -22,6 +22,8 @@
 
 	var/list/files = list(  )
 
+	unacidable = TRUE	//These melt too easily
+
 /obj/item/weapon/card/data
 	name = "data disk"
 	desc = "A disk of data."

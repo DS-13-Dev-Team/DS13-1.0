@@ -6,6 +6,8 @@
 	offline_slowdown = 1
 	online_slowdown = 0
 
+	max_health = 1500
+
 	chest_type = null
 	helm_type =  null
 	boot_type =  null

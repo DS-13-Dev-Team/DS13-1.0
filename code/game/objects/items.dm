@@ -909,21 +909,22 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 		return FALSE
 	health -= amount
 
-	if (health <= 0)
-		health = 0
-		return zero_health(amount, damtype, user, used_weapon, bypass_resist)//Some zero health overrides do things with a return value
-	else
-		update_icon()
-		return TRUE
+	updatehealth()
 
+
+//Sets an object's health to a percenrage of its max health. Calls all the usual updating functions
+/obj/item/proc/set_healthpercent(var/percentage)
+	health = max_health * percentage
+	updatehealth()
 
 
 /obj/item/proc/updatehealth()
 	if (health <= 0)
 		health = 0
-		return zero_health()
-
-
+		return zero_health()//Some zero health overrides do things with a return value
+	else
+		update_icon()
+		return TRUE
 
 //Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
 /obj/item/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)

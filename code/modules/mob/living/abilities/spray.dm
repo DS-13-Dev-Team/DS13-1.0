@@ -30,7 +30,7 @@ w//DO NOT INCLUDE THIS FILE
 	var/ongoing_timer
 	var/tick_timer
 
-	var/list/affected_turfs
+	var/list/affected_turfs = list()
 	var/vector2/direction
 
 
@@ -109,12 +109,24 @@ Vars/
 		return Vector2.NewFromDir(spraydir)
 
 /datum/extension/spray/proc/recalculate_cone()
+	var/list/previous_turfs = affected_turfs.Copy()
 	affected_turfs = list()
 	if (direction)
 		release_vector(direction)
 	direction = get_direction()
 	affected_turfs = get_view_cone(source, direction, length, angle)
 	affected_turfs -= get_turf(source)
+
+	//We will do raytrace testing to see which turfs we actually have line of sight to
+	var/list/new_turfs = affected_turfs - previous_turfs
+	if (LAZYLEN(new_turfs))
+		//Check trajectory returns an assoc list with true/false as value of whether the tile is reachable
+		new_turfs = check_trajectory_mass(new_turfs, source, PASS_FLAG_TABLE)
+		for (var/turf in new_turfs)
+			//If the value is false, LOS was blockd, so we remove it from affected turfs
+			if (!new_turfs[turf])
+				affected_turfs -= turf
+
 	if (fx)
 		fx.set_direction(direction)
 

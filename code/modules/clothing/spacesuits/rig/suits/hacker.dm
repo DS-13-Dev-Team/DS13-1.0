@@ -14,6 +14,8 @@
 	glove_type = /obj/item/clothing/gloves/lightrig/hacker
 	boot_type = /obj/item/clothing/shoes/lightrig/hacker
 
+	max_health = 1500
+
 	initial_modules = list(
 		/obj/item/rig_module/healthbar,
 		/obj/item/rig_module/storage/light,
