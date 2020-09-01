@@ -8,7 +8,7 @@
 	density = FALSE
 	dir = NORTH
 
-	var/vector2/destination_pixels
+	var/vector2/pixel_delta
 	var/vector2/origin_pixels
 
 	var/scale_x_start = 	1
@@ -35,7 +35,7 @@
 	src.direction = direction
 	if (direction)
 		transform = direction.Rotation()
-		release_vector(direction)
+
 
 	if (color)
 		src.color = color
@@ -49,8 +49,8 @@
 
 	//Lets calculate the destination pixel_loc
 	origin_pixels = get_global_pixel_loc()
-	destination_pixels = origin_pixels + (direction * (range * WORLD_ICON_SIZE))
-
+	pixel_delta = (direction * (range * WORLD_ICON_SIZE))
+	release_vector(direction)
 
 	//And the transform we'll eventually transition to
 	target_transform = matrix(transform)
@@ -59,7 +59,6 @@
 
 /obj/effect/particle/Initialize()
 	.=..()
-	var/vector2/pixel_delta = destination_pixels - origin_pixels
 
 	//Lets start the animation!
 	animate(src,
@@ -72,6 +71,6 @@
 
 
 /obj/effect/particle/Destroy()
-	release_vector(destination_pixels)
 	release_vector(origin_pixels)
+	release_vector(pixel_delta)
 	.=..()
