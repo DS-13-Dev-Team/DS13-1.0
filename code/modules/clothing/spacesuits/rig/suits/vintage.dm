@@ -6,6 +6,8 @@
 	offline_slowdown = 5
 	online_slowdown = 3.5
 
+	max_health = 4000
+
 	chest_type = /obj/item/clothing/suit/space/rig/vintage
 	helm_type =  /obj/item/clothing/head/helmet/space/rig/vintage
 	boot_type =  /obj/item/clothing/shoes/magboots/rig/vintage

@@ -160,7 +160,10 @@ vector2
 		RotationFrom(vector2/from_vector = Vector2.North)
 			var vector2/to_vector = Normalized()
 
-			if(isnum(from_vector)) from_vector = Vector2.NewFromDir(from_vector)
+			var/from_created = FALSE
+			if(isnum(from_vector))
+				from_vector = Vector2.NewFromDir(from_vector)
+				from_created = TRUE
 
 			if(istype(from_vector, /vector2))
 				from_vector.SelfNormalize()
@@ -170,7 +173,11 @@ vector2
 				.= matrix(cos_angle, sin_angle, 0, -sin_angle, cos_angle, 0)
 				release_vector(to_vector)
 
-			else CRASH("Invalid 'from' vector.")
+			else
+				CRASH("Invalid 'from' vector.")
+
+			if (from_created)
+				release_vector(from_vector)
 
 
 

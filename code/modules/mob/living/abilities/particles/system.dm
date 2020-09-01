@@ -51,7 +51,12 @@
 	addtimer(CALLBACK(src, /obj/effect/particle_system/proc/tick), tick_delay)
 
 /obj/effect/particle_system/proc/set_direction(var/vector2/new_direction)
-	direction = new_direction
+	if (!direction)
+		direction = new_direction.Copy()
+	else
+		direction.x = new_direction.x
+		direction.y = new_direction.y
+
 
 /obj/effect/particle_system/proc/spawn_particle()
 

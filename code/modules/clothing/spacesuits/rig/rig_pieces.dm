@@ -17,6 +17,7 @@
 		)
 	species_restricted = null
 
+
 /obj/item/clothing/gloves/rig
 	name = "gauntlets"
 	item_flags = ITEM_FLAG_THICKMATERIAL
@@ -150,3 +151,42 @@
 	cold_protection =    HANDS
 	species_restricted = null
 	gender = PLURAL
+
+
+
+
+
+//When rig pieces take damage, they send that damage to their frame instead
+//The frame will spread the damage evenly over the pieces
+/obj/item/clothing/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	if (!rig)
+		.=..()
+		return
+
+	return rig.take_damage(amount, damtype, user, used_weapon, bypass_resist)
+
+//Things which are part of a rig don't get deleted when broken
+/obj/item/clothing/zero_health()
+	if (rig)
+		return
+
+	.=..()
+
+/obj/item/weapon/rig/updatehealth()
+	.=..()
+	if (health > 0)
+		var/healthpercent = health / max_health
+
+		for (var/obj/item/clothing/C as anything in get_pieces())
+			C.set_healthpercent(healthpercent)
+
+
+//RIGs don't get deleted when broken, but they go into a malfunctioning state forever
+/obj/item/weapon/rig/zero_health()
+	malfunctioning = NEAR_INFINITY
+	malfunction_delay = NEAR_INFINITY
+
+/obj/item/weapon/rig/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+	.=..()
+	malfunctioning = 0
+	malfunction_delay = 0

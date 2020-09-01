@@ -147,7 +147,7 @@
 		take_damage((acid.power*volume)/acid_resistance, BURN)
 
 		//If taking damage caused it to be deleted, then we'll do the melting effect
-		if (health <= 0 || QDELETED(src))
+		if ((health <= 0 || QDELETED(src)) && !acid_melted)
 			melt = TRUE
 
 		if (melt)

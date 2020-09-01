@@ -14,6 +14,7 @@ w//DO NOT INCLUDE THIS FILE
 	var/status
 	var/mob/living/user
 	var/vector2/target
+	var/atom/target_atom
 	var/angle
 	var/length
 	var/chemical
@@ -29,7 +30,7 @@ w//DO NOT INCLUDE THIS FILE
 	var/ongoing_timer
 	var/tick_timer
 
-	var/list/affected_turfs
+	var/list/affected_turfs = list()
 	var/vector2/direction
 
 
@@ -82,16 +83,50 @@ Vars/
 
 /datum/extension/spray/proc/set_target_loc(var/vector2/newloc, var/target_object)
 	target = newloc
-	if (isliving(user) && target_object)
-		user.face_atom(target_object)
+	if (target_object)
+		target_atom = target_object
+		if (isliving(user))
+			user.face_atom(target_object)
+	else if (source)
+		target_atom = get_turf_at_pixel_coords(target, source.z)
 	recalculate_cone()
 
+/datum/extension/spray/proc/get_direction()
+	//As long as we're not on the same turf, we can do this easily
+	var/vector2/ourloc = source.get_global_pixel_loc()
+	if (!(ourloc ~= target))
+
+		.=Vector2.VecDirectionBetween(ourloc, target)
+		release_vector(ourloc)
+		return
+
+	else
+		//User and target are on same turf? Lets try basing it on direction
+		var/spraydir = SOUTH
+		if (source)
+			spraydir = source.dir
+		release_vector(ourloc)
+		return Vector2.NewFromDir(spraydir)
 
 /datum/extension/spray/proc/recalculate_cone()
+	var/list/previous_turfs = affected_turfs.Copy()
 	affected_turfs = list()
-	direction = Vector2.VecDirectionBetween(source.get_global_pixel_loc(), target)
+	if (direction)
+		release_vector(direction)
+	direction = get_direction()
 	affected_turfs = get_view_cone(source, direction, length, angle)
 	affected_turfs -= get_turf(source)
+
+	//We will do raytrace testing to see which turfs we actually have line of sight to
+	var/list/new_turfs = affected_turfs - previous_turfs
+	if (LAZYLEN(new_turfs))
+		//Check trajectory returns an assoc list with true/false as value of whether the tile is reachable
+		new_turfs = check_trajectory_mass(new_turfs, source, PASS_FLAG_TABLE)
+		for (var/turf in new_turfs)
+			//If the value is false, LOS was blockd, so we remove it from affected turfs
+			if (!new_turfs[turf])
+				affected_turfs -= turf
+
 	if (fx)
 		fx.set_direction(direction)
 
