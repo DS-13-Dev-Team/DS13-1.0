@@ -35,4 +35,5 @@ delete-after: True
 changes: 
   - rscdel: "Removed the Boombox spawn on the map. Time to hum tunes in your mind."
   - tweak: "Moderately increased recharge rate of Cysts."
-  - Tweak: "Minorly increased cost of Cysts."
+  - tweak: "Minorly increased cost of Cysts."
+  - tweak: "Minorly increased reclamation time for Cysts."
