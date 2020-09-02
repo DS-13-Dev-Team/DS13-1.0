@@ -101,3 +101,8 @@
 #define EVAC_IN_TRANSIT 3
 #define EVAC_COOLDOWN   4
 #define EVAC_COMPLETE   5
+
+
+//When testing a spawnpoint to see if its safe to spawn there, we will test a maximum of this many tiles.
+//If they are all unsafe then the spawnpoint is unsafe
+#define SPAWNPOINT_MAX_SAFETY_ATTEMPTS	20

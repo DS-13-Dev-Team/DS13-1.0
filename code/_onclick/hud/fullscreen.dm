@@ -6,10 +6,12 @@
 	condition ? overlay_fullscreen(screen_name, screen_type, arg) : clear_fullscreen(screen_name)
 
 /mob/proc/overlay_fullscreen(category, type, severity)
+
 	var/rescale = FALSE
 	var/obj/screen/fullscreen/screen = screens[category]
 
 	if(!client) //The mob needs to be player-controlled to modify the screen
+
 		return
 
 	if (client.temp_view != world.view)
@@ -28,6 +30,7 @@
 	if(!screen)
 		screen = new type()
 		screen.owner = src
+
 
 	screen.icon_state = "[initial(screen.icon_state)][severity]"
 	screen.severity = severity

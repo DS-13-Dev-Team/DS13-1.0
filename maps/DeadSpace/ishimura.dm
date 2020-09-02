@@ -57,7 +57,7 @@
 
 	//Spawnpoints:
 	//These are display names of spawnpoint datums, taken from preferences_spawnpoints.dm
-	allowed_spawns = list(SPAWNPOINT_CRYO)
+	allowed_spawns = list(SPAWNPOINT_CRYO, SPAWNPOINT_DORM, SPAWNPOINT_MAINT)
 	evac_controller_type = /datum/evacuation_controller/starship
 
 	lobby_icon = 'maps/DeadSpace/icons/lobby.dmi'

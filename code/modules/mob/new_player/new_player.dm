@@ -276,15 +276,19 @@
 	if(job.is_restricted(client.prefs, src))
 		return
 
-	var/datum/spawnpoint/spawnpoint = job_master.get_spawnpoint_for(client, job.title, client.prefs)
-	var/turf/spawn_turf = pick(spawnpoint.turfs)
+	var/datum/spawnpoint/spawnpoint
+	var/turf/spawn_turf
 	if(job.latejoin_at_spawnpoints)
 		var/obj/S = job_master.get_roundstart_spawnpoint(job.title)
 		spawn_turf = get_turf(S)
+	else
+		spawnpoint = job_master.get_spawnpoint_for(client, job.title, client.prefs, check_safety = TRUE)
+		spawn_turf = spawnpoint.get_safe_turf(src, TRUE)
 
+	/*
 	if(!job_master.CheckUnsafeSpawn(src, spawn_turf))
 		return
-
+	*/
 	// Just in case someone stole our position while we were waiting for input from alert() proc
 	if(!job || !job.is_available(client))
 		to_chat(src, alert("[job.title] is not available. Please try another."))
@@ -342,6 +346,8 @@
 
 	if(character.cannot_stand())
 		equip_wheelchair(character)
+
+	spawnpoint.post_spawn(character, spawn_turf)
 
 	qdel(src)
 

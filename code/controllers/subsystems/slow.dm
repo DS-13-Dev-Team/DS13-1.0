@@ -13,6 +13,7 @@ SUBSYSTEM_DEF(slow)
 /datum/controller/subsystem/slow/Initialize()
 	set waitfor = FALSE
 	.=..()
+	cache_maintenance_turfs()
 	calculate_door_areas()
 
 
@@ -25,3 +26,13 @@ SUBSYSTEM_DEF(slow)
 		CHECK_TICK
 
 	doors_needing_areas = list()
+
+
+/datum/controller/subsystem/slow/proc/cache_maintenance_turfs()
+	for(var/Y in GLOB.ship_areas)
+		var/area/A = Y
+		if (A.is_maintenance)
+			for (var/turf/T in A)
+				if (isOnShipLevel(T) && turf_clear(T))
+					GLOB.maintenance_turfs += T
+		CHECK_TICK

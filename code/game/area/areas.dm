@@ -12,6 +12,8 @@
 	//On the border counts if there is a clear, unobstructed path from this area, to that door.
 	//Note that windows counts as an obstruction
 	var/list/bordering_doors = list()
+	var/is_maintenance = FALSE
+	var/ship_area = FALSE
 
 /area/New()
 	icon_state = ""
@@ -36,6 +38,8 @@
 		power_equip = 0
 		power_environ = 0
 	power_change()		// all machines set to current power level, also updates lighting icon
+	if(ship_area)
+		GLOB.ship_areas += src
 
 /area/proc/register_door(var/obj/machinery/door/D)
 	bordering_doors |= D

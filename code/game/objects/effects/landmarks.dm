@@ -26,6 +26,10 @@
 			GLOB.latejoin += loc
 			delete_me = 1
 			return
+		if("JoinLateDorm")
+			GLOB.latejoin_dorm += loc
+			delete_me = 1
+			return
 		if("JoinLateGateway")
 			GLOB.latejoin_gateway += loc
 			delete_me = 1

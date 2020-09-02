@@ -95,6 +95,23 @@
 /proc/is_coherent_area(var/area/A)
 	return !is_type_in_list(A, GLOB.using_map.area_coherency_test_exempt_areas)
 
+/proc/area_corrupted(var/atom/A, var/require_support = TRUE)
+	var/area/T = get_area(A)
+	for (var/obj/effect/vine/corruption/C in T)
+		if (!require_support || C.is_supported())
+			return TRUE
+
+
+	return FALSE
+
+/proc/area_contains_necromorphs(var/atom/A)
+	var/area/T = get_area(A)
+	for (var/mob/living/L in T)
+		if (L.stat != DEAD && L.is_necromorph())
+			return TRUE
+
+	return FALSE
+
 GLOBAL_LIST_INIT(is_station_but_not_space_or_shuttle_area, list(/proc/is_station_area, /proc/is_not_space_area, /proc/is_not_shuttle_area))
 
 GLOBAL_LIST_INIT(is_contact_but_not_space_or_shuttle_area, list(/proc/is_contact_area, /proc/is_not_space_area, /proc/is_not_shuttle_area))
@@ -104,6 +121,8 @@ GLOBAL_LIST_INIT(is_player_but_not_space_or_shuttle_area, list(/proc/is_player_a
 GLOBAL_LIST_INIT(is_station_area, list(/proc/is_station_area))
 
 GLOBAL_LIST_INIT(is_station_and_maint_area, list(/proc/is_station_area, /proc/is_maint_area))
+
+
 
 /*
 	Misc Helpers

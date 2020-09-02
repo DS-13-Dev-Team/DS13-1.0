@@ -4,6 +4,9 @@ var/global/datum/controller/occupations/job_master
 #define BE_ASSISTANT 1
 #define RETURN_TO_LOBBY 2
 
+
+
+
 /datum/controller/occupations
 		//List of all jobs
 	var/list/occupations = list()
@@ -620,45 +623,58 @@ var/global/datum/controller/occupations/job_master
  *  preference is not set, or the preference is not appropriate for the rank, in
  *  which case a fallback will be selected.
  */
-/datum/controller/occupations/proc/get_spawnpoint_for(var/client/C, var/rank)
+/datum/controller/occupations/proc/get_spawnpoint_for(var/client/C, var/rank, var/datum/preferences/prefs, var/check_safety = FALSE)
 
 	if(!C)
 		CRASH("Null client passed to get_spawnpoint_for() proc!")
 
 	var/mob/H = C.mob
-	var/spawnpoint = C.prefs.spawnpoint
-	var/datum/spawnpoint/spawnpos
+	if (!prefs)
+		prefs = C.prefs
+	var/desired_spawnpoint = prefs.spawnpoint
+	var/datum/spawnpoint/current_spawnpoint
 
-	if(spawnpoint == DEFAULT_SPAWNPOINT_ID)
-		spawnpoint = GLOB.using_map.default_spawn
+	if(desired_spawnpoint == DEFAULT_SPAWNPOINT_ID)
+		desired_spawnpoint = GLOB.using_map.default_spawn
 
-	if(spawnpoint)
-		if(!(spawnpoint in GLOB.using_map.allowed_spawns))
+	if(desired_spawnpoint)
+		if(!(desired_spawnpoint in GLOB.using_map.allowed_spawns))
 			if(H)
-				to_chat(H, "<span class='warning'>Your chosen spawnpoint ([C.prefs.spawnpoint]) is unavailable for the current map. Spawning you at one of the enabled spawn points instead. To resolve this error head to your character's setup and choose a different spawn point.</span>")
-			spawnpos = null
+				to_chat(H, "<span class='warning'>Your chosen spawnpoint ([desired_spawnpoint]) is unavailable for the current map. Spawning you at one of the enabled spawn points instead. To resolve this error head to your character's setup and choose a different spawn point.</span>")
+			current_spawnpoint = null
 		else
-			spawnpos = spawntypes()[spawnpoint]
+			current_spawnpoint = spawntypes()[desired_spawnpoint]
 
-	if(spawnpos && !spawnpos.check_job_spawning(rank))
+
+	if(current_spawnpoint && !current_spawnpoint.check_job_spawning(rank))
 		if(H)
-			to_chat(H, "<span class='warning'>Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job ([rank]). Spawning you at another spawn point instead.</span>")
-		spawnpos = null
+			to_chat(H, "<span class='warning'>Your chosen spawnpoint ([current_spawnpoint.display_name]) is unavailable for your chosen job ([rank]). Spawning you at another spawn point instead.</span>")
+		current_spawnpoint = null
 
-	if(!spawnpos)
+	//Lets check if its safe
+	if (check_safety && current_spawnpoint)
+		if(!current_spawnpoint.is_safe(H))
+			current_spawnpoint = null
+
+	if(!current_spawnpoint)
 		// Step through all spawnpoints and pick first appropriate for job
 		for(var/spawntype in GLOB.using_map.allowed_spawns)
 			var/datum/spawnpoint/candidate = spawntypes()[spawntype]
 			if(candidate.check_job_spawning(rank))
-				spawnpos = candidate
+
+				//If its not safe, move on
+				if (check_safety && !candidate.is_safe(H))
+					continue
+
+				current_spawnpoint = candidate
 				break
 
-	if(!spawnpos)
+	if(!current_spawnpoint)
 		// Pick at random from all the (wrong) spawnpoints, just so we have one
 		warning("Could not find an appropriate spawnpoint for job [rank].")
-		spawnpos = spawntypes()[pick(GLOB.using_map.allowed_spawns)]
+		current_spawnpoint = spawntypes()[pick(GLOB.using_map.allowed_spawns)]
 
-	return spawnpos
+	return current_spawnpoint
 
 /datum/controller/occupations/proc/GetJobByType(var/job_type)
 	return occupations_by_type[job_type]
