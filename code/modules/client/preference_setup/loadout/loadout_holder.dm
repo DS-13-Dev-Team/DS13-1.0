@@ -1,23 +1,16 @@
 /*
 	/datum/extension/loadout is a datum which acts as an umbrella to handle all the things a human will wear just before spawning in.
-
 	It is typically stored on a mob after it is created, where it can be populated with more data before it is applied.
 	Typically, it will be deleted after applying to a mob spawned into the world
-
 	Loadout holders are not serialized. They are created at runtime to hold gear loaded from disk
-
 	It is comprised of two main components:
 	1. Outfit. Typically taken from the assigned job, a baseline outfit is retrieved and copied into here. It must be copied
 	because it will be edited
-
 	2. Gear datums, IE the usual loadout stuff.
-
 	Before anything is put onto the player, these two types of things are gathered and mixed, they work out their differences.
 	Typically, gear datums take precedence, and may disable or displace parts of the outfit
-
 	This datum also validates the gear, making sure the user isn't trying to take two rigs, two pairs of shoes, or
 	patron items when they're not a patron
-
 	After the mixing is done, then the whole loadout is equipped onto the player in this order:,
 		1. modified-outfit
 		2. gear datums
@@ -93,13 +86,11 @@
 
 	//Lets validate and add all the gear
 	for (var/thing in prefs.Gear())
-
 		//This is a list of gear names, we must retrieve the datums from a global list, they are singletons
 		var/datum/gear/G = GLOB.gear_datums[thing]
-
 		//Each retrieved thing is added to our loadout datum
 		//If this returns false, adding failed, the item was invalid. In this case it must be removed from preferences too
-		if (!add_gear(G))
+		if (!thing || !add_gear(G))
 			prefs.gear_list[gear_slot] -= thing
 
 //Takes a job datum or a job name,
@@ -163,7 +154,6 @@
 /*
 	Sets the human this outfit will be applied to, allowing us to get more accurate job outfits.
 	This is not an inherent property since loadouts are first created in abstract, in the character setup screen, and only later applied to a mob
-
 */
 /datum/extension/loadout/proc/set_human(var/mob/living/carbon/human/newhuman)
 	if (H == newhuman)
@@ -197,6 +187,9 @@
 */
 //This takes a gear item into our list, after checking it for validity
 /datum/extension/loadout/proc/add_gear(var/datum/gear/G)
+	if (!G)
+		return FALSE
+
 	if (G.exclusion_tags.len)
 		var/list/shared = G.exclusion_tags & gear_tags
 		if (shared && shared.len)
@@ -397,12 +390,10 @@
 	/*
 	for(var/index = 1 to config.loadout_slots)
 		var/list/gears = pref.gear_list[index]
-
 		if(istype(gears))
 			for(var/gear_name in gears)
 				if(!(gear_name in gear_datums))
 					gears -= gear_name
-
 			var/total_cost = 0
 			for(var/gear_name in gears)
 				if(!gear_datums[gear_name])
@@ -411,12 +402,10 @@
 					gears -= gear_name
 				else
 					var/datum/gear/G = gear_datums[gear_name]
-
 					//If patron status is needed, check that we have it
 					if (P && G.patron_only && !P.patron)
 						gears -= gear_name
 						continue
-
 					if(total_cost + G.cost > config.max_gear_cost)
 						gears -= gear_name
 					else

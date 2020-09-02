@@ -31,12 +31,14 @@ datum/preferences
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
 
-	var/list/gear_list //Custom/fluff item loadouts.
+	var/list/gear_list = list()//Custom/fluff item loadouts.
 	var/gear_slot = 1  //The current gear save slot
 
 	var/datum/extension/loadout/loadout
 
 /datum/preferences/New(client/C)
+	for (var/i in 1 to config.loadout_slots)
+		gear_list += list(list())
 	if(!length(GLOB.skills))
 		decls_repository.get_decl(/decl/hierarchy/skill)
 	player_setup = new(src)
@@ -46,7 +48,6 @@ datum/preferences
 
 	if(istype(C))
 		client = C
-		log_world("Preferences \ref[src] got client [C],  Mob[C.mob]")
 		client_ckey = C.ckey
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
