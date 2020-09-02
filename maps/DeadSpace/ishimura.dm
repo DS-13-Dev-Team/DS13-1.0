@@ -8,9 +8,9 @@
 	path = "ishimura"
 	station_levels = list(1,2)
 	contact_levels = list(1,2,3)
-	player_levels = list(1,2,3)
-	admin_levels = list()
-	empty_levels = list(5)
+	player_levels = list(1,2)
+	admin_levels = list(5)
+	empty_levels = list()
 	accessible_z_levels = list("1"=1,"2"=1,"3"=2,"4"=3)
 	local_currency_name = "credits"
 	station_networks = list(
