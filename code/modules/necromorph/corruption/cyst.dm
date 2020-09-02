@@ -17,12 +17,12 @@
 	plane = EFFECTS_BELOW_LIGHTING_PLANE //Cysts need to draw over many things
 	var/obj/item/ammo_casing/cystbomb/payload = null
 
-	biomass = 8
+	biomass = 5
 	biomass_reclamation = 1
 	reclamation_time = 5 MINUTES
 
 	var/max_range = 6
-	var/recharge_delay = 6.5 SECONDS
+	var/recharge_delay = 5 SECONDS
 	var/cone_angle = 90
 
 	var/atom/attached = null	//What is this cyst attached to, if anything
