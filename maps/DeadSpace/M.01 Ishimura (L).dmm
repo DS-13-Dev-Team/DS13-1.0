@@ -425,7 +425,7 @@
 "aii" = (/obj/machinery/door/firedoor/border_only,/obj/effect/wallframe_spawn/reinforced,/turf/simulated/floor/plating,/area/ishimura/lower/engineering/storage_closet/fore)
 "aij" = (/obj/effect/floor_decal/spline/fancy/wood{icon_state = "spline_fancy"; dir = 1},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/lino,/area/ishimura/lower/crew/messhall/bar)
 "aik" = (/obj/machinery/alarm{dir = 4; pixel_x = -21},/obj/structure/table/standard,/obj/item/glass_jar,/turf/simulated/floor/dank,/area/ishimura/lower/misc/marker)
-"ail" = (/obj/effect/floor_decal/industrial/outline/yellow,/obj/structure/closet/secure_closet/hydroponics,/obj/item/clothing/gloves/thick/botany,/turf/simulated/floor/tiled/monotile,/area/ishimura/lower/crew/hydroponics)
+"ail" = (/obj/effect/floor_decal/industrial/outline/yellow,/obj/structure/closet/secure_closet/hydroponics,/turf/simulated/floor/tiled/monotile,/area/ishimura/lower/crew/hydroponics)
 "aim" = (/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 4},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/effect/catwalk_plated,/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 4},/obj/structure/disposalpipe/segment{dir = 2; icon_state = "pipe-c"},/turf/simulated/floor/plating,/area/ishimura/lower/crew/hydroponics)
 "ain" = (/obj/machinery/door/firedoor/border_only{icon_state = "open"; dir = 4},/obj/effect/wallframe_spawn/reinforced,/turf/simulated/floor/plating,/area/ishimura/lower/engineering/storage_closet/paint)
 "aio" = (/obj/structure/bed/chair{dir = 4},/obj/effect/floor_decal/industrial/outline/yellow,/obj/structure/closet/medical_wall/filled{pixel_x = -30},/turf/simulated/floor/tiled/monotile,/area/ishimura/lower/cargo/lobby)

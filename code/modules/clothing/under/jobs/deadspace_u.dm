@@ -103,12 +103,6 @@
 	worn_state = "cargo_jumpsuit"
 	icon_state = "cargo_jumpsuit"
 
-/obj/item/clothing/under/dsspareishimura2
-	name = "crew uniform"
-	item_state = "ds_spare2"
-	worn_state = "ds_spare2"
-	icon_state = "ds_spare2"
-
 /*
  * Mining
  */
@@ -133,6 +127,17 @@
 	permeability_coefficient = 0.25
 	armor = list(melee = 35, bullet = 55, laser = 0, energy = 20, bomb = 45, bio = 0, rad = 0)
 
+
+/*
+* Hydroponics
+*/
+
+/obj/item/clothing/under/hydroponics
+	name = "botanist uniform"
+	item_state = "ds_hydro_bot_s"
+	worn_state = "ds_hydro_bot_s"
+	icon_state = "ds_hydro_bot_s"
+	permeability_coefficient = 0.50
 
 /*
  * ERT Uniforms
