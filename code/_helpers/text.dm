@@ -16,7 +16,7 @@
 // Run all strings to be used in an SQL query through this proc first to properly escape out injection attempts.
 /proc/sanitizeSQL(var/t as text)
 	var/sqltext = dbcon.Quote(t);
-	return copytext(sqltext, 2, length(sqltext));//Quote() adds quotes around input, we already do that
+	return copytext_char(sqltext, 2, length_char(sqltext));//Quote() adds quotes around input, we already do that
 
 /*
  * Text sanitization
@@ -42,7 +42,7 @@
 			var/overflow = ((length(input)+1) - max_length)
 			to_chat(usr, "<span class='warning'>Your message is too long by [overflow] character\s.</span>")
 			return
-		input = copytext(input,1,max_length)
+		input = copytext_char(input,1,max_length)
 
 	if (!allow_links)
 		input = replace_characters(input, list("://"=" ","href"=" "))
@@ -133,7 +133,7 @@
 	if(number_of_alphanumeric < 2)	return		//protects against tiny names like "A" and also names like "' ' ' ' ' ' ' '"
 
 	if(last_char_group == 1)
-		output = copytext(output,1,length(output))	//removes the last character (in this case a space)
+		output = copytext_char(output,1,length(output))	//removes the last character (in this case a space)
 
 	for(var/bad_name in list("space","floor","wall","r-wall","monkey","unknown","inactive ai","plating"))	//prevents these common metagamey names
 		if(cmptext(output,bad_name))	return	//(not case sensitive)
@@ -255,7 +255,7 @@
 /proc/trim_right(text)
 	for (var/i = length(text), i > 0, i--)
 		if (text2ascii(text, i) > 32)
-			return copytext(text, 1, i + 1)
+			return copytext_char(text, 1, i + 1)
 	return ""
 
 //Returns a string with reserved characters and spaces before the first word and after the last word removed.
@@ -263,8 +263,16 @@
 	return trim_left(trim_right(text))
 
 //Returns a string with the first element of the string capitalized.
-/proc/capitalize(var/t as text)
-	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
+/proc/capitalize(t as text)
+	var/i = 1
+	while(copytext_char(t, i, i + 1) == "<")
+		i = findtext_char(t, ">", i + 1)
+		if(i)
+			i++
+		else
+			i = 2
+			break
+	return copytext_char(t, 1, i) + uppertext(copytext_char(t, i, i + 1)) + copytext_char(t, i + 1)
 
 //This proc strips html properly, remove < > and all text between
 //for complete text sanitizing should be used sanitize()
