@@ -20,6 +20,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	mag_insert_sound = 'sound/weapons/guns/interaction/pulse_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'
 	one_hand_penalty = 6	//Don't try to fire this with one hand
+	accuracy = 5	//Slight accuracy increase
 
 	aiming_modes = list(/datum/extension/aim_mode/rifle)
 
