@@ -8,7 +8,7 @@
 	force = 1.0
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 1.0
-	
+
 	throw_range = 5
 	origin_tech = list(TECH_BIO = 3)
 	attack_verb = list("attacked", "slapped", "whacked")
@@ -188,7 +188,7 @@
 
 				if(BLOOD_VOLUME_SAFE to INFINITY)
 					if(can_heal)
-						damage = max(damage-1, 0)
+						heal_damage(1)
 				if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 					if(prob(1))
 						to_chat(owner, "<span class='warning'>You feel [pick("dizzy","woozy","faint")]...</span>")
@@ -222,7 +222,7 @@
 
 /obj/item/organ/internal/brain/take_internal_damage(var/damage, var/silent)
 	set waitfor = 0
-	..()
+	.=..()
 	if(damage >= 10) //This probably won't be triggered by oxyloss or mercury. Probably.
 		var/damage_secondary = damage * 0.20
 		owner.flash_eyes()
@@ -283,3 +283,7 @@
 
 /obj/item/organ/internal/brain/get_scarring_level()
 	. = (species.total_health - max_damage)/species.total_health
+
+/obj/item/organ/internal/brain/heal_damage(amount)
+	world << "Brain healed by [amount], now [src.damage]"
+	.=..()
