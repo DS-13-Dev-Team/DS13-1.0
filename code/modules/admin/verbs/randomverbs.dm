@@ -752,7 +752,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set name = "Call Evacuation"
 
 	if(!ticker || !evacuation_controller)
-		return
+		return TRUE
 
 	if(!check_rights(R_ADMIN))	return
 

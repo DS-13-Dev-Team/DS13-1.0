@@ -164,3 +164,30 @@
 		list(CRAFT_TOOL, QUALITY_BOLT_TURNING, 10, 60)
 	)
 
+/datum/craft_recipe/gravigun_ammo
+	name = "Force energy"
+	result = /obj/item/weapon/cell/force
+	flags = CRAFT_ON_SURFACE
+	passive_steps = list(
+	list(CRAFT_PASSIVE, QUALITY_WORKBENCH, 1, 0)
+	)
+	time = 50
+	steps = list(
+	list(CRAFT_MATERIAL, MATERIAL_STEEL, 10),
+	list(CRAFT_STACK, /obj/item/stack/cable_coil, 10),
+	list(CRAFT_STACK, /obj/item/stack/power_node, 1)
+	)
+
+/datum/craft_recipe/cutter_ammo
+	name = "Plasma energy"
+	result = /obj/item/weapon/cell/plasmacutter
+	flags = CRAFT_ON_SURFACE
+	passive_steps = list(
+	list(CRAFT_PASSIVE, QUALITY_WORKBENCH, 1, 0)
+	)
+	time = 30
+	steps = list(
+	list(CRAFT_MATERIAL, MATERIAL_STEEL, 3),
+	list(CRAFT_STACK, /obj/item/stack/cable_coil, 5),
+	list(CRAFT_STACK, /obj/item/stack/power_node, 1)
+	)
