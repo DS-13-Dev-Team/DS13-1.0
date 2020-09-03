@@ -33,7 +33,7 @@
 "aG" = (/obj/structure/table/rack,/obj/item/weapon/storage/bag/trash,/obj/item/weapon/storage/bag/trash,/obj/effect/floor_decal/industrial/outline/yellow,/turf/simulated/floor/tiled/dark/monotile,/area/ERT/kellion)
 "aH" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled/dark,/area/ERT/kellion)
 "aI" = (/turf/space/transit/north,/area/space)
-"aJ" = (/obj/structure/table/standard,/obj/item/stack/cable_coil/random{pixel_y = 8},/obj/item/stack/cable_coil/random{pixel_y = 4},/obj/item/stack/cable_coil/random,/obj/machinery/recharger/wallcharger{pixel_x = 32},/obj/item/weapon/storage/firstaid/surgery,/turf/simulated/floor/tiled/dark/monotile,/area/ERT/kellion)
+"aJ" = (/obj/structure/table/standard,/obj/item/stack/cable_coil/random{pixel_y = 8},/obj/item/stack/cable_coil/random{pixel_y = 4},/obj/item/stack/cable_coil/random,/obj/machinery/recharger/wallcharger{pixel_x = 32},/obj/item/weapon/storage/firstaid/surgery,/obj/item/weapon/extinguisher/mini,/obj/item/weapon/extinguisher/mini,/turf/simulated/floor/tiled/dark/monotile,/area/ERT/kellion)
 "aK" = (/obj/structure/bed/chair/shuttle/black{icon_state = "shuttle_chair_preview"; dir = 1},/obj/effect/floor_decal/industrial/outline/grey,/turf/simulated/floor/tiled/dark/monotile,/area/ERT/valor/helm)
 "aL" = (/obj/structure/table/standard,/obj/item/stack/material/plasteel/fifty{pixel_y = 6},/obj/item/stack/material/plasteel/fifty{pixel_y = 4},/obj/item/stack/material/plasteel/fifty{pixel_y = 2},/obj/item/weapon/storage/pouch/medium_generic,/obj/item/weapon/storage/pouch/medium_generic,/turf/simulated/floor/tiled/dark/monotile,/area/ERT/kellion)
 "aM" = (/obj/machinery/vending/tool,/obj/effect/floor_decal/industrial/outline/yellow,/turf/simulated/floor/tiled/dark/monotile,/area/ERT/kellion)
