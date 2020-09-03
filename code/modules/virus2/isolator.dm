@@ -96,7 +96,7 @@
 				var/desc = entry.fields["description"]
 				data["entry"] = list(\
 					"name" = entry.fields["name"], \
-					"description" = replacetext_char(desc, "\n", ""))
+					"description" = replacetext(desc, "\n", ""))
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)

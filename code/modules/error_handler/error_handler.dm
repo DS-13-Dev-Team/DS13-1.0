@@ -69,7 +69,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		if(locinfo)
 			usrinfo += "  usr.loc: [locinfo]"
 	// The proceeding mess will almost definitely break if error messages are ever changed
-	var/list/splitlines = splittext_char(E.desc, "\n")
+	var/list/splitlines = splittext(E.desc, "\n")
 	var/list/desclines = list()
 	if(LAZYLEN(splitlines) > ERROR_USEFUL_LEN) // If there aren't at least three lines, there's no info
 		for(var/line in splitlines)
@@ -81,7 +81,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 					usrinfo = null
 				continue // Our usr info is better, replace it
 
-			if(copytext_char(line, 1, 3) != "  ")
+			if(copytext(line, 1, 3) != "  ")
 				desclines += ("  " + line) // Pad any unpadded lines, so they look pretty
 			else
 				desclines += line

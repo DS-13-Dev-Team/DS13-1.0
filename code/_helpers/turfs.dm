@@ -86,10 +86,10 @@
 /proc/screen_loc2turf(text, turf/origin)
 	if(!origin)
 		return null
-	var/tZ = splittext_char(text, ",")
-	var/tX = splittext_char(tZ[1], "-")
+	var/tZ = splittext(text, ",")
+	var/tX = splittext(tZ[1], "-")
 	var/tY = text2num(tX[2])
-	tX = splittext_char(tZ[2], "-")
+	tX = splittext(tZ[2], "-")
 	tX = text2num(tX[2])
 	tZ = origin.z
 	tX = max(1, min(origin.x + 7 - tX, world.maxx))

@@ -109,9 +109,9 @@
 			cloneloss = "minor"
 		var/scan = medical_scan_results(occupant)
 		scan += "<br><br>Genetic degradation: [cloneloss]"
-		scan = replacetext_char(scan,"'scan_notice'","'white'")
-		scan = replacetext_char(scan,"'scan_warning'","'average'")
-		scan = replacetext_char(scan,"'scan_danger'","'bad'")
+		scan = replacetext(scan,"'scan_notice'","'white'")
+		scan = replacetext(scan,"'scan_warning'","'average'")
+		scan = replacetext(scan,"'scan_danger'","'bad'")
 		scan += "<br>Cryostasis factor: [occupant.stasis_value]x"
 		data["occupant"] = scan
 
@@ -147,7 +147,7 @@
 	if(user == occupant)
 		return STATUS_CLOSE
 	return ..()
-
+	    
 /obj/machinery/atmospherics/unary/cryo_cell/OnTopic(user, href_list)
 	if(href_list["switchOn"])
 		on = 1

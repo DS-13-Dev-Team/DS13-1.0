@@ -4,7 +4,7 @@
 //Returns the number of seconds since midnight 2000
 //Date must be after 2000 AD
 /proc/date_to_byond(var/date)
-	var/list/datelist = splittext_char(date, "-")
+	var/list/datelist = splittext(date, "-")
 
 	var/total_seconds = 0
 
@@ -159,7 +159,7 @@
 */
 /proc/is_past_date(var/input_date)
 	var/list/current_date = current_date()
-	var/list/target_date = splittext_char(time2text(input_date,"YYYY-MM-DD"), "-")
+	var/list/target_date = splittext(time2text(input_date,"YYYY-MM-DD"), "-")
 
 	//Compare year
 	if (text2num(target_date[1]) > text2num(current_date[1]))
@@ -213,7 +213,7 @@
 	Returns true if passed a correct date in the format YYYY-MM-DD
 */
 /proc/sanitize_date(var/date)
-	var/list/datelist = splittext_char(date, "-")
+	var/list/datelist = splittext(date, "-")
 	if (!datelist || datelist.len != 3)
 		return FALSE
 

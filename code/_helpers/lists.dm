@@ -836,7 +836,7 @@ proc/dd_sortedTextList(list/incoming)
 	for (var/datum/D as anything in sourcelist)
 		//We split the path into a list of components by using / as delimiter
 
-		var/list/components = splittext_char("[D.type]", "/", 2)	//We start from character 2 so that it doesnt detect an empty string before the first slash
+		var/list/components = splittext("[D.type]", "/", 2)	//We start from character 2 so that it doesnt detect an empty string before the first slash
 		for (var/i = 1; i <= components.len; i++)
 			var/stringpath = ""
 			for (var/j in 1 to i)

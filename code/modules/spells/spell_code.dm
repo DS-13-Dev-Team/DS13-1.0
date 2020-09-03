@@ -310,12 +310,12 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 			if(prob(50))//Auto-mute? Fuck that noise
 				user.say(invocation)
 			else
-				user.say(replacetext_char(invocation," ","`"))
+				user.say(replacetext(invocation," ","`"))
 		if(SpI_WHISPER)
 			if(prob(50))
 				user.whisper(invocation)
 			else
-				user.whisper(replacetext_char(invocation," ","`"))
+				user.whisper(replacetext(invocation," ","`"))
 		if(SpI_EMOTE)
 			user.custom_emote(VISIBLE_MESSAGE, invocation)
 

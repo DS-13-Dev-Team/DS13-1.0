@@ -53,13 +53,13 @@
 
 /proc/text2numlist(text, delimiter="\n")
 	var/list/num_list = list()
-	for(var/x in splittext_char(text, delimiter))
+	for(var/x in splittext(text, delimiter))
 		num_list += text2num(x)
 	return num_list
 
 // Splits the text of a file at seperator and returns them in a list.
 /proc/file2list(filename, seperator="\n")
-	return splittext_char(return_file_text(filename),seperator)
+	return splittext(return_file_text(filename),seperator)
 
 // Turns a direction into text
 /proc/num2dir(direction)

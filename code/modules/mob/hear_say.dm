@@ -287,13 +287,13 @@
 	var/heard = ""
 	if(prob(15))
 		var/list/punctuation = list(",", "!", ".", ";", "?")
-		var/list/messages = splittext_char(message, " ")
+		var/list/messages = splittext(message, " ")
 		var/R = rand(1, messages.len)
 		var/heardword = messages[R]
-		if(copytext_char(heardword,1, 1) in punctuation)
-			heardword = copytext_char(heardword,2)
-		if(copytext_char(heardword,-1) in punctuation)
-			heardword = copytext_char(heardword,1,length(heardword))
+		if(copytext(heardword,1, 1) in punctuation)
+			heardword = copytext(heardword,2)
+		if(copytext(heardword,-1) in punctuation)
+			heardword = copytext(heardword,1,length(heardword))
 		heard = "<span class = 'game_say'>...You hear something about...[heardword]</span>"
 
 	else

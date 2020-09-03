@@ -265,8 +265,8 @@
 	// Generate the JSON.
 	var/json = json_encode(json_data)
 	// Strip #255/improper.
-	json = replacetext_char(json, "\proper", "")
-	json = replacetext_char(json, "\improper", "")
+	json = replacetext(json, "\proper", "")
+	json = replacetext(json, "\improper", "")
 	return json
 
  /**

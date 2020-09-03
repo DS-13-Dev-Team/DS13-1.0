@@ -37,7 +37,7 @@
 		/*var/l = length(msg)
 		if(findtext(msg," ",l,l+1)==0)
 			msg+=" "*/
-		seperate = splittext_char(msg, " ")
+		seperate = splittext(msg, " ")
 
 	for(var/Xa = 1,Xa<seperate.len,Xa++)
 		var/next = Xa + 1
@@ -78,13 +78,13 @@
 	if(!word)
 		text = "[pick(heard_words)]"
 	else
-		text = pick(splittext_char(word, " "))
+		text = pick(splittext(word, " "))
 	if(length(text)==1)
 		text=uppertext(text)
 	else
-		var/cap = copytext_char(text,1,2)
+		var/cap = copytext(text,1,2)
 		cap = uppertext(cap)
-		cap += copytext_char(text,2,length(text)+1)
+		cap += copytext(text,2,length(text)+1)
 		text=cap
 	var/q = 0
 	msg+=text

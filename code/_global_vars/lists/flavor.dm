@@ -135,7 +135,7 @@ GLOBAL_LIST_INIT(possible_cable_colours, SetupCableColors())
 	var/special_name_mappings = list(/obj/item/stack/cable_coil = "Red")
 
 	for(var/coil_type in (typesof(/obj/item/stack/cable_coil) - invalid_cable_coils))
-		var/name = special_name_mappings[coil_type] || capitalize(copytext_char_after_last("[coil_type]", "/"))
+		var/name = special_name_mappings[coil_type] || capitalize(copytext_after_last("[coil_type]", "/"))
 
 		var/obj/item/stack/cable_coil/C = coil_type
 		var/color = initial(C.color)

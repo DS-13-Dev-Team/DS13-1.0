@@ -32,7 +32,7 @@ var/list/whitelist = list()
 		log_misc("Failed to load config/alienwhitelist.txt")
 		return 0
 	else
-		alien_whitelist = splittext_char(text, "\n")
+		alien_whitelist = splittext(text, "\n")
 		return 1
 /proc/load_alienwhitelistSQL()
 	var/DBQuery/query = dbcon_old.NewQuery("SELECT * FROM whitelist")

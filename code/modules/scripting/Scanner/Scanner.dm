@@ -117,7 +117,7 @@
 		var/list/tokens=new
 		for(, src.codepos<=length(code), src.codepos++)
 
-			var/char=copytext_char(code, codepos, codepos+1)
+			var/char=copytext(code, codepos, codepos+1)
 			if(char=="\n")
 				line++
 				linepos=codepos
@@ -156,11 +156,11 @@
 			var
 				buf
 			for(, codepos <= length(code), codepos++)//codepos to length(code))
-				var/char=copytext_char(code, codepos, codepos+1)
+				var/char=copytext(code, codepos, codepos+1)
 				switch(char)
 					if("\\")					//Backslash (\) encountered in string
 						codepos++       //Skip next character in string, since it was escaped by a backslash
-						char=copytext_char(code, codepos, codepos+1)
+						char=copytext(code, codepos, codepos+1)
 						switch(char)
 							if("\\")      //Double backslash
 								buf+="\\"
@@ -190,11 +190,11 @@
 */
 		ReadWord()
 			var
-				char=copytext_char(code, codepos, codepos+1)
+				char=copytext(code, codepos, codepos+1)
 				buf
 			while(!delim.Find(char) && codepos<=length(code))
 				buf+=char
-				char=copytext_char(code, ++codepos, codepos+1)
+				char=copytext(code, ++codepos, codepos+1)
 			codepos-- //allow main Scan() proc to read the delimiter
 			if(options.keywords.Find(buf))
 				return new /token/keyword(buf, line, COL)
@@ -207,13 +207,13 @@
 */
 		ReadSymbol()
 			var
-				char=copytext_char(code, codepos, codepos+1)
+				char=copytext(code, codepos, codepos+1)
 				buf
 
 			while(options.symbols.Find(buf+char))
 				buf+=char
 				if(++codepos>length(code)) break
-				char=copytext_char(code, codepos, codepos+1)
+				char=copytext(code, codepos, codepos+1)
 
 			codepos-- //allow main Scan() proc to read the next character
 			return new /token/symbol(buf, line, COL)
@@ -224,7 +224,7 @@
 */
 		ReadNumber()
 			var
-				char=copytext_char(code, codepos, codepos+1)
+				char=copytext(code, codepos, codepos+1)
 				buf
 				dec=0
 
@@ -232,7 +232,7 @@
 				if(char==".") dec=1
 				buf+=char
 				codepos++
-				char=copytext_char(code, codepos, codepos+1)
+				char=copytext(code, codepos, codepos+1)
 			var/token/number/T=new(buf, line, COL)
 			if(isnull(text2num(buf)))
 				errors+=new/scriptError("Bad number: ", T)
@@ -247,8 +247,8 @@
 
 		ReadComment()
 			var
-				char=copytext_char(code, codepos, codepos+1)
-				nextchar=copytext_char(code, codepos+1, codepos+2)
+				char=copytext(code, codepos, codepos+1)
+				nextchar=copytext(code, codepos+1, codepos+2)
 				charstring = char+nextchar
 				comm = 1
 					// 1: single-line comment
@@ -263,19 +263,19 @@
 					if(++codepos>length(code)) break
 
 					if(expectedend) // ending statement expected...
-						char = copytext_char(code, codepos, codepos+1)
+						char = copytext(code, codepos, codepos+1)
 						if(char == "/") // ending statement found - beak the comment
 							comm = 0
 							break
 
 					if(comm == 2)
 						// multi-line comments are broken by ending statements
-						char = copytext_char(code, codepos, codepos+1)
+						char = copytext(code, codepos, codepos+1)
 						if(char == "*")
 							expectedend = 1
 							continue
 					else
-						char = copytext_char(code, codepos, codepos+1)
+						char = copytext(code, codepos, codepos+1)
 						if(char == "\n")
 							comm = 0
 							break

@@ -264,7 +264,7 @@ var/global/floorIsLava = 0
 
 
 /datum/admins/proc/player_has_info(var/key as text)
-	var/savefile/info = new("data/player_saves/[copytext_char(key, 1, 2)]/[key]/info.sav")
+	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!infos || !infos.len) return 0
@@ -290,7 +290,7 @@ var/global/floorIsLava = 0
 			break
 	dat += "<b>Player age: [p_age]</b><br><ul id='notes'>"
 
-	var/savefile/info = new("data/player_saves/[copytext_char(key, 1, 2)]/[key]/info.sav")
+	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!infos)
@@ -601,7 +601,7 @@ var/global/floorIsLava = 0
 	for(var/t in jobban_keylist)
 		var/r = t
 		if( findtext(r,"##") )
-			r = copytext_char( r, 1, findtext(r,"##") )//removes the description
+			r = copytext( r, 1, findtext(r,"##") )//removes the description
 		dat += text("<tr><td>[t] (<A href='?src=\ref[src];removejobban=[r]'>unban</A>)</td></tr>")
 	dat += "</table>"
 	usr << browse(dat, "window=ban;size=400x400")
@@ -695,7 +695,7 @@ var/global/floorIsLava = 0
 	var/message = input("Global message to send:", "Admin Announce", null, null) as message
 	message = sanitize(message, 500, extra = 0)
 	if(message)
-		message = replacetext_char(message, "\n", "<br>") // required since we're putting it in a <p> tag
+		message = replacetext(message, "\n", "<br>") // required since we're putting it in a <p> tag
 		to_world("<span class=notice><b>[usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
