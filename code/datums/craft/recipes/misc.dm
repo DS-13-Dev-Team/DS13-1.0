@@ -191,3 +191,12 @@
 	list(CRAFT_STACK, /obj/item/stack/cable_coil, 5),
 	list(CRAFT_STACK, /obj/item/stack/power_node, 1)
 	)
+
+/datum/craft_recipe/cutter_recharge
+	name = "Plasma energy recharge"
+	result = /obj/item/weapon/cell/plasmacutter
+	time = 50
+	steps = list(,
+	list(CRAFT_STACK, /obj/item/weapon/cell/plasmacutter, 1),
+	list(CRAFT_STACK, /obj/item/stack/power_node, 1)
+	)
