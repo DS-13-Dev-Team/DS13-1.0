@@ -196,7 +196,7 @@
 	name = "Plasma energy recharge"
 	result = /obj/item/weapon/cell/plasmacutter
 	time = 50
-	steps = list(,
+	steps = list(
 	list(CRAFT_STACK, /obj/item/weapon/cell/plasmacutter, 1),
 	list(CRAFT_STACK, /obj/item/stack/power_node, 1)
 	)

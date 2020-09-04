@@ -1,7 +1,7 @@
 /datum/game_mode/marker
 	var/evac_points = 0
-	var/evac_threshold = 100
-	var/minimum_evac_time = 75// in minutes. How soon after marker setup that evac can be called, assuming all systems remain working (they won't)
+	var/evac_threshold = 60
+	var/minimum_evac_time = 45// in minutes. How soon after marker setup that evac can be called, assuming all systems remain working (they won't)
 
 
 	var/last_pointgain_time	= 0
