@@ -16,7 +16,7 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/tripod
 	name_plural =  "Tripods"
 	blurb = "A heavy skirmisher, the tripod is adept at leaping around open spaces and fighting against multiple distant targets."
-	total_health = 500
+	total_health = 450
 	torso_damage_mult = 0.65 //Hitting centre mass is fine for tripod
 
 	//Normal necromorph flags plus no slip

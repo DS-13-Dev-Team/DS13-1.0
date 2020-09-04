@@ -84,7 +84,7 @@
 			Damage to the chest and groin is treated as being multiplied by this,
 	*/
 
-	var/dismember_mult = 1.3
+	var/dismember_mult = 1.2
 	/*
 		For the purpose of determining whether or not the necromorph has taken enough damage to be killed:
 			A limb which is completely severed counts as its max damage multiplied by this
@@ -234,8 +234,10 @@
 	//Any limb still attached, adds its current damage to the total
 	//Any limb no longer attached (or stumped) adds its pre-cached max damage * dismemberment mult to the total
 	//Any limb which is considered to be a torso part adds its damage, multiplied by the torso mult, to the total
-/datum/species/necromorph/proc/get_weighted_total_limb_damage(var/mob/living/carbon/human/H)
+	//The return list var is used for hud healthbars
+/datum/species/necromorph/proc/get_weighted_total_limb_damage(var/mob/living/carbon/human/H, var/return_list)
 	var/total = 0
+	var/blocked = 0
 	if (!initial_health_values)
 		return 0 //Not populated? welp
 
@@ -245,6 +247,7 @@
 		if (!E || E.is_stump())
 			//Its not here!
 			subtotal = initial_health_values[organ_tag] * dismember_mult
+			blocked += subtotal
 		else
 			//Its here
 			subtotal = E.damage
@@ -255,6 +258,9 @@
 
 		//And now add to total
 		total += subtotal
+
+	if (return_list)
+		return list("damage" = total, "blocked" = blocked)
 
 	return total
 

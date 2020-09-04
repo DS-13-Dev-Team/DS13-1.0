@@ -85,6 +85,12 @@
 
 		hud_elements |= using
 
+	if(hud_data.has_healthbar)
+
+		using = new /obj/screen/healthbar(target.client)
+		src.adding += using
+		hud_elements |= using
+
 	if(hud_data.has_m_intent)
 		using = new /obj/screen()
 		using.SetName("mov_intent")
@@ -299,11 +305,11 @@
 
 	mymob.client.screen = list()
 
-	mymob.client.screen += hud_elements
+	mymob.client.add_to_screen(hud_elements)
 
-	mymob.client.screen += src.adding
+	mymob.client.add_to_screen(src.adding)
 
-	mymob.client.screen += src.hotkeybuttons
+	mymob.client.add_to_screen(src.hotkeybuttons)
 	inventory_shown = 0
 
 /mob/living/carbon/human/verb/toggle_hotkey_verbs()

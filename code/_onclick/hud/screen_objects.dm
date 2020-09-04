@@ -405,3 +405,7 @@
 				usr.update_inv_l_hand(0)
 				usr.update_inv_r_hand(0)
 	return 1
+
+
+/obj/proc/added_to_screen(var/client/C)
+	return
