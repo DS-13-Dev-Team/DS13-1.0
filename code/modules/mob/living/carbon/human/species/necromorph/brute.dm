@@ -7,7 +7,7 @@
 	name_plural =  "Brutes"
 	blurb = "A powerful linebreaker and assault specialist, the brute can smash through almost any obstacle, and its tough frontal armor makes it perfect for assaulting entrenched positions. \n\
 	Very vulnerable to flanking attacks"
-	total_health = 400
+	total_health = 450
 	torso_damage_mult = 1 //Hitting centre mass is fine for brute
 
 	//Normal necromorph flags plus no slip

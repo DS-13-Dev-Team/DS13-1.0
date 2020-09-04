@@ -384,3 +384,14 @@ client/verb/character_setup()
 	set category = "OOC"
 	if(prefs)
 		prefs.ShowChoices(usr)
+
+
+//Adds things to screen and tells them this was done
+/client/proc/add_to_screen(var/list/things)
+
+	if (!islist(things))
+		things = list(things)
+
+	for (var/obj/O as anything in things)
+		screen += O
+		O.added_to_screen(src)

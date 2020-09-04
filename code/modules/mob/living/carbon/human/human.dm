@@ -939,6 +939,7 @@
 	icon_state = lowertext(species.name)
 
 	species.create_organs(src)
+
 	species.handle_post_spawn(src)
 
 
@@ -976,6 +977,8 @@
 		var/obj/item/clothing/C = get_equipped_item(slot)
 		if(istype(C) && !C.mob_can_equip(src, slot, disable_warning = TRUE, force = TRUE))	//Without the force flag, nothing can remain equipped
 			unEquip(C)
+
+	updatehealth()
 
 	return TRUE
 

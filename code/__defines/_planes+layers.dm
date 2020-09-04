@@ -211,6 +211,7 @@ What is the naming convention for planes or layers?
 	#define HUD_BASE_LAYER       1
 	#define HUD_ITEM_LAYER       2
 	#define HUD_ABOVE_ITEM_LAYER 3
+	#define HUD_TEXT_LAYER 4
 
 
 //This is difference between highest and lowest visible

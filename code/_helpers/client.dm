@@ -58,10 +58,16 @@
 				var/mob/living/L = mob
 				L.handle_regular_hud_updates(FALSE)//Pass false here to not call update vision and avoid an infinite loop
 
+				//Update hud healthbar if one exists, so that its clamped to screen size
+				if (L.hud_healthbar)
+					L.hud_healthbar.set_size(TRUE)
 
 		spawn()
 			view = temp_view
 
+//Returns the width of the viewport/map window, in pixels
+/client/proc/get_viewport_width()
+	return ((temp_view*2)+1) * WORLD_ICON_SIZE
 
 //Returns the total distance infront of the mob that this client can see, taking into account view radius and offset
 /client/proc/get_view_length()
