@@ -127,3 +127,6 @@
 		//"storage2" =     list("loc" = ui_storage2,  "name" = "Right Pocket", "slot" = slot_r_store,   "state" = "pocket"),
 		//"belt" =         list("loc" = ui_belt,      "name" = "Belt",         "slot" = slot_belt,      "state" = "belt")
 		)
+
+/datum/hud_data/necromorph/ubermorph
+	has_healthbar = FALSE
