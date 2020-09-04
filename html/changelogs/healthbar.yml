@@ -34,3 +34,6 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - rscadd: "Necromorphs now have healthbars in their hud, displaying remaining health, as well as permanant losses from severed limbs."
+  - tweak: "Increased brute health from 400 to 450"
+  - tweak: "Reduced tripod health from 500 to 450"
+  - tweak: "Slightly reduced necromorph severed limb damage multiplier, from 1.3 to 1.2"
