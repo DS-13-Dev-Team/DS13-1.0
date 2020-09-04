@@ -6,7 +6,7 @@
 
 #define CYST_ATTACH_OFFSET	8	//How many pixels the cyst offsets towards a wall or object its attached
 #define CYST_IMPACT_DAMAGE	10
-#define CYST_BLAST_POWER	40
+#define CYST_BLAST_POWER	35
 
 /obj/structure/corruption_node/cyst
 	name = "cyst"
@@ -171,7 +171,7 @@
 	damage = CYST_IMPACT_DAMAGE	//The direct on-hit damage is minor, most of the effect is in a resulting explosion
 	var/exploded = FALSE
 	check_armour = "bomb"
-	step_delay = 2.5
+	step_delay = 3
 	muzzle_type = /obj/effect/projectile/bio/muzzle
 	grippable = TRUE
 

@@ -85,13 +85,13 @@
 --------------------------*/
 /obj/item/projectile/wave/linecutter
 	damage = 34
-	accuracy = 150
+	accuracy = 130
 	penetrating = TRUE
 	edge = TRUE
 	icon = 'icons/obj/weapons/ds13_projectiles_large.dmi'
 	icon_state = "linecutter_48"
 	step_delay = 2
-	kill_count = 10	//Short ranged
+	kill_count = 9	//Short ranged
 	height = 0.1	//10cm thick wave
 
 	var/dig_power = 1800
