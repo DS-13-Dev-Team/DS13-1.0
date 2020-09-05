@@ -769,6 +769,39 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_and_message_admins("admin-called an evacuation.")
 	return
 
+/client/proc/admin_delay_shuttle()
+	set category = "Admin"
+	set name = "Delay Evacuation"
+
+	if(!check_rights(R_ADMIN))	return
+
+	if(!ticker || !evacuation_controller)
+		to_chat(usr, "<span class='warning'>Ticker or evacuation controller are missing.</span>")
+		return
+
+	var/datum/game_mode/marker/GM = ticker.mode
+	if(!GM)
+		to_chat(usr, "<span class='warning'>Marker gamemode not found.</span>")
+		return
+
+	var/extra_time = input("Current approximate time until evacuation is [time2text(GM.get_time_until_evac() MINUTES, "hh:mm:ss")].\nEnter the amount of time in minutes you want to add/remove:", text("Adjusting evacuation time")) as num
+	message_admins(" extra_time = [extra_time], extra_time MINUTES = [extra_time MINUTES] [time2text(extra_time MINUTES, "mm:ss")].")
+	extra_time = extra_time
+	var/options = alert(src, "Do you want to INCREASE or DECREASE time until evacuation is available by [time2text(extra_time MINUTES, "mm:ss")] minutes? ", "Options", "Increase", "Decrease", "Cancel")
+	if(options == "Cancel")
+		return
+	else if(options == "Decrease")
+		extra_time *= -1
+		message_admins(" extra_time * -1 = [extra_time].")
+
+	GM.adjust_evac_threshold(extra_time)
+
+	feedback_add_details("admin_verb","DELAYSH")
+	if(options == "Increase")
+		log_and_message_admins("increased time until evacuation is available by [time2text(extra_time MINUTES, "mm:ss")].")
+	else
+		log_and_message_admins("decreased time until evacuation is available by [time2text(extra_time MINUTES * -1, "mm:ss")].")
+	return
 /*
 disabled while adding delay_shuttle since evac cancelling needs a complete rework
 /client/proc/admin_cancel_shuttle()
