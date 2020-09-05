@@ -67,43 +67,6 @@ medals
 	desc = "A white heart emblazoned with a red cross awarded to members of the SCG for service as a medical professional in a combat zone."
 	icon_state = "white_heart"
 
-/obj/item/clothing/accessory/solgov/torch_patch
-	name = "\improper Torch mission patch"
-	desc = "A fire resistant shoulder patch, worn by the personnel involved in the Torch Project."
-	icon_state = "torchpatch"
-	on_rolled = list("down" = "none")
-	slot = ACCESSORY_SLOT_INSIGNIA
-	sprite_sheets = list(
-		SPECIES_UNATHI = 'icons/mob/species/unathi/solgov_accessory.dmi'
-		)
-
-/obj/item/clothing/accessory/solgov/fleet_patch
-	name = "\improper First Fleet patch"
-	desc = "A fancy shoulder patch carrying insignia of First Fleet, the Sol Guard, stationed in Sol."
-	icon_state = "fleetpatch1"
-	on_rolled = list("down" = "none")
-	slot = ACCESSORY_SLOT_INSIGNIA
-
-/obj/item/clothing/accessory/solgov/fleet_patch/second
-	name = "\improper Second Fleet patch"
-	desc = "A well-worn shoulder patch carrying insignia of Second Fleet, the Home Guard, tasked with defense of Sol territories."
-	icon_state = "fleetpatch2"
-
-/obj/item/clothing/accessory/solgov/fleet_patch/third
-	name = "\improper Third Fleet patch"
-	desc = "A scuffed shoulder patch carrying insignia of Third Fleet, the Border Guard, guarding borders of Sol territory against Vox and pirates."
-	icon_state = "fleetpatch3"
-
-/obj/item/clothing/accessory/solgov/fleet_patch/fourth
-	name = "\improper Fourth Fleet patch"
-	desc = "A pristine shoulder patch carrying insignia of Fourth Fleet, stationed on Skrell border."
-	icon_state = "fleetpatch4"
-
-/obj/item/clothing/accessory/solgov/fleet_patch/fifth
-	name = "\improper Fifth Fleet patch"
-	desc = "A tactical shoulder patch carrying insignia of Fifth Fleet, the Quick Reaction Force, recently formed and outfited with last tech."
-	icon_state = "fleetpatch5"
-
 /******
 ribbons
 ******/

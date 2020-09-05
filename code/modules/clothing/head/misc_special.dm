@@ -1,7 +1,6 @@
 /*
  * Contents:
  *		Welding mask
- *		Cakehat
  *		Ushanka
  *		Pumpkin head
  *		Kitty ears
@@ -101,47 +100,6 @@
 		)
 
 /*
- * Cakehat
- */
-/obj/item/clothing/head/cakehat
-	name = "cake-hat"
-	desc = "It's tasty looking!"
-	icon_state = "cake0"
-	item_state = "cake0"
-	var/onfire = 0
-	body_parts_covered = HEAD
-
-/obj/item/clothing/head/cakehat/Process()
-	if(!onfire)
-		STOP_PROCESSING(SSobj, src)
-		return
-
-	var/turf/location = src.loc
-	if(istype(location, /mob/))
-		var/mob/living/carbon/human/M = location
-		if(M.l_hand == src || M.r_hand == src || M.head == src)
-			location = M.loc
-
-	if (istype(location, /turf))
-		location.hotspot_expose(700, 1)
-
-/obj/item/clothing/head/cakehat/attack_self(mob/user as mob)
-	src.onfire = !( src.onfire )
-	if (src.onfire)
-		src.force = 3
-		src.damtype = "fire"
-		src.icon_state = "cake1"
-		src.item_state = "cake1"
-		START_PROCESSING(SSobj, src)
-	else
-		src.force = null
-		src.damtype = "brute"
-		src.icon_state = "cake0"
-		src.item_state = "cake0"
-	return
-
-
-/*
  * Ushanka
  */
 /obj/item/clothing/head/ushanka
@@ -198,10 +156,3 @@
 
 		var/icon/earbit = new/icon("icon" = 'icons/mob/onmob/head.dmi', "icon_state" = "kittyinner")
 		ears.Blend(earbit, ICON_OVERLAY)
-
-/obj/item/clothing/head/richard
-	name = "chicken mask"
-	desc = "You can hear the distant sounds of rhythmic electronica."
-	icon_state = "richard"
-	body_parts_covered = HEAD|FACE
-	flags_inv = BLOCKHAIR
