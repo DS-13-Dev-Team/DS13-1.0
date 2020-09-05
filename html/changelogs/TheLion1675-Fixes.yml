@@ -35,6 +35,7 @@ delete-after: True
 changes: 
   - rscdel: "Removed the Boombox spawn on the map. Time to hum tunes in your mind."
   - rscdel: "Removed bandana and overalls/aprons from the Botanist lockers."
+  - rscdel: "Removed the chance of slipping on underplating(s) until such time where it is re-enabled."
   - rscadd: "A spiffy new uniform for the Botanists!"
   - maptweak: "Adds emergency O2 lockers in all of the escape pods."
   - maptweak: "Fixed an improperly placed fire wallcloset in the escape lounge."
