@@ -40,6 +40,12 @@
 	icon_base = "dank_tile_mono"
 	build_type = /obj/item/stack/tile/dankmono
 
+/decl/flooring/tiling_ds/bathroom
+	name = "bathroom tiles"
+	desc = "Grim colorings for a grim job to do."
+	icon_base = "bathroom"
+	build_type = /obj/item/stack/tile/bathroom
+
 
 
 

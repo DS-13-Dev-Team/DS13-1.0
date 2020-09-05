@@ -319,6 +319,18 @@
 /obj/item/stack/tile/dankmono/fifty
 	amount = 50
 
+/obj/item/stack/tile/bathroom
+	name = "bathroom floors"
+	desc = "Dark coloring for a dark job to do."
+	singular_name = "bathroom floor"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "dank_heavy"
+	matter = list(MATERIAL_STEEL = 937.5)
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+
+/obj/item/stack/tile/bathroom/fifty
+	amount = 50
+
 
 /*
  * Flooring parent
