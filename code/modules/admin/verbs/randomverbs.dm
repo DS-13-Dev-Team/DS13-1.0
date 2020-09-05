@@ -785,14 +785,12 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	var/extra_time = input("Current approximate time until evacuation is [time2text(GM.get_time_until_evac() MINUTES, "hh:mm:ss")].\nEnter the amount of time in minutes you want to add/remove:", text("Adjusting evacuation time")) as num
-	message_admins(" extra_time = [extra_time], extra_time MINUTES = [extra_time MINUTES] [time2text(extra_time MINUTES, "mm:ss")].")
 	extra_time = extra_time
 	var/options = alert(src, "Do you want to INCREASE or DECREASE time until evacuation is available by [time2text(extra_time MINUTES, "mm:ss")] minutes? ", "Options", "Increase", "Decrease", "Cancel")
 	if(options == "Cancel")
 		return
 	else if(options == "Decrease")
 		extra_time *= -1
-		message_admins(" extra_time * -1 = [extra_time].")
 
 	GM.adjust_evac_threshold(extra_time)
 
