@@ -230,7 +230,7 @@ var/list/flooring_types
 	if(!ishuman(M)|| M.HasMovementHandler(/datum/movement_handler/mob/incorporeal) || !has_gravity(get_turf(M)))
 		return
 	if(MOVING_QUICKLY(M))
-		if(prob(5))
+		if(prob(0))
 			M.adjustBruteLoss(5)
 			M.slip(null, 6)
 			playsound(M, 'sound/effects/bang.ogg', 50, 1)
