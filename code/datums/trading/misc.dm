@@ -131,6 +131,7 @@
 	possible_trading_items = list(/obj/item/clothing/head/wizard/magus = TRADER_THIS_TYPE,
 								/obj/item/weapon/shield/buckler        = TRADER_THIS_TYPE,
 								/obj/item/clothing/head/powdered_wig   = TRADER_THIS_TYPE,
+								/obj/item/clothing/head/hasturhood     = TRADER_THIS_TYPE,
 								/obj/item/clothing/head/helmet/gladiator=TRADER_THIS_TYPE,
 								/obj/item/clothing/head/plaguedoctorhat= TRADER_THIS_TYPE,
 								/obj/item/clothing/glasses/monocle     = TRADER_THIS_TYPE,

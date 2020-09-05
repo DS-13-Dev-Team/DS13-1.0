@@ -54,6 +54,13 @@
 	siemens_coefficient = 0.9
 	body_parts_covered = 0
 
+/obj/item/clothing/head/hasturhood
+	name = "hastur's hood"
+	desc = "It's unspeakably stylish."
+	icon_state = "hasturhood"
+	flags_inv = BLOCKHAIR
+	body_parts_covered = HEAD|FACE|EYES
+
 /obj/item/clothing/head/nursehat
 	name = "nurse's hat"
 	desc = "It allows quick identification of trained medical personnel."
@@ -247,6 +254,13 @@
 	desc = "A wide-brimmed hat, in the prevalent style of America's frontier period. By SolGov law, you are required to wear this hat while watching True Grit."
 	icon_state = "cowboyhat"
 	item_state = "cowboy_hat"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/taqiyah
+	name = "taqiyah"
+	desc = "A short, rounded skullcap usually worn for religious purposes."
+	icon_state = "taqiyah"
+	item_state = "taqiyah"
 	body_parts_covered = 0
 
 /obj/item/clothing/head/tank
