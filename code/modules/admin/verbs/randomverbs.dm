@@ -763,7 +763,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			return
 
 	var/choice = input("Is this an emergency evacuation or a crew transfer?") in list("Emergency", "Crew Transfer")
-	evacuation_controller.call_evacuation(usr, (choice == "Emergency"))
+	evacuation_controller.call_evacuation(usr, (choice == "Emergency"), TRUE)
 
 	feedback_add_details("admin_verb","CSHUT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_and_message_admins("admin-called an evacuation.")
