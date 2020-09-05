@@ -134,7 +134,6 @@
 			new/obj/item/weapon/melee/energy/sword(src)
 		if(99)
 			new/obj/item/weapon/storage/belt/champion(src)
-			new/obj/item/clothing/mask/luchador(src)
 		if(100)
 			new/obj/item/clothing/head/bearpelt(src)
 

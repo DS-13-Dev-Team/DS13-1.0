@@ -24,7 +24,6 @@
 		/obj/item/clothing/head/hairflower/blue,
 		/obj/item/clothing/under/sl_suit = 2,
 		/obj/item/clothing/under/rank/bartender = 2,
-		/obj/item/clothing/under/dress/dress_saloon,
 		/obj/item/clothing/accessory/wcoat = 2,
 		/obj/item/clothing/shoes/black = 2
 	)
@@ -40,7 +39,6 @@
 
 /obj/structure/closet/chefcloset/WillContain()
 	return list(
-		/obj/item/clothing/under/sundress,
 		/obj/item/clothing/under/waiter = 2,
 		/obj/item/device/radio/headset/headset_service = 2,
 		/obj/item/weapon/storage/box/mousetraps = 2,

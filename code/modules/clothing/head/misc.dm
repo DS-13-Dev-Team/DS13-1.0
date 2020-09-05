@@ -46,18 +46,6 @@
 	siemens_coefficient = 0.9
 	body_parts_covered = 0
 
-/obj/item/clothing/head/redcoat
-	name = "redcoat's hat"
-	icon_state = "redcoat"
-	desc = "<i>'I guess it's a redhead.'</i>"
-	body_parts_covered = 0
-
-/obj/item/clothing/head/mailman
-	name = "mail cap"
-	icon_state = "mailman"
-	desc = "<i>Choo-choo</i>!"
-	body_parts_covered = 0
-
 /obj/item/clothing/head/plaguedoctorhat
 	name = "plague doctor's hat"
 	desc = "These were once used by Plague doctors. They're pretty much useless."
@@ -224,18 +212,6 @@
 	flags_inv = BLOCKHAIR
 	siemens_coefficient = 2.0
 
-/obj/item/clothing/head/chicken
-	name = "chicken suit head"
-	desc = "Bkaw!"
-	icon_state = "chickenhead"
-	item_state_slots = list(
-		slot_l_hand_str = "chickensuit",
-		slot_r_hand_str = "chickensuit",
-		)
-	flags_inv = BLOCKHAIR
-	siemens_coefficient = 0.7
-	body_parts_covered = HEAD|FACE|EYES
-
 /obj/item/clothing/head/bearpelt
 	name = "bear pelt hat"
 	desc = "Fuzzy."
@@ -267,25 +243,11 @@
 	flags_inv = BLOCKHAIR
 	body_parts_covered = 0
 
-/obj/item/clothing/head/hijab
-	name = "hijab"
-	desc = "A veil which is wrapped to cover the head and chest."
-	icon_state = "hijab"
-	body_parts_covered = 0
-	flags_inv = BLOCKHAIR
-
 /obj/item/clothing/head/kippa
 	name = "kippa"
 	desc = "A small, brimless cap."
 	icon_state = "kippa"
 	body_parts_covered = 0
-
-/obj/item/clothing/head/turban
-	name = "turban"
-	desc = "A sturdy cloth, worn around the head."
-	icon_state = "turban"
-	body_parts_covered = 0
-	flags_inv = BLOCKHEADHAIR //Shows beards!
 
 /obj/item/clothing/head/cowboy_hat
 	name = "cowboy hat"
