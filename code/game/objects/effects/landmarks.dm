@@ -133,11 +133,6 @@
 	new /obj/item/clothing/shoes/jackboots(src.loc)
 	delete_me = 1
 
-/obj/effect/landmark/costume/nyangirl/New()
-	new /obj/item/clothing/under/schoolgirl(src.loc)
-	new /obj/item/clothing/head/kitty(src.loc)
-	delete_me = 1
-
 /obj/effect/landmark/costume/maid/New()
 	new /obj/item/clothing/under/blackskirt(src.loc)
 	var/CHOICE = pick( /obj/item/clothing/head/beret , /obj/item/clothing/head/rabbitears )
@@ -175,11 +170,6 @@
 	new /obj/item/clothing/head/plaguedoctorhat(src.loc)
 	delete_me = 1
 
-/obj/effect/landmark/costume/nightowl/New()
-	new /obj/item/clothing/under/owl(src.loc)
-	new /obj/item/clothing/mask/gas/owl_mask(src.loc)
-	delete_me = 1
-
 /obj/effect/landmark/costume/waiter/New()
 	new /obj/item/clothing/under/waiter(src.loc)
 	var/CHOICE= pick( /obj/item/clothing/head/kitty, /obj/item/clothing/head/rabbitears)
@@ -215,36 +205,10 @@
 	new/obj/item/clothing/suit/wizrobe/marisa/fake(src.loc)
 	delete_me = 1
 
-/obj/effect/landmark/costume/cutewitch/New()
-	new /obj/item/clothing/under/sundress(src.loc)
-	new /obj/item/clothing/head/witchwig(src.loc)
-	new /obj/item/weapon/staff/broom(src.loc)
-	delete_me = 1
-
 /obj/effect/landmark/costume/fakewizard/New()
 	new /obj/item/clothing/suit/wizrobe/fake(src.loc)
 	new /obj/item/clothing/head/wizard/fake(src.loc)
 	new /obj/item/weapon/staff/(src.loc)
-	delete_me = 1
-
-/obj/effect/landmark/costume/sexyclown/New()
-	new /obj/item/clothing/mask/gas/sexyclown(src.loc)
-	new /obj/item/clothing/under/sexyclown(src.loc)
-	delete_me = 1
-
-/obj/effect/landmark/costume/sexymime/New()
-	new /obj/item/clothing/mask/gas/sexymime(src.loc)
-	new /obj/item/clothing/under/sexymime(src.loc)
-	delete_me = 1
-
-/obj/effect/landmark/costume/savagehunter/New()
-	new /obj/item/clothing/mask/spirit(src.loc)
-	new /obj/item/clothing/under/savage_hunter(src.loc)
-	delete_me = 1
-
-/obj/effect/landmark/costume/savagehuntress/New()
-	new /obj/item/clothing/mask/spirit(src.loc)
-	new /obj/item/clothing/under/savage_hunter/female(src.loc)
 	delete_me = 1
 
 /obj/effect/landmark/ruin

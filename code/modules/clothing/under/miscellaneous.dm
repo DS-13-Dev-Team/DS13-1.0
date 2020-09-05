@@ -40,21 +40,6 @@
 	item_state = "waiter"
 	worn_state = "waiter"
 
-/obj/item/clothing/under/rank/mailman
-	name = "mailman's jumpsuit"
-	desc = "<i>'Special delivery!'</i>"
-	icon_state = "mailman"
-	item_state = "b_suit"
-	worn_state = "mailman"
-
-/obj/item/clothing/under/sexyclown
-	name = "sexy-clown suit"
-	desc = "It makes you look HONKable!"
-	icon_state = "sexyclown"
-	item_state = "clown"
-	worn_state = "sexyclown"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-
 /obj/item/clothing/under/rank/vice
 	name = "vice officer's jumpsuit"
 	desc = "It's the standard issue pretty-boy outfit, as seen on Holo-Vision."
@@ -122,26 +107,6 @@
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
-
-/obj/item/clothing/under/owl
-	name = "owl uniform"
-	desc = "A jumpsuit with owl wings. Photorealistic owl feathers! Twooooo!"
-	icon_state = "owl"
-	worn_state = "owl"
-	item_state = "owl"
-
-/obj/item/clothing/under/johnny
-	name = "johnny~~ jumpsuit"
-	desc = "Johnny~~"
-	icon_state = "johnny"
-	worn_state = "johnny"
-	item_state = "johnny"
-
-/obj/item/clothing/under/color/rainbow
-	name = "rainbow"
-	icon_state = "rainbow"
-	item_state = "rainbow"
-	worn_state = "rainbow"
 
 /obj/item/clothing/under/cloud
 	name = "cloud"
@@ -222,14 +187,6 @@
 	worn_state = "blackskirt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
-/obj/item/clothing/under/schoolgirl
-	name = "schoolgirl uniform"
-	desc = "It's just like one of my Japanese animes!"
-	icon_state = "schoolgirl"
-	item_state = "b_suit"
-	worn_state = "schoolgirl"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-
 /obj/item/clothing/under/overalls
 	name = "laborer's overalls"
 	desc = "A set of durable overalls for getting the job done."
@@ -252,13 +209,6 @@
 	item_state = "gy_suit"
 	worn_state = "soviet"
 
-/obj/item/clothing/under/redcoat
-	name = "redcoat uniform"
-	desc = "Looks old."
-	icon_state = "redcoat"
-	item_state = "r_suit"
-	worn_state = "redcoat"
-
 /obj/item/clothing/under/kilt
 	name = "kilt"
 	desc = "Includes shoes and plaid."
@@ -266,14 +216,6 @@
 	item_state = "kilt"
 	worn_state = "kilt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
-
-/obj/item/clothing/under/sexymime
-	name = "sexy mime outfit"
-	desc = "The only time when you DON'T enjoy looking at someone's rack."
-	icon_state = "sexymime"
-	item_state = "w_suit"
-	worn_state = "sexymime"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/gladiator
 	name = "gladiator uniform"
@@ -290,56 +232,6 @@
 	icon_state = "dress_fire"
 	worn_state = "dress_fire"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-
-/obj/item/clothing/under/dress/dress_fire
-	name = "flame dress"
-	desc = "A small black dress with blue flames print on it."
-	icon_state = "dress_fire"
-	item_state = "bl_suit"
-	worn_state = "dress_fire"
-
-/obj/item/clothing/under/dress/dress_green
-	name = "green dress"
-	desc = "A simple, tight fitting green dress."
-	icon_state = "dress_green"
-	item_state = "g_suit"
-	worn_state = "dress_green"
-
-/obj/item/clothing/under/dress/dress_orange
-	name = "orange dress"
-	desc = "A fancy orange gown for those who like to show leg."
-	icon_state = "dress_orange"
-	item_state = "y_suit"
-	worn_state = "dress_orange"
-
-/obj/item/clothing/under/dress/dress_pink
-	name = "pink dress"
-	desc = "A simple, tight fitting pink dress."
-	icon_state = "dress_pink"
-	item_state = "p_suit"
-	worn_state = "dress_pink"
-
-/obj/item/clothing/under/dress/dress_purple
-	name = "purple dress"
-	desc= "A simple, tight fitting purple dress."
-	icon_state = "tian_dress"
-	item_state = "p_suit"
-	worn_state = "tian_dress"
-
-/obj/item/clothing/under/dress/dress_yellow
-	name = "yellow dress"
-	desc = "A flirty, little yellow dress."
-	icon_state = "dress_yellow"
-	item_state = "y_suit"
-	worn_state = "dress_yellow"
-
-/obj/item/clothing/under/dress/dress_saloon
-	name = "saloon girl dress"
-	desc = "A old western inspired gown for the girl who likes to drink."
-	icon_state = "dress_saloon"
-	item_state = "p_suit"
-	worn_state = "dress_saloon"
-
 
 /obj/item/clothing/under/dress/dress_cap
 	name = "captain's dress uniform"
@@ -384,67 +276,6 @@
 	icon_state = "plaid_purple"
 	item_state = "kilt"
 	worn_state = "plaid_purple"
-
-//wedding stuff
-/obj/item/clothing/under/wedding/
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
-
-/obj/item/clothing/under/wedding/bride_orange
-	name = "orange wedding dress"
-	desc = "A big and puffy orange dress."
-	icon_state = "bride_orange"
-	item_state = "y_suit"
-	worn_state = "bride_orange"
-	flags_inv = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_purple
-	name = "purple wedding dress"
-	desc = "A big and puffy purple dress."
-	icon_state = "bride_purple"
-	item_state = "p_suit"
-	worn_state = "bride_purple"
-	flags_inv = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_blue
-	name = "blue wedding dress"
-	desc = "A big and puffy blue dress."
-	icon_state = "bride_blue"
-	item_state = "b_suit"
-	worn_state = "bride_blue"
-	flags_inv = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_red
-	name = "red wedding dress"
-	desc = "A big and puffy red dress."
-	icon_state = "bride_red"
-	item_state = "r_suit"
-	worn_state = "bride_red"
-	flags_inv = HIDESHOES
-
-/obj/item/clothing/under/wedding/bride_white
-	name = "silky wedding dress"
-	desc = "A white wedding gown made from the finest silk."
-	icon_state = "bride_white"
-	item_state = "nursesuit"
-	worn_state = "bride_white"
-	flags_inv = HIDESHOES
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-
-/obj/item/clothing/under/sundress
-	name = "sundress"
-	desc = "Makes you want to frolic in a field of daisies."
-	icon_state = "sundress"
-	item_state = "bl_suit"
-	worn_state = "sundress"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-
-/obj/item/clothing/under/sundress_white
-	name = "white sundress"
-	desc = "A white sundress decorated with purple lilies."
-	icon_state = "sundress_white"
-	item_state = "sundress_white"
-	worn_state = "sundress_white"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/blackjumpskirt
 	name = "black jumpskirt"
@@ -535,22 +366,6 @@
 	item_state = "lb_suit"
 	worn_state = "mechanic"
 
-/obj/item/clothing/under/cheongsam
-	name = "cheongsam"
-	desc = "It is a cheongsam dress."
-	icon_state = "mai_yang"
-	item_state = "mai_yang"
-	worn_state = "mai_yang"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
-
-/obj/item/clothing/under/abaya
-	name = "abaya"
-	desc = "A loose-fitting, robe-like dress."
-	icon_state = "abaya"
-	item_state = "abaya"
-	worn_state = "abaya"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-
 /obj/item/clothing/under/blazer
 	name = "blue blazer"
 	desc = "A bold but yet conservative outfit, red corduroys, navy blazer and a tie."
@@ -586,30 +401,6 @@
 	icon_state = "grayson"
 	worn_state = "grayson"
 
-/obj/item/clothing/under/wardt
-	name = "\improper Ward-Takahashi jumpsuit"
-	desc = "A jumpsuit belonging to Ward-Takahashi, a megacorp in the consumer goods and research market."
-	icon_state = "wardt"
-	worn_state = "wardt"
-
-/obj/item/clothing/under/mbill
-	name = "\improper Major Bill's uniform"
-	desc = "A uniform belonging to Major Bill's Transportation, a major shipping company."
-	icon_state = "mbill"
-	worn_state = "mbill"
-
-/obj/item/clothing/under/morpheus
-	name = "\improper Morpheus Cyberkinetics uniform"
-	desc = "A pair of overalls belonging to Morpheus Cyberkinetics, an IPC manufacturing company. It doesn't look like it would be comfortable on a human."
-	icon_state = "morpheus"
-	worn_state = "morpheus"
-
-/obj/item/clothing/under/skinner
-	name = "\improper Skinner Catering uniform"
-	desc = "A uniform belonging to Skinner's Catering, a dining company."
-	icon_state = "skinner"
-	worn_state = "skinner"
-
 // Replace this with actual uniform when someone wants to sprite one
 /obj/item/clothing/under/confederacy
 	name = "\improper Confederate uniform"
@@ -628,24 +419,6 @@
 	desc = "A rugged flannel shirt and denim overalls. A popular style among frontier colonists."
 	icon_state = "frontier"
 	worn_state = "frontier"
-
-/obj/item/clothing/under/aether
-	name = "\improper Aether jumpsuit"
-	desc = "A jumpsuit belonging to Aether Atmospherics and Recycling, a company that supplies recycling and atmospheric systems to colonies."
-	icon_state = "aether"
-	worn_state = "aether"
-
-/obj/item/clothing/under/focal
-	name = "\improper Focal Point jumpsuit"
-	desc = "A jumpsuit belonging to Focal Point Energistics, an engineering corporation."
-	icon_state = "focal"
-	worn_state = "focal"
-
-/obj/item/clothing/under/hephaestus
-	name = "\improper Hephaestus jumpsuit"
-	desc = "A jumpsuit belonging to Hephaestus Industries, a megacorp best known for its arms production."
-	icon_state = "heph"
-	worn_state = "heph"
 
 /obj/item/clothing/under/punpun
 	name = "fancy uniform"
@@ -668,20 +441,6 @@
 	name = "sweater"
 	icon_state = "turtleneck"
 	worn_state = "turtleneck"
-
-/obj/item/clothing/under/savage_hunter
-	name = "savage hunter's hides"
-	desc = "Makeshift hides bound together with the sinew, packwax, and leather of some alien creature."
-	icon_state = "hunterhide"
-	item_state = "hunter"
-	worn_state = "hunter"
-	body_parts_covered = LOWER_TORSO|LEGS|ARMS
-
-/obj/item/clothing/under/savage_hunter/female
-	name = "savage huntress's hides"
-	desc = "Makeshift hides bound together with the sinew, packwax, and leather of some alien creature. Includes a chestwrap so as not to leave one topless."
-	worn_state = "huntress"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 /obj/item/clothing/under/wetsuit
 	name = "tactical wetsuit"
@@ -709,10 +468,3 @@
 	worn_state = "sterile"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 30, rad = 0)
-
-/obj/item/clothing/under/kimono
-	desc = "A traditional robe with remarkably long sleeves, mostly worn by women. <i>Sugoi.</i>"
-	name = "kimono"
-	icon_state = "kimono"
-	worn_state = "kimono"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
