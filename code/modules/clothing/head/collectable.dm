@@ -5,6 +5,14 @@
 	name = "collectable hat"
 	desc = "A rare collectable hat."
 
+/obj/item/clothing/head/collectable/petehat
+	name = "ultra rare hat"
+	desc = "an ultra rare hat. It commands a certain respect."
+	icon_state = "petehat"
+	sprite_sheets = list(
+		SPECIES_VOX = 'icons/mob/species/vox/head.dmi',
+		)
+
 /obj/item/clothing/head/collectable/slime
 	name = "collectable slime cap!"
 	desc = "It just latches right in place!"
@@ -70,6 +78,11 @@
 	item_state = "welding"
 	w_class = ITEM_SIZE_NORMAL
 	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/head/collectable/slime
+	name = "collectable slime hat"
+	desc = "Just like a real Brain Slug!"
+	icon_state = "headslime"
 
 /obj/item/clothing/head/collectable/flatcap
 	name = "collectable flat cap"

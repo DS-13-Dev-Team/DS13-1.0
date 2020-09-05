@@ -91,6 +91,11 @@
 	desc = "It's field cap in corporate colors."
 	icon_state = "corpsoft"
 
+/obj/item/clothing/head/soft/mbill
+	name = "shipping cap"
+	desc = "It's a ballcap bearing the colors of Major Bill's Shipping."
+	icon_state = "mbillsoft"
+
 /obj/item/clothing/head/soft/black
 	name = "black cap"
 	desc = "It's a peaked cap in a tasteful black color."
