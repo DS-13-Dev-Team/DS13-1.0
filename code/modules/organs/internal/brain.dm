@@ -285,5 +285,4 @@
 	. = (species.total_health - max_damage)/species.total_health
 
 /obj/item/organ/internal/brain/heal_damage(amount)
-	world << "Brain healed by [amount], now [src.damage]"
 	.=..()
