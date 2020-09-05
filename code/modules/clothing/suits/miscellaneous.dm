@@ -57,21 +57,6 @@
 	fire_resist = T0C+5200
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 
-
-/obj/item/clothing/suit/greatcoat
-	name = "great coat"
-	desc = "A heavy great coat."
-	icon_state = "nazi"
-	item_state = "nazi"
-
-
-/obj/item/clothing/suit/johnny_coat
-	name = "johnny~~ coat"
-	desc = "Johnny~~"
-	icon_state = "johnny"
-	item_state = "johnny"
-
-
 /obj/item/clothing/suit/justice
 	name = "justice suit"
 	desc = "This pretty much looks ridiculous."
@@ -125,26 +110,6 @@
 	item_state = "imperium_monk"
 	body_parts_covered = HEAD|UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	flags_inv = HIDESHOES|HIDEJUMPSUIT
-
-
-/obj/item/clothing/suit/chickensuit
-	name = "Chicken Suit"
-	desc = "A suit made long ago by the ancient empire KFC."
-	icon_state = "chickensuit"
-	item_state = "chickensuit"
-	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS|FEET
-	flags_inv = HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 2.0
-
-
-/obj/item/clothing/suit/monkeysuit
-	name = "Monkey Suit"
-	desc = "A suit that looks like a primate."
-	icon_state = "monkeysuit"
-	item_state = "monkeysuit"
-	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS|FEET|HANDS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 2.0
 
 
 /obj/item/clothing/suit/holidaypriest
@@ -232,41 +197,6 @@
 	icon_state = "neocoat"
 	item_state = "neocoat"
 
-//stripper
-/obj/item/clothing/under/stripper
-	body_parts_covered = 0
-
-/obj/item/clothing/under/stripper/stripper_pink
-	name = "pink swimsuit"
-	desc = "A rather skimpy pink swimsuit."
-	icon_state = "stripper_p_under"
-	siemens_coefficient = 1
-
-/obj/item/clothing/under/stripper/stripper_green
-	name = "green swimsuit"
-	desc = "A rather skimpy green swimsuit."
-	icon_state = "stripper_g_under"
-	siemens_coefficient = 1
-
-/obj/item/clothing/suit/stripper/stripper_pink
-	name = "pink skimpy dress"
-	desc = "A rather skimpy pink dress."
-	icon_state = "stripper_p_over"
-	siemens_coefficient = 1
-
-/obj/item/clothing/suit/stripper/stripper_green
-	name = "green skimpy dress"
-	desc = "A rather skimpy green dress."
-	icon_state = "stripper_g_over"
-	//item_state = "stripper_g"
-	siemens_coefficient = 1
-
-/obj/item/clothing/under/stripper/mankini
-	name = "mankini"
-	desc = "No honest man would wear this abomination."
-	icon_state = "mankini"
-	siemens_coefficient = 1
-
 /obj/item/clothing/suit/xenos
 	name = "xenos suit"
 	desc = "A suit made out of chitinous alien hide."
@@ -275,6 +205,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	siemens_coefficient = 2.0
+
 //swimsuit
 /obj/item/clothing/under/swimsuit/
 	siemens_coefficient = 1
@@ -530,23 +461,3 @@
 	icon_state = "trackjackettcc"
 	icon_open = "trackjackettcc_open"
 	icon_closed = "trackjackettcc"
-
-/obj/item/clothing/suit/rubber
-	name = "human suit"
-	desc = "A Human suit made out of rubber."
-	icon_state = "mansuit"
-
-/obj/item/clothing/suit/rubber/tajaran
-	name = "tajara suit"
-	desc = "A Tajara suit made out of rubber."
-	icon_state = "catsuit"
-
-/obj/item/clothing/suit/rubber/skrell
-	name = "skrell suit"
-	desc = "A Skrell suit made out of rubber."
-	icon_state = "skrellsuit"
-
-/obj/item/clothing/suit/rubber/unathi
-	name = "unathi suit"
-	desc = "A Unathi suit made out of rubber."
-	icon_state = "lizsuit"

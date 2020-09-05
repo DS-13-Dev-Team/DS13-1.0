@@ -158,10 +158,6 @@
 	path = /spell/aoe_turf/knock
 	desc = "This contract is hard to hold still."
 
-/obj/item/weapon/contract/boon/wizard/horsemask
-	path = /spell/targeted/equip_item/horsemask
-	desc = "This contract is more horse than your mind has room for."
-
 /obj/item/weapon/contract/boon/wizard/charge
 	path = /spell/aoe_turf/charge
 	desc = "This contract is made of 100% post-consumer wizard."

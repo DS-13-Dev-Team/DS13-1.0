@@ -31,16 +31,6 @@
 		/obj/item/clothing/gloves/boxing/yellow,
 		/obj/item/clothing/gloves/boxing)
 
-/obj/structure/closet/masks
-	name = "mask closet"
-	desc = "IT'S A STORAGE UNIT FOR FIGHTER MASKS OLE!"
-
-/obj/structure/closet/masks/WillContain()
-	return list(
-		/obj/item/clothing/mask/luchador,
-		/obj/item/clothing/mask/luchador/rudos,
-		/obj/item/clothing/mask/luchador/tecnicos)
-
 /obj/structure/closet/lasertag/red
 	name = "red laser tag equipment"
 	desc = "It's a storage unit for laser tag equipment."

@@ -36,9 +36,6 @@
 	body_parts_covered = FACE
 	w_class = ITEM_SIZE_SMALL
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 0, bomb = 0, bio = 55, rad = 0)
-	sprite_sheets = list(
-		SPECIES_TAJARA = 'icons/mob/species/tajaran/mask.dmi',
-		)
 
 //In scaling order of utility and seriousness
 
@@ -103,56 +100,8 @@
 	icon_state = "clown"
 	item_state = "clown"
 
-/obj/item/clothing/mask/gas/sexyclown
-	name = "sexy-clown wig and mask"
-	desc = "A feminine clown mask for the dabbling crossdressers or female entertainers."
-	icon_state = "sexyclown"
-	item_state = "sexyclown"
-
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"
 	desc = "The traditional mime's mask. It has an eerie facial posture."
 	icon_state = "mime"
 	item_state = "mime"
-
-/obj/item/clothing/mask/gas/monkeymask
-	name = "monkey mask"
-	desc = "A mask used when acting as a monkey."
-	icon_state = "monkeymask"
-	item_state = "monkeymask"
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/gas/sexymime
-	name = "sexy mime mask"
-	desc = "A traditional female mime's mask."
-	icon_state = "sexymime"
-	item_state = "sexymime"
-
-/obj/item/clothing/mask/gas/owl_mask
-	name = "owl mask"
-	desc = "Twoooo!"
-	icon_state = "owl"
-	item_state = "owl"
-	body_parts_covered = HEAD|FACE|EYES
-
-//Vox Unique Masks
-
-/obj/item/clothing/mask/gas/vox
-	name = "vox breathing mask"
-	desc = "A small oxygen filter for use by Vox"
-	icon_state = "respirator"
-	item_state = "respirator"
-	flags_inv = 0
-	body_parts_covered = 0
-	species_restricted = list(SPECIES_VOX)
-	filtered_gases = list(MATERIAL_PHORON, "sleeping_agent", "oxygen")
-
-
-/obj/item/clothing/mask/gas/swat/vox
-	name = "alien mask"
-	desc = "Clearly not designed for a human face."
-	icon_state = "voxswat"
-	item_state = "voxswat"
-	body_parts_covered = 0 //Hack to allow vox to eat while wearing this mask.
-	species_restricted = list(SPECIES_VOX)
-	filtered_gases = list(MATERIAL_PHORON, "sleeping_agent", "oxygen")

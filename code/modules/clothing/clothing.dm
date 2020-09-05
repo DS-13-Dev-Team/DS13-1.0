@@ -537,10 +537,6 @@ BLIND     // can't see anything
 	icon = 'icons/obj/clothing/masks.dmi'
 	slot_flags = SLOT_MASK
 	body_parts_covered = FACE|EYES
-	sprite_sheets = list(
-		SPECIES_VOX = 'icons/mob/species/vox/masks.dmi',
-		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/mask.dmi',
-		)
 
 	var/voicechange = 0
 	var/list/say_messages
