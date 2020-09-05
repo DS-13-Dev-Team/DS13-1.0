@@ -43,6 +43,6 @@ changes:
   - maptweak: "Fixed several internal windoors not having appropriate access set."
   - maptweak: "Added Shuttle consoles to the Ishimura for the Mining Shuttles. No more asking for it to be sent up!"
   - maptweak: "Fixed incorrect naming of airlocks in the USM Valor."
-  - maptweak: "Significantly increased medical item quantity in the medical bay of the USM Valor.."
+  - maptweak: "Significantly increased medical item quantity in the medical bay of the USM Valor."
   - bugfix: "Fixed a rare bug where players could automagically teleport into the colony level if reaching edge of space maps."
   - bugfix: "Fixed the South brig reception door having access when it shouldn't."
