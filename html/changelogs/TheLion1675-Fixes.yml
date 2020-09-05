@@ -45,4 +45,4 @@ changes:
   - maptweak: "Fixed incorrect naming of airlocks in the USM Valor."
   - maptweak: "Significantly increased medical item quantity in the medical bay of the USM Valor."
   - bugfix: "Fixed a rare bug where players could automagically teleport into the colony level if reaching edge of space maps."
-  - bugfix: "Fixed the South brig reception door having access when it shouldn't."
+  - bugfix: "Fixed the outer South brig reception door having access when it shouldn't."
