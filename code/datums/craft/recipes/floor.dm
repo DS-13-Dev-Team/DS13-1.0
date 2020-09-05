@@ -124,3 +124,11 @@
 	)
 
 
+/datum/craft_recipe/floor/bathroom
+	name = "bathroom floor"
+	result = /obj/item/stack/tile/bathroom
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 1, "time" = 1),
+	)
+
+

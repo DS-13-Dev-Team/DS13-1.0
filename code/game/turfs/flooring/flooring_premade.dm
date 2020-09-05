@@ -349,3 +349,8 @@
 	name = "grim floor"
 	icon_state = "dank_tile_mono"
 	initial_flooring = /decl/flooring/tiling_ds/mono
+
+/turf/simulated/floor/dank/bathr
+	name = "bathroom tiles"
+	icon_state = "bathroom"
+	initial_flooring = /decl/flooring/tiling_ds/bathroom
