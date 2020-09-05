@@ -769,6 +769,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_and_message_admins("admin-called an evacuation.")
 	return
 
+/*
+disabled while adding delay_shuttle since evac cancelling needs a complete rework
 /client/proc/admin_cancel_shuttle()
 	set category = "Admin"
 	set name = "Cancel Evacuation"
@@ -786,7 +788,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_and_message_admins("admin-cancelled the evacuation.")
 
 	return
-
+*/
 /client/proc/admin_deny_shuttle()
 	set category = "Admin"
 	set name = "Toggle Deny Evac"

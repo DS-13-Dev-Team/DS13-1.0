@@ -111,8 +111,8 @@
 		return list()
 	if (is_idle())
 		return list(evacuation_options[EVAC_OPT_CALL_SHUTTLE])
-	else
-		return list(evacuation_options[EVAC_OPT_RECALL_SHUTTLE])
+	//else	//disabled until proper cancel evac is coded
+		//return list(evacuation_options[EVAC_OPT_RECALL_SHUTTLE])
 
 /datum/evacuation_option/call_shuttle
 	option_text = "Call emergency shuttle"
