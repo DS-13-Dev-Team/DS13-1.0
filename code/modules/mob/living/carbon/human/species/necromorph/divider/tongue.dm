@@ -31,6 +31,7 @@
 	fire_sound = null
 	damage = 0
 	nodamage = TRUE
+	step_delay = (10 / TONGUE_PROJECTILE_SPEED)
 	var/obj/effect/projectile/tether/tongue = null
 
 /*
