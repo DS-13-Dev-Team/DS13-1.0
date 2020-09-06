@@ -363,7 +363,7 @@
 	name = "workman outfit"
 	desc = "The very image of a working man. Not that you're probably doing work."
 	icon_state = "mechanic"
-	item_state = "lb_suit"
+	item_state = "mechanic"
 	worn_state = "mechanic"
 
 /obj/item/clothing/under/blazer

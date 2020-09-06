@@ -76,11 +76,6 @@
 	desc = "It's a peaked cap in a tasteless purple color."
 	icon_state = "purplesoft"
 
-/obj/item/clothing/head/soft/rainbow
-	name = "rainbow cap"
-	desc = "It's a peaked cap in a bright rainbow of colors."
-	icon_state = "rainbowsoft"
-
 /obj/item/clothing/head/soft/sec
 	name = "security cap"
 	desc = "It's a field cap in tasteful red color."
@@ -91,11 +86,6 @@
 	desc = "It's field cap in corporate colors."
 	icon_state = "corpsoft"
 
-/obj/item/clothing/head/soft/mbill
-	name = "shipping cap"
-	desc = "It's a ballcap bearing the colors of Major Bill's Shipping."
-	icon_state = "mbillsoft"
-
 /obj/item/clothing/head/soft/black
 	name = "black cap"
 	desc = "It's a peaked cap in a tasteful black color."
@@ -105,8 +95,3 @@
 	name = "\improper NanoTrasen security cap"
 	desc = "It's field cap in NanoTrasen colors."
 	icon_state = "ntwhitesoft"
-
-/obj/item/clothing/head/soft/ishimurasecuritysoftcap
-	name = "security soft cap"
-	desc = "It's a brown softcap with a CEC Security badge."
-	icon_state = "ishimuracap"
