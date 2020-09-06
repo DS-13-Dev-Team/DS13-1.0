@@ -12,6 +12,7 @@
 
 	//Spawning and biomass
 	var/marker_spawnable = TRUE	//Set this to true to allow the marker to spawn this type of necro. Be sure to unset it on the enhanced version unless desired
+	var/preference_settable = TRUE
 	biomass = 80	//This var is defined for all species
 	var/biomass_reclamation	=	1	//The marker recovers cost*reclamation
 	var/biomass_reclamation_time	=	8 MINUTES	//How long does it take for all of the reclaimed biomass to return to the marker? This is a pseudo respawn timer

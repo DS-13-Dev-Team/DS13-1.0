@@ -1961,6 +1961,7 @@
 #include "code\modules\mob\living\carbon\human\species\species_shapeshift.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\_shared.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\brute.dm"
+#include "code\modules\mob\living\carbon\human\species\necromorph\divider.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\exploder.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\leaper.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\lurker.dm"

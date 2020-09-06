@@ -42,7 +42,7 @@
 	. += "<table>"
 	for(var/ntype in subtypesof(/datum/species/necromorph))
 		var/datum/species/necromorph/N = ntype
-		if (!initial(N.marker_spawnable))
+		if (!initial(N.preference_settable))
 			continue
 		var/necro_id = initial(N.name)
 		. += "<tr><td>[necro_id]: </td><td>"

@@ -1,7 +1,6 @@
 //This file is for defines related to damage, armor, and generally violence
 
 //Weapon Force: Provides the base damage for melee weapons.
-//These are due for a review and overhaul, generally too powerful
 #define WEAPON_FORCE_HARMLESS    3
 #define WEAPON_FORCE_WEAK        7
 #define WEAPON_FORCE_NORMAL      8

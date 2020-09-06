@@ -24,6 +24,7 @@
 	var/defensive_group	= UPPERBODY	   // If set, this dictates which set of limbs will be used in an attempt to shield this bodypart from attack. Should only be set on core parts, not limbs
 	var/block_reduction = 3			   // When this limb is used to block a strike, this flat number is subtracted from the damage of the incoming hit
 
+
 	// Physics
 	var/vector2/limb_height = new /vector2(0,1)	//Height is a range of where the limb extends vertically. The first value is the lower bound, second is the upper
 	//Height values assume the mob is in its normal pose standing on the ground

@@ -126,7 +126,7 @@
 				continue
 			src.throw_impact(A,speed)
 
-/atom/movable/proc/throw_at(atom/target, range, speed, thrower)
+/atom/movable/proc/throw_at(atom/target, range = 7, speed = BASE_THROW_SPEED, thrower = null)
 	set waitfor = FALSE
 	if(!target || !src)
 		return FALSE

@@ -26,6 +26,8 @@
 	STOP_PROCESSING(SSmobs, src)
 
 
+/mob/living/carbon/human/necromorph/divider/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_DIVIDER)
+	..(new_loc, new_species)
 
 
 /mob/living/carbon/human/necromorph/spitter/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SPITTER)

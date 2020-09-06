@@ -14,6 +14,8 @@
 	artery_name = "cartoid artery"
 	cavity_name = "cranial"
 
+	divider_component_type = /mob/living/simple_animal/divider_component/head
+
 	base_miss_chance = 20
 
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_GENDERED_ICON | ORGAN_FLAG_HEALS_OVERKILL
