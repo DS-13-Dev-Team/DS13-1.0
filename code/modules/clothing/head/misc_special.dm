@@ -1,10 +1,8 @@
 /*
  * Contents:
  *		Welding mask
- *		Cakehat
  *		Ushanka
  *		Pumpkin head
- *		Kitty ears
  *
  */
 
@@ -99,48 +97,6 @@
 		slot_l_hand_str = "engiewelding",
 		slot_r_hand_str = "engiewelding",
 		)
-
-/*
- * Cakehat
- */
-/obj/item/clothing/head/cakehat
-	name = "cake-hat"
-	desc = "It's tasty looking!"
-	icon_state = "cake0"
-	item_state = "cake0"
-	var/onfire = 0
-	body_parts_covered = HEAD
-
-/obj/item/clothing/head/cakehat/Process()
-	if(!onfire)
-		STOP_PROCESSING(SSobj, src)
-		return
-
-	var/turf/location = src.loc
-	if(istype(location, /mob/))
-		var/mob/living/carbon/human/M = location
-		if(M.l_hand == src || M.r_hand == src || M.head == src)
-			location = M.loc
-
-	if (istype(location, /turf))
-		location.hotspot_expose(700, 1)
-
-/obj/item/clothing/head/cakehat/attack_self(mob/user as mob)
-	src.onfire = !( src.onfire )
-	if (src.onfire)
-		src.force = 3
-		src.damtype = "fire"
-		src.icon_state = "cake1"
-		src.item_state = "cake1"
-		START_PROCESSING(SSobj, src)
-	else
-		src.force = null
-		src.damtype = "brute"
-		src.icon_state = "cake0"
-		src.item_state = "cake0"
-	return
-
-
 /*
  * Ushanka
  */
@@ -161,12 +117,6 @@
 		icon_state = initial(icon_state)
 		to_chat(user, "You lower the ear flaps on the ushanka.")
 
-/obj/item/clothing/head/ushanka/tcc
-	name = "TCC ushanka"
-	desc = "Perfect for keeping ears warm during your courtmartial."
-	icon_state = "tccushankadown"
-	icon_state_up = "tccushankaup"
-
 /*
  * Pumpkin head
  */
@@ -179,29 +129,3 @@
 	brightness_on = 2
 	light_overlay = "helmet_light"
 	w_class = ITEM_SIZE_NORMAL
-
-/*
- * Kitty ears
- */
-/obj/item/clothing/head/kitty
-	name = "kitty ears"
-	desc = "A pair of kitty ears. Meow!"
-	icon_state = "kitty"
-	body_parts_covered = 0
-	siemens_coefficient = 1.5
-	item_icons = list()
-
-	update_icon(var/mob/living/carbon/human/user)
-		if(!istype(user)) return
-		var/icon/ears = new/icon("icon" = 'icons/mob/onmob/head.dmi', "icon_state" = "kitty")
-		ears.Blend(rgb(user.r_hair, user.g_hair, user.b_hair), ICON_ADD)
-
-		var/icon/earbit = new/icon("icon" = 'icons/mob/onmob/head.dmi', "icon_state" = "kittyinner")
-		ears.Blend(earbit, ICON_OVERLAY)
-
-/obj/item/clothing/head/richard
-	name = "chicken mask"
-	desc = "You can hear the distant sounds of rhythmic electronica."
-	icon_state = "richard"
-	body_parts_covered = HEAD|FACE
-	flags_inv = BLOCKHAIR

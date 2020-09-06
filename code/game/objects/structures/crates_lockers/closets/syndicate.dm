@@ -12,7 +12,6 @@
 /obj/structure/closet/syndicate/personal/New()
 	..()
 	new /obj/item/weapon/tank/jetpack/oxygen(src)
-	new /obj/item/clothing/mask/gas/syndicate(src)
 	new /obj/item/clothing/under/syndicate(src)
 	new /obj/item/clothing/head/helmet/space/void/merc(src)
 	new /obj/item/clothing/suit/space/void/merc(src)
@@ -32,7 +31,6 @@
 	new /obj/item/weapon/tank/jetpack/oxygen(src)
 	new /obj/item/clothing/shoes/magboots(src)
 	new /obj/item/clothing/suit/space/void/merc(src)
-	new /obj/item/clothing/mask/gas/syndicate(src)
 	new /obj/item/clothing/head/helmet/space/void/merc(src)
 
 

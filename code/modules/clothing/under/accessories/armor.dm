@@ -282,8 +282,3 @@
 	name = "tan helmet cover"
 	desc = "A fabric cover for armored helmets. This one has a desert camouflage pattern."
 	icon_state = "helmcover_tan"
-
-/obj/item/clothing/accessory/armor/helmcover/pcsisec
-	name = "\improper P.C.S.I. security helmet cover"
-	desc = "A fabric cover for armored helmets. This one has P.C.S.I. Security's colors."
-	icon_state = "helmcover_nt"
