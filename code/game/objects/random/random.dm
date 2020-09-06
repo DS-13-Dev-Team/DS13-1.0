@@ -742,7 +742,7 @@ obj/random/obstruction/item_to_spawn()
 	name = "random eyewear"
 	desc = "This is a random pair of glasses."
 	icon = 'icons/obj/clothing/glasses.dmi'
-	icon_state = "leforge"
+	icon_state = "glasses"
 
 /obj/random/glasses/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/glasses/sunglasses = 3,

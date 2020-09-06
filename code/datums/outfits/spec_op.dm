@@ -315,7 +315,6 @@
 /decl/hierarchy/outfit/mercenary/syndicate/commando
 	name = "Spec Ops - Syndicate Commando"
 	suit = /obj/item/clothing/suit/space/void/merc
-	mask = /obj/item/clothing/mask/gas/syndicate
 	head = /obj/item/clothing/head/helmet/space/void/merc
 	back = /obj/item/weapon/tank/jetpack/oxygen
 	l_pocket = /obj/item/weapon/tank/emergency/oxygen

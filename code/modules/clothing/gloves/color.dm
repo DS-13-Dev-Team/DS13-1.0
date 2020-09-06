@@ -22,12 +22,3 @@
 
 /obj/item/clothing/gloves/color/evening/modified
 	item_flags = ITEM_FLAG_PREMODIFIED
-
-/obj/item/clothing/gloves/rainbow
-	name = "rainbow gloves"
-	desc = "A pair of gloves, they don't look special in any way."
-	icon_state = "rainbow"
-	item_state = "rainbowgloves"
-
-/obj/item/clothing/gloves/rainbow/modified
-	item_flags = ITEM_FLAG_PREMODIFIED

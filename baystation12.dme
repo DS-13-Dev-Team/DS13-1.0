@@ -634,7 +634,6 @@
 #include "code\game\gamemodes\wizard\wizard.dm"
 #include "code\game\gamemodes\wizard\servant_items\caretaker.dm"
 #include "code\game\gamemodes\wizard\servant_items\champion.dm"
-#include "code\game\gamemodes\wizard\servant_items\familiar.dm"
 #include "code\game\gamemodes\wizard\servant_items\fiend.dm"
 #include "code\game\gamemodes\wizard\servant_items\infiltrator.dm"
 #include "code\game\gamemodes\wizard\servant_items\overseer.dm"

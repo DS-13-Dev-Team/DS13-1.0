@@ -6,36 +6,6 @@
 	icon_state = MATERIAL_BRONZE
 	slot = ACCESSORY_SLOT_MEDAL
 
-/obj/item/clothing/accessory/medal/iron
-	name = "iron medal"
-	desc = "A simple iron medal."
-	icon_state = "iron"
-	item_state = "iron"
-
-/obj/item/clothing/accessory/medal/bronze
-	name = "bronze medal"
-	desc = "A simple bronze medal."
-	icon_state = MATERIAL_BRONZE
-	item_state = MATERIAL_BRONZE
-
-/obj/item/clothing/accessory/medal/silver
-	name = "silver medal"
-	desc = "A simple silver medal."
-	icon_state = MATERIAL_SILVER
-	item_state = MATERIAL_SILVER
-
-/obj/item/clothing/accessory/medal/gold
-	name = "gold medal"
-	desc = "A simple gold medal."
-	icon_state = MATERIAL_GOLD
-	item_state = MATERIAL_GOLD
-
-/obj/item/clothing/accessory/medal/ds_securitymedal
-	name = "CEC security medal"
-	desc = "A golden medal issued to active officers in the CEC's security teams, this one denotes an officer serving in operations around Aegis VII."
-	icon_state = "gold"
-	item_state = "gold"
-
 //NT medals
 
 /obj/item/clothing/accessory/medal/gold/nanotrasen

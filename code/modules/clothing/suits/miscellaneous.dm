@@ -94,14 +94,6 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
 
-/obj/item/clothing/suit/hastur
-	name = "Hastur's Robes"
-	desc = "Robes not meant to be worn by man."
-	icon_state = "hastur"
-	item_state = "hastur"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-
 
 /obj/item/clothing/suit/imperium_monk
 	name = "Imperium monk"
