@@ -37,3 +37,5 @@ changes:
   - bugfix: "Fixed Surgeon's locker spawning with nothing."
   - bugfix: "Fixed an issue in the medical lockers losing their stripe when in the opened state."
   - maptweak: "Added a spare surgery kit to the medical storage."
+  - imageadd: "Newer sprites for vents. These are just placeholders until we get wall vents."
+  - imageadd: "Newer sprites for scrubbers. These are just placeholders until we get wall scrubbers/vents."
