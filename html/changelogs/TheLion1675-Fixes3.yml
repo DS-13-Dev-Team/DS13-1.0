@@ -35,4 +35,5 @@ delete-after: True
 changes: 
   - bugfix: "Fixed Director of Mining not getting command comms."
   - bugfix: "Fixed Surgeon's locker spawning with nothing."
+  - bugfix: "Fixed an issue in the medical lockers losing their stripe when in the opened state."
   - maptweak: "Added a spare surgery kit to the medical storage."
