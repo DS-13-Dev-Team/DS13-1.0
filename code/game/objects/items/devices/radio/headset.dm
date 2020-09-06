@@ -199,6 +199,13 @@
 	item_state = "headset"
 	ks1type = /obj/item/device/encryptionkey/headset_deckofficer
 
+/obj/item/device/radio/headset/heads/dom
+	name = "director of mining's headset"
+	desc = "The headset of the chief ore smelter."
+	icon_state = "exp_headset"
+	item_state = "headset"
+	ks1type = /obj/item/device/encryptionkey/dom
+
 /obj/item/device/radio/headset/heads/fl
 	name = "first lieutenant's headset"
 	desc = "The headset of the guy who will one day be captain."
