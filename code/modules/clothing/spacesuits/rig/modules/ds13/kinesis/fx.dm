@@ -1,4 +1,4 @@
-/obj/effect/projectile/sustained/lightning
+/obj/effect/projectile/tether/lightning
 	light_outer_range = 5
 	light_max_bright = 1
 	light_color = COLOR_KINESIS_INDIGO
@@ -9,9 +9,9 @@
 	offset = new /vector2(-48,-8)
 	base_length = 128
 
-/obj/effect/projectile/sustained/lightning/can_telegrip()
+/obj/effect/projectile/tether/lightning/can_telegrip()
 	return FALSE
 
-/obj/effect/projectile/sustained/lightning/Destroy()
+/obj/effect/projectile/tether/lightning/Destroy()
 	release_vector(offset)
 	.=..()

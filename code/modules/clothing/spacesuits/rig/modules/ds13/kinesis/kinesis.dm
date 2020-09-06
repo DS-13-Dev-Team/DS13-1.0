@@ -52,7 +52,7 @@
 	var/hotkeys_set = FALSE
 
 	//The gravity tether, a beam of lightning which connects gun and blade
-	var/obj/effect/projectile/sustained/tether = null
+	var/obj/effect/projectile/tether/tether = null
 
 
 //Data:
@@ -209,7 +209,7 @@
 
 	target = AM.get_global_pixel_loc()
 
-	var/obj/effect/projectile/sustained/newtether = new /obj/effect/projectile/sustained/lightning(get_turf(src))
+	var/obj/effect/projectile/tether/newtether = new /obj/effect/projectile/tether/lightning(get_turf(src))
 	var/vector2/origin_pixels = holder.wearer.get_global_pixel_loc()
 	newtether.set_ends(origin_pixels, target)
 	release_vector(origin_pixels)

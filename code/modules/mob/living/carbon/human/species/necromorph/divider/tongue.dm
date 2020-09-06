@@ -6,7 +6,7 @@
 
 	If it hits a mob, wraps around their neck and begins an execution move. At this point, the tongue becomes a targetable object
 */
-
+#define TONGUE_PROJECTILE_SPEED	3
 /mob/living/proc/divider_tongue(var/atom/A)
 	set name = "Tonguetacle"
 	set category = "Abilities"
@@ -31,7 +31,7 @@
 	fire_sound = null
 	damage = 0
 	nodamage = TRUE
-	var/obj/effect/projectile/sustained/tongue = null
+	var/obj/effect/projectile/tether/tongue = null
 
 /*
 	The firer will be set just before this proc is called
