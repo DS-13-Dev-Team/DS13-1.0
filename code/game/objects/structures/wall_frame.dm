@@ -12,7 +12,6 @@
 	density = 1
 	throwpass = 1
 	layer = TABLE_LAYER
-	color = COLOR_GUNMETAL
 
 	var/damage = 0
 	max_health = 10
@@ -136,6 +135,9 @@
 
 /obj/structure/wall_frame/hull
 	color = COLOR_HULL
+
+/obj/structure/wall_frame/prepainted
+	color = COLOR_GUNMETAL
 
 /obj/structure/wall_frame/hull/Initialize()
 	. = ..()
