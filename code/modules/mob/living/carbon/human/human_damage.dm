@@ -367,7 +367,6 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	while(parts.len && heal_amount > 0)
 
 		var/obj/item/organ/external/picked = pick(parts)
-		world << "About to heal organ [picked], heal amount remaining [heal_amount]"
 
 
 		var/brute_heal = 0
