@@ -55,7 +55,7 @@
 	QDEL_NULL(limit_meter)
 	QDEL_NULL(textholder)
 	if (C)
-		C -= src
+		C.screen -= src
 		C = null
 	.=..()
 
@@ -65,6 +65,7 @@
 			C.screen -= remaining_health_meter
 			C.screen -= delta_meter
 			C.screen -= limit_meter
+			C.screen -= textholder
 
 		C = newclient
 
@@ -239,6 +240,12 @@
 	parent.C.screen += src
 	update_total()
 	.=..()
+
+/obj/screen/healthbar_component/Destroy()
+	if (parent && parent.C)
+		parent.C.screen -= src
+	.=..()
+
 
 //Sets a new size in pixels
 /obj/screen/healthbar_component/proc/set_size(var/newsize)
