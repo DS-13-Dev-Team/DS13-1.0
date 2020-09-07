@@ -65,6 +65,7 @@
 	//if (is_evacuating())
 		//if (emergency_evacuation)	//disabled until proper cancel evac is coded
 		//	return list(evacuation_options[EVAC_OPT_CANCEL_ABANDON_SHIP])
+	return list()
 
 /datum/evacuation_option/abandon_ship
 	option_text = "Abandon spacecraft"

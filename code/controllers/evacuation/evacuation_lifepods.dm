@@ -23,6 +23,7 @@
 		return list(evacuation_options[EVAC_OPT_ABANDON_SHIP])
 //	if (is_evacuating())	//disabled until proper cancel evac is coded
 //		return list(evacuation_options[EVAC_OPT_CANCEL_ABANDON_SHIP])
+	return list()
 
 #undef EVAC_OPT_ABANDON_SHIP
 #undef EVAC_OPT_CANCEL_ABANDON_SHIP

@@ -45,7 +45,7 @@
 
 //proc that handles messages to admins regarding close evac time
 /datum/game_mode/marker/proc/check_admin_warnings()
-	var/time_till_evac = (evac_threshold - evac_points) * minutes_per_point MINUTES	//for Nanako, this formula here needs checking
+	var/time_till_evac = get_time_until_evac()	//for Nanako, this formula here needs checking
 	if(time_till_evac <= 10 MINUTES)
 		if(show_admin_warning_10)
 			show_admin_warning_10 = FALSE
@@ -55,8 +55,9 @@
 				show_admin_warning_5 = FALSE
 				message_admins("Approximate time until evacuation is unlocked is less than 5 minutes.")
 
+//returns approximate time in minutes until evac at normal condititions based on current points and threshold will be unlocked
 /datum/game_mode/marker/proc/get_time_until_evac()
-	var/time_till_evac = (evac_threshold - evac_points) * minutes_per_point	//for Nanako, this formula here needs checking
+	var/time_till_evac = (evac_threshold - evac_points) * minutes_per_point MINUTES	//for Nanako, this formula here needs checking
 	return time_till_evac
 
 //proc used to adjust evac threshold points (e.g. admin verb adjustment).
