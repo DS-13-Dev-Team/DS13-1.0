@@ -136,9 +136,6 @@
 /obj/structure/wall_frame/hull
 	color = COLOR_HULL
 
-/obj/structure/wall_frame/prepainted
-	color = COLOR_GUNMETAL
-
 /obj/structure/wall_frame/hull/Initialize()
 	. = ..()
 	if(prob(40))
