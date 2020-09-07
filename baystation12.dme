@@ -2472,6 +2472,7 @@
 #include "code\modules\projectiles\ammunition\boxes.dm"
 #include "code\modules\projectiles\ammunition\bullets.dm"
 #include "code\modules\projectiles\ammunition\magnetic.dm"
+#include "code\modules\projectiles\effects\tether.dm"
 #include "code\modules\projectiles\guns\ballistic.dm"
 #include "code\modules\projectiles\guns\energy.dm"
 #include "code\modules\projectiles\guns\launcher.dm"

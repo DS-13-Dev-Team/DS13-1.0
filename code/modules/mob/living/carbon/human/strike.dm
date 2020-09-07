@@ -22,8 +22,8 @@
 			damage *= huser.damage_multiplier}
 //Helper Procs
 //------------------------------
-/atom/proc/launch_strike(var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone)
-	var/datum/strike/strike = new /datum/strike(src, target, damage, used_weapon, damage_flags, armor_penetration, damage_type, armor_type, target_zone)
+/atom/proc/launch_strike(var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone, var/difficulty = 0)
+	var/datum/strike/strike = new /datum/strike(src, target, damage, used_weapon, damage_flags, armor_penetration, damage_type, armor_type, target_zone, difficulty)
 	strike.start()
 	return strike
 
@@ -160,7 +160,7 @@
 
 //Override this in subtypes and DO NOT CALL PARENT
 //Copypaste the code instead
-/datum/strike/proc/cache_data(var/atom/user, var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone)
+/datum/strike/proc/cache_data(var/atom/user, var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone, var/difficulty)
 	src.user = user
 	src.target = target
 	src.damage = damage
@@ -172,6 +172,7 @@
 	src.damage_type = damage_type
 	src.armor_type = armor_type
 	src.armor_penetration = armor_penetration
+	src.difficulty = difficulty
 
 //Special proc for figuring out where the attack is coming from
 /datum/strike/proc/cache_origin()

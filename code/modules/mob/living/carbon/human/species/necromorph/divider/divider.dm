@@ -2,12 +2,13 @@
 	name = SPECIES_NECROMORPH_DIVIDER
 	name_plural =  "Dividers"
 	mob_type = /mob/living/carbon/human/necromorph/divider
-	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
+	blurb = "A bizarre walking horrorshow, slow but extremely durable. On death, it splits into five smaller creatures, in an attempt to find a new body to control"
 	unarmed_types = list(/datum/unarmed_attack/claws/strong) //Bite attack is a backup if blades are severed
 	total_health = 200
 	biomass = 150
 	mass = 120
 
+	view_range = 9//The world looks small from up here
 
 	biomass_reclamation_time	=	12 MINUTES
 
@@ -58,7 +59,8 @@
 	slowdown = 3.5
 
 	inherent_verbs = list(/mob/living/carbon/human/proc/divider_divide, /mob/proc/shout)
-	modifier_verbs = list(KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/divider_divide))
+	modifier_verbs = list(KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/divider_divide),
+	KEY_CTRLALT = list(/mob/living/carbon/human/proc/divider_tongue))
 
 
 
