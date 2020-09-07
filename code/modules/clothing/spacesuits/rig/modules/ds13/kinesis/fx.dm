@@ -6,12 +6,8 @@
 	icon_state = "lightning"
 	plane = MOB_PLANE
 	alpha = 128
-	offset = new /vector2(-48,-8)
+	start_offset = new /vector2(-48,-8)
 	base_length = 128
 
 /obj/effect/projectile/tether/lightning/can_telegrip()
 	return FALSE
-
-/obj/effect/projectile/tether/lightning/Destroy()
-	release_vector(offset)
-	.=..()

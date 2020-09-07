@@ -62,7 +62,7 @@
 	A finisher is a special stage which marks the endpoint of an execution move.
 	It should typically kill the victim, or at least deal the strongest blow that will be dealt
 
-	When a finsher stage is entered, the execution is considered a success, rewards are distributed,
+	When a finisher stage is entered, the execution is considered a success, rewards are distributed,
 	and the execution becomes non-interruptible for the remaining stages.
 
 	Any stages after a finisher are basically a victory lap and shouldn't contain too much meaningful effects, just winding down
@@ -73,3 +73,22 @@
 
 /datum/execution_stage/finisher/enter()
 	host.complete()
+
+
+
+
+/*
+	Generic States
+*/
+/datum/execution_stage/scream/enter()
+	host.user.do_shout(SOUND_SHOUT_LONG, FALSE)
+
+
+//Retract a tether used as a weapon
+/datum/execution_stage/retract/enter()
+	world << "Retract stage, weapon [host.weapon]"
+	var/obj/effect/projectile/tether/T = host.weapon
+	if (istype(T))
+		T.retract(duration)
+	else
+		world << "Host weapon is not a tether"

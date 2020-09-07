@@ -6,7 +6,7 @@
 
 	If it hits a mob, wraps around their neck and begins an execution move. At this point, the tongue becomes a targetable object
 */
-#define TONGUE_PROJECTILE_SPEED	3.5
+#define TONGUE_PROJECTILE_SPEED	4.5
 #define	TONGUE_OFFSET	-8,40
 #define TONGUE_RANGE	5
 /*
@@ -51,18 +51,17 @@
 	world << "Tongue leader expiring"
 	//On expiring the tongue projectile flies back towards the host
 	expired = TRUE
-	var/vector2/return_loc = firer.get_global_pixel_offset(src)
-	var/return_time = (return_loc.Magnitude() / WORLD_ICON_SIZE) * (step_delay* 0.75)
+	if (tongue)
+		var/vector2/return_loc = firer.get_global_pixel_offset(src)
+		var/return_time = (return_loc.Magnitude() / WORLD_ICON_SIZE) * (step_delay*2)
 
-	sleep(1 SECOND)
-	tongue.retract(return_time)
-	sleep(return_time)
+		sleep(1 SECOND)
+		tongue.retract(return_time)
+		sleep(return_time)
 
 	.=..()
 
-/obj/item/projectile/tongue/Destroy()
-	world << "Tongue leader deleting"
-	.=..()
+
 
 /*
 	The firer will be set just before this proc is called
@@ -70,18 +69,26 @@
 /obj/item/projectile/tongue/launch(atom/target, var/target_zone, var/x_offset=0, var/y_offset=0, var/angle_offset=0)
 	tongue = new(get_turf(src))
 	tongue.set_origin(firer)
-	tongue.alpha = 0
-	//update_tongue(FALSE)
+
+	//We'll start it at the mouth pointing towards enemy slightly
+	var/vector2/origin_pixels = firer.get_global_pixel_loc()
+	var/vector2/offset_pixels = target.get_global_pixel_loc()
+	offset_pixels.SelfSubtract(origin_pixels)
+	offset_pixels.SelfToMagnitude(10)
+	offset_pixels.SelfAdd(origin_pixels)
+	tongue.set_ends(origin_pixels, offset_pixels, FALSE)
+
 	.=..()
 
 
 /obj/item/projectile/tongue/Move(NewLoc,Dir=0)
 	world << "Tongue moved to [jumplink(NewLoc)]"
-	update_tongue()
+
 	.=..()
+	if (tongue)
+		update_tongue()
 
 /obj/item/projectile/tongue/proc/update_tongue(var/animate = TRUE)
-	tongue.alpha = 255
 	var/vector2/origin_pixels = firer.get_global_pixel_loc()
 	var/vector2/current_pixels = get_global_pixel_loc()
 	tongue.set_ends(origin_pixels, current_pixels, (animate ? step_delay : FALSE))
@@ -93,11 +100,18 @@
 
 	//Are they a valid execution target?
 	if (divider_tongue_start(firer, target_mob))
+		var/vector2/targetloc = target_mob.get_global_pixel_loc()
+		tongue.set_ends(tongue.start, targetloc, step_delay, 2)
+		release_vector(targetloc)
+
 		//Yes, lets do this!
 		tongue.set_target(target_mob)
+		tongue.set_turf_maintain_pixels(get_turf(target_mob))
+
+		tongue = null //The tongue is no longer our business
 
 		//Here we start the execution, and transfer ownership of the tongue tether
-		firer.perform_execution(/datum/extension/execution/divider_tongue, target_mob)
+		firer.perform_execution(/datum/extension/execution/divider_tongue, target_mob, tongue)
 		qdel(src)//Delete ourselves WITHOUT calling expire
 		return
 	.=..()
@@ -110,15 +124,16 @@
 	icon = 'icons/effects/tethers.dmi'
 	icon_state = "tongue"
 	base_length = WORLD_ICON_SIZE*2
-	offset = new /vector2(TONGUE_OFFSET)
+	start_offset = new /vector2(TONGUE_OFFSET)
+	end_offset = new /vector2(-16, 8)//Elevated a bit so it wraps around the victim's neck
 	plane = HUMAN_PLANE
 	layer = BELOW_HUMAN_LAYER
-
+	unbreakable = FALSE
 
 /*
 	Safety Checks
 
-	Core checks. It is called as part of other check procson initial tongue contact, and periodically while performing the execution.
+	Core checks. It is called as part of other check procs on initial tongue contact, and periodically while performing the execution.
 	If it returns false, the execution is denied or cancelled.
 */
 /proc/divider_tongue_safety(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
@@ -210,15 +225,20 @@
 	reward_energy = 100
 	reward_heal = 40
 	range = TONGUE_RANGE
+	//
 	all_stages = list(/datum/execution_stage/wrap,
 	/datum/execution_stage/strangle/first,
 	/datum/execution_stage/strangle/second,
 	/datum/execution_stage/strangle/third,
 	/datum/execution_stage/finisher/decapitate,
-	/datum/execution_stage/tripod_bisect)
+	/datum/execution_stage/retract/divider,
+	/datum/execution_stage/scream)
 
 
 	vision_mod = -4
+
+/datum/execution_stage/retract/divider
+	duration = 2.5 SECONDS
 
 
 /datum/extension/execution/divider_tongue/interrupt()
@@ -235,14 +255,18 @@
 	Stages
 */
 /datum/execution_stage/wrap/enter()
-	//victim.Root()
-	victim.losebreath += 4
 
+
+	//host.victim.Root()
+
+	host.victim.losebreath += 4
+	host.user.visible_message(SPAN_EXECUTION("[host.user] wraps their tongue around [host.victim]'s throat, constricting their airways and holding them in place!"))
+	host.user.do_shout(SOUND_SHOUT_LONG, FALSE)
 
 
 /*
 	Strangle stages are the meat of this attack.
-	They keep hitting every 2 seconds until the total damage of the victim's head is at or above the specified percentage of max
+	They keep hitting every 2 seconds until the total damage of the host.victim's head is at or above the specified percentage of max
 */
 /datum/execution_stage/strangle
 	var/head_damage_threshold = 0.33
@@ -252,7 +276,7 @@
 /datum/execution_stage/strangle/enter()
 
 	//If we've already won, skip this and just return
-	var/safety_result = divider_tongue_continue(user, victim)
+	var/safety_result = divider_tongue_continue(host.user, host.victim)
 	if (safety_result == 2)
 		return
 
@@ -260,10 +284,10 @@
 	while (!done)
 
 		//First of all, safety check
-		var/safety_result = divider_tongue_continue(user, victim)
+		safety_result = divider_tongue_continue(host.user, host.victim)
 		if (safety_result == 2)
 			//TODO: Skip to the end immediately
-				done = TRUE
+			done = TRUE
 			continue
 
 
@@ -275,7 +299,7 @@
 
 
 		//Okay now lets check the victim's health. We know they still have a head
-		var/obj/item/organ/external/E = victim.get_organ(BP_HEAD)
+		var/obj/item/organ/external/E = host.victim.get_organ(BP_HEAD)
 		var/dampercent = E.damage / E.max_damage
 		if (dampercent >= head_damage_threshold)
 			done = TRUE
@@ -284,20 +308,35 @@
 
 		//The victim is weak enough to keep hitting, and they are still alive
 		//They are being strangled, can't breathe. Even if they had an eva suit, the air supply hose is constricted
-		victim.losebreath++
+		host.victim.losebreath++
 
 		//Do the actual damage. The functionally infinite difficulty means it cant be blocked, but armor may still help resist it
-		user.launch_strike(victim, damage_per_hit, victim, DAM_EDGE, 0, BRUTE, armor_type = "melee", target_zone = BP_HEAD, difficulty = 999999)
+		host.user.launch_strike(host.victim, damage_per_hit, host.weapon, DAM_EDGE, 0, BRUTE, armor_type = "melee", target_zone = BP_HEAD, difficulty = 999999)
 
 		//The victim and their camera shake wildly as they struggle
-		shake_camera(victim, 2, 3)
-		victim.shake_animation(12)
+		shake_camera(host.victim, 2, 3)
+		host.victim.shake_animation(12)
 
 		sleep(duration)
 
+
+/datum/execution_stage/strangle/first
+	head_damage_threshold = 0.33
 
 /datum/execution_stage/strangle/second
 	head_damage_threshold = 0.66
 
 /datum/execution_stage/strangle/third
-	head_damage_threshold = 0.66
+	head_damage_threshold = 0.99
+
+
+/datum/execution_stage/finisher/decapitate/enter()
+	host.user.visible_message(SPAN_EXECUTION("[host.user] makes one final pull as [host.victim]'s soft flesh yields under the assault, and their head tumbles to the floor!"))
+
+	var/obj/item/organ/external/E = host.victim.get_organ(BP_HEAD)
+
+	//Chop!
+	if (E && !E.is_stump())
+		E.droplimb(TRUE, DROPLIMB_EDGE, FALSE, FALSE, host.weapon)
+
+	host.user.do_shout(SOUND_SHOUT_LONG, FALSE)

@@ -51,6 +51,10 @@ if (result == EXECUTION_CANCEL){\
 
 	var/ongoing_timer
 
+	//Weapon vars: Indicates a tool, implement, bodypart, etc, which we are using to do this execution.
+	//Optional, not always used
+	var/atom/movable/weapon
+
 	//Reward Handling
 	//-------------------
 	//Used to make sure finish only runs once
@@ -125,11 +129,14 @@ if (result == EXECUTION_CANCEL){\
 
 
 
-/datum/extension/execution/New(var/atom/user, var/mob/living/victim)
+/datum/extension/execution/New(var/atom/user, var/mob/living/victim, var/atom/movable/weapon)
 	.=..()
 	if (isliving(user))
 		src.user = user
 	src.victim = victim
+
+	if (weapon)
+		src.weapon = weapon
 
 	//Lets compile the list of stages
 	for (var/i in 1 to all_stages.len)
@@ -391,7 +398,10 @@ if (result == EXECUTION_CANCEL){\
 /atom/proc/perform_execution(var/execution_type = /datum/extension/execution, var/atom/target)
 	if (!can_execute(execution_type))
 		return FALSE
+	var/list/arguments = list(src, execution_type, target)
+	if (args.len > 2)
+		arguments += args.Copy(3)
 
-	set_extension(src, execution_type, target)
+	set_extension(arglist(arguments))
 	return TRUE
 
