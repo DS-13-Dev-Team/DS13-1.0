@@ -12,6 +12,7 @@
 	density = 1
 	throwpass = 1
 	layer = TABLE_LAYER
+	color = COLOR_GRAY
 
 	var/damage = 0
 	max_health = 10
