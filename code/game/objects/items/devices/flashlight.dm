@@ -233,6 +233,11 @@
 	flashlight_inner_range = 0.1
 	flashlight_outer_range = 5
 
+//Subtype that enables on spawning
+/obj/item/device/flashlight/flare/active/Initialize()
+	.=..()
+	activate()
+
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.v

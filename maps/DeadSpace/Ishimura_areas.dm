@@ -1,6 +1,7 @@
 //Ishimura Areas// (If you add or change areas, make sure they are in alphabetical order; only exceptions are /upper and /lower - Snype)
 /area/ishimura
 	icon = 'maps/DeadSpace/ishimura_areas.dmi'
+	ship_area = TRUE
 
 /area/ishimura/hull
 	name = "\improper Ishimura Hull"
@@ -148,6 +149,7 @@
 	forced_ambience = list('sound/ambience/maintambience.ogg')
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
+	is_maintenance = TRUE
 
 /area/ishimura/upper/maintenance/aft_port
 	name = "\improper Upper Deck Aft-Port Maintenance"
@@ -516,6 +518,7 @@ area/ishimura/upper/medical/bpc
 	forced_ambience = list('sound/ambience/maintambience.ogg')
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
+	is_maintenance = TRUE
 
 /area/ishimura/lower/maintenance/aft_central
 	name = "\improper Lower Deck Aft-Central Maintenance"

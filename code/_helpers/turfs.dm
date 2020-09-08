@@ -46,13 +46,28 @@
 	if (turf_corrupted(A))
 		return TRUE
 
-	for (var/obj/effect/vine/corruption/C in dview(1, src))
+	for (var/obj/effect/vine/corruption/C in dview(range, A))
 		if (require_support && !C.is_supported())
 			continue
 		//TODO here: Check that the corruption is still linked to an undestroyed node. Fail if it is orphaned
 		return TRUE
 
 	return FALSE
+
+
+//Returns true if this turf is near a live necromorph
+/proc/turf_near_necromorphs(var/atom/A, var/range = world.view)
+	var/turf/T = get_turf(A)
+	//If we're not in the visualnet then we can't be
+	if (!T.is_in_visualnet(GLOB.necrovision))
+		return FALSE
+
+	for (var/mob/living/L in dview(range, T))
+		if (L.stat != DEAD && L.is_necromorph())
+			return TRUE
+
+	return FALSE
+
 
 // Picks a turf without a mob from the given list of turfs, if one exists.
 // If no such turf exists, picks any random turf from the given list of turfs.
