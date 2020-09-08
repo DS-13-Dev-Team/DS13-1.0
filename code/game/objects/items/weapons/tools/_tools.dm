@@ -419,9 +419,10 @@
 		if(ishuman(user))
 			if(I.canremove)
 				failtypes["drop"] = 2
+/*DS13: too much damage
 			if (I.sharp)
 				failtypes["stab"] = 1
-
+*/
 			//This one is limited to humans only since robots often can't remove/replace their device cells
 			if(locate(/obj/item/weapon/cell) in contents)
 				failtypes["overload"] = 0.5
@@ -490,14 +491,13 @@
 				throw_at(throw_target, src.throw_range, src.throw_speed)
 				return
 
-/*DS13: too much damage
 			//Stab yourself in the hand so hard your tool embeds
 			if("stab")
 				var/mob/living/carbon/human/H = user
 				user << SPAN_DANGER("You accidentally stuck [src] in your hand!")
 				H.get_organ(H.get_holding_hand(src)).embed(src)
 				return
-*/
+
 			//The tool completely breaks, permanantly gone
 			if("break")
 				if(user)
