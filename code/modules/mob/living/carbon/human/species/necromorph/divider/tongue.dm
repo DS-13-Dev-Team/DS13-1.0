@@ -30,7 +30,21 @@
 /datum/extension/shoot/tongue
 	name = "Divider Tongue"
 	base_type = /datum/extension/shoot/tongue
+	var/obj/effect/projectile/tether/tongue/tongue
+	var/tongue_out = FALSE
 
+/datum/extension/shoot/tongue/start()
+	tongue_out = TRUE
+	.=..()
+
+/datum/extension/shoot/tongue/stop()
+	if (tongue_out)
+		return
+
+	status = SHOOT_STATUS_COOLING
+	deltimer(ongoing_timer)
+	stopped_at = world.time
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/shoot/proc/finish_cooldown), cooldown)
 
 /*
 	Lead Projectile
@@ -48,12 +62,11 @@
 
 /obj/item/projectile/tongue/expire()
 	set waitfor = FALSE
-	world << "Tongue leader expiring"
 	//On expiring the tongue projectile flies back towards the host
 	expired = TRUE
 	if (tongue)
 		var/vector2/return_loc = firer.get_global_pixel_offset(src)
-		var/return_time = (return_loc.Magnitude() / WORLD_ICON_SIZE) * (step_delay*2)
+		var/return_time = (return_loc.Magnitude() / WORLD_ICON_SIZE) * (step_delay*1.5)
 
 		sleep(1 SECOND)
 		tongue.retract(return_time)
@@ -70,6 +83,11 @@
 	tongue = new(get_turf(src))
 	tongue.set_origin(firer)
 
+	var/datum/extension/shoot/tongue/T = get_extension(firer, /datum/extension/shoot/tongue)
+	if (T)
+		T.tongue = src.tongue
+		T.tongue_out = TRUE
+
 	//We'll start it at the mouth pointing towards enemy slightly
 	var/vector2/origin_pixels = firer.get_global_pixel_loc()
 	var/vector2/offset_pixels = target.get_global_pixel_loc()
@@ -82,7 +100,6 @@
 
 
 /obj/item/projectile/tongue/Move(NewLoc,Dir=0)
-	world << "Tongue moved to [jumplink(NewLoc)]"
 
 	.=..()
 	if (tongue)
@@ -108,10 +125,11 @@
 		tongue.set_target(target_mob)
 		tongue.set_turf_maintain_pixels(get_turf(target_mob))
 
+		var/temp_tongue = tongue
 		tongue = null //The tongue is no longer our business
 
 		//Here we start the execution, and transfer ownership of the tongue tether
-		firer.perform_execution(/datum/extension/execution/divider_tongue, target_mob, tongue)
+		firer.perform_execution(/datum/extension/execution/divider_tongue, target_mob, temp_tongue)
 		qdel(src)//Delete ourselves WITHOUT calling expire
 		return
 	.=..()
@@ -128,8 +146,26 @@
 	end_offset = new /vector2(-16, 8)//Elevated a bit so it wraps around the victim's neck
 	plane = HUMAN_PLANE
 	layer = BELOW_HUMAN_LAYER
-	unbreakable = FALSE
+	atom_flags = 0
+	obj_flags = 0
 
+//Tongue takes double damage from edged weapons
+/obj/effect/projectile/tether/tongue/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	var/obj/item/I = used_weapon
+	if (I && istype(I) && I.edge)
+		amount *= 2
+
+	.=..()
+
+
+/obj/effect/projectile/tether/tongue/retract(var/time = 1 SECOND, var/delete_on_finish = TRUE, var/steps = 3)
+	if (origin_atom)
+		var/datum/extension/shoot/tongue/T = get_extension(origin_atom, /datum/extension/shoot/tongue)
+		if (T && T.tongue == src)
+			T.tongue = null
+			T.tongue_out = FALSE
+			T.stop()	//Start the cooldown
+	.=..()
 /*
 	Safety Checks
 
@@ -140,25 +176,25 @@
 
 	//We only target humans
 	if (!istype(user) || !istype(target))
-		return FALSE
+		return EXECUTION_CANCEL
 
 	//Abort if either mob is deleted
 	if (QDELETED(user) || QDELETED(target))
-		return FALSE
+		return EXECUTION_CANCEL
 
 	//Don't target our allies
 	if (target.is_necromorph())
-		return FALSE
+		return EXECUTION_CANCEL
 
 	//The divider needs its head to have a tongue
 	if (!user.get_organ(BP_HEAD))
-		return FALSE
+		return EXECUTION_CANCEL
 
 	//The divider needs to be awake and able bodied. Needs a firm footing
 	if (user.incapacitated(INCAPACITATION_FORCELYING))
-		return FALSE
+		return EXECUTION_CANCEL
 
-	return TRUE
+	return EXECUTION_CONTINUE
 
 
 /*
@@ -167,24 +203,24 @@
 /proc/divider_tongue_start(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
 	//Core first
 	.=divider_tongue_safety(user, target)
-	if (!.)
+	if (. == EXECUTION_CANCEL)
 		return
 
 	//Now in addition
 
 	//The target must be alive when we start.
 	if (target.stat == DEAD)
-		return FALSE
+		return EXECUTION_CANCEL
 
 	//The target must have a head for us to rip off
 	if (!target.get_organ(BP_HEAD))
-		return FALSE
+		return EXECUTION_CANCEL
 
 	//The target must be standing
 	if (target.lying)
-		return FALSE
+		return EXECUTION_CANCEL
 
-	return TRUE
+	return EXECUTION_CONTINUE
 
 
 /*
@@ -196,21 +232,21 @@
 /proc/divider_tongue_continue(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
 	//Core first
 	.=divider_tongue_safety(user, target)
-	if (!.)
+	if (. == EXECUTION_CANCEL)
 		return
 
 	//Now in addition
 
 	//If the target's head has been removed since we started, then we win! Decapitating them is our goal
 	if (!target.get_organ(BP_HEAD))
-		return 2
+		return EXECUTION_SUCCESS
 
 	//If the target died from anything other than losing their head, we have failed
 	if (target.stat == DEAD)
-		return FALSE
+		return EXECUTION_CANCEL
 
 
-	return TRUE
+	return EXECUTION_CONTINUE
 
 
 /*
@@ -237,8 +273,28 @@
 
 	vision_mod = -4
 
+
+/datum/extension/execution/divider_tongue/safety_check()
+
+	var/obj/effect/projectile/tether/tongue/T = weapon
+
+	//If the tongue is cut or gone, we have failed
+	if (!istype(T) || QDELETED(T) || T.health <= 0)
+		return EXECUTION_CANCEL
+
+	var/safety_result = divider_tongue_continue(user, victim)
+
+	if (safety_result == EXECUTION_SUCCESS)
+		success = TRUE
+		return EXECUTION_SUCCESS
+	else if (safety_result == EXECUTION_CONTINUE)
+		.=..()
+	else
+		return EXECUTION_CANCEL
+
+
 /datum/execution_stage/retract/divider
-	duration = 2.5 SECONDS
+	duration = 2 SECONDS
 
 
 /datum/extension/execution/divider_tongue/interrupt()
@@ -246,7 +302,7 @@
 	user.play_species_audio(src, SOUND_PAIN, VOLUME_MID, 1, 2)
 
 /datum/extension/execution/divider_tongue/can_start()
-	if (!divider_tongue_start(user, victim))
+	if (divider_tongue_start(user, victim) != EXECUTION_CONTINUE)
 		return FALSE
 	.=..()
 
@@ -273,29 +329,25 @@
 	var/damage_per_hit = 6
 	duration = 2 SECONDS
 
-/datum/execution_stage/strangle/enter()
 
+/datum/execution_stage/strangle/enter()
 	//If we've already won, skip this and just return
-	var/safety_result = divider_tongue_continue(host.user, host.victim)
-	if (safety_result == 2)
+	if (host.success)
+		duration =0 //Setting duration to 0 will prevent any waiting after this proc
 		return
 
 	var/done = FALSE
 	while (!done)
 
 		//First of all, safety check
-		safety_result = divider_tongue_continue(host.user, host.victim)
-		if (safety_result == 2)
-			//TODO: Skip to the end immediately
+		var/safety_result = host.safety_check()
+		if (safety_result != EXECUTION_CONTINUE)
+			//If we've either failed or won, we quit this
+			if (safety_result == EXECUTION_SUCCESS)
+				duration =0 //Setting duration to 0 will prevent any waiting after this proc
 			done = TRUE
 			continue
 
-
-		//Execution has failed and will be aborted now
-		if (!safety_result)
-			//The safety check will run again when it tries to advance, and abort at that point, we just return for now
-			done = TRUE
-			continue
 
 
 		//Okay now lets check the victim's health. We know they still have a head
@@ -340,3 +392,4 @@
 		E.droplimb(TRUE, DROPLIMB_EDGE, FALSE, FALSE, host.weapon)
 
 	host.user.do_shout(SOUND_SHOUT_LONG, FALSE)
+	.=..()

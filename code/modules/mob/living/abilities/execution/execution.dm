@@ -31,6 +31,7 @@
 #define EXECUTION_CANCEL	-1	//The whole move has gone wrong, abort
 #define EXECUTION_RETRY		0	//Its not right yet but will probably fix itself, delay and keep trying
 #define EXECUTION_CONTINUE	1	//Its fine, keep going
+#define EXECUTION_SUCCESS 2	//We have achieved victory conditions. Try to skip to the end
 #define EXECUTION_SAFETY	var/result = safety_check();\
 if (result == EXECUTION_CANCEL){\
 	interrupt();\
@@ -58,6 +59,7 @@ if (result == EXECUTION_CANCEL){\
 	//Reward Handling
 	//-------------------
 	//Used to make sure finish only runs once
+	var/success = FALSE	//If true, we have already finished the success condition. Check this to skip things in other stages
 	var/finished = FALSE
 
 	var/reward_biomass = 0

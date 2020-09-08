@@ -86,9 +86,6 @@
 
 //Retract a tether used as a weapon
 /datum/execution_stage/retract/enter()
-	world << "Retract stage, weapon [host.weapon]"
 	var/obj/effect/projectile/tether/T = host.weapon
 	if (istype(T))
 		T.retract(duration)
-	else
-		world << "Host weapon is not a tether"
