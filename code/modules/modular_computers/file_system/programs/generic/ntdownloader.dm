@@ -1,6 +1,6 @@
 /datum/computer_file/program/ntnetdownload
 	filename = "ntndownloader"
-	filedesc = "NTNet Software Download Tool"
+	filedesc = "SolNet Software Download Tool"
 	program_icon_state = "generic"
 	program_key_state = "generic_key"
 	program_menu_icon = "arrowthickstop-1-s"
@@ -42,7 +42,7 @@
 	ui_header = "downloader_running.gif"
 
 	if(PRG in ntnet_global.available_station_software)
-		generate_network_log("Began downloading file [PRG.filename].[PRG.filetype] from NTNet Software Repository.")
+		generate_network_log("Began downloading file [PRG.filename].[PRG.filetype] from SolNet Software Repository.")
 		hacked_download = 0
 	else if(PRG in ntnet_global.available_antag_software)
 		generate_network_log("Began downloading file **ENCRYPTED**.[PRG.filetype] from unspecified server.")
@@ -196,7 +196,7 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "ntnet_downloader.tmpl", "NTNet Download Program", 575, 700, state = state)
+		ui = new(user, src, ui_key, "ntnet_downloader.tmpl", "SolNet Download Program", 575, 700, state = state)
 		ui.auto_update_layout = 1
 		ui.set_initial_data(data)
 		ui.open()
