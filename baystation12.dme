@@ -1972,6 +1972,7 @@
 #include "code\modules\mob\living\carbon\human\species\necromorph\tripod.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\twitcher.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\ubermorph.dm"
+#include "code\modules\mob\living\carbon\human\species\necromorph\divider\component.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\divider\divider.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\divider\tongue.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\slasher\clothing.dm"

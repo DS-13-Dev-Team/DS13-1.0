@@ -210,7 +210,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	var/vector2/cached_pixels = get_new_vector(src.pixel_x, src.pixel_y)
 	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 1.5 SECONDS, easing = BACK_EASING, flags = ANIMATION_PARALLEL)
 	animate(pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = 0.3 SECONDS)
-
+	release_vector(pixel_offset)
+	release_vector(cached_pixels)
 	//Long shout when targeting mobs, normal when targeting objects
 	if (ismob(A))
 		H.play_species_audio(H, SOUND_SHOUT_LONG, 100, 1, 3)
