@@ -478,7 +478,7 @@
 	//Secondary = Something that got in the way while enroute to the primary target
 /atom/movable/proc/charge_impact(var/datum/extension/charge/charge)
 	shake_camera(src,3,1)
-	return charge.last_obstacle.charge_act(src, charge.power, charge.distance_travelled)
+	return charge.last_obstacle.charge_act(charge)
 
 
 //When a human does it, we call the same proc on their species. This allows various people to do stuff

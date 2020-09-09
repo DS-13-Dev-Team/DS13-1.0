@@ -14,7 +14,7 @@
 	artery_name = "cartoid artery"
 	cavity_name = "cranial"
 
-	divider_component_type = /mob/living/simple_animal/divider_component/head
+	divider_component_type = /mob/living/simple_animal/necromorph/divider_component/head
 
 	base_miss_chance = 20
 

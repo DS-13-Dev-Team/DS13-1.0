@@ -126,11 +126,11 @@
 	Limb Code
 */
 /obj/item/organ/external
-	var/divider_component_type = /mob/living/simple_animal/divider_component/arm
+	var/divider_component_type = /mob/living/simple_animal/necromorph/divider_component/arm
 
 
 /obj/item/organ/external/proc/create_divider_component(var/mob/living/carbon/human/H, var/deletion_delay = 0)
-	var/mob/living/simple_animal/divider_component/L = new divider_component_type(get_turf(src))
+	var/mob/living/simple_animal/necromorph/divider_component/L = new divider_component_type(get_turf(src))
 
 	//Turning into a component deletes the organ, but let it finish execution first, make it invisible in the meantime
 	alpha = 0

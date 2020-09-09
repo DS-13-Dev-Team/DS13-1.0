@@ -10,27 +10,28 @@
 	spawner_spawnable = FALSE
 	preference_settable = TRUE
 
-
+/mob/living/simple_animal/necromorph/is_necromorph()
+	return TRUE
 
 
 /*
 	Component Mobs
 */
-/mob/living/simple_animal/divider_component
+/mob/living/simple_animal/necromorph/divider_component
 	max_health = 35
 	icon = 'icons/mob/necromorph/divider/components.dmi'
 	var/leap_windup_time = 1 SECOND
 
-/mob/living/simple_animal/divider_component/Initialize()
+/mob/living/simple_animal/necromorph/divider_component/Initialize()
 	.=..()
-	add_modclick_verb(KEY_ALT, /mob/living/simple_animal/divider_component/proc/leap)
+	add_modclick_verb(KEY_ALT, /mob/living/simple_animal/necromorph/divider_component/proc/leap)
 	get_controlling_player()
 
 
-/mob/living/simple_animal/divider_component/proc/get_controlling_player()
+/mob/living/simple_animal/necromorph/divider_component/proc/get_controlling_player()
 	SSnecromorph.fill_vessel_from_queue(src, SPECIES_NECROMORPH_DIVIDER_COMPONENT)
 
-/mob/living/simple_animal/divider_component/proc/leap(var/atom/A)
+/mob/living/simple_animal/necromorph/divider_component/proc/leap(var/atom/A)
 	set name = "Leap Attack"
 	set category = "Abilities"
 
@@ -69,7 +70,7 @@
 
 	Leaps onto mobs and latches on
 */
-/mob/living/simple_animal/divider_component/arm
+/mob/living/simple_animal/necromorph/divider_component/arm
 	icon_state = "arm"
 
 
@@ -78,19 +79,29 @@
 	Leg
 	Kicks mobs and bounces off
 */
-/mob/living/simple_animal/divider_component/leg
+/mob/living/simple_animal/necromorph/divider_component/leg
 	icon_state = "leg"
 
 //The leg's leap impact is a dropkick, both victim and leg are propelled away from each other wildly
 //The victim recieves a heavy blunt hit
-/mob/living/simple_animal/divider_component/leg/charge_impact(var/datum/extension/charge/leap/charge)
-	var/mob/living/simple_animal/divider_component/leg/H = charge.user
+/mob/living/simple_animal/necromorph/divider_component/leg/charge_impact(var/datum/extension/charge/leap/charge)
 	shake_camera(charge.user,5,3)
 	.=TRUE
 	if (isliving(charge.last_obstacle))
 		var/mob/living/L = charge.last_obstacle
 		shake_camera(L,10,6) //Smack
 		launch_strike(L, damage = 10, used_weapon = src, damage_flags = 0, armor_penetration = 10, damage_type = BRUTE, armor_type = "melee", target_zone = get_zone_sel(src), difficulty = 50)
+
+
+	//And we're gonna do some knockback
+	var/turf/epicentre = get_turf(charge.last_obstacle)
+	if (istype(charge.last_obstacle, /atom/movable))
+		var/atom/movable/AM = charge.last_obstacle
+		AM.apply_push_impulse_from(src, 20)
+
+	//And we ourselves also get knocked back
+	apply_push_impulse_from(epicentre, 20)
+
 
 /*
 	Head
@@ -100,7 +111,7 @@
 //If the divider player is still connected, they transfer control to the head
 /obj/item/organ/external/head/create_divider_component(var/mob/living/carbon/human/H, var/deletion_delay)
 	.=..()
-	var/mob/living/simple_animal/divider_component/L = .
+	var/mob/living/simple_animal/necromorph/divider_component/L = .
 	if (H && H.mind && H.client)
 		H.mind.transfer_to(L)
 
@@ -116,10 +127,10 @@
 
 
 
-/mob/living/simple_animal/divider_component/head
+/mob/living/simple_animal/necromorph/divider_component/head
 	icon_state = "head"
 
-/mob/living/simple_animal/divider_component/head/get_controlling_player(var/fetch = FALSE)
+/mob/living/simple_animal/necromorph/divider_component/head/get_controlling_player(var/fetch = FALSE)
 	if (!fetch)
 		return
 	.=..()
