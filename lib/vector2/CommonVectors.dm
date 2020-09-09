@@ -63,11 +63,11 @@ Vector2
 
 			//Alright, they're on the same tile. We're going to try to step either one back to their last move before they overlapped
 			if (istype(A) && A.last_move)
-				A = get_step(A, A.last_move)
+				A = get_step(A, GLOB.reverse_dir[A.last_move])
 				return Vector2.DirectionBetween(A, B)
 
 			else if (istype(B) && B.last_move)
-				B = get_step(B, B.last_move)
+				B = get_step(B, GLOB.reverse_dir[B.last_move])
 				return Vector2.DirectionBetween(A, B)
 
 			return get_new_vector(0, 0)

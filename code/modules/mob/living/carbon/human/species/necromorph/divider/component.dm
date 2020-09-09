@@ -1,4 +1,39 @@
 /*
+	Minor Necromorph
+*/
+/mob/living/simple_animal/necromorph
+	min_gas = null
+	max_gas = null
+	harm_intent_damage = 5
+	mass = 1
+	density = FALSE
+	var/lifespan = 10 MINUTES	//Minor necromorphs don't last forever, their health gradually ticks down
+
+/mob/living/simple_animal/necromorph/Initialize()
+	.=..()
+	if (lifespan)
+		var/time_per_tick = lifespan / max_health
+		addtimer(CALLBACK(src, /mob/living/simple_animal/necromorph/proc/decay), time_per_tick)
+
+//Take 1 point of lasting damage and queue another timer
+/mob/living/simple_animal/necromorph/proc/decay()
+	if (stat == DEAD)
+		return
+	adjustLastingDamage(1)
+
+
+	if (stat == DEAD)
+		return
+
+	var/time_per_tick = lifespan / max_health
+	addtimer(CALLBACK(src, /mob/living/simple_animal/necromorph/proc/decay), time_per_tick)
+
+/mob/living/simple_animal/necromorph/is_necromorph()
+	return TRUE
+
+
+/mob/living/simple_animal/necromorph
+/*
 	Component Species
 
 	This is only used for creating a preference option to opt in/out of playing components
@@ -10,8 +45,7 @@
 	spawner_spawnable = FALSE
 	preference_settable = TRUE
 
-/mob/living/simple_animal/necromorph/is_necromorph()
-	return TRUE
+
 
 
 /*
@@ -20,12 +54,17 @@
 /mob/living/simple_animal/necromorph/divider_component
 	max_health = 35
 	icon = 'icons/mob/necromorph/divider/components.dmi'
-	var/leap_windup_time = 1 SECOND
+	var/leap_windup_time = 0.8 SECOND
+	var/leap_range = 6
+
+	speed = 3
 
 /mob/living/simple_animal/necromorph/divider_component/Initialize()
 	.=..()
 	add_modclick_verb(KEY_ALT, /mob/living/simple_animal/necromorph/divider_component/proc/leap)
 	get_controlling_player()
+
+
 
 
 /mob/living/simple_animal/necromorph/divider_component/proc/get_controlling_player()
@@ -61,17 +100,37 @@
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 	*/
 
-	return leap_attack(A, _cooldown = 6 SECONDS, _delay = (leap_windup_time - (0.2 SECONDS)), _speed = 7, _maxrange = 4, _lifespan = 4 SECONDS)
+	return leap_attack(A, _cooldown = 6 SECONDS, _delay = (leap_windup_time - (0.2 SECONDS)), _speed = 7, _maxrange = 6, _lifespan = 5 SECONDS)
+
+
+
+
 
 
 
 /*
 	Arm
 
-	Leaps onto mobs and latches on
+	Leaps onto mobs and latches on. Can also wallrun
 */
 /mob/living/simple_animal/necromorph/divider_component/arm
+	name = "arm"
 	icon_state = "arm"
+	speed = 2.75
+	melee_damage_lower = 2
+	melee_damage_upper = 4
+	attacktext = "scratched"
+	attack_sound = 'sound/weapons/bite.ogg'
+	leap_range = 5
+
+/mob/living/simple_animal/necromorph/divider_component/arm/Initialize()
+	.=..()
+	set_extension(src, /datum/extension/wallrun)
+
+
+
+
+
 
 
 
@@ -80,7 +139,15 @@
 	Kicks mobs and bounces off
 */
 /mob/living/simple_animal/necromorph/divider_component/leg
+	name = "leg"
 	icon_state = "leg"
+	speed = 3.5
+	melee_damage_lower = 3
+	melee_damage_upper = 6
+	attacktext = "kicked"
+	attack_sound = 'sound/weapons/bite.ogg'
+
+
 
 //The leg's leap impact is a dropkick, both victim and leg are propelled away from each other wildly
 //The victim recieves a heavy blunt hit
@@ -91,7 +158,8 @@
 		var/mob/living/L = charge.last_obstacle
 		shake_camera(L,10,6) //Smack
 		launch_strike(L, damage = 10, used_weapon = src, damage_flags = 0, armor_penetration = 10, damage_type = BRUTE, armor_type = "melee", target_zone = get_zone_sel(src), difficulty = 50)
-
+		//We are briefly stunned
+		Stun(1)
 
 	//And we're gonna do some knockback
 	var/turf/epicentre = get_turf(charge.last_obstacle)
@@ -99,8 +167,17 @@
 		var/atom/movable/AM = charge.last_obstacle
 		AM.apply_push_impulse_from(src, 20)
 
-	//And we ourselves also get knocked back
-	apply_push_impulse_from(epicentre, 20)
+	spawn()
+		//And we ourselves also get knocked back
+		//We spawn it off to let the current stack finish first, otherwise we get hit twice
+		apply_push_impulse_from(epicentre, 20)
+
+
+
+
+
+
+
 
 
 /*
@@ -128,7 +205,15 @@
 
 
 /mob/living/simple_animal/necromorph/divider_component/head
+	name = "head"
 	icon_state = "head"
+
+	melee_damage_lower = 4
+	melee_damage_upper = 6
+	attacktext = "whipped"
+	attack_sound = 'sound/weapons/bite.ogg'
+	speed = 2
+	leap_range = 4
 
 /mob/living/simple_animal/necromorph/divider_component/head/get_controlling_player(var/fetch = FALSE)
 	if (!fetch)

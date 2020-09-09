@@ -261,7 +261,7 @@
 		total += subtotal
 
 	if (return_list)
-		return list("damage" = total, "blocked" = blocked)
+		return list("damage" = total, "blocked" = blocked+H.lasting_damage)
 
 	return total
 

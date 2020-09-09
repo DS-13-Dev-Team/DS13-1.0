@@ -225,7 +225,12 @@
 /mob/living/proc/turf_collision(var/turf/T, var/speed)
 	visible_message("<span class='danger'>[src] slams into \the [T]!</span>")
 	playsound(loc, 'sound/effects/bangtaper.ogg', 50, 1, -1)
-	src.take_organ_damage(speed*5)
+
+	//Damage is capped at the lowest of mass* speed, speed*5, or 20% of your max health
+	var/damage = min(speed*5, speed*get_mass())
+	if (max_health)
+		damage = min(max_health*0.2, damage)
+	src.take_organ_damage(damage)
 
 /mob/living/proc/near_wall(var/direction,var/distance=1)
 	var/turf/T = get_step(get_turf(src),direction)

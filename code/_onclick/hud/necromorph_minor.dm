@@ -23,6 +23,8 @@
 		hud_elements |= mymob.pain
 
 
+	hud_elements |= new /obj/screen/healthbar(mymob.client)
+
 	mymob.zone_sel = new /obj/screen/zone_sel( null )
 	mymob.zone_sel.icon = ui_style
 	mymob.zone_sel.color = ui_color
@@ -41,4 +43,4 @@
 
 
 	mymob.client.screen = list()
-	mymob.client.screen += hud_elements
+	mymob.client.add_to_screen(hud_elements)

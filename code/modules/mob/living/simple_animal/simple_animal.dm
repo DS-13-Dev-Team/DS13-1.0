@@ -46,7 +46,7 @@
 	var/min_gas = list("oxygen" = 5)
 	var/max_gas = list(MATERIAL_PHORON = 1, "carbon_dioxide" = 5)
 	var/unsuitable_atoms_damage = 2	//This damage is taken when atmos doesn't fit all the requirements above
-	var/speed = 0 //LETS SEE IF I CAN SET SPEEDS FOR SIMPLE MOBS WITHOUT DESTROYING EVERYTHING. Higher speed is slower, negative speed is faster
+	var/speed = 4 //Metres per second
 
 	//LETTING SIMPLE ANIMALS ATTACK? WHAT COULD GO WRONG. Defaults to zero so Ian can still be cuddly
 	var/melee_damage_lower = 0
@@ -65,6 +65,11 @@
 
 	// contained in a cage
 	var/in_stasis = 0
+
+/mob/living/simple_animal/New(var/atom/location)
+	health = max_health
+	.=..()
+
 /mob/living/simple_animal/Life()
 	..()
 	if(!living_observers_present(GetConnectedZlevels(z)))
@@ -258,15 +263,14 @@
 	return 0
 
 /mob/living/simple_animal/movement_delay()
-	var/tally = ..() //Incase I need to add stuff other than "speed" later
+	var/tally = 1 SECOND
+	if (speed)
+		tally /= speed
+	if (move_speed_factor)
+		tally /= move_speed_factor
 
-	tally += speed
-	if(purge)//Purged creatures will move more slowly. The more time before their purge stops, the slower they'll move.
-		if(tally <= 0)
-			tally = 1
-		tally *= purge
+	return tally
 
-	return tally+config.animal_delay
 
 /mob/living/simple_animal/Stat()
 	. = ..()

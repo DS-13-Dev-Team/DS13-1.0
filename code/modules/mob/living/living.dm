@@ -189,7 +189,7 @@ default behaviour is:
 		health = 100
 		set_stat(CONSCIOUS)
 	else
-		health = max_health - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - getHalLoss()
+		health = max_health - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - getHalLoss() - getLastingDamage()
 
 
 	if (health <= 0)
@@ -236,7 +236,7 @@ default behaviour is:
 	return temperature
 
 /mob/living/proc/getBruteLoss()
-	return max_health - health
+	return (max_health - getLastingDamage()) - health
 
 /mob/living/proc/adjustBruteLoss(var/amount)
 	if (status_flags & GODMODE)
@@ -263,6 +263,14 @@ default behaviour is:
 
 /mob/living/proc/getFireLoss()
 	return
+
+/mob/living/proc/adjustLastingDamage(var/amount)
+	lasting_damage += amount
+	health = min(health, max_health - lasting_damage)
+	updatehealth()
+
+/mob/living/proc/getLastingDamage()
+	return lasting_damage
 
 /mob/living/proc/adjustFireLoss(var/amount)
 	adjustBruteLoss(amount * 0.5)

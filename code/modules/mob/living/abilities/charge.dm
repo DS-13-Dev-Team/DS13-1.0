@@ -389,9 +389,13 @@
 	obstacle.shake_animation(8*TP)
 	if (isliving(holder))
 		//Damage the user and stun them
+
 		var/mob/living/L = holder
+		var/selfdamage = CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*distance_travelled
+		if (L.max_health)
+			selfdamage = min(L.max_health*0.15, selfdamage)
 		L.stunned = 0
-		L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*distance_travelled, 0,0,0, obstacle)
+		L.take_overall_damage(selfdamage, 0,0,0, obstacle)
 		L.Stun(2*TP)
 	stop()
 
@@ -464,6 +468,8 @@
 		//We can't be hurt by things smaller than ourselves. they bounce off
 		if (L.mob_size < mob_size)
 			return FALSE
+
+
 
 		L.launch_strike(src, CHARGE_DAMAGE_BASE*charge.power, L)
 		//take_overall_damage((CHARGE_DAMAGE_BASE*power), 0,0,0, mover)
