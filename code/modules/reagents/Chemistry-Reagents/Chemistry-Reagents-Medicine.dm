@@ -80,7 +80,7 @@
 /datum/reagent/dylovene
 	name = "Dylovene"
 	description = "Dylovene is a broad-spectrum antitoxin used to neutralize poisons before they can do significant harm."
-	taste_description = "a roll of gauze"
+	taste_description = "a groll of gauze"
 	reagent_state = LIQUID
 	color = "#00a000"
 	scannable = 1
@@ -149,7 +149,6 @@
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
 	overdose = 30
-	metabolism = 2
 
 /datum/reagent/tricordrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)

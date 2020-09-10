@@ -157,10 +157,10 @@
 	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/silicon = 1, /datum/reagent/acetone = 1)
 	result_amount = 4
 
-/datum/chemical_reaction/pacid
-	name = "Polytrinic acid"
-	result = /datum/reagent/acid/polyacid
-	required_reagents = list(/datum/reagent/acid = 1, /datum/reagent/acid/hydrochloric = 1, /datum/reagent/potassium = 1)
+/datum/chemical_reaction/tacid
+	name = "Triflic acid"
+	result = /datum/reagent/acid/triflicacid
+	required_reagents = list(/datum/reagent/toxin/potassium_chlorophoride = 1, /datum/reagent/acid/hydrochloric = 1, /datum/reagent/lexorin = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/synaptizine
