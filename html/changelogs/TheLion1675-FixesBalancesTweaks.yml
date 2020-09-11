@@ -41,6 +41,7 @@ changes:
   - rscadd: "Added the Mining Cutter to the exports list with a value of 40 credits."
   - rscadd: "Addded the Graviton Accelerator to the exports list with a value of 60 credits."
   - rscadd: "Added the Contact Beam to the exports list with a value of 60 credits."
+  - rscadd: "New mechanic! End of round now calculates to which side the victory goes. Goes minor/major. Also plays songs depending on the round outcome!"
   - wip: "Added Mining Cutter and Plasma Cutter to the research designs. More to come at a later date."
   - tweak: "Significantly decreased the export worth of Tasers."
   - tweak: "Significantly decreased the export worth of smelted materials."
