@@ -9,7 +9,7 @@
 	slot_flags = SLOT_BELT
 	throwforce = 3
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 10
 	amount_per_transfer_from_this = 10
 	unacidable = 1 //plastic
@@ -45,7 +45,7 @@
 	if(reagents.has_reagent(/datum/reagent/acid))
 		message_admins("[key_name_admin(user)] fired sulphuric acid from \a [src].")
 		log_game("[key_name(user)] fired sulphuric acid from \a [src].")
-	if(reagents.has_reagent(/datum/reagent/acid/polyacid))
+	if(reagents.has_reagent(/datum/reagent/acid/triflicacid))
 		message_admins("[key_name_admin(user)] fired Polyacid from \a [src].")
 		log_game("[key_name(user)] fired Polyacid from \a [src].")
 	if(reagents.has_reagent(/datum/reagent/lube))

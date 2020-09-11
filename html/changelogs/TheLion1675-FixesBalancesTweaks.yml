@@ -46,6 +46,8 @@ changes:
   - tweak: "Significantly decreased the export worth of smelted materials."
   - tweak: "Moderately increased the Contact Beam's accuracy."
   - tweak: "Polytrinic Acid rennamed into Triflic Acid."
+  - tweak: "Metal Foam, Iron Foam and Plastic chemistry recipes now no longer require Triflic Acid / Former Polyacid. It now takes Hydrochloric instead."
+  - tweak: "Minorly increased the maximum amount of damage the brain can sustain before becoming a literal Hydro plant."
   - tweak: "Significantly reduced damage of Triflic Acid / Former Polyacid."
   - tweak: "Altered recipe for Triflic Acid / Former Polyacid: 1u Lexorin, 1u Potassium Chlorophoride, 1u Hydrochloric Acid makes for 3u Triflic Acid."
   - tweak: "Moderately reduced the metabolism rate of Tricordrazine. It is still a fix-all, but has the same metabolic stats as Kelotane and Bicaridine."

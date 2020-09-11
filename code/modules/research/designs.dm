@@ -600,7 +600,7 @@
 	name = "211-V plasma cutter"
 	id = "plasmacutter"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 4, TECH_POWER = 3)
-	materials = list(MATERIAL_STEEL = 15000, MATERIAL_GLASS = 5000. "gold" = 400)
+	materials = list(MATERIAL_STEEL = 15000, MATERIAL_GLASS = 5000, "gold" = 400)
 	build_path = /obj/item/weapon/gun/energy/cutter/plasma
 	sort_string = "TAEAC"
 
