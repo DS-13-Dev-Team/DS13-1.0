@@ -801,7 +801,21 @@
 	if(status_flags & CANPARALYSE)
 		facing_dir = null
 		paralysis = max(max(paralysis,amount),0)
-	return
+		return TRUE
+	return FALSE
+
+/mob/living/Paralyse(amount)
+	var/zero_before = FALSE
+	if (!paralysis)
+		zero_before = TRUE
+	.=..()
+	if (. && zero_before)
+		//These three procs instantly create the blinding/sleep overlay
+		//We only call them if the mob has just become paralysed, to prevent an infinite loop
+		handle_regular_status_updates() //This checks paralysis and sets stat
+		handle_disabilities() //This checks stat and sets eye_blind
+		handle_regular_hud_updates(TRUE) //This checks eye_blind and adds or removes the hud overlay
+
 
 /mob/proc/SetParalysis(amount)
 	if(status_flags & CANPARALYSE)

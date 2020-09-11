@@ -299,3 +299,5 @@
 
 //Spawnpoint Names
 #define SPAWNPOINT_CRYO	"Cryogenic Storage"
+#define SPAWNPOINT_DORM "Crew Quarters"
+#define SPAWNPOINT_MAINT	"Maintenance Tunnels"

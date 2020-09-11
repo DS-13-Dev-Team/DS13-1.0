@@ -1,6 +1,6 @@
 /datum/computer_file/program/ntnetmonitor
 	filename = "ntmonitor"
-	filedesc = "NTNet Diagnostics and Monitoring"
+	filedesc = "SolNet Diagnostics and Monitoring"
 	program_icon_state = "comm_monitor"
 	program_key_state = "generic_key"
 	program_menu_icon = "wrench"
@@ -12,7 +12,7 @@
 	nanomodule_path = /datum/nano_module/computer_ntnetmonitor/
 
 /datum/nano_module/computer_ntnetmonitor
-	name = "NTNet Diagnostics and Monitoring"
+	name = "SolNet Diagnostics and Monitoring"
 	available_to_ai = TRUE
 
 /datum/nano_module/computer_ntnetmonitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
@@ -37,7 +37,7 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "ntnet_monitor.tmpl", "NTNet Diagnostics and Monitoring Tool", 575, 700, state = state)
+		ui = new(user, src, ui_key, "ntnet_monitor.tmpl", "SolNet Diagnostics and Monitoring Tool", 575, 700, state = state)
 		if(host.update_layout())
 			ui.auto_update_layout = 1
 		ui.set_initial_data(data)
@@ -68,7 +68,7 @@
 		// NTNet is enabled and user is about to shut it down. Let's ask them if they really want to do it, as wirelessly connected computers won't connect without NTNet being enabled (which may prevent people from turning it back on)
 		if(!user)
 			return 1
-		var/response = alert(user, "Really disable NTNet wireless? If your computer is connected wirelessly you won't be able to turn it back on! This will affect all connected wireless devices.", "NTNet shutdown", "Yes", "No")
+		var/response = alert(user, "Really disable SolNet wireless? If your computer is connected wirelessly you won't be able to turn it back on! This will affect all connected wireless devices.", "SolNet shutdown", "Yes", "No")
 		if(response == "Yes")
 			ntnet_global.setting_disabled = 1
 		return 1

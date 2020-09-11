@@ -419,9 +419,10 @@
 		if(ishuman(user))
 			if(I.canremove)
 				failtypes["drop"] = 2
+/*DS13: too much damage
 			if (I.sharp)
 				failtypes["stab"] = 1
-
+*/
 			//This one is limited to humans only since robots often can't remove/replace their device cells
 			if(locate(/obj/item/weapon/cell) in contents)
 				failtypes["overload"] = 0.5

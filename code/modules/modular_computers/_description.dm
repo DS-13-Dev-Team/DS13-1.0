@@ -1,6 +1,7 @@
 /*
 Program-based computers, designed to replace computer3 project and eventually most consoles on station
 
+Renamed to SolNet in-game, players will see that rather than NTNet
 
 1. Basic information
 Program based computers will allow you to do multiple things from single computer. Each computer will have programs, with more being downloadable from NTNet (stationwide network with wireless coverage)

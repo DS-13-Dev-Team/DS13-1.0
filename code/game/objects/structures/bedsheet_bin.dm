@@ -15,9 +15,18 @@ LINEN BINS
 	plane = ABOVE_OBJ_PLANE
 	layer = BASE_ABOVE_OBJ_LAYER
 	throwforce = 1
-	
+
 	throw_range = 2
 	w_class = ITEM_SIZE_SMALL
+
+
+//If you're lying in bed, pass clicks on the sheet to that bed
+/obj/item/weapon/bedsheet/attack_hand(var/mob/user)
+	if (user.buckled && get_turf(user.buckled) == get_turf(src))
+		user.buckled.attack_hand(user)
+		return
+
+	.=..()
 
 /obj/item/weapon/bedsheet/attackby(obj/item/I, mob/user)
 	if(is_sharp(I))

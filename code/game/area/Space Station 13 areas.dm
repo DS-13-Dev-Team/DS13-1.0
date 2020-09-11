@@ -43,6 +43,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/used_light = 0
 	var/used_environ = 0
 
+
+
 	var/has_gravity = 1
 	var/obj/machinery/power/apc/apc = null
 	var/no_air = null
@@ -134,6 +136,7 @@ area/space/atmosalert()
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
 	forced_ambience = list('sound/ambience/maintambience.ogg')
+	is_maintenance = TRUE
 
 /area/rnd/xenobiology
 	name = "\improper Xenobiology Lab"

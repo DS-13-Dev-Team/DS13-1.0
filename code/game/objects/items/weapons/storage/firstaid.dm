@@ -11,7 +11,7 @@
 	name = "first-aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos."
 	icon_state = "firstaid"
-	
+
 	throw_range = 8
 	max_w_class = ITEM_SIZE_SMALL
 	max_storage_space = DEFAULT_BOX_STORAGE
@@ -281,6 +281,13 @@
 
 	startswith = list(/obj/item/weapon/reagent_containers/pill/tramadol = 21)
 	wrapper_color = COLOR_PURPLE_GRAY
+
+/obj/item/weapon/storage/pill_bottle/sugariron
+	name = "pill bottle (Sugar Iron)"
+	desc = "Contains pills used to regenerate blood. Less effective than actual blood transfusions."
+
+	startswith = list(/obj/item/weapon/reagent_containers/pill/sugariron = 21)
+	wrapper_color = COLOR_RED
 
 //Baycode specific Psychiatry pills.
 /obj/item/weapon/storage/pill_bottle/citalopram

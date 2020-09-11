@@ -1,6 +1,6 @@
 /datum/computer_file/program/newsbrowser
 	filename = "newsbrowser"
-	filedesc = "NTNet/ExoNet News Browser"
+	filedesc = "SolNet/ExoNet News Browser"
 	extended_desc = "This program may be used to view and download news articles from the network."
 	program_icon_state = "generic"
 	program_key_state = "generic_key"
@@ -87,7 +87,7 @@
 
 
 /datum/nano_module/program/computer_newsbrowser
-	name = "NTNet/ExoNet News Browser"
+	name = "SolNet/ExoNet News Browser"
 
 /datum/nano_module/program/computer_newsbrowser/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 
@@ -125,7 +125,7 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "news_browser.tmpl", "NTNet/ExoNet News Browser", 575, 750, state = state)
+		ui = new(user, src, ui_key, "news_browser.tmpl", "SolNet/ExoNet News Browser", 575, 750, state = state)
 		ui.auto_update_layout = 1
 		ui.set_initial_data(data)
 		ui.open()

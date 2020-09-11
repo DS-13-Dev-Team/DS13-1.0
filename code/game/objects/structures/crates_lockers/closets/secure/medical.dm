@@ -78,7 +78,7 @@
 	icon_opened = "securesenmedopen"
 	icon_off = "securesenmedoff"
 
-/obj/structure/closet/secure_closet/medical3/WillContain()
+/obj/structure/closet/secure_closet/medical4/WillContain()
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/medic, /obj/item/weapon/storage/backpack/satchel_med)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/med, 50),

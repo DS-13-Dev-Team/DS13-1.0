@@ -1,6 +1,6 @@
 // Relays don't handle any actual communication. Global NTNet datum does that, relays only tell the datum if it should or shouldn't work.
 /obj/machinery/ntnet_relay
-	name = "NTNet Quantum Relay"
+	name = "SolNet Quantum Relay"
 	desc = "A very complex router and transmitter capable of connecting electronic devices together. Looks fragile."
 	use_power = 2
 	active_power_usage = 20000 //20kW, apropriate for machine that keeps massive cross-Zlevel wireless network operational.
@@ -65,7 +65,7 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "ntnet_relay.tmpl", "NTNet Quantum Relay", 500, 300, state = state)
+		ui = new(user, src, ui_key, "ntnet_relay.tmpl", "SolNet Quantum Relay", 500, 300, state = state)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
