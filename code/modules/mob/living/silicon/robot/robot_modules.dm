@@ -227,7 +227,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/shockpaddles/robot(src)
 	src.emag = new /obj/item/weapon/reagent_containers/spray(src)
 	src.emag.reagents.add_reagent(/datum/reagent/acid/triflicacid, 250)
-	src.emag.SetName("Polyacid spray")
+	src.emag.SetName("Triflic Acid spray")
 
 	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(10000)
 	synths += medicine
@@ -281,7 +281,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/inflatable_dispenser/robot(src) // Allows usage of inflatables. Since they are basically robotic alternative to EMTs, they should probably have them.
 	src.emag = new /obj/item/weapon/reagent_containers/spray(src)
 	src.emag.reagents.add_reagent(/datum/reagent/acid/triflicacid, 250)
-	src.emag.SetName("Polyacid spray")
+	src.emag.SetName("Triflic Acid spray")
 
 	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(15000)
 	synths += medicine
