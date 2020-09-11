@@ -59,3 +59,4 @@ changes:
   - rscdel: "Removed a lot of redundant worth list items of items we don't use. Back-end organizing."
   - rscdel: "Removed bluespace tomato as a valid mutation."
   - bugfix: "Fixed inability to make assembly items such as the igniter because it required an item that did not exist."
+  - bugfix: "Fixed an uncommon instance of diona nymphs spawning in vending machines. No more leeches!"
