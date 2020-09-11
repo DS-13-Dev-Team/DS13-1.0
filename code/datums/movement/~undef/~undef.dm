@@ -1,0 +1,7 @@
+#undef IS_SELF
+#undef IS_NOT_SELF
+
+#undef SET_MOVER
+#undef SET_IS_EXTERNAL
+#undef INIT_MOVEMENT_HANDLERS
+#undef REMOVE_AND_QDEL

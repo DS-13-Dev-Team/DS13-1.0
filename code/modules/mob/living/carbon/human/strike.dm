@@ -176,7 +176,6 @@
 
 //Special proc for figuring out where the attack is coming from
 /datum/strike/proc/cache_origin()
-
 	var/atom/movable/origin_atom = used_weapon
 	if (!origin_atom)
 		origin_atom = user
@@ -193,7 +192,6 @@
 
 	//In an uncommon special case, the weapon and target may be in the same location. In this case, the origin is where the origin atom came from
 	origin = get_step(origin_atom_turf, GLOB.reverse_dir[origin_atom.last_move])
-
 
 
 

@@ -5,13 +5,13 @@
 
 /obj/item/grab/nab/init()
 	..()
-
+	/* //Commented out by nanako, too much work to support these while transitioning to allowing simple animals to be grabbed. We dont even use nabbers
 	if(affecting.w_uniform)
 		affecting.w_uniform.add_fingerprint(assailant)
 
 	if(assailant.l_hand) assailant.unEquip(assailant.l_hand)
 	if(assailant.r_hand) assailant.unEquip(assailant.r_hand)
-
+	*/
 	assailant.put_in_active_hand(src)
 	assailant.do_attack_animation(affecting)
 	playsound(affecting.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)

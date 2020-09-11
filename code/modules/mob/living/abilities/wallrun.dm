@@ -66,6 +66,18 @@
 	var/movespeed_delta = 0
 
 
+
+/datum/extension/wallrun/New(var/atom/movable/_user)
+	.=..()
+
+
+	A = _user
+	if (isliving(_user))
+		user = _user
+	start()
+
+
+
 /datum/extension/wallrun/proc/apply_stats()
 	if (!user)
 		return
@@ -101,12 +113,6 @@
 		cached_density = null
 
 
-/datum/extension/wallrun/New(var/atom/movable/_user)
-	.=..()
-	A = _user
-	if (isliving(_user))
-		user = _user
-	start()
 
 
 /datum/extension/wallrun/proc/start()
@@ -196,6 +202,8 @@
 ------------------*/
 //This should only be called when we are already mounted
 /datum/extension/wallrun/proc/attempt_transition(var/atom/target)
+	if (!target)
+		return
 	if (is_valid_mount_target(target) && is_valid_transition_target(target))
 		return transition_to_atom(target)
 
@@ -437,6 +445,10 @@
 -------------------------*/
 //Called when we bump into something
 /datum/extension/wallrun/proc/on_bumped(var/atom/movable/mover, var/atom/obstacle)
+	//Can't do wallrun and wallmount at the same time
+	if (mover.is_mounted())
+		return
+
 	if (!mountpoint)
 		attempt_mount(obstacle)
 	else

@@ -37,6 +37,9 @@ proc/random_hair_style(gender, species = SPECIES_HUMAN)
 
 	return h_style
 
+proc/random_target_zone()
+	return pickweight(list(BP_EYES, BP_MOUTH, BP_HEAD, BP_CHEST = 2, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_GROIN, BP_L_LEG, BP_R_LEG, BP_R_ARM, BP_L_ARM))
+
 proc/random_facial_hair_style(gender, var/species = SPECIES_HUMAN)
 	var/f_style = "Shaved"
 

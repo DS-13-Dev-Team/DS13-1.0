@@ -86,10 +86,11 @@
 			return 1
 
 		if(I_GRAB)
-			if (!can_grasp_with_selected())
-				to_chat(H, "<span class='warning'>You can't use your hand.</span>")
-				return
-			return H.grab(src)
+			if (H)
+				if (!H.can_grasp_with_selected())
+					to_chat(H, "<span class='warning'>You can't use your hand.</span>")
+					return
+				return H.grab(src)
 
 		if(I_HURT)
 			var/hit_zone = H.zone_sel.selecting

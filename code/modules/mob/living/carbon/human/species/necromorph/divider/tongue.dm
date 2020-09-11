@@ -271,6 +271,7 @@
 	/datum/execution_stage/scream)
 
 
+
 	vision_mod = -4
 
 
@@ -310,15 +311,30 @@
 /*
 	Stages
 */
+/datum/execution_stage/wrap
+	var/datum/movement_handler/root/user_root
+	var/datum/movement_handler/root/target_root
+
 /datum/execution_stage/wrap/enter()
 
+	//The target cannot move, but can still fight back
+	target_root = host.victim.root()
 
-	//host.victim.Root()
+	//The user cannot move or take any action
+	user_root = host.user.root()
+	host.user.Stun(2)
 
 	host.victim.losebreath += 4
 	host.user.visible_message(SPAN_EXECUTION("[host.user] wraps their tongue around [host.victim]'s throat, constricting their airways and holding them in place!"))
 	host.user.do_shout(SOUND_SHOUT_LONG, FALSE)
 
+/datum/execution_stage/wrap/stop()
+	if (user_root)
+		user_root.remove()
+		host.user.stunned = 0
+
+	if (target_root)
+		target_root.remove()
 
 /*
 	Strangle stages are the meat of this attack.
@@ -368,6 +384,9 @@
 		//The victim and their camera shake wildly as they struggle
 		shake_camera(host.victim, 2, 3)
 		host.victim.shake_animation(12)
+
+		//Make sure the user stays stunned during this process
+		host.user.Stun(1+(duration*0.1))
 
 		sleep(duration)
 

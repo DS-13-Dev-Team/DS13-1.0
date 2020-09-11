@@ -133,6 +133,11 @@
 	if(target.z != src.z)
 		return FALSE
 
+	//If they're attached to anything, remove them from it
+	var/datum/extension/mount/mount = src.is_mounted()
+	if (mount)
+		mount.dismount()
+
 	var/interval = 10 / speed
 	var/sleep_debt = 0
 	//use a modified version of Bresenham's algorithm to get from the atom's current position to that of the target

@@ -32,8 +32,10 @@
 	var/response_help   = "tries to help"
 	var/response_disarm = "tries to disarm"
 	var/response_harm   = "tries to hurt"
+	var/response_stomp = "stomps on"
 	var/harm_intent_damage = 3
 	var/can_escape = 0 // 'smart' simple animals such as human enemies, or things small, big, sharp or strong enough to power out of a net
+	var/stompable = FALSE
 
 	//Temperature effect
 	var/minbodytemp = 250
@@ -199,14 +201,23 @@
 	Proj.on_hit(src)
 	return 0
 
-/mob/living/simple_animal/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/simple_animal/attack_hand(mob/living/M as mob)
 	..()
-
+	var/mob/living/carbon/human/H = null
+	if (ishuman(M))
+		H = M
 	switch(M.a_intent)
 
 		if(I_HELP)
 			if (health > 0)
 				M.visible_message("<span class='notice'>[M] [response_help] \the [src].</span>")
+
+		if(I_GRAB)
+			if (H)//Only humans can grab
+				if (!H.can_grasp_with_selected())
+					to_chat(H, "<span class='warning'>You can't use your hand.</span>")
+					return
+				return H.grab(src)
 
 		if(I_DISARM)
 			M.visible_message("<span class='notice'>[M] [response_disarm] \the [src].</span>")
@@ -214,9 +225,31 @@
 			//TODO: Push the mob away or something
 
 		if(I_HURT)
-			adjustBruteLoss(harm_intent_damage)
-			M.visible_message("<span class='warning'>[M] [response_harm] \the [src]!</span>")
-			M.do_attack_animation(src)
+			//Small animals on the floor can be stomped on
+			if (stompable && !is_mounted() && isturf(loc) && H && !H.lying)
+				var/damage = harm_intent_damage
+				if (H && H.shoes && H.shoes.force)
+					damage += H.shoes.force
+
+
+				shake_animation(30)
+				shake_camera(src, 6, 1.5)
+
+				shake_camera(H, 3, 1)
+
+				var/turf/T = get_turf(src)
+				T.shake_animation(30)
+				adjustBruteLoss(damage)
+				M.visible_message("<span class='warning'>[M] [response_stomp] \the [src]!</span>")
+				M.do_attack_animation(src)
+				M.add_click_cooldown(DEFAULT_ATTACK_COOLDOWN*1.5)
+				//TODO Here: Stomping audio
+			else
+				adjustBruteLoss(harm_intent_damage)
+				M.visible_message("<span class='warning'>[M] [response_harm] \the [src]!</span>")
+				M.do_attack_animation(src)
+
+
 
 	return
 

@@ -8,6 +8,13 @@
 	mass = 1
 	density = FALSE
 	var/lifespan = 10 MINUTES	//Minor necromorphs don't last forever, their health gradually ticks down
+	stompable = TRUE
+
+	mob_size = MOB_SMALL
+
+	response_help   = "curiously touches"
+	response_disarm = "frantically tries to clear off"
+	response_harm   = "flails wildly at"
 
 /mob/living/simple_animal/necromorph/Initialize()
 	.=..()
@@ -127,10 +134,112 @@
 	.=..()
 	set_extension(src, /datum/extension/wallrun)
 
+/mob/living/simple_animal/necromorph/divider_component/arm/charge_impact(var/datum/extension/charge/leap/charge)
+	shake_camera(charge.user,5,3)
+	.=TRUE
+	if (isliving(charge.last_obstacle))
+		//Lets make mount parameters for posterity. We're just using the default settings at time of writing, but maybe they'll change in future
+		var/datum/mount_parameters/WP = new()
+		WP.attach_walls	=	FALSE	//Can this be attached to wall turfs?
+		WP.attach_anchored	=	FALSE	//Can this be attached to anchored objects, eg heaving machinery
+		WP.attach_unanchored	=	FALSE	//Can this be attached to unanchored objects, like janicarts?
+		WP.dense_only = FALSE	//If true, only sticks to dense atoms
+		WP.attach_mob_standing		=	TRUE		//Can this be attached to mobs, like brutes?
+		WP.attach_mob_downed		=	TRUE	//Can this be/remain attached to mobs that are lying down?
+		WP.attach_mob_dead	=	FALSE	//Can this be/remain attached to mobs that are dead?
+		charge.do_winddown_animation = FALSE
+		mount_to_atom(src, charge.last_obstacle, /datum/extension/mount/parasite/arm, WP)
 
 
 
+//Parasite Extension: The mob latches onto another mob and periodically bites it for some constant damage
+/datum/extension/mount/parasite
+	var/damage = 5
+	var/damage_chance = 30
 
+/datum/extension/mount/parasite/on_mount()
+	.=..()
+	START_PROCESSING(SSprocessing, src)
+
+
+
+	var/mob/living/biter = mountee
+	spawn(0.5 SECONDS)
+		if (!QDELETED(biter) && !QDELETED(src) && mountpoint && mountee)
+			//Lets put the parasite somewhere nice looking on the mob
+			var/new_rotation = rand(-90, 90)
+			var/new_x = rand(-8, 8)
+			var/new_y = rand(0, 12)
+			var/matrix/M = matrix()
+			M = M.Scale(0.75)
+			M = M.Turn(new_rotation)
+
+			animate(biter, transform = M, pixel_x = new_x, pixel_y = new_y, time = 5, flags = ANIMATION_END_NOW)
+
+
+
+/datum/extension/mount/parasite/on_dismount()
+	.=..()
+	STOP_PROCESSING(SSprocessing, src)
+	var/mob/living/biter = mountee
+	if (biter)
+		biter.animate_to_default()
+
+/datum/extension/mount/parasite/proc/safety_check()
+	var/mob/living/biter = mountee
+	var/mob/living/victim = mountpoint
+
+	if (!istype(biter) || QDELETED(biter))
+		return FALSE
+
+	if (!istype(victim) || QDELETED(victim))
+		return FALSE
+
+	//Biter must be able bodied and alive
+	if (biter.incapacitated())
+		return FALSE
+
+	//Victim must not be dead yet
+	if (victim.stat == DEAD)
+		return FALSE
+
+	//We must still be on them
+	if (get_turf(victim) != get_turf(biter))
+		return FALSE
+
+	return TRUE
+
+/datum/extension/mount/parasite/Process()
+	if (!safety_check())
+		dismount()
+		return PROCESS_KILL
+
+	var/mob/living/biter = mountee
+	var/mob/living/victim = mountpoint
+
+	//If the biter is being grabbed, it doesnt fall off, but it can't bite either
+	if (biter.grabbed_by.len)
+		return
+
+	if(prob(damage_chance))
+
+
+		biter.launch_strike(target = victim, damage = src.damage, used_weapon = biter, damage_flags = DAM_SHARP, armor_penetration = 5, damage_type = BRUTE, armor_type = "melee", target_zone = ran_zone(), difficulty = 100)
+		playsound(biter, 'sound/weapons/bite.ogg', VOLUME_LOW, 1)
+		biter.heal_overall_damage(damage*0.25)	//The biter heals itself by nomming
+		victim.shake_animation(10)
+		biter.set_click_cooldown(4 SECONDS) //It can't do normal attacks while attached
+		return TRUE
+
+	return FALSE
+
+
+//The divider arm has an additional effect, the target is steered around randomly
+/datum/extension/mount/parasite/arm/Process()
+	.=..()
+	if (.)
+		var/mob/living/victim = mountpoint
+		victim.lurch()
 
 
 
@@ -156,6 +265,7 @@
 	.=TRUE
 	if (isliving(charge.last_obstacle))
 		var/mob/living/L = charge.last_obstacle
+		L.shake_animation(15)
 		shake_camera(L,10,6) //Smack
 		launch_strike(L, damage = 10, used_weapon = src, damage_flags = 0, armor_penetration = 10, damage_type = BRUTE, armor_type = "melee", target_zone = get_zone_sel(src), difficulty = 50)
 		//We are briefly stunned

@@ -35,9 +35,11 @@
 	if(!(G.target_zone in list(BP_CHEST, BP_HEAD)))
 		to_chat(G.assailant, "<span class='warning'>You need to be grabbing their torso or head for this!</span>")
 		return FALSE
-	var/obj/item/clothing/C = G.affecting.head
-	if(istype(C)) //hardsuit helmets etc
-		if((C.item_flags & ITEM_FLAG_STOPPRESSUREDAMAGE) && C.armor["melee"] > 20)
-			to_chat(G.assailant, "<span class='warning'>\The [C] is in the way!</span>")
-			return FALSE
+	if (ishuman(G.affecting))
+		var/mob/living/carbon/human/H = G.affecting
+		var/obj/item/clothing/C = H.head
+		if(istype(C)) //hardsuit helmets etc
+			if((C.item_flags & ITEM_FLAG_STOPPRESSUREDAMAGE) && C.armor["melee"] > 20)
+				to_chat(G.assailant, "<span class='warning'>\The [C] is in the way!</span>")
+				return FALSE
 	return TRUE

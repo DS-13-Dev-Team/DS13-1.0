@@ -108,22 +108,34 @@
 
 	process_effect(G)
 
+
+//This proc doesnt actually throw. If the throw attempt is valid, it returns the held mob and deletes itself
+//Otherwise returns null
 /datum/grab/proc/throw_held(var/obj/item/grab/G)
-	var/mob/living/carbon/human/affecting = G.affecting
+	var/mob/living/affecting = G.affecting
+	var/mob/thrower = G.loc
 
-	if(can_throw)
-		. = affecting
-		var/mob/thrower = G.loc
+	//Cant throw larger than yourself
+	if (affecting.mob_size > thrower.mob_size)
+		return null
 
-		animate(affecting, pixel_x = 0, pixel_y = 0, 4, 1)
-		qdel(G)
+	//Throwing things of same size requires can_throw to be set, ie, upgraded grip
+	else if (affecting.mob_size == thrower.mob_size && !can_throw)
+		return null
 
-		// check if we're grabbing with our inactive hand
-		G = thrower.get_inactive_hand()
-		if(!istype(G))	return
-		qdel(G)
+	. = affecting
+
+
+
+	animate(affecting, pixel_x = 0, pixel_y = 0, 4, 1)
+	qdel(G)
+
+	// check if we're grabbing with our inactive hand
+	G = thrower.get_inactive_hand()
+	if(!istype(G))
 		return
-	return null
+	qdel(G)
+	return
 
 /datum/grab/proc/hit_with_grab(var/obj/item/grab/G)
 	if(downgrade_on_action)

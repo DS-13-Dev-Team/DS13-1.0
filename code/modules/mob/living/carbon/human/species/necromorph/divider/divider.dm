@@ -75,13 +75,15 @@
 		return
 
 	facedir(SOUTH)
-	Stun(9999)
+	root()
+
 	//Fall over
-	spawn(1.5 SECONDS)
+	shake_animation(45)
+	spawn(1.25 SECONDS)
 		if (!lying)
 			Weaken(99)
-
-		sleep(0.5 SECONDS)
+		shake_animation(45)
+		sleep(0.75 SECONDS)
 
 		var/datum/species/necromorph/divider/D = species
 		if (istype(D))

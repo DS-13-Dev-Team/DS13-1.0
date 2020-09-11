@@ -683,7 +683,7 @@ meteor_act
 	//We have to be roughly facing the attacker, unless we're lying down. We have omnidirectional defense when curled up on the floor
 	if (!lying)
 		//200 degree frontal arc covers all the tiles infront of us, and directly to sides. 5/8 possible directions are defensible
-		if (strike.origin != loc && !target_in_frontal_arc(src, strike.origin, 200))
+		if (get_turf(strike.origin) != get_turf(src) && !target_in_frontal_arc(src, strike.origin, 200))
 			return FALSE
 
 	return TRUE

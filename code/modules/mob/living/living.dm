@@ -235,13 +235,16 @@ default behaviour is:
 
 	return temperature
 
+/mob/living/proc/getAdjustedMaxHealth()
+	return (max_health - getLastingDamage())
+
 /mob/living/proc/getBruteLoss()
-	return (max_health - getLastingDamage()) - health
+	return getAdjustedMaxHealth() - health
 
 /mob/living/proc/adjustBruteLoss(var/amount)
 	if (status_flags & GODMODE)
 		return
-	health = Clamp(health - amount, 0, max_health)
+	health = Clamp(health - amount, 0, getAdjustedMaxHealth())
 
 /mob/living/proc/getOxyLoss()
 	return 0
@@ -266,7 +269,7 @@ default behaviour is:
 
 /mob/living/proc/adjustLastingDamage(var/amount)
 	lasting_damage += amount
-	health = min(health, max_health - lasting_damage)
+	health = min(health, getAdjustedMaxHealth())
 	updatehealth()
 
 /mob/living/proc/getLastingDamage()

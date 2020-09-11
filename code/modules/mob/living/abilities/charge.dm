@@ -86,6 +86,7 @@
 
 	var/atom/last_obstacle
 	var/last_target_type
+	var/do_winddown_animation = TRUE	//If false, we will not animate back to normal. Only set it false when something else will handle it
 
 
 /datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
