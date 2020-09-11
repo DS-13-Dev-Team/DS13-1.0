@@ -17,6 +17,7 @@
 	step_priority = 2
 	step_volume = 10
 	virus_immune = 1
+	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
 
 	//Acid has long since burned out its eyes, somehow the puker sees without them
 	override_organ_types = list(BP_EYES = null)

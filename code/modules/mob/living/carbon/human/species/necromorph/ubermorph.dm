@@ -13,6 +13,7 @@
 	limb_health_factor = 1	//Not as fragile as a slasher
 	virus_immune = 1
 	reach = 2
+	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
 
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'

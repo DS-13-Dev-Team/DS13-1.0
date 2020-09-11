@@ -25,6 +25,7 @@
 	single_icon = FALSE
 	evasion = 0	//No natural evasion
 	spawner_spawnable = TRUE
+	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
 
 	//Slashers hold their arms up in an overhead pose, so they override height too
 	override_limb_types = list(
