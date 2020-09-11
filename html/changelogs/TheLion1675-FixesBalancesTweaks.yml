@@ -54,6 +54,7 @@ changes:
   - tweak: "Moderately reduced the metabolism rate of Tricordrazine. It is still a fix-all, but has the same metabolic stats as Kelotane and Bicaridine."
   - tweak: "Removed uranium requirement for protolathe Contact Beam construction, and replaced it with Diamond. Don't spam your weapons, use your materials wisely!"
   - tweak: "Increased the weapons technology requirement from 3 to 5 for the Contact Beam."
+  - tweak: "Reworked end of round credits. Now 50 percent more accurate towards how the round goes. LORE FRIENDLY!"
   - rscdel: "Removed the Corgi Crate from Cargo. This is nonsensical. Farm animals is where it's at, boys."
   - rscdel: "Removed a lot of redundant worth list items of items we don't use. Back-end organizing."
   - bugfix: "Fixed inability to make assembly items such as the igniter because it required an item that did not exist."
