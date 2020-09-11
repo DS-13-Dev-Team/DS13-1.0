@@ -10,8 +10,3 @@
 	down_icon_state = "balaclava_r"
 	pull_mask = 1
 	w_class = ITEM_SIZE_SMALL
-
-/obj/item/clothing/mask/balaclava/tactical
-	name = "green balaclava"
-	icon_state = "swatclava"
-	down_icon_state = "swatclava_r"

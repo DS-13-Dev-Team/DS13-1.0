@@ -2,7 +2,7 @@
 	hierarchy_type = /decl/hierarchy/outfit/pirate
 	name = "Pirate"
 	uniform = /obj/item/clothing/under/pirate
-	shoes = /obj/item/clothing/shoes/jackboots
+	shoes = /obj/item/clothing/shoes/dutyboots
 	glasses = /obj/item/clothing/glasses/eyepatch
 	l_hand = /obj/item/weapon/melee/energy/sword/pirate
 

@@ -60,10 +60,7 @@
 	name = "Caretaker"
 	desc = "A healer, a medic, a shoulder to cry on. This servant will heal you, even from near death."
 	spiel = "<i>'The last enemy that will be destroyed is death.'</i> You can perceive any injuries with simple sight, and heal them with the Trance spell; potentially even reversing death itself! However, this comes at a price; Trance will become increasingly harder to use as you use it, until you can use it no longer. Be cautious, and aid your Master in any way possible!"
-	equipment = list(/obj/item/clothing/under/caretaker = slot_w_uniform,
-					/obj/item/clothing/shoes/dress/caretakershoes = slot_shoes)
-	spells = list(/spell/toggle_armor/caretaker,
-				/spell/targeted/heal_target/touch,
+	spells = list(/spell/targeted/heal_target/touch,
 				/spell/aoe_turf/knock/slow,
 				/spell/targeted/heal_target/area/slow,
 				/spell/targeted/analyze,
@@ -74,10 +71,7 @@
 	name = "Champion"
 	desc = "A knight in shining armor; a warrior, a protector, and a loyal friend."
 	spiel = "Your sword and armor are second to none, but you have no unique supernatural powers beyond summoning the sword to your hands. Protect your Master with your life!"
-	equipment = list(/obj/item/clothing/under/bluetunic = slot_w_uniform,
-					/obj/item/clothing/shoes/jackboots/medievalboots = slot_shoes)
-	spells = list(/spell/toggle_armor/champion,
-				/spell/toggle_armor/excalibur)
+	spells = list(/spell/toggle_armor/excalibur)
 
 /datum/spellbound_type/servant/familiar
 	name = "Familiar"
@@ -118,42 +112,21 @@
 				/spell/hand/charges/blood_shard
 				)
 
-/datum/spellbound_type/servant/fiend/equip_servant(var/mob/living/carbon/human/H)
-	if(H.gender == MALE)
-		equipment = list(/obj/item/clothing/under/lawyer/fiendsuit = slot_w_uniform,
-						/obj/item/clothing/shoes/dress/devilshoes = slot_shoes)
-		spells += /spell/toggle_armor/fiend
-	else
-		equipment = list(/obj/item/clothing/under/devildress = slot_w_uniform,
-					/obj/item/clothing/shoes/dress/devilshoes = slot_shoes)
-		spells += /spell/toggle_armor/fiend/fem
-	..()
-
 /datum/spellbound_type/servant/infiltrator
 	name = "Infiltrator"
 	desc = "A spy and a manipulator to the end, capable of hiding in plain sight and falsifying information to your heart's content."
 	spiel = "On the surface, you are a completely normal person, but is that really all you are? People are so easy to fool, do as your Master says, and do it with style!"
 	spells = list(/spell/toggle_armor/infil_items,
 				/spell/targeted/exhude_pleasantness,
-				/spell/targeted/genetic/blind/hysteria)
-
-/datum/spellbound_type/servant/infiltrator/equip_servant(var/mob/living/carbon/human/H)
-	if(H.gender == MALE)
-		equipment = list(/obj/item/clothing/under/lawyer/infil = slot_w_uniform,
-						/obj/item/clothing/shoes/dress/infilshoes = slot_shoes)
-		spells += /spell/toggle_armor/infiltrator
-	else
-		equipment = list(/obj/item/clothing/under/lawyer/infil/fem = slot_w_uniform,
-					/obj/item/clothing/shoes/dress/infilshoes = slot_shoes)
-		spells += /spell/toggle_armor/infiltrator/fem
-	..()
+				/spell/targeted/genetic/blind/hysteria
+				)
 
 /datum/spellbound_type/servant/overseer
 	name = "Overseer"
 	desc = "A ghost, or an imaginary friend; the Overseer is immune to space and can turn invisible at a whim, but has little offensive capabilities."
 	spiel = "Physicality is not something you are familiar with. Indeed, injuries cannot slow you down, but you can�t fight back, either! In addition to this, you can reach into the void and return the soul of a single departed crewmember via the revoke death verb, if so desired; this can even revive your Master, should they fall in combat before you do. Serve them well."
 	equipment = list(/obj/item/clothing/under/grimhoodie = slot_w_uniform,
-					/obj/item/clothing/shoes/sandals/grimboots = slot_shoes,
+					/obj/item/clothing/shoes/sandal/grimboots = slot_shoes,
 					/obj/item/weapon/contract/wizard/xray = slot_l_hand,
 					/obj/item/weapon/contract/wizard/telepathy = slot_r_hand)
 	spells = list(/spell/toggle_armor/overseer,

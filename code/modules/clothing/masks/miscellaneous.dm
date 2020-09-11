@@ -43,23 +43,6 @@
 	down_icon_state = "steriledown"
 	pull_mask = 1
 
-/obj/item/clothing/mask/fakemoustache
-	name = "fake moustache"
-	desc = "Warning: moustache is fake."
-	icon_state = "fake-moustache"
-	item_state = "fake-moustache"
-	flags_inv = HIDEFACE
-	body_parts_covered = 0
-	visible_name = "Scoundrel"
-
-/obj/item/clothing/mask/snorkel
-	name = "Snorkel"
-	desc = "For the Swimming Savant."
-	icon_state = "snorkel"
-	item_state = "snorkel"
-	flags_inv = HIDEFACE
-	body_parts_covered = 0
-
 /obj/item/clothing/mask/ai
 	name = "camera MIU"
 	desc = "Allows for direct mental connection to accessible camera networks."

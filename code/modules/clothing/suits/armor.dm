@@ -21,12 +21,6 @@
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 45, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
 
-/obj/item/clothing/suit/armor/vest/old/security
-	name = "security armor"
-	desc = "An armored vest that protects against some damage. This one has a corporate badge."
-	icon_state = "armorsec"
-	//item_state = "armor"
-
 /obj/item/clothing/suit/armor/vest/ds_armor
 	name = "security officer's armor"
 	desc = "An armored vest that protects against some damage."
@@ -74,16 +68,6 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
-
-
-/obj/item/clothing/suit/armor/det_suit
-	name = "armor"
-	desc = "An armored vest with a detective's badge on it."
-	icon_state = "detective-armor"
-	//item_state = "armor"
-	blood_overlay_type = "armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 45, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
 
 
 //Reactive armor
@@ -193,33 +177,6 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor = list(melee = 55, bullet = 60, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)
 
-//Commander
-/obj/item/clothing/suit/armor/vest/ert
-	name = "asset protection command armor"
-	desc = "A set of armor worn by many corporate and private asset protection forces. Has blue highlights."
-	icon_state = "ertarmor_cmd"
-	item_state = "armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 55, bullet = 60, laser = 60, energy = 40, bomb = 20, bio = 0, rad = 0)
-
-//Security
-/obj/item/clothing/suit/armor/vest/ert/security
-	name = "asset protection security armor"
-	desc = "A set of armor worn by many corporate and private asset protection forces. Has red highlights."
-	icon_state = "ertarmor_sec"
-
-//Engineer
-/obj/item/clothing/suit/armor/vest/ert/engineer
-	name = "asset protection engineering armor"
-	desc = "A set of armor worn by many corporate and private asset protection forces. Has orange highlights."
-	icon_state = "ertarmor_eng"
-
-//Medical
-/obj/item/clothing/suit/armor/vest/ert/medical
-	name = "asset protection medical armor"
-	desc = "A set of armor worn by many corporate and private asset protection forces. Has red and white highlights."
-	icon_state = "ertarmor_med"
-
 //New Vests
 /obj/item/clothing/suit/armor/vest
 	name = "armored vest"
@@ -230,27 +187,6 @@
 	//valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S)
-
-
-/obj/item/clothing/suit/armor/vest/nt
-	name = "\improper NanoTrasen armored vest"
-	desc = "A synthetic armor vest. This one is marked with the crest of NanoTrasen."
-	icon_state = "ntvest"
-
-/obj/item/clothing/suit/armor/vest/detective
-	name = "brown armored vest"
-	desc = "An synthetic armor vest colored in a vintage brown."
-	icon_state = "detvest"
-
-/obj/item/clothing/suit/armor/vest/pcrc
-	name = "contractor armored vest"
-	desc = "A synthetic armor vest. This one is marked with the crest of Proxima Centauri Risk Control, a private security firm."
-	icon_state = "pcrcvest"
-
-/obj/item/clothing/suit/armor/vest/press
-	name = "press armored vest"
-	desc = "A synthetic armor vest. This one is blue and has patches with the word 'PRESS' on the back and front."
-	icon_state = "pvest"
 
 /obj/item/clothing/suit/storage/vest
 	name = "webbed armor vest"
@@ -266,16 +202,6 @@
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
-
-/obj/item/clothing/suit/storage/vest/nt
-	name = "corporate security heavy armored vest"
-	desc = "A synthetic armor vest with CORPORATE SECURITY printed in red lettering on the chest. This one has added webbing and ballistic plates."
-	icon_state = "ntwebvest"
-
-/obj/item/clothing/suit/storage/vest/nt/warden
-	name = "warden heavy armored vest"
-	desc = "A synthetic armor vest with WARDEN printed in silver lettering on the chest. This one has added webbing and ballistic plates."
-	icon_state = "secwebvest"
 
 /obj/item/clothing/suit/storage/vest/nt/hos
 	name = "commander heavy armored vest"
@@ -294,15 +220,6 @@
 	item_state = "tacwebvest"
 	armor = list(melee = 35, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
 
-/obj/item/clothing/suit/storage/vest/merc
-	name = "heavy combat armor"
-	desc = "A high-quality armored vest made from a hard synthetic material. It is surprisingly flexible and light, despite formidable armor plating."
-	icon_state = "mercwebvest"
-	item_state = "mercwebvest"
-	armor = list(melee = 55, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS //now covers legs with new sprite
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS
 
 //Modular plate carriers
 /obj/item/clothing/suit/armor/pcarrier
@@ -428,21 +345,6 @@
 
 
 //All of the armor below is mostly unused
-
-
-/obj/item/clothing/suit/armor/centcomm
-	name = "\improper Cent. Com. armor"
-	desc = "A suit that protects against some damage."
-	icon_state = "centcom"
-	item_state = "centcom"
-	w_class = ITEM_SIZE_HUGE//bulky item
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency)
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	siemens_coefficient = 0
-
 /obj/item/clothing/suit/armor/heavy
 	name = "heavy armor"
 	desc = "A heavily armored suit that protects against moderate damage."
@@ -457,27 +359,3 @@
 /obj/item/clothing/suit/armor/heavy/New()
 	..()
 	slowdown_per_slot[slot_wear_suit] = 3
-
-/obj/item/clothing/suit/armor/tdome
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-
-/obj/item/clothing/suit/armor/tdome/red
-	name = "thunderdome suit (red)"
-	desc = "Reddish armor."
-	icon_state = "tdred"
-	item_state = "tdred"
-	siemens_coefficient = 1
-
-/obj/item/clothing/suit/armor/tdome/green
-	name = "thunderdome suit (green)"
-	desc = "Pukish armor."
-	icon_state = "tdgreen"
-	item_state = "tdgreen"
-	siemens_coefficient = 1
-
-/obj/item/clothing/suit/storage/vest/tactical/mirania
-	name = "bundeforz armored vest"
-	desc = "A heavy armored vest in a light grey urban camo. It is surprisingly flexible and light, even with the extra webbing and advanced ceramic plates."
-	icon_state = "m_vest"
-	item_state = "m_vest"

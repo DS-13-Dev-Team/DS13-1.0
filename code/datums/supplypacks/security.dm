@@ -32,8 +32,6 @@
 	name = "Armor - Tactical"
 	contains = list(/obj/item/clothing/under/tactical,
 					/obj/item/clothing/suit/armor/pcarrier/tan/tactical,
-					/obj/item/clothing/head/helmet/tactical,
-					/obj/item/clothing/mask/balaclava/tactical,
 					/obj/item/clothing/glasses/tacgoggles,
 					/obj/item/weapon/storage/belt/holster/security/tactical,
 					/obj/item/clothing/shoes/tactical,

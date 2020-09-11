@@ -56,10 +56,6 @@
 	req_access = list(access_engineering)
 	islocked = 1
 
-/obj/machinery/suit_storage_unit/atmos/alt
-	suit_type = /obj/item/clothing/suit/space/void/atmos/alt
-	helmet_type = /obj/item/clothing/head/helmet/space/void/atmos/alt
-
 /obj/machinery/suit_storage_unit/engineering
 	name = "Engineering Voidsuit Storage Unit"
 	suit_type = /obj/item/clothing/suit/space/void/engineering
@@ -109,16 +105,6 @@
 	suit_type = /obj/item/clothing/suit/space/void/mining/alt
 	helmet_type = /obj/item/clothing/head/helmet/space/void/mining/alt
 	mask_type = /obj/item/clothing/mask/breath
-
-/obj/machinery/suit_storage_unit/science
-	name = "Excavation Voidsuit Storage Unit"
-	suit_type = /obj/item/clothing/suit/space/void/excavation
-	helmet_type = /obj/item/clothing/head/helmet/space/void/excavation
-	boots_type = /obj/item/clothing/shoes/magboots
-	tank_type = /obj/item/weapon/tank/oxygen
-	mask_type = /obj/item/clothing/mask/breath
-	req_access = list(access_research)
-	islocked = 1
 
 /obj/machinery/suit_storage_unit/security
 	name = "Security Voidsuit Storage Unit"

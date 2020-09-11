@@ -12,20 +12,6 @@
 	worn_state = "blue_pyjamas"
 	item_state = "w_suit"
 
-/obj/item/clothing/under/captain_fly
-	name = "rogue's uniform"
-	desc = "For the man who doesn't care because he's still free."
-	icon_state = "captain_fly"
-	item_state = "r_suit"
-	worn_state = "captain_fly"
-
-/obj/item/clothing/under/scratch
-	name = "white suit"
-	desc = "A white suit, suitable for an excellent host."
-	icon_state = "scratch"
-	item_state = "scratch"
-	worn_state = "scratch"
-
 /obj/item/clothing/under/sl_suit
 	desc = "It's a very amish looking suit."
 	name = "amish suit"
@@ -39,13 +25,6 @@
 	icon_state = "waiter"
 	item_state = "waiter"
 	worn_state = "waiter"
-
-/obj/item/clothing/under/rank/vice
-	name = "vice officer's jumpsuit"
-	desc = "It's the standard issue pretty-boy outfit, as seen on Holo-Vision."
-	icon_state = "vice"
-	item_state = "gy_suit"
-	worn_state = "vice"
 
 //This set of uniforms looks fairly fancy and is generally used for high-ranking NT personnel from what I've seen, so lets give them appropriate ranks.
 /obj/item/clothing/under/rank/centcom
@@ -113,14 +92,6 @@
 	icon_state = "cloud"
 	worn_state = "cloud"
 
-/obj/item/clothing/under/psysuit
-	name = "dark undersuit"
-	desc = "A thick, layered grey undersuit lined with power cables. Feels a little like wearing an electrical storm."
-	icon_state = "psysuit"
-	item_state = "bl_suit"
-	worn_state = "psysuit"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-
 /obj/item/clothing/under/rigunder
 	name = "rig undersuit"
 	desc = "A tight bodysuit designed to be worn under a RIG suit in order to protect the less armoured areas of the body from heat and exposure to the elements."
@@ -136,20 +107,6 @@
 	icon_state = "gentlesuit"
 	item_state = "gy_suit"
 	worn_state = "gentlesuit"
-
-/obj/item/clothing/under/gimmick/rank/captain/suit
-	name = "captain's suit"
-	desc = "A green suit and yellow necktie. Exemplifies authority."
-	icon_state = "green_suit"
-	item_state = "dg_suit"
-	worn_state = "green_suit"
-
-/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
-	name = "head of personnel's suit"
-	desc = "A teal suit and yellow necktie. An authoritative yet tacky ensemble."
-	icon_state = "teal_suit"
-	item_state = "g_suit"
-	worn_state = "teal_suit"
 
 /obj/item/clothing/under/suit_jacket
 	name = "black suit"
@@ -187,13 +144,6 @@
 	worn_state = "blackskirt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
-/obj/item/clothing/under/overalls
-	name = "laborer's overalls"
-	desc = "A set of durable overalls for getting the job done."
-	icon_state = "overalls"
-	item_state = "lb_suit"
-	worn_state = "overalls"
-
 /obj/item/clothing/under/pirate
 	name = "pirate outfit"
 	desc = "Yarr."
@@ -202,29 +152,6 @@
 	worn_state = "pirate"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
 
-/obj/item/clothing/under/soviet
-	name = "soviet uniform"
-	desc = "For the Motherland!"
-	icon_state = "soviet"
-	item_state = "gy_suit"
-	worn_state = "soviet"
-
-/obj/item/clothing/under/kilt
-	name = "kilt"
-	desc = "Includes shoes and plaid."
-	icon_state = "kilt"
-	item_state = "kilt"
-	worn_state = "kilt"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
-
-/obj/item/clothing/under/gladiator
-	name = "gladiator uniform"
-	desc = "Are you not entertained? Is that not why you are here?"
-	icon_state = "gladiator"
-	item_state = "o_suit"
-	worn_state = "gladiator"
-	body_parts_covered = LOWER_TORSO
-
 //dress
 /obj/item/clothing/under/dress
 	name = "dress"
@@ -232,50 +159,6 @@
 	icon_state = "dress_fire"
 	worn_state = "dress_fire"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-
-/obj/item/clothing/under/dress/dress_cap
-	name = "captain's dress uniform"
-	desc = "Feminine fashion for the style concious captain."
-	icon_state = "dress_cap"
-	item_state = "b_suit"
-	worn_state = "dress_cap"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-
-/obj/item/clothing/under/dress/dress_hop
-	name = "head of personnel dress uniform"
-	desc = "Feminine fashion for the style concious HoP."
-	icon_state = "dress_hop"
-	item_state = "b_suit"
-	worn_state = "dress_hop"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-
-/obj/item/clothing/under/dress/dress_hr
-	name = "human resources director uniform"
-	desc = "Superior class for the nosy H.R. Director."
-	icon_state = "huresource"
-	item_state = "y_suit"
-	worn_state = "huresource"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-
-/obj/item/clothing/under/dress/plaid_blue
-	name = "blue plaid skirt"
-	desc = "A preppy blue skirt with a white blouse."
-	icon_state = "plaid_blue"
-	worn_state = "plaid_blue"
-
-/obj/item/clothing/under/dress/plaid_red
-	name = "red plaid skirt"
-	desc = "A preppy red skirt with a white blouse."
-	icon_state = "plaid_red"
-	item_state = "kilt"
-	worn_state = "plaid_red"
-
-/obj/item/clothing/under/dress/plaid_purple
-	name = "blue purple skirt"
-	desc = "A preppy purple skirt with a white blouse."
-	icon_state = "plaid_purple"
-	item_state = "kilt"
-	worn_state = "plaid_purple"
 
 /obj/item/clothing/under/blackjumpskirt
 	name = "black jumpskirt"
@@ -297,20 +180,6 @@
 	icon_state = "captain_formal"
 	item_state = "b_suit"
 	worn_state = "captain_formal"
-
-/obj/item/clothing/under/hosformalmale
-	name = "head of security's formal uniform"
-	desc = "A male head of security's formal-wear, for special occasions."
-	icon_state = "hos_formal_male"
-	item_state = "r_suit"
-	worn_state = "hos_formal_male"
-
-/obj/item/clothing/under/hosformalfem
-	name = "head of security's formal uniform"
-	desc = "A female head of security's formal-wear, for special occasions."
-	icon_state = "hos_formal_fem"
-	item_state = "r_suit"
-	worn_state = "hos_formal_fem"
 
 /obj/item/clothing/under/assistantformal
 	name = "assistant's formal uniform"
@@ -398,8 +267,8 @@
 /obj/item/clothing/under/foreman
 	name = "\improper Foreman's overalls"
 	desc = "A set of overalls that seem nicer than the average planet cracker's."
-	icon_state = "grayson"
-	worn_state = "grayson"
+	icon_state = "mechanic"
+	worn_state = "mechanic"
 
 // Replace this with actual uniform when someone wants to sprite one
 /obj/item/clothing/under/confederacy
@@ -414,29 +283,7 @@
 	icon_state = "saare"
 	worn_state = "saare"
 
-/obj/item/clothing/under/frontier
-	name = "frontier clothes"
-	desc = "A rugged flannel shirt and denim overalls. A popular style among frontier colonists."
-	icon_state = "frontier"
-	worn_state = "frontier"
-
-/obj/item/clothing/under/punpun
-	name = "fancy uniform"
-	desc = "It looks like it was tailored for a monkey."
-	icon_state = "punpun"
-	worn_state = "punpun"
-	species_restricted = list("Monkey")
-	sprite_sheets = list("Monkey" = 'icons/mob/species/monkey/uniform.dmi')
-
-/obj/item/clothing/under/punpants
-	name = "monkey pants"
-	desc = "It looks like it was tailored for a monkey."
-	icon_state = "jeansmustang"
-	worn_state = "jeansmustang"
-	species_restricted = list("Monkey")
-	sprite_sheets = list("Monkey" = 'icons/mob/species/monkey/uniform.dmi')
-
-/obj/item/clothing/under/rank/psych/turtleneck/sweater
+/obj/item/clothing/under/rank/psych/sweater
 	desc = "A warm looking sweater and a pair of dark blue slacks."
 	name = "sweater"
 	icon_state = "turtleneck"
