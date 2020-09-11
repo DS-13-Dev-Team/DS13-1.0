@@ -160,46 +160,6 @@
 	icon = 'maps/torch/icons/obj/solgov-head.dmi'
 	item_icons = list(slot_head_str = 'maps/torch/icons/mob/solgov-head.dmi')
 
-/obj/item/clothing/head/beret/solgov/homeguard
-	name = "home guard beret"
-	desc = "A red beret denoting service in the Sol Home Guard. For personnel that are more inclined towards style than safety."
-	icon_state = "beret_red"
-
-/obj/item/clothing/head/beret/solgov/gateway
-	name = "gateway administration beret"
-	desc = "An orange beret denoting service in the Gateway Administration. For personnel that are more inclined towards style than safety."
-	icon_state = "beret_orange"
-
-/obj/item/clothing/head/beret/solgov/customs
-	name = "customs and trade beret"
-	desc = "A purple beret denoting service in the Customs and Trade Bureau. For personnel that are more inclined towards style than safety."
-	icon_state = "beret_purpleyellow"
-
-/obj/item/clothing/head/beret/solgov/orbital
-	name = "orbital assault beret"
-	desc = "A blue beret denoting orbital assault training. For helljumpers that are more inclined towards style than safety."
-	icon_state = "beret_blue"
-
-/obj/item/clothing/head/beret/solgov/research
-	name = "government research beret"
-	desc = "A green beret denoting service in the Bureau of Research. For explorers that are more inclined towards style than safety."
-	icon_state = "beret_green"
-
-/obj/item/clothing/head/beret/solgov/health
-	name = "health service beret"
-	desc = "A white beret denoting service in the Interstellar Health Service. For medics that are more inclined towards style than safety."
-	icon_state = "beret_white"
-
-/obj/item/clothing/head/beret/solgov/marcom
-	name = "\improper MARSCOM beret"
-	desc = "A red beret with a gold insignia, denoting service in the SCGDF Mars Central Command. For brass who are more inclined towards style than safety."
-	icon_state = "beret_redgold"
-
-/obj/item/clothing/head/beret/solgov/stratcom
-	name = "\improper STRATCOM beret"
-	desc = "A grey beret with a silver insignia, denoting service in the SCGDF Strategic Command. For intelligence personnel who are more inclined towards style than safety."
-	icon_state = "beret_graysilver"
-
 /obj/item/clothing/head/beret/solgov/diplomatic
 	name = "diplomatic security beret"
 	desc = "A tan beret denoting service in the SCG Marine Corps Diplomatic Security Group. For security personnel who are more inclined towards style than safety."
@@ -214,9 +174,6 @@
 	name = "expeditionary beret"
 	desc = "A black beret belonging to the SCG Expeditionary Corps. For personnel that are more inclined towards style than safety."
 	icon_state = "beret_black"
-	sprite_sheets = list(
-		SPECIES_UNATHI = 'icons/mob/species/unathi/head.dmi'
-		)
 
 /obj/item/clothing/head/beret/solgov/expedition/security
 	name = "expeditionary security beret"
@@ -292,41 +249,3 @@
 	name = "fleet officer's beret"
 	desc = "An SCG Fleet beret with a golden crest. For personnel that are more inclined towards style than safety."
 	icon_state = "beret_navy_command"
-
-/obj/item/clothing/head/beret/solgov/fleet/dress
-	name = "fleet dress beret"
-	desc = "A white SCG Fleet beret. For personnel that are more inclined towards style than safety."
-	icon_state = "beret_whiterim"
-
-/obj/item/clothing/head/beret/solgov/fleet/dress/command
-	name = "fleet command dress beret"
-	desc = "A white SCG Fleet beret with a golden crest. For personnel that are more inclined towards style than safety."
-	icon_state = "beret_whiterim_com"
-
-//ushanka
-
-/obj/item/clothing/head/ushanka/solgov
-	name = "expeditionary fur hat"
-	desc = "An SCG Expeditionary Corps synthfur-lined hat for operating in cold environments."
-	icon = 'maps/torch/icons/obj/solgov-head.dmi'
-	item_icons = list(slot_head_str = 'maps/torch/icons/mob/solgov-head.dmi')
-	icon_state = "ecushankadown"
-	icon_state_up = "ecushankaup"
-
-/obj/item/clothing/head/ushanka/solgov/fleet
-	name = "fleet fur hat"
-	desc = "An SCG Fleet synthfur-lined hat for operating in cold environments."
-	icon_state = "flushankadown"
-	icon_state_up = "flushankaup"
-
-/obj/item/clothing/head/ushanka/solgov/marine
-	name = "marine fur hat"
-	desc = "An SCG Marine Corps synthfur-lined hat for operating in cold environments."
-	icon_state = "bmcushankadown"
-	icon_state_up = "bmcushankaup"
-
-/obj/item/clothing/head/ushanka/solgov/marine/green
-	name = "green marine fur hat"
-	desc = "An SCG Marine Corps synthfur-lined hat for operating in cold environments."
-	icon_state = "mcushankadown"
-	icon_state_up = "mcushankaup"

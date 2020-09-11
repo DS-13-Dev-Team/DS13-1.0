@@ -60,13 +60,11 @@
 		/obj/item/clothing/under/rank/janitor,
 		/obj/item/device/radio/headset/headset_service,
 		/obj/item/clothing/gloves/thick,
-		/obj/item/clothing/head/soft/purple,
-		/obj/item/clothing/head/beret/purple,
 		/obj/item/device/flashlight,
 		/obj/item/weapon/caution = 4,
 		/obj/item/device/lightreplacer,
 		/obj/item/weapon/storage/bag/trash,
-		/obj/item/clothing/shoes/galoshes,
+		/obj/item/clothing/shoes/dutyboots,
 		/obj/item/weapon/soap,
 		/obj/random/tool)
 
@@ -83,10 +81,8 @@
 	return list(
 		/obj/item/clothing/under/lawyer/female,
 		/obj/item/clothing/under/lawyer/black,
-		/obj/item/clothing/under/lawyer/red,
 		/obj/item/clothing/under/lawyer/bluesuit,
 		/obj/item/clothing/suit/storage/toggle/suit/blue,
-		/obj/item/clothing/under/lawyer/purpsuit,
 		/obj/item/clothing/suit/storage/toggle/suit/purple,
 		/obj/item/clothing/shoes/brown,
 		/obj/item/clothing/shoes/black

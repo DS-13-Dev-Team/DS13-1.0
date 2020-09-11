@@ -14,14 +14,3 @@
 	name = "Wizard - Blue"
 	head = /obj/item/clothing/head/wizard
 	suit = /obj/item/clothing/suit/wizrobe
-
-/decl/hierarchy/outfit/wizard/red
-	name = "Wizard - Red"
-	head = /obj/item/clothing/head/wizard/red
-	suit = /obj/item/clothing/suit/wizrobe/red
-
-/decl/hierarchy/outfit/wizard/marisa
-	name = "Wizard - Marisa"
-	head = /obj/item/clothing/head/wizard/marisa
-	suit = /obj/item/clothing/suit/wizrobe/marisa
-	shoes = /obj/item/clothing/shoes/sandal/marisa

@@ -102,7 +102,6 @@
 								/obj/item/weapon/reagent_containers/spray/waterflower = TRADER_THIS_TYPE,
 								/obj/item/weapon/gun/launcher/pneumatic/small = TRADER_THIS_TYPE,
 								/obj/item/weapon/gun/projectile/revolver/capgun = TRADER_THIS_TYPE,
-								/obj/item/clothing/mask/fakemoustache   = TRADER_THIS_TYPE,
 								/obj/item/weapon/grenade/spawnergrenade/fake_carp = TRADER_THIS_TYPE)
 
 /datum/trader/ship/replica_shop
@@ -130,19 +129,11 @@
 				)
 	possible_trading_items = list(/obj/item/clothing/head/wizard/magus = TRADER_THIS_TYPE,
 								/obj/item/weapon/shield/buckler        = TRADER_THIS_TYPE,
-								/obj/item/clothing/head/powdered_wig   = TRADER_THIS_TYPE,
-								/obj/item/clothing/head/helmet/gladiator=TRADER_THIS_TYPE,
 								/obj/item/clothing/head/plaguedoctorhat= TRADER_THIS_TYPE,
 								/obj/item/clothing/glasses/monocle     = TRADER_THIS_TYPE,
 								/obj/item/clothing/mask/smokable/pipe  = TRADER_THIS_TYPE,
 								/obj/item/clothing/mask/gas/plaguedoctor=TRADER_THIS_TYPE,
-								/obj/item/clothing/suit/imperium_monk  = TRADER_THIS_TYPE,
 								/obj/item/clothing/suit/judgerobe      = TRADER_THIS_TYPE,
-								/obj/item/clothing/suit/wizrobe/magusred=TRADER_THIS_TYPE,
-								/obj/item/clothing/suit/wizrobe/magusblue=TRADER_THIS_TYPE,
-								/obj/item/clothing/under/gladiator     = TRADER_THIS_TYPE,
-								/obj/item/clothing/under/kilt          = TRADER_THIS_TYPE,
-								/obj/item/clothing/under/soviet        = TRADER_THIS_TYPE,
 								/obj/item/weapon/material/harpoon      = TRADER_THIS_TYPE,
 								/obj/item/weapon/material/sword        = TRADER_ALL,
 								/obj/item/weapon/material/scythe       = TRADER_THIS_TYPE,

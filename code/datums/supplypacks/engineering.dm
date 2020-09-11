@@ -200,7 +200,7 @@
 
 /decl/hierarchy/supply_pack/engineering/firefighter
 	name = "Firefighting equipment"
-	contains = list(/obj/item/clothing/suit/fire/firefighter,
+	contains = list(/obj/item/clothing/suit/fire,
 			/obj/item/clothing/mask/gas,
 			/obj/item/weapon/tank/oxygen/red,
 			/obj/item/weapon/extinguisher,

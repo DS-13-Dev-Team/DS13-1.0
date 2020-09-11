@@ -40,7 +40,7 @@
 	utility_under = /obj/item/clothing/under/solgov/utility/expeditionary
 	utility_shoes = /obj/item/clothing/shoes/dutyboots
 	utility_hat = /obj/item/clothing/head/soft/solgov/expedition
-	utility_extra = list(/obj/item/clothing/head/beret/solgov/expedition, /obj/item/clothing/head/ushanka/solgov, /obj/item/clothing/suit/storage/hooded/wintercoat/solgov, /obj/item/clothing/shoes/jackboots/unathi)
+	utility_extra = list(/obj/item/clothing/head/beret/solgov/expedition, /obj/item/clothing/suit/storage/hooded/wintercoat/solgov, /obj/item/clothing/shoes/dutyboots)
 
 	service_under = /obj/item/clothing/under/solgov/service/expeditionary
 	service_skirt = /obj/item/clothing/under/solgov/service/expeditionary/skirt
@@ -66,7 +66,7 @@
 	utility_under = /obj/item/clothing/under/solgov/utility/fleet
 	utility_shoes = /obj/item/clothing/shoes/dutyboots
 	utility_hat = /obj/item/clothing/head/solgov/utility/fleet
-	utility_extra = list(/obj/item/clothing/head/beret/solgov/fleet, /obj/item/clothing/head/ushanka/solgov/fleet, /obj/item/clothing/suit/storage/hooded/wintercoat/solgov/fleet,/obj/item/clothing/head/soft/solgov/fleet)
+	utility_extra = list(/obj/item/clothing/head/beret/solgov/fleet, /obj/item/clothing/suit/storage/hooded/wintercoat/solgov/fleet,/obj/item/clothing/head/soft/solgov/fleet)
 
 	service_under = /obj/item/clothing/under/solgov/service/fleet
 	service_skirt = /obj/item/clothing/under/solgov/service/fleet/skirt
@@ -80,8 +80,6 @@
 	dress_shoes = /obj/item/clothing/shoes/dress
 	dress_hat = /obj/item/clothing/head/solgov/dress/fleet
 	dress_gloves = /obj/item/clothing/gloves/white
-
-	dress_extra = list(/obj/item/clothing/head/beret/solgov/fleet/dress)
 
 decl/hierarchy/mil_uniform/civilian
 	name = "Master civilian outfit"		//Basically just here for the rent-a-tux, ahem, I mean... dress uniform.
