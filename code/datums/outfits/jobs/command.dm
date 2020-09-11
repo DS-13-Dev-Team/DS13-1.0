@@ -4,7 +4,7 @@
 
 /decl/hierarchy/outfit/job/command/cap
 	name = OUTFIT_JOB_NAME("Captain")
-	uniform = /obj/item/clothing/under/captain/deadspace
+	uniform = /obj/item/clothing/under/captain
 	l_ear = /obj/item/device/radio/headset/heads/captain
 	id_type = /obj/item/weapon/card/id/holo/command/captain
 	pda_type = /obj/item/modular_computer/pda/captain

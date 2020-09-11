@@ -5,12 +5,6 @@
 	name = "collectable hat"
 	desc = "A rare collectable hat."
 
-/obj/item/clothing/head/collectable/slime
-	name = "collectable slime cap!"
-	desc = "It just latches right in place!"
-	icon_state = "slime"
-	body_parts_covered = 0
-
 /obj/item/clothing/head/collectable/xenom
 	name = "collectable alien monster helmet!"
 	desc = "Hiss hiss hiss!"
@@ -39,22 +33,6 @@
 	desc = "A top hat worn by only the most prestigious hat collectors."
 	icon_state = "tophat"
 	item_state = "tophat"
-	body_parts_covered = 0
-
-/obj/item/clothing/head/collectable/captain
-	name = "collectable captain's hat"
-	desc = "A Collectable Hat that'll make you look just like a real comdom!"
-	icon_state = "captain"
-	item_state_slots = list(
-		slot_l_hand_str = "caphat",
-		slot_r_hand_str = "caphat",
-		)
-	body_parts_covered = 0
-
-/obj/item/clothing/head/collectable/police
-	name = "collectable police officer's hat"
-	desc = "A Collectable Police Officer's Hat. This hat emphasizes that you are THE LAW."
-	icon_state = "policehelm"
 	body_parts_covered = 0
 
 /obj/item/clothing/head/collectable/beret
@@ -114,8 +92,3 @@
 	name = "collectable Thunderdome helmet"
 	desc = "Go Red! I mean Green! I mean Red! No Green!"
 	icon_state = "thunderdome"
-
-/obj/item/clothing/head/collectable/swat
-	name = "collectable SWAT helmet"
-	desc = "Now you can be in the Deathsquad too!"
-	icon_state = "swat"

@@ -112,7 +112,6 @@
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/under/rank/chief_medical_officer,
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
-		/obj/item/clothing/suit/storage/toggle/labcoat/cmoalt,
 		/obj/item/clothing/gloves/latex,
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/radio/headset/heads/smo,
@@ -170,7 +169,7 @@
 /obj/structure/closet/secure_closet/counselor/WillContain()
 	return list(
 		/obj/item/clothing/under/rank/psych,
-		/obj/item/clothing/under/rank/psych/turtleneck,
+		/obj/item/clothing/under/rank/psych/sweater,
 		/obj/item/clothing/under/rank/chaplain,
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/suit/chaplain_hoodie,
@@ -216,7 +215,6 @@
 		/obj/item/weapon/storage/box/gloves,
 		/obj/item/clothing/under/rank/virologist,
 		/obj/item/clothing/shoes/white,
-		/obj/item/clothing/suit/storage/toggle/labcoat/virologist,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/device/healthanalyzer,
 		/obj/item/clothing/glasses/hud/health
@@ -240,6 +238,6 @@
 		/obj/item/weapon/storage/pill_bottle/citalopram,
 		/obj/item/weapon/storage/pill_bottle/methylphenidate,
 		/obj/item/weapon/storage/pill_bottle/paroxetine,
-		/obj/item/clothing/under/rank/psych/turtleneck,
+		/obj/item/clothing/under/rank/psych/sweater,
 		/obj/item/clothing/under/rank/psych
 	)

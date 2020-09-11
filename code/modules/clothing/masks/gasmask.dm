@@ -37,33 +37,6 @@
 	w_class = ITEM_SIZE_SMALL
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 0, bomb = 0, bio = 55, rad = 0)
 
-//In scaling order of utility and seriousness
-
-/obj/item/clothing/mask/gas/radical
-	name = "gas mask"
-	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air. This one has additional filters to remove radioactive particles."
-	icon_state = "gas_mask"
-	item_state = "gas_mask"
-	body_parts_covered = FACE|EYES
-	armor = list(melee = 5, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 75, rad = 25)
-
-/obj/item/clothing/mask/gas/budget
-	name = "gas mask"
-	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air. This one looks pretty dodgy. Are you sure it works?"
-	icon_state = "gas_alt"
-	item_state = "gas_alt"
-	body_parts_covered = FACE|EYES
-	armor = list(melee = 5, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 25, rad = 0)
-
-/obj/item/clothing/mask/gas/swat
-	name = "\improper SWAT mask"
-	desc = "A close-fitting tactical mask that can be connected to an air supply."
-	icon_state = "swat"
-	item_state = "swat"
-	siemens_coefficient = 0.7
-	body_parts_covered = FACE|EYES
-	armor = list(melee = 15, bullet = 15, laser = 15, energy = 0, bomb = 0, bio = 75, rad = 0)
-
 /obj/item/clothing/mask/gas/death_commando
 	name = "\improper Death Commando Mask"
 	desc = "A grim tactical mask worn by the fictional Death Commandos, elites of the also fictional Space Syndicate. Saturdays at 10!"

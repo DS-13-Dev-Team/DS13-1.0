@@ -117,6 +117,23 @@
 		icon_state = initial(icon_state)
 		to_chat(user, "You lower the ear flaps on the ushanka.")
 
+/obj/item/clothing/head/ushanka/scaf
+	name = "expeditionary fur hat"
+	desc = "An Sovereign Colonies synthfur-lined hat for operating in cold environments."
+	icon_state = "flushankadown"
+	icon_state_up = "flushankaup"
+
+/obj/item/clothing/head/ushanka/scaf/navy
+	name = "naval fur hat"
+	desc = "An SCNF synthfur-lined hat for operating in cold environments."
+	icon_state = "tccushankadown"
+	icon_state_up = "tccushankaup"
+
+/obj/item/clothing/head/ushanka/scaf/marine
+	name = "marine fur hat"
+	desc = "An SCAF synthfur-lined hat for operating in cold environments."
+	icon_state = "mcushankadown"
+	icon_state_up = "mcushankaup"
 /*
  * Pumpkin head
  */
