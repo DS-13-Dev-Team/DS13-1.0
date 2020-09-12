@@ -32,20 +32,6 @@
 	..()
 	slowdown_per_slot[slot_wear_suit] = 1.0
 
-/obj/item/clothing/suit/fire/heavy
-	name = "firesuit"
-	desc = "A suit that protects against extreme fire and heat."
-	//icon_state = "thermal"
-	item_state_slots = list(
-		slot_l_hand_str = "ro_suit",
-		slot_r_hand_str = "ro_suit",
-	)
-	w_class = ITEM_SIZE_HUGE//bulky item
-
-/obj/item/clothing/suit/fire/heavy/New()
-	..()
-	slowdown_per_slot[slot_wear_suit] = 1.5
-
 /*
  * Bomb protection
  */

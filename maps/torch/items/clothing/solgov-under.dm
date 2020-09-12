@@ -19,9 +19,6 @@
 	desc = "A baggy shirt bearing the seal of the SCG Expeditionary Corps and some dorky looking blue shorts."
 	icon_state = "expeditionpt"
 	worn_state = "expeditionpt"
-	sprite_sheets = list(
-		SPECIES_UNATHI = 'icons/mob/species/unathi/uniform.dmi'
-		)
 
 /obj/item/clothing/under/solgov/pt/fleet
 	name = "fleet pt uniform"

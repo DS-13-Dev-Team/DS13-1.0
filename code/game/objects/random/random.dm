@@ -778,7 +778,7 @@ obj/random/obstruction/item_to_spawn()
 /obj/random/suit/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/suit/storage/hazardvest = 4,
 				/obj/item/clothing/suit/storage/toggle/labcoat = 4,
-				/obj/item/clothing/suit/space/emergency = 1,
+				/obj/item/clothing/suit/space/void = 1,
 				/obj/item/clothing/suit/armor/vest = 4,
 				/obj/item/clothing/suit/storage/vest/tactical = 1,
 				/obj/item/clothing/suit/storage/vest = 3,
