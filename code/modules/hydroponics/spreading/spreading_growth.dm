@@ -206,7 +206,7 @@
 		child.wake_neighbors() //Update surrounding tiles to handle edges
 		update_icon()	//We don't need one of our edges now, update to get rid of it
 		// Some plants eat through plating.
-		if(islist(seed.chems) && !isnull(seed.chems[/datum/reagent/acid/polyacid]))
+		if(islist(seed.chems) && !isnull(seed.chems[/datum/reagent/acid/triflicacid]))
 			target_turf.ex_act(prob(80) ? 3 : 2)
 
 		//Update our neighbors list

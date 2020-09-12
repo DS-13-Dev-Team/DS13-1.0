@@ -79,3 +79,29 @@ datum/job/md/get_description_blurb()
 
 datum/job/surg/get_description_blurb()
 	return "You are a Surgeon. Your job is to perform surgery on any wounded crewmembers who require it and are one of the few people given access to the surgical suites. You are subordinate to the Senior Medical Officer."
+
+/datum/job/cd
+	title = "Colony Doctor"
+	department = "Medical"
+	abbreviation = "CD"
+	department_flag = MED
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the Senior Medical Officer"
+	selection_color = "#013d3b"
+	minimal_player_age = 18
+	starting_credits = 3500
+
+	access = list(access_medical, access_chemistry, access_mining)
+	outfit_type = /decl/hierarchy/outfit/job/medical/cd
+
+	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
+						SKILL_MEDICAL	  = SKILL_ADEPT,
+	                    SKILL_DEVICES	  = SKILL_BASIC)
+
+	max_skill = list(   SKILL_ANATOMY	  = SKILL_MAX,
+	                    SKILL_MEDICAL     = SKILL_MAX)
+	skill_points = 20
+
+datum/job/cd/get_description_blurb()
+	return "You are a Colony Doctor. Your job is to treat and diagnose injured colony crewmembers, applying the appropriate skills and supplies to heal them. You are qualified and permitted to perform life-saving surgeries, but more invasive procedures should be saved for more qualified Surgeons on the Ishimura. Your equipment is on the colony and you should prepare yourself there."

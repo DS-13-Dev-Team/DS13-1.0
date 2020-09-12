@@ -50,7 +50,7 @@
 		/datum/reagent/acetone =	        1,
 		/datum/reagent/acid =           1.5,
 		/datum/reagent/acid/hydrochloric =         1.5,
-		/datum/reagent/acid/polyacid =           3,
+		/datum/reagent/acid/triflicacid =           3,
 		/datum/reagent/toxin/plantbgone =      3,
 		/datum/reagent/cryoxadone =     -3,
 		/datum/reagent/radium =          2
@@ -75,7 +75,7 @@
 		/datum/reagent/sugar =           2,
 		/datum/reagent/acid =          -2,
 		/datum/reagent/acid/hydrochloric =        -2,
-		/datum/reagent/acid/polyacid =          -4,
+		/datum/reagent/acid/triflicacid =          -4,
 		/datum/reagent/toxin/plantbgone =     -8,
 		/datum/reagent/adminordrazine = -5
 		)
@@ -105,7 +105,7 @@
 		/datum/reagent/drink/sodawater =      list(  0.1,  0,   0  ),
 		/datum/reagent/acid =          list( -1,    0,   0  ),
 		/datum/reagent/acid/hydrochloric =        list( -1,    0,   0  ),
-		/datum/reagent/acid/polyacid =          list( -2,    0,   0  ),
+		/datum/reagent/acid/triflicacid =          list( -2,    0,   0  ),
 		/datum/reagent/toxin/plantbgone =     list( -2,    0,   0.2),
 		/datum/reagent/cryoxadone =     list(  3,    0,   0  ),
 		/datum/reagent/ammonia =        list(  0.5,  0,   0  ),
