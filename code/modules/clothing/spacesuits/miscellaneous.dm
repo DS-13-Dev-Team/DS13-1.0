@@ -92,13 +92,3 @@
 /obj/item/clothing/suit/space/pirate/New()
 	..()
 	slowdown_per_slot[slot_wear_suit] = 0
-
-//Orange emergency space suit
-/obj/item/clothing/suit/space/emergency
-	name = "Emergency Softsuit"
-	icon_state = "syndicate-orange"
-	desc = "A thin, ungainly softsuit colored in blaze orange for rescuers to easily locate, looks pretty fragile."
-
-/obj/item/clothing/suit/space/emergency/New()
-	..()
-	slowdown_per_slot[slot_wear_suit] = 4

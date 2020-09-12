@@ -58,12 +58,13 @@
 	item_state = "hm_armorvest"
 	armor = list(melee = 35, bullet = 35, laser = 30, energy = 15, bomb = 15, bio = 0, rad = 0)
 
-/obj/item/clothing/suit/armor/swat/officer
+/obj/item/clothing/suit/armor/swat
 	name = "officer jacket"
 	desc = "An armored jacket used in special operations."
 	icon_state = "detective"
 	//item_state = "det_suit"
 	blood_overlay_type = "coat"
+	armor = list(melee = 55, bullet = 50, laser = 0, energy = 0, bomb = 25, bio = 0, rad = 0)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS

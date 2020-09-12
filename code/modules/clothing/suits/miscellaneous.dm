@@ -111,12 +111,6 @@
 
 //coats
 
-/obj/item/clothing/suit/browncoat
-	name = "brown leather coat"
-	desc = "A long, brown leather coat."
-	icon_state = "browncoat"
-	item_state = "browncoat"
-
 /obj/item/clothing/suit/xenos
 	name = "xenos suit"
 	desc = "A suit made out of chitinous alien hide."

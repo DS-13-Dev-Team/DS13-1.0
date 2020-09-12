@@ -209,6 +209,13 @@
 	containertype = /obj/structure/closet/firecloset
 	containername = "\improper fire-safety closet"
 
+/decl/hierarchy/supply_pack/engineering/firesuit
+	name = "Armor - Firesuit rig"
+	contains = list(/obj/item/weapon/rig/firesuit)
+	cost = 80
+	containertype = /obj/structure/closet/crate/secure/large
+	containername = "\improper Firesuit rig crate"
+
 /decl/hierarchy/supply_pack/engineering/toolmods
 	name = "Tool Modification Kit"
 	contains = list(/obj/random/tool_upgrade = 5,
