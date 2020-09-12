@@ -28,6 +28,7 @@
 				/obj/effect/rune/wall,
 				/obj/effect/rune/ajorney,
 				/obj/effect/rune/defile,
+				/obj/effect/rune/armor,
 				/obj/effect/rune/offering,
 				/obj/effect/rune/drain,
 				/obj/effect/rune/emp,

@@ -26,6 +26,18 @@
 	icon_opened = "syndicate1open"
 	anchored = 0
 
+/obj/structure/closet/gimmick/russian
+	name = "russian surplus closet"
+	desc = "It's a storage unit for Russian standard-issue surplus."
+	icon_state = "syndicate1"
+	icon_closed = "syndicate1"
+	icon_opened = "syndicate1open"
+
+/obj/structure/closet/gimmick/russian/WillContain()
+	return list(
+		/obj/item/clothing/head/ushanka = 5,
+		/obj/item/clothing/under/soviet = 5)
+
 /obj/structure/closet/gimmick/tacticool
 	name = "tacticool gear closet"
 	desc = "It's a storage unit for Tacticool gear."
@@ -38,8 +50,9 @@
 		/obj/item/clothing/glasses/eyepatch,
 		/obj/item/clothing/glasses/sunglasses,
 		/obj/item/clothing/gloves/thick/swat = 2,
+		/obj/item/clothing/head/helmet/swat = 2,
 		/obj/item/clothing/mask/gas = 2,
-		/obj/item/clothing/shoes/dutyboots = 2,
+		/obj/item/clothing/shoes/swat = 2,
 		/obj/item/clothing/suit/space/void/swat = 2,
 		/obj/item/clothing/under/syndicate/tacticool = 2)
 
@@ -56,6 +69,7 @@
 
 /obj/structure/closet/thunderdome/tdred/WillContain()
 	return list(
+		/obj/item/clothing/suit/armor/tdome/red = 3,
 		/obj/item/weapon/melee/energy/sword = 3,
 		/obj/item/weapon/gun/energy/laser = 3,
 		/obj/item/weapon/melee/baton = 3,
@@ -71,6 +85,7 @@
 
 /obj/structure/closet/thunderdome/tdgreen/WillContain()
 	return list(
+		/obj/item/clothing/suit/armor/tdome/green = 3,
 		/obj/item/weapon/melee/energy/sword = 3,
 		/obj/item/weapon/gun/energy/laser = 3,
 		/obj/item/weapon/melee/baton = 3,

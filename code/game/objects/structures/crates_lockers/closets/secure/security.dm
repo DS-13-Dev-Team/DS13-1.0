@@ -11,6 +11,11 @@
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/captain, /obj/item/weapon/storage/backpack/satchel_cap)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/captain, 50),
+		/obj/item/clothing/suit/captunic,
+		/obj/item/clothing/suit/captunic/capjacket,
+		/obj/item/clothing/head/caphat/cap,
+		/obj/item/clothing/under/rank/captain,
+		/obj/item/clothing/suit/armor/vest/nt,
 		/obj/item/clothing/head/helmet,
 		/obj/item/clothing/shoes/brown,
 		/obj/item/device/radio/headset/heads/captain,
@@ -18,7 +23,8 @@
 		/obj/item/weapon/gun/energy/gun,
 		/obj/item/clothing/suit/armor/captain,
 		/obj/item/weapon/melee/telebaton,
-		/obj/item/clothing/head/caphat,
+		/obj/item/clothing/under/dress/dress_cap,
+		/obj/item/clothing/head/caphat/formal,
 		/obj/item/clothing/under/captainformal,
 		/obj/item/weapon/rig/vintage,
 		/obj/random/tool = 3
@@ -36,6 +42,7 @@
 /obj/structure/closet/secure_closet/hop/WillContain()
 	return list(
 		/obj/item/clothing/glasses/sunglasses,
+		/obj/item/clothing/suit/armor/vest/nt,
 		/obj/item/clothing/head/helmet,
 		/obj/item/device/radio/headset/heads/fl,
 		/obj/item/weapon/storage/box/ids = 2,
@@ -54,13 +61,19 @@
 
 /obj/structure/closet/secure_closet/hop2/WillContain()
 	return list(
+		/obj/item/clothing/under/rank/head_of_personnel,
+		/obj/item/clothing/under/dress/dress_hop,
+		/obj/item/clothing/under/dress/dress_hr,
 		/obj/item/clothing/under/lawyer/female,
 		/obj/item/clothing/under/lawyer/black,
+		/obj/item/clothing/under/lawyer/red,
 		/obj/item/clothing/under/lawyer/oldman,
 		/obj/item/clothing/shoes/brown,
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/shoes/leather,
-		/obj/item/clothing/shoes/white
+		/obj/item/clothing/shoes/white,
+		/obj/item/clothing/under/rank/head_of_personnel_whimsy,
+		/obj/item/clothing/head/caphat/hop
 	)
 
 /obj/structure/closet/secure_closet/CSECO
@@ -116,6 +129,7 @@
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/clothing/mask/gas,
+		/obj/item/clothing/glasses/sunglasses/sechud/goggles,
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,
 		/obj/item/device/flashlight/maglight,
@@ -175,9 +189,10 @@
 	return list(
 		/obj/item/clothing/shoes/brown,
 		/obj/item/weapon/paper/Court = 3,
-		/obj/item/weapon/pen,
+		/obj/item/weapon/pen ,
 		/obj/item/clothing/suit/judgerobe,
-		/obj/item/weapon/storage/briefcase
+		/obj/item/clothing/head/powdered_wig ,
+		/obj/item/weapon/storage/briefcase,
 	)
 
 /obj/structure/closet/secure_closet/wall
@@ -227,6 +242,7 @@
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/clothing/accessory/storage/black_vest,
+		/obj/item/clothing/glasses/sunglasses/sechud/goggles,
 		/obj/item/clothing/gloves/forensic,
 		/obj/item/clothing/under/security,
 		/obj/item/clothing/accessory/storage/black_vest,
@@ -255,6 +271,11 @@
 
 /obj/structure/closet/secure_closet/military/WillContain()
 	return list(
+		/obj/item/clothing/suit/captunic,
+		/obj/item/clothing/suit/captunic/capjacket,
+		/obj/item/clothing/head/caphat/cap,
+		/obj/item/clothing/under/rank/captain,
+		/obj/item/clothing/suit/armor/vest/nt,
 		/obj/item/clothing/head/helmet,
 		/obj/item/clothing/shoes/brown,
 		/obj/item/device/radio/headset/heads/captain,
@@ -262,7 +283,8 @@
 		/obj/item/weapon/gun/energy/gun,
 		/obj/item/clothing/suit/armor/captain,
 		/obj/item/weapon/melee/telebaton,
-		/obj/item/clothing/head/caphat,
+		/obj/item/clothing/under/dress/dress_cap,
+		/obj/item/clothing/head/caphat/formal,
 		/obj/item/clothing/under/captainformal,
 		/obj/random/tool = 3
 	)

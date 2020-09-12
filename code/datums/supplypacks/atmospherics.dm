@@ -15,8 +15,8 @@
 					/obj/item/clothing/suit/storage/hazardvest = 2,
 					/obj/item/clothing/suit/armor/vest = 2,
 					/obj/item/weapon/tank/emergency/oxygen/engi = 4,
-			 		/obj/item/clothing/suit/space/void = 4,
-					/obj/item/clothing/head/helmet/space/void = 4,
+			 		/obj/item/clothing/suit/space/emergency = 4,
+					/obj/item/clothing/head/helmet/space/emergency = 4,
 					/obj/item/clothing/mask/gas = 4,
 					/obj/item/device/flashlight/flare/glowstick = 5)
 	cost = 45

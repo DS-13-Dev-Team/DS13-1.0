@@ -485,7 +485,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/xenomeat/New()
 	..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 6)
-	reagents.add_reagent(/datum/reagent/acid/polyacid,6)
+	reagents.add_reagent(/datum/reagent/acid/triflicacid,6)
 	src.bitesize = 6
 
 /obj/item/weapon/reagent_containers/food/snacks/meatball

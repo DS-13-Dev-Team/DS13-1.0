@@ -11,6 +11,18 @@
 	display_name = "eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
 
+/datum/gear/eyes/fashionglasses
+	display_name = "fashionable eyewear"
+	path = /obj/item/clothing/glasses/gglasses
+
+/datum/gear/eyes/fashionglasses/New()
+	..()
+	var/glasses = list()
+	glasses["green glasses"] = /obj/item/clothing/glasses/gglasses
+	glasses["hipster glasses"] = /obj/item/clothing/glasses/regular/hipster
+	glasses["monocle"] = /obj/item/clothing/glasses/monocle
+	gear_tweaks += new/datum/gear_tweak/path(glasses)
+
 /datum/gear/eyes/shades/
 	display_name = "sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses

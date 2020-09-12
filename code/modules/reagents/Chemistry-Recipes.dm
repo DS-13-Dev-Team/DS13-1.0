@@ -157,10 +157,10 @@
 	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/silicon = 1, /datum/reagent/acetone = 1)
 	result_amount = 4
 
-/datum/chemical_reaction/pacid
-	name = "Polytrinic acid"
-	result = /datum/reagent/acid/polyacid
-	required_reagents = list(/datum/reagent/acid = 1, /datum/reagent/acid/hydrochloric = 1, /datum/reagent/potassium = 1)
+/datum/chemical_reaction/tacid
+	name = "Triflic acid"
+	result = /datum/reagent/acid/triflicacid
+	required_reagents = list(/datum/reagent/toxin/potassium_chlorophoride = 1, /datum/reagent/acid/hydrochloric = 1, /datum/reagent/lexorin = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/synaptizine
@@ -449,7 +449,7 @@
 /datum/chemical_reaction/plastication
 	name = "Plastic"
 	result = null
-	required_reagents = list(/datum/reagent/acid/polyacid = 1, /datum/reagent/toxin/plasticide = 2)
+	required_reagents = list(/datum/reagent/acid/hydrochloric = 1, /datum/reagent/toxin/plasticide = 2)
 	result_amount = 1
 
 /datum/chemical_reaction/plastication/on_reaction(var/datum/reagents/holder, var/created_volume)
@@ -520,7 +520,7 @@
 /datum/chemical_reaction/nitroglycerin
 	name = "Nitroglycerin"
 	result = /datum/reagent/nitroglycerin
-	required_reagents = list(/datum/reagent/glycerol = 1, /datum/reagent/acid/polyacid = 1, /datum/reagent/acid = 1)
+	required_reagents = list(/datum/reagent/glycerol = 1, /datum/reagent/acid/hydrochloric = 1, /datum/reagent/acid = 1)
 	result_amount = 2
 	log_is_important = 1
 
@@ -586,7 +586,7 @@
 /datum/chemical_reaction/metalfoam
 	name = "Metal Foam"
 	result = null
-	required_reagents = list(/datum/reagent/aluminum = 3, /datum/reagent/foaming_agent = 1, /datum/reagent/acid/polyacid = 1)
+	required_reagents = list(/datum/reagent/aluminum = 3, /datum/reagent/foaming_agent = 1, /datum/reagent/acid/hydrochloric = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/metalfoam/on_reaction(var/datum/reagents/holder, var/created_volume)
@@ -602,7 +602,7 @@
 /datum/chemical_reaction/ironfoam
 	name = "Iron Foam"
 	result = null
-	required_reagents = list(/datum/reagent/iron = 3, /datum/reagent/foaming_agent = 1, /datum/reagent/acid/polyacid = 1)
+	required_reagents = list(/datum/reagent/iron = 3, /datum/reagent/foaming_agent = 1, /datum/reagent/acid/hydrochloric = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/ironfoam/on_reaction(var/datum/reagents/holder, var/created_volume)

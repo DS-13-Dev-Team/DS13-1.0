@@ -2,7 +2,7 @@
 /*
  * Command
  */
-/obj/item/clothing/under/captain
+/obj/item/clothing/under/captain/deadspace
 	name = "captain's uniform"
 	desc = "A neatly pressed, blue uniform with navy blue patches on each shoulder and pure gold cuffs. Looks fancy!"
 	item_state = "ds_captain"
@@ -134,9 +134,9 @@
 
 /obj/item/clothing/under/hydroponics
 	name = "botanist uniform"
-	item_state = "ds_hydro_bot"
-	worn_state = "ds_hydro_bot"
-	icon_state = "ds_hydro_bot"
+	item_state = "ds_hydro_bot_s"
+	worn_state = "ds_hydro_bot_s"
+	icon_state = "ds_hydro_bot_s"
 	permeability_coefficient = 0.50
 
 /*
