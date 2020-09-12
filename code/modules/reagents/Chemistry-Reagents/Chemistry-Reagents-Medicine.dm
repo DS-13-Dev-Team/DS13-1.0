@@ -80,7 +80,7 @@
 /datum/reagent/dylovene
 	name = "Dylovene"
 	description = "Dylovene is a broad-spectrum antitoxin used to neutralize poisons before they can do significant harm."
-	taste_description = "a groll of gauze"
+	taste_description = "a roll of gauze"
 	reagent_state = LIQUID
 	color = "#00a000"
 	scannable = 1
