@@ -871,7 +871,7 @@
 					/obj/item/weapon/storage/pill_bottle/inaprovaline = 5, /obj/item/weapon/storage/pill_bottle/sugariron = 2,
 					/obj/item/weapon/reagent_containers/syringe = 12,
 					/obj/item/device/healthanalyzer = 5, /obj/item/stack/medical/advanced/bruise_pack = 5, /obj/item/stack/medical/advanced/ointment = 5,
-					/obj/item/stack/medical/bruise_pack = 10, /obj/item/stack/medical/ointment = 10,
+					/obj/item/stack/medical/bruise_pack = 10, /obj/item/stack/medical/ointment = 10, /obj/item/weapon/defibrillator/loaded = 2, /obj/item/weapon/defibrillator/compact/loaded = 1,
 					/obj/item/stack/medical/splint = 2, /obj/item/weapon/reagent_containers/hypospray/autoinjector/pain = 4)
 	contraband = list(/obj/item/clothing/mask/chewable/candy/lolli/meds = 8, /obj/item/weapon/storage/pill_bottle/dermaline = 4,
 					/obj/item/weapon/reagent_containers/pill/tox = 3,/obj/item/weapon/reagent_containers/pill/stox = 4,/obj/item/weapon/reagent_containers/pill/antitox = 6,
