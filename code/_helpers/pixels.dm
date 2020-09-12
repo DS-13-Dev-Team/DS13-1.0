@@ -235,6 +235,10 @@
 	release_vector(pixel_offset)
 	release_vector(rejection)
 
+// Currently something for Ishimura Signs.
+/atom/proc/set_pixels(var/vector2/delta)
+    pixel_x = delta.x
+    pixel_y = delta.y
 
 
 /*

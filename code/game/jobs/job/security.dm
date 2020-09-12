@@ -81,3 +81,29 @@ datum/job/sso/get_description_blurb()
 
 datum/job/security_officer/get_description_blurb()
 	return "You are a Security Officer. One of the many members of Planet Cracker Starship Ishimura Security, or P.C.S.I. Sec, you are there to provide safety and order to the crew. You are expected to have a good understanding of the Law. You are subordinate to the Chief Security Officer and Senior Security Officer."
+
+/datum/job/colony_officer
+	title = "Colony Officer"
+	department = "Security"
+	abbreviation = "SEC"
+	department_flag = SEC
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the Chief Security Officer and Senior Security Officer"
+	selection_color = "#601c1c"
+	minimal_player_age = 18
+	starting_credits = 3072
+
+	access = list(access_security, access_maint_tunnels, access_external_airlocks, access_mining)
+	outfit_type = /decl/hierarchy/outfit/job/security/colony
+
+	min_skill = list(   SKILL_WEAPONS     = SKILL_ADEPT,
+						SKILL_COMBAT	  = SKILL_ADEPT,
+	                    SKILL_DEVICES	  = SKILL_BASIC)
+
+	max_skill = list(   SKILL_WEAPONS     = SKILL_MAX,
+						SKILL_COMBAT	  = SKILL_MAX)
+	skill_points = 10
+
+datum/job/security_officer/get_description_blurb()
+	return "You are a Colony Officer. One of the many members of Planet Cracker Starship Ishimura Security, or P.C.S.I. Sec, you are there to provide safety and order to the colony. You are expected to have a good understanding of the Law. You are subordinate to the Chief Security Officer and Senior Security Officer."
