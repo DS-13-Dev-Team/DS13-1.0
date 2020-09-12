@@ -134,9 +134,9 @@
 
 /obj/item/clothing/under/hydroponics
 	name = "botanist uniform"
-	item_state = "ds_hydro_bot"
-	worn_state = "ds_hydro_bot"
-	icon_state = "ds_hydro_bot"
+	item_state = "ds_hydro_bot_s"
+	worn_state = "ds_hydro_bot_s"
+	icon_state = "ds_hydro_bot_s"
 	permeability_coefficient = 0.50
 
 /*
