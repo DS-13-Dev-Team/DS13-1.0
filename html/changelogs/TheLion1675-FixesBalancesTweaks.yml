@@ -64,3 +64,5 @@ changes:
   - rscdel: "Removed bluespace tomato as a valid mutation."
   - bugfix: "Fixed inability to make assembly items such as the igniter because it required an item that did not exist."
   - bugfix: "Fixed an uncommon instance of diona nymphs spawning in vending machines. No more leeches!"
+  - bugfix: "Fixed Hydroponics uniform displaying the incorrect icon. Honk!"
+  - bugfix: "Fixed Botanists not spawning with their new uniform."
