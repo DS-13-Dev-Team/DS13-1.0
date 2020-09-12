@@ -583,11 +583,26 @@
 /datum/design/item/weapon/contactbeam
 	name = "C99 Supercollider Contact Beam"
 	id = "contactbeam"
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_POWER = 3)
-	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000, "uranium" = 500)
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 3)
+	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000, "diamond" = 400)
 	build_path = /obj/item/weapon/gun/energy/contact
 	sort_string = "TAEAA"
 
+/datum/design/item/weapon/miningcutter
+	name = "210-V mining cutter"
+	id = "miningcutter"
+	req_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 3, TECH_POWER = 1)
+	materials = list(MATERIAL_STEEL = 7500, MATERIAL_GLASS = 2500)
+	build_path = /obj/item/weapon/gun/energy/cutter
+	sort_string = "TAEAB"
+
+/datum/design/item/weapon/plasmacutter
+	name = "211-V plasma cutter"
+	id = "plasmacutter"
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 4, TECH_POWER = 3)
+	materials = list(MATERIAL_STEEL = 15000, MATERIAL_GLASS = 5000, "gold" = 400)
+	build_path = /obj/item/weapon/gun/energy/cutter/plasma
+	sort_string = "TAEAC"
 
 
 

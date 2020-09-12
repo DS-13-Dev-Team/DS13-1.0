@@ -8,11 +8,10 @@
 	icon_state = "red"
 	item_state = "toolbox_red"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
-	force = 20
-	attack_cooldown = 21
+	force = WEAPON_FORCE_NORMAL
+	attack_cooldown = 23
 	melee_accuracy_bonus = -20
-	throwforce = 10
-	
+	throwforce = WEAPON_FORCE_PAINFUL
 	throw_range = 7
 	w_class = ITEM_SIZE_LARGE
 	max_w_class = ITEM_SIZE_NORMAL

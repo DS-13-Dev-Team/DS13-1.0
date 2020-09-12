@@ -204,15 +204,15 @@
 	update_icon()
 
 
-/obj/item/weapon/reagent_containers/glass/bottle/pacid
-	name = "Polytrinic Acid Bottle"
-	desc = "A small bottle. Contains a small amount of Polytrinic Acid."
+/obj/item/weapon/reagent_containers/glass/bottle/tacid
+	name = "Triflic Acid Bottle"
+	desc = "A small bottle. Contains a small amount of Triflic Acid."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 
-/obj/item/weapon/reagent_containers/glass/bottle/pacid/New()
+/obj/item/weapon/reagent_containers/glass/bottle/tacid/New()
 	..()
-	reagents.add_reagent(/datum/reagent/acid/polyacid, 60)
+	reagents.add_reagent(/datum/reagent/acid/triflicacid, 60)
 	update_icon()
 
 

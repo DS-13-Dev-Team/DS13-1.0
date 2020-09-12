@@ -26,7 +26,6 @@
 /obj/item/toy
 	icon = 'icons/obj/toy.dmi'
 	throwforce = 0
-	
 	throw_range = 20
 	force = 0
 
@@ -62,7 +61,7 @@
 			if(O.reagents.total_volume < 1)
 				to_chat(user, "The [O] is empty.")
 			else if(O.reagents.total_volume >= 1)
-				if(O.reagents.has_reagent(/datum/reagent/acid/polyacid, 1))
+				if(O.reagents.has_reagent(/datum/reagent/acid/triflicacid, 1))
 					to_chat(user, "The acid chews through the balloon!")
 					O.reagents.splash(user, reagents.total_volume)
 					qdel(src)
@@ -97,7 +96,6 @@
 	name = "\improper 'criminal' balloon"
 	desc = "FUK NT!11!"
 	throwforce = 0
-	
 	throw_range = 20
 	force = 0
 	icon = 'icons/obj/weapons.dmi'
