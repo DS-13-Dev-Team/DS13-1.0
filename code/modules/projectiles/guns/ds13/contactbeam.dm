@@ -227,7 +227,7 @@
 /obj/item/projectile/beam/contact
 	damage = 70
 	armor_penetration = 10
-	accuracy	=	126 // 110 -> 126: 15% increase on 10-SEP-2020. -Lion
+	accuracy	=	110
 
 
 

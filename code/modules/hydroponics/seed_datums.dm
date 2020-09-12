@@ -148,7 +148,7 @@
 	seed_name = "death nettle"
 	display_name = "death nettles"
 	mutants = null
-	chems = list(/datum/reagent/nutriment = list(1,50), /datum/reagent/acid/triflicacid = list(0,1))
+	chems = list(/datum/reagent/nutriment = list(1,50), /datum/reagent/acid/polyacid = list(0,1))
 	kitchen_tag = "deathnettle"
 
 /datum/seed/nettle/death/New()
@@ -212,6 +212,7 @@
 	name = "bluetomato"
 	seed_name = "blue tomato"
 	display_name = "blue tomato plant"
+	mutants = list("bluespacetomato")
 	chems = list(/datum/reagent/nutriment = list(1,20), /datum/reagent/lube = list(1,5))
 
 /datum/seed/tomato/blue/New()

@@ -545,7 +545,7 @@
 /datum/reagent/toxin/plantbgone
 	value = 1.1
 
-/datum/reagent/acid/triflicacid
+/datum/reagent/acid/polyacid
 	value = 2
 
 /datum/reagent/lexorin

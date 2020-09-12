@@ -103,7 +103,7 @@
 			descriptors |= "shiny"
 		if(reagents.has_reagent(/datum/reagent/lube))
 			descriptors |= "slippery"
-		if(reagents.has_reagent(/datum/reagent/acid/triflicacid) || reagents.has_reagent(/datum/reagent/acid) || reagents.has_reagent(/datum/reagent/acid/hydrochloric))
+		if(reagents.has_reagent(/datum/reagent/acid/polyacid) || reagents.has_reagent(/datum/reagent/acid) || reagents.has_reagent(/datum/reagent/acid/hydrochloric))
 			descriptors |= "acidic"
 		if(seed.get_trait(TRAIT_JUICY))
 			descriptors |= "juicy"
