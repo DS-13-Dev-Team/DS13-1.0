@@ -89,7 +89,7 @@
 	taste_description = "acid"
 	reagent_state = LIQUID
 	color = "#939c38"
-	power = NECROMORPH_ACID_POWER + 0.5
+	power = NECROMORPH_ACID_POWER * 1.5
 	meltdose = 8
 
 
