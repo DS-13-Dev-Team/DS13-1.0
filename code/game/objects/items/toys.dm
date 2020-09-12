@@ -96,7 +96,6 @@
 	name = "\improper 'criminal' balloon"
 	desc = "FUK NT!11!"
 	throwforce = 0
-
 	throw_range = 20
 	force = 0
 	icon = 'icons/obj/weapons.dmi'
