@@ -74,7 +74,7 @@
 	if(species)
 		set_max_damage(species.total_health)
 	else
-		set_max_damage(120)
+		set_max_damage(140)
 
 	spawn(5)
 		if(brainmob && brainmob.client)

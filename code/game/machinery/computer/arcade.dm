@@ -10,6 +10,7 @@
 							/obj/item/toy/sword															= 2,
 							/obj/item/weapon/gun/projectile/revolver/capgun								= 2,
 							/obj/item/toy/crossbow														= 2,
+							/obj/item/clothing/suit/syndicatefake										= 2,
 							/obj/item/weapon/storage/fancy/crayons										= 2,
 							/obj/item/toy/spinningtoy													= 2,
 							/obj/item/toy/prize/ripley													= 1,
@@ -43,6 +44,11 @@
 	if(!contents.len)
 		var/prizeselect = pickweight(prizes)
 		new prizeselect(src.loc)
+
+		if(istype(prizeselect, /obj/item/clothing/suit/syndicatefake)) //Helmet is part of the suit
+			new	/obj/item/clothing/head/syndicatefake(src.loc)
+
+	else
 		var/atom/movable/prize = pick(contents)
 		prize.forceMove(src.loc)
 
@@ -204,6 +210,7 @@
 			if(emagged)
 				feedback_inc("arcade_win_emagged")
 				new /obj/effect/spawner/newbomb/timer/syndicate(src.loc)
+				new /obj/item/clothing/head/collectable/petehat(src.loc)
 				log_and_message_admins("has outbombed Cuban Pete and been awarded a bomb.")
 				SetupGame()
 				emagged = 0

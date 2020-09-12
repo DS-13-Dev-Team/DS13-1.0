@@ -33,3 +33,13 @@
 
 /obj/item/clothing/head/helmet/space/rig/firesuit
 	name = "hood"
+
+
+
+
+/decl/hierarchy/supply_pack/engineering/firesuit
+	name = "Armor - Firesuit rig"
+	contains = list(/obj/item/weapon/rig/firesuit)
+	cost = 80
+	containername = "\improper Firesuit rig crate"
+	containertype = /obj/structure/closet/crate/secure/large

@@ -19,6 +19,7 @@
 	head = /obj/item/clothing/head/det
 	uniform = /obj/item/clothing/under/det
 	suit_store = /obj/item/clothing/suit/storage/det_trench
+	glasses = /obj/item/clothing/glasses/thermal/plain/monocle
 	r_hand = /obj/item/weapon/gun/projectile/revolver
 	l_pocket = /obj/item/ammo_magazine/a357
 

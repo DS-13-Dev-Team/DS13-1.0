@@ -280,6 +280,10 @@ BLIND     // can't see anything
 	var/darkness_view = 0//Base human is 2
 	var/see_invisible = -1
 	var/light_protection = 0
+	sprite_sheets = list(
+		SPECIES_VOX = 'icons/mob/species/vox/eyes.dmi',
+		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/eyes.dmi',
+		)
 
 /obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
 	if(item_state_slots && item_state_slots[slot])
@@ -310,6 +314,11 @@ BLIND     // can't see anything
 	slot_flags = SLOT_GLOVES
 	attack_verb = list("challenged")
 	species_restricted = list("exclude",SPECIES_NABBER, SPECIES_UNATHI,SPECIES_VOX)
+	sprite_sheets = list(
+		SPECIES_VOX = 'icons/mob/species/vox/gloves.dmi',
+		SPECIES_NABBER = 'icons/mob/species/nabber/gloves.dmi',
+		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/hands.dmi',
+		)
 	blood_overlay_type = "bloodyhands"
 
 /obj/item/clothing/gloves/Initialize()
@@ -418,6 +427,10 @@ BLIND     // can't see anything
 	var/brightness_on
 	var/on = 0
 
+	sprite_sheets = list(
+		SPECIES_VOX = 'icons/mob/species/vox/head.dmi',
+		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/head.dmi',
+		)
 	blood_overlay_type = "helmetblood"
 
 /obj/item/clothing/head/get_mob_overlay(mob/user_mob, slot)
@@ -524,6 +537,10 @@ BLIND     // can't see anything
 	icon = 'icons/obj/clothing/masks.dmi'
 	slot_flags = SLOT_MASK
 	body_parts_covered = FACE|EYES
+	sprite_sheets = list(
+		SPECIES_VOX = 'icons/mob/species/vox/masks.dmi',
+		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/mask.dmi',
+		)
 
 	var/voicechange = 0
 	var/list/say_messages
@@ -605,6 +622,10 @@ BLIND     // can't see anything
 	force = 2
 	var/overshoes = 0
 	species_restricted = list("exclude", SPECIES_NABBER, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_VOX)
+	sprite_sheets = list(
+		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi',
+		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/feet.dmi',
+		)
 	blood_overlay_type = "shoeblood"
 
 /obj/item/clothing/shoes/proc/draw_knife()
@@ -680,6 +701,11 @@ BLIND     // can't see anything
 	siemens_coefficient = 0.9
 	w_class = ITEM_SIZE_NORMAL
 
+	sprite_sheets = list(
+		SPECIES_VOX = 'icons/mob/species/vox/suit.dmi',
+		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/suit.dmi',
+		SPECIES_NABBER = 'icons/mob/species/nabber/suit.dmi',
+		)
 
 /obj/item/clothing/suit/update_clothing_icon()
 	if (ismob(src.loc))
@@ -725,6 +751,11 @@ BLIND     // can't see anything
 	var/displays_id = 1
 	var/rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	var/rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
+	sprite_sheets = list(
+		SPECIES_VOX = 'icons/mob/species/vox/uniform.dmi',
+		SPECIES_NABBER = 'icons/mob/species/nabber/uniform.dmi',
+		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/uniform.dmi',
+		)
 
 	//convenience var for defining the icon state for the overlay used when the clothing is worn.
 	//Also used by rolling/unrolling.

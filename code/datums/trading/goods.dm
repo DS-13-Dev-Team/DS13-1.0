@@ -127,12 +127,17 @@
 								/obj/item/clothing/under/color            = TRADER_BLACKLIST,
 								/obj/item/clothing/under/dress            = TRADER_BLACKLIST,
 								/obj/item/clothing/under/ert              = TRADER_BLACKLIST,
+								/obj/item/clothing/under/gimmick          = TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/under/lawyer           = TRADER_BLACKLIST,
 								/obj/item/clothing/under/pj               = TRADER_BLACKLIST,
 								/obj/item/clothing/under/rank             = TRADER_BLACKLIST,
 								/obj/item/clothing/under/shorts           = TRADER_BLACKLIST,
+								/obj/item/clothing/under/stripper         = TRADER_BLACKLIST_ALL,
+								/obj/item/clothing/under/swimsuit         = TRADER_BLACKLIST,
 								/obj/item/clothing/under/syndicate        = TRADER_BLACKLIST_ALL,
-								/obj/item/clothing/under/tactical         = TRADER_BLACKLIST)
+								/obj/item/clothing/under/tactical         = TRADER_BLACKLIST,
+								/obj/item/clothing/under/wedding          = TRADER_BLACKLIST,
+								/obj/item/clothing/under/punpun           = TRADER_BLACKLIST)
 
 /datum/trader/ship/clothingshop/shoes
 	possible_origins = list("Foot Safe", "Paysmall", "Popular Footwear", "Grimbly's Shoes", "Right Steps")
@@ -144,6 +149,7 @@
 								/obj/item/clothing/shoes/cyborg           = TRADER_BLACKLIST,
 								/obj/item/clothing/shoes/lightrig         = TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/shoes/magboots         = TRADER_BLACKLIST_ALL,
+								/obj/item/clothing/shoes/swat             = TRADER_BLACKLIST,
 								/obj/item/clothing/shoes/syndigaloshes    = TRADER_BLACKLIST)
 
 /datum/trader/ship/clothingshop/hatglovesaccessories
@@ -164,12 +170,15 @@
 								/obj/item/clothing/head/bio_hood          = TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/head/bomb_hood         = TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/head/caphat            = TRADER_BLACKLIST_ALL,
+								/obj/item/clothing/head/centhat           = TRADER_BLACKLIST,
 								/obj/item/clothing/head/chameleon         = TRADER_BLACKLIST,
 								/obj/item/clothing/head/collectable       = TRADER_BLACKLIST,
 								/obj/item/clothing/head/culthood          = TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/head/helmet            = TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/head/lightrig          = TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/head/radiation         = TRADER_BLACKLIST,
+								/obj/item/clothing/head/tajaran           = TRADER_BLACKLIST,
+								/obj/item/clothing/head/warden            = TRADER_BLACKLIST,
 								/obj/item/clothing/head/welding           = TRADER_BLACKLIST)
 
 
@@ -189,7 +198,7 @@ Sells devices, odds and ends, and medical stuff
 								/obj/item/device/cable_painter             = TRADER_THIS_TYPE,
 								/obj/item/device/flash                     = TRADER_THIS_TYPE,
 								/obj/item/device/floor_painter             = TRADER_THIS_TYPE,
-								/obj/item/weapon/tool/multitool            = TRADER_THIS_TYPE,
+								/obj/item/weapon/tool/multitool                 = TRADER_THIS_TYPE,
 								/obj/item/device/lightreplacer             = TRADER_THIS_TYPE,
 								/obj/item/device/megaphone                 = TRADER_THIS_TYPE,
 								/obj/item/device/paicard                   = TRADER_THIS_TYPE,

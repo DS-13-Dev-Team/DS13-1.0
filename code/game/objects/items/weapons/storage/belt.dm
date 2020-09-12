@@ -374,6 +374,9 @@
 	icon_state = "championbelt"
 	item_state = "champion"
 	storage_slots = 1
+	can_hold = list(
+		/obj/item/clothing/mask/luchador
+		)
 
 /obj/item/weapon/storage/belt/holster/security/tactical
 	name = "combat belt"

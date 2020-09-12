@@ -6,6 +6,8 @@
 	deform = 'icons/mob/human_races/species/unathi/deformed_body.dmi'
 	husk_icon = 'icons/mob/human_races/species/unathi/husk.dmi'
 	preview_icon = 'icons/mob/human_races/species/unathi/preview.dmi'
+	tail = "sogtail"
+	tail_animation = 'icons/mob/species/unathi/tail.dmi'
 	limb_blend = ICON_MULTIPLY
 	tail_blend = ICON_MULTIPLY
 

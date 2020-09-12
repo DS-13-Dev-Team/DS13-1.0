@@ -149,6 +149,7 @@ var/list/Tier1Runes = list(
 	)
 
 var/list/Tier2Runes = list(
+	/mob/proc/armor_rune,
 	/mob/proc/offering_rune,
 	/mob/proc/drain_rune,
 	/mob/proc/emp_rune,
@@ -208,6 +209,12 @@ var/list/Tier4Runes = list(
 	set name = "Rune: Mass Defile"
 
 	make_rune(/obj/effect/rune/massdefile, tome_required = 1, cost = 20)
+
+/mob/proc/armor_rune()
+	set category = "Cult Magic"
+	set name = "Rune: Summon Robes"
+
+	make_rune(/obj/effect/rune/armor, tome_required = 1)
 
 /mob/proc/offering_rune()
 	set category = "Cult Magic"

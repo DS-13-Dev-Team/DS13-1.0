@@ -346,13 +346,40 @@ var/global/list/additional_antag_types = list()
 			else if(isghost(M))
 				ghosts++
 
+		if(M.get_preference_value(/datum/client_preference/play_admin_midis) == GLOB.PREF_YES)
+			if (escaped_total < 1)
+				sound_to(world, sound('sound/music/ds13/twinkle.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+			if (escaped_total > 0 && surviving_total < 5)
+				sound_to(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+			if (escaped_total > 4)
+				sound_to(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+
 	var/text = ""
-	if(surviving_total > 0)
-		text += "<br>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"]"
-		text += " (<b>[escaped_total>0 ? escaped_total : "none"] [evacuation_controller.emergency_evacuation ? "escaped" : "transferred"]</b>) and <b>[ghosts] ghosts</b>.<br>"
-	else
-		text += "There were <b>no survivors</b> (<b>[ghosts] ghosts</b>)."
+	if(escaped_total > 0 && escaped_total < 5) // Between 1 and 4 players escaped, count as Necro Minor Victory.
+		text += "<br><h2><b><center><span class='danger'>Necromorph Minor Victory!</span></center></b></h2>"
+		text += "<br><center>Necromorphs have slain a majority of the crew!</center>"
+		text += "<br><b><center>And so ends the struggle on [station_name()]...</center></b>"
+		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] evacuees</b>" : "was <b>one evacuee</b>"]</center>"
+	else if(escaped_total > 5 && escaped_total < 9)
+		text += "<br><h2><b><center><span class='success'>Survivor Minor Victory!</span></center></b></h2>"
+		text += "<br><center>Some survivors managed to evacuate!</center>"
+		text += "<br><b><cennter>And so ends the struggle on [station_name()]...</center></b>"
+		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] evacuees</b>" : "was <b>one evacuee</b>"]</center>"
+	else if(escaped_total > 8)
+		text += "<br><h1><b><center><span class='success'>Survivor Major Victory!</span></center></b></h1>"
+		text += "<br><center>A majority of the survivors managed to evacuate!</center>"
+		text += "<br><center><b>And so ends the struggle on [station_name()]...</center></b>"
+		text += "<br><center><center>There [surviving_total>1 ? "were <b>[surviving_total] evacuees</b>" : "was <b>one evacuee</b>"]</center>"
+	else if(escaped_total < 1)
+		text += "<br><h1><b><center><span class='danger'>Necromorph Major Victory!</h1></center></b></large>"
+		text += "<br><center>The Necromorphs have slain the entire crew!</center>"
+		text += "<br><br><center><b>And so ends another struggle on [station_name()]...</b></center>"
+		text += "<br><center>There were <b>no evacuees</b></center>"
+	else // Safety clause
+		text += "<br>DEBUG: You fucked up. This is not meant to happen."
+		text += "<br>Contact Lion immediately."
 	to_world(text)
+
 
 	if(clients > 0)
 		feedback_set("round_end_clients",clients)

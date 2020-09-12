@@ -77,6 +77,21 @@
 	flags_inv = HIDEJUMPSUIT
 	siemens_coefficient = 0.6
 
+/obj/item/clothing/suit/cultrobes/alt
+	icon_state = "cultrobesalt"
+
+/obj/item/clothing/suit/cultrobes/magusred
+	name = "magus robes"
+	desc = "A set of plated robes worn by the followers of Nar-Sie."
+	icon_state = "magusred"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	armor = list(melee = 75, bullet = 50, laser = 55, energy = 40, bomb = 50, bio = 10, rad = 0)
+
+/obj/item/clothing/suit/cultrobes/magusred/New()
+	..()
+	slowdown_per_slot[slot_wear_suit] = 1
+
 /obj/item/clothing/head/helmet/space/cult
 	name = "cult helmet"
 	desc = "A space worthy helmet used by the followers of Nar-Sie."

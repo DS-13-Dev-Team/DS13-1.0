@@ -5,6 +5,20 @@
 	name = "collectable hat"
 	desc = "A rare collectable hat."
 
+/obj/item/clothing/head/collectable/petehat
+	name = "ultra rare hat"
+	desc = "an ultra rare hat. It commands a certain respect."
+	icon_state = "petehat"
+	sprite_sheets = list(
+		SPECIES_VOX = 'icons/mob/species/vox/head.dmi',
+		)
+
+/obj/item/clothing/head/collectable/slime
+	name = "collectable slime cap!"
+	desc = "It just latches right in place!"
+	icon_state = "slime"
+	body_parts_covered = 0
+
 /obj/item/clothing/head/collectable/xenom
 	name = "collectable alien monster helmet!"
 	desc = "Hiss hiss hiss!"
@@ -35,6 +49,22 @@
 	item_state = "tophat"
 	body_parts_covered = 0
 
+/obj/item/clothing/head/collectable/captain
+	name = "collectable captain's hat"
+	desc = "A Collectable Hat that'll make you look just like a real comdom!"
+	icon_state = "captain"
+	item_state_slots = list(
+		slot_l_hand_str = "caphat",
+		slot_r_hand_str = "caphat",
+		)
+	body_parts_covered = 0
+
+/obj/item/clothing/head/collectable/police
+	name = "collectable police officer's hat"
+	desc = "A Collectable Police Officer's Hat. This hat emphasizes that you are THE LAW."
+	icon_state = "policehelm"
+	body_parts_covered = 0
+
 /obj/item/clothing/head/collectable/beret
 	name = "collectable beret"
 	desc = "A Collectable red Beret. It smells faintly of Garlic."
@@ -49,6 +79,11 @@
 	w_class = ITEM_SIZE_NORMAL
 	body_parts_covered = HEAD|FACE|EYES
 
+/obj/item/clothing/head/collectable/slime
+	name = "collectable slime hat"
+	desc = "Just like a real Brain Slug!"
+	icon_state = "headslime"
+
 /obj/item/clothing/head/collectable/flatcap
 	name = "collectable flat cap"
 	desc = "A Collectible farmer's Flat Cap!"
@@ -62,6 +97,12 @@
 	name = "collectable pirate hat"
 	desc = "You'd make a great Dread Syndie Roberts!"
 	icon_state = "pirate"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/collectable/kitty
+	name = "collectable kitty ears"
+	desc = "The fur feels.....a bit too realistic."
+	icon_state = "kitty"
 	body_parts_covered = 0
 
 /obj/item/clothing/head/collectable/rabbitears
@@ -92,3 +133,8 @@
 	name = "collectable Thunderdome helmet"
 	desc = "Go Red! I mean Green! I mean Red! No Green!"
 	icon_state = "thunderdome"
+
+/obj/item/clothing/head/collectable/swat
+	name = "collectable SWAT helmet"
+	desc = "Now you can be in the Deathsquad too!"
+	icon_state = "swat"

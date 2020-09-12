@@ -30,8 +30,8 @@
 			new /obj/item/weapon/tank/emergency/oxygen(src)
 			new /obj/item/clothing/mask/breath(src)
 			new /obj/item/clothing/mask/breath(src)
-			new /obj/item/clothing/suit/space/void(src)
-			new /obj/item/clothing/head/helmet/space/void (src)
+			new /obj/item/clothing/suit/space/emergency(src)
+			new /obj/item/clothing/head/helmet/space/emergency(src)
 			if (prob(70))
 				new /obj/item/weapon/tool/tape_roll(src)
 		if ("aid")
@@ -39,8 +39,8 @@
 			new /obj/item/weapon/storage/toolbox/emergency(src)
 			new /obj/item/clothing/mask/breath(src)
 			new /obj/item/weapon/storage/firstaid/o2(src)
-			new /obj/item/clothing/suit/space/void(src)
-			new /obj/item/clothing/head/helmet/space/void(src)
+			new /obj/item/clothing/suit/space/emergency(src)
+			new /obj/item/clothing/head/helmet/space/emergency(src)
 			if (prob(70))
 				new /obj/item/weapon/tool/tape_roll(src)
 		if ("tank")
@@ -63,10 +63,10 @@
 			new /obj/item/clothing/mask/gas/half(src)
 			new /obj/item/clothing/mask/gas/half(src)
 			new /obj/item/weapon/storage/firstaid/o2(src)
-			new /obj/item/clothing/suit/space/void(src)
-			new /obj/item/clothing/suit/space/void(src)
-			new /obj/item/clothing/head/helmet/space/void(src)
-			new /obj/item/clothing/head/helmet/space/void(src)
+			new /obj/item/clothing/suit/space/emergency(src)
+			new /obj/item/clothing/suit/space/emergency(src)
+			new /obj/item/clothing/head/helmet/space/emergency(src)
+			new /obj/item/clothing/head/helmet/space/emergency(src)
 			new /obj/item/device/oxycandle(src)
 			new /obj/random/tool_upgrade(src)
 			if (prob(50))
@@ -91,7 +91,7 @@
 /obj/structure/closet/firecloset/WillContain()
 	var/list/things = list(
 		/obj/item/weapon/storage/med_pouch/burn,
-		/obj/item/clothing/suit/fire,
+		/obj/item/clothing/suit/fire/firefighter,
 		/obj/item/clothing/mask/gas,
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank/oxygen/red,
@@ -226,6 +226,8 @@
 /obj/structure/closet/bombclosetsecurity/WillContain()
 	return list(
 		/obj/item/clothing/suit/bomb_suit/security,
+		/obj/item/clothing/under/rank/security,
+		/obj/item/clothing/shoes/brown,
 		/obj/item/clothing/head/bomb_hood/security)
 
 /*
@@ -246,7 +248,7 @@
 /obj/structure/closet/hydrant/WillContain()
 	return list(
 		/obj/item/weapon/storage/med_pouch/burn = 2,
-		/obj/item/clothing/suit/fire,
+		/obj/item/clothing/suit/fire/firefighter,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank/oxygen/red,

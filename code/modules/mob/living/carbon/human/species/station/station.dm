@@ -81,6 +81,8 @@
 	icobase = 'icons/mob/human_races/species/tajara/body.dmi'
 	deform =  'icons/mob/human_races/species/tajara/deformed_body.dmi'
 	preview_icon = 'icons/mob/human_races/species/tajara/preview.dmi'
+	tail = "tajtail"
+	tail_animation = 'icons/mob/species/tajaran/tail.dmi'
 	default_h_style = "Tajaran Ears"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite/sharp)
 	darksight_range = 8
@@ -142,6 +144,7 @@
 /datum/species/tajaran/equip_survival_gear(var/mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H),slot_shoes)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/tajblind(H),slot_glasses)
 
 /datum/species/skrell
 	name = SPECIES_SKRELL

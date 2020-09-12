@@ -20,6 +20,8 @@
 	/obj/item/clothing/head/hardhat = 6,
 	/obj/item/clothing/head/helmet = 1,
 	/obj/item/clothing/head/helmet/handmade = 1,
+	/obj/item/clothing/head/helmet/tactical = 1,
+	/obj/item/clothing/head/helmet/merc = 1,
 	/obj/item/clothing/head/helmet/riot = 1,
 	/obj/item/clothing/head/helmet/ballistic = 1,
 
