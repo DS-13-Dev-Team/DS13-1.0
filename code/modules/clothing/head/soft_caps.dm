@@ -36,25 +36,10 @@
 	update_icon()
 	update_clothing_icon()	//so our mob-overlays update
 
-/obj/item/clothing/head/soft/red
-	name = "red cap"
-	desc = "It's a peaked hat in a tasteless red color."
-	icon_state = "redsoft"
-
-/obj/item/clothing/head/soft/blue
-	name = "blue cap"
-	desc = "It's a peaked cap in a tasteless blue color."
-	icon_state = "bluesoft"
-
 /obj/item/clothing/head/soft/green
 	name = "green cap"
 	desc = "It's a peaked cap in a tasteless green color."
 	icon_state = "greensoft"
-
-/obj/item/clothing/head/soft/yellow
-	name = "yellow cap"
-	desc = "It's a peaked cap in a tasteless yellow color."
-	icon_state = "yellowsoft"
 
 /obj/item/clothing/head/soft/grey
 	name = "grey cap"
@@ -66,47 +51,17 @@
 	desc = "It's a peaked cap in a tasteless orange color."
 	icon_state = "orangesoft"
 
-/obj/item/clothing/head/soft/mime
-	name = "white cap"
-	desc = "It's a peaked cap in a tasteless white color."
-	icon_state = "mimesoft"
-
-/obj/item/clothing/head/soft/purple
-	name = "purple cap"
-	desc = "It's a peaked cap in a tasteless purple color."
-	icon_state = "purplesoft"
-
-/obj/item/clothing/head/soft/rainbow
-	name = "rainbow cap"
-	desc = "It's a peaked cap in a bright rainbow of colors."
-	icon_state = "rainbowsoft"
-
-/obj/item/clothing/head/soft/sec
-	name = "security cap"
-	desc = "It's a field cap in tasteful red color."
-	icon_state = "secsoft"
-
-/obj/item/clothing/head/soft/sec/corp
-	name = "corporate security cap"
-	desc = "It's field cap in corporate colors."
-	icon_state = "corpsoft"
-
-/obj/item/clothing/head/soft/mbill
-	name = "shipping cap"
-	desc = "It's a ballcap bearing the colors of Major Bill's Shipping."
-	icon_state = "mbillsoft"
-
 /obj/item/clothing/head/soft/black
 	name = "black cap"
 	desc = "It's a peaked cap in a tasteful black color."
 	icon_state = "blacksoft"
 
-/obj/item/clothing/head/soft/sec/corp/guard
+/obj/item/clothing/head/soft/sec_corp
+	name = "corporate security cap"
+	desc = "It's field cap in corporate colors."
+	icon_state = "corpsoft"
+
+/obj/item/clothing/head/soft/sec_corp/guard
 	name = "\improper NanoTrasen security cap"
 	desc = "It's field cap in NanoTrasen colors."
 	icon_state = "ntwhitesoft"
-
-/obj/item/clothing/head/soft/ishimurasecuritysoftcap
-	name = "security soft cap"
-	desc = "It's a brown softcap with a CEC Security badge."
-	icon_state = "ishimuracap"

@@ -28,16 +28,16 @@
 /obj/item/clothing/head/helmet/space/rig/ert
 	light_overlay = "helmet_light_dual"
 	camera = /obj/machinery/camera/network/ert
-	species_restricted = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI)
+	species_restricted = list(SPECIES_HUMAN)
 
 /obj/item/clothing/suit/space/rig/ert
-	species_restricted = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI)
+	species_restricted = list(SPECIES_HUMAN)
 
 /obj/item/clothing/shoes/magboots/rig/ert
-	species_restricted = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI)
+	species_restricted = list(SPECIES_HUMAN)
 
 /obj/item/clothing/gloves/rig/ert
-	species_restricted = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI)
+	species_restricted = list(SPECIES_HUMAN)
 
 
 /obj/item/weapon/rig/ert/engineer
@@ -59,23 +59,6 @@
 
 /obj/item/clothing/gloves/rig/ert/engineer
 	siemens_coefficient = 0
-
-/obj/item/weapon/rig/ert/janitor
-	name = "emergency response sanitation hardsuit control module"
-	desc = "A hardsuit used by many corporate and governmental emergency response forces. Has purple highlights. Armoured and space ready."
-	suit_type = "emergency response sanitation"
-	icon_state = "ert_janitor_rig"
-	armor = list(melee = 60, bullet = 50, laser = 50,energy = 40, bomb = 40, bio = 100, rad = 100)
-
-	initial_modules = list(
-		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/fabricator/wf_sign,
-		/obj/item/rig_module/grenade_launcher/cleaner,
-		/obj/item/rig_module/device/decompiler,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/healthbar
-		)
 
 /obj/item/weapon/rig/ert/medical
 	name = "emergency response medical hardsuit control module"

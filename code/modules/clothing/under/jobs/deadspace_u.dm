@@ -2,7 +2,7 @@
 /*
  * Command
  */
-/obj/item/clothing/under/captain/deadspace
+/obj/item/clothing/under/captain
 	name = "captain's uniform"
 	desc = "A neatly pressed, blue uniform with navy blue patches on each shoulder and pure gold cuffs. Looks fancy!"
 	item_state = "ds_captain"

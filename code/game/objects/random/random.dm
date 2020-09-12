@@ -629,11 +629,9 @@ obj/random/obstruction/item_to_spawn()
 /obj/random/masks/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/mask/gas = 4,
 				/obj/item/clothing/mask/gas/half = 5,
-				/obj/item/clothing/mask/gas/swat = 1,
 				/obj/item/clothing/mask/breath = 6,
 				/obj/item/clothing/mask/breath/medical = 4,
 				/obj/item/clothing/mask/balaclava = 3,
-				/obj/item/clothing/mask/balaclava/tactical = 2,
 				/obj/item/clothing/mask/surgical = 4))
 
 /obj/random/snack
@@ -702,10 +700,7 @@ obj/random/obstruction/item_to_spawn()
 
 /obj/random/shoes/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/shoes/workboots = 3,
-				/obj/item/clothing/shoes/jackboots = 3,
-				/obj/item/clothing/shoes/swat = 1,
 				/obj/item/clothing/shoes/combat = 1,
-				/obj/item/clothing/shoes/galoshes = 2,
 				/obj/item/clothing/shoes/magboots = 1,
 				/obj/item/clothing/shoes/laceup = 4,
 				/obj/item/clothing/shoes/black = 4,
@@ -717,8 +712,6 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/clothing/shoes/dress/white = 3,
 				/obj/item/clothing/shoes/sandal = 3,
 				/obj/item/clothing/shoes/brown = 4,
-				/obj/item/clothing/shoes/red = 4,
-				/obj/item/clothing/shoes/blue = 4,
 				/obj/item/clothing/shoes/leather = 4))
 
 /obj/random/gloves
@@ -742,7 +735,7 @@ obj/random/obstruction/item_to_spawn()
 	name = "random eyewear"
 	desc = "This is a random pair of glasses."
 	icon = 'icons/obj/clothing/glasses.dmi'
-	icon_state = "leforge"
+	icon_state = "glasses"
 
 /obj/random/glasses/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/glasses/sunglasses = 3,
@@ -758,7 +751,6 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/clothing/glasses/hud/security/prescription = 3,
 				/obj/item/clothing/glasses/sunglasses/sechud = 2,
 				/obj/item/clothing/glasses/sunglasses/sechud/toggle = 3,
-				/obj/item/clothing/glasses/sunglasses/sechud/goggles = 1,
 				/obj/item/clothing/glasses/tacgoggles = 1))
 
 /obj/random/hat
@@ -769,8 +761,7 @@ obj/random/obstruction/item_to_spawn()
 
 /obj/random/hat/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/head/helmet = 2,
-				/obj/item/clothing/head/helmet/tactical = 1,
-				/obj/item/clothing/head/helmet/space/emergency = 1,
+				/obj/item/clothing/head/helmet/space/void = 1,
 				/obj/item/clothing/head/bio_hood/general = 1,
 				/obj/item/clothing/head/hardhat = 4,
 				/obj/item/clothing/head/hardhat/orange = 4,
@@ -787,13 +778,12 @@ obj/random/obstruction/item_to_spawn()
 /obj/random/suit/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/suit/storage/hazardvest = 4,
 				/obj/item/clothing/suit/storage/toggle/labcoat = 4,
-				/obj/item/clothing/suit/space/emergency = 1,
+				/obj/item/clothing/suit/space/void = 1,
 				/obj/item/clothing/suit/armor/vest = 4,
 				/obj/item/clothing/suit/storage/vest/tactical = 1,
 				/obj/item/clothing/suit/storage/vest = 3,
 				/obj/item/clothing/suit/storage/toggle/bomber = 3,
 				/obj/item/clothing/suit/chef/classic = 3,
-				/obj/item/clothing/suit/surgicalapron = 2,
 				/obj/item/clothing/suit/apron/overalls = 3,
 				/obj/item/clothing/suit/bio_suit/general = 1,
 				/obj/item/clothing/suit/storage/toggle/hoodie/black = 3,
@@ -811,10 +801,8 @@ obj/random/obstruction/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/under/hazard = 4,
 				/obj/item/clothing/under/sterile = 4,
 				/obj/item/clothing/under/casual_pants/camo = 2,
-				/obj/item/clothing/under/frontier = 2,
 				/obj/item/clothing/under/harness = 2,
 				/obj/item/clothing/under/rank/medical/paramedic = 2,
-				/obj/item/clothing/under/overalls = 2,
 				/obj/item/clothing/ears/earmuffs = 2,
 				/obj/item/clothing/under/tactical = 1))
 
@@ -871,7 +859,6 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/clothing/head/helmet/space/void/security,
 				/obj/item/clothing/head/helmet/space/void/security/alt,
 				/obj/item/clothing/head/helmet/space/void/atmos,
-				/obj/item/clothing/head/helmet/space/void/atmos/alt,
 				/obj/item/clothing/head/helmet/space/void/merc,
 				/obj/item/clothing/head/helmet/space/void/medical,
 				/obj/item/clothing/head/helmet/space/void/medical/alt))
@@ -892,7 +879,6 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/clothing/suit/space/void/security,
 				/obj/item/clothing/suit/space/void/security/alt,
 				/obj/item/clothing/suit/space/void/atmos,
-				/obj/item/clothing/suit/space/void/atmos/alt,
 				/obj/item/clothing/suit/space/void/merc,
 				/obj/item/clothing/suit/space/void/medical,
 				/obj/item/clothing/suit/space/void/medical/alt))

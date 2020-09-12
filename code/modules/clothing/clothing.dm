@@ -537,10 +537,6 @@ BLIND     // can't see anything
 	icon = 'icons/obj/clothing/masks.dmi'
 	slot_flags = SLOT_MASK
 	body_parts_covered = FACE|EYES
-	sprite_sheets = list(
-		SPECIES_VOX = 'icons/mob/species/vox/masks.dmi',
-		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/mask.dmi',
-		)
 
 	var/voicechange = 0
 	var/list/say_messages
@@ -751,11 +747,6 @@ BLIND     // can't see anything
 	var/displays_id = 1
 	var/rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	var/rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
-	sprite_sheets = list(
-		SPECIES_VOX = 'icons/mob/species/vox/uniform.dmi',
-		SPECIES_NABBER = 'icons/mob/species/nabber/uniform.dmi',
-		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/uniform.dmi',
-		)
 
 	//convenience var for defining the icon state for the overlay used when the clothing is worn.
 	//Also used by rolling/unrolling.

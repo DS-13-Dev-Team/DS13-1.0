@@ -136,7 +136,7 @@
 	name = "Psychiatrist equipment"
 	contains = list(/obj/item/clothing/under/rank/psych,
 					/obj/item/device/radio/headset/headset_med,
-					/obj/item/clothing/under/rank/psych/turtleneck,
+					/obj/item/clothing/under/rank/psych/sweater,
 					/obj/item/clothing/shoes/laceup,
 					/obj/item/clothing/suit/storage/toggle/labcoat,
 					/obj/item/clothing/shoes/white,

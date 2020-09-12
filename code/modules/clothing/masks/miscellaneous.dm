@@ -42,96 +42,6 @@
 	down_body_parts_covered = null
 	down_icon_state = "steriledown"
 	pull_mask = 1
-	sprite_sheets = list(
-		SPECIES_TAJARA = 'icons/mob/species/tajaran/mask.dmi'
-		)
-
-/obj/item/clothing/mask/fakemoustache
-	name = "fake moustache"
-	desc = "Warning: moustache is fake."
-	icon_state = "fake-moustache"
-	item_state = "fake-moustache"
-	flags_inv = HIDEFACE
-	body_parts_covered = 0
-	visible_name = "Scoundrel"
-
-/obj/item/clothing/mask/snorkel
-	name = "Snorkel"
-	desc = "For the Swimming Savant."
-	icon_state = "snorkel"
-	item_state = "snorkel"
-	flags_inv = HIDEFACE
-	body_parts_covered = 0
-
-//scarves (fit in in mask slot)
-//None of these actually have on-mob sprites...
-/obj/item/clothing/mask/bluescarf
-	name = "blue neck scarf"
-	desc = "A blue neck scarf."
-	icon_state = "blueneckscarf"
-	item_state = "blueneckscarf"
-	body_parts_covered = FACE
-	item_flags = ITEM_FLAG_FLEXIBLEMATERIAL
-	w_class = ITEM_SIZE_SMALL
-	gas_transfer_coefficient = 0.90
-
-/obj/item/clothing/mask/redscarf
-	name = "red scarf"
-	desc = "A red and white checkered neck scarf."
-	icon_state = "redwhite_scarf"
-	item_state = "redwhite_scarf"
-	body_parts_covered = FACE
-	item_flags = ITEM_FLAG_FLEXIBLEMATERIAL
-	w_class = ITEM_SIZE_SMALL
-	gas_transfer_coefficient = 0.90
-
-/obj/item/clothing/mask/greenscarf
-	name = "green scarf"
-	desc = "A green neck scarf."
-	icon_state = "green_scarf"
-	item_state = "green_scarf"
-	body_parts_covered = FACE
-	item_flags = ITEM_FLAG_THICKMATERIAL
-	w_class = ITEM_SIZE_SMALL
-	gas_transfer_coefficient = 0.90
-
-/obj/item/clothing/mask/ninjascarf
-	name = "ninja scarf"
-	desc = "A stealthy, dark scarf."
-	icon_state = "ninja_scarf"
-	item_state = "ninja_scarf"
-	body_parts_covered = FACE
-	item_flags = ITEM_FLAG_THICKMATERIAL
-	w_class = ITEM_SIZE_SMALL
-	gas_transfer_coefficient = 0.90
-	siemens_coefficient = 0
-
-/obj/item/clothing/mask/pig
-	name = "pig mask"
-	desc = "A rubber pig mask."
-	icon_state = "pig"
-	item_state = "pig"
-	flags_inv = HIDEFACE|BLOCKHAIR
-	w_class = ITEM_SIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/horsehead
-	name = "horse head mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a horse."
-	icon_state = "horsehead"
-	item_state = "horsehead"
-	flags_inv = HIDEFACE|BLOCKHAIR
-	body_parts_covered = HEAD|FACE|EYES
-	w_class = ITEM_SIZE_SMALL
-	siemens_coefficient = 0.9
-
-/obj/item/clothing/mask/horsehead/New()
-	..()
-	// The horse mask doesn't cause voice changes by default, the wizard spell changes the flag as necessary
-	say_messages = list("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!")
-	say_verbs = list("whinnies", "neighs", "says")
-
 
 /obj/item/clothing/mask/ai
 	name = "camera MIU"
@@ -191,69 +101,6 @@
 		eye.release(eye.owner)
 		eye.forceMove(src)
 
-/obj/item/clothing/mask/rubber
-	name = "rubber mask"
-	desc = "A rubber mask."
-	icon_state = "balaclava"
-	flags_inv = HIDEFACE|BLOCKHAIR
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/rubber/trasen
-	name = "Jack Trasen mask"
-	desc = "CEO of NanoTrasen corporation. Perfect for scaring the unionizing children."
-	icon_state = "trasen"
-	visible_name = "Jack Trasen"
-
-/obj/item/clothing/mask/rubber/barros
-	name = "Amaya Barros mask"
-	desc = "Current Secretary-General of Sol Cental Government. Not that the real thing would visit this pigsty."
-	icon_state = "barros"
-	visible_name = "Amaya Barros"
-
-/obj/item/clothing/mask/rubber/admiral
-	name = "Admiral Diwali mask"
-	desc = "Admiral that led the offensive against the Terran Colonial Navy in the Gaia conflict. For bridge officers who wish they'd achieve a fraction of that."
-	icon_state = "admiral"
-	visible_name = "Admiral Diwali"
-
-/obj/item/clothing/mask/rubber/turner
-	name = "Charles Turner mask"
-	desc = "Premier of the Terran Colonial Confederation. Probably shouldn't wear this in front of your veteran uncle."
-	icon_state = "turner"
-	visible_name = "Charles Turner"
-
-/obj/item/clothing/mask/rubber/species
-	name = "human mask"
-	desc = "A rubber human mask."
-	icon_state = "manmet"
-	var/species = SPECIES_HUMAN
-
-/obj/item/clothing/mask/rubber/species/New()
-	..()
-	visible_name = species
-	var/datum/species/S = all_species[species]
-	if(istype(S))
-		visible_name = S.get_random_name(pick(MALE,FEMALE))
-
-/obj/item/clothing/mask/rubber/species/tajaran
-	name = "tajara mask"
-	desc = "A rubber tajara mask."
-	icon_state = "catmet"
-	species = SPECIES_TAJARA
-
-/obj/item/clothing/mask/rubber/species/unathi
-	name = "unathi mask"
-	desc = "A rubber unathi mask."
-	icon_state = "lizmet"
-	species = SPECIES_UNATHI
-
-/obj/item/clothing/mask/rubber/species/skrell
-	name = "skrell mask"
-	desc = "A rubber skrell mask."
-	icon_state = "skrellmet"
-	species = SPECIES_SKRELL
-
 /obj/item/clothing/mask/spirit
 	name = "spirit mask"
 	desc = "An eerie mask of ancient, pitted wood."
@@ -280,7 +127,6 @@
 			flags_inv = initial(flags_inv)
 			body_parts_covered = initial(body_parts_covered)
 			icon_state = initial(icon_state)
-			sprite_sheets = list(SPECIES_TAJARA = 'icons/mob/species/tajaran/mask.dmi')
 
 		if(slot_head)
 			flags_inv = 0

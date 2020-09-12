@@ -60,17 +60,6 @@
 	icon_state = "star_oracle"
 	armor = list(melee = 25, bullet = 20, laser = 45,energy = 40, bomb = 25, bio = 10, rad = 0)
 
-/obj/item/clothing/suit/shadowsuit
-	name = "traitor's cloak"
-	desc = "There is absolutely nothing visible through the fabric. The shadows stick to your skin when you touch it."
-	icon_state = "star_traitor"
-
-/obj/item/clothing/head/shadowhood
-	name = "traitor's hood"
-	desc = "No light can pierce this hood. It’s unsettling."
-	icon_state = "star_traitor"
-	flags_inv = HIDEEARS | BLOCKHAIR
-
 /obj/item/weapon/material/knife/ritual/shadow
 	name = "black death"
 	desc = "An obsidian dagger. The singed remains of a green cloth are wrapped around the “handle.”"

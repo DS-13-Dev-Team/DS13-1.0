@@ -8,14 +8,6 @@
 	worn_state = "ba_suit"
 
 
-/obj/item/clothing/under/rank/captain //Alright, technically not a 'civilian' but its better then giving a .dm file for a single define.
-	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."
-	name = "captain's jumpsuit"
-	icon_state = "captain"
-	item_state = "b_suit"
-	worn_state = "captain"
-
-
 /obj/item/clothing/under/rank/cargo
 	name = "quartermaster's jumpsuit"
 	desc = "It's a jumpsuit worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
@@ -55,21 +47,6 @@
 	icon_state = "clown"
 	item_state = "clown"
 	worn_state = "clown"
-
-
-/obj/item/clothing/under/rank/head_of_personnel
-	desc = "It's a jumpsuit worn by someone who works in the position of \"Head of Personnel\"."
-	name = "head of personnel's jumpsuit"
-	icon_state = "hop"
-	item_state = "b_suit"
-	worn_state = "hop"
-
-/obj/item/clothing/under/rank/head_of_personnel_whimsy
-	desc = "A blue jacket and red tie, with matching red cuffs! Snazzy. Wearing this makes you feel more important than your job title does."
-	name = "head of personnel's suit"
-	icon_state = "hopwhimsy"
-	item_state = "b_suit"
-	worn_state = "hopwhimsy"
 
 
 /obj/item/clothing/under/rank/hydroponics
@@ -127,21 +104,6 @@
 	item_state = "lawyer_black"
 	worn_state = "black_suit_fem"
 
-
-/obj/item/clothing/under/lawyer/red
-	name = "red Lawyer suit"
-	icon_state = "lawyer_red"
-	item_state = "lawyer_red"
-	worn_state = "lawyer_red"
-
-
-/obj/item/clothing/under/lawyer/blue
-	name = "blue Lawyer suit"
-	icon_state = "lawyer_blue"
-	item_state = "lawyer_blue"
-	worn_state = "lawyer_blue"
-
-
 /obj/item/clothing/under/lawyer/bluesuit
 	name = "Blue Suit"
 	desc = "A classy suit."
@@ -149,13 +111,6 @@
 	item_state = "ba_suit"
 	worn_state = "bluesuit"
 	starting_accessories = list(/obj/item/clothing/accessory/red)
-
-
-/obj/item/clothing/under/lawyer/purpsuit
-	name = "Purple Suit"
-	icon_state = "lawyer_purp"
-	item_state = "ba_suit"
-	worn_state = "lawyer_purp"
 
 /obj/item/clothing/under/lawyer/oldman
 	name = "Old Man's Suit"

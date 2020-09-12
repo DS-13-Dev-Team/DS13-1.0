@@ -10,8 +10,6 @@
 				/obj/item/weapon/rig/vintage,
 				/obj/item/weapon/rig/industrial,
 				/obj/item/weapon/rig/eva,
-				/obj/item/weapon/rig/light/hacker,
-				/obj/item/weapon/rig/light/stealth,
 				/obj/item/weapon/rig/light,
 				/obj/item/weapon/rig/civilian))
 
