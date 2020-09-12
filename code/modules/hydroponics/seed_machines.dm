@@ -217,7 +217,7 @@
 		active = 1
 
 		if(seed && seed.seed)
-			if(prob(user.skill_fail_chance(SKILL_ANATOMY, 100, SKILL_ADEPT)))
+			if(prob(user.skill_fail_chance(SKILL_BOTANY, 100, SKILL_ADEPT)))
 				failed_task = 1
 			else
 				genetics = seed.seed
