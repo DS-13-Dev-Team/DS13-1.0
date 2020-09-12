@@ -12,7 +12,6 @@
 	total_health = 85	//It has high health for the sake of making it a bit harder to destroy without targeting the pustule. Exploding the pustule is always an instakill
 	biomass = 70
 	mass = 50
-	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
 
 	biomass_reclamation_time	=	4.5 MINUTES
 	view_range = 6

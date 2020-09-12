@@ -63,4 +63,3 @@ changes:
   - rscdel: "Removed bluespace tomato as a valid mutation."
   - bugfix: "Fixed inability to make assembly items such as the igniter because it required an item that did not exist."
   - bugfix: "Fixed an uncommon instance of diona nymphs spawning in vending machines. No more leeches!"
-  - bugfix: "Fixed Exploder, Puker, Slasher, Spitter, Twitcher and Ubermorph being able to be slipped, attacks blocked and other various oversights by adding missing species flags."

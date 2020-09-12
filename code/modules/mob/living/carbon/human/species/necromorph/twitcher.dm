@@ -26,7 +26,6 @@
 	spawner_spawnable = FALSE
 	virus_immune = 1
 	biomass	=	120
-	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
 
 
 	slowdown = 1.5
