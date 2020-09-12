@@ -2,64 +2,64 @@
 	var/value = 1
 
 /material/uranium
-	value = 75
+	value = 100
 
 /material/diamond
-	value = 52
+	value = 70
 
 /material/gold
-	value = 30
+	value = 40
 
 /material/silver
-	value = 26
+	value = 35
 
 /material/phoron
-	value = 150
+	value = 200
 
 /material/stone/marble
-	value = 3
+	value = 4
 
 /material/steel
-	value = 3
+	value = 4
 
 /material/steel/holographic
 	value = 0
 
 /material/plasteel
-	value = 9
+	value = 12
 
 /material/plasteel/titanium
-	value = 7
+	value = 10
 
 /material/glass/reinforced
-	value = 1
+	value = 2
 
 /material/glass/phoron
-	value = 22
-
-/material/glass/phoron/reinforced
 	value = 30
 
+/material/glass/phoron/reinforced
+	value = 40
+
 /material/osmium
-	value = 22
+	value = 30
 
 /material/tritium
-	value = 225
+	value = 300
 
 /material/mhydrogen
-	value = 75
+	value = 100
 
 /material/platinum
-	value = 60
+	value = 80
 
 /material/iron
-	value = 4
+	value = 5
 
 /material/voxalloy
-	value = 75
+	value = 100
 
 /material/wood
-	value = 2
+	value = 3
 
 /material/wood/holographic
 	value = 0
@@ -68,4 +68,4 @@
 	value = 0
 
 /material/leather
-	value = 2
+	value = 3

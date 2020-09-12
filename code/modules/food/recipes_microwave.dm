@@ -42,7 +42,7 @@ I said no!
 
 /datum/recipe/dionaroast
 	fruit = list("apple" = 1)
-	reagents = list(/datum/reagent/acid/triflicacid = 5) //It dissolves the carapace. Still poisonous, though.
+	reagents = list(/datum/reagent/acid/polyacid = 5) //It dissolves the carapace. Still poisonous, though.
 	items = list(/obj/item/weapon/holder/diona)
 	result = /obj/item/weapon/reagent_containers/food/snacks/dionaroast
 

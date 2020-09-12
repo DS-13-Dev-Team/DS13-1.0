@@ -8,9 +8,9 @@
 	path = "ishimura"
 	station_levels = list(1,2)
 	contact_levels = list(1,2,3)
-	player_levels = list(1,2,3)
-	admin_levels = list()
-	empty_levels = list(5)
+	player_levels = list(1,2)
+	admin_levels = list(5)
+	empty_levels = list()
 	accessible_z_levels = list("1"=1,"2"=1,"3"=2,"4"=3)
 	local_currency_name = "credits"
 	station_networks = list(
@@ -57,7 +57,7 @@
 
 	//Spawnpoints:
 	//These are display names of spawnpoint datums, taken from preferences_spawnpoints.dm
-	allowed_spawns = list(SPAWNPOINT_CRYO)
+	allowed_spawns = list(SPAWNPOINT_CRYO, SPAWNPOINT_DORM, SPAWNPOINT_MAINT)
 	evac_controller_type = /datum/evacuation_controller/starship
 
 	lobby_icon = 'maps/DeadSpace/icons/lobby.dmi'
@@ -71,11 +71,11 @@
 /music_track/ds13/unitology)
 
 	allowed_jobs = list(/datum/job/cap, /datum/job/fl, /datum/job/bo, /datum/job/cseco,
-						/datum/job/sso, /datum/job/security_officer, /datum/job/colony_officer, /datum/job/smo,
-						/datum/job/md, /datum/job/surg, /datum/job/cd, /datum/job/cscio, /datum/job/ra,
+						/datum/job/sso, /datum/job/security_officer, /datum/job/smo,
+						/datum/job/md, /datum/job/surg, /datum/job/cscio, /datum/job/ra,
 						/datum/job/ce, /datum/job/tech_engineer, /datum/job/so,
 						/datum/job/serviceman, /datum/job/dom, /datum/job/foreman,
-						/datum/job/planet_cracker, /datum/job/line_cook, /datum/job/bar
+						/datum/job/planet_cracker, /datum/job/line_cook, /datum/job/bar, /datum/job/botanist
 						)
 /turf/simulated/wall
 	name = "bulkhead"

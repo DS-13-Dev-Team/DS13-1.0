@@ -196,7 +196,7 @@
 				my_effect.ToggleActivate()
 			if(secondary_effect && secondary_effect.trigger == TRIGGER_WATER && prob(25))
 				secondary_effect.ToggleActivate(0)
-		else if(W.reagents.has_reagent(/datum/reagent/acid, 1) || W.reagents.has_reagent(/datum/reagent/acid/triflicacid, 1) || W.reagents.has_reagent(/datum/reagent/diethylamine, 1))
+		else if(W.reagents.has_reagent(/datum/reagent/acid, 1) || W.reagents.has_reagent(/datum/reagent/acid/polyacid, 1) || W.reagents.has_reagent(/datum/reagent/diethylamine, 1))
 			if(my_effect.trigger == TRIGGER_ACID)
 				my_effect.ToggleActivate()
 			if(secondary_effect && secondary_effect.trigger == TRIGGER_ACID && prob(25))

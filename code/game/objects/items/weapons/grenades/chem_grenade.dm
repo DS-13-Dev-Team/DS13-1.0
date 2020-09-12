@@ -205,7 +205,7 @@
 
 		B1.reagents.add_reagent(/datum/reagent/aluminum, 30)
 		B2.reagents.add_reagent(/datum/reagent/foaming_agent, 10)
-		B2.reagents.add_reagent(/datum/reagent/acid/triflicacid, 10)
+		B2.reagents.add_reagent(/datum/reagent/acid/polyacid, 10)
 
 		detonator = new/obj/item/device/assembly_holder/timer_igniter(src)
 
