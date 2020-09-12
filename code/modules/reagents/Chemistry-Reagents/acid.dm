@@ -83,14 +83,14 @@
 	meltdose = 8
 
 
-/datum/reagent/acid/triflicacid
-	name = "Triflic acid"
-	description = "Triflic acid is a an extremely corrosive chemical substance."
+/datum/reagent/acid/polyacid
+	name = "Polytrinic acid"
+	description = "Polytrinic acid is a an extremely corrosive chemical substance."
 	taste_description = "acid"
 	reagent_state = LIQUID
-	color = "#939c38"
-	power = NECROMORPH_ACID_POWER * 1.5
-	meltdose = 8
+	color = "#8e18a9"
+	power = 5
+	meltdose = 4
 
 
 /datum/reagent/acid/necromorph

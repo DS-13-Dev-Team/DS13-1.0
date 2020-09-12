@@ -66,9 +66,6 @@
 			new/obj/item/toy/balloon(src)
 		if(59 to 60)
 			new/obj/item/weapon/rig(src)
-		if(61 to 62)
-			for(var/i = 0, i < 12, ++i)
-				new/obj/item/clothing/head/kitty(src)
 		if(63 to 64)
 			var/t = rand(4,7)
 			for(var/i = 0, i < t, ++i)
@@ -134,7 +131,6 @@
 			new/obj/item/weapon/melee/energy/sword(src)
 		if(99)
 			new/obj/item/weapon/storage/belt/champion(src)
-			new/obj/item/clothing/mask/luchador(src)
 		if(100)
 			new/obj/item/clothing/head/bearpelt(src)
 

@@ -1,9 +1,7 @@
 /obj/item/clothing/glasses
 	name = "glasses"
 	icon = 'icons/obj/clothing/glasses.dmi'
-	sprite_sheets = list(
-		SPECIES_UNATHI = 'icons/mob/onmob/Unathi/eyes.dmi'
-		)
+
 	var/hud_type
 	var/prescription = FALSE
 	var/toggleable = FALSE
@@ -201,13 +199,6 @@
 	item_state = "3d"
 	body_parts_covered = 0
 
-/obj/item/clothing/glasses/gglasses
-	name = "green glasses"
-	desc = "Forest green glasses, like the kind you'd wear when hatching a nasty scheme."
-	icon_state = "gglasses"
-	item_state = "gglasses"
-	body_parts_covered = 0
-
 /obj/item/clothing/glasses/sunglasses
 	name = "sunglasses"
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
@@ -297,11 +288,6 @@
 	hud = /obj/item/clothing/glasses/hud/security
 	electric = TRUE
 
-/obj/item/clothing/glasses/sunglasses/sechud/goggles //now just a more "military" set of HUDglasses for the Torch
-	name = "HUD goggles"
-	desc = "Flash-resistant goggles with an inbuilt heads-up display."
-	icon_state = "goggles"
-
 /obj/item/clothing/glasses/sunglasses/sechud/toggle
 	name = "HUD aviators"
 	desc = "Modified aviator glasses that can be switched between HUD and flash protection modes."
@@ -375,12 +361,6 @@
 	activation_sound = null
 	action_button_name = null
 
-/obj/item/clothing/glasses/thermal/plain/monocle
-	name = "thermoncle"
-	desc = "A monocle thermal."
-	icon_state = "thermoncle"
-	body_parts_covered = 0 //doesn't protect eyes because it's a monocle, duh
-
 /obj/item/clothing/glasses/thermal/plain/eyepatch
 	name = "optical thermal eyepatch"
 	desc = "An eyepatch with built-in thermal optics."
@@ -394,165 +374,3 @@
 	desc = "A set of implantable lenses designed to augment your vision."
 	icon_state = "thermalimplants"
 	item_state = "syringe_kit"
-
-/obj/item/clothing/glasses/eyepatch/hud
-	name = "iPatch"
-	desc = "For the technologically inclined pirate. It connects directly to the optical nerve of the user, replacing the need for that useless eyeball."
-	gender = NEUTER
-	icon_state = "hudpatch"
-	item_state = "hudpatch"
-	off_state = "hudpatch"
-	action_button_name = "Toggle iPatch"
-	toggleable = TRUE
-	var/eye_color = COLOR_WHITE
-	electric = TRUE
-
-/obj/item/clothing/glasses/eyepatch/hud/Initialize()
-	.  = ..()
-	update_icon()
-
-/obj/item/clothing/glasses/eyepatch/hud/attack_self()
-	..()
-	update_icon()
-
-/obj/item/clothing/glasses/eyepatch/hud/update_icon()
-	overlays.Cut()
-	if(active)
-		var/image/eye = overlay_image(icon, "[icon_state]_eye", flags=RESET_COLOR)
-		eye.color = eye_color
-		overlays += eye
-
-/obj/item/clothing/glasses/eyepatch/hud/get_mob_overlay(mob/user_mob, slot)
-	var/image/res = ..()
-	if(active)
-		var/image/eye = overlay_image(res.icon, "[icon_state]_eye", flags=RESET_COLOR)
-		eye.color = eye_color
-		eye.layer = ABOVE_LIGHTING_LAYER
-		eye.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-		res.overlays += eye
-	return res
-
-/obj/item/clothing/glasses/eyepatch/hud/security
-	name = "HUDpatch"
-	desc = "A Security-type heads-up display that connects directly to the optical nerve of the user, replacing the need for that useless eyeball."
-	hud = /obj/item/clothing/glasses/hud/security
-	eye_color = COLOR_RED
-
-/obj/item/clothing/glasses/eyepatch/hud/medical
-	name = "MEDpatch"
-	desc = "A Medical-type heads-up display that connects directly to the ocular nerve of the user, replacing the need for that useless eyeball."
-	hud = /obj/item/clothing/glasses/hud/health
-	eye_color = COLOR_CYAN
-
-/obj/item/clothing/glasses/eyepatch/hud/meson
-	name = "MESpatch"
-	desc = "An optical meson scanner display that connects directly to the ocular nerve of the user, replacing the need for that useless eyeball."
-	vision_flags = SEE_TURFS
-	see_invisible = SEE_INVISIBLE_NOLIGHTING
-	eye_color = COLOR_LIME
-
-/obj/item/clothing/glasses/eyepatch/hud/meson/Initialize()
-	. = ..()
-	overlay = GLOB.global_hud.meson
-
-
-/*---Tajaran-specific Eyewear---*/
-
-/obj/item/clothing/glasses/tajblind
-	name = "embroidered veil"
-	desc = "An Ahdominian made veil that allows the user to see while obscuring their eyes."
-	icon_state = "tajblind"
-	item_state = "tajblind"
-	prescription = 5
-	body_parts_covered = EYES
-
-/obj/item/clothing/glasses/hud/health/tajblind
-	name = "lightweight veil"
-	desc = "An Ahdominian made veil that allows the user to see while obscuring their eyes. This one has an installed medical HUD."
-	icon_state = "tajblind_med"
-	item_state = "tajblind_med"
-	body_parts_covered = EYES
-
-/obj/item/clothing/glasses/sunglasses/sechud/tajblind
-	name = "sleek veil"
-	desc = "An Ahdominian made veil that allows the user to see while obscuring their eyes. This one has an in-built security HUD."
-	icon_state = "tajblind_sec"
-	item_state = "tajblind_sec"
-	prescription = 5
-	body_parts_covered = EYES
-
-/obj/item/clothing/glasses/meson/prescription/tajblind
-	name = "industrial veil"
-	desc = "An Ahdominian made veil that allows the user to see while obscuring their eyes. This one has installed mesons."
-	icon_state = "tajblind_meson"
-	item_state = "tajblind_meson"
-	off_state = "tajblind_meson"
-	body_parts_covered = EYES
-
-/obj/item/clothing/glasses/hud/health/tajvisor
-	name = "lightweight visor"
-	desc = "A modern Ahdominian made visor that allows the user to see while obscuring their eyes. This one has an installed medical HUD."
-	icon_state = "tajvisor_med"
-	item_state = "tajvisor_med"
-	body_parts_covered = EYES
-
-/obj/item/clothing/glasses/sunglasses/sechud/tajvisor
-	name = "sleek visor"
-	desc = "A modern Ahdominian made visor that allows the user to see while obscuring their eyes. This one has an in-built security HUD."
-	icon_state = "tajvisor_sec"
-	item_state = "tajvisor_sec"
-	prescription = 5
-	body_parts_covered = EYES
-
-/obj/item/clothing/glasses/meson/prescription/tajvisor
-	name = "industrial visor"
-	desc = "A modern Ahdominian made visor that allows the user to see while obscuring their eyes. This one has installed mesons."
-	icon_state = "tajvisor_mes"
-	item_state = "tajvisor_mes"
-	off_state = "tajvisor_mes"
-	body_parts_covered = EYES
-
-/obj/item/clothing/glasses/tajvisor
-	name = "tajaran master visor object, not used"
-	desc = "An Ahdominian made eyeguard."
-	body_parts_covered = EYES
-
-/obj/item/clothing/glasses/tajvisor/a
-	name = "visor"
-	icon_state = "tajvisor_a"
-	item_state = "tajvisor_a"
-
-/obj/item/clothing/glasses/tajvisor/b
-	name = "visor"
-	icon_state = "tajvisor_b"
-	item_state = "tajvisor_b"
-
-/obj/item/clothing/glasses/tajvisor/c
-	name = "visor"
-	icon_state = "tajvisor_c"
-	item_state = "tajvisor_c"
-
-/obj/item/clothing/glasses/tajvisor/d
-	name = "visor"
-	icon_state = "tajvisor_d"
-	item_state = "tajvisor_d"
-
-/obj/item/clothing/glasses/tajvisor/d
-	name = "visor"
-	icon_state = "tajvisor_d"
-	item_state = "tajvisor_d"
-
-/obj/item/clothing/glasses/tajvisor/e
-	name = "visor"
-	icon_state = "tajvisor_e"
-	item_state = "tajvisor_e"
-
-/obj/item/clothing/glasses/tajvisor/f
-	name = "visor"
-	icon_state = "tajvisor_f"
-	item_state = "tajvisor_f"
-
-/obj/item/clothing/glasses/tajvisor/g
-	name = "visor"
-	icon_state = "tajvisor_g"
-	item_state = "tajvisor_g"

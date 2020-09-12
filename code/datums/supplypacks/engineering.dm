@@ -200,7 +200,7 @@
 
 /decl/hierarchy/supply_pack/engineering/firefighter
 	name = "Firefighting equipment"
-	contains = list(/obj/item/clothing/suit/fire/firefighter,
+	contains = list(/obj/item/clothing/suit/fire,
 			/obj/item/clothing/mask/gas,
 			/obj/item/weapon/tank/oxygen/red,
 			/obj/item/weapon/extinguisher,
@@ -208,6 +208,13 @@
 	cost = 20
 	containertype = /obj/structure/closet/firecloset
 	containername = "\improper fire-safety closet"
+
+/decl/hierarchy/supply_pack/engineering/firesuit
+	name = "Armor - Firesuit rig"
+	contains = list(/obj/item/weapon/rig/firesuit)
+	cost = 80
+	containertype = /obj/structure/closet/crate/secure/large
+	containername = "\improper Firesuit rig crate"
 
 /decl/hierarchy/supply_pack/engineering/toolmods
 	name = "Tool Modification Kit"

@@ -479,13 +479,18 @@
 	use_power(vend_power_usage)	//actuators and stuff
 	if (src.icon_vend) //Show the vending animation if needed
 		flick(src.icon_vend,src)
-	else //Just a normal vend, then
-		R.get_product(get_turf(src))
-		src.visible_message("\The [src] whirs as it vends \the [R.item_name].")
-		if(prob(1)) //The vending gods look favorably upon you
-			sleep(3)
-			if(R.get_product(get_turf(src)))
-				src.visible_message("<span class='notice'>\The [src] clunks as it vends an additional [R.item_name].</span>")
+	spawn(src.vend_delay) //Time to vend
+		if(prob(diona_spawn_chance)) //Hehehe
+			var/turf/T = get_turf(src)
+			var/mob/living/carbon/alien/diona/S = new(T)
+			src.visible_message("<span class='notice'>\The [src] makes an odd grinding noise before coming to a halt as \a [S.name] slurmps out from the receptacle.</span>")
+		else //Just a normal vend, then
+			R.get_product(get_turf(src))
+			src.visible_message("\The [src] whirs as it vends \the [R.item_name].")
+			if(prob(1)) //The vending gods look favorably upon you
+				sleep(3)
+				if(R.get_product(get_turf(src)))
+					src.visible_message("<span class='notice'>\The [src] clunks as it vends an additional [R.item_name].</span>")
 
 		src.status_message = ""
 		src.status_error = 0
@@ -871,7 +876,7 @@
 					/obj/item/weapon/storage/pill_bottle/inaprovaline = 5, /obj/item/weapon/storage/pill_bottle/sugariron = 2,
 					/obj/item/weapon/reagent_containers/syringe = 12,
 					/obj/item/device/healthanalyzer = 5, /obj/item/stack/medical/advanced/bruise_pack = 5, /obj/item/stack/medical/advanced/ointment = 5,
-					/obj/item/stack/medical/bruise_pack = 10, /obj/item/stack/medical/ointment = 10, /obj/item/weapon/defibrillator/loaded = 2, /obj/item/weapon/defibrillator/compact/loaded = 1,
+					/obj/item/stack/medical/bruise_pack = 10, /obj/item/stack/medical/ointment = 10,
 					/obj/item/stack/medical/splint = 2, /obj/item/weapon/reagent_containers/hypospray/autoinjector/pain = 4)
 	contraband = list(/obj/item/clothing/mask/chewable/candy/lolli/meds = 8, /obj/item/weapon/storage/pill_bottle/dermaline = 4,
 					/obj/item/weapon/reagent_containers/pill/tox = 3,/obj/item/weapon/reagent_containers/pill/stox = 4,/obj/item/weapon/reagent_containers/pill/antitox = 6,
@@ -1024,7 +1029,7 @@
 	vend_delay = 15
 	vend_reply = "Have an enchanted evening!"
 	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Down with Central!;Admin conspiracies since forever!;Space-time bending hardware!"
-	products = list(/obj/item/clothing/head/wizard = 1,/obj/item/clothing/suit/wizrobe = 1,/obj/item/clothing/head/wizard/red = 1,/obj/item/clothing/suit/wizrobe/red = 1,/obj/item/clothing/shoes/sandal = 1,/obj/item/weapon/staff = 2)
+	products = list(/obj/item/clothing/head/wizard = 1,/obj/item/clothing/suit/wizrobe = 1,/obj/item/clothing/shoes/sandal = 1,/obj/item/weapon/staff = 2)
 
 /obj/machinery/vending/dinnerware
 	name = "Dinnerware"

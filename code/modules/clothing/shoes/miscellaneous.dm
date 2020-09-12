@@ -10,20 +10,6 @@
 	siemens_coefficient = 0.8
 	species_restricted = null
 
-/obj/item/clothing/shoes/mime
-	name = "mime shoes"
-	icon_state = "mime"
-
-/obj/item/clothing/shoes/swat
-	name = "\improper SWAT boots"
-	desc = "When you want to turn up the heat."
-	icon_state = "swat"
-	force = 3
-	armor = list(melee = 80, bullet = 60, laser = 60,energy = 25, bomb = 50, bio = 10, rad = 0)
-	item_flags = ITEM_FLAG_NOSLIP
-	siemens_coefficient = 0.6
-	can_hold_knife = 1
-
 /obj/item/clothing/shoes/combat //Basically SWAT shoes combined with galoshes.
 	name = "combat boots"
 	desc = "When you REALLY want to turn up the heat."
@@ -87,17 +73,11 @@
 /obj/item/clothing/shoes/sandal
 	desc = "A pair of rather plain, wooden sandals."
 	name = "sandals"
-	icon_state = "wizard"
+	icon_state = "sandals"
 	species_restricted = null
 	body_parts_covered = 0
 
 	wizard_garb = 1
-
-/obj/item/clothing/shoes/sandal/marisa
-	desc = "A pair of magic, black shoes."
-	name = "magic shoes"
-	icon_state = "black"
-	body_parts_covered = FEET
 
 /obj/item/clothing/shoes/clown_shoes
 	desc = "The prankster's standard-issue clowning shoes. Damn they're huge!"
@@ -163,22 +143,6 @@
 	desc = "The height of fashion, and they're pre-polished!"
 	icon_state = "laceups"
 
-/obj/item/clothing/shoes/swimmingfins
-	desc = "Help you swim good."
-	name = "swimming fins"
-	icon_state = "flippers"
-	item_flags = ITEM_FLAG_NOSLIP
-	species_restricted = null
-
-/obj/item/clothing/shoes/swimmingfins/New()
-	..()
-	slowdown_per_slot[slot_shoes] = 1
-
-/obj/item/clothing/shoes/athletic
-	name = "athletic shoes"
-	desc = "A pair of sleek atheletic shoes. Made by and for the sporty types."
-	icon_state = "sportshoe"
-
 /obj/item/clothing/shoes/laceup/sneakies
 	desc = "The height of fashion, and they're pre-polished. Upon further inspection, the soles appear to be on backwards. They look uncomfortable."
 	species_restricted = list(SPECIES_HUMAN, SPECIES_IPC)
@@ -189,7 +153,7 @@
 /obj/item/clothing/shoes/ds_securityboots
 	name = "combat boots"
 	desc = "A pair of standard, CEC issue, combat boots. Stomping on secession since the Mars Riots."
-	icon_state = "ds_securityjackboots"
+	icon_state = "duty"
 	force = 3
 	armor = list(melee = 80, bullet = 60, laser = 0,energy = 0, bomb = 50, bio = 10, rad = 0)
 	item_flags = ITEM_FLAG_NOSLIP

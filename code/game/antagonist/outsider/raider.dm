@@ -22,17 +22,13 @@ GLOBAL_DATUM_INIT(raiders, /datum/antagonist/raider, new)
 
 	// Heist overrides check_victory() and doesn't need victory or loss strings/tags.
 	var/list/raider_uniforms = list(
-		/obj/item/clothing/under/soviet,
 		/obj/item/clothing/under/pirate,
-		/obj/item/clothing/under/redcoat,
 		/obj/item/clothing/under/serviceoveralls,
-		/obj/item/clothing/under/captain_fly,
 		/obj/item/clothing/under/det,
 		/obj/item/clothing/under/color/brown,
 		)
 
 	var/list/raider_shoes = list(
-		/obj/item/clothing/shoes/jackboots,
 		/obj/item/clothing/shoes/workboots,
 		/obj/item/clothing/shoes/brown,
 		/obj/item/clothing/shoes/laceup
@@ -40,8 +36,7 @@ GLOBAL_DATUM_INIT(raiders, /datum/antagonist/raider, new)
 
 	var/list/raider_glasses = list(
 		/obj/item/clothing/glasses/thermal,
-		/obj/item/clothing/glasses/thermal/plain/eyepatch,
-		/obj/item/clothing/glasses/thermal/plain/monocle
+		/obj/item/clothing/glasses/thermal/plain/eyepatch
 		)
 
 	var/list/raider_helmets = list(
@@ -60,7 +55,6 @@ GLOBAL_DATUM_INIT(raiders, /datum/antagonist/raider, new)
 		/obj/item/clothing/suit/storage/toggle/brown_jacket,
 		/obj/item/clothing/suit/storage/toggle/hoodie,
 		/obj/item/clothing/suit/storage/toggle/hoodie/black,
-		/obj/item/clothing/suit/unathi/mantle,
 		/obj/item/clothing/suit/poncho/colored,
 		)
 
@@ -208,7 +202,7 @@ GLOBAL_DATUM_INIT(raiders, /datum/antagonist/raider, new)
 		player.equip_to_slot_or_del(new new_shoes(player),slot_shoes)
 		if(!player.shoes)
 			//If equipping shoes failed, fall back to equipping sandals
-			var/fallback_type = pick(/obj/item/clothing/shoes/sandal, /obj/item/clothing/shoes/jackboots/unathi)
+			var/fallback_type = pick(/obj/item/clothing/shoes/sandal)
 			player.equip_to_slot_or_del(new fallback_type(player), slot_shoes)
 
 		player.equip_to_slot_or_del(new new_uniform(player),slot_w_uniform)

@@ -12,10 +12,10 @@
 /obj/item/clothing/suit/fire
 	name = "firesuit"
 	desc = "A suit that protects against fire and heat."
-	icon_state = "fire"
+	icon_state = "firesuit"
 	item_state_slots = list(
-		slot_l_hand_str = "fire_suit",
-		slot_r_hand_str = "fire_suit",
+		slot_l_hand_str = "firefighter",
+		slot_r_hand_str = "firefighter",
 	)
 	w_class = ITEM_SIZE_HUGE//bulky item
 	gas_transfer_coefficient = 0.90
@@ -31,28 +31,6 @@
 /obj/item/clothing/suit/fire/New()
 	..()
 	slowdown_per_slot[slot_wear_suit] = 1.0
-
-/obj/item/clothing/suit/fire/firefighter
-	icon_state = "firesuit"
-	item_state_slots = list(
-		slot_l_hand_str = "firefighter",
-		slot_r_hand_str = "firefighter",
-	)
-
-
-/obj/item/clothing/suit/fire/heavy
-	name = "firesuit"
-	desc = "A suit that protects against extreme fire and heat."
-	//icon_state = "thermal"
-	item_state_slots = list(
-		slot_l_hand_str = "ro_suit",
-		slot_r_hand_str = "ro_suit",
-	)
-	w_class = ITEM_SIZE_HUGE//bulky item
-
-/obj/item/clothing/suit/fire/heavy/New()
-	..()
-	slowdown_per_slot[slot_wear_suit] = 1.5
 
 /*
  * Bomb protection

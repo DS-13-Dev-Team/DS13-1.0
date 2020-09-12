@@ -238,11 +238,10 @@
 /decl/hierarchy/outfit/spec_op_officer
 	name = "Spec Ops - Officer"
 	uniform = /obj/item/clothing/under/syndicate/combat
-	suit = /obj/item/clothing/suit/armor/swat/officer
+	suit = /obj/item/clothing/suit/armor/swat
 	l_ear = /obj/item/device/radio/headset/ert
 	glasses = /obj/item/clothing/glasses/thermal/plain/eyepatch
 	mask = /obj/item/clothing/mask/smokable/cigarette/cigar/havana
-	head = /obj/item/clothing/head/beret/deathsquad
 	back = /obj/item/weapon/storage/backpack/satchel
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/thick/combat
@@ -256,14 +255,14 @@
 	name = "Spec Ops - Officer in space"
 	suit = /obj/item/clothing/suit/space/void/swat
 	back = /obj/item/weapon/tank/jetpack/oxygen
-	mask = /obj/item/clothing/mask/gas/swat
+	mask = /obj/item/clothing/mask/gas
 
 	flags = OUTFIT_HAS_JETPACK|OUTFIT_RESET_EQUIPMENT
 
 /decl/hierarchy/outfit/ert
 	name = "Spec Ops - Emergency response team"
 	uniform = /obj/item/clothing/under/ert
-	shoes = /obj/item/clothing/shoes/swat
+	shoes = /obj/item/clothing/shoes/dutyboots
 	gloves = /obj/item/clothing/gloves/thick/swat
 	l_ear = /obj/item/device/radio/headset/ert
 	belt = /obj/item/weapon/gun/energy/gun
@@ -308,14 +307,12 @@
 	name = "Spec Ops - Syndicate"
 	suit = /obj/item/clothing/suit/armor/vest
 	mask = /obj/item/clothing/mask/gas
-	head = /obj/item/clothing/head/helmet/swat
-	shoes = /obj/item/clothing/shoes/swat
+	shoes = /obj/item/clothing/shoes/dutyboots
 	id_desc = "Syndicate Operative"
 
 /decl/hierarchy/outfit/mercenary/syndicate/commando
 	name = "Spec Ops - Syndicate Commando"
 	suit = /obj/item/clothing/suit/space/void/merc
-	mask = /obj/item/clothing/mask/gas/syndicate
 	head = /obj/item/clothing/head/helmet/space/void/merc
 	back = /obj/item/weapon/tank/jetpack/oxygen
 	l_pocket = /obj/item/weapon/tank/emergency/oxygen
