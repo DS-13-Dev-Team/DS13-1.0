@@ -591,7 +591,7 @@
 /datum/design/item/weapon/divet
 	name = "Winchester NK Divet pistol"
 	id = "divet"
-	req_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 3)
+	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 	materials = list(MATERIAL_STEEL = 10000, MATERIAL_SILVER = 4000)
 	build_path = /obj/item/weapon/gun/projectile/divet
 	sort_string = "TACEA"
@@ -599,7 +599,7 @@
 /datum/design/item/weapon/divetslug
 	name = "divet magazine"
 	id = "divetslug"
-	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
+	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	materials = list(MATERIAL_STEEL = 4000)
 	build_path = /obj/item/ammo_magazine/divet
 	sort_string = "TACEB"
@@ -810,16 +810,7 @@
 	materials = list(MATERIAL_STEEL = 120, MATERIAL_GLASS = 50)
 	build_path = /obj/item/weapon/tool/weldingtool/advanced
 	sort_string = "VAGAG"
-/*
-/datum/design/item/tool/shield_diffuser
-	name = "portable shield diffuser"
-	desc = "A small handheld device designed to disrupt energy barriers."
-	id = "portable_shield_diffuser"
-	req_tech = list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_ILLEGAL = 2)
-	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 5000, MATERIAL_GOLD = 2000, MATERIAL_SILVER = 2000)
-	build_path = /obj/item/weapon/shield_diffuser
-	sort_string = "VAGAH"
-*/
+
 /datum/design/item/tool/oxycandle
 	name = "oxycandle"
 	desc = "a device which, via a chemical reaction, can pressurise small areas."
@@ -834,28 +825,10 @@
 	..()
 	name = "Encryption key design ([item_name])"
 
-/* /datum/design/item/encryptionkey/binary
-	name = "binary"
-	desc = "Allows for deciphering the binary channel on-the-fly."
-	id = "binaryencrypt"
-	req_tech = list(TECH_ILLEGAL = 2)
-	materials = list(MATERIAL_STEEL = 300, MATERIAL_GLASS = 300)
-	build_path = /obj/item/device/encryptionkey/binary
-	sort_string = "VASAA"
-*/
 /datum/design/item/camouflage/AssembleDesignName()
 	..()
 	name = "Camouflage design ([item_name])"
 
-/* /datum/design/item/camouflage/chameleon
-	name = "holographic equipment kit"
-	desc = "A kit of dangerous, high-tech equipment with changeable looks."
-	id = "chameleon"
-	req_tech = list(TECH_ILLEGAL = 2)
-	materials = list(MATERIAL_STEEL = 500)
-	build_path = /obj/item/weapon/storage/backpack/chameleon/sydie_kit
-	sort_string = "VASBA"
-*/ // very doubtful we want chameleon kits ever appearing as they can imitate a multitude of lore-breaking items.
 // Superconductive magnetic coils
 /datum/design/item/smes_coil/AssembleDesignName()
 	..()
