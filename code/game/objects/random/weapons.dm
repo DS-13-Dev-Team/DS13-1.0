@@ -60,6 +60,7 @@
 
 /obj/random/ammo/item_to_spawn()
 	return pickweight(list(/obj/item/ammo_magazine/pulse = 1.5,
+	/obj/item/ammo_magazine/pulse/hv = 0.5,
 	/obj/item/weapon/cell/plasmacutter = 1.5,
 	/obj/item/ammo_magazine/sawblades = 1,
 	/obj/item/ammo_magazine/bullpup = 1,
