@@ -312,23 +312,7 @@
 	materials = list(MATERIAL_STEEL = 6000, MATERIAL_GLASS = 1000) //expensive, but no need for miners.
 	build_path = /obj/item/weapon/tool/pickaxe/drill
 	sort_string = "KAAAB"
-
-/datum/design/item/mining/miningcutter
-	name = "mining cutter"
-	id = "miningcutter"
-	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
-	materials = list(MATERIAL_STEEL = 1500, MATERIAL_GLASS = 500, MATERIAL_GOLD = 500, MATERIAL_PHORON = 500)
-	build_path = /obj/item/weapon/gun/energy/cutter
-	sort_string = "KAAAC"
-
-/datum/design/item/mining/miningcutter
-	name = "mining cutter"
-	id = "miningcutter"
-	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
-	materials = list(MATERIAL_STEEL = 1500, MATERIAL_GLASS = 500, MATERIAL_GOLD = 500, MATERIAL_PHORON = 500)
-	build_path = /obj/item/weapon/gun/energy/cutter
-	sort_string = "KAAAC"
-*/ // Having this used earlier does nothing but clutter, I think. Plus it's used twice, oddly. Also probably messes with the lower examples' material cost.
+*/
 /datum/design/item/mining/depth_scanner
 	name = "depth scanner"
 	desc = "Used to check spatial depth and density of rock outcroppings."
@@ -463,7 +447,7 @@
 	..()
 	name = "Implantable biocircuit design ([item_name])"
 
-/* /datum/design/item/implant/chemical
+/datum/design/item/implant/chemical
 	name = "chemical implant"
 	id = "implant_chem"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3)
@@ -511,7 +495,7 @@
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3, TECH_ILLEGAL = 4)
 	build_path = /obj/item/weapon/implantcase/explosive
 	sort_string = "MFAAG"
-*/
+
 /datum/design/item/weapon/AssembleDesignName()
 	..()
 	name = "Weapon prototype ([item_name])"
@@ -607,7 +591,7 @@
 /datum/design/item/weapon/divet
 	name = "Winchester NK Divet pistol"
 	id = "divet"
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5)
+	req_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 3)
 	materials = list(MATERIAL_STEEL = 10000, MATERIAL_SILVER = 4000)
 	build_path = /obj/item/weapon/gun/projectile/divet
 	sort_string = "TACEA"
@@ -615,15 +599,15 @@
 /datum/design/item/weapon/divetslug
 	name = "divet magazine"
 	id = "divetslug"
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 4)
+	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 	materials = list(MATERIAL_STEEL = 4000)
 	build_path = /obj/item/ammo_magazine/divet
 	sort_string = "TACEB"
 
-/datum/design/item/weapon/50cal
+/datum/design/item/weapon/50cal/ammo
 	name = ".50 AE magazine"
 	id = "50cal"
-	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 6, TECH_ENGINEERING = 6)
+	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5)
 	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GOLD = 2000, MATERIAL_DIAMOND = 1000, MATERIAL_PLASTEEL = 2000) // Plasteel can be changed to deuterium later when I get around to defining material for it. If you have an idea for a reagent that could be used to minimize production of these, please add it.
 	build_path = /obj/item/ammo_magazine/a50
 	sort_string = "TACEH"
@@ -631,7 +615,7 @@
 /datum/design/item/weapon/pulserifle
 	name = "SWS Motorized Pulse Rifle"
 	id = "pulserifle"
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 6, TECH_ENGINEERING = 6)
+	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5)
 	materials = list(MATERIAL_STEEL = 30000, MATERIAL_GLASS = 2000, MATERIAL_SILVER = 4000, MATERIAL_URANIUM = 4000) // times 6 the cost of a contact beam, the basic idea is that the massive steel cost will make getting a lot difficult due to transport of materials, what if you just brought the R&D set down to cargo, not gonna work because I'm pretty sure R&D servers aren't Multi-Z.
 	build_path = /obj/item/weapon/gun/projectile/automatic/pulse_rifle
 	sort_string = "TBECF"
@@ -639,7 +623,7 @@
 /datum/design/item/weapon/pulseslug
 	name = "rifle slug magazine"
 	id = "pulseslug"
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5)
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
 	materials = list(MATERIAL_STEEL = 10000) // Same thing here. It might need tweaking with exotic materials to stop people getting a lot of it early on though.
 	build_path = /obj/item/ammo_magazine/pulse
 	sort_string = "TBECD"
@@ -1753,13 +1737,6 @@ CIRCUITS BELOW
 	build_path = /obj/item/weapon/circuitboard/ntnet_relay
 	sort_string = "WAAAA"
 
-/* /datum/design/circuit/replicator
-	name = "food replicator"
-	id = "freplicator"
-	req_tech = list(TECH_BIO = 3, TECH_DATA = 3)
-	build_path = /obj/item/weapon/circuitboard/replicator
-	sort_string = "WAAAR"
-*/ // Pretty sure this doesn't even work, it's definitely not lore friendly and if it did work, it could provide theoretically limitless biomass to the marker because of how it works when upgraded.
 /datum/design/circuit/integrated
 	name = "integrated circuit"
 	id = "integrated"
