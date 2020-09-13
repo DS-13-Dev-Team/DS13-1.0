@@ -19,6 +19,9 @@
 /obj/item/organ/internal/heart/undead
 	pulse = 0
 
+/obj/item/organ/internal/heart/undead/get_damage()
+	return 0
+
 /obj/item/organ/internal/heart/undead/Initialize()
 	.=..()
 	die()
@@ -63,6 +66,10 @@
 				take_internal_damage(0.5)
 		handle_blood()
 	..()
+
+/obj/item/organ/internal/heart/rejuvenate(var/ignore_prosthetic_prefs)
+	pulse = PULSE_NORM
+	.=..()
 
 /obj/item/organ/internal/heart/proc/handle_pulse()
 	if(BP_IS_ROBOTIC(src))

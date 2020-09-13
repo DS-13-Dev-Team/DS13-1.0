@@ -8,6 +8,8 @@
 	var/pain_shock_threshold = 30	//Pain above this threshold will cause the mob to start going into shock
 	var/lasting_damage = 0	//Damage which doesn't heal under normal circumstances
 
+	var/ranged_accuracy_modifier = 0	//Added or removed from accuracy when using ranged weapons
+
 	var/biomass = 1	//How much biomass is this mob worth when absorbed
 
 	var/hud_updateflag = 0

@@ -16,13 +16,16 @@
 	var/intensity
 	var/lifetimer
 
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1,
+	STATMOD_ATTACK_SPEED = 1)
 
 /datum/extension/frenzy_buff/New(var/datum/holder, var/_duration, var/_intensity)
+	statmods[STATMOD_MOVESPEED_MULTIPLICATIVE] = 1+intensity
+	statmods[STATMOD_ATTACK_SPEED] = intensity
 	..()
 	user = holder
 	intensity = _intensity
-	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
-	user.attack_speed_factor += intensity
+
 	set_timer(_duration)
 	to_chat(user, SPAN_NOTICE("You feel your muscles twitch with renewed energy!"))
 
@@ -37,11 +40,6 @@
 	to_chat(user, SPAN_NOTICE("You feel your body slowing down as your muscles relax"))
 
 	remove_extension(holder, /datum/extension/frenzy_buff)
-
-/datum/extension/frenzy_buff/Destroy()
-	unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
-	user.attack_speed_factor -= intensity
-	.=..()
 
 
 /*
@@ -64,9 +62,6 @@
 /datum/extension/frenzy_cooldown/proc/finish()
 	remove_extension(holder, /datum/extension/frenzy_cooldown)
 
-//Just return the speed we've cached
-/datum/extension/frenzy_buff/movespeed_mod()
-	return 1+intensity
 
 
 

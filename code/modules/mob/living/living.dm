@@ -707,15 +707,16 @@ default behaviour is:
 /mob/living/proc/ranged_accuracy_mods()
 	. = 0
 	if(jitteriness)
-		. -= 2
-	if(confused)
-		. -= 2
-	if(eye_blind)
 		. -= 10
+	if(confused)
+		. -= 10
+	if(eye_blind)
+		. -= 50
 	if(eye_blurry)
-		. -= 1
+		. -= 5
 	if(CLUMSY in mutations)
-		. -= 3
+		. -= 15
+	.+=ranged_accuracy_modifier
 
 /mob/living/is_organic()
 	return TRUE

@@ -84,13 +84,14 @@
 	damage_mod = 0.5	//The seeker does far more damage when scoped
 	view_offset	=	8*WORLD_ICON_SIZE
 	view_range = -2
-	accuracy_mod	=	70
-	move_mod	=	-0.85
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.85,
+	STATMOD_RANGED_ACCURACY = 70)
 
 /datum/extension/aim_mode/sniper/seeker/far
 	name = "4x Zoom"
 	damage_mod = 0.6
-	accuracy_mod	=	80
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.85,
+	STATMOD_RANGED_ACCURACY = 80)
 	view_offset	=	16*WORLD_ICON_SIZE
 	view_range = -3
 
@@ -99,8 +100,8 @@
 	damage_mod = 0.25
 	view_offset	=	4*WORLD_ICON_SIZE
 	view_range = -1
-	accuracy_mod	=	60
-	move_mod	=	-0.85
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.85,
+	STATMOD_RANGED_ACCURACY = 60)
 
 
 

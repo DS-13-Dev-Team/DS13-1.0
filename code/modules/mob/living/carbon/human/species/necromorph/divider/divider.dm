@@ -8,6 +8,13 @@
 	biomass = 150
 	mass = 120
 
+	evasion = -10	//Slow and predictable
+
+	override_limb_types = list(
+	BP_HEAD =  list("path" = /obj/item/organ/external/head/simple/divider, "height" = new /vector2(2,2.4)),
+	BP_TORSO =  list("path" = /obj/item/organ/external/chest/simple/divider, "height" = new /vector2(1,2))
+	)
+
 	view_range = 9//The world looks small from up here
 
 	biomass_reclamation_time	=	12 MINUTES
@@ -63,6 +70,43 @@
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/divider_tongue))
 
 
+#define DIVIDER_PASSIVE_1	"<h2>PASSIVE: Gestalt Being:</h2><br>\
+The divider is a colony of smaller creatures working in tandem. <br>\
+On death, dismemberment, or manual division, it will split off into its component parts - five in total.<br>\
+The original player will control the head component, while four other players will be drawn from the necroqueue to control the arms and legs."
+
+#define DIVIDER_PASSIVE_2	"<h2>PASSIVE: Strange Anatomy:</h2><br>\
+The divider has a tiny head atop its huge frame, and its torso has a sizeable hole in it. <br>\
+This means that these parts of its body are comparitively much harder to hit with projectile attacks"
+
+
+#define DIVIDER_TONGUE 	"<h2>Execution: Tonguetacle:</h2><br>\
+<h3>Hotkey: Ctrl+Alt+Click </h3><br>\
+<h3>Cooldown: 12 seconds</h3><br>\
+The divider launches its ropelike prehensile tongue, attempting to latch onto a victim.<br>\
+ If it hits a standing humanoid, it will wrap around their neck, rooting them in place as it slowly garottes their throat.<br>\
+  The tongue will deal damage over time until it completely severs the neck and decapitates the victim, but it can be interrupted if the divider is knocked down, decapitated, or the tongue itself takes enough damage.<br>\
+  <br>\
+  The tongue is vulnerable to blades and takes double damage from edged weapons.<br>\
+  Tonguetacle is best used on a lone victim who is trying to escape, it is fairly easy for teammates to break them out of it if they aren't alone."
+
+
+
+/datum/species/necromorph/divider/get_ability_descriptions()
+	.= ""
+	. += DIVIDER_PASSIVE_1
+	. += "<hr>"
+	. += DIVIDER_PASSIVE_2
+	. += "<hr>"
+	. += TRIPOD_LEAP_DESC
+	. += "<hr>"
+	. += TRIPOD_SWING_DESC
+	. += "<hr>"
+	. += TRIPOD_TONGUE_DESC
+	. += "<hr>"
+	. += TRIPOD_DEATHKISS_DESC
+
+
 
 /*
 	Division
@@ -93,10 +137,11 @@
 	//If the limb is cut uncleanly with an edge, then its gonna fly, so we'll give it a window to finish flying then create the mob where it lands
 	if (disintegrate == DROPLIMB_EDGE && !clean)
 		spawn(20)
-			E.create_divider_component(H, deletion_delay = 0)
+			if (!QDELETED(E))
+				E.create_divider_component(H, deletion_delay = 0)
 		return
 
-	else
+	else if (!QDELETED(E))
 		//If its a different type of cut, the limb is about to be deleted, we've got to get in there first, right now
 
 		//We create the limb right here
@@ -132,7 +177,11 @@
 
 
 /obj/item/organ/external/proc/create_divider_component(var/mob/living/carbon/human/H, var/deletion_delay = 0)
+	if (!divider_component_type)
+		return FALSE
 	var/mob/living/simple_animal/necromorph/divider_component/L = new divider_component_type(get_turf(src))
+	divider_component_type = null //This is an efficient way to mark that this organ has already been turned into a mob, and shouldn't do it again
+	L.dna = dna
 
 	//Turning into a component deletes the organ, but let it finish execution first, make it invisible in the meantime
 	alpha = 0
@@ -144,4 +193,8 @@
 
 
 
-
+/*
+	The divider has a hole in its torso, harder to land hits
+*/
+/obj/item/organ/external/chest/simple/divider
+	base_miss_chance = 35

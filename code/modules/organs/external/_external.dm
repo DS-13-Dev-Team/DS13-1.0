@@ -1170,7 +1170,7 @@ obj/item/organ/external/proc/remove_clamps()
 
 	return 1
 
-/obj/item/organ/external/proc/get_damage()	//returns total damage
+/obj/item/organ/external/get_damage()	//returns total damage
 	return (brute_dam+burn_dam)	//could use max_damage?
 
 /obj/item/organ/external/proc/has_infected_wound()

@@ -53,14 +53,13 @@
 	flags = EXTENSION_FLAG_IMMEDIATE
 
 	//Effects on necromorphs
-	var/speed_factor = 1.15
-	var/attackspeed_factor	=	1.15
 	var/evasion_bonus = 	5
 	var/health_factor	=	1.15
 
 
-	var/speed_delta	//What absolute value we removed from the movespeed factor. This is cached so we can reverse it later
-	var/attackspeed_delta
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1.15,
+	STATMOD_ATTACK_SPEED = 1.15)
+
 	var/health_delta
 
 	var/necro = FALSE
@@ -70,13 +69,7 @@
 	.=..()
 	var/mob/living/L = holder
 
-	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
-
-	var/newval = L.attack_speed_factor * attackspeed_factor
-	attackspeed_delta = L.attack_speed_factor - newval
-	L.attack_speed_factor = newval
-
-	newval = L.max_health * health_factor
+	var/newval = L.max_health * health_factor
 	health_delta = L.max_health - newval
 	L.max_health = newval
 
@@ -92,8 +85,6 @@
 /datum/extension/assault_wave/Destroy()
 	var/mob/living/L = holder
 	if (istype(L))
-		unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
-		L.attack_speed_factor += attackspeed_delta
 		L.max_health += health_delta
 		L.evasion -= evasion_bonus
 		L.updatehealth()
@@ -101,7 +92,3 @@
 		to_chat(L, "<span class = 'critical'>Your enhanced power wears off..</span>")
 
 	.=..()
-
-
-/datum/extension/assault_wave/movespeed_mod()
-	return speed_factor

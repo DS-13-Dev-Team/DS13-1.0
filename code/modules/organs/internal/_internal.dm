@@ -79,6 +79,7 @@
 	STOP_PROCESSING(SSobj, src)
 	target.internal_organs |= src
 	affected.internal_organs |= src
+	world << "Organ replaced [src] [src.type] in [target], organ tag is [organ_tag]"
 	target.internal_organs_by_name[organ_tag] = src
 	return 1
 

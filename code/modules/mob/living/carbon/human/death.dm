@@ -130,7 +130,7 @@
 
 	if(should_have_organ(BP_BRAIN))
 		var/obj/item/organ/internal/brain/brain = internal_organs_by_name[BP_BRAIN]
-		if(!brain || (brain.status & ORGAN_DEAD))
+		if(!brain || !brain.is_usable())
 			.= TRUE
 	if (!.)
 		.=species.handle_death_check(src)

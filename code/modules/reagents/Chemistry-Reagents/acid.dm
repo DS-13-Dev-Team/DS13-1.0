@@ -277,9 +277,8 @@
 
 
 /datum/extension/acid_slow
-	var/speed_factor = 0.7
 	var/duration	=	2.5 SECONDS
-
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.7)
 	var/removal_timer
 
 /datum/extension/acid_slow/New(var/datum/holder)
@@ -292,8 +291,6 @@
 	else
 		to_chat(L, SPAN_DANGER("The acid underfoot is sticky and slows you down"))
 
-
-	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 	var/lifetime = duration
 	if (L && L.touching)
@@ -320,11 +317,7 @@
 
 
 /datum/extension/acid_slow/Destroy()
-	unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 	deltimer(removal_timer)
 
 
 	.=..()
-
-/datum/extension/acid_slow/movespeed_mod()
-	return speed_factor

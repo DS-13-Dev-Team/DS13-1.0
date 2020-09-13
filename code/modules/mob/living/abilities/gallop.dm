@@ -20,7 +20,7 @@
 	var/ongoing_timer
 	var/crashed = FALSE
 
-
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1)
 /***********************
 	Access Proc
 ************************/
@@ -30,6 +30,7 @@
 		return TRUE
 
 /datum/extension/gallop/New(var/mob/living/_user, var/_duration, var/_cooldown, var/_power)
+	statmods[STATMOD_MOVESPEED_MULTIPLICATIVE] = 1 + _power
 	.=..()
 	user = _user
 	duration = _duration
@@ -42,7 +43,6 @@
 	if (!started_at)
 		started_at = world.time
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/stop), duration)
-		register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 		user.reset_move_cooldown()//Allow nextmove immediately
 		GLOB.damage_hit_event.register(user, src, /datum/extension/gallop/proc/user_hit)
@@ -55,15 +55,12 @@
 	.=..()
 
 
-/datum/extension/gallop/movespeed_mod()
-	return 1+power
 
 /datum/extension/gallop/proc/stop()
 	if (!stopped_at)
 		deltimer(ongoing_timer)
 		stopped_at = world.time
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/finish_cooldown), cooldown)
-		unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 		GLOB.damage_hit_event.unregister(user, src, /datum/extension/gallop/proc/user_hit)
 		GLOB.bump_event.unregister(user, src, /datum/extension/gallop/proc/user_bumped)
 		GLOB.moved_event.unregister(user, src, /datum/extension/gallop/proc/user_moved)
