@@ -11,6 +11,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	name = "corruption"
 	icon = 'icons/effects/corruption.dmi'
 	icon_state = ""
+	layer = PLATING_PLANE
 
 	max_health = 80
 	max_growth = 1
