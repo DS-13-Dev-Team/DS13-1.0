@@ -31,25 +31,15 @@
 
 	//hud_type = /datum/hud_data/necromorph/divider
 
-	/*
+
 	species_audio = list(
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/divider/divider_attack_1.ogg',
 	'sound/effects/creatures/necromorph/divider/divider_attack_2.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_attack_3.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_attack_4.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_attack_5.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_attack_6.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_attack_7.ogg'),
-	SOUND_DEATH = list('sound/effects/creatures/necromorph/divider/divider_death_1.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_death_2.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_death_3.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_death_4.ogg'),
+	'sound/effects/creatures/necromorph/divider/divider_attack_3.ogg'),
+	SOUND_DEATH = list('sound/effects/creatures/necromorph/divider/divider_death.ogg'),
 	SOUND_PAIN = list('sound/effects/creatures/necromorph/divider/divider_pain_1.ogg',
 	'sound/effects/creatures/necromorph/divider/divider_pain_2.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_pain_3.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_pain_4.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_pain_5.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_pain_6.ogg'),
+	'sound/effects/creatures/necromorph/divider/divider_pain_3.ogg'),
 	SOUND_SHOUT = list('sound/effects/creatures/necromorph/divider/divider_shout_1.ogg',
 	'sound/effects/creatures/necromorph/divider/divider_shout_2.ogg',
 	'sound/effects/creatures/necromorph/divider/divider_shout_3.ogg',
@@ -57,15 +47,23 @@
 	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/divider/divider_shout_long_1.ogg',
 	'sound/effects/creatures/necromorph/divider/divider_shout_long_2.ogg',
 	'sound/effects/creatures/necromorph/divider/divider_shout_long_3.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_shout_long_4.ogg'),
-	SOUND_SPEECH = list('sound/effects/creatures/necromorph/divider/divider_speech_1.ogg',
-	'sound/effects/creatures/necromorph/divider/divider_speech_2.ogg')
-	)
-	*/
+	'sound/effects/creatures/necromorph/divider/divider_shout_long_4.ogg',
+	'sound/effects/creatures/necromorph/divider/divider_shout_long_5.ogg',
+	'sound/effects/creatures/necromorph/divider/divider_shout_long_6.ogg'),
+	SOUND_SPEECH = list('sound/effects/creatures/necromorph/divider/divider_shout_long_1.ogg',
+	'sound/effects/creatures/necromorph/divider/divider_shout_long_2.ogg',
+	'sound/effects/creatures/necromorph/divider/divider_shout_long_3.ogg',
+	'sound/effects/creatures/necromorph/divider/divider_shout_long_4.ogg',
+	'sound/effects/creatures/necromorph/divider/divider_shout_long_5.ogg',
+	'sound/effects/creatures/necromorph/divider/divider_shout_long_6.ogg')
+	)//Since it has so many of them and no speech sounds, the divider uses its long shouts for speech
+
+
+	species_audio_volume = list(SOUND_SHOUT_LONG = VOLUME_MAX, SOUND_SPEECH = VOLUME_HIGH, SOUND_SHOUT = VOLUME_MID)
 
 	slowdown = 3.5
 
-	inherent_verbs = list(/mob/living/carbon/human/proc/divider_divide, /mob/proc/shout)
+	inherent_verbs = list(/mob/living/carbon/human/proc/divider_divide, /mob/living/carbon/human/proc/divider_tongue, /mob/proc/shout, /mob/proc/shout_long)
 	modifier_verbs = list(KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/divider_divide),
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/divider_tongue))
 
@@ -117,7 +115,7 @@ The divider launches its ropelike prehensile tongue, attempting to latch onto a 
 
 	if (stat == DEAD)
 		return
-
+	playsound(src, 'sound/effects/creatures/necromorph/divider/divider_split.ogg', VOLUME_LOUD, TRUE)
 	facedir(SOUTH)
 	root()
 
@@ -182,6 +180,7 @@ The divider launches its ropelike prehensile tongue, attempting to latch onto a 
 	var/mob/living/simple_animal/necromorph/divider_component/L = new divider_component_type(get_turf(src))
 	divider_component_type = null //This is an efficient way to mark that this organ has already been turned into a mob, and shouldn't do it again
 	L.dna = dna
+
 
 	//Turning into a component deletes the organ, but let it finish execution first, make it invisible in the meantime
 	alpha = 0

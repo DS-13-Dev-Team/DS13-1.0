@@ -99,6 +99,7 @@
 		//In addition, the list of sounds supports weighted picking (default weight 1 if unspecified).
 		//For example: (sound_1, sound_2 = 0.5) will result in sound_2 being played half as often as sound_1
 	var/list/speech_chance                    // The likelihood of a speech sound playing.
+	var/list/species_audio_volume = list()		//An associative list, in the format SOUND_TYPE = VOLUME_XXX. Values set here will override the volume of species audio files
 
 	// Health and Defense
 	var/total_health = 120                   // Point at which the mob will enter crit.
@@ -1052,6 +1053,9 @@ These procs should return their entire args list. Best just to return parent in 
 	return
 
 /mob/living/carbon/human/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
+
+	if (species.species_audio_volume[audio_type])
+		vol = species.species_audio_volume[audio_type]
 	return species.play_species_audio(arglist(args.Copy()))
 
 /mob/proc/get_species_audio()

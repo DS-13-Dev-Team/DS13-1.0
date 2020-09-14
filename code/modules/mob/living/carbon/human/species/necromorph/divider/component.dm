@@ -22,7 +22,10 @@
 	icon = 'icons/mob/necromorph/divider/components.dmi'
 	var/leap_windup_time = 0.8 SECOND
 	var/leap_range = 6
+	var/leap_cooldown = 10 SECONDS
 	speed = 3
+
+
 
 /mob/living/simple_animal/necromorph/divider_component/Initialize()
 	.=..()
@@ -47,6 +50,10 @@
 	if (!can_charge(A))
 		return
 
+	//Starting a leap plays an attack sound which ignores cooldown
+	if (LAZYLEN(attack_sounds))
+		playsound(src, pick(attack_sounds), VOLUME_HIGH, TRUE)
+
 	//Do a chargeup animation. Pulls back and then launches forwards
 	//The time is equal to the windup time of the attack, plus 0.5 seconds to prevent a brief stop and ensure launching is a fluid motion
 	var/vector2/pixel_offset = Vector2.DirectionBetween(src, A) * -16
@@ -65,7 +72,7 @@
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 	*/
 
-	return leap_attack(A, _cooldown = 6 SECONDS, _delay = (leap_windup_time - (0.2 SECONDS)), _speed = 7, _maxrange = 6, _lifespan = 5 SECONDS)
+	return leap_attack(A, _cooldown = leap_cooldown, _delay = (leap_windup_time - (0.2 SECONDS)), _speed = 7, _maxrange = 6, _lifespan = 5 SECONDS)
 
 
 

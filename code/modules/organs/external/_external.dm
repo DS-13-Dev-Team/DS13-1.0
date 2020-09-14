@@ -880,6 +880,10 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if (victim && victim.species)
 		victim.species.handle_amputated(victim, src, clean, disintegrate, ignore_children, silent)
 
+	var/soundloc = get_turf(victim)
+	spawn(rand(0, 7))
+		playsound(soundloc, pick(GLOB.fracture_sound), VOLUME_MID, TRUE)
+
 	if(!clean)
 		victim.shock_stage += min_broken_damage
 

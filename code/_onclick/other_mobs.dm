@@ -162,5 +162,7 @@
 			admin_attack_log(src, A, "Has [attacktext] its victim.", "Has been [attacktext] by its attacker.", attacktext)
 	set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	var/damage = rand(melee_damage_lower, melee_damage_upper)
-	if(A.attack_generic(src, damage, attacktext, environment_smash, damtype, defense) && loc && attack_sound)
-		playsound(loc, attack_sound, 50, 1, 1)
+	launch_strike(target = A, damage = damage, used_weapon = src, damage_flags = 0, armor_penetration = 0, damage_type = BRUTE, armor_type = "melee", target_zone = ran_zone(), difficulty = 0)
+	playsound(loc, attack_sound, VOLUME_MID, TRUE)
+
+	//if(A.attack_generic(src, damage, attacktext, environment_smash, damtype, defense) && loc && attack_sound)

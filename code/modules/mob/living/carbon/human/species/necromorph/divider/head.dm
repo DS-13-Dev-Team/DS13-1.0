@@ -74,6 +74,12 @@
 	speed = 2
 	leap_range = 4
 
+	pain_sounds = list('sound/effects/creatures/necromorph/divider/component/head_pain_1.ogg',
+	'sound/effects/creatures/necromorph/divider/component/head_pain_2.ogg')
+
+	attack_sounds = list('sound/effects/creatures/necromorph/divider/component/head_attack_1.ogg',
+	'sound/effects/creatures/necromorph/divider/component/head_attack_2.ogg')
+
 /mob/living/simple_animal/necromorph/divider_component/head/Initialize()
 	.=..()
 	add_modclick_verb(KEY_CTRLALT, /mob/living/simple_animal/necromorph/divider_component/head/proc/takeover_verb)

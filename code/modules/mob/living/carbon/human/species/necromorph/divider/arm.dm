@@ -13,6 +13,16 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 	leap_range = 5
 
+	pain_sounds = list('sound/effects/creatures/necromorph/divider/component/arm_pain_1.ogg',
+	'sound/effects/creatures/necromorph/divider/component/arm_pain_2.ogg',
+	'sound/effects/creatures/necromorph/divider/component/arm_pain_3.ogg')
+
+	attack_sounds = list('sound/effects/creatures/necromorph/divider/component/arm_attack_1.ogg',
+	'sound/effects/creatures/necromorph/divider/component/arm_attack_2.ogg',
+	'sound/effects/creatures/necromorph/divider/component/arm_attack_3.ogg',
+	'sound/effects/creatures/necromorph/divider/component/arm_attack_4.ogg',
+	'sound/effects/creatures/necromorph/divider/component/arm_attack_5.ogg')
+
 /mob/living/simple_animal/necromorph/divider_component/arm/Initialize()
 	.=..()
 	set_extension(src, /datum/extension/wallrun)

@@ -22,7 +22,9 @@
 			damage *= huser.damage_multiplier}
 //Helper Procs
 //------------------------------
-/atom/proc/launch_strike(var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone, var/difficulty = 0)
+///atom/proc/launch_strike(target = target, damage = 0, used_weapon = src, damage_flags = 0, armor_penetration = 0, damage_type = BRUTE, armor_type = "melee", target_zone = ran_zone(), difficulty = 0)
+
+/atom/proc/launch_strike(var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone = ran_zone(), var/difficulty = 0)
 	var/datum/strike/strike = new /datum/strike(src, target, damage, used_weapon, damage_flags, armor_penetration, damage_type, armor_type, target_zone, difficulty)
 	strike.start()
 	return strike
