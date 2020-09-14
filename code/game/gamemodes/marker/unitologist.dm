@@ -10,8 +10,8 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	message_necromorphs("<span class='cult'>[usr]: [message]</span>")
 */
 /datum/antagonist/unitologist
-	role_text = "Unitologist"
-	role_text_plural = "Unitologists"
+	role_text = "Zealot"
+	role_text_plural = "Zealots"
 	welcome_text = "You are part of a new religion which worships strange alien artifacts, believing that only through them can humanity truly transcend. You have been blessed with a psychic connection created by the <b>marker</b>, one of these artifacts. Serve the marker's will at all costs by bringing it human sacrifices and remember that its objectives come before your own..."
 	id = MODE_UNITOLOGIST
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
@@ -44,12 +44,12 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 
 /datum/antagonist/unitologist/proc/give_collaborators(mob/living/our_owner)
 	//our_owner.verbs |= /mob/proc/message_unitologists
-	to_chat(our_owner, "<span class='warning'>The marker has established a psychic link between you and your fellow unitologists.</span>")
+	to_chat(our_owner, "<span class='warning'>The marker has established a psychic link between you and your fellow zealots.</span>")
 	to_chat(our_owner, "<span class='warning'><i>Your mind is flooded with several names, these people must also share a connection to the marker...</i></span>")
 	for(var/mob/living/minion in GLOB.unitologists_list)
 		if(minion && minion != our_owner)
-			to_chat(our_owner, "Fellow unitologist: [minion.real_name]")
-			our_owner.mind.store_memory("<b>Fellow unitologist</b>: [minion.real_name]")
+			to_chat(our_owner, "Fellow zealot: [minion.real_name]")
+			our_owner.mind.store_memory("<b>Fellow zealot</b>: [minion.real_name]")
 
 
 GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
@@ -57,7 +57,7 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	The Shardbearer
 */
 /datum/antagonist/unitologist/shardbearer
-	role_text = "Unitologist Shardbearer"
+	role_text = "Zealot Shardbearer"
 	role_text_plural = "Shardbearers"
 	preference_candidacy_toggle = TRUE
 	id = MODE_UNITOLOGIST_SHARD
