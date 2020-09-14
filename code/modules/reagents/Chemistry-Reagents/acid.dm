@@ -171,7 +171,7 @@
 	color = NECROMORPH_ACID_COLOR
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "spill"
-	layer = BLOOD_LAYER	//Its a liquid, close enough
+	layer = DECAL_PLATING_LAYER	//Its a liquid, close enough --// Changed because there were issues with Bio acid being taken over by vines, causing for immeasurable fuckery... - Lion / 15-SEP-2020
 	var/saturation_point = 13
 	var/rotation = 0
 	var/drying_tick = 0.10
