@@ -145,7 +145,7 @@ if (result == EXECUTION_CANCEL){\
 		var/stagetype = all_stages[i]
 		all_stages[i] = new stagetype(src)
 
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
+	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
 
 
 /datum/extension/execution/proc/start()
@@ -163,6 +163,9 @@ if (result == EXECUTION_CANCEL){\
 		stop()
 		return
 
+
+	//Getting past this point is considered a success
+	.= TRUE
 
 
 
@@ -311,7 +314,6 @@ if (result == EXECUTION_CANCEL){\
 
 	deltimer(ongoing_timer)
 
-
 	//If there's a current stage, ask it whether its ready to advance
 	if (current_stage && current_stage_index)
 		if (!current_stage.can_advance())
@@ -355,6 +357,10 @@ if (result == EXECUTION_CANCEL){\
 
 	//Gotta be close enough
 	if (get_dist(user, victim) > range)
+		return EXECUTION_CANCEL
+
+	//If user has ceased to exist, we're finished
+	if (QDELETED(user))
 		return EXECUTION_CANCEL
 
 	for (var/datum/execution_stage/ES as anything in entered_stages)
@@ -404,6 +410,13 @@ if (result == EXECUTION_CANCEL){\
 	if (args.len > 2)
 		arguments += args.Copy(3)
 
-	set_extension(arglist(arguments))
-	return TRUE
+
+	//Here we bootstrap the execution datum
+	var/datum/extension/execution/E = set_extension(arglist(arguments))
+	if (!E.can_start())
+		.=FALSE
+	E.ongoing_timer = addtimer(CALLBACK(E, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
+
+	.= TRUE
+
 

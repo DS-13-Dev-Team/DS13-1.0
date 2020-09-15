@@ -446,7 +446,9 @@
 	if (origin == target)
 		return TRUE
 
-	var/vector2/dirvector = get_new_vector(target.x - origin.x, target.y - origin.y)
-	dirvector.SelfNormalize()
-	.= (round(direction.Dot(dirvector),0.000001) >= round(cos(arc),0.000001))
+	var/vector2/dirvector = direction.Copy()
+	var/vector2/dotvector = get_new_vector(target.x - origin.x, target.y - origin.y)
+	dotvector.SelfNormalize()
+	.= (round(dirvector.Dot(dotvector),0.000001) >= round(cos(arc),0.000001))
+	release_vector(dotvector)
 	release_vector(dirvector)

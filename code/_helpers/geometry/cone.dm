@@ -4,6 +4,8 @@
 	if (!istype(direction))
 		direction = Vector2.FromDir(direction)	//One of the byond direction constants may be passed in
 
+	debug_mark_vector(origin, direction, distance*WORLD_ICON_SIZE)
+
 	angle *= 0.5//We split the angle in two for the arc function
 
 	if (!istype(origin))
@@ -16,17 +18,26 @@
 	//We use half the distance as radius, +1 to account for any rounding errors. Its not a big deal if we get some unnecessary turfs in here
 	var/list/turfs = trange(((distance*0.5) + 1), halfpoint)
 
+
 	//Alright next up, we loop through the turfs. for each one:
 
+	var/distance_removals = 0
+	var/angle_removals = 0
 	for (var/turf/T as anything in turfs)
 		//1. We check if its distance is less than the requirement. This is cheap. If it is...
 		var/dist_delta = get_dist_euclidian(origin, T)
 		if (dist_delta > distance)
 			turfs -= T
+			distance_removals++
+			continue
 
 		//2. We check if it falls within the desired angle
 		if (!target_in_arc(origin, T, direction, angle))
 			turfs -= T
+			angle_removals++
+			continue
+
+
 
 	//Alright we've removed all the turfs which aren't in the cone!
 	return turfs
@@ -62,14 +73,13 @@
 		//For each stage, we'll get the subcone
 		var/list/subcone = get_cone(origin, subcone_direction, distance, abs(subcone_angle))
 		subcone -= all_tiles	//Filter out any tiles that are already in another subcone
-
 		//Don't add empty cones to lists
 		if (length(subcone) > 0)
 			all_tiles += subcone	//Then add ours to the global list
 			subcones += list(subcone)	//And add this cone to the list of all the cones
 
-		subcone_direction.SelfTurn(subcone_angle)
 
+		subcone_direction.SelfTurn(subcone_angle)
 	//We only release vectors we created, not those we were given
 	release_vector(subcone_direction)
 	return subcones

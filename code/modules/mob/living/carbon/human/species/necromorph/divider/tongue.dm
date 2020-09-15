@@ -381,9 +381,20 @@
 		//Do the actual damage. The functionally infinite difficulty means it cant be blocked, but armor may still help resist it
 		host.user.launch_strike(host.victim, damage_per_hit, host.weapon, DAM_EDGE, 0, BRUTE, armor_type = "melee", target_zone = BP_HEAD, difficulty = 999999)
 
+
+		//We repeat the safety check now, since that damage might have just removed the head
+		safety_result = host.safety_check()
+		if (safety_result != EXECUTION_CONTINUE)
+			//If we've either failed or won, we quit this
+			if (safety_result == EXECUTION_SUCCESS)
+				duration =0 //Setting duration to 0 will prevent any waiting after this proc
+			done = TRUE
+			continue
+
 		//The victim and their camera shake wildly as they struggle
 		shake_camera(host.victim, 2, 3)
 		host.victim.shake_animation(12)
+		host.user.shake_animation(12)
 
 		//Make sure the user stays stunned during this process
 		host.user.Stun(1+(duration*0.1))
@@ -401,6 +412,8 @@
 	head_damage_threshold = 0.99
 
 
+/datum/execution_stage/finisher/decapitate
+	duration = 0
 /datum/execution_stage/finisher/decapitate/enter()
 	host.user.visible_message(SPAN_EXECUTION("[host.user] makes one final pull as [host.victim]'s soft flesh yields under the assault, and their head tumbles to the floor!"))
 
@@ -409,6 +422,5 @@
 	//Chop!
 	if (E && !E.is_stump())
 		E.droplimb(TRUE, DROPLIMB_EDGE, FALSE, FALSE, host.weapon)
-
 	host.user.do_shout(SOUND_SHOUT_LONG, FALSE)
 	.=..()

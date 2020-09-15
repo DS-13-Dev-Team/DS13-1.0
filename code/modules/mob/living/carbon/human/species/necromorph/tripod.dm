@@ -425,6 +425,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 /datum/extension/swing/tripod_arm
 	base_type = /datum/extension/swing/tripod_arm
 	var/limb_used
+	precise = FALSE
 
 
 //The arm swing may be terminated early by obstacles

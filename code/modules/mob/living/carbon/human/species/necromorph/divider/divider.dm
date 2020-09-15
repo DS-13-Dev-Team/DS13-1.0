@@ -63,9 +63,13 @@
 
 	slowdown = 3.5
 
-	inherent_verbs = list(/mob/living/carbon/human/proc/divider_divide, /mob/living/carbon/human/proc/divider_tongue, /mob/proc/shout, /mob/proc/shout_long)
+	inherent_verbs = list(/mob/living/carbon/human/proc/divider_divide, /mob/living/carbon/human/proc/divider_tongue, /mob/living/carbon/human/proc/divider_arm_swing, /mob/proc/shout, /mob/proc/shout_long)
 	modifier_verbs = list(KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/divider_divide),
-	KEY_CTRLALT = list(/mob/living/carbon/human/proc/divider_tongue))
+	KEY_CTRLALT = list(/mob/living/carbon/human/proc/divider_tongue),
+	KEY_ALT = list(/mob/living/carbon/human/proc/divider_arm_swing))
+
+#define LEFT_ARM_OFFSETS	list("[NORTH]" = new /vector2(-64, -10), "[SOUTH]" = new /vector2(-16, -10), "[EAST]" = new /vector2(-36, -14), "[WEST]" = new /vector2(-36, -14))
+#define RIGHT_ARM_OFFSETS	list("[NORTH]" = new /vector2(-28, -10), "[SOUTH]" = new /vector2(-48, -10), "[EAST]" = new /vector2(-40, -14), "[WEST]" = new /vector2(-36,-14))
 
 
 #define DIVIDER_PASSIVE_1	"<h2>PASSIVE: Gestalt Being:</h2><br>\
@@ -77,8 +81,14 @@ The original player will control the head component, while four other players wi
 The divider has a tiny head atop its huge frame, and its torso has a sizeable hole in it. <br>\
 This means that these parts of its body are comparitively much harder to hit with projectile attacks"
 
+#define DIVIDER_SWING_DESC 	"<h2>Swipe:</h2><br>\
+<h3>Hotkey: Alt+Click </h3><br>\
+<h3>Cooldown: 3.5 seconds</h3><br>\
+<h3>Damage: 15</h3><br>\
+The divider swings one of its clawed arms in a wide arc, dealing moderate damage over a small area. Effective in close combat, as well as being very quick to use."
 
-#define DIVIDER_TONGUE 	"<h2>Execution: Tonguetacle:</h2><br>\
+
+#define DIVIDER_TONGUE_DESC 	"<h2>Execution: Tonguetacle:</h2><br>\
 <h3>Hotkey: Ctrl+Alt+Click </h3><br>\
 <h3>Cooldown: 12 seconds</h3><br>\
 The divider launches its ropelike prehensile tongue, attempting to latch onto a victim.<br>\
@@ -96,13 +106,9 @@ The divider launches its ropelike prehensile tongue, attempting to latch onto a 
 	. += "<hr>"
 	. += DIVIDER_PASSIVE_2
 	. += "<hr>"
-	. += TRIPOD_LEAP_DESC
+	. += DIVIDER_SWING_DESC
 	. += "<hr>"
-	. += TRIPOD_SWING_DESC
-	. += "<hr>"
-	. += TRIPOD_TONGUE_DESC
-	. += "<hr>"
-	. += TRIPOD_DEATHKISS_DESC
+	. += DIVIDER_TONGUE_DESC
 
 
 
@@ -197,3 +203,155 @@ The divider launches its ropelike prehensile tongue, attempting to latch onto a 
 */
 /obj/item/organ/external/chest/simple/divider
 	base_miss_chance = 35
+
+
+
+
+/*--------------------------------
+	Arm Swing
+--------------------------------*/
+/mob/living/carbon/human/proc/divider_arm_swing(var/atom/target)
+	set name = "Swipe"
+	set desc = "Swings an arm in a moderate radius"
+	set category = "Abilities"
+
+
+	if (!target)
+		target = dir
+
+	var/num_arms = 0
+	var/selected_arm
+	//Alright lets check our arm status first
+	var/obj/item/organ/external/arm/left = get_organ(BP_L_ARM)
+	var/obj/item/organ/external/arm/right = get_organ(BP_R_ARM)
+
+	if (QDELETED(left) || left.is_stump() || left.retracted)
+		left = null
+	else
+		num_arms++
+
+	if (QDELETED(right) || right.is_stump() || right.retracted)
+		right = null
+	else
+		num_arms++
+
+	if (num_arms <= 0)
+		to_chat(src, SPAN_DANGER("You have no arms to swing!"))
+		return
+
+	else if (num_arms == 1)
+		if (left)
+			selected_arm = BP_L_ARM
+		else
+			selected_arm = BP_R_ARM
+	else
+		//If we have both arms, then the user gets to choose which to swing based on their selected hand
+		if (hand)
+			selected_arm = BP_L_ARM
+		else
+			selected_arm = BP_R_ARM
+
+
+
+	var/swing_dir = CLOCKWISE
+	var/effect
+	//Alright we have finally chosen what arm to swing with, what will that affect?
+	if (selected_arm == BP_L_ARM)
+		swing_dir = CLOCKWISE
+		effect = /obj/effect/effect/swing/divider_left
+	else
+		swing_dir = ANTICLOCKWISE
+		effect = /obj/effect/effect/swing/divider_right
+
+
+	//Okay lets actually start the swing
+	.=swing_attack(swing_type = /datum/extension/swing/divider_arm,
+	source = src,
+	target = target,
+	angle = 130,
+	range = 3,
+	duration = 0.85 SECOND,
+	windup = 0.4 SECONDS,
+	cooldown = 3.5 SECONDS,
+	effect_type = effect,
+	damage = 20,
+	damage_flags = DAM_EDGE,
+	stages = 8,
+	swing_direction = swing_dir)
+
+	if (.)
+		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 2)
+		var/sound_effect = pick(list('sound/effects/attacks/big_swoosh_1.ogg',
+		'sound/effects/attacks/big_swoosh_2.ogg',
+		'sound/effects/attacks/big_swoosh_3.ogg',))
+		playsound(src, sound_effect, VOLUME_LOW, TRUE)
+
+/datum/extension/swing/divider_arm/windup_animation()
+	var/vector2/back_offset = target_direction.Turn(180) * 16
+	animate(user, pixel_x = user.pixel_x + back_offset.x, pixel_y = user.pixel_y + back_offset.y, easing = BACK_EASING, time = windup * 0.3)
+	var/vector2/forward_offset = target_direction * 24
+	animate(pixel_x = user.pixel_x + forward_offset.x, pixel_y = user.pixel_y + forward_offset.y, easing = QUAD_EASING, time = windup * 0.7)
+	sleep(windup)
+
+	switch (swing_direction)
+		//Cache the limb used
+		if (CLOCKWISE)
+			limb_used = BP_L_ARM
+		else
+			limb_used = BP_R_ARM
+
+	var/mob/living/carbon/human/H = user
+	//We will temporarily retract the arm from the sprite
+	var/obj/item/organ/external/E = H.get_organ(limb_used)
+	if (E)
+		E.retracted = TRUE
+		H.update_body(TRUE)
+
+	release_vector(back_offset)
+	release_vector(forward_offset)
+
+
+/datum/extension/swing/divider_arm/setup_effect()
+	.=..()
+	//The parent code will move the effect object to the centre of our sprite, now we will offset it farther to the appropriate shoulder joint
+	var/vector2/offset
+	if (limb_used == BP_L_ARM)
+		offset = LEFT_ARM_OFFSETS["[user.dir]"]
+	else
+		offset = RIGHT_ARM_OFFSETS["[user.dir]"]
+
+	effect.pixel_x += offset.x
+	effect.pixel_y += offset.y
+
+/datum/extension/swing/divider_arm/cleanup_effect()
+	.=..()
+	var/mob/living/carbon/human/H = user
+
+	//Slide back to normal position
+	animate(H, pixel_x = H.default_pixel_x, pixel_y = H.default_pixel_y, time = 5)
+	//Put the arm back now
+	var/obj/item/organ/external/E = H.get_organ(limb_used)
+	if (E)
+		E.retracted = FALSE
+		H.update_body(TRUE)
+
+//Swing FX
+/obj/effect/effect/swing/divider_left
+	icon_state = "divider_left"
+	default_scale = 1
+	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
+
+/obj/effect/effect/swing/divider_right
+	icon_state = "divider_right"
+	default_scale = 1
+	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
+
+
+//Extension subtype
+/datum/extension/swing/divider_arm
+	base_type = /datum/extension/swing/divider_arm
+	var/limb_used
+
+
+#undef LEFT_ARM_OFFSETS
+#undef RIGHT_ARM_OFFSETS
