@@ -120,15 +120,15 @@ In addition, each attack causes the victim to stagger around, disrupting their a
 <h3>Leap Ability: Dropkick (Alt+Click)</h3><br>\
 The leg's leap ability hits hard, staggering the victim and dealing 15 damage. The leg bounces off the victim, allowing it to quickly circle around for another hit. This can be aimed, and it's possible to smash limbs off your victim."
 
-#define DIVIDER_HEAD_DESC 	"<h2>Arm</h2><br>\
+#define DIVIDER_HEAD_DESC 	"<h2>Head</h2><br>\
 <h3>Basic Attack: Whip: 4-6 dmg </h3><br>\
-
+<br>\
 <h3>Leap Ability: Hostile Takeover (Alt+Click)</h3><br>\
 Requires a standing, live human victim. The head's leap starts an execution move, slowly strangling the victim until their neck is completely severed. Then it will wrap its tentacles around the spine and take control of the new host body.<br>\
 Hostile Takeover cannot be cancelled once started, it's do or die.<br>\
 If successful, the marker is awarded bonus biomass!<br>\
 <h3>Alternate Ability: Reanimate (Ctrl+Alt+Click)</h3><br>\
-Reanimate can be used to take control of any already-headless corpse on the ground. This is safe and easy, but does not give any extra rewards".
+Reanimate can be used to take control of any already-headless corpse on the ground. This is safe and easy, but does not give any extra rewards"
 
 
 
@@ -224,7 +224,8 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 	max_steps = 10
 
 /datum/extension/cadence/divider/max_speed_reached()
-	if (user.check_audio_cooldown(SOUND_SHOUT) && is_seen_by_crew(get_turf(user)))
+	var/turf/T = get_turf(user)
+	if (user.check_audio_cooldown(SOUND_SHOUT) && T.is_seen_by_crew())
 		user.play_species_audio(user,SOUND_SHOUT)
 		user.set_audio_cooldown(SOUND_SHOUT, 12 SECONDS)
 
