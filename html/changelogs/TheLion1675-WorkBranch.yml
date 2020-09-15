@@ -34,4 +34,6 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - tweak: "Moderately increased the maximum amount of shots the Taser can fire off before going click click."
+  - tweak: "Add round-end statistics counting surving humans (including necromorphs unfortunately), and escaped humans."
+  - bugfix: "Fixed incorrect math being applied on round-end."
   - bugfix: "Potentially fixed a bug where biological acid would disappear under vines, if it was sprayed before corruption took over."
