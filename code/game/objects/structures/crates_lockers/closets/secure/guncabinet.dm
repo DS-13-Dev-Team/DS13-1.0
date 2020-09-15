@@ -27,13 +27,21 @@
 	icon_opened = "base"
 
 /obj/structure/closet/secure_closet/guncabinet/military/WillContain()
-	return list(
+	var/list/things = list(
 		/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty,
-		/obj/item/ammo_magazine/pulse = 7,
+		/obj/item/ammo_magazine/pulse/hv = 6,
 		/obj/item/weapon/storage/belt/holster/security
 	)
+	//Contains either an HPR or a seeker rifle
+	if (prob(50))
+		things += /obj/item/weapon/gun/projectile/automatic/pulse_heavy
+	else
+		things += /obj/item/weapon/gun/projectile/seeker
+		things[/obj/item/ammo_magazine/seeker] = 4
 
-/obj/structure/closet/secure_closet/guncabinet/Initialize()
+	return things
+
+/obj/structure/closet/secure_closet/guncabinet/LateInitialize()
 	. = ..()
 	update_icon()
 
