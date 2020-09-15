@@ -2,7 +2,7 @@
 	name = SPECIES_NECROMORPH_DIVIDER
 	name_plural =  "Dividers"
 	mob_type = /mob/living/carbon/human/necromorph/divider
-	blurb = "A bizarre walking horrorshow, slow but extremely durable. On death, it splits into five smaller creatures, in an attempt to find a new body to control"
+	blurb = "A bizarre walking horrorshow, slow but extremely durable. On death, it splits into five smaller creatures, in an attempt to find a new body to control. The divider is hard to kill, and has several abilities which excel at pinning down a lone target."
 	unarmed_types = list(/datum/unarmed_attack/claws/strong) //Bite attack is a backup if blades are severed
 	total_health = 200
 	biomass = 150
@@ -28,6 +28,7 @@
 	spawner_spawnable = TRUE
 
 
+	slowdown = 5.5
 
 	//hud_type = /datum/hud_data/necromorph/divider
 
@@ -81,6 +82,9 @@ The original player will control the head component, while four other players wi
 The divider has a tiny head atop its huge frame, and its torso has a sizeable hole in it. <br>\
 This means that these parts of its body are comparitively much harder to hit with projectile attacks"
 
+#define DIVIDER_PASSIVE_3	"<h2>PASSIVE: Momentum:</h2><br>\
+The divider is slow and ponderous to start, building up speed over ten tiles. At full speed it will scream at nearby humans."
+
 #define DIVIDER_SWING_DESC 	"<h2>Swipe:</h2><br>\
 <h3>Hotkey: Alt+Click </h3><br>\
 <h3>Cooldown: 3.5 seconds</h3><br>\
@@ -98,6 +102,34 @@ The divider launches its ropelike prehensile tongue, attempting to latch onto a 
   The tongue is vulnerable to blades and takes double damage from edged weapons.<br>\
   Tonguetacle is best used on a lone victim who is trying to escape, it is fairly easy for teammates to break them out of it if they aren't alone."
 
+#define DIVIDER_COMPONENTS 	"<h2>Components:</h2><br>\
+On death, dismemberment or manual splitting, the divider seperates into five smaller creatures. Two arms, two legs, and one head. <br>\
+All of these have a basic attack and a leap ability, though the leap is quite different for each.<br>\
+The goal of the head is to find a new host body to support itself. The arms and legs are servants, they exist to distract and weaken victims to draw attention from the head."
+
+#define DIVIDER_ARM_DESC 	"<h2>Arm</h2><br>\
+<h3>Basic Attack: Scratch: 2-4 dmg </h3><br>\
+<h3>Passive: Wallrun</h3><br>\
+<h3>Leap Ability: Parasite Grip (Alt+Click)</h3><br>\
+The arm's leap ability will cause it to cling onto any human it hits, and start repeatedly attacking them. Each attack deals minor damage, and heals itself, though not targeting any specific bodypart.<br>\
+In addition, each attack causes the victim to stagger around, disrupting their aim and view. Makes a great distraction!"
+
+#define DIVIDER_LEG_DESC 	"<h2>Arm</h2><br>\
+<h3>Basic Attack: Kick: 3-6 dmg </h3><br>\
+<h3>Passive: Faster movespeed and lower leap cooldown</h3><br>\
+<h3>Leap Ability: Dropkick (Alt+Click)</h3><br>\
+The leg's leap ability hits hard, staggering the victim and dealing 15 damage. The leg bounces off the victim, allowing it to quickly circle around for another hit. This can be aimed, and it's possible to smash limbs off your victim."
+
+#define DIVIDER_HEAD_DESC 	"<h2>Arm</h2><br>\
+<h3>Basic Attack: Whip: 4-6 dmg </h3><br>\
+
+<h3>Leap Ability: Hostile Takeover (Alt+Click)</h3><br>\
+Requires a standing, live human victim. The head's leap starts an execution move, slowly strangling the victim until their neck is completely severed. Then it will wrap its tentacles around the spine and take control of the new host body.<br>\
+Hostile Takeover cannot be cancelled once started, it's do or die.<br>\
+If successful, the marker is awarded bonus biomass!<br>\
+<h3>Alternate Ability: Reanimate (Ctrl+Alt+Click)</h3><br>\
+Reanimate can be used to take control of any already-headless corpse on the ground. This is safe and easy, but does not give any extra rewards".
+
 
 
 /datum/species/necromorph/divider/get_ability_descriptions()
@@ -106,10 +138,20 @@ The divider launches its ropelike prehensile tongue, attempting to latch onto a 
 	. += "<hr>"
 	. += DIVIDER_PASSIVE_2
 	. += "<hr>"
+	. += DIVIDER_PASSIVE_2
+	. += "<hr>"
 	. += DIVIDER_SWING_DESC
 	. += "<hr>"
 	. += DIVIDER_TONGUE_DESC
-
+	. += "<hr>"
+	. += "<hr>"
+	. += DIVIDER_COMPONENTS
+	. += "<hr>"
+	. += DIVIDER_ARM_DESC
+	. += "<hr>"
+	. += DIVIDER_LEG_DESC
+	. += "<hr>"
+	. += DIVIDER_HEAD_DESC
 
 
 /*
@@ -170,8 +212,21 @@ The divider launches its ropelike prehensile tongue, attempting to latch onto a 
 
 
 
+/*
+	Movement
+*/
+/datum/species/necromorph/divider/setup_movement(var/mob/living/carbon/human/H)
+	.=..()
+	set_extension(H, /datum/extension/cadence/divider)
 
+/datum/extension/cadence/divider
+	max_speed_buff = 1
+	max_steps = 10
 
+/datum/extension/cadence/divider/max_speed_reached()
+	if (user.check_audio_cooldown(SOUND_SHOUT) && is_seen_by_crew(get_turf(user)))
+		user.play_species_audio(user,SOUND_SHOUT)
+		user.set_audio_cooldown(SOUND_SHOUT, 12 SECONDS)
 
 /*
 	Limb Code

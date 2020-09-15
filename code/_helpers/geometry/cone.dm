@@ -21,20 +21,16 @@
 
 	//Alright next up, we loop through the turfs. for each one:
 
-	var/distance_removals = 0
-	var/angle_removals = 0
 	for (var/turf/T as anything in turfs)
 		//1. We check if its distance is less than the requirement. This is cheap. If it is...
 		var/dist_delta = get_dist_euclidian(origin, T)
 		if (dist_delta > distance)
 			turfs -= T
-			distance_removals++
 			continue
 
 		//2. We check if it falls within the desired angle
 		if (!target_in_arc(origin, T, direction, angle))
 			turfs -= T
-			angle_removals++
 			continue
 
 

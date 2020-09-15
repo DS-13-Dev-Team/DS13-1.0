@@ -118,9 +118,15 @@
 	if (current_speed_buff != prev_speed)
 		user.update_movespeed_factor()
 
+		if (current_speed_buff == max_speed_buff)
+			max_speed_reached()
 
 //Just return the speed we've cached
 /datum/extension/cadence/get_statmod(var/modtype)
 	if (modtype == STATMOD_MOVESPEED_ADDITIVE)
 		return current_speed_buff
 	.=..()
+
+
+//Called whenever we accelerate up to maximum speed
+/datum/extension/cadence/proc/max_speed_reached()

@@ -1052,10 +1052,10 @@ These procs should return their entire args list. Best just to return parent in 
 /mob/proc/play_species_audio()
 	return
 
-/mob/living/carbon/human/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
+/mob/living/carbon/human/play_species_audio(var/atom/source, audio_type, var/volume = VOLUME_MID, var/vary = TRUE, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
 	if (species.species_audio_volume[audio_type])
-		vol = species.species_audio_volume[audio_type]
+		volume = species.species_audio_volume[audio_type]
 	return species.play_species_audio(arglist(args.Copy()))
 
 /mob/proc/get_species_audio()
