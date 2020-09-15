@@ -4,8 +4,6 @@
 	if (!istype(direction))
 		direction = Vector2.FromDir(direction)	//One of the byond direction constants may be passed in
 
-	debug_mark_vector(origin, direction, distance*WORLD_ICON_SIZE)
-
 	angle *= 0.5//We split the angle in two for the arc function
 
 	if (!istype(origin))
