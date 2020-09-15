@@ -36,4 +36,3 @@ changes:
   - tweak: "Moderately increased the maximum amount of shots the Taser can fire off before going click click."
   - tweak: "Add round-end statistics counting surving humans (including necromorphs unfortunately), and escaped humans."
   - bugfix: "Fixed incorrect math being applied on round-end."
-  - bugfix: "Potentially fixed a bug where biological acid would disappear under vines, if it was sprayed before corruption took over."
