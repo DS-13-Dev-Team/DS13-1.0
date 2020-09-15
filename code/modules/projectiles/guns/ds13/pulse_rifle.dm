@@ -55,6 +55,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	projectile_type  = /obj/item/projectile/bullet/pulse
 
 
+
 /obj/item/projectile/bullet/pulse
 	icon_state = "pulse"
 	damage = 7.5
@@ -68,8 +69,8 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	fire_sound='sound/weapons/guns/fire/pulse_shot.ogg'
 
 /obj/item/ammo_magazine/pulse
-	name = "magazine (rifle slug)"
-	desc = "With a distinctive \"bell and stock\" design, pulse magazines can be inserted and removed from the Pulse Rifle with minimal effort and risk. "
+	name = "magazine (pulse rounds)"
+	desc = "With a distinctive \"bell and stock\" design, pulse magazines can be inserted and removed from the Pulse Rifle with minimal effort and risk."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "pulse_rounds_empty"
 	caliber = "pulse"
@@ -79,11 +80,49 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	multiple_sprites = FALSE
 	mag_type = MAGAZINE
 
+
 /obj/item/ammo_magazine/pulse/update_icon()
 	if (stored_ammo.len)
 		icon_state = "pulse_rounds"
 	else
 		icon_state = "pulse_rounds_empty"
+
+
+
+
+
+/*-----------------------
+	High Velocity Ammo
+------------------------*/
+/obj/item/ammo_casing/pulse/hv
+	name = "high velocity pulse round"
+	desc = "A low caliber hypersonic round designed for the SWS motorized pulse rifle"
+	projectile_type  = /obj/item/projectile/bullet/pulse/hv
+
+
+/obj/item/ammo_magazine/pulse/hv
+	name = "magazine (high velocity rounds)"
+	desc = "With a distinctive \"bell and stock\" design, pulse magazines can be inserted and removed from the Pulse Rifle with minimal effort and risk. This one contains hypersonic rounds, unsafe for naval usage."
+	ammo_type = /obj/item/ammo_casing/pulse/hv
+	max_ammo = 100
+
+/obj/item/ammo_magazine/pulse/hv/update_icon()
+	if (stored_ammo.len)
+		icon_state = "pulse_rounds_hv"
+	else
+		icon_state = "pulse_rounds_empty"
+
+/obj/item/projectile/bullet/pulse/hv
+	icon_state = "pulse_hv"
+	damage = 11.25
+	embed = 0
+	structure_damage_factor = 1.2
+	penetration_modifier = 1
+	penetrating = FALSE
+	step_delay = 1
+	expiry_method = EXPIRY_FADEOUT
+	muzzle_type = /obj/effect/projectile/pulse/muzzle/hv
+	fire_sound='sound/weapons/guns/fire/pulse_shot.ogg'
 
 /*-----------------------
 	Ammo
@@ -121,6 +160,10 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	light_color = COLOR_DEEP_SKY_BLUE
 
 
+/obj/effect/projectile/pulse/muzzle/hv
+	icon_state = "muzzle_pulse_hv"
+	light_max_bright = 1
+	light_color = COLOR_MARKER_RED
 
 
 /*

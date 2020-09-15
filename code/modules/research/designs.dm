@@ -313,22 +313,6 @@
 	build_path = /obj/item/weapon/tool/pickaxe/drill
 	sort_string = "KAAAB"
 */
-/datum/design/item/mining/miningcutter
-	name = "mining cutter"
-	id = "miningcutter"
-	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
-	materials = list(MATERIAL_STEEL = 1500, MATERIAL_GLASS = 500, MATERIAL_GOLD = 500, MATERIAL_PHORON = 500)
-	build_path = /obj/item/weapon/gun/energy/cutter
-	sort_string = "KAAAC"
-
-/datum/design/item/mining/miningcutter
-	name = "mining cutter"
-	id = "miningcutter"
-	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
-	materials = list(MATERIAL_STEEL = 1500, MATERIAL_GLASS = 500, MATERIAL_GOLD = 500, MATERIAL_PHORON = 500)
-	build_path = /obj/item/weapon/gun/energy/cutter
-	sort_string = "KAAAC"
-
 /datum/design/item/mining/depth_scanner
 	name = "depth scanner"
 	desc = "Used to check spatial depth and density of rock outcroppings."
@@ -604,7 +588,45 @@
 	build_path = /obj/item/weapon/gun/energy/cutter/plasma
 	sort_string = "TAEAC"
 
+/datum/design/item/weapon/divet
+	name = "Winchester NK Divet pistol"
+	id = "divet"
+	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
+	materials = list(MATERIAL_STEEL = 10000, MATERIAL_SILVER = 4000)
+	build_path = /obj/item/weapon/gun/projectile/divet
+	sort_string = "TACEA"
 
+/datum/design/item/weapon/divetslug
+	name = "divet magazine"
+	id = "divetslug"
+	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	materials = list(MATERIAL_STEEL = 4000)
+	build_path = /obj/item/ammo_magazine/divet
+	sort_string = "TACEB"
+
+/datum/design/item/weapon/50cal/ammo
+	name = ".50 AE magazine"
+	id = "50cal"
+	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5)
+	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GOLD = 2000, MATERIAL_DIAMOND = 1000, MATERIAL_PLASTEEL = 2000) // Plasteel can be changed to deuterium later when I get around to defining material for it. If you have an idea for a reagent that could be used to minimize production of these, please add it.
+	build_path = /obj/item/ammo_magazine/a50
+	sort_string = "TACEH"
+
+/datum/design/item/weapon/pulserifle
+	name = "SWS Motorized Pulse Rifle"
+	id = "pulserifle"
+	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5)
+	materials = list(MATERIAL_STEEL = 30000, MATERIAL_GLASS = 2000, MATERIAL_SILVER = 4000, MATERIAL_URANIUM = 4000) // times 6 the cost of a contact beam, the basic idea is that the massive steel cost will make getting a lot difficult due to transport of materials, what if you just brought the R&D set down to cargo, not gonna work because I'm pretty sure R&D servers aren't Multi-Z.
+	build_path = /obj/item/weapon/gun/projectile/automatic/pulse_rifle
+	sort_string = "TBECF"
+
+/datum/design/item/weapon/pulseslug
+	name = "rifle slug magazine"
+	id = "pulseslug"
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
+	materials = list(MATERIAL_STEEL = 10000) // Same thing here. It might need tweaking with exotic materials to stop people getting a lot of it early on though.
+	build_path = /obj/item/ammo_magazine/pulse
+	sort_string = "TBECD"
 
 /datum/design/item/weapon/grenadelauncher
 	name = "junk grenade launcher"
@@ -789,15 +811,6 @@
 	build_path = /obj/item/weapon/tool/weldingtool/advanced
 	sort_string = "VAGAG"
 
-/datum/design/item/tool/shield_diffuser
-	name = "portable shield diffuser"
-	desc = "A small handheld device designed to disrupt energy barriers."
-	id = "portable_shield_diffuser"
-	req_tech = list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_ILLEGAL = 2)
-	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 5000, MATERIAL_GOLD = 2000, MATERIAL_SILVER = 2000)
-	build_path = /obj/item/weapon/shield_diffuser
-	sort_string = "VAGAH"
-
 /datum/design/item/tool/oxycandle
 	name = "oxycandle"
 	desc = "a device which, via a chemical reaction, can pressurise small areas."
@@ -812,27 +825,9 @@
 	..()
 	name = "Encryption key design ([item_name])"
 
-/datum/design/item/encryptionkey/binary
-	name = "binary"
-	desc = "Allows for deciphering the binary channel on-the-fly."
-	id = "binaryencrypt"
-	req_tech = list(TECH_ILLEGAL = 2)
-	materials = list(MATERIAL_STEEL = 300, MATERIAL_GLASS = 300)
-	build_path = /obj/item/device/encryptionkey/binary
-	sort_string = "VASAA"
-
 /datum/design/item/camouflage/AssembleDesignName()
 	..()
 	name = "Camouflage design ([item_name])"
-
-/datum/design/item/camouflage/chameleon
-	name = "holographic equipment kit"
-	desc = "A kit of dangerous, high-tech equipment with changeable looks."
-	id = "chameleon"
-	req_tech = list(TECH_ILLEGAL = 2)
-	materials = list(MATERIAL_STEEL = 500)
-	build_path = /obj/item/weapon/storage/backpack/chameleon/sydie_kit
-	sort_string = "VASBA"
 
 // Superconductive magnetic coils
 /datum/design/item/smes_coil/AssembleDesignName()
@@ -1714,13 +1709,6 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/weapon/circuitboard/ntnet_relay
 	sort_string = "WAAAA"
-
-/datum/design/circuit/replicator
-	name = "food replicator"
-	id = "freplicator"
-	req_tech = list(TECH_BIO = 3, TECH_DATA = 3)
-	build_path = /obj/item/weapon/circuitboard/replicator
-	sort_string = "WAAAR"
 
 /datum/design/circuit/integrated
 	name = "integrated circuit"
