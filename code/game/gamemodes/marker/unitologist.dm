@@ -10,9 +10,9 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	message_necromorphs("<span class='cult'>[usr]: [message]</span>")
 */
 /datum/antagonist/unitologist
-	role_text = "Zealot"
-	role_text_plural = "Zealots"
-	welcome_text = "You are part of a new religion which worships strange alien artifacts, believing that only through them can humanity truly transcend. You have been blessed with a psychic connection created by the <b>marker</b>, one of these artifacts. Serve the marker's will at all costs by bringing it human sacrifices and remember that its objectives come before your own..."
+	role_text = "Unitologist Zealot"
+	role_text_plural = "Unitologist Zealots"
+	welcome_text = "You are a zealot of Unitology willing to do anything in pursuit of your beliefs. You have been blessed with a psychic connection created by the <b>marker</b>, and must serve the marker's will at all costs by bringing it human sacrifices. Remember, its objectives come before your own..."
 	id = MODE_UNITOLOGIST
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	skill_setter = /datum/antag_skill_setter/station
