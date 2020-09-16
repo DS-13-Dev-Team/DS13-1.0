@@ -57,7 +57,7 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	The Shardbearer
 */
 /datum/antagonist/unitologist/shardbearer
-	role_text = "Zealot Shardbearer"
+	role_text = "Unitologist Zealot Shardbearer"
 	role_text_plural = "Shardbearers"
 	preference_candidacy_toggle = TRUE
 	id = MODE_UNITOLOGIST_SHARD
