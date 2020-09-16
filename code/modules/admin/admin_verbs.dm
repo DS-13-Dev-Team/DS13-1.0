@@ -100,7 +100,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/change_security_level,
 	/client/proc/view_chemical_reaction_logs,
 	/client/proc/makePAI,
-	/datum/admins/proc/paralyze_mob,
 	/client/proc/fixatmos,
 	/client/proc/list_traders,
 	/client/proc/add_trader,
@@ -398,6 +397,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/visualpower_remove
 	)
 var/list/admin_verbs_mod = list(
+	/datum/admins/proc/paralyze_mob,
 	/client/proc/cmd_admin_pm_context,	// right-click adminPM interface,
 	/client/proc/cmd_admin_pm_panel,	// admin-pm list,
 	/client/proc/debug_variables,		// allows us to -see- the variables of any instance in the game.,
