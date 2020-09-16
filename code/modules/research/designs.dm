@@ -604,6 +604,17 @@
 	build_path = /obj/item/ammo_magazine/divet
 	sort_string = "TACEB"
 
+<<<<<<< HEAD
+=======
+/datum/design/item/weapon/fiftycal/ammo
+	name = ".50 AE magazine"
+	id = "50cal"
+	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5)
+	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GOLD = 2000, MATERIAL_DIAMOND = 1000, MATERIAL_PLASTEEL = 2000) // Plasteel can be changed to deuterium later when I get around to defining material for it. If you have an idea for a reagent that could be used to minimize production of these, please add it.
+	build_path = /obj/item/ammo_magazine/a50
+	sort_string = "TACEH"
+
+>>>>>>> a7c5293c0f98745acf8bf4c5db8ad4b30826482f
 /datum/design/item/weapon/pulserifle
 	name = "SWS Motorized Pulse Rifle"
 	id = "pulserifle"

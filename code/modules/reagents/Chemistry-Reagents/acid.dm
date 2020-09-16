@@ -6,8 +6,8 @@
 	color = "#db5008"
 	metabolism = REM * 2
 	touch_met = 50 // It's acid!
-	var/power = 2.5
-	var/meltdose = 10 // How much is needed to melt
+	var/power = 1
+	var/meltdose = 23 // How much is needed to melt
 
 /datum/reagent/acid/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.take_organ_damage(0, removed * power)
@@ -79,8 +79,8 @@
 	taste_description = "stomach acid"
 	reagent_state = LIQUID
 	color = "#808080"
-	power = 3
-	meltdose = 8
+	power = 0.9
+	meltdose = 25
 
 
 /datum/reagent/acid/triflicacid
@@ -89,8 +89,8 @@
 	taste_description = "acid"
 	reagent_state = LIQUID
 	color = "#939c38"
-	power = NECROMORPH_ACID_POWER * 1.5
-	meltdose = 8
+	power = 1.2
+	meltdose = 20
 
 
 /datum/reagent/acid/necromorph

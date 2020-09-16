@@ -83,6 +83,17 @@
 	reagents.add_reagent(/datum/reagent/toxin, 60)
 	update_icon()
 
+/obj/item/weapon/reagent_containers/glass/bottle/tacid
+	name = "triflic acid bottle"
+	desc = "For DEBUG USE ONLY! Lion -will- get angry if used casually."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-3"
+
+/obj/item/weapon/reagent_containers/glass/bottle/tacid/New()
+	..()
+	reagents.add_reagent(/datum/reagent/acid/triflicacid, 60)
+	update_icon()
+
 
 /obj/item/weapon/reagent_containers/glass/bottle/cyanide
 	name = "cyanide bottle"
