@@ -773,7 +773,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Admin"
 	set name = "Delay Evacuation"
 
-	if(!check_rights(R_ADMIN))	return
+	if(!check_rights(R_MOD))	return
 
 	if(!ticker || !evacuation_controller)
 		to_chat(usr, "<span class='warning'>Ticker or evacuation controller are missing.</span>")

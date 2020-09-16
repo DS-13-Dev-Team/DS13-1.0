@@ -44,4 +44,5 @@ changes:
   - tweak: "Triflic Acid no longer requires Lexorin. It now just requires Sulphuric Acid, Chlorophoride and Phosphorus, resulting in 3u still."
   - tweak: "The Paralyze Mob ability is now available to Moderators and up."
   - tweak: "Made Activate Marker verb available to Moderators and up."
+  - tweak: "Made the Delay shuttle verb available to mods."
   - bugfix: "Fixed incorrect math being applied on round-end."
