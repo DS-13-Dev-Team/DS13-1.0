@@ -359,23 +359,23 @@ var/global/list/additional_antag_types = list()
 		text += "<br><h2><b><center><span class='danger'>Necromorph Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Necromorphs have slain a majority of the crew!</center>"
 		text += "<br><b><center>And so ends the struggle on [station_name()]...</center></b>"
-		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] evacuees</b>" : "was <b>one evacuee</b>"]</center>"
-	else if(escaped_total > 5 && escaped_total < 9)
+		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which [escaped_total>1 ? "managed to <b>[escaped_total] evacuate</b>" : "was <b>one evacuee</b>"]</center>"
+	else if(escaped_total > 5 && escaped_total < 9) // Between 6 and 8? Count as survivor minor.
 		text += "<br><h2><b><center><span class='success'>Survivor Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Some survivors managed to evacuate!</center>"
 		text += "<br><b><cennter>And so ends the struggle on [station_name()]...</center></b>"
-		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] evacuees</b>" : "was <b>one evacuee</b>"]</center>"
-	else if(escaped_total > 8)
+		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which [escaped_total>1 ? "managed to <b>[escaped_total] evacuate</b>" : "was <b>one evacuee</b>"]</center>"
+	else if(escaped_total > 8) // More than 9 escaped? Big party. Survivor major.
 		text += "<br><h1><b><center><span class='success'>Survivor Major Victory!</span></center></b></h1>"
 		text += "<br><center>A majority of the survivors managed to evacuate!</center>"
 		text += "<br><center><b>And so ends the struggle on [station_name()]...</center></b>"
-		text += "<br><center><center>There [surviving_total>1 ? "were <b>[surviving_total] evacuees</b>" : "was <b>one evacuee</b>"]</center>"
-	else if(escaped_total < 1)
+		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which [escaped_total>1 ? "managed to <b>[escaped_total] evacuate</b>" : "was <b>one evacuee</b>"]</center>"
+	else if(escaped_total < 1) // Big sad. Necro major. No evacuees.
 		text += "<br><h1><b><center><span class='danger'>Necromorph Major Victory!</h1></center></b></large>"
 		text += "<br><center>The Necromorphs have slain the entire crew!</center>"
 		text += "<br><br><center><b>And so ends another struggle on [station_name()]...</b></center>"
-		text += "<br><center>There were <b>no evacuees</b></center>"
-	else // Safety clause
+		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which <b>none</b> managed to evacuate."
+	else // Safety clause. Pray to god this never gets ran. Wouldn't know why it would do that, if it did.
 		text += "<br>DEBUG: You fucked up. This is not meant to happen."
 		text += "<br>Contact Lion immediately."
 	to_world(text)

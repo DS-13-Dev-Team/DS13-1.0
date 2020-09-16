@@ -604,7 +604,7 @@
 	build_path = /obj/item/ammo_magazine/divet
 	sort_string = "TACEB"
 
-/datum/design/item/weapon/50cal/ammo
+/datum/design/item/weapon/fiftycal/ammo
 	name = ".50 AE magazine"
 	id = "50cal"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5)
