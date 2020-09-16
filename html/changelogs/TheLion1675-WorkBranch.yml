@@ -43,5 +43,5 @@ changes:
   - tweak: "Significantly increased the amount of Sulphuric Acid needed to completely remove limbs."
   - tweak: "Triflic Acid no longer requires Lexorin. It now just requires Sulphuric Acid, Chlorophoride and Phosphorus, resulting in 3u still."
   - tweak: "The Paralyze Mob ability is now available to Moderators and up."
-  - tweak: "Makes Paralyze Mob ability available to Moderators."
+  - tweak: "Made Activate Marker verb available to Moderators and up."
   - bugfix: "Fixed incorrect math being applied on round-end."
