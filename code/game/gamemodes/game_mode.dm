@@ -355,12 +355,12 @@ var/global/list/additional_antag_types = list()
 				sound_to(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 
 	var/text = ""
-	if(escaped_total > 0 && escaped_total < 5) // Between 1 and 4 players escaped, count as Necro Minor Victory.
+	if(escaped_total > 0) // Between 1 and 4 players escaped, count as Necro Minor Victory.
 		text += "<br><h2><b><center><span class='danger'>Necromorph Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Necromorphs have slain a majority of the crew!</center>"
 		text += "<br><b><center>And so ends the struggle on [station_name()]...</center></b>"
 		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which [escaped_total>1 ? "managed to <b>[escaped_total] evacuate</b>" : "was <b>one evacuee</b>"]</center>"
-	else if(escaped_total > 5 && escaped_total < 9) // Between 6 and 8? Count as survivor minor.
+	else if(escaped_total > 5) // Between 6 and 8? Count as survivor minor.
 		text += "<br><h2><b><center><span class='success'>Survivor Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Some survivors managed to evacuate!</center>"
 		text += "<br><b><cennter>And so ends the struggle on [station_name()]...</center></b>"
