@@ -1,6 +1,5 @@
 //This is called in human_attackhand.dm
 /mob/living/carbon/human/proc/grab(var/mob/living/target)
-	world << "human grab"
 	return species.attempt_grab(src, target)
 
 
@@ -18,7 +17,6 @@
 
 /mob/living/carbon/human/proc/make_grab(var/mob/living/carbon/human/attacker, var/mob/living/victim, var/grab_tag)
 	var/obj/item/grab/G
-	world << "Human make grab"
 	if(!grab_tag)
 		G = new attacker.current_grab_type(attacker, victim)
 	else
