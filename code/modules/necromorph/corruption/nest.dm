@@ -73,6 +73,7 @@
 /obj/structure/corruption_node/nest/verb/upgrade_spawner(var/mob/user)
 	set name = "Upgrade Spawner"
 	set desc = "Allows turning a nest into a spawner"
+	set category = null
 	set src in view()
 	if (!istype(user))
 		user = usr
