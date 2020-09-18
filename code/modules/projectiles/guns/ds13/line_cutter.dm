@@ -20,7 +20,7 @@
 	mag_remove_sound = 'sound/weapons/guns/interaction/line_magout.ogg'
 	firemodes = list(
 		list(mode_name = "line cutter", fire_sound = 'sound/weapons/guns/fire/line_fire.ogg', fire_delay = 1.75 SECONDS),
-		list(mode_name = "plasma mine", projectile_type = /obj/item/projectile/mine/plasma, fire_sound = 'sound/weapons/guns/fire/line_altfire.ogg', fire_delay = 1.75 SECONDS))
+		list(mode_name = "plasma mine", projectile_type = /obj/item/projectile/deploy/plasma, fire_sound = 'sound/weapons/guns/fire/line_altfire.ogg', fire_delay = 1.75 SECONDS))
 
 	icon_state = "linecutter"
 	item_state = "linecutter"
@@ -141,29 +141,9 @@
 /*--------------------------
 	Plasma Mine
 --------------------------*/
-/*
-	A mine projectile does not deal direct damage to mobs. Its goal is to impact with a wall or floor, whereupon it will deploy itself there
-	Deployment involves creating another object and deleting ourselves
-*/
-/obj/item/projectile/mine
-	kill_count = 6	//These are generally short ranged
-	var/deploy_type = /obj/effect/mine
-	damage = 0
-	grippable = TRUE
 
-//Mines can be aimed at the floor, they will deploy when they enter the target tile
-/obj/item/projectile/mine/Move(var/atom/new_loc,var/direction)
-	.=..()
-	if (!expired && get_turf(new_loc) == get_turf(original))
-		expire()
 
-/obj/item/projectile/mine/expire()
-	var/turf/T = get_turf(src)
-	spawn()
-		new deploy_type(T)
-	.=..()
-
-/obj/item/projectile/mine/plasma
+/obj/item/projectile/deploy/plasma
 	deploy_type = /obj/effect/mine/plasma
 	icon_state = "plasma_mine"
 

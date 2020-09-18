@@ -38,6 +38,8 @@
 	var/persist = FALSE
 
 
+	var/vector2/starting_pixel_offset = null
+
 /*
 	Vars expected:
 	user: What/who is firing the projectiles
@@ -51,7 +53,7 @@
 	nomove: optional, default false. If true, the user can't move during windup. If a number, the user can't move during windup and for that long after firing
 */
 
-/datum/extension/shoot/New(var/atom/user, var/atom/target, var/projectile_type, var/accuracy = 0, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE, var/cooldown = 0)
+/datum/extension/shoot/New(var/atom/user, var/atom/target, var/projectile_type, var/accuracy = 0, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE, var/cooldown = 0,var/vector2/_starting_pixel_offset)
 	.=..()
 	src.user = user
 	src.target = target
@@ -63,6 +65,9 @@
 	src.fire_sound = fire_sound
 	src.nomove = nomove
 	src.cooldown = cooldown
+
+	if (_starting_pixel_offset)
+		starting_pixel_offset = _starting_pixel_offset
 
 	if (!persist)
 		status = SHOOT_STATUS_PREFIRE
@@ -124,6 +129,9 @@
 	status = SHOOT_STATUS_FIRING
 	for(shot_num in 1 to total_shots)
 		var/obj/item/projectile/P = new projectile_type(user.loc)
+		if (starting_pixel_offset)
+			P.pixel_x += starting_pixel_offset.x
+			P.pixel_y += starting_pixel_offset.y
 		P.accuracy += base_accuracy
 		P.dispersion = get_dispersion()
 		P.firer = user
@@ -211,13 +219,13 @@
 /***********************
 	Using
 ************************/
-/atom/movable/proc/shoot_ability(var/subtype, var/atom/target, var/projectile_type, var/accuracy = 100, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE, var/cooldown = 0)
+/atom/movable/proc/shoot_ability(var/subtype = /datum/extension/shoot, var/atom/target, var/projectile_type, var/accuracy = 100, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE, var/cooldown = 0, var/vector2/starting_pixel_offset)
 	//First of all, lets check if we're currently able to charge
 	if (!can_shoot(TRUE, subtype))
 		return FALSE
 
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, subtype, target, projectile_type, accuracy, dispersion, num, windup_time, fire_sound, nomove, cooldown)
+	set_extension(src, subtype, target, projectile_type, accuracy, dispersion, num, windup_time, fire_sound, nomove, cooldown, starting_pixel_offset)
 
 	return TRUE

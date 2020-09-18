@@ -199,7 +199,6 @@
 
 
 
-	var/obj/structure/corruption_node/cyst/launcher
 	muzzle_type	= /obj/effect/projectile/bio/muzzle
 
 

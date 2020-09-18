@@ -14,6 +14,7 @@
 	var/bumped = 0		//Prevents it from hitting more than one guy at once
 	var/def_zone = ""	//Aiming at
 	var/mob/firer = null//Who shot it
+	var/atom/launcher	//What the firer used to launch it, usually a gun
 	var/silenced = 0	//Attack message
 	var/yo = null
 	var/xo = null
@@ -246,10 +247,13 @@
 
 //called to launch a projectile from a gun
 /obj/item/projectile/proc/launch_from_gun(atom/target, mob/user, obj/item/weapon/gun/launcher, var/target_zone, var/x_offset=0, var/y_offset=0)
+	src.launcher = launcher
+
 	if(user == target) //Shooting yourself
 		user.bullet_act(src, target_zone)
 		qdel(src)	//Never visible, no expire
 		return 0
+
 
 	last_loc = loc
 	loc = get_turf(user) //move the projectile out into the world

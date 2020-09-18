@@ -37,6 +37,9 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 /datum/proximity_trigger/line
 	turf_selection = /decl/turf_selection/line
 
+/datum/proximity_trigger/solidline
+	turf_selection = /decl/turf_selection/solidline
+
 /datum/proximity_trigger/square
 	turf_selection = /decl/turf_selection/square
 

@@ -87,7 +87,7 @@ proc/explosion_rec(turf/epicenter, power, var/falloff = 1, shaped)
 		var/throw_target = get_edge_target_turf(T, get_dir(epicenter,T))
 		for(var/atom_movable in T.contents)
 			var/atom/movable/AM = atom_movable
-			if(AM && AM.simulated && !T.protects_atom(AM))
+			if(AM && !(AM.atom_flags & ATOM_FLAG_INTANGIBLE) && AM.simulated && !T.protects_atom(AM))
 				AM.ex_act(severity, epicenter)
 				if(!AM.anchored)
 					addtimer(CALLBACK(AM, /atom/movable/.proc/throw_at, throw_target, 9/severity, 9/severity), 0)

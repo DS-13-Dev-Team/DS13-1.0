@@ -33,3 +33,10 @@
 	. = get_cone(origin, direction, range, angle)
 	if (dirmade)
 		release_vector(direction)
+
+
+//Solid line ensures it has no gaps in it
+/decl/turf_selection/solidline/get_turfs(var/atom/origin, var/range, var/target)
+	. = get_line_between(origin, target)
+	for (var/turf/T in .)
+		debug_mark_turf(T)

@@ -153,15 +153,13 @@
 
 	fire_sound='sound/weapons/guns/fire/rivet_fire.ogg'	//Placeholder
 
-	var/obj/item/weapon/gun/projectile/rivet/launcher
+
 	icon_state = "rivet"
 
 	ricochet_chance = 0
 
 
-/obj/item/projectile/bullet/rivet/launch_from_gun(atom/target, mob/user, obj/item/weapon/gun/launcher, var/target_zone, var/x_offset=0, var/y_offset=0)
-	src.launcher = launcher
-	.=..()
+
 /*
 	Special Effect:
 	When the rivet gun is fired into non organic objects or turfs, it repairs instead of damaging them
@@ -220,7 +218,7 @@
 	layer = 0
 
 /obj/item/embedded_rivet/New(var/atom/loc, var/obj/item/projectile/bullet/rivet/rivet)
-	if (istype(rivet.launcher, /obj/item/weapon/gun/projectile/rivet))
+	if (istype(rivet.	, /obj/item/weapon/gun/projectile/rivet))
 		rivetgun = rivet.launcher
 		rivetgun.register_rivet(src)
 	QDEL_IN(src, lifetime)
