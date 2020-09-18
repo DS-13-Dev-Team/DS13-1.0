@@ -174,7 +174,7 @@
 	step_delay = 3
 	muzzle_type = /obj/effect/projectile/bio/muzzle
 	grippable = TRUE
-
+	embed = FALSE
 
 
 /obj/item/projectile/bullet/biobomb/is_necromorph()
