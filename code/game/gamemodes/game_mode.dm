@@ -355,17 +355,17 @@ var/global/list/additional_antag_types = list()
 				sound_to(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 
 	var/text = ""
-	if(escaped_total > 0 && escaped_total > 3) // Between 1 and 4 players escaped, count as Necro Minor Victory.
+	if(escaped_total > 0 && escaped_total <= 3) // Between 1 and 3 players escaped, count as Necro Minor Victory.
 		text += "<br><h2><b><center><span class='danger'>Necromorph Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Necromorphs have slain a majority of the crew!</center>"
 		text += "<br><b><center>And so ends the struggle on [station_name()]...</center></b>"
 		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which [escaped_total>1 ? "managed to <b>[escaped_total] evacuate</b>" : "was <b>one evacuee</b>"]</center>"
-	else if(escaped_total > 4 && escaped_total < 8) // Between 6 and 8? Count as survivor minor.
+	else if(escaped_total => 4 && escaped_total <= 8) // Between 4 and 8? Count as survivor minor.
 		text += "<br><h2><b><center><span class='success'>Survivor Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Some survivors managed to evacuate!</center>"
 		text += "<br><b><cennter>And so ends the struggle on [station_name()]...</center></b>"
 		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which [escaped_total>1 ? "managed to <b>[escaped_total] evacuate</b>" : "was <b>one evacuee</b>"]</center>"
-	else if(escaped_total > 8) // More than 9 escaped? Big party. Survivor major.
+	else if(escaped_total => 9) // 9 or more escaped? Big party. Survivor major.
 		text += "<br><h1><b><center><span class='success'>Survivor Major Victory!</span></center></b></h1>"
 		text += "<br><center>A majority of the survivors managed to evacuate!</center>"
 		text += "<br><center><b>And so ends the struggle on [station_name()]...</center></b>"
