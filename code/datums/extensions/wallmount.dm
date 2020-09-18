@@ -133,6 +133,7 @@
 	var/vector2/centre_offset //What offset do we add to our sprite to centre it in the tile? Calculated based on dmi size. This is applied flatly regardless of rotation
 	var/vector2/base_offset	//What offset do we add to place our feet against the edge of the tile? This is rotated before applying
 	var/pixel_offset_magnitude = 8	//How far to offset us towards the target atom
+	var/mount_angle
 
 /datum/extension/mount/sticky
 	face_away_from_mountpoint = TRUE
@@ -160,6 +161,10 @@
 	mountee = null
 	if (offset)
 		release_vector(offset)
+	if (base_offset)
+		release_vector(base_offset)
+	if (centre_offset)
+		release_vector(centre_offset)
 	WP = null
 	.=..()
 
@@ -231,20 +236,25 @@
 		if (base_offset)
 			release_vector(base_offset)
 
-		base_offset = size
+		base_offset = size.Copy()
+		world << "Base offset 1 is [vstr(base_offset)]"
 		base_offset.y += pixel_offset_magnitude //We can add in the pixel offset here for efficiency too
-
+		world << "Base offset 2 is [vstr(base_offset)]"
 		release_vector(size)
 
 /datum/extension/mount/proc/mount_offset()
+	world << "Doing mount offset"
 	//Visuals
 
-	var/mount_angle = rotation_to_target(mountee, get_turf(mountpoint), SOUTH)	//Point our feet at the wall we're walking on
+	mount_angle = rotation_to_target(mountee, get_turf(mountpoint), SOUTH)	//Point our feet at the wall we're walking on
 	mountee.default_rotation = mount_angle
 
-
+	world << "Base offset 3 is [vstr(base_offset)]"
 	var/vector2/newpix = base_offset.Turn(mount_angle)
+	world << "Base offset 4 is [vstr(base_offset)]"
+	world << "newpix 1 is [vstr(newpix)]"
 	newpix.SelfAdd(centre_offset)	//The base offset is used with rotation
+	world << "newpix 2 is [vstr(newpix)]"
 	mountee.default_pixel_x = newpix.x
 	mountee.default_pixel_y = newpix.y
 

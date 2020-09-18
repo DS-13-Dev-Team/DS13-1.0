@@ -3,6 +3,8 @@
 	GLOB.dview_mob.see_invisible = invis_flags; \
 	for(type in view(range, GLOB.dview_mob))
 
+
+
 #define END_FOR_DVIEW GLOB.dview_mob.loc = null
 
 #define LIGHTING_FALLOFF 1 // type of falloff to use for lighting; 1 for circular, 2 for square
@@ -51,3 +53,5 @@
 #define CL_MATRIX_CG 18
 #define CL_MATRIX_CB 19
 #define CL_MATRIX_CA 20
+
+

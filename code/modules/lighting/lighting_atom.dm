@@ -9,7 +9,7 @@
 	var/list/light_sources
 
 // Nonsensical value for l_color default, so we can detect if it gets set to null.
-#define NONSENSICAL_VALUE -99999
+
 #define DEFAULT_FALLOFF_CURVE (2)
 /atom/proc/set_light(l_max_bright, l_inner_range, l_outer_range, l_falloff_curve = NONSENSICAL_VALUE, l_color = NONSENSICAL_VALUE)
 	. = 0 //make it less costly if nothing's changed
@@ -48,7 +48,6 @@
 		light = null
 
 
-#undef NONSENSICAL_VALUE
 #undef DEFAULT_FALLOFF_CURVE
 
 /atom/proc/update_light()

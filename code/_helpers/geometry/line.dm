@@ -1,8 +1,6 @@
 /proc/get_line_between(var/turf/source, var/turf/target, var/allow_diagonal = FALSE, var/include_source = TRUE)
 
-
-
-	var/dist_remaining = 5//hypot(world.maxx, world.maxy)	//The longest possible line across the map, as a safety
+	var/dist_remaining = hypot(world.maxx, world.maxy)	//The longest possible line across the map, as a safety
 	//Must be on same zlevel
 	if (source.z != target.z)
 		target = locate(target.x, target.y, source.z)
@@ -21,9 +19,10 @@
 		next = get_step_towards(current, target)
 	else
 		next = get_cardinal_step_towards(current, target)
-	line += next
+
 
 	while (next != target && dist_remaining)
+		line += next
 		current = next
 		//Possible Todo: This can return diagonals, break them into two steps
 		if (allow_diagonal)

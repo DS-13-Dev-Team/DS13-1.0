@@ -18,6 +18,26 @@
 	if (fuse_timer)
 		addtimer(CALLBACK(src, /obj/effect/mine/proc/detonate), fuse_timer, TIMER_STOPPABLE)
 
+/obj/effect/mine/proc/is_valid_target(var/atom/movable/enterer)
+	//Leapers can leap over
+	if (enterer.pass_flags & PASS_FLAG_FLYING)
+		return FALSE
+
+	var/trigger = FALSE
+
+	if (enterer.density)
+		trigger = TRUE
+
+	else if (isliving(enterer))
+		var/mob/living/L = enterer
+		if (L.mob_size >= MOB_MEDIUM)
+			trigger = TRUE
+
+
+	//if (trigger)
+
+	return trigger
+
 /obj/effect/mine/Crossed(AM as mob|obj)
 	Bumped(AM)
 
@@ -29,6 +49,8 @@
 	if (!step_detonate)
 		return
 
+	if (!is_valid_target(M))
+		return
 	detonate(M)
 
 
@@ -173,10 +195,10 @@
 	set waitfor = FALSE
 	if (deployed)
 		return
-	world << "Deploying to floor [T]"
 	deployed = TRUE
 	sleep()
 	new deploy_type(T, src)
+
 
 /obj/item/projectile/deploy/proc/deploy_to_atom(var/atom/A, var/turf/origin)
 

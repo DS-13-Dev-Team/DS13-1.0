@@ -67,14 +67,30 @@
 	transform = transform.Turn(rand(0, 360))
 
 /*
-	Deployment projectile
+	Mount extension
 */
 /datum/extension/mount/sticky/mine
-	pixel_offset_magnitude = -16
+	pixel_offset_magnitude = -12
 
+
+/*
+	Deployment projectile
+*/
 /obj/item/projectile/deploy/detonator
 	mount_type = /datum/extension/mount/sticky/mine
 	deploy_type = /obj/effect/mine/trip
+	icon = 'icons/obj/weapons/ds13_deployables.dmi'
+	icon_state = "detonator_mine"
+
+
+/obj/item/projectile/deploy/detonator/deploy_to_floor(var/turf/T)
+	set waitfor = FALSE
+	if (deployed)
+		return
+	deployed = TRUE
+	sleep()
+	var/obj/effect/mine/trip/trip = new deploy_type(T, src)
+	trip.floor_deployed(T)
 
 
 /*
@@ -85,6 +101,9 @@
 	icon_state = "triplaser"
 	base_length = WORLD_ICON_SIZE*2
 	start_offset = new /vector2(-16,0)
+	end_offset = new /vector2(-16,0)
+	alpha = 220
+
 /*
 	Deployed mine
 */
@@ -97,6 +116,8 @@
 	var/max_laser_range = 20	//How far the laser extends, in tiles
 	var/gunref	//We'll save a weak link to our launcher
 	var/disarmed_type = /obj/item/ammo_casing/tripmine
+	triggerproc = /obj/effect/mine/trip/explode
+	density = FALSE
 
 /obj/effect/mine/trip/New(var/atom/newloc, var/obj/item/projectile/deploy/projectile)
 
@@ -106,13 +127,12 @@
 	gunref = "\ref[D]"
 
 /obj/effect/mine/trip/explode(var/atom/victim)
-	if (triggered)
-		return
 	triggered = TRUE
-	shoot_ability(target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
-	shoot_ability(target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
-	shoot_ability(target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
-	explosion(loc, -1, 1, 2, 2)
+	if (is_mounted())
+		shoot_ability(subtype = /datum/extension/shoot/det1, target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
+		shoot_ability(subtype = /datum/extension/shoot/det2, target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
+		shoot_ability(subtype = /datum/extension/shoot/det3, target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
+	explosion(loc, -1, 0, 1, 2)
 	spawn(0)
 		qdel(src)
 
@@ -120,6 +140,8 @@
 	if (triggered || QDELETED(src))
 		return
 	triggered = TRUE
+	icon_state = "detonator_mine_undeploy"
+	sleep(6)
 	new disarmed_type(get_turf(src))
 	qdel(src)
 
@@ -138,22 +160,37 @@
 		laser = new (loc)
 		//Which way are we pointing our laser?
 		var/vector2/laser_direction = Vector2.SmartDirectionBetween(ME.mountpoint, src)
+		var/laser_angle = laser_direction.Angle()
+		//We will make the angle bound to a cardinal or diagonal
+		var/rounded_laser_angle = round(laser_angle, 45)
+		laser_direction.SelfTurn(rounded_laser_angle - laser_angle)
+
+		set_light(0.8, 1, 3, l_falloff_curve = NONSENSICAL_VALUE, l_color = COLOR_DEEP_SKY_BLUE)
+
+
 		var/vector2/tile_offset = laser_direction * max_laser_range
 
 		var/turf/target_turf = locate(x + tile_offset.x, y+tile_offset.y, z)
-		world << "Detonator mine targeting [target_turf]"
 
 		if (!target_turf)
 			return
 
 		var/list/results = check_trajectory_verbose(target_turf, src)
 
+		var/obstacle = results[3]
+		//If the laser is blocked by a mob, we detonate instantly
+		if (isliving(obstacle))
+			var/mob/living/L = obstacle
+			if (L.stat != DEAD)
+				detonate(L)
+				return
+
 		target_turf = results[2]	//This contains the turf that the projectile managed to reach, its where we will aim
-		world << "Detonator laser reached [target_turf]"
 
 		var/vector2/start = get_global_pixel_loc()
-		var/vector2/start_offset = get_new_vector(0, -12)
+		var/vector2/start_offset = get_new_vector(0, -8)
 		start_offset.SelfTurn(ME.mount_angle)
+		start.SelfAdd(start_offset)
 
 		var/vector2/end = target_turf.get_global_pixel_loc()
 
@@ -172,18 +209,28 @@
 		release_vector(tile_offset)
 
 
-/obj/effect/mine/trip/proc/tripped(var/atom/movable/enterer)
-	var/trigger = FALSE
-	if (enterer.density)
-		trigger = TRUE
 
-	else if (isliving(enterer))
-		var/mob/living/L = enterer
-		if (L.mob_size >= MOB_MEDIUM)
-			trigger = TRUE
+/obj/effect/mine/trip/proc/floor_deployed()
+	transform = transform.Scale(1, 0.8)
+	icon_state = "detonator_mine_deployed"
+
+	spawn(setup_time)
+		laser = new (loc)
+
+		var/vector2/start = get_global_pixel_loc()
+
+		var/vector2/end = start.Copy()
+		end.y += 48
+
+		laser.set_ends(start, end)
+		release_vector(start)
+		release_vector(end)
+
+/obj/effect/mine/trip/proc/tripped(var/atom/movable/enterer)
+	var/trigger = is_valid_target(enterer)
 
 	if (trigger)
-		explode(enterer)
+		detonate(enterer)
 
 
 /*
@@ -191,8 +238,9 @@
 	On detonation, the mine fires three bullets along the laser, which do most of the damage
 */
 /obj/item/projectile/bullet/detonator_round
-	icon_state = "seeker"
-	damage = 30
+	name = "heavy shrapnel"
+	icon_state = "slimbullet"
+	damage = 35
 	embed = 1
 	structure_damage_factor = 3
 	penetration_modifier = 1.25
@@ -200,7 +248,39 @@
 	step_delay = 0.5	//veryyyy fast
 	expiry_method = EXPIRY_FADEOUT
 	fire_sound = ""
-	stun = 2
-	weaken = 2
+	stun = 3
+	weaken = 3
+	paralyze = 1
 	penetrating = 5
 	armor_penetration = 15
+
+
+//Shoot extensions, just used for the sake of cooldowns
+/datum/extension/shoot/det1
+	base_type = /datum/extension/shoot/det1
+
+/datum/extension/shoot/det2
+	base_type = /datum/extension/shoot/det2
+
+/datum/extension/shoot/det3
+	base_type = /datum/extension/shoot/det3
+
+
+/*
+	Acquisition
+*/
+/decl/hierarchy/supply_pack/mining/detonator_mines
+	name = "Mining - Detonator Charges"
+	contains = list(/obj/item/ammo_casing/tripmine = 12)
+	cost = 80
+	containertype = /obj/structure/closet/crate
+	containername = "\improper detonator charges crate"
+
+
+/decl/hierarchy/supply_pack/mining/detonator
+	name = "Mining Tool - C99 Supercollider Contact Beam"
+	contains = list(/obj/item/ammo_casing/tripmine = 6,
+	/obj/item/weapon/gun/projectile/detonator = 1)
+	cost = 80
+	containertype = /obj/structure/closet/crate
+	containername = "\improper detonator crate"
