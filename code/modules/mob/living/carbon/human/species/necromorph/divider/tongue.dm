@@ -116,7 +116,7 @@
 /obj/item/projectile/tongue/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
 
 	//Are they a valid execution target?
-	if (divider_tongue_start(firer, target_mob))
+	if (divider_tongue_start(firer, target_mob) == EXECUTION_CONTINUE)
 		var/vector2/targetloc = target_mob.get_global_pixel_loc()
 		tongue.set_ends(tongue.start, targetloc, step_delay, 2)
 		release_vector(targetloc)
@@ -132,7 +132,7 @@
 		firer.perform_execution(/datum/extension/execution/divider_tongue, target_mob, temp_tongue)
 		qdel(src)//Delete ourselves WITHOUT calling expire
 		return
-	.=..()
+	return PROJECTILE_CONTINUE
 
 
 /*
@@ -220,6 +220,9 @@
 	if (target.lying)
 		return EXECUTION_CANCEL
 
+	if (target.is_necromorph())
+		return EXECUTION_CANCEL
+
 	return EXECUTION_CONTINUE
 
 
@@ -279,9 +282,7 @@
 
 	var/obj/effect/projectile/tether/tongue/T = weapon
 
-	//If the tongue is cut or gone, we have failed
-	if (!istype(T) || QDELETED(T) || T.health <= 0)
-		return EXECUTION_CANCEL
+
 
 	var/safety_result = divider_tongue_continue(user, victim)
 
@@ -289,6 +290,9 @@
 		success = TRUE
 		return EXECUTION_SUCCESS
 	else if (safety_result == EXECUTION_CONTINUE)
+		//If the tongue is cut or gone, we have failed
+		if (!istype(T) || QDELETED(T) || T.health <= 0)
+			return EXECUTION_CANCEL
 		.=..()
 	else
 		return EXECUTION_CANCEL
@@ -319,6 +323,7 @@
 
 	//The target cannot move, but can still fight back
 	target_root = host.victim.root()
+
 
 	//The user cannot move or take any action
 	user_root = host.user.root()

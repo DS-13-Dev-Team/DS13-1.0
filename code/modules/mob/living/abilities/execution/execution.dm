@@ -33,7 +33,7 @@
 #define EXECUTION_CONTINUE	1	//Its fine, keep going
 #define EXECUTION_SUCCESS 2	//We have achieved victory conditions. Try to skip to the end
 #define EXECUTION_SAFETY	var/result = safety_check();\
-if (result == EXECUTION_CANCEL){\
+if (result == EXECUTION_CANCEL && can_interrupt){\
 	interrupt();\
 	return}
 /datum/extension/execution
@@ -195,12 +195,12 @@ if (result == EXECUTION_CANCEL){\
 
 
 /datum/extension/execution/proc/stop()
-
 	deltimer(ongoing_timer)
 	stopped_at = world.time
 
 	//Lets remove observations
 	GLOB.damage_hit_event.unregister(user, src, /datum/extension/execution/proc/user_damaged)
+
 
 
 	for (var/datum/execution_stage/ES as anything in entered_stages)
@@ -323,7 +323,6 @@ if (result == EXECUTION_CANCEL){\
 		//Exit the previous stage
 		current_stage.exit()
 		current_stage = null
-
 	//Okay we're advancing
 	current_stage_index++
 	if (current_stage_index > all_stages.len)
