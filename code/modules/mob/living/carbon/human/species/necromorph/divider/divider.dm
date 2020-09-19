@@ -114,7 +114,7 @@ The goal of the head is to find a new host body to support itself. The arms and 
 The arm's leap ability will cause it to cling onto any human it hits, and start repeatedly attacking them. Each attack deals minor damage, and heals itself, though not targeting any specific bodypart.<br>\
 In addition, each attack causes the victim to stagger around, disrupting their aim and view. Makes a great distraction!"
 
-#define DIVIDER_LEG_DESC 	"<h2>Arm</h2><br>\
+#define DIVIDER_LEG_DESC 	"<h2>Leg</h2><br>\
 <h3>Basic Attack: Kick: 3-6 dmg </h3><br>\
 <h3>Passive: Faster movespeed and lower leap cooldown</h3><br>\
 <h3>Leap Ability: Dropkick (Alt+Click)</h3><br>\
@@ -138,7 +138,7 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 	. += "<hr>"
 	. += DIVIDER_PASSIVE_2
 	. += "<hr>"
-	. += DIVIDER_PASSIVE_2
+	. += DIVIDER_PASSIVE_3
 	. += "<hr>"
 	. += DIVIDER_SWING_DESC
 	. += "<hr>"
