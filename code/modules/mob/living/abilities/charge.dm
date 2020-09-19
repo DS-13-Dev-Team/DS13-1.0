@@ -183,6 +183,7 @@
 	user.visible_message(SPAN_DANGER("[user] [verb_action] at [target]!"))
 
 	walk_towards(holder, move_target, SPEED_TO_DELAY(speed))
+	user.charge_started(src)
 
 	nomove_timer = addtimer(CALLBACK(src, .proc/stop_peter_out), nomove_timeout, TIMER_STOPPABLE)
 
@@ -207,6 +208,8 @@
 	if (blur)
 		user.filters.Remove(blur)
 		blur = null
+
+	user.charge_ended(src)
 
 	//When we finish, we go on cooldown
 	if (cooldown && cooldown > 0)
@@ -501,6 +504,11 @@
 	return charge.last_obstacle.charge_act(charge)
 
 
+//Called when this atom starts charging at another, just before taking the first step
+/atom/proc/charge_started(var/datum/extension/charge/charge)
+
+//Called when this atom starts finishes a charge, called after everything, just before the cooldown timer starts
+/atom/proc/charge_ended(var/datum/extension/charge/charge)
 
 //	Triggering
 //------------------------

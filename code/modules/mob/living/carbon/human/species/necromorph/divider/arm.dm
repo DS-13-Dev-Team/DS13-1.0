@@ -6,6 +6,7 @@
 /mob/living/simple_animal/necromorph/divider_component/arm
 	name = "arm"
 	icon_state = "arm"
+	icon_living = "arm"
 	speed = 2.75
 	melee_damage_lower = 2
 	melee_damage_upper = 4
@@ -22,6 +23,9 @@
 	'sound/effects/creatures/necromorph/divider/component/arm_attack_3.ogg',
 	'sound/effects/creatures/necromorph/divider/component/arm_attack_4.ogg',
 	'sound/effects/creatures/necromorph/divider/component/arm_attack_5.ogg')
+
+	leap_state = "arm_leap"
+	attack_state = "arm_attack"
 
 /mob/living/simple_animal/necromorph/divider_component/arm/Initialize()
 	.=..()
@@ -42,7 +46,7 @@
 		WP.attach_mob_dead	=	FALSE	//Can this be/remain attached to mobs that are dead?
 		charge.do_winddown_animation = FALSE
 		mount_to_atom(src, charge.last_obstacle, /datum/extension/mount/parasite/arm, WP)
-
+	..()
 
 
 

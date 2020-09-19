@@ -9,7 +9,7 @@
 /mob/living/simple_animal/necromorph/divider_component/head
 	name = "head"
 	icon_state = "head"
-
+	icon_living = "head"
 	melee_damage_lower = 4
 	melee_damage_upper = 6
 	attacktext = "whipped"
@@ -22,6 +22,9 @@
 
 	attack_sounds = list('sound/effects/creatures/necromorph/divider/component/head_attack_1.ogg',
 	'sound/effects/creatures/necromorph/divider/component/head_attack_2.ogg')
+
+	leap_state = "head_leap"
+	attack_state = "head_attack"
 
 /mob/living/simple_animal/necromorph/divider_component/head/Initialize()
 	.=..()
@@ -244,6 +247,7 @@
 		WP.attach_mob_dead	=	FALSE	//Can this be/remain attached to mobs that are dead?
 		charge.do_winddown_animation = FALSE
 		mount_to_atom(src, charge.last_obstacle, /datum/extension/mount/divider_head, WP)
+
 
 
 //Mount extension

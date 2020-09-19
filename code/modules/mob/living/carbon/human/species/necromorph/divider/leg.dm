@@ -5,6 +5,7 @@
 /mob/living/simple_animal/necromorph/divider_component/leg
 	name = "leg"
 	icon_state = "leg"
+	icon_living = "leg"
 	speed = 3.5
 	melee_damage_lower = 3
 	melee_damage_upper = 6
@@ -21,6 +22,9 @@
 	'sound/effects/creatures/necromorph/divider/component/leg_attack_2.ogg',
 	'sound/effects/creatures/necromorph/divider/component/leg_attack_3.ogg',
 	'sound/effects/creatures/necromorph/divider/component/leg_attack_4.ogg')
+
+	leap_state = "leg_leap"
+	attack_state = "leg_attack"
 
 //The leg's leap impact is a dropkick, both victim and leg are propelled away from each other wildly
 //The victim recieves a heavy blunt hit

@@ -311,8 +311,17 @@
 	if(statpanel("Status") && show_stat_health)
 		stat(null, "Health: [round((health / max_health) * 100)]%")
 
+/mob/living/simple_animal/update_icon()
+	icon_state = icon_living
+	if (icon_dead && (lying || stat))
+		var/list/icons = list()
+		icons += icon_dead //This accounts for the dead icon being single or list
+		icon_state = pick(icons)
+		return
+
+
+
 /mob/living/simple_animal/death(gibbed, deathmessage = "dies!", show_dead_message)
-	icon_state = icon_dead
 	update_icon()
 	density = 0
 	walk_to(src,0)
@@ -407,3 +416,25 @@
 
 /mob/living/simple_animal/is_burnable()
 	return heat_damage_per_tick
+
+
+/*
+	Animals
+*/
+/mob/living/simple_animal/UnarmedAttack(var/atom/A, var/proximity)
+
+	if(!..())
+		return
+	do_attack_animation(A)
+	if(istype(A,/mob/living))
+		if(melee_damage_upper == 0)
+			custom_emote(1,"[friendly] [A]!")
+			return
+		if(ckey)
+			admin_attack_log(src, A, "Has [attacktext] its victim.", "Has been [attacktext] by its attacker.", attacktext)
+	set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
+	var/damage = rand(melee_damage_lower, melee_damage_upper)
+	launch_strike(target = A, damage = damage, used_weapon = src, damage_flags = 0, armor_penetration = 0, damage_type = BRUTE, armor_type = "melee", target_zone = ran_zone(), difficulty = 0)
+	playsound(loc, attack_sound, VOLUME_MID, TRUE)
+
+	//if(A.attack_generic(src, damage, attacktext, environment_smash, damtype, defense) && loc && attack_sound)
