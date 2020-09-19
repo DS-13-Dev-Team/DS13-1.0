@@ -7,6 +7,7 @@
 	name = "arm"
 	icon_state = "arm"
 	icon_living = "arm"
+	icon_dead = list("arm_dead_1", "arm_dead_2")
 	speed = 2.75
 	melee_damage_lower = 2
 	melee_damage_upper = 4

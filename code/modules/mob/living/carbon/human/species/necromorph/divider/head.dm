@@ -10,6 +10,7 @@
 	name = "head"
 	icon_state = "head"
 	icon_living = "head"
+	icon_dead = list("head_dead_1", "head_dead_2")
 	melee_damage_lower = 4
 	melee_damage_upper = 6
 	attacktext = "whipped"
