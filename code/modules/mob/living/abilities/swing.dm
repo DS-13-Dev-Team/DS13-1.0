@@ -29,6 +29,7 @@
 	var/duration = 1 SECOND
 
 
+
 	//Authortime
 	//------------------
 	//After the attack finishes, leave the effect there for this time before deleting it
@@ -38,7 +39,7 @@
 
 	//IF true, this attack hits where the user is aiming
 	//Default behaviour targets a random bodypart
-	var/precise = FALSE
+	var/precise = TRUE
 
 
 	var/obj/effect/effect/swing/effect
@@ -205,20 +206,23 @@
 	return TRUE
 
 /datum/extension/swing/proc/hit_mob(var/mob/living/L)
+
+
 	if (L == user)
 		return FALSE
 	var/atom/A = holder
 	if (raytrace && !check_trajectory(A, L, pass_flags = A.pass_flags))
 		return FALSE
-	source.launch_strike(L, damage, holder, damage_flags = flags)
+
+	source.launch_strike(L, damage, holder, damage_flags = flags, target_zone = get_target_zone(L))
 	playsound(L, hitsound, VOLUME_MID, 1)
 	return TRUE
 
 /datum/extension/swing/proc/get_target_zone(var/mob/living/target)
-	if (precise && user && user.zone_sel && user.zone_sel.selecting)
-		return user.zone_sel.selecting
+	if (precise && user)
+		return get_zone_sel(user)
 	else
-		return pick(BP_ALL_LIMBS)
+		return ran_zone()
 
 
 /datum/extension/swing/proc/stop()

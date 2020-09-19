@@ -18,8 +18,8 @@
 	power_channel = EQUIP	//drains power from the EQUIPMENT channel
 
 
-	var/health = 80			//the turret's health
-	var/max_health = 80		//turrets maximal health.
+	health = 80			//the turret's health
+	max_health = 80		//turrets maximal health.
 	var/auto_repair = 0		//if 1 the turret slowly repairs itself.
 	var/locked = 1			//if the turret's behaviour control access is locked
 	var/controllock = 0		//if the turret responds to control panels

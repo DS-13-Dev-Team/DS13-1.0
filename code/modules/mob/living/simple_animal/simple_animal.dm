@@ -32,8 +32,10 @@
 	var/response_help   = "tries to help"
 	var/response_disarm = "tries to disarm"
 	var/response_harm   = "tries to hurt"
+	var/response_stomp = "stomps on"
 	var/harm_intent_damage = 3
 	var/can_escape = 0 // 'smart' simple animals such as human enemies, or things small, big, sharp or strong enough to power out of a net
+	var/stompable = FALSE
 
 	//Temperature effect
 	var/minbodytemp = 250
@@ -46,7 +48,7 @@
 	var/min_gas = list("oxygen" = 5)
 	var/max_gas = list(MATERIAL_PHORON = 1, "carbon_dioxide" = 5)
 	var/unsuitable_atoms_damage = 2	//This damage is taken when atmos doesn't fit all the requirements above
-	var/speed = 0 //LETS SEE IF I CAN SET SPEEDS FOR SIMPLE MOBS WITHOUT DESTROYING EVERYTHING. Higher speed is slower, negative speed is faster
+	var/speed = 4 //Metres per second
 
 	//LETTING SIMPLE ANIMALS ATTACK? WHAT COULD GO WRONG. Defaults to zero so Ian can still be cuddly
 	var/melee_damage_lower = 0
@@ -65,6 +67,11 @@
 
 	// contained in a cage
 	var/in_stasis = 0
+
+/mob/living/simple_animal/New(var/atom/location)
+	health = max_health
+	.=..()
+
 /mob/living/simple_animal/Life()
 	..()
 	if(!living_observers_present(GetConnectedZlevels(z)))
@@ -194,14 +201,23 @@
 	Proj.on_hit(src)
 	return 0
 
-/mob/living/simple_animal/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/simple_animal/attack_hand(mob/living/M as mob)
 	..()
-
+	var/mob/living/carbon/human/H = null
+	if (ishuman(M))
+		H = M
 	switch(M.a_intent)
 
 		if(I_HELP)
 			if (health > 0)
 				M.visible_message("<span class='notice'>[M] [response_help] \the [src].</span>")
+
+		if(I_GRAB)
+			if (H)//Only humans can grab
+				if (!H.can_grasp_with_selected())
+					to_chat(H, "<span class='warning'>You can't use your hand.</span>")
+					return
+				return H.grab(src)
 
 		if(I_DISARM)
 			M.visible_message("<span class='notice'>[M] [response_disarm] \the [src].</span>")
@@ -209,9 +225,31 @@
 			//TODO: Push the mob away or something
 
 		if(I_HURT)
-			adjustBruteLoss(harm_intent_damage)
-			M.visible_message("<span class='warning'>[M] [response_harm] \the [src]!</span>")
-			M.do_attack_animation(src)
+			//Small animals on the floor can be stomped on
+			if (stompable && !is_mounted() && isturf(loc) && H && !H.lying)
+				var/damage = harm_intent_damage
+				if (H && H.shoes && H.shoes.force)
+					damage += H.shoes.force
+
+
+				shake_animation(30)
+				shake_camera(src, 6, 1.5)
+
+				shake_camera(H, 3, 1)
+
+				var/turf/T = get_turf(src)
+				T.shake_animation(30)
+				adjustBruteLoss(damage)
+				M.visible_message("<span class='warning'>[M] [response_stomp] \the [src]!</span>")
+				M.do_attack_animation(src)
+				M.add_click_cooldown(DEFAULT_ATTACK_COOLDOWN*1.5)
+				//TODO Here: Stomping audio
+			else
+				adjustBruteLoss(harm_intent_damage)
+				M.visible_message("<span class='warning'>[M] [response_harm] \the [src]!</span>")
+				M.do_attack_animation(src)
+
+
 
 	return
 
@@ -258,15 +296,14 @@
 	return 0
 
 /mob/living/simple_animal/movement_delay()
-	var/tally = ..() //Incase I need to add stuff other than "speed" later
+	var/tally = 1 SECOND
+	if (speed)
+		tally /= speed
+	if (move_speed_factor)
+		tally /= move_speed_factor
 
-	tally += speed
-	if(purge)//Purged creatures will move more slowly. The more time before their purge stops, the slower they'll move.
-		if(tally <= 0)
-			tally = 1
-		tally *= purge
+	return tally
 
-	return tally+config.animal_delay
 
 /mob/living/simple_animal/Stat()
 	. = ..()
@@ -274,8 +311,17 @@
 	if(statpanel("Status") && show_stat_health)
 		stat(null, "Health: [round((health / max_health) * 100)]%")
 
+/mob/living/simple_animal/update_icon()
+	icon_state = icon_living
+	if (icon_dead && (lying || stat))
+		var/list/icons = list()
+		icons += icon_dead //This accounts for the dead icon being single or list
+		icon_state = pick(icons)
+		return
+
+
+
 /mob/living/simple_animal/death(gibbed, deathmessage = "dies!", show_dead_message)
-	icon_state = icon_dead
 	update_icon()
 	density = 0
 	walk_to(src,0)
@@ -370,3 +416,25 @@
 
 /mob/living/simple_animal/is_burnable()
 	return heat_damage_per_tick
+
+
+/*
+	Animals
+*/
+/mob/living/simple_animal/UnarmedAttack(var/atom/A, var/proximity)
+
+	if(!..())
+		return
+	do_attack_animation(A)
+	if(istype(A,/mob/living))
+		if(melee_damage_upper == 0)
+			custom_emote(1,"[friendly] [A]!")
+			return
+		if(ckey)
+			admin_attack_log(src, A, "Has [attacktext] its victim.", "Has been [attacktext] by its attacker.", attacktext)
+	set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
+	var/damage = rand(melee_damage_lower, melee_damage_upper)
+	launch_strike(target = A, damage = damage, used_weapon = src, damage_flags = 0, armor_penetration = 0, damage_type = BRUTE, armor_type = "melee", target_zone = ran_zone(), difficulty = 0)
+	playsound(loc, attack_sound, VOLUME_MID, TRUE)
+
+	//if(A.attack_generic(src, damage, attacktext, environment_smash, damtype, defense) && loc && attack_sound)

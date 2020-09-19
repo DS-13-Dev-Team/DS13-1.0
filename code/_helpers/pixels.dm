@@ -62,6 +62,11 @@
 	release_vector(fromloc)
 	return ourloc
 
+/atom/proc/get_global_pixel_offset_from_vector(var/vector2/fromloc)
+	var/vector2/ourloc = get_global_pixel_loc()
+	ourloc.SelfSubtract(fromloc)
+	return ourloc
+
 //Returns a float value of pixels between two objects
 /atom/proc/get_global_pixel_distance(var/atom/from)
 	var/vector2/offset = get_global_pixel_loc()
@@ -70,6 +75,7 @@
 	release_vector(fromloc)
 	. = offset.Magnitude()
 	release_vector(offset)
+
 
 //Given a set of global pixel coords as input, this moves the atom and sets its pixel offsets so that it sits exactly on the specified point
 /atom/movable/proc/set_global_pixel_loc(var/vector2/coords)
@@ -245,7 +251,6 @@
 
 */
 /atom/movable/proc/pixel_move(var/vector2/position_delta, var/time_delta)
-
 	//Now before we do animating, lets check if this movement is going to put us into a different tile
 	var/vector2/newpix = get_new_vector((pixel_x + position_delta.x), (pixel_y + position_delta.y))
 	var/blocked = FALSE
@@ -336,7 +341,7 @@
 	//half a decisecond is ideal, but no more than 20% of the total time
 
 	//We need to reset the animate_movement var, but not immediately,
-	set_delayed_move_animation_reset(src, time_delta+2)
+	set_delayed_move_animation_reset(src, (time_delta+2))
 	release_vector(newpix)
 
 

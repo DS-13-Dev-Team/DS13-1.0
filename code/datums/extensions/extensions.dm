@@ -10,8 +10,16 @@
 		CRASH("Invalid holder type. Expected [expected_type], was [holder.type]")
 	src.holder = holder
 
+	//This extension wants to apply statmods to its holder!
+	if (statmods && auto_register_statmods)
+		register_statmods()
+
+
 
 /datum/extension/Destroy()
+	if (statmods)
+		for (var/modtype in statmods)
+			unregister_statmod(modtype)
 	holder = null
 	. = ..()
 

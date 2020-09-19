@@ -438,14 +438,17 @@
 	"blocked": The total of health which is unrecoverable, limiting the max
 */
 /mob/living/proc/get_health_report()
-	return list ("max" = max_health, "damage" = 0, "blocked" = 0)
+	return list ("max" = max_health, "damage" = 0, "blocked" = lasting_damage)
+
+/mob/living/simple_animal/get_health_report()
+	return list ("max" = max_health, "damage" = max_health - health, "blocked" = lasting_damage)
 
 /mob/living/carbon/human/get_health_report()
 	return species.get_health_report(src)
 
 
 /datum/species/proc/get_health_report(var/mob/living/carbon/human/H)
-	return list ("max" = total_health, "damage" = 0, "blocked" = 0)
+	return list ("max" = total_health, "damage" = 0, "blocked" = H.lasting_damage)
 
 /datum/species/necromorph/get_health_report(var/mob/living/carbon/human/H)
 	var/list/things = get_weighted_total_limb_damage(H, TRUE)

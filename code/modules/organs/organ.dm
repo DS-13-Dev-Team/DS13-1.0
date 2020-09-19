@@ -87,6 +87,9 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/setup_children()
 	return
 
+/obj/item/organ/proc/get_damage()
+	return damage
+
 /obj/item/organ/proc/set_dna(var/datum/dna/new_dna)
 	if(new_dna)
 		dna = new_dna.Clone()

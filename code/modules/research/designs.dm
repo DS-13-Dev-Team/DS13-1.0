@@ -604,8 +604,6 @@
 	build_path = /obj/item/ammo_magazine/divet
 	sort_string = "TACEB"
 
-<<<<<<< HEAD
-=======
 /datum/design/item/weapon/fiftycal/ammo
 	name = ".50 AE magazine"
 	id = "50cal"
@@ -614,7 +612,6 @@
 	build_path = /obj/item/ammo_magazine/a50
 	sort_string = "TACEH"
 
->>>>>>> a7c5293c0f98745acf8bf4c5db8ad4b30826482f
 /datum/design/item/weapon/pulserifle
 	name = "SWS Motorized Pulse Rifle"
 	id = "pulserifle"

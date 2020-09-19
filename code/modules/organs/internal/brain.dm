@@ -30,6 +30,9 @@
 	mind_bound = FALSE
 
 
+/obj/item/organ/internal/brain/undead/get_damage()
+	return 0
+
 /obj/item/organ/internal/brain/undead/Initialize()
 	.=..()
 	die()

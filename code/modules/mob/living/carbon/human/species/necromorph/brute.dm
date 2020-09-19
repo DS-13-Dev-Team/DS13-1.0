@@ -175,6 +175,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	icon_dead = "brute-f-dead"
 
 	marker_spawnable = FALSE
+	preference_settable = FALSE
 /*
 	Brute charge: Slower but more powerful due to mob size.
 	Shorter windup time making it deadly at close range

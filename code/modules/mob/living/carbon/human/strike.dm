@@ -22,8 +22,10 @@
 			damage *= huser.damage_multiplier}
 //Helper Procs
 //------------------------------
-/atom/proc/launch_strike(var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone)
-	var/datum/strike/strike = new /datum/strike(src, target, damage, used_weapon, damage_flags, armor_penetration, damage_type, armor_type, target_zone)
+///atom/proc/launch_strike(target = target, damage = 0, used_weapon = src, damage_flags = 0, armor_penetration = 0, damage_type = BRUTE, armor_type = "melee", target_zone = ran_zone(), difficulty = 0)
+
+/atom/proc/launch_strike(var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone = ran_zone(), var/difficulty = 0)
+	var/datum/strike/strike = new /datum/strike(src, target, damage, used_weapon, damage_flags, armor_penetration, damage_type, armor_type, target_zone, difficulty)
 	strike.start()
 	return strike
 
@@ -160,7 +162,7 @@
 
 //Override this in subtypes and DO NOT CALL PARENT
 //Copypaste the code instead
-/datum/strike/proc/cache_data(var/atom/user, var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone)
+/datum/strike/proc/cache_data(var/atom/user, var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone, var/difficulty)
 	src.user = user
 	src.target = target
 	src.damage = damage
@@ -172,10 +174,10 @@
 	src.damage_type = damage_type
 	src.armor_type = armor_type
 	src.armor_penetration = armor_penetration
+	src.difficulty = difficulty
 
 //Special proc for figuring out where the attack is coming from
 /datum/strike/proc/cache_origin()
-
 	var/atom/movable/origin_atom = used_weapon
 	if (!origin_atom)
 		origin_atom = user
@@ -192,7 +194,6 @@
 
 	//In an uncommon special case, the weapon and target may be in the same location. In this case, the origin is where the origin atom came from
 	origin = get_step(origin_atom_turf, GLOB.reverse_dir[origin_atom.last_move])
-
 
 
 

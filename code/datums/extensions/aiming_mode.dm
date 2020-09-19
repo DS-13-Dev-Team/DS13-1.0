@@ -20,12 +20,13 @@
 	*/
 	var/view_offset	=	1*WORLD_ICON_SIZE	//How far ahead can the user see?
 	var/view_range	=	0	//Modifier to the size of their view area
-	var/move_mod	=	-0.6	//How much is the user's movespeed affected?
 	//This should generally be a negative value, but any value between -1 and infinity is valid. Positive numbers will make the user move faster while aiming
 	//That's dumb, don't do that
 	var/accuracy_mod	=	10	//How much more accurate is the user at shooting, while in this aim mode. This should be positive but not too high, it is an added-percentage
 	var/damage_mod	=	0	//A percentage of penalty/bonus damage applied to the gun while aiming. Generally -1 to 1 range. 0.1 = 10% bonus
-
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.6,
+	STATMOD_RANGED_ACCURACY = 10)
+	auto_register_statmods = FALSE
 
 
 /datum/extension/aim_mode/New(var/atom/holder, var/obj/item/weapon/gun/_gun)
@@ -40,40 +41,39 @@
 //Default, when no other is specified. Used for pistols
 /datum/extension/aim_mode/basic
 	view_offset	=	2*WORLD_ICON_SIZE
-	accuracy_mod	=	10
-	move_mod	=	-0.7
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.7,
+	STATMOD_RANGED_ACCURACY = 10)
 
 //Light aiming mode, for SMGs and the like. no accuracy bonus, but longer shooting and mild move penalty
 /datum/extension/aim_mode/light
 	view_offset	=	3*WORLD_ICON_SIZE
-	move_mod	=	-0.4
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.4,
+	STATMOD_RANGED_ACCURACY = 5)
 
 //Heavy guns suck at this
 /datum/extension/aim_mode/heavy
 	view_offset = 1*WORLD_ICON_SIZE
-	accuracy_mod	=	10
-	move_mod	=	-0.7
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.7,
+	STATMOD_RANGED_ACCURACY = 10)
 
 //Long guns are better at this
 /datum/extension/aim_mode/rifle
 	view_offset	=	4*WORLD_ICON_SIZE
-	accuracy_mod	=	10
-	move_mod	=	-0.6
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.6,
+	STATMOD_RANGED_ACCURACY = 15)
 
 //Sniper rifles are REALLY good at this, but the move penalty is crippling
 /datum/extension/aim_mode/sniper
 	name = "Scope"
 	view_offset	=	8*WORLD_ICON_SIZE
 	view_range = -2
-	accuracy_mod	=	40
-	move_mod	=	-0.85
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.85,
+	STATMOD_RANGED_ACCURACY = 40)
 
 
 /*
 	Core Code
 */
-/datum/extension/aim_mode/movespeed_mod()
-	return move_mod
 
 /datum/extension/aim_mode/proc/safety()
 	//Run periodically
@@ -93,10 +93,9 @@
 	active = TRUE
 	user.view_range += src.view_range
 	user.view_offset += src.view_offset
-	register_movemod(STATMOD_MOVESPEED_ADDITIVE)
+	register_statmods()
 	user.reset_view()
 
-	gun.accuracy += accuracy_mod
 	gun.damage_factor += damage_mod
 
 
@@ -109,11 +108,10 @@
 	if (user)
 		user.view_range -= src.view_range
 		user.view_offset -= src.view_offset
-		unregister_movemod(STATMOD_MOVESPEED_ADDITIVE)
+		unregister_statmods()
 		user.reset_view()
 
 	if (gun)
-		gun.accuracy -= accuracy_mod
 		gun.damage_factor -= damage_mod
 
 

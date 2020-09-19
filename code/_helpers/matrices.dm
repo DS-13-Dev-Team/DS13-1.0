@@ -50,7 +50,7 @@
 //Duration is in deciseconds
 //Strength is an offset in tiles
 //Non integer values are perfectly fine for both inputs
-/proc/shake_camera(mob/M, duration, strength=1)
+/proc/shake_camera(mob/M, duration= 4, strength=1)
 	if(!istype(M) || !M.client || M.stat || isEye(M) || isAI(M))
 		return
 

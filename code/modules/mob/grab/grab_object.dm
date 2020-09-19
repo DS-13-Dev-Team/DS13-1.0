@@ -2,7 +2,7 @@
 /obj/item/grab
 	name = "grab"
 
-	var/mob/living/carbon/human/affecting = null
+	var/mob/living/affecting = null
 	var/mob/living/carbon/human/assailant = null
 
 	var/datum/grab/current_grab
@@ -30,7 +30,10 @@
 	target_zone = attacker.zone_sel.selecting
 	attacker.remove_cloaking_source(attacker.species)
 	var/obj/item/O = get_targeted_organ()
-	SetName("[name] ([O.name])")
+	if (O)
+		SetName("[name] ([O.name])")
+	else
+		SetName("[name] ([affecting])")
 
 	if(start_grab_name)
 		current_grab = all_grabstates[start_grab_name]
@@ -38,7 +41,10 @@
 /obj/item/grab/examine(var/user)
 	..()
 	var/obj/item/O = get_targeted_organ()
-	to_chat(user,"A grab on \the [affecting]'s [O.name].")
+	if (O)
+		to_chat(user,"A grab on \the [affecting]'s [O.name].")
+	else
+		to_chat(user,"A grab on \the [affecting].")
 
 /obj/item/grab/Process()
 	current_grab.process(src)

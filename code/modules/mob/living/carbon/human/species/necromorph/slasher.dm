@@ -14,7 +14,6 @@
 	total_health = 80
 	biomass = 50
 	mass = 70
-	virus_immune = 1
 
 	biomass_reclamation_time	=	7 MINUTES
 
@@ -81,6 +80,7 @@
 	name = SPECIES_NECROMORPH_SLASHER_DESICCATED
 	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
 	marker_spawnable = FALSE
+	preference_settable = FALSE
 
 
 
@@ -120,6 +120,7 @@
 	mob_size	= MOB_LARGE
 	bump_flag 	= HEAVY
 	spawner_spawnable = FALSE
+
 
 	icon_template = 'icons/mob/necromorph/slasher_enhanced.dmi'
 	icon_lying = "_lying"

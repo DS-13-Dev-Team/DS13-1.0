@@ -15,9 +15,8 @@
 	var/current_grab_type 	// What type of grab they use when they grab someone. This should be a typepath, an instance of it will be created
 
 
-/mob/living/carbon/human/proc/make_grab(var/mob/living/carbon/human/attacker, var/mob/living/carbon/human/victim, var/grab_tag)
+/mob/living/carbon/human/proc/make_grab(var/mob/living/carbon/human/attacker, var/mob/living/victim, var/grab_tag)
 	var/obj/item/grab/G
-
 	if(!grab_tag)
 		G = new attacker.current_grab_type(attacker, victim)
 	else
@@ -62,7 +61,10 @@
 	for(var/obj/item/grab/G in affecting.grabbed_by)
 		if(G.assailant == assailant && G.target_zone == target_zone)
 			var/obj/O = G.get_targeted_organ()
-			to_chat(assailant, "<span class='notice'>You already grabbed [affecting]'s [O.name].</span>")
+			if (O)
+				to_chat(assailant, "<span class='notice'>You already grabbed [affecting]'s [O.name].</span>")
+			else
+				to_chat(assailant, "<span class='notice'>You already grabbed [affecting].</span>")
 			return FALSE
 
 	return TRUE

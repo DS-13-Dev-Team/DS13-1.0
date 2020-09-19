@@ -1422,6 +1422,7 @@
 
 /mob/living/carbon/human/ranged_accuracy_mods()
 	. = ..()
+
 	if(get_shock() > 10 && !skill_check(SKILL_WEAPONS, SKILL_ADEPT))
 		. -= 3
 	if(get_shock() > 50)

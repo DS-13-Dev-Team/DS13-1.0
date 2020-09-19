@@ -222,7 +222,7 @@
 
 //Check we have a surface to place it on
 /datum/click_handler/placement/necromorph/cyst/placement_blocked(var/turf/candidate)
-	mount_target = get_wallmount_target_at_direction(candidate, dir)
+	mount_target = get_mount_target_at_direction(candidate, dir)
 	if (!mount_target)
 		return "This must be placed against a wall or similar hard surface"
 
@@ -230,8 +230,19 @@
 
 /datum/click_handler/placement/necromorph/cyst/spawn_result(var/turf/site)
 	var/atom/movable/result = ..()
-	var/mountpoint = get_wallmount_target_at_direction(result, dir)
-	mount_to_atom(result, mountpoint, /datum/extension/mount/cyst)
+	var/mountpoint = get_mount_target_at_direction(result, dir)
+
+	//Lets make mount parameters for posterity. We're just using the default settings at time of writing, but maybe they'll change in future
+	var/datum/mount_parameters/WP = new()
+	WP.attach_walls	=	TRUE	//Can this be attached to wall turfs?
+	WP.attach_anchored	=	TRUE	//Can this be attached to anchored objects, eg heaving machinery
+	WP.attach_unanchored	=	TRUE	//Can this be attached to unanchored objects, like janicarts?
+	WP.dense_only = TRUE	//If true, only sticks to dense atoms
+	WP.attach_mob_standing		=	TRUE		//Can this be attached to mobs, like brutes?
+	WP.attach_mob_downed		=	TRUE	//Can this be/remain attached to mobs that are lying down?
+	WP.attach_mob_dead	=	TRUE	//Can this be/remain attached to mobs that are dead?
+
+	mount_to_atom(result, mountpoint, /datum/extension/mount/cyst, WP)
 
 /datum/click_handler/placement/necromorph/cyst/update_pixel_offset()
 	if (mount_target)
@@ -246,7 +257,8 @@
 */
 /datum/extension/mount/cyst/on_dismount()
 	.=..()
-	qdel(holder)
+	if (!QDELETED(mountee))
+		qdel(mountee)
 
 
 //A cyst must be mounted on some kind of hard surface
@@ -276,7 +288,7 @@
 /datum/signal_ability/placement/corruption/cyst/on_cast(var/atom/target, var/mob/user, var/list/data)
 	.=..()
 	var/atom/A = .
-	var/mountpoint = get_wallmount_target_at_direction(A, data["direction"])
+	var/mountpoint = get_mount_target_at_direction(A, data["direction"])
 	mount_to_atom(A, mountpoint, /datum/extension/mount/cyst)
 
 
@@ -290,7 +302,7 @@
 
 //Check we have a surface to place it on
 /datum/click_handler/placement/ability/cyst/placement_blocked(var/turf/candidate)
-	mount_target = get_wallmount_target_at_direction(candidate, dir)
+	mount_target = get_mount_target_at_direction(candidate, dir)
 	if (!mount_target)
 		return "This must be placed against a wall or similar hard surface"
 

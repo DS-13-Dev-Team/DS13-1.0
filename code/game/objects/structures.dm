@@ -3,9 +3,9 @@
 	w_class = ITEM_SIZE_NO_CONTAINER
 
 	var/breakable = TRUE
-	var/resistance = 5
-	var/health
-	var/max_health = 20
+	resistance = 5
+	health = 20
+	max_health = 20
 	var/parts
 	var/hitsound = 'sound/weapons/smash.ogg'
 

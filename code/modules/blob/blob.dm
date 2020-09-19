@@ -14,8 +14,8 @@
 	plane = BLOB_PLANE
 	layer = BLOB_SHIELD_LAYER
 
-	var/max_health = 30
-	var/health
+	max_health = 30
+	health
 	var/regen_rate = 5
 	var/brute_resist = 4
 	var/fire_resist = 1

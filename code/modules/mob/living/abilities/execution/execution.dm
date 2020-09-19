@@ -31,8 +31,9 @@
 #define EXECUTION_CANCEL	-1	//The whole move has gone wrong, abort
 #define EXECUTION_RETRY		0	//Its not right yet but will probably fix itself, delay and keep trying
 #define EXECUTION_CONTINUE	1	//Its fine, keep going
+#define EXECUTION_SUCCESS 2	//We have achieved victory conditions. Try to skip to the end
 #define EXECUTION_SAFETY	var/result = safety_check();\
-if (result == EXECUTION_CANCEL){\
+if (result == EXECUTION_CANCEL && can_interrupt){\
 	interrupt();\
 	return}
 /datum/extension/execution
@@ -51,9 +52,14 @@ if (result == EXECUTION_CANCEL){\
 
 	var/ongoing_timer
 
+	//Weapon vars: Indicates a tool, implement, bodypart, etc, which we are using to do this execution.
+	//Optional, not always used
+	var/atom/movable/weapon
+
 	//Reward Handling
 	//-------------------
 	//Used to make sure finish only runs once
+	var/success = FALSE	//If true, we have already finished the success condition. Check this to skip things in other stages
 	var/finished = FALSE
 
 	var/reward_biomass = 0
@@ -125,18 +131,21 @@ if (result == EXECUTION_CANCEL){\
 
 
 
-/datum/extension/execution/New(var/atom/user, var/mob/living/victim)
+/datum/extension/execution/New(var/atom/user, var/mob/living/victim, var/atom/movable/weapon)
 	.=..()
 	if (isliving(user))
 		src.user = user
 	src.victim = victim
+
+	if (weapon)
+		src.weapon = weapon
 
 	//Lets compile the list of stages
 	for (var/i in 1 to all_stages.len)
 		var/stagetype = all_stages[i]
 		all_stages[i] = new stagetype(src)
 
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
+	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
 
 
 /datum/extension/execution/proc/start()
@@ -154,6 +163,9 @@ if (result == EXECUTION_CANCEL){\
 		stop()
 		return
 
+
+	//Getting past this point is considered a success
+	.= TRUE
 
 
 
@@ -183,12 +195,12 @@ if (result == EXECUTION_CANCEL){\
 
 
 /datum/extension/execution/proc/stop()
-
 	deltimer(ongoing_timer)
 	stopped_at = world.time
 
 	//Lets remove observations
 	GLOB.damage_hit_event.unregister(user, src, /datum/extension/execution/proc/user_damaged)
+
 
 
 	for (var/datum/execution_stage/ES as anything in entered_stages)
@@ -302,7 +314,6 @@ if (result == EXECUTION_CANCEL){\
 
 	deltimer(ongoing_timer)
 
-
 	//If there's a current stage, ask it whether its ready to advance
 	if (current_stage && current_stage_index)
 		if (!current_stage.can_advance())
@@ -312,7 +323,6 @@ if (result == EXECUTION_CANCEL){\
 		//Exit the previous stage
 		current_stage.exit()
 		current_stage = null
-
 	//Okay we're advancing
 	current_stage_index++
 	if (current_stage_index > all_stages.len)
@@ -346,6 +356,10 @@ if (result == EXECUTION_CANCEL){\
 
 	//Gotta be close enough
 	if (get_dist(user, victim) > range)
+		return EXECUTION_CANCEL
+
+	//If user has ceased to exist, we're finished
+	if (QDELETED(user))
 		return EXECUTION_CANCEL
 
 	for (var/datum/execution_stage/ES as anything in entered_stages)
@@ -391,7 +405,17 @@ if (result == EXECUTION_CANCEL){\
 /atom/proc/perform_execution(var/execution_type = /datum/extension/execution, var/atom/target)
 	if (!can_execute(execution_type))
 		return FALSE
+	var/list/arguments = list(src, execution_type, target)
+	if (args.len > 2)
+		arguments += args.Copy(3)
 
-	set_extension(src, execution_type, target)
-	return TRUE
+
+	//Here we bootstrap the execution datum
+	var/datum/extension/execution/E = set_extension(arglist(arguments))
+	if (!E.can_start())
+		.=FALSE
+	E.ongoing_timer = addtimer(CALLBACK(E, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
+
+	.= TRUE
+
 

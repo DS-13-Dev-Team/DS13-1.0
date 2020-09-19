@@ -54,6 +54,24 @@ Vector2
 			delta.SelfToMagnitude(1)
 			return delta
 
+
+	proc
+		//Returns a directional vector and a magnitude between, handles things on the same tile intelligently
+		SmartDirectionBetween(var/atom/movable/A, var/atom/movable/B)
+			if (get_turf(A) != get_turf(B))
+				return Vector2.DirectionBetween(A, B)
+
+			//Alright, they're on the same tile. We're going to try to step either one back to their last move before they overlapped
+			if (istype(A) && A.last_move)
+				A = get_step(A, GLOB.reverse_dir[A.last_move])
+				return Vector2.DirectionBetween(A, B)
+
+			else if (istype(B) && B.last_move)
+				B = get_step(B, GLOB.reverse_dir[B.last_move])
+				return Vector2.DirectionBetween(A, B)
+
+			return get_new_vector(0, 0)
+
 	proc
 		VecDirectionBetween(var/vector2/A, var/vector2/B)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
@@ -64,7 +82,7 @@ Vector2
 		//Returns a directional vector and a magnitude between
 		DirMagBetween(var/atom/A, var/atom/B)
 			if (get_turf(A) == get_turf(B))
-				return list("direction" = get_new_vector(0, 0), "magnitude" = 0)
+				return list("direction" = SmartDirectionBetween(A, B), "magnitude" = 0)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
 			var/list/returnlist = list("direction" = delta.ToMagnitude(1), "magnitude" = delta.Magnitude())
 			release_vector(delta)
@@ -92,3 +110,4 @@ Vector2
 			if (A)
 				return (A.x + A.y) / 2
 			return 0
+

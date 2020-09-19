@@ -81,7 +81,12 @@
 		set_audio_cooldown(SOUND_SPEECH, 5 SECONDS)
 		play_species_audio(src, SOUND_SPEECH, VOLUME_LOW, TRUE)
 
+/mob/living/simple_animal/necromorph/say(var/message)
+	sanitize_and_communicate(/decl/communication_channel/necrochat, client, message)
 
+	if(LAZYLEN(attack_sounds) && check_audio_cooldown(SOUND_SPEECH))
+		set_audio_cooldown(SOUND_SPEECH, 5 SECONDS)
+		playsound(src, pick(attack_sounds), VOLUME_MID, TRUE)
 
 //Global Necromorph Procs
 //-------------------------

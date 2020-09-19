@@ -58,12 +58,23 @@
 	//Bonus stats
 	var/evasion_mod	=	10
 	var/view_range_mod = 1
-	var/movespeed_mod = 1.15
 
 	//Used to prevent duplicate stacking
 	var/evasion_delta = 0
 	var/view_range_delta = 0
-	var/movespeed_delta = 0
+
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1.15)
+	auto_register_statmods = FALSE
+
+/datum/extension/wallrun/New(var/atom/movable/_user)
+	.=..()
+
+
+	A = _user
+	if (isliving(_user))
+		user = _user
+	start()
+
 
 
 /datum/extension/wallrun/proc/apply_stats()
@@ -74,7 +85,7 @@
 		user.evasion  += evasion_mod
 		evasion_delta  += evasion_mod
 
-	holder.update_movespeed_factor()
+	register_statmods()
 
 	if (!view_range_delta)
 		user.view_range += view_range_mod
@@ -90,7 +101,7 @@
 		user.evasion  -= evasion_delta
 		evasion_delta  = 0
 
-	holder.update_movespeed_factor()
+	unregister_statmods()
 
 	if (view_range_delta)
 		user.view_range -= view_range_delta
@@ -101,31 +112,19 @@
 		cached_density = null
 
 
-/datum/extension/wallrun/New(var/atom/movable/_user)
-	.=..()
-	A = _user
-	if (isliving(_user))
-		user = _user
-	start()
 
 
 /datum/extension/wallrun/proc/start()
 	started_at	=	world.time
 	GLOB.bump_event.register(A, src, /datum/extension/wallrun/proc/on_bumped)
-	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 
 /datum/extension/wallrun/proc/stop()
 	GLOB.bump_event.unregister(A, src, /datum/extension/wallrun/proc/on_bumped)
 	remove_extension(holder, base_type)
-	unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 
 
-/datum/extension/wallrun/movespeed_mod()
-	if (mountpoint)
-		return movespeed_mod
-	return 1
 
 
 
@@ -196,6 +195,8 @@
 ------------------*/
 //This should only be called when we are already mounted
 /datum/extension/wallrun/proc/attempt_transition(var/atom/target)
+	if (!target)
+		return
 	if (is_valid_mount_target(target) && is_valid_transition_target(target))
 		return transition_to_atom(target)
 
@@ -437,6 +438,10 @@
 -------------------------*/
 //Called when we bump into something
 /datum/extension/wallrun/proc/on_bumped(var/atom/movable/mover, var/atom/obstacle)
+	//Can't do wallrun and wallmount at the same time
+	if (mover.is_mounted())
+		return
+
 	if (!mountpoint)
 		attempt_mount(obstacle)
 	else

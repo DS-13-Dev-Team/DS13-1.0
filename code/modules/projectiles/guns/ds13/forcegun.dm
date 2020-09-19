@@ -90,10 +90,11 @@
 		var/turf_damage = force_falloff(damage, distance, falloff_factor)
 		T.apply_push_impulse_from(origin, force, falloff_factor)
 		for (var/atom/movable/AM in T)
-			AM.apply_push_impulse_from(origin, force, falloff_factor)	//Push the thing. This will shove objects, stagger/knockdown mobs
-			if (isliving(AM))
-				var/mob/living/L = AM
-				L.take_overall_damage(turf_damage, 0, gun)	//Mobs additionally take damage
+			if (!(AM.atom_flags & ATOM_FLAG_INTANGIBLE))
+				AM.apply_push_impulse_from(origin, force, falloff_factor)	//Push the thing. This will shove objects, stagger/knockdown mobs
+				if (isliving(AM))
+					var/mob/living/L = AM
+					L.take_overall_damage(turf_damage, 0, gun)	//Mobs additionally take damage
 
 
 

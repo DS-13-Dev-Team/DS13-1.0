@@ -189,7 +189,7 @@ default behaviour is:
 		health = 100
 		set_stat(CONSCIOUS)
 	else
-		health = max_health - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - getHalLoss()
+		health = max_health - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - getHalLoss() - getLastingDamage()
 
 
 	if (health <= 0)
@@ -235,13 +235,16 @@ default behaviour is:
 
 	return temperature
 
+/mob/living/proc/getAdjustedMaxHealth()
+	return (max_health - getLastingDamage())
+
 /mob/living/proc/getBruteLoss()
-	return max_health - health
+	return getAdjustedMaxHealth() - health
 
 /mob/living/proc/adjustBruteLoss(var/amount)
 	if (status_flags & GODMODE)
 		return
-	health = Clamp(health - amount, 0, max_health)
+	health = Clamp(health - amount, 0, getAdjustedMaxHealth())
 
 /mob/living/proc/getOxyLoss()
 	return 0
@@ -263,6 +266,14 @@ default behaviour is:
 
 /mob/living/proc/getFireLoss()
 	return
+
+/mob/living/proc/adjustLastingDamage(var/amount)
+	lasting_damage += amount
+	health = min(health, getAdjustedMaxHealth())
+	updatehealth()
+
+/mob/living/proc/getLastingDamage()
+	return lasting_damage
 
 /mob/living/proc/adjustFireLoss(var/amount)
 	adjustBruteLoss(amount * 0.5)
@@ -696,15 +707,16 @@ default behaviour is:
 /mob/living/proc/ranged_accuracy_mods()
 	. = 0
 	if(jitteriness)
-		. -= 2
-	if(confused)
-		. -= 2
-	if(eye_blind)
 		. -= 10
+	if(confused)
+		. -= 10
+	if(eye_blind)
+		. -= 50
 	if(eye_blurry)
-		. -= 1
+		. -= 5
 	if(CLUMSY in mutations)
-		. -= 3
+		. -= 15
+	.+=ranged_accuracy_modifier
 
 /mob/living/is_organic()
 	return TRUE

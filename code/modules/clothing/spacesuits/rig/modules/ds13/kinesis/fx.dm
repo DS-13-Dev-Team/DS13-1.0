@@ -1,4 +1,4 @@
-/obj/effect/projectile/sustained/lightning
+/obj/effect/projectile/tether/lightning
 	light_outer_range = 5
 	light_max_bright = 1
 	light_color = COLOR_KINESIS_INDIGO
@@ -6,12 +6,8 @@
 	icon_state = "lightning"
 	plane = MOB_PLANE
 	alpha = 128
-	offset = new /vector2(-48,-8)
+	start_offset = new /vector2(-48,-8)
 	base_length = 128
 
-/obj/effect/projectile/sustained/lightning/can_telegrip()
+/obj/effect/projectile/tether/lightning/can_telegrip()
 	return FALSE
-
-/obj/effect/projectile/sustained/lightning/Destroy()
-	release_vector(offset)
-	.=..()

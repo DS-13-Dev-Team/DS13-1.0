@@ -41,6 +41,8 @@
 
 	var/last_move_direction = NORTH
 
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -1)
+
 /datum/extension/cadence/New(var/mob/living/_user)
 	.=..()
 	user = _user
@@ -51,7 +53,6 @@
 
 /datum/extension/cadence/proc/start()
 	started_at	=	world.time
-	register_movemod(STATMOD_MOVESPEED_ADDITIVE)
 	GLOB.moved_event.register(holder, src, /datum/extension/cadence/proc/holder_moved)
 
 
@@ -117,11 +118,15 @@
 	if (current_speed_buff != prev_speed)
 		user.update_movespeed_factor()
 
+		if (current_speed_buff == max_speed_buff)
+			max_speed_reached()
 
 //Just return the speed we've cached
-/datum/extension/cadence/movespeed_mod()
-	return current_speed_buff
-
-/datum/extension/cadence/Destroy()
-	unregister_movemod(STATMOD_MOVESPEED_ADDITIVE)
+/datum/extension/cadence/get_statmod(var/modtype)
+	if (modtype == STATMOD_MOVESPEED_ADDITIVE)
+		return current_speed_buff
 	.=..()
+
+
+//Called whenever we accelerate up to maximum speed
+/datum/extension/cadence/proc/max_speed_reached()

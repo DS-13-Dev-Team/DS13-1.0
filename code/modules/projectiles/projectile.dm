@@ -448,8 +448,8 @@
 	on_impact(A)
 
 
-
-	expire()
+	if (!expired)
+		expire()
 	return 1
 
 /obj/item/projectile/ex_act()
@@ -464,7 +464,8 @@
 	spawn while(src && src.loc && flying)
 		if(kill_count-- < 1)
 			on_impact(src.loc) //for any final impact behaviours
-			expire()
+			if (!expired)
+				expire()
 			return
 		if((!( current ) || loc == current))
 			current = locate(min(max(x + xo, 1), world.maxx), min(max(y + yo, 1), world.maxy), z)
@@ -480,7 +481,8 @@
 			return
 
 		if (!vacuum_traversal && is_below_sound_pressure(get_turf(src))) //Deletes projectiles that aren't supposed to bein vacuum if they leave pressurised areas
-			expire()
+			if (!expired)
+				expire()
 			return
 
 		before_move()

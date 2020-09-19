@@ -161,8 +161,10 @@ var/list/debug_verbs = list (
 	set name = "Debug verbs"
 
 	if(!skip_check && !check_rights(R_DEBUG))
+		to_chat(mob, "You don't have the rights to use this command")
 		return
 	verbs += debug_verbs
+	to_chat(mob, "Debug verbs activated")
 
 	feedback_add_details("admin_verb","mDV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

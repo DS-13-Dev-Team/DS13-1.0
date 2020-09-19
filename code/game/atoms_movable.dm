@@ -126,12 +126,17 @@
 				continue
 			src.throw_impact(A,speed)
 
-/atom/movable/proc/throw_at(atom/target, range, speed, thrower)
+/atom/movable/proc/throw_at(atom/target, range = 7, speed = BASE_THROW_SPEED, thrower = null)
 	set waitfor = FALSE
 	if(!target || !src)
 		return FALSE
 	if(target.z != src.z)
 		return FALSE
+
+	//If they're attached to anything, remove them from it
+	var/datum/extension/mount/mount = src.is_mounted()
+	if (mount)
+		mount.dismount()
 
 	var/interval = 10 / speed
 	var/sleep_debt = 0

@@ -24,6 +24,7 @@
 	var/defensive_group	= UPPERBODY	   // If set, this dictates which set of limbs will be used in an attempt to shield this bodypart from attack. Should only be set on core parts, not limbs
 	var/block_reduction = 3			   // When this limb is used to block a strike, this flat number is subtracted from the damage of the incoming hit
 
+
 	// Physics
 	var/vector2/limb_height = new /vector2(0,1)	//Height is a range of where the limb extends vertically. The first value is the lower bound, second is the upper
 	//Height values assume the mob is in its normal pose standing on the ground
@@ -879,6 +880,10 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if (victim && victim.species)
 		victim.species.handle_amputated(victim, src, clean, disintegrate, ignore_children, silent)
 
+	var/soundloc = get_turf(victim)
+	spawn(rand(0, 7))
+		playsound(soundloc, pick(GLOB.fracture_sound), VOLUME_MID, TRUE)
+
 	if(!clean)
 		victim.shock_stage += min_broken_damage
 
@@ -1169,7 +1174,7 @@ obj/item/organ/external/proc/remove_clamps()
 
 	return 1
 
-/obj/item/organ/external/proc/get_damage()	//returns total damage
+/obj/item/organ/external/get_damage()	//returns total damage
 	return (brute_dam+burn_dam)	//could use max_damage?
 
 /obj/item/organ/external/proc/has_infected_wound()

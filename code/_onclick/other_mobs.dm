@@ -147,20 +147,3 @@
 /mob/new_player/ClickOn()
 	return
 
-/*
-	Animals
-*/
-/mob/living/simple_animal/UnarmedAttack(var/atom/A, var/proximity)
-
-	if(!..())
-		return
-	if(istype(A,/mob/living))
-		if(melee_damage_upper == 0)
-			custom_emote(1,"[friendly] [A]!")
-			return
-		if(ckey)
-			admin_attack_log(src, A, "Has [attacktext] its victim.", "Has been [attacktext] by its attacker.", attacktext)
-	set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
-	var/damage = rand(melee_damage_lower, melee_damage_upper)
-	if(A.attack_generic(src, damage, attacktext, environment_smash, damtype, defense) && loc && attack_sound)
-		playsound(loc, attack_sound, 50, 1, 1)

@@ -106,6 +106,7 @@
 	limb_height = new /vector2(0.1,1)	//Approx 90cm from ankle to groin
 	best_direction	=	WEST
 	defensive_group = null
+	divider_component_type = /mob/living/simple_animal/necromorph/divider_component/leg
 
 /obj/item/organ/external/leg/right
 	organ_tag = BP_R_LEG
@@ -135,6 +136,7 @@
 	base_miss_chance = 15
 	limb_height = new /vector2(0,0.1)	//about 10cm from sole to ankle
 	defensive_group = null
+	divider_component_type = /mob/living/simple_animal/necromorph/divider_component/leg
 
 /obj/item/organ/external/foot/right
 	organ_tag = BP_R_FOOT

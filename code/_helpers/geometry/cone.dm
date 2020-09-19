@@ -16,6 +16,7 @@
 	//We use half the distance as radius, +1 to account for any rounding errors. Its not a big deal if we get some unnecessary turfs in here
 	var/list/turfs = trange(((distance*0.5) + 1), halfpoint)
 
+
 	//Alright next up, we loop through the turfs. for each one:
 
 	for (var/turf/T as anything in turfs)
@@ -23,10 +24,14 @@
 		var/dist_delta = get_dist_euclidian(origin, T)
 		if (dist_delta > distance)
 			turfs -= T
+			continue
 
 		//2. We check if it falls within the desired angle
 		if (!target_in_arc(origin, T, direction, angle))
 			turfs -= T
+			continue
+
+
 
 	//Alright we've removed all the turfs which aren't in the cone!
 	return turfs
@@ -62,14 +67,13 @@
 		//For each stage, we'll get the subcone
 		var/list/subcone = get_cone(origin, subcone_direction, distance, abs(subcone_angle))
 		subcone -= all_tiles	//Filter out any tiles that are already in another subcone
-
 		//Don't add empty cones to lists
 		if (length(subcone) > 0)
 			all_tiles += subcone	//Then add ours to the global list
 			subcones += list(subcone)	//And add this cone to the list of all the cones
 
-		subcone_direction.SelfTurn(subcone_angle)
 
+		subcone_direction.SelfTurn(subcone_angle)
 	//We only release vectors we created, not those we were given
 	release_vector(subcone_direction)
 	return subcones

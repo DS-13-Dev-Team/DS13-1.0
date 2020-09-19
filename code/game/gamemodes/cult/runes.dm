@@ -268,8 +268,8 @@
 	density = 1
 	unacidable = 1
 	var/obj/effect/rune/wall/rune
-	var/health
-	var/max_health = 200
+	health
+	max_health = 200
 
 /obj/effect/cultwall/New(var/loc, var/bcolor)
 	..()

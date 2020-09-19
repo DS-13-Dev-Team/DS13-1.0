@@ -306,8 +306,11 @@ vector2
 			y = 0
 
 		SelfTurn(angle)
+			var/magnitude = Magnitude() //Cache the magnitude so we can retain it
 			var/matrix/m = matrix().Turn(angle)
 
 			// Transform
 			x = x * m.a + y * m.b + m.c
 			y = x * m.d + y * m.e + m.f
+
+			SelfToMagnitude(magnitude)

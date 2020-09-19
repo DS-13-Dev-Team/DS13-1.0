@@ -27,7 +27,7 @@
 	var/obj/item/projectile/sawblade/blade = null
 
 	//The gravity tether, a visual laser which connects gun and blade
-	var/obj/effect/projectile/sustained/tether = null
+	var/obj/effect/projectile/tether/tether = null
 
 	//World pixel coords of where a user last clicked to fire this gun
 	var/vector2/last_clickpoint = new /vector2(0,0)

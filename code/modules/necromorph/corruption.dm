@@ -366,6 +366,9 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 	var/necro = FALSE
 
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1.25,//This is dynamic
+	STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = 0.85)
+
 
 /datum/extension/corruption_effect/New(var/datum/holder)
 	.=..()
@@ -373,16 +376,24 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	if (L.is_necromorph())
 		necro = TRUE
 		speed_factor = speedup //Necros are sped up
-		register_incoming_damage_mod()
 		to_chat(L, SPAN_DANGER("The corruption beneath speeds your passage and mends your vessel."))
 	else
 		to_chat(L, SPAN_DANGER("This growth underfoot is sticky and slows you down."))
 		speed_factor = slowdown	//humans are slowed down
 
-	register_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 
 	START_PROCESSING(SSprocessing, src)
+
+/datum/extension/corruption_effect/get_statmod(var/modtype)
+	var/mob/living/L = holder
+	if (L.is_necromorph())
+		.=..()	//Default values are for necros
+	else
+		if (modtype == STATMOD_MOVESPEED_MULTIPLICATIVE)
+			return slowdown
+		if (modtype == STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE)
+			return 1
 
 
 /datum/extension/corruption_effect/Process()
@@ -396,17 +407,3 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	if (necro)
 		L.heal_overall_damage(healing_per_tick)
 
-
-/datum/extension/corruption_effect/Destroy()
-	unregister_movemod(STATMOD_MOVESPEED_MULTIPLICATIVE)
-	var/mob/living/L = holder
-	if (L.is_necromorph())
-		unregister_incoming_damage_mod()
-	.=..()
-
-/datum/extension/corruption_effect/movespeed_mod()
-	return speed_factor
-
-
-/datum/extension/corruption_effect/incoming_damage_mod()
-	return incoming_damage_mod

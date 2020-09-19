@@ -86,6 +86,7 @@
 
 	var/atom/last_obstacle
 	var/last_target_type
+	var/do_winddown_animation = TRUE	//If false, we will not animate back to normal. Only set it false when something else will handle it
 
 
 /datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
@@ -182,6 +183,7 @@
 	user.visible_message(SPAN_DANGER("[user] [verb_action] at [target]!"))
 
 	walk_towards(holder, move_target, SPEED_TO_DELAY(speed))
+	user.charge_started(src)
 
 	nomove_timer = addtimer(CALLBACK(src, .proc/stop_peter_out), nomove_timeout, TIMER_STOPPABLE)
 
@@ -206,6 +208,8 @@
 	if (blur)
 		user.filters.Remove(blur)
 		blur = null
+
+	user.charge_ended(src)
 
 	//When we finish, we go on cooldown
 	if (cooldown && cooldown > 0)
@@ -389,9 +393,13 @@
 	obstacle.shake_animation(8*TP)
 	if (isliving(holder))
 		//Damage the user and stun them
+
 		var/mob/living/L = holder
+		var/selfdamage = CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*distance_travelled
+		if (L.max_health)
+			selfdamage = min(L.max_health*0.15, selfdamage)
 		L.stunned = 0
-		L.take_overall_damage(CHARGE_DAMAGE_BASE*TP + CHARGE_DAMAGE_DIST*distance_travelled, 0,0,0, obstacle)
+		L.take_overall_damage(selfdamage, 0,0,0, obstacle)
 		L.Stun(2*TP)
 	stop()
 
@@ -465,6 +473,8 @@
 		if (L.mob_size < mob_size)
 			return FALSE
 
+
+
 		L.launch_strike(src, CHARGE_DAMAGE_BASE*charge.power, L)
 		//take_overall_damage((CHARGE_DAMAGE_BASE*power), 0,0,0, mover)
 	apply_effect(3*charge.power, STUN)
@@ -478,7 +488,7 @@
 	//Secondary = Something that got in the way while enroute to the primary target
 /atom/movable/proc/charge_impact(var/datum/extension/charge/charge)
 	shake_camera(src,3,1)
-	return charge.last_obstacle.charge_act(src, charge.power, charge.distance_travelled)
+	return charge.last_obstacle.charge_act(charge)
 
 
 //When a human does it, we call the same proc on their species. This allows various people to do stuff
@@ -494,6 +504,11 @@
 	return charge.last_obstacle.charge_act(charge)
 
 
+//Called when this atom starts charging at another, just before taking the first step
+/atom/proc/charge_started(var/datum/extension/charge/charge)
+
+//Called when this atom starts finishes a charge, called after everything, just before the cooldown timer starts
+/atom/proc/charge_ended(var/datum/extension/charge/charge)
 
 //	Triggering
 //------------------------

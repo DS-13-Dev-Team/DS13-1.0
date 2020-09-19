@@ -39,7 +39,8 @@
 	..()
 
 /datum/extension/charge/leap/stop()
-	animate(user, transform = user.get_default_transform(), pixel_y = user.default_pixel_y, time = 0.5 SECONDS)
+	if (do_winddown_animation)
+		animate(user, transform = user.get_default_transform(), pixel_y = user.default_pixel_y, time = 0.5 SECONDS)
 	user.pass_flags = cached_pass_flags
 	user.plane = cached_plane	//Draw over most mobs and objects
 	.=..()
@@ -57,7 +58,7 @@
 	return leap_attack(A)
 
 
-/atom/movable/proc/leap_attack(var/atom/_target, var/_speed = 7, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = FALSE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)
+/atom/movable/proc/leap_attack(var/atom/_target, var/_speed = 7, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = FALSE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0, var/subtype = /datum/extension/charge/leap)
 	//First of all, lets check if we're currently able to charge
 	if (!can_charge(_target, TRUE))
 		return FALSE
@@ -65,6 +66,6 @@
 
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/charge/leap, _target, _speed, _lifespan, _maxrange, _homing, _inertia, _power, _cooldown, _delay)
+	set_extension(src, subtype, _target, _speed, _lifespan, _maxrange, _homing, _inertia, _power, _cooldown, _delay)
 
 	return TRUE
