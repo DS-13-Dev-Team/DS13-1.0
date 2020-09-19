@@ -25,7 +25,7 @@
 	pixel_offset_x = -8
 	single_icon = FALSE
 	evasion = 0	//No natural evasion
-	spawner_spawnable = TRUE
+	spawner_spawnable = FALSE
 
 
 	slowdown = 5.5
