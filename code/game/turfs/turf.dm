@@ -118,6 +118,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 
 	if (!mover || !isturf(mover.loc) || isobserver(mover))
+
 		return TRUE
 
 	var/turf/origin = mover.loc
@@ -126,6 +127,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	for(var/obj/obstacle in origin.movement_blocking_atoms)
 		if((mover != obstacle) && (forget != obstacle))
 			if(!obstacle.CheckExit(mover, src))
+
 				return FALSE
 
 	//Next, check objects to block entry that are on the border
@@ -149,6 +151,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
 				mover.Bump(obstacle, 1)
 				return FALSE
+
 	return TRUE //Nothing found to block so return success!
 
 var/const/enterloopsanity = 100

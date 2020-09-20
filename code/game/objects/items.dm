@@ -12,7 +12,7 @@
 	var/structure_damage_factor = 1	//Damage dealt to doors, walls, floors, structures and other hard targets is multiplied by this
 	var/embed_mult = 1	//Multiplier on chance to  embed
 
-
+	max_health = null //Autocalculated from size
 
 	var/burn_point = null
 	var/burning = null

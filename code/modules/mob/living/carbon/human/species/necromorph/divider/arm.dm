@@ -8,7 +8,7 @@
 	icon_state = "arm"
 	icon_living = "arm"
 	icon_dead = list("arm_dead_1", "arm_dead_2")
-	speed = 2.75
+	speed = 2.5
 	melee_damage_lower = 2
 	melee_damage_upper = 4
 	attacktext = "scratched"
@@ -27,6 +27,7 @@
 
 	leap_state = "arm_leap"
 	attack_state = "arm_attack"
+
 
 /mob/living/simple_animal/necromorph/divider_component/arm/Initialize()
 	.=..()
@@ -59,3 +60,10 @@
 	if (.)
 		var/mob/living/victim = mountpoint
 		victim.lurch()
+
+
+/client/verb/arm_and_dummy()
+	var/mob/arm = new /mob/living/simple_animal/necromorph/divider_component/arm(mob.loc)
+	new /mob/living/carbon/human/dummy(mob.loc)
+
+	arm.key = key

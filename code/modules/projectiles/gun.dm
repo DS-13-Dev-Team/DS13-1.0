@@ -26,6 +26,8 @@
 	zoomdevicename = "scope"
 	unacidable = TRUE	//Guns melting is too powerful
 
+	max_health = 150
+
 	resistance = 5	//Guns are not intended as melee weapons, but they're moderately tough
 
 	var/burst = 1
