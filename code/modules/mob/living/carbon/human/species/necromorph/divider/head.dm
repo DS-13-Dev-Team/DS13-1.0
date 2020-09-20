@@ -15,8 +15,9 @@
 	melee_damage_upper = 6
 	attacktext = "whipped"
 	attack_sound = 'sound/weapons/bite.ogg'
-	speed = 2
+	speed = 1.75
 	leap_range = 4
+	max_health = 50
 
 	pain_sounds = list('sound/effects/creatures/necromorph/divider/component/head_pain_1.ogg',
 	'sound/effects/creatures/necromorph/divider/component/head_pain_2.ogg')
@@ -44,11 +45,18 @@
 	if (QDELETED(src) || !isturf(loc) || incapacitated(INCAPACITATION_FORCELYING))
 		return //Prevent some edge cases
 
+	if (H.is_necromorph())
+		return
+
 	if (H.get_organ(BP_HEAD))
 		var/obj/item/organ/external/E = H.get_organ(BP_HEAD)
 		if (!E.is_stump())
 			to_chat(src, SPAN_DANGER("You can only take over a headless corpse."))
 			return FALSE
+
+	if (get_extension(H, /datum/extension/used_vessel))
+		to_chat(src, SPAN_DANGER("This vessel has been posessed and used up already, find another!"))
+		return FALSE
 
 	if (get_dist(src, H) > 1)
 		to_chat(src, SPAN_DANGER("You must be within one tile"))
@@ -100,12 +108,14 @@
 
 	//Transfer our player
 	mind.transfer_to(H)
+	H.verbs +=/mob/living/carbon/human/proc/abandon_vessel
 
 	//Apply debuffs
 	set_extension(H, /datum/extension/divider_puppet)
+	set_extension(H, /datum/extension/used_vessel)
 
 	//Wake me up inside
-	H.resurrect()
+	H.resurrect(200)
 
 	//Delete this mob
 	qdel(src)
@@ -422,3 +432,22 @@
 
 
 	return EXECUTION_CONTINUE
+
+
+
+
+/mob/living/carbon/human/proc/abandon_vessel()
+	set category = "Abilities"
+	set name = "Abandon Vessel"
+	set desc = "Detaches your head from this body so you can find another. This is irreversible, the current body cannot be used again."
+
+	var/obj/item/organ/external/E = get_organ(BP_HEAD)
+	if (E)
+		E.droplimb()
+
+	update_body()
+
+
+//This extension just marks a corpse so that a head can't repeatedly reuse it
+/datum/extension/used_vessel
+	expected_type = /mob/living/carbon/human

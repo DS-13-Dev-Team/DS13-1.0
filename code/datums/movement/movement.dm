@@ -24,8 +24,10 @@ var/const/MOVEMENT_STOP    = 0x0008
 
 		. = movement_handler.DoMove(direction, mover, is_external)
 		if(. & MOVEMENT_REMOVE)
+
 			REMOVE_AND_QDEL(movement_handler)
 		if(. & MOVEMENT_HANDLED)
+
 			return
 
 // is_external means that something else (not inside us) is asking if we may move

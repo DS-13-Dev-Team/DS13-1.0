@@ -24,6 +24,10 @@
 	Attaches the subject to mountpoint
 */
 /proc/mount_to_atom(var/atom/movable/subject, var/atom/mountpoint, var/mount_type = /datum/extension/mount, var/datum/mount_parameters/WP = new())
+	//If we're already doing a wallrun, remove it, we are switching to something new
+	var/datum/extension/wallrun/W = get_extension(subject, /datum/extension/wallrun)
+	if (W)
+		W.unmount()
 	set_extension(subject, mount_type, mountpoint, WP)
 
 
@@ -130,7 +134,7 @@
 	offset = get_new_vector(mountee.x - mountpoint.x,mountee.y - mountpoint.y)
 	if (istype(target, /atom/movable))
 		GLOB.moved_event.register(mountpoint, src, /datum/extension/mount/proc/on_mountpoint_move)
-	GLOB.moved_event.register(mountee, src, /datum/extension/mount/proc/on_mountpoint_move)
+	GLOB.moved_event.register(mountee, src, /datum/extension/mount/proc/on_mountee_move)
 	GLOB.destroyed_event.register(mountpoint, src, /datum/extension/mount/proc/on_dismount)
 	GLOB.density_set_event.register(mountpoint, src, /datum/extension/mount/proc/mountpoint_updated)
 	if (isliving(mountpoint))

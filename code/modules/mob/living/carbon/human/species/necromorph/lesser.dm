@@ -98,6 +98,8 @@
 	var/damage = 5
 	var/damage_chance = 30
 
+	var/base_offset_y = 16
+
 /datum/extension/mount/parasite/on_mount()
 	.=..()
 	START_PROCESSING(SSprocessing, src)
@@ -108,14 +110,29 @@
 	spawn(0.5 SECONDS)
 		if (!QDELETED(biter) && !QDELETED(src) && mountpoint && mountee)
 			//Lets put the parasite somewhere nice looking on the mob
-			var/new_rotation = rand(-90, 90)
-			var/new_x = rand(-8, 8)
-			var/new_y = rand(0, 12)
+			var/new_rotation = rand(-70, 70)
+			var/vector2/attach_offset = biter.get_icon_size()
+			attach_offset.SelfMultiply(0.5)
+			attach_offset.x -= WORLD_ICON_SIZE * 0.5
+			attach_offset.y -= WORLD_ICON_SIZE * 0.5
+			attach_offset.SelfMultiply(-1)
+
+			var/vector2/base_offset = get_new_vector(0, base_offset_y)
+			base_offset.SelfTurn(new_rotation)
+
+			attach_offset.SelfAdd(base_offset)
+
+
+			attach_offset.x += rand(-4, 4)
+			attach_offset.y += rand(0, 12)
+
 			var/matrix/M = matrix()
 			M = M.Scale(0.75)
 			M = M.Turn(new_rotation)
 
-			animate(biter, transform = M, pixel_x = new_x, pixel_y = new_y, time = 5, flags = ANIMATION_END_NOW)
+			animate(biter, transform = M, pixel_x = attach_offset.x, pixel_y = attach_offset.y, time = 5, flags = ANIMATION_END_NOW)
+			release_vector(attach_offset)
+			release_vector(base_offset)
 
 
 

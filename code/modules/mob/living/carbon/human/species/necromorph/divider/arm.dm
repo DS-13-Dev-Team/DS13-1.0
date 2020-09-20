@@ -8,12 +8,13 @@
 	icon_state = "arm"
 	icon_living = "arm"
 	icon_dead = list("arm_dead_1", "arm_dead_2")
-	speed = 2.75
+	speed = 2.25
 	melee_damage_lower = 2
 	melee_damage_upper = 4
 	attacktext = "scratched"
 	attack_sound = 'sound/weapons/bite.ogg'
 	leap_range = 5
+	health = 30
 
 	pain_sounds = list('sound/effects/creatures/necromorph/divider/component/arm_pain_1.ogg',
 	'sound/effects/creatures/necromorph/divider/component/arm_pain_2.ogg',
@@ -27,6 +28,7 @@
 
 	leap_state = "arm_leap"
 	attack_state = "arm_attack"
+
 
 /mob/living/simple_animal/necromorph/divider_component/arm/Initialize()
 	.=..()
@@ -59,3 +61,16 @@
 	if (.)
 		var/mob/living/victim = mountpoint
 		victim.lurch()
+
+/* Debug verb, useful later
+/client/verb/head_and_dummy()
+	var/mob/head = new /mob/living/simple_animal/necromorph/divider_component/head(mob.loc)
+	new /mob/living/carbon/human/dummy(mob.loc)
+	var/mob/living/carbon/human/H = new /mob/living/carbon/human/dummy(mob.loc)
+	head.key = key
+
+	var/obj/item/organ/external/E = H.get_organ(BP_HEAD)
+	E.droplimb()
+	H.update_body()
+
+*/

@@ -26,6 +26,8 @@
 	zoomdevicename = "scope"
 	unacidable = TRUE	//Guns melting is too powerful
 
+	max_health = 150
+
 	resistance = 5	//Guns are not intended as melee weapons, but they're moderately tough
 
 	var/burst = 1
@@ -207,6 +209,13 @@
 		if(safety() || !has_ammo())
 			handle_click_empty()
 		return
+
+	//When firing in harm intent, at anything that isn't a mob, you'll autoaim at viable mobs in the same tile
+	if (user && user.a_intent == I_HURT && !isliving(A))
+		for (var/mob/living/L in A)
+			if (L.stat != DEAD && L != user)
+				A = L
+
 
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.

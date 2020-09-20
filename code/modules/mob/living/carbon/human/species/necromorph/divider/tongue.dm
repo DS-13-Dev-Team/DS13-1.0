@@ -305,6 +305,9 @@
 /datum/extension/execution/divider_tongue/interrupt()
 	.=..()
 	user.play_species_audio(src, SOUND_PAIN, VOLUME_MID, 1, 2)
+	var/obj/effect/projectile/tether/T = weapon
+	if (istype(T))
+		T.retract(1 SECOND)
 
 /datum/extension/execution/divider_tongue/can_start()
 	if (divider_tongue_start(user, victim) != EXECUTION_CONTINUE)

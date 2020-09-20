@@ -313,7 +313,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	EXECUTION_SAFETY
 
 	deltimer(ongoing_timer)
-
+	var/max_stages = all_stages.len
 	//If there's a current stage, ask it whether its ready to advance
 	if (current_stage && current_stage_index)
 		if (!current_stage.can_advance())
@@ -325,7 +325,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		current_stage = null
 	//Okay we're advancing
 	current_stage_index++
-	if (current_stage_index > all_stages.len)
+	if (current_stage_index > max_stages)
 		//We just finished the last stage, time to stop.
 		complete()
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/stop), 0, TIMER_STOPPABLE)
