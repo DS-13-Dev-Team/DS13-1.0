@@ -1,6 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed necromorph nest's Upgrade Spawner verb appearing in verb tabs and lagging players in view. Verb is still accessible via right clicking nest."

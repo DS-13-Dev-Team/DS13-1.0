@@ -1,6 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed cyst's bombs and pulse rifle's impact grenades embedding on direct hit."
