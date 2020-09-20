@@ -21,10 +21,10 @@
 //Mining overalls
 /decl/hierarchy/outfit/necromorph/planet_cracker
 	name = OUTFIT_JOB_NAME("Planet Slasher")
-	uniform = /obj/item/clothing/under/miner/deadspace
+	uniform = /obj/item/clothing/under/deadspace/planet_cracker
 	id_type = /obj/item/weapon/card/id/holo/mining
 
-/obj/item/clothing/under/miner/deadspace
+/obj/item/clothing/under/deadspace/planet_cracker
 	sprite_sheets = list(
 		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
 		)
@@ -34,10 +34,10 @@
 //Security Uniform
 /decl/hierarchy/outfit/necromorph/security
 	name = OUTFIT_JOB_NAME("Slashity Officer")
-	uniform = /obj/item/clothing/under/security
+	uniform = /obj/item/clothing/under/deadspace/security
 	id_type = /obj/item/weapon/card/id/holo/security
 
-/obj/item/clothing/under/security
+/obj/item/clothing/under/deadspace/security
 	sprite_sheets = list(
 		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
 		)

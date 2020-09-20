@@ -16,7 +16,7 @@
 
 /decl/hierarchy/outfit/masked_killer
 	name = "Masked killer"
-	uniform = /obj/item/clothing/under/miner/deadspace
+	uniform = /obj/item/clothing/under/deadspace/planet_cracker
 	shoes = /obj/item/clothing/shoes/white
 	gloves = /obj/item/clothing/gloves/latex
 	mask = /obj/item/clothing/mask/surgical

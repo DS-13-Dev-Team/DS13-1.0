@@ -6,7 +6,7 @@
 	contains = list(/obj/item/weapon/storage/backpack/industrial,
 					/obj/item/weapon/storage/backpack/satchel_eng,
 					/obj/item/device/radio/headset/headset_mining,
-					/obj/item/clothing/under/miner/deadspace,
+					/obj/item/clothing/under/deadspace/planet_cracker,
 					/obj/item/clothing/gloves/thick,
 					/obj/item/clothing/shoes/dutyboots,
 					/obj/item/device/analyzer,
