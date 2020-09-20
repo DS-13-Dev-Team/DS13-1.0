@@ -36,3 +36,4 @@ changes:
   - bugfix: "Fixed the light RIG randomly spawning."
   - bugfix: "Fixed a few problems with the firesuit RIG's boot and glove sprites."
   - bugfix: "Fixed the security uniform's east and west sprites missing two pixels and showing your stomach."
+  - bugfix: "Fixed the Chief Security Officer's jacket not having armor values, the name, and description."
