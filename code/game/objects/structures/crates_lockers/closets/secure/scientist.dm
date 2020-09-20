@@ -10,7 +10,7 @@
 /obj/structure/closet/secure_closet/scientist/WillContain()
 	return list(
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/messenger/tox, /obj/item/weapon/storage/backpack/satchel_tox)),
-		/obj/item/clothing/under/rank/scientist,
+		/obj/item/clothing/under/deadspace/research_assistant,
 		/obj/item/clothing/suit/storage/toggle/labcoat,
 		/obj/item/clothing/shoes/white,
 		/obj/item/device/radio/headset/headset_sci,
@@ -54,9 +54,7 @@
 /obj/structure/closet/secure_closet/CSCIO/WillContain()
 	return list(
 		/obj/item/clothing/suit/bio_suit/scientist = 2,
-		/obj/item/clothing/under/rank/research_director,
-		/obj/item/clothing/under/rank/research_director/dress_rd,
-		/obj/item/clothing/under/rank/scientist/executive,
+		/obj/item/clothing/under/deadspace/chief_science_officer,
 		/obj/item/clothing/suit/storage/toggle/labcoat,
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/shoes/leather,
