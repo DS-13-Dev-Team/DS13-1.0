@@ -179,7 +179,7 @@
 
 /decl/hierarchy/outfit/kellion_sec
 	name = "Kellion Security"
-	uniform = /obj/item/clothing/under/kellion
+	uniform = /obj/item/clothing/under/deadspace/ert/kellion
 	suit = /obj/item/clothing/suit/armor/vest/kellion
 	l_ear = null
 	mask = null
@@ -195,7 +195,7 @@
 
 /decl/hierarchy/outfit/kellion_sec_leader
 	name = "Kellion Security Leader"
-	uniform = /obj/item/clothing/under/kellion/leader
+	uniform = /obj/item/clothing/under/deadspace/ert/kellion/leader
 	suit = null
 	l_ear = null
 	mask = null
@@ -211,7 +211,7 @@
 
 /decl/hierarchy/outfit/kendra
 	name = "Kellion Technician"
-	uniform = /obj/item/clothing/under/kellion/tech
+	uniform = /obj/item/clothing/under/deadspace/ert/kellion/tech
 	suit = /obj/item/clothing/suit/storage/toggle/kellion_jacket
 	l_ear = null
 	mask = null

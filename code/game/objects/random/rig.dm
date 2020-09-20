@@ -10,7 +10,6 @@
 				/obj/item/weapon/rig/vintage,
 				/obj/item/weapon/rig/industrial,
 				/obj/item/weapon/rig/eva,
-				/obj/item/weapon/rig/light,
 				/obj/item/weapon/rig/civilian))
 
 

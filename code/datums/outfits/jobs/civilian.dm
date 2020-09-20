@@ -20,7 +20,7 @@
 
 /decl/hierarchy/outfit/job/service/botanist
 	name = OUTFIT_JOB_NAME("Botanist")
-	uniform = /obj/item/clothing/under/hydroponics
+	uniform = /obj/item/clothing/under/deadspace/hydroponics
 	shoes = /obj/item/clothing/shoes/black
 	id_type = /obj/item/weapon/card/id/holo/civilian/botanist
 	pda_type = /obj/item/modular_computer/pda

@@ -5,7 +5,7 @@
 
 /decl/hierarchy/outfit/job/mining/dom
 	name = OUTFIT_JOB_NAME("Director of Mining")
-	uniform = /obj/item/clothing/under/rank/dom
+	uniform = /obj/item/clothing/under/deadspace/dom
 	shoes = /obj/item/clothing/shoes/dress
 	id_type = /obj/item/weapon/card/id/holo/mining/director
 	pda_type = /obj/item/modular_computer/pda/heads/dom
@@ -18,6 +18,6 @@
 
 /decl/hierarchy/outfit/job/mining/planet_cracker
 	name = OUTFIT_JOB_NAME("Planet Cracker")
-	uniform = /obj/item/clothing/under/miner/deadspace
+	uniform = /obj/item/clothing/under/deadspace/planet_cracker
 	shoes = /obj/item/clothing/shoes/black
 	id_type = /obj/item/weapon/card/id/holo/mining
