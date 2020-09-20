@@ -49,10 +49,6 @@
 	name = "\improper Bridge"
 	icon_state = "ishimurabridge"
 
-/area/ishimura/upper/command/captain_area
-	name = "\improper Captain's Station"
-	icon_state = "c_station"
-
 //------------------Engineering - Upper------------------//
 /area/ishimura/upper/engineering
 	name = "\improper Engineering"
@@ -323,11 +319,17 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/upper/security/cryo
 	name = "\improper Cyrogenic Isolation"
 
+/area/ishimura/upper/security/equipment
+	name = "\improper Equipment Room"
+
 /area/ishimura/upper/security/evidence
 	name = "\improper Evidence Storage"
 
 /area/ishimura/upper/security/forensics
 	name = "\improper Forensics Lab"
+
+/area/ishimura/upper/security/interrogation
+	name = "\improper Interrogation Room"
 
 /area/ishimura/upper/security/isolation
 	name = "\improper Isolation"
