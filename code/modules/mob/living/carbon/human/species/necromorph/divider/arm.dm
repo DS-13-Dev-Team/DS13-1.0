@@ -62,9 +62,15 @@
 		var/mob/living/victim = mountpoint
 		victim.lurch()
 
-
-/client/verb/arm_and_dummy()
-	var/mob/arm = new /mob/living/simple_animal/necromorph/divider_component/arm(mob.loc)
+/* Debug verb, useful later
+/client/verb/head_and_dummy()
+	var/mob/head = new /mob/living/simple_animal/necromorph/divider_component/head(mob.loc)
 	new /mob/living/carbon/human/dummy(mob.loc)
+	var/mob/living/carbon/human/H = new /mob/living/carbon/human/dummy(mob.loc)
+	head.key = key
 
-	arm.key = key
+	var/obj/item/organ/external/E = H.get_organ(BP_HEAD)
+	E.droplimb()
+	H.update_body()
+
+*/

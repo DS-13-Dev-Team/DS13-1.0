@@ -44,6 +44,8 @@
 
 /mob/living/simple_animal/necromorph/divider_component/Initialize()
 	.=..()
+	dna = new()
+	dna.species = SPECIES_NECROMORPH_DIVIDER
 	add_modclick_verb(KEY_ALT, /mob/living/simple_animal/necromorph/divider_component/proc/leap)
 	get_controlling_player()
 
