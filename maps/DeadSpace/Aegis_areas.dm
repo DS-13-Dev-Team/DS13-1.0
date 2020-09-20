@@ -53,10 +53,6 @@
 	name = "\improper Aegis Colony Medical Bay"
 	icon_state = "medicalbase"
 
-/area/aegis/colony/medical/surgery
-	name = "\improper Aegis Colony Surgical Suite"
-	icon_state = "surgery_one"
-
 /area/aegis/colony/security
 	name = "\improper Aegis Colony Security"
 	icon_state = "brig"
