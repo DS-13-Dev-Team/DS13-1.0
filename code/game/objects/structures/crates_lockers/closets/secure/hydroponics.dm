@@ -10,7 +10,7 @@
 /obj/structure/closet/secure_closet/hydroponics/WillContain()
 	return list(
 		/obj/item/weapon/storage/plants,
-		/obj/item/clothing/under/hydroponics,
+		/obj/item/clothing/under/deadspace/hydroponics,
 		/obj/item/device/analyzer/plant_analyzer,
 		/obj/item/device/radio/headset/headset_service,
 		/obj/item/weapon/material/minihoe,

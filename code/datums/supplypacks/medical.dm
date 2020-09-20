@@ -95,10 +95,10 @@
 	access = access_medical
 
 /decl/hierarchy/supply_pack/medical/smogear
-	name = "Chief medical officer equipment"
+	name = "Senior Medical Officer equipment"
 	contains = list(/obj/item/weapon/storage/belt/medical,
 					/obj/item/device/radio/headset/heads/smo,
-					/obj/item/clothing/under/senior_medical_officer,
+					/obj/item/clothing/under/deadspace/senior_medical_officer,
 					/obj/item/weapon/reagent_containers/hypospray/vial,
 					/obj/item/clothing/accessory/stethoscope,
 					/obj/item/clothing/glasses/hud/health,
@@ -117,7 +117,7 @@
 	name = "Medical Doctor equipment"
 	contains = list(/obj/item/weapon/storage/belt/medical,
 					/obj/item/device/radio/headset/headset_med,
-					/obj/item/clothing/under/medical_doctor,
+					/obj/item/clothing/under/deadspace/doctor,
 					/obj/item/clothing/accessory/stethoscope,
 					/obj/item/clothing/glasses/hud/health,
 					/obj/item/clothing/mask/surgical,
@@ -184,9 +184,9 @@
 /decl/hierarchy/supply_pack/medical/medicaluniforms
 	name = "Medical uniforms"
 	contains = list(/obj/item/clothing/shoes/white = 3,
-					/obj/item/clothing/under/surgeon = 2,
-					/obj/item/clothing/under/medical_doctor = 4,
-					/obj/item/clothing/under/senior_medical_officer,
+					/obj/item/clothing/under/deadspace/surgeon = 2,
+					/obj/item/clothing/under/deadspace/doctor = 4,
+					/obj/item/clothing/under/deadspace/senior_medical_officer,
 					/obj/item/weapon/storage/box/masks,
 					/obj/item/weapon/storage/box/gloves)
 	cost = 15

@@ -57,7 +57,7 @@
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/medic, /obj/item/weapon/storage/backpack/satchel_med)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/med, 50),
-		/obj/item/clothing/under/medical_doctor,
+		/obj/item/clothing/under/deadspace/doctor,
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight,
@@ -82,7 +82,7 @@
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/medic, /obj/item/weapon/storage/backpack/satchel_med)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/med, 50),
-		/obj/item/clothing/under/surgeon,
+		/obj/item/clothing/under/deadspace/surgeon,
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight,

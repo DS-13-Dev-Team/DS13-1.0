@@ -773,7 +773,7 @@ obj/random/obstruction/item_to_spawn()
 	name = "random suit"
 	desc = "This is a random piece of outerwear."
 	icon = 'icons/obj/clothing/suits.dmi'
-	icon_state = "fire"
+	icon_state = "firesuit"
 
 /obj/random/suit/item_to_spawn()
 	return pickweight(list(/obj/item/clothing/suit/storage/hazardvest = 4,

@@ -13,7 +13,7 @@
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/industrial, /obj/item/weapon/storage/backpack/satchel_eng)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/eng, 50),
 		/obj/item/blueprints,
-		/obj/item/clothing/under/d_engineer,
+		/obj/item/clothing/under/deadspace/engineer,
 		/obj/item/clothing/head/hardhat/white,
 		/obj/item/clothing/head/welding,
 		/obj/item/clothing/gloves/insulated,
@@ -81,8 +81,7 @@
 		new/datum/atom_creator/weighted(list(/obj/item/clothing/accessory/storage/brown_vest = 70, /obj/item/clothing/accessory/storage/webbing = 30)),
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/industrial, /obj/item/weapon/storage/backpack/satchel_eng)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/eng, 50),
-		/obj/item/clothing/under/d_engineer,
-
+		/obj/item/clothing/under/deadspace/engineer,
 		/obj/item/clothing/accessory/storage/webbing,
 		/obj/item/clothing/gloves/insulated,
 		/obj/item/clothing/mask/gas,

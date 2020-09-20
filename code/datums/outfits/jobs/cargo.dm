@@ -1,5 +1,5 @@
 /decl/hierarchy/outfit/job/cargo
-	uniform = /obj/item/clothing/under/cargo_deadspace
+	uniform = /obj/item/clothing/under/deadspace/cargo
 	l_ear = /obj/item/device/radio/headset/headset_cargo
 	glasses = /obj/item/clothing/glasses/sunglasses
 	shoes = /obj/item/clothing/shoes/dutyboots
