@@ -7,7 +7,7 @@
 	icon_state = "leg"
 	icon_living = "leg"
 	icon_dead = list("leg_dead_1", "leg_dead_2")
-	speed = 3.25
+	speed = 3
 	melee_damage_lower = 3
 	melee_damage_upper = 6
 	attacktext = "kicked"

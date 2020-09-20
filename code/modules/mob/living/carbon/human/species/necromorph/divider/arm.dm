@@ -8,12 +8,13 @@
 	icon_state = "arm"
 	icon_living = "arm"
 	icon_dead = list("arm_dead_1", "arm_dead_2")
-	speed = 2.5
+	speed = 2.25
 	melee_damage_lower = 2
 	melee_damage_upper = 4
 	attacktext = "scratched"
 	attack_sound = 'sound/weapons/bite.ogg'
 	leap_range = 5
+	health = 30
 
 	pain_sounds = list('sound/effects/creatures/necromorph/divider/component/arm_pain_1.ogg',
 	'sound/effects/creatures/necromorph/divider/component/arm_pain_2.ogg',

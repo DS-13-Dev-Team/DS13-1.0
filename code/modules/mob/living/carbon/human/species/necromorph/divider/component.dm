@@ -28,6 +28,7 @@
 	var/attack_state
 	pixel_x = -16
 	default_pixel_x = -16
+	evasion = 40
 
 /mob/living/simple_animal/necromorph/divider_component/do_attack_animation(var/atom/target)
 	flick(attack_state, src)

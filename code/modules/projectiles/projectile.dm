@@ -494,6 +494,7 @@
 					if(Bump(original))
 						return
 
+
 		if(first_step)
 			muzzle_effect(effect_transform)
 			first_step = 0
