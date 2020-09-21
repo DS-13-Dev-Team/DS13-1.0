@@ -148,7 +148,7 @@
 	Deployment involves creating another object and deleting ourselves
 */
 /obj/item/projectile/deploy
-	kill_count = 6	//These are generally short ranged
+	kill_count = 10	//These are generally short ranged
 	var/deploy_type = /obj/effect/mine
 	var/deployed = FALSE	//Set true when we are deployed
 	damage = 0

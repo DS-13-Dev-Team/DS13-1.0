@@ -135,6 +135,9 @@
 	var/pixel_offset_magnitude = 8	//How far to offset us towards the target atom
 	var/mount_angle
 
+	//If nonzero, mount angle is rounded to the nearest multiple of this
+	var/mount_round = 0
+
 /datum/extension/mount/sticky
 	face_away_from_mountpoint = TRUE
 
@@ -247,6 +250,8 @@
 	//Visuals
 
 	mount_angle = rotation_to_target(mountee, get_turf(mountpoint), SOUTH)	//Point our feet at the wall we're walking on
+	clamp_mount_angle()	//Override this to round it off
+
 	mountee.default_rotation = mount_angle
 
 	world << "Base offset 3 is [vstr(base_offset)]"
@@ -265,6 +270,9 @@
 
 	release_vector(newpix)
 
+/datum/extension/mount/proc/clamp_mount_angle()
+	if (mount_round)
+		mount_angle = round(mount_angle, mount_round)
 
 //Helpers
 /atom/proc/is_mounted()

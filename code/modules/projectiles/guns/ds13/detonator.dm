@@ -2,28 +2,41 @@
 	Detonator Gun
 */
 /obj/item/weapon/gun/projectile/detonator
-    name = "detonator"
-    desc = "A unique gun that can place tripmines from a distance."
-    icon = 'icons/obj/weapons/ds13guns48x32.dmi'
-    icon_state = "detonator_unloaded"
-    item_state = "detonator_unloaded"
-    wielded_item_state = "detonator-wielded"
-    slot_flags = SLOT_BELT | SLOT_BACK
-    w_class = ITEM_SIZE_HUGE
-    max_shells = 6
-    caliber = "tripmine"
-    handle_casings = CLEAR_CASINGS
-    fire_delay = 5
-    fire_sound = ""
-    load_sound = ""
-    projectile_type = /obj/item/projectile/deploy/detonator
+	name = "detonator"
+	desc = "A unique gun that can place tripmines from a distance."
+	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
+	icon_state = "detonator"
+	item_state = "detonator"
+	wielded_item_state = "detonator-wielded"
+	slot_flags = SLOT_BELT | SLOT_BACK
+	w_class = ITEM_SIZE_HUGE
+	max_shells = 6
+	caliber = "tripmine"
+	handle_casings = CLEAR_CASINGS
+	fire_delay = 5
+	fire_sound = ""
+	load_sound = ""
+	projectile_type = /obj/item/projectile/deploy/detonator
+	one_hand_penalty = 6	//Don't try to fire this with one hand
+	var/list/deployed_mines = list()
 
-    var/list/deployed_mines = list()
-    firemodes = list(
-	list(mode_name = "minelayer", mode_type = /datum/firemode),
-	list(mode_name = "mine retrieval", mode_type = /datum/firemode/tripmine)
-	)
+	firemodes = list(list(mode_name = "minelayer", mode_type = /datum/firemode, require_aiming = TRUE),\
+	list(mode_name = "mine retrieval", mode_type = /datum/firemode/tripmine))
 
+	load_sound = 'sound/weapons/guns/interaction/detonator_reload.ogg'
+
+
+/obj/item/weapon/gun/projectile/detonator/enable_aiming_mode()
+	.=..()
+	if (.)
+		playsound(src, 'sound/weapons/guns/interaction/detonator_ready.ogg', VOLUME_MID, TRUE)
+		update_icon()
+
+/obj/item/weapon/gun/projectile/detonator/disable_aiming_mode()
+	.=..()
+	if (.)
+		playsound(src, 'sound/weapons/guns/interaction/detonator_unready.ogg', VOLUME_MID, TRUE)
+		update_icon()
 
 
 /*
@@ -44,19 +57,23 @@
 
 
 /obj/item/weapon/gun/projectile/detonator/loaded
-    ammo_type = /obj/item/ammo_casing/tripmine
+
+	ammo_type = /obj/item/ammo_casing/tripmine
 
 /obj/item/weapon/gun/projectile/detonator/update_icon()
-    if(getAmmo())
-        icon_state = "detonator_loaded"
-    else
-        icon_state = "detonator"
+	if(getAmmo())
+		icon_state = "detonator_loaded"
+	else
+		icon_state = "detonator"
+
+	.=..()
 
 
 /*
 	Unfired mine
 */
 /obj/item/ammo_casing/tripmine
+	name = "detonator mine"
 	caliber = "tripmine"
 	icon = 'icons/obj/weapons/ds13_deployables.dmi'
 	icon_state = "detonator_mine"
@@ -71,6 +88,7 @@
 */
 /datum/extension/mount/sticky/mine
 	pixel_offset_magnitude = -12
+	mount_round = 90
 
 
 /*
@@ -81,6 +99,7 @@
 	deploy_type = /obj/effect/mine/trip
 	icon = 'icons/obj/weapons/ds13_deployables.dmi'
 	icon_state = "detonator_mine"
+	fire_sound = 'sound/weapons/guns/fire/detonator_fire.ogg'
 
 
 /obj/item/projectile/deploy/detonator/deploy_to_floor(var/turf/T)
@@ -92,6 +111,14 @@
 	var/obj/effect/mine/trip/trip = new deploy_type(T, src)
 	trip.floor_deployed(T)
 
+//Detonator can be used as an impact grenade launcher, but its less effective
+/obj/item/projectile/deploy/detonator/attack_mob(var/mob/living/victim)
+	set waitfor = FALSE
+	if (deployed)
+		return
+	deployed = TRUE
+	var/obj/effect/mine/trip/trip = new deploy_type(get_turf(victim), src)
+	trip.explode()	//We don't pass in the victim so it won't fire shrapnel
 
 /*
 	Laser effect
@@ -111,7 +138,7 @@
 	name = "Laser Tripmine"
 	icon = 'icons/obj/weapons/ds13_deployables.dmi'
 	icon_state = "detonator_mine"
-	var/setup_time = 1.35 SECONDS
+	var/setup_time = 1.1 SECONDS
 	var/obj/effect/projectile/tether/triplaser/laser
 	var/max_laser_range = 20	//How far the laser extends, in tiles
 	var/gunref	//We'll save a weak link to our launcher
@@ -128,7 +155,14 @@
 
 /obj/effect/mine/trip/explode(var/atom/victim)
 	triggered = TRUE
-	if (is_mounted())
+
+	playsound(get_turf(src), pick(list('sound/weapons/guns/blast/detonator_explosion_1.ogg',
+	'sound/weapons/guns/blast/detonator_explosion_2.ogg',
+	'sound/weapons/guns/blast/detonator_explosion_3.ogg',
+	'sound/weapons/guns/blast/detonator_explosion_4.ogg')),
+	VOLUME_HIGH,
+	FALSE)
+	if (victim)
 		shoot_ability(subtype = /datum/extension/shoot/det1, target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
 		shoot_ability(subtype = /datum/extension/shoot/det2, target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
 		shoot_ability(subtype = /datum/extension/shoot/det3, target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
@@ -139,6 +173,7 @@
 /obj/effect/mine/trip/proc/disarm()
 	if (triggered || QDELETED(src))
 		return
+	playsound(get_turf(src), 'sound/weapons/guns/misc/detonator_mine_disarm.ogg',VOLUME_HIGH,FALSE)
 	triggered = TRUE
 	icon_state = "detonator_mine_undeploy"
 	sleep(6)
@@ -155,15 +190,15 @@
 
 /obj/effect/mine/trip/on_mount(var/datum/extension/mount/ME)
 	icon_state = "detonator_mine_deployed"
-
+	spawn(0.3 SECONDS)
+		playsound(get_turf(src), 'sound/weapons/guns/misc/detonator_mine_arm.ogg',VOLUME_HIGH,FALSE)
 	spawn(setup_time)
 		laser = new (loc)
 		//Which way are we pointing our laser?
-		var/vector2/laser_direction = Vector2.SmartDirectionBetween(ME.mountpoint, src)
-		var/laser_angle = laser_direction.Angle()
-		//We will make the angle bound to a cardinal or diagonal
-		var/rounded_laser_angle = round(laser_angle, 45)
-		laser_direction.SelfTurn(rounded_laser_angle - laser_angle)
+		var/vector2/laser_direction = Vector2.NewFromDir(NORTH)//Vector2.SmartDirectionBetween(ME.mountpoint, src)
+		var/laser_angle = ME.mount_angle
+		//We will make the angle bound to a cardinal
+		laser_direction.SelfTurn(laser_angle)
 
 		set_light(0.8, 1, 3, l_falloff_curve = NONSENSICAL_VALUE, l_color = COLOR_DEEP_SKY_BLUE)
 
@@ -212,8 +247,10 @@
 
 /obj/effect/mine/trip/proc/floor_deployed()
 	transform = transform.Scale(1, 0.8)
+	world << "Deploying to floor"
 	icon_state = "detonator_mine_deployed"
-
+	spawn(0.3 SECONDS)
+		playsound(get_turf(src), 'sound/weapons/guns/misc/detonator_mine_arm.ogg',VOLUME_HIGH,FALSE)
 	spawn(setup_time)
 		laser = new (loc)
 
@@ -253,6 +290,7 @@
 	paralyze = 1
 	penetrating = 5
 	armor_penetration = 15
+	accuracy = 150
 
 
 //Shoot extensions, just used for the sake of cooldowns
@@ -284,3 +322,4 @@
 	cost = 80
 	containertype = /obj/structure/closet/crate
 	containername = "\improper detonator crate"
+
