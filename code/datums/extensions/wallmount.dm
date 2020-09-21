@@ -126,6 +126,21 @@
 	//Used when mountee is moved to sync with mountpoint
 	var/ignore_mountee_move = FALSE
 
+	//If true, the object will rotate so that its south edge is facing the mountpoint
+	var/face_away_from_mountpoint = FALSE
+
+
+	var/vector2/centre_offset //What offset do we add to our sprite to centre it in the tile? Calculated based on dmi size. This is applied flatly regardless of rotation
+	var/vector2/base_offset	//What offset do we add to place our feet against the edge of the tile? This is rotated before applying
+	var/pixel_offset_magnitude = 8	//How far to offset us towards the target atom
+	var/mount_angle
+
+	//If nonzero, mount angle is rounded to the nearest multiple of this
+	var/mount_round = 0
+
+/datum/extension/mount/sticky
+	face_away_from_mountpoint = TRUE
+
 /datum/extension/mount/New(var/atom/holder, var/atom/target, var/datum/mount_parameters/WP = new())
 	.=..()
 	src.WP = WP
@@ -140,6 +155,8 @@
 	if (isliving(mountpoint))
 		if (!WP.attach_mob_dead)
 			GLOB.death_event.register(mountpoint, src, /datum/extension/mount/proc/mountpoint_updated)
+
+
 	on_mount()
 
 /datum/extension/mount/Destroy()
@@ -147,16 +164,27 @@
 	mountee = null
 	if (offset)
 		release_vector(offset)
+	if (base_offset)
+		release_vector(base_offset)
+	if (centre_offset)
+		release_vector(centre_offset)
 	WP = null
 	.=..()
 
 /datum/extension/mount/proc/on_mount()
 	mounted  = TRUE
+	if (face_away_from_mountpoint)
+		cache_offsets()
+		mount_offset()
+
+
+	mountee.on_mount(src)
 
 //Called immediately after this atom is unmounted from mountpoint.
 	//WARNING: You cannot rely on mountpoint to still exist at this time. Check it before doing anything to it
 /datum/extension/mount/proc/on_dismount()
 	mounted  = FALSE
+	mountee.on_dismount(src)
 
 /datum/extension/mount/proc/dismount()
 	on_dismount()
@@ -187,6 +215,57 @@
 			return
 
 
+/datum/extension/mount/proc/cache_offsets()
+	//var/vector2/centre_offset //What offset do we add to our sprite to centre it in the tile? Calculated based on dmi size. This is applied flatly regardless of rotation
+	//var/vector2/base_offset	//What offset do we add to place our feet against the edge of the tile? This is rotated before applying
+
+
+
+	//Lets calculate the centre offset, once only
+	if (!centre_offset)
+
+		//Size won't be released in this stack, because its value is transferred into base_offset
+		var/vector2/size = mountee.get_icon_size()
+
+		//We cut the size in half and then subtract 16,16, which is the centre of a normal 32x32 tile.
+		size.SelfMultiply(0.5)
+		var/vector2/halfsize = get_new_vector(WORLD_ICON_SIZE * 0.5, WORLD_ICON_SIZE * 0.5)
+		size.SelfSubtract(halfsize)
+		release_vector(halfsize)
+
+		centre_offset = size*-1
+
+		//Base offset is simple. Its just the inverted Y offset and no X
+		if (base_offset)
+			release_vector(base_offset)
+
+		base_offset = size.Copy()
+		base_offset.y += pixel_offset_magnitude //We can add in the pixel offset here for efficiency too
+		release_vector(size)
+
+/datum/extension/mount/proc/mount_offset()
+	//Visuals
+
+	mount_angle = rotation_to_target(mountee, get_turf(mountpoint), SOUTH)	//Point our feet at the wall we're walking on
+	clamp_mount_angle()	//Override this to round it off
+
+	mountee.default_rotation = mount_angle
+
+	var/vector2/newpix = base_offset.Turn(mount_angle)
+	newpix.SelfAdd(centre_offset)	//The base offset is used with rotation
+	mountee.default_pixel_x = newpix.x
+	mountee.default_pixel_y = newpix.y
+
+
+
+	animate(mountee, transform = mountee.get_default_transform(), alpha = mountee.default_alpha, pixel_x = mountee.default_pixel_x, pixel_y = mountee.default_pixel_y, time = 3, easing = BACK_EASING)
+
+
+	release_vector(newpix)
+
+/datum/extension/mount/proc/clamp_mount_angle()
+	if (mount_round)
+		mount_angle = round(mount_angle, mount_round)
 
 //Helpers
 /atom/proc/is_mounted()
@@ -195,3 +274,7 @@
 		return M
 
 	return FALSE
+
+/atom/proc/on_mount(var/datum/extension/mount/ME)
+
+/atom/proc/on_dismount(var/datum/extension/mount/ME)

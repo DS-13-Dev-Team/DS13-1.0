@@ -2,7 +2,7 @@
 	name = "laser"
 	icon_state = "laser"
 	fire_sound='sound/weapons/Laser.ogg'
-	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_GLASS | PASS_FLAG_GRILLE
+	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_GLASS | PASS_FLAG_GRILLE | PASS_FLAG_FLYING
 	damage = 30
 	damage_type = BURN
 	sharp = 1 //concentrated burns

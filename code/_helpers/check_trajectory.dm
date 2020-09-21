@@ -1,7 +1,7 @@
 //Procs to check if a target atom can be reached from the current. Essentially raytracing
 
 //Helper proc to check if you can hit them or not.
-/proc/check_trajectory(atom/target as mob|obj, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE, item_flags = null, obj_flags = null)
+/proc/check_trajectory(atom/target as mob|obj, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE|PASS_FLAG_FLYING, item_flags = null, obj_flags = null)
 	if(!istype(target) || !istype(firer))
 		return 0
 
@@ -31,7 +31,7 @@
 //Version optimised for mass testing
 //Takes a list of target atoms to test
 //Returns back the same list as an associative, with target as key, and true/false as value telling us whether we succeeded or failed in hitting
-/proc/check_trajectory_mass(var/list/targets, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE, item_flags = null, obj_flags = null, var/allow_sleep = FALSE)
+/proc/check_trajectory_mass(var/list/targets, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE|PASS_FLAG_FLYING, item_flags = null, obj_flags = null, var/allow_sleep = FALSE)
 	if(!istype(firer))
 		return 0
 
@@ -60,7 +60,7 @@
 //last_loc,	//The turf we managed to reach. Will be the target's turf if we got there. If something blocked us, it'll be the turf just before that thing
 //last_obstacle)	//What we hit/got blocked by. Will be a dense object if one got in the way. Will be the target if we reached it, regardless of density
 
-/proc/check_trajectory_verbose(atom/target as mob|obj, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE, item_flags = null, obj_flags = null)
+/proc/check_trajectory_verbose(atom/target as mob|obj, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE|PASS_FLAG_FLYING, item_flags = null, obj_flags = null)
 	if(!istype(target) || !istype(firer))
 		return 0
 
@@ -91,7 +91,7 @@
 /*
 	target = list(success, last_loc, last_obstacle)
 */
-/proc/check_trajectory_mass_verbose(var/list/targets, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE, item_flags = null, obj_flags = null, var/allow_sleep = FALSE)
+/proc/check_trajectory_mass_verbose(var/list/targets, atom/firer as mob|obj, var/pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE|PASS_FLAG_FLYING, item_flags = null, obj_flags = null, var/allow_sleep = FALSE)
 	if(!istype(firer))
 		return 0
 

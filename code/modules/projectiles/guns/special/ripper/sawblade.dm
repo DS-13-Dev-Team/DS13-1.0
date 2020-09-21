@@ -49,7 +49,7 @@
 	var/dropped = FALSE
 
 	//The gun that launched us. Why the heck don't other projectiles track this?
-	var/obj/item/weapon/gun/projectile/ripper/launcher
+
 
 	//If true, we are being controlled by gravity tether
 	//If false, it was launched as a normal projectile
@@ -204,9 +204,10 @@
 /obj/item/projectile/sawblade/Destroy()
 	.=..()
 	//If the blade is suddenly deleted for any reason, we want the launcher to stop controlling it
-	if (launcher && launcher.blade == src) //Make sure its actually controlling us, dont mess with other blades
-		launcher.blade = null //Unset ourself first to prevent recursion. It's assumed we've already handled dropping by now
-		launcher.stop_firing() //And tell it to stop. This will remove the tether beam and allow the launcher to fire again
+	var/obj/item/weapon/gun/projectile/ripper/R = launcher
+	if (R && R.blade == src) //Make sure its actually controlling us, dont mess with other blades
+		R.blade = null //Unset ourself first to prevent recursion. It's assumed we've already handled dropping by now
+		R.stop_firing() //And tell it to stop. This will remove the tether beam and allow the launcher to fire again
 
 	if (!dropped)
 		drop()
@@ -223,8 +224,8 @@
 //Called when a sawblade is launched in remote control mode
 /obj/item/projectile/sawblade/proc/control_launched(var/obj/item/weapon/gun/projectile/ripper/gun)
 	launcher = gun //Register the ripper
-	if (launcher)
-		pixel_click = launcher.last_clickpoint //Grab an initial clickpoint so that we don't fly towards world zero
+	if (gun)
+		pixel_click = gun.last_clickpoint //Grab an initial clickpoint so that we don't fly towards world zero
 	remote_controlled = TRUE //Set this flag
 	damage = dps * tick_interval //Overwrite the compiletime damage with the calculated value
 	animate_movement = 0 //Disable this to prevent byond's built in sliding, we do our own animate calls
@@ -379,8 +380,9 @@
 		grind_atoms += list(list(A, EX3_TOTAL, EX2_TOTAL, EX1_TOTAL))
 
 /obj/item/projectile/sawblade/zero_health()
-	if (launcher && launcher.blade == src)
-		launcher.stop_firing()
+	var/obj/item/weapon/gun/projectile/ripper/R = launcher
+	if (R && R.blade == src)
+		R.stop_firing()
 
 //Override this so it doesn't delete itself when touching anything
 /obj/item/projectile/sawblade/Bump(atom/A as mob|obj|turf|area, forced=0)

@@ -237,3 +237,5 @@ A = null;
 
 #define release_vector_assoc_list(A)	for (var/b in A) {release_vector(A[b])}\
 A = null;
+
+#define NONSENSICAL_VALUE -99999

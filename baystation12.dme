@@ -2488,6 +2488,7 @@
 #include "code\modules\projectiles\guns\launcher.dm"
 #include "code\modules\projectiles\guns\ds13\bullpup.dm"
 #include "code\modules\projectiles\guns\ds13\contactbeam.dm"
+#include "code\modules\projectiles\guns\ds13\detonator.dm"
 #include "code\modules\projectiles\guns\ds13\divet.dm"
 #include "code\modules\projectiles\guns\ds13\forcegun.dm"
 #include "code\modules\projectiles\guns\ds13\heavy_pulse.dm"

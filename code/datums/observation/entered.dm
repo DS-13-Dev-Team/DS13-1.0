@@ -7,7 +7,7 @@
 //			/atom/entered: The atom that was entered
 //			/atom/movable/enterer: The instance that entered the atom
 //			/atom/old_loc: The atom the enterer came from
-//
+//(var/atom/entered, var/atom/movable/enterer, var/atom/old_loc)
 
 GLOBAL_DATUM_INIT(entered_event, /decl/observ/entered, new)
 
