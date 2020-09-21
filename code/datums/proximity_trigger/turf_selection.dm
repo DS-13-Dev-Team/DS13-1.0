@@ -37,8 +37,6 @@
 
 //Solid line ensures it has no gaps in it
 /decl/turf_selection/solidline/get_turfs(var/atom/origin, var/range, var/target)
-	world << "Getting line between [jumplink(origin)] and [jumplink(target)]"
 	. = get_line_between(origin, target, FALSE, TRUE)
-	world << "got [length(.)] turfs"
 	for (var/turf/T in .)
 		debug_mark_turf(T)

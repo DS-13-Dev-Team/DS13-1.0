@@ -247,7 +247,6 @@
 
 /obj/effect/mine/trip/proc/floor_deployed()
 	transform = transform.Scale(1, 0.8)
-	world << "Deploying to floor"
 	icon_state = "detonator_mine_deployed"
 	spawn(0.3 SECONDS)
 		playsound(get_turf(src), 'sound/weapons/guns/misc/detonator_mine_arm.ogg',VOLUME_HIGH,FALSE)
