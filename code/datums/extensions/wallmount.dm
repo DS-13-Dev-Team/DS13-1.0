@@ -240,13 +240,10 @@
 			release_vector(base_offset)
 
 		base_offset = size.Copy()
-		world << "Base offset 1 is [vstr(base_offset)]"
 		base_offset.y += pixel_offset_magnitude //We can add in the pixel offset here for efficiency too
-		world << "Base offset 2 is [vstr(base_offset)]"
 		release_vector(size)
 
 /datum/extension/mount/proc/mount_offset()
-	world << "Doing mount offset"
 	//Visuals
 
 	mount_angle = rotation_to_target(mountee, get_turf(mountpoint), SOUTH)	//Point our feet at the wall we're walking on
@@ -254,12 +251,8 @@
 
 	mountee.default_rotation = mount_angle
 
-	world << "Base offset 3 is [vstr(base_offset)]"
 	var/vector2/newpix = base_offset.Turn(mount_angle)
-	world << "Base offset 4 is [vstr(base_offset)]"
-	world << "newpix 1 is [vstr(newpix)]"
 	newpix.SelfAdd(centre_offset)	//The base offset is used with rotation
-	world << "newpix 2 is [vstr(newpix)]"
 	mountee.default_pixel_x = newpix.x
 	mountee.default_pixel_y = newpix.y
 
