@@ -212,7 +212,6 @@
 	ChangeTurf(floor_type)
 
 /turf/simulated/wall/ex_act(severity)
-	world << "Wall ex act [severity]"
 	switch(severity)
 		if(1.0)
 			take_damage(rand(500, 800))

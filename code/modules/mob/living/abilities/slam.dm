@@ -139,7 +139,6 @@
 			T.ex_act(4-effective_power, user)
 			if (!QDELETED(T) && T.density)
 				//If the turf is dense (walls, but not floors) then it gets hit a second time
-				world << "Hitting [T] twice"
 				T.ex_act(4-power, user)
 
 
