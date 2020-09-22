@@ -101,11 +101,16 @@
 	return FALSE
 
 
+//We'll check the species on the brain first, before the rest of the body
 /mob/living/carbon/human/is_necromorph()
-	if (istype(species, /datum/species/necromorph))
-		return TRUE
-	return FALSE
+	var/obj/item/organ/internal/brain/B = internal_organs_by_name[BP_BRAIN]
+	if (B && B.species)
+		return B.species.is_necromorph()
+	return species.is_necromorph()
 
+
+/datum/species/necromorph/is_necromorph()
+	return TRUE
 
 
 

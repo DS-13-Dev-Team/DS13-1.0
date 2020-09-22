@@ -81,6 +81,21 @@
 	if (AM == src || AM == attached)	//Don't fire at ourselves or what we're stuck to
 		return
 
+	//Don't trigger on non physical objects
+	if (AM.atom_flags & ATOM_FLAG_INTANGIBLE)
+		return
+
+	//Don't get triggered by bullets
+	if (isprojectile(AM))
+		return
+
+	//If an organ was just cut off within the past couple seconds and is now flying through the air, don't shoot at it
+	//this was causing necromorphs to get shot whenever their limbs were cut
+	if (istype(AM, /obj/item/organ))
+		var/obj/item/organ/O = AM
+		if ((world.time - O.severed_time) < 2 SECONDS)
+			return
+
 	if (AM.is_necromorph())
 		return	//Necromorphs don't trigger firing
 
@@ -171,7 +186,7 @@
 	damage = CYST_IMPACT_DAMAGE	//The direct on-hit damage is minor, most of the effect is in a resulting explosion
 	var/exploded = FALSE
 	check_armour = "bomb"
-	step_delay = 3
+	step_delay = 3.2
 	muzzle_type = /obj/effect/projectile/bio/muzzle
 	grippable = TRUE
 	embed = FALSE

@@ -17,7 +17,7 @@
 	blurb = "A long range ambusher, the leaper can leap on unsuspecting victims from afar, knock them down, and tear them apart with its bladed tail. Not good for prolonged combat though."
 	unarmed_types = list(/datum/unarmed_attack/claws) //Bite attack is a backup if blades are severed
 	total_health = 90
-	biomass = 80
+	biomass = 75
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
@@ -279,10 +279,12 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	if (!A)
 		A = get_step(src, dir)
 
-	//The sound has a randomised delay
-	spawn(rand_between(0, 2 SECONDS))
-		play_species_audio(src, SOUND_ATTACK, 30, 1)
-	return tailstrike_attack(A, _damage = 22.5, _windup_time = 0.75 SECONDS, _winddown_time = 1.2 SECONDS, _cooldown = 0.5)
+
+	.=tailstrike_attack(A, _damage = 22.5, _windup_time = 0.75 SECONDS, _winddown_time = 1.2 SECONDS, _cooldown = 0.5)
+	if (.)
+		//The sound has a randomised delay
+		spawn(rand_between(0, 2 SECONDS))
+			play_species_audio(src, SOUND_ATTACK, 30, 1)
 
 
 /mob/living/carbon/human/proc/tailstrike_leaper_enhanced(var/atom/A)

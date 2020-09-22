@@ -1,5 +1,5 @@
-#define BRUTE_BIOBOMB_IMPACT_DAMAGE	10
-#define BRUTE_BIOBOMB_BLAST_DAMAGE	25
+#define BRUTE_BIOBOMB_IMPACT_DAMAGE	12
+#define BRUTE_BIOBOMB_BLAST_DAMAGE	30
 
 /datum/species/necromorph/brute
 	name = SPECIES_NECROMORPH_BRUTE
@@ -364,7 +364,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	'sound/effects/creatures/necromorph/cyst/cyst_fire_4.ogg'))
 
 	face_atom(A)
-	.= shoot_ability(/datum/extension/shoot/brute_biobomb, A , /obj/item/projectile/bullet/biobomb/weak, accuracy = 50, dispersion = 0, num = 1, windup_time = 1.5 SECONDS, fire_sound = firesound, nomove = 2 SECOND, cooldown = 12 SECONDS)
+	.= shoot_ability(/datum/extension/shoot/brute_biobomb, A , /obj/item/projectile/bullet/biobomb/weak, accuracy = 50, dispersion = 0, num = 1, windup_time = 1.25 SECONDS, fire_sound = firesound, nomove = 2 SECOND, cooldown = 12 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
@@ -383,9 +383,9 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	sleep(windup_time)
 
 /datum/extension/shoot/brute_biobomb/fire_animation()
-	spawn(5)
+	spawn(4)
 		var/mob/living/L = user
-		animate(L, transform=L.get_default_transform(),pixel_x = L.default_pixel_x, time = 1 SECOND, flags = ANIMATION_PARALLEL)
+		animate(L, transform=L.get_default_transform(),pixel_x = L.default_pixel_x, time = 0.8 SECOND, flags = ANIMATION_PARALLEL)
 
 /obj/item/projectile/bullet/biobomb/weak
 	blast_power = BRUTE_BIOBOMB_BLAST_DAMAGE
