@@ -36,6 +36,7 @@ changes:
   - tweak: "Brute's slam attack now deals much more damage to dense objects, especially walls."
   - tweak: "Brute's biobomb attack is now a bit faster to fire and deals more damage."
   - tweak: "Leaper's tailstrike can no longer hit walls"
+  - tweak: "Leaper's biomass cost reduced from 80 to 75"
   - tweak: "Cysts will no longer fire at projectiles or freshly severed limbs"
   - bugfix: "Divider puppet now properly counts as a necromorph, and won't be attacked by traps."
   - bugfix: "Fixed some cases where girders were almost impossible to break"
