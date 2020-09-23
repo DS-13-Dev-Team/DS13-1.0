@@ -131,16 +131,16 @@
 			for(var/atom/movable/AM in contents)
 				AM.ex_act(severity++, epicentre)
 
-			take_damage(rand(150,300), BRUTE, null, epicentre)
+			take_damage(rand(200,400), BRUTE, null, epicentre)
 		if(2.0)
 			if(prob(50))
 				for(var/atom/movable/AM in contents)
 					AM.ex_act(severity++, epicentre)
 
-			take_damage(rand(60,150), BRUTE, null, epicentre)
+			take_damage(rand(100,200), BRUTE, null, epicentre)
 
 		if(3.0)
-			take_damage(rand(25,60), BRUTE, null, epicentre)
+			take_damage(rand(25,100), BRUTE, null, epicentre)
 
 /obj/structure/bullet_act(var/obj/item/projectile/P)
 	take_damage(P.get_structure_damage(), user = P.firer, used_weapon = P)

@@ -858,6 +858,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(!(limb_flags & ORGAN_FLAG_CAN_AMPUTATE) || !owner)
 		return
 
+	severed_time = world.time
+
 	if(BP_IS_CRYSTAL(src) || (disintegrate == DROPLIMB_EDGE && species.limbs_are_nonsolid))
 		disintegrate = DROPLIMB_BLUNT //splut
 

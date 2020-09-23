@@ -226,6 +226,10 @@
 		if(error_messages) to_chat(src, "Target is too close, step back to use your tail!")
 		return
 
+	//Can't destroy walls
+	if (isturf(target))
+		return FALSE
+
 	return TRUE
 
 /mob/living/can_tailstrike(var/atom/target, var/error_messages = TRUE)

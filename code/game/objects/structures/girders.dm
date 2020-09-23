@@ -6,7 +6,7 @@
 	layer = BELOW_OBJ_LAYER
 	w_class = ITEM_SIZE_NO_CONTAINER
 	var/state = 0
-	health = 200
+	max_health = 80
 	var/cover = 50 //how much cover the girder provides against projectiles.
 	var/material/reinf_material
 	var/reinforcing = 0
@@ -18,7 +18,6 @@
 /obj/structure/girder/displaced
 	icon_state = "displaced"
 	anchored = 0
-	health = 50
 	cover = 25
 
 /obj/structure/girder/attack_generic(var/mob/user, var/damage, var/attack_message = "smashes apart", var/wallbreaker)
@@ -42,7 +41,7 @@
 /obj/structure/girder/proc/reset_girder()
 	anchored = 1
 	cover = initial(cover)
-	health = min(health,initial(health))
+	health = max_health
 	state = 0
 	icon_state = initial(icon_state)
 	reinforcing = 0
@@ -179,7 +178,7 @@
 
 /obj/structure/girder/proc/reinforce_girder()
 	cover = 75
-	health = 500
+	max_health = 120
 	state = 2
 	icon_state = "reinforced"
 	reinforcing = 0
@@ -188,34 +187,13 @@
 	new /obj/item/stack/material/steel(get_turf(src))
 	qdel(src)
 
-/obj/structure/girder/attack_hand(mob/user as mob)
-	if (HULK in user.mutations)
-		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
-		dismantle()
-		return
-	return ..()
 
 
-/obj/structure/girder/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if (prob(30))
-				dismantle()
-			return
-		if(3.0)
-			if (prob(5))
-				dismantle()
-			return
-		else
-	return
 
 /obj/structure/girder/cult
 	icon= 'icons/obj/cult.dmi'
 	icon_state= "cultgirder"
-	health = 250
+	max_health = 120
 	cover = 70
 
 /obj/structure/girder/cult/dismantle()

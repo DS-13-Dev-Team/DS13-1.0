@@ -51,6 +51,7 @@
 
 /obj/item/organ/internal/removed(var/mob/living/user, var/drop_organ=1, var/detach=1)
 	if(owner)
+		severed_time = world.time
 		owner.internal_organs_by_name[organ_tag] = null
 		owner.internal_organs_by_name -= organ_tag
 		owner.internal_organs_by_name -= null

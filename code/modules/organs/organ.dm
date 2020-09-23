@@ -27,6 +27,7 @@ var/list/organ_cache = list()
 	var/rejecting                     // Is this organ already being rejected?
 
 	var/death_time
+	var/severed_time = 0	//If this organ was cut off/out of a humanoid mob, when did that happen?
 
 	biomass = 0						//How much biomass this organ is worth to the marker.
 

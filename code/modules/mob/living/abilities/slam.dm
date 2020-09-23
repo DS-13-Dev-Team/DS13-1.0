@@ -4,6 +4,7 @@
 
 	Any mobs in the affected area take heavy damage. This damage is multiplied if the victim is lying down, or otherwise incapacitated
 	Any standing mobs in the affected area which are smaller than the attacker, will be knocked down for a time
+	Any dense nonmob atoms in the affected area are hit twice
 */
 
 /*
@@ -123,11 +124,22 @@
 				shake_camera(L, 3, damage/10) //Shake camera of mobs too
 			else
 				//Atoms get ex_acted
-				if (power)A.ex_act(4-power, user)
+				var/effective_power = power
+				if (A.density)
+					effective_power++
+				if (effective_power)
+					A.ex_act(4-effective_power, user)
 
-		T.shake_animation(damage)	//Shake the turf itself
-		if (power)
-			T.ex_act(4-power, user)
+
+		var/effective_power = power
+		if (T.density)
+			effective_power++
+		if (effective_power)
+			T.shake_animation(damage)	//Shake the turf itself
+			T.ex_act(4-effective_power, user)
+			if (!QDELETED(T) && T.density)
+				//If the turf is dense (walls, but not floors) then it gets hit a second time
+				T.ex_act(4-power, user)
 
 
 	//Now we weaken these values for the next round
@@ -153,11 +165,18 @@
 				shake_camera(L, 3, damage/10) //Shake camera of mobs too
 			else
 				//Atoms get ex_acted
-				if (power)A.ex_act(4-power, user)
+				var/effective_power = power
+				if (A.density)
+					effective_power++
+				if (effective_power)
+					A.ex_act(4-effective_power, user)
 
-		T.shake_animation(damage)	//Shake the turf itself
-		if (power)
-			T.ex_act(4-power, user)
+		var/effective_power = power
+		if (T.density)
+			effective_power++
+		if (effective_power)
+			T.shake_animation(damage)	//Shake the turf itself
+			T.ex_act(4-effective_power, user)
 
 
 	//Wait a bit longer before we return to neutral
