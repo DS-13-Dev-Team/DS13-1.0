@@ -467,6 +467,8 @@
 //Mobs take some damage and get stunned
 /mob/living/charge_act(var/datum/extension/charge/charge)
 	shake_camera(src,10*charge.power,1)
+	var/charge_power = charge.get_total_power()
+	shake_camera(src,10*charge_power,1)
 	if (isliving(charge.user))
 		var/mob/living/L = charge.user
 		//We can't be hurt by things smaller than ourselves. they bounce off
@@ -476,8 +478,9 @@
 
 
 		L.launch_strike(src, CHARGE_DAMAGE_BASE*charge.power, L)
+		L.launch_strike(src, CHARGE_DAMAGE_BASE*charge_power, L)
 		//take_overall_damage((CHARGE_DAMAGE_BASE*power), 0,0,0, mover)
-	apply_effect(3*charge.power, STUN)
+	apply_effect(3*charge_power, STUN)
 	apply_push_impulse_from(charge.user, charge.user.mass*charge.force_multiplier, 0)
 	return TRUE
 
