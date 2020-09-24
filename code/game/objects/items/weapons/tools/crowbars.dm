@@ -35,7 +35,7 @@
 	icon_state = "impro_crowbar"
 	item_state = "crowbar"
 	tool_qualities = list(QUALITY_PRYING = 10, QUALITY_DIGGING = 10)
-	degradation = 5 //This one breaks REALLY fast
+	degradation = DEGRADATION_FRAGILE //This one breaks REALLY fast
 
 
 //A compact version of a crowbar which is pretty weak
@@ -62,7 +62,7 @@
 	item_state = "jackhammer"
 	matter = list(MATERIAL_STEEL = 1200, MATERIAL_PLASTIC = 200)
 	tool_qualities = list(QUALITY_PRYING = 40, QUALITY_DIGGING = 35)
-	degradation = 0.07
+	degradation = DEGRADATION_TOUGH_1
 	use_power_cost = 0.8
 	max_upgrades = 4
 	suitable_cell = /obj/item/weapon/cell

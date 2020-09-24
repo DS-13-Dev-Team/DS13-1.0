@@ -110,10 +110,12 @@ var/list/mining_floors = list()
 
 /turf/simulated/mineral/ex_act(severity)
 	switch(severity)
-		if(2.0)
-			dig(rand(150,400))
-		if(1.0)
-			dig(rand(50,300))
+		if(3)
+			dig(rand(100,250))
+		if(2)
+			dig(rand(200,350))
+		if(1)
+			dig(rand(350,500))
 
 /turf/simulated/mineral/apply_impulse(var/direction, var/strength)
 
@@ -247,7 +249,7 @@ var/list/mining_floors = list()
 		dig_time = min(dig_time, 1 SECOND)
 
 	var/start_time = world.time
-	if (I.use_tool(user, src, dig_time, QUALITY_DIGGING, FAILCHANCE_EASY, sound_repeat = 1 SECONDS))
+	if (I.use_tool(user, src, dig_time, QUALITY_DIGGING, FAILCHANCE_NORMAL, sound_repeat = 1 SECONDS, required_stat = SKILL_HAULING))
 		if (full_dig)	//If its a full dig, take all of our health
 			dig(health, user, I, TRUE)
 		else

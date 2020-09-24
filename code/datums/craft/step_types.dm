@@ -254,7 +254,8 @@
 /datum/craft_step/tool
 	var/required_quality
 	var/required_level = 1
-	var/difficulty = 0
+	var/difficulty = FAILCHANCE_NORMAL
+	var/required_skill = SKILL_CONSTRUCTION
 
 /datum/craft_step/tool/load_params(var/list/params)
 	//The second var contains the typepath
@@ -270,9 +271,13 @@
 			load_time(params[4], params)
 
 
-			//Fifth var is the worktime, we feed that through the load_time function
+			//Fifth var is the difficulty, we feed that through the load_time function
 			if (params.len >= 5)
 				difficulty = params[5]
+
+				//Sixth is the required type of skill, if any different from normal
+				if (params.len >= 6)
+					required_skill = params[6]
 
 
 
@@ -301,7 +306,7 @@
 		return TRUE //Automated crafting by code
 
 	//We do use_tool instead of doafter. This contains all the necessary stuff, including resource consumption
-	if (I.use_tool(user, target, time, required_quality, difficulty))
+	if (I.use_tool(user, target, time, required_quality, difficulty, required_stat = required_skill))
 		return TRUE
 
 	return FALSE

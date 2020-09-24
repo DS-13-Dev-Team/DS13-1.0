@@ -2207,6 +2207,7 @@
 #include "code\modules\mob\observer\virtual\helpers.dm"
 #include "code\modules\mob\observer\virtual\mob.dm"
 #include "code\modules\mob\skills\antag_skill_setter.dm"
+#include "code\modules\mob\skills\helpers.dm"
 #include "code\modules\mob\skills\skill.dm"
 #include "code\modules\mob\skills\skill_buffs.dm"
 #include "code\modules\mob\skills\skill_ui.dm"

@@ -30,7 +30,7 @@
 
 
 	//Variables used for tool degradation
-	var/degradation = 0.08 //If nonzero, the unreliability of the tool increases by 0..this after each tool operation
+	var/degradation = DEGRADATION_NORMAL //If nonzero, the unreliability of the tool increases by 0..this after each tool operation
 	var/unreliability = 0 //This is added to the failure rate of operations with this tool
 	var/repair_frequency = 0 //How many times this tool has been repaired
 
@@ -344,9 +344,8 @@
 		toolsound.stop()
 		toolsound = null
 
-	var/stat_modifer = 0
-	if(required_stat)
-		stat_modifer = 30//TODO: Factor in bay skills here //user.stats.getStat(required_stat)
+	var/stat_modifer = user.get_skill_percentage_bonus(required_stat)
+
 
 	fail_chance = fail_chance - get_tool_quality(required_quality) - stat_modifer
 
@@ -357,6 +356,7 @@
 
 	if (fail_chance < 0)
 		fail_chance = 0
+
 	if(prob(fail_chance))
 		user << SPAN_WARNING("You failed to finish your task with [src.name]! There was a [fail_chance]% chance to screw this up.")
 		return TOOL_USE_FAIL
@@ -379,9 +379,9 @@
 		if(istype(src, /obj/item/weapon/tool))
 			T = src
 
-	var/crit_fail_chance = 25
+	var/crit_fail_chance = 10
 	if (T)
-		crit_fail_chance = max(crit_fail_chance, T.unreliability * 0.5) //At high unreliability, critical failures are more common
+		crit_fail_chance = crit_fail_chance += T.unreliability//At high unreliability, critical failures are more common
 		if (T.degradation)
 			T.unreliability += 15*T.degradation //Failing incurs 30 uses worth of damage
 	if(required_stat)
