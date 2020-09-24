@@ -92,7 +92,7 @@
 
 /obj/item/weapon/grenade/frag/proc/on_explosion(var/turf/O)
 	if(explosion_size)
-		explosion(O, -1, -1, explosion_size, round(explosion_size/2), 0)
+		explosion(3, 1)
 
 /obj/item/weapon/grenade/frag/shell
 	name = "fragmentation grenade"
@@ -116,4 +116,4 @@
 
 /obj/item/weapon/grenade/frag/high_yield/on_explosion(var/turf/O)
 	if(explosion_size)
-		explosion(O, -1, round(explosion_size/2), explosion_size, round(explosion_size/2), 0) //has a chance to blow a hole in the floor
+		O.explosion(explosion_size, round(explosion_size/2)) //has a chance to blow a hole in the floor

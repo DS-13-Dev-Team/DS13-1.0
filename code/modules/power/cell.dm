@@ -8,7 +8,7 @@
 	origin_tech = list(TECH_POWER = 1)
 	force = 5.0
 	throwforce = 5.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	var/c_uid
@@ -133,7 +133,6 @@
 	var/devastation_range = -1 //round(charge/11000)
 	var/heavy_impact_range = round(sqrt(charge)/60)
 	var/light_impact_range = round(sqrt(charge)/30)
-	var/flash_range = light_impact_range
 	if (light_impact_range==0)
 		//rigged = 0
 		//corrupt()
@@ -143,7 +142,7 @@
 	log_admin("LOG: Rigged power cell explosion, last touched by [fingerprintslast]")
 	message_admins("LOG: Rigged power cell explosion, last touched by [fingerprintslast]")
 
-	explosion(T, devastation_range, heavy_impact_range, light_impact_range, flash_range)
+	T.explosion(T, devastation_range, heavy_impact_range)
 
 	qdel(src)
 
@@ -159,7 +158,7 @@
 	icon_state = "device"
 	w_class = ITEM_SIZE_SMALL
 	force = 0
-	
+
 	throw_range = 7
 	maxcharge = 100
 	matter = list(MATERIAL_STEEL = 70, MATERIAL_SILVER = 5)

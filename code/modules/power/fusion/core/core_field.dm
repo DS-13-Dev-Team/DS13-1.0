@@ -209,7 +209,7 @@
 	empulse(get_turf(src), ceil(plasma_temperature/1000), ceil(plasma_temperature/300))
 	sleep(5)
 	RadiateAll()
-	explosion(get_turf(owned_core),-1,-1,8,10) // Blow out all the windows.
+	explosion(10, 2) // Blow out all the windows.
 	return
 
 /obj/effect/fusion_em_field/proc/ChangeFieldStrength(var/new_strength)
@@ -308,11 +308,11 @@
 /obj/effect/fusion_em_field/proc/change_size(var/newsize = 1)
 	var/changed = 0
 	var/static/list/size_to_icon = list(
-			"3" = 'icons/effects/96x96.dmi', 
-			"5" = 'icons/effects/160x160.dmi', 
-			"7" = 'icons/effects/224x224.dmi', 
-			"9" = 'icons/effects/288x288.dmi', 
-			"11" = 'icons/effects/352x352.dmi', 
+			"3" = 'icons/effects/96x96.dmi',
+			"5" = 'icons/effects/160x160.dmi',
+			"7" = 'icons/effects/224x224.dmi',
+			"9" = 'icons/effects/288x288.dmi',
+			"11" = 'icons/effects/352x352.dmi',
 			"13" = 'icons/effects/416x416.dmi'
 			)
 

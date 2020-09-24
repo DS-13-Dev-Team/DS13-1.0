@@ -27,7 +27,7 @@
 	edge = 1
 
 	on_hit(var/atom/target, var/blocked = 0)
-		explosion(target, -1, 0, 2)
+		target.explosion(3,1)
 		return 1
 
 /obj/item/projectile/temp

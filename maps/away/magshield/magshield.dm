@@ -103,7 +103,7 @@
 		sleep(50)
 		visible_message("<span class='warning'>\The [src] explodes!</span>")
 		var/turf/T = get_turf(src)
-		explosion(T, 2, 3, 4, 10, 1)
+		explosion(10, 2)
 		empulse(src, heavy_range*2, lighter_range*2, 1)
 		qdel(src)
 	if(istype(W, /obj/item/weapon/mop))

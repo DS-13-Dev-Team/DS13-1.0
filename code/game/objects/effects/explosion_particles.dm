@@ -46,8 +46,10 @@
 
 /datum/effect/system/explosion
 	var/turf/location
+	var/use_smoke = FALSE
 
-/datum/effect/system/explosion/proc/set_up(loca)
+/datum/effect/system/explosion/proc/set_up(loca, use_smoke)
+	src.use_smoke = use_smoke
 	if(istype(loca, /turf/)) location = loca
 	else location = get_turf(loca)
 
@@ -56,7 +58,8 @@
 	var/datum/effect/system/expl_particles/P = new/datum/effect/system/expl_particles()
 	P.set_up(10,location)
 	P.start()
-	addtimer(CALLBACK(src, .proc/make_smoke), 5)
+	if(use_smoke)
+		addtimer(CALLBACK(src, .proc/make_smoke), 5)
 
 /datum/effect/system/explosion/proc/make_smoke()
 	var/datum/effect/effect/system/smoke_spread/S = new/datum/effect/effect/system/smoke_spread()

@@ -116,7 +116,7 @@
 	if(power_drained > max_power * 0.95)
 		playsound(src, 'sound/effects/screech.ogg', 100, 1, 1)
 	if(power_drained >= max_power)
-		explosion(src.loc, 3,6,9,12)
+		explosion(30,3)
 		qdel(src)
 		return
 	if(attached && attached.powernet)

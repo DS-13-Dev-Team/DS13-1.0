@@ -71,7 +71,7 @@
 
 /obj/machinery/syndicate_beacon/proc/selfdestruct()
 	selfdestructing = 1
-	spawn() explosion(src.loc, 1, rand(1,3), rand(3,8), 10)
+	explosion(10, 2)
 
 ////////////////////////////////////////
 //Singularity beacon

@@ -4,6 +4,14 @@
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
 #define NEAR_INFINITY	9999999999	//Just a really big number
 
+/**
+Mathematical function that allows us to scale numbers easily.
+MAP(map_from, map_from_minimum, map_from_maximum, map_to_min, map_to_max)
+EG:
+1-> 0-25 : 0-100
+*/
+#define MAP(s,a1,a2,b1,b2) b1+(((s-a1)*(b2-b1))/(a2-a1))
+
 // min is inclusive, max is exclusive
 /proc/Wrap(val, min, max)
 	if (max == min)

@@ -477,7 +477,6 @@ steam.start() -- spawns the effect
 			var/devst = -1
 			var/heavy = -1
 			var/light = -1
-			var/flash = -1
 
 			// Clamp all values to fractions of GLOB.max_explosion_range, following the same pattern as for tank transfer bombs
 			if (round(amount/12) > 0)
@@ -489,16 +488,13 @@ steam.start() -- spawns the effect
 			if (round(amount/3) > 0)
 				light = light + amount/3
 
-			if (flashing && flashing_factor)
-				flash = (amount/4) * flashing_factor
+		//	if (flashing && flashing_factor)
+		//		flash = (amount/4) * flashing_factor
 
 			for(var/mob/M in viewers(8, location))
 				to_chat(M, "<span class='warning'>The solution violently explodes.</span>")
 
-			explosion(
-				location,
-				round(min(devst, BOMBCAP_DVSTN_RADIUS)),
+			location.explosion(
 				round(min(heavy, BOMBCAP_HEAVY_RADIUS)),
-				round(min(light, BOMBCAP_LIGHT_RADIUS)),
-				round(min(flash, BOMBCAP_FLASH_RADIUS))
+				round(min(heavy, BOMBCAP_HEAVY_RADIUS))
 				)

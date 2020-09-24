@@ -1123,7 +1123,7 @@
 	set waitfor = 0
 	..()
 	sleep(50)
-	explosion(get_turf(holder.my_atom), 1, 3, 6)
+	holder.my_atom.explosion(4, 1)
 
 //Light Pink
 /datum/chemical_reaction/slime/potion2

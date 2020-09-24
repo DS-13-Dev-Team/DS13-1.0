@@ -113,7 +113,7 @@
 		qdel(src)
 
 /obj/effect/mine/proc/explode(obj)
-	explosion(loc, 0, 1, 2, 3)
+	explosion(3, 1)
 	spawn(0)
 		qdel(src)
 

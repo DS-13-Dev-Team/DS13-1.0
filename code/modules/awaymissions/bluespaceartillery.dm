@@ -49,6 +49,6 @@
 			var/list/L = list()
 			for(var/turf/T in get_area_turfs(thearea))
 				L+=T
-			var/loc = pick(L)
-			explosion(loc,2,5,11)
+			var/atom/movable/loc = pick(L)
+			loc.explosion(10, 2)
 			reload = 0
