@@ -5,7 +5,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	force = WEAPON_FORCE_WEAK
 	worksound = WORKSOUND_WIRECUTTING
-	
+
 	throw_range = 9
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	matter = list(MATERIAL_STEEL = 1000, MATERIAL_PLASTIC = 800)
@@ -22,7 +22,7 @@
 	w_class = ITEM_SIZE_NORMAL
 	force = WEAPON_FORCE_NORMAL
 	tool_qualities = list(QUALITY_WIRE_CUTTING = 20, QUALITY_RETRACTING = 10, QUALITY_BONE_SETTING = 10)
-	degradation = 1.5
+	degradation = DEGRADATION_FRAGILE
 
 /obj/item/weapon/tool/wirecutters/armature
 	name = "armature cutter"
@@ -31,7 +31,7 @@
 	force = WEAPON_FORCE_NORMAL
 	matter = list(MATERIAL_STEEL = 1200, MATERIAL_PLASTIC = 600)
 	tool_qualities = list(QUALITY_WIRE_CUTTING = 40, QUALITY_CUTTING = 30)
-	degradation = 0.07
+	degradation = DEGRADATION_TOUGH_1
 	max_upgrades = 4
 
 /obj/item/weapon/tool/wirecutters/attack(mob/living/carbon/C as mob, mob/user as mob)

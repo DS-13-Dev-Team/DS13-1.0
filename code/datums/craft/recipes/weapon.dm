@@ -107,6 +107,7 @@
 	list(CRAFT_OBJECT, /obj/item/weapon/tool/wrench),
 	list(CRAFT_OBJECT, /obj/item/weapon/stock_parts/matter_bin),
 	list(CRAFT_STACK, /obj/item/stack/cable_coil, 5),
+	list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10, WORKTIME_NORMAL, FAILCHANCE_NORMAL, SKILL_ELECTRICAL),
 	list(CRAFT_STACK, /obj/item/stack/power_node, 1)
 	)
 

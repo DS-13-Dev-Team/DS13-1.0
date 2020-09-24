@@ -9,7 +9,7 @@
 	w_class = ITEM_SIZE_TINY
 	worksound = WORKSOUND_HARD_SLASH
 	slot_flags = SLOT_EARS
-	
+
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	matter = list(MATERIAL_STEEL = 200)
@@ -22,7 +22,7 @@
 	icon_state = "scalpel_t4"
 	matter = list(MATERIAL_STEEL = 900)
 	tool_qualities = list(QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 10)
-	degradation = 0.12
+	degradation = DEGRADATION_WEAK_3
 	max_upgrades = 4
 
 /obj/item/weapon/tool/scalpel/laser
@@ -33,7 +33,7 @@
 	force = WEAPON_FORCE_DANGEROUS
 	matter = list(MATERIAL_STEEL = 800, MATERIAL_PLASTIC = 800)
 	tool_qualities = list(QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20, QUALITY_LASER_CUTTING = 40)
-	degradation = 0.11
+	degradation = DEGRADATION_WEAK_2
 	use_power_cost = 0.12
 	suitable_cell = /obj/item/weapon/cell
 	max_upgrades = 4
@@ -53,4 +53,4 @@
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 	tool_qualities = list(QUALITY_CUTTING = 15, QUALITY_WIRE_CUTTING = 5, QUALITY_DRILLING = 10)
-	degradation = 4 //Gets worse with use
+	degradation = DEGRADATION_FRAGILE //Gets worse with use

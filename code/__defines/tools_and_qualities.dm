@@ -37,13 +37,13 @@
 //Fail chance for tool system calculated in that way: basic chance - tool level - stat check.
 //Basic tools will give -30% on fail chance, and people on right job should have -20% at least.
 #define FAILCHANCE_ZERO					0
-#define FAILCHANCE_VERY_EASY			30
-#define FAILCHANCE_EASY					50
-#define FAILCHANCE_NORMAL				60
-#define FAILCHANCE_HARD					80
-#define FAILCHANCE_CHALLENGING			90
-#define FAILCHANCE_VERY_HARD			120
-#define FAILCHANCE_IMPOSSIBLE			150
+#define FAILCHANCE_VERY_EASY			15
+#define FAILCHANCE_EASY					35
+#define FAILCHANCE_NORMAL				45
+#define FAILCHANCE_HARD					65
+#define FAILCHANCE_CHALLENGING			75
+#define FAILCHANCE_VERY_HARD			105
+#define FAILCHANCE_IMPOSSIBLE			135
 
 //Sounds for working with tools
 #define NO_WORKSOUND					-1
@@ -62,3 +62,19 @@
 #define WORKSOUND_HARD_SLASH			'sound/weapons/bladeslice.ogg'
 #define WORKSOUND_CHAINSAW				'sound/items/chainsaw.ogg'
 #define WORKSOUND_TAPE					'sound/items/duct_tape.ogg'
+
+#define DEGRADATION_NORMAL	0.065
+
+#define DEGRADATION_WEAK_1	0.075
+#define DEGRADATION_WEAK_2	0.1
+#define DEGRADATION_WEAK_3	0.12
+#define DEGRADATION_WEAK_4	0.2
+
+#define DEGRADATION_FRAGILE		1
+
+
+#define DEGRADATION_TOUGH_1	0.06
+#define DEGRADATION_TOUGH_2	0.05
+
+
+#define DEGRADATION_DIAMOND	0.01

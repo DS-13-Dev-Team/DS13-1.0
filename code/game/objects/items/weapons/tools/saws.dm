@@ -16,13 +16,15 @@
 	tool_qualities = list(QUALITY_SAWING = 30, QUALITY_CUTTING = 20, QUALITY_WIRE_CUTTING = 20)
 	//embed_mult = 1 //Serrated blades catch on bone more easily
 
+	degradation = DEGRADATION_TOUGH_1
+
 /obj/item/weapon/tool/saw/improvised
 	name = "choppa"
 	desc = "A wicked serrated blade made of whatever nasty sharp things you could find. It would make a pretty decent weapon"
 	icon_state = "impro_saw"
 	force = WEAPON_FORCE_PAINFUL
 	tool_qualities = list(QUALITY_SAWING = 15, QUALITY_CUTTING = 10, QUALITY_WIRE_CUTTING = 10)
-	degradation = 0.7
+
 
 /obj/item/weapon/tool/saw/circular
 	name = "circular saw"
@@ -46,7 +48,7 @@
 	force = WEAPON_FORCE_ROBUST
 	matter = list(MATERIAL_STEEL = 1200, MATERIAL_PLASTIC = 800)
 	tool_qualities = list(QUALITY_SAWING = 50, QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 40)
-	degradation = 0.07
+	degradation = 0.06
 	use_power_cost = 0.22
 	suitable_cell = /obj/item/weapon/cell
 	max_upgrades = 4
@@ -77,8 +79,7 @@
 	tool_qualities = list()
 	switched_on_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20, QUALITY_DIGGING = 35)
 	max_upgrades = 4
-	degradation = 0.075
-	use_power_cost = 0.66
+	use_power_cost = 0.44
 	passive_power_cost = 0.06
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE

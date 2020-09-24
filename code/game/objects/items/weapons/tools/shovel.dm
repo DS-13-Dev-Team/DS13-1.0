@@ -19,7 +19,7 @@
 	name = "junk shovel"
 	desc = "A large but fragile tool for moving dirt and rock."
 	icon_state = "impro_shovel"
-	degradation = 1.5
+	degradation = DEGRADATION_FRAGILE
 	tool_qualities = list(QUALITY_SHOVELING = 25, QUALITY_DIGGING = 25, QUALITY_EXCAVATION = 10)
 
 /obj/item/weapon/tool/shovel/spade

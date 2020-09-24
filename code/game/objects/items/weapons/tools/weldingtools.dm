@@ -7,7 +7,7 @@
 	switched_on_force = WEAPON_FORCE_PAINFUL
 	throwforce = WEAPON_FORCE_WEAK
 	worksound = WORKSOUND_WELDING
-	
+
 	throw_range = 5
 	matter = list(MATERIAL_STEEL = 2000)
 	origin_tech = list(TECH_ENGINEERING = 1)
@@ -34,7 +34,7 @@
 	switched_on_force = WEAPON_FORCE_PAINFUL * 0.8
 	max_fuel = 25
 	switched_on_qualities = list(QUALITY_WELDING = 15, QUALITY_CAUTERIZING = 10, QUALITY_WIRE_CUTTING = 10)
-	degradation = 1.5
+	degradation = DEGRADATION_FRAGILE
 
 //The improvised welding tool is created with a full tank of fuel.
 //It's implied that it's burning the oxygen in the emergency tank that was used to create it

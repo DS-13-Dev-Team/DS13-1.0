@@ -20,6 +20,7 @@
 	//embed_mult = 1.2 //Digs deep
 	worksound = WORKSOUND_PICKAXE
 	hitsound = WORKSOUND_PICKAXE
+	degradation = DEGRADATION_TOUGH_1
 
 /obj/item/weapon/tool/pickaxe/jackhammer
 	name = "jackhammer"
@@ -29,7 +30,6 @@
 	tool_qualities = list(QUALITY_DIGGING = 35, QUALITY_EXCAVATION = 10)
 	origin_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_ENGINEERING = 2)
 	desc = "Cracks rocks with blasts, perfect for killing cave lizards."
-	degradation = 0.07
 	use_power_cost = 0.6
 	suitable_cell = /obj/item/weapon/cell
 
@@ -41,7 +41,6 @@
 	matter = list(MATERIAL_STEEL = 1200, MATERIAL_PLASTIC = 800)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_POWER = 3, TECH_ENGINEERING = 2)
 	desc = "Yours is the drill that will pierce through the rock walls."
-	degradation = 0.07
 	use_fuel_cost = 0.15
 	max_fuel = 100
 
@@ -55,7 +54,7 @@
 	origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 4, TECH_ENGINEERING = 5)
 	desc = "Yours is the drill that will pierce the heavens!"
 	max_upgrades = 4
-	degradation = 0.01
+	degradation = DEGRADATION_DIAMOND
 	use_fuel_cost = 0.15
 	max_fuel = 120
 
@@ -96,11 +95,11 @@
 	sharp = 1
 	edge = 1
 	max_upgrades = 4
-	degradation = 0.075
-	use_power_cost = 0.66
+	use_power_cost = 0.3
 	passive_power_cost = 0.075
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
+	degradation = DEGRADATION_TOUGH_2
 
 /obj/item/weapon/tool/pickaxe/laser/update_icon()
 	if (switched_on)

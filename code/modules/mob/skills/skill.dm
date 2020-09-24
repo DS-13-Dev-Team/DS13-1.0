@@ -83,7 +83,7 @@ GLOBAL_LIST_EMPTY(skills)
 /decl/hierarchy/skill/general/hauling
 	ID = "hauling"
 	name = "Athletics"
-	desc = "Your ability to perform tasks requiring great strength, dexterity, or endurance."
+	desc = "Your ability to perform tasks requiring great strength, dexterity, or endurance. Affects work speed and failure chance when mining"
 	levels = list( "Unskilled"			= "You are not used to manual labor, tire easily, and are likely not in great shape. Extended heavy labor may be dangerous for you.",
 						"Basic"				= "You have some familiarity with manual labor, and are in reasonable physical shape. Tasks requiring great dexterity or strength may still elude you.",
 						"Trained"			= "You have sufficient strength and dexterity for even very strenuous tasks, and can work for a long time without tiring.",
@@ -199,7 +199,7 @@ GLOBAL_LIST_EMPTY(skills)
 /decl/hierarchy/skill/engineering/construction
 	ID = "construction"
 	name = "Construction"
-	desc = "Your ability to construct various buildings, such as walls, floors, tables and so on. Note that constructing devices such as APCs additionally requires the Electronics skill. A low level of this skill is typical for janitors, a high level of this skill is typical for engineers."
+	desc = "Your ability to construct various buildings, such as walls, floors, tables and so on. Note that constructing devices such as APCs additionally requires the Electronics skill. A low level of this skill is typical for janitors, a high level of this skill is typical for engineers. Affects workspeed and success rate of tool operations during crafting"
 	levels = list( "Unskilled"			= "You can move furniture, assemble or disassemble chairs and tables (sometimes they even stay assembled), bash your way through a window, open a crate, or pry open an unpowered airlock. You can recognize and use basic hand tools and inflatable barriers, though not very well.",
 						"Basic"				= "You can dismantle or build a wall or window, build furniture, redecorate a room, and replace floor tiles and carpeting. You can safely use a welder without burning your eyes, and using hand tools is second nature to you.",
 						"Trained"			= "You can build, repair, or dismantle most things, but will occasionally make mistakes and have things not come out the way you expected.",
