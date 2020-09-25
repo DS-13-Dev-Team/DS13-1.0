@@ -225,17 +225,6 @@
 				log_admin("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted)")
 				message_admins("<span class='notice'>[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted)</span>")
 
-	else if(href_list["explode"])
-		if(!check_rights(R_DEBUG|R_FUN))	return
-
-		var/atom/A = locate(href_list["explode"])
-		if(!isobj(A) && !ismob(A) && !isturf(A))
-			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf")
-			return
-
-		src.cmd_admin_explosion(A)
-		href_list["datumrefresh"] = href_list["explode"]
-
 	else if(href_list["emp"])
 		if(!check_rights(R_DEBUG|R_FUN))	return
 

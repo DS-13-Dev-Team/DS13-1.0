@@ -16,7 +16,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
 	throwforce = 2
-	
+
 	throw_range = 20
 
 /obj/item/device/taperecorder/New()
@@ -134,7 +134,7 @@
 		to_chat(M, "<span class='danger'>\The [src] explodes!</span>")
 	if(T)
 		T.hotspot_expose(700,125)
-		explosion(T, -1, -1, 0, 4)
+		explosion(3, 1)
 	qdel(src)
 	return
 

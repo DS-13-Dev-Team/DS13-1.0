@@ -683,23 +683,23 @@ var/list/admin_verbs_mentor = list(
 		if(null)
 			return 0
 		if("Small Bomb")
-			explosion(epicenter, 1, 2, 3, 3)
+			epicenter.explosion(5, 1)
 		if("Medium Bomb")
-			explosion(epicenter, 2, 3, 4, 4)
+			epicenter.explosion(10, 2)
 		if("Big Bomb")
-			explosion(epicenter, 3, 5, 7, 5)
+			epicenter.explosion(15, 3)
 		if("Huge Bomb")
-			explosion(epicenter, 5, 8, 12, 6)
+			epicenter.explosion(20, 3)
 		if("Colossal Bomb")
-			explosion(epicenter, 7, 10, 15, 7)
+			epicenter.explosion(30, 3)
 		if("Apocalyptic Bomb")
-			explosion(epicenter, 10, 20, 30, 10)
+			epicenter.explosion(70, 3)
 		if("Custom Bomb")
-			var/devastation_range = input("Devastation range (in tiles):") as num
-			var/heavy_impact_range = input("Heavy impact range (in tiles):") as num
-			var/light_impact_range = input("Light impact range (in tiles):") as num
-			var/flash_range = input("Flash range (in tiles):") as num
-			explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range)
+			var/radius = input("Explosion radius (in tiles):") as num
+			var/force_cap = input("Explosive force cap (Leave as 0 for unlimited):") as num
+			if(!force_cap)
+				force_cap = 3 //Default
+			epicenter.explosion(radius, force_cap)
 	log_and_message_admins("created an admin explosion at [epicenter.loc].")
 	feedback_add_details("admin_verb","DB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

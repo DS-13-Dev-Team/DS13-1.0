@@ -64,7 +64,7 @@
 
 	proc
 		overheat()
-			explosion(get_turf(src), 2, 5, 2, -1)
+			explosion(10, 2)
 
 	attackby(var/obj/item/O as obj, var/mob/user as mob)
 		if(istype(O, /obj/item/weapon/tank/phoron))

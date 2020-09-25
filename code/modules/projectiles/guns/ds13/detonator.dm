@@ -166,7 +166,7 @@
 		shoot_ability(subtype = /datum/extension/shoot/det1, target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
 		shoot_ability(subtype = /datum/extension/shoot/det2, target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
 		shoot_ability(subtype = /datum/extension/shoot/det3, target = victim, projectile_type = /obj/item/projectile/bullet/detonator_round, accuracy = 140, cooldown = 0)
-	explosion(loc, -1, 0, 1, 2)
+	explosion(3, 1)
 	spawn(0)
 		qdel(src)
 

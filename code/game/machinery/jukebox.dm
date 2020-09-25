@@ -180,7 +180,7 @@ datum/track/proc/GetTrack()
 	walk_to(src,0)
 	src.visible_message("<span class='danger'>\the [src] blows apart!</span>", 1)
 
-	explosion(src.loc, 0, 0, 1, rand(1,2), 1)
+	explosion(3, 1)
 
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 	s.set_up(3, 1, src)
