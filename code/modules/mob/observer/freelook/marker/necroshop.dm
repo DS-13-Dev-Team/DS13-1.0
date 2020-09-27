@@ -25,6 +25,17 @@
 	host = newhost
 
 	//Lets construct the shop inventory
+	build_shop_list()
+
+	selected_spawn = new(host, host.name)
+	possible_spawnpoints += selected_spawn
+
+
+
+
+/datum/necroshop/proc/build_shop_list()
+	QDEL_ASSOC_LIST(spawnable_necromorphs)
+	QDEL_ASSOC_LIST(spawnable_structures)
 
 	//First up, necromorph species
 	for (var/spath in subtypesof(/datum/species/necromorph))
@@ -34,13 +45,21 @@
 			continue	//Check this one is spawnable
 
 		//Ok lets create a shop datum for them
-		var/datum/necroshop_item/I = new()
+		var/datum/necroshop_item/I = new N.necroshop_item_type()
 		I.name = initial(N.name)
 		I.desc = N.get_long_description()
 		I.price = initial(N.biomass)
 		I.spawn_method = initial(N.spawn_method)
 		I.spawn_path = N.mob_type
 		I.queue_fill = N.major_vessel
+		I.require_total_biomass = N.use_total_biomass
+		I.global_limit = N.global_limit
+
+		//Check if its allowed, based on global limits
+		if (!I.can_ever_spawn(src))
+			//Not allowed
+			qdel(I)
+			continue
 
 		//And add it to the list
 		spawnable_necromorphs[I.name] = I
@@ -69,14 +88,8 @@
 
 	sortTim(spawnable_structures, /proc/cmp_necroshop_item, TRUE)
 
-	selected_spawn = new(host, host.name)
-	possible_spawnpoints += selected_spawn
-
 	//Now cache the display data for the above
 	generate_content_data()
-
-
-
 
 //Datums for spawnpoints
 /datum/necrospawn
@@ -138,9 +151,13 @@
 		return
 	var/list/data = content_data.Copy()
 	if (current)
-		data["current"] = list("name" = current.name, "desc" = current.desc, "price" = current.price)
+		data["current"] = list("name" = current.name, "desc" = current.desc, "price" = current.price, "reqtotal" = current.require_total_biomass)
 		if (current.spawn_method == SPAWN_PLACE)
 			data["place"] = TRUE
+
+		if (current.require_total_biomass)
+			data["total"] = Floor(host.get_total_biomass())
+
 	data["biomass"]	=	round(host.biomass, 0.1)
 	data["income"] = round(host.biomass_tick, 0.01)
 
@@ -253,6 +270,9 @@
 		//For manual placement spawns, this will return null and call finalize later, after the user clicks where to place it
 		return
 
+	if (!current.can_spawn(src))
+		return
+
 	finalize_spawn(spawn_params)
 
 
@@ -260,8 +280,15 @@
 //It takes the biomass and creates the atom
 //No other safety checks are done here, we will assume the params contain only correct info
 /datum/necroshop/proc/finalize_spawn(var/list/params)
+
 	//First, ensure that the host can pay the biomass
-	if (!host_pay_biomass(params["name"], params["price"]))
+	//For total mass requirements, we check but don't pay
+	if (params["reqtotal"] && host.get_total_biomass() < params["price"])
+		to_chat(params["user"], SPAN_DANGER("ERROR: Not enough biomass to spawn [params["name"]]"))
+		return
+
+	//This line actually takes the biomass in most cases
+	else if (!host_pay_biomass(params["name"], params["price"]))
 		to_chat(params["user"], SPAN_DANGER("ERROR: Not enough biomass to spawn [params["name"]]"))
 		return
 
@@ -270,6 +297,21 @@
 	var/spawnpath = params["path"]
 	var/atom/targetloc = params["target"]
 	var/atom/newthing = new spawnpath(targetloc)
+
+	//Lets increment the spawned global total
+	var/total = SSnecromorph.spawned_necromorph_types[params["path"]]
+	if (total)
+		total++
+	else
+		total = 1
+
+	SSnecromorph.spawned_necromorph_types[params["path"]] = total
+
+	//And rebuild the shop list if needed
+	if (params["limited"])
+		build_shop_list()
+
+
 	var/mob/user = params["user"]
 	if (!QDELETED(newthing))
 		newthing.set_dir(params["dir"])
@@ -301,7 +343,30 @@
 	var/placement_type = /datum/click_handler/placement/necromorph	//If manual placement, which subtype of placement handler will we use?
 	var/spawn_path		=	null		//What atom will we actually spawn?
 	var/queue_fill	=	FALSE	//Can this thing be populated by a ghost from the necroqueue?
+	var/require_total_biomass = FALSE	//If true, this spawn requires reaching a target of total biomass and can be spawned for free when that target is reached
+	var/global_limit = 0	//If nonzero, a maximum number of these which can ever be spawned from markers
 
+//Can this thing be spawned now, or at some point in the future if we wait long enough? IE, will it become spawnable without explicit action
+/datum/necroshop_item/proc/can_ever_spawn(var/datum/necroshop/caller)
+	if (global_limit)
+		var/total = SSnecromorph.spawned_necromorph_types[spawn_path]
+		if (isnum(total) >= global_limit)
+			return FALSE
+
+	return TRUE
+
+//Can this thing be spawned right now?
+/datum/necroshop_item/proc/can_spawn(var/datum/necroshop/caller)
+	if (!can_ever_spawn(caller))
+		return FALSE
+
+	if (require_total_biomass && (caller.host.get_total_biomass() < price))
+		return FALSE
+
+	else if (caller.host.biomass < price)
+		return FALSE
+
+	return TRUE
 
 //This function has two modes.
 //For spawning at a point, it will find an exact location and return a list of parameters which will then be passed to finalise_spawn
@@ -323,6 +388,7 @@
 		params["path"] = spawn_path
 		params["user"] = usr	//Who is responsible for this ? Who shall we show error messages to
 		params["queue"] = queue_fill
+		params["limited"] = global_limit
 		return params
 
 	if (spawn_method == SPAWN_PLACE)

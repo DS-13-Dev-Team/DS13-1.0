@@ -58,6 +58,7 @@
 /mob/living/carbon/human/Destroy()
 	GLOB.human_mob_list -= src
 	worn_underwear = null
+	remove_massive_atom(src)	//Remove necromorphs from the massive atoms list
 	for(var/organ in organs)
 		qdel(organ)
 	return ..()

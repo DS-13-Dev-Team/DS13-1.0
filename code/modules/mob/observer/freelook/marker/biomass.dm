@@ -1,12 +1,13 @@
 //A biomass source denotes some form of biomass income added to the marker. These are inherently limited.
 /datum/biomass_source
 	var/initial_mass	=	0
-	var/remaining_mass	=	0	//How much total mass is left to be absorbed
+	var/remaining_mass	=	NONSENSICAL_VALUE	//How much total mass is left to be absorbed
 	var/mass_tick	=	1	//How much mass is taken at each tick. IE, per second
 	var/datum/source = null	//The atom or thing we are drawing biomass from. Optional
 	var/datum/target	=	null	//The thing that is absorbing the source. Generally this is a marker
 	var/sourcename
 	var/last_absorb = 0	//How much was absorbed during the last tick?
+	var/counts_toward_total = FALSE	//Does unabsorbed biomass in this source count towards the total biomass value?
 
 /datum/biomass_source/New(var/datum/_source = null, var/datum/_target = null, var/total_mass = 0, var/duration = 1 SECOND)
 	.=..()
@@ -18,10 +19,14 @@
 	initial_mass = total_mass
 	remaining_mass = total_mass
 	calculate_tick(total_mass, duration)
+	if (counts_toward_total)
+		var/obj/machinery/marker/M = get_marker()
+		if (M)
+			M.reclaiming_biomass = NONSENSICAL_VALUE
 
 //Do any desired checks here
 /datum/biomass_source/proc/can_absorb(var/ticks = 1)
-	if (remaining_mass > 0)
+	if (remaining_mass	!=	NONSENSICAL_VALUE && remaining_mass > 0)
 		return MASS_READY
 	else
 		return MASS_EXHAUST
@@ -30,7 +35,10 @@
 /datum/biomass_source/proc/absorb(var/ticks = 1)
 
 	var/quantity = min(mass_tick, remaining_mass)
-	remaining_mass -= quantity
+	if (remaining_mass	==	NONSENSICAL_VALUE)
+		quantity = mass_tick
+	else
+		remaining_mass -= quantity
 	return quantity
 
 /datum/biomass_source/Destroy()
@@ -70,13 +78,17 @@
 //Baseline income
 //-----------------------
 /datum/biomass_source/baseline
-	remaining_mass = 9999999999999	//Never runs out
+	remaining_mass = NONSENSICAL_VALUE	//Never runs out
 	mass_tick = 0.1
 
 /datum/biomass_source/baseline/New()
 	..()
 	remaining_mass = initial(remaining_mass)
 	mass_tick = initial(mass_tick)
+
+
+/datum/biomass_source/baseline/can_absorb()
+	return MASS_READY
 
 /datum/biomass_source/baseline/absorb(var/ticks = 1)
 	return mass_tick
@@ -89,7 +101,7 @@
 //Reclaiming broken necromorphs
 //-------------------------------
 /datum/biomass_source/reclaim
-
+	counts_toward_total = TRUE
 
 
 //Once we've completely absorbed our source, make the body quietly vanish when nobody is looking

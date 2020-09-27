@@ -7,6 +7,7 @@ SUBSYSTEM_DEF(necromorph)
 	var/list/major_vessels = list()	//Necromorphs that need a player to control them. they are inert husks without one.
 	var/list/minor_vessels	=	list()	//Necromorphs that have AI and don't need a player, but can be possessed anyway if someone wants to do manual control
 	var/list/shards = list()	//Marker shards in the world
+	var/list/spawned_necromorph_types = list() //Assoc list of typepath = quantity, tracks the number of necromorphs ever spawned this round
 
 	//Signal Lists
 	var/list/signals	=	list()	//List of all signal players
@@ -24,6 +25,7 @@ SUBSYSTEM_DEF(necromorph)
 	var/list/sightings = list()
 
 	//Misc
+	var/list/massive_necroatoms = list()	//A list of all necromorphs which are worth biomass
 
 	//Tiny bit of a hack. This shared global variable is used to cycle through the shards list.
 	//Under the mostly likely assumption that two people generally won't be jumping to shards at the same time
@@ -109,7 +111,26 @@ SUBSYSTEM_DEF(necromorph)
 
 
 
+/proc/add_massive_atom(var/atom/A)
+	if ((A in SSnecromorph.massive_necroatoms))
+		return
 
+	SSnecromorph.massive_necroatoms += A
+	var/obj/machinery/marker/M = get_marker()
+	if (M)
+		M.invested_biomass = NONSENSICAL_VALUE
+		M.unavailable_biomass = NONSENSICAL_VALUE
+
+
+/proc/remove_massive_atom(var/atom/A)
+	if (!(A in SSnecromorph.massive_necroatoms))
+		return
+
+	SSnecromorph.massive_necroatoms -= A
+	var/obj/machinery/marker/M = get_marker()
+	if (M)
+		M.invested_biomass = NONSENSICAL_VALUE
+		M.unavailable_biomass = NONSENSICAL_VALUE
 
 
 //Possible future todo: Allow this to take some kind of faction id in order to allow a necros vs necros gamemode
