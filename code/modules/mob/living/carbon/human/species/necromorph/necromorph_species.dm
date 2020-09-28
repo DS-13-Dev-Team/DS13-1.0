@@ -118,7 +118,7 @@
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK      // Various specific features.
 	appearance_flags = 0      // Appearance/display related features.
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN           // Flags that specify who can spawn as this specie
-
+	language = LANGUAGE_NECROCHAT
 
 	//Audio
 	step_volume = 60 //Necromorphs can't wear shoes, so their base footstep volumes are louder

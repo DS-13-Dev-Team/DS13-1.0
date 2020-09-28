@@ -457,15 +457,6 @@
 	dna.check_integrity(src)
 	return
 
-/mob/living/carbon/human/get_species()
-	if(!species)
-		set_species()
-	return species.name
-
-/mob/living/carbon/human/get_species_datum()
-	if(!species)
-		set_species()
-	return species
 
 /mob/living/carbon/human/proc/play_xylophone()
 	if(!src.xylophone)

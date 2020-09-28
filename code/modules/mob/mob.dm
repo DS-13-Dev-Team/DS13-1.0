@@ -851,11 +851,7 @@
 	resting = max(resting + amount,0)
 	return
 
-/mob/proc/get_species()
-	return ""
 
-/mob/proc/get_species_datum()
-	return null
 
 /mob/proc/get_visible_implants(var/class = 0)
 	var/list/visible_implants = list()

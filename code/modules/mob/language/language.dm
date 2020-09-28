@@ -148,6 +148,14 @@
 	languages.Add(new_language)
 	return 1
 
+/mob/living/add_language(rem_language)
+	.=..()
+	if (.)
+		var/datum/language/L = all_languages[rem_language]
+		if (!default_language)
+			default_language = L
+
+
 /mob/proc/remove_language(var/rem_language)
 	var/datum/language/L = all_languages[rem_language]
 	. = (L in languages)
@@ -158,6 +166,12 @@
 	if(default_language == L)
 		default_language = null
 	return ..()
+
+/mob/proc/remove_all_languages()
+	world << "Remove all languages"
+	for (var/datum/language/L in languages)
+		world << "Removing [L]"
+		remove_language(L.name)
 
 // Can we speak this language, as opposed to just understanding it?
 /mob/proc/can_speak(datum/language/speaking)

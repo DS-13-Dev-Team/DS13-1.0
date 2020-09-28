@@ -73,13 +73,14 @@
 	sanitize_and_communicate(/decl/communication_channel/necrochat, client, message)
 
 
-
+/*
 /mob/living/carbon/human/necromorph/say(var/message)
 	sanitize_and_communicate(/decl/communication_channel/necrochat, client, message)
 
 	if(prob(species.speech_chance) && check_audio_cooldown(SOUND_SPEECH))
 		set_audio_cooldown(SOUND_SPEECH, 5 SECONDS)
 		play_species_audio(src, SOUND_SPEECH, VOLUME_LOW, TRUE)
+*/
 
 /mob/living/simple_animal/necromorph/say(var/message)
 	sanitize_and_communicate(/decl/communication_channel/necrochat, client, message)
@@ -87,6 +88,40 @@
 	if(LAZYLEN(attack_sounds) && check_audio_cooldown(SOUND_SPEECH))
 		set_audio_cooldown(SOUND_SPEECH, 5 SECONDS)
 		playsound(src, pick(attack_sounds), VOLUME_MID, TRUE)
+
+
+
+/*
+	Necromorph language interface
+*/
+/datum/language/necromorph
+	name = LANGUAGE_NECROCHAT
+	desc = "A psychic hivemind between marker signals and their necromorph vessels"
+	speech_verb = "groans"
+	ask_verb = "wails"
+	exclaim_verb = "screams"
+	colour = "soghun"
+	key = "q"
+	flags = RESTRICTED | HIVEMIND
+	syllables = list("hs","zt","kr","st","sh")
+	shorthand = "RT"
+
+/datum/language/necromorph/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+
+	/*
+	*/
+	sanitize_and_communicate(/decl/communication_channel/necrochat, speaker.client, message)
+
+	var/datum/species/S = speaker.get_mental_species_datum()
+	if(prob(S.speech_chance) && speaker.check_audio_cooldown(SOUND_SPEECH))
+		speaker.set_audio_cooldown(SOUND_SPEECH, 5 SECONDS)
+		S.play_species_audio(speaker, SOUND_SPEECH, VOLUME_LOW, TRUE)
+
+	//log_say("[key_name(speaker)] : ([name]) [message]")
+
+
+
+
 
 //Global Necromorph Procs
 //-------------------------

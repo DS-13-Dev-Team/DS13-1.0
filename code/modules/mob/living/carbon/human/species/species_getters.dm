@@ -96,3 +96,46 @@
 
 /datum/species/proc/get_husk_icon(var/mob/living/carbon/human/H)
 	return husk_icon
+
+
+/mob/proc/get_species()
+	return ""
+
+/mob/proc/get_species_datum()
+	return null
+
+
+/mob/living/carbon/human/get_species()
+	if(!species)
+		set_species()
+	return species.name
+
+/mob/living/carbon/human/get_species_datum()
+	if(!species)
+		set_species()
+	return species
+
+
+//returns the species of this mob's brain
+//In 99.999% of cases this is the same as the body. but in the case of a divider puppet it can be different
+/mob/proc/get_mental_species()
+	return get_species()
+
+/mob/living/carbon/human/get_mental_species()
+	var/obj/item/organ/internal/brain/B = internal_organs_by_name[BP_BRAIN]
+	if (B && B.species)
+		return B.species.name
+	return get_species()
+
+
+/mob/proc/get_mental_species_datum()
+	return get_species_datum()
+
+
+/mob/living/carbon/human/get_mental_species_datum()
+	var/obj/item/organ/internal/brain/B = internal_organs_by_name[BP_BRAIN]
+
+	if (B && B.species)
+		return B.species
+
+	.=..()

@@ -1972,7 +1972,7 @@
 #include "code\modules\mob\living\carbon\human\species\necromorph\lesser.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\lurker.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\mob.dm"
-#include "code\modules\mob\living\carbon\human\species\necromorph\necromorph.dm"
+#include "code\modules\mob\living\carbon\human\species\necromorph\necromorph_species.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\puker.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\slasher.dm"
 #include "code\modules\mob\living\carbon\human\species\necromorph\spitter.dm"
