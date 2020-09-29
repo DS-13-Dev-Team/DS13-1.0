@@ -8,7 +8,7 @@
 	total_health = INFINITY	//This number doesn't matter, it won't ever be used
 	can_obliterate = FALSE
 	healing_factor = 4	//Lots of constant healing
-	biomass	=	3000	//Endgame, real expensive
+	biomass	=	4500	//Endgame, real expensive
 	use_total_biomass = TRUE
 	global_limit = 1
 	mass = 130
