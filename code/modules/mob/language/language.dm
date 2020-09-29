@@ -168,9 +168,7 @@
 	return ..()
 
 /mob/proc/remove_all_languages()
-	world << "Remove all languages"
 	for (var/datum/language/L in languages)
-		world << "Removing [L]"
 		remove_language(L.name)
 
 // Can we speak this language, as opposed to just understanding it?
