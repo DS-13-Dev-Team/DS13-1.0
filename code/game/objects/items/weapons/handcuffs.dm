@@ -8,7 +8,7 @@
 	slot_flags = SLOT_BELT
 	throwforce = 5
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1)
 	matter = list(MATERIAL_STEEL = 500)
@@ -74,9 +74,6 @@
 		to_chat(user, "<span class='danger'>\The [H] needs at least two wrists before you can cuff them together!</span>")
 		return 0
 
-	if(istype(H.gloves,/obj/item/clothing/gloves/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
-		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.gloves]!</span>")
-		return 0
 
 	user.visible_message("<span class='danger'>\The [user] is attempting to put [cuff_type] on \the [H]!</span>")
 
