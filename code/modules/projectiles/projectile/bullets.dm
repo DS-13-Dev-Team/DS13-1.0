@@ -178,7 +178,7 @@
 
 /obj/item/projectile/bullet/gyro/on_hit(var/atom/target, var/blocked = 0)
 	if(isturf(target))
-		explosion(3, 1)
+		explosion(4, 2)
 	..()
 
 /obj/item/projectile/bullet/blank

@@ -17,7 +17,7 @@ var/list/global/tank_gauge_cache = list()
 
 	force = 5.0
 	throwforce = 10.0
-	
+
 	throw_range = 4
 
 	var/datum/gas_mixture/air_contents = null
@@ -396,11 +396,7 @@ var/list/global/tank_gauge_cache = list()
 
 			T.assume_air(air_contents)
 			explosion(
-				get_turf(loc),
-				round(min(BOMBCAP_DVSTN_RADIUS, ((mult)*strength)*0.15)),
-				round(min(BOMBCAP_HEAVY_RADIUS, ((mult)*strength)*0.35)),
-				round(min(BOMBCAP_LIGHT_RADIUS, ((mult)*strength)*0.80)),
-				round(min(BOMBCAP_FLASH_RADIUS, ((mult)*strength)*1.20)),
+				round(min(BOMBCAP_DVSTN_RADIUS, ((mult)*strength)*0.15))
 				)
 
 			var/num_fragments = round(rand(8,10) * sqrt(strength * mult))

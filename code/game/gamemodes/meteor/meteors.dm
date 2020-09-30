@@ -243,7 +243,7 @@
 
 /obj/effect/meteor/medium/meteor_effect()
 	..()
-	explosion(3, 1)
+	explosion(4, 2)
 
 //Large-sized
 /obj/effect/meteor/big
@@ -267,7 +267,7 @@
 
 /obj/effect/meteor/flaming/meteor_effect()
 	..()
-	explosion(3, 1)
+	explosion(4, 2)
 
 //Radiation meteor
 /obj/effect/meteor/irradiated
@@ -278,7 +278,7 @@
 
 /obj/effect/meteor/irradiated/meteor_effect()
 	..()
-	explosion(3, 1)
+	explosion(4, 2)
 	new /obj/effect/decal/cleanable/greenglow(get_turf(src))
 	SSradiation.radiate(src, 50)
 
@@ -333,7 +333,7 @@
 
 /obj/effect/meteor/supermatter/meteor_effect()
 	..()
-	explosion(3, 1)
+	explosion(4, 2)
 	for(var/obj/machinery/power/apc/A in range(rand(12, 20), src))
 		A.energy_fail(round(10 * rand(8, 12)))
 

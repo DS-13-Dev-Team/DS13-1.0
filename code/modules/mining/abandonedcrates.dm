@@ -154,7 +154,7 @@
 		attempts--
 		if (attempts == 0)
 			to_chat(user, "<span class='danger'>The crate's anti-tamper system activates!</span>")
-			explosion(3, 1)
+			explosion(4, 2)
 			qdel(src)
 
 /obj/structure/closet/crate/secure/loot/emag_act(var/remaining_charges, var/mob/user)

@@ -178,7 +178,7 @@
 
 /obj/machinery/broken/Initialize()
 	..()
-	explosion(3, 1)
+	explosion(4, 2)
 	return INITIALIZE_HINT_QDEL
 
 /obj/machinery/broken/Destroy()

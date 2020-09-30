@@ -1,4 +1,7 @@
-
+//Reference
+#define EXPLOSION_STANDARD explosion(4, 2)
+#define EXPLOSION_LARGE explosion(5, 2)
+#define EXPLOSION_HUGE explosion(15, 3)
 
 /atom/var/explosion_resistance
 /atom/proc/get_explosion_resistance()

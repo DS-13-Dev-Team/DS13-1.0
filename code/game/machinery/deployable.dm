@@ -159,7 +159,7 @@ for reference:
 		s.set_up(3, 1, src)
 		s.start()
 
-		explosion(3, 1)
+		explosion(4, 2)
 		if(src)
 			qdel(src)
 
