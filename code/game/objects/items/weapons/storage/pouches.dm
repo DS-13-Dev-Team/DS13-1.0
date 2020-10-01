@@ -9,7 +9,7 @@
 	slot_flags = SLOT_BELT //Pouches can be worn on belt
 	storage_slots = 1
 	max_w_class = ITEM_SIZE_SMALL
-	max_storage_space = DEFAULT_SMALL_STORAGE
+	max_storage_space = DEFAULT_POUCH_MEDIUM
 	matter = list(MATERIAL_BIOMATTER = 12)
 	attack_verb = list("pouched")
 
@@ -41,7 +41,7 @@
 	icon_state = "small_generic"
 	item_state = "small_generic"
 	storage_slots = null //Uses generic capacity
-	max_storage_space = DEFAULT_SMALL_STORAGE * 0.5
+	max_storage_space = DEFAULT_POUCH_SMALL
 	max_w_class = ITEM_SIZE_SMALL
 
 /obj/item/weapon/storage/pouch/medium_generic
@@ -50,8 +50,7 @@
 	icon_state = "medium_generic"
 	item_state = "medium_generic"
 	storage_slots = null //Uses generic capacity
-	max_storage_space = DEFAULT_SMALL_STORAGE
-	max_w_class = ITEM_SIZE_NORMAL
+	max_w_class = ITEM_SIZE_SMALL
 
 /obj/item/weapon/storage/pouch/large_generic
 	name = "large generic pouch"
@@ -61,7 +60,7 @@
 	w_class = ITEM_SIZE_NORMAL
 	slot_flags = SLOT_BELT | SLOT_DENYPOCKET
 	storage_slots = null //Uses generic capacity
-	max_storage_space = DEFAULT_NORMAL_STORAGE
+	max_storage_space = DEFAULT_POUCH_LARGE
 	max_w_class = ITEM_SIZE_NORMAL
 
 /obj/item/weapon/storage/pouch/medical_supply
