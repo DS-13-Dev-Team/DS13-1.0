@@ -84,10 +84,9 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	var/bone = affected.encased ? "[target]'s [affected.encased]" : "bones in [target]'s [affected.name]"
 	if (affected.status & ORGAN_BROKEN)
-		user.visible_message("<span class='notice'>[user] sets the [bone] n place with \the [tool].</span>", \
+		user.visible_message("<span class='notice'>[user] sets the [bone] in place with \the [tool].</span>", \
 			"<span class='notice'>You set the [bone] in place with \the [tool].</span>")
-		affected.status &= ~ORGAN_BROKEN
-		affected.stage = 0
+		affected.stage = 2
 	else
 		user.visible_message("<span class='notice'>[user] sets the [bone]</span> <span class='warning'>in the WRONG place with \the [tool].</span>", \
 			"<span class='notice'>You set the [bone]</span> <span class='warning'>in the WRONG place with \the [tool].</span>")
@@ -130,8 +129,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] sets [target]'s skull with \the [tool].</span>" , \
 		"<span class='notice'>You set [target]'s skull with \the [tool].</span>")
-	affected.status &= ~ORGAN_BROKEN
-	affected.stage = 0
+	affected.stage = 2
 
 /datum/surgery_step/mend_skull/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
