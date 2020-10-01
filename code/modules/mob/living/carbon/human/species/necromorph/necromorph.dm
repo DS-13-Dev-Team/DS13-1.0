@@ -14,11 +14,14 @@
 	var/marker_spawnable = TRUE	//Set this to true to allow the marker to spawn this type of necro. Be sure to unset it on the enhanced version unless desired
 	var/preference_settable = TRUE
 	biomass = 80	//This var is defined for all species
+	var/use_total_biomass = FALSE
 	var/biomass_reclamation	=	1	//The marker recovers cost*reclamation
 	var/biomass_reclamation_time	=	8 MINUTES	//How long does it take for all of the reclaimed biomass to return to the marker? This is a pseudo respawn timer
 	var/spawn_method = SPAWN_POINT	//What method of spawning from marker should be used? At a point or manual placement? check _defines/necromorph.dm
 	var/major_vessel = TRUE	//If true, we can fill this mob from the necroqueue
 	var/spawner_spawnable = FALSE	//If true, a nest can be upgraded to autospawn this unit
+	var/necroshop_item_type = /datum/necroshop_item //Give this a subtype if you want to have special behaviour for when this necromorph is spawned from the necroshop
+	var/global_limit = 0	//0 = no limit
 
 	strength    = STR_MEDIUM
 	show_ssd = "dead" //If its not moving, it looks like a corpse
@@ -210,6 +213,8 @@
 			var/obj/item/organ/external/E	= H.organs_by_name[organ_tag]
 			initial_health_values[organ_tag] = E.max_damage
 
+	if (biomass)
+		add_massive_atom(H)
 
 
 //Necromorphs die when they've taken enough total damage to all their limbs.
@@ -228,6 +233,7 @@
 		return
 	if (H.biomass)
 		SSnecromorph.marker.add_biomass_source(H, H.biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
+		remove_massive_atom(H)
 	GLOB.necrovision.remove_source(H)
 
 //How much damage has this necromorph taken?

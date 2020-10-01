@@ -22,6 +22,7 @@
 	max_gas = null
 	harm_intent_damage = 5
 	mass = 1
+	biomass = 0
 	density = FALSE
 	var/lifespan = 10 MINUTES	//Minor necromorphs don't last forever, their health gradually ticks down
 	stompable = TRUE
@@ -38,6 +39,9 @@
 
 /mob/living/simple_animal/necromorph/Initialize()
 	.=..()
+	SSnecromorph.minor_vessels |= src
+	if (get_biomass())
+		add_massive_atom(src)
 	if (lifespan)
 		var/time_per_tick = lifespan / max_health
 		addtimer(CALLBACK(src, /mob/living/simple_animal/necromorph/proc/decay), time_per_tick)
@@ -70,7 +74,8 @@
 /mob/living/simple_animal/necromorph/death()
 	if (LAZYLEN(pain_sounds))
 		playsound(src, pick(pain_sounds), VOLUME_LOUD, TRUE)
-
+	SSnecromorph.minor_vessels -= src
+	remove_massive_atom(src)
 	.=..()
 
 //Attack sounds when hitting
@@ -83,7 +88,10 @@
 
 
 
-
+/mob/living/simple_animal/necromorph/Destroy()
+	SSnecromorph.minor_vessels -= src
+	remove_massive_atom(src)
+	.=..()
 
 
 

@@ -43,13 +43,20 @@ h3 {
 		<td style="width: 75%; vertical-align: top;">
 			{{if data.current}}
 				<h1>{{:data.current.name}}</h1>
+				{{if data.current.reqtotal}}
+					<hr>
+					<span class="notice" style="padding: 4px">Total Biomass: {{:data.total}}/{{:data.current.price}}    </br>
+					Total Biomass includes biomass currently invested in necromorphs and corruption nodes, whether they are alive, or dead and being reclaimed </br>
+					This can be spawned for free when you accumulate enough total mass.</span>
+					<hr>
+				{{/if}}
 				<div style="line-height: 120%; font-size: 11px;">{{:data.current.desc}}</div>
 			{{else}}
 				<h2>Nothing Selected</h2>
 			{{/if}}
 		</td>
 		<td style="width: 25%; vertical-align: top; text-align: center;">
-			<div style="height:100%;  height: 550px; overflow-y: auto;">
+			<div style="height:100%;  overflow-y: auto;">
 			<h2>Necromorphs</h2>
 			<hr>
 			{{for data.necromorphs}}

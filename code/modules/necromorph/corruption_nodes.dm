@@ -35,6 +35,8 @@
 	if (!isturf(loc))
 		dummy = TRUE
 
+	if (!dummy && SSnecromorph.marker && biomass_reclamation && biomass)
+		add_massive_atom(src)
 
 	update_icon()
 	if (!dummy)
@@ -49,7 +51,7 @@
 /obj/structure/corruption_node/Destroy()
 	if (!dummy && SSnecromorph.marker && biomass_reclamation)
 		SSnecromorph.marker.add_biomass_source(src, biomass*biomass_reclamation, reclamation_time, /datum/biomass_source/reclaim)
-
+		remove_massive_atom(src)
 	.=..()
 
 

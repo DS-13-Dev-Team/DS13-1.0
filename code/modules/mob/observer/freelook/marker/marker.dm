@@ -25,6 +25,13 @@
 	var/datum/necroshop/shop
 	var/active = FALSE //Marker must activate first
 
+	//How much biomass do we have invested in necros/nodes, or currently being recovered?
+	//NONSENSICAL_VALUE is a magical value that means this needs to be updated
+	var/unavailable_biomass = NONSENSICAL_VALUE
+
+	//These two are subcomponents of unavailable biomass, cached seperately for performance reasons
+	var/invested_biomass = NONSENSICAL_VALUE
+	var/reclaiming_biomass = NONSENSICAL_VALUE
 
 	//Necrovision
 	visualnet_range = 12
@@ -130,6 +137,8 @@
 /obj/machinery/marker/proc/handle_biomass_tick()
 	biomass += biomass_tick //Add the biomass we calculated last tick
 	biomass_tick = 0	//Reset this before we recalculate it
+
+	var/update_reclaiming = FALSE //Set true if a source which counts towards total changes its biomass
 	for (var/datum/biomass_source/S as anything in biomass_sources)
 
 		var/check = S.can_absorb()
@@ -148,7 +157,16 @@
 		S.last_absorb = quantity
 		biomass_tick += quantity
 
+		//We will need to update total biomass
+		if (S.counts_toward_total)
+			update_reclaiming = TRUE
+
 	//We will actually add this biomass next tick
+
+	//Flag total for update
+	if (update_reclaiming)
+		reclaiming_biomass = NONSENSICAL_VALUE
+		unavailable_biomass = NONSENSICAL_VALUE
 
 /obj/machinery/marker/proc/add_biomass_source(var/datum/source = null, var/total_mass = 0, var/duration = 1 SECOND, var/sourcetype = /datum/biomass_source)
 	//Adds a new biomass source, can specify type
@@ -272,6 +290,47 @@
 	.=..()
 
 
+/obj/machinery/marker/proc/get_total_biomass()
+	if (unavailable_biomass == NONSENSICAL_VALUE)
+		update_unavailable_biomass()
+
+	return biomass + unavailable_biomass
+
+
+/obj/machinery/marker/proc/update_unavailable_biomass()
+	unavailable_biomass = 0
+
+
+	//Alright first of all, lets get the total biomass of live necromorphs and corruption nodes
+	if (invested_biomass == NONSENSICAL_VALUE)
+		invested_biomass = 0
+		for (var/atom/A in SSnecromorph.massive_necroatoms)
+			//If its gone, it isnt providing biomass
+			if (QDELETED(A))
+				SSnecromorph.massive_necroatoms -= A
+				continue
+
+			if (isliving(A))
+				var/mob/living/L = A
+				if (L.stat == DEAD)
+					//If it died, it doesnt belong here
+					SSnecromorph.massive_necroatoms -= A
+					continue
+
+			invested_biomass += A.get_biomass()
+
+	//Next, we get biomass in sources currently being reclaimed which the marker owns. IE, limited sources which cannot be taken away. This includes:
+	//Dead necromorphs
+	//Destroyed corruption nodes
+	//It does not include baseline tick, harvester gains, or human corpses currently being eaten
+	if (reclaiming_biomass == NONSENSICAL_VALUE)
+		reclaiming_biomass = 0
+		for (var/datum/biomass_source/BS in biomass_sources)
+			if (BS.counts_toward_total && BS.remaining_mass != NONSENSICAL_VALUE)
+				reclaiming_biomass += BS.remaining_mass
+
+
+	unavailable_biomass = invested_biomass + reclaiming_biomass
 
 /*
 	Interaction short circuits
