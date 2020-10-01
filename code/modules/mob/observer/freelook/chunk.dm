@@ -47,12 +47,12 @@
 	var/y = 0
 	var/z = 0
 	var/datum/obfuscation/obfuscation = new()
-	var/last_update = 0
 
 // Create a new chunk, since the chunks are made as they are needed.
 /datum/chunk/New(var/datum/visualnet/visualnet, x, y, z)
 	..()
 	src.visualnet = visualnet
+	SSchunk.chunks += src
 	// 0xf = 15
 	x &= ~0xf
 	y &= ~0xf
@@ -78,6 +78,7 @@
 
 /datum/chunk/Destroy()
 	visualnet = null
+	SSchunk.chunks -= src
 	. = ..()
 
 /datum/chunk/proc/add_sources(var/list/sources)
@@ -120,33 +121,34 @@
 // Updates the chunk, makes sure that it doesn't update too much. If the chunk isn't being watched it will
 // instead be flagged to update the next time an AI Eye moves near it.
 
-/datum/chunk/proc/visibility_changed(var/update_now = FALSE)
+SUBSYSTEM_DEF(chunk)
+	name = "Chunks"
+	priority = SS_PRIORITY_CHUNKS
+	wait = 1.25 SECONDS //You may want to change this to 3 if it needs throttling, but the MC will choke this down if it gets too laggy anyway.
+	flags = SS_POST_FIRE_TIMING
+	var/list/chunks = list() //Chunks that we're processing.
 
-	if(update_now)
-		update()
+/datum/controller/subsystem/chunk/fire()
+	if(!chunks.len) //Well, yeah, no need right?
 		return
+	for(var/datum/chunk/C in chunks)
+		if(C.dirty && C.seenby.len) //Only update the chunks that are in view, and are marked as needing an update.
+			C.update()
 
-	if(updating)
-		return
-
-	if(seenby.len)
-		//If we haven't updated recently, then we don't need to wait
-		var/delta = world.time - last_update
-		if (delta > UPDATE_BUFFER)
-			update()
-		else
-			updating = TRUE
-			spawn(UPDATE_BUFFER) // Batch large changes, such as many doors opening or closing at once
-				if(updating)     // Check if we're still updating, a forced update may have occured.
-					update()
-	else
-		dirty = TRUE // If this chunk is seen by noone, simply mark it as dirty and do nothing
+//Wrapper proc to mark the chunk as dirty and in need of updating.
+/datum/chunk/proc/visibility_changed()
+	dirty = TRUE
 
 // The actual updating.
 
-/datum/chunk/proc/update()
+/datum/chunk/proc/update(force=FALSE)
+	//Allow the other chunks to update async.
+	set waitfor = FALSE
+	//If we're not forced to update, don't. The subsystem should be running quickly enough to mean that we don't even really need to force update.
+	if(!dirty || updating && !force)
+		return FALSE
 	updating = TRUE	//Immediately set updating true to block additional attempts
-	dirty = FALSE //Set dirty false to block additional attempts
+	dirty = FALSE // We're already updating this chunk, so no need to re-re update it.
 
 	var/list/newVisibleTurfs = new()
 	acquire_visible_turfs(newVisibleTurfs)
@@ -159,42 +161,47 @@
 
 	visibleTurfs = newVisibleTurfs
 	obscuredTurfs = turfs - newVisibleTurfs
+	var/list/obfuscation_to_add = list()
+	var/list/obfuscation_to_remove = list()
 
-	for(var/turf in visAdded)
-		var/turf/t = turf
+	for(var/turf/t in visAdded)
 		if(obfuscation.has_obfuscation(t))
 			var/image/obfuscation_image = obfuscation.get_obfuscation(t)
 			obscured -= obfuscation_image
-			for(var/eye in seenby)
-				var/mob/observer/eye/m = eye
-				if(m && m.owner && m.owner.client)
-					m.owner.client.images -= obfuscation_image
+			obfuscation_to_remove += obfuscation_image
 
-	for(var/turf in visRemoved)
-		var/turf/t = turf
+	for(var/turf/t in visRemoved)
 		if(obscuredTurfs[t])
 			var/image/obfuscation_image = obfuscation.get_obfuscation(t)
 			obscured += obfuscation_image
-			for(var/eye in seenby)
-				var/mob/observer/eye/m = eye
-				if(m && m.owner && m.owner.client)
-					m.owner.client.images += obfuscation_image
+			obfuscation_to_add += obfuscation_image
 
-
-	last_update = world.time
+	if(obfuscation_to_add.len)
+		apply_visibility(FALSE, obfuscation_to_add)
+	if(obfuscation_to_remove.len)
+		apply_visibility(TRUE, obfuscation_to_remove)
 	updating = FALSE
+
+/datum/chunk/proc/apply_visibility(remove=TRUE, list/update_list)
+	set waitfor = FALSE
+	//There's no way of getting around this, we'll have to take the hit, however this shouldn't be too bad as each chunk is relatively small.
+	for(var/image/obfuscation_image in update_list)
+		for(var/eye in seenby)
+			var/mob/observer/eye/m = eye
+			if(m && m.owner && m.owner.client)
+				if(remove)
+					m.owner.client.images -= obfuscation_image
+				else
+					m.owner.client.images += obfuscation_image
 
 /datum/chunk/proc/acquire_visible_turfs(var/list/visible)
 	return
-
 
 //Attempt to fetch from cache before asking the object to recalculate things
 /datum/chunk/proc/get_datum_visible_turfs(var/datum/A)
 	if (!visualnet.visibility_cache[A])
 		visualnet.visibility_cache[A] = A.get_visualnet_tiles(visualnet)
 	return visualnet.visibility_cache[A]
-
-
 
 /proc/seen_turfs_in_range(var/source, var/range)
 	var/turf/pos = get_turf(source)

@@ -298,7 +298,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		for (var/datum/chunk/C as anything in chunks)
 			C.visibility_changed()
 	else
-		var/turf/T = loc
+		var/turf/T = get_turf(src)
 		T.update_chunk(FALSE)
 
 
