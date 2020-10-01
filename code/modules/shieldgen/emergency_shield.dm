@@ -216,7 +216,7 @@
 		src.malfunction = 1
 	if(health <= 0)
 		spawn(0)
-			explosion(3, 1)
+			explosion(4, 2)
 		qdel(src)
 	update_icon()
 	return

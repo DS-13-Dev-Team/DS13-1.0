@@ -707,7 +707,7 @@
 		message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 		spawn(0)
 			sleep(2)
-			explosion(3, 1)
+			explosion(4, 2)
 			sleep(1)
 			qdel(src)
 		status = LIGHT_BROKEN

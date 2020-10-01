@@ -92,7 +92,7 @@
 
 /obj/item/weapon/grenade/frag/proc/on_explosion(var/turf/O)
 	if(explosion_size)
-		explosion(3, 1)
+		explosion(4, 2)
 
 /obj/item/weapon/grenade/frag/shell
 	name = "fragmentation grenade"
