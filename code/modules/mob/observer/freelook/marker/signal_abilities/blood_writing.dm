@@ -29,4 +29,4 @@
 	W.transform = W.transform.Scale(2)
 	W.message = message
 	W.visible_message("<span class='warning'>Invisible fingers crudely paint something in blood on \the [target].</span>")
-
+	link_necromorphs_to(SPAN_NOTICE("[user] placed bloody writing at LINK, reading <span class='warning'>[message]</span>."), target)

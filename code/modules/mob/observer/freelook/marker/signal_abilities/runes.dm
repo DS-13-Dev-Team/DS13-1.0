@@ -12,7 +12,7 @@
 /datum/signal_ability/runes/on_cast(var/mob/user, var/atom/target, var/list/data)
 	GLOB.cult.powerless = TRUE //Just in case. This makes sure the runes don't do anything
 	new /obj/random/rune(target)
-
+	link_necromorphs_to(SPAN_NOTICE("[user] placed a rune at LINK"), target)
 
 
 /obj/random/rune /*Better loot for away missions and salvage */
