@@ -152,16 +152,14 @@
 	if(M.get_preference_value(/datum/client_preference/ghost_sight) == GLOB.PREF_ALL_EMOTES && !(src in view(M)))
 		remote = "\[R\]"
 
-	var/speaker_name = name
+	var/speaker_name = ""
 
-	if(speaker_name != real_name && real_name)
-		speaker_name = "[real_name]/([speaker_name])"
-
-	speaker_name = speaker_name
+	if(name != real_name)
+		speaker_name = "<span class='warning'>([real_name])</span> "
 
 	var/track = "([ghost_follow_link(src, M)])"
 
-	message = track + remote + " " + speaker_name + ": " + message
+	message = track + remote + " " + speaker_name  + message
 	return message
 
 /mob/proc/ghost_skip_message(var/mob/observer/ghost/M)
