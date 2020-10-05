@@ -36,7 +36,6 @@
 		dummy = TRUE
 
 	if (!dummy && SSnecromorph.marker && biomass_reclamation && biomass)
-		world << "Adding massive atom [src]"
 		add_massive_atom(src)
 
 	update_icon()
