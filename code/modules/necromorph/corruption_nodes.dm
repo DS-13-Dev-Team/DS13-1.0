@@ -45,7 +45,11 @@
 	start_processing()
 
 
-/obj/structure/corruption_node/get_biomass()
+/obj/structure/corruption_node/get_biomass(var/who_is_asking)
+
+	//This is needed for invested biomass handling
+	if (istype(who_is_asking, /obj/machinery/marker))
+		return biomass
 	return 0	//This is not edible
 
 /obj/structure/corruption_node/Destroy()

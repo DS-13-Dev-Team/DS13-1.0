@@ -317,7 +317,7 @@
 					SSnecromorph.massive_necroatoms -= A
 					continue
 
-			invested_biomass += A.get_biomass()
+			invested_biomass += A.get_biomass(src)
 
 	//Next, we get biomass in sources currently being reclaimed which the marker owns. IE, limited sources which cannot be taken away. This includes:
 	//Dead necromorphs
