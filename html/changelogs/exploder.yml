@@ -36,4 +36,4 @@ changes:
   - bugfix: "Exploder is back and explodier than ever!"
   - tweak: "Object-based shooting abilities now hit a random part of the target instead of always the chest. This currently affects detonator, harvester, and cyst"
   - bugfix: "Fixed the rivet gun's fragmentate mode not working."
-  - tweak: "Buffed the rivet fragments' damage, from 1.8 to 2.2
+  - tweak: "Buffed the rivet fragments' damage, from 1.8 to 2.2"
