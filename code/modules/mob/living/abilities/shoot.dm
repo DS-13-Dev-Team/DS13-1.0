@@ -107,6 +107,8 @@
 	if (isliving(user))
 		L = user
 		target_zone = L.zone_sel.selecting
+	else
+		target_zone = ran_zone()
 
 	//First of all, if nomove is set, lets paralyse the user
 	if (nomove && L)
