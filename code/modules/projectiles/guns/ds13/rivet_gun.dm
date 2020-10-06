@@ -54,7 +54,6 @@
 //Adds a rivet to our internal tracking list so we can detonate it later
 /obj/item/weapon/gun/projectile/rivet/proc/register_rivet(var/obj/item/embedded_rivet/ER)
 	//If we have too many, delete them
-
 	if (rivets.len >= max_rivets)
 
 		var/obj/item/embedded_rivet/redundant = rivets[1]
@@ -217,8 +216,8 @@
 	plane = ABOVE_OBJ_PLANE
 	layer = 0
 
-/obj/item/embedded_rivet/New(var/atom/loc, var/obj/item/projectile/bullet/rivet/rivet)
-	if (istype(rivet.	, /obj/item/weapon/gun/projectile/rivet))
+/obj/item/embedded_rivet/New(var/atom/location, var/obj/item/projectile/bullet/rivet/rivet)
+	if (istype(rivet.launcher, /obj/item/weapon/gun/projectile/rivet))
 		rivetgun = rivet.launcher
 		rivetgun.register_rivet(src)
 	QDEL_IN(src, lifetime)
@@ -228,7 +227,7 @@
 /obj/item/embedded_rivet/proc/detonate()
 	if (!QDELETED(src) && !detonated)
 		detonated = TRUE
-		fragmentate(T=get_turf(src), fragment_number = 15, spreading_range = 3, fragtypes=list(/obj/item/projectile/bullet/pellet/fragment/rivet))
+		fragmentate(T=get_turf(src), fragment_number = 17, spreading_range = 3, fragtypes=list(/obj/item/projectile/bullet/pellet/fragment/rivet))
 		qdel(src)
 
 /obj/item/embedded_rivet/Destroy()
@@ -243,7 +242,7 @@
 	Fragmentation
 */
 /obj/item/projectile/bullet/pellet/fragment/rivet
-	damage = 1.8
+	damage = 2.2
 	range_step = 3 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
 
 	base_spread = 0 //causes it to be treated as a shrapnel explosion instead of cone

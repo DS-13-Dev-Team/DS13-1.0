@@ -232,7 +232,10 @@
 		return 0
 
 	original = target
-	def_zone = target_zone
+	if (target_zone)
+		def_zone = target_zone
+	else
+		def_zone = ran_zone()
 
 	addtimer(CALLBACK(src, .proc/finalize_launch, curloc, targloc, x_offset, y_offset, angle_offset),0)
 	return 0
