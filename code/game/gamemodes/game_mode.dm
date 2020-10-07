@@ -372,7 +372,7 @@ var/global/list/additional_antag_types = list()
 			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
 				text += "<br><center><h3>The Marker is <span class ='danger'> angry!</span></center>"
 			else if(escaped_necros > 6) // More than 7? Marker now has abandonment issues.
-				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy!</span></center>"
+				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</span></center>"
 	else if(escaped_humans > 3 && escaped_humans < 9) // Between 4 and 8? Count as survivor minor.
 		text += "<br><h2><b><center><span class='success'>Survivor Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Some survivors managed to evacuate!</center>"
@@ -386,7 +386,7 @@ var/global/list/additional_antag_types = list()
 			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
 				text += "<br><center><h3>The Marker is <span class ='danger'> angry!</span></center>"
 			else if(escaped_necros > 6) // More than 7? Marker now has abandonment issues.
-				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy!</span></center>"
+				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</span></center>"
 	else if(escaped_humans > 8) // 9 or more escaped? Big party. Survivor major.
 		text += "<br><h1><b><center><span class='success'>Survivor Major Victory!</span></center></b></h1>"
 		text += "<br><center>A majority of the survivors managed to evacuate!</center>"
@@ -400,7 +400,7 @@ var/global/list/additional_antag_types = list()
 			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
 				text += "<br><center><h3>The Marker is <span class ='danger'> angry!</span></center>"
 			else if(escaped_necros > 6) // More than 7? Marker now has abandonment issues.
-				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy!</span></center>"
+				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</span></center>"
 	else if(escaped_humans < 1) // Big sad. Necro major. No evacuees.
 		text += "<br><h1><b><center><span class='danger'>Necromorph Major Victory!</h1></center></b></large>"
 		text += "<br><center>The Necromorphs have slain the entire crew!</center>"
@@ -414,7 +414,7 @@ var/global/list/additional_antag_types = list()
 			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
 				text += "<br><center><h3>The Marker is <span class ='danger'> angry!</span></center>"
 			else if(escaped_necros > 6) // More than 6? Marker now has abandonment issues.
-				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy!</span></center>"
+				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</span></center>"
 	else // Safety clause. Pray to god this never gets ran. Wouldn't know why it would do that, if it did.
 		text += "<br>DEBUG: You fucked up. This is not meant to happen."
 		text += "<br>Contact Lion immediately."
