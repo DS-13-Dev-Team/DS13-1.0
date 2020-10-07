@@ -2,8 +2,8 @@
 /obj/item/stack/material
 	force = 5.0
 	throwforce = 5
-	w_class = ITEM_SIZE_LARGE
-	
+	w_class = ITEM_SIZE_NORMAL
+
 	throw_range = 3
 	max_amount = 60
 	center_of_mass = null
