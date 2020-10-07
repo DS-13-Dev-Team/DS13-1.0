@@ -696,3 +696,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/security/checkpoint/executive
 	name = "\improper Executive Quarters Checkpoint"
+
+/area/ishimura/lower/security/escape/adminshuttle
+	name = "\improper Administrative Shuttle"
+	icon_state = "miscbase"
