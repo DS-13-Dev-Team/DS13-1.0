@@ -200,16 +200,16 @@ GUEST_BAN
 # FORUMURL http://example.com
 
 ## Wiki address
-# WIKIURL http://example.com
+WIKIURL https://ds-ss13.com/index.php/ 
 
 ## GitHub address
-# GITHUBURL https://github.com/example-user/example-repository
+GITHUBURL https://github.com/DS-13-Dev-Team/DS13
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
 # BANAPPEALS http://example.com
 
 ## Discord URL - Used for the "Join the Discord" verb in OOC.
-# DISCORD_URL https://discord.gg/example
+DISCORD_URL https://discord.gg/WH2fT2Y
 
 ## In-game features
 ## spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
