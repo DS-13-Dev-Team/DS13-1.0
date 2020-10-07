@@ -36,4 +36,5 @@ changes:
   - bugfix: "Fixed an error message about solnet when spawning as an observer or editing your character."
   - tweak: "The discord button in the UI is now normally colored."
   - rscdel: "Removed the Lore button from the topright. It contained bay specific stuff which isn't relevant for us."
-  - bugfix: "Fixed detonator crate being wrongly named in cargo interface.""S
+  - bugfix: "Fixed detonator crate being wrongly named in cargo interface."
+  - tweak: "Majorly increased radiation resistance on the engineering rig.  Dedicated radsuits are still slightly better though."
