@@ -522,9 +522,9 @@ macro "hotkeymode"
 	elem 
 		name = "CTRL+Q"
 		command = ".northwest"
-	elem 
+	elem "rotate_placement"
 		name = "R"
-		command = ".southwest"
+		command = "rotate_placement"
 	elem 
 		name = "CTRL+R"
 		command = ".southwest"
