@@ -700,3 +700,34 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/security/escape/adminshuttle
 	name = "\improper Administrative Shuttle"
 	icon_state = "miscbase"
+//------------------Tram Deck------------------//
+
+/area/ishimura/tramdeck/tram
+	name = "\improper Ishimura Tram"
+	icon_state = "tram"
+
+/area/ishimura/tramdeck/tram/station
+	name = "\improper Ishimura Tramstation"
+	icon_state = "tramstation"
+
+/area/ishimura/tramdeck/tram/station/forward
+	name = "\improper Ishimura Forward Tram Station"
+
+/area/ishimura/tramdeck/tram/station/amidships/north
+	name = "\improper Ishimura Amidships North Tram Station"
+
+/area/ishimura/tramdeck/tram/station/amidships/south
+	name = "\improper Ishimura Amidships South Tram Station"
+
+/area/ishimura/tramdeck/tram/station/aft
+	name = "\improper Ishimura Aft Tram Station"
+
+/area/ishimura/tramdeck/tram/tunnel
+	name = "\improper Ishimura Tram Tunnel"
+	icon_state = "tramtunnel"
+
+/area/ishimura/tramdeck/tram/tunnel/aft
+	name = "\improper Ishimura Aft Tram Tunnel"
+
+/area/ishimura/tramdeck/tram/tunnel/forwad
+	name = "\improper Ishimura Forward Tram Tunnel"

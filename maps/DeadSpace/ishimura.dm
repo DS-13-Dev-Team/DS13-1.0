@@ -6,12 +6,12 @@
 	name = "Ishimura"
 	full_name = "USG Ishimura"
 	path = "ishimura"
-	station_levels = list(1,2,3) // Add 4 to this once the EVA Deck is complete, and remove this comment.
-	contact_levels = list(1,2) // Add 3 to this once the EVA Deck is complete, and remove this comment.
-	player_levels = list(1,2) // Add 3 to this once the EVA Deck is ocmplete, and remove this comment.
-	admin_levels = list(4) // Change this to 5 once the EVA Deck is complete.
+	station_levels = list(1,2,3,4)
+	contact_levels = list(1,2,3,4)
+	player_levels = list(1,2,3,4)
+	admin_levels = list(6)
 	empty_levels = list()
-	accessible_z_levels = list("1"=1,"2"=1)
+	accessible_z_levels = list("1"=1,"2"=1,"3"=1,"4"=1)
 	local_currency_name = "credits"
 	station_networks = list(
 		NETWORK_CARGO,

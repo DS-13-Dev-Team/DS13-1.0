@@ -29,3 +29,7 @@
 /obj/machinery/computer/shuttle_control/multi/valor
 	name = "military shuttle control console"
 	shuttle_tag = "Valor"
+
+/obj/machinery/computer/shuttle_control/multi/tram
+	name = "tram control console"
+	shuttle_tag = "USG Ishimura Tram"

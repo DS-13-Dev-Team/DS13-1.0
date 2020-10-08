@@ -2557,7 +2557,7 @@
 "aXi" = (/obj/machinery/telecomms/broadcaster/preset_right,/turf/simulated/floor/tiled/techfloor/grid,/area/ishimura/upper/engineering/tcomms)
 "aXj" = (/obj/machinery/telecomms/server/presets/common,/turf/simulated/floor/tiled/techfloor/grid,/area/ishimura/upper/engineering/tcomms)
 "aXk" = (/obj/machinery/telecomms/receiver/preset_right,/turf/simulated/floor/tiled/techfloor/grid,/area/ishimura/upper/engineering/tcomms)
-"aXl" = (/obj/effect/landmark/map_data{height = 2},/turf/space,/area/space)
+"aXl" = (/obj/effect/landmark/map_data{height = 4},/turf/space,/area/space)
 "aXm" = (/turf/simulated/floor/lino,/area/ishimura/upper/engineering/tcomms/control)
 "aXn" = (/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 8},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/tiled/techfloor,/area/ishimura/upper/engineering/tcomms)
 "aXo" = (/obj/machinery/computer/telecomms/traffic,/turf/simulated/floor/tiled/dark/monotile,/area/ishimura/upper/engineering/tcomms/control)
