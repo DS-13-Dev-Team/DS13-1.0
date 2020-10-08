@@ -44,4 +44,5 @@ changes:
   - rscadd: "All of the ERT shuttles are now marked post-round safezones. This adds onto the escape methods, if you were inclined to give that a shot."
   - rscadd: "Added teleportation if anyone runs out of a shuttle while it is in transit. Should you do this, you will now be warped into space, and your death will be assured. Don't do this."
   - experiment: "Rework of how escape shuttles work and act. Those who are in the pods now, will be able to walk around on a planetary landing site. If you're really lucky, it won't be infested."
+  - experiemnt: "Experimental fix for laptops, tablets and PDA's refusing to work after evacuating."
   - wip: "Added in appropriate area and landmarks for the Administrative Shuttle. The code for this will likely be included in the same update by KMC."
