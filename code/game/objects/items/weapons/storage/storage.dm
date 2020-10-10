@@ -195,7 +195,7 @@
 			for(var/mob/M in viewers(usr, null))
 				if (M == usr)
 					to_chat(usr, "<span class='notice'>You put \the [W] into [src].</span>")
-				else if (M in range(1, src)) //If someone is standing close enough, they can tell what it is... TODO replace with distance check
+				else if (get_dist(M, src) <= 2) //If someone is standing close enough, they can tell what it is... TODO replace with distance check
 					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
 				else if (W && W.w_class >= ITEM_SIZE_NORMAL) //Otherwise they can only see large or normal items from a distance...
 					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
@@ -227,7 +227,7 @@
 	new_location = new_location || get_turf(src)
 
 	if(storage_ui)
-		storage_ui.on_pre_remove(usr, W)
+		storage_ui.on_pre_remove(W)
 
 	if(ismob(loc))
 		W.dropped(usr)
