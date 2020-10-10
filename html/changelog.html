@@ -59,6 +59,62 @@
 		
 		-->
 		<div class="commit sansserif">
+			<h2 class="date">10 October 2020</h2>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed charge not dealing damage to lying humans.</li>
+			</ul>
+			<h3 class="author">Nanako updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed issues where cyst rotation wouldn't work in certain circumstances. It should now be fully reliable unless the chat entry area is focused</li>
+				<li class="bugfix">Exploder is back and explodier than ever!</li>
+				<li class="tweak">Object-based shooting abilities now hit a random part of the target instead of always the chest. This currently affects detonator, harvester, and cyst</li>
+				<li class="bugfix">Fixed the rivet gun's fragmentate mode not working.</li>
+				<li class="tweak">Buffed the rivet fragments' damage, from 1.8 to 2.2</li>
+				<li class="bugfix">Fixed an error message about solnet when spawning as an observer or editing your character.</li>
+				<li class="tweak">The discord button in the UI is now normally colored.</li>
+				<li class="rscdel">Removed the Lore button from the topright. It contained bay specific stuff which isn't relevant for us.</li>
+				<li class="bugfix">Fixed detonator crate being wrongly named in cargo interface.</li>
+				<li class="tweak">Majorly increased radiation resistance on the engineering rig.  Dedicated radsuits are still slightly better though.</li>
+				<li class="tweak">Generic pouches now have more reasonable storage capacity</li>
+				<li class="tweak">Handcuffs now work on people wearing rigs. This feature was originally designed on baycode where rigs were a rare item</li>
+				<li class="bugfix">Fixed sheets in storages getting stuck on screen when merging</li>
+				<li class="tweak">Material stacks can now fit inside ordinary storage compartments.</li>
+				<li class="tweak">Rebalanced tool degradation, power use, and failure rates, to generally be more forgiving. Chance of critical failures especially majorly reduced.</li>
+				<li class="tweak">Construction skill is now factored into tool operations when crafting items.</li>
+				<li class="tweak">Hauling skill is now factored into worktime and failure rates when digging out rock walls on aegis VII.</li>
+				<li class="tweak">Brute's slam attack now deals much more damage to dense objects, especially walls.</li>
+				<li class="tweak">Brute's biobomb attack is now a bit faster to fire and deals more damage.</li>
+				<li class="tweak">Leaper's tailstrike can no longer hit walls</li>
+				<li class="tweak">Leaper's biomass cost reduced from 80 to 75</li>
+				<li class="tweak">Cysts will no longer fire at projectiles or freshly severed limbs</li>
+				<li class="bugfix">Divider puppet now properly counts as a necromorph, and won't be attacked by traps.</li>
+				<li class="bugfix">Fixed some cases where girders were almost impossible to break</li>
+				<li class="tweak">Throwing items to propel yourself in space now always works</li>
+				<li class="bugfix">Fixed issues of getting stuck when launching out of disposals</li>
+				<li class="tweak">Tier IV Necromorphs are now spawned with total biomass instead of spending your storage. Total biomass includes the mass currently invested in necromorphs and corruption nodes, so there is no requirement to save up a lump sum.</li>
+			</ul>
+			<h3 class="author">Terror4000rus updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed ghost's prefix about the characters real name. So, no more things like '(F)Cody Green/(Unknown(as Cody Green): Cody Green screams!' The prefix will appear only if the character's visual name is 'Unknown' or 'Unknown (as not-real-name)'.</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed an issue where in some instances the end of round music would suddenly switch track. Simplified the code it runs on, and this issue should no longer occur.</li>
+				<li class="bugfix">Fixed a bug where Necromorphs were erroneously counted as surviving crew at the end of the round.</li>
+				<li class="bugfix">Fixed a bug where anyone who would have escaped being marked as marooned on the USG Ishimura.</li>
+				<li class="bugfix">Fixed an uncommon issue where players would be randomly teleported into z-levels with no movement possible at all, if they reached the edge of the level. i.e. Aegis VII.</li>
+				<li class="bugfix">Fixed only suit cyclers being present in Aegis Engineering and Medical Post. One of them is now a cycler, the other a storage unit.</li>
+				<li class="bugfix">Fixed an issue where alive mobs weren't counted as surviving or evacuated crew if the player had ghosted before the calculations occur.</li>
+				<li class="tweak">Windows for the escape shuttles are now indestructible.</li>
+				<li class="rscadd">Three new end-of-round statistics added as well as variations.</li>
+				<li class="rscadd">All of the ERT shuttles are now marked post-round safezones. This adds onto the escape methods, if you were inclined to give that a shot.</li>
+				<li class="rscadd">Added teleportation if anyone runs out of a shuttle while it is in transit. Should you do this, you will now be warped into space, and your death will be assured. Don't do this.</li>
+				<li class="experiment">Rework of how escape shuttles work and act. Those who are in the pods now, will be able to walk around on a planetary landing site. If you're really lucky, it won't be infested.</li>
+				<li class="experiemnt">Experimental fix for laptops, tablets and PDA's refusing to work after evacuating.</li>
+				<li class="wip">Added in appropriate area and landmarks for the Administrative Shuttle. The code for this will likely be included in the same update by KMC.</li>
+			</ul>
+
 			<h2 class="date">20 September 2020</h2>
 			<h3 class="author">Jeser updated:</h3>
 			<ul class="changes bgimages16">
@@ -451,89 +507,6 @@
 				<li class="maptweak">Added a disposal delivery system for Mining directly to Cargo. The starting point of this can be found in the processing room. The end point can be found in the shuttle delivery area.</li>
 				<li class="bugfix">Fixed CSECO and DoM getting a broken fax machine. Damn budgetcuts!</li>
 				<li class="tweak">Attack logs are now visible for Mod+ instead of previously only Admin+.</li>
-			</ul>
-
-			<h2 class="date">08 August 2020</h2>
-			<h3 class="author">5crownik007 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Security RIGs now support some attachments: insignias, tags and storage pouches.</li>
-			</ul>
-			<h3 class="author">Nanako updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Large necromorphs (ubermorph, brute, tripod) now have long arms befitting their size. They can now strike and pull things from two tiles away</li>
-				<li class="bugfix">Fixed various issues resulting from a mob being inserted into an object while being pulled.</li>
-				<li class="bugfix">Worn clothes now update properly when limbs are severed</li>
-				<li class="tweak">Gloves and shoes are now only dropped if both hands/feet are cut off, not just one</li>
-				<li class="soundadd">RIG Healhbars now make a very loud sound when their wearer dies, special thanks to user 'aguyiguess' for providing audio!</li>
-				<li class="bugfix">Fixed corruption not regrowing into newly vacated areas</li>
-				<li class="rscadd">All RIGs now come with an internal storage compartment, accessed and used much like a backpack. Alt+click to insert items that won't go in normally due to interactions.</li>
-				<li class="rscadd">Kinesis now does visual and audio effects for attempted grabs which don't find something to pickup. These failed grabs cost extra power.</li>
-				<li class="tweak">Kinesis power costs increased a moderate degree</li>
-				<li class="bugfix">Kinesis can no longer grab objects through windows and walls.</li>
-			</ul>
-			<h3 class="author">Snypehunter007 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added an air alarm to the Processing Room.</li>
-				<li class="rscadd">Added a pistol to the Captain's safe, as a last resort.</li>
-				<li class="rscadd">Added medical wall lockers to the Aegis Colony.</li>
-				<li class="rscadd">Added a standard device power cell to the Supply Officer's locker to power the Stick of Discipline. Remember that the abuse of the SoD will result in being arrested by Security.</li>
-				<li class="tweak">Added six more Planet Cracker slots. Due to space constraints, six of the Planet Crackers voidsuit storage units are on Aegis.</li>
-				<li class="tweak">Added another Cargo Serviceman slot.</li>
-				<li class="maptweak">Changed the Captain's safe to a modern, wall-safe.</li>
-				<li class="maptweak">The Kitchen door now requires Line Cook access to open.</li>
-				<li class="bugfix">Fixed the Monitoring Room door bolt button not working.</li>
-				<li class="bugfix">Fixed the name on the janitorial closet south of Cargo.</li>
-				<li class="bugfix">Fixed the windows on the Aegis Colony Security Checkpoint not being the right type.</li>
-			</ul>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed Linoleum having no world icon.</li>
-				<li class="bugfix">Fixed tiling not appearing as valid crafting options.</li>
-				<li class="bugfix">Nutricube storage containers are now properly named.</li>
-				<li class="tweak">Increased the standard device powercell to hold 50 max charge instead of 25. Can now be used in stunprods and likeminded devices.</li>
-			</ul>
-
-			<h2 class="date">02 August 2020</h2>
-			<h3 class="author">Nanako updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="soundadd">Added new audio for the Divet pistol, provided by Lion!</li>
-			</ul>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imagedel">Removed base NT logo that appeared with [logo] on paperwork.</li>
-				<li class="imageadd">Added CEC regular logo for paperwork. It can be used with [logo].</li>
-				<li class="bugfix">Adminhelps are now received by staff again.</li>
-				<li class="bugfix">Removed leftover code that was not meant to be public in the adminhelp system.</li>
-			</ul>
-
-			<h2 class="date">25 July 2020</h2>
-			<h3 class="author">Nanako updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Downed humans who crawl through acid pools on the floor, now soak up much more acid than they would if standing and walking normally</li>
-				<li class="tweak">The Ubermorph's Sense ability now tells the distance to a live crewmember on the current floor.</li>
-			</ul>
-			<h3 class="author">Snypehunter007 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added a Seeker rifle to the main armory.</li>
-				<li class="rscadd">Added a Heavy Pulse Rifle to the Chief Security Officer's safe.</li>
-				<li class="tweak">Changed around the Security HUD icons for the different jobs so that they are more uniform.</li>
-			</ul>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Changed the way adminhelps are handled. Gameplay/Job inquiries get routed to mentors or higher. Rule issues get routed to mods or higher.</li>
-				<li class="tweak">Changed the way staffwho works. Staffwho now sorts staff into four distinct categories: Admins, Moderators, Mentors, Developers.</li>
-				<li class="soundadd">New sound for adminhelps. Also new sound for adminhelp replies.</li>
-				<li class="soundadd">New sound for votes.</li>
-				<li class="spellcheck">Fixed a spelling error in Containment round description.</li>
-				<li class="soundadd">Buh-Bye Space Station 13. Hello Ishimura.</li>
-				<li class="spellcheck">Replaced a lot of uppercase starters for necromorph structures.</li>
-				<li class="rscadd">Gas masks now spawn in Security lockers.</li>
-				<li class="tweak">Gas masks can now be placed inside the security holster that you spawn with. Currently untested on other holsters.</li>
-				<li class="tweak">Changed security jumpsuit name to armored security jumpsuit.</li>
-				<li class="bugfix">Attaches the Complex Devices skill to Research, instead of None.</li>
-				<li class="rscadd">Added a verb under the OOC Tab that opens up a Discord invite link.</li>
-				<li class="tweak">Hot Foods vendor will now no longer fill you with dread. Maybe. I can't cure that PTSD. Did replace the items, though.</li>
-				<li class="spellcheck">Fixed an improper descriptor in power nodes.</li>
 			</ul>
 		</div>
 
