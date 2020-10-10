@@ -404,7 +404,7 @@ var/list/airlock_overlays = list()
 		last_event = world.time
 	..()
 
-/obj/machinery/door/airlock/phoron/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/machinery/door/airlock/phoron/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
 	if(exposed_temperature > 300)
 		PhoronBurn(exposed_temperature)
 

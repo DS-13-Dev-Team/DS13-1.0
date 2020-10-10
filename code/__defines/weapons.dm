@@ -65,3 +65,8 @@
 #define PROJECTILE_CONTINUE   -1 	//if the projectile should continue flying after calling bullet_act()
 #define PROJECTILE_FORCE_MISS -2 	//if the projectile should treat the attack as a miss (suppresses attack and admin logs) - only applies to mobs.
 #define PROJECTILE_DEFLECT		-3	//if the projectile should continue flying in a new direction
+
+
+//Damage dealt by fire per second, is equal to the fire temperature - heat resistance, multiplied by this
+//1 damage per 200 degrees kelvin
+#define FIRE_DAMAGE_MULTIPLIER	0.005

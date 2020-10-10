@@ -19,12 +19,12 @@
 			take_damage(rand(20, 100), BLAST) //Breaks 1-2 layers
 
 
-/turf/simulated/floor/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/turf/simulated/floor/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
 
 	var/temp_destroy = get_damage_temperature()
-	if(!burnt && prob(5))
+	if(!burnt && prob(5*multiplier))
 		burn_tile(exposed_temperature)
-	else if(temp_destroy && exposed_temperature >= (temp_destroy + 100) && prob(1) && !is_plating())
+	else if(temp_destroy && exposed_temperature >= (temp_destroy + 100) && prob(1*multiplier) && !is_plating())
 		make_plating() //destroy the tile, exposing plating
 		burn_tile(exposed_temperature)
 

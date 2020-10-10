@@ -438,3 +438,33 @@
 	playsound(loc, attack_sound, VOLUME_MID, TRUE)
 
 	//if(A.attack_generic(src, damage, attacktext, environment_smash, damtype, defense) && loc && attack_sound)
+
+
+
+/*
+	Temperature handling
+*/
+/mob/living/simple_animal/get_fire_damage(var/temperature, var/multiplier)
+	if (temperature < maxbodytemp)
+		return 0
+	else
+		temperature -= maxbodytemp
+		.=..(temperature, multiplier)
+
+/mob/living/simple_animal/get_cold_protection(var/temperature)
+	if (temperature > minbodytemp)
+		return 1
+
+	else if (temperature != 0)
+		return temperature / maxbodytemp
+
+	else
+		return 1 //Special case for 0 temperature
+
+/mob/living/simple_animal/get_heat_protection(var/temperature)
+	if (temperature < maxbodytemp)
+		return 1
+	else if (temperature != 0)
+		return maxbodytemp / temperature
+	else
+		return 1 //Special case for 0 temperature

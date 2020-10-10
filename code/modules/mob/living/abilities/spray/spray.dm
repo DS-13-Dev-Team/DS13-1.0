@@ -1,10 +1,3 @@
-w//DO NOT INCLUDE THIS FILE
-//ITs here as a template for abilites to copypaste
-
-//spray
-//Spray
-//Spraying
-///atom
 /datum/extension/spray
 	name = "Spray"
 	base_type = /datum/extension/spray
@@ -17,8 +10,7 @@ w//DO NOT INCLUDE THIS FILE
 	var/atom/target_atom
 	var/angle
 	var/length
-	var/chemical
-	var/volume_tick
+
 	var/tick_delay
 	var/stun
 	var/duration
@@ -28,7 +20,6 @@ w//DO NOT INCLUDE THIS FILE
 	var/stopped_at
 
 	var/ongoing_timer
-	var/tick_timer
 
 	var/list/affected_turfs = list()
 	var/vector2/direction
@@ -36,10 +27,11 @@ w//DO NOT INCLUDE THIS FILE
 
 	//Registry:
 	var/datum/click_handler/spray/spray_handler	//Click handler for aiming the spray
-	var/obj/effect/particle_system/chemspray/fx	//Particle system for chem particles
+	var/obj/effect/particle_system/spray/fx	//Particle system for chem particles
+	var/fx_type = /obj/effect/particle_system/spray
 
-	var/obj/item/chem_atom
-	var/datum/reagents/chem_holder
+
+	var/particle_color = "#FFFFFF"
 
 /*
 Vars/
@@ -47,21 +39,20 @@ Vars/
 	Target:		Where are we spraying? This should be a turf, only used for direction
 	Angle:		Angle of Cone
 	Length:		How long is cone, in tiles
-	Chemical:	What chem? Should be a /datum/reagent typepath
-	Volume:		Units of the chemical to spray, per tile, per second
-	Tick Delay:	Time between spray ticks
 	Stun:		If true, user cant move for duration
 	Duration:	How long to spray for
 	Cooldown:	Starts after duration
 */
-
-/datum/extension/spray/New(var/atom/source, var/atom/target, var/angle, var/length, var/chemical, var/volume, var/tick_delay, var/stun, var/duration, var/cooldown, var/mob/override_user = null)
+/datum/extension/spray/New(var/atom/source, var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/mob/override_user = null, var/list/extra_data)
 	.=..()
+	world << "Source: [source], Target [target], Angle: [angle], Cooldown: [cooldown]"
 	src.source = source
 	if (override_user)
+		world << "User overridden [override_user]"
 		user = override_user
 	else if (isliving(source))
 		user = source
+		world << "User set to source [source]"
 
 	if (user && user.client)
 		spray_handler = user.PushClickHandler(/datum/click_handler/spray)
@@ -70,16 +61,17 @@ Vars/
 	set_target_loc(target.get_global_pixel_loc())
 	src.angle = angle
 	src.length = length
-	src.chemical = chemical
-	src.tick_delay = tick_delay
-	src.volume_tick = volume / ((1 SECOND) / tick_delay)
+
 
 	src.stun	=	stun
 	src.duration = duration
 	src.cooldown = cooldown
+
+	handle_extra_data(extra_data)
 	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/start), 0)
 
-
+/datum/extension/spray/proc/handle_extra_data(var/list/data)
+	.=..()
 
 /datum/extension/spray/proc/set_target_loc(var/vector2/newloc, var/target_object)
 	target = newloc
@@ -137,40 +129,31 @@ Vars/
 
 		recalculate_cone()
 
-		chem_atom = new(source)
-		chem_holder = new (2**24, chem_atom)
-		var/datum/reagent/R = chem_holder.add_reagent(/datum/reagent/acid/necromorph, chem_holder.maximum_volume, safety = TRUE)
-
 		//Lets create the chemspray fx
-		fx = new(source, direction, duration, length, angle)
-		fx.particle_color = R.color
+		fx = new fx_type(source, direction, duration, length, angle)
+		fx.particle_color = particle_color
 		fx.start()
 
 		if (stun && isliving(user))
 			user.set_move_cooldown(duration)
 
-		tick()	//Start the first tick
+		START_PROCESSING(SSfastprocess, src)
 
 /datum/extension/spray/proc/stop()
+	STOP_PROCESSING(SSfastprocess, src)
 	deltimer(ongoing_timer)
-	deltimer(tick_timer)
 	if (spray_handler && user)
 		user.RemoveClickHandlersByType(/datum/click_handler/spray)
 		spray_handler = null
 	stopped_at = world.time
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 	QDEL_NULL(fx)
-	QDEL_NULL(chem_holder)
-	QDEL_NULL(chem_atom)
 
 
-/datum/extension/spray/proc/tick()
-	for (var/t in affected_turfs)
-		var/turf/T = t
-		chem_holder.trans_to(T, volume_tick)
-		for (var/atom/A in T)
-			chem_holder.trans_to(A, volume_tick)
-	tick_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/tick), tick_delay, TIMER_STOPPABLE)
+
+/datum/extension/spray/Process()
+	if (stopped_at)
+		return PROCESS_KILL
 
 
 /datum/extension/spray/proc/finish_cooldown()
@@ -207,21 +190,30 @@ Vars/
 		return FALSE
 	.=..()
 
-/atom/proc/spray_ability(var/atom/target, var/angle, var/length, var/chemical, var/volume, var/tick_delay, var/stun, var/duration, var/cooldown, var/windup, var/mob/override_user = null)
+/atom/proc/spray_ability(var/subtype = /datum/extension/spray,  var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/windup, var/mob/override_user = null, var/list/extra_data)
 	if (!can_spray())
 		return FALSE
-	var/datum/extension/spray/S = set_extension(src, /datum/extension/spray,target, angle, length, chemical, volume, tick_delay, stun, duration, cooldown, override_user)
+	var/list/arguments = list(src, subtype, target, angle, length, stun, duration, cooldown, override_user, extra_data)
+	var/datum/extension/spray/S = set_extension(arglist(arguments))
 	spawn(windup)
 		S.start()
 	return TRUE
+
+/atom/proc/stop_spraying()
+	var/datum/extension/spray/S = get_extension(src, /datum/extension/spray)
+	if (S)
+		S.stop()
+
+
 
 /***********************
 	Spray visual effect
 ************************/
 /*
 	Particle System
+	Sprays particles in a cone
 */
-/obj/effect/particle_system/chemspray
+/obj/effect/particle_system/spray
 	particle_type = /obj/effect/particle/spray
 	autostart = FALSE
 	tick_delay = 0.15 SECONDS
@@ -249,7 +241,12 @@ Vars/
 	var/datum/extension/spray/host
 	has_mousemove = TRUE
 
+	var/reagent_type = /datum/reagent/acid/necromorph
+
 /datum/click_handler/spray/MouseMove(object,location,control,params)
 	if (host && user && user.client)
 		var/vector2/mouseloc = get_global_pixel_click_location(params, user.client)
 		host.set_target_loc(mouseloc, object)
+
+
+

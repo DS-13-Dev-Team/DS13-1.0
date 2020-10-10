@@ -24,7 +24,13 @@
 	var/lifespan	=	1 SECOND
 	var/vector2/direction
 
+	var/list/random_icons
+
 /obj/effect/particle/New(var/location, var/vector2/direction, var/lifespan, var/range, var/vector2/offset, var/color)
+
+	if (random_icons)
+		icon_state = pick(random_icons)
+
 	//Set starting pixel offset
 	if (offset)
 		pixel_x = offset.x
