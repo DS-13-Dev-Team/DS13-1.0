@@ -1098,18 +1098,22 @@ window "mainwindow"
 		size = 640x440
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-maximized = true
 		icon = 'icons\\ss13_64.png'
 		macro = "macro"
 		menu = "menu"
+		outer-size = 1616x916
+		inner-size = 1600x857
 	elem "asset_cache_browser"
 		type = BROWSER
 		pos = 424,208
 		size = 1x1
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = ""
 	elem "hotkey_toggle"
@@ -1118,6 +1122,7 @@ window "mainwindow"
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = none
+		background-color = none
 		saved-params = ""
 		text = "Hotkey Toggle"
 		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
@@ -1128,6 +1133,7 @@ window "mainwindow"
 		size = 634x416
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
@@ -1147,6 +1153,7 @@ window "mainwindow"
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
@@ -1159,6 +1166,7 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1166,6 +1174,7 @@ window "mapwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 654x494
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -1186,6 +1195,7 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1193,6 +1203,7 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 654x494
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
@@ -1208,14 +1219,15 @@ window "rpane"
 	elem "rpane"
 		type = MAIN
 		pos = 281,0
-		size = 640x480
+		size = 672x577
 		anchor1 = none
 		anchor2 = none
 		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
+		statusbar = false
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
+		outer-size = 672x577
+		inner-size = 656x538
 	elem "rpanewindow"
 		type = CHILD
 		pos = 0,0
@@ -1247,17 +1259,6 @@ window "rpane"
 		saved-params = "is-checked"
 		text = "Changelog"
 		command = "Changelog"
-		group = "rpanemode"
-	elem "Lore"
-		type = BUTTON
-		pos = 413,0
-		size = 67x16
-		anchor1 = none
-		anchor2 = none
-		background-color = none
-		saved-params = "is-checked"
-		text = "Lore"
-		command = "Lore"
 		group = "rpanemode"
 	elem "forumb"
 		type = BUTTON
@@ -1297,14 +1298,12 @@ window "rpane"
 		button-type = pushbox
 	elem "discordb"
 		type = BUTTON
-		pos = 484,0
+		pos = 412,0
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
 		font-size = 1
-		font-style = "bold underline"
-		text-color = #ffffff
-		background-color = #663300
+		background-color = none
 		saved-params = "is-checked"
 		text = "Discord"
 		command = "discord"
