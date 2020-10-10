@@ -69,6 +69,13 @@
 
 
 
+
+
+
+
+/*
+	Core Takeover Code
+*/
 /mob/living/simple_animal/necromorph/divider_component/head/proc/takeover(var/mob/living/carbon/human/H)
 	//Safety checks done, we are past the point of no return
 
@@ -110,6 +117,10 @@
 	mind.transfer_to(H)
 	H.verbs +=/mob/living/carbon/human/proc/abandon_vessel
 
+	//Fix up comms
+	H.remove_all_languages()
+	H.add_language(LANGUAGE_NECROCHAT)
+
 	//Apply debuffs
 	set_extension(H, /datum/extension/divider_puppet)
 	set_extension(H, /datum/extension/used_vessel)
@@ -119,6 +130,15 @@
 
 	//Delete this mob
 	qdel(src)
+
+
+
+
+
+
+
+
+
 
 
 /*

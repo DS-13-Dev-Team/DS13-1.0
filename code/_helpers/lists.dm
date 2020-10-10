@@ -856,10 +856,12 @@ proc/dd_sortedTextList(list/incoming)
 /proc/dump_list(var/list/L, var/depth = 0)
 	var/output = ""
 	var/depthstring = ""
+
 	for (var/i in 0 to depth)
 		depthstring = "[depthstring]-"
 
 	for (var/element in L)
+		var/typestring = "(?)"
 		if (islist(element))
 			output += "[dump_list(element, depth+1)]"
 		else if (L[element])
@@ -869,10 +871,16 @@ proc/dd_sortedTextList(list/incoming)
 				output += linestring
 				output += "[dump_list(L[element], depth+1)]"
 			else
-				linestring += "[L[element]]\n"
+				var/datum/thing = L[element]
+				if (istype(thing))
+					typestring = "([thing.type])"
+				linestring += "[L[element]][typestring]\n"
 				output += linestring
 		else
-			output += "[depthstring][element]\n"
+			var/datum/thing = element
+			if (istype(thing))
+				typestring = "([thing.type])"
+			output += "[depthstring][element][typestring]\n"
 
 	return output
 

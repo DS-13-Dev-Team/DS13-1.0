@@ -155,7 +155,6 @@ var/global/list/string_slot_flags = list(
 	var/rkey = 0
 	paths = typesof(/datum/species)
 	for(var/T in paths)
-
 		rkey++
 
 		var/datum/species/S = T
