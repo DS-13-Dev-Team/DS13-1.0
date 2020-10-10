@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	user.client.screen |= preview
 	user.verbs |= /mob/verb/placement_rotate
 	winset(user, "rotate_placement", "parent=macro;name=R;command=rotate_placement")
-	winset(user, "rotate_placement", "parent=hotkeymode;name=R;command=rotate_placement")
+	//winset(user, "rotate_placement", "parent=hotkeymode;name=R;command=rotate_placement")
 
 
 //This proc stops everything, and makes the handler remove+delete itself. Call this to end things
@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 		stopped = TRUE
 		if (user && user.client)
 			winset(user, "macro.rotate_placement", "parent=")
-			winset(user, "hotkeymode.rotate_placement", "parent=")
+			//winset(user, "hotkeymode.rotate_placement", "parent=")
 			user.verbs -= /mob/verb/placement_rotate
 			user.client.show_popup_menus = TRUE
 			user.client.screen -= preview
