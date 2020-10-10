@@ -131,6 +131,9 @@
 			I.color = stripe_color
 			overlays += I
 
+/obj/structure/wall_frame/indestructible
+	health = 9999
+
 /obj/structure/wall_frame/titanium
 	color = COLOR_TITANIUM
 

@@ -96,8 +96,8 @@
 	fulltile = TRUE
 	win_path = /obj/structure/window/reinforced/full
 
-/obj/effect/wingrille_spawn/reinforced/crescent
-	name = "Crescent window grille spawner"
+/obj/effect/wingrille_spawn/reinforced/indestructible
+	name = "Indestructible window grille spawner"
 	win_path = /obj/structure/window/reinforced/crescent
 
 /obj/effect/wingrille_spawn/phoron

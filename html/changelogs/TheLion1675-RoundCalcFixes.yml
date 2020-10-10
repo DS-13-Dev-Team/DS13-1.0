@@ -1,0 +1,48 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: TheLion1675
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - bugfix: "Fixed an issue where in some instances the end of round music would suddenly switch track. Simplified the code it runs on, and this issue should no longer occur."
+  - bugfix: "Fixed a bug where Necromorphs were erroneously counted as surviving crew at the end of the round."
+  - bugfix: "Fixed a bug where anyone who would have escaped being marked as marooned on the USG Ishimura."
+  - bugfix: "Fixed an uncommon issue where players would be randomly teleported into z-levels with no movement possible at all, if they reached the edge of the level. i.e. Aegis VII."
+  - bugfix: "Fixed only suit cyclers being present in Aegis Engineering and Medical Post. One of them is now a cycler, the other a storage unit."
+  - bugfix: "Fixed an issue where alive mobs weren't counted as surviving or evacuated crew if the player had ghosted before the calculations occur."
+  - tweak: "Windows for the escape shuttles are now indestructible."
+  - rscadd: "Three new end-of-round statistics added as well as variations."
+  - rscadd: "All of the ERT shuttles are now marked post-round safezones. This adds onto the escape methods, if you were inclined to give that a shot."
+  - rscadd: "Added teleportation if anyone runs out of a shuttle while it is in transit. Should you do this, you will now be warped into space, and your death will be assured. Don't do this."
+  - experiment: "Rework of how escape shuttles work and act. Those who are in the pods now, will be able to walk around on a planetary landing site. If you're really lucky, it won't be infested."
+  - experiemnt: "Experimental fix for laptops, tablets and PDA's refusing to work after evacuating."
+  - wip: "Added in appropriate area and landmarks for the Administrative Shuttle. The code for this will likely be included in the same update by KMC."

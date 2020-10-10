@@ -78,3 +78,11 @@
 
 
 //------------------Joke RT------------------//
+
+//------------------Escape-------------------//
+
+/area/ERT/escapebase
+	name = "\improper Evacuation Site - Alpha"
+	icon_state = "escapebase"
+	requires_power = 0
+	dynamic_lighting = 0

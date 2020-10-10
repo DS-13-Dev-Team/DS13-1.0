@@ -220,6 +220,18 @@
 /obj/effect/shuttle_landmark/escape_pod/transit/pod9
 	number = 9
 
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/shuttle
+	warmup_time = 10
+	shuttle_area = /area/ishimura/lower/security/escape/adminshuttle
+	number = 10
+/obj/effect/shuttle_landmark/escape_pod/start/shuttle
+	number = 10
+	base_turf =/turf/simulated/floor
+/obj/effect/shuttle_landmark/escape_pod/out/shuttle
+	number = 10
+/obj/effect/shuttle_landmark/escape_pod/transit/shuttle
+	number = 10
+
 
 //////// ERT SHUTTLES \\\\\\\\
 

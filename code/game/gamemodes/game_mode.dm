@@ -324,65 +324,103 @@ var/global/list/additional_antag_types = list()
 
 	uplink_purchase_repository.print_entries()
 
-	var/clients = 0
 	var/surviving_humans = 0
 	var/surviving_total = 0
 	var/ghosts = 0
 	var/escaped_humans = 0
 	var/escaped_total = 0
+	var/alive_necros = 0
+	var/escaped_necros = 0
 
-	for(var/mob/M in GLOB.player_list)
-		if(M.client)
-			clients++
-			if(M.stat != DEAD)
+	for(var/mob/M in SSmobs.mob_list)
+		if (QDELETED(M))
+			continue
+
+		if(isghost(M))
+			ghosts++
+		else if (isliving(M))
+			if (M.stat == DEAD)
+				continue
+			var/escaped = FALSE
+			var/area/A = get_area(M)
+			if(A && is_type_in_list(A, GLOB.using_map.post_round_safe_areas))
+				escaped = TRUE
+			if(!M.is_necromorph())
 				surviving_total++
-				if(ishuman(M))
-					surviving_humans++
-				var/area/A = get_area(M)
-				if(A && is_type_in_list(A, GLOB.using_map.post_round_safe_areas))
+				if(escaped)
 					escaped_total++
 					if(ishuman(M))
-						escaped_humans++
-			else if(isghost(M))
-				ghosts++
-
-		if(M.get_preference_value(/datum/client_preference/play_admin_midis) == GLOB.PREF_YES)
-			if (escaped_total < 1)
-				sound_to(world, sound('sound/music/ds13/twinkle.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
-			if (escaped_total > 0 && surviving_total < 5)
-				sound_to(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
-			if (escaped_total > 4)
-				sound_to(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+						surviving_humans++
+						if(escaped)
+							escaped_humans++
+			else
+				alive_necros++
+				if(escaped)
+					escaped_necros++
 
 	var/text = ""
-	if(escaped_total > 0 && escaped_total < 4) // Between 1 and 3 players escaped, count as Necro Minor Victory.
+	if(escaped_humans > 0 && escaped_humans < 4) // Between 1 and 3 players escaped, count as Necro Minor Victory.
 		text += "<br><h2><b><center><span class='danger'>Necromorph Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Necromorphs have slain a majority of the crew!</center>"
 		text += "<br><b><center>And so ends the struggle on [station_name()]...</center></b>"
-		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which [escaped_total>1 ? "managed to <b>[escaped_total] evacuate</b>" : "was <b>one evacuee</b>"]</center>"
-	else if(escaped_total > 3 && escaped_total < 9) // Between 4 and 8? Count as survivor minor.
+		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
+		sound_to(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+		if(escaped_necros > 0)
+			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
+			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
+				text += "<br><center><h3>The Marker is <span class ='warning'> displeased!</h3></span></center>"
+			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
+				text += "<br><center><h3>The Marker is <span class ='danger'> angry!</h3></span></center>"
+			else if(escaped_necros > 6) // More than 7? Marker now has abandonment issues.
+				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</h3></span></center>"
+	else if(escaped_humans > 3 && escaped_humans < 9) // Between 4 and 8? Count as survivor minor.
 		text += "<br><h2><b><center><span class='success'>Survivor Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Some survivors managed to evacuate!</center>"
 		text += "<br><b><cennter>And so ends the struggle on [station_name()]...</center></b>"
-		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which [escaped_total>1 ? "managed to <b>[escaped_total] evacuate</b>" : "was <b>one evacuee</b>"]</center>"
-	else if(escaped_total > 8) // 9 or more escaped? Big party. Survivor major.
+		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
+		sound_to(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+		if(escaped_necros > 0)
+			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
+			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
+				text += "<br><center><h3>The Marker is <span class ='warning'> displeased!</h3></span></center>"
+			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
+				text += "<br><center><h3>The Marker is <span class ='danger'> angry!</h3></span></center>"
+			else if(escaped_necros > 6) // More than 7? Marker now has abandonment issues.
+				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</h3></span></center>"
+	else if(escaped_humans > 8) // 9 or more escaped? Big party. Survivor major.
 		text += "<br><h1><b><center><span class='success'>Survivor Major Victory!</span></center></b></h1>"
 		text += "<br><center>A majority of the survivors managed to evacuate!</center>"
 		text += "<br><center><b>And so ends the struggle on [station_name()]...</center></b>"
-		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which [escaped_total>1 ? "managed to <b>[escaped_total] evacuate</b>" : "was <b>one evacuee</b>"]</center>"
-	else if(escaped_total < 1) // Big sad. Necro major. No evacuees.
+		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
+		sound_to(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+		if(escaped_necros > 0)
+			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
+			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
+				text += "<br><center><h3>The Marker is <span class ='warning'> displeased!</h3></span></center>"
+			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
+				text += "<br><center><h3>The Marker is <span class ='danger'> angry!</h3></span></center>"
+			else if(escaped_necros > 6) // More than 7? Marker now has abandonment issues.
+				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</h3></span></center>"
+	else if(escaped_humans < 1) // Big sad. Necro major. No evacuees.
 		text += "<br><h1><b><center><span class='danger'>Necromorph Major Victory!</h1></center></b></large>"
 		text += "<br><center>The Necromorphs have slain the entire crew!</center>"
 		text += "<br><br><center><b>And so ends another struggle on [station_name()]...</b></center>"
-		text += "<br><center>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"] of which <b>none</b> managed to evacuate."
+		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"] of which <b>none</b> managed to evacuate."
+		sound_to(world, sound('sound/music/ds13/twinkle.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+		if(escaped_necros > 0)
+			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
+			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
+				text += "<br><center><h3>The Marker is <span class ='warning'> displeased!</h3></span></center>"
+			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
+				text += "<br><center><h3>The Marker is <span class ='danger'> angry!</h3></span></center>"
+			else if(escaped_necros > 6) // More than 6? Marker now has abandonment issues.
+				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</h3></span></center>"
 	else // Safety clause. Pray to god this never gets ran. Wouldn't know why it would do that, if it did.
 		text += "<br>DEBUG: You fucked up. This is not meant to happen."
 		text += "<br>Contact Lion immediately."
 	to_world(text)
 
 
-	if(clients > 0)
-		feedback_set("round_end_clients",clients)
 	if(ghosts > 0)
 		feedback_set("round_end_ghosts",ghosts)
 	if(surviving_humans > 0)

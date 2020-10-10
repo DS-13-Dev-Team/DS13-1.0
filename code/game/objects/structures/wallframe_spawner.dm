@@ -93,6 +93,13 @@
 	icon_state = "r-wingrille"
 	win_path = /obj/structure/window/reinforced/full
 
+/obj/effect/wallframe_spawn/reinforced/shuttle
+	name = "reinforced wall frame window spawner"
+	desc = "A reinforced shuttle window. Impossible to break."
+	icon_state = "r-wingrille"
+	win_path = /obj/structure/window/reinforced/full/indestructible
+	frame_path = /obj/structure/wall_frame/indestructible
+
 /obj/effect/wallframe_spawn/reinforced/titanium
 	name = "reinforced titanium wall frame window spawner"
 	frame_path = /obj/structure/wall_frame/titanium

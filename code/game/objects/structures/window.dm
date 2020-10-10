@@ -471,6 +471,10 @@
 	icon_state = "rwindow_full"
 	resistance = 15
 
+/obj/structure/window/reinforced/full/indestructible
+	icon_state = "rwindow_full"
+	resistance = 100
+
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
 	desc = "It looks rather strong and opaque. Might take a few good hits to shatter it."
