@@ -301,18 +301,18 @@
 	location.hotspot_expose(fire_burn_temperature(), 50, 1)
 
 /mob/living/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
-	var/protection = get_heat_protection(temperature)
+	var/protection = get_heat_protection(exposed_temperature)
 	if (protection >= 1)
 		return
 	else
-		var/damage = get_fire_damage(temperature, multiplier)
+		var/damage = get_fire_damage(exposed_temperature, multiplier)
 		adjustFireLoss(damage)
 
 	//We may be ignited if protection is low enough. 30% chance at 0 protection
 	if (prob((1 - protection) * 30))
 		//once our fire_burn_temperature has reached the temperature of the fire that's giving fire_stacks, stop adding them.
 		//allow fire_stacks to go up to 4 for fires cooler than 700 K, since are being immersed in flame after all.
-		if(fire_stacks <= 4 || fire_burn_temperature() < temperature)
+		if(fire_stacks <= 4 || fire_burn_temperature() < exposed_temperature)
 			adjust_fire_stacks(2)
 		IgniteMob()
 

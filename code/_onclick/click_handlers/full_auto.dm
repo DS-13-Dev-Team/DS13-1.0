@@ -109,15 +109,8 @@
 
 	//Ok now lets set the desired state
 	if (!enable)
-		if (!CH)
-			//If we're turning it off, but the click handler doesn't exist, then we have nothing to do
-			return
+		stop_firing()
 
-		//Todo: make client click handlers into a list
-		if (CH.user) //Remove our handler from the client
-			CH.user.RemoveClickHandler(CH)
-			CH = null
-		return
 
 	else
 		//We're trying to turn things on
@@ -153,3 +146,10 @@
 				if (!P.can_ever_fire())
 					. =  FALSE
 
+
+/datum/firemode/automatic/stop_firing()
+	if (CH)
+		//Todo: make client click handlers into a list
+		if (CH.user) //Remove our handler from the client
+			CH.user.RemoveClickHandler(CH)
+		CH = null

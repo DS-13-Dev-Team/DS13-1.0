@@ -105,9 +105,10 @@
 		//If this var is set, it means spawn a specific subclass of firemode
 		if (L["mode_type"])
 			var/newtype = L["mode_type"]
-			firemodes[i] = new newtype(src, firemodes[i])
+			var/datum/firemode/F = new newtype(src, L)
+			firemodes[i] = F
 		else
-			firemodes[i] = new /datum/firemode(src, firemodes[i])
+			firemodes[i] = new /datum/firemode(src, L)
 
 	//Properly initialize the default firing mode
 	if (firemodes.len)
@@ -169,7 +170,7 @@
 		return 0
 
 	var/mob/living/M = user
-	if(!safety() && world.time > last_safety_check + 5 MINUTES && !user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
+	if(!firing && !safety() && world.time > last_safety_check + 5 MINUTES && !user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		if(prob(30))
 			toggle_safety()
 			return 1
@@ -591,8 +592,7 @@
 	. = ..()
 	if(user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		if(firemodes.len > 1)
-			var/datum/firemode/current_mode = current_firemode
-			to_chat(user, "The fire selector is set to [current_mode.name].")
+			to_chat(user, "The fire selector is set to [current_firemode.name].")
 	to_chat(user, "The safety is [safety() ? "on" : "off"].")
 	last_safety_check = world.time
 
@@ -698,7 +698,8 @@
 
 //Used by sustained weapons. Call to make the gun stop doing its thing
 /obj/item/weapon/gun/proc/stop_firing()
-	update_firemode()
+	next_fire_time = world.time + max(fire_delay, 1)	//A tiny minimum delay is needed to prevent an additional click going through on sustained/automatic weapons when the mouse button is released
+	update_firemode(FALSE)
 	update_click_handlers()
 
 

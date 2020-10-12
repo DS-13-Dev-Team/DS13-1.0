@@ -50,12 +50,19 @@
 		if (propname in gun.vars)
 			gun.vars[propname] = original_vars[propname]
 
+
+//Only called when override_fire == TRUE. Called INSTEAD of the parent gun firing. on_fire will not be called in this case
 /datum/firemode/proc/fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	return
 
+//Called every time just after the parent gun fires
 /datum/firemode/proc/on_fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0, var/obj/projectile)
 	return
 
 //Called whenever the firemode is switched to, or the gun is picked up while its active
 /datum/firemode/proc/update()
 	return
+
+
+//Called from update. Ceases any ongoing operations
+/datum/firemode/proc/stop_firing()

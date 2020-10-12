@@ -726,14 +726,14 @@ meteor_act
 			if(C.min_cold_protection_temperature && C.min_cold_protection_temperature <= temperature)
 				. |= C.cold_protection
 
-/mob/living/carbon/human/get_heat_protection(temperature) //Temperature is the temperature you're being exposed to.
+/mob/living/carbon/human/get_heat_protection(var/temperature) //Temperature is the temperature you're being exposed to.
 	//Not hot enough to bother us
 	if (temperature < species.heat_level_1)
 		return 1
 
 	else
 		//our natural heat resistance is deducted from this
-		temperature -= heat_level_1
+		temperature -= species.heat_level_1
 
 	var/thermal_protection_flags = get_heat_protection_flags(temperature)
 	return get_thermal_protection(thermal_protection_flags)

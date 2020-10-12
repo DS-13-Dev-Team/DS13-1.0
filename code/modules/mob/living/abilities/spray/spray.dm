@@ -45,14 +45,11 @@ Vars/
 */
 /datum/extension/spray/New(var/atom/source, var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/mob/override_user = null, var/list/extra_data)
 	.=..()
-	world << "Source: [source], Target [target], Angle: [angle], Cooldown: [cooldown]"
 	src.source = source
 	if (override_user)
-		world << "User overridden [override_user]"
 		user = override_user
 	else if (isliving(source))
 		user = source
-		world << "User set to source [source]"
 
 	if (user && user.client)
 		spray_handler = user.PushClickHandler(/datum/click_handler/spray)
@@ -85,7 +82,12 @@ Vars/
 
 /datum/extension/spray/proc/get_direction()
 	//As long as we're not on the same turf, we can do this easily
-	var/vector2/ourloc = source.get_global_pixel_loc()
+	var/vector2/ourloc
+	if (isturf(source.loc))
+		ourloc = source.get_global_pixel_loc()
+	else
+		var/atom/A = source.get_toplevel_atom()
+		ourloc = A.get_global_pixel_loc()
 	if (!(ourloc ~= target))
 
 		.=Vector2.VecDirectionBetween(ourloc, target)
@@ -125,7 +127,9 @@ Vars/
 /datum/extension/spray/proc/start()
 	if (!started_at)
 		started_at	=	world.time
-		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/stop), duration, TIMER_STOPPABLE)
+		//A duration of 0 lasts indefinitely, until something stops it
+		if (duration)
+			ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/stop), duration, TIMER_STOPPABLE)
 
 		recalculate_cone()
 
@@ -192,12 +196,12 @@ Vars/
 
 /atom/proc/spray_ability(var/subtype = /datum/extension/spray,  var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/windup, var/mob/override_user = null, var/list/extra_data)
 	if (!can_spray())
-		return FALSE
+		return null
 	var/list/arguments = list(src, subtype, target, angle, length, stun, duration, cooldown, override_user, extra_data)
 	var/datum/extension/spray/S = set_extension(arglist(arguments))
 	spawn(windup)
 		S.start()
-	return TRUE
+	return S
 
 /atom/proc/stop_spraying()
 	var/datum/extension/spray/S = get_extension(src, /datum/extension/spray)

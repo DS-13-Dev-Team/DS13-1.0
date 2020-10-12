@@ -20,8 +20,9 @@
 	var/alpha_end	=	0
 
 	var/matrix/target_transform
+	var/matrix/starting_transform
 
-	var/lifespan	=	1 SECOND
+	var/lifespan	=	1.0 SECOND
 	var/vector2/direction
 
 	var/list/random_icons
@@ -37,17 +38,21 @@
 		pixel_y = offset.y
 		release_vector(offset)
 
+
+
 	//Rotate towards facing direction
 	src.direction = direction
 	if (direction)
-		transform = direction.Rotation()
-
+		starting_transform = direction.Rotation()
+	else
+		starting_transform = matrix()
+	target_transform = matrix(starting_transform)
 
 	if (color)
 		src.color = color
 
 	//Set starting scale
-	transform.Scale(scale_x_start, scale_y_start)
+	starting_transform.Scale(scale_x_start, scale_y_start)
 
 	//Setup expiration
 	src.lifespan = lifespan
@@ -59,7 +64,6 @@
 	release_vector(direction)
 
 	//And the transform we'll eventually transition to
-	target_transform = matrix(transform)
 	target_transform.Scale(scale_x_end, scale_y_end)
 	.=..()
 
@@ -67,7 +71,8 @@
 	.=..()
 
 	//Lets start the animation!
-	animate(src,
+	animate(src, transform = starting_transform, time = 0)
+	animate(
 	pixel_x = pixel_x+pixel_delta.x,
 	pixel_y = pixel_y+pixel_delta.y,
 	transform = target_transform,
