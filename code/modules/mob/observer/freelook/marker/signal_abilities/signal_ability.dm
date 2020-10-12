@@ -59,6 +59,7 @@
 
 	//If true, this spell can only be cast after the marker has activated
 	//If false, it can be cast anytime from roundstart
+	//If -1, it can only be cast BEFORE marker activation
 	var/marker_active_required = FALSE
 
 
@@ -118,6 +119,9 @@
 		to_chat(user, SPAN_WARNING(check))
 		return
 
+	if (!pre_cast(user))
+		return
+
 	user.RemoveClickHandlersByType(/datum/click_handler/placement/ability)	//Remove any old placement handlers first, a mob should never have more than one of these
 	user.RemoveClickHandlersByType(/datum/click_handler/target)	//Remove targeting handlers too
 
@@ -137,7 +141,8 @@
 			to_chat(user, SPAN_NOTICE("Now Casting [name]!"))
 			select_target(user, user)
 
-
+/datum/signal_ability/proc/pre_cast(var/mob/user)
+	return TRUE
 
 //Path to the end of the cast
 /datum/signal_ability/proc/finish_casting(var/mob/user, var/atom/target,  var/list/data)
@@ -344,7 +349,11 @@
 	if (marker_active_required)
 		var/obj/machinery/marker/M = get_marker()
 		if (M && !M.active)
-			return FALSE
+			if (marker_active_required == TRUE)
+				return FALSE
+		else if (M && M.active)
+			if (marker_active_required == -1)
+				return FALSE
 
 	return TRUE
 
