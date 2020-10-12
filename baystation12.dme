@@ -2182,6 +2182,7 @@
 #include "code\modules\mob\observer\freelook\marker\signal.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\_defines.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\assault_wave.dm"
+#include "code\modules\mob\observer\freelook\marker\signal_abilities\audio.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\blood_writing.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\blowout.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\breach.dm"
