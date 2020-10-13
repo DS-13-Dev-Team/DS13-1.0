@@ -154,8 +154,9 @@
 
 	var/speaker_name = ""
 
-	if(name != real_name)
-		speaker_name = "<span class='warning'>([real_name])</span> "
+	if(real_name)
+		if(name != real_name && name != "Unknown (as [real_name])")
+			speaker_name = "<span class='warning'>([real_name])</span> "
 
 	var/track = "([ghost_follow_link(src, M)])"
 
