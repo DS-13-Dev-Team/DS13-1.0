@@ -1978,3 +1978,53 @@
 	result = /datum/reagent/nanoblood
 	required_reagents = list(/datum/reagent/dexalinp = 1, /datum/reagent/iron = 1, /datum/reagent/blood = 1)
 	result_amount = 3
+
+// New recipes as of 15th October, 2020. - Lion
+
+/datum/chemical_reaction/phlogiston
+	name = "Phlogiston"
+	result = null
+	required_reagents = list(/datum/reagent/aluminum = 1, /datum/reagent/toxin/phoron = 1, /datum/reagent/acid = 1 )
+	result_amount = 1
+	mix_message = "The solution thickens and begins to bubble."
+
+/datum/chemical_reaction/phlogiston/on_reaction(var/datum/reagents/holder, var/created_volume, var/reaction_flags)
+	..()
+	var/turf/location = get_turf(holder.my_atom.loc)
+	for(var/turf/simulated/floor/target_tile in range(0,location))
+		target_tile.assume_gas(/datum/reagent/toxin/phoron, created_volume, 400+T0C)
+		spawn (0) target_tile.hotspot_expose(700, 400)
+
+/datum/chemical_reaction/vecuronium_bromide
+	name = "Vecuronium Bromide"
+	result = /datum/reagent/vecuronium_bromide
+	required_reagents = list(/datum/reagent/ethanol = 1, /datum/reagent/mercury = 2, /datum/reagent/hydrazine = 2)
+	result_amount = 1
+
+/datum/reagent/vecuronium_bromide
+	name = "Vecuronium Bromide"
+	description = "A powerful paralytic."
+	taste_description = "metallic"
+	reagent_state = SOLID
+	color = "#ff337d"
+	metabolism = REM * 0.5
+	overdose = REAGENTS_OVERDOSE * 0.5
+	value = 2.6
+
+/datum/reagent/vecuronium_bromide/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/threshold = 2
+
+	if(M.chem_doses[type] >= metabolism * threshold * 0.5)
+		M.confused = max(M.confused, 2)
+		M.add_chemical_effect(CE_VOICELOSS, 1)
+	if(M.chem_doses[type] > threshold * 0.5)
+		M.make_dizzy(3)
+		M.Weaken(2)
+	if(M.chem_doses[type] == round(threshold * 0.5, metabolism))
+		to_chat(M, SPAN_WARNING("Your muscles slacken and cease to obey you."))
+	if(M.chem_doses[type] >= threshold)
+		M.add_chemical_effect(CE_SEDATE, 1)
+		M.eye_blurry = max(M.eye_blurry, 10)
+
+	if(M.chem_doses[type] > 1 * threshold)
+		M.adjustToxLoss(removed)
