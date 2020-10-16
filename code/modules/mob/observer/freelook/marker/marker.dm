@@ -201,7 +201,8 @@
 	var/mob/observer/eye/signal/master/S = new(M)
 
 	playermob = S
-	qdel(M)
+	if (!isliving(M))
+		qdel(M)
 	update_icon()
 	//GLOB.unitologists.add_antagonist(playermob.mind)
 	return S
@@ -221,6 +222,9 @@
 		QDEL_NULL(playermob)
 		update_icon()
 		return S
+	else
+		//Just vacate the player slot so someone else can join
+		player = null
 
 //This is defined at atom level to enable non-marker spawning systems in future
 /atom/proc/get_available_biomass()

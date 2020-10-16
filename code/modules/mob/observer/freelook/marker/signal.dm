@@ -129,11 +129,13 @@
 
 //Evacuates a mob from their body but makes them a marker signal instead of a normal ghost
 /mob/proc/necro_ghost()
-	var/signaltype = /mob/observer/eye/signal
 	if (is_marker_master(src))	//If they are the marker's player, lets be sure to put them into the correct signal type
-		signaltype = /mob/observer/eye/signal/master
-
-	.=new signaltype(src)
+		var/obj/machinery/marker/marker = get_marker()
+		if (marker)
+			marker.become_master_signal(src)
+		return
+	else
+		.=new /mob/observer/eye/signal(src)
 
 	//If we're in some kind of observer body, delete it
 	if (!isliving(src))

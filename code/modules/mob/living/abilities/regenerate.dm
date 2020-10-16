@@ -119,10 +119,11 @@
 
 		if (biomass_limb_cost)
 			var/biomass_delta = O.max_damage*biomass_limb_cost
-			to_chat(user, "Regenerating [O] at a cost of [biomass_delta] kg biomass")
+			if (biomass_delta)
+				to_chat(user, "Regenerating [O] at a cost of [biomass_delta] kg biomass")
 
 			if (M)
-				if (M.playermob)
+				if (M.playermob && biomass_delta)
 					to_chat(M.playermob, "Regenerating [O] at a cost of [biomass_delta] kg biomass")
 				M.pay_biomass("Limb Regrowth", biomass_delta, allow_negative = TRUE)
 				user.adjust_biomass(biomass_delta)
@@ -132,9 +133,13 @@
 		user.adjustLastingDamage(lasting_heal*-1)
 		if (biomass_lasting_damage_cost)
 			if (M)
-				var/biomass_delta = user.getLastingDamage()*biomass_lasting_damage_cost
-				if (M.playermob)
-					to_chat(M.playermob, "Regenerating [user.getLastingDamage()] lasting damage at a cost of [biomass_delta] kg biomass")
+				var/lasting = user.getLastingDamage()
+				var/biomass_delta = lasting*biomass_lasting_damage_cost
+				if (biomass_delta)
+					to_chat(user, "Regenerating [lasting] lasting damage at a cost of [biomass_delta] kg biomass")
+
+				if (M.playermob && biomass_delta)
+					to_chat(M.playermob, "Regenerating [lasting] lasting damage at a cost of [biomass_delta] kg biomass")
 
 				M.pay_biomass("Necrotic Reconstruction", biomass_delta, allow_negative = TRUE)
 				user.adjust_biomass(biomass_delta)

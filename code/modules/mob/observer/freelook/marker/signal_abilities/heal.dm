@@ -49,6 +49,13 @@
 	 Biomass costs are unpredictable and cannot be previewed, but will never be more than 1kg per 2 points of the necromorph's maximum health"
 	target_string = "A damaged necromorph, must be on corruption"
 
+/datum/signal_ability/heal/marker/can_cast_now(var/mob/user)
+	var/obj/machinery/marker/M = get_marker()
+	if (!M || M.biomass < 0)
+		return "The marker has no biomass"
+
+	.=..()
+
 
 /datum/signal_ability/heal/marker/on_cast(var/mob/user, var/mob/living/target, var/list/data)
 	var/mob/living/carbon/human/H = target
