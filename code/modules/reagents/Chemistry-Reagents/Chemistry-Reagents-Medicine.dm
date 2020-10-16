@@ -151,7 +151,7 @@
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
 	overdose = 30
-	metabolism = REM * 0.6
+	metabolism = REM * 0.4
 
 /datum/reagent/tricordrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
