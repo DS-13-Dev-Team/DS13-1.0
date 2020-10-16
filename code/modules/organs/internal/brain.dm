@@ -157,16 +157,14 @@
 
 /obj/item/organ/internal/brain/Process()
 	if(owner)
-		if(is_necromorph())
-			return
-			if(damage > max_damage / 2 && healed_threshold)
-				spawn()
-					to_chat(owner, "<span class = 'notice' font size='10'><B>Where am I...?</B></span>")
-					sleep(5 SECONDS)
-					to_chat(owner, "<span class = 'notice' font size='10'><B>What's going on...?</B></span>")
-					sleep(10 SECONDS)
-					to_chat(owner, "<span class = 'notice' font size='10'><B>What happened...?</B></span>")
-				healed_threshold = 0
+		if(damage > max_damage / 2 && healed_threshold)
+			spawn()
+				to_chat(owner, "<span class = 'notice' font size='10'><B>Where am I...?</B></span>")
+				sleep(5 SECONDS)
+				to_chat(owner, "<span class = 'notice' font size='10'><B>What's going on...?</B></span>")
+				sleep(10 SECONDS)
+				to_chat(owner, "<span class = 'notice' font size='10'><B>What happened...?</B></span>")
+			healed_threshold = 0
 
 			if(damage < (max_damage / 4))
 				healed_threshold = 1

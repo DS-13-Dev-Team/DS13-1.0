@@ -41,5 +41,4 @@ changes:
   - tweak: "Restored metabolism variable on Tricordrazine. It is now .3 ticks slower than Bicaridine or Kelotane."
   - tweak: "Slightly increased the metabolizing rates on Bicaridine and Kelotane."
   - experiment: "Experimental: Alkysine can now fix brain damage with blood oxygenation levels upwards of 35%, instead of the previously required 85%."
-  - experiment: "Experimental: Fix to Necromorphs getting brain damage messages when spawning."
   - experiment: "Experimental: Increased maximum stack amount for trauma kits and bruise packs by 10 each."
