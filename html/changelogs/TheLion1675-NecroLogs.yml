@@ -33,4 +33,5 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - rscadd: "Added necrochat logging for runes and bloody scrawls, some of the tools that can be used to heavily promote LRP. Necromorph/Signal players now have the opportunity to report spam/LRP shenanigans with verification."
+  - rscadd: "Added necrochat logging for bloody scrawls."
+  - rscadd: "Added the name of the player who placed down runes on examine."
