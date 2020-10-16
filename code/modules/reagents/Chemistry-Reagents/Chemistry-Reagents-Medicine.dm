@@ -33,7 +33,7 @@
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
-	metabolism = REM * 0.7
+	metabolism = REM * 0.9
 
 /datum/reagent/bicaridine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -58,7 +58,7 @@
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
-	metabolism = REM * 0.7
+	metabolism = REM * 0.9
 
 /datum/reagent/kelotane/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -151,7 +151,7 @@
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
 	overdose = 30
-	metabolism = REM * 0.4
+	metabolism = REM * 0.6
 
 /datum/reagent/tricordrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
