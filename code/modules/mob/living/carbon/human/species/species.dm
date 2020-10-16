@@ -109,6 +109,8 @@
 	var/limb_health_factor	=	1	//Multiplier on max health of limbs
 	var/pain_shock_threshold	=	50	//The mob starts going into shock when total pain reaches this value
 	var/stability = 1	//Multiplier on resistance to physical forces. Higher value makes someone harder to knock down with forcegun/etc
+	var/lasting_damage_factor = 0	//If nonzero, the mob suffers lasting damage equal to this percentage of all incoming damage
+
 
 	// Combat vars.
 	var/list/unarmed_types = list(           // Possible unarmed attacks that the mob will use in combat,
@@ -998,14 +1000,20 @@ These procs should return their entire args list. Best just to return parent in 
 /datum/species/proc/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
 	GLOB.damage_hit_event.raise_event(organ.owner, organ, brute, burn, damage_flags, used_weapon)
 
+	var/mob/living/L = organ.owner
 	//Here we'll handle pain audio
 	if (pain_audio_threshold)
 		var/total_damage = brute+burn
 		if (total_damage >= (total_health * pain_audio_threshold))
-			var/mob/living/L = organ.owner
 			if (!L.incapacitated(INCAPACITATION_KNOCKOUT) && L.check_audio_cooldown(SOUND_PAIN)) //Must be conscious to scream
 				play_species_audio(L, SOUND_PAIN, 60, 1)
 				L.set_audio_cooldown(SOUND_PAIN, 3 SECONDS)
+
+	if (lasting_damage_factor)
+		L.adjustLastingDamage((brute+burn) * lasting_damage_factor)
+		brute *= (1 - lasting_damage_factor)
+		burn *= (1 - lasting_damage_factor)
+
 	return args.Copy(2)
 
 //Does animations for regenerating a limb

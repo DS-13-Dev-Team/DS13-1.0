@@ -4,7 +4,7 @@
 	mob_type = /mob/living/carbon/human/necromorph/divider
 	blurb = "A bizarre walking horrorshow, slow but extremely durable. On death, it splits into five smaller creatures, in an attempt to find a new body to control. The divider is hard to kill, and has several abilities which excel at pinning down a lone target."
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/divider)
-	total_health = 200
+	total_health = 210
 	biomass = 150
 	mass = 120
 

@@ -15,6 +15,7 @@
 	limb_health_factor = 1	//Not as fragile as a slasher
 	virus_immune = 1
 	reach = 2
+	lasting_damage_factor = 0 //It regenerates this stuff away
 
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
@@ -176,7 +177,7 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 	set category = "Abilities"
 	set desc = "Regrows a missing limb and restores some of your health."
 
-	.= regenerate_ability(_heal_amount = 40, _duration = 4 SECONDS, _max_limbs = 1, _cooldown = 0)
+	.= regenerate_ability(_heal_amount = 40, _duration = 4 SECONDS, _cooldown = 0)
 	if (.)
 		play_species_audio(src, SOUND_PAIN, VOLUME_HIGH, 1, 3)
 
