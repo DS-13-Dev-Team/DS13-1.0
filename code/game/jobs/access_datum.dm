@@ -203,3 +203,8 @@
 	desc = "Keycode Auth. Device"
 	region = ACCESS_REGION_COMMAND
 
+/var/const/access_ID_access = 61 //Used for ID Modification Program
+/datum/access/ID_access
+	id = access_ID_access
+	desc = "ID Modification"
+	region = ACCESS_REGION_COMMAND

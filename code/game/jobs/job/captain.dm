@@ -16,7 +16,7 @@
 	access = list(access_captain, access_bridge, access_security, access_armory, access_service,
 				access_cargo, access_mining, access_engineering,
 				access_external_airlocks, access_medical, access_research,
-				access_chemistry, access_surgery, access_maint_tunnels, access_keycard_auth)
+				access_chemistry, access_surgery, access_maint_tunnels, access_keycard_auth, access_ID_access)
 	outfit_type = /decl/hierarchy/outfit/job/command/cap
 
 	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
@@ -46,7 +46,7 @@ datum/job/cap/get_description_blurb()
 	starting_credits = 6480
 
 	access = list(access_fl, access_bridge, access_security, access_armory, access_maint_tunnels,
-				access_keycard_auth)
+				access_keycard_auth, access_ID_access)
 	outfit_type = /decl/hierarchy/outfit/job/command/fl
 
 	min_skill = list(   SKILL_HAULING     = SKILL_ADEPT,
