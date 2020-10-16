@@ -157,17 +157,19 @@
 
 /obj/item/organ/internal/brain/Process()
 	if(owner)
-		if(damage > max_damage / 2 && healed_threshold)
-			spawn()
-				to_chat(owner, "<span class = 'notice' font size='10'><B>Where am I...?</B></span>")
-				sleep(5 SECONDS)
-				to_chat(owner, "<span class = 'notice' font size='10'><B>What's going on...?</B></span>")
-				sleep(10 SECONDS)
-				to_chat(owner, "<span class = 'notice' font size='10'><B>What happened...?</B></span>")
-			healed_threshold = 0
+		if(is_necromorph())
+			return
+			if(damage > max_damage / 2 && healed_threshold)
+				spawn()
+					to_chat(owner, "<span class = 'notice' font size='10'><B>Where am I...?</B></span>")
+					sleep(5 SECONDS)
+					to_chat(owner, "<span class = 'notice' font size='10'><B>What's going on...?</B></span>")
+					sleep(10 SECONDS)
+					to_chat(owner, "<span class = 'notice' font size='10'><B>What happened...?</B></span>")
+				healed_threshold = 0
 
-		if(damage < (max_damage / 4))
-			healed_threshold = 1
+			if(damage < (max_damage / 4))
+				healed_threshold = 1
 
 		handle_disabilities()
 		handle_damage_effects()
@@ -198,6 +200,8 @@
 					damprob = owner.chem_effects[CE_STABLE] ? 30 : 60
 					if(!past_damage_threshold(2) && prob(damprob))
 						take_internal_damage(1)
+					if(can_heal)
+						heal_damage(1)
 				if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 					owner.eye_blurry = max(owner.eye_blurry,6)
 					damprob = owner.chem_effects[CE_STABLE] ? 40 : 80
@@ -206,6 +210,8 @@
 					if(!owner.paralysis && prob(10))
 						owner.Paralyse(rand(1,3))
 						to_chat(owner, "<span class='warning'>You feel extremely [pick("dizzy","woozy","faint")]...</span>")
+					if(can_heal)
+						heal_damage(1)
 				if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 					owner.eye_blurry = max(owner.eye_blurry,6)
 					damprob = owner.chem_effects[CE_STABLE] ? 60 : 100
