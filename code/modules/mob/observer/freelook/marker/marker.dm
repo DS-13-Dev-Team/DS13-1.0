@@ -243,8 +243,8 @@
 
 
 
-/obj/machinery/marker/proc/pay_biomass(var/purpose, var/amount)
-	if (biomass >= amount)
+/obj/machinery/marker/proc/pay_biomass(var/purpose, var/amount, var/allow_negative = FALSE)
+	if (allow_negative || biomass >= amount)
 		biomass -= amount
 		return TRUE
 	return FALSE

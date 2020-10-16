@@ -79,6 +79,7 @@
 		delta_meter = new(src)
 		limit_meter = new(src)
 		textholder = new(src)
+		update(TRUE)
 
 
 /obj/screen/healthbar/proc/set_mob(var/mob/living/newmob)
@@ -167,7 +168,7 @@
 
 
 
-/obj/screen/healthbar/proc/update()
+/obj/screen/healthbar/proc/update(var/force_update = FALSE)
 	var/list/data = L.get_health_report()
 	var/max = data["max"]
 
@@ -185,7 +186,13 @@
 		health_changed = 1
 	if (new_health < current_health)
 		health_changed = -1
+
+
 	current_health = new_health
+
+	if (!health_changed && force_update)
+
+		health_changed = TRUE
 
 	if (textholder)
 		textholder.maptext = "[Ceiling(current_health)]/[total_health]"

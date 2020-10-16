@@ -2186,6 +2186,7 @@
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\blowout.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\breach.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\flicker.dm"
+#include "code\modules\mob\observer\freelook\marker\signal_abilities\heal.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\lockdown.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\placement_ability.dm"
 #include "code\modules\mob\observer\freelook\marker\signal_abilities\psi_energy.dm"

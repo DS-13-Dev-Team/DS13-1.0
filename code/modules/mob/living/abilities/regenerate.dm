@@ -17,8 +17,14 @@
 	var/max_limbs = 1
 	var/cooldown = 0
 	var/heal_amount = 40
+
 	var/tick_interval = 0.2 SECONDS
 	var/shake_interval = 0.6 SECONDS
+
+	var/lasting_damage_heal = 9999999
+	var/limb_lasting_damage = 0	//When a limb is replaced, the mob suffers lasting damage equal to the limb's health * this value
+	var/biomass_limb_cost = 0	//When a limb is replaced, the marker transfers biomass to the mob, equal to the limb's health * this value
+	var/biomass_lasting_damage_cost = 0	//When lasting_damage is healed, the marker transfers biomass to the mob, equal to the damage healed * this value
 
 	var/finish_time
 
@@ -28,13 +34,11 @@
 	var/tick_step
 
 
-/datum/extension/regenerate/New(var/datum/holder, var/_heal_amount, var/_duration, var/_max_limbs, var/_cooldown)
+/datum/extension/regenerate/New(var/datum/holder, var/_duration, var/_cooldown)
 	..()
 	user = holder
-	max_limbs = _max_limbs
 	duration = _duration
 	cooldown = _cooldown
-	heal_amount = _heal_amount
 
 	start()
 
@@ -46,12 +50,11 @@
 
 	//This loop counts and documents the damaged limbs, for the purpose of regrowing them and also for documenting how many there are for stun time
 	for(var/limb_type in user.species.has_limbs)
-
 		var/obj/item/organ/external/E = user.organs_by_name[limb_type]
-		if (E && E.is_usable())
+		if (E && E.is_usable() && !E.is_stump())
 			//This organ is fine, skip it
 			continue
-		else if (E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE)
+		else if (!E || E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE)
 			missing_limbs |= limb_type
 
 		if (max_limbs <= 0)
@@ -59,14 +62,13 @@
 		if(E)
 			if (!(E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE))
 				continue	//We can't regrow something which can never be removed in the first place
-			if (!E.is_usable())
+			if (!E.is_usable() || E.is_stump())
 				E.removed()
 				qdel(E)
 				E = null
 		if(!E)
 			regenerating_organs |= limb_type
 			max_limbs--
-
 
 
 
@@ -101,19 +103,48 @@
 
 
 /datum/extension/regenerate/proc/finish()
+	var/obj/machinery/marker/M = get_marker()
 	//Lets finish up. The limb regrowing animations should be done by now
 	//Here we actually create the freshly grown limb
 	for(var/limb_type in regenerating_organs)
 		var/list/organ_data = user.species.has_limbs[limb_type]
 		var/limb_path = organ_data["path"]
 		var/obj/item/organ/O = new limb_path(user)
+		O.max_damage *= user.species.limb_health_factor //TODO future: Factor this into organ creation?
 		organ_data["descriptor"] = O.name
 		user << "<span class='notice'>You feel a slithering sensation as your [O.name] reforms.</span>"
+
+		if (limb_lasting_damage)
+			user.adjustLastingDamage(O.max_damage*limb_lasting_damage)
+
+		if (biomass_limb_cost)
+			var/biomass_delta = O.max_damage*biomass_limb_cost
+			to_chat(user, "Regenerating [O] at a cost of [biomass_delta] kg biomass")
+
+			if (M)
+				if (M.playermob)
+					to_chat(M.playermob, "Regenerating [O] at a cost of [biomass_delta] kg biomass")
+				M.pay_biomass("Limb Regrowth", biomass_delta, allow_negative = TRUE)
+				user.adjust_biomass(biomass_delta)
+
+	if (lasting_damage_heal)
+		var/lasting_heal = min(lasting_damage_heal, user.getLastingDamage())
+		user.adjustLastingDamage(lasting_heal*-1)
+		if (biomass_lasting_damage_cost)
+			if (M)
+				var/biomass_delta = user.getLastingDamage()*biomass_lasting_damage_cost
+				if (M.playermob)
+					to_chat(M.playermob, "Regenerating [user.getLastingDamage()] lasting damage at a cost of [biomass_delta] kg biomass")
+
+				M.pay_biomass("Necrotic Reconstruction", biomass_delta, allow_negative = TRUE)
+				user.adjust_biomass(biomass_delta)
+
 
 
 	//Once we're done regenerating limbs, lets also immediately regenerate all internal organs.
 	//We're not gonna force these to be done one by one because there's nothing interesting to look at as it happens.
 	for(var/organ_tag in user.species.has_organ)
+
 		var/obj/item/organ/internal/I = user.internal_organs_by_name[organ_tag]
 		if(I && I.is_usable())
 			//The organ is there, skip it
@@ -172,7 +203,7 @@
 	return TRUE
 
 
-/mob/living/carbon/human/proc/regenerate_ability(var/_heal_amount, var/_duration, var/_max_limbs, var/_cooldown)
+/mob/living/carbon/human/proc/regenerate_ability(var/subtype = /datum/extension/regenerate, var/_duration, var/_cooldown)
 
 	if (!can_regenerate(TRUE))
 		return FALSE
@@ -180,6 +211,6 @@
 
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/regenerate, _heal_amount, _duration, _max_limbs, _cooldown)
+	set_extension(src, subtype, _duration, _cooldown)
 
 	return TRUE

@@ -29,7 +29,7 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/lurker
 	blurb = "Long range fire-support. The lurker is tough and hard to hit as long as its retractible armor is closed. When open it is slow and vulnerable, but fires sharp spines in waves of three."
 	unarmed_types = list(/datum/unarmed_attack/bite/lurker) //Bite attack is a backup if blades are severed
-	total_health = 60
+	total_health = 65
 	biomass = 55
 	health_doll_offset	= 50
 	torso_damage_mult = 0.75
