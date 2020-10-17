@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(skybox)
 	flags = SS_NO_FIRE
 	var/background_color
 	var/skybox_icon = 'icons/skybox/skybox.dmi' //Path to our background. Lets us use anything we damn well please. Skyboxes need to be 736x736
-	var/background_icon = "dyable"
+	var/background_icon = "background_aegis_3"
 	var/use_stars = TRUE
 	var/use_overmap_details = TRUE
 	var/star_path = 'icons/skybox/skybox.dmi'
