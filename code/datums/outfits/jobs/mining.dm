@@ -1,7 +1,7 @@
 /decl/hierarchy/outfit/job/mining
+	hierarchy_type = /decl/hierarchy/outfit/job/mining
 	l_ear = /obj/item/device/radio/headset/headset_mining
 	pda_type = /obj/item/modular_computer/pda/mining
-	hierarchy_type = /decl/hierarchy/outfit/job/mining
 
 /decl/hierarchy/outfit/job/mining/dom
 	name = OUTFIT_JOB_NAME("Director of Mining")
