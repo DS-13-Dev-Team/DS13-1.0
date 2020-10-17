@@ -290,6 +290,44 @@
 		/obj/item/device/destTagger
 		)
 
+/obj/item/weapon/storage/belt/holster/general/command
+	name = "holster belt"
+	desc = "Can hold general equipment such as tablets, folders, and other office supplies. Comes with a holster."
+	icon_state = "commandbelt"
+	item_state = "command"
+	storage_slots = 6
+	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
+	can_hold = list(
+		/obj/item/device/flash,
+		/obj/item/weapon/melee/telebaton,
+		/obj/item/device/taperecorder,
+		/obj/item/weapon/folder,
+		/obj/item/weapon/paper,
+		/obj/item/weapon/clipboard,
+		/obj/item/modular_computer/tablet,
+		/obj/item/device/flash,
+		/obj/item/device/flashlight,
+		/obj/item/modular_computer/pda,
+		/obj/item/device/radio/headset,
+		/obj/item/device/megaphone,
+		/obj/item/taperoll,
+		/obj/item/device/holowarrant,
+		/obj/item/device/radio,
+		/obj/item/device/tape,
+		/obj/item/weapon/pen,
+		/obj/item/weapon/stamp,
+		/obj/item/stack/package_wrap,
+		/obj/item/device/binoculars,
+		/obj/item/weapon/marshalling_wand,
+		/obj/item/device/camera,
+		/obj/item/device/destTagger
+		)
+
+/obj/item/weapon/storage/belt/holster/general/command/New()
+	..()
+	new /obj/item/weapon/gun/projectile/divet(src)
+	update_icon()
+
 /obj/item/weapon/storage/belt/holster/forensic
 	name = "forensic belt"
 	desc = "Can hold forensic gear like fingerprint powder and luminol."

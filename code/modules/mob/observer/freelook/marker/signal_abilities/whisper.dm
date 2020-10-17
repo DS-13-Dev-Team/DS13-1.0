@@ -5,7 +5,7 @@ GLOBAL_LIST_INIT(whispered, list())
 	desc = "Allows you to broadcast a subliminal message into the mind of a receptive target. Can be used on anyone visible, or on unitologists remotely.<br>\
 	<br>\
 	Please remember that subliminal messages are in-character communication. You are a spooky voice in their head that they might just be imagining. Roleplay appropriately, no memes. Admins are watching"
-	target_string = "a unitologist or similarly mentally open target"
+	target_string = "a zealot or similarly mentally open target"
 	energy_cost = 30
 	require_corruption = FALSE
 	autotarget_range = 1
@@ -75,6 +75,6 @@ GLOBAL_LIST_INIT(whispered, list())
 	You may speak your reply aloud to an empty room and there's a possibility they'll hear you, though you'll certainly look a little crazy. If they tell you to do things, its generally your choice of whether or not to follow their directions. As long as you don't kill people, you won't get in trouble with admins<br>\
 	The voices can see more than you, if they give you advice or tell you things, it may be a good idea to listen. Of course, they might be lying too.<br>\
 	Whatever you do, try to make interesting roleplay out of it. Just ignoring them is pretty boring."
-	antag_text = "If you're a unitologist, the no killing rule does not apply. Whispers should be considered direct orders from the marker, and you should try your best to fulfil them.<br>\
+	antag_text = "If you're a zealot, the no killing rule does not apply. Whispers should be considered direct orders from the marker, and you should try your best to fulfil them.<br>\
 	Exactly how you do that is at your discretion. If the voices tell you to kill someone, it doesn't necessarily mean you have to rush screaming across the room and start stabbing. You could stalk them for a while, wait for a moment to catch them alone.<br>\
 	As long as you're not breaking server rules (like destroying the supermatter engine), you can mostly do whatever the voices tell you. Even orders telling you to kill yourself are perfectly valid. Remember, you are roleplaying a mad cultist."
