@@ -146,7 +146,7 @@
 	var/int_pressure_diff = abs(last_int_pressure - breath_pressure)
 	var/ext_pressure_diff = abs(last_ext_pressure - environment.return_pressure()) * owner.get_pressure_weakness()
 	if(int_pressure_diff > max_pressure_diff && ext_pressure_diff > max_pressure_diff)
-		var/lung_rupture_prob = BP_IS_ROBOTIC(src) ? prob(30) : prob(60) //Robotic lungs are less likely to rupture.
+		var/lung_rupture_prob = BP_IS_ROBOTIC(src) ? prob(30) : prob(40) //Robotic lungs are less likely to rupture.
 		if(!is_bruised() && lung_rupture_prob) //only rupture if NOT already ruptured
 			rupture()
 

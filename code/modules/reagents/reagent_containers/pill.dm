@@ -138,6 +138,15 @@
 	reagents.add_reagent(/datum/reagent/paracetamol, 15)
 	color = reagents.get_color()
 
+/obj/item/weapon/reagent_containers/pill/peridaxon
+	name = "Peridaxon (5u)"
+	desc = "Used to control organ failure. Useful in triage."
+	icon_state = "pill3"
+/obj/item/weapon/reagent_containers/pill/peridaxon/New()
+	..()
+	reagents.add_reagent(/datum/reagent/peridaxon, 5)
+	color = reagents.get_color()
+
 
 /obj/item/weapon/reagent_containers/pill/tramadol
 	name = "Tramadol (15u)"

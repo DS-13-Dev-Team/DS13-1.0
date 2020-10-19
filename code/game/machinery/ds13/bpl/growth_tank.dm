@@ -23,7 +23,7 @@
 	var/list/valid_reagents = list(/datum/reagent/nutriment/biomass,
 	/datum/reagent/nutriment/stemcells)	//TODO: Add stem cells and blood to this
 
-	var/growth_rate = 0.4	//This many units of refined biomass are added to the forming organ each tick
+	var/growth_rate = 0.5	//This many units of refined biomass are added to the forming organ each tick
 
 	var/sustain_rate = 0.04	//This many units of refined biomass are consumed each tick to keep alive an already-fully-grown organ
 

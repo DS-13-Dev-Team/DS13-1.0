@@ -7,7 +7,7 @@
 	reagent_state = LIQUID
 	color = "#00bfff"
 	overdose = REAGENTS_OVERDOSE * 2
-	metabolism = REM * 0.7
+	metabolism = REM * 0.9
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
 
@@ -384,6 +384,7 @@
 	overdose = 10
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
+	metabolism = REM * 1
 
 /datum/reagent/peridaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(ishuman(M))
