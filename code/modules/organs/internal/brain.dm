@@ -166,8 +166,8 @@
 				to_chat(owner, "<span class = 'notice' font size='10'><B>What happened...?</B></span>")
 			healed_threshold = 0
 
-		if(damage < (max_damage / 4))
-			healed_threshold = 1
+			if(damage < (max_damage / 4))
+				healed_threshold = 1
 
 		handle_disabilities()
 		handle_damage_effects()

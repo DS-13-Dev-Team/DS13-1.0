@@ -5,7 +5,7 @@
 	amount = 10
 	max_amount = 10
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 20
 	var/heal_brute = 0
 	var/heal_burn = 0
@@ -66,7 +66,7 @@
 	origin_tech = list(TECH_BIO = 1)
 	animal_heal = 5
 	apply_sounds = list('sound/effects/rip1.ogg','sound/effects/rip2.ogg')
-	amount = 10
+	amount = 20
 
 
 /obj/item/stack/medical/bruise_pack/handmade
@@ -166,7 +166,7 @@
 	heal_brute = 4
 	animal_heal = 12
 	apply_sounds = list('sound/effects/rip1.ogg','sound/effects/rip2.ogg','sound/effects/tape.ogg')
-	amount = 20
+	amount = 30
 
 /obj/item/stack/medical/advanced/bruise_pack/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(..())

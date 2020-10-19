@@ -366,7 +366,7 @@
 	if(M.chem_doses[type] == metabolism * threshold)
 		M.confused += 2
 		M.drowsyness += 2
-	else if(M.chem_doses[type] < 2 * threshold)
+	else if(M.chem_doses[type] < 1.5 * threshold)
 		M.Weaken(30)
 		M.eye_blurry = max(M.eye_blurry, 10)
 	else

@@ -268,6 +268,13 @@
 	startswith = list(/obj/item/weapon/reagent_containers/pill/kelotane = 21)
 	wrapper_color = COLOR_SUN
 
+/obj/item/weapon/storage/pill_bottle/peridaxon
+	name = "pill bottle (Peridaxon)"
+	desc = "Contains pills used to control organ failure."
+
+	startswith = list(/obj/item/weapon/reagent_containers/pill/peridaxon = 15)
+	wrapper_color = COLOR_BLACK
+
 /obj/item/weapon/storage/pill_bottle/spaceacillin
 	name = "pill bottle (Spaceacillin)"
 	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space."

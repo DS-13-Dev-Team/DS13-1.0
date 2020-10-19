@@ -60,6 +60,9 @@
 #define CE_BLOCKAGE	     "blockage"     // Gets in the way of blood circulation, higher the worse
 #define CE_SQUEAKY		 "squeaky"      // Helium voice. Squeak squeak.
 #define CE_ANTIBIOTIC    "antibiotic"   // Fights wound-based infections.
+#define CE_SEDATE        "sedate"       // Applies sedation effects, i.e. paralysis, inability to use items, etc.
+#define CE_ENERGETIC     "energetic"    // Speeds up stamina recovery.
+#define	CE_VOICELOSS     "whispers"     // Lowers the subject's voice to a whisper
 
 //reagent flags
 #define IGNORE_MOB_SIZE 0x1
