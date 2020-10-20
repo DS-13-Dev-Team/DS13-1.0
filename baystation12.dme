@@ -2985,6 +2985,7 @@
 #include "maps\DeadSpace\M.02 Ishimura (M).dmm"
 #include "maps\DeadSpace\M.04 Aegis VII.dmm"
 #include "maps\DeadSpace\M.05 Space.dmm"
+#include "maps\DeadSpace\code\structures\executive_shuttle.dm"
 #include "maps\DeadSpace\code\structures\items.dm"
 #include "maps\DeadSpace\code\structures\structures.dm"
 #include "maps\example\example_define.dm"
