@@ -22,6 +22,10 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		rules aside from those without explicit exceptions apply to the ERT.</b>"
 	leader_welcome_text = "As leader of the Emergency Response Team, you are part of the Earth Defence Force, and are there with the intention of restoring normal operation to the vessel or the safe evacuation of crew and passengers. You should, to this effect, aid the Commanding Officer or ranking officer aboard in their endeavours to achieve this."
 	landmark_id = "edfteam"
+	hard_cap = 5
+	hard_cap_round = 5
+	initial_spawn_req = 5
+	initial_spawn_target = 5
 	valid_species = list(SPECIES_HUMAN)
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_SET_APPEARANCE | ANTAG_HAS_LEADER | ANTAG_CHOOSE_NAME | ANTAG_RANDOM_EXCEPTED
 	antaghud_indicator = "hudloyalist"
@@ -67,7 +71,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	candidates = list()
 
 
-/datum/antagonist/ert/equip(var/mob/living/carbon/human/player)	
+/datum/antagonist/ert/equip(var/mob/living/carbon/human/player)
 	if(!..())
 		return 0
 	if(!outfits.len)
@@ -86,6 +90,10 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	role_text_plural = "Maintenance Response Team"
 	leader_welcome_text = "As leader of the Emergency Response Team, you are part of the Kellion Response Team, and are there with the intention of restoring normal operation to the vessel or the safe evacuation of crew and passengers. You should, to this effect, aid the Commanding Officer or ranking officer aboard in their endeavours to achieve this."
 	landmark_id = "kellionteam"
+	hard_cap = 5
+	hard_cap_round = 5
+	initial_spawn_req = 5
+	initial_spawn_target = 5
 	outfits = list(
 		/decl/hierarchy/outfit/isaac,
 		/decl/hierarchy/outfit/kellion_sec,
@@ -97,6 +105,10 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	id = "Unitologiststeam"
 	role_text = "Unitologist"
 	role_text_plural = "Unitologists"
+	hard_cap = 5
+	hard_cap_round = 5
+	initial_spawn_req = 5
+	initial_spawn_target = 5
 	antag_text = "You are part of a new religion which worships strange alien artifacts, believing that only through them can humanity truly transcend. You have been blessed with a psychic connection created by the <b>marker</b>, one of these artifacts. Serve the marker's will at all costs by bringing it human sacrifices and remember that its objectives come before your own..."
 	leader_welcome_text = "You are the leader of this response team. Work with the marker instead of against it."
 	landmark_id = "unitologiststeam"
