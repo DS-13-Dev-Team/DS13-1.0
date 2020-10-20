@@ -39,15 +39,15 @@
 	cost = 0
 
 
-/*
+
 /datum/gear/RIG/frame/hacker
 	display_name = "digital infiltration RIG"
-	path = /obj/item/weapon/rig/light/hacker
+	path = /obj/item/weapon/rig/hacker
 
 	cost = 4
 	patron_only = TRUE
 
-*/
+
 
 
 
