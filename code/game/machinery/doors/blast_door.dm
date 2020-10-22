@@ -103,6 +103,9 @@
 	src.set_opacity(1)
 	sleep(15)
 	src.operating = 0
+	for(var/mob/living/M in src.loc)
+		M.take_organ_damage(20)
+		M.Weaken(3)
 
 // Proc: force_toggle()
 // Parameters: None
