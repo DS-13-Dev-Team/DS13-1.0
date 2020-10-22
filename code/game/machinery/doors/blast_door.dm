@@ -106,12 +106,12 @@
 	sleep(15)
 	src.operating = 0
 	for(var/mob/living/M in src.loc)
-		if(istype(src, /obj/machinery/door/blast/shutters)) //shutters are weaker blast doors so they wouldn't do as much damage
-			M.take_organ_damage(5)
-			M.Weaken(1)
-		else
+		if(istype(src, /obj/machinery/door/blast/regular)) 
 			M.take_organ_damage(15)
 			M.Weaken(3)
+		else //shutters are weaker blast doors so they wouldn't do as much damage
+			M.take_organ_damage(5)
+			M.Weaken(1)
 
 // Proc: force_toggle()
 // Parameters: None
