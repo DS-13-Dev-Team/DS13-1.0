@@ -78,6 +78,7 @@
 // Parameters: None
 // Description: Opens the door. No checks are done inside this proc.
 /obj/machinery/door/blast/proc/force_open()
+	sleep(10)
 	src.operating = 1
 	playsound(src.loc, open_sound, 100, 1)
 	flick(icon_state_opening, src)
@@ -93,6 +94,7 @@
 // Parameters: None
 // Description: Closes the door. No checks are done inside this proc.
 /obj/machinery/door/blast/proc/force_close()
+	sleep(10)
 	src.operating = 1
 	playsound(src.loc, close_sound, 100, 1)
 	src.layer = closed_layer
@@ -104,8 +106,12 @@
 	sleep(15)
 	src.operating = 0
 	for(var/mob/living/M in src.loc)
-		M.take_organ_damage(20)
-		M.Weaken(3)
+		if(istype(src, /obj/machinery/door/blast/shutters)) //shutters are weaker blast doors so they wouldn't do as much damage
+			M.take_organ_damage(5)
+			M.Weaken(1)
+		else
+			M.take_organ_damage(15)
+			M.Weaken(3)
 
 // Proc: force_toggle()
 // Parameters: None
