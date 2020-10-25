@@ -37,6 +37,9 @@
 	company_short = "EarthGov"
 	system_name = "Cygnus System"
 
+
+	skybox_foreground_objects = list(/datum/skybox_foreground_object/aegis_vii)
+
 /*
 	base_floor_type = /turf/simulated/floor/reinforced/airless
 	base_floor_area = /area/maintenance/exterior
