@@ -92,7 +92,7 @@ h3 {
 			</tr></table>
 		</td>
 		<td style="width: 25%; vertical-align: top; text-align: center;">
-			{{:helper.link((data.place ? 'Place' : 'Spawn'), null, { "spawn" : value.name }, (data.authorised &&(!data.current || data.biomass > data.current.price)) ? null : 'disabled', "linkMax")}}
+			{{:helper.link((data.place ? 'Place' : 'Spawn'), null, { "spawn" : value.name }, (data.authorised) ? null : 'disabled', "linkMax")}}
 		</td>
 	</tr >
 </table>
