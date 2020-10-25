@@ -46,7 +46,7 @@
 	particles_per_tick = 2
 	randpixel = 12
 	base_offset = new /vector2(-16, -16)
-	relative_offset = new /vector2(0, 18)
+	relative_offset = new /vector2(0, 24)
 
 
 /obj/effect/particle/flame
@@ -73,10 +73,8 @@
 	particle_type = /obj/effect/particle/flame/blue
 	autostart = FALSE
 	tick_delay = 0.08 SECONDS
-	particles_per_tick = 2
 	randpixel = 12
-	base_offset = new /vector2(-16, -16)
-	relative_offset = new /vector2(0, 18)
+	particles_per_tick = 3
 
 
 /obj/effect/particle/flame/blue
@@ -92,4 +90,21 @@
 	scale_y_end = 	1.6
 	alpha_end	=	255
 	color = "#FFFFFF"
-	lifespan	=	1.5 SECOND
+	lifespan	=	1.4 SECOND
+
+
+
+//Radial subtypes. Firing in an omnidirectional circle
+/datum/extension/spray/flame/radial
+	fx_type = /obj/effect/particle_system/spray/fire/radial
+
+/obj/effect/particle_system/spray/fire/radial
+	particles_per_tick = 12
+
+
+
+/datum/extension/spray/flame/blue/radial
+	fx_type = /obj/effect/particle_system/spray/fire/blue/radial
+
+/obj/effect/particle_system/spray/fire/blue/radial
+	particles_per_tick = 16

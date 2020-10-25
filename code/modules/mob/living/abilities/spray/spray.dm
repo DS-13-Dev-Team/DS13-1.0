@@ -1,3 +1,16 @@
+/atom/proc/spray_ability(var/subtype = /datum/extension/spray,  var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/windup, var/mob/override_user = null, var/list/extra_data)
+	if (!can_spray())
+		return null
+	var/list/arguments = list(src, subtype, target, angle, length, stun, duration, cooldown, override_user, extra_data)
+	var/datum/extension/spray/S = set_extension(arglist(arguments))
+	spawn(windup)
+		S.start()
+	return S
+
+
+/*
+	Code below
+*/
 /datum/extension/spray
 	name = "Spray"
 	base_type = /datum/extension/spray
@@ -54,6 +67,13 @@ Vars/
 	if (user && user.client)
 		spray_handler = user.PushClickHandler(/datum/click_handler/spray)
 		spray_handler.host = src
+
+	//If no target is supplied, pick a spot infront of the source
+	if (!target)
+		var/vector2/sourcedir = Vector2.NewFromDir(source.dir)
+		sourcedir.SelfMultiply(length)
+		var/turf/sourceturf = get_turf(source)
+		target = locate(sourceturf.x + sourcedir.x, sourceturf.y + sourcedir.y, sourceturf.z)
 
 	set_target_loc(target.get_global_pixel_loc())
 	src.angle = angle
@@ -194,14 +214,7 @@ Vars/
 		return FALSE
 	.=..()
 
-/atom/proc/spray_ability(var/subtype = /datum/extension/spray,  var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/windup, var/mob/override_user = null, var/list/extra_data)
-	if (!can_spray())
-		return null
-	var/list/arguments = list(src, subtype, target, angle, length, stun, duration, cooldown, override_user, extra_data)
-	var/datum/extension/spray/S = set_extension(arglist(arguments))
-	spawn(windup)
-		S.start()
-	return S
+
 
 /atom/proc/stop_spraying()
 	var/datum/extension/spray/S = get_extension(src, /datum/extension/spray)

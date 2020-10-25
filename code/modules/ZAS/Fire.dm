@@ -32,6 +32,9 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	if(!air_contents || exposed_temperature < PHORON_MINIMUM_BURN_TEMPERATURE)
 		return 0
 
+	if (!air_contents.can_support_fire())
+		return 0
+
 	var/igniting = 0
 	var/obj/effect/decal/cleanable/liquid_fuel/liquid = locate() in src
 
@@ -137,6 +140,10 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		return 1
 
 	var/datum/gas_mixture/air_contents = my_tile.return_air()
+	if (!air_contents.can_support_fire())
+		my_tile.fire = null
+		RemoveFire()
+		return 0
 
 	if(firelevel > 6)
 		icon_state = "3"
@@ -400,9 +407,12 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	apply_damage(2.5*mx, BURN)
 
 
+
 /mob/living/carbon/human/FireBurn(var/firelevel, var/last_temperature, var/pressure)
 	//Burns mobs due to fire. Respects heat transfer coefficients on various body parts.
 	//Due to TG reworking how fireprotection works, this is kinda less meaningful.
+
+
 
 	var/head_exposure = 1
 	var/chest_exposure = 1
@@ -441,3 +451,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	apply_damage(0.4*mx*arms_exposure,  BURN, BP_R_ARM, 0, 0, "Fire")
 
 
+
+//Return the highest temperature this atom can safely endure before it suffers damage
+/atom/proc/get_heat_limit()
+	return (T0C + 300) //300 celsius

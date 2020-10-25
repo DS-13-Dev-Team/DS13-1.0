@@ -219,11 +219,18 @@
 
 
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
-		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
+		baycode_aim(A,user,params) //They're using the new gun system, locate what they're aiming at.
 		return TRUE
+
+	//Do prefire first
+	if (!pre_fire(A, user, params))
+		return
 
 	Fire(A,user,params) //Otherwise, fire normally.
 
+	return TRUE
+
+/obj/item/weapon/gun/proc/pre_fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
 	return TRUE
 
 /obj/item/weapon/gun/attack(atom/A, mob/living/user, def_zone)
@@ -294,6 +301,8 @@
 //Safety checks are done by the time fire is called
 /obj/item/weapon/gun/proc/Fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
 
+
+
 	if (current_firemode && current_firemode.override_fire)
 		current_firemode.fire(target, user, clickparams, pointblank, reflex)
 		return
@@ -358,11 +367,15 @@
 
 //obtains the next projectile to fire
 /obj/item/weapon/gun/proc/consume_next_projectile()
-	return null
+	if (ammo_cost > 1)
+		return consume_projectiles(ammo_cost)
+	return TRUE
 
 //Attempts to consume a specified number of projectiles. Returns false if the gun doesn't have enough ammo
 /obj/item/weapon/gun/proc/consume_projectiles(var/number = 1)
-	return null
+	if (projectile_type)
+		return new projectile_type(src)
+	return TRUE
 
 //used by aiming code
 /obj/item/weapon/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
@@ -702,11 +715,16 @@
 	update_firemode(FALSE)
 	update_click_handlers()
 
-
+/obj/item/weapon/gun/attack_hand(mob/user as mob)
+	if(user.get_inactive_hand() == src)
+		unload_ammo(user, allow_dump=0)
+	else
+		return ..()
 
 //Ammo handling, used by most types of weapons
 /obj/item/weapon/gun/proc/unload_ammo(mob/user)
 	playsound(loc, mag_remove_sound, 50, 1)
+
 
 /obj/item/weapon/gun/proc/load_ammo(var/obj/item/A, mob/user)
 	playsound(loc, mag_insert_sound, 50, 1)

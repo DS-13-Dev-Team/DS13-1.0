@@ -696,16 +696,8 @@ meteor_act
 /*
 	Temperature Mechanics
 */
-
-/mob/living/carbon/human/get_fire_damage(var/temperature, var/multiplier)
-	var/protection = get_heat_protection(temperature)
-
-	if (protection >= 1)
-		return 0
-	else
-		temperature *= (1 - protection)
-
-		.=..(temperature, multiplier)
+/mob/living/carbon/human/get_heat_limit()
+	return species.heat_level_1
 
 
 	//This proc returns a number made up of the flags for body parts which you are protected on. (such as HEAD, UPPER_TORSO, LOWER_TORSO, etc. See setup.dm for the full list)
@@ -728,12 +720,13 @@ meteor_act
 
 /mob/living/carbon/human/get_heat_protection(var/temperature) //Temperature is the temperature you're being exposed to.
 	//Not hot enough to bother us
-	if (temperature < species.heat_level_1)
+	var/limit = get_heat_limit()
+	if (temperature < limit)
 		return 1
 
 	else
 		//our natural heat resistance is deducted from this
-		temperature -= species.heat_level_1
+		temperature -= limit
 
 	var/thermal_protection_flags = get_heat_protection_flags(temperature)
 	return get_thermal_protection(thermal_protection_flags)

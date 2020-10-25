@@ -84,8 +84,8 @@
 	atom_flags = ATOM_FLAG_CLIMBABLE
 
 /obj/structure/reagent_dispensers/fueltank
-	name = "hydrazine tank"
-	desc = "A tank containing hypergolic fuel."
+	name = "gasoline tank"
+	desc = "A tank containing highly flammable fuel."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10

@@ -262,6 +262,13 @@
 	return 1
 
 /mob/living/proc/IgniteMob()
+
+	//Check if there's enough oxygen here
+	var/turf/T = get_turf(src)
+	var/datum/gas_mixture/G = T.return_air()
+	if (!G || !G.can_support_fire())
+		return FALSE
+
 	if(fire_stacks > 0 && !on_fire)
 		on_fire = 1
 		set_light(0.6, 0.1, 4, l_color = COLOR_ORANGE)
@@ -293,7 +300,7 @@
 	fire_stacks = max(0, fire_stacks - 0.2) //I guess the fire runs out of fuel eventually
 
 	var/datum/gas_mixture/G = loc.return_air() // Check if we're standing in an oxygenless environment
-	if(G.get_by_flag(XGM_GAS_OXIDIZER) < 1)
+	if(G.can_support_fire() < 1)
 		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
 		return 1
 
@@ -317,10 +324,10 @@
 		IgniteMob()
 
 /mob/living/proc/get_cold_protection()
-	return 0
+	return T0C
 
 /mob/living/proc/get_heat_protection()
-	return 0
+	return T0C + 40
 
 //Finds the effective temperature that the mob is burning at.
 /mob/living/proc/fire_burn_temperature()

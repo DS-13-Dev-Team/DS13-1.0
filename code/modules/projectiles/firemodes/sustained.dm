@@ -16,7 +16,6 @@
 	var/mob/living/L
 	if (gun && gun.is_held())
 		L = gun.loc
-
 	var/enable = FALSE
 	//Force state is used for forcing it to be disabled in circumstances where it'd normally be valid
 	if (!isnull(force_state))

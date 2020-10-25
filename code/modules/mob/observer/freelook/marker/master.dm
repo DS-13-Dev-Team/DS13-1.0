@@ -46,7 +46,7 @@
 	//Something must have gone wrong, we aren't deleted yet!
 	//Turn ourselves into a signal as a fallback
 	if (!QDELETED(src))
-		var/mob/observer/eye/signal/S = new(src)
+		new /mob/observer/eye/signal(src)
 		qdel(src)
 
 /mob/observer/eye/signal/master/verb/shop_verb()

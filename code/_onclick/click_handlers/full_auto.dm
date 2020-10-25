@@ -39,6 +39,7 @@
 /datum/click_handler/fullauto/MouseDown(object,location,control,params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["left"])
+		left_mousedown = TRUE
 		object = resolve_world_target(object, params)
 		if (object)
 			target = object
@@ -60,6 +61,7 @@
 /datum/click_handler/fullauto/MouseUp(object,location,control,params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["left"])
+		left_mousedown = FALSE
 		user_trying_to_fire = FALSE	//When we release the button, stop attempting to fire. it may still go if there's minimum shots remaining
 	return TRUE
 

@@ -26,7 +26,6 @@
 		GLOB.moved_event.register(reciever.loc, reciever, /obj/item/weapon/gun/proc/user_moved)
 	do_fire()
 	firing = call(reciever, get_firing_proc)()
-	world << "Sustained firing is now [firing]"
 
 //Next loop will notice these vars and stop shooting
 /datum/click_handler/sustained/proc/stop_firing()
@@ -42,12 +41,10 @@
 	call(reciever,fire_proc)(target, user, FALSE, last_params, get_global_pixel_click_location(last_params, user ? user.client : null))
 
 /datum/click_handler/sustained/MouseDown(object,location,control,params)
-	world << "--------------------------------------------------------"
-	world << "Sustained mousedown 1"
+	left_mousedown = TRUE
 	last_params = params
 	object = resolve_world_target(object, params)
 	if (object)
-		world << "Sustained mousedown 2"
 		target = object
 		user.face_atom(target)
 		start_firing()
@@ -77,7 +74,7 @@
 
 
 /datum/click_handler/sustained/MouseUp(object,location,control,params)
-	world << "Sustained mouseup"
+	left_mousedown = FALSE
 	stop_firing()
 	return TRUE
 

@@ -38,6 +38,13 @@
 /obj/item/weapon/material/get_material()
 	return material
 
+/obj/item/weapon/material/get_heat_limit()
+	var/material/M = get_material()
+	if (M)
+		return M.get_heat_limit()
+
+	.=..()
+
 /obj/item/weapon/material/proc/update_force()
 	if(edge || sharp)
 		force = material.get_edge_damage()

@@ -24,9 +24,10 @@
 /obj/effect/particle_system/New(var/atom/host, var/direction, var/duration, var/particle_travel_distance, var/angle)
 	origin = host
 	origin_turf = get_turf(host)
+
 	if (istype(host, /atom/movable))
 		GLOB.moved_event.register(host, src, /obj/effect/particle_system/proc/origin_moved)
-	src.direction = direction
+	set_direction(direction)
 	if (isnum(duration))
 		src.duration = duration
 	if (particle_travel_distance)
@@ -46,7 +47,7 @@
 
 //If our host atom could move, we'll call this when it does
 /obj/effect/particle_system/proc/origin_moved()
-	origin_turf = get_turf(host)
+	origin_turf = get_turf(origin)
 
 /obj/effect/particle_system/Initialize()
 	.=..()
@@ -92,6 +93,7 @@
 	var/vector2/offset = get_new_vector(rand_between(-randpixel, randpixel), rand_between(-randpixel, randpixel))
 	if (base_offset)
 		offset.SelfAdd(base_offset)
+
 	if (relative_offset_rotated)
 		offset.SelfAdd(relative_offset_rotated)
 	var/obj/effect/particle/S = new particle_type(origin_turf, particle_direction, particle_lifetime, particle_travel_distance, offset, particle_color)

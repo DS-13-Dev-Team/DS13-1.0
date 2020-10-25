@@ -444,12 +444,6 @@
 /*
 	Temperature handling
 */
-/mob/living/simple_animal/get_fire_damage(var/temperature, var/multiplier)
-	if (temperature < maxbodytemp)
-		return 0
-	else
-		temperature -= maxbodytemp
-		.=..(temperature, multiplier)
 
 /mob/living/simple_animal/get_cold_protection(var/temperature)
 	if (temperature > minbodytemp)
@@ -462,9 +456,13 @@
 		return 1 //Special case for 0 temperature
 
 /mob/living/simple_animal/get_heat_protection(var/temperature)
-	if (temperature < maxbodytemp)
+	var/limit = get_heat_limit()
+	if (temperature < limit)
 		return 1
 	else if (temperature != 0)
-		return maxbodytemp / temperature
+		return limit / temperature
 	else
 		return 1 //Special case for 0 temperature
+
+/mob/living/simple_animal/get_heat_limit()
+	return maxbodytemp

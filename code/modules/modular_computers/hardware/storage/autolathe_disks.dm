@@ -55,7 +55,6 @@
 		/datum/design/autolathe/tool/weldertool,
 		/datum/design/autolathe/tool/weldinggoggles,
 		/datum/design/autolathe/tool/weldermask,
-		/datum/design/autolathe/device/flamethrower,
 		/datum/design/autolathe/tool/sawblade,
 		/datum/design/autolathe/tool/sawblade/diamond
 	)

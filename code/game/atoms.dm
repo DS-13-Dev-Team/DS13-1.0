@@ -327,7 +327,7 @@ its easier to just keep the beam vertical.
 
 //How much damage will a fire_act do?
 /atom/proc/get_fire_damage(var/temperature, var/multiplier)
-	return temperature * FIRE_DAMAGE_MULTIPLIER * multiplier
+	return (temperature-get_heat_limit()) * FIRE_DAMAGE_MULTIPLIER * multiplier
 
 /atom/proc/melt()
 	return

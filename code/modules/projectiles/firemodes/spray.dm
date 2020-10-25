@@ -18,9 +18,6 @@
 		spray_extension = gun.spray_ability(subtype = spray_type,  target = target, angle = src.angle, length = range, stun = FALSE, duration  = FALSE, cooldown = FALSE, windup = FALSE, override_user = null, extra_data = src.extra_data)
 		if (istype(spray_extension))
 			gun.started_firing()
-			world << "Got spray extension [spray_extension]"
-		else
-			world << "Failed to get extension [spray_extension]"
 
 	//If the gun is already firing, then this fire call is to re-orient the spray
 	else if (target)
@@ -28,15 +25,12 @@
 
 
 /datum/firemode/sustained/spray/stop_firing()
-	world << "Spray firemode stopping firing 1"
 	.=..()
 	if (spray_extension)
-		world << "Spray firemode stopping firing 2"
 		spray_extension.stop()
 		spray_extension = null
 
 /datum/firemode/sustained/spray/update(var/force_state = null)
 	var/obj/item/weapon/gun/spray/sprayer = gun
 	spray_type = sprayer.spray_type
-	world << "Spray updated"
 	.=..()

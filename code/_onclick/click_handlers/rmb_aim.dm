@@ -35,6 +35,8 @@
 		else
 			start_aiming()
 		return FALSE
+	else
+		left_mousedown = TRUE
 	return TRUE
 
 /datum/click_handler/rmb_aim/MouseUp(object,location,control,params)
@@ -48,6 +50,8 @@
 		else
 			stop_aiming()
 		return FALSE
+	else
+		left_mousedown = FALSE
 	return TRUE
 
 
