@@ -17,7 +17,7 @@
 	var/buffer_tiles = 15
 
 	//By default the skybox positions its own lowerleft corner where we point to. So we must additionally offset it by this in both directions to centre it
-	var/base_offset= -368
+	var/base_offset = -368
 
 /client
 	var/obj/skybox/skybox
@@ -42,7 +42,7 @@
 			var/skybox_side_size = DEFAULT_SKYBOX_SIZE * skybox.scalar
 
 			//Here's the minimum distance in pixels we need to be from the edge, to not-see whitespace
-			var/buffer_pixels = temp_view * WORLD_ICON_SIZE
+			var/buffer_pixels = (temp_view + 1) * WORLD_ICON_SIZE
 
 			//And here's the farthest we're allowed to slide on both axes before we see whitespace. Inverting it makes math easier
 			skybox.slide_range = ((skybox_side_size *0.5) - buffer_pixels)	*-1
@@ -81,3 +81,6 @@
 	. = ..()
 	if(. && client)
 		client.update_skybox(old_z != get_z(src))
+
+
+

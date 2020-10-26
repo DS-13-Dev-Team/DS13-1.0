@@ -100,6 +100,8 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	var/list/planet_size  //dimensions of planet zlevel, defaults to world size. Due to how maps are generated, must be (2^n+1) e.g. 17,33,65,129 etc. Map will just round up to those if set to anything other.
 	var/away_site_budget = 0
 
+	var/skybox_foreground_objects
+
 	var/list/loadout_blacklist	//list of types of loadout items that will not be pickable
 
 	//Economy stuff
