@@ -18,6 +18,14 @@
 	material = get_material_by_name("[material_name]")
 	.=..()
 
+/obj/structure/barricade/get_heat_limit()
+	var/material/M = get_material()
+	if (M)
+		return M.get_heat_limit()
+
+	.=..()
+
+
 /obj/structure/barricade/Initialize(var/mapload)
 	if(!material)
 		qdel(src)

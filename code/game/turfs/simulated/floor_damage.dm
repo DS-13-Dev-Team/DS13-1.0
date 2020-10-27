@@ -12,18 +12,18 @@
 	if(rust)
 		broken = flooring.has_damage_range + 1
 	else if(flooring.has_damage_range)
-		broken = rand(0,flooring.has_damage_range)
+		broken = rand(1,flooring.has_damage_range)
 	else
-		broken = 0
+		broken = TRUE
 	update_icon()
 
 /turf/simulated/floor/proc/burn_tile()
 	if(!flooring || !(flooring.flags & TURF_CAN_BURN) || !isnull(burnt))
 		return
 	if(flooring.has_burn_range)
-		burnt = rand(0,flooring.has_burn_range)
+		burnt = rand(1,flooring.has_burn_range)
 	else
-		burnt = 0
+		burnt = TRUE
 	update_icon()
 
 
@@ -39,7 +39,8 @@
 				L.ex_act(1)
 		return
 
-	damage -= flooring.resistance
+	if (!ignore_resistance)
+		damage -= flooring.resistance
 	if (!damage || damage <= 0)
 		return
 
@@ -60,16 +61,13 @@
 	else
 		//Breaking or burning overlays.
 		//A tile can have one of each type
-		var/update = FALSE
-		if (!broken && (damage_type == BRUTE || damage_type == BLAST) && health < (flooring.health * 0.75))
+		if (!broken && (damage_type == BRUTE || damage_type == BLAST) && health < (flooring.health * 0.9))
 			broken = TRUE
-			update = TRUE
 
-		if (!burnt && (damage_type == BURN || damage_type == BLAST) && health < (flooring.health * 0.75))
+		if (!burnt && (damage_type == BURN || damage_type == BLAST) && health < (flooring.health * 0.9))
 			burnt = TRUE
-			update = TRUE
 
-		if (update)
+		if (broken || burnt)
 			update_icon()
 
 

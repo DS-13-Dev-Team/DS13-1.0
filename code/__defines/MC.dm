@@ -142,3 +142,7 @@ if(Datum.is_processing) {\
 	}\
 }\
 /datum/controller/subsystem/processing/##X
+
+
+/datum/proc/can_stop_processing()
+	return TRUE

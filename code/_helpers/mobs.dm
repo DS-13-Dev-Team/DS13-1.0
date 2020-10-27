@@ -186,7 +186,16 @@ proc/age2agedescription(age)
 
 	var/datum/progressbar/progbar
 	if (progress)
-		progbar = new(user, delay, target)
+		//Where will the progress bar appear?
+		//Usually over the target object. But if its not on turf, we'll put the bar on that turf anyway
+		//If no target supplied, the bar goes on the user
+		var/atom/progtarget = target
+		if (!progtarget)
+			progtarget = user
+		else if (!isturf(progtarget.loc))
+			progtarget = get_turf(progtarget)
+
+		progbar = new(user, delay, progtarget)
 
 	var/endtime = world.time + delay
 	var/starttime = world.time

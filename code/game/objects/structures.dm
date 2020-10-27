@@ -199,3 +199,16 @@
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()
+
+
+//Future TODO: Make this generic atom behaviour
+/obj/structure/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+	var/damage = get_fire_damage(exposed_temperature, multiplier) //Plants and corruption take 2.5x damage from fire
+	if (damage > 0)
+		take_damage(damage, BURN,bypass_resist = TRUE)
+
+
+//Most structures are stee
+/obj/structure/get_heat_limit()
+	return 1370
+

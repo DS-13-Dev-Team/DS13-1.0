@@ -129,6 +129,11 @@ var/list/name_to_material
 	// Modifies skill checks when constructing with this material.
 	var/construction_difficulty = 0
 
+/material/proc/get_heat_limit()
+	. = melting_point
+	if (isnum(ignition_point) && ignition_point < .)
+		.=ignition_point
+
 // Placeholders for light tiles and rglass.
 /material/proc/build_rod_product(var/mob/user, var/obj/item/stack/used_stack, var/obj/item/stack/target_stack)
 	if(!rod_product)

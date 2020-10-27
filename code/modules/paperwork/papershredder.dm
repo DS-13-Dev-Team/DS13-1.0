@@ -99,11 +99,11 @@
 
 /obj/item/weapon/shreddedp/attackby(var/obj/item/W as obj, var/mob/user)
 	if(istype(W, /obj/item/weapon/flame/lighter))
-		burnpaper(W, user)
+		burn_with_object(W, user)
 	else
 		..()
 
-/obj/item/weapon/shreddedp/proc/burnpaper(var/obj/item/weapon/flame/lighter/P, var/mob/user)
+/obj/item/weapon/shreddedp/proc/burn_with_object(var/obj/item/weapon/flame/lighter/P, var/mob/user)
 	if(user.restrained())
 		return
 	if(!P.lit)
@@ -130,7 +130,7 @@
 	throwforce = 0
 	w_class = ITEM_SIZE_TINY
 	throw_range = 3
-	
+
 
 /obj/item/weapon/shreddedp/New()
 	..()
