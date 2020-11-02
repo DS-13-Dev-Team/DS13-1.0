@@ -1,7 +1,7 @@
 /datum/craft_recipe/wall_girders
 	name = "wall girders"
 	result = /obj/structure/girder
-	time = WORKTIME_NORMAL
+	time = WORKTIME_SLOW
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL, 5)
 	)
