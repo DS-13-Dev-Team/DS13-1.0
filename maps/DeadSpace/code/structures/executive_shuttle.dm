@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(executive_shuttle_controllers, list())
 	for(var/obj/machinery/computer/shuttle_control/executive/E in GLOB.executive_shuttle_controllers)
 		if(E.authorised)
 			authcount ++
-	return authcount >= requisite
+	return (evacuation_controller.state >= EVAC_PREPPING) && authcount >= requisite
 
 /obj/machinery/computer/shuttle_control/executive
 	name = "Executive Shuttle Authorisation Console"
