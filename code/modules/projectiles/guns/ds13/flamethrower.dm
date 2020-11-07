@@ -392,9 +392,11 @@
 	if (contamination > 0)
 		to_chat(user, span("danger", "The fuel contamination warning light is blinking!"))
 
-/obj/item/weapon/reagent_containers/glass/fuel_tank/on_reagent_change()
-	.=..()
-	check_fuel_type_and_contamination()
+
+//To save processing, lets not recheck the fuel unless something other than our designated fuel went in or out
+/obj/item/weapon/reagent_containers/glass/fuel_tank/on_reagent_change(var/reagent_type, var/delta)
+	if (reagent_type != fueltype)
+		check_fuel_type_and_contamination()
 
 /*
 	Two purposes for this proc:
