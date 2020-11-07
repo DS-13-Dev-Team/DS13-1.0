@@ -18,7 +18,7 @@
 
 	firemodes = list(
 		list(mode_name="flamethrower",mode_type = /datum/firemode/sustained/spray/flame, consume_excess_fuel = TRUE),
-		list(mode_name="incendiary blast", mode_type = /datum/firemode/incendiary, ammo_cost = 5, windup_time = 0.5 SECONDS, windup_sound = 'sound/weapons/guns/fire/pulse_grenade_windup.ogg', projectile_type = /obj/item/projectile/bullet/impact_grenade/incendiary, fire_delay=20, consume_excess_fuel = FALSE))
+		list(mode_name="incendiary blast", mode_type = /datum/firemode/incendiary, ammo_cost = 4, windup_time = 0.5 SECONDS, windup_sound = 'sound/weapons/guns/fire/pulse_grenade_windup.ogg', projectile_type = /obj/item/projectile/bullet/impact_grenade/incendiary, fire_delay=20, consume_excess_fuel = FALSE))
 
 	matter = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1750, MATERIAL_SILVER = 500)
 
@@ -150,6 +150,7 @@
 /obj/item/weapon/gun/spray/hydrazine_torch/verb/toggle_pilot_light()
 	set name = "Toggle pilot light"
 	set src in usr
+	set category = null
 
 	if (pilot_light == -1) //-1 indicates "currently being lit"
 		return //Prevents spamclicks breaking things

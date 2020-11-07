@@ -27,6 +27,13 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["right"])
 		object = user.client.resolve_drag(object, params)
+
+		/*
+		//Lets allow the user to rightclick their weapon, for toggling various settings via the rightclick menu
+		if (object == gun)
+			return TRUE
+			*/
+
 		user.face_atom(object)
 		deltimer(interval_timer_handle)
 		var/delta = world.time - last_change
