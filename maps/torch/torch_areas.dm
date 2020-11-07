@@ -11,7 +11,7 @@
 		/area/shuttle/escape_pod3/centcom,
 		/area/shuttle/escape_pod5/centcom,
 		/area/shuttle/transport1/centcom,
-		/area/shuttle/administration/centcom,
+		/area/shuttle/executive_shuttle,
 		/area/shuttle/specops/centcom,
 	)
 /*
@@ -1270,7 +1270,7 @@
 	requires_power = 1
 
 // Shuttles
-/area/shuttle/administration/centcom
+/area/shuttle/executive_shuttle
 	name = "\improper Administration Shuttle"
 	icon_state = "shuttlered"
 

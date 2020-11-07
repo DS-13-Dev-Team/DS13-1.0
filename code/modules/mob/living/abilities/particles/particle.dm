@@ -69,7 +69,11 @@
 
 /obj/effect/particle/Initialize()
 	.=..()
+	animation()
 
+//I bladed this proc off into an async one to avoid hanging initialize()
+/obj/effect/particle/proc/animation()
+	set waitfor = FALSE
 	//Lets start the animation!
 	animate(src, transform = starting_transform, time = 0)
 	animate(

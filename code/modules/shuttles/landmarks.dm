@@ -62,10 +62,13 @@
 	for(var/target_turf in target_turfs)
 		var/turf/target = target_turf
 		if(!target)
+			message_admins("Edge of map")
 			return TRUE //collides with edge of map
 		if(target.loc != target_area)
+			message_admins("Area collision ([target.loc] & [target_area])")
 			return TRUE //collides with another area
 		if(target.density)
+			message_admins("Dense turf")
 			return TRUE //dense turf
 	return FALSE
 
