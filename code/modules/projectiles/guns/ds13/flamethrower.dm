@@ -8,6 +8,8 @@
 	mag_insert_sound = 'sound/weapons/guns/interaction/torch_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/torch_magout.ogg'
 
+	//This gun has no safety switch
+	safety_state = FALSE
 
 	var/obj/item/weapon/reagent_containers/glass/fuel_tank/tank
 
@@ -42,6 +44,33 @@
 	'sound/weapons/guns/fire/flmthrowr_03.ogg',
 	'sound/weapons/guns/fire/flmthrowr_04.ogg',
 	'sound/weapons/guns/fire/flmthrowr_05.ogg')
+
+
+
+//Preloaded subtypes
+
+//Default starts with an empty tank
+/obj/item/weapon/gun/spray/hydrazine_torch/Initialize()
+	.=..()
+
+	tank = new /obj/item/weapon/reagent_containers/glass/fuel_tank(src)
+	update_fuel()
+	update_firemode()
+
+/obj/item/weapon/gun/spray/hydrazine_torch/fuel/Initialize()
+	.=..()
+	QDEL_NULL(tank)
+	tank = new /obj/item/weapon/reagent_containers/glass/fuel_tank/fuel(src)
+	update_fuel()
+	update_firemode()
+
+/obj/item/weapon/gun/spray/hydrazine_torch/hydrazine/Initialize()
+	.=..()
+	QDEL_NULL(tank)
+	tank = new /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine(src)
+	update_fuel()
+	update_firemode()
+
 
 /obj/item/weapon/gun/spray/hydrazine_torch/examine(var/mob/user)
 	.=..()
@@ -169,6 +198,18 @@
 		usr.visible_message(SPAN_NOTICE("[usr] [pilot_light ? "ignites" : "extinguishes"] the pilot light on \the [src]"))
 	return pilot_light
 
+
+
+//The torch has no safety switch, that's routed to the pilot light instead
+/obj/item/weapon/gun/spray/hydrazine_torch/toggle_safety(var/mob/user)
+	safety_state = FALSE
+	toggle_pilot_light()
+
+
+
+
+
+
 /obj/item/weapon/gun/spray/hydrazine_torch/proc/set_pilot_light(var/state, var/update = TRUE)
 
 
@@ -229,12 +270,7 @@
 
 		update_icon()
 
-/obj/item/weapon/gun/spray/hydrazine_torch/Initialize()
-	.=..()
 
-	tank = new /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine(src)
-	update_fuel()
-	update_firemode()
 
 
 /obj/item/weapon/gun/spray/hydrazine_torch/consume_projectiles(var/number = 1)
