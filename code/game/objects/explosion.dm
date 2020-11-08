@@ -171,7 +171,7 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 			return 1
 
 //Causes the actual explosion logic at a target turf.
-/datum/extension/explosion/proc/explosion(turf/epicenter, radius, max_power=3)
+/datum/extension/explosion/proc/explosion(turf/epicenter, radius, max_power=2)
 	. = ..()
 	explosion_FX(epicenter, radius)
 	for(var/dir in GLOB.alldirs)
