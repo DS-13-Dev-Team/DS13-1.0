@@ -31,7 +31,7 @@
 	var/sloppy = 1 //Whether reagents will not be fully purified (sloppy = 1) or there will be reagent loss (sloppy = 0) on reagent add.
 
 /obj/machinery/chem_master/New()
-	create_reagents(120)
+	create_reagents(1000)
 	..()
 
 /obj/machinery/chem_master/ex_act(severity)

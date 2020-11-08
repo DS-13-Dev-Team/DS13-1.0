@@ -33,10 +33,10 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - rscdel: "Removed the ability to swipe for nuclear codes. Why would you use this?"
-  - bugfix: "Fixed Administrative Shuttle not having a transit place."
-  - bugfix: "Fixed people getting stuck on the evacuation site."
-  - bugfix: "Fixed people not able to get hammered on the evacuation site."
-  - tweak: "Altered ERT join time from 1 minute to 3 minutes."
-  - maptweak: "Made several, much-needed changes to the evacuation site."
-  - experiment: "Experimental fix for ERT's not spawning when called."
+  - tweak: "Moderately decreased durability of wooden barricades."
+  - tweak: "Moderately increased durability of steel barricades."
+  - tweak: "Minorly increased damage dealt by the Spike barricade."
+  - tweak: "Moderately increased durability of the Spike barricade."
+  - tweak: "Moderately increased the time requirement to craft a girder."
+  - tweak: "Minorly increased the firing rate of the craftable pulse turret."
+  - rscdel: "Removed the RCD from the crafting disk list."

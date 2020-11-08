@@ -391,9 +391,11 @@
 				/obj/effect/decal/cleanable/dirt))
 
 
-obj/random/closet //A couple of random closets to spice up maint
-	name = "random closet"
-	desc = "This is a random closet."
+//Random closet is being repurposed as a more generic random large/dense object spawner.
+//The path wont be changed for now to prevent breaking the map
+obj/random/closet
+	name = "random dense object"
+	desc = "This is a dense object."
 	icon = 'icons/obj/closet.dmi'
 	icon_state = "syndicate1"
 
@@ -409,7 +411,8 @@ obj/random/closet/item_to_spawn()
 				/obj/structure/closet/crate/internals,
 				/obj/structure/closet/crate/trashcart,
 				/obj/structure/closet/crate/medical,
-				/obj/structure/largecrate))
+				/obj/structure/largecrate,
+				/obj/structure/reagent_dispensers/fueltank = 0.5))
 
 /obj/random/coin
 	name = "random coin"

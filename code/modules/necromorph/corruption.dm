@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	icon = 'icons/effects/corruption.dmi'
 	icon_state = ""
 
-	max_health = 80
+	max_health = 30
 	max_growth = 1
 
 	var/max_alpha = 215

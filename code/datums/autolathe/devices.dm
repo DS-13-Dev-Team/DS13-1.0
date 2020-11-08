@@ -44,7 +44,9 @@
 	build_path = /obj/item/weapon/hand_labeler
 
 
-
+/*
+	Future TODO: Allow this after some reasonable material requirements
 /datum/design/autolathe/device/flamethrower
 	name = "flamethrower"
-	build_path = /obj/item/weapon/flamethrower
+	build_path = /obj/item/weapon/gun/spray/hydrazine_torch
+*/

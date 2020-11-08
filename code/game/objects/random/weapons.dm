@@ -42,7 +42,8 @@
 	/obj/item/weapon/gun/energy/cutter = 1,
 	/obj/item/weapon/gun/energy/cutter/plasma = 0.5,
 	/obj/item/weapon/gun/projectile/linecutter = 0.5,
-	/obj/item/weapon/gun/projectile/detonator/loaded = 1))
+	/obj/item/weapon/gun/projectile/detonator/loaded = 1,
+	/obj/item/weapon/gun/spray/hydrazine_torch = 1))
 
 /obj/random/handgun
 	name = "Random Handgun"
@@ -70,4 +71,6 @@
 	/obj/item/weapon/cell/contact = 0.75,
 	/obj/item/ammo_magazine/divet = 1.5,
 	/obj/item/ammo_magazine/lineracks = 1,
-	/obj/item/ammo_casing/tripmine = 1))
+	/obj/item/ammo_casing/tripmine = 1,
+	/obj/item/weapon/reagent_containers/glass/fuel_tank/fuel = 1,
+	/obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine = 0.4))

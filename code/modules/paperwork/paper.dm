@@ -13,7 +13,7 @@
 	throwforce = 0
 	w_class = ITEM_SIZE_TINY
 	throw_range = 1
-	
+
 	layer = ABOVE_OBJ_LAYER
 	slot_flags = SLOT_HEAD
 	body_parts_covered = HEAD
@@ -235,7 +235,7 @@
 	return t
 
 
-/obj/item/weapon/paper/proc/burnpaper(obj/item/weapon/flame/P, mob/user)
+/obj/item/weapon/paper/proc/burn_with_object(obj/item/weapon/flame/P, mob/user)
 	var/class = "warning"
 
 	if(P.lit && !user.restrained())
@@ -250,11 +250,18 @@
 				user.visible_message("<span class='[class]'>[user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 				"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 
-				new /obj/effect/decal/cleanable/ash(get_turf(src))
-				qdel(src)
+				burn()
 
 			else
 				to_chat(user, "<span class='warning'>You must hold \the [P] steady to burn \the [src].</span>")
+
+//We won't even bother with damage, paper exposed to fire is just gone
+/obj/item/weapon/paper/fire_act()
+	burn()
+
+/obj/item/weapon/paper/proc/burn()
+	new /obj/effect/decal/cleanable/ash(get_turf(src))
+	qdel(src)
 
 
 /obj/item/weapon/paper/Topic(href, href_list)
@@ -408,7 +415,7 @@
 		to_chat(user, "<span class='notice'>You stamp the paper with your [P.name].</span>")
 
 	else if(istype(P, /obj/item/weapon/flame))
-		burnpaper(P, user)
+		burn_with_object(P, user)
 
 	else if(istype(P, /obj/item/weapon/paper_bundle))
 		var/obj/item/weapon/paper_bundle/attacking_bundle = P

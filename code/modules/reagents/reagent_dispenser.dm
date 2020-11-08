@@ -9,7 +9,7 @@
 
 	var/initial_capacity = 1000
 	var/initial_reagent_types  // A list of reagents and their ratio relative the initial capacity. list(/datum/reagent/water = 0.5) would fill the dispenser halfway to capacity.
-	var/amount_per_transfer_from_this = 10
+	var/amount_per_transfer_from_this = 100 //Nobody ever wants 10 units of water or fuel
 	var/possible_transfer_amounts = "10;25;50;100;500"
 
 	attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -84,11 +84,11 @@
 	atom_flags = ATOM_FLAG_CLIMBABLE
 
 /obj/structure/reagent_dispensers/fueltank
-	name = "fueltank"
-	desc = "A tank containing fuel."
+	name = "gasoline tank"
+	desc = "A tank containing highly flammable fuel."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "weldtank"
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 100
 	var/modded = 0
 	var/obj/item/device/assembly_holder/rig = null
 	initial_reagent_types = list(/datum/reagent/fuel = 1)
@@ -101,6 +101,7 @@
 		to_chat(user, "<span class='warning'>Fuel faucet is wrenched open, leaking the fuel!</span>")
 	if(rig)
 		to_chat(user, "<span class='notice'>There is some kind of device rigged to the tank.</span>")
+
 /obj/structure/reagent_dispensers/fueltank/attack_hand()
 	if (rig)
 		usr.visible_message("<span class='notice'>\The [usr] begins to detach [rig] from \the [src].</span>", "<span class='notice'>You begin to detach [rig] from \the [src].</span>")
