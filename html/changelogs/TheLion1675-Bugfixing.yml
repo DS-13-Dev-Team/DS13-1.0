@@ -35,5 +35,7 @@ delete-after: True
 changes: 
   - bugfix: "Fixed communications not being present on Aegis."
   - bugfix: "Fixed SolNet being unreachable on Aegis or the evacuation site."
+  - bugfix: "Fixed Rejuvinate not being under the rejuvinate perm. Don't ask, can't explain."
+  - tweak: "Added priority announcement by staff under the Rejuvinate permissionsgroup."
   - tweak: "Significantly reduced cargo train speed. No more combat train."
   - rscdel: "Removed random teleportation after hitting edge of admin level, which contains the evac site."
