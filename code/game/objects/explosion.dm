@@ -167,7 +167,7 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 			return 3
 		if(1 to 2)
 			return 2
-		if(2 to 3)
+		if(2 to INFINITY)
 			return 1
 
 //Causes the actual explosion logic at a target turf.
@@ -176,8 +176,8 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 	explosion_FX(epicenter, radius)
 	for(var/dir in GLOB.alldirs)
 		new /datum/explosion_wave(epicenter, dir, radius, max_power)
-	//And ensure the epicenter takes the full whack.
-	epicenter.explosion_ripple(1) //All explosions are always going to hit badly at the epicenter.
+	//And ensure the epicenter takes the full whack. This takes the power cap and directly applies it to the epicenter
+	epicenter.explosion_ripple(explosion_power_to_ex_act(max_power)) //All explosions are always going to hit badly at the epicenter.
 
 //Near instant "cheap" explosion that doesn't take into account things blocking it.
 /datum/extension/explosion/proc/simple_explosion(atom/movable/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, z_transfer, shaped)

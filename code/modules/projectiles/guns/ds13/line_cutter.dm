@@ -166,7 +166,7 @@
 	.=..()
 
 /obj/effect/mine/plasma/explode(obj)
-	explosion(10, 2)
+	explosion(3, 3)
 	spawn(0)
 		qdel(src)
 
