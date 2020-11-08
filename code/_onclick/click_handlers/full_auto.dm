@@ -39,6 +39,7 @@
 /datum/click_handler/fullauto/MouseDown(object,location,control,params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["left"])
+		left_mousedown = TRUE
 		object = resolve_world_target(object, params)
 		if (object)
 			target = object
@@ -60,6 +61,7 @@
 /datum/click_handler/fullauto/MouseUp(object,location,control,params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["left"])
+		left_mousedown = FALSE
 		user_trying_to_fire = FALSE	//When we release the button, stop attempting to fire. it may still go if there's minimum shots remaining
 	return TRUE
 
@@ -85,3 +87,71 @@
 
 
 
+//Automatic firing
+//Todo: Way more checks and safety here
+/datum/firemode/automatic
+	settings = list(burst = 1, suppress_delay_warning = TRUE, dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2))
+	//The full auto clickhandler we have
+	var/minimum_shots = 0
+	var/datum/click_handler/fullauto/CH = null
+
+/datum/firemode/automatic/update(var/force_state = null)
+	var/mob/living/L
+	if (gun && gun.is_held())
+		L = gun.loc
+
+	var/enable = FALSE
+	//Force state is used for forcing it to be disabled in circumstances where it'd normally be valid
+	if (!isnull(force_state))
+		enable = force_state
+	else if (can_fire())
+		enable = TRUE
+	else
+		enable = FALSE
+
+	//Ok now lets set the desired state
+	if (!enable)
+		stop_firing()
+
+
+	else
+		//We're trying to turn things on
+		if (CH)
+			return //The click handler exists, we dont need to do anything
+
+
+		//Create and assign the click handler
+		//A click handler intercepts mouseup/drag/down events which allow fullauto firing
+		CH = L.PushClickHandler(/datum/click_handler/fullauto)
+		CH.reciever = gun //Reciever is the gun that gets the fire events
+		CH.user = L //And tell it where it is
+		CH.minimum_shots = minimum_shots
+
+
+/datum/firemode/automatic/proc/can_fire()
+	. = FALSE
+	var/mob/living/L
+	if (gun && gun.is_held())
+		L = gun.loc
+	if (L && L.client)
+		//First of all, lets determine whether we're enabling or disabling the click handler
+
+		//We enable it if the gun is held in the user's active hand and the safety is off
+		if (L.get_active_hand() == gun)
+			//Lets also make sure it can fire
+			. = TRUE
+
+
+			//Projectile weapons need to have enough ammo to fire
+			if(istype(gun, /obj/item/weapon/gun/projectile))
+				var/obj/item/weapon/gun/projectile/P = gun
+				if (!P.can_ever_fire())
+					. =  FALSE
+
+
+/datum/firemode/automatic/stop_firing()
+	if (CH)
+		//Todo: make client click handlers into a list
+		if (CH.user) //Remove our handler from the client
+			CH.user.RemoveClickHandler(CH)
+		CH = null

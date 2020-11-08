@@ -291,11 +291,7 @@
 	else
 		unload_ammo(user)
 
-/obj/item/weapon/gun/projectile/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
-		unload_ammo(user, allow_dump=0)
-	else
-		return ..()
+
 
 /obj/item/weapon/gun/projectile/afterattack(atom/A, mob/living/user)
 	.=..()

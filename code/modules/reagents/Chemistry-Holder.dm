@@ -139,7 +139,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 			if(!safety)
 				process_reactions()
 			if(my_atom)
-				my_atom.on_reagent_change()
+				my_atom.on_reagent_change(reagent_type, amount)
 			return current
 	if(ispath(reagent_type, /datum/reagent))
 		var/datum/reagent/R = new reagent_type(src)
@@ -151,7 +151,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 		if(!safety)
 			process_reactions()
 		if(my_atom)
-			my_atom.on_reagent_change()
+			my_atom.on_reagent_change(reagent_type, amount)
 		return R
 	else
 		warning("[log_info_line(my_atom)] attempted to add a reagent of type '[reagent_type]' which doesn't exist. ([usr])")
@@ -168,18 +168,19 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 			if(!safety)
 				process_reactions()
 			if(my_atom)
-				my_atom.on_reagent_change()
+				my_atom.on_reagent_change(reagent_type, amount*-1)
 			return change
 	return 0
 
 /datum/reagents/proc/del_reagent(var/reagent_type)
 	for(var/datum/reagent/current as anything in reagent_list)
 		if (current.type == reagent_type)
+			var/volume_removed = current.volume
 			reagent_list -= current
 			qdel(current)
 			update_total()
 			if(my_atom)
-				my_atom.on_reagent_change()
+				my_atom.on_reagent_change(reagent_type, volume_removed)
 			return 0
 
 /datum/reagents/proc/has_reagent(var/reagent_type, var/amount = null)

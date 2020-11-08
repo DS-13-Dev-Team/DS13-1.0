@@ -30,7 +30,7 @@ var/list/flooring_types
 
 	var/has_base_range
 	var/has_damage_range
-	var/has_burn_range
+	var/has_burn_range = null
 	var/damage_temperature
 	var/apply_thermal_conductivity
 	var/apply_heat_capacity

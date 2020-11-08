@@ -43,7 +43,7 @@
 	if(health <= 0)
 		qdel(src)
 
-/obj/effect/spider/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/effect/spider/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
 	if(exposed_temperature > 300 + T0C)
 		health -= 5
 		healthcheck()

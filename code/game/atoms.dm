@@ -116,7 +116,7 @@
 		return FALSE
 	return -1
 
-/atom/proc/on_reagent_change()
+/atom/proc/on_reagent_change(var/reagent_type, var/delta)
 	return
 
 /atom/proc/Bumped(AM as mob|obj)
@@ -324,6 +324,10 @@ its easier to just keep the beam vertical.
 
 /atom/proc/fire_act()
 	return
+
+//How much damage will a fire_act do?
+/atom/proc/get_fire_damage(var/temperature, var/multiplier)
+	return (temperature-get_heat_limit()) * FIRE_DAMAGE_MULTIPLIER * multiplier
 
 /atom/proc/melt()
 	return

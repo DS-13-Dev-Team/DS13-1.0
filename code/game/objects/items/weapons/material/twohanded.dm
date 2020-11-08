@@ -77,7 +77,7 @@
 	edge = 1
 	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BACK
-	force_wielded = 30
+	force_wielded = WEAPON_FORCE_ROBUST
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 	attack_noun = list("attack", "slash", "chop", "slice", "tear", "rip", "dice", "cut")
 	applies_material_colour = 0
@@ -112,7 +112,7 @@
 	force_divisor = 0.33
 	unwielded_force_divisor = 0.20
 	thrown_force_divisor = 1.5 // 20 when thrown with weight 15 (glass)
-	
+
 	edge = 0
 	sharp = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
