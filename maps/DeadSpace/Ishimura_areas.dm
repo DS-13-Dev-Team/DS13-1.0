@@ -731,3 +731,15 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/tramdeck/tram/tunnel/forwad
 	name = "\improper Ishimura Forward Tram Tunnel"
+
+//------------------Switching Station------------------//
+
+/area/ishimura/tramdeck/switchingstation
+	name = "\improper Disused Switching Station"
+	icon_state = "switchingstation"
+
+/area/ishimura/tramdeck/switchingstation/upper
+	name = "\improper Disused Upper Switching Station"
+
+/area/ishimura/tramdeck/switchingstation/lower
+	name = "\improper Disused Lower Switching Station"

@@ -10,11 +10,11 @@
 /obj/effect/shuttle_landmark/lift/tramswitch_top
 	name = "Upper Switching Station"
 	landmark_tag = "nav_switch_lift_top"
-//	base_area = /area/quartermaster/storage/upper
+	base_area = /area/ishimura/tramdeck/switchingstation/upper
 	base_turf = /turf/simulated/open
 
 /obj/effect/shuttle_landmark/lift/tramswitch_bottom
 	name = "Lower Switching Station"
 	landmark_tag = "nav_switch_lift_bottom"
-//	base_area = /area/quartermaster/storage
+	base_area = /area/ishimura/tramdeck/switchingstation/lower
 	base_turf = /turf/simulated/floor/plating
