@@ -206,7 +206,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	//A normal explosion
 	spawn()
 		//Max power 2 because hull breaches are not cool
-		T.explosion(5,2)
+		T.explosion(10,2)
 
 	spawn()
 		//An immediate second, smaller explosion to deal more damage
