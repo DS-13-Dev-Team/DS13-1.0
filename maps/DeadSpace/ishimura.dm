@@ -7,10 +7,10 @@
 	full_name = "USG Ishimura"
 	path = "ishimura"
 	station_levels = list(1,2) // Add 3 to this once the EVA Deck is complete, and remove this comment.
-	contact_levels = list(1,2,3,4) // Add 4 to this once the EVA Deck is complete, and remove this comment.
+	contact_levels = list(1,2,3,4) // Add 5 to this once the EVA Deck is complete, and remove this comment.
 	player_levels = list(1,2) // Add 3 to this once the EVA Deck is ocmplete, and remove this comment.
 	admin_levels = list(4) // Change this to 5 once the EVA Deck is complete.
-	sealed_levels = list(4) // No edge-of-map teleportation for players who hit the edge, to prevent shitlery.
+	sealed_levels = list(3,4) // No edge-of-map teleportation for players who hit the edge, to prevent shitlery.
 	empty_levels = list()
 	accessible_z_levels = list("1"=1,"2"=1) // Add "3"=1 to this once the EVA Deck is complete and remove this comment.
 	local_currency_name = "credits"
