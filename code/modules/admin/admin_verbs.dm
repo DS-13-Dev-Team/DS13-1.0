@@ -26,6 +26,7 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/force_antag_latespawn, //Force a specific template to try a latespawn proc,
 	/datum/admins/proc/toggleenter,		//toggles whether people can join the current game,
 	/datum/admins/proc/toggleguests,	//toggles whether guests can join the current game,
+	/client/proc/cmd_admin_rejuvenate,
 	/datum/admins/proc/announce,		//priority announce something to all clients.,
 	/client/proc/colorooc,				//allows us to set a custom colour for everythign we say in ooc,
 	/client/proc/admin_ghost,			//allows us to ghost/reenter body at will,
@@ -78,7 +79,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/free_slot_submap,
 	/client/proc/free_slot_crew,			//frees slot for chosen job,
 	/client/proc/cmd_admin_change_custom_event,
-	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/toggleghostwriters,
 	/client/proc/toggledrones,
 	/datum/admins/proc/show_skills,
@@ -108,7 +108,8 @@ var/list/admin_verbs_admin = list(
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
-	/client/proc/jobbans
+	/client/proc/jobbans,
+	/client/proc/activate_marker		//Activates The Marker
 	)
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_local_sound,
@@ -233,7 +234,16 @@ var/list/admin_verbs_permissions = list(
 	/client/proc/drop_bomb
 	)
 var/list/admin_verbs_rejuv = list(
-	/client/proc/respawn_character
+	/client/proc/respawn_character,
+	/client/proc/cmd_admin_rejuvenate,
+	/datum/admins/proc/announce,		//priority announce something to all clients.,
+	/datum/admins/proc/restart,
+	/datum/admins/proc/delay,
+	/datum/admins/proc/toggleooc,		//toggles ooc on/off for everyone,
+	/datum/admins/proc/toggleaooc,		//toggles aooc on/off for everyone,
+	/datum/admins/proc/togglelooc,		//toggles looc on/off for everyone,
+	/datum/admins/proc/toggleoocdead,	//toggles ooc on/off for everyone who is dead,
+	/datum/admins/proc/toggledsay		//toggles dsay on/off for everyone,
 	)
 
 //verbs which can be hidden - needs work
@@ -397,7 +407,6 @@ var/list/admin_verbs_hideable = list(
 	)
 var/list/admin_verbs_mod = list(
 	/datum/admins/proc/paralyze_mob,
-	/client/proc/activate_marker,		//Activates The Marker
 	/client/proc/cmd_admin_pm_context,	// right-click adminPM interface,
 	/client/proc/cmd_admin_pm_panel,	// admin-pm list,
 	/client/proc/debug_variables,		// allows us to -see- the variables of any instance in the game.,

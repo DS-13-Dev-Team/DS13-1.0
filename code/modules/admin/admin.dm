@@ -10,6 +10,12 @@ var/global/floorIsLava = 0
 	for(var/client/C in GLOB.admins)
 		if(R_ADMIN & C.holder.rights)
 			to_chat(C, msg)
+/proc/message_mods(var/msg)
+	msg = "<span class=\"log_message\"><span class=\"prefix\">MOD LOG:</span> <span class=\"message\">[msg]</span></span>"
+	log_adminwarn(msg)
+	for(var/client/C in GLOB.admins)
+		if(R_MOD & C.holder.rights)
+			to_chat(C, msg)
 /proc/message_staff(var/msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
