@@ -29,7 +29,8 @@
 	var/biomass = 0
 
 /obj/Destroy()
-	STOP_PROCESSING(SSobj, src)
+	if (is_processing)
+		STOP_PROCESSING(global.vars[is_processing], src)
 	.=..()
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
