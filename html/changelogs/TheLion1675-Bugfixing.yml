@@ -33,9 +33,13 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
+  - rscadd: "Added a new proc to message moderators specifically. Not useful for players, but useful for backend tinkering."
   - bugfix: "Fixed communications not being present on Aegis."
   - bugfix: "Fixed SolNet being unreachable on Aegis or the evacuation site."
   - bugfix: "Fixed Rejuvinate not being under the rejuvinate perm. Don't ask, can't explain."
   - tweak: "Added priority announcement by staff under the Rejuvinate permissionsgroup."
   - tweak: "Significantly reduced cargo train speed. No more combat train."
+  - tweak: "Duplicate IP and CID accounts are now logged to moderators and admins alike."
+  - tweak: "Moved: Delay, Restart and the toggle OOC/LOOC verbs to Senior Moderator permissions."
+  - tweak: "MoveD: Activate Marker verb to full moderators, instead of trial moderator."
   - rscdel: "Removed random teleportation after hitting edge of admin or Aegis levels."

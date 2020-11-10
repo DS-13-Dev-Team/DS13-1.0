@@ -108,7 +108,8 @@ var/list/admin_verbs_admin = list(
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
-	/client/proc/jobbans
+	/client/proc/jobbans,
+	/client/proc/activate_marker		//Activates The Marker
 	)
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_local_sound,
@@ -235,7 +236,9 @@ var/list/admin_verbs_permissions = list(
 var/list/admin_verbs_rejuv = list(
 	/client/proc/respawn_character,
 	/client/proc/cmd_admin_rejuvenate,
-	/datum/admins/proc/announce		//priority announce something to all clients.,
+	/datum/admins/proc/announce,		//priority announce something to all clients.,
+	/datum/admins/proc/restart,
+	/datum/admins/proc/delay
 	)
 
 //verbs which can be hidden - needs work
@@ -399,7 +402,6 @@ var/list/admin_verbs_hideable = list(
 	)
 var/list/admin_verbs_mod = list(
 	/datum/admins/proc/paralyze_mob,
-	/client/proc/activate_marker,		//Activates The Marker
 	/client/proc/cmd_admin_pm_context,	// right-click adminPM interface,
 	/client/proc/cmd_admin_pm_panel,	// admin-pm list,
 	/client/proc/debug_variables,		// allows us to -see- the variables of any instance in the game.,
