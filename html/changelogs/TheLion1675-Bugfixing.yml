@@ -41,5 +41,5 @@ changes:
   - tweak: "Significantly reduced cargo train speed. No more combat train."
   - tweak: "Duplicate IP and CID accounts are now logged to moderators and admins alike."
   - tweak: "Moved: Delay, Restart and the toggle OOC/LOOC verbs to Senior Moderator permissions."
-  - tweak: "MoveD: Activate Marker verb to full moderators, instead of trial moderator."
+  - tweak: "Moved: Activate Marker verb to full moderators, instead of trial moderator."
   - rscdel: "Removed random teleportation after hitting edge of admin or Aegis levels."
