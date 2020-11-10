@@ -24,7 +24,6 @@
 	var/angle
 	var/length
 
-	var/tick_delay
 	var/stun
 	var/duration
 	var/cooldown
@@ -233,7 +232,6 @@ Vars/
 /obj/effect/particle_system/spray
 	particle_type = /obj/effect/particle/spray
 	autostart = FALSE
-	tick_delay = 0.15 SECONDS
 	particles_per_tick = 6
 	randpixel = 12
 
