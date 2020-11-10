@@ -238,7 +238,12 @@ var/list/admin_verbs_rejuv = list(
 	/client/proc/cmd_admin_rejuvenate,
 	/datum/admins/proc/announce,		//priority announce something to all clients.,
 	/datum/admins/proc/restart,
-	/datum/admins/proc/delay
+	/datum/admins/proc/delay,
+	/datum/admins/proc/toggleooc,		//toggles ooc on/off for everyone,
+	/datum/admins/proc/toggleaooc,		//toggles aooc on/off for everyone,
+	/datum/admins/proc/togglelooc,		//toggles looc on/off for everyone,
+	/datum/admins/proc/toggleoocdead,	//toggles ooc on/off for everyone who is dead,
+	/datum/admins/proc/toggledsay		//toggles dsay on/off for everyone,
 	)
 
 //verbs which can be hidden - needs work
