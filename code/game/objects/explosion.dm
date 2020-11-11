@@ -98,23 +98,30 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 	expected_type = /turf
 	flags = EXTENSION_FLAG_IMMEDIATE
 
+//Prevents atoms from being hit by multiple explosion waves at once, and cuts a little bit of cost.
+/atom/movable
+	var/next_explosion_impact = 0
+
 /turf
-	var/next_explosion_ripple = 0
+	var/next_explosion_impact = 0
 
 /turf/proc/explosion_ripple(strength)
 	set waitfor = FALSE
-	if(world.time < next_explosion_ripple)
+	if(world.time < next_explosion_impact)
 		return
-	next_explosion_ripple = world.time + 0.45 SECONDS //Prevents getting spammed by multiple explosions and causing unecessary lag. Yeah this is a little lazy, but I'd rather not assign lists of "processed" turfs or whatever for memory's sake
+	next_explosion_impact = world.time + 0.45 SECONDS //Prevents getting spammed by multiple explosions and causing unecessary lag. Yeah this is a little lazy, but I'd rather not assign lists of "processed" turfs or whatever for memory's sake
 	if(!istype(src, /turf/space))
 		shake_animation(strength)
 	for(var/atom/movable/AM in contents)
+		if(world.time < AM.next_explosion_impact)
+			continue
+		AM.next_explosion_impact = world.time + 0.45 SECONDS
 		AM.ex_act(strength)
 	ex_act(strength)
 
-/datum/extension/explosion/New(atom/parent, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog)
+/datum/extension/explosion/New(atom/parent, radius, max_power)
 	.=..()
-	explosion(parent, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog)
+	explosion(parent, radius, max_power)
 
 /datum/explosion_wave
 	var/turf/location = null
@@ -139,7 +146,7 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 		return PROCESS_KILL
 	//Firstly, the centre turf takes a hit.
 	power -= location.get_explosion_resistance() > 1 ? location.get_explosion_resistance() : (power_cap + (location.get_explosion_resistance()))
-	location.explosion_ripple(adjust_power(MAP(power, 0, 100, 0, 3)))
+	location.explosion_ripple(explosion_power_to_ex_act(MAP(power, 0, 100, 0, 3)))
 	//Secondly, we push the wave outwards from the centre turf, blocking it off as needed.
 	for(var/turf/T in orange(distance_travelled, location))
 		var/resistance = T.get_explosion_resistance()
@@ -148,25 +155,29 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 		epower -= resistance ? resistance : 1
 		if(epower <= 0)
 			continue
-		T.explosion_ripple(adjust_power(MAP(epower, 0, 100, 0, 3)))
+		T.explosion_ripple(explosion_power_to_ex_act(MAP(epower, 0, 100, 0, 3)))
 
 	distance_travelled ++
 
 //Why doesn't ex_act have some kind of scaling formula rather than 3 specific stat- oh forget it. We'll just do this jank.
-/datum/explosion_wave/proc/adjust_power(adjusted)
+///Converts an explosion power to be an ex_actable power.
+/proc/explosion_power_to_ex_act(adjusted)
 	switch(adjusted)
 		if(0 to 1)
 			return 3
 		if(1 to 2)
 			return 2
-		if(2 to 3)
+		if(2 to INFINITY)
 			return 1
 
-/datum/extension/explosion/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, z_transfer, shaped)
+//Causes the actual explosion logic at a target turf.
+/datum/extension/explosion/proc/explosion(turf/epicenter, radius, max_power=2)
 	. = ..()
-	explosion_FX(epicenter, devastation_range)
+	explosion_FX(epicenter, radius)
 	for(var/dir in GLOB.alldirs)
-		new /datum/explosion_wave(epicenter, dir, devastation_range)
+		new /datum/explosion_wave(epicenter, dir, radius, max_power)
+	//And ensure the epicenter takes the full whack. This takes the power cap and directly applies it to the epicenter
+	epicenter.explosion_ripple(explosion_power_to_ex_act(max_power)) //All explosions are always going to hit badly at the epicenter.
 
 //Near instant "cheap" explosion that doesn't take into account things blocking it.
 /datum/extension/explosion/proc/simple_explosion(atom/movable/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, z_transfer, shaped)

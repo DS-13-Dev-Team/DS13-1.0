@@ -424,7 +424,7 @@
 	//In case of multiple nearby harvesters, we will loop through them in hopes of finding one off cooldown
 	for (var/obj/structure/corruption_node/harvester/H in harvesters)
 		var/list/spraydata = list("reagent" = /datum/reagent/acid/necromorph, "volume" = 5)
-		fired = H.spray_ability(subtype = /datum/extension/spray/reagent, target = target, angle = 25, length = 6, tick_delay = 0.2 SECONDS, stun = TRUE, duration = 2 SECONDS, cooldown = HARVESTER_ACID_COOLDOWN, windup = 0, override_user = user, extra_data = spraydata)
+		fired = H.spray_ability(subtype = /datum/extension/spray/reagent, target = target, angle = 25, length = 6,  stun = TRUE, duration = 2 SECONDS, cooldown = HARVESTER_ACID_COOLDOWN, windup = 0, override_user = user, extra_data = spraydata)
 
 		if (fired)
 			break

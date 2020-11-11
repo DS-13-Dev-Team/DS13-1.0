@@ -105,6 +105,8 @@
 
 		if(!tank.vacuum_burn)
 			var/turf/T = get_turf(src)
+			if (!T)
+				return FALSE //Something is wrong, where are we??
 			var/datum/gas_mixture/G = T.return_air()
 			if (!G || !G.can_support_fire())
 				return FALSE
