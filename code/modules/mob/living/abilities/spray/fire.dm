@@ -42,7 +42,6 @@
 /obj/effect/particle_system/spray/fire
 	particle_type = /obj/effect/particle/flame
 	autostart = FALSE
-	tick_delay = 0.10 SECONDS
 	particles_per_tick = 2
 	randpixel = 12
 	base_offset = new /vector2(-16, -16)
@@ -72,7 +71,6 @@
 /obj/effect/particle_system/spray/fire/blue
 	particle_type = /obj/effect/particle/flame/blue
 	autostart = FALSE
-	tick_delay = 0.08 SECONDS
 	randpixel = 12
 	particles_per_tick = 3
 

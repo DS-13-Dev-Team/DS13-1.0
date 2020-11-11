@@ -9,7 +9,7 @@
 	var/vector2/direction
 	var/atom/origin
 	var/turf/origin_turf
-	var/tick_delay = 0.2 SECONDS
+	//var/tick_delay = 0.2 SECONDS
 	var/particles_per_tick = 3
 	var/particle_lifetime = 0.85 SECONDS
 	var/particle_travel_distance = 3
@@ -60,19 +60,22 @@
 	//A duration of zero lasts until manually stopped
 	if (duration > 0)
 		addtimer(CALLBACK(src, /obj/effect/particle_system/proc/end), duration)
-	tick()
+
+	START_PROCESSING(SSfastprocess, src)
+	//tick()
 
 /obj/effect/particle_system/proc/end()
+	STOP_PROCESSING(SSfastprocess, src)
 	qdel(src)
 
-/obj/effect/particle_system/proc/tick()
+/obj/effect/particle_system/Process()
 	if (QDELETED(origin))
 		end()
 		return
 
 	for (var/i in 1 to particles_per_tick)
 		spawn_particle()
-	addtimer(CALLBACK(src, /obj/effect/particle_system/proc/tick), tick_delay)
+	//addtimer(CALLBACK(src, /obj/effect/particle_system/proc/tick), tick_delay)
 
 /obj/effect/particle_system/proc/set_direction(var/vector2/new_direction)
 	if (!direction)
