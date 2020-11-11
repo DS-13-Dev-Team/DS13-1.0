@@ -743,8 +743,12 @@ proc/is_blind(A)
 /mob/proc/facedir(var/ndir)
 	if(!canface() || moving)
 		return FALSE
-	var/changing = (ndir != dir)
-	.=set_dir(ndir)
+	var/changing = (ndir != get_visual_dir())
+
+	//The return value is only set true if we actually change dir, AND if the changing var above is also true.
+	//Return false otherwise
+	.=(set_dir(ndir) && changing)
+
 	if(buckled && buckled.buckle_movable)
 		buckled.set_dir(ndir)
 	if (. && slow_turning && changing)	//Only mobs with slow turning set will set their move cooldown when changing dir
