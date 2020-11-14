@@ -259,7 +259,9 @@
 			afterattack(pick(targets), user)
 	if (stop_firing_when_dropped)
 		stop_firing()
-	update_firemode()
+	else
+		//Stop_firing already calls this, so lets not do it twice
+		update_firemode()
 	update_icon()
 	return ..()
 
