@@ -61,7 +61,7 @@
 	ammo_type = /obj/item/ammo_casing/tripmine
 
 /obj/item/weapon/gun/projectile/detonator/update_icon()
-	if(getAmmo())
+	if(get_remaining_ammo())
 		icon_state = "detonator_loaded"
 	else
 		icon_state = "detonator"

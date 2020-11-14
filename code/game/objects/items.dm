@@ -276,14 +276,24 @@
 		S.remove_from_storage(src)
 
 	src.throwing = 0
+
+
+	var/inside = null
+
+	//If we're clicking an item which is already in us, it means we're trying to move it from one equip slot to another
 	if (src.loc == user)
-		if(!user.unEquip(src))
+		//When doing this, we pass ourselves as the target, so that the item will never leave our body in this process
+		if(!user.unEquip(src, user))
 			return
+		else
+			//The item is now briefly lost inside our body. Don't worry, we'll get it out before this proc is finished
+			inside = user
 	else
 		if(isliving(src.loc))
 			return
 
 
+	//If it goes into our hand, all is well
 	if(user.put_in_active_hand(src))
 		if (isturf(old_loc))
 			var/obj/effect/temporary/item_pickup_ghost/ghost = new(old_loc, src)
@@ -295,7 +305,16 @@
 		else if(randpixel == 0)
 			pixel_x = 0
 			pixel_y = 0
-	return
+
+	//The item failed to enter our hand, lets see what happens now
+	else
+		//If the item is floating inside our body, we gotta drop it. This will trigger dropped() in the next step
+		if (inside)
+			forceMove(get_turf(src))
+
+		//If we started on a mob and are no longer on that mob, we call dropped
+		if(ismob(old_loc) && loc != old_loc)
+			dropped()
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/weapon/robot_module))
@@ -322,7 +341,9 @@
 /obj/item/proc/moved(mob/user as mob, old_loc as turf)
 	return
 
-// apparently called whenever an item is removed from a slot, container, or anything else.
+//Dropped is called just after an item leaves a mob's direct contents
+//This does not include containers on the mob
+//It will already be in its new location when dropped is called
 /obj/item/proc/dropped(mob/user as mob)
 	if(randpixel)
 		pixel_z = randpixel //an idea borrowed from some of the older pixel_y randomizations. Intended to make items appear to drop at a character
