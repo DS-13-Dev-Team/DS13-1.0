@@ -44,7 +44,7 @@
 	var/silenced = 0
 	var/move_accuracy_mod	=	-7.5	//Modifier applied to accuracy while moving. Should generally be negative
 
-
+	var/stop_firing_when_dropped = TRUE	//If false, a gun can continue firing when dropped by the user. No current use cases, but may be useful in future
 
 	var/list/dispersion = list(0)
 
@@ -159,6 +159,14 @@
 		if(M.skill_check(SKILL_WEAPONS,SKILL_BASIC))
 			overlays += image(icon,"safety[safety()]")
 
+
+//Returns a number that represents the remaining quantity of whatever resource we use to fire.
+//In most cases, this is an integer number of bullets
+//It could also be the charge remaining in a power cell, the volume in a fueltank, etc
+/obj/item/weapon/gun/proc/get_remaining_ammo()
+	return 0
+
+
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
 //Otherwise, if you want handle_click_empty() to be called, check in consume_next_projectile() and return null there.
@@ -249,6 +257,9 @@
 			var/list/targets = list(user)
 			targets += trange(2, src)
 			afterattack(pick(targets), user)
+	if (stop_firing_when_dropped)
+		stop_firing()
+	update_firemode()
 	update_icon()
 	return ..()
 

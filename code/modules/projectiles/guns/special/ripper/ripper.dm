@@ -36,7 +36,7 @@
 
 /obj/item/weapon/gun/projectile/ripper/update_icon()
 	overlays.Cut()
-	var/ammonum = getAmmo()
+	var/ammonum = get_remaining_ammo()
 	if(ammonum > max_shells)
 		ammonum = max_shells
 	var/progress = ammonum
