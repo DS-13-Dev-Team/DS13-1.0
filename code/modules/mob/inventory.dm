@@ -256,6 +256,8 @@ var/list/slot_equipment_priority = list( \
 /mob/proc/remove_from_mob(var/obj/O, var/atom/target)
 	if(!O) // Nothing to remove, so we succeed.
 		return TRUE
+
+
 	src.u_equip(O)
 	if (src.client)
 		src.client.screen -= O
@@ -267,7 +269,10 @@ var/list/slot_equipment_priority = list( \
 			I.forceMove(target)
 		else
 			I.dropInto(loc)
-		I.dropped(src)
+
+		//If it was somewhere on us before, and its no longer there now
+		if (I.loc != src)
+			I.dropped(src)
 	return TRUE
 
 

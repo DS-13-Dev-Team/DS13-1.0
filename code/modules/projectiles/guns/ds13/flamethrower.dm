@@ -39,6 +39,7 @@
 	var/sound_interval = 0.6 SECOND
 
 
+
 	fire_sound = list('sound/weapons/guns/fire/flmthrowr_01.ogg',
 	'sound/weapons/guns/fire/flmthrowr_02.ogg',
 	'sound/weapons/guns/fire/flmthrowr_03.ogg',
@@ -138,14 +139,15 @@
 /obj/item/weapon/gun/spray/hydrazine_torch/update_icon()
 	var/former_itemstate = item_state
 
+	icon_state = "hydetorch"
 	item_state = "hydetorch"
 
 
 	if (!tank)
 		icon_state = "hydetorch_e"
 
-
-	else if (pilot_light)
+	//Specifically check true to exclude the -1 in progress state
+	else if (pilot_light == TRUE)
 		icon_state = "hydetorch_lit"
 		item_state = "hydetorch_lit"
 	else
@@ -186,35 +188,34 @@
 	if (pilot_light == -1) //-1 indicates "currently being lit"
 		return //Prevents spamclicks breaking things
 
+	if (get_remaining_ammo() < pilot_light_fuelcost)
+		playsound(src, 'sound/items/welderactivate.ogg', VOLUME_MID, 1)
+		pilot_light = -1
+		to_chat(usr, SPAN_DANGER("The [src] does not have enough fuel to ignite the pilot light"))
+
+		//Spam prevention
+		spawn(10)
+			pilot_light = FALSE
+		return
 
 	var/target_state = !pilot_light
+
 
 	//Takes time to turn on, but goes out instantly
 	if (target_state == TRUE)
 		pilot_light = -1
-		if (!do_after(usr, 1.5 SECONDS, src))
+		var/oldloc = loc
+		if (!do_after(usr, 1.5 SECONDS, src) || loc != oldloc)
 			pilot_light = FALSE
 			return FALSE
+
 	set_pilot_light(target_state)
 	if (usr)
 		usr.visible_message(SPAN_NOTICE("[usr] [pilot_light ? "ignites" : "extinguishes"] the pilot light on \the [src]"))
 	return pilot_light
 
 
-
-//The torch has no safety switch, that's routed to the pilot light instead
-/obj/item/weapon/gun/spray/hydrazine_torch/toggle_safety(var/mob/user)
-	safety_state = FALSE
-	toggle_pilot_light()
-
-
-
-
-
-
 /obj/item/weapon/gun/spray/hydrazine_torch/proc/set_pilot_light(var/state, var/update = TRUE)
-
-
 	if (pilot_light == state)
 		return
 
@@ -234,6 +235,18 @@
 
 	if (!is_processing)
 		START_PROCESSING(SSfastprocess, src)
+
+
+//The torch has no safety switch, that's routed to the pilot light instead
+/obj/item/weapon/gun/spray/hydrazine_torch/toggle_safety(var/mob/user)
+	safety_state = FALSE
+	toggle_pilot_light()
+
+
+
+
+
+
 
 
 /obj/item/weapon/gun/spray/hydrazine_torch/can_stop_processing()
@@ -293,6 +306,13 @@
 		return .=..()
 
 	return FALSE
+
+/obj/item/weapon/gun/spray/hydrazine_torch/get_remaining_ammo()
+	if (!tank)
+		return 0
+
+	return tank.get_remaining_fuel()
+
 
 
 /obj/item/weapon/gun/spray/hydrazine_torch/proc/consume_fuel(var/required_fuel)
