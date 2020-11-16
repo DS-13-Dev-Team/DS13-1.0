@@ -774,7 +774,7 @@ About the new airlock wires panel:
 			if(density && src.arePowerSystemsOn())
 				set_airlock_overlays(AIRLOCK_DENY)
 				flick("deny", src)
-				playsound(src.loc, open_failure_access_denied, 25, 0) //secured wires condition delete so we can actually hear noise
+				playsound(src.loc, open_failure_access_denied, 20, 0) //secured wires condition delete so we can actually hear noise
 				update_icon(AIRLOCK_CLOSED)
 		if("emag")
 			if(density && src.arePowerSystemsOn())
@@ -1212,9 +1212,9 @@ About the new airlock wires panel:
 
 	//if the door is unpowered then it doesn't make sense to hear the woosh of a pneumatic actuator
 	if(arePowerSystemsOn())
-		playsound(src.loc, open_sound_powered, 20, 0)
+		playsound(src.loc, open_sound_powered, 10, 0)
 	else
-		playsound(src.loc, open_sound_unpowered, 20, 0)
+		playsound(src.loc, open_sound_unpowered, 10, 0)
 
 	if(src.closeOther != null && istype(src.closeOther, /obj/machinery/door/airlock/) && !src.closeOther.density)
 		src.closeOther.close()
@@ -1266,9 +1266,9 @@ About the new airlock wires panel:
 
 	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(arePowerSystemsOn())
-		playsound(src.loc, close_sound_powered, 20, 0)
+		playsound(src.loc, close_sound_powered, 10, 0)
 	else
-		playsound(src.loc, close_sound_unpowered, 20, 0)
+		playsound(src.loc, close_sound_unpowered, 10, 0)
 
 	..()
 
