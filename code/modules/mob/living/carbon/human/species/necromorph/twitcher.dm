@@ -28,6 +28,8 @@
 	biomass	=	120
 	lying_rotation = 90
 	total_health = 100
+	strength = STR_HIGH
+	mob_size = MOB_LARGE
 
 	slowdown = 1.5
 	view_offset = 3 * WORLD_ICON_SIZE //Forward view offset allows longer-ranged charges

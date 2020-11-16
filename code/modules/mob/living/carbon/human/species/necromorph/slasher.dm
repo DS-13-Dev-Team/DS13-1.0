@@ -14,6 +14,8 @@
 	total_health = 90
 	biomass = 50
 	mass = 70
+	mob_size = MOB_MEDIUM
+	strength = STR_MEDIUM
 
 	biomass_reclamation_time	=	7 MINUTES
 

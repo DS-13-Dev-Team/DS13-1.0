@@ -10,6 +10,8 @@
 	blurb = "A midline skirmisher with the ability to spit acid at medium range. Works best when accompanied by slashers to protect it from attacks. Weak and fragile in direct combat."
 	unarmed_types = list(/datum/unarmed_attack/blades/weak, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	virus_immune = 1
+	mob_size = MOB_LARGE
+	strength = STR_MEDIUM
 
 	mob_type = /mob/living/carbon/human/necromorph/spitter
 

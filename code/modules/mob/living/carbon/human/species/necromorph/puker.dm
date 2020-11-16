@@ -17,6 +17,8 @@
 	step_priority = 2
 	step_volume = 10
 	virus_immune = 1
+	mob_size = MOB_LARGE
+	strength = STR_MEDIUM
 
 	//Acid has long since burned out its eyes, somehow the puker sees without them
 	override_organ_types = list(BP_EYES = null)

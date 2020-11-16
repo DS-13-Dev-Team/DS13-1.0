@@ -12,6 +12,8 @@
 	total_health = 85	//It has high health for the sake of making it a bit harder to destroy without targeting the pustule. Exploding the pustule is always an instakill
 	biomass = 70
 	mass = 50
+	mob_size = MOB_LARGE
+	strength = STR_VLOW
 
 	biomass_reclamation_time	=	4.5 MINUTES
 	view_range = 6
