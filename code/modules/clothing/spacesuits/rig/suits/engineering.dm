@@ -19,7 +19,8 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/vision/meson,
 		/obj/item/rig_module/kinesis,
-		/obj/item/rig_module/hotswap
+		/obj/item/rig_module/hotswap,
+		/obj/item/rig_module/power_sink
 		)
 
 /obj/item/clothing/suit/space/rig/engineering

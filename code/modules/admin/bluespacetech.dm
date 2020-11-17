@@ -100,7 +100,7 @@
 
 
 	//They get an engineering rig
-	var/obj/item/weapon/rig/engineering/debug/rig = new(bst)
+	var/obj/item/weapon/rig/advanced/rig = new(bst)
 	var/cached_delay = rig.seal_delay
 	rig.seal_delay = 0
 	bst.equip_to_slot_or_del(rig, slot_back)
