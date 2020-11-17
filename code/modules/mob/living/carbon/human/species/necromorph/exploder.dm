@@ -206,11 +206,11 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	//A normal explosion
 	spawn()
 		//Max power 2 because hull breaches are not cool
-		EXPLOSION_LARGE
+		T.EXPLOSION_LARGE
 
 	spawn()
 		//An immediate second, smaller explosion to deal more damage
-		EXPLOSION_STANDARD
+		T.EXPLOSION_STANDARD
 
 	//Make sure the pustule is deleted if these explosions don't destroy it
 	spawn()
