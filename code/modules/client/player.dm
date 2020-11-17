@@ -53,6 +53,8 @@
 		return
 
 	var/datum/player/me = get_or_create_player(ckey)
+	if (!ckey)
+		return null
 	me.client = "\ref[src.client]"
 	me.mob = "\ref[src]"
 

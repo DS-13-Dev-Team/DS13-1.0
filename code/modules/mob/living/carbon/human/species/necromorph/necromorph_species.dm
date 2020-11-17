@@ -283,7 +283,7 @@
 // Used to update alien icons for aliens.
 /datum/species/necromorph/handle_login_special(var/mob/living/carbon/human/H)
 	.=..()
-	SSnecromorph.necromorph_players[H.ckey] = get_or_create_player(H.ckey)
+	H.set_necromorph(TRUE)
 	to_chat(H, "You are a [name]. \n\
 	[blurb]\n\
 	\n\
