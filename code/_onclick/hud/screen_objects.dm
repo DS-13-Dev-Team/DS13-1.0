@@ -160,11 +160,7 @@
 	overlays += image('icons/mob/zone_sel.dmi', "[selecting]")
 
 
-/*
-	What an atrocious mess
-*/
-/mob/proc/set_attack_intent(var/newintent)
-	a_intent
+
 
 /obj/screen/intent
 	name = "intent"
