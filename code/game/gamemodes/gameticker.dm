@@ -514,6 +514,14 @@ var/global/datum/controller/gameticker/ticker
 		to_world("<b>[max_profit.owner_name]</b> received most <font color='green'><B>PROFIT</B></font> today, with net profit of <b>T[max_profit.get_balance()]</b>.")
 		to_world("On the other hand, <b>[max_loss.owner_name]</b> had most <font color='red'><B>LOSS</B></font>, with total loss of <b>T[max_loss.get_balance()]</b>.")
 
+	var/obj/machinery/marker/M = get_marker()
+	if (M.player)
+		to_world("<b>The Marker player was: [M.player]!</b>")
+	else
+		to_world("<b>There was no Marker at the end.</b>")
+
+	to_world("<b>The Marker accrued a total biomass of: [round(M.get_total_biomass())]kg</b>")
+
 	mode.declare_completion()//To declare normal completion.
 
 	//Ask the event manager to print round end information
