@@ -33,8 +33,6 @@
 	biomass = 55
 	health_doll_offset	= 50
 	torso_damage_mult = 0.75
-	mob_size = MOB_SMALL
-	strength = STR_LOW
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
