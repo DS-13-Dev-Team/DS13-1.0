@@ -15,7 +15,7 @@
 "aao" = (/obj/machinery/light/small{dir = 1},/obj/effect/floor_decal/industrial/outline/yellow,/obj/machinery/portable_atmospherics/canister/hydrogen,/turf/simulated/floor/tiled/dark/monotile,/area/ishimura/upper/engineering/atmospherics/storage)
 "aap" = (/turf/simulated/wall/r_wall,/area/ishimura/upper/misc/hangar/reception)
 "aaq" = (/turf/simulated/wall/r_wall,/area/ishimura/upper/security/cryo)
-"aar" = (/obj/machinery/door/firedoor/border_only{icon_state = "open"; dir = 4},/obj/effect/wallframe_spawn/reinforced/hull,/turf/simulated/floor/plating,/area/ishimura/upper/command/bridge)
+"aar" = (/obj/machinery/door/firedoor/border_only{icon_state = "open"; dir = 4},/obj/effect/wallframe_spawn/reinforced/titanium,/turf/simulated/floor/plating,/area/ishimura/upper/command/bridge)
 "aas" = (/turf/simulated/wall/r_wall,/area/ishimura/upper/misc/hallway/aft)
 "aat" = (/obj/effect/floor_decal/industrial/warning/corner{icon_state = "warningcorner"; dir = 4},/obj/structure/sign/warning/secure_area{pixel_y = 34},/turf/simulated/floor/tiled/monotile,/area/ishimura/upper/engineering/hub)
 "aau" = (/turf/simulated/wall/r_wall,/area/ishimura/upper/maintenance/fore_central)
