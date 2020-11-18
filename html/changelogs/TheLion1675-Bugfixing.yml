@@ -33,6 +33,7 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
+  - bugfix: "Fixed a mapping related issue in differentiating hull and titanium wall spawns in the Bridge."
   - tweak: "Changed the Lurker's mob size status to MOB_SMALL as opposed to MOB_MEDIUM."
   - tweak: "Altered locker code. It will not fit one (1) medium sized mob."
   - rscdel: "Removed the ability for Necromorphs to get shrapnel embedded into them."
