@@ -35,3 +35,4 @@ delete-after: True
 changes: 
   - tweak: "Changed the Lurker's mob size status to MOB_SMALL as opposed to MOB_MEDIUM."
   - tweak: "Altered locker code. It will not fit one (1) medium sized mob."
+  - rscdel: "Removed the ability for Necromorphs to get shrapnel embedded into them."
