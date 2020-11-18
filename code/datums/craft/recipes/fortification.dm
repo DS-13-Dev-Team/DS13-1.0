@@ -14,7 +14,7 @@
 		list(CRAFT_TOOL, QUALITY_BOLT_TURNING, 10, 80),
 		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10),
 		list(CRAFT_TOOL, QUALITY_WELDING, 10, 150),
-		list(CRAFT_STACK, /obj/item/stack/power_node, 2),
+		list(CRAFT_STACK, /obj/item/stack/power_node, 1),
 		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10, 80)
 	)
 
