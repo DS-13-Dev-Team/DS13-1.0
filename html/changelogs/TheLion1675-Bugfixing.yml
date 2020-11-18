@@ -34,6 +34,8 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - bugfix: "Fixed a mapping related issue in differentiating hull and titanium wall spawns in the Bridge."
+  - bugfix: "Fixed a mapping related bug with the Bridge lockdown buttons. They should now all link correctly."
   - tweak: "Changed the Lurker's mob size status to MOB_SMALL as opposed to MOB_MEDIUM."
   - tweak: "Altered locker code. It will not fit one (1) medium sized mob."
   - rscdel: "Removed the ability for Necromorphs to get shrapnel embedded into them."
+  - spellcheck: "Changed wording on the Ladder button in the Bridge."
