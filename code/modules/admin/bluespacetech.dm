@@ -44,7 +44,6 @@
 	bst.equip_to_slot_or_del(new /obj/item/device/t_scanner(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/modular_computer/pda/captain(bst.back), slot_in_backpack)
 
-	bst.put_in_hands(new /obj/item/weapon/gun/spray/hydrazine_torch(bst.loc))
 
 	var/obj/item/weapon/storage/box/pills = new /obj/item/weapon/storage/box(null, TRUE)
 	pills.name = "adminordrazine"
