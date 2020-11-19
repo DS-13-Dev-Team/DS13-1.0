@@ -11,8 +11,7 @@
 			return -2
 		return -1
 
-	if(embedded_flag || (stomach_contents && stomach_contents.len))
-		handle_embedded_and_stomach_objects() //Moving with objects stuck in you can cause bad times.
+
 
 	if(CE_SPEEDBOOST in chem_effects)
 		tally -= chem_effects[CE_SPEEDBOOST]
@@ -148,6 +147,10 @@
 /mob/living/carbon/human/proc/handle_exertion()
 	if(isSynthetic())
 		return
+
+	if(LAZYLEN(implants) || (stomach_contents && stomach_contents.len))
+		handle_embedded_and_stomach_objects() //Moving with objects stuck in you can cause bad times.
+
 	var/lac_chance =  10 * encumbrance()
 	if(lac_chance && prob(skill_fail_chance(SKILL_HAULING, lac_chance)))
 		make_reagent(1, /datum/reagent/lactate)

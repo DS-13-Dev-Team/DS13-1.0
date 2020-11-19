@@ -173,6 +173,8 @@
 			var/obj/item/organ/O = new organ_type(user)
 			user.internal_organs_by_name[organ_tag] = O
 
+	//Lastly, lets get rid of any shrapnel and harmful objects in the user's body
+	user.expel_shrapnel(0)	//Value of zero allows an infinite quantity
 
 	user.update_body()
 	stop()
