@@ -35,6 +35,36 @@
 /area/tdome/tdomeobserve
 	name = "\improper Thunderdome (Observer.)"
 	icon_state = "purple"
+//---------------------------------------------------UPPER--AREAS---------------------------------------------------//
+/area/ishimura/eva
+	name = "\improper EVA Deck"
+	icon_state = "engibase"
+
+/area/ishimura/eva/airlock
+	name = "\improper Communication Airlock"
+
+/area/ishimura/eva/prep
+	name = "\improper EVA Equipment Prep"
+
+/area/ishimura/eva/solar
+	name = "\improper Solar Control"
+
+/area/ishimura/eva/solar/port
+	name = "\improper Port Solar Array"
+
+/area/ishimura/eva/solar/starboard
+	name = "\improper Starboard Solar Array"
+
+/area/ishimura/eva/substation
+	name = "\improper EVA Deck Substation"
+
+/area/ishimura/eva/substation/transfer
+	name = "\improper Solar Transfer Power Substation"
+
+/area/ishimura/eva/supply
+	name = "\improper Repair Supply Storage"
+
+
 
 //---------------------------------------------------UPPER--AREAS---------------------------------------------------//
 /area/ishimura/upper
@@ -81,8 +111,11 @@
 /area/ishimura/upper/engineering/engine_room/airlock_two
 	name = "\improper Engine Airlock Two"
 
-/area/ishimura/upper/engineering/engine_smes
+/area/ishimura/upper/engineering/smes/engine
 	name = "\improper Engine SMES Room"
+
+/area/ishimura/upper/engineering/smes/solar_connect
+	name = "\improper Upper Deck Port SMES Room"
 
 /area/ishimura/upper/engineering/hub
 	name = "\improper Engineering Hub"
@@ -96,9 +129,6 @@
 /area/ishimura/upper/engineering/spare_storage
 	name = "\improper Machining Room Storage"
 	icon_state = "storage"
-
-/area/ishimura/upper/engineering/spare_storage/port
-	name = "\improper Upper Deck Port Power Storage"
 
 /area/ishimura/upper/engineering/spare_storage/starboard
 	name = "\improper Upper Deck Starboard Power Storage"
