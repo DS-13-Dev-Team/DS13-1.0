@@ -43,6 +43,7 @@
 
 				/obj/item/weapon/tool/tape_roll = 12,
 				/obj/item/weapon/tool/tape_roll/fiber = 2,
+				/obj/item/weapon/tool/repairkit = 3,
 				/obj/item/weapon/storage/belt/utility = 5,
 				/obj/item/weapon/storage/belt/utility/full = 1,
 				/obj/item/clothing/gloves/insulated/cheap = 5,
@@ -95,6 +96,7 @@
 				/obj/item/weapon/tool/saw/plasma = 1,
 				/obj/item/weapon/tool/pickaxe/laser = 2,
 				/obj/item/weapon/tool/tape_roll/fiber = 2,
+				/obj/item/weapon/tool/repairkit = 2,
 				/obj/item/stack/power_node = 2))
 
 /obj/random/toolbox
@@ -117,44 +119,45 @@
 
 //Random tool upgrades
 /obj/random/tool_upgrade
-	name = "random tool upgrade"
+	name = "random tool modification"
+
 /obj/random/tool_upgrade/item_to_spawn()
 	return pickweight(list(
-	/obj/item/weapon/tool_upgrade/reinforcement/stick = 1,
-	/obj/item/weapon/tool_upgrade/reinforcement/heatsink = 1,
-	/obj/item/weapon/tool_upgrade/reinforcement/plating = 1.5,
-	/obj/item/weapon/tool_upgrade/reinforcement/guard = 0.75,
-	/obj/item/weapon/tool_upgrade/productivity/ergonomic_grip = 1,
-	/obj/item/weapon/tool_upgrade/productivity/ratchet = 1,
-	/obj/item/weapon/tool_upgrade/productivity/red_paint = 0.75,
-	/obj/item/weapon/tool_upgrade/productivity/whetstone = 0.5,
-	/obj/item/weapon/tool_upgrade/productivity/diamond_blade = 0.25,
-	/obj/item/weapon/tool_upgrade/productivity/oxyjet = 0.75,
-	/obj/item/weapon/tool_upgrade/productivity/motor = 0.75,
-	/obj/item/weapon/tool_upgrade/refinement/laserguide = 1,
-	/obj/item/weapon/tool_upgrade/refinement/stabilized_grip = 1,
-	/obj/item/weapon/tool_upgrade/refinement/magbit = 0.75,
-	/obj/item/weapon/tool_upgrade/refinement/ported_barrel = 0.5,
-	///obj/item/weapon/tool_upgrade/augment/cell_mount = 0.75,//Removed because this codebase only has one cell size
-	/obj/item/weapon/tool_upgrade/augment/fuel_tank = 1,
-	/obj/item/weapon/tool_upgrade/augment/expansion = 0.25,
-	/obj/item/weapon/tool_upgrade/augment/spikes = 1,
-	/obj/item/weapon/tool_upgrade/augment/dampener = 0.5,
+	/obj/item/weapon/tool_modification/reinforcement/stick = 1,
+	/obj/item/weapon/tool_modification/reinforcement/heatsink = 1,
+	/obj/item/weapon/tool_modification/reinforcement/plating = 1.5,
+	/obj/item/weapon/tool_modification/reinforcement/guard = 0.75,
+	/obj/item/weapon/tool_modification/productivity/ergonomic_grip = 1,
+	/obj/item/weapon/tool_modification/productivity/ratchet = 1,
+	/obj/item/weapon/tool_modification/productivity/red_paint = 0.75,
+	/obj/item/weapon/tool_modification/productivity/whetstone = 0.5,
+	/obj/item/weapon/tool_modification/productivity/diamond_blade = 0.25,
+	/obj/item/weapon/tool_modification/productivity/oxyjet = 0.75,
+	/obj/item/weapon/tool_modification/productivity/motor = 0.75,
+	/obj/item/weapon/tool_modification/refinement/laserguide = 1,
+	/obj/item/weapon/tool_modification/refinement/stabilized_grip = 1,
+	/obj/item/weapon/tool_modification/refinement/magbit = 0.75,
+	/obj/item/weapon/tool_modification/refinement/ported_barrel = 0.5,
+	///obj/item/weapon/tool_modification/augment/cell_mount = 0.75,//Removed because this codebase only has one cell size
+	/obj/item/weapon/tool_modification/augment/fuel_tank = 1,
+	/obj/item/weapon/tool_modification/augment/expansion = 0.25,
+	/obj/item/weapon/tool_modification/augment/spikes = 1,
+	/obj/item/weapon/tool_modification/augment/dampener = 0.5,
 	/obj/item/stack/power_node = 1))
 
 
 //A fancier subset of the most desireable upgrades
 /obj/random/tool_upgrade/rare/item_to_spawn()
 	return pickweight(list(
-	/obj/item/weapon/tool_upgrade/reinforcement/guard = 1,
-	/obj/item/weapon/tool_upgrade/productivity/ergonomic_grip = 1,
-	/obj/item/weapon/tool_upgrade/productivity/red_paint = 1,
-	/obj/item/weapon/tool_upgrade/productivity/diamond_blade = 1,
-	/obj/item/weapon/tool_upgrade/productivity/motor = 1,
-	/obj/item/weapon/tool_upgrade/refinement/laserguide = 1,
-	/obj/item/weapon/tool_upgrade/refinement/stabilized_grip = 1,
-	/obj/item/weapon/tool_upgrade/augment/expansion = 1,
-	/obj/item/weapon/tool_upgrade/augment/dampener = 0.5,
+	/obj/item/weapon/tool_modification/reinforcement/guard = 1,
+	/obj/item/weapon/tool_modification/productivity/ergonomic_grip = 1,
+	/obj/item/weapon/tool_modification/productivity/red_paint = 1,
+	/obj/item/weapon/tool_modification/productivity/diamond_blade = 1,
+	/obj/item/weapon/tool_modification/productivity/motor = 1,
+	/obj/item/weapon/tool_modification/refinement/laserguide = 1,
+	/obj/item/weapon/tool_modification/refinement/stabilized_grip = 1,
+	/obj/item/weapon/tool_modification/augment/expansion = 1,
+	/obj/item/weapon/tool_modification/augment/dampener = 0.5,
 	/obj/item/stack/power_node = 1))
 
 
@@ -199,34 +202,34 @@
 
 
 	var/list/possible_mods = list(
-	/obj/item/weapon/tool_upgrade/reinforcement/stick = 1,
-	/obj/item/weapon/tool_upgrade/reinforcement/heatsink = 1,
-	/obj/item/weapon/tool_upgrade/reinforcement/plating = 1.5,
-	/obj/item/weapon/tool_upgrade/reinforcement/guard = 0.75,
-	/obj/item/weapon/tool_upgrade/productivity/ergonomic_grip = 1,
-	/obj/item/weapon/tool_upgrade/productivity/ratchet = 1,
-	/obj/item/weapon/tool_upgrade/productivity/red_paint = 0.75,
-	/obj/item/weapon/tool_upgrade/productivity/whetstone = 0.5,
-	/obj/item/weapon/tool_upgrade/productivity/diamond_blade = 0.25,
-	/obj/item/weapon/tool_upgrade/productivity/oxyjet = 0.75,
-	/obj/item/weapon/tool_upgrade/productivity/motor = 0.75,
-	/obj/item/weapon/tool_upgrade/refinement/laserguide = 1,
-	/obj/item/weapon/tool_upgrade/refinement/stabilized_grip = 1,
-	/obj/item/weapon/tool_upgrade/refinement/magbit = 0.75,
-	/obj/item/weapon/tool_upgrade/refinement/ported_barrel = 0.5,
-	/obj/item/weapon/tool_upgrade/augment/fuel_tank = 1,
-	/obj/item/weapon/tool_upgrade/augment/expansion = 0.25,
-	/obj/item/weapon/tool_upgrade/augment/spikes = 1,
-	/obj/item/weapon/tool_upgrade/augment/dampener = 0.5)
+	/obj/item/weapon/tool_modification/reinforcement/stick = 1,
+	/obj/item/weapon/tool_modification/reinforcement/heatsink = 1,
+	/obj/item/weapon/tool_modification/reinforcement/plating = 1.5,
+	/obj/item/weapon/tool_modification/reinforcement/guard = 0.75,
+	/obj/item/weapon/tool_modification/productivity/ergonomic_grip = 1,
+	/obj/item/weapon/tool_modification/productivity/ratchet = 1,
+	/obj/item/weapon/tool_modification/productivity/red_paint = 0.75,
+	/obj/item/weapon/tool_modification/productivity/whetstone = 0.5,
+	/obj/item/weapon/tool_modification/productivity/diamond_blade = 0.25,
+	/obj/item/weapon/tool_modification/productivity/oxyjet = 0.75,
+	/obj/item/weapon/tool_modification/productivity/motor = 0.75,
+	/obj/item/weapon/tool_modification/refinement/laserguide = 1,
+	/obj/item/weapon/tool_modification/refinement/stabilized_grip = 1,
+	/obj/item/weapon/tool_modification/refinement/magbit = 0.75,
+	/obj/item/weapon/tool_modification/refinement/ported_barrel = 0.5,
+	/obj/item/weapon/tool_modification/augment/fuel_tank = 1,
+	/obj/item/weapon/tool_modification/augment/expansion = 0.25,
+	/obj/item/weapon/tool_modification/augment/spikes = 1,
+	/obj/item/weapon/tool_modification/augment/dampener = 0.5)
 
 /obj/random/tool/modded/spawn_item()
 	var/tooltype = pickweight(possible_tools)
 	var/obj/item/weapon/tool/T = new tooltype(loc)
 
 	//Alright now lets apply mods until we run out or the tool is full
-	while (possible_mods.len && LAZYLEN(T.upgrades) < T.max_upgrades)
+	while (possible_mods.len && LAZYLEN(T.modifications) < T.max_modifications)
 		var/modtype = pickweight(possible_mods)
-		var/obj/item/weapon/tool_upgrade/TU = new modtype(loc)
+		var/obj/item/weapon/tool_modification/TU = new modtype(loc)
 		//If the tool doesn't successfully apply, we delete it. Brute force method!
 		if (!TU.try_apply(T))
 			qdel(TU)

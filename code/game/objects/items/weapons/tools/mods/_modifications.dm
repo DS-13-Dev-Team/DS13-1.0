@@ -1,25 +1,25 @@
 /*
-	A tool upgrade is a little attachment for a tool that improves it in some way
-	Tool upgrades are generally permanant
+	A tool modification is a little attachment for a tool that improves it in some way
+	Tool modifications are generally permanant
 
-	Some upgrades have multiple bonuses. Some have drawbacks in addition to boosts
+	Some modifications have multiple bonuses. Some have drawbacks in addition to boosts
 */
 
-/*/client/verb/debugupgrades()
-	for (var/t in subtypesof(/obj/item/weapon/tool_upgrade))
+/*/client/verb/debugmodifications()
+	for (var/t in subtypesof(/obj/item/weapon/tool_modification))
 		new t(usr.loc)
 */
 
-/obj/item/weapon/tool_upgrade
-	name = "tool upgrade"
-	icon = 'icons/obj/tool_upgrades.dmi'
+/obj/item/weapon/tool_modification
+	name = "tool modification"
+	icon = 'icons/obj/tool_modifications.dmi'
 	force = WEAPON_FORCE_HARMLESS
 	w_class = ITEM_SIZE_SMALL
 	//price_tag = 200
 
 	var/prefix = "upgraded" //Added to the tool's name
 
-	//The upgrade can be applied to a tool that has any of these qualities
+	//The modification can be applied to a tool that has any of these qualities
 	var/list/required_qualities = list()
 
 	//If true, can only be applied to tools that use fuel
@@ -31,7 +31,7 @@
 	var/obj/item/weapon/tool/holder = null //The tool we're installed into
 	matter = list(MATERIAL_STEEL = 1)
 
-	//Actual effects of upgrades
+	//Actual effects of modifications
 	var/precision = 0
 	var/workspeed = 0
 	var/degradation_mult = 1
@@ -43,7 +43,7 @@
 	var/removeable = TRUE //Can this mod be uninstalled when removed. Set false to make it permanant
 	var/recoverable = TRUE //If removed, do you get this mod back? Set false to make it delete when removed
 
-/obj/item/weapon/tool_upgrade/examine(var/mob/user)
+/obj/item/weapon/tool_modification/examine(var/mob/user)
 	.=..()
 	if (precision > 0)
 		user << SPAN_NOTICE("Enhances precision by [precision]")
@@ -85,19 +85,19 @@
 ******************************/
 
 
-/obj/item/weapon/tool_upgrade/afterattack(obj/O, mob/user, proximity)
+/obj/item/weapon/tool_modification/afterattack(obj/O, mob/user, proximity)
 
 	if(!proximity) return
 	try_apply(O, user)
 
-/obj/item/weapon/tool_upgrade/proc/try_apply(var/obj/item/weapon/tool/O, var/mob/user)
+/obj/item/weapon/tool_modification/proc/try_apply(var/obj/item/weapon/tool/O, var/mob/user)
 	if (!can_apply(O, user))
 		return FALSE
 
 	return apply(O, user)
 
 
-/obj/item/weapon/tool_upgrade/proc/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
+/obj/item/weapon/tool_modification/proc/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
 	if (isrobot(T))
 		var/mob/living/silicon/robot/R = T
 		if(!R.opened)
@@ -118,7 +118,7 @@
 		user << SPAN_WARNING("This can only be applied to a tool!")
 		return
 
-	if (T.upgrades.len >= T.max_upgrades)
+	if (T.modifications.len >= T.max_modifications)
 		user << SPAN_WARNING("This tool can't fit anymore modifications!")
 		return
 
@@ -141,17 +141,17 @@
 		user << SPAN_WARNING("This tool doesn't use power!")
 		return
 
-	//No using multiples of the same upgrade
-	for (var/obj/item/weapon/tool_upgrade/U in T.upgrades)
+	//No using multiples of the same modification
+	for (var/obj/item/weapon/tool_modification/U in T.modifications)
 		if (U.type == type)
-			user << SPAN_WARNING("An upgrade of this type is already installed!")
+			user << SPAN_WARNING("An modification of this type is already installed!")
 			return
 
 	return TRUE
 
 
-//Applying an upgrade to a tool is a mildly difficult process
-/obj/item/weapon/tool_upgrade/proc/apply(var/obj/item/weapon/tool/T, var/mob/user)
+//Applying an modification to a tool is a mildly difficult process
+/obj/item/weapon/tool_modification/proc/apply(var/obj/item/weapon/tool/T, var/mob/user)
 
 	if (user)
 		user.visible_message(SPAN_NOTICE("[user] starts applying the [src] to [T]"), SPAN_NOTICE("You start applying the [src] to [T]"))
@@ -162,13 +162,13 @@
 	//If we get here, we succeeded in the applying
 	holder = T
 	forceMove(T)
-	T.upgrades.Add(src)
-	T.refresh_upgrades()
+	T.modifications.Add(src)
+	T.refresh_modifications()
 	return TRUE
 
 //This does the actual numerical changes.
 //The tool itself asks us to call this, and it resets itself before doing so
-/obj/item/weapon/tool_upgrade/proc/apply_values()
+/obj/item/weapon/tool_modification/proc/apply_values()
 	if (!holder)
 		return
 

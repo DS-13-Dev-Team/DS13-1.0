@@ -162,6 +162,9 @@
 	damage = clamp(damage-repair_power, 0, damage)
 	update_damage()
 
+/turf/simulated/wall/repair_needed()
+	return damage
+
 /turf/simulated/wall/proc/update_damage()
 	var/cap = material.integrity
 	if(reinf_material)

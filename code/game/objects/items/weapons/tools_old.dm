@@ -175,7 +175,7 @@
 	var/welding = 0 	//Whether or not the welding tool is off(0), on(1) or currently welding(2)
 	var/status = 1 		//Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
 
-	var/obj/item/weapon/tool_upgrade/augment/fuel_tank/tank = /obj/item/weapon/tool_upgrade/augment/fuel_tank // where the fuel is stored
+	var/obj/item/weapon/tool_modification/augment/fuel_tank/tank = /obj/item/weapon/tool_modification/augment/fuel_tank // where the fuel is stored
 
 /obj/item/weapon/tool/weldingtool/Initialize()
 	if(ispath(tank))
@@ -241,7 +241,7 @@
 		add_fingerprint(user)
 		return
 
-	if(istype(W, /obj/item/weapon/tool_upgrade/augment/fuel_tank))
+	if(istype(W, /obj/item/weapon/tool_modification/augment/fuel_tank))
 		if(tank)
 			to_chat(user, "Remove the current tank first.")
 			return
@@ -450,7 +450,7 @@
 				spawn(100)
 					H.disabilities &= ~NEARSIGHTED
 
-/obj/item/weapon/tool_upgrade/augment/fuel_tank
+/obj/item/weapon/tool_modification/augment/fuel_tank
 	name = "welding fuel tank"
 	desc = "An interchangeable fuel tank meant for a welding tool."
 	icon = 'icons/obj/tools.dmi'
@@ -459,12 +459,12 @@
 	var/max_fuel = 20
 	var/can_remove = 1
 
-/obj/item/weapon/tool_upgrade/augment/fuel_tank/Initialize()
+/obj/item/weapon/tool_modification/augment/fuel_tank/Initialize()
 	create_reagents(max_fuel)
 	reagents.add_reagent(/datum/reagent/fuel, max_fuel)
 	. = ..()
 
-/obj/item/weapon/tool_upgrade/augment/fuel_tank/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/weapon/tool_modification/augment/fuel_tank/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity) return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		O.reagents.trans_to_obj(src, max_fuel)
@@ -480,9 +480,9 @@
 	origin_tech = list(TECH_ENGINEERING = 2)
 	matter = list(MATERIAL_STEEL = 15, MATERIAL_GLASS = 5)
 	w_class = ITEM_SIZE_SMALL
-	tank = /obj/item/weapon/tool_upgrade/augment/fuel_tank/mini
+	tank = /obj/item/weapon/tool_modification/augment/fuel_tank/mini
 
-/obj/item/weapon/tool_upgrade/augment/fuel_tank/mini
+/obj/item/weapon/tool_modification/augment/fuel_tank/mini
 	name = "small welding fuel tank"
 	icon_state = "fuel_s"
 	w_class = ITEM_SIZE_TINY
@@ -497,9 +497,9 @@
 	origin_tech = list(TECH_ENGINEERING = 2)
 	matter = list(MATERIAL_STEEL = 70, MATERIAL_GLASS = 60)
 	w_class = ITEM_SIZE_LARGE
-	tank = /obj/item/weapon/tool_upgrade/augment/fuel_tank/large
+	tank = /obj/item/weapon/tool_modification/augment/fuel_tank/large
 
-/obj/item/weapon/tool_upgrade/augment/fuel_tank/large
+/obj/item/weapon/tool_modification/augment/fuel_tank/large
 	name = "large welding fuel tank"
 	icon_state = "fuel_l"
 	w_class = ITEM_SIZE_NORMAL
@@ -513,9 +513,9 @@
 	w_class = ITEM_SIZE_HUGE
 	origin_tech = list(TECH_ENGINEERING = 3)
 	matter = list(MATERIAL_STEEL = 70, MATERIAL_GLASS = 120)
-	tank = /obj/item/weapon/tool_upgrade/augment/fuel_tank/huge
+	tank = /obj/item/weapon/tool_modification/augment/fuel_tank/huge
 
-/obj/item/weapon/tool_upgrade/augment/fuel_tank/huge
+/obj/item/weapon/tool_modification/augment/fuel_tank/huge
 	name = "huge welding fuel tank"
 	icon_state = "fuel_h"
 	w_class = ITEM_SIZE_LARGE
@@ -529,9 +529,9 @@
 	w_class = ITEM_SIZE_LARGE
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3)
 	matter = list(MATERIAL_STEEL = 70, MATERIAL_GLASS = 120)
-	tank = /obj/item/weapon/tool_upgrade/augment/fuel_tank/experimental
+	tank = /obj/item/weapon/tool_modification/augment/fuel_tank/experimental
 
-/obj/item/weapon/tool_upgrade/augment/fuel_tank/experimental
+/obj/item/weapon/tool_modification/augment/fuel_tank/experimental
 	name = "experimental welding fuel tank"
 	icon_state = "fuel_x"
 	w_class = ITEM_SIZE_NORMAL
@@ -539,14 +539,14 @@
 	can_remove = 0
 	var/last_gen = 0
 
-/obj/item/weapon/tool_upgrade/augment/fuel_tank/experimental/Initialize()
+/obj/item/weapon/tool_modification/augment/fuel_tank/experimental/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/tool_upgrade/augment/fuel_tank/experimental/Destroy()
+/obj/item/weapon/tool_modification/augment/fuel_tank/experimental/Destroy()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/weapon/tool_upgrade/augment/fuel_tank/experimental/Process()
+/obj/item/weapon/tool_modification/augment/fuel_tank/experimental/Process()
 	var/cur_fuel = reagents.get_reagent_amount(/datum/reagent/fuel)
 	if(cur_fuel < max_fuel)
 		var/gen_amount = ((world.time-last_gen)/25)

@@ -63,7 +63,7 @@
 		/obj/item/weapon/tool/weldingtool = 3,
 		///obj/item/weapon/weldpack = 3,
 		/obj/item/clothing/glasses/welding = 3,
-		/obj/item/weapon/tool_upgrade/augment/fuel_tank = 1,
+		/obj/item/weapon/tool_modification/augment/fuel_tank = 1,
 		/obj/random/tool = 1
 	)
 

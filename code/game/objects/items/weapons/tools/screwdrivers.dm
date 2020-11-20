@@ -39,7 +39,7 @@
 	tool_qualities = list(QUALITY_SCREW_DRIVING = 50, QUALITY_BOLT_TURNING = 50, QUALITY_DRILLING = 20)
 	use_power_cost = 0.24
 	suitable_cell = /obj/item/weapon/cell
-	max_upgrades = 4
+	max_modifications = 4
 
 /obj/item/weapon/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M) || user.a_intent == "help")
