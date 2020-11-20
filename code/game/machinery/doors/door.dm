@@ -625,3 +625,6 @@
 	if(stat & BROKEN)
 		stat &= ~BROKEN
 	update_icon()
+
+/obj/machinery/door/repair_needed()
+	return max_health - health

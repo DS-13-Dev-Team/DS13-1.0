@@ -1004,3 +1004,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()
+
+
+/obj/item/repair_needed()
+	return max_health - health
