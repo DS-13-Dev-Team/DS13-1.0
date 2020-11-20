@@ -203,6 +203,9 @@
 
 /obj/item/projectile/bullet/biobomb/on_impact(var/atom/target)
 	if (!exploded)
+		//Target may be null if it was deleted before we got here. For example metal foam walls that break when hit
+		if (QDELETED(target))
+			target = get_turf(src)
 		bioblast(target, blast_power)
 		exploded = TRUE
 

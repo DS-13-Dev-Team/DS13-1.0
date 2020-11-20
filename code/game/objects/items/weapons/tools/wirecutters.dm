@@ -32,7 +32,7 @@
 	matter = list(MATERIAL_STEEL = 1200, MATERIAL_PLASTIC = 600)
 	tool_qualities = list(QUALITY_WIRE_CUTTING = 40, QUALITY_CUTTING = 30)
 	degradation = DEGRADATION_TOUGH_1
-	max_upgrades = 4
+	max_modifications = 4
 
 /obj/item/weapon/tool/wirecutters/attack(mob/living/carbon/C as mob, mob/user as mob)
 	if(istype(C) && user.a_intent == I_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/weapon/handcuffs/cable)))

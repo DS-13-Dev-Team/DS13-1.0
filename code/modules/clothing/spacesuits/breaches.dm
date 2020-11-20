@@ -46,6 +46,16 @@
 	if(patched)
 		descriptor = "patched [descriptor]"
 
+/obj/item/clothing/suit/space/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+	.=..()
+	repair_breaches(BRUTE, 1, user)
+	repair_breaches(BURN, 1, user)
+
+/obj/item/clothing/suit/space/repair_needed()
+	if (LAZYLEN(breaches))
+		return TRUE
+	.=..()
+
 //Repair a certain amount of brute or burn damage to the suit.
 /obj/item/clothing/suit/space/proc/repair_breaches(var/damtype, var/amount, var/mob/user)
 

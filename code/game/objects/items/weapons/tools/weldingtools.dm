@@ -77,7 +77,7 @@
 	switched_on_force = WEAPON_FORCE_PAINFUL*1.15 //Slightly more powerful, not much more so
 	heat = 3773
 	degradation = 0.07
-	max_upgrades = 4
+	max_modifications = 4
 	use_fuel_cost = 0.09 //Slightly lower fuel costs
 
 /obj/item/weapon/tool/weldingtool/is_hot()

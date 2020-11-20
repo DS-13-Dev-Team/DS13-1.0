@@ -898,7 +898,7 @@
 			to_chat(U, "[src] has nothing stuck in their wounds that is large enough to remove.")
 		return
 
-	var/obj/item/weapon/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
+	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
 
 	if(self)
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
@@ -909,29 +909,29 @@
 	if(!selection || !S || !U)
 		return
 
-	if(self)
-		visible_message("<span class='warning'><b>[src] rips [selection] out of their body.</b></span>","<span class='warning'><b>You rip [selection] out of your body.</b></span>")
-	else
-		visible_message("<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'><b>[usr] rips [selection] out of your body.</b></span>")
-	valid_objects = get_visible_implants(0)
-	if(valid_objects.len == 1) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object
 
+
+	var/message
+	if(self)
+		message = "<span class='warning'><b>[src] rips [selection] out of their body.</b></span>"
+	else
+		message = "<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>"
+
+
+	var/mob/living/carbon/human/H
 	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
+		H = src
 		var/obj/item/organ/external/affected
 
 		for(var/obj/item/organ/external/organ in H.organs) //Grab the organ holding the implant.
-			for(var/obj/item/O in organ.implants)
-				if(O == selection)
-					affected = organ
+			if(selection in organ.implants)
+				affected = organ
 
-		affected.implants -= selection
 		for(var/datum/wound/wound in affected.wounds)
 			wound.embedded_objects -= selection
 
-		H.shock_stage+=20
-		affected.take_external_damage((selection.w_class * 3), 0, DAM_EDGE, "Embedded object extraction", allow_dismemberment = FALSE)
+		H.shock_stage+=15
+		affected.take_external_damage((selection.w_class * 2.5), 0, DAM_EDGE, "Embedded object extraction", allow_dismemberment = FALSE)
 
 		if(prob(selection.w_class * 5) && affected.sever_artery()) //I'M SO ANEMIC I COULD JUST -DIE-.
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 50, affecting = affected)
@@ -946,9 +946,14 @@
 		R.adjustBruteLoss(5)
 		R.adjustFireLoss(10)
 
-	selection.forceMove(get_turf(src))
-	if(!(U.l_hand && U.r_hand))
-		U.put_in_hands(selection)
+	if (H)
+		H.unembed(selection, null, FALSE, message)
+
+	valid_objects = get_visible_implants(0)
+	if(valid_objects.len == 0) //Yanking out last object - removing verb.
+		src.verbs -= /mob/proc/yank_out_object
+
+	U.put_in_hands(selection)
 
 	for(var/obj/item/weapon/O in pinned)
 		if(O == selection)

@@ -627,6 +627,10 @@ its easier to just keep the beam vertical.
 /atom/proc/repair(var/repair_power, var/datum/repair_source, var/mob/user)
 	return TRUE
 
+//Returns a value that somehow represents how much repairing is needed.
+//This is generally a quantity of missing health
+/atom/proc/repair_needed()
+	return FALSE
 
 /atom/proc/is_organic()
 	return FALSE

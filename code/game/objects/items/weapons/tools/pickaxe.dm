@@ -53,7 +53,7 @@
 	matter = list(MATERIAL_STEEL = 1600, MATERIAL_PLASTIC = 500, MATERIAL_DIAMOND = 800)
 	origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 4, TECH_ENGINEERING = 5)
 	desc = "Yours is the drill that will pierce the heavens!"
-	max_upgrades = 4
+	max_modifications = 4
 	degradation = DEGRADATION_DIAMOND
 	use_fuel_cost = 0.15
 	max_fuel = 120
@@ -94,7 +94,7 @@
 	attack_noun = list("attack", "chop", "cleave", "tear", "cut")
 	sharp = 1
 	edge = 1
-	max_upgrades = 4
+	max_modifications = 4
 	use_power_cost = 0.3
 	passive_power_cost = 0.075
 	suitable_cell = /obj/item/weapon/cell

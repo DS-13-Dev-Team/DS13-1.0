@@ -1,0 +1,7 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "Increased rules window size."
+  - bugfix: "Fixed rules window not loading rules."

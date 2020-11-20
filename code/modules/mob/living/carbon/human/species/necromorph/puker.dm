@@ -194,7 +194,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 		return
 	face_atom(A)
 	var/vangle = 70
-	var/vlength = 5
+	var/vlength = 5.5
 	if (!has_organ(BP_HEAD))
 		to_chat(src, SPAN_WARNING("Without a mouth to focus it, the pressure of your acid is reduced!"))
 		vangle = 100
@@ -203,13 +203,13 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	//It plays a series of gurgling sounds over the 1.5 sec windup time
 	play_species_audio(src, SOUND_PAIN, VOLUME_MID, 1, 3)
 	shake_animation(30)
-	spawn(10)
+	spawn(9)
 		play_species_audio(src, SOUND_PAIN, VOLUME_HIGH, 1, 3)
 		shake_animation(30)
-	spawn(20)
+	spawn(18)
 		play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_HIGH, 1, 3)
 	var/list/spraydata = list("reagent" = /datum/reagent/acid/necromorph, "volume" = 5.5)
-	.= spray_ability(subtype = /datum/extension/spray/reagent, target = A , angle = vangle, length = vlength, stun = TRUE, duration = 3 SECONDS, cooldown = 12 SECONDS, windup = 2 SECOND, extra_data = spraydata)
+	.= spray_ability(subtype = /datum/extension/spray/reagent, target = A , angle = vangle, length = vlength, stun = TRUE, duration = 3 SECONDS, cooldown = 12 SECONDS, windup = 1.8 SECOND, extra_data = spraydata)
 
 
 

@@ -19,6 +19,8 @@
 	var/hitsound = null
 	var/blocksound = 'sound/weapons/Genhit.ogg'
 
+	var/biomaterial = FALSE	//If true, this item does not cause pain or damage when it is embedded or implanted in a human body
+
 	var/slot_flags = 0		//This is used to determine on which slots an item can fit.
 	var/equip_slot = slot_none	//What slot this item was last equipped into
 
@@ -1002,3 +1004,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()
+
+
+/obj/item/repair_needed()
+	return max_health - health

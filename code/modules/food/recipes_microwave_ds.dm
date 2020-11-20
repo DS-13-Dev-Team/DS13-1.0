@@ -27,7 +27,6 @@
 
 /datum/recipe/microwave/sharkdip
 	reagents = list(/datum/reagent/sodiumchloride = 1)
-	fruit = list()
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	)
@@ -35,7 +34,6 @@
 
 /datum/recipe/microwave/sharkcubes
 	reagents = list(/datum/reagent/nutriment/soysauce = 5, /datum/reagent/sodiumchloride = 1)
-	fruit = list()
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	)
