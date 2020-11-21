@@ -516,11 +516,13 @@ var/global/datum/controller/gameticker/ticker
 
 	var/obj/machinery/marker/M = get_marker()
 	if (M.player)
-		to_world("<b>The Marker player was: [M.player]!</b>")
+		to_world("<b>The Marker player was: [M.player]!</b><br>")
 	else
-		to_world("<b>There was no Marker at the end.</b>")
+		to_world("<b>There was no Marker at the end.</b><br>")
 
-	to_world("<b>The Marker accrued a total biomass of: [round(M.get_total_biomass())]kg</b>")
+	to_world("<b>The Marker accrued a total biomass of: [round(M.get_total_biomass())]kg</b><br>")
+
+	to_world("<b>The Marker spawned [get_historic_major_vessel_total() ] total necromorphs!</b><br>")
 
 	mode.declare_completion()//To declare normal completion.
 
