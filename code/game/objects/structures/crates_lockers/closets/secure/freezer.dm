@@ -27,6 +27,13 @@
 		/obj/item/weapon/reagent_containers/food/snacks/meat/chicken = 4,
 		/obj/item/weapon/reagent_containers/food/snacks/fish = 4
 	)
+/obj/structure/closet/secure_closet/freezer/chicken
+	name = "meat fridge"
+
+/obj/structure/closet/secure_closet/freezer/chicken/WillContain()
+	return list(
+		/obj/item/weapon/reagent_containers/food/snacks/meat/chicken = 6
+	)
 
 /obj/structure/closet/secure_closet/freezer/cheese
 	name = "cheese fridge"
