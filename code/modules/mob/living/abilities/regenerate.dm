@@ -198,7 +198,7 @@
 	set category = "Abilities"
 
 
-	return regenerate_ability(heal_amount = 40, _duration = 4 SECONDS, _max_limbs = 1, _cooldown = 0)
+	return regenerate_ability(subtype = /datum/extension/regenerate, _duration = 4 SECONDS, _cooldown = 0)
 
 
 /mob/living/carbon/human/proc/can_regenerate(var/error_messages = TRUE)

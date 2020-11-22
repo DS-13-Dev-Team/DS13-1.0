@@ -177,7 +177,7 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 	set category = "Abilities"
 	set desc = "Regrows a missing limb and restores some of your health."
 
-	.= regenerate_ability(_heal_amount = 40, _duration = 4 SECONDS, _cooldown = 0)
+	.= regenerate_ability(subtype = /datum/extension/regenerate, _duration = 4 SECONDS, _cooldown = 0)
 	if (.)
 		play_species_audio(src, SOUND_PAIN, VOLUME_HIGH, 1, 3)
 
