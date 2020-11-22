@@ -67,6 +67,8 @@
 
 /proc/update_patrons()
 	for (var/key in GLOB.players)
+		if (!key)
+			continue
 		var/datum/player/P = GLOB.players[key]
 		P.update_patron()
 /*
