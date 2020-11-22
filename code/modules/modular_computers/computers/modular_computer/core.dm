@@ -74,7 +74,7 @@
 /obj/item/modular_computer/Destroy()
 
 	kill_program(1)
-	STOP_PROCESSING(SSobj, src)
+	//STOP_PROCESSING(SSobj, src) //The parent call will handle ending processing
 	if(istype(stored_pen))
 		QDEL_NULL(stored_pen)
 	for(var/obj/item/weapon/computer_hardware/CH in src.get_all_components())
