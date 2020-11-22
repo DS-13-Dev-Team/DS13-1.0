@@ -174,3 +174,15 @@
 	..()
 	bitesize = 10
 	reagents.add_reagent(/datum/reagent/drink/juice/potato, 30) // for people who want to get fat, FAST.
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly
+	name = "suspicious jello"
+	desc = "The chef's creativity appears to be oddly menacing."
+	icon_state = "necrojelly"
+	nutriment_amt = 10
+	nutriment_desc = list("Evil" = 10)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/drink/milk = 5)

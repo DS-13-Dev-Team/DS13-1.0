@@ -39,6 +39,13 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/sharkmeatcubes
 
+/datum/recipe/microwave/necrojelly
+	reagents = list(/datum/reagent/sugar = 5)
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/necrojelly
+
 /*
 /datum/recipe/microwave/foodcubes
 	reagents = list(/datum/reagent/enzyme = 20, /datum/reagent/nutriment/virus_food = 5, /datum/reagent/nutriment = 15, /datum/reagent/nutriment/protein = 15) // labor intensive
