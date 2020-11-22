@@ -10,7 +10,7 @@
 	icon = 'icons/obj/machines/ds13/bpl.dmi'
 	icon_state = "base"
 
-	var/max_biomass = 100	//1 Litre
+	var/max_biomass = 150	//1.5 Litre
 	var/current_biomass
 
 	var/obj/item/organ/current_growth_atom
@@ -23,9 +23,9 @@
 	var/list/valid_reagents = list(/datum/reagent/nutriment/biomass,
 	/datum/reagent/nutriment/stemcells)	//TODO: Add stem cells and blood to this
 
-	var/growth_rate = 0.5	//This many units of refined biomass are added to the forming organ each tick
+	var/growth_rate = 0.6	//This many units of refined biomass are added to the forming organ each tick
 
-	var/sustain_rate = 0.04	//This many units of refined biomass are consumed each tick to keep alive an already-fully-grown organ
+	var/sustain_rate = 0.03	//This many units of refined biomass are consumed each tick to keep alive an already-fully-grown organ
 
 	var/efficiency = 0.9	//Some of the biomass is wasted
 
