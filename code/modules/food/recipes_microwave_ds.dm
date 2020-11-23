@@ -42,6 +42,7 @@
 /datum/recipe/microwave/necrojelly
 	reagents = list(/datum/reagent/sugar = 5)
 	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
 		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/sliceable/jellycube
