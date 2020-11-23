@@ -36,4 +36,5 @@ changes:
   - bugfix: "Fixed there being no cameras on the E.V.A. Deck or in the Upper Deck Port SMES Room."
   - bugfix: "Fixed the Solar Transfer Power Substation atmos line not connecting to the main atmos loop."
   - bugfix: "Fixed the Solar Transfer Power Substation APC not charging."
+  - bugfix: "Fixed there being no NanoUI map for the E.V.A. Deck."
 
