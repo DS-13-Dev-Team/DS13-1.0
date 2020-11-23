@@ -44,7 +44,7 @@
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge
 	)
-	result = /obj/item/weapon/reagent_containers/food/snacks/necrojelly
+	result = /obj/item/weapon/reagent_containers/food/snacks/sliceable/jellycube
 
 /*
 /datum/recipe/microwave/foodcubes

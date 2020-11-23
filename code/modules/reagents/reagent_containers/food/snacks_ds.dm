@@ -175,6 +175,38 @@
 	bitesize = 10
 	reagents.add_reagent(/datum/reagent/drink/juice/potato, 30) // for people who want to get fat, FAST.
 
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/jellycube
+	name = "jello cube"
+	desc = "A cube of evil jello, it still needs to be shaped with a knife."
+	icon_state = "jellycube"
+	slice_path = /obj/random/necrojelly
+	nutriment_amt = 1
+	slices_num = 1
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk/New()
+	..()
+	bitesize = 3
+
+/obj/random/necrojelly
+	name = "random jello"
+	desc = "This is a random jello."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "necrojelly"
+
+/obj/random/necrojelly/item_to_spawn() //7,61% to be not jelly
+	return pickweight(list(/obj/item/weapon/reagent_containers/food/snacks/necrojelly = 9239,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/tormentor = 1,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/spitter = 100,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/cursed = 100,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/lurker = 100,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/exploder = 100,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/puker = 100,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/ubermorph = 50,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/infector = 50,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/tripod = 10,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/divider = 50,
+				/obj/item/weapon/reagent_containers/food/snacks/necrojelly/enhancedslasher = 100))
+
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly
 	name = "suspicious jello"
 	desc = "The chef's creativity appears to be oddly menacing."
@@ -186,3 +218,152 @@
 	..()
 	bitesize = 2
 	reagents.add_reagent(/datum/reagent/drink/milk = 5)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/tormentor
+		icon = 'icons/obj/food150x128.dmi'
+		icon_state = "tormentor"
+		name = "Obscenely Terrifying Jello"
+		desc = "Even the chef can't explain how this monstrosity came to be, much less how it might ever be reproduced."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/tormentor/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 30)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/cursed
+		icon = 'icons/obj/food48x48.dmi'
+		icon_state = "cursed"
+		name = "Cursed Jello"
+		desc = "A truly cursed creation, no one really knows what it's meant to represent."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/cursed/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/spitter
+		icon = 'icons/obj/food48x48.dmi'
+		icon_state = "spitter"
+		name = "Ill Mannered Jello"
+		desc = "You feel as if this jello might spit at you at any moment."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/spitter/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/puker
+		icon = 'icons/obj/food48x48.dmi'
+		icon_state = "puker"
+		name = "Disgusting Jello"
+		desc = "You don't see how anyone would be able to eat this without vomiting."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/puker/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/enhancedslasher
+		icon = 'icons/obj/food48x48.dmi'
+		icon_state = "enhanced_slasher"
+		name = "Enhanced Cursed Jello"
+		desc = "The fear factor this jello inspires has been enhanced, freakishly enough."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/enhancedslasher/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/lurker
+		icon = 'icons/obj/food48x48.dmi'
+		icon_state = "lurker"
+		name = "Lurking Evil Jello"
+		desc = "Someone asked the chef to model this jello after their dog, little did they know the chef is a terrible artist."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/lurker/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/exploder
+		icon = 'icons/obj/food48x48.dmi'
+		icon_state = "exploder"
+		name = "Explosive Jello"
+		desc = "This horrifying jello seems highly unstable, representing feelings of bottled anger within the chef."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/exploder/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/water, 1)
+	reagents.add_reagent(/datum/reagent/potassium, 1)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/ubermorph
+		icon = 'icons/obj/food48x64.dmi'
+		icon_state = "ubermorph"
+		name = "Overwhelmingly Evil Jello"
+		desc = "Modern art, or simply the creation of a drugged up culinary expert, you decide."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/ubermorph/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/divider
+		icon = 'icons/obj/food48x64.dmi'
+		icon_state = "divider"
+		name = "Spaghetti Monster Jello"
+		desc = "A decidedly italian iteration of the modern evil jello."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/divider/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/infector
+		icon = 'icons/obj/food64x64.dmi'
+		icon_state = "infector"
+		name = "Infectiously Evil Jello"
+		desc = "A jello so wicked it almost makes you feel as evil as the chef who created it."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/infector/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/tripod
+		icon = 'icons/obj/food96x96.dmi'
+		icon_state = "tripod"
+		name = "Terrifyingly Evil Jello"
+		desc = "Quite the monstrosity, it makes you question the creator."
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/tripod/New()
+	..()
+	bitesize = 2
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 15)
+
+/*
+/obj/item/weapon/reagent_containers/food/snacks/donut
+	name = "donut"
+	desc = "Goes great with Robust Coffee."
+	icon_state = "donut1"
+	filling_color = "#d9c386"
+	var/overlay_state = "box-donut1"
+	center_of_mass = "x=13;y=16"
+	nutriment_desc = list("sweetness", "donut")
+
+/obj/item/weapon/reagent_containers/food/snacks/donut/normal
+	name = "donut"
+	desc = "Goes great with Robust Coffee."
+	icon_state = "donut1"
+	nutriment_amt = 3
+/obj/item/weapon/reagent_containers/food/snacks/donut/normal/New()
+	..()
+	reagents.add_reagent(/datum/reagent/nutriment/sprinkles, 1)
+	bitesize = 3
+	if(prob(30))
+		icon_state = "donut2"
+		overlay_state = "box-donut2"
+		name = "frosted donut")
+	reagents.add_reagent(/datum/reagent/nutriment/sprinkles, 2)
+	center_of_mass = "x=19;y=16"
+	*/
