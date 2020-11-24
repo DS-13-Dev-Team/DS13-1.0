@@ -2,6 +2,7 @@
 /area/ishimura
 	icon = 'maps/DeadSpace/ishimura_areas.dmi'
 	ship_area = TRUE
+	forced_ambience = list('sound/ambience/dsamb_standardcorridor.ogg') //by default in the ship we play the corridor sound.
 
 /area/ishimura/hull
 	name = "\improper Ishimura Hull"
@@ -172,7 +173,7 @@
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
-	forced_ambience = list('sound/ambience/maintambience.ogg')
+	forced_ambience = list('sound/ambience/dsamb_maintenance.ogg')
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
 	is_maintenance = TRUE
@@ -348,6 +349,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/upper/security/cryo
 	name = "\improper Cyrogenic Isolation"
+	forced_ambience = list('sound/ambience/dsamb_freezer.ogg')
 
 /area/ishimura/upper/security/equipment
 	name = "\improper Equipment Room"
@@ -400,6 +402,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/crew/cryo
 	name = "\improper Cryo"
+	forced_ambience = list('sound/ambience/dsamb_freezer.ogg')
 
 /area/ishimura/lower/crew/cryo/upper
 	name = "\improper Upper Cryo"
@@ -427,6 +430,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/crew/messhall/kitchen/freezer
 	name = "\improper Freezer"
+	forced_ambience = list('sound/ambience/dsamb_freezer.ogg')
 
 /area/ishimura/lower/crew/messhall/kitchen/freezer/executive
 	name = "\improper Executive Freezer"
@@ -547,7 +551,7 @@ area/ishimura/upper/medical/bpc
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
-	forced_ambience = list('sound/ambience/maintambience.ogg')
+	forced_ambience = list('sound/ambience/dsamb_maintenance.ogg')
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
 	is_maintenance = TRUE
@@ -642,6 +646,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/misc/abandon_surgery
 	name = "\improper Abandoned Surgical Suite"
+	forced_ambience = list('sound/ambience/dsamb_maintenance.ogg')
 
 /area/ishimura/lower/misc/bathroom
 	name = "\improper Bathroom"

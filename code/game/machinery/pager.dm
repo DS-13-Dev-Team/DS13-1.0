@@ -26,7 +26,7 @@
 /obj/machinery/pager/attack_hand(mob/living/user)
 	if(..()) return 1
 	if(istype(user, /mob/living/carbon))
-		playsound(src, "button", 60)
+		playsound(src, "button", 20)
 	flick("doorbellpressed",src)
 	activate(user)
 
