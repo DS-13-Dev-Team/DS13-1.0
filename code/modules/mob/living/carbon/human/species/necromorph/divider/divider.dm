@@ -16,7 +16,7 @@
 	)
 	has_limbs = list(
 	BP_HEAD =  list("path" = /obj/item/organ/external/head/simple/divider, "height" = new /vector2(2,2.4)),
-	BP_TORSO =  list("path" = /obj/item/organ/external/chest/simple/divider, "height" = new /vector2(1,2)),
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple/divider, "height" = new /vector2(1,2)),
 	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple/divider, "height" = new /vector2(0.8,2)),
 	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple/divider, "height" = new /vector2(0.8,2)),
 	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple/divider, "height" = new /vector2(0,1)),

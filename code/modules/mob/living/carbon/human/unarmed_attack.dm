@@ -149,16 +149,27 @@ var/global/list/sparring_attack_cache = list()
 			H.apply_effect(3, WEAKEN, strike.blocked)
 
 /datum/unarmed_attack/proc/show_attack(var/datum/strike/strike)
+	var/fallback = FALSE
 	if (ishuman(strike.target))
 		var/mob/living/carbon/human/H = strike.target
 		var/obj/item/organ/external/affecting = H.get_organ(strike.target_zone)
-		if (strike.blocker)
-			var/obj/item/organ/external/original = H.get_organ(strike.original_target_zone)
-			strike.user.visible_message("<span class='minorwarning'>[strike.user] tried to [pick(attack_noun)] [strike.target] in the [original.name] but was blocked by [H.get_pronoun(POSESSIVE_ADJECTIVE)] [strike.blocker.name]!</span>")
+		if (affecting)
+			if (strike.blocker)
+				var/obj/item/organ/external/original = H.get_organ(strike.original_target_zone)
+				if (original)
+					strike.user.visible_message("<span class='minorwarning'>[strike.user] tried to [pick(attack_noun)] [strike.target] in the [original.name] but was blocked by [H.get_pronoun(POSESSIVE_ADJECTIVE)] [strike.blocker.name]!</span>")
+				else
+					fallback = TRUE
+			else
+				strike.user.visible_message("<span class='warning'>[strike.user] [pick(attack_verb)] [strike.target] in the [affecting.name]!</span>")
 		else
-			strike.user.visible_message("<span class='warning'>[strike.user] [pick(attack_verb)] [strike.target] in the [affecting.name]!</span>")
+			fallback = TRUE
 	else
+		fallback = TRUE
+
+	if (fallback)
 		strike.user.visible_message("<span class='warning'>[strike.user] [pick(attack_verb)] [strike.target][strike.damage_done?"":", to no effect"]!</span>")
+
 	if (strike.luser)
 		strike.luser.do_attack_animation(strike.target)
 
