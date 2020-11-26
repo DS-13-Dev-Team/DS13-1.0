@@ -25,6 +25,7 @@ var/list/organ_cache = list()
 	var/min_broken_damage = 30        // Damage before becoming broken
 	var/max_damage = 30               // Damage cap
 	var/rejecting                     // Is this organ already being rejected?
+	var/can_regrow = TRUE			  // If false, this organ cannot be regrown using regeneration effects, once severed or destroyed
 
 	var/death_time
 	var/severed_time = 0	//If this organ was cut off/out of a humanoid mob, when did that happen?
