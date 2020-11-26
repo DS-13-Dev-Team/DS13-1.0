@@ -43,6 +43,12 @@
 
 	SSnecromorph.marker.vacate_master_signal()
 
+	//Something must have gone wrong, we aren't deleted yet!
+	//Turn ourselves into a signal as a fallback
+	if (!QDELETED(src))
+		new /mob/observer/eye/signal(src)
+		qdel(src)
+
 /mob/observer/eye/signal/master/verb/shop_verb()
 	set name = "Spawning Menu"
 	set category = SPECIES_NECROMORPH

@@ -120,6 +120,8 @@
 
 	data["selected_id"] = host.selected_spawn.id
 
+
+
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "necrospawn_selector.tmpl", "Spawning Menu", 800, 700, state = GLOB.interactive_state)
@@ -247,17 +249,36 @@
 
 	return FALSE
 
-//Is this mob allowed to spend biomass and spawn objects?
+
+//Should the spawn button be enabled in the UI?
 /datum/necroshop/proc/authorised_to_spawn(var/mob/M)
+	//First of all
+	//Do we even have anything selected for spawning yet?
+	if (!current)
+		return FALSE
+
+	//Secondly
+	//Is this mob allowed to spend biomass and spawn objects?
+	var/authority = FALSE
 	//Only the marker player is allowed
 	if (istype(M, /mob/observer/eye/signal/master))
-		return TRUE
+		authority = TRUE
 
 	//Admins are allowed
 	if(M.client && check_rights(R_ADMIN|R_DEBUG, FALSE,  M.client))
-		return TRUE
+		authority = TRUE
 
-	return FALSE
+	if (!authority)
+		return FALSE
+
+	//Third
+	//Can it be spawned right now, based on available biomass, or total biomass where appropriate
+	if (!current.can_spawn(src))
+		return FALSE
+
+
+	//All Clear
+	return TRUE
 
 
 
@@ -283,9 +304,10 @@
 
 	//First, ensure that the host can pay the biomass
 	//For total mass requirements, we check but don't pay
-	if (params["reqtotal"] && host.get_total_biomass() < params["price"])
-		to_chat(params["user"], SPAN_DANGER("ERROR: Not enough biomass to spawn [params["name"]]"))
-		return
+	if (params["reqtotal"])
+		if (host.get_total_biomass() < params["price"])
+			to_chat(params["user"], SPAN_DANGER("ERROR: Not enough biomass to spawn [params["name"]]"))
+			return
 
 	//This line actually takes the biomass in most cases
 	else if (!host_pay_biomass(params["name"], params["price"]))
@@ -360,8 +382,9 @@
 	if (!can_ever_spawn(caller))
 		return FALSE
 
-	if (require_total_biomass && (caller.host.get_total_biomass() < price))
-		return FALSE
+	if (require_total_biomass)
+		if (caller.host.get_total_biomass() < price)
+			return FALSE
 
 	else if (caller.host.biomass < price)
 		return FALSE
@@ -389,7 +412,28 @@
 		params["user"] = usr	//Who is responsible for this ? Who shall we show error messages to
 		params["queue"] = queue_fill
 		params["limited"] = global_limit
+		params["reqtotal"] = require_total_biomass
 		return params
 
 	if (spawn_method == SPAWN_PLACE)
 		create_necromorph_placement_handler(usr, spawn_path, placement_type, snap = TRUE, biomass_source = caller.host, name = name, biomass_cost = price, require_corruption = TRUE)
+
+
+
+
+/*
+	Debug:
+	The necroshop unfortunately sometimes bugs out and refuses to open for anyone. The exact cause is unknown, and no reproduction exists either
+
+	As a stopgap measure, this verb will fix it
+*/
+/client/proc/fix_necroshop()
+	set name = "Spawning Menu Fix"
+	set desc = "Use if the necromorph spawning menu stops responding"
+	set category = "Debug"
+
+	for (var/obj/machinery/marker/M in world)
+		QDEL_NULL(M.shop)
+		M.shop = new(M)
+
+	message_admins("[src] fixed the necromorph spawning menu")

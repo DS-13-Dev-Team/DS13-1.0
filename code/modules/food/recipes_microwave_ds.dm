@@ -27,7 +27,6 @@
 
 /datum/recipe/microwave/sharkdip
 	reagents = list(/datum/reagent/sodiumchloride = 1)
-	fruit = list()
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	)
@@ -35,11 +34,18 @@
 
 /datum/recipe/microwave/sharkcubes
 	reagents = list(/datum/reagent/nutriment/soysauce = 5, /datum/reagent/sodiumchloride = 1)
-	fruit = list()
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/sharkmeatcubes
+
+/datum/recipe/microwave/necrojelly
+	reagents = list(/datum/reagent/sugar = 5)
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/sliceable/jellycube
 
 /*
 /datum/recipe/microwave/foodcubes

@@ -12,6 +12,9 @@ SUBSYSTEM_DEF(skybox)
 	var/star_state = "stars"
 	var/list/skybox_cache = list()
 
+	//A singleton datum ref list
+	var/list/skybox_foreground_objects = list()
+
 
 /datum/controller/subsystem/skybox/Initialize()
 	. = ..()
@@ -68,7 +71,32 @@ SUBSYSTEM_DEF(skybox)
 		if(E.has_skybox_image && E.isRunning && (z in E.affecting_z))
 			res.overlays += E.get_skybox_image()
 	*/
+
+	//Lets create and place foreground objects
+	if(GLOB.using_map.skybox_foreground_objects)
+		for (var/typepath in GLOB.using_map.skybox_foreground_objects)
+			var/datum/skybox_foreground_object/SFO = get_foreground_datum(typepath)
+			var/image/foreground_image = image(SFO.icon, pick(SFO.icon_states))
+			foreground_image.appearance_flags = RESET_COLOR	//We do not want to inherit the background color tint of space
+			foreground_image.transform *= SFO.scale
+
+			var/vector2/offset = SFO.get_offset()
+			if (offset)
+				foreground_image.pixel_x = offset.x * DEFAULT_SKYBOX_SIZE
+				foreground_image.pixel_y = offset.y * DEFAULT_SKYBOX_SIZE
+
+			res.overlays += foreground_image
+
+
+
 	return res
+
+
+/datum/controller/subsystem/skybox/proc/get_foreground_datum(var/typepath)
+	if (!skybox_foreground_objects[typepath])
+		skybox_foreground_objects[typepath] = new typepath
+
+	return skybox_foreground_objects[typepath]
 
 /datum/controller/subsystem/skybox/proc/rebuild_skyboxes(var/list/zlevels)
 	for(var/z in zlevels)

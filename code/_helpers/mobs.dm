@@ -168,7 +168,24 @@ proc/age2agedescription(age)
 	if (progbar)
 		qdel(progbar)
 
-/proc/do_after(mob/user, delay, atom/target = null, needhand = 1, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/same_direction = 0, var/can_move = 0)
+/*
+	Do after is used to let a mob do things over time, with a failure if they move, or become incapacitated.
+	Vars:
+		User: Who is doing the thing
+		Delay: How long the thing takes to do, in total
+		target: What we are doing the thing to. Optional. should be a nonmob atom.
+			Use do_mob instead if you want to have a mob target
+		needhand: If true, they must not change the contents of their active hand
+		progress: Whether to display a graphical progress meter above the target. Shown above user if no target
+		incapacitation_flags: which incap flags will trigger a failure state.
+		same_direction: If true, user must maintain their starting facing direction
+		can_move: If false, user must maintain their location
+		proc_to_call: A callback. While the operation is ongoing, periodically call this
+		proc_interval: how often to call the above, in deciseconds
+*/
+/proc/do_after(mob/user, delay, atom/target = null, needhand = 1, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/same_direction = 0, var/can_move = 0,
+var/datum/callback/proc_to_call, var/proc_interval = 10)
+
 	if(!user)
 		return 0
 	var/atom/target_loc = null
@@ -186,11 +203,22 @@ proc/age2agedescription(age)
 
 	var/datum/progressbar/progbar
 	if (progress)
-		progbar = new(user, delay, target)
+		//Where will the progress bar appear?
+		//Usually over the target object. But if its not on turf, we'll put the bar on that turf anyway
+		//If no target supplied, the bar goes on the user
+		var/atom/progtarget = target
+		if (!progtarget)
+			progtarget = user
+		else if (!isturf(progtarget.loc))
+			progtarget = get_turf(progtarget)
+
+		progbar = new(user, delay, progtarget)
 
 	var/endtime = world.time + delay
 	var/starttime = world.time
 	. = 1
+	//We'll use this to time when to call the proc
+	var/proc_ticker = proc_interval
 	while (world.time < endtime)
 		sleep(1)
 		if (progress)
@@ -208,6 +236,19 @@ proc/age2agedescription(age)
 			if(user.get_active_hand() != holding)
 				. = 0
 				break
+
+		if (proc_to_call)
+			//Deplete this ticker
+			proc_ticker -= 1
+
+			//If it goes below zero, we ADD not set the proc interval, so that any overflow isn't lost
+			if (proc_ticker <= 0)
+				proc_ticker += proc_interval
+
+				//And we call the proc
+				//We will pass: User, Interval
+				proc_to_call.Invoke(user, target, proc_interval)
+
 
 	if (progbar)
 		qdel(progbar)

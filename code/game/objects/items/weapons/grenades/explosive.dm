@@ -20,7 +20,7 @@
 
 	var/list/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment = 1)
 	var/num_fragments = 72  //total number of fragments produced by the grenade
-	var/explosion_size = 2   //size of the center explosion
+	var/explosion_size = 4   //size of the center explosion
 
 	//The radius of the circle used to launch projectiles. Lower values mean less projectiles are used but if set too low gaps may appear in the spread pattern
 	var/spread_range = 7 //leave as is, for some reason setting this higher makes the spread pattern have gaps close to the epicenter
@@ -92,7 +92,7 @@
 
 /obj/item/weapon/grenade/frag/proc/on_explosion(var/turf/O)
 	if(explosion_size)
-		explosion(4, 2)
+		explosion(explosion_size, 2)
 
 /obj/item/weapon/grenade/frag/shell
 	name = "fragmentation grenade"
@@ -112,7 +112,7 @@
 
 	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment=1,/obj/item/projectile/bullet/pellet/fragment/strong=4)
 	num_fragments = 200  //total number of fragments produced by the grenade
-	explosion_size = 3
+	explosion_size = 5
 
 /obj/item/weapon/grenade/frag/high_yield/on_explosion(var/turf/O)
 	if(explosion_size)

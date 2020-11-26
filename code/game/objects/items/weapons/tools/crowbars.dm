@@ -21,11 +21,11 @@
 /obj/item/weapon/tool/crowbar/red
 	icon_state = "red_crowbar"
 	item_state = "crowbar_red"
-	preinstalled_mods = list(/obj/item/weapon/tool_upgrade/productivity/red_paint)
-	max_upgrades = 4 //It gets an extra mod slot for the preinstalled red paint
+	preinstalled_mods = list(/obj/item/weapon/tool_modification/productivity/red_paint)
+	max_modifications = 4 //It gets an extra mod slot for the preinstalled red paint
 
 //This has red color baked into its sprite, so don't tint it
-/obj/item/weapon/tool/crowbar/red/refresh_upgrades()
+/obj/item/weapon/tool/crowbar/red/refresh_modifications()
 	.=..()
 	color = "#ffffff"
 
@@ -64,5 +64,5 @@
 	tool_qualities = list(QUALITY_PRYING = 40, QUALITY_DIGGING = 35)
 	degradation = DEGRADATION_TOUGH_1
 	use_power_cost = 0.8
-	max_upgrades = 4
+	max_modifications = 4
 	suitable_cell = /obj/item/weapon/cell

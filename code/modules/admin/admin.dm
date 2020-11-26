@@ -10,6 +10,12 @@ var/global/floorIsLava = 0
 	for(var/client/C in GLOB.admins)
 		if(R_ADMIN & C.holder.rights)
 			to_chat(C, msg)
+/proc/message_mods(var/msg)
+	msg = "<span class=\"log_message\"><span class=\"prefix\">MOD LOG:</span> <span class=\"message\">[msg]</span></span>"
+	log_adminwarn(msg)
+	for(var/client/C in GLOB.admins)
+		if(R_MOD & C.holder.rights)
+			to_chat(C, msg)
 /proc/message_staff(var/msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
@@ -705,7 +711,7 @@ var/global/floorIsLava = 0
 	set desc="Globally Toggles OOC"
 	set name="Toggle OOC"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN|R_REJUVINATE))
 		return
 
 	config.ooc_allowed = !(config.ooc_allowed)
@@ -721,7 +727,7 @@ var/global/floorIsLava = 0
 	set desc="Globally Toggles AOOC"
 	set name="Toggle AOOC"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN|R_REJUVINATE))
 		return
 
 	config.aooc_allowed = !(config.aooc_allowed)
@@ -737,7 +743,7 @@ var/global/floorIsLava = 0
 	set desc="Globally Toggles LOOC"
 	set name="Toggle LOOC"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN|R_REJUVINATE))
 		return
 
 	config.looc_allowed = !(config.looc_allowed)
@@ -754,7 +760,7 @@ var/global/floorIsLava = 0
 	set desc="Globally Toggles DSAY"
 	set name="Toggle DSAY"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN|R_REJUVINATE))
 		return
 
 	config.dsay_allowed = !(config.dsay_allowed)
@@ -770,7 +776,7 @@ var/global/floorIsLava = 0
 	set desc="Toggle Dead OOC."
 	set name="Toggle Dead OOC"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN|R_REJUVINATE))
 		return
 
 	config.dooc_allowed = !( config.dooc_allowed )
@@ -902,7 +908,7 @@ var/global/floorIsLava = 0
 	set desc="Delay the game start/end"
 	set name="Delay"
 
-	if(!check_rights(R_SERVER))	return
+	if(!check_rights(R_SERVER|R_REJUVINATE))	return
 	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
 		ticker.delay_end = !ticker.delay_end
 		log_and_message_admins("[ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")

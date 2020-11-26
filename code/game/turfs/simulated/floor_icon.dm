@@ -117,15 +117,15 @@ var/list/flooring_cache = list()
 			if(flooring.has_damage_range)
 				overlays |= get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-broken-[broken]-[plane]", "broken[broken]")
 			else
-				var/n = rand(1,3)
-				overlays |= get_damage_overlay("damaged[n]-[plane]", "damaged[n]")
+				var/n = rand(1,5)
+				overlays |= get_damage_overlay("damaged[n]-[plane]-[get_damagepercent()]", "broken[n]")
 
 		if(!isnull(burnt))
 			if(flooring.has_burn_range)
 				overlays |= get_flooring_overlay("[flooring.icon]_[flooring.icon_base]-burned-[burnt]-[plane]", "burned[burnt]")
 			else
-				var/n = rand(1,3)
-				overlays |= get_damage_overlay("scorched[n]-[plane]", "scorched[n]")
+				var/n = rand(1,2)
+				overlays |= get_damage_overlay("scorched[n]-[plane]-[get_damagepercent()]", "burned[n]")
 
 	if(update_neighbors)
 		for(var/turf/simulated/floor/F in trange(1, src))
@@ -302,15 +302,21 @@ var/list/flooring_cache = list()
 
 
 
+//Gets the turfs percentage of health, rounded to the nearest 10%
+/turf/simulated/floor/proc/get_damagepercent()
+	var/p = health / max_health
+	p = clamp(p, 0, 1)
+	p = 1 - p
+	return round(p, 0.1)
 
 
-
-/turf/simulated/floor/proc/get_damage_overlay(var/cache_key, var/icon_base	)
+/turf/simulated/floor/proc/get_damage_overlay(var/cache_key, var/icon_base)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon =  'icons/turf/flooring/damage.dmi', icon_state = icon_base)
-
+		I.alpha = 255 * get_damagepercent()
 		I.plane = src.plane
 		I.layer = DECAL_LAYER+0.1
+		I.transform = I.transform.Turn(rand(0, 360))
 		flooring_cache[cache_key] = I
 	return flooring_cache[cache_key]
 

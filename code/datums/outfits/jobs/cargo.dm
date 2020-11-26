@@ -1,9 +1,9 @@
 /decl/hierarchy/outfit/job/cargo
+	hierarchy_type = /decl/hierarchy/outfit/job/cargo
 	uniform = /obj/item/clothing/under/deadspace/cargo
 	l_ear = /obj/item/device/radio/headset/headset_cargo
 	glasses = /obj/item/clothing/glasses/sunglasses
 	shoes = /obj/item/clothing/shoes/dutyboots
-	hierarchy_type = /decl/hierarchy/outfit/job/cargo
 
 /decl/hierarchy/outfit/job/cargo/so
 	name = OUTFIT_JOB_NAME("Supply Officer")

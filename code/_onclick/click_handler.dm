@@ -39,6 +39,10 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	//Flags, used to optimise
 	var/has_mousemove = FALSE
 
+	//Is the user currently holding down the left mouse button, as far as we know?
+	//This isn't used internally, but some external things may check it
+	var/left_mousedown = FALSE
+
 /datum/click_handler/New(var/mob/user)
 	..()
 	src.user = user
@@ -101,12 +105,14 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	return TRUE
 
 /datum/click_handler/proc/MouseDown(object,location,control,params)
+	left_mousedown = TRUE
 	return TRUE
 
 /datum/click_handler/proc/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
 	return TRUE
 
 /datum/click_handler/proc/MouseUp(object,location,control,params)
+	left_mousedown = FALSE
 	return TRUE
 
 /datum/click_handler/proc/MouseMove(object,location,control,params)

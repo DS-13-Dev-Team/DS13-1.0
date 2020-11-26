@@ -1,4 +1,7 @@
 //Ishimura Areas// (If you add or change areas, make sure they are in alphabetical order; only exceptions are /upper and /lower - Snype)
+
+// Edit: Sound environments added. Do not mess with these unless you know what they do. Missing sound_env is for area's is not a bad thing if they are inherited from their parent. - Lion / 24-Nov-2020
+
 /area/ishimura
 	icon = 'maps/DeadSpace/ishimura_areas.dmi'
 	ship_area = TRUE
@@ -35,6 +38,42 @@
 /area/tdome/tdomeobserve
 	name = "\improper Thunderdome (Observer.)"
 	icon_state = "purple"
+//---------------------------------------------------UPPER--AREAS---------------------------------------------------//
+/area/ishimura/eva
+	name = "\improper EVA Deck"
+	icon_state = "engibase"
+	sound_env = LARGE_ENCLOSED
+
+/area/ishimura/eva/airlock
+	name = "\improper Communication Airlock"
+	sound_env = SMALL_ENCLOSED
+
+/area/ishimura/eva/prep
+	name = "\improper EVA Equipment Prep"
+	sound_env = SMALL_ENCLOSED
+
+/area/ishimura/eva/solar
+	name = "\improper Solar Control"
+
+/area/ishimura/eva/solar/port
+	name = "\improper Port Solar Array"
+
+/area/ishimura/eva/solar/starboard
+	name = "\improper Starboard Solar Array"
+
+/area/ishimura/eva/substation
+	name = "\improper EVA Deck Substation"
+	sound_env = SMALL_ENCLOSED
+
+/area/ishimura/eva/substation/transfer
+	name = "\improper Solar Transfer Power Substation"
+	sound_env = SMALL_ENCLOSED
+
+/area/ishimura/eva/supply
+	name = "\improper Repair Supply Storage"
+	sound_env = SMALL_ENCLOSED
+
+
 
 //---------------------------------------------------UPPER--AREAS---------------------------------------------------//
 /area/ishimura/upper
@@ -44,22 +83,27 @@
 /area/ishimura/upper/command
 	name = "\improper Command"
 	icon_state = "commandbase"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/upper/command/bridge
 	name = "\improper Bridge"
 	icon_state = "ishimurabridge"
+	sound_env = LARGE_ENCLOSED
 
 //------------------Engineering - Upper------------------//
 /area/ishimura/upper/engineering
 	name = "\improper Engineering"
 	icon_state = "engibase"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/upper/engineering/atmospherics
 	name = "\improper Atmospherics"
 	icon_state = "atmos"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/atmospherics/storage
 	name = "\improper Spare Tank Storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/bay
 	name = "\improper Engineering Bay"
@@ -67,9 +111,11 @@
 
 /area/ishimura/upper/engineering/breakroom
 	name = "\improper Engineering Breakroom"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/chief_office
 	name = "\improper Chief Engineer's Office"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/engine_room
 	name = "\improper Engine Room"
@@ -77,18 +123,26 @@
 
 /area/ishimura/upper/engineering/engine_room/airlock_one
 	name = "\improper Engine Airlock One"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/engine_room/airlock_two
 	name = "\improper Engine Airlock Two"
+	sound_env = SMALL_ENCLOSED
 
-/area/ishimura/upper/engineering/engine_smes
+/area/ishimura/upper/engineering/smes/engine
 	name = "\improper Engine SMES Room"
+	sound_env = SMALL_ENCLOSED
+
+/area/ishimura/upper/engineering/smes/solar_connect
+	name = "\improper Upper Deck Port SMES Room"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/hub
 	name = "\improper Engineering Hub"
 
 /area/ishimura/upper/engineering/lobby
 	name = "\improper Engineering Lobby"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/machining_room
 	name = "\improper Machining Room"
@@ -96,45 +150,53 @@
 /area/ishimura/upper/engineering/spare_storage
 	name = "\improper Machining Room Storage"
 	icon_state = "storage"
-
-/area/ishimura/upper/engineering/spare_storage/port
-	name = "\improper Upper Deck Port Power Storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/spare_storage/starboard
 	name = "\improper Upper Deck Starboard Power Storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/spare_storage/tool
 	name = "\improper Upper Deck Tool Storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/monitoring_room
 	name = "\improper Engine Monitoring Room"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/prep
 	name = "\improper Engineer Equipment Prep"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/tcomms
 	name = "\improper Telecommunications"
 	icon_state = "t_comm"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/upper/engineering/tcomms/control
 	name = "\improper Telecommunications Control Room"
 	icon_state = "t_comm_control"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/engineering/waste_tank_room
 	name = "\improper Waste Tank Temporary Storage"
+	sound_env = SMALL_ENCLOSED
 
 //------------------Escape Vehicles - Upper------------------//
 /area/shuttle/escape_pod1/station
 	name = "Escape Pod One"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 /area/shuttle/escape_pod2/station
 	name = "Escape Pod Two"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 /area/shuttle/escape_pod3/station
 	name = "Escape Pod Three"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 
 //------------------Maintenance - Upper------------------//
@@ -146,6 +208,7 @@
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
 	is_maintenance = TRUE
+	sound_env = TUNNEL_ENCLOSED
 
 /area/ishimura/upper/maintenance/aft_port
 	name = "\improper Upper Deck Aft-Port Maintenance"
@@ -169,35 +232,44 @@
 /area/ishimura/upper/medical
 	name = "\improper Clinic"
 	icon_state = "medicalbase"
+	sound_env = LARGE_ENCLOSED
 
 area/ishimura/upper/medical/bpc
 	name = "\improper Biological Prosthetics Center"
 
 /area/ishimura/upper/medical/senior_medical_office
 	name = "\improper Senior Medical Officer's Office"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/medical/lobby
 	name = "\improper Clinic Waiting Room"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/medical/lobby/reception
 	name = "\improper Clinic Reception"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/medical/lockeroom
 	name = "\improper Changing Room"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/medical/morgue
 	name = "\improper Morgue"
 	icon_state = "morgue"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/medical/morgue/autopsy
 	name = "\improper Autopsy Room"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/medical/supply_storage
 	name = "\improper Supply Storage"
 	icon_state = "med_storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/medical/surgery
 	name = "\improper Surgery"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/medical/surgery/one
 	name = "\improper Surgical Suite One"
@@ -210,24 +282,30 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/upper/research
 	name = "\improper Research Wing"
 	icon_state = "researchbase"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/upper/research/chemistry
 	name = "\improper Chemistry Lab"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/research/biolab
 	name = "\improper Biolab"
 
 /area/ishimura/upper/research/chief_science_office
 	name = "\improper Chief Science Officer Office"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/research/storage
 	name = "\improper Research Supply Storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/research/virology
 	name = "\improper Virology"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/upper/research/virology/entrance
 	name = "\improper Virology Airlock"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/research/virology/quarantine
 	name = "\improper Quarantine Suite"
@@ -236,6 +314,7 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/upper/misc
 	name = "\improper Misc"
 	icon_state = "miscbase"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/misc/bathroom
 	name = "\improper Upper Deck Bathroom"
@@ -245,9 +324,11 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/upper/misc/escape
 	name = "\improper Escape Wing"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/upper/misc/hallway
 	name = "\improper Hallway"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/upper/misc/hallway/aft
 	name = "\improper Upper Deck Aft Hallway"
@@ -266,6 +347,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/upper/misc/hangar
 	name = "\improper Hangar"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/upper/misc/hangar/reception
 	name = "\improper Hangar Lobby"
@@ -286,9 +368,11 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/upper/security
 	name = "\improper Security"
 	icon_state = "securitybase"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/upper/security/armory
 	name = "\improper Main Armory"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/brig
 	name = "\improper Brig"
@@ -297,42 +381,55 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/upper/security/checkpoint
 	name = "\improper Security Entrance"
 	icon_state = "checkpoint"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/checkpoint/bridge
 	name = "\improper Bridge Checkpoint"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/checkpoint/engineering
 	name = "\improper Engineering Security Station"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/checkpoint/hangar
 	name = "\improper Hangar Security Station"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/checkpoint/ladders
 	name = "\improper Main Ladder Security Station"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/checkpoint/medical
 	name = "\improper Medical Security Station"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/chiefsoffice
 	name = "\improper Chief Security Officer's Office"
+	sound_env = MEDIUM_SOFTFLOOR
 
 /area/ishimura/upper/security/cryo
 	name = "\improper Cyrogenic Isolation"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/equipment
 	name = "\improper Equipment Room"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/evidence
 	name = "\improper Evidence Storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/forensics
 	name = "\improper Forensics Lab"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/interrogation
 	name = "\improper Interrogation Room"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/upper/security/isolation
 	name = "\improper Isolation"
+	sound_env = SMALL_ENCLOSED
 
 //---------------------------------------------------LOWER--AREAS---------------------------------------------------//
 /area/ishimura/lower
@@ -342,6 +439,7 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/cargo
 	name = "\improper Cargo"
 	icon_state = "cargobase"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/lower/cargo/bay
 	name = "\improper Cargo Bay"
@@ -350,6 +448,7 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/cargo/disposals
 	name = "\improper Disposals"
 	icon_state = "disposals"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/cargo/lobby
 	name = "\improper Cargo Reception"
@@ -362,11 +461,13 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/cargo/supply_office
 	name = "\improper Supply Office"
 	icon_state = "cargoffice"
+	sound_env = SMALL_ENCLOSED
 
 //------------------Crew------------------//
 /area/ishimura/lower/crew
 	name = "\improper Crew Deck"
 	icon_state = "crewbase"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/lower/crew/cryo
 	name = "\improper Cryo"
@@ -376,6 +477,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/crew/gym
 	name = "\improper Gym"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/crew/hydroponics
 	name = "\improper Hydroponics Bay"
@@ -388,18 +490,23 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/crew/messhall/bar/quarters
 	name = "\improper Bartender's Quarters"
+	sound_env = SMALL_SOFTFLOOR
 
 /area/ishimura/lower/crew/messhall/executive
 	name = "\improper Executive Mess"
+	sound_env = MEDIUM_SOFTFLOOR
 
 /area/ishimura/lower/crew/messhall/kitchen
 	name = "\improper Kitchen"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/crew/messhall/kitchen/freezer
 	name = "\improper Freezer"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/crew/messhall/kitchen/freezer/executive
 	name = "\improper Executive Freezer"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/crew/sleepblock
 	name = "\improper Sleep Block"
@@ -421,12 +528,15 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/crew/sleepblock/executive/quarters/first_lieutenant
 	name = "\improper First Lieutenant's Quarters"
+	sound_env = SMALL_SOFTFLOOR
 
 /area/ishimura/lower/crew/sleepblock/executive/quarters/captain
 	name = "\improper Captain's Quarters"
+	sound_env = SMALL_SOFTFLOOR
 
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers
 	name = "\improper Bridge Officer's Quarters"
+	sound_env = SMALL_SOFTFLOOR
 
 /area/ishimura/lower/crew/sleepblock/commons
 	name = "\improper Sleep Block Commons"
@@ -438,15 +548,19 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/engineering
 	name = "\improper Lower Engineeering"
 	icon_state = "engibase"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/lower/engineering/airlock
 	name = "\improper Airlock"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/airlock/one
 	name = "\improper Engineering Airlock Maintenance One"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/airlock/two
 	name = "\improper Engineering Airlock Maintenance Two"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/bay
 	name = "\improper Lower Engineering Bay"
@@ -455,35 +569,44 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/engineering/storage_closet
 	name = "\improper Storage"
 	icon_state = "storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/storage_closet/air
 	name = "\improper Spare Air Circulation Storage"
 	icon_state = "starboard_engistore"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/storage_closet/battery
 	name = "\improper Spare Battery Storage"
 	icon_state = "battery_storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/storage_closet/electronics
 	name = "\improper Electronic Parts Storage"
 	icon_state = "electronics_storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/storage_closet/fore
 	name = "\improper Fore Parts Storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/storage_closet/midship
 	name = "\improper Midship Parts Storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/storage_closet/paint
 	name = "\improper Paint Storage"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/substation/crew
 	name = "\improper Crew Quarters Substation"
 	icon_state = "crew_engistation"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/engineering/substation/port
 	name = "\improper Lower Engineering Port Substation"
 	icon_state = "port_engistation"
+	sound_env = SMALL_ENCLOSED
 
 //------------------Escape Vehicles - Lower------------------//
 //Pods
@@ -491,26 +614,32 @@ area/ishimura/upper/medical/bpc
 /area/shuttle/escape_pod4/station
 	name = "Escape Pod Four"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 /area/shuttle/escape_pod5/station
 	name = "Escape Pod Five"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 /area/shuttle/escape_pod6/station
 	name = "Escape Pod Six"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 /area/shuttle/escape_pod7/station
 	name = "Escape Pod Seven"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 /area/shuttle/escape_pod8/station
 	name = "Escape Pod Eight"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 /area/shuttle/escape_pod9/station
 	name = "Escape Pod Nine"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 //------------------Maintenance------------------//
 /area/ishimura/lower/maintenance
@@ -521,6 +650,7 @@ area/ishimura/upper/medical/bpc
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
 	is_maintenance = TRUE
+	sound_env = TUNNEL_ENCLOSED
 
 /area/ishimura/lower/maintenance/aft_central
 	name = "\improper Lower Deck Aft-Central Maintenance"
@@ -553,9 +683,11 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/mining
 	name = "\improper Mining"
 	icon_state = "miningbase"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/lower/mining/briefing
 	name = "\improper Meeting Room"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/mining/locker_room
 	name = "\improper Mining Locker Room"
@@ -567,10 +699,12 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/mining/office
 	name = "\improper Director of Mining's Office"
+	sound_env = SMALL_SOFTFLOOR
 
 /area/ishimura/lower/mining/office/foreman
 	name = "\improper Foreman's Office"
 	icon_state = "foremanoffice"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/mining/processing_room
 	name = "\improper Processing Room"
@@ -578,10 +712,12 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/mining/reception
 	name = "\improper Mining Reception"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/mining/shuttle
 	name = "\improper Mining Shuttle"
 	requires_power = 0
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/mining/shuttle/one
 	name = "\improper Mining Shuttle One"
@@ -593,6 +729,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/mining/shuttlebay
 	name = "\improper Mining Shuttle Bay"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/lower/mining/shuttlebay/port
 	name = "\improper Mining Shuttle Bay One"
@@ -604,11 +741,13 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/mining/storage
 	name = "\improper Mining Storage"
+	sound_env = SMALL_ENCLOSED
 
 //------------------Misc------------------//
 /area/ishimura/lower/misc
 	name = "\improper Misc"
 	icon_state = "miscbase"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/misc/abandon_surgery
 	name = "\improper Abandoned Surgical Suite"
@@ -630,6 +769,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/misc/hallway
 	name = "\improper Hallway"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/lower/misc/hallway/aft
 	name = "\improper Lower Deck Aft Hallway"
@@ -660,14 +800,17 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/misc/marker
 	name = "\improper Large Storage Room"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/lower/misc/observationroom
 	name = "\improper Observation Room"
+	sound_env = MEDIUM_SOFTFLOOR
 
 //------------------Security - Lower------------------//
 /area/ishimura/lower/security
 	name = "\improper Security"
 	icon_state = "securitybase"
+	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/lower/security/armory
 	name = "\improper Security Armory"
@@ -677,6 +820,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/security/escape
 	name = "\improper Executive Hangar"
+	sound_env = LARGE_ENCLOSED
 
 /area/ishimura/lower/security/escape/lounge
 	name = "\improper Executive Escape Lounge"

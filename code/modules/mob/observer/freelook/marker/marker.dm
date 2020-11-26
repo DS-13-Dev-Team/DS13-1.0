@@ -190,8 +190,11 @@
 /obj/machinery/marker/proc/become_master_signal(var/mob/M)
 	if(!active)
 		return
+	if (!M || !M.key)
+		return
 	if (player != ckey(M.key))
 		message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
+
 	player = ckey(M.key)
 
 	//Get rid of the old energy handler
@@ -201,7 +204,8 @@
 	var/mob/observer/eye/signal/master/S = new(M)
 
 	playermob = S
-	qdel(M)
+	if (!isliving(M))
+		qdel(M)
 	update_icon()
 	//GLOB.unitologists.add_antagonist(playermob.mind)
 	return S
@@ -211,8 +215,10 @@
 	if (playermob)
 
 		//Get rid of the old player's energy handler
-		var/datum/player/P = get_or_create_player(player)
-		remove_extension(P, /datum/extension/psi_energy/marker)//Remove the handler
+		if (player)
+			var/datum/player/P = get_or_create_player(player)
+			if (P)
+				remove_extension(P, /datum/extension/psi_energy/marker)//Remove the handler
 
 		message_necromorphs(SPAN_NOTICE("[player] has stepped down, nobody is controlling the marker now."))
 		var/mob/observer/eye/signal/S = new(playermob)
@@ -221,6 +227,9 @@
 		QDEL_NULL(playermob)
 		update_icon()
 		return S
+	else
+		//Just vacate the player slot so someone else can join
+		player = null
 
 //This is defined at atom level to enable non-marker spawning systems in future
 /atom/proc/get_available_biomass()
@@ -243,8 +252,8 @@
 
 
 
-/obj/machinery/marker/proc/pay_biomass(var/purpose, var/amount)
-	if (biomass >= amount)
+/obj/machinery/marker/proc/pay_biomass(var/purpose, var/amount, var/allow_negative = FALSE)
+	if (allow_negative || biomass >= amount)
 		biomass -= amount
 		return TRUE
 	return FALSE
@@ -317,7 +326,7 @@
 					SSnecromorph.massive_necroatoms -= A
 					continue
 
-			invested_biomass += A.get_biomass()
+			invested_biomass += A.get_biomass(src)
 
 	//Next, we get biomass in sources currently being reclaimed which the marker owns. IE, limited sources which cannot be taken away. This includes:
 	//Dead necromorphs

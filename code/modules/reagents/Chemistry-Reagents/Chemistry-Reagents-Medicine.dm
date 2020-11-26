@@ -7,7 +7,7 @@
 	reagent_state = LIQUID
 	color = "#00bfff"
 	overdose = REAGENTS_OVERDOSE * 2
-	metabolism = REM * 0.5
+	metabolism = REM * 0.9
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
 
@@ -33,6 +33,7 @@
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
+	metabolism = REM * 0.9
 
 /datum/reagent/bicaridine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -57,6 +58,7 @@
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
+	metabolism = REM * 0.9
 
 /datum/reagent/kelotane/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -149,6 +151,7 @@
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
 	overdose = 30
+	metabolism = REM * 0.6
 
 /datum/reagent/tricordrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -381,6 +384,7 @@
 	overdose = 10
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
+	metabolism = REM * 1
 
 /datum/reagent/peridaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(ishuman(M))

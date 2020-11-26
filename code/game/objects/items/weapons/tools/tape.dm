@@ -1,6 +1,6 @@
 /obj/item/weapon/tool/tape_roll
 	name = "duct tape"
-	desc = "The astronaut's eternal friend. Fixes just about anything, for a while at least."
+	desc = "The astronaut's eternal friend. Fixes just about anything, for a while at least. Duct tape repairs are imperfect, and the thing will likely break again soon."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "taperoll"
 	w_class = ITEM_SIZE_SMALL
@@ -11,7 +11,7 @@
 	max_stock = 80
 	degradation = 0 //its consumable anyway
 	item_flags = ITEM_FLAG_NO_BLUDGEON //Its not a weapon
-	max_upgrades = 0 //These are consumable, so no wasting upgrades on them
+	max_modifications = 0 //These are consumable, so no wasting modifications on them
 
 /obj/item/weapon/tool/tape_roll/web
 	name = "web tape"

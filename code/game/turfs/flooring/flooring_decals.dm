@@ -377,6 +377,9 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/sign/p
 	icon_state = "white_p"
 
+/obj/effect/floor_decal/solarpanel
+	icon_state = "solarpanel"
+
 /obj/effect/floor_decal/rust
 	name = "rust"
 	icon_state = "rust"

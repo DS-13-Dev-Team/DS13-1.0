@@ -61,7 +61,7 @@
 	ammo_type = /obj/item/ammo_casing/tripmine
 
 /obj/item/weapon/gun/projectile/detonator/update_icon()
-	if(getAmmo())
+	if(get_remaining_ammo())
 		icon_state = "detonator_loaded"
 	else
 		icon_state = "detonator"
@@ -315,7 +315,7 @@
 
 
 /decl/hierarchy/supply_pack/mining/detonator
-	name = "Mining Tool - C99 Supercollider Contact Beam"
+	name = "Mining Tool - Detonator Mine Launcher"
 	contains = list(/obj/item/ammo_casing/tripmine = 6,
 	/obj/item/weapon/gun/projectile/detonator = 1)
 	cost = 80

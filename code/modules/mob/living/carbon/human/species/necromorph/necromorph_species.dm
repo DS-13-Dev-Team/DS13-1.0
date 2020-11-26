@@ -22,6 +22,7 @@
 	var/spawner_spawnable = FALSE	//If true, a nest can be upgraded to autospawn this unit
 	var/necroshop_item_type = /datum/necroshop_item //Give this a subtype if you want to have special behaviour for when this necromorph is spawned from the necroshop
 	var/global_limit = 0	//0 = no limit
+	lasting_damage_factor = 0.2	//Necromorphs take lasting damage based on incoming hits
 
 	strength    = STR_MEDIUM
 	show_ssd = "dead" //If its not moving, it looks like a corpse
@@ -118,7 +119,7 @@
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK      // Various specific features.
 	appearance_flags = 0      // Appearance/display related features.
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN           // Flags that specify who can spawn as this specie
-
+	language = LANGUAGE_NECROCHAT
 
 	//Audio
 	step_volume = 60 //Necromorphs can't wear shoes, so their base footstep volumes are louder
@@ -266,8 +267,12 @@
 		//And now add to total
 		total += subtotal
 
+	var/lasting = H.getLastingDamage()
+	blocked += lasting
+	total += lasting
+
 	if (return_list)
-		return list("damage" = total, "blocked" = blocked+H.lasting_damage)
+		return list("damage" = total, "blocked" = blocked)
 
 	return total
 
@@ -278,7 +283,7 @@
 // Used to update alien icons for aliens.
 /datum/species/necromorph/handle_login_special(var/mob/living/carbon/human/H)
 	.=..()
-	SSnecromorph.necromorph_players[H.ckey] = get_or_create_player(H.ckey)
+	H.set_necromorph(TRUE)
 	to_chat(H, "You are a [name]. \n\
 	[blurb]\n\
 	\n\

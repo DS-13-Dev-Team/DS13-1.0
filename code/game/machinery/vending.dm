@@ -707,7 +707,7 @@
 					/obj/item/weapon/reagent_containers/food/snacks/candy = 6,/obj/item/weapon/reagent_containers/food/drinks/dry_ramen = 6,/obj/item/weapon/reagent_containers/food/snacks/chips =6,
 					/obj/item/weapon/reagent_containers/food/snacks/sosjerky = 6,/obj/item/weapon/reagent_containers/food/snacks/no_raisin = 6,/obj/item/weapon/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/weapon/reagent_containers/food/snacks/cheesiehonkers = 6, /obj/item/weapon/reagent_containers/food/snacks/tastybread = 6)
-	contraband = list(/obj/item/weapon/reagent_containers/food/snacks/syndicake = 6, /obj/item/weapon/reagent_containers/food/snacks/skrellsnacks = 3)
+	contraband = list(/obj/item/weapon/reagent_containers/food/snacks/syndicake = 6)
 	prices = list(/obj/item/clothing/mask/chewable/candy/lolli = 2,
 					/obj/item/weapon/storage/chewables/candy/gum = 4,
 					/obj/item/weapon/storage/chewables/candy/cookies = 4,
@@ -877,7 +877,7 @@
 					/obj/item/weapon/reagent_containers/syringe = 12,
 					/obj/item/device/healthanalyzer = 5, /obj/item/stack/medical/advanced/bruise_pack = 5, /obj/item/stack/medical/advanced/ointment = 5,
 					/obj/item/stack/medical/bruise_pack = 10, /obj/item/stack/medical/ointment = 10, /obj/item/weapon/defibrillator/loaded = 2, /obj/item/weapon/defibrillator/compact/loaded = 1,
-					/obj/item/stack/medical/splint = 2, /obj/item/weapon/reagent_containers/hypospray/autoinjector/pain = 4)
+					/obj/item/stack/medical/splint = 2, /obj/item/weapon/reagent_containers/hypospray/autoinjector/pain = 4, /obj/item/weapon/storage/pill_bottle/peridaxon = 1)
 	contraband = list(/obj/item/clothing/mask/chewable/candy/lolli/meds = 8, /obj/item/weapon/storage/pill_bottle/dermaline = 4,
 					/obj/item/weapon/reagent_containers/pill/tox = 3,/obj/item/weapon/reagent_containers/pill/stox = 4,/obj/item/weapon/reagent_containers/pill/antitox = 6,
 					/obj/item/weapon/reagent_containers/hypospray/autoinjector/combatpain = 2)
@@ -898,6 +898,7 @@
 					/obj/item/weapon/reagent_containers/ivbag/blood/BPlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/BMinus = 5,
 					/obj/item/weapon/reagent_containers/ivbag/blood/OPlus = 5, /obj/item/weapon/reagent_containers/ivbag/blood/OMinus = 5,
 					/obj/item/weapon/reagent_containers/ivbag = 5, /obj/item/weapon/reagent_containers/ivbag/blood = 15)
+	contraband = list(/obj/item/weapon/reagent_containers/ivbag/nanoblood = 4)
 	idle_power_usage = 211
 
 

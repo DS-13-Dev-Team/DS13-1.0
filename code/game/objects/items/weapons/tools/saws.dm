@@ -51,7 +51,7 @@
 	degradation = 0.06
 	use_power_cost = 0.22
 	suitable_cell = /obj/item/weapon/cell
-	max_upgrades = 4
+	max_modifications = 4
 
 /obj/item/weapon/tool/saw/chain
 	name = "chainsaw"
@@ -62,7 +62,7 @@
 	force = WEAPON_FORCE_DANGEROUS
 	matter = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 3000)
 	tool_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20)
-	max_upgrades = 4
+	max_modifications = 4
 	use_fuel_cost = 0.1
 	max_fuel = 80
 
@@ -78,7 +78,7 @@
 	matter = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 3000)
 	tool_qualities = list()
 	switched_on_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20, QUALITY_DIGGING = 35)
-	max_upgrades = 4
+	max_modifications = 4
 	use_power_cost = 0.44
 	passive_power_cost = 0.06
 	suitable_cell = /obj/item/weapon/cell

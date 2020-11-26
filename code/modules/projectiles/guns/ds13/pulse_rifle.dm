@@ -22,6 +22,8 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	one_hand_penalty = 6	//Don't try to fire this with one hand
 	accuracy = 5	//Slight accuracy increase
 
+
+
 	aiming_modes = list(/datum/extension/aim_mode/rifle)
 
 	screen_shake = 0	//It is good with recoil
@@ -53,7 +55,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	icon_state = "empshell"
 	spent_icon = "empshell-spent"
 	projectile_type  = /obj/item/projectile/bullet/pulse
-
+	embed_mult = 0	//No embedding
 
 
 /obj/item/projectile/bullet/pulse
@@ -63,7 +65,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	structure_damage_factor = 0.5
 	penetration_modifier = 0
 	penetrating = FALSE
-	step_delay = 1.5
+	step_delay = 1.3
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
 	fire_sound='sound/weapons/guns/fire/pulse_shot.ogg'
@@ -139,16 +141,17 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	grippable = TRUE
 	embed = FALSE
 
-/obj/item/projectile/bullet/impact_grenade/on_hit(var/atom/target, var/blocked = 0)
+/obj/item/projectile/bullet/impact_grenade/proc/detonate()
 	if (!exploded)
 		exploded = TRUE
-		explosion(4, 2)
+		explosion(2, 2)
+
+/obj/item/projectile/bullet/impact_grenade/on_hit(var/atom/target, var/blocked = 0)
+	detonate()
 	return 1
 
 /obj/item/projectile/bullet/impact_grenade/on_impact(var/atom/target, var/blocked = 0)
-	if (!exploded)
-		exploded = TRUE
-		explosion(4, 2)
+	detonate()
 	return 1
 
 

@@ -30,11 +30,18 @@
 		src.amount = amount
 
 /obj/item/stack/Destroy()
+
+	//When deleting inside stacks, remove us from them
+	if (istype(loc, /obj/item/weapon/storage) && !QDELETED(loc))
+		var/obj/item/weapon/storage/S = loc
+		S.remove_from_storage(src, get_turf(src))
+
 	if(uses_charge)
 		return 1
 	if (src && usr && usr.machine == src)
 		usr << browse(null, "window=stack")
-	return ..()
+	.= ..()
+
 
 /obj/item/stack/examine(mob/user)
 	if(..(user, 1))

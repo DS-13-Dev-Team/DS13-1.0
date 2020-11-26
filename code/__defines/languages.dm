@@ -2,6 +2,8 @@
 #define LANGUAGE_GALCOM "English, Galactic Common"
 #define LANGUAGE_GUTTER "Gutter"
 #define LANGUAGE_SIGN "Sign Language"
+#define LANGUAGE_NECROCHAT "Signal Hivemind"
+
 // Language flags.
 #define WHITELISTED  1   // Language is available if the speaker is whitelisted.
 #define RESTRICTED   2   // Language can only be acquired by spawning or an admin.

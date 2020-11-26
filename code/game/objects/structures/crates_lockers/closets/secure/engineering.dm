@@ -13,6 +13,7 @@
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/industrial, /obj/item/weapon/storage/backpack/satchel_eng)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/eng, 50),
 		/obj/item/blueprints,
+		/obj/item/weapon/rig/advanced,
 		/obj/item/clothing/under/deadspace/engineer,
 		/obj/item/clothing/head/hardhat/white,
 		/obj/item/clothing/head/welding,
@@ -22,8 +23,7 @@
 		/obj/item/weapon/tool/multitool,
 		/obj/item/device/flash,
 		/obj/item/taperoll/engineering,
-		/obj/item/weapon/tool/crowbar/brace_jack,
-		/obj/item/weapon/rig/engineering
+		/obj/item/weapon/tool/crowbar/brace_jack
 	)
 
 /obj/structure/closet/secure_closet/engineering_chief/Initialize()
@@ -63,7 +63,7 @@
 		/obj/item/weapon/tool/weldingtool = 3,
 		///obj/item/weapon/weldpack = 3,
 		/obj/item/clothing/glasses/welding = 3,
-		/obj/item/weapon/tool_upgrade/augment/fuel_tank = 1,
+		/obj/item/weapon/tool_modification/augment/fuel_tank = 1,
 		/obj/random/tool = 1
 	)
 

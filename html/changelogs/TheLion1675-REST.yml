@@ -22,7 +22,7 @@
 #################################
 
 # Your name.  
-author: Nanako
+author: TheLion1675
 
 # Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
 delete-after: True
@@ -33,11 +33,4 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - tweak: "Brute's slam attack now deals much more damage to dense objects, especially walls."
-  - tweak: "Brute's biobomb attack is now a bit faster to fire and deals more damage."
-  - tweak: "Leaper's tailstrike can no longer hit walls"
-  - tweak: "Leaper's biomass cost reduced from 80 to 75"
-  - tweak: "Cysts will no longer fire at projectiles or freshly severed limbs"
-  - bugfix: "Divider puppet now properly counts as a necromorph, and won't be attacked by traps."
-  - bugfix: "Fixed some cases where girders were almost impossible to break"
-  
+  - rscadd: "Added three more Necromorph related round-end stats. Total accrued biomass, and the Marker's player name."

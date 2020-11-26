@@ -248,9 +248,10 @@
 //External only
 /mob/living/carbon/human/proc/find_target_organ(var/hit_zone)
 	if (species.organ_substitutions[hit_zone])
+
 		hit_zone = species.organ_substitutions[hit_zone]
 
-	var/depth = 3 //Max repetitions to search
+	var/depth = 4 //Max repetitions to search
 	var/obj/item/organ/external/found_organ = null
 	while (!found_organ && depth)
 		found_organ = organs_by_name[hit_zone]

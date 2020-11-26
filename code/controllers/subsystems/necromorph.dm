@@ -142,6 +142,8 @@ SUBSYSTEM_DEF(necromorph)
 //Updates the energy holders of all necromorph players, refreshing their spell list
 /datum/controller/subsystem/necromorph/proc/update_all_ability_lists(var/clear = FALSE)
 	for (var/key in GLOB.players)
+		if (!key)
+			continue
 		var/datum/player/P = GLOB.players[key]
 		var/datum/extension/psi_energy/PE = P.get_energy_extension()
 		if (PE)

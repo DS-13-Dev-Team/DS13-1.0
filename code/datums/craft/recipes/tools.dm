@@ -1,7 +1,78 @@
 /datum/craft_recipe/tool
 	category = "Tools"
 
+/*************************
+	REPAIR KIT
+*************************/
+//Assembled using several tools of any sort. You can be quite economical by using nearly-broken junk to make this,
+//	without affecting the quality of the final product
 
+/datum/craft_recipe/tool/repairkit
+	name = "Repair Kit"
+	result = /obj/item/weapon/tool/repairkit
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_STEEL),
+		list(CRAFT_OBJECT, /obj/item/weapon/tool),
+		list(CRAFT_OBJECT, /obj/item/weapon/tool),
+		list(CRAFT_OBJECT, /obj/item/weapon/tool),
+		list(CRAFT_STACK, /obj/item/stack/cable_coil, 5)
+	)
+
+/*************************
+	TOOL EXPANSION
+*************************/
+/*
+	A special recipe. This takes a tool, and outputs the same tool, but with one extra modification slot
+*/
+/datum/craft_recipe/tool/expansion
+	name = "Tool expansion"
+	desc = "This recipe is used to upgrade a tool's potential, unlocking an extra modification slot to allow more toolmods to be fitted onto it."
+	result = null
+	steps = list(
+		list(CRAFT_OBJECT, /obj/item/weapon/tool),
+		list(CRAFT_STACK, /obj/item/stack/power_node, 1)
+	)
+
+/*
+	Tools which have no mod slots to begin with, cannot be modificationd.
+	This only applies to consumables like duct tape
+*/
+/datum/craft_recipe/tool/expansion/try_step(step, I, user, obj/item/craft/target)
+	if (istool(I))
+		var/obj/item/weapon/tool/T = I
+		if (T.max_modifications <= 0)
+			to_chat(user, SPAN_DANGER("The [I] cannot be modified."))
+			return FALSE
+
+	.=..()
+
+
+/*
+	To complete, we move the tool out of the craft object, then delete that object.
+*/
+/datum/craft_recipe/tool/expansion/spawn_result(obj/item/craft/C, mob/living/user)
+	var/obj/item/weapon/tool/T = locate() in C
+	if (!T)
+		return FALSE
+
+	T.base_max_modifications++
+	T.refresh_modifications()
+
+	var/slot = user.get_inventory_slot(C)
+
+	if(! (flags & CRAFT_ON_FLOOR) && (slot in list(slot_r_hand, slot_l_hand)))
+		user.put_in_hands(T)
+	else
+		T.forceMove(get_turf(C))
+
+	qdel(C)
+
+
+
+
+/*************************
+	MAKESHIFT TOOLS
+*************************/
 /datum/craft_recipe/tool/webtape
 	name = "Web tape"
 	result = /obj/item/weapon/tool/tape_roll/web
@@ -117,13 +188,16 @@
 		list(CRAFT_OBJECT, /obj/item/weapon/cell)
 	)
 
+
+
+
 /*************************
 	TOOL MODS
 *************************/
 //Metal rods reinforced with fiber tape
 /datum/craft_recipe/tool/brace
 	name = "Tool mod: Brace bar"
-	result = /obj/item/weapon/tool_upgrade/reinforcement/stick
+	result = /obj/item/weapon/tool_modification/reinforcement/stick
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/rods, 1, 30),
 		list(CRAFT_STACK, /obj/item/stack/rods, 1, 30),
@@ -135,7 +209,7 @@
 //A metal plate with bolts drilled and wrenched into it
 /datum/craft_recipe/tool/plate
 	name = "Tool mod: reinforcement plate"
-	result = /obj/item/weapon/tool_upgrade/reinforcement/plating
+	result = /obj/item/weapon/tool_modification/reinforcement/plating
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL, 2),
 		list(CRAFT_TOOL,QUALITY_DRILLING, 10, 150),
@@ -147,7 +221,7 @@
 //An array of sharpened bits of metal to turn a tool into more of a weapon
 /datum/craft_recipe/tool/spikes
 	name = "Tool mod: Spikes"
-	result = /obj/item/weapon/tool_upgrade/augment/spikes
+	result = /obj/item/weapon/tool_modification/augment/spikes
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/rods, 2, 30),
 		list(CRAFT_TOOL,QUALITY_WELDING, 10, 150),
@@ -157,4 +231,6 @@
 		list(CRAFT_OBJECT,/obj/item/weapon/material/shard/shrapnel, "time" = 30),
 		list(CRAFT_TOOL,QUALITY_WELDING, 10, 150),
 	)
+
+
 

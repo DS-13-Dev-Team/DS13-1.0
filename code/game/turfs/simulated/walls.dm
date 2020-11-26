@@ -162,6 +162,9 @@
 	damage = clamp(damage-repair_power, 0, damage)
 	update_damage()
 
+/turf/simulated/wall/repair_needed()
+	return damage
+
 /turf/simulated/wall/proc/update_damage()
 	var/cap = material.integrity
 	if(reinf_material)
@@ -177,7 +180,7 @@
 
 	return
 
-/turf/simulated/wall/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)//Doesn't fucking work because walls don't interact with air :(
+/turf/simulated/wall/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)//Doesn't fucking work because walls don't interact with air :(
 	burn(exposed_temperature)
 
 /turf/simulated/wall/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)

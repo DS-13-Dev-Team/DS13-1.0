@@ -2,7 +2,7 @@
 	name = "engineering rig"
 	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 	icon_state = "ds_engineering_rig"
-	armor = list(melee = 45, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 60)
+	armor = list(melee = 45, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 95)
 	offline_slowdown = 4
 	online_slowdown = 2
 	acid_resistance = 1.75	//Contains a fair bit of plastic
@@ -19,7 +19,8 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/vision/meson,
 		/obj/item/rig_module/kinesis,
-		/obj/item/rig_module/hotswap
+		/obj/item/rig_module/hotswap,
+		/obj/item/rig_module/power_sink
 		)
 
 /obj/item/clothing/suit/space/rig/engineering

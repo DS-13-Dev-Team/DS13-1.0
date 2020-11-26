@@ -195,7 +195,7 @@
 			for(var/mob/M in viewers(usr, null))
 				if (M == usr)
 					to_chat(usr, "<span class='notice'>You put \the [W] into [src].</span>")
-				else if (M in range(1, src)) //If someone is standing close enough, they can tell what it is... TODO replace with distance check
+				else if (get_dist(M, src) <= 2) //If someone is standing close enough, they can tell what it is... TODO replace with distance check
 					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
 				else if (W && W.w_class >= ITEM_SIZE_NORMAL) //Otherwise they can only see large or normal items from a distance...
 					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
@@ -222,20 +222,22 @@
 		storage_ui.on_post_remove(usr)
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
+//The drop flag should be set false when the item is going to go from storage worn by a mob, to that mob's hands
+//drop should be true when the item is going to go from storage to anywhere else
 /obj/item/weapon/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, var/NoUpdate = 0)
 	if(!istype(W)) return FALSE
 	new_location = new_location || get_turf(src)
 
 	if(storage_ui)
-		storage_ui.on_pre_remove(usr, W)
+		storage_ui.on_pre_remove(W)
 
-	if(ismob(loc))
-		W.dropped(usr)
+
 	if(ismob(new_location))
 		W.hud_layerise()
 	else
 		W.reset_plane_and_layer()
 	W.forceMove(new_location)
+
 
 	if(usr && !NoUpdate)
 		update_ui_after_item_removal()
@@ -324,7 +326,7 @@
 	var/turf/T = get_turf(src)
 	hide_from(usr)
 	for(var/obj/item/I in contents)
-		remove_from_storage(I, T, 1)
+		remove_from_storage(I, T, 1, drop = TRUE)
 	finish_bulk_removal()
 
 /obj/item/weapon/storage/Initialize()

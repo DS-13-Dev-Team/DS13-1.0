@@ -13,7 +13,7 @@
 	biomass = 70
 	mass = 50
 
-	biomass_reclamation_time	=	4.5 MINUTES
+	biomass_reclamation_time	=	5 MINUTES
 	view_range = 6
 	darksight_tint = DARKTINT_POOR
 
@@ -205,8 +205,12 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 
 	//A normal explosion
 	spawn()
-		//-1 devastation range because hull breaches are not cool
-		explosion(T, -1, 3, 5, 6)
+		//Max power 2 because hull breaches are not cool
+		T.EXPLOSION_LARGE
+
+	spawn()
+		//An immediate second, smaller explosion to deal more damage
+		T.EXPLOSION_STANDARD
 
 	//Make sure the pustule is deleted if these explosions don't destroy it
 	spawn()

@@ -138,6 +138,9 @@
 /obj/item/rig_module/kinesis/advanced
 	name = "G.R.I.P advanced kinesis module"
 	desc = "An engineering tool that uses microgravity fields to manipulate objects at distances of several metres. This version has improved range and power."
+	interface_name = "Kinesis: Advanced"
+	interface_desc = "An engineering tool that uses microgravity fields to manipulate objects at distances of several metres. This version has improved range and power."
+
 	range = 6.5
 	drop_range = 7
 	max_force = 30

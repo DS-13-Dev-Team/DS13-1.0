@@ -76,18 +76,17 @@
 	if(user.s_active)
 		user.s_active.show_to(user)
 
-/datum/storage_ui/default/on_pre_remove(var/mob/user, var/obj/item/W)
-	for(var/mob/M in range(1, storage.loc))
-		if (M.s_active == storage)
-			if (M.client)
-				M.client.screen -= W
+/datum/storage_ui/default/on_pre_remove(var/obj/item/W)
+	for(var/mob/M in is_seeing)
+		if (M.client)
+			M.client.screen -= W
 
 /datum/storage_ui/default/on_post_remove(var/mob/user)
 	if(user.s_active)
 		user.s_active.show_to(user)
 
 /datum/storage_ui/default/on_hand_attack(var/mob/user)
-	for(var/mob/M in range(1))
+	for(var/mob/M in is_seeing)
 		if (M.s_active == storage)
 			storage.close(M)
 
@@ -149,6 +148,8 @@
 		else
 			is_seeing -= M
 	return cansee
+
+
 
 //This proc draws out the inventory and places the items on it. tx and ty are the upper left tile and mx, my are the bottm right.
 //The numbers are calculated from the bottom-left The bottom-left slot being 1,1.

@@ -43,9 +43,10 @@
 	var/glow_color = null	//Set color of glow upon activation, or leave it null if you dont want any light
 	var/last_tooluse = 0 //When the tool was last used for a tool operation. This is set both at the start of an operation, and after the doafter call
 
-	//Vars for tool upgrades
-	var/list/upgrades = list()
-	var/max_upgrades = 3
+	//Vars for tool modifications
+	var/list/modifications = list()
+	var/max_modifications = 3	//This is the maximum number of modifications this tool can hold. This value may change via toolmods
+	var/base_max_modifications	//This holds the unmodified value of max modifications, it may change via powernode upgrades
 	var/precision = 0	//Subtracted from failure rates
 	var/workspeed = 1	//Worktimes are divided by this
 	var/extra_bulk = 0 	//Extra physicial volume added by certain mods
@@ -54,6 +55,12 @@
 
 	//Mods that come already applied on a tool
 	var/list/preinstalled_mods = list()
+
+
+	//Tracking some times
+	var/last_progress_tick
+	var/progress_interval = 5	//How often to call the in progress proc
+	var/last_resource_consumption
 
 /******************************
 	/* Core Procs */
@@ -79,9 +86,9 @@
 	.=..()
 
 /obj/item/weapon/tool/Initialize()
-
+	base_max_modifications = max_modifications
 	for(var/modtype in preinstalled_mods)
-		var/obj/item/weapon/tool_upgrade/TU = new modtype(src)
+		var/obj/item/weapon/tool_modification/TU = new modtype(src)
 		TU.apply(src)
 		TU.removeable = FALSE //Preinstalled mods are permanant
 
@@ -99,10 +106,16 @@
 //For killing processes like hot spots
 /obj/item/weapon/tool/Destroy()
 	QDEL_NULL(cell)
-	QDEL_NULL_LIST(upgrades)
+	QDEL_NULL_LIST(modifications)
 	QDEL_NULL(reagents)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
+
+
+//This is called periodically while a tool operation is in progress
+/obj/item/weapon/tool/proc/work_in_progress(var/mob/user, var/atom/target, var/delta)
+	last_progress_tick = world.time
+	return
 
 //Ignite plasma around, if we need it
 /obj/item/weapon/tool/Process()
@@ -138,46 +151,46 @@
 		update_icon()
 		return
 
-	//Removing upgrades from a tool. Very difficult, but passing the check only gets you the perfect result
-	//You can also get a lesser success (remove the upgrade but break it in the process) if you fail
+	//Removing modifications from a tool. Very difficult, but passing the check only gets you the perfect result
+	//You can also get a lesser success (remove the modification but break it in the process) if you fail
 	//Using a laser guided stabilised screwdriver is recommended. Precision mods will make this easier
-	if (upgrades.len && C.has_quality(QUALITY_SCREW_DRIVING))
-		var/list/possibles = upgrades.Copy()
-		for (var/obj/item/weapon/tool_upgrade/TU in possibles)
+	if (modifications.len && C.has_quality(QUALITY_SCREW_DRIVING))
+		var/list/possibles = modifications.Copy()
+		for (var/obj/item/weapon/tool_modification/TU in possibles)
 			if (!TU.removeable)
 				possibles.Remove(TU) //Some mods cannot be removed
 		possibles += "Cancel"
-		var/obj/item/weapon/tool_upgrade/toremove = input("Which upgrade would you like to try to remove? The upgrade will probably be destroyed in the process","Removing Upgrades") in possibles
+		var/obj/item/weapon/tool_modification/toremove = input("Which modification would you like to try to remove? The modification will probably be destroyed in the process","Removing modifications") in possibles
 		if (toremove == "Cancel")
 			return
 
 		if (C.use_tool(user = user, target =  src, base_time = WORKTIME_SLOW, required_quality = QUALITY_SCREW_DRIVING, fail_chance = FAILCHANCE_CHALLENGING, required_stat = "construction"))
-			//If you pass the check, then you manage to remove the upgrade intact
+			//If you pass the check, then you manage to remove the modification intact
 			user << SPAN_NOTICE("You successfully remove [toremove] while leaving it intact.")
-			upgrades -= toremove
+			modifications -= toremove
 			toremove.forceMove(get_turf(src))
 			toremove.holder = null
 			if (!toremove.recoverable)
-				qdel(toremove) //Some upgrades are always lost upon removal
-			refresh_upgrades()
+				qdel(toremove) //Some modifications are always lost upon removal
+			refresh_modifications()
 			return 1
 		else
 			//You failed the check, lets see what happens
 			if (prob(50))
-				//50% chance to break the upgrade and remove it
+				//50% chance to break the modification and remove it
 				user << SPAN_DANGER("You successfully remove [toremove], but destroy it in the process.")
-				upgrades -= toremove
+				modifications -= toremove
 				toremove.forceMove(get_turf(src))
 				toremove.holder = null
 				spawn(1)
 					QDEL_NULL(toremove)
-				refresh_upgrades()
+				refresh_modifications()
 				return 1
 			else if (degradation) //Because robot tools are unbreakable
 				//otherwise, damage the host tool a bit, and give you another try
 				user << SPAN_DANGER("You only managed to damage [src], but you can retry.")
 				unreliability += 10*degradation
-				refresh_upgrades()
+				refresh_modifications()
 				return 1
 	.=..()
 
@@ -217,7 +230,7 @@
 
 //Simple form ideal for basic use. That proc will return TRUE only when everything was done right, and FALSE if something went wrong, ot user was unlucky.
 //Editionaly, handle_failure proc will be called for a critical failure roll.
-/obj/proc/use_tool(var/mob/living/user, var/atom/target, var/base_time, var/required_quality, var/fail_chance, var/required_stat, var/instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS)
+/obj/proc/use_tool(var/mob/living/user, var/atom/target, var/base_time, var/required_quality, var/fail_chance, var/required_stat, var/instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/progress_proc_interval = 0.5 SECONDS)
 	var/obj/item/weapon/tool/T
 	if (istool(src))
 		T = src
@@ -240,7 +253,7 @@
 			return TRUE
 
 //Use this proc if you want to handle all types of failure yourself. It used in surgery, for example, to deal damage to patient.
-/obj/proc/use_tool_extended(var/mob/living/user, var/atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS)
+/obj/proc/use_tool_extended(var/mob/living/user, var/atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/progress_proc_interval = 0.5 SECONDS)
 
 	var/obj/item/weapon/tool/T
 	if(istool(src))
@@ -276,7 +289,7 @@
 	if (base_time)
 		time_to_finish = base_time / (1 + (get_tool_quality(required_quality)/100))//TODO: Factor in bay skills here user.stats.getStat(required_stat)
 
-		//Workspeed var, can be improved by upgrades
+		//Workspeed var, can be improved by modifications
 		if (T && T.workspeed > 0)
 			time_to_finish /= T.workspeed
 
@@ -314,11 +327,18 @@
 	if(time_to_finish)
 		target.used_now = TRUE
 
-		if(!do_after(user, time_to_finish, target))
+		//Setup the periodic call to the progress proc
+		var/datum/callback/progress_proc = null
+		var/interval = 5
+		if (T)
+			progress_proc = CALLBACK(src, /obj/item/weapon/tool/proc/work_in_progress)
+			interval = T.progress_interval
+
+		if(!do_after(user, time_to_finish, target, proc_to_call = progress_proc, proc_interval = interval))
 			//If the doafter fails
 			user << SPAN_WARNING("You need to stand still to finish the task properly!")
 			target.used_now = FALSE
-			time_spent = world.time - start_time //We failed, spent only part of the time working
+			time_spent = world.time - max(start_time, T ? T.last_resource_consumption : 0) //We failed, spent only part of the time working
 			if (T)
 				T.consume_resources(time_spent, user)
 				T.last_tooluse = world.time
@@ -335,8 +355,9 @@
 			target.used_now = FALSE
 
 	//If we get here the operation finished correctly, we spent the full time working
-	time_spent = time_to_finish
+	time_spent = world.time - start_time
 	if (T)
+		time_spent = world.time - max(start_time, T.last_resource_consumption)
 		T.consume_resources(time_spent, user)
 
 	//Safe cleanup
@@ -506,9 +527,9 @@
 				else
 					new /obj/item/weapon/material/shard/shrapnel(get_turf(src))
 
-				//To encourage using makeshift tools, upgrades are preserved if the tool breaks
+				//To encourage using makeshift tools, modifications are preserved if the tool breaks
 				if (T)
-					for (var/obj/item/weapon/tool_upgrade/A in T.upgrades)
+					for (var/obj/item/weapon/tool_modification/A in T.modifications)
 						A.forceMove(get_turf(src))
 						A.holder = null
 
@@ -658,12 +679,11 @@
 
 
 /obj/proc/consume_resources(var/timespent, var/user)
+
 	return
 
 /obj/item/weapon/tool/consume_resources(var/timespent, var/user)
-	//We will always use a minimum of 0.5 second worth of resources
-	if (timespent < 5)
-		timespent = 5
+	last_resource_consumption = world.time
 
 	if(use_power_cost)
 		if (!consume_power(use_power_cost*timespent))
@@ -742,10 +762,10 @@
 
 
 /***************************
-	Tool Upgrades
+	Tool modifications
 ****************************/
-/obj/item/weapon/tool/proc/refresh_upgrades()
-//First of all, lets reset any var that could possibly be altered by an upgrade
+/obj/item/weapon/tool/proc/refresh_modifications()
+//First of all, lets reset any var that could possibly be altered by an modification
 	degradation = initial(degradation) * 1.10 ** repair_frequency //Degradation gets slightly worse each time the tool is repaired
 	workspeed = initial(workspeed)
 	precision = initial(precision)
@@ -759,13 +779,13 @@
 	extra_bulk = initial(extra_bulk)
 	silenced = initial(silenced)
 	name = initial(name)
-	max_upgrades = initial(max_upgrades)
+	max_modifications = base_max_modifications
 	color = initial(color)
 	sharp = initial(sharp)
 	prefixes = list()
 
-	//Now lets have each upgrade reapply its modifications
-	for (var/obj/item/weapon/tool_upgrade/T in upgrades)
+	//Now lets have each modification reapply its modifications
+	for (var/obj/item/weapon/tool_modification/T in modifications)
 		T.apply_values()
 
 	for (var/prefix in prefixes)
@@ -799,9 +819,9 @@
 	if (workspeed != 1)
 		user << "Work Speed: [SPAN_NOTICE("[workspeed*100]%")]"
 
-	if (upgrades.len)
-		user << "It has the following upgrades installed:"
-		for (var/obj/item/weapon/tool_upgrade/TU in upgrades)
+	if (modifications.len)
+		user << "It has the following modifications installed:"
+		for (var/obj/item/weapon/tool_modification/TU in modifications)
 			user << SPAN_NOTICE(TU.name)
 
 	if (unreliability)
@@ -853,10 +873,11 @@
 				user.visible_message(SPAN_NOTICE("[user] begins repairing \the [O] with the [src]!"))
 				//Toolception!
 				if(use_tool(user, T, 60 + (T.unreliability*10), QUALITY_ADHESIVE, T.unreliability, "construction"))
-					//Repairs are imperfect, it'll never go back to being intact
-					T.unreliability *= 0.1
+
+					//Repairs are imperfect, it'll never go back to being intact. Repair 75% of current damage
+					T.repair(T.repair_needed()*0.75, src, user)
 					repair_frequency++
-					refresh_upgrades()
+					refresh_modifications()
 				return
 
 		if (stick(O, user))
@@ -1014,8 +1035,11 @@
 	var/acid_damage = acid.power * volume
 	unreliability += rand_between(0, degradation*acid_damage)
 
-
+//1 point of repair fixes one second worth of degradation
 obj/item/weapon/tool/repair(var/repair_power, var/datum/repair_source, var/mob/user)
 	unreliability = clamp(unreliability - degradation*repair_power, 0, 100)
 	updatehealth()
 	update_icon()
+
+obj/item/weapon/tool/repair_needed()
+	return unreliability / degradation

@@ -44,7 +44,7 @@
 	var/silenced = 0
 	var/move_accuracy_mod	=	-7.5	//Modifier applied to accuracy while moving. Should generally be negative
 
-
+	var/stop_firing_when_dropped = TRUE	//If false, a gun can continue firing when dropped by the user. No current use cases, but may be useful in future
 
 	var/list/dispersion = list(0)
 
@@ -105,9 +105,10 @@
 		//If this var is set, it means spawn a specific subclass of firemode
 		if (L["mode_type"])
 			var/newtype = L["mode_type"]
-			firemodes[i] = new newtype(src, firemodes[i])
+			var/datum/firemode/F = new newtype(src, L)
+			firemodes[i] = F
 		else
-			firemodes[i] = new /datum/firemode(src, firemodes[i])
+			firemodes[i] = new /datum/firemode(src, L)
 
 	//Properly initialize the default firing mode
 	if (firemodes.len)
@@ -158,6 +159,14 @@
 		if(M.skill_check(SKILL_WEAPONS,SKILL_BASIC))
 			overlays += image(icon,"safety[safety()]")
 
+
+//Returns a number that represents the remaining quantity of whatever resource we use to fire.
+//In most cases, this is an integer number of bullets
+//It could also be the charge remaining in a power cell, the volume in a fueltank, etc
+/obj/item/weapon/gun/proc/get_remaining_ammo()
+	return 0
+
+
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
 //Otherwise, if you want handle_click_empty() to be called, check in consume_next_projectile() and return null there.
@@ -169,7 +178,7 @@
 		return 0
 
 	var/mob/living/M = user
-	if(!safety() && world.time > last_safety_check + 5 MINUTES && !user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
+	if(!firing && !safety() && world.time > last_safety_check + 5 MINUTES && !user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		if(prob(30))
 			toggle_safety()
 			return 1
@@ -218,11 +227,18 @@
 
 
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
-		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
+		baycode_aim(A,user,params) //They're using the new gun system, locate what they're aiming at.
 		return TRUE
+
+	//Do prefire first
+	if (!pre_fire(A, user, params))
+		return
 
 	Fire(A,user,params) //Otherwise, fire normally.
 
+	return TRUE
+
+/obj/item/weapon/gun/proc/pre_fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
 	return TRUE
 
 /obj/item/weapon/gun/attack(atom/A, mob/living/user, def_zone)
@@ -241,6 +257,11 @@
 			var/list/targets = list(user)
 			targets += trange(2, src)
 			afterattack(pick(targets), user)
+	if (stop_firing_when_dropped)
+		stop_firing()
+	else
+		//Stop_firing already calls this, so lets not do it twice
+		update_firemode()
 	update_icon()
 	return ..()
 
@@ -292,6 +313,8 @@
 
 //Safety checks are done by the time fire is called
 /obj/item/weapon/gun/proc/Fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
+
+
 
 	if (current_firemode && current_firemode.override_fire)
 		current_firemode.fire(target, user, clickparams, pointblank, reflex)
@@ -357,11 +380,15 @@
 
 //obtains the next projectile to fire
 /obj/item/weapon/gun/proc/consume_next_projectile()
-	return null
+	if (ammo_cost > 1)
+		return consume_projectiles(ammo_cost)
+	return TRUE
 
 //Attempts to consume a specified number of projectiles. Returns false if the gun doesn't have enough ammo
 /obj/item/weapon/gun/proc/consume_projectiles(var/number = 1)
-	return null
+	if (projectile_type)
+		return new projectile_type(src)
+	return TRUE
 
 //used by aiming code
 /obj/item/weapon/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
@@ -591,8 +618,7 @@
 	. = ..()
 	if(user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		if(firemodes.len > 1)
-			var/datum/firemode/current_mode = current_firemode
-			to_chat(user, "The fire selector is set to [current_mode.name].")
+			to_chat(user, "The fire selector is set to [current_firemode.name].")
 	to_chat(user, "The safety is [safety() ? "on" : "off"].")
 	last_safety_check = world.time
 
@@ -698,14 +724,20 @@
 
 //Used by sustained weapons. Call to make the gun stop doing its thing
 /obj/item/weapon/gun/proc/stop_firing()
-	update_firemode()
+	next_fire_time = world.time + max(fire_delay, 1)	//A tiny minimum delay is needed to prevent an additional click going through on sustained/automatic weapons when the mouse button is released
+	update_firemode(FALSE)
 	update_click_handlers()
 
-
+/obj/item/weapon/gun/attack_hand(mob/user as mob)
+	if(user.get_inactive_hand() == src)
+		unload_ammo(user, allow_dump=0)
+	else
+		return ..()
 
 //Ammo handling, used by most types of weapons
 /obj/item/weapon/gun/proc/unload_ammo(mob/user)
 	playsound(loc, mag_remove_sound, 50, 1)
+
 
 /obj/item/weapon/gun/proc/load_ammo(var/obj/item/A, mob/user)
 	playsound(loc, mag_insert_sound, 50, 1)
