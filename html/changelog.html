@@ -39,11 +39,11 @@
 	<tr>
 		<td valign='top'>
             <font size='2'><b>Hosts:</b> Westhybrid (founder), Snypehunter007</font><br>
-			<font size='2'><b>Coders:</b> Nanako, KMC2000, SleepySquidd</font><br>
-			<font size='2'><b>Mappers:</b> Snypehunter007</font><br>
-			<font size='2'><b>Spriters:</b> Xeirla, Snypehunter007, Don1155, Meyhazah, Triiodine, Spicy Fly</font><br><br>
-			<font size='2'><b>Currently Active GitHub contributor list:</b> N/A</font><br><br>
-			<font size='2'><b>Sound Provider:</b> TheLion1675, <a href='https://www.youtube.com/channel/UCd9iHQmcR93LguEv_xkpBTg'>Jacob Danik</a></font></br>
+			<font size='2'><b>Coders:</b> Nanako, KMC2000, TheLion1675</font><br>
+			<font size='2'><b>Mappers:</b> Snypehunter007, TheLion1675</font><br>
+			<font size='2'><b>Spriters:</b> Ketrai, Xeirla, Snypehunter007, Don1155, Meyhazah, Triiodine, Spicy Fly</font><br><br>
+			<font size='2'><b>Currently Active GitHub contributor list:</b> https://github.com/DS-13-Dev-Team/DS13/network/members</font><br><br>
+			<font size='2'><b>Sound Provider:</b> TheLion1675, REsident55, <a href='https://www.youtube.com/channel/UCd9iHQmcR93LguEv_xkpBTg'>Jacob Danik</a></font></br>
 			<font size='2'><b>Special thanks to:</b> The developers of Baystation 12, /tg/station 13, the original Space Station 13, and Visceral Games</font></br>
 			<font size='2'><b>Extra special thanks to:</b> Gh0stT2242, Artouris, Cakey, Nicboone, SecretStamos(Joshuu), Manezinho, Freemysoul, Nethalfins</font>
 			<div align='center'><font size='2' color='red'><b><br>Have a bug to report?</b> Visit our <a href="https://github.com/DS-13-Dev-Team/DS13/labels/Bug">Issue Tracker</a>.<br></font></div>
@@ -59,6 +59,20 @@
 		
 		-->
 		<div class="commit sansserif">
+			<h2 class="date">26 November 2020</h2>
+			<h3 class="author">Snypehunter007 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed there being no cameras on the E.V.A. Deck or in the Upper Deck Port SMES Room.</li>
+				<li class="bugfix">Fixed the Solar Transfer Power Substation atmos line not connecting to the main atmos loop.</li>
+				<li class="bugfix">Fixed the Solar Transfer Power Substation APC not charging.</li>
+				<li class="bugfix">Fixed there being no NanoUI map for the E.V.A. Deck.</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added three more Necromorph related round-end stats. Total accrued biomass, and the Marker's player name.</li>
+				<li class="rscadd">Sound Environment overhaul! Rooms, hallways and even Aegis now have distinct types of sound environments that will change the environmental sound reverberation and sharpness on a room-to-room basis. Currently highly experimental. Contact me if the sound environment feels off.</li>
+			</ul>
+
 			<h2 class="date">20 November 2020</h2>
 			<h3 class="author">Jeser updated:</h3>
 			<ul class="changes bgimages16">
@@ -259,42 +273,6 @@
 				<li class="experiment">Rework of how escape shuttles work and act. Those who are in the pods now, will be able to walk around on a planetary landing site. If you're really lucky, it won't be infested.</li>
 				<li class="experiemnt">Experimental fix for laptops, tablets and PDA's refusing to work after evacuating.</li>
 				<li class="wip">Added in appropriate area and landmarks for the Administrative Shuttle. The code for this will likely be included in the same update by KMC.</li>
-			</ul>
-
-			<h2 class="date">20 September 2020</h2>
-			<h3 class="author">Jeser updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed cyst's bombs and pulse rifle's impact grenades embedding on direct hit.</li>
-				<li class="bugfix">Fixed necromorph nest's Upgrade Spawner verb appearing in verb tabs and lagging players in view. Verb is still accessible via right clicking nest.</li>
-			</ul>
-			<h3 class="author">Nanako updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added the divider, a durable new carrier necromorph who excels at overwhelming a single victim.</li>
-				<li class="rscadd">Humans now stomp when attacking small mobs on the floor.</li>
-				<li class="soundadd">Added new audio for limb breaking.</li>
-				<li class="tweak">When in harm intent, firing guns at a turf now autotargets mobs in the same turf, this makes it much easier to aim at small things like divider components.</li>
-			</ul>
-			<h3 class="author">Snypehunter007 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added two wrenches to the Aegis drill area on the outside, so miners don't have to scavenge for them.</li>
-				<li class="rscadd">Added another button to control the blast doors on the Kellion to the side of the ship that didn't have it.</li>
-				<li class="rscadd">Added an interrogation room to the Brig.</li>
-				<li class="bugfix">Fixed several disposal pipes being in the wrong spot or the wrong type.</li>
-				<li class="bugfix">Fixed the button controlling the Kellion blast doors not having the correct name.</li>
-				<li class="bugfix">Fixed the incorrect type of window being used in areas that led to space on the Ishimura.</li>
-				<li class="maptweak">Changed access on maintenance doors in departments. If you have a door in your department, you can now enter into maintenance through that door. However, if you're not a job that has access to maintenance normally, those departmental doors are the only ones you can open. Technical Engineers cannot wander into departments through these doors anymore either.</li>
-				<li class="maptweak">Gave Planet Crackers access to most doors on the Aegis Colony.</li>
-				<li class="maptweak">Gave Security access to most doors in the Clinic and Cargo.</li>
-				<li class="maptweak">Slightly redesigned the Escape Wing.</li>
-				<li class="maptweak">Redesigned the front part of the Brig.</li>
-				<li class="maptweak">Changed the inside of Hydroponics to provide a few more lights.</li>
-				<li class="maptweak">Changed Supply Officer's office windows.</li>
-				<li class="maptweak">Removed the watertank from the Bioprosthetics Lab.</li>
-				<li class="maptweak">The morgue blast door now starts in the 'up' position.</li>
-				<li class="bugfix">Fixed the light RIG randomly spawning.</li>
-				<li class="bugfix">Fixed a few problems with the firesuit RIG's boot and glove sprites.</li>
-				<li class="bugfix">Fixed the security uniform's east and west sprites missing two pixels and showing your stomach.</li>
-				<li class="bugfix">Fixed the Chief Security Officer's jacket not having armor values, the name, and description.</li>
 			</ul>
 		</div>
 
