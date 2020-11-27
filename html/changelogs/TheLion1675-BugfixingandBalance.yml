@@ -44,6 +44,7 @@ changes:
   - tweak: "Moderately raised the requirements to make Contact Energy, and significantly increased its cost."
   - tweak: "Changed requirements for Contact Beam, and made it moderately more expensive to make."
   - tweak: "Moderately decreased damage output from advanced circular saw."
+  - tweak: "Made the Contact Beam gun a large item, whereas previously it was normal. Reduced item size of contact beam energy from large to normal."
   - experiment: "Pulse High Velocity rounds can now be made by R&D. Their cost and price currently remain something that can be discussed."
   - bugfix: "Experimental fix to the wall of death screen one gets after being knocked unconscious at times."
   - bugfix: "Biological Acid, commonly from a Puker, is now visible ontop of Corruption spread."
