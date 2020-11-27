@@ -5,7 +5,7 @@
 	desc = "Tharr she blows!"
 	icon_state = "harpoon"
 	item_state = "harpoon"
-	force_divisor = 0.3 // 18 with hardness 60 (steel)
+	force_divisor = 0.4 // 18 with hardness 60 (steel)
 	attack_verb = list("jabbed","stabbed","ripped")
 	unbreakable = 1
 
@@ -14,7 +14,7 @@
 	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hatchet"
-	force_divisor = 0.2 // 12 with hardness 60 (steel)
+	force_divisor = 0.3 // 12 with hardness 60 (steel)
 	thrown_force_divisor = 0.75 // 15 with weight 20 (steel)
 	w_class = ITEM_SIZE_SMALL
 	sharp = 1
@@ -74,11 +74,11 @@
 	icon_state = "scythe0"
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
-	force_divisor = 0.275 // 16 with hardness 60 (steel)
+	force_divisor = 0.45 // 16 with hardness 60 (steel)
 	thrown_force_divisor = 0.25 // 5 with weight 20 (steel)
 	sharp = 1
 	edge = 1
-	
+
 	throw_range = 3
 	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BACK

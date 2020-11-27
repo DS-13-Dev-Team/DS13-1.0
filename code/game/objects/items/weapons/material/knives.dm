@@ -10,7 +10,7 @@
 	force = 3
 	edge = 0
 	sharp = 0
-	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
+	force_divisor = 0.3 // 13 when wielded with hardness 40 (steel)
 	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
 	attack_cooldown_modifier = -1
 	tool_qualities = list(QUALITY_CUTTING, 20)
@@ -70,7 +70,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	sharp = 1
 	edge = 1
-	force_divisor = 0.15 // 9 when wielded with hardness 60 (steel)
+	force_divisor = 0.3 // 13 when wielded with hardness 40 (steel)
 	matter = list(MATERIAL_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -99,7 +99,6 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "butch"
 	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown-by-products."
-	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_noun = list("attack", "slash", "stab", "slice", "tear", "rip", "dice", "cut")
 	tool_qualities = list(QUALITY_CUTTING, 40)

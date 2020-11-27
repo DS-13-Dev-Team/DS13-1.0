@@ -112,7 +112,7 @@ var/list/name_to_material
 	var/list/window_options = list()
 
 	// Damage values.
-	var/hardness = 60            // Prob of wall destruction by hulk, used for edge damage in weapons.
+	var/hardness = 40            // Prob of wall destruction by hulk, used for edge damage in weapons.
 	var/weight = 20              // Determines blunt damage/throwforce for weapons.
 	var/resistance = RESISTANCE_FRAGILE			 // Damage reduction vs attacks
 
@@ -376,7 +376,7 @@ var/list/name_to_material
 	icon_colour = "#d9c179"
 	shard_type = SHARD_STONE_PIECE
 	weight = 22
-	hardness = 55
+	hardness = 35
 	brute_armor = 3
 	door_icon_base = "stone"
 	sheet_singular_name = "brick"
@@ -389,7 +389,7 @@ var/list/name_to_material
 	name = MATERIAL_MARBLE
 	icon_colour = "#aaaaaa"
 	weight = 26
-	hardness = 60
+	hardness = 40
 	brute_armor = 3
 	integrity = 150 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/marble
@@ -427,7 +427,7 @@ var/list/name_to_material
 	explosion_resistance = 25
 	brute_armor = 6
 	burn_armor = 10
-	hardness = 80
+	hardness = 50
 	weight = 23
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list(MATERIAL_STEEL = SHEET_MATERIAL_AMOUNT*0.5, MATERIAL_PLATINUM = SHEET_MATERIAL_AMOUNT*0.5) //todo
@@ -461,7 +461,7 @@ var/list/name_to_material
 	integrity = 35
 	shard_type = SHARD_SHARD
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
-	hardness = 50
+	hardness = 35
 	melting_point = T0C + 100
 	weight = 14
 	brute_armor = 1
@@ -718,7 +718,7 @@ var/list/name_to_material
 	explosion_resistance = 2
 	shard_type = SHARD_SPLINTER
 	shard_can_repair = 0 // you can't weld splinters back into planks
-	hardness = 15
+	hardness = 20
 	brute_armor = 1
 	weight = 18
 	melting_point = T0C+300 //okay, not melting in this case, but hot enough to destroy wood
@@ -750,7 +750,7 @@ var/list/name_to_material
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = "#aaaaaa"
-	hardness = 1
+	hardness = 5
 	brute_armor = 1
 	weight = 1
 	ignition_point = T0C+232 //"the temperature at which book-paper catches fire, and burns." close enough
@@ -824,7 +824,7 @@ var/list/name_to_material
 	explosion_resistance = rand(25,40)
 	brute_armor = rand(10,20)
 	burn_armor = rand(10,20)
-	hardness = rand(15,100)
+	hardness = rand(15,70)
 	integrity = rand(150,400)
 	melting_point = rand(400,10000)
 	..()
