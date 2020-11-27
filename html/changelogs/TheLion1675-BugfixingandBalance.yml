@@ -34,4 +34,13 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - rscdel: "Temporarily removed flashbangs from the Security vendors. They will be re-added when the intended fixes have been rolled out for Necromorphs getting stunlocked."
+  - rscdel: "Removed a few R&D designs that made no sense or weren't for us."
+  - rscdel: "Removed the 'Special Ops' crate that could be ordered by Cargo."
+  - rscadd: "Laser Pickaxe added to R&D designs. Pick in dem heads! But... Really don't. I'm also a moderator, people. Please don't."
   - tweak: "Significantly reduced the explosion radius and power of fueltanks. They're not portable mininukes anymore."
+  - tweak: "Changed the item requirements to make a Divet from Silver to Plasteel."
+  - tweak: "Considerably lowered the requirements to make the Price Scanner in R&D."
+  - tweak: "Significantly lowered the requirements of some RIG accessories in R&D. Some of these may not be useful as of yet, but might soon be."
+  - tweak: "Moderately raised the requirements to make Contact Energy, and significantly increased its cost."
+  - tweak: "Changed requirements for Contact Beam, and made it moderately more expensive to make."
+  - experiment: "Pulse High Velocity rounds can now be made by R&D. Their cost and price currently remain something that can be discussed."

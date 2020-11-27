@@ -188,8 +188,8 @@
 /datum/design/item/powercell/contact
 	name = "contact energy"
 	id = "contact_energy"
-	req_tech = list(TECH_POWER = 3, TECH_MATERIAL = 2)
-	materials = list(MATERIAL_STEEL = 1250, MATERIAL_GLASS = 250, "uranium" = 125)
+	req_tech = list(TECH_POWER = 3, TECH_MATERIAL = 3)
+	materials = list(MATERIAL_STEEL = 2500, MATERIAL_PLASTEEL = 5000, "diamond" = 1300)
 	build_path = /obj/item/weapon/cell/contact
 	sort_string = "DAAAA"
 
@@ -298,21 +298,14 @@
 /datum/design/item/mining/AssembleDesignName()
 	..()
 	name = "Mining equipment design ([item_name])"
-/*
+
 /datum/design/item/mining/jackhammer
-	id = "jackhammer"
+	id = "CEC-2000 Laser Pickaxe"
 	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_ENGINEERING = 2)
-	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 500, MATERIAL_SILVER = 500)
-	build_path = /obj/item/weapon/tool/pickaxe/jackhammer
+	materials = list(MATERIAL_STEEL = 2000, MATERIAL_PLASTEEL = 1300, MATERIAL_GLASS = 500)
+	build_path = /obj/item/weapon/tool/pickaxe/laser
 	sort_string = "KAAAA"
 
-/datum/design/item/mining/drill
-	id = "drill"
-	req_tech = list(TECH_MATERIAL = 2, TECH_POWER = 3, TECH_ENGINEERING = 2)
-	materials = list(MATERIAL_STEEL = 6000, MATERIAL_GLASS = 1000) //expensive, but no need for miners.
-	build_path = /obj/item/weapon/tool/pickaxe/drill
-	sort_string = "KAAAB"
-*/
 /datum/design/item/mining/depth_scanner
 	name = "depth scanner"
 	desc = "Used to check spatial depth and density of rock outcroppings."
@@ -532,14 +525,6 @@
 	build_path = /obj/item/weapon/grenade/chem_grenade/large
 	sort_string = "TABAA"
 
-/datum/design/item/weapon/anti_photon
-	name = "anti-photon grenade"
-	id = "anti_photon"
-	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 4)
-	materials = list(MATERIAL_STEEL = 3000, MATERIAL_GLASS = 1000, MATERIAL_DIAMOND = 1000)
-	build_path = /obj/item/weapon/grenade/anti_photon
-	sort_string = "TABAB"
-
 /datum/design/item/weapon/advancedflash
 	name = "advanced flash"
 	id = "advancedflash"
@@ -548,27 +533,11 @@
 	build_path = /obj/item/device/flash/advanced
 	sort_string = "TADAA"
 
-/datum/design/item/weapon/stunrevolver
-	name = "stun revolver"
-	id = "stunrevolver"
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
-	materials = list(MATERIAL_STEEL = 4000)
-	build_path = /obj/item/weapon/gun/energy/stunrevolver
-	sort_string = "TADAB"
-
-/datum/design/item/weapon/stunrifle
-	name = "stun rifle"
-	id = "stun_rifle"
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
-	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GLASS = 1000, MATERIAL_SILVER = 500)
-	build_path = /obj/item/weapon/gun/energy/stunrevolver/rifle
-	sort_string = "TADAC"
-
 /datum/design/item/weapon/contactbeam
 	name = "C99 Supercollider Contact Beam"
 	id = "contactbeam"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 3)
-	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000, "diamond" = 400)
+	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GOLD = 1500, "uranium" = 800)
 	build_path = /obj/item/weapon/gun/energy/contact
 	sort_string = "TAEAA"
 
@@ -592,7 +561,7 @@
 	name = "Winchester NK Divet pistol"
 	id = "divet"
 	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
-	materials = list(MATERIAL_STEEL = 10000, MATERIAL_SILVER = 4000)
+	materials = list(MATERIAL_STEEL = 10000, MATERIAL_PLASTEEL = 4000)
 	build_path = /obj/item/weapon/gun/projectile/divet
 	sort_string = "TACEA"
 
@@ -628,6 +597,14 @@
 	build_path = /obj/item/ammo_magazine/pulse
 	sort_string = "TBECD"
 
+/datum/design/item/weapon/pulsehighvel
+	name = "rifle high-velocity magazine"
+	id = "pulsehighvel"
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
+	materials = list(MATERIAL_PLASTEEL = 15000, MATERIAL_DIAMOND = 5000, MATERIAL_SILVER = 1000) // Same thing here. It might need tweaking with exotic materials to stop people getting a lot of it early on though.
+	build_path = /obj/item/ammo_magazine/pulse/hv
+	sort_string = "TBECE"
+
 /datum/design/item/weapon/grenadelauncher
 	name = "junk grenade launcher"
 	id = "grenadelauncher"
@@ -635,14 +612,6 @@
 	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000)
 	build_path = /obj/item/weapon/gun/launcher/grenade
 	sort_string = "TAGAA"
-
-/datum/design/item/weapon/flechette
-	name = "F1-73 Fletchette Launcher"
-	id = "flechette"
-	req_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 4, TECH_MAGNET = 4)
-	materials = list(MATERIAL_STEEL = 8000, MATERIAL_GOLD = 4000, MATERIAL_SILVER = 4000, MATERIAL_DIAMOND = 2000)
-	build_path = /obj/item/weapon/gun/magnetic/railgun/flechette
-	sort_string = "TAHAA"
 
 /datum/design/item/stock_part/subspace_ansible
 	name = "subspace ansible"
@@ -703,14 +672,6 @@
 /datum/design/item/biostorage/AssembleDesignName()
 	..()
 	name = "Biological intelligence storage ([item_name])"
-
-/datum/design/item/biostorage/neural_lace
-	name = "neural lace"
-	id = "neural lace"
-	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 4, TECH_MAGNET = 2, TECH_DATA = 3)
-	materials = list (MATERIAL_STEEL = 10000, MATERIAL_GLASS = 7500, MATERIAL_SILVER = 1000, MATERIAL_GOLD = 1000)
-	build_path = /obj/item/organ/internal/stack
-	sort_string = "VACBA"
 
 /datum/design/item/bluespace/AssembleDesignName()
 	..()
@@ -797,7 +758,7 @@
 	name = "price scanner"
 	desc = "Using an up-to-date database of various costs and prices, this device estimates the market price of an item up to 0.001% accuracy."
 	id = "price_scanner"
-	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4)
+	req_tech = list(TECH_MATERIAL = 2, TECH_MAGNET = 1) // Why was this as high as it was anyway?
 	materials = list(MATERIAL_STEEL = 3000, MATERIAL_GLASS = 3000, MATERIAL_SILVER = 250)
 	build_path = /obj/item/device/price_scanner
 	sort_string = "VAGAF"
@@ -1220,7 +1181,7 @@
 	name = "Mining Drill"
 	desc = "A diamond mining drill, mountable on a RIG."
 	id = "rig_drill"
-	req_tech = list(TECH_MATERIAL = 6, TECH_POWER = 4, TECH_ENGINEERING = 6)
+	req_tech = list(TECH_MATERIAL = 4, TECH_POWER = 3, TECH_ENGINEERING = 3)
 	materials = list(MATERIAL_STEEL = 3500, MATERIAL_GLASS = 1500, MATERIAL_DIAMOND = 2000, "plastic" = 1000)
 	build_path = /obj/item/rig_module/device/drill
 	sort_string = "WCCAA"
@@ -1279,15 +1240,6 @@
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 2000, MATERIAL_GOLD = 1000, "plastic" = 1000)
 	build_path = /obj/item/rig_module/power_sink
 	sort_string = "WCHAA"
-
-/datum/design/item/rig/ai_container
-	name = "IIS"
-	desc = "An integrated intelligence system module suitable for most RIGs."
-	id = "rig_ai_container"
-	req_tech = list(TECH_DATA = 6, TECH_MATERIAL = 5, TECH_ENGINEERING = 6)
-	materials = list(MATERIAL_STEEL = 1000, MATERIAL_GLASS = 1000, "plastic" = 1000, MATERIAL_GOLD = 500)
-	build_path = /obj/item/rig_module/ai_container
-	sort_string = "WCIAA"
 
 /datum/design/item/rig/flash
 	name = "Flash"
