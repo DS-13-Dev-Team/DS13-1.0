@@ -178,11 +178,11 @@
 
 /obj/structure/reagent_dispensers/fueltank/proc/explode()
 	if (reagents.total_volume > 500)
-		explosion(7, 2.5)
+		explosion(10, 2)
 	else if (reagents.total_volume > 100)
-		explosion(4, 2)
+		explosion(7, 2)
 	else if (reagents.total_volume > 50)
-		explosion(2, 1.5)
+		explosion(5, 1)
 	if(src)
 		qdel(src)
 
