@@ -43,6 +43,7 @@ changes:
   - tweak: "Significantly lowered the requirements of some RIG accessories in R&D. Some of these may not be useful as of yet, but might soon be."
   - tweak: "Moderately raised the requirements to make Contact Energy, and significantly increased its cost."
   - tweak: "Changed requirements for Contact Beam, and made it moderately more expensive to make."
+  - tweak: "Moderately decreased damage output from advanced circular saw."
   - experiment: "Pulse High Velocity rounds can now be made by R&D. Their cost and price currently remain something that can be discussed."
   - bugfix: "Experimental fix to the wall of death screen one gets after being knocked unconscious at times."
   - bugfix: "Biological Acid, commonly from a Puker, is now visible ontop of Corruption spread."
