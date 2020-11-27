@@ -44,3 +44,4 @@ changes:
   - tweak: "Moderately raised the requirements to make Contact Energy, and significantly increased its cost."
   - tweak: "Changed requirements for Contact Beam, and made it moderately more expensive to make."
   - experiment: "Pulse High Velocity rounds can now be made by R&D. Their cost and price currently remain something that can be discussed."
+  - bugfix: "Experimental fix to the wall of death screen one gets after being knocked unconscious at times."
