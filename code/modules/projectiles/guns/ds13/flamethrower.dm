@@ -317,7 +317,7 @@
 
 /obj/item/weapon/gun/spray/hydrazine_torch/proc/consume_fuel(var/required_fuel)
 	if (!tank)
-		consume_fuel()
+		fuel_depleted()
 		return FALSE
 
 	var/fuel_removed = tank.reagents.remove_reagent(tank.fueltype, required_fuel, TRUE)	//Passing true to safety prevents reactions and optimises a tiny bit
