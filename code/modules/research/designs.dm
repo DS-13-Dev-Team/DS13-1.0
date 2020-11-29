@@ -189,7 +189,7 @@
 	name = "contact energy"
 	id = "contact_energy"
 	req_tech = list(TECH_POWER = 3, TECH_MATERIAL = 3)
-	materials = list(MATERIAL_STEEL = 2500, MATERIAL_PLASTEEL = 5000, "diamond" = 1300)
+	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GOLD = 1200, "diamond" = 800)
 	build_path = /obj/item/weapon/cell/contact
 	sort_string = "DAAAA"
 
@@ -299,8 +299,8 @@
 	..()
 	name = "Mining equipment design ([item_name])"
 
-/datum/design/item/mining/jackhammer
-	id = "CEC-2000 Laser Pickaxe"
+/datum/design/item/mining/rocksaw
+	id = "Rock Saw"
 	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_ENGINEERING = 2)
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_PLASTEEL = 1300, MATERIAL_GLASS = 500)
 	build_path = /obj/item/weapon/tool/pickaxe/laser
@@ -537,7 +537,7 @@
 	name = "C99 Supercollider Contact Beam"
 	id = "contactbeam"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 3)
-	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GOLD = 1500, "uranium" = 800)
+	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GOLD = 1500, "uranium" = 1450)
 	build_path = /obj/item/weapon/gun/energy/contact
 	sort_string = "TAEAA"
 

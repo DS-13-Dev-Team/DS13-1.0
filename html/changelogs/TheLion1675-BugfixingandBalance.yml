@@ -33,7 +33,7 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - rscdel: "Temporarily removed flashbangs from the Security vendors. They will be re-added when the intended fixes have been rolled out for Necromorphs getting stunlocked."
+  - rscdel: "Temporarily removed flashbangs and teargas grenades from the Security vendors. They will be re-added when the intended fixes have been rolled out for Necromorphs getting stunlocked."
   - rscdel: "Removed a few R&D designs that made no sense or weren't for us."
   - rscdel: "Removed the 'Special Ops' crate that could be ordered by Cargo."
   - rscadd: "Laser Pickaxe added to R&D designs. Pick in dem heads! But... Really don't. I'm also a moderator, people. Please don't."
@@ -41,11 +41,11 @@ changes:
   - tweak: "Changed the item requirements to make a Divet from Silver to Plasteel."
   - tweak: "Considerably lowered the requirements to make the Price Scanner in R&D."
   - tweak: "Significantly lowered the requirements of some RIG accessories in R&D. Some of these may not be useful as of yet, but might soon be."
-  - tweak: "Moderately raised the requirements to make Contact Energy, and significantly increased its cost."
-  - tweak: "Changed requirements for Contact Beam, and made it moderately more expensive to make."
+  - tweak: "Contact Beam Energy significantly increased in cost."
+  - tweak: "Made the Contact Beam moderately more expensive to make."
   - tweak: "Moderately decreased damage output from advanced circular saw."
-  - tweak: "Made the Contact Beam gun a large item, whereas previously it was normal. Reduced item size of contact beam energy from large to normal."
+  - tweak: "Made the Contact Beam gun a huge item, whereas previously it was normal."
   - tweak: "Replaced round end statistics to below the round type victory."
+  - spellcheck: "Renamed the laser pickaxe to rock saw, according to wiki lore."
   - experiment: "Pulse High Velocity rounds can now be made by R&D. Their cost and price currently remain something that can be discussed."
   - bugfix: "Experimental fix to the wall of death screen one gets after being knocked unconscious at times."
-  - bugfix: "Biological Acid, commonly from a Puker, is now visible ontop of Corruption spread."

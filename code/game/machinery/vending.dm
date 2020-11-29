@@ -956,11 +956,11 @@
 	icon_vend = "sec-vend"
 	vend_delay = 14
 	req_access = list(access_security)
-	products = list(/obj/item/weapon/handcuffs = 8,/obj/item/weapon/grenade/chem_grenade/teargas = 4,/obj/item/device/flash = 5,
+	products = list(/obj/item/weapon/handcuffs = 8,/obj/item/device/flash = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,/obj/item/weapon/storage/box/evidence = 6, /obj/item/weapon/computer_hardware/hard_drive/portable/design/security = 3)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/weapon/storage/box/donut = 2)
 
-// /obj/item/weapon/grenade/flashbang = 4, < Re-add this when the intended fixes towards its properties have been added. - Lion / 27-NOV-2020
+// /obj/item/weapon/grenade/flashbang = 4,/obj/item/weapon/grenade/chem_grenade/teargas = 4, < Re-add this when the intended fixes towards its properties have been added. - Lion / 27-NOV-2020
 
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"

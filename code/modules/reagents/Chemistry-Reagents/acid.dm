@@ -171,7 +171,7 @@
 	color = NECROMORPH_ACID_COLOR
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "spill"
-	layer = ABOVE_OBJ_LAYER	//Ensure this draws over corruption.
+	layer = BLOOD_LAYER	//Its a liquid, close enough
 	var/saturation_point = 13
 	var/rotation = 0
 	var/drying_tick = 0.10
