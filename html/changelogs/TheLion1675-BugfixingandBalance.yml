@@ -38,6 +38,7 @@ changes:
   - rscdel: "Removed the 'Special Ops' crate that could be ordered by Cargo."
   - rscadd: "Laser Pickaxe added to R&D designs. Pick in dem heads! But... Really don't. I'm also a moderator, people. Please don't."
   - tweak: "Significantly reduced the explosion radius and power of fueltanks. They're not portable mininukes anymore."
+  - tweak: "Reduced folded rollerbeds in size so they can now fit in storage."
   - tweak: "Changed the item requirements to make a Divet from Silver to Plasteel."
   - tweak: "Considerably lowered the requirements to make the Price Scanner in R&D."
   - tweak: "Significantly lowered the requirements of some RIG accessories in R&D. Some of these may not be useful as of yet, but might soon be."
