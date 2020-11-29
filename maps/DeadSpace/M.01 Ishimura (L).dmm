@@ -99,7 +99,7 @@
 "abU" = (/obj/effect/floor_decal/industrial/warning,/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/floor/tiled,/area/ishimura/lower/cargo/bay)
 "abV" = (/turf/simulated/floor/tiled/dark,/area/ishimura/lower/cargo/storage)
 "abW" = (/obj/machinery/light{icon_state = "tube_map"; dir = 4},/turf/simulated/floor/tiled/dark,/area/ishimura/lower/cargo/storage)
-"abX" = (/obj/machinery/button/remote/blast_door{dir = 4; icon_state = "blastctrl"; name = "Warehouse Shutters"; pixel_x = -24},/turf/simulated/floor/tiled/dark,/area/ishimura/lower/cargo/storage)
+"abX" = (/obj/machinery/button/remote/blast_door{dir = 4; icon_state = "blastctrl"; id = "warehouse_shutters"; name = "Warehouse Shutters"; pixel_x = -24},/turf/simulated/floor/tiled/dark,/area/ishimura/lower/cargo/storage)
 "abY" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/dank,/area/ishimura/lower/misc/marker)
 "abZ" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 10},/turf/simulated/floor/tiled,/area/ishimura/lower/cargo/bay)
 "aca" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/tiled,/area/ishimura/lower/cargo/bay)
