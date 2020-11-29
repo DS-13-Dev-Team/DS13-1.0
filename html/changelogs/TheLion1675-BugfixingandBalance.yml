@@ -33,7 +33,7 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - rscdel: "Temporarily removed flashbangs and teargas grenades from the Security vendors. They will be re-added when the intended fixes have been rolled out for Necromorphs getting stunlocked."
+  - rscdel: "Temporarily removed flashbangs, teargas grenades and flashes from the Security vendors. They will be re-added when the intended fixes have been rolled out for Necromorphs getting stunlocked."
   - rscdel: "Removed a few R&D designs that made no sense or weren't for us."
   - rscdel: "Removed the 'Special Ops' crate that could be ordered by Cargo."
   - rscadd: "Laser Pickaxe added to R&D designs. Pick in dem heads! But... Really don't. I'm also a moderator, people. Please don't."
