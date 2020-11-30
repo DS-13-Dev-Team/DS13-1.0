@@ -17,6 +17,7 @@
 	icon_state = "contact"
 	item_state = "contact"
 	wielded_item_state = "contact-wielded"
+	w_class = ITEM_SIZE_HUGE
 
 	charge_cost = 1000 //Five shots per battery
 	cell_type = /obj/item/weapon/cell/contact

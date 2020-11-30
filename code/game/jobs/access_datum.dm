@@ -203,3 +203,22 @@
 	desc = "Keycode Auth. Device"
 	region = ACCESS_REGION_COMMAND
 
+/* ERT */
+
+/var/const/access_kellion = 999
+/datum/access/kellion
+	id = access_kellion
+	desc = "USG Kellion Access"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_valor = 998
+/datum/access/valor
+	id = access_valor
+	desc = "USS Valor Access"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_unitologist = 997
+/datum/access/unitologist
+	id = access_unitologist
+	desc = "Unmarked Vessel Access"
+	region = ACCESS_REGION_NONE

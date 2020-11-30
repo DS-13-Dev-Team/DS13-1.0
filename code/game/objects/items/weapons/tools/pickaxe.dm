@@ -75,7 +75,7 @@
 
 
 /obj/item/weapon/tool/pickaxe/laser
-	name = "laser pick"
+	name = "rock saw"
 	desc = "An energised mining tool for surveying and retrieval of objects embedded in otherwise dense material. Very dangerous, will cut through flesh and bone with ease."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "ds_rocksaw0"
