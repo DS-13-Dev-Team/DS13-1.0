@@ -169,7 +169,7 @@
 	mask = /obj/item/clothing/mask/breath
 	head = null
 	belt = /obj/item/weapon/storage/belt/utility/full
-	back = /obj/item/weapon/rig/engineering
+	back = null
 	shoes = /obj/item/clothing/shoes/workboots
 	gloves = /obj/item/clothing/gloves/insulated
 
@@ -185,7 +185,7 @@
 	mask = null
 	head = null
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
-	back = /obj/item/weapon/rig/security
+	back = null
 	shoes = /obj/item/clothing/shoes/kellion
 	gloves = /obj/item/clothing/gloves/kellion
 
@@ -201,7 +201,7 @@
 	mask = null
 	head = null
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
-	back = /obj/item/weapon/rig/advanced
+	back = null
 	shoes = /obj/item/clothing/shoes/kellion/lead
 	gloves = /obj/item/clothing/gloves/kellion
 
@@ -217,7 +217,7 @@
 	mask = null
 	head = null
 	belt = null
-	back = /obj/item/weapon/rig/civilian
+	back = null
 	shoes = /obj/item/clothing/shoes/dress
 	gloves = null
 
