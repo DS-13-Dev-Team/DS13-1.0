@@ -165,11 +165,11 @@
 	name = "Kellion Engineer"
 	uniform = /obj/item/clothing/under/rigunder
 	suit = null
-	l_ear = null
+	l_ear = /obj/item/device/radio/headset/ert
 	mask = /obj/item/clothing/mask/breath
 	head = null
 	belt = /obj/item/weapon/storage/belt/utility/full
-	back = /obj/item/weapon/rig/vintage
+	back = /obj/item/weapon/rig/engineering
 	shoes = /obj/item/clothing/shoes/workboots
 	gloves = /obj/item/clothing/gloves/insulated
 
@@ -181,11 +181,11 @@
 	name = "Kellion Security"
 	uniform = /obj/item/clothing/under/deadspace/ert/kellion
 	suit = /obj/item/clothing/suit/armor/vest/kellion
-	l_ear = null
+	l_ear = /obj/item/device/radio/headset/ert
 	mask = null
 	head = null
-	belt = null
-	back = /obj/item/weapon/storage/backpack/rucksack/green
+	belt = /obj/item/weapon/storage/belt/holster/security/tactical
+	back = /obj/item/weapon/rig/security
 	shoes = /obj/item/clothing/shoes/kellion
 	gloves = /obj/item/clothing/gloves/kellion
 
@@ -197,11 +197,11 @@
 	name = "Kellion Security Leader"
 	uniform = /obj/item/clothing/under/deadspace/ert/kellion/leader
 	suit = null
-	l_ear = null
+	l_ear = /obj/item/device/radio/headset/ert
 	mask = null
 	head = null
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
-	back = /obj/item/weapon/storage/backpack/rucksack/green
+	back = /obj/item/weapon/rig/advanced
 	shoes = /obj/item/clothing/shoes/kellion/lead
 	gloves = /obj/item/clothing/gloves/kellion
 
@@ -213,11 +213,11 @@
 	name = "Kellion Technician"
 	uniform = /obj/item/clothing/under/deadspace/ert/kellion/tech
 	suit = /obj/item/clothing/suit/storage/toggle/kellion_jacket
-	l_ear = null
+	l_ear = /obj/item/device/radio/headset/ert
 	mask = null
 	head = null
 	belt = null
-	back = /obj/item/weapon/storage/backpack/satchel/grey
+	back = /obj/item/weapon/rig/civilian
 	shoes = /obj/item/clothing/shoes/dress
 	gloves = null
 

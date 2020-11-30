@@ -33,6 +33,16 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
+  - experiment: "!START OF EXPERIMENTAL BALANCING AND BUGFIXES!"
+  - maptweak: "The Kellion, Valor and Unitologist ERT types now all have a distinct access datum, locking their ship(s) to just them, including any of their controls. Unless you have an ID Card or have been granted access, you won't be able to hijack, enter or loot it."
+  - tweak: "Kellion team members now spawn with an ERT headset."
+  - tweak: "Kellion team members now spawn with individual rigs."
+  - tweak: "Kellion team members now get HUDs relevant to their position."
+  - maptweak: "Increased Kellion's medical capability, which was previously a bit... Underwhelming."
+  - maptweak: "Kellion's lockers are now used to store weapons prior to spawning, with one random spawn per round."
+  - maptweak: "SecTec added to Kellion."
+  - maptweak: "NanoMed Plus added to Kellion."
+  - experiment: "!END OF EXPERIMENTAL BALANCING AND BUGFIXES!"
   - rscdel: "Temporarily removed flashbangs, teargas grenades and flashes from the Security vendors. They will be re-added when the intended fixes have been rolled out for Necromorphs getting stunlocked."
   - rscdel: "Removed a few R&D designs that made no sense or weren't for us."
   - rscdel: "Removed the 'Special Ops' crate that could be ordered by Cargo."
