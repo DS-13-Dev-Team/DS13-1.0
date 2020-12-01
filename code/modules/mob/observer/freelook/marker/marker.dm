@@ -4,6 +4,7 @@
 */
 /obj/machinery/marker
 	name = "Marker"
+	desc = "A strange and imposingly large relic of unknown origin."
 	icon = 'icons/obj/marker_giant.dmi'
 	icon_state = "marker_giant_dormant"
 	pixel_x = -33

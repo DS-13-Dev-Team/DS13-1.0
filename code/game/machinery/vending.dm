@@ -12,8 +12,8 @@
 	density = 1
 	obj_flags = OBJ_FLAG_ANCHORABLE
 	atom_flags = ATOM_FLAG_CLIMBABLE
-	clicksound = "button"
-	clickvol = 20
+	clicksound = "interact"
+	clickvol = 25
 
 	var/icon_vend //Icon_state when vending
 	var/icon_deny //Icon_state when denying access
@@ -486,6 +486,7 @@
 			src.visible_message("<span class='notice'>\The [src] makes an odd grinding noise before coming to a halt as \a [S.name] slurmps out from the receptacle.</span>")
 		else //Just a normal vend, then
 			R.get_product(get_turf(src))
+			playsound(loc, 'sound/machines/vending_purchase.ogg', 12)
 			src.visible_message("\The [src] whirs as it vends \the [R.item_name].")
 			if(prob(1)) //The vending gods look favorably upon you
 				sleep(3)
