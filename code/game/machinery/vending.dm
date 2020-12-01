@@ -13,7 +13,7 @@
 	obj_flags = OBJ_FLAG_ANCHORABLE
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	clicksound = "button"
-	clickvol = 40
+	clickvol = 20
 
 	var/icon_vend //Icon_state when vending
 	var/icon_deny //Icon_state when denying access

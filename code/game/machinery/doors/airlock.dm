@@ -249,6 +249,10 @@ var/list/airlock_overlays = list()
 	paintable = AIRLOCK_PAINTABLE
 	min_force = 18	//These external airlocks are veeery tough, slashers will probably not be able to break through in any reasonable period
 	health = 350
+	open_sound_powered = "doorheavyopen"
+	open_sound_unpowered = "doorheavyopen"
+	close_sound_powered = "doorheavyclose"
+	close_sound_unpowered = "doorheavyclose"
 
 /obj/machinery/door/airlock/external/bolted
 	locked = 1
@@ -330,6 +334,10 @@ var/list/airlock_overlays = list()
 	secured_wires = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity
 	paintable = 0
+	open_sound_powered = "doorheavyopen"
+	open_sound_unpowered = "doorheavyopen"
+	close_sound_powered = "doorheavyclose"
+	close_sound_unpowered = "doorheavyclose"
 
 /obj/machinery/door/airlock/highsecurity/bolted
 	locked = 1
@@ -372,6 +380,10 @@ var/list/airlock_overlays = list()
 	secured_wires = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity //Until somebody makes better sprites.
 	paintable = AIRLOCK_PAINTABLE|AIRLOCK_STRIPABLE
+	open_sound_powered = "doorheavyopen"
+	open_sound_unpowered = "doorheavyopen"
+	close_sound_powered = "doorheavyclose"
+	close_sound_unpowered = "doorheavyclose"
 
 /obj/machinery/door/airlock/vault/bolted
 	locked = 1

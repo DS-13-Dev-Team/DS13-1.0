@@ -92,7 +92,7 @@
 		return TRUE
 	else
 		if (user)
-			to_chat(user, "[test] is not organic, or contains no recoverable biomass")
+			to_chat(user, "[test] is not organic, or contains no recoverable biomass.")
 		return FALSE
 
 
@@ -141,7 +141,7 @@
 	A.forceMove(src)
 	content_atoms |= A
 	if (user)
-		user.visible_message("[user] places \the [A] into \the [src]")
+		user.visible_message("[user] places \the [A] into \the [src].")
 
 	update_icon()
 

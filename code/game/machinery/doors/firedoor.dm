@@ -55,6 +55,8 @@
 	)
 
 	blend_objects = list(/obj/machinery/door/firedoor, /obj/structure/wall_frame, /turf/unsimulated/wall, /obj/structure/window) // Objects which to blend with
+	var/open_sound = "doorheavyopen"
+	var/close_sound = "doorheavyclose"
 
 /obj/machinery/door/firedoor/Initialize()
 	. = ..()

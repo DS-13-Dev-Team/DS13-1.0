@@ -51,11 +51,13 @@ GLOBAL_LIST_INIT(lighter_sound,list('sound/items/lighter1.ogg','sound/items/ligh
 GLOBAL_LIST_INIT(keyboard_sound,list('sound/machines/keyboard/keypress1.ogg','sound/machines/keyboard/keypress2.ogg','sound/machines/keyboard/keypress3.ogg','sound/machines/keyboard/keypress4.ogg'))
 GLOBAL_LIST_INIT(keystroke_sound,list('sound/machines/keyboard/keystroke1.ogg','sound/machines/keyboard/keystroke2.ogg','sound/machines/keyboard/keystroke3.ogg','sound/machines/keyboard/keystroke4.ogg'))
 GLOBAL_LIST_INIT(switch_sound,list('sound/machines/switch1.ogg','sound/machines/switch2.ogg','sound/machines/switch3.ogg','sound/machines/switch4.ogg'))
-GLOBAL_LIST_INIT(button_sound,list('sound/machines/button1.ogg','sound/machines/button2.ogg','sound/machines/button3.ogg','sound/machines/button4.ogg'))
+GLOBAL_LIST_INIT(button_sound,list('sound/machines/button1.ogg')) //there is only one dead space sound for this.
 GLOBAL_LIST_INIT(chop_sound,list('sound/weapons/chop1.ogg','sound/weapons/chop2.ogg','sound/weapons/chop3.ogg'))
 GLOBAL_LIST_INIT(thud_sound,list('sound/effects/impacts/thud1.ogg','sound/effects/impacts/thud2.ogg','sound/effects/impacts/thud3.ogg'))
 GLOBAL_LIST_INIT(dooropen_sound,list('sound/machines/airlock_open.ogg','sound/machines/airlock_open2.ogg'))
 GLOBAL_LIST_INIT(doorclose_sound,list('sound/machines/airlock_close.ogg','sound/machines/airlock_close2.ogg'))
+GLOBAL_LIST_INIT(doorheavyopen_sound,list('sound/machines/airlock_heavy_open.ogg','sound/machines/airlock_heavy_open2.ogg'))
+GLOBAL_LIST_INIT(doorheavyclose_sound,list('sound/machines/airlock_heavy_close.ogg','sound/machines/airlock_heavy_close2.ogg'))
 
 /proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
@@ -188,6 +190,8 @@ var/const/FALLOFF_SOUNDS = 0.5
 		if ("thud") soundin = pick(GLOB.thud_sound)
 		if ("dooropen") soundin = pick(GLOB.dooropen_sound)
 		if ("doorclose") soundin = pick(GLOB.doorclose_sound)
+		if ("doorheavyopen") soundin = pick(GLOB.doorheavyopen_sound)
+		if ("doorheavyclose") soundin = pick(GLOB.doorheavyclose_sound)
 	return soundin
 
 
