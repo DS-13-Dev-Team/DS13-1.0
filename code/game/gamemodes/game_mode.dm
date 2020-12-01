@@ -420,6 +420,15 @@ var/global/list/additional_antag_types = list()
 		text += "<br>Contact Lion immediately."
 	to_world(text)
 
+	var/obj/machinery/marker/M = get_marker()
+	if (M.player)
+		to_world("<b>The Marker player was: [M.player]!</b><br>")
+	else
+		to_world("<b>There was no Marker at the end.</b><br>")
+
+	to_world("<b>The Marker accrued a total biomass of: [round(M.get_total_biomass())]kg</b><br>")
+
+	to_world("<b>The Marker spawned [get_historic_major_vessel_total() ] total necromorphs!</b><br>")
 
 	if(ghosts > 0)
 		feedback_set("round_end_ghosts",ghosts)

@@ -1,15 +1,6 @@
 /decl/hierarchy/supply_pack/security
 	name = "Security"
 
-/decl/hierarchy/supply_pack/security/specialops
-	name = "Special Ops supplies"
-	contains = list(/obj/item/weapon/storage/box/emps,
-					/obj/item/weapon/grenade/smokebomb = 3,
-					/obj/item/weapon/grenade/chem_grenade/incendiary)
-	cost = 20
-	containername = "\improper Special Ops crate"
-	hidden = 1
-
 /decl/hierarchy/supply_pack/security/lightarmor
 	name = "Armor - Light"
 	contains = list(/obj/item/clothing/suit/armor/pcarrier/light = 4,

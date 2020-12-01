@@ -363,7 +363,7 @@ meteor_act
 			return
 
 /mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, var/amount = 2)
-	if (gloves)
+	if (istype(gloves, /obj/item/clothing/gloves))
 		gloves.add_blood(source)
 		gloves:transfer_blood = amount
 		gloves:bloody_hands_mob = source
