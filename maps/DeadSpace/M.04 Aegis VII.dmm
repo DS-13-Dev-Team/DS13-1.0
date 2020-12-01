@@ -485,7 +485,7 @@
 "jq" = (/obj/structure/table/steel,/obj/item/weapon/storage/box/samplebags,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/item/weapon/storage/box/samplebags{pixel_y = 12},/turf/simulated/floor/dank/mono,/area/aegis/colony/research/analysis)
 "jr" = (/obj/machinery/chem_master,/turf/simulated/floor/dank/mono,/area/aegis/colony/research/analysis)
 "js" = (/turf/simulated/wall/r_wall,/area/aegis/colony/research/airlock)
-"jt" = (/obj/structure/table/steel,/obj/item/weapon/storage/box/beakers,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/dank/mono,/area/aegis/colony/research/analysis)
+"jt" = (/obj/structure/table/steel,/obj/item/weapon/storage/box/beakers,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/item/device/reagent_scanner/adv,/turf/simulated/floor/dank/mono,/area/aegis/colony/research/analysis)
 "ju" = (/obj/machinery/atmospherics/pipe/simple/visible,/obj/machinery/meter/turf,/turf/simulated/floor,/area/aegis/colony/research/atmos)
 "jv" = (/obj/effect/floor_decal/industrial/outline,/turf/simulated/floor/dank/mono,/area/aegis/colony/research/storage)
 "jw" = (/obj/machinery/chemical_dispenser/full,/obj/item/weapon/reagent_containers/glass/beaker/bluespace,/turf/simulated/floor/dank/mono,/area/aegis/colony/research/analysis)
