@@ -17,7 +17,6 @@
 	response_help  = "pets"
 	response_disarm = "bops"
 	response_harm   = "kicks"
-	see_in_dark = 5
 	mob_size = 8
 	possession_candidate = 1
 	holder_type = /obj/item/weapon/holder/corgi
