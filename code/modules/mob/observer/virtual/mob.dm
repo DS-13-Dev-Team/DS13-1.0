@@ -19,4 +19,4 @@
 /mob/observer/virtual/mob/proc/sync_sight(var/mob/mob_host)
 	sight = mob_host.sight
 	see_invisible = mob_host.see_invisible
-	see_in_dark = mob_host.see_in_dark
+
