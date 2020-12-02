@@ -1,0 +1,6 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Removed see_in_dark value changes that resulted in necromorphs not having dark vision."
