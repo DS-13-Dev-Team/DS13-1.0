@@ -91,6 +91,7 @@
 
 /obj/machinery/growth_tank/on_reagent_change()
 	update_current_biomass()
+	playsound(src, "bubble_small", 15)
 
 /obj/machinery/growth_tank/proc/update_current_biomass()
 	current_biomass = reagents.get_reagent_amount(/datum/reagent/nutriment/biomass)
@@ -209,6 +210,7 @@
 			else
 				//The blinking red light appears when biomass has completely run out. At this point, the contained atom takes damage until it starves to death
 				overlays += image(icon, src, "light_red")
+				playsound(src, 'sound/machines/tankdanger.ogg', 20)
 		else
 			//If biomass is fine, then lets show some other lights
 			if (istype(current_growth_atom, /obj/item/organ/forming))
@@ -279,6 +281,7 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 		Do you wish to eject it?", "Eject Growth Product", "Remove from Tank", "Leave it in")
 		if (choice == "Remove from Tank")
 			remove_product(user)
+			playsound(src, "bubble", 15)
 
 	else
 		//Selecting a product to grow!
@@ -301,12 +304,14 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 			return FALSE
 	current_growth_atom = new /obj/item/organ/forming(src, choice)
 	forming = TRUE
+	playsound(src, "bubble", 15)
 	turn_on()
 
 
 /obj/machinery/growth_tank/proc/finish_growing()
 	var/obj/item/organ/forming/F = current_growth_atom
 	forming = FALSE
+	playsound(src, 'sound/machines/tankconfirm.ogg', 20)
 	if (istype(F))	//Should never be false but just in case
 
 		//We spawn a new completed organ to replace the forming one
