@@ -65,6 +65,7 @@
 
 	var/datum/effect/effect/system/spark_spread/spark_system	//the spark system, used for generating... sparks?
 
+	var/portable = FALSE	//basic turret was decided to be made not portable. This var controls this
 	var/wrenching = 0
 
 	//Targeting cache
@@ -226,9 +227,15 @@ var/list/turret_icons
 		if(wrenching)
 			to_chat(user, "<span class='warning'>Someone is already [anchored ? "un" : ""]securing the turret!</span>")
 			return
-		if(!anchored && isinspace())
-			to_chat(user, "<span class='warning'>Cannot secure turrets in space!</span>")
-			return
+
+		if(!anchored)
+			if(isinspace())
+				to_chat(user, "<span class='warning'>Cannot secure turrets in space!</span>")
+				return
+		else
+			if(!portable)
+				to_chat(user, "<span class='warning'>This turrent cannot be unsecured.</span>")
+				return
 
 		user.visible_message( \
 				"<span class='warning'>[user] begins [anchored ? "un" : ""]securing the turret.</span>", \
