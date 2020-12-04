@@ -34,7 +34,6 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	var/list/hud_images // A list of hud images
 
 /mob/observer/ghost/New(mob/body)
-	see_in_dark = 100
 	verbs += /mob/proc/toggle_antag_pool
 
 	var/turf/T

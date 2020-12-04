@@ -14,7 +14,6 @@
 	var/acceleration = 1
 	var/owner_follows_eye = 0
 
-	see_in_dark = 7
 	invisibility = INVISIBILITY_EYE
 
 	ghost_image_flag = GHOST_IMAGE_ALL
