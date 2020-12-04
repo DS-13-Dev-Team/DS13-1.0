@@ -1,0 +1,6 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed being unable to restock SCAF Bullpup and SWS Motorized Pulse Rifle magazines with appropriate ammunition."
