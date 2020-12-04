@@ -50,6 +50,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 /obj/item/ammo_casing/pulse
 	name = "pulse round"
 	desc = "A low caliber round designed for the SWS motorized pulse rifle"
+	caliber = "pulse"
 	icon_state = "empshell"
 	spent_icon = "empshell-spent"
 	projectile_type  = /obj/item/projectile/bullet/pulse
