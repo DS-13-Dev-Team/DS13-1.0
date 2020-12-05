@@ -234,7 +234,7 @@ var/list/turret_icons
 				return
 		else
 			if(!portable)
-				to_chat(user, "<span class='warning'>This turrent cannot be unsecured.</span>")
+				to_chat(user, "<span class='warning'>This turret cannot be unsecured.</span>")
 				return
 
 		user.visible_message( \
