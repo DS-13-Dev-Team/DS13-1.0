@@ -538,7 +538,7 @@ proc
 //Recursive function to find the atom on a turf which we're nested inside
 /atom/proc/get_toplevel_atom()
 	var/atom/A = src
-	while(!(isturf(A.loc)))
+	while(A.loc && !(isturf(A.loc)))
 		A = A.loc
 
 	return A

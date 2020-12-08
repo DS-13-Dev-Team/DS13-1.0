@@ -29,8 +29,8 @@
 
 /datum/design/autolathe/part/laserguide
 	name = "Asters \"Guiding Light\" laser guide"
-	build_path = /obj/item/weapon/tool_upgrade/refinement/laserguide
+	build_path = /obj/item/weapon/tool_modification/refinement/laserguide
 
 /datum/design/autolathe/part/diamondblade
 	name = "Asters \"Gleaming Edge\": Diamond blade"
-	build_path = /obj/item/weapon/tool_upgrade/productivity/diamond_blade
+	build_path = /obj/item/weapon/tool_modification/productivity/diamond_blade

@@ -49,12 +49,12 @@ var/list/airlock_overlays = list()
 	var/secured_wires = 0
 	var/datum/wires/airlock/wires = null
 
-	var/open_sound_powered = 'sound/machines/airlock_open.ogg'
-	var/open_sound_unpowered = 'sound/machines/airlock_open_force.ogg'
+	var/open_sound_powered = "dooropen" //this calls to sound.dm to choose between two random sounds. same for close
+	var/open_sound_unpowered = "dooropen"
 	var/open_failure_access_denied = 'sound/machines/buzz-two.ogg'
 
-	var/close_sound_powered = 'sound/machines/airlock_close.ogg'
-	var/close_sound_unpowered = 'sound/machines/airlock_close_force.ogg'
+	var/close_sound_powered = "doorclose"
+	var/close_sound_unpowered = "doorclose"
 	var/close_failure_blocked = 'sound/machines/triple_beep.ogg'
 
 	var/bolts_rising = 'sound/machines/bolts_up.ogg'
@@ -774,8 +774,7 @@ About the new airlock wires panel:
 			if(density && src.arePowerSystemsOn())
 				set_airlock_overlays(AIRLOCK_DENY)
 				flick("deny", src)
-				if(secured_wires)
-					playsound(src.loc, open_failure_access_denied, 50, 0)
+				playsound(src.loc, open_failure_access_denied, 20, 0) //secured wires condition delete so we can actually hear noise
 				update_icon(AIRLOCK_CLOSED)
 		if("emag")
 			if(density && src.arePowerSystemsOn())
@@ -1213,9 +1212,9 @@ About the new airlock wires panel:
 
 	//if the door is unpowered then it doesn't make sense to hear the woosh of a pneumatic actuator
 	if(arePowerSystemsOn())
-		playsound(src.loc, open_sound_powered, 100, 1)
+		playsound(src.loc, open_sound_powered, 10, 0)
 	else
-		playsound(src.loc, open_sound_unpowered, 100, 1)
+		playsound(src.loc, open_sound_unpowered, 10, 0)
 
 	if(src.closeOther != null && istype(src.closeOther, /obj/machinery/door/airlock/) && !src.closeOther.density)
 		src.closeOther.close()
@@ -1267,9 +1266,9 @@ About the new airlock wires panel:
 
 	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(arePowerSystemsOn())
-		playsound(src.loc, close_sound_powered, 100, 1)
+		playsound(src.loc, close_sound_powered, 10, 0)
 	else
-		playsound(src.loc, close_sound_unpowered, 100, 1)
+		playsound(src.loc, close_sound_unpowered, 10, 0)
 
 	..()
 

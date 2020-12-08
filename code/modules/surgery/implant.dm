@@ -142,7 +142,7 @@
 	if (tool.w_class > affected.cavity_max_w_class/2 && prob(50) && !BP_IS_ROBOTIC(affected) && affected.sever_artery())
 		to_chat(user, "<span class='warning'>You tear some blood vessels trying to fit such a big object in this cavity.</span>")
 		affected.owner.custom_pain("You feel something rip in your [affected.name]!", 1,affecting = affected)
-	affected.implants += tool
+	affected.embed(tool, silent = TRUE)
 	affected.cavity = 0
 
 //////////////////////////////////////////////////////////////////
@@ -207,11 +207,8 @@
 		if (prob(find_prob))
 			user.visible_message("<span class='notice'>[user] takes something out of incision on [target]'s [affected.name] with \the [tool].</span>", \
 			"<span class='notice'>You take [obj] out of incision on [target]'s [affected.name]s with \the [tool].</span>" )
-			affected.implants -= obj
-			for(var/datum/wound/wound in affected.wounds)
-				if(obj in wound.embedded_objects)
-					wound.embedded_objects -= obj
-					break
+
+
 
 			BITSET(target.hud_updateflag, IMPLOYAL_HUD)
 
@@ -223,12 +220,10 @@
 				worm.detatch()
 				worm.leave_host()
 			else
-				obj.dropInto(target.loc)
+				affected.unembed(obj, silent = TRUE)
 				obj.add_blood(target)
 				obj.update_icon()
-				if(istype(obj,/obj/item/weapon/implant))
-					var/obj/item/weapon/implant/imp = obj
-					imp.removed()
+
 			playsound(target.loc, 'sound/effects/squelch1.ogg', 15, 1)
 		else
 			user.visible_message("<span class='notice'>[user] removes \the [tool] from [target]'s [affected.name].</span>", \

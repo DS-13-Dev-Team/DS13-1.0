@@ -40,7 +40,9 @@
 			if (L == S)
 				continue //Don't see yourself
 			var/obj/screen/movable/tracker/TR = new (S,L, duration)
-			TR.appearance = new /mutable_appearance(L)
+			var/mutable_appearance/ma = new /mutable_appearance(L)
+			ma.verbs.Cut()
+			TR.appearance = ma
 			trackers += TR
 
 	addtimer(CALLBACK(src, /datum/extension/sense/proc/finish), duration)

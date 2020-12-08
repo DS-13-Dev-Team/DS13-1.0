@@ -138,7 +138,7 @@
 	reagents.add_reagent(/datum/reagent/drink/milk, 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/soymilk
-	name = "soymilk carton"
+	name = "soy milk carton"
 	desc = "It's soy milk. White and nutritious goodness!"
 	icon_state = "soymilk"
 	item_state = "carton"

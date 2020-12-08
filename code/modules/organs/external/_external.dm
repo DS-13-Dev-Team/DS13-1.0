@@ -1215,13 +1215,44 @@ obj/item/organ/external/proc/remove_clamps()
 
 	supplied_wound.embedded_objects += W
 	implants += W
-	owner.embedded_flag = 1
+	LAZYADD(owner.implants,W)
 	owner.verbs += /mob/proc/yank_out_object
 	W.add_blood(owner)
 	if(ismob(W.loc))
 		var/mob/living/H = W.loc
 		H.drop_from_inventory(W)
 	W.loc = owner
+
+
+/obj/item/organ/external/proc/unembed(var/obj/item/I, var/atom/new_location, var/silent = 0, var/supplied_message)
+	if (owner)
+		LAZYREMOVE(owner.implants,I)
+		if (!LAZYLEN(owner.implants))
+			owner.implants = null
+	if (!(I in implants))
+		return
+
+	implants -= I
+	for(var/datum/wound/wound in wounds)
+		if(I in wound.embedded_objects)
+			wound.embedded_objects -= I
+			break
+
+	if(istype(I,/obj/item/weapon/implant))
+		var/obj/item/weapon/implant/imp = I
+		imp.removed()
+
+	if(!silent && owner)
+		if(supplied_message)
+			owner.visible_message("<span class='danger'>[supplied_message]</span>")
+		else
+			owner.visible_message("<span class='danger'>\The [I] falls out of [owner]'s [src]!</span>")
+
+	if (!new_location)
+		new_location = get_turf(src)
+
+	I.forceMove(new_location)
+
 
 /obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)
 

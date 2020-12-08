@@ -707,7 +707,7 @@
 					/obj/item/weapon/reagent_containers/food/snacks/candy = 6,/obj/item/weapon/reagent_containers/food/drinks/dry_ramen = 6,/obj/item/weapon/reagent_containers/food/snacks/chips =6,
 					/obj/item/weapon/reagent_containers/food/snacks/sosjerky = 6,/obj/item/weapon/reagent_containers/food/snacks/no_raisin = 6,/obj/item/weapon/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/weapon/reagent_containers/food/snacks/cheesiehonkers = 6, /obj/item/weapon/reagent_containers/food/snacks/tastybread = 6)
-	contraband = list(/obj/item/weapon/reagent_containers/food/snacks/syndicake = 6, /obj/item/weapon/reagent_containers/food/snacks/skrellsnacks = 3)
+	contraband = list(/obj/item/weapon/reagent_containers/food/snacks/syndicake = 6)
 	prices = list(/obj/item/clothing/mask/chewable/candy/lolli = 2,
 					/obj/item/weapon/storage/chewables/candy/gum = 4,
 					/obj/item/weapon/storage/chewables/candy/cookies = 4,
@@ -956,9 +956,11 @@
 	icon_vend = "sec-vend"
 	vend_delay = 14
 	req_access = list(access_security)
-	products = list(/obj/item/weapon/handcuffs = 8,/obj/item/weapon/grenade/flashbang = 4,/obj/item/weapon/grenade/chem_grenade/teargas = 4,/obj/item/device/flash = 5,
+	products = list(/obj/item/weapon/handcuffs = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,/obj/item/weapon/storage/box/evidence = 6, /obj/item/weapon/computer_hardware/hard_drive/portable/design/security = 3)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/weapon/storage/box/donut = 2)
+
+// /obj/item/weapon/grenade/flashbang = 4,/obj/item/weapon/grenade/chem_grenade/teargas = 4,/obj/item/device/flash = 5, < Re-add this when the intended fixes towards its properties have been added. - Lion / 27-NOV-2020
 
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"

@@ -245,7 +245,7 @@ var/list/worths = list(
 //TOOLS,
 					/obj/item/weapon/tool/weldingtool/advanced = 800,
 					/obj/item/weapon/tool = 100,
-					/obj/item/weapon/tool_upgrade = 150,
+					/obj/item/weapon/tool_modification = 150,
 					/obj/item/weapon/tool/crowbar = 10,
 					/obj/item/weapon/beartrap = 35,
 					/obj/item/weapon/nullrod = 60,

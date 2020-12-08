@@ -200,6 +200,9 @@
 	updatehealth()
 	update_icon()
 
+/obj/structure/repair_needed()
+	return max_health - health
+
 
 //Future TODO: Make this generic atom behaviour
 /obj/structure/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)

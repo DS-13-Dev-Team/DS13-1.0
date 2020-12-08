@@ -49,13 +49,22 @@
 	var/list/missing_limbs = list()
 
 	//This loop counts and documents the damaged limbs, for the purpose of regrowing them and also for documenting how many there are for stun time
-	for(var/limb_type in user.species.has_limbs)
-		var/obj/item/organ/external/E = user.organs_by_name[limb_type]
+	for(var/limb_tag in user.species.has_limbs)
+
+		//Certain limbs cannot be regrown once lost. Lets check if this is one of those
+		var/organ_data = user.species.has_limbs[limb_tag]
+		var/typepath = organ_data["path"]
+		var/obj/item/organ/external/abstract_E = typepath
+		if (initial(abstract_E.can_regrow) == FALSE)
+			continue
+
+		var/obj/item/organ/external/E = user.organs_by_name[limb_tag]
+
 		if (E && E.is_usable() && !E.is_stump())
 			//This organ is fine, skip it
 			continue
 		else if (!E || E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE)
-			missing_limbs |= limb_type
+			missing_limbs |= limb_tag
 
 		if (max_limbs <= 0)
 			continue
@@ -67,7 +76,7 @@
 				qdel(E)
 				E = null
 		if(!E)
-			regenerating_organs |= limb_type
+			regenerating_organs |= limb_tag
 			max_limbs--
 
 
@@ -173,6 +182,8 @@
 			var/obj/item/organ/O = new organ_type(user)
 			user.internal_organs_by_name[organ_tag] = O
 
+	//Lastly, lets get rid of any shrapnel and harmful objects in the user's body
+	user.expel_shrapnel(0)	//Value of zero allows an infinite quantity
 
 	user.update_body()
 	stop()
@@ -196,7 +207,7 @@
 	set category = "Abilities"
 
 
-	return regenerate_ability(heal_amount = 40, _duration = 4 SECONDS, _max_limbs = 1, _cooldown = 0)
+	return regenerate_ability(subtype = /datum/extension/regenerate, _duration = 4 SECONDS, _cooldown = 0)
 
 
 /mob/living/carbon/human/proc/can_regenerate(var/error_messages = TRUE)

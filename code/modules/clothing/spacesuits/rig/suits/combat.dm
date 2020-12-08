@@ -101,7 +101,7 @@
 /*/obj/item/weapon/rig/deadspace/edfsoldier
 	name = "advanced edf infantry rig control module"
 	suit_type = "advanced edf infantry rig"
-	icon = 'icons/obj/rig_modules.dmi'
+
 	icon_state = "edfgrunt_rig"
 	desc = "A reinforced rig suit with several thick armour plates covering vital areas. It bears the emblem of the USM Valor, an Earth Defense Force Destroyer Class vessel. It bears a mission patch on the right shoulder, a crimson red planet with a black Unitologist marker-like structure overshadowing it. 'Operation White Light, Cygnus System' is embroidered into the patch."
 	armor = list(melee = 70, bullet = 70, laser = 30, energy = 20, bomb = 50, bio = 50, rad = 50)
@@ -149,7 +149,7 @@
 /obj/item/weapon/rig/deadspace/edfengineer
 	name = "advanced edf sapper rig control module"
 	suit_type = "advanced edf sapper rig"
-	icon = 'icons/obj/rig_modules.dmi'
+
 	icon_state = "edfengie_rig"
 	desc = "A reinforced rig suit with several thick armour plates covering vital areas. It bears the emblem of the USM Valor, an Earth Defense Force Destroyer Class vessel. It bears a mission patch on the right shoulder, a crimson red planet with a black Unitologist marker-like structure overshadowing it. 'Operation White Light, Cygnus System' is embroidered into the patch. The suit has several yellow lines striped across it and the word 'Sapper' stamped on the chest."
 	armor = list(melee = 70, bullet = 70, laser = 30, energy = 20, bomb = 90, bio = 70, rad = 90)
@@ -198,7 +198,7 @@
 /obj/item/weapon/rig/deadspace/edfmedic
 	name = "advanced edf medic rig control module"
 	suit_type = "advanced edf medic rig"
-	icon = 'icons/obj/rig_modules.dmi'
+
 	icon_state = "edfmedic_rig"
 	desc = "A reinforced rig suit with several thick armour plates covering vital areas. It bears the emblem of the USM Valor, an Earth Defense Force Destroyer Class vessel. It bears a mission patch on the right shoulder, a crimson red planet with a black Unitologist marker-like structure overshadowing it. 'Operation White Light, Cygnus System' is embroidered into the patch. The suit has a red cross on the chest, as well as the word 'Medic' stamped on the armour."
 	armor = list(melee = 70, bullet = 70, laser = 30, energy = 20, bomb = 50, bio = 90, rad = 70)
@@ -247,7 +247,7 @@
 /obj/item/weapon/rig/deadspace/edfcommander
 	name = "advanced edf commander rig control module"
 	suit_type = "advanced edf commander rig"
-	icon = 'icons/obj/rig_modules.dmi'
+
 	icon_state = "edfcomm_rig"
 	desc = "A reinforced rig suit with several thick armour plates covering vital areas. It bears the emblem of the USM Valor, an Earth Defense Force Destroyer Class vessel. It bears a mission patch on the right shoulder, a crimson red planet with a black Unitologist marker-like structure overshadowing it. 'Operation White Light, Cygnus System' is embroidered into the patch. The suit bears an additional shoulderpad, the mark of a commissioned officer amongst the EDF."
 	armor = list(melee = 85, bullet = 85, laser = 30, energy = 20, bomb = 50, bio = 50, rad = 70)
@@ -301,7 +301,7 @@
 /obj/item/weapon/rig/deadspace/unisoldier
 	name = "unitologist combat rig control module"
 	suit_type = "unitologist combat rig"
-	icon = 'icons/obj/rig_modules.dmi'
+
 	icon_state = "unifaith_rig"
 	desc = "An old combat RIG used by SCAF over two hundred years ago. The armour has seen some wear but still functions as it should, it has been repainted in black and crimson colours. There are unitologist markings across the suit."
 	armor = list(melee = 60, bullet = 60, laser = 30, energy = 20, bomb = 30, bio = 40, rad = 40)
@@ -347,7 +347,7 @@
 /obj/item/weapon/rig/deadspace/uniengie
 	name = "unitologist engineer rig control module"
 	suit_type = "unitologist engineer rig"
-	icon = 'icons/obj/rig_modules.dmi'
+
 	icon_state = "uniengie_rig"
 	desc = "An old combat RIG used by SCAF over two hundred years ago. The armour has seen some wear but still functions as it should, it has been repainted in black and crimson colours. There are unitologist markings across the suit. This one includes an RCD module, the equipment of an engineer on the go."
 	armor = list(melee = 60, bullet = 60, laser = 30, energy = 20, bomb = 70, bio = 40, rad = 90)
@@ -395,7 +395,7 @@
 /obj/item/weapon/rig/deadspace/unifaithful
 	name = "unitologist zealot combat rig control module"
 	suit_type = "unitologist zealot combat rig"
-	icon = 'icons/obj/rig_modules.dmi'
+
 	icon_state = "unideac_rig"
 	desc = "An old combat RIG used by SCAF over two hundred years ago. The armour has seen some wear but still functions as it should, it has been repainted in black and crimson colours. There are unitologist markings across the suit, this one in particular features marker script engraved across the suit, the armour of a zealot."
 	armor = list(melee = 60, bullet = 60, laser = 30, energy = 20, bomb = 30, bio = 40, rad = 40)
@@ -440,7 +440,7 @@
 /obj/item/weapon/rig/deadspace/unimedic
 	name = "unitologist medic combat rig control module"
 	suit_type = "unitologist medic combat rig"
-	icon = 'icons/obj/rig_modules.dmi'
+
 	icon_state = "unimedic_rig"
 	desc = "An old combat RIG used by SCAF over two hundred years ago. The armour has seen some wear but still functions as it should, it has been repainted in black and crimson colours. There are unitologist markings across the suit, this one in particular also features a red cross, indicating a medic."
 	armor = list(melee = 60, bullet = 60, laser = 30, energy = 20, bomb = 30, bio = 90, rad = 40)
@@ -488,7 +488,7 @@
 /obj/item/weapon/rig/deadspace/unizerker
 	name = "unitologist berserker combat rig control module"
 	suit_type = "unitologist berserker combat rig"
-	icon = 'icons/obj/rig_modules.dmi'
+
 	icon_state = "unizerk_rig"
 	desc = "An extremely heavy reinforced urban combat rig painted in Unitologist iconography and... blood. Definitely something that only a madman would wear."
 	armor = list(melee = 90, bullet = 90, laser = 30, energy = 20, bomb = 70, bio = 40, rad = 40)

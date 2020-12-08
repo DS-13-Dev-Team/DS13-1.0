@@ -84,13 +84,13 @@
 	Cutting Wave
 --------------------------*/
 /obj/item/projectile/wave/linecutter
-	damage = 34
+	damage = 32
 	accuracy = 130
 	penetrating = TRUE
 	edge = TRUE
 	icon = 'icons/obj/weapons/ds13_projectiles_large.dmi'
 	icon_state = "linecutter_48"
-	step_delay = 2
+	step_delay = 3
 	kill_count = 9	//Short ranged
 	height = 0.1	//10cm thick wave
 
@@ -166,7 +166,7 @@
 	.=..()
 
 /obj/effect/mine/plasma/explode(obj)
-	explosion(3, 3)
+	explosion(3, 5)
 	spawn(0)
 		qdel(src)
 

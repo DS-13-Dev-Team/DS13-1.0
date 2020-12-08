@@ -137,7 +137,7 @@
 	return (overheating == FALSE)
 
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/getAmmo()
+/obj/item/weapon/gun/projectile/automatic/pulse_heavy/get_remaining_ammo()
 	return (max_heat - (heat + heat_per_burst)) / heat_per_shot
 
 
@@ -153,4 +153,4 @@
 	else
 		to_chat(user, "The heat meter reads [round(heat*100,1)]%")
 		if(user.skill_check(SKILL_WEAPONS, SKILL_ADEPT))
-			to_chat(user, "It can fire approximately [getAmmo()] round\s.")
+			to_chat(user, "It can fire approximately [get_remaining_ammo()] round\s.")

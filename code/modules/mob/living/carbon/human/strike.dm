@@ -488,16 +488,20 @@
 //Targeting
 //-------------------------
 /datum/strike/proc/handle_target_zone()
+
+
 	if (target_zone == RANDOM)
 		target_zone = ran_zone(BP_CHEST, 0)	//Pick a random zone
 	else if (!target_zone)	//Don't grab from zonesel if a specific organ was already chosen
 		target_zone = get_zone_sel(user)
+
+	original_target_zone = target_zone
 	if (H)
 		affecting = H.find_target_organ(target_zone)
 		if (affecting)
+
 			target_zone = affecting.organ_tag
 
-	original_target_zone = target_zone
 
 //Defense Handling
 //-----------------------

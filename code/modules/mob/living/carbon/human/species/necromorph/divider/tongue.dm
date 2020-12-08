@@ -350,7 +350,7 @@
 */
 /datum/execution_stage/strangle
 	var/head_damage_threshold = 0.33
-	var/damage_per_hit = 6
+	var/damage_per_hit = 7
 	duration = 2 SECONDS
 
 

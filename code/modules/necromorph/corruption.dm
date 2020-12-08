@@ -354,7 +354,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	flags = EXTENSION_FLAG_IMMEDIATE
 
 	//Effects on necromorphs
-	var/healing_per_tick = 1.2	//Passive Healing
+	var/healing_per_tick = 1	//Passive Healing
 	var/speedup = 1.25	//Bonus movespeed
 	var/incoming_damage_mod = 0.85	//Incoming damage reduction
 

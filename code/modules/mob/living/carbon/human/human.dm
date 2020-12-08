@@ -6,7 +6,7 @@
 	icon_state = "body_m_s"
 
 	var/list/hud_list[10]
-	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
+	var/list/implants	//Things that are embedded in any of our organs. Nulled out when empty
 	var/obj/item/weapon/rig/wearing_rig // This is very not good, but it's much much better than calling get_rig() every update_canmove() call.
 
 	var/list/stance_limbs
@@ -768,6 +768,8 @@
 	return(visible_implants)
 
 /mob/living/carbon/human/embedded_needs_process()
+	if (!LAZYLEN(implants))
+		return FALSE
 	for(var/obj/item/organ/external/organ in src.organs)
 		for(var/obj/item/O in organ.implants)
 			if(!istype(O, /obj/item/weapon/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
@@ -775,25 +777,27 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/handle_embedded_and_stomach_objects()
-	for(var/obj/item/organ/external/organ in src.organs)
-		if(organ.splinted)
-			continue
-		for(var/obj/item/O in organ.implants)
-			if(!istype(O,/obj/item/weapon/implant) && O.w_class > 1 && prob(5)) //Moving with things stuck in you could be bad.
-				jossle_internal_object(organ, O)
+	if (LAZYLEN(implants))
+		for(var/obj/item/organ/external/organ in src.organs)
+			if(organ.splinted)
+				continue
+			for(var/obj/item/O in organ.implants)
+				if(!O.biomaterial && O.w_class > 1 && prob(5)) //Moving with things stuck in you could be bad.
+					jostle_internal_object(organ, O)
+
 	var/obj/item/organ/external/groin = src.get_organ(BP_GROIN)
 	if(groin && stomach_contents && stomach_contents.len)
 		for(var/obj/item/O in stomach_contents)
-			if(O.edge || O.sharp)
+			if(!O.biomaterial && O.edge || O.sharp)
 				if(prob(1))
 					stomach_contents.Remove(O)
 					if(can_feel_pain())
 						to_chat(src, "<span class='danger'>You feel something rip out of your stomach!</span>")
 						groin.embed(O)
 				else if(prob(5))
-					jossle_internal_object(groin,O)
+					jostle_internal_object(groin,O)
 
-/mob/living/carbon/human/proc/jossle_internal_object(var/obj/item/organ/external/organ, var/obj/item/O)
+/mob/living/carbon/human/proc/jostle_internal_object(var/obj/item/organ/external/organ, var/obj/item/O)
 	// All kinds of embedded objects cause bleeding.
 	if(!can_feel_pain())
 		to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
@@ -808,6 +812,29 @@
 	if(!BP_IS_ROBOTIC(organ) && (should_have_organ(BP_HEART))) //There is no blood in protheses.
 		organ.status |= ORGAN_BLEEDING
 		src.adjustToxLoss(rand(1,3))
+
+/*
+	This proc removes harmful objects from the body. It will not remove legitimate implants
+*/
+/mob/living/carbon/human/proc/expel_shrapnel(var/quantity, var/silent = FALSE)
+	var/list/expelled = list()
+	if (quantity <= 0)
+		quantity = 9999999
+
+	for (var/obj/item/I in implants)
+		if (quantity <= 0)
+			break
+
+		//Non harmful object, leave it alone
+		if (I.biomaterial)
+			continue
+
+		unembed(I, silent = silent)
+		expelled += I
+		quantity--
+
+	return expelled
+
 
 /mob/living/carbon/human/verb/check_pulse()
 	set category = "Object"

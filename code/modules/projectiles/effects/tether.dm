@@ -234,3 +234,7 @@
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()
+
+
+/obj/effect/projectile/tether/repair_needed()
+	return max_health - health

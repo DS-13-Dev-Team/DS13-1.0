@@ -22,7 +22,7 @@
 	var/spawner_spawnable = FALSE	//If true, a nest can be upgraded to autospawn this unit
 	var/necroshop_item_type = /datum/necroshop_item //Give this a subtype if you want to have special behaviour for when this necromorph is spawned from the necroshop
 	var/global_limit = 0	//0 = no limit
-	lasting_damage_factor = 0.15	//Necromorphs take lasting damage based on incoming hits
+	lasting_damage_factor = 0.2	//Necromorphs take lasting damage based on incoming hits
 
 	strength    = STR_MEDIUM
 	show_ssd = "dead" //If its not moving, it looks like a corpse
@@ -283,7 +283,7 @@
 // Used to update alien icons for aliens.
 /datum/species/necromorph/handle_login_special(var/mob/living/carbon/human/H)
 	.=..()
-	SSnecromorph.necromorph_players[H.ckey] = get_or_create_player(H.ckey)
+	H.set_necromorph(TRUE)
 	to_chat(H, "You are a [name]. \n\
 	[blurb]\n\
 	\n\

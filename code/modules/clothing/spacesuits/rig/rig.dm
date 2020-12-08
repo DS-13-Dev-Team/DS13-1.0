@@ -9,7 +9,7 @@
 /obj/item/weapon/rig
 
 	name = "RIG control module"
-	icon = 'icons/obj/rig_modules.dmi'
+	icon = 'icons/obj/rig_frames.dmi'
 	desc = "A back-mounted RIG deployment and control mechanism."
 	slot_flags = SLOT_BACK
 	var/desired_slot = slot_back

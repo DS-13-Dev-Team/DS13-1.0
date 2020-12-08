@@ -25,7 +25,7 @@
 	var/unwieldsound = null
 	var/base_icon
 	var/base_name
-	var/unwielded_force_divisor = 0.25
+	var/unwielded_force_divisor = 0.6 //This stacks multiplicatively with force divisor, so its 60% of what the wielded force is
 	var/wielded_parry_bonus = 25
 
 /obj/item/weapon/material/twohanded/update_twohanding()
@@ -71,8 +71,7 @@
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 
-	force_divisor = 0.6
-	unwielded_force_divisor = 0.3
+	force_divisor = 0.55
 	sharp = 1
 	edge = 1
 	w_class = ITEM_SIZE_HUGE
@@ -109,8 +108,8 @@
 	unbreakable = 1
 
 	// 12/19 with hardness 60 (steel) or 10/16 with hardness 50 (glass)
-	force_divisor = 0.33
-	unwielded_force_divisor = 0.20
+	force_divisor = 0.5
+	unwielded_force_divisor = 0.30
 	thrown_force_divisor = 1.5 // 20 when thrown with weight 15 (glass)
 
 	edge = 0

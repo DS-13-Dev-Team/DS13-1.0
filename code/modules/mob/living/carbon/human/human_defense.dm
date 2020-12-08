@@ -351,8 +351,19 @@ meteor_act
 	if(affecting)
 		affecting.embed(O, supplied_wound = supplied_wound)
 
+/mob/proc/unembed(var/obj/item/I, var/atom/new_location, var/silent = 0, var/supplied_message)
+	return
+
+/mob/living/carbon/human/unembed(var/obj/item/I, var/atom/new_location, var/silent = 0, var/supplied_message)
+	if (!(I in implants))
+		return
+	for (var/obj/item/organ/external/affecting in src)
+		if (I in affecting.implants)
+			affecting.unembed(I, new_location, silent, supplied_message)
+			return
+
 /mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, var/amount = 2)
-	if (gloves)
+	if (istype(gloves, /obj/item/clothing/gloves))
 		gloves.add_blood(source)
 		gloves:transfer_blood = amount
 		gloves:bloody_hands_mob = source

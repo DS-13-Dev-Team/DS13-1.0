@@ -190,8 +190,11 @@
 /obj/machinery/marker/proc/become_master_signal(var/mob/M)
 	if(!active)
 		return
+	if (!M || !M.key)
+		return
 	if (player != ckey(M.key))
 		message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
+
 	player = ckey(M.key)
 
 	//Get rid of the old energy handler
@@ -212,8 +215,10 @@
 	if (playermob)
 
 		//Get rid of the old player's energy handler
-		var/datum/player/P = get_or_create_player(player)
-		remove_extension(P, /datum/extension/psi_energy/marker)//Remove the handler
+		if (player)
+			var/datum/player/P = get_or_create_player(player)
+			if (P)
+				remove_extension(P, /datum/extension/psi_energy/marker)//Remove the handler
 
 		message_necromorphs(SPAN_NOTICE("[player] has stepped down, nobody is controlling the marker now."))
 		var/mob/observer/eye/signal/S = new(playermob)

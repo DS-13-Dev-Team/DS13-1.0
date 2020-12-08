@@ -237,7 +237,6 @@
 	.= FALSE
 
 	//Pay energy cost last
-	//var/datum/player/P = user.get_player()
 	var/datum/extension/psi_energy/PE = user.get_energy_extension()
 
 	//We set right now as the last casting time, used for cooldowns
@@ -309,7 +308,6 @@
 	if (!.)
 		return
 
-	//var/datum/player/P = user.get_player()
 	var/datum/extension/psi_energy/PE = user.get_energy_extension()
 	if (energy_cost)
 

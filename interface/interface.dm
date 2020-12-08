@@ -41,7 +41,7 @@ client/verb/discord()
 	set name = "Rules"
 	set desc = "Show Server Rules."
 	set hidden = 1
-	src << browse(file(RULES_FILE), "window=rules;size=480x320")
+	src << browse(file(RULES_FILE), "window=rules;size=720x640")
 #undef RULES_FILE
 
 #define LORE_FILE "config/lore.html"

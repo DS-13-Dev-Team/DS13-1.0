@@ -38,6 +38,8 @@
 
 /obj/effect/particle_system/Destroy()
 	.=..()
+	if (is_processing)
+		STOP_PROCESSING(SSfastprocess, src)
 	if (base_offset)
 		release_vector(base_offset)
 	if (direction)
@@ -65,7 +67,6 @@
 	//tick()
 
 /obj/effect/particle_system/proc/end()
-	STOP_PROCESSING(SSfastprocess, src)
 	qdel(src)
 
 /obj/effect/particle_system/Process()
