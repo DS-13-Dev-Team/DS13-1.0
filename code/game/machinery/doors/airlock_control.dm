@@ -269,7 +269,7 @@ obj/machinery/access_button/attackby(obj/item/I as obj, mob/user as mob)
 
 obj/machinery/access_button/attack_hand(mob/user)
 	..()
-	playsound(src, "button", 20)
+	playsound(src, "button", VOLUME_MID)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access Denied</span>")
 
