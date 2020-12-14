@@ -275,11 +275,9 @@
 		for (var/datum/necrospawn/N in shop.possible_spawnpoints)
 			if (N.spawnpoint == source)
 				if (shop.selected_spawn == N)
-					for (var/datum/necrospawn/N_Marker in shop.possible_spawnpoints)
-						if (N_Marker.spawnpoint == src)
-							shop.selected_spawn = N_Marker
-							message_necromorphs("<span class='necromarker'>[source] was destroyed, current spawnpoint was set to the [src].</span>")
-							break
+					var/datum/necrospawn/N_Marker = shop.possible_spawnpoints[1]
+					shop.selected_spawn = N_Marker
+					message_necromorphs("<span class='necromarker'>[source] was destroyed, current spawnpoint was set to [N_Marker.spawnpoint].</span>")
 
 				shop.possible_spawnpoints.Remove(N)
 				break
