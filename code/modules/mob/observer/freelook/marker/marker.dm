@@ -279,9 +279,11 @@
 						if (N_Marker.spawnpoint == src)
 							shop.selected_spawn = N_Marker
 							message_necromorphs("<span class='necromarker'>[source] was destroyed, current spawnpoint was set to the [src].</span>")
+							break
 
 				shop.possible_spawnpoints.Remove(N)
-				SSnano.update_uis(shop)
+				break
+		SSnano.update_uis(shop)
 
 
 //Marker spawning landmarks
