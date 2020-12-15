@@ -249,6 +249,10 @@ var/list/airlock_overlays = list()
 	paintable = AIRLOCK_PAINTABLE
 	min_force = 18	//These external airlocks are veeery tough, slashers will probably not be able to break through in any reasonable period
 	health = 350
+	open_sound_powered = "doorheavyopen"
+	open_sound_unpowered = "doorheavyopen"
+	close_sound_powered = "doorheavyclose"
+	close_sound_unpowered = "doorheavyclose"
 
 /obj/machinery/door/airlock/external/bolted
 	locked = 1
@@ -330,6 +334,10 @@ var/list/airlock_overlays = list()
 	secured_wires = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity
 	paintable = 0
+	open_sound_powered = "doorheavyopen"
+	open_sound_unpowered = "doorheavyopen"
+	close_sound_powered = "doorheavyclose"
+	close_sound_unpowered = "doorheavyclose"
 
 /obj/machinery/door/airlock/highsecurity/bolted
 	locked = 1
@@ -372,6 +380,10 @@ var/list/airlock_overlays = list()
 	secured_wires = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity //Until somebody makes better sprites.
 	paintable = AIRLOCK_PAINTABLE|AIRLOCK_STRIPABLE
+	open_sound_powered = "doorheavyopen"
+	open_sound_unpowered = "doorheavyopen"
+	close_sound_powered = "doorheavyclose"
+	close_sound_unpowered = "doorheavyclose"
 
 /obj/machinery/door/airlock/vault/bolted
 	locked = 1
@@ -774,7 +786,7 @@ About the new airlock wires panel:
 			if(density && src.arePowerSystemsOn())
 				set_airlock_overlays(AIRLOCK_DENY)
 				flick("deny", src)
-				playsound(src.loc, open_failure_access_denied, 20, 0) //secured wires condition delete so we can actually hear noise
+				playsound(src.loc, open_failure_access_denied, VOLUME_MID, 0) //secured wires condition delete so we can actually hear noise
 				update_icon(AIRLOCK_CLOSED)
 		if("emag")
 			if(density && src.arePowerSystemsOn())
@@ -1212,9 +1224,9 @@ About the new airlock wires panel:
 
 	//if the door is unpowered then it doesn't make sense to hear the woosh of a pneumatic actuator
 	if(arePowerSystemsOn())
-		playsound(src.loc, open_sound_powered, 10, 0)
+		playsound(src.loc, open_sound_powered, VOLUME_LOW, 0)
 	else
-		playsound(src.loc, open_sound_unpowered, 10, 0)
+		playsound(src.loc, open_sound_unpowered, VOLUME_LOW, 0)
 
 	if(src.closeOther != null && istype(src.closeOther, /obj/machinery/door/airlock/) && !src.closeOther.density)
 		src.closeOther.close()
@@ -1266,9 +1278,9 @@ About the new airlock wires panel:
 
 	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(arePowerSystemsOn())
-		playsound(src.loc, close_sound_powered, 10, 0)
+		playsound(src.loc, close_sound_powered, VOLUME_LOW, 0)
 	else
-		playsound(src.loc, close_sound_unpowered, 10, 0)
+		playsound(src.loc, close_sound_unpowered, VOLUME_LOW, 0)
 
 	..()
 

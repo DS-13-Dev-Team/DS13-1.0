@@ -92,7 +92,7 @@
 		return TRUE
 	else
 		if (user)
-			to_chat(user, "[test] is not organic, or contains no recoverable biomass")
+			to_chat(user, "[test] is not organic, or contains no recoverable biomass.")
 		return FALSE
 
 
@@ -140,8 +140,9 @@
 /obj/machinery/recycling_tank/proc/insert_atom(var/atom/movable/A, var/mob/user)
 	A.forceMove(src)
 	content_atoms |= A
+	playsound(src, 'sound/machines/tankbiorecycle.ogg', VOLUME_LOW)
 	if (user)
-		user.visible_message("[user] places \the [A] into \the [src]")
+		user.visible_message("[user] places \the [A] into \the [src].")
 
 	update_icon()
 
