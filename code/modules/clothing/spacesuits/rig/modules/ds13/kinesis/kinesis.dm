@@ -221,7 +221,6 @@
 		release_vector(target)
 
 
-
 	var/obj/effect/projectile/tether/newtether = new /obj/effect/projectile/tether/lightning(get_turf(src))
 	var/vector2/origin_pixels = holder.wearer.get_global_pixel_loc()
 
@@ -229,7 +228,6 @@
 	target.SelfSubtract(origin_pixels)
 	target.SelfClampMag(1, drop_range*WORLD_ICON_SIZE)
 	target.SelfAdd(origin_pixels)
-
 	newtether.set_ends(origin_pixels, target)
 	release_vector(origin_pixels)
 
@@ -922,27 +920,21 @@
 /*
 	We will make several passes through the list, first grabbing things that might be important like projectiles in flight
 
-	if find_anything is true, we will try to return some kind of object even if its unsuitable, so that we can do a failed-grab for visual fx
 */
-/obj/item/rig_module/kinesis/proc/find_target(var/atom/origin, var/find_anything = TRUE)
+/obj/item/rig_module/kinesis/proc/find_target(var/atom/origin)
 	var/list/nearby_stuff = range(1, origin)
-	var/atom/anything = null
+
+
 	for (var/target_type in target_priority)
 		for (var/atom/movable/A in nearby_stuff)
 			if (!istype(A, target_type))
 				continue
 
-			if (!anything && find_anything)
-				anything = A
 
 			var/distance  = holder.wearer.get_global_pixel_distance(A)
 			//Too far from user
 			if (distance > (range * WORLD_ICON_SIZE))
 				continue
-
-			//A better candidate
-			if (find_anything)
-				anything = A
 
 			if (!can_grip(A))
 				nearby_stuff -= A
@@ -952,8 +944,5 @@
 			//If we get this far, we've found a valid item matching the highest possible priority, we are done!
 			return A
 
-	if (!anything && find_anything)
-		anything = origin
 
-	//Here we return anything vaguely fitting
-	return anything
+	return origin
