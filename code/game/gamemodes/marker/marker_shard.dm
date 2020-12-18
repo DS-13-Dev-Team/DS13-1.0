@@ -150,12 +150,22 @@
 
 //If you attempt to put a marker shard into a disposal, it hurts you and escapes your grasp!
 /obj/item/marker_shard/attempt_dispose(var/obj/machinery/disposal/D, var/mob/living/user)
-	to_chat(user, span("necromarker", "You are punished for your hubris!"))
+	if (istype(user))
+		to_chat(user, span("necromarker", "You are punished for your hubris!"))
 
-	user.stun_effect_act(6, 60, BP_CHEST, src)
-	user.Paralyse(10)
-	user.take_overall_damage(0, 30, src)
+		user.stun_effect_act(6, 60, BP_CHEST, src)
+		user.Paralyse(10)
+		user.take_overall_damage(0, 30, src)
 
 	var/list/turfs = clear_turfs_in_view(world.view)
 	if (turfs.len)
-		user.drop_from_inventory(src, pick(turfs))
+		if (loc == user)
+			user.drop_from_inventory(src, pick(turfs))
+		else
+			forceMove(pick(turfs))
+
+	//Returning false prevents it from entering disposals
+	return FALSE
+
+
+

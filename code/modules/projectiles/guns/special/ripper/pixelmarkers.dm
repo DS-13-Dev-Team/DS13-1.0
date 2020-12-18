@@ -26,7 +26,7 @@
 	icon_state = "white"
 
 
-/proc/pixelmark(var/turf/source, var/iconstate, var/vector2/coords)
+/proc/pixelmark(var/turf/source, var/iconstate = "ax", var/vector2/coords)
 	var/obj/effect/pixelmarker/P = new /obj/effect/pixelmarker(source, 3 SECOND)
 	P.icon_state = iconstate
 	if (coords)

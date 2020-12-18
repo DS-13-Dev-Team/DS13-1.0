@@ -170,6 +170,12 @@
 	if (active)
 		deactivate()
 
+/obj/item/rig_module/kinesis/proc/get_user()
+	if (holder)
+		return holder.wearer
+
+	return null
+
 
 //When the kinesis module is activated, it gets its click handler and
 /obj/item/rig_module/kinesis/activate()
@@ -178,7 +184,9 @@
 		return
 	.=..()
 	if (.)
-		var/mob/living/carbon/human/user = holder.wearer
+		var/mob/living/carbon/human/user = get_user()
+		if (!user || !user.client)
+			return
 		CHK = user.PushUniqueClickHandler(/datum/click_handler/sustained/kinesis)
 		CHK.reciever = src
 		to_chat(user, SPAN_NOTICE("Kinesis activated.(F)"))
@@ -186,7 +194,9 @@
 /obj/item/rig_module/kinesis/deactivate()
 	.=..()
 	if (.)
-		var/mob/living/carbon/human/user = holder.wearer
+		var/mob/living/carbon/human/user = get_user()
+		if (!user || !user.client)
+			return
 		user.RemoveClickHandler(CHK)
 		CHK = null
 		to_chat(user, SPAN_NOTICE("Kinesis deactivated.(F)"))
@@ -210,10 +220,16 @@
 	if (target)
 		release_vector(target)
 
-	target = AM.get_global_pixel_loc()
+
 
 	var/obj/effect/projectile/tether/newtether = new /obj/effect/projectile/tether/lightning(get_turf(src))
 	var/vector2/origin_pixels = holder.wearer.get_global_pixel_loc()
+
+	target = AM.get_global_pixel_loc()
+	target.SelfSubtract(origin_pixels)
+	target.SelfClampMag(1, drop_range*WORLD_ICON_SIZE)
+	target.SelfAdd(origin_pixels)
+
 	newtether.set_ends(origin_pixels, target)
 	release_vector(origin_pixels)
 
@@ -315,6 +331,7 @@
 	subject = AM
 	subject.telegripped(src)	//Tell the object it was picked up
 	subject.throwing = TRUE
+	subject.thrower = get_user()
 	subject.animate_movement = NO_STEPS	//Needed for pixel movement to be smoother
 
 	//Cache these before we change them
@@ -426,7 +443,7 @@
 		var/vector2/velocity_offset = velocity * WORLD_ICON_SIZE
 		var/turf/throw_target = thing.get_turf_at_pixel_offset(velocity_offset)
 		release_vector(velocity_offset)
-		thing.throw_at(throw_target, speed, speed, null)
+		thing.throw_at(throw_target, speed, speed, get_user())
 	else
 		//We need to reset the animate_movement var if we are dropping it precisely
 		//If its being thrown, pixel movement will do this
@@ -861,10 +878,8 @@
 
 
 /obj/item/rig_module/kinesis/proc/update_hotkeys()
-	if (!holder || !holder.wearer)
-		return
-	var/mob/living/user = holder.wearer
-	if (!user.client)
+	var/mob/living/carbon/human/user = get_user()
+	if (!user || !user.client)
 		return
 
 	if (!hotkeys_set)
