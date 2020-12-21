@@ -4,7 +4,7 @@
 	icon_state = "ds_police_rig"
 	armor = list(melee = 65, bullet = 60, laser = 60, energy = 30, bomb = 65, bio = 100, rad = 60)
 	offline_slowdown = 5
-	online_slowdown = 3
+	online_slowdown = 2.5
 	acid_resistance = 2	//Contains a fair bit of plastic
 	allowed = list(/obj/item/weapon/shield/riot)
 
