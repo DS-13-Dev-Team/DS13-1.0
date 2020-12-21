@@ -19,7 +19,6 @@
 	)
 	desc = "A black and gray RIG suit covered in strange symbols and red highlights. The words, 'Schofield Tools' are stamped to the back of the shoulder piece. It seems to be a custom design made of parts from a Fuel Carrier RIG. Despite the helmet's non-standard nature, the work done putting it together seems professional."
 	w_class = ITEM_SIZE_LARGE
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency)
 	armor = list(melee = 50, bullet = 60, laser = 0,energy = 0, bomb = 60, bio = 100, rad = 30)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	siemens_coefficient = 0.3
@@ -131,7 +130,6 @@
 	)
 	desc = "A military RIG suit given to EDF marines. The letters, 'T.E.A.K' are stamped on the back of the shoulder piece. Professionally manufactured and well maintained, this suit of armor gleams as it catches the light."
 	w_class = ITEM_SIZE_LARGE
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency)
 	armor = list(melee = 50, bullet = 60, laser = 0,energy = 0, bomb = 60, bio = 100, rad = 30)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	siemens_coefficient = 0.3
