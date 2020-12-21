@@ -6,7 +6,7 @@
 	offline_slowdown = 5
 	online_slowdown = 3
 	acid_resistance = 2	//Contains a fair bit of plastic
-	allowed = list(/obj/item/weapon/shield/riot, /obj/item/weapon/shield/riot/metal)
+	allowed = list(/obj/item/weapon/shield/riot)
 
 	chest_type = /obj/item/clothing/suit/space/rig/riot
 	helm_type =  /obj/item/clothing/head/helmet/space/rig/riot
