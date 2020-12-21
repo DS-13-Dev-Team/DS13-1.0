@@ -134,6 +134,7 @@ if(Datum.is_processing) {\
 #define PROCESSING_SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/processing/##X);\
 /datum/controller/subsystem/processing/##X/New(){\
 	NEW_SS_GLOBAL(SS##X);\
+	processing_subsystems_by_varname["SS[#X]"] = src;\
 	PreInit();\
 }\
 /datum/controller/subsystem/processing/##X/Recover() {\
