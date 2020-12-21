@@ -50,6 +50,7 @@
 	var/glove_type = /obj/item/clothing/gloves/rig
 	var/cell_type =  /obj/item/weapon/cell/high
 	var/air_type =   /obj/item/weapon/tank/oxygen
+	var/list/toggleable_while_active = list("helmet", "gauntlets")
 
 	//Component/device holders.
 	var/obj/item/weapon/tank/air_supply                       // Air tank, if any.
@@ -81,7 +82,7 @@
 	var/locked_down = 0
 	var/aimove_power_usage = 200							  // Power usage per tile traveled when suit is moved by AI in IIS. In joules.
 	var/hotswap = FALSE	//If true, modules can be added/removed while the rig is worn
-
+	var/active	=	FALSE	//Set true when sealed and toggled
 
 	var/seal_delay = SEAL_DELAY
 	var/sealing                                               // Keeps track of seal status independantly of canremove.
@@ -156,7 +157,7 @@
 		chest = new chest_type(src)
 		chest.rig = src
 		if(allowed)
-			chest.allowed = allowed
+			chest.allowed |= allowed
 		verbs |= /obj/item/weapon/rig/proc/toggle_chest
 
 	for(var/obj/item/clothing/piece in list(gloves,helmet,boots,chest))
@@ -344,6 +345,7 @@
 
 	// Success!
 	canremove = seal_target
+	active = !seal_target
 	to_chat(wearer, "<font color='blue'><b>Your entire suit [canremove ? "loosens as the components relax" : "tightens around you as the components lock into place"].</b></font>")
 
 	if(wearer != initiator)
@@ -692,6 +694,10 @@
 		return
 
 	if(initiator == wearer && wearer.incapacitated(INCAPACITATION_DISABLED)) // If the initiator isn't wearing the suit it's probably an AI.
+		return
+
+	if (active && !(piece in toggleable_while_active))
+		to_chat(initiator, SPAN_DANGER("The [piece] cannot be toggled while the RIG is active, it must be unsealed and powered down."))
 		return
 
 	var/obj/item/check_slot

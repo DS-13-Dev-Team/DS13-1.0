@@ -93,7 +93,8 @@
 		/obj/item/weapon/storage/box/holobadge,
 		/obj/item/device/holowarrant,
 		/obj/random/tool,
-		/obj/item/weapon/rig/security
+		/obj/item/weapon/rig/security,
+		/obj/item/weapon/rig/riot
 	)
 
 /obj/structure/closet/secure_closet/security
