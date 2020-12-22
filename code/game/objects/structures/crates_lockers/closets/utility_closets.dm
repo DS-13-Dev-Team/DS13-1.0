@@ -24,6 +24,8 @@
 /obj/structure/closet/emcloset/New()
 	..()
 	new /obj/random/loot/often(src)
+	if (prob(20))
+		new /obj/item/device/rig_remover(src)
 	switch (pickweight(list("small" = 50, "aid" = 25, "tank" = 10, "large" = 5, "both" = 10)))
 		if ("small")
 			new /obj/item/weapon/tank/emergency/oxygen(src)

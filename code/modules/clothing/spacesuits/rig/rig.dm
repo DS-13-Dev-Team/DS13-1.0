@@ -277,21 +277,16 @@
 		time_taken *= 0.5
 
 	if(seal_target && !suit_is_deployed())
-		world << "Fail, suit is not deployed"
 		wearer.visible_message("<span class='danger'>[wearer]'s suit flashes an error light.</span>","<span class='danger'>Your suit flashes an error light. It can't function properly without being fully deployed.</span>")
 		failed_to_seal = 1
-
-	world << "Starting seal or unseal"
 
 	if(!failed_to_seal)
 		wearer.visible_message("<font color='blue'>[wearer]'s suit emits a quiet hum as it begins to adjust its seals.</font>","<font color='blue'>With a quiet hum, the suit begins running checks and adjusting components.</font>")
 		if(time_taken && !do_after(wearer,time_taken, src, incapacitation_flags = INCAPACITATION_NONE))
-			world << "Failed doafter"
 			if(wearer) to_chat(wearer, "<span class='warning'>You must remain still while the suit is adjusting the components.</span>")
 			failed_to_seal = 1
 
 		if(!wearer)
-			world << "starting unseal 4 [wearer]"
 			failed_to_seal = 1
 		else
 			for(var/list/piece_data in list(list(wearer.shoes,boots,"boots",boot_type),list(wearer.gloves,gloves,"gloves",glove_type),list(wearer.head,helmet,"helmet",helm_type),list(wearer.wear_suit,chest,"chest",chest_type)))
@@ -305,7 +300,6 @@
 					continue
 
 				if(!istype(wearer) || !istype(piece) || !istype(compare_piece) || !msg_type)
-					world << "Piece fail 1"
 					if(wearer) to_chat(wearer, "<span class='warning'>You must remain still while the suit is adjusting the components.</span>")
 					failed_to_seal = 1
 					break
@@ -339,19 +333,9 @@
 						piece.armor["bio"] = src.armor["bio"]
 
 				else
-					world << "Failed to seal piece [dump_list(piece_data)]"
 					failed_to_seal = 1
 
 		if(!istype(wearer) || wearer.wearing_rig != src || (seal_target && !suit_is_deployed()))
-			world << "Failed end check"
-			if(!istype(wearer))
-				world << "Wearer not there"
-
-			if(wearer.wearing_rig != src)
-				world << "Rig not worn"
-
-			if(seal_target && !suit_is_deployed())
-				world << "ST:[seal_target], deployed [suit_is_deployed()]"
 			failed_to_seal = 1
 
 	sealing = FALSE
@@ -723,7 +707,6 @@
 		return
 
 	if(initiator == wearer && wearer.incapacitated(INCAPACITATION_KNOCKOUT)) // If the initiator isn't wearing the suit it's probably an AI.
-		world << "Wearer incapacitated"
 		return
 
 	if (active && !(piece in toggleable_while_active))
@@ -827,7 +810,6 @@
 	if(H.wearing_rig != src)
 		return
 	for(var/piece in list("helmet","gauntlets","chest","boots"))
-		world << "retracting [piece]"
 		toggle_piece(piece, null, ONLY_RETRACT)
 
 /obj/item/weapon/rig/dropped(var/mob/user)

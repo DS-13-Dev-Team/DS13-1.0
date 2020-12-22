@@ -1,5 +1,5 @@
 /obj/item/device/rig_remover
-	name = "RIG Undeployer"
+	name = "RIG Retraction Device"
 	desc = "A hand held device for treatment of workers inside heavy RIG suits. Retracts the target's RIG through the Safe Retraction API,  as long as they don't object."
 	icon = 'icons\obj\hacktool.dmi'
 	icon_state = "hacktool-g"
@@ -76,18 +76,15 @@
 
 	if (state == 1)
 		if (response)
-			world << "Response recieved [response]"
 			if (response == "Yes")
 				finish()
 			if (response == "No")
 				fail()
 
 		else if (world.time < timeout_end)
-			world << "Not time yet"
 			return
 
 		else
-			world << "Timeout"
 			//No response, but its timed out, lets finish
 			finish()
 	if (state == 2)
@@ -95,7 +92,6 @@
 
 /obj/item/device/rig_remover/proc/fail()
 
-	world << "Failing"
 	//Here we just set target to null so that no toggling will be done, then call finish
 
 	to_chat(last_user, SPAN_DANGER("[current_target] refused retract request, retraction cancelled"))
@@ -105,7 +101,6 @@
 	finish()
 
 /obj/item/device/rig_remover/proc/finish()
-	world << "Finishing"
 	if (current_target && current_target.wearing_rig)
 		var/obj/item/weapon/rig/R = current_target.wearing_rig
 
