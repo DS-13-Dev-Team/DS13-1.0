@@ -95,3 +95,7 @@
 	if(!islist(source.extensions[base_type]))
 		qdel(source.extensions[base_type])
 	LAZYREMOVE(source.extensions, base_type)
+
+
+/datum/extension/proc/remove_self()
+	remove_extension(holder, base_type)
