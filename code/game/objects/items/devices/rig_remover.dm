@@ -1,7 +1,7 @@
 /obj/item/device/rig_remover
 	name = "RIG Retraction Device"
 	desc = "A hand held device for treatment of workers inside heavy RIG suits. Retracts the target's RIG through the Safe Retraction API,  as long as they don't object."
-	icon = 'icons\obj\hacktool.dmi'
+	icon = 'icons/obj/hacktool.dmi'
 	icon_state = "hacktool-g"
 	item_state = "analyzer"
 	item_flags = ITEM_FLAG_NO_BLUDGEON
