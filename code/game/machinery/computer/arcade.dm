@@ -39,12 +39,32 @@
 		new CB.build_path(loc, CB)
 		return INITIALIZE_HINT_QDEL
 
+/obj/machinery/computer/arcade/meddle()
+	var/atom/movable/A = prizevend()
+
+	if (!A)
+		return
+
+	var/mob/living/target = locate() in view(7,src)
+	if(!target)
+		target = pick(turfs_in_view())
+
+	if(!target)
+		return 0
+
+	spawn(0)
+		A.throw_at(target, rand(1,2), 3, src)
+
+
 /obj/machinery/computer/arcade/proc/prizevend()
+	var/atom/movable/prize
 	if(!contents.len)
 		var/prizeselect = pickweight(prizes)
-		new prizeselect(src.loc)
-		var/atom/movable/prize = pick(contents)
+		prize = new prizeselect(src.loc)
+	else
+		prize = pick(contents)
 		prize.forceMove(src.loc)
+	return prize
 
 /obj/machinery/computer/arcade/attack_ai(mob/user as mob)
 	return src.attack_hand(user)

@@ -117,7 +117,9 @@
 	if (w_class >= ITEM_SIZE_NORMAL && !base_parry_chance && !isnull(base_parry_chance))
 		base_parry_chance = 15
 
-
+/obj/item/meddle()
+	tumble()
+	.=..()
 
 /obj/item/Destroy()
 	qdel(hidden_uplink)

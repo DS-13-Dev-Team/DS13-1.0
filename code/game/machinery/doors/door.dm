@@ -50,6 +50,18 @@
 	//A list of areas we are on or bordering
 	var/list/border_areas = list()
 
+/obj/machinery/door/meddle()
+	if (!density)
+		close()
+	else
+		//Opening doors only works pre marker activation
+		var/obj/machinery/marker/M = get_marker()
+		if (!M.active)
+			open()
+
+	.=..()
+
+
 /obj/machinery/door/attack_generic(var/mob/user, var/damage, var/attack_verb, var/environment_smash)
 	if(environment_smash >= 1)
 		damage = max(damage, min_force)

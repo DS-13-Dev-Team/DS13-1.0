@@ -237,6 +237,9 @@
 *   Microwave Menu Handling/Cooking
 ************************************/
 
+/obj/machinery/microwave/meddle()
+	cook()
+
 /obj/machinery/microwave/proc/cook()
 	if(stat & (NOPOWER|BROKEN))
 		return

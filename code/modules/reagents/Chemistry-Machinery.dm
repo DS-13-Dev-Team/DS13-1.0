@@ -500,6 +500,10 @@
 		holdingitems -= O
 	holdingitems.Cut()
 
+
+/obj/machinery/reagentgrinder/meddle()
+	grind()
+
 /obj/machinery/reagentgrinder/proc/grind(mob/user)
 
 	power_change()
@@ -519,7 +523,7 @@
 		inuse = 0
 		interact(user)
 
-	var/skill_factor = CLAMP01(1 + 0.3*(user.get_skill_value(SKILL_MEDICAL) - SKILL_EXPERT)/(SKILL_EXPERT - SKILL_MIN))
+	var/skill_factor = CLAMP01(1 + 0.3*((user ? user.get_skill_value(SKILL_MEDICAL) - SKILL_EXPERT : 1))/(SKILL_EXPERT - SKILL_MIN))
 	// Process.
 	for (var/obj/item/O in holdingitems)
 
@@ -556,6 +560,8 @@
 				break
 
 /obj/machinery/reagentgrinder/proc/hurt_hand(mob/living/carbon/human/user)
+	if (!user)
+		return
 	var/skill_to_check = SKILL_MEDICAL
 	if(user.get_skill_value(SKILL_COOKING) > user.get_skill_value(SKILL_MEDICAL))
 		skill_to_check = SKILL_COOKING
