@@ -576,6 +576,9 @@
 	var/obj/throw_item = null
 	var/mob/living/target = locate() in view(7,src)
 	if(!target)
+		target = pick(turfs_in_view())
+
+	if(!target)
 		return 0
 
 	for(var/datum/stored_items/vending_products/R in shuffle(src.product_records))
@@ -587,7 +590,12 @@
 	spawn(0)
 		throw_item.throw_at(target, rand(1,2), 3, src)
 	src.visible_message("<span class='warning'>\The [src] launches \a [throw_item] at \the [target]!</span>")
+	playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 	return 1
+
+
+/obj/machinery/vending/meddle()
+	throw_item()
 
 /*
  * Vending machine types

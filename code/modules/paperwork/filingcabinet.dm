@@ -62,6 +62,11 @@
 	return
 
 
+/obj/structure/filingcabinet/meddle()
+	icon_state = "[initial(icon_state)]-open"
+	sleep(5)
+	icon_state = initial(icon_state)
+
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
 	if(contents.len <= 0)
 		to_chat(user, "<span class='notice'>\The [src] is empty.</span>")

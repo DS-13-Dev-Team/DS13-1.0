@@ -22,6 +22,12 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 	var/static/list/admin_departments
 
+/obj/machinery/photocopier/faxmachine/meddle()
+	if (prob(50))
+		flick("faxsend", src)
+	else
+		flick("faxreceive", src)
+
 /obj/machinery/photocopier/faxmachine/Initialize()
 	. = ..()
 

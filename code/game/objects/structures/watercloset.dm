@@ -105,15 +105,31 @@
 	anchored = 1
 	mouse_opacity = 0
 
+/obj/machinery/shower/meddle()
+	if(on)
+		turn_off()
+	else
+		turn_on()
+
 /obj/machinery/shower/attack_hand(mob/M as mob)
-	on = !on
+	if(on)
+		turn_off(M)
+	else
+		turn_on(M)
+
+/obj/machinery/shower/proc/turn_on(mob/M as mob)
+	on = TRUE
 	update_icon()
 	if(on)
-		if (M.loc == loc)
+		if (M && M.loc == loc)
 			wash(M)
 			process_heat(M)
 		for (var/atom/movable/G in src.loc)
 			G.clean_blood()
+
+/obj/machinery/shower/proc/turn_off()
+	on = FALSE
+	update_icon()
 
 /obj/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.type == /obj/item/device/analyzer)
@@ -153,6 +169,9 @@
 				qdel(mymist)
 				mymist = null
 				ismist = 0
+
+
+
 
 //Yes, showers are super powerful as far as washing goes.
 /obj/machinery/shower/proc/wash(atom/movable/O as obj|mob)

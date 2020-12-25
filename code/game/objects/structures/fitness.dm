@@ -20,12 +20,19 @@
 	else
 		if(user.a_intent == I_HURT)
 			user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
-			flick("[icon_state]_hit", src)
-			playsound(src.loc, 'sound/effects/woodhit.ogg', 25, 1, -1)
+			hit_animation()
 			user.do_attack_animation(src)
 			if(!synth)
 				user.nutrition = user.nutrition - 5
 			to_chat(user, "<span class='warning'>You [pick(hit_message)] \the [src].</span>")
+
+/obj/structure/fitness/punchingbag/proc/hit_animation()
+	flick("[icon_state]_hit", src)
+	playsound(src.loc, 'sound/effects/woodhit.ogg', 25, 1, -1)
+
+/obj/structure/fitness/punchingbag/meddle()
+	hit_animation()
+
 
 /obj/structure/fitness/weightlifter
 	name = "weightlifting machine"
@@ -57,9 +64,10 @@
 		return
 	else
 		being_used = 1
-		playsound(src.loc, 'sound/effects/weightlifter.ogg', 50, 1)
+		lift_animation()
+
 		user.set_dir(SOUTH)
-		flick("[icon_state]_[weight]", src)
+
 		if(do_after(user, 20 + (weight * 10)))
 			playsound(src.loc, 'sound/effects/weightdrop.ogg', 25, 1)
 			var/skill = max_weight * user.get_skill_value(SKILL_HAULING)/SKILL_MAX
@@ -83,3 +91,11 @@
 		else
 			to_chat(user, "<span class='notice'>Against your previous judgement, perhaps working out is not for you.</span>")
 			being_used = 0
+
+
+/obj/structure/fitness/weightlifter/proc/lift_animation()
+	playsound(src.loc, 'sound/effects/weightlifter.ogg', 50, 1)
+	flick("[icon_state]_[weight]", src)
+
+/obj/structure/fitness/weightlifter/meddle()
+	lift_animation()
