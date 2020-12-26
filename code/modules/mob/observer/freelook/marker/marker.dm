@@ -4,7 +4,7 @@
 */
 /obj/machinery/marker
 	name = "Marker"
-	icon = 'icons/obj/marker_giant.dmi'
+	icon = 'icons/obj/marker_christmas.dmi'
 	icon_state = "marker_giant_dormant"
 	pixel_x = -33
 	plane = ABOVE_HUMAN_PLANE
