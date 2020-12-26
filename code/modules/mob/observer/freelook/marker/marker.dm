@@ -6,7 +6,7 @@
 	name = "Marker"
 	icon = 'icons/obj/marker_christmas.dmi'
 	icon_state = "marker_giant_dormant"
-	pixel_x = -33
+	pixel_x = -70 //Previously 33
 	plane = ABOVE_HUMAN_PLANE
 	density = TRUE
 	anchored = TRUE
