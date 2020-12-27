@@ -25,7 +25,6 @@
 /datum/signal_ability/meddle/special_check(var/atom/thing)
 	var/obj/O = thing
 	if (istype(O) && isturf(O.loc))
-		world << "Valid [thing] [thing.loc]"
 		return TRUE
 	else
 		return FALSE
