@@ -18,11 +18,17 @@
 
 
 
-/datum/signal_ability/meddle/on_cast(var/mob/user, var/atom/target, var/list/data)
-	var/obj/O = target
-	if (istype(O))
-		O.meddle(user)
+/datum/signal_ability/meddle/on_cast(var/mob/user, var/obj/target, var/list/data)
+	target.meddle(user)
 
+
+/datum/signal_ability/meddle/special_check(var/atom/thing)
+	var/obj/O = thing
+	if (istype(O) && isturf(O.loc))
+		world << "Valid [thing] [thing.loc]"
+		return TRUE
+	else
+		return FALSE
 
 
 /obj/proc/meddle(var/mob/user)

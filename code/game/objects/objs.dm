@@ -216,6 +216,9 @@
 	if (anchored)
 		return
 
+	if (!isturf(loc))
+		return
+
 	if (dist >= 1)
 		dist += rand(0,1)
 		for(var/i = 1, i <= dist, i++)
