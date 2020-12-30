@@ -524,7 +524,7 @@
 	materials = list(MATERIAL_STEEL = 3000)
 	build_path = /obj/item/weapon/grenade/chem_grenade/large
 	sort_string = "TABAA"
-
+/* Re-add when the flashes are reworked.
 /datum/design/item/weapon/advancedflash
 	name = "advanced flash"
 	id = "advancedflash"
@@ -532,7 +532,7 @@
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 2000, MATERIAL_SILVER = 500)
 	build_path = /obj/item/device/flash/advanced
 	sort_string = "TADAA"
-
+*/
 /datum/design/item/weapon/contactbeam
 	name = "C99 Supercollider Contact Beam"
 	id = "contactbeam"
