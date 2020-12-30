@@ -22,6 +22,33 @@ GLOBAL_LIST_EMPTY(agents_list)
 /datum/objective/unitologist
 	explanation_text = "Spy on the Ishimura and protect EarthGov's interests."
 
+/datum/antagonist/traitor/create_objectives(var/datum/mind/traitor)
+	if(!..())
+		return
+
+		var/datum/objective/survive/survive_objective = new
+		survive_objective.owner = traitor
+		traitor.objectives += survive_objective
+	else
+		switch(rand(1,100))
+			if(1 to 25) // Really low chance of getting this. These objectives are ass.
+				var/datum/objective/brig/brig_objective = new
+				brig_objective.owner = traitor
+				brig_objective.find_target()
+				traitor.objectives += brig_objective
+			else
+				var/datum/objective/steal/steal_objective = new
+				steal_objective.owner = traitor
+				steal_objective.find_target()
+				traitor.objectives += steal_objective
+		switch(rand(1,100))
+			if(1 to 100)
+				if (!(locate(/datum/objective/escape) in traitor.objectives))
+					var/datum/objective/escape/escape_objective = new
+					escape_objective.owner = traitor
+					traitor.objectives += escape_objective
+			else
+	return
 
 /datum/antagonist/earthgov_agent/proc/give_collaborators(mob/living/our_owner)
 	//our_owner.verbs |= /mob/proc/message_earthgov_agent
