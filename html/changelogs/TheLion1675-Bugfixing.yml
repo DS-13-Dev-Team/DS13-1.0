@@ -37,5 +37,8 @@ changes:
   - bugfix: "Fixed an issue in piping and power which caused issues in medical isolation."
   - bugfix: "Fixed an issue in the CSCIO's office where two consoles weren't able to be interacted with."
   - bugfix: "Increased SMO's office to fix a similar issue as above."
+  - bugfix: "Fixed the missing taser from the CSECO's locker."
+  - bugfix: "Fixed an accidental duplication of RIG spawns in the CSECO locker."
+  - rscdel: "Removed the flash from base locker spawns. Will be re-added when they are fixed. When? I don't know, ask Nanako."
   - spellcheck: "Fixed the door names of the Forensics Lab and Cryogenic Isolation in the Brig."
   - maptweak: "Minor adjustments to SMO and CSCIO's office to make them feel a little more fancy."
