@@ -42,3 +42,4 @@ changes:
   - rscdel: "Removed the flash from base locker spawns. Will be re-added when they are fixed. When? I don't know, ask Nanako."
   - spellcheck: "Fixed the door names of the Forensics Lab and Cryogenic Isolation in the Brig."
   - maptweak: "Minor adjustments to SMO and CSCIO's office to make them feel a little more fancy."
+  - tweak: "Moderately increased the Heavy Pulse Rifle's accuracy, minorly increased the damage factor, heat capacity and overheat cooldown."

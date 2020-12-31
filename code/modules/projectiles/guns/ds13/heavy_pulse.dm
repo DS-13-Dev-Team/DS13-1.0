@@ -29,8 +29,8 @@
 	mag_insert_sound = 'sound/weapons/guns/interaction/pulse_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'
 	one_hand_penalty = 10	//Don't try to fire this with one hand
-	accuracy = 15
-	damage_factor = 1.15
+	accuracy = 17
+	damage_factor = 1.20
 
 	projectile_type  = /obj/item/projectile/bullet/pulse
 
@@ -51,13 +51,13 @@
 	heat = 0
 
 	//Enters overheating state when heat gets this high
-	var/max_heat = 1
+	var/max_heat = 1.25
 
 	//When true, cannot fire
 	var/overheating = FALSE
 
 	//While we're overheating, we cooldown this much faster
-	var/overheat_cooldown_mult = 1.25
+	var/overheat_cooldown_mult = 1.30
 
 	//When overheating, we exit the overheat state if heat drops below this value
 	var/overheat_min = 0.5
