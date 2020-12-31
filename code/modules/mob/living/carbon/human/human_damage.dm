@@ -287,14 +287,12 @@
 		//If this is causing damage, take_internal_damage will call update health
 		updatehealth()
 
-/mob/living/carbon/human/proc/can_autoheal(var/dam_type)
+/mob/living/carbon/human/proc/can_autoheal(var/dam_type, var/datum/wound/W)
 	if(!species || !dam_type) return FALSE
 
-	if(dam_type == BRUTE)
-		return(getBruteLoss() < species.total_health / 2)
-	else if(dam_type == BURN)
-		return(getFireLoss() < species.total_health / 2)
-	return FALSE
+	return species.can_autoheal(src, dam_type, W)
+
+
 
 ////////////////////////////////////////////
 
@@ -379,6 +377,8 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		picked.heal_damage(brute_heal,burn_heal)
 
 		parts -= picked
+
+	return heal_amount
 	BITSET(hud_updateflag, HEALTH_HUD)
 
 // damage MANY external organs, in random order

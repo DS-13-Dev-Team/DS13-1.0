@@ -28,8 +28,10 @@
 	.=..()
 	if (isliving(user))
 		src.user = user
-	src.duration = duration
-	src.cooldown = cooldown
+	if (duration)
+		src.duration = duration
+	if (cooldown)
+		src.cooldown = cooldown
 
 
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/start), 0, TIMER_STOPPABLE)
@@ -49,7 +51,7 @@
 
 /datum/extension/<name>/proc/finish_cooldown()
 	deltimer(ongoing_timer)
-	remove_extension(holder, base_type)
+	remove_self()
 
 
 /datum/extension/<name>/proc/get_cooldown_time()

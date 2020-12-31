@@ -1017,6 +1017,7 @@ These procs should return their entire args list. Best just to return parent in 
 
 //Does animations for regenerating a limb
 /datum/species/proc/regenerate_limb(var/mob/living/carbon/human/H, var/limb, var/duration)
+	world << "regenerate limb [duration]"
 	var/regen_icon = get_icobase()
 	var/image/LR = image(regen_icon, H, "[limb]_regen")
 	LR.plane = H.plane
@@ -1039,6 +1040,22 @@ These procs should return their entire args list. Best just to return parent in 
 	if(can_overcome_gravity(H))
 		return TRUE
 	return (species_flags & SPECIES_FLAG_NO_SLIP)
+
+
+/datum/species/proc/can_autoheal(var/mob/living/carbon/human/H, var/dam_type, var/datum/wound/W)
+
+
+	if(dam_type == BRUTE && (H.getBruteLoss() > H.max_health / 2))
+		return FALSE
+	else if(dam_type == BURN && (H.getFireLoss() > H.max_health / 2))
+		return FALSE
+
+	if (W && !W.can_autoheal())
+		return FALSE
+
+	return TRUE
+
+
 
 //Species level audio wrappers
 //--------------------------------

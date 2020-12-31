@@ -127,7 +127,7 @@
 
 /obj/item/grab/proc/init()
 	last_target = assailant.zone_sel.selecting
-	affecting.UpdateLyingBuckledAndVerbStatus()
+	affecting.update_lying_buckled_and_verb_status()
 	if (!adjust_position())
 		return FALSE
 	update_icons()

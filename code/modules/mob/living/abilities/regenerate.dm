@@ -10,6 +10,7 @@
 	name = "Regenerate"
 	var/verb_name = "regenerating"
 	expected_type = /mob/living/carbon/human
+	base_type = null
 	flags = EXTENSION_FLAG_IMMEDIATE
 	var/mob/living/carbon/human/user
 
@@ -19,12 +20,13 @@
 	var/heal_amount = 40
 
 	var/tick_interval = 0.2 SECONDS
-	var/shake_interval = 0.6 SECONDS
+	var/shake_interval = 0.5 SECONDS
 
-	var/lasting_damage_heal = 9999999
+	var/lasting_damage_heal = 999999
 	var/limb_lasting_damage = 0	//When a limb is replaced, the mob suffers lasting damage equal to the limb's health * this value
 	var/biomass_limb_cost = 0	//When a limb is replaced, the marker transfers biomass to the mob, equal to the limb's health * this value
 	var/biomass_lasting_damage_cost = 0	//When lasting_damage is healed, the marker transfers biomass to the mob, equal to the damage healed * this value
+	var/burn_heal_mult = 1	//When healing burn damage, each point of heal_amount can heal this many points of actual burn damage
 
 	var/finish_time
 
@@ -33,19 +35,28 @@
 	var/tick_timer
 	var/tick_step
 
+	var/started_at
+	var/stopped_at
 
-/datum/extension/regenerate/New(var/datum/holder, var/_duration, var/_cooldown)
+	var/ongoing_timer
+
+
+/datum/extension/regenerate/New(var/datum/holder, var/duration, var/cooldown)
 	..()
 	user = holder
-	duration = _duration
-	cooldown = _cooldown
+	if (duration)
+		src.duration = duration
+	if (cooldown)
+		src.cooldown = cooldown
 
 	start()
 
 //Lets regrow limbs
 /datum/extension/regenerate/proc/start()
+	world << "Starting regen with duration [duration]"
 	finish_time = world.time + duration
-	tick_step = duration / tick_interval
+	tick_step = 1  / (duration / tick_interval)
+	world << "Tickstep [tick_step]"
 	var/list/missing_limbs = list()
 
 	//This loop counts and documents the damaged limbs, for the purpose of regrowing them and also for documenting how many there are for stun time
@@ -67,6 +78,7 @@
 			missing_limbs |= limb_tag
 
 		if (max_limbs <= 0)
+			world << "Max limbs hit zero"
 			continue
 		if(E)
 			if (!(E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE))
@@ -77,6 +89,7 @@
 				E = null
 		if(!E)
 			regenerating_organs |= limb_tag
+			world << "Going to regenerate [limb_tag]"
 			max_limbs--
 
 
@@ -100,7 +113,10 @@
 
 /datum/extension/regenerate/proc/tick()
 	shake_interval -= tick_interval
-	user.heal_overall_damage(heal_amount * tick_step)
+	world << "ticking, Healing by [heal_amount * tick_step]"
+	var/remaining_heal = user.heal_overall_damage(heal_amount * tick_step, BRUTE)
+	if (remaining_heal)
+		user.heal_overall_damage(heal_amount * tick_step * burn_heal_mult, BURN)
 	if (shake_interval <= 0)
 		shake_interval = initial(shake_interval)
 		user.shake_animation(30)
@@ -112,6 +128,7 @@
 
 
 /datum/extension/regenerate/proc/finish()
+	world << "regen finishing at finish time [finish_time]"
 	var/obj/machinery/marker/M = get_marker()
 	//Lets finish up. The limb regrowing animations should be done by now
 	//Here we actually create the freshly grown limb
@@ -189,6 +206,7 @@
 	stop()
 
 /datum/extension/regenerate/proc/stop()
+	stopped_at = world.time
 	user.stunned = 0
 
 	//When we finish, we go on cooldown
@@ -199,7 +217,13 @@
 
 
 /datum/extension/regenerate/proc/finish_cooldown()
-	remove_extension(holder, /datum/extension/regenerate)
+	remove_self()
+
+
+/datum/extension/regenerate/proc/get_cooldown_time()
+	var/elapsed = world.time - stopped_at
+	return cooldown - elapsed
+
 
 
 /mob/living/carbon/human/proc/regenerate_verb()
@@ -210,18 +234,24 @@
 	return regenerate_ability(subtype = /datum/extension/regenerate, _duration = 4 SECONDS, _cooldown = 0)
 
 
-/mob/living/carbon/human/proc/can_regenerate(var/error_messages = TRUE)
+/mob/living/carbon/human/proc/can_regenerate(var/error_messages = TRUE, var/subtype = /datum/extension/regenerate)
 	//Check for an existing extension.
-	var/datum/extension/regenerate/EC = get_extension(src, /datum/extension/regenerate)
-	if(istype(EC))
-		if(error_messages) to_chat(src, "You're already [EC.verb_name]!")
+
+	var/datum/extension/regenerate/E = get_extension(src,subtype)
+	if(istype(E))
+		if (error_messages)
+			if (E.stopped_at)
+				to_chat(src, SPAN_NOTICE("[E.name] is cooling down. You can use it again in [E.get_cooldown_time() /10] seconds"))
+			else
+				to_chat(src, SPAN_NOTICE("You're already regenerating"))
 		return FALSE
+
 	return TRUE
 
 
 /mob/living/carbon/human/proc/regenerate_ability(var/subtype = /datum/extension/regenerate, var/_duration, var/_cooldown)
 
-	if (!can_regenerate(TRUE))
+	if (!can_regenerate(TRUE, subtype))
 		return FALSE
 
 
