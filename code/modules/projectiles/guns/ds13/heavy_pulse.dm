@@ -60,13 +60,13 @@
 	var/overheat_cooldown_mult = 1.30
 
 	//When overheating, we exit the overheat state if heat drops below this value
-	var/overheat_min = 0.65
+	var/overheat_min = 0.5
 
 	//Loses this much heat per second. Approx 250 seconds to cooldown completely
 	var/cooldown_per_second	=	0.004
 
 	//Heat gained per bullet fired
-	var/heat_per_shot = 0.002
+	var/heat_per_shot = 0.004
 
 	//Heat gained each time the trigger is pulled
 	var/heat_per_burst = 0.05
