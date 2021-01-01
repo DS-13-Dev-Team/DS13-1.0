@@ -53,10 +53,8 @@
 
 //Lets regrow limbs
 /datum/extension/regenerate/proc/start()
-	world << "Starting regen with duration [duration]"
 	finish_time = world.time + duration
 	tick_step = 1  / (duration / tick_interval)
-	world << "Tickstep [tick_step]"
 	var/list/missing_limbs = list()
 
 	//This loop counts and documents the damaged limbs, for the purpose of regrowing them and also for documenting how many there are for stun time
@@ -78,7 +76,6 @@
 			missing_limbs |= limb_tag
 
 		if (max_limbs <= 0)
-			world << "Max limbs hit zero"
 			continue
 		if(E)
 			if (!(E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE))
@@ -89,7 +86,6 @@
 				E = null
 		if(!E)
 			regenerating_organs |= limb_tag
-			world << "Going to regenerate [limb_tag]"
 			max_limbs--
 
 
@@ -113,7 +109,6 @@
 
 /datum/extension/regenerate/proc/tick()
 	shake_interval -= tick_interval
-	world << "ticking, Healing by [heal_amount * tick_step]"
 	var/remaining_heal = user.heal_overall_damage(heal_amount * tick_step, BRUTE)
 	if (remaining_heal)
 		user.heal_overall_damage(heal_amount * tick_step * burn_heal_mult, BURN)
@@ -128,7 +123,6 @@
 
 
 /datum/extension/regenerate/proc/finish()
-	world << "regen finishing at finish time [finish_time]"
 	var/obj/machinery/marker/M = get_marker()
 	//Lets finish up. The limb regrowing animations should be done by now
 	//Here we actually create the freshly grown limb
@@ -138,7 +132,6 @@
 		var/obj/item/organ/O = new limb_path(user)
 		O.max_damage *= user.species.limb_health_factor //TODO future: Factor this into organ creation?
 		organ_data["descriptor"] = O.name
-		user << "<span class='notice'>You feel a slithering sensation as your [O.name] reforms.</span>"
 
 		if (limb_lasting_damage)
 			user.adjustLastingDamage(O.max_damage*limb_lasting_damage)
