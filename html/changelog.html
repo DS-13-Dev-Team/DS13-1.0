@@ -59,6 +59,47 @@
 		
 		-->
 		<div class="commit sansserif">
+			<h2 class="date">02 January 2021</h2>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed Spawn Menu bugging out and refusing to open.</li>
+				<li class="rscadd">In case of destruction of current spawn point, Marker will be set as one and a warning will be shown in necrochat.</li>
+				<li class="bugfix">Fixed being able to unsecure buildable turrets.</li>
+			</ul>
+			<h3 class="author">Nanako updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added the Meddle spell, a way for signals to interact with the environment in a variety of minor mischievous ways. Try it out on everything you see!</li>
+				<li class="rscadd">Added the RIG retraction device, which allows powering down and retracting someone else's rig, as long as they don't object. Intended for medical use, and found in medical, surgery and emergency closets</li>
+				<li class="tweak">Powering down a RIG now takes half as much time as sealing</li>
+				<li class="rscadd">Added the Riot RIG, a tough and heavy suit with extra melee protection.</li>
+				<li class="tweak">RIG chest and boots can no longer be removed while the RIG is active</li>
+				<li class="rscadd">Reworked and standardised suit storage slots, to allow a much wider variety of things, including pouches, guns, tools, tanks, et al.</li>
+				<li class="bugfix">Fixed kinesis tether not visually attaching to the target</li>
+				<li class="bugfix">Fixed punishment not working correctly when using kinesis to throw a marker shard into disposals.</li>
+			</ul>
+			<h3 class="author">REsident55 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="soundadd">External doors (the red ones!) as well as high security and vault doors have new Dead Space heavy door sounds.</li>
+				<li class="soundadd">Lightswitches and buttons have new Dead Space beep sounds.</li>
+				<li class="soundadd">All vending machines have new Dead Space browsing and purchase sounds.</li>
+				<li class="soundadd">A variety of Dead Space sounds for biotanks, and one for recycler interactions too.</li>
+				<li class="bugfix">Fixed bad punctuation in recycling tank interactions.</li>
+				<li class="bugfix">Removed some unused duplicate .oggs from the files, every little helps.</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed a present bug where pulse rifles would not accept HV magazines.</li>
+				<li class="bugfix">Fixed an issue in piping and power which caused issues in medical isolation.</li>
+				<li class="bugfix">Fixed an issue in the CSCIO's office where two consoles weren't able to be interacted with.</li>
+				<li class="bugfix">Increased SMO's office to fix a similar issue as above.</li>
+				<li class="bugfix">Fixed the missing taser from the CSECO's locker.</li>
+				<li class="bugfix">Fixed an accidental duplication of RIG spawns in the CSECO locker.</li>
+				<li class="rscdel">Removed the flash from base locker spawns. Will be re-added when they are fixed.</li>
+				<li class="spellcheck">Fixed the door names of the Forensics Lab and Cryogenic Isolation in the Brig.</li>
+				<li class="maptweak">Minor adjustments to SMO and CSCIO's office to make them feel a little more fancy.</li>
+				<li class="tweak">Moderately increased the Heavy Pulse Rifle's accuracy, minorly increased the damage factor, heat capacity and overheat cooldown.</li>
+			</ul>
+
 			<h2 class="date">06 December 2020</h2>
 			<h3 class="author">Jeser updated:</h3>
 			<ul class="changes bgimages16">
@@ -222,110 +263,6 @@
 				<li class="tweak">Altered ERT join time from 1 minute to 3 minutes.</li>
 				<li class="maptweak">Made several, much-needed changes to the evacuation site.</li>
 				<li class="experiment">Experimental fix for ERT's not spawning when called.</li>
-			</ul>
-
-			<h2 class="date">20 October 2020</h2>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Chemical Reagent: Phlogiston, which upon mixing, unleashes a spreading and debilitating Phoron fire. Made with 1u Aluminum, Phoron and Sulphuric Acid, results in 1u.</li>
-				<li class="rscadd">Chemical Reagent: Vecuronium Bromide, one of the most powerful paralytics. It will reduce someone's voice to whispers and will near-instantly paralyze them. Made with 1u Ethanol, and 2u of Mercury and Hydrazine. Results in 2u.</li>
-				<li class="rscadd">Peridaxon pill bottles added to the medical vendors.</li>
-				<li class="tweak">Slightly increased metabolism rate of Peridaxon.</li>
-				<li class="tweak">Minorly lowered the amount of injected Chloral Hydrate required before a person is absolutely knocked out.</li>
-				<li class="tweak">Moderately increased the metabolism rate of Inaprovaline.</li>
-				<li class="tweak">Restored metabolism variable on Tricordrazine. It is now .3 ticks slower than Bicaridine or Kelotane.</li>
-				<li class="tweak">Slightly increased the metabolizing rates on Bicaridine and Kelotane.</li>
-				<li class="tweak">Various edits to Medical vending contraband.</li>
-				<li class="experiment">Experimental: Increased maximum stack amount for trauma kits and bruise packs by 10 each.</li>
-				<li class="experiment">Significantly reduced the possibility of lung rupture, puncture or collapse in unpressurized/inhospitable areas per tick.</li>
-				<li class="experiment">Moderately increased growth rate of the growth tanks in the BPL.</li>
-				<li class="rscdel">Removed the ability to swipe for nuclear codes. Why would you use this?</li>
-				<li class="bugfix">Fixed Administrative Shuttle not having a transit place.</li>
-				<li class="bugfix">Fixed people getting stuck on the evacuation site.</li>
-				<li class="bugfix">Fixed people not able to get hammered on the evacuation site.</li>
-				<li class="tweak">Altered ERT join time from 1 minute to 3 minutes.</li>
-				<li class="maptweak">Made several, much-needed changes to the evacuation site.</li>
-				<li class="experiment">Experimental fix for ERT's not spawning when called.</li>
-			</ul>
-
-			<h2 class="date">17 October 2020</h2>
-			<h3 class="author">Nanako updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Divider puppets can no longer speak common, but will speak on the necrochat instead. Their body will make telltale wailing sounds when they do, so keeping quiet is key to going unnoticed.</li>
-				<li class="rscadd">Added an audible new Signal Ability!</li>
-				<li class="rscadd">Necromorphs now take 10% of incoming damage as Lasting Damage, which does not heal and effectively reduces their maximum health.</li>
-				<li class="tweak">Slightly buffed the max health of divider, spitter, slasher, leaper and lurker, to partially compensate for the above.</li>
-				<li class="rscadd">Added two new necromorph healing spells - one for signal, and one for marker. Both come with their own drawbacks, but can regrow lost limbs on live necromorphs.</li>
-			</ul>
-			<h3 class="author">Snypehunter007 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Given all bridge staff general belts.</li>
-				<li class="rscadd">Added a divet to the First Lieutenant and Bridge Ensigns belts.</li>
-			</ul>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Total biomass requirements for Ubermorph lowered from 4500 to 3825</li>
-				<li class="imageadd">New skybox background.</li>
-			</ul>
-			<h3 class="author">aguyiguess updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Renamed Unitologists to Zealots.</li>
-			</ul>
-
-			<h2 class="date">10 October 2020</h2>
-			<h3 class="author">Jeser updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed charge not dealing damage to lying humans.</li>
-			</ul>
-			<h3 class="author">Nanako updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed issues where cyst rotation wouldn't work in certain circumstances. It should now be fully reliable unless the chat entry area is focused</li>
-				<li class="bugfix">Exploder is back and explodier than ever!</li>
-				<li class="tweak">Object-based shooting abilities now hit a random part of the target instead of always the chest. This currently affects detonator, harvester, and cyst</li>
-				<li class="bugfix">Fixed the rivet gun's fragmentate mode not working.</li>
-				<li class="tweak">Buffed the rivet fragments' damage, from 1.8 to 2.2</li>
-				<li class="bugfix">Fixed an error message about solnet when spawning as an observer or editing your character.</li>
-				<li class="tweak">The discord button in the UI is now normally colored.</li>
-				<li class="rscdel">Removed the Lore button from the topright. It contained bay specific stuff which isn't relevant for us.</li>
-				<li class="bugfix">Fixed detonator crate being wrongly named in cargo interface.</li>
-				<li class="tweak">Majorly increased radiation resistance on the engineering rig.  Dedicated radsuits are still slightly better though.</li>
-				<li class="tweak">Generic pouches now have more reasonable storage capacity</li>
-				<li class="tweak">Handcuffs now work on people wearing rigs. This feature was originally designed on baycode where rigs were a rare item</li>
-				<li class="bugfix">Fixed sheets in storages getting stuck on screen when merging</li>
-				<li class="tweak">Material stacks can now fit inside ordinary storage compartments.</li>
-				<li class="tweak">Rebalanced tool degradation, power use, and failure rates, to generally be more forgiving. Chance of critical failures especially majorly reduced.</li>
-				<li class="tweak">Construction skill is now factored into tool operations when crafting items.</li>
-				<li class="tweak">Hauling skill is now factored into worktime and failure rates when digging out rock walls on aegis VII.</li>
-				<li class="tweak">Brute's slam attack now deals much more damage to dense objects, especially walls.</li>
-				<li class="tweak">Brute's biobomb attack is now a bit faster to fire and deals more damage.</li>
-				<li class="tweak">Leaper's tailstrike can no longer hit walls</li>
-				<li class="tweak">Leaper's biomass cost reduced from 80 to 75</li>
-				<li class="tweak">Cysts will no longer fire at projectiles or freshly severed limbs</li>
-				<li class="bugfix">Divider puppet now properly counts as a necromorph, and won't be attacked by traps.</li>
-				<li class="bugfix">Fixed some cases where girders were almost impossible to break</li>
-				<li class="tweak">Throwing items to propel yourself in space now always works</li>
-				<li class="bugfix">Fixed issues of getting stuck when launching out of disposals</li>
-				<li class="tweak">Tier IV Necromorphs are now spawned with total biomass instead of spending your storage. Total biomass includes the mass currently invested in necromorphs and corruption nodes, so there is no requirement to save up a lump sum.</li>
-			</ul>
-			<h3 class="author">Terror4000rus updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed ghost's prefix about the characters real name. So, no more things like '(F)Cody Green/(Unknown(as Cody Green): Cody Green screams!' The prefix will appear only if the character's visual name is 'Unknown' or 'Unknown (as not-real-name)'.</li>
-			</ul>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed an issue where in some instances the end of round music would suddenly switch track. Simplified the code it runs on, and this issue should no longer occur.</li>
-				<li class="bugfix">Fixed a bug where Necromorphs were erroneously counted as surviving crew at the end of the round.</li>
-				<li class="bugfix">Fixed a bug where anyone who would have escaped being marked as marooned on the USG Ishimura.</li>
-				<li class="bugfix">Fixed an uncommon issue where players would be randomly teleported into z-levels with no movement possible at all, if they reached the edge of the level. i.e. Aegis VII.</li>
-				<li class="bugfix">Fixed only suit cyclers being present in Aegis Engineering and Medical Post. One of them is now a cycler, the other a storage unit.</li>
-				<li class="bugfix">Fixed an issue where alive mobs weren't counted as surviving or evacuated crew if the player had ghosted before the calculations occur.</li>
-				<li class="tweak">Windows for the escape shuttles are now indestructible.</li>
-				<li class="rscadd">Three new end-of-round statistics added as well as variations.</li>
-				<li class="rscadd">All of the ERT shuttles are now marked post-round safezones. This adds onto the escape methods, if you were inclined to give that a shot.</li>
-				<li class="rscadd">Added teleportation if anyone runs out of a shuttle while it is in transit. Should you do this, you will now be warped into space, and your death will be assured. Don't do this.</li>
-				<li class="experiment">Rework of how escape shuttles work and act. Those who are in the pods now, will be able to walk around on a planetary landing site. If you're really lucky, it won't be infested.</li>
-				<li class="experiemnt">Experimental fix for laptops, tablets and PDA's refusing to work after evacuating.</li>
-				<li class="wip">Added in appropriate area and landmarks for the Administrative Shuttle. The code for this will likely be included in the same update by KMC.</li>
 			</ul>
 		</div>
 
