@@ -41,7 +41,8 @@
 /obj/structure/closet/secure_closet/medical2/WillContain()
 	return list(
 		/obj/item/weapon/tank/anesthetic = 3,
-		/obj/item/clothing/mask/breath/medical = 3
+		/obj/item/clothing/mask/breath/medical = 3,
+		/obj/item/device/rig_remover = 2
 	)
 
 /obj/structure/closet/secure_closet/medical3
@@ -66,7 +67,8 @@
 		/obj/item/device/healthanalyzer,
 		/obj/item/taperoll/medical,
 		/obj/item/weapon/storage/belt/medical,
-		/obj/item/clothing/glasses/hud/health
+		/obj/item/clothing/glasses/hud/health,
+		/obj/item/device/rig_remover
 	)
 
 /obj/structure/closet/secure_closet/medical4
@@ -91,7 +93,8 @@
 		/obj/item/device/healthanalyzer,
 		/obj/item/taperoll/medical,
 		/obj/item/weapon/storage/belt/medical,
-		/obj/item/clothing/glasses/hud/health
+		/obj/item/clothing/glasses/hud/health,
+		/obj/item/device/rig_remover
 	)
 
 /obj/structure/closet/secure_closet/SMO
@@ -116,13 +119,14 @@
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/radio/headset/heads/smo,
 		/obj/item/taperoll/medical,
-		/obj/item/device/flash,
+//		/obj/item/device/flash,
 		/obj/item/device/flashlight,
 		/obj/item/device/flashlight/pen,
 		/obj/item/device/healthanalyzer,
 		/obj/item/weapon/storage/belt/medical,
 		/obj/item/clothing/glasses/hud/health,
-		/obj/item/weapon/reagent_containers/hypospray/vial
+		/obj/item/weapon/reagent_containers/hypospray/vial,
+		/obj/item/device/rig_remover
 	)
 
 /obj/structure/closet/secure_closet/chemical

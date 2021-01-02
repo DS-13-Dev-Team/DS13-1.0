@@ -106,6 +106,11 @@
 
 	update_icon()
 
+/obj/machinery/floodlight/meddle()
+	if(on)
+		turn_off(1)
+	else
+		turn_on(1)
 
 /obj/machinery/floodlight/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(isScrewdriver(W))

@@ -261,26 +261,20 @@
 
 	if (src.stat == DEAD || (XRAY in mutations) || (src.sight_mode & BORGXRAY))
 		set_sight(sight|SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		set_see_in_dark(8)
 		set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 	else if ((src.sight_mode & BORGMESON) && (src.sight_mode & BORGTHERM))
 		set_sight(sight|SEE_TURFS|SEE_MOBS)
-		set_see_in_dark(8)
 		set_see_invisible(SEE_INVISIBLE_NOLIGHTING)
 	else if (src.sight_mode & BORGMESON)
 		set_sight(sight|SEE_TURFS)
-		set_see_in_dark(8)
 		set_see_invisible(SEE_INVISIBLE_NOLIGHTING)
 	else if (src.sight_mode & BORGMATERIAL)
 		set_sight(sight|SEE_OBJS)
-		set_see_in_dark(8)
 	else if (src.sight_mode & BORGTHERM)
 		set_sight(sight|SEE_MOBS)
-		set_see_in_dark(8)
 		set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 	else if (src.stat != DEAD)
 		set_sight(sight&(~SEE_TURFS)&(~SEE_MOBS)&(~SEE_OBJS))
-		set_see_in_dark(8) 			 // see_in_dark means you can FAINTLY see in the dark, humans have a range of 3 or so, tajaran have it at 8
 		set_see_invisible(SEE_INVISIBLE_LIVING) // This is normal vision (25), setting it lower for normal vision means you don't "see" things like darkness since darkness
 							 // has a "invisible" value of 15
 

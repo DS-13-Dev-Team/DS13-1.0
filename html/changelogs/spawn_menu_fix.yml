@@ -1,0 +1,7 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed Spawn Menu bugging out and refusing to open."
+  - rscadd: "In case of destruction of current spawn point, Marker will be set as one and a warning will be shown in necrochat."

@@ -28,6 +28,7 @@
 	leap_state = "head_leap"
 	attack_state = "head_attack"
 
+
 /mob/living/simple_animal/necromorph/divider_component/head/Initialize()
 	.=..()
 	add_modclick_verb(KEY_CTRLALT, /mob/living/simple_animal/necromorph/divider_component/head/proc/takeover_verb)
@@ -141,15 +142,17 @@
 
 
 
-/*
-	Special head subtype, used only on puppets
 
-*/
 /obj/item/organ/external/head/simple/divider
 	base_miss_chance = 45
+	can_regrow = FALSE
 
+/*
+	Special head subtype, used only on puppets
+*/
 /obj/item/organ/external/head/simple/divider/human
 	icon_name = "head_human"
+	can_regrow = FALSE
 
 
 /obj/item/organ/external/head/simple/divider/New(var/mob/living/carbon/holder, var/datum/dna/given_dna)

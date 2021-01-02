@@ -47,6 +47,11 @@
 	..()
 	return
 
+
+/obj/machinery/papershredder/meddle()
+	playsound(src.loc, 'sound/items/pshred.ogg', 75, 1)
+	.=..()
+
 /obj/machinery/papershredder/verb/empty_contents()
 	set name = "Empty bin"
 	set category = "Object"

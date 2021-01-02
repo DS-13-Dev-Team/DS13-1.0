@@ -45,7 +45,7 @@
 	icon_state = "advanced_saw"
 	hitsound = WORKSOUND_CIRCULAR_SAW
 	worksound = WORKSOUND_CIRCULAR_SAW
-	force = WEAPON_FORCE_ROBUST
+	force = WEAPON_FORCE_DANGEROUS
 	matter = list(MATERIAL_STEEL = 1200, MATERIAL_PLASTIC = 800)
 	tool_qualities = list(QUALITY_SAWING = 50, QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 40)
 	degradation = 0.06
@@ -85,7 +85,6 @@
 	toggleable = TRUE
 	atom_flags = ATOM_FLAG_NO_BLOOD
 	item_flags = ITEM_FLAG_NO_EMBED
-
 
 /obj/item/weapon/tool/saw/plasma/update_icon()
 	if (switched_on)

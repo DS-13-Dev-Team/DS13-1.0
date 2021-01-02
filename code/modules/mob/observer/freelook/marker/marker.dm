@@ -6,7 +6,7 @@
 	name = "Marker"
 	icon = 'icons/obj/marker_giant.dmi'
 	icon_state = "marker_giant_dormant"
-	pixel_x = -33
+	pixel_x = -70 //Previously 33
 	plane = ABOVE_HUMAN_PLANE
 	density = TRUE
 	anchored = TRUE
@@ -280,9 +280,12 @@
 		for (var/datum/necrospawn/N in shop.possible_spawnpoints)
 			if (N.spawnpoint == source)
 				shop.possible_spawnpoints.Remove(N)
-
-
-
+				if (shop.selected_spawn == N)
+					var/datum/necrospawn/N_Marker = shop.possible_spawnpoints[1]
+					shop.selected_spawn = N_Marker
+					message_necromorphs("<span class='necromarker'>[source] was destroyed, current spawnpoint was set to [N_Marker.spawnpoint].</span>")
+				break
+		SSnano.update_uis(shop)
 
 
 //Marker spawning landmarks

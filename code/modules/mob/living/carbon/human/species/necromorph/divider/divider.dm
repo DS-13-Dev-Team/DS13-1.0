@@ -4,15 +4,23 @@
 	mob_type = /mob/living/carbon/human/necromorph/divider
 	blurb = "A bizarre walking horrorshow, slow but extremely durable. On death, it splits into five smaller creatures, in an attempt to find a new body to control. The divider is hard to kill, and has several abilities which excel at pinning down a lone target."
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/divider)
-	total_health = 210
+	total_health = 225
 	biomass = 150
 	mass = 120
+	limb_health_factor = 1.0
 
 	evasion = -10	//Slow and predictable
 
 	override_limb_types = list(
+
+	)
+	has_limbs = list(
 	BP_HEAD =  list("path" = /obj/item/organ/external/head/simple/divider, "height" = new /vector2(2,2.4)),
-	BP_TORSO =  list("path" = /obj/item/organ/external/chest/simple/divider, "height" = new /vector2(1,2))
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple/divider, "height" = new /vector2(1,2)),
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple/divider, "height" = new /vector2(0.8,2)),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple/divider, "height" = new /vector2(0.8,2)),
+	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple/divider, "height" = new /vector2(0,1)),
+	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple/divider, "height" = new /vector2(0,1))
 	)
 
 	view_range = 9//The world looks small from up here
@@ -24,7 +32,6 @@
 	lying_rotation = 90
 	pixel_offset_x = -8
 	single_icon = FALSE
-	evasion = 0	//No natural evasion
 	spawner_spawnable = FALSE
 
 

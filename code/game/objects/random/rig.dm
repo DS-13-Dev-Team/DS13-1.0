@@ -9,6 +9,7 @@
 				/obj/item/weapon/rig/engineering,
 				/obj/item/weapon/rig/vintage = 0.5,
 				/obj/item/weapon/rig/advanced = 0.5,
+				/obj/item/weapon/rig/riot = 0.5,
 				/obj/item/weapon/rig/industrial,
 				/obj/item/weapon/rig/eva,
 				/obj/item/weapon/rig/civilian))

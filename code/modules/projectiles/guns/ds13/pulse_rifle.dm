@@ -12,7 +12,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	w_class = ITEM_SIZE_HUGE
 	handle_casings = CLEAR_CASINGS
 	magazine_type = /obj/item/ammo_magazine/pulse
-	allowed_magazines = /obj/item/ammo_magazine/pulse
+	allowed_magazines = list(/obj/item/ammo_magazine/pulse, /obj/item/ammo_magazine/pulse/hv)
 	load_method = MAGAZINE
 	caliber = "pulse"
 	slot_flags = SLOT_BACK
@@ -52,6 +52,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 /obj/item/ammo_casing/pulse
 	name = "pulse round"
 	desc = "A low caliber round designed for the SWS motorized pulse rifle"
+	caliber = "pulse"
 	icon_state = "empshell"
 	spent_icon = "empshell-spent"
 	projectile_type  = /obj/item/projectile/bullet/pulse
@@ -99,12 +100,14 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 /obj/item/ammo_casing/pulse/hv
 	name = "high velocity pulse round"
 	desc = "A low caliber hypersonic round designed for the SWS motorized pulse rifle"
+	caliber = "high velocity pulse"
 	projectile_type  = /obj/item/projectile/bullet/pulse/hv
 
 
 /obj/item/ammo_magazine/pulse/hv
 	name = "magazine (high velocity rounds)"
 	desc = "With a distinctive \"bell and stock\" design, pulse magazines can be inserted and removed from the Pulse Rifle with minimal effort and risk. This one contains hypersonic rounds, unsafe for naval usage."
+	caliber = "high velocity pulse"
 	ammo_type = /obj/item/ammo_casing/pulse/hv
 	max_ammo = 100
 

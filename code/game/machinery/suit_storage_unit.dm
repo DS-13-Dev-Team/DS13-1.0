@@ -70,6 +70,7 @@
 	suit_type = /obj/item/clothing/suit/space/void/engineering/alt
 	helmet_type = /obj/item/clothing/head/helmet/space/void/engineering/alt
 	mask_type = /obj/item/clothing/mask/breath
+	req_access = list(access_research)
 
 /obj/machinery/suit_storage_unit/engineering/salvage
 	suit_type = /obj/item/clothing/suit/space/void/engineering/salvage

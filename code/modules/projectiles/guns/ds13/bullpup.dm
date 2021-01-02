@@ -37,6 +37,7 @@
 /obj/item/ammo_casing/bullpup
 	name = "bullpup round"
 	desc = "A low caliber round designed for the SWS motorized pulse rifle"
+	caliber = "bullpup"
 	icon_state = "rifle_casing"
 	spent_icon = "rifle_casing-spent"
 	projectile_type  = /obj/item/projectile/bullet/bullpup

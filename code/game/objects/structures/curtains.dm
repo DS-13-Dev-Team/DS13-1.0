@@ -36,6 +36,9 @@
 		plane = OBJ_PLANE
 		layer = ABOVE_WINDOW_LAYER
 
+/obj/structure/curtain/meddle()
+	toggle()
+
 /obj/structure/curtain/black
 	name = "black curtain"
 	color = "#222222"
