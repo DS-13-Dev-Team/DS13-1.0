@@ -212,7 +212,10 @@ var/list/_client_preferences_by_type
 	description = "Show End Titles"
 	key = "SHOW_CREDITS"
 
-
+/datum/client_preference/floating_messages
+	description = "Floating chat messages"
+	key = "FLOATING_CHAT"
+	options = list(GLOB.PREF_HIDE, GLOB.PREF_SHOW)
 
 /********************
 * General Staff Preferences *
