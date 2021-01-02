@@ -12,7 +12,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	w_class = ITEM_SIZE_HUGE
 	handle_casings = CLEAR_CASINGS
 	magazine_type = /obj/item/ammo_magazine/pulse
-	allowed_magazines = /obj/item/ammo_magazine/pulse
+	allowed_magazines = list(/obj/item/ammo_magazine/pulse, /obj/item/ammo_magazine/pulse/hv)
 	load_method = MAGAZINE
 	caliber = "pulse"
 	slot_flags = SLOT_BACK

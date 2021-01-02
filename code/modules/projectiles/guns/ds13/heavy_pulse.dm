@@ -29,8 +29,8 @@
 	mag_insert_sound = 'sound/weapons/guns/interaction/pulse_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'
 	one_hand_penalty = 10	//Don't try to fire this with one hand
-	accuracy = 15
-	damage_factor = 1.15
+	accuracy = 17
+	damage_factor = 1.20
 
 	projectile_type  = /obj/item/projectile/bullet/pulse
 
@@ -57,7 +57,7 @@
 	var/overheating = FALSE
 
 	//While we're overheating, we cooldown this much faster
-	var/overheat_cooldown_mult = 1.25
+	var/overheat_cooldown_mult = 1.30
 
 	//When overheating, we exit the overheat state if heat drops below this value
 	var/overheat_min = 0.5
@@ -66,10 +66,10 @@
 	var/cooldown_per_second	=	0.004
 
 	//Heat gained per bullet fired
-	var/heat_per_shot = 0.005
+	var/heat_per_shot = 0.004
 
 	//Heat gained each time the trigger is pulled
-	var/heat_per_burst = 0.07
+	var/heat_per_burst = 0.05
 
 	//Firing delay is divided by 1 + (heat * this), making the gun speed up as it gets closer to max heat
 	var/heat_delay_multiplier = 2
