@@ -434,7 +434,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 		return
 	to_chat(C, "<span class='notice'>We will attempt to regenerate our form.</span>")
 	C.status_flags |= FAKEDEATH		//play dead
-	C.UpdateLyingBuckledAndVerbStatus()
+	C.update_lying_buckled_and_verb_status()
 	C.remove_changeling_powers()
 
 	C.emote("gasp")
@@ -460,7 +460,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	// remove our fake death flag
 	C.status_flags &= ~(FAKEDEATH)
 	// let us move again
-	C.UpdateLyingBuckledAndVerbStatus()
+	C.update_lying_buckled_and_verb_status()
 	// re-add out changeling powers
 	C.make_changeling()
 	// sending display messages
@@ -501,7 +501,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	C.SetStunned(0)
 	C.SetWeakened(0)
 	C.lying = 0
-	C.UpdateLyingBuckledAndVerbStatus()
+	C.update_lying_buckled_and_verb_status()
 
 	src.verbs -= /mob/proc/changeling_unstun
 	spawn(5)	src.verbs += /mob/proc/changeling_unstun

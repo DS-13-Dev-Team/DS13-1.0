@@ -78,6 +78,7 @@
 	blood_oxy = FALSE
 	reagent_tag = IS_NECROMORPH
 	stability = 0.8
+	max_heal_threshold	=	1	//The few necros who can regenerate, are not constrained by wound size
 
 	var/list/initial_health_values	//This list is populated once for each species, when a necromorph of that type is created
 	//It stores the starting max health values of each limb this necromorph has
@@ -289,3 +290,10 @@
 	\n\
 	Check the Abilities tab, use the Help ability to find out what your controls and abilities do!")
 
+
+
+/datum/species/necromorph/can_autoheal(var/mob/living/carbon/human/H, var/dam_type, var/datum/wound/W)
+	if (healing_factor > 0)
+		return TRUE
+	else
+		return FALSE

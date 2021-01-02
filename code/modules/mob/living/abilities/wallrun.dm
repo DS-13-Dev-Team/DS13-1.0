@@ -55,15 +55,9 @@
 	var/cached_density
 	var/visual_dir = SOUTH	//Which direction is our sprite facing? This may be different from the normal dir value
 
-	//Bonus stats
-	var/evasion_mod	=	10
-	var/view_range_mod = 1
 
-	//Used to prevent duplicate stacking
-	var/evasion_delta = 0
-	var/view_range_delta = 0
 
-	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1.15)
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1.15, STATMOD_EVASION = 10, STATMOD_VIEW_RANGE = 1)
 	auto_register_statmods = FALSE
 
 /datum/extension/wallrun/New(var/atom/movable/_user)
@@ -77,39 +71,6 @@
 
 
 
-/datum/extension/wallrun/proc/apply_stats()
-	if (!user)
-		return
-
-	if (!evasion_delta)
-		user.evasion  += evasion_mod
-		evasion_delta  += evasion_mod
-
-	register_statmods()
-
-	if (!view_range_delta)
-		user.view_range += view_range_mod
-		view_range_delta = view_range_mod
-
-	if (isnull(cached_density))
-		cached_density = user.density
-		user.density = FALSE
-
-/datum/extension/wallrun/proc/unapply_stats()
-
-	if (evasion_delta)
-		user.evasion  -= evasion_delta
-		evasion_delta  = 0
-
-	unregister_statmods()
-
-	if (view_range_delta)
-		user.view_range -= view_range_delta
-		view_range_delta = 0
-
-	if (!isnull(cached_density))
-		user.density = cached_density
-		cached_density = null
 
 
 
@@ -160,7 +121,7 @@
 
 
 	A.pass_flags |= passflag_delta
-	apply_stats()
+	register_statmods()
 
 	mount_turf = get_mount_target_turf(A, target)
 
@@ -246,10 +207,10 @@
 		GLOB.death_event.unregister(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
 
 
+
 	mountpoint = null
 
 	A.pass_flags -= passflag_delta
-	unapply_stats()
 
 
 //Called to end mounting and return to standing on the floor
@@ -258,6 +219,7 @@
 		user.visible_message(SPAN_NOTICE("[A] climbs down from \the [mountpoint]"))
 	unmount_animation()
 	unmount()
+	unregister_statmods()
 
 //Called when unmounting as part of some other action, like performing a leap off a wall
 /datum/extension/wallrun/proc/unmount_silent()
@@ -274,7 +236,7 @@
 
 
 	A.animate_to_default(0)
-
+	unregister_statmods()
 
 
 /datum/extension/wallrun/proc/cache_data()
