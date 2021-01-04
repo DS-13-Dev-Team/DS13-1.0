@@ -25,12 +25,12 @@
 	Avoid fire though."
 
 	//Health and Defense
-	total_health = 250
+	total_health = 225
 	torso_damage_mult = 0.5 //Hitting centre mass more fine for hunter
 	can_obliterate = FALSE
 	healing_factor = 4	//Minor constant healing
 	dismember_mult = 1
-	biomass = 350
+	biomass = 400
 	mass = 250
 	limb_health_factor = 1	//Not as fragile as a slasher
 	virus_immune = 1

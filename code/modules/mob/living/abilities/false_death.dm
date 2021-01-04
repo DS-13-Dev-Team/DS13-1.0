@@ -15,7 +15,7 @@
 	var/mob/living/carbon/human/user
 	var/power = 1
 	var/cooldown = 2 MINUTES
-	var/duration = 20 SECONDS
+	var/duration = 30 SECONDS
 
 	var/started_at
 	var/stopped_at
