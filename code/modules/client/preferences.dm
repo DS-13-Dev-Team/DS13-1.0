@@ -31,7 +31,7 @@ datum/preferences
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
 
-	var/list/gear_list = list()//Custom/fluff item loadouts.
+	var/list/gear_list//Custom/fluff item loadouts.
 	var/gear_slot = 1  //The current gear save slot
 
 	var/datum/extension/loadout/loadout
@@ -55,7 +55,7 @@ datum/preferences
 
 /datum/preferences/proc/reset_gear_list()
 	gear_list = list()
-	for (var/i in 1 to config.loadout_slots)
+	for (var/i in 1 to LOADOUT_SLOTS)
 		gear_list += list(list())
 
 /datum/preferences/proc/load_and_update_character(var/slot)
@@ -124,6 +124,7 @@ datum/preferences
 			open_load_dialog(usr)
 			return 1
 	else if(href_list["changeslot"])
+		world << "Attempting to change slot [href_list["changeslot"]]"
 		load_character(text2num(href_list["changeslot"]))
 		sanitize_preferences()
 		close_load_dialog(usr)
