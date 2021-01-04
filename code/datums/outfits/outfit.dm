@@ -147,7 +147,6 @@ var/list/outfits_decls_by_type_
 
 /decl/hierarchy/outfit/proc/equip_base(mob/living/carbon/human/H, var/equip_adjustments, var/overwrite = FALSE, var/dummy = FALSE)
 	pre_equip(H)
-	world << "[src] doing equip_base [dummy]"
 	//Start with uniform,suit,backpack for additional slots
 	if(uniform)
 		if (overwrite && H.w_uniform)
@@ -273,10 +272,8 @@ var/list/outfits_decls_by_type_
 
 //Wrapper for creating, so that we can manipulate the items
 /decl/hierarchy/outfit/proc/create_item(var/path, var/location, var/dummy = FALSE)
-	world << "[src] doing create_item [path] D:[dummy] 1"
 	var/datum/thing = path
 	if (dummy && initial(thing.implements_dummy))
-		world << "[src] doing create_item [dummy] 2"
 		return new path(location, dummy = TRUE)
 	else
 		return new path(location)

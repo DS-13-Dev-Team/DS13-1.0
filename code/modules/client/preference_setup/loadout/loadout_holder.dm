@@ -196,27 +196,22 @@
 //This takes a gear item into our list, after checking it for validity
 /datum/extension/loadout/proc/add_gear(var/datum/gear/G)
 	if (!G)
-		world << "Failed to add, no gear"
 		return FALSE
 
 	if (G.exclusion_tags.len)
 		var/list/shared = G.exclusion_tags & gear_tags
 		if (shared && shared.len)
-			world << "Failed to add, exclusion tags"
 			return FALSE	//We have one of the tags which excludes it
 
 	if (G.required_tags.len)
 		var/list/shared = G.required_tags & gear_tags
 		if (!shared || shared.len != G.required_tags.len)
-			world << "Failed to add, required tags"
 			return FALSE
 
 	if (points < G.cost)
-		world << "Failed to add, no points"
 		return FALSE
 
 	if (G.patron_only && !is_patron)
-		world << "Failed to add, patron only"
 		return FALSE
 	//TODO: Safety Checks
 
@@ -325,7 +320,6 @@
 	//Right lets start equipping
 
 	//First of all, we equip the base of the outfit
-	world << "[src] doing equip_to_mob [dummy]"
 	outfit.equip_base(H, equip_adjustments, TRUE, dummy = dummy)
 
 

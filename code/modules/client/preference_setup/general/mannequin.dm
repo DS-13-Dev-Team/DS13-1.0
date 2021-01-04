@@ -26,7 +26,6 @@
 	loadout.assignment = player_alt_titles[previewJob.title]
 	loadout.set_human(mannequin)
 	loadout.set_job(previewJob, FALSE)
-	world << "Dressing preview mob"
 	loadout.equip_to_mob(TRUE)
 
 	mannequin.update_icons()

@@ -4,7 +4,6 @@
 /obj/item/modular_computer/New(var/location, var/dummy)
 	src.dummy = dummy
 	if (dummy)
-		world << "Modular computer [src] created as dummy"
 	.=..()
 
 /obj/item/modular_computer/Process()

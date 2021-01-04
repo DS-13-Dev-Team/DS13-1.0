@@ -282,12 +282,8 @@
 	//If the gear is enabled, disable it
 	if((TG.display_name in pref.gear_list[pref.gear_slot]) && pref.loadout.remove_gear(TG))
 		pref.gear_list[pref.gear_slot] -= TG.display_name
-		to_chat(user, SPAN_WARNING("Removing gear [TG] [TG.display_name]"))
 	else if (pref.loadout.add_gear(TG))
 		pref.gear_list[pref.gear_slot] += list(TG.display_name)
-		to_chat(user, SPAN_WARNING("Adding gear [TG] [TG.display_name]"))
-	else
-		to_chat(user, SPAN_WARNING("Failed to toggle gear [TG] [TG.display_name]"))
 
 
 /datum/category_item/player_setup_item/loadout/proc/change_slot(var/newslot)
