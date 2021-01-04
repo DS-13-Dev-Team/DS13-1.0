@@ -46,14 +46,12 @@
 
 	//This must be an integer, and we do -2 since it takes a tick or two to stand up, after awaking
 	var/paralyse_duration = Floor(duration / (MOB_PROCESS_INTERVAL))-2
-	world << "Paralysing for A: [paralyse_duration] B: [duration / (MOB_PROCESS_INTERVAL)] C: [Floor(duration / (MOB_PROCESS_INTERVAL))]"
 	user.Paralyse(paralyse_duration	)
 
 	//Lets schedule the regen
 	var/datum/extension/regenerate/R = regen_type
 	var/regen_time = initial(R.duration)
 
-	world << "Setting do regen in [(duration-regen_time)]"
 	addtimer(CALLBACK(src, /datum/extension/false_death/proc/do_regen), (duration-regen_time))
 
 /datum/extension/false_death/proc/stop()
@@ -73,7 +71,6 @@
 
 
 /datum/extension/false_death/proc/do_regen()
-	world << "Doing regen"
 	set_extension(user, regen_type)
 
 
@@ -84,7 +81,6 @@
 /mob/living/proc/can_false_death()
 	var/datum/extension/false_death/E = get_extension(src, /datum/extension/false_death)
 	if(istype(E))
-		world << "Cant do FD, exists"
 		return FALSE
 
 	return TRUE

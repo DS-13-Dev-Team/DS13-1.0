@@ -8,7 +8,7 @@
 	id = "meddle"
 	desc = "A context sensitive spell which does different things depending on the target. Interfaces with machines, moves items, messes with computers and office appliances. Try it on lots of things!"
 	target_string = "any object"
-	energy_cost = 99999
+	energy_cost = 8
 	require_corruption = FALSE
 	require_necrovision = TRUE
 	autotarget_range = 0
