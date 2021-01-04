@@ -39,9 +39,9 @@
 /datum/click_handler/fullauto/MouseDown(object,location,control,params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["left"])
+		left_mousedown = TRUE
 		if(modifiers["ctrl"] || modifiers["alt"] || modifiers["shift"]) //no firing after using hotkeys
 			return TRUE
-		left_mousedown = TRUE
 		object = resolve_world_target(object, params)
 		if (object)
 			target = object
