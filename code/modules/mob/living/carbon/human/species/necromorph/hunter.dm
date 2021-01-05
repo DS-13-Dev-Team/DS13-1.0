@@ -31,6 +31,7 @@
 	healing_factor = 4	//Minor constant healing
 	dismember_mult = 1
 	biomass = 400
+	require_total_biomass	=	BIOMASS_REQ_T3
 	mass = 250
 	limb_health_factor = 1	//Not as fragile as a slasher
 	virus_immune = 1
