@@ -1,0 +1,4 @@
+author: Terror4000rus
+delete-after: True
+changes: 
+  - bugfix: "If no message given in the signal's whispering, it cancels and refunds."
