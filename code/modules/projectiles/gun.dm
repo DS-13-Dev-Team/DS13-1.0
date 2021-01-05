@@ -327,7 +327,7 @@
 
 
 
-	if(istype(target, /obj/structure/catwalk) || istype(target, /obj/item))
+	if(target.atom_flags & ATOM_FLAG_UNTARGETABLE)
 		target = target.loc
 
 	last_safety_check = world.time

@@ -99,6 +99,8 @@
 	can_block_movement = FALSE
 
 /obj/item/New()
+	atom_flags |= ATOM_FLAG_UNTARGETABLE //items on floor shouldn't be a target for guns
+
 	if (!max_health)
 		if (w_class != ITEM_SIZE_NO_CONTAINER)	//This is infinity, would cause errors
 			max_health = 30 * w_class	//Bigger items are harder to break
