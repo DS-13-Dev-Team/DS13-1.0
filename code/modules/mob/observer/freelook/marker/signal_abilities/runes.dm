@@ -6,7 +6,7 @@
 	energy_cost = 16
 	require_corruption = FALSE
 	autotarget_range = 0
-	LOS_block = FALSE	//This is for spooking people, we want them to see it happen
+	LOS_block = TRUE
 	target_types = list(/turf/simulated)
 
 /datum/signal_ability/runes/on_cast(var/mob/user, var/atom/target, var/list/data)
