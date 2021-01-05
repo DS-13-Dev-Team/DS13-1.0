@@ -327,6 +327,8 @@
 
 
 
+	if(istype(target, /obj/structure/catwalk) || istype(target, /obj/item))
+		target = target.loc
 
 	last_safety_check = world.time
 	var/shoot_time = (burst - 1)* burst_delay

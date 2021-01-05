@@ -1,0 +1,4 @@
+author: Terror4000rus
+delete-after: True
+changes: 
+  - tweak: "If a gun is firing at catwalks or most of items (not structures), its projectiles will not count it as target (no more firing at catwalks)."
