@@ -26,6 +26,7 @@
 	spawner_spawnable = FALSE
 	virus_immune = 1
 	biomass	=	120
+	require_total_biomass	=	BIOMASS_REQ_T2
 	lying_rotation = 90
 	total_health = 100
 
