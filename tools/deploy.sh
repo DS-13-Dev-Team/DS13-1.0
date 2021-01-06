@@ -18,7 +18,7 @@ if [ -d ".git" ]; then
   cp -r .git/logs/* $1/.git/logs/
 fi
 
-cp baystayion.dmb baystaytion.rsc $1/
+cp baystation12.dmb baystation12.rsc $1/
 cp -r _maps/* $1/maps/
 cp -r strings/* $1/strings/
 
