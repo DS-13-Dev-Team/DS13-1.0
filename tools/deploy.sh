@@ -19,7 +19,7 @@ if [ -d ".git" ]; then
 fi
 
 cp baystation12.dmb baystation12.rsc $1/
-cp -r _maps/* $1/maps/
+cp -r maps/* $1/maps/
 cp -r strings/* $1/strings/
 
 #remove .dm files from _maps
