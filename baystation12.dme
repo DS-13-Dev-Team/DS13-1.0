@@ -2440,6 +2440,7 @@
 #include "code\modules\paperwork\handlabeler.dm"
 #include "code\modules\paperwork\paper.dm"
 #include "code\modules\paperwork\paper_bundle.dm"
+#include "code\modules\paperwork\paper_misc.dm"
 #include "code\modules\paperwork\paperbin.dm"
 #include "code\modules\paperwork\papershredder.dm"
 #include "code\modules\paperwork\pen.dm"

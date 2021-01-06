@@ -187,7 +187,6 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 /obj/machinery/photocopier/faxmachine/proc/send_admin_fax(var/mob/sender, var/destination)
 	if(stat & (BROKEN|NOPOWER))
 		return
-
 	use_power(200)
 
 	//recieved copies should not use toner since it's being used by admins only.
@@ -201,6 +200,10 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 		return
+	if(sender.mind)
+		var/datum/extension/earthgov/earthgov = get_extension(sender.mind, /datum/extension/earthgov)
+		if(earthgov)
+			earthgov.on_admin_fax(copyitem, destination)
 
 	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
 	GLOB.adminfaxes += rcvdcopy
