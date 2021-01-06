@@ -4,15 +4,24 @@
 	mob_type = /mob/living/carbon/human/necromorph/divider
 	blurb = "A bizarre walking horrorshow, slow but extremely durable. On death, it splits into five smaller creatures, in an attempt to find a new body to control. The divider is hard to kill, and has several abilities which excel at pinning down a lone target."
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/divider)
-	total_health = 210
+	total_health = 225
 	biomass = 150
+	require_total_biomass	=	BIOMASS_REQ_T2
 	mass = 120
+	limb_health_factor = 1.0
 
 	evasion = -10	//Slow and predictable
 
 	override_limb_types = list(
+
+	)
+	has_limbs = list(
 	BP_HEAD =  list("path" = /obj/item/organ/external/head/simple/divider, "height" = new /vector2(2,2.4)),
-	BP_TORSO =  list("path" = /obj/item/organ/external/chest/simple/divider, "height" = new /vector2(1,2))
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple/divider, "height" = new /vector2(1,2)),
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple/divider, "height" = new /vector2(0.8,2)),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple/divider, "height" = new /vector2(0.8,2)),
+	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple/divider, "height" = new /vector2(0,1)),
+	BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/simple/divider, "height" = new /vector2(0,1))
 	)
 
 	view_range = 9//The world looks small from up here
@@ -24,7 +33,6 @@
 	lying_rotation = 90
 	pixel_offset_x = -8
 	single_icon = FALSE
-	evasion = 0	//No natural evasion
 	spawner_spawnable = FALSE
 
 
@@ -68,9 +76,6 @@
 	modifier_verbs = list(KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/divider_divide),
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/divider_tongue),
 	KEY_ALT = list(/mob/living/carbon/human/proc/divider_arm_swing))
-
-#define LEFT_ARM_OFFSETS	list("[NORTH]" = new /vector2(-64, -10), "[SOUTH]" = new /vector2(-16, -10), "[EAST]" = new /vector2(-36, -14), "[WEST]" = new /vector2(-36, -14))
-#define RIGHT_ARM_OFFSETS	list("[NORTH]" = new /vector2(-28, -10), "[SOUTH]" = new /vector2(-48, -10), "[EAST]" = new /vector2(-40, -14), "[WEST]" = new /vector2(-36,-14))
 
 
 #define DIVIDER_PASSIVE_1	"<h2>PASSIVE: Gestalt Being:</h2><br>\
@@ -275,56 +280,7 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 	set category = "Abilities"
 
 
-	if (!target)
-		target = dir
-
-	var/num_arms = 0
-	var/selected_arm
-	//Alright lets check our arm status first
-	var/obj/item/organ/external/arm/left = get_organ(BP_L_ARM)
-	var/obj/item/organ/external/arm/right = get_organ(BP_R_ARM)
-
-	if (QDELETED(left) || left.is_stump() || left.retracted)
-		left = null
-	else
-		num_arms++
-
-	if (QDELETED(right) || right.is_stump() || right.retracted)
-		right = null
-	else
-		num_arms++
-
-	if (num_arms <= 0)
-		to_chat(src, SPAN_DANGER("You have no arms to swing!"))
-		return
-
-	else if (num_arms == 1)
-		if (left)
-			selected_arm = BP_L_ARM
-		else
-			selected_arm = BP_R_ARM
-	else
-		//If we have both arms, then the user gets to choose which to swing based on their selected hand
-		if (hand)
-			selected_arm = BP_L_ARM
-		else
-			selected_arm = BP_R_ARM
-
-
-
-	var/swing_dir = CLOCKWISE
-	var/effect
-	//Alright we have finally chosen what arm to swing with, what will that affect?
-	if (selected_arm == BP_L_ARM)
-		swing_dir = CLOCKWISE
-		effect = /obj/effect/effect/swing/divider_left
-	else
-		swing_dir = ANTICLOCKWISE
-		effect = /obj/effect/effect/swing/divider_right
-
-
-	//Okay lets actually start the swing
-	.=swing_attack(swing_type = /datum/extension/swing/divider_arm,
+	.=swing_attack(swing_type = /datum/extension/swing/arm/divider,
 	source = src,
 	target = target,
 	angle = 130,
@@ -332,11 +288,9 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 	duration = 0.85 SECOND,
 	windup = 0.4 SECONDS,
 	cooldown = 3.5 SECONDS,
-	effect_type = effect,
 	damage = 20,
 	damage_flags = DAM_EDGE,
-	stages = 8,
-	swing_direction = swing_dir)
+	stages = 8)
 
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 2)
@@ -345,71 +299,44 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 		'sound/effects/attacks/big_swoosh_3.ogg',))
 		playsound(src, sound_effect, VOLUME_LOW, TRUE)
 
-/datum/extension/swing/divider_arm/windup_animation()
+/datum/extension/swing/arm/divider/windup_animation()
 	var/vector2/back_offset = target_direction.Turn(180) * 16
 	animate(user, pixel_x = user.pixel_x + back_offset.x, pixel_y = user.pixel_y + back_offset.y, easing = BACK_EASING, time = windup * 0.3)
 	var/vector2/forward_offset = target_direction * 24
 	animate(pixel_x = user.pixel_x + forward_offset.x, pixel_y = user.pixel_y + forward_offset.y, easing = QUAD_EASING, time = windup * 0.7)
-	sleep(windup)
+	.=..()
 
-	switch (swing_direction)
-		//Cache the limb used
-		if (CLOCKWISE)
-			limb_used = BP_L_ARM
-		else
-			limb_used = BP_R_ARM
 
-	var/mob/living/carbon/human/H = user
-	//We will temporarily retract the arm from the sprite
-	var/obj/item/organ/external/E = H.get_organ(limb_used)
-	if (E)
-		E.retracted = TRUE
-		H.update_body(TRUE)
 
 	release_vector(back_offset)
 	release_vector(forward_offset)
 
 
-/datum/extension/swing/divider_arm/setup_effect()
+
+/datum/extension/swing/arm/divider/cleanup_effect()
 	.=..()
-	//The parent code will move the effect object to the centre of our sprite, now we will offset it farther to the appropriate shoulder joint
-	var/vector2/offset
-	if (limb_used == BP_L_ARM)
-		offset = LEFT_ARM_OFFSETS["[user.dir]"]
-	else
-		offset = RIGHT_ARM_OFFSETS["[user.dir]"]
-
-	effect.pixel_x += offset.x
-	effect.pixel_y += offset.y
-
-/datum/extension/swing/divider_arm/cleanup_effect()
-	.=..()
-	var/mob/living/carbon/human/H = user
-
 	//Slide back to normal position
-	animate(H, pixel_x = H.default_pixel_x, pixel_y = H.default_pixel_y, time = 5)
-	//Put the arm back now
-	var/obj/item/organ/external/E = H.get_organ(limb_used)
-	if (E)
-		E.retracted = FALSE
-		H.update_body(TRUE)
+	animate(user, pixel_x = user.default_pixel_x, pixel_y = user.default_pixel_y, time = 5)
+
 
 //Swing FX
 /obj/effect/effect/swing/divider_left
 	icon_state = "divider_left"
 	default_scale = 1
-	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
 
 /obj/effect/effect/swing/divider_right
 	icon_state = "divider_right"
 	default_scale = 1
-	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
 
 
 //Extension subtype
-/datum/extension/swing/divider_arm
-	base_type = /datum/extension/swing/divider_arm
-	var/limb_used
+/datum/extension/swing/arm/divider
+	base_type = /datum/extension/swing/arm/divider
+	left = /obj/effect/effect/swing/divider_left
+	right = /obj/effect/effect/swing/divider_right
+
+	offsets_left = list(S_NORTH = new /vector2(-56, -10), S_SOUTH = new /vector2(-24, -10), S_EAST = new /vector2(-36, -14), S_WEST = new /vector2(-36, -14))
+	offsets_right = list(S_NORTH = new /vector2(-28, -10), S_SOUTH = new /vector2(-48, -10), S_EAST = new /vector2(-40, -14), S_WEST = new /vector2(-36,-14))
 
 
 #undef LEFT_ARM_OFFSETS

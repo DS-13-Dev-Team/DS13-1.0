@@ -35,7 +35,7 @@
 
 	handle_actions()
 
-	UpdateLyingBuckledAndVerbStatus()
+	update_lying_buckled_and_verb_status()
 
 	handle_regular_hud_updates()
 
@@ -202,12 +202,10 @@
 
 /mob/living/proc/update_living_sight()
 	set_sight(sight&(~(SEE_TURFS|SEE_MOBS|SEE_OBJS)))
-	set_see_in_dark(initial(see_in_dark))
 	set_see_invisible(initial(see_invisible))
 
 /mob/living/proc/update_dead_sight()
 	set_sight(sight|SEE_TURFS|SEE_MOBS|SEE_OBJS)
-	set_see_in_dark(8)
 	set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 
 /mob/living/proc/handle_hud_icons()

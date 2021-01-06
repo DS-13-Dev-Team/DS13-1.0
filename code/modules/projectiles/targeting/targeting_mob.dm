@@ -27,7 +27,7 @@
 	if(.)
 		stop_aiming(no_message=1)
 
-/mob/living/UpdateLyingBuckledAndVerbStatus()
+/mob/living/update_lying_buckled_and_verb_status()
 	..()
 	if(lying)
 		stop_aiming(no_message=1)

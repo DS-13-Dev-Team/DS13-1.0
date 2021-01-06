@@ -502,3 +502,11 @@
 	var/M = get_total_moles()
 	if(M)
 		return get_mass()/M
+
+
+/datum/gas_mixture/proc/can_support_fire()
+	var/o2moles = get_by_flag(XGM_GAS_OXIDIZER)
+	if (o2moles >= MOLES_O2FIRE)
+		return TRUE
+
+	return FALSE

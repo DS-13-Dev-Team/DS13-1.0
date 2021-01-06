@@ -18,6 +18,14 @@
 	material = get_material_by_name("[material_name]")
 	.=..()
 
+/obj/structure/barricade/get_heat_limit()
+	var/material/M = get_material()
+	if (M)
+		return M.get_heat_limit()
+
+	.=..()
+
+
 /obj/structure/barricade/Initialize(var/mapload)
 	if(!material)
 		qdel(src)
@@ -93,6 +101,7 @@
 	name = "cheval-de-frise"
 	icon_state = "cheval"
 	spiky = TRUE
+	max_health = 120 // These spikes are made out of metal and should be more durable than the base variant type.
 
 	var/spike_overlay = "cheval_spikes"
 	var/material/rod_material
@@ -104,7 +113,7 @@
 	rod_material = get_material_by_name(MATERIAL_STEEL)
 	SetName("cheval-de-frise")
 	desc = "A rather simple [material.display_name] barrier. It menaces with spikes of [rod_material.display_name]."
-	damage = (rod_material.hardness * 0.45)
+	damage = (rod_material.hardness * 0.52) // Increased by 15% as of 02-NOV-2020 - Lion
 	overlays += overlay_image(icon, spike_overlay, color = rod_material.icon_colour, flags = RESET_COLOR)
 
 /obj/structure/barricade/spike/Bumped(mob/living/victim)
@@ -168,7 +177,9 @@
 
 //Special types
 /obj/structure/barricade/wood/New(var/location)
+	max_health = 75 // Wood is flimsy. Less structurally sound than our steel variant!
 	.=..(location, MATERIAL_WOOD)
 
 /obj/structure/barricade/steel/New(var/location)
+	max_health = 125 // The only way you should do this anyway.
 	.=..(location, MATERIAL_STEEL)

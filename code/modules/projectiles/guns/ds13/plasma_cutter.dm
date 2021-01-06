@@ -70,7 +70,7 @@
 
 /obj/item/projectile/beam/cutter/plasma
 	damage = 21
-	kill_count = 9 //an upgrade over the mining cutter, used for engineering work, but still not a proper firearm
+	kill_count = 7 //an upgrade over the mining cutter, used for engineering work, but still not a proper firearm
 	dig_power = 900
 
 

@@ -125,7 +125,8 @@
 /datum/design/autolathe/tool/hemostat
 	name = "hemostat"
 	build_path = /obj/item/weapon/tool/hemostat
-
+// Bad practice, I know. But I wanted to comment this out because the RCD is a mad powergaming tool. I just need confirmation to remove this. - Lion
+/*
 /datum/design/autolathe/tool/rcd
 	name = "rapid construction device"
 	build_path = /obj/item/weapon/rcd
@@ -133,7 +134,7 @@
 /datum/design/autolathe/tool/rcd_ammo
 	name = "matter cartridge"
 	build_path = /obj/item/weapon/rcd_ammo
-
+*/
 /datum/design/autolathe/tool/pneumatic_crowbar
 	name = "pneumatic crowbar"
 	build_path = /obj/item/weapon/tool/crowbar/pneumatic

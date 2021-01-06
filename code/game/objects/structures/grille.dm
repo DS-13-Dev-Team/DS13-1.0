@@ -233,7 +233,7 @@
 			return 0
 	return 0
 
-/obj/structure/grille/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/structure/grille/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
 	if(!destroyed)
 		if(exposed_temperature > T0C + 1500)
 			health -= 1

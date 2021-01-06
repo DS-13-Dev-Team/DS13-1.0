@@ -19,7 +19,7 @@
 	health = 100
 	resistance = 10
 	var/breakout = 0 //if someone is currently breaking out. mutex
-	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
+	var/storage_capacity = 1.5 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
 	var/max_mob_size = MOB_MEDIUM
 	var/open_sound = 'sound/effects/closet_open.ogg'
@@ -35,6 +35,9 @@
 	var/locked = FALSE
 
 	mass = 15
+
+/obj/structure/closet/meddle()
+	src.toggle()
 
 /obj/structure/closet/Initialize()
 	.=..()
@@ -463,28 +466,32 @@
 /obj/structure/closet/proc/togglelock(var/mob/user, var/obj/item/weapon/card/id/id_card)
 	if(!(setup & CLOSET_HAS_LOCK))
 		return FALSE
-	if(!CanPhysicallyInteract(user))
-		return FALSE
+	if (user)
+		if(!CanPhysicallyInteract(user))
+			return FALSE
+
+		if(user.loc == src)
+			to_chat(user, "<span class='notice'>You can't reach the lock from inside.</span>")
+			return FALSE
+
 	if(src.opened)
 		to_chat(user, "<span class='notice'>Close \the [src] first.</span>")
 		return FALSE
 	if(src.broken)
 		to_chat(user, "<span class='warning'>\The [src] appears to be broken.</span>")
 		return FALSE
-	if(user.loc == src)
-		to_chat(user, "<span class='notice'>You can't reach the lock from inside.</span>")
-		return FALSE
 
-	add_fingerprint(user)
+	if (user)
+		add_fingerprint(user)
 
-	if(!id_card)
-		id_card = user.GetIdCard()
+		if(!id_card)
+			id_card = user.GetIdCard()
 
-	if(!user.is_advanced_tool_user())
-		to_chat(user, FEEDBACK_YOU_LACK_DEXTERITY)
-		return FALSE
+		if(!user.is_advanced_tool_user())
+			to_chat(user, FEEDBACK_YOU_LACK_DEXTERITY)
+			return FALSE
 
-	if(CanToggleLock(user, id_card))
+	if(!user || CanToggleLock(user, id_card))
 		locked = !locked
 		visible_message("<span class='notice'>\The [src] has been [locked ? null : "un"]locked by \the [user].</span>", range = 3)
 		update_icon()

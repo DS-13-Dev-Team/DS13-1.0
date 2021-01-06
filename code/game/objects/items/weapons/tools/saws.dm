@@ -45,13 +45,13 @@
 	icon_state = "advanced_saw"
 	hitsound = WORKSOUND_CIRCULAR_SAW
 	worksound = WORKSOUND_CIRCULAR_SAW
-	force = WEAPON_FORCE_ROBUST
+	force = WEAPON_FORCE_DANGEROUS
 	matter = list(MATERIAL_STEEL = 1200, MATERIAL_PLASTIC = 800)
 	tool_qualities = list(QUALITY_SAWING = 50, QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 40)
 	degradation = 0.06
 	use_power_cost = 0.22
 	suitable_cell = /obj/item/weapon/cell
-	max_upgrades = 4
+	max_modifications = 4
 
 /obj/item/weapon/tool/saw/chain
 	name = "chainsaw"
@@ -62,7 +62,7 @@
 	force = WEAPON_FORCE_DANGEROUS
 	matter = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 3000)
 	tool_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20)
-	max_upgrades = 4
+	max_modifications = 4
 	use_fuel_cost = 0.1
 	max_fuel = 80
 
@@ -78,14 +78,13 @@
 	matter = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 3000)
 	tool_qualities = list()
 	switched_on_qualities = list(QUALITY_SAWING = 60, QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20, QUALITY_DIGGING = 35)
-	max_upgrades = 4
+	max_modifications = 4
 	use_power_cost = 0.44
 	passive_power_cost = 0.06
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
 	atom_flags = ATOM_FLAG_NO_BLOOD
 	item_flags = ITEM_FLAG_NO_EMBED
-
 
 /obj/item/weapon/tool/saw/plasma/update_icon()
 	if (switched_on)

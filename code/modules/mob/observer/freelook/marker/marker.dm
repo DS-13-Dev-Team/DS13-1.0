@@ -190,8 +190,11 @@
 /obj/machinery/marker/proc/become_master_signal(var/mob/M)
 	if(!active)
 		return
+	if (!M || !M.key)
+		return
 	if (player != ckey(M.key))
 		message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
+
 	player = ckey(M.key)
 
 	//Get rid of the old energy handler
@@ -212,8 +215,10 @@
 	if (playermob)
 
 		//Get rid of the old player's energy handler
-		var/datum/player/P = get_or_create_player(player)
-		remove_extension(P, /datum/extension/psi_energy/marker)//Remove the handler
+		if (player)
+			var/datum/player/P = get_or_create_player(player)
+			if (P)
+				remove_extension(P, /datum/extension/psi_energy/marker)//Remove the handler
 
 		message_necromorphs(SPAN_NOTICE("[player] has stepped down, nobody is controlling the marker now."))
 		var/mob/observer/eye/signal/S = new(playermob)
@@ -275,9 +280,12 @@
 		for (var/datum/necrospawn/N in shop.possible_spawnpoints)
 			if (N.spawnpoint == source)
 				shop.possible_spawnpoints.Remove(N)
-
-
-
+				if (shop.selected_spawn == N)
+					var/datum/necrospawn/N_Marker = shop.possible_spawnpoints[1]
+					shop.selected_spawn = N_Marker
+					message_necromorphs("<span class='necromarker'>[source] was destroyed, current spawnpoint was set to [N_Marker.spawnpoint].</span>")
+				break
+		SSnano.update_uis(shop)
 
 
 //Marker spawning landmarks

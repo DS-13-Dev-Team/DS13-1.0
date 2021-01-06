@@ -23,7 +23,7 @@
 	matter = list(MATERIAL_STEEL = 900)
 	tool_qualities = list(QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 10)
 	degradation = DEGRADATION_WEAK_3
-	max_upgrades = 4
+	max_modifications = 4
 
 /obj/item/weapon/tool/scalpel/laser
 	name = "laser scalpel"
@@ -36,7 +36,7 @@
 	degradation = DEGRADATION_WEAK_2
 	use_power_cost = 0.12
 	suitable_cell = /obj/item/weapon/cell
-	max_upgrades = 4
+	max_modifications = 4
 
 
 //A makeshift knife, for doing all manner of cutting and stabbing tasks in a half-assed manner

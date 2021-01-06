@@ -59,10 +59,13 @@
 	if (apply_offset == 1 || apply_offset == 3)
 		start.SelfAdd(start_offset)
 
+
+
 	end.x = _end.x
 	end.y = _end.y
 	if (apply_offset == 2 || apply_offset == 3)
 		end.SelfAdd(end_offset)
+
 
 	var/matrix/M = matrix()
 
@@ -234,3 +237,7 @@
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()
+
+
+/obj/effect/projectile/tether/repair_needed()
+	return max_health - health

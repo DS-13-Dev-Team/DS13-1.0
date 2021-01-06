@@ -9,6 +9,7 @@ SUBSYSTEM_DEF(processing)
 	var/list/processing = list()
 	var/list/current_run = list()
 	var/process_proc = /datum/proc/Process
+	var/last_type	//This holds the typepath of the last thing we attempted to process. It is set just before calling process
 
 	var/debug_last_thing
 	var/debug_original_process_proc // initial() does not work with procs
@@ -27,7 +28,13 @@ SUBSYSTEM_DEF(processing)
 	while(current_run.len)
 		var/datum/thing = current_run[current_run.len]
 		current_run.len--
-		if(QDELETED(thing) || (call(thing, process_proc)(wait, times_fired, src) == PROCESS_KILL))
+		if(QDELETED(thing))
+			processing -= thing
+			continue
+
+		last_type = thing.type
+
+		if (call(thing, process_proc)(wait, times_fired, src) == PROCESS_KILL)
 			if(thing)
 				thing.is_processing = null
 			processing -= thing

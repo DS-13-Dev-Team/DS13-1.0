@@ -13,6 +13,7 @@
 	var/implant_color = "b"
 	var/malfunction = 0
 	var/known //if advanced scanners would name these in results
+	biomaterial = TRUE	//These are allowed to be in a person
 
 /obj/item/weapon/implant/proc/trigger(emote, source)
 	return

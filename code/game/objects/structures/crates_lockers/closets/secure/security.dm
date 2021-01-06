@@ -85,7 +85,7 @@
 		/obj/item/taperoll/police,
 		/obj/item/clothing/mask/gas,
 		/obj/item/device/flashlight/maglight,
-		/obj/item/weapon/storage/box/flashbangs,
+//		/obj/item/weapon/storage/box/flashbangs,
 		/obj/item/weapon/storage/box/teargas,
 		/obj/item/weapon/storage/belt/holster/security,
 		/obj/item/weapon/reagent_containers/spray/pepper,
@@ -93,7 +93,8 @@
 		/obj/item/weapon/storage/box/holobadge,
 		/obj/item/device/holowarrant,
 		/obj/random/tool,
-		/obj/item/weapon/rig/security
+		/obj/item/weapon/gun/energy/taser,
+		/obj/item/weapon/rig/riot
 	)
 
 /obj/structure/closet/secure_closet/security
@@ -123,7 +124,7 @@
 		/obj/item/clothing/under/deadspace/security,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/device/holowarrant,
-		/obj/item/device/flash,
+//		/obj/item/device/flash,
 		/obj/item/weapon/rig/security
 	)
 
@@ -233,7 +234,7 @@
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,
 		/obj/item/device/holowarrant,
-		/obj/item/device/flash,
+//		/obj/item/device/flash,
 		/obj/item/device/flashlight/maglight,
 		/obj/item/device/tape/random = 3,
 		/obj/item/weapon/storage/belt/holster/forensic,

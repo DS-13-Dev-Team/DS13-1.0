@@ -53,6 +53,8 @@
 		return
 
 	var/datum/player/me = get_or_create_player(ckey)
+	if (!me)
+		return null
 	me.client = "\ref[src.client]"
 	me.mob = "\ref[src]"
 
@@ -66,9 +68,9 @@
 /mob/proc/player_login()
 	register_client_and_player()
 
-
-
 	var/datum/player/me = get_or_create_player(key)
+	if (!me)
+		return
 	me.Login()
 
 
@@ -77,6 +79,8 @@
 	Getter procs
 */
 /proc/get_or_create_player(var/key)
+	if (!key)
+		return null
 	key = ckey(key)
 	if (!GLOB.players[key])
 		GLOB.players[key] = new /datum/player(key)
@@ -84,13 +88,15 @@
 
 
 /mob/proc/get_player()
-	if (!client)	//TODO: Figure out how to make this work for disconnected players in future. I know the key field is not nulled
+	if (!client || !client.ckey)	//TODO: Figure out how to make this work for disconnected players in future. I know the key field is not nulled
 		return null
 
 	return get_or_create_player(client.ckey)
 
 
 /proc/get_player_from_key(var/key)
+	if (!key)
+		return null
 	key = ckey(key)
 	return GLOB.players[key]
 

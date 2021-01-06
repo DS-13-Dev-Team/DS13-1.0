@@ -1,3 +1,15 @@
+
+
+/*
+	Limb Code
+*/
+/obj/item/organ/external/arm/right/simple/divider
+	can_regrow = FALSE
+
+/obj/item/organ/external/arm/simple/divider
+	can_regrow = FALSE
+
+
 /*
 	Arm
 
@@ -56,6 +68,9 @@
 
 
 //The divider arm has an additional effect, the target is steered around randomly
+/datum/extension/mount/parasite/arm
+	damage = 6
+
 /datum/extension/mount/parasite/arm/Process()
 	.=..()
 	if (.)

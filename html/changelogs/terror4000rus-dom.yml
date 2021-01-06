@@ -1,0 +1,7 @@
+author: Terror4000rus
+delete-after: True
+changes: 
+  - bugfix: "DOM has proper channels in headset now."
+  - tweak: "DOM's cabinet now has DOM's access restriction."
+  - rscadd: "Mining Foreman recieves vintage RIG from DOM's cabinet in closet."
+  - tweak: "Mining Foreman now has unique access for the closet."

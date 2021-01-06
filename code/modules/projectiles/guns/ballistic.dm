@@ -94,7 +94,7 @@
 
 //Expends a specified number of rounds, deleting their casings, and returning their projectiles to be fired, if desired
 /obj/item/weapon/gun/projectile/consume_projectiles(var/number = 1)
-	if (getAmmo() < number)
+	if (get_remaining_ammo() < number)
 		return FALSE
 
 	.=list()
@@ -291,11 +291,7 @@
 	else
 		unload_ammo(user)
 
-/obj/item/weapon/gun/projectile/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
-		unload_ammo(user, allow_dump=0)
-	else
-		return ..()
+
 
 /obj/item/weapon/gun/projectile/afterattack(atom/A, mob/living/user)
 	.=..()
@@ -322,9 +318,9 @@
 	if(ammo_magazine)
 		to_chat(user, "It has \a [ammo_magazine] loaded.")
 	if(user.skill_check(SKILL_WEAPONS, SKILL_ADEPT))
-		to_chat(user, "Has [getAmmo()] round\s remaining.")
+		to_chat(user, "Has [get_remaining_ammo()] round\s remaining.")
 
-/obj/item/weapon/gun/projectile/proc/getAmmo()
+/obj/item/weapon/gun/projectile/get_remaining_ammo()
 	var/bullets = 0
 	if(loaded)
 		bullets += loaded.len
@@ -335,7 +331,7 @@
 	return bullets
 
 /obj/item/weapon/gun/projectile/has_ammo()
-	return (getAmmo() >= ammo_cost)
+	return (get_remaining_ammo() >= ammo_cost)
 
 
 /* Unneeded -- so far.

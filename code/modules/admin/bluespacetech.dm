@@ -44,6 +44,7 @@
 	bst.equip_to_slot_or_del(new /obj/item/device/t_scanner(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/modular_computer/pda/captain(bst.back), slot_in_backpack)
 
+
 	var/obj/item/weapon/storage/box/pills = new /obj/item/weapon/storage/box(null, TRUE)
 	pills.name = "adminordrazine"
 	for(var/i = 1, i < 12, i++)
@@ -98,7 +99,7 @@
 
 
 	//They get an engineering rig
-	var/obj/item/weapon/rig/engineering/debug/rig = new(bst)
+	var/obj/item/weapon/rig/advanced/rig = new(bst)
 	var/cached_delay = rig.seal_delay
 	rig.seal_delay = 0
 	bst.equip_to_slot_or_del(rig, slot_back)
@@ -113,6 +114,8 @@
 	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/box/ids(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/device/t_scanner(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/modular_computer/pda/captain(bst.back), slot_in_backpack)
+
+	bst.put_in_hands(new /obj/item/device/rig_remover)
 
 	var/obj/item/weapon/storage/box/pills = new /obj/item/weapon/storage/box(null, TRUE)
 	pills.name = "adminordrazine"

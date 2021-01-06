@@ -4,7 +4,7 @@
 	icon_state = "ds_engineering_rig"
 	armor = list(melee = 45, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 95)
 	offline_slowdown = 4
-	online_slowdown = 2
+	online_slowdown = 1.75
 	acid_resistance = 1.75	//Contains a fair bit of plastic
 
 	chest_type = /obj/item/clothing/suit/space/rig/engineering
@@ -19,7 +19,8 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/vision/meson,
 		/obj/item/rig_module/kinesis,
-		/obj/item/rig_module/hotswap
+		/obj/item/rig_module/hotswap,
+		/obj/item/rig_module/power_sink
 		)
 
 /obj/item/clothing/suit/space/rig/engineering

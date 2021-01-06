@@ -134,4 +134,4 @@
 /obj/item/device/encryptionkey/dom
 	name = "director of mining encryption key"
 	icon_state = "srv_cypherkey"
-	channels = list("Supply" = 1, "Command" =1)
+	channels = list("Supply" = 1, "Mining" = 1, "Command" =1)

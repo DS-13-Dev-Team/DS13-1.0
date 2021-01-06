@@ -122,6 +122,7 @@
 			if(/datum/reagent/sugar)
 				name = "Sugar"
 				desc = "Tastey space sugar!"
+				icon_state = "sugar"
 				center_of_mass = "x=16;y=6"
 			else
 				name = "Misc Condiment Bottle"
@@ -159,9 +160,98 @@
 	. = ..()
 	reagents.add_reagent(/datum/reagent/nutriment/barbecue, 50)
 
+/obj/item/weapon/reagent_containers/food/condiment/frostoil
+	name = "Coldsauce"
+	desc = "Hotsauce's arch-nemesis. Leaves the tongue numb in its passage."
+	icon_state = "coldsauce"
+
+/obj/item/weapon/reagent_containers/food/condiment/frostoil/New()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/frostoil, 50)
+
+/obj/item/weapon/reagent_containers/food/condiment/ketchup
+	name = "Ketchup"
+	desc = "You feel more American already."
+	icon_state = "ketchup"
+
+/obj/item/weapon/reagent_containers/food/condiment/ketchup/New()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/nutriment/ketchup, 50)
+
+/obj/item/weapon/reagent_containers/food/condiment/capsaicin
+	name = "Hotsauce"
+	desc = "You can almost TASTE the stomach ulcers now!"
+	icon_state = "hotsauce"
+
+/obj/item/weapon/reagent_containers/food/condiment/capsaicin/New()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/capsaicin, 50)
+
+/obj/item/weapon/reagent_containers/food/condiment/soysauce
+	name = "Soy Sauce"
+	desc = "A salty soy-based flavoring."
+	icon_state = "soysauce"
+
+/obj/item/weapon/reagent_containers/food/condiment/soysauce/New()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/nutriment/soysauce, 50)
+
+/obj/item/weapon/reagent_containers/food/condiment/sugar
+	name = "sugar sack"
+	desc = "A bag of sugar. Keep away from people with a sweetooth."
+	icon_state = "sugar"
+	item_state = "flour"
+
 /obj/item/weapon/reagent_containers/food/condiment/sugar/New()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/sugar, 50)
+
+/obj/item/weapon/reagent_containers/food/condiment/flour
+	name = "flour sack"
+	desc = "A big bag of flour. Good for baking!"
+	icon = 'icons/obj/food.dmi'
+	icon_state = "flour"
+	item_state = "flour"
+	randpixel = 10
+
+/obj/item/weapon/reagent_containers/food/condiment/flour/on_reagent_change()
+	return
+
+/obj/item/weapon/reagent_containers/food/condiment/flour/New()
+	..()
+	reagents.add_reagent(/datum/reagent/nutriment/flour, 50)
+
+/obj/item/weapon/reagent_containers/food/condiment/rice
+	name = "rice sack"
+	desc = "A bag of rice. Boil in water."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "rice"
+	item_state = "flour"
+	randpixel = 10
+
+/obj/item/weapon/reagent_containers/food/condiment/rice/on_reagent_change()
+	return
+
+/obj/item/weapon/reagent_containers/food/condiment/rice/New()
+	..()
+	reagents.add_reagent(/datum/reagent/nutriment/rice, 50)
+
+/obj/item/weapon/reagent_containers/food/condiment/salt
+	name = "big bag of salt"
+	desc = "A nonsensically large bag of salt. Carefully refined from countless shifts."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "salt"
+	item_state = "flour"
+	randpixel = 10
+	volume = 500
+	w_class = ITEM_SIZE_LARGE
+
+/obj/item/weapon/reagent_containers/food/condiment/salt/on_reagent_change()
+	return
+
+/obj/item/weapon/reagent_containers/food/condiment/salt/New()
+	..()
+	reagents.add_reagent(/datum/reagent/sodiumchloride, 500)
 
 /obj/item/weapon/reagent_containers/food/condiment/small
 	possible_transfer_amounts = "1;20"
@@ -200,35 +290,3 @@
 /obj/item/weapon/reagent_containers/food/condiment/small/sugar/New()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/sugar, 30)
-
-/obj/item/weapon/reagent_containers/food/condiment/flour
-	name = "flour sack"
-	desc = "A big bag of flour. Good for baking!"
-	icon = 'icons/obj/food.dmi'
-	icon_state = "flour"
-	item_state = "flour"
-	randpixel = 10
-
-/obj/item/weapon/reagent_containers/food/condiment/flour/on_reagent_change()
-	return
-
-/obj/item/weapon/reagent_containers/food/condiment/flour/New()
-	..()
-	reagents.add_reagent(/datum/reagent/nutriment/flour, 50)
-
-/obj/item/weapon/reagent_containers/food/condiment/salt
-	name = "big bag of salt"
-	desc = "A nonsensically large bag of salt. Carefully refined from countless shifts."
-	icon = 'icons/obj/food.dmi'
-	icon_state = "salt"
-	item_state = "flour"
-	randpixel = 10
-	volume = 500
-	w_class = ITEM_SIZE_LARGE
-
-/obj/item/weapon/reagent_containers/food/condiment/salt/on_reagent_change()
-	return
-
-/obj/item/weapon/reagent_containers/food/condiment/salt/New()
-	..()
-	reagents.add_reagent(/datum/reagent/sodiumchloride, 500)

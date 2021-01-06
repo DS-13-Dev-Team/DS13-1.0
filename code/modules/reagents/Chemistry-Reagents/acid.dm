@@ -99,8 +99,8 @@
 	taste_description = "acid"
 	reagent_state = LIQUID
 	color = NECROMORPH_ACID_COLOR
-	metabolism = 0.5
-	touch_met = 0.5	//Slow burn
+	metabolism = 0.65
+	touch_met = 0.65	//Slow burn
 	power = NECROMORPH_ACID_POWER
 	meltdose = 30 // How much is needed to melt
 

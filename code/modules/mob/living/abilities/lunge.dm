@@ -19,11 +19,11 @@
 	cached_pixels = get_new_vector(user.pixel_x, user.pixel_y)
 	animate(user, pixel_x = user.pixel_x + pixel_offset.x, pixel_y = user.pixel_y + pixel_offset.y, time = delay, easing = BACK_EASING)
 
-	release_vector(cached_pixels)
+
 
 /datum/extension/charge/lunge/start()
 	animate(user, pixel_y = cached_pixels.y, pixel_x = cached_pixels.x, time = 0.5 SECONDS, easing = BACK_EASING)
-
+	release_vector(cached_pixels)
 	..()
 
 

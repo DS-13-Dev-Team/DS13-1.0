@@ -7,7 +7,7 @@
 	if (slow_turning)
 		if (CheckMoveCooldown() && facedir(direction))
 			return TRUE
-		else if (!(dir & direction))
+		else if (!(get_visual_dir() & direction))
 			return FALSE
 
 	//This is in movement/movement.dm, /atom/movable/proc/DoMove(
