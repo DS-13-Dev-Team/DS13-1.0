@@ -25,7 +25,7 @@ cp -r strings/* $1/strings/
 #remove .dm files from _maps
 
 #this regrettably doesn't work with windows find
-#find $1/_maps -name "*.dm" -type f -delete
+#find $1/maps -name "*.dm" -type f -delete
 
 #dlls on windows
 cp *.dll $1/ || true
