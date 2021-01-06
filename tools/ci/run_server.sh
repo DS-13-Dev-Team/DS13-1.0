@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-tools/deploy.sh ci_test
+sh tools/deploy.sh ci_test
 rm ci_test/*.dll
 mkdir -p ci_test/config
 
