@@ -45,7 +45,7 @@ FROM dm_base as build
 
 COPY . .
 
-RUN DreamMaker -max_errors 0 baystation.dme && tools/deploy.sh /deploy
+RUN DreamMaker -max_errors 0 baystation12.dme && tools/deploy.sh /deploy
 
 FROM dm_base
 
@@ -66,4 +66,4 @@ RUN apt-get update \
 
 VOLUME [ "/DS13/config", "/DS13/data" ]
 
-ENTRYPOINT [ "DreamDaemon", "baystation.dmb", "-port", "1337", "-trusted", "-close", "-verbose" ]
+ENTRYPOINT [ "DreamDaemon", "baystation12.dmb", "-port", "1337", "-trusted", "-close", "-verbose" ]
