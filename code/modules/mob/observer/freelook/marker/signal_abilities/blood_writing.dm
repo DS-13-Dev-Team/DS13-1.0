@@ -19,14 +19,26 @@
 		return
 	return TRUE
 
+/datum/signal_ability/writing/proc/middle_check(var/mob/user, var/turf/target)
+	if(LOS_block) //copied from is_valid_target
+		var/mob/M = target.is_seen_by_crew()
+		if (M)
+			to_chat(user, SPAN_WARNING("Casting here is blocked because the tile is seen by [M]."))
+			refund(user)
+			return FALSE
+	return TRUE
+
 /datum/signal_ability/writing/on_cast(var/mob/user, var/atom/target, var/list/data)
 	var/message = sanitize(input("Write a message", "Blood writing", ""))
 	if (!message)
-		refund()
+		refund(user)
+		return
+
+	if(!middle_check(user, target))
+		to_chat(user, SPAN_WARNING("You wrote: \"[message]\"."))
 		return
 
 	var/obj/effect/decal/cleanable/blood/writing/W = new(target)
 	W.transform = W.transform.Scale(2)
 	W.message = message
 	W.visible_message("<span class='warning'>Invisible fingers crudely paint something in blood on \the [target].</span>")
-
