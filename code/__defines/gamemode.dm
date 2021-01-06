@@ -45,6 +45,7 @@
 #define MODE_MARKER "marker"
 #define MODE_UNITOLOGIST "unitologist"
 #define MODE_UNITOLOGIST_SHARD "unitologist_shardbearer"
+#define MODE_EARTHGOV_AGENT "earthgov_agent"
 
 #define DEFAULT_TELECRYSTAL_AMOUNT 130
 #define IMPLANT_TELECRYSTAL_AMOUNT(x) (round(x * 0.49)) // If this cost is ever greater than half of DEFAULT_TELECRYSTAL_AMOUNT then it is possible to buy more TC than you spend

@@ -27,6 +27,7 @@
 		NETWORK_SECURITY
 	)
 	usable_email_tlds = list("ishimura.cec")
+	map_admin_faxes = list("Earth Government Colonial Alliance Headquarters")
 
 
 	station_name  = "USG Ishimura"
