@@ -1,5 +1,5 @@
 # DS13
-[![Run Tests](https://github.com/DS-13-Dev-Team/DS13/workflows/Run%20Tests/badge.svg?event=status)](https://github.com/DS-13-Dev-Team/DS13/actions?query=workflow%3ARun%20Tests+branch%3Adev) [![GitHub last commit](https://img.shields.io/github/last-commit/DS-13-Dev-Team/DS13)](https://github.com/DS-13-Dev-Team/DS13/commits/dev) [![Discord](https://img.shields.io/discord/273774715741667329.svg)](https://discord.gg/T6YfAfu) [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Run Tests](https://github.com/DS-13-Dev-Team/DS13/workflows/Run%20tests/badge.svg?branch=dev)](https://github.com/DS-13-Dev-Team/DS13/actions?query=workflow%3ARun%20Tests+branch%3Adev) [![GitHub last commit](https://img.shields.io/github/last-commit/DS-13-Dev-Team/DS13)](https://github.com/DS-13-Dev-Team/DS13/commits/dev) [![Discord](https://img.shields.io/discord/273774715741667329.svg)](https://discord.gg/T6YfAfu) [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 [Website](https://ds-ss13.com/) - [Code](https://github.com/DS-13-Dev-Team/DS13) - [Discord](https://discord.gg/T6YfAfu)
 
