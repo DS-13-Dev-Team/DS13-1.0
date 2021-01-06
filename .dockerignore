@@ -7,6 +7,7 @@ baystation12.dyn.rsc
 baystation12.dyn.rsc.lk
 baystation12.int
 libmysql.dll
+libmariadb.dll
 .dockerignore
 Dockerfile
 .editorconfig
