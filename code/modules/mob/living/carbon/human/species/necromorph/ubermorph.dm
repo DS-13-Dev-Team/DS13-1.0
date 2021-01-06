@@ -8,8 +8,8 @@
 	total_health = INFINITY	//This number doesn't matter, it won't ever be used
 	can_obliterate = FALSE
 	healing_factor = 4	//Lots of constant healing
-	biomass	=	3825	//Endgame, real expensive -- Lowered from 4500 to 3825 = 15% on 14/10/2020
-	use_total_biomass = TRUE
+	require_total_biomass	=	BIOMASS_REQ_T4	//Endgame, real expensive -- Lowered from 4500 to 3825 = 15% on 14/10/2020
+	biomass = 0	//IT has no cost when you meet the requirement
 	global_limit = 1
 	mass = 130
 	limb_health_factor = 1	//Not as fragile as a slasher

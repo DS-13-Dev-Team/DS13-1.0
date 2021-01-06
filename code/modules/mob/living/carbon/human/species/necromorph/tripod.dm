@@ -30,7 +30,8 @@
 	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 
-	biomass = 350
+	biomass = 400
+	require_total_biomass	=	BIOMASS_REQ_T3
 	mass = 250
 	biomass_reclamation_time	=	15 MINUTES
 	marker_spawnable = TRUE

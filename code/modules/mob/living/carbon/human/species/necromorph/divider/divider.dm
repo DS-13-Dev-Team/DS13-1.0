@@ -6,6 +6,7 @@
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/divider)
 	total_health = 225
 	biomass = 150
+	require_total_biomass	=	BIOMASS_REQ_T2
 	mass = 120
 	limb_health_factor = 1.0
 

@@ -1017,7 +1017,6 @@ These procs should return their entire args list. Best just to return parent in 
 
 //Does animations for regenerating a limb
 /datum/species/proc/regenerate_limb(var/mob/living/carbon/human/H, var/limb, var/duration)
-	world << "regenerate limb [duration]"
 	var/regen_icon = get_icobase()
 	var/image/LR = image(regen_icon, H, "[limb]_regen")
 	LR.plane = H.plane
