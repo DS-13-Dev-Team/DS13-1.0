@@ -6,7 +6,7 @@
 	name = "space_turf"
 	desc = "A space turf should be an as large block as possible of space, preferably at least 3x3 with the marked turf as the center"
 
-#ifdef UNIT_TEST
+#ifdef UNIT_TESTS
 
 /datum/fake_client
 
@@ -31,10 +31,10 @@
 
 /obj/unit_test_heavy
 	w_class = 5
-
+/* Comment spawn_choice
 /obj/random/unit_test/spawn_choices()
 	return list(/obj/unit_test_light, /obj/unit_test_heavy, /obj/unit_test_medium)
-
+*/
 
 /area/test_area/powered_non_dynamic_lighting
 	name = "\improper Test Area - Powered - Non-Dynamic Lighting"

@@ -71,7 +71,7 @@ GLOBAL_VAR(spawntypes)
 /datum/spawnpoint/proc/post_spawn(var/mob/spawner, var/turf/location)
 	return TRUE
 
-#ifdef UNIT_TEST
+#ifdef UNIT_TESTS
 /datum/spawnpoint/Del()
 	crash_with("Spawn deleted: [log_info_line(src)]")
 	..()

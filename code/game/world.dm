@@ -96,7 +96,7 @@
 
 	. = ..()
 
-#ifdef UNIT_TEST
+#ifdef UNIT_TESTS
 	log_unit_test("Unit Tests Enabled. This will destroy the world when testing is complete.")
 	load_unit_test_changes()
 #endif
@@ -122,6 +122,7 @@
 	Master.Initialize(10, FALSE)
 
 #undef RECOMMENDED_VERSION
+	
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
@@ -466,7 +467,6 @@ var/world_topic_spam_protect_time = world.timeofday
 			return "Metrics not ready"
 
 		return GLOB.prometheus_metrics.collect()
-
 
 /world/Reboot(var/reason)
 	/*spawn(0)
