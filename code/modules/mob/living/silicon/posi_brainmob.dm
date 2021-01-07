@@ -26,7 +26,7 @@
 		ghostize()		//Ghostize checks for key so nothing else is necessary.
 	return ..()
 
-/mob/living/silicon/sil_brainmob/UpdateLyingBuckledAndVerbStatus()
+/mob/living/silicon/sil_brainmob/update_lying_buckled_and_verb_status()
 	if(in_contents_of(/obj/mecha))
 		use_me = 1
 	else if(container && istype(container, /obj/item/organ/internal/posibrain) && istype(container.loc, /turf))

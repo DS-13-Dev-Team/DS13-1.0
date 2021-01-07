@@ -154,3 +154,9 @@
 		to_chat(user, "The heat meter reads [round(heat*100,1)]%")
 		if(user.skill_check(SKILL_WEAPONS, SKILL_ADEPT))
 			to_chat(user, "It can fire approximately [get_remaining_ammo()] round\s.")
+
+/obj/item/weapon/gun/projectile/automatic/pulse_heavy/load_ammo(var/obj/item/A, mob/user)
+	return
+
+/obj/item/weapon/gun/projectile/automatic/pulse_heavy/unload_ammo(mob/user, var/allow_dump=1)
+	return

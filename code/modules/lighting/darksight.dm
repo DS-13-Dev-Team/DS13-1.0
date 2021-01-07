@@ -98,3 +98,26 @@
 
 	set_darksight_color(newcolor)
 	to_chat(src, "Darksight is now [newstring].")
+
+/mob/observer/eye/signal/verb/toggle_darkvision()
+	set name = "Toggle Darkvision"
+	set category = "Necromorph"
+
+	if (!l_general)
+		return
+
+	var/newcolor = null
+	var/newstring = ""
+	switch(l_general.color)
+		if(DARKTINT_NONE, null)
+			newcolor = DARKTINT_POOR
+			newstring = "at low level"
+		if(DARKTINT_POOR)
+			newcolor = DARKTINT_GOOD
+			newstring = "at high level"
+		else
+			newcolor = DARKTINT_NONE
+			newstring = "disabled"
+
+	set_darksight_color(newcolor)
+	to_chat(src, "Darksight is now [newstring].")
