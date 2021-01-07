@@ -6,7 +6,7 @@
 	name = "space_turf"
 	desc = "A space turf should be an as large block as possible of space, preferably at least 3x3 with the marked turf as the center"
 
-#ifdef UNIT_TEST
+#ifdef UNIT_TESTS
 
 /datum/fake_client
 
