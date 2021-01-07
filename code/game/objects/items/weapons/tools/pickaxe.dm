@@ -21,6 +21,7 @@
 	worksound = WORKSOUND_PICKAXE
 	hitsound = WORKSOUND_PICKAXE
 	degradation = DEGRADATION_TOUGH_1
+	armor_penetration = 10
 
 /obj/item/weapon/tool/pickaxe/jackhammer
 	name = "jackhammer"
@@ -100,6 +101,7 @@
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
 	degradation = DEGRADATION_TOUGH_2
+	armor_penetration = 10
 
 /obj/item/weapon/tool/pickaxe/laser/update_icon()
 	if (switched_on)

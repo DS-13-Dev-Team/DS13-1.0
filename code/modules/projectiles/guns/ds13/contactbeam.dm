@@ -24,8 +24,8 @@
 	projectile_type = null
 	slot_flags = SLOT_BACK
 	charge_meter = FALSE	//if set, the icon state will be chosen based on the current charge
-	mag_insert_sound = 'sound/weapons/guns/interaction/force_magin.ogg'
-	mag_remove_sound = 'sound/weapons/guns/interaction/force_magout.ogg'
+	mag_insert_sound = 'sound/weapons/guns/interaction/contact_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/contact_magout.ogg'
 	removeable_cell = TRUE
 	firemodes = list(
 		list(mode_name = "charge beam", mode_type = /datum/firemode/contact_beam),
@@ -42,6 +42,12 @@
 	var/mob/living/fire_user
 	var/datum/click_handler/contact/CHC
 	var/charge_projectile_type = /obj/item/projectile/beam/contact
+	var/obj/flick_overlay/charge_fx
+
+	var/datum/sound_token/charge_sound_token
+
+	//This is a precision weapon, not to be hipfired
+	require_aiming = TRUE
 
 /obj/item/weapon/gun/energy/contact/empty
 	cell_type = null
@@ -52,6 +58,7 @@
 //Called to fire a charged beam
 /obj/item/weapon/gun/energy/contact/proc/fire_charged(atom/_target, _clickparams)
 	fire_when_charged = TRUE
+
 	if (charge_status == EMPTY)
 		return	//Save some processing, we don't care
 
@@ -64,6 +71,10 @@
 	else if (charge_status == CHARGING)
 		cancel_charged()
 		return	//Aborted
+
+	//We are firing
+	QDEL_NULL(charge_sound_token)
+	QDEL_NULL(charge_fx)
 
 	//Cache these in case they're needed
 	if (_clickparams)
@@ -97,18 +108,22 @@
 	fire_params = null
 	fire_target = null
 	fire_user = null
+	QDEL_NULL(charge_sound_token)
+	QDEL_NULL(charge_fx)
 	update_icon()
 
-
 //Starts the charging of a beam, disables autofire
-/obj/item/weapon/gun/energy/contact/proc/start_charging(atom/_target, _clickparams)
+/obj/item/weapon/gun/energy/contact/proc/start_charging(atom/_target, _clickparams, var/mob/living/user)
+	if (!can_fire(_target, user, _clickparams))
+		return FALSE
+
 	fire_when_charged	=	FALSE
 	if (charge_status != EMPTY)
 		return
 
 
 	var/datum/firemode/contact_beam/CB = current_firemode
-	var/mob/living/user = loc
+
 	if (!istype(CB) || !istype(user))
 		cancel_charged()
 		return
@@ -121,13 +136,25 @@
 
 
 	charge_status = CHARGING
+	update_icon()
+
+	//Charge sound
+	charge_sound_token = GLOB.sound_player.PlayStoppableSound(source = src, sound = 'sound/weapons/guns/misc/contact_charge.ogg', sound_id = "contact_charge", volume = VOLUME_LOW, duration = CB.charge_time)
+
+	//Charge visual fx
+	//Passing in a null duration makes it stay forever
+	charge_fx = flick_overlay_icon(null, icon(icon = src.icon, icon_state = "contact_charge"))
+
+
+	//src.icon = icon(icon = src.icon, icon_state = "contact_charge")
+
 	spawn()
 		var/timeleft = CB.charge_time
 		//Alright lets run a loop here to charge things
 
 		while (timeleft > 0  && charge_status == CHARGING)	//If the status changes, we cancelled
 			timeleft -= 1	//We'll decrement 1 decisecond at a time
-			update_icon()
+
 			sleep(1)
 
 		//Once the charge time is done, lets redo safety checks
@@ -139,9 +166,18 @@
 		//Set the status
 		charge_status = CHARGE_READY
 
+
 		//If the flag is set, fire immediately
 		if (fire_when_charged)
 			fire_charged()
+		else
+			//Play a sound to indicate that its ready
+			playsound(src, 'sound/weapons/guns/misc/contact_charge_ready.ogg', VOLUME_MID, TRUE)
+
+			//And start looping an additional sound for as long as its held
+			//We dont need to worry about stopping the previous token, it has an auto duration cutoff
+			charge_sound_token = GLOB.sound_player.PlayLoopingSound(source = src, sound = 'sound/weapons/guns/misc/contact_charge_hold.ogg', sound_id = "contact_charge_hold", volume = VOLUME_LOW)
+
 
 
 /obj/item/weapon/gun/energy/contact/disable_aiming_mode()
@@ -190,7 +226,7 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["left"])
 		var/target = get_turf_at_mouse(params, user.client)
-		gun.start_charging(target, params)
+		gun.start_charging(target, params, user)
 		return FALSE
 	return TRUE
 
@@ -227,9 +263,9 @@
 */
 /obj/item/projectile/beam/contact
 	damage = 70
-	armor_penetration = 10
+	armor_penetration = 15
 	accuracy	=	126 // 110 -> 126: 15% increase on 10-SEP-2020. -Lion
-
+	fire_sound = list('sound/weapons/guns/fire/contact_fire_1.ogg', 'sound/weapons/guns/fire/contact_fire_2.ogg')
 
 
 /*
@@ -238,21 +274,36 @@
 /datum/firemode/contact_repulse
 
 /datum/firemode/contact_repulse/on_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0, var/fired = TRUE)
-	new /obj/effect/effect/repulse(get_turf(user))
+	new /obj/effect/effect/repulse(get_turf(user), user = user)
 
 /obj/effect/effect/repulse
 	icon_state = null
 
 //Rather than a single effect, the focus mode uses a little spawner which creates multiple staggered effects
-/obj/effect/effect/repulse/New(var/atom/location, var/_lifespan = 2 SECOND, var/matrix/rotation)
-	spawn()
+/obj/effect/effect/repulse/New(var/atom/location, var/_lifespan = 2 SECOND, var/matrix/rotation, var/mob/living/user)
+
+
+	playsound(src, pick(list('sound/weapons/guns/blast/contact_blast_1.ogg',
+	'sound/weapons/guns/blast/contact_blast_2.ogg',
+	'sound/weapons/guns/blast/contact_blast_3.ogg',
+	'sound/weapons/guns/blast/contact_blast_4.ogg',
+	'sound/weapons/guns/blast/contact_blast_5.ogg',
+	'sound/weapons/guns/blast/contact_blast_6.ogg')), VOLUME_HIGH, TRUE)
+
+	spawn(5)
 		for (var/i in 1 to 3)
-			new /obj/effect/effect/expanding_circle(location, -0.65, 0.5 SECONDS)
+			new /obj/effect/effect/expanding_circle(location, -0.25, 1.2 SECONDS)
 			sleep(rand_between(1,3))
 		qdel(src)
 
-	for (var/atom/movable/AM in oview(2, location))
-		AM.apply_push_impulse_from(location, 200, 0.3)
+		for (var/atom/movable/AM in view(2, location))
+			if (AM == user)
+				continue
+
+			if (isliving(AM))
+				var/mob/living/L = AM
+				L.adjustFireLoss(30)
+			AM.apply_push_impulse_from(location, 250, 0.3)
 
 
 

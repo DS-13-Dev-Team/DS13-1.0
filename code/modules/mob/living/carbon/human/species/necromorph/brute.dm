@@ -36,7 +36,7 @@
 	push_flags 	= ALLMOBS	// What can we push?
 	swap_flags 	= ALLMOBS	// What can we swap place with?
 	density_lying = TRUE	//Chunky boi
-	evasion = -10	//Big target, easier to shoot
+	evasion = -15	//Big target, easier to shoot
 	reach = 2
 
 	//Implacable
@@ -64,8 +64,8 @@
 	view_offset = 3 * WORLD_ICON_SIZE
 
 	//Brute Armor vars
-	var/armor_front = 30	//Flat reduction applied to incoming damage within a 45 degree cone infront
-	var/armor_flank = 20	//Flat reduction applied to incoming damage within a 90 degree cone infront. Doesnt stack with front
+	var/armor_front = 35	//Flat reduction applied to incoming damage within a 45 degree cone infront
+	var/armor_flank = 25	//Flat reduction applied to incoming damage within a 90 degree cone infront. Doesnt stack with front
 	var/curl_armor_mult = 1.5	//Multiplier applied to armor when we are curled up
 	var/armor_coverage = 96 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
 
@@ -253,9 +253,14 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 /datum/species/necromorph/brute/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
 	//First of all, we need to figure out where the attack is coming from
 	var/atom/source
+	var/penetration = 0
 	if (isatom(used_weapon))	//Its possible used weapon might be a string, useless to us
 
 		source = get_turf(used_weapon)
+
+		if (isitem(used_weapon))
+			var/obj/item/I = used_weapon
+			penetration = I.armor_penetration
 
 
 	if (!source)
@@ -293,6 +298,9 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 
 		if (curled)
 			reduction *= curl_armor_mult
+
+	//Armor penetration on attacks goes through the armor
+	reduction -= penetration
 
 	if (!reduction)
 		//The target must be behind us or hit a gap, the attack will go through unhindered
