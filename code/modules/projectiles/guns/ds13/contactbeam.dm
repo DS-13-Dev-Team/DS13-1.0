@@ -46,6 +46,8 @@
 
 	var/datum/sound_token/charge_sound_token
 
+	shot_volume = VOLUME_HIGH
+
 	//This is a precision weapon, not to be hipfired
 	require_aiming = TRUE
 
@@ -145,16 +147,20 @@
 	//Passing in a null duration makes it stay forever
 	charge_fx = flick_overlay_icon(null, icon(icon = src.icon, icon_state = "contact_charge"))
 
-
-	//src.icon = icon(icon = src.icon, icon_state = "contact_charge")
-
+	var/shake_strength = 4
+	shake_camera(user, duration = 3, strength = shake_strength)
+	var/shaketime = 3
 	spawn()
 		var/timeleft = CB.charge_time
 		//Alright lets run a loop here to charge things
 
 		while (timeleft > 0  && charge_status == CHARGING)	//If the status changes, we cancelled
 			timeleft -= 1	//We'll decrement 1 decisecond at a time
-
+			shaketime -= 1
+			if (shaketime <= 0)
+				shaketime = 3
+				shake_strength *= 0.65
+				shake_camera(user, duration = 2, strength = shake_strength, flags = 0)
 			sleep(1)
 
 		//Once the charge time is done, lets redo safety checks
@@ -176,7 +182,7 @@
 
 			//And start looping an additional sound for as long as its held
 			//We dont need to worry about stopping the previous token, it has an auto duration cutoff
-			charge_sound_token = GLOB.sound_player.PlayLoopingSound(source = src, sound = 'sound/weapons/guns/misc/contact_charge_hold.ogg', sound_id = "contact_charge_hold", volume = VOLUME_LOW)
+			charge_sound_token = GLOB.sound_player.PlayLoopingSound(source = src, sound = 'sound/weapons/guns/misc/contact_charge_hold.ogg', sound_id = "contact_charge_hold", volume = VOLUME_QUIET)
 
 
 
@@ -211,7 +217,7 @@
 	Contact beam charges up a shot which can be held at fully charged state
 */
 /datum/firemode/contact_beam
-	var/charge_time = 1 SECOND
+	var/charge_time = 1.3 SECOND
 	override_fire = TRUE
 
 
@@ -262,9 +268,9 @@
 	Projectile
 */
 /obj/item/projectile/beam/contact
-	damage = 70
+	damage = 80
 	armor_penetration = 15
-	accuracy	=	126 // 110 -> 126: 15% increase on 10-SEP-2020. -Lion
+	accuracy	=	100
 	fire_sound = list('sound/weapons/guns/fire/contact_fire_1.ogg', 'sound/weapons/guns/fire/contact_fire_2.ogg')
 
 
@@ -291,10 +297,7 @@
 	'sound/weapons/guns/blast/contact_blast_6.ogg')), VOLUME_HIGH, TRUE)
 
 	spawn(5)
-		for (var/i in 1 to 3)
-			new /obj/effect/effect/expanding_circle(location, -0.25, 1.2 SECONDS)
-			sleep(rand_between(1,3))
-		qdel(src)
+
 
 		for (var/atom/movable/AM in view(2, location))
 			if (AM == user)
@@ -302,8 +305,13 @@
 
 			if (isliving(AM))
 				var/mob/living/L = AM
-				L.adjustFireLoss(30)
+				L.adjustFireLoss(50)
 			AM.apply_push_impulse_from(location, 250, 0.3)
+
+		for (var/i in 1 to 4)
+			new /obj/effect/effect/expanding_circle(location, 0.25, 1. SECONDS)
+			sleep(rand_between(2,4))
+		qdel(src)
 
 
 

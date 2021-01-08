@@ -33,12 +33,14 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - rscadd: "Significantly reworked contact beam as a heavy anti-armor weapon. Majorly reduced accuracy, but increased armor penetration."
+  - rscadd: "Significantly rebalanced the Contact Beam. Main firemode now has higher damage and armor pentration, but lower accuracy and longer charging time"
+  - tweak: "Contact beam altfire now deals 50 burn damage to mobs around the user. Affects own tile as well, but not the user themselves"
   - imageadd: "The contact beam now has a visual effect for charging up"
-  - tweak: "Slightly increased brute armor, but it is now affected by the armor penetration of bullets and weapons. Seeker and contact beam both have very high AP"
-  - bugfix: "Fixed aiming mode on the contact beam being nonfunctional. You can now aim down the sights for better accuracy"
-  - soundadd: "Added new audio and visual FX for contact beam."
-  - tweak: "Significantly reduced tripod's evasion, making it more vulnerable to heavy weapons."
+  - soundadd: "Added new audio FX for contact beam."
+  - tweak: "Brute armor is now affected by the armor penetration of bullets and weapons. Seeker and contact beam both have very high AP"
+  - bugfix: "Fixed aiming mode on the contact beam being nonfunctional, and it now requires aiming to fire"
+  - tweak: "Moderately reduced tripod's evasion, making it more vulnerable to heavy weapons."
   - tweak: "Slightly reduced brute evasion."
   - tweak: "Significantly increased cargo costs for contact beam."
+  - tweak: "Slightly reduced the armor penetration of plasma saw and laserpick."
 

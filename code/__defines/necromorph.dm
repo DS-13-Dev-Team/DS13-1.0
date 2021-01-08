@@ -7,7 +7,7 @@
 #define NECROMORPH_ACID_COLOR	"#946b36"
 
 //Maximum bonus to evasion tripod gets for being in an open space
-#define TRIPOD_PERSONAL_SPACE_MAX_EVASION	30
+#define TRIPOD_PERSONAL_SPACE_MAX_EVASION	35
 
 //Minimum power levels for bioblasts to trigger the appropriate ex_act tier
 #define BIOBLAST_TIER_1	120
