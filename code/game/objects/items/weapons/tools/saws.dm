@@ -85,6 +85,7 @@
 	toggleable = TRUE
 	atom_flags = ATOM_FLAG_NO_BLOOD
 	item_flags = ITEM_FLAG_NO_EMBED
+	armor_penetration = 4
 
 /obj/item/weapon/tool/saw/plasma/update_icon()
 	if (switched_on)

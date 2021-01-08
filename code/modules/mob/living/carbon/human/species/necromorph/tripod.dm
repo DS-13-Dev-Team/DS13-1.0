@@ -9,6 +9,8 @@
 //These are used to position the arm sprite during swing
 #define TONGUE_OFFSETS	list(S_NORTH = new /vector2(6, 16), S_SOUTH = new /vector2(-2, 8), S_EAST = new /vector2(26, 10), S_WEST = new /vector2(-14, 10))
 
+
+
 /datum/species/necromorph/tripod
 	name = SPECIES_NECROMORPH_TRIPOD
 	mob_type	=	/mob/living/carbon/human/necromorph/tripod
@@ -43,7 +45,7 @@
 	bump_flag 	= HEAVY	// What are we considered to be when bumped?
 	push_flags 	= ALLMOBS	// What can we push?
 	swap_flags 	= ALLMOBS	// What can we swap place with?
-	evasion = 0	//Tripod has no natural evasion, but this value will be constantly modified by a passive ability
+	evasion = -10	//Tripod has poor natural evasion, but this value will be constantly modified by a passive ability
 	reach = 2
 
 	//Implacable
@@ -137,7 +139,7 @@
 
 
 #define TRIPOD_PASSIVE_1	"<h2>PASSIVE: Personal Space:</h2><br>\
-The tripod needs room to manoeuvre. For each clear tile within 2 radius around it, the tripod gains bonus evasion, up to a maximum of 35 if standing in a completely open space."
+The tripod needs room to manoeuvre. For each clear tile within 2 radius around it, the tripod gains bonus evasion, up to a maximum of TRIPOD_PERSONAL_SPACE_MAX_EVASION if standing in a completely open space."
 
 #define TRIPOD_PASSIVE_2	"<h2>PASSIVE: Cadence:</h2><br>\
 The tripod is capable of a great top speed, but its huge mass requires some time to start moving. Tripod gains bonus movespeed for each tile it moves in the same direction, up to double speed after moving 5 tiles.<br>\
