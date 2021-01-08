@@ -28,8 +28,8 @@
 	mag_remove_sound = 'sound/weapons/guns/interaction/contact_magout.ogg'
 	removeable_cell = TRUE
 	firemodes = list(
-		list(mode_name = "charge beam", mode_type = /datum/firemode/contact_beam),
-		list(mode_name = "repulse", mode_type = /datum/firemode/contact_repulse, windup_time = 0.5 SECONDS, 	fire_delay = 1.5 SECONDS)
+		list(mode_name = "charge beam", mode_type = /datum/firemode/contact_beam, fire_delay = 2 SECONDS),
+		list(mode_name = "repulse", mode_type = /datum/firemode/contact_repulse, windup_time = 0.5 SECONDS, 	fire_delay = 2 SECONDS)
 		)
 
 
@@ -46,7 +46,7 @@
 
 	var/datum/sound_token/charge_sound_token
 
-	shot_volume = VOLUME_HIGH
+	shot_volume = VOLUME_MAX
 
 	//This is a precision weapon, not to be hipfired
 	require_aiming = TRUE
