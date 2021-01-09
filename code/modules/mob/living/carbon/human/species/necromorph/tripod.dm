@@ -246,7 +246,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	name = "Claw Strike"
 	desc = "A modestly powerful punch that is cumbersome to use"
 	delay = 20
-	damage = 14
+	damage = 13
 	airlock_force_power = 3
 	airlock_force_speed = 1.5
 	structure_damage_mult = 1.5	//Slightly annoys obstacles
