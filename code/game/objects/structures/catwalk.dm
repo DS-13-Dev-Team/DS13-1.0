@@ -188,3 +188,12 @@
 /obj/effect/catwalk_plated/dank
 	icon_state = "catwalk_platedgrim"
 	plating_type = /decl/flooring/tiling/mono/dark
+
+
+
+
+/*
+	Rail for trams/monorail system
+*/
+/obj/structure/catwalk/rail
+	plane = BELOW_TURF_PLANE
