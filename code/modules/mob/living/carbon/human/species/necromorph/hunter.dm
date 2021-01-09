@@ -47,7 +47,7 @@
 	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 
-	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/strong) //Bite attack is a backup if blades are severed
+	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong) //Bite attack is a backup if blades are severed
 
 	inherent_verbs = list(/mob/living/carbon/human/proc/hunter_regenerate, /mob/living/carbon/human/proc/hunter_hookblade, /mob/living/carbon/human/proc/hunter_taunt, /mob/proc/shout)
 	modifier_verbs = list(KEY_ALT = list(/mob/living/carbon/human/proc/hunter_hookblade), KEY_CTRLALT = list(/mob/living/carbon/human/proc/hunter_taunt))
@@ -358,7 +358,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 	duration = 0.65 SECOND,
 	windup = 0,
 	cooldown = 0,//5 SECONDS, //TODO: Uncomment this
-	damage = 10,
+	damage = 12.5,
 	damage_flags = DAM_EDGE,
 	stages = 8)
 

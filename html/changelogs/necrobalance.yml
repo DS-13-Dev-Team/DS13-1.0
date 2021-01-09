@@ -33,6 +33,13 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - tweak: "Hunter regeneration reworked. It now heals burn damage much more slowly. Regeneration abilities heal smaller quantities of lasting damage."
-  - tweak: "Reduced melee damage of hunter and enhanced slasher"
+  - tweak: "Hunter regeneration nerfed. It now heals burn damage much more slowly. Regeneration abilities heal smaller quantities of lasting damage."
+  - tweak: "Slightly Reduced melee damage of hunter and enhanced slasher"
+  - tweak: "Increased delay of necromorph slash attacks. Affects slasher, enhanced slasher, twitcher, hunter."
+  - tweak: "Hunter max health set back to 250, in light of other balance changes."
   - tweak: "Increased damage and stun time of tripod's high leap, in the red frontal cone"
+  - tweak: "Tripod now recieves a brief but powerful defensive buff when it lands a perfect leap."
+  - tweak: "Tripod arm swing is now a little faster."
+  - tweak: "Tripod tongue lash now deals more damage, and the tongue stays exposed for a shorter time afterwards."
+  - tweak: "Slightly reduced the damage of all crew melee weapons."
+  - tweak: "Mobs now have their reach reduced by 1 while lying down, to a minimum of 1. Only affects large necromorphs currently."
