@@ -104,6 +104,7 @@
 	// Health and Defense
 	var/total_health = 120                   // Point at which the mob will enter crit.
 	var/healing_factor	=	0.07				//Base damage healed per organ, per tick
+	var/burn_heal_factor = 1				//When healing burns passively, the heal amount is multiplied by this
 	var/max_heal_threshold	=	0.6			//Wounds can only autoheal if the damage is less than this * max_damage
 	var/wound_remnant_time = 10 MINUTES	//How long fully-healed wounds stay visible before vanishing
 	var/limb_health_factor	=	1	//Multiplier on max health of limbs
