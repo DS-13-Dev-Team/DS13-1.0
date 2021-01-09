@@ -33,7 +33,6 @@ Pipelines + Other Objects -> Pipe network
 	var/atmos_initalized = FALSE
 
 /obj/machinery/atmospherics/New()
-	atom_flags |= ATOM_FLAG_UNTARGETABLE //vents, scrubbers and pipes shouldn't be a target for guns
 	if(!icon_manager)
 		icon_manager = new()
 
