@@ -43,3 +43,5 @@ changes:
   - tweak: "Tripod tongue lash now deals more damage, and the tongue stays exposed for a shorter time afterwards."
   - tweak: "Slightly reduced the damage of all crew melee weapons."
   - tweak: "Mobs now have their reach reduced by 1 while lying down, to a minimum of 1. Only affects large necromorphs currently."
+  - tweak: "Slightly reduced the biomass cost of exploder."
+  - bugfix: "Fixed the hacker rig having no frame sprite."
