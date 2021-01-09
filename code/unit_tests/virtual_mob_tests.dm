@@ -1,4 +1,4 @@
-#ifdef UNIT_TESTS
+#ifdef UNIT_TEST
 
 datum/unit_test/virtual
 	name = "VIRTUAL - Template"
