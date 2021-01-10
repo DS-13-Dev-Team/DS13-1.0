@@ -201,6 +201,14 @@
 	QDEL_NULL(s)
 	. = ..()
 
+
+/obj/machinery/light/meddle()
+	if (lightbulb)
+		lightbulb.b_colour = RANDOM_RGB
+		update_icon()
+		return
+	else .=..()
+
 /obj/machinery/light/update_icon(var/trigger = 1)
 	overlays = overlays.Cut()
 	icon_state = "[base_state]_empty" //Never use the initial state. That'll just reset it to the mapping icon.

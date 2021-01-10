@@ -1,3 +1,10 @@
+/obj/item/modular_computer
+	implements_dummy = TRUE
+
+/obj/item/modular_computer/New(var/location, var/dummy)
+	src.dummy = dummy
+	.=..()
+
 /obj/item/modular_computer/Process()
 	if(!enabled) // The computer is turned off
 		last_power_usage = 0
@@ -56,16 +63,17 @@
 			hard_drive.store_file(prog_file)
 
 /obj/item/modular_computer/Initialize()
-	START_PROCESSING(SSobj, src)
+	if (!dummy)
+		START_PROCESSING(SSobj, src)
 
-	if(stores_pen && ispath(stored_pen))
-		stored_pen = new stored_pen(src)
+		if(stores_pen && ispath(stored_pen))
+			stored_pen = new stored_pen(src)
 
-	install_default_hardware()
-	if(hard_drive)
-		install_default_programs()
-	if(scanner)
-		scanner.do_after_install(null, src)
+		install_default_hardware()
+		if(hard_drive)
+			install_default_programs()
+		if(scanner)
+			scanner.do_after_install(null, src)
 	update_icon()
 	update_verbs()
 	update_name()

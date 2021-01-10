@@ -12,6 +12,8 @@
 	stores_pen = TRUE
 	stored_pen = /obj/item/weapon/pen
 
+
+
 /obj/item/modular_computer/pda/Initialize()
 	. = ..()
 	enable_computer()

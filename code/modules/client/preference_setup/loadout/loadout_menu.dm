@@ -43,6 +43,11 @@
 /datum/category_item/player_setup_item/loadout/load_character(var/savefile/S)
 	from_file(S["gear_list"], pref.gear_list)
 	from_file(S["gear_slot"], pref.gear_slot)
+	if (!pref.gear_slot)
+		pref.gear_slot = 1
+	//Rebuild the loadout
+	if (pref.loadout)
+		pref.loadout.set_prefs(pref)
 
 /datum/category_item/player_setup_item/loadout/save_character(var/savefile/S)
 	to_file(S["gear_list"], pref.gear_list)
@@ -69,12 +74,12 @@
 /datum/category_item/player_setup_item/loadout/sanitize_character()
 
 
-	pref.gear_slot = sanitize_integer(pref.gear_slot, 1, config.loadout_slots, initial(pref.gear_slot))
+	pref.gear_slot = sanitize_integer(pref.gear_slot, 1, LOADOUT_SLOTS, initial(pref.gear_slot))
 	if(!islist(pref.gear_list))
 		pref.reset_gear_list()
 
-	if(pref.gear_list.len < config.loadout_slots)
-		pref.gear_list.len = config.loadout_slots
+	if(pref.gear_list.len < LOADOUT_SLOTS)
+		pref.gear_list.len = LOADOUT_SLOTS
 
 	//Loadout only sanitizes the current slot
 	LOADOUT_CHECK
@@ -222,7 +227,7 @@
 
 /datum/category_item/player_setup_item/loadout/OnTopic(href, href_list, user)
 	if(href_list["toggle_gear"])
-		toggle_gear(href_list["toggle_gear"])
+		toggle_gear(href_list["toggle_gear"], user)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	if(href_list["gear"] && href_list["tweak"])
 		var/datum/gear/gear = GLOB.gear_datums[href_list["gear"]]
@@ -269,7 +274,7 @@
 */
 
 //Adds or removes a specified gear item from the user
-/datum/category_item/player_setup_item/loadout/proc/toggle_gear(var/gearname)
+/datum/category_item/player_setup_item/loadout/proc/toggle_gear(var/gearname, var/mob/user)
 	var/datum/gear/TG = GLOB.gear_datums[gearname]
 
 	LOADOUT_CHECK
@@ -278,11 +283,11 @@
 	if((TG.display_name in pref.gear_list[pref.gear_slot]) && pref.loadout.remove_gear(TG))
 		pref.gear_list[pref.gear_slot] -= TG.display_name
 	else if (pref.loadout.add_gear(TG))
-		pref.gear_list[pref.gear_slot] += TG.display_name
+		pref.gear_list[pref.gear_slot] += list(TG.display_name)
 
 
 /datum/category_item/player_setup_item/loadout/proc/change_slot(var/newslot)
-	newslot = clamp(newslot, 1, config.loadout_slots)
+	newslot = clamp(newslot, 1, LOADOUT_SLOTS)
 	if(pref.gear_slot != newslot)
 		pref.gear_slot = newslot
 		pref.loadout.set_prefs(pref)	//Remake the loadout datum

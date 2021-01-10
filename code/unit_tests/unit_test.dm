@@ -177,7 +177,7 @@ proc/load_unit_test_changes()
 	unit_test_final_message()
 
 
-#ifdef UNIT_TEST
+#ifdef UNIT_TESTS
 
 SUBSYSTEM_DEF(unit_tests)
 	name = "Unit Tests"
@@ -274,7 +274,18 @@ SUBSYSTEM_DEF(unit_tests)
 
 		if (5)	// Finalization.
 			unit_test_final_message()
-			log_unit_test("Caught [GLOB.total_runtimes] Runtime\s.")
+			var/list/fail_reasons
+			if(GLOB)
+				if(GLOB.total_runtimes != 0)
+					fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
+				if(!GLOB.log_directory)
+					LAZYADD(fail_reasons, "Missing GLOB.log_directory!")
+			else
+				fail_reasons = list("Missing GLOB!")
+			if(!fail_reasons)
+				text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
+			else
+				log_world("Test run failed!\n[fail_reasons.Join("\n")]")
 			del world
 #endif
 #undef MAX_UNIT_TEST_RUN_TIME

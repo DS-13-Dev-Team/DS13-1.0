@@ -409,6 +409,7 @@
 	if (isliving(holder))
 		var/mob/living/L = holder
 		L.stunned = 0
+		peter_out_effects()
 	stop()
 
 
@@ -424,8 +425,8 @@
 	stop()
 
 
-
-
+//Called when the charge reaches max time or range
+/datum/extension/charge/proc/peter_out_effects()
 
 
 //Visual Filters

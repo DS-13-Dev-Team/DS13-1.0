@@ -6,6 +6,9 @@
 #define NECROMORPH_FRIENDLY_FIRE_FACTOR	0.5	//All damage dealt by necromorphs TO necromorphs, is multiplied by this
 #define NECROMORPH_ACID_COLOR	"#946b36"
 
+//Maximum bonus to evasion tripod gets for being in an open space
+#define TRIPOD_PERSONAL_SPACE_MAX_EVASION	35
+
 //Minimum power levels for bioblasts to trigger the appropriate ex_act tier
 #define BIOBLAST_TIER_1	120
 #define BIOBLAST_TIER_2	60
@@ -51,3 +54,8 @@
 
 #define PLACEMENT_FLOOR	"floor"
 #define PLACEMENT_WALL	"wall"
+
+
+#define BIOMASS_REQ_T2	600
+#define BIOMASS_REQ_T3	1000
+#define BIOMASS_REQ_T4	3825

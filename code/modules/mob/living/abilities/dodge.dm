@@ -20,6 +20,8 @@
 	var/started_at
 	var/stopped_at
 
+	statmods = list(STATMOD_EVASION = 60)
+
 
 /***********************
 	Access Proc
@@ -41,7 +43,6 @@
 	started_at = world.time
 
 	if (!QDELETED(user))
-		user.evasion += power
 
 		var/list/possible_turfs = trange(1, user)
 		possible_turfs -= get_turf(user)
@@ -60,8 +61,7 @@
 
 /datum/extension/dodge/proc/stop()
 	stopped_at = world.time
-	if (!QDELETED(user))
-		user.evasion -= power
+	unregister_statmods()
 
 	addtimer(CALLBACK(src, /datum/extension/dodge/proc/finish_cooldown), cooldown)
 

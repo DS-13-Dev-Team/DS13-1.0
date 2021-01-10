@@ -30,7 +30,9 @@
 
 /obj/Destroy()
 	if (is_processing)
-		STOP_PROCESSING(global.vars[is_processing], src)
+		var/datum/controller/subsystem/processing/P = processing_subsystems_by_varname[is_processing]
+		if (P)
+			STOP_PROCESSING(P, src)
 	.=..()
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
@@ -205,3 +207,21 @@
 //Return true if this is a flat surface which people could work on
 /obj/proc/is_surface()
 	return FALSE
+
+
+//To be called from things that spill objects on the floor.
+//Makes an object move around randomly for a couple of tiles
+/obj/proc/tumble(var/dist = 2)
+	set waitfor = FALSE
+	if (anchored)
+		return
+
+	if (!isturf(loc))
+		return
+
+	if (dist >= 1)
+		dist += rand(0,1)
+		for(var/i = 1, i <= dist, i++)
+			if(src)
+				step(src, pick(NORTH,SOUTH,EAST,WEST))
+				sleep(rand(2,4))

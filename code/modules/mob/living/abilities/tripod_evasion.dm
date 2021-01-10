@@ -1,9 +1,4 @@
 //tripod_evasion: Passive that causes the user to gain evasion based on the number of clear tiles nearby
-
-//tripod_evasion
-//tripod_evasion
-//tripod_evasion
-///mob/living
 /datum/extension/tripod_evasion
 	name = "tripod_evasion"
 	base_type = /datum/extension/tripod_evasion
@@ -22,7 +17,7 @@
 
 
 	//The maximum evasion bonus the user can gain
-	var/max_evasion_buff = 40
+	var/max_evasion_buff = TRIPOD_PERSONAL_SPACE_MAX_EVASION
 
 	//How many clear tiles around the user are needed to reach max evasion
 	var/max_clear_tiles = 24
@@ -30,7 +25,7 @@
 	var/check_range = 2
 
 
-	var/current_evasion_buff = 0
+	statmods = list(STATMOD_EVASION = 0)
 
 
 	//Runtime vars:
@@ -80,15 +75,15 @@
 
 	//If its been long enough since our last update, then do it immediately
 	if (time_delta >= check_cooldown)
-		update_evasion()
+		update_space_evasion()
 
 	else
 		//Not quite long enough, schedule another update for when the time comes
-		addtimer(CALLBACK(src, /datum/extension/tripod_evasion/proc/update_evasion), check_cooldown, TIMER_STOPPABLE)
+		addtimer(CALLBACK(src, /datum/extension/tripod_evasion/proc/update_space_evasion), check_cooldown, TIMER_STOPPABLE)
 
 
 //Increase or decrease the speed by a number of steps
-/datum/extension/tripod_evasion/proc/update_evasion()
+/datum/extension/tripod_evasion/proc/update_space_evasion()
 	var/mob/living/L = holder
 
 	//If the mob has been deleted, we will be soon too. all is well, do nothing
@@ -108,8 +103,8 @@
 	var/new_evasion = clear_turfs * tile_evasion
 
 	//Only do this next bit if we actually changed
-	if (current_evasion_buff != new_evasion)
-		current_evasion_buff = new_evasion
+	if (statmods[STATMOD_EVASION] != new_evasion)
+		statmods[STATMOD_EVASION] = new_evasion
 		sync_evasion()
 
 	//We are done with updating, set these
@@ -125,25 +120,5 @@
 	if (QDELETED(L))
 		return
 
-	//Remove any existing evasionboost so the mob goes back to baseline, then we will apply the new boost after that
-	remove_evasion()
+	register_statmod(STATMOD_EVASION)
 
-	//If the mob is asleep or dead, no evasion buffs
-	if (L.stat)
-		current_evasion_buff = 0
-		return
-
-	add_evasion()
-
-
-//Assumes safety checks are done
-/datum/extension/tripod_evasion/proc/remove_evasion()
-	var/mob/living/L = holder
-	L.evasion -= evasion_delta
-	evasion_delta = 0
-
-//Assumes safety checks are done, and that evasion was removed before it was added
-/datum/extension/tripod_evasion/proc/add_evasion()
-	var/mob/living/L = holder
-	L.evasion += current_evasion_buff
-	evasion_delta = current_evasion_buff
