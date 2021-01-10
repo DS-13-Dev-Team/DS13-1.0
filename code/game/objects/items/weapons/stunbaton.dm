@@ -5,7 +5,7 @@
 	icon_state = "stunbaton"
 	item_state = "baton"
 	slot_flags = SLOT_BELT
-	force = 12
+	force = WEAPON_FORCE_PAINFUL
 	sharp = 0
 	edge = 0
 	throwforce = 7

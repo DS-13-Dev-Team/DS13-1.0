@@ -1,8 +1,8 @@
 #define LEAP_SHOCKWAVE_DAMAGE	10
-#define LEAP_CONE_DAMAGE	10
-#define LEAP_CONE_WEAKEN	2
+#define LEAP_CONE_DAMAGE	15
+#define LEAP_CONE_WEAKEN	3
 #define LEAP_REDUCED_COOLDOWN	3 SECONDS
-#define TONGUE_EXTEND_TIME 7 SECONDS	//How long the tongue stays out and visible after any tongue move
+#define TONGUE_EXTEND_TIME 5 SECONDS	//How long the tongue stays out and visible after any tongue move
 
 #define ARM_SWING_RANGE	4
 
@@ -151,7 +151,8 @@ This speed bonus is lost if you stop moving in a straight line"
 <h3>Damage: 10 radial + 10 cone</h3><br>\
 <h3>Cooldown: 6 seconds</h3><br>\
 The tripod's signature ability. Leaps high into the air and briefly out of view, before landing hard at the designated spot. <br>\
-Deals a small amount of damage to victims in a 1 tile radius around the landing point, and additional damage+knockdown to a cone shaped area infront of the tripod as it lands"
+Deals a small amount of damage to victims in a 1 tile radius around the landing point, and additional damage+knockdown to a cone shaped area infront of the tripod as it lands.<br>\
+If the tripod hits a victim with the frontal cone, it gains 40% reduction on incoming damage for 3 seconds. Keep jumping around to survive longer!"
 
 
 #define TRIPOD_SWING_DESC 	"<h2>Arm Swing:</h2><br>\
@@ -245,7 +246,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	name = "Claw Strike"
 	desc = "A modestly powerful punch that is cumbersome to use"
 	delay = 20
-	damage = 14
+	damage = 13
 	airlock_force_power = 3
 	airlock_force_speed = 1.5
 	structure_damage_mult = 1.5	//Slightly annoys obstacles
@@ -304,6 +305,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 			L.take_overall_damage(LEAP_CONE_DAMAGE)
 			L.Weaken(LEAP_CONE_WEAKEN)
+			set_extension(user, /datum/extension/tripod_leap_defense)
 			shake_camera(src,10,3)
 			conehit = TRUE
 
@@ -324,8 +326,15 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 
 
+/datum/extension/tripod_leap_defense
+	base_type = /datum/extension/tripod_leap_defense
+	flags = EXTENSION_FLAG_IMMEDIATE
+	statmods = list(STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = 0.6)
 
 
+/datum/extension/tripod_leap_defense/New(var/atom/holder)
+	.=..()
+	addtimer(CALLBACK(src, /datum/extension/proc/remove_self), 3 SECONDS)
 
 /*--------------------------------
 	Arm Swing
@@ -346,8 +355,8 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	target = target,
 	angle = 150,
 	range = ARM_SWING_RANGE,
-	duration = 0.85 SECOND,
-	windup = 0.8 SECONDS,
+	duration = 0.7 SECOND,
+	windup = 0.6 SECONDS,
 	cooldown = 3.5 SECONDS,
 	damage = 20,
 	damage_flags = DAM_EDGE,
@@ -504,7 +513,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	windup = 0,
 	cooldown = 6 SECONDS,
 	effect_type = /obj/effect/effect/swing/tripod_tongue,
-	damage = 18,
+	damage = 22.5,
 	damage_flags = DAM_EDGE | DAM_SHARP,
 	stages = 4,
 	swing_direction = pick(CLOCKWISE, ANTICLOCKWISE))
