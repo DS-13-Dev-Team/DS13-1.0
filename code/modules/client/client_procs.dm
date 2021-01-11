@@ -90,6 +90,13 @@
 		if("prefs")		return prefs.process_link(usr,href_list)
 		if("vars")		return view_var_Topic(href,href_list,hsrc)
 
+	if(href_list["join_ert"])
+		if(!isghost(usr))
+			return
+		var/client/A = usr.client
+
+		A.JoinResponseTeam()
+		return
 	..()	//redirect to hsrc.Topic()
 
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
