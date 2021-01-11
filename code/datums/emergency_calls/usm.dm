@@ -17,7 +17,11 @@
 	var/mob/original = M.current
 	var/mob/living/carbon/human/H = .
 
-	H.name = pick(GLOB.first_names_female + GLOB.first_names_male) + " " + pick(GLOB.last_names)
+	var/choosen = input(M, "Random name or input name?", "Name") as null|anything in list("Random", "Input")
+	if(choosen == "Input")
+		H.name = input(M, "Input name of character.", "Name") as text
+	else
+		H.name = pick(GLOB.first_names_female + GLOB.first_names_male) + " " + pick(GLOB.last_names) //Random as default
 	H.real_name = H.name
 
 	M.transfer_to(H, TRUE)
