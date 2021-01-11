@@ -197,7 +197,6 @@ Admin version, with debugging options.
 	. = ..()
 	.["antag_buff"] = length(skillset.owner.fetch_buffs_of_type(/datum/skill_buff/antag))
 	.["antag"] = skillset.owner && skillset.owner.mind && player_is_antag(skillset.owner.mind)
-	.["ert"] = skillset.owner && skillset.owner.mind && player_is_ert(skillset.owner.mind)
 
 /datum/nano_module/skill_ui/admin/Topic(href, href_list)
 	if(..())
