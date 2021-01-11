@@ -187,14 +187,14 @@
 	if(!M.client)
 		return FALSE  //Not connected
 
-	if(M.mind && (M.mind in candidates))
+	if(!M.mind) //They don't have a mind
+		return FALSE
+
+	if(M.mind in candidates)
 		return FALSE  //Already there.
 
 	if(M.stat != DEAD)
 		return FALSE  //Alive, could have been drafted into xenos or something else.
-
-	if(!M.mind) //They don't have a mind
-		return FALSE
 
 	candidates += M.mind
 	return TRUE

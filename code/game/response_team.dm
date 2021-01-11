@@ -45,13 +45,13 @@
 	if(!istype(ticker.mode.picked_call))
 		return
 
-	var/max = input("What should the maximum amount of members be?", "Max members", ticker.mode.picked_call.members_max) as null|num
+	var/max = input("What should the maximum team size instead of number off members be?", "Max members", ticker.mode.picked_call.members_max) as null|num
 	if(!max || max < 1)
 		return
 
 	ticker.mode.picked_call.members_max = max
 
-	var/min = input("What should the minimum amount of members be?", "Min members", ticker.mode.picked_call.members_min) as null|num
+	var/min = input("What should the minimum team size instead of number of members be?", "Min members", ticker.mode.picked_call.members_min) as null|num
 	if(!min || min < 1)
 		min = 0
 
