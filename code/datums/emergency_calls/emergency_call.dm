@@ -109,7 +109,7 @@
 
 	ticker.mode.on_distress_cooldown = TRUE
 
-	candidate_timer = addtimer(CALLBACK(src, .proc/do_activate, announce), 1 MINUTES, TIMER_STOPPABLE)
+	candidate_timer = addtimer(CALLBACK(src, .proc/do_activate, announce), 5 MINUTES, TIMER_STOPPABLE)
 
 /datum/emergency_call/proc/do_activate(announce = TRUE)
 	candidate_timer = null
@@ -141,7 +141,7 @@
 		ticker.mode.picked_call = null
 		ticker.mode.on_distress_cooldown = TRUE
 
-		cooldown_timer = addtimer(CALLBACK(src, .proc/reset), 1 MINUTES, TIMER_STOPPABLE)
+		cooldown_timer = addtimer(CALLBACK(src, .proc/reset), 5 MINUTES, TIMER_STOPPABLE)
 		return
 
 	var/list/datum/mind/picked_candidates = list()
