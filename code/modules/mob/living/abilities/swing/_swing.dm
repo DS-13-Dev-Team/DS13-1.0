@@ -212,7 +212,7 @@
 	if (L == user)
 		return FALSE
 	var/atom/A = effect
-	if (raytrace && !check_trajectory(L, user, pass_flags = A.pass_flags))
+	if (raytrace && !check_trajectory(L, source, pass_flags = A.pass_flags))
 		return FALSE
 
 
