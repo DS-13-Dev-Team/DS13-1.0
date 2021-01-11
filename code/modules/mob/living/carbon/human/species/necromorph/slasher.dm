@@ -104,7 +104,7 @@
 
 /*Roughly speaking, enhanced versions of necromorphs have:
 	250% biomass cost and max health
-	150% damage on attacks and abilites
+	140% damage on attacks and abilites
 	80% windup and cooldown times, move and attack delays
 */
 /datum/species/necromorph/slasher/enhanced
@@ -192,7 +192,7 @@
 	edge = TRUE
 	shredding = TRUE
 	damage = 16
-	delay = 13
+	delay = 15
 	airlock_force_power = 2
 	armor_penetration = 5
 
@@ -228,10 +228,10 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 	return TRUE
 
 /datum/unarmed_attack/blades/strong
-	damage = 24
-	delay = 11
+	damage = 22.4
+	delay = 14
 	airlock_force_power = 3
-	armor_penetration = 10
+	armor_penetration = 8
 
 /*
 	Abilities

@@ -127,7 +127,7 @@
 /* "Rifle" rounds */
 
 /obj/item/projectile/bullet/rifle
-	armor_penetration = 25
+	armor_penetration = 10
 	penetrating = 1
 
 /obj/item/projectile/bullet/rifle/a556
@@ -145,7 +145,7 @@
 	stun = 3
 	weaken = 3
 	penetrating = 5
-	armor_penetration = 8
+	armor_penetration = 10
 	hitscan = 1 //so the PTR isn't useless as a sniper weapon
 	penetration_modifier = 1.25
 

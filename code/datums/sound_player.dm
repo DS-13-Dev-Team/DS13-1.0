@@ -38,6 +38,32 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 
 	return PlaySoundDatum(source, sound_id, S, range, prefer_mute)
 
+/*
+	This plays a sound through the sound player with a fixed duration which can be stopped at will.
+	You should know the duration of the audio file you feed into it
+
+	It returns a sound token which can be used to stop it early
+
+	To stop the sound early, just do sound_token.Stop() or QDEL_NULL(sound_token)
+*/
+/decl/sound_player/proc/PlayStoppableSound(var/atom/source, var/sound_id, var/sound, var/volume, var/range, var/falloff = 1, var/echo, var/frequency, var/prefer_mute, var/duration = 1 SECOND)
+	var/sound/S = istype(sound, /sound) ? sound : new(sound)
+	S.environment = 0 // Ensures a 3D effect even if x/y offset happens to be 0 the first time it's played
+	S.volume  = volume
+	S.falloff = falloff
+	S.echo = echo
+	S.frequency = frequency
+
+	//If a duration is passed, we set repeat true. Not necessarily because we want it to repeat, but because not having this set causes
+	//Issues with sound channels
+	if (duration)
+		S.repeat = TRUE
+
+	var/datum/sound_token/sound_token = PlaySoundDatum(source, sound_id, S, range, prefer_mute)
+	addtimer(CALLBACK(sound_token, /datum/sound_token/proc/Stop), duration)
+
+	return sound_token
+
 /decl/sound_player/proc/PrivStopSound(var/datum/sound_token/sound_token)
 	var/channel = sound_token.sound.channel
 	var/sound_id = sound_token.sound_id

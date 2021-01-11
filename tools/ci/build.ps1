@@ -4,5 +4,5 @@ if(!(Test-Path -Path "C:/byond")){
     Remove-Item C:/byond.zip
 }
 
-&"C:/byond/bin/dm.exe" -max_errors 0 baystation.dme
+&"C:/byond/bin/dm.exe" -max_errors 0 baystation12.dme
 exit $LASTEXITCODE
