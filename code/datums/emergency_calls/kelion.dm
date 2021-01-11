@@ -40,13 +40,6 @@
 		ertfit = pick(specials_outfits)
 		specials_outfits -= ertfit
 		dressup_human(H, ertfit)
-		switch(ertfit)
-			if(/decl/hierarchy/outfit/isaac)
-				H.name = "Isaac Clark"
-			if(/decl/hierarchy/outfit/kendra)
-				H.name = "Kendra"
-		H.real_name = H.name
-		H.fully_replace_character_name(M.name, H.real_name)
 		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are a member of squad.</span></p>")
 		return
 
