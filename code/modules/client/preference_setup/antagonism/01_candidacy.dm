@@ -2,6 +2,7 @@
 	var/list/never_be_special_role
 	var/list/be_special_role
 	var/auto_necroqueue = TRUE
+	var/auto_ert = FALSE
 
 /datum/category_item/player_setup_item/antagonism/candidacy
 	name = "Candidacy"
@@ -11,11 +12,13 @@
 	from_file(S["be_special"],           pref.be_special_role)
 	from_file(S["never_be_special"],     pref.never_be_special_role)
 	from_file(S["auto_necroqueue"],           pref.auto_necroqueue)
+	from_file(S["auto_ert"], 			 pref.auto_ert)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/save_character(var/savefile/S)
 	to_file(S["be_special"],             pref.be_special_role)
 	to_file(S["never_be_special"],       pref.never_be_special_role)
 	to_file(S["auto_necroqueue"],           pref.auto_necroqueue)
+	to_file(S["auto_ert"],               pref.auto_ert)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/sanitize_character()
 	if(!istype(pref.be_special_role))
@@ -84,7 +87,22 @@
 		else
 			. += "<a href='?src=\ref[src];add_special=[ghost_trap.pref_check]'>High</a> <span class='linkOn'>Low</span> <a href='?src=\ref[src];add_never=[ghost_trap.pref_check]'>Never</a></br>"
 		. += "</td></tr>"
+	. += "</table>"
 
+	. += "Auto Join ERT: "
+	. += {"<a class='linkActive noIcon checkbox' unselectable='on' title='If ticked, you will automatically join ert.'  style='display:inline-block;' onclick='document.location="?src=\ref[src];auto_ert=[pref.auto_ert ? "false" : "true"]"' ><div><form><input type='checkbox' [pref.auto_ert ? "checked" : ""]></form></div></a><br>"}
+
+	. += "<b>ERT Availability:</b><br>"
+	. += "<table>"
+	for(var/ert_type in subtypesof(/datum/emergency_call))
+		var/datum/emergency_call/ert = ert_type
+		var/ert_id = initial(ert.pref_name)
+		. += "<tr><td>[ert_id]: </td><td>"
+		if(ert_id in pref.never_be_special_role)
+			. += "<a href='?src=\ref[src];del_special=[ert_id]'>Yes</a> <span class='linkOn'>No</span></br>"
+		else
+			. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];add_never=[ert_id]'>No</a></br>"
+		. += "</td></tr>"
 	. += "</table>"
 	. = jointext(.,null)
 
@@ -121,6 +139,13 @@
 			pref.auto_necroqueue = TRUE
 		return TOPIC_REFRESH
 
+	if(href_list["auto_ert"])
+		if(href_list["auto_ert"] == "false")
+			pref.auto_ert = FALSE
+		if(href_list["auto_ert"] == "true")
+			pref.auto_ert = TRUE
+		return TOPIC_REFRESH
+
 	return ..()
 
 /datum/category_item/player_setup_item/antagonism/candidacy/proc/valid_special_roles()
@@ -139,6 +164,10 @@
 		if(!ghost_trap.list_as_special_role)
 			continue
 		private_valid_special_roles += ghost_trap.pref_check
+
+	for(var/ert_type in subtypesof(/datum/emergency_call))
+		var/datum/emergency_call/ert = ert_type
+		private_valid_special_roles += initial(ert.pref_name)
 
 	return private_valid_special_roles
 

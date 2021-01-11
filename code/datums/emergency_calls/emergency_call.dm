@@ -5,14 +5,15 @@
 //The distress call parent.
 /datum/emergency_call
 	var/name = ""
-	var/mob_max = 10
-	var/mob_min = 1
+	var/pref_name = ""
+	var/members_max = 10
+	var/members_min = 1
 	var/landmark_tag
 	var/dispatch_message = "An encrypted signal has been received from a nearby vessel. Stand by." //Message displayed to marines once the signal is finalized.
 	var/objectives = "" //Objectives to display to the members.
-	var/probability = 0 //So we can give different ERTs a different probability.
-	var/list/datum/mind/members = list() //Currently-joined members.
-	var/list/datum/mind/candidates = list() //Potential candidates for enlisting.
+	var/weigh = 0 //So we can give different ERTs a different weigh.
+	var/list/members = list() //Currently-joined members.
+	var/list/candidates = list() //Potential candidates for enlisting.
 	var/mob/living/carbon/leader = null
 	var/candidate_timer
 	var/cooldown_timer
@@ -41,12 +42,12 @@
 	var/list/valid_calls = list()
 
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
-		if(E.probability < 1) //Those that are meant to be admin-only
+		if(E.weigh < 1) //Those that are meant to be admin-only
 			continue
 
 		valid_calls.Add(E)
 
-		if(prob(E.probability))
+		if(prob(E.weigh))
 			chosen_call = E
 			break
 
@@ -56,7 +57,7 @@
 	return chosen_call
 
 /datum/emergency_call/proc/show_join_message()
-	if(!mob_max || !ticker?.mode) //Not a joinable distress call.
+	if(!members_max || !ticker?.mode) //Not a joinable distress call.
 		return
 
 	for(var/i in GLOB.player_list)
@@ -72,7 +73,7 @@
 	if(ticker?.mode?.waiting_for_candidates) //It's already been activated
 		return FALSE
 
-	picked_call.mob_max = rand(5, 15)
+	picked_call.members_max = rand(5, 15)
 
 	picked_call.activate()
 
@@ -98,7 +99,7 @@
 		message_admins("Distress beacon: [name] attempted to activate but distress is on cooldown")
 		return FALSE
 
-	if(mob_max > 0)
+	if(members_max > 0)
 		ticker.mode.waiting_for_candidates = TRUE
 
 	show_join_message() //Show our potential candidates the message to let them join.
@@ -125,12 +126,14 @@
 			if(M.current.stat != DEAD) // and not dead or admin ghosting,
 				to_chat(M.current, "<span class='warning'>You didn't get selected to join the distress team because you aren't dead.</span>")
 				continue
+			if(initial(ticker.mode.picked_call.pref_name) in M.current?.client?.prefs.never_be_special_role)
+				continue
 		valid_candidates += M
 
 	message_admins("Distress beacon: [name] got [length(candidates)] candidates, [length(valid_candidates)] of them were valid.")
 
-	if(mob_min && length(valid_candidates) < mob_min)
-		message_admins("Aborting distress beacon [name], not enough candidates. Found: [length(valid_candidates)]. Minimum required: [mob_min].")
+	if(members_min && length(valid_candidates) < members_min)
+		message_admins("Aborting distress beacon [name], not enough candidates. Found: [length(valid_candidates)]. Minimum required: [members_min].")
 		ticker.mode.waiting_for_candidates = FALSE
 		members.Cut() //Empty the members list.
 		candidates.Cut()
@@ -145,8 +148,8 @@
 		return
 
 	var/list/datum/mind/picked_candidates = list()
-	if(length(valid_candidates) > mob_max)
-		for(var/i in 1 to mob_max)
+	if(length(valid_candidates) > members_max)
+		for(var/i in 1 to members_max)
 			if(!length(valid_candidates)) //We ran out of candidates.
 				break
 			picked_candidates += pick_n_take(valid_candidates) //Get a random candidate, then remove it from the candidates list.
@@ -164,7 +167,7 @@
 
 	message_admins("Distress beacon: [name] finalized, starting spawns.")
 
-	if(mob_min > 0)
+	if(members_min > 0)
 		if(length(picked_candidates))
 			for(var/i in picked_candidates)
 				var/datum/mind/candidate_mind = i

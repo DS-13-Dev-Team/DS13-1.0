@@ -45,17 +45,17 @@
 	if(!istype(ticker.mode.picked_call))
 		return
 
-	var/max = input("What should the maximum amount of mobs be?", "Max Mobs", ticker.mode.picked_call.mob_max) as null|num
+	var/max = input("What should the maximum amount of members be?", "Max members", ticker.mode.picked_call.members_max) as null|num
 	if(!max || max < 1)
 		return
 
-	ticker.mode.picked_call.mob_max = max
+	ticker.mode.picked_call.members_max = max
 
-	var/min = input("What should the minimum amount of mobs be?", "Min Mobs", ticker.mode.picked_call.mob_min) as null|num
+	var/min = input("What should the minimum amount of members be?", "Min members", ticker.mode.picked_call.members_min) as null|num
 	if(!min || min < 1)
 		min = 0
 
-	ticker.mode.picked_call.mob_min = min
+	ticker.mode.picked_call.members_min = min
 
 	var/is_announcing = TRUE
 	if(alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No") != "Yes")
@@ -80,7 +80,7 @@
 
 	var/datum/emergency_call/distress = ticker?.mode?.picked_call //Just to simplify things a bit
 
-	if(!istype(distress) || !ticker.mode.waiting_for_candidates || distress.mob_max < 1)
+	if(!istype(distress) || !ticker.mode.waiting_for_candidates || distress.members_max < 1)
 		to_chat(usr, "<span class='warning'>No distress beacons that need candidates are active. You will be notified if that changes.</span>")
 		return
 

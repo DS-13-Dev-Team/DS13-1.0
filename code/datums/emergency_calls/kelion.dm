@@ -1,6 +1,7 @@
 /datum/emergency_call/kellionteam
 	name = "Kellionteam"
-	probability = 50
+	pref_name = "CEC Repair Crew"
+	weigh = 50
 	landmark_tag = "kellionteam"
 	specials_outfits = list(/decl/hierarchy/outfit/isaac, /decl/hierarchy/outfit/kendra)
 

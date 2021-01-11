@@ -1,6 +1,7 @@
 /datum/emergency_call/usm
 	name = "USM Valor Marine"
-	probability = 25
+	pref_name = "EDF Marine"
+	weigh = 25
 	landmark_tag = "edfteam"
 	specials_outfits = list(/decl/hierarchy/outfit/edf_engie, /decl/hierarchy/outfit/edf_medic)
 

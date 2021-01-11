@@ -1,15 +1,16 @@
-/datum/emergency_call/unitologiststeam
+/datum/emergency_call/deliverance
 	name = "Unitologist"
-	probability = 25
+	pref_name = "Unitologist Missionary"
+	weigh = 25
 	landmark_tag = "unitologiststeam"
 	specials_outfits = list(/decl/hierarchy/outfit/healer, /decl/hierarchy/outfit/mechanic, /decl/hierarchy/outfit/faithful)
 
-/datum/emergency_call/unitologiststeam/print_backstory(mob/living/carbon/human/H)
+/datum/emergency_call/deliverance/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, "<B>You are Unitologist.</b>")
 	to_chat(H, "")
 	to_chat(H, "<B>Follow any orders directly from Unitologist Central Command.</b>")
 
-/datum/emergency_call/unitologiststeam/create_member(datum/mind/M)
+/datum/emergency_call/deliverance/create_member(datum/mind/M)
 	. = ..()
 	if(!.)
 		return
