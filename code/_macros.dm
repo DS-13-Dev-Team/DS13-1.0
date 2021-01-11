@@ -19,6 +19,8 @@
 
 #define iscarbon(A) istype(A, /mob/living/carbon)
 
+#define isnecromorph(A) istype(A, /mob/living/carbon/human/necromorph)
+
 #define iscolorablegloves(A) (istype(A, /obj/item/clothing/gloves/color)||istype(A, /obj/item/clothing/gloves/insulated)||istype(A, /obj/item/clothing/gloves/thick))
 
 #define isclient(A) istype(A, /client)
@@ -64,8 +66,6 @@
 #define ispAI(A) istype(A, /mob/living/silicon/pai)
 
 #define isrobot(A) istype(A, /mob/living/silicon/robot)
-
-#define issignal(A) istype(A, /mob/observer/eye/signal)
 
 #define issilicon(A) istype(A, /mob/living/silicon)
 

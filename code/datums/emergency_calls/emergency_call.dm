@@ -18,7 +18,7 @@
 	var/cooldown_timer
 	var/spawn_type = /mob/living/carbon/human
 	var/list/specials_outfits = list()
-	var/datum/announcement/priority/pr_announce = new(0)
+	var/datum/announcement/priority/command/special/pr_announce = new(0)
 
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(length(all_calls)) //It's already been set up.
