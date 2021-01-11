@@ -139,7 +139,7 @@
 
 
 #define TRIPOD_PASSIVE_1	"<h2>PASSIVE: Personal Space:</h2><br>\
-The tripod needs room to manoeuvre. For each clear tile within 2 radius around it, the tripod gains bonus evasion, up to a maximum of TRIPOD_PERSONAL_SPACE_MAX_EVASION if standing in a completely open space."
+The tripod needs room to manoeuvre. For each clear tile within 2 radius around it, the tripod gains bonus evasion, up to a maximum of [TRIPOD_PERSONAL_SPACE_MAX_EVASION] if standing in a completely open space."
 
 #define TRIPOD_PASSIVE_2	"<h2>PASSIVE: Cadence:</h2><br>\
 The tripod is capable of a great top speed, but its huge mass requires some time to start moving. Tripod gains bonus movespeed for each tile it moves in the same direction, up to double speed after moving 5 tiles.<br>\
@@ -518,13 +518,13 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	stages = 4,
 	swing_direction = pick(CLOCKWISE, ANTICLOCKWISE))
 
-
-	var/sound_effect = pick(list('sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_1.ogg',
-	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_2.ogg',
-	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_3.ogg',
-	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_4.ogg',
-	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_5.ogg'))
-	playsound(src, sound_effect, VOLUME_MID, TRUE)
+	if (.)
+		var/sound_effect = pick(list('sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_1.ogg',
+		'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_2.ogg',
+		'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_3.ogg',
+		'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_4.ogg',
+		'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_5.ogg'))
+		playsound(src, sound_effect, VOLUME_MID, TRUE)
 
 //Extension subtype
 /datum/extension/swing/tripod_tongue
