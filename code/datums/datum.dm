@@ -6,6 +6,9 @@
 	var/dummy = FALSE	//Set true if this datum is a dummy and should not perform its normal functions
 	//Used by mob previews
 
+	/// Datum level flags
+	var/datum_flags = NONE
+
 #ifdef TESTING
 	var/tmp/running_find_references
 	var/tmp/last_find_references = 0
