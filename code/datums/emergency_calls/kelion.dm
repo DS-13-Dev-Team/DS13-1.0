@@ -5,9 +5,9 @@
 	specials_outfits = list(/decl/hierarchy/outfit/isaac, /decl/hierarchy/outfit/kendra)
 
 /datum/emergency_call/kellionteam/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, "<B>You are Kellionteam.</b>")
+	to_chat(H, "<B> You are part of the Kellion Repair Team.</b>")
 	to_chat(H, "")
-	to_chat(H, "<B>Follow any orders directly from Kellionteam Central Command.</b>")
+	to_chat(H, "<B>Follow any orders directly from CEC Headquarters.</b>")
 
 /datum/emergency_call/kellionteam/create_member(datum/mind/M)
 	. = ..()
