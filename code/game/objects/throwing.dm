@@ -123,6 +123,9 @@
 	if (mount)
 		mount.dismount()
 
+	//Cancel any charges or leaps
+	cancel_movement_abilities()
+
 	var/interval = 10 / speed
 	var/sleep_debt = 0
 	//use a modified version of Bresenham's algorithm to get from the atom's current position to that of the target
