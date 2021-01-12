@@ -272,11 +272,14 @@ var/list/outfits_decls_by_type_
 
 //Wrapper for creating, so that we can manipulate the items
 /decl/hierarchy/outfit/proc/create_item(var/path, var/location, var/dummy = FALSE)
+	/* As far as I can tell, this is dead code and just causes runtimes.
 	var/datum/thing = path
+
 	if (dummy && initial(thing.implements_dummy))
 		return new path(location, dummy = TRUE)
 	else
-		return new path(location)
+	*/
+	return new path(location)
 
 
 /decl/hierarchy/outfit/proc/copy()
