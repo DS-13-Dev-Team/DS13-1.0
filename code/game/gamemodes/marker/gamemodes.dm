@@ -45,7 +45,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	antag_templates = list(/datum/antagonist/unitologist)
 	require_all_templates = FALSE
 	votable = FALSE
-	var/marker_setup_time = 15 MINUTES
+	var/marker_setup_time = 30 MINUTES //default
 	var/marker_active = FALSE
 	antag_scaling_coeff = 8
 
@@ -55,6 +55,10 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	//This includes the living, and the dead
 	var/minimum_historic_crew	=	5
 	var/minimum_alive_percentage = 0.1 //0.1 = 10%
+
+/datum/game_mode/marker/New()
+	..()
+	marker_setup_time = rand(25,45) MINUTES
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
 	. = ..()
