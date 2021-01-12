@@ -26,7 +26,7 @@
 	skill_points = 20
 
 datum/job/cseco/get_description_blurb()
-	return "You are the Chief Security Officer. You are the head of Planet Cracker Starship Ishimura Security, or P.C.S.I. Sec, and are in charge of keeping the crew safe and secure. You are expected to know the Law better than the average officer. You are subordinate to the Captain and First Lieutenant."
+	return "You are the Chief Security Officer. You are the head of Planet Cracker Starship Ishimura Security, or P.C.S.I. Sec, and are in charge of keeping the crew safe and secure. Regardless of the situation, you are still the bearer of the law, so keep ship staff within bounds. You are subordinate to the Captain and First Lieutenant. You know all about Marker, situation on colony and infection core."
 
 /datum/job/sso
 	title = "Senior Security Officer"

@@ -15,6 +15,10 @@
 /decl/backpack_outfit/backpack
 	name = "Backpack"
 	path = /obj/item/weapon/storage/backpack
+
+/decl/backpack_outfit/rig
+	name = "Civilian RIG"
+	path = /obj/item/weapon/rig/civilian
 	is_default = TRUE
 
 /decl/backpack_outfit/rucksack

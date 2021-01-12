@@ -18,27 +18,12 @@
 		list(CRAFT_MATERIAL, MATERIAL_STEEL, 2)
 	)
 
-/datum/craft_recipe/weapon/fork
-	name = "fork"
-	result = /obj/item/weapon/material/kitchen/utensil/fork
-	steps = list(
-		list(CRAFT_MATERIAL, MATERIAL_STEEL, 2)
-	)
-
 /datum/craft_recipe/weapon/knife
 	name = "steel knife"
 	result = /obj/item/weapon/material/knife
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL, 1)
 	)
-
-/datum/craft_recipe/weapon/spoon
-	name = "spoon"
-	result = /obj/item/weapon/material/kitchen/utensil/spoon
-	steps = list(
-		list(CRAFT_MATERIAL, MATERIAL_STEEL, 1)
-	)
-
 
 /datum/craft_recipe/weapon/knife_blade
 	name = "knife blade"
@@ -61,15 +46,12 @@
 		list(CRAFT_MATERIAL, MATERIAL_WOOD, 5)
 	)
 
-
-
 /datum/craft_recipe/weapon/handmade_shield
 	name = "handmade shield"
-	result = /obj/item/weapon/shield/buckler
+	result = /obj/item/weapon/shield/riot/metal
 	steps = list(
-		list(CRAFT_MATERIAL, MATERIAL_WOOD, 12),
 		list(CRAFT_STACK, /obj/item/stack/rods, 4),
-		list(CRAFT_MATERIAL, MATERIAL_STEEL, 2)
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10)
 	)
 
 /datum/craft_recipe/weapon/tray_shield
@@ -80,7 +62,6 @@
 		list(CRAFT_OBJECT, /obj/item/weapon/storage/belt),
 		list(CRAFT_OBJECT, /obj/item/weapon/storage/belt)
 	)
-
 
 /datum/craft_recipe/weapon/flamethrower
 	name = "PFM-100 Industrial Torch"
