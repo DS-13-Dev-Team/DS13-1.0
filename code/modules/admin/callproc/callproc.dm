@@ -89,6 +89,10 @@
 		clear()
 		return
 
+	if(!target.CanProcCall(procname))
+		clear()
+		return //CanCallProc protect datum.
+
 	if(hastarget)
 		if(!target)
 			to_chat(usr, "Your callproc target no longer exists.")
