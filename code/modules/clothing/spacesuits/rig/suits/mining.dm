@@ -3,7 +3,7 @@
 	desc = "A stripped down, lighter version of the engineering suit. Commonly used during planet cracking operations or other \
 	 dangerous working environments to keep the wearer safe, while keeping their mobility."
 	icon_state = "ds_mining_rig"
-	armor = list(melee = 35, bullet = 50, laser = 50, energy = 15, bomb = 70, bio = 100, rad = 50)
+	armor = list(melee = 32.5, bullet = 42.5, laser = 42.5, energy = 15, bomb = 70, bio = 100, rad = 50)
 	offline_slowdown = 3.5
 	online_slowdown = 1.75
 	acid_resistance = 1.75	//Contains a fair bit of plastic

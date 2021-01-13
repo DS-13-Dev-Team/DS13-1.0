@@ -5,7 +5,6 @@
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 10, rad = 10)
 	offline_slowdown = 1
 	online_slowdown = 0
-	acid_resistance = 1
 
 	max_health = 1500
 
