@@ -2,7 +2,7 @@
 	name = "engineering rig"
 	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 	icon_state = "ds_engineering_rig"
-	armor = list(melee = 45, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 95)
+	armor = list(melee = 45, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 75)
 	offline_slowdown = 4
 	online_slowdown = 1.75
 	acid_resistance = 1.75	//Contains a fair bit of plastic
