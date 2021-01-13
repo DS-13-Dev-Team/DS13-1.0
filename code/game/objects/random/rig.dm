@@ -7,6 +7,7 @@
 /obj/random/hardsuit/item_to_spawn()
 	return pickweight(list(/obj/item/weapon/rig/security,
 				/obj/item/weapon/rig/engineering,
+				/obj/item/weapon/rig/mining,
 				/obj/item/weapon/rig/vintage = 0.5,
 				/obj/item/weapon/rig/advanced = 0.5,
 				/obj/item/weapon/rig/industrial,

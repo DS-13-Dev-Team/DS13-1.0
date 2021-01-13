@@ -1533,6 +1533,7 @@
 #include "code\modules\clothing\spacesuits\rig\suits\hacker.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\light.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\merc.dm"
+#include "code\modules\clothing\spacesuits\rig\suits\mining.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\riot.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\security.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\station.dm"

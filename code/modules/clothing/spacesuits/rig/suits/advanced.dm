@@ -10,7 +10,7 @@
 	icon_state = "ds_advanced_rig"
 
 	//Armor values are slightly higher than security rig in all categories
-	armor = list(melee = 55, bullet = 60, laser = 60, energy = 30, bomb = 65, bio = 100, rad = 65)
+	armor = list(melee = 55, bullet = 60, laser = 60, energy = 30, bomb = 65, bio = 100, rad = 95)
 	offline_slowdown = 2
 	online_slowdown = 1
 	acid_resistance = 3	//Contains a fair bit of plastic
