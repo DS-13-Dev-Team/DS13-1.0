@@ -149,6 +149,7 @@ var/list/admin_verbs_spawn = list(
 	)
 var/list/admin_verbs_server = list(
 	/datum/admins/proc/capture_map_part,
+	/datum/admins/proc/end_round,
 	/client/proc/Set_Holiday,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
@@ -255,6 +256,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/stealth,
 	/client/proc/Getkey,
 	/datum/admins/proc/announce,
+	/datum/admins/proc/end_round,
 	/client/proc/togglebuildmodeself,
 	/client/proc/watched_variables,
 	/client/proc/debug_global_variables,
