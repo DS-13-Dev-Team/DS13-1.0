@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(floating_chat_colors)
 	animate(I, 1, alpha = 255, pixel_y = 16)
 
 	for(var/image/old in holder.stored_chat_text)
-		animate(old, 2, pixel_y = old.pixel_y + 8)
+		animate(old, 2, pixel_y = old.pixel_y + 4)
 	LAZYADD(holder.stored_chat_text, I)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_floating_text, holder, I), duration)
