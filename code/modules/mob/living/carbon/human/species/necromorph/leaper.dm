@@ -16,7 +16,7 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/leaper
 	blurb = "A long range ambusher, the leaper can leap on unsuspecting victims from afar, knock them down, and tear them apart with its bladed tail. Not good for prolonged combat though."
 	unarmed_types = list(/datum/unarmed_attack/claws) //Bite attack is a backup if blades are severed
-	total_health = 110
+	total_health = 100
 	biomass = 75
 
 	//Normal necromorph flags plus no slip
@@ -173,7 +173,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 //The leaper has a tail instead of legs
 /obj/item/organ/external/tail/leaper
-	max_damage = 65
+	max_damage = 75
 	min_broken_damage = 40
 	throwforce = 30 //The leaper's tail makes an excellent weapon if thrown after severing
 	edge = TRUE
@@ -202,21 +202,6 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	var/mob/living/carbon/human/H = src
 
 	if (!H.can_charge(A))
-		return
-
-	var/organ_check = FALSE
-	//The leaper can't leap if its missing too many limbs. Specifically, it must have either:
-	//Its tail
-	//OR
-	//Both arms
-	if (H.has_organ(BP_TAIL))
-		organ_check = TRUE
-
-	else if (H.has_organ(BP_R_ARM) && H.has_organ(BP_L_ARM))
-		organ_check = TRUE
-
-	if (!organ_check)
-		to_chat(src, SPAN_DANGER("You need your tail or both arms to perform a leap!"))
 		return
 
 	//Do a chargeup animation. Pulls back and then launches forwards

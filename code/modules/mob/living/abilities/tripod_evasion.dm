@@ -1,4 +1,9 @@
 //tripod_evasion: Passive that causes the user to gain evasion based on the number of clear tiles nearby
+
+//tripod_evasion
+//tripod_evasion
+//tripod_evasion
+///mob/living
 /datum/extension/tripod_evasion
 	name = "tripod_evasion"
 	base_type = /datum/extension/tripod_evasion
@@ -17,7 +22,7 @@
 
 
 	//The maximum evasion bonus the user can gain
-	var/max_evasion_buff = TRIPOD_PERSONAL_SPACE_MAX_EVASION
+	var/max_evasion_buff = 40
 
 	//How many clear tiles around the user are needed to reach max evasion
 	var/max_clear_tiles = 24

@@ -1,0 +1,4 @@
+author: Terror4000rus
+delete-after: True
+changes: 
+  - bugfix: "Guns with automatic firing shouldn't shoot after examing, pulling or checking a tile's content via hotkeys."

@@ -121,7 +121,6 @@
 		var/list/cone = cones[current_stage]
 
 		for (var/turf/T as anything in cone)
-			//debug_mark_turf(T)
 			continue_swing = hit_turf(T)
 			if (!continue_swing)
 				interrupt_effect()
@@ -209,12 +208,12 @@
 
 /datum/extension/swing/proc/hit_mob(var/mob/living/L)
 
+
 	if (L == user)
 		return FALSE
 	var/atom/A = effect
-	if (raytrace && !check_trajectory(L, source, pass_flags = A.pass_flags))
+	if (raytrace && !check_trajectory(A, L, pass_flags = A.pass_flags))
 		return FALSE
-
 
 	source.launch_strike(L, damage, holder, damage_flags = flags, target_zone = get_target_zone(L))
 	playsound(L, hitsound, VOLUME_MID, 1)
