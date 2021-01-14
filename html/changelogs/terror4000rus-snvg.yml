@@ -1,0 +1,4 @@
+author: Terror4000rus
+delete-after: True
+changes: 
+  - rscadd: "Signals now have three toggleable levels of night vision."

@@ -93,7 +93,7 @@
 				return H.grab(src)
 
 		if(I_HURT)
-			var/hit_zone = get_zone_sel(H)
+			var/hit_zone = H.zone_sel.selecting
 			var/datum/unarmed_attack/attack = H.get_unarmed_attack(src, hit_zone)
 			if(!attack)
 				return 0

@@ -736,8 +736,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 			// slow healing
 			var/heal_amt = species.healing_factor
-			if (damtype == BURN)
-				heal_amt *= species.burn_heal_factor
 
 			//we only update wounds once in [wound_update_accuracy] ticks so have to emulate realtime
 			heal_amt *= wound_update_accuracy

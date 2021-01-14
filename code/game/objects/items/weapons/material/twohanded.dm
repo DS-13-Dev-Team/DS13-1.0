@@ -71,7 +71,7 @@
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 
-	force_divisor = 0.52
+	force_divisor = 0.55
 	sharp = 1
 	edge = 1
 	w_class = ITEM_SIZE_HUGE
