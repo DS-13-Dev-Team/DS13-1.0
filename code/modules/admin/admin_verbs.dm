@@ -216,8 +216,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/visualpower,
 	/client/proc/visualpower_remove,
 	/client/proc/debug_vectorpool,
-	/client/proc/activate_marker,
-	/client/proc/dummy_crowd
+	/client/proc/activate_marker
 	)
 
 var/list/admin_verbs_paranoid_debug = list(

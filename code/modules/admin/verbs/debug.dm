@@ -581,12 +581,3 @@
 
 	for (var/obj/O in range(world.view, mob))
 		qdel(O)
-
-
-/client/proc/dummy_crowd()
-	set category = "Debug"
-	set name = "Spawn Dummy Crowd"
-	set desc = "Makes a bunch of dummies for testing AOE attacks"
-
-	for (var/turf/T in trange(1, mob))
-		new /mob/living/carbon/human/dummy(T)

@@ -276,6 +276,3 @@ var/list/default_onmob_icons = list(
 "suit_store" = slot_s_store,\
 "r_ear" = slot_r_ear)
 
-
-//How many loadout slots can each player have? Reducing this may cause issues
-#define LOADOUT_SLOTS	3

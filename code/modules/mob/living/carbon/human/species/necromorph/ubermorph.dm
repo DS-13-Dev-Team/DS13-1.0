@@ -8,8 +8,8 @@
 	total_health = INFINITY	//This number doesn't matter, it won't ever be used
 	can_obliterate = FALSE
 	healing_factor = 4	//Lots of constant healing
-	require_total_biomass	=	BIOMASS_REQ_T4	//Endgame, real expensive -- Lowered from 4500 to 3825 = 15% on 14/10/2020
-	biomass = 0	//IT has no cost when you meet the requirement
+	biomass	=	3825	//Endgame, real expensive -- Lowered from 4500 to 3825 = 15% on 14/10/2020
+	use_total_biomass = TRUE
 	global_limit = 1
 	mass = 130
 	limb_health_factor = 1	//Not as fragile as a slasher
@@ -177,14 +177,9 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 	set category = "Abilities"
 	set desc = "Regrows a missing limb and restores some of your health."
 
-
-	.= regenerate_ability(subtype = /datum/extension/regenerate/ubermorph)
+	.= regenerate_ability(subtype = /datum/extension/regenerate, _duration = 4 SECONDS, _cooldown = 0)
 	if (.)
 		play_species_audio(src, SOUND_PAIN, VOLUME_HIGH, 1, 3)
-
-
-/datum/extension/regenerate/ubermorph
-	max_limbs = 2
 
 
 /*

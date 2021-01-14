@@ -41,16 +41,14 @@
 	call(reciever,fire_proc)(target, user, FALSE, last_params, get_global_pixel_click_location(last_params, user ? user.client : null))
 
 /datum/click_handler/sustained/MouseDown(object,location,control,params)
-	var/list/modifiers = params2list(params)
-	if(modifiers["left"])
-		left_mousedown = TRUE
-		last_params = params
-		object = resolve_world_target(object, params)
-		if (object)
-			target = object
-			user.face_atom(target)
-			start_firing()
-			return FALSE
+	left_mousedown = TRUE
+	last_params = params
+	object = resolve_world_target(object, params)
+	if (object)
+		target = object
+		user.face_atom(target)
+		start_firing()
+		return FALSE
 	return TRUE
 
 /datum/click_handler/sustained/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
@@ -76,10 +74,8 @@
 
 
 /datum/click_handler/sustained/MouseUp(object,location,control,params)
-	var/list/modifiers = params2list(params)
-	if(modifiers["left"])
-		left_mousedown = FALSE
-		stop_firing()
+	left_mousedown = FALSE
+	stop_firing()
 	return TRUE
 
 /datum/click_handler/sustained/Destroy()

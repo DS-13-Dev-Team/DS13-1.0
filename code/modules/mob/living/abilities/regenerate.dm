@@ -10,7 +10,6 @@
 	name = "Regenerate"
 	var/verb_name = "regenerating"
 	expected_type = /mob/living/carbon/human
-	base_type = null
 	flags = EXTENSION_FLAG_IMMEDIATE
 	var/mob/living/carbon/human/user
 
@@ -20,13 +19,12 @@
 	var/heal_amount = 40
 
 	var/tick_interval = 0.2 SECONDS
-	var/shake_interval = 0.5 SECONDS
+	var/shake_interval = 0.6 SECONDS
 
-	var/lasting_damage_heal = 999999
+	var/lasting_damage_heal = 9999999
 	var/limb_lasting_damage = 0	//When a limb is replaced, the mob suffers lasting damage equal to the limb's health * this value
 	var/biomass_limb_cost = 0	//When a limb is replaced, the marker transfers biomass to the mob, equal to the limb's health * this value
 	var/biomass_lasting_damage_cost = 0	//When lasting_damage is healed, the marker transfers biomass to the mob, equal to the damage healed * this value
-	var/burn_heal_mult = 1	//When healing burn damage, each point of heal_amount can heal this many points of actual burn damage
 
 	var/finish_time
 
@@ -35,26 +33,19 @@
 	var/tick_timer
 	var/tick_step
 
-	var/started_at
-	var/stopped_at
 
-	var/ongoing_timer
-
-
-/datum/extension/regenerate/New(var/datum/holder, var/duration, var/cooldown)
+/datum/extension/regenerate/New(var/datum/holder, var/_duration, var/_cooldown)
 	..()
 	user = holder
-	if (duration)
-		src.duration = duration
-	if (cooldown)
-		src.cooldown = cooldown
+	duration = _duration
+	cooldown = _cooldown
 
 	start()
 
 //Lets regrow limbs
 /datum/extension/regenerate/proc/start()
 	finish_time = world.time + duration
-	tick_step = 1  / (duration / tick_interval)
+	tick_step = duration / tick_interval
 	var/list/missing_limbs = list()
 
 	//This loop counts and documents the damaged limbs, for the purpose of regrowing them and also for documenting how many there are for stun time
@@ -109,9 +100,7 @@
 
 /datum/extension/regenerate/proc/tick()
 	shake_interval -= tick_interval
-	var/remaining_heal = user.heal_overall_damage(heal_amount * tick_step, BRUTE)
-	if (remaining_heal)
-		user.heal_overall_damage(heal_amount * tick_step * burn_heal_mult, BURN)
+	user.heal_overall_damage(heal_amount * tick_step)
 	if (shake_interval <= 0)
 		shake_interval = initial(shake_interval)
 		user.shake_animation(30)
@@ -132,6 +121,7 @@
 		var/obj/item/organ/O = new limb_path(user)
 		O.max_damage *= user.species.limb_health_factor //TODO future: Factor this into organ creation?
 		organ_data["descriptor"] = O.name
+		user << "<span class='notice'>You feel a slithering sensation as your [O.name] reforms.</span>"
 
 		if (limb_lasting_damage)
 			user.adjustLastingDamage(O.max_damage*limb_lasting_damage)
@@ -199,7 +189,6 @@
 	stop()
 
 /datum/extension/regenerate/proc/stop()
-	stopped_at = world.time
 	user.stunned = 0
 
 	//When we finish, we go on cooldown
@@ -210,13 +199,7 @@
 
 
 /datum/extension/regenerate/proc/finish_cooldown()
-	remove_self()
-
-
-/datum/extension/regenerate/proc/get_cooldown_time()
-	var/elapsed = world.time - stopped_at
-	return cooldown - elapsed
-
+	remove_extension(holder, /datum/extension/regenerate)
 
 
 /mob/living/carbon/human/proc/regenerate_verb()
@@ -227,24 +210,18 @@
 	return regenerate_ability(subtype = /datum/extension/regenerate, _duration = 4 SECONDS, _cooldown = 0)
 
 
-/mob/living/carbon/human/proc/can_regenerate(var/error_messages = TRUE, var/subtype = /datum/extension/regenerate)
+/mob/living/carbon/human/proc/can_regenerate(var/error_messages = TRUE)
 	//Check for an existing extension.
-
-	var/datum/extension/regenerate/E = get_extension(src,subtype)
-	if(istype(E))
-		if (error_messages)
-			if (E.stopped_at)
-				to_chat(src, SPAN_NOTICE("[E.name] is cooling down. You can use it again in [E.get_cooldown_time() /10] seconds"))
-			else
-				to_chat(src, SPAN_NOTICE("You're already regenerating"))
+	var/datum/extension/regenerate/EC = get_extension(src, /datum/extension/regenerate)
+	if(istype(EC))
+		if(error_messages) to_chat(src, "You're already [EC.verb_name]!")
 		return FALSE
-
 	return TRUE
 
 
 /mob/living/carbon/human/proc/regenerate_ability(var/subtype = /datum/extension/regenerate, var/_duration, var/_cooldown)
 
-	if (!can_regenerate(TRUE, subtype))
+	if (!can_regenerate(TRUE))
 		return FALSE
 
 

@@ -152,10 +152,6 @@ Vars/
 
 		recalculate_cone()
 
-		//Make sure we don't get double fx
-		if (fx)
-			QDEL_NULL(fx)
-
 		//Lets create the chemspray fx
 		fx = new fx_type(source, direction, duration, length, angle)
 		fx.particle_color = particle_color
@@ -185,7 +181,7 @@ Vars/
 
 /datum/extension/spray/proc/finish_cooldown()
 	deltimer(ongoing_timer)
-	remove_self()
+	remove_extension(holder, base_type)
 
 
 /datum/extension/spray/proc/get_cooldown_time()
@@ -193,9 +189,6 @@ Vars/
 	return cooldown - elapsed
 
 
-/datum/extension/spray/Destroy()
-	QDEL_NULL(fx)
-	.=..()
 
 
 

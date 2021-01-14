@@ -29,7 +29,6 @@
 
 	//How much Damage Per Second is dealt to targets the blade hits in remote control mode. This is broken up into many small hits based on tick interval
 	var/dps	=	27
-	alpha = 255
 	check_armour = "melee" //Its a cutting blade, melee armor helps most
 	dispersion = 0
 	icon = 'icons/effects/projectiles.dmi'
@@ -227,7 +226,6 @@
 	launcher = gun //Register the ripper
 	if (gun)
 		pixel_click = gun.last_clickpoint //Grab an initial clickpoint so that we don't fly towards world zero
-	alpha = default_alpha	//The projectile becomes visible now, when its ready to start moving
 	remote_controlled = TRUE //Set this flag
 	damage = dps * tick_interval //Overwrite the compiletime damage with the calculated value
 	animate_movement = 0 //Disable this to prevent byond's built in sliding, we do our own animate calls

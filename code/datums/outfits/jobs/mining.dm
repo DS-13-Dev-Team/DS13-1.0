@@ -9,7 +9,6 @@
 	shoes = /obj/item/clothing/shoes/dress
 	id_type = /obj/item/weapon/card/id/holo/mining/director
 	pda_type = /obj/item/modular_computer/pda/heads/dom
-	l_ear = /obj/item/device/radio/headset/heads/dom
 
 /decl/hierarchy/outfit/job/mining/foreman
 	name = OUTFIT_JOB_NAME("Mining Foreman")

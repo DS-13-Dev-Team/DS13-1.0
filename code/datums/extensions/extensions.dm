@@ -98,4 +98,4 @@
 
 
 /datum/extension/proc/remove_self()
-	remove_extension(holder, (base_type ? base_type : type))
+	remove_extension(holder, base_type)

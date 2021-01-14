@@ -130,11 +130,6 @@
 	desc = "Director of Mining"
 	region = ACCESS_REGION_SUPPLY
 
-/var/const/access_mf = 105
-/datum/access/mf
-	id = access_mf
-	desc = "Mining Foreman"
-	region = ACCESS_REGION_SUPPLY
 
 
 

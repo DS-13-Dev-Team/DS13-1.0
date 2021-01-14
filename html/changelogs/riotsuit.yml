@@ -33,7 +33,6 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - tweak: "Increased the biomass cost of T3 Necromorphs from 350 to 400"
-  - tweak: "Reduced hunter's max health from 250 to 225."
-  - tweak: "When health hits 0, hunter is now downed for 30 seconds, previously 20."
-  - tweak: "Meddle signal ability no longer affects airlocks, doors, or shutters."
+  - rscadd: "Added the Riot RIG, a tough and heavy suit with extra melee protection."
+  - tweak: "RIG chest and boots can no longer be removed while the RIG is active"
+  - rscadd: "Reworked and standardised suit storage slots, to allow a much wider variety of things, including pouches, guns, tools, tanks, et al."

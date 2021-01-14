@@ -33,7 +33,5 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - bugfix: "Fixed various issues with the hydrazine torch, it should work much better now"
-  - bugfix: "Fixed high velocity magazines not working in pulse rifles"
-  - bugfix: "Fixed ripper sawblades being invisible"
-  - tweak: "Slightly increased the damage of pulse rounds. This affects pulse rifles, heavy pulse rifles, and pulse turrets"
+  - rscadd: "Added the RIG retraction device, which allows powering down and retracting someone else's rig, as long as they don't object. Intended for medical use, and found in medical, surgery and emergency closets"
+  - tweak: "Powering down a RIG now takes half as much time as sealing"

@@ -2,18 +2,17 @@
 	Extension statmod system:
 	To prevent cumulative math errors, extensions must use this system to modify any commonly shared attributes on a mob. This currently includes:
 
-	To set a mod, just add DEFINE = value to the statmods list on the extension.
-	If you change the contents of that list during runtime, call unregister_statmods before the change, then register_statmods after
 
-	Name:								Define:									Expected Value
-	Movespeed (additive)				STATMOD_MOVESPEED_ADDITIVE				A percentage value, 0=no change, 1 = +100%, etc. Negative allowed
-	Movespeed (multiplicative)			STATMOD_MOVESPEED_MULTIPLICATIVE		A multiplier. 1 = no change, 2 = double, etc. Must be > 0
-	Incoming Damage						STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	A multiplier. 1 = no change, 2 = double, etc. Must be > 0
-	Ranged Accuracy						STATMOD_RANGED_ACCURACY					A flat number of percentage points
-	Vision Range						STATMOD_VIEW_RANGE					An integer number of tiles to add/remove from vision range
-	Evasion								STATMOD_EVASION							An number of percentage points which will be additively added to evasion, negative allowed
+	Mods need only call register statmod with their chosen type, Which must be one of the STATMOD_.. defines in __defines/skills_stats.dm
+
+	Whenever the mob needs to recalculate its stats, it will call a proc on each extension which is registered for that kind of stat
+
+	Name:								Define:								Proc:							Expected Return
+	Movespeed (additive)				STATMOD_MOVESPEED_ADDITIVE			movespeed_mod()					A percentage value, 0=no change, 1 = +100%, etc. Negative allowed
+	Movespeed (multiplicative)			STATMOD_MOVESPEED_MULTIPLICATIVE	movespeed_mod()					A multiplier. 1 = no change, 2 = double, etc. Must be > 0
+	Incoming Damage						STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	incoming_damage_mod()		A multiplier. 1 = no change, 2 = double, etc. Must be > 0
+	Ranged Accuracy						STATMOD_RANGED_ACCURACY
 */
-
 
 
 //This list is in the following format:
@@ -23,9 +22,7 @@ STATMOD_MOVESPEED_ADDITIVE = list(/datum/proc/update_movespeed_factor),
 STATMOD_MOVESPEED_MULTIPLICATIVE = list(/datum/proc/update_movespeed_factor),
 STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = list(/datum/proc/update_incoming_damage_factor),
 STATMOD_RANGED_ACCURACY = list(/datum/proc/update_ranged_accuracy_factor),
-STATMOD_ATTACK_SPEED = list(/datum/proc/update_attack_speed),
-STATMOD_EVASION = list(/datum/proc/update_evasion),
-STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
+STATMOD_ATTACK_SPEED = list(/datum/proc/update_attack_speed)
 ))
 
 /datum/extension
@@ -89,8 +86,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 
 
 /datum/extension/proc/get_statmod(var/modtype)
-	return LAZYACCESS(statmods, modtype)
-
+	return src.statmods[modtype]
 
 /*
 	Movespeed
@@ -149,52 +145,3 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	//We multiply by the result of each multiplicative modifier
 	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_ATTACK_SPEED))
 		attack_speed_factor += E.get_statmod(STATMOD_ATTACK_SPEED)
-
-
-
-/*
-	Evasion
-*/
-/datum/proc/update_evasion()
-
-/mob/living/update_evasion()
-	evasion = get_base_evasion()
-
-	//We multiply by the result of each multiplicative modifier
-	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_EVASION))
-		evasion += E.get_statmod(STATMOD_EVASION)
-
-
-
-/datum/proc/get_base_evasion()
-	return 0
-
-/mob/living/get_base_evasion()
-	return initial(evasion)
-
-
-/mob/living/carbon/human/get_base_evasion()
-	return species.evasion
-
-
-
-
-
-/*
-	Vision Range
-*/
-/datum/proc/update_vision_range()
-
-/mob/update_vision_range()
-	var/range = world.view
-
-	//We multiply by the result of each multiplicative modifier
-	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_VIEW_RANGE))
-		range += E.get_statmod(STATMOD_VIEW_RANGE)
-
-	//Vision range can't go below 1
-	range = clamp(range, 1, INFINITY)
-
-	view_range = range
-	if (client)
-		client.set_view_range(view_range, TRUE)

@@ -115,7 +115,6 @@
 	total_health = 225
 	slowdown = 2.8
 	biomass = 125
-	require_total_biomass	=	BIOMASS_REQ_T2
 	view_range = 8
 	mass = 120
 	mob_size	= MOB_LARGE

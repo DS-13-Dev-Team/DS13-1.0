@@ -51,10 +51,6 @@ GLOBAL_LIST_INIT(whispered, list())
 			return
 
 	var/message = sanitize(input(user, "Write a message to send to [target.name]", "Subliminal Message", ""))
-	if(!message)
-		to_chat(user, "<span class='warning'>No message. Cancelling.</span>")
-		refund(user)
-		return
 
 	to_chat(target, "<span class='necromorph'>[message]</span>")
 	message_necromorphs("[user] -> [target] <span class='necromorph'>[message]</span>", TRUE, list(target))

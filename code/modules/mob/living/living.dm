@@ -184,7 +184,24 @@ default behaviour is:
 		updatehealth()
 		to_chat(src, "<span class='notice'>You have given up life and succumbed to death.</span>")
 
+/mob/living/proc/updatehealth()
+	if(status_flags & GODMODE)
+		health = 100
+		set_stat(CONSCIOUS)
+	else
+		health = max_health - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - getHalLoss() - getLastingDamage()
 
+
+	if (health <= 0)
+		zero_health()
+	GLOB.updatehealth_event.raise_event(src)
+
+/mob/living/proc/zero_health()
+	handle_death_check()
+
+/mob/living/proc/healthpercent()
+	var/working_health = clamp(health, 0, max_health)
+	return ((working_health / max_health) * 100)
 
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
@@ -218,7 +235,78 @@ default behaviour is:
 
 	return temperature
 
+/mob/living/proc/getAdjustedMaxHealth()
+	return (max_health - getLastingDamage())
 
+/mob/living/proc/getBruteLoss()
+	return getAdjustedMaxHealth() - health
+
+/mob/living/proc/adjustBruteLoss(var/amount)
+	if (status_flags & GODMODE)
+		return
+	health = Clamp(health - amount, 0, getAdjustedMaxHealth())
+
+/mob/living/proc/getOxyLoss()
+	return 0
+
+/mob/living/proc/adjustOxyLoss(var/amount)
+	return
+
+/mob/living/proc/setOxyLoss(var/amount)
+	return
+
+/mob/living/proc/getToxLoss()
+	return 0
+
+/mob/living/proc/adjustToxLoss(var/amount)
+	adjustBruteLoss(amount * 0.5)
+
+/mob/living/proc/setToxLoss(var/amount)
+	adjustBruteLoss((amount * 0.5)-getBruteLoss())
+
+/mob/living/proc/getFireLoss()
+	return
+
+/mob/living/proc/adjustLastingDamage(var/amount)
+	lasting_damage += amount
+	health = min(health, getAdjustedMaxHealth())
+	updatehealth()
+
+/mob/living/proc/getLastingDamage()
+	return lasting_damage
+
+/mob/living/proc/adjustFireLoss(var/amount)
+	adjustBruteLoss(amount * 0.5)
+
+/mob/living/proc/setFireLoss(var/amount)
+	adjustBruteLoss((amount * 0.5)-getBruteLoss())
+
+/mob/living/proc/getHalLoss()
+	return 0
+
+/mob/living/proc/adjustHalLoss(var/amount)
+	adjustBruteLoss(amount * 0.5)
+
+/mob/living/proc/setHalLoss(var/amount)
+	adjustBruteLoss((amount * 0.5)-getBruteLoss())
+
+/mob/living/proc/getBrainLoss()
+	return 0
+
+/mob/living/proc/adjustBrainLoss(var/amount)
+	return
+
+/mob/living/proc/setBrainLoss(var/amount)
+	return
+
+/mob/living/proc/getCloneLoss()
+	return 0
+
+/mob/living/proc/setCloneLoss(var/amount)
+	return
+
+/mob/living/proc/adjustCloneLoss(var/amount)
+	return
 
 /mob/living/proc/get_max_health()
 	return max_health
@@ -481,7 +569,7 @@ default behaviour is:
 
 	resting = !resting
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
-	update_lying_buckled_and_verb_status()
+	UpdateLyingBuckledAndVerbStatus()
 
 //called when the mob receives a bright flash
 /mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)

@@ -100,14 +100,7 @@
 		for(var/mob/living/A in get_turf(src))
 			if(A == src)
 				continue
-
-			//Lets not have thrown things collide midair
-			if (A.throwing)
-				continue
-
-			//Thrown items will not hit nondense mobs within a 2 tile range of the origin
-			//This is mainly to allow hunter's hookblade to work. Its an uncommon edge case
-			if(!A.density && get_dist(throw_source, A) <= 2)
+			if(A:lying)
 				continue
 			src.throw_impact(A,speed)
 

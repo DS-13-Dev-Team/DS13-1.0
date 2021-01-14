@@ -47,7 +47,7 @@
 		return 1
 	return ..()
 
-/mob/living/carbon/brain/update_lying_buckled_and_verb_status()
+/mob/living/carbon/brain/UpdateLyingBuckledAndVerbStatus()
 	if(in_contents_of(/obj/mecha) || istype(loc, /obj/item/device/mmi))
 		use_me = 1
 

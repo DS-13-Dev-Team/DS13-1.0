@@ -35,7 +35,7 @@
 
 	handle_actions()
 
-	update_lying_buckled_and_verb_status()
+	UpdateLyingBuckledAndVerbStatus()
 
 	handle_regular_hud_updates()
 

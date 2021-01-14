@@ -164,7 +164,6 @@ var/global/list/image/splatter_cache=list()
 	var/message
 	biomass = 0
 	appearance_flags = PIXEL_SCALE
-	var/creator
 
 /obj/effect/decal/cleanable/blood/writing/New()
 	..()

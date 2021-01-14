@@ -5,7 +5,7 @@
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	icon = null
 	set_invisibility(101)
-	update_lying_buckled_and_verb_status()
+	UpdateLyingBuckledAndVerbStatus()
 	remove_from_dead_mob_list()
 
 	var/atom/movable/overlay/animation = null
@@ -57,7 +57,7 @@
 
 	set_stat(DEAD)
 	reset_plane_and_layer()
-	update_lying_buckled_and_verb_status()
+	UpdateLyingBuckledAndVerbStatus()
 
 	dizziness = 0
 	jitteriness = 0
