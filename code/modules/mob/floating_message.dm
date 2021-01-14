@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(floating_chat_colors)
 	var/image/gibberish = language ? generate_floating_text(src, language.scramble(message), style, fontsize, duration, show_to) : understood
 
 	for(var/client/C in show_to)
-		if(!C.mob.is_deaf() && C.get_preference_value(/datum/client_preference/floating_messages) == GLOB.PREF_SHOW)
+		if(C.get_preference_value(/datum/client_preference/floating_messages) == GLOB.PREF_SHOW)
 			if(C.mob.say_understands(null, language))
 				C.images += understood
 			else
@@ -60,4 +60,4 @@ GLOBAL_LIST_EMPTY(floating_chat_colors)
 
 /proc/remove_floating_text(atom/movable/holder, image/I)
 	animate(I, 2, pixel_y = I.pixel_y + 10, alpha = 0)
-	LAZYREMOVE(holder.stored_chat_text, I) 
+	LAZYREMOVE(holder.stored_chat_text, I)

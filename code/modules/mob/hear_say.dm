@@ -66,6 +66,7 @@
 				to_chat(src, "<span class='warning'>You cannot hear yourself speak!</span>")
 			else if(!is_blind())
 				to_chat(src, "<span class='name'>[speaker_name]</span>[alt_name] talks but you cannot hear \him.")
+		return FALSE
 	else
 		if(language)
 			var/nverb = null
@@ -86,6 +87,7 @@
 		if (speech_sound && (get_dist(speaker, src) <= world.view && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			src.playsound_local(source, speech_sound, sound_vol, 1)
+		return TRUE
 
 /mob/proc/on_hear_say(var/message)
 	to_chat(src, message)

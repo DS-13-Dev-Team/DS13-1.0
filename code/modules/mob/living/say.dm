@@ -264,15 +264,16 @@ proc/get_radio_key_from_channel(var/channel)
 	var/list/listening_clients = list()
 	for(var/mob/M in listening)
 		if(M)
-			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
-			if(M.client)
-				listening_clients += M.client
+			if(M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol))
+				if(M.client)
+					listening_clients += M.client
 
 	for(var/obj/O in listening_obj)
 		spawn(0)
 			if(O) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking)
 
+	var/list/eavesdroping_clients = list()
 	if(whispering)
 		var/eavesdroping_range = 5
 		var/list/eavesdroping = list()
@@ -282,7 +283,9 @@ proc/get_radio_key_from_channel(var/channel)
 		eavesdroping_obj -= listening_obj
 		for(var/mob/M in eavesdroping)
 			if(M)
-				M.hear_say(stars(message), verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
+				if(M.hear_say(stars(message), verb, speaking, alt_name, italics, src, speech_sound, sound_vol))
+					if(M.client)
+						eavesdroping_clients += M.client
 
 		for(var/obj/O in eavesdroping)
 			spawn(0)
@@ -290,6 +293,7 @@ proc/get_radio_key_from_channel(var/channel)
 					O.hear_talk(src, stars(message), verb, speaking)
 
 	if(whispering)
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, eavesdroping_clients, 38)
 		log_whisper("[name]/[key] : [message]")
 	else
 		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, listening_clients, 38)
