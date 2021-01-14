@@ -846,6 +846,10 @@ area/ishimura/upper/medical/bpc
 	icon_state = "miscbase"
 //------------------Tram Deck------------------//
 
+/area/shuttle/tram
+	name = "\improper Ishimura Tram"
+	icon_state = "tram"
+
 /area/ishimura/tramdeck/tram
 	name = "\improper Ishimura Tram"
 	icon_state = "tram"
