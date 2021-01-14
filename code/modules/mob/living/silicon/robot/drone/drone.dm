@@ -1,5 +1,5 @@
 var/list/mob_hat_cache = list()
-/proc/get_hat_icon(var/obj/item/hat, offset_x = 0, offset_y = 0)
+/proc/get_hat_icon(obj/item/hat, offset_x = 0, offset_y = 0)
 	var/t_state = hat.icon_state
 	if(hat.item_state_slots && hat.item_state_slots[slot_head_str])
 		t_state = hat.item_state_slots[slot_head_str]
@@ -73,7 +73,7 @@ var/list/mob_hat_cache = list()
 	GLOB.moved_event.unregister(src, src, /mob/living/silicon/robot/drone/proc/on_moved)
 	. = ..()
 
-/mob/living/silicon/robot/drone/proc/on_moved(var/atom/movable/am, turf/old_loc, turf/new_loc)
+/mob/living/silicon/robot/drone/proc/on_moved(atom/movable/am, turf/old_loc, turf/new_loc)
 	old_loc = get_turf(old_loc)
 	new_loc = get_turf(new_loc)
 
@@ -185,7 +185,7 @@ var/list/mob_hat_cache = list()
 /mob/living/silicon/robot/drone/pick_module()
 	return
 
-/mob/living/silicon/robot/drone/proc/wear_hat(var/obj/item/new_hat)
+/mob/living/silicon/robot/drone/proc/wear_hat(obj/item/new_hat)
 	if(hat)
 		return
 	hat = new_hat
@@ -352,7 +352,7 @@ var/list/mob_hat_cache = list()
 	var/datum/ghosttrap/G = get_ghost_trap("maintenance drone")
 	G.request_player(src, "Someone is attempting to reboot a maintenance drone.", 30 SECONDS)
 
-/mob/living/silicon/robot/drone/proc/transfer_personality(var/client/player)
+/mob/living/silicon/robot/drone/proc/transfer_personality(client/player)
 	if(!player) return
 	src.ckey = player.ckey
 

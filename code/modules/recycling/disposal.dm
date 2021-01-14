@@ -51,7 +51,7 @@
 		trunk.linked = null
 	return ..()
 
-/obj/machinery/disposal/proc/try_insert_mob(var/mob/victim, mob/user)
+/obj/machinery/disposal/proc/try_insert_mob(mob/victim, mob/user)
 	if (victim.mob_size > max_mob_size || victim.buckled || (user && user.incapacitated()))
 		return
 
@@ -73,7 +73,7 @@
 			visible_message(SPAN_WARNING("[victim] has been placed into the disposal.by [user]"))
 			admin_attack_log(user, victim, "Placed the victim into \the [src].", "Was placed into \the [src] by the attacker.", "stuffed \the [src] with")
 
-/obj/machinery/disposal/proc/insert_mob(var/mob/victim)
+/obj/machinery/disposal/proc/insert_mob(mob/victim)
 	if (victim.client)
 		victim.client.perspective = EYE_PERSPECTIVE
 		victim.client.eye = src
@@ -459,7 +459,7 @@
 
 // called when holder is expelled from a disposal
 // should usually only occur if the pipe network is modified
-/obj/machinery/disposal/proc/expel(var/obj/structure/disposalholder/H)
+/obj/machinery/disposal/proc/expel(obj/structure/disposalholder/H)
 
 	var/turf/target
 	playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
@@ -514,7 +514,7 @@
 
 
 	// initialize a holder from the contents of a disposal unit
-	proc/init(var/obj/machinery/disposal/D, datum/gas_mixture/flush_gas)
+	proc/init(obj/machinery/disposal/D, datum/gas_mixture/flush_gas)
 		gas = flush_gas// transfer gas resv. into holder object -- let's be explicit about the data this proc consumes, please.
 
 		//Check for any living mobs trigger hasmob.
@@ -549,7 +549,7 @@
 
 	// start the movement process
 	// argument is the disposal unit the holder started in
-	proc/start(var/obj/machinery/disposal/D)
+	proc/start(obj/machinery/disposal/D)
 		if(!D.trunk)
 			D.expel(src)	// no trunk connected, so expel immediately
 			return
@@ -595,7 +595,7 @@
 		return get_step(loc,dir)
 
 	// find a matching pipe on a turf
-	proc/findpipe(var/turf/T)
+	proc/findpipe(turf/T)
 
 		if(!T)
 			return null
@@ -609,7 +609,7 @@
 
 	// merge two holder objects
 	// used when a a holder meets a stuck holder
-	proc/merge(var/obj/structure/disposalholder/other)
+	proc/merge(obj/structure/disposalholder/other)
 		for(var/atom/movable/AM in other)
 			AM.forceMove(src)		// move everything in other holder to this one
 			if(ismob(AM))
@@ -620,10 +620,10 @@
 		qdel(other)
 
 
-	proc/settag(var/new_tag)
+	proc/settag(new_tag)
 		destinationTag = new_tag
 
-	proc/setpartialtag(var/new_tag)
+	proc/setpartialtag(new_tag)
 		if(partialTag == new_tag)
 			destinationTag = new_tag
 			partialTag = ""
@@ -651,7 +651,7 @@
 		playsound(src.loc, 'sound/effects/clang.ogg', 50, 0, 0)
 
 	// called to vent all gas in holder to a location
-	proc/vent_gas(var/atom/location)
+	proc/vent_gas(atom/location)
 		location.assume_air(gas)  // vent all gas to turf
 		return
 
@@ -712,13 +712,13 @@
 
 	// returns the direction of the next pipe object, given the entrance dir
 	// by default, returns the bitmask of remaining directions
-	proc/nextdir(var/fromdir)
+	proc/nextdir(fromdir)
 		return dpdir & (~turn(fromdir, 180))
 
 	// transfer the holder through this pipe segment
 	// overriden for special behaviour
 	//
-	proc/transfer(var/obj/structure/disposalholder/H)
+	proc/transfer(obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir)
 		H.set_dir(nextdir)
 		var/turf/T = H.nextloc()
@@ -764,7 +764,7 @@
 
 	// expel the held objects into a turf
 	// called when there is a break in the pipe
-	proc/expel(var/obj/structure/disposalholder/H, turf/T, direction)
+	proc/expel(obj/structure/disposalholder/H, turf/T, direction)
 		if(!istype(H))
 			return
 
@@ -823,7 +823,7 @@
 	// will expel any holder inside at the time
 	// then delete the pipe
 	// remains : set to leave broken pipe pieces in place
-	proc/broken(var/remains = 0)
+	proc/broken(remains = 0)
 		if(remains)
 			for(var/D in GLOB.cardinal)
 				if(D & dpdir)
@@ -1392,7 +1392,7 @@
 				updatename()
 				updatedesc()
 
-	proc/divert_check(var/checkTag)
+	proc/divert_check(checkTag)
 		return sortType == checkTag
 
 	// next direction to move
@@ -1589,7 +1589,7 @@
 
 	// expel the contents of the holder object, then delete it
 	// called when the holder exits the outlet
-	proc/expel(var/obj/structure/disposalholder/H)
+	proc/expel(obj/structure/disposalholder/H)
 
 		flick("outlet-open", src)
 		playsound(src, 'sound/machines/warning-buzzer.ogg', 50, 0, 0)
@@ -1639,7 +1639,7 @@
 // called when movable is expelled from a disposal pipe or outlet
 // by default does nothing, override for special behaviour
 
-/atom/movable/proc/pipe_eject(var/direction)
+/atom/movable/proc/pipe_eject(direction)
 	return
 
 // check if mob has client, if so restore client view on eject

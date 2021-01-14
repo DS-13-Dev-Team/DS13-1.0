@@ -119,7 +119,7 @@
 		qdel(src)
 
 
-/obj/item/weapon/airlock_brace/proc/unlock_brace(var/mob/user)
+/obj/item/weapon/airlock_brace/proc/unlock_brace(mob/user)
 	if(!airlock)
 		return
 	if(user)

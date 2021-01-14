@@ -67,7 +67,7 @@
 
 /datum/hallucination/proc/end()
 
-/datum/hallucination/proc/can_affect(var/mob/living/carbon/C)
+/datum/hallucination/proc/can_affect(mob/living/carbon/C)
 	if(!C.client)
 		return 0
 	if(min_power > C.hallucination_power)

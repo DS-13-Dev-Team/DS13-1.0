@@ -104,7 +104,7 @@
 	return 1
 
 // Get the raw list of potential players.
-/datum/antagonist/proc/build_candidate_list(var/ghosts_only)
+/datum/antagonist/proc/build_candidate_list(ghosts_only)
 	candidates = list() // Clear.
 
 	// Prune restricted status. Broke it up for readability.
@@ -127,7 +127,7 @@
 	return candidates
 
 // Builds a list of potential antags without actually setting them. Used to test mode viability.
-/datum/antagonist/proc/get_potential_candidates(var/datum/game_mode/mode, ghosts_only)
+/datum/antagonist/proc/get_potential_candidates(datum/game_mode/mode, ghosts_only)
 	var/candidates = list()
 
 	// Keeping broken up for readability
@@ -185,7 +185,7 @@
 //Attempting to spawn an antag role with ANTAG_OVERRIDE_JOB should be done before jobs are assigned,
 //so that they do not occupy regular job slots. All other antag roles should be spawned after jobs are
 //assigned, so that job restrictions can be respected.
-/datum/antagonist/proc/attempt_spawn(var/spawn_target = null)
+/datum/antagonist/proc/attempt_spawn(spawn_target = null)
 	if(spawn_target == null)
 		spawn_target = initial_spawn_target
 
@@ -201,7 +201,7 @@
 
 	return 1
 
-/datum/antagonist/proc/draft_antagonist(var/datum/mind/player)
+/datum/antagonist/proc/draft_antagonist(datum/mind/player)
 	//Check if the player can join in this antag role, or if the player has already been given an antag role.
 	if(!can_become_antag(player))
 		log_debug("[player.key] was selected for [role_text] by lottery, but is not allowed to be that role.")

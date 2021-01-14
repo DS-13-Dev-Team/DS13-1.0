@@ -66,7 +66,7 @@
 
 	empty_bin(usr)
 
-/obj/machinery/papershredder/proc/empty_bin(var/mob/living/user, obj/item/weapon/storage/empty_into)
+/obj/machinery/papershredder/proc/empty_bin(mob/living/user, obj/item/weapon/storage/empty_into)
 
 	// Sanity.
 	if(empty_into && !istype(empty_into))
@@ -108,7 +108,7 @@
 	else
 		..()
 
-/obj/item/weapon/shreddedp/proc/burn_with_object(var/obj/item/weapon/flame/lighter/P, mob/user)
+/obj/item/weapon/shreddedp/proc/burn_with_object(obj/item/weapon/flame/lighter/P, mob/user)
 	if(user.restrained())
 		return
 	if(!P.lit)

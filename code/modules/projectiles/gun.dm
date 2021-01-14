@@ -170,7 +170,7 @@
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
 //Otherwise, if you want handle_click_empty() to be called, check in consume_next_projectile() and return null there.
-/obj/item/weapon/gun/proc/special_check(var/mob/user)
+/obj/item/weapon/gun/proc/special_check(mob/user)
 
 	if(!istype(user, /mob/living))
 		return 0
@@ -238,7 +238,7 @@
 
 	return TRUE
 
-/obj/item/weapon/gun/proc/pre_fire(var/atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+/obj/item/weapon/gun/proc/pre_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	return TRUE
 
 /obj/item/weapon/gun/attack(atom/A, mob/living/user, def_zone)
@@ -312,7 +312,7 @@
 			return FALSE
 
 //Safety checks are done by the time fire is called
-/obj/item/weapon/gun/proc/Fire(var/atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+/obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 
 
 
@@ -387,7 +387,7 @@
 	return TRUE
 
 //Attempts to consume a specified number of projectiles. Returns false if the gun doesn't have enough ammo
-/obj/item/weapon/gun/proc/consume_projectiles(var/number = 1)
+/obj/item/weapon/gun/proc/consume_projectiles(number = 1)
 	if (projectile_type)
 		return new projectile_type(src)
 	return TRUE
@@ -539,7 +539,7 @@
 
 	return launched
 
-/obj/item/weapon/gun/proc/play_fire_sound(var/mob/user, obj/item/projectile/P)
+/obj/item/weapon/gun/proc/play_fire_sound(mob/user, obj/item/projectile/P)
 	var/shot_sound = (istype(P) && P.fire_sound)? P.fire_sound : fire_sound
 	if (islist(shot_sound))
 		shot_sound = pick(shot_sound)
@@ -657,7 +657,7 @@
 	if(new_mode)
 		to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
 
-/obj/item/weapon/gun/proc/toggle_safety(var/mob/user)
+/obj/item/weapon/gun/proc/toggle_safety(mob/user)
 	safety_state = !safety_state
 	update_icon()
 	if(user)
@@ -693,7 +693,7 @@
 //When safety is toggled
 //When gun is picked up
 //When gun is readied/swapped to
-/obj/item/weapon/gun/proc/update_firemode(var/force_state = null)
+/obj/item/weapon/gun/proc/update_firemode(force_state = null)
 	if (sel_mode && firemodes && firemodes.len)
 		var/datum/firemode/new_mode = firemodes[sel_mode]
 		new_mode.update(force_state)
@@ -741,7 +741,7 @@
 	playsound(loc, mag_remove_sound, 50, 1)
 
 
-/obj/item/weapon/gun/proc/load_ammo(var/obj/item/A, mob/user)
+/obj/item/weapon/gun/proc/load_ammo(obj/item/A, mob/user)
 	playsound(loc, mag_insert_sound, 50, 1)
 
 /obj/item/weapon/gun/attackby(var/obj/item/A as obj, mob/user as mob)

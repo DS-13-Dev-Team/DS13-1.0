@@ -60,7 +60,7 @@
 	if(.)
 		execute(usr)
 
-/datum/admin_secret_item/investigation/attack_logs/proc/get_user_filters(var/mob/user)
+/datum/admin_secret_item/investigation/attack_logs/proc/get_user_filters(mob/user)
 	if(!user.client)
 		return list()
 
@@ -114,7 +114,7 @@
 /attack_filter/proc/reset()
 	return
 
-/attack_filter/proc/filter_attack(var/datum/attack_log/al)
+/attack_filter/proc/filter_attack(datum/attack_log/al)
 	return FALSE
 
 /attack_filter/proc/OnTopic(href_list)

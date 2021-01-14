@@ -79,7 +79,7 @@ REAGENT SCANNER
 	. = medical_scan_results(scan_subject, verbose, user.get_skill_value(SKILL_MEDICAL))
 	to_chat(user, "<hr>[.]<hr>")
 
-/proc/medical_scan_results(var/mob/living/carbon/human/H, verbose, skill_level = SKILL_DEFAULT)
+/proc/medical_scan_results(mob/living/carbon/human/H, verbose, skill_level = SKILL_DEFAULT)
 	. = list()
 	var/header = list()
 	var/b
@@ -310,7 +310,7 @@ REAGENT SCANNER
 	. = jointext(list(header,.),null)
 
 // Calculates severity based on the ratios defined external limbs.
-proc/get_wound_severity(var/damage_ratio, can_heal_overkill = 0)
+proc/get_wound_severity(damage_ratio, can_heal_overkill = 0)
 	var/degree
 
 	switch(damage_ratio)
@@ -534,7 +534,7 @@ proc/get_wound_severity(var/damage_ratio, can_heal_overkill = 0)
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	matter = list(MATERIAL_STEEL = 30,MATERIAL_GLASS = 20)
 
-/obj/item/device/slime_scanner/proc/list_gases(var/gases)
+/obj/item/device/slime_scanner/proc/list_gases(gases)
 	. = list()
 	for(var/g in gases)
 		. += "[gas_data.name[g]] ([gases[g]]%)"

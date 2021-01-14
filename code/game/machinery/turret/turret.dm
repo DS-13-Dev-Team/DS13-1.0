@@ -289,7 +289,7 @@ var/list/turret_icons
 		enabled = 1 //turns it back on. The cover
 		return 1
 
-/obj/machinery/turret/proc/take_damage(var/force)
+/obj/machinery/turret/proc/take_damage(force)
 	health -= force
 	spark_system.start()
 	if(health <= 0)
@@ -369,7 +369,7 @@ var/list/turret_icons
 	var/check_anomalies
 	var/ailock
 
-/obj/machinery/turret/proc/setState(var/datum/turret_checks/TC)
+/obj/machinery/turret/proc/setState(datum/turret_checks/TC)
 	if(controllock)
 		return
 
@@ -630,7 +630,7 @@ var/list/turret_icons
 */
 
 //Called when we sense something moving nearby
-/obj/machinery/turret/proc/nearby_movement(var/atom/movable/AM, atom/old_loc)
+/obj/machinery/turret/proc/nearby_movement(atom/movable/AM, atom/old_loc)
 	if (!enabled || disabled)
 		return
 	if (!istype(AM, /obj/item/projectile))
@@ -664,7 +664,7 @@ var/list/turret_icons
 
 
 
-/obj/machinery/turret/proc/assess_and_assign(var/mob/living/L, list/targets, list/secondarytargets)
+/obj/machinery/turret/proc/assess_and_assign(mob/living/L, list/targets, list/secondarytargets)
 	switch(targeting_profile.assess_target(L, src))
 		if(PRIORITY_TARGET)
 			targets += L
@@ -673,7 +673,7 @@ var/list/turret_icons
 
 
 
-/obj/machinery/turret/proc/assess_perp(var/mob/living/carbon/human/H)
+/obj/machinery/turret/proc/assess_perp(mob/living/carbon/human/H)
 	if(!H || !istype(H))
 		return 0
 
@@ -692,7 +692,7 @@ var/list/turret_icons
 
 
 
-/obj/machinery/turret/proc/select_target(var/mob/living/target)
+/obj/machinery/turret/proc/select_target(mob/living/target)
 	if (target == last_target)
 		return
 	if(disabled)
@@ -773,7 +773,7 @@ var/list/turret_icons
 		if (world.time < fire_when)
 			return FALSE
 
-/obj/machinery/turret/proc/fire_at(var/mob/living/target)
+/obj/machinery/turret/proc/fire_at(mob/living/target)
 	if (!can_fire())
 		return FALSE
 	swivel_to_target(target)
@@ -794,7 +794,7 @@ var/list/turret_icons
 
 
 //Rotate the turret to face the target
-/obj/machinery/turret/proc/swivel_to_target(var/atom/A)
+/obj/machinery/turret/proc/swivel_to_target(atom/A)
 	set waitfor = FALSE
 
 	if (rotating)
@@ -818,7 +818,7 @@ var/list/turret_icons
 		rotating = FALSE
 
 
-/obj/machinery/turret/proc/fire_animation(var/atom/A)
+/obj/machinery/turret/proc/fire_animation(atom/A)
 	//Lets get a direction between us, inverted by putting target first
 	var/vector2/direction = Vector2.DirectionBetween(A, src)
 	direction = direction*fire_pixel_recoil

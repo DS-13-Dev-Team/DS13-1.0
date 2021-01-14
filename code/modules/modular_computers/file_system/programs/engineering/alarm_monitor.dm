@@ -54,11 +54,11 @@
 	..()
 	alarm_handlers = list(camera_alarm, motion_alarm)
 
-/datum/nano_module/alarm_monitor/proc/register_alarm(var/object, procName)
+/datum/nano_module/alarm_monitor/proc/register_alarm(object, procName)
 	for(var/datum/alarm_handler/AH in alarm_handlers)
 		AH.register_alarm(object, procName)
 
-/datum/nano_module/alarm_monitor/proc/unregister_alarm(var/object)
+/datum/nano_module/alarm_monitor/proc/unregister_alarm(object)
 	for(var/datum/alarm_handler/AH in alarm_handlers)
 		AH.unregister_alarm(object)
 

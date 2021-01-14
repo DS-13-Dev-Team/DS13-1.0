@@ -5,7 +5,7 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "grenade"
 	item_state = "grenade"
-	
+
 	throw_range = 20
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
@@ -13,7 +13,7 @@
 	var/det_time = 50
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 
-/obj/item/weapon/grenade/proc/clown_check(var/mob/living/user)
+/obj/item/weapon/grenade/proc/clown_check(mob/living/user)
 	if((CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>Huh? How does this thing work?</span>")
 

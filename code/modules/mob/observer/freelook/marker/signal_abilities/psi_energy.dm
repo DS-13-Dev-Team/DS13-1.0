@@ -23,7 +23,7 @@
 	host = holder
 	build_ability_list()
 
-/datum/extension/psi_energy/proc/is_valid_mob(var/mob/M)
+/datum/extension/psi_energy/proc/is_valid_mob(mob/M)
 	return TRUE
 
 /datum/extension/psi_energy/proc/safety_check()
@@ -62,11 +62,11 @@
 /*
 	Energy Handling
 */
-/datum/extension/psi_energy/proc/change_energy(var/adjustment)
+/datum/extension/psi_energy/proc/change_energy(adjustment)
 	energy = CLAMP(energy+adjustment, 0, max_energy)
 
 //The source is included for the possibility of discounts based on spell types in future
-/datum/extension/psi_energy/proc/can_afford_energy_cost(var/cost, datum/source)
+/datum/extension/psi_energy/proc/can_afford_energy_cost(cost, datum/source)
 	if (energy >= cost)
 		return TRUE
 
@@ -124,7 +124,7 @@
 /*----------------------
 	Ability List
 ----------------------*/
-/datum/extension/psi_energy/proc/build_ability_list(var/clear = TRUE)
+/datum/extension/psi_energy/proc/build_ability_list(clear = TRUE)
 	if (clear)
 		abilities = list()
 	for (var/id in GLOB.signal_abilities)
@@ -212,7 +212,7 @@
 /*
 	The ability datum handles all safety checks. tell it we want to start and thats all
 */
-/datum/extension/psi_energy/proc/cast_ability(var/ability_id)
+/datum/extension/psi_energy/proc/cast_ability(ability_id)
 	var/mob/user = host.get_mob()
 	var/datum/signal_ability/SA = GLOB.signal_abilities[ability_id]
 	SA.start_casting(user)

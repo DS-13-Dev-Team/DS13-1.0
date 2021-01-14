@@ -147,7 +147,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	Snapshot fires a highly accurate projectile which autoaims at a nearby target.
 	It has low damage and a limited range, but is almost certain to hit. Making it very consistent damage and easily useable in a chaotic fight
 */
-/mob/living/proc/puker_snapshot(var/atom/A)
+/mob/living/proc/puker_snapshot(atom/A)
 	set name = "Snapshot"
 	set category = "Abilities"
 	set desc = "A moderate-strength projectile that auto-aims at targets within [PUKER_SNAPSHOT_RANGE] range. HK: Middleclick"
@@ -175,7 +175,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	Longshot fires an unguided accurate projectile with no range limits and good damage.
 	It can be difficult to land on a moving target
 */
-/mob/living/proc/puker_longshot(var/atom/A)
+/mob/living/proc/puker_longshot(atom/A)
 	set name = "Long shot"
 	set category = "Abilities"
 	set desc = "A powerful projectile for longrange shooting. HK: Alt+Click"
@@ -186,7 +186,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
 
-/mob/living/carbon/human/proc/puker_vomit(var/atom/A)
+/mob/living/carbon/human/proc/puker_vomit(atom/A)
 	set name = "Vomit"
 	set category = "Abilities"
 	set desc = "A powerful projectile for longrange shooting. HK: Alt+Click"
@@ -254,7 +254,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	flags = EXTENSION_FLAG_IMMEDIATE | EXTENSION_FLAG_MULTIPLE_INSTANCES	//This version is allowed
 
 
-/datum/species/necromorph/puker/handle_amputated(var/mob/living/carbon/human/H,var/obj/item/organ/external/E, clean, disintegrate, ignore_children, silent)
+/datum/species/necromorph/puker/handle_amputated(var/mob/living/carbon/human/H, obj/item/organ/external/E, clean, disintegrate, ignore_children, silent)
 	H.puker_acidblood()
 
 #undef PUKER_SNAPSHOT_RANGE

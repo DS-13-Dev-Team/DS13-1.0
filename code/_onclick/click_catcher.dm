@@ -32,7 +32,7 @@ Related Procs:
 
 //The Generic Creation Proc
 //-------------------------------
-/proc/create_click_catcher(var/radius = 7)
+/proc/create_click_catcher(radius = 7)
 	var/diameter = (radius*2) + 1
 	///*
 	var/obj/screen/click_catcher/CC = new()

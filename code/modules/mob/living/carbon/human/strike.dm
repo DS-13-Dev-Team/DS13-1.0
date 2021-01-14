@@ -24,12 +24,12 @@
 //------------------------------
 ///atom/proc/launch_strike(target = target, damage = 0, used_weapon = src, damage_flags = 0, armor_penetration = 0, damage_type = BRUTE, armor_type = "melee", target_zone = ran_zone(), difficulty = 0)
 
-/atom/proc/launch_strike(var/atom/target, damage, used_weapon, damage_flags, armor_penetration, damage_type = BRUTE, armor_type = "melee", target_zone = ran_zone(), difficulty = 0)
+/atom/proc/launch_strike(atom/target, damage, used_weapon, damage_flags, armor_penetration, damage_type = BRUTE, armor_type = "melee", target_zone = ran_zone(), difficulty = 0)
 	var/datum/strike/strike = new /datum/strike(src, target, damage, used_weapon, damage_flags, armor_penetration, damage_type, armor_type, target_zone, difficulty)
 	strike.start()
 	return strike
 
-/atom/proc/launch_unarmed_strike(var/atom/target, datum/unarmed_attack/method)
+/atom/proc/launch_unarmed_strike(atom/target, datum/unarmed_attack/method)
 	if (!method)
 		if (ishuman(src))
 			var/mob/living/carbon/human/H = src
@@ -62,7 +62,7 @@
 
 
 
-/atom/proc/launch_weapon_strike(var/atom/target, obj/item/I)
+/atom/proc/launch_weapon_strike(atom/target, obj/item/I)
 	var/mob/living/carbon/human/H
 	if (ishuman(src))
 		H = src
@@ -78,7 +78,7 @@
 
 
 //When a thrown object hits a mob, it calls this itself
-/atom/proc/launch_throw_strike(var/atom/target, speed)
+/atom/proc/launch_throw_strike(atom/target, speed)
 	var/datum/strike/thrown/strike = new /datum/strike/thrown(src, target, speed)
 	strike.start()
 
@@ -162,7 +162,7 @@
 
 //Override this in subtypes and DO NOT CALL PARENT
 //Copypaste the code instead
-/datum/strike/proc/cache_data(var/atom/user, atom/target, damage, used_weapon, damage_flags, armor_penetration, damage_type = BRUTE, armor_type = "melee", target_zone, difficulty)
+/datum/strike/proc/cache_data(atom/user, atom/target, damage, used_weapon, damage_flags, armor_penetration, damage_type = BRUTE, armor_type = "melee", target_zone, difficulty)
 	src.user = user
 	src.target = target
 	src.damage = damage

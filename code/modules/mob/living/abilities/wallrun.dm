@@ -94,7 +94,7 @@
 	Mounting
 ------------------*/
 //This should only be called when we are NOT already mounted. When we are mounted, use attempt_transition instead
-/datum/extension/wallrun/proc/attempt_mount(var/atom/target)
+/datum/extension/wallrun/proc/attempt_mount(atom/target)
 	if (is_valid_mount_target(target))
 		cache_data()
 		mount_to_atom(target)
@@ -104,7 +104,7 @@
 
 
 //This cannot fail, make sure safety checks are done already
-/datum/extension/wallrun/proc/mount_to_atom(var/atom/target)
+/datum/extension/wallrun/proc/mount_to_atom(atom/target)
 	mountpoint = target
 	if (offset)
 		release_vector(offset)
@@ -155,14 +155,14 @@
 	Transitioning
 ------------------*/
 //This should only be called when we are already mounted
-/datum/extension/wallrun/proc/attempt_transition(var/atom/target)
+/datum/extension/wallrun/proc/attempt_transition(atom/target)
 	if (!target)
 		return
 	if (is_valid_mount_target(target) && is_valid_transition_target(target))
 		return transition_to_atom(target)
 
 //Called when we move from one mounted atom to another
-/datum/extension/wallrun/proc/transition_to_atom(var/atom/target)
+/datum/extension/wallrun/proc/transition_to_atom(atom/target)
 	var/target_turf = get_mount_target_turf(A, target)
 	if (!target_turf)
 		return
@@ -185,7 +185,7 @@
 
 
 //Attempts either mount or transition according to current mounted status
-/datum/extension/wallrun/proc/attempt_connect(var/atom/target)
+/datum/extension/wallrun/proc/attempt_connect(atom/target)
 	if(mountpoint)
 		return attempt_transition(next_mountpoint)
 	else
@@ -196,7 +196,7 @@
 	Unmounting
 ------------------*/
 //Called everytime we move between mountpoints, or end mounting
-/datum/extension/wallrun/proc/unmount(var/atom/target)
+/datum/extension/wallrun/proc/unmount(atom/target)
 	if (mountpoint)
 		if (istype(mountpoint, /atom/movable))
 			GLOB.moved_event.unregister(mountpoint, src, /datum/extension/wallrun/proc/on_mountpoint_move)
@@ -295,14 +295,14 @@
 /*-----------------
 	Detection
 ------------------*/
-/datum/extension/wallrun/proc/find_mountpoint(var/origin)
+/datum/extension/wallrun/proc/find_mountpoint(origin)
 	for (var/atom/target in orange(origin, 1))
 		if (is_valid_mount_target(target) && is_valid_transition_target(target))
 			return target
 	return null
 
 //Finds what turf we're trying to connect to
-/datum/extension/wallrun/proc/get_mount_target_turf(var/atom/origin, atom/target)
+/datum/extension/wallrun/proc/get_mount_target_turf(atom/origin, atom/target)
 	var/turf/U = get_turf(origin)
 	var/turf/T = get_turf(target)
 
@@ -329,7 +329,7 @@
 	Returns true if our user could possibly mount on this.
 	The user's position is only taken into account if the target is on a border
 */
-/datum/extension/wallrun/proc/is_valid_mount_target(var/atom/target, ignore_self = FALSE)
+/datum/extension/wallrun/proc/is_valid_mount_target(atom/target, ignore_self = FALSE)
 	//Don't transition to ourself silly
 	if (!ignore_self && (target == mountpoint || target == A))
 		return FALSE
@@ -368,7 +368,7 @@
 	Called when we're moving from one mountpoint to another. We already know the target is valid
 	This proc tests whether we can reach it from our current spot
 */
-/datum/extension/wallrun/proc/is_valid_transition_target(var/atom/target)
+/datum/extension/wallrun/proc/is_valid_transition_target(atom/target)
 	var/target_turf = get_mount_target_turf(A, target)
 	if (!(target_turf in orange(mountpoint, 1)))
 		return FALSE
@@ -378,7 +378,7 @@
 
 //Access Proc
 /*
-/atom/movable/proc/can_wallrun(var/error_messages = TRUE)
+/atom/movable/proc/can_wallrun(error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 
@@ -399,7 +399,7 @@
 	Observation Calls
 -------------------------*/
 //Called when we bump into something
-/datum/extension/wallrun/proc/on_bumped(var/atom/movable/mover, atom/obstacle)
+/datum/extension/wallrun/proc/on_bumped(atom/movable/mover, atom/obstacle)
 	//Can't do wallrun and wallmount at the same time
 	if (mover.is_mounted())
 		return
@@ -431,7 +431,7 @@
 
 	If we can't find one, we'll unmount to floor before moving
 */
-/datum/extension/wallrun/proc/on_premove(var/atom/mover, curloc, newloc)
+/datum/extension/wallrun/proc/on_premove(atom/mover, curloc, newloc)
 	.=TRUE
 	if (!mountpoint)
 		return	//If we aren't already mounted to something, we don't care
@@ -451,7 +451,7 @@
 		unmount_to_floor()
 
 
-/datum/extension/wallrun/proc/on_move(var/atom/mover, oldloc, newloc)
+/datum/extension/wallrun/proc/on_move(atom/mover, oldloc, newloc)
 	var/mounted = FALSE
 	//We have a next target? Try mounting to it
 	if (next_mountpoint)
@@ -495,7 +495,7 @@
 		dir_set(user, visual_dir, visual_dir)
 
 //An attempt to make directional facings meaningful
-/datum/extension/wallrun/proc/dir_set(var/atom/mover, old_dir, new_dir)
+/datum/extension/wallrun/proc/dir_set(atom/mover, old_dir, new_dir)
 	if (mountpoint)
 		//We get the normal direction of the wall
 		var/vector2/current_wall_normal = get_new_vector(mover.x - mountpoint.x, mover.y - mountpoint.y)

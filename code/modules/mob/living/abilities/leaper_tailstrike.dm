@@ -121,7 +121,7 @@
 	strike_victim(victim)
 	tailstrike_timer = addtimer(CALLBACK(src, .proc/stop), winddown_time, TIMER_STOPPABLE)
 
-/datum/extension/tailstrike/proc/strike_victim(var/atom/victim)
+/datum/extension/tailstrike/proc/strike_victim(atom/victim)
 	victim.shake_animation(damage)
 	if (isliving(victim))
 		var/mob/living/L = victim
@@ -133,7 +133,7 @@
 	user.visible_message(SPAN_DANGER("[user] [attack_verb] [victim] with their tail!"))
 
 //This proc figures out which one thing we will hit in the target turf
-/datum/extension/tailstrike/proc/find_victim(var/turf/search)
+/datum/extension/tailstrike/proc/find_victim(turf/search)
 	//Lets start with mobs.
 	var/list/possible_standing = list()
 	var/list/possible = list()
@@ -202,7 +202,7 @@
 
 //	Triggering
 //------------------------
-/atom/movable/proc/tailstrike_verb(var/atom/A)
+/atom/movable/proc/tailstrike_verb(atom/A)
 	set name = "Slam"
 	set category = "Abilities"
 
@@ -212,7 +212,7 @@
 	return tailstrike_attack(A)
 
 
-/atom/movable/proc/can_tailstrike(var/atom/target, error_messages = TRUE)
+/atom/movable/proc/can_tailstrike(atom/target, error_messages = TRUE)
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
 	var/datum/extension/tailstrike/ES = get_extension(src, /datum/extension/tailstrike)
 	if(istype(ES))
@@ -244,7 +244,7 @@
 		return FALSE
 	.=..()
 
-/atom/movable/proc/tailstrike_attack(var/atom/_target, _damage = 25, _windup_time = 0.75, _winddown_time = 0.75, _cooldown = 0)
+/atom/movable/proc/tailstrike_attack(atom/_target, _damage = 25, _windup_time = 0.75, _winddown_time = 0.75, _cooldown = 0)
 	//First of all, lets check if we're currently able to do the thing
 	if (!can_tailstrike(_target, TRUE))
 		return FALSE

@@ -62,7 +62,7 @@ var/global/ntnet_card_uid = 1
 	return ntnet_global.check_banned(identification_id)
 
 // 0 - No signal, 1 - Low signal, 2 - High signal. 3 - Wired Connection
-/obj/item/weapon/computer_hardware/network_card/proc/get_signal(var/specific_action = 0)
+/obj/item/weapon/computer_hardware/network_card/proc/get_signal(specific_action = 0)
 	if(!holder2) // Hardware is not installed in anything. No signal. How did this even get called?
 		return 0
 

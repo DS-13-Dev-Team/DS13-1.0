@@ -50,7 +50,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 		var/update_proc = data[1]
 		call(M, update_proc)()
 
-/datum/extension/proc/register_statmod(var/modtype)
+/datum/extension/proc/register_statmod(modtype)
 	//Currently only supported for mobs
 	var/mob/M = holder
 	if (!istype(M))
@@ -69,7 +69,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	var/update_proc = data[1]
 	call(M, update_proc)()//And call it
 
-/datum/extension/proc/unregister_statmod(var/modtype)
+/datum/extension/proc/unregister_statmod(modtype)
 	//Currently only supported for mobs
 	var/mob/M = holder
 	if (!istype(M))
@@ -88,7 +88,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	call(M, update_proc)()//And call it
 
 
-/datum/extension/proc/get_statmod(var/modtype)
+/datum/extension/proc/get_statmod(modtype)
 	return LAZYACCESS(statmods, modtype)
 
 

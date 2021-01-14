@@ -42,7 +42,7 @@
 /obj/item/weapon/rcd/attack()
 	return 0
 
-/obj/item/weapon/rcd/proc/can_use(var/mob/user,var/turf/T)
+/obj/item/weapon/rcd/proc/can_use(mob/user, turf/T)
 	return (user.Adjacent(T) && user.get_active_hand() == src && !user.incapacitated())
 
 /obj/item/weapon/rcd/examine(var/user)
@@ -93,7 +93,7 @@
 	work_id++
 	work_mode.do_work(src, A, user)
 
-/obj/item/weapon/rcd/proc/useResource(var/amount, mob/user)
+/obj/item/weapon/rcd/proc/useResource(amount, mob/user)
 	if(stored_matter < amount)
 		return 0
 	stored_matter -= amount
@@ -138,7 +138,7 @@
 /obj/item/weapon/rcd/borg/attackby()
 	return
 
-/obj/item/weapon/rcd/borg/can_use(var/mob/user,var/turf/T)
+/obj/item/weapon/rcd/borg/can_use(var/mob/user, turf/T)
 	return (user.Adjacent(T) && !user.incapacitated())
 
 
@@ -155,7 +155,7 @@
 /obj/item/weapon/rcd/mounted/attackby()
 	return
 
-/obj/item/weapon/rcd/mounted/can_use(var/mob/user,var/turf/T)
+/obj/item/weapon/rcd/mounted/can_use(var/mob/user, turf/T)
 	return (user.Adjacent(T) && !user.incapacitated())
 
 
@@ -166,7 +166,7 @@
 	var/handles_type
 	var/work_type
 
-/decl/hierarchy/rcd_mode/proc/do_work(var/obj/item/weapon/rcd/rcd, atom/target, user)
+/decl/hierarchy/rcd_mode/proc/do_work(obj/item/weapon/rcd/rcd, atom/target, user)
 	for(var/child in children)
 		var/decl/hierarchy/rcd_mode/rcdm = child
 		if(!rcdm.can_handle_work(rcd, target))
@@ -189,10 +189,10 @@
 
 	return FALSE
 
-/decl/hierarchy/rcd_mode/proc/can_handle_work(var/obj/item/weapon/rcd/rcd, atom/target)
+/decl/hierarchy/rcd_mode/proc/can_handle_work(obj/item/weapon/rcd/rcd, atom/target)
 	return istype(target, handles_type)
 
-/decl/hierarchy/rcd_mode/proc/do_handle_work(var/atom/target)
+/decl/hierarchy/rcd_mode/proc/do_handle_work(atom/target)
 	var/result = get_work_result(target)
 	if(ispath(result,/turf))
 		var/turf/T = target
@@ -202,10 +202,10 @@
 	else
 		qdel(target)
 
-/decl/hierarchy/rcd_mode/proc/get_work_result(var/atom/target)
+/decl/hierarchy/rcd_mode/proc/get_work_result(atom/target)
 	return work_type
 
-/decl/hierarchy/rcd_mode/proc/work_message(var/atom/target, mob/user, rcd)
+/decl/hierarchy/rcd_mode/proc/work_message(atom/target, mob/user, rcd)
 	var/message
 	if(work_type)
 		var/atom/work = work_type

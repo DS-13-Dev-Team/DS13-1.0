@@ -1,4 +1,4 @@
-/datum/antagonist/proc/add_antagonist(var/datum/mind/player, ignore_role, do_not_equip, move_to_spawn, do_not_announce, preserve_appearance)
+/datum/antagonist/proc/add_antagonist(datum/mind/player, ignore_role, do_not_equip, move_to_spawn, do_not_announce, preserve_appearance)
 
 	if(!add_antagonist_mind(player, ignore_role))
 		return
@@ -20,7 +20,7 @@
 	player.current.faction = faction
 	return 1
 
-/datum/antagonist/proc/add_antagonist_mind(var/datum/mind/player, ignore_role, nonstandard_role_type, nonstandard_role_msg)
+/datum/antagonist/proc/add_antagonist_mind(datum/mind/player, ignore_role, nonstandard_role_type, nonstandard_role_msg)
 	if(!istype(player))
 		return 0
 	if(!player.current)
@@ -55,7 +55,7 @@
 		update_icons_added(player)
 	return 1
 
-/datum/antagonist/proc/remove_antagonist(var/datum/mind/player, show_message, implanted)
+/datum/antagonist/proc/remove_antagonist(datum/mind/player, show_message, implanted)
 	if(!istype(player))
 		return 0
 	if(player.current && faction_verb)

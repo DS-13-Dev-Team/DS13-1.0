@@ -91,7 +91,7 @@
 	QDEL_NULL(brainmob)
 	. = ..()
 
-/obj/item/organ/internal/brain/proc/transfer_identity(var/mob/living/carbon/H)
+/obj/item/organ/internal/brain/proc/transfer_identity(mob/living/carbon/H)
 
 	if(!brainmob)
 		brainmob = new(src)
@@ -152,7 +152,7 @@
 /obj/item/organ/internal/brain/proc/get_current_damage_threshold()
 	return round(damage / damage_threshold_value)
 
-/obj/item/organ/internal/brain/proc/past_damage_threshold(var/threshold)
+/obj/item/organ/internal/brain/proc/past_damage_threshold(threshold)
 	return (get_current_damage_threshold() > threshold)
 
 /obj/item/organ/internal/brain/Process()
@@ -236,7 +236,7 @@
 		if(prob(30))
 			addtimer(CALLBACK(src, .proc/brain_damage_callback, damage), rand(6, 20) SECONDS, TIMER_UNIQUE)
 
-/obj/item/organ/internal/brain/proc/brain_damage_callback(var/damage) //Confuse them as a somewhat uncommon aftershock. Side note: Only here so a spawn isn't used. Also, for the sake of a unique timer.
+/obj/item/organ/internal/brain/proc/brain_damage_callback(damage) //Confuse them as a somewhat uncommon aftershock. Side note: Only here so a spawn isn't used. Also, for the sake of a unique timer.
 	to_chat(owner, "<span class = 'notice' font size='10'><B>I can't remember which way is forward...</B></span>")
 	owner.confused += damage
 

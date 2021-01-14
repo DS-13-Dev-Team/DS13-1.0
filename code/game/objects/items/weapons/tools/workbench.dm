@@ -36,7 +36,7 @@
 	var/power_channel = EQUIP
 
 
-/obj/structure/table/workbench/proc/use_power(var/amount, chan = -1)
+/obj/structure/table/workbench/proc/use_power(amount, chan = -1)
 	var/area/A = get_area(src)		// make sure it's in an area
 	if(!A || !isarea(A))
 		return
@@ -46,7 +46,7 @@
 
 
 //As above, more stuff copypasted from power.dm
-/obj/structure/table/workbench/proc/powered(var/chan = -1, area/check_area = null)
+/obj/structure/table/workbench/proc/powered(chan = -1, area/check_area = null)
 
 	if(!src.loc)
 		return 0

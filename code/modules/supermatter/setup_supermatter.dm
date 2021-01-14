@@ -115,7 +115,7 @@
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x3"
 
-/obj/effect/engine_setup/proc/activate(var/last = 0)
+/obj/effect/engine_setup/proc/activate(last = 0)
 	return 1
 
 

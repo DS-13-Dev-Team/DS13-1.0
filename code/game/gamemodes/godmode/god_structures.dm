@@ -1,4 +1,4 @@
-/proc/valid_deity_structure_spot(var/type, turf/target, mob/living/deity/deity, mob/living/user)
+/proc/valid_deity_structure_spot(type, turf/target, mob/living/deity/deity, mob/living/user)
 	var/obj/structure/deity/D = type
 	var/flags = initial(D.deity_flags)
 
@@ -48,5 +48,5 @@
 
 
 
-/obj/structure/deity/proc/attack_deity(var/mob/living/deity/deity)
+/obj/structure/deity/proc/attack_deity(mob/living/deity/deity)
 	return

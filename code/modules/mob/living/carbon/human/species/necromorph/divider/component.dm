@@ -65,7 +65,7 @@
 	blur_filter_strength = 1
 
 
-/mob/living/simple_animal/necromorph/divider_component/proc/leap(var/atom/A)
+/mob/living/simple_animal/necromorph/divider_component/proc/leap(atom/A)
 	set name = "Leap Attack"
 	set category = "Abilities"
 

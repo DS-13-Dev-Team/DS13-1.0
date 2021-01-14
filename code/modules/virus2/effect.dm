@@ -42,7 +42,7 @@
 		. += name
 	return JOINTEXT(.)
 
-/datum/disease2/effect/proc/fire(var/mob/living/carbon/human/mob,var/current_stage)
+/datum/disease2/effect/proc/fire(mob/living/carbon/human/mob, current_stage)
 	if(oneshot == -1)
 		return
 	if(hold_until > world.time)
@@ -62,8 +62,8 @@
 		if(2)
 			multiplier = rand(1,multiplier_max)
 
-/datum/disease2/effect/proc/activate(var/mob/living/carbon/human/mob)
-/datum/disease2/effect/proc/deactivate(var/mob/living/carbon/human/mob)
+/datum/disease2/effect/proc/activate(mob/living/carbon/human/mob)
+/datum/disease2/effect/proc/deactivate(mob/living/carbon/human/mob)
 /datum/disease2/effect/proc/generate(copy_data) // copy_data will be non-null if this is a copy; it should be used to initialise the data for this effect if present
 
 /datum/disease2/effect/invisible
@@ -76,7 +76,7 @@
 	name = "Gibbingtons Syndrome"
 	stage = 4
 	badness = VIRUS_EXOTIC
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		// Probabilities have been tweaked to kill in ~2-3 minutes, giving 5-10 messages.
 		// Probably needs more balancing, but it's better than LOL U GIBBED NOW, especially now that viruses can potentially have no signs up until Gibbingtons.
 		mob.adjustBruteLoss(10*multiplier)
@@ -93,35 +93,35 @@
 	stage = 4
 	multiplier_max = 3
 	badness = VIRUS_COMMON
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.apply_effect(2*multiplier, IRRADIATE, blocked = 0)
 
 /datum/disease2/effect/deaf
 	name = "Dead Ear Syndrome"
 	stage = 4
 	badness = VIRUS_COMMON
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.ear_deaf += 20
 
 /datum/disease2/effect/monkey
 	name = "Two Percent Syndrome"
 	stage = 4
 	badness = VIRUS_EXOTIC
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.monkeyize()
 
 /datum/disease2/effect/killertoxins
 	name = "Toxification Syndrome"
 	stage = 4
 	badness = VIRUS_COMMON
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.adjustToxLoss(15*multiplier)
 
 /datum/disease2/effect/dna
 	name = "Reverse Pattern Syndrome"
 	stage = 4
 	badness = VIRUS_ENGINEERED
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.bodytemperature = max(mob.bodytemperature, 350)
 		scramble(0,mob,10)
 		mob.apply_damage(10, CLONE)
@@ -130,7 +130,7 @@
 	name = "Shutdown Syndrome"
 	stage = 4
 	badness = VIRUS_ENGINEERED
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		var/organ = pick(list(BP_R_ARM,BP_L_ARM,BP_R_LEG,BP_L_LEG))
 		var/obj/item/organ/external/E = mob.organs_by_name[organ]
 		if (!(E.status & ORGAN_DEAD))
@@ -141,7 +141,7 @@
 		mob.update_body(1)
 		mob.adjustToxLoss(15*multiplier)
 
-	deactivate(var/mob/living/carbon/human/mob,var/multiplier)
+	deactivate(var/mob/living/carbon/human/mob, multiplier)
 		for (var/obj/item/organ/external/E in mob.organs)
 			E.status &= ~ORGAN_DEAD
 			for (var/obj/item/organ/external/C in E.children)
@@ -152,7 +152,7 @@
 	name = "Longevity Syndrome"
 	stage = 4
 	badness = VIRUS_ENGINEERED
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		for (var/external in mob.organs)
 			var/obj/item/organ/external/E = external
 			if (E.status & ORGAN_BROKEN && prob(30))
@@ -168,7 +168,7 @@
 		var/heal_amt = -5*multiplier
 		mob.apply_damages(heal_amt,heal_amt,heal_amt,heal_amt)
 
-	deactivate(var/mob/living/carbon/human/mob,var/multiplier)
+	deactivate(var/mob/living/carbon/human/mob, multiplier)
 		to_chat(mob, "<span class='notice'>You suddenly feel hurt and old...</span>")
 		mob.age += 8
 		var/backlash_amt = 5*multiplier
@@ -178,11 +178,11 @@
 	name = "Fragile Bones Syndrome"
 	stage = 4
 	badness = VIRUS_ENGINEERED
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		for (var/obj/item/organ/external/E in mob.organs)
 			E.min_broken_damage = max(5, E.min_broken_damage - 30)
 
-	deactivate(var/mob/living/carbon/human/mob,var/multiplier)
+	deactivate(var/mob/living/carbon/human/mob, multiplier)
 		for (var/obj/item/organ/external/E in mob.organs)
 			E.min_broken_damage = initial(E.min_broken_damage)
 
@@ -193,20 +193,20 @@
 	stage = 3
 	multiplier_max = 3
 	badness = VIRUS_COMMON
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.adjustToxLoss((2*multiplier))
 
 /datum/disease2/effect/shakey
 	name = "World Shaking Syndrome"
 	stage = 3
 	multiplier_max = 3
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		shake_camera(mob,5*multiplier)
 
 /datum/disease2/effect/telepathic
 	name = "Telepathy Syndrome"
 	stage = 3
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.dna.SetSEState(GLOB.REMOTETALKBLOCK,1)
 		domutcheck(mob, null, MUTCHK_FORCED)
 
@@ -214,7 +214,7 @@
 	name = "Lazy Mind Syndrome"
 	stage = 3
 	badness = VIRUS_COMMON
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		var/obj/item/organ/internal/brain/B = mob.internal_organs_by_name[BP_BRAIN]
 		if (B && B.damage < B.min_broken_damage)
 			B.take_internal_damage(5)
@@ -222,13 +222,13 @@
 /datum/disease2/effect/deaf
 	name = "Hard of Hearing Syndrome"
 	stage = 3
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.ear_deaf = 5
 
 /datum/disease2/effect/confusion
 	name = "Topographical Cretinism"
 	stage = 3
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		to_chat(mob, "<span class='notice'>You have trouble telling right and left apart all of a sudden.</span>")
 		mob.confused += 10
 
@@ -236,7 +236,7 @@
 	name = "DNA Degradation"
 	stage = 3
 	badness = VIRUS_COMMON
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.apply_damage(2, CLONE)
 
 /datum/disease2/effect/chem_synthesis
@@ -255,7 +255,7 @@
 		var/datum/reagent/R = data
 		name = "[initial(name)] ([initial(R.name)])"
 
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		if (mob.reagents.get_reagent_amount(data) < 5)
 			mob.reagents.add_reagent(data, 2)
 
@@ -270,7 +270,7 @@
 /datum/disease2/effect/drowsness
 	name = "Automated Sleeping Syndrome"
 	stage = 2
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.drowsyness += 10
 
 /datum/disease2/effect/sleepy
@@ -278,21 +278,21 @@
 	stage = 2
 	chance_max = 15
 	delay = 35 SECONDS
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.emote("collapse")
 
 /datum/disease2/effect/blind
 	name = "Blackout Syndrome"
 	stage = 2
 	badness = VIRUS_COMMON
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.eye_blind = max(mob.eye_blind, 4)
 
 /datum/disease2/effect/cough
 	name = "Anima Syndrome"
 	stage = 2
 	delay = 25 SECONDS
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.emote("cough")
 		if (mob.wear_mask)
 			return
@@ -302,7 +302,7 @@
 /datum/disease2/effect/hungry
 	name = "Appetiser Effect"
 	stage = 2
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.nutrition = max(0, mob.nutrition - 200)
 
 /datum/disease2/effect/fridge
@@ -310,14 +310,14 @@
 	stage = 2
 	chance_max = 25
 	delay = 25 SECONDS
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.emote("shiver")
 
 /datum/disease2/effect/hair
 	name = "Hair Loss"
 	stage = 2
 	badness = VIRUS_COMMON
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		if(mob.species.name == SPECIES_HUMAN && !(mob.h_style == "Bald") && !(mob.h_style == "Balding Hair"))
 			to_chat(mob, "<span class='danger'>Your hair starts to fall out in clumps...</span>")
 			spawn(50)
@@ -328,7 +328,7 @@
 	name = "Adrenaline Extra"
 	stage = 2
 	badness = VIRUS_COMMON
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		to_chat(mob, "<span class='notice'>You feel a rush of energy inside you!</span>")
 		if (mob.reagents.get_reagent_amount(/datum/reagent/hyperzine) < 10)
 			mob.reagents.add_reagent(/datum/reagent/hyperzine, 4)
@@ -342,7 +342,7 @@
 	stage = 1
 	delay = 15 SECONDS
 
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		if (prob(30))
 			to_chat(mob, "<span class='warning'>You feel like you are about to sneeze!</span>")
 		sleep(5)
@@ -357,7 +357,7 @@
 	name = "Flemmingtons"
 	stage = 1
 	delay = 25 SECONDS
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		to_chat(mob, "<span class='warning'>Mucous runs down the back of your throat.</span>")
 
 /datum/disease2/effect/drool
@@ -365,7 +365,7 @@
 	stage = 1
 	chance_max = 25
 	delay = 25 SECONDS
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.emote("drool")
 
 /datum/disease2/effect/twitch
@@ -373,21 +373,21 @@
 	stage = 1
 	chance_max = 25
 	delay = 25 SECONDS
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.emote("twitch")
 
 /datum/disease2/effect/headache
 	name = "Headache"
 	stage = 1
 	delay = 25 SECONDS
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		mob.custom_pain("Your head hurts a bit.", 20)
 
 /datum/disease2/effect/itch
 	name = "Itches"
 	stage = 1
 	delay = 25 SECONDS
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		var/obj/O = pick(mob.organs)
 		to_chat(mob, "<span class='warning'>Your [O.name] itches like hell.</span>")
 
@@ -395,7 +395,7 @@
 	name = "Upset stomach"
 	stage = 1
 	delay = 25 SECONDS
-	activate(var/mob/living/carbon/human/mob,var/multiplier)
+	activate(var/mob/living/carbon/human/mob, multiplier)
 		to_chat(mob, "<span class='warning'>Your stomach feels heavy.</span>")
 
 /datum/disease2/effect/stealth

@@ -30,7 +30,7 @@
 /obj/screen/movable/tracker/proc/setup()
 	return
 
-/obj/screen/movable/tracker/proc/set_lifetime(var/lifetime)
+/obj/screen/movable/tracker/proc/set_lifetime(lifetime)
 	deltimer(lifetimer)
 	lifetimer = addtimer(CALLBACK(src, /obj/screen/movable/tracker/proc/end), lifetime,  TIMER_STOPPABLE)
 

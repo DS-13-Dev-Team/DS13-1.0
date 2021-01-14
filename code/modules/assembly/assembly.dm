@@ -26,16 +26,16 @@
 /obj/item/device/assembly/proc/activate()									//What the device does when turned on
 	return
 
-/obj/item/device/assembly/proc/pulsed(var/radio = 0)						//Called when another assembly acts on this one, radio will determine where it came from for wire calcs
+/obj/item/device/assembly/proc/pulsed(radio = 0)						//Called when another assembly acts on this one, radio will determine where it came from for wire calcs
 	return
 
-/obj/item/device/assembly/proc/pulse(var/radio = 0)						//Called when this device attempts to act on another device, radio determines if it was sent via radio or direct
+/obj/item/device/assembly/proc/pulse(radio = 0)						//Called when this device attempts to act on another device, radio determines if it was sent via radio or direct
 	return
 
 /obj/item/device/assembly/proc/toggle_secure()								//Code that has to happen when the assembly is un\secured goes here
 	return
 
-/obj/item/device/assembly/proc/attach_assembly(var/obj/A, mob/user)	//Called when an assembly is attacked by another
+/obj/item/device/assembly/proc/attach_assembly(obj/A, mob/user)	//Called when an assembly is attacked by another
 	return
 
 /obj/item/device/assembly/proc/process_cooldown()							//Called via spawn(10) to have it count down the cooldown var

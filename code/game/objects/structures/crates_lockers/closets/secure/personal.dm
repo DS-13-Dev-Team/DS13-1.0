@@ -43,7 +43,7 @@
 		if (id_card)
 			set_owner(id_card.registered_name)
 
-/obj/structure/closet/secure_closet/personal/proc/set_owner(var/registered_name)
+/obj/structure/closet/secure_closet/personal/proc/set_owner(registered_name)
 	if (registered_name)
 		src.registered_name = registered_name
 		src.SetName(name + " ([registered_name])")

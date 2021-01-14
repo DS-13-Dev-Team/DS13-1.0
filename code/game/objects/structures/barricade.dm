@@ -152,7 +152,7 @@
 	if (.)
 		impale_victim(user, 1.5)
 
-/obj/structure/barricade/spike/proc/impale_victim(var/mob/living/victim, damage_mult = 1)
+/obj/structure/barricade/spike/proc/impale_victim(mob/living/victim, damage_mult = 1)
 
 	if(!isliving(victim))
 		return FALSE

@@ -191,7 +191,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 
 //Leap attack
-/atom/movable/proc/leaper_leap(var/mob/living/A)
+/atom/movable/proc/leaper_leap(mob/living/A)
 	set name = "Leap"
 	set category = "Abilities"
 
@@ -236,7 +236,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 1.3 SECONDS, _speed = 7, _maxrange = 11,_lifespan = 8 SECONDS, _maxrange = 20)
 
 
-/atom/movable/proc/leaper_leap_enhanced(var/mob/living/A)
+/atom/movable/proc/leaper_leap_enhanced(mob/living/A)
 	set name = "Leap"
 	set category = "Abilities"
 
@@ -287,7 +287,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 
 //Tailstrike attack
-/mob/living/carbon/human/proc/tailstrike_leaper(var/atom/A)
+/mob/living/carbon/human/proc/tailstrike_leaper(atom/A)
 	set name = "Tail Strike"
 	set category = "Abilities"
 
@@ -302,7 +302,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 			play_species_audio(src, SOUND_ATTACK, 30, 1)
 
 
-/mob/living/carbon/human/proc/tailstrike_leaper_enhanced(var/atom/A)
+/mob/living/carbon/human/proc/tailstrike_leaper_enhanced(atom/A)
 	set name = "Tail Strike"
 	set category = "Abilities"
 

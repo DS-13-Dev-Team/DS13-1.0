@@ -6,12 +6,12 @@
 	w_class = 1
 	var/key_data = ""
 
-/obj/item/weapon/key/New(var/newloc,var/data)
+/obj/item/weapon/key/New(var/newloc, data)
 	if(data)
 		key_data = data
 	..(newloc)
 
-/obj/item/weapon/key/proc/get_data(var/mob/user)
+/obj/item/weapon/key/proc/get_data(mob/user)
 	return key_data
 
 /obj/item/weapon/key/soap

@@ -86,7 +86,7 @@
 	playsound(src, 'sound/weapons/guns/misc/overheat.ogg', VOLUME_LOUD, FALSE)
 	set_audio_cooldown("gunclick", 3 SECONDS)
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/proc/gain_heat(var/quantity)
+/obj/item/weapon/gun/projectile/automatic/pulse_heavy/proc/gain_heat(quantity)
 	heat = clamp(heat + quantity, 0, max_heat)
 	HP_START_PROCESS
 
@@ -99,7 +99,7 @@
 		overheat()
 		return FALSE
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/proc/lose_heat(var/quantity)
+/obj/item/weapon/gun/projectile/automatic/pulse_heavy/proc/lose_heat(quantity)
 	heat = clamp(heat - quantity, 0, max_heat)
 
 	//The Heavy Pulse Rifle speeds up its firing speed based on heat level, 3* speed at max heat

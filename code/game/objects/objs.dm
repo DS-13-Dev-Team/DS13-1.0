@@ -104,7 +104,7 @@
 /mob/proc/unset_machine()
 	src.machine = null
 
-/mob/proc/set_machine(var/obj/O)
+/mob/proc/set_machine(obj/O)
 	if(src.machine)
 		unset_machine()
 	src.machine = O
@@ -116,7 +116,7 @@
 	if(istype(M) && M.client && M.machine == src)
 		src.attack_self(M)
 
-/obj/proc/hide(var/hide)
+/obj/proc/hide(hide)
 	set_invisibility(hide ? INVISIBILITY_MAXIMUM : initial(invisibility))
 
 /obj/proc/hides_under_flooring()
@@ -179,7 +179,7 @@
 /obj/proc/get_matter()
 	return matter
 
-/obj/proc/eject_item(var/obj/item/I, mob/living/M)
+/obj/proc/eject_item(obj/item/I, mob/living/M)
 	if(!I || !M.is_advanced_tool_user())
 		return FALSE
 	M.put_in_hands(I)
@@ -190,7 +190,7 @@
 	)
 	return TRUE
 
-/obj/proc/insert_item(var/obj/item/I, mob/living/M)
+/obj/proc/insert_item(obj/item/I, mob/living/M)
 	if(!I || !M.unEquip(I))
 		return FALSE
 	I.forceMove(src)
@@ -211,7 +211,7 @@
 
 //To be called from things that spill objects on the floor.
 //Makes an object move around randomly for a couple of tiles
-/obj/proc/tumble(var/dist = 2)
+/obj/proc/tumble(dist = 2)
 	set waitfor = FALSE
 	if (anchored)
 		return

@@ -14,7 +14,7 @@
 	. = ..()
 	bumped = 0 //can hit all mobs in a tile. pellets is decremented inside attack_mob so this should be fine.
 
-/obj/item/projectile/bullet/pellet/proc/get_pellets(var/distance)
+/obj/item/projectile/bullet/pellet/proc/get_pellets(distance)
 	var/pellet_loss = round((distance - 1)/range_step) //pellets lost due to distance
 	return max(pellets - pellet_loss, 1)
 

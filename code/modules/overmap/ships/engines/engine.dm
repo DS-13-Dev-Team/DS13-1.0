@@ -28,7 +28,7 @@ var/list/ship_engines = list()
 	return 1
 
 //Sets thrust limiter, a number between 0 and 1
-/datum/ship_engine/proc/set_thrust_limit(var/new_limit)
+/datum/ship_engine/proc/set_thrust_limit(new_limit)
 	return 1
 
 /datum/ship_engine/proc/get_thrust_limit()

@@ -1,7 +1,7 @@
 /*
 	Can this atom be gripped by kinesis at all, ever?
 */
-/atom/movable/proc/can_telegrip(var/obj/item/rig_module/kinesis/gripper)
+/atom/movable/proc/can_telegrip(obj/item/rig_module/kinesis/gripper)
 	return TRUE
 
 
@@ -20,7 +20,7 @@
 	Return any number as a mooring health value, which will determine how long it takes to rip free.
 		By default, 40 = 1 second of time with the default kinesis module
 */
-/atom/movable/proc/can_rip_free(var/obj/item/rig_module/kinesis/gripper)
+/atom/movable/proc/can_rip_free(obj/item/rig_module/kinesis/gripper)
 	return null
 
 
@@ -28,14 +28,14 @@
 	Called when this object is successfully gripped by kinesis.
 	It may want to stop moving, start spinning aimlessly on the spot, etc
 */
-/atom/movable/proc/telegripped(var/obj/item/rig_module/kinesis/gripper)
+/atom/movable/proc/telegripped(obj/item/rig_module/kinesis/gripper)
 
 
 /*
 	Called when this object is released from a kinesis grip.
 	Projectiles will drop and hit the floor
 */
-/atom/movable/proc/telegrip_released(var/obj/item/rig_module/kinesis/gripper)
+/atom/movable/proc/telegrip_released(obj/item/rig_module/kinesis/gripper)
 
 
 //Things which should never be gripped

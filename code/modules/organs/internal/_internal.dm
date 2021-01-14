@@ -43,7 +43,7 @@
 
 //disconnected the organ from it's owner but does not remove it, instead it becomes an implant that can be removed with implant surgery
 //TODO move this to organ/internal once the FPB port comes through
-/obj/item/organ/proc/cut_away(var/mob/living/user)
+/obj/item/organ/proc/cut_away(mob/living/user)
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
 	if(istype(parent)) //TODO ensure that we don't have to check this.
 		removed(user, 0)
@@ -121,7 +121,7 @@
 /obj/item/organ/internal/proc/is_bruised()
 	return damage >= min_bruised_damage
 
-/obj/item/organ/internal/proc/set_max_damage(var/ndamage)
+/obj/item/organ/internal/proc/set_max_damage(ndamage)
 	max_damage = Floor(ndamage)
 	min_broken_damage = Floor(0.75 * max_damage)
 	min_bruised_damage = Floor(0.25 * max_damage)

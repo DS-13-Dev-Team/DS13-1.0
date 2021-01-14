@@ -62,7 +62,7 @@
 		// We cannot rely on user being on the appropriate turf when placement fails
 		P.roll_and_drop(get_step(W, turn(placement_dir, 180)))
 
-/obj/item/weapon/contraband/poster/proc/ArePostersOnWall(var/turf/W, placed_poster)
+/obj/item/weapon/contraband/poster/proc/ArePostersOnWall(turf/W, placed_poster)
 	//just check if there is a poster on or adjacent to the wall
 	if (locate(/obj/structure/sign/poster) in W)
 		return TRUE
@@ -116,7 +116,7 @@
 			pixel_x = -32
 			pixel_y = 0
 
-/obj/structure/sign/poster/proc/set_poster(var/poster_type)
+/obj/structure/sign/poster/proc/set_poster(poster_type)
 	var/decl/poster/design = decls_repository.get_decl(poster_type)
 	SetName("[initial(name)] - [design.name]")
 	desc = "[initial(desc)] [design.desc]"

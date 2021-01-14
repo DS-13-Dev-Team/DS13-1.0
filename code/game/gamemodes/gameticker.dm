@@ -211,7 +211,7 @@ var/global/datum/controller/gameticker/ticker
 	var/obj/screen/cinematic = null
 
 	//Plus it provides an easy way to make cinematics for other events. Just use this as a template :)
-	proc/station_explosion_cinematic(var/station_missed=0, override = null)
+	proc/station_explosion_cinematic(station_missed=0, override = null)
 		if( cinematic )	return	//already a cinematic in progress!
 
 		//initialise our cinematic screen object
@@ -538,7 +538,7 @@ var/global/datum/controller/gameticker/ticker
 
 	return TRUE
 
-/datum/controller/gameticker/proc/attempt_late_antag_spawn(var/list/antag_choices)
+/datum/controller/gameticker/proc/attempt_late_antag_spawn(list/antag_choices)
 	var/datum/antagonist/antag = antag_choices[1]
 	while(antag_choices.len && antag)
 		var/needs_ghost = antag.flags & (ANTAG_OVERRIDE_JOB | ANTAG_OVERRIDE_MOB)

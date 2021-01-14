@@ -30,7 +30,7 @@
 		return FALSE
 
 
-/obj/proc/meddle(var/mob/user)
+/obj/proc/meddle(mob/user)
 	shake_animation()
 
 

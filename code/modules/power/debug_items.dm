@@ -10,7 +10,7 @@
 	if(show_extended_information)
 		show_info(user)
 
-/obj/machinery/power/debug_items/proc/show_info(var/mob/user)
+/obj/machinery/power/debug_items/proc/show_info(mob/user)
 	if(!powernet)
 		to_chat(user, "This device is not connected to a powernet")
 		return

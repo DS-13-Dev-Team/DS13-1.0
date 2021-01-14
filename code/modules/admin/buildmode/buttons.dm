@@ -14,7 +14,7 @@
 	host = null
 	. = ..()
 
-/obj/effect/bmode/proc/OnClick(var/list/params)
+/obj/effect/bmode/proc/OnClick(list/params)
 	return
 
 /obj/effect/bmode/dir

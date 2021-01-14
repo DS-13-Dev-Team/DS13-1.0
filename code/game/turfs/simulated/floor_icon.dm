@@ -139,7 +139,7 @@ var/list/flooring_cache = list()
 
 //Tests whether this flooring will smooth with the specified turf
 //You can override this if you want a flooring to have super special snowflake smoothing behaviour
-/decl/flooring/proc/test_link(var/turf/origin, turf/T, countercheck = FALSE)
+/decl/flooring/proc/test_link(turf/origin, turf/T, countercheck = FALSE)
 
 	var/is_linked = FALSE
 	if (countercheck)
@@ -310,7 +310,7 @@ var/list/flooring_cache = list()
 	return round(p, 0.1)
 
 
-/turf/simulated/floor/proc/get_damage_overlay(var/cache_key, icon_base)
+/turf/simulated/floor/proc/get_damage_overlay(cache_key, icon_base)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon =  'icons/turf/flooring/damage.dmi', icon_state = icon_base)
 		I.alpha = 255 * get_damagepercent()
@@ -321,7 +321,7 @@ var/list/flooring_cache = list()
 	return flooring_cache[cache_key]
 
 
-/turf/simulated/floor/proc/get_flooring_overlay(var/cache_key, icon_base, icon_dir = 0, external = FALSE)
+/turf/simulated/floor/proc/get_flooring_overlay(cache_key, icon_base, icon_dir = 0, external = FALSE)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon = flooring.icon, icon_state = icon_base, dir = icon_dir)
 		I.layer = layer+0.01

@@ -65,7 +65,7 @@
 
 //Finds out if the passed thing is the marker player.
 //The thing can be a mob, client, or ckey. They will all work
-/proc/is_marker_master(var/check)
+/proc/is_marker_master(check)
 	if (!istype(SSnecromorph.marker) || !SSnecromorph.marker.player)
 		return FALSE	//If theres no marker there cant be a master
 

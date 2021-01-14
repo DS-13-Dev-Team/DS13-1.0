@@ -72,7 +72,7 @@
 
 
 
-	proc/Cmd(var/command, modifier)
+	proc/Cmd(command, modifier)
 
 		if(command)
 			switch(command)

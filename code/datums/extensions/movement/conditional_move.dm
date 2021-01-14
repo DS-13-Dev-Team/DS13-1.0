@@ -28,11 +28,11 @@
 	GLOB.moved_event.unregister(holder, src, /datum/extension/conditionalmove/proc/handle_move)
 	.=..()
 
-/datum/extension/conditionalmove/proc/handle_move(var/atom/movable/am, atom/old_loc, atom/new_loc)
+/datum/extension/conditionalmove/proc/handle_move(atom/movable/am, atom/old_loc, atom/new_loc)
 	if (check_move(am, old_loc, new_loc))
 		conditional_move(am, old_loc, new_loc)
 
-/datum/extension/conditionalmove/proc/check_move(var/atom/movable/am, atom/old_loc, atom/new_loc)
+/datum/extension/conditionalmove/proc/check_move(atom/movable/am, atom/old_loc, atom/new_loc)
 
 	//If we're being grabbed or pulled, that overrides other things
 	//Grabbed by is a list of grabs
@@ -59,7 +59,7 @@
 
 
 //This is called when everything works. Override it in subtypes
-/datum/extension/conditionalmove/proc/conditional_move(var/atom/movable/am, atom/old_loc, atom/new_loc)
+/datum/extension/conditionalmove/proc/conditional_move(atom/movable/am, atom/old_loc, atom/new_loc)
 	return
 
 

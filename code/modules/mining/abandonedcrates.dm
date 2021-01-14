@@ -162,7 +162,7 @@
 		to_chat(user, "<span class='notice'>The crate unlocks!</span>")
 		locked = 0
 
-/obj/structure/closet/crate/secure/loot/proc/check_input(var/input)
+/obj/structure/closet/crate/secure/loot/proc/check_input(input)
 	if(length(input) != codelen)
 		return 0
 

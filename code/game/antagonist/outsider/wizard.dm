@@ -116,7 +116,7 @@ obj/item/clothing
 	var/wizard_garb = 0
 
 // Does this clothing slot count as wizard garb? (Combines a few checks)
-/proc/is_wiz_garb(var/obj/item/clothing/C)
+/proc/is_wiz_garb(obj/item/clothing/C)
 	return C && C.wizard_garb
 
 /*Checks if the wizard is wearing the proper attire.

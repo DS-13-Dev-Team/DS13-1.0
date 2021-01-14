@@ -88,7 +88,7 @@ var/list/holder_mob_icon_cache = list()
 
 	..()
 
-/obj/item/weapon/holder/proc/sync(var/mob/living/M)
+/obj/item/weapon/holder/proc/sync(mob/living/M)
 	dir = 2
 	overlays.Cut()
 	icon = M.icon
@@ -125,7 +125,7 @@ var/list/holder_mob_icon_cache = list()
 //Mob procs and vars for scooping up
 /mob/living/var/holder_type
 
-/mob/living/proc/get_scooped(var/mob/living/carbon/human/grabber, self_grab)
+/mob/living/proc/get_scooped(mob/living/carbon/human/grabber, self_grab)
 
 	if(!holder_type || buckled || pinned.len)
 		return
@@ -165,7 +165,7 @@ var/list/holder_mob_icon_cache = list()
 			return
 	return ..()
 
-/mob/living/proc/scoop_check(var/mob/living/scooper)
+/mob/living/proc/scoop_check(mob/living/scooper)
 	return 1
 
 /mob/living/carbon/human/scoop_check(var/mob/living/scooper)

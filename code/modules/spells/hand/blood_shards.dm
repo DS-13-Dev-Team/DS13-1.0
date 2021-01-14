@@ -12,7 +12,7 @@
 	compatible_targets = list(/atom)
 	hud_state = "wiz_bshard"
 
-/spell/hand/charges/blood_shard/cast_hand(var/atom/A,var/mob/user)
+/spell/hand/charges/blood_shard/cast_hand(var/atom/A, mob/user)
 	var/obj/item/projectile/blood_shard/B = new(get_turf(user))
 	B.firer = user
 	B.launch(A, BP_CHEST)

@@ -31,7 +31,7 @@
 	start(target, user)
 
 
-/obj/item/device/rig_remover/proc/is_valid_target(var/mob/living/carbon/human/target, mob/user, proximity)
+/obj/item/device/rig_remover/proc/is_valid_target(mob/living/carbon/human/target, mob/user, proximity)
 	if (current_target)
 		to_chat(user, SPAN_WARNING("Currently operating on [current_target], please wait!"))
 		return
@@ -60,7 +60,7 @@
 
 
 
-/obj/item/device/rig_remover/proc/start(var/target, user)
+/obj/item/device/rig_remover/proc/start(target, user)
 	current_target = target
 	last_user = user
 	response = null

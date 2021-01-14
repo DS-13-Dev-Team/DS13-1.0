@@ -16,7 +16,7 @@
 		armor_pieces = nlist
 	return ..()
 
-/spell/toggle_armor/proc/drop_piece(var/obj/I)
+/spell/toggle_armor/proc/drop_piece(obj/I)
 	if(istype(I.loc, /mob))
 		var/mob/M = I.loc
 		M.drop_from_inventory(I)

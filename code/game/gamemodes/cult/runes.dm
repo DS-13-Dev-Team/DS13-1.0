@@ -75,7 +75,7 @@
 /obj/effect/rune/attack_generic(var/mob/living/user) // Cult constructs/slimes/whatnot!
 	attack_hand(user)
 
-/obj/effect/rune/proc/cast(var/mob/living/user)
+/obj/effect/rune/proc/cast(mob/living/user)
 	fizzle(user)
 
 /obj/effect/rune/proc/get_cultists()
@@ -84,11 +84,11 @@
 		if(iscultist(M))
 			. += M
 
-/obj/effect/rune/proc/fizzle(var/mob/living/user)
+/obj/effect/rune/proc/fizzle(mob/living/user)
 	visible_message("<span class='warning'>The markings pulse with a small burst of light, then fall dark.</span>", "You hear a fizzle.")
 
 //Makes the speech a proc so all verbal components can be easily manipulated as a whole, or individually easily
-/obj/effect/rune/proc/speak_incantation(var/mob/living/user, incantation)
+/obj/effect/rune/proc/speak_incantation(mob/living/user, incantation)
 	var/datum/language/L = all_languages[LANGUAGE_GUTTER]
 	if(incantation && (L in user.languages))
 		user.say(incantation, L)
@@ -210,7 +210,7 @@
 	else if(href_list["leave"])
 		leaveRune(usr)
 
-/obj/effect/rune/teleport/proc/showOptions(var/mob/living/user)
+/obj/effect/rune/teleport/proc/showOptions(mob/living/user)
 	var/list/t = list()
 	for(var/obj/effect/rune/teleport/T in GLOB.cult.teleport_runes)
 		if(T == src)
@@ -218,7 +218,7 @@
 		t += "<a href='?src=\ref[src];target=\ref[T]'>[T.destination]</a>"
 	to_chat(user, "Teleport runes: [english_list(t, nothing_text = "no other runes exist")]... or <a href='?src=\ref[src];leave=1'>return from this rune</a>.")
 
-/obj/effect/rune/teleport/proc/leaveRune(var/mob/living/user)
+/obj/effect/rune/teleport/proc/leaveRune(mob/living/user)
 	if(user.loc != src)
 		return
 	user.forceMove(get_turf(src))
@@ -316,7 +316,7 @@
 	take_damage(Proj.damage)
 	..()
 
-/obj/effect/cultwall/proc/take_damage(var/amount)
+/obj/effect/cultwall/proc/take_damage(amount)
 	health -= amount
 	if(health <= 0)
 		visible_message("<span class='warning'>\The [src] dissipates.</span>")
@@ -459,7 +459,7 @@
 	user.visible_message("<span class='warning'>Blood flows from \the [src] into \the [user]!</span>", "<span class='cult'>The blood starts flowing from \the [src] into your frail mortal body. [capitalize(english_list(heal_user(user), nothing_text = "you feel no different"))].</span>", "You hear liquid flow.")
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 
-/obj/effect/rune/drain/proc/heal_user(var/mob/living/carbon/human/user)
+/obj/effect/rune/drain/proc/heal_user(mob/living/carbon/human/user)
 	if(!istype(user))
 		return list("you feel no different")
 	var/list/statuses = list()

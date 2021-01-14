@@ -88,5 +88,5 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return
 
 
-/obj/item/proc/get_strike_damage(var/datum/strike/strike)
+/obj/item/proc/get_strike_damage(datum/strike/strike)
 	strike.damage = force

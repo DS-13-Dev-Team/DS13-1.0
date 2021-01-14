@@ -201,7 +201,7 @@
 		V.RunOver(src)
 
 // Get rank from ID, ID inside PDA, PDA, ID in wallet, etc.
-/mob/living/carbon/human/proc/get_authentification_rank(var/if_no_id = "No id", if_no_job = "No job")
+/mob/living/carbon/human/proc/get_authentification_rank(if_no_id = "No id", if_no_job = "No job")
 	var/obj/item/weapon/card/id/id = GetIdCard()
 	if(istype(id))
 		return id.rank ? id.rank : if_no_job
@@ -210,7 +210,7 @@
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_assignment(var/if_no_id = "No id", if_no_job = "No job")
+/mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", if_no_job = "No job")
 	var/obj/item/weapon/card/id/id = GetIdCard()
 	if(istype(id))
 		return id.assignment ? id.assignment : if_no_job
@@ -219,7 +219,7 @@
 
 //gets name from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_authentification_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_authentification_name(if_no_id = "Unknown")
 	var/obj/item/weapon/card/id/id = GetIdCard()
 	if(istype(id))
 		return id.registered_name
@@ -247,7 +247,7 @@
 
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs
-/mob/living/carbon/human/proc/get_id_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
 	. = if_no_id
 	var/obj/item/weapon/card/id/I = GetIdCard()
 	if(istype(I))
@@ -422,7 +422,7 @@
 
 //Used by various things that knock people out by applying blunt trauma to the head.
 //Checks that the species has a "head" (brain containing organ) and that hit_zone refers to it.
-/mob/living/carbon/human/proc/headcheck(var/target_zone, brain_tag = BP_BRAIN)
+/mob/living/carbon/human/proc/headcheck(target_zone, brain_tag = BP_BRAIN)
 
 	var/obj/item/organ/affecting = internal_organs_by_name[brain_tag]
 
@@ -479,7 +479,7 @@
 		return FALSE
 	return TRUE
 
-/mob/living/carbon/human/proc/vomit(var/toxvomit = 0, timevomit = 1, level = 3)
+/mob/living/carbon/human/proc/vomit(toxvomit = 0, timevomit = 1, level = 3)
 	set waitfor = 0
 	if(!check_has_mouth() || isSynthetic() || !timevomit || !level)
 		return
@@ -797,7 +797,7 @@
 				else if(prob(5))
 					jostle_internal_object(groin,O)
 
-/mob/living/carbon/human/proc/jostle_internal_object(var/obj/item/organ/external/organ, obj/item/O)
+/mob/living/carbon/human/proc/jostle_internal_object(obj/item/organ/external/organ, obj/item/O)
 	// All kinds of embedded objects cause bleeding.
 	if(!can_feel_pain())
 		to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
@@ -816,7 +816,7 @@
 /*
 	This proc removes harmful objects from the body. It will not remove legitimate implants
 */
-/mob/living/carbon/human/proc/expel_shrapnel(var/quantity, silent = FALSE)
+/mob/living/carbon/human/proc/expel_shrapnel(quantity, silent = FALSE)
 	var/list/expelled = list()
 	if (quantity <= 0)
 		quantity = 9999999
@@ -888,7 +888,7 @@
 		to_chat(src, "<span class='notice'>You can't look up right now.</span>")
 	return
 
-/mob/living/carbon/human/proc/set_species(var/new_species, default_colour = 1)
+/mob/living/carbon/human/proc/set_species(new_species, default_colour = 1)
 	if(!dna)
 		if(!new_species)
 			new_species = SPECIES_HUMAN
@@ -1234,7 +1234,7 @@
 	species.toggle_stance(src)
 
 //generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/human/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for machines, more accurate
+/mob/living/carbon/human/proc/get_pulse(method)	//method 0 is for hands, 1 is for machines, more accurate
 	var/obj/item/organ/internal/heart/H = internal_organs_by_name[BP_HEART]
 	if(!H)
 		return "0"

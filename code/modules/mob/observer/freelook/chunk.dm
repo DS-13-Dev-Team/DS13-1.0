@@ -16,10 +16,10 @@
 	obfuscation_images.Cut()
 	. = ..()
 
-/datum/obfuscation/proc/has_obfuscation(var/turf/T)
+/datum/obfuscation/proc/has_obfuscation(turf/T)
 	return !isnull(obfuscation_images[T])
 
-/datum/obfuscation/proc/get_obfuscation(var/turf/T)
+/datum/obfuscation/proc/get_obfuscation(turf/T)
 	var/image/obfuscation = obfuscation_images[T]
 	if(!obfuscation)
 		obfuscation = image(icon, T, icon_state)
@@ -81,7 +81,7 @@
 	SSchunk.chunks -= src
 	. = ..()
 
-/datum/chunk/proc/add_sources(var/list/sources)
+/datum/chunk/proc/add_sources(list/sources)
 	var/turf/center = locate(x + 8, y + 8, z)
 	for(var/entry in sources)
 		var/atom/A = entry
@@ -89,14 +89,14 @@
 			continue
 		add_source(A)
 
-/datum/chunk/proc/add_source(var/atom/source)
+/datum/chunk/proc/add_source(atom/source)
 	if(source in sources)
 		return FALSE
 	sources += source
 	visibility_changed()
 	return TRUE
 
-/datum/chunk/proc/remove_source(var/atom/source)
+/datum/chunk/proc/remove_source(atom/source)
 	if(sources.Remove(source))
 		visibility_changed()
 		return TRUE
@@ -194,23 +194,23 @@ SUBSYSTEM_DEF(chunk)
 				else
 					m.owner.client.images += obfuscation_image
 
-/datum/chunk/proc/acquire_visible_turfs(var/list/visible)
+/datum/chunk/proc/acquire_visible_turfs(list/visible)
 	return
 
 //Attempt to fetch from cache before asking the object to recalculate things
-/datum/chunk/proc/get_datum_visible_turfs(var/datum/A)
+/datum/chunk/proc/get_datum_visible_turfs(datum/A)
 	if (!visualnet.visibility_cache[A])
 		visualnet.visibility_cache[A] = A.get_visualnet_tiles(visualnet)
 	return visualnet.visibility_cache[A]
 
-/proc/seen_turfs_in_range(var/source, range)
+/proc/seen_turfs_in_range(source, range)
 	var/turf/pos = get_turf(source)
 	var/list/things = hear(range, pos)
 	for (var/a in things)
 		if (!isturf(a))
 			things.Remove(a)
 
-/datum/chunk/proc/debug_mark(var/marktype = "all", duration = 20 SECONDS)
+/datum/chunk/proc/debug_mark(marktype = "all", duration = 20 SECONDS)
 	var/list/to_mark = list()
 	if (marktype == "all")
 		to_mark = turfs

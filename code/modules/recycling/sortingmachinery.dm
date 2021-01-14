@@ -19,7 +19,7 @@
 /obj/structure/bigDelivery/attack_hand(mob/user as mob)
 	unwrap(user)
 
-/obj/structure/bigDelivery/proc/unwrap(var/mob/user)
+/obj/structure/bigDelivery/proc/unwrap(mob/user)
 	if(Adjacent(user))
 		// Destroy will drop our wrapped object on the turf, so let it.
 		qdel(src)
@@ -132,7 +132,7 @@
 	var/nameset = 0
 	var/tag_x
 
-/obj/item/smallDelivery/proc/unwrap(var/mob/user)
+/obj/item/smallDelivery/proc/unwrap(mob/user)
 	if (!wrapped || !Adjacent(user))
 		return
 	wrapped.forceMove(user.loc)

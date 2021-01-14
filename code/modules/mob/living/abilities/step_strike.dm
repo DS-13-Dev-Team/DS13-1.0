@@ -29,7 +29,7 @@
 	start()
 
 
-/mob/living/carbon/human/proc/step_strike_ability(var/mob/living/target, _distance, _cooldown)
+/mob/living/carbon/human/proc/step_strike_ability(mob/living/target, _distance, _cooldown)
 	//First of all, lets check if we're currently able to step
 	if (!can_step_strike())
 		return FALSE
@@ -113,7 +113,7 @@
 	Safety Checks
 ************************/
 //Access Proc
-/mob/living/carbon/human/proc/can_step_strike(var/error_messages = TRUE)
+/mob/living/carbon/human/proc/can_step_strike(error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 

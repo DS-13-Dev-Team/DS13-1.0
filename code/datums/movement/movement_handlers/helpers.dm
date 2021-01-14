@@ -1,5 +1,5 @@
 // We don't want to check for subtypes, hence why we don't call is_path_in_list(), etc.
-/atom/movable/proc/HasMovementHandler(var/handler_path)
+/atom/movable/proc/HasMovementHandler(handler_path)
 	if(!LAZYLEN(movement_handlers))
 		return FALSE
 	if(ispath(movement_handlers[1]))
@@ -11,7 +11,7 @@
 				return TRUE
 	return FALSE
 
-/atom/movable/proc/AddMovementHandler(var/handler_path, handler_path_to_add_before)
+/atom/movable/proc/AddMovementHandler(handler_path, handler_path_to_add_before)
 	INIT_MOVEMENT_HANDLERS
 
 	. = new handler_path(src)
@@ -29,7 +29,7 @@
 	// If no handler_path_to_add_after was given or found, add first
 	LAZYINSERT(movement_handlers, ., 1)
 
-/atom/movable/proc/RemoveMovementHandler(var/handler_path)
+/atom/movable/proc/RemoveMovementHandler(handler_path)
 	INIT_MOVEMENT_HANDLERS
 
 	if(ispath(handler_path))
@@ -41,7 +41,7 @@
 	else if (handler_path in movement_handlers)
 		REMOVE_AND_QDEL(handler_path)
 
-/atom/movable/proc/RemoveMovementHandlerDatum(var/datum/movement_handler/thing)
+/atom/movable/proc/RemoveMovementHandlerDatum(datum/movement_handler/thing)
 	INIT_MOVEMENT_HANDLERS
 
 	for(var/handler in movement_handlers)
@@ -50,11 +50,11 @@
 			REMOVE_AND_QDEL(H)
 			return
 
-/atom/movable/proc/ReplaceMovementHandler(var/handler_path)
+/atom/movable/proc/ReplaceMovementHandler(handler_path)
 	RemoveMovementHandler(handler_path)
 	AddMovementHandler(handler_path)
 
-/atom/movable/proc/GetMovementHandler(var/handler_path)
+/atom/movable/proc/GetMovementHandler(handler_path)
 	INIT_MOVEMENT_HANDLERS
 
 	for(var/handler in movement_handlers)

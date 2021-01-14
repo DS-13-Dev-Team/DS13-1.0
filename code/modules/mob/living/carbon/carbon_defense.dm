@@ -75,7 +75,7 @@
 
 	return shock_damage
 
-/mob/living/carbon/proc/apply_shock(var/shock_damage, def_zone, siemens_coeff = 1.0)
+/mob/living/carbon/proc/apply_shock(shock_damage, def_zone, siemens_coeff = 1.0)
 	shock_damage *= siemens_coeff
 	if(shock_damage < 0.5)
 		return 0

@@ -59,7 +59,7 @@
 	if(flags & GEAR_HAS_SUBTYPE_SELECTION)
 		gear_tweaks += new/datum/gear_tweak/path/subtype(path)
 
-/datum/gear/proc/get_description(var/metadata)
+/datum/gear/proc/get_description(metadata)
 	. = description
 	if (metadata)
 		for(var/datum/gear_tweak/gt in gear_tweaks)
@@ -73,7 +73,7 @@
 	src.path = path
 	src.location = location
 
-/datum/gear/proc/spawn_item(var/location, metadata, dummy)
+/datum/gear/proc/spawn_item(location, metadata, dummy)
 	var/datum/gear_data/gd = new(path, location)
 	if (metadata)
 		for(var/datum/gear_tweak/gt in gear_tweaks)
@@ -90,7 +90,7 @@
 		gt.tweak_item(item, (metadata ? metadata["[gt]"] : null), location)
 	return item
 
-/datum/gear/proc/spawn_on_mob(var/mob/living/carbon/human/H, metadata, dummy)
+/datum/gear/proc/spawn_on_mob(mob/living/carbon/human/H, metadata, dummy)
 
 	var/obj/item/item = spawn_item(H, metadata, dummy)
 
@@ -111,7 +111,7 @@
 
 	return FALSE
 
-/datum/gear/proc/spawn_in_storage_or_drop(var/mob/living/carbon/human/H, metadata, dummy)
+/datum/gear/proc/spawn_in_storage_or_drop(mob/living/carbon/human/H, metadata, dummy)
 	var/obj/item/item = spawn_item(H, metadata, dummy)
 
 	var/atom/placed_in = H.equip_to_storage(item)
@@ -132,13 +132,13 @@
 //This is called if the gear's slot is GEAR_EQUIP_SPECIAL
 //It spawns the item but doesn't place it anywhere
 //The gear itself is expected to handle placing or equipping the item
-/datum/gear/proc/spawn_special(var/mob/living/carbon/human/H, metadata)
+/datum/gear/proc/spawn_special(mob/living/carbon/human/H, metadata)
 	var/obj/item/item = spawn_item(H, metadata)
 	return item
 
 
 
-/datum/gear/proc/job_permitted(var/mob/living/carbon/human/H, datum/job/job)
+/datum/gear/proc/job_permitted(mob/living/carbon/human/H, datum/job/job)
 
 	var/permitted = 0
 	if(allowed_branches)
@@ -162,7 +162,7 @@
 	return permitted
 
 
-/datum/gear/proc/get_metadata(var/datum/preferences/P)
+/datum/gear/proc/get_metadata(datum/preferences/P)
 	var/list/gear = P.Gear()
 
 	if (LAZYLEN(gear) && display_name && istext(display_name))

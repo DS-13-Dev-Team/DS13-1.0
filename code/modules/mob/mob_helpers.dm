@@ -12,10 +12,10 @@
 	return 0
 
 //returns the number of size categories between two mob_sizes, rounded. Positive means A is larger than B
-/proc/mob_size_difference(var/mob_size_A, mob_size_B)
+/proc/mob_size_difference(mob_size_A, mob_size_B)
 	return round(log(2, mob_size_A/mob_size_B), 1)
 
-/proc/mob_strength_difference(var/mob/A, mob/B)
+/proc/mob_strength_difference(mob/A, mob/B)
 	var/strength1 = STR_MEDIUM
 	if (ishuman(A))
 		var/mob/living/carbon/human/H = A
@@ -86,7 +86,7 @@ proc/getsensorlevel(A)
 	return SUIT_SENSOR_OFF
 
 
-/proc/is_admin(var/mob/user)
+/proc/is_admin(mob/user)
 	return check_rights(R_ADMIN, 0, user) != 0
 
 
@@ -339,7 +339,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return 0
 
 
-/mob/proc/abiotic(var/full_body = FALSE)
+/mob/proc/abiotic(full_body = FALSE)
 	if(full_body && ((src.l_hand && src.l_hand.simulated) || (src.r_hand && src.r_hand.simulated) || (src.back || src.wear_mask)))
 		return TRUE
 
@@ -402,20 +402,20 @@ proc/is_blind(A)
 			return 1
 	return 0
 
-/proc/broadcast_security_hud_message(var/message, broadcast_source)
+/proc/broadcast_security_hud_message(message, broadcast_source)
 	broadcast_hud_message(message, broadcast_source, GLOB.sec_hud_users, /obj/item/clothing/glasses/hud/security)
 
-/proc/broadcast_medical_hud_message(var/message, broadcast_source)
+/proc/broadcast_medical_hud_message(message, broadcast_source)
 	broadcast_hud_message(message, broadcast_source, GLOB.med_hud_users, /obj/item/clothing/glasses/hud/health)
 
-/proc/broadcast_hud_message(var/message, broadcast_source, list/targets, icon)
+/proc/broadcast_hud_message(message, broadcast_source, list/targets, icon)
 	var/turf/sourceturf = get_turf(broadcast_source)
 	for(var/mob/M in targets)
 		var/turf/targetturf = get_turf(M)
 		if(!sourceturf || (targetturf.z in GetConnectedZlevels(sourceturf.z)))
 			M.show_message("<span class='info'>\icon[icon] [message]</span>", 1)
 
-/proc/mobs_in_area(var/area/A)
+/proc/mobs_in_area(area/A)
 	var/list/mobs = new
 	for(var/mob/living/M in SSmobs.mob_list)
 		if(get_area(M) == A)
@@ -461,7 +461,7 @@ proc/is_blind(A)
 			message = "<span class='name'>[name]</span> no longer [pick("skulks","lurks","prowls","creeps","stalks")] in the realm of the dead. [message]"
 		communicate(/decl/communication_channel/dsay, C || O, message, null, /decl/dsay_communication/direct)
 
-/mob/proc/switch_to_camera(var/obj/machinery/camera/C)
+/mob/proc/switch_to_camera(obj/machinery/camera/C)
 	if (!C.can_use() || stat || (get_dist(C, src) > 1 || machine != src || blinded))
 		return 0
 	check_eye(src)
@@ -475,7 +475,7 @@ proc/is_blind(A)
 	return 1
 
 // Returns true if the mob has a client which has been active in the last given X minutes.
-/mob/proc/is_client_active(var/active = 1)
+/mob/proc/is_client_active(active = 1)
 	return client && client.inactivity < active MINUTES
 
 /mob/proc/can_eat()
@@ -485,7 +485,7 @@ proc/is_blind(A)
 	return 1
 
 #define SAFE_PERP -50
-/mob/living/proc/assess_perp(var/obj/access_obj, check_access, auth_weapons, check_records, check_arrest)
+/mob/living/proc/assess_perp(obj/access_obj, check_access, auth_weapons, check_records, check_arrest)
 	if(stat == DEAD)
 		return SAFE_PERP
 
@@ -555,7 +555,7 @@ proc/is_blind(A)
 
 #undef SAFE_PERP
 
-/mob/proc/get_multitool(var/obj/item/weapon/tool/multitool/P)
+/mob/proc/get_multitool(obj/item/weapon/tool/multitool/P)
 	if(istype(P))
 		return P
 
@@ -585,14 +585,14 @@ proc/is_blind(A)
 	if(client)
 		client.images -= client_images
 
-/mob/proc/add_client_image(var/image)
+/mob/proc/add_client_image(image)
 	if(image in client_images)
 		return
 	client_images += image
 	if(client)
 		client.images += image
 
-/mob/proc/remove_client_image(var/image)
+/mob/proc/remove_client_image(image)
 	client_images -= image
 	if(client)
 		client.images -= image
@@ -600,7 +600,7 @@ proc/is_blind(A)
 /mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
 	return
 
-/mob/proc/fully_replace_character_name(var/new_name, in_depth = TRUE)
+/mob/proc/fully_replace_character_name(new_name, in_depth = TRUE)
 	if(!new_name || new_name == real_name)	return 0
 	real_name = new_name
 	SetName(new_name)
@@ -633,7 +633,7 @@ proc/is_blind(A)
 			admin_victim_log(src, "has taken <i>minor heart damage</i> at jitteriness level [src.jitteriness].")
 	return 1
 
-/mob/proc/try_teleport(var/area/thearea)
+/mob/proc/try_teleport(area/thearea)
 	if(!istype(thearea))
 		if(istype(thearea, /list))
 			thearea = thearea[1]
@@ -706,7 +706,7 @@ proc/is_blind(A)
 	return FALSE
 
 
-/mob/proc/get_grasping_limb(var/side)
+/mob/proc/get_grasping_limb(side)
 	return null
 
 
@@ -724,7 +724,7 @@ proc/is_blind(A)
 	return FALSE
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
-/mob/proc/face_atom(var/atom/A)
+/mob/proc/face_atom(atom/A)
 	if(!A || !x || !y || !A.x || !A.y) return
 	var/dx = A.x - x
 	var/dy = A.y - y
@@ -740,7 +740,7 @@ proc/is_blind(A)
 	return facedir(direction)
 
 //Facedir is called from face_atom and has
-/mob/proc/facedir(var/ndir)
+/mob/proc/facedir(ndir)
 	if(!canface() || moving)
 		return FALSE
 	var/changing = (ndir != get_visual_dir())
@@ -770,7 +770,7 @@ proc/is_blind(A)
 	return attack_speed_factor
 
 
-/mob/proc/is_within_reach(var/atom/target)
+/mob/proc/is_within_reach(atom/target)
 	if (get_dist(src, target) <= get_reach())
 		return TRUE
 	return FALSE

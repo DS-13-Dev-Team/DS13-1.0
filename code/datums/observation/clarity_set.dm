@@ -67,7 +67,7 @@ GLOBAL_DATUM_INIT(clarity_set_event, /decl/observ/clarity_set, new)
 	//A dense object enters or leaves this turf
 	//Any object already on this turf changes its density
 	//This turf changes its density
-/turf/proc/content_density_set(var/newdensity)
+/turf/proc/content_density_set(newdensity)
 	//Set clear to null if its possibly changed. Don't recalculate its exact value, thats done on demand
 	if (!isnull(clear))
 		if (clear != newdensity)

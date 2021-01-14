@@ -42,7 +42,7 @@
 		coordinate_A = null
 		coordinate_B = null
 
-/datum/build_mode/room_builder/proc/make_rectangle(var/turf/A, turf/B, turf/wall_type, turf/floor_type)
+/datum/build_mode/room_builder/proc/make_rectangle(turf/A, turf/B, turf/wall_type, turf/floor_type)
 	if(!A || !B) // No coords
 		return
 	if(A.z != B.z) // Not same z-level

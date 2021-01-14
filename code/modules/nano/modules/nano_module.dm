@@ -18,10 +18,10 @@
 /datum/nano_module/nano_host()
 	return host ? host : src
 
-/datum/nano_module/proc/can_still_topic(var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/proc/can_still_topic(datum/topic_state/state = GLOB.default_state)
 	return CanUseTopic(usr, state) == STATUS_INTERACTIVE
 
-/datum/nano_module/proc/check_eye(var/mob/user)
+/datum/nano_module/proc/check_eye(mob/user)
 	return -1
 
 //returns a list.
@@ -32,7 +32,7 @@
 		if(I)
 			. |= I.access
 
-/datum/nano_module/proc/check_access(var/mob/user, access)
+/datum/nano_module/proc/check_access(mob/user, access)
 	if(!access)
 		return 1
 	if(!islist(access))
@@ -50,7 +50,7 @@
 	var/atom/host = nano_host()
 	return istype(host) ? get_z(host) : 0
 
-/datum/nano_module/proc/print_text(var/text, mob/user)
+/datum/nano_module/proc/print_text(text, mob/user)
 	var/obj/item/modular_computer/MC = nano_host()
 	if(istype(MC))
 		if(!MC.nano_printer)

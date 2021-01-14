@@ -213,7 +213,7 @@
 	var/busy = 0
 	item_flags = ITEM_FLAG_NO_BLUDGEON
 
-/obj/item/weapon/shockpaddles/proc/set_cooldown(var/delay)
+/obj/item/weapon/shockpaddles/proc/set_cooldown(delay)
 	cooldown = 1
 	update_icon()
 
@@ -283,10 +283,10 @@
 		return TRUE
 	return FALSE
 
-/obj/item/weapon/shockpaddles/proc/check_charge(var/charge_amt)
+/obj/item/weapon/shockpaddles/proc/check_charge(charge_amt)
 	return 0
 
-/obj/item/weapon/shockpaddles/proc/checked_use(var/charge_amt)
+/obj/item/weapon/shockpaddles/proc/checked_use(charge_amt)
 	return 0
 
 /obj/item/weapon/shockpaddles/attack(mob/living/M, mob/living/user, target_zone)
@@ -453,7 +453,7 @@
 	var/brain_damage = Clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
 	H.setBrainLoss(brain_damage)
 
-/obj/item/weapon/shockpaddles/proc/make_announcement(var/message, msg_class)
+/obj/item/weapon/shockpaddles/proc/make_announcement(message, msg_class)
 	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")
 
 /obj/item/weapon/shockpaddles/emag_act(var/uses, mob/user, obj/item/weapon/defibrillator/base)

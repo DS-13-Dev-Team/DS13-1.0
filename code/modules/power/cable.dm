@@ -247,7 +247,7 @@ By design, d1 is the smallest direction and d2 is the highest
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
 				qdel(src)*/
 
-obj/structure/cable/proc/cableColor(var/colorC)
+obj/structure/cable/proc/cableColor(colorC)
 	var/color_n = "#dd0000"
 	if(colorC)
 		color_n = colorC
@@ -259,7 +259,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 //handles merging diagonally matching cables
 //for info : direction^3 is flipping horizontally, direction^12 is flipping vertically
-/obj/structure/cable/proc/mergeDiagonalsNetworks(var/direction)
+/obj/structure/cable/proc/mergeDiagonalsNetworks(direction)
 
 	//search for and merge diagonally matching cables from the first direction component (north/south)
 	var/turf/T  = get_step(src, direction&3)//go north/south
@@ -303,7 +303,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 				C.powernet.add_cable(src) //else, we simply connect to the matching cable powernet
 
 // merge with the powernets of power objects in the given direction
-/obj/structure/cable/proc/mergeConnectedNetworks(var/direction)
+/obj/structure/cable/proc/mergeConnectedNetworks(direction)
 
 	var/fdir = direction ? GLOB.reverse_dir[direction] : 0 //flip the direction, to match with the source position on its turf
 
@@ -377,7 +377,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 //////////////////////////////////////////////
 
 //if powernetless_only = 1, will only get connections without powernet
-/obj/structure/cable/proc/get_connections(var/powernetless_only = 0)
+/obj/structure/cable/proc/get_connections(powernetless_only = 0)
 	. = list()	// this will be a list of all connected power objects
 	var/turf/T
 
@@ -557,7 +557,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		icon_state = initial(icon_state)
 		SetName(initial(name))
 
-/obj/item/stack/cable_coil/proc/set_cable_color(var/selected_color, user)
+/obj/item/stack/cable_coil/proc/set_cable_color(selected_color, user)
 	if(!selected_color)
 		return
 
@@ -615,7 +615,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 // Items usable on a cable coil :
 //   - Wirecutters : cut them duh !
 //   - Cable coil : merge cables
-/obj/item/stack/cable_coil/proc/can_merge(var/obj/item/stack/cable_coil/C)
+/obj/item/stack/cable_coil/proc/can_merge(obj/item/stack/cable_coil/C)
 	return color == C.color
 
 /obj/item/stack/cable_coil/cyborg/can_merge()

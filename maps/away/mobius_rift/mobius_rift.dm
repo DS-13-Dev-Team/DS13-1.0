@@ -32,7 +32,7 @@
 	if (towards == WEST)
 		x_shift = -1
 
-/obj/effect/step_trigger/mobius_rift/seamless_portal/proc/set_destination(var/D)
+/obj/effect/step_trigger/mobius_rift/seamless_portal/proc/set_destination(D)
 	dest = D
 
 /obj/effect/step_trigger/mobius_rift/seamless_portal/Trigger(var/atom/movable/AM)
@@ -100,10 +100,10 @@
 	var/W = new /obj/effect/step_trigger/mobius_rift/seamless_portal(T, WEST)
 	portals["WEST"] = W
 
-/obj/effect/mobius_rift/chamber/proc/set_portals(var/list/destinations)
+/obj/effect/mobius_rift/chamber/proc/set_portals(list/destinations)
 	for (var/iter = 1 to portals.len)
 		var/obj/effect/step_trigger/mobius_rift/seamless_portal/P = portals[portals[iter]]
 		P.set_destination(destinations[iter])
 
-/obj/effect/mobius_rift/chamber/proc/get_portal(var/towards)
+/obj/effect/mobius_rift/chamber/proc/get_portal(towards)
 	return portals[towards]

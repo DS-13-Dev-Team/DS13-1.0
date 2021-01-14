@@ -58,7 +58,7 @@
 	if(!hud_icon)
 		hud_icon = "hud[ckey(title)]"
 
-/datum/job/proc/equip(var/mob/living/carbon/human/H, alt_title, datum/mil_branch/branch, datum/mil_rank/grade, no_outfit = FALSE)
+/datum/job/proc/equip(mob/living/carbon/human/H, alt_title, datum/mil_branch/branch, datum/mil_rank/grade, no_outfit = FALSE)
 	//The no outfit flag skips the baseline behaviour, but this proc can still be overridden to do any special/extra functionality
 	if (no_outfit)
 		return TRUE
@@ -68,7 +68,7 @@
 		return FALSE
 	. = outfit.equip(H, title, alt_title)
 
-/datum/job/proc/get_outfit(var/mob/living/carbon/human/H, alt_title, datum/mil_branch/branch, datum/mil_rank/grade)
+/datum/job/proc/get_outfit(mob/living/carbon/human/H, alt_title, datum/mil_branch/branch, datum/mil_rank/grade)
 	if(alt_title && alt_titles)
 		. = alt_titles[alt_title]
 	if(allowed_branches && branch)
@@ -78,7 +78,7 @@
 	. = . || outfit_type
 	. = outfit_by_type(.)
 
-/datum/job/proc/setup_account(var/mob/living/carbon/human/H)
+/datum/job/proc/setup_account(mob/living/carbon/human/H)
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
@@ -124,14 +124,14 @@
 		return max(0, minimal_player_age - C.player_age)
 	return FALSE
 
-/datum/job/proc/apply_fingerprints(var/mob/living/carbon/human/target)
+/datum/job/proc/apply_fingerprints(mob/living/carbon/human/target)
 	if(!istype(target))
 		return FALSE
 	for(var/obj/item/item in target.contents)
 		apply_fingerprints_to_item(target, item)
 	return TRUE
 
-/datum/job/proc/apply_fingerprints_to_item(var/mob/living/carbon/human/holder, obj/item/item)
+/datum/job/proc/apply_fingerprints_to_item(mob/living/carbon/human/holder, obj/item/item)
 	item.add_fingerprint(holder,1)
 	if(item.contents.len)
 		for(var/obj/item/sub_item in item.contents)
@@ -140,10 +140,10 @@
 /datum/job/proc/is_position_available()
 	return (current_positions < total_positions) || (total_positions == -1)
 
-/datum/job/proc/has_alt_title(var/mob/H, supplied_title, desired_title)
+/datum/job/proc/has_alt_title(mob/H, supplied_title, desired_title)
 	return (supplied_title == desired_title) || (H.mind && H.mind.role_alt_title == desired_title)
 
-/datum/job/proc/is_restricted(var/datum/preferences/prefs, feedback)
+/datum/job/proc/is_restricted(datum/preferences/prefs, feedback)
 
 	if(minimum_character_age && (prefs.age < minimum_character_age))
 		to_chat(feedback, "<span class='boldannounce'>Not old enough. Minimum character age is [minimum_character_age].</span>")
@@ -164,7 +164,7 @@
 
 	return FALSE
 
-/datum/job/proc/get_join_link(var/client/caller, href_string, show_invalid_jobs)
+/datum/job/proc/get_join_link(client/caller, href_string, show_invalid_jobs)
 	if(is_available(caller))
 		if(is_restricted(caller.prefs))
 			if(show_invalid_jobs)
@@ -174,7 +174,7 @@
 	return ""
 
 // Only players with the job assigned and AFK for less than 10 minutes count as active
-/datum/job/proc/check_is_active(var/mob/M)
+/datum/job/proc/check_is_active(mob/M)
 	return (M.mind && M.client && M.mind.assigned_role == title && M.client.inactivity <= 10 * 60 * 10)
 
 /datum/job/proc/get_active_count()
@@ -184,7 +184,7 @@
 			active++
 	return active
 
-/datum/job/proc/is_species_allowed(var/datum/species/S)
+/datum/job/proc/is_species_allowed(datum/species/S)
 	return !GLOB.using_map.is_species_job_restricted(S, src)
 
 /**
@@ -194,7 +194,7 @@
  *
  *  branch_name - String key for the branch to check
  */
-/datum/job/proc/is_branch_allowed(var/branch_name)
+/datum/job/proc/is_branch_allowed(branch_name)
 	if(!allowed_branches || !GLOB.using_map || !(GLOB.using_map.flags & MAP_HAS_BRANCH))
 		return TRUE
 	if(branch_name == "None")
@@ -219,7 +219,7 @@
  *  branch_name - String key for the branch to which the rank belongs
  *  rank_name - String key for the rank itself
  */
-/datum/job/proc/is_rank_allowed(var/branch_name, rank_name)
+/datum/job/proc/is_rank_allowed(branch_name, rank_name)
 	if(!allowed_ranks || !GLOB.using_map || !(GLOB.using_map.flags & MAP_HAS_RANK))
 		return TRUE
 	if(branch_name == "None" || rank_name == "None")
@@ -270,11 +270,11 @@
 
 	return job_master.job_icons[title]
 
-/datum/job/proc/dress_mannequin(var/mob/living/carbon/human/dummy/mannequin/mannequin)
+/datum/job/proc/dress_mannequin(mob/living/carbon/human/dummy/mannequin/mannequin)
 	mannequin.delete_inventory(TRUE)
 	equip_preview(mannequin, additional_skips = OUTFIT_ADJUSTMENT_SKIP_BACKPACK)
 
-/datum/job/proc/is_available(var/client/caller)
+/datum/job/proc/is_available(client/caller)
 	if(!is_position_available())
 		return FALSE
 	if(jobban_isbanned(caller, title))

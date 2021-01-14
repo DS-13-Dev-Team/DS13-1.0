@@ -25,14 +25,14 @@
 			M.reclaiming_biomass = NONSENSICAL_VALUE
 
 //Do any desired checks here
-/datum/biomass_source/proc/can_absorb(var/ticks = 1)
+/datum/biomass_source/proc/can_absorb(ticks = 1)
 	if (remaining_mass	!=	NONSENSICAL_VALUE && remaining_mass > 0)
 		return MASS_READY
 	else
 		return MASS_EXHAUST
 
 //Subtracts mass from the total and returns it
-/datum/biomass_source/proc/absorb(var/ticks = 1)
+/datum/biomass_source/proc/absorb(ticks = 1)
 
 	var/quantity = min(mass_tick, remaining_mass)
 	if (remaining_mass	==	NONSENSICAL_VALUE)
@@ -55,7 +55,7 @@
 
 //Takes a list of existing biomass sources, returns true if we are a duplicate of one already in there
 //Override this proc to alter or disable this behaviour
-/datum/biomass_source/proc/is_duplicate(var/list/stack)
+/datum/biomass_source/proc/is_duplicate(list/stack)
 	if (!source)
 		return FALSE	//If we don't have a source we're not a duplicate
 
@@ -67,7 +67,7 @@
 	return FALSE
 
 
-/datum/biomass_source/proc/calculate_tick(var/mass, duration)
+/datum/biomass_source/proc/calculate_tick(mass, duration)
 	mass_tick = mass / (duration * 0.1)	//Calculate the mass absorbed per second
 
 /datum/biomass_source/proc/mass_exhausted()
@@ -220,7 +220,7 @@
 
 	return sources
 
-/datum/proc/adjust_biomass(var/change)
+/datum/proc/adjust_biomass(change)
 
 /obj/adjust_biomass(var/change)
 	//Account for the possibility of going sub zero

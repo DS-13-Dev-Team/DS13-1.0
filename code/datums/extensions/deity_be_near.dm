@@ -31,7 +31,7 @@
 		deal_damage(round(threshold_base/(min_dist*2)))
 
 
-/datum/extension/deity_be_near/proc/deal_damage(var/mult)
+/datum/extension/deity_be_near/proc/deal_damage(mult)
 	return
 
 /datum/extension/deity_be_near/proc/dead_deity()

@@ -27,7 +27,7 @@
 	update_icon()
 
 
-/turf/simulated/floor/proc/take_damage(var/damage, damage_type = BRUTE, ignore_resistance = FALSE)
+/turf/simulated/floor/proc/take_damage(damage, damage_type = BRUTE, ignore_resistance = FALSE)
 	if (is_hole)
 		//This turf is space or an open space, it can't break, burn or be damaged
 		broken = FALSE
@@ -71,7 +71,7 @@
 			update_icon()
 
 
-/proc/damage_floor_at(var/x, y, z, damage, damage_type, ignore_resistance)
+/proc/damage_floor_at(x, y, z, damage, damage_type, ignore_resistance)
 	var/turf/simulated/floor/F = locate(x,y,z)
 	if (istype(F))
 		F.take_damage(damage, damage_type, ignore_resistance)

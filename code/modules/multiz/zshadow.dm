@@ -49,7 +49,7 @@
 		verb += " from above"
 	return owner.hear_say(message, verb, language, alt_name, italics, speaker, speech_sound, sound_vol)
 
-/mob/zshadow/proc/sync_icon(var/mob/M)
+/mob/zshadow/proc/sync_icon(mob/M)
 	var/lay = src.layer
 	var/pln = src.plane
 	appearance = M
@@ -95,7 +95,7 @@
 		shadow.sync_icon(src)
 
 //Copy direction
-/mob/zshadow/proc/update_dir(var/atom/a, old_dir, new_dir)
+/mob/zshadow/proc/update_dir(atom/a, old_dir, new_dir)
 	if (old_dir != new_dir)
 		set_dir(owner.dir)
 

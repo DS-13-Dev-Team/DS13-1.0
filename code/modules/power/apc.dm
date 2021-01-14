@@ -214,7 +214,7 @@
 
 	return ..()
 
-/obj/machinery/power/apc/proc/energy_fail(var/duration)
+/obj/machinery/power/apc/proc/energy_fail(duration)
 	if(emp_hardened)
 		return
 	failure_timer = max(failure_timer, round(duration))
@@ -852,7 +852,7 @@
 		else
 			needs_powerdown_sound = TRUE
 
-/obj/machinery/power/apc/proc/isWireCut(var/wireIndex)
+/obj/machinery/power/apc/proc/isWireCut(wireIndex)
 	return wires.IsIndexCut(wireIndex)
 
 
@@ -1148,7 +1148,7 @@
 // val 0=off, 1=off(auto) 2=on 3=on(auto)
 // on 0=off, 1=on, 2=autooff
 // defines a state machine, returns the new state
-obj/machinery/power/apc/proc/autoset(var/cur_state, on)
+obj/machinery/power/apc/proc/autoset(cur_state, on)
 	switch(cur_state)
 		if(POWERCHAN_OFF); //autoset will never turn on a channel set to off
 		if(POWERCHAN_OFF_TEMP)
@@ -1244,7 +1244,7 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, on)
 	update()
 
 // overload the lights in this APC area
-/obj/machinery/power/apc/proc/overload_lighting(var/chance = 100)
+/obj/machinery/power/apc/proc/overload_lighting(chance = 100)
 	if(/* !get_connection() || */ !operating || shorted)
 		return
 	if( cell && cell.charge>=20)
@@ -1271,7 +1271,7 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, on)
 
 
 // Malfunction: Transfers APC under AI's control
-/obj/machinery/power/apc/proc/ai_hack(var/mob/living/silicon/ai/A = null)
+/obj/machinery/power/apc/proc/ai_hack(mob/living/silicon/ai/A = null)
 	if(!A || !A.hacked_apcs || hacker || aidisabled || A.stat == DEAD)
 		return 0
 	src.hacker = A

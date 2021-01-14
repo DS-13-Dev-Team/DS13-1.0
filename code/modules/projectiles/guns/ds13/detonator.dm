@@ -262,7 +262,7 @@
 		release_vector(start)
 		release_vector(end)
 
-/obj/effect/mine/trip/proc/tripped(var/atom/movable/enterer)
+/obj/effect/mine/trip/proc/tripped(atom/movable/enterer)
 	var/trigger = is_valid_target(enterer)
 
 	if (trigger)

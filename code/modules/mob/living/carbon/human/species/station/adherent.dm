@@ -88,7 +88,7 @@
 	*/	//Disabled because runtime errors, you can't use direction defines as list indices
 	..()
 
-/datum/species/adherent/proc/sync_ident_to_role(var/mob/living/carbon/human/H)
+/datum/species/adherent/proc/sync_ident_to_role(mob/living/carbon/human/H)
 	if(H)
 		if(!original_name_cache[H]) original_name_cache[H] = H.real_name
 		H.real_name = (H.job ? "[H.job] Unit [original_name_cache[H]]" : original_name_cache[H])

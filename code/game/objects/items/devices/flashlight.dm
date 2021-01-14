@@ -271,7 +271,7 @@
 	if(.)
 		activate(user)
 
-/obj/item/device/flashlight/flare/proc/activate(var/mob/user)
+/obj/item/device/flashlight/flare/proc/activate(mob/user)
 	if(on)
 		return
 	on = 1

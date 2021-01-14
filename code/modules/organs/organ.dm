@@ -92,7 +92,7 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/get_damage()
 	return damage
 
-/obj/item/organ/proc/set_dna(var/datum/dna/new_dna)
+/obj/item/organ/proc/set_dna(datum/dna/new_dna)
 	if(new_dna)
 		dna = new_dna.Clone()
 		if(!blood_DNA)
@@ -222,7 +222,7 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/remove_rejuv()
 	qdel(src)
 
-/obj/item/organ/proc/rejuvenate(var/ignore_prosthetic_prefs)
+/obj/item/organ/proc/rejuvenate(ignore_prosthetic_prefs)
 	damage = 0
 	status = 0
 	if(!ignore_prosthetic_prefs && owner && owner.client && owner.client.prefs && owner.client.prefs.real_name == owner.real_name)
@@ -251,7 +251,7 @@ var/list/organ_cache = list()
 		germ_level -= 2
 	germ_level = max(0, germ_level)
 
-/obj/item/organ/proc/take_general_damage(var/amount, silent = FALSE)
+/obj/item/organ/proc/take_general_damage(amount, silent = FALSE)
 	CRASH("Not Implemented")
 
 /obj/item/organ/proc/heal_damage(amount)
@@ -271,7 +271,7 @@ var/list/organ_cache = list()
  *
  *  drop_organ - if true, organ will be dropped at the loc of its former owner
  */
-/obj/item/organ/proc/removed(var/mob/living/user, drop_organ=1)
+/obj/item/organ/proc/removed(mob/living/user, drop_organ=1)
 
 	if(!istype(owner))
 		return
@@ -299,7 +299,7 @@ var/list/organ_cache = list()
 
 	owner = null
 
-/obj/item/organ/proc/replaced(var/mob/living/carbon/human/target, obj/item/organ/external/affected)
+/obj/item/organ/proc/replaced(mob/living/carbon/human/target, obj/item/organ/external/affected)
 	owner = target
 	action_button_name = initial(action_button_name)
 	forceMove(owner) //just in case

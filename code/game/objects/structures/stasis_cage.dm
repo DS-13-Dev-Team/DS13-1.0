@@ -21,7 +21,7 @@
 	if(Adjacent(user))
 		release()
 
-/obj/structure/stasis_cage/proc/contain(var/mob/living/simple_animal/animal)
+/obj/structure/stasis_cage/proc/contain(mob/living/simple_animal/animal)
 	if(contained || !istype(animal))
 		return
 

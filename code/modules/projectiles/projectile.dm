@@ -158,7 +158,7 @@
 		qdel(src)
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
-/obj/item/projectile/proc/on_hit(var/atom/target, blocked = 0, def_zone = null)
+/obj/item/projectile/proc/on_hit(atom/target, blocked = 0, def_zone = null)
 	if(blocked >= 100)		return 0//Full block
 	if(!isliving(target))	return 0
 	if(isanimal(target))	return 0
@@ -174,7 +174,7 @@
 	return 1
 
 //called when the projectile stops flying because it collided with something
-/obj/item/projectile/proc/on_impact(var/atom/A)
+/obj/item/projectile/proc/on_impact(atom/A)
 	if (effect_transform)	//May be null when shooting something in the same tile
 		impact_effect(effect_transform)		// generate impact effect
 	if(damage && damage_type == BURN)
@@ -195,14 +195,14 @@
 	return 0
 
 //return 1 if the projectile should be allowed to pass through after all, 0 if not.
-/obj/item/projectile/proc/check_penetrate(var/atom/A)
+/obj/item/projectile/proc/check_penetrate(atom/A)
 	return 1
 
 /obj/item/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
 	check_trajectory(target, user, pass_flags, item_flags, obj_flags)
 
 //sets the click point of the projectile using mouse input params
-/obj/item/projectile/proc/set_clickpoint(var/params)
+/obj/item/projectile/proc/set_clickpoint(params)
 	var/list/mouse_control = params2list(params)
 	if(mouse_control["icon-x"])
 		pixel_click.x = text2num(mouse_control["icon-x"])
@@ -240,7 +240,7 @@
 	addtimer(CALLBACK(src, .proc/finalize_launch, curloc, targloc, x_offset, y_offset, angle_offset),0)
 	return 0
 
-/obj/item/projectile/proc/finalize_launch(var/turf/curloc, turf/targloc, x_offset, y_offset, angle_offset)
+/obj/item/projectile/proc/finalize_launch(turf/curloc, turf/targloc, x_offset, y_offset, angle_offset)
 
 	setup_trajectory(curloc, targloc, x_offset, y_offset, angle_offset) //plot the initial trajectory
 	alpha = default_alpha	//The projectile becomes visible now, when its ready to start moving
@@ -270,7 +270,7 @@
 	return launch(target, target_zone, x_offset, y_offset)
 
 //Used to change the direction of the projectile in flight.
-/obj/item/projectile/proc/redirect(var/new_x, new_y, atom/starting_loc, mob/new_firer=null)
+/obj/item/projectile/proc/redirect(new_x, new_y, atom/starting_loc, mob/new_firer=null)
 	var/turf/new_target = locate(new_x, new_y, src.z)
 	original = new_target
 	if(new_firer)
@@ -278,7 +278,7 @@
 
 	setup_trajectory(starting_loc, new_target)
 
-/obj/item/projectile/proc/ricochet_from(var/atom/bounceoff, angle = 90)
+/obj/item/projectile/proc/ricochet_from(atom/bounceoff, angle = 90)
 
 
 	//Causes this projectile to bounce off of the atom in a random angle.
@@ -311,7 +311,7 @@
 #define CHECK_RESULT	if (last_result) { result = last_result; last_result = null}
 
 //Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
-/obj/item/projectile/proc/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
+/obj/item/projectile/proc/attack_mob(mob/living/target_mob, distance, miss_modifier=0)
 	if(!istype(target_mob))
 		return
 
@@ -374,7 +374,7 @@
 	return 0
 
 
-/obj/item/projectile/proc/attack_atom(var/atom/A, distance, miss_modifier=0)
+/obj/item/projectile/proc/attack_atom(atom/A, distance, miss_modifier=0)
 	.= A.bullet_act(src, def_zone)
 
 	//A return value of less than zero indicates the projectile missed or penetrated, we won't deflect it in that case
@@ -541,7 +541,7 @@
 	transform = turn(transform, newrot - default_rotation) //Bullets are turned because their sprites are drawn side-facing
 	default_rotation = newrot
 
-/obj/item/projectile/proc/muzzle_effect(var/matrix/T)
+/obj/item/projectile/proc/muzzle_effect(matrix/T)
 	if(silenced)
 		return
 
@@ -555,7 +555,7 @@
 			if(hitscan) //Bullets don't hit their target instantly, so we can't link the deletion of the muzzle flash to the bullet's Destroy()
 				segments += M
 
-/obj/item/projectile/proc/tracer_effect(var/matrix/M)
+/obj/item/projectile/proc/tracer_effect(matrix/M)
 	if(ispath(tracer_type))
 		var/obj/effect/projectile/P = new tracer_type(location.loc)
 
@@ -566,7 +566,7 @@
 			if(hitscan)
 				segments += P
 
-/obj/item/projectile/proc/impact_effect(var/matrix/M)
+/obj/item/projectile/proc/impact_effect(matrix/M)
 	if(ispath(impact_type))
 		var/obj/effect/projectile/P = new impact_type(location.loc)
 

@@ -1,7 +1,7 @@
-/atom/proc/register_zstructure(var/turf/T)
+/atom/proc/register_zstructure(turf/T)
 	return
 
-/atom/proc/unregister_zstructure(var/turf/T)
+/atom/proc/unregister_zstructure(turf/T)
 	if (T)
 		LAZYREMOVE(T.zstructures, src)
 //////////////////////////////
@@ -86,12 +86,12 @@
 /obj/structure/ladder/attack_robot(var/mob/M)
 	climb(M)
 
-/obj/structure/ladder/proc/instant_climb(var/mob/M)
+/obj/structure/ladder/proc/instant_climb(mob/M)
 	var/target_ladder = getTargetLadder(M)
 	if(target_ladder)
 		M.forceMove(get_turf(target_ladder))
 
-/obj/structure/ladder/proc/climb(var/mob/M)
+/obj/structure/ladder/proc/climb(mob/M)
 	if(!M.may_climb_ladders(src))
 		return
 
@@ -131,7 +131,7 @@
 /obj/structure/ladder/attack_ghost(var/mob/M)
 	instant_climb(M)
 
-/obj/structure/ladder/proc/getTargetLadder(var/mob/M)
+/obj/structure/ladder/proc/getTargetLadder(mob/M)
 	if((!target_up && !target_down) || (target_up && !istype(target_up.loc, /turf/simulated/open) || (target_down && !istype(target_down.loc, /turf))))
 		to_chat(M, "<span class='notice'>\The [src] is incomplete and can't be climbed.</span>")
 		return
@@ -152,7 +152,7 @@
 	else
 		return target_down || target_up
 
-/mob/proc/may_climb_ladders(var/ladder)
+/mob/proc/may_climb_ladders(ladder)
 	if(!Adjacent(ladder))
 		to_chat(src, "<span class='warning'>You need to be next to \the [ladder] to start climbing.</span>")
 		return FALSE
@@ -176,7 +176,7 @@
 /mob/observer/ghost/may_climb_ladders(var/ladder)
 	return TRUE
 
-/obj/structure/ladder/proc/climbLadder(var/mob/M, target_ladder)
+/obj/structure/ladder/proc/climbLadder(mob/M, target_ladder)
 	var/turf/T = get_turf(target_ladder)
 	for(var/atom/A in T)
 		if(!A.CanPass(M, M.loc, 1.5, 0))
@@ -289,7 +289,7 @@
 
 	return 1
 
-/obj/structure/stairs/proc/upperStep(var/turf/T)
+/obj/structure/stairs/proc/upperStep(turf/T)
 	return (T == loc)
 
 /obj/structure/stairs/CanPass(obj/mover, turf/source, height, airflow)

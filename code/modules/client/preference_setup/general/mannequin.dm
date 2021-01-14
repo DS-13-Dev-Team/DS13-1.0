@@ -1,6 +1,6 @@
 
 
-/datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin)
+/datum/preferences/proc/dress_preview_mob(mob/living/carbon/human/mannequin)
 	copy_to(mannequin, TRUE)
 
 	var/datum/job/previewJob

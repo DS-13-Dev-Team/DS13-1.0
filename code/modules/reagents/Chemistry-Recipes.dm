@@ -29,7 +29,7 @@
 
 	var/log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
 
-/datum/chemical_reaction/proc/can_happen(var/datum/reagents/holder)
+/datum/chemical_reaction/proc/can_happen(datum/reagents/holder)
 	//check that all the required reagents are present
 	if(!holder.has_all_reagents(required_reagents))
 		return 0
@@ -50,7 +50,7 @@
 	for(var/reagent in required_reagents)
 		. += reagent
 
-/datum/chemical_reaction/proc/process(var/datum/reagents/holder, limit)
+/datum/chemical_reaction/proc/process(datum/reagents/holder, limit)
 	var/data = send_data(holder)
 
 	var/reaction_volume = holder.maximum_volume
@@ -70,11 +70,11 @@
 	on_reaction(holder, amt_produced)
 
 //called when a reaction processes
-/datum/chemical_reaction/proc/on_reaction(var/datum/reagents/holder, created_volume)
+/datum/chemical_reaction/proc/on_reaction(datum/reagents/holder, created_volume)
 	return
 
 //called after processing reactions, if they occurred
-/datum/chemical_reaction/proc/post_reaction(var/datum/reagents/holder)
+/datum/chemical_reaction/proc/post_reaction(datum/reagents/holder)
 	var/atom/container = holder.my_atom
 	if(mix_message && container && !ismob(container))
 		var/turf/T = get_turf(container)
@@ -85,7 +85,7 @@
 
 //obtains any special data that will be provided to the reaction products
 //this is called just before reactants are removed.
-/datum/chemical_reaction/proc/send_data(var/datum/reagents/holder, reaction_limit)
+/datum/chemical_reaction/proc/send_data(datum/reagents/holder, reaction_limit)
 	return null
 
 /* Common reactions */

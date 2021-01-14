@@ -305,7 +305,7 @@
 /mob/living/carbon/slime/check_has_mouth()
 	return 0
 
-/mob/living/carbon/slime/proc/gain_nutrition(var/amount)
+/mob/living/carbon/slime/proc/gain_nutrition(amount)
 	nutrition += amount
 	if(prob(amount * 2)) // Gain around one level per 50 nutrition
 		powerlevel++

@@ -24,7 +24,7 @@
 	// Yay, you're no longer growing 3 arms
 	var/deactivation_message=""
 
-/datum/dna/gene/disability/can_activate(var/mob/M,var/flags)
+/datum/dna/gene/disability/can_activate(var/mob/M, flags)
 	return 1 // Always set!
 
 /datum/dna/gene/disability/activate(var/mob/M, connected, flags)

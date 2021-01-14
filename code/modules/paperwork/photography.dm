@@ -275,7 +275,7 @@ var/global/photo_count = 0
 	if(!user.get_inactive_hand())
 		user.put_in_inactive_hand(p)
 
-/obj/item/weapon/photo/proc/copy(var/copy_id = 0)
+/obj/item/weapon/photo/proc/copy(copy_id = 0)
 	var/obj/item/weapon/photo/p = new/obj/item/weapon/photo()
 
 	p.SetName(name)

@@ -427,7 +427,7 @@
 	..()
 	set_light(0.5, 0.1, 2) //hologram lighting
 
-/mob/living/simple_animal/hostile/carp/holodeck/proc/set_safety(var/safe)
+/mob/living/simple_animal/hostile/carp/holodeck/proc/set_safety(safe)
 	if (safe)
 		faction = "neutral"
 		melee_damage_lower = 0

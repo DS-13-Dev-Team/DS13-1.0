@@ -72,7 +72,7 @@
 	Setup
 */
 //Takes a preference input and sets ourself up
-/datum/extension/loadout/proc/set_prefs(var/datum/preferences/input)
+/datum/extension/loadout/proc/set_prefs(datum/preferences/input)
 
 	prefs = input
 
@@ -101,7 +101,7 @@
 			prefs.gear_list[gear_slot] -= thing
 
 //Takes a job datum or a job name,
-/datum/extension/loadout/proc/set_job(var/datum/job/newjob, set_rank = TRUE)
+/datum/extension/loadout/proc/set_job(datum/job/newjob, set_rank = TRUE)
 	if (job == newjob)
 		return
 
@@ -136,7 +136,7 @@
 
 //Attempts to fetch our outfit from the job datum
 //If the human mob is already set, outfit fetching will have more accurate results
-/datum/extension/loadout/proc/set_outfit(var/set_rank = TRUE)
+/datum/extension/loadout/proc/set_outfit(set_rank = TRUE)
 	if (!job)
 		return
 
@@ -163,7 +163,7 @@
 	This is not an inherent property since loadouts are first created in abstract, in the character setup screen, and only later applied to a mob
 
 */
-/datum/extension/loadout/proc/set_human(var/mob/living/carbon/human/newhuman)
+/datum/extension/loadout/proc/set_human(mob/living/carbon/human/newhuman)
 	if (H == newhuman)
 		return
 
@@ -194,7 +194,7 @@
 	Gear Handling
 */
 //This takes a gear item into our list, after checking it for validity
-/datum/extension/loadout/proc/add_gear(var/datum/gear/G)
+/datum/extension/loadout/proc/add_gear(datum/gear/G)
 	if (!G)
 		return FALSE
 
@@ -222,7 +222,7 @@
 	mix_gear()
 	return TRUE
 
-/datum/extension/loadout/proc/remove_gear(var/datum/gear/G)
+/datum/extension/loadout/proc/remove_gear(datum/gear/G)
 	if (!(G in gear_list))
 		return FALSE
 
@@ -301,7 +301,7 @@
 /*
 	Actually equip the loadout, after all setup
 */
-/datum/extension/loadout/proc/equip_to_mob(var/dummy = FALSE)
+/datum/extension/loadout/proc/equip_to_mob(dummy = FALSE)
 
 	//Some additional preparation, lets divide the gear into two lists based on whether or not they have any job/role restrictions. This is critical
 	var/list/unrestricted_gear = list()
@@ -362,7 +362,7 @@
 
 
 
-/datum/extension/loadout/proc/equip_gear(var/datum/gear/G, check_job = TRUE, dummy = FALSE)
+/datum/extension/loadout/proc/equip_gear(datum/gear/G, check_job = TRUE, dummy = FALSE)
 	if (check_job && !G.job_permitted(H, job))
 		to_chat(H, "<span class='warning'>Your current species, job, branch or whitelist status does not permit you to spawn with [G]!</span>")
 		return

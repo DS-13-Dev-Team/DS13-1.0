@@ -95,7 +95,7 @@
 	else
 		return ..()
 
-/obj/item/device/spy_monitor/proc/pair(var/obj/item/device/spy_bug/SB, mob/living/user)
+/obj/item/device/spy_monitor/proc/pair(obj/item/device/spy_bug/SB, mob/living/user)
 	if(SB.camera in cameras)
 		to_chat(user, "<span class='notice'>\The [SB] has been unpaired from \the [src].</span>")
 		cameras -= SB.camera

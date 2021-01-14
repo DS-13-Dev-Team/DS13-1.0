@@ -195,7 +195,7 @@
 	empty_playable_ai_cores -= src
 	. = ..()
 
-/obj/structure/AIcore/deactivated/proc/load_ai(var/mob/living/silicon/ai/transfer, obj/item/weapon/aicard/card, mob/user)
+/obj/structure/AIcore/deactivated/proc/load_ai(mob/living/silicon/ai/transfer, obj/item/weapon/aicard/card, mob/user)
 
 	if(!istype(transfer) || locate(/mob/living/silicon/ai) in src)
 		return
@@ -214,7 +214,7 @@
 
 	qdel(src)
 
-/obj/structure/AIcore/deactivated/proc/check_malf(var/mob/living/silicon/ai/ai)
+/obj/structure/AIcore/deactivated/proc/check_malf(mob/living/silicon/ai/ai)
 	if(!ai) return
 	for (var/datum/mind/malfai in GLOB.malf.current_antagonists)
 		if (ai.mind == malfai)

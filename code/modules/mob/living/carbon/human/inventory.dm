@@ -418,7 +418,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(handcuffed) . += handcuffed
 		if(s_store)    . += s_store
 
-/mob/living/carbon/human/proc/get_holding_hand(var/obj/item/W)
+/mob/living/carbon/human/proc/get_holding_hand(obj/item/W)
 	switch(get_inventory_slot(W))
 		if(slot_l_hand)
 			return BP_L_ARM
@@ -485,7 +485,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 /*
 	Takes a list of things, can be datums or typepaths, mixture of both works too#
 */
-/mob/living/carbon/human/proc/mass_equip_to_storage(var/list/things)
+/mob/living/carbon/human/proc/mass_equip_to_storage(list/things)
 	var/list/storages = get_all_storages()
 
 	for (var/thing in things)

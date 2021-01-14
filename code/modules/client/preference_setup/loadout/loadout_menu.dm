@@ -53,7 +53,7 @@
 	to_file(S["gear_list"], pref.gear_list)
 	to_file(S["gear_slot"], pref.gear_slot)
 
-/datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(var/max_cost)
+/datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(max_cost)
 	. = list()
 	var/mob/preference_mob = preference_mob()
 	for(var/gear_name in GLOB.gear_datums)
@@ -205,7 +205,7 @@
 	. += "</table>"
 	. = jointext(.,null)
 
-/datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(var/datum/gear/G, readonly)
+/datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(datum/gear/G, readonly)
 	var/list/gear = pref.gear_list[pref.gear_slot]
 	if(gear)
 		. = gear[G.display_name]
@@ -214,14 +214,14 @@
 		if(!readonly)
 			gear[G.display_name] = .
 
-/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/datum/gear/G, datum/gear_tweak/tweak)
+/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(datum/gear/G, datum/gear_tweak/tweak)
 	var/list/metadata = get_gear_metadata(G)
 	. = metadata["[tweak]"]
 	if(!.)
 		. = tweak.get_default()
 		metadata["[tweak]"] = .
 
-/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(var/datum/gear/G, datum/gear_tweak/tweak, new_metadata)
+/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(datum/gear/G, datum/gear_tweak/tweak, new_metadata)
 	var/list/metadata = get_gear_metadata(G)
 	metadata["[tweak]"] = new_metadata
 
@@ -274,7 +274,7 @@
 */
 
 //Adds or removes a specified gear item from the user
-/datum/category_item/player_setup_item/loadout/proc/toggle_gear(var/gearname, mob/user)
+/datum/category_item/player_setup_item/loadout/proc/toggle_gear(gearname, mob/user)
 	var/datum/gear/TG = GLOB.gear_datums[gearname]
 
 	LOADOUT_CHECK
@@ -286,7 +286,7 @@
 		pref.gear_list[pref.gear_slot] += list(TG.display_name)
 
 
-/datum/category_item/player_setup_item/loadout/proc/change_slot(var/newslot)
+/datum/category_item/player_setup_item/loadout/proc/change_slot(newslot)
 	newslot = clamp(newslot, 1, LOADOUT_SLOTS)
 	if(pref.gear_slot != newslot)
 		pref.gear_slot = newslot

@@ -53,7 +53,7 @@
 	nomove: optional, default false. If true, the user can't move during windup. If a number, the user can't move during windup and for that long after firing
 */
 
-/datum/extension/shoot/New(var/atom/user, atom/target, projectile_type, accuracy = 0, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = FALSE, cooldown = 0,var/vector2/_starting_pixel_offset)
+/datum/extension/shoot/New(var/atom/user, atom/target, projectile_type, accuracy = 0, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = FALSE, cooldown = 0, vector2/_starting_pixel_offset)
 	.=..()
 	src.user = user
 	src.target = target
@@ -84,7 +84,7 @@
 /datum/extension/shoot/repeat
 	persist = TRUE
 
-/datum/extension/shoot/repeat/proc/fire(var/atom/newtarget)
+/datum/extension/shoot/repeat/proc/fire(atom/newtarget)
 	if (!can_fire())
 		return FALSE
 
@@ -193,7 +193,7 @@
 	Safety Checks
 ************************/
 //Access Proc
-/atom/proc/can_shoot(var/error_messages = TRUE, subtype = /datum/extension/shoot)
+/atom/proc/can_shoot(error_messages = TRUE, subtype = /datum/extension/shoot)
 	if (isliving(src))
 		var/mob/living/L = src
 		if (L.incapacitated())
@@ -221,7 +221,7 @@
 /***********************
 	Using
 ************************/
-/atom/movable/proc/shoot_ability(var/subtype = /datum/extension/shoot, atom/target, projectile_type, accuracy = 100, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = FALSE, cooldown = 0, vector2/starting_pixel_offset)
+/atom/movable/proc/shoot_ability(subtype = /datum/extension/shoot, atom/target, projectile_type, accuracy = 100, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = FALSE, cooldown = 0, vector2/starting_pixel_offset)
 	//First of all, lets check if we're currently able to charge
 	if (!can_shoot(TRUE, subtype))
 		return FALSE

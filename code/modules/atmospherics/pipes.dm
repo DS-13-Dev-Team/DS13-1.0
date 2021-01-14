@@ -36,7 +36,7 @@
 /obj/machinery/atmospherics/pipe/hides_under_flooring()
 	return level != 2
 
-/obj/machinery/atmospherics/pipe/proc/set_leaking(var/new_leaking)
+/obj/machinery/atmospherics/pipe/proc/set_leaking(new_leaking)
 	if(new_leaking && !leaking)
 		START_PROCESSING(SSmachines, src)
 		leaking = TRUE
@@ -53,7 +53,7 @@
 			if(parent.network)
 				parent.network.leaks -= src
 
-/obj/machinery/atmospherics/pipe/proc/update_sound(var/playing)
+/obj/machinery/atmospherics/pipe/proc/update_sound(playing)
 	if(playing && !sound_token)
 		sound_token = GLOB.sound_player.PlayLoopingSound(src, SOUND_ID, "sound/machines/pipeleak.ogg", volume = 8, range = 3, falloff = 1, prefer_mute = TRUE)
 	else if(!playing && sound_token)
@@ -139,7 +139,7 @@
 				qdel(meter)
 		qdel(src)
 
-/obj/machinery/atmospherics/proc/change_color(var/new_color)
+/obj/machinery/atmospherics/proc/change_color(new_color)
 	//only pass valid pipe colors please ~otherwise your pipe will turn invisible
 	if(!pipe_color_check(new_color))
 		return
@@ -1441,7 +1441,7 @@
 	..()
 	update_icon()
 
-/obj/machinery/atmospherics/proc/universal_underlays(var/obj/machinery/atmospherics/node, direction)
+/obj/machinery/atmospherics/proc/universal_underlays(obj/machinery/atmospherics/node, direction)
 	var/turf/T = loc
 	if(node)
 		var/node_dir = get_dir(src,node)
@@ -1462,7 +1462,7 @@
 		add_underlay_adapter(T, , direction, "-scrubbers")
 		add_underlay_adapter(T, , direction, "")
 
-/obj/machinery/atmospherics/proc/add_underlay_adapter(var/turf/T, obj/machinery/atmospherics/node, direction, icon_connect_type) //modified from add_underlay, does not make exposed underlays
+/obj/machinery/atmospherics/proc/add_underlay_adapter(turf/T, obj/machinery/atmospherics/node, direction, icon_connect_type) //modified from add_underlay, does not make exposed underlays
 	if(node)
 		if(!T.is_plating() && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
 			underlays += icon_manager.get_atmos_icon("underlay", direction, color_cache_name(node), "down" + icon_connect_type)

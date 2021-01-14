@@ -71,7 +71,7 @@
 	New()
 		block=GLOB.COLDBLOCK
 
-	can_activate(var/mob/M,var/flags)
+	can_activate(var/mob/M, flags)
 		if(flags & MUTCHK_FORCED)
 			return !(/datum/dna/gene/basic/cold_resist in M.active_genes)
 		// Probability check
@@ -81,7 +81,7 @@
 		if(probinj(_prob,(flags&MUTCHK_FORCED)))
 			return 1
 
-	OnDrawUnderlays(var/mob/M,var/g,var/fat)
+	OnDrawUnderlays(var/mob/M, g, fat)
 		return "cold[fat]_s"
 */
 
@@ -93,7 +93,7 @@
 	New()
 		block=GLOB.FIREBLOCK
 
-	can_activate(var/mob/M,var/flags)
+	can_activate(var/mob/M, flags)
 		if(flags & MUTCHK_FORCED)
 			return 1
 		//	return !(/datum/dna/gene/basic/heat_resist in M.active_genes)
@@ -104,7 +104,7 @@
 		if(probinj(_prob,(flags&MUTCHK_FORCED)))
 			return 1
 
-	OnDrawUnderlays(var/mob/M,var/g,var/fat)
+	OnDrawUnderlays(var/mob/M, g, fat)
 		return "fire[fat]_s"
 
 /datum/dna/gene/basic/noprints
@@ -131,7 +131,7 @@
 	New()
 		block=GLOB.SMALLSIZEBLOCK
 
-	can_activate(var/mob/M,var/flags)
+	can_activate(var/mob/M, flags)
 		// Can't be big and small.
 		if(HULK in M.mutations)
 			return 0
@@ -153,13 +153,13 @@
 	New()
 		block=GLOB.HULKBLOCK
 
-	can_activate(var/mob/M,var/flags)
+	can_activate(var/mob/M, flags)
 		// Can't be big and small.
 		if(mSmallsize in M.mutations)
 			return 0
 		return ..(M,flags)
 
-	OnDrawUnderlays(var/mob/M,var/g,var/fat)
+	OnDrawUnderlays(var/mob/M, g, fat)
 		if(fat)
 			return "hulk_[fat]_s"
 		else
@@ -191,5 +191,5 @@
 
 	New()
 		block=GLOB.TELEBLOCK
-	OnDrawUnderlays(var/mob/M,var/g,var/fat)
+	OnDrawUnderlays(var/mob/M, g, fat)
 		return "telekinesishead[fat]_s"

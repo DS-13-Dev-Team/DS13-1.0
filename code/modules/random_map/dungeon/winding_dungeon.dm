@@ -66,11 +66,11 @@
 			src.vars[variable] = variable_list[variable]
 	..()
 
-/datum/random_map/winding_dungeon/proc/logging(var/text)
+/datum/random_map/winding_dungeon/proc/logging(text)
 	if(log)
 		log_to_dd(text)
 
-/datum/random_map/winding_dungeon/proc/get_appropriate_list(var/list/common, list/uncommon, list/rare, x, y)
+/datum/random_map/winding_dungeon/proc/get_appropriate_list(list/common, list/uncommon, list/rare, x, y)
 	var/distance = sqrt((x - round(first_room_x+first_room_width/2)) ** 2 + (y - round(first_room_y+first_room_height/2)) ** 2)
 	if(prob(distance))
 		if(prob(distance/100) && rare && rare.len)
@@ -281,7 +281,7 @@
 	logging("Map completed. Loops: [sanity], [currentFeatures] out of [num_of_features] created.")
 	open_positions.Cut()
 
-/datum/random_map/winding_dungeon/proc/carve_area(var/truex,var/truey,var/width,var/height,var/char, wall_char)
+/datum/random_map/winding_dungeon/proc/carve_area(truex, truey, width, height, char, wall_char)
 	for(var/mode = 0, mode <= 1, mode++)
 		for(var/ytemp = truey, ytemp < truey + height, ytemp++)
 			if(!mode && (ytemp < 0 || ytemp > limit_y))
@@ -305,7 +305,7 @@
 						map[get_map_cell(xtemp,ytemp)] = char
 	return 1
 
-/datum/random_map/winding_dungeon/proc/create_room_features(var/rox,var/roy,var/width,var/height)
+/datum/random_map/winding_dungeon/proc/create_room_features(rox, roy, width, height)
 	var/list/room_list = get_appropriate_list(room_theme_common, room_theme_uncommon, room_theme_rare, round(rox+width/2), round(roy+height/2))
 	var/theme_type = pickweight(room_list)
 	if(!theme_type)
@@ -317,7 +317,7 @@
 	rooms += R
 	return 1
 
-/datum/random_map/winding_dungeon/proc/add_loot(var/xorigin,var/yorigin,var/zorigin,var/type)
+/datum/random_map/winding_dungeon/proc/add_loot(xorigin, yorigin, zorigin, type)
 	var/datum/room/room = pick(rooms)
 	return room.add_loot(type)
 

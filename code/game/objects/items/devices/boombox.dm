@@ -70,7 +70,7 @@
 	else
 		. = ..()
 
-/obj/item/device/boombox/proc/AdjustFrequency(var/obj/item/W, mob/user)
+/obj/item/device/boombox/proc/AdjustFrequency(obj/item/W, mob/user)
 	var/const/MIN_FREQUENCY = 0.5
 	var/const/MAX_FREQUENCY = 1.5
 
@@ -115,7 +115,7 @@
 
 	return TRUE
 
-/obj/item/device/boombox/proc/MayAdjust(var/mob/user)
+/obj/item/device/boombox/proc/MayAdjust(mob/user)
 	if(playing)
 		to_chat(user, "<span class='warning'>You can only adjust \the [src] when it's not playing.</span>")
 		return FALSE

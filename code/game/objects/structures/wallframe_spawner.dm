@@ -73,7 +73,7 @@
 	for(var/obj/effect/wallframe_spawn/other in neighbours)
 		if(!other.activated) other.activate()
 
-/obj/effect/wallframe_spawn/proc/handle_frame_spawn(var/obj/structure/wall_frame/F)
+/obj/effect/wallframe_spawn/proc/handle_frame_spawn(obj/structure/wall_frame/F)
 	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
 		for(var/obj/O in T)
@@ -82,10 +82,10 @@
 				D.update_connections()
 				D.update_icon()
 
-/obj/effect/wallframe_spawn/proc/handle_window_spawn(var/obj/structure/window/W)
+/obj/effect/wallframe_spawn/proc/handle_window_spawn(obj/structure/window/W)
 	return
 
-/obj/effect/wallframe_spawn/proc/handle_grille_spawn(var/obj/structure/grille/G)
+/obj/effect/wallframe_spawn/proc/handle_grille_spawn(obj/structure/grille/G)
 	return
 
 /obj/effect/wallframe_spawn/reinforced

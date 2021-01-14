@@ -133,7 +133,7 @@
 
 	dist_check = /decl/dist_check/in_view
 
-/obj/item/integrated_circuit/input/adv_med_scanner/proc/damage_to_severity(var/value)
+/obj/item/integrated_circuit/input/adv_med_scanner/proc/damage_to_severity(value)
 	if(value < 1)
 		return 0
 	if(value < 25)
@@ -258,7 +258,7 @@
 
 	radio_connection.post_signal(src, create_signal())
 
-/obj/item/integrated_circuit/input/signaler/proc/set_frequency(var/new_frequency)
+/obj/item/integrated_circuit/input/signaler/proc/set_frequency(new_frequency)
 	if(!radio_controller)
 		sleep(20)
 	if(!radio_controller)
@@ -268,7 +268,7 @@
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, new_frequency, RADIO_CHAT)
 
-/obj/item/integrated_circuit/input/signaler/proc/signal_good(var/datum/signal/signal)
+/obj/item/integrated_circuit/input/signaler/proc/signal_good(datum/signal/signal)
 	if(!signal)
 		return 0
 	if(signal.source == src)

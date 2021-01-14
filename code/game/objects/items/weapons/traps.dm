@@ -39,7 +39,7 @@ Every failure causes the trap to dig deeper and hurt the victim more
 
 Freeing yourself is much harder than freeing someone else. Calling for help is advised if practical
 */
-/obj/item/weapon/beartrap/proc/attempt_release(var/mob/living/user, obj/item/I)
+/obj/item/weapon/beartrap/proc/attempt_release(mob/living/user, obj/item/I)
 	if (!buckled_mob || QDELETED(buckled_mob))
 		return //Nobody there to rescue?
 
@@ -209,7 +209,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 ***********************************/
 
 //If an attempt to release the mob fails, it digs in and deals more damage
-/obj/item/weapon/beartrap/proc/fail_attempt(var/user, difficulty)
+/obj/item/weapon/beartrap/proc/fail_attempt(user, difficulty)
 	if (!buckled_mob)
 		return
 

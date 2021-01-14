@@ -104,7 +104,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/datum/nano_module/program/comm/proc/is_autenthicated(var/mob/user)
+/datum/nano_module/program/comm/proc/is_autenthicated(mob/user)
 	if(program)
 		return program.can_run(user)
 	return 1
@@ -264,7 +264,7 @@ var/last_message_id = 0
 	last_message_id = last_message_id + 1
 	return last_message_id
 
-/proc/post_comm_message(var/message_title, message_text)
+/proc/post_comm_message(message_title, message_text)
 	var/list/message = list()
 	message["id"] = get_comm_message_id()
 	message["title"] = message_title
@@ -281,13 +281,13 @@ var/last_message_id = 0
 	messages = list()
 	comm_message_listeners.Add(src)
 
-/datum/comm_message_listener/proc/Add(var/list/message)
+/datum/comm_message_listener/proc/Add(list/message)
 	messages[++messages.len] = message
 
-/datum/comm_message_listener/proc/Remove(var/list/message)
+/datum/comm_message_listener/proc/Remove(list/message)
 	messages -= list(message)
 
-/proc/post_status(var/command, data1, data2)
+/proc/post_status(command, data1, data2)
 
 	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
 
@@ -308,7 +308,7 @@ var/last_message_id = 0
 
 	frequency.post_signal(src, status_signal)
 
-/proc/cancel_call_proc(var/mob/user)
+/proc/cancel_call_proc(mob/user)
 	if (!ticker || !evacuation_controller)
 		return
 
@@ -325,7 +325,7 @@ var/last_message_id = 0
 			return 1
 	return 0
 
-/proc/call_shuttle_proc(var/mob/user, emergency)
+/proc/call_shuttle_proc(mob/user, emergency)
 	if (!ticker || !evacuation_controller)
 		return
 

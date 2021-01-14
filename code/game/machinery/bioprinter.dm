@@ -92,13 +92,13 @@
 
 	print_organ(choice)
 
-/obj/machinery/organ_printer/proc/can_print(var/choice)
+/obj/machinery/organ_printer/proc/can_print(choice)
 	if(stored_matter < products[choice][2])
 		visible_message("<span class='notice'>\The [src] displays a warning: 'Not enough matter. [stored_matter] stored and [products[choice][2]] needed.'</span>")
 		return 0
 	return 1
 
-/obj/machinery/organ_printer/proc/print_organ(var/choice)
+/obj/machinery/organ_printer/proc/print_organ(choice)
 	var/new_organ = products[choice][1]
 	var/obj/item/organ/O = new new_organ(get_turf(src))
 	O.status |= ORGAN_CUT_AWAY

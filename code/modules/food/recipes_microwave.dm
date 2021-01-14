@@ -143,7 +143,7 @@ I said no!
 		/obj/item/weapon/reagent_containers/food/snacks/meatball
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/donkpocket //SPECIAL
-	proc/warm_up(var/obj/item/weapon/reagent_containers/food/snacks/donkpocket/being_cooked)
+	proc/warm_up(obj/item/weapon/reagent_containers/food/snacks/donkpocket/being_cooked)
 		being_cooked.heat()
 	make_food(var/obj/container as obj)
 		var/obj/item/weapon/reagent_containers/food/snacks/donkpocket/being_cooked = ..(container)
@@ -157,7 +157,7 @@ I said no!
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/donkpocket //SPECIAL
 
-/datum/recipe/donkpocket2/proc/warm_up(var/obj/item/weapon/reagent_containers/food/snacks/donkpocket/being_cooked)
+/datum/recipe/donkpocket2/proc/warm_up(obj/item/weapon/reagent_containers/food/snacks/donkpocket/being_cooked)
 	being_cooked.heat()
 
 /datum/recipe/donkpocket2/make_food(var/obj/container as obj)

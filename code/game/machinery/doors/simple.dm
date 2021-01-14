@@ -198,29 +198,29 @@
 	lock = null
 	..()
 
-/obj/machinery/door/unpowered/simple/iron/New(var/newloc,var/material_name,var/complexity)
+/obj/machinery/door/unpowered/simple/iron/New(var/newloc, material_name, complexity)
 	..(newloc, "iron", complexity)
 
-/obj/machinery/door/unpowered/simple/silver/New(var/newloc,var/material_name,var/complexity)
+/obj/machinery/door/unpowered/simple/silver/New(var/newloc, material_name, complexity)
 	..(newloc, MATERIAL_SILVER, complexity)
 
-/obj/machinery/door/unpowered/simple/gold/New(var/newloc,var/material_name,var/complexity)
+/obj/machinery/door/unpowered/simple/gold/New(var/newloc, material_name, complexity)
 	..(newloc, MATERIAL_GOLD, complexity)
 
-/obj/machinery/door/unpowered/simple/uranium/New(var/newloc,var/material_name,var/complexity)
+/obj/machinery/door/unpowered/simple/uranium/New(var/newloc, material_name, complexity)
 	..(newloc, "uranium", complexity)
 
-/obj/machinery/door/unpowered/simple/sandstone/New(var/newloc,var/material_name,var/complexity)
+/obj/machinery/door/unpowered/simple/sandstone/New(var/newloc, material_name, complexity)
 	..(newloc, MATERIAL_SANDSTONE, complexity)
 
-/obj/machinery/door/unpowered/simple/diamond/New(var/newloc,var/material_name,var/complexity)
+/obj/machinery/door/unpowered/simple/diamond/New(var/newloc, material_name, complexity)
 	..(newloc, MATERIAL_DIAMOND, complexity)
 
 /obj/machinery/door/unpowered/simple/wood
 	icon_state = "wood"
 	color = "#824b28"
 
-/obj/machinery/door/unpowered/simple/wood/New(var/newloc,var/material_name,var/complexity)
+/obj/machinery/door/unpowered/simple/wood/New(var/newloc, material_name, complexity)
 	..(newloc, "wood", complexity)
 
 /obj/machinery/door/unpowered/simple/wood/saloon
@@ -228,13 +228,13 @@
 	autoclose = 1
 	normalspeed = 0
 
-/obj/machinery/door/unpowered/simple/wood/saloon/New(var/newloc,var/material_name,var/complexity)
+/obj/machinery/door/unpowered/simple/wood/saloon/New(var/newloc, material_name, complexity)
 	..(newloc, "wood", complexity)
 	glass = 1
 	set_opacity(0)
 
-/obj/machinery/door/unpowered/simple/resin/New(var/newloc,var/material_name,var/complexity)
+/obj/machinery/door/unpowered/simple/resin/New(var/newloc, material_name, complexity)
 	..(newloc, "resin", complexity)
 
-/obj/machinery/door/unpowered/simple/cult/New(var/newloc,var/material_name,var/complexity)
+/obj/machinery/door/unpowered/simple/cult/New(var/newloc, material_name, complexity)
 	..(newloc, "cult", complexity)

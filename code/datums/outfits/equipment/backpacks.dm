@@ -58,7 +58,7 @@
 	if(flags & BACKPACK_HAS_SUBTYPE_SELECTION)
 		tweaks += new/datum/backpack_tweak/selection/subtypes(path)
 
-/decl/backpack_outfit/proc/spawn_backpack(var/location, metadata, desired_type)
+/decl/backpack_outfit/proc/spawn_backpack(location, metadata, desired_type)
 	metadata = metadata || list()
 	desired_type = desired_type || path
 	for(var/t in tweaks)
@@ -76,22 +76,22 @@
 /******************
 * Backpack Tweaks *
 ******************/
-/datum/backpack_tweak/proc/get_ui_content(var/metadata)
+/datum/backpack_tweak/proc/get_ui_content(metadata)
 	return ""
 
 /datum/backpack_tweak/proc/get_default_metadata()
 	return
 
-/datum/backpack_tweak/proc/get_metadata(var/user, metadata, title = CHARACTER_PREFERENCE_INPUT_TITLE)
+/datum/backpack_tweak/proc/get_metadata(user, metadata, title = CHARACTER_PREFERENCE_INPUT_TITLE)
 	return
 
-/datum/backpack_tweak/proc/validate_metadata(var/metadata)
+/datum/backpack_tweak/proc/validate_metadata(metadata)
 	return get_default_metadata()
 
-/datum/backpack_tweak/proc/get_backpack_type(var/given_backpack_type)
+/datum/backpack_tweak/proc/get_backpack_type(given_backpack_type)
 	return given_backpack_type
 
-/datum/backpack_tweak/proc/tweak_backpack(var/obj/item/weapon/storage/backpack/backpack, metadata)
+/datum/backpack_tweak/proc/tweak_backpack(obj/item/weapon/storage/backpack/backpack, metadata)
 	return
 
 

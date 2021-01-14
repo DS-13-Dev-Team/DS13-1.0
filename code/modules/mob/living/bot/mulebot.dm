@@ -124,7 +124,7 @@
 	..()
 	update_icons()
 
-/mob/living/bot/mulebot/proc/obeyCommand(var/command)
+/mob/living/bot/mulebot/proc/obeyCommand(command)
 	switch(command)
 		if("Home")
 			resetTarget()
@@ -208,7 +208,7 @@
 		M.Weaken(5)
 	..()
 
-/mob/living/bot/mulebot/proc/runOver(var/mob/living/carbon/human/H)
+/mob/living/bot/mulebot/proc/runOver(mob/living/carbon/human/H)
 	if(istype(H)) // No safety checks - WILL run over lying humans. Stop ERPing in the maint!
 		visible_message("<span class='warning'>[src] drives over [H]!</span>")
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -255,7 +255,7 @@
 		beaconlist[N.location] = N
 	return beaconlist
 
-/mob/living/bot/mulebot/proc/load(var/atom/movable/C)
+/mob/living/bot/mulebot/proc/load(atom/movable/C)
 	if(busy || load || get_dist(C, src) > 1 || !isturf(C.loc))
 		return
 
@@ -295,7 +295,7 @@
 
 	busy = 0
 
-/mob/living/bot/mulebot/proc/unload(var/dirn = 0)
+/mob/living/bot/mulebot/proc/unload(dirn = 0)
 	if(!load || busy)
 		return
 

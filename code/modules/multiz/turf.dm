@@ -202,7 +202,7 @@
 /turf/simulated/open/is_plating()
 	return 1
 
-/turf/simulated/open/proc/handle_move(var/atom/current_loc, atom/movable/am, atom/changed_loc)
+/turf/simulated/open/proc/handle_move(atom/current_loc, atom/movable/am, atom/changed_loc)
 	//First handle objs and such
 	if(GLOB.open_space_initialised && !am.invisibility && isobj(am))
 	//Update icons
@@ -222,7 +222,7 @@
 		qdel(M)
 
 //When turf changes, a bunch of things can take place
-/turf/simulated/open/proc/turf_change(var/turf/affected)
+/turf/simulated/open/proc/turf_change(turf/affected)
 	if(GLOB.open_space_initialised)
 		if(!isopenspace(affected))//If affected is openspace it will add itself
 			SSopen_space.add_turf(src, 1)

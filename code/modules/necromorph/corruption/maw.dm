@@ -47,7 +47,7 @@
 
 
 //A mob was detected nearby, can we absorb it?
-/obj/structure/corruption_node/maw/proc/nearby_movement(var/atom/movable/AM, atom/old_loc)
+/obj/structure/corruption_node/maw/proc/nearby_movement(atom/movable/AM, atom/old_loc)
 
 	if (isliving(AM) && get_marker())
 		var/mob/living/L = AM
@@ -190,7 +190,7 @@
 
 
 //If an attempt to release the mob fails, it digs in and deals more damage
-/obj/structure/corruption_node/maw/proc/fail_attempt(var/user, difficulty)
+/obj/structure/corruption_node/maw/proc/fail_attempt(user, difficulty)
 	if (!buckled_mob)
 		return
 
@@ -213,7 +213,7 @@
 			user << SPAN_NOTICE("Freeing yourself is very difficult. Perhaps you should call for help?")
 
 
-/obj/structure/corruption_node/maw/proc/damage_mob(var/mob/living/L)
+/obj/structure/corruption_node/maw/proc/damage_mob(mob/living/L)
 	var/blocked = L.run_armor_check(target_zone, "melee")
 	if(blocked < 100)
 		playsound(src, 'sound/weapons/slice.ogg', 10, 1,-2,-2)//Fairly quiet snapping sound
@@ -272,7 +272,7 @@
 
 	return TRUE
 
-/obj/structure/corruption_node/maw/proc/attempt_release(var/mob/living/user, obj/item/I)
+/obj/structure/corruption_node/maw/proc/attempt_release(mob/living/user, obj/item/I)
 	if (!buckled_mob || QDELETED(buckled_mob) || !check_grip())
 		return //Nobody there to rescue?
 

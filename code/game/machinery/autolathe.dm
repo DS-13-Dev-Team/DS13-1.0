@@ -327,7 +327,7 @@
 
 	return 1
 
-/obj/machinery/autolathe/proc/ejectable_sheets(var/material)
+/obj/machinery/autolathe/proc/ejectable_sheets(material)
 	if (stored_material[material])
 		return Floor(stored_material[material] / SHEET_MATERIAL_AMOUNT)
 

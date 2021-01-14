@@ -5,7 +5,7 @@ GLOBAL_DATUM_INIT(physical_state, /datum/topic_state/physical, new)
 	if(. > STATUS_CLOSE)
 		return min(., user.check_physical_distance(src_object))
 
-/mob/proc/check_physical_distance(var/src_object)
+/mob/proc/check_physical_distance(src_object)
 	return STATUS_CLOSE
 
 /mob/observer/ghost/check_physical_distance(var/src_object)

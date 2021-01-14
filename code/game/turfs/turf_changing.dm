@@ -17,7 +17,7 @@
 		T.update_icon()
 
 //Creates a new turf
-/turf/proc/ChangeTurf(var/turf/N, tell_universe=1, force_lighting_update = 0)
+/turf/proc/ChangeTurf(turf/N, tell_universe=1, force_lighting_update = 0)
 	if (!N)
 		return
 

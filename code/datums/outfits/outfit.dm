@@ -2,7 +2,7 @@ var/list/outfits_decls_
 var/list/outfits_decls_root_
 var/list/outfits_decls_by_type_
 
-/proc/outfit_by_type(var/outfit_type)
+/proc/outfit_by_type(outfit_type)
 	if(!outfits_decls_root_)
 		init_outfit_decls()
 	return outfits_decls_by_type_[outfit_type]
@@ -228,7 +228,7 @@ var/list/outfits_decls_by_type_
 
 	check_and_try_equip_xeno(H)
 
-/decl/hierarchy/outfit/proc/equip_id(var/mob/living/carbon/human/H, rank, assignment, equip_adjustments, dummy)
+/decl/hierarchy/outfit/proc/equip_id(mob/living/carbon/human/H, rank, assignment, equip_adjustments, dummy)
 	if(!id_slot || !id_type)
 		return
 	if(OUTFIT_ADJUSTMENT_SKIP_ID_PDA & equip_adjustments)
@@ -244,7 +244,7 @@ var/list/outfits_decls_by_type_
 	if(H.equip_to_slot_or_store_or_drop(W, id_slot))
 		return W
 
-/decl/hierarchy/outfit/proc/equip_pda(var/mob/living/carbon/human/H, rank, assignment, equip_adjustments, dummy)
+/decl/hierarchy/outfit/proc/equip_pda(mob/living/carbon/human/H, rank, assignment, equip_adjustments, dummy)
 	if(!pda_slot || !pda_type)
 		return
 	if(OUTFIT_ADJUSTMENT_SKIP_ID_PDA & equip_adjustments)
@@ -271,7 +271,7 @@ var/list/outfits_decls_by_type_
 
 
 //Wrapper for creating, so that we can manipulate the items
-/decl/hierarchy/outfit/proc/create_item(var/path, location, dummy = FALSE)
+/decl/hierarchy/outfit/proc/create_item(path, location, dummy = FALSE)
 	var/datum/thing = path
 	if (dummy && initial(thing.implements_dummy))
 		return new path(location, dummy = TRUE)
@@ -338,7 +338,7 @@ var/list/outfits_decls_by_type_
 	Takes a list of tags to exclude
 	Removes anything from this loadout which have those tags
 */
-/decl/hierarchy/outfit/proc/filter_loadout_tags(var/list/exclusion)
+/decl/hierarchy/outfit/proc/filter_loadout_tags(list/exclusion)
 	loadout_tags = list()
 	var/list/outfit_items = get_slotted_item_paths()
 

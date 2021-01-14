@@ -20,7 +20,7 @@
 
 	base_type = /obj/item/rig_module/healthbar
 
-/obj/item/rig_module/healthbar/proc/register_user(var/mob/newuser)
+/obj/item/rig_module/healthbar/proc/register_user(mob/newuser)
 	user = newuser
 	GLOB.updatehealth_event.register(user, src, /obj/item/rig_module/healthbar/proc/update)
 	GLOB.death_event.register(user, src, /obj/item/rig_module/healthbar/proc/death)

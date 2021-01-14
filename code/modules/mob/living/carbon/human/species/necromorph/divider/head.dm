@@ -42,7 +42,7 @@
 
 //Inhabits the corpse of a headless human
 //This normal version is used on an already dead corpse on the ground
-/mob/living/simple_animal/necromorph/divider_component/head/proc/takeover_verb(var/mob/living/carbon/human/H)
+/mob/living/simple_animal/necromorph/divider_component/head/proc/takeover_verb(mob/living/carbon/human/H)
 	if (QDELETED(src) || !isturf(loc) || incapacitated(INCAPACITATION_FORCELYING))
 		return //Prevent some edge cases
 
@@ -77,7 +77,7 @@
 /*
 	Core Takeover Code
 */
-/mob/living/simple_animal/necromorph/divider_component/head/proc/takeover(var/mob/living/carbon/human/H)
+/mob/living/simple_animal/necromorph/divider_component/head/proc/takeover(mob/living/carbon/human/H)
 	//Safety checks done, we are past the point of no return
 
 
@@ -234,7 +234,7 @@
 		H.visible_message("[H] lurches around awkwardly")
 		H.lurch()
 
-/datum/extension/divider_puppet/proc/holder_bump(var/mover, obstacle)
+/datum/extension/divider_puppet/proc/holder_bump(mover, obstacle)
 	if (prob(10))
 		H.visible_message("[H] bumps into [obstacle] and staggers off")
 		H.lurch(get_dir(obstacle, H))
@@ -384,7 +384,7 @@
 	Core checks. It is called as part of other check procs on initial tongue contact, and periodically while performing the execution.
 	If it returns false, the execution is denied or cancelled.
 */
-/proc/divider_head_safety(var/mob/living/simple_animal/necromorph/divider_component/head/user, mob/living/carbon/human/target)
+/proc/divider_head_safety(mob/living/simple_animal/necromorph/divider_component/head/user, mob/living/carbon/human/target)
 
 	//We only target humans
 	if (!istype(user) || !istype(target))
@@ -408,7 +408,7 @@
 /*
 	Start check, called to see if we can grab the mob
 */
-/proc/divider_head_start(var/mob/living/simple_animal/necromorph/divider_component/head/user, mob/living/carbon/human/target)
+/proc/divider_head_start(mob/living/simple_animal/necromorph/divider_component/head/user, mob/living/carbon/human/target)
 	//Core first
 	.=divider_head_safety(user, target)
 	if (. == EXECUTION_CANCEL)
@@ -437,7 +437,7 @@
 	1 = continue, keep going
 	2 = win, the execution ends successfully, the victim is killed and we skip to the final stage
 */
-/proc/divider_head_continue(var/mob/living/simple_animal/necromorph/divider_component/head/user, mob/living/carbon/human/target)
+/proc/divider_head_continue(mob/living/simple_animal/necromorph/divider_component/head/user, mob/living/carbon/human/target)
 	//Core first
 	.=divider_head_safety(user, target)
 	if (. == EXECUTION_CANCEL)

@@ -179,7 +179,7 @@
 	color = "#3366ff"
 	contract_spells = list(/spell/contract/return_master) //somewhat of a necessity due to how many spells they would have after a while.
 
-/obj/item/weapon/contract/apprentice/skrell/New(var/newloc,var/spellbook, owner)
+/obj/item/weapon/contract/apprentice/skrell/New(var/newloc, spellbook, owner)
 	..()
 	if(istype(spellbook,/obj/item/weapon/spellbook))
 		linked = spellbook
@@ -249,7 +249,7 @@
 	GLOB.logged_out_event.register(L, src, /spell/camera_connection/proc/release)
 	L.verbs += /mob/living/proc/release_eye
 
-/spell/camera_connection/proc/release(var/mob/living/L)
+/spell/camera_connection/proc/release(mob/living/L)
 	vision.release(L)
 	L.verbs -= /mob/living/proc/release_eye
 	GLOB.destroyed_event.unregister(L, src)

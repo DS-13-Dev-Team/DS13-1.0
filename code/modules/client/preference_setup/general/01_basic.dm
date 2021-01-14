@@ -51,7 +51,7 @@ datum/preferences
 		. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
 	. = jointext(.,null)
 
-/datum/category_item/player_setup_item/general/basic/OnTopic(var/href,var/list/href_list, mob/user)
+/datum/category_item/player_setup_item/general/basic/OnTopic(var/href, list/href_list, mob/user)
 	var/datum/species/S = all_species[pref.species]
 	if(href_list["rename"])
 		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null

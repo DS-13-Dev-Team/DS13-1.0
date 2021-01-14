@@ -28,7 +28,7 @@
 		else
 			to_chat(user, "<span class='warning'>You have nothing selected to relocate.</span>")
 
-/datum/build_mode/relocate_to/proc/SetRelocator(var/new_relocator)
+/datum/build_mode/relocate_to/proc/SetRelocator(new_relocator)
 	if(to_relocate == new_relocator)
 		return
 	ClearRelocator()
@@ -37,7 +37,7 @@
 	GLOB.destroyed_event.register(to_relocate, src, /datum/build_mode/relocate_to/proc/ClearRelocator)
 	to_chat(user, "<span class='notice'>Will now be relocating \the [to_relocate].</span>")
 
-/datum/build_mode/relocate_to/proc/ClearRelocator(var/feedback)
+/datum/build_mode/relocate_to/proc/ClearRelocator(feedback)
 	if(!to_relocate)
 		return
 

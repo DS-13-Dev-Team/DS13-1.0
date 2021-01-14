@@ -296,7 +296,7 @@
 	eye_attack_text = "a tendril"
 	eye_attack_text_victim = "a tendril"
 
-/proc/spawn_diona_nymph(var/turf/target)
+/proc/spawn_diona_nymph(turf/target)
 	if(!istype(target))
 		return 0
 
@@ -346,7 +346,7 @@
 	. = ..()
 	addtimer(CALLBACK(src, .proc/fill_with_nymphs, H), 0)
 
-/datum/species/diona/proc/fill_with_nymphs(var/mob/living/carbon/human/H)
+/datum/species/diona/proc/fill_with_nymphs(mob/living/carbon/human/H)
 
 	if(!H || H.species.name != name) return
 

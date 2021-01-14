@@ -159,7 +159,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	world.update_status()
 
 //Gets a random lobby track, excluding a list of tracks we've already heard
-/datum/map/proc/get_lobby_track(var/list/played)
+/datum/map/proc/get_lobby_track(list/played)
 	var/list/possible_tracks = lobby_tracks - played
 	if (!possible_tracks.len)
 		possible_tracks = lobby_tracks	//If we've already heard them all, this no-repeat feature does nothing
@@ -214,7 +214,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		new_planet.build_level()
 
 // Used to apply various post-compile procedural effects to the map.
-/datum/map/proc/refresh_mining_turfs(var/zlevel)
+/datum/map/proc/refresh_mining_turfs(zlevel)
 
 	set background = 1
 	set waitfor = 0
@@ -227,11 +227,11 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		if(istype(M))
 			M.updateMineralOverlays()
 
-/datum/map/proc/get_network_access(var/network)
+/datum/map/proc/get_network_access(network)
 	return 0
 
 // By default transition randomly to another zlevel
-/datum/map/proc/get_transit_zlevel(var/current_z_level)
+/datum/map/proc/get_transit_zlevel(current_z_level)
 	var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
 	candidates.Remove(num2text(current_z_level))
 
@@ -268,7 +268,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	department_accounts["Vendor"] = create_account("Vendor Account", 0)
 	vendor_account = department_accounts["Vendor"]
 
-/datum/map/proc/map_info(var/client/victim)
+/datum/map/proc/map_info(client/victim)
 	return
 
 /datum/map/proc/bolt_saferooms()
@@ -277,11 +277,11 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 /datum/map/proc/unbolt_saferooms()
 	return // overriden by torch
 
-/datum/map/proc/make_maint_all_access(var/radstorm = 0) // parameter used by torch
+/datum/map/proc/make_maint_all_access(radstorm = 0) // parameter used by torch
 	maint_all_access = 1
 	priority_announcement.Announce("The maintenance access requirement has been revoked on all maintenance airlocks.", "Attention!")
 
-/datum/map/proc/revoke_maint_all_access(var/radstorm = 0) // parameter used by torch
+/datum/map/proc/revoke_maint_all_access(radstorm = 0) // parameter used by torch
 	maint_all_access = 0
 	priority_announcement.Announce("The maintenance access requirement has been readded on all maintenance airlocks.", "Attention!")
 

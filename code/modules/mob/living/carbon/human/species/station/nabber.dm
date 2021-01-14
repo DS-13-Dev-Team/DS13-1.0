@@ -324,7 +324,7 @@
 		to_chat(H, "<span class='notice'>You stop adjusting your arms and don't switch between them.</span>")
 	return TRUE
 
-/datum/species/nabber/proc/arm_swap(var/mob/living/carbon/human/H, forced)
+/datum/species/nabber/proc/arm_swap(mob/living/carbon/human/H, forced)
 	H.unEquip(H.l_hand)
 	H.unEquip(H.r_hand)
 	var/hidden = H.is_cloaked()

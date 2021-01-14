@@ -477,7 +477,7 @@ About the new airlock wires panel:
 		return 1
 	return 0
 
-/obj/machinery/door/airlock/proc/isWireCut(var/wireIndex)
+/obj/machinery/door/airlock/proc/isWireCut(wireIndex)
 	// You can find the wires in the datum folder.
 	return wires.IsIndexCut(wireIndex)
 
@@ -546,7 +546,7 @@ About the new airlock wires panel:
 
 	update_icon()
 
-/obj/machinery/door/airlock/proc/electrify(var/duration, feedback = 0)
+/obj/machinery/door/airlock/proc/electrify(duration, feedback = 0)
 	var/message = ""
 	if(src.isWireCut(AIRLOCK_WIRE_ELECTRIFY) && arePowerSystemsOn())
 		message = text("The electrification wire is cut - Door permanently electrified.")
@@ -573,7 +573,7 @@ About the new airlock wires panel:
 	if(.)
 		playsound(src, 'sound/effects/sparks3.ogg', 30, 0, -6)
 
-/obj/machinery/door/airlock/proc/set_idscan(var/activate, feedback = 0)
+/obj/machinery/door/airlock/proc/set_idscan(activate, feedback = 0)
 	var/message = ""
 	if(src.isWireCut(AIRLOCK_WIRE_IDSCAN))
 		message = "The IdScan wire is cut - IdScan feature permanently disabled."
@@ -587,7 +587,7 @@ About the new airlock wires panel:
 	if(feedback && message)
 		to_chat(usr, message)
 
-/obj/machinery/door/airlock/proc/set_safeties(var/activate, feedback = 0)
+/obj/machinery/door/airlock/proc/set_safeties(activate, feedback = 0)
 	var/message = ""
 	// Safeties!  We don't need no stinking safeties!
 	if (src.isWireCut(AIRLOCK_WIRE_SAFETY))
@@ -975,7 +975,7 @@ About the new airlock wires panel:
 	return 1
 
 //returns 1 on success, 0 on failure
-/obj/machinery/door/airlock/proc/cut_bolts(var/obj/item, mob/user)
+/obj/machinery/door/airlock/proc/cut_bolts(obj/item, mob/user)
 	var/cut_delay = (15 SECONDS)
 	var/cut_verb
 	var/cut_sound
@@ -1288,7 +1288,7 @@ About the new airlock wires panel:
 
 	..()
 
-/obj/machinery/door/airlock/proc/lock(var/forced=0)
+/obj/machinery/door/airlock/proc/lock(forced=0)
 	if(locked)
 		return 0
 
@@ -1302,7 +1302,7 @@ About the new airlock wires panel:
 	update_icon()
 	return 1
 
-/obj/machinery/door/airlock/proc/unlock(var/forced=0)
+/obj/machinery/door/airlock/proc/unlock(forced=0)
 	if(!src.locked)
 		return
 
@@ -1454,11 +1454,11 @@ About the new airlock wires panel:
 	name = A.name
 	..()
 
-/obj/machinery/door/airlock/proc/paint_airlock(var/paint_color)
+/obj/machinery/door/airlock/proc/paint_airlock(paint_color)
 	door_color = paint_color
 	update_icon()
 
-/obj/machinery/door/airlock/proc/stripe_airlock(var/paint_color)
+/obj/machinery/door/airlock/proc/stripe_airlock(paint_color)
 	stripe_color = paint_color
 	update_icon()
 

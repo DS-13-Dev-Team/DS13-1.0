@@ -29,7 +29,7 @@
 	title = "[command_name()] Update"
 	announcement_type = "[command_name()] Update"
 
-/datum/announcement/proc/Announce(var/message as text, new_title = "", new_sound = null, do_newscast = newscast, msg_sanitized = 0, zlevels = GLOB.using_map.contact_levels)
+/datum/announcement/proc/Announce(message as text, new_title = "", new_sound = null, do_newscast = newscast, msg_sanitized = 0, zlevels = GLOB.using_map.contact_levels)
 	if(!message)
 		return
 
@@ -97,7 +97,7 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 	news.can_be_redacted = 0
 	announce_newscaster_news(news)
 
-/proc/GetNameAndAssignmentFromId(var/obj/item/weapon/card/id/I)
+/proc/GetNameAndAssignmentFromId(obj/item/weapon/card/id/I)
 	// Format currently matches that of newscaster feeds: Registered Name (Assigned Rank)
 	return I.assignment ? "[I.registered_name] ([I.assignment])" : I.registered_name
 
@@ -107,7 +107,7 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 /proc/ion_storm_announcement()
 	command_announcement.Announce("It has come to our attention that the [station_name()] passed through an ion storm.  Please monitor all electronic equipment for malfunctions.", "Anomaly Alert")
 
-/proc/AnnounceArrival(var/mob/living/carbon/human/character, datum/job/job, join_message)
+/proc/AnnounceArrival(mob/living/carbon/human/character, datum/job/job, join_message)
 	if(!istype(job) || !job.announced)
 		return
 	if (ticker.current_state != GAME_STATE_PLAYING)
@@ -118,10 +118,10 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 
 	AnnounceArrivalSimple(character.real_name, rank, join_message, get_announcement_frequency(job))
 
-/proc/AnnounceArrivalSimple(var/name, rank = "visitor", join_message = "has arrived on the [station_name()]", frequency)
+/proc/AnnounceArrivalSimple(name, rank = "visitor", join_message = "has arrived on the [station_name()]", frequency)
 	GLOB.global_announcer.autosay("[name], [rank], [join_message].", "Arrivals Announcement Computer", frequency)
 
-/proc/get_announcement_frequency(var/datum/job/job)
+/proc/get_announcement_frequency(datum/job/job)
 	// During red alert all jobs are announced on main frequency.
 	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 	if (security_state.current_security_level_is_same_or_higher_than(security_state.high_security_level))

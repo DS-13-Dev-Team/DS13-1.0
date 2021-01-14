@@ -35,7 +35,7 @@ If its complexity is lower than our theme's then
 		room_generator = null
 	return ..()
 
-/datum/room/proc/apply_to_map(var/xorigin,var/yorigin,var/zorigin, datum/random_map/map)
+/datum/room/proc/apply_to_map(xorigin, yorigin, zorigin, datum/random_map/map)
 	if(room_theme)
 		for(var/i = 0, i < width, i++)
 			for(var/j = 0, j < height, j++)
@@ -82,7 +82,7 @@ If its complexity is lower than our theme's then
 
 	return 1
 
-/datum/room/proc/add_loot(var/xorigin,var/yorigin,var/zorigin,var/type)
+/datum/room/proc/add_loot(xorigin, yorigin, zorigin, type)
 	if(room_generator && room_generator.apply_loot(xorigin,yorigin,zorigin,type))
 		return 1
 	var/rx = xorigin+x+rand(width-3)

@@ -148,7 +148,7 @@
 		else
 			close_door_at = 0
 
-/obj/machinery/door/proc/can_open(var/forced = FALSE)
+/obj/machinery/door/proc/can_open(forced = FALSE)
 	if(!density || operating || !ticker)
 		return 0
 	return 1
@@ -368,7 +368,7 @@
 		return user.strike_door(src)
 	return FALSE
 
-/obj/machinery/door/proc/hit(var/mob/user, atom/hitter, damage, ignore_resistance = FALSE)
+/obj/machinery/door/proc/hit(mob/user, atom/hitter, damage, ignore_resistance = FALSE)
 	if (user)
 		user.do_attack_animation(src)
 	var/reduced_damage = apply_resistance(damage, ignore_resistance)
@@ -389,7 +389,7 @@
 
 		return reduced_damage
 
-/obj/machinery/door/proc/take_damage(var/damage, ignore_resistance = FALSE)
+/obj/machinery/door/proc/take_damage(damage, ignore_resistance = FALSE)
 	var/initialhealth = health
 
 	damage = apply_resistance(damage, ignore_resistance)
@@ -403,7 +403,7 @@
 	update_icon()
 	return
 
-/obj/machinery/door/proc/apply_resistance(var/damage, ignore_resistance = FALSE)
+/obj/machinery/door/proc/apply_resistance(damage, ignore_resistance = FALSE)
 	if (ignore_resistance)
 		return damage
 
@@ -489,7 +489,7 @@
 	return
 
 
-/obj/machinery/door/proc/open(var/forced = 0)
+/obj/machinery/door/proc/open(forced = 0)
 	set waitfor = FALSE
 	if(!can_open(forced))
 		return
@@ -519,7 +519,7 @@
 /obj/machinery/door/proc/next_close_time()
 	return world.time + (normalspeed ? 150 : 5)
 
-/obj/machinery/door/proc/close(var/forced = 0)
+/obj/machinery/door/proc/close(forced = 0)
 	if(!can_close(forced))
 		return
 	operating = 1
@@ -557,7 +557,7 @@
 		SSair.mark_for_update(turf)
 	return 1
 
-/obj/machinery/door/proc/update_heat_protection(var/turf/simulated/source)
+/obj/machinery/door/proc/update_heat_protection(turf/simulated/source)
 	if(istype(source))
 		if(density && (opacity || heat_proof))
 			source.thermal_conductivity = DOOR_HEAT_TRANSFER_COEFFICIENT
@@ -579,7 +579,7 @@
 	if(.)
 		deconstruct(null, TRUE)
 
-/obj/machinery/door/proc/CheckPenetration(var/base_chance, damage)
+/obj/machinery/door/proc/CheckPenetration(base_chance, damage)
 	. = damage/max_health*180
 	if(glass)
 		. *= 2
@@ -591,7 +591,7 @@
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
 
-/obj/machinery/door/proc/update_connections(var/propagate = 0)
+/obj/machinery/door/proc/update_connections(propagate = 0)
 	var/dirs = 0
 
 	for(var/direction in GLOB.cardinal)

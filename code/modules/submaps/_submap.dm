@@ -15,7 +15,7 @@
 	SSmapping.submaps -= src
 	. = ..()
 
-/datum/submap/proc/setup_submap(var/decl/submap_archetype/_archetype)
+/datum/submap/proc/setup_submap(decl/submap_archetype/_archetype)
 
 	if(!istype(_archetype))
 		to_chat(world.log, "Submap error - [name] - null or invalid archetype supplied ([_archetype]).")

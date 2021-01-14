@@ -12,7 +12,7 @@
 		pipe_image = null
 	. = ..()
 
-/obj/machinery/atmospherics/ex_act(severity,var/atom/epicentre)
+/obj/machinery/atmospherics/ex_act(severity, atom/epicentre)
 	for(var/atom/movable/A in src) //ventcrawling is serious business
 		A.ex_act(severity, epicentre)
 	. = ..()
@@ -22,7 +22,7 @@
 		return
 	ventcrawl_to(user,findConnecting(direction),direction)
 
-/obj/machinery/atmospherics/proc/ventcrawl_to(var/mob/living/user, obj/machinery/atmospherics/target_move, direction)
+/obj/machinery/atmospherics/proc/ventcrawl_to(mob/living/user, obj/machinery/atmospherics/target_move, direction)
 	if(target_move)
 		if(is_type_in_list(target_move, ventcrawl_machinery) && target_move.can_crawl_through())
 			user.remove_ventcrawl()
@@ -53,13 +53,13 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/can_crawl_through()
 	return !welded
 
-/obj/machinery/atmospherics/proc/findConnecting(var/direction)
+/obj/machinery/atmospherics/proc/findConnecting(direction)
 	for(var/obj/machinery/atmospherics/target in get_step(src,direction))
 		if(target.initialize_directions & get_dir(target,src))
 			if(isConnectable(target) && target.isConnectable(src))
 				return target
 
-/obj/machinery/atmospherics/proc/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/proc/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node1 || target == node2)
 
 /obj/machinery/atmospherics/pipe/manifold/isConnectable(var/obj/machinery/atmospherics/target)

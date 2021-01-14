@@ -4,7 +4,7 @@
 GLOBAL_LIST_EMPTY(loadout_tag_cache)
 
 //Takes a typepath of an item
-/proc/get_loadout_tags_from_type(var/itempath)
+/proc/get_loadout_tags_from_type(itempath)
 	var/obj/item/I = itempath
 
 	//If loadout tags is the special value, we do stuff

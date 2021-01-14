@@ -40,7 +40,7 @@
 		else
 			. += "<a href='?src=\ref[src];select_ooc_color=1'><b>[pref.ooccolor]</b></a> <table style='display:inline;' bgcolor='[pref.ooccolor]'><tr><td>__</td></tr></table>�<a href='?src=\ref[src];reset=ooc'>reset</a><br>"
 
-/datum/category_item/player_setup_item/player_global/ui/OnTopic(var/href,var/list/href_list, mob/user)
+/datum/category_item/player_setup_item/player_global/ui/OnTopic(var/href, list/href_list, mob/user)
 	if(href_list["select_style"])
 		var/UI_style_new = input(user, "Choose UI style.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.UI_style) as null|anything in all_ui_styles
 		if(!UI_style_new || !CanUseTopic(user)) return TOPIC_NOACTION
@@ -78,5 +78,5 @@
 
 	return ..()
 
-/proc/can_select_ooc_color(var/mob/user)
+/proc/can_select_ooc_color(mob/user)
 	return config.allow_admin_ooccolor && check_rights(R_ADMIN, 0, user)

@@ -227,7 +227,7 @@
 	return regenerate_ability(subtype = /datum/extension/regenerate, _duration = 4 SECONDS, _cooldown = 0)
 
 
-/mob/living/carbon/human/proc/can_regenerate(var/error_messages = TRUE, subtype = /datum/extension/regenerate)
+/mob/living/carbon/human/proc/can_regenerate(error_messages = TRUE, subtype = /datum/extension/regenerate)
 	//Check for an existing extension.
 
 	var/datum/extension/regenerate/E = get_extension(src,subtype)
@@ -242,7 +242,7 @@
 	return TRUE
 
 
-/mob/living/carbon/human/proc/regenerate_ability(var/subtype = /datum/extension/regenerate, _duration, _cooldown)
+/mob/living/carbon/human/proc/regenerate_ability(subtype = /datum/extension/regenerate, _duration, _cooldown)
 
 	if (!can_regenerate(TRUE, subtype))
 		return FALSE

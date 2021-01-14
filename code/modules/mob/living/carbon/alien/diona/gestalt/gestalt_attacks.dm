@@ -28,5 +28,5 @@
 		shed_count--
 		shed_nymph(forcefully = TRUE)
 
-/obj/structure/diona_gestalt/proc/handle_member_click(var/mob/living/carbon/alien/diona/clicker)
+/obj/structure/diona_gestalt/proc/handle_member_click(mob/living/carbon/alien/diona/clicker)
 	return

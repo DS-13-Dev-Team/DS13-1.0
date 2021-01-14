@@ -264,7 +264,7 @@
 	if(isboozed(M))
 		M.add_chemical_effect(CE_BREATHLOSS, 0.2) //Don't drink and OD on opiates folks
 
-/datum/reagent/tramadol/proc/isboozed(var/mob/living/carbon/M)
+/datum/reagent/tramadol/proc/isboozed(mob/living/carbon/M)
 	. = 0
 	var/list/pool = M.reagents.reagent_list | M.ingested.reagent_list
 	for(var/datum/reagent/ethanol/booze in pool)

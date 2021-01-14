@@ -46,7 +46,7 @@ var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 		return TRUE
 	return security_state.current_security_level_is_same_or_higher_than(security_level)
 
-/decl/hierarchy/supply_pack/proc/spawn_contents(var/location)
+/decl/hierarchy/supply_pack/proc/spawn_contents(location)
 	var/decl/supply_method/sm = get_supply_method(supply_method)
 	return sm.spawn_contents(src, location)
 
@@ -60,7 +60,7 @@ var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 */
 
 var/list/supply_methods_
-/proc/get_supply_method(var/method_type)
+/proc/get_supply_method(method_type)
 	if(!supply_methods_)
 		supply_methods_ = list()
 	. = supply_methods_[method_type]
@@ -68,7 +68,7 @@ var/list/supply_methods_
 		. = new method_type()
 		supply_methods_[method_type] = .
 
-/decl/supply_method/proc/spawn_contents(var/decl/hierarchy/supply_pack/sp, location)
+/decl/supply_method/proc/spawn_contents(decl/hierarchy/supply_pack/sp, location)
 	if(!sp || !location)
 		return
 	. = list()
@@ -76,7 +76,7 @@ var/list/supply_methods_
 		for(var/i = 1 to max(1, sp.contains[entry]))
 			dd_insertObjectList(.,new entry(location))
 
-/decl/supply_method/proc/setup_manifest(var/decl/hierarchy/supply_pack/sp)
+/decl/supply_method/proc/setup_manifest(decl/hierarchy/supply_pack/sp)
 	. = list()
 	. += "<ul>"
 	for(var/path in sp.contains)

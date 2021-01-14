@@ -160,7 +160,7 @@
 				speed *= bad_speed_factor	//Multiply with charge speed
 				lifespan /= bad_speed_factor
 
-/datum/extension/charge/proc/check_limbs(var/trip = FALSE)
+/datum/extension/charge/proc/check_limbs(trip = FALSE)
 	if (L)
 		var/num_legs = length(L.get_locomotion_limbs(FALSE))
 		if (num_legs < starting_locomotion_limbs)
@@ -263,7 +263,7 @@
 
 
 
-/datum/extension/charge/proc/bump(var/atom/movable/user, atom/obstacle, crossed = FALSE)
+/datum/extension/charge/proc/bump(atom/movable/user, atom/obstacle, crossed = FALSE)
 	if (obstacle in atoms_hit)
 		return //Don't hit the same atom more than once
 
@@ -325,7 +325,7 @@
 
 
 
-/datum/extension/charge/proc/moved(var/atom/mover, oldloc, newloc)
+/datum/extension/charge/proc/moved(atom/mover, oldloc, newloc)
 	.=TRUE
 
 
@@ -418,7 +418,7 @@
 
 
 //Called when we run into something we can't break through.
-/datum/extension/charge/proc/stop_obstacle(var/atom/obstacle)
+/datum/extension/charge/proc/stop_obstacle(atom/obstacle)
 	var/TP = get_total_power()
 
 	//Screenshake everyone near the impact site
@@ -466,7 +466,7 @@
 
 //Visual Filters
 //------------------------
-/datum/extension/charge/proc/update_blur_filter(var/atom/mover,	var/atom/oldloc,	var/atom/newloc)
+/datum/extension/charge/proc/update_blur_filter(atom/mover,	var/atom/oldloc,	var/atom/newloc)
 	if (stopped_at || !blur_filter_strength)
 		return
 
@@ -493,7 +493,7 @@
 ///Called when this atom is hit by a charging mob
 //Return false if you want to stop the charge for some special reason.
 //Note that the reason of: "We are dense and not broken so you can't get past" is already checked for. It's gotta be something other than that
-/atom/proc/charge_act(var/datum/extension/charge/charge)
+/atom/proc/charge_act(datum/extension/charge/charge)
 	if (charge.power > 0)
 		ex_act(max(4-charge.power, 1)) //Ex act has tons of interactions already, we'll use it
 
@@ -525,7 +525,7 @@
 //target type will either be primary or secondary
 	//Primary = The thing our charge was aimed at
 	//Secondary = Something that got in the way while enroute to the primary target
-/atom/movable/proc/charge_impact(var/datum/extension/charge/charge)
+/atom/movable/proc/charge_impact(datum/extension/charge/charge)
 	shake_camera(src,3,1)
 	return charge.last_obstacle.charge_act(charge)
 
@@ -539,19 +539,19 @@
 
 
 
-/datum/species/proc/charge_impact(var/datum/extension/charge/charge)
+/datum/species/proc/charge_impact(datum/extension/charge/charge)
 	return charge.last_obstacle.charge_act(charge)
 
 
 //Called when this atom starts charging at another, just before taking the first step
-/atom/proc/charge_started(var/datum/extension/charge/charge)
+/atom/proc/charge_started(datum/extension/charge/charge)
 
 //Called when this atom starts finishes a charge, called after everything, just before the cooldown timer starts
-/atom/proc/charge_ended(var/datum/extension/charge/charge)
+/atom/proc/charge_ended(datum/extension/charge/charge)
 
 //	Triggering
 //------------------------
-/atom/movable/proc/charge_verb(var/atom/A)
+/atom/movable/proc/charge_verb(atom/A)
 	set name = "Charge"
 	set category = "Abilities"
 
@@ -559,7 +559,7 @@
 	return charge_attack(A)
 
 
-/atom/movable/proc/can_charge(var/atom/target, error_messages = TRUE)
+/atom/movable/proc/can_charge(atom/target, error_messages = TRUE)
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
 	var/datum/extension/charge/EC = get_extension(src, /datum/extension/charge)
 	if(istype(EC))
@@ -585,7 +585,7 @@
 
 
 //Called periodically to check if we can keep charging
-/atom/movable/proc/can_continue_charge(var/atom/target)
+/atom/movable/proc/can_continue_charge(atom/target)
 	if (QDELETED(src))
 		return FALSE
 	return TRUE
@@ -596,7 +596,7 @@
 
 	return ..()
 
-/atom/movable/proc/charge_attack(var/atom/_target, _speed = 7, _lifespan = 3 SECONDS, _maxrange = null, _homing = TRUE, _inertia = FALSE, _power = 0, _cooldown = 20 SECONDS, _delay = 0)
+/atom/movable/proc/charge_attack(atom/_target, _speed = 7, _lifespan = 3 SECONDS, _maxrange = null, _homing = TRUE, _inertia = FALSE, _power = 0, _cooldown = 20 SECONDS, _delay = 0)
 	//First of all, lets check if we're currently able to charge
 	if (!can_charge(_target, TRUE))
 		return FALSE

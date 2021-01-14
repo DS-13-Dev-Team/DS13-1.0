@@ -1,7 +1,7 @@
 /* A 2D vector datum with overloaded operators and other common functions.
 */
 //Converts a vector to a string
-/proc/vstr(var/vector2/input)
+/proc/vstr(vector2/input)
 	if (istype(input))
 		return "([input.x], [input.y])"
 	else if (isnull(input))

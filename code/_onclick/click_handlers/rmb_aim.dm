@@ -57,7 +57,7 @@
 	return TRUE
 
 
-/datum/click_handler/rmb_aim/OnDblClick(var/atom/A, params)
+/datum/click_handler/rmb_aim/OnDblClick(atom/A, params)
 	if (gun && usr)
 		var/list/modifiers = params2list(params)
 		if(modifiers["left"])

@@ -36,7 +36,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 	..()
 	set_spellbook(spellbook_type)
 
-/obj/item/weapon/spellbook/proc/set_spellbook(var/type)
+/obj/item/weapon/spellbook/proc/set_spellbook(type)
 	if(spellbook)
 		qdel(spellbook)
 	spellbook = new type()
@@ -254,7 +254,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/weapon/spellbook/proc/send_feedback(var/path)
+/obj/item/weapon/spellbook/proc/send_feedback(path)
 	if(ispath(path,/datum/spellbook))
 		var/datum/spellbook/S = path
 		feedback_add_details("wizard_spell_learned","[initial(S.feedback)]")
@@ -265,7 +265,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 		feedback_add_details("wizard_spell_learned","[artefact_feedback[path]]")
 
 
-/obj/item/weapon/spellbook/proc/add_spell(var/mob/user, spell_path)
+/obj/item/weapon/spellbook/proc/add_spell(mob/user, spell_path)
 	for(var/spell/S in user.mind.learned_spells)
 		if(istype(S,spell_path))
 			if(!S.can_improve())

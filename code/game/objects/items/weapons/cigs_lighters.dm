@@ -21,7 +21,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		..()
 	else return T20C
 
-/proc/isflamesource(var/obj/A)
+/proc/isflamesource(obj/A)
 
 	if (istype(A))
 		if(isWelder(A))
@@ -147,7 +147,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M.update_inv_l_hand(0)
 		M.update_inv_r_hand(1)
 
-/obj/item/clothing/mask/smokable/proc/light(var/flavor_text = "[usr] lights the [name].")
+/obj/item/clothing/mask/smokable/proc/light(flavor_text = "[usr] lights the [name].")
 	if(!src.lit)
 		src.lit = 1
 		damtype = "fire"
@@ -171,7 +171,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		set_light(0.6, 0.5, 2, 2, "#e38f46")
 		START_PROCESSING(SSobj, src)
 
-/obj/item/clothing/mask/smokable/proc/die(var/nomessage = 0)
+/obj/item/clothing/mask/smokable/proc/die(nomessage = 0)
 	set_light(0)
 	lit = 0
 	STOP_PROCESSING(SSobj, src)
@@ -846,7 +846,7 @@ obj/item/clothing/mask/chewable/Destroy()
 		die()
 		return
 
-/obj/item/clothing/mask/chewable/proc/die(var/nomessage = 0)
+/obj/item/clothing/mask/chewable/proc/die(nomessage = 0)
 	STOP_PROCESSING(SSobj, src)
 	update_icon()
 

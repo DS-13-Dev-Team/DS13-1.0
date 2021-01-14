@@ -42,7 +42,7 @@
 /datum/player/get_client()
 	return locate(client)
 
-/datum/player/proc/cache_location(var/atom/location)
+/datum/player/proc/cache_location(atom/location)
 	last_location = list("x" = location.x, "y" = location.y, "z" = location.z)
 
 /datum/player/proc/get_last_location()
@@ -78,7 +78,7 @@
 /*
 	Getter procs
 */
-/proc/get_or_create_player(var/key)
+/proc/get_or_create_player(key)
 	if (!key)
 		return null
 	key = ckey(key)
@@ -94,7 +94,7 @@
 	return get_or_create_player(client.ckey)
 
 
-/proc/get_player_from_key(var/key)
+/proc/get_player_from_key(key)
 	if (!key)
 		return null
 	key = ckey(key)
@@ -108,7 +108,7 @@
 /datum/player/is_necromorph()
 	return is_necromorph
 
-/mob/proc/set_necromorph(var/state)
+/mob/proc/set_necromorph(state)
 	var/datum/player/P = get_or_create_player(ckey)
 	if (P)
 		P.is_necromorph = state

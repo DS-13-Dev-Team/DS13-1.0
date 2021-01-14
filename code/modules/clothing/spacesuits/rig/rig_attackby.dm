@@ -198,7 +198,7 @@
 /*
 	Central entrypoint to install Rig modules
 */
-/obj/item/weapon/rig/proc/attempt_install(var/obj/item/rig_module/RM, mob/user, force = FALSE, instant = FALSE, delete_replaced = FALSE)
+/obj/item/weapon/rig/proc/attempt_install(obj/item/rig_module/RM, mob/user, force = FALSE, instant = FALSE, delete_replaced = FALSE)
 
 	if(is_worn() && !can_modify() && !force)
 		to_chat(user, "<span class='danger'>You can't install a RIG module while the suit is being worn.</span>")
@@ -235,7 +235,7 @@
 
 
 //This gives no feedback and cannot fail, do safety checks first
-/obj/item/weapon/rig/proc/install(var/obj/item/rig_module/RM)
+/obj/item/weapon/rig/proc/install(obj/item/rig_module/RM)
 	installed_modules |= RM
 	if (RM.process_with_rig)
 		processing_modules |= RM
@@ -244,7 +244,7 @@
 	update_icon()
 
 
-/obj/item/weapon/rig/proc/uninstall(var/obj/item/rig_module/RM, delete = FALSE)
+/obj/item/weapon/rig/proc/uninstall(obj/item/rig_module/RM, delete = FALSE)
 	installed_modules -= RM
 	processing_modules -= RM
 

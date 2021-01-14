@@ -89,7 +89,7 @@
 
 
 // Sets input/output depending on our "mode" var.
-/obj/machinery/power/smes/batteryrack/proc/update_io(var/newmode)
+/obj/machinery/power/smes/batteryrack/proc/update_io(newmode)
 	mode = newmode
 	switch(mode)
 		if(PSU_OFFLINE)
@@ -155,7 +155,7 @@
 			CL = C
 	return CL
 
-/obj/machinery/power/smes/batteryrack/proc/insert_cell(var/obj/item/weapon/cell/C, mob/user)
+/obj/machinery/power/smes/batteryrack/proc/insert_cell(obj/item/weapon/cell/C, mob/user)
 	if(!istype(C))
 		return 0
 

@@ -55,7 +55,7 @@
 		user.open_craft_menu()
 	//list_recipes(user)
 
-/obj/item/stack/proc/list_recipes(var/mob/living/user as mob, recipes_sublist)
+/obj/item/stack/proc/list_recipes(mob/living/user as mob, recipes_sublist)
 	if (!recipes)
 		return
 
@@ -184,12 +184,12 @@
 
 //Return 1 if an immediate subsequent call to use() would succeed.
 //Ensures that code dealing with stacks uses the same logic
-/obj/item/stack/proc/can_use(var/used)
+/obj/item/stack/proc/can_use(used)
 	if (get_amount() < used)
 		return 0
 	return 1
 
-/obj/item/stack/proc/use(var/used)
+/obj/item/stack/proc/use(used)
 	if (!can_use(used))
 		return 0
 	if(!uses_charge)
@@ -206,7 +206,7 @@
 		return 1
 	return 0
 
-/obj/item/stack/proc/add(var/extra)
+/obj/item/stack/proc/add(extra)
 	if(!uses_charge)
 		if(amount + extra > get_max_amount())
 			return 0
@@ -248,7 +248,7 @@
 	return 0
 
 //creates a new stack with the specified amount
-/obj/item/stack/proc/split(var/tamount, force=FALSE)
+/obj/item/stack/proc/split(tamount, force=FALSE)
 	if (!amount)
 		return null
 	if(uses_charge && !force)

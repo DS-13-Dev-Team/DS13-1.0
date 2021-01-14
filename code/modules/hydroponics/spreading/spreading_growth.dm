@@ -9,7 +9,7 @@
 
 //This is called when we find a blocking obstacle, like a wall/window/door.
 //We set an observation on it so that, at some point, if it ever changes, we will wake up and try to spread into it again
-/obj/effect/vine/proc/watch_tile(var/turf/T)
+/obj/effect/vine/proc/watch_tile(turf/T)
 	if ((T in watched_tiles))
 		return	//Don't watch the same tile twice
 
@@ -24,7 +24,7 @@
 	watched_tiles = list()
 
 //If a watched tile changes, lets wake up. This will wipe watched tiles, and start checks anew
-/obj/effect/vine/proc/watched_tile_updated(var/turf/T)
+/obj/effect/vine/proc/watched_tile_updated(turf/T)
 	wake_up()
 
 
@@ -58,7 +58,7 @@
 	neighbors = list()
 	neighbors = get_neighbors(TRUE, TRUE)
 
-/obj/effect/vine/proc/get_neighbors(var/zcheck = TRUE, bounds = TRUE)
+/obj/effect/vine/proc/get_neighbors(zcheck = TRUE, bounds = TRUE)
 	var/list/newneighbors = list()
 	var/list/candidates = get_cardinal_neighbors()
 	if (zcheck)
@@ -80,7 +80,7 @@
 	return newneighbors
 
 
-/obj/effect/vine/proc/can_spread_to(var/turf/floor, bounds)
+/obj/effect/vine/proc/can_spread_to(turf/floor, bounds)
 	if(bounds && !can_reach(floor))
 		return FALSE
 
@@ -157,7 +157,7 @@
 	var/turf/simulated/T = get_turf(src)
 	return parent == src && health == max_health && !plant && istype(T) && !T.CanZPass(src, DOWN)
 
-/obj/effect/vine/proc/spawn_plant(var/turf/T)
+/obj/effect/vine/proc/spawn_plant(turf/T)
 	plant = new(T,seed)
 	plant.dir = src.dir
 	plant.transform = src.transform
@@ -189,7 +189,7 @@
 			return TRUE
 	return FALSE
 
-/obj/effect/vine/proc/can_reach(var/turf/floor)
+/obj/effect/vine/proc/can_reach(turf/floor)
 	if (get_dist_3D(parent, floor) <= spread_distance)
 		return TRUE
 	return FALSE
@@ -215,7 +215,7 @@
 	else
 		qdel(child)
 
-/obj/effect/vine/proc/wake_up(var/wake_adjacent = TRUE)
+/obj/effect/vine/proc/wake_up(wake_adjacent = TRUE)
 	unwatch_tiles()	//Wipe our watched tiles so we can re-watch them, possibly less of them
 	update_neighbors()
 	update_icon()
@@ -231,7 +231,7 @@
 		for(var/obj/effect/vine/neighbor in check_turf.contents)
 			neighbor.wake_up(FALSE)
 
-/obj/effect/vine/proc/wake_list(var/list/things)
+/obj/effect/vine/proc/wake_list(list/things)
 	set waitfor = FALSE
 	sleep()
 	for(var/turf/T in things)

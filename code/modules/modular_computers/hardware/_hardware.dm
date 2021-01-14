@@ -44,7 +44,7 @@
 
 
 // Called on multitool click, prints diagnostic information to the user.
-/obj/item/weapon/computer_hardware/proc/diagnostics(var/mob/user)
+/obj/item/weapon/computer_hardware/proc/diagnostics(mob/user)
 	to_chat(user, "Hardware Integrity Test... (Corruption: [damage]/[max_damage]) [damage > damage_failure ? "FAIL" : damage > damage_malfunction ? "WARN" : "PASS"]")
 
 /obj/item/weapon/computer_hardware/New(var/obj/L)
@@ -89,4 +89,4 @@
 
 // This is called whenever hardware is inserted into a modular computer.
 // Currently only has a use for 'autorun' flash drives
-/obj/item/weapon/computer_hardware/proc/installed(var/obj/item/modular_computer/M)
+/obj/item/weapon/computer_hardware/proc/installed(obj/item/modular_computer/M)

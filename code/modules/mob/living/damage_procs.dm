@@ -8,7 +8,7 @@
 	Returns
 	standard 0 if fail
 */
-/mob/living/proc/apply_damage(var/damage = 0,var/damagetype = BRUTE, def_zone = null, blocked = 0, damage_flags = 0, used_weapon = null)
+/mob/living/proc/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, blocked = 0, damage_flags = 0, used_weapon = null)
 	if(!damage || (blocked >= 100))	return 0
 
 	//Multiply the incoming damage
@@ -35,7 +35,7 @@
 	return damage
 
 
-/mob/living/proc/apply_damages(var/brute = 0, burn = 0, tox = 0, oxy = 0, clone = 0, halloss = 0, def_zone = null, blocked = 0, damage_flags = 0)
+/mob/living/proc/apply_damages(brute = 0, burn = 0, tox = 0, oxy = 0, clone = 0, halloss = 0, def_zone = null, blocked = 0, damage_flags = 0)
 	if(blocked >= 100)	return 0
 	if(brute)	apply_damage(brute, BRUTE, def_zone, blocked)
 	if(burn)	apply_damage(burn, BURN, def_zone, blocked)
@@ -46,7 +46,7 @@
 	return 1
 
 
-/mob/living/proc/apply_effect(var/effect = 0,var/effecttype = STUN, blocked = 0)
+/mob/living/proc/apply_effect(effect = 0, effecttype = STUN, blocked = 0)
 	if(!effect || (blocked >= 100))	return 0
 
 	switch(effecttype)
@@ -71,7 +71,7 @@
 	return 1
 
 
-/mob/living/proc/apply_effects(var/stun = 0, weaken = 0, paralyze = 0, irradiate = 0, stutter = 0, eyeblur = 0, drowsy = 0, agony = 0, blocked = 0)
+/mob/living/proc/apply_effects(stun = 0, weaken = 0, paralyze = 0, irradiate = 0, stutter = 0, eyeblur = 0, drowsy = 0, agony = 0, blocked = 0)
 	if(blocked >= 2)	return 0
 	if(stun)		apply_effect(stun,      STUN, blocked)
 	if(weaken)		apply_effect(weaken,    WEAKEN, blocked)
@@ -85,26 +85,26 @@
 
 
 // heal ONE external organ, organ gets randomly selected from damaged ones.
-/mob/living/proc/heal_organ_damage(var/brute, burn)
+/mob/living/proc/heal_organ_damage(brute, burn)
 	adjustBruteLoss(-brute)
 	adjustFireLoss(-burn)
 	src.updatehealth()
 
 // damage ONE external organ, organ gets randomly selected from damaged ones.
-/mob/living/proc/take_organ_damage(var/brute, burn, emp=0)
+/mob/living/proc/take_organ_damage(brute, burn, emp=0)
 	if(status_flags & GODMODE)	return 0	//godmode
 	adjustBruteLoss(brute)
 	adjustFireLoss(burn)
 	src.updatehealth()
 
 // heal MANY external organs, in random order
-/mob/living/proc/heal_overall_damage(var/brute, burn)
+/mob/living/proc/heal_overall_damage(brute, burn)
 	adjustBruteLoss(-brute)
 	adjustFireLoss(-burn)
 	src.updatehealth()
 
 // damage MANY external organs, in random order
-/mob/living/proc/take_overall_damage(var/brute, burn, used_weapon = null)
+/mob/living/proc/take_overall_damage(brute, burn, used_weapon = null)
 	if(status_flags & GODMODE)	return 0	//godmode
 	adjustBruteLoss(brute)
 	adjustFireLoss(burn)
@@ -138,7 +138,7 @@
 /mob/living/proc/getBruteLoss()
 	return getAdjustedMaxHealth() - health
 
-/mob/living/proc/adjustBruteLoss(var/amount)
+/mob/living/proc/adjustBruteLoss(amount)
 	if (status_flags & GODMODE)
 		return
 	health = Clamp(health - amount, 0, getAdjustedMaxHealth())
@@ -146,25 +146,25 @@
 /mob/living/proc/getOxyLoss()
 	return 0
 
-/mob/living/proc/adjustOxyLoss(var/amount)
+/mob/living/proc/adjustOxyLoss(amount)
 	return
 
-/mob/living/proc/setOxyLoss(var/amount)
+/mob/living/proc/setOxyLoss(amount)
 	return
 
 /mob/living/proc/getToxLoss()
 	return 0
 
-/mob/living/proc/adjustToxLoss(var/amount)
+/mob/living/proc/adjustToxLoss(amount)
 	adjustBruteLoss(amount * 0.5)
 
-/mob/living/proc/setToxLoss(var/amount)
+/mob/living/proc/setToxLoss(amount)
 	adjustBruteLoss((amount * 0.5)-getBruteLoss())
 
 /mob/living/proc/getFireLoss()
 	return
 
-/mob/living/proc/adjustLastingDamage(var/amount)
+/mob/living/proc/adjustLastingDamage(amount)
 	lasting_damage += amount
 	health = min(health, getAdjustedMaxHealth())
 	updatehealth()
@@ -172,35 +172,35 @@
 /mob/living/proc/getLastingDamage()
 	return lasting_damage
 
-/mob/living/proc/adjustFireLoss(var/amount)
+/mob/living/proc/adjustFireLoss(amount)
 	adjustBruteLoss(amount * 0.5)
 
-/mob/living/proc/setFireLoss(var/amount)
+/mob/living/proc/setFireLoss(amount)
 	adjustBruteLoss((amount * 0.5)-getBruteLoss())
 
 /mob/living/proc/getHalLoss()
 	return 0
 
-/mob/living/proc/adjustHalLoss(var/amount)
+/mob/living/proc/adjustHalLoss(amount)
 	adjustBruteLoss(amount * 0.5)
 
-/mob/living/proc/setHalLoss(var/amount)
+/mob/living/proc/setHalLoss(amount)
 	adjustBruteLoss((amount * 0.5)-getBruteLoss())
 
 /mob/living/proc/getBrainLoss()
 	return 0
 
-/mob/living/proc/adjustBrainLoss(var/amount)
+/mob/living/proc/adjustBrainLoss(amount)
 	return
 
-/mob/living/proc/setBrainLoss(var/amount)
+/mob/living/proc/setBrainLoss(amount)
 	return
 
 /mob/living/proc/getCloneLoss()
 	return 0
 
-/mob/living/proc/setCloneLoss(var/amount)
+/mob/living/proc/setCloneLoss(amount)
 	return
 
-/mob/living/proc/adjustCloneLoss(var/amount)
+/mob/living/proc/adjustCloneLoss(amount)
 	return

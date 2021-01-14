@@ -38,7 +38,7 @@
 	usr.show_message(t, 1)
 	feedback_add_details("admin_verb","ASL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_robotize(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_admin_robotize(mob/M in SSmobs.mob_list)
 	set category = "Fun"
 	set name = "Make Robot"
 
@@ -53,7 +53,7 @@
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_animalize(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_admin_animalize(mob/M in SSmobs.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
 
@@ -74,7 +74,7 @@
 		M.Animalize()
 
 
-/client/proc/makepAI(var/turf/T in SSmobs.mob_list)
+/client/proc/makepAI(turf/T in SSmobs.mob_list)
 	set category = "Fun"
 	set name = "Make pAI"
 	set desc = "Specify a location to spawn a pAI device, then specify a key to play that pAI"
@@ -101,7 +101,7 @@
 			paiController.pai_candidates.Remove(candidate)
 	feedback_add_details("admin_verb","MPAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_slimeize(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_admin_slimeize(mob/M in SSmobs.mob_list)
 	set category = "Fun"
 	set name = "Make slime"
 
@@ -118,7 +118,7 @@
 		alert("Invalid mob")
 
 /*
-/client/proc/cmd_admin_monkeyize(var/mob/M in mob_list)
+/client/proc/cmd_admin_monkeyize(mob/M in mob_list)
 	set category = "Fun"
 	set name = "Make Monkey"
 
@@ -133,7 +133,7 @@
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_changelinginize(var/mob/M in mob_list)
+/client/proc/cmd_admin_changelinginize(mob/M in mob_list)
 	set category = "Fun"
 	set name = "Make Changeling"
 
@@ -151,7 +151,7 @@
 		alert("Invalid mob")
 */
 /*
-/client/proc/cmd_admin_abominize(var/mob/M in mob_list)
+/client/proc/cmd_admin_abominize(mob/M in mob_list)
 	set category = null
 	set name = "Make Abomination"
 
@@ -168,7 +168,7 @@
 
 */
 /*
-/client/proc/make_cultist(var/mob/M in mob_list) // -- TLE, modified by Urist
+/client/proc/make_cultist(mob/M in mob_list) // -- TLE, modified by Urist
 	set category = "Fun"
 	set name = "Make Cultist"
 	set desc = "Makes target a cultist"
@@ -241,7 +241,7 @@
 	message_admins("[key_name_admin(src)] has turned aliens [config.aliens_allowed ? "on" : "off"].", 0)
 	feedback_add_details("admin_verb","TAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_admin_grantfullaccess(mob/M in SSmobs.mob_list)
 	set category = "Admin"
 	set name = "Grant Full Access"
 
@@ -268,7 +268,7 @@
 	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_and_message_admins("has granted [M.key] full access.")
 
-/client/proc/cmd_assume_direct_control(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_assume_direct_control(mob/M in SSmobs.mob_list)
 	set category = "Admin"
 	set name = "Assume direct control"
 	set desc = "Direct intervention"
@@ -402,7 +402,7 @@
 	feedback_add_details("admin_verb","SEQ")
 	dressup_human(H, outfit, reset_equipment)
 
-/proc/dressup_human(var/mob/living/carbon/human/H, decl/hierarchy/outfit/outfit, undress = TRUE)
+/proc/dressup_human(mob/living/carbon/human/H, decl/hierarchy/outfit/outfit, undress = TRUE)
 	if(!H || !outfit)
 		return
 	if(undress)
@@ -482,7 +482,7 @@
 			to_chat(usr, jointext(GLOB.clients,","))
 
 // DNA2 - Admin Hax
-/client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
+/client/proc/cmd_admin_toggle_block(mob/M, block)
 	if(!ticker)
 		alert("Wait until the game starts")
 		return
@@ -517,7 +517,7 @@
 
 	cmd_analyse_health(H)
 
-/client/proc/cmd_analyse_health(var/mob/living/carbon/human/H)
+/client/proc/cmd_analyse_health(mob/living/carbon/human/H)
 
 	if(!check_rights(R_DEBUG))
 		return

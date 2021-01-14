@@ -90,7 +90,7 @@
 	if(. == TOPIC_REFRESH)
 		attack_hand(user)
 
-/obj/machinery/computer/curer/proc/createcure(var/obj/item/weapon/reagent_containers/container)
+/obj/machinery/computer/curer/proc/createcure(obj/item/weapon/reagent_containers/container)
 	var/obj/item/weapon/reagent_containers/glass/beaker/product = new(src.loc)
 
 	var/datum/reagent/blood/B = locate() in container.reagents.reagent_list

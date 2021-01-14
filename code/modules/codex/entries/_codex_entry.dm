@@ -33,7 +33,7 @@
 		display_name = associated_strings[1]
 	..()
 
-/datum/codex_entry/proc/get_header(var/mob/presenting_to)
+/datum/codex_entry/proc/get_header(mob/presenting_to)
 	var/list/dat = list()
 	var/datum/codex_entry/linked_entry = SScodex.get_entry_by_string("nexus")
 	dat += "<a href='?src=\ref[SScodex];show_examined_info=\ref[linked_entry];show_to=\ref[presenting_to]'>Home</a>"
@@ -42,7 +42,7 @@
 	dat += "<hr><h2>[display_name]</h2>"
 	return jointext(dat, null)
 
-/datum/codex_entry/proc/get_text(var/mob/presenting_to)
+/datum/codex_entry/proc/get_text(mob/presenting_to)
 	var/list/dat = list(get_header(presenting_to))
 	if(lore_text)
 		dat += "<font color = '[CODEX_COLOR_LORE]'>[lore_text]</font>"

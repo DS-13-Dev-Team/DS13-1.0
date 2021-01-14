@@ -296,7 +296,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 	Hookblade
 	A two part ability, starting off with a tiny charge, and then a swing at the end
 */
-/mob/living/carbon/human/proc/hunter_hookblade(var/atom/A)
+/mob/living/carbon/human/proc/hunter_hookblade(atom/A)
 	set name = "Hookblade"
 	set category = "Abilities"
 	set desc = "A shortrange charge with a swing at the end, pulling in all enemies it hits. HK: Alt+Click:"
@@ -344,7 +344,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 	Arm Swing
 --------------------------------*/
 
-/mob/living/carbon/human/proc/hookblade_swing(var/atom/target)
+/mob/living/carbon/human/proc/hookblade_swing(atom/target)
 
 	if (!target)
 		target = dir

@@ -68,7 +68,7 @@
 
 
 
-/datum/extension/corruption_source/proc/register(var/obj/effect/vine/corruption/applicant)
+/datum/extension/corruption_source/proc/register(obj/effect/vine/corruption/applicant)
 	if (!can_support(applicant))
 		return FALSE
 
@@ -83,7 +83,7 @@
 	needs_update = TRUE
 	applicant.update_chunks()	//Lets also update the chunk(s) the vine is in/next to
 
-/datum/extension/corruption_source/proc/unregister(var/obj/effect/vine/corruption/applicant)
+/datum/extension/corruption_source/proc/unregister(obj/effect/vine/corruption/applicant)
 	corruption_vines -= applicant
 	if (applicant.source == src)
 		applicant.source = null
@@ -94,14 +94,14 @@
 
 
 //Removes a specified patch from its old source and registers us as the new source
-/datum/extension/corruption_source/proc/take_posession(var/obj/effect/vine/corruption/applicant)
+/datum/extension/corruption_source/proc/take_posession(obj/effect/vine/corruption/applicant)
 	if (applicant.source)
 		applicant.source.unregister(applicant)
 
 	register(applicant)
 
 //Is this source able to provide support to a specified turf or corruption vine?
-/datum/extension/corruption_source/proc/can_support(var/atom/A)
+/datum/extension/corruption_source/proc/can_support(atom/A)
 	//If we're turned off we cant support anyone
 	if (!enabled)
 		return FALSE
@@ -125,7 +125,7 @@
 	return TRUE
 
 
-/datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, old_loc, new_loc)
+/datum/extension/corruption_source/proc/source_moved(atom/movable/mover, old_loc, new_loc)
 	sourceturf = get_turf(source)
 	update_vines()
 
@@ -191,7 +191,7 @@
 //Figures out what multiplier to apply to this applicant's growth time, based on our speed, and relative distance
 //They will apply this multiplier to their own semi-randomly generated growth time
 //It can be passed a specific vine, or a turf that vine is on
-/datum/extension/corruption_source/proc/get_growthtime_multiplier(var/atom/site)
+/datum/extension/corruption_source/proc/get_growthtime_multiplier(atom/site)
 	var/multiplier = 1 + (growth_distance_falloff * get_dist_3D(site, sourceturf))
 	multiplier /= growth_speed
 

@@ -116,7 +116,7 @@
 		return
 	move_into_gibber(user,target)
 
-/obj/machinery/gibber/proc/move_into_gibber(var/mob/user,var/mob/living/victim)
+/obj/machinery/gibber/proc/move_into_gibber(mob/user, mob/living/victim)
 
 	if(src.occupant)
 		to_chat(user, "<span class='danger'>\The [src] is full, empty it first!</span>")

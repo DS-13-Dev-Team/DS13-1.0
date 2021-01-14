@@ -52,7 +52,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		return
 	to_chat(player.current, "You should first gear up and discuss a plan with your team. More members may be joining, don't move out before you're ready.")
 
-/datum/antagonist/ert/proc/add_candidate(var/mob/source)
+/datum/antagonist/ert/proc/add_candidate(mob/source)
 	candidates += source
 
 /datum/antagonist/ert/proc/pick_candidates()

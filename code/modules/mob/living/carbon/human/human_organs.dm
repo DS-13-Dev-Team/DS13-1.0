@@ -5,7 +5,7 @@
 	return (O && !O.is_stump())
 
 
-/mob/living/carbon/human/proc/has_organ_or_replacement(var/organ_tag)
+/mob/living/carbon/human/proc/has_organ_or_replacement(organ_tag)
 	if (organ_tag in species.organ_substitutions)
 		organ_tag = species.organ_substitutions[organ_tag]
 
@@ -26,7 +26,7 @@
 		eyes.update_colour()
 		regenerate_icons()
 
-/mob/living/carbon/human/proc/get_bodypart_name(var/zone)
+/mob/living/carbon/human/proc/get_bodypart_name(zone)
 	var/obj/item/organ/external/E = get_organ(zone)
 	if(E) . = E.name
 
@@ -164,7 +164,7 @@
 		if(((E.is_broken() || E.is_dislocated()) && !E.splinted) || E.is_malfunctioning())
 			grasp_damage_disarm(E)
 
-/mob/living/carbon/human/proc/stance_damage_prone(var/obj/item/organ/external/affected)
+/mob/living/carbon/human/proc/stance_damage_prone(obj/item/organ/external/affected)
 
 	if(affected)
 		switch(affected.body_part)
@@ -176,7 +176,7 @@
 				return
 	Weaken(5)
 
-/mob/living/carbon/human/proc/grasp_damage_disarm(var/obj/item/organ/external/affected)
+/mob/living/carbon/human/proc/grasp_damage_disarm(obj/item/organ/external/affected)
 	var/disarm_slot
 	switch(affected.body_part)
 		if(HAND_LEFT, ARM_LEFT)
@@ -246,7 +246,7 @@
 //Used when we target a missing organ but still want to hit something. Tries to find the next organ up the hierarchy to hit instead
 //Also handles substitution for targeting something invalid. EG, legs on a leaper
 //External only
-/mob/living/carbon/human/proc/find_target_organ(var/hit_zone)
+/mob/living/carbon/human/proc/find_target_organ(hit_zone)
 	if (species.organ_substitutions[hit_zone])
 
 		hit_zone = species.organ_substitutions[hit_zone]
@@ -287,7 +287,7 @@
 
 
 //This proc tells how many legs we have
-/mob/proc/get_locomotion_limbs(var/include_stump = FALSE)
+/mob/proc/get_locomotion_limbs(include_stump = FALSE)
 	return list()
 
 /mob/living/carbon/human/get_locomotion_limbs(var/include_stump = FALSE)
@@ -309,7 +309,7 @@
 //Used to get limbs that intersect with a plane.
 //Altitude is how high the plane is off the ground
 //Height is how tall the plane is
-/mob/living/carbon/human/proc/get_limbs_at_height(var/altitude, height = 0.01)
+/mob/living/carbon/human/proc/get_limbs_at_height(altitude, height = 0.01)
 	var/vector2/ourheight = get_new_vector(altitude, altitude+height)
 
 	var/list/limbs = list()
@@ -402,7 +402,7 @@
 	limb_mask = filters[filters.len]
 
 //This proc combines a list of icon names into a mask
-/proc/create_limb_mask(var/list/missing_icon_names, datum/species/species)
+/proc/create_limb_mask(list/missing_icon_names, datum/species/species)
 	var/icon/base_icon = new(species && species.icon_template ? species.icon_template : 'icons/mob/human.dmi',"blank")
 
 	var/damage_mask_icon = 'icons/mob/human_races/species/human/damage_mask.dmi'

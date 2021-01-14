@@ -26,7 +26,7 @@
 	set_pin_data(IC_OUTPUT, 1, !!do_compare(A, B))
 	..()
 
-/obj/item/integrated_circuit/logic/binary/proc/do_compare(var/datum/integrated_io/A, datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/proc/do_compare(datum/integrated_io/A, datum/integrated_io/B)
 	return FALSE
 
 /obj/item/integrated_circuit/logic/unary
@@ -38,7 +38,7 @@
 	set_pin_data(IC_OUTPUT, 1, !!do_check(A))
 	..()
 
-/obj/item/integrated_circuit/logic/unary/proc/do_check(var/datum/integrated_io/A)
+/obj/item/integrated_circuit/logic/unary/proc/do_check(datum/integrated_io/A)
 	return FALSE
 
 /obj/item/integrated_circuit/logic/binary/equals

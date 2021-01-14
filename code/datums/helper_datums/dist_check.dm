@@ -1,4 +1,4 @@
-/decl/dist_check/proc/within_dist(var/atom/a, atom/b)
+/decl/dist_check/proc/within_dist(atom/a, atom/b)
 	return FALSE
 
 /decl/dist_check/adjacent/within_dist(var/atom/a, atom/b)

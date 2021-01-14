@@ -16,12 +16,12 @@
 	if(evidence && evidence.len)
 		icon_state = "fingerprint1"
 
-/obj/item/weapon/sample/proc/copy_evidence(var/atom/supplied)
+/obj/item/weapon/sample/proc/copy_evidence(atom/supplied)
 	if(supplied.suit_fibers && supplied.suit_fibers.len)
 		evidence = supplied.suit_fibers.Copy()
 		supplied.suit_fibers.Cut()
 
-/obj/item/weapon/sample/proc/merge_evidence(var/obj/item/weapon/sample/supplied, mob/user)
+/obj/item/weapon/sample/proc/merge_evidence(obj/item/weapon/sample/supplied, mob/user)
 	if(!supplied.evidence || !supplied.evidence.len)
 		return 0
 	evidence |= supplied.evidence
@@ -136,10 +136,10 @@
 	var/evidence_type = "fiber"
 	var/evidence_path = /obj/item/weapon/sample/fibers
 
-/obj/item/weapon/forensics/sample_kit/proc/can_take_sample(var/mob/user, atom/supplied)
+/obj/item/weapon/forensics/sample_kit/proc/can_take_sample(mob/user, atom/supplied)
 	return (supplied.suit_fibers && supplied.suit_fibers.len)
 
-/obj/item/weapon/forensics/sample_kit/proc/take_sample(var/mob/user, atom/supplied)
+/obj/item/weapon/forensics/sample_kit/proc/take_sample(mob/user, atom/supplied)
 	var/obj/item/weapon/sample/S = new evidence_path(get_turf(user), supplied)
 	to_chat(user, "<span class='notice'>You transfer [S.evidence.len] [S.evidence.len > 1 ? "[evidence_type]s" : "[evidence_type]"] to \the [S].</span>")
 

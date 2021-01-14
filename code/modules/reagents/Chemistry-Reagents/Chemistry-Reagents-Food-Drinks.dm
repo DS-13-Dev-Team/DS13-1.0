@@ -59,7 +59,7 @@
 	adjust_nutrition(M, alien, removed)
 	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
 
-/datum/reagent/nutriment/proc/adjust_nutrition(var/mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/proc/adjust_nutrition(mob/living/carbon/M, alien, removed)
 	switch(alien)
 		if(IS_UNATHI) removed *= 0.1 // Unathi get most of their nutrition from meat.
 	M.nutrition += nutriment_factor * removed // For hunger and fatness

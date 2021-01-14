@@ -55,7 +55,7 @@
 	return TRUE
 
 //Triggering
-/atom/movable/proc/leap_verb(var/atom/A)
+/atom/movable/proc/leap_verb(atom/A)
 	set name = "Charge"
 	set category = "Abilities"
 
@@ -63,7 +63,7 @@
 	return leap_attack(A)
 
 
-/atom/movable/proc/leap_attack(var/atom/_target, _speed = 7, _lifespan = 2 SECONDS, _maxrange = null, _homing = FALSE, _inertia = FALSE, _power = 0, _cooldown = 20 SECONDS, _delay = 0, subtype = /datum/extension/charge/leap)
+/atom/movable/proc/leap_attack(atom/_target, _speed = 7, _lifespan = 2 SECONDS, _maxrange = null, _homing = FALSE, _inertia = FALSE, _power = 0, _cooldown = 20 SECONDS, _delay = 0, subtype = /datum/extension/charge/leap)
 	//First of all, lets check if we're currently able to charge
 	if (!can_charge(_target, TRUE))
 		return FALSE

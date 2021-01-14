@@ -36,7 +36,7 @@
 				reagents.splash(hit_atom, reagents.total_volume)
 			src.smash(loc, hit_atom)
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/proc/smash_check(var/distance)
+/obj/item/weapon/reagent_containers/food/drinks/bottle/proc/smash_check(distance)
 	if(!isGlass || !smash_duration)
 		return 0
 
@@ -46,7 +46,7 @@
 		return 0
 	return prob(chance_table[idx])
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/proc/smash(var/newloc, atom/against = null)
+/obj/item/weapon/reagent_containers/food/drinks/bottle/proc/smash(newloc, atom/against = null)
 	//Creates a shattering noise and replaces the bottle with a broken_bottle
 	var/obj/item/weapon/broken_bottle/B = new /obj/item/weapon/broken_bottle(newloc)
 	if(prob(33))

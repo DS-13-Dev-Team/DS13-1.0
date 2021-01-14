@@ -20,7 +20,7 @@
 -----------------------------*/
 //Actually creates and launches a wave.
 //Width should be an odd number or it will skew to the right
-/proc/launch_wave(var/atom/source, atom/target, projectile_type = /obj/item/projectile/wave, width = 3, mob/living/user, obj/item/weapon/gun/launcher)
+/proc/launch_wave(atom/source, atom/target, projectile_type = /obj/item/projectile/wave, width = 3, mob/living/user, obj/item/weapon/gun/launcher)
 
 	var/datum/projectile_wave/wave = new()
 
@@ -154,7 +154,7 @@
 /*
 	Adds a projectile to this wave
 */
-/datum/projectile_wave/proc/register(var/obj/item/projectile/wave/A, refresh_connections = TRUE)
+/datum/projectile_wave/proc/register(obj/item/projectile/wave/A, refresh_connections = TRUE)
 	//We are its wave controller now
 	A.PW = src
 
@@ -172,7 +172,7 @@
 	Removes a projectile from this wave
 	This is quite likely to split the wave in two, we'll check and handle that
 */
-/datum/projectile_wave/proc/remove(var/obj/item/projectile/wave/A, refresh_connections = TRUE, do_split = TRUE)
+/datum/projectile_wave/proc/remove(obj/item/projectile/wave/A, refresh_connections = TRUE, do_split = TRUE)
 	var/split = FALSE
 
 	//If we lost the master, we split
@@ -263,7 +263,7 @@
 
 //This assumes that each projectiles' connections list is up to date. If they might not be, update them with update_connections before calling it
 //Starting at a specified projectile, it recurses through everything in its connections, populating the connected list as it goes
-/datum/projectile_wave/proc/get_connected(var/obj/item/projectile/wave/W)
+/datum/projectile_wave/proc/get_connected(obj/item/projectile/wave/W)
 	for (var/obj/item/projectile/wave/W2 as anything in W.connections)
 		if (!(W2 in connected))
 			connected += W2
@@ -298,7 +298,7 @@
 	split_wave(leftover)
 
 //Given a list of projectiles, removes them all from this wave, and adds them to a brand new wave instead
-/datum/projectile_wave/proc/split_wave(var/list/leftover)
+/datum/projectile_wave/proc/split_wave(list/leftover)
 
 	//First of all, remove them from us
 	for (var/obj/item/projectile/wave/W as anything in leftover)
@@ -357,7 +357,7 @@
 	.=..()
 
 //Connects this projectile to others around it
-/obj/item/projectile/wave/proc/connect_projectile(var/create_backstops = TRUE)
+/obj/item/projectile/wave/proc/connect_projectile(create_backstops = TRUE)
 
 
 	//1. First of all, connect to all wave projectiles in cardinal directions, which are part of the same wave as us
@@ -421,13 +421,13 @@
 
 
 //Connects to another cardinally
-/obj/item/projectile/wave/proc/connect_to(var/obj/item/projectile/wave/W)
+/obj/item/projectile/wave/proc/connect_to(obj/item/projectile/wave/W)
 	connections |= W
 	W.connections |= src
 
 //Connects this projectile another one diagonally, by creating a backstop on a tile they share cardinally.
 //This proc expects both projectiles to be exactly one tile apart diagonally
-/obj/item/projectile/wave/proc/connect_with_backstop(var/obj/item/projectile/wave/W)
+/obj/item/projectile/wave/proc/connect_with_backstop(obj/item/projectile/wave/W)
 
 	//First of all, lets get some candidate sites for this backstop wave projectile
 	var/list/ours = get_cardinal_turfs()
@@ -451,7 +451,7 @@
 ---------------------------------*/
 /obj/item/projectile/wave/proc/designated_master()
 
-/obj/item/projectile/wave/proc/designated_backstop(var/newsetting)
+/obj/item/projectile/wave/proc/designated_backstop(newsetting)
 	backstop = newsetting
 	icon_state = backstop_state
 

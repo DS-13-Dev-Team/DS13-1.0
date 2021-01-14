@@ -101,7 +101,7 @@
 		if(choice == "No")
 			return
 
-/obj/item/device/soulstone/proc/set_full(var/f)
+/obj/item/device/soulstone/proc/set_full(f)
 	full = f
 	update_icon()
 

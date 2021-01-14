@@ -35,7 +35,7 @@
 	else if((parameters["left"] && parameters["ctrl"]) || parameters["middle"])
 		SetBuildType(A.type)
 
-/datum/build_mode/advanced/proc/SetBuildType(var/atom_type)
+/datum/build_mode/advanced/proc/SetBuildType(atom_type)
 	if(!atom_type || atom_type == build_type)
 		return
 

@@ -149,7 +149,7 @@
 			update_icon()
 			for(var/dir in list(1,2,4,8)) src.cleanup(dir)
 
-/obj/machinery/shieldwallgen/proc/setup_field(var/NSEW = 0)
+/obj/machinery/shieldwallgen/proc/setup_field(NSEW = 0)
 	var/turf/T = get_turf(src)
 	if(!T) return
 	var/turf/T2 = T
@@ -226,7 +226,7 @@
 		..()
 
 
-/obj/machinery/shieldwallgen/proc/cleanup(var/NSEW)
+/obj/machinery/shieldwallgen/proc/cleanup(NSEW)
 	var/obj/machinery/shieldwall/F
 	var/obj/machinery/shieldwallgen/G
 	var/turf/T = src.loc

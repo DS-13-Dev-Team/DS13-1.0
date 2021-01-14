@@ -200,14 +200,14 @@
 	Hitting procs
 */
 //Hits a turf and the mobs in it
-/datum/extension/swing/proc/hit_turf(var/turf/T)
+/datum/extension/swing/proc/hit_turf(turf/T)
 	for (var/mob/living/L in T)
 		hit_mob(L)
 
 	//Return true to continue the swing
 	return TRUE
 
-/datum/extension/swing/proc/hit_mob(var/mob/living/L)
+/datum/extension/swing/proc/hit_mob(mob/living/L)
 
 	if (L == user)
 		return FALSE
@@ -220,7 +220,7 @@
 	playsound(L, hitsound, VOLUME_MID, 1)
 	return TRUE
 
-/datum/extension/swing/proc/get_target_zone(var/mob/living/target)
+/datum/extension/swing/proc/get_target_zone(mob/living/target)
 	if (precise && user)
 		return get_zone_sel(user)
 	else
@@ -253,7 +253,7 @@
 	Safety Checks
 ************************/
 //Access Proc
-/atom/proc/can_swing(var/swing_type = /datum/extension/swing)
+/atom/proc/can_swing(swing_type = /datum/extension/swing)
 
 	var/datum/extension/swing/E = get_extension(src, swing_type)
 	if(istype(E))
@@ -278,7 +278,7 @@
 	.=..()
 
 
-/atom/proc/swing_attack(var/swing_type = /datum/extension/swing, atom/source, atom/target, angle = 90, range = 3, duration = 1 SECOND, windup = 0, cooldown = 0, effect_type, damage = 1, damage_flags = 0, stages = 8, swing_direction = CLOCKWISE)
+/atom/proc/swing_attack(swing_type = /datum/extension/swing, atom/source, atom/target, angle = 90, range = 3, duration = 1 SECOND, windup = 0, cooldown = 0, effect_type, damage = 1, damage_flags = 0, stages = 8, swing_direction = CLOCKWISE)
 	if (!can_swing(swing_type))
 		return FALSE
 

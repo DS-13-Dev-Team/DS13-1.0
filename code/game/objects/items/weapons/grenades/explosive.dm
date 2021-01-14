@@ -39,7 +39,7 @@
 	qdel(src)
 
 
-/obj/proc/fragmentate(var/turf/T=get_turf(src), fragment_number = 30, spreading_range = 5, list/fragtypes=list(/obj/item/projectile/bullet/pellet/fragment/))
+/obj/proc/fragmentate(turf/T=get_turf(src), fragment_number = 30, spreading_range = 5, list/fragtypes=list(/obj/item/projectile/bullet/pellet/fragment/))
 	set waitfor = 0
 
 	if (!isnum(fragment_number))
@@ -90,7 +90,7 @@
 			//This will never require more than two passes, and we will almost certainly run out partway through the second pass
 			i = 1
 
-/obj/item/weapon/grenade/frag/proc/on_explosion(var/turf/O)
+/obj/item/weapon/grenade/frag/proc/on_explosion(turf/O)
 	if(explosion_size)
 		explosion(explosion_size, 2)
 

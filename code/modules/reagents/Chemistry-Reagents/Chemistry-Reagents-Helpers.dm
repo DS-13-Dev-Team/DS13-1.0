@@ -1,4 +1,4 @@
-/atom/movable/proc/can_be_injected_by(var/atom/injector)
+/atom/movable/proc/can_be_injected_by(atom/injector)
 	if(!Adjacent(get_turf(injector)))
 		return FALSE
 	if(!reagents)

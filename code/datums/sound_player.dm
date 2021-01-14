@@ -23,11 +23,11 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 
 
 //This can be called if either we're doing whole sound setup ourselves or it will be as part of from-file sound setup
-/decl/sound_player/proc/PlaySoundDatum(var/atom/source, sound_id, sound/sound, range, prefer_mute)
+/decl/sound_player/proc/PlaySoundDatum(atom/source, sound_id, sound/sound, range, prefer_mute)
 	var/token_type = isnum(sound.environment) ? /datum/sound_token : /datum/sound_token/static_environment
 	return new token_type(source, sound_id, sound, range, prefer_mute)
 
-/decl/sound_player/proc/PlayLoopingSound(var/atom/source, sound_id, sound, volume, range, falloff = 1, echo, frequency, prefer_mute)
+/decl/sound_player/proc/PlayLoopingSound(atom/source, sound_id, sound, volume, range, falloff = 1, echo, frequency, prefer_mute)
 	var/sound/S = istype(sound, /sound) ? sound : new(sound)
 	S.environment = 0 // Ensures a 3D effect even if x/y offset happens to be 0 the first time it's played
 	S.volume  = volume
@@ -46,7 +46,7 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 
 	To stop the sound early, just do sound_token.Stop() or QDEL_NULL(sound_token)
 */
-/decl/sound_player/proc/PlayStoppableSound(var/atom/source, sound_id, sound, volume, range, falloff = 1, echo, frequency, prefer_mute, duration = 1 SECOND)
+/decl/sound_player/proc/PlayStoppableSound(atom/source, sound_id, sound, volume, range, falloff = 1, echo, frequency, prefer_mute, duration = 1 SECOND)
 	var/sound/S = istype(sound, /sound) ? sound : new(sound)
 	S.environment = 0 // Ensures a 3D effect even if x/y offset happens to be 0 the first time it's played
 	S.volume  = volume
@@ -64,7 +64,7 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 
 	return sound_token
 
-/decl/sound_player/proc/PrivStopSound(var/datum/sound_token/sound_token)
+/decl/sound_player/proc/PrivStopSound(datum/sound_token/sound_token)
 	var/channel = sound_token.sound.channel
 	var/sound_id = sound_token.sound_id
 
@@ -79,7 +79,7 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 	taken_channels -= sound_id
 	sound_tokens_by_sound_id -= sound_id
 
-/decl/sound_player/proc/PrivGetChannel(var/datum/sound_token/sound_token)
+/decl/sound_player/proc/PrivGetChannel(datum/sound_token/sound_token)
 	var/sound_id = sound_token.sound_id
 
 	. = taken_channels[sound_id] // Does this sound_id already have an assigned channel?
@@ -151,7 +151,7 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 	Stop()
 	. = ..()
 
-datum/sound_token/proc/SetVolume(var/new_volume)
+datum/sound_token/proc/SetVolume(new_volume)
 	new_volume = Clamp(new_volume, 0, 100)
 	if(sound.volume == new_volume)
 		return
@@ -188,7 +188,7 @@ datum/sound_token/proc/Mute()
 
 	GLOB.sound_player.PrivStopSound(src)
 
-/datum/sound_token/proc/PrivLocateListeners(var/list/prior_turfs, list/current_turfs)
+/datum/sound_token/proc/PrivLocateListeners(list/prior_turfs, list/current_turfs)
 	if(status & SOUND_STOPPED)
 		return
 
@@ -206,7 +206,7 @@ datum/sound_token/proc/Mute()
 	for(var/listener in current_listeners)
 		PrivUpdateListenerLoc(listener)
 
-/datum/sound_token/proc/PrivUpdateStatus(var/new_status)
+/datum/sound_token/proc/PrivUpdateStatus(new_status)
 	// Once stopped, always stopped. Go ask the player to play the sound again.
 	if(status & SOUND_STOPPED)
 		return
@@ -215,7 +215,7 @@ datum/sound_token/proc/Mute()
 	status = new_status
 	PrivUpdateListeners()
 
-/datum/sound_token/proc/PrivAddListener(var/atom/listener)
+/datum/sound_token/proc/PrivAddListener(atom/listener)
 	if(isvirtualmob(listener))
 		var/mob/observer/virtual/v = listener
 		if(!(v.abilities & VIRTUAL_ABILITY_HEAR))
@@ -231,7 +231,7 @@ datum/sound_token/proc/Mute()
 
 	PrivUpdateListenerLoc(listener, FALSE)
 
-/datum/sound_token/proc/PrivRemoveListener(var/atom/listener, sound/null_sound)
+/datum/sound_token/proc/PrivRemoveListener(atom/listener, sound/null_sound)
 	if (!QDELETED(listener))
 		null_sound = null_sound || new(channel = sound.channel)
 		sound_to(listener, null_sound)
@@ -239,7 +239,7 @@ datum/sound_token/proc/Mute()
 		GLOB.destroyed_event.unregister(listener, src, /datum/sound_token/proc/PrivRemoveListener)
 	listeners -= listener
 
-/datum/sound_token/proc/PrivUpdateListenerLoc(var/atom/listener, update_sound = TRUE)
+/datum/sound_token/proc/PrivUpdateListenerLoc(atom/listener, update_sound = TRUE)
 	if (QDELETED(source))
 		return
 
@@ -272,18 +272,18 @@ datum/sound_token/proc/Mute()
 	for(var/listener in listeners)
 		PrivUpdateListener(listener)
 
-/datum/sound_token/proc/PrivUpdateListener(var/listener, update_sound = TRUE)
+/datum/sound_token/proc/PrivUpdateListener(listener, update_sound = TRUE)
 	sound.environment = PrivGetEnvironment(listener)
 	sound.status = status|listener_status[listener]
 	if(update_sound)
 		sound.status |= SOUND_UPDATE
 	sound_to(listener, sound)
 
-/datum/sound_token/proc/PrivGetEnvironment(var/listener)
+/datum/sound_token/proc/PrivGetEnvironment(listener)
 	var/area/A = get_area(listener)
 	return A && PrivIsValidEnvironment(A.sound_env) ? A.sound_env : sound.environment
 
-/datum/sound_token/proc/PrivIsValidEnvironment(var/environment)
+/datum/sound_token/proc/PrivIsValidEnvironment(environment)
 	if(islist(environment) && length(environment) != 23)
 		return FALSE
 	if(!isnum(environment) || environment < 0 || environment > 25)

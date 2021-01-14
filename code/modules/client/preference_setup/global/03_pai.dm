@@ -35,7 +35,7 @@
 	. += "Role: <a href='?src=\ref[src];option=role'>[candidate.role ? TextPreview(candidate.role, 40) : "None Set"]</a><br>"
 	. += "OOC Comments: <a href='?src=\ref[src];option=ooc'>[candidate.comments ? TextPreview(candidate.comments, 40) : "None Set"]</a><br>"
 
-/datum/category_item/player_setup_item/player_global/pai/OnTopic(var/href,var/list/href_list, mob/user)
+/datum/category_item/player_setup_item/player_global/pai/OnTopic(var/href, list/href_list, mob/user)
 	if(href_list["option"])
 		var/t
 		switch(href_list["option"])

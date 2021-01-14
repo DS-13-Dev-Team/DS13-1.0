@@ -49,7 +49,7 @@
 /mob/living/silicon/ai
 	var/obj/machinery/hologram/holopad/holo = null
 
-/mob/living/silicon/ai/proc/destroy_eyeobj(var/atom/new_eye)
+/mob/living/silicon/ai/proc/destroy_eyeobj(atom/new_eye)
 	if(!eyeobj) return
 	if(!new_eye)
 		new_eye = src
@@ -58,7 +58,7 @@
 	if(client)
 		client.eye = new_eye
 
-/mob/living/silicon/ai/proc/create_eyeobj(var/newloc)
+/mob/living/silicon/ai/proc/create_eyeobj(newloc)
 	if(eyeobj) destroy_eyeobj()
 	if(!newloc) newloc = get_turf(src)
 	eyeobj = new /mob/observer/eye/aiEye(newloc)

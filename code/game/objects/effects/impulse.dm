@@ -16,7 +16,7 @@
 	Direction: 2D vector of where the force is trying to push us
 	Strength: Intensity of force in Newton-seconds
 */
-/atom/proc/apply_impulse(var/direction, strength)
+/atom/proc/apply_impulse(direction, strength)
 	//Non movable atoms cant be moved, but this is defined here for use on mining turfs later
 
 /atom/movable/apply_impulse(var/direction, strength)
@@ -77,7 +77,7 @@
 	Applies an impulse to this atom, originating from origin, to push it away from origin
 	Distance is optional, it will be calculated. But if specified, calculations
 */
-/atom/proc/apply_push_impulse_from(var/atom/origin, strength, falloff_factor = 1)
+/atom/proc/apply_push_impulse_from(atom/origin, strength, falloff_factor = 1)
 	var/list/data = Vector2.DirMagBetween(origin, src)
 	var/vector2/direction = data["direction"]
 	var/distance = data["magnitude"]
@@ -90,13 +90,13 @@
 
 
 //Strength falloff over distance
-/proc/force_falloff(var/strength, distance, falloff_factor)
+/proc/force_falloff(strength, distance, falloff_factor)
 	return (strength / (1 + (distance * falloff_factor)))
 
 
 
 
-/proc/get_turf_in_direction(var/atom/origin, vector2/direction, distance)
+/proc/get_turf_in_direction(atom/origin, vector2/direction, distance)
 	var/vector2/delta = direction * distance
 
 	var/turf/target = locate(origin.x + delta.x, origin.y + delta.y, origin.z)

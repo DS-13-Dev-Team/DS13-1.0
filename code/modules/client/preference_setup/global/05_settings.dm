@@ -86,7 +86,7 @@
 
 	return jointext(., "")
 
-/datum/category_item/player_setup_item/player_global/settings/OnTopic(var/href,var/list/href_list, mob/user)
+/datum/category_item/player_setup_item/player_global/settings/OnTopic(var/href, list/href_list, mob/user)
 	var/mob/pref_mob = preference_mob()
 
 	if(href_list["pref"] && href_list["value"])
@@ -97,7 +97,7 @@
 
 	return ..()
 
-/client/proc/get_preference_value(var/preference)
+/client/proc/get_preference_value(preference)
 	if(prefs)
 		var/datum/client_preference/cp = get_client_preference(preference)
 		if(cp && prefs.preference_values)
@@ -107,7 +107,7 @@
 	else
 		log_error("Client is lacking preferences: [log_info_line(src)]")
 
-/client/proc/set_preference(var/preference, set_preference)
+/client/proc/set_preference(preference, set_preference)
 	var/datum/client_preference/cp = get_client_preference(preference)
 
 	if(!cp)
@@ -120,7 +120,7 @@
 
 	return FALSE
 
-/client/proc/cycle_preference(var/preference)
+/client/proc/cycle_preference(preference)
 	var/datum/client_preference/cp = get_client_preference(preference)
 
 	if(!cp)
@@ -129,7 +129,7 @@
 	var/next_option = next_in_list(prefs.preference_values[cp.key], cp.options)
 	return set_preference(preference, next_option)
 
-/mob/proc/get_preference_value(var/preference)
+/mob/proc/get_preference_value(preference)
 	if(!client)
 		var/datum/client_preference/cp = get_client_preference(preference)
 		if(cp)
@@ -139,7 +139,7 @@
 
 	return client.get_preference_value(preference)
 
-/mob/proc/set_preference(var/preference, set_preference)
+/mob/proc/set_preference(preference, set_preference)
 	if(!client)
 		return FALSE
 	if(!client.prefs)
@@ -148,7 +148,7 @@
 
 	return client.set_preference(preference, set_preference)
 
-/mob/proc/cycle_preference(var/preference)
+/mob/proc/cycle_preference(preference)
 	if(!client)
 		return FALSE
 	if(!client.prefs)

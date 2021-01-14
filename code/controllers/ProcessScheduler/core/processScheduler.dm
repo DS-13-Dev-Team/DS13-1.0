@@ -68,7 +68,7 @@ var/global/datum/controller/processScheduler/processScheduler
  * the deferred setup list. On goonstation, only the ticker needs to have
  * this treatment.
  */
-/datum/controller/processScheduler/proc/deferSetupFor(var/processPath)
+/datum/controller/processScheduler/proc/deferSetupFor(processPath)
 	if (!(processPath in deferredSetupList))
 		deferredSetupList += processPath
 
@@ -146,7 +146,7 @@ var/global/datum/controller/processScheduler/processScheduler
 	for(var/datum/controller/process/p in queued)
 		runProcess(p)
 
-/datum/controller/processScheduler/proc/addProcess(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/addProcess(datum/controller/process/process)
 	processes.Add(process)
 	process.idle()
 	idle.Add(process)
@@ -173,7 +173,7 @@ var/global/datum/controller/processScheduler/processScheduler
 	// Save process in the name -> process map
 	nameToProcessMap[process.name] = process
 
-/datum/controller/processScheduler/proc/replaceProcess(var/datum/controller/process/oldProcess, datum/controller/process/newProcess)
+/datum/controller/processScheduler/proc/replaceProcess(datum/controller/process/oldProcess, datum/controller/process/newProcess)
 	processes.Remove(oldProcess)
 	processes.Add(newProcess)
 
@@ -213,19 +213,19 @@ var/global/datum/controller/processScheduler/processScheduler
 		if(p.start_delay)
 			last_queued[p] = world.time - p.start_delay
 
-/datum/controller/processScheduler/proc/runProcess(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/runProcess(datum/controller/process/process)
 	spawn(0)
 		process.process()
 
-/datum/controller/processScheduler/proc/processStarted(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/processStarted(datum/controller/process/process)
 	setRunningProcessState(process)
 	recordStart(process)
 
-/datum/controller/processScheduler/proc/processFinished(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/processFinished(datum/controller/process/process)
 	setIdleProcessState(process)
 	recordEnd(process)
 
-/datum/controller/processScheduler/proc/setIdleProcessState(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/setIdleProcessState(datum/controller/process/process)
 	if (process in running)
 		running -= process
 	if (process in queued)
@@ -233,7 +233,7 @@ var/global/datum/controller/processScheduler/processScheduler
 	if (!(process in idle))
 		idle += process
 
-/datum/controller/processScheduler/proc/setQueuedProcessState(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/setQueuedProcessState(datum/controller/process/process)
 	if (process in running)
 		running -= process
 	if (process in idle)
@@ -244,7 +244,7 @@ var/global/datum/controller/processScheduler/processScheduler
 	// The other state transitions are handled internally by the process.
 	process.queued()
 
-/datum/controller/processScheduler/proc/setRunningProcessState(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/setRunningProcessState(datum/controller/process/process)
 	if (process in queued)
 		queued -= process
 	if (process in idle)
@@ -252,7 +252,7 @@ var/global/datum/controller/processScheduler/processScheduler
 	if (!(process in running))
 		running += process
 
-/datum/controller/processScheduler/proc/recordStart(var/datum/controller/process/process, time = null)
+/datum/controller/processScheduler/proc/recordStart(datum/controller/process/process, time = null)
 	if (isnull(time))
 		time = TimeOfGame
 		last_queued[process] = world.time
@@ -261,7 +261,7 @@ var/global/datum/controller/processScheduler/processScheduler
 		last_queued[process] = (time == 0 ? 0 : world.time)
 		last_start[process] = time
 
-/datum/controller/processScheduler/proc/recordEnd(var/datum/controller/process/process, time = null)
+/datum/controller/processScheduler/proc/recordEnd(datum/controller/process/process, time = null)
 	if (isnull(time))
 		time = TimeOfGame
 
@@ -276,7 +276,7 @@ var/global/datum/controller/processScheduler/processScheduler
  * recordRunTime
  * Records a run time for a process
  */
-/datum/controller/processScheduler/proc/recordRunTime(var/datum/controller/process/process, time)
+/datum/controller/processScheduler/proc/recordRunTime(datum/controller/process/process, time)
 	last_run_time[process] = time
 	if(time > highest_run_time[process])
 		highest_run_time[process] = time
@@ -293,7 +293,7 @@ var/global/datum/controller/processScheduler/processScheduler
  * averageRunTime
  * returns the average run time (over the last 20) of the process
  */
-/datum/controller/processScheduler/proc/averageRunTime(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/averageRunTime(datum/controller/process/process)
 	var/lastTwenty = last_twenty_run_times[process]
 
 	var/t = 0
@@ -306,13 +306,13 @@ var/global/datum/controller/processScheduler/processScheduler
 		return t / c
 	return c
 
-/datum/controller/processScheduler/proc/getProcessLastRunTime(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/getProcessLastRunTime(datum/controller/process/process)
 	return last_run_time[process]
 
-/datum/controller/processScheduler/proc/getProcessHighestRunTime(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/getProcessHighestRunTime(datum/controller/process/process)
 	return highest_run_time[process]
 
-/datum/controller/processScheduler/proc/getProcessTotalRunTime(var/datum/controller/process/process)
+/datum/controller/processScheduler/proc/getProcessTotalRunTime(datum/controller/process/process)
 	return total_run_time[process]
 
 /datum/controller/processScheduler/proc/getStatusData()
@@ -327,14 +327,14 @@ var/global/datum/controller/processScheduler/processScheduler
 /datum/controller/processScheduler/proc/getProcessCount()
 	return processes.len
 
-/datum/controller/processScheduler/proc/hasProcess(var/processName as text)
+/datum/controller/processScheduler/proc/hasProcess(processName as text)
 	if (nameToProcessMap[processName])
 		return 1
 
-/datum/controller/processScheduler/proc/killProcess(var/processName as text)
+/datum/controller/processScheduler/proc/killProcess(processName as text)
 	restartProcess(processName)
 
-/datum/controller/processScheduler/proc/restartProcess(var/processName as text)
+/datum/controller/processScheduler/proc/restartProcess(processName as text)
 	if (hasProcess(processName))
 		var/datum/controller/process/oldInstance = nameToProcessMap[processName]
 		var/datum/controller/process/newInstance = new oldInstance.type(src)
@@ -342,12 +342,12 @@ var/global/datum/controller/processScheduler/processScheduler
 		replaceProcess(oldInstance, newInstance)
 		oldInstance.kill()
 
-/datum/controller/processScheduler/proc/enableProcess(var/processName as text)
+/datum/controller/processScheduler/proc/enableProcess(processName as text)
 	if (hasProcess(processName))
 		var/datum/controller/process/process = nameToProcessMap[processName]
 		process.enable()
 
-/datum/controller/processScheduler/proc/disableProcess(var/processName as text)
+/datum/controller/processScheduler/proc/disableProcess(processName as text)
 	if (hasProcess(processName))
 		var/datum/controller/process/process = nameToProcessMap[processName]
 		process.disable()
@@ -383,5 +383,5 @@ var/global/datum/controller/processScheduler/processScheduler
 	for(var/datum/controller/process/p in processes)
 		p.statProcess()
 
-/datum/controller/processScheduler/proc/getProcess(var/process_name)
+/datum/controller/processScheduler/proc/getProcess(process_name)
 	return nameToProcessMap[process_name]

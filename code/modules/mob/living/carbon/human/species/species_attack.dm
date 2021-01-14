@@ -89,7 +89,7 @@
 	attack_noun = list("body")
 	damage = 2
 
-/datum/unarmed_attack/slime_glomp/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
+/datum/unarmed_attack/slime_glomp/apply_effects(var/mob/living/carbon/human/user, mob/living/carbon/human/target, armour, attack_damage, zone)
 	..()
 	user.apply_stored_shock_to(target)
 

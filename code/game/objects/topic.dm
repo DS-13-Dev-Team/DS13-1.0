@@ -11,7 +11,7 @@
 	CouldNotUseTopic(usr)
 	return TRUE
 
-/obj/proc/OnTopic(var/mob/user, href_list, datum/topic_state/state)
+/obj/proc/OnTopic(mob/user, href_list, datum/topic_state/state)
 	return TOPIC_NOACTION
 
 /obj/CanUseTopic(var/mob/user, datum/topic_state/state, href_list)
@@ -29,10 +29,10 @@
 /mob/proc/CanUseObjTopic()
 	return TRUE
 
-/obj/proc/CouldUseTopic(var/mob/user)
+/obj/proc/CouldUseTopic(mob/user)
 	user.AddTopicPrint(src)
 
-/mob/proc/AddTopicPrint(var/atom/target)
+/mob/proc/AddTopicPrint(atom/target)
 	if(!istype(target))
 		return
 	target.add_hiddenprint(src)
@@ -50,5 +50,5 @@
 		return
 	target.add_hiddenprint(src)
 
-/obj/proc/CouldNotUseTopic(var/mob/user)
+/obj/proc/CouldNotUseTopic(mob/user)
 	return

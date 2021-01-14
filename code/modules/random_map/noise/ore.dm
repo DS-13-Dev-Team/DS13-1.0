@@ -42,7 +42,7 @@
 	else
 		return 1
 
-/datum/random_map/noise/ore/apply_to_turf(var/x,var/y)
+/datum/random_map/noise/ore/apply_to_turf(var/x, y)
 
 	var/tx = ((origin_x-1)+x)*chunk_size
 	var/ty = ((origin_y-1)+y)*chunk_size

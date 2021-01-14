@@ -60,7 +60,7 @@
 		P1.target = get_turf(P2)
 		P2.target = get_turf(P1)
 
-/datum/phenomena/portals/proc/remove_portal(var/portal)
+/datum/phenomena/portals/proc/remove_portal(portal)
 	portals -= portal
 	GLOB.destroyed_event.unregister(portal,src)
 	var/turf/T = get_turf(portal)

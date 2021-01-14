@@ -46,7 +46,7 @@ var/list/ventcrawl_machinery = list(
 		return FALSE
 	. = ..()
 
-/mob/living/proc/is_allowed_vent_crawl_item(var/obj/item/carried_item)
+/mob/living/proc/is_allowed_vent_crawl_item(obj/item/carried_item)
 	if(is_type_in_list(carried_item, can_enter_vent_with))
 		return !get_inventory_slot(carried_item)
 
@@ -101,7 +101,7 @@ var/list/ventcrawl_machinery = list(
 /mob/living/carbon/alien/ventcrawl_carry()
 	return 1
 
-/mob/living/proc/handle_ventcrawl(var/atom/clicked_on)
+/mob/living/proc/handle_ventcrawl(atom/clicked_on)
 	if(!can_ventcrawl())
 		return
 

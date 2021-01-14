@@ -23,7 +23,7 @@
 	return
 
 // this function should return a specific item to spawn
-/obj/random/proc/post_spawn(var/list/spawns)
+/obj/random/proc/post_spawn(list/spawns)
 	return
 
 

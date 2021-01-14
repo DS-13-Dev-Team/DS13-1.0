@@ -122,7 +122,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 /* Holder-to-chemical */
 
-/datum/reagents/proc/add_reagent(var/reagent_type, amount, data = null, safety = 0)
+/datum/reagents/proc/add_reagent(reagent_type, amount, data = null, safety = 0)
 	if(!isnum(amount) || amount <= 0)
 		return 0
 
@@ -157,7 +157,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 		warning("[log_info_line(my_atom)] attempted to add a reagent of type '[reagent_type]' which doesn't exist. ([usr])")
 	return FALSE
 
-/datum/reagents/proc/remove_reagent(var/reagent_type, amount, safety = 0)
+/datum/reagents/proc/remove_reagent(reagent_type, amount, safety = 0)
 	if(!isnum(amount))
 		return 0
 	for(var/datum/reagent/current as anything in reagent_list)
@@ -172,7 +172,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 			return change
 	return 0
 
-/datum/reagents/proc/del_reagent(var/reagent_type)
+/datum/reagents/proc/del_reagent(reagent_type)
 	for(var/datum/reagent/current as anything in reagent_list)
 		if (current.type == reagent_type)
 			var/volume_removed = current.volume
@@ -183,7 +183,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 				my_atom.on_reagent_change(reagent_type, volume_removed)
 			return 0
 
-/datum/reagents/proc/has_reagent(var/reagent_type, amount = null)
+/datum/reagents/proc/has_reagent(reagent_type, amount = null)
 	for(var/datum/reagent/current as anything in reagent_list)
 		if(current.type == reagent_type)
 			if((isnull(amount) && current.volume > 0) || current.volume >= amount)
@@ -192,7 +192,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 				return 0
 	return 0
 
-/datum/reagents/proc/has_any_reagent(var/list/check_reagents)
+/datum/reagents/proc/has_any_reagent(list/check_reagents)
 	for(var/datum/reagent/current as anything in reagent_list)
 		if(current.type in check_reagents)
 			if(current.volume >= check_reagents[current.type])
@@ -201,7 +201,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 				return 0
 	return 0
 
-/datum/reagents/proc/has_all_reagents(var/list/check_reagents)
+/datum/reagents/proc/has_all_reagents(list/check_reagents)
 	//this only works if check_reagents has no duplicate entries... hopefully okay since it expects an associative list
 	var/missing = check_reagents.len
 	for(var/datum/reagent/current as anything in reagent_list)
@@ -215,19 +215,19 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 		del_reagent(current.type)
 	return
 
-/datum/reagents/proc/get_reagent_amount(var/reagent_type)
+/datum/reagents/proc/get_reagent_amount(reagent_type)
 	for(var/datum/reagent/current as anything in reagent_list)
 		if(current.type == reagent_type)
 			return current.volume
 	return 0
 
-/datum/reagents/proc/get_data(var/reagent_type)
+/datum/reagents/proc/get_data(reagent_type)
 	for(var/datum/reagent/current as anything in reagent_list)
 		if(current.type == reagent_type)
 			return current.get_data()
 	return 0
 
-/datum/reagents/proc/get_overdose(var/datum/reagent/current)
+/datum/reagents/proc/get_overdose(datum/reagent/current)
 	if(current)
 		return initial(current.overdose)
 	return 0
@@ -248,7 +248,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 
 // Removes up to [amount] of reagents from our total, depleting each reagent proportionally
-/datum/reagents/proc/remove_any(var/amount = 1)
+/datum/reagents/proc/remove_any(amount = 1)
 	amount = min(amount, total_volume)
 	if(!amount)
 		return
@@ -264,7 +264,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	process_reactions()
 	return amount
 
-/datum/reagents/proc/trans_to_holder(var/datum/reagents/target, amount = 1, multiplier = 1, copy = 0) // Transfers [amount] reagents from [src] to [target], multiplying them by [multiplier]. Returns actual amount removed from [src] (not amount transferred to [target]).
+/datum/reagents/proc/trans_to_holder(datum/reagents/target, amount = 1, multiplier = 1, copy = 0) // Transfers [amount] reagents from [src] to [target], multiplying them by [multiplier]. Returns actual amount removed from [src] (not amount transferred to [target]).
 	if(!target || !istype(target))
 		return
 
@@ -292,7 +292,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 //not directly injected into the contents. It first calls touch, then the appropriate trans_to_*() or splash_mob().
 //If for some reason touch effects are bypassed (e.g. injecting stuff directly into a reagent container or person),
 //call the appropriate trans_to_*() proc.
-/datum/reagents/proc/trans_to(var/atom/target, amount = 1, multiplier = 1, copy = 0)
+/datum/reagents/proc/trans_to(atom/target, amount = 1, multiplier = 1, copy = 0)
 	touch(target, amount) //First, handle mere touch effects
 
 	if(ismob(target))
@@ -304,7 +304,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	return 0
 
 //Splashing reagents is messier than trans_to, the target's loc gets some of the reagents as well.
-/datum/reagents/proc/splash(var/atom/target, amount = 1, multiplier = 1, copy = 0, min_spill=0, max_spill=60)
+/datum/reagents/proc/splash(atom/target, amount = 1, multiplier = 1, copy = 0, min_spill=0, max_spill=60)
 	var/spill = 0
 	if(!isturf(target) && target.loc)
 		spill = amount*(rand(min_spill, max_spill)/100)
@@ -314,7 +314,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 	trans_to(target, amount, multiplier, copy)
 
-/datum/reagents/proc/trans_type_to(var/atom/target, type, amount = 1, multiplier = 1)
+/datum/reagents/proc/trans_type_to(atom/target, type, amount = 1, multiplier = 1)
 	if (!target || !target.reagents || !target.simulated)
 		return
 
@@ -336,7 +336,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 // This does not handle transferring reagents to things.
 // For example, splashing someone with water will get them wet and extinguish them if they are on fire,
 // even if they are wearing an impermeable suit that prevents the reagents from contacting the skin.
-/datum/reagents/proc/touch(var/atom/target, amount)
+/datum/reagents/proc/touch(atom/target, amount)
 	if(ismob(target))
 		touch_mob(target,amount)
 	if(isturf(target))
@@ -345,7 +345,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 		touch_obj(target,amount)
 	return
 
-/datum/reagents/proc/touch_mob(var/mob/target, amount)
+/datum/reagents/proc/touch_mob(mob/target, amount)
 
 	if(!target || !istype(target) || !target.simulated)
 		return
@@ -355,7 +355,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 	update_total()
 
-/datum/reagents/proc/touch_turf(var/turf/target, amount)
+/datum/reagents/proc/touch_turf(turf/target, amount)
 	if(!target || !istype(target) || !target.simulated)
 		return
 
@@ -364,7 +364,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 	update_total()
 
-/datum/reagents/proc/touch_obj(var/obj/target, amount)
+/datum/reagents/proc/touch_obj(obj/target, amount)
 	if(!target || !istype(target) || !target.simulated)
 		return
 
@@ -376,7 +376,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 // Attempts to place a reagent on the mob's skin.
 // Reagents are not guaranteed to transfer to the target.
 // Do not call this directly, call trans_to() instead.
-/datum/reagents/proc/splash_mob(var/mob/target, amount = 1, copy = 0)
+/datum/reagents/proc/splash_mob(mob/target, amount = 1, copy = 0)
 	var/perm = 1
 	if(isliving(target)) //will we ever even need to tranfer reagents to non-living mobs?
 		var/mob/living/L = target
@@ -422,7 +422,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 		var/weight = worn_items[I]
 		trans_to_obj(I, share*weight)	//Splash each of those items
 
-/datum/reagents/proc/trans_to_mob(var/mob/target, amount = 1, type = CHEM_BLOOD, multiplier = 1, copy = 0) // Transfer after checking into which holder...
+/datum/reagents/proc/trans_to_mob(mob/target, amount = 1, type = CHEM_BLOOD, multiplier = 1, copy = 0) // Transfer after checking into which holder...
 	if(!target || !istype(target) || !target.simulated)
 		return
 	if(iscarbon(target))
@@ -442,7 +442,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 		R.touch_mob(target)
 		qdel(R)
 
-/datum/reagents/proc/trans_to_turf(var/turf/target, amount = 1, multiplier = 1, copy = 0) // Turfs don't have any reagents (at least, for now). Just touch it.
+/datum/reagents/proc/trans_to_turf(turf/target, amount = 1, multiplier = 1, copy = 0) // Turfs don't have any reagents (at least, for now). Just touch it.
 	if(!target || !target.simulated)
 		return
 
@@ -452,7 +452,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	qdel(R)
 	return
 
-/datum/reagents/proc/trans_to_obj(var/obj/target, amount = 1, multiplier = 1, copy = 0) // Objects may or may not; if they do, it's probably a beaker or something and we need to transfer properly; otherwise, just touch.
+/datum/reagents/proc/trans_to_obj(obj/target, amount = 1, multiplier = 1, copy = 0) // Objects may or may not; if they do, it's probably a beaker or something and we need to transfer properly; otherwise, just touch.
 	if(!target || !target.simulated)
 		return
 
@@ -467,7 +467,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 /* Atom reagent creation - use it all the time */
 
-/atom/proc/create_reagents(var/max_vol)
+/atom/proc/create_reagents(max_vol)
 	if(reagents)
 		log_debug("Attempted to create a new reagents holder when already referencing one: [log_info_line(src)]")
 		reagents.maximum_volume = max(reagents.maximum_volume, max_vol)
@@ -481,7 +481,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	Returns true if every reagent in this holder is on that whitelist
 	istype is used, so subtypes count
 */
-/datum/reagents/proc/contains_purely(var/list/types)
+/datum/reagents/proc/contains_purely(list/types)
 	for(var/datum/reagent/current as anything in reagent_list)
 		var/valid = FALSE
 		for (var/test in types)

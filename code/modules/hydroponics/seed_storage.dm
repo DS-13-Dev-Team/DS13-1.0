@@ -12,7 +12,7 @@
 	seeds += O
 	src.ID = ID
 
-/datum/seed_pile/proc/matches(var/obj/item/seeds/O)
+/datum/seed_pile/proc/matches(obj/item/seeds/O)
 	if (O.seed == seed_type)
 		return 1
 	return 0
@@ -321,7 +321,7 @@
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 
-/obj/machinery/seed_storage/proc/add(var/obj/item/seeds/O, bypass_removal = 0)
+/obj/machinery/seed_storage/proc/add(obj/item/seeds/O, bypass_removal = 0)
 	if(!bypass_removal)
 		if (istype(O.loc, /mob))
 			var/mob/user = O.loc

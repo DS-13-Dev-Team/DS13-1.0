@@ -52,7 +52,7 @@
 	if(isnull(val)) val = 0
 	return "[val]"
 
-/datum/random_map/noise/proc/subdivide(var/iteration,var/x,var/y,var/input_size)
+/datum/random_map/noise/proc/subdivide(iteration, x, y, input_size)
 
 	var/isize = input_size
 	var/hsize = round(input_size/2)
@@ -104,7 +104,7 @@
 
  	// Recurse until size is too small to subdivide.
 	if(isize>3)
-		if(!priority_process) 
+		if(!priority_process)
 			CHECK_TICK
 		iteration++
 		subdivide(iteration, x,       y,       hsize)

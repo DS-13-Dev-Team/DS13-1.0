@@ -1,25 +1,25 @@
 /datum/gear_tweak
 	var/show_in_ui = TRUE
 
-/datum/gear_tweak/proc/get_contents(var/metadata)
+/datum/gear_tweak/proc/get_contents(metadata)
 	return
 
-/datum/gear_tweak/proc/get_metadata(var/user, metadata)
+/datum/gear_tweak/proc/get_metadata(user, metadata)
 	return
 
 /datum/gear_tweak/proc/get_default()
 	return
 
-/datum/gear_tweak/proc/tweak_gear_data(var/metadata, datum/gear_data)
+/datum/gear_tweak/proc/tweak_gear_data(metadata, datum/gear_data)
 	return
 
-/datum/gear_tweak/proc/tweak_item(var/obj/item/I, metadata, spawn_location)
+/datum/gear_tweak/proc/tweak_item(obj/item/I, metadata, spawn_location)
 	return
 
-/datum/gear_tweak/proc/tweak_postequip(var/mob/living/carbon/human/H, obj/item/I, equip_slot)
+/datum/gear_tweak/proc/tweak_postequip(mob/living/carbon/human/H, obj/item/I, equip_slot)
 	return
 
-/datum/gear_tweak/proc/tweak_description(var/description, metadata)
+/datum/gear_tweak/proc/tweak_description(description, metadata)
 	return description
 
 /*

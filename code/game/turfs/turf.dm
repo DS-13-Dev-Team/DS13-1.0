@@ -204,7 +204,7 @@ var/const/enterloopsanity = 100
 /turf/proc/is_plating()
 	return FALSE
 
-/turf/proc/protects_atom(var/atom/A)
+/turf/proc/protects_atom(atom/A)
 	return FALSE
 
 /turf/proc/inertial_drift(atom/movable/A)
@@ -225,7 +225,7 @@ var/const/enterloopsanity = 100
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && !is_plating())
 
-/turf/proc/AdjacentTurfs(var/check_blockage = TRUE)
+/turf/proc/AdjacentTurfs(check_blockage = TRUE)
 	. = list()
 	for(var/turf/t in (trange(1,src) - src))
 		if(check_blockage)
@@ -235,7 +235,7 @@ var/const/enterloopsanity = 100
 		else
 			. += t
 
-/turf/proc/CardinalTurfs(var/check_blockage = TRUE)
+/turf/proc/CardinalTurfs(check_blockage = TRUE)
 	. = list()
 	for(var/ad in AdjacentTurfs(check_blockage))
 		var/turf/T = ad

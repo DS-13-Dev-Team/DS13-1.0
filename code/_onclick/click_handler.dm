@@ -75,7 +75,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	//This isn't used internally, but some external things may check it
 	var/left_mousedown = FALSE
 
-/datum/click_handler/New(var/mob/user)
+/datum/click_handler/New(mob/user)
 	..()
 	src.user = user
 	if(flags & (CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
@@ -112,34 +112,34 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 /datum/click_handler/proc/OnMobLogout()
 	user.RemoveClickHandler(src)
 
-/datum/click_handler/proc/OnClick(var/atom/A, params)
+/datum/click_handler/proc/OnClick(atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnMiddleClick(var/atom/A, params)
+/datum/click_handler/proc/OnMiddleClick(atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnLeftClick(var/atom/A, params)
+/datum/click_handler/proc/OnLeftClick(atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnRightClick(var/atom/A, params)
+/datum/click_handler/proc/OnRightClick(atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnDblClick(var/atom/A, params)
+/datum/click_handler/proc/OnDblClick(atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnCtrlClick(var/atom/A, params)
+/datum/click_handler/proc/OnCtrlClick(atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnAltClick(var/atom/A, params)
+/datum/click_handler/proc/OnAltClick(atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnShiftClick(var/atom/A, params)
+/datum/click_handler/proc/OnShiftClick(atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnCtrlAltClick(var/atom/A, params)
+/datum/click_handler/proc/OnCtrlAltClick(atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnCtrlShiftClick(var/atom/A, params)
+/datum/click_handler/proc/OnCtrlShiftClick(atom/A, params)
 	return TRUE
 
 /datum/click_handler/proc/MouseDown(object,location,control,params)
@@ -157,18 +157,18 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	return TRUE
 
 
-/datum/click_handler/default/OnClick(var/atom/A, params)
+/datum/click_handler/default/OnClick(atom/A, params)
 	user.ClickOn(A, params)
 	return TRUE
 
-/datum/click_handler/default/OnDblClick(var/atom/A, params)
+/datum/click_handler/default/OnDblClick(atom/A, params)
 	user.DblClickOn(A, params)
 	return TRUE
 
 //Tests whether the target thing is valid, and returns it if so.
 //If its not valid, null will be returned
 //In the case of click catchers, we resolve and return the turf under it
-/datum/click_handler/proc/resolve_world_target(var/a, params)
+/datum/click_handler/proc/resolve_world_target(a, params)
 	if (params && user && user.client)
 		var/b = user.client.resolve_drag(a, params)
 		if (a != b)
@@ -187,14 +187,14 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	return null
 
 
-/mob/proc/GetClickHandler(var/datum/click_handler/popped_handler)
+/mob/proc/GetClickHandler(datum/click_handler/popped_handler)
 	if(!click_handlers)
 		click_handlers = new()
 	if(IS_EMPTY(click_handlers.stack))
 		PushClickHandler(/datum/click_handler/default)
 	return click_handlers.Top()
 
-/mob/proc/GetClickHandlerByType(var/required_type)
+/mob/proc/GetClickHandlerByType(required_type)
 	var/datum/stack/CHL = GetClickHandlers()
 	while (CHL.Num())
 		var/datum/click_handler/CH = CHL.Pop()
@@ -211,7 +211,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		PushClickHandler(/datum/click_handler/default)
 	return click_handlers.Copy()
 
-/mob/proc/RemoveClickHandler(var/datum/click_handler/click_handler)
+/mob/proc/RemoveClickHandler(datum/click_handler/click_handler)
 	if(!click_handlers)
 		return
 
@@ -230,7 +230,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	if(click_handler)
 		click_handler.Enter()
 
-/mob/proc/RemoveClickHandlersByType(var/typepath)
+/mob/proc/RemoveClickHandlersByType(typepath)
 	if(!click_handlers)
 		return
 
@@ -245,7 +245,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	RemoveClickHandler(click_handlers.Top())
 
 //Extra variables can be passed in here, and they will be propagated through to clickhandler /New
-/mob/proc/PushClickHandler(var/datum/click_handler/new_click_handler_type)
+/mob/proc/PushClickHandler(datum/click_handler/new_click_handler_type)
 	var/list/newarguments = list(src)
 	if (length(args) > 1)
 		newarguments = newarguments + args.Copy(2)
@@ -268,7 +268,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 //Creates a new click handler of the supplied type, but only if the mob does not already have one.
 //If one exists, the existing is returned instead
-/mob/proc/PushUniqueClickHandler(var/datum/click_handler/new_click_handler_type)
+/mob/proc/PushUniqueClickHandler(datum/click_handler/new_click_handler_type)
 	var/existing = GetClickHandlerByType(new_click_handler_type)
 	if (existing)
 		return existing

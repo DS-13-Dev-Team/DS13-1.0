@@ -2,7 +2,7 @@
 	var/list/items
 	var/list/items_by_category
 
-/mob/living/deity/proc/set_items(var/list/_items)
+/mob/living/deity/proc/set_items(list/_items)
 	items = _items
 	items_by_category = list()
 	for(var/i in items)
@@ -11,13 +11,13 @@
 			items_by_category[di.category] = list()
 		items_by_category[di.category] += di
 
-/mob/living/deity/proc/has_item(var/name, minimum_level = 1)
+/mob/living/deity/proc/has_item(name, minimum_level = 1)
 	if(!(name in items))
 		return FALSE
 	var/datum/deity_item/di = items[name]
 	. = di.level >= minimum_level
 
-/mob/living/deity/proc/upgrade_item(var/name)
+/mob/living/deity/proc/upgrade_item(name)
 	if(!(name in items))
 		return FALSE
 	var/datum/deity_item/di = items[name]
@@ -26,7 +26,7 @@
 	di.buy(src)
 	. = TRUE
 
-/mob/living/deity/proc/get_item_level(var/name)
+/mob/living/deity/proc/get_item_level(name)
 	. = 0
 	if(items[name])
 		var/datum/deity_item/di = items[name]

@@ -17,7 +17,7 @@ They should also be used for when you want to effect the ENTIRE mob, like having
 		user.remove_aura(src)
 	return ..()
 
-/obj/aura/proc/added_to(var/mob/living/target)
+/obj/aura/proc/added_to(mob/living/target)
 	user = target
 
 /obj/aura/proc/removed()

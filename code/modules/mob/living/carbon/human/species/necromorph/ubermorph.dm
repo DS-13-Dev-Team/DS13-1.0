@@ -224,7 +224,7 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 
 	We completely replace the charge_attack proc, as we have different safety checks
 */
-/mob/living/carbon/human/proc/ubermorph_lunge(var/atom/A)
+/mob/living/carbon/human/proc/ubermorph_lunge(atom/A)
 	set name = "Lunge"
 	set category = "Abilities"
 	set desc = "A shortrange charge which causes heavy internal damage to one victim. Often fatal. HK: Alt+Click:"

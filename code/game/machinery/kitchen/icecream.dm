@@ -31,7 +31,7 @@
 /obj/machinery/icecream_vat/harvest_biomass()
 	return BIOMASS_HARVEST_SMALL
 
-/obj/machinery/icecream_vat/proc/get_ingredient_list(var/type)
+/obj/machinery/icecream_vat/proc/get_ingredient_list(type)
 	switch(type)
 		if(ICECREAM_CHOCOLATE)
 			return list(/datum/reagent/drink/milk, /datum/reagent/drink/ice, /datum/reagent/nutriment/coco)
@@ -50,7 +50,7 @@
 		else
 			return list(/datum/reagent/drink/milk, /datum/reagent/drink/ice)
 
-/obj/machinery/icecream_vat/proc/get_flavour_name(var/flavour_type)
+/obj/machinery/icecream_vat/proc/get_flavour_name(flavour_type)
 	switch(flavour_type)
 		if(ICECREAM_CHOCOLATE)
 			return "chocolate"
@@ -129,7 +129,7 @@
 	else
 		..()
 
-/obj/machinery/icecream_vat/proc/make(var/mob/user, make_type, amount)
+/obj/machinery/icecream_vat/proc/make(mob/user, make_type, amount)
 	for(var/R in get_ingredient_list(make_type))
 		if(reagents.has_reagent(R, amount))
 			continue
@@ -201,7 +201,7 @@
 	create_reagents(20)
 	reagents.add_reagent(/datum/reagent/nutriment, 5)
 
-/obj/item/weapon/reagent_containers/food/snacks/icecream/proc/add_ice_cream(var/flavour_name)
+/obj/item/weapon/reagent_containers/food/snacks/icecream/proc/add_ice_cream(flavour_name)
 	name = "[flavour_name] icecream"
 	src.overlays += "icecream_[flavour_name]"
 	desc = "Delicious [cone_type] cone with a dollop of [flavour_name] ice cream."

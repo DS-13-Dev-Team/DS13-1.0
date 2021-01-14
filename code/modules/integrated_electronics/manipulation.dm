@@ -154,7 +154,7 @@
 		circuit_move(assembly)
 		return
 
-/obj/item/integrated_circuit/manipulation/locomotion/proc/circuit_move(var/obj/item/moving_object)
+/obj/item/integrated_circuit/manipulation/locomotion/proc/circuit_move(obj/item/moving_object)
 	step(moving_object, moving_object.dir)
 
 /obj/item/integrated_circuit/manipulation/locomotion/simple
@@ -253,7 +253,7 @@
 		log_and_message_admins("activated a grenade assembly. Last touches: Assembly: [holder.fingerprintslast] Circuit: [fingerprintslast] Grenade: [attached_grenade.fingerprintslast]")
 
 // These procs do not relocate the grenade, that's the callers responsibility
-/obj/item/integrated_circuit/manipulation/grenade/proc/attach_grenade(var/obj/item/weapon/grenade/G)
+/obj/item/integrated_circuit/manipulation/grenade/proc/attach_grenade(obj/item/weapon/grenade/G)
 	attached_grenade = G
 	GLOB.destroyed_event.register(attached_grenade, src, /obj/item/integrated_circuit/manipulation/grenade/proc/detach_grenade)
 	size += G.w_class
@@ -349,7 +349,7 @@
 		if(8)
 			activate_pin(4)
 
-/obj/item/integrated_circuit/manipulation/ai/proc/load_ai(var/mob/user, obj/item/card)
+/obj/item/integrated_circuit/manipulation/ai/proc/load_ai(mob/user, obj/item/card)
 	if(controlling)
 		to_chat(user, "<span class='warning'>There is already a card in there!</span>")
 		return

@@ -35,7 +35,7 @@
 	else
 		..()
 
-/obj/structure/undies_wardrobe/proc/remove_id_card(var/id_card)
+/obj/structure/undies_wardrobe/proc/remove_id_card(id_card)
 	LAZYREMOVE(amount_of_underwear_by_id_card, id_card)
 	GLOB.destroyed_event.unregister(id_card, src, /obj/structure/undies_wardrobe/proc/remove_id_card)
 
@@ -57,7 +57,7 @@
 	dat = jointext(dat,null)
 	show_browser(H, dat, "window=wardrobe;size=400x250")
 
-/obj/structure/undies_wardrobe/proc/human_who_can_use_underwear(var/mob/living/carbon/human/H)
+/obj/structure/undies_wardrobe/proc/human_who_can_use_underwear(mob/living/carbon/human/H)
 	if(!istype(H) || !H.species || !(H.species.appearance_flags & HAS_UNDERWEAR))
 		return FALSE
 	return TRUE
@@ -112,7 +112,7 @@
 	if(.)
 		interact(H)
 
-/obj/structure/undies_wardrobe/proc/exlude_none(var/list/L)
+/obj/structure/undies_wardrobe/proc/exlude_none(list/L)
 	. = L.Copy()
 	for(var/e in .)
 		var/datum/category_item/underwear/UWI = e

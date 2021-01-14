@@ -71,7 +71,7 @@
 	if (!content_atoms.len && !reagents.reagent_list.len)
 		turn_off()
 
-/obj/machinery/recycling_tank/proc/add_purified_biomass(var/quantity)
+/obj/machinery/recycling_tank/proc/add_purified_biomass(quantity)
 	if (!storage)
 		return FALSE
 
@@ -87,7 +87,7 @@
 
 
 
-/obj/machinery/recycling_tank/proc/is_valid(var/atom/test, mob/user)
+/obj/machinery/recycling_tank/proc/is_valid(atom/test, mob/user)
 	if (test.get_biomass())
 		return TRUE
 	else
@@ -125,7 +125,7 @@
 
 
 
-/obj/machinery/recycling_tank/proc/try_insert_atom(var/atom/A, mob/user)
+/obj/machinery/recycling_tank/proc/try_insert_atom(atom/A, mob/user)
 	if(!is_valid(A, user))
 		return
 
@@ -137,7 +137,7 @@
 
 
 //This one doesnt do safety checks, and assumes the atom is on a turf or already in us
-/obj/machinery/recycling_tank/proc/insert_atom(var/atom/movable/A, mob/user)
+/obj/machinery/recycling_tank/proc/insert_atom(atom/movable/A, mob/user)
 	A.forceMove(src)
 	content_atoms |= A
 	playsound(src, 'sound/machines/tankbiorecycle.ogg', VOLUME_LOW)

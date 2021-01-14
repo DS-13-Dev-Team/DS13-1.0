@@ -183,7 +183,7 @@
 		qdel(src)
 
 // Do not call this directly - use SHECK or SCHECK_EVERY
-/datum/controller/process/proc/sleepCheck(var/tickId = 0)
+/datum/controller/process/proc/sleepCheck(tickId = 0)
 	calls_since_last_scheck = 0
 	if (killed)
 		// The kill proc is the only place where killed is set.
@@ -247,7 +247,7 @@
 /datum/controller/process/proc/getStatus()
 	return status
 
-/datum/controller/process/proc/getStatusText(var/s = 0)
+/datum/controller/process/proc/getStatusText(s = 0)
 	if(!s)
 		s = status
 	switch(s)
@@ -272,15 +272,15 @@
 /datum/controller/process/proc/getPreviousStatusText()
 	return getStatusText(previousStatus)
 
-/datum/controller/process/proc/setStatus(var/newStatus)
+/datum/controller/process/proc/setStatus(newStatus)
 	previousStatus = status
 	status = newStatus
 
-/datum/controller/process/proc/setLastTask(var/task, object)
+/datum/controller/process/proc/setLastTask(task, object)
 	last_task = task
 	last_object = object
 
-/datum/controller/process/proc/_copyStateFrom(var/datum/controller/process/target)
+/datum/controller/process/proc/_copyStateFrom(datum/controller/process/target)
 	main = target.main
 	name = target.name
 	schedule_interval = target.schedule_interval
@@ -293,7 +293,7 @@
 	last_object = target.last_object
 	copyStateFrom(target)
 
-/datum/controller/process/proc/copyStateFrom(var/datum/controller/process/target)
+/datum/controller/process/proc/copyStateFrom(datum/controller/process/target)
 
 /datum/controller/process/proc/onKill()
 
@@ -327,7 +327,7 @@
 	var/highestRunTime = round(getHighestRunTime(), 0.1)/10
 	stat("[name]", "T#[getTicks()] | AR [averageRunTime] | LR [lastRunTime] | HR [highestRunTime] | D [cpu_defer_count]")
 
-/datum/controller/process/proc/catchException(var/exception/e, thrower)
+/datum/controller/process/proc/catchException(exception/e, thrower)
 	if(istype(e)) // Real runtimes go to the real error handler
 		throw e
 	var/etext = "[e]"
@@ -353,7 +353,7 @@
 		spawn(6000)
 			exceptions[eid] = 0
 
-/datum/controller/process/proc/catchBadType(var/datum/caught)
+/datum/controller/process/proc/catchBadType(datum/caught)
 	if(isnull(caught) || !istype(caught) || QDELETED(caught))
 		return // Only bother with types we can identify and that don't belong
 	catchException("Type [caught.type] does not belong in process' queue")

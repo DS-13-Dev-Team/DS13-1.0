@@ -37,7 +37,7 @@ var/datum/uplink/uplink = new()
 /datum/uplink_item/item
 	var/path = null
 
-/datum/uplink_item/proc/buy(var/obj/item/device/uplink/U, mob/user)
+/datum/uplink_item/proc/buy(obj/item/device/uplink/U, mob/user)
 	var/extra_args = extra_args(user)
 	if(!extra_args)
 		return
@@ -57,7 +57,7 @@ var/datum/uplink/uplink = new()
 	return goods
 
 // Any additional arguments you wish to send to the get_goods
-/datum/uplink_item/proc/extra_args(var/mob/user)
+/datum/uplink_item/proc/extra_args(mob/user)
 	return 1
 
 /datum/uplink_item/proc/can_buy(obj/item/device/uplink/U)
@@ -83,7 +83,7 @@ var/datum/uplink/uplink = new()
 			return !("Exclude" in antag_roles)
 	return ("Exclude" in antag_roles)
 
-/datum/uplink_item/proc/cost(var/telecrystals, obj/item/device/uplink/U)
+/datum/uplink_item/proc/cost(telecrystals, obj/item/device/uplink/U)
 	. = item_cost
 	if(U && U.uplink_owner)
 		for(var/antag_role in antag_costs)
@@ -99,7 +99,7 @@ var/datum/uplink/uplink = new()
 	return desc
 
 // get_goods does not necessarily return physical objects, it is simply a way to acquire the uplink item without paying
-/datum/uplink_item/proc/get_goods(var/obj/item/device/uplink/U, loc)
+/datum/uplink_item/proc/get_goods(obj/item/device/uplink/U, loc)
 	return 0
 
 /datum/uplink_item/proc/log_icon()
@@ -151,7 +151,7 @@ datum/uplink_item/dd_SortValue()
 /****************
 * Support procs *
 ****************/
-/proc/get_random_uplink_items(var/obj/item/device/uplink/U, remaining_TC, loc)
+/proc/get_random_uplink_items(obj/item/device/uplink/U, remaining_TC, loc)
 	var/list/bought_items = list()
 	while(remaining_TC)
 		var/datum/uplink_random_selection/uplink_selection = get_uplink_random_selection_by_type(/datum/uplink_random_selection/default)

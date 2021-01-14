@@ -59,7 +59,7 @@
 
 	var/spell/mark_recall/spell
 
-/obj/effect/cleanable/wizard_mark/New(var/newloc,var/mrspell)
+/obj/effect/cleanable/wizard_mark/New(var/newloc, mrspell)
 	..()
 	spell = mrspell
 

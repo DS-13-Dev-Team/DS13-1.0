@@ -9,7 +9,7 @@
 	anchored = 0.0
 	force = 1.0
 	throwforce = 1.0
-	
+
 	throw_range = 2
 	w_class = ITEM_SIZE_TINY
 	var/access = list()
@@ -162,7 +162,7 @@
 	desc = "It's worth 10000 Credits."
 	worth = 10000
 
-proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
+proc/spawn_money(sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	if(sum in list(1000,500,200,100,50,20,10,1))
 		var/cash_type = text2path("/obj/item/weapon/spacecash/bundle/c[sum]")
 		var/obj/cash = new cash_type (usr.loc)

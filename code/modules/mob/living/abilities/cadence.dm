@@ -67,7 +67,7 @@
 
 
 
-/datum/extension/cadence/proc/holder_moved(var/atom/movable/am, atom/old_loc, atom/new_loc)
+/datum/extension/cadence/proc/holder_moved(atom/movable/am, atom/old_loc, atom/new_loc)
 	//Going straight up or down a level causes a runtime without this
 	if (old_loc.x == new_loc.x && old_loc.y == new_loc.y)
 		return
@@ -100,7 +100,7 @@
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/cadence/proc/stop), duration, TIMER_STOPPABLE)
 
 //Increase or decrease the speed by a number of steps
-/datum/extension/cadence/proc/modify_speed(var/steps)
+/datum/extension/cadence/proc/modify_speed(steps)
 	//If the mob has been deleted, we will be soon too. all is well, do nothing
 	if (QDELETED(user))
 		return

@@ -14,7 +14,7 @@
  */
 
 // Run all strings to be used in an SQL query through this proc first to properly escape out injection attempts.
-/proc/sanitizeSQL(var/t as text)
+/proc/sanitizeSQL(t as text)
 	var/sqltext = dbcon.Quote(t);
 	return copytext(sqltext, 2, length(sqltext));//Quote() adds quotes around input, we already do that
 
@@ -23,7 +23,7 @@
  */
 
 
-/proc/sanitizeFileName(var/input)
+/proc/sanitizeFileName(input)
 	input = replace_characters(input, list(" "="_", "\\" = "_", "\""="'", "/" = "_", ":" = "_", "*" = "_", "?" = "_", "|" = "_", "<" = "_", ">" = "_"))
 	if(findtext(input,"_") == 1)
 		input = copytext(input, 2)
@@ -32,7 +32,7 @@
 
 //Used for preprocessing entered text
 //Added in an additional check to alert players if input is too long
-/proc/sanitize(var/input, max_length = MAX_MESSAGE_LEN, encode = 1, trim = 1, extra = 1, allow_links = TRUE)
+/proc/sanitize(input, max_length = MAX_MESSAGE_LEN, encode = 1, trim = 1, extra = 1, allow_links = TRUE)
 	if(!input)
 		return
 
@@ -71,11 +71,11 @@
 //Best used for sanitize object names, window titles.
 //If you have a problem with sanitize() in chat, when quotes and >, < are displayed as html entites -
 //this is a problem of double-encode(when & becomes &amp;), use sanitize() with encode=0, but not the sanitizeSafe()!
-/proc/sanitizeSafe(var/input, max_length = MAX_MESSAGE_LEN, encode = 1, trim = 1, extra = 1, allow_links = TRUE)
+/proc/sanitizeSafe(input, max_length = MAX_MESSAGE_LEN, encode = 1, trim = 1, extra = 1, allow_links = TRUE)
 	return sanitize(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra,  allow_links)
 
 //Filters out undesirable characters from names
-/proc/sanitizeName(var/input, max_length = MAX_NAME_LEN, allow_numbers = 0, force_first_letter_uppercase = TRUE)
+/proc/sanitizeName(input, max_length = MAX_NAME_LEN, allow_numbers = 0, force_first_letter_uppercase = TRUE)
 	if(!input || length(input) > max_length)
 		return //Rejects the input if it is null or if it is longer then the max length allowed
 
@@ -167,7 +167,7 @@
 	return jointext(dat, null)
 
 //Returns null if there is any bad text in the string
-/proc/reject_bad_text(var/text, max_length=512)
+/proc/reject_bad_text(text, max_length=512)
 	if(length(text) > max_length)	return			//message too long
 	var/non_whitespace = 0
 	for(var/i=1, i<=length(text), i++)
@@ -181,7 +181,7 @@
 
 
 //Old variant. Haven't dared to replace in some places.
-/proc/sanitize_old(var/t,var/list/repl_chars = list("\n"="#","\t"="#"))
+/proc/sanitize_old(t,list/repl_chars = list("\n"="#","\t"="#"))
 	return html_encode(replace_characters(t,repl_chars))
 
 /*
@@ -221,7 +221,7 @@
  * Text modification
  */
 
-/proc/replace_characters(var/t,var/list/repl_chars)
+/proc/replace_characters(t, list/repl_chars)
 	for(var/char in repl_chars)
 		t = replacetext(t, char, repl_chars[char])
 	return t
@@ -263,12 +263,12 @@
 	return trim_left(trim_right(text))
 
 //Returns a string with the first element of the string capitalized.
-/proc/capitalize(var/t as text)
+/proc/capitalize(t as text)
 	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
 
 //This proc strips html properly, remove < > and all text between
 //for complete text sanitizing should be used sanitize()
-/proc/strip_html_properly(var/input)
+/proc/strip_html_properly(input)
 	if(!input)
 		return
 	var/opentag = 1 //These store the position of < and > respectively.
@@ -294,7 +294,7 @@
 //This proc fills in all spaces with the "replace" var (* by default) with whatever
 //is in the other string at the same spot (assuming it is not a replace char).
 //This is used for fingerprints
-/proc/stringmerge(var/text,var/compare,replace = "*")
+/proc/stringmerge(text, compare,replace = "*")
 	var/newtext = text
 	if(length(text) != length(compare))
 		return 0
@@ -314,7 +314,7 @@
 
 //This proc returns the number of chars of the string that is the character
 //This is used for detective work to determine fingerprint completion.
-/proc/stringpercent(var/text,character = "*")
+/proc/stringpercent(text,character = "*")
 	if(!text || !character)
 		return 0
 	var/count = 0
@@ -324,7 +324,7 @@
 			count++
 	return count
 
-/proc/reverse_text(var/text = "")
+/proc/reverse_text(text = "")
 	var/new_text = ""
 	for(var/i = length(text); i > 0; i--)
 		new_text += copytext(text, i, i+1)
@@ -332,7 +332,7 @@
 
 //Used in preferences' SetFlavorText and human's set_flavor verb
 //Previews a string of len or less length
-proc/TextPreview(var/string,var/len=40)
+proc/TextPreview(string, len=40)
 	if(length(string) <= len)
 		if(!length(string))
 			return "\[...\]"
@@ -342,19 +342,19 @@ proc/TextPreview(var/string,var/len=40)
 		return "[copytext_preserve_html(string, 1, 37)]..."
 
 //alternative copytext() for encoded text, doesn't break html entities (&#34; and other)
-/proc/copytext_preserve_html(var/text, first, last)
+/proc/copytext_preserve_html(text, first, last)
 	return html_encode(copytext(html_decode(text), first, last))
 
 //For generating neat chat tag-images
 //The icon var could be local in the proc, but it's a waste of resources
 //	to always create it and then throw it out.
 /var/icon/text_tag_icons = new('./icons/chattags.dmi')
-/proc/create_text_tag(var/tagname, tagdesc = tagname, client/C = null)
+/proc/create_text_tag(tagname, tagdesc = tagname, client/C = null)
 	if(!(C && C.get_preference_value(/datum/client_preference/chat_tags) == GLOB.PREF_SHOW))
 		return tagdesc
 	return "<IMG src='\ref[text_tag_icons.icon]' class='text_tag' iconstate='[tagname]'" + (tagdesc ? " alt='[tagdesc]'" : "") + ">"
 
-/proc/contains_az09(var/input)
+/proc/contains_az09(input)
 	for(var/i=1, i<=length(input), i++)
 		var/ascii_char = text2ascii(input,i)
 		switch(ascii_char)
@@ -370,7 +370,7 @@ proc/TextPreview(var/string,var/len=40)
 				return 1
 	return 0
 
-/proc/generateRandomString(var/length)
+/proc/generateRandomString(length)
 	. = list()
 	for(var/a in 1 to length)
 		var/letter = rand(33,126)
@@ -527,7 +527,7 @@ proc/TextPreview(var/string,var/len=40)
 	if(rest)
 		. += .(rest)
 
-/proc/deep_string_equals(var/A, B)
+/proc/deep_string_equals(A, B)
 	if (length(A) != length(B))
 		return FALSE
 	for (var/i = 1 to length(A))
@@ -536,7 +536,7 @@ proc/TextPreview(var/string,var/len=40)
 	return TRUE
 
 // If char isn't part of the text the entire text is returned
-/proc/copytext_after_last(var/text, char)
+/proc/copytext_after_last(text, char)
 	var/regex/R = regex("(\[^[char]\]*)$")
 	R.Find(text)
 	return R.group[1]
@@ -544,7 +544,7 @@ proc/TextPreview(var/string,var/len=40)
 
 //Generates a clickable link which will jump the camera/ghost to the target atom
 //Useful for admin procs
-/proc/jumplink(var/atom/target)
+/proc/jumplink(atom/target)
 	if (QDELETED(target))
 		return ""
 	var/turf/T = get_turf(target)
@@ -554,7 +554,7 @@ proc/TextPreview(var/string,var/len=40)
 	return whereLink
 
 
-/proc/jumplink_public(var/mob/user, atom/target)
+/proc/jumplink_public(mob/user, atom/target)
 	if (QDELETED(target))
 		return ""
 	var/turf/T = get_turf(target)
@@ -564,7 +564,7 @@ proc/TextPreview(var/string,var/len=40)
 	return whereLink
 
 
-/proc/link_necromorphs_to(var/message, target)
+/proc/link_necromorphs_to(message, target)
 	for (var/ckey in SSnecromorph.necromorph_players)
 		if (!ckey)
 			continue
@@ -576,7 +576,7 @@ proc/TextPreview(var/string,var/len=40)
 
 
 
-/proc/contains_links(var/message)
+/proc/contains_links(message)
 	if (findtext(message, "://"))
 		return TRUE
 	if (findtext(message, "href"))
@@ -589,7 +589,7 @@ proc/TextPreview(var/string,var/len=40)
 #define REFLEXIVE			2
 #define SUBJECTIVE_PERSONAL	3
 #define OBJECTIVE_PERSONAL	4
-/mob/proc/get_pronoun(var/type)
+/mob/proc/get_pronoun(type)
 	switch (type)
 		if (POSESSIVE_PRONOUN)
 			switch(gender)

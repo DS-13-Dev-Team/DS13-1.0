@@ -15,8 +15,8 @@
 /datum/extension/craft_lockout/proc/stop()
 	remove_extension(holder, /datum/extension/craft_lockout)
 
-/proc/apply_craft_lockout(var/mob/user, time)
+/proc/apply_craft_lockout(mob/user, time)
 	set_extension(user, /datum/extension/craft_lockout, time)
 
-/proc/release_craft_lockout(var/mob/user)
+/proc/release_craft_lockout(mob/user)
 	remove_extension(user, /datum/extension/craft_lockout)

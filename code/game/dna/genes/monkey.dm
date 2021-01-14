@@ -4,7 +4,7 @@
 /datum/dna/gene/monkey/New()
 	block=GLOB.MONKEYBLOCK
 
-/datum/dna/gene/monkey/can_activate(var/mob/M,var/flags)
+/datum/dna/gene/monkey/can_activate(var/mob/M, flags)
 	return istype(M, /mob/living/carbon/human) || istype(M,/mob/living/carbon/monkey)
 
 /datum/dna/gene/monkey/activate(var/mob/living/M, connected, flags)

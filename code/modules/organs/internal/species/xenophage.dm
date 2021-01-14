@@ -11,7 +11,7 @@
 	desc = "It smells like an accident in a chemical factory."
 	var/associated_power = /mob/living/carbon/human/proc/resin
 
-/obj/item/organ/internal/xeno/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
+/obj/item/organ/internal/xeno/replaced(var/mob/living/carbon/human/target, obj/item/organ/external/affected)
 	. = ..()
 	if(ishuman(owner) && associated_power)
 		owner.verbs |= associated_power
@@ -88,7 +88,7 @@
 			GLOB.xenomorphs.remove_antagonist(H.mind)
 	..(user)
 
-/obj/item/organ/internal/xeno/hivenode/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
+/obj/item/organ/internal/xeno/hivenode/replaced(var/mob/living/carbon/human/target, obj/item/organ/external/affected)
 	if(!..()) return 0
 
 	if(owner && ishuman(owner))

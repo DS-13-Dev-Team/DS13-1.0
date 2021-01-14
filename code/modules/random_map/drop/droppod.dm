@@ -123,7 +123,7 @@
 	else if(value == SD_SUPPLY_TILE)
 		get_spawned_drop(T)
 
-/datum/random_map/droppod/proc/get_spawned_drop(var/turf/T)
+/datum/random_map/droppod/proc/get_spawned_drop(turf/T)
 	var/obj/structure/bed/chair/C = new(T)
 	C.set_light(0.5, 0.1, 3, 2, l_color = "#cc0000")
 	var/mob/living/drop

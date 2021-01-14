@@ -182,7 +182,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	Inertia is enabled, it will keep going til it faceplants into a wall
 	Unlike other mobs, the brute's charge has no autotargeting
 */
-/atom/movable/proc/brute_charge(var/atom/A)
+/atom/movable/proc/brute_charge(atom/A)
 	set name = "Charge"
 	set category = "Abilities"
 
@@ -199,7 +199,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 		shake_animation(50)
 
 
-/atom/movable/proc/brute_slam(var/atom/A)
+/atom/movable/proc/brute_slam(atom/A)
 	set name = "Slam"
 	set category = "Abilities"
 
@@ -328,7 +328,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	return ..()
 
 //Brute armor does various neat effects if it fully blocks a hit
-/datum/species/necromorph/brute/proc/handle_armor_bounceoff(var/mob/user, atom/A)
+/datum/species/necromorph/brute/proc/handle_armor_bounceoff(mob/user, atom/A)
 	if (isprojectile(A))
 		//Projectiles will ricochet off in a random direction
 		var/obj/item/projectile/P = A
@@ -357,7 +357,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 /*
 	Bio-bomb
 */
-/mob/living/carbon/human/proc/biobomb(var/atom/A)
+/mob/living/carbon/human/proc/biobomb(atom/A)
 	set name = "Bio-bomb"
 	set category = "Abilities"
 	set desc = "A moderate-strength projectile for longrange shooting. HK: Middleclick"

@@ -21,7 +21,7 @@ var/global/datum/controller/occupations/job_master
 		//Cache of icons for job info window
 	var/list/job_icons = list()
 
-	proc/SetupOccupations(var/setup_titles = 0)
+	proc/SetupOccupations(setup_titles = 0)
 		occupations = list()
 		occupations_by_type = list()
 		occupations_by_title = list()
@@ -70,20 +70,20 @@ var/global/datum/controller/occupations/job_master
 		return TRUE
 
 
-	proc/Debug(var/text)
+	proc/Debug(text)
 		if(!Debug2)	return FALSE
 		job_debug.Add(text)
 		return TRUE
 
 
-	proc/GetJob(var/rank)
+	proc/GetJob(rank)
 		if(!rank)	return null
 		for(var/datum/job/J in occupations)
 			if(!J)	continue
 			if(J.title == rank)	return J
 		return null
 
-	proc/ShouldCreateRecords(var/rank)
+	proc/ShouldCreateRecords(rank)
 		if(!rank) return FALSE
 		var/datum/job/job = GetJob(rank)
 		if(!job) return FALSE
@@ -92,7 +92,7 @@ var/global/datum/controller/occupations/job_master
 	proc/GetPlayerAltTitle(mob/new_player/player, rank)
 		return player.client.prefs.GetPlayerAltTitle(GetJob(rank))
 
-	proc/CheckGeneralJoinBlockers(var/mob/new_player/joining, datum/job/job)
+	proc/CheckGeneralJoinBlockers(mob/new_player/joining, datum/job/job)
 		if(!istype(joining) || !joining.client || !joining.client.prefs)
 			return FALSE
 		if(!istype(job))
@@ -109,7 +109,7 @@ var/global/datum/controller/occupations/job_master
 			return FALSE
 		return TRUE
 
-	proc/CheckLatejoinBlockers(var/mob/new_player/joining, datum/job/job)
+	proc/CheckLatejoinBlockers(mob/new_player/joining, datum/job/job)
 		if(!CheckGeneralJoinBlockers(joining, job))
 			return FALSE
 		if(job.minimum_character_age && (joining.client.prefs.age < job.minimum_character_age))
@@ -123,7 +123,7 @@ var/global/datum/controller/occupations/job_master
 			return FALSE
 		return TRUE
 
-	proc/CheckUnsafeSpawn(var/mob/living/spawner, turf/spawn_turf)
+	proc/CheckUnsafeSpawn(mob/living/spawner, turf/spawn_turf)
 		var/radlevel = SSradiation.get_rads_at_turf(spawn_turf)
 		var/airstatus = IsTurfAtmosUnsafe(spawn_turf)
 		if(airstatus || radlevel > 0)
@@ -137,7 +137,7 @@ var/global/datum/controller/occupations/job_master
 				log_and_message_admins("User [spawner] spawned at spawn point with dangerous atmosphere.")
 		return TRUE
 
-	proc/AssignRole(var/mob/new_player/player, rank, latejoin = 0)
+	proc/AssignRole(mob/new_player/player, rank, latejoin = 0)
 		Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 		if(player && player.mind && rank)
 			var/datum/job/job = GetJob(rank)
@@ -165,7 +165,7 @@ var/global/datum/controller/occupations/job_master
 		Debug("AR has failed, Player: [player], Rank: [rank]")
 		return FALSE
 
-	proc/FreeRole(var/rank)	//making additional slot on the fly
+	proc/FreeRole(rank)	//making additional slot on the fly
 		var/datum/job/job = GetJob(rank)
 		if(job && !job.is_position_available())
 			job.make_position_available()
@@ -193,7 +193,7 @@ var/global/datum/controller/occupations/job_master
 				candidates += player
 		return candidates
 
-	proc/GiveRandomJob(var/mob/new_player/player)
+	proc/GiveRandomJob(mob/new_player/player)
 		Debug("GRJ Giving random job, Player: [player]")
 		for(var/datum/job/job in shuffle(occupations))
 			if(!job)
@@ -277,7 +277,7 @@ var/global/datum/controller/occupations/job_master
 
 
 	///This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
-	proc/CheckHeadPositions(var/level)
+	proc/CheckHeadPositions(level)
 		for(var/command_position in GLOB.command_positions)
 			var/datum/job/job = GetJob(command_position)
 			if(!job)	continue
@@ -402,7 +402,7 @@ var/global/datum/controller/occupations/job_master
 				unassigned -= player
 		return TRUE
 
-	proc/EquipCustomLoadout(var/mob/living/carbon/human/H, datum/job/job)
+	proc/EquipCustomLoadout(mob/living/carbon/human/H, datum/job/job)
 
 		if(!H || !H.client)
 			return
@@ -445,7 +445,7 @@ var/global/datum/controller/occupations/job_master
 	/*
 		Partially gutted by Nanako, this proc no longer handles equipment or items. IT still does setup of accounts and various nonphysical things
 	*/
-	proc/EquipRank(var/mob/living/carbon/human/H, rank, joined_late = 0, no_outfit = FALSE)
+	proc/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0, no_outfit = FALSE)
 		if(!H)	return null
 
 		var/datum/job/job = GetJob(rank)
@@ -623,7 +623,7 @@ var/global/datum/controller/occupations/job_master
  *  preference is not set, or the preference is not appropriate for the rank, in
  *  which case a fallback will be selected.
  */
-/datum/controller/occupations/proc/get_spawnpoint_for(var/client/C, rank, datum/preferences/prefs, check_safety = FALSE)
+/datum/controller/occupations/proc/get_spawnpoint_for(client/C, rank, datum/preferences/prefs, check_safety = FALSE)
 
 	if(!C)
 		CRASH("Null client passed to get_spawnpoint_for() proc!")
@@ -676,10 +676,10 @@ var/global/datum/controller/occupations/job_master
 
 	return current_spawnpoint
 
-/datum/controller/occupations/proc/GetJobByType(var/job_type)
+/datum/controller/occupations/proc/GetJobByType(job_type)
 	return occupations_by_type[job_type]
 
-/datum/controller/occupations/proc/get_roundstart_spawnpoint(var/rank)
+/datum/controller/occupations/proc/get_roundstart_spawnpoint(rank)
 	var/list/loc_list = list()
 	for(var/obj/effect/landmark/start/sloc in landmarks_list)
 		if(sloc.name != rank)	continue

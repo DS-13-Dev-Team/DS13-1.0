@@ -5,7 +5,7 @@
 	var/id = ""
 	var/base_type = /datum/targeting_profile
 
-/datum/targeting_profile/proc/assess_target(var/atom/A)
+/datum/targeting_profile/proc/assess_target(atom/A)
 	return PRIORITY_TARGET
 
 

@@ -364,7 +364,7 @@
 			parent.update_damages()
 
 //Helper proc used by various tools for repairing robot limbs
-/obj/item/organ/external/proc/robo_repair(var/repair_amount, damage_type, damage_desc, obj/item/tool, mob/living/user)
+/obj/item/organ/external/proc/robo_repair(repair_amount, damage_type, damage_desc, obj/item/tool, mob/living/user)
 	if((!BP_IS_ROBOTIC(src)))
 		return 0
 
@@ -464,7 +464,7 @@ This function completely restores a damaged organ to perfect condition.
 		I.remove_rejuv()
 	..()
 
-/obj/item/organ/external/proc/createwound(var/type = CUT, damage, surgical, forced_type = null)
+/obj/item/organ/external/proc/createwound(type = CUT, damage, surgical, forced_type = null)
 
 	// Handle some status-based damage multipliers.
 	if(type == BRUISE && BP_IS_BRITTLE(src))
@@ -835,7 +835,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /****************************************************
 			   DISMEMBERMENT
 ****************************************************/
-/obj/item/organ/external/proc/get_droplimb_messages_for(var/droptype, clean)
+/obj/item/organ/external/proc/get_droplimb_messages_for(droptype, clean)
 
 	if(BP_IS_CRYSTAL(src))
 		playsound(src, "shatter", 70, 1)
@@ -871,7 +871,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 					)
 
 //Handles dismemberment
-/obj/item/organ/external/proc/droplimb(var/clean, disintegrate = DROPLIMB_EDGE, ignore_children, silent, atom/cutter)
+/obj/item/organ/external/proc/droplimb(clean, disintegrate = DROPLIMB_EDGE, ignore_children, silent, atom/cutter)
 
 	if(!(limb_flags & ORGAN_FLAG_CAN_AMPUTATE) || !owner)
 		return
@@ -996,7 +996,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/is_stump()
 	return 0
 
-/obj/item/organ/external/proc/release_restraints(var/mob/living/carbon/human/holder)
+/obj/item/organ/external/proc/release_restraints(mob/living/carbon/human/holder)
 	if(!holder)
 		holder = owner
 	if(!holder)
@@ -1128,7 +1128,7 @@ obj/item/organ/external/proc/remove_clamps()
 	status &= ~ORGAN_BROKEN
 	return 1
 
-/obj/item/organ/external/proc/apply_splint(var/atom/movable/splint)
+/obj/item/organ/external/proc/apply_splint(atom/movable/splint)
 	if(!splinted)
 		splinted = splint
 		if(!applied_pressure)
@@ -1209,7 +1209,7 @@ obj/item/organ/external/proc/remove_clamps()
 /obj/item/organ/external/proc/is_malfunctioning()
 	return (BP_IS_ROBOTIC(src) && (brute_dam + burn_dam) >= 10 && prob(brute_dam + burn_dam))
 
-/obj/item/organ/external/proc/embed(var/obj/item/weapon/W, silent = 0, supplied_message, datum/wound/supplied_wound)
+/obj/item/organ/external/proc/embed(obj/item/weapon/W, silent = 0, supplied_message, datum/wound/supplied_wound)
 	if(!owner || loc != owner)
 		return
 	if(species.species_flags & SPECIES_FLAG_NO_EMBED)
@@ -1242,7 +1242,7 @@ obj/item/organ/external/proc/remove_clamps()
 	W.loc = owner
 
 
-/obj/item/organ/external/proc/unembed(var/obj/item/I, atom/new_location, silent = 0, supplied_message)
+/obj/item/organ/external/proc/unembed(obj/item/I, atom/new_location, silent = 0, supplied_message)
 	if (owner)
 		LAZYREMOVE(owner.implants,I)
 		if (!LAZYLEN(owner.implants))
@@ -1353,7 +1353,7 @@ obj/item/organ/external/proc/remove_clamps()
 		qdel(src)
 
 //Adds a new child organ to this one. Can pass either a type to create, or an existing organ to insert
-/obj/item/organ/external/proc/add_child(var/newtype)
+/obj/item/organ/external/proc/add_child(newtype)
 	var/obj/item/organ/external/E = newtype
 	if (ispath(newtype))
 		E = new newtype(src)
@@ -1362,7 +1362,7 @@ obj/item/organ/external/proc/remove_clamps()
 	LAZYADD(children,E)
 	E.parent = src
 
-/obj/item/organ/external/proc/disfigure(var/type = "brute")
+/obj/item/organ/external/proc/disfigure(type = "brute")
 	if(status & ORGAN_DISFIGURED)
 		return
 	if(owner)
@@ -1376,7 +1376,7 @@ obj/item/organ/external/proc/remove_clamps()
 			"<span class='danger'>You hear a sickening sizzle.</span>")
 	status |= ORGAN_DISFIGURED
 
-/obj/item/organ/external/proc/get_incision(var/strict)
+/obj/item/organ/external/proc/get_incision(strict)
 	var/datum/wound/cut/incision
 	for(var/datum/wound/cut/W in wounds)
 		if(W.bandaged || W.current_stage > W.max_bleeding_stage) // Shit's unusable
@@ -1599,7 +1599,7 @@ obj/item/organ/external/proc/remove_clamps()
 		add_pain(Clamp(0, max_halloss - owner.getHalLoss(), 30))
 
 //Adds autopsy data for used_weapon.
-/obj/item/organ/external/proc/add_autopsy_data(var/used_weapon, damage)
+/obj/item/organ/external/proc/add_autopsy_data(used_weapon, damage)
 	var/datum/autopsy_data/W = autopsy_data[used_weapon]
 	if(!W)
 		W = new()
@@ -1616,7 +1616,7 @@ obj/item/organ/external/proc/remove_clamps()
 
 
 
-/obj/item/organ/external/proc/extend(var/update = TRUE)
+/obj/item/organ/external/proc/extend(update = TRUE)
 	deltimer(retract_timer)
 	if (!retracted)
 		return
@@ -1627,7 +1627,7 @@ obj/item/organ/external/proc/remove_clamps()
 
 
 
-/obj/item/organ/external/proc/retract(var/update = TRUE)
+/obj/item/organ/external/proc/retract(update = TRUE)
 	deltimer(retract_timer)
 	if (retracted)
 		return
@@ -1636,12 +1636,12 @@ obj/item/organ/external/proc/remove_clamps()
 	if (update && owner)
 		owner.update_body(TRUE)
 
-/obj/item/organ/external/proc/extend_for(var/time)
+/obj/item/organ/external/proc/extend_for(time)
 	extend()
 
 	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/retract), time, TIMER_STOPPABLE)
 
-/obj/item/organ/external/proc/retract_for(var/time)
+/obj/item/organ/external/proc/retract_for(time)
 	retract()
 
 	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/extend), time, TIMER_STOPPABLE)

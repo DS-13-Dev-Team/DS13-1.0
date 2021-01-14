@@ -119,7 +119,7 @@
 /obj/machinery/power/smes/proc/chargedisplay()
 	return round(5.5*charge/(capacity ? capacity : 5e6))
 
-/obj/machinery/power/smes/proc/input_power(var/percentage)
+/obj/machinery/power/smes/proc/input_power(percentage)
 	var/to_input = target_load * (percentage/100)
 	to_input = between(0, to_input, target_load)
 	input_available = 0
@@ -135,10 +135,10 @@
 		input_available += inputted
 
 // Mostly in place due to child types that may store power in other way (PSUs)
-/obj/machinery/power/smes/proc/add_charge(var/amount)
+/obj/machinery/power/smes/proc/add_charge(amount)
 	charge += amount*CELLRATE
 
-/obj/machinery/power/smes/proc/remove_charge(var/amount)
+/obj/machinery/power/smes/proc/remove_charge(amount)
 	charge -= amount*CELLRATE
 
 /obj/machinery/power/smes/Process()
@@ -185,7 +185,7 @@
 
 // called after all power processes are finished
 // restores charge level to smes if there was excess this ptick
-/obj/machinery/power/smes/proc/restore(var/percent_load)
+/obj/machinery/power/smes/proc/restore(percent_load)
 	if(stat & BROKEN)
 		return
 
@@ -246,7 +246,7 @@
 	return 1
 
 
-/obj/machinery/power/smes/proc/check_terminal_exists(var/turf/location, mob/user, direction)
+/obj/machinery/power/smes/proc/check_terminal_exists(turf/location, mob/user, direction)
 	for(var/obj/machinery/power/terminal/term in location)
 		if(term.dir == direction)
 			to_chat(user, "<span class='notice'>There is already a terminal here.</span>")
@@ -423,20 +423,20 @@
 		return 1
 
 
-/obj/machinery/power/smes/proc/energy_fail(var/duration)
+/obj/machinery/power/smes/proc/energy_fail(duration)
 	failure_timer = max(failure_timer, duration)
 
-/obj/machinery/power/smes/proc/inputting(var/do_input)
+/obj/machinery/power/smes/proc/inputting(do_input)
 	input_attempt = do_input
 	if(!input_attempt)
 		inputting = 0
 
-/obj/machinery/power/smes/proc/outputting(var/do_output)
+/obj/machinery/power/smes/proc/outputting(do_output)
 	output_attempt = do_output
 	if(!output_attempt)
 		outputting = 0
 
-/obj/machinery/power/smes/proc/take_damage(var/amount)
+/obj/machinery/power/smes/proc/take_damage(amount)
 	amount = max(0, round(amount))
 	damage += amount
 	if(damage > maxdamage)

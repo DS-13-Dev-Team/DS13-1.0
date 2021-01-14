@@ -80,24 +80,24 @@ GLOBAL_DATUM_INIT(godcult, /datum/antagonist/godcultist, new)
 			to_chat(usr, "<span class='warning'>There are no deities to be linked to.</span>")
 		return 1
 
-/datum/antagonist/godcultist/proc/add_cultist(var/datum/mind/player, mob/living/deity/deity)
+/datum/antagonist/godcultist/proc/add_cultist(datum/mind/player, mob/living/deity/deity)
 	deity.add_follower(player.current)
 	player.current.add_language(LANGUAGE_GUTTER)
 
-/datum/antagonist/godcultist/proc/remove_cultist(var/datum/mind/player)
+/datum/antagonist/godcultist/proc/remove_cultist(datum/mind/player)
 	var/mob/living/deity/god = get_deity(player)
 	if(god)
 		god.remove_follower(player.current)
 	player.current.remove_language(LANGUAGE_GUTTER)
 
-/datum/antagonist/godcultist/proc/get_deity(var/datum/mind/player)
+/datum/antagonist/godcultist/proc/get_deity(datum/mind/player)
 	for(var/m in GLOB.deity.current_antagonists)
 		var/datum/mind/mind = m
 		var/mob/living/deity/god = mind.current
 		if(god.is_follower(player.current,1))
 			return god
 
-/mob/living/proc/dpray(var/msg as text)
+/mob/living/proc/dpray(msg as text)
 	set category = "Abilities"
 
 	if(!src.mind || !GLOB.godcult || !GLOB.godcult.is_antagonist(mind))

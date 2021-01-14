@@ -222,7 +222,7 @@
 /*
 	Biomass Absorbing
 */
-/obj/structure/corruption_node/harvester/proc/handle_active_absorb(var/ticks = 1)
+/obj/structure/corruption_node/harvester/proc/handle_active_absorb(ticks = 1)
 	//If anything returns MASS_FAIL, we will have to redo our sources
 	var/failed = FALSE
 	var/total = 0
@@ -274,7 +274,7 @@
 //This searched for nearby things that could be used by a harvester node.
 //If single_check is set true, this proc simply returns TRUE if it finds any sources at all, and FALSE otherwise
 //When single_check is disabled, this proc returns a list of two sublists, one for passive objects and one for active objects
-/proc/get_harvestable_biomass_sources(var/atom/source, single_check = FALSE)
+/proc/get_harvestable_biomass_sources(atom/source, single_check = FALSE)
 	var/list/passive_sources = list()
 	var/list/active_sources = list()
 	for (var/atom/O in view(HARVESTER_HARVEST_RANGE, source))
@@ -327,7 +327,7 @@
 	//Return zero to indicate we've run out of biomass, and force a re-considering of things
 //In either case, this proc should return the quantity of biomass which was successfully harvested
 //The ticks var contains the number of ticks (seconds) since the last time biomass was absorbed. This should be applied as a multiplier on the biomass taken and returned
-/datum/proc/harvest_biomass(var/ticks = 1)
+/datum/proc/harvest_biomass(ticks = 1)
 	return 0
 
 
@@ -341,7 +341,7 @@
 	targeting_method	=	TARGET_CLICK
 	energy_cost = 25
 
-/datum/signal_ability/harvester/proc/get_harvesters(var/atom/origin)
+/datum/signal_ability/harvester/proc/get_harvesters(atom/origin)
 	var/list/harvesters = list()
 	var/turf/T = get_turf(origin)
 	for (var/obj/structure/corruption_node/harvester/H in range(15, T))

@@ -16,7 +16,7 @@
 	animate(transform = m240, time = speed)
 	animate(transform = m360, time = speed)
 
-/atom/proc/shake_animation(var/intensity = 8)
+/atom/proc/shake_animation(intensity = 8)
 	var/initial_transform = new/matrix(transform)
 	var/init_px = pixel_x
 	var/shake_dir = pick(-1, 1)
@@ -27,7 +27,7 @@
 	animate(transform=initial_transform, pixel_x=init_px, time=time, easing=ELASTIC_EASING)
 
 
-/atom/proc/custom_shake_animation(var/rotation = 15, offset = 3, time = 10, y_offset = TRUE, parallel = TRUE)
+/atom/proc/custom_shake_animation(rotation = 15, offset = 3, time = 10, y_offset = TRUE, parallel = TRUE)
 	var/initial_transform = new/matrix(transform)
 	var/vector2/init_px = get_new_vector(pixel_x, pixel_y)
 
@@ -164,7 +164,7 @@
 //This movement is effectively teleporting, it will ignore any obstacles. Do any checks before moving
 //Speed is in metres (tiles) per second
 //Client lag is a divisor on client animation time. Lower values will cause it to take longer to catch up with the mob, this is a cool effect for conveying speed
-/proc/animate_movement(var/atom/movable/mover, atom/target, speed, client_lag = 1.0)
+/proc/animate_movement(atom/movable/mover, atom/target, speed, client_lag = 1.0)
 	var/vector2/target_pixel_loc = target.get_global_pixel_loc()
 	target_pixel_loc.x += mover.default_pixel_x
 	target_pixel_loc.y += mover.default_pixel_y
@@ -215,19 +215,19 @@
 
 //Returns the rotation necessary to point source's forward_direction at target
 //The default value of south, will point the source's feet at the target
-/proc/rotation_to_target(var/atom/source, atom/target, forward_direction = SOUTH)
+/proc/rotation_to_target(atom/source, atom/target, forward_direction = SOUTH)
 	var/vector2/direction = Vector2.DirectionBetween(source, target)
 	var/angle = direction.AngleFrom(Vector2.FromDir(forward_direction))
 	release_vector(direction)
 	return angle
 
 
-/obj/proc/animate_fade_in(var/animtime = 10)
+/obj/proc/animate_fade_in(animtime = 10)
 	alpha = 0
 	animate(src, alpha = 255, time = animtime, flags = ANIMATION_PARALLEL)	//Cool fade in effect
 
 //Clear references before calling this
-/obj/proc/animate_fade_out(var/animtime = 10)
+/obj/proc/animate_fade_out(animtime = 10)
 	set waitfor = FALSE
 	animate(src, alpha = 0, time = animtime, flags = ANIMATION_PARALLEL)	//Cool fade in effect
 	sleep(animtime)
@@ -242,7 +242,7 @@
 
 
 //Returns a transform with all vars set to their default
-/atom/proc/animate_to_default(var/animtime = 5, reset_pixels = TRUE)
+/atom/proc/animate_to_default(animtime = 5, reset_pixels = TRUE)
 
 	if (animtime > 0)
 		animate(src, transform = get_default_transform(), pixel_x = (reset_pixels ? default_pixel_x : pixel_x), pixel_y = (reset_pixels ? default_pixel_y : pixel_y), alpha = default_alpha, time = animtime)

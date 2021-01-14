@@ -247,7 +247,7 @@
 	If empty, allows selecting a thing to grow
 	Otherwise, allows ejecting the currently growing organ
 */
-/obj/machinery/growth_tank/proc/show_menu(var/mob/user)
+/obj/machinery/growth_tank/proc/show_menu(mob/user)
 
 	if (current_growth_atom)
 		//Lets check if the thing we're growing is a multiple-variant thing
@@ -292,7 +292,7 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 		start_growing(choice, user)
 
 
-/obj/machinery/growth_tank/proc/start_growing(var/choice, mob/user)
+/obj/machinery/growth_tank/proc/start_growing(choice, mob/user)
 	if (!QDELETED(current_growth_atom) && current_growth_atom.loc == src)
 		return
 
@@ -338,7 +338,7 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 
 	update_icon()
 
-/obj/machinery/growth_tank/proc/remove_product(var/mob/living/carbon/human/user)
+/obj/machinery/growth_tank/proc/remove_product(mob/living/carbon/human/user)
 	forming = FALSE
 	if (!current_growth_atom)
 		return

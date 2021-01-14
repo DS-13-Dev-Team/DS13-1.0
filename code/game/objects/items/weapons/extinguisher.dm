@@ -68,7 +68,7 @@
 		return 1 // No afterattack
 	return ..()
 
-/obj/item/weapon/extinguisher/proc/propel_object(var/obj/O, mob/user, movementdirection)
+/obj/item/weapon/extinguisher/proc/propel_object(obj/O, mob/user, movementdirection)
 	if(O.anchored) return
 
 	var/obj/structure/bed/chair/C
@@ -122,7 +122,7 @@
 		return ..()
 	return
 
-/obj/item/weapon/extinguisher/proc/do_spray(var/atom/Target)
+/obj/item/weapon/extinguisher/proc/do_spray(atom/Target)
 	var/turf/T = get_turf(Target)
 	var/per_particle = min(spray_amount, reagents.total_volume)/spray_particles
 	for(var/a = 1 to spray_particles)

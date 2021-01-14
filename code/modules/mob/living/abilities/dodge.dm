@@ -26,7 +26,7 @@
 /***********************
 	Access Proc
 ************************/
-/mob/living/proc/dodge_ability(var/_duration, _cooldown, _power)
+/mob/living/proc/dodge_ability(_duration, _cooldown, _power)
 	if (can_dodge())
 		set_extension(src, /datum/extension/dodge, _duration,_cooldown,_power)
 
@@ -81,7 +81,7 @@
 	Safety Checks
 ************************/
 //Access Proc
-/mob/living/proc/can_dodge(var/error_messages = TRUE)
+/mob/living/proc/can_dodge(error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 

@@ -56,7 +56,7 @@
 		set_destination(places[place])
 	..()
 
-/datum/shuttle/autodock/overmap/proc/set_destination(var/obj/effect/shuttle_landmark/A)
+/datum/shuttle/autodock/overmap/proc/set_destination(obj/effect/shuttle_landmark/A)
 	if(A != current_location)
 		next_location = A
 

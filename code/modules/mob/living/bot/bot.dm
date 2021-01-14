@@ -115,7 +115,7 @@
 	else
 		user.launch_unarmed_strike(src)
 
-/mob/living/bot/proc/Interact(var/mob/user)
+/mob/living/bot/proc/Interact(mob/user)
 	add_fingerprint(user)
 	var/dat
 
@@ -171,7 +171,7 @@
 /mob/living/bot/proc/GetInteractMaintenance()
 	return
 
-/mob/living/bot/proc/ProcessCommand(var/mob/user, command, href_list)
+/mob/living/bot/proc/ProcessCommand(mob/user, command, href_list)
 	if(command == "toggle" && CanToggle(user))
 		if(on)
 			turn_off()
@@ -179,13 +179,13 @@
 			turn_on()
 	return
 
-/mob/living/bot/proc/CanToggle(var/mob/user)
+/mob/living/bot/proc/CanToggle(mob/user)
 	return (!RequiresAccessToToggle || access_scanner.allowed(user) || issilicon(user))
 
-/mob/living/bot/proc/CanAccessPanel(var/mob/user)
+/mob/living/bot/proc/CanAccessPanel(mob/user)
 	return (!locked || issilicon(user))
 
-/mob/living/bot/proc/CanAccessMaintenance(var/mob/user)
+/mob/living/bot/proc/CanAccessMaintenance(mob/user)
 	return (open || issilicon(user))
 
 /mob/living/bot/say(var/message)
@@ -259,7 +259,7 @@
 			++frustration
 	return
 
-/mob/living/bot/proc/handleFrustrated(var/targ)
+/mob/living/bot/proc/handleFrustrated(targ)
 	obstacle = targ ? target_path[1] : patrol_path[1]
 	target_path = list()
 	patrol_path = list()
@@ -268,7 +268,7 @@
 /mob/living/bot/proc/lookForTargets()
 	return
 
-/mob/living/bot/proc/confirmTarget(var/atom/A)
+/mob/living/bot/proc/confirmTarget(atom/A)
 	if(A.invisibility >= INVISIBILITY_LEVEL_ONE)
 		return 0
 	if(A in ignore_list)
@@ -324,7 +324,7 @@
 		obstacle = null
 	return
 
-/mob/living/bot/proc/makeStep(var/list/path)
+/mob/living/bot/proc/makeStep(list/path)
 	if(!path.len)
 		return 0
 	var/turf/T = path[1]
@@ -369,7 +369,7 @@
 
 // Returns the surrounding cardinal turfs with open links
 // Including through doors openable with the ID
-/turf/proc/CardinalTurfsWithAccess(var/obj/item/weapon/card/id/ID)
+/turf/proc/CardinalTurfsWithAccess(obj/item/weapon/card/id/ID)
 	var/L[] = new()
 
 	//	for(var/turf/simulated/t in oview(src,1))
@@ -413,7 +413,7 @@
 
 // Returns true if direction is blocked from loc
 // Checks doors against access with given ID
-/proc/DirBlockedWithAccess(turf/loc,var/dir,var/obj/item/weapon/card/id/ID)
+/proc/DirBlockedWithAccess(turf/loc,dir, obj/item/weapon/card/id/ID)
 	for(var/obj/structure/window/D in loc)
 		if(!D.density)			continue
 		if(D.dir == SOUTHWEST)	return 1

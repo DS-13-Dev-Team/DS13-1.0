@@ -31,7 +31,7 @@
 		mouse_opacity = 0
 	.=..()
 
-/obj/effect/projectile/tether/proc/set_origin(var/atom/neworigin)
+/obj/effect/projectile/tether/proc/set_origin(atom/neworigin)
 	origin_atom = neworigin
 	GLOB.moved_event.register(origin_atom, src, /obj/effect/projectile/tether/proc/origin_moved)
 
@@ -40,7 +40,7 @@
 	set_ends(newstart, end, 3, 1)
 	release_vector(newstart)
 
-/obj/effect/projectile/tether/proc/set_target(var/atom/newtarget)
+/obj/effect/projectile/tether/proc/set_target(atom/newtarget)
 	target_atom = newtarget
 	GLOB.moved_event.register(target_atom, src, /obj/effect/projectile/tether/proc/target_moved)
 
@@ -52,7 +52,7 @@
 //Takes start and endpoint as vector2s of global pixel coords
 //The animate var should be either FALSE for instant, or a number of deciseconds for how long the animation should take
 //apply offset values0 = neither, 1= start only, 2 = end only, 3 = both
-/obj/effect/projectile/tether/proc/set_ends(var/vector2/_start = null, vector2/_end = null, animate = FALSE, apply_offset = 3)
+/obj/effect/projectile/tether/proc/set_ends(vector2/_start = null, vector2/_end = null, animate = FALSE, apply_offset = 3)
 	//We copy the passed start and end vars into our own, without modifying the passed ones
 	start.x = _start.x
 	start.y = _start.y
@@ -119,7 +119,7 @@
 	.=..()
 
 
-/obj/effect/projectile/tether/proc/retract(var/time = 1 SECOND, delete_on_finish = TRUE, steps = 3)
+/obj/effect/projectile/tether/proc/retract(time = 1 SECOND, delete_on_finish = TRUE, steps = 3)
 	set waitfor = FALSE
 	//We'll retract the tongue to 1 pixel away from its origin
 	//This is done in several steps to prevent visual glitches
@@ -203,7 +203,7 @@
 	take_damage(tforce, BRUTE, O.thrower, O)
 
 //Called when a structure takes damage
-/obj/effect/projectile/tether/proc/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
+/obj/effect/projectile/tether/proc/take_damage(amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	if ((obj_flags & OBJ_FLAG_INVINCIBLE))
 		return
 
@@ -228,7 +228,7 @@
 		return zero_health()
 
 //Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
-/obj/effect/projectile/tether/proc/zero_health(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist)
+/obj/effect/projectile/tether/proc/zero_health(amount, damtype = BRUTE, user, used_weapon, bypass_resist)
 	if ((!obj_flags & OBJ_FLAG_INVINCIBLE))
 		qdel(src)
 	return TRUE

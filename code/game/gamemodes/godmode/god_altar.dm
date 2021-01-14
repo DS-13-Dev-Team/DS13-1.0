@@ -56,7 +56,7 @@
 
 
 //Used for force conversion.
-/obj/structure/deity/altar/proc/set_target(var/mob/living/L)
+/obj/structure/deity/altar/proc/set_target(mob/living/L)
 	if(target || !linked_god)
 		return
 	cycles_before_converted = initial(cycles_before_converted)

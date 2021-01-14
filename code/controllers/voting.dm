@@ -276,7 +276,7 @@
 
 		return .
 
-	proc/submit_vote(var/ckey, vote, weight)
+	proc/submit_vote(ckey, vote, weight)
 		if(mode)
 			if(config.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
 				return 0
@@ -304,7 +304,7 @@
 				return vote
 		return 0
 
-	proc/initiate_vote(var/vote_type, initiator_key, automatic = 0)
+	proc/initiate_vote(vote_type, initiator_key, automatic = 0)
 		if(!mode)
 			if(started_time != null && !(check_rights(R_ADMIN) || automatic))
 				var/next_allowed_time = (started_time + config.vote_delay)
@@ -401,7 +401,7 @@
 			return 1
 		return 0
 
-	proc/interface(var/client/C)
+	proc/interface(client/C)
 		if(!C)	return
 		var/admin = 0
 		var/trialmin = 0
@@ -559,7 +559,7 @@
 		usr.vote()
 
 // Helper proc for determining whether addantag vote can be called.
-/datum/controller/vote/proc/is_addantag_allowed(var/automatic)
+/datum/controller/vote/proc/is_addantag_allowed(automatic)
 	// Gamemode has to be determined before we can add antagonists, so we can respect gamemode's add antag vote settings.
 	if(!ticker || (ticker.current_state <= 2) || !ticker.mode)
 		return 0

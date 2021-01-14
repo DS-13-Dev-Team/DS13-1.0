@@ -8,7 +8,7 @@
 
 
 //Sets a time for when this category can be next used
-/datum/proc/set_audio_cooldown(var/category, cooldown)
+/datum/proc/set_audio_cooldown(category, cooldown)
 	var/datum/extension/audio_cooldown/AC = get_extension(src, /datum/extension/audio_cooldown)
 	if (!AC)
 		AC = set_extension(src, /datum/extension/audio_cooldown)
@@ -16,7 +16,7 @@
 	AC.times[category] = max(AC.times[category], world.time + cooldown)
 
 //Checks if a category is off cooldown.
-/datum/proc/check_audio_cooldown(var/category)
+/datum/proc/check_audio_cooldown(category)
 	.=FALSE
 	var/datum/extension/audio_cooldown/AC = get_extension(src, /datum/extension/audio_cooldown)
 	if (!AC)

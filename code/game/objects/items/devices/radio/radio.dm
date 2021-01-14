@@ -153,10 +153,10 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/item/device/radio/proc/list_channels(var/mob/user)
+/obj/item/device/radio/proc/list_channels(mob/user)
 	return list_internal_channels(user)
 
-/obj/item/device/radio/proc/list_secure_channels(var/mob/user)
+/obj/item/device/radio/proc/list_secure_channels(mob/user)
 	var/dat[0]
 
 	for(var/ch_name in channels)
@@ -167,7 +167,7 @@
 
 	return dat
 
-/obj/item/device/radio/proc/list_internal_channels(var/mob/user)
+/obj/item/device/radio/proc/list_internal_channels(mob/user)
 	var/dat[0]
 	for(var/internal_chan in internal_channels)
 		if(has_channel_access(user, internal_chan))
@@ -175,7 +175,7 @@
 
 	return dat
 
-/obj/item/device/radio/proc/has_channel_access(var/mob/user, freq)
+/obj/item/device/radio/proc/has_channel_access(mob/user, freq)
 	if(!user)
 		return 0
 
@@ -184,7 +184,7 @@
 
 	return user.has_internal_radio_channel_access(internal_channels[freq])
 
-/mob/proc/has_internal_radio_channel_access(var/list/req_one_accesses)
+/mob/proc/has_internal_radio_channel_access(list/req_one_accesses)
 	var/obj/item/weapon/card/id/I = GetIdCard()
 	return has_access(list(), req_one_accesses, I ? I.GetAccess() : list())
 
@@ -199,7 +199,7 @@
 /obj/item/device/radio/get_cell()
 	return cell
 
-/obj/item/device/radio/proc/text_sec_channel(var/chan_name, chan_stat)
+/obj/item/device/radio/proc/text_sec_channel(chan_name, chan_stat)
 	var/list = !!(chan_stat&FREQ_LISTENING)!=0
 	return {"
 			<B>[chan_name]</B><br>
@@ -274,7 +274,7 @@
 	if(.)
 		SSnano.update_uis(src)
 
-/obj/item/device/radio/proc/autosay(var/message, from, channel) //BS12 EDIT
+/obj/item/device/radio/proc/autosay(message, from, channel) //BS12 EDIT
 	var/datum/radio_frequency/connection = null
 	if(channel && channels && channels.len > 0)
 		if (channel == "department")

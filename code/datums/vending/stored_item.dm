@@ -33,7 +33,7 @@
 /datum/stored_items/proc/get_amount()
 	return instances ? instances.len : amount
 
-/datum/stored_items/proc/add_product(var/atom/movable/product)
+/datum/stored_items/proc/add_product(atom/movable/product)
 	if(product.type != item_path)
 		return 0
 	init_products()
@@ -43,7 +43,7 @@
 	instances += product
 	return 1
 
-/datum/stored_items/proc/get_product(var/product_location)
+/datum/stored_items/proc/get_product(product_location)
 	if(!get_amount() || !product_location)
 		return
 	init_products()
@@ -53,7 +53,7 @@
 	product.forceMove(product_location)
 	return product
 
-/datum/stored_items/proc/get_specific_product(var/product_location, atom/movable/product)
+/datum/stored_items/proc/get_specific_product(product_location, atom/movable/product)
 	if(!get_amount() || !instances || !product_location || !product)
 		return FALSE
 

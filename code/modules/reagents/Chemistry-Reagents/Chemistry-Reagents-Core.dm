@@ -27,7 +27,7 @@
 		color = data["blood_colour"]
 	return
 
-/datum/reagent/blood/proc/sync_to(var/mob/living/carbon/C)
+/datum/reagent/blood/proc/sync_to(mob/living/carbon/C)
 	data["donor"] = weakref(C)
 	if (!data["virus2"])
 		data["virus2"] = list()

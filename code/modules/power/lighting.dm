@@ -284,12 +284,12 @@
 	broken()
 	return 1
 
-/obj/machinery/light/proc/set_mode(var/new_mode)
+/obj/machinery/light/proc/set_mode(new_mode)
 	if(current_mode != new_mode)
 		current_mode = new_mode
 		update_icon(0)
 
-/obj/machinery/light/proc/set_emergency_lighting(var/enable)
+/obj/machinery/light/proc/set_emergency_lighting(enable)
 	if(enable)
 		if(LIGHTMODE_EMERGENCY in lightbulb.lighting_modes)
 			set_mode(LIGHTMODE_EMERGENCY)
@@ -301,7 +301,7 @@
 
 // attempt to set the light's on/off status
 // will not switch on if broken/burned/empty
-/obj/machinery/light/proc/seton(var/state)
+/obj/machinery/light/proc/seton(state)
 	on = (state && get_status() == LIGHT_OK)
 	update_icon()
 
@@ -395,7 +395,7 @@
 	var/area/A = get_area(src)
 	return A && A.lightswitch && ..(power_channel)
 
-/obj/machinery/light/proc/flicker(var/amount = rand(6, 12))
+/obj/machinery/light/proc/flicker(amount = rand(6, 12))
 	if(flickering) return
 	flickering = 1
 	spawn(0)
@@ -488,7 +488,7 @@
 	else return ..()
 
 // break the light and make sparks if was on
-/obj/machinery/light/proc/broken(var/skip_sound_and_sparks = 0)
+/obj/machinery/light/proc/broken(skip_sound_and_sparks = 0)
 	if(!lightbulb)
 		return
 
@@ -541,7 +541,7 @@
 	light_type = /obj/item/weapon/light/bulb/red/readylight
 	var/state = 0
 
-/obj/machinery/light/small/readylight/proc/set_state(var/new_state)
+/obj/machinery/light/small/readylight/proc/set_state(new_state)
 	state = new_state
 	if(state)
 		set_mode(LIGHTMODE_READY)

@@ -128,15 +128,15 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	busy = 0
 	updateUsrDialog()
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/addToQueue(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/addToQueue(datum/design/D)
 	queue += D
 	return
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/removeFromQueue(var/index)
+/obj/machinery/r_n_d/circuit_imprinter/proc/removeFromQueue(index)
 	queue.Cut(index, index + 1)
 	return
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/canBuild(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/canBuild(datum/design/D)
 	for(var/M in D.materials)
 		if(materials[M] <= D.materials[M] * mat_efficiency)
 			return 0
@@ -145,7 +145,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 			return 0
 	return 1
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/build(var/datum/design/D)
+/obj/machinery/r_n_d/circuit_imprinter/proc/build(datum/design/D)
 	var/power = active_power_usage
 	for(var/M in D.materials)
 		power += round(D.materials[M] / 5)

@@ -1,4 +1,4 @@
-/datum/proc/extra_ghost_link(var/prefix, sufix, short_links)
+/datum/proc/extra_ghost_link(prefix, sufix, short_links)
 	return list()
 
 /atom/movable/extra_ghost_link(var/atom/ghost, prefix, sufix, short_links)
@@ -19,10 +19,10 @@
 	if(mind && (mind.current && !isghost(mind.current)))
 		. += create_ghost_link(ghost, mind.current, short_links ? "B" : "Body", prefix, sufix)
 
-/proc/create_ghost_link(var/ghost, target, text, prefix, sufix)
+/proc/create_ghost_link(ghost, target, text, prefix, sufix)
 	return "<a href='byond://?src=\ref[ghost];track=\ref[target]'>[prefix][text][sufix]</a>"
 
-/datum/proc/get_ghost_follow_link(var/atom/target, delimiter, prefix, sufix)
+/datum/proc/get_ghost_follow_link(atom/target, delimiter, prefix, sufix)
 	return
 
 /client/get_ghost_follow_link(var/atom/target, delimiter, prefix, sufix)
@@ -32,6 +32,6 @@
 	var/short_links = get_preference_value(/datum/client_preference/ghost_follow_link_length) == GLOB.PREF_SHORT
 	return ghost_follow_link(target, src, delimiter, prefix, sufix, short_links)
 
-/proc/ghost_follow_link(var/atom/target, atom/ghost, delimiter = "|", prefix = "", sufix = "", short_links = TRUE)
+/proc/ghost_follow_link(atom/target, atom/ghost, delimiter = "|", prefix = "", sufix = "", short_links = TRUE)
 	if((!target) || (!ghost)) return
 	return jointext(target.extra_ghost_link(ghost, prefix, sufix, short_links),delimiter)

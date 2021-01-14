@@ -101,7 +101,7 @@
 			active = S
 		return 1
 
-/datum/nano_module/shields_monitor/proc/deselect_shield(var/source)
+/datum/nano_module/shields_monitor/proc/deselect_shield(source)
 	if(!active)
 		return
 	GLOB.destroyed_event.unregister(active, src)

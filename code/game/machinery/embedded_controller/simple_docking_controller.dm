@@ -86,13 +86,13 @@
 				enable_override()
 
 
-/datum/computer/file/embedded_program/docking/simple/proc/signal_door(var/command)
+/datum/computer/file/embedded_program/docking/simple/proc/signal_door(command)
 	var/datum/signal/signal = new
 	signal.data["tag"] = tag_door
 	signal.data["command"] = command
 	post_signal(signal)
 
-///datum/computer/file/embedded_program/docking/simple/proc/signal_mech_sensor(var/command)
+///datum/computer/file/embedded_program/docking/simple/proc/signal_mech_sensor(command)
 //	signal_door(command)
 //	return
 

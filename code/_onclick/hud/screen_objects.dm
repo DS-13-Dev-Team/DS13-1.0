@@ -410,5 +410,5 @@
 	return 1
 
 
-/obj/proc/added_to_screen(var/client/C)
+/obj/proc/added_to_screen(client/C)
 	return

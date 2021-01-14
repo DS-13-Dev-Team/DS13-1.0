@@ -135,7 +135,7 @@
 	damage_type = BURN
 	vacuum_traversal = 0
 
-/obj/item/projectile/energy/plasmastun/proc/bang(var/mob/living/carbon/M)
+/obj/item/projectile/energy/plasmastun/proc/bang(mob/living/carbon/M)
 
 	to_chat(M, "<span class='danger'>You hear a loud roar.</span>")
 	var/ear_safety = 0

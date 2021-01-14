@@ -56,7 +56,7 @@
 	return
 
 //Called every time just after the parent gun fires
-/datum/firemode/proc/on_fire(var/atom/target, mob/living/user, clickparams, pointblank=0, reflex=0, obj/projectile)
+/datum/firemode/proc/on_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0, obj/projectile)
 	return
 
 //Called whenever the firemode is switched to, or the gun is picked up while its active

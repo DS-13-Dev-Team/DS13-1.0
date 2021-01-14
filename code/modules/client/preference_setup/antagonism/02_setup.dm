@@ -56,7 +56,7 @@
 	else
 		. +="<a href='?src=\ref[src];exploitable_record=1'>[TextPreview(pref.exploit_record,40)]</a><br>"
 
-/datum/category_item/player_setup_item/antagonism/basic/OnTopic(var/href,var/list/href_list, mob/user)
+/datum/category_item/player_setup_item/antagonism/basic/OnTopic(var/href, list/href_list, mob/user)
 	if(href_list["add_source"])
 		var/source_selection = input(user, "Select Uplink Source to Add", CHARACTER_PREFERENCE_INPUT_TITLE) as null|anything in (list_values(uplink_sources_by_name) - pref.uplink_sources)
 		if(source_selection && CanUseTopic(user))

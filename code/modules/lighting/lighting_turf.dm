@@ -50,7 +50,7 @@
 				C.active = TRUE
 
 // Used to get a scaled lumcount.
-/turf/proc/get_lumcount(var/minlum = 0, maxlum = 1)
+/turf/proc/get_lumcount(minlum = 0, maxlum = 1)
 	if(!lighting_overlay)
 		var/area/A = loc
 		if(A.dynamic_lighting)
@@ -98,7 +98,7 @@
 
 		corners[i] = new /datum/lighting_corner(src, LIGHTING_CORNER_DIAGONAL[i])
 
-/turf/proc/handle_opacity_change(var/atom/opacity_changer)
+/turf/proc/handle_opacity_change(atom/opacity_changer)
 	if(opacity_changer)
 		if(opacity_changer.opacity)
 			if(!opaque_counter)

@@ -18,7 +18,7 @@
 	if (fuse_timer)
 		addtimer(CALLBACK(src, /obj/effect/mine/proc/detonate), fuse_timer, TIMER_STOPPABLE)
 
-/obj/effect/mine/proc/is_valid_target(var/atom/movable/enterer)
+/obj/effect/mine/proc/is_valid_target(atom/movable/enterer)
 	//Leapers can leap over
 	if (enterer.pass_flags & PASS_FLAG_FLYING)
 		return FALSE
@@ -54,7 +54,7 @@
 	detonate(M)
 
 
-/obj/effect/mine/proc/detonate(var/tripper)
+/obj/effect/mine/proc/detonate(tripper)
 	if (triggered)
 		return
 
@@ -173,7 +173,7 @@
 	MP.attach_mob_dead	=	FALSE	//Can this be/remain attached to mobs that are dead?
 
 //Mines can be aimed at the floor, they will deploy when they enter the target tile
-/obj/item/projectile/deploy/Move(var/atom/new_loc,var/direction)
+/obj/item/projectile/deploy/Move(var/atom/new_loc, direction)
 	.=..()
 	if (!expired && get_turf(new_loc) == get_turf(original))
 		expire()
@@ -191,7 +191,7 @@
 	.=..()
 
 
-/obj/item/projectile/deploy/proc/deploy_to_floor(var/turf/T)
+/obj/item/projectile/deploy/proc/deploy_to_floor(turf/T)
 	set waitfor = FALSE
 	if (deployed)
 		return
@@ -200,7 +200,7 @@
 	new deploy_type(T, src)
 
 
-/obj/item/projectile/deploy/proc/deploy_to_atom(var/atom/A, turf/origin)
+/obj/item/projectile/deploy/proc/deploy_to_atom(atom/A, turf/origin)
 
 	set waitfor = FALSE
 	if (deployed)

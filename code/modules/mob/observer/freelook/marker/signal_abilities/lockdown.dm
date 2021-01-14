@@ -142,7 +142,7 @@
 	Safety Checks
 ************************/
 //Access Proc
-/obj/machinery/door/airlock/proc/can_lockdown(var/user, priority)
+/obj/machinery/door/airlock/proc/can_lockdown(user, priority)
 	var/datum/extension/lockdown/E = get_extension(src, /datum/extension/lockdown)
 	if(istype(E) && E.priority >= priority)
 

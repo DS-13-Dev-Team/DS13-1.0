@@ -40,7 +40,7 @@
 		..()
 
 //WE DANCE!
-/mob/living/simple_animal/hostile/commanded/bear/misc_command(var/mob/speaker,var/text)
+/mob/living/simple_animal/hostile/commanded/bear/misc_command(var/mob/speaker, text)
 	stay_command()
 	stance = COMMANDED_MISC //nothing can stop this ride
 	spawn(0)

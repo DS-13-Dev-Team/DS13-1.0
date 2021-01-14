@@ -125,7 +125,7 @@
 
 
 
-/atom/proc/acid_act(var/datum/reagent/acid/acid, volume)
+/atom/proc/acid_act(datum/reagent/acid/acid, volume)
 	return TRUE
 
 /obj/acid_act(var/datum/reagent/acid/acid, volume)
@@ -207,7 +207,7 @@
 	pixel_y = rand_between(-randpixel, randpixel)
 
 
-/obj/effect/decal/cleanable/acid_spill/proc/adjust_volume(var/change, chemical)
+/obj/effect/decal/cleanable/acid_spill/proc/adjust_volume(change, chemical)
 	if (!R)
 		R = new (99999, src)
 

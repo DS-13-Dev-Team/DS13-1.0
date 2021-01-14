@@ -138,7 +138,7 @@
 /obj/item/grab/proc/get_targeted_organ()
 	return (affecting.get_organ(target_zone))
 
-/obj/item/grab/proc/resolve_item_attack(var/mob/living/M, obj/item/I, target_zone)
+/obj/item/grab/proc/resolve_item_attack(mob/living/M, obj/item/I, target_zone)
 	if((M && ishuman(M)) && I)
 		return current_grab.resolve_item_attack(src, M, I, target_zone)
 	else
@@ -154,7 +154,7 @@
 /obj/item/grab/proc/check_upgrade_cooldown()
 	return (world.time >= last_upgrade + current_grab.upgrade_cooldown)
 
-/obj/item/grab/proc/upgrade(var/bypass_cooldown = FALSE)
+/obj/item/grab/proc/upgrade(bypass_cooldown = FALSE)
 	if(!check_upgrade_cooldown() && !bypass_cooldown)
 		to_chat(assailant, "<span class='danger'>It's too soon to upgrade.</span>")
 		return
@@ -194,7 +194,7 @@
 /obj/item/grab/proc/handle_resist()
 	current_grab.handle_resist(src)
 
-/obj/item/grab/proc/adjust_position(var/force = 0)
+/obj/item/grab/proc/adjust_position(force = 0)
 	if (assailant && !assailant.can_pull(affecting))
 		qdel(src)
 		return FALSE

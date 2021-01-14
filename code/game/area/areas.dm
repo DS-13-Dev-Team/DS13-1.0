@@ -41,10 +41,10 @@
 	if(ship_area)
 		GLOB.ship_areas += src
 
-/area/proc/register_door(var/obj/machinery/door/D)
+/area/proc/register_door(obj/machinery/door/D)
 	bordering_doors |= D
 
-/area/proc/unregister_door(var/obj/machinery/door/D)
+/area/proc/unregister_door(obj/machinery/door/D)
 	bordering_doors -= D
 
 /area/proc/get_contents()
@@ -197,7 +197,7 @@
 #define ENVIRON 3
 */
 
-/area/proc/powered(var/chan)		// return true if the area has power to given channel
+/area/proc/powered(chan)		// return true if the area has power to given channel
 
 	if(!requires_power)
 		return 1
@@ -220,7 +220,7 @@
 	if (fire || eject || party)
 		update_icon()
 
-/area/proc/usage(var/chan)
+/area/proc/usage(chan)
 	var/used = 0
 	switch(chan)
 		if(LIGHT)
@@ -238,7 +238,7 @@
 	used_light = 0
 	used_environ = 0
 
-/area/proc/use_power(var/amount, chan)
+/area/proc/use_power(amount, chan)
 	switch(chan)
 		if(EQUIP)
 			used_equip += amount
@@ -247,7 +247,7 @@
 		if(ENVIRON)
 			used_environ += amount
 
-/area/proc/set_lightswitch(var/new_switch)
+/area/proc/set_lightswitch(new_switch)
 	if(lightswitch != new_switch)
 		lightswitch = new_switch
 		for(var/obj/machinery/light_switch/L in src)
@@ -255,7 +255,7 @@
 		update_icon()
 		power_change()
 
-/area/proc/set_emergency_lighting(var/enable)
+/area/proc/set_emergency_lighting(enable)
 	for(var/obj/machinery/light/M in src)
 		M.set_emergency_lighting(enable)
 
@@ -280,7 +280,7 @@ var/list/mob/living/forced_ambiance_list = new
 	play_ambience(L)
 	L.lastarea = newarea
 
-/area/proc/play_ambience(var/mob/living/L)
+/area/proc/play_ambience(mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
 	if(!(L && L.client && L.get_preference_value(/datum/client_preference/play_ambiance) == GLOB.PREF_YES))	return
 
@@ -311,7 +311,7 @@ var/list/mob/living/forced_ambiance_list = new
 				L.playsound_local(T, sound(pick(ambience), repeat = 0, wait = 0, volume = 15, channel = GLOB.lobby_sound_channel))
 				L.client.played = world.time
 
-/area/proc/gravitychange(var/gravitystate = 0)
+/area/proc/gravitychange(gravitystate = 0)
 	has_gravity = gravitystate
 
 	for(var/mob/M in src)

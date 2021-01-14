@@ -22,7 +22,7 @@
 /client
 	var/obj/skybox/skybox
 
-/client/proc/update_skybox(var/rebuild = FALSE)
+/client/proc/update_skybox(rebuild = FALSE)
 	if(!skybox)
 		skybox = new()
 		screen += skybox

@@ -215,7 +215,7 @@
 	if(. == TOPIC_REFRESH)
 		attack_hand(user)
 
-/obj/machinery/computer/arcade/battle/proc/arcade_action(var/user)
+/obj/machinery/computer/arcade/battle/proc/arcade_action(user)
 	if ((src.enemy_mp <= 0) || (src.enemy_hp <= 0))
 		if(!gameover)
 			src.gameover = 1

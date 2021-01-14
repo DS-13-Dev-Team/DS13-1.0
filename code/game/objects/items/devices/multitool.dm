@@ -16,7 +16,7 @@ DEPRECATED: Use /obj/item/weapon/tool/multitool instead, located in /code/game/o
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 5.0
 	throw_range = 15
-	
+
 
 	matter = list(MATERIAL_STEEL = 50,MATERIAL_GLASS = 20)
 
@@ -29,21 +29,21 @@ DEPRECATED: Use /obj/item/weapon/tool/multitool instead, located in /code/game/o
 	unregister_buffer(buffer_object)
 	return ..()
 
-/obj/item/weapon/tool/multitool/proc/get_buffer(var/typepath)
+/obj/item/weapon/tool/multitool/proc/get_buffer(typepath)
 	// Only allow clearing the buffer name when someone fetches the buffer.
 	// Means you cannot be sure the source hasn't been destroyed until the very moment it's needed.
 	get_buffer_name(TRUE)
 	if(buffer_object && (!typepath || istype(buffer_object, typepath)))
 		return buffer_object
 
-/obj/item/weapon/tool/multitool/proc/get_buffer_name(var/null_name_if_missing = FALSE)
+/obj/item/weapon/tool/multitool/proc/get_buffer_name(null_name_if_missing = FALSE)
 	if(buffer_object)
 		buffer_name = buffer_object.name
 	else if(null_name_if_missing)
 		buffer_name = null
 	return buffer_name
 
-/obj/item/weapon/tool/multitool/proc/set_buffer(var/atom/buffer)
+/obj/item/weapon/tool/multitool/proc/set_buffer(atom/buffer)
 	if(!buffer || istype(buffer))
 		buffer_name = buffer ? buffer.name : null
 		if(buffer != buffer_object)
@@ -52,7 +52,7 @@ DEPRECATED: Use /obj/item/weapon/tool/multitool instead, located in /code/game/o
 			if(buffer_object)
 				GLOB.destroyed_event.register(buffer_object, src, /obj/item/weapon/tool/multitool/proc/unregister_buffer)
 
-/obj/item/weapon/tool/multitool/proc/unregister_buffer(var/atom/buffer_to_unregister)
+/obj/item/weapon/tool/multitool/proc/unregister_buffer(atom/buffer_to_unregister)
 	// Only remove the buffered object, don't reset the name
 	// This means one cannot know if the buffer has been destroyed until one attempts to use it.
 	if(buffer_to_unregister == buffer_object && buffer_object)

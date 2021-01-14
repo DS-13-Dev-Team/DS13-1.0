@@ -30,7 +30,7 @@
 	to_chat(user, SPAN_NOTICE("You feel your muscles twitch with renewed energy!"))
 
 //Resets the timer, refreshing the duration to a new specified value
-/datum/extension/frenzy_buff/proc/set_timer(var/newduration)
+/datum/extension/frenzy_buff/proc/set_timer(newduration)
 	if (newduration)
 		duration = newduration
 	deltimer(lifetimer)
@@ -53,7 +53,7 @@
 	var/cooltimer
 	var/started_at
 
-/datum/extension/frenzy_cooldown/New(var/datum/holder,var/cooldown)
+/datum/extension/frenzy_cooldown/New(var/datum/holder, cooldown)
 	..()
 	started_at = world.time
 	cooldown_time = cooldown
@@ -66,7 +66,7 @@
 
 
 //Now, the ability to actually do things!
-/mob/living/proc/frenzy_shout_ability(var/_duration, _intensity, _cooldown, _faction, _range)
+/mob/living/proc/frenzy_shout_ability(_duration, _intensity, _cooldown, _faction, _range)
 	//First lets check we can actually do it
 	if (incapacitated(INCAPACITATION_KNOCKOUT))
 		return FALSE 	//Gotta be conscious. But being knocked down is fine

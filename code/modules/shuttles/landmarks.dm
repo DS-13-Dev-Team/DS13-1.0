@@ -47,9 +47,9 @@
 	SSshuttle.register_landmark(landmark_tag, src)
 
 //Called when the landmark is added to an overmap sector.
-/obj/effect/shuttle_landmark/proc/sector_set(var/obj/effect/overmap/O)
+/obj/effect/shuttle_landmark/proc/sector_set(obj/effect/overmap/O)
 
-/obj/effect/shuttle_landmark/proc/is_valid(var/datum/shuttle/shuttle)
+/obj/effect/shuttle_landmark/proc/is_valid(datum/shuttle/shuttle)
 	if(shuttle.current_location == src)
 		return FALSE
 	for(var/area/A in shuttle.shuttle_area)

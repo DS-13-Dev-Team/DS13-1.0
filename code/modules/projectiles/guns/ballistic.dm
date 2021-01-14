@@ -137,7 +137,7 @@
 	//We cannot possibly have not reduced number to zero by this point
 	return
 
-/proc/get_projectile_from_casing(var/atom/A)
+/proc/get_projectile_from_casing(atom/A)
 	if (istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/AC = A
 		if (AC.BB)
@@ -314,7 +314,7 @@
 	show_remaining_ammo(user)
 	return
 
-/obj/item/weapon/gun/projectile/proc/show_remaining_ammo(var/mob/living/user)
+/obj/item/weapon/gun/projectile/proc/show_remaining_ammo(mob/living/user)
 	if(ammo_magazine)
 		to_chat(user, "It has \a [ammo_magazine] loaded.")
 	if(user.skill_check(SKILL_WEAPONS, SKILL_ADEPT))

@@ -115,7 +115,7 @@
 	The one exception to the above is the command department, due to the fact that you have to be an officer to
 	be in command, and there are no variants as a result. Also no special CO uniform :(
 */
-/obj/machinery/uniform_vendor/proc/find_uniforms(var/datum/mil_rank/user_rank, datum/mil_branch/user_branch, department) //returns 1 if found branch and thus has a base uniform, 2, branch and department, 0 if failed.
+/obj/machinery/uniform_vendor/proc/find_uniforms(datum/mil_rank/user_rank, datum/mil_branch/user_branch, department) //returns 1 if found branch and thus has a base uniform, 2, branch and department, 0 if failed.
 	if(!mil_uniforms)
 		mil_uniforms = new()
 
@@ -149,7 +149,7 @@
 
 	return populate_uniforms(user_outfit) //Generate uniform lists.
 
-/obj/machinery/uniform_vendor/proc/populate_uniforms(var/decl/hierarchy/mil_uniform/user_outfit)
+/obj/machinery/uniform_vendor/proc/populate_uniforms(decl/hierarchy/mil_uniform/user_outfit)
 	var/list/res = list()
 	res["PT"] = list(
 		user_outfit.pt_under,
@@ -188,7 +188,7 @@
 
 	return res
 
-/obj/machinery/uniform_vendor/proc/spawn_uniform(var/list/selected_outfit)
+/obj/machinery/uniform_vendor/proc/spawn_uniform(list/selected_outfit)
 	listclearnulls(selected_outfit)
 	if(!issued_items[user_id()])
 		issued_items[user_id()] = list()
@@ -210,7 +210,7 @@
 	else
 		return "[ID.registered_name], [ID.military_rank], [ID.military_branch]"
 
-/obj/machinery/uniform_vendor/proc/can_issue(var/gear)
+/obj/machinery/uniform_vendor/proc/can_issue(gear)
 	var/list/issued = issued_items[user_id()]
 	if(!issued || !issued.len)
 		return TRUE

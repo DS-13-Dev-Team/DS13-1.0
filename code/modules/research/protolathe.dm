@@ -129,15 +129,15 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/addToQueue(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/addToQueue(datum/design/D)
 	queue += D
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/removeFromQueue(var/index)
+/obj/machinery/r_n_d/protolathe/proc/removeFromQueue(index)
 	queue.Cut(index, index + 1)
 	return
 
-/obj/machinery/r_n_d/protolathe/proc/canBuild(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/canBuild(datum/design/D)
 	for(var/M in D.materials)
 		if(materials[M] < D.materials[M])
 			return 0
@@ -146,7 +146,7 @@
 			return 0
 	return 1
 
-/obj/machinery/r_n_d/protolathe/proc/build(var/datum/design/D)
+/obj/machinery/r_n_d/protolathe/proc/build(datum/design/D)
 	var/power = active_power_usage
 	for(var/M in D.materials)
 		power += round(D.materials[M] / 5)

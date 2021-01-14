@@ -50,7 +50,7 @@
 
 
 // Temporarily collapses this shield segment.
-/obj/effect/shield/proc/fail(var/duration)
+/obj/effect/shield/proc/fail(duration)
 	if(duration <= 0)
 		return
 
@@ -81,7 +81,7 @@
 		gen.damaged_segments -= src
 
 
-/obj/effect/shield/proc/diffuse(var/duration)
+/obj/effect/shield/proc/diffuse(duration)
 	// The shield is trying to counter diffusers. Cause lasting stress on the shield.
 	if(gen.check_flag(MODEFLAG_BYPASS) && !diffused_for && !disabled_for)
 		take_damage(duration * rand(8, 12), SHIELD_DAMTYPE_EM)
@@ -103,7 +103,7 @@
 
 
 // Fails shield segments in specific range. Range of 1 affects the shielded turf only.
-/obj/effect/shield/proc/fail_adjacent_segments(var/range, hitby = null)
+/obj/effect/shield/proc/fail_adjacent_segments(range, hitby = null)
 	if(hitby)
 		visible_message("<span class='danger'>\The [src] flashes a bit as \the [hitby] collides with it, eventually fading out in a rain of sparks!</span>")
 	else
@@ -117,7 +117,7 @@
 		// The closer we are to impact site, the longer it takes for shield to come back up.
 		S.fail(-(-range + get_dist(src, S)) * 2)
 
-/obj/effect/shield/proc/take_damage(var/damage, damtype, hitby)
+/obj/effect/shield/proc/take_damage(damage, damtype, hitby)
 	if(!gen)
 		qdel(src)
 		return
@@ -226,7 +226,7 @@
 	return ..()
 
 
-/obj/effect/shield/proc/overcharge_shock(var/mob/living/M)
+/obj/effect/shield/proc/overcharge_shock(mob/living/M)
 	M.adjustFireLoss(rand(20, 40))
 	M.Weaken(5)
 	to_chat(M, "<span class='danger'>As you come into contact with \the [src] a surge of energy paralyses you!</span>")
@@ -254,7 +254,7 @@
 
 // Shield collision checks below
 
-/atom/movable/proc/can_pass_shield(var/obj/machinery/power/shield_generator/gen)
+/atom/movable/proc/can_pass_shield(obj/machinery/power/shield_generator/gen)
 	return 1
 
 
@@ -283,7 +283,7 @@
 
 
 // Shield on-impact logic here. This is called only if the object is actually blocked by the field (can_pass_shield applies first)
-/atom/movable/proc/shield_impact(var/obj/effect/shield/S)
+/atom/movable/proc/shield_impact(obj/effect/shield/S)
 	return
 
 /mob/living/shield_impact(var/obj/effect/shield/S)

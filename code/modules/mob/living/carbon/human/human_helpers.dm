@@ -60,7 +60,7 @@
 	if(istype(back,/obj/item/weapon/rig))
 		process_rig(back)
 
-/mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
+/mob/living/carbon/human/proc/process_glasses(obj/item/clothing/glasses/G)
 	if(G)
 		// prescription applies regardless of if the glasses are active
 		equipment_prescription += G.prescription
@@ -79,7 +79,7 @@
 			add_clothing_protection(G)
 			G.process_hud(src)
 
-/mob/living/carbon/human/proc/process_rig(var/obj/item/weapon/rig/O)
+/mob/living/carbon/human/proc/process_rig(obj/item/weapon/rig/O)
 	if(O.visor && O.visor.active && O.visor.vision && O.visor.vision.glasses && (!O.helmet || (head && O.helmet == head)))
 		process_glasses(O.visor.vision.glasses)
 
@@ -116,7 +116,7 @@
 
 //Get species or synthetic temp if the mob is a FBP. Used when a synthetic type human mob is exposed to a temp check.
 //Essentially, used when a synthetic human mob should act diffferently than a normal type mob.
-/mob/living/carbon/human/proc/getSpeciesOrSynthTemp(var/temptype)
+/mob/living/carbon/human/proc/getSpeciesOrSynthTemp(temptype)
 	switch(temptype)
 		if(COLD_LEVEL_1)
 			return isSynthetic()? SYNTH_COLD_LEVEL_1 : species.cold_level_1
@@ -131,7 +131,7 @@
 		if(HEAT_LEVEL_3)
 			return isSynthetic()? SYNTH_HEAT_LEVEL_3 : species.heat_level_3
 
-/mob/living/carbon/human/proc/getCryogenicFactor(var/bodytemperature)
+/mob/living/carbon/human/proc/getCryogenicFactor(bodytemperature)
 	if(isSynthetic())
 		return 0
 	if(!species)
@@ -225,7 +225,7 @@
 	var/list/cloaking_sources
 
 // Returns true if, and only if, the human has gone from uncloaked to cloaked
-/mob/living/carbon/human/proc/add_cloaking_source(var/datum/cloaking_source)
+/mob/living/carbon/human/proc/add_cloaking_source(datum/cloaking_source)
 	var/has_uncloaked = clean_cloaking_sources()
 	LAZYDISTINCTADD(cloaking_sources, weakref(cloaking_source))
 
@@ -240,7 +240,7 @@
 #define CLOAK_APPEAR_SELF "<span class='notice'>You have re-appeared.</span>"
 
 // Returns true if, and only if, the human has gone from cloaked to uncloaked
-/mob/living/carbon/human/proc/remove_cloaking_source(var/datum/cloaking_source)
+/mob/living/carbon/human/proc/remove_cloaking_source(datum/cloaking_source)
 	var/was_cloaked = LAZYLEN(cloaking_sources)
 	clean_cloaking_sources()
 	LAZYREMOVE(cloaking_sources, weakref(cloaking_source))
@@ -262,7 +262,7 @@
 #undef CLOAK_APPEAR_SELF
 
 // Returns true if the human is cloaked by the given source
-/mob/living/carbon/human/proc/is_cloaked_by(var/cloaking_source)
+/mob/living/carbon/human/proc/is_cloaked_by(cloaking_source)
 	return LAZYISIN(cloaking_sources, weakref(cloaking_source))
 
 // Returns true if this operation caused the mob to go from cloaked to uncloaked

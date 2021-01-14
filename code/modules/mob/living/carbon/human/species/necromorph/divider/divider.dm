@@ -211,7 +211,7 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 
 
 //Called on death or when using the ability manually. Disconnects all limbs
-/datum/species/necromorph/divider/proc/divide(var/mob/living/carbon/human/H)
+/datum/species/necromorph/divider/proc/divide(mob/living/carbon/human/H)
 	H.facedir(SOUTH)
 	for (var/limbtype in list(BP_HEAD, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG))
 		var/obj/item/organ/external/E = H.get_organ(limbtype)
@@ -244,7 +244,7 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 	var/divider_component_type = /mob/living/simple_animal/necromorph/divider_component/arm
 
 
-/obj/item/organ/external/proc/create_divider_component(var/mob/living/carbon/human/H, deletion_delay = 0)
+/obj/item/organ/external/proc/create_divider_component(mob/living/carbon/human/H, deletion_delay = 0)
 	if (!divider_component_type)
 		return FALSE
 	var/mob/living/simple_animal/necromorph/divider_component/L = new divider_component_type(get_turf(src))
@@ -274,7 +274,7 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 /*--------------------------------
 	Arm Swing
 --------------------------------*/
-/mob/living/carbon/human/proc/divider_arm_swing(var/atom/target)
+/mob/living/carbon/human/proc/divider_arm_swing(atom/target)
 	set name = "Swipe"
 	set desc = "Swings an arm in a moderate radius"
 	set category = "Abilities"

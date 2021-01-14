@@ -108,7 +108,7 @@
 	if(default_part_replacement(user, I))
 		return
 
-/obj/machinery/mech_recharger/proc/start_charging(var/obj/mecha/M)
+/obj/machinery/mech_recharger/proc/start_charging(obj/mecha/M)
 	if(stat & (NOPOWER | BROKEN))
 		M.occupant_message("<span class='warning'>Power port not responding. Terminating.</span>")
 		return

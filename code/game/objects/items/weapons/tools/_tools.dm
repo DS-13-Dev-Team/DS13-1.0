@@ -66,7 +66,7 @@
 	/* Core Procs */
 *******************************/
 //Fuel and cell spawn
-/obj/item/weapon/tool/proc/consume_power(var/power_usage) // its time
+/obj/item/weapon/tool/proc/consume_power(power_usage) // its time
     if(!cell)
         return FALSE
     return cell.checked_use(power_usage)
@@ -113,7 +113,7 @@
 
 
 //This is called periodically while a tool operation is in progress
-/obj/item/weapon/tool/proc/work_in_progress(var/mob/user, atom/target, delta)
+/obj/item/weapon/tool/proc/work_in_progress(mob/user, atom/target, delta)
 	last_progress_tick = world.time
 	return
 
@@ -230,7 +230,7 @@
 
 //Simple form ideal for basic use. That proc will return TRUE only when everything was done right, and FALSE if something went wrong, ot user was unlucky.
 //Editionaly, handle_failure proc will be called for a critical failure roll.
-/obj/proc/use_tool(var/mob/living/user, atom/target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier = 110, forced_sound = null, sound_repeat = 2.5 SECONDS, progress_proc_interval = 0.5 SECONDS)
+/obj/proc/use_tool(mob/living/user, atom/target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier = 110, forced_sound = null, sound_repeat = 2.5 SECONDS, progress_proc_interval = 0.5 SECONDS)
 	var/obj/item/weapon/tool/T
 	if (istool(src))
 		T = src
@@ -253,7 +253,7 @@
 			return TRUE
 
 //Use this proc if you want to handle all types of failure yourself. It used in surgery, for example, to deal damage to patient.
-/obj/proc/use_tool_extended(var/mob/living/user, atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, sound_repeat = 2.5 SECONDS, progress_proc_interval = 0.5 SECONDS)
+/obj/proc/use_tool_extended(mob/living/user, atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, sound_repeat = 2.5 SECONDS, progress_proc_interval = 0.5 SECONDS)
 
 	var/obj/item/weapon/tool/T
 	if(istool(src))
@@ -392,7 +392,7 @@
 *******************************/
 
 //Critical failure rolls. If you use use_tool_extended, you might want to call that proc as well.
-/obj/proc/handle_failure(var/mob/living/user, atom/target, required_stat, required_quality)
+/obj/proc/handle_failure(mob/living/user, atom/target, required_stat, required_quality)
 	var/obj/item/I = src
 	var/obj/item/weapon/tool/T
 	if (istype(src, /obj/item))
@@ -582,7 +582,7 @@
 
 //Takes a list of qualities,
 //Returns a assoc list which contains quality = value for the qualities we do have, and the ones we don't have removed
-/obj/proc/has_qualities(var/list/qualities)
+/obj/proc/has_qualities(list/qualities)
 	if (tool_qualities && tool_qualities.len)
 		for (var/quality in qualities)
 			var/value = tool_qualities[quality]
@@ -612,7 +612,7 @@
 	return 0
 
 //We are cheking if our item got required qualities. If we require several qualities, and item posses more than one of those, we ask user to choose how that item should be used
-/obj/proc/get_tool_type(var/mob/living/user, list/required_qualities, atom/use_on, datum/callback/CB)
+/obj/proc/get_tool_type(mob/living/user, list/required_qualities, atom/use_on, datum/callback/CB)
 	var/list/L = required_qualities & tool_qualities
 
 	if(!L.len)
@@ -678,7 +678,7 @@
 
 
 
-/obj/proc/consume_resources(var/timespent, user)
+/obj/proc/consume_resources(timespent, user)
 
 	return
 
@@ -740,7 +740,7 @@
 /obj/item/weapon/tool/proc/get_fuel()
 	return reagents.get_reagent_amount(/datum/reagent/fuel)
 
-/obj/item/weapon/tool/proc/consume_fuel(var/volume)
+/obj/item/weapon/tool/proc/consume_fuel(volume)
 	//This will only happen if we're not finished initializing
 	if (!reagents)
 		return FALSE
@@ -751,7 +751,7 @@
 	return FALSE
 
 
-/obj/item/weapon/tool/proc/consume_stock(var/number)
+/obj/item/weapon/tool/proc/consume_stock(number)
 	if (stock >= number)
 		stock -= number
 	else
@@ -1002,7 +1002,7 @@
 ****************************/
 
 //Used by adhesive tools to stick an item to stuff
-/obj/item/weapon/tool/proc/stick(var/obj/item/target, mob/user)
+/obj/item/weapon/tool/proc/stick(obj/item/target, mob/user)
 	return
 
 

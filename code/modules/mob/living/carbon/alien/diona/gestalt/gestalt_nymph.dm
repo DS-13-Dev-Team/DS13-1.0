@@ -1,4 +1,4 @@
-/mob/living/carbon/alien/diona/proc/gestalt_with(var/mob/living/carbon/alien/diona/chirp)
+/mob/living/carbon/alien/diona/proc/gestalt_with(mob/living/carbon/alien/diona/chirp)
 	if(!istype(chirp) || chirp == src || istype(chirp.loc, /obj/structure/diona_gestalt) || istype(loc, /obj/structure/diona_gestalt))
 		return FALSE
 	visible_message("<span class='notice'>\The [chirp] and \the [src] twine together in gestalt!</span>")
@@ -7,14 +7,14 @@
 	blob.take_nymph(src, silent = TRUE)
 	return TRUE
 
-/obj/structure/diona_gestalt/proc/take_nymph(var/mob/living/carbon/alien/diona/chirp, silent)
+/obj/structure/diona_gestalt/proc/take_nymph(mob/living/carbon/alien/diona/chirp, silent)
 	if(!silent)
 		visible_message("<span class='notice'>\The [chirp] is engulfed by \the [src].</span>")
 	nymphs[chirp] = TRUE
 	chirp.forceMove(src)
 	update_icon()
 
-/obj/structure/diona_gestalt/proc/shed_nymph(var/mob/living/carbon/alien/diona/nymph, silent, forcefully)
+/obj/structure/diona_gestalt/proc/shed_nymph(mob/living/carbon/alien/diona/nymph, silent, forcefully)
 	if(!nymph && LAZYLEN(nymphs))
 		nymph = pick(nymphs)
 	if(nymph)

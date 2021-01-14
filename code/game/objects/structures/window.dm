@@ -63,7 +63,7 @@
 		else if(health < max_health * 3/4)
 			visible_message("Cracks begin to appear in [src]!" )
 
-/obj/structure/window/proc/apply_silicate(var/amount)
+/obj/structure/window/proc/apply_silicate(amount)
 	if(health < max_health) // Mend the damage
 		health = min(health + amount * 3, max_health)
 		if(health == max_health)
@@ -84,7 +84,7 @@
 /obj/structure/window/zero_health()
 	shatter()
 
-/obj/structure/window/proc/shatter(var/display_message = 1)
+/obj/structure/window/proc/shatter(display_message = 1)
 	playsound(src, "shatter", 70, 1)
 	if(display_message)
 		visible_message("[src] shatters!")
@@ -239,7 +239,7 @@
 		..()
 	return
 
-/obj/structure/window/proc/hit(var/damage, sound_effect = 1)
+/obj/structure/window/proc/hit(damage, sound_effect = 1)
 	if(reinf) damage *= 0.5
 	take_damage(damage)
 	return
@@ -328,7 +328,7 @@
 		return 1
 	return 0
 
-/obj/structure/window/proc/set_anchored(var/new_anchored)
+/obj/structure/window/proc/set_anchored(new_anchored)
 	if(anchored == new_anchored)
 		return
 	anchored = new_anchored

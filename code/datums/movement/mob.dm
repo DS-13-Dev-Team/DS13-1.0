@@ -1,7 +1,7 @@
 /mob
 	var/moving           = FALSE
 
-/mob/proc/SelfMove(var/direction)
+/mob/proc/SelfMove(direction)
 	///Mobs with slow turning take a move to turn in place.
 	//We will attempt to turn towards the target if our movement is off cooldown
 	if (slow_turning)
@@ -37,12 +37,12 @@
 	if(delay)
 		delay.ResetDelay()
 
-/mob/proc/set_move_cooldown(var/timeout)
+/mob/proc/set_move_cooldown(timeout)
 	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
 	if(delay)
 		delay.SetDelay(timeout)
 
-/mob/proc/extra_move_cooldown(var/timeout)
+/mob/proc/extra_move_cooldown(timeout)
 	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
 	if(delay)
 		delay.AddDelay(timeout)
@@ -177,7 +177,7 @@
 // Checks whether this mob is allowed to move in space
 // Return 1 for movement, 0 for none,
 // -1 to allow movement but with a chance of slipping
-/mob/proc/Allow_Spacemove(var/check_drift = 0)
+/mob/proc/Allow_Spacemove(check_drift = 0)
 	if(!Check_Dense_Object()) //Nothing to push off of so end here
 		return 0
 
@@ -232,7 +232,7 @@
 		return 1
 	return 0
 
-/mob/proc/slip_chance(var/prob_slip = 10)
+/mob/proc/slip_chance(prob_slip = 10)
 	if(stat)
 		return 0
 	if(buckled)
@@ -271,7 +271,7 @@
 #undef DO_MOVE
 
 
-/mob/proc/set_move_intent(var/decl/move_intent/M)
+/mob/proc/set_move_intent(decl/move_intent/M)
 	move_intent = M
 
 // Movement relayed to self handling
@@ -289,10 +289,10 @@
 
 	return MOVEMENT_STOP
 
-/datum/movement_handler/mob/relayed_movement/proc/AddAllowedMover(var/mover)
+/datum/movement_handler/mob/relayed_movement/proc/AddAllowedMover(mover)
 	LAZYDISTINCTADD(allowed_movers, mover)
 
-/datum/movement_handler/mob/relayed_movement/proc/RemoveAllowedMover(var/mover)
+/datum/movement_handler/mob/relayed_movement/proc/RemoveAllowedMover(mover)
 	LAZYREMOVE(allowed_movers, mover)
 
 // Admin object possession
@@ -448,10 +448,10 @@
 	else
 		return MOVEMENT_STOP
 
-/datum/movement_handler/mob/delay/proc/SetDelay(var/delay)
+/datum/movement_handler/mob/delay/proc/SetDelay(delay)
 	next_move = max(next_move, world.time + delay)
 
-/datum/movement_handler/mob/delay/proc/AddDelay(var/delay)
+/datum/movement_handler/mob/delay/proc/AddDelay(delay)
 	next_move += max(0, delay)
 
 /datum/movement_handler/mob/delay/proc/ResetDelay()
@@ -566,7 +566,7 @@
 /datum/movement_handler/mob/movement/MayMove(var/mob/mover)
 	return IS_SELF(mover) &&  mob.moving ? MOVEMENT_STOP : MOVEMENT_PROCEED
 
-/datum/movement_handler/mob/movement/proc/HandleGrabs(var/direction, old_turf)
+/datum/movement_handler/mob/movement/proc/HandleGrabs(direction, old_turf)
 	. = 0
 	// TODO: Look into making grabs use movement events instead, this is a mess.
 	for (var/obj/item/grab/G in mob)
@@ -599,10 +599,10 @@
 			G.adjust_position()
 
 // Misc. helpers
-/mob/proc/MayEnterTurf(var/turf/T)
+/mob/proc/MayEnterTurf(turf/T)
 	return T && !((mob_flags & MOB_FLAG_HOLY_BAD) && check_is_holy_turf(T))
 
-/mob/proc/AdjustMovementDirection(var/direction)
+/mob/proc/AdjustMovementDirection(direction)
 	. = direction
 	if(!confused)
 		return

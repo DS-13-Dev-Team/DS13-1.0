@@ -15,13 +15,13 @@
 	var/obj/item/device/assembly/a_right = null
 	var/obj/special_assembly = null
 
-	proc/attach(var/obj/item/device/D, obj/item/device/D2, mob/user)
+	proc/attach(obj/item/device/D, obj/item/device/D2, mob/user)
 		return
 
-	proc/attach_special(var/obj/O, mob/user)
+	proc/attach_special(obj/O, mob/user)
 		return
 
-	proc/process_activation(var/obj/item/device/D)
+	proc/process_activation(obj/item/device/D)
 		return
 
 	proc/detached()

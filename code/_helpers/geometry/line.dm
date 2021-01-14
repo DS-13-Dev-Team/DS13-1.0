@@ -1,4 +1,4 @@
-/proc/get_line_between(var/turf/source, turf/target, allow_diagonal = FALSE, include_source = TRUE)
+/proc/get_line_between(turf/source, turf/target, allow_diagonal = FALSE, include_source = TRUE)
 
 	var/dist_remaining = hypot(world.maxx, world.maxy)	//The longest possible line across the map, as a safety
 	//Must be on same zlevel

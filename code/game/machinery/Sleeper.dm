@@ -186,7 +186,7 @@
 	to_chat(occupant, "<span class='warning'>You feel a tube jammed down your throat.</span>")
 	pump = !pump
 
-/obj/machinery/sleeper/proc/go_in(var/mob/M, mob/user)
+/obj/machinery/sleeper/proc/go_in(mob/M, mob/user)
 	if(!M)
 		return
 	if(stat & (BROKEN|NOPOWER))
@@ -236,7 +236,7 @@
 		toggle_filter()
 		toggle_pump()
 
-/obj/machinery/sleeper/proc/inject_chemical(var/mob/living/user, chemical_name, amount)
+/obj/machinery/sleeper/proc/inject_chemical(mob/living/user, chemical_name, amount)
 	if(stat & (BROKEN|NOPOWER))
 		return
 

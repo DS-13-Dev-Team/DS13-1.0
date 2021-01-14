@@ -107,7 +107,7 @@
 		if(pullin)
 			pullin.icon_state = "pull0"
 
-/mob/proc/can_pull(var/atom/movable/AM)
+/mob/proc/can_pull(atom/movable/AM)
 	.=FALSE
 	if ( !AM || src==AM || !isturf(src.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
@@ -149,7 +149,7 @@
 	return TRUE
 
 
-/mob/proc/start_pulling(var/atom/movable/AM)
+/mob/proc/start_pulling(atom/movable/AM)
 	if (!usr || !can_pull(AM))	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 

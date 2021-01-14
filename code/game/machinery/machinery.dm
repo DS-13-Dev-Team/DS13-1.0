@@ -181,7 +181,7 @@ Class Procs:
 				component_parts -= A
 	. = ..()
 
-/obj/machinery/proc/ProcessAll(var/wait)
+/obj/machinery/proc/ProcessAll(wait)
 	//Bay part processing, not fully ported. Investigate in future to see if worthwhile
 	/*
 	if(processing_flags & MACHINERY_PROCESS_COMPONENTS)
@@ -231,7 +231,7 @@ Class Procs:
 	return
 
 //sets the use_power var and then forces an area power update
-/obj/machinery/proc/update_use_power(var/new_use_power)
+/obj/machinery/proc/update_use_power(new_use_power)
 	use_power = new_use_power
 
 /obj/machinery/proc/auto_use_power()
@@ -243,13 +243,13 @@ Class Procs:
 		use_power(active_power_usage,power_channel, 1)
 	return 1
 
-/proc/is_operable(var/obj/machinery/M, mob/user)
+/proc/is_operable(obj/machinery/M, mob/user)
 	return istype(M) && M.operable()
 
-/obj/machinery/proc/operable(var/additional_flags = 0)
+/obj/machinery/proc/operable(additional_flags = 0)
 	return !inoperable(additional_flags)
 
-/obj/machinery/proc/inoperable(var/additional_flags = 0)
+/obj/machinery/proc/inoperable(additional_flags = 0)
 	return (stat & (NOPOWER|BROKEN|additional_flags))
 
 /obj/machinery/CanUseTopic(var/mob/user)
@@ -311,7 +311,7 @@ Class Procs:
 	uid = gl_uid
 	gl_uid++
 
-/obj/machinery/proc/state(var/msg)
+/obj/machinery/proc/state(msg)
 	for(var/mob/O in hearers(src, null))
 		O.show_message("\icon[src] <span class = 'notice'>[msg]</span>", 2)
 
@@ -341,14 +341,14 @@ Class Procs:
 			return 1
 	return 0
 
-/obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, obj/item/weapon/tool/crowbar/C)
+/obj/machinery/proc/default_deconstruction_crowbar(mob/user, obj/item/weapon/tool/crowbar/C)
 	if(!istype(C))
 		return 0
 	if(!panel_open)
 		return 0
 	. = dismantle()
 
-/obj/machinery/proc/default_deconstruction_screwdriver(var/mob/user, obj/item/weapon/tool/screwdriver/S)
+/obj/machinery/proc/default_deconstruction_screwdriver(mob/user, obj/item/weapon/tool/screwdriver/S)
 	if(!istype(S))
 		return 0
 	playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
@@ -357,7 +357,7 @@ Class Procs:
 	update_icon()
 	return 1
 
-/obj/machinery/proc/default_part_replacement(var/mob/user, obj/item/weapon/storage/part_replacer/R)
+/obj/machinery/proc/default_part_replacement(mob/user, obj/item/weapon/storage/part_replacer/R)
 	if(!istype(R))
 		return 0
 	if(!component_parts)
@@ -407,7 +407,7 @@ Class Procs:
 /datum/proc/remove_visual(mob/M)
 	return
 
-/obj/machinery/proc/malf_upgrade(var/mob/living/silicon/ai/user)
+/obj/machinery/proc/malf_upgrade(mob/living/silicon/ai/user)
 	return 0
 
 /obj/machinery/CouldUseTopic(var/mob/user)

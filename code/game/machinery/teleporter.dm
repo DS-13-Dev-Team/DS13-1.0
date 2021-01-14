@@ -171,7 +171,7 @@
 	if(station && station.engaged)
 		station.disengage()
 
-/obj/machinery/computer/teleporter/proc/set_target(var/obj/O)
+/obj/machinery/computer/teleporter/proc/set_target(obj/O)
 	src.locked = O
 	GLOB.destroyed_event.register(locked, src, .proc/target_lost)
 

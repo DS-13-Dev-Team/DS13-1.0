@@ -230,5 +230,5 @@
 		T.update_car(train_length, active_engines)
 		T = T.lead
 
-/obj/vehicle/train/proc/update_car(var/train_length, active_engines)
+/obj/vehicle/train/proc/update_car(train_length, active_engines)
 	return

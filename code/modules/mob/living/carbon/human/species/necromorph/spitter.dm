@@ -109,7 +109,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 	Snapshot fires a highly accurate projectile which autoaims at a nearby target.
 	It has low damage and a limited range, but is almost certain to hit. Making it very consistent damage and easily useable in a chaotic fight
 */
-/mob/living/proc/spitter_snapshot(var/atom/A)
+/mob/living/proc/spitter_snapshot(atom/A)
 	set name = "Snapshot"
 	set category = "Abilities"
 	set desc = "A weak projectile that auto-aims at targets within [SPITTER_SNAPSHOT_RANGE] range. HK: Middleclick"
@@ -136,7 +136,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 	Longshot fires an unguided accurate projectile with no range limits and good damage.
 	It can be difficult to land on a moving target
 */
-/mob/living/proc/spitter_longshot(var/atom/A)
+/mob/living/proc/spitter_longshot(atom/A)
 	set name = "Long shot"
 	set category = "Abilities"
 	set desc = "A moderate-strength projectile for longrange shooting. HK: Alt+Click"

@@ -22,7 +22,7 @@
 		Consume(A)
 
 /turf/unsimulated/wall/supermatter/Destroy()
-	STOP_PROCESSING(SSturf, src)	
+	STOP_PROCESSING(SSturf, src)
 	. = ..()
 
 /turf/unsimulated/wall/supermatter/Process(wait, times_fired)
@@ -105,7 +105,7 @@
 /turf/unsimulated/wall/supermatter/Entered(var/atom/movable/AM)
 	Bumped(AM)
 
-/turf/unsimulated/wall/supermatter/proc/Consume(var/atom/movable/AM)
+/turf/unsimulated/wall/supermatter/proc/Consume(atom/movable/AM)
 	if(MayConsume(AM))
 		qdel(AM)
 

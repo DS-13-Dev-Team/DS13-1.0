@@ -15,7 +15,7 @@
 	p = min(p, 100)
 	icon_state = "anobattery[round(p,25)]"
 
-/obj/item/weapon/anobattery/proc/use_power(var/amount)
+/obj/item/weapon/anobattery/proc/use_power(amount)
 	stored_charge = max(0, stored_charge - amount)
 
 /obj/item/weapon/anodevice

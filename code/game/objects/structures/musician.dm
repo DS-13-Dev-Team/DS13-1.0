@@ -27,7 +27,7 @@
 		desc = "This is a space piano, like a regular piano, but always in tune! Even if the musician isn't."
 		icon_state = "piano"
 
-/obj/structure/device/piano/proc/playnote(var/note as text)
+/obj/structure/device/piano/proc/playnote(note as text)
 //	log_debug("Note: [note]")
 
 	var/soundfile

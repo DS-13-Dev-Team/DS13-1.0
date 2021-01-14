@@ -85,7 +85,7 @@
 		spawn(100)
 			make_active()
 
-/obj/machinery/marker/proc/open_shop(var/mob/user)
+/obj/machinery/marker/proc/open_shop(mob/user)
 	shop.ui_interact(user)
 
 /*
@@ -168,7 +168,7 @@
 		reclaiming_biomass = NONSENSICAL_VALUE
 		unavailable_biomass = NONSENSICAL_VALUE
 
-/obj/machinery/marker/proc/add_biomass_source(var/datum/source = null, total_mass = 0, duration = 1 SECOND, sourcetype = /datum/biomass_source)
+/obj/machinery/marker/proc/add_biomass_source(datum/source = null, total_mass = 0, duration = 1 SECOND, sourcetype = /datum/biomass_source)
 	//Adds a new biomass source, can specify type
 
 	//First create it
@@ -181,13 +181,13 @@
 	biomass_sources.Add(BS)
 	return BS	//Return the source
 
-/obj/machinery/marker/proc/remove_biomass_source(var/datum/biomass_source/source = null)
+/obj/machinery/marker/proc/remove_biomass_source(datum/biomass_source/source = null)
 	biomass_sources.Remove(source)
 	source.target = null //Its no longer attached to us
 	if (!QDELETED(source))
 		qdel(source)
 
-/obj/machinery/marker/proc/become_master_signal(var/mob/M)
+/obj/machinery/marker/proc/become_master_signal(mob/M)
 	if(!active)
 		return
 	if (!M || !M.key)
@@ -240,7 +240,7 @@
 
 
 //A mob was detected nearby, can we absorb it?
-/obj/machinery/marker/proc/nearby_movement(var/atom/movable/AM, atom/old_loc)
+/obj/machinery/marker/proc/nearby_movement(atom/movable/AM, atom/old_loc)
 
 	if (isliving(AM))
 		var/mob/living/L = AM
@@ -252,7 +252,7 @@
 
 
 
-/obj/machinery/marker/proc/pay_biomass(var/purpose, amount, allow_negative = FALSE)
+/obj/machinery/marker/proc/pay_biomass(purpose, amount, allow_negative = FALSE)
 	if (allow_negative || biomass >= amount)
 		biomass -= amount
 		return TRUE
@@ -271,11 +271,11 @@
 	return trange(visualnet_range, src)
 
 //Spawnpoints
-/obj/machinery/marker/proc/add_spawnpoint(var/atom/source)
+/obj/machinery/marker/proc/add_spawnpoint(atom/source)
 	if (shop)
 		shop.possible_spawnpoints += new /datum/necrospawn(source, source.name)
 
-/obj/machinery/marker/proc/remove_spawnpoint(var/atom/source)
+/obj/machinery/marker/proc/remove_spawnpoint(atom/source)
 	if (shop)
 		for (var/datum/necrospawn/N in shop.possible_spawnpoints)
 			if (N.spawnpoint == source)

@@ -13,12 +13,12 @@
 	parent.particle_catchers -= src
 	parent = null
 
-/obj/effect/fusion_particle_catcher/proc/SetSize(var/newsize)
+/obj/effect/fusion_particle_catcher/proc/SetSize(newsize)
 	name = "collector [newsize]"
 	mysize = newsize
 	UpdateSize()
 
-/obj/effect/fusion_particle_catcher/proc/AddParticles(var/name, quantity = 1)
+/obj/effect/fusion_particle_catcher/proc/AddParticles(name, quantity = 1)
 	if(parent && parent.size >= mysize)
 		parent.AddParticles(name, quantity)
 		return 1

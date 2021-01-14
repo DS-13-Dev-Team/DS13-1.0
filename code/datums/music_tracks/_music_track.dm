@@ -12,7 +12,7 @@
 	if (license)
 		license = decls_repository.get_decl(license)
 
-/music_track/proc/play_to(var/listener, play_looped = TRUE)
+/music_track/proc/play_to(listener, play_looped = TRUE)
 	to_chat(listener, "<span class='good'>Now Playing:</span>")
 	to_chat(listener, "<span class='good'>[title][artist ? " by [artist]" : ""][album ? " ([album])" : ""]</span>")
 	if(url)
@@ -28,7 +28,7 @@
 
 
 //This awkward proc attempts to find the duration of this music track
-/music_track/proc/get_duration(var/client/C)
+/music_track/proc/get_duration(client/C)
 	//IF the duration has been found at least once before or set at authortime we'll just return that
 	if (duration)
 		return duration

@@ -186,7 +186,7 @@
 	else
 		return !density
 
-/obj/machinery/portable_atmospherics/hydroponics/proc/check_health(var/icon_update = 1)
+/obj/machinery/portable_atmospherics/hydroponics/proc/check_health(icon_update = 1)
 	if(seed && !dead && health <= 0)
 		die()
 	check_level_sanity()
@@ -252,7 +252,7 @@
 	check_health()
 
 //Harvests the product of a plant.
-/obj/machinery/portable_atmospherics/hydroponics/proc/harvest(var/mob/user)
+/obj/machinery/portable_atmospherics/hydroponics/proc/harvest(mob/user)
 
 	//Harvest the product of the plant,
 	if(!seed || !harvest)
@@ -282,7 +282,7 @@
 	return TRUE
 
 //Clears out a dead plant.
-/obj/machinery/portable_atmospherics/hydroponics/proc/remove_dead(var/mob/user, silent)
+/obj/machinery/portable_atmospherics/hydroponics/proc/remove_dead(mob/user, silent)
 	if(!user || !dead) return
 
 	if(closed_system)
@@ -322,7 +322,7 @@
 
 	return
 
-/obj/machinery/portable_atmospherics/hydroponics/proc/mutate(var/severity)
+/obj/machinery/portable_atmospherics/hydroponics/proc/mutate(severity)
 
 	// No seed, no mutations.
 	if(!seed)
@@ -501,7 +501,7 @@
 			check_health()
 	return
 
-/obj/machinery/portable_atmospherics/hydroponics/proc/plant_seed(var/mob/user, obj/item/seeds/S)
+/obj/machinery/portable_atmospherics/hydroponics/proc/plant_seed(mob/user, obj/item/seeds/S)
 
 	if(seed)
 		to_chat(user, "<span class='warning'>\The [src] already has seeds in it!</span>")
@@ -607,7 +607,7 @@
 		close_lid(usr)
 	return
 
-/obj/machinery/portable_atmospherics/hydroponics/proc/close_lid(var/mob/living/user)
+/obj/machinery/portable_atmospherics/hydroponics/proc/close_lid(mob/living/user)
 	closed_system = !closed_system
 	to_chat(user, "You [closed_system ? "close" : "open"] the tray's lid.")
 	update_icon()

@@ -135,7 +135,7 @@
 
 		return
 
-	proc/primed(var/primed = 1)
+	proc/primed(primed = 1)
 		if(active)
 			icon_state = initial(icon_state) + (primed?"_primed":"_active")
 

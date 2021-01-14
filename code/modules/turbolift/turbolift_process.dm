@@ -31,5 +31,5 @@ var/datum/controller/process/turbolift/turbolift_controller
 			lift.busy = 0
 		SCHECK
 
-/datum/controller/process/turbolift/proc/lift_is_moving(var/datum/turbolift/lift)
+/datum/controller/process/turbolift/proc/lift_is_moving(datum/turbolift/lift)
 	moving_lifts["\ref[lift]"] = world.time + lift.move_delay

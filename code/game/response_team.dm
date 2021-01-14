@@ -110,7 +110,7 @@ proc/increment_ert_chance()
 		sleep(600 * 3) // Minute * Number of Minutes
 
 
-proc/trigger_armed_response_team(var/force = 0)
+proc/trigger_armed_response_team(force = 0)
 	if(!can_call_ert && !force)
 		return
 	if(send_emergency_team)

@@ -125,7 +125,7 @@
 	return TRUE
 
 
-/mob/living/carbon/proc/activate_hand(var/selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
+/mob/living/carbon/proc/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
 
 	if(istext(selhand))
 		selhand = lowertext(selhand)
@@ -218,7 +218,7 @@
 /mob/living/carbon/proc/getDNA()
 	return dna
 
-/mob/living/carbon/proc/setDNA(var/datum/dna/newDNA)
+/mob/living/carbon/proc/setDNA(datum/dna/newDNA)
 	dna = newDNA
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
@@ -297,13 +297,13 @@
 	shake_camera(src, stun_duration SECONDS, 2)
 	return 1
 
-/mob/living/carbon/proc/add_chemical_effect(var/effect, magnitude = 1)
+/mob/living/carbon/proc/add_chemical_effect(effect, magnitude = 1)
 	if(effect in chem_effects)
 		chem_effects[effect] += magnitude
 	else
 		chem_effects[effect] = magnitude
 
-/mob/living/carbon/proc/add_up_to_chemical_effect(var/effect, magnitude = 1)
+/mob/living/carbon/proc/add_up_to_chemical_effect(effect, magnitude = 1)
 	if(effect in chem_effects)
 		chem_effects[effect] = max(magnitude, chem_effects[effect])
 	else
@@ -354,10 +354,10 @@
 			src.visible_message("<span class='warning'>\The [src] regurgitates \the [AM]!</span>")
 			return loc
 	return ..()
-/mob/living/carbon/proc/should_have_organ(var/organ_check)
+/mob/living/carbon/proc/should_have_organ(organ_check)
 	return 0
 
-/mob/living/carbon/proc/can_feel_pain(var/check_organ)
+/mob/living/carbon/proc/can_feel_pain(check_organ)
 	if(isSynthetic())
 		return 0
 	return !(species && species.species_flags & SPECIES_FLAG_NO_PAIN)
@@ -378,7 +378,7 @@
 	// overridden in human_defense.dm
 	return null
 
-/mob/living/carbon/proc/SetStasis(var/factor, source = "misc")
+/mob/living/carbon/proc/SetStasis(factor, source = "misc")
 	if((species && (species.species_flags & SPECIES_FLAG_NO_SCAN)) || isSynthetic())
 		return
 	stasis_sources[source] = factor

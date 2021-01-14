@@ -37,7 +37,7 @@
 	for (var/turf/T in turfs_in_view(visualnet_range))
 		debug_mark_turf(T)
 
-/obj/structure/corruption_node/eye/proc/nearby_movement(var/atom/movable/AM, atom/old_loc)
+/obj/structure/corruption_node/eye/proc/nearby_movement(atom/movable/AM, atom/old_loc)
 	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if (!H.is_necromorph())

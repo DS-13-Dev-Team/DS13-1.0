@@ -59,7 +59,7 @@
 
 	return 1
 
-/datum/unit_test/apc_area_test/proc/get_exemptions(var/area)
+/datum/unit_test/apc_area_test/proc/get_exemptions(area)
 	// We assume deeper types come last
 	for(var/i = GLOB.using_map.apc_test_exempt_areas.len; i>0; i--)
 		var/exempt_type = GLOB.using_map.apc_test_exempt_areas[i]
@@ -279,7 +279,7 @@ datum/unit_test/ladder_check/start_test()
 
 	return 1
 
-/datum/unit_test/ladder_check/proc/check_direction(var/obj/structure/ladder/L, turf/destination_turf, check_direction, other_ladder_direction)
+/datum/unit_test/ladder_check/proc/check_direction(obj/structure/ladder/L, turf/destination_turf, check_direction, other_ladder_direction)
 	if(!destination_turf)
 		log_bad("Unable to acquire turf in the [dir2text(check_direction)] for [log_info_line(L)]")
 		return FALSE
@@ -292,7 +292,7 @@ datum/unit_test/ladder_check/start_test()
 		return FALSE
 	return TRUE
 
-/datum/unit_test/ladder_check/proc/check_open_space(var/obj/structure/ladder/L)
+/datum/unit_test/ladder_check/proc/check_open_space(obj/structure/ladder/L)
 	if(!istype(get_turf(L), /turf/simulated/open))
 		log_bad("There is a non-open turf blocking the way for [log_info_line(L)]")
 		return FALSE
@@ -450,7 +450,7 @@ datum/unit_test/ladder_check/start_test()
 
 	return 1
 
-/datum/unit_test/disposal_segments_shall_connect_with_other_disposal_pipes/proc/turf_contains_matching_disposal_pipe(var/turf/T, straight_dir, list/curved_dirs)
+/datum/unit_test/disposal_segments_shall_connect_with_other_disposal_pipes/proc/turf_contains_matching_disposal_pipe(turf/T, straight_dir, list/curved_dirs)
 	if(!T)
 		return FALSE
 

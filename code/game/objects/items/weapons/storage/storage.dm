@@ -179,7 +179,7 @@
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
 //The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
 //such as when picking up all the items on a tile with one click.
-/obj/item/weapon/storage/proc/handle_item_insertion(var/obj/item/W, prevent_warning = 0, NoUpdate = 0)
+/obj/item/weapon/storage/proc/handle_item_insertion(obj/item/W, prevent_warning = 0, NoUpdate = 0)
 	if(!istype(W))
 		return FALSE
 	if(istype(W.loc, /mob))
@@ -286,7 +286,7 @@
 	src.add_fingerprint(user)
 	return
 
-/obj/item/weapon/storage/proc/gather_all(var/turf/T, mob/user)
+/obj/item/weapon/storage/proc/gather_all(turf/T, mob/user)
 	var/success = 0
 	var/failure = 0
 

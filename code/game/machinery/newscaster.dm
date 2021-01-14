@@ -61,7 +61,7 @@
 /datum/feed_network/New()
 	CreateFeedChannel("Announcements", "SS13", 1, 1, "New Announcement Available")
 
-/datum/feed_network/proc/CreateFeedChannel(var/channel_name, author, locked, adminChannel = 0, announcement_message)
+/datum/feed_network/proc/CreateFeedChannel(channel_name, author, locked, adminChannel = 0, announcement_message)
 	var/datum/feed_channel/newChannel = new /datum/feed_channel
 	newChannel.channel_name = channel_name
 	newChannel.author = author
@@ -73,7 +73,7 @@
 		newChannel.announcement = "Breaking news from [channel_name]!"
 	network_channels += newChannel
 
-/datum/feed_network/proc/SubmitArticle(var/msg, author, channel_name, obj/item/weapon/photo/photo, adminMessage = 0, message_type = "")
+/datum/feed_network/proc/SubmitArticle(msg, author, channel_name, obj/item/weapon/photo/photo, adminMessage = 0, message_type = "")
 	var/datum/feed_message/newMsg = new /datum/feed_message
 	newMsg.author = author
 	newMsg.body = msg
@@ -89,7 +89,7 @@
 			insert_message_in_channel(FC, newMsg) //Adding message to the network's appropriate feed_channel
 			break
 
-/datum/feed_network/proc/insert_message_in_channel(var/datum/feed_channel/FC, datum/feed_message/newMsg)
+/datum/feed_network/proc/insert_message_in_channel(datum/feed_channel/FC, datum/feed_message/newMsg)
 	FC.messages += newMsg
 	if(newMsg.img)
 		register_asset("newscaster_photo_[sanitize(FC.channel_name)]_[FC.messages.len].png", newMsg.img)
@@ -97,7 +97,7 @@
 	FC.update()
 	alert_readers(FC.announcement)
 
-/datum/feed_network/proc/alert_readers(var/annoncement)
+/datum/feed_network/proc/alert_readers(annoncement)
 	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
 		NEWSCASTER.newsAlert(annoncement)
 		NEWSCASTER.update_icon()
@@ -938,7 +938,7 @@ obj/item/weapon/newspaper/attackby(obj/item/weapon/W as obj, mob/user as mob)
 ///obj/machinery/newscaster/process()       //Was thinking of doing the icon update through process, but multiple iterations per second does not
 //	return                                  //bode well with a newscaster network of 10+ machines. Let's just return it, as it's added in the machines list.
 
-/obj/machinery/newscaster/proc/newsAlert(var/news_call)   //This isn't Agouri's work, for it is ugly and vile.
+/obj/machinery/newscaster/proc/newsAlert(news_call)   //This isn't Agouri's work, for it is ugly and vile.
 	var/turf/T = get_turf(src)                      //Who the fuck uses spawn(600) anyway, jesus christ
 	if(news_call)
 		for(var/mob/O in hearers(world.view-1, T))

@@ -260,7 +260,7 @@
 	if(client)
 		return client.prefs.char_rank
 
-/mob/new_player/proc/AttemptLateSpawn(var/datum/job/job, spawning_at)
+/mob/new_player/proc/AttemptLateSpawn(datum/job/job, spawning_at)
 	if(src != usr)
 		return FALSE
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
@@ -352,7 +352,7 @@
 	qdel(src)
 
 
-/mob/new_player/proc/AnnounceCyborg(var/mob/living/character, rank, join_message)
+/mob/new_player/proc/AnnounceCyborg(mob/living/character, rank, join_message)
 	if (ticker.current_state == GAME_STATE_PLAYING)
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
@@ -411,7 +411,7 @@
 	dat += "</table></center>"
 	src << browse(jointext(dat, null), "window=latechoices;size=450x640;can_close=1")
 
-/mob/new_player/proc/create_character(var/turf/spawn_turf)
+/mob/new_player/proc/create_character(turf/spawn_turf)
 	spawning = 1
 	close_spawn_windows()
 
@@ -549,7 +549,7 @@
 /mob/new_player/is_ready()
 	return ready && ..()
 
-/mob/new_player/hear_say(var/message, verb = "says", datum/language/language = null, alt_name = "",var/italics = 0, mob/speaker = null)
+/mob/new_player/hear_say(var/message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null)
 	return
 
 /mob/new_player/hear_radio(var/message, verb="says", datum/language/language=null, part_a, part_b, part_c, mob/speaker = null, hard_to_hear = 0)

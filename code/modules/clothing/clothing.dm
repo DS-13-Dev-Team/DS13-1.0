@@ -113,7 +113,7 @@
 		update_vision()
 	return ..()
 
-/obj/item/clothing/proc/refit_for_species(var/target_species)
+/obj/item/clothing/proc/refit_for_species(target_species)
 	if(!species_restricted)
 		return //this item doesn't use the species_restricted system
 
@@ -335,7 +335,7 @@ BLIND     // can't see anything
 	return "material from a pair of [name]."
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
-/obj/item/clothing/gloves/proc/Touch(var/atom/A, proximity)
+/obj/item/clothing/gloves/proc/Touch(atom/A, proximity)
 	return 0 // return 1 to cancel attack_hand()
 
 /obj/item/clothing/gloves/attackby(obj/item/weapon/W, mob/user)
@@ -442,7 +442,7 @@ BLIND     // can't see anything
 	else
 		return ..(user)
 
-/obj/item/clothing/head/proc/update_flashlight(var/mob/user = null)
+/obj/item/clothing/head/proc/update_flashlight(mob/user = null)
 	if(on && !light_applied)
 		set_light(0.5, 1, 3)
 		light_applied = 1
@@ -460,7 +460,7 @@ BLIND     // can't see anything
 	if(!istype(user) || !mob_wear_hat(user))
 		return ..()
 
-/obj/item/clothing/head/proc/mob_wear_hat(var/mob/user)
+/obj/item/clothing/head/proc/mob_wear_hat(mob/user)
 	if(!Adjacent(user))
 		return 0
 	var/success
@@ -551,7 +551,7 @@ BLIND     // can't see anything
 /obj/item/clothing/mask/proc/filter_air(datum/gas_mixture/air)
 	return
 
-/obj/item/clothing/mask/proc/adjust_mask(var/mob/user)
+/obj/item/clothing/mask/proc/adjust_mask(mob/user)
 	set category = "Object"
 	set name = "Adjust mask"
 	set src in usr
@@ -658,7 +658,7 @@ BLIND     // can't see anything
 		overlays += image(icon, "[icon_state]_knife")
 	return ..()
 
-/obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, running)
+/obj/item/clothing/shoes/proc/handle_movement(turf/walking, running)
 	return
 
 /obj/item/clothing/shoes/update_clothing_icon()

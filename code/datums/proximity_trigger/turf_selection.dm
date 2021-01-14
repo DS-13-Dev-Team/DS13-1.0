@@ -1,4 +1,4 @@
-/decl/turf_selection/proc/get_turfs(var/atom/origin, range)
+/decl/turf_selection/proc/get_turfs(atom/origin, range)
 	return list()
 
 /decl/turf_selection/line/get_turfs(var/atom/origin, range)

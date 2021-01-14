@@ -206,7 +206,7 @@
 			revoke_spells()
 
 
-/spell/targeted/revoke/proc/check_for_revoke(var/list/targets)
+/spell/targeted/revoke/proc/check_for_revoke(list/targets)
 	for(var/t in targets)
 		var/mob/M = t
 		if(M.client)

@@ -93,5 +93,5 @@
 
 	return extra_href
 
-/datum/topic_state/air_alarm/proc/has_access(var/mob/user)
+/datum/topic_state/air_alarm/proc/has_access(mob/user)
 	return user && (isAI(user) || atmos_control.access.allowed(user) || atmos_control.emagged || air_alarm.rcon_setting == RCON_YES || (air_alarm.alarm_area.atmosalm && air_alarm.rcon_setting == RCON_AUTO))

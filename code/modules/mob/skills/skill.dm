@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(skills)
 	var/difficulty = SKILL_AVERAGE   //Used to compute how expensive the skill is
 	var/default_max = SKILL_ADEPT    //Makes the skill capped at this value in selection unless overriden at job level.
 
-/decl/hierarchy/skill/proc/get_cost(var/level)
+/decl/hierarchy/skill/proc/get_cost(level)
 	switch(level)
 		if(SKILL_BASIC, SKILL_ADEPT)
 			return difficulty

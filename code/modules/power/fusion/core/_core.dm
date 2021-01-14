@@ -63,7 +63,7 @@ var/list/fusion_cores = list()
 	use_power = 2
 	. = 1
 
-/obj/machinery/power/fusion_core/proc/Shutdown(var/force_rupture)
+/obj/machinery/power/fusion_core/proc/Shutdown(force_rupture)
 	if(owned_field)
 		icon_state = "core0"
 		if(force_rupture || owned_field.plasma_temperature > 1000)
@@ -74,7 +74,7 @@ var/list/fusion_cores = list()
 		owned_field = null
 	use_power = 1
 
-/obj/machinery/power/fusion_core/proc/AddParticles(var/name, quantity = 1)
+/obj/machinery/power/fusion_core/proc/AddParticles(name, quantity = 1)
 	if(owned_field)
 		owned_field.AddParticles(name, quantity)
 		. = 1
@@ -83,7 +83,7 @@ var/list/fusion_cores = list()
 	if(owned_field)
 		. = owned_field.bullet_act(Proj)
 
-/obj/machinery/power/fusion_core/proc/set_strength(var/value)
+/obj/machinery/power/fusion_core/proc/set_strength(value)
 	value = Clamp(value, MIN_FIELD_STR, MAX_FIELD_STR)
 	field_strength = value
 	active_power_usage = 5 * value
@@ -124,7 +124,7 @@ var/list/fusion_cores = list()
 
 	return ..()
 
-/obj/machinery/power/fusion_core/proc/jumpstart(var/field_temperature)
+/obj/machinery/power/fusion_core/proc/jumpstart(field_temperature)
 	field_strength = 501 // Generally a good size.
 	Startup()
 	if(!owned_field)

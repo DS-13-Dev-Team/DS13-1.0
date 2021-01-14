@@ -39,7 +39,7 @@
 	A.ui_interact(user, state = hack_state)
 	return 1
 
-/obj/item/weapon/tool/multitool/hacktool/proc/attempt_hack(var/mob/user, atom/target)
+/obj/item/weapon/tool/multitool/hacktool/proc/attempt_hack(mob/user, atom/target)
 	if(is_hacking)
 		to_chat(user, "<span class='warning'>You are already hacking!</span>")
 		return 1
@@ -75,7 +75,7 @@
 			GLOB.destroyed_event.unregister(A, src)
 		known_targets.Cut(max_known_targets + 1)
 
-/obj/item/weapon/tool/multitool/hacktool/proc/on_target_destroy(var/target)
+/obj/item/weapon/tool/multitool/hacktool/proc/on_target_destroy(target)
 	known_targets -= target
 
 /datum/topic_state/default/must_hack

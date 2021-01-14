@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(necromorph)
 /datum/controller/subsystem/necromorph/stat_entry()
 	..("Click to debug!")
 
-/datum/controller/subsystem/necromorph/proc/join_necroqueue(var/mob/observer/eye/signal/M)
+/datum/controller/subsystem/necromorph/proc/join_necroqueue(mob/observer/eye/signal/M)
 	if (is_marker_master(M))
 		//The master may not queue. They can still possess things if really needed though
 		return FALSE
@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(necromorph)
 
 
 
-/datum/controller/subsystem/necromorph/proc/remove_from_necroqueue(var/mob/observer/eye/signal/M)
+/datum/controller/subsystem/necromorph/proc/remove_from_necroqueue(mob/observer/eye/signal/M)
 	M.verbs |= /mob/observer/eye/signal/proc/join_necroqueue
 	M.verbs -= /mob/observer/eye/signal/proc/leave_necroqueue
 	necroqueue -= M
@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(necromorph)
 
 
 
-/datum/controller/subsystem/necromorph/proc/fill_vessel_from_queue(var/mob/vessel, vessel_id)
+/datum/controller/subsystem/necromorph/proc/fill_vessel_from_queue(mob/vessel, vessel_id)
 	for (var/mob/observer/eye/signal/M in necroqueue)
 		if (!M.client || !M.key)
 			continue	//Gotta be connected
@@ -76,7 +76,7 @@ SUBSYSTEM_DEF(necromorph)
 /*
 	Keeping track of last known locations of live humans
 */
-/datum/controller/subsystem/necromorph/proc/update_sighting(var/mob/living/AM, obj/structure/corruption_node/eye/spotter)
+/datum/controller/subsystem/necromorph/proc/update_sighting(mob/living/AM, obj/structure/corruption_node/eye/spotter)
 	//We don't record dead mobs, remove them from this list
 	if (AM.stat == DEAD || QDELETED(AM))
 		sightings.Remove(AM)
@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(necromorph)
 
 
 
-/proc/add_massive_atom(var/atom/A)
+/proc/add_massive_atom(atom/A)
 	if ((A in SSnecromorph.massive_necroatoms))
 		return
 
@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(necromorph)
 		M.unavailable_biomass = NONSENSICAL_VALUE
 
 
-/proc/remove_massive_atom(var/atom/A)
+/proc/remove_massive_atom(atom/A)
 	if (!(A in SSnecromorph.massive_necroatoms))
 		return
 
@@ -140,7 +140,7 @@ SUBSYSTEM_DEF(necromorph)
 
 
 //Updates the energy holders of all necromorph players, refreshing their spell list
-/datum/controller/subsystem/necromorph/proc/update_all_ability_lists(var/clear = FALSE)
+/datum/controller/subsystem/necromorph/proc/update_all_ability_lists(clear = FALSE)
 	for (var/key in GLOB.players)
 		if (!key)
 			continue
@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(necromorph)
 
 
 //Shard handling
-/datum/controller/subsystem/necromorph/proc/register_shard(var/obj/item/marker_shard/MS)
+/datum/controller/subsystem/necromorph/proc/register_shard(obj/item/marker_shard/MS)
 	var/shardsbefore = shards.len
 
 	shards |= MS
@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(necromorph)
 		update_all_ability_lists()
 
 
-/datum/controller/subsystem/necromorph/proc/unregister_shard(var/obj/item/marker_shard/MS)
+/datum/controller/subsystem/necromorph/proc/unregister_shard(obj/item/marker_shard/MS)
 	var/shardsbefore = shards.len
 
 	shards -= MS

@@ -145,7 +145,7 @@
 	if(owner && (flags & APPEARANCE_UPDATE_DNA))
 		owner.update_dna()
 
-/datum/nano_module/appearance_changer/proc/can_change(var/flag)
+/datum/nano_module/appearance_changer/proc/can_change(flag)
 	return owner && (flags & flag)
 
 /datum/nano_module/appearance_changer/proc/can_change_skin_tone()

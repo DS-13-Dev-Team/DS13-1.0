@@ -18,7 +18,7 @@
 	var/ignore_tag//organ tag to ignore
 
 
-/obj/aura/regenerating/human/proc/external_regeneration_effect(var/obj/item/organ/external/O, mob/living/carbon/human/H)
+/obj/aura/regenerating/human/proc/external_regeneration_effect(obj/item/organ/external/O, mob/living/carbon/human/H)
 	return
 
 /obj/aura/regenerating/human/life_tick()

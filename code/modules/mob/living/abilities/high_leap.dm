@@ -251,7 +251,7 @@
 /*----------------------------------
 	Impact
 -----------------------------------*/
-/atom/movable/proc/high_leap_impact(var/atom/target, distance, start_location)
+/atom/movable/proc/high_leap_impact(atom/target, distance, start_location)
 	return
 
 //When a human does it, we call the same proc on their species. This allows various people to do stuff
@@ -262,7 +262,7 @@
 	return ..()
 
 
-/datum/species/proc/high_leap_impact(var/mob/living/user, atom/target, distance, start_location)
+/datum/species/proc/high_leap_impact(mob/living/user, atom/target, distance, start_location)
 	return
 
 /***********************
@@ -271,7 +271,7 @@
 //Access Proc
 
 
-/atom/movable/proc/can_high_leap(var/error_messages = TRUE)
+/atom/movable/proc/can_high_leap(error_messages = TRUE)
 	var/datum/extension/high_leap/E = get_extension(src, /datum/extension/high_leap)
 	if(istype(E))
 		if (error_messages)
@@ -289,7 +289,7 @@
 
 	.=..()
 
-/atom/movable/proc/high_leap_ability(var/target, windup_time, winddown_time, cooldown, minimum_range = 3, travel_speed = 4)
+/atom/movable/proc/high_leap_ability(target, windup_time, winddown_time, cooldown, minimum_range = 3, travel_speed = 4)
 	//First of all, lets check if we're currently able to charge
 	if (!can_high_leap())
 		return FALSE

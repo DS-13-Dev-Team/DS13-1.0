@@ -257,7 +257,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 /*--------------------------------
 	Leap
 --------------------------------*/
-/mob/living/carbon/human/proc/tripod_leap(var/atom/target)
+/mob/living/carbon/human/proc/tripod_leap(atom/target)
 	set name = "High Leap"
 	set desc = "Leaps to a target location, dealing damage around the landing point, and knockdown in a frontal cone"
 	set category = "Abilities"
@@ -340,7 +340,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	Arm Swing
 --------------------------------*/
 
-/mob/living/carbon/human/proc/tripod_arm_swing(var/atom/target)
+/mob/living/carbon/human/proc/tripod_arm_swing(atom/target)
 	set name = "Arm Swing"
 	set desc = "Swings an arm in a wide radius"
 	set category = "Abilities"
@@ -470,7 +470,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 /*--------------------------------
 	Tongue Lash
 --------------------------------*/
-/mob/living/carbon/human/proc/tripod_tongue_lash(var/atom/target)
+/mob/living/carbon/human/proc/tripod_tongue_lash(atom/target)
 	set name = "Tongue Lash"
 	set desc = "Your bladed tongue swings in a moderate arc around you, automatically seeking nearby victims"
 	set category = "Abilities"
@@ -588,7 +588,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	Requires the target to be lying down in order to start
 	Requires us to have the tongue and at least one arm intact
 */
-/mob/living/carbon/human/proc/tripod_kiss(var/mob/living/carbon/human/target)
+/mob/living/carbon/human/proc/tripod_kiss(mob/living/carbon/human/target)
 	set name = "Kiss of Death"
 	set desc = "An elaborate multistage execution that rewards extra biomass on success"
 	set category = "Abilities"

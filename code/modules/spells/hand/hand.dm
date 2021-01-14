@@ -39,7 +39,7 @@
 	cancel_hand()
 	. = ..()
 
-/spell/hand/proc/valid_target(var/atom/a,var/mob/user) //we use seperate procs for our target checking for the hand spells.
+/spell/hand/proc/valid_target(atom/a, mob/user) //we use seperate procs for our target checking for the hand spells.
 	var/distance = get_dist(a,user)
 	if((min_range && distance < min_range) || (range && distance > range))
 		return FALSE
@@ -47,7 +47,7 @@
 		return FALSE
 	return TRUE
 
-/spell/hand/proc/cast_hand(var/atom/a,var/mob/user) //same for casting.
+/spell/hand/proc/cast_hand(atom/a, mob/user) //same for casting.
 	return TRUE
 
 /spell/hand/charges

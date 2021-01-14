@@ -27,7 +27,7 @@
 		QDEL_IN(src,lifespan)
 
 
-/obj/effect/projectile/proc/set_transform(var/matrix/M)
+/obj/effect/projectile/proc/set_transform(matrix/M)
 	if(istype(M))
 		transform = M
 

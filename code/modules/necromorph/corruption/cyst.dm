@@ -74,7 +74,7 @@
 	payload = new(src)
 	update_icon()
 
-/obj/structure/corruption_node/cyst/proc/nearby_movement(var/atom/movable/AM)
+/obj/structure/corruption_node/cyst/proc/nearby_movement(atom/movable/AM)
 	if (!payload)
 		return	//Can't fire if we don't have a bomb ready
 
@@ -111,7 +111,7 @@
 	//Once we get here, we've decided to fire!
 	fire(AM)
 
-/obj/structure/corruption_node/cyst/proc/fire(var/atom/target_atom)
+/obj/structure/corruption_node/cyst/proc/fire(atom/target_atom)
 	if (!payload)
 		return	//Can't fire if we don't have a bomb ready
 

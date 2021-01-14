@@ -11,7 +11,7 @@
 	. = ..()
 	to_chat(usr, "It has [uses] use\s left.")
 
-/obj/item/device/kit/proc/use(var/amt, mob/user)
+/obj/item/device/kit/proc/use(amt, mob/user)
 	uses -= amt
 	playsound(get_turf(user), 'sound/items/Screwdriver.ogg', 50, 1)
 	if(uses<1)

@@ -223,7 +223,7 @@
 
 
 //Called when a sawblade is launched in remote control mode
-/obj/item/projectile/sawblade/proc/control_launched(var/obj/item/weapon/gun/projectile/ripper/gun)
+/obj/item/projectile/sawblade/proc/control_launched(obj/item/weapon/gun/projectile/ripper/gun)
 	launcher = gun //Register the ripper
 	if (gun)
 		pixel_click = gun.last_clickpoint //Grab an initial clickpoint so that we don't fly towards world zero
@@ -376,7 +376,7 @@
 		updatehealth()
 
 
-/obj/item/projectile/sawblade/proc/add_grind_atom(var/atom/A)
+/obj/item/projectile/sawblade/proc/add_grind_atom(atom/A)
 	//Adds an atom to our list of grind items. this is stored indefinitely (until this sawblade is deleted)
 	if (!QDELETED(A))
 		grind_atoms += list(list(A, EX3_TOTAL, EX2_TOTAL, EX1_TOTAL))
@@ -431,7 +431,7 @@
 		if (!QDELETED(src))
 			qdel(src)
 
-/obj/item/projectile/sawblade/proc/set_sound(var/soundin)
+/obj/item/projectile/sawblade/proc/set_sound(soundin)
 
 	//Null is passed in when the sawblade is deleted. This will stop the sound
 	if (!soundin)

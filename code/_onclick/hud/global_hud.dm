@@ -11,7 +11,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new())
 	var/obj/screen/meson
 	var/obj/screen/science
 
-/datum/global_hud/proc/setup_overlay(var/icon_state)
+/datum/global_hud/proc/setup_overlay(icon_state)
 
 	var/obj/screen/screen = new /obj/screen()
 	screen.screen_loc = "1,1"

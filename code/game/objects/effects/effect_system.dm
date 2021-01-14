@@ -187,7 +187,7 @@ steam.start() -- spawns the effect
 	if(istype(M))
 		affect(M)
 
-/obj/effect/effect/smoke/proc/affect(var/mob/living/carbon/M)
+/obj/effect/effect/smoke/proc/affect(mob/living/carbon/M)
 	if (!istype(M))
 		return 0
 	if (M.internal != null)
@@ -406,7 +406,7 @@ steam.start() -- spawns the effect
 	src.processing = 0
 	src.on = 0
 
-/datum/effect/effect/system/trail/proc/effect(var/obj/effect/effect/T)
+/datum/effect/effect/system/trail/proc/effect(obj/effect/effect/T)
 	T.set_dir(src.holder.dir)
 	return
 

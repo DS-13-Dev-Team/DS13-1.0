@@ -16,7 +16,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	force = 5.0
 	throwforce = 10.0
-	
+
 	throw_range = 4
 	action_button_name = "Toggle Heatsink"
 
@@ -85,7 +85,7 @@
 	on = 1
 	update_icon()
 
-/obj/item/device/suit_cooling_unit/proc/turn_off(var/failed)
+/obj/item/device/suit_cooling_unit/proc/turn_off(failed)
 	if(failed) visible_message("\The [src] clicks and whines as it powers down.")
 	on = 0
 	update_icon()
@@ -107,7 +107,7 @@
 
 	toggle(user)
 
-/obj/item/device/suit_cooling_unit/proc/toggle(var/mob/user)
+/obj/item/device/suit_cooling_unit/proc/toggle(mob/user)
 	if(on)
 		turn_off()
 	else

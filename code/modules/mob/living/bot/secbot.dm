@@ -189,7 +189,7 @@
 	else
 		UnarmedAttack(target)
 
-/mob/living/bot/secbot/proc/cuff_target(var/mob/living/carbon/C)
+/mob/living/bot/secbot/proc/cuff_target(mob/living/carbon/C)
 	if(istype(C) && !C.handcuffed)
 		handcuffs.place_handcuffs(C, src)
 	resetTarget() //we're done, failed or not. Don't want to get stuck if C is not
@@ -240,7 +240,7 @@
 		return H.get_id_name("unidentified person")
 	return "unidentified lifeform"
 
-/mob/living/bot/secbot/proc/check_threat(var/mob/living/M)
+/mob/living/bot/secbot/proc/check_threat(mob/living/M)
 	if(!M || !istype(M) || M.stat == DEAD || src == M)
 		return 0
 

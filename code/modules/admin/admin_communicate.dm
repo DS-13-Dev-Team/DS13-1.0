@@ -41,7 +41,7 @@
 	draft_message = ""
 
 //Sends a message over a radio channel
-/datum/extension/admin_communicate/proc/communicate_radio(var/message, channel)
+/datum/extension/admin_communicate/proc/communicate_radio(message, channel)
 	//Radio.dm, 298
 	//#### Grab the connection datum ####//
 	var/datum/radio_frequency/connection = radio_controller.return_frequency(channel)
@@ -63,7 +63,7 @@
 	)
 
 
-/datum/extension/admin_communicate/proc/communicate_meta(var/message, channel)
+/datum/extension/admin_communicate/proc/communicate_meta(message, channel)
 	var/channel_type = meta_names_and_types[selected_channel]
 	sanitize_and_communicate(channel_type, src, draft_message, pseudonym)
 

@@ -29,7 +29,7 @@ GLOBAL_VAR(spawntypes)
 
 	return 1
 
-/datum/spawnpoint/proc/is_safe(var/mob/living/spawner)
+/datum/spawnpoint/proc/is_safe(mob/living/spawner)
 	var/list/remaining_turfs = turfs.Copy()
 	var/remaining_checks = max_attempts
 	while (remaining_checks && length(remaining_turfs))
@@ -43,7 +43,7 @@ GLOBAL_VAR(spawntypes)
 
 	return FALSE
 
-/datum/spawnpoint/proc/turf_is_safe(var/mob/living/spawner, turf/spawn_turf)
+/datum/spawnpoint/proc/turf_is_safe(mob/living/spawner, turf/spawn_turf)
 	var/radlevel = SSradiation.get_rads_at_turf(spawn_turf)
 	var/airstatus = IsTurfAtmosUnsafe(spawn_turf)
 	if(airstatus || radlevel > 0)
@@ -58,7 +58,7 @@ GLOBAL_VAR(spawntypes)
 	return TRUE
 
 //Loop through all the turfs in this spawnpoint randomly
-/datum/spawnpoint/proc/get_safe_turf(var/mob/spawner, guaranteed = TRUE)
+/datum/spawnpoint/proc/get_safe_turf(mob/spawner, guaranteed = TRUE)
 	var/list/checkturfs = turfs.Copy()
 	checkturfs = shuffle(checkturfs)
 	for (var/t in checkturfs)
@@ -68,7 +68,7 @@ GLOBAL_VAR(spawntypes)
 	return null
 
 
-/datum/spawnpoint/proc/post_spawn(var/mob/spawner, turf/location)
+/datum/spawnpoint/proc/post_spawn(mob/spawner, turf/location)
 	return TRUE
 
 #ifdef UNIT_TESTS

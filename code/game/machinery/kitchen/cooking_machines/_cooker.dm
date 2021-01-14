@@ -204,17 +204,17 @@
 
 	..()
 
-/obj/machinery/cooker/proc/cook_mob(var/mob/living/victim, mob/user)
+/obj/machinery/cooker/proc/cook_mob(mob/living/victim, mob/user)
 	return
 
-/obj/machinery/cooker/proc/change_product_strings(var/obj/item/weapon/reagent_containers/food/snacks/product)
+/obj/machinery/cooker/proc/change_product_strings(obj/item/weapon/reagent_containers/food/snacks/product)
 	if(product.type == /obj/item/weapon/reagent_containers/food/snacks/variable) // Base type, generic.
 		product.SetName("[cook_type] [cooking_obj.name]")
 		product.desc = "[cooking_obj.desc] It has been [cook_type]."
 	else
 		product.SetName("[cooking_obj.name] [product.name]")
 
-/obj/machinery/cooker/proc/change_product_appearance(var/obj/item/weapon/reagent_containers/food/snacks/product)
+/obj/machinery/cooker/proc/change_product_appearance(obj/item/weapon/reagent_containers/food/snacks/product)
 	if(product.type == /obj/item/weapon/reagent_containers/food/snacks/variable) // Base type, generic.
 		product.appearance = cooking_obj
 		product.color = food_color

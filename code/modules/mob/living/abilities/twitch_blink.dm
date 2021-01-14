@@ -65,12 +65,12 @@
 	set_next_idle_twitch()
 
 
-/datum/extension/twitch/proc/moved(var/atom/mover, oldloc, newloc)
+/datum/extension/twitch/proc/moved(atom/mover, oldloc, newloc)
 	//Sometimes blink around while walking
 	if(prob(movement_displace_chance))
 		displace(FALSE)
 
-/datum/extension/twitch/proc/move_to(var/atom/target, speed = 10)
+/datum/extension/twitch/proc/move_to(atom/target, speed = 10)
 	if (!turf_clear(get_turf(target)))
 		return FALSE
 
@@ -79,7 +79,7 @@
 	return TRUE
 
 
-/datum/extension/twitch/proc/displace(var/defensive = FALSE)
+/datum/extension/twitch/proc/displace(defensive = FALSE)
 	if (defensive)
 		if (last_defensive_displace + (defensive_displace_cooldown / user.get_attack_speed_factor()) >= world.time)
 			return FALSE //Too soon since last one

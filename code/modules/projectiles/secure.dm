@@ -64,7 +64,7 @@
 		GLOB.registered_weapons -= src
 		verbs -= /obj/item/weapon/gun/proc/reset_registration
 
-/obj/item/weapon/gun/proc/authorize(var/mode, authorized, by)
+/obj/item/weapon/gun/proc/authorize(mode, authorized, by)
 	if(mode < 1 || mode > authorized_modes.len || authorized_modes[mode] == authorized)
 		return 0
 

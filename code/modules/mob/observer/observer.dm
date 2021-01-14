@@ -94,7 +94,7 @@ mob/observer/check_airflow_movable()
 
 
 //Turns a mob into an observer, deleting their old mob
-/proc/make_observer(var/mob/M)
+/proc/make_observer(mob/M)
 	if(!M.client)
 		return null
 

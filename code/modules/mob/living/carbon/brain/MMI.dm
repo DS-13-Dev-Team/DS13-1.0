@@ -113,7 +113,7 @@
 		icon_state = "mmi_empty"
 		SetName(initial(name))
 
-/obj/item/device/mmi/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->robot people.
+/obj/item/device/mmi/proc/transfer_identity(mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->robot people.
 	brainmob = new(src)
 	brainmob.SetName(H.real_name)
 	brainmob.real_name = H.real_name

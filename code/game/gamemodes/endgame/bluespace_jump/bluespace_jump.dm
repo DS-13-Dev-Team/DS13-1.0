@@ -47,7 +47,7 @@
 		return FALSE
 	return TRUE
 
-/datum/universal_state/bluespace_jump/proc/apply_bluespaced(var/mob/living/M)
+/datum/universal_state/bluespace_jump/proc/apply_bluespaced(mob/living/M)
 	bluespaced += M
 	if(M.client)
 		to_chat(M,"<span class='notice'>You feel oddly light, and somewhat disoriented as everything around you shimmers and warps ever so slightly.</span>")
@@ -55,7 +55,7 @@
 	M.confused = 20
 	bluegoasts += new/obj/effect/bluegoast/(get_turf(M),M)
 
-/datum/universal_state/bluespace_jump/proc/clear_bluespaced(var/mob/living/M)
+/datum/universal_state/bluespace_jump/proc/clear_bluespaced(mob/living/M)
 	if(M.client)
 		to_chat(M,"<span class='notice'>You feel rooted in material world again.</span>")
 		M.clear_fullscreen("bluespace")
@@ -95,7 +95,7 @@
 	daddy = null
 	. = ..()
 
-/obj/effect/bluegoast/proc/mirror(var/atom/movable/am, old_loc, new_loc)
+/obj/effect/bluegoast/proc/mirror(atom/movable/am, old_loc, new_loc)
 	var/ndir = get_dir(new_loc,old_loc)
 	appearance = daddy.appearance
 	var/nloc = get_step(src, ndir)
@@ -111,7 +111,7 @@
 		else
 			to_chat(daddy, "<span class='warning'>You feel a bit less real. Which one of you two was original again?..</span>")
 
-/obj/effect/bluegoast/proc/mirror_dir(var/atom/movable/am, old_dir, new_dir)
+/obj/effect/bluegoast/proc/mirror_dir(atom/movable/am, old_dir, new_dir)
 	set_dir(GLOB.reverse_dir[new_dir])
 
 /obj/effect/bluegoast/examine(user)

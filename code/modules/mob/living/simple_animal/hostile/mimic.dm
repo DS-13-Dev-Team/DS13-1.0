@@ -67,7 +67,7 @@ var/global/list/protected_objects = list(/obj/machinery,
 	if(creator)
 		return . - creator.resolve()
 
-/mob/living/simple_animal/hostile/mimic/proc/CopyObject(var/obj/O, mob/living/creator)
+/mob/living/simple_animal/hostile/mimic/proc/CopyObject(obj/O, mob/living/creator)
 
 	if((istype(O, /obj/item) || istype(O, /obj/structure)) && !is_type_in_list(O, protected_objects))
 		O.forceMove(src)

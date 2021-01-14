@@ -66,7 +66,7 @@
 	floor_type = /turf/simulated/floor/diona
 
 // This is disgusting.
-/datum/random_map/automata/diona/proc/search_neighbors_for(var/search_val, x, y)
+/datum/random_map/automata/diona/proc/search_neighbors_for(search_val, x, y)
 	var/current_cell = get_map_cell(x-1,y-1)
 	if(current_cell && map[current_cell] == search_val) return 1
 	current_cell = get_map_cell(x-1,y)

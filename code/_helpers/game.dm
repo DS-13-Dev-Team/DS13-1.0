@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/proc/is_on_same_plane_or_station(var/z1, z2)
+/proc/is_on_same_plane_or_station(z1, z2)
 	if(z1 == z2)
 		return 1
 	if((z1 in GLOB.using_map.station_levels) &&	(z2 in GLOB.using_map.station_levels))
@@ -17,7 +17,7 @@
 		max_z = max(z, max_z)
 	return max_z
 
-/proc/living_observers_present(var/list/zlevels)
+/proc/living_observers_present(list/zlevels)
 	if(LAZYLEN(zlevels))
 		for(var/A in GLOB.player_list) //if a tree ticks on the empty zlevel does it really tick
 			var/mob/M = A
@@ -56,7 +56,7 @@
 
 // Like view but bypasses luminosity check
 
-/proc/hear(var/range, atom/source)
+/proc/hear(range, atom/source)
 
 	var/lum = source.luminosity
 	source.luminosity = 6
@@ -66,22 +66,22 @@
 
 	return heard
 
-/proc/isStationLevel(var/level)
+/proc/isStationLevel(level)
 	return level in GLOB.using_map.station_levels
 
-/proc/isNotStationLevel(var/level)
+/proc/isNotStationLevel(level)
 	return !isStationLevel(level)
 
-/proc/isPlayerLevel(var/level)
+/proc/isPlayerLevel(level)
 	return level in GLOB.using_map.player_levels
 
-/proc/isAdminLevel(var/level)
+/proc/isAdminLevel(level)
 	return level in GLOB.using_map.admin_levels
 
-/proc/isNotAdminLevel(var/level)
+/proc/isNotAdminLevel(level)
 	return !isAdminLevel(level)
 
-/proc/isContactLevel(var/level)
+/proc/isContactLevel(level)
 	return level in GLOB.using_map.contact_levels
 
 
@@ -93,7 +93,7 @@
 // It will keep doing this until it checks every content possible. This will fix any problems with mobs, that are inside objects,
 // being unable to hear people due to being in a box within a bag.
 
-/proc/recursive_content_check(var/atom/O, list/L = list(), recursion_limit = 3, client_check = 1, sight_check = 1, include_mobs = 1, include_objects = 1)
+/proc/recursive_content_check(atom/O, list/L = list(), recursion_limit = 3, client_check = 1, sight_check = 1, include_mobs = 1, include_objects = 1)
 
 	if(!recursion_limit)
 		return L
@@ -138,7 +138,7 @@
 		else
 			return get_step(start, EAST)
 
-/proc/get_mob_by_key(var/key)
+/proc/get_mob_by_key(key)
 	for(var/mob/M in SSmobs.mob_list)
 		if(M.ckey == lowertext(key))
 			return M
@@ -146,7 +146,7 @@
 
 
 // Will return a list of active candidates. It increases the buffer 5 times until it finds a candidate which is active within the buffer.
-/proc/get_active_candidates(var/buffer = 1)
+/proc/get_active_candidates(buffer = 1)
 
 	var/list/candidates = list() //List of candidate KEYS to assume control of the new larva ~Carn
 	var/i = 0
@@ -203,8 +203,8 @@ datum/projectile_data
 	var/dest_x
 	var/dest_y
 
-/datum/projectile_data/New(var/src_x, src_y, time, distance, \
-						   var/power_x, power_y, dest_x, dest_y)
+/datum/projectile_data/New(src_x, src_y, time, distance, \
+						   power_x, power_y, dest_x, dest_y)
 	src.src_x = src_x
 	src.src_y = src_y
 	src.time = time
@@ -214,7 +214,7 @@ datum/projectile_data
 	src.dest_x = dest_x
 	src.dest_y = dest_y
 
-/proc/projectile_trajectory(var/src_x, src_y, rotation, angle, power)
+/proc/projectile_trajectory(src_x, src_y, rotation, angle, power)
 
 	// returns the destination (Vx,y) that a projectile shot at [src_x], [src_y], with an angle of [angle],
 	// rotated at [rotation] and with the power of [power]
@@ -264,7 +264,7 @@ datum/projectile_data
 	var/b = mixOneColor(weights, blues)
 	return rgb(r,g,b)
 
-/proc/mixOneColor(var/list/weight, list/color)
+/proc/mixOneColor(list/weight, list/color)
 	if (!weight || !color || length(weight)!=length(color))
 		return 0
 
@@ -296,7 +296,7 @@ datum/projectile_data
 * Gets the highest and lowest pressures from the tiles in cardinal directions
 * around us, then checks the difference.
 */
-/proc/getOPressureDifferential(var/turf/loc)
+/proc/getOPressureDifferential(turf/loc)
 	var/minp=16777216;
 	var/maxp=0;
 	for(var/dir in GLOB.cardinal)
@@ -312,13 +312,13 @@ datum/projectile_data
 		if(cp>maxp)maxp=cp
 	return abs(minp-maxp)
 
-/proc/convert_k2c(var/temp)
+/proc/convert_k2c(temp)
 	return ((temp - T0C))
 
-/proc/convert_c2k(var/temp)
+/proc/convert_c2k(temp)
 	return ((temp + T0C))
 
-/proc/getCardinalAirInfo(var/turf/loc, list/stats=list("temperature"))
+/proc/getCardinalAirInfo(turf/loc, list/stats=list("temperature"))
 	var/list/temps = new/list(4)
 	for(var/dir in GLOB.cardinal)
 		var/direction
@@ -353,11 +353,11 @@ datum/projectile_data
 		temps[direction] = rstats
 	return temps
 
-/proc/MinutesToTicks(var/minutes)
+/proc/MinutesToTicks(minutes)
 	return SecondsToTicks(60 * minutes)
 
-/proc/SecondsToTicks(var/seconds)
+/proc/SecondsToTicks(seconds)
 	return seconds * 10
 
-/proc/round_is_spooky(var/spookiness_threshold = config.cult_ghostwriter_req_cultists)
+/proc/round_is_spooky(spookiness_threshold = config.cult_ghostwriter_req_cultists)
 	return (GLOB.cult.current_antagonists.len > spookiness_threshold)

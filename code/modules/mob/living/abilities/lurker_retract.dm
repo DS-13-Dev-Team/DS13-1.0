@@ -116,7 +116,7 @@
 //Access Proc
 
 
-/atom/proc/can_toggle_cover(var/error_messages = TRUE)
+/atom/proc/can_toggle_cover(error_messages = TRUE)
 	return TRUE
 
 /mob/living/can_toggle_cover(var/error_messages = TRUE)

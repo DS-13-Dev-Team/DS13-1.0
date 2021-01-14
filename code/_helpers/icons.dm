@@ -856,7 +856,7 @@ proc
 		composite.Blend(icon(I.icon, I.icon_state, I.dir, 1), ICON_OVERLAY)
 	return composite
 
-proc/adjust_brightness(var/color, value)
+proc/adjust_brightness(color, value)
 	if (!color) return "#ffffff"
 	if (!value) return color
 
@@ -866,7 +866,7 @@ proc/adjust_brightness(var/color, value)
 	RGB[3] = Clamp(RGB[3]+value,0,255)
 	return rgb(RGB[1],RGB[2],RGB[3])
 
-proc/sort_atoms_by_layer(var/list/atoms)
+proc/sort_atoms_by_layer(list/atoms)
 	// Comb sort icons based on levels
 	var/list/result = atoms.Copy()
 	var/gap = result.len
@@ -890,7 +890,7 @@ arguments tx, ty, tz are target coordinates (requred), range defines render dist
 cap_mode is capturing mode (optional), user is capturing mob (requred only wehen cap_mode = CAPTURE_MODE_REGULAR),
 lighting determines lighting capturing (optional), suppress_errors suppreses errors and continues to capture (optional).
 */
-proc/generate_image(var/tx as num, ty as num, tz as num, range as num, cap_mode = CAPTURE_MODE_PARTIAL, mob/living/user, lighting = 1, suppress_errors = 1)
+proc/generate_image(tx as num, ty as num, tz as num, range as num, cap_mode = CAPTURE_MODE_PARTIAL, mob/living/user, lighting = 1, suppress_errors = 1)
 	var/list/turfstocapture = list()
 	//Lines below determine what tiles will be rendered
 	for(var/xoff = 0 to range)
@@ -939,17 +939,17 @@ proc/generate_image(var/tx as num, ty as num, tz as num, range as num, cap_mode 
 /*
 	This ambitious proc takes a named icon file, and copies the entire thing, rescaling each state at a time, to fit the newly defined X and Y values
 */
-/proc/rescale_icon(var/icon_file, new_x, new_y)
+/proc/rescale_icon(icon_file, new_x, new_y)
 	var/icon/loaded = new(icon_file)	//Load the specified icon file into memory to use as a container
 	loaded.Scale(new_x, new_y)
 	return loaded
 
-/proc/rescale_icon_scalar(var/icon_file, new_x, new_y)
+/proc/rescale_icon_scalar(icon_file, new_x, new_y)
 	var/icon/loaded = new(icon_file)	//Load the specified icon file into memory to use as a container
 	loaded.Scale(new_x*loaded.Width(), new_y*loaded.Height())
 	return loaded
 
-/image/proc/rotate_random(var/cardinal = FALSE)
+/image/proc/rotate_random(cardinal = FALSE)
 	var/newrot
 	if (cardinal)
 		newrot = pick(list(0, 90, 180, 270))
@@ -997,7 +997,7 @@ proc/generate_image(var/tx as num, ty as num, tz as num, range as num, cap_mode 
 /*
 	Use the icon proc to produce an icon to pass in here
 */
-/atom/proc/flick_overlay_icon(var/duration, icon/I)
+/atom/proc/flick_overlay_icon(duration, icon/I)
 
 
 	var/obj/flick_overlay/OF = new(src)
@@ -1018,7 +1018,7 @@ proc/generate_image(var/tx as num, ty as num, tz as num, range as num, cap_mode 
 	alpha = 255
 	var/atom/host
 
-/obj/flick_overlay/proc/set_host(var/atom/host, lifetime)
+/obj/flick_overlay/proc/set_host(atom/host, lifetime)
 	src.host = host
 	src.host:vis_contents += src
 

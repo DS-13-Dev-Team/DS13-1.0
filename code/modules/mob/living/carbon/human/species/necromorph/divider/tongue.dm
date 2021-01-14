@@ -12,7 +12,7 @@
 /*
 	Ability
 */
-/mob/living/carbon/human/proc/divider_tongue(var/atom/A)
+/mob/living/carbon/human/proc/divider_tongue(atom/A)
 	set name = "Tonguetacle"
 	set category = "Abilities"
 	set desc = "Launches out your tongue to grab a human and strangle them. HK: Ctrl+alt+click"
@@ -105,7 +105,7 @@
 	if (tongue)
 		update_tongue()
 
-/obj/item/projectile/tongue/proc/update_tongue(var/animate = TRUE)
+/obj/item/projectile/tongue/proc/update_tongue(animate = TRUE)
 	var/vector2/origin_pixels = firer.get_global_pixel_loc()
 	var/vector2/current_pixels = get_global_pixel_loc()
 	tongue.set_ends(origin_pixels, current_pixels, (animate ? step_delay : FALSE))
@@ -172,7 +172,7 @@
 	Core checks. It is called as part of other check procs on initial tongue contact, and periodically while performing the execution.
 	If it returns false, the execution is denied or cancelled.
 */
-/proc/divider_tongue_safety(var/mob/living/carbon/human/user, mob/living/carbon/human/target)
+/proc/divider_tongue_safety(mob/living/carbon/human/user, mob/living/carbon/human/target)
 
 	//We only target humans
 	if (!istype(user) || !istype(target))
@@ -200,7 +200,7 @@
 /*
 	Start check, called to see if we can grab the mob
 */
-/proc/divider_tongue_start(var/mob/living/carbon/human/user, mob/living/carbon/human/target)
+/proc/divider_tongue_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	//Core first
 	.=divider_tongue_safety(user, target)
 	if (. == EXECUTION_CANCEL)
@@ -232,7 +232,7 @@
 	1 = continue, keep going
 	2 = win, the execution ends successfully, the victim is killed and we skip to the final stage
 */
-/proc/divider_tongue_continue(var/mob/living/carbon/human/user, mob/living/carbon/human/target)
+/proc/divider_tongue_continue(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	//Core first
 	.=divider_tongue_safety(user, target)
 	if (. == EXECUTION_CANCEL)

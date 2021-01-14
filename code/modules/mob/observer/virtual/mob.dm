@@ -16,7 +16,7 @@
 	GLOB.see_in_dark_set_event.unregister(host, src, /mob/observer/virtual/mob/proc/sync_sight)
 	. = ..()
 
-/mob/observer/virtual/mob/proc/sync_sight(var/mob/mob_host)
+/mob/observer/virtual/mob/proc/sync_sight(mob/mob_host)
 	sight = mob_host.sight
 	see_invisible = mob_host.see_invisible
 

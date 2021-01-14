@@ -36,7 +36,7 @@
 /obj/item/weapon/melee/baton/get_cell()
 	return bcell
 
-/obj/item/weapon/melee/baton/proc/deductcharge(var/chrgdeductamt)
+/obj/item/weapon/melee/baton/proc/deductcharge(chrgdeductamt)
 	if(bcell)
 		if(bcell.checked_use(chrgdeductamt))
 			return 1
@@ -102,7 +102,7 @@
 	else
 		..()
 
-/obj/item/weapon/melee/baton/proc/set_status(var/newstatus, mob/user)
+/obj/item/weapon/melee/baton/proc/set_status(newstatus, mob/user)
 	if(bcell && bcell.charge > hitcost)
 		if(status != newstatus)
 			change_status(newstatus)
@@ -118,7 +118,7 @@
 // Proc to -actually- change the status, and update the icons as well.
 // Also exists to ease "helpful" admin-abuse in case an bug prevents attack_self
 // to occur would appear. Hopefully it wasn't necessary.
-/obj/item/weapon/melee/baton/proc/change_status(var/s)
+/obj/item/weapon/melee/baton/proc/change_status(s)
 	if (status != s)
 		status = s
 		update_icon()

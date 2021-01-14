@@ -236,7 +236,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 /*
 	Abilities
 */
-/atom/movable/proc/slasher_charge(var/mob/living/A)
+/atom/movable/proc/slasher_charge(mob/living/A)
 	set name = "Charge"
 	set category = "Abilities"
 
@@ -259,7 +259,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 		shake_animation(30)
 
 
-/atom/movable/proc/slasher_charge_enhanced(var/mob/living/A)
+/atom/movable/proc/slasher_charge_enhanced(mob/living/A)
 	set name = "Charge"
 	set category = "Abilities"
 

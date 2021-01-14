@@ -54,7 +54,7 @@
 	throwforce = round(material.get_blunt_damage()*thrown_force_divisor)
 	attack_cooldown = material.get_attack_cooldown() + attack_cooldown_modifier
 
-/obj/item/weapon/material/proc/set_material(var/new_material)
+/obj/item/weapon/material/proc/set_material(new_material)
 	material = get_material_by_name(new_material)
 	if(!material)
 		qdel(src)
@@ -79,7 +79,7 @@
 /obj/item/weapon/material/zero_health()
 	shatter()
 
-/obj/item/weapon/material/proc/shatter(var/consumed)
+/obj/item/weapon/material/proc/shatter(consumed)
 	crash_with("Shattering")
 	var/turf/T = get_turf(src)
 	if (T)

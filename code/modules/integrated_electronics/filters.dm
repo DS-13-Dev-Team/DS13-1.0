@@ -12,7 +12,7 @@
 	var/datum/integrated_io/I = inputs[1]
 	set_pin_data(IC_OUTPUT, 1, may_pass(I.data) ? I.data : null)
 
-/obj/item/integrated_circuit/filter/proc/may_pass(var/input)
+/obj/item/integrated_circuit/filter/proc/may_pass(input)
 	return FALSE
 
 /obj/item/integrated_circuit/filter/ref

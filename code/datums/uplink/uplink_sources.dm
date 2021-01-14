@@ -11,7 +11,7 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 	var/name
 	var/desc
 
-/decl/uplink_source/proc/setup_uplink_source(var/mob/M, amount)
+/decl/uplink_source/proc/setup_uplink_source(mob/M, amount)
 	return SETUP_FAILED
 
 /decl/uplink_source/pda
@@ -96,7 +96,7 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 	var/obj/item/stack/telecrystal/TC = new(M, amount)
 	put_on_mob(M, TC, "[amount] telecrystal\s")
 
-/decl/uplink_source/proc/find_in_mob(var/mob/M, type)
+/decl/uplink_source/proc/find_in_mob(mob/M, type)
 	for(var/item in M.get_equipped_items(TRUE))
 		if(!istype(item, type))
 			continue
@@ -104,7 +104,7 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 		if(!I.hidden_uplink)
 			return I
 
-/decl/uplink_source/proc/put_on_mob(var/mob/M, atom/movable/AM, text)
+/decl/uplink_source/proc/put_on_mob(mob/M, atom/movable/AM, text)
 	var/obj/O = M.equip_to_storage(AM)
 	if(O)
 		to_chat(M, "<span class='notice'>[text] can be found in your [O.name].</span>")
@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 		AM.dropInto(M.loc)
 		to_chat(M, "<span class='notice'>[text] appear at your location.</span>")
 
-/proc/setup_uplink_source(var/mob/M, amount = DEFAULT_TELECRYSTAL_AMOUNT)
+/proc/setup_uplink_source(mob/M, amount = DEFAULT_TELECRYSTAL_AMOUNT)
 	if(!istype(M) || !M.mind)
 		return FALSE
 

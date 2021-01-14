@@ -86,7 +86,7 @@
 			overlay_fullscreen(category, newtype, INFINITY)
 
 
-/proc/get_or_create_fullscreen(var/view_radius)
+/proc/get_or_create_fullscreen(view_radius)
 	var/pixels = ((view_radius*2)+1)*world.icon_size
 	var/entry_name = "[pixels]x[pixels]"
 	if (!GLOB.fullscreen_icons[entry_name])
@@ -106,7 +106,7 @@
 	var/allstate = 0 //shows if it should show up for dead people too
 	var/mob/owner
 
-/obj/screen/fullscreen/proc/set_size(var/client/C)
+/obj/screen/fullscreen/proc/set_size(client/C)
 	//Here we select (and if needed, generate) the icon for the right size
 	if (C.temp_view == world.view)
 		return	//No special sizing needed

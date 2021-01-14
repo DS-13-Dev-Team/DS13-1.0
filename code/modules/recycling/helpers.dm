@@ -1,6 +1,6 @@
 //Called when the user attempts to put this atom into disposal D
 //Return false to prevent it from going in
-/atom/proc/attempt_dispose(var/obj/machinery/disposal/D, mob/user)
+/atom/proc/attempt_dispose(obj/machinery/disposal/D, mob/user)
 	return TRUE
 
 

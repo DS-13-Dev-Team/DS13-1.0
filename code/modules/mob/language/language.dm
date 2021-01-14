@@ -22,7 +22,7 @@
 	var/shorthand = "UL"			  // Shorthand that shows up in chat for this language.
 	var/use_name_list = TRUE			//If true, use random lists instead of syllables for names
 
-/datum/language/proc/get_random_name(var/gender, name_count=2, syllable_count=4, syllable_divisor=2)
+/datum/language/proc/get_random_name(gender, name_count=2, syllable_count=4, syllable_divisor=2)
 	if(use_name_list || !syllables || !syllables.len)
 		if(gender==FEMALE)
 			return capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
@@ -43,7 +43,7 @@
 /datum/language
 	var/list/scramble_cache = list()
 
-/datum/language/proc/scramble(var/input)
+/datum/language/proc/scramble(input)
 
 	if(!syllables || !syllables.len)
 		return stars(input)
@@ -100,7 +100,7 @@
 	// if you yell, you'll be heard from two tiles over instead of one
 	return (copytext(message, length(message)) == "!") ? 2 : 1
 
-/datum/language/proc/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+/datum/language/proc/broadcast(mob/living/speaker, message, speaker_mask)
 	log_say("[key_name(speaker)] : ([name]) [message]")
 
 	if(!speaker_mask) speaker_mask = speaker.name
@@ -109,7 +109,7 @@
 	for(var/mob/player in GLOB.player_list)
 		player.hear_broadcast(src, speaker, speaker_mask, message)
 
-/mob/proc/hear_broadcast(var/datum/language/language, mob/speaker, speaker_name, message)
+/mob/proc/hear_broadcast(datum/language/language, mob/speaker, speaker_name, message)
 	if((language in languages) && language.check_special_condition(src))
 		var/msg = "<i><span class='game say'>[language.name], <span class='name'>[speaker_name]</span> [message]</span></i>"
 		to_chat(src, msg)
@@ -123,10 +123,10 @@
 	else
 		to_chat(src, "<i><span class='game say'>[language.name], <span class='name'>[speaker_name]</span> [message]</span></i>")
 
-/datum/language/proc/check_special_condition(var/mob/other)
+/datum/language/proc/check_special_condition(mob/other)
 	return 1
 
-/datum/language/proc/get_spoken_verb(var/msg_end)
+/datum/language/proc/get_spoken_verb(msg_end)
 	switch(msg_end)
 		if("!")
 			return exclaim_verb
@@ -134,11 +134,11 @@
 			return ask_verb
 	return speech_verb
 
-/datum/language/proc/can_speak_special(var/mob/speaker)
+/datum/language/proc/can_speak_special(mob/speaker)
 	return 1
 
 // Language handling.
-/mob/proc/add_language(var/language)
+/mob/proc/add_language(language)
 
 	var/datum/language/new_language = all_languages[language]
 
@@ -156,7 +156,7 @@
 			default_language = L
 
 
-/mob/proc/remove_language(var/rem_language)
+/mob/proc/remove_language(rem_language)
 	var/datum/language/L = all_languages[rem_language]
 	. = (L in languages)
 	languages.Remove(L)
@@ -184,7 +184,7 @@
 /mob/proc/get_language_prefix()
 	return get_prefix_key(/decl/prefix/language)
 
-/mob/proc/is_language_prefix(var/prefix)
+/mob/proc/is_language_prefix(prefix)
 	return prefix == get_prefix_key(/decl/prefix/language)
 
 //TBD
@@ -237,7 +237,7 @@
 	else
 		return ..()
 
-/proc/transfer_languages(var/mob/source, mob/target, except_flags)
+/proc/transfer_languages(mob/source, mob/target, except_flags)
 	for(var/datum/language/L in source.languages)
 		if(L.flags & except_flags)
 			continue

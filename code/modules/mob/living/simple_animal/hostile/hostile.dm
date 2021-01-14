@@ -59,7 +59,7 @@
 	return T
 
 
-/mob/living/simple_animal/hostile/proc/Found(var/atom/A)
+/mob/living/simple_animal/hostile/proc/Found(atom/A)
 	return
 
 /mob/living/simple_animal/hostile/proc/MoveToTarget()
@@ -118,7 +118,7 @@
 	walk(src, 0)
 
 
-/mob/living/simple_animal/hostile/proc/ListTargets(var/dist = 7)
+/mob/living/simple_animal/hostile/proc/ListTargets(dist = 7)
 	var/list/L = hearers(src, dist)
 
 	for (var/obj/mecha/M in mechas_list)
@@ -210,7 +210,7 @@
 	return
 
 
-/mob/living/simple_animal/hostile/proc/Shoot(var/target, start, user, bullet = 0)
+/mob/living/simple_animal/hostile/proc/Shoot(target, start, user, bullet = 0)
 	if(target == start)
 		return
 

@@ -45,7 +45,7 @@
 #define IS_ROBOT 2
 #define IS_PAI 3
 
-/mob/living/silicon/say_understands(var/other,var/datum/language/speaking = null)
+/mob/living/silicon/say_understands(var/other, datum/language/speaking = null)
 	//These only pertain to common. Languages are handled by mob/say_understands()
 	if (!speaking)
 		if (istype(other, /mob/living/carbon))
@@ -57,7 +57,7 @@
 	return ..()
 
 //For holopads only. Usable by AI.
-/mob/living/silicon/ai/proc/holopad_talk(var/message, verb, datum/language/speaking)
+/mob/living/silicon/ai/proc/holopad_talk(message, verb, datum/language/speaking)
 
 	log_say("[key_name(src)] : [message]")
 
@@ -111,7 +111,7 @@
 		return 0
 	return 1
 
-/mob/living/silicon/ai/proc/holopad_emote(var/message) //This is called when the AI uses the 'me' verb while using a holopad.
+/mob/living/silicon/ai/proc/holopad_emote(message) //This is called when the AI uses the 'me' verb while using a holopad.
 
 	log_emote("[key_name(src)] : [message]")
 

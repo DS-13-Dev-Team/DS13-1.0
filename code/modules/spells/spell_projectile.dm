@@ -35,7 +35,7 @@
 			trails -= trail
 			qdel(trail)
 
-/obj/item/projectile/spell_projectile/proc/prox_cast(var/list/targets)
+/obj/item/projectile/spell_projectile/proc/prox_cast(list/targets)
 	if(loc)
 		carried.prox_cast(targets, src)
 		qdel(src)

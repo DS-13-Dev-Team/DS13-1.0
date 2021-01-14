@@ -113,10 +113,10 @@
 		if(HAS_BEEN_ACTIVATED)
 			icon_state = "flashburnt"
 
-/obj/item/device/uplink_service/proc/enable(var/mob/user = usr)
+/obj/item/device/uplink_service/proc/enable(mob/user = usr)
 	return TRUE
 
-/obj/item/device/uplink_service/proc/disable(var/mob/user = usr)
+/obj/item/device/uplink_service/proc/disable(mob/user = usr)
 	return
 
 /*****************

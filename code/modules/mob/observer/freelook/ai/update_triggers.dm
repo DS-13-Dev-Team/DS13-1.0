@@ -21,7 +21,7 @@
 		GLOB.cameranet.remove_source(src)
 	. = ..()
 
-/obj/machinery/camera/proc/update_coverage(var/network_change = 0)
+/obj/machinery/camera/proc/update_coverage(network_change = 0)
 	if(network_change)
 		var/list/open_networks = difflist(network, restricted_camera_networks)
 		// Add or remove camera from the camera net as necessary

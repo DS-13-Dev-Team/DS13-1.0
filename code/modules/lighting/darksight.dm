@@ -18,11 +18,11 @@
 	var/newscale = ((C.view * 2) + 1) / C.view
 	transform *= newscale
 
-/obj/lighting_general/proc/sync(var/new_colour)
+/obj/lighting_general/proc/sync(new_colour)
 	color = new_colour
 	cached_color = new_colour
 
-/obj/lighting_general/proc/resize(var/new_size = 2, client/C)
+/obj/lighting_general/proc/resize(new_size = 2, client/C)
 	if (istype(C))
 		new_size = min(new_size, C.temp_view)
 	size = new_size
@@ -36,11 +36,11 @@
 	var/obj/lighting_general/l_general
 
 
-/mob/proc/set_darksight_color(var/new_colour)
+/mob/proc/set_darksight_color(new_colour)
 	if(l_general)
 		l_general.sync(new_colour)
 
-/mob/proc/set_darksight_range(var/new_range)
+/mob/proc/set_darksight_range(new_range)
 	if(l_general && client)
 		client.screen -= l_general
 		l_general.resize(new_range, client)

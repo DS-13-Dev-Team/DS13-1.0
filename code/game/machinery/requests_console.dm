@@ -235,7 +235,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			updateUsrDialog()
 	return
 
-/obj/machinery/requests_console/proc/reset_message(var/mainmenu = 0)
+/obj/machinery/requests_console/proc/reset_message(mainmenu = 0)
 	message = ""
 	recipient = ""
 	priority = 0

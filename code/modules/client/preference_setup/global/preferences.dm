@@ -36,14 +36,14 @@ var/list/_client_preferences_by_type
 				_client_preferences += new client_type()
 	return _client_preferences
 
-/proc/get_client_preference(var/datum/client_preference/preference)
+/proc/get_client_preference(datum/client_preference/preference)
 	if(istype(preference))
 		return preference
 	if(ispath(preference))
 		return get_client_preference_by_type(preference)
 	return get_client_preference_by_key(preference)
 
-/proc/get_client_preference_by_key(var/preference)
+/proc/get_client_preference_by_key(preference)
 	if(!_client_preferences_by_key)
 		_client_preferences_by_key = list()
 		for(var/ct in get_client_preferences())
@@ -51,7 +51,7 @@ var/list/_client_preferences_by_type
 			_client_preferences_by_key[client_pref.key] = client_pref
 	return _client_preferences_by_key[preference]
 
-/proc/get_client_preference_by_type(var/preference)
+/proc/get_client_preference_by_type(preference)
 	if(!_client_preferences_by_type)
 		_client_preferences_by_type = list()
 		for(var/ct in get_client_preferences())
@@ -71,10 +71,10 @@ var/list/_client_preferences_by_type
 	if(!default_value)
 		default_value = options[1]
 
-/datum/client_preference/proc/may_set(var/mob/preference_mob)
+/datum/client_preference/proc/may_set(mob/preference_mob)
 	return TRUE
 
-/datum/client_preference/proc/changed(var/mob/preference_mob, new_value)
+/datum/client_preference/proc/changed(mob/preference_mob, new_value)
 	return
 
 /*********************

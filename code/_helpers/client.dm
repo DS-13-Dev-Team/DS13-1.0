@@ -1,4 +1,4 @@
-/client/proc/resolve_drag(var/atom/A, params)
+/client/proc/resolve_drag(atom/A, params)
 	var/list/L = params2list(params)
 	var/dragged = L["drag"]
 	if(dragged && !L[dragged])
@@ -32,7 +32,7 @@
 
 
 /client/var/temp_view = 7
-/client/proc/set_view_range(var/radius, force_update = FALSE)
+/client/proc/set_view_range(radius, force_update = FALSE)
 
 	if ((force_update || view != radius) && isnum(radius))
 		//If radius has changed, we'll return true
@@ -74,7 +74,7 @@
 	return temp_view + (view_offset_magnitude / WORLD_ICON_SIZE)
 
 
-/client/proc/set_view_offset(var/direction, magnitude, force_update = FALSE)
+/client/proc/set_view_offset(direction, magnitude, force_update = FALSE)
 	view_offset_magnitude = magnitude //Cache this
 	var/vector2/offset = (Vector2.FromDir(direction))*magnitude
 	if (pixel_x != offset.x || pixel_y != offset.y) //If the values already match the target, don't interrupt the animation by repeating it
@@ -120,7 +120,7 @@
 //This is an awkward proc working within byond limitations.
 //This client proc attempts to find the length of a specified audio file
 //It will only work if that audio file is already being played by this client
-/client/proc/get_audio_length(var/filepath)
+/client/proc/get_audio_length(filepath)
 	var/list/playing_sounds = SoundQuery()
 	for (var/sound/S in playing_sounds)
 		if (S.file == filepath)
@@ -135,7 +135,7 @@
 	Tells us whether a specified atom is on a this client's screen.
 	Specifically, if its inside their view window. doesn't check invisibility or blocked line of sight
 */
-/client/proc/is_on_screen(var/atom/A)
+/client/proc/is_on_screen(atom/A)
 	.=FALSE
 	if (!A)
 		return FALSE

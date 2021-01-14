@@ -66,7 +66,7 @@
 
 
 
-/datum/extension/tripod_evasion/proc/holder_moved(var/atom/movable/am, atom/old_loc, atom/new_loc)
+/datum/extension/tripod_evasion/proc/holder_moved(atom/movable/am, atom/old_loc, atom/new_loc)
 	if (updating)
 		return
 

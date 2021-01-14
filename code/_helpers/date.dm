@@ -3,7 +3,7 @@
 //Takes a date in the format YYYY-MM-DD
 //Returns the number of seconds since midnight 2000
 //Date must be after 2000 AD
-/proc/date_to_byond(var/date)
+/proc/date_to_byond(date)
 	var/list/datelist = splittext(date, "-")
 
 	var/total_seconds = 0
@@ -50,7 +50,7 @@
 	Converts it to a date in the format YYYY-MM-DD
 	any leftover less than a full day is discarded
 */
-/proc/byond_to_date(var/time)
+/proc/byond_to_date(time)
 	//Years first
 	var/list/yearlist = time_to_years(time)
 
@@ -89,7 +89,7 @@
 	//Whole years (integer)
 	//Time remaining
 	//Leap (true/false)
-/proc/time_to_years(var/time)
+/proc/time_to_years(time)
 
 	//First lets knock off as many leap blocks as we can. Each is 4 years
 	var/leap_blocks = Floor(time / LEAP_BLOCK)
@@ -122,7 +122,7 @@
 		-Month we reached the start of
 		-Time remaining
 */
-/proc/time_to_calendar_month(var/time, leap = FALSE)
+/proc/time_to_calendar_month(time, leap = FALSE)
 	//We will iterate backwards through the list of cumulative monthlengths, until we find one that is <= remaining time
 	var/list/monthlist
 	if (leap)
@@ -147,7 +147,7 @@
 		-Whole days
 		-Time remaining
 */
-/proc/time_to_days(var/time)
+/proc/time_to_days(time)
 	var/days = Floor(time / (1 DAY))
 	time -= days DAYS
 
@@ -157,7 +157,7 @@
 	Takes a date in the format "YYYY-MM-DD"
 	returns true if the current date is past that
 */
-/proc/is_past_date(var/input_date)
+/proc/is_past_date(input_date)
 	var/list/current_date = current_date()
 	var/list/target_date = splittext(time2text(input_date,"YYYY-MM-DD"), "-")
 
@@ -186,7 +186,7 @@
 /*
 	Returns the byond time between two dates
 */
-/proc/time_between_dates(var/date1, date2)
+/proc/time_between_dates(date1, date2)
 	var/time1 = date_to_byond(date1)
 	var/time2 = date_to_byond(date2)
 
@@ -195,7 +195,7 @@
 /*
 	Adds a certain amount of time to a date, returning it as a date
 */
-/proc/add_time_to_date(var/date, timedelta)
+/proc/add_time_to_date(date, timedelta)
 	var/timedate = date_to_byond(date)
 	timedate += timedelta
 	return byond_to_date(timedate)
@@ -204,7 +204,7 @@
 /*
 	Returns the number of days time between two dates
 */
-/proc/days_between_dates(var/date1, date2)
+/proc/days_between_dates(date1, date2)
 	var/time = abs(time_between_dates(date1, date2))
 	return Floor(time / (1 DAY))
 
@@ -212,7 +212,7 @@
 /*
 	Returns true if passed a correct date in the format YYYY-MM-DD
 */
-/proc/sanitize_date(var/date)
+/proc/sanitize_date(date)
 	var/list/datelist = splittext(date, "-")
 	if (!datelist || datelist.len != 3)
 		return FALSE

@@ -350,7 +350,7 @@
 
 	return 1
 
-/datum/category_item/player_setup_item/occupation/proc/SetJobDepartment(var/datum/job/job, level)
+/datum/category_item/player_setup_item/occupation/proc/SetJobDepartment(datum/job/job, level)
 	if(!job || !level)	return 0
 
 	var/current_level = JOB_LEVEL_NEVER
@@ -381,7 +381,7 @@
 
 	return 1
 
-/datum/preferences/proc/CorrectLevel(var/datum/job/job, level)
+/datum/preferences/proc/CorrectLevel(datum/job/job, level)
 	if(!job || !level)	return 0
 	switch(level)
 		if(1)

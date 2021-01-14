@@ -24,7 +24,7 @@
 /***********************
 	Access Proc
 ************************/
-/mob/living/proc/gallop_ability(var/_duration, _cooldown, _power)
+/mob/living/proc/gallop_ability(_duration, _cooldown, _power)
 	if (can_gallop())
 		set_extension(src, /datum/extension/gallop, _duration,_cooldown,_power)
 		return TRUE
@@ -76,22 +76,22 @@
 	return cooldown - elapsed
 
 
-/datum/extension/gallop/proc/user_hit(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+/datum/extension/gallop/proc/user_hit(obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crumples under the impact [istype(used_weapon, /obj) ? "of":"from"] [used_weapon]"))
 		stop_crash(used_weapon)
 
-/datum/extension/gallop/proc/user_bumped(var/mob/user, atom/obstacle)
+/datum/extension/gallop/proc/user_bumped(mob/user, atom/obstacle)
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crashes into [obstacle]"))
 		stop_crash(obstacle)
 
 //Play extra footstep sounds as the leaper clatters along the floor
-/datum/extension/gallop/proc/user_moved(var/atom/obstacle)
+/datum/extension/gallop/proc/user_moved(atom/obstacle)
 	shake_camera(user, 3,0.5)
 	user.play_species_audio(user, SOUND_FOOTSTEP, VOLUME_QUIET)
 
-/datum/extension/gallop/proc/stop_crash(var/stopper)
+/datum/extension/gallop/proc/stop_crash(stopper)
 	shake_camera(user, 20,4)
 	crashed = TRUE
 	user.Weaken(5)
@@ -103,7 +103,7 @@
 	Safety Checks
 ************************/
 //Access Proc
-/mob/living/proc/can_gallop(var/error_messages = TRUE)
+/mob/living/proc/can_gallop(error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 

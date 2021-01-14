@@ -1,7 +1,7 @@
 /datum/event/computer_damage/start()
 	computer_damage_event(severity)
 
-/proc/computer_damage_event(var/severity)
+/proc/computer_damage_event(severity)
 	var/number_of_victims = 0
 	switch(severity)
 		if(EVENT_LEVEL_MUNDANE)

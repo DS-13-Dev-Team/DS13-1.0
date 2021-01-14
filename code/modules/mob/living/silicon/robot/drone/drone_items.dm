@@ -252,7 +252,7 @@
 
 				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")
 
-/obj/item/weapon/gripper/proc/finish_using(var/atom/target, mob/living/user, params, force_holder, resolved)
+/obj/item/weapon/gripper/proc/finish_using(atom/target, mob/living/user, params, force_holder, resolved)
 
 	if(QDELETED(wrapped))
 		wrapped.loc = null

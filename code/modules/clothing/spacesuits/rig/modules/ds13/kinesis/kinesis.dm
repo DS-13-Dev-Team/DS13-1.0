@@ -204,7 +204,7 @@
 /*
 	Grip: Starting off
 */
-/obj/item/rig_module/kinesis/proc/attempt_grip(var/atom/movable/AM)
+/obj/item/rig_module/kinesis/proc/attempt_grip(atom/movable/AM)
 	//We can only hold one object. If we have something already, tough luck, drop it first
 	if (subject)
 		return FALSE
@@ -318,7 +318,7 @@
 	grip(AM)
 	return TRUE
 
-/obj/item/rig_module/kinesis/proc/grip(var/atom/movable/AM)
+/obj/item/rig_module/kinesis/proc/grip(atom/movable/AM)
 
 	if (!velocity)
 		velocity = get_new_vector(0,0)
@@ -367,7 +367,7 @@
 	return FALSE
 
 
-/obj/item/rig_module/kinesis/proc/can_grip(var/atom/movable/A)
+/obj/item/rig_module/kinesis/proc/can_grip(atom/movable/A)
 	if (!istype(A))
 		return FALSE
 
@@ -564,7 +564,7 @@
 /*
 	This handles all the acceleration calculations, and returns the force we used, which is useful to calculate power costs
 */
-/obj/item/rig_module/kinesis/proc/accelerate(var/delta)
+/obj/item/rig_module/kinesis/proc/accelerate(delta)
 
 	//Velocity wears off gradually
 	velocity *= velocity_decay
@@ -729,7 +729,7 @@
 	return max_force
 
 //This proc actually adjusts the subject's position, based on the calculated velocity
-/obj/item/rig_module/kinesis/proc/move_subject(var/time_delta)
+/obj/item/rig_module/kinesis/proc/move_subject(time_delta)
 	var/vector2/position_delta = get_new_vector(velocity.x, velocity.y)	//Copy the velocity first, we don't want to modify it here
 
 	//Velocity is in metres, we work in pixels, so lets convert it
@@ -743,7 +743,7 @@
 
 
 //We collide with a thing
-/obj/item/rig_module/kinesis/proc/subject_collision(var/atom/movable/mover, atom/obstacle)
+/obj/item/rig_module/kinesis/proc/subject_collision(atom/movable/mover, atom/obstacle)
 	if (QDELETED(subject) || !isturf(subject.loc))
 		return
 
@@ -815,7 +815,7 @@
 	Params: Click params from the mouse action which caused this update, vitally important
 	global clickpoint: Where the user clicked in world pixel coords
 */
-/obj/item/rig_module/kinesis/proc/update(var/atom/A, mob/living/user, adjacent, params, vector2/global_clickpoint)
+/obj/item/rig_module/kinesis/proc/update(atom/A, mob/living/user, adjacent, params, vector2/global_clickpoint)
 
 	if (subject && holder && holder.wearer)
 		//Lets see if the clickpoint has actually changed
@@ -886,14 +886,14 @@
 		//remove_hotkeys(user)
 
 
-/obj/item/rig_module/kinesis/proc/add_hotkeys(var/mob/living/carbon/human/user)
+/obj/item/rig_module/kinesis/proc/add_hotkeys(mob/living/carbon/human/user)
 	//user.client.show_popup_menus = FALSE
 	user.verbs |= /mob/living/carbon/human/verb/kinesis_toggle
 	winset(user, "kinesis_toggle", "parent=macro;name=F;command=kinesis_toggle")
 	winset(user, "kinesis_toggle", "parent=hotkeymode;name=F;command=kinesis_toggle")
 	hotkeys_set = TRUE
 
-/obj/item/rig_module/kinesis/proc/remove_hotkeys(var/mob/living/carbon/human/user)
+/obj/item/rig_module/kinesis/proc/remove_hotkeys(mob/living/carbon/human/user)
 
 	winset(user, "macro.kinesis_toggle", "parent=")
 	winset(user, "hotkeymode.kinesis_toggle", "parent=")
@@ -921,7 +921,7 @@
 	We will make several passes through the list, first grabbing things that might be important like projectiles in flight
 
 */
-/obj/item/rig_module/kinesis/proc/find_target(var/atom/origin)
+/obj/item/rig_module/kinesis/proc/find_target(atom/origin)
 	var/list/nearby_stuff = range(1, origin)
 
 

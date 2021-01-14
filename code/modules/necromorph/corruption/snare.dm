@@ -71,7 +71,7 @@
 		attempt_trip(AM)
 
 
-/obj/structure/corruption_node/snare/proc/attempt_trip(var/mob/living/carbon/human/H)
+/obj/structure/corruption_node/snare/proc/attempt_trip(mob/living/carbon/human/H)
 
 	if (LAZYLEN(H.grabbed_by) || LAZYLEN(H.pulledby) || H.lying)
 		return FALSE	//Dont trip people who are crawling or being dragged
@@ -87,7 +87,7 @@
 	//Success!
 	trip(H)
 
-/obj/structure/corruption_node/snare/proc/trip(var/mob/living/carbon/human/H)
+/obj/structure/corruption_node/snare/proc/trip(mob/living/carbon/human/H)
 	H.visible_message(SPAN_DANGER("[H] trips over \the [src]"))
 	H.take_overall_damage(20)
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
@@ -125,7 +125,7 @@
 	.=..()
 
 //Someone tried to cut or pull out the snare, it doesn't like that and it's going to teach them a lesson
-/obj/structure/corruption_node/snare/proc/pull_in(var/mob/user)
+/obj/structure/corruption_node/snare/proc/pull_in(mob/user)
 	//They need to be within reach
 	if (get_dist(src, user) > 1)
 		return
@@ -150,7 +150,7 @@
 	return TRUE
 
 //Someone tried to attack the snare with an item. Yoink!
-/obj/structure/corruption_node/snare/proc/yank_item(var/mob/user, obj/item/I)
+/obj/structure/corruption_node/snare/proc/yank_item(mob/user, obj/item/I)
 	//They need to be within reach
 	if (get_dist(src, user) > 1)
 		return
@@ -171,7 +171,7 @@
 
 
 //Record that this user indicated awareness of us at this time. They wont trip over this snare for a few minutes
-/obj/structure/corruption_node/snare/proc/register_awareness(var/mob/user)
+/obj/structure/corruption_node/snare/proc/register_awareness(mob/user)
 
 
 	//We dont register necros, they cant be tripped anyway
@@ -193,7 +193,7 @@
 			tracker = new /obj/screen/movable/tracker/snare_highlight(user, src, awareness_timeout)
 
 
-/obj/structure/corruption_node/snare/proc/unregister_awareness(var/mob/user)
+/obj/structure/corruption_node/snare/proc/unregister_awareness(mob/user)
 	var/reference = "\ref[user]"
 	aware -= reference
 

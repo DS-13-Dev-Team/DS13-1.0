@@ -106,7 +106,7 @@
 	syllables = list("hs","zt","kr","st","sh")
 	shorthand = "RT"
 
-/datum/language/necromorph/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+/datum/language/necromorph/broadcast(var/mob/living/speaker, message, speaker_mask)
 
 	/*
 	*/
@@ -125,7 +125,7 @@
 
 //Global Necromorph Procs
 //-------------------------
-/proc/message_necromorphs(var/message, include_admins = TRUE, messaged = list())
+/proc/message_necromorphs(message, include_admins = TRUE, messaged = list())
 	//Message all the necromorphs
 	for (var/ckey in SSnecromorph.necromorph_players)
 		var/datum/player/P = SSnecromorph.necromorph_players[ckey]

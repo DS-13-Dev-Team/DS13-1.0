@@ -1,4 +1,4 @@
-/mob/living/deity/proc/set_boon(var/datum/boon)
+/mob/living/deity/proc/set_boon(datum/boon)
 	if(current_boon)
 		qdel(current_boon)
 	current_boon = boon
@@ -11,7 +11,7 @@
 		var/spell/S = boon
 		nano_data["boon_name"] = S.name
 
-/mob/living/deity/proc/grant_boon(var/mob/living/L)
+/mob/living/deity/proc/grant_boon(mob/living/L)
 	if(istype(current_boon, /spell) && !grant_spell(L, current_boon))
 		return
 	else if(istype(current_boon, /obj/item))
@@ -35,7 +35,7 @@
 	nano_data["boon_name"] = null
 	return
 
-/mob/living/deity/proc/grant_spell(var/mob/living/target, spell/spell)
+/mob/living/deity/proc/grant_spell(mob/living/target, spell/spell)
 	var/datum/mind/M = target.mind
 	for(var/s in M.learned_spells)
 		var/spell/S = s
@@ -49,7 +49,7 @@
 
 /* This is a generic proc used by the God to inact a sacrifice from somebody. Power is a value of magnitude.
 */
-/mob/living/deity/proc/take_charge(var/mob/living/L, power)
+/mob/living/deity/proc/take_charge(mob/living/L, power)
 	if(form)
 		return form.take_charge(L, power)
 	return 1

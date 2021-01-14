@@ -71,17 +71,17 @@
 	if(turn_on)
 		proximity_trigger.register_turfs()
 
-/obj/item/integrated_circuit/sensor/proximity/proc/on_turf_entered(var/enterer)
+/obj/item/integrated_circuit/sensor/proximity/proc/on_turf_entered(enterer)
 	if(!shall_trigger(enterer))
 		return
 
 	set_pin_data(IC_OUTPUT, 1, weakref(enterer))
 	activate_pin(2)
 
-/obj/item/integrated_circuit/sensor/proximity/proc/on_turfs_changed(var/list/old_turfs, list/new_turfs)
+/obj/item/integrated_circuit/sensor/proximity/proc/on_turfs_changed(list/old_turfs, list/new_turfs)
 	return
 
-/obj/item/integrated_circuit/sensor/proximity/proc/shall_trigger(var/enterer)
+/obj/item/integrated_circuit/sensor/proximity/proc/shall_trigger(enterer)
 	if(enterer == src)
 		return FALSE
 	if(ismob(enterer) && !isliving(enterer))

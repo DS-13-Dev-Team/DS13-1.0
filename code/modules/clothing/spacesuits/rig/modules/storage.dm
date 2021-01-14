@@ -76,7 +76,7 @@
 /obj/item/rig_module/storage/proc/handle_attack_hand(mob/user as mob)
 	return container.handle_attack_hand(user)
 
-/obj/item/rig_module/storage/proc/handle_mousedrop(var/mob/user, atom/over_object)
+/obj/item/rig_module/storage/proc/handle_mousedrop(mob/user, atom/over_object)
 	return container.handle_mousedrop(user, over_object)
 
 

@@ -125,7 +125,7 @@
 	Safety Checks
 ************************/
 //Access Proc
-/mob/proc/can_taunt(var/error_messages = TRUE)
+/mob/proc/can_taunt(error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 

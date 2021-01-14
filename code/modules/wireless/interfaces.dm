@@ -58,14 +58,14 @@
 		disconnect_device(D)
 	return ..()
 
-/datum/wifi/proc/connect_device(var/datum/wifi/device)
+/datum/wifi/proc/connect_device(datum/wifi/device)
 	if(connected_devices)
 		connected_devices |= device
 	else
 		connected_devices = new()
 		connected_devices |= device
 
-/datum/wifi/proc/disconnect_device(var/datum/wifi/device)
+/datum/wifi/proc/disconnect_device(datum/wifi/device)
 	if(connected_devices)
 		connected_devices -= device
 
@@ -89,7 +89,7 @@
 	..()
 	send_connection_request()
 
-/datum/wifi/sender/proc/set_target(var/new_target)
+/datum/wifi/sender/proc/set_target(new_target)
 	id = new_target
 
 /datum/wifi/sender/proc/send_connection_request()

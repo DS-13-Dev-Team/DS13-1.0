@@ -68,7 +68,7 @@ var/global/list/robot_modules = list(
 	for(var/obj/item/I in modules)
 		I.canremove = 0
 
-/obj/item/weapon/robot_module/proc/Reset(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/proc/Reset(mob/living/silicon/robot/R)
 	remove_camera_networks(R)
 	remove_languages(R)
 	remove_subsystems(R)
@@ -103,7 +103,7 @@ var/global/list/robot_modules = list(
 	..()
 	return
 
-/obj/item/weapon/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R, rate)
+/obj/item/weapon/robot_module/proc/respawn_consumable(mob/living/silicon/robot/R, rate)
 	var/obj/item/device/flash/F = locate() in src.modules
 	if(F)
 		if(F.broken)
@@ -126,7 +126,7 @@ var/global/list/robot_modules = list(
 		if(O)
 			modules += O
 
-/obj/item/weapon/robot_module/proc/add_languages(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/proc/add_languages(mob/living/silicon/robot/R)
 	// Stores the languages as they were before receiving the module, and whether they could be synthezized.
 	for(var/datum/language/language_datum in R.languages)
 		original_languages[language_datum] = (language_datum in R.speech_synthesizer_langs)
@@ -134,7 +134,7 @@ var/global/list/robot_modules = list(
 	for(var/language in languages)
 		R.add_language(language, languages[language])
 
-/obj/item/weapon/robot_module/proc/remove_languages(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/proc/remove_languages(mob/living/silicon/robot/R)
 	// Clear all added languages, whether or not we originally had them.
 	for(var/language in languages)
 		R.remove_language(language)
@@ -144,31 +144,31 @@ var/global/list/robot_modules = list(
 		R.add_language(original_language, original_languages[original_language])
 	original_languages.Cut()
 
-/obj/item/weapon/robot_module/proc/add_camera_networks(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/proc/add_camera_networks(mob/living/silicon/robot/R)
 	if(R.camera && (NETWORK_ROBOTS in R.camera.network))
 		for(var/network in networks)
 			if(!(network in R.camera.network))
 				R.camera.add_network(network)
 				added_networks |= network
 
-/obj/item/weapon/robot_module/proc/remove_camera_networks(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/proc/remove_camera_networks(mob/living/silicon/robot/R)
 	if(R.camera)
 		R.camera.remove_networks(added_networks)
 	added_networks.Cut()
 
-/obj/item/weapon/robot_module/proc/add_subsystems(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/proc/add_subsystems(mob/living/silicon/robot/R)
 	for(var/subsystem_type in subsystems)
 		R.init_subsystem(subsystem_type)
 
-/obj/item/weapon/robot_module/proc/remove_subsystems(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/proc/remove_subsystems(mob/living/silicon/robot/R)
 	for(var/subsystem_type in subsystems)
 		R.remove_subsystem(subsystem_type)
 
-/obj/item/weapon/robot_module/proc/apply_status_flags(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/proc/apply_status_flags(mob/living/silicon/robot/R)
 	if(!can_be_pushed)
 		R.status_flags &= ~CANPUSH
 
-/obj/item/weapon/robot_module/proc/remove_status_flags(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/proc/remove_status_flags(mob/living/silicon/robot/R)
 	if(!can_be_pushed)
 		R.status_flags |= CANPUSH
 

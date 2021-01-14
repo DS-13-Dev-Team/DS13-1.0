@@ -22,7 +22,7 @@
 		set_target(null)
 		user.put_in_hands(T)
 
-/obj/structure/target_stake/proc/set_target(var/obj/item/target/T)
+/obj/structure/target_stake/proc/set_target(obj/item/target/T)
 	if (T)
 		set_density(0)
 		T.set_density(1)

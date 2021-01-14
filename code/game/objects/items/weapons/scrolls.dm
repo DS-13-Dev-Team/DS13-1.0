@@ -6,7 +6,7 @@
 	var/uses = 4.0
 	w_class = ITEM_SIZE_TINY
 	item_state = "paper"
-	
+
 	throw_range = 20
 	origin_tech = list(TECH_BLUESPACE = 4)
 
@@ -40,7 +40,7 @@
 	attack_self(H)
 	return
 
-/obj/item/weapon/teleportation_scroll/proc/teleportscroll(var/mob/user)
+/obj/item/weapon/teleportation_scroll/proc/teleportscroll(mob/user)
 	var/area/thearea = input(user, "Area to jump to", "BOOYEA") as null|anything in wizteleportlocs
 	thearea = thearea ? wizteleportlocs[thearea] : thearea
 

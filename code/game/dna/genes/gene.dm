@@ -26,23 +26,23 @@
 /**
 * Is the gene active in this mob's DNA?
 */
-/datum/dna/gene/proc/is_active(var/mob/M)
+/datum/dna/gene/proc/is_active(mob/M)
 	return M.active_genes && type in M.active_genes
 
 // Return 1 if we can activate.
 // HANDLE MUTCHK_FORCED HERE!
-/datum/dna/gene/proc/can_activate(var/mob/M, flags)
+/datum/dna/gene/proc/can_activate(mob/M, flags)
 	return 0
 
 // Called when the gene activates.  Do your magic here.
-/datum/dna/gene/proc/activate(var/mob/M, connected, flags)
+/datum/dna/gene/proc/activate(mob/M, connected, flags)
 	return
 
 /**
 * Called when the gene deactivates.  Undo your magic here.
 * Only called when the block is deactivated.
 */
-/datum/dna/gene/proc/deactivate(var/mob/M, connected, flags)
+/datum/dna/gene/proc/deactivate(mob/M, connected, flags)
 	return
 
 // This section inspired by goone's bioEffects.
@@ -50,19 +50,19 @@
 /**
 * Called in each life() tick.
 */
-/datum/dna/gene/proc/OnMobLife(var/mob/M)
+/datum/dna/gene/proc/OnMobLife(mob/M)
 	return
 
 /**
 * Called when the mob dies
 */
-/datum/dna/gene/proc/OnMobDeath(var/mob/M)
+/datum/dna/gene/proc/OnMobDeath(mob/M)
 	return
 
 /**
 * Called when the mob says shit
 */
-/datum/dna/gene/proc/OnSay(var/mob/M, message)
+/datum/dna/gene/proc/OnSay(mob/M, message)
 	return message
 
 /**
@@ -72,7 +72,7 @@
 * @params g Gender (m or f)
 * @params fat Fat? (0 or 1)
 */
-/datum/dna/gene/proc/OnDrawUnderlays(var/mob/M, g, fat)
+/datum/dna/gene/proc/OnDrawUnderlays(mob/M, g, fat)
 	return 0
 
 
@@ -103,7 +103,7 @@
 	// Possible deactivation messages
 	var/list/deactivation_messages=list()
 
-/datum/dna/gene/basic/can_activate(var/mob/M,var/flags)
+/datum/dna/gene/basic/can_activate(var/mob/M, flags)
 	if(flags & MUTCHK_FORCED)
 		return 1
 	// Probability check

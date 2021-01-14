@@ -53,7 +53,7 @@
 /mob/living/proc/handle_random_events()
 	return
 
-/mob/living/proc/handle_environment(var/datum/gas_mixture/environment)
+/mob/living/proc/handle_environment(datum/gas_mixture/environment)
 	return
 
 /mob/living/proc/handle_stomach()
@@ -156,7 +156,7 @@
 
 
 //this handles hud updates. Calls update_vision() and handle_hud_icons()
-/mob/living/proc/handle_regular_hud_updates(var/update_vision = TRUE)
+/mob/living/proc/handle_regular_hud_updates(update_vision = TRUE)
 	if(!client)
 		return 0
 

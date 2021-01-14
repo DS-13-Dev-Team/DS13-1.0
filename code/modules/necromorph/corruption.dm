@@ -222,7 +222,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //Checks if this tile of corruption is supported by a valid/existing source.
 //Optionally, a source can be passed in, then it returns true if we're connected to THAT source specifically and false if any other, or not at all
-/obj/effect/vine/corruption/proc/is_supported(var/datum/extension/corruption_source/compare)
+/obj/effect/vine/corruption/proc/is_supported(datum/extension/corruption_source/compare)
 	if (compare && source != compare)
 		return FALSE
 
@@ -238,7 +238,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 //Alternative Handling
 //This attempts to find an alternative source to fit a target turf
-/obj/effect/vine/corruption/proc/get_viable_alternative(var/turf/T)
+/obj/effect/vine/corruption/proc/get_viable_alternative(turf/T)
 	if (!LAZYLEN(alternatives))
 		return null
 	var/best_multiplier = 9999999999999

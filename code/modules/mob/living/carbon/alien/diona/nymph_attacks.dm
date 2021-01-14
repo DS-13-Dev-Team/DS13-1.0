@@ -82,7 +82,7 @@
 		if(temp)
 			temp.throw_at(A, 10, rand(3,5), src)
 
-/mob/living/carbon/alien/diona/proc/handle_tray_interaction(var/obj/machinery/portable_atmospherics/hydroponics/tray)
+/mob/living/carbon/alien/diona/proc/handle_tray_interaction(obj/machinery/portable_atmospherics/hydroponics/tray)
 
 	if(incapacitated())
 		return

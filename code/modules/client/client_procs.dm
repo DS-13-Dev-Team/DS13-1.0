@@ -387,7 +387,7 @@ client/verb/character_setup()
 
 
 //Adds things to screen and tells them this was done
-/client/proc/add_to_screen(var/list/things)
+/client/proc/add_to_screen(list/things)
 
 	if (!islist(things))
 		things = list(things)

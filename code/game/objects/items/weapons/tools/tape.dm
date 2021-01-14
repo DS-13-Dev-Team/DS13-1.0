@@ -135,7 +135,7 @@
 /obj/item/weapon/ducttape/examine(mob/user)
 	return stuck.examine(user)
 
-/obj/item/weapon/ducttape/proc/attach(var/obj/item/weapon/W)
+/obj/item/weapon/ducttape/proc/attach(obj/item/weapon/W)
 	stuck = W
 	W.forceMove(src)
 	update_icon()

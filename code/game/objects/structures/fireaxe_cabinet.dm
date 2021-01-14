@@ -100,7 +100,7 @@
 
 	return ..()
 
-/obj/structure/fireaxecabinet/proc/toggle_open(var/mob/user)
+/obj/structure/fireaxecabinet/proc/toggle_open(mob/user)
 	if(shattered)
 		open = 1
 		unlocked = 1
@@ -110,7 +110,7 @@
 		to_chat(user, "<span class='notice'>You [open ? "open" : "close"] \the [src].</span>")
 	update_icon()
 
-/obj/structure/fireaxecabinet/proc/toggle_lock(var/mob/user)
+/obj/structure/fireaxecabinet/proc/toggle_lock(mob/user)
 
 
 	if(open)

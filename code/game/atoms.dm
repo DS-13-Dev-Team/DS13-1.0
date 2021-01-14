@@ -116,7 +116,7 @@
 		return FALSE
 	return -1
 
-/atom/proc/on_reagent_change(var/reagent_type, delta)
+/atom/proc/on_reagent_change(reagent_type, delta)
 	return
 
 /atom/proc/Bumped(AM as mob|obj)
@@ -157,10 +157,10 @@
 /atom/proc/HasProximity(atom/movable/AM as mob|obj)
 	return
 
-/atom/proc/emp_act(var/severity)
+/atom/proc/emp_act(severity)
 	return
 
-/atom/proc/set_density(var/new_density)
+/atom/proc/set_density(new_density)
 	if(density != new_density)
 		density = !!new_density
 
@@ -305,7 +305,7 @@ its easier to just keep the beam vertical.
 	dir = new_dir
 	return TRUE
 
-/atom/proc/set_icon_state(var/new_icon_state)
+/atom/proc/set_icon_state(new_icon_state)
 	if(has_extension(src, /datum/extension/base_icon_state))
 		var/datum/extension/base_icon_state/bis = get_extension(src, /datum/extension/base_icon_state)
 		bis.base_icon_state = new_icon_state
@@ -316,17 +316,17 @@ its easier to just keep the beam vertical.
 /atom/proc/update_icon()
 	return
 
-/atom/proc/ex_act(var/severity, atom/epicentre)
+/atom/proc/ex_act(severity, atom/epicentre)
 	return
 
-/atom/proc/emag_act(var/remaining_charges, mob/user, emag_source)
+/atom/proc/emag_act(remaining_charges, mob/user, emag_source)
 	return NO_EMAG_ACT
 
 /atom/proc/fire_act()
 	return
 
 //How much damage will a fire_act do?
-/atom/proc/get_fire_damage(var/temperature, multiplier)
+/atom/proc/get_fire_damage(temperature, multiplier)
 	return (temperature-get_heat_limit()) * FIRE_DAMAGE_MULTIPLIER * multiplier
 
 /atom/proc/melt()
@@ -411,7 +411,7 @@ its easier to just keep the beam vertical.
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
-/atom/proc/visible_message(var/message, blind_message, range = world.view, checkghosts = null)
+/atom/proc/visible_message(message, blind_message, range = world.view, checkghosts = null)
 	var/turf/T = get_turf(src)
 	var/list/mobs = list()
 	var/list/objs = list()
@@ -433,7 +433,7 @@ its easier to just keep the beam vertical.
 // message is the message output to anyone who can hear.
 // deaf_message (optional) is what deaf people will see.
 // hearing_distance (optional) is the range, how many tiles away the message can be heard.
-/atom/proc/audible_message(var/message, deaf_message, hearing_distance = world.view, checkghosts = null)
+/atom/proc/audible_message(message, deaf_message, hearing_distance = world.view, checkghosts = null)
 	var/turf/T = get_turf(src)
 	var/list/mobs = list()
 	var/list/objs = list()
@@ -446,7 +446,7 @@ its easier to just keep the beam vertical.
 		var/obj/O = o
 		O.show_message(message,2,deaf_message,1)
 
-/atom/movable/proc/dropInto(var/atom/destination)
+/atom/movable/proc/dropInto(atom/destination)
 	while(istype(destination))
 		var/atom/drop_destination = destination.onDropInto(src)
 		if(!istype(drop_destination) || drop_destination == destination)
@@ -454,7 +454,7 @@ its easier to just keep the beam vertical.
 		destination = drop_destination
 	return forceMove(null)
 
-/atom/proc/onDropInto(var/atom/movable/AM)
+/atom/proc/onDropInto(atom/movable/AM)
 	return // If onDropInto returns null, then dropInto will forceMove AM into us.
 
 /atom/movable/onDropInto(var/atom/movable/AM)
@@ -481,7 +481,7 @@ its easier to just keep the beam vertical.
 
 	do_climb(usr)
 
-/atom/proc/can_climb(var/mob/living/user, post_climb_check=0)
+/atom/proc/can_climb(mob/living/user, post_climb_check=0)
 	if (!(atom_flags & ATOM_FLAG_CLIMBABLE) || !can_touch(user) || (!post_climb_check && (user in climbers)))
 		return FALSE
 
@@ -495,7 +495,7 @@ its easier to just keep the beam vertical.
 		return FALSE
 	return TRUE
 
-/atom/proc/can_touch(var/mob/user)
+/atom/proc/can_touch(mob/user)
 	if (!user)
 		return FALSE
 	if(!Adjacent(user))
@@ -521,7 +521,7 @@ its easier to just keep the beam vertical.
 			return A
 	return FALSE
 
-/atom/proc/do_climb(var/mob/living/user)
+/atom/proc/do_climb(mob/living/user)
 	. = FALSE
 	if (!can_climb(user))
 		return
@@ -624,7 +624,7 @@ its easier to just keep the beam vertical.
 /*
 	used to restore health to non-organic objects, mobs, and turfs
 */
-/atom/proc/repair(var/repair_power, datum/repair_source, mob/user)
+/atom/proc/repair(repair_power, datum/repair_source, mob/user)
 	return TRUE
 
 //Returns a value that somehow represents how much repairing is needed.

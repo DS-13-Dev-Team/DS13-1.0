@@ -29,7 +29,7 @@
 		ui.open()
 		ui.set_auto_update(TRUE)
 
-/mob/living/deity/proc/set_nano_category(var/num)
+/mob/living/deity/proc/set_nano_category(num)
 	nano_data["category"] = num
 	update_category()
 

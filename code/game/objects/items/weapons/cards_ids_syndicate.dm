@@ -67,7 +67,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/item/weapon/card/id/syndicate/proc/register_user(var/mob/user)
+/obj/item/weapon/card/id/syndicate/proc/register_user(mob/user)
 	if(!istype(user) || user == registered_user)
 		return FALSE
 	unset_registered_user()
@@ -76,7 +76,7 @@
 	GLOB.destroyed_event.register(user, src, /obj/item/weapon/card/id/syndicate/proc/unset_registered_user)
 	return TRUE
 
-/obj/item/weapon/card/id/syndicate/proc/unset_registered_user(var/mob/user)
+/obj/item/weapon/card/id/syndicate/proc/unset_registered_user(mob/user)
 	if(!registered_user || (user && user != registered_user))
 		return
 	GLOB.destroyed_event.unregister(registered_user, src)

@@ -42,7 +42,7 @@
 					if(M.client)
 						remove_image(M)
 
-/datum/phenomena/point/proc/remove_image(var/mob/living/L)
+/datum/phenomena/point/proc/remove_image(mob/living/L)
 	L.client.images -= arrow
 	GLOB.logged_out_event.unregister(L, src)
 

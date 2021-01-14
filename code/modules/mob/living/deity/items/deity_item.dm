@@ -7,7 +7,7 @@
 	var/max_level = 0
 	var/list/requirements //Name of item = level of item
 
-/datum/deity_item/proc/can_buy(var/mob/living/deity/D)
+/datum/deity_item/proc/can_buy(mob/living/deity/D)
 	if(max_level && level == max_level)
 		return FALSE
 	var/cost = get_cost(D)
@@ -19,11 +19,11 @@
 				return FALSE
 	return TRUE
 
-/datum/deity_item/proc/buy(var/mob/living/deity/D)
+/datum/deity_item/proc/buy(mob/living/deity/D)
 	D.adjust_power(-get_cost(D))
 	level++
 
-/datum/deity_item/proc/get_cost(var/mob/living/deity/D)
+/datum/deity_item/proc/get_cost(mob/living/deity/D)
 	return base_cost
 
 

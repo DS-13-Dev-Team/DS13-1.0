@@ -3,19 +3,19 @@
 //
 //	Implements a basic observer pattern with the following main procs:
 //
-//	/decl/observ/proc/is_listening(var/event_source, datum/listener, proc_call)
+//	/decl/observ/proc/is_listening(event_source, datum/listener, proc_call)
 //		event_source: The instance which is generating events.
 //		listener: The instance which may be listening to events by event_source
 //		proc_call: Optional. The specific proc to call when the event is raised.
 //
 //		Returns true if listener is listening for events by event_source, and proc_call supplied is either null or one of the proc that will be called when an event is raised.
 //
-//	/decl/observ/proc/has_listeners(var/event_source)
+//	/decl/observ/proc/has_listeners(event_source)
 //		event_source: The instance which is generating events.
 //
 //		Returns true if the given event_source has any listeners at all, globally or to specific event sources.
 //
-//	/decl/observ/proc/register(var/event_source, datum/listener, proc_call)
+//	/decl/observ/proc/register(event_source, datum/listener, proc_call)
 //		event_source: The instance you wish to receive events from.
 //		listener: The instance/owner of the proc to call when an event is raised by the event_source.
 //		proc_call: The proc to call when an event is raised.
@@ -30,7 +30,7 @@
 //		The instance making the register() call is also responsible for calling unregister(), see below for additonal details, including when event_source is destroyed.
 //			This can be handled by listening to the event_source's destroyed event, unregistering in the listener's Destroy() proc, etc.
 //
-//	/decl/observ/proc/unregister(var/event_source, datum/listener, proc_call)
+//	/decl/observ/proc/unregister(event_source, datum/listener, proc_call)
 //		event_source: The instance you wish to stop receiving events from.
 //		listener: The instance which will no longer receive the events.
 //		proc_call: Optional: The proc_call to unregister.
@@ -39,14 +39,14 @@
 //		If a proc_call has been supplied only that particular proc_call will be unregistered. If the proc_call isn't currently registered there will be no effect.
 //		If no proc_call has been supplied, the listener will have all registrations made to the given event_source undone.
 //
-//	/decl/observ/proc/register_global(var/datum/listener, proc_call)
+//	/decl/observ/proc/register_global(datum/listener, proc_call)
 //		listener: The instance/owner of the proc to call when an event is raised by any and all sources.
 //		proc_call: The proc to call when an event is raised.
 //
 //		Works very much the same as register(), only the listener/proc_call will receive all relevant events from all event sources.
 //		Global registrations can overlap with registrations made to specific event sources and these will not affect each other.
 //
-//	/decl/observ/proc/unregister_global(var/datum/listener, proc_call)
+//	/decl/observ/proc/unregister_global(datum/listener, proc_call)
 //		listener: The instance/owner of the proc which will no longer receive the events.
 //		proc_call: Optional: The proc_call to unregister.
 //
@@ -66,7 +66,7 @@
 	GLOB.all_observable_events += src
 	..()
 
-/decl/observ/proc/is_listening(var/event_source, datum/listener, proc_call)
+/decl/observ/proc/is_listening(event_source, datum/listener, proc_call)
 	// Return whether there are global listeners unless the event source is given.
 	if (!event_source)
 		return !!global_listeners.len
@@ -95,10 +95,10 @@
 
 	return (proc_call in callback)
 
-/decl/observ/proc/has_listeners(var/event_source)
+/decl/observ/proc/has_listeners(event_source)
 	return is_listening(event_source)
 
-/decl/observ/proc/register(var/datum/event_source, datum/listener, proc_call)
+/decl/observ/proc/register(datum/event_source, datum/listener, proc_call)
 	// Sanity checking.
 	if (!(event_source && listener && proc_call))
 		return FALSE
@@ -129,7 +129,7 @@
 	callbacks += proc_call
 	return TRUE
 
-/decl/observ/proc/unregister(var/event_source, datum/listener, proc_call)
+/decl/observ/proc/unregister(event_source, datum/listener, proc_call)
 	// Sanity.
 	if (!(event_source && listener && (event_source in event_sources)))
 		return FALSE
@@ -163,7 +163,7 @@
 		event_sources -= event_source
 	return TRUE
 
-/decl/observ/proc/register_global(var/datum/listener, proc_call)
+/decl/observ/proc/register_global(datum/listener, proc_call)
 	// Sanity.
 	if (!(listener && proc_call))
 		return FALSE
@@ -178,7 +178,7 @@
 	callbacks |= proc_call
 	return TRUE
 
-/decl/observ/proc/unregister_global(var/datum/listener, proc_call)
+/decl/observ/proc/unregister_global(datum/listener, proc_call)
 	// Return false unless the listener is set as a global listener.
 	if (!(listener && (listener in global_listeners)))
 		return FALSE

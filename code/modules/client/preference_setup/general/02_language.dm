@@ -33,7 +33,7 @@
 	else
 		. += "- [pref.species] cannot choose secondary languages.<br>"
 
-/datum/category_item/player_setup_item/general/language/OnTopic(var/href,var/list/href_list, mob/user)
+/datum/category_item/player_setup_item/general/language/OnTopic(var/href, list/href_list, mob/user)
 	if(href_list["remove_language"])
 		var/index = text2num(href_list["remove_language"])
 		pref.alternate_languages.Cut(index, index+1)
@@ -65,7 +65,7 @@
 					return TOPIC_REFRESH
 	return ..()
 
-/datum/category_item/player_setup_item/general/language/proc/is_allowed_language(var/mob/user, datum/language/lang)
+/datum/category_item/player_setup_item/general/language/proc/is_allowed_language(mob/user, datum/language/lang)
 	if(!user)
 		return TRUE
 	var/datum/species/S = all_species[pref.species] || all_species[SPECIES_HUMAN]

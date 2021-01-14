@@ -13,7 +13,7 @@
 	var/toggle = 1
 	movable_flags = MOVABLE_FLAG_PROXMOVE
 
-/obj/item/device/transfer_valve/proc/process_activation(var/obj/item/device/D)
+/obj/item/device/transfer_valve/proc/process_activation(obj/item/device/D)
 
 /obj/item/device/transfer_valve/IsAssemblyHolder()
 	return 1

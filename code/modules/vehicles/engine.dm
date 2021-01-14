@@ -18,10 +18,10 @@
 /obj/item/weapon/engine/proc/use_power()
 	return 0
 
-/obj/item/weapon/engine/proc/rev_engine(var/atom/movable/M)
+/obj/item/weapon/engine/proc/rev_engine(atom/movable/M)
 	return
 
-/obj/item/weapon/engine/proc/putter(var/atom/movable/M)
+/obj/item/weapon/engine/proc/putter(atom/movable/M)
 	return
 
 /obj/item/weapon/engine/electric

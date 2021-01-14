@@ -190,7 +190,7 @@
 
 	return ..()
 
-/turf/simulated/wall/proc/dismantle_wall(var/devastated, explode, no_product)
+/turf/simulated/wall/proc/dismantle_wall(devastated, explode, no_product)
 
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
@@ -285,5 +285,5 @@
 /turf/simulated/wall/get_color()
 	return paint_color
 
-/turf/simulated/wall/proc/CheckPenetration(var/base_chance, damage)
+/turf/simulated/wall/proc/CheckPenetration(base_chance, damage)
 	return round(damage/material.integrity*180)

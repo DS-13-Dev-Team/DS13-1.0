@@ -160,7 +160,7 @@
 		update_icon()
 		return TOPIC_REFRESH
 
-/obj/machinery/disease2/isolator/proc/print(var/mob/user)
+/obj/machinery/disease2/isolator/proc/print(mob/user)
 	var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(loc)
 
 	switch (state)

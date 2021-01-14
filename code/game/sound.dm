@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(interact_sound,list('sound/machines/vending_click.ogg'))
 GLOBAL_LIST_INIT(bubble_sound,list('sound/machines/tankbubble1.ogg','sound/machines/tankbubble2.ogg','sound/machines/tankbubble3.ogg'))
 GLOBAL_LIST_INIT(bubble_small_sound,list('sound/machines/tanksmallbubble1.ogg','sound/machines/tanksmallbubble2.ogg','sound/machines/tanksmallbubble3.ogg','sound/machines/tanksmallbubble4.ogg'))
 
-/proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0)
+/proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0)
 
 	if(istext(soundin))
 		soundin = get_sfx(soundin) // same sound for everyone
@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(bubble_small_sound,list('sound/machines/tanksmallbubble1.ogg','
 
 var/const/FALLOFF_SOUNDS = 0.5
 
-/mob/proc/playsound_local(var/turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, extrarange)
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, extrarange)
 	if(!src.client || ear_deaf > 0)	return
 	var/sound/S = soundin
 	if(!istype(S))

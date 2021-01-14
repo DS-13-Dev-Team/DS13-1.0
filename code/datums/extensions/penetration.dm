@@ -3,7 +3,7 @@
 	expected_type = /atom
 
 // Returns a value between 0 and 100
-/datum/extension/penetration/proc/PenetrationProbability(var/base_probability, damage, damage_type)
+/datum/extension/penetration/proc/PenetrationProbability(base_probability, damage, damage_type)
 	return 100
 
 

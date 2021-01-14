@@ -176,7 +176,7 @@ The Lurker can only fire spines while its shell is open"
 	Lurker has three tentacles, and brain+eyes in its "chest"
 
 */
-/datum/species/necromorph/lurker/proc/num_tentacles(var/mob/living/carbon/human/H)
+/datum/species/necromorph/lurker/proc/num_tentacles(mob/living/carbon/human/H)
 	var/num = 0
 	for (var/organ_tag in list(BP_HEAD, BP_L_ARM, BP_R_ARM))
 		var/obj/item/organ/external/E = H.get_organ(organ_tag)
@@ -265,7 +265,7 @@ The Lurker can only fire spines while its shell is open"
 
 
 //The lurker launches up to three spines - one for each remaining tentacle. The first one flies true, the others have significant random dispersion
-/mob/living/carbon/human/proc/lurker_spinelaunch(var/atom/A)
+/mob/living/carbon/human/proc/lurker_spinelaunch(atom/A)
 	set name = "Spine launch"
 	set category = "Abilities"
 	set desc = "A three-shot spread of bone spines, with varying accuracy. HK: Altclick"

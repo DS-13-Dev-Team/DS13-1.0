@@ -94,7 +94,7 @@
 
 
 
-/obj/machinery/power/breakerbox/proc/set_state(var/state)
+/obj/machinery/power/breakerbox/proc/set_state(state)
 	on = state
 	if(on)
 		icon_state = icon_state_on

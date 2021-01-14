@@ -137,7 +137,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 
 //Twitcher charge
 //Aside from being faster moving, it also kicks off with a shortrange teleport, and has a much lower cooldown
-/mob/living/carbon/human/proc/twitcher_charge(var/mob/living/A)
+/mob/living/carbon/human/proc/twitcher_charge(mob/living/A)
 	set name = "Charge"
 	set category = "Abilities"
 
@@ -175,7 +175,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 
 
 
-/mob/living/carbon/human/proc/twitcher_step_strike(var/atom/A)
+/mob/living/carbon/human/proc/twitcher_step_strike(atom/A)
 	set name = "Step Strike"
 	set category = "Abilities"
 

@@ -19,9 +19,9 @@
 	host = null
 	. = ..()
 
-/datum/movement_handler/proc/DoMove(var/direction, mob/mover, is_external)
+/datum/movement_handler/proc/DoMove(direction, mob/mover, is_external)
 	return
 
 // Asks the handlers if the mob may move, ignoring destination, if attempting a DoMove()
-/datum/movement_handler/proc/MayMove(var/mob/mover, is_external)
+/datum/movement_handler/proc/MayMove(mob/mover, is_external)
 	return MOVEMENT_PROCEED

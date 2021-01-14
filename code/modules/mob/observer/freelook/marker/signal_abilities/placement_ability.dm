@@ -87,7 +87,7 @@
 
 
 
-/proc/create_ability_placement_handler(var/mob/_user, _result, _handler_type = /datum/click_handler/placement, snap = FALSE, require_corruption = FALSE, LOS_block = TRUE, datum/callback/C)
+/proc/create_ability_placement_handler(mob/_user, _result, _handler_type = /datum/click_handler/placement, snap = FALSE, require_corruption = FALSE, LOS_block = TRUE, datum/callback/C)
 	if (!istype(_user))
 		return
 

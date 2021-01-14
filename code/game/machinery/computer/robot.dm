@@ -110,7 +110,7 @@
 // Proc: get_cyborgs()
 // Parameters: 1 (operator - mob which is operating the console.)
 // Description: Returns NanoUI-friendly list of accessible cyborgs.
-/obj/machinery/computer/robotics/proc/get_cyborgs(var/mob/operator)
+/obj/machinery/computer/robotics/proc/get_cyborgs(mob/operator)
 	var/list/robots = list()
 
 	for(var/mob/living/silicon/robot/R in GLOB.silicon_mob_list)
@@ -159,7 +159,7 @@
 // Proc: get_cyborg_by_name()
 // Parameters: 1 (name - Cyborg we are trying to find)
 // Description: Helper proc for finding cyborg by name
-/obj/machinery/computer/robotics/proc/get_cyborg_by_name(var/name)
+/obj/machinery/computer/robotics/proc/get_cyborg_by_name(name)
 	if (!name)
 		return
 	for(var/mob/living/silicon/robot/R in GLOB.silicon_mob_list)

@@ -227,7 +227,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 **/
 
-/proc/Broadcast_Message(var/datum/radio_frequency/connection, mob/M,
+/proc/Broadcast_Message(datum/radio_frequency/connection, mob/M,
 						var/vmask, vmessage, obj/item/device/radio/radio,
 						var/message, name, job, realname, vname,
 						var/data, compression, list/level, freq, verbage = "says", datum/language/speaking = null,
@@ -450,7 +450,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 
 
-/proc/Broadcast_SimpleMessage(var/source, frequency, text, data, mob/M, compression, level, channel_tag, channel_color, class)
+/proc/Broadcast_SimpleMessage(source, frequency, text, data, mob/M, compression, level, channel_tag, channel_color, class)
   /* ###### Prepare the radio connection ###### */
 
 	/* Not needed, the message is heard with a null mob
@@ -648,7 +648,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	var/turf/position = get_turf(src)
 	return (position.z in signal.data["level"] && signal.data["done"])
 
-/atom/proc/telecomms_process(var/do_sleep = 1)
+/atom/proc/telecomms_process(do_sleep = 1)
 
 	// First, we want to generate a new radio signal
 	var/datum/signal/signal = new

@@ -167,7 +167,7 @@ The answer was five and a half years -ZeroBits
 			error_message = ""
 		return 1
 
-/datum/nano_module/library/proc/view_book(var/id)
+/datum/nano_module/library/proc/view_book(id)
 	if(current_book || !id)
 		return 0
 

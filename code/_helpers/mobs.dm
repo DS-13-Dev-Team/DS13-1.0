@@ -18,7 +18,7 @@
 //helper for inverting armor blocked values into a multiplier
 #define blocked_mult(blocked) max(1 - (blocked/100), 0)
 
-/proc/mobs_in_view(var/range, source)
+/proc/mobs_in_view(range, source)
 	var/list/mobs = list()
 	for(var/atom/movable/AM in view(range, source))
 		var/M = AM.get_mob()
@@ -71,7 +71,7 @@ proc/random_name(gender, species = SPECIES_HUMAN)
 	else
 		return current_species.get_random_name(gender)
 
-proc/random_skin_tone(var/datum/species/current_species)
+proc/random_skin_tone(datum/species/current_species)
 	var/species_tone = current_species ? 35 - current_species.max_skin_tone() : -185
 	switch(pick(60;"caucasian", 15;"afroamerican", 10;"african", 10;"latino", 5;"albino"))
 		if("caucasian")		. = -10
@@ -116,13 +116,13 @@ proc/age2agedescription(age)
 	return icon_states[icon_states.len] // If we had no match, return the last element
 
 //checks whether this item is a module of the robot it is located in.
-/proc/is_robot_module(var/obj/item/thing)
+/proc/is_robot_module(obj/item/thing)
 	if (!thing || !istype(thing.loc, /mob/living/silicon/robot))
 		return 0
 	var/mob/living/silicon/robot/R = thing.loc
 	return (thing in R.module.modules)
 
-/proc/get_exposed_defense_zone(var/atom/movable/target)
+/proc/get_exposed_defense_zone(atom/movable/target)
 	return pick(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_FOOT, BP_R_FOOT, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG, BP_CHEST, BP_GROIN)
 
 /proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = 0, progress = 1, incapacitation_flags = INCAPACITATION_DEFAULT)
@@ -292,7 +292,7 @@ var/datum/callback/proc_to_call, proc_interval = 10)
 	return GLOB.dead_mob_list.Remove(src)
 
 //Find a dead mob with a brain and client.
-/proc/find_dead_player(var/find_key, include_observers = 0)
+/proc/find_dead_player(find_key, include_observers = 0)
 	if(isnull(find_key))
 		return
 
@@ -323,7 +323,7 @@ var/datum/callback/proc_to_call, proc_interval = 10)
 
 //Returns true if the two passed mobs are on the same "team".
 //For the purposes of DS13, this is only true if both are necromorphs
-/atom/proc/is_allied(var/atom/B)
+/atom/proc/is_allied(atom/B)
 	if (is_necromorph() && B.is_necromorph())
 		return TRUE
 	return FALSE
@@ -336,7 +336,7 @@ var/datum/callback/proc_to_call, proc_interval = 10)
 //Searchrange:	How far around origin do we search?
 //User:			Who is doing the searching? This is used for is_allied. If not passed, all mobs will be considered?
 //Reach:		Target must be within Reach tiles of the user
-/proc/autotarget_enemy_mob(var/atom/origin, searchrange = 1, mob/living/user = null, reach = 0)
+/proc/autotarget_enemy_mob(atom/origin, searchrange = 1, mob/living/user = null, reach = 0)
 	var/list/search_tiles = trange(searchrange, origin)
 	var/list/prime_targets = list()	//Main targets, we pick one
 	var/list/secondary_targets	=	list()	//Used only if there are no prime targets
@@ -373,14 +373,14 @@ var/datum/callback/proc_to_call, proc_interval = 10)
 
 
 //Adds verb path to our verbs if condition is true, removes it if false
-/mob/proc/update_verb(var/verb_path, condition)
+/mob/proc/update_verb(verb_path, condition)
 	if (condition)
 		verbs |= verb_path
 	else
 		verbs -= verb_path
 
 
-/mob/proc/enemy_in_view(var/require_standing = FALSE)
+/mob/proc/enemy_in_view(require_standing = FALSE)
 	for (var/mob/living/carbon/human/H in atoms_in_view())
 		//People who are downed don't count
 		if (require_standing && (H.lying || H.stat))

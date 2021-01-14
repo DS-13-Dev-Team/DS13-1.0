@@ -1,4 +1,4 @@
-/atom/movable/proc/brute_charge_attack(var/atom/_target, _speed = 7, _lifespan = 2 SECONDS, _maxrange = null, _homing = TRUE, _inertia = FALSE, _power = 0, _cooldown = 20 SECONDS, _delay = 0)
+/atom/movable/proc/brute_charge_attack(atom/_target, _speed = 7, _lifespan = 2 SECONDS, _maxrange = null, _homing = TRUE, _inertia = FALSE, _power = 0, _cooldown = 20 SECONDS, _delay = 0)
 	//First of all, lets check if we're currently able to charge
 	if (!can_charge(_target, TRUE))
 		return FALSE

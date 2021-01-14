@@ -16,13 +16,13 @@
 	linked.remove_phenomena(src)
 	return ..()
 
-/datum/phenomena/proc/Click(var/atom/target)
+/datum/phenomena/proc/Click(atom/target)
 	if(can_activate(target))
 		linked.adjust_power(-cost)
 		refresh_time = world.time + cooldown
 		activate(target)
 
-/datum/phenomena/proc/can_activate(var/atom/target)
+/datum/phenomena/proc/can_activate(atom/target)
 	if(!linked)
 		return 0
 	if(refresh_time > world.time)
@@ -62,7 +62,7 @@
 
 	return 1
 
-/datum/phenomena/proc/activate(var/target)
+/datum/phenomena/proc/activate(target)
 	to_chat(linked, "<span class='notice'>You use the phenomena [name] on \the [target]</span>")
 	return
 

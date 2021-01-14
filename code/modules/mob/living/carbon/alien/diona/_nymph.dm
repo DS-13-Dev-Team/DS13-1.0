@@ -87,7 +87,7 @@
 /mob/living/carbon/alien/diona/is_advanced_tool_user()
 	return FALSE
 
-/mob/living/carbon/alien/diona/proc/handle_npc(var/mob/living/carbon/alien/diona/D)
+/mob/living/carbon/alien/diona/proc/handle_npc(mob/living/carbon/alien/diona/D)
 	if(D.stat != CONSCIOUS)
 		return
 	if(prob(wander_prob) && isturf(D.loc) && !D.pulledby) //won't move if being pulled
@@ -95,7 +95,7 @@
 	if(prob(emote_prob))
 		D.emote(pick("scratch","jump","chirp","tail"))
 
-/proc/split_into_nymphs(var/mob/living/carbon/human/donor)
+/proc/split_into_nymphs(mob/living/carbon/human/donor)
 
 	if(!donor || donor.species.name != SPECIES_DIONA)
 		return

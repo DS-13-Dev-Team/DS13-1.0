@@ -101,7 +101,7 @@
 
 
 
-/datum/extension/psychic_tracer/proc/change_duration(var/change)
+/datum/extension/psychic_tracer/proc/change_duration(change)
 	duration += change
 
 	if (duration <= 0)
@@ -113,7 +113,7 @@
 	var/newradius = Ceiling(initial_radius * percent)
 	set_radius(newradius)
 
-/datum/extension/psychic_tracer/proc/set_radius(var/newradius)
+/datum/extension/psychic_tracer/proc/set_radius(newradius)
 	//Only update things if the radius has changed
 	if (radius == newradius)
 		return

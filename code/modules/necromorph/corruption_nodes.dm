@@ -140,7 +140,7 @@
 	.=..()
 
 //Checks if a a structure about to be placed would overlap with ourselves. Return false to block the placement, true to allow it
-/obj/structure/corruption_node/proc/check_overlap(var/datum/click_handler/placement/P)
+/obj/structure/corruption_node/proc/check_overlap(datum/click_handler/placement/P)
 	if (placement_location == P.placement_location)
 		return FALSE
 	return TRUE

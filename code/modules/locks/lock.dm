@@ -18,7 +18,7 @@
 	holder = null
 	..()
 
-/datum/lock/proc/unlock(var/key = "", mob/user)
+/datum/lock/proc/unlock(key = "", mob/user)
 	if(status ^ LOCK_LOCKED)
 		to_chat(user, "<span class='warning'>Its already unlocked!</span>")
 		return 2
@@ -28,7 +28,7 @@
 		return 1
 	return 0
 
-/datum/lock/proc/lock(var/key = "", mob/user)
+/datum/lock/proc/lock(key = "", mob/user)
 	if(status & LOCK_LOCKED)
 		to_chat(user, "<span class='warning'>Its already locked!</span>")
 		return 2
@@ -38,7 +38,7 @@
 		return 1
 	return 0
 
-/datum/lock/proc/toggle(var/key = "", mob/user)
+/datum/lock/proc/toggle(key = "", mob/user)
 	if(status & LOCK_LOCKED)
 		return unlock(key, user)
 	else
@@ -47,7 +47,7 @@
 /datum/lock/proc/getComplexity()
 	return length(lock_data)
 
-/datum/lock/proc/get_key_data(var/key = "", mob/user)
+/datum/lock/proc/get_key_data(key = "", mob/user)
 	if(istype(key,/obj/item/weapon/key))
 		var/obj/item/weapon/key/K = key
 		return K.get_data(user)
@@ -58,7 +58,7 @@
 /datum/lock/proc/isLocked()
 	return status & LOCK_LOCKED
 
-/datum/lock/proc/pick_lock(var/obj/item/I, mob/user)
+/datum/lock/proc/pick_lock(obj/item/I, mob/user)
 	if(!istype(I) || (status ^ LOCK_LOCKED))
 		return 0
 	var/unlock_power = I.lock_picking_level

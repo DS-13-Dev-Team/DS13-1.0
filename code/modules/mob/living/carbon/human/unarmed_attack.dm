@@ -59,7 +59,7 @@ var/global/list/sparring_attack_cache = list()
 			sparring_attack_cache[sparring_variant_type] = new sparring_variant_type()
 		return sparring_attack_cache[sparring_variant_type]
 
-/datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user, atom/target, zone)
+/datum/unarmed_attack/proc/is_usable(mob/living/carbon/human/user, atom/target, zone)
 	if(user.restrained())
 		return 0
 
@@ -75,14 +75,14 @@ var/global/list/sparring_attack_cache = list()
 
 	return TRUE
 
-/datum/unarmed_attack/proc/get_unarmed_damage(var/mob/living/user)
+/datum/unarmed_attack/proc/get_unarmed_damage(mob/living/user)
 	.= damage
 	if (user && user.lying)
 		.*=lying_damage_factor
 
 
 //Factor in attackspeed here
-/datum/unarmed_attack/proc/get_delay(var/mob/living/user)
+/datum/unarmed_attack/proc/get_delay(mob/living/user)
 	if (isnum(delay) && delay > 0)
 		.= (delay / user.get_attack_speed_factor())
 		if (user.lying)
@@ -90,7 +90,7 @@ var/global/list/sparring_attack_cache = list()
 		return
 	return 0
 
-/datum/unarmed_attack/proc/apply_effects(var/datum/strike/strike)
+/datum/unarmed_attack/proc/apply_effects(datum/strike/strike)
 
 	var/mob/living/user = strike.user
 	var/attack_damage = strike.get_final_damage()
@@ -148,7 +148,7 @@ var/global/list/sparring_attack_cache = list()
 				H.visible_message("<span class='danger'>[H] has been weakened!</span>")
 			H.apply_effect(3, WEAKEN, strike.blocked)
 
-/datum/unarmed_attack/proc/show_attack(var/datum/strike/strike)
+/datum/unarmed_attack/proc/show_attack(datum/strike/strike)
 	var/fallback = FALSE
 	if (ishuman(strike.target))
 		var/mob/living/carbon/human/H = strike.target
@@ -175,7 +175,7 @@ var/global/list/sparring_attack_cache = list()
 
 
 
-/datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/unarmed_attack/proc/handle_eye_attack(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/organ/internal/eyes/eyes = target.internal_organs_by_name[BP_EYES]
 	if(eyes)
 		eyes.take_internal_damage(rand(3,4), 1)
@@ -192,10 +192,10 @@ var/global/list/sparring_attack_cache = list()
 
 //Procs for attacking airlocks and structures
 //------------------------------------
-/mob/proc/force_door(var/obj/machinery/door/target)
+/mob/proc/force_door(obj/machinery/door/target)
 	return FALSE
 
-/mob/proc/strike_door(var/obj/machinery/door/target)
+/mob/proc/strike_door(obj/machinery/door/target)
 	return FALSE
 
 
@@ -214,7 +214,7 @@ var/global/list/sparring_attack_cache = list()
 
 
 
-/datum/unarmed_attack/proc/force_door(var/mob/living/carbon/human/user, obj/machinery/door/target)
+/datum/unarmed_attack/proc/force_door(mob/living/carbon/human/user, obj/machinery/door/target)
 
 	if (!airlock_force_power)
 		return FALSE
@@ -251,15 +251,15 @@ var/global/list/sparring_attack_cache = list()
 		target.break_open()
 
 //Return the force power here. this attack could modulate this value to make certain doors easier.
-/datum/unarmed_attack/proc/get_force_power(var/mob/living/carbon/human/user, obj/machinery/door/target)
+/datum/unarmed_attack/proc/get_force_power(mob/living/carbon/human/user, obj/machinery/door/target)
 	return airlock_force_power
 
 //Return the force speed here. It will probably be desireable to return half of the normal value if some needed limbs are missing
-/datum/unarmed_attack/proc/get_force_speed(var/mob/living/carbon/human/user, obj/machinery/door/target)
+/datum/unarmed_attack/proc/get_force_speed(mob/living/carbon/human/user, obj/machinery/door/target)
 	return airlock_force_speed
 
 
-/mob/proc/strike_structure(var/obj/structure/target)
+/mob/proc/strike_structure(obj/structure/target)
 	return
 
 /mob/living/carbon/human/strike_structure(var/obj/structure/target)

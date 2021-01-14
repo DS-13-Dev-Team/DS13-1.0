@@ -29,7 +29,7 @@
 /obj/item/weapon/storage/mirror/attack_hand(var/mob/living/carbon/human/user)
 	use_mirror(user)
 
-/obj/item/weapon/storage/mirror/proc/use_mirror(var/mob/living/carbon/human/user)
+/obj/item/weapon/storage/mirror/proc/use_mirror(mob/living/carbon/human/user)
 	if(shattered)
 		to_chat(user, "<spawn class='notice'>You enter the key combination for the style you want on the panel, but the nanomachines inside \the [src] refuse to come out.")
 		return

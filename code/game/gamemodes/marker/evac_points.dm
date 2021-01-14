@@ -61,7 +61,7 @@
 	return time_till_evac
 
 //proc used to adjust evac threshold points (e.g. admin verb adjustment).
-/datum/game_mode/marker/proc/adjust_evac_threshold(var/extra_time)
+/datum/game_mode/marker/proc/adjust_evac_threshold(extra_time)
 	if(extra_time > 0)
 		show_admin_warning_10 = TRUE
 		show_admin_warning_5 = TRUE

@@ -89,7 +89,7 @@
 /datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
 	return SPECIES_HUMAN
 
-/datum/species/alium/proc/adapt_to_atmosphere(var/datum/gas_mixture/atmosphere)
+/datum/species/alium/proc/adapt_to_atmosphere(datum/gas_mixture/atmosphere)
 	var/temp_comfort_shift = atmosphere.temperature - body_temperature
 
 	cold_level_1 += temp_comfort_shift

@@ -69,7 +69,7 @@
 	overlays = overlays_to_add
 	..()
 
-/obj/item/weapon/gun/magnetic/proc/show_ammo(var/mob/user)
+/obj/item/weapon/gun/magnetic/proc/show_ammo(mob/user)
 	if(loaded)
 		to_chat(user, "<span class='notice'>It has \a [loaded] loaded.</span>")
 

@@ -97,7 +97,7 @@
 	var/minimum_shots = 0
 	var/datum/click_handler/fullauto/CH = null
 
-/datum/firemode/automatic/update(var/force_state = null)
+/datum/firemode/automatic/update(force_state = null)
 	var/mob/living/L
 	if (gun && gun.is_held())
 		L = gun.loc

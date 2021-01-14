@@ -51,7 +51,7 @@
 	return 0
 
 
-/obj/item/organ/internal/lungs/proc/remove_oxygen_deprivation(var/amount)
+/obj/item/organ/internal/lungs/proc/remove_oxygen_deprivation(amount)
 	if (!oxygen_deprivation)
 		return 0
 	var/last_suffocation = oxygen_deprivation
@@ -60,7 +60,7 @@
 		owner.updatehealth()
 	return -(oxygen_deprivation - last_suffocation)
 
-/obj/item/organ/internal/lungs/proc/add_oxygen_deprivation(var/amount)
+/obj/item/organ/internal/lungs/proc/add_oxygen_deprivation(amount)
 	var/last_suffocation = oxygen_deprivation
 	oxygen_deprivation = min(species.total_health,max(0,oxygen_deprivation + amount))
 	if (owner)

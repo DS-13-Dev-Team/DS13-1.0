@@ -26,7 +26,7 @@
 	* item/afterattack(atom,user,adjacent,params) - used both ranged and adjacent
 	* mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
 */
-/mob/proc/ClickOn(var/atom/A, params)
+/mob/proc/ClickOn(atom/A, params)
 	if(world.time <= next_click) // Hard check, before anything else, to avoid crashing
 		return
 
@@ -65,7 +65,7 @@
 		return 1
 
 
-/mob/proc/LeftClickOn(var/atom/A, params)
+/mob/proc/LeftClickOn(atom/A, params)
 	var/datum/stack/click_handlers
 
 	click_handlers = src.GetClickHandlers()
@@ -162,13 +162,13 @@
 			trigger_aiming(TARGET_CAN_CLICK)
 	return 1
 
-/mob/proc/set_click_cooldown(var/timeout)
+/mob/proc/set_click_cooldown(timeout)
 	next_move = max(world.time + timeout, next_move)
 
-/mob/proc/add_click_cooldown(var/timeout)
+/mob/proc/add_click_cooldown(timeout)
 	next_move += timeout
 
-/mob/proc/reset_click_cooldown(var/timeout)
+/mob/proc/reset_click_cooldown(timeout)
 	next_move = world.time
 
 /mob/proc/canClick()
@@ -177,7 +177,7 @@
 	return 0
 
 // Default behavior: ignore double clicks, the second click that makes the doubleclick call already calls for a normal click
-/mob/proc/DblClickOn(var/atom/A, params)
+/mob/proc/DblClickOn(atom/A, params)
 	return
 
 /*
@@ -190,10 +190,10 @@
 	proximity_flag is not currently passed to attack_hand, and is instead used
 	in human click code to allow glove touches only at melee range.
 */
-/mob/proc/UnarmedAttack(var/atom/A, proximity_flag)
+/mob/proc/UnarmedAttack(atom/A, proximity_flag)
 	return
 
-/mob/living/UnarmedAttack(var/atom/A, proximity_flag)
+/mob/living/UnarmedAttack(atom/A, proximity_flag)
 
 	if(!ticker)
 		to_chat(src, "You cannot attack people before the game has started.")
@@ -212,7 +212,7 @@
 	for things like ranged glove touches, spitting alien acid/neurotoxin,
 	animals lunging, etc.
 */
-/mob/proc/RangedAttack(var/atom/A, params)
+/mob/proc/RangedAttack(atom/A, params)
 	if(!mutations.len) return
 	if((LASER in mutations) && a_intent == I_HURT)
 		LaserEyes(A) // moved into a proc below
@@ -225,14 +225,14 @@
 	Used when you are handcuffed and click things.
 	Not currently used by anything but could easily be.
 */
-/mob/proc/RestrainedClickOn(var/atom/A)
+/mob/proc/RestrainedClickOn(atom/A)
 	return
 
 /*
 	Middle click
 	Only used for swapping hands
 */
-/mob/proc/MiddleClickOn(var/atom/A, params)
+/mob/proc/MiddleClickOn(atom/A, params)
 	var/datum/stack/click_handlers
 
 	click_handlers = src.GetClickHandlers()
@@ -251,7 +251,7 @@
 	Right Click
 	Only used for cancelling placement click handler
 */
-/mob/proc/RightClickOn(var/atom/A, params)
+/mob/proc/RightClickOn(atom/A, params)
 	var/datum/stack/click_handlers
 
 	click_handlers = src.GetClickHandlers()
@@ -268,7 +268,7 @@
 
 // In case of use break glass
 /*
-/atom/proc/MiddleClick(var/mob/M as mob)
+/atom/proc/MiddleClick(mob/M as mob)
 	return
 */
 
@@ -277,7 +277,7 @@
 	For most mobs, examine.
 	This is overridden in ai.dm
 */
-/mob/proc/ShiftClickOn(var/atom/A, params)
+/mob/proc/ShiftClickOn(atom/A, params)
 	var/datum/stack/click_handlers
 
 	click_handlers = src.GetClickHandlers()
@@ -297,7 +297,7 @@
 	Ctrl click
 	For most objects, pull
 */
-/mob/proc/CtrlClickOn(var/atom/A, params)
+/mob/proc/CtrlClickOn(atom/A, params)
 	var/datum/stack/click_handlers
 
 	click_handlers = src.GetClickHandlers()
@@ -316,7 +316,7 @@
 	Alt click
 	Unused except for AI
 */
-/mob/proc/AltClickOn(var/atom/A, params)
+/mob/proc/AltClickOn(atom/A, params)
 	var/datum/stack/click_handlers
 
 	click_handlers = src.GetClickHandlers()
@@ -338,10 +338,10 @@
 
 
 
-/mob/proc/TurfAdjacent(var/turf/T)
+/mob/proc/TurfAdjacent(turf/T)
 	return T.AdjacentQuick(src)
 
-/mob/observer/ghost/TurfAdjacent(var/turf/T)
+/mob/observer/ghost/TurfAdjacent(turf/T)
 	if(!isturf(loc) || !client)
 		return FALSE
 	return z == T.z && (get_dist(loc, T) <= client.view)
@@ -350,7 +350,7 @@
 	Control+Shift click
 	Unused except for AI
 */
-/mob/proc/CtrlShiftClickOn(var/atom/A, params)
+/mob/proc/CtrlShiftClickOn(atom/A, params)
 	var/datum/stack/click_handlers
 
 	click_handlers = src.GetClickHandlers()
@@ -367,7 +367,7 @@
 /*
 	Control+Alt click
 */
-/mob/proc/CtrlAltClickOn(var/atom/A, params)
+/mob/proc/CtrlAltClickOn(atom/A, params)
 	var/datum/stack/click_handlers
 
 	click_handlers = src.GetClickHandlers()
@@ -424,7 +424,7 @@
 //Code supplied by Kaiochao
 	//Note: Rounding included to compensate for a byond bug in 513.1497.
 	//Without the rounding, cos(90) returns an erroneous value which breaks this proc
-/proc/target_in_frontal_arc(var/mob/user, atom/target, arc)
+/proc/target_in_frontal_arc(mob/user, atom/target, arc)
 	//You are allowed to click yourself and things in your own turf
 	if (get_turf(user) == get_turf(target))
 		return TRUE
@@ -440,7 +440,7 @@
 
 //Checks if target is within arc degrees either side of a specified direction vector from user. All parameters are mandatory
 //Rounding explained above
-/proc/target_in_arc(var/atom/origin, atom/target, vector2/direction, arc)
+/proc/target_in_arc(atom/origin, atom/target, vector2/direction, arc)
 	origin = get_turf(origin)
 	target = get_turf(target)
 	if (origin == target)

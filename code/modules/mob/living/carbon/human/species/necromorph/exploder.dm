@@ -240,7 +240,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 /*
 	Checks
 */
-/datum/species/necromorph/exploder/proc/can_explode(var/mob/living/carbon/human/H)
+/datum/species/necromorph/exploder/proc/can_explode(mob/living/carbon/human/H)
 	.=FALSE
 	var/obj/item/organ/external/hand/exploder_pustule/E = H.get_organ(BP_L_HAND)
 	if (QDELETED(E) || !istype(E) || E.is_stump() || E.exploded || E.owner != H)
@@ -332,7 +332,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 /*
 	Abilities
 */
-/atom/movable/proc/exploder_charge(var/mob/living/A)
+/atom/movable/proc/exploder_charge(mob/living/A)
 	set name = "Charge"
 	set category = "Abilities"
 

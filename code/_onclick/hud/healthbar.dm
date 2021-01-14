@@ -82,7 +82,7 @@
 		update(TRUE)
 
 
-/obj/screen/healthbar/proc/set_mob(var/mob/living/newmob)
+/obj/screen/healthbar/proc/set_mob(mob/living/newmob)
 	L = newmob
 	GLOB.updatehealth_event.register(L, src, /obj/screen/healthbar/proc/update)
 	L.hud_healthbar = src
@@ -99,7 +99,7 @@
 
 		set_size()
 
-/obj/screen/healthbar/proc/set_size(var/update = TRUE)
+/obj/screen/healthbar/proc/set_size(update = TRUE)
 	//Lets set the size
 
 
@@ -168,7 +168,7 @@
 
 
 
-/obj/screen/healthbar/proc/update(var/force_update = FALSE)
+/obj/screen/healthbar/proc/update(force_update = FALSE)
 	var/list/data = L.get_health_report()
 	var/max = data["max"]
 
@@ -255,7 +255,7 @@
 
 
 //Sets a new size in pixels
-/obj/screen/healthbar_component/proc/set_size(var/newsize)
+/obj/screen/healthbar_component/proc/set_size(newsize)
 	if (!newsize)
 		alpha = 0
 		return
@@ -454,7 +454,7 @@
 	return species.get_health_report(src)
 
 
-/datum/species/proc/get_health_report(var/mob/living/carbon/human/H)
+/datum/species/proc/get_health_report(mob/living/carbon/human/H)
 	return list ("max" = total_health, "damage" = 0, "blocked" = H.lasting_damage)
 
 /datum/species/necromorph/get_health_report(var/mob/living/carbon/human/H)

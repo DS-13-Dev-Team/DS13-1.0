@@ -8,11 +8,11 @@
 	if(. && power < power_min)
 		adjust_power(power_per_regen)
 
-/mob/living/deity/proc/adjust_power(var/amount)
+/mob/living/deity/proc/adjust_power(amount)
 	if(amount)
 		power += amount
 
-/mob/living/deity/proc/adjust_power_min(var/amount, silent = 0, msg)
+/mob/living/deity/proc/adjust_power_min(amount, silent = 0, msg)
 	if(amount)
 		power_min = max(initial(power_min), power_min + amount)
 		if(!silent)

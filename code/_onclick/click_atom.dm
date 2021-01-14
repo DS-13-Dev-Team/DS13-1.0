@@ -8,7 +8,7 @@
 	Note that this proc can be overridden, and is in the case of screen objects.
 */
 
-/atom/Click(var/location, control, params) // This is their reaction to being clicked on (standard proc)
+/atom/Click(location, control, params) // This is their reaction to being clicked on (standard proc)
 	var/datum/stack/click_handlers
 
 	if (usr)
@@ -22,7 +22,7 @@
 
 	.=..()
 
-/atom/DblClick(var/location, control, params)
+/atom/DblClick(location, control, params)
 	var/datum/stack/click_handlers
 
 	if (usr)
@@ -42,18 +42,18 @@
 	Click recieving base procs
 	Override these to do special stuff with an atom
 */
-/atom/proc/ShiftClick(var/mob/user)
+/atom/proc/ShiftClick(mob/user)
 	if(user.client && user.client.eye == user)
 		user.examinate(src)
 	return
 
 
-/atom/proc/CtrlClick(var/mob/user)
+/atom/proc/CtrlClick(mob/user)
 	return
 
 
 
-/atom/proc/AltClick(var/mob/user)
+/atom/proc/AltClick(mob/user)
 	var/turf/T = get_turf(src)
 	if(T && user.TurfAdjacent(T))
 		if(user.listed_turf == T)
@@ -65,10 +65,10 @@
 
 
 
-/atom/proc/CtrlShiftClick(var/mob/user)
+/atom/proc/CtrlShiftClick(mob/user)
 	return
 
-/atom/proc/CtrlAltClick(var/mob/user)
+/atom/proc/CtrlAltClick(mob/user)
 	return
 
 /*
@@ -76,6 +76,6 @@
 */
 
 
-/atom/movable/CtrlClick(var/mob/user)
+/atom/movable/CtrlClick(mob/user)
 	if(user.is_within_reach(src))
 		user.start_pulling(src)

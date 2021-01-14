@@ -221,7 +221,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/extinguisher/on_reagent_change()
 	return
 
-/obj/item/mecha_parts/mecha_equipment/tool/extinguisher/proc/do_spray(var/atom/Target)
+/obj/item/mecha_parts/mecha_equipment/tool/extinguisher/proc/do_spray(atom/Target)
 	var/direction = get_dir(chassis,Target)
 
 	var/turf/T = get_turf(Target)
@@ -713,7 +713,7 @@
 		..()
 		return
 
-	proc/get_power_channel(var/area/A)
+	proc/get_power_channel(area/A)
 		var/pow_chan
 		if(A)
 			for(var/c in use_channels)
@@ -836,7 +836,7 @@
 			occupant_message(message)
 		return
 
-	proc/load_fuel(var/obj/item/stack/material/P)
+	proc/load_fuel(obj/item/stack/material/P)
 		if(P.type == fuel.type && P.amount)
 			var/to_load = max(max_fuel - fuel.amount*fuel.perunit,0)
 			if(to_load)
@@ -1015,7 +1015,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/Exit(atom/movable/O)
 	return 0
 
-/obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/move_inside(var/mob/user)
+/obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/move_inside(mob/user)
 	if (chassis)
 		chassis.visible_message("<span class='notice'>[user] starts to climb into [chassis].</span>")
 
@@ -1210,7 +1210,7 @@
 		return "[output] \[Cable: [cable ? cable.amount : 0] m\][(cable && cable.amount) ? "- <a href='?src=\ref[src];toggle=1'>[!equip_ready?"Dea":"A"]ctivate</a>|<a href='?src=\ref[src];cut=1'>Cut</a>" : null]"
 	return
 
-/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/proc/load_cable(var/obj/item/stack/cable_coil/CC)
+/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/proc/load_cable(obj/item/stack/cable_coil/CC)
 	if(istype(CC) && CC.amount)
 		var/cur_amount = cable? cable.amount : 0
 		var/to_load = max(max_cable - cur_amount,0)
@@ -1242,14 +1242,14 @@
 /obj/item/mecha_parts/mecha_equipment/tool/cable_layer/proc/reset()
 	last_piece = null
 
-/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/proc/dismantleFloor(var/turf/new_turf)
+/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/proc/dismantleFloor(turf/new_turf)
 	if(istype(new_turf, /turf/simulated/floor))
 		var/turf/simulated/floor/T = new_turf
 		if(!T.is_plating())
 			T.make_plating(!(T.broken || T.burnt))
 	return new_turf.is_plating()
 
-/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/proc/layCable(var/turf/new_turf)
+/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/proc/layCable(turf/new_turf)
 	if(equip_ready || !istype(new_turf) || !dismantleFloor(new_turf))
 		return reset()
 	var/fdirn = turn(chassis.dir,180)

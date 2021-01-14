@@ -152,7 +152,7 @@
 
 
 //Assuming we're standing up, are we able to curl?
-/atom/movable/proc/can_curl(var/automatic)
+/atom/movable/proc/can_curl(automatic)
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
 	var/datum/extension/curl/E = get_extension(src, /datum/extension/curl)
 	if(istype(E))
@@ -179,7 +179,7 @@
 
 	return FALSE
 
-/atom/movable/proc/curl_ability(var/_automatic = FALSE, _force_time = 2 SECONDS, _animtime = 0.8 SECOND)
+/atom/movable/proc/curl_ability(_automatic = FALSE, _force_time = 2 SECONDS, _animtime = 0.8 SECOND)
 	//First of all, uncurling
 	if (can_uncurl())
 		var/datum/extension/curl/E = get_extension(src, /datum/extension/curl)

@@ -1,10 +1,10 @@
-/mob/proc/can_emote(var/emote_type)
+/mob/proc/can_emote(emote_type)
 	return (stat == CONSCIOUS)
 
 /mob/living/can_emote(var/emote_type)
 	return (..() && !(silent && emote_type == AUDIBLE_MESSAGE))
 
-/mob/proc/emote(var/act, m_type, message)
+/mob/proc/emote(act, m_type, message)
 	// s-s-snowflake
 	if(src.stat == DEAD && act != "deathgasp")
 		return
@@ -60,7 +60,7 @@
 		if (I.implanted)
 			I.trigger(act, src)
 
-/mob/proc/format_emote(var/source = null, message = null)
+/mob/proc/format_emote(source = null, message = null)
 	var/pretext
 	var/subtext
 	var/nametext
@@ -109,7 +109,7 @@
 
 	return pretext + nametext + subtext
 
-/mob/proc/custom_emote(var/m_type = VISIBLE_MESSAGE, message = null)
+/mob/proc/custom_emote(m_type = VISIBLE_MESSAGE, message = null)
 
 	if((usr && stat) || (!use_me && usr == src))
 		to_chat(src, "You are unable to emote.")

@@ -44,7 +44,7 @@
 		return fail_chance * 2 ** (factor*(SKILL_MIN - points))
 
 
-/mob/proc/get_skill_percentage_bonus(var/skill_path)
+/mob/proc/get_skill_percentage_bonus(skill_path)
 	//This gives a value in the range 1-5
 	var/points = get_skill_value(skill_path)
 

@@ -1,7 +1,7 @@
 /*
 	Helpers
 */
-/mob/proc/get_active_or_available_arm(var/messages = TRUE)
+/mob/proc/get_active_or_available_arm(messages = TRUE)
 	var/num_arms = 0
 	var/selected_arm
 	//Alright lets check our arm status first

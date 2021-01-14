@@ -228,7 +228,7 @@ var/list/mining_floors = list()
 	return O
 
 //The full dig var determines whether we're digging out the whole turf or just hitting it once
-/turf/simulated/mineral/proc/dig_with_tool(var/obj/item/I, mob/living/user, full_dig = null)
+/turf/simulated/mineral/proc/dig_with_tool(obj/item/I, mob/living/user, full_dig = null)
 	if (isnull(full_dig))
 		full_dig = TRUE
 		if (istype(I, /obj/item/weapon/tool/pickaxe))
@@ -259,7 +259,7 @@ var/list/mining_floors = list()
 		var/seconds_spent_digging = (0.75 * (world.time - start_time))*0.1
 		dig(dig_power * seconds_spent_digging)
 
-/turf/simulated/mineral/proc/dig(var/power, user, used_weapon, ignore_resistance = FALSE)
+/turf/simulated/mineral/proc/dig(power, user, used_weapon, ignore_resistance = FALSE)
 	take_damage(power, BRUTE, user, used_weapon, ignore_resistance)
 	update_icon()
 
@@ -288,7 +288,7 @@ var/list/mining_floors = list()
 		archaeo_overlay.rotate_random()
 
 
-/turf/simulated/mineral/proc/handle_finds(var/mob/user)
+/turf/simulated/mineral/proc/handle_finds(mob/user)
 	if (!LAZYLEN(finds))
 		return
 
@@ -309,7 +309,7 @@ var/list/mining_floors = list()
 			excavate_find(TRUE, F)
 
 
-/turf/simulated/mineral/proc/take_damage(var/amount, damtype = BRUTE, user, used_weapon, ignore_resistance = FALSE)
+/turf/simulated/mineral/proc/take_damage(amount, damtype = BRUTE, user, used_weapon, ignore_resistance = FALSE)
 	if (!ignore_resistance)
 		var/AP = 0
 		if (istype(used_weapon, /obj))
@@ -329,7 +329,7 @@ var/list/mining_floors = list()
 		update_icon()
 		return TRUE
 
-/turf/simulated/mineral/proc/zero_health(var/amount, damtype = BRUTE, user, used_weapon, ignore_resistance)
+/turf/simulated/mineral/proc/zero_health(amount, damtype = BRUTE, user, used_weapon, ignore_resistance)
 	finish_mining()
 
 /turf/simulated/mineral/proc/finish_mining()
@@ -366,7 +366,7 @@ var/list/mining_floors = list()
 
 
 
-/turf/simulated/mineral/proc/excavate_find(var/prob_clean = 0, datum/find/F)
+/turf/simulated/mineral/proc/excavate_find(prob_clean = 0, datum/find/F)
 
 	//many finds are ancient and thus very delicate - luckily there is a specialised energy suspension field which protects them when they're being extracted
 	if(prob(F.prob_delicate))
@@ -391,7 +391,7 @@ var/list/mining_floors = list()
 	update_archaeo_overlay()
 
 
-/turf/simulated/mineral/proc/artifact_debris(var/severity = 0)
+/turf/simulated/mineral/proc/artifact_debris(severity = 0)
 	//cael's patented random limited drop componentized loot system!
 	//sky's patented not-fucking-retarded overhaul!
 
@@ -556,7 +556,7 @@ var/list/mining_floors = list()
 	icon_state = "asteroid_dug"
 	return
 
-/turf/simulated/floor/asteroid/proc/updateMineralOverlays(var/update_neighbors)
+/turf/simulated/floor/asteroid/proc/updateMineralOverlays(update_neighbors)
 
 	overlays.Cut()
 

@@ -1,9 +1,9 @@
 //This is called in human_attackhand.dm
-/mob/living/carbon/human/proc/grab(var/mob/living/target)
+/mob/living/carbon/human/proc/grab(mob/living/target)
 	return species.attempt_grab(src, target)
 
 
-/datum/species/proc/attempt_grab(var/mob/living/carbon/human/grabber, atom/movable/target, grab_type)
+/datum/species/proc/attempt_grab(mob/living/carbon/human/grabber, atom/movable/target, grab_type)
 	grabber.visible_message("<span class='danger'>[grabber] attempted to grab \the [target]!</span>")
 	return grabber.make_grab(grabber, target, grab_type)
 
@@ -15,7 +15,7 @@
 	var/current_grab_type 	// What type of grab they use when they grab someone. This should be a typepath, an instance of it will be created
 
 
-/mob/living/carbon/human/proc/make_grab(var/mob/living/carbon/human/attacker, mob/living/victim, grab_tag)
+/mob/living/carbon/human/proc/make_grab(mob/living/carbon/human/attacker, mob/living/victim, grab_tag)
 	var/obj/item/grab/G
 	if(!grab_tag)
 		G = new attacker.current_grab_type(attacker, victim)
@@ -76,7 +76,7 @@
 */
 
 //Attempts to grab with any available arm
-/mob/living/carbon/human/proc/grab_with_any_limb(var/mob/living/target)
+/mob/living/carbon/human/proc/grab_with_any_limb(mob/living/target)
 	var/hands_tried = list()
 
 	//If we've already tried the currently selected hand, we have failed, quit

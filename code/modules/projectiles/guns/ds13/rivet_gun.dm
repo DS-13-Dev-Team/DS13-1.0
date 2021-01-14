@@ -52,7 +52,7 @@
 
 
 //Adds a rivet to our internal tracking list so we can detonate it later
-/obj/item/weapon/gun/projectile/rivet/proc/register_rivet(var/obj/item/embedded_rivet/ER)
+/obj/item/weapon/gun/projectile/rivet/proc/register_rivet(obj/item/embedded_rivet/ER)
 	//If we have too many, delete them
 	if (rivets.len >= max_rivets)
 
@@ -64,7 +64,7 @@
 	rivets += ER
 
 //Remove from our list, called when a rivet is deleted. We don't actually delete it here though
-/obj/item/weapon/gun/projectile/rivet/proc/unregister_rivet(var/obj/item/embedded_rivet/ER)
+/obj/item/weapon/gun/projectile/rivet/proc/unregister_rivet(obj/item/embedded_rivet/ER)
 	rivets -= ER
 	if (ER.rivetgun == src)
 		ER.rivetgun = null

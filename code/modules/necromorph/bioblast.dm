@@ -14,7 +14,7 @@ GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)
 /*
 	Range can be decimal, it is a circular value. Diagonals require 1.4 range
 */
-/proc/bioblast(var/atom/epicentre, power = 10, maxrange = 1, falloff_factor = 1)
+/proc/bioblast(atom/epicentre, power = 10, maxrange = 1, falloff_factor = 1)
 
 	epicentre = get_turf(epicentre)	//Lets make sure we do this on a turf
 	new /obj/effect/effect/bioblast(epicentre, 0.5 SECOND, maxrange)
@@ -37,7 +37,7 @@ GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)
 
 		T.bioblast_act(reduced_power)
 
-/datum/proc/bioblast_act(var/power = 1)
+/datum/proc/bioblast_act(power = 1)
 	return
 
 

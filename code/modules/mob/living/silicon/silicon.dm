@@ -102,7 +102,7 @@
 			Stun(2)
 		return
 
-/mob/living/silicon/proc/damage_mob(var/brute = 0, fire = 0, tox = 0)
+/mob/living/silicon/proc/damage_mob(brute = 0, fire = 0, tox = 0)
 	return
 
 /mob/living/silicon/is_advanced_tool_user()
@@ -121,10 +121,10 @@
 	updatehealth()
 	return 100
 
-/mob/living/silicon/apply_effect(var/effect = 0,var/effecttype = STUN, blocked = 0)
+/mob/living/silicon/apply_effect(var/effect = 0, effecttype = STUN, blocked = 0)
 	return 0//The only effect that can hit them atm is flashes and they still directly edit so this works for now
 
-/proc/islinked(var/mob/living/silicon/robot/bot, mob/living/silicon/ai/ai)
+/proc/islinked(mob/living/silicon/robot/bot, mob/living/silicon/ai/ai)
 	if(!istype(bot) || !istype(ai))
 		return 0
 	if (bot.connected_ai == ai)
@@ -279,7 +279,7 @@
 
 	updatehealth()
 
-/mob/living/silicon/proc/receive_alarm(var/datum/alarm_handler/alarm_handler, datum/alarm/alarm, was_raised)
+/mob/living/silicon/proc/receive_alarm(datum/alarm_handler/alarm_handler, datum/alarm/alarm, was_raised)
 	if(!next_alarm_notice)
 		next_alarm_notice = world.time + SecondsToTicks(10)
 
@@ -328,7 +328,7 @@
 			var/list/alarms = queued_alarms[AH]
 			alarms.Cut()
 
-/mob/living/silicon/proc/raised_alarm(var/datum/alarm/A)
+/mob/living/silicon/proc/raised_alarm(datum/alarm/A)
 	to_chat(src, "[A.alarm_name()]!")
 
 /mob/living/silicon/ai/raised_alarm(var/datum/alarm/A)

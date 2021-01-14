@@ -227,7 +227,7 @@
 	return slam_attack(A)
 
 
-/atom/movable/proc/can_slam(var/atom/target, error_messages = TRUE)
+/atom/movable/proc/can_slam(atom/target, error_messages = TRUE)
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
 	var/datum/extension/slam/ES = get_extension(src, /datum/extension/slam)
 	if(istype(ES))
@@ -258,7 +258,7 @@
 	.=..()
 
 
-/atom/movable/proc/slam_attack(var/atom/_target, _damage = 40, _down_factor = 2, _weaken_time = 3, _power = 0, _windup_time = 1.75 SECONDS, _cooldown = 10 SECONDS)
+/atom/movable/proc/slam_attack(atom/_target, _damage = 40, _down_factor = 2, _weaken_time = 3, _power = 0, _windup_time = 1.75 SECONDS, _cooldown = 10 SECONDS)
 	//First of all, lets check if we're currently able to charge
 	if (!can_slam(_target, TRUE))
 		return FALSE

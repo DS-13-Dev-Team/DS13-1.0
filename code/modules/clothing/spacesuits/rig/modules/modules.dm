@@ -166,7 +166,7 @@
 	. = ..()
 
 
-/obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, mob/user, feedback = FALSE, check_conflict = TRUE)
+/obj/item/rig_module/proc/can_install(obj/item/weapon/rig/rig, mob/user, feedback = FALSE, check_conflict = TRUE)
 	if (!redundant && check_conflict)
 		for (var/obj/item/rig_module/RM in rig.installed_modules)
 			//Exact duplicates not allowed
@@ -179,7 +179,7 @@
 	return TRUE
 
 //Returns any existing module which blocks the installation of this one
-/obj/item/rig_module/proc/get_conflicting(var/obj/item/weapon/rig/rig)
+/obj/item/rig_module/proc/get_conflicting(obj/item/weapon/rig/rig)
 	if (!redundant)
 		for (var/obj/item/rig_module/RM in rig.installed_modules)
 			//Exact duplicates not allowed
@@ -199,11 +199,11 @@
 
 	Return false to block the replacement and deny the installation of the sucessor
 */
-/obj/item/rig_module/proc/pre_replace(var/obj/item/weapon/rig/rig, obj/item/rig_module/successor)
+/obj/item/rig_module/proc/pre_replace(obj/item/weapon/rig/rig, obj/item/rig_module/successor)
 	return TRUE
 
 // Called when the module is installed into a suit.
-/obj/item/rig_module/proc/installed(var/obj/item/weapon/rig/new_holder)
+/obj/item/rig_module/proc/installed(obj/item/weapon/rig/new_holder)
 	holder = new_holder
 	return
 
@@ -277,7 +277,7 @@
 	return 1
 
 // Called when the module is uninstalled from a suit.
-/obj/item/rig_module/proc/uninstalled(var/obj/item/weapon/rig/former, mob/living/user)
+/obj/item/rig_module/proc/uninstalled(obj/item/weapon/rig/former, mob/living/user)
 	deactivate()
 	holder = null
 	return
@@ -291,7 +291,7 @@
 
 // Called by holder rigsuit attackby()
 // Checks if an item is usable with this module and handles it if it is
-/obj/item/rig_module/proc/accepts_item(var/obj/item/input_device)
+/obj/item/rig_module/proc/accepts_item(obj/item/input_device)
 	return 0
 
 /mob/living/carbon/human/Stat()
@@ -321,7 +321,7 @@
 	module = null
 	.=..()
 
-/datum/stat_rig_module/proc/AddHref(var/list/href_list)
+/datum/stat_rig_module/proc/AddHref(list/href_list)
 	return
 
 /datum/stat_rig_module/proc/CanUse()
@@ -404,14 +404,14 @@
 	return 0
 
 
-/obj/item/rig_module/proc/rig_equipped(var/mob/user, slot)
+/obj/item/rig_module/proc/rig_equipped(mob/user, slot)
 	return
 
-/obj/item/rig_module/proc/rig_unequipped(var/mob/user, slot)
+/obj/item/rig_module/proc/rig_unequipped(mob/user, slot)
 	return
 
 //Consumes power, returns true if it works
-/obj/item/rig_module/proc/use_power(var/cost)
+/obj/item/rig_module/proc/use_power(cost)
 	.=FALSE
 	if (holder && holder.cell)
 		if(holder.cell.check_charge(cost * CELLRATE))

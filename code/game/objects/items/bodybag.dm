@@ -74,7 +74,7 @@
 		return 1
 	return 0
 
-/obj/structure/closet/body_bag/proc/fold(var/user)
+/obj/structure/closet/body_bag/proc/fold(user)
 	if(!(ishuman(user) || isrobot(user)))	return 0
 	if(opened)	return 0
 	if(contents.len)	return 0

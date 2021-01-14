@@ -39,7 +39,7 @@
 			var/received_message = adm.receive_looc(C, key, message, "R")
 			receive_communication(C, adm, received_message)
 
-/client/proc/receive_looc(var/client/C, commkey, message, prefix)
+/client/proc/receive_looc(client/C, commkey, message, prefix)
 	var/mob/M = C.mob
 	var/display_name = isghost(M) ? commkey : M.name
 	var/admin_stuff = holder ? "/([commkey])" : ""

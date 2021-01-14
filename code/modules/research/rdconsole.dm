@@ -48,7 +48,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 	req_access = list(access_research)	//Data and setting manipulation requires scientist access.
 
-/obj/machinery/computer/rdconsole/proc/CallMaterialName(var/ID)
+/obj/machinery/computer/rdconsole/proc/CallMaterialName(ID)
 	var/return_name = ID
 	switch(return_name)
 		if("metal")
@@ -67,7 +67,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			return_name = MATERIAL_DIAMOND
 	return return_name
 
-/obj/machinery/computer/rdconsole/proc/CallReagentName(var/reagent_type)
+/obj/machinery/computer/rdconsole/proc/CallReagentName(reagent_type)
 	var/datum/reagent/R = reagent_type
 	return ispath(reagent_type, /datum/reagent) ? initial(R.name) : "Unknown"
 
@@ -89,7 +89,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 				D.linked_console = src
 	return
 
-/obj/machinery/computer/rdconsole/proc/add_ic_design(var/obj/item/device/electronic_assembly/assembly)
+/obj/machinery/computer/rdconsole/proc/add_ic_design(obj/item/device/electronic_assembly/assembly)
 	files.AddDesign2Known(new /datum/design/prefab(files,create_prefab_from_assembly(assembly)))
 
 /obj/machinery/computer/rdconsole/proc/griefProtection() //Have it automatically push research to the centcomm server so wild griffins can't fuck up R&D's work

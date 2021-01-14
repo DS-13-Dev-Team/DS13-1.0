@@ -194,11 +194,11 @@ obj/item/device/suit_sensor_jammer/ui_act(action, params)
 	update_icon()
 	return TRUE
 
-/obj/item/device/suit_sensor_jammer/proc/set_range(var/new_range)
+/obj/item/device/suit_sensor_jammer/proc/set_range(new_range)
 	range = Clamp(new_range, 0, JAMMER_MAX_RANGE) // 0 range still covers the current turf
 	return range != new_range
 
-/obj/item/device/suit_sensor_jammer/proc/set_method(var/suit_sensor_jammer_method/sjm)
+/obj/item/device/suit_sensor_jammer/proc/set_method(suit_sensor_jammer_method/sjm)
 	if(sjm == jammer_method)
 		return
 	if(active)
@@ -206,7 +206,7 @@ obj/item/device/suit_sensor_jammer/ui_act(action, params)
 		sjm.enable()
 	jammer_method = sjm
 
-/obj/item/device/suit_sensor_jammer/proc/may_process_crew_data(var/mob/living/carbon/human/H, obj/item/clothing/under/C, turf/pos)
+/obj/item/device/suit_sensor_jammer/proc/may_process_crew_data(mob/living/carbon/human/H, obj/item/clothing/under/C, turf/pos)
 	if(!pos)
 		return FALSE
 	var/turf/T = get_turf(src)

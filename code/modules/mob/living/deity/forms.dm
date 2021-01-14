@@ -31,14 +31,14 @@ Each plays slightly different and has different challenges/benefits
 		D.set_items(complete_items)
 		items.Cut()
 
-/datum/god_form/proc/sync_structure(var/obj/O)
+/datum/god_form/proc/sync_structure(obj/O)
 	var/list/svars = buildables[O.type]
 	if(!svars)
 		return
 	for(var/V in svars)
 		O.vars[V] = svars[V]
 
-/datum/god_form/proc/take_charge(var/mob/living/user, charge)
+/datum/god_form/proc/take_charge(mob/living/user, charge)
 	return 1
 
 /datum/god_form/Destroy()

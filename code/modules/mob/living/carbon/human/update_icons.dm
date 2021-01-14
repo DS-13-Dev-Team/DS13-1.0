@@ -251,7 +251,7 @@ var/global/list/damage_icon_parts = list()
 		queue_icon_update()
 
 //BASE MOB SPRITE
-/mob/living/carbon/human/proc/update_body(var/update_icons=1)
+/mob/living/carbon/human/proc/update_body(update_icons=1)
 
 	//Maybe we were just gibbed
 	if (QDELETED(src))
@@ -385,7 +385,7 @@ var/global/list/damage_icon_parts = list()
 
 //UNDERWEAR OVERLAY
 
-/mob/living/carbon/human/proc/update_underwear(var/update_icons=1)
+/mob/living/carbon/human/proc/update_underwear(update_icons=1)
 	overlays_standing[UNDERWEAR_LAYER] = list()
 	for(var/entry in worn_underwear)
 		var/obj/item/underwear/UW = entry
@@ -400,7 +400,7 @@ var/global/list/damage_icon_parts = list()
 		queue_icon_update()
 
 //HAIR OVERLAY
-/mob/living/carbon/human/proc/update_hair(var/update_icons=1)
+/mob/living/carbon/human/proc/update_hair(update_icons=1)
 	//Reset our hair
 	overlays_standing[HAIR_LAYER]	= null
 
@@ -421,7 +421,7 @@ var/global/list/damage_icon_parts = list()
 	if(update_icons)
 		queue_icon_update()
 
-/mob/living/carbon/human/proc/update_skin(var/update_icons=1)
+/mob/living/carbon/human/proc/update_skin(update_icons=1)
 	overlays_standing[SKIN_LAYER] = species.update_skin(src)
 	if(update_icons)
 		queue_icon_update()
@@ -678,7 +678,7 @@ var/global/list/damage_icon_parts = list()
 	if(update_icons)
 		queue_icon_update()
 
-/mob/living/carbon/human/proc/update_tail_showing(var/update_icons=1)
+/mob/living/carbon/human/proc/update_tail_showing(update_icons=1)
 	overlays_standing[TAIL_LAYER] = null
 
 	var/species_tail = species.get_tail(src)
@@ -711,7 +711,7 @@ var/global/list/damage_icon_parts = list()
 	return tail_icon
 
 
-/mob/living/carbon/human/proc/set_tail_state(var/t_state)
+/mob/living/carbon/human/proc/set_tail_state(t_state)
 	var/image/tail_overlay = overlays_standing[TAIL_LAYER]
 
 	if(tail_overlay && species.get_tail_animation(src))
@@ -721,7 +721,7 @@ var/global/list/damage_icon_parts = list()
 
 //Not really once, since BYOND can't do that.
 //Update this if the ability to flick() images or make looping animation start at the first frame is ever added.
-/mob/living/carbon/human/proc/animate_tail_once(var/update_icons=1)
+/mob/living/carbon/human/proc/animate_tail_once(update_icons=1)
 	var/t_state = "[species.get_tail(src)]_once"
 
 	var/image/tail_overlay = overlays_standing[TAIL_LAYER]
@@ -738,19 +738,19 @@ var/global/list/damage_icon_parts = list()
 	if(update_icons)
 		queue_icon_update()
 
-/mob/living/carbon/human/proc/animate_tail_start(var/update_icons=1)
+/mob/living/carbon/human/proc/animate_tail_start(update_icons=1)
 	set_tail_state("[species.get_tail(src)]_slow[rand(0,9)]")
 
 	if(update_icons)
 		queue_icon_update()
 
-/mob/living/carbon/human/proc/animate_tail_fast(var/update_icons=1)
+/mob/living/carbon/human/proc/animate_tail_fast(update_icons=1)
 	set_tail_state("[species.get_tail(src)]_loop[rand(0,9)]")
 
 	if(update_icons)
 		queue_icon_update()
 
-/mob/living/carbon/human/proc/animate_tail_reset(var/update_icons=1)
+/mob/living/carbon/human/proc/animate_tail_reset(update_icons=1)
 	if(stat != DEAD)
 		set_tail_state("[species.get_tail(src)]_idle[rand(0,9)]")
 	else
@@ -759,7 +759,7 @@ var/global/list/damage_icon_parts = list()
 	if(update_icons)
 		queue_icon_update()
 
-/mob/living/carbon/human/proc/animate_tail_stop(var/update_icons=1)
+/mob/living/carbon/human/proc/animate_tail_stop(update_icons=1)
 	set_tail_state("[species.get_tail(src)]_static")
 
 	if(update_icons)
@@ -768,7 +768,7 @@ var/global/list/damage_icon_parts = list()
 
 //Adds a collar overlay above the helmet layer if the suit has one
 //	Suit needs an identically named sprite in icons/mob/collar.dmi
-/mob/living/carbon/human/proc/update_collar(var/update_icons=1)
+/mob/living/carbon/human/proc/update_collar(update_icons=1)
 	if(istype(wear_suit,/obj/item/clothing/suit))
 		var/obj/item/clothing/suit/S = wear_suit
 		overlays_standing[COLLAR_LAYER]	= S.get_collar()
@@ -787,7 +787,7 @@ var/global/list/damage_icon_parts = list()
 	if(update_icons)
 		queue_icon_update()
 
-/mob/living/carbon/human/proc/update_surgery(var/update_icons=1)
+/mob/living/carbon/human/proc/update_surgery(update_icons=1)
 	overlays_standing[SURGERY_LEVEL] = null
 	var/image/total = new
 	for(var/obj/item/organ/external/E in organs)

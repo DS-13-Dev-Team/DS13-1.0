@@ -21,7 +21,7 @@
 	if(Adjacent(user))
 		release()
 
-/obj/structure/anomaly_container/proc/contain(var/obj/machinery/artifact/artifact)
+/obj/structure/anomaly_container/proc/contain(obj/machinery/artifact/artifact)
 	if(contained)
 		return
 	contained = artifact

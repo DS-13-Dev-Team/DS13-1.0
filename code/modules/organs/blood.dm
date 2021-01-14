@@ -36,7 +36,7 @@
 			B.color = B.data["blood_colour"]
 
 //Makes a blood drop, leaking amt units of blood from the mob
-/mob/living/carbon/human/proc/drip(var/amt, tar = src, ddir)
+/mob/living/carbon/human/proc/drip(amt, tar = src, ddir)
 	if(remove_blood(amt))
 		if(bloodstr.total_volume)
 			var/chem_share = round(0.3 * amt * (bloodstr.total_volume/vessel.total_volume), 0.01)
@@ -46,7 +46,7 @@
 	return 0
 
 #define BLOOD_SPRAY_DISTANCE 2
-/mob/living/carbon/human/proc/blood_squirt(var/amt, turf/sprayloc)
+/mob/living/carbon/human/proc/blood_squirt(amt, turf/sprayloc)
 	if(amt <= 0 || !istype(sprayloc))
 		return
 	var/spraydir = pick(GLOB.alldirs)
@@ -93,7 +93,7 @@
 	return bled
 #undef BLOOD_SPRAY_DISTANCE
 
-/mob/living/carbon/human/proc/remove_blood(var/amt)
+/mob/living/carbon/human/proc/remove_blood(amt)
 	if(!should_have_organ(BP_HEART)) //TODO: Make drips come from the reagents instead.
 		return 0
 	if(!amt)
@@ -136,7 +136,7 @@
 	return 1
 
 //Transfers blood from container ot vessels
-/mob/living/carbon/proc/inject_blood(var/datum/reagent/blood/injected, amount)
+/mob/living/carbon/proc/inject_blood(datum/reagent/blood/injected, amount)
 	if (!injected || !istype(injected))
 		return
 	var/list/sniffles = virus_copylist(injected.data["virus2"])
@@ -198,7 +198,7 @@
 		//AB is a universal receiver.
 	return 0
 
-/mob/living/carbon/human/proc/regenerate_blood(var/amount, volume_scale = TRUE)
+/mob/living/carbon/human/proc/regenerate_blood(amount, volume_scale = TRUE)
 	amount *= (species.blood_volume / SPECIES_BLOOD_DEFAULT)
 	var/blood_volume_raw = vessel.get_reagent_amount(/datum/reagent/blood)
 	amount = max(0,min(amount, species.blood_volume - blood_volume_raw))
@@ -209,7 +209,7 @@
 			vessel.update_total()
 	return amount
 
-proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spray_dir)
+proc/blood_splatter(target, datum/reagent/blood/source, large, spray_dir)
 
 	var/obj/effect/decal/cleanable/blood/B
 	var/decal_type = /obj/effect/decal/cleanable/blood/splatter

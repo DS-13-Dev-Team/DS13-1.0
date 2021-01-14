@@ -149,7 +149,7 @@
 					return 1
 	return 0
 
-/datum/grab/normal/proc/attack_eye(var/obj/item/grab/G)
+/datum/grab/normal/proc/attack_eye(obj/item/grab/G)
 	var/mob/living/carbon/human/attacker = G.assailant
 	var/mob/living/carbon/human/target = G.affecting
 
@@ -170,7 +170,7 @@
 	attack.handle_eye_attack(attacker, target)
 	return 1
 
-/datum/grab/normal/proc/headbutt(var/obj/item/grab/G)
+/datum/grab/normal/proc/headbutt(obj/item/grab/G)
 	var/mob/living/carbon/human/attacker = G.assailant
 	var/mob/living/carbon/human/target = G.affecting
 
@@ -248,7 +248,7 @@
 
 
 
-/datum/grab/normal/proc/attack_throat(var/obj/item/grab/G, obj/item/W, mob/living/carbon/human/user)
+/datum/grab/normal/proc/attack_throat(obj/item/grab/G, obj/item/W, mob/living/carbon/human/user)
 	var/mob/living/carbon/human/affecting = G.affecting
 
 	if(user.a_intent != I_HURT)
@@ -290,7 +290,7 @@
 	admin_attack_log(user, src, "Knifed their victim", "Was knifed", "knifed")
 	return 1
 
-/datum/grab/normal/proc/attack_tendons(var/obj/item/grab/G, obj/item/W, mob/living/carbon/human/user, target_zone)
+/datum/grab/normal/proc/attack_tendons(obj/item/grab/G, obj/item/W, mob/living/carbon/human/user, target_zone)
 	var/mob/living/carbon/human/affecting = G.affecting
 
 	if(!user.skill_check(SKILL_COMBAT, SKILL_ADEPT))

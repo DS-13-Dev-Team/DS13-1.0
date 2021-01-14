@@ -109,7 +109,7 @@
 		filling.color = reagents.get_color()
 		overlays += filling
 
-/obj/item/weapon/reagent_containers/syringe/proc/handleTarget(var/atom/target, mob/user)
+/obj/item/weapon/reagent_containers/syringe/proc/handleTarget(atom/target, mob/user)
 	switch(mode)
 		if(SYRINGE_DRAW)
 			drawReagents(target, user)
@@ -117,7 +117,7 @@
 		if(SYRINGE_INJECT)
 			injectReagents(target, user)
 
-/obj/item/weapon/reagent_containers/syringe/proc/drawReagents(var/atom/target, mob/user)
+/obj/item/weapon/reagent_containers/syringe/proc/drawReagents(atom/target, mob/user)
 	if(!reagents.get_free_space())
 		to_chat(user, "<span class='warning'>The syringe is full.</span>")
 		mode = SYRINGE_INJECT
@@ -187,7 +187,7 @@
 		mode = SYRINGE_INJECT
 		update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/proc/injectReagents(var/atom/target, mob/user)
+/obj/item/weapon/reagent_containers/syringe/proc/injectReagents(atom/target, mob/user)
 	if(ismob(target) && !user.skill_check(SKILL_MEDICAL, SKILL_BASIC))
 		syringestab(target, user)
 
@@ -215,14 +215,14 @@
 		mode = SYRINGE_DRAW
 		update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/proc/handleBodyBag(var/obj/structure/closet/body_bag/bag, mob/living/carbon/user)
+/obj/item/weapon/reagent_containers/syringe/proc/handleBodyBag(obj/structure/closet/body_bag/bag, mob/living/carbon/user)
 	if(bag.opened || !bag.contains_body)
 		return
 
 	var/mob/living/L = locate() in bag
 	injectMob(L, user, bag)
 
-/obj/item/weapon/reagent_containers/syringe/proc/injectMob(var/mob/living/carbon/target, mob/living/carbon/user, atom/trackTarget)
+/obj/item/weapon/reagent_containers/syringe/proc/injectMob(mob/living/carbon/target, mob/living/carbon/user, atom/trackTarget)
 	if(!trackTarget)
 		trackTarget = target
 
@@ -257,7 +257,7 @@
 		mode = SYRINGE_DRAW
 		update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/proc/syringestab(var/mob/living/carbon/target, mob/living/carbon/user)
+/obj/item/weapon/reagent_containers/syringe/proc/syringestab(mob/living/carbon/target, mob/living/carbon/user)
 
 	if(istype(target, /mob/living/carbon/human))
 

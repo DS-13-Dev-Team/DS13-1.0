@@ -21,7 +21,7 @@ AI MODULES
 	origin_tech = list(TECH_DATA = 3)
 	var/datum/ai_laws/laws = null
 
-/obj/item/weapon/aiModule/proc/install(var/obj/machinery/computer/C)
+/obj/item/weapon/aiModule/proc/install(obj/machinery/computer/C)
 	if (istype(C, /obj/machinery/computer/aiupload))
 		var/obj/machinery/computer/aiupload/comp = C
 		if(comp.stat & NOPOWER)
@@ -74,7 +74,7 @@ AI MODULES
 			to_chat(usr, "Upload complete. The robot's laws have been modified.")
 
 
-/obj/item/weapon/aiModule/proc/transmitInstructions(var/mob/living/silicon/ai/target, mob/sender)
+/obj/item/weapon/aiModule/proc/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
 	log_law_changes(target, sender)
 
 	if(laws)
@@ -84,12 +84,12 @@ AI MODULES
 	to_chat(target, "\The [sender] has uploaded a change to the laws you must follow, using \an [src]. From now on: ")
 	target.show_laws()
 
-/obj/item/weapon/aiModule/proc/log_law_changes(var/mob/living/silicon/ai/target, mob/sender)
+/obj/item/weapon/aiModule/proc/log_law_changes(mob/living/silicon/ai/target, mob/sender)
 	var/time = time2text(world.realtime,"hh:mm:ss")
 	GLOB.lawchanges.Add("[time] <B>:</B> [sender.name]([sender.key]) used [src.name] on [target.name]([target.key])")
 	log_and_message_admins("used [src.name] on [target.name]([target.key])")
 
-/obj/item/weapon/aiModule/proc/addAdditionalLaws(var/mob/living/silicon/ai/target, mob/sender)
+/obj/item/weapon/aiModule/proc/addAdditionalLaws(mob/living/silicon/ai/target, mob/sender)
 
 
 /******************** Modules ********************/

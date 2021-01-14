@@ -78,7 +78,7 @@
 			return ..()
 		return 1
 
-/obj/item/weapon/tool/tape_roll/proc/stick(var/obj/item/weapon/W, mob/user)
+/obj/item/weapon/tool/tape_roll/proc/stick(obj/item/weapon/W, mob/user)
 	if(!istype(W, /obj/item/weapon/paper) || !user.unEquip(W))
 		return
 	var/obj/item/weapon/ducttape/tape = new(get_turf(src))
@@ -106,7 +106,7 @@
 /obj/item/weapon/ducttape/examine(mob/user)
 	return stuck ? stuck.examine(user) : ..()
 
-/obj/item/weapon/ducttape/proc/attach(var/obj/item/weapon/W)
+/obj/item/weapon/ducttape/proc/attach(obj/item/weapon/W)
 	stuck = W
 	anchored = TRUE
 	W.forceMove(src)

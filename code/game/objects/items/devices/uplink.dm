@@ -72,7 +72,7 @@
 		update_nano_data()
 		SSnano.update_uis(src)
 
-/obj/item/device/uplink/proc/is_improper_item(var/datum/uplink_item/new_discount_item, discount_amount)
+/obj/item/device/uplink/proc/is_improper_item(datum/uplink_item/new_discount_item, discount_amount)
 	if(!new_discount_item)
 		return FALSE
 
@@ -88,7 +88,7 @@
 
 	return FALSE
 
-/obj/item/device/uplink/proc/get_item_cost(var/item_type, item_cost)
+/obj/item/device/uplink/proc/get_item_cost(item_type, item_cost)
 	return item_type == discount_item ? max(1, round(item_cost*discount_amount)) : item_cost
 
 // Toggles the uplink on and off. Normally this will bypass the item's normal functions and go to the uplink menu, if activated.

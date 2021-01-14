@@ -222,7 +222,7 @@ GLOBAL_DATUM_INIT(raiders, /datum/antagonist/raider, new)
 
 	return 1
 
-/datum/antagonist/raider/proc/equip_weapons(var/mob/living/carbon/human/player)
+/datum/antagonist/raider/proc/equip_weapons(mob/living/carbon/human/player)
 	var/new_gun = pick(raider_guns)
 	var/new_holster = pick(raider_holster) //raiders don't start with any backpacks, so let's be nice and give them a holster if they can use it.
 	var/turf/T = get_turf(player)
@@ -263,7 +263,7 @@ GLOBAL_DATUM_INIT(raiders, /datum/antagonist/raider, new)
 		else
 			player.put_in_any_hand_if_possible(holster)
 
-/datum/antagonist/raider/proc/equip_ammo(var/mob/living/carbon/human/player, obj/item/weapon/gun/gun)
+/datum/antagonist/raider/proc/equip_ammo(mob/living/carbon/human/player, obj/item/weapon/gun/gun)
 	if(istype(gun, /obj/item/weapon/gun/projectile))
 		var/obj/item/weapon/gun/projectile/bullet_thrower = gun
 		if(bullet_thrower.magazine_type)

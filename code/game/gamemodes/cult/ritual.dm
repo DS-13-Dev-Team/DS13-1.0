@@ -29,7 +29,7 @@
 		A.reagents.del_reagent(/datum/reagent/water/holywater)
 		A.reagents.add_reagent(/datum/reagent/water, holy2water)
 
-/mob/proc/make_rune(var/rune, cost = 5, tome_required = 0)
+/mob/proc/make_rune(rune, cost = 5, tome_required = 0)
 	var/has_tome = 0
 	var/has_robes = 0
 	var/cult_ground = 0
@@ -104,7 +104,7 @@
 		return
 	..()
 
-/mob/proc/pay_for_rune(var/blood)
+/mob/proc/pay_for_rune(blood)
 	return
 
 /mob/living/carbon/human/pay_for_rune(var/blood)

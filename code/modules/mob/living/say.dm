@@ -54,7 +54,7 @@ var/list/department_radio_keys = list(
 
 
 var/list/channel_to_radio_key = new
-proc/get_radio_key_from_channel(var/channel)
+proc/get_radio_key_from_channel(channel)
 	var/key = channel_to_radio_key[channel]
 	if(!key)
 		for(var/radio_key in department_radio_keys)
@@ -93,7 +93,7 @@ proc/get_radio_key_from_channel(var/channel)
 
 //Takes a list of the form list(message, verb, whispering) and modifies it as needed
 //Returns 1 if a speech problem was applied, 0 otherwise
-/mob/living/proc/handle_speech_problems(var/list/message_data)
+/mob/living/proc/handle_speech_problems(list/message_data)
 	var/message = message_data[1]
 	var/verb = message_data[2]
 
@@ -298,7 +298,7 @@ proc/get_radio_key_from_channel(var/channel)
 		log_say("[name]/[key] : [message]")
 	return 1
 
-/mob/living/proc/say_signlang(var/message, verb="gestures", datum/language/language)
+/mob/living/proc/say_signlang(message, verb="gestures", datum/language/language)
 	for (var/mob/O in viewers(src, null))
 		O.hear_signlang(message, verb, language, src)
 	return 1

@@ -1,4 +1,4 @@
-/atom/proc/spray_ability(var/subtype = /datum/extension/spray, atom/target, angle, length, stun, duration, cooldown, windup, mob/override_user = null, list/extra_data)
+/atom/proc/spray_ability(subtype = /datum/extension/spray, atom/target, angle, length, stun, duration, cooldown, windup, mob/override_user = null, list/extra_data)
 	if (!can_spray())
 		return null
 	var/list/arguments = list(src, subtype, target, angle, length, stun, duration, cooldown, override_user, extra_data)
@@ -86,10 +86,10 @@ Vars/
 	handle_extra_data(extra_data)
 	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/start), 0)
 
-/datum/extension/spray/proc/handle_extra_data(var/list/data)
+/datum/extension/spray/proc/handle_extra_data(list/data)
 	.=..()
 
-/datum/extension/spray/proc/set_target_loc(var/vector2/newloc, target_object)
+/datum/extension/spray/proc/set_target_loc(vector2/newloc, target_object)
 	target = newloc
 	if (target_object)
 		target_atom = target_object
@@ -203,7 +203,7 @@ Vars/
 	Safety Checks
 ************************/
 //Access Proc
-/atom/proc/can_spray(var/error_messages = TRUE)
+/atom/proc/can_spray(error_messages = TRUE)
 	var/datum/extension/spray/E = get_extension(src, /datum/extension/spray)
 	if(istype(E))
 		if (error_messages)

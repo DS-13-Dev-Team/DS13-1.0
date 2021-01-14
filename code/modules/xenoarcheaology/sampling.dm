@@ -24,7 +24,7 @@
 /datum/geosample/New(var/turf/simulated/mineral/container)
 	UpdateTurf(container)
 
-/datum/geosample/proc/UpdateTurf(var/turf/simulated/mineral/container)
+/datum/geosample/proc/UpdateTurf(turf/simulated/mineral/container)
 	if(!istype(container))
 		return
 
@@ -61,7 +61,7 @@
 	for(var/carrier in find_presence)
 		find_presence[carrier] = find_presence[carrier] / total_presence
 
-/datum/geosample/proc/UpdateNearbyArtifactInfo(var/turf/simulated/mineral/container)
+/datum/geosample/proc/UpdateNearbyArtifactInfo(turf/simulated/mineral/container)
 	if(!container || !istype(container))
 		return
 
@@ -108,7 +108,7 @@
 	else
 		return ..()
 
-/obj/item/device/core_sampler/proc/sample_item(var/item_to_sample, mob/user)
+/obj/item/device/core_sampler/proc/sample_item(item_to_sample, mob/user)
 	var/datum/geosample/geo_data
 
 	if(istype(item_to_sample, /turf/simulated/mineral))

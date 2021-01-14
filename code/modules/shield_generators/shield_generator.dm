@@ -315,7 +315,7 @@
 
 
 // Takes specific amount of damage
-/obj/machinery/power/shield_generator/proc/take_damage(var/damage, shield_damtype)
+/obj/machinery/power/shield_generator/proc/take_damage(damage, shield_damtype)
 	var/energy_to_use = damage * ENERGY_PER_HP
 	if(check_flag(MODEFLAG_MODULATE))
 		mitigation_em -= MITIGATION_HIT_LOSS
@@ -354,11 +354,11 @@
 
 
 // Checks whether specific flags are enabled
-/obj/machinery/power/shield_generator/proc/check_flag(var/flag)
+/obj/machinery/power/shield_generator/proc/check_flag(flag)
 	return (shield_modes & flag)
 
 
-/obj/machinery/power/shield_generator/proc/toggle_flag(var/flag)
+/obj/machinery/power/shield_generator/proc/toggle_flag(flag)
 	shield_modes ^= flag
 	update_upkeep_multiplier()
 	for(var/obj/effect/shield/S in field_segments)

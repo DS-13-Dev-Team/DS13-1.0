@@ -105,7 +105,7 @@
 
 	return formatted
 
-/datum/nano_module/program/card_mod/proc/get_accesses(var/is_centcom = 0)
+/datum/nano_module/program/card_mod/proc/get_accesses(is_centcom = 0)
 	return null
 
 
@@ -240,8 +240,8 @@
 	SSnano.update_uis(NM)
 	return 1
 
-/datum/computer_file/program/card_mod/proc/remove_nt_access(var/obj/item/weapon/card/id/id_card)
+/datum/computer_file/program/card_mod/proc/remove_nt_access(obj/item/weapon/card/id/id_card)
 	id_card.access -= get_access_ids(ACCESS_TYPE_STATION|ACCESS_TYPE_CENTCOM)
 
-/datum/computer_file/program/card_mod/proc/apply_access(var/obj/item/weapon/card/id/id_card, list/accesses)
+/datum/computer_file/program/card_mod/proc/apply_access(obj/item/weapon/card/id/id_card, list/accesses)
 	id_card.access |= accesses

@@ -74,7 +74,7 @@ var/global/list/stool_cache = list() //haha stool
 		SetName("[material.display_name] [initial(name)]")
 		desc = "A stool. Apply butt with care. It's made of [material.use_name]."
 
-/obj/item/weapon/stool/proc/add_padding(var/padding_type)
+/obj/item/weapon/stool/proc/add_padding(padding_type)
 	padding_material = get_material_by_name(padding_type)
 	update_icon()
 

@@ -1,5 +1,5 @@
 //Creates a crafting step of the appropriate subtype, depending on a flag
-/datum/craft_recipe/proc/create_step_from_params(var/list/params)
+/datum/craft_recipe/proc/create_step_from_params(list/params)
 	var/steptype = params[1]
 	switch (steptype)
 		if (CRAFT_OBJECT)
@@ -63,7 +63,7 @@
 		var/atom/A = result
 		.+="[initial(A.desc)]"
 
-/datum/craft_recipe/proc/get_step_descriptions(var/skip = 0)
+/datum/craft_recipe/proc/get_step_descriptions(skip = 0)
 	var/list/data = list()
 	for(var/datum/craft_step/CS in passive_steps)
 		data += list(list("icon" = getAtomCacheFilename(CS.icon_type), "desc" = CS.desc))

@@ -72,7 +72,7 @@
 	if(user.Adjacent(src))
 		attack_hand(user)
 
-/obj/machinery/power/supply_beacon/proc/activate(var/mob/user)
+/obj/machinery/power/supply_beacon/proc/activate(mob/user)
 	if(expended)
 		return
 	if(surplus() < 500)
@@ -83,7 +83,7 @@
 	use_power = 1
 	if(user) to_chat(user, "<span class='notice'>You activate the beacon. The supply drop will be dispatched soon.</span>")
 
-/obj/machinery/power/supply_beacon/proc/deactivate(var/mob/user, permanent)
+/obj/machinery/power/supply_beacon/proc/deactivate(mob/user, permanent)
 	if(permanent)
 		expended = 1
 		icon_state = "beacon_depleted"

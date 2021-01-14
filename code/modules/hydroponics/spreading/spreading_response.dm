@@ -23,7 +23,7 @@
 	if(isliving(O))
 		trodden_on(O)
 
-/obj/effect/vine/proc/trodden_on(var/mob/living/victim)
+/obj/effect/vine/proc/trodden_on(mob/living/victim)
 	wake_neighbors()
 	if(!is_mature())
 		return

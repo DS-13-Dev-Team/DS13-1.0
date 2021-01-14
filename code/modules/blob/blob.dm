@@ -48,7 +48,7 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/proc/take_damage(var/damage)
+/obj/effect/blob/proc/take_damage(damage)
 	health -= damage
 	if(health < 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -60,7 +60,7 @@
 	health = min(health + regen_rate, max_health)
 	update_icon()
 
-/obj/effect/blob/proc/expand(var/turf/T)
+/obj/effect/blob/proc/expand(turf/T)
 	if(istype(T, /turf/unsimulated/) || istype(T, /turf/space) || (istype(T, /turf/simulated/mineral) && T.density))
 		return
 	if(istype(T, /turf/simulated/wall))
@@ -120,7 +120,7 @@
 	else
 		new expandType(T, min(health, 30))
 
-/obj/effect/blob/proc/pulse(var/forceLeft, list/dirs)
+/obj/effect/blob/proc/pulse(forceLeft, list/dirs)
 	regen()
 	sleep(4)
 	var/pushDir = pick(dirs)

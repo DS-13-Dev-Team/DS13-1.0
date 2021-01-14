@@ -14,7 +14,7 @@
 /obj/machinery/fusion_fuel_compressor/attackby(var/obj/item/thing, mob/user)
 	return do_fuel_compression(thing, user) || ..()
 
-/obj/machinery/fusion_fuel_compressor/proc/do_fuel_compression(var/obj/item/thing, mob/user)
+/obj/machinery/fusion_fuel_compressor/proc/do_fuel_compression(obj/item/thing, mob/user)
 	if(istype(thing) && thing.reagents && thing.reagents.total_volume && thing.is_open_container())
 		if(thing.reagents.reagent_list.len > 1)
 			to_chat(user, "<span class='warning'>The contents of \the [thing] are impure and cannot be used as fuel.</span>")

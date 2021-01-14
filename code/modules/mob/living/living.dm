@@ -26,7 +26,7 @@ default behaviour is:
  - passive mob checks to see if its mob_bump_flag is in the non-passive's mob_bump_flags
  - if si, the proc returns
 */
-/mob/living/proc/can_move_mob(var/mob/living/swapped, swapping = 0, passive = 0)
+/mob/living/proc/can_move_mob(mob/living/swapped, swapping = 0, passive = 0)
 	if(!swapped)
 		return 1
 	if(!passive)
@@ -150,7 +150,7 @@ default behaviour is:
 			return
 	return
 
-/proc/swap_density_check(var/mob/swapper, mob/swapee)
+/proc/swap_density_check(mob/swapper, mob/swapee)
 	var/turf/T = get_turf(swapper)
 	if(T.density)
 		return 1
@@ -160,7 +160,7 @@ default behaviour is:
 		if(!A.CanPass(swapee, T, 1))
 			return 1
 
-/mob/living/proc/can_swap_with(var/mob/living/tmob)
+/mob/living/proc/can_swap_with(mob/living/tmob)
 	if(tmob.buckled || buckled)
 		return 0
 	//BubbleWrap: people in handcuffs are always switched around as if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
@@ -189,7 +189,7 @@ default behaviour is:
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
-/mob/living/proc/calculate_affecting_pressure(var/pressure)
+/mob/living/proc/calculate_affecting_pressure(pressure)
 	return
 
 
@@ -223,7 +223,7 @@ default behaviour is:
 /mob/living/proc/get_max_health()
 	return max_health
 
-/mob/living/proc/set_max_health(var/newmax_health)
+/mob/living/proc/set_max_health(newmax_health)
 	max_health = newmax_health
 
 
@@ -285,7 +285,7 @@ default behaviour is:
 			return 1
 	return 0
 
-/mob/living/proc/can_inject(var/mob/user, target_zone)
+/mob/living/proc/can_inject(mob/user, target_zone)
 	return 1
 
 /mob/living/proc/get_organ_target()
@@ -503,7 +503,7 @@ default behaviour is:
 /mob/living/proc/has_eyes()
 	return 1
 
-/mob/living/proc/slip(var/slipped_on,stun_duration=8)
+/mob/living/proc/slip(slipped_on,stun_duration=8)
 	return 0
 
 /mob/living/carbon/human/canUnEquip(obj/item/I)
@@ -535,7 +535,7 @@ default behaviour is:
 	if(!isnull(deaf))
 		ear_deaf = deaf
 
-/mob/proc/can_be_possessed_by(var/mob/observer/ghost/possessor)
+/mob/proc/can_be_possessed_by(mob/observer/ghost/possessor)
 	return istype(possessor) && possessor.client
 
 /mob/living/can_be_possessed_by(var/mob/observer/ghost/possessor)
@@ -551,7 +551,7 @@ default behaviour is:
 		return 0
 	return 1
 
-/mob/living/proc/do_possession(var/mob/observer/ghost/possessor)
+/mob/living/proc/do_possession(mob/observer/ghost/possessor)
 
 	if(!(istype(possessor) && possessor.ckey))
 		return 0
@@ -589,12 +589,12 @@ default behaviour is:
 	if(auras)
 		overlays |= auras
 
-/mob/living/proc/add_aura(var/obj/aura/aura)
+/mob/living/proc/add_aura(obj/aura/aura)
 	LAZYDISTINCTADD(auras,aura)
 	update_icons()
 	return 1
 
-/mob/living/proc/remove_aura(var/obj/aura/aura)
+/mob/living/proc/remove_aura(obj/aura/aura)
 	LAZYREMOVE(auras,aura)
 	update_icons()
 	return 1

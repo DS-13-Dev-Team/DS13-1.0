@@ -28,7 +28,7 @@
 		return
 	..()
 
-/obj/item/weapon/material/lock_construct/proc/create_lock(var/atom/target, mob/user)
+/obj/item/weapon/material/lock_construct/proc/create_lock(atom/target, mob/user)
 	. = new /datum/lock(target,lock_data)
 	user.visible_message("\The [user] attaches \the [src] to \the [target]")
 	qdel(src)

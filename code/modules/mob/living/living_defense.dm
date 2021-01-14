@@ -10,7 +10,7 @@
 	Returns
 	a blocked amount between 0 - 100, representing the success of the armor check.
 */
-/mob/living/proc/run_armor_check(var/def_zone = null, attack_flag = "melee", armour_pen = 0, absorb_text = null, soften_text = null)
+/mob/living/proc/run_armor_check(def_zone = null, attack_flag = "melee", armour_pen = 0, absorb_text = null, soften_text = null)
 	if(armour_pen >= 100)
 		return 0 //might as well just skip the processing
 
@@ -47,7 +47,7 @@
 
 //Adds two armor values together.
 //If armor_a and armor_b are between 0-100 the result will always also be between 0-100.
-/proc/add_armor(var/armor_a, armor_b)
+/proc/add_armor(armor_a, armor_b)
 	if(armor_a >= 100 || armor_b >= 100)
 		return 100 //adding to infinite protection doesn't make it any bigger
 
@@ -56,7 +56,7 @@
 	return 100 - 1/(protection_a + protection_b + 1)*100
 
 //if null is passed for def_zone, then this should return something appropriate for all zones (e.g. area effect damage)
-/mob/living/proc/getarmor(var/def_zone, type)
+/mob/living/proc/getarmor(def_zone, type)
 	return 0
 
 
@@ -86,7 +86,7 @@
 
 	return absorb
 
-/mob/living/proc/aura_check(var/type)
+/mob/living/proc/aura_check(type)
 	if(!auras)
 		return TRUE
 	. = TRUE
@@ -110,7 +110,7 @@
 
 
 //Handles the effects of "stun" weapons
-/mob/living/proc/stun_effect_act(var/stun_amount, agony_amount, def_zone, used_weapon=null)
+/mob/living/proc/stun_effect_act(stun_amount, agony_amount, def_zone, used_weapon=null)
 	flash_pain()
 
 	if (stun_amount)
@@ -124,7 +124,7 @@
 		apply_effect(agony_amount/10, STUTTER)
 		apply_effect(agony_amount/10, EYE_BLUR)
 
-/mob/living/proc/electrocute_act(var/shock_damage, obj/source, siemens_coeff = 1.0)
+/mob/living/proc/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0)
 	  return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
@@ -137,7 +137,7 @@
 	return target_zone
 
 //Called when the mob is hit with an item in combat. Returns the blocked result
-/mob/living/proc/hit_with_weapon(var/datum/strike/implement/strike)
+/mob/living/proc/hit_with_weapon(datum/strike/implement/strike)
 
 	if(prob(strike.get_final_damage()*2.5)) // Added blood for whacking non-humans too
 		var/turf/simulated/location = get_turf(src)
@@ -156,7 +156,7 @@
 
 
 //this proc handles being hit by a thrown atom
-/mob/living/hitby(atom/movable/AM as mob|obj,var/speed = BASE_THROW_SPEED)//Standardization and logging -Sieve
+/mob/living/hitby(atom/movable/AM as mob|obj, speed = BASE_THROW_SPEED)//Standardization and logging -Sieve
 	if(!aura_check(AURA_TYPE_THROWN, AM, speed))
 		return
 	if(istype(AM,/obj/))
@@ -216,13 +216,13 @@
 					src.anchored = 1
 					src.pinned += O
 
-/mob/living/proc/embed(var/obj/O, def_zone=null, datum/wound/supplied_wound)
+/mob/living/proc/embed(obj/O, def_zone=null, datum/wound/supplied_wound)
 	O.loc = src
 	src.embedded += O
 	src.verbs += /mob/proc/yank_out_object
 
 //This is called when the mob is thrown into a dense turf
-/mob/living/proc/turf_collision(var/turf/T, speed)
+/mob/living/proc/turf_collision(turf/T, speed)
 	visible_message("<span class='danger'>[src] slams into \the [T]!</span>")
 	playsound(loc, 'sound/effects/bangtaper.ogg', 50, 1, -1)
 
@@ -232,7 +232,7 @@
 		damage = min(max_health*0.2, damage)
 	src.take_organ_damage(damage)
 
-/mob/living/proc/near_wall(var/direction,var/distance=1)
+/mob/living/proc/near_wall(direction, distance=1)
 	var/turf/T = get_step(get_turf(src),direction)
 	var/turf/last_turf = src.loc
 	var/i = 1
@@ -418,7 +418,7 @@
 	Projectile accuracy handling
 ---------------------------------*/
 //Takes an accuracy value, a targeted bodypart, and the projectile, tool or mob doing the hitting.
-/mob/living/proc/get_zone_with_miss_chance(var/accuracy, desired_zone, weapon)
+/mob/living/proc/get_zone_with_miss_chance(accuracy, desired_zone, weapon)
 	//Mobs at living level don't have targetable limbs, so we'll just do a simple accuracy - evasion check
 	var/evasion_mod = evasion
 	if (lying)
@@ -447,9 +447,9 @@
 	Strike Defense
 ---------------------------------*/
 //These are base procs defined here for convenience, actual function is in human_defense
-/mob/living/proc/handle_strike_defense(var/datum/strike)
+/mob/living/proc/handle_strike_defense(datum/strike)
 	return null
 
 
-/mob/living/proc/can_defend(var/datum/strike)
+/mob/living/proc/can_defend(datum/strike)
 	return FALSE

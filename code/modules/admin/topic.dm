@@ -2059,7 +2059,7 @@ mob/living/carbon/human/can_centcom_reply()
 mob/living/silicon/ai/can_centcom_reply()
 	return silicon_radio != null && !check_unable(2)
 
-/datum/proc/extra_admin_link(var/prefix, sufix, short_links)
+/datum/proc/extra_admin_link(prefix, sufix, short_links)
 	return list()
 
 /atom/movable/extra_admin_link(var/source, prefix, sufix, short_links)
@@ -2078,7 +2078,7 @@ mob/living/silicon/ai/can_centcom_reply()
 	if(mind && (mind.current && !isghost(mind.current)))
 		. += "<A HREF='?[source];adminplayerobservefollow=\ref[mind.current]'>[prefix][short_links ? "B" : "BDY"][sufix]</A>"
 
-/proc/admin_jump_link(var/datum/target, source, delimiter = "|", prefix, sufix, short_links)
+/proc/admin_jump_link(datum/target, source, delimiter = "|", prefix, sufix, short_links)
 	if(!istype(target))
 		CRASH("Invalid admin jump link target: [log_info_line(target)]")
 	// The way admin jump links handle their src is weirdly inconsistent...
@@ -2088,7 +2088,7 @@ mob/living/silicon/ai/can_centcom_reply()
 		source = "_src_=holder"
 	return jointext(target.extra_admin_link(source, prefix, sufix, short_links), delimiter)
 
-/datum/proc/get_admin_jump_link(var/atom/target)
+/datum/proc/get_admin_jump_link(atom/target)
 	return
 
 /mob/get_admin_jump_link(var/atom/target, delimiter, prefix, sufix)

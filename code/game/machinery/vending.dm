@@ -221,7 +221,7 @@
 		return
 	return attempt_to_stock(I, user)
 
-/obj/machinery/vending/proc/attempt_to_stock(var/obj/item/I as obj, mob/user as mob)
+/obj/machinery/vending/proc/attempt_to_stock(obj/item/I as obj, mob/user as mob)
 	for(var/datum/stored_items/vending_products/R in product_records)
 		if(I.type == R.item_path)
 			stock(I, R, user)
@@ -230,7 +230,7 @@
 /**
  *  Receive payment with cashmoney.
  */
-/obj/machinery/vending/proc/pay_with_cash(var/obj/item/weapon/spacecash/bundle/cashmoney)
+/obj/machinery/vending/proc/pay_with_cash(obj/item/weapon/spacecash/bundle/cashmoney)
 	if(currently_vending.price > cashmoney.worth)
 		// This is not a status display message, since it's something the character
 		// themselves is meant to see BEFORE putting the money in
@@ -255,7 +255,7 @@
  * Takes payment for whatever is the currently_vending item. Returns 1 if
  * successful, 0 if failed.
  */
-/obj/machinery/vending/proc/pay_with_ewallet(var/obj/item/weapon/spacecash/ewallet/wallet)
+/obj/machinery/vending/proc/pay_with_ewallet(obj/item/weapon/spacecash/ewallet/wallet)
 	visible_message("<span class='info'>\The [usr] swipes \the [wallet] through \the [src].</span>")
 	if(currently_vending.price > wallet.worth)
 		src.status_message = "Insufficient funds on chargecard."
@@ -272,7 +272,7 @@
  * Takes payment for whatever is the currently_vending item. Returns 1 if
  * successful, 0 if failed
  */
-/obj/machinery/vending/proc/pay_with_card(var/obj/item/weapon/card/id/I, obj/item/ID_container)
+/obj/machinery/vending/proc/pay_with_card(obj/item/weapon/card/id/I, obj/item/ID_container)
 	if(I==ID_container || ID_container == null)
 		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	else
@@ -320,7 +320,7 @@
  *
  *  Called after the money has already been taken from the customer.
  */
-/obj/machinery/vending/proc/credit_purchase(var/target as text)
+/obj/machinery/vending/proc/credit_purchase(target as text)
 	vendor_account.money += currently_vending.price
 
 	var/datum/transaction/T = new(target, "Purchase of [currently_vending.item_name]", currently_vending.price, name)
@@ -444,7 +444,7 @@
 
 		SSnano.update_uis(src)
 
-/obj/machinery/vending/proc/vend(var/datum/stored_items/vending_products/R, mob/user)
+/obj/machinery/vending/proc/vend(datum/stored_items/vending_products/R, mob/user)
 	if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
 		to_chat(usr, "<span class='warning'>Access denied.</span>")//Unless emagged of course
 		flick(src.icon_deny,src)
@@ -537,7 +537,7 @@
 
 	return
 
-/obj/machinery/vending/proc/speak(var/message)
+/obj/machinery/vending/proc/speak(message)
 	if(stat & NOPOWER)
 		return
 

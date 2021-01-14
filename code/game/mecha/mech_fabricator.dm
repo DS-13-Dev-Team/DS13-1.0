@@ -222,18 +222,18 @@
 	else
 		busy = 0
 
-/obj/machinery/mecha_part_fabricator/proc/add_to_queue(var/index)
+/obj/machinery/mecha_part_fabricator/proc/add_to_queue(index)
 	var/datum/design/D = files.known_designs[index]
 	queue += D
 	update_busy()
 
-/obj/machinery/mecha_part_fabricator/proc/remove_from_queue(var/index)
+/obj/machinery/mecha_part_fabricator/proc/remove_from_queue(index)
 	if(index == 1)
 		progress = 0
 	queue.Cut(index, index + 1)
 	update_busy()
 
-/obj/machinery/mecha_part_fabricator/proc/can_build(var/datum/design/D)
+/obj/machinery/mecha_part_fabricator/proc/can_build(datum/design/D)
 	for(var/M in D.materials)
 		if(materials[M] <= D.materials[M] * mat_efficiency)
 			return 0
@@ -274,13 +274,13 @@
 			continue
 		. += list(list("name" = D.name, "id" = i, "category" = D.category, "resourses" = get_design_resourses(D), "time" = get_design_time(D)))
 
-/obj/machinery/mecha_part_fabricator/proc/get_design_resourses(var/datum/design/D)
+/obj/machinery/mecha_part_fabricator/proc/get_design_resourses(datum/design/D)
 	var/list/F = list()
 	for(var/T in D.materials)
 		F += "[capitalize(T)]: [D.materials[T] * mat_efficiency]"
 	return english_list(F, and_text = ", ")
 
-/obj/machinery/mecha_part_fabricator/proc/get_design_time(var/datum/design/D)
+/obj/machinery/mecha_part_fabricator/proc/get_design_time(datum/design/D)
 	return time2text(round(10 * D.time / speed), "mm:ss")
 
 /obj/machinery/mecha_part_fabricator/proc/update_categories()
@@ -297,7 +297,7 @@
 	for(var/T in materials)
 		. += list(list("mat" = capitalize(T), "amt" = materials[T]))
 
-/obj/machinery/mecha_part_fabricator/proc/eject_materials(var/material, amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
+/obj/machinery/mecha_part_fabricator/proc/eject_materials(material, amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 	var/recursive = amount == -1 ? 1 : 0
 	material = lowertext(material)
 	var/mattype

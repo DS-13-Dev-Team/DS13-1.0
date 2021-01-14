@@ -19,18 +19,18 @@
 	load_params(params)
 
 //Does nothing in base form, this should be overridden
-/datum/craft_step/proc/load_params(var/list/params)
+/datum/craft_step/proc/load_params(list/params)
 	return
 
 
-/datum/craft_step/proc/load_time(var/input, params)
+/datum/craft_step/proc/load_time(input, params)
 	if (isnum(input))
 		time = input
 	else if (input == "time")
 		time = params["time"]
 
 
-/datum/craft_step/proc/announce_action(var/msg, mob/living/user, obj/item/tool, atom/target)
+/datum/craft_step/proc/announce_action(msg, mob/living/user, obj/item/tool, atom/target)
 	msg = replacetext(msg,"%USER%","[user]")
 	msg = replacetext(msg,"%ITEM%","\improper [tool]")
 	msg = replacetext(msg,"%TARGET%","\improper [target]")
@@ -110,7 +110,7 @@
 		I.consume_resources(time)
 
 
-/datum/craft_step/proc/is_valid_to_consume(var/obj/item/I, mob/living/user)
+/datum/craft_step/proc/is_valid_to_consume(obj/item/I, mob/living/user)
 	var/holder = I.get_holding_mob()
 	//Next we must check if we're actually allowed to submit it
 	if (!holder)
@@ -144,7 +144,7 @@
 
 
 //Used when searching for components. Returns a list of stuff which can be searched through
-/datum/craft_step/proc/get_search_list(var/mob/living/user, atom/craft)
+/datum/craft_step/proc/get_search_list(mob/living/user, atom/craft)
 	var/list/items = list()
 	var/turf/centrepoint = null
 	//If there is a user, we add everything that user is wearing and holding

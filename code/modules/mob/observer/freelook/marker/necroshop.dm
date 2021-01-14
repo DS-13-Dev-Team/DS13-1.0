@@ -238,7 +238,7 @@
 //Safety Checks
 //------------------
 //Is this mob allowed to browse through the shop?
-/datum/necroshop/proc/authorised_to_view(var/mob/M)
+/datum/necroshop/proc/authorised_to_view(mob/M)
 	//Anyone on the necro team is allowed
 	if (M.is_necromorph())
 		return TRUE
@@ -251,7 +251,7 @@
 
 
 //Should the spawn button be enabled in the UI?
-/datum/necroshop/proc/authorised_to_spawn(var/mob/M)
+/datum/necroshop/proc/authorised_to_spawn(mob/M)
 	//First of all
 	//Do we even have anything selected for spawning yet?
 	if (!current)
@@ -300,7 +300,7 @@
 //This proc takes a list of spawn parameters, which is either constructed through get_spawn_params, or via a placement datum.
 //It takes the biomass and creates the atom
 //No other safety checks are done here, we will assume the params contain only correct info
-/datum/necroshop/proc/finalize_spawn(var/list/params)
+/datum/necroshop/proc/finalize_spawn(list/params)
 
 	//First, ensure that the host can pay the biomass
 	//For total mass requirements, we check but don't pay
@@ -347,7 +347,7 @@
 
 //Attempts to subtract the relevant quantity of biomass from the host marker or whatever else
 //Make sure this is the last step before spawning, it can't be allowed to fail after this
-/datum/necroshop/proc/host_pay_biomass(var/purpose, amount)
+/datum/necroshop/proc/host_pay_biomass(purpose, amount)
 	//If the cost is zero, don't even trouble the marker, we're sure it can pay
 	if (!amount)
 		return TRUE
@@ -373,7 +373,7 @@
 	var/global_limit = 0	//If nonzero, a maximum number of these which can ever be spawned from markers
 
 //Can this thing be spawned now, or at some point in the future if we wait long enough? IE, will it become spawnable without explicit action
-/datum/necroshop_item/proc/can_ever_spawn(var/datum/necroshop/caller)
+/datum/necroshop_item/proc/can_ever_spawn(datum/necroshop/caller)
 	if (global_limit)
 		var/total = SSnecromorph.spawned_necromorph_types[spawn_path]
 		if (isnum(total) >= global_limit)
@@ -382,7 +382,7 @@
 	return TRUE
 
 //Can this thing be spawned right now?
-/datum/necroshop_item/proc/can_spawn(var/datum/necroshop/caller)
+/datum/necroshop_item/proc/can_spawn(datum/necroshop/caller)
 	if (!can_ever_spawn(caller))
 		return FALSE
 
@@ -399,7 +399,7 @@
 //For spawning at a point, it will find an exact location and return a list of parameters which will then be passed to finalise_spawn
 //For manual placement spawning, it will immediately return null to terminate that process, and create a datum which will handle the placement and user input
 	//That datum, once a spot is selected, will generate its own parameters and call finalize_spawn directly on its own
-/datum/necroshop_item/proc/get_spawn_params(var/datum/necroshop/caller)
+/datum/necroshop_item/proc/get_spawn_params(datum/necroshop/caller)
 	.=null
 	if (spawn_method == SPAWN_POINT)
 		var/list/params = list()

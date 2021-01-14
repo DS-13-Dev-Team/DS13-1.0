@@ -70,13 +70,13 @@
 	interface_name = "VOID-shift phase projector"
 	interface_desc = "An advanced teleportation system. It is capable of pinpoint precision or random leaps forward."
 
-/obj/item/rig_module/teleporter/proc/phase_in(var/mob/M,var/turf/T)
+/obj/item/rig_module/teleporter/proc/phase_in(mob/M, turf/T)
 	if(!M || !T)
 		return
 	holder.spark_system.start()
 	M.phase_in(T)
 
-/obj/item/rig_module/teleporter/proc/phase_out(var/mob/M,var/turf/T)
+/obj/item/rig_module/teleporter/proc/phase_out(mob/M, turf/T)
 	if(!M || !T)
 		return
 	M.phase_out(T)

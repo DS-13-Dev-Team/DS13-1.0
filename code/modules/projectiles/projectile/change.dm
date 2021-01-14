@@ -9,7 +9,7 @@
 /obj/item/projectile/change/on_hit(var/atom/change)
 	wabbajack(change)
 
-/obj/item/projectile/change/proc/wabbajack(var/mob/M)
+/obj/item/projectile/change/proc/wabbajack(mob/M)
 	if(istype(M, /mob/living) && M.stat != DEAD)
 		if(HAS_TRANSFORMATION_MOVEMENT_HANDLER(M))
 			return

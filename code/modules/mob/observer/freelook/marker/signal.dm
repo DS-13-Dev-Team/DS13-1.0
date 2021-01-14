@@ -226,7 +226,7 @@
 /datum/click_handler/signal/OnShiftClick(var/atom/A, params)
 	return user.examinate(A)
 
-/atom/proc/attack_signal(var/mob/observer/eye/signal/user)
+/atom/proc/attack_signal(mob/observer/eye/signal/user)
 	return TRUE
 
 

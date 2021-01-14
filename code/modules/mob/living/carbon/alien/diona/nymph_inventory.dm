@@ -13,7 +13,7 @@
 		W.forceMove(get_turf(src))
 	return 1
 
-/mob/living/carbon/alien/diona/proc/wear_hat(var/obj/item/clothing/head/new_hat)
+/mob/living/carbon/alien/diona/proc/wear_hat(obj/item/clothing/head/new_hat)
 	if(hat || !istype(new_hat))
 		return FALSE
 	hat = new_hat
@@ -29,10 +29,10 @@
 	else
 		to_chat(usr, "<span class='warning'>You have nothing to drop.</span>")
 
-/mob/living/carbon/alien/diona/proc/can_collect(var/obj/item/collecting)
+/mob/living/carbon/alien/diona/proc/can_collect(obj/item/collecting)
 	return (!holding_item && istype(collecting) && !collecting.anchored && collecting.simulated && collecting.w_class <= can_pull_size)
 
-/mob/living/carbon/alien/diona/proc/collect(var/obj/item/collecting)
+/mob/living/carbon/alien/diona/proc/collect(obj/item/collecting)
 	collecting.forceMove(src)
 	holding_item = collecting
 	visible_message("<span class='notice'>\The [src] engulfs \the [holding_item].</span>")

@@ -66,7 +66,7 @@
 /obj/structure/proc/can_visually_connect()
 	return anchored
 
-/obj/structure/proc/can_visually_connect_to(var/obj/structure/S)
+/obj/structure/proc/can_visually_connect_to(obj/structure/S)
 	return istype(S, src)
 
 /obj/structure/proc/update_connections(propagate = 0)
@@ -168,7 +168,7 @@
 	take_damage(tforce, BRUTE, O.thrower, O)
 
 //Called when a structure takes damage
-/obj/structure/proc/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
+/obj/structure/proc/take_damage(amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	if (!bypass_resist)
 		amount -= resistance
 
@@ -190,7 +190,7 @@
 		return zero_health()
 
 //Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
-/obj/structure/proc/zero_health(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist)
+/obj/structure/proc/zero_health(amount, damtype = BRUTE, user, used_weapon, bypass_resist)
 	if (breakable)
 		qdel(src)
 	return TRUE

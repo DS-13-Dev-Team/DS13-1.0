@@ -1,4 +1,4 @@
-/datum/seed/proc/diverge_mutate_gene(var/decl/plantgene/G, turf/T)
+/datum/seed/proc/diverge_mutate_gene(decl/plantgene/G, turf/T)
 	if(!istype(G))
 		log_debug("Attempted to mutate [src] with a non-plantgene var.")
 		return src
@@ -48,7 +48,7 @@
 /decl/plantgene/special
 	gene_tag = GENE_SPECIAL
 
-/decl/plantgene/proc/mutate(var/datum/seed/S)
+/decl/plantgene/proc/mutate(datum/seed/S)
 	return
 
 /decl/plantgene/biochem/mutate(var/datum/seed/S)

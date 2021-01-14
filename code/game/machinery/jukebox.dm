@@ -233,7 +233,7 @@ datum/track/proc/GetTrack()
 	update_use_power(2)
 	update_icon()
 
-/obj/machinery/media/jukebox/proc/AdjustVolume(var/new_volume)
+/obj/machinery/media/jukebox/proc/AdjustVolume(new_volume)
 	volume = Clamp(new_volume, 0, 50)
 	if(sound_token)
 		sound_token.SetVolume(volume)

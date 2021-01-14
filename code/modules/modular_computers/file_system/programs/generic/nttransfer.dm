@@ -63,7 +63,7 @@ var/global/nttransfer_uid = 0
 	finalize_download()
 
 //  Crashes the download and displays specific error message
-/datum/computer_file/program/nttransfer/proc/crash_download(var/message)
+/datum/computer_file/program/nttransfer/proc/crash_download(message)
 	error = message ? message : "An unknown error has occured during download"
 	finalize_download()
 

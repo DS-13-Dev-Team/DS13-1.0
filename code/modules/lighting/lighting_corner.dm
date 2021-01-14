@@ -88,7 +88,7 @@
 			active = TRUE
 
 // God that was a mess, now to do the rest of the corner code! Hooray!
-/datum/lighting_corner/proc/update_lumcount(var/delta_r, delta_g, delta_b)
+/datum/lighting_corner/proc/update_lumcount(delta_r, delta_g, delta_b)
 	lum_r += delta_r
 	lum_g += delta_g
 	lum_b += delta_b

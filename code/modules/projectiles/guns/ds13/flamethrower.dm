@@ -215,7 +215,7 @@
 	return pilot_light
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/proc/set_pilot_light(var/state, update = TRUE)
+/obj/item/weapon/gun/spray/hydrazine_torch/proc/set_pilot_light(state, update = TRUE)
 	if (pilot_light == state)
 		return
 
@@ -315,7 +315,7 @@
 
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/proc/consume_fuel(var/required_fuel)
+/obj/item/weapon/gun/spray/hydrazine_torch/proc/consume_fuel(required_fuel)
 	if (!tank)
 		fuel_depleted()
 		return FALSE

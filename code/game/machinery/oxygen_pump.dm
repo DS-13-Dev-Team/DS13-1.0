@@ -77,7 +77,7 @@
 /obj/machinery/oxygen_pump/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/oxygen_pump/proc/attach_mask(var/mob/living/carbon/C)
+/obj/machinery/oxygen_pump/proc/attach_mask(mob/living/carbon/C)
 	if(C && istype(C))
 		contained.forceMove(get_turf(C))
 		C.equip_to_slot(contained, slot_wear_mask)
@@ -85,7 +85,7 @@
 			tank.forceMove(C)
 		breather = C
 
-/obj/machinery/oxygen_pump/proc/set_internals(var/mob/living/carbon/C)
+/obj/machinery/oxygen_pump/proc/set_internals(mob/living/carbon/C)
 	if(C && istype(C))
 		if(!C.internal && tank)
 			C.internal = tank
@@ -106,7 +106,7 @@
 	breather = null
 	use_power = 1
 
-/obj/machinery/oxygen_pump/proc/can_apply_to_target(var/mob/living/carbon/human/target, mob/user as mob)
+/obj/machinery/oxygen_pump/proc/can_apply_to_target(mob/living/carbon/human/target, mob/user as mob)
 	if(!user)
 		user = target
 	// Check target validity

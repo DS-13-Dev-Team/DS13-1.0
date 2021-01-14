@@ -86,7 +86,7 @@
 	on=0
 	return
 
-/obj/machinery/pipelayer/proc/load_metal(var/obj/item/stack/MM)
+/obj/machinery/pipelayer/proc/load_metal(obj/item/stack/MM)
 	if(istype(MM) && MM.get_amount())
 		var/cur_amount = metal
 		var/to_load = max(max_metal - round(cur_amount),0)
@@ -106,14 +106,14 @@
 	metal-=amount
 	return 1
 
-/obj/machinery/pipelayer/proc/dismantleFloor(var/turf/new_turf)
+/obj/machinery/pipelayer/proc/dismantleFloor(turf/new_turf)
 	if(istype(new_turf, /turf/simulated/floor))
 		var/turf/simulated/floor/T = new_turf
 		if(!T.is_plating())
 			T.make_plating(!(T.broken || T.burnt))
 	return new_turf.is_plating()
 
-/obj/machinery/pipelayer/proc/layPipe(var/turf/w_turf,var/M_Dir,var/old_dir)
+/obj/machinery/pipelayer/proc/layPipe(turf/w_turf, M_Dir, old_dir)
 	if(!on || !(M_Dir in list(1, 2, 4, 8)) || M_Dir==old_dir)
 		return reset()
 	if(!use_metal(0.25))

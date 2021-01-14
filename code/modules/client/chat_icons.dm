@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(atom_chat_icons)
 
 //To use:
 // "\icon[typepath]" will print an icon for that type
-/proc/chat_icon(var/needle)
+/proc/chat_icon(needle)
 	if (GLOB.atom_chat_icons[needle])
 		//If a dummy already exists, we return that
 		return GLOB.atom_chat_icons[needle]

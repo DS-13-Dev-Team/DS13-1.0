@@ -64,7 +64,7 @@
 /obj/item/integrated_circuit/ex_act(severity)
 	..(max(1, severity - 1)) // Circuits are weak
 
-/obj/item/integrated_circuit/proc/setup_io(var/list/io_list, io_type)
+/obj/item/integrated_circuit/proc/setup_io(list/io_list, io_type)
 	var/list/io_list_copy = io_list.Copy()
 	io_list.Cut()
 	for(var/io_entry in io_list_copy)
@@ -103,23 +103,23 @@
 		name = input
 		interact(M)
 
-/obj/item/integrated_circuit/proc/activate_pin(var/pin_number)
+/obj/item/integrated_circuit/proc/activate_pin(pin_number)
 	var/datum/integrated_io/activate/A = activators[pin_number]
 	A.activate()
 
-/obj/item/integrated_circuit/proc/set_pin_data(var/pin_type, pin_number, new_data)
+/obj/item/integrated_circuit/proc/set_pin_data(pin_type, pin_number, new_data)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	return pin.write_data_to_pin(new_data)
 
-/obj/item/integrated_circuit/proc/get_pin_data(var/pin_type, pin_number)
+/obj/item/integrated_circuit/proc/get_pin_data(pin_type, pin_number)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	return pin.get_data()
 
-/obj/item/integrated_circuit/proc/get_pin_data_as_type(var/pin_type, pin_number, as_type)
+/obj/item/integrated_circuit/proc/get_pin_data_as_type(pin_type, pin_number, as_type)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	return pin.data_as_type(as_type)
 
-/obj/item/integrated_circuit/proc/get_pin_ref(var/pin_type, pin_number)
+/obj/item/integrated_circuit/proc/get_pin_ref(pin_type, pin_number)
 	switch(pin_type)
 		if(IC_INPUT)
 			if(pin_number > inputs.len)
@@ -292,7 +292,7 @@
 /obj/item/integrated_circuit/proc/get_topic_data(mob/user)
 	return list()
 
-/obj/item/integrated_circuit/proc/interact_with_assembly(var/mob/user)
+/obj/item/integrated_circuit/proc/interact_with_assembly(mob/user)
 	var/obj/item/device/electronic_assembly/ea = loc
 	if(!istype(ea))
 		return
@@ -324,7 +324,7 @@
 /datum/integrated_io/nano_host()
 	return holder
 
-/datum/integrated_io/proc/link_io(var/datum/integrated_io/io, mob/user)
+/datum/integrated_io/proc/link_io(datum/integrated_io/io, mob/user)
 	if(src == io)
 		to_chat(user, "<span class='warning'>Wiring \the [io.holder]'s [io.name] into itself is rather pointless.</span>")
 		return FALSE
@@ -351,7 +351,7 @@
 	linked |= io
 	io.linked |= src // We still link them to each other just ensure we're in a consistent state
 
-/datum/integrated_io/proc/data_as_type(var/as_type)
+/datum/integrated_io/proc/data_as_type(as_type)
 	var/output = resolve_weakref()
 	return istype(output, as_type) ? output : null
 
@@ -398,7 +398,7 @@
 	if(prob(99/severity))
 		activate()
 
-/datum/integrated_io/proc/write_data_to_pin(var/new_data)
+/datum/integrated_io/proc/write_data_to_pin(new_data)
 	if(io_type != DATA_CHANNEL)
 		return FALSE
 
@@ -465,13 +465,13 @@
 	for(var/datum/integrated_io/activate/A in activators)
 		A.activate()
 
-/obj/item/integrated_circuit/proc/check_then_do_work(var/datum/integrated_io/io)
+/obj/item/integrated_circuit/proc/check_then_do_work(datum/integrated_io/io)
 	if(world.time < next_use) 	// All intergrated circuits have an internal cooldown, to protect from spam.
 		return
 	next_use = world.time + cooldown_per_use
 	do_work(io)
 
-/obj/item/integrated_circuit/proc/do_work(var/datum/integrated_io/io)
+/obj/item/integrated_circuit/proc/do_work(datum/integrated_io/io)
 	return
 
 /obj/item/integrated_circuit/proc/disconnect_all()

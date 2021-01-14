@@ -32,7 +32,7 @@
 		var/sent_message = speech_method.get_message(communicator, M, message, sender_override)
 		receive_communication(communicator, M, "<span class='deadsay'>" + create_text_tag("dead", "DEAD:", M.client) + " [sent_message]</span>")
 
-/decl/dsay_communication/proc/can_communicate(var/client/communicator, message)
+/decl/dsay_communication/proc/can_communicate(client/communicator, message)
 	if(!istype(communicator))
 		return TRUE
 	if(communicator.mob.stat != DEAD)
@@ -40,7 +40,7 @@
 		return FALSE
 	return DSAY_ASK_BASE
 
-/decl/dsay_communication/proc/can_receive(var/client/C, mob/M)
+/decl/dsay_communication/proc/can_receive(client/C, mob/M)
 	if(istype(C) && C.mob == M)
 		return TRUE
 	if(M.get_preference_value(/datum/client_preference/show_dsay) == GLOB.PREF_HIDE)
@@ -55,7 +55,7 @@
 		return FALSE
 	return TRUE
 
-/decl/dsay_communication/proc/get_name(var/client/C, mob/M)
+/decl/dsay_communication/proc/get_name(client/C, mob/M)
 	var/name
 	var/keyname
 
@@ -87,13 +87,13 @@
 			lname = name
 	return "<span class='name'>[lname]</span>"
 
-/decl/dsay_communication/proc/get_message(var/client/C, mob/M, message, sender_override)
+/decl/dsay_communication/proc/get_message(client/C, mob/M, message, sender_override)
 	var/say_verb = pick("complains","moans","whines","laments","blubbers")
 	return "[sender_override ? sender_override : get_name(C, M)] [say_verb], <span class='message'>\"[message]\"</span>"
 
 
 
-/decl/dsay_communication/proc/adjust_channel(var/decl/communication_channel/dsay)
+/decl/dsay_communication/proc/adjust_channel(decl/communication_channel/dsay)
 	dsay.flags |= COMMUNICATION_ADMIN_FOLLOW|COMMUNICATION_GHOST_FOLLOW // Add admin and ghost follow
 
 

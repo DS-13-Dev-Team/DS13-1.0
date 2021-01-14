@@ -65,7 +65,7 @@
 				reagents.splash(AM, splash_amount, copy = 1)
 
 // Fades out the smoke smoothly using it's alpha variable.
-/obj/effect/effect/smoke/chem/proc/fadeOut(var/frames = 16)
+/obj/effect/effect/smoke/chem/proc/fadeOut(frames = 16)
 	if(!alpha) return //already transparent
 
 	frames = max(frames, 1) //We will just assume that by 0 frames, the coder meant "during one frame".
@@ -219,7 +219,7 @@
 // Randomizes and spawns the smoke effect.
 // Also handles deleting the smoke once the effect is finished.
 //------------------------------------------
-/datum/effect/effect/system/smoke_spread/chem/proc/spawnSmoke(var/turf/T, icon/I, smoke_duration, dist = 1, splash_initial=0, obj/effect/effect/smoke/chem/passed_smoke)
+/datum/effect/effect/system/smoke_spread/chem/proc/spawnSmoke(turf/T, icon/I, smoke_duration, dist = 1, splash_initial=0, obj/effect/effect/smoke/chem/passed_smoke)
 
 	var/obj/effect/effect/smoke/chem/smoke
 	if(passed_smoke)

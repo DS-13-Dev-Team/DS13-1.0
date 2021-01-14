@@ -31,7 +31,7 @@
 //Version optimised for mass testing
 //Takes a list of target atoms to test
 //Returns back the same list as an associative, with target as key, and true/false as value telling us whether we succeeded or failed in hitting
-/proc/check_trajectory_mass(var/list/targets, atom/firer as mob|obj, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE|PASS_FLAG_FLYING, item_flags = null, obj_flags = null, allow_sleep = FALSE)
+/proc/check_trajectory_mass(list/targets, atom/firer as mob|obj, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE|PASS_FLAG_FLYING, item_flags = null, obj_flags = null, allow_sleep = FALSE)
 	if(!istype(firer))
 		return 0
 
@@ -91,7 +91,7 @@
 /*
 	target = list(success, last_loc, last_obstacle)
 */
-/proc/check_trajectory_mass_verbose(var/list/targets, atom/firer as mob|obj, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE|PASS_FLAG_FLYING, item_flags = null, obj_flags = null, allow_sleep = FALSE)
+/proc/check_trajectory_mass_verbose(list/targets, atom/firer as mob|obj, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_GLASS|PASS_FLAG_GRILLE|PASS_FLAG_FLYING, item_flags = null, obj_flags = null, allow_sleep = FALSE)
 	if(!istype(firer))
 		return 0
 
@@ -164,7 +164,7 @@
 	setup_trajectory(curloc, targloc)
 	return Process(targloc)
 
-/obj/item/projectile/test/Process(var/turf/targloc)
+/obj/item/projectile/test/Process(turf/targloc)
 
 	//Every step along the trajectory, we may populate this list with sub-steps.
 	//If populated we follow it

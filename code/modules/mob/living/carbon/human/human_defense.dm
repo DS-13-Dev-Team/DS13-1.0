@@ -111,7 +111,7 @@ meteor_act
 	return (armorval/max(total, 1))
 
 //this proc returns the Siemens coefficient of electrical resistivity for a particular external organ.
-/mob/living/carbon/human/proc/get_siemens_coefficient_organ(var/obj/item/organ/external/def_zone)
+/mob/living/carbon/human/proc/get_siemens_coefficient_organ(obj/item/organ/external/def_zone)
 	if (!def_zone)
 		return 1.0
 
@@ -125,7 +125,7 @@ meteor_act
 	return siemens_coefficient
 
 //this proc returns the armour value for a particular external organ.
-/mob/living/carbon/human/proc/getarmor_organ(var/obj/item/organ/external/def_zone, type)
+/mob/living/carbon/human/proc/getarmor_organ(obj/item/organ/external/def_zone, type)
 	if(!type || !def_zone) return 0
 	if(!istype(def_zone))
 		def_zone = get_organ(check_zone(def_zone))
@@ -303,7 +303,7 @@ meteor_act
 			if(BP_CHEST)
 				bloody_body(src)
 
-/mob/living/carbon/human/proc/attack_joint(var/obj/item/organ/external/organ, obj/item/W, effective_force, dislocate_mult, blocked)
+/mob/living/carbon/human/proc/attack_joint(obj/item/organ/external/organ, obj/item/W, effective_force, dislocate_mult, blocked)
 	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1) || blocked >= 100)
 		return 0
 	if(W.damtype != BRUTE)
@@ -330,7 +330,7 @@ meteor_act
 	return 1
 
 //this proc handles being hit by a thrown atom
-/mob/living/carbon/human/hitby(atom/movable/AM as mob|obj,var/speed = BASE_THROW_SPEED)
+/mob/living/carbon/human/hitby(atom/movable/AM as mob|obj, speed = BASE_THROW_SPEED)
 	if(istype(AM,/obj/))
 		var/obj/O = AM
 
@@ -351,7 +351,7 @@ meteor_act
 	if(affecting)
 		affecting.embed(O, supplied_wound = supplied_wound)
 
-/mob/proc/unembed(var/obj/item/I, atom/new_location, silent = 0, supplied_message)
+/mob/proc/unembed(obj/item/I, atom/new_location, silent = 0, supplied_message)
 	return
 
 /mob/living/carbon/human/unembed(var/obj/item/I, atom/new_location, silent = 0, supplied_message)
@@ -362,7 +362,7 @@ meteor_act
 			affecting.unembed(I, new_location, silent, supplied_message)
 			return
 
-/mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, amount = 2)
+/mob/living/carbon/human/proc/bloody_hands(mob/living/source, amount = 2)
 	if (istype(gloves, /obj/item/clothing/gloves))
 		gloves.add_blood(source)
 		gloves:transfer_blood = amount
@@ -373,7 +373,7 @@ meteor_act
 		bloody_hands_mob = source
 	update_inv_gloves()		//updates on-mob overlays for bloody hands and/or bloody gloves
 
-/mob/living/carbon/human/proc/bloody_body(var/mob/living/source)
+/mob/living/carbon/human/proc/bloody_body(mob/living/source)
 	if(wear_suit)
 		wear_suit.add_blood(source)
 		update_inv_wear_suit(0)
@@ -381,7 +381,7 @@ meteor_act
 		w_uniform.add_blood(source)
 		update_inv_w_uniform(0)
 
-/mob/living/carbon/human/proc/handle_suit_punctures(var/damtype, damage, def_zone)
+/mob/living/carbon/human/proc/handle_suit_punctures(damtype, damage, def_zone)
 
 	// Tox and oxy don't matter to suits.
 	if(damtype != BURN && damtype != BRUTE) return
@@ -509,7 +509,7 @@ meteor_act
 		total_damage += ..(shock_damage, E.organ_tag, base_siemens_coeff * get_siemens_coefficient_organ(E))
 	return total_damage
 
-/mob/living/carbon/human/proc/trace_shock(var/obj/item/organ/external/init, obj/item/organ/external/floor)
+/mob/living/carbon/human/proc/trace_shock(obj/item/organ/external/init, obj/item/organ/external/floor)
 	var/obj/item/organ/external/list/traced_organs = list(floor)
 
 	if(!init)
@@ -750,7 +750,7 @@ meteor_act
 	var/thermal_protection_flags = get_cold_protection_flags(temperature)
 	return get_thermal_protection(thermal_protection_flags)
 
-/mob/living/carbon/human/proc/get_thermal_protection(var/flags)
+/mob/living/carbon/human/proc/get_thermal_protection(flags)
 	.=0
 	if(flags)
 		if(flags & HEAD)

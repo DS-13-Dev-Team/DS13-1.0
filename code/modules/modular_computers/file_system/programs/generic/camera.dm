@@ -1,5 +1,5 @@
 // Returns which access is relevant to passed network. Used by the program.
-/proc/get_camera_access(var/network)
+/proc/get_camera_access(network)
 	if(!network)
 		return 0
 	. = GLOB.using_map.get_network_access(network)
@@ -76,10 +76,10 @@
 		ui.open()
 
 // Intended to be overriden by subtypes to manually add non-station networks to the list.
-/datum/nano_module/camera_monitor/proc/modify_networks_list(var/list/networks)
+/datum/nano_module/camera_monitor/proc/modify_networks_list(list/networks)
 	return networks
 
-/datum/nano_module/camera_monitor/proc/can_access_bridge(var/mob/user, network_access)
+/datum/nano_module/camera_monitor/proc/can_access_bridge(mob/user, network_access)
 	// No access passed, or 0 which is considered no access requirement. Allow it.
 	if(!network_access)
 		return 1
@@ -113,7 +113,7 @@
 		usr.reset_view(current_camera)
 		return 1
 
-/datum/nano_module/camera_monitor/proc/switch_to_camera(var/mob/user, obj/machinery/camera/C)
+/datum/nano_module/camera_monitor/proc/switch_to_camera(mob/user, obj/machinery/camera/C)
 	//don't need to check if the camera works for AI because the AI jumps to the camera location and doesn't actually look through cameras.
 	if(isAI(user))
 		var/mob/living/silicon/ai/A = user
@@ -130,7 +130,7 @@
 	user.reset_view(C)
 	return 1
 
-/datum/nano_module/camera_monitor/proc/set_current(var/obj/machinery/camera/C)
+/datum/nano_module/camera_monitor/proc/set_current(obj/machinery/camera/C)
 	if(current_camera == C)
 		return
 

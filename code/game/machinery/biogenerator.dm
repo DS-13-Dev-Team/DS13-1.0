@@ -206,7 +206,7 @@
 		state = BG_EMPTY
 	return
 
-/obj/machinery/biogenerator/proc/create_product(var/type, path)
+/obj/machinery/biogenerator/proc/create_product(type, path)
 	state = BG_PROCESSING
 	var/cost = products[type][path]
 	cost = round(cost/build_eff)

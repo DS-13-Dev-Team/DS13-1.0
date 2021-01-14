@@ -76,7 +76,7 @@ var/list/whitelist = list()
 
 	return 0
 
-/proc/whitelist_lookup(var/item, ckey)
+/proc/whitelist_lookup(item, ckey)
 	if(!alien_whitelist)
 		return 0
 

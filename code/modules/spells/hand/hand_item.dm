@@ -27,7 +27,7 @@ Basically: I can use it to target things where I click. I can then pass these ta
 		return 0
 	return 1
 
-/obj/item/magic_hand/proc/fire_spell(var/atom/A, mob/living/user)
+/obj/item/magic_hand/proc/fire_spell(atom/A, mob/living/user)
 	if(!hand_spell) //no spell? Die.
 		user.drop_from_inventory(src)
 

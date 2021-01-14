@@ -88,7 +88,7 @@
 	src.add_fingerprint(user)
 	qdel(G)
 
-/obj/machinery/bodyscanner/proc/user_can_move_target_inside(var/mob/target, mob/user)
+/obj/machinery/bodyscanner/proc/user_can_move_target_inside(mob/target, mob/user)
 	if(!istype(user) || !istype(target))
 		return FALSE
 	if(!CanMouseDrop(target, user))

@@ -43,7 +43,7 @@
 	item_records = null
 	return ..()
 
-/obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
+/obj/machinery/smartfridge/proc/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/))
 		return 1
 	return 0
@@ -263,7 +263,7 @@
 		to_chat(user, "You short out the product lock on [src].")
 		return 1
 
-/obj/machinery/smartfridge/proc/stock_item(var/obj/item/O)
+/obj/machinery/smartfridge/proc/stock_item(obj/item/O)
 	for(var/datum/stored_items/I in item_records)
 		if(istype(O, I.item_path) && O.name == I.item_name)
 			stock(I, O)
@@ -273,7 +273,7 @@
 	dd_insertObjectList(item_records, I)
 	stock(I, O)
 
-/obj/machinery/smartfridge/proc/stock(var/datum/stored_items/I, obj/item/O)
+/obj/machinery/smartfridge/proc/stock(datum/stored_items/I, obj/item/O)
 	I.add_product(O)
 	SSnano.update_uis(src)
 

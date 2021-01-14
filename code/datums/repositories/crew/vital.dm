@@ -49,7 +49,7 @@
 	crew_data["bodytemp"] = H.bodytemperature - T0C
 	return ..()
 
-/crew_sensor_modifier/vital/proc/set_healthy(var/list/crew_data)
+/crew_sensor_modifier/vital/proc/set_healthy(list/crew_data)
 	crew_data["alert"] = FALSE
 	if(crew_data["true_pulse"] != -1)
 		crew_data["true_pulse"] = PULSE_NORM
@@ -62,7 +62,7 @@
 		crew_data["oxygenation"] = "normal"
 		crew_data["oxygenation_span"] = "good"
 
-/crew_sensor_modifier/vital/proc/set_dead(var/list/crew_data)
+/crew_sensor_modifier/vital/proc/set_dead(list/crew_data)
 	crew_data["alert"] = TRUE
 	if(crew_data["true_pulse"] != -1)
 		crew_data["true_pulse"] = PULSE_NONE

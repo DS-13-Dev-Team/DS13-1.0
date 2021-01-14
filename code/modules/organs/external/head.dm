@@ -68,7 +68,7 @@
 	if(forehead_graffiti && graffiti_style)
 		to_chat(user, "<span class='notice'>It has \"[forehead_graffiti]\" written on it in [graffiti_style]!</span>")
 
-/obj/item/organ/external/head/proc/write_on(var/mob/penman, style)
+/obj/item/organ/external/head/proc/write_on(mob/penman, style)
 	var/head_name = name
 	var/atom/target = src
 	if(owner)

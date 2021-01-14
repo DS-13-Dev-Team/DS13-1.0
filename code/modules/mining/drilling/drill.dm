@@ -247,7 +247,7 @@
 
 	update_icon()
 
-/obj/machinery/mining/drill/proc/system_error(var/error)
+/obj/machinery/mining/drill/proc/system_error(error)
 
 	if(error)
 		src.visible_message("<span class='notice'>\The [src] flashes a '[error]' warning.</span>")

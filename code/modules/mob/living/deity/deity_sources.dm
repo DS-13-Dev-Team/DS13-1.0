@@ -1,4 +1,4 @@
-/mob/living/deity/proc/add_follower(var/mob/living/L)
+/mob/living/deity/proc/add_follower(mob/living/L)
 	if(is_follower(L, silent=1))
 		return
 
@@ -13,11 +13,11 @@
 	GLOB.destroyed_event.register(L,src, .proc/dead_follower)
 	GLOB.death_event.register(L,src, .proc/update_followers)
 
-/mob/living/deity/proc/dead_follower(var/mob/living/L)
+/mob/living/deity/proc/dead_follower(mob/living/L)
 	GLOB.death_event.unregister(L,src)
 	GLOB.destroyed_event.unregister(L,src)
 
-/mob/living/deity/proc/remove_follower_spells(var/datum/mind/M)
+/mob/living/deity/proc/remove_follower_spells(datum/mind/M)
 	if(M.learned_spells)
 		for(var/s in M.learned_spells)
 			var/spell/S = s
@@ -25,7 +25,7 @@
 				M.current.remove_spell(S)
 				qdel(S)
 
-/mob/living/deity/proc/remove_follower(var/mob/living/L)
+/mob/living/deity/proc/remove_follower(mob/living/L)
 	if(!is_follower(L, silent=1))
 		return
 
@@ -37,7 +37,7 @@
 	update_followers()
 
 
-/mob/living/deity/proc/adjust_source(var/amount, atom/source, silent = 0, msg)
+/mob/living/deity/proc/adjust_source(amount, atom/source, silent = 0, msg)
 	adjust_power_min(amount, silent, msg)
 	if(!ismovable(source))
 		return
@@ -50,7 +50,7 @@
 		if(istype(source, /obj/structure/deity))
 			structures -= source
 
-/mob/living/deity/proc/is_follower(var/mob/living/L, silent = 0)
+/mob/living/deity/proc/is_follower(mob/living/L, silent = 0)
 	if(istype(L))
 		if(L.mind)
 			if(L.mind in minions)
@@ -71,7 +71,7 @@
 	return 1
 
 //Whether we are near an important structure.
-/mob/living/deity/proc/near_structure(var/atom/A, all_structures = 0)
+/mob/living/deity/proc/near_structure(atom/A, all_structures = 0)
 	var/turf/T = get_turf(A)
 	for(var/s in structures)
 		if(!all_structures)

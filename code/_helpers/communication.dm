@@ -23,7 +23,7 @@
 	"Security(I)"	= SEC_I_FREQ)
 
 */
-/proc/get_channel_radios(var/channel)
+/proc/get_channel_radios(channel)
 	channel = radiochannels[channel]
 	var/datum/radio_frequency/connection = radio_controller.return_frequency(channel)
 
@@ -38,7 +38,7 @@
 /*
 	Wrapper for the above, gets all of the mobs who can hear these radios
 */
-/proc/get_channel_listeners(var/channel)
+/proc/get_channel_listeners(channel)
 	var/list/radios = get_channel_radios(channel)
 
 	channel = radiochannels[channel]

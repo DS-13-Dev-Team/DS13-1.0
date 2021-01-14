@@ -255,7 +255,7 @@
 		thing.ex_act(severity, epicentre)
 	..()
 
-/obj/item/device/electronic_assembly/proc/add_circuit(var/obj/item/integrated_circuit/IC, mob/user)
+/obj/item/device/electronic_assembly/proc/add_circuit(obj/item/integrated_circuit/IC, mob/user)
 	if(!opened)
 		to_chat(user, "<span class='warning'>\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar.</span>")
 		return FALSE
@@ -272,7 +272,7 @@
 
 	return IC.forceMove(src)
 
-/obj/item/device/electronic_assembly/proc/apply_shell(var/obj/item/electronic_assembly_shell/a_shell, user)
+/obj/item/device/electronic_assembly/proc/apply_shell(obj/item/electronic_assembly_shell/a_shell, user)
 	if(applied_shell)
 		to_chat(user, "<span class='warning'>There is already a shell attached.</span>")
 		return 0

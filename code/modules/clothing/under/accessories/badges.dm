@@ -14,10 +14,10 @@
 	var/badge_string = "Detective"
 	var/stored_name
 
-/obj/item/clothing/accessory/badge/proc/set_name(var/new_name)
+/obj/item/clothing/accessory/badge/proc/set_name(new_name)
 	stored_name = new_name
 
-/obj/item/clothing/accessory/badge/proc/set_desc(var/mob/living/carbon/human/H)
+/obj/item/clothing/accessory/badge/proc/set_desc(mob/living/carbon/human/H)
 
 /obj/item/clothing/accessory/badge/CanUseTopic(var/user)
 	if(user in view(get_turf(src)))

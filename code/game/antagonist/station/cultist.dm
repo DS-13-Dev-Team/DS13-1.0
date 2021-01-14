@@ -14,7 +14,7 @@
 
 GLOBAL_DATUM_INIT(cult, /datum/antagonist/cultist, new)
 
-/proc/iscultist(var/mob/player)
+/proc/iscultist(mob/player)
 	if(!GLOB.cult || !player.mind)
 		return 0
 	if(player.mind in GLOB.cult.current_antagonists)
@@ -119,7 +119,7 @@ GLOBAL_DATUM_INIT(cult, /datum/antagonist/cultist, new)
 	add_cultiness(CULTINESS_PER_CULTIST)
 	add_cult_magic(player.current)
 
-/datum/antagonist/cultist/proc/add_cultiness(var/amount)
+/datum/antagonist/cultist/proc/add_cultiness(amount)
 	cult_rating += amount
 	var/old_rating = max_cult_rating
 	max_cult_rating = max(max_cult_rating, cult_rating)
@@ -133,7 +133,7 @@ GLOBAL_DATUM_INIT(cult, /datum/antagonist/cultist, new)
 	if(to_update.len)
 		update_cult_magic(to_update)
 
-/datum/antagonist/cultist/proc/update_cult_magic(var/list/to_update)
+/datum/antagonist/cultist/proc/update_cult_magic(list/to_update)
 	if(CULT_RUNES_1 in to_update)
 		for(var/datum/mind/H in GLOB.cult.current_antagonists)
 			if(H.current)
@@ -154,7 +154,7 @@ GLOBAL_DATUM_INIT(cult, /datum/antagonist/cultist, new)
 		for(var/mob/observer/ghost/D in SSmobs.mob_list)
 			add_ghost_magic(D)
 
-/datum/antagonist/cultist/proc/offer_uncult(var/mob/M)
+/datum/antagonist/cultist/proc/offer_uncult(mob/M)
 	if(!iscultist(M) || !M.mind)
 		return
 
@@ -164,10 +164,10 @@ GLOBAL_DATUM_INIT(cult, /datum/antagonist/cultist, new)
 	if(href_list["confirmleave"])
 		GLOB.cult.remove_antagonist(usr.mind, 1)
 
-/datum/antagonist/cultist/proc/remove_cultiness(var/amount)
+/datum/antagonist/cultist/proc/remove_cultiness(amount)
 	cult_rating = max(0, cult_rating - amount)
 
-/datum/antagonist/cultist/proc/add_cult_magic(var/mob/M)
+/datum/antagonist/cultist/proc/add_cult_magic(mob/M)
 	M.verbs += Tier1Runes
 
 	if(max_cult_rating >= CULT_RUNES_1)
@@ -179,7 +179,7 @@ GLOBAL_DATUM_INIT(cult, /datum/antagonist/cultist, new)
 			if(max_cult_rating >= CULT_RUNES_3)
 				M.verbs += Tier4Runes
 
-/datum/antagonist/cultist/proc/remove_cult_magic(var/mob/M)
+/datum/antagonist/cultist/proc/remove_cult_magic(mob/M)
 	M.verbs -= Tier1Runes
 	M.verbs -= Tier2Runes
 	M.verbs -= Tier3Runes

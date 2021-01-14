@@ -183,10 +183,10 @@
 /mob/living/simple_animal/gib()
 	..(icon_gib,1)
 
-/mob/living/simple_animal/proc/visible_emote(var/act_desc)
+/mob/living/simple_animal/proc/visible_emote(act_desc)
 	custom_emote(1, act_desc)
 
-/mob/living/simple_animal/proc/audible_emote(var/act_desc)
+/mob/living/simple_animal/proc/audible_emote(act_desc)
 	custom_emote(2, act_desc)
 
 /mob/living/simple_animal/bullet_act(var/obj/item/projectile/Proj)
@@ -390,7 +390,7 @@
 	return 1
 
 // Harvest an animal's delicious byproducts
-/mob/living/simple_animal/proc/harvest(var/mob/user)
+/mob/living/simple_animal/proc/harvest(mob/user)
 	var/actual_meat_amount = max(1,(meat_amount/2))
 	if(meat_type && actual_meat_amount>0 && (stat == DEAD))
 		for(var/i=0;i<actual_meat_amount;i++)

@@ -119,7 +119,7 @@
 
 	return 0
 
-/datum/species/xenos/hug(var/mob/living/carbon/human/H,var/mob/living/target)
+/datum/species/xenos/hug(var/mob/living/carbon/human/H, mob/living/target)
 	H.visible_message("<span class='notice'>[H] caresses [target] with countless prickling, needle-like legs.</span>", \
 					"<span class='notice'>You caress [target] with countless prickling, needle-like legs.</span>")
 
@@ -152,7 +152,7 @@
 		started_healing["\ref[H]"] = null
 	..()
 
-/datum/species/xenos/proc/regenerate(var/mob/living/carbon/human/H)
+/datum/species/xenos/proc/regenerate(mob/living/carbon/human/H)
 
 	var/heal_rate = weeds_heal_rate
 	var/mend_prob = 10

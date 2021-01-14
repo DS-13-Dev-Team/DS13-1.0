@@ -58,7 +58,7 @@ datum/preferences
 	for (var/i in 1 to LOADOUT_SLOTS)
 		gear_list += list(list())
 
-/datum/preferences/proc/load_and_update_character(var/slot)
+/datum/preferences/proc/load_and_update_character(slot)
 	load_character(slot)
 	if(update_setup(loaded_preferences, loaded_character))
 		save_preferences()

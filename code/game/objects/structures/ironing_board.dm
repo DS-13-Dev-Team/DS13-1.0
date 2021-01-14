@@ -23,7 +23,7 @@
 
 	. = ..()
 
-/obj/structure/bed/roller/ironingboard/proc/remove_item(var/obj/item/I)
+/obj/structure/bed/roller/ironingboard/proc/remove_item(obj/item/I)
 	if(I == cloth)
 		cloth = null
 	else if(I == holding)

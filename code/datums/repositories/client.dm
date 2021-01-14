@@ -10,7 +10,7 @@ var/repository/client/client_repository = new()
 	clients_ = list()
 
 // A lite client is unique per ckey and mob ref (save for ref conflicts.. oh well)
-/repository/client/proc/get_lite_client(var/mob/M)
+/repository/client/proc/get_lite_client(mob/M)
 	if(isclient(M))
 		var/client/C = M // BYOND is supposed to ensure clients always have a mob
 		M = C.mob
@@ -34,7 +34,7 @@ var/repository/client/client_repository = new()
 	ckey = M.ckey ? M.ckey : ckey
 	ref = M.client ? any2ref(M.client) : ref
 
-/datum/client_lite/proc/key_name(var/pm_link = TRUE, check_if_offline = TRUE, datum/ticket/ticket = null)
+/datum/client_lite/proc/key_name(pm_link = TRUE, check_if_offline = TRUE, datum/ticket/ticket = null)
 	if(!ref && ckey != NO_CLIENT_CKEY)
 		var/client/C = client_by_ckey(ckey)
 		if(C)

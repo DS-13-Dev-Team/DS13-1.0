@@ -6,7 +6,7 @@
 	electric = 1
 	gender = NEUTER
 
-/obj/item/clothing/glasses/proc/process_hud(var/mob/M)
+/obj/item/clothing/glasses/proc/process_hud(mob/M)
 	if(hud)
 		hud.process_hud(M)
 

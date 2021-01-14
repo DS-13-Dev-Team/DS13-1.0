@@ -52,7 +52,7 @@ Small, little HP, poisonous.
 		return
 	else return ..()
 
-/mob/living/simple_animal/hostile/voxslug/proc/attach(var/mob/living/carbon/human/H)
+/mob/living/simple_animal/hostile/voxslug/proc/attach(mob/living/carbon/human/H)
 	var/obj/item/organ/external/chest = H.organs_by_name["chest"]
 	var/obj/item/weapon/holder/voxslug/holder = new(get_turf(src))
 	src.forceMove(holder)

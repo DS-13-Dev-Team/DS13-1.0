@@ -58,7 +58,7 @@
 		if(remove_item_by_name_and_type(params["name"], item_type))
 			return TRUE
 
-/datum/storage_ui/tgui/proc/remove_item_by_name_and_type(var/name, item_type)
+/datum/storage_ui/tgui/proc/remove_item_by_name_and_type(name, item_type)
 	if(!istext(name))
 		return FALSE
 	if(!item_type)

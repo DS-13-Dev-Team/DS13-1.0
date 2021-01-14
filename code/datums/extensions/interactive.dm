@@ -24,7 +24,7 @@
 	release_vector(dimensions)
 	return ..()
 
-/datum/extension/interactive/proc/extension_status(var/mob/user)
+/datum/extension/interactive/proc/extension_status(mob/user)
 	if(!holder || !user)
 		return STATUS_CLOSE
 	if(!all_predicates_true(list(holder), host_predicates))
@@ -36,7 +36,7 @@
 
 	return STATUS_INTERACTIVE
 
-/datum/extension/interactive/proc/extension_act(var/href, list/href_list, mob/user)
+/datum/extension/interactive/proc/extension_act(href, list/href_list, mob/user)
 	return extension_status(user) == STATUS_CLOSE
 
 /datum/extension/interactive/Topic(var/href, list/href_list)

@@ -4,7 +4,7 @@
 	var/equipment = list()
 	var/spells = list()
 
-/datum/spellbound_type/proc/spawn_servant(var/atom/a, mob/master, mob/user)
+/datum/spellbound_type/proc/spawn_servant(atom/a, mob/master, mob/user)
 	set waitfor = 0
 	var/mob/living/carbon/human/H = new(a)
 	H.ckey = user.ckey
@@ -16,7 +16,7 @@
 		H.SetName(name_choice)
 		H.real_name = name_choice
 
-/datum/spellbound_type/proc/equip_servant(var/mob/living/carbon/human/H)
+/datum/spellbound_type/proc/equip_servant(mob/living/carbon/human/H)
 	for(var/stype in spells)
 		var/spell/S = new stype()
 		if(S.spell_flags & NEEDSCLOTHES)
@@ -30,10 +30,10 @@
 		H.equip_to_slot_if_possible(I,equipment[etype],0,1,1,1)
 		. += I
 
-/datum/spellbound_type/proc/set_antag(var/datum/mind/M, mob/master)
+/datum/spellbound_type/proc/set_antag(datum/mind/M, mob/master)
 	return
 
-/datum/spellbound_type/proc/modify_servant(var/list/items, mob/living/carbon/human/H)
+/datum/spellbound_type/proc/modify_servant(list/items, mob/living/carbon/human/H)
 	return
 
 /datum/spellbound_type/apprentice
@@ -203,7 +203,7 @@
 	show_browser(user,dat,"window=summoning")
 	onclose(user,"summoning")
 
-/obj/item/weapon/summoning_stone/proc/use_type(var/type, mob/user)
+/obj/item/weapon/summoning_stone/proc/use_type(type, mob/user)
 	new /obj/effect/cleanable/spellbound(get_turf(src),type)
 	if(prob(20))
 		var/list/base_areas = maintlocs //Have to do it this way as its a macro

@@ -96,13 +96,13 @@
 	Override these in subclasses to do things
 -----------------------------------------------*/
 //This does nothing in the base class, override it and put spell effects here
-/datum/signal_ability/proc/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/proc/on_cast(mob/user, atom/target, list/data)
 	return
 
 //Return true if the passed thing is a valid target
 //Return false to fail silently
 //Return a string to fail with an error message shown to user
-/datum/signal_ability/proc/special_check(var/atom/thing)
+/datum/signal_ability/proc/special_check(atom/thing)
 	return TRUE
 
 
@@ -111,7 +111,7 @@
 ----------------------------------------------------------------------*/
 //Entrypoint to this code, called when user clicks the button to start a spell.
 //This code creates the click handler
-/datum/signal_ability/proc/start_casting(var/mob/user)
+/datum/signal_ability/proc/start_casting(mob/user)
 
 	var/check = can_cast_now(user)
 	//Validate before casting
@@ -141,11 +141,11 @@
 			to_chat(user, SPAN_NOTICE("Now Casting [name]!"))
 			select_target(user, user)
 
-/datum/signal_ability/proc/pre_cast(var/mob/user)
+/datum/signal_ability/proc/pre_cast(mob/user)
 	return TRUE
 
 //Path to the end of the cast
-/datum/signal_ability/proc/finish_casting(var/mob/user, atom/target, list/data)
+/datum/signal_ability/proc/finish_casting(mob/user, atom/target, list/data)
 	//Pay the energy costs
 	if (!pay_cost(user))
 		//TODO: Abort casting, we failed
@@ -159,7 +159,7 @@
 
 //This is called after finish, or at any point during casting if things fail.
 //It deletes clickhandlers, cleans up, etc.
-/datum/signal_ability/proc/stop_casting(var/mob/user)
+/datum/signal_ability/proc/stop_casting(mob/user)
 
 	//Search the user's clickhandlers for any which have an id matching our type, indicating we put them there. And remove those
 	for (var/datum/click_handler/CH in user.GetClickHandlers())
@@ -169,7 +169,7 @@
 
 //Called from the click handler when the user clicks a potential target.
 //Data is an associative list of any miscellaneous data. It contains the direction for placement handlers
-/datum/signal_ability/proc/select_target(var/mob/user, candidate, list/data)
+/datum/signal_ability/proc/select_target(mob/user, candidate, list/data)
 	var/check = can_cast_now(user)
 	//Validate before casting
 	if (check != TRUE)
@@ -216,7 +216,7 @@
 /*
 	Returns a paragraph or two of text explaining what this spell does
 */
-/datum/signal_ability/proc/get_long_description(var/mob/user)
+/datum/signal_ability/proc/get_long_description(mob/user)
 	if (long_desc)
 		return long_desc
 	.="<b>Cost</b>: [energy_cost]<br>"
@@ -233,7 +233,7 @@
 /*
 	Actually deducts energy, sets cooldowns, and makes any other costs as a result of casting. Returns true if all succeed
 */
-/datum/signal_ability/proc/pay_cost(var/mob/user)
+/datum/signal_ability/proc/pay_cost(mob/user)
 	.= FALSE
 
 	//Pay energy cost last
@@ -262,7 +262,7 @@
 	To be called only from on_cast, or some other point where costs have already been paid.
 	Gives the user their energy and cooldowns back
 */
-/datum/signal_ability/proc/refund(var/mob/user)
+/datum/signal_ability/proc/refund(mob/user)
 	var/datum/extension/psi_energy/PE = user.get_energy_extension()
 	PE.abilities[id] = 0	//ready to recast immediately
 	if (energy_cost)
@@ -274,13 +274,13 @@
 ------------------------------*/
 
 //Called from a click handler using the TARGET_CLICK method
-/datum/signal_ability/proc/target_click(var/mob/user, atom/target, params)
+/datum/signal_ability/proc/target_click(mob/user, atom/target, params)
 	return select_target(user, target)
 
 
 
 
-/datum/signal_ability/proc/placement_click(var/mob/user, atom/target, list/data)
+/datum/signal_ability/proc/placement_click(mob/user, atom/target, list/data)
 	return select_target(user, target,  data)
 
 
@@ -302,7 +302,7 @@
 
 	This proc will either return TRUE if no problem, or an error message if there is a problem
 */
-/datum/signal_ability/proc/can_cast_now(var/mob/user)
+/datum/signal_ability/proc/can_cast_now(mob/user)
 	.=is_valid_user(user)
 
 	if (!.)
@@ -336,7 +336,7 @@
 	Does not check energy cost, cooldown, or other ephemeral qualities
 
 */
-/datum/signal_ability/proc/is_valid_user(var/mob/user)
+/datum/signal_ability/proc/is_valid_user(mob/user)
 	if (!user)	//If there's no user, maybe we're casting it via script. Just let it through
 		return TRUE
 
@@ -356,7 +356,7 @@
 	return TRUE
 
 //Does a lot of checking to see if the specified target is valid
-/datum/signal_ability/proc/is_valid_target(var/atom/thing, mob/user, silent = FALSE)
+/datum/signal_ability/proc/is_valid_target(atom/thing, mob/user, silent = FALSE)
 	var/correct_type = FALSE
 	for (var/typepath in target_types)
 		if (istype(thing, typepath))

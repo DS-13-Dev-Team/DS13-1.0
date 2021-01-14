@@ -287,7 +287,7 @@
 		//If this is causing damage, take_internal_damage will call update health
 		updatehealth()
 
-/mob/living/carbon/human/proc/can_autoheal(var/dam_type, datum/wound/W)
+/mob/living/carbon/human/proc/can_autoheal(dam_type, datum/wound/W)
 	if(!species || !dam_type) return FALSE
 
 	return species.can_autoheal(src, dam_type, W)
@@ -297,7 +297,7 @@
 ////////////////////////////////////////////
 
 //Returns a list of damaged organs
-/mob/living/carbon/human/proc/get_damaged_organs(var/brute, burn)
+/mob/living/carbon/human/proc/get_damaged_organs(brute, burn)
 	var/list/obj/item/organ/external/parts = list()
 	for(var/obj/item/organ/external/O in organs)
 		if((brute && O.brute_dam) || (burn && O.burn_dam))
@@ -432,14 +432,14 @@ This function restores all organs.
 	return
 
 
-/mob/proc/get_organ(var/zone)
+/mob/proc/get_organ(zone)
 	return null
 
 /mob/living/carbon/human/get_organ(var/zone)
 	return organs_by_name[check_zone(zone)]
 
 
-/mob/living/carbon/human/apply_effect(var/effect = 0,var/effecttype = STUN, blocked = 0)
+/mob/living/carbon/human/apply_effect(var/effect = 0, effecttype = STUN, blocked = 0)
 	if(effecttype == IRRADIATE && (effect * blocked_mult(blocked) <= RAD_LEVEL_LOW))
 		return 0
 	return ..()
