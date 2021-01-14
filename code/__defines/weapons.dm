@@ -2,12 +2,12 @@
 
 //Weapon Force: Provides the base damage for melee weapons.
 #define WEAPON_FORCE_HARMLESS    3
-#define WEAPON_FORCE_WEAK        7
-#define WEAPON_FORCE_NORMAL      8
-#define WEAPON_FORCE_PAINFUL     12
-#define WEAPON_FORCE_DANGEROUS   16
-#define WEAPON_FORCE_ROBUST      22
-#define WEAPON_FORCE_LETHAL      30
+#define WEAPON_FORCE_WEAK        4
+#define WEAPON_FORCE_NORMAL      6
+#define WEAPON_FORCE_PAINFUL     10
+#define WEAPON_FORCE_DANGEROUS   14
+#define WEAPON_FORCE_ROBUST      19
+#define WEAPON_FORCE_LETHAL      28
 
 
 //Resistance values, used on floors, windows, airlocks, girders, and similar hard targets

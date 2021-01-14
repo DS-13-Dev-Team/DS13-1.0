@@ -255,6 +255,7 @@
 		var/subtotal = 0
 		if (!E || E.is_stump())
 			//Its not here!
+
 			subtotal = initial_health_values[organ_tag] * dismember_mult
 			blocked += subtotal
 		else
@@ -264,6 +265,7 @@
 			//Is it a torso part?
 			if ((E.organ_tag in BP_TORSO))
 				subtotal *= torso_damage_mult
+
 
 		//And now add to total
 		total += subtotal

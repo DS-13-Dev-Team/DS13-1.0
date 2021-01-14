@@ -228,8 +228,13 @@
 				candidates = list()
 			candidates += W
 
-		//Randomly pick from those that are joint top in number of connections
-		master = pick(candidates)
+		if (candidates.len)
+			//Randomly pick from those that are joint top in number of connections
+			master = pick(candidates)
+		else
+			//If we just lost our last projectile, we have no more reason to exist
+			qdel(src)
+			return
 
 
 	master.designated_master()
