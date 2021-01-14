@@ -81,6 +81,11 @@ var/list/_client_preferences_by_type
 * Player Preferences *
 *********************/
 
+/datum/client_preference/floating_messages
+	description = "Floating chat messages"
+	key = "FLOATING_CHAT"
+	options = list(GLOB.PREF_SHOW, GLOB.PREF_HIDE)
+
 /datum/client_preference/play_admin_midis
 	description ="Play admin midis"
 	key = "SOUND_MIDI"
@@ -211,11 +216,6 @@ var/list/_client_preferences_by_type
 /datum/client_preference/show_credits
 	description = "Show End Titles"
 	key = "SHOW_CREDITS"
-
-/datum/client_preference/floating_messages
-	description = "Floating chat messages"
-	key = "FLOATING_CHAT"
-	options = list(GLOB.PREF_HIDE, GLOB.PREF_SHOW)
 
 /********************
 * General Staff Preferences *

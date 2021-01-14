@@ -309,11 +309,10 @@ proc/get_radio_key_from_channel(var/channel)
 				if(O) //It's possible that it could be deleted in the meantime.
 					O.hear_talk(src, stars(message), verb, speaking)
 
-	INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_recipients, 30)
-	
 	if(whispering)
 		log_whisper("[name]/[key] : [message]")
 	else
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_recipients, 38)
 		log_say("[name]/[key] : [message]")
 	return 1
 
