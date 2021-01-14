@@ -27,7 +27,7 @@ GLOBAL_LIST_INIT(whispered, list())
 	return possible
 
 
-/datum/signal_ability/whisper/select_target(var/mob/user, candidate,  var/list/data)
+/datum/signal_ability/whisper/select_target(var/mob/user, candidate, list/data)
 	.=..()
 	if (!.)
 		//If the parent returned false, then we didn't click a valid mob. We'll continue anyway with a null target

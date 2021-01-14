@@ -489,7 +489,7 @@
 
 
 
-/obj/item/projectile/wave/attack_atom(var/atom/A,  var/distance, miss_modifier=0)
+/obj/item/projectile/wave/attack_atom(var/atom/A, distance, miss_modifier=0)
 	//We've already hit it, return the same result as the last time without hitting it again
 	if (A in PW.damaged_atoms)
 		return PW.damaged_atoms[A]

@@ -55,7 +55,7 @@
 
 
 
-/datum/extension/swing/New(var/atom/user, atom/source, atom/target, angle = 90, range = 3, duration = 1 SECOND, windup = 0, cooldown = 0,  var/effect_type, damage = 1, damage_flags = 0, stages = 8, swing_direction = CLOCKWISE)
+/datum/extension/swing/New(var/atom/user, atom/source, atom/target, angle = 90, range = 3, duration = 1 SECOND, windup = 0, cooldown = 0, effect_type, damage = 1, damage_flags = 0, stages = 8, swing_direction = CLOCKWISE)
 	.=..()
 	if (isliving(user))
 		src.user = user
@@ -278,7 +278,7 @@
 	.=..()
 
 
-/atom/proc/swing_attack(var/swing_type = /datum/extension/swing, atom/source, atom/target, angle = 90, range = 3, duration = 1 SECOND, windup = 0, cooldown = 0,  var/effect_type, damage = 1, damage_flags = 0, stages = 8, swing_direction = CLOCKWISE)
+/atom/proc/swing_attack(var/swing_type = /datum/extension/swing, atom/source, atom/target, angle = 90, range = 3, duration = 1 SECOND, windup = 0, cooldown = 0, effect_type, damage = 1, damage_flags = 0, stages = 8, swing_direction = CLOCKWISE)
 	if (!can_swing(swing_type))
 		return FALSE
 

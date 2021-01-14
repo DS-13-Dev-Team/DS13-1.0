@@ -374,7 +374,7 @@
 	return 0
 
 
-/obj/item/projectile/proc/attack_atom(var/atom/A,  var/distance, miss_modifier=0)
+/obj/item/projectile/proc/attack_atom(var/atom/A, distance, miss_modifier=0)
 	.= A.bullet_act(src, def_zone)
 
 	//A return value of less than zero indicates the projectile missed or penetrated, we won't deflect it in that case

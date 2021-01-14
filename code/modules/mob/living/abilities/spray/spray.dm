@@ -1,4 +1,4 @@
-/atom/proc/spray_ability(var/subtype = /datum/extension/spray,  var/atom/target, angle, length, stun, duration, cooldown, windup, mob/override_user = null, list/extra_data)
+/atom/proc/spray_ability(var/subtype = /datum/extension/spray, atom/target, angle, length, stun, duration, cooldown, windup, mob/override_user = null, list/extra_data)
 	if (!can_spray())
 		return null
 	var/list/arguments = list(src, subtype, target, angle, length, stun, duration, cooldown, override_user, extra_data)

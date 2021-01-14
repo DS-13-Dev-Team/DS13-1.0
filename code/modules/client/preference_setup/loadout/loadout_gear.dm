@@ -132,7 +132,7 @@
 //This is called if the gear's slot is GEAR_EQUIP_SPECIAL
 //It spawns the item but doesn't place it anywhere
 //The gear itself is expected to handle placing or equipping the item
-/datum/gear/proc/spawn_special(var/mob/living/carbon/human/H,  var/metadata)
+/datum/gear/proc/spawn_special(var/mob/living/carbon/human/H, metadata)
 	var/obj/item/item = spawn_item(H, metadata)
 	return item
 

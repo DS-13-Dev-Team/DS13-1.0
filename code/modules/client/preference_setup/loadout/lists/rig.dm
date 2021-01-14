@@ -75,7 +75,7 @@
 
 
 //Rig modules attempt to install into any worn rig
-/datum/gear/RIG/module/spawn_special(var/mob/living/carbon/human/H,  var/metadata)
+/datum/gear/RIG/module/spawn_special(var/mob/living/carbon/human/H, metadata)
 	var/obj/item/rig_module/RM = ..()
 	if (H.wearing_rig)
 		if (H.wearing_rig.attempt_install(RM, user = null, force = TRUE, instant = TRUE, delete_replaced = TRUE))

@@ -145,7 +145,7 @@
 	return TRUE
 
 //Path to the end of the cast
-/datum/signal_ability/proc/finish_casting(var/mob/user, atom/target,  var/list/data)
+/datum/signal_ability/proc/finish_casting(var/mob/user, atom/target, list/data)
 	//Pay the energy costs
 	if (!pay_cost(user))
 		//TODO: Abort casting, we failed
@@ -169,7 +169,7 @@
 
 //Called from the click handler when the user clicks a potential target.
 //Data is an associative list of any miscellaneous data. It contains the direction for placement handlers
-/datum/signal_ability/proc/select_target(var/mob/user, candidate,  var/list/data)
+/datum/signal_ability/proc/select_target(var/mob/user, candidate, list/data)
 	var/check = can_cast_now(user)
 	//Validate before casting
 	if (check != TRUE)
