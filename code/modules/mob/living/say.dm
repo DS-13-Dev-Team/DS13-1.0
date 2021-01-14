@@ -265,8 +265,7 @@ proc/get_radio_key_from_channel(var/channel)
 	for(var/mob/M in listening)
 		if(M)
 			if(M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol))
-				if(M.client)
-					listening_clients += M.client
+				listening_clients += M.client
 
 	for(var/obj/O in listening_obj)
 		spawn(0)
@@ -284,8 +283,7 @@ proc/get_radio_key_from_channel(var/channel)
 		for(var/mob/M in eavesdroping)
 			if(M)
 				if(M.hear_say(stars(message), verb, speaking, alt_name, italics, src, speech_sound, sound_vol))
-					if(M.client)
-						eavesdroping_clients += M.client
+					eavesdroping_clients += M.client
 
 		for(var/obj/O in eavesdroping)
 			spawn(0)
