@@ -378,3 +378,19 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 		verbs |= verb_path
 	else
 		verbs -= verb_path
+
+
+/mob/proc/enemy_in_view(var/require_standing = FALSE)
+	for (var/mob/living/carbon/human/H in atoms_in_view())
+		//People who are downed don't count
+		if (require_standing && (H.lying || H.stat))
+			continue
+
+
+
+		//Other necros don't count
+		if (is_allied(H))
+			continue
+
+		return TRUE
+	return FALSE

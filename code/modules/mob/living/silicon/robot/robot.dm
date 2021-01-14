@@ -973,7 +973,7 @@
 
 	if(lockcharge != state)
 		lockcharge = state
-		UpdateLyingBuckledAndVerbStatus()
+		update_lying_buckled_and_verb_status()
 		return 1
 	return 0
 

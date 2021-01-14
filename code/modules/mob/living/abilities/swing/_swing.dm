@@ -1,3 +1,4 @@
+
 //A swing is an area-of-effect melee attack which strikes in a multistage cone, hitting each subcone in succession over some time period
 /datum/extension/swing
 	name = "Swing"
@@ -51,7 +52,6 @@
 	var/progress
 
 	var/raytrace = TRUE
-
 
 
 
@@ -132,6 +132,7 @@
 
 	stop()
 
+
 /datum/extension/swing/proc/windup_animation()
 	sleep(windup)
 
@@ -210,7 +211,7 @@
 
 	if (L == user)
 		return FALSE
-	var/atom/A = holder
+	var/atom/A = effect
 	if (raytrace && !check_trajectory(A, L, pass_flags = A.pass_flags))
 		return FALSE
 
@@ -268,6 +269,11 @@
 	if (incapacitated())
 		return FALSE
 
+	//This is a bit hackish
+	if (istype(swing_type, /datum/extension/swing/arm))
+		//If this fails, then they have no arms to swing with
+		if (!get_swing_dir())
+			return FALSE
 	.=..()
 
 
@@ -286,6 +292,7 @@
 /obj/effect/effect/swing
 	icon = 'icons/mob/necromorph/swinging_limbs.dmi'
 	var/inherit_order = TRUE
+	pass_flags = PASS_FLAG_NOMOB | PASS_FLAG_TABLE | PASS_FLAG_FLYING
 
 /obj/effect/effect/swing/New(var/location, var/atom/holder, var/matrix/starting_rotation)
 	//TODO: Make the effect move with the holder atom
@@ -294,3 +301,14 @@
 	pixel_x = holder.pixel_x
 	pixel_y = holder.pixel_y
 	.=..()
+
+
+
+
+
+
+
+
+
+
+

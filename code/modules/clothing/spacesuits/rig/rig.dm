@@ -115,6 +115,10 @@
 		if(open)
 			to_chat(usr, "It's equipped with [english_list(installed_modules)].")
 
+/obj/item/weapon/rig/New(var/location, var/dummy)
+	src.dummy = dummy
+	.=..()
+
 /obj/item/weapon/rig/Initialize()
 	. = ..()
 
@@ -127,8 +131,8 @@
 	spark_system = new()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
-
-	START_PROCESSING(SSobj, src)
+	if (!dummy)
+		START_PROCESSING(SSobj, src)
 
 	if(initial_modules && initial_modules.len)
 		for(var/path in initial_modules)
@@ -190,7 +194,6 @@
 			if (C.rig == src)
 				C.rig = null
 		qdel(piece)
-	STOP_PROCESSING(SSobj, src)
 	qdel(wires)
 	wires = null
 	qdel(spark_system)

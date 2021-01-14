@@ -52,7 +52,9 @@
 
 	//Temporary vars stored while travelling
 	var/cached_density = TRUE
-	var/evasion_delta = 0
+
+	statmods = list(STATMOD_EVASION, 200)
+	auto_register_statmods = FALSE
 
 /datum/extension/high_leap/New(var/atom/movable/user, var/target, var/windup_time, var/winddown_time, var/cooldown, var/minimum_range = 3, var/travel_speed = 6)
 	.=..()
@@ -69,12 +71,7 @@
 	src.travel_speed = travel_speed
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/high_leap/proc/windup), 0, TIMER_STOPPABLE)
 
-/datum/extension/high_leap/Destroy()
-	if (user)
-		user.evasion -= evasion_delta
-		evasion_delta = 0
 
-	.=..()
 
 /*----------------------------------
 	Windup
@@ -139,9 +136,7 @@
 	//Cache some values before we launch
 	cached_density = A.density
 	A.density = FALSE
-	if (user)
-		user.evasion += 200	//The user becomes impossible to hit while in the air
-		evasion_delta = 200
+	register_statmod(STATMOD_EVASION)
 
 	start_location = get_turf(A)
 
@@ -189,6 +184,7 @@
 //At this point we are almost hovering over our destination, we come in hard
 /datum/extension/high_leap/proc/land()
 	land_animation()
+	unregister_statmods()
 	sleep(land_time)
 
 	//TODO: Impact here
@@ -199,8 +195,6 @@
 	if (obstacle)
 		A.charge_impact(obstacle, 1, CHARGE_TARGET_SECONDARY, distance)
 
-	user.evasion -= evasion_delta
-	evasion_delta = 0
 
 	//Do the final stage
 	winddown()

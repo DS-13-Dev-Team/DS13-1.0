@@ -33,3 +33,5 @@
 #define STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	"multiplicative recieved damage modifiers"
 #define STATMOD_RANGED_ACCURACY	"ranged accuracy modifiers"
 #define STATMOD_ATTACK_SPEED "attack speed"
+#define STATMOD_EVASION "evasion"
+#define STATMOD_VIEW_RANGE "vision range"
