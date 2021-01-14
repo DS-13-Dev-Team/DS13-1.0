@@ -261,18 +261,37 @@ proc/get_radio_key_from_channel(var/channel)
 
 		get_mobs_and_objs_in_view_fast(T, message_range, listening, listening_obj, /datum/client_preference/ghost_ears)
 
-	var/list/listening_clients = list()
+
+	var/speech_bubble_test = say_test(message)
+	var/image/speech_bubble = image('icons/mob/talk.dmi',src,"h[speech_bubble_test]")
+
+	// VOREStation Port - Attempt Multi-Z Talking
+	var/mob/above = src.shadow
+	while(!QDELETED(above))
+		var/turf/ST = get_turf(above)
+		if(ST)
+
+			get_mobs_and_objs_in_view_fast(ST, world.view, listening, listening_obj, /datum/client_preference/ghost_ears)
+			var/image/z_speech_bubble = image('icons/mob/talk.dmi', above, "h[speech_bubble_test]")
+			spawn(30) qdel(z_speech_bubble)
+		above = above.shadow
+
+	// VOREStation Port End
+
+	var/list/speech_bubble_recipients = list()
 	for(var/mob/M in listening)
 		if(M)
-			if(M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol))
-				listening_clients += M.client
+			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
+			if(M.client)
+				speech_bubble_recipients += M.client
+
+	flick_overlay(speech_bubble, speech_bubble_recipients, 30)
 
 	for(var/obj/O in listening_obj)
 		spawn(0)
 			if(O) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking)
 
-	var/list/eavesdroping_clients = list()
 	if(whispering)
 		var/eavesdroping_range = 5
 		var/list/eavesdroping = list()
@@ -282,19 +301,18 @@ proc/get_radio_key_from_channel(var/channel)
 		eavesdroping_obj -= listening_obj
 		for(var/mob/M in eavesdroping)
 			if(M)
-				if(M.hear_say(stars(message), verb, speaking, alt_name, italics, src, speech_sound, sound_vol))
-					eavesdroping_clients += M.client
+				show_image(M, speech_bubble)
+				M.hear_say(stars(message), verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 
 		for(var/obj/O in eavesdroping)
 			spawn(0)
 				if(O) //It's possible that it could be deleted in the meantime.
 					O.hear_talk(src, stars(message), verb, speaking)
 
+
 	if(whispering)
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, eavesdroping_clients, 38)
 		log_whisper("[name]/[key] : [message]")
 	else
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, listening_clients, 38)
 		log_say("[name]/[key] : [message]")
 	return 1
 
