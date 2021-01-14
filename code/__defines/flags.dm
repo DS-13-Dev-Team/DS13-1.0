@@ -26,6 +26,7 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define ATOM_FLAG_OPEN_CONTAINER         0x0010 // Is an open container for chemistry purposes.
 #define ATOM_FLAG_INITIALIZED            0x0020 // Has this atom been initialized
 #define ATOM_FLAG_INTANGIBLE			 0x0040 // This atom does not physically exist, and can't be subjected to physical forces
+#define ATOM_FLAG_UNTARGETABLE           0x0080 // The atom cannot be targetted by a gun
 
 #define MOVABLE_FLAG_PROXMOVE            0x0001 // Does this object require proximity checking in Enter()?
 

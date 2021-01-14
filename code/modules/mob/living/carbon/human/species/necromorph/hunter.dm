@@ -25,10 +25,11 @@
 	Avoid fire though."
 
 	//Health and Defense
-	total_health = 225
+	total_health = 250
 	torso_damage_mult = 0.5 //Hitting centre mass more fine for hunter
 	can_obliterate = FALSE
 	healing_factor = 4	//Minor constant healing
+	burn_heal_factor = 0.15
 	dismember_mult = 1
 	biomass = 400
 	require_total_biomass	=	BIOMASS_REQ_T3
@@ -233,7 +234,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 /datum/extension/regenerate/hunter
 	cooldown = 30 SECONDS
 	duration = 8 SECONDS
-	lasting_damage_heal = 30
+	lasting_damage_heal = 20
 	heal_amount = 30
 	burn_heal_mult = 0.33
 
@@ -244,7 +245,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 /datum/extension/regenerate/hunter_passive
 	duration = 8 SECONDS
 	max_limbs = 5
-	lasting_damage_heal = 50
+	lasting_damage_heal = 35
 	burn_heal_mult = 0.01
 	heal_amount = 100
 
@@ -357,7 +358,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 	duration = 0.65 SECOND,
 	windup = 0,
 	cooldown = 0,//5 SECONDS, //TODO: Uncomment this
-	damage = 15,
+	damage = 12.5,
 	damage_flags = DAM_EDGE,
 	stages = 8)
 

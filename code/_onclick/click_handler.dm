@@ -1,5 +1,6 @@
 var/const/CLICK_HANDLER_NONE                 = 0
 var/const/CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT = 1
+var/const/CLICK_HANDLER_SUPPRESS_POPUP_MENU = 2
 var/const/CLICK_HANDLER_ALL                  = (~0)
 
 /*
@@ -29,6 +30,37 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		if (CH.has_mousemove)
 			has_mousemove_click_handler = TRUE
 
+
+/*
+	Sets the state of the user's rightclick menu.
+	If ANYTHING wants to suppress it, then it is suppressed without argument.
+	Otherwise it is available
+*/
+/mob/proc/update_popup_menu()
+	//If theres no client, we can't do anything here
+	if (!client)
+		return
+
+	var/target_status = TRUE
+	var/datum/stack/click_handlers
+
+	click_handlers = src.GetClickHandlers()
+
+	while (click_handlers.Num())
+		var/datum/click_handler/CH = click_handlers.Pop()
+		if (QDELETED(CH))
+			continue
+		if ((CH.flags & CLICK_HANDLER_SUPPRESS_POPUP_MENU))
+			target_status = FALSE
+			//A single false is authoritative, we dont need to check any others
+			break
+
+	/* //Future TODO: Check extensions here
+	if (target_status == TRUE)
+
+	*/
+	client.show_popup_menus = target_status
+
 /datum/click_handler
 	var/mob/user
 	var/flags = 0
@@ -52,9 +84,13 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		cached_cursor = user.client.mouse_pointer_icon
 		user.client.mouse_pointer_icon = cursor_override
 
+
+
 /datum/click_handler/Destroy()
 	if(flags & (CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
 		GLOB.logged_out_event.unregister(user, src, /datum/click_handler/proc/OnMobLogout)
+	if (flags & CLICK_HANDLER_SUPPRESS_POPUP_MENU)
+		user.update_popup_menu()
 	if (cursor_override && user.client)
 		user.client.mouse_pointer_icon = cached_cursor
 
@@ -64,6 +100,8 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	. = ..()
 
 /datum/click_handler/proc/Enter()
+	if (user && (flags & CLICK_HANDLER_SUPPRESS_POPUP_MENU))
+		user.update_popup_menu()
 	return
 
 /datum/click_handler/proc/Exit()
@@ -221,8 +259,9 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		click_handler.Exit()
 
 	click_handler = new new_click_handler_type(arglist(newarguments))
-	click_handler.Enter()
+
 	click_handlers.Push(click_handler)
+	click_handler.Enter()
 
 	update_click_handler_flags()
 	return click_handler
