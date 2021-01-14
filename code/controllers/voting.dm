@@ -276,7 +276,7 @@
 
 		return .
 
-	proc/submit_vote(var/ckey, var/vote, var/weight)
+	proc/submit_vote(var/ckey, vote, weight)
 		if(mode)
 			if(config.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
 				return 0
@@ -304,7 +304,7 @@
 				return vote
 		return 0
 
-	proc/initiate_vote(var/vote_type, var/initiator_key, var/automatic = 0)
+	proc/initiate_vote(var/vote_type, initiator_key, automatic = 0)
 		if(!mode)
 			if(started_time != null && !(check_rights(R_ADMIN) || automatic))
 				var/next_allowed_time = (started_time + config.vote_delay)

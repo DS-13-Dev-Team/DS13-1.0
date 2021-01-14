@@ -267,7 +267,7 @@
 			to_chat(user, "<span class='notice'>You must remain still to interact with \the [src].</span>")
 	return ..()
 
-/obj/machinery/door/firedoor/deconstruct(mob/user, var/moved = FALSE)
+/obj/machinery/door/firedoor/deconstruct(mob/user, moved = FALSE)
 	if (stat & BROKEN)
 		new /obj/item/weapon/circuitboard/broken(src.loc)
 	else

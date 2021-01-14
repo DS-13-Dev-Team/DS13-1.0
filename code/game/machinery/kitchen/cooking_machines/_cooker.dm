@@ -40,7 +40,7 @@
 	if(cooking_obj && Adjacent(usr))
 		to_chat(usr, "You can see \a [cooking_obj] inside.")
 
-/obj/machinery/cooker/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/cooker/attackby(var/obj/item/I, mob/user)
 	set waitfor = 0  //So that any remaining parts of calling proc don't have to wait for the long cooking time ahead.
 
 	if(!cook_type || (stat & (NOPOWER|BROKEN)))
@@ -204,7 +204,7 @@
 
 	..()
 
-/obj/machinery/cooker/proc/cook_mob(var/mob/living/victim, var/mob/user)
+/obj/machinery/cooker/proc/cook_mob(var/mob/living/victim, mob/user)
 	return
 
 /obj/machinery/cooker/proc/change_product_strings(var/obj/item/weapon/reagent_containers/food/snacks/product)

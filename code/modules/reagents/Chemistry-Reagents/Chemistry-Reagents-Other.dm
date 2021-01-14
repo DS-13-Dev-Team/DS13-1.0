@@ -68,7 +68,7 @@
 	color = newdata
 	return
 
-/datum/reagent/paint/mix_data(var/newdata, var/newamount)
+/datum/reagent/paint/mix_data(var/newdata, newamount)
 	var/list/colors = list(0, 0, 0, 0)
 	var/tot_w = 0
 
@@ -107,10 +107,10 @@
 	glass_name = "liquid gold"
 	glass_desc = "It's magic. We don't have to explain it."
 
-/datum/reagent/adminordrazine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/adminordrazine/affect_touch(var/mob/living/carbon/M, alien, removed)
 	affect_blood(M, alien, removed)
 
-/datum/reagent/adminordrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/adminordrazine/affect_blood(var/mob/living/carbon/M, alien, removed)
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
 	M.radiation = 0
@@ -132,7 +132,7 @@
 	M.confused = 0
 	M.sleeping = 0
 	M.jitteriness = 0
-	
+
 /datum/reagent/ds_medicalgelreagent //dead space medical gel chemical
 	name = "Medi-gel"
 	description = "An advanced gel solution that binds damaged tissue and causes rapid repair and regrowth of lost tissue and bone."
@@ -142,14 +142,14 @@
 	scannable = 1
 	metabolism = 1.5
 	overdose = 50
-	
+
 	glass_name = "medi-gel"
 	glass_desc = "An advanced gel solution that binds damaged tissue and causes rapid repair and regrowth of lost tissue and bone."
-	
-/datum/reagent/ds_medicalgelreagent/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+
+/datum/reagent/ds_medicalgelreagent/affect_touch(var/mob/living/carbon/M, alien, removed)
 	affect_blood(M, alien, removed)
 
-/datum/reagent/ds_medicalgelreagent/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/ds_medicalgelreagent/affect_blood(var/mob/living/carbon/M, alien, removed)
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
 	M.radiation = 0
@@ -195,10 +195,10 @@
 	reagent_state = SOLID
 	color = "#b8b8c0"
 
-/datum/reagent/uranium/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/uranium/affect_touch(var/mob/living/carbon/M, alien, removed)
 	affect_ingest(M, alien, removed)
 
-/datum/reagent/uranium/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/uranium/affect_blood(var/mob/living/carbon/M, alien, removed)
 	M.apply_effect(5 * removed, IRRADIATE, blocked = 0)
 
 /datum/reagent/uranium/touch_turf(var/turf/T)
@@ -217,7 +217,7 @@
 	glass_name = "holy water"
 	glass_desc = "An ashen-obsidian-water mix, this solution will alter certain sections of the brain's rationality."
 
-/datum/reagent/water/holywater/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/water/holywater/affect_ingest(var/mob/living/carbon/M, alien, removed)
 	..()
 	if(ishuman(M)) // Any location
 		if(iscultist(M))
@@ -283,11 +283,11 @@
 			remove_self(5)
 	return
 
-/datum/reagent/thermite/touch_mob(var/mob/living/L, var/amount)
+/datum/reagent/thermite/touch_mob(var/mob/living/L, amount)
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 5)
 
-/datum/reagent/thermite/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/thermite/affect_blood(var/mob/living/carbon/M, alien, removed)
 	M.adjustFireLoss(3 * removed)
 
 /datum/reagent/space_cleaner
@@ -314,7 +314,7 @@
 		for(var/mob/living/carbon/slime/M in T)
 			M.adjustToxLoss(rand(5, 10))
 
-/datum/reagent/space_cleaner/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/space_cleaner/affect_touch(var/mob/living/carbon/M, alien, removed)
 	if(M.r_hand)
 		M.r_hand.clean_blood()
 	if(M.l_hand)
@@ -392,7 +392,7 @@
 	reagent_state = LIQUID
 	color = "#808080"
 
-/datum/reagent/nitroglycerin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/nitroglycerin/affect_blood(var/mob/living/carbon/M, alien, removed)
 	..()
 	M.add_chemical_effect(CE_PULSE, 2)
 
@@ -461,7 +461,7 @@
 	color = "#cccccc"
 	metabolism = 0.05 // So that low dosages have a chance to build up in the body.
 
-/datum/reagent/helium/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/helium/affect_blood(var/mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
 	..()
@@ -475,7 +475,7 @@
 	reagent_state = LIQUID
 	color = "#cccccc"
 
-/datum/reagent/oxygen/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/oxygen/affect_blood(var/mob/living/carbon/M, alien, removed)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 6)
 
@@ -487,7 +487,7 @@
 	color = "#cccccc"
 	metabolism = 0.05 // As with helium.
 
-/datum/reagent/carbon_dioxide/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
+/datum/reagent/carbon_dioxide/affect_blood(var/mob/living/carbon/human/M, alien, removed)
 	if(!istype(M) || alien == IS_DIONA)
 		return
 	var/warning_message

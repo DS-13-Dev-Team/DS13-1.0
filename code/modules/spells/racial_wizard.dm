@@ -6,7 +6,7 @@
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "magic rock"
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 3
 	force = 15
 	var/list/potentials = list(
@@ -179,7 +179,7 @@
 	color = "#3366ff"
 	contract_spells = list(/spell/contract/return_master) //somewhat of a necessity due to how many spells they would have after a while.
 
-/obj/item/weapon/contract/apprentice/skrell/New(var/newloc,var/spellbook, var/owner)
+/obj/item/weapon/contract/apprentice/skrell/New(var/newloc,var/spellbook, owner)
 	..()
 	if(istype(spellbook,/obj/item/weapon/spellbook))
 		linked = spellbook

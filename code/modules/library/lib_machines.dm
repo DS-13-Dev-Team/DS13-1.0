@@ -16,7 +16,7 @@
 	density = 1
 	var/obj/item/weapon/book/cache		// Last scanned book
 
-/obj/machinery/libraryscanner/attackby(var/obj/O as obj, var/mob/user as mob)
+/obj/machinery/libraryscanner/attackby(var/obj/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/weapon/book))
 		if(!user.unEquip(O, src))
 			return
@@ -66,7 +66,7 @@
 	anchored = 1
 	density = 1
 
-/obj/machinery/bookbinder/attackby(var/obj/O as obj, var/mob/user as mob)
+/obj/machinery/bookbinder/attackby(var/obj/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/weapon/paper))
 		if(!user.unEquip(O, src))
 			return

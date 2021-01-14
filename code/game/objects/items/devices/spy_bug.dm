@@ -13,7 +13,7 @@
 	slot_flags = SLOT_EARS
 	throwforce = 5.0
 	throw_range = 15
-	
+
 
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1, TECH_ILLEGAL = 3)
 
@@ -48,7 +48,7 @@
 	else
 		..()
 
-/obj/item/device/spy_bug/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
+/obj/item/device/spy_bug/hear_talk(mob/M, msg, verb, datum/language/speaking)
 	radio.hear_talk(M, msg, speaking)
 
 
@@ -95,7 +95,7 @@
 	else
 		return ..()
 
-/obj/item/device/spy_monitor/proc/pair(var/obj/item/device/spy_bug/SB, var/mob/living/user)
+/obj/item/device/spy_monitor/proc/pair(var/obj/item/device/spy_bug/SB, mob/living/user)
 	if(SB.camera in cameras)
 		to_chat(user, "<span class='notice'>\The [SB] has been unpaired from \the [src].</span>")
 		cameras -= SB.camera
@@ -143,7 +143,7 @@
 
 	return 1
 
-/obj/item/device/spy_monitor/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
+/obj/item/device/spy_monitor/hear_talk(mob/M, msg, verb, datum/language/speaking)
 	return radio.hear_talk(M, msg, speaking)
 
 

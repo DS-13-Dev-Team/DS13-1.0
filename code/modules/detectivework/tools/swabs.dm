@@ -9,7 +9,7 @@
 /obj/item/weapon/forensics/swab/proc/is_used()
 	return used
 
-/obj/item/weapon/forensics/swab/attack(var/mob/living/M, var/mob/user)
+/obj/item/weapon/forensics/swab/attack(var/mob/living/M, mob/user)
 
 	if(!ishuman(M))
 		return ..()
@@ -69,7 +69,7 @@
 		return
 	return 1
 
-/obj/item/weapon/forensics/swab/afterattack(var/atom/A, var/mob/user, var/proximity)
+/obj/item/weapon/forensics/swab/afterattack(var/atom/A, mob/user, proximity)
 
 	if(!proximity || istype(A, /obj/machinery/dnaforensics))
 		return
@@ -116,7 +116,7 @@
 		user.visible_message("\The [user] swabs \the [A] for a sample.", "You swab \the [A] for a sample.")
 		set_used(sample_type, A)
 
-/obj/item/weapon/forensics/swab/proc/set_used(var/sample_str, var/atom/source)
+/obj/item/weapon/forensics/swab/proc/set_used(var/sample_str, atom/source)
 	SetName("[initial(name)] ([sample_str] - [source])")
 	desc = "[initial(desc)] The label on the vial reads 'Sample of [sample_str] from [source].'."
 	icon_state = "swab_used"

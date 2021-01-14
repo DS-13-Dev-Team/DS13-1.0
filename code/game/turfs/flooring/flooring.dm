@@ -122,7 +122,7 @@ var/list/flooring_types
 	return FALSE
 
 //Used when someone attacks the floor
-/decl/flooring/proc/attackby(var/obj/item/I, var/mob/user, var/turf/T)
+/decl/flooring/proc/attackby(var/obj/item/I, mob/user, turf/T)
 	return FALSE
 
 /decl/flooring/proc/Entered(mob/living/M as mob)
@@ -194,7 +194,7 @@ var/list/flooring_types
 		return TRUE
 	return FALSE
 
-/decl/flooring/reinforced/plating/under/attackby(var/obj/item/I, var/mob/user, var/turf/T)
+/decl/flooring/reinforced/plating/under/attackby(var/obj/item/I, mob/user, turf/T)
 	if (istype(I, /obj/item/stack/rods))
 		.=TRUE
 		var/obj/item/stack/rods/R = I

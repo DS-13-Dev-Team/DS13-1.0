@@ -98,7 +98,7 @@
 	var/name = "Marker"				//What do we call this spawn location?
 	//TODO: Support for a preview image of the area
 
-/datum/necrospawn/New(var/atom/origin, var/_name)
+/datum/necrospawn/New(var/atom/origin, _name)
 	spawnpoint = origin
 	name = _name
 	id = "\ref[spawnpoint]"
@@ -113,7 +113,7 @@
 /datum/necrospawn_selector/New(var/datum/necroshop/_host)
 	host = _host
 
-/datum/necrospawn_selector/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/necrospawn_selector/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/list/data = list()
 	for (var/datum/necrospawn/N in host.possible_spawnpoints)
 		data["spawnpoints"] += list(list("name" = "[N.name]	[jumplink_public(user, N.spawnpoint)]", "id" = N.id))
@@ -148,7 +148,7 @@
 				return
 
 
-/datum/necroshop/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/necroshop/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	if (!authorised_to_view(user))
 		return
 	var/list/data = content_data.Copy()
@@ -347,7 +347,7 @@
 
 //Attempts to subtract the relevant quantity of biomass from the host marker or whatever else
 //Make sure this is the last step before spawning, it can't be allowed to fail after this
-/datum/necroshop/proc/host_pay_biomass(var/purpose, var/amount)
+/datum/necroshop/proc/host_pay_biomass(var/purpose, amount)
 	//If the cost is zero, don't even trouble the marker, we're sure it can pay
 	if (!amount)
 		return TRUE

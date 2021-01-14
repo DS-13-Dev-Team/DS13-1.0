@@ -46,7 +46,7 @@
 		to_chat(user, "<span class='notice'>The console is locked on to \[[T.loc.name]\].</span>")
 
 
-/obj/machinery/computer/teleporter/attackby(var/obj/I, var/mob/living/user)
+/obj/machinery/computer/teleporter/attackby(var/obj/I, mob/living/user)
 	if(istype(I, /obj/item/weapon/card/data/))
 		var/obj/item/weapon/card/data/C = I
 		if(stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))
@@ -247,7 +247,7 @@
 	overlays.Cut()
 	overlays += image('icons/obj/stationobjs.dmi', icon_state = "controller-wires")
 
-/obj/machinery/teleport/station/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/machinery/teleport/station/attackby(var/obj/item/weapon/W, mob/user)
 	attack_hand(user)
 
 /obj/machinery/teleport/station/attack_ai(var/mob/user)

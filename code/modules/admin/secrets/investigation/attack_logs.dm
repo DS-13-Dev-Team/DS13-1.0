@@ -81,7 +81,7 @@
 		. += af.get_html()
 	. = jointext(.," | ")
 
-/datum/admin_secret_item/investigation/attack_logs/proc/filter_log(user, var/datum/attack_log/al)
+/datum/admin_secret_item/investigation/attack_logs/proc/filter_log(user, datum/attack_log/al)
 	for(var/filter in get_user_filters(user))
 		var/attack_filter/af = filter
 		if(af.filter_attack(al))

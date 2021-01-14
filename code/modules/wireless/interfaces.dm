@@ -45,7 +45,7 @@
 	var/list/connected_devices
 	var/id
 
-/datum/wifi/New(var/new_id, var/obj/O)
+/datum/wifi/New(var/new_id, obj/O)
 	connected_devices = new()
 	id = new_id
 	if(istype(O))
@@ -109,7 +109,7 @@
 	var/datum/wifi/sender/source	//wifi/sender object creating the request
 	var/id							//id tag of the target device(s) to try to connect to
 
-/datum/connection_request/New(var/datum/wifi/sender/sender, var/receiver)
+/datum/connection_request/New(var/datum/wifi/sender/sender, receiver)
 	if(istype(sender))
 		source = sender
 		id = receiver

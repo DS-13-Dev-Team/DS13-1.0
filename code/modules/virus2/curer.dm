@@ -9,7 +9,7 @@
 
 	var/obj/item/weapon/reagent_containers/container = null
 
-/obj/machinery/computer/curer/attackby(var/obj/I as obj, var/mob/user as mob)
+/obj/machinery/computer/curer/attackby(var/obj/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/weapon/reagent_containers))
 		if(!container)
 			if(!user.unEquip(I, src))

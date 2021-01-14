@@ -30,10 +30,10 @@
 	GLOB.death_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/death)
 	user = null
 
-/obj/item/rig_module/healthbar/rig_equipped(var/mob/user, var/slot)
+/obj/item/rig_module/healthbar/rig_equipped(var/mob/user, slot)
 	register_user(user)
 
-/obj/item/rig_module/healthbar/rig_unequipped(var/mob/user, var/slot)
+/obj/item/rig_module/healthbar/rig_unequipped(var/mob/user, slot)
 	unregister_user()
 
 

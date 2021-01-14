@@ -71,7 +71,7 @@
 	spawn(1)
 		dismantle_wall(1)
 
-/turf/simulated/wall/proc/try_touch(var/mob/user, var/rotting)
+/turf/simulated/wall/proc/try_touch(var/mob/user, rotting)
 
 	if(rotting)
 		if(reinf_material)
@@ -106,7 +106,7 @@
 
 	try_touch(user, rotting)
 
-/turf/simulated/wall/attack_generic(var/mob/user, var/damage, var/attack_message, var/wallbreaker)
+/turf/simulated/wall/attack_generic(var/mob/user, damage, attack_message, wallbreaker)
 
 	radiate()
 	if(!istype(user))

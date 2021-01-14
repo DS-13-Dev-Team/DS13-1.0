@@ -14,7 +14,7 @@
 	to_chat(user, "<span class='notice'>Right Click on Movable Atom = Move target into destination</span>")
 	to_chat(user, "<span class='notice'>***********************************************************</span>")
 
-/datum/build_mode/move_into/OnClick(var/atom/movable/A, var/list/parameters)
+/datum/build_mode/move_into/OnClick(var/atom/movable/A, list/parameters)
 	if(parameters["left"])
 		SetDestination(A)
 	if(parameters["right"])

@@ -32,7 +32,7 @@ datum/unit_test/vision_glasses/start_test()
 datum/unit_test/vision_glasses/check_result()
 
 	if(isnull(H) || H.life_tick < 2)
-		return 0       
+		return 0
 
 	if(isnull(H.glasses))
 		fail("Mob doesn't have glasses on")
@@ -80,7 +80,7 @@ datum/unit_test/storage_capacity_test/start_test()
 
 	return 1
 
-/proc/test_storage_capacity(obj/item/weapon/storage/S, var/bad_msg)
+/proc/test_storage_capacity(obj/item/weapon/storage/S, bad_msg)
 	var/bad_tests = 0
 
 	if(!isnull(S.storage_slots) && S.contents.len > S.storage_slots)

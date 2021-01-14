@@ -4,7 +4,7 @@
 	dislocated = -1
 	base_miss_chance = 15	//Small target
 
-/obj/item/organ/external/stump/New(var/mob/living/carbon/holder, var/internal, var/obj/item/organ/external/limb)
+/obj/item/organ/external/stump/New(var/mob/living/carbon/holder, internal, obj/item/organ/external/limb)
 	if(istype(limb))
 		organ_tag = limb.organ_tag
 		body_part = limb.body_part

@@ -190,7 +190,7 @@
 
 	src.loc = T
 
-/obj/item/examine(mob/user, var/distance = -1)
+/obj/item/examine(mob/user, distance = -1)
 	var/size
 	switch(src.w_class)
 		if(ITEM_SIZE_TINY)
@@ -380,7 +380,7 @@
 // slot uses the slot_X defines found in setup.dm
 // for items that can be placed in multiple slots
 // note this isn't called during the initial dressing of a player
-/obj/item/proc/equipped(var/mob/user, var/slot)
+/obj/item/proc/equipped(var/mob/user, slot)
 	hud_layerise()
 	equip_slot = slot
 	if(user.client)	user.client.screen |= src
@@ -417,7 +417,7 @@ var/list/global/slot_flags_enumeration = list(
 //Set disable_warning to 1 if you wish it to not give you outputs.
 //Should probably move the bulk of this into mob code some time, as most of it is related to the definition of slots and not item-specific
 //set force to ignore blocking overwear and occupied slots
-/obj/item/proc/mob_can_equip(var/mob/M, var/slot, var/disable_warning = 0, var/force = 0)
+/obj/item/proc/mob_can_equip(var/mob/M, slot, disable_warning = 0, force = 0)
 	if(!slot) return 0
 	if(!M) return 0
 
@@ -716,7 +716,7 @@ var/list/global/slot_flags_enumeration = list(
 THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 */
 //Looking through a scope or binoculars should /not/ improve your periphereal vision. Still, increase viewsize a tiny bit so that sniping isn't as restricted to NSEW
-/obj/item/proc/zoom(mob/user, var/tileoffset = 14,var/viewsize = 9) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
+/obj/item/proc/zoom(mob/user, tileoffset = 14,var/viewsize = 9) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 	/*
 	if(!user.client)
 		return
@@ -765,7 +765,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	GLOB.stat_set_event.register(user, src, /obj/item/proc/unzoom)
 	*/
 
-/obj/item/proc/zoom_drop(var/obj/item/I, var/mob/user)
+/obj/item/proc/zoom_drop(var/obj/item/I, mob/user)
 	unzoom(user)
 
 /obj/item/proc/unzoom(var/mob/user)
@@ -798,7 +798,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 /obj/item/proc/pwr_drain()
 	return 0 // Process Kill
 
-/obj/item/proc/use_spritesheet(var/bodytype, var/slot, var/icon_state)
+/obj/item/proc/use_spritesheet(var/bodytype, slot, icon_state)
 	if(!sprite_sheets || !sprite_sheets[bodytype])
 		return 0
 	if(slot == slot_r_hand_str || slot == slot_l_hand_str)
@@ -922,7 +922,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 
 //Called when a structure takes damage
-/obj/item/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/item/proc/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	if (!bypass_resist)
 		amount -= resistance
 
@@ -948,7 +948,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 		return TRUE
 
 //Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
-/obj/item/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
+/obj/item/proc/zero_health(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist)
 
 	//To cut down on spam, we'll only display a message for items broken while attached to a mob, So that we don't get a million messages from an explosion
 	if (ismob(loc))
@@ -997,12 +997,12 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	return delay
 
 
-/obj/item/proc/store_item(var/obj/item/input, var/mob/user)
+/obj/item/proc/store_item(var/obj/item/input, mob/user)
 	return FALSE
 
 
 
-/obj/item/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+/obj/item/repair(var/repair_power, datum/repair_source, mob/user)
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()

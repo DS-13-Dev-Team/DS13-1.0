@@ -45,7 +45,7 @@ var/next_station_date_change = 1 DAY
 	return time2text(station_time_in_ticks, "hh:mm:ss")
 
 /* Returns 1 if it is the selected month and day */
-proc/isDay(var/month, var/day)
+proc/isDay(var/month, day)
 	if(isnum(month) && isnum(day))
 		var/MM = text2num(time2text(world.timeofday, "MM")) // get the current month
 		var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day
@@ -112,7 +112,7 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 #undef DELTA_CALC
 
 
-/proc/descriptive_time(var/time, var/divider = ", ")
+/proc/descriptive_time(var/time, divider = ", ")
 	var/list/components = list()
 	if (time >= 1 HOUR)
 		var/hours = Floor(time / 36000)

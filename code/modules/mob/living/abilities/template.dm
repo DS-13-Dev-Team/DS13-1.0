@@ -26,7 +26,7 @@
 
 
 
-/datum/extension/<name>/New(var/mob/user, var/duration, var/cooldown)
+/datum/extension/<name>/New(var/mob/user, duration, cooldown)
 	.=..()
 	if (isliving(user))
 		src.user = user

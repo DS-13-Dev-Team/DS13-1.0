@@ -3,7 +3,7 @@
 /proc/_abs(A)
 	return abs(A)
 
-/proc/_animate(var/atom/A, var/variables, var/time = 10, var/loop = 1, var/easing = LINEAR_EASING)
+/proc/_animate(var/atom/A, variables, time = 10, loop = 1, easing = LINEAR_EASING)
 	var/atom/movable/I = new
 	I.appearance = A.appearance
 
@@ -159,19 +159,19 @@
 
 	L += args.Copy(2)
 
-/proc/_list_copy(var/list/L, var/Start = 1, var/End = 0)
+/proc/_list_copy(var/list/L, Start = 1, End = 0)
 	return L.Copy(Start, End)
 
-/proc/_list_cut(var/list/L, var/Start = 1, var/End = 0)
+/proc/_list_cut(var/list/L, Start = 1, End = 0)
 	L.Cut(Start, End)
 
-/proc/_list_find(var/list/L, var/Elem, var/Start = 1, var/End = 0)
+/proc/_list_find(var/list/L, Elem, Start = 1, End = 0)
 	return L.Find(Elem, Start, End)
 
-/proc/_list_insert(var/list/L, var/Index, var/Item)
+/proc/_list_insert(var/list/L, Index, Item)
 	return L.Insert(Index, Item)
 
-/proc/_list_join(var/list/L, var/Glue, var/Start = 0, var/End = 1)
+/proc/_list_join(var/list/L, Glue, Start = 0, End = 1)
 	return L.Join(Glue, Start, End)
 
 /proc/_list_remove(var/list/L, ...)
@@ -180,5 +180,5 @@
 
 	L -= args.Copy(2)
 
-/proc/_list_swap(var/list/L, var/Index1, var/Index2)
+/proc/_list_swap(var/list/L, Index1, Index2)
 	L.Swap(Index1, Index2)

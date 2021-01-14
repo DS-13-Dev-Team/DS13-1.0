@@ -17,7 +17,7 @@
 		var/mob/living/L = user
 		L.open_craft_menu()
 
-/obj/structure/table/workbench/consume_resources(var/timespent, var/user)
+/obj/structure/table/workbench/consume_resources(var/timespent, user)
 	var/time_in_seconds = timespent * 0.1 //This line is solely to make things more readable
 	use_power(time_in_seconds * active_power_usage)
 
@@ -36,7 +36,7 @@
 	var/power_channel = EQUIP
 
 
-/obj/structure/table/workbench/proc/use_power(var/amount, var/chan = -1)
+/obj/structure/table/workbench/proc/use_power(var/amount, chan = -1)
 	var/area/A = get_area(src)		// make sure it's in an area
 	if(!A || !isarea(A))
 		return
@@ -46,7 +46,7 @@
 
 
 //As above, more stuff copypasted from power.dm
-/obj/structure/table/workbench/proc/powered(var/chan = -1, var/area/check_area = null)
+/obj/structure/table/workbench/proc/powered(var/chan = -1, area/check_area = null)
 
 	if(!src.loc)
 		return 0
@@ -87,7 +87,7 @@
 	else
 		return 0
 
-/obj/structure/table/workbench/get_tool_type(var/mob/living/user, var/list/required_qualities, var/atom/use_on, var/datum/callback/CB)
+/obj/structure/table/workbench/get_tool_type(var/mob/living/user, list/required_qualities, atom/use_on, datum/callback/CB)
 	if (powered())
 		.=..()
 	else

@@ -8,7 +8,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 
 //Version of view() which ignores darkness, because BYOND doesn't have it.
-/proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
+/proc/dview(var/range = world.view, center, invis_flags = 0)
 	if(!center)
 		return
 
@@ -97,7 +97,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 // Returns a list of mobs and/or objects in range of R from source. Used in radio and say code.
 
-/proc/get_mobs_or_objects_in_view(var/R, var/atom/source, var/include_mobs = 1, var/include_objects = 1)
+/proc/get_mobs_or_objects_in_view(var/R, atom/source, include_mobs = 1, include_objects = 1)
 
 	var/turf/T = get_turf(source)
 	var/list/hear = list()
@@ -158,7 +158,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 					. |= M		// Since we're already looping through mobs, why bother using |= ? This only slows things down.
 	return .
 
-/proc/get_mobs_and_objs_in_view_fast(var/turf/T, var/range, var/list/mobs, var/list/objs, var/checkghosts = null)
+/proc/get_mobs_and_objs_in_view_fast(var/turf/T, range, list/mobs, list/objs, checkghosts = null)
 
 	var/list/hear = dview(range,T,INVISIBILITY_MAXIMUM)
 	var/list/hearturfs = list()
@@ -187,7 +187,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 #define SIGN(X) ((X<0)?-1:1)
 
-proc/isInSight(var/atom/A, var/atom/B)
+proc/isInSight(var/atom/A, atom/B)
 	var/turf/Aturf = get_turf(A)
 	var/turf/Bturf = get_turf(B)
 
@@ -289,7 +289,7 @@ proc
 
 	return dist
 
-/proc/get_dist_3D(var/atom/A, var/atom/B)
+/proc/get_dist_3D(var/atom/A, atom/B)
 	var/dist = get_dist_euclidian(A, B)
 
 	//If on different zlevels, we do some extra math
@@ -339,7 +339,7 @@ proc
 	Special Check: A callback for additional specific checks
 	Error User:	A user to show failure messages to, if we fail
 */
-/proc/get_valid_target(var/atom/origin, var/radius, var/list/valid_types = list(/turf), var/list/allied = null, var/datum/visualnet/visualnet = null, var/require_corruption = FALSE, var/view_limit = FALSE, var/LOS_block = FALSE, var/num_required = 1, var/datum/callback/special_check = null, var/mob/error_user)
+/proc/get_valid_target(var/atom/origin, radius, list/valid_types = list(/turf), list/allied = null, datum/visualnet/visualnet = null, require_corruption = FALSE, view_limit = FALSE, LOS_block = FALSE, num_required = 1, datum/callback/special_check = null, mob/error_user)
 	var/list/results = list()
 	var/list/haystack
 	if (view_limit)
@@ -434,7 +434,7 @@ proc
 
 //This proc attempts to get all mobs who are able to see this atom
 //Set required type to /mob/living to exclude ghosts
-/atom/proc/get_viewers(var/maxrange = 20, var/required_type = /mob, var/once_only = FALSE)
+/atom/proc/get_viewers(var/maxrange = 20, required_type = /mob, once_only = FALSE)
 	var/list/our_viewers = list()
 	//Make this variable but don't generate it yet
 	var/list/view_area
@@ -509,7 +509,7 @@ proc
 	If no target, we will take the user's aimed zone and grab the height from GLOB.organ_altitudes
 	If we're aiming at a human target, we'll take the aimed zone, and use it to read a height from the target's species' has limbs
 */
-/proc/get_aiming_height(var/mob/user, var/mob/living/carbon/human/target)
+/proc/get_aiming_height(var/mob/user, mob/living/carbon/human/target)
 	if (!user)
 		return GLOB.organ_altitudes[BP_CHEST]
 

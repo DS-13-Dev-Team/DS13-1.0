@@ -14,7 +14,7 @@
 	image_cache_for_overlays = list()
 
 // Returns an image bound to the given atom and which is typically applied to client.images.
-/repository/images/proc/atom_image(var/atom/holder, var/icon, var/icon_state, var/plane = FLOAT_PLANE, var/layer = FLOAT_LAYER)
+/repository/images/proc/atom_image(var/atom/holder, icon, icon_state, plane = FLOAT_PLANE, layer = FLOAT_LAYER)
 	var/atom_cache_list = image_cache_for_atoms[holder]
 	if(!atom_cache_list)
 		atom_cache_list = list()
@@ -40,7 +40,7 @@
 	GLOB.destroyed_event.unregister(destroyed, src, /repository/images/proc/atom_destroyed)
 
 // Returns an image not bound to anything and which is typically applied as an overlay/underlay.
-/repository/images/proc/overlay_image(var/icon, var/icon_state, var/alpha, var/appearance_flags, var/color, var/dir, var/plane = FLOAT_PLANE, var/layer = FLOAT_LAYER)
+/repository/images/proc/overlay_image(var/icon, icon_state, alpha, appearance_flags, color, dir, plane = FLOAT_PLANE, layer = FLOAT_LAYER)
 	var/cache_key = "[icon]-[icon_state]-[alpha]-[appearance_flags]-[color]-[dir]-[plane]-[layer]"
 	. = image_cache_for_overlays[cache_key]
 	if(!.)

@@ -24,7 +24,7 @@
 	return ..()
 
 //when thrown on impact, bottles smash and spill their contents
-/obj/item/weapon/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, var/speed)
+/obj/item/weapon/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, speed)
 	..()
 
 	var/mob/M = thrower
@@ -113,7 +113,7 @@
 	else
 		set_light(0)
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/weapon/reagent_containers/food/drinks/bottle/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	var/blocked = ..()
 
 	if(user.a_intent != I_HURT)
@@ -155,7 +155,7 @@
 	icon_state = "broken_bottle"
 	force = 9
 	throwforce = 5
-	
+
 	throw_range = 5
 	item_state = "beer"
 	attack_verb = list("stabbed", "slashed", "attacked")

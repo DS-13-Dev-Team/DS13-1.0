@@ -32,7 +32,7 @@
 	cost_per_move = 200	// W
 	var/obj/item/weapon/cell/cell
 
-/obj/item/weapon/engine/electric/attackby(var/obj/item/I, var/mob/user)
+/obj/item/weapon/engine/electric/attackby(var/obj/item/I, mob/user)
 	if(istype(I,/obj/item/weapon/cell))
 		if(cell)
 			to_chat(user, "<span class='warning'>There is already a cell in \the [src].</span>")
@@ -88,7 +88,7 @@
 	temp_reagents_holder.create_reagents(15)
 	temp_reagents_holder.atom_flags |= ATOM_FLAG_OPEN_CONTAINER
 
-/obj/item/weapon/engine/thermal/attackby(var/obj/item/I, var/mob/user)
+/obj/item/weapon/engine/thermal/attackby(var/obj/item/I, mob/user)
 	if(istype(I,/obj/item/weapon/reagent_containers) && I.is_open_container())
 		if(istype(I,/obj/item/weapon/reagent_containers/food/snacks) || istype(I,/obj/item/weapon/reagent_containers/pill))
 			return 0

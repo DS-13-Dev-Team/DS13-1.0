@@ -54,7 +54,7 @@
 	else
 		SetName("[initial(name)] ([label_text])")
 
-/obj/item/weapon/reagent_containers/proc/standard_dispenser_refill(var/mob/user, var/obj/structure/reagent_dispensers/target) // This goes into afterattack
+/obj/item/weapon/reagent_containers/proc/standard_dispenser_refill(var/mob/user, obj/structure/reagent_dispensers/target) // This goes into afterattack
 	if(!istype(target))
 		return 0
 
@@ -70,7 +70,7 @@
 	to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")
 	return 1
 
-/obj/item/weapon/reagent_containers/proc/standard_splash_mob(var/mob/user, var/mob/target) // This goes into afterattack
+/obj/item/weapon/reagent_containers/proc/standard_splash_mob(var/mob/user, mob/target) // This goes into afterattack
 	if(!istype(target))
 		return
 
@@ -96,16 +96,16 @@
 /obj/item/weapon/reagent_containers/proc/self_feed_message(var/mob/user)
 	to_chat(user, "<span class='notice'>You eat \the [src]</span>")
 
-/obj/item/weapon/reagent_containers/proc/other_feed_message_start(var/mob/user, var/mob/target)
+/obj/item/weapon/reagent_containers/proc/other_feed_message_start(var/mob/user, mob/target)
 	user.visible_message("<span class='warning'>[user] is trying to feed [target] \the [src]!</span>")
 
-/obj/item/weapon/reagent_containers/proc/other_feed_message_finish(var/mob/user, var/mob/target)
+/obj/item/weapon/reagent_containers/proc/other_feed_message_finish(var/mob/user, mob/target)
 	user.visible_message("<span class='warning'>[user] has fed [target] \the [src]!</span>")
 
 /obj/item/weapon/reagent_containers/proc/feed_sound(var/mob/user)
 	return
 
-/obj/item/weapon/reagent_containers/proc/standard_feed_mob(var/mob/user, var/mob/target) // This goes into attack
+/obj/item/weapon/reagent_containers/proc/standard_feed_mob(var/mob/user, mob/target) // This goes into attack
 	if(!istype(target))
 		return 0
 
@@ -160,7 +160,7 @@
 
 	return 0
 
-/obj/item/weapon/reagent_containers/proc/standard_pour_into(var/mob/user, var/atom/target, var/quantity_override = null) // This goes into afterattack and yes, it's atom-level
+/obj/item/weapon/reagent_containers/proc/standard_pour_into(var/mob/user, atom/target, quantity_override = null) // This goes into afterattack and yes, it's atom-level
 	if(!target.reagents)
 		return 0
 

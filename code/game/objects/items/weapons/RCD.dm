@@ -15,7 +15,7 @@
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	force = 10.0
 	throwforce = 10.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
@@ -93,7 +93,7 @@
 	work_id++
 	work_mode.do_work(src, A, user)
 
-/obj/item/weapon/rcd/proc/useResource(var/amount, var/mob/user)
+/obj/item/weapon/rcd/proc/useResource(var/amount, mob/user)
 	if(stored_matter < amount)
 		return 0
 	stored_matter -= amount
@@ -125,7 +125,7 @@
 /obj/item/weapon/rcd/borg
 	canRwall = 1
 
-/obj/item/weapon/rcd/borg/useResource(var/amount, var/mob/user)
+/obj/item/weapon/rcd/borg/useResource(var/amount, mob/user)
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user
 		if(R.cell)
@@ -142,7 +142,7 @@
 	return (user.Adjacent(T) && !user.incapacitated())
 
 
-/obj/item/weapon/rcd/mounted/useResource(var/amount, var/mob/user)
+/obj/item/weapon/rcd/mounted/useResource(var/amount, mob/user)
 	var/cost = amount*130 //so that a rig with default powercell can build ~2.5x the stuff a fully-loaded RCD can.
 	if(istype(loc,/obj/item/rig_module))
 		var/obj/item/rig_module/module = loc
@@ -166,7 +166,7 @@
 	var/handles_type
 	var/work_type
 
-/decl/hierarchy/rcd_mode/proc/do_work(var/obj/item/weapon/rcd/rcd, var/atom/target, var/user)
+/decl/hierarchy/rcd_mode/proc/do_work(var/obj/item/weapon/rcd/rcd, atom/target, user)
 	for(var/child in children)
 		var/decl/hierarchy/rcd_mode/rcdm = child
 		if(!rcdm.can_handle_work(rcd, target))
@@ -189,7 +189,7 @@
 
 	return FALSE
 
-/decl/hierarchy/rcd_mode/proc/can_handle_work(var/obj/item/weapon/rcd/rcd, var/atom/target)
+/decl/hierarchy/rcd_mode/proc/can_handle_work(var/obj/item/weapon/rcd/rcd, atom/target)
 	return istype(target, handles_type)
 
 /decl/hierarchy/rcd_mode/proc/do_handle_work(var/atom/target)
@@ -205,7 +205,7 @@
 /decl/hierarchy/rcd_mode/proc/get_work_result(var/atom/target)
 	return work_type
 
-/decl/hierarchy/rcd_mode/proc/work_message(var/atom/target, var/mob/user, var/rcd)
+/decl/hierarchy/rcd_mode/proc/work_message(var/atom/target, mob/user, rcd)
 	var/message
 	if(work_type)
 		var/atom/work = work_type
@@ -226,7 +226,7 @@
 	handles_type = /turf/simulated/floor
 	work_type = /obj/machinery/door/airlock
 
-/decl/hierarchy/rcd_mode/airlock/basic/can_handle_work(var/rcd, var/turf/target)
+/decl/hierarchy/rcd_mode/airlock/basic/can_handle_work(var/rcd, turf/target)
 	return ..() && !target.contains_dense_objects() && !(locate(/obj/machinery/door/airlock) in target)
 
 /*
@@ -240,7 +240,7 @@
 	delay = 2 SECONDS
 	work_type = /turf/simulated/floor/airless
 
-/decl/hierarchy/rcd_mode/floor_and_walls/base_turf/can_handle_work(var/rcd, var/turf/target)
+/decl/hierarchy/rcd_mode/floor_and_walls/base_turf/can_handle_work(var/rcd, turf/target)
 	return istype(target) && (isspace(target) || istype(target, get_base_turf_by_area(target)))
 
 /decl/hierarchy/rcd_mode/floor_and_walls/floor_turf
@@ -255,7 +255,7 @@
 /decl/hierarchy/rcd_mode/deconstruction
 	name = "Deconstruction"
 
-/decl/hierarchy/rcd_mode/deconstruction/work_message(var/atom/target, var/mob/user, var/rcd)
+/decl/hierarchy/rcd_mode/deconstruction/work_message(var/atom/target, mob/user, rcd)
 	user.visible_message("<span class='warning'>\The [user] is using \a [rcd] to deconstruct \the [target]!</span>", "<span class='warning'>You are deconstructing \the [target]!</span>")
 
 /decl/hierarchy/rcd_mode/deconstruction/airlock
@@ -277,5 +277,5 @@
 	handles_type = /turf/simulated/wall
 	work_type = /turf/simulated/floor
 
-/decl/hierarchy/rcd_mode/deconstruction/wall/can_handle_work(var/obj/item/weapon/rcd/rcd, var/turf/simulated/wall/target)
+/decl/hierarchy/rcd_mode/deconstruction/wall/can_handle_work(var/obj/item/weapon/rcd/rcd, turf/simulated/wall/target)
 	return ..() && (rcd.canRwall || !target.reinf_material)

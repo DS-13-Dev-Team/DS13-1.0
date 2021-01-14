@@ -163,7 +163,7 @@
 			target_mob = null
 
 
-/mob/living/simple_animal/hostile/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_animal/hostile/attackby(var/obj/item/O, mob/user)
 	var/oldhealth = health
 	. = ..()
 	if(health < oldhealth && !incapacitated(INCAPACITATION_KNOCKOUT))
@@ -210,7 +210,7 @@
 	return
 
 
-/mob/living/simple_animal/hostile/proc/Shoot(var/target, var/start, var/user, var/bullet = 0)
+/mob/living/simple_animal/hostile/proc/Shoot(var/target, start, user, bullet = 0)
 	if(target == start)
 		return
 

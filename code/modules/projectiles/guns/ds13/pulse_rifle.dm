@@ -149,11 +149,11 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 		exploded = TRUE
 		explosion(2, 2)
 
-/obj/item/projectile/bullet/impact_grenade/on_hit(var/atom/target, var/blocked = 0)
+/obj/item/projectile/bullet/impact_grenade/on_hit(var/atom/target, blocked = 0)
 	detonate()
 	return 1
 
-/obj/item/projectile/bullet/impact_grenade/on_impact(var/atom/target, var/blocked = 0)
+/obj/item/projectile/bullet/impact_grenade/on_impact(var/atom/target, blocked = 0)
 	detonate()
 	return 1
 

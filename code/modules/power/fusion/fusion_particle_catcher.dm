@@ -18,7 +18,7 @@
 	mysize = newsize
 	UpdateSize()
 
-/obj/effect/fusion_particle_catcher/proc/AddParticles(var/name, var/quantity = 1)
+/obj/effect/fusion_particle_catcher/proc/AddParticles(var/name, quantity = 1)
 	if(parent && parent.size >= mysize)
 		parent.AddParticles(name, quantity)
 		return 1
@@ -37,5 +37,5 @@
 	update_icon()
 	return 0
 
-/obj/effect/fusion_particle_catcher/CanPass(var/atom/movable/mover, var/turf/target, var/height=0, var/air_group=0)
+/obj/effect/fusion_particle_catcher/CanPass(var/atom/movable/mover, turf/target, height=0, air_group=0)
 	return ismob(mover)

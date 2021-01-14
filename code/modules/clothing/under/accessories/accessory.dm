@@ -61,7 +61,7 @@
 			return overlay_image(use_sprite_sheet, tmp_icon_state, color, RESET_COLOR)
 
 //when user attached an accessory to S
-/obj/item/clothing/accessory/proc/on_attached(var/obj/item/clothing/S, var/mob/user)
+/obj/item/clothing/accessory/proc/on_attached(var/obj/item/clothing/S, mob/user)
 	if(!istype(S))
 		return
 	has_suit = S

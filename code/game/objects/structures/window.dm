@@ -51,7 +51,7 @@
 		else
 			to_chat(user, "<span class='notice'>There is a thick layer of silicate covering it.</span>")
 
-/obj/structure/window/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/structure/window/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	playsound(loc, hitsound, 100, 1)
 	.=..()
 
@@ -175,7 +175,7 @@
 /obj/structure/window/meddle()
 	playsound(src.loc, 'sound/effects/glassknock.ogg', VOLUME_HIGH, 1)
 
-/obj/structure/window/attack_generic(var/mob/user, var/damage, var/attack_verb, var/environment_smash)
+/obj/structure/window/attack_generic(var/mob/user, damage, attack_verb, environment_smash)
 	if(environment_smash >= 1)
 		damage = max(damage, 10)
 
@@ -239,7 +239,7 @@
 		..()
 	return
 
-/obj/structure/window/proc/hit(var/damage, var/sound_effect = 1)
+/obj/structure/window/proc/hit(var/damage, sound_effect = 1)
 	if(reinf) damage *= 0.5
 	take_damage(damage)
 	return
@@ -388,7 +388,7 @@
 				I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
 			overlays += I
 
-/obj/structure/window/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/obj/structure/window/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	if(exposed_temperature > maximal_heat)
 		hit(damage_per_fire_tick, 0)
 	..()

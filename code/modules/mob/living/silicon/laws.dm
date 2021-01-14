@@ -17,12 +17,12 @@
 /mob/living/silicon/proc/has_zeroth_law()
 	return laws.zeroth_law != null
 
-/mob/living/silicon/proc/set_zeroth_law(var/law, var/law_borg)
+/mob/living/silicon/proc/set_zeroth_law(var/law, law_borg)
 	laws_sanity_check()
 	laws.set_zeroth_law(law, law_borg)
 	log_law("has given [src] the zeroth law: '[law]'[law_borg ? " / '[law_borg]'" : ""]")
 
-/mob/living/silicon/robot/set_zeroth_law(var/law, var/law_borg)
+/mob/living/silicon/robot/set_zeroth_law(var/law, law_borg)
 	..()
 	if(tracking_entities)
 		to_chat(src, "<span class='warning'>Internal camera is currently being accessed.</span>")
@@ -37,7 +37,7 @@
 	laws.add_inherent_law(law)
 	log_law("has given [src] the inherent law: [law]")
 
-/mob/living/silicon/proc/add_supplied_law(var/number, var/law)
+/mob/living/silicon/proc/add_supplied_law(var/number, law)
 	laws_sanity_check()
 	laws.add_supplied_law(number, law)
 	log_law("has given [src] the supplied law: [law]")
@@ -78,7 +78,7 @@
 
 	dostatelaws(lawchannel, prefix, laws)
 
-/mob/living/silicon/proc/dostatelaws(var/method, var/prefix, var/datum/ai_laws/laws)
+/mob/living/silicon/proc/dostatelaws(var/method, prefix, datum/ai_laws/laws)
 	if(stating_laws[prefix])
 		to_chat(src, "<span class='notice'>[method]: Already stating laws using this communication method.</span>")
 		return
@@ -96,7 +96,7 @@
 		to_chat(src, "<span class='danger'>[method]: Unable to state laws. Communication method unavailable.</span>")
 	stating_laws[prefix] = 0
 
-/mob/living/silicon/proc/statelaw(var/law, var/mob/living/L = src)
+/mob/living/silicon/proc/statelaw(var/law, mob/living/L = src)
 	if(L.say(law))
 		sleep(10)
 		return 1

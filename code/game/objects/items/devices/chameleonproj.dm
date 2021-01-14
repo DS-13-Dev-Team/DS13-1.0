@@ -5,7 +5,7 @@
 	slot_flags = SLOT_BELT
 	item_state = "electronic"
 	throwforce = 5.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_ILLEGAL = 4, TECH_MAGNET = 4)
@@ -91,7 +91,7 @@
 	var/can_move = 1
 	var/obj/item/device/chameleon/master = null
 
-/obj/effect/dummy/chameleon/proc/activate(var/obj/O, var/mob/M, new_icon, new_iconstate, new_overlays, var/obj/item/device/chameleon/C)
+/obj/effect/dummy/chameleon/proc/activate(var/obj/O, mob/M, new_icon, new_iconstate, new_overlays, obj/item/device/chameleon/C)
 	name = O.name
 	desc = O.desc
 	icon = new_icon

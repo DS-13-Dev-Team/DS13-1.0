@@ -26,7 +26,7 @@
 	icon_state = "blood"
 	damage_type = BRUTE
 
-/obj/item/projectile/blood_shard/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/item/projectile/blood_shard/on_hit(var/atom/movable/target, blocked = 0)
 	if(..())
 		if(istype(target, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = target

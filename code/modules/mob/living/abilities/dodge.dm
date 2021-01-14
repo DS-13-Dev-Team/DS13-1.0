@@ -26,11 +26,11 @@
 /***********************
 	Access Proc
 ************************/
-/mob/living/proc/dodge_ability(var/_duration, var/_cooldown, var/_power)
+/mob/living/proc/dodge_ability(var/_duration, _cooldown, _power)
 	if (can_dodge())
 		set_extension(src, /datum/extension/dodge, _duration,_cooldown,_power)
 
-/datum/extension/dodge/New(var/mob/living/_user, var/_duration, var/_cooldown, var/_power)
+/datum/extension/dodge/New(var/mob/living/_user, _duration, _cooldown, _power)
 	.=..()
 	user = _user
 	duration = _duration

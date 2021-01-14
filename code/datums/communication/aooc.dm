@@ -7,7 +7,7 @@
 	mute_setting = MUTE_AOOC
 	show_preference_setting = /datum/client_preference/show_aooc
 
-/decl/communication_channel/aooc/can_communicate(var/A, var/message)
+/decl/communication_channel/aooc/can_communicate(var/A, message)
 	. = ..()
 	if(!.)
 		return
@@ -21,7 +21,7 @@
 				to_chat(C, "<span class='danger'>You must be an antag to use [name].</span>")
 				return FALSE
 
-/decl/communication_channel/aooc/do_communicate(var/A, var/message, var/sender_override = null)
+/decl/communication_channel/aooc/do_communicate(var/A, message, sender_override = null)
 	var/datum/admins/holder
 
 	var/player_display = ""

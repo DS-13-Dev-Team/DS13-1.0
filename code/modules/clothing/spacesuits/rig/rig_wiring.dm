@@ -15,7 +15,7 @@
  * Interface lock can be pulsed to toggle whether or not the interface can be accessed.
  */
 
-/datum/wires/rig/UpdateCut(var/index, var/mended)
+/datum/wires/rig/UpdateCut(var/index, mended)
 
 	var/obj/item/weapon/rig/rig = holder
 	switch(index)

@@ -21,7 +21,7 @@
 /obj/item/weapon/gun/launcher/money/hacked
 	emagged = 1
 
-/obj/item/weapon/gun/launcher/money/proc/vomit_cash(var/mob/vomit_onto, var/projectile_vomit)
+/obj/item/weapon/gun/launcher/money/proc/vomit_cash(var/mob/vomit_onto, projectile_vomit)
 	var/bundle_worth = Floor(receptacle_value / 10)
 	var/turf/T = get_turf(vomit_onto)
 	for(var/i = 1 to 10)
@@ -157,7 +157,7 @@
 
 	src.make_it_rain(user)
 
-/obj/item/weapon/gun/launcher/money/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/weapon/gun/launcher/money/emag_act(var/remaining_charges, mob/user)
 	// Overloads the motors, causing it to shoot money harder and do harm.
 	if(!emagged)
 		emagged = 1

@@ -97,7 +97,7 @@
 			to_chat(user, span("danger", "The fuel contamination warning light is blinking!"))
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
+/obj/item/weapon/gun/spray/hydrazine_torch/can_fire(atom/target, mob/living/user, clickparams, silent = FALSE)
 	.=..()
 
 	if (.)
@@ -120,7 +120,7 @@
 
 
 //If the pilot light isn't on when we fire, it will be turned on, at the cost of a significant time delay
-/obj/item/weapon/gun/spray/hydrazine_torch/pre_fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
+/obj/item/weapon/gun/spray/hydrazine_torch/pre_fire(var/atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	//Specific check here, we're gonna set it to an interim value
 	if (pilot_light != TRUE)
 		toggle_pilot_light()
@@ -215,7 +215,7 @@
 	return pilot_light
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/proc/set_pilot_light(var/state, var/update = TRUE)
+/obj/item/weapon/gun/spray/hydrazine_torch/proc/set_pilot_light(var/state, update = TRUE)
 	if (pilot_light == state)
 		return
 
@@ -256,7 +256,7 @@
 	.=..()
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/load_ammo(A, var/mob/user)
+/obj/item/weapon/gun/spray/hydrazine_torch/load_ammo(A, mob/user)
 	if (istype(A, /obj/item/weapon/reagent_containers/glass/fuel_tank))
 		if (tank && tank.loc == src)
 			to_chat(user, SPAN_WARNING("The [src] already has a tank installed, remove it first!"))
@@ -416,7 +416,7 @@
 
 
 //To save processing, lets not recheck the fuel unless something other than our designated fuel went in or out
-/obj/item/weapon/reagent_containers/glass/fuel_tank/on_reagent_change(var/reagent_type, var/delta)
+/obj/item/weapon/reagent_containers/glass/fuel_tank/on_reagent_change(var/reagent_type, delta)
 	if (reagent_type != fueltype)
 		check_fuel_type_and_contamination()
 

@@ -12,7 +12,7 @@
 
 
 
-/datum/extension/swing/arm/New(var/atom/user, var/atom/source, var/atom/target, var/angle = 90, var/range = 3, var/duration = 1 SECOND, var/windup = 0, var/cooldown = 0,  var/effect_type, var/damage = 1, var/damage_flags = 0, var/stages = 8, var/swing_direction = CLOCKWISE)
+/datum/extension/swing/arm/New(var/atom/user, atom/source, atom/target, angle = 90, range = 3, duration = 1 SECOND, windup = 0, cooldown = 0,  var/effect_type, damage = 1, damage_flags = 0, stages = 8, swing_direction = CLOCKWISE)
 	if (ismob(user))
 		var/mob/M = user
 		swing_direction = M.get_swing_dir()

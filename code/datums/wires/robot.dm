@@ -19,7 +19,7 @@ var/const/BORG_WIRE_CAMERA = 16
 	. += text("<br>\n[(R.lockcharge ? "The lockdown light is on." : "The lockdown light is off.")]")
 	return .
 
-/datum/wires/robot/UpdateCut(var/index, var/mended)
+/datum/wires/robot/UpdateCut(var/index, mended)
 
 	var/mob/living/silicon/robot/R = holder
 	switch(index)

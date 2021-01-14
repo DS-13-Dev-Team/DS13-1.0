@@ -1,4 +1,4 @@
-/mob/living/silicon/say(var/message, var/sanitize = 1)
+/mob/living/silicon/say(var/message, sanitize = 1)
 	return ..(sanitize ? sanitize(message) : message)
 
 /mob/living/silicon/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)

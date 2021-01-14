@@ -52,7 +52,7 @@
 	add_fingerprint(user)
 	user.set_machine(src)
 
-/obj/machinery/computer/gyrotron_control/Topic(var/href, var/list/href_list)
+/obj/machinery/computer/gyrotron_control/Topic(var/href, list/href_list)
 	if((. = ..()))
 		return
 
@@ -86,7 +86,7 @@
 
 	return 0
 
-/obj/machinery/computer/gyrotron_control/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/computer/gyrotron_control/attackby(var/obj/item/W, mob/user)
 	if(isMultitool(W))
 		var/new_ident = input("Enter a new ident tag.", "Gyrotron Control", id_tag) as null|text
 		if(new_ident && user.Adjacent(src))

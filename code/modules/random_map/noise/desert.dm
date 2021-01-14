@@ -18,7 +18,7 @@
 		else
 			return /turf/simulated/floor/beach/sand/desert
 
-/datum/random_map/noise/desert/get_additional_spawns(var/value, var/turf/T)
+/datum/random_map/noise/desert/get_additional_spawns(var/value, turf/T)
 	var/val = min(9,max(0,round((value/cell_range)*10)))
 	if(isnull(val)) val = 0
 	switch(val)

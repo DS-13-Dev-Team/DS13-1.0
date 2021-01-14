@@ -11,7 +11,7 @@
 	var/title
 	var/vector2/dimensions
 
-/datum/extension/interactive/New(var/datum/holder, var/host_predicates = list(), var/user_predicates = list())
+/datum/extension/interactive/New(var/datum/holder, host_predicates = list(), user_predicates = list())
 	..()
 
 	src.host_predicates = host_predicates ? host_predicates : list()
@@ -36,17 +36,17 @@
 
 	return STATUS_INTERACTIVE
 
-/datum/extension/interactive/proc/extension_act(var/href, var/list/href_list, var/mob/user)
+/datum/extension/interactive/proc/extension_act(var/href, list/href_list, mob/user)
 	return extension_status(user) == STATUS_CLOSE
 
-/datum/extension/interactive/Topic(var/href, var/list/href_list)
+/datum/extension/interactive/Topic(var/href, list/href_list)
 	if(..())
 		return TRUE
 	return extension_act(href, href_list, usr)
 
 
 
-/datum/extension/interactive/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/extension/interactive/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 
 	data = content_data
 	data += ui_data(user)

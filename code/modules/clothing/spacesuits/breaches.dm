@@ -46,7 +46,7 @@
 	if(patched)
 		descriptor = "patched [descriptor]"
 
-/obj/item/clothing/suit/space/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+/obj/item/clothing/suit/space/repair(var/repair_power, datum/repair_source, mob/user)
 	.=..()
 	repair_breaches(BRUTE, 1, user)
 	repair_breaches(BURN, 1, user)
@@ -57,7 +57,7 @@
 	.=..()
 
 //Repair a certain amount of brute or burn damage to the suit.
-/obj/item/clothing/suit/space/proc/repair_breaches(var/damtype, var/amount, var/mob/user)
+/obj/item/clothing/suit/space/proc/repair_breaches(var/damtype, amount, mob/user)
 
 	if(!can_breach || !breaches || !breaches.len || !damage)
 		to_chat(user, "There are no breaches to repair on \the [src].")
@@ -89,7 +89,7 @@
 	user.visible_message("<b>[user]</b> patches some of the damage on \the [src].")
 	calc_breach_damage()
 
-/obj/item/clothing/suit/space/proc/create_breaches(var/damtype, var/amount)
+/obj/item/clothing/suit/space/proc/create_breaches(var/damtype, amount)
 
 	amount -= src.breach_threshold
 	amount *= src.resilience

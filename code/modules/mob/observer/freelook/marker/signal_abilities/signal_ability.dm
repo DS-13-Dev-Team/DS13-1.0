@@ -96,7 +96,7 @@
 	Override these in subclasses to do things
 -----------------------------------------------*/
 //This does nothing in the base class, override it and put spell effects here
-/datum/signal_ability/proc/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/proc/on_cast(var/mob/user, atom/target, list/data)
 	return
 
 //Return true if the passed thing is a valid target
@@ -145,7 +145,7 @@
 	return TRUE
 
 //Path to the end of the cast
-/datum/signal_ability/proc/finish_casting(var/mob/user, var/atom/target,  var/list/data)
+/datum/signal_ability/proc/finish_casting(var/mob/user, atom/target,  var/list/data)
 	//Pay the energy costs
 	if (!pay_cost(user))
 		//TODO: Abort casting, we failed
@@ -169,7 +169,7 @@
 
 //Called from the click handler when the user clicks a potential target.
 //Data is an associative list of any miscellaneous data. It contains the direction for placement handlers
-/datum/signal_ability/proc/select_target(var/mob/user, var/candidate,  var/list/data)
+/datum/signal_ability/proc/select_target(var/mob/user, candidate,  var/list/data)
 	var/check = can_cast_now(user)
 	//Validate before casting
 	if (check != TRUE)
@@ -274,13 +274,13 @@
 ------------------------------*/
 
 //Called from a click handler using the TARGET_CLICK method
-/datum/signal_ability/proc/target_click(var/mob/user, var/atom/target, var/params)
+/datum/signal_ability/proc/target_click(var/mob/user, atom/target, params)
 	return select_target(user, target)
 
 
 
 
-/datum/signal_ability/proc/placement_click(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/proc/placement_click(var/mob/user, atom/target, list/data)
 	return select_target(user, target,  data)
 
 
@@ -356,7 +356,7 @@
 	return TRUE
 
 //Does a lot of checking to see if the specified target is valid
-/datum/signal_ability/proc/is_valid_target(var/atom/thing, var/mob/user, var/silent = FALSE)
+/datum/signal_ability/proc/is_valid_target(var/atom/thing, mob/user, silent = FALSE)
 	var/correct_type = FALSE
 	for (var/typepath in target_types)
 		if (istype(thing, typepath))

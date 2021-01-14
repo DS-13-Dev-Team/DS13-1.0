@@ -24,5 +24,5 @@ var/repository/mob/mob_repository = new()
 	ref = any2ref(M)
 	client = client_repository.get_lite_client(M)
 
-/datum/mob_lite/proc/key_name(var/pm_link = TRUE, var/check_if_offline = TRUE)
+/datum/mob_lite/proc/key_name(var/pm_link = TRUE, check_if_offline = TRUE)
 	return client.key_name(pm_link, check_if_offline)

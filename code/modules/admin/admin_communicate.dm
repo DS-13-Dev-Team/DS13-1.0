@@ -41,7 +41,7 @@
 	draft_message = ""
 
 //Sends a message over a radio channel
-/datum/extension/admin_communicate/proc/communicate_radio(var/message, var/channel)
+/datum/extension/admin_communicate/proc/communicate_radio(var/message, channel)
 	//Radio.dm, 298
 	//#### Grab the connection datum ####//
 	var/datum/radio_frequency/connection = radio_controller.return_frequency(channel)
@@ -63,7 +63,7 @@
 	)
 
 
-/datum/extension/admin_communicate/proc/communicate_meta(var/message, var/channel)
+/datum/extension/admin_communicate/proc/communicate_meta(var/message, channel)
 	var/channel_type = meta_names_and_types[selected_channel]
 	sanitize_and_communicate(channel_type, src, draft_message, pseudonym)
 
@@ -94,7 +94,7 @@
 
 	return content_data
 
-/datum/extension/admin_communicate/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/extension/admin_communicate/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/list/data = get_content_data()
 	data["src"] = "\ref[src]"
 	data["pseudonym"]	=	pseudonym

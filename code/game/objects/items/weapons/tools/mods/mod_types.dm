@@ -26,7 +26,7 @@
 	degradation_mult = 0.65
 
 
-/obj/item/weapon/tool_modification/reinforcement/heatsink/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
+/obj/item/weapon/tool_modification/reinforcement/heatsink/can_apply(var/obj/item/weapon/tool/T, mob/user)
 	.=..()
 	if (.)
 		if (T.use_fuel_cost || T.use_power_cost)
@@ -113,7 +113,7 @@
 	force_mult = 1.10
 	matter = list(MATERIAL_STEEL = 1, MATERIAL_DIAMOND = 1)
 
-/obj/item/weapon/tool_modification/productivity/diamond_blade/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
+/obj/item/weapon/tool_modification/productivity/diamond_blade/can_apply(var/obj/item/weapon/tool/T, mob/user)
 	.=..()
 	if (.)
 		if (T.ever_has_quality(QUALITY_WELDING) || T.ever_has_quality(QUALITY_LASER_CUTTING))
@@ -148,7 +148,7 @@
 	fuelcost_mult = 1.35
 	precision = -10
 
-/obj/item/weapon/tool_modification/productivity/motor/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
+/obj/item/weapon/tool_modification/productivity/motor/can_apply(var/obj/item/weapon/tool/T, mob/user)
 	.=..()
 	if (.)
 		if (T.use_fuel_cost || T.use_power_cost)
@@ -224,7 +224,7 @@
 	bulk_mod = 1
 	degradation_mult = 1.15
 
-/obj/item/weapon/tool_modification/augment/cell_mount/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
+/obj/item/weapon/tool_modification/augment/cell_mount/can_apply(var/obj/item/weapon/tool/T, mob/user)
 	.=..()
 	if (.)
 		if (T.suitable_cell == /obj/item/weapon/cell || T.suitable_cell == /obj/item/weapon/cell)

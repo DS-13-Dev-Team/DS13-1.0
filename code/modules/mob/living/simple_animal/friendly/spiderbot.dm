@@ -49,7 +49,7 @@
 	verbs |= /mob/living/proc/ventcrawl
 	verbs |= /mob/living/proc/hide
 
-/mob/living/simple_animal/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/spiderbot/attackby(var/obj/item/O as obj, mob/user as mob)
 
 	if(istype(O, /obj/item/device/mmi) || istype(O, /obj/item/organ/internal/posibrain))
 		var/mob/living/carbon/brain/B
@@ -130,7 +130,7 @@
 	else
 		O.attack(src, user, user.zone_sel.selecting)
 
-/mob/living/simple_animal/spiderbot/emag_act(var/remaining_charges, var/mob/user)
+/mob/living/simple_animal/spiderbot/emag_act(var/remaining_charges, mob/user)
 	if (emagged)
 		to_chat(user, "<span class='warning'>[src] is already overloaded - better run.</span>")
 		return 0

@@ -55,7 +55,7 @@ var/list/organ_cache = list()
 	return (damage >= min_broken_damage || (status & ORGAN_CUT_AWAY) || (status & ORGAN_BROKEN))
 
 //Second argument may be a dna datum; if null will be set to holder's dna.
-/obj/item/organ/New(var/mob/living/carbon/holder, var/datum/dna/given_dna)
+/obj/item/organ/New(var/mob/living/carbon/holder, datum/dna/given_dna)
 	..(holder)
 	if(!istype(given_dna))
 		given_dna = null
@@ -251,7 +251,7 @@ var/list/organ_cache = list()
 		germ_level -= 2
 	germ_level = max(0, germ_level)
 
-/obj/item/organ/proc/take_general_damage(var/amount, var/silent = FALSE)
+/obj/item/organ/proc/take_general_damage(var/amount, silent = FALSE)
 	CRASH("Not Implemented")
 
 /obj/item/organ/proc/heal_damage(amount)
@@ -271,7 +271,7 @@ var/list/organ_cache = list()
  *
  *  drop_organ - if true, organ will be dropped at the loc of its former owner
  */
-/obj/item/organ/proc/removed(var/mob/living/user, var/drop_organ=1)
+/obj/item/organ/proc/removed(var/mob/living/user, drop_organ=1)
 
 	if(!istype(owner))
 		return
@@ -299,7 +299,7 @@ var/list/organ_cache = list()
 
 	owner = null
 
-/obj/item/organ/proc/replaced(var/mob/living/carbon/human/target, var/obj/item/organ/external/affected)
+/obj/item/organ/proc/replaced(var/mob/living/carbon/human/target, obj/item/organ/external/affected)
 	owner = target
 	action_button_name = initial(action_button_name)
 	forceMove(owner) //just in case
@@ -309,7 +309,7 @@ var/list/organ_cache = list()
 		set_dna(owner.dna)
 	return 1
 
-/obj/item/organ/attack(var/mob/target, var/mob/user)
+/obj/item/organ/attack(var/mob/target, mob/user)
 	//This cannibalism code is temporarily disabled. We will bring it back in future, but with a psychosis requirement
 	.=..()
 	/*

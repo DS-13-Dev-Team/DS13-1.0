@@ -98,7 +98,7 @@ EG:
 /proc/Interpolate(a, b, weight = 0.5)
 	return a + (b - a) * weight // Equivalent to: a*(1 - weight) + b*weight
 
-/proc/rand_between(var/lower, var/upper)
+/proc/rand_between(var/lower, upper)
 	return (rand() * (upper - lower)) + lower
 
 /proc/Mean(...)
@@ -160,7 +160,7 @@ EG:
 	A higher input value always makes a higher output value. but the rate of growth slows
 
 */
-/proc/soft_cap(var/input, var/cap = 0, var/groupsize = 1, var/groupmult = 0.9)
+/proc/soft_cap(var/input, cap = 0, groupsize = 1, groupmult = 0.9)
 
 	//The cap is a ringfenced amount. If we're below that, just return the input
 	if (input <= cap)
@@ -206,7 +206,7 @@ EG:
 
 
 //Takes a view range. Produces a multiplier of how much bigger or smaller a screen edge would be with that range, compared to a baseline
-/proc/view_scalar(var/range, var/base = world.view)
+/proc/view_scalar(var/range, base = world.view)
 	return ((range*2)+1) / ((base*2)+1)
 
 
@@ -219,7 +219,7 @@ EG:
 	This will return the points along the edge where this ray intersects the target turf.
 	This will always be either two points or zero points, no other value is possible
 */
-/proc/ray_turf_intersect(var/vector2/origin, var/vector2/ray, var/turf/target)
+/proc/ray_turf_intersect(var/vector2/origin, vector2/ray, turf/target)
 	//debug_mark_turf(target)
 	//First of all, passing in a turf is just a convenience, what we actually need are the pixel coordinates of its lowerleft and upper right corners
 

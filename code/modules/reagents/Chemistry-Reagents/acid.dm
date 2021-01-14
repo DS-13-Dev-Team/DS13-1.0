@@ -9,10 +9,10 @@
 	var/power = 1
 	var/meltdose = 23 // How much is needed to melt
 
-/datum/reagent/acid/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/acid/affect_blood(var/mob/living/carbon/M, alien, removed)
 	M.take_organ_damage(0, removed * power)
 
-/datum/reagent/acid/affect_touch(var/mob/living/carbon/M, var/alien, var/removed) // This is the most interesting
+/datum/reagent/acid/affect_touch(var/mob/living/carbon/M, alien, removed) // This is the most interesting
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.head)
@@ -104,13 +104,13 @@
 	power = NECROMORPH_ACID_POWER
 	meltdose = 30 // How much is needed to melt
 
-/datum/reagent/acid/necromorph/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/acid/necromorph/affect_blood(var/mob/living/carbon/M, alien, removed)
 	if (alien == IS_NECROMORPH)
 		removed *= NECROMORPH_FRIENDLY_FIRE_FACTOR	//Necromorph acid deals reduced friendly fire, but not nothing
 	.=..()
 
 
-/datum/reagent/acid/touch_turf(var/turf/simulated/T, var/amount)
+/datum/reagent/acid/touch_turf(var/turf/simulated/T, amount)
 	var/obj/effect/decal/cleanable/acid_spill/AS = (locate(/obj/effect/decal/cleanable/acid_spill) in T)
 	if (!AS)
 		AS = new(T)
@@ -119,21 +119,21 @@
 	AS.adjust_volume(amount, type)
 
 
-/datum/reagent/acid/touch_obj(var/obj/O, var/amount)
+/datum/reagent/acid/touch_obj(var/obj/O, amount)
 	O.acid_act(src, amount)
 
 
 
 
-/atom/proc/acid_act(var/datum/reagent/acid/acid, var/volume)
+/atom/proc/acid_act(var/datum/reagent/acid/acid, volume)
 	return TRUE
 
-/obj/acid_act(var/datum/reagent/acid/acid, var/volume)
+/obj/acid_act(var/datum/reagent/acid/acid, volume)
 	if (unacidable)
 		return FALSE
 	.=..()
 
-/obj/item/acid_act(var/datum/reagent/acid/acid, var/volume)
+/obj/item/acid_act(var/datum/reagent/acid/acid, volume)
 	.=..()
 	if (.)//The unacidable flag is checked in parent
 		var/melt = FALSE
@@ -207,7 +207,7 @@
 	pixel_y = rand_between(-randpixel, randpixel)
 
 
-/obj/effect/decal/cleanable/acid_spill/proc/adjust_volume(var/change, var/chemical)
+/obj/effect/decal/cleanable/acid_spill/proc/adjust_volume(var/change, chemical)
 	if (!R)
 		R = new (99999, src)
 
@@ -266,7 +266,7 @@
 	Slowing Effect
 ******************/
 
-/datum/reagent/acid/necromorph/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/acid/necromorph/affect_touch(var/mob/living/carbon/M, alien, removed)
 	.=..()
 	//Slowing effect
 	if (!M.is_necromorph())

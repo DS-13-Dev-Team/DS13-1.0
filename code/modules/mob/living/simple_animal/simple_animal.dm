@@ -253,7 +253,7 @@
 
 	return
 
-/mob/living/simple_animal/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_animal/attackby(var/obj/item/O, mob/user)
 	if(istype(O, /obj/item/stack/medical))
 		if(stat != DEAD)
 			var/obj/item/stack/medical/MED = O
@@ -277,7 +277,7 @@
 		else
 			O.attack(src, user, user.zone_sel.selecting)
 
-/mob/living/simple_animal/standard_weapon_hit_effects(obj/item/O, mob/living/user, var/effective_force, var/blocked, var/hit_zone)
+/mob/living/simple_animal/standard_weapon_hit_effects(obj/item/O, mob/living/user, effective_force, blocked, hit_zone)
 
 
 
@@ -382,7 +382,7 @@
 
 	..(message, null, verb)
 
-/mob/living/simple_animal/get_speech_ending(verb, var/ending)
+/mob/living/simple_animal/get_speech_ending(verb, ending)
 	return verb
 
 /mob/living/simple_animal/put_in_hands(var/obj/item/W) // No hands.
@@ -421,7 +421,7 @@
 /*
 	Animals
 */
-/mob/living/simple_animal/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/simple_animal/UnarmedAttack(var/atom/A, proximity)
 
 	if(!..())
 		return

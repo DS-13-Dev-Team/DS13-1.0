@@ -200,7 +200,7 @@
 	new deploy_type(T, src)
 
 
-/obj/item/projectile/deploy/proc/deploy_to_atom(var/atom/A, var/turf/origin)
+/obj/item/projectile/deploy/proc/deploy_to_atom(var/atom/A, turf/origin)
 
 	set waitfor = FALSE
 	if (deployed)

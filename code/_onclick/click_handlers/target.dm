@@ -6,23 +6,23 @@
 	var/stopped = FALSE
 	cursor_override = 'icons/misc/cursor_signal_ability.dmi'
 
-/datum/click_handler/target/New(var/mob/user, var/datum/callback/C)
+/datum/click_handler/target/New(var/mob/user, datum/callback/C)
 	.=..()
 	call_on_click = C
 	start()
 
 
-/datum/click_handler/target/OnLeftClick(var/atom/A, var/params)
+/datum/click_handler/target/OnLeftClick(var/atom/A, params)
 	. = call_on_click.Invoke(A, params)
 	if (.)
 		stop()
 
 //Shift click does not terminate, allowing multiple casts
-/datum/click_handler/target/OnShiftClick(var/atom/A, var/params)
+/datum/click_handler/target/OnShiftClick(var/atom/A, params)
 	call_on_click.Invoke(A, params)
 
 //Rightclick: Cancel placement without spawning anything
-/datum/click_handler/target/OnRightClick(var/atom/A, var/params)
+/datum/click_handler/target/OnRightClick(var/atom/A, params)
 	to_chat(user, SPAN_NOTICE("Targeting cancelled."))
 	stop()
 

@@ -266,7 +266,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	if(.)
 		play_species_audio(src, SOUND_SHOUT, VOLUME_MID, 1, 2)
 
-/datum/species/necromorph/tripod/high_leap_impact(var/mob/living/user, var/atom/target, var/distance, var/start_location)
+/datum/species/necromorph/tripod/high_leap_impact(var/mob/living/user, atom/target, distance, start_location)
 
 	//We play a sound!
 	var/sound_file = pick(list('sound/effects/impacts/hard_impact_1.ogg',

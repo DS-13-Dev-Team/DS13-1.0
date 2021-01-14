@@ -1,5 +1,5 @@
 //This proc returns all turfs which fall inside a cone stretching Distance tiles from origin, in direction, and being angle degrees wide
-/proc/get_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
+/proc/get_cone(var/turf/origin, vector2/direction, distance, angle)
 
 	if (!istype(direction))
 		direction = Vector2.FromDir(direction)	//One of the byond direction constants may be passed in
@@ -36,7 +36,7 @@
 	//Alright we've removed all the turfs which aren't in the cone!
 	return turfs
 
-/proc/get_view_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
+/proc/get_view_cone(var/turf/origin, vector2/direction, distance, angle)
 	if (!istype(origin))
 		origin = get_turf(origin)
 	var/list/viewlist = origin.turfs_in_view(distance)
@@ -46,7 +46,7 @@
 
 //This hella complex proc gets a cone, but divided into several smaller cones. Returns a list of lists, each containing the tiles of the subcone
 //No overlapping is allowed, each subcone contains a unique list
-/proc/get_multistage_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle, var/stages = 5, var/clock_direction = CLOCKWISE)
+/proc/get_multistage_cone(var/turf/origin, vector2/direction, distance, angle, stages = 5, clock_direction = CLOCKWISE)
 	var/subcone_angle = angle / stages
 	var/vector2/subcone_direction
 
@@ -79,6 +79,6 @@
 	return subcones
 
 //Runs get cone and then picks a random tile from it
-/proc/random_tile_in_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
+/proc/random_tile_in_cone(var/turf/origin, vector2/direction, distance, angle)
 	var/list/tiles = get_cone(origin, direction, distance, angle)
 	return pick(tiles)

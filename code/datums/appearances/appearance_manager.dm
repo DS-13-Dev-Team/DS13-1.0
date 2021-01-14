@@ -14,7 +14,7 @@ var/decl/appearance_manager/appearance_manager = new()
 /decl/appearance_manager/proc/get_appearance_handler(var/handler_type)
 	return appearance_handlers_[handler_type]
 
-/decl/appearance_manager/proc/add_appearance(var/mob/viewer, var/datum/appearance_data/ad)
+/decl/appearance_manager/proc/add_appearance(var/mob/viewer, datum/appearance_data/ad)
 	var/PriorityQueue/pq = appearances_[viewer]
 	if(!pq)
 		pq = new/PriorityQueue(/proc/cmp_appearance_data)
@@ -24,7 +24,7 @@ var/decl/appearance_manager/appearance_manager = new()
 	pq.Enqueue(ad)
 	reset_appearance_images(viewer)
 
-/decl/appearance_manager/proc/remove_appearance(var/mob/viewer, var/datum/appearance_data/ad, var/refresh_images)
+/decl/appearance_manager/proc/remove_appearance(var/mob/viewer, datum/appearance_data/ad, refresh_images)
 	var/PriorityQueue/pq = appearances_[viewer]
 	pq.Remove(ad)
 	if(viewer.client)

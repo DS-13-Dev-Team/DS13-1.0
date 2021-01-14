@@ -28,7 +28,7 @@
 	update_icon()
 
 
-/turf/simulated/wall/proc/set_material(var/material/newmaterial, var/material/newrmaterial)
+/turf/simulated/wall/proc/set_material(var/material/newmaterial, material/newrmaterial)
 	material = newmaterial
 	reinf_material = newrmaterial
 	update_material()

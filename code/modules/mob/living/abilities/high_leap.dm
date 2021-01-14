@@ -56,7 +56,7 @@
 	statmods = list(STATMOD_EVASION, 200)
 	auto_register_statmods = FALSE
 
-/datum/extension/high_leap/New(var/atom/movable/user, var/target, var/windup_time, var/winddown_time, var/cooldown, var/minimum_range = 3, var/travel_speed = 6)
+/datum/extension/high_leap/New(var/atom/movable/user, target, windup_time, winddown_time, cooldown, minimum_range = 3, travel_speed = 6)
 	.=..()
 	if (isliving(user))
 		src.user = user
@@ -251,18 +251,18 @@
 /*----------------------------------
 	Impact
 -----------------------------------*/
-/atom/movable/proc/high_leap_impact(var/atom/target, var/distance, var/start_location)
+/atom/movable/proc/high_leap_impact(var/atom/target, distance, start_location)
 	return
 
 //When a human does it, we call the same proc on their species. This allows various people to do stuff
-/mob/living/carbon/human/high_leap_impact(var/atom/target, var/distance, var/start_location)
+/mob/living/carbon/human/high_leap_impact(var/atom/target, distance, start_location)
 	shake_camera(src,3,1)
 	if (species)
 		return species.high_leap_impact(src, target, distance, start_location)
 	return ..()
 
 
-/datum/species/proc/high_leap_impact(var/mob/living/user, var/atom/target, var/distance, var/start_location)
+/datum/species/proc/high_leap_impact(var/mob/living/user, atom/target, distance, start_location)
 	return
 
 /***********************
@@ -289,7 +289,7 @@
 
 	.=..()
 
-/atom/movable/proc/high_leap_ability(var/target, var/windup_time, var/winddown_time, var/cooldown, var/minimum_range = 3, var/travel_speed = 4)
+/atom/movable/proc/high_leap_ability(var/target, windup_time, winddown_time, cooldown, minimum_range = 3, travel_speed = 4)
 	//First of all, lets check if we're currently able to charge
 	if (!can_high_leap())
 		return FALSE

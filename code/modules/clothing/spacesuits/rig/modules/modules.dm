@@ -166,7 +166,7 @@
 	. = ..()
 
 
-/obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, var/mob/user, var/feedback = FALSE, var/check_conflict = TRUE)
+/obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, mob/user, feedback = FALSE, check_conflict = TRUE)
 	if (!redundant && check_conflict)
 		for (var/obj/item/rig_module/RM in rig.installed_modules)
 			//Exact duplicates not allowed
@@ -199,7 +199,7 @@
 
 	Return false to block the replacement and deny the installation of the sucessor
 */
-/obj/item/rig_module/proc/pre_replace(var/obj/item/weapon/rig/rig, var/obj/item/rig_module/successor)
+/obj/item/rig_module/proc/pre_replace(var/obj/item/weapon/rig/rig, obj/item/rig_module/successor)
 	return TRUE
 
 // Called when the module is installed into a suit.
@@ -277,7 +277,7 @@
 	return 1
 
 // Called when the module is uninstalled from a suit.
-/obj/item/rig_module/proc/uninstalled(var/obj/item/weapon/rig/former, var/mob/living/user)
+/obj/item/rig_module/proc/uninstalled(var/obj/item/weapon/rig/former, mob/living/user)
 	deactivate()
 	holder = null
 	return
@@ -404,10 +404,10 @@
 	return 0
 
 
-/obj/item/rig_module/proc/rig_equipped(var/mob/user, var/slot)
+/obj/item/rig_module/proc/rig_equipped(var/mob/user, slot)
 	return
 
-/obj/item/rig_module/proc/rig_unequipped(var/mob/user, var/slot)
+/obj/item/rig_module/proc/rig_unequipped(var/mob/user, slot)
 	return
 
 //Consumes power, returns true if it works

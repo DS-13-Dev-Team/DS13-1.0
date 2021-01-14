@@ -1,4 +1,4 @@
-/mob/living/deity/ClickOn(var/atom/A, var/params)
+/mob/living/deity/ClickOn(var/atom/A, params)
 	if(A == src)
 		if(form)
 			ui_interact(src)

@@ -17,7 +17,7 @@
 	id = "indiscriminate"
 	desc = "Indiscriminate firing mode will target any creature that moves, regardless of status."
 
-/datum/targeting_profile/turret/assess_target(var/atom/A, var/obj/machinery/turret/source)
+/datum/targeting_profile/turret/assess_target(var/atom/A, obj/machinery/turret/source)
 	.=..()
 	var/mob/living/L = A
 	if(!L || !istype(L))
@@ -51,7 +51,7 @@
 	id = "noncrew"
 	desc = "Noncrew mode will target anything that cannot be conclusively identified as a member of the crew. This includes anything not human, and humans without ID cards."
 
-/datum/targeting_profile/turret/crew/assess_target(var/atom/A, var/obj/machinery/turret/source)
+/datum/targeting_profile/turret/crew/assess_target(var/atom/A, obj/machinery/turret/source)
 	.=..()
 	if (.)
 		var/mob/living/L = A
@@ -87,7 +87,7 @@
 	id = "unauthorized"
 	desc = "Unauthorized Personnel mode will target anyone who isn't carrying an ID with security or command access. To be used in cases of mutiny"
 
-/datum/targeting_profile/turret/authorized/assess_target(var/atom/A, var/obj/machinery/turret/source)
+/datum/targeting_profile/turret/authorized/assess_target(var/atom/A, obj/machinery/turret/source)
 	.=..()
 	if (.)
 		//If the target is carrying an ID that gives them security or command access, we will not fire

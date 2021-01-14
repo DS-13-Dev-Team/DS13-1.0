@@ -251,7 +251,7 @@ The Lurker can only fire spines while its shell is open"
 	'sound/effects/creatures/necromorph/lurker/spine_fire_2.ogg',
 	'sound/effects/creatures/necromorph/lurker/spine_fire_3.ogg')
 
-/obj/item/projectile/bullet/spine/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+/obj/item/projectile/bullet/spine/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
 	if (firer.is_allied(target_mob))	//The bullet passes through our own allies harmlessly
 		return TRUE
 
@@ -259,7 +259,7 @@ The Lurker can only fire spines while its shell is open"
 
 
 //Spines make wooshy sounds as they fly
-/obj/item/projectile/bullet/spine/Move(var/new_loc, var/new_dir)
+/obj/item/projectile/bullet/spine/Move(var/new_loc, new_dir)
 	playsound(src, pick(woosh_sounds), VOLUME_QUIET, 1, -2)
 	.=..()
 
@@ -468,7 +468,7 @@ The Lurker can only fire spines while its shell is open"
 ----------------------*/
 //Because the lurker is a quadruped, it plays a second footstep sound - after a brief delay, whenever one plays
 //Twice as many legs, twice as many footstep sounds
-/datum/species/necromorph/lurker/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
+/datum/species/necromorph/lurker/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0)
 	.=..()
 	if (audio_type == SOUND_FOOTSTEP || audio_type == SOUND_CLIMB)
 		spawn(5)

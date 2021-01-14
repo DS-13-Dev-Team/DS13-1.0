@@ -13,7 +13,7 @@
 	var/intialOxy = 0
 	var/timer = 240 //eventually the person will be freed
 
-/obj/structure/closet/statue/New(loc, var/mob/living/L)
+/obj/structure/closet/statue/New(loc, mob/living/L)
 	if(L && (ishuman(L) || L.isMonkey() || iscorgi(L)))
 		if(L.buckled)
 			L.buckled = 0
@@ -97,7 +97,7 @@
 		for(var/mob/M in src)
 			shatter(M)
 
-/obj/structure/closet/statue/ex_act(severity, var/atom/epicentre)
+/obj/structure/closet/statue/ex_act(severity, atom/epicentre)
 	for(var/mob/M in src)
 		M.ex_act(severity, epicentre)
 		health -= 60 / severity

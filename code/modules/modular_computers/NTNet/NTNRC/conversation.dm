@@ -15,7 +15,7 @@ var/global/ntnrc_uid = 0
 		ntnet_global.chat_channels.Add(src)
 	..()
 
-/datum/ntnet_conversation/proc/add_message(var/message, var/username)
+/datum/ntnet_conversation/proc/add_message(var/message, username)
 	message = "[stationtime2text()] [username]: [message]"
 	messages.Add(message)
 	trim_message_list()
@@ -57,7 +57,7 @@ var/global/ntnrc_uid = 0
 		operator = newop
 		add_status_message("Channel operator status transferred to [newop.username].")
 
-/datum/ntnet_conversation/proc/change_title(var/newtitle, var/datum/computer_file/program/chatclient/client)
+/datum/ntnet_conversation/proc/change_title(var/newtitle, datum/computer_file/program/chatclient/client)
 	if(operator != client)
 		return 0 // Not Authorised
 

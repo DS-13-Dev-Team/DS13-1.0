@@ -233,14 +233,14 @@
 			return 0
 	return 0
 
-/obj/structure/grille/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/obj/structure/grille/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	if(!destroyed)
 		if(exposed_temperature > T0C + 1500)
 			health -= 1
 			healthcheck()
 	..()
 
-/obj/structure/grille/attack_generic(var/mob/user, var/damage, var/attack_verb)
+/obj/structure/grille/attack_generic(var/mob/user, damage, attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
 	attack_animation(user)
 	health -= damage

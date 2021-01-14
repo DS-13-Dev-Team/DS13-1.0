@@ -105,7 +105,7 @@
 		flee_target = A
 		turns_since_scan = 5
 
-/mob/living/simple_animal/cat/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_animal/cat/attackby(var/obj/item/O, mob/user)
 	. = ..()
 	if(O.force)
 		set_flee_target(user? user : src.loc)

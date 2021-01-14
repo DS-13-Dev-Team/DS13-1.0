@@ -4,7 +4,7 @@
 	var/equipment = list()
 	var/spells = list()
 
-/datum/spellbound_type/proc/spawn_servant(var/atom/a, var/mob/master, var/mob/user)
+/datum/spellbound_type/proc/spawn_servant(var/atom/a, mob/master, mob/user)
 	set waitfor = 0
 	var/mob/living/carbon/human/H = new(a)
 	H.ckey = user.ckey
@@ -30,10 +30,10 @@
 		H.equip_to_slot_if_possible(I,equipment[etype],0,1,1,1)
 		. += I
 
-/datum/spellbound_type/proc/set_antag(var/datum/mind/M, var/mob/master)
+/datum/spellbound_type/proc/set_antag(var/datum/mind/M, mob/master)
 	return
 
-/datum/spellbound_type/proc/modify_servant(var/list/items, var/mob/living/carbon/human/H)
+/datum/spellbound_type/proc/modify_servant(var/list/items, mob/living/carbon/human/H)
 	return
 
 /datum/spellbound_type/apprentice
@@ -47,13 +47,13 @@
 					/obj/item/clothing/suit/wizrobe = slot_wear_suit)
 	spells = list(/spell/noclothes)
 
-/datum/spellbound_type/apprentice/set_antag(var/datum/mind/M, var/mob/master)
+/datum/spellbound_type/apprentice/set_antag(var/datum/mind/M, mob/master)
 	GLOB.wizards.add_antagonist_mind(M,1,ANTAG_APPRENTICE,"<b>You are an apprentice-type Servant! You�re just an ordinary Wizard-To-Be, with no special abilities, but do not need robes to cast spells. Follow your teacher�s orders!</b>")
 
 /datum/spellbound_type/servant
 	var/spiel = "You don't do anything in particular."
 
-/datum/spellbound_type/servant/set_antag(var/datum/mind/M, var/mob/master)
+/datum/spellbound_type/servant/set_antag(var/datum/mind/M, mob/master)
 	GLOB.wizards.add_antagonist_mind(M,1,ANTAG_SERVANT, "<b>You are a [name]-type Servant!</b> [spiel]")
 
 /datum/spellbound_type/servant/caretaker
@@ -78,7 +78,7 @@
 	desc = "A friend! Or are they a pet? They can transform into animals, and take some particular traits from said creatures."
 	spiel = "This form of yours is weak in comparison to your transformed form, but that certainly won�t pose a problem, considering the fact that you have an alternative. Whatever it is you can turn into, use its powers wisely and serve your Master as well as possible!"
 
-/datum/spellbound_type/servant/familiar/modify_servant(var/list/equipment, var/mob/living/carbon/human/H)
+/datum/spellbound_type/servant/familiar/modify_servant(var/list/equipment, mob/living/carbon/human/H)
 	var/familiar_type
 	switch(input(H,"Choose your desired animal form:", "Form") as anything in list("Space Pike", "Mouse", "Cat", "Bear"))
 		if("Space Pike")
@@ -146,7 +146,7 @@
 	var/datum/spellbound_type/stype
 	var/last_called = 0
 
-/obj/effect/cleanable/spellbound/New(var/loc, var/spell_type)
+/obj/effect/cleanable/spellbound/New(var/loc, spell_type)
 	stype = new spell_type()
 	return ..(loc)
 
@@ -203,7 +203,7 @@
 	show_browser(user,dat,"window=summoning")
 	onclose(user,"summoning")
 
-/obj/item/weapon/summoning_stone/proc/use_type(var/type, var/mob/user)
+/obj/item/weapon/summoning_stone/proc/use_type(var/type, mob/user)
 	new /obj/effect/cleanable/spellbound(get_turf(src),type)
 	if(prob(20))
 		var/list/base_areas = maintlocs //Have to do it this way as its a macro

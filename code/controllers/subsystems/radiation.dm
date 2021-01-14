@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(radiation)
 	add_source(S)
 
 // Sets the radiation in a range to a constant value.
-/datum/controller/subsystem/radiation/proc/flat_radiate(source, power, range, var/respect_maint = FALSE)
+/datum/controller/subsystem/radiation/proc/flat_radiate(source, power, range, respect_maint = FALSE)
 	if(!(source && power && range))
 		return
 	var/datum/radiation_source/S = new()
@@ -129,7 +129,7 @@ SUBSYSTEM_DEF(radiation)
 	add_source(S)
 
 // Irradiates a full Z-level. Hacky way of doing it, but not too expensive.
-/datum/controller/subsystem/radiation/proc/z_radiate(var/atom/source, power, var/respect_maint = FALSE)
+/datum/controller/subsystem/radiation/proc/z_radiate(var/atom/source, power, respect_maint = FALSE)
 	if(!(power && source))
 		return
 	var/turf/epicentre = locate(round(world.maxx / 2), round(world.maxy / 2), source.z)

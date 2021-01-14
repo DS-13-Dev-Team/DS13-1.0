@@ -31,18 +31,18 @@
 
 // Return 1 if we can activate.
 // HANDLE MUTCHK_FORCED HERE!
-/datum/dna/gene/proc/can_activate(var/mob/M, var/flags)
+/datum/dna/gene/proc/can_activate(var/mob/M, flags)
 	return 0
 
 // Called when the gene activates.  Do your magic here.
-/datum/dna/gene/proc/activate(var/mob/M, var/connected, var/flags)
+/datum/dna/gene/proc/activate(var/mob/M, connected, flags)
 	return
 
 /**
 * Called when the gene deactivates.  Undo your magic here.
 * Only called when the block is deactivated.
 */
-/datum/dna/gene/proc/deactivate(var/mob/M, var/connected, var/flags)
+/datum/dna/gene/proc/deactivate(var/mob/M, connected, flags)
 	return
 
 // This section inspired by goone's bioEffects.
@@ -62,7 +62,7 @@
 /**
 * Called when the mob says shit
 */
-/datum/dna/gene/proc/OnSay(var/mob/M, var/message)
+/datum/dna/gene/proc/OnSay(var/mob/M, message)
 	return message
 
 /**
@@ -72,7 +72,7 @@
 * @params g Gender (m or f)
 * @params fat Fat? (0 or 1)
 */
-/datum/dna/gene/proc/OnDrawUnderlays(var/mob/M, var/g, var/fat)
+/datum/dna/gene/proc/OnDrawUnderlays(var/mob/M, g, fat)
 	return 0
 
 

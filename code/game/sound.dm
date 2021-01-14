@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(interact_sound,list('sound/machines/vending_click.ogg'))
 GLOBAL_LIST_INIT(bubble_sound,list('sound/machines/tankbubble1.ogg','sound/machines/tankbubble2.ogg','sound/machines/tankbubble3.ogg'))
 GLOBAL_LIST_INIT(bubble_small_sound,list('sound/machines/tanksmallbubble1.ogg','sound/machines/tanksmallbubble2.ogg','sound/machines/tanksmallbubble3.ogg','sound/machines/tanksmallbubble4.ogg'))
 
-/proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
+/proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0)
 
 	if(istext(soundin))
 		soundin = get_sfx(soundin) // same sound for everyone
@@ -240,7 +240,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 
 	var/self_id
 
-/datum/repeating_sound/New(var/_interval, var/duration, var/interval_variance = 0, var/atom/_source, var/_soundin, var/_vol, var/_vary, var/_extrarange, var/_falloff, var/_is_global, var/_use_pressure = TRUE)
+/datum/repeating_sound/New(var/_interval, duration, interval_variance = 0, atom/_source, _soundin, _vol, _vary, _extrarange, _falloff, _is_global, _use_pressure = TRUE)
 	end_time = world.time + duration
 	source = "\ref[_source]"
 	interval = _interval

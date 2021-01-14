@@ -222,7 +222,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 
 
 //Can't slash things without arms
-/datum/unarmed_attack/blades/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/unarmed_attack/blades/is_usable(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 	if(!user.has_organ(BP_R_ARM) && !user.has_organ(BP_L_ARM))
 		return FALSE
 	return TRUE

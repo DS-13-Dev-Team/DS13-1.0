@@ -46,12 +46,12 @@
 	fauna_prob = 1
 	var/fallout = 0
 
-/datum/random_map/noise/exoplanet/garbage/New(var/seed, var/tx, var/ty, var/tz, var/tlx, var/tly, var/do_not_apply, var/do_not_announce, var/never_be_priority = 0)
+/datum/random_map/noise/exoplanet/garbage/New(var/seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, never_be_priority = 0)
 	if(prob(60))
 		fallout = rand(20, 100)
 	..()
 
-/datum/random_map/noise/exoplanet/garbage/get_additional_spawns(var/value, var/turf/T)
+/datum/random_map/noise/exoplanet/garbage/get_additional_spawns(var/value, turf/T)
 	..()
 	var/v = noise2value(value)
 	if(v > 5)

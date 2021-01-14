@@ -75,7 +75,7 @@
 	return data
 
 
-/datum/craft_recipe/proc/can_build(mob/living/user, var/turf/T)
+/datum/craft_recipe/proc/can_build(mob/living/user, turf/T)
 	if (!T)
 		return FALSE
 

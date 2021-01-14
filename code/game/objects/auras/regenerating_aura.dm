@@ -18,7 +18,7 @@
 	var/ignore_tag//organ tag to ignore
 
 
-/obj/aura/regenerating/human/proc/external_regeneration_effect(var/obj/item/organ/external/O, var/mob/living/carbon/human/H)
+/obj/aura/regenerating/human/proc/external_regeneration_effect(var/obj/item/organ/external/O, mob/living/carbon/human/H)
 	return
 
 /obj/aura/regenerating/human/life_tick()
@@ -86,7 +86,7 @@
 	grow_threshold = 150
 	ignore_tag = BP_HEAD
 
-/obj/aura/regenerating/human/unathi/external_regeneration_effect(var/obj/item/organ/external/O, var/mob/living/carbon/human/H)
+/obj/aura/regenerating/human/unathi/external_regeneration_effect(var/obj/item/organ/external/O, mob/living/carbon/human/H)
 	to_chat(H, "<span class='danger'>With a shower of fresh blood, a new [O.name] forms.</span>")
 	H.visible_message("<span class='danger'>With a shower of fresh blood, a length of biomass shoots from [H]'s [O.amputation_point], forming a new [O.name]!</span>")
 	H.nutrition -= 50
@@ -105,6 +105,6 @@
 	grow_chance = 5
 	grow_threshold = 100
 
-/obj/aura/regenerating/human/diona/external_regeneration_effect(var/obj/item/organ/external/O, var/mob/living/carbon/human/H)
+/obj/aura/regenerating/human/diona/external_regeneration_effect(var/obj/item/organ/external/O, mob/living/carbon/human/H)
 	to_chat(H, "<span class='warning'>Some of your nymphs split and hurry to reform your [O.name].</span>")
 	H.nutrition -= 60

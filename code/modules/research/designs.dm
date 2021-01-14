@@ -1297,7 +1297,7 @@
 	var/decl/prefab/ic_assembly/fabrication
 	var/global/count = 0
 
-/datum/design/prefab/New(var/research, var/fab)
+/datum/design/prefab/New(var/research, fab)
 	if(fab)
 		fabrication = fab
 		materials = list(MATERIAL_STEEL = fabrication.metal_amount)

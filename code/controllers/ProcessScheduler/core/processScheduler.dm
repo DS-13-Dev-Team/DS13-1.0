@@ -173,7 +173,7 @@ var/global/datum/controller/processScheduler/processScheduler
 	// Save process in the name -> process map
 	nameToProcessMap[process.name] = process
 
-/datum/controller/processScheduler/proc/replaceProcess(var/datum/controller/process/oldProcess, var/datum/controller/process/newProcess)
+/datum/controller/processScheduler/proc/replaceProcess(var/datum/controller/process/oldProcess, datum/controller/process/newProcess)
 	processes.Remove(oldProcess)
 	processes.Add(newProcess)
 
@@ -252,7 +252,7 @@ var/global/datum/controller/processScheduler/processScheduler
 	if (!(process in running))
 		running += process
 
-/datum/controller/processScheduler/proc/recordStart(var/datum/controller/process/process, var/time = null)
+/datum/controller/processScheduler/proc/recordStart(var/datum/controller/process/process, time = null)
 	if (isnull(time))
 		time = TimeOfGame
 		last_queued[process] = world.time
@@ -261,7 +261,7 @@ var/global/datum/controller/processScheduler/processScheduler
 		last_queued[process] = (time == 0 ? 0 : world.time)
 		last_start[process] = time
 
-/datum/controller/processScheduler/proc/recordEnd(var/datum/controller/process/process, var/time = null)
+/datum/controller/processScheduler/proc/recordEnd(var/datum/controller/process/process, time = null)
 	if (isnull(time))
 		time = TimeOfGame
 

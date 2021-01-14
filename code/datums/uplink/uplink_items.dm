@@ -37,7 +37,7 @@ var/datum/uplink/uplink = new()
 /datum/uplink_item/item
 	var/path = null
 
-/datum/uplink_item/proc/buy(var/obj/item/device/uplink/U, var/mob/user)
+/datum/uplink_item/proc/buy(var/obj/item/device/uplink/U, mob/user)
 	var/extra_args = extra_args(user)
 	if(!extra_args)
 		return
@@ -99,13 +99,13 @@ var/datum/uplink/uplink = new()
 	return desc
 
 // get_goods does not necessarily return physical objects, it is simply a way to acquire the uplink item without paying
-/datum/uplink_item/proc/get_goods(var/obj/item/device/uplink/U, var/loc)
+/datum/uplink_item/proc/get_goods(var/obj/item/device/uplink/U, loc)
 	return 0
 
 /datum/uplink_item/proc/log_icon()
 	return
 
-/datum/uplink_item/proc/purchase_log(obj/item/device/uplink/U, var/mob/user, var/cost)
+/datum/uplink_item/proc/purchase_log(obj/item/device/uplink/U, mob/user, cost)
 	feedback_add_details("traitor_uplink_items_bought", "[src]")
 	log_and_message_admins("used \the [U.loc] to buy \a [src]")
 	if(user)
@@ -119,7 +119,7 @@ datum/uplink_item/dd_SortValue()
 *	Physical Uplink Entries		*
 *                           	*
 ********************************/
-/datum/uplink_item/item/buy(var/obj/item/device/uplink/U, var/mob/user)
+/datum/uplink_item/item/buy(var/obj/item/device/uplink/U, mob/user)
 	var/obj/item/I = ..()
 	if(!I)
 		return
@@ -133,7 +133,7 @@ datum/uplink_item/dd_SortValue()
 		A.put_in_any_hand_if_possible(I)
 	return I
 
-/datum/uplink_item/item/get_goods(var/obj/item/device/uplink/U, var/loc)
+/datum/uplink_item/item/get_goods(var/obj/item/device/uplink/U, loc)
 	var/obj/item/I = new path(loc)
 	return I
 
@@ -151,7 +151,7 @@ datum/uplink_item/dd_SortValue()
 /****************
 * Support procs *
 ****************/
-/proc/get_random_uplink_items(var/obj/item/device/uplink/U, var/remaining_TC, var/loc)
+/proc/get_random_uplink_items(var/obj/item/device/uplink/U, remaining_TC, loc)
 	var/list/bought_items = list()
 	while(remaining_TC)
 		var/datum/uplink_random_selection/uplink_selection = get_uplink_random_selection_by_type(/datum/uplink_random_selection/default)

@@ -275,7 +275,7 @@ var/list/turret_icons
 					attacked = 0
 		..()
 
-/obj/machinery/turret/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/turret/emag_act(var/remaining_charges, mob/user)
 	if(!emagged)
 		//Emagging the turret makes it go bonkers and stun everyone. It also makes
 		//the turret shoot much, much faster.
@@ -630,7 +630,7 @@ var/list/turret_icons
 */
 
 //Called when we sense something moving nearby
-/obj/machinery/turret/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
+/obj/machinery/turret/proc/nearby_movement(var/atom/movable/AM, atom/old_loc)
 	if (!enabled || disabled)
 		return
 	if (!istype(AM, /obj/item/projectile))
@@ -664,7 +664,7 @@ var/list/turret_icons
 
 
 
-/obj/machinery/turret/proc/assess_and_assign(var/mob/living/L, var/list/targets, var/list/secondarytargets)
+/obj/machinery/turret/proc/assess_and_assign(var/mob/living/L, list/targets, list/secondarytargets)
 	switch(targeting_profile.assess_target(L, src))
 		if(PRIORITY_TARGET)
 			targets += L

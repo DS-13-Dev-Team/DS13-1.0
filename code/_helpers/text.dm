@@ -32,7 +32,7 @@
 
 //Used for preprocessing entered text
 //Added in an additional check to alert players if input is too long
-/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1, var/allow_links = TRUE)
+/proc/sanitize(var/input, max_length = MAX_MESSAGE_LEN, encode = 1, trim = 1, extra = 1, allow_links = TRUE)
 	if(!input)
 		return
 
@@ -71,11 +71,11 @@
 //Best used for sanitize object names, window titles.
 //If you have a problem with sanitize() in chat, when quotes and >, < are displayed as html entites -
 //this is a problem of double-encode(when & becomes &amp;), use sanitize() with encode=0, but not the sanitizeSafe()!
-/proc/sanitizeSafe(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1, var/allow_links = TRUE)
+/proc/sanitizeSafe(var/input, max_length = MAX_MESSAGE_LEN, encode = 1, trim = 1, extra = 1, allow_links = TRUE)
 	return sanitize(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra,  allow_links)
 
 //Filters out undesirable characters from names
-/proc/sanitizeName(var/input, var/max_length = MAX_NAME_LEN, var/allow_numbers = 0, var/force_first_letter_uppercase = TRUE)
+/proc/sanitizeName(var/input, max_length = MAX_NAME_LEN, allow_numbers = 0, force_first_letter_uppercase = TRUE)
 	if(!input || length(input) > max_length)
 		return //Rejects the input if it is null or if it is longer then the max length allowed
 
@@ -167,7 +167,7 @@
 	return jointext(dat, null)
 
 //Returns null if there is any bad text in the string
-/proc/reject_bad_text(var/text, var/max_length=512)
+/proc/reject_bad_text(var/text, max_length=512)
 	if(length(text) > max_length)	return			//message too long
 	var/non_whitespace = 0
 	for(var/i=1, i<=length(text), i++)
@@ -342,14 +342,14 @@ proc/TextPreview(var/string,var/len=40)
 		return "[copytext_preserve_html(string, 1, 37)]..."
 
 //alternative copytext() for encoded text, doesn't break html entities (&#34; and other)
-/proc/copytext_preserve_html(var/text, var/first, var/last)
+/proc/copytext_preserve_html(var/text, first, last)
 	return html_encode(copytext(html_decode(text), first, last))
 
 //For generating neat chat tag-images
 //The icon var could be local in the proc, but it's a waste of resources
 //	to always create it and then throw it out.
 /var/icon/text_tag_icons = new('./icons/chattags.dmi')
-/proc/create_text_tag(var/tagname, var/tagdesc = tagname, var/client/C = null)
+/proc/create_text_tag(var/tagname, tagdesc = tagname, client/C = null)
 	if(!(C && C.get_preference_value(/datum/client_preference/chat_tags) == GLOB.PREF_SHOW))
 		return tagdesc
 	return "<IMG src='\ref[text_tag_icons.icon]' class='text_tag' iconstate='[tagname]'" + (tagdesc ? " alt='[tagdesc]'" : "") + ">"
@@ -527,7 +527,7 @@ proc/TextPreview(var/string,var/len=40)
 	if(rest)
 		. += .(rest)
 
-/proc/deep_string_equals(var/A, var/B)
+/proc/deep_string_equals(var/A, B)
 	if (length(A) != length(B))
 		return FALSE
 	for (var/i = 1 to length(A))
@@ -536,7 +536,7 @@ proc/TextPreview(var/string,var/len=40)
 	return TRUE
 
 // If char isn't part of the text the entire text is returned
-/proc/copytext_after_last(var/text, var/char)
+/proc/copytext_after_last(var/text, char)
 	var/regex/R = regex("(\[^[char]\]*)$")
 	R.Find(text)
 	return R.group[1]
@@ -554,7 +554,7 @@ proc/TextPreview(var/string,var/len=40)
 	return whereLink
 
 
-/proc/jumplink_public(var/mob/user, var/atom/target)
+/proc/jumplink_public(var/mob/user, atom/target)
 	if (QDELETED(target))
 		return ""
 	var/turf/T = get_turf(target)
@@ -564,7 +564,7 @@ proc/TextPreview(var/string,var/len=40)
 	return whereLink
 
 
-/proc/link_necromorphs_to(var/message, var/target)
+/proc/link_necromorphs_to(var/message, target)
 	for (var/ckey in SSnecromorph.necromorph_players)
 		if (!ckey)
 			continue

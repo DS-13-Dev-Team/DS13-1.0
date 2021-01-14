@@ -88,13 +88,13 @@
 	. += "</table>"
 	. = jointext(.,null)
 
-/datum/category_item/player_setup_item/proc/banned_from_ghost_role(var/mob, var/datum/ghosttrap/ghost_trap)
+/datum/category_item/player_setup_item/proc/banned_from_ghost_role(var/mob, datum/ghosttrap/ghost_trap)
 	for(var/ban_type in ghost_trap.ban_checks)
 		if(jobban_isbanned(mob, ban_type))
 			return 1
 	return 0
 
-/datum/category_item/player_setup_item/antagonism/candidacy/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/antagonism/candidacy/OnTopic(var/href,var/list/href_list, mob/user)
 	if(href_list["add_special"])
 		if(!(href_list["add_special"] in valid_special_roles()))
 			return TOPIC_HANDLED

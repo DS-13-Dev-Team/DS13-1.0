@@ -13,7 +13,7 @@
 	var/size = 7
 	var/cached_color
 
-/obj/lighting_general/New(var/atom/location, var/client/C)
+/obj/lighting_general/New(var/atom/location, client/C)
 	. = ..()
 	var/newscale = ((C.view * 2) + 1) / C.view
 	transform *= newscale
@@ -22,7 +22,7 @@
 	color = new_colour
 	cached_color = new_colour
 
-/obj/lighting_general/proc/resize(var/new_size = 2, var/client/C)
+/obj/lighting_general/proc/resize(var/new_size = 2, client/C)
 	if (istype(C))
 		new_size = min(new_size, C.temp_view)
 	size = new_size

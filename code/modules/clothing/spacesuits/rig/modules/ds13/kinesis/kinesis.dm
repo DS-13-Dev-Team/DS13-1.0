@@ -743,7 +743,7 @@
 
 
 //We collide with a thing
-/obj/item/rig_module/kinesis/proc/subject_collision(var/atom/movable/mover, var/atom/obstacle)
+/obj/item/rig_module/kinesis/proc/subject_collision(var/atom/movable/mover, atom/obstacle)
 	if (QDELETED(subject) || !isturf(subject.loc))
 		return
 
@@ -815,7 +815,7 @@
 	Params: Click params from the mouse action which caused this update, vitally important
 	global clickpoint: Where the user clicked in world pixel coords
 */
-/obj/item/rig_module/kinesis/proc/update(var/atom/A, mob/living/user, adjacent, params, var/vector2/global_clickpoint)
+/obj/item/rig_module/kinesis/proc/update(var/atom/A, mob/living/user, adjacent, params, vector2/global_clickpoint)
 
 	if (subject && holder && holder.wearer)
 		//Lets see if the clickpoint has actually changed
@@ -866,10 +866,10 @@
 /*
 	Hotkey
 */
-/obj/item/rig_module/kinesis/rig_equipped(var/mob/user, var/slot)
+/obj/item/rig_module/kinesis/rig_equipped(var/mob/user, slot)
 	update_hotkeys()
 
-/obj/item/rig_module/kinesis/rig_unequipped(var/mob/user, var/slot)
+/obj/item/rig_module/kinesis/rig_unequipped(var/mob/user, slot)
 	remove_hotkeys(user)
 
 

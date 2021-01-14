@@ -195,7 +195,7 @@
 /obj/item/projectile/bullet/biobomb/is_necromorph()
 	return TRUE
 
-/obj/item/projectile/bullet/biobomb/on_hit(var/atom/target, var/blocked = 0)
+/obj/item/projectile/bullet/biobomb/on_hit(var/atom/target, blocked = 0)
 	if (!exploded)
 		bioblast(target, blast_power)
 		exploded = TRUE
@@ -302,7 +302,7 @@
 	click_handler_type = /datum/click_handler/placement/ability/cyst
 
 
-/datum/signal_ability/placement/corruption/cyst/on_cast(var/atom/target, var/mob/user, var/list/data)
+/datum/signal_ability/placement/corruption/cyst/on_cast(var/atom/target, mob/user, list/data)
 	.=..()
 	var/atom/A = .
 	var/mountpoint = get_mount_target_at_direction(A, data["direction"])

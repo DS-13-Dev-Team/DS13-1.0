@@ -20,7 +20,7 @@
 
 
 
-/datum/extension/step_strike/New(var/mob/living/carbon/human/_user, var/mob/living/_target, var/_distance, var/_cooldown)
+/datum/extension/step_strike/New(var/mob/living/carbon/human/_user, mob/living/_target, _distance, _cooldown)
 	.=..()
 	user = _user
 	target = _target
@@ -29,7 +29,7 @@
 	start()
 
 
-/mob/living/carbon/human/proc/step_strike_ability(var/mob/living/target, var/_distance, var/_cooldown)
+/mob/living/carbon/human/proc/step_strike_ability(var/mob/living/target, _distance, _cooldown)
 	//First of all, lets check if we're currently able to step
 	if (!can_step_strike())
 		return FALSE

@@ -1,6 +1,6 @@
 /obj/item/weapon/beartrap
 	name = "mechanical trap"
-	
+
 	throw_range = 1
 	gender = PLURAL
 	icon = 'icons/obj/traps.dmi'
@@ -39,7 +39,7 @@ Every failure causes the trap to dig deeper and hurt the victim more
 
 Freeing yourself is much harder than freeing someone else. Calling for help is advised if practical
 */
-/obj/item/weapon/beartrap/proc/attempt_release(var/mob/living/user, var/obj/item/I)
+/obj/item/weapon/beartrap/proc/attempt_release(var/mob/living/user, obj/item/I)
 	if (!buckled_mob || QDELETED(buckled_mob))
 		return //Nobody there to rescue?
 
@@ -139,7 +139,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 		return
 	.=..()
 
-/obj/item/weapon/beartrap/attack_generic(var/mob/user, var/damage)
+/obj/item/weapon/beartrap/attack_generic(var/mob/user, damage)
 	if (buckled_mob)
 		attempt_release(user)
 		return
@@ -209,7 +209,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 ***********************************/
 
 //If an attempt to release the mob fails, it digs in and deals more damage
-/obj/item/weapon/beartrap/proc/fail_attempt(var/user, var/difficulty)
+/obj/item/weapon/beartrap/proc/fail_attempt(var/user, difficulty)
 	if (!buckled_mob)
 		return
 
@@ -372,7 +372,7 @@ Very rarely it might escape
 		check_integrity()
 
 //Takes 1 damage every time they fail to open it
-/obj/item/weapon/beartrap/makeshift/fail_attempt(var/user, var/difficulty)
+/obj/item/weapon/beartrap/makeshift/fail_attempt(var/user, difficulty)
 	.=..()
 	integrity -= 0.8
 	spawn(5)

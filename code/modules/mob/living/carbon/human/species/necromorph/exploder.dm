@@ -225,14 +225,14 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	return TRUE
 
 //When severed, the pustule always explodes, no clean cutting off
-/obj/item/organ/external/hand/exploder_pustule/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent, var/atom/cutter)
+/obj/item/organ/external/hand/exploder_pustule/droplimb(var/clean, disintegrate = DROPLIMB_EDGE, ignore_children, silent, atom/cutter)
 	if (!explode())
 		.=..(FALSE, DROPLIMB_BLUNT, ignore_children, silent)	//We pass false to clean, and droplimb blunt to make sure its detonated
 
 
 
 //Once severed, the pustule can be picked up and thrown as a grenade, detonation on impact
-/obj/item/organ/external/hand/exploder_pustule/throw_impact(atom/hit_atom, var/speed)
+/obj/item/organ/external/hand/exploder_pustule/throw_impact(atom/hit_atom, speed)
 	explode()
 
 
@@ -308,12 +308,12 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	base_miss_chance = 20	//Thin and hard target, trying to shoot this is a risky move
 
 //When severed, the arm is always cut cleanly, so that the pustule drops off without detonating
-/obj/item/organ/external/arm/simple/exploder/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent, var/atom/cutter)
+/obj/item/organ/external/arm/simple/exploder/droplimb(var/clean, disintegrate = DROPLIMB_EDGE, ignore_children, silent, atom/cutter)
 	.=..(TRUE, DROPLIMB_EDGE, ignore_children, silent)	//We pass true to clean, and droplimb edge to make sure its cleanly cut
 
 
 //When severed, the arm is a seperate object with the pustule in its contents. We pass along events to it
-/obj/item/organ/external/arm/simple/exploder/throw_impact(atom/hit_atom, var/speed)
+/obj/item/organ/external/arm/simple/exploder/throw_impact(atom/hit_atom, speed)
 	for (var/obj/item/organ/external/hand/exploder_pustule/EP in contents)
 		EP.throw_impact(hit_atom, speed)
 
@@ -321,7 +321,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 
 
 
-/obj/item/organ/external/arm/simple/exploder/bullet_act(var/obj/item/projectile/P, var/def_zone)
+/obj/item/organ/external/arm/simple/exploder/bullet_act(var/obj/item/projectile/P, def_zone)
 	for (var/obj/item/organ/external/hand/exploder_pustule/EP in contents)
 		EP.bullet_act(P, def_zone)
 
@@ -359,7 +359,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 /*
 	Exploders have a special charge impact. They detonate on impact
 */
-/datum/species/necromorph/exploder/charge_impact(var/mob/living/charger, var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
+/datum/species/necromorph/exploder/charge_impact(var/mob/living/charger, atom/obstacle, power, target_type, distance_travelled)
 	if (target_type == CHARGE_TARGET_PRIMARY && isliving(obstacle))
 		//Make sure its still there
 		if (!can_explode(charger))

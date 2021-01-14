@@ -1,4 +1,4 @@
-/atom/proc/spray_ability(var/subtype = /datum/extension/spray,  var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/windup, var/mob/override_user = null, var/list/extra_data)
+/atom/proc/spray_ability(var/subtype = /datum/extension/spray,  var/atom/target, angle, length, stun, duration, cooldown, windup, mob/override_user = null, list/extra_data)
 	if (!can_spray())
 		return null
 	var/list/arguments = list(src, subtype, target, angle, length, stun, duration, cooldown, override_user, extra_data)
@@ -55,7 +55,7 @@ Vars/
 	Duration:	How long to spray for
 	Cooldown:	Starts after duration
 */
-/datum/extension/spray/New(var/atom/source, var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/mob/override_user = null, var/list/extra_data)
+/datum/extension/spray/New(var/atom/source, atom/target, angle, length, stun, duration, cooldown, mob/override_user = null, list/extra_data)
 	.=..()
 	src.source = source
 	if (override_user)
@@ -89,7 +89,7 @@ Vars/
 /datum/extension/spray/proc/handle_extra_data(var/list/data)
 	.=..()
 
-/datum/extension/spray/proc/set_target_loc(var/vector2/newloc, var/target_object)
+/datum/extension/spray/proc/set_target_loc(var/vector2/newloc, target_object)
 	target = newloc
 	if (target_object)
 		target_atom = target_object

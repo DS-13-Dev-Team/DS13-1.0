@@ -113,7 +113,7 @@
 /datum/species/adherent/can_fall(var/mob/living/carbon/human/H)
 	. = !can_overcome_gravity(H)
 
-/datum/species/adherent/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
+/datum/species/adherent/handle_fall_special(var/mob/living/carbon/human/H, turf/landing)
 
 	if(can_overcome_gravity(H))
 		if(istype(landing, /turf/simulated/open))

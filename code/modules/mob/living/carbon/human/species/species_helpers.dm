@@ -13,7 +13,7 @@ var/list/stored_shock_by_ref = list()
 		H.pulling_punches = !H.pulling_punches
 		to_chat(H, "<span class='notice'>You are now [H.pulling_punches ? "pulling your punches" : "not pulling your punches"].</span>")
 
-/datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
+/datum/species/proc/get_offset_overlay_image(var/spritesheet, mob_icon, mob_state, color, slot)
 
 	// If we don't actually need to offset this, don't bother with any of the generation/caching.
 	if(!spritesheet && equip_adjust.len && equip_adjust[slot] && LAZYLEN(equip_adjust[slot]))

@@ -7,7 +7,7 @@
 	..()
 	event_turfs_by_z_level = list()
 
-/decl/overmap_event_handler/proc/create_events(var/z_level, var/overmap_size, var/number_of_events)
+/decl/overmap_event_handler/proc/create_events(var/z_level, overmap_size, number_of_events)
 	// Acquire the list of not-yet utilized overmap turfs on this Z-level
 	var/list/events_by_turf = get_event_turfs_by_z_level(z_level)
 	var/list/candidate_turfs = block(locate(OVERMAP_EDGE, OVERMAP_EDGE, z_level),locate(overmap_size - OVERMAP_EDGE, overmap_size - OVERMAP_EDGE,z_level))
@@ -40,7 +40,7 @@
 		. = list()
 		event_turfs_by_z_level[z_level_text] = .
 
-/decl/overmap_event_handler/proc/acquire_event_turfs(var/number_of_turfs, var/distance_from_origin, var/list/candidate_turfs, var/continuous = TRUE)
+/decl/overmap_event_handler/proc/acquire_event_turfs(var/number_of_turfs, distance_from_origin, list/candidate_turfs, continuous = TRUE)
 	number_of_turfs = min(number_of_turfs, candidate_turfs.len)
 	candidate_turfs = candidate_turfs.Copy() // Not this proc's responsibility to adjust the given lists
 
@@ -63,7 +63,7 @@
 
 	return selected_turfs
 
-/decl/overmap_event_handler/proc/get_random_neighbour(var/turf/origin_turf, var/list/candidate_turfs, var/continuous = TRUE, var/range)
+/decl/overmap_event_handler/proc/get_random_neighbour(var/turf/origin_turf, list/candidate_turfs, continuous = TRUE, range)
 	var/fitting_turfs
 	if(continuous)
 		fitting_turfs = origin_turf.CardinalTurfs(FALSE)
@@ -74,7 +74,7 @@
 		if(T in candidate_turfs)
 			return T
 
-/decl/overmap_event_handler/proc/on_turf_exited(var/turf/old_loc, var/obj/effect/overmap/ship/entering_ship, var/new_loc)
+/decl/overmap_event_handler/proc/on_turf_exited(var/turf/old_loc, obj/effect/overmap/ship/entering_ship, new_loc)
 	if(!istype(entering_ship))
 		return
 	if(new_loc == old_loc)
@@ -91,7 +91,7 @@
 			return
 		old_event.leave(entering_ship)
 
-/decl/overmap_event_handler/proc/on_turf_entered(var/turf/new_loc, var/obj/effect/overmap/ship/entering_ship, var/old_loc)
+/decl/overmap_event_handler/proc/on_turf_entered(var/turf/new_loc, obj/effect/overmap/ship/entering_ship, old_loc)
 	if(!istype(entering_ship))
 		return
 	if(new_loc == old_loc)

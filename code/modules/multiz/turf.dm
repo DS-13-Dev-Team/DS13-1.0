@@ -84,7 +84,7 @@
 	mover.fall()
 
 // Called when thrown object lands on this turf.
-/turf/simulated/open/hitby(var/atom/movable/AM, var/speed)
+/turf/simulated/open/hitby(var/atom/movable/AM, speed)
 	. = ..()
 	AM.fall()
 
@@ -202,7 +202,7 @@
 /turf/simulated/open/is_plating()
 	return 1
 
-/turf/simulated/open/proc/handle_move(var/atom/current_loc, var/atom/movable/am, var/atom/changed_loc)
+/turf/simulated/open/proc/handle_move(var/atom/current_loc, atom/movable/am, atom/changed_loc)
 	//First handle objs and such
 	if(GLOB.open_space_initialised && !am.invisibility && isobj(am))
 	//Update icons
@@ -230,7 +230,7 @@
 
 //The two situations which require unregistering
 
-/turf/simulated/open/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0)
+/turf/simulated/open/ChangeTurf(var/turf/N, tell_universe=1, force_lighting_update = 0)
 	//We do not want to change any of the behaviour, just make sure this goes away
 	src.clean_up()
 	. = ..()

@@ -31,10 +31,10 @@
 			return
 	A.attach_label(user, src, label)
 
-/atom/proc/attach_label(var/user, var/atom/labeler, var/label_text)
+/atom/proc/attach_label(var/user, atom/labeler, label_text)
 	to_chat(user, "<span class='notice'>The label refuses to stick to [name].</span>")
 
-/mob/observer/attach_label(var/user, var/atom/labeler, var/label_text)
+/mob/observer/attach_label(var/user, atom/labeler, label_text)
 	to_chat(user, "<span class='notice'>\The [labeler] passes through \the [src].</span>")
 
 /obj/machinery/portable_atmospherics/hydroponics/attach_label(var/user)
@@ -44,7 +44,7 @@
 	..()
 	update_icon()
 
-/obj/attach_label(var/user, var/atom/labeler, var/label_text)
+/obj/attach_label(var/user, atom/labeler, label_text)
 	if(!simulated)
 		return
 	var/datum/extension/labels/L = get_or_create_extension(src, /datum/extension/labels)

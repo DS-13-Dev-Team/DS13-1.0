@@ -138,7 +138,7 @@
 /obj/item/grab/proc/get_targeted_organ()
 	return (affecting.get_organ(target_zone))
 
-/obj/item/grab/proc/resolve_item_attack(var/mob/living/M, var/obj/item/I, var/target_zone)
+/obj/item/grab/proc/resolve_item_attack(var/mob/living/M, obj/item/I, target_zone)
 	if((M && ishuman(M)) && I)
 		return current_grab.resolve_item_attack(src, M, I, target_zone)
 	else

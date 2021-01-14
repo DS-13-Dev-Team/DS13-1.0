@@ -10,7 +10,7 @@
 	var/datum/disease2/disease/virus2 = null
 	core_skill = SKILL_MEDICAL
 
-/obj/machinery/computer/centrifuge/attackby(var/obj/O as obj, var/mob/user as mob)
+/obj/machinery/computer/centrifuge/attackby(var/obj/O as obj, mob/user as mob)
 	if(isScrewdriver(O))
 		return ..(O,user)
 
@@ -36,7 +36,7 @@
 	if(..()) return
 	ui_interact(user)
 
-/obj/machinery/computer/centrifuge/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/centrifuge/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]

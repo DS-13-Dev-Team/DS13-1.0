@@ -113,7 +113,7 @@
 	light_color = "#ed9200"
 	anchored = 1
 
-/obj/effect/engine_exhaust/New(var/turf/nloc, var/ndir, var/flame)
+/obj/effect/engine_exhaust/New(var/turf/nloc, ndir, flame)
 	..(nloc)
 	if(flame)
 		icon_state = "exhaust"

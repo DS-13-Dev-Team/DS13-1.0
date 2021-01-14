@@ -52,7 +52,7 @@
 	var/list/terminals = list()
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
 
-/obj/machinery/power/smes/drain_power(var/drain_check, var/surge, var/amount = 0)
+/obj/machinery/power/smes/drain_power(var/drain_check, surge, amount = 0)
 
 	if(drain_check)
 		return 1
@@ -246,7 +246,7 @@
 	return 1
 
 
-/obj/machinery/power/smes/proc/check_terminal_exists(var/turf/location, var/mob/user, var/direction)
+/obj/machinery/power/smes/proc/check_terminal_exists(var/turf/location, mob/user, direction)
 	for(var/obj/machinery/power/terminal/term in location)
 		if(term.dir == direction)
 			to_chat(user, "<span class='notice'>There is already a terminal here.</span>")
@@ -273,7 +273,7 @@
 	ui_interact(user)
 
 
-/obj/machinery/power/smes/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/power/smes/attackby(var/obj/item/weapon/W as obj, mob/user as mob)
 
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -343,7 +343,7 @@
 		return 0
 	return 1
 
-/obj/machinery/power/smes/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/smes/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 
 	if(stat & BROKEN)
 		return

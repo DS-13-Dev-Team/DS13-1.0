@@ -50,7 +50,7 @@ var/datum/evacuation_controller/evacuation_controller
 		CRASH("[esp] has already been added as an evacuation predicate")
 	evacuation_predicates += esp
 
-/datum/evacuation_controller/proc/call_evacuation(var/mob/user, var/_emergency_evac, var/forced, var/skip_announce, var/autotransfer)
+/datum/evacuation_controller/proc/call_evacuation(var/mob/user, _emergency_evac, forced, skip_announce, autotransfer)
 
 	if(state != EVAC_IDLE)
 		return 0
@@ -172,7 +172,7 @@ var/datum/evacuation_controller/evacuation_controller
 /datum/evacuation_controller/proc/available_evac_options()
 	return list()
 
-/datum/evacuation_controller/proc/handle_evac_option(var/option_target, var/mob/user)
+/datum/evacuation_controller/proc/handle_evac_option(var/option_target, mob/user)
 	var/datum/evacuation_option/selected = evacuation_options[option_target]
 	if (!isnull(selected) && istype(selected))
 		selected.execute(user)

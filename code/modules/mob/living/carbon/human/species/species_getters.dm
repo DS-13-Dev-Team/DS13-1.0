@@ -25,7 +25,7 @@
 /datum/species/proc/get_examine_name(var/mob/living/carbon/human/H)
 	return name
 
-/datum/species/proc/get_icobase(var/mob/living/carbon/human/H, var/get_deform)
+/datum/species/proc/get_icobase(var/mob/living/carbon/human/H, get_deform)
 	return (get_deform ? deform : icobase)
 
 
@@ -56,7 +56,7 @@
 /datum/species/proc/get_flesh_colour(var/mob/living/carbon/human/H)
 	return ((H && H.isSynthetic()) ? SYNTH_FLESH_COLOUR : flesh_color)
 
-/datum/species/proc/get_environment_discomfort(var/mob/living/carbon/human/H, var/msg_type)
+/datum/species/proc/get_environment_discomfort(var/mob/living/carbon/human/H, msg_type)
 
 	if(!prob(5))
 		return

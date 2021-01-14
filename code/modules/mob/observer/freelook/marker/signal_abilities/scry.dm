@@ -16,7 +16,7 @@
 
 
 //Because obscuring overlays block clicks, we have to override here to do things
-/datum/signal_ability/scry/target_click(var/mob/user, var/atom/target, var/params)
+/datum/signal_ability/scry/target_click(var/mob/user, atom/target, params)
 	var/client/C  = user.get_client()
 	if (!C)
 		return FALSE //This cannot be
@@ -24,7 +24,7 @@
 	target = get_turf_at_mouse(params, C)
 	return select_target(user, target)
 
-/datum/signal_ability/scry/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/scry/on_cast(var/mob/user, atom/target, list/data)
 	new /obj/effect/scry_eye(target)
 	link_necromorphs_to(SPAN_NOTICE("[user] cast Scry at LINK"), target)
 

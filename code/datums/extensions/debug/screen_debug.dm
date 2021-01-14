@@ -10,7 +10,7 @@
 	var/client/C
 	var/mob/living/user
 
-/datum/extension/screen_debug/New(var/client/client, var/mob/living/user)
+/datum/extension/screen_debug/New(var/client/client, mob/living/user)
 	C = client
 	src.user = user
 
@@ -19,7 +19,7 @@
 
 
 
-/datum/extension/screen_debug/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/extension/screen_debug/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/list/screenobjects = list()
 	for (var/obj/O in C.screen)
 		screenobjects += list(list("name" = O.name, "ref" = "\ref[O]", "type" = O.type, "icon" = "[O.icon] | [O.icon_state]"))

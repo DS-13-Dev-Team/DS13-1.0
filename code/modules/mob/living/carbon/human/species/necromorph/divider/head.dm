@@ -155,14 +155,14 @@
 	can_regrow = FALSE
 
 
-/obj/item/organ/external/head/simple/divider/New(var/mob/living/carbon/holder, var/datum/dna/given_dna)
+/obj/item/organ/external/head/simple/divider/New(var/mob/living/carbon/holder, datum/dna/given_dna)
 	.=..()
 	GLOB.death_event.register(holder, src, /obj/item/organ/external/head/simple/divider/proc/holder_death)
 
 
 
 //It becomes a head mob again if severed
-/obj/item/organ/external/head/simple/divider/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent, var/atom/cutter)
+/obj/item/organ/external/head/simple/divider/droplimb(var/clean, disintegrate = DROPLIMB_EDGE, ignore_children, silent, atom/cutter)
 	if (!QDELETED(src) && owner)
 		create_divider_component(owner, 0)
 		qdel(src)
@@ -182,7 +182,7 @@
 	Base Organ Code
 */
 //If the divider player is still connected, they transfer control to the head
-/obj/item/organ/external/head/create_divider_component(var/mob/living/carbon/human/H, var/deletion_delay)
+/obj/item/organ/external/head/create_divider_component(var/mob/living/carbon/human/H, deletion_delay)
 	.=..()
 	if (.)
 		var/mob/living/simple_animal/necromorph/divider_component/L = .
@@ -234,7 +234,7 @@
 		H.visible_message("[H] lurches around awkwardly")
 		H.lurch()
 
-/datum/extension/divider_puppet/proc/holder_bump(var/mover, var/obstacle)
+/datum/extension/divider_puppet/proc/holder_bump(var/mover, obstacle)
 	if (prob(10))
 		H.visible_message("[H] bumps into [obstacle] and staggers off")
 		H.lurch(get_dir(obstacle, H))
@@ -384,7 +384,7 @@
 	Core checks. It is called as part of other check procs on initial tongue contact, and periodically while performing the execution.
 	If it returns false, the execution is denied or cancelled.
 */
-/proc/divider_head_safety(var/mob/living/simple_animal/necromorph/divider_component/head/user, var/mob/living/carbon/human/target)
+/proc/divider_head_safety(var/mob/living/simple_animal/necromorph/divider_component/head/user, mob/living/carbon/human/target)
 
 	//We only target humans
 	if (!istype(user) || !istype(target))
@@ -408,7 +408,7 @@
 /*
 	Start check, called to see if we can grab the mob
 */
-/proc/divider_head_start(var/mob/living/simple_animal/necromorph/divider_component/head/user, var/mob/living/carbon/human/target)
+/proc/divider_head_start(var/mob/living/simple_animal/necromorph/divider_component/head/user, mob/living/carbon/human/target)
 	//Core first
 	.=divider_head_safety(user, target)
 	if (. == EXECUTION_CANCEL)
@@ -437,7 +437,7 @@
 	1 = continue, keep going
 	2 = win, the execution ends successfully, the victim is killed and we skip to the final stage
 */
-/proc/divider_head_continue(var/mob/living/simple_animal/necromorph/divider_component/head/user, var/mob/living/carbon/human/target)
+/proc/divider_head_continue(var/mob/living/simple_animal/necromorph/divider_component/head/user, mob/living/carbon/human/target)
 	//Core first
 	.=divider_head_safety(user, target)
 	if (. == EXECUTION_CANCEL)

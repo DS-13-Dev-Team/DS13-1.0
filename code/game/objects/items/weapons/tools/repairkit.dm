@@ -32,7 +32,7 @@
 
 
 //Try to repair a thing. Return true if we did any repairing on it
-/obj/item/weapon/tool/repairkit/proc/attempt_repair(var/atom/target, var/mob/user)
+/obj/item/weapon/tool/repairkit/proc/attempt_repair(var/atom/target, mob/user)
 	if (!target)
 		return FALSE
 
@@ -84,14 +84,14 @@
 
 		//We do NOT consume resources here, because the use tool operation already consumed them for this remaining time
 
-/obj/item/weapon/tool/repairkit/proc/get_repair_cost(var/mob/user, var/atom/target)
+/obj/item/weapon/tool/repairkit/proc/get_repair_cost(var/mob/user, atom/target)
 	var/cost_multiplier = repair_cost
 	//TODO Here: Factor character skills into this cost multiplier
 
 	return cost_multiplier
 
 //This routes to repair_tick. We consume the resources here to prevent a double consumption from the finishing
-/obj/item/weapon/tool/repairkit/work_in_progress(var/mob/user, var/atom/target, var/delta)
+/obj/item/weapon/tool/repairkit/work_in_progress(var/mob/user, atom/target, delta)
 	.=..()
 	var/timespent = repair_tick(user, target, delta)
 	if (timespent)
@@ -99,7 +99,7 @@
 
 //Here we actually do repairing on the thing
 //Timespent is in deciseconds
-/obj/item/weapon/tool/repairkit/proc/repair_tick(var/mob/user, var/atom/target, var/timespent)
+/obj/item/weapon/tool/repairkit/proc/repair_tick(var/mob/user, atom/target, timespent)
 	//First of all, we don't want to overspend, so lets see how much repairing is still needed
 
 	var/repair_needed = target.repair_needed()

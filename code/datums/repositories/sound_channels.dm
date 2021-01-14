@@ -17,7 +17,7 @@ GLOBAL_VAR_INIT(admin_sound_channel, GLOB.sound_channels.RequestChannel("ADMIN_F
 	. = RequestChannels(key, 1)
 	return LAZYLEN(.) && .[1]
 
-/repository/sound_channels/proc/RequestChannels(var/key, var/amount)
+/repository/sound_channels/proc/RequestChannels(var/key, amount)
 	if(!key)
 		CRASH("Invalid key given.")
 	. = list()

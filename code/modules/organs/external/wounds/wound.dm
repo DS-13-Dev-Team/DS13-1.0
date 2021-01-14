@@ -29,7 +29,7 @@
 	var/tmp/list/desc_list = list()
 	var/tmp/list/damage_list = list()
 
-/datum/wound/New(var/damage, var/obj/item/organ/external/organ = null)
+/datum/wound/New(var/damage, obj/item/organ/external/organ = null)
 
 	created = world.time
 

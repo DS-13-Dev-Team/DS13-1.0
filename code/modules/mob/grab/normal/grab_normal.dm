@@ -217,7 +217,7 @@
 					G.affecting.eye_blind = 3
 
 // Handles when they change targeted areas and something is supposed to happen.
-/datum/grab/normal/special_target_change(var/obj/item/grab/G, var/diff_zone)
+/datum/grab/normal/special_target_change(var/obj/item/grab/G, diff_zone)
 	if(G.target_zone != BP_HEAD && G.target_zone != BP_CHEST)
 		return
 	switch(diff_zone)
@@ -239,7 +239,7 @@
 				return 0
 	return 1
 
-/datum/grab/normal/resolve_item_attack(var/obj/item/grab/G, var/mob/living/carbon/human/user, var/obj/item/I)
+/datum/grab/normal/resolve_item_attack(var/obj/item/grab/G, mob/living/carbon/human/user, obj/item/I)
 	switch(G.target_zone)
 		if(BP_HEAD)
 			return attack_throat(G, I, user)
@@ -248,7 +248,7 @@
 
 
 
-/datum/grab/normal/proc/attack_throat(var/obj/item/grab/G, var/obj/item/W, var/mob/living/carbon/human/user)
+/datum/grab/normal/proc/attack_throat(var/obj/item/grab/G, obj/item/W, mob/living/carbon/human/user)
 	var/mob/living/carbon/human/affecting = G.affecting
 
 	if(user.a_intent != I_HURT)
@@ -290,7 +290,7 @@
 	admin_attack_log(user, src, "Knifed their victim", "Was knifed", "knifed")
 	return 1
 
-/datum/grab/normal/proc/attack_tendons(var/obj/item/grab/G, var/obj/item/W, var/mob/living/carbon/human/user, var/target_zone)
+/datum/grab/normal/proc/attack_tendons(var/obj/item/grab/G, obj/item/W, mob/living/carbon/human/user, target_zone)
 	var/mob/living/carbon/human/affecting = G.affecting
 
 	if(!user.skill_check(SKILL_COMBAT, SKILL_ADEPT))

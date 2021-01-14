@@ -84,13 +84,13 @@ SUBSYSTEM_DEF(codex)
 	else if(entries_by_string[lowertext(entry)])
 		return entries_by_string[lowertext(entry)]
 
-/datum/controller/subsystem/codex/proc/add_entry_by_string(var/string, var/entry)
+/datum/controller/subsystem/codex/proc/add_entry_by_string(var/string, entry)
 	entries_by_string[lowertext(trim(string))] = entry
 
 /datum/controller/subsystem/codex/proc/get_entry_by_string(var/string)
 	return entries_by_string[lowertext(trim(string))]
 
-/datum/controller/subsystem/codex/proc/present_codex_entry(var/mob/presenting_to, var/datum/codex_entry/entry)
+/datum/controller/subsystem/codex/proc/present_codex_entry(var/mob/presenting_to, datum/codex_entry/entry)
 	if(entry && istype(presenting_to) && presenting_to.client)
 		var/datum/browser/popup = new(presenting_to, "codex", "Codex", nheight=425)
 		popup.set_content(parse_links(entry.get_text(presenting_to), presenting_to))

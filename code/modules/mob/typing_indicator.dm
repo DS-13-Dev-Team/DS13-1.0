@@ -10,7 +10,7 @@ I IS TYPIN'!'
 	icon = 'icons/mob/talk.dmi'
 	icon_state = "typing"
 
-/atom/movable/overlay/typing_indicator/New(var/newloc, var/mob/master)
+/atom/movable/overlay/typing_indicator/New(var/newloc, mob/master)
 	..(newloc)
 	if(master.typing_indicator)
 		qdel(master.typing_indicator)

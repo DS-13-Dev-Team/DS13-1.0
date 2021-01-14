@@ -42,7 +42,7 @@
 	return owner.examine(user, distance, infix, suffix)
 
 // Relay some stuff they hear
-/mob/zshadow/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "", var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/zshadow/hear_say(var/message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 	if(speaker && speaker.z != src.z)
 		return // Only relay speech on our actual z, otherwise we might relay sounds that were themselves relayed up!
 	if(isliving(owner))
@@ -95,13 +95,13 @@
 		shadow.sync_icon(src)
 
 //Copy direction
-/mob/zshadow/proc/update_dir(var/atom/a, var/old_dir, var/new_dir)
+/mob/zshadow/proc/update_dir(var/atom/a, old_dir, new_dir)
 	if (old_dir != new_dir)
 		set_dir(owner.dir)
 
 
 //Change name of shadow if it's updated too (generally moving will sync but static updates are handy)
-/mob/fully_replace_character_name(var/new_name, var/in_depth = TRUE)
+/mob/fully_replace_character_name(var/new_name, in_depth = TRUE)
 	. = ..()
 	if(shadow)
 		shadow.fully_replace_character_name(new_name)

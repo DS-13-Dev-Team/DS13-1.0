@@ -54,7 +54,7 @@
 	add_fingerprint(usr)
 	return
 
-/obj/item/weapon/paper_bundle/proc/insert_sheet_at(mob/user, var/index, obj/item/weapon/sheet)
+/obj/item/weapon/paper_bundle/proc/insert_sheet_at(mob/user, index, obj/item/weapon/sheet)
 	if (!user.unEquip(sheet, src))
 		return
 	var/bundle_name = "paper bundle"

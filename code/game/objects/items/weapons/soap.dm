@@ -7,7 +7,7 @@
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 0
-	
+
 	throw_range = 20
 	var/key_data
 
@@ -49,14 +49,14 @@
 	return
 
 //attack_as_weapon
-/obj/item/weapon/soap/attack(mob/living/target, mob/living/user, var/target_zone)
+/obj/item/weapon/soap/attack(mob/living/target, mob/living/user, target_zone)
 	if(target && user && ishuman(target) && ishuman(user) && !target.stat && !user.stat && user.zone_sel &&user.zone_sel.selecting == BP_MOUTH)
 		user.visible_message("<span class='danger'>\The [user] washes \the [target]'s mouth out with soap!</span>")
 		user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN) //prevent spam
 		return
 	..()
 
-/obj/item/weapon/soap/attackby(var/obj/item/I, var/mob/user)
+/obj/item/weapon/soap/attackby(var/obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/key))
 		if(!key_data)
 			to_chat(user, "<span class='notice'>You imprint \the [I] into \the [src].</span>")

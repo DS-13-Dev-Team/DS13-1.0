@@ -18,7 +18,7 @@
 	return position
 
 //Gets a global-context pixel location. This requires a client to use
-/proc/get_global_pixel_click_location(var/params, var/client/client)
+/proc/get_global_pixel_click_location(var/params, client/client)
 
 	if (!client)
 		return get_new_vector(0,0)
@@ -32,7 +32,7 @@
 
 //This mildly complicated proc attempts to move thing to where the user's mouse cursor is
 //Thing must be an atom that is already onscreen - ie, in a client's screen list
-/proc/sync_screen_loc_to_mouse(var/atom/movable/thing, var/params, var/tilesnap = FALSE, var/vector2/offset = Vector2.Zero)
+/proc/sync_screen_loc_to_mouse(var/atom/movable/thing, params, tilesnap = FALSE, vector2/offset = Vector2.Zero)
 	var/screen_loc = params2list(params)["screen-loc"]
 	var/global/regex/ScreenLocRegex = regex("(\\d+):(\\d+),(\\d+):(\\d+)")
 	if(ScreenLocRegex.Find(screen_loc))
@@ -125,13 +125,13 @@
 
 
 //Global version of the above, requires a zlevel to check on
-/proc/get_turf_at_pixel_coords(var/vector2/coords, var/zlevel)
+/proc/get_turf_at_pixel_coords(var/vector2/coords, zlevel)
 	var/vector2/newcoords = get_new_vector(round(coords.x / world.icon_size)+1, round(coords.y / world.icon_size)+1)
 	var/turf/T = locate(newcoords.x, newcoords.y, zlevel)
 	release_vector(newcoords)
 	return T
 
-/proc/get_turf_at_mouse(var/clickparams, var/client/C)
+/proc/get_turf_at_mouse(var/clickparams, client/C)
 	var/vector2/pixels = get_global_pixel_click_location(clickparams, C)
 	var/turf/T = get_turf_at_pixel_coords(pixels, C.mob.z)
 	release_vector(pixels)
@@ -205,19 +205,19 @@
 	return bounds
 
 
-/atom/proc/set_offset_to(var/atom/target, var/distance)
+/atom/proc/set_offset_to(var/atom/target, distance)
 	pixel_x = 0
 	pixel_y = 0
 	offset_to(target, distance)
 
-/atom/proc/offset_to(var/atom/target, var/distance)
+/atom/proc/offset_to(var/atom/target, distance)
 	var/vector2/delta = get_offset_to(target, distance)
 	pixel_x += delta.x
 	pixel_y += delta.y
 	release_vector(delta)
 
 
-/atom/proc/get_offset_to(var/atom/target, var/distance)
+/atom/proc/get_offset_to(var/atom/target, distance)
 	var/vector2/delta = Vector2.NewFromDir(get_dir(src, target))
 	delta.SelfMultiply(distance)
 	return delta
@@ -231,7 +231,7 @@
 //Line: Vector2, the vector we will project ourselves onto
 //Mover: The thing that will move onto the line. The magnitude of the line should be measured in pixels and it must be long enough
 //Adjusts pixel offsets to place mover onto the nearest point along Line
-/proc/place_on_projection_line(var/atom/source, var/vector2/line, var/atom/mover)
+/proc/place_on_projection_line(var/atom/source, vector2/line, atom/mover)
 
 	//First of all, where is the mover relative to the source
 	var/vector2/pixel_offset = mover.get_global_pixel_offset(source)
@@ -250,7 +250,7 @@
 	In the process of moving, the object's tile location will be updated if it enters a new tile, and it will stop on the edge and trigger bumps if not
 
 */
-/atom/movable/proc/pixel_move(var/vector2/position_delta, var/time_delta)
+/atom/movable/proc/pixel_move(var/vector2/position_delta, time_delta)
 	//Now before we do animating, lets check if this movement is going to put us into a different tile
 	var/vector2/newpix = get_new_vector((pixel_x + position_delta.x), (pixel_y + position_delta.y))
 	var/blocked = FALSE
@@ -346,7 +346,7 @@
 
 
 //Mobs that get their pixel offset messed up will be able to walk it off
-/mob/living/pixel_move(var/vector2/position_delta, var/time_delta)
+/mob/living/pixel_move(var/vector2/position_delta, time_delta)
 	.=..()
 	set_extension(src, /datum/extension/conditionalmove/pixel_align)
 

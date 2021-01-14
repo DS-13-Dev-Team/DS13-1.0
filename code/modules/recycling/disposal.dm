@@ -51,7 +51,7 @@
 		trunk.linked = null
 	return ..()
 
-/obj/machinery/disposal/proc/try_insert_mob(var/mob/victim, var/mob/user)
+/obj/machinery/disposal/proc/try_insert_mob(var/mob/victim, mob/user)
 	if (victim.mob_size > max_mob_size || victim.buckled || (user && user.incapacitated()))
 		return
 
@@ -81,7 +81,7 @@
 
 
 // attack by item places it in to disposal
-/obj/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/disposal/attackby(var/obj/item/I, mob/user)
 	if(stat & BROKEN || !I || !user)
 		return
 
@@ -254,7 +254,7 @@
 	return
 
 // user interaction
-/obj/machinery/disposal/interact(mob/user, var/ai=0)
+/obj/machinery/disposal/interact(mob/user, ai=0)
 
 	src.add_fingerprint(user)
 	if(stat & BROKEN)
@@ -514,7 +514,7 @@
 
 
 	// initialize a holder from the contents of a disposal unit
-	proc/init(var/obj/machinery/disposal/D, var/datum/gas_mixture/flush_gas)
+	proc/init(var/obj/machinery/disposal/D, datum/gas_mixture/flush_gas)
 		gas = flush_gas// transfer gas resv. into holder object -- let's be explicit about the data this proc consumes, please.
 
 		//Check for any living mobs trigger hasmob.
@@ -764,7 +764,7 @@
 
 	// expel the held objects into a turf
 	// called when there is a break in the pipe
-	proc/expel(var/obj/structure/disposalholder/H, var/turf/T, var/direction)
+	proc/expel(var/obj/structure/disposalholder/H, turf/T, direction)
 		if(!istype(H))
 			return
 
@@ -873,7 +873,7 @@
 	//attack by item
 	//weldingtool: unfasten and convert to obj/disposalconstruct
 
-	attackby(var/obj/item/I, var/mob/user)
+	attackby(var/obj/item/I, mob/user)
 
 		var/turf/T = src.loc
 		if(!T.is_plating())
@@ -1149,7 +1149,7 @@
 		updatedesc()
 		update()
 
-	attackby(var/obj/item/I, var/mob/user)
+	attackby(var/obj/item/I, mob/user)
 		if(..())
 			return
 
@@ -1234,7 +1234,7 @@
 	w_class = ITEM_SIZE_LARGE
 	var/id_tag
 
-/obj/item/disposal_switch_construct/New(var/turf/loc, var/id)
+/obj/item/disposal_switch_construct/New(var/turf/loc, id)
 	..(loc)
 	if(id) id_tag = id
 	else
@@ -1295,7 +1295,7 @@
 	linked = null
 	return ..()
 
-/obj/structure/disposalpipe/diversion_junction/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/disposalpipe/diversion_junction/attackby(var/obj/item/I, mob/user)
 	if(..())
 		return 1
 
@@ -1307,7 +1307,7 @@
 			user.visible_message("<span class='notice'>\The [user] changes \the [src]'s tag.</span>")
 
 
-/obj/structure/disposalpipe/diversion_junction/nextdir(var/fromdir, var/sortTag)
+/obj/structure/disposalpipe/diversion_junction/nextdir(var/fromdir, sortTag)
 	if(fromdir != sortdir)
 		if(active)
 			return sortdir
@@ -1378,7 +1378,7 @@
 		updatedesc()
 		update()
 
-	attackby(var/obj/item/I, var/mob/user)
+	attackby(var/obj/item/I, mob/user)
 		if(..())
 			return
 
@@ -1400,7 +1400,7 @@
 	// if coming in from posdir, then flip around and go back to posdir
 	// if coming in from sortdir, go to posdir
 
-	nextdir(var/fromdir, var/sortTag)
+	nextdir(var/fromdir, sortTag)
 		if(fromdir != sortdir)	// probably came from the negdir
 			if(divert_check(sortTag))
 				return sortdir
@@ -1484,7 +1484,7 @@
 	return
 
 	// Override attackby so we disallow trunkremoval when somethings ontop
-/obj/structure/disposalpipe/trunk/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/disposalpipe/trunk/attackby(var/obj/item/I, mob/user)
 
 	//Disposal bins or chutes
 	/*
@@ -1608,7 +1608,7 @@
 
 		return
 
-	attackby(var/obj/item/I, var/mob/user)
+	attackby(var/obj/item/I, mob/user)
 		if(!I || !user)
 			return
 		src.add_fingerprint(user, 0, I)

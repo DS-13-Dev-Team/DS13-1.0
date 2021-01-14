@@ -22,7 +22,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 	desc = "The legendary book of spells of the wizard."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "spellbook"
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	var/uses = 1
@@ -58,7 +58,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 		to_chat(user, "You notice the apprentice-proof lock is on. Luckily you are beyond such things.")
 	interact(user)
 
-/obj/item/weapon/spellbook/proc/make_sacrifice(obj/item/I as obj, mob/user as mob, var/reagent)
+/obj/item/weapon/spellbook/proc/make_sacrifice(obj/item/I as obj, mob/user as mob, reagent)
 	if(has_sacrificed)
 		return
 	if(reagent)
@@ -265,7 +265,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 		feedback_add_details("wizard_spell_learned","[artefact_feedback[path]]")
 
 
-/obj/item/weapon/spellbook/proc/add_spell(var/mob/user, var/spell_path)
+/obj/item/weapon/spellbook/proc/add_spell(var/mob/user, spell_path)
 	for(var/spell/S in user.mind.learned_spells)
 		if(istype(S,spell_path))
 			if(!S.can_improve())

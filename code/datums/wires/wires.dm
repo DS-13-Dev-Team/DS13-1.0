@@ -157,7 +157,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 //
 
 // Called when wires cut/mended.
-/datum/wires/proc/UpdateCut(var/index, var/mended)
+/datum/wires/proc/UpdateCut(var/index, mended)
 	return
 
 // Called when wire pulsed. Add code here.
@@ -175,7 +175,7 @@ var/const/SHOCKED = 2
 var/const/SAFETY = 4
 var/const/POWER = 8
 
-/datum/wires/door/UpdateCut(var/index, var/mended)
+/datum/wires/door/UpdateCut(var/index, mended)
 	var/obj/machinery/door/airlock/A = holder
 	switch(index)
 		if(BOLTED)
@@ -238,7 +238,7 @@ var/const/POWER = 8
 		return signallers[colour]
 	return null
 
-/datum/wires/proc/Attach(var/colour, var/obj/item/device/assembly/signaler/S)
+/datum/wires/proc/Attach(var/colour, obj/item/device/assembly/signaler/S)
 	if(colour && S)
 		if(!IsAttached(colour))
 			signallers[colour] = S

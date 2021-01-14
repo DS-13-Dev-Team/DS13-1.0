@@ -79,7 +79,7 @@
 /datum/nano_module/camera_monitor/proc/modify_networks_list(var/list/networks)
 	return networks
 
-/datum/nano_module/camera_monitor/proc/can_access_bridge(var/mob/user, var/network_access)
+/datum/nano_module/camera_monitor/proc/can_access_bridge(var/mob/user, network_access)
 	// No access passed, or 0 which is considered no access requirement. Allow it.
 	if(!network_access)
 		return 1
@@ -113,7 +113,7 @@
 		usr.reset_view(current_camera)
 		return 1
 
-/datum/nano_module/camera_monitor/proc/switch_to_camera(var/mob/user, var/obj/machinery/camera/C)
+/datum/nano_module/camera_monitor/proc/switch_to_camera(var/mob/user, obj/machinery/camera/C)
 	//don't need to check if the camera works for AI because the AI jumps to the camera location and doesn't actually look through cameras.
 	if(isAI(user))
 		var/mob/living/silicon/ai/A = user

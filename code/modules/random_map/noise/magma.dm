@@ -35,7 +35,7 @@
 /datum/random_map/noise/volcanism/get_appropriate_path(var/value)
 	return
 
-/datum/random_map/noise/volcanism/get_additional_spawns(var/value, var/turf/T)
+/datum/random_map/noise/volcanism/get_additional_spawns(var/value, turf/T)
 	if(value>=178)
 		if(istype(T,/turf/simulated/floor/asteroid))
 			T.ChangeTurf(/turf/simulated/floor/airless/lava)

@@ -26,7 +26,7 @@
 	desc = "A strange ring with symbols carved on it in some arcane language."
 	icon_state = "magic"
 
-/obj/item/clothing/ring/magic/equipped(var/mob/living/carbon/human/H, var/slot)
+/obj/item/clothing/ring/magic/equipped(var/mob/living/carbon/human/H, slot)
 	..()
 	if(istype(H) && slot == SLOT_GLOVES)
 		H.add_cloaking_source(src)

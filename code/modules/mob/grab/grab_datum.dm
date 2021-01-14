@@ -67,7 +67,7 @@
 
 // This is for the strings defined as datum variables. It takes them and swaps out keywords for relevent ones from the grab
 // object involved.
-/datum/grab/proc/string_process(var/obj/item/grab/G, var/to_write, var/obj/item/used_item)
+/datum/grab/proc/string_process(var/obj/item/grab/G, to_write, obj/item/used_item)
 	to_write = replacetext(to_write, "rep_affecting", G.affecting)
 	to_write = replacetext(to_write, "rep_assailant", G.assailant)
 	if(used_item)
@@ -174,7 +174,7 @@
 	else
 		to_chat(G.assailant, "<span class='warning'>You must wait before you can do that.</span>")
 
-/datum/grab/proc/make_log(var/obj/item/grab/G, var/action)
+/datum/grab/proc/make_log(var/obj/item/grab/G, action)
 	admin_attack_log(G.assailant, G.affecting, "[action]s their victim", "was [action]ed", "used [action] on")
 
 
@@ -268,7 +268,7 @@
 /datum/grab/proc/special_target_effect(var/obj/item/grab/G)
 
 // Handles when they change targeted areas and something is supposed to happen.
-/datum/grab/proc/special_target_change(var/obj/item/grab/G, var/diff_zone)
+/datum/grab/proc/special_target_change(var/obj/item/grab/G, diff_zone)
 
 // Checks if the special target works on the grabbed humanoid.
 /datum/grab/proc/check_special_target(var/obj/item/grab/G)
@@ -298,9 +298,9 @@
 // Used when you want an effect to happen when the grab enters this state as an upgrade
 /datum/grab/proc/enter_as_up(var/obj/item/grab/G)
 
-/datum/grab/proc/item_attack(var/obj/item/grab/G, var/obj/item)
+/datum/grab/proc/item_attack(var/obj/item/grab/G, obj/item)
 
-/datum/grab/proc/resolve_item_attack(var/obj/item/grab/G, var/mob/living/carbon/human/user, var/obj/item/I, var/target_zone)
+/datum/grab/proc/resolve_item_attack(var/obj/item/grab/G, mob/living/carbon/human/user, obj/item/I, target_zone)
 	return 0
 
 /datum/grab/proc/handle_resist(var/obj/item/grab/G)

@@ -64,7 +64,7 @@
 /obj/item/integrated_circuit/ex_act(severity)
 	..(max(1, severity - 1)) // Circuits are weak
 
-/obj/item/integrated_circuit/proc/setup_io(var/list/io_list, var/io_type)
+/obj/item/integrated_circuit/proc/setup_io(var/list/io_list, io_type)
 	var/list/io_list_copy = io_list.Copy()
 	io_list.Cut()
 	for(var/io_entry in io_list_copy)
@@ -107,19 +107,19 @@
 	var/datum/integrated_io/activate/A = activators[pin_number]
 	A.activate()
 
-/obj/item/integrated_circuit/proc/set_pin_data(var/pin_type, var/pin_number, var/new_data)
+/obj/item/integrated_circuit/proc/set_pin_data(var/pin_type, pin_number, new_data)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	return pin.write_data_to_pin(new_data)
 
-/obj/item/integrated_circuit/proc/get_pin_data(var/pin_type, var/pin_number)
+/obj/item/integrated_circuit/proc/get_pin_data(var/pin_type, pin_number)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	return pin.get_data()
 
-/obj/item/integrated_circuit/proc/get_pin_data_as_type(var/pin_type, var/pin_number, var/as_type)
+/obj/item/integrated_circuit/proc/get_pin_data_as_type(var/pin_type, pin_number, as_type)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	return pin.data_as_type(as_type)
 
-/obj/item/integrated_circuit/proc/get_pin_ref(var/pin_type, var/pin_number)
+/obj/item/integrated_circuit/proc/get_pin_ref(var/pin_type, pin_number)
 	switch(pin_type)
 		if(IC_INPUT)
 			if(pin_number > inputs.len)
@@ -286,7 +286,7 @@
 	if(. == IC_TOPIC_REFRESH)
 		interact_with_assembly(usr)
 
-/obj/item/integrated_circuit/proc/OnICTopic(href_list, var/mob/user)
+/obj/item/integrated_circuit/proc/OnICTopic(href_list, mob/user)
 	return IC_TOPIC_UNHANDLED
 
 /obj/item/integrated_circuit/proc/get_topic_data(mob/user)
@@ -307,7 +307,7 @@
 	var/list/linked = list()
 	var/io_type = DATA_CHANNEL
 
-/datum/integrated_io/New(var/newloc, var/name, var/data)
+/datum/integrated_io/New(var/newloc, name, data)
 	..()
 	src.name = name
 	src.data = data
@@ -324,7 +324,7 @@
 /datum/integrated_io/nano_host()
 	return holder
 
-/datum/integrated_io/proc/link_io(var/datum/integrated_io/io, var/mob/user)
+/datum/integrated_io/proc/link_io(var/datum/integrated_io/io, mob/user)
 	if(src == io)
 		to_chat(user, "<span class='warning'>Wiring \the [io.holder]'s [io.name] into itself is rather pointless.</span>")
 		return FALSE

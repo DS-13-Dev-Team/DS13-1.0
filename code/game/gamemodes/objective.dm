@@ -563,7 +563,7 @@ datum/objective/capture
 
 
 /datum/objective/absorb
-	proc/gen_amount_goal(var/lowbound = 4, var/highbound = 6)
+	proc/gen_amount_goal(var/lowbound = 4, highbound = 6)
 		target_amount = rand (lowbound,highbound)
 		if (ticker)
 			var/n_p = 1 //autowin

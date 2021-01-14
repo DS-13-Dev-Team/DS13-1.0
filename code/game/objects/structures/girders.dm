@@ -20,7 +20,7 @@
 	anchored = 0
 	cover = 25
 
-/obj/structure/girder/attack_generic(var/mob/user, var/damage, var/attack_message = "smashes apart", var/wallbreaker)
+/obj/structure/girder/attack_generic(var/mob/user, damage, attack_message = "smashes apart", wallbreaker)
 	if(!damage || !wallbreaker)
 		return 0
 	attack_animation(user)

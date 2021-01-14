@@ -52,7 +52,7 @@
 //Takes start and endpoint as vector2s of global pixel coords
 //The animate var should be either FALSE for instant, or a number of deciseconds for how long the animation should take
 //apply offset values0 = neither, 1= start only, 2 = end only, 3 = both
-/obj/effect/projectile/tether/proc/set_ends(var/vector2/_start = null, var/vector2/_end = null, var/animate = FALSE, var/apply_offset = 3)
+/obj/effect/projectile/tether/proc/set_ends(var/vector2/_start = null, vector2/_end = null, animate = FALSE, apply_offset = 3)
 	//We copy the passed start and end vars into our own, without modifying the passed ones
 	start.x = _start.x
 	start.y = _start.y
@@ -119,7 +119,7 @@
 	.=..()
 
 
-/obj/effect/projectile/tether/proc/retract(var/time = 1 SECOND, var/delete_on_finish = TRUE, var/steps = 3)
+/obj/effect/projectile/tether/proc/retract(var/time = 1 SECOND, delete_on_finish = TRUE, steps = 3)
 	set waitfor = FALSE
 	//We'll retract the tongue to 1 pixel away from its origin
 	//This is done in several steps to prevent visual glitches
@@ -160,7 +160,7 @@
 
 
 // When destroyed by explosions, properly handle contents.
-/obj/effect/projectile/tether/ex_act(severity, var/atom/epicentre)
+/obj/effect/projectile/tether/ex_act(severity, atom/epicentre)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/AM in contents)
@@ -184,7 +184,7 @@
 	return TRUE
 
 
-/obj/effect/projectile/tether/attackby(var/obj/item/C, var/mob/user)
+/obj/effect/projectile/tether/attackby(var/obj/item/C, mob/user)
 	if (!(obj_flags & OBJ_FLAG_INVINCIBLE))
 		playsound(src, C.hitsound, VOLUME_MID, 1)
 		user.do_attack_animation(src)
@@ -193,7 +193,7 @@
 		return
 	.=..()
 
-/obj/effect/projectile/tether/hitby(AM as mob|obj, var/speed=THROWFORCE_SPEED_DIVISOR)
+/obj/effect/projectile/tether/hitby(AM as mob|obj, speed=THROWFORCE_SPEED_DIVISOR)
 	..()
 	if(ismob(AM))
 		return
@@ -203,7 +203,7 @@
 	take_damage(tforce, BRUTE, O.thrower, O)
 
 //Called when a structure takes damage
-/obj/effect/projectile/tether/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/effect/projectile/tether/proc/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	if ((obj_flags & OBJ_FLAG_INVINCIBLE))
 		return
 
@@ -228,12 +228,12 @@
 		return zero_health()
 
 //Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
-/obj/effect/projectile/tether/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
+/obj/effect/projectile/tether/proc/zero_health(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist)
 	if ((!obj_flags & OBJ_FLAG_INVINCIBLE))
 		qdel(src)
 	return TRUE
 
-/obj/effect/projectile/tether/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+/obj/effect/projectile/tether/repair(var/repair_power, datum/repair_source, mob/user)
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()

@@ -36,7 +36,7 @@ var/list/ghost_traps
 	..()
 
 // Check for bans, proper atom types, etc.
-/datum/ghosttrap/proc/assess_candidate(var/mob/observer/ghost/candidate, var/mob/target, var/feedback = TRUE)
+/datum/ghosttrap/proc/assess_candidate(var/mob/observer/ghost/candidate, mob/target, feedback = TRUE)
 	if(!candidate.MayRespawn(1, minutes_since_death))
 		return 0
 	if(islist(ban_checks))
@@ -48,7 +48,7 @@ var/list/ghost_traps
 	return 1
 
 // Print a message to all ghosts with the right prefs/lack of bans.
-/datum/ghosttrap/proc/request_player(var/mob/target, var/request_string, var/request_timeout)
+/datum/ghosttrap/proc/request_player(var/mob/target, request_string, request_timeout)
 	if(request_timeout)
 		request_timeouts[target] = world.time + request_timeout
 		GLOB.destroyed_event.register(target, src, /datum/ghosttrap/proc/unregister_target)
@@ -89,7 +89,7 @@ var/list/ghost_traps
 		return 1
 
 // Shunts the ckey/mind into the target mob.
-/datum/ghosttrap/proc/transfer_personality(var/mob/candidate, var/mob/target)
+/datum/ghosttrap/proc/transfer_personality(var/mob/candidate, mob/target)
 	if(!assess_candidate(candidate, target))
 		return 0
 	target.ckey = candidate.ckey
@@ -173,12 +173,12 @@ var/list/ghost_traps
 	minutes_since_death = DRONE_SPAWN_DELAY
 	..()
 
-datum/ghosttrap/drone/assess_candidate(var/mob/observer/ghost/candidate, var/mob/target)
+datum/ghosttrap/drone/assess_candidate(var/mob/observer/ghost/candidate, mob/target)
 	. = ..()
 	if(. && !target.can_be_possessed_by(candidate))
 		return 0
 
-datum/ghosttrap/drone/transfer_personality(var/mob/candidate, var/mob/living/silicon/robot/drone/drone)
+datum/ghosttrap/drone/transfer_personality(var/mob/candidate, mob/living/silicon/robot/drone/drone)
 	if(!assess_candidate(candidate))
 		return 0
 	drone.transfer_personality(candidate.client)
@@ -192,10 +192,10 @@ datum/ghosttrap/drone/transfer_personality(var/mob/candidate, var/mob/living/sil
 	ghost_trap_message = "They are occupying a pAI now."
 	ghost_trap_role = "pAI"
 
-datum/ghosttrap/pai/assess_candidate(var/mob/observer/ghost/candidate, var/mob/target)
+datum/ghosttrap/pai/assess_candidate(var/mob/observer/ghost/candidate, mob/target)
 	return 0
 
-datum/ghosttrap/pai/transfer_personality(var/mob/candidate, var/mob/living/silicon/robot/drone/drone)
+datum/ghosttrap/pai/transfer_personality(var/mob/candidate, mob/living/silicon/robot/drone/drone)
 	return 0
 
 /******************

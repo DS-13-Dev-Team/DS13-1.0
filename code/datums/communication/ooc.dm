@@ -7,7 +7,7 @@
 	mute_setting = MUTE_OOC
 	show_preference_setting = /datum/client_preference/show_ooc
 
-/decl/communication_channel/ooc/can_communicate(var/A, var/message)
+/decl/communication_channel/ooc/can_communicate(var/A, message)
 	. = ..()
 	if(!.)
 		return
@@ -22,7 +22,7 @@
 				log_and_message_admins("has attempted to advertise in [name]: [message]")
 				return FALSE
 
-/decl/communication_channel/ooc/do_communicate(var/A, var/message, var/sender_override)
+/decl/communication_channel/ooc/do_communicate(var/A, message, sender_override)
 
 
 	var/ooc_style = "everyone"

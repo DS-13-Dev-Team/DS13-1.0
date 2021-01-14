@@ -12,7 +12,7 @@
 			return FALSE	//Necromorphs must listen to the necrochat
 
 
-/decl/communication_channel/necrochat/can_communicate(var/A, var/message)
+/decl/communication_channel/necrochat/can_communicate(var/A, message)
 	. = ..()
 	if(!.)
 		return
@@ -23,7 +23,7 @@
 				return FALSE
 
 
-/decl/communication_channel/necrochat/do_communicate(A, var/message, var/sender_override = null)
+/decl/communication_channel/necrochat/do_communicate(A, message, sender_override = null)
 
 	var/list/messaged = list()	//Clients we've already sent to. Used to prevent doublesending to admins who are also playing necromorphs
 
@@ -125,7 +125,7 @@
 
 //Global Necromorph Procs
 //-------------------------
-/proc/message_necromorphs(var/message, var/include_admins = TRUE, var/messaged = list())
+/proc/message_necromorphs(var/message, include_admins = TRUE, messaged = list())
 	//Message all the necromorphs
 	for (var/ckey in SSnecromorph.necromorph_players)
 		var/datum/player/P = SSnecromorph.necromorph_players[ckey]

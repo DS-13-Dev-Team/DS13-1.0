@@ -21,7 +21,7 @@
 	var/base_icon = "bed"
 	var/material_alteration = MATERIAL_ALTERATION_ALL
 
-/obj/structure/bed/New(var/newloc, var/new_material, var/new_padding_material)
+/obj/structure/bed/New(var/newloc, new_material, new_padding_material)
 	..(newloc)
 	color = null
 	if(!new_material)

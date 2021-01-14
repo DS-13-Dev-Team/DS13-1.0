@@ -77,7 +77,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.save_preferences(S)
 
-/datum/category_collection/player_setup_collection/proc/update_setup(var/savefile/preferences, var/savefile/character)
+/datum/category_collection/player_setup_collection/proc/update_setup(var/savefile/preferences, savefile/character)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		. = PS.update_setup(preferences, character) || .
 
@@ -146,7 +146,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.save_preferences(S)
 
-/datum/category_group/player_setup_category/proc/update_setup(var/savefile/preferences, var/savefile/character)
+/datum/category_group/player_setup_category/proc/update_setup(var/savefile/preferences, savefile/character)
 	for(var/datum/category_item/player_setup_item/PI in items)
 		. = PI.update_setup(preferences, character) || .
 
@@ -211,7 +211,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 /*
 * Called when the item is asked to update user/global settings
 */
-/datum/category_item/player_setup_item/proc/update_setup(var/savefile/preferences, var/savefile/character)
+/datum/category_item/player_setup_item/proc/update_setup(var/savefile/preferences, savefile/character)
 	return 0
 
 /datum/category_item/player_setup_item/proc/content()
@@ -245,7 +245,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 /datum/category_item/player_setup_item/CanUseTopic(var/mob/user)
 	return 1
 
-/datum/category_item/player_setup_item/proc/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/proc/OnTopic(var/href,var/list/href_list, mob/user)
 	return TOPIC_NOACTION
 
 /datum/category_item/player_setup_item/proc/preference_mob()

@@ -12,7 +12,7 @@ var/const/MOVEMENT_STOP    = 0x0008
 
 
 
-/atom/movable/proc/DoMove(var/direction, var/mob/mover, var/is_external)
+/atom/movable/proc/DoMove(var/direction, mob/mover, is_external)
 	INIT_MOVEMENT_HANDLERS
 	SET_MOVER(mover)
 	SET_IS_EXTERNAL(mover)
@@ -32,7 +32,7 @@ var/const/MOVEMENT_STOP    = 0x0008
 
 // is_external means that something else (not inside us) is asking if we may move
 // This for example includes mobs bumping into each other
-/atom/movable/proc/MayMove(var/mob/mover, var/is_external)
+/atom/movable/proc/MayMove(var/mob/mover, is_external)
 	INIT_MOVEMENT_HANDLERS
 	SET_MOVER(mover)
 	SET_IS_EXTERNAL(mover)

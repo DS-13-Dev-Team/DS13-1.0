@@ -60,7 +60,7 @@
 
 
 
-/obj/item/device/rig_remover/proc/start(var/target, var/user)
+/obj/item/device/rig_remover/proc/start(var/target, user)
 	current_target = target
 	last_user = user
 	response = null

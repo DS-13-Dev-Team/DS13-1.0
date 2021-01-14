@@ -32,7 +32,7 @@ var/const/WIRE_TRANSMIT = 4
 			R.broadcasting = !R.broadcasting && !IsIndexCut(WIRE_SIGNAL)
 	SSnano.update_uis(holder)
 
-/datum/wires/radio/UpdateCut(var/index, var/mended)
+/datum/wires/radio/UpdateCut(var/index, mended)
 	var/obj/item/device/radio/R = holder
 	switch(index)
 		if(WIRE_SIGNAL)

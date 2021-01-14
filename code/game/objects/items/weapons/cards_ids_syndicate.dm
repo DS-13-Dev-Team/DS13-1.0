@@ -41,7 +41,7 @@
 	else
 		..()
 
-/obj/item/weapon/card/id/syndicate/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/weapon/card/id/syndicate/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/data[0]
 	var/entries[0]
 	entries[++entries.len] = list("name" = "Age", 				"value" = age)
@@ -87,7 +87,7 @@
 		return STATUS_CLOSE
 	return ..()
 
-/obj/item/weapon/card/id/syndicate/Topic(href, href_list, var/datum/topic_state/state)
+/obj/item/weapon/card/id/syndicate/Topic(href, href_list, datum/topic_state/state)
 	if(..())
 		return 1
 

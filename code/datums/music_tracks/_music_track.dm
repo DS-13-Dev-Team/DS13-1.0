@@ -12,7 +12,7 @@
 	if (license)
 		license = decls_repository.get_decl(license)
 
-/music_track/proc/play_to(var/listener, var/play_looped = TRUE)
+/music_track/proc/play_to(var/listener, play_looped = TRUE)
 	to_chat(listener, "<span class='good'>Now Playing:</span>")
 	to_chat(listener, "<span class='good'>[title][artist ? " by [artist]" : ""][album ? " ([album])" : ""]</span>")
 	if(url)

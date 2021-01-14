@@ -113,7 +113,7 @@
 
 
 //This is called periodically while a tool operation is in progress
-/obj/item/weapon/tool/proc/work_in_progress(var/mob/user, var/atom/target, var/delta)
+/obj/item/weapon/tool/proc/work_in_progress(var/mob/user, atom/target, delta)
 	last_progress_tick = world.time
 	return
 
@@ -230,7 +230,7 @@
 
 //Simple form ideal for basic use. That proc will return TRUE only when everything was done right, and FALSE if something went wrong, ot user was unlucky.
 //Editionaly, handle_failure proc will be called for a critical failure roll.
-/obj/proc/use_tool(var/mob/living/user, var/atom/target, var/base_time, var/required_quality, var/fail_chance, var/required_stat, var/instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/progress_proc_interval = 0.5 SECONDS)
+/obj/proc/use_tool(var/mob/living/user, atom/target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier = 110, forced_sound = null, sound_repeat = 2.5 SECONDS, progress_proc_interval = 0.5 SECONDS)
 	var/obj/item/weapon/tool/T
 	if (istool(src))
 		T = src
@@ -253,7 +253,7 @@
 			return TRUE
 
 //Use this proc if you want to handle all types of failure yourself. It used in surgery, for example, to deal damage to patient.
-/obj/proc/use_tool_extended(var/mob/living/user, var/atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/progress_proc_interval = 0.5 SECONDS)
+/obj/proc/use_tool_extended(var/mob/living/user, atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, sound_repeat = 2.5 SECONDS, progress_proc_interval = 0.5 SECONDS)
 
 	var/obj/item/weapon/tool/T
 	if(istool(src))
@@ -392,7 +392,7 @@
 *******************************/
 
 //Critical failure rolls. If you use use_tool_extended, you might want to call that proc as well.
-/obj/proc/handle_failure(var/mob/living/user, var/atom/target, var/required_stat, required_quality)
+/obj/proc/handle_failure(var/mob/living/user, atom/target, required_stat, required_quality)
 	var/obj/item/I = src
 	var/obj/item/weapon/tool/T
 	if (istype(src, /obj/item))
@@ -612,7 +612,7 @@
 	return 0
 
 //We are cheking if our item got required qualities. If we require several qualities, and item posses more than one of those, we ask user to choose how that item should be used
-/obj/proc/get_tool_type(var/mob/living/user, var/list/required_qualities, var/atom/use_on, var/datum/callback/CB)
+/obj/proc/get_tool_type(var/mob/living/user, list/required_qualities, atom/use_on, datum/callback/CB)
 	var/list/L = required_qualities & tool_qualities
 
 	if(!L.len)
@@ -678,11 +678,11 @@
 
 
 
-/obj/proc/consume_resources(var/timespent, var/user)
+/obj/proc/consume_resources(var/timespent, user)
 
 	return
 
-/obj/item/weapon/tool/consume_resources(var/timespent, var/user)
+/obj/item/weapon/tool/consume_resources(var/timespent, user)
 	last_resource_consumption = world.time
 
 	if(use_power_cost)
@@ -708,7 +708,7 @@
 	return TRUE
 
 //Power and fuel drain, sparks spawn
-/obj/item/weapon/tool/proc/check_tool_effects(mob/living/user, var/time)
+/obj/item/weapon/tool/proc/check_tool_effects(mob/living/user, time)
 
 	if(use_power_cost)
 		if(!cell || !cell.check_charge(use_power_cost*time))
@@ -943,7 +943,7 @@
 					H.disabilities &= ~NEARSIGHTED
 
 // TODO: Figure out bay prosthetic repair then uncomment this
-/obj/item/weapon/tool/attack(mob/living/M, mob/living/user, var/target_zone)
+/obj/item/weapon/tool/attack(mob/living/M, mob/living/user, target_zone)
 	if ((user.a_intent == I_HELP) && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
@@ -1002,7 +1002,7 @@
 ****************************/
 
 //Used by adhesive tools to stick an item to stuff
-/obj/item/weapon/tool/proc/stick(var/obj/item/target, var/mob/user)
+/obj/item/weapon/tool/proc/stick(var/obj/item/target, mob/user)
 	return
 
 
@@ -1031,12 +1031,12 @@
 
 
 //Tools take heavy damage from being soaked in acid
-/obj/item/weapon/tool/acid_act(var/datum/reagent/acid/acid, var/volume)
+/obj/item/weapon/tool/acid_act(var/datum/reagent/acid/acid, volume)
 	var/acid_damage = acid.power * volume
 	unreliability += rand_between(0, degradation*acid_damage)
 
 //1 point of repair fixes one second worth of degradation
-obj/item/weapon/tool/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+obj/item/weapon/tool/repair(var/repair_power, datum/repair_source, mob/user)
 	unreliability = clamp(unreliability - degradation*repair_power, 0, 100)
 	updatehealth()
 	update_icon()

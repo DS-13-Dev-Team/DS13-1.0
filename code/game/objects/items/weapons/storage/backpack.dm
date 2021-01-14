@@ -32,7 +32,7 @@
 		playsound(src.loc, src.use_sound, 50, 1, -5)
 	return ..()
 
-/obj/item/weapon/storage/backpack/equipped(var/mob/user, var/slot)
+/obj/item/weapon/storage/backpack/equipped(var/mob/user, slot)
 	if (slot == slot_back && src.use_sound)
 		playsound(src.loc, src.use_sound, 50, 1, -5)
 	..(user, slot)

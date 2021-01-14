@@ -13,7 +13,7 @@
 	var/strokes = 2 // IF YOU EVER SET THIS TO MORE THAN TEN, EVERYTHING WILL BREAK
 	var/cultname = ""
 
-/obj/effect/rune/New(var/loc, var/blcolor = "#c80000", var/nblood = "blood")
+/obj/effect/rune/New(var/loc, blcolor = "#c80000", nblood = "blood")
 	..()
 	bcolor = blcolor
 	blood = nblood
@@ -46,7 +46,7 @@
 	if(iscultist(user))
 		to_chat(user, "This is \a [cultname] rune.")
 
-/obj/effect/rune/attackby(var/obj/item/I, var/mob/living/user)
+/obj/effect/rune/attackby(var/obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/weapon/book/tome) && iscultist(user))
 		user.visible_message("<span class='notice'>[user] rubs \the [src] with \the [I], and \the [src] is absorbed by it.</span>", "You retrace your steps, carefully undoing the lines of \the [src].")
 		qdel(src)
@@ -88,7 +88,7 @@
 	visible_message("<span class='warning'>The markings pulse with a small burst of light, then fall dark.</span>", "You hear a fizzle.")
 
 //Makes the speech a proc so all verbal components can be easily manipulated as a whole, or individually easily
-/obj/effect/rune/proc/speak_incantation(var/mob/living/user, var/incantation)
+/obj/effect/rune/proc/speak_incantation(var/mob/living/user, incantation)
 	var/datum/language/L = all_languages[LANGUAGE_GUTTER]
 	if(incantation && (L in user.languages))
 		user.say(incantation, L)
@@ -271,7 +271,7 @@
 	health
 	max_health = 200
 
-/obj/effect/cultwall/New(var/loc, var/bcolor)
+/obj/effect/cultwall/New(var/loc, bcolor)
 	..()
 	health = max_health
 	if(bcolor)
@@ -300,7 +300,7 @@
 	else
 		to_chat(user, "<span class='notice'>You touch \the [src]. It feels wet and becomes harder the further you push your arm.</span>")
 
-/obj/effect/cultwall/attackby(var/obj/item/I, var/mob/living/user)
+/obj/effect/cultwall/attackby(var/obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/weapon/nullrod))
 		user.visible_message("<span class='notice'>\The [user] touches \the [src] with \the [I], and it disappears.</span>", "<span class='notice'>You disrupt the vile magic with the deadening field of \the [I].</span>")
 		qdel(src)
@@ -531,7 +531,7 @@
 	color = "#0050a177"
 	metabolism = REM * 0.1
 
-/datum/reagent/hell_water/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/hell_water/affect_ingest(var/mob/living/carbon/M, alien, removed)
 	if(iscultist(M))
 		M.AdjustParalysis(-1)
 		M.AdjustStunned(-1)

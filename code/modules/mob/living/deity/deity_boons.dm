@@ -35,7 +35,7 @@
 	nano_data["boon_name"] = null
 	return
 
-/mob/living/deity/proc/grant_spell(var/mob/living/target, var/spell/spell)
+/mob/living/deity/proc/grant_spell(var/mob/living/target, spell/spell)
 	var/datum/mind/M = target.mind
 	for(var/s in M.learned_spells)
 		var/spell/S = s
@@ -49,7 +49,7 @@
 
 /* This is a generic proc used by the God to inact a sacrifice from somebody. Power is a value of magnitude.
 */
-/mob/living/deity/proc/take_charge(var/mob/living/L, var/power)
+/mob/living/deity/proc/take_charge(var/mob/living/L, power)
 	if(form)
 		return form.take_charge(L, power)
 	return 1

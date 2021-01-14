@@ -41,7 +41,7 @@
 	to_world(jointext(text,null))
 
 
-/datum/antagonist/proc/print_objective(var/datum/objective/O, var/num, var/append_success)
+/datum/antagonist/proc/print_objective(var/datum/objective/O, num, append_success)
 	var/text = "<br><b>Objective [num]:</b> [O.explanation_text] "
 	if(append_success)
 		if(O.check_completion())

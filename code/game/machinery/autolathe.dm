@@ -177,7 +177,7 @@
 	return data
 
 
-/obj/machinery/autolathe/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
+/obj/machinery/autolathe/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null)
 	var/list/data = ui_data(user, ui_key)
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data)
@@ -190,7 +190,7 @@
 		// open the new ui window
 		ui.open()
 
-/obj/machinery/autolathe/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/autolathe/attackby(var/obj/item/I, mob/user)
 	if(default_deconstruction_crowbar(I, user))
 		return
 

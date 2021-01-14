@@ -96,7 +96,7 @@
 	set_status(!status, user)
 	add_fingerprint(user)
 
-/obj/item/weapon/melee/baton/throw_impact(atom/hit_atom, var/speed)
+/obj/item/weapon/melee/baton/throw_impact(atom/hit_atom, speed)
 	if(istype(hit_atom,/mob/living))
 		apply_hit_effect(hit_atom, hit_zone = pick(BP_HEAD, BP_CHEST, BP_CHEST, BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM))
 	else
@@ -131,7 +131,7 @@
 		return
 	return ..()
 
-/obj/item/weapon/melee/baton/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/weapon/melee/baton/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	if(isrobot(target))
 		return ..()
 
@@ -218,7 +218,7 @@
 /obj/item/weapon/melee/baton/robot/attackby(obj/item/weapon/W, mob/user)
 	return
 
-/obj/item/weapon/melee/baton/robot/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/weapon/melee/baton/robot/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	update_cell(isrobot(user) ? user : null) // update the status before we apply the effects
 	return ..()
 

@@ -3,7 +3,7 @@
 	var/lifetime = 0.3
 	anchored = TRUE
 
-/obj/effect/pixelmarker/New(var/location, var/_lifetime, var/newcolor = "#FFFFFF")
+/obj/effect/pixelmarker/New(var/location, _lifetime, newcolor = "#FFFFFF")
 	if (_lifetime)
 		lifetime = _lifetime
 
@@ -26,7 +26,7 @@
 	icon_state = "white"
 
 
-/proc/pixelmark(var/turf/source, var/iconstate = "ax", var/vector2/coords)
+/proc/pixelmark(var/turf/source, iconstate = "ax", vector2/coords)
 	var/obj/effect/pixelmarker/P = new /obj/effect/pixelmarker(source, 3 SECOND)
 	P.icon_state = iconstate
 	if (coords)

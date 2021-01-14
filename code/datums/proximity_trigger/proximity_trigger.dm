@@ -49,7 +49,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 /datum/proximity_trigger/cone
 	turf_selection = /decl/turf_selection/cone
 
-/datum/proximity_trigger/New(var/holder, var/on_turf_entered, var/on_turfs_changed, var/range = 2, var/proximity_flags = 0, var/proc_owner, var/list/extra_args)
+/datum/proximity_trigger/New(var/holder, on_turf_entered, on_turfs_changed, range = 2, proximity_flags = 0, proc_owner, list/extra_args)
 	..()
 	if(!ispath(turf_selection, /decl/turf_selection))
 		CRASH("Invalid turf selection type set: [turf_selection]")
@@ -134,7 +134,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 
 	seen_turfs_ = new_seen_turfs_
 
-/datum/proximity_trigger/proc/on_holder_moved(var/holder, var/old_loc, var/new_loc)
+/datum/proximity_trigger/proc/on_holder_moved(var/holder, old_loc, new_loc)
 	var/old_turf = get_turf(old_loc)
 	var/new_turf = get_turf(new_loc)
 	if(old_turf == new_turf)
@@ -143,7 +143,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 		call(proc_owner, on_turf_entered)(holder)
 	register_turfs()
 
-/datum/proximity_trigger/proc/on_turf_entered(var/turf/T, var/atom/enterer)
+/datum/proximity_trigger/proc/on_turf_entered(var/turf/T, atom/enterer)
 	if(enterer == holder) // We have an explicit call for holder, in case it moved somewhere we're not listening to.
 		return
 	if(enterer.opacity)
@@ -189,7 +189,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 /obj/item/proxy_debug/proc/turf_entered(var/atom/A)
 	visible_message("[A] entered my range!")
 
-/obj/item/proxy_debug/proc/update_turfs(var/list/old_turfs, var/list/new_turfs)
+/obj/item/proxy_debug/proc/update_turfs(var/list/old_turfs, list/new_turfs)
 	for(var/turf/T in old_turfs)
 		T.overlays -= overlay
 	for(var/turf/T in new_turfs)

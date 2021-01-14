@@ -26,7 +26,7 @@
 
 
 
-/obj/structure/displaycase/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
+/obj/structure/displaycase/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist)
 	.=..()
 	playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 

@@ -5,7 +5,7 @@
 	var/list/instances		//What items are actually stored
 	var/atom/storing_object
 
-/datum/stored_items/New(var/atom/storing_object, var/path, var/name = null, var/amount = 0)
+/datum/stored_items/New(var/atom/storing_object, path, name = null, amount = 0)
 	if(!istype(storing_object))
 		CRASH("Unexpected storing object.")
 	src.storing_object = storing_object
@@ -53,7 +53,7 @@
 	product.forceMove(product_location)
 	return product
 
-/datum/stored_items/proc/get_specific_product(var/product_location, var/atom/movable/product)
+/datum/stored_items/proc/get_specific_product(var/product_location, atom/movable/product)
 	if(!get_amount() || !instances || !product_location || !product)
 		return FALSE
 

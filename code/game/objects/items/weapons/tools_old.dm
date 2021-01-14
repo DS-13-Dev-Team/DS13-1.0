@@ -54,7 +54,7 @@
 	force = 4.0
 	w_class = ITEM_SIZE_TINY
 	throwforce = 5.0
-	
+
 	throw_range = 5
 	matter = list(MATERIAL_STEEL = 75)
 	center_of_mass = "x=16;y=7"
@@ -113,7 +113,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
 	force = 3.0
-	
+
 	throw_range = 9
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -161,7 +161,7 @@
 	//Amount of OUCH when it's thrown
 	force = 3.0
 	throwforce = 5.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 
@@ -313,7 +313,7 @@
 
 
 //Removes fuel from the welding tool. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
-/obj/item/weapon/tool/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
+/obj/item/weapon/tool/weldingtool/proc/remove_fuel(var/amount = 1, mob/M = null)
 	if(!welding)
 		return 0
 	if(get_fuel() >= amount)
@@ -378,7 +378,7 @@
 
 //Sets the welding state of the welding tool. If you see W.welding = 1 anywhere, please change it to W.setWelding(1)
 //so that the welding tool updates accordingly
-/obj/item/weapon/tool/weldingtool/proc/setWelding(var/set_welding, var/mob/M)
+/obj/item/weapon/tool/weldingtool/proc/setWelding(var/set_welding, mob/M)
 	if(!status)	return
 
 	var/turf/T = get_turf(src)
@@ -669,7 +669,7 @@ owbar
 	if(!tool) return 0
 	return (tool ? tool.attack(M,user) : 0)
 
-/obj/item/weapon/combitool/afterattack(var/atom/target, var/mob/living/user, proximity, params)
+/obj/item/weapon/combitool/afterattack(var/atom/target, mob/living/user, proximity, params)
 	if(!proximity)
 		return 0
 	var/obj/item/tool = tools[current_tool]

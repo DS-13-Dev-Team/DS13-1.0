@@ -13,7 +13,7 @@
 
 	flags = OUTFIT_HAS_BACKPACK
 
-/decl/hierarchy/outfit/job/equip_id(var/mob/living/carbon/human/H, var/dummy)
+/decl/hierarchy/outfit/job/equip_id(var/mob/living/carbon/human/H, dummy)
 	var/obj/item/weapon/card/id/C = ..()
 	if(H.mind)
 		if(H.mind.initial_account)

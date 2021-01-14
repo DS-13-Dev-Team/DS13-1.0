@@ -39,7 +39,7 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 /datum/pipe_icon_manager/New()
 	check_icons()
 
-/datum/pipe_icon_manager/proc/get_atmos_icon(var/device, var/dir, var/color, var/state)
+/datum/pipe_icon_manager/proc/get_atmos_icon(var/device, dir, color, state)
 	check_icons()
 
 	device = "[device]"

@@ -9,7 +9,7 @@
 	else
 		to_chat(user, "You see strange symbols on the paper. Are they supposed to mean something?")
 
-/obj/item/weapon/paper/talisman/attack(var/mob/living/M, var/mob/living/user)
+/obj/item/weapon/paper/talisman/attack(var/mob/living/M, mob/living/user)
 	return
 
 /obj/item/weapon/paper/talisman/emp/attack_self(var/mob/living/user)
@@ -17,7 +17,7 @@
 		to_chat(user, "This is an emp talisman.")
 	..()
 
-/obj/item/weapon/paper/talisman/emp/afterattack(var/atom/target, var/mob/user, var/proximity)
+/obj/item/weapon/paper/talisman/emp/afterattack(var/atom/target, mob/user, proximity)
 	if(!iscultist(user))
 		return
 	if(!proximity)

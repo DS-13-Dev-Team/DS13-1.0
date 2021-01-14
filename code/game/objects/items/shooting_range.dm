@@ -15,7 +15,7 @@
 	if (stake)
 		stake.set_target(null)
 
-/obj/item/target/attackby(var/obj/item/W, var/mob/user)
+/obj/item/target/attackby(var/obj/item/W, mob/user)
 	if(isWelder(W))
 		if(W.use_tool(user, src, WORKTIME_SLOW, QUALITY_WELDING, FAILCHANCE_NORMAL))
 			overlays.Cut()
@@ -123,7 +123,7 @@
 	var/b2y1 = 0
 	var/b2y2 = 0
 
-	New(var/obj/item/target/Target, var/pixel_x = 0, var/pixel_y = 0)
+	New(var/obj/item/target/Target, pixel_x = 0, pixel_y = 0)
 		if(!Target) return
 
 		// Randomize the first box

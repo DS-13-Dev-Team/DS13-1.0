@@ -14,7 +14,7 @@ Use add_modclick_verb to add a verb,
 
 
 //We call each callback in our verbs list. If it returns true, we return false to terminate the click
-/datum/click_handler/modifier/proc/handle_click(var/atom/A, var/params)
+/datum/click_handler/modifier/proc/handle_click(var/atom/A, params)
 	for (var/datum/callback/C in verbs)
 		if (C.Invoke(A, params))
 			return FALSE
@@ -26,22 +26,22 @@ Use add_modclick_verb to add a verb,
 
 //Specific types
 //----------------------------------------
-/datum/click_handler/modifier/alt/OnAltClick(var/atom/A, var/params)
+/datum/click_handler/modifier/alt/OnAltClick(var/atom/A, params)
 	return handle_click(A, params)
 
-/datum/click_handler/modifier/ctrl/OnCtrlClick(var/atom/A, var/params)
+/datum/click_handler/modifier/ctrl/OnCtrlClick(var/atom/A, params)
 	return handle_click(A, params)
 
-/datum/click_handler/modifier/shift/OnShiftClick(var/atom/A, var/params)
+/datum/click_handler/modifier/shift/OnShiftClick(var/atom/A, params)
 	return handle_click(A, params)
 
-/datum/click_handler/modifier/middle/OnMiddleClick(var/atom/A, var/params)
+/datum/click_handler/modifier/middle/OnMiddleClick(var/atom/A, params)
 	return handle_click(A, params)
 
-/datum/click_handler/modifier/ctrlalt/OnCtrlAltClick(var/atom/A, var/params)
+/datum/click_handler/modifier/ctrlalt/OnCtrlAltClick(var/atom/A, params)
 	return handle_click(A, params)
 
-/datum/click_handler/modifier/ctrlshift/OnCtrlShiftClick(var/atom/A, var/params)
+/datum/click_handler/modifier/ctrlshift/OnCtrlShiftClick(var/atom/A, params)
 	return handle_click(A, params)
 
 
@@ -49,7 +49,7 @@ Use add_modclick_verb to add a verb,
 /*
 	Adds an altclick verb to the specified datum
 */
-/mob/proc/add_modclick_verb(var/keytype, var/function, var/priority, var/list/extra_args)
+/mob/proc/add_modclick_verb(var/keytype, function, priority, list/extra_args)
 	//Firstly, lets find or create an altclick verb handler on this mob
 	var/datum/click_handler/modifier/CHM = GetClickHandlerByType(keytype)
 	if (!CHM)
@@ -71,7 +71,7 @@ Use add_modclick_verb to add a verb,
 
 
 //Removing by type.
-/mob/proc/remove_modclick_verb(var/keytype, var/function)
+/mob/proc/remove_modclick_verb(var/keytype, function)
 	var/datum/click_handler/modifier/CHM = GetClickHandlerByType(keytype)
 	if (!CHM)
 		return

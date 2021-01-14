@@ -70,7 +70,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	if(!fire_tiles.len)
 		SSair.active_fire_zones.Remove(src)
 
-/zone/proc/remove_liquidfuel(var/used_liquid_fuel, var/remove_fire=0)
+/zone/proc/remove_liquidfuel(var/used_liquid_fuel, remove_fire=0)
 	if(!fuel_objs.len)
 		return
 
@@ -402,13 +402,13 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	return max( 0, firelevel)
 
 
-/mob/living/proc/FireBurn(var/firelevel, var/last_temperature, var/pressure)
+/mob/living/proc/FireBurn(var/firelevel, last_temperature, pressure)
 	var/mx = 5 * firelevel/vsc.fire_firelevel_multiplier * min(pressure / ONE_ATMOSPHERE, 1)
 	apply_damage(2.5*mx, BURN)
 
 
 
-/mob/living/carbon/human/FireBurn(var/firelevel, var/last_temperature, var/pressure)
+/mob/living/carbon/human/FireBurn(var/firelevel, last_temperature, pressure)
 	//Burns mobs due to fire. Respects heat transfer coefficients on various body parts.
 	//Due to TG reworking how fireprotection works, this is kinda less meaningful.
 

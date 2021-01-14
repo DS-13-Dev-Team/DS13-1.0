@@ -122,7 +122,7 @@
 		-Month we reached the start of
 		-Time remaining
 */
-/proc/time_to_calendar_month(var/time, var/leap = FALSE)
+/proc/time_to_calendar_month(var/time, leap = FALSE)
 	//We will iterate backwards through the list of cumulative monthlengths, until we find one that is <= remaining time
 	var/list/monthlist
 	if (leap)
@@ -186,7 +186,7 @@
 /*
 	Returns the byond time between two dates
 */
-/proc/time_between_dates(var/date1, var/date2)
+/proc/time_between_dates(var/date1, date2)
 	var/time1 = date_to_byond(date1)
 	var/time2 = date_to_byond(date2)
 
@@ -195,7 +195,7 @@
 /*
 	Adds a certain amount of time to a date, returning it as a date
 */
-/proc/add_time_to_date(var/date, var/timedelta)
+/proc/add_time_to_date(var/date, timedelta)
 	var/timedate = date_to_byond(date)
 	timedate += timedelta
 	return byond_to_date(timedate)
@@ -204,7 +204,7 @@
 /*
 	Returns the number of days time between two dates
 */
-/proc/days_between_dates(var/date1, var/date2)
+/proc/days_between_dates(var/date1, date2)
 	var/time = abs(time_between_dates(date1, date2))
 	return Floor(time / (1 DAY))
 

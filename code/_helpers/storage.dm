@@ -1,4 +1,4 @@
-/proc/create_objects_in_loc(var/atom/loc, var/atom_paths)
+/proc/create_objects_in_loc(var/atom/loc, atom_paths)
 	if(!istype(loc))
 		CRASH("Inappropriate loction given.")
 
@@ -22,7 +22,7 @@
 	var/probability
 	var/prob_method = /proc/prob_call
 
-/datum/atom_creator/simple/New(var/path, var/probability)
+/datum/atom_creator/simple/New(var/path, probability)
 	if(args.len != 2)
 		CRASH("Invalid number of arguments. Expected 2, was [args.len]")
 	if(!isnum(probability) || probability < 1 || probability > 99)

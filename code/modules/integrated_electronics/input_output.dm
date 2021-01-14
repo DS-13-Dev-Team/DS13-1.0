@@ -405,7 +405,7 @@
 	else
 		..()
 
-/obj/item/integrated_circuit/input/access_scanner/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/integrated_circuit/input/access_scanner/emag_act(var/remaining_charges, mob/user)
 	if(!emagged && remaining_charges > 0)
 		emagged = TRUE
 		to_chat(user, "<span class='warning'>You scramble the board's access protection logic.</span>")
@@ -415,7 +415,7 @@
 /obj/item/integrated_circuit/input/access_scanner/examine(var/mob/user)
 	. = ..()
 	to_chat(user, "An id card is installed into the board.")
-/obj/item/integrated_circuit/input/access_scanner/attackby(var/obj/item/weapon/card/id/id_card, var/mob/user)
+/obj/item/integrated_circuit/input/access_scanner/attackby(var/obj/item/weapon/card/id/id_card, mob/user)
 	if(!istype(id_card))
 		return ..()
 	if(contained_id)
@@ -440,7 +440,7 @@
 /obj/item/integrated_circuit/input/access_scanner/get_topic_data(mob/user)
 	return contained_id ? ..() : list("Access Scan" = "access_scan=1")
 
-/obj/item/integrated_circuit/input/access_scanner/OnICTopic(href_list, var/mob/user)
+/obj/item/integrated_circuit/input/access_scanner/OnICTopic(href_list, mob/user)
 	if(href_list["access_scan"])
 		if(contained_id)
 			return

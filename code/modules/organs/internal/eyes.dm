@@ -35,7 +35,7 @@
 	..()
 	robotize()
 
-/obj/item/organ/internal/eyes/removed(var/mob/living/user, var/drop_organ=1)
+/obj/item/organ/internal/eyes/removed(var/mob/living/user, drop_organ=1)
 	if (owner)
 		owner.handle_vision()
 	.=..()
@@ -60,7 +60,7 @@
 		owner.b_eyes ? owner.b_eyes : 0
 		)
 
-/obj/item/organ/internal/eyes/take_internal_damage(amount, var/silent=0)
+/obj/item/organ/internal/eyes/take_internal_damage(amount, silent=0)
 	var/oldbroken = is_broken()
 	. = ..()
 	if(is_broken() && !oldbroken && owner && !owner.stat)

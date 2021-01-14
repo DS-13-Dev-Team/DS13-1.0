@@ -30,7 +30,7 @@
 	var/sheets_refunded = 2
 	can_block_movement = FALSE
 
-/obj/machinery/light_construct/New(atom/newloc, var/newdir, atom/fixture = null)
+/obj/machinery/light_construct/New(atom/newloc, newdir, atom/fixture = null)
 	..(newloc)
 
 	if(newdir)
@@ -270,7 +270,7 @@
 	if(get_status() != LIGHT_OK)
 		set_light(0)
 
-/obj/machinery/light/attack_generic(var/mob/user, var/damage)
+/obj/machinery/light/attack_generic(var/mob/user, damage)
 	if(!damage)
 		return
 	var/status = get_status()
@@ -533,7 +533,7 @@
 
 // called when on fire
 
-/obj/machinery/light/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/obj/machinery/light/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	if(prob(max(0, exposed_temperature - 673)))   //0% at <400C, 100% at >500C
 		broken()
 
@@ -667,7 +667,7 @@
 
 // attack bulb/tube with object
 // if a syringe, can inject phoron to make it explode
-/obj/item/weapon/light/attackby(var/obj/item/I, var/mob/user)
+/obj/item/weapon/light/attackby(var/obj/item/I, mob/user)
 	..()
 	if(istype(I, /obj/item/weapon/reagent_containers/syringe))
 		var/obj/item/weapon/reagent_containers/syringe/S = I

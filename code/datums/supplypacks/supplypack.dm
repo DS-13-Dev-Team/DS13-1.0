@@ -37,9 +37,9 @@ var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 	switch(security_level)
 		if(SUPPLY_SECURITY_ELEVATED)
 			if(security_state.all_security_levels.len > 1)
-				security_level = security_state.all_security_levels[2] 
+				security_level = security_state.all_security_levels[2]
 			else
-				security_level = security_state.high_security_level 
+				security_level = security_state.high_security_level
 		if(SUPPLY_SECURITY_HIGH)
 			security_level = security_state.high_security_level
 	if(!istype(security_level))
@@ -68,7 +68,7 @@ var/list/supply_methods_
 		. = new method_type()
 		supply_methods_[method_type] = .
 
-/decl/supply_method/proc/spawn_contents(var/decl/hierarchy/supply_pack/sp, var/location)
+/decl/supply_method/proc/spawn_contents(var/decl/hierarchy/supply_pack/sp, location)
 	if(!sp || !location)
 		return
 	. = list()
@@ -87,7 +87,7 @@ var/list/supply_methods_
 	. += "</ul>"
 	. = jointext(.,null)
 
-/decl/supply_method/randomized/spawn_contents(var/decl/hierarchy/supply_pack/sp, var/location)
+/decl/supply_method/randomized/spawn_contents(var/decl/hierarchy/supply_pack/sp, location)
 	if(!sp || !location)
 		return
 	. = list()

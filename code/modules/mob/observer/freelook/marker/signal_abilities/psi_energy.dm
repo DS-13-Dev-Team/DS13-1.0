@@ -66,7 +66,7 @@
 	energy = CLAMP(energy+adjustment, 0, max_energy)
 
 //The source is included for the possibility of discounts based on spell types in future
-/datum/extension/psi_energy/proc/can_afford_energy_cost(var/cost, var/datum/source)
+/datum/extension/psi_energy/proc/can_afford_energy_cost(var/cost, datum/source)
 	if (energy >= cost)
 		return TRUE
 
@@ -179,7 +179,7 @@
 	Abilities Menu
 ----------------------*/
 
-/datum/extension/psi_energy/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/extension/psi_energy/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/list/data = content_data
 	data["energy"] = energy
 	data["income"] = energy_per_tick

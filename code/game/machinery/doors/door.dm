@@ -63,7 +63,7 @@
 
 */
 
-/obj/machinery/door/attack_generic(var/mob/user, var/damage, var/attack_verb, var/environment_smash)
+/obj/machinery/door/attack_generic(var/mob/user, damage, attack_verb, environment_smash)
 	if(environment_smash >= 1)
 		damage = max(damage, min_force)
 
@@ -237,7 +237,7 @@
 
 
 
-/obj/machinery/door/hitby(AM as mob|obj, var/speed=5)
+/obj/machinery/door/hitby(AM as mob|obj, speed=5)
 
 	..()
 	visible_message("<span class='danger'>[name] was hit by [AM].</span>")
@@ -368,7 +368,7 @@
 		return user.strike_door(src)
 	return FALSE
 
-/obj/machinery/door/proc/hit(var/mob/user, var/atom/hitter, var/damage, var/ignore_resistance = FALSE)
+/obj/machinery/door/proc/hit(var/mob/user, atom/hitter, damage, ignore_resistance = FALSE)
 	if (user)
 		user.do_attack_animation(src)
 	var/reduced_damage = apply_resistance(damage, ignore_resistance)
@@ -389,7 +389,7 @@
 
 		return reduced_damage
 
-/obj/machinery/door/proc/take_damage(var/damage, var/ignore_resistance = FALSE)
+/obj/machinery/door/proc/take_damage(var/damage, ignore_resistance = FALSE)
 	var/initialhealth = health
 
 	damage = apply_resistance(damage, ignore_resistance)
@@ -403,7 +403,7 @@
 	update_icon()
 	return
 
-/obj/machinery/door/proc/apply_resistance(var/damage, var/ignore_resistance = FALSE)
+/obj/machinery/door/proc/apply_resistance(var/damage, ignore_resistance = FALSE)
 	if (ignore_resistance)
 		return damage
 
@@ -579,13 +579,13 @@
 	if(.)
 		deconstruct(null, TRUE)
 
-/obj/machinery/door/proc/CheckPenetration(var/base_chance, var/damage)
+/obj/machinery/door/proc/CheckPenetration(var/base_chance, damage)
 	. = damage/max_health*180
 	if(glass)
 		. *= 2
 	. = round(.)
 
-/obj/machinery/door/proc/deconstruct(mob/user, var/moved = FALSE)
+/obj/machinery/door/proc/deconstruct(mob/user, moved = FALSE)
 	return null
 
 /obj/machinery/door/morgue
@@ -633,7 +633,7 @@
 	. = force_time * get_force_difficulty()
 
 
-/obj/machinery/door/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+/obj/machinery/door/repair(var/repair_power, datum/repair_source, mob/user)
 	health = clamp(health+repair_power, 0, max_health)
 	if(stat & BROKEN)
 		stat &= ~BROKEN

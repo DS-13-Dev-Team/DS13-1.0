@@ -57,7 +57,7 @@
 
 	return user_access
 
-/datum/nano_module/records/proc/edit_field(var/mob/user, var/field_ID)
+/datum/nano_module/records/proc/edit_field(var/mob/user, field_ID)
 	var/datum/computer_file/report/crew_record/R = active_record
 	if(!R)
 		return

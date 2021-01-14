@@ -90,7 +90,7 @@ var/list/airlock_overlays = list()
 	var/welded_file = 'icons/obj/doors/station/welded.dmi'
 	var/emag_file = 'icons/obj/doors/station/emag.dmi'
 
-/obj/machinery/door/airlock/attack_generic(var/mob/user, var/damage)
+/obj/machinery/door/airlock/attack_generic(var/mob/user, damage)
 	if(stat & (BROKEN|NOPOWER))
 		if(damage >= 10)
 			if(src.density)
@@ -416,7 +416,7 @@ var/list/airlock_overlays = list()
 		last_event = world.time
 	..()
 
-/obj/machinery/door/airlock/phoron/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/obj/machinery/door/airlock/phoron/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	if(exposed_temperature > 300)
 		PhoronBurn(exposed_temperature)
 
@@ -546,7 +546,7 @@ About the new airlock wires panel:
 
 	update_icon()
 
-/obj/machinery/door/airlock/proc/electrify(var/duration, var/feedback = 0)
+/obj/machinery/door/airlock/proc/electrify(var/duration, feedback = 0)
 	var/message = ""
 	if(src.isWireCut(AIRLOCK_WIRE_ELECTRIFY) && arePowerSystemsOn())
 		message = text("The electrification wire is cut - Door permanently electrified.")
@@ -573,7 +573,7 @@ About the new airlock wires panel:
 	if(.)
 		playsound(src, 'sound/effects/sparks3.ogg', 30, 0, -6)
 
-/obj/machinery/door/airlock/proc/set_idscan(var/activate, var/feedback = 0)
+/obj/machinery/door/airlock/proc/set_idscan(var/activate, feedback = 0)
 	var/message = ""
 	if(src.isWireCut(AIRLOCK_WIRE_IDSCAN))
 		message = "The IdScan wire is cut - IdScan feature permanently disabled."
@@ -587,7 +587,7 @@ About the new airlock wires panel:
 	if(feedback && message)
 		to_chat(usr, message)
 
-/obj/machinery/door/airlock/proc/set_safeties(var/activate, var/feedback = 0)
+/obj/machinery/door/airlock/proc/set_safeties(var/activate, feedback = 0)
 	var/message = ""
 	// Safeties!  We don't need no stinking safeties!
 	if (src.isWireCut(AIRLOCK_WIRE_SAFETY))
@@ -804,7 +804,7 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/door/airlock/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
+/obj/machinery/door/airlock/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.default_state)
 	var/data[0]
 
 	data["main_power_loss"]		= round(main_power_lost_until 	> 0 ? max(main_power_lost_until - world.time,	0) / 10 : main_power_lost_until,	1)
@@ -975,7 +975,7 @@ About the new airlock wires panel:
 	return 1
 
 //returns 1 on success, 0 on failure
-/obj/machinery/door/airlock/proc/cut_bolts(var/obj/item, var/mob/user)
+/obj/machinery/door/airlock/proc/cut_bolts(var/obj/item, mob/user)
 	var/cut_delay = (15 SECONDS)
 	var/cut_verb
 	var/cut_sound
@@ -1044,7 +1044,7 @@ About the new airlock wires panel:
 			src.unlock(1) //force it
 		return 1
 
-/obj/machinery/door/airlock/attackby(var/obj/item/C, var/mob/user)
+/obj/machinery/door/airlock/attackby(var/obj/item/C, mob/user)
 	if (!ismob(C))
 		// Brace is considered installed on the airlock, so interacting with it is protected from electrification.
 		if(brace && (istype(C.GetIdCard(), /obj/item/weapon/card/id/) || istype(C, /obj/item/weapon/tool/crowbar/brace_jack)))
@@ -1167,7 +1167,7 @@ About the new airlock wires panel:
 
 	return	..()
 
-/obj/machinery/door/airlock/deconstruct(mob/user, var/moved = FALSE)
+/obj/machinery/door/airlock/deconstruct(mob/user, moved = FALSE)
 	var/obj/structure/door_assembly/da = new assembly_type(src.loc)
 	if (istype(da, /obj/structure/door_assembly/multi_tile))
 		da.set_dir(src.dir)
@@ -1321,7 +1321,7 @@ About the new airlock wires panel:
 		return 0
 	return ..(M)
 
-/obj/machinery/door/airlock/New(var/newloc, var/obj/structure/door_assembly/assembly=null)
+/obj/machinery/door/airlock/New(var/newloc, obj/structure/door_assembly/assembly=null)
 	..()
 
 	//if assembly is given, create the new door from the assembly
@@ -1483,7 +1483,7 @@ About the new airlock wires panel:
 	if (brace)
 		.+=2 //Braces are reeeally strong
 
-/obj/machinery/door/airlock/apply_resistance(var/damage, var/ignore_resistance = FALSE)
+/obj/machinery/door/airlock/apply_resistance(var/damage, ignore_resistance = FALSE)
 	if (ignore_resistance)
 		return ..(damage, ignore_resistance)
 

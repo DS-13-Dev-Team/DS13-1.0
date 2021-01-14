@@ -19,7 +19,7 @@
 		return
 	return TRUE
 
-/datum/signal_ability/writing/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/writing/on_cast(var/mob/user, atom/target, list/data)
 	var/message = sanitize(input("Write a message", "Blood writing", ""))
 	if (!message)
 		refund()

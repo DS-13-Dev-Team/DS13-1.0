@@ -133,7 +133,7 @@
 		*/
 	return
 
-/obj/proc/see_emote(mob/M as mob, text, var/emote_type)
+/obj/proc/see_emote(mob/M as mob, text, emote_type)
 	return
 
 /obj/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
@@ -179,7 +179,7 @@
 /obj/proc/get_matter()
 	return matter
 
-/obj/proc/eject_item(var/obj/item/I, var/mob/living/M)
+/obj/proc/eject_item(var/obj/item/I, mob/living/M)
 	if(!I || !M.is_advanced_tool_user())
 		return FALSE
 	M.put_in_hands(I)
@@ -190,7 +190,7 @@
 	)
 	return TRUE
 
-/obj/proc/insert_item(var/obj/item/I, var/mob/living/M)
+/obj/proc/insert_item(var/obj/item/I, mob/living/M)
 	if(!I || !M.unEquip(I))
 		return FALSE
 	I.forceMove(src)

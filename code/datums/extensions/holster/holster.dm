@@ -30,7 +30,7 @@
 		return 1
 	return 0
 
-/datum/extension/holster/proc/holster(var/obj/item/I, var/mob/living/user)
+/datum/extension/holster/proc/holster(var/obj/item/I, mob/living/user)
 	if(!storage)
 		return 1
 	if(!holstered && storage.storage_slots != null && storage.contents.len >= storage.storage_slots - 1)
@@ -63,7 +63,7 @@
 	holstered = null
 	atom_holder.SetName(initial(atom_holder.name))
 
-/datum/extension/holster/proc/unholster(mob/user as mob, var/avoid_intent = FALSE)
+/datum/extension/holster/proc/unholster(mob/user as mob, avoid_intent = FALSE)
 	if(!holstered)
 		return 0
 	if(user.get_active_hand() && user.get_inactive_hand())

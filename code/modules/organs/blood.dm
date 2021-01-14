@@ -36,7 +36,7 @@
 			B.color = B.data["blood_colour"]
 
 //Makes a blood drop, leaking amt units of blood from the mob
-/mob/living/carbon/human/proc/drip(var/amt, var/tar = src, var/ddir)
+/mob/living/carbon/human/proc/drip(var/amt, tar = src, ddir)
 	if(remove_blood(amt))
 		if(bloodstr.total_volume)
 			var/chem_share = round(0.3 * amt * (bloodstr.total_volume/vessel.total_volume), 0.01)
@@ -46,7 +46,7 @@
 	return 0
 
 #define BLOOD_SPRAY_DISTANCE 2
-/mob/living/carbon/human/proc/blood_squirt(var/amt, var/turf/sprayloc)
+/mob/living/carbon/human/proc/blood_squirt(var/amt, turf/sprayloc)
 	if(amt <= 0 || !istype(sprayloc))
 		return
 	var/spraydir = pick(GLOB.alldirs)
@@ -108,7 +108,7 @@
 ****************************************************/
 
 //Gets blood from mob to the container, preserving all data in it.
-/mob/living/carbon/proc/take_blood(obj/item/weapon/reagent_containers/container, var/amount)
+/mob/living/carbon/proc/take_blood(obj/item/weapon/reagent_containers/container, amount)
 	var/datum/reagent/blood/B = get_blood(container.reagents)
 	if(!B)
 		B = new /datum/reagent/blood
@@ -120,7 +120,7 @@
 	return 1
 
 //For humans, blood does not appear from blue, it comes from vessels.
-/mob/living/carbon/human/take_blood(obj/item/weapon/reagent_containers/container, var/amount)
+/mob/living/carbon/human/take_blood(obj/item/weapon/reagent_containers/container, amount)
 
 	if(!should_have_organ(BP_HEART))
 		reagents.trans_to_obj(container, amount)
@@ -136,7 +136,7 @@
 	return 1
 
 //Transfers blood from container ot vessels
-/mob/living/carbon/proc/inject_blood(var/datum/reagent/blood/injected, var/amount)
+/mob/living/carbon/proc/inject_blood(var/datum/reagent/blood/injected, amount)
 	if (!injected || !istype(injected))
 		return
 	var/list/sniffles = virus_copylist(injected.data["virus2"])
@@ -152,7 +152,7 @@
 	reagents.update_total()
 
 //Transfers blood from reagents to vessel, respecting blood types compatability.
-/mob/living/carbon/human/inject_blood(var/datum/reagent/blood/injected, var/amount)
+/mob/living/carbon/human/inject_blood(var/datum/reagent/blood/injected, amount)
 
 	if(!should_have_organ(BP_HEART))
 		reagents.add_reagent(/datum/reagent/blood, amount, injected.data)
@@ -198,7 +198,7 @@
 		//AB is a universal receiver.
 	return 0
 
-/mob/living/carbon/human/proc/regenerate_blood(var/amount, var/volume_scale = TRUE)
+/mob/living/carbon/human/proc/regenerate_blood(var/amount, volume_scale = TRUE)
 	amount *= (species.blood_volume / SPECIES_BLOOD_DEFAULT)
 	var/blood_volume_raw = vessel.get_reagent_amount(/datum/reagent/blood)
 	amount = max(0,min(amount, species.blood_volume - blood_volume_raw))

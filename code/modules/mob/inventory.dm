@@ -72,7 +72,7 @@ var/list/slot_equipment_priority = list( \
 	)
 
 //Checks if a given slot can be accessed at this time, either to equip or unequip I
-/mob/proc/slot_is_accessible(var/slot, var/obj/item/I, mob/user=null)
+/mob/proc/slot_is_accessible(var/slot, obj/item/I, mob/user=null)
 	return TRUE
 
 //puts the item "W" into an appropriate slot in a human's inventory
@@ -169,7 +169,7 @@ var/list/slot_equipment_priority = list( \
 
 // Removes an item from inventory and places it in the target atom.
 // If canremove or other conditions need to be checked then use unEquip instead.
-/mob/proc/drop_from_inventory(var/obj/item/W, var/atom/target = null)
+/mob/proc/drop_from_inventory(var/obj/item/W, atom/target = null)
 	if(W)
 		remove_from_mob(W, target)
 		if(!(W && W.loc)) return TRUE // self destroying objects (tk, grabs)
@@ -240,7 +240,7 @@ var/list/slot_equipment_priority = list( \
 	return slot
 
 //This differs from remove_from_mob() in that it checks if the item can be unequipped first. Use drop_from_inventory if you don't want to check.
-/mob/proc/unEquip(obj/item/I, var/atom/target)
+/mob/proc/unEquip(obj/item/I, atom/target)
 	if(!canUnEquip(I))
 		return
 	drop_from_inventory(I, target)
@@ -253,7 +253,7 @@ var/list/slot_equipment_priority = list( \
 	return TRUE
 
 //Attemps to remove an object on a mob.
-/mob/proc/remove_from_mob(var/obj/O, var/atom/target)
+/mob/proc/remove_from_mob(var/obj/O, atom/target)
 	if(!O) // Nothing to remove, so we succeed.
 		return TRUE
 

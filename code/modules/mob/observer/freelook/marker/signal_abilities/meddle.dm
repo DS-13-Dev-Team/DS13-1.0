@@ -18,7 +18,7 @@
 
 
 
-/datum/signal_ability/meddle/on_cast(var/mob/user, var/obj/target, var/list/data)
+/datum/signal_ability/meddle/on_cast(var/mob/user, obj/target, list/data)
 	target.meddle(user)
 
 

@@ -107,7 +107,7 @@ AngleToHue(hue)
 	Converts an angle to a hue in the valid range.
 RotateHue(hsv, angle)
 	Takes an HSV or HSVA value and rotates the hue forward through red, green, and blue by an angle from 0 to 360.
-	(Rotating red by 60° produces yellow.) The result is another HSV or HSVA color with the same saturation and value
+	(Rotating red by 60ï¿½ produces yellow.) The result is another HSV or HSVA color with the same saturation and value
 	as the original, but a different hue.
 GrayScale(rgb)
 	Takes an RGB or RGBA color and converts it to grayscale. Returns an RGB or RGBA string.
@@ -836,7 +836,7 @@ proc
 #define HOLOPAD_SHORT_RANGE 1 //For determining the color of holopads based on whether they're short or long range.
 #define HOLOPAD_LONG_RANGE 2
 
-/proc/getHologramIcon(icon/A, safety=1, noDecolor=FALSE, var/hologram_color=HOLOPAD_SHORT_RANGE)//If safety is on, a new icon is not created.
+/proc/getHologramIcon(icon/A, safety=1, noDecolor=FALSE, hologram_color=HOLOPAD_SHORT_RANGE)//If safety is on, a new icon is not created.
 	var/icon/flat_icon = safety ? A : new(A)//Has to be a new icon to not constantly change the same icon.
 	if (noDecolor == FALSE)
 		if(hologram_color == HOLOPAD_LONG_RANGE)
@@ -856,7 +856,7 @@ proc
 		composite.Blend(icon(I.icon, I.icon_state, I.dir, 1), ICON_OVERLAY)
 	return composite
 
-proc/adjust_brightness(var/color, var/value)
+proc/adjust_brightness(var/color, value)
 	if (!color) return "#ffffff"
 	if (!value) return color
 
@@ -890,7 +890,7 @@ arguments tx, ty, tz are target coordinates (requred), range defines render dist
 cap_mode is capturing mode (optional), user is capturing mob (requred only wehen cap_mode = CAPTURE_MODE_REGULAR),
 lighting determines lighting capturing (optional), suppress_errors suppreses errors and continues to capture (optional).
 */
-proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as num, var/cap_mode = CAPTURE_MODE_PARTIAL, var/mob/living/user, var/lighting = 1, var/suppress_errors = 1)
+proc/generate_image(var/tx as num, ty as num, tz as num, range as num, cap_mode = CAPTURE_MODE_PARTIAL, mob/living/user, lighting = 1, suppress_errors = 1)
 	var/list/turfstocapture = list()
 	//Lines below determine what tiles will be rendered
 	for(var/xoff = 0 to range)
@@ -939,12 +939,12 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 /*
 	This ambitious proc takes a named icon file, and copies the entire thing, rescaling each state at a time, to fit the newly defined X and Y values
 */
-/proc/rescale_icon(var/icon_file, var/new_x, var/new_y)
+/proc/rescale_icon(var/icon_file, new_x, new_y)
 	var/icon/loaded = new(icon_file)	//Load the specified icon file into memory to use as a container
 	loaded.Scale(new_x, new_y)
 	return loaded
 
-/proc/rescale_icon_scalar(var/icon_file, var/new_x, var/new_y)
+/proc/rescale_icon_scalar(var/icon_file, new_x, new_y)
 	var/icon/loaded = new(icon_file)	//Load the specified icon file into memory to use as a container
 	loaded.Scale(new_x*loaded.Width(), new_y*loaded.Height())
 	return loaded
@@ -976,7 +976,7 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 			C.images -= I
 
 //Finds mobs near the source and shows them an overlay
-/proc/flick_overlay_source(image/I, var/atom/source, duration)
+/proc/flick_overlay_source(image/I, atom/source, duration)
 	source = get_turf(source)
 	var/range = world.view + 4
 	//First lets figure out how far away to find mobs.
@@ -997,7 +997,7 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 /*
 	Use the icon proc to produce an icon to pass in here
 */
-/atom/proc/flick_overlay_icon(var/duration, var/icon/I)
+/atom/proc/flick_overlay_icon(var/duration, icon/I)
 
 
 	var/obj/flick_overlay/OF = new(src)
@@ -1018,7 +1018,7 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 	alpha = 255
 	var/atom/host
 
-/obj/flick_overlay/proc/set_host(var/atom/host, var/lifetime)
+/obj/flick_overlay/proc/set_host(var/atom/host, lifetime)
 	src.host = host
 	src.host:vis_contents += src
 

@@ -255,7 +255,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 /*
 	Immortality
 */
-/datum/species/necromorph/hunter/get_weighted_total_limb_damage(var/mob/living/carbon/human/H, var/return_list)
+/datum/species/necromorph/hunter/get_weighted_total_limb_damage(var/mob/living/carbon/human/H, return_list)
 	.=..()
 	if (islist(.))
 		.["burn"] = H.getFireLoss()
@@ -314,7 +314,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
 
-	//(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
+	//(var/datum/holder, atom/_target, _speed , _lifespan, _maxrange, _homing, _inertia = FALSE, _power, _cooldown, _delay)
 	set_extension(src, /datum/extension/charge/lunge/hunter, A, 6, 2 SECONDS, 3, FALSE, FALSE, 1, 6 SECONDS, 0.25 SECONDS)
 
 	return TRUE

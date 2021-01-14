@@ -67,7 +67,7 @@
 
 
 
-/datum/extension/cadence/proc/holder_moved(var/atom/movable/am, var/atom/old_loc, var/atom/new_loc)
+/datum/extension/cadence/proc/holder_moved(var/atom/movable/am, atom/old_loc, atom/new_loc)
 	//Going straight up or down a level causes a runtime without this
 	if (old_loc.x == new_loc.x && old_loc.y == new_loc.y)
 		return

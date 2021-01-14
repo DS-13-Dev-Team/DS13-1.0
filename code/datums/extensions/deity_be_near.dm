@@ -5,7 +5,7 @@
 	var/mob/living/deity/connected_deity
 	var/threshold_base = 6
 
-/datum/extension/deity_be_near/New(var/datum/holder, var/mob/living/deity/connect)
+/datum/extension/deity_be_near/New(var/datum/holder, mob/living/deity/connect)
 	..()
 	GLOB.moved_event.register(holder,src, .proc/check_movement)
 	connected_deity = connect

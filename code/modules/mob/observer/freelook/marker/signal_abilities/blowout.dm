@@ -11,6 +11,6 @@
 	targeting_method	=	TARGET_CLICK
 
 
-/datum/signal_ability/blowout/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/blowout/on_cast(var/mob/user, atom/target, list/data)
 	var/obj/machinery/light/L = target
 	L.broken(FALSE)

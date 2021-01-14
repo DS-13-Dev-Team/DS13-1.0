@@ -7,7 +7,7 @@
 	w_class = ITEM_SIZE_SMALL
 	matter = list(MATERIAL_STEEL = 100)
 	throwforce = 2
-	
+
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 1)
 
@@ -26,16 +26,16 @@
 /obj/item/device/assembly/proc/activate()									//What the device does when turned on
 	return
 
-/obj/item/device/assembly/proc/pulsed(var/radio = 0)						//Called when another assembly acts on this one, var/radio will determine where it came from for wire calcs
+/obj/item/device/assembly/proc/pulsed(var/radio = 0)						//Called when another assembly acts on this one, radio will determine where it came from for wire calcs
 	return
 
-/obj/item/device/assembly/proc/pulse(var/radio = 0)						//Called when this device attempts to act on another device, var/radio determines if it was sent via radio or direct
+/obj/item/device/assembly/proc/pulse(var/radio = 0)						//Called when this device attempts to act on another device, radio determines if it was sent via radio or direct
 	return
 
 /obj/item/device/assembly/proc/toggle_secure()								//Code that has to happen when the assembly is un\secured goes here
 	return
 
-/obj/item/device/assembly/proc/attach_assembly(var/obj/A, var/mob/user)	//Called when an assembly is attacked by another
+/obj/item/device/assembly/proc/attach_assembly(var/obj/A, mob/user)	//Called when an assembly is attacked by another
 	return
 
 /obj/item/device/assembly/proc/process_cooldown()							//Called via spawn(10) to have it count down the cooldown var
@@ -88,7 +88,7 @@
 	return secured
 
 
-/obj/item/device/assembly/attach_assembly(var/obj/item/device/assembly/A, var/mob/user)
+/obj/item/device/assembly/attach_assembly(var/obj/item/device/assembly/A, mob/user)
 	holder = new/obj/item/device/assembly_holder(get_turf(src))
 	if(holder.attach(A,src,user))
 		to_chat(user, "<span class='notice'>You attach \the [A] to \the [src]!</span>")
@@ -149,7 +149,7 @@
 	proc
 		Activate()//Called when this assembly is pulsed by another one
 		Process_cooldown()//Call this via spawn(10) to have it count down the cooldown var
-		Attach_Holder(var/obj/H, var/mob/user)//Called when an assembly holder attempts to attach, sets src's loc in here
+		Attach_Holder(var/obj/H, mob/user)//Called when an assembly holder attempts to attach, sets src's loc in here
 
 
 	Activate()
@@ -170,7 +170,7 @@
 		return 1
 
 
-	Attach_Holder(var/obj/H, var/mob/user)
+	Attach_Holder(var/obj/H, mob/user)
 		if(!H)	return 0
 		if(!H.IsAssemblyHolder())	return 0
 		//Remember to have it set its loc somewhere in here

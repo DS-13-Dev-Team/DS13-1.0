@@ -28,7 +28,7 @@ GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 
 	GLOB.vector_pool_filling = FALSE
 
-/proc/get_new_vector(var/new_x, var/new_y)
+/proc/get_new_vector(var/new_x, new_y)
 	if (length(GLOB.vector_pool))
 		var/vector2/newvec
 		macropop(GLOB.vector_pool, newvec)

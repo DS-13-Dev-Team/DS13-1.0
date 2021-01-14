@@ -51,7 +51,7 @@
 
 // Updates what the eye can see. It is recommended you use this when the eye moves or its location is set.
 
-/datum/visualnet/proc/update_eye_chunks(mob/observer/eye/eye, var/full_update = FALSE)
+/datum/visualnet/proc/update_eye_chunks(mob/observer/eye/eye, full_update = FALSE)
 	. = list()
 	var/turf/T = get_turf(eye)
 	if(T)
@@ -86,7 +86,7 @@
 
 // Updates the chunks that the turf is located in. Use this when obstacles are destroyed or	when doors open.
 
-/datum/visualnet/proc/update_visibility(atom/A, var/opacity_check = TRUE)
+/datum/visualnet/proc/update_visibility(atom/A, opacity_check = TRUE)
 	if(!ticker || (opacity_check && !A.opacity))
 		return
 	major_chunk_change(A)
@@ -116,7 +116,7 @@
 /datum/visualnet/proc/major_chunk_change(var/atom/source)
 	for_all_chunks_in_range(source, /datum/chunk/proc/visibility_changed, list())
 
-/datum/visualnet/proc/add_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE)
+/datum/visualnet/proc/add_source(var/atom/source, update_visibility = TRUE, opacity_check = FALSE)
 	if(!(source && is_type_in_list(source, valid_source_types)))
 		log_visualnet("Was given an unhandled source", source)
 		return FALSE
@@ -131,7 +131,7 @@
 		update_visibility(source, opacity_check)
 	return TRUE
 
-/datum/visualnet/proc/remove_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE)
+/datum/visualnet/proc/remove_source(var/atom/source, update_visibility = TRUE, opacity_check = FALSE)
 	if(!sources.Remove(source))
 		return FALSE
 
@@ -142,7 +142,7 @@
 		update_visibility(source, opacity_check)
 	return TRUE
 
-/datum/visualnet/proc/source_moved(var/atom/movable/source, var/old_loc, var/new_loc)
+/datum/visualnet/proc/source_moved(var/atom/movable/source, old_loc, new_loc)
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(new_loc)
 
@@ -157,7 +157,7 @@
 		for_all_chunks_in_range(source, /datum/chunk/proc/add_source, list(source), new_turf)
 
 
-/datum/visualnet/proc/for_all_chunks_in_range(var/atom/source, var/proc_call, var/list/proc_args, var/turf/T, var/range)
+/datum/visualnet/proc/for_all_chunks_in_range(var/atom/source, proc_call, list/proc_args, turf/T, range)
 	T = T ? T : get_turf(source)
 	if(!T)
 		return
@@ -203,7 +203,7 @@
 	var/turf/T = get_turf(mob)
 	T.update_chunk()
 
-/turf/proc/update_chunk(var/force_update = TRUE, var/datum/visualnet/V)
+/turf/proc/update_chunk(var/force_update = TRUE, datum/visualnet/V)
 	set name = "Update Chunk"
 	set category = "Debug"
 	set src in world

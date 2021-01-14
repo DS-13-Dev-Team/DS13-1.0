@@ -22,7 +22,7 @@
 	else if(heard_words.len >= 1 && world.time > last_talk_time + talk_interval && prob(talk_chance))
 		SaySomething()
 
-/datum/talking_atom/proc/catchMessage(var/msg, var/mob/source)
+/datum/talking_atom/proc/catchMessage(var/msg, mob/source)
 	if(!holder_atom)
 		return
 

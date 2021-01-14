@@ -23,7 +23,7 @@
 		T.ChangeTurf(new_turf_type)
 
 // This is not great.
-/turf/simulated/proc/wet_floor(var/wet_val = 1, var/overwrite = FALSE)
+/turf/simulated/proc/wet_floor(var/wet_val = 1, overwrite = FALSE)
 	if(wet_val < wet && !overwrite)
 		return
 
@@ -167,7 +167,7 @@
 /turf/simulated/proc/can_build_cable(var/mob/user)
 	return 0
 
-/turf/simulated/attackby(var/obj/item/thing, var/mob/user)
+/turf/simulated/attackby(var/obj/item/thing, mob/user)
 	if(isCoil(thing) && can_build_cable(user))
 		var/obj/item/stack/cable_coil/coil = thing
 		coil.turf_place(src, user)

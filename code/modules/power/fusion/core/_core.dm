@@ -74,7 +74,7 @@ var/list/fusion_cores = list()
 		owned_field = null
 	use_power = 1
 
-/obj/machinery/power/fusion_core/proc/AddParticles(var/name, var/quantity = 1)
+/obj/machinery/power/fusion_core/proc/AddParticles(var/name, quantity = 1)
 	if(owned_field)
 		owned_field.AddParticles(name, quantity)
 		. = 1
@@ -97,7 +97,7 @@ var/list/fusion_cores = list()
 	if(owned_field)
 		Shutdown()
 
-/obj/machinery/power/fusion_core/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/power/fusion_core/attackby(var/obj/item/W, mob/user)
 
 	if(owned_field)
 		to_chat(user,"<span class='warning'>Shut \the [src] off first!</span>")

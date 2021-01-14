@@ -68,7 +68,7 @@
 		)
 
 
-/obj/item/device/floor_painter/resolve_attackby(var/atom/A, var/mob/user, proximity, params)
+/obj/item/device/floor_painter/resolve_attackby(var/atom/A, mob/user, proximity, params)
 	if(!proximity)
 		return
 

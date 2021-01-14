@@ -18,7 +18,7 @@ var/list/wrapped_species_by_ref = list()
 /datum/species/shapeshifter/get_valid_shapeshifter_forms(var/mob/living/carbon/human/H)
 	return valid_transform_species
 
-/datum/species/shapeshifter/get_icobase(var/mob/living/carbon/human/H, var/get_deform)
+/datum/species/shapeshifter/get_icobase(var/mob/living/carbon/human/H, get_deform)
 	if(!H) return ..(null, get_deform)
 	var/datum/species/S = all_species[wrapped_species_by_ref["\ref[H]"]]
 	return S.get_icobase(H, get_deform)

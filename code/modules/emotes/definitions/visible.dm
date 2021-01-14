@@ -229,7 +229,7 @@
 	emote_message_3p_target = "USER shakes hands with TARGET."
 	message_type = VISIBLE_MESSAGE
 
-/decl/emote/visible/handshake/get_emote_message_3p(var/atom/user, var/atom/target, var/extra_params)
+/decl/emote/visible/handshake/get_emote_message_3p(var/atom/user, atom/target, extra_params)
 	if(target && !user.Adjacent(target))
 		return "USER holds out USER_HIS hand out to TARGET."
 	return ..()
@@ -240,7 +240,7 @@
 	emote_message_3p_target = "USER signals at TARGET."
 	message_type = VISIBLE_MESSAGE
 
-/decl/emote/visible/signal/get_emote_message_3p(var/mob/user, var/atom/target, var/extra_params)
+/decl/emote/visible/signal/get_emote_message_3p(var/mob/user, atom/target, extra_params)
 	if(istype(user) && !(user.r_hand && user.l_hand))
 		var/t1 = round(text2num(extra_params))
 		if(isnum(t1) && t1 <= 5)

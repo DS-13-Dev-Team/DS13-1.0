@@ -49,7 +49,7 @@
 	phenomenas[P.name] = P
 	return P
 
-/mob/living/deity/proc/remove_phenomena_from_intent(var/intent, var/modifier, var/update = 1)
+/mob/living/deity/proc/remove_phenomena_from_intent(var/intent, modifier, update = 1)
 	var/list/intent_list = intent_phenomenas[intent]
 	intent_list[modifier] = null
 	if(update)
@@ -70,13 +70,13 @@
 		intent_phenomenas[intent] = list()
 	intent_phenomenas[intent] |= control_types
 
-/mob/living/deity/proc/set_phenomena(var/datum/phenomena/phenomena, var/intent, var/modifiers)
+/mob/living/deity/proc/set_phenomena(var/datum/phenomena/phenomena, intent, modifiers)
 	if(!intent_phenomenas[intent])
 		populate_intent(intent)
 	var/list/intent_list = intent_phenomenas[intent]
 	intent_list[modifiers] = phenomena
 
-/mob/living/deity/proc/get_phenomena(var/shift = 0, var/control = 0)
+/mob/living/deity/proc/get_phenomena(var/shift = 0, control = 0)
 	var/list/intent_list = intent_phenomenas[a_intent]
 	if(intent_list)
 		var/type = ""

@@ -47,7 +47,7 @@
 
 
 //A mob was detected nearby, can we absorb it?
-/obj/structure/corruption_node/maw/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
+/obj/structure/corruption_node/maw/proc/nearby_movement(var/atom/movable/AM, atom/old_loc)
 
 	if (isliving(AM) && get_marker())
 		var/mob/living/L = AM
@@ -151,7 +151,7 @@
 		return
 	.=..()
 
-/obj/structure/corruption_node/maw/attack_generic(var/mob/user, var/damage)
+/obj/structure/corruption_node/maw/attack_generic(var/mob/user, damage)
 	if (buckled_mob)
 		attempt_release(user)
 		return
@@ -190,7 +190,7 @@
 
 
 //If an attempt to release the mob fails, it digs in and deals more damage
-/obj/structure/corruption_node/maw/proc/fail_attempt(var/user, var/difficulty)
+/obj/structure/corruption_node/maw/proc/fail_attempt(var/user, difficulty)
 	if (!buckled_mob)
 		return
 
@@ -272,7 +272,7 @@
 
 	return TRUE
 
-/obj/structure/corruption_node/maw/proc/attempt_release(var/mob/living/user, var/obj/item/I)
+/obj/structure/corruption_node/maw/proc/attempt_release(var/mob/living/user, obj/item/I)
 	if (!buckled_mob || QDELETED(buckled_mob) || !check_grip())
 		return //Nobody there to rescue?
 

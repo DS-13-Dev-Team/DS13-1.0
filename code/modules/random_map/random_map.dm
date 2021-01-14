@@ -31,7 +31,7 @@ var/global/list/map_count = list()
 	// Test to see if rand_seed() can be used reliably.
 	var/priority_process
 
-/datum/random_map/New(var/seed, var/tx, var/ty, var/tz, var/tlx, var/tly, var/do_not_apply, var/do_not_announce, var/never_be_priority = 0)
+/datum/random_map/New(var/seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, never_be_priority = 0)
 
 	// Store this for debugging.
 	if(!map_count[descriptor])
@@ -142,7 +142,7 @@ var/global/list/map_count = list()
 /datum/random_map/proc/check_map_sanity()
 	return 1
 
-/datum/random_map/proc/set_origins(var/tx, var/ty, var/tz)
+/datum/random_map/proc/set_origins(var/tx, ty, tz)
 	origin_x = tx ? tx : 1
 	origin_y = ty ? ty : 1
 	origin_z = tz ? tz : 1
@@ -181,14 +181,14 @@ var/global/list/map_count = list()
 		if(WALL_CHAR)
 			return wall_type
 
-/datum/random_map/proc/get_additional_spawns(var/value, var/turf/T)
+/datum/random_map/proc/get_additional_spawns(var/value, turf/T)
 	if(value == DOOR_CHAR)
 		new /obj/machinery/door/airlock(T)
 
 /datum/random_map/proc/cleanup()
 	return
 
-/datum/random_map/proc/overlay_with(var/datum/random_map/target_map, var/tx, var/ty)
+/datum/random_map/proc/overlay_with(var/datum/random_map/target_map, tx, ty)
 	if(!map.len || !istype(target_map))
 		return
 	tx-- // Update origin so that x/y index
@@ -206,5 +206,5 @@ var/global/list/map_count = list()
 	handle_post_overlay_on(target_map,tx,ty)
 
 
-/datum/random_map/proc/handle_post_overlay_on(var/datum/random_map/target_map, var/tx, var/ty)
+/datum/random_map/proc/handle_post_overlay_on(var/datum/random_map/target_map, tx, ty)
 	return

@@ -38,7 +38,7 @@
 	return ..()
 
 //Variadic - Additional positional arguments can be given. Named arguments might not work so well
-/proc/set_extension(var/datum/source, var/datum/extension/extension_type)
+/proc/set_extension(var/datum/source, datum/extension/extension_type)
 	var/datum/extension/extension_base_type = initial(extension_type.base_type)
 	if (!extension_base_type)
 		extension_base_type = extension_type
@@ -61,7 +61,7 @@
 			extension_data += args.Copy(3)
 		source.extensions[extension_base_type] = extension_data
 
-/proc/get_or_create_extension(var/datum/source, var/datum/extension/extension_type)
+/proc/get_or_create_extension(var/datum/source, datum/extension/extension_type)
 	var/datum/extension/base_type = initial(extension_type.base_type)
 	if (!base_type)
 		base_type = extension_type
@@ -69,7 +69,7 @@
 		set_extension(arglist(args))
 	return get_extension(source, base_type)
 
-/proc/get_extension(var/datum/source, var/base_type)
+/proc/get_extension(var/datum/source, base_type)
 	if(!source.extensions)
 		return
 	. = source.extensions[base_type]
@@ -83,7 +83,7 @@
 /*
 	Gets the first matching extension using istype
 */
-/proc/get_extension_of_type(var/datum/source, var/search_type)
+/proc/get_extension_of_type(var/datum/source, search_type)
 	if(!source.extensions)
 		return
 	for (var/typepath in source.extensions)
@@ -96,15 +96,15 @@
 
 
 //Fast way to check if it has an extension, also doesn't trigger instantiation of lazy loaded extensions
-/proc/has_extension(var/datum/source, var/base_type)
+/proc/has_extension(var/datum/source, base_type)
 	return (source.extensions && source.extensions[base_type])
 
-/proc/construct_extension_instance(var/extension_type, var/datum/source, var/list/arguments)
+/proc/construct_extension_instance(var/extension_type, datum/source, list/arguments)
 	arguments = list(source) + arguments
 	return new extension_type(arglist(arguments))
 
 
-/proc/remove_extension(var/datum/source, var/base_type)
+/proc/remove_extension(var/datum/source, base_type)
 	if(!source.extensions || !source.extensions[base_type])
 		return
 	if(!islist(source.extensions[base_type]))

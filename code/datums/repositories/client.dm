@@ -34,7 +34,7 @@ var/repository/client/client_repository = new()
 	ckey = M.ckey ? M.ckey : ckey
 	ref = M.client ? any2ref(M.client) : ref
 
-/datum/client_lite/proc/key_name(var/pm_link = TRUE, var/check_if_offline = TRUE, var/datum/ticket/ticket = null)
+/datum/client_lite/proc/key_name(var/pm_link = TRUE, check_if_offline = TRUE, datum/ticket/ticket = null)
 	if(!ref && ckey != NO_CLIENT_CKEY)
 		var/client/C = client_by_ckey(ckey)
 		if(C)

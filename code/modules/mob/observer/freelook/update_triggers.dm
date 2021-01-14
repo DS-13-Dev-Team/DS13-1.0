@@ -2,7 +2,7 @@
 
 // TURFS
 
-/proc/updateVisibility(atom/A, var/opacity_check = 1)
+/proc/updateVisibility(atom/A, opacity_check = 1)
 	if(ticker)
 		for(var/datum/visualnet/VN in GLOB.visual_nets)
 			VN.update_visibility(A, opacity_check)

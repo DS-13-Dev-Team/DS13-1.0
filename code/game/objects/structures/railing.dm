@@ -23,7 +23,7 @@
 	. = ..()
 	color = COLOR_GUNMETAL // They're not painted!
 
-/obj/structure/railing/New(var/newloc, var/material_key = "steel")
+/obj/structure/railing/New(var/newloc, material_key = "steel")
 	material = material_key // Converted to datum in initialize().
 	..(newloc)
 
@@ -202,14 +202,14 @@
 	set_dir(turn(dir, 180))
 	update_icon()
 
-/obj/structure/railing/CheckExit(var/atom/movable/O, var/turf/target)
+/obj/structure/railing/CheckExit(var/atom/movable/O, turf/target)
 	if(istype(O) && O.checkpass(PASS_FLAG_TABLE))
 		return 1
 	if(get_dir(O.loc, target) == dir)
 		return 0
 	return 1
 
-/obj/structure/railing/attackby(var/obj/item/W, var/mob/user)
+/obj/structure/railing/attackby(var/obj/item/W, mob/user)
 	// Handle harm intent grabbing/tabling.
 	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W

@@ -22,7 +22,7 @@
 
 	ui_interact(user)
 
-/obj/machinery/computer/engines/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/engines/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	if(!linked)
 		to_chat(user, "<span class='warning'>Unable to connect to ship control systems.</span>")
 		return

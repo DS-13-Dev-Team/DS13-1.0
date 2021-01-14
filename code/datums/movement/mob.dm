@@ -279,7 +279,7 @@
 	var/prevent_host_move = FALSE
 	var/list/allowed_movers
 
-/datum/movement_handler/mob/relayed_movement/MayMove(var/mob/mover, var/is_external)
+/datum/movement_handler/mob/relayed_movement/MayMove(var/mob/mover, is_external)
 	if(is_external)
 		return MOVEMENT_PROCEED
 	if(mover == mob && !(prevent_host_move && LAZYLEN(allowed_movers) && !LAZYISIN(allowed_movers, mover)))
@@ -356,7 +356,7 @@
 	return
 
 // Eye movement
-/datum/movement_handler/mob/eye/DoMove(var/direction, var/mob/mover)
+/datum/movement_handler/mob/eye/DoMove(var/direction, mob/mover)
 	if(IS_NOT_SELF(mover)) // We only care about direct movement
 		return
 	if(!mob.eyeobj)
@@ -364,7 +364,7 @@
 	mob.eyeobj.EyeMove(direction)
 	return MOVEMENT_HANDLED
 
-/datum/movement_handler/mob/eye/MayMove(var/mob/mover, var/is_external)
+/datum/movement_handler/mob/eye/MayMove(var/mob/mover, is_external)
 	if(IS_NOT_SELF(mover))
 		return MOVEMENT_PROCEED
 	if(is_external)
@@ -374,7 +374,7 @@
 	return (MOVEMENT_PROCEED|MOVEMENT_HANDLED)
 
 // Space movement
-/datum/movement_handler/mob/space/DoMove(var/direction, var/mob/mover)
+/datum/movement_handler/mob/space/DoMove(var/direction, mob/mover)
 	if(!mob.check_solid_ground())
 		var/allowmove = mob.Allow_Spacemove(0)
 		if(!allowmove)
@@ -384,7 +384,7 @@
 		else
 			mob.inertia_dir = 0 //If not then we can reset inertia and move
 
-/datum/movement_handler/mob/space/MayMove(var/mob/mover, var/is_external)
+/datum/movement_handler/mob/space/MayMove(var/mob/mover, is_external)
 	if(IS_NOT_SELF(mover) && is_external)
 		return MOVEMENT_PROCEED
 
@@ -394,7 +394,7 @@
 	return MOVEMENT_PROCEED
 
 // Buckle movement
-/datum/movement_handler/mob/buckle_relay/DoMove(var/direction, var/mover)
+/datum/movement_handler/mob/buckle_relay/DoMove(var/direction, mover)
 	// TODO: Datumlize buckle-handling
 	if(istype(mob.buckled, /obj/vehicle))
 		//drunk driving
@@ -431,12 +431,12 @@
 	var/next_move
 	var/overflow = 0
 
-/datum/movement_handler/mob/delay/DoMove(var/direction, var/mover, var/is_external)
+/datum/movement_handler/mob/delay/DoMove(var/direction, mover, is_external)
 	if(is_external)
 		return
 	next_move = world.time + max(1, mob.movement_delay()-overflow)
 
-/datum/movement_handler/mob/delay/MayMove(var/mover, var/is_external)
+/datum/movement_handler/mob/delay/MayMove(var/mover, is_external)
 	if(IS_NOT_SELF(mover) && is_external)
 		return MOVEMENT_PROCEED
 	if ((mover && mover != mob) ||  world.time >= next_move)
@@ -528,7 +528,7 @@
 
 
 // Finally.. the last of the mob movement junk
-/datum/movement_handler/mob/movement/DoMove(var/direction, var/mob/mover)
+/datum/movement_handler/mob/movement/DoMove(var/direction, mob/mover)
 	. = MOVEMENT_HANDLED
 	if(mob.moving)
 
@@ -566,7 +566,7 @@
 /datum/movement_handler/mob/movement/MayMove(var/mob/mover)
 	return IS_SELF(mover) &&  mob.moving ? MOVEMENT_STOP : MOVEMENT_PROCEED
 
-/datum/movement_handler/mob/movement/proc/HandleGrabs(var/direction, var/old_turf)
+/datum/movement_handler/mob/movement/proc/HandleGrabs(var/direction, old_turf)
 	. = 0
 	// TODO: Look into making grabs use movement events instead, this is a mess.
 	for (var/obj/item/grab/G in mob)

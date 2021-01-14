@@ -8,7 +8,7 @@
 
 
 //Sets a time for when this category can be next used
-/datum/proc/set_audio_cooldown(var/category, var/cooldown)
+/datum/proc/set_audio_cooldown(var/category, cooldown)
 	var/datum/extension/audio_cooldown/AC = get_extension(src, /datum/extension/audio_cooldown)
 	if (!AC)
 		AC = set_extension(src, /datum/extension/audio_cooldown)

@@ -225,7 +225,7 @@
 	detach_grenade()
 	. =..()
 
-/obj/item/integrated_circuit/manipulation/grenade/attackby(var/obj/item/weapon/grenade/G, var/mob/user)
+/obj/item/integrated_circuit/manipulation/grenade/attackby(var/obj/item/weapon/grenade/G, mob/user)
 	if(istype(G))
 		if(attached_grenade)
 			to_chat(user, "<span class='warning'>There is already a grenade attached!</span>")
@@ -338,7 +338,7 @@
 	var/obj/item/device/electronic_assembly/assembly = get_assembly(src)
 	assembly.closed_interact(usr)
 
-/obj/item/integrated_circuit/manipulation/ai/relaymove(var/mob/user, var/direction)
+/obj/item/integrated_circuit/manipulation/ai/relaymove(var/mob/user, direction)
 	switch(direction)
 		if(1)
 			activate_pin(1)
@@ -349,7 +349,7 @@
 		if(8)
 			activate_pin(4)
 
-/obj/item/integrated_circuit/manipulation/ai/proc/load_ai(var/mob/user, var/obj/item/card)
+/obj/item/integrated_circuit/manipulation/ai/proc/load_ai(var/mob/user, obj/item/card)
 	if(controlling)
 		to_chat(user, "<span class='warning'>There is already a card in there!</span>")
 		return
@@ -373,7 +373,7 @@
 	controlling = null
 
 
-/obj/item/integrated_circuit/manipulation/ai/attackby(var/obj/item/I, var/mob/user)
+/obj/item/integrated_circuit/manipulation/ai/attackby(var/obj/item/I, mob/user)
 	if(is_type_in_list(I, list(/obj/item/weapon/aicard, /obj/item/device/paicard, /obj/item/device/mmi)))
 		load_ai(user, I)
 	else return ..()

@@ -136,7 +136,7 @@
 					H.lip_style = null
 					H.update_body()
 
-/obj/item/weapon/paper/proc/addtofield(var/id, var/text, var/links = 0)
+/obj/item/weapon/paper/proc/addtofield(var/id, text, links = 0)
 	var/locid = 0
 	var/laststart = 1
 	var/textindex = 1

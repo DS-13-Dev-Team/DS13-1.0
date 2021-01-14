@@ -17,7 +17,7 @@
 /datum/random_room/proc/apply_to_map(var/xorigin = 1,var/yorigin = 1,var/zorigin = 1)
 	return 1
 
-/datum/random_room/proc/apply_loot(var/xorigin = 1,var/yorigin = 1,var/zorigin = 1, var/type)
+/datum/random_room/proc/apply_loot(var/xorigin = 1,var/yorigin = 1,var/zorigin = 1, type)
 	if(!item_spawns || !item_spawns.len)
 		return 0
 	var/place = pick(item_spawns)

@@ -58,7 +58,7 @@
 		if(2)
 			. += "ERROROROROROR-----"
 
-/mob/living/bot/floorbot/ProcessCommand(var/mob/user, var/command, var/href_list)
+/mob/living/bot/floorbot/ProcessCommand(var/mob/user, command, href_list)
 	..()
 	if(CanAccessPanel(user))
 		switch(command)
@@ -75,7 +75,7 @@
 				if(emagged < 2)
 					emagged = !emagged
 
-/mob/living/bot/floorbot/emag_act(var/remaining_charges, var/mob/user)
+/mob/living/bot/floorbot/emag_act(var/remaining_charges, mob/user)
 	. = ..()
 	if(!emagged)
 		emagged = 1
@@ -128,7 +128,7 @@
 		else
 			return (amount && (T.broken || T.burnt || (improvefloors && !T.flooring)))
 
-/mob/living/bot/floorbot/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/bot/floorbot/UnarmedAttack(var/atom/A, proximity)
 	if(!..())
 		return
 
@@ -275,7 +275,7 @@
 	icon_state = "toolbox_tiles"
 	force = 3.0
 	throwforce = 10.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	var/boxtype = ""
@@ -306,7 +306,7 @@
 	icon_state = "toolbox_tiles_sensor"
 	force = 3.0
 	throwforce = 10.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	var/created_name = "Floorbot"

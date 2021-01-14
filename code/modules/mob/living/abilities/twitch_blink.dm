@@ -65,12 +65,12 @@
 	set_next_idle_twitch()
 
 
-/datum/extension/twitch/proc/moved(var/atom/mover, var/oldloc, var/newloc)
+/datum/extension/twitch/proc/moved(var/atom/mover, oldloc, newloc)
 	//Sometimes blink around while walking
 	if(prob(movement_displace_chance))
 		displace(FALSE)
 
-/datum/extension/twitch/proc/move_to(var/atom/target, var/speed = 10)
+/datum/extension/twitch/proc/move_to(var/atom/target, speed = 10)
 	if (!turf_clear(get_turf(target)))
 		return FALSE
 

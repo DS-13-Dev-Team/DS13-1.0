@@ -126,7 +126,7 @@
 	else return null
 
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
+/obj/item/weapon/gun/projectile/automatic/pulse_heavy/can_fire(atom/target, mob/living/user, clickparams, silent = FALSE)
 	if (overheating)
 		return FALSE
 
@@ -158,5 +158,5 @@
 /obj/item/weapon/gun/projectile/automatic/pulse_heavy/load_ammo(var/obj/item/A, mob/user)
 	return
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/weapon/gun/projectile/automatic/pulse_heavy/unload_ammo(mob/user, allow_dump=1)
 	return

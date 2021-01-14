@@ -83,7 +83,7 @@
 	else
 		..()
 
-/datum/random_map/noise/exoplanet/grass/get_additional_spawns(var/value, var/turf/T)
+/datum/random_map/noise/exoplanet/grass/get_additional_spawns(var/value, turf/T)
 	..()
 	if(istype(T,/turf/simulated/floor/exoplanet/grass))
 		T.color = grass_color

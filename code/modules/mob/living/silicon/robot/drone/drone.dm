@@ -1,5 +1,5 @@
 var/list/mob_hat_cache = list()
-/proc/get_hat_icon(var/obj/item/hat, var/offset_x = 0, var/offset_y = 0)
+/proc/get_hat_icon(var/obj/item/hat, offset_x = 0, offset_y = 0)
 	var/t_state = hat.icon_state
 	if(hat.item_state_slots && hat.item_state_slots[slot_head_str])
 		t_state = hat.item_state_slots[slot_head_str]
@@ -73,7 +73,7 @@ var/list/mob_hat_cache = list()
 	GLOB.moved_event.unregister(src, src, /mob/living/silicon/robot/drone/proc/on_moved)
 	. = ..()
 
-/mob/living/silicon/robot/drone/proc/on_moved(var/atom/movable/am, var/turf/old_loc, var/turf/new_loc)
+/mob/living/silicon/robot/drone/proc/on_moved(var/atom/movable/am, turf/old_loc, turf/new_loc)
 	old_loc = get_turf(old_loc)
 	new_loc = get_turf(new_loc)
 
@@ -193,7 +193,7 @@ var/list/mob_hat_cache = list()
 	update_icon()
 
 //Drones cannot be upgraded with borg modules so we need to catch some items before they get used in ..().
-/mob/living/silicon/robot/drone/attackby(var/obj/item/weapon/W, var/mob/user)
+/mob/living/silicon/robot/drone/attackby(var/obj/item/weapon/W, mob/user)
 
 	if(user.a_intent == I_HELP && istype(W, /obj/item/clothing/head))
 		if(hat)
@@ -241,7 +241,7 @@ var/list/mob_hat_cache = list()
 
 	..()
 
-/mob/living/silicon/robot/drone/emag_act(var/remaining_charges, var/mob/user)
+/mob/living/silicon/robot/drone/emag_act(var/remaining_charges, mob/user)
 	if(!client || stat == 2)
 		to_chat(user, "<span class='danger'>There's not much point subverting this heap of junk.</span>")
 		return

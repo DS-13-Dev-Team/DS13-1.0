@@ -56,7 +56,7 @@
 	qdel(SSS)
 	return TRUE
 
-/mob/living/silicon/proc/open_subsystem(var/subsystem_type, var/mob/given = src)
+/mob/living/silicon/proc/open_subsystem(var/subsystem_type, mob/given = src)
 	var/stat_silicon_subsystem/SSS = silicon_subsystems[subsystem_type]
 	if(!istype(SSS))
 		return FALSE
@@ -98,7 +98,7 @@
 	var/ui_state
 	var/datum/nano_module/subsystem
 
-/stat_silicon_subsystem/New(var/mob/living/silicon/loc, var/subsystem_type, var/ui_state)
+/stat_silicon_subsystem/New(var/mob/living/silicon/loc, subsystem_type, ui_state)
 	if(!istype(loc))
 		CRASH("Unexpected location. Expected /mob/living/silicon, was [loc.type].")
 	src.ui_state = ui_state

@@ -251,7 +251,7 @@
 		return 0
 	return 1
 
-/datum/nano_module/supply/proc/print_order(var/datum/supply_order/O, var/mob/user)
+/datum/nano_module/supply/proc/print_order(var/datum/supply_order/O, mob/user)
 	if(!O)
 		return
 

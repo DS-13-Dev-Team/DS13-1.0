@@ -5,7 +5,7 @@
 	var/list/obj/item/seeds/seeds = list() // Tracks actual objects contained in the pile
 	var/ID
 
-/datum/seed_pile/New(var/obj/item/seeds/O, var/ID)
+/datum/seed_pile/New(var/obj/item/seeds/O, ID)
 	name = O.name
 	amount = 1
 	seed_type = O.seed
@@ -270,7 +270,7 @@
 	user << browse(dat, "window=seedstorage;size=800x500")
 	onclose(user, "seedstorage")
 
-/obj/machinery/seed_storage/Topic(var/href, var/list/href_list)
+/obj/machinery/seed_storage/Topic(var/href, list/href_list)
 	if (..())
 		return
 	var/task = href_list["task"]
@@ -298,7 +298,7 @@
 			break
 	updateUsrDialog()
 
-/obj/machinery/seed_storage/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/seed_storage/attackby(var/obj/item/O as obj, mob/user as mob)
 	if (istype(O, /obj/item/seeds))
 		add(O)
 		user.visible_message("[user] puts \the [O.name] into \the [src].", "You put \the [O] into \the [src].")

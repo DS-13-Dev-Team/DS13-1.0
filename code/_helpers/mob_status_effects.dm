@@ -1,5 +1,5 @@
 //Causes a mob to step one tile in a direction, and their camera goes with them
-/mob/proc/lurch(var/direction, var/camera_shift = 64, var/skip_cooldown = TRUE)
+/mob/proc/lurch(var/direction, camera_shift = 64, skip_cooldown = TRUE)
 	if (!direction)
 		direction = pick(GLOB.cardinal)
 

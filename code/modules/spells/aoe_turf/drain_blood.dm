@@ -14,7 +14,7 @@
 	cast_sound = 'sound/effects/squelch2.ogg'
 	hud_state = "const_rune"
 
-/spell/aoe_turf/drain_blood/cast(var/list/targets, var/mob/user)
+/spell/aoe_turf/drain_blood/cast(var/list/targets, mob/user)
 	for(var/t in targets)
 		for(var/mob/living/L in t)
 			if(L.stat == DEAD || L == user)

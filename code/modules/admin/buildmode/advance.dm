@@ -18,7 +18,7 @@
 /datum/build_mode/advanced/Configurate()
 	SetBuildType(select_subpath(build_type || /obj/structure/closet))
 
-/datum/build_mode/advanced/OnClick(var/atom/A, var/list/parameters)
+/datum/build_mode/advanced/OnClick(var/atom/A, list/parameters)
 	if(parameters["left"] && !parameters["ctrl"])
 		if(ispath(build_type,/turf))
 			var/turf/T = get_turf(A)

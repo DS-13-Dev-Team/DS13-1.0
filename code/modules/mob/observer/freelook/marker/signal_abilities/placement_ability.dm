@@ -10,7 +10,7 @@
 
 	require_corruption = TRUE
 
-/datum/signal_ability/placement/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/placement/on_cast(var/mob/user, atom/target, list/data)
 	var/atom/movable/A = new placement_atom(target)
 	if (LAZYACCESS(data, "direction"))
 		A.set_dir(data["direction"])
@@ -40,7 +40,7 @@
 		qdel(C)
 
 
-/datum/signal_ability/placement/corruption/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/placement/corruption/on_cast(var/mob/user, atom/target, list/data)
 	.=..()
 	var/obj/structure/corruption_node/C = .
 	if (istype(C))
@@ -87,7 +87,7 @@
 
 
 
-/proc/create_ability_placement_handler(var/mob/_user, var/_result, var/_handler_type = /datum/click_handler/placement, var/snap = FALSE, var/require_corruption = FALSE, var/LOS_block = TRUE, var/datum/callback/C)
+/proc/create_ability_placement_handler(var/mob/_user, _result, _handler_type = /datum/click_handler/placement, snap = FALSE, require_corruption = FALSE, LOS_block = TRUE, datum/callback/C)
 	if (!istype(_user))
 		return
 

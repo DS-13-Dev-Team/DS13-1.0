@@ -14,7 +14,7 @@ GLOBAL_DATUM_INIT(moved_event, /decl/observ/moved, new)
 	name = "Moved"
 	expected_type = /atom/movable
 
-/decl/observ/moved/register(var/atom/movable/mover, var/datum/listener, var/proc_call)
+/decl/observ/moved/register(var/atom/movable/mover, datum/listener, proc_call)
 	. = ..()
 
 	// Listen to the parent if possible.
@@ -25,7 +25,7 @@ GLOBAL_DATUM_INIT(moved_event, /decl/observ/moved, new)
 * Movement Handling *
 ********************/
 
-/atom/Entered(var/atom/movable/am, var/atom/old_loc)
+/atom/Entered(var/atom/movable/am, atom/old_loc)
 	. = ..()
 	GLOB.moved_event.raise_event(am, old_loc, am.loc)
 

@@ -206,7 +206,7 @@ field_generator power level display
 		return 0
 
 //Tries to draw the needed power from our own power reserve, or connected generators if we can. Returns the amount of power we were able to get.
-/obj/machinery/field_generator/proc/draw_power(var/draw = 0, var/list/flood_list = list())
+/obj/machinery/field_generator/proc/draw_power(var/draw = 0, list/flood_list = list())
 	flood_list += src
 
 	if(src.power >= draw)//We have enough power

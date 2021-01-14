@@ -11,7 +11,7 @@
 		if(all_predicates_true(list(A), predicates))
 			. += A
 
-/proc/get_area_turfs(var/area/A, var/list/predicates)
+/proc/get_area_turfs(var/area/A, list/predicates)
 	. = new/list()
 	A = istype(A) ? A : locate(A)
 	if(!A)
@@ -20,7 +20,7 @@
 		if(!predicates || all_predicates_true(list(T), predicates))
 			. += T
 
-/proc/get_subarea_turfs(var/area/A, var/list/predicates)
+/proc/get_subarea_turfs(var/area/A, list/predicates)
 	. = new/list()
 	A = istype(A) ? A.type : A
 	if(!A)
@@ -44,12 +44,12 @@
 /*
 	Pick helpers
 */
-/proc/pick_subarea_turf(var/areatype, var/list/predicates)
+/proc/pick_subarea_turf(var/areatype, list/predicates)
 	var/list/turfs = get_subarea_turfs(areatype, predicates)
 	if(turfs && turfs.len)
 		return pick(turfs)
 
-/proc/pick_area_turf(var/areatype, var/list/predicates)
+/proc/pick_area_turf(var/areatype, list/predicates)
 	var/list/turfs = get_area_turfs(areatype, predicates)
 	if(turfs && turfs.len)
 		return pick(turfs)
@@ -59,7 +59,7 @@
 	if(areas && areas.len)
 		. = pick(areas)
 
-/proc/pick_area_and_turf(var/list/area_predicates, var/list/turf_predicates)
+/proc/pick_area_and_turf(var/list/area_predicates, list/turf_predicates)
 	var/area/A = pick_area(area_predicates)
 	if(!A)
 		return
@@ -95,7 +95,7 @@
 /proc/is_coherent_area(var/area/A)
 	return !is_type_in_list(A, GLOB.using_map.area_coherency_test_exempt_areas)
 
-/proc/area_corrupted(var/atom/A, var/require_support = TRUE)
+/proc/area_corrupted(var/atom/A, require_support = TRUE)
 	var/area/T = get_area(A)
 	for (var/obj/effect/vine/corruption/C in T)
 		if (!require_support || C.is_supported())

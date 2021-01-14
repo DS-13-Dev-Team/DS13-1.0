@@ -8,7 +8,7 @@
 	Note that this proc can be overridden, and is in the case of screen objects.
 */
 
-/atom/Click(var/location, var/control, var/params) // This is their reaction to being clicked on (standard proc)
+/atom/Click(var/location, control, params) // This is their reaction to being clicked on (standard proc)
 	var/datum/stack/click_handlers
 
 	if (usr)
@@ -22,7 +22,7 @@
 
 	.=..()
 
-/atom/DblClick(var/location, var/control, var/params)
+/atom/DblClick(var/location, control, params)
 	var/datum/stack/click_handlers
 
 	if (usr)

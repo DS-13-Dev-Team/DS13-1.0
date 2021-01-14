@@ -101,7 +101,7 @@
 	else
 		return ..()
 
-/obj/item/weapon/defibrillator/emag_act(var/uses, var/mob/user)
+/obj/item/weapon/defibrillator/emag_act(var/uses, mob/user)
 	if(paddles)
 		return paddles.emag_act(uses, user, src)
 	return NO_EMAG_ACT
@@ -289,7 +289,7 @@
 /obj/item/weapon/shockpaddles/proc/checked_use(var/charge_amt)
 	return 0
 
-/obj/item/weapon/shockpaddles/attack(mob/living/M, mob/living/user, var/target_zone)
+/obj/item/weapon/shockpaddles/attack(mob/living/M, mob/living/user, target_zone)
 	var/mob/living/carbon/human/H = M
 	if(!istype(H) || user.a_intent == I_HURT)
 		return ..() //Do a regular attack. Harm intent shocking happens as a hit effect
@@ -306,7 +306,7 @@
 	return 1
 
 //Since harm-intent now skips the delay for deliberate placement, you have to be able to hit them in combat in order to shock people.
-/obj/item/weapon/shockpaddles/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/weapon/shockpaddles/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	if(ishuman(target) && can_use(user, target))
 		busy = 1
 		update_icon()
@@ -389,7 +389,7 @@
 		return 0
 	return 1
 
-/obj/item/weapon/shockpaddles/proc/do_electrocute(mob/living/carbon/human/H, mob/user, var/target_zone)
+/obj/item/weapon/shockpaddles/proc/do_electrocute(mob/living/carbon/human/H, mob/user, target_zone)
 	var/obj/item/organ/external/affecting = H.get_organ(target_zone)
 	if(!affecting)
 		to_chat(user, "<span class='warning'>They are missing that body part!</span>")
@@ -442,7 +442,7 @@
 	M.updatehealth()
 	apply_brain_damage(M, deadtime)
 
-/obj/item/weapon/shockpaddles/proc/apply_brain_damage(mob/living/carbon/human/H, var/deadtime)
+/obj/item/weapon/shockpaddles/proc/apply_brain_damage(mob/living/carbon/human/H, deadtime)
 	if(deadtime < DEFIB_TIME_LOSS) return
 
 	if(!H.should_have_organ(BP_BRAIN)) return //no brain
@@ -453,10 +453,10 @@
 	var/brain_damage = Clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
 	H.setBrainLoss(brain_damage)
 
-/obj/item/weapon/shockpaddles/proc/make_announcement(var/message, var/msg_class)
+/obj/item/weapon/shockpaddles/proc/make_announcement(var/message, msg_class)
 	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")
 
-/obj/item/weapon/shockpaddles/emag_act(var/uses, var/mob/user, var/obj/item/weapon/defibrillator/base)
+/obj/item/weapon/shockpaddles/emag_act(var/uses, mob/user, obj/item/weapon/defibrillator/base)
 	if(istype(src, /obj/item/weapon/shockpaddles/linked))
 		var/obj/item/weapon/shockpaddles/linked/dfb = src
 		if(dfb.base_unit)
@@ -538,7 +538,7 @@
 /obj/item/weapon/shockpaddles/linked/checked_use(var/charge_amt)
 	return (base_unit.bcell && base_unit.bcell.checked_use(charge_amt))
 
-/obj/item/weapon/shockpaddles/linked/make_announcement(var/message, var/msg_class)
+/obj/item/weapon/shockpaddles/linked/make_announcement(var/message, msg_class)
 	base_unit.audible_message("<b>\The [base_unit]</b> [message]", "\The [base_unit] vibrates slightly.")
 
 /*

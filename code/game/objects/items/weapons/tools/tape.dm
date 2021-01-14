@@ -31,7 +31,7 @@
 	use_stock_cost = 0.10
 	max_stock = 100
 
-/obj/item/weapon/tool/tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
+/obj/item/weapon/tool/tape_roll/attack(var/mob/living/carbon/human/H, mob/user)
 	if(istype(H))
 		if(user.zone_sel.selecting == BP_EYES)
 
@@ -94,7 +94,7 @@
 			return ..()
 		return 1
 
-/obj/item/weapon/tool/tape_roll/stick(var/obj/item/target, var/mob/user)
+/obj/item/weapon/tool/tape_roll/stick(var/obj/item/target, mob/user)
 	if (!istype(target) || target.anchored)
 		return
 

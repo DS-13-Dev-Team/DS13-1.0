@@ -328,7 +328,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	return ..()
 
 //Brute armor does various neat effects if it fully blocks a hit
-/datum/species/necromorph/brute/proc/handle_armor_bounceoff(var/mob/user, var/atom/A)
+/datum/species/necromorph/brute/proc/handle_armor_bounceoff(var/mob/user, atom/A)
 	if (isprojectile(A))
 		//Projectiles will ricochet off in a random direction
 		var/obj/item/projectile/P = A

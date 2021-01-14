@@ -19,7 +19,7 @@
 	use_power = 0	//Draws directly from power net. Does not use APC power.
 	active_power_usage = 1200
 
-/obj/machinery/shieldwallgen/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
+/obj/machinery/shieldwallgen/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.default_state)
 	var/list/data = list()
 	data["draw"] = round(power_draw)
 	data["power"] = round(storedpower)
@@ -272,7 +272,7 @@
 	var/power_usage = 800	//how much power it takes to sustain the shield
 	var/generate_power_usage = 5000	//how much power it takes to start up the shield
 
-/obj/machinery/shieldwall/New(var/obj/machinery/shieldwallgen/A, var/obj/machinery/shieldwallgen/B)
+/obj/machinery/shieldwall/New(var/obj/machinery/shieldwallgen/A, obj/machinery/shieldwallgen/B)
 	..()
 	update_nearby_tiles()
 	src.gen_primary = A
@@ -293,7 +293,7 @@
 /obj/machinery/shieldwall/attack_hand(mob/user as mob)
 	return
 
-/obj/machinery/shieldwall/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/shieldwall/attackby(var/obj/item/I, mob/user)
 	var/obj/machinery/shieldwallgen/G = prob(50) ? gen_primary : gen_secondary
 	G.storedpower -= I.force*2500
 	user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [I]!</span>")

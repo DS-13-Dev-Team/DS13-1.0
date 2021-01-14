@@ -15,7 +15,7 @@
 	to_file(S["default_slot"], pref.default_slot)
 	to_file(S["preference_values"], pref.preference_values)
 
-/datum/category_item/player_setup_item/player_global/settings/update_setup(var/savefile/preferences, var/savefile/character)
+/datum/category_item/player_setup_item/player_global/settings/update_setup(var/savefile/preferences, savefile/character)
 	if(preferences["version"] < 16)
 		var/list/preferences_enabled
 		var/list/preferences_disabled
@@ -86,7 +86,7 @@
 
 	return jointext(., "")
 
-/datum/category_item/player_setup_item/player_global/settings/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/player_global/settings/OnTopic(var/href,var/list/href_list, mob/user)
 	var/mob/pref_mob = preference_mob()
 
 	if(href_list["pref"] && href_list["value"])
@@ -107,7 +107,7 @@
 	else
 		log_error("Client is lacking preferences: [log_info_line(src)]")
 
-/client/proc/set_preference(var/preference, var/set_preference)
+/client/proc/set_preference(var/preference, set_preference)
 	var/datum/client_preference/cp = get_client_preference(preference)
 
 	if(!cp)
@@ -139,7 +139,7 @@
 
 	return client.get_preference_value(preference)
 
-/mob/proc/set_preference(var/preference, var/set_preference)
+/mob/proc/set_preference(var/preference, set_preference)
 	if(!client)
 		return FALSE
 	if(!client.prefs)

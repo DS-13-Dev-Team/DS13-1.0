@@ -21,7 +21,7 @@
 	// These should be subtypes of /obj/item/organ
 	var/list/products = list()
 
-/obj/machinery/organ_printer/attackby(var/obj/item/O, var/mob/user)
+/obj/machinery/organ_printer/attackby(var/obj/item/O, mob/user)
 	if(default_deconstruction_screwdriver(user, O))
 		updateUsrDialog()
 		return
@@ -61,7 +61,7 @@
 	print_delay = max(0,print_delay)
 	. = ..()
 
-/obj/machinery/organ_printer/attack_hand(mob/user, var/choice = null)
+/obj/machinery/organ_printer/attack_hand(mob/user, choice = null)
 
 	if(printing || (stat & (BROKEN|NOPOWER)))
 		return
@@ -150,7 +150,7 @@
 	visible_message("<span class='info'>\The [src] churns for a moment, then spits out \a [O].</span>")
 	return O
 
-/obj/machinery/organ_printer/robot/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/machinery/organ_printer/robot/attackby(var/obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == matter_type)
 		if((max_stored_matter-stored_matter) < matter_amount_per_sheet)
 			to_chat(user, "<span class='warning'>\The [src] is too full.</span>")

@@ -36,7 +36,7 @@
 		w_class = initial(w_class)
 		attack_verb = initial(attack_verb)
 
-/obj/item/weapon/material/butterfly/attack(mob/living/M, mob/user, var/target_zone)
+/obj/item/weapon/material/butterfly/attack(mob/living/M, mob/user, target_zone)
 	..()
 	if(ismob(M))
 		backstab(M, user, 60, BRUTE, DAM_SHARP, target_zone, TRUE)

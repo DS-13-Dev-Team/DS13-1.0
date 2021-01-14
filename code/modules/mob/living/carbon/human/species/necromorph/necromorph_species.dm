@@ -244,7 +244,7 @@
 	//Any limb no longer attached (or stumped) adds its pre-cached max damage * dismemberment mult to the total
 	//Any limb which is considered to be a torso part adds its damage, multiplied by the torso mult, to the total
 	//The return list var is used for hud healthbars
-/datum/species/necromorph/proc/get_weighted_total_limb_damage(var/mob/living/carbon/human/H, var/return_list)
+/datum/species/necromorph/proc/get_weighted_total_limb_damage(var/mob/living/carbon/human/H, return_list)
 	var/total = 0
 	var/blocked = 0
 	if (!initial_health_values)
@@ -294,7 +294,7 @@
 
 
 
-/datum/species/necromorph/can_autoheal(var/mob/living/carbon/human/H, var/dam_type, var/datum/wound/W)
+/datum/species/necromorph/can_autoheal(var/mob/living/carbon/human/H, dam_type, datum/wound/W)
 	if (healing_factor > 0)
 		return TRUE
 	else

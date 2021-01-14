@@ -41,7 +41,7 @@
 	icon_state = "cult"
 	blend_turfs = list(/turf/simulated/wall)
 
-/turf/simulated/wall/cult/New(var/newloc, var/reinforce = 0)
+/turf/simulated/wall/cult/New(var/newloc, reinforce = 0)
 	..(newloc,"cult",reinforce ? "cult2" : null)
 
 /turf/simulated/wall/cult/reinf/New(var/newloc)

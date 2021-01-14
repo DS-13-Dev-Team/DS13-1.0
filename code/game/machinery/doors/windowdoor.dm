@@ -57,7 +57,7 @@
 		visible_message("[src] shatters!")
 	qdel(src)
 
-/obj/machinery/door/window/deconstruct(mob/user, var/moved = FALSE)
+/obj/machinery/door/window/deconstruct(mob/user, moved = FALSE)
 	shatter()
 
 /obj/machinery/door/window/Destroy()
@@ -168,7 +168,7 @@
 			return
 	return src.attackby(user, user)
 
-/obj/machinery/door/window/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/door/window/emag_act(var/remaining_charges, mob/user)
 	if (density && operable())
 		operating = -1
 		flick("[src.base_state]spark", src)

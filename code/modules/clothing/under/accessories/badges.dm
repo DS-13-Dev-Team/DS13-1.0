@@ -23,7 +23,7 @@
 	if(user in view(get_turf(src)))
 		return STATUS_INTERACTIVE
 
-/obj/item/clothing/accessory/badge/OnTopic(var/mob/user, var/list/href_list)
+/obj/item/clothing/accessory/badge/OnTopic(var/mob/user, list/href_list)
 	if(href_list["look_at_me"])
 		if(istype(user))
 			user.examinate(src)
@@ -108,7 +108,7 @@
 		return
 	return ..()
 
-/obj/item/clothing/accessory/badge/holo/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/clothing/accessory/badge/holo/emag_act(var/remaining_charges, mob/user)
 	if (emagged)
 		to_chat(user, "<span class='danger'>\The [src] is already cracked.</span>")
 		return
@@ -117,7 +117,7 @@
 		to_chat(user, "<span class='danger'>You crack the holobadge security checks.</span>")
 		return 1
 
-/obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/weapon/card/id) || istype(O, /obj/item/modular_computer))
 
 		var/obj/item/weapon/card/id/id_card = O.GetIdCard()

@@ -74,7 +74,7 @@
 /mob/living/bot/death()
 	explode()
 
-/mob/living/bot/attackby(var/obj/item/O, var/mob/user)
+/mob/living/bot/attackby(var/obj/item/O, mob/user)
 	if(O.GetIdCard())
 		if(access_scanner.allowed(user) && !open)
 			locked = !locked
@@ -142,7 +142,7 @@
 	popup.set_content(dat)
 	popup.open()
 
-/mob/living/bot/Topic(var/href, var/href_list)
+/mob/living/bot/Topic(var/href, href_list)
 	if(..())
 		return 1
 
@@ -171,7 +171,7 @@
 /mob/living/bot/proc/GetInteractMaintenance()
 	return
 
-/mob/living/bot/proc/ProcessCommand(var/mob/user, var/command, var/href_list)
+/mob/living/bot/proc/ProcessCommand(var/mob/user, command, href_list)
 	if(command == "toggle" && CanToggle(user))
 		if(on)
 			turn_off()
@@ -203,7 +203,7 @@
 	else
 		..()
 
-/mob/living/bot/emag_act(var/remaining_charges, var/mob/user)
+/mob/living/bot/emag_act(var/remaining_charges, mob/user)
 	return 0
 
 /mob/living/bot/proc/handleAI()

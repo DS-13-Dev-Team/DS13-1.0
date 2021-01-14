@@ -48,7 +48,7 @@
 					if(A && !IsIndexCut(APC_WIRE_AI_CONTROL))
 						A.aidisabled = 0
 
-/datum/wires/apc/UpdateCut(var/index, var/mended)
+/datum/wires/apc/UpdateCut(var/index, mended)
 	var/obj/machinery/power/apc/A = holder
 
 	switch(index)

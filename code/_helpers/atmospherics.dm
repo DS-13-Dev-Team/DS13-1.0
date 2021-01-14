@@ -1,4 +1,4 @@
-/obj/proc/analyze_gases(var/obj/A, var/mob/user, advanced)
+/obj/proc/analyze_gases(var/obj/A, mob/user, advanced)
 	user.visible_message("<span class='notice'>\The [user] has used \an [src] on \the [A].</span>")
 	A.add_fingerprint(user)
 
@@ -11,11 +11,11 @@
 	print_atmos_analysis(user, result)
 	return 1
 
-/proc/print_atmos_analysis(user, var/list/result)
+/proc/print_atmos_analysis(user, list/result)
 	for(var/line in result)
 		to_chat(user, "<span class='notice'>[line]</span>")
 
-/proc/atmosanalyzer_scan(var/atom/target, var/datum/gas_mixture/mixture, advanced)
+/proc/atmosanalyzer_scan(var/atom/target, datum/gas_mixture/mixture, advanced)
 	. = list()
 	. += "<span class='notice'>Results of the analysis of \the [target]:</span>"
 	if(!mixture)
@@ -38,13 +38,13 @@
 				if(advanced)
 					var/list/traits = list()
 					if(gas_data.flags[mix] & XGM_GAS_FUEL)
-						traits += "can be used as combustion fuel" 
+						traits += "can be used as combustion fuel"
 					if(gas_data.flags[mix] & XGM_GAS_OXIDIZER)
-						traits += "can be used as oxidizer" 
+						traits += "can be used as oxidizer"
 					if(gas_data.flags[mix] & XGM_GAS_CONTAMINANT)
-						traits += "contaminates clothing with toxic residue" 
+						traits += "contaminates clothing with toxic residue"
 					if(gas_data.flags[mix] & XGM_GAS_FUSION_FUEL)
-						traits += "can be used to fuel fusion reaction" 
+						traits += "can be used to fuel fusion reaction"
 					. += "\t<span class='notice'>Specific heat: [gas_data.specific_heat[mix]] J/(mol*K), Molar mass: [gas_data.molar_mass[mix]] kg/mol.[traits.len ? "\n\tThis gas [english_list(traits)]" : ""]</span>"
 			. += "<span class='notice'>Temperature: [round(mixture.temperature-T0C)]&deg;C / [round(mixture.temperature)]K</span>"
 			return

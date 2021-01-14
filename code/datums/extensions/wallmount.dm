@@ -23,7 +23,7 @@
 /*
 	Attaches the subject to mountpoint
 */
-/proc/mount_to_atom(var/atom/movable/subject, var/atom/mountpoint, var/mount_type = /datum/extension/mount, var/datum/mount_parameters/WP = new())
+/proc/mount_to_atom(var/atom/movable/subject, atom/mountpoint, mount_type = /datum/extension/mount, datum/mount_parameters/WP = new())
 	//If we're already doing a wallrun, remove it, we are switching to something new
 	var/datum/extension/wallrun/W = get_extension(subject, /datum/extension/wallrun)
 	if (W)
@@ -32,7 +32,7 @@
 
 
 //Checks for a valid mount point in the specified location and facing. Returns that atom if we find one, returns null/false if there's nothing to mount to
-/proc/get_mount_target_at_direction(var/location, var/direction,	var/datum/mount_parameters/WP = new())
+/proc/get_mount_target_at_direction(var/location, direction,	var/datum/mount_parameters/WP = new())
 	var/list/searchdirs = get_opposite_cardinal_directions(direction)
 	var/list/searchtiles = list()
 	for (var/direction2 in searchdirs)
@@ -41,7 +41,7 @@
 	return search_for_mount_target(searchtiles, WP)
 
 //Checks for a valid mount point in the specified location, but in any direction. Returns that atom if we find one, returns null/false if there's nothing to mount to
-/proc/get_mount_target_at_location(var/location, var/datum/mount_parameters/WP = new())
+/proc/get_mount_target_at_location(var/location, datum/mount_parameters/WP = new())
 	var/list/searchtiles = list()
 	for (var/direction in GLOB.cardinal)
 		searchtiles.Add(get_step(location, direction))
@@ -49,7 +49,7 @@
 	return search_for_mount_target(searchtiles, WP)
 
 //Called to search for mount point in a list of turfs. Meant to be called by the previous functions
-/proc/search_for_mount_target(var/list/searchtiles, var/datum/mount_parameters/WP = new())
+/proc/search_for_mount_target(var/list/searchtiles, datum/mount_parameters/WP = new())
 	for (var/turf/T as anything in searchtiles)
 		if (is_valid_mount_target(T, WP))
 			return T
@@ -61,7 +61,7 @@
 	return null
 
 
-/proc/is_valid_mount_target(var/atom/movable/AM, var/datum/mount_parameters/WP = new())
+/proc/is_valid_mount_target(var/atom/movable/AM, datum/mount_parameters/WP = new())
 	.=FALSE
 	if (QDELETED(AM))
 		return
@@ -141,7 +141,7 @@
 /datum/extension/mount/sticky
 	face_away_from_mountpoint = TRUE
 
-/datum/extension/mount/New(var/atom/holder, var/atom/target, var/datum/mount_parameters/WP = new())
+/datum/extension/mount/New(var/atom/holder, atom/target, datum/mount_parameters/WP = new())
 	.=..()
 	src.WP = WP
 	mountee = holder
@@ -191,12 +191,12 @@
 	remove_extension(holder, src)
 
 //Called when the atom we are mounted to moves
-/datum/extension/mount/proc/on_mountpoint_move(var/atom/mover, var/oldloc, var/newloc)
+/datum/extension/mount/proc/on_mountpoint_move(var/atom/mover, oldloc, newloc)
 	if (mounted)
 		ignore_mountee_move = TRUE
 		mountee.forceMove(locate(mountpoint.x + offset.x, mountpoint.y + offset.y, mountpoint.z))
 
-/datum/extension/mount/proc/on_mountee_move(var/atom/mover, var/oldloc, var/newloc)
+/datum/extension/mount/proc/on_mountee_move(var/atom/mover, oldloc, newloc)
 	if (ignore_mountee_move)
 		ignore_mountee_move = FALSE
 		return

@@ -31,7 +31,7 @@
 /**
  * Death hook.
  * Called in death.dm when someone dies.
- * Parameters: var/mob/living/carbon/human, var/gibbed
+ * Parameters: var/mob/living/carbon/human, gibbed
  */
 /hook/death
 
@@ -94,6 +94,6 @@
 /**
  * Crate sold hook.
  * Called in supplyshuttle.dm when a crate is sold on the shuttle.
- * Parameters: var/obj/structure/closet/crate/sold, var/area/shuttle
+ * Parameters: var/obj/structure/closet/crate/sold, area/shuttle
  */
 /hook/sell_crate

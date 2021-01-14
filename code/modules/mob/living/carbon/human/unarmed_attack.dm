@@ -59,7 +59,7 @@ var/global/list/sparring_attack_cache = list()
 			sparring_attack_cache[sparring_variant_type] = new sparring_variant_type()
 		return sparring_attack_cache[sparring_variant_type]
 
-/datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user, var/atom/target, var/zone)
+/datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user, atom/target, zone)
 	if(user.restrained())
 		return 0
 
@@ -175,7 +175,7 @@ var/global/list/sparring_attack_cache = list()
 
 
 
-/datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
+/datum/unarmed_attack/proc/handle_eye_attack(var/mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/organ/internal/eyes/eyes = target.internal_organs_by_name[BP_EYES]
 	if(eyes)
 		eyes.take_internal_damage(rand(3,4), 1)
@@ -214,7 +214,7 @@ var/global/list/sparring_attack_cache = list()
 
 
 
-/datum/unarmed_attack/proc/force_door(var/mob/living/carbon/human/user, var/obj/machinery/door/target)
+/datum/unarmed_attack/proc/force_door(var/mob/living/carbon/human/user, obj/machinery/door/target)
 
 	if (!airlock_force_power)
 		return FALSE
@@ -251,11 +251,11 @@ var/global/list/sparring_attack_cache = list()
 		target.break_open()
 
 //Return the force power here. this attack could modulate this value to make certain doors easier.
-/datum/unarmed_attack/proc/get_force_power(var/mob/living/carbon/human/user, var/obj/machinery/door/target)
+/datum/unarmed_attack/proc/get_force_power(var/mob/living/carbon/human/user, obj/machinery/door/target)
 	return airlock_force_power
 
 //Return the force speed here. It will probably be desireable to return half of the normal value if some needed limbs are missing
-/datum/unarmed_attack/proc/get_force_speed(var/mob/living/carbon/human/user, var/obj/machinery/door/target)
+/datum/unarmed_attack/proc/get_force_speed(var/mob/living/carbon/human/user, obj/machinery/door/target)
 	return airlock_force_speed
 
 
@@ -284,7 +284,7 @@ var/global/list/sparring_attack_cache = list()
 	edge = 0
 	required_limb = list(BP_HEAD)
 
-/datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 
 	if(istype(user.wear_mask, /obj/item/clothing/mask/muzzle))
 		return 0
@@ -363,7 +363,7 @@ var/global/list/sparring_attack_cache = list()
 
 	required_limb = list(BP_L_LEG, BP_R_LEG)
 
-/datum/unarmed_attack/kick/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/unarmed_attack/kick/is_usable(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 	if(!(zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT, BP_GROIN)))
 		return 0
 
@@ -382,7 +382,7 @@ var/global/list/sparring_attack_cache = list()
 
 	required_limb = list(BP_L_LEG, BP_R_LEG)
 
-/datum/unarmed_attack/stomp/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/unarmed_attack/stomp/is_usable(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 	if(!istype(target))
 		return 0
 

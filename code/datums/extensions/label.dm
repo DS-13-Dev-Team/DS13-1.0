@@ -12,7 +12,7 @@
 	atom_holder = null
 	return ..()
 
-/datum/extension/labels/proc/AttachLabel(var/mob/user, var/label)
+/datum/extension/labels/proc/AttachLabel(var/mob/user, label)
 	if(!CanAttachLabel(user, label))
 		return
 
@@ -27,7 +27,7 @@
 	atom_holder.name = "[atom_holder.name] ([label])"
 	GLOB.name_set_event.raise_event(src, old_name, atom_holder.name)
 
-/datum/extension/labels/proc/RemoveLabel(var/mob/user, var/label)
+/datum/extension/labels/proc/RemoveLabel(var/mob/user, label)
 	if(!(label in labels))
 		return
 
@@ -59,14 +59,14 @@
 		. += " ([entry])"
 	. = jointext(., null)
 
-/datum/extension/labels/proc/CanAttachLabel(var/user, var/label)
+/datum/extension/labels/proc/CanAttachLabel(var/user, label)
 	if(!length(label))
 		return FALSE
 	if(ExcessLabelLength(label, user))
 		return FALSE
 	return TRUE
 
-/datum/extension/labels/proc/ExcessLabelLength(var/label, var/user)
+/datum/extension/labels/proc/ExcessLabelLength(var/label, user)
 	. = length(label) + 3 // Each label also adds a space and two brackets when applied to a name
 	if(LAZYLEN(labels))
 		for(var/entry in labels)

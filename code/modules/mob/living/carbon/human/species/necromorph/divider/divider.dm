@@ -187,7 +187,7 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 		if (istype(D))
 			D.divide(src)
 
-/datum/species/necromorph/divider/handle_amputated(var/mob/living/carbon/human/H, var/obj/item/organ/external/E, var/clean, var/disintegrate, var/ignore_children, var/silent)
+/datum/species/necromorph/divider/handle_amputated(var/mob/living/carbon/human/H, obj/item/organ/external/E, clean, disintegrate, ignore_children, silent)
 	//If the limb is cut uncleanly with an edge, then its gonna fly, so we'll give it a window to finish flying then create the mob where it lands
 	if (disintegrate == DROPLIMB_EDGE && !clean)
 		spawn(20)
@@ -244,7 +244,7 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 	var/divider_component_type = /mob/living/simple_animal/necromorph/divider_component/arm
 
 
-/obj/item/organ/external/proc/create_divider_component(var/mob/living/carbon/human/H, var/deletion_delay = 0)
+/obj/item/organ/external/proc/create_divider_component(var/mob/living/carbon/human/H, deletion_delay = 0)
 	if (!divider_component_type)
 		return FALSE
 	var/mob/living/simple_animal/necromorph/divider_component/L = new divider_component_type(get_turf(src))

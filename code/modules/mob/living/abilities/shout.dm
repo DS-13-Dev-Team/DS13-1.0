@@ -21,7 +21,7 @@
 
 
 
-/mob/proc/do_shout(var/sound_type, var/do_stun = TRUE)
+/mob/proc/do_shout(var/sound_type, do_stun = TRUE)
 	if (check_audio_cooldown(sound_type))
 		if (play_species_audio(src, sound_type, VOLUME_HIGH, 1, 2))
 			if (do_stun)

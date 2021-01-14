@@ -33,7 +33,7 @@
 		return STATUS_CLOSE
 	return ..()
 
-/obj/structure/deity/blood_forge/OnTopic(var/user, var/list/href_list)
+/obj/structure/deity/blood_forge/OnTopic(var/user, list/href_list)
 	if(href_list["make_recipe"])
 		var/list/recipes = linked_god.feats[recipe_feat_list]
 		var/type = locate(href_list["make_recipe"]) in recipes
@@ -42,7 +42,7 @@
 			craft_item(type, cost, user)
 		return TOPIC_REFRESH
 
-/obj/structure/deity/blood_forge/proc/craft_item(var/path, var/blood_cost, var/mob/user)
+/obj/structure/deity/blood_forge/proc/craft_item(var/path, blood_cost, mob/user)
 	if(busy)
 		to_chat(user, "<span class='warning'>Someone is already using \the [src]!</span>")
 		return
@@ -60,7 +60,7 @@
 	user.visible_message("\The [user] pull out \the [I] from the [text_modifications["Out"]].", "You pull out the completed [I] from the [text_modifications["Out"]].")
 	busy = 0
 
-/obj/structure/deity/blood_forge/proc/take_charge(var/mob/living/user, var/charge)
+/obj/structure/deity/blood_forge/proc/take_charge(var/mob/living/user, charge)
 	if(linked_god)
 		linked_god.take_charge(user, charge)
 

@@ -36,7 +36,7 @@
 	else
 		..()
 
-/obj/item/weapon/gun/emag_act(var/charges, var/mob/user)
+/obj/item/weapon/gun/emag_act(var/charges, mob/user)
 	if(!charges)
 		return NO_EMAG_ACT
 	else if (is_secure_gun())
@@ -64,7 +64,7 @@
 		GLOB.registered_weapons -= src
 		verbs -= /obj/item/weapon/gun/proc/reset_registration
 
-/obj/item/weapon/gun/proc/authorize(var/mode, var/authorized, var/by)
+/obj/item/weapon/gun/proc/authorize(var/mode, authorized, by)
 	if(mode < 1 || mode > authorized_modes.len || authorized_modes[mode] == authorized)
 		return 0
 

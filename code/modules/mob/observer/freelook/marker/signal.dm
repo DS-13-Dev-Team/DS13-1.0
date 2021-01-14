@@ -220,10 +220,10 @@
 */
 /datum/click_handler/signal
 
-/datum/click_handler/signal/OnLeftClick(var/atom/A, var/params)
+/datum/click_handler/signal/OnLeftClick(var/atom/A, params)
 	return A.attack_signal(user)
 
-/datum/click_handler/signal/OnShiftClick(var/atom/A, var/params)
+/datum/click_handler/signal/OnShiftClick(var/atom/A, params)
 	return user.examinate(A)
 
 /atom/proc/attack_signal(var/mob/observer/eye/signal/user)

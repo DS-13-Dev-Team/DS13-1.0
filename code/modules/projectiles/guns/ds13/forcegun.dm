@@ -68,7 +68,7 @@
 	effect_type = /obj/effect/effect/forceblast_focus_spawner
 	windup_time = 1.5 SECONDS
 
-/datum/firemode/forcegun/on_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0, var/fired = TRUE)
+/datum/firemode/forcegun/on_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0, fired = TRUE)
 	if (!fired)
 		return
 
@@ -127,7 +127,7 @@
 	var/scale_growth
 	var/fadeout_time = 0.2 SECONDS
 
-/obj/effect/effect/forceblast/New(var/atom/location, var/_lifespan = 2 SECOND, var/matrix/rotation)
+/obj/effect/effect/forceblast/New(var/atom/location, _lifespan = 2 SECOND, matrix/rotation)
 	lifespan = _lifespan
 	if (rotation)
 		transform = rotation
@@ -159,7 +159,7 @@
 	icon_state = null
 
 //Rather than a single effect, the focus mode uses a little spawner which creates multiple staggered effects
-/obj/effect/effect/forceblast_focus_spawner/New(var/atom/location, var/_lifespan = 2 SECOND, var/matrix/rotation)
+/obj/effect/effect/forceblast_focus_spawner/New(var/atom/location, _lifespan = 2 SECOND, matrix/rotation)
 	spawn()
 		for (var/i in 1 to 7)
 			new /obj/effect/effect/forceblast/focus(location, _lifespan, rotation)

@@ -55,7 +55,7 @@
 /obj/structure/attack_tk()
 	return
 
-/obj/structure/attack_generic(var/mob/user, var/damage, var/attack_verb, var/wallbreaker)
+/obj/structure/attack_generic(var/mob/user, damage, attack_verb, wallbreaker)
 	if(!breakable || !damage)
 		return 0
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
@@ -125,7 +125,7 @@
 
 
 // When destroyed by explosions, properly handle contents.
-/obj/structure/ex_act(severity, var/atom/epicentre)
+/obj/structure/ex_act(severity, atom/epicentre)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/AM in contents)
@@ -149,7 +149,7 @@
 	return TRUE
 
 
-/obj/structure/attackby(var/obj/item/C, var/mob/user)
+/obj/structure/attackby(var/obj/item/C, mob/user)
 	if (breakable && user.a_intent == I_HURT)
 		playsound(src, hitsound, VOLUME_MID, 1)
 		user.do_attack_animation(src)
@@ -158,7 +158,7 @@
 		return
 	.=..()
 
-/obj/structure/hitby(AM as mob|obj, var/speed=THROWFORCE_SPEED_DIVISOR)
+/obj/structure/hitby(AM as mob|obj, speed=THROWFORCE_SPEED_DIVISOR)
 	..()
 	if(ismob(AM))
 		return
@@ -168,7 +168,7 @@
 	take_damage(tforce, BRUTE, O.thrower, O)
 
 //Called when a structure takes damage
-/obj/structure/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/structure/proc/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	if (!bypass_resist)
 		amount -= resistance
 
@@ -190,12 +190,12 @@
 		return zero_health()
 
 //Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
-/obj/structure/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
+/obj/structure/proc/zero_health(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist)
 	if (breakable)
 		qdel(src)
 	return TRUE
 
-/obj/structure/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+/obj/structure/repair(var/repair_power, datum/repair_source, mob/user)
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()
@@ -205,7 +205,7 @@
 
 
 //Future TODO: Make this generic atom behaviour
-/obj/structure/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/obj/structure/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	var/damage = get_fire_damage(exposed_temperature, multiplier) //Plants and corruption take 2.5x damage from fire
 	if (damage > 0)
 		take_damage(damage, BURN,bypass_resist = TRUE)

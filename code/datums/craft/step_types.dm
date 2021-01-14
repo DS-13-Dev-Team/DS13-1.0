@@ -75,7 +75,7 @@
 
 
 
-/datum/craft_step/object/find_item(mob/living/user, var/atom/craft = null)
+/datum/craft_step/object/find_item(mob/living/user, atom/craft = null)
 	var/list/items = get_search_list(user, craft)
 	for (var/a in items)
 		for (var/b in valid_types)
@@ -152,7 +152,7 @@
 
 
 
-/datum/craft_step/material/find_item(mob/living/user, var/atom/craft = null)
+/datum/craft_step/material/find_item(mob/living/user, atom/craft = null)
 	var/list/items = get_search_list(user, craft)
 	var/foundmat = FALSE
 	for (var/a in items)
@@ -228,7 +228,7 @@
 	MA.use(required_quantity)
 
 
-/datum/craft_step/stack/find_item(mob/living/user, var/atom/craft = null)
+/datum/craft_step/stack/find_item(mob/living/user, atom/craft = null)
 	var/list/items = get_search_list(user, craft)
 	var/foundstack = FALSE
 	for (var/a in items)
@@ -317,7 +317,7 @@
 
 
 
-/datum/craft_step/tool/find_item(mob/living/user, var/atom/craft = null)
+/datum/craft_step/tool/find_item(mob/living/user, atom/craft = null)
 	var/list/items = get_search_list(user, craft)
 	for (var/obj/I in items)
 		if (I.get_tool_quality(required_quality) >= required_level)
@@ -371,7 +371,7 @@
 	.=..(I, user, target)
 
 
-/datum/craft_step/passive/find_item(mob/living/user, var/atom/craft = null)
+/datum/craft_step/passive/find_item(mob/living/user, atom/craft = null)
 	var/list/items = get_search_list(user, craft)
 	for (var/obj/I in items)
 		if (I.get_tool_quality(required_quality) >= required_level)

@@ -26,7 +26,7 @@
 	set_pin_data(IC_OUTPUT, 1, !!do_compare(A, B))
 	..()
 
-/obj/item/integrated_circuit/logic/binary/proc/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/proc/do_compare(var/datum/integrated_io/A, datum/integrated_io/B)
 	return FALSE
 
 /obj/item/integrated_circuit/logic/unary
@@ -46,7 +46,7 @@
 	desc = "This gate compares two values, and outputs the number one if both are the same."
 	icon_state = "equal"
 
-/obj/item/integrated_circuit/logic/binary/equals/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/equals/do_compare(var/datum/integrated_io/A, datum/integrated_io/B)
 	return A.get_data() == B.get_data()
 
 /obj/item/integrated_circuit/logic/binary/and
@@ -54,7 +54,7 @@
 	desc = "This gate will output 'one' if both inputs evaluate to true."
 	icon_state = "and"
 
-/obj/item/integrated_circuit/logic/binary/and/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/and/do_compare(var/datum/integrated_io/A, datum/integrated_io/B)
 	return A.get_data() && B.get_data()
 
 /obj/item/integrated_circuit/logic/binary/or
@@ -62,7 +62,7 @@
 	desc = "This gate will output 'one' if one of the inputs evaluate to true."
 	icon_state = "or"
 
-/obj/item/integrated_circuit/logic/binary/or/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/or/do_compare(var/datum/integrated_io/A, datum/integrated_io/B)
 	return A.get_data() || B.get_data()
 
 /obj/item/integrated_circuit/logic/binary/less_than
@@ -70,7 +70,7 @@
 	desc = "This will output 'one' if the first input is less than the second input."
 	icon_state = "less_than"
 
-/obj/item/integrated_circuit/logic/binary/less_than/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/less_than/do_compare(var/datum/integrated_io/A, datum/integrated_io/B)
 	return A.get_data() < B.get_data()
 
 /obj/item/integrated_circuit/logic/binary/less_than_or_equal
@@ -78,7 +78,7 @@
 	desc = "This will output 'one' if the first input is less than, or equal to the second input."
 	icon_state = "less_than_or_equal"
 
-/obj/item/integrated_circuit/logic/binary/less_than_or_equal/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/less_than_or_equal/do_compare(var/datum/integrated_io/A, datum/integrated_io/B)
 	return A.get_data() <= B.get_data()
 
 /obj/item/integrated_circuit/logic/binary/greater_than
@@ -86,7 +86,7 @@
 	desc = "This will output 'one' if the first input is greater than the second input."
 	icon_state = "greater_than"
 
-/obj/item/integrated_circuit/logic/binary/greater_than/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/greater_than/do_compare(var/datum/integrated_io/A, datum/integrated_io/B)
 	return A.get_data() > B.get_data()
 
 /obj/item/integrated_circuit/logic/binary/greater_than_or_equal
@@ -94,7 +94,7 @@
 	desc = "This will output 'one' if the first input is greater than, or equal to the second input."
 	icon_state = "greater_than_or_equal"
 
-/obj/item/integrated_circuit/logic/binary/greater_than_or_equal/do_compare(var/datum/integrated_io/A, var/datum/integrated_io/B)
+/obj/item/integrated_circuit/logic/binary/greater_than_or_equal/do_compare(var/datum/integrated_io/A, datum/integrated_io/B)
 	return A.get_data() >= B.get_data()
 
 /obj/item/integrated_circuit/logic/unary/not

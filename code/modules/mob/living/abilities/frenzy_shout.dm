@@ -19,7 +19,7 @@
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1,
 	STATMOD_ATTACK_SPEED = 1)
 
-/datum/extension/frenzy_buff/New(var/datum/holder, var/_duration, var/_intensity)
+/datum/extension/frenzy_buff/New(var/datum/holder, _duration, _intensity)
 	statmods[STATMOD_MOVESPEED_MULTIPLICATIVE] = 1+intensity
 	statmods[STATMOD_ATTACK_SPEED] = intensity
 	..()
@@ -66,7 +66,7 @@
 
 
 //Now, the ability to actually do things!
-/mob/living/proc/frenzy_shout_ability(var/_duration, var/_intensity, var/_cooldown, var/_faction, var/_range)
+/mob/living/proc/frenzy_shout_ability(var/_duration, _intensity, _cooldown, _faction, _range)
 	//First lets check we can actually do it
 	if (incapacitated(INCAPACITATION_KNOCKOUT))
 		return FALSE 	//Gotta be conscious. But being knocked down is fine

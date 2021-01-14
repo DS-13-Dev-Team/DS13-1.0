@@ -22,7 +22,7 @@
 		if(C)
 			. |= C
 
-/proc/hearers_in_range(var/atom/movable/center_vmob, var/hearing_range = world.view)
+/proc/hearers_in_range(var/atom/movable/center_vmob, hearing_range = world.view)
 	. = list()
 
 	ACQUIRE_VIRTUAL_OR_TURF(center_vmob)
@@ -46,7 +46,7 @@
 // Thus, unlike viewing hearing is communicative. I.e. if Mob A can hear Mob B then Mob B can also hear Mob A.
 
 // Gets the hosts of all the virtual mobs that can hear the given movable atom (or rather, it's virtual mob or turf in that existence order)
-/proc/all_hearers(var/atom/movable/heard_vmob, var/range = world.view)
+/proc/all_hearers(var/atom/movable/heard_vmob, range = world.view)
 	. = list()
 
 	ACQUIRE_VIRTUAL_OR_TURF(heard_vmob)

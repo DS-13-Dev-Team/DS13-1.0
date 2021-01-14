@@ -280,7 +280,7 @@
 				open()
 
 
-/obj/machinery/atmospherics/valve/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/valve/attackby(var/obj/item/weapon/W as obj, mob/user as mob)
 	if (!istype(W, /obj/item/weapon/tool/wrench))
 		return ..()
 	var/datum/gas_mixture/int_air = return_air()

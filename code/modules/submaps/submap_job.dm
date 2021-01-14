@@ -22,12 +22,12 @@
 	owner = _owner
 	..()
 
-/datum/job/submap/equip(var/mob/living/carbon/human/H, var/alt_title, var/datum/mil_branch/branch, var/datum/mil_rank/grade)
+/datum/job/submap/equip(var/mob/living/carbon/human/H, alt_title, datum/mil_branch/branch, datum/mil_rank/grade)
 	. = ..()
 	if(H && owner.skill_setter)
 		owner.skill_setter.initialize_skills(H.skillset)
 
-/datum/job/submap/is_restricted(var/datum/preferences/prefs, var/feedback)
+/datum/job/submap/is_restricted(var/datum/preferences/prefs, feedback)
 	if(minimum_character_age && (prefs.age < minimum_character_age))
 		to_chat(feedback, "<span class='boldannounce'>Not old enough. Minimum character age is [minimum_character_age].</span>")
 		return TRUE

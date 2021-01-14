@@ -103,7 +103,7 @@ var/global/list/robot_modules = list(
 	..()
 	return
 
-/obj/item/weapon/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R, var/rate)
+/obj/item/weapon/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R, rate)
 	var/obj/item/device/flash/F = locate() in src.modules
 	if(F)
 		if(F.broken)
@@ -245,7 +245,7 @@ var/global/list/robot_modules = list(
 
 	..()
 
-/obj/item/weapon/robot_module/medical/surgeon/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/weapon/robot_module/medical/surgeon/respawn_consumable(var/mob/living/silicon/robot/R, amount)
 	if(src.emag)
 		var/obj/item/weapon/reagent_containers/spray/PS = src.emag
 		PS.reagents.add_reagent(/datum/reagent/acid/triflicacid, 2 * amount)
@@ -304,7 +304,7 @@ var/global/list/robot_modules = list(
 
 	..()
 
-/obj/item/weapon/robot_module/medical/crisis/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/weapon/robot_module/medical/crisis/respawn_consumable(var/mob/living/silicon/robot/R, amount)
 	var/obj/item/weapon/reagent_containers/syringe/S = locate() in src.modules
 	if(S.mode == 2)
 		S.reagents.clear_reagents()
@@ -401,7 +401,7 @@ var/global/list/robot_modules = list(
 
 	..()
 
-/obj/item/weapon/robot_module/engineering/general/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/weapon/robot_module/engineering/general/respawn_consumable(var/mob/living/silicon/robot/R, amount)
 	var/obj/item/device/lightreplacer/LR = locate() in src.modules
 	LR.Charge(R, amount)
 	..()
@@ -438,7 +438,7 @@ var/global/list/robot_modules = list(
 	src.emag = new /obj/item/weapon/gun/energy/laser/mounted(src)
 	..()
 
-/obj/item/weapon/robot_module/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/weapon/robot_module/security/respawn_consumable(var/mob/living/silicon/robot/R, amount)
 	..()
 	var/obj/item/weapon/gun/energy/gun/secure/mounted/T = locate() in src.modules
 	if(T && T.power_supply)
@@ -474,7 +474,7 @@ var/global/list/robot_modules = list(
 	src.emag.SetName("Lube spray")
 	..()
 
-/obj/item/weapon/robot_module/janitor/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/weapon/robot_module/janitor/respawn_consumable(var/mob/living/silicon/robot/R, amount)
 	..()
 	var/obj/item/device/lightreplacer/LR = locate() in src.modules
 	LR.Charge(R, amount)
@@ -572,7 +572,7 @@ var/global/list/robot_modules = list(
 
 	..()
 
-/obj/item/weapon/robot_module/general/butler/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/weapon/robot_module/general/butler/respawn_consumable(var/mob/living/silicon/robot/R, amount)
 	..()
 	var/obj/item/weapon/reagent_containers/food/condiment/enzyme/E = locate() in src.modules
 	E.reagents.add_reagent(/datum/reagent/enzyme, 2 * amount)
@@ -768,7 +768,7 @@ var/global/list/robot_modules = list(
 	src.modules += P
 	..()
 
-/obj/item/weapon/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/weapon/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R, amount)
 	..()
 	var/obj/item/weapon/reagent_containers/spray/cleaner/drone/SC = locate() in src.modules
 	SC.reagents.add_reagent(/datum/reagent/space_cleaner, 8 * amount)
@@ -783,7 +783,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/rcd/borg(src)
 	..()
 
-/obj/item/weapon/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/weapon/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R, amount)
 	var/obj/item/device/lightreplacer/LR = locate() in src.modules
 	LR.Charge(R, amount)
 	..()

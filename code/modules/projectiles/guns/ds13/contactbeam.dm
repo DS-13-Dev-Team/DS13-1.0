@@ -115,7 +115,7 @@
 	update_icon()
 
 //Starts the charging of a beam, disables autofire
-/obj/item/weapon/gun/energy/contact/proc/start_charging(atom/_target, _clickparams, var/mob/living/user)
+/obj/item/weapon/gun/energy/contact/proc/start_charging(atom/_target, _clickparams, mob/living/user)
 	if (!can_fire(_target, user, _clickparams))
 		return FALSE
 
@@ -279,14 +279,14 @@
 */
 /datum/firemode/contact_repulse
 
-/datum/firemode/contact_repulse/on_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0, var/fired = TRUE)
+/datum/firemode/contact_repulse/on_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0, fired = TRUE)
 	new /obj/effect/effect/repulse(get_turf(user), user = user)
 
 /obj/effect/effect/repulse
 	icon_state = null
 
 //Rather than a single effect, the focus mode uses a little spawner which creates multiple staggered effects
-/obj/effect/effect/repulse/New(var/atom/location, var/_lifespan = 2 SECOND, var/matrix/rotation, var/mob/living/user)
+/obj/effect/effect/repulse/New(var/atom/location, _lifespan = 2 SECOND, matrix/rotation, mob/living/user)
 
 
 	playsound(src, pick(list('sound/weapons/guns/blast/contact_blast_1.ogg',

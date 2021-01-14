@@ -168,7 +168,7 @@
 		reclaiming_biomass = NONSENSICAL_VALUE
 		unavailable_biomass = NONSENSICAL_VALUE
 
-/obj/machinery/marker/proc/add_biomass_source(var/datum/source = null, var/total_mass = 0, var/duration = 1 SECOND, var/sourcetype = /datum/biomass_source)
+/obj/machinery/marker/proc/add_biomass_source(var/datum/source = null, total_mass = 0, duration = 1 SECOND, sourcetype = /datum/biomass_source)
 	//Adds a new biomass source, can specify type
 
 	//First create it
@@ -240,7 +240,7 @@
 
 
 //A mob was detected nearby, can we absorb it?
-/obj/machinery/marker/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
+/obj/machinery/marker/proc/nearby_movement(var/atom/movable/AM, atom/old_loc)
 
 	if (isliving(AM))
 		var/mob/living/L = AM
@@ -252,7 +252,7 @@
 
 
 
-/obj/machinery/marker/proc/pay_biomass(var/purpose, var/amount, var/allow_negative = FALSE)
+/obj/machinery/marker/proc/pay_biomass(var/purpose, amount, allow_negative = FALSE)
 	if (allow_negative || biomass >= amount)
 		biomass -= amount
 		return TRUE
@@ -362,13 +362,13 @@
 /obj/machinery/marker/bullet_act()
 	return null	//We do NOT break
 
-/obj/machinery/marker/default_deconstruction_crowbar(var/mob/user, var/obj/item/weapon/tool/crowbar/C)
+/obj/machinery/marker/default_deconstruction_crowbar(var/mob/user, obj/item/weapon/tool/crowbar/C)
 	return
 
-/obj/machinery/marker/default_deconstruction_screwdriver(var/mob/user, var/obj/item/weapon/tool/screwdriver/S)
+/obj/machinery/marker/default_deconstruction_screwdriver(var/mob/user, obj/item/weapon/tool/screwdriver/S)
 	return
 
-/obj/machinery/marker/default_part_replacement(var/mob/user, var/obj/item/weapon/storage/part_replacer/R)
+/obj/machinery/marker/default_part_replacement(var/mob/user, obj/item/weapon/storage/part_replacer/R)
 	return
 
 /obj/machinery/marker/dismantle()

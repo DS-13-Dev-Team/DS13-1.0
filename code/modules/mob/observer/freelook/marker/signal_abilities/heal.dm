@@ -20,7 +20,7 @@
 
 	target_types = list(/mob/living/carbon/human)
 
-/datum/signal_ability/heal/on_cast(var/mob/user, var/mob/living/target, var/list/data)
+/datum/signal_ability/heal/on_cast(var/mob/user, mob/living/target, list/data)
 	var/mob/living/carbon/human/H = target
 	H.regenerate_ability(subtype = /datum/extension/regenerate/reconstitute, _duration = 4 SECONDS, _cooldown =0)
 
@@ -59,7 +59,7 @@
 	.=..()
 
 
-/datum/signal_ability/heal/marker/on_cast(var/mob/user, var/mob/living/target, var/list/data)
+/datum/signal_ability/heal/marker/on_cast(var/mob/user, mob/living/target, list/data)
 	var/mob/living/carbon/human/H = target
 	H.regenerate_ability(subtype = /datum/extension/regenerate/rebuild, _duration = 8 SECONDS, _cooldown =0)
 

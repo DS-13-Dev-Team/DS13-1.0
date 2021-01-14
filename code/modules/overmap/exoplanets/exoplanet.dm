@@ -165,7 +165,7 @@
 /obj/effect/overmap/sector/exoplanet/proc/get_random_species_name()
 	return pick("nol","shan","can","fel","xor")+pick("a","e","o","t","ar")+pick("ian","oid","ac","ese","inian","rd")
 
-/obj/effect/overmap/sector/exoplanet/proc/rename_species(var/species_type, var/newname, var/force = FALSE)
+/obj/effect/overmap/sector/exoplanet/proc/rename_species(var/species_type, newname, force = FALSE)
 	if(species[species_type] && !force)
 		return FALSE
 
@@ -310,7 +310,7 @@
 	var/list/big_flora_types = list()
 	var/list/plantcolors = list("RANDOM")
 
-/datum/random_map/noise/exoplanet/New(var/seed, var/tx, var/ty, var/tz, var/tlx, var/tly, var/do_not_apply, var/do_not_announce, var/never_be_priority = 0)
+/datum/random_map/noise/exoplanet/New(var/seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, never_be_priority = 0)
 	target_turf_type = world.turf
 	planetary_area = new planetary_area()
 	water_level = rand(water_level_min,water_level_max)
@@ -353,7 +353,7 @@
 	else
 		return land_type
 
-/datum/random_map/noise/exoplanet/get_additional_spawns(var/value, var/turf/T)
+/datum/random_map/noise/exoplanet/get_additional_spawns(var/value, turf/T)
 	planetary_area.contents.Add(T)
 	switch(noise2value(value))
 		if(2 to 3)
@@ -408,7 +408,7 @@
 			S.chems[/datum/reagent/woodpulp] = 1
 			big_flora_types += S
 
-/datum/random_map/noise/exoplanet/proc/spawn_flora(var/turf/T, var/big)
+/datum/random_map/noise/exoplanet/proc/spawn_flora(var/turf/T, big)
 	if(big)
 		new /obj/machinery/portable_atmospherics/hydroponics/soil/invisible(T, pick(big_flora_types), 1)
 	else

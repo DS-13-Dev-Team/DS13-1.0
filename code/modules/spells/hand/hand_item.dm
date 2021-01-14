@@ -21,7 +21,7 @@ Basically: I can use it to target things where I click. I can then pass these ta
 /obj/item/magic_hand/get_storage_cost()
 	return ITEM_SIZE_NO_CONTAINER
 
-/obj/item/magic_hand/attack(var/mob/living/M, var/mob/living/user)
+/obj/item/magic_hand/attack(var/mob/living/M, mob/living/user)
 	if(hand_spell && hand_spell.valid_target(M, user))
 		fire_spell(M, user)
 		return 0
@@ -49,7 +49,7 @@ Basically: I can use it to target things where I click. I can then pass these ta
 		if(hand_spell.click_delay)
 			user.set_click_cooldown(hand_spell.move_delay)
 
-/obj/item/magic_hand/afterattack(var/atom/A, var/mob/user, var/proximity)
+/obj/item/magic_hand/afterattack(var/atom/A, mob/user, proximity)
 	if(hand_spell)
 		fire_spell(A,user)
 

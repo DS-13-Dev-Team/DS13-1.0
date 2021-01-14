@@ -7,14 +7,14 @@
 	blob.take_nymph(src, silent = TRUE)
 	return TRUE
 
-/obj/structure/diona_gestalt/proc/take_nymph(var/mob/living/carbon/alien/diona/chirp, var/silent)
+/obj/structure/diona_gestalt/proc/take_nymph(var/mob/living/carbon/alien/diona/chirp, silent)
 	if(!silent)
 		visible_message("<span class='notice'>\The [chirp] is engulfed by \the [src].</span>")
 	nymphs[chirp] = TRUE
 	chirp.forceMove(src)
 	update_icon()
 
-/obj/structure/diona_gestalt/proc/shed_nymph(var/mob/living/carbon/alien/diona/nymph, var/silent, var/forcefully)
+/obj/structure/diona_gestalt/proc/shed_nymph(var/mob/living/carbon/alien/diona/nymph, silent, forcefully)
 	if(!nymph && LAZYLEN(nymphs))
 		nymph = pick(nymphs)
 	if(nymph)

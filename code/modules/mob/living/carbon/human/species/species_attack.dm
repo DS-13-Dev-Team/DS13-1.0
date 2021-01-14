@@ -22,7 +22,7 @@
 	edge = 1
 	damage = 7
 
-/datum/unarmed_attack/claws/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
+/datum/unarmed_attack/claws/is_usable(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 	if(user.gloves)
 		var/obj/item/clothing/gloves/gloves = user.gloves
 		if(istype(gloves) && !gloves.clipped)
@@ -32,7 +32,7 @@
 	else
 		return 1
 
-/datum/unarmed_attack/claws/show_attack(var/mob/living/carbon/human/user, var/atom/target, var/zone, var/attack_damage)
+/datum/unarmed_attack/claws/show_attack(var/mob/living/carbon/human/user, atom/target, zone, attack_damage)
 	if (ishuman(target))
 		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/affecting = H.find_target_organ(zone)
@@ -99,7 +99,7 @@
 /datum/unarmed_attack/stomp/weak/get_unarmed_damage()
 	return damage
 
-/datum/unarmed_attack/stomp/weak/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/unarmed_attack/stomp/weak/show_attack(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone, attack_damage)
 	if (ishuman(target))
 		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/affecting = H.get_organ(zone)
@@ -112,7 +112,7 @@
 	attack_verb = list ("bludgeoned", "lashed", "smacked", "whapped")
 	attack_noun = list ("tail")
 
-/datum/unarmed_attack/tail/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone) //ensures that you can't tail someone in the skull
+/datum/unarmed_attack/tail/is_usable(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone) //ensures that you can't tail someone in the skull
 
 	if(!(zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT, BP_GROIN)))
 
@@ -133,7 +133,7 @@
 
 	return 0
 
-/datum/unarmed_attack/tail/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+/datum/unarmed_attack/tail/show_attack(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone, attack_damage)
 	if (ishuman(target))
 		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/affecting = H.get_organ(zone)

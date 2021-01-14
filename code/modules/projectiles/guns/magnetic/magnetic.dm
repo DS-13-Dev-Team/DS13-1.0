@@ -92,7 +92,7 @@
 				to_chat(user, "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_GREEN]'>green</font>.</span>")
 		return TRUE
 
-/obj/item/weapon/gun/magnetic/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/weapon/gun/magnetic/attackby(var/obj/item/thing, mob/user)
 
 	if(removable_components)
 		if(istype(thing, /obj/item/weapon/cell))

@@ -14,7 +14,7 @@
 	icon_state = "rolled_poster"
 	var/poster_type
 
-/obj/item/weapon/contraband/poster/New(var/maploading, var/given_poster_type)
+/obj/item/weapon/contraband/poster/New(var/maploading, given_poster_type)
 	if(given_poster_type && !ispath(given_poster_type, /decl/poster))
 		CRASH("Invalid poster type: [log_info_line(given_poster_type)]")
 
@@ -31,7 +31,7 @@
 	return ..()
 
 //Places the poster on a wall
-/obj/item/weapon/contraband/poster/afterattack(var/atom/A, var/mob/user, var/adjacent, var/clickparams)
+/obj/item/weapon/contraband/poster/afterattack(var/atom/A, mob/user, adjacent, clickparams)
 	if (!adjacent)
 		return
 
@@ -62,7 +62,7 @@
 		// We cannot rely on user being on the appropriate turf when placement fails
 		P.roll_and_drop(get_step(W, turn(placement_dir, 180)))
 
-/obj/item/weapon/contraband/poster/proc/ArePostersOnWall(var/turf/W, var/placed_poster)
+/obj/item/weapon/contraband/poster/proc/ArePostersOnWall(var/turf/W, placed_poster)
 	//just check if there is a poster on or adjacent to the wall
 	if (locate(/obj/structure/sign/poster) in W)
 		return TRUE
@@ -92,7 +92,7 @@
 /obj/structure/sign/poster/bay_50
 	poster_type = /decl/poster/bay_50
 
-/obj/structure/sign/poster/New(var/newloc, var/placement_dir = null, var/give_poster_type = null)
+/obj/structure/sign/poster/New(var/newloc, placement_dir = null, give_poster_type = null)
 	..(newloc)
 
 	if(!poster_type)

@@ -14,7 +14,7 @@
 	create_reagents(reagent_amount)
 	..()
 
-/obj/item/projectile/bullet/chemdart/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
+/obj/item/projectile/bullet/chemdart/on_hit(var/atom/target, blocked = 0, def_zone = null)
 	if(blocked < 100 && isliving(target))
 		var/mob/living/L = target
 		if(L.can_inject(null, def_zone))

@@ -133,7 +133,7 @@ var/const/NO_EMAG_ACT = -50
 	if(user in view(get_turf(src)))
 		return STATUS_INTERACTIVE
 
-/obj/item/weapon/card/id/OnTopic(var/mob/user, var/list/href_list)
+/obj/item/weapon/card/id/OnTopic(var/mob/user, list/href_list)
 	if(href_list["look_at_id"])
 		if(istype(user))
 			user.examinate(src)

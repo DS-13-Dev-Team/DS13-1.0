@@ -30,7 +30,7 @@
 	var/obj/machinery/atmospherics/node
 	var/datum/pipe_network/network
 
-/datum/omni_port/New(var/obj/machinery/atmospherics/omni/M, var/direction = NORTH)
+/datum/omni_port/New(var/obj/machinery/atmospherics/omni/M, direction = NORTH)
 	..()
 	dir = direction
 	if(istype(M))
@@ -60,7 +60,7 @@
 //returns a text string based on the direction flag input
 // if capitalize is true, it will return the string capitalized
 // otherwise it will return the direction string in lower case
-/proc/dir_name(var/dir, var/capitalize = 0)
+/proc/dir_name(var/dir, capitalize = 0)
 	var/string = null
 	switch(dir)
 		if(NORTH)

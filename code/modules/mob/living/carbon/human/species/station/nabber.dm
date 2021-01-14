@@ -164,7 +164,7 @@
 	return TRUE
 
 // Even when nabbers do fall, if there's enough air pressure they won't hurt themselves.
-/datum/species/nabber/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
+/datum/species/nabber/handle_fall_special(var/mob/living/carbon/human/H, turf/landing)
 
 	var/datum/gas_mixture/mixture = H.loc.return_air()
 
@@ -181,7 +181,7 @@
 	return FALSE
 
 
-/datum/species/nabber/can_shred(var/mob/living/carbon/human/H, var/ignore_intent)
+/datum/species/nabber/can_shred(var/mob/living/carbon/human/H, ignore_intent)
 	if(!H.handcuffed || H.buckled)
 		return ..()
 	else
@@ -250,7 +250,7 @@
 			return(threat_image)
 	return
 
-/datum/species/nabber/disarm_attackhand(var/mob/living/carbon/human/attacker, var/mob/living/carbon/human/target)
+/datum/species/nabber/disarm_attackhand(var/mob/living/carbon/human/attacker, mob/living/carbon/human/target)
 	if(attacker.pulling_punches || target.lying || attacker == target)
 		return ..(attacker, target)
 	if(world.time < attacker.last_attack + 20)
@@ -281,7 +281,7 @@
 /datum/species/nabber/has_fine_manipulation(var/mob/living/carbon/human/H)
 	return (..() && (H && H.pulling_punches))
 
-/datum/species/nabber/attempt_grab(var/mob/living/carbon/human/grabber, var/mob/living/target)
+/datum/species/nabber/attempt_grab(var/mob/living/carbon/human/grabber, mob/living/target)
 
 	if(grabber.pulling_punches)
 		return ..()
@@ -324,7 +324,7 @@
 		to_chat(H, "<span class='notice'>You stop adjusting your arms and don't switch between them.</span>")
 	return TRUE
 
-/datum/species/nabber/proc/arm_swap(var/mob/living/carbon/human/H, var/forced)
+/datum/species/nabber/proc/arm_swap(var/mob/living/carbon/human/H, forced)
 	H.unEquip(H.l_hand)
 	H.unEquip(H.r_hand)
 	var/hidden = H.is_cloaked()

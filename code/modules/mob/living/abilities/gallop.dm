@@ -24,12 +24,12 @@
 /***********************
 	Access Proc
 ************************/
-/mob/living/proc/gallop_ability(var/_duration, var/_cooldown, var/_power)
+/mob/living/proc/gallop_ability(var/_duration, _cooldown, _power)
 	if (can_gallop())
 		set_extension(src, /datum/extension/gallop, _duration,_cooldown,_power)
 		return TRUE
 
-/datum/extension/gallop/New(var/mob/living/_user, var/_duration, var/_cooldown, var/_power)
+/datum/extension/gallop/New(var/mob/living/_user, _duration, _cooldown, _power)
 	statmods[STATMOD_MOVESPEED_MULTIPLICATIVE] = 1 + _power
 	.=..()
 	user = _user
@@ -81,7 +81,7 @@
 		user.visible_message(SPAN_DANGER("[user] crumples under the impact [istype(used_weapon, /obj) ? "of":"from"] [used_weapon]"))
 		stop_crash(used_weapon)
 
-/datum/extension/gallop/proc/user_bumped(var/mob/user, var/atom/obstacle)
+/datum/extension/gallop/proc/user_bumped(var/mob/user, atom/obstacle)
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crashes into [obstacle]"))
 		stop_crash(obstacle)

@@ -57,7 +57,7 @@
 /mob/living/carbon/alien/diona/sterile/Initialize(var/mapload)
 	. = ..(mapload, 0)
 
-/mob/living/carbon/alien/diona/Initialize(var/mapload, var/flower_chance = 15)
+/mob/living/carbon/alien/diona/Initialize(var/mapload, flower_chance = 15)
 
 	species = all_species[SPECIES_DIONA]
 	add_language(LANGUAGE_GUTTER)

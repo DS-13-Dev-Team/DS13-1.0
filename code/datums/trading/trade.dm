@@ -65,13 +65,13 @@
 		remove_from_pool(possible_trading_items, 9) //We want the stock to change every so often, so we make it so that they have roughly 10~11 ish items max
 	return 1
 
-/datum/trader/proc/remove_from_pool(var/list/pool, var/chance_per_item)
+/datum/trader/proc/remove_from_pool(var/list/pool, chance_per_item)
 	if(pool && prob(chance_per_item * pool.len))
 		var/i = rand(1,pool.len)
 		pool[pool[i]] = null
 		pool -= pool[i]
 
-/datum/trader/proc/add_to_pool(var/list/pool, var/list/possible, var/base_chance = 100, var/force = 0)
+/datum/trader/proc/add_to_pool(var/list/pool, list/possible, base_chance = 100, force = 0)
 	var/divisor = 1
 	if(pool && pool.len)
 		divisor = pool.len
@@ -102,7 +102,7 @@
 			return
 		return picked
 
-/datum/trader/proc/get_response(var/key, var/default)
+/datum/trader/proc/get_response(var/key, default)
 	var/text
 	if(speech && speech[key])
 		text = speech[key]
@@ -143,7 +143,7 @@
 		. *= want_multiplier
 	. *= 1 - (margin - 1) * skill_curve(skill) //Trader will underpay at lower skill.
 
-/datum/trader/proc/offer_money_for_trade(var/trade_num, var/money_amount, skill = SKILL_MAX)
+/datum/trader/proc/offer_money_for_trade(var/trade_num, money_amount, skill = SKILL_MAX)
 	if(!(trade_flags & TRADER_MONEY))
 		return TRADER_NO_MONEY
 	var/value = get_item_value(trade_num, skill)
@@ -152,7 +152,7 @@
 
 	return value
 
-/datum/trader/proc/offer_items_for_trade(var/list/offers, var/num, var/turf/location, skill = SKILL_MAX)
+/datum/trader/proc/offer_items_for_trade(var/list/offers, num, turf/location, skill = SKILL_MAX)
 	if(!offers || !offers.len)
 		return TRADER_NOT_ENOUGH
 	num = Clamp(num, 1, trading_items.len)
@@ -221,7 +221,7 @@
 		disposition += rand(compliment_increase, compliment_increase * 2)
 	return get_response("compliment_accept", "Thank you!")
 
-/datum/trader/proc/trade(var/list/offers, var/num, var/turf/location)
+/datum/trader/proc/trade(var/list/offers, num, turf/location)
 	if(offers && offers.len)
 		for(var/offer in offers)
 			if(istype(offer,/mob))

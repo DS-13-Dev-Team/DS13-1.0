@@ -111,7 +111,7 @@ vector2
 		/*
 			Get a vector in the same direction, with its magnitude clamped between minimum and maximum
 		*/
-		ClampMag(var/minimum, var/maximum)
+		ClampMag(var/minimum, maximum)
 
 			var/current_magnitude = Magnitude()
 			if (current_magnitude < minimum)
@@ -214,7 +214,7 @@ vector2
 		/* Get the matrix that rotates from_vector to point in this direction.
 			Also accepts a dir.
 		*/
-		AngleFrom(vector2/from_vector = Vector2.North, var/shorten = FALSE)
+		AngleFrom(vector2/from_vector = Vector2.North, shorten = FALSE)
 			var vector2/to_vector = Normalized()
 
 			if(isnum(from_vector))
@@ -286,7 +286,7 @@ vector2
 			y *= m
 
 
-		SelfClampMag(var/minimum, var/maximum)
+		SelfClampMag(var/minimum, maximum)
 
 			var/current_magnitude = Magnitude()
 

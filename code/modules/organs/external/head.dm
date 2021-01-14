@@ -68,7 +68,7 @@
 	if(forehead_graffiti && graffiti_style)
 		to_chat(user, "<span class='notice'>It has \"[forehead_graffiti]\" written on it in [graffiti_style]!</span>")
 
-/obj/item/organ/external/head/proc/write_on(var/mob/penman, var/style)
+/obj/item/organ/external/head/proc/write_on(var/mob/penman, style)
 	var/head_name = name
 	var/atom/target = src
 	if(owner)
@@ -103,7 +103,7 @@
 /obj/item/organ/external/head/get_agony_multiplier()
 	return (owner && owner.headcheck(organ_tag)) ? 1.50 : 1
 
-/obj/item/organ/external/head/robotize(var/company, var/skip_prosthetics, var/keep_organs)
+/obj/item/organ/external/head/robotize(var/company, skip_prosthetics, keep_organs)
 	if(company)
 		var/datum/robolimb/R = all_robolimbs[company]
 		if(R)
@@ -112,7 +112,7 @@
 	. = ..(company, skip_prosthetics, 1)
 	has_lips = null
 
-/obj/item/organ/external/head/take_external_damage(var/brute = 0, var/burn = 0, var/damage_flags = 0, var/used_weapon = null, var/allow_dismemberment = TRUE)
+/obj/item/organ/external/head/take_external_damage(var/brute = 0, burn = 0, damage_flags = 0, used_weapon = null, allow_dismemberment = TRUE)
 	. = ..()
 	if (!(status & ORGAN_DISFIGURED))
 		if (brute_dam > 30)
@@ -175,7 +175,7 @@
 	eye_icon_location = null
 
 
-/obj/item/organ/external/head/removed(var/mob/living/user, var/ignore_children = 0)
+/obj/item/organ/external/head/removed(var/mob/living/user, ignore_children = 0)
 	var/mob/living/carbon/human/former_owner = owner
 	.=..()
 	spawn()

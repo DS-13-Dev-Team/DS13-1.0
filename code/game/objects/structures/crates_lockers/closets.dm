@@ -379,7 +379,7 @@
 	else
 		icon_state = icon_opened
 
-/obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys", var/wallbreaker)
+/obj/structure/closet/attack_generic(var/mob/user, damage, attack_message = "destroys", wallbreaker)
 	if(!damage || !wallbreaker)
 		return
 	attack_animation(user)
@@ -463,7 +463,7 @@
 
 	return togglelock(usr)
 
-/obj/structure/closet/proc/togglelock(var/mob/user, var/obj/item/weapon/card/id/id_card)
+/obj/structure/closet/proc/togglelock(var/mob/user, obj/item/weapon/card/id/id_card)
 	if(!(setup & CLOSET_HAS_LOCK))
 		return FALSE
 	if (user)
@@ -500,7 +500,7 @@
 		to_chat(user, "<span class='warning'>Access denied!</span>")
 		return FALSE
 
-/obj/structure/closet/proc/CanToggleLock(var/mob/user, var/obj/item/weapon/card/id/id_card)
+/obj/structure/closet/proc/CanToggleLock(var/mob/user, obj/item/weapon/card/id/id_card)
 	return allowed(user) || (istype(id_card) && check_access_list(id_card.GetAccess()))
 
 /obj/structure/closet/AltClick(var/mob/user)
@@ -527,7 +527,7 @@
 				src.req_access += pick(get_all_station_access())
 	..()
 
-/obj/structure/closet/emag_act(var/remaining_charges, var/mob/user, var/emag_source, var/visual_feedback = "", var/audible_feedback = "")
+/obj/structure/closet/emag_act(var/remaining_charges, mob/user, emag_source, visual_feedback = "", audible_feedback = "")
 	if(make_broken())
 		update_icon()
 		if(visual_feedback)

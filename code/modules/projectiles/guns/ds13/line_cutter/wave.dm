@@ -20,7 +20,7 @@
 -----------------------------*/
 //Actually creates and launches a wave.
 //Width should be an odd number or it will skew to the right
-/proc/launch_wave(var/atom/source, var/atom/target, var/projectile_type = /obj/item/projectile/wave, var/width = 3, var/mob/living/user, var/obj/item/weapon/gun/launcher)
+/proc/launch_wave(var/atom/source, atom/target, projectile_type = /obj/item/projectile/wave, width = 3, mob/living/user, obj/item/weapon/gun/launcher)
 
 	var/datum/projectile_wave/wave = new()
 
@@ -103,7 +103,7 @@
 	var/wave_type = /obj/item/projectile/wave
 	var/width = 3
 
-/obj/item/projectile/wavespawner/finalize_launch(var/turf/curloc, var/turf/targloc, var/x_offset, var/y_offset, var/angle_offset)
+/obj/item/projectile/wavespawner/finalize_launch(var/turf/curloc, turf/targloc, x_offset, y_offset, angle_offset)
 
 	launch_wave(firer, original, wave_type, width, firer, shot_from)
 	expire()
@@ -154,7 +154,7 @@
 /*
 	Adds a projectile to this wave
 */
-/datum/projectile_wave/proc/register(var/obj/item/projectile/wave/A, var/refresh_connections = TRUE)
+/datum/projectile_wave/proc/register(var/obj/item/projectile/wave/A, refresh_connections = TRUE)
 	//We are its wave controller now
 	A.PW = src
 
@@ -172,7 +172,7 @@
 	Removes a projectile from this wave
 	This is quite likely to split the wave in two, we'll check and handle that
 */
-/datum/projectile_wave/proc/remove(var/obj/item/projectile/wave/A, var/refresh_connections = TRUE, var/do_split = TRUE)
+/datum/projectile_wave/proc/remove(var/obj/item/projectile/wave/A, refresh_connections = TRUE, do_split = TRUE)
 	var/split = FALSE
 
 	//If we lost the master, we split
@@ -476,7 +476,7 @@
 
 /*
 */
-/obj/item/projectile/wave/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+/obj/item/projectile/wave/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
 	//We've already hit it, return the same result as the last time without hitting it again
 	if (target_mob in PW.damaged_atoms)
 		return PW.damaged_atoms[target_mob]
@@ -489,7 +489,7 @@
 
 
 
-/obj/item/projectile/wave/attack_atom(var/atom/A,  var/distance, var/miss_modifier=0)
+/obj/item/projectile/wave/attack_atom(var/atom/A,  var/distance, miss_modifier=0)
 	//We've already hit it, return the same result as the last time without hitting it again
 	if (A in PW.damaged_atoms)
 		return PW.damaged_atoms[A]

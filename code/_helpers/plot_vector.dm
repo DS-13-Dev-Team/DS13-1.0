@@ -21,10 +21,10 @@ increment()
 
 return_angle()
 	Returns the direction (angle in degrees) the object is travelling in.
-	* North = 90°
-	* East  = 0°
-	* South = -90°
-	* West  = 180°
+	* North = 90ï¿½
+	* East  = 0ï¿½
+	* South = -90ï¿½
+	* West  = 180ï¿½
 
 return_hypotenuse()
 	Returns the distance of travel for each step of the vector, relative to each full step of movement. 1 is a full turf
@@ -46,7 +46,7 @@ return_location()
 	var/offset_x = 0	// distance to increment each step
 	var/offset_y = 0
 
-/datum/plot_vector/proc/setup(var/turf/S, var/turf/T, var/xo = 0, var/yo = 0, var/angle_offset=0)
+/datum/plot_vector/proc/setup(var/turf/S, turf/T, xo = 0, yo = 0, angle_offset=0)
 	source = S
 	target = T
 

@@ -7,7 +7,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	throwforce = 5
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 10
 
 	var/secured = 0
@@ -15,10 +15,10 @@
 	var/obj/item/device/assembly/a_right = null
 	var/obj/special_assembly = null
 
-	proc/attach(var/obj/item/device/D, var/obj/item/device/D2, var/mob/user)
+	proc/attach(var/obj/item/device/D, obj/item/device/D2, mob/user)
 		return
 
-	proc/attach_special(var/obj/O, var/mob/user)
+	proc/attach_special(var/obj/O, mob/user)
 		return
 
 	proc/process_activation(var/obj/item/device/D)
@@ -32,7 +32,7 @@
 		return 1
 
 
-	attach(var/obj/item/device/assembly/D, var/obj/item/device/assembly/D2, var/mob/user)
+	attach(var/obj/item/device/assembly/D, obj/item/device/assembly/D2, mob/user)
 		if((!D)||(!D2))
 			return 0
 		if((!istype(D))||(!istype(D2)))
@@ -55,7 +55,7 @@
 		return 1
 
 
-	attach_special(var/obj/O, var/mob/user)
+	attach_special(var/obj/O, mob/user)
 		if(!O)	return
 		if(!O.IsSpecialAssembly())	return 0
 
@@ -198,7 +198,7 @@
 		return
 
 
-	process_activation(var/obj/D, var/normal = 1, var/special = 1)
+	process_activation(var/obj/D, normal = 1, special = 1)
 		if(!D)	return 0
 		if(!secured)
 			visible_message("\icon[src] *beep* *beep*", "*beep* *beep*")

@@ -46,7 +46,7 @@
 /datum/firemode/tripmine
 	override_fire = TRUE
 
-/datum/firemode/tripmine/fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
+/datum/firemode/tripmine/fire(var/atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	var/obj/item/weapon/gun/projectile/detonator/R = gun
 	if (R.deployed_mines.len)
 		var/obj/effect/mine/trip/M = R.deployed_mines[R.deployed_mines.len]
@@ -146,7 +146,7 @@
 	triggerproc = /obj/effect/mine/trip/explode
 	density = FALSE
 
-/obj/effect/mine/trip/New(var/atom/newloc, var/obj/item/projectile/deploy/projectile)
+/obj/effect/mine/trip/New(var/atom/newloc, obj/item/projectile/deploy/projectile)
 
 	.=..()
 	var/obj/item/weapon/gun/projectile/detonator/D = projectile.launcher

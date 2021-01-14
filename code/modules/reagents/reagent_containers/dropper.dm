@@ -13,7 +13,7 @@
 	volume = 5
 	item_flags = ITEM_FLAG_NO_BLUDGEON
 
-	afterattack(var/obj/target, var/mob/user, var/proximity)
+	afterattack(var/obj/target, mob/user, proximity)
 		if(!target.reagents || !proximity) return
 
 		if(reagents.total_volume)

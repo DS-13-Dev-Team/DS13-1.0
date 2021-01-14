@@ -27,7 +27,7 @@
 	else
 		icon_state = "heavysniper"
 
-/obj/item/weapon/gun/projectile/heavysniper/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
+/obj/item/weapon/gun/projectile/heavysniper/handle_post_fire(mob/user, atom/target, pointblank=0, reflex=0)
 	..()
 	if(user && user.skill_check(SKILL_WEAPONS, SKILL_PROF))
 		to_chat(user, "<span class='notice'>You work the bolt open with a reflexive motion, ejecting [chambered]!</span>")
@@ -68,7 +68,7 @@
 		return
 	..()
 
-/obj/item/weapon/gun/projectile/heavysniper/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/weapon/gun/projectile/heavysniper/unload_ammo(mob/user, allow_dump=1)
 	if(!bolt_open)
 		return
 	..()

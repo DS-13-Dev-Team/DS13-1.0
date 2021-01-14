@@ -8,7 +8,7 @@
 
 	Otherwise pretty standard.
 */
-/mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/carbon/human/UnarmedAttack(var/atom/A, proximity)
 
 	if(!..())
 		return
@@ -71,7 +71,7 @@
 /mob/living/carbon/alien/RestrainedClickOn(var/atom/A)
 	return
 
-/mob/living/carbon/alien/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/carbon/alien/UnarmedAttack(var/atom/A, proximity)
 
 	if(!..())
 		return 0
@@ -87,7 +87,7 @@
 /mob/living/carbon/slime/RestrainedClickOn(var/atom/A)
 	return
 
-/mob/living/carbon/slime/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/carbon/slime/UnarmedAttack(var/atom/A, proximity)
 
 	if(!..())
 		return

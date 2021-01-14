@@ -30,10 +30,10 @@
 /datum/storage_ui/proc/on_insertion(var/mob/user)
 	return
 
-/datum/storage_ui/proc/on_pre_remove(var/mob/user, var/obj/item/W)
+/datum/storage_ui/proc/on_pre_remove(var/mob/user, obj/item/W)
 	return
 
-/datum/storage_ui/proc/on_post_remove(var/mob/user, var/obj/item/W)
+/datum/storage_ui/proc/on_post_remove(var/mob/user, obj/item/W)
 	return
 
 /datum/storage_ui/proc/on_hand_attack(var/mob/user)

@@ -11,7 +11,7 @@
 				return TRUE
 	return FALSE
 
-/atom/movable/proc/AddMovementHandler(var/handler_path, var/handler_path_to_add_before)
+/atom/movable/proc/AddMovementHandler(var/handler_path, handler_path_to_add_before)
 	INIT_MOVEMENT_HANDLERS
 
 	. = new handler_path(src)

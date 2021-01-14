@@ -1,7 +1,7 @@
 /obj/item/modular_computer
 	implements_dummy = TRUE
 
-/obj/item/modular_computer/New(var/location, var/dummy)
+/obj/item/modular_computer/New(var/location, dummy)
 	src.dummy = dummy
 	.=..()
 
@@ -91,7 +91,7 @@
 	remove_light()
 	return ..()
 
-/obj/item/modular_computer/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/modular_computer/emag_act(var/remaining_charges, mob/user)
 	if(computer_emagged)
 		to_chat(user, "\The [src] was already emagged.")
 		return NO_EMAG_ACT

@@ -80,7 +80,7 @@
 	coverage = get_coverage()
 
 //BS12: Species-restricted clothing check.
-/obj/item/clothing/mob_can_equip(var/mob/M, var/slot, var/disable_warning = 0, var/force = 0)
+/obj/item/clothing/mob_can_equip(var/mob/M, slot, disable_warning = 0, force = 0)
 
 	//if we can't equip the item anyway, don't bother with species_restricted (cuts down on spam)
 	if (!..())
@@ -162,7 +162,7 @@
 	if(user in view(get_turf(src)))
 		return STATUS_INTERACTIVE
 
-/obj/item/clothing/OnTopic(var/user, var/list/href_list, var/datum/topic_state/state)
+/obj/item/clothing/OnTopic(var/user, list/href_list, datum/topic_state/state)
 	if(href_list["list_ungabunga"])
 		if(accessories.len)
 			var/list/ties = list()
@@ -335,7 +335,7 @@ BLIND     // can't see anything
 	return "material from a pair of [name]."
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
-/obj/item/clothing/gloves/proc/Touch(var/atom/A, var/proximity)
+/obj/item/clothing/gloves/proc/Touch(var/atom/A, proximity)
 	return 0 // return 1 to cancel attack_hand()
 
 /obj/item/clothing/gloves/attackby(obj/item/weapon/W, mob/user)
@@ -638,7 +638,7 @@ BLIND     // can't see anything
 		return
 	..()
 
-/obj/item/clothing/shoes/attackby(var/obj/item/I, var/mob/user)
+/obj/item/clothing/shoes/attackby(var/obj/item/I, mob/user)
 	if(can_hold_knife && is_type_in_list(I, list(/obj/item/weapon/material/shard, /obj/item/weapon/material/butterfly, /obj/item/weapon/material/kitchen/utensil, /obj/item/weapon/material/hatchet/tacknife)))
 		if(holding)
 			to_chat(user, "<span class='warning'>\The [src] is already holding \a [holding].</span>")
@@ -658,7 +658,7 @@ BLIND     // can't see anything
 		overlays += image(icon, "[icon_state]_knife")
 	return ..()
 
-/obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, var/running)
+/obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, running)
 	return
 
 /obj/item/clothing/shoes/update_clothing_icon()

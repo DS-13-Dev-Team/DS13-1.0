@@ -27,7 +27,7 @@
 	animate(transform=initial_transform, pixel_x=init_px, time=time, easing=ELASTIC_EASING)
 
 
-/atom/proc/custom_shake_animation(var/rotation = 15, var/offset = 3, var/time = 10, var/y_offset = TRUE, var/parallel = TRUE)
+/atom/proc/custom_shake_animation(var/rotation = 15, offset = 3, time = 10, y_offset = TRUE, parallel = TRUE)
 	var/initial_transform = new/matrix(transform)
 	var/vector2/init_px = get_new_vector(pixel_x, pixel_y)
 
@@ -50,7 +50,7 @@
 //Duration is in deciseconds
 //Strength is an offset in tiles
 //Non integer values are perfectly fine for both inputs
-/proc/shake_camera(mob/M, duration= 4, strength=1, var/flags = ANIMATION_PARALLEL)
+/proc/shake_camera(mob/M, duration= 4, strength=1, flags = ANIMATION_PARALLEL)
 	if(!istype(M) || !M.client || M.stat || isEye(M) || isAI(M))
 		return
 
@@ -164,7 +164,7 @@
 //This movement is effectively teleporting, it will ignore any obstacles. Do any checks before moving
 //Speed is in metres (tiles) per second
 //Client lag is a divisor on client animation time. Lower values will cause it to take longer to catch up with the mob, this is a cool effect for conveying speed
-/proc/animate_movement(var/atom/movable/mover, var/atom/target, var/speed, var/client_lag = 1.0)
+/proc/animate_movement(var/atom/movable/mover, atom/target, speed, client_lag = 1.0)
 	var/vector2/target_pixel_loc = target.get_global_pixel_loc()
 	target_pixel_loc.x += mover.default_pixel_x
 	target_pixel_loc.y += mover.default_pixel_y
@@ -215,7 +215,7 @@
 
 //Returns the rotation necessary to point source's forward_direction at target
 //The default value of south, will point the source's feet at the target
-/proc/rotation_to_target(var/atom/source, var/atom/target, var/forward_direction = SOUTH)
+/proc/rotation_to_target(var/atom/source, atom/target, forward_direction = SOUTH)
 	var/vector2/direction = Vector2.DirectionBetween(source, target)
 	var/angle = direction.AngleFrom(Vector2.FromDir(forward_direction))
 	release_vector(direction)
@@ -242,7 +242,7 @@
 
 
 //Returns a transform with all vars set to their default
-/atom/proc/animate_to_default(var/animtime = 5, var/reset_pixels = TRUE)
+/atom/proc/animate_to_default(var/animtime = 5, reset_pixels = TRUE)
 
 	if (animtime > 0)
 		animate(src, transform = get_default_transform(), pixel_x = (reset_pixels ? default_pixel_x : pixel_x), pixel_y = (reset_pixels ? default_pixel_y : pixel_y), alpha = default_alpha, time = animtime)

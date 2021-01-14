@@ -309,7 +309,7 @@
 //Used to get limbs that intersect with a plane.
 //Altitude is how high the plane is off the ground
 //Height is how tall the plane is
-/mob/living/carbon/human/proc/get_limbs_at_height(var/altitude, var/height = 0.01)
+/mob/living/carbon/human/proc/get_limbs_at_height(var/altitude, height = 0.01)
 	var/vector2/ourheight = get_new_vector(altitude, altitude+height)
 
 	var/list/limbs = list()
@@ -402,7 +402,7 @@
 	limb_mask = filters[filters.len]
 
 //This proc combines a list of icon names into a mask
-/proc/create_limb_mask(var/list/missing_icon_names, var/datum/species/species)
+/proc/create_limb_mask(var/list/missing_icon_names, datum/species/species)
 	var/icon/base_icon = new(species && species.icon_template ? species.icon_template : 'icons/mob/human.dmi',"blank")
 
 	var/damage_mask_icon = 'icons/mob/human_races/species/human/damage_mask.dmi'

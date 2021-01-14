@@ -18,7 +18,7 @@
 	New()
 		block=GLOB.REMOTEVIEWBLOCK
 
-	activate(var/mob/M, var/connected, var/flags)
+	activate(var/mob/M, connected, flags)
 		..(M,connected,flags)
 		M.verbs += /mob/living/carbon/human/proc/remoteobserve
 
@@ -46,7 +46,7 @@
 	New()
 		block=GLOB.REMOTETALKBLOCK
 
-	activate(var/mob/M, var/connected, var/flags)
+	activate(var/mob/M, connected, flags)
 		..(M,connected,flags)
 		M.verbs += /mob/living/carbon/human/proc/remotesay
 
@@ -137,11 +137,11 @@
 			return 0
 		return ..(M,flags)
 
-	activate(var/mob/M, var/connected, var/flags)
+	activate(var/mob/M, connected, flags)
 		..(M,connected,flags)
 		M.pass_flags |= 1
 
-	deactivate(var/mob/M, var/connected, var/flags)
+	deactivate(var/mob/M, connected, flags)
 		..(M,connected,flags)
 		M.pass_flags &= ~1 //This may cause issues down the track, but offhand I can't think of any other way for humans to get passtable short of varediting so it should be fine. ~Z
 

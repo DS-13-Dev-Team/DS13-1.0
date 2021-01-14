@@ -66,7 +66,7 @@
 		overheat()
 			explosion(10, 2)
 
-	attackby(var/obj/item/O as obj, var/mob/user as mob)
+	attackby(var/obj/item/O as obj, mob/user as mob)
 		if(istype(O, /obj/item/weapon/tank/phoron))
 			if(P)
 				to_chat(user, "<span class='warning'>The generator already has a phoron tank loaded!</span>")
@@ -164,7 +164,7 @@
 				usr << browse(null, "window=port_gen")
 				usr.machine = null
 
-/obj/machinery/power/port_gen/pacman2/emag_act(var/remaining_uses, var/mob/user)
+/obj/machinery/power/port_gen/pacman2/emag_act(var/remaining_uses, mob/user)
 	emagged = 1
 	emp_act(1)
 	return 1

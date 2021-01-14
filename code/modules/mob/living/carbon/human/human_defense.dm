@@ -12,7 +12,7 @@ meteor_act
 ---------------------------------*/
 //Takes an accuracy value, a targeted bodypart, and the projectile, tool or mob doing the hitting.
 //Calculate all bonuses on the attacker's side before calling this, this proc handles the evasion on the defensive side
-/mob/living/carbon/human/get_zone_with_miss_chance(var/accuracy, var/desired_zone, var/weapon)
+/mob/living/carbon/human/get_zone_with_miss_chance(var/accuracy, desired_zone, weapon)
 	//Mobs on the floor are less good at evading
 	var/evasion_mod = evasion
 	if (lying)
@@ -38,7 +38,7 @@ meteor_act
 	else
 		return pick(organs_by_name)	//Check if this is valid
 
-/mob/living/carbon/human/bullet_act(var/obj/item/projectile/P, var/def_zone)
+/mob/living/carbon/human/bullet_act(var/obj/item/projectile/P, def_zone)
 
 	def_zone = check_zone(def_zone)
 	if(!has_organ(def_zone))
@@ -74,7 +74,7 @@ meteor_act
 
 	return blocked
 
-/mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
+/mob/living/carbon/human/stun_effect_act(var/stun_amount, agony_amount, def_zone)
 	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))
 	if(!affected)
 		return
@@ -88,7 +88,7 @@ meteor_act
 
 	..(stun_amount, agony_amount, def_zone)
 
-/mob/living/carbon/human/getarmor(var/def_zone, var/type)
+/mob/living/carbon/human/getarmor(var/def_zone, type)
 	var/armorval = 0
 	var/total = 0
 
@@ -125,7 +125,7 @@ meteor_act
 	return siemens_coefficient
 
 //this proc returns the armour value for a particular external organ.
-/mob/living/carbon/human/proc/getarmor_organ(var/obj/item/organ/external/def_zone, var/type)
+/mob/living/carbon/human/proc/getarmor_organ(var/obj/item/organ/external/def_zone, type)
 	if(!type || !def_zone) return 0
 	if(!istype(def_zone))
 		def_zone = get_organ(check_zone(def_zone))
@@ -162,7 +162,7 @@ meteor_act
 	return null
 
 
-/mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
+/mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, target_zone)
 
 	for (var/obj/item/grab/G in grabbed_by)
 		if(G.resolve_item_attack(user, I, target_zone))
@@ -200,7 +200,7 @@ meteor_act
 	return standard_weapon_hit_effects(strike.used_item, strike.user, strike.get_final_damage(), strike.blocked, strike.target_zone)
 
 
-/mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/hit_zone)
+/mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, effective_force, blocked, hit_zone)
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)
 		return 0
@@ -243,7 +243,7 @@ meteor_act
 		attack_bloody(I, user, effective_force, hit_zone)
 
 
-/mob/living/carbon/human/proc/attack_bloody(obj/item/W, mob/living/attacker, var/effective_force, var/hit_zone)
+/mob/living/carbon/human/proc/attack_bloody(obj/item/W, mob/living/attacker, effective_force, hit_zone)
 	if(W.damtype != BRUTE)
 		return
 
@@ -279,7 +279,7 @@ meteor_act
 			if(BP_CHEST)
 				bloody_body(src)
 
-/mob/living/carbon/human/proc/projectile_hit_bloody(obj/item/projectile/P, var/effective_force, var/hit_zone)
+/mob/living/carbon/human/proc/projectile_hit_bloody(obj/item/projectile/P, effective_force, hit_zone)
 	if(P.damage_type != BRUTE || P.nodamage)
 		return
 	if(!(P.sharp || prob(effective_force*4)))
@@ -303,7 +303,7 @@ meteor_act
 			if(BP_CHEST)
 				bloody_body(src)
 
-/mob/living/carbon/human/proc/attack_joint(var/obj/item/organ/external/organ, var/obj/item/W, var/effective_force, var/dislocate_mult, var/blocked)
+/mob/living/carbon/human/proc/attack_joint(var/obj/item/organ/external/organ, obj/item/W, effective_force, dislocate_mult, blocked)
 	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1) || blocked >= 100)
 		return 0
 	if(W.damtype != BRUTE)
@@ -317,7 +317,7 @@ meteor_act
 		return 1
 	return 0
 
-/mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, var/emag_source)
+/mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, emag_source)
 	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
 	if(!affecting || !BP_IS_ROBOTIC(affecting))
 		to_chat(user, "<span class='warning'>That limb isn't robotic.</span>")
@@ -344,17 +344,17 @@ meteor_act
 
 	AM.launch_throw_strike(src, speed)
 
-/mob/living/carbon/human/embed(var/obj/O, var/def_zone=null, var/datum/wound/supplied_wound)
+/mob/living/carbon/human/embed(var/obj/O, def_zone=null, datum/wound/supplied_wound)
 	if(!def_zone) ..()
 
 	var/obj/item/organ/external/affecting = get_organ(def_zone)
 	if(affecting)
 		affecting.embed(O, supplied_wound = supplied_wound)
 
-/mob/proc/unembed(var/obj/item/I, var/atom/new_location, var/silent = 0, var/supplied_message)
+/mob/proc/unembed(var/obj/item/I, atom/new_location, silent = 0, supplied_message)
 	return
 
-/mob/living/carbon/human/unembed(var/obj/item/I, var/atom/new_location, var/silent = 0, var/supplied_message)
+/mob/living/carbon/human/unembed(var/obj/item/I, atom/new_location, silent = 0, supplied_message)
 	if (!(I in implants))
 		return
 	for (var/obj/item/organ/external/affecting in src)
@@ -362,7 +362,7 @@ meteor_act
 			affecting.unembed(I, new_location, silent, supplied_message)
 			return
 
-/mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, var/amount = 2)
+/mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, amount = 2)
 	if (istype(gloves, /obj/item/clothing/gloves))
 		gloves.add_blood(source)
 		gloves:transfer_blood = amount
@@ -381,7 +381,7 @@ meteor_act
 		w_uniform.add_blood(source)
 		update_inv_w_uniform(0)
 
-/mob/living/carbon/human/proc/handle_suit_punctures(var/damtype, var/damage, var/def_zone)
+/mob/living/carbon/human/proc/handle_suit_punctures(var/damtype, damage, def_zone)
 
 	// Tox and oxy don't matter to suits.
 	if(damtype != BURN && damtype != BRUTE) return
@@ -456,7 +456,7 @@ meteor_act
 
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
-/mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
+/mob/living/carbon/human/electrocute_act(var/shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
 
 	if(status_flags & GODMODE)	return 0	//godmode
 
@@ -472,7 +472,7 @@ meteor_act
 
 	return ..(shock_damage, source, base_siemens_coeff, def_zone)
 
-/mob/living/carbon/human/apply_shock(var/shock_damage, var/def_zone, var/base_siemens_coeff = 1.0)
+/mob/living/carbon/human/apply_shock(var/shock_damage, def_zone, base_siemens_coeff = 1.0)
 	var/obj/item/organ/external/initial_organ = get_organ(check_zone(def_zone))
 	if(!initial_organ)
 		initial_organ = pick(organs)
@@ -509,7 +509,7 @@ meteor_act
 		total_damage += ..(shock_damage, E.organ_tag, base_siemens_coeff * get_siemens_coefficient_organ(E))
 	return total_damage
 
-/mob/living/carbon/human/proc/trace_shock(var/obj/item/organ/external/init, var/obj/item/organ/external/floor)
+/mob/living/carbon/human/proc/trace_shock(var/obj/item/organ/external/init, obj/item/organ/external/floor)
 	var/obj/item/organ/external/list/traced_organs = list(floor)
 
 	if(!init)

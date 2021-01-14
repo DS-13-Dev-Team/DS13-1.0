@@ -25,7 +25,7 @@
 /datum/evacuation_controller/proc/is_evacuating()
 	return state != EVAC_IDLE
 
-/datum/evacuation_controller/proc/can_evacuate(var/mob/user, var/forced)
+/datum/evacuation_controller/proc/can_evacuate(var/mob/user, forced)
 
 	if(!isnull(evac_called_at))
 		return FALSE

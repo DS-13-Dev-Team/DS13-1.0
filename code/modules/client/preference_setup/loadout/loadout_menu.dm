@@ -205,7 +205,7 @@
 	. += "</table>"
 	. = jointext(.,null)
 
-/datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(var/datum/gear/G, var/readonly)
+/datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(var/datum/gear/G, readonly)
 	var/list/gear = pref.gear_list[pref.gear_slot]
 	if(gear)
 		. = gear[G.display_name]
@@ -214,14 +214,14 @@
 		if(!readonly)
 			gear[G.display_name] = .
 
-/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/datum/gear/G, var/datum/gear_tweak/tweak)
+/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/datum/gear/G, datum/gear_tweak/tweak)
 	var/list/metadata = get_gear_metadata(G)
 	. = metadata["[tweak]"]
 	if(!.)
 		. = tweak.get_default()
 		metadata["[tweak]"] = .
 
-/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(var/datum/gear/G, var/datum/gear_tweak/tweak, var/new_metadata)
+/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(var/datum/gear/G, datum/gear_tweak/tweak, new_metadata)
 	var/list/metadata = get_gear_metadata(G)
 	metadata["[tweak]"] = new_metadata
 
@@ -274,7 +274,7 @@
 */
 
 //Adds or removes a specified gear item from the user
-/datum/category_item/player_setup_item/loadout/proc/toggle_gear(var/gearname, var/mob/user)
+/datum/category_item/player_setup_item/loadout/proc/toggle_gear(var/gearname, mob/user)
 	var/datum/gear/TG = GLOB.gear_datums[gearname]
 
 	LOADOUT_CHECK
@@ -294,7 +294,7 @@
 
 
 
-/datum/category_item/player_setup_item/loadout/update_setup(var/savefile/preferences, var/savefile/character)
+/datum/category_item/player_setup_item/loadout/update_setup(var/savefile/preferences, savefile/character)
 	if(preferences["version"] < 14)
 		var/list/old_gear = character["gear"]
 		if(istype(old_gear)) // During updates data isn't sanitized yet, we have to do manual checks

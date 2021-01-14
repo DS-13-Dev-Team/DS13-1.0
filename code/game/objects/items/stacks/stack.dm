@@ -22,7 +22,7 @@
 	var/list/charge_costs = null
 	var/list/datum/matter_synth/synths = null
 
-/obj/item/stack/New(var/loc, var/amount=null)
+/obj/item/stack/New(var/loc, amount=null)
 	..()
 	if (!stacktype)
 		stacktype = type
@@ -111,7 +111,7 @@
 	user << browse(JOINTEXT(t1), "window=stack")
 	onclose(user, "stack")
 
-/obj/item/stack/proc/produce_recipe(datum/stack_recipe/recipe, var/quantity, mob/user)
+/obj/item/stack/proc/produce_recipe(datum/stack_recipe/recipe, quantity, mob/user)
 	var/required = quantity*recipe.req_amount
 	var/produced = min(quantity*recipe.res_amount, recipe.max_res_amount)
 	if(!user.skill_check(SKILL_CONSTRUCTION, recipe.difficulty))
@@ -227,7 +227,7 @@
 */
 
 //attempts to transfer amount to S, and returns the amount actually transferred
-/obj/item/stack/proc/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
+/obj/item/stack/proc/transfer_to(obj/item/stack/S, tamount=null, type_verified)
 	if (!get_amount())
 		return 0
 	if ((stacktype != S.stacktype) && !type_verified)
@@ -248,7 +248,7 @@
 	return 0
 
 //creates a new stack with the specified amount
-/obj/item/stack/proc/split(var/tamount, var/force=FALSE)
+/obj/item/stack/proc/split(var/tamount, force=FALSE)
 	if (!amount)
 		return null
 	if(uses_charge && !force)

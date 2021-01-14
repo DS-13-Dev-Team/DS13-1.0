@@ -130,7 +130,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/omni/mixer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/atmospherics/omni/mixer/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	usr.set_machine(src)
 
 	var/list/data = new()
@@ -209,7 +209,7 @@
 	SSnano.update_uis(src)
 	return
 
-/obj/machinery/atmospherics/omni/mixer/proc/switch_mode(var/port = NORTH, var/mode = ATM_NONE)
+/obj/machinery/atmospherics/omni/mixer/proc/switch_mode(var/port = NORTH, mode = ATM_NONE)
 	if(mode != ATM_INPUT && mode != ATM_OUTPUT)
 		switch(mode)
 			if("in")

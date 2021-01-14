@@ -1,4 +1,4 @@
-/client/proc/resolve_drag(var/atom/A, var/params)
+/client/proc/resolve_drag(var/atom/A, params)
 	var/list/L = params2list(params)
 	var/dragged = L["drag"]
 	if(dragged && !L[dragged])
@@ -32,7 +32,7 @@
 
 
 /client/var/temp_view = 7
-/client/proc/set_view_range(var/radius, var/force_update = FALSE)
+/client/proc/set_view_range(var/radius, force_update = FALSE)
 
 	if ((force_update || view != radius) && isnum(radius))
 		//If radius has changed, we'll return true
@@ -74,7 +74,7 @@
 	return temp_view + (view_offset_magnitude / WORLD_ICON_SIZE)
 
 
-/client/proc/set_view_offset(var/direction, var/magnitude, var/force_update = FALSE)
+/client/proc/set_view_offset(var/direction, magnitude, force_update = FALSE)
 	view_offset_magnitude = magnitude //Cache this
 	var/vector2/offset = (Vector2.FromDir(direction))*magnitude
 	if (pixel_x != offset.x || pixel_y != offset.y) //If the values already match the target, don't interrupt the animation by repeating it

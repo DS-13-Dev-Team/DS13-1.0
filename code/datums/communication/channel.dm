@@ -33,13 +33,13 @@
 /*
 * Procs for handling sending communication messages
 */
-/decl/communication_channel/proc/communicate(var/datum/communicator, var/message, var/sender_override)
+/decl/communication_channel/proc/communicate(var/datum/communicator, message, sender_override)
 	if(can_communicate(arglist(args)))
 		call(log_proc)("[(flags&COMMUNICATION_LOG_CHANNEL_NAME) ? "([name]) " : ""][communicator.communication_identifier()] : [message]")
 		return do_communicate(arglist(args))
 	return FALSE
 
-/decl/communication_channel/proc/can_communicate(var/datum/communicator, var/message)
+/decl/communication_channel/proc/can_communicate(var/datum/communicator, message)
 	if(!message)
 		return FALSE
 
@@ -67,13 +67,13 @@
 
 	return TRUE
 
-/decl/communication_channel/proc/do_communicate(var/communicator, var/message, var/sender_override)
+/decl/communication_channel/proc/do_communicate(var/communicator, message, sender_override)
 	return
 
 /*
 * Procs for handling the reception of communication messages
 */
-/decl/communication_channel/proc/receive_communication(var/datum/communicator, var/datum/receiver, var/message)
+/decl/communication_channel/proc/receive_communication(var/datum/communicator, datum/receiver, message)
 	if(can_receive_communication(receiver))
 		var/has_follow_links = FALSE
 		if((flags & COMMUNICATION_ADMIN_FOLLOW))
@@ -94,7 +94,7 @@
 			return FALSE
 	return TRUE
 
-/decl/communication_channel/proc/do_receive_communication(var/datum/communicator, var/datum/receiver, var/message)
+/decl/communication_channel/proc/do_receive_communication(var/datum/communicator, datum/receiver, message)
 	to_chat(receiver, message)
 
 // Misc. helpers
@@ -105,11 +105,11 @@
 	var/key_name = plain_key_name(src)
 	return usr != src ? "[key_name] - usr: [plain_key_name(usr)]" : key_name
 
-/proc/sanitize_and_communicate(var/channel_type, var/communicator, var/message, var/sender_override = null)
+/proc/sanitize_and_communicate(var/channel_type, communicator, message, sender_override = null)
 	message = sanitize(message)
 	return communicate(arglist(args))
 
-/proc/communicate(var/channel_type, var/communicator, var/message, var/sender_override = null)
+/proc/communicate(var/channel_type, communicator, message, sender_override = null)
 	var/list/channels = decls_repository.get_decls_of_subtype(/decl/communication_channel)
 	var/decl/communication_channel/channel = channels[channel_type]
 

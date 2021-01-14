@@ -87,7 +87,7 @@ proc/get_open_ticket_by_client(var/datum/client_lite/owner)
 	var/msg
 	var/time_stamp
 
-/datum/ticket_msg/New(var/msg_from, var/msg_to, var/msg)
+/datum/ticket_msg/New(var/msg_from, msg_to, msg)
 	src.msg_from = msg_from
 	src.msg_to = msg_to
 	src.msg = msg

@@ -1,4 +1,4 @@
-/mob/living/carbon/human/say(var/message, var/datum/language/speaking = null, whispering)
+/mob/living/carbon/human/say(var/message, datum/language/speaking = null, whispering)
 	var/alt_name = ""
 	if(name != GetVoice())
 		if(get_id_name("Unknown") != GetVoice())
@@ -133,7 +133,7 @@
 	return special_voice
 
 
-/mob/living/carbon/human/say_quote(var/message, var/datum/language/speaking = null)
+/mob/living/carbon/human/say_quote(var/message, datum/language/speaking = null)
 	var/verb = "says"
 	var/ending = copytext(message, length(message))
 

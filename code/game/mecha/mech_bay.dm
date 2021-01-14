@@ -100,7 +100,7 @@
 /obj/machinery/mech_recharger/proc/fully_repaired()
 	return charging && (charging.health == initial(charging.health))
 
-/obj/machinery/mech_recharger/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/mech_recharger/attackby(var/obj/item/I, mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 	if(default_deconstruction_crowbar(user, I))

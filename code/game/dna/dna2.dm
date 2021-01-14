@@ -231,7 +231,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 // Do not use this unless you absolutely have to.
 // Set a block from a hex string.  This is inefficient.  If you can, use SetUIValue().
 // Used in DNA modifiers.
-/datum/dna/proc/SetUISubBlock(var/block,var/subBlock, var/newSubBlock, var/defer=0)
+/datum/dna/proc/SetUISubBlock(var/block,var/subBlock, newSubBlock, defer=0)
 	if (block<=0) return
 	var/oldBlock=GetUIBlock(block)
 	var/newBlock=""
@@ -319,7 +319,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 // Do not use this unless you absolutely have to.
 // Set a sub-block from a hex character.  This is inefficient.  If you can, use SetUIValue().
 // Used in DNA modifiers.
-/datum/dna/proc/SetSESubBlock(var/block,var/subBlock, var/newSubBlock, var/defer=0)
+/datum/dna/proc/SetSESubBlock(var/block,var/subBlock, newSubBlock, defer=0)
 	if (block<=0) return
 	var/oldBlock=GetSEBlock(block)
 	var/newBlock=""

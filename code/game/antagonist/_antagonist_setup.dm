@@ -25,7 +25,7 @@
 			if(antag && antag.is_type(antag_type))
 				return antag
 
-/proc/clear_antag_roles(var/datum/mind/player, var/implanted)
+/proc/clear_antag_roles(var/datum/mind/player, implanted)
 	var/list/all_antag_types = GLOB.all_antag_types_
 	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
@@ -49,7 +49,7 @@
 		return antag.current_antagonists
 	return list()
 
-/proc/player_is_antag(var/datum/mind/player, var/only_offstation_roles = 0)
+/proc/player_is_antag(var/datum/mind/player, only_offstation_roles = 0)
 	var/list/all_antag_types = GLOB.all_antag_types_
 	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]

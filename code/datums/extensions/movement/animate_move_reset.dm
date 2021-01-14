@@ -41,6 +41,6 @@
 
 	AM.reset_move_animation()
 
-/proc/set_delayed_move_animation_reset(var/atom/movable/AM, var/time)
+/proc/set_delayed_move_animation_reset(var/atom/movable/AM, time)
 	var/datum/extension/reset_move_animation/RMA = get_or_create_extension(AM, /datum/extension/reset_move_animation)
 	RMA.update(time)

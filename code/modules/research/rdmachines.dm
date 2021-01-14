@@ -30,7 +30,7 @@ var/list/default_material_composition = list("steel" = 0, MATERIAL_GLASS = 0, MA
 	..()
 
 
-/obj/machinery/r_n_d/proc/eject(var/material, var/amount)
+/obj/machinery/r_n_d/proc/eject(var/material, amount)
 	if(!(material in materials))
 		return
 	var/material/mat = get_material_by_name(material)

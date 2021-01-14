@@ -54,7 +54,7 @@
 	holder.storage = src //Set ourselves as the storage mod
 	container.master_item = holder //When its inside a rig, that rig is the thing we use for location checks
 
-/obj/item/rig_module/storage/uninstalled(var/obj/item/weapon/rig/former, var/mob/living/user)
+/obj/item/rig_module/storage/uninstalled(var/obj/item/weapon/rig/former, mob/living/user)
 	former.storage = null //Unset the storage mod
 	.=..()
 
@@ -76,7 +76,7 @@
 /obj/item/rig_module/storage/proc/handle_attack_hand(mob/user as mob)
 	return container.handle_attack_hand(user)
 
-/obj/item/rig_module/storage/proc/handle_mousedrop(var/mob/user, var/atom/over_object)
+/obj/item/rig_module/storage/proc/handle_mousedrop(var/mob/user, atom/over_object)
 	return container.handle_mousedrop(user, over_object)
 
 

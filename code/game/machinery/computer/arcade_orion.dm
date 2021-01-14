@@ -281,7 +281,7 @@
 	if(. == TOPIC_REFRESH)
 		attack_hand(user)
 
-/obj/machinery/computer/arcade/orion_trail/proc/change_resource(var/specific = null, var/add = 1)
+/obj/machinery/computer/arcade/orion_trail/proc/change_resource(var/specific = null, add = 1)
 	if(!specific)
 		specific = rand(1,6)
 	var/cost = (specific < 4 ? rand(1,5) : rand(5,100)) * add
@@ -293,7 +293,7 @@
 	supplies["[specific]"] += cost
 	event_info += "You've [add > 0 ? "gained" : "lost"] [abs(cost)] [supply_name["[specific]"]]<BR>"
 
-/obj/machinery/computer/arcade/orion_trail/proc/remove_settler(var/specific = null, var/desc = null)
+/obj/machinery/computer/arcade/orion_trail/proc/remove_settler(var/specific = null, desc = null)
 	if(!settlers.len)
 		return
 	if(!specific)

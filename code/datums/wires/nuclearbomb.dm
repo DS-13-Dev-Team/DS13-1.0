@@ -42,7 +42,7 @@ var/const/NUCLEARBOMB_WIRE_SAFETY		= 4
 				else
 					N.visible_message("<span class='notice'>\The [N] emits a quiet whirling noise!</span>")
 
-/datum/wires/nuclearbomb/UpdateCut(var/index, var/mended)
+/datum/wires/nuclearbomb/UpdateCut(var/index, mended)
 	var/obj/machinery/nuclearbomb/N = holder
 	switch(index)
 		if(NUCLEARBOMB_WIRE_SAFETY)

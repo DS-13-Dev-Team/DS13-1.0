@@ -38,7 +38,7 @@ Each plays slightly different and has different challenges/benefits
 	for(var/V in svars)
 		O.vars[V] = svars[V]
 
-/datum/god_form/proc/take_charge(var/mob/living/user, var/charge)
+/datum/god_form/proc/take_charge(var/mob/living/user, charge)
 	return 1
 
 /datum/god_form/Destroy()
@@ -88,7 +88,7 @@ Each plays slightly different and has different challenges/benefits
 				/datum/deity_item/blood_crafting/space
 				)
 
-/datum/god_form/narsie/take_charge(var/mob/living/user, var/charge)
+/datum/god_form/narsie/take_charge(var/mob/living/user, charge)
 	charge = min(100, charge * 0.25)
 	if(prob(charge))
 		to_chat(user, "<span class='warning'>You feel drained...</span>")
@@ -145,6 +145,6 @@ Each plays slightly different and has different challenges/benefits
 				/datum/deity_item/phenomena/rock_form
 				)
 
-/datum/god_form/wizard/take_charge(var/mob/living/user, var/charge)
+/datum/god_form/wizard/take_charge(var/mob/living/user, charge)
 	linked_god.adjust_power_min(max(round(charge/100), 1),silent = 1)
 	return 1

@@ -92,7 +92,7 @@
 	if(.)
 		attack_hand(user)
 
-/obj/machinery/uniform_vendor/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/machinery/uniform_vendor/attackby(var/obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/weapon/clothingbag))
 		if(W.contents.len)
 			to_chat(user, "<span class='notice'>You must empty \the [W] before you can put it in \the [src].</span>")
@@ -115,7 +115,7 @@
 	The one exception to the above is the command department, due to the fact that you have to be an officer to
 	be in command, and there are no variants as a result. Also no special CO uniform :(
 */
-/obj/machinery/uniform_vendor/proc/find_uniforms(var/datum/mil_rank/user_rank, var/datum/mil_branch/user_branch, var/department) //returns 1 if found branch and thus has a base uniform, 2, branch and department, 0 if failed.
+/obj/machinery/uniform_vendor/proc/find_uniforms(var/datum/mil_rank/user_rank, datum/mil_branch/user_branch, department) //returns 1 if found branch and thus has a base uniform, 2, branch and department, 0 if failed.
 	if(!mil_uniforms)
 		mil_uniforms = new()
 

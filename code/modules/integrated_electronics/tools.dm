@@ -172,7 +172,7 @@
 		else
 			to_chat(user, "\The [src] has not yet been used to analyze any assemblies.")
 
-/obj/item/device/integrated_electronics/analyzer/afterattack(var/obj/item/device/electronic_assembly/assembly, var/mob/user)
+/obj/item/device/integrated_electronics/analyzer/afterattack(var/obj/item/device/electronic_assembly/assembly, mob/user)
 	if(!istype(assembly))
 		return ..()
 

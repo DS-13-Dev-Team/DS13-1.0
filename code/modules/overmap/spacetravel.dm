@@ -8,7 +8,7 @@ var/list/cached_space = list()
 	invisibility = 101
 	known = 0
 
-/obj/effect/overmap/sector/temporary/New(var/nx, var/ny, var/nz)
+/obj/effect/overmap/sector/temporary/New(var/nx, ny, nz)
 	loc = locate(nx, ny, GLOB.using_map.overmap_z)
 	x = nx
 	y = ny
@@ -47,7 +47,7 @@ proc/get_deepspace(x,y)
 /mob/lost_in_space()
 	return isnull(client)
 
-proc/overmap_spacetravel(var/turf/space/T, var/atom/movable/A)
+proc/overmap_spacetravel(var/turf/space/T, atom/movable/A)
 	if (!T || !A)
 		return
 

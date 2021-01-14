@@ -185,7 +185,7 @@
 		return TRUE
 	return ..()
 
-/obj/item/weapon/rig/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/weapon/rig/emag_act(var/remaining_charges, mob/user)
 	if(!subverted)
 		req_access.Cut()
 		req_one_access.Cut()
@@ -198,7 +198,7 @@
 /*
 	Central entrypoint to install Rig modules
 */
-/obj/item/weapon/rig/proc/attempt_install(var/obj/item/rig_module/RM, var/mob/user, var/force = FALSE, var/instant = FALSE, var/delete_replaced = FALSE)
+/obj/item/weapon/rig/proc/attempt_install(var/obj/item/rig_module/RM, mob/user, force = FALSE, instant = FALSE, delete_replaced = FALSE)
 
 	if(is_worn() && !can_modify() && !force)
 		to_chat(user, "<span class='danger'>You can't install a RIG module while the suit is being worn.</span>")
@@ -244,7 +244,7 @@
 	update_icon()
 
 
-/obj/item/weapon/rig/proc/uninstall(var/obj/item/rig_module/RM, var/delete = FALSE)
+/obj/item/weapon/rig/proc/uninstall(var/obj/item/rig_module/RM, delete = FALSE)
 	installed_modules -= RM
 	processing_modules -= RM
 

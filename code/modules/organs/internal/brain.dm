@@ -223,7 +223,7 @@
 						take_internal_damage(1)
 	..()
 
-/obj/item/organ/internal/brain/take_internal_damage(var/damage, var/silent)
+/obj/item/organ/internal/brain/take_internal_damage(var/damage, silent)
 	set waitfor = 0
 	.=..()
 	if(damage >= 10) //This probably won't be triggered by oxyloss or mercury. Probably.

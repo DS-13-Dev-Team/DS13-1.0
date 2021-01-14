@@ -37,7 +37,7 @@
 	for (var/turf/T in turfs_in_view(visualnet_range))
 		debug_mark_turf(T)
 
-/obj/structure/corruption_node/eye/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
+/obj/structure/corruption_node/eye/proc/nearby_movement(var/atom/movable/AM, atom/old_loc)
 	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if (!H.is_necromorph())
@@ -75,7 +75,7 @@
 
 
 //This datum is basically just because nanouis need to be attached to something
-/datum/sighting_menu/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/sighting_menu/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/list/data = list()
 	var/list/prey = list()
 	for (var/mob/living/L in SSnecromorph.sightings)

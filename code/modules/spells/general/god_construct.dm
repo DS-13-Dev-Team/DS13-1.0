@@ -33,7 +33,7 @@
 	else
 		return
 
-/spell/construction/cast_check(var/skipcharge, var/mob/user, var/list/targets)
+/spell/construction/cast_check(var/skipcharge, mob/user, list/targets)
 	if(!..())
 		return 0
 	var/turf/T = get_turf(user)

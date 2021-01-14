@@ -58,7 +58,7 @@
 	if(cloth)
 		overlays += new /icon(cloth.icon, cloth.icon_state)
 
-/obj/structure/bed/roller/ironingboard/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/bed/roller/ironingboard/attackby(var/obj/item/I, mob/user)
 	if(!density)
 		if(istype(I,/obj/item/clothing) || istype(I,/obj/item/weapon/ironingiron))
 			to_chat(user, "<span class='notice'>[src] isn't deployed!</span>")

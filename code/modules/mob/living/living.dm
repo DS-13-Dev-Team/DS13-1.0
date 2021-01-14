@@ -150,7 +150,7 @@ default behaviour is:
 			return
 	return
 
-/proc/swap_density_check(var/mob/swapper, var/mob/swapee)
+/proc/swap_density_check(var/mob/swapper, mob/swapee)
 	var/turf/T = get_turf(swapper)
 	if(T.density)
 		return 1
@@ -285,7 +285,7 @@ default behaviour is:
 			return 1
 	return 0
 
-/mob/living/proc/can_inject(var/mob/user, var/target_zone)
+/mob/living/proc/can_inject(var/mob/user, target_zone)
 	return 1
 
 /mob/living/proc/get_organ_target()
@@ -516,7 +516,7 @@ default behaviour is:
 	return 1
 
 //Organs should not be removed via inventory procs.
-/mob/living/carbon/drop_from_inventory(var/obj/item/W, var/atom/Target = null)
+/mob/living/carbon/drop_from_inventory(var/obj/item/W, atom/Target = null)
 	if(W in internal_organs)
 		return
 	if(W in organs)
@@ -524,12 +524,12 @@ default behaviour is:
 	. = ..()
 
 //damage/heal the mob ears and adjust the deaf amount
-/mob/living/adjustEarDamage(var/damage, var/deaf)
+/mob/living/adjustEarDamage(var/damage, deaf)
 	ear_damage = max(0, ear_damage + damage)
 	ear_deaf = max(0, ear_deaf + deaf)
 
 //pass a negative argument to skip one of the variable
-/mob/living/setEarDamage(var/damage = null, var/deaf = null)
+/mob/living/setEarDamage(var/damage = null, deaf = null)
 	if(!isnull(damage))
 		ear_damage = damage
 	if(!isnull(deaf))

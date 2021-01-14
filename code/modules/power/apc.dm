@@ -140,7 +140,7 @@
 	if(terminal)
 		terminal.connect_to_network()
 
-/obj/machinery/power/apc/drain_power(var/drain_check, var/surge, var/amount = 0)
+/obj/machinery/power/apc/drain_power(var/drain_check, surge, amount = 0)
 
 	if(drain_check)
 		return 1
@@ -165,7 +165,7 @@
 
 	return drained_energy
 
-/obj/machinery/power/apc/Initialize(mapload, var/ndir, var/building=0)
+/obj/machinery/power/apc/Initialize(mapload, ndir, building=0)
 
 	wires = new(src)
 
@@ -678,7 +678,7 @@
 
 // attack with hand - remove cell (if cover open) or interact with the APC
 
-/obj/machinery/power/apc/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/power/apc/emag_act(var/remaining_charges, mob/user)
 	if (!(emagged || (hacker && !hacker.hacked_apcs_hidden)))		// trying to unlock with an emag card
 		if(opened)
 			to_chat(user, "You must close the cover to swipe an ID card.")
@@ -756,7 +756,7 @@
 	return ui_interact(user)
 
 
-/obj/machinery/power/apc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/apc/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	if(!user)
 		return
 
@@ -856,7 +856,7 @@
 	return wires.IsIndexCut(wireIndex)
 
 
-/obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
+/obj/machinery/power/apc/proc/can_use(mob/user as mob, loud = 0) //used by attack_hand() and Topic()
 	if (user.stat)
 		to_chat(user, "<span class='warning'>You must be conscious to use [src]!</span>")
 		return 0
@@ -1148,7 +1148,7 @@
 // val 0=off, 1=off(auto) 2=on 3=on(auto)
 // on 0=off, 1=on, 2=autooff
 // defines a state machine, returns the new state
-obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
+obj/machinery/power/apc/proc/autoset(var/cur_state, on)
 	switch(cur_state)
 		if(POWERCHAN_OFF); //autoset will never turn on a channel set to off
 		if(POWERCHAN_OFF_TEMP)
@@ -1188,7 +1188,7 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	update_icon()
 	..()
 
-/obj/machinery/power/apc/ex_act(severity, var/atom/epicentre)
+/obj/machinery/power/apc/ex_act(severity, atom/epicentre)
 	switch(severity)
 		if(1.0)
 			if (cell)

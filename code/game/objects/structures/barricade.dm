@@ -12,7 +12,7 @@
 	layer = ABOVE_WINDOW_LAYER
 	var/spiky = FALSE
 
-/obj/structure/barricade/New(var/location, var/material_name)
+/obj/structure/barricade/New(var/location, material_name)
 	if(!material_name)
 		material_name = MATERIAL_WOOD
 	material = get_material_by_name("[material_name]")
@@ -133,7 +133,7 @@
 
 	impale_victim(victim, damage_mult)
 
-/obj/structure/barricade/spike/charge_act(var/atom/mover, var/power)
+/obj/structure/barricade/spike/charge_act(var/atom/mover, power)
 	impale_victim(mover, 3)	//Charging into this thing HURTS!
 	.=..()	//The charge will probably still destroy us though
 
@@ -152,7 +152,7 @@
 	if (.)
 		impale_victim(user, 1.5)
 
-/obj/structure/barricade/spike/proc/impale_victim(var/mob/living/victim, var/damage_mult = 1)
+/obj/structure/barricade/spike/proc/impale_victim(var/mob/living/victim, damage_mult = 1)
 
 	if(!isliving(victim))
 		return FALSE

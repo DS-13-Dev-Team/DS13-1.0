@@ -274,7 +274,7 @@
 //This searched for nearby things that could be used by a harvester node.
 //If single_check is set true, this proc simply returns TRUE if it finds any sources at all, and FALSE otherwise
 //When single_check is disabled, this proc returns a list of two sublists, one for passive objects and one for active objects
-/proc/get_harvestable_biomass_sources(var/atom/source, var/single_check = FALSE)
+/proc/get_harvestable_biomass_sources(var/atom/source, single_check = FALSE)
 	var/list/passive_sources = list()
 	var/list/active_sources = list()
 	for (var/atom/O in view(HARVESTER_HARVEST_RANGE, source))
@@ -349,7 +349,7 @@
 
 	return harvesters
 
-/datum/signal_ability/harvester/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/harvester/on_cast(var/mob/user, atom/target, list/data)
 	var/list/harvesters = get_harvesters(target)
 	if (!harvesters || !harvesters.len)
 		to_chat(user, SPAN_WARNING("No nearby harvesters found to attack from."))
@@ -373,7 +373,7 @@
 	cooldown = HARVESTER_SPINE_COOLDOWN*1.5
 
 
-/datum/signal_ability/harvester/spine/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/harvester/spine/on_cast(var/mob/user, atom/target, list/data)
 	var/list/harvesters = ..()
 	if (!harvesters)
 		return
@@ -414,7 +414,7 @@
 
 	cooldown = HARVESTER_ACID_COOLDOWN*2
 
-/datum/signal_ability/harvester/acid/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/harvester/acid/on_cast(var/mob/user, atom/target, list/data)
 	var/list/harvesters = ..()
 	if (!harvesters)
 		return
@@ -459,7 +459,7 @@
 
 	cooldown = HARVESTER_WHIP_COOLDOWN*2
 
-/datum/signal_ability/harvester/tentacle/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/harvester/tentacle/on_cast(var/mob/user, atom/target, list/data)
 	var/list/harvesters = ..()
 	if (!harvesters)
 		return

@@ -3,7 +3,7 @@
 	return species.attempt_grab(src, target)
 
 
-/datum/species/proc/attempt_grab(var/mob/living/carbon/human/grabber, var/atom/movable/target, var/grab_type)
+/datum/species/proc/attempt_grab(var/mob/living/carbon/human/grabber, atom/movable/target, grab_type)
 	grabber.visible_message("<span class='danger'>[grabber] attempted to grab \the [target]!</span>")
 	return grabber.make_grab(grabber, target, grab_type)
 
@@ -15,7 +15,7 @@
 	var/current_grab_type 	// What type of grab they use when they grab someone. This should be a typepath, an instance of it will be created
 
 
-/mob/living/carbon/human/proc/make_grab(var/mob/living/carbon/human/attacker, var/mob/living/victim, var/grab_tag)
+/mob/living/carbon/human/proc/make_grab(var/mob/living/carbon/human/attacker, mob/living/victim, grab_tag)
 	var/obj/item/grab/G
 	if(!grab_tag)
 		G = new attacker.current_grab_type(attacker, victim)

@@ -33,7 +33,7 @@
 	var/destroyed       // Whether we are destroyed and need to stop emitting light.
 	var/force_update
 
-/datum/light_source/New(var/atom/owner, var/atom/top)
+/datum/light_source/New(var/atom/owner, atom/top)
 	total_lighting_sources++
 	source_atom = owner // Set our new owner.
 	if(!source_atom.light_sources)
@@ -361,7 +361,7 @@
 		effect_str -= C
 
 
-/datum/light_source/proc/update_the_turf(var/turf/T, var/list/datum/lighting_corner/corners, var/list/turf/turfs)
+/datum/light_source/proc/update_the_turf(var/turf/T, list/datum/lighting_corner/corners, list/turf/turfs)
 	if(!T.lighting_corners_initialised)
 		T.generate_missing_corners()
 	corners |= T.get_corners()

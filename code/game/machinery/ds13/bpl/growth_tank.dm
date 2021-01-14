@@ -292,7 +292,7 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 		start_growing(choice, user)
 
 
-/obj/machinery/growth_tank/proc/start_growing(var/choice, var/mob/user)
+/obj/machinery/growth_tank/proc/start_growing(var/choice, mob/user)
 	if (!QDELETED(current_growth_atom) && current_growth_atom.loc == src)
 		return
 
@@ -374,7 +374,7 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 /obj/machinery/growth_tank/attack_hand(var/mob/living/carbon/human/user)
 	show_menu(user)
 
-/obj/machinery/growth_tank/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/growth_tank/attackby(var/obj/item/I, mob/user)
 	if(!I || !user)
 		return
 

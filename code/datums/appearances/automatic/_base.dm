@@ -6,7 +6,7 @@
 	..()
 	appearance_sources = list()
 
-/decl/appearance_handler/proc/AddAltAppearance(var/source, var/list/images, var/list/viewers = list())
+/decl/appearance_handler/proc/AddAltAppearance(var/source, list/images, list/viewers = list())
 	if(source in appearance_sources)
 		return FALSE
 	appearance_sources[source] = new/datum/appearance_data(images, viewers, priority)
@@ -19,7 +19,7 @@
 		appearance_sources -= source
 		qdel(ad)
 
-/decl/appearance_handler/proc/DisplayAltAppearanceTo(var/source, var/viewer)
+/decl/appearance_handler/proc/DisplayAltAppearanceTo(var/source, viewer)
 	var/datum/appearance_data/ad = appearance_sources[source]
 	if(ad)
 		ad.AddViewer(viewer)

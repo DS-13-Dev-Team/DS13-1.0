@@ -127,7 +127,7 @@ Class Procs:
 	var/list/processing_parts // Component parts queued for processing by the machine. Expected type: /obj/item/weapon/stock_parts
 	var/processing_flags         // What is being processed
 
-/obj/machinery/New(var/atom/location, var/direction, var/nocircuit = FALSE)
+/obj/machinery/New(var/atom/location, direction, nocircuit = FALSE)
 
 
 	//Nocircuit=TRUE will skip the default circuit init
@@ -243,7 +243,7 @@ Class Procs:
 		use_power(active_power_usage,power_channel, 1)
 	return 1
 
-/proc/is_operable(var/obj/machinery/M, var/mob/user)
+/proc/is_operable(var/obj/machinery/M, mob/user)
 	return istype(M) && M.operable()
 
 /obj/machinery/proc/operable(var/additional_flags = 0)
@@ -341,14 +341,14 @@ Class Procs:
 			return 1
 	return 0
 
-/obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/weapon/tool/crowbar/C)
+/obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, obj/item/weapon/tool/crowbar/C)
 	if(!istype(C))
 		return 0
 	if(!panel_open)
 		return 0
 	. = dismantle()
 
-/obj/machinery/proc/default_deconstruction_screwdriver(var/mob/user, var/obj/item/weapon/tool/screwdriver/S)
+/obj/machinery/proc/default_deconstruction_screwdriver(var/mob/user, obj/item/weapon/tool/screwdriver/S)
 	if(!istype(S))
 		return 0
 	playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
@@ -357,7 +357,7 @@ Class Procs:
 	update_icon()
 	return 1
 
-/obj/machinery/proc/default_part_replacement(var/mob/user, var/obj/item/weapon/storage/part_replacer/R)
+/obj/machinery/proc/default_part_replacement(var/mob/user, obj/item/weapon/storage/part_replacer/R)
 	if(!istype(R))
 		return 0
 	if(!component_parts)

@@ -21,7 +21,7 @@
 	var/x_shift = 0
 	var/y_shift = 0
 
-/obj/effect/step_trigger/mobius_rift/seamless_portal/Initialize(var/mapload, var/towards)
+/obj/effect/step_trigger/mobius_rift/seamless_portal/Initialize(var/mapload, towards)
 	. = ..()
 	if (towards == NORTH)
 		y_shift = 1
@@ -84,7 +84,7 @@
 /obj/effect/mobius_rift/chamber
 	var/list/portals = list()
 
-/obj/effect/mobius_rift/chamber/Initialize(var/mapload, var/grid_size)//NORTH, SOUTH, EAST, WEST
+/obj/effect/mobius_rift/chamber/Initialize(var/mapload, grid_size)//NORTH, SOUTH, EAST, WEST
 	. = ..()
 	var/turf/T
 	T = locate(src.x, src.y + round(grid_size/2), src.z)

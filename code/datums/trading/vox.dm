@@ -82,7 +82,7 @@
 		return ..()
 	return 0
 
-/datum/trader/ship/vox/get_response(var/text, var/generic)
+/datum/trader/ship/vox/get_response(var/text, generic)
 	return ..("[text][hailed_vox]", generic)
 
 /datum/trader/ship/vox/get_item_value(var/trading_num)

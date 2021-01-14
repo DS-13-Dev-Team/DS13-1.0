@@ -10,10 +10,10 @@
 /*
 	Slasher Mob setup
 */
-/mob/living/carbon/human/necromorph/slasher/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER)
+/mob/living/carbon/human/necromorph/slasher/New(var/new_loc, new_species = SPECIES_NECROMORPH_SLASHER)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/slasher_enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER_ENHANCED)
+/mob/living/carbon/human/necromorph/slasher_enhanced/New(var/new_loc, new_species = SPECIES_NECROMORPH_SLASHER_ENHANCED)
 	..(new_loc, new_species)
 
 //A dummy version of slasher for target practise
@@ -26,46 +26,46 @@
 	STOP_PROCESSING(SSmobs, src)
 
 
-/mob/living/carbon/human/necromorph/divider/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_DIVIDER)
+/mob/living/carbon/human/necromorph/divider/New(var/new_loc, new_species = SPECIES_NECROMORPH_DIVIDER)
 	..(new_loc, new_species)
 
 
-/mob/living/carbon/human/necromorph/spitter/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SPITTER)
+/mob/living/carbon/human/necromorph/spitter/New(var/new_loc, new_species = SPECIES_NECROMORPH_SPITTER)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/puker/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_PUKER)
+/mob/living/carbon/human/necromorph/puker/New(var/new_loc, new_species = SPECIES_NECROMORPH_PUKER)
 	..(new_loc, new_species)
 
 
 
-/mob/living/carbon/human/necromorph/tripod/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_TRIPOD)
+/mob/living/carbon/human/necromorph/tripod/New(var/new_loc, new_species = SPECIES_NECROMORPH_TRIPOD)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/twitcher/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_TWITCHER)
+/mob/living/carbon/human/necromorph/twitcher/New(var/new_loc, new_species = SPECIES_NECROMORPH_TWITCHER)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/brute/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_BRUTE)
+/mob/living/carbon/human/necromorph/brute/New(var/new_loc, new_species = SPECIES_NECROMORPH_BRUTE)
 	if (prob(50))
 		new_species = SPECIES_NECROMORPH_BRUTE_FLESH
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/exploder/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_EXPLODER)
+/mob/living/carbon/human/necromorph/exploder/New(var/new_loc, new_species = SPECIES_NECROMORPH_EXPLODER)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/leaper/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER)
+/mob/living/carbon/human/necromorph/leaper/New(var/new_loc, new_species = SPECIES_NECROMORPH_LEAPER)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/leaper/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER_ENHANCED)
+/mob/living/carbon/human/necromorph/leaper/enhanced/New(var/new_loc, new_species = SPECIES_NECROMORPH_LEAPER_ENHANCED)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/lurker/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LURKER)
+/mob/living/carbon/human/necromorph/lurker/New(var/new_loc, new_species = SPECIES_NECROMORPH_LURKER)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/ubermorph/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_UBERMORPH)
+/mob/living/carbon/human/necromorph/ubermorph/New(var/new_loc, new_species = SPECIES_NECROMORPH_UBERMORPH)
 	..(new_loc, new_species)
 
 
-/mob/living/carbon/human/necromorph/hunter/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_HUNTER)
+/mob/living/carbon/human/necromorph/hunter/New(var/new_loc, new_species = SPECIES_NECROMORPH_HUNTER)
 	..(new_loc, new_species)
 
 /mob/living/carbon/human/necromorph/update_icons()

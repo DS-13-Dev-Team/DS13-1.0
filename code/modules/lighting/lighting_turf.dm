@@ -12,7 +12,7 @@
 /turf/New()
 	opaque_counter = opacity
 	..()
-	
+
 /turf/set_opacity()
 	. = ..()
 	handle_opacity_change(src)
@@ -50,7 +50,7 @@
 				C.active = TRUE
 
 // Used to get a scaled lumcount.
-/turf/proc/get_lumcount(var/minlum = 0, var/maxlum = 1)
+/turf/proc/get_lumcount(var/minlum = 0, maxlum = 1)
 	if(!lighting_overlay)
 		var/area/A = loc
 		if(A.dynamic_lighting)
@@ -68,14 +68,14 @@
 	return CLAMP01(totallums)
 
 // If an opaque movable atom moves around we need to potentially update visibility.
-/turf/Entered(var/atom/movable/Obj, var/atom/OldLoc)
+/turf/Entered(var/atom/movable/Obj, atom/OldLoc)
 	. = ..()
 	if(Obj && Obj.opacity)
 		if(!opaque_counter++)
 			reconsider_lights()
-		
 
-/turf/Exited(var/atom/movable/Obj, var/atom/newloc)
+
+/turf/Exited(var/atom/movable/Obj, atom/newloc)
 	. = ..()
 	if(Obj && Obj.opacity)
 		if(!(--opaque_counter))
@@ -109,5 +109,4 @@
 			opaque_counter--
 			if(old_counter && !opaque_counter)
 				reconsider_lights()
-	
-	
+

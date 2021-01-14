@@ -1,4 +1,4 @@
-/proc/send2irc(var/channel, var/msg)
+/proc/send2irc(var/channel, msg)
 	export2irc(list(type="msg", mesg=msg, chan=channel, pwd=config.comms_password))
 
 /proc/export2irc(params)

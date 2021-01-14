@@ -21,7 +21,7 @@
 	var/vector2/relative_offset	//An offset that is multiplied by the aim direction before being added to the starting position
 	var/vector2/relative_offset_rotated //The above but with the rotation baked in
 
-/obj/effect/particle_system/New(var/atom/host, var/direction, var/duration, var/particle_travel_distance, var/angle)
+/obj/effect/particle_system/New(var/atom/host, direction, duration, particle_travel_distance, angle)
 	origin = host
 	origin_turf = get_turf(host)
 
@@ -104,7 +104,7 @@
 	return S
 
 /*
-/obj/effect/chem_spray(var/atom/location, var/atom/host, var/initial_target)
+/obj/effect/chem_spray(var/atom/location, atom/host, initial_target)
 	origin = host
 	if (initial(target))
 

@@ -67,7 +67,7 @@
 		if(!shattered)
 			shatter()
 
-/obj/item/weapon/storage/mirror/attack_generic(var/mob/user, var/damage)
+/obj/item/weapon/storage/mirror/attack_generic(var/mob/user, damage)
 	attack_animation(user)
 	if(shattered)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)

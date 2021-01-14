@@ -89,7 +89,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 			active = 1
 			update_icon()
 
-/obj/machinery/message_server/proc/send_rc_message(var/recipient = "",var/sender = "",var/message = "",var/stamp = "", var/id_auth = "", var/priority = 1)
+/obj/machinery/message_server/proc/send_rc_message(var/recipient = "",var/sender = "",var/message = "",var/stamp = "", id_auth = "", priority = 1)
 	rc_msgs += new/datum/data_rc_msg(recipient,sender,message,stamp,id_auth)
 	var/authmsg = "[message]<br>"
 	if (id_auth)
@@ -143,7 +143,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 
 	return
 
-/obj/machinery/message_server/proc/send_to_department(var/department, var/message, var/tone)
+/obj/machinery/message_server/proc/send_to_department(var/department, message, tone)
 	var/reached = 0
 
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)

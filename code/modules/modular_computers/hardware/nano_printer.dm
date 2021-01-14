@@ -13,7 +13,7 @@
 	..()
 	to_chat(user, "Paper buffer level: [stored_paper]/[max_paper]")
 
-/obj/item/weapon/computer_hardware/nano_printer/proc/print_text(var/text_to_print, var/paper_title = null)
+/obj/item/weapon/computer_hardware/nano_printer/proc/print_text(var/text_to_print, paper_title = null)
 	if(!stored_paper)
 		return 0
 	if(!enabled)

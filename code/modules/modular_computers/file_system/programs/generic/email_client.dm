@@ -172,7 +172,7 @@
 	last_message_count = 0
 	read_message_count = 0
 
-/datum/nano_module/email_client/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/email_client/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	// Password has been changed by other client connected to this email account
@@ -441,7 +441,7 @@
 		msg_recipient = M.source
 		msg_title = "Re: [M.title]"
 		var/atom/movable/AM = host
-		if(istype(AM))		
+		if(istype(AM))
 			if(ismob(AM.loc))
 				ui_interact(AM.loc)
 		return 1

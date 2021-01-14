@@ -10,13 +10,13 @@
 	var/initial_lock_value //for mapping purposes. Basically if this value is set, it sets the lock to this value.
 
 
-/obj/machinery/door/unpowered/simple/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/obj/machinery/door/unpowered/simple/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	TemperatureAct(exposed_temperature)
 
 /obj/machinery/door/unpowered/simple/proc/TemperatureAct(temperature)
 	take_damage(100*material.combustion_effect(get_turf(src),temperature, 0.3))
 
-/obj/machinery/door/unpowered/simple/New(var/newloc, var/material_name, var/locked)
+/obj/machinery/door/unpowered/simple/New(var/newloc, material_name, locked)
 	..()
 	if(!material_name)
 		material_name = MATERIAL_STEEL

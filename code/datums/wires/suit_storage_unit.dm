@@ -33,7 +33,7 @@ var/const/SUIT_STORAGE_WIRE_LOCKED		= 4
 		if(SUIT_STORAGE_WIRE_LOCKED)
 			S.locked = !S.locked
 
-/datum/wires/suit_storage_unit/UpdateCut(var/index, var/mended)
+/datum/wires/suit_storage_unit/UpdateCut(var/index, mended)
 	var/obj/machinery/suit_cycler/S = holder
 	switch(index)
 		if(SUIT_STORAGE_WIRE_SAFETY)

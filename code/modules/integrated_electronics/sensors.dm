@@ -78,7 +78,7 @@
 	set_pin_data(IC_OUTPUT, 1, weakref(enterer))
 	activate_pin(2)
 
-/obj/item/integrated_circuit/sensor/proximity/proc/on_turfs_changed(var/list/old_turfs, var/list/new_turfs)
+/obj/item/integrated_circuit/sensor/proximity/proc/on_turfs_changed(var/list/old_turfs, list/new_turfs)
 	return
 
 /obj/item/integrated_circuit/sensor/proximity/proc/shall_trigger(var/enterer)
@@ -123,7 +123,7 @@
 			current_beam_visibility = new_beam_visibility
 			update_beam()
 
-/obj/item/integrated_circuit/sensor/proximity/ir/on_turfs_changed(var/list/old_turfs, var/list/new_turfs)
+/obj/item/integrated_circuit/sensor/proximity/ir/on_turfs_changed(var/list/old_turfs, list/new_turfs)
 	seen_turfs = new_turfs
 	update_beam()
 

@@ -12,7 +12,7 @@
 	//Some things, notably passives, may set it higher
 
 
-/datum/craft_step/New(var/list/params, var/datum/craft_recipe/_parent)
+/datum/craft_step/New(var/list/params, datum/craft_recipe/_parent)
 	parent = _parent
 	if (parent)
 		time = parent.time
@@ -23,7 +23,7 @@
 	return
 
 
-/datum/craft_step/proc/load_time(var/input, var/params)
+/datum/craft_step/proc/load_time(var/input, params)
 	if (isnum(input))
 		time = input
 	else if (input == "time")
@@ -110,7 +110,7 @@
 		I.consume_resources(time)
 
 
-/datum/craft_step/proc/is_valid_to_consume(var/obj/item/I, var/mob/living/user)
+/datum/craft_step/proc/is_valid_to_consume(var/obj/item/I, mob/living/user)
 	var/holder = I.get_holding_mob()
 	//Next we must check if we're actually allowed to submit it
 	if (!holder)
@@ -144,7 +144,7 @@
 
 
 //Used when searching for components. Returns a list of stuff which can be searched through
-/datum/craft_step/proc/get_search_list(var/mob/living/user, var/atom/craft)
+/datum/craft_step/proc/get_search_list(var/mob/living/user, atom/craft)
 	var/list/items = list()
 	var/turf/centrepoint = null
 	//If there is a user, we add everything that user is wearing and holding

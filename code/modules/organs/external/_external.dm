@@ -322,7 +322,7 @@
 	return
 
 
-/obj/item/organ/external/replaced(var/mob/living/carbon/human/target, var/update = TRUE)
+/obj/item/organ/external/replaced(var/mob/living/carbon/human/target, update = TRUE)
 	..()
 
 	if(istype(owner))
@@ -364,7 +364,7 @@
 			parent.update_damages()
 
 //Helper proc used by various tools for repairing robot limbs
-/obj/item/organ/external/proc/robo_repair(var/repair_amount, var/damage_type, var/damage_desc, obj/item/tool, mob/living/user)
+/obj/item/organ/external/proc/robo_repair(var/repair_amount, damage_type, damage_desc, obj/item/tool, mob/living/user)
 	if((!BP_IS_ROBOTIC(src)))
 		return 0
 
@@ -464,7 +464,7 @@ This function completely restores a damaged organ to perfect condition.
 		I.remove_rejuv()
 	..()
 
-/obj/item/organ/external/proc/createwound(var/type = CUT, var/damage, var/surgical, var/forced_type = null)
+/obj/item/organ/external/proc/createwound(var/type = CUT, damage, surgical, forced_type = null)
 
 	// Handle some status-based damage multipliers.
 	if(type == BRUISE && BP_IS_BRITTLE(src))
@@ -835,7 +835,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /****************************************************
 			   DISMEMBERMENT
 ****************************************************/
-/obj/item/organ/external/proc/get_droplimb_messages_for(var/droptype, var/clean)
+/obj/item/organ/external/proc/get_droplimb_messages_for(var/droptype, clean)
 
 	if(BP_IS_CRYSTAL(src))
 		playsound(src, "shatter", 70, 1)
@@ -871,7 +871,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 					)
 
 //Handles dismemberment
-/obj/item/organ/external/proc/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent, var/atom/cutter)
+/obj/item/organ/external/proc/droplimb(var/clean, disintegrate = DROPLIMB_EDGE, ignore_children, silent, atom/cutter)
 
 	if(!(limb_flags & ORGAN_FLAG_CAN_AMPUTATE) || !owner)
 		return
@@ -1146,7 +1146,7 @@ obj/item/organ/external/proc/remove_clamps()
 		return 1
 	return 0
 
-/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = 0, var/keep_organs = 0)
+/obj/item/organ/external/robotize(var/company, skip_prosthetics = 0, keep_organs = 0)
 
 	if(BP_IS_ROBOTIC(src))
 		return
@@ -1209,7 +1209,7 @@ obj/item/organ/external/proc/remove_clamps()
 /obj/item/organ/external/proc/is_malfunctioning()
 	return (BP_IS_ROBOTIC(src) && (brute_dam + burn_dam) >= 10 && prob(brute_dam + burn_dam))
 
-/obj/item/organ/external/proc/embed(var/obj/item/weapon/W, var/silent = 0, var/supplied_message, var/datum/wound/supplied_wound)
+/obj/item/organ/external/proc/embed(var/obj/item/weapon/W, silent = 0, supplied_message, datum/wound/supplied_wound)
 	if(!owner || loc != owner)
 		return
 	if(species.species_flags & SPECIES_FLAG_NO_EMBED)
@@ -1242,7 +1242,7 @@ obj/item/organ/external/proc/remove_clamps()
 	W.loc = owner
 
 
-/obj/item/organ/external/proc/unembed(var/obj/item/I, var/atom/new_location, var/silent = 0, var/supplied_message)
+/obj/item/organ/external/proc/unembed(var/obj/item/I, atom/new_location, silent = 0, supplied_message)
 	if (owner)
 		LAZYREMOVE(owner.implants,I)
 		if (!LAZYLEN(owner.implants))
@@ -1272,7 +1272,7 @@ obj/item/organ/external/proc/remove_clamps()
 	I.forceMove(new_location)
 
 
-/obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)
+/obj/item/organ/external/removed(var/mob/living/user, ignore_children = 0)
 
 	if(!owner)
 		return
@@ -1599,7 +1599,7 @@ obj/item/organ/external/proc/remove_clamps()
 		add_pain(Clamp(0, max_halloss - owner.getHalLoss(), 30))
 
 //Adds autopsy data for used_weapon.
-/obj/item/organ/external/proc/add_autopsy_data(var/used_weapon, var/damage)
+/obj/item/organ/external/proc/add_autopsy_data(var/used_weapon, damage)
 	var/datum/autopsy_data/W = autopsy_data[used_weapon]
 	if(!W)
 		W = new()

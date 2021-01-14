@@ -27,7 +27,7 @@
 /*
 	Initialization
 */
-/datum/extension/corruption_source/New(var/atom/holder, var/range, var/speed, var/falloff, var/limit)
+/datum/extension/corruption_source/New(var/atom/holder, range, speed, falloff, limit)
 	source = holder
 	sourceturf = get_turf(source)
 	GLOB.corruption_sources |= src
@@ -125,7 +125,7 @@
 	return TRUE
 
 
-/datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, var/old_loc, var/new_loc)
+/datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, old_loc, new_loc)
 	sourceturf = get_turf(source)
 	update_vines()
 

@@ -214,7 +214,7 @@
 *   Item Adding
 ********************/
 
-/obj/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/smartfridge/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(isScrewdriver(O))
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")
@@ -256,7 +256,7 @@
 		to_chat(user, "<span class='notice'>\The [src] smartly refuses [O].</span>")
 	return 1
 
-/obj/machinery/smartfridge/secure/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/smartfridge/secure/emag_act(var/remaining_charges, mob/user)
 	if(!emagged)
 		emagged = 1
 		locked = -1
@@ -273,7 +273,7 @@
 	dd_insertObjectList(item_records, I)
 	stock(I, O)
 
-/obj/machinery/smartfridge/proc/stock(var/datum/stored_items/I, var/obj/item/O)
+/obj/machinery/smartfridge/proc/stock(var/datum/stored_items/I, obj/item/O)
 	I.add_product(O)
 	SSnano.update_uis(src)
 
@@ -290,7 +290,7 @@
 *   SmartFridge Menu
 ********************/
 
-/obj/machinery/smartfridge/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/smartfridge/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]

@@ -193,7 +193,7 @@
 		for(var/obj/item/integrated_circuit/IO in contents)
 			IO.external_examine(user, opened)
 
-/obj/item/device/electronic_assembly/attackby(var/obj/item/I, var/mob/user)
+/obj/item/device/electronic_assembly/attackby(var/obj/item/I, mob/user)
 	if(istype(I, /obj/item/integrated_circuit))
 		if(!user.unEquip(I))
 			return 0
@@ -250,12 +250,12 @@
 	for(var/atom/movable/AM in contents)
 		AM.emp_act(severity)
 
-/obj/item/device/electronic_assembly/ex_act(severity, var/atom/epicentre)
+/obj/item/device/electronic_assembly/ex_act(severity, atom/epicentre)
 	for(var/obj/thing in src)
 		thing.ex_act(severity, epicentre)
 	..()
 
-/obj/item/device/electronic_assembly/proc/add_circuit(var/obj/item/integrated_circuit/IC, var/mob/user)
+/obj/item/device/electronic_assembly/proc/add_circuit(var/obj/item/integrated_circuit/IC, mob/user)
 	if(!opened)
 		to_chat(user, "<span class='warning'>\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar.</span>")
 		return FALSE
@@ -272,7 +272,7 @@
 
 	return IC.forceMove(src)
 
-/obj/item/device/electronic_assembly/proc/apply_shell(var/obj/item/electronic_assembly_shell/a_shell, var/user)
+/obj/item/device/electronic_assembly/proc/apply_shell(var/obj/item/electronic_assembly_shell/a_shell, user)
 	if(applied_shell)
 		to_chat(user, "<span class='warning'>There is already a shell attached.</span>")
 		return 0

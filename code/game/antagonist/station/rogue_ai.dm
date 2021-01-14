@@ -18,7 +18,7 @@ GLOBAL_DATUM_INIT(malf, /datum/antagonist/rogue_ai, new)
 	min_player_age = 18
 	skill_setter = /datum/antag_skill_setter/ai
 
-/datum/antagonist/rogue_ai/can_become_antag(var/datum/mind/player, var/ignore_role)
+/datum/antagonist/rogue_ai/can_become_antag(var/datum/mind/player, ignore_role)
 	. = ..(player, ignore_role)
 	if(jobban_isbanned(player.current, "AI"))
 		return 0
@@ -33,7 +33,7 @@ GLOBAL_DATUM_INIT(malf, /datum/antagonist/rogue_ai, new)
 
 
 // Ensures proper reset of all malfunction related things.
-/datum/antagonist/rogue_ai/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
+/datum/antagonist/rogue_ai/remove_antagonist(var/datum/mind/player, show_message, implanted)
 	if(..(player,show_message,implanted))
 		var/mob/living/silicon/ai/p = player.current
 		if(istype(p))
@@ -81,7 +81,7 @@ GLOBAL_DATUM_INIT(malf, /datum/antagonist/rogue_ai, new)
 		to_chat(malf, "Good luck!")
 
 
-/datum/antagonist/rogue_ai/update_antag_mob(var/datum/mind/player, var/preserve_appearance)
+/datum/antagonist/rogue_ai/update_antag_mob(var/datum/mind/player, preserve_appearance)
 
 	// Get the mob.
 	if((flags & ANTAG_OVERRIDE_MOB) && (!player.current || (mob_path && !istype(player.current, mob_path))))

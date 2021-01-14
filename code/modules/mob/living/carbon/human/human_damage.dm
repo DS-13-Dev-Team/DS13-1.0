@@ -1,5 +1,5 @@
 
-/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null)
+/mob/living/carbon/human/apply_damage(var/damage = 0, damagetype = BRUTE, def_zone = null, blocked = 0, damage_flags = 0, obj/used_weapon = null, obj/item/organ/external/given_organ = null)
 	SET_ARGS(species.handle_apply_damage(arglist(list(src)+args)))
 	var/obj/item/organ/external/organ = given_organ
 	if(!organ)
@@ -287,7 +287,7 @@
 		//If this is causing damage, take_internal_damage will call update health
 		updatehealth()
 
-/mob/living/carbon/human/proc/can_autoheal(var/dam_type, var/datum/wound/W)
+/mob/living/carbon/human/proc/can_autoheal(var/dam_type, datum/wound/W)
 	if(!species || !dam_type) return FALSE
 
 	return species.can_autoheal(src, dam_type, W)
@@ -297,7 +297,7 @@
 ////////////////////////////////////////////
 
 //Returns a list of damaged organs
-/mob/living/carbon/human/proc/get_damaged_organs(var/brute, var/burn)
+/mob/living/carbon/human/proc/get_damaged_organs(var/brute, burn)
 	var/list/obj/item/organ/external/parts = list()
 	for(var/obj/item/organ/external/O in organs)
 		if((brute && O.brute_dam) || (burn && O.burn_dam))
@@ -315,7 +315,7 @@
 //Heals ONE external organ, organ gets randomly selected from damaged ones.
 //It automatically updates damage overlays if necesary
 //It automatically updates health status
-/mob/living/carbon/human/heal_organ_damage(var/brute, var/burn)
+/mob/living/carbon/human/heal_organ_damage(var/brute, burn)
 	var/list/obj/item/organ/external/parts = get_damaged_organs(brute,burn)
 	if(!parts.len)	return
 	var/obj/item/organ/external/picked = pick(parts)
@@ -332,7 +332,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 //Damages ONE external organ, organ gets randomly selected from damagable ones.
 //It automatically updates damage overlays if necesary
 //It automatically updates health status
-/mob/living/carbon/human/take_organ_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0)
+/mob/living/carbon/human/take_organ_damage(var/brute, burn, sharp = 0, edge = 0)
 	var/list/obj/item/organ/external/parts = get_damageable_organs()
 	if(!parts.len)
 		return
@@ -347,7 +347,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 //Heal MANY external organs, in random order
 //If no damage type specified, heals all forms of external damage
-/mob/living/carbon/human/heal_overall_damage(var/heal_amount, var/damage_type)
+/mob/living/carbon/human/heal_overall_damage(var/heal_amount, damage_type)
 	if (heal_amount <= 0 || !isnum(heal_amount))
 		return
 
@@ -382,7 +382,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	BITSET(hud_updateflag, HEALTH_HUD)
 
 // damage MANY external organs, in random order
-/mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null, var/armortype ="melee" )
+/mob/living/carbon/human/take_overall_damage(var/brute, burn, sharp = 0, edge = 0, used_weapon = null, armortype ="melee" )
 	if(status_flags & GODMODE)	return	//godmode
 	var/list/obj/item/organ/external/parts = get_damageable_organs()
 	if(!parts.len) return
@@ -439,13 +439,13 @@ This function restores all organs.
 	return organs_by_name[check_zone(zone)]
 
 
-/mob/living/carbon/human/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0)
+/mob/living/carbon/human/apply_effect(var/effect = 0,var/effecttype = STUN, blocked = 0)
 	if(effecttype == IRRADIATE && (effect * blocked_mult(blocked) <= RAD_LEVEL_LOW))
 		return 0
 	return ..()
 
 
-/mob/living/carbon/human/ex_act(severity, var/atom/epicentre)
+/mob/living/carbon/human/ex_act(severity, atom/epicentre)
 	if(!blinded)
 		flash_eyes()
 

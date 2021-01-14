@@ -30,7 +30,7 @@
 /obj/structure/wall_frame/Initialize()
 	. = ..()
 
-/obj/structure/wall_frame/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/structure/wall_frame/attackby(var/obj/item/weapon/W, mob/user)
 	src.add_fingerprint(user)
 
 	//grille placing begin

@@ -24,7 +24,7 @@ var/const/SMES_WIRE_FAILSAFES = 16	// Cut to disable failsafes, mend to reenable
 	. += "The blue light is [S.RCon ? "on" : "off"]"
 
 
-/datum/wires/smes/UpdateCut(var/index, var/mended)
+/datum/wires/smes/UpdateCut(var/index, mended)
 	var/obj/machinery/power/smes/buildable/S = holder
 	switch(index)
 		if(SMES_WIRE_RCON)

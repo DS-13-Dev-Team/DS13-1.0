@@ -21,7 +21,7 @@
 	QDEL_NULL(artifact_find)
 	.=..()
 
-/obj/structure/boulder/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/boulder/attackby(var/obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/core_sampler))
 		src.geological_data.artifact_distance = rand(-100,100) / 100
 		src.geological_data.artifact_id = artifact_find.artifact_id

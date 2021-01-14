@@ -58,7 +58,7 @@
 	neighbors = list()
 	neighbors = get_neighbors(TRUE, TRUE)
 
-/obj/effect/vine/proc/get_neighbors(var/zcheck = TRUE, var/bounds = TRUE)
+/obj/effect/vine/proc/get_neighbors(var/zcheck = TRUE, bounds = TRUE)
 	var/list/newneighbors = list()
 	var/list/candidates = get_cardinal_neighbors()
 	if (zcheck)
@@ -80,7 +80,7 @@
 	return newneighbors
 
 
-/obj/effect/vine/proc/can_spread_to(var/turf/floor, var/bounds)
+/obj/effect/vine/proc/can_spread_to(var/turf/floor, bounds)
 	if(bounds && !can_reach(floor))
 		return FALSE
 

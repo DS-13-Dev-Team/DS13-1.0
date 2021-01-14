@@ -5,7 +5,7 @@
 	icon_state = "material"
 	var/material/material
 
-/obj/item/clothing/ring/material/New(var/newloc, var/new_material)
+/obj/item/clothing/ring/material/New(var/newloc, new_material)
 	..(newloc)
 	if(!new_material)
 		new_material = MATERIAL_STEEL

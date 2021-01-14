@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(skybox)
 	background_color = SSskybox.background_color
 	skybox_cache = SSskybox.skybox_cache
 
-/datum/controller/subsystem/skybox/proc/get_skybox(var/z, var/range = world.view)
+/datum/controller/subsystem/skybox/proc/get_skybox(var/z, range = world.view)
 	if(!skybox_cache["[z]_[range]"])
 		skybox_cache["[z]_[range]"] = generate_skybox(z, range)
 		/*
@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(skybox)
 		*/
 	return skybox_cache["[z]_[range]"]
 
-/datum/controller/subsystem/skybox/proc/generate_skybox(var/z, var/range = world.view)
+/datum/controller/subsystem/skybox/proc/generate_skybox(var/z, range = world.view)
 	var/icon/I = skybox_icon
 	if (range > world.view)
 		var/scalar = view_scalar(range)

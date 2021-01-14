@@ -24,7 +24,7 @@
 /spell/toggle_armor/choose_targets()
 	return list(holder)
 
-/spell/toggle_armor/cast(var/list/targets, var/mob/user)
+/spell/toggle_armor/cast(var/list/targets, mob/user)
 	equip = !equip
 	name = "[initial(name)] ([equip ? "off" : "on"])"
 	if(equip)

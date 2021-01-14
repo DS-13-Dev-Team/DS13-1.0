@@ -26,7 +26,7 @@ var/const/CAMERA_WIRE_ALARM = 8
 var/const/CAMERA_WIRE_NOTHING1 = 16
 var/const/CAMERA_WIRE_NOTHING2 = 32
 
-/datum/wires/camera/UpdateCut(var/index, var/mended)
+/datum/wires/camera/UpdateCut(var/index, mended)
 	var/obj/machinery/camera/C = holder
 
 	switch(index)

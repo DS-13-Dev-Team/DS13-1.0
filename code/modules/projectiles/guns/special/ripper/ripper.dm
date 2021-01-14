@@ -59,7 +59,7 @@
 
 
 //Whenever afterattack is called on the ripper...
-/obj/item/weapon/gun/projectile/ripper/afterattack(atom/A, mob/living/user, adjacent, params, var/vector2/global_clickpoint)
+/obj/item/weapon/gun/projectile/ripper/afterattack(atom/A, mob/living/user, adjacent, params, vector2/global_clickpoint)
 
 	if (global_clickpoint)
 		last_clickpoint = global_clickpoint
@@ -113,7 +113,7 @@
 
 
 //Don't fire another blade if there's one out
-/obj/item/weapon/gun/projectile/ripper/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
+/obj/item/weapon/gun/projectile/ripper/can_fire(atom/target, mob/living/user, clickparams, silent = FALSE)
 	if (blade)
 		return FALSE
 
@@ -130,7 +130,7 @@
 			P.health = ammo.health
 
 //This is the proc where the projectile is launched from the gun. We override it here because we don't want the blade to necessarily go flying
-/obj/item/weapon/gun/projectile/ripper/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
+/obj/item/weapon/gun/projectile/ripper/process_projectile(obj/projectile, mob/user, atom/target, target_zone, params=null)
 
 	//If we're in remote control mode, we place the projectile in the world manually
 	var/datum/firemode/current_mode = firemodes[sel_mode]

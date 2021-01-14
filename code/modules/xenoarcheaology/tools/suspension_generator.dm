@@ -162,7 +162,7 @@
 		else
 			to_chat(user, "<span class='warning'>Remove [auth_card] first.</span>")
 
-/obj/machinery/suspension_gen/proc/attempt_unlock(var/obj/item/weapon/card/C, var/mob/user)
+/obj/machinery/suspension_gen/proc/attempt_unlock(var/obj/item/weapon/card/C, mob/user)
 	if(!panel_open)
 		if(istype(C, /obj/item/weapon/card/emag))
 			C.resolve_attackby(src, user)
@@ -171,7 +171,7 @@
 		if(!locked)
 			return 1
 
-/obj/machinery/suspension_gen/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/suspension_gen/emag_act(var/remaining_charges, mob/user)
 	if(cell.charge > 0 && locked)
 		locked = 0
 		return 1

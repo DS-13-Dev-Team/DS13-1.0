@@ -19,7 +19,7 @@
 	continue_check = FALSE	//We're not gonna be stopped if we die mid air, the leap continues til it impacts
 	blur_filter_strength = 4
 
-/datum/extension/charge/leap/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
+/datum/extension/charge/leap/New(var/datum/holder, atom/_target, _speed , _lifespan, _maxrange, _homing, _inertia = FALSE, _power, _cooldown, _delay)
 	.=..()
 	homing = FALSE
 
@@ -63,7 +63,7 @@
 	return leap_attack(A)
 
 
-/atom/movable/proc/leap_attack(var/atom/_target, var/_speed = 7, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = FALSE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0, var/subtype = /datum/extension/charge/leap)
+/atom/movable/proc/leap_attack(var/atom/_target, _speed = 7, _lifespan = 2 SECONDS, _maxrange = null, _homing = FALSE, _inertia = FALSE, _power = 0, _cooldown = 20 SECONDS, _delay = 0, subtype = /datum/extension/charge/leap)
 	//First of all, lets check if we're currently able to charge
 	if (!can_charge(_target, TRUE))
 		return FALSE

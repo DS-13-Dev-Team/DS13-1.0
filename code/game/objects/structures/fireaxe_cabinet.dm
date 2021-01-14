@@ -11,7 +11,7 @@
 	var/shattered
 	var/obj/item/weapon/material/twohanded/fireaxe/fireaxe
 
-/obj/structure/fireaxecabinet/attack_generic(var/mob/user, var/damage, var/attack_verb, var/wallbreaker)
+/obj/structure/fireaxecabinet/attack_generic(var/mob/user, damage, attack_verb, wallbreaker)
 	attack_animation(user)
 	playsound(user, 'sound/effects/Glasshit.ogg', 50, 1)
 	visible_message("<span class='danger'>[user] [attack_verb] \the [src]!</span>")
@@ -76,7 +76,7 @@
 		fireaxe = null
 	return ..()
 
-/obj/structure/fireaxecabinet/attackby(var/obj/item/O, var/mob/user)
+/obj/structure/fireaxecabinet/attackby(var/obj/item/O, mob/user)
 
 	if(isMultitool(O))
 		toggle_lock(user)

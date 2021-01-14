@@ -203,14 +203,14 @@ SUBSYSTEM_DEF(chunk)
 		visualnet.visibility_cache[A] = A.get_visualnet_tiles(visualnet)
 	return visualnet.visibility_cache[A]
 
-/proc/seen_turfs_in_range(var/source, var/range)
+/proc/seen_turfs_in_range(var/source, range)
 	var/turf/pos = get_turf(source)
 	var/list/things = hear(range, pos)
 	for (var/a in things)
 		if (!isturf(a))
 			things.Remove(a)
 
-/datum/chunk/proc/debug_mark(var/marktype = "all", var/duration = 20 SECONDS)
+/datum/chunk/proc/debug_mark(var/marktype = "all", duration = 20 SECONDS)
 	var/list/to_mark = list()
 	if (marktype == "all")
 		to_mark = turfs

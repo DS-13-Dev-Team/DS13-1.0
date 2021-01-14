@@ -106,7 +106,7 @@
 		unEquip(l_store)
 	visible_message("<span class='danger'>\The [user] empties [src]'s pockets!</span>")
 
-/mob/living/carbon/human/proc/place_in_pockets(obj/item/I, var/mob/living/user)
+/mob/living/carbon/human/proc/place_in_pockets(obj/item/I, mob/living/user)
 	if(!user.unEquip(I))
 		return
 	if(!r_store)

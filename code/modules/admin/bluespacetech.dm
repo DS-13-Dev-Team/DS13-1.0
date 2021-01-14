@@ -172,7 +172,7 @@
 	var/fall_override = TRUE
 	var/mob/original_body = null
 
-/mob/living/carbon/human/bst/can_inject(var/mob/user, var/error_msg, var/target_zone)
+/mob/living/carbon/human/bst/can_inject(var/mob/user, error_msg, target_zone)
 	user << span("alert", "The [src] disarms you before you can inject them.")
 	user.drop_item()
 	return FALSE

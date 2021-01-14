@@ -26,7 +26,7 @@
 
 // Prevents shuttles, singularities and pretty much everything else from moving the field segments away.
 // The only thing that is allowed to move us is the Destroy() proc.
-/obj/effect/shield/forceMove(var/newloc, var/qdeled = 0)
+/obj/effect/shield/forceMove(var/newloc, qdeled = 0)
 	if(qdeled)
 		return ..()
 	return 0
@@ -95,7 +95,7 @@
 	update_icon()
 	update_explosion_resistance()
 
-/obj/effect/shield/attack_generic(var/source, var/damage, var/emote)
+/obj/effect/shield/attack_generic(var/source, damage, emote)
 	take_damage(damage, SHIELD_DAMTYPE_PHYSICAL)
 	if(gen.check_flag(MODEFLAG_OVERCHARGE) && istype(source, /mob/living/))
 		overcharge_shock(source)
@@ -103,7 +103,7 @@
 
 
 // Fails shield segments in specific range. Range of 1 affects the shielded turf only.
-/obj/effect/shield/proc/fail_adjacent_segments(var/range, var/hitby = null)
+/obj/effect/shield/proc/fail_adjacent_segments(var/range, hitby = null)
 	if(hitby)
 		visible_message("<span class='danger'>\The [src] flashes a bit as \the [hitby] collides with it, eventually fading out in a rain of sparks!</span>")
 	else
@@ -117,7 +117,7 @@
 		// The closer we are to impact site, the longer it takes for shield to come back up.
 		S.fail(-(-range + get_dist(src, S)) * 2)
 
-/obj/effect/shield/proc/take_damage(var/damage, var/damtype, var/hitby)
+/obj/effect/shield/proc/take_damage(var/damage, damtype, hitby)
 	if(!gen)
 		qdel(src)
 		return
@@ -150,7 +150,7 @@
 
 
 // As we have various shield modes, this handles whether specific things can pass or not.
-/obj/effect/shield/CanPass(var/atom/movable/mover, var/turf/target, var/height=0, var/air_group=0)
+/obj/effect/shield/CanPass(var/atom/movable/mover, turf/target, height=0, air_group=0)
 	// Somehow we don't have a generator. This shouldn't happen. Delete the shield.
 	if(!gen)
 		qdel(src)
@@ -201,7 +201,7 @@
 
 
 // Attacks with hand tools. Blocked by Hyperkinetic flag.
-/obj/effect/shield/attackby(var/obj/item/weapon/I as obj, var/mob/user as mob)
+/obj/effect/shield/attackby(var/obj/item/weapon/I as obj, mob/user as mob)
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 

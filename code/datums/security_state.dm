@@ -100,7 +100,7 @@
 
 	return given_index && current_index > given_index
 
-/decl/security_state/proc/set_security_level(var/decl/security_level/new_security_level, var/force_change = FALSE)
+/decl/security_state/proc/set_security_level(var/decl/security_level/new_security_level, force_change = FALSE)
 	if(new_security_level == current_security_level)
 		return FALSE
 	if(!(new_security_level in all_security_levels))

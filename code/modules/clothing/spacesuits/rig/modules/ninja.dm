@@ -81,7 +81,7 @@
 		return
 	M.phase_out(T)
 
-/obj/item/rig_module/teleporter/engage(var/atom/target, var/notify_ai)
+/obj/item/rig_module/teleporter/engage(var/atom/target, notify_ai)
 
 	var/mob/living/carbon/human/H = holder.wearer
 

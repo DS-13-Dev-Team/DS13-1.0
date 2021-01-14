@@ -49,7 +49,7 @@
 	M.dna.SetUIValue(rand(1,DNA_UI_LENGTH),rand(1,4095))
 
 // Scramble UI or SE.
-/proc/scramble(var/UI, var/mob/M, var/prob)
+/proc/scramble(var/UI, mob/M, prob)
 	if(!M)	return
 	M.dna.check_integrity()
 	if(UI)
@@ -195,5 +195,5 @@
 		return 0
 
 // Used below, simple injection modifier.
-/proc/probinj(var/pr, var/inj)
+/proc/probinj(var/pr, inj)
 	return prob(pr+inj*pr)

@@ -18,7 +18,7 @@
 	. = ..()
 
 //attaching papers!!
-/obj/structure/noticeboard/attackby(var/obj/item/weapon/O as obj, var/mob/user as mob)
+/obj/structure/noticeboard/attackby(var/obj/item/weapon/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/weapon/paper) || istype(O, /obj/item/weapon/photo))
 		if((notices < 5) && user.unEquip(O, src))
 			add_fingerprint(user)

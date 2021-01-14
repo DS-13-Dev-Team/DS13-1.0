@@ -100,7 +100,7 @@
 	user.visible_message("<span class='notice'>\The [user] switches \the [src] [use_power == 2 ? "on" : "off"].</span>")
 	update_icon()
 
-/obj/machinery/portable_atmospherics/reagent_sublimator/attackby(var/obj/item/weapon/thing, var/mob/user)
+/obj/machinery/portable_atmospherics/reagent_sublimator/attackby(var/obj/item/weapon/thing, mob/user)
 	if(istype(thing, /obj/item/weapon/tank))
 		to_chat(user, "<span class='warning'>\The [src] has no socket for a gas tank.</span>")
 	else if(istype(thing, /obj/item/weapon/reagent_containers))

@@ -112,34 +112,34 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 /datum/click_handler/proc/OnMobLogout()
 	user.RemoveClickHandler(src)
 
-/datum/click_handler/proc/OnClick(var/atom/A, var/params)
+/datum/click_handler/proc/OnClick(var/atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnMiddleClick(var/atom/A, var/params)
+/datum/click_handler/proc/OnMiddleClick(var/atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnLeftClick(var/atom/A, var/params)
+/datum/click_handler/proc/OnLeftClick(var/atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnRightClick(var/atom/A, var/params)
+/datum/click_handler/proc/OnRightClick(var/atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnDblClick(var/atom/A, var/params)
+/datum/click_handler/proc/OnDblClick(var/atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnCtrlClick(var/atom/A, var/params)
+/datum/click_handler/proc/OnCtrlClick(var/atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnAltClick(var/atom/A, var/params)
+/datum/click_handler/proc/OnAltClick(var/atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnShiftClick(var/atom/A, var/params)
+/datum/click_handler/proc/OnShiftClick(var/atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnCtrlAltClick(var/atom/A, var/params)
+/datum/click_handler/proc/OnCtrlAltClick(var/atom/A, params)
 	return TRUE
 
-/datum/click_handler/proc/OnCtrlShiftClick(var/atom/A, var/params)
+/datum/click_handler/proc/OnCtrlShiftClick(var/atom/A, params)
 	return TRUE
 
 /datum/click_handler/proc/MouseDown(object,location,control,params)
@@ -157,18 +157,18 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	return TRUE
 
 
-/datum/click_handler/default/OnClick(var/atom/A, var/params)
+/datum/click_handler/default/OnClick(var/atom/A, params)
 	user.ClickOn(A, params)
 	return TRUE
 
-/datum/click_handler/default/OnDblClick(var/atom/A, var/params)
+/datum/click_handler/default/OnDblClick(var/atom/A, params)
 	user.DblClickOn(A, params)
 	return TRUE
 
 //Tests whether the target thing is valid, and returns it if so.
 //If its not valid, null will be returned
 //In the case of click catchers, we resolve and return the turf under it
-/datum/click_handler/proc/resolve_world_target(var/a, var/params)
+/datum/click_handler/proc/resolve_world_target(var/a, params)
 	if (params && user && user.client)
 		var/b = user.client.resolve_drag(a, params)
 		if (a != b)

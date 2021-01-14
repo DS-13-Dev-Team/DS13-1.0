@@ -12,7 +12,7 @@
 	var/list/stance_limbs
 	var/list/grasp_limbs
 
-/mob/living/carbon/human/New(var/new_loc, var/new_species = null)
+/mob/living/carbon/human/New(var/new_loc, new_species = null)
 
 	grasp_limbs = list()
 	stance_limbs = list()
@@ -201,7 +201,7 @@
 		V.RunOver(src)
 
 // Get rank from ID, ID inside PDA, PDA, ID in wallet, etc.
-/mob/living/carbon/human/proc/get_authentification_rank(var/if_no_id = "No id", var/if_no_job = "No job")
+/mob/living/carbon/human/proc/get_authentification_rank(var/if_no_id = "No id", if_no_job = "No job")
 	var/obj/item/weapon/card/id/id = GetIdCard()
 	if(istype(id))
 		return id.rank ? id.rank : if_no_job
@@ -210,7 +210,7 @@
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_assignment(var/if_no_id = "No id", var/if_no_job = "No job")
+/mob/living/carbon/human/proc/get_assignment(var/if_no_id = "No id", if_no_job = "No job")
 	var/obj/item/weapon/card/id/id = GetIdCard()
 	if(istype(id))
 		return id.assignment ? id.assignment : if_no_job
@@ -422,7 +422,7 @@
 
 //Used by various things that knock people out by applying blunt trauma to the head.
 //Checks that the species has a "head" (brain containing organ) and that hit_zone refers to it.
-/mob/living/carbon/human/proc/headcheck(var/target_zone, var/brain_tag = BP_BRAIN)
+/mob/living/carbon/human/proc/headcheck(var/target_zone, brain_tag = BP_BRAIN)
 
 	var/obj/item/organ/affecting = internal_organs_by_name[brain_tag]
 
@@ -479,7 +479,7 @@
 		return FALSE
 	return TRUE
 
-/mob/living/carbon/human/proc/vomit(var/toxvomit = 0, var/timevomit = 1, var/level = 3)
+/mob/living/carbon/human/proc/vomit(var/toxvomit = 0, timevomit = 1, level = 3)
 	set waitfor = 0
 	if(!check_has_mouth() || isSynthetic() || !timevomit || !level)
 		return
@@ -797,7 +797,7 @@
 				else if(prob(5))
 					jostle_internal_object(groin,O)
 
-/mob/living/carbon/human/proc/jostle_internal_object(var/obj/item/organ/external/organ, var/obj/item/O)
+/mob/living/carbon/human/proc/jostle_internal_object(var/obj/item/organ/external/organ, obj/item/O)
 	// All kinds of embedded objects cause bleeding.
 	if(!can_feel_pain())
 		to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
@@ -816,7 +816,7 @@
 /*
 	This proc removes harmful objects from the body. It will not remove legitimate implants
 */
-/mob/living/carbon/human/proc/expel_shrapnel(var/quantity, var/silent = FALSE)
+/mob/living/carbon/human/proc/expel_shrapnel(var/quantity, silent = FALSE)
 	var/list/expelled = list()
 	if (quantity <= 0)
 		quantity = 9999999
@@ -888,7 +888,7 @@
 		to_chat(src, "<span class='notice'>You can't look up right now.</span>")
 	return
 
-/mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour = 1)
+/mob/living/carbon/human/proc/set_species(var/new_species, default_colour = 1)
 	if(!dna)
 		if(!new_species)
 			new_species = SPECIES_HUMAN
@@ -1058,7 +1058,7 @@
 
 #define CAN_INJECT 1
 #define INJECTION_PORT 2
-/mob/living/carbon/human/can_inject(var/mob/user, var/target_zone)
+/mob/living/carbon/human/can_inject(var/mob/user, target_zone)
 	var/obj/item/organ/external/affecting = get_organ(target_zone)
 
 	if(!affecting)

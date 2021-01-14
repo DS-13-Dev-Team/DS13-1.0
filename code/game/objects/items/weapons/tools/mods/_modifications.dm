@@ -90,14 +90,14 @@
 	if(!proximity) return
 	try_apply(O, user)
 
-/obj/item/weapon/tool_modification/proc/try_apply(var/obj/item/weapon/tool/O, var/mob/user)
+/obj/item/weapon/tool_modification/proc/try_apply(var/obj/item/weapon/tool/O, mob/user)
 	if (!can_apply(O, user))
 		return FALSE
 
 	return apply(O, user)
 
 
-/obj/item/weapon/tool_modification/proc/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
+/obj/item/weapon/tool_modification/proc/can_apply(var/obj/item/weapon/tool/T, mob/user)
 	if (isrobot(T))
 		var/mob/living/silicon/robot/R = T
 		if(!R.opened)
@@ -151,7 +151,7 @@
 
 
 //Applying an modification to a tool is a mildly difficult process
-/obj/item/weapon/tool_modification/proc/apply(var/obj/item/weapon/tool/T, var/mob/user)
+/obj/item/weapon/tool_modification/proc/apply(var/obj/item/weapon/tool/T, mob/user)
 
 	if (user)
 		user.visible_message(SPAN_NOTICE("[user] starts applying the [src] to [T]"), SPAN_NOTICE("You start applying the [src] to [T]"))

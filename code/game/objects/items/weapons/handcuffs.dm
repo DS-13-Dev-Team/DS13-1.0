@@ -27,7 +27,7 @@
 		return "legcuff1"
 	return ..()
 
-/obj/item/weapon/handcuffs/attack(var/mob/living/carbon/C, var/mob/living/user)
+/obj/item/weapon/handcuffs/attack(var/mob/living/carbon/C, mob/living/user)
 
 	if(!user.is_advanced_tool_user())
 		return
@@ -54,7 +54,7 @@
 	else
 		..()
 
-/obj/item/weapon/handcuffs/proc/can_place(var/mob/target, var/mob/user)
+/obj/item/weapon/handcuffs/proc/can_place(var/mob/target, mob/user)
 	if(user == target || istype(user, /mob/living/silicon/robot) || istype(user, /mob/living/bot))
 		return 1
 	else
@@ -63,7 +63,7 @@
 				return 1
 	return 0
 
-/obj/item/weapon/handcuffs/proc/place_handcuffs(var/mob/living/carbon/target, var/mob/user)
+/obj/item/weapon/handcuffs/proc/place_handcuffs(var/mob/living/carbon/target, mob/user)
 	playsound(src.loc, cuff_sound, 30, 1, -2)
 
 	var/mob/living/carbon/human/H = target

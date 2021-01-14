@@ -10,7 +10,7 @@
 	targeting_method	=	TARGET_CLICK
 
 
-/datum/signal_ability/flicker/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/flicker/on_cast(var/mob/user, atom/target, list/data)
 	var/obj/machinery/light/L = target
 	L.flicker()
 
@@ -26,7 +26,7 @@
 
 	targeting_method	=	TARGET_CLICK
 
-/datum/signal_ability/flicker/mass/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/flicker/mass/on_cast(var/mob/user, atom/target, list/data)
 	var/list/lights = list()
 	for (var/obj/machinery/light/L in view(world.view, target))
 		lights |= L

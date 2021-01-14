@@ -95,7 +95,7 @@
 	var/circuit_type
 	var/circuit_name
 
-/datum/ic_assembly_integrated_circuits/proc/create_circuit(var/obj/item/device/electronic_assembly/assembly, var/list/circuits)
+/datum/ic_assembly_integrated_circuits/proc/create_circuit(var/obj/item/device/electronic_assembly/assembly, list/circuits)
 	var/obj/circuit = new circuit_type()
 	circuit.SetName(circuit_name || circuit.name)
 	circuits += circuit

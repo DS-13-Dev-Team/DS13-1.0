@@ -211,7 +211,7 @@ var/global/datum/controller/gameticker/ticker
 	var/obj/screen/cinematic = null
 
 	//Plus it provides an easy way to make cinematics for other events. Just use this as a template :)
-	proc/station_explosion_cinematic(var/station_missed=0, var/override = null)
+	proc/station_explosion_cinematic(var/station_missed=0, override = null)
 		if( cinematic )	return	//already a cinematic in progress!
 
 		//initialise our cinematic screen object

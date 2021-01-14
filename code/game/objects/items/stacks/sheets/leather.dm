@@ -75,7 +75,7 @@
 		istype(W, /obj/item/weapon/material/twohanded/fireaxe) || \
 		istype(W, /obj/item/weapon/material/hatchet) )
 
-		//visible message on mobs is defined as visible_message(var/message, var/self_message, var/blind_message)
+		//visible message on mobs is defined as visible_message(var/message, self_message, blind_message)
 		usr.visible_message("<span class='notice'>\The [usr] starts cutting hair off \the [src]</span>", "<span class='notice'>You start cutting the hair off \the [src]</span>", "You hear the sound of a knife rubbing against flesh")
 		if(do_after(user,50))
 			to_chat(usr, "<span class='notice'>You cut the hair from this [src.singular_name]</span>")
@@ -96,7 +96,7 @@
 //Step two - washing..... it's actually in washing machine code.
 
 //Step three - drying
-/obj/item/stack/material/wetleather/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/obj/item/stack/material/wetleather/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	..()
 	if(exposed_temperature >= drying_threshold_temperature)
 		wetness--

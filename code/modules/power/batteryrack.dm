@@ -155,7 +155,7 @@
 			CL = C
 	return CL
 
-/obj/machinery/power/smes/batteryrack/proc/insert_cell(var/obj/item/weapon/cell/C, var/mob/user)
+/obj/machinery/power/smes/batteryrack/proc/insert_cell(var/obj/item/weapon/cell/C, mob/user)
 	if(!istype(C))
 		return 0
 
@@ -203,7 +203,7 @@
 		celldiff = min(min(celldiff, most.charge), least.maxcharge - least.charge)
 		least.give(most.use(celldiff))
 
-/obj/machinery/power/smes/batteryrack/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/smes/batteryrack/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/data[0]
 
 	data["mode"] = mode
@@ -245,7 +245,7 @@
 		internal_cells -= C
 	return ..()
 
-/obj/machinery/power/smes/batteryrack/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/power/smes/batteryrack/attackby(var/obj/item/weapon/W as obj, mob/user as mob)
 	if(!..())
 		return 0
 	if(default_deconstruction_crowbar(user, W))

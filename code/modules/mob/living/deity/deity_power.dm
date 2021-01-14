@@ -12,7 +12,7 @@
 	if(amount)
 		power += amount
 
-/mob/living/deity/proc/adjust_power_min(var/amount, var/silent = 0, var/msg)
+/mob/living/deity/proc/adjust_power_min(var/amount, silent = 0, msg)
 	if(amount)
 		power_min = max(initial(power_min), power_min + amount)
 		if(!silent)

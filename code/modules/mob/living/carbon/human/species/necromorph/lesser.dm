@@ -79,7 +79,7 @@
 	.=..()
 
 //Attack sounds when hitting
-/mob/living/simple_animal/necromorph/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/simple_animal/necromorph/UnarmedAttack(var/atom/A, proximity)
 	if (LAZYLEN(attack_sounds) && check_audio_cooldown(SOUND_ATTACK))
 		playsound(src, pick(attack_sounds), VOLUME_HIGH, TRUE)
 		set_audio_cooldown(SOUND_ATTACK, 3 SECONDS)

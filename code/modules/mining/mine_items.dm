@@ -54,7 +54,7 @@
 	desc = "A portable flag with the Sol Government symbol on it. I claim this land for Sol!"
 	light_color = COLOR_BLUE
 
-/obj/item/stack/flag/attackby(var/obj/item/W, var/mob/user)
+/obj/item/stack/flag/attackby(var/obj/item/W, mob/user)
 	if(upright)
 		attack_hand(user)
 		return

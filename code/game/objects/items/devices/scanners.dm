@@ -19,7 +19,7 @@ REAGENT SCANNER
 	slot_flags = SLOT_BELT
 	throwforce = 3
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 10
 	matter = list(MATERIAL_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 1)
@@ -37,7 +37,7 @@ REAGENT SCANNER
 
 	medical_scan_action(target, user, src, mode)
 
-/proc/medical_scan_action(atom/target, mob/living/user, obj/scanner, var/verbose)
+/proc/medical_scan_action(atom/target, mob/living/user, obj/scanner, verbose)
 	if (!user.is_advanced_tool_user())
 		to_chat(user, "<span class='warning'>You are not nimble enough to use this device.</span>")
 		return
@@ -79,7 +79,7 @@ REAGENT SCANNER
 	. = medical_scan_results(scan_subject, verbose, user.get_skill_value(SKILL_MEDICAL))
 	to_chat(user, "<hr>[.]<hr>")
 
-/proc/medical_scan_results(var/mob/living/carbon/human/H, var/verbose, var/skill_level = SKILL_DEFAULT)
+/proc/medical_scan_results(var/mob/living/carbon/human/H, verbose, skill_level = SKILL_DEFAULT)
 	. = list()
 	var/header = list()
 	var/b
@@ -310,7 +310,7 @@ REAGENT SCANNER
 	. = jointext(list(header,.),null)
 
 // Calculates severity based on the ratios defined external limbs.
-proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
+proc/get_wound_severity(var/damage_ratio, can_heal_overkill = 0)
 	var/degree
 
 	switch(damage_ratio)
@@ -351,7 +351,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
 	throwforce = 5
-	
+
 	throw_range = 20
 
 	matter = list(MATERIAL_STEEL = 30,MATERIAL_GLASS = 20)
@@ -398,7 +398,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
 	throwforce = 5
-	
+
 	throw_range = 20
 
 	matter = list(MATERIAL_STEEL = 30,MATERIAL_GLASS = 20)
@@ -467,7 +467,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
 	throwforce = 5
-	
+
 	throw_range = 20
 	matter = list(MATERIAL_STEEL = 30,MATERIAL_GLASS = 20)
 
@@ -511,7 +511,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 0
-	
+
 	throw_range = 3
 	matter = list(MATERIAL_STEEL = 25, MATERIAL_GLASS = 25)
 

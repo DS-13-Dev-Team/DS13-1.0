@@ -18,5 +18,5 @@
 		return FALSE
 	return TRUE
 
-/datum/signal_ability/repossess/on_cast(var/mob/user, var/mob/living/target, var/list/data)
+/datum/signal_ability/repossess/on_cast(var/mob/user, mob/living/target, list/data)
 	target.necro_evacuate()

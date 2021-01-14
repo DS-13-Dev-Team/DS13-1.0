@@ -68,7 +68,7 @@
 		. += "</td></tr>"
 	. += "</table>"
 
-/datum/category_item/player_setup_item/player_global/prefixes/OnTopic(var/href, var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/player_global/prefixes/OnTopic(var/href, list/href_list, mob/user)
 	if(href_list["change_prefix"])
 		var/decl/prefix/prefix_instance = locate(href_list["change_prefix"])
 		if(!istype(prefix_instance) || prefix_instance.is_locked)

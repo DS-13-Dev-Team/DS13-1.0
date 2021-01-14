@@ -5,7 +5,7 @@
 	item_state = "flashtool"
 	throwforce = 5
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 10
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
@@ -34,7 +34,7 @@
 	times_used = max(0,round(times_used)) //sanity
 
 //attack_as_weapon
-/obj/item/device/flash/attack(mob/living/M, mob/living/user, var/target_zone)
+/obj/item/device/flash/attack(mob/living/M, mob/living/user, target_zone)
 	if(!user || !M)	return	//sanity
 	admin_attack_log(user, M, "flashed their victim using \a [src].", "Was flashed by \a [src].", "used \a [src] to flash")
 

@@ -45,7 +45,7 @@
 	var/obj/item/organ/internal/brain/brainobj = null	//The current brain organ.
 	var/obj/mecha = null//This does not appear to be used outside of reference in mecha.dm.
 
-/obj/item/device/mmi/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/item/device/mmi/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(istype(O,/obj/item/organ/internal/brain) && !brainmob) //Time to stick a brain in it --NEO
 
 		var/obj/item/organ/internal/brain/B = O
@@ -125,7 +125,7 @@
 	locked = 1
 	return
 
-/obj/item/device/mmi/relaymove(var/mob/user, var/direction)
+/obj/item/device/mmi/relaymove(var/mob/user, direction)
 	if(user.stat || user.stunned)
 		return
 	var/obj/item/weapon/rig/rig = src.get_rig()

@@ -2,7 +2,7 @@
 			   DAMAGE PROCS
 ****************************************************/
 //Organ bullet act. Only used for organs already on the ground when they are shot
-/obj/item/organ/external/bullet_act(var/obj/item/projectile/P, var/def_zone)
+/obj/item/organ/external/bullet_act(var/obj/item/projectile/P, def_zone)
 	if (P.damtype == BRUTE)
 		take_external_damage(P.damage, 0, P.damage_flags(), P)
 	else if (P.damtype == BURN)
@@ -13,10 +13,10 @@
 	//Continued damage to vital organs can kill you, and robot organs don't count towards total damage so no need to cap them.
 	return (BP_IS_ROBOTIC(src) || brute_dam + burn_dam + additional_damage < max_damage * 4)
 
-obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
+obj/item/organ/external/take_general_damage(var/amount, silent = FALSE)
 	take_external_damage(amount)
 
-/obj/item/organ/external/proc/take_external_damage(var/brute = 0, var/burn = 0, var/damage_flags = 0, var/used_weapon = null, var/allow_dismemberment = TRUE)
+/obj/item/organ/external/proc/take_external_damage(var/brute = 0, burn = 0, damage_flags = 0, used_weapon = null, allow_dismemberment = TRUE)
 	//We no longer exist, no damage allowed
 	if (QDELETED(src))
 		return
@@ -252,7 +252,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		owner.updatehealth()
 	return pain-last_pain
 
-/obj/item/organ/external/proc/stun_act(var/stun_amount, var/agony_amount)
+/obj/item/organ/external/proc/stun_act(var/stun_amount, agony_amount)
 	if(agony_amount > 5 && owner)
 
 		if((limb_flags & ORGAN_FLAG_CAN_GRASP) && prob(25))

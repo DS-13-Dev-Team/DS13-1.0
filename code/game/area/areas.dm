@@ -59,7 +59,7 @@
 /area/proc/is_shuttle_locked()
 	return 0
 
-/area/proc/atmosalert(danger_level, var/alarm_source)
+/area/proc/atmosalert(danger_level, alarm_source)
 	if (danger_level == 0)
 		atmosphere_alarm.clearAlarm(src, alarm_source)
 	else
@@ -238,7 +238,7 @@
 	used_light = 0
 	used_environ = 0
 
-/area/proc/use_power(var/amount, var/chan)
+/area/proc/use_power(var/amount, chan)
 	switch(chan)
 		if(EQUIP)
 			used_equip += amount

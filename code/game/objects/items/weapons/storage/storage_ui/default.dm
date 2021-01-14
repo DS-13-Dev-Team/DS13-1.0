@@ -177,7 +177,7 @@
 	arrange_item_slots(row_num, col_count)
 
 //This proc draws out the inventory and places the items on it. It uses the standard position.
-/datum/storage_ui/default/proc/arrange_item_slots(var/rows, var/cols)
+/datum/storage_ui/default/proc/arrange_item_slots(var/rows, cols)
 	var/cx = 4
 	var/cy = 2+rows
 	boxes.screen_loc = "4:16,2:16 to [4+cols]:16,[2+rows]:16"

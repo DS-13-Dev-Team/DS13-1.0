@@ -40,7 +40,7 @@
 		var_to_edit = var_name
 		SetValue(new_value)
 
-/datum/build_mode/edit/OnClick(var/atom/A, var/list/parameters)
+/datum/build_mode/edit/OnClick(var/atom/A, list/parameters)
 	if(!A.may_edit_var(usr, var_to_edit))
 		return
 

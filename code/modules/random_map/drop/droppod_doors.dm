@@ -11,7 +11,7 @@
 	var/deploying
 	var/deployed
 
-/obj/structure/droppod_door/New(var/newloc, var/autoopen)
+/obj/structure/droppod_door/New(var/newloc, autoopen)
 	..(newloc)
 	if(autoopen)
 		spawn(10 SECONDS)

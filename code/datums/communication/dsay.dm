@@ -10,10 +10,10 @@
 	mute_setting = MUTE_DEADCHAT
 	show_preference_setting = /datum/client_preference/show_dsay
 
-/decl/communication_channel/dsay/communicate(communicator, message, var/sender_override = null, speech_method = /decl/dsay_communication/say)
+/decl/communication_channel/dsay/communicate(communicator, message, sender_override = null, speech_method = /decl/dsay_communication/say)
 	.=..()
 
-/decl/communication_channel/dsay/can_communicate(var/client/communicator, var/message, var/sender_override = null, var/speech_method_type)
+/decl/communication_channel/dsay/can_communicate(var/client/communicator, message, sender_override = null, speech_method_type)
 	var/decl/dsay_communication/speech_method = decls_repository.get_decl(speech_method_type)
 	switch(speech_method.can_communicate(communicator, message))
 		if(DSAY_CAN_COMMUNICATE)
@@ -21,7 +21,7 @@
 		if(DSAY_ASK_BASE)
 			return ..()
 
-/decl/communication_channel/dsay/do_communicate(var/client/communicator, var/message, var/sender_override = null, var/speech_method_type)
+/decl/communication_channel/dsay/do_communicate(var/client/communicator, message, sender_override = null, speech_method_type)
 	var/decl/dsay_communication/speech_method = decls_repository.get_decl(speech_method_type)
 
 	speech_method.adjust_channel(src)
@@ -32,7 +32,7 @@
 		var/sent_message = speech_method.get_message(communicator, M, message, sender_override)
 		receive_communication(communicator, M, "<span class='deadsay'>" + create_text_tag("dead", "DEAD:", M.client) + " [sent_message]</span>")
 
-/decl/dsay_communication/proc/can_communicate(var/client/communicator, var/message)
+/decl/dsay_communication/proc/can_communicate(var/client/communicator, message)
 	if(!istype(communicator))
 		return TRUE
 	if(communicator.mob.stat != DEAD)
@@ -40,7 +40,7 @@
 		return FALSE
 	return DSAY_ASK_BASE
 
-/decl/dsay_communication/proc/can_receive(var/client/C, var/mob/M)
+/decl/dsay_communication/proc/can_receive(var/client/C, mob/M)
 	if(istype(C) && C.mob == M)
 		return TRUE
 	if(M.get_preference_value(/datum/client_preference/show_dsay) == GLOB.PREF_HIDE)
@@ -55,7 +55,7 @@
 		return FALSE
 	return TRUE
 
-/decl/dsay_communication/proc/get_name(var/client/C, var/mob/M)
+/decl/dsay_communication/proc/get_name(var/client/C, mob/M)
 	var/name
 	var/keyname
 
@@ -87,7 +87,7 @@
 			lname = name
 	return "<span class='name'>[lname]</span>"
 
-/decl/dsay_communication/proc/get_message(var/client/C, var/mob/M, var/message, var/sender_override)
+/decl/dsay_communication/proc/get_message(var/client/C, mob/M, message, sender_override)
 	var/say_verb = pick("complains","moans","whines","laments","blubbers")
 	return "[sender_override ? sender_override : get_name(C, M)] [say_verb], <span class='message'>\"[message]\"</span>"
 
@@ -110,7 +110,7 @@
 
 
 
-/decl/dsay_communication/emote/get_message(var/client/C, var/mob/M, var/message, var/sender_override)
+/decl/dsay_communication/emote/get_message(var/client/C, mob/M, message, sender_override)
 	return "[sender_override ? sender_override : get_name(C, M)] <span class='message'>[message]</span>"
 
 
@@ -128,7 +128,7 @@
 
 
 
-/decl/dsay_communication/admin/can_communicate(var/client/communicator, var/message, var/decl/communication_channel/dsay)
+/decl/dsay_communication/admin/can_communicate(var/client/communicator, message, decl/communication_channel/dsay)
 	if(!istype(communicator))
 		return TRUE	//Unhandled type means admin shenanigans, let it through
 	if(!communicator.holder)
@@ -136,7 +136,7 @@
 		return FALSE
 	return DSAY_ASK_BASE
 
-/decl/dsay_communication/admin/get_message(var/client/communicator, var/mob/M, var/message, var/sender_override)
+/decl/dsay_communication/admin/get_message(var/client/communicator, mob/M, message, sender_override)
 	if (sender_override)
 		return "<span class='name'>[sender_override])</span> says, <span class='message'>\"[message]\"</span>"
 	else
@@ -155,14 +155,14 @@
 
 
 
-/decl/dsay_communication/direct/adjust_channel(var/decl/communication_channel/dsay, var/communicator)
+/decl/dsay_communication/direct/adjust_channel(var/decl/communication_channel/dsay, communicator)
 	dsay.log_proc = /proc/log_say
 	dsay.flags &= ~(COMMUNICATION_ADMIN_FOLLOW|COMMUNICATION_GHOST_FOLLOW) // Remove admin and ghost follow
 
 /decl/dsay_communication/direct/can_communicate()
 	return DSAY_CAN_COMMUNICATE
 
-/decl/dsay_communication/direct/get_message(var/client/communicator, var/mob/M, var/message, var/sender_override)
+/decl/dsay_communication/direct/get_message(var/client/communicator, mob/M, message, sender_override)
 	return message
 
 #undef DSAY_CAN_COMMUNICATE

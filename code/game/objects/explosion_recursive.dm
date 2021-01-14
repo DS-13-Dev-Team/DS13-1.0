@@ -9,7 +9,7 @@ var/explosion_epicentre
 var/explosion_in_progress = 0
 
 
-proc/explosion_rec(turf/epicenter, power, var/falloff = 1, shaped)
+proc/explosion_rec(turf/epicenter, power, falloff = 1, shaped)
 	var/loopbreak = 0
 	while(explosion_in_progress)
 		if(loopbreak >= 15) return
@@ -100,7 +100,7 @@ proc/explosion_rec(turf/epicenter, power, var/falloff = 1, shaped)
 
 //Code-wise, a safe value for power is something up to ~25 or ~30.. This does quite a bit of damage to the station.
 //direction is the direction that the spread took to come to this tile. So it is pointing in the main blast direction - meaning where this tile should spread most of it's force.
-/turf/proc/explosion_spread(power, direction, var/falloff = 1)
+/turf/proc/explosion_spread(power, direction, falloff = 1)
 	if(power <= 0)
 		return
 

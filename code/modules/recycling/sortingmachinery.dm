@@ -251,7 +251,7 @@
 	icon_state = "c_tube"
 	throwforce = 1
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 5
 
 /obj/item/stack/package_wrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
@@ -461,7 +461,7 @@
 	update_icon()
 	return
 
-/obj/machinery/disposal/deliveryChute/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/disposal/deliveryChute/attackby(var/obj/item/I, mob/user)
 	if(!I || !user)
 		return
 

@@ -55,10 +55,10 @@ turf: (lighting_turf.dm)
 
 
 atom/movable/lighting_overlay: (lighting_overlay.dm)
-  - var/lum_r, var/lum_g, var/lum_b; lumcounts of each colour
+  - var/lum_r, lum_g, lum_b; lumcounts of each colour
   - var/needs_update; set on update_lumcount, checked by lighting process
 
-  - var/xoffset, var/yoffset; (only present when using sub-tile overlays) fractional offset of this overlay in the tile
+  - var/xoffset, yoffset; (only present when using sub-tile overlays) fractional offset of this overlay in the tile
 
   - proc/update_lumcount(delta_r, delta_g, delta_b):
 		- Change the lumcount vars and queue the overlay for update

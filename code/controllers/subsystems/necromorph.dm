@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(necromorph)
 
 
 
-/datum/controller/subsystem/necromorph/proc/fill_vessel_from_queue(var/mob/vessel, var/vessel_id)
+/datum/controller/subsystem/necromorph/proc/fill_vessel_from_queue(var/mob/vessel, vessel_id)
 	for (var/mob/observer/eye/signal/M in necroqueue)
 		if (!M.client || !M.key)
 			continue	//Gotta be connected
@@ -76,7 +76,7 @@ SUBSYSTEM_DEF(necromorph)
 /*
 	Keeping track of last known locations of live humans
 */
-/datum/controller/subsystem/necromorph/proc/update_sighting(var/mob/living/AM, var/obj/structure/corruption_node/eye/spotter)
+/datum/controller/subsystem/necromorph/proc/update_sighting(var/mob/living/AM, obj/structure/corruption_node/eye/spotter)
 	//We don't record dead mobs, remove them from this list
 	if (AM.stat == DEAD || QDELETED(AM))
 		sightings.Remove(AM)

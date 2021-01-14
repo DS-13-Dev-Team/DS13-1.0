@@ -28,7 +28,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	return
 
 //handles removing entries from the buffer, or removing the entire directory if no start_index is given
-/proc/notes_remove(var/ckey, var/start_index, var/end_index)
+/proc/notes_remove(var/ckey, start_index, end_index)
 	var/savefile/notesfile = new(NOTESFILE)
 	if(!notesfile)	return
 
@@ -65,7 +65,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 
 //Hijacking this file for BS12 playernotes functions. I like this ^ one systemm alright, but converting sounds too bothersome~ Chinsky.
 
-/proc/notes_add(var/key, var/note, var/mob/user)
+/proc/notes_add(var/key, note, mob/user)
 	if (!key || !note)
 		return
 
@@ -121,7 +121,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	del(note_list) // savefile, so NOT qdel
 
 
-/proc/notes_del(var/key, var/index)
+/proc/notes_del(var/key, index)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos

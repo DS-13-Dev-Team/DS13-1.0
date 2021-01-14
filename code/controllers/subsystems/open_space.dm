@@ -57,7 +57,7 @@ turf/simulated/open/LateInitialize()
 		A.fall()
 	T.update_icon()
 
-/datum/controller/subsystem/open_space/proc/add_turf(var/turf/T, var/recursive = 0)
+/datum/controller/subsystem/open_space/proc/add_turf(var/turf/T, recursive = 0)
 	ASSERT(isturf(T))
 	//Check for multiple additions
 	if((T in turfs_to_process))

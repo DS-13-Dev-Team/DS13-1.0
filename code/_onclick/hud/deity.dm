@@ -52,6 +52,6 @@
 		else
 			S.maptext = null
 
-/obj/screen/intent/deity/Click(var/location, var/control, var/params)
+/obj/screen/intent/deity/Click(var/location, control, params)
 	..()
 	update_text()

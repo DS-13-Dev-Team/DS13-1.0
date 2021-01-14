@@ -11,7 +11,7 @@
 /spell/hand/choose_targets(mob/user = usr)
 	return list(user)
 
-/spell/hand/cast_check(skipcharge = 0,mob/user = usr, var/list/targets)
+/spell/hand/cast_check(skipcharge = 0,mob/user = usr, list/targets)
 	if(!..())
 		return FALSE
 	if(user.get_active_hand())
@@ -72,7 +72,7 @@
 	var/hand_timer = null
 	var/hand_duration = 0
 
-/spell/hand/duration/cast(var/list/targets, var/mob/user)
+/spell/hand/duration/cast(var/list/targets, mob/user)
 	. = ..()
 	if(.)
 		hand_timer = addtimer(CALLBACK(src, .proc/cancel_hand), hand_duration, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_OVERRIDE)

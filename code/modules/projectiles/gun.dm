@@ -205,7 +205,7 @@
 		O.emp_act(severity)
 
 //Return true if we successfully fired
-/obj/item/weapon/gun/afterattack(atom/A, mob/living/user, adjacent, params, var/vector2/world_pixel_click)
+/obj/item/weapon/gun/afterattack(atom/A, mob/living/user, adjacent, params, vector2/world_pixel_click)
 	last_fire_attempt = world.time
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
 
@@ -238,7 +238,7 @@
 
 	return TRUE
 
-/obj/item/weapon/gun/proc/pre_fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
+/obj/item/weapon/gun/proc/pre_fire(var/atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	return TRUE
 
 /obj/item/weapon/gun/attack(atom/A, mob/living/user, def_zone)
@@ -267,7 +267,7 @@
 
 
 //Return true if firing is okay right now
-/obj/item/weapon/gun/proc/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
+/obj/item/weapon/gun/proc/can_fire(atom/target, mob/living/user, clickparams, silent = FALSE)
 	if(world.time < next_fire_time)
 		if (!silent && !suppress_delay_warning && world.time % 3) //to prevent spam
 			to_chat(user, SPAN_WARNING("[src] is not ready to fire again!"))
@@ -312,7 +312,7 @@
 			return FALSE
 
 //Safety checks are done by the time fire is called
-/obj/item/weapon/gun/proc/Fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
+/obj/item/weapon/gun/proc/Fire(var/atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 
 
 
@@ -393,7 +393,7 @@
 	return TRUE
 
 //used by aiming code
-/obj/item/weapon/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
+/obj/item/weapon/gun/proc/can_hit(atom/target as mob, mob/living/user as mob)
 	if(!special_check(user))
 		return 2
 	//just assume we can shoot through glass and stuff. No big deal, the player can just choose to not target someone
@@ -413,7 +413,7 @@
 	update_firemode() //Stops automatic weapons spamming this endlessly
 
 //called after successfully firing
-/obj/item/weapon/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
+/obj/item/weapon/gun/proc/handle_post_fire(mob/user, atom/target, pointblank=0, reflex=0)
 	if(fire_anim)
 		flick(fire_anim, src)
 
@@ -477,7 +477,7 @@
 				max_mult = G.point_blank_mult()
 	P.damage *= max_mult
 
-/obj/item/weapon/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
+/obj/item/weapon/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, burst, held_twohanded)
 	var/obj/item/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
@@ -513,7 +513,7 @@
 	P.accuracy += user.ranged_accuracy_mods()
 
 //does the actual launching of the projectile
-/obj/item/weapon/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
+/obj/item/weapon/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, target_zone, params=null)
 	var/obj/item/projectile/P = projectile
 	if(!istype(P))
 		return 0 //default behaviour only applies to true projectiles
@@ -539,7 +539,7 @@
 
 	return launched
 
-/obj/item/weapon/gun/proc/play_fire_sound(var/mob/user, var/obj/item/projectile/P)
+/obj/item/weapon/gun/proc/play_fire_sound(var/mob/user, obj/item/projectile/P)
 	var/shot_sound = (istype(P) && P.fire_sound)? P.fire_sound : fire_sound
 	if (islist(shot_sound))
 		shot_sound = pick(shot_sound)
@@ -590,7 +590,7 @@
 		mouthshoot = 0
 		return
 
-/obj/item/weapon/gun/proc/toggle_scope(mob/user, var/zoom_amount=2.0)
+/obj/item/weapon/gun/proc/toggle_scope(mob/user, zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision
 	//still, increase the view size by a tiny amount so that sniping isn't too restricted to NSEW
 	var/zoom_offset = round(world.view * zoom_amount)
@@ -700,7 +700,7 @@
 
 
 //Updating firing modes at appropriate times
-/obj/item/weapon/gun/equipped(var/mob/user, var/slot)
+/obj/item/weapon/gun/equipped(var/mob/user, slot)
 	.=..()
 	update_icon()
 	update_firemode()

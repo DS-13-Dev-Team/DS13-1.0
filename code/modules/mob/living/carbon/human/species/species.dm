@@ -573,7 +573,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/handle_death_check(var/mob/living/carbon/human/H)
 	return FALSE
 
-/datum/species/proc/handle_new_grab(var/mob/living/carbon/human/H, var/obj/item/grab/G)
+/datum/species/proc/handle_new_grab(var/mob/living/carbon/human/H, obj/item/grab/G)
 	return
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.
@@ -614,11 +614,11 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	return TRUE
 
 // Used to override normal fall behaviour. Use only when the species does fall down a level.
-/datum/species/proc/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
+/datum/species/proc/handle_fall_special(var/mob/living/carbon/human/H, turf/landing)
 	return FALSE
 
 // Called when using the shredding behavior.
-/datum/species/proc/can_shred(var/mob/living/carbon/human/H, var/ignore_intent)
+/datum/species/proc/can_shred(var/mob/living/carbon/human/H, ignore_intent)
 
 	if((!ignore_intent && H.a_intent != I_HURT) || H.pulling_punches)
 		return 0
@@ -719,7 +719,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/update_skin(var/mob/living/carbon/human/H)
 	return
 
-/datum/species/proc/disarm_attackhand(var/mob/living/carbon/human/attacker, var/mob/living/carbon/human/target)
+/datum/species/proc/disarm_attackhand(var/mob/living/carbon/human/attacker, mob/living/carbon/human/target)
 	attacker.do_attack_animation(target)
 
 	if(target.w_uniform)
@@ -894,7 +894,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	return
 
 
-/datum/species/proc/get_grasping_limb(var/mob/living/carbon/human/H, var/side)
+/datum/species/proc/get_grasping_limb(var/mob/living/carbon/human/H, side)
 	//True side means left, false is right
 	var/obj/item/organ/external/temp
 	if (!side)
@@ -994,7 +994,7 @@ These procs should return their entire args list. Best just to return parent in 
 //Note, it is recommended not to override the damage value here, but instead to do that in handle_organ_external_damage.
 	//This is because apply_damage will eventually call that anyways for brute/burn damage
 	//Plus there are a variety of damage methods (like explosions) which will completely bypass apply_damage, and use organ damage directly
-/datum/species/proc/handle_apply_damage(var/mob/user, var/damage, var/damagetype, var/def_zone, var/blocked, var/damage_flags, var/obj/used_weapon, var/obj/item/organ/external/given_organ)
+/datum/species/proc/handle_apply_damage(var/mob/user, damage, damagetype, def_zone, blocked, damage_flags, obj/used_weapon, obj/item/organ/external/given_organ)
 	return args.Copy(2)
 
 
@@ -1019,7 +1019,7 @@ These procs should return their entire args list. Best just to return parent in 
 	return args.Copy(2)
 
 //Does animations for regenerating a limb
-/datum/species/proc/regenerate_limb(var/mob/living/carbon/human/H, var/limb, var/duration)
+/datum/species/proc/regenerate_limb(var/mob/living/carbon/human/H, limb, duration)
 	var/regen_icon = get_icobase()
 	var/image/LR = image(regen_icon, H, "[limb]_regen")
 	LR.plane = H.plane
@@ -1029,12 +1029,12 @@ These procs should return their entire args list. Best just to return parent in 
 
 //Can this species defend itself against blows using its limbs?
 //This is a proc so it can be overridden for special case behaviour
-/datum/species/proc/can_defend(var/mob/living/carbon/human/H, var/datum/strike/strike)
+/datum/species/proc/can_defend(var/mob/living/carbon/human/H, datum/strike/strike)
 	return !(species_flags & SPECIES_FLAG_NO_BLOCK)
 /*
 	Called just after a limb is severed
 */
-/datum/species/proc/handle_amputated(var/mob/living/carbon/human/H, var/obj/item/organ/external/E, var/clean, var/disintegrate, var/ignore_children, var/silent)
+/datum/species/proc/handle_amputated(var/mob/living/carbon/human/H, obj/item/organ/external/E, clean, disintegrate, ignore_children, silent)
 	return
 
 //Ported from upstream bay
@@ -1044,7 +1044,7 @@ These procs should return their entire args list. Best just to return parent in 
 	return (species_flags & SPECIES_FLAG_NO_SLIP)
 
 
-/datum/species/proc/can_autoheal(var/mob/living/carbon/human/H, var/dam_type, var/datum/wound/W)
+/datum/species/proc/can_autoheal(var/mob/living/carbon/human/H, dam_type, datum/wound/W)
 
 
 	if(dam_type == BRUTE && (H.getBruteLoss() > H.max_health / 2))
@@ -1067,7 +1067,7 @@ These procs should return their entire args list. Best just to return parent in 
 		return pickweight(L)
 	return null
 
-/datum/species/proc/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
+/datum/species/proc/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0)
 	var/soundin = get_species_audio(audio_type)
 	if (soundin)
 		playsound(source, soundin, vol, vary, extrarange, falloff, is_global, frequency, is_ambiance)
@@ -1078,7 +1078,7 @@ These procs should return their entire args list. Best just to return parent in 
 /mob/proc/play_species_audio()
 	return
 
-/mob/living/carbon/human/play_species_audio(var/atom/source, audio_type, var/volume = VOLUME_MID, var/vary = TRUE, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
+/mob/living/carbon/human/play_species_audio(var/atom/source, audio_type, volume = VOLUME_MID, vary = TRUE, extrarange as num, falloff, is_global, frequency, is_ambiance = 0)
 
 	if (species.species_audio_volume[audio_type])
 		volume = species.species_audio_volume[audio_type]

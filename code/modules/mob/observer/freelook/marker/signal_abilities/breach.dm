@@ -25,7 +25,7 @@
 
 
 
-/datum/signal_ability/breach/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/breach/on_cast(var/mob/user, atom/target, list/data)
 	var/list/turfs = target.get_cardinal_corruption()
 	var/turf/T = pick(turfs)
 	var/obj/effect/vine/corruption/C = locate(/obj/effect/vine/corruption) in T
@@ -45,7 +45,7 @@
 	var/obj/machinery/door/target
 	var/obj/effect/vine/corruption/user
 
-/datum/extension/breaching_growth/New(var/atom/user, var/atom/target)
+/datum/extension/breaching_growth/New(var/atom/user, atom/target)
 	.=..()
 	src.user = user
 	src.target = target

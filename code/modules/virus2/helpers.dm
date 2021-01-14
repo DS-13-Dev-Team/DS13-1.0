@@ -8,7 +8,7 @@
 				infect_virus2(victim, disease)
 
 //Returns 1 if mob can be infected, 0 otherwise.
-proc/infection_chance(var/mob/living/carbon/M, var/vector = "Airborne")
+proc/infection_chance(var/mob/living/carbon/M, vector = "Airborne")
 	if (!istype(M))
 		return 0
 
@@ -53,7 +53,7 @@ proc/infection_chance(var/mob/living/carbon/M, var/vector = "Airborne")
 			return 100
 
 //Similar to infection check, but used for when M is spreading the virus.
-/proc/infection_spreading_check(var/mob/living/carbon/M, var/vector = "Airborne")
+/proc/infection_spreading_check(var/mob/living/carbon/M, vector = "Airborne")
 	if (!istype(M))
 		return 0
 
@@ -129,7 +129,7 @@ proc/infection_chance(var/mob/living/carbon/M, var/vector = "Airborne")
 /proc/dprob(var/p)
 	return(prob(sqrt(p)) && prob(sqrt(p)))
 
-/mob/living/carbon/proc/spread_disease_to(var/mob/living/carbon/victim, var/vector = "Airborne")
+/mob/living/carbon/proc/spread_disease_to(var/mob/living/carbon/victim, vector = "Airborne")
 	if (src == victim)
 		return "retardation"
 

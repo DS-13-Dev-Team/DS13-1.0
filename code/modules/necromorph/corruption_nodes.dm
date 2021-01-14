@@ -28,7 +28,7 @@
 	can_block_movement = FALSE
 	implements_dummy = TRUE
 
-/obj/structure/corruption_node/New(var/location, var/dummy)
+/obj/structure/corruption_node/New(var/location, dummy)
 	src.dummy = dummy
 	.=..()
 
@@ -109,7 +109,7 @@
 /obj/structure/corruption_node/proc/degenerate()
 	take_damage(degen, BRUTE, null, null, bypass_resist = TRUE)
 
-/obj/structure/corruption_node/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/structure/corruption_node/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	.=..()
 	if (.)
 		start_processing()
@@ -147,7 +147,7 @@
 
 
 //Future TODO: Make this generic atom behaviour
-/obj/structure/corruption_node/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/obj/structure/corruption_node/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	.=..(air, exposed_temperature, exposed_volume, multiplier*fire_damage_multiplier)
 
 

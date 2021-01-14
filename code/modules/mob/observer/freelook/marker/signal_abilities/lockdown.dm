@@ -14,7 +14,7 @@
 	targeting_method	=	TARGET_CLICK
 
 
-/datum/signal_ability/lock/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/lock/on_cast(var/mob/user, atom/target, list/data)
 	var/obj/machinery/door/airlock/A = target
 	if (!A.can_lockdown(user, 1))
 		refund(user)
@@ -42,7 +42,7 @@
 
 	targeting_method	=	TARGET_CLICK
 
-/datum/signal_ability/lockdown/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/lockdown/on_cast(var/mob/user, atom/target, list/data)
 	var/duration = 1.5 MINUTES
 	var/area/A = get_area(target)
 	if (istype(A) && A.bordering_doors.len)
@@ -95,7 +95,7 @@
 	var/priority
 
 
-/datum/extension/lockdown/New(var/obj/machinery/door/airlock/A, var/duration = 2 MINUTES, var/priority = 1)
+/datum/extension/lockdown/New(var/obj/machinery/door/airlock/A, duration = 2 MINUTES, priority = 1)
 	.=..()
 	src.duration = duration
 	src.priority = priority
@@ -142,7 +142,7 @@
 	Safety Checks
 ************************/
 //Access Proc
-/obj/machinery/door/airlock/proc/can_lockdown(var/user, var/priority)
+/obj/machinery/door/airlock/proc/can_lockdown(var/user, priority)
 	var/datum/extension/lockdown/E = get_extension(src, /datum/extension/lockdown)
 	if(istype(E) && E.priority >= priority)
 

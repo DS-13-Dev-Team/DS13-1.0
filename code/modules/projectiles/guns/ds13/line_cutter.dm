@@ -106,9 +106,9 @@
 		if (RIGHT)
 			icon_state = "linecutter_right"
 
-//get_limbs_at_height(var/altitude, var/height = 0.01)
+//get_limbs_at_height(var/altitude, height = 0.01)
 
-/obj/item/projectile/wave/linecutter/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+/obj/item/projectile/wave/linecutter/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
 	//We'll only do our special effect if we haven't already hit this mob
 	var/do_hit = TRUE
 	if (PW && (target_mob in PW.damaged_atoms))
@@ -175,7 +175,7 @@
 	icon = 'icons/obj/weapons/ds13_deployables.dmi'
 	icon_state = "plasma_mine_light"
 
-/obj/effect/plasma_light/New(var/atom/location, var/duration = 5 SECONDS)
+/obj/effect/plasma_light/New(var/atom/location, duration = 5 SECONDS)
 	.=..()
 	animate(src, pixel_y = pixel_y+13, time = duration)
 

@@ -18,7 +18,7 @@
 //helper for inverting armor blocked values into a multiplier
 #define blocked_mult(blocked) max(1 - (blocked/100), 0)
 
-/proc/mobs_in_view(var/range, var/source)
+/proc/mobs_in_view(var/range, source)
 	var/list/mobs = list()
 	for(var/atom/movable/AM in view(range, source))
 		var/M = AM.get_mob()
@@ -40,7 +40,7 @@ proc/random_hair_style(gender, species = SPECIES_HUMAN)
 proc/random_target_zone()
 	return pickweight(list(BP_EYES, BP_MOUTH, BP_HEAD, BP_CHEST = 2, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_GROIN, BP_L_LEG, BP_R_LEG, BP_R_ARM, BP_L_ARM))
 
-proc/random_facial_hair_style(gender, var/species = SPECIES_HUMAN)
+proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
 	var/f_style = "Shaved"
 
 	var/datum/species/mob_species = all_species[species]
@@ -125,7 +125,7 @@ proc/age2agedescription(age)
 /proc/get_exposed_defense_zone(var/atom/movable/target)
 	return pick(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_FOOT, BP_R_FOOT, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG, BP_CHEST, BP_GROIN)
 
-/proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = 0, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT)
+/proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = 0, progress = 1, incapacitation_flags = INCAPACITATION_DEFAULT)
 	if(!user || !target)
 		return 0
 	var/user_loc = user.loc
@@ -183,8 +183,8 @@ proc/age2agedescription(age)
 		proc_to_call: A callback. While the operation is ongoing, periodically call this
 		proc_interval: how often to call the above, in deciseconds
 */
-/proc/do_after(mob/user, delay, atom/target = null, needhand = 1, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/same_direction = 0, var/can_move = 0,
-var/datum/callback/proc_to_call, var/proc_interval = 10)
+/proc/do_after(mob/user, delay, atom/target = null, needhand = 1, progress = 1, incapacitation_flags = INCAPACITATION_DEFAULT, same_direction = 0, can_move = 0,
+var/datum/callback/proc_to_call, proc_interval = 10)
 
 	if(!user)
 		return 0
@@ -292,7 +292,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 	return GLOB.dead_mob_list.Remove(src)
 
 //Find a dead mob with a brain and client.
-/proc/find_dead_player(var/find_key, var/include_observers = 0)
+/proc/find_dead_player(var/find_key, include_observers = 0)
 	if(isnull(find_key))
 		return
 
@@ -336,7 +336,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 //Searchrange:	How far around origin do we search?
 //User:			Who is doing the searching? This is used for is_allied. If not passed, all mobs will be considered?
 //Reach:		Target must be within Reach tiles of the user
-/proc/autotarget_enemy_mob(var/atom/origin, var/searchrange = 1, var/mob/living/user = null, var/reach = 0)
+/proc/autotarget_enemy_mob(var/atom/origin, searchrange = 1, mob/living/user = null, reach = 0)
 	var/list/search_tiles = trange(searchrange, origin)
 	var/list/prime_targets = list()	//Main targets, we pick one
 	var/list/secondary_targets	=	list()	//Used only if there are no prime targets
@@ -373,7 +373,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 
 
 //Adds verb path to our verbs if condition is true, removes it if false
-/mob/proc/update_verb(var/verb_path, var/condition)
+/mob/proc/update_verb(var/verb_path, condition)
 	if (condition)
 		verbs |= verb_path
 	else

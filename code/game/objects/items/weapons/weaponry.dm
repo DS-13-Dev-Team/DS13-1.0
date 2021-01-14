@@ -38,7 +38,7 @@
 
 	..()
 
-/obj/item/weapon/nullrod/afterattack(var/atom/A, var/mob/user, var/proximity)
+/obj/item/weapon/nullrod/afterattack(var/atom/A, mob/user, proximity)
 	if(!proximity)
 		return
 	/* 	Removed due to compile errors

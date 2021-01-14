@@ -32,7 +32,7 @@
 	var/list/affected_turfs_secondary
 	var/stopped_at
 
-/datum/extension/slam/New(var/atom/movable/user, var/atom/target, var/_damage, var/_down_factor, var/_weaken_time, var/_power, var/_windup_time, var/_cooldown)
+/datum/extension/slam/New(var/atom/movable/user, atom/target, _damage, _down_factor, _weaken_time, _power, _windup_time, _cooldown)
 	..()
 	src.user = user
 	epicentre = get_turf(target) //This attack can be dodged. If we target a mob, we'll hit where they were standing at the initiation time, whether they're still there or not
@@ -227,7 +227,7 @@
 	return slam_attack(A)
 
 
-/atom/movable/proc/can_slam(var/atom/target, var/error_messages = TRUE)
+/atom/movable/proc/can_slam(var/atom/target, error_messages = TRUE)
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
 	var/datum/extension/slam/ES = get_extension(src, /datum/extension/slam)
 	if(istype(ES))
@@ -251,14 +251,14 @@
 
 	return TRUE
 
-/mob/living/can_slam(var/atom/target, var/error_messages = TRUE)
+/mob/living/can_slam(var/atom/target, error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 
 	.=..()
 
 
-/atom/movable/proc/slam_attack(var/atom/_target, var/_damage = 40, var/_down_factor = 2, var/_weaken_time = 3, var/_power = 0, var/_windup_time = 1.75 SECONDS, var/_cooldown = 10 SECONDS)
+/atom/movable/proc/slam_attack(var/atom/_target, _damage = 40, _down_factor = 2, _weaken_time = 3, _power = 0, _windup_time = 1.75 SECONDS, _cooldown = 10 SECONDS)
 	//First of all, lets check if we're currently able to charge
 	if (!can_slam(_target, TRUE))
 		return FALSE

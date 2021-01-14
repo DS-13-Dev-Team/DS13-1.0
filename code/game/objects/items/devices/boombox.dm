@@ -45,7 +45,7 @@
 	..()
 	playsound(src, "switch", 40)
 
-/obj/item/device/boombox/OnTopic(var/user, var/list/href_list)
+/obj/item/device/boombox/OnTopic(var/user, list/href_list)
 	if(href_list["tracknum"])
 		var/diff = text2num(href_list["tracknum"])
 		track_num += diff
@@ -63,14 +63,14 @@
 		start()
 		return TOPIC_HANDLED
 
-/obj/item/device/boombox/attackby(var/obj/item/W, var/mob/user)
+/obj/item/device/boombox/attackby(var/obj/item/W, mob/user)
 	if(isScrewdriver(W))
 		AdjustFrequency(W, user)
 		return TRUE
 	else
 		. = ..()
 
-/obj/item/device/boombox/proc/AdjustFrequency(var/obj/item/W, var/mob/user)
+/obj/item/device/boombox/proc/AdjustFrequency(var/obj/item/W, mob/user)
 	var/const/MIN_FREQUENCY = 0.5
 	var/const/MAX_FREQUENCY = 1.5
 

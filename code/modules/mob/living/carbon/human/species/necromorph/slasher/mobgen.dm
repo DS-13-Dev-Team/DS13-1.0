@@ -1,6 +1,6 @@
 #define SLASHER_NAKED_CHANCE	50
 
-/mob/living/carbon/human/necromorph/slasher/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER)
+/mob/living/carbon/human/necromorph/slasher/New(var/new_loc, new_species = SPECIES_NECROMORPH_SLASHER)
 	new_species = pickweight(list(SPECIES_NECROMORPH_SLASHER = 80, \
 	SPECIES_NECROMORPH_SLASHER_DESICCATED = 20))
 	..(new_loc, new_species)

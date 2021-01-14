@@ -12,7 +12,7 @@
 	var/list/seers = list()
 	var/mob/user
 
-/datum/extension/sense/New(var/mob/holder, var/range_sense, var/range_buff, var/buff_faction, var/duration, var/cooldown)
+/datum/extension/sense/New(var/mob/holder, range_sense, range_buff, buff_faction, duration, cooldown)
 	..()
 	user = holder
 

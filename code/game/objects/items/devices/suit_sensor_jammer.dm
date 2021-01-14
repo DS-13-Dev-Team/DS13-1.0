@@ -206,7 +206,7 @@ obj/item/device/suit_sensor_jammer/ui_act(action, params)
 		sjm.enable()
 	jammer_method = sjm
 
-/obj/item/device/suit_sensor_jammer/proc/may_process_crew_data(var/mob/living/carbon/human/H, var/obj/item/clothing/under/C, var/turf/pos)
+/obj/item/device/suit_sensor_jammer/proc/may_process_crew_data(var/mob/living/carbon/human/H, obj/item/clothing/under/C, turf/pos)
 	if(!pos)
 		return FALSE
 	var/turf/T = get_turf(src)

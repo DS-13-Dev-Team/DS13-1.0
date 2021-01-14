@@ -302,7 +302,7 @@
 	return null
 
 //Finds what turf we're trying to connect to
-/datum/extension/wallrun/proc/get_mount_target_turf(var/atom/origin, var/atom/target)
+/datum/extension/wallrun/proc/get_mount_target_turf(var/atom/origin, atom/target)
 	var/turf/U = get_turf(origin)
 	var/turf/T = get_turf(target)
 
@@ -329,7 +329,7 @@
 	Returns true if our user could possibly mount on this.
 	The user's position is only taken into account if the target is on a border
 */
-/datum/extension/wallrun/proc/is_valid_mount_target(var/atom/target, var/ignore_self = FALSE)
+/datum/extension/wallrun/proc/is_valid_mount_target(var/atom/target, ignore_self = FALSE)
 	//Don't transition to ourself silly
 	if (!ignore_self && (target == mountpoint || target == A))
 		return FALSE
@@ -399,7 +399,7 @@
 	Observation Calls
 -------------------------*/
 //Called when we bump into something
-/datum/extension/wallrun/proc/on_bumped(var/atom/movable/mover, var/atom/obstacle)
+/datum/extension/wallrun/proc/on_bumped(var/atom/movable/mover, atom/obstacle)
 	//Can't do wallrun and wallmount at the same time
 	if (mover.is_mounted())
 		return
@@ -431,7 +431,7 @@
 
 	If we can't find one, we'll unmount to floor before moving
 */
-/datum/extension/wallrun/proc/on_premove(var/atom/mover, var/curloc, var/newloc)
+/datum/extension/wallrun/proc/on_premove(var/atom/mover, curloc, newloc)
 	.=TRUE
 	if (!mountpoint)
 		return	//If we aren't already mounted to something, we don't care
@@ -451,7 +451,7 @@
 		unmount_to_floor()
 
 
-/datum/extension/wallrun/proc/on_move(var/atom/mover, var/oldloc, var/newloc)
+/datum/extension/wallrun/proc/on_move(var/atom/mover, oldloc, newloc)
 	var/mounted = FALSE
 	//We have a next target? Try mounting to it
 	if (next_mountpoint)
@@ -495,7 +495,7 @@
 		dir_set(user, visual_dir, visual_dir)
 
 //An attempt to make directional facings meaningful
-/datum/extension/wallrun/proc/dir_set(var/atom/mover, var/old_dir, var/new_dir)
+/datum/extension/wallrun/proc/dir_set(var/atom/mover, old_dir, new_dir)
 	if (mountpoint)
 		//We get the normal direction of the wall
 		var/vector2/current_wall_normal = get_new_vector(mover.x - mountpoint.x, mover.y - mountpoint.y)

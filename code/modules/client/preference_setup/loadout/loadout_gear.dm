@@ -69,11 +69,11 @@
 	var/path
 	var/location
 
-/datum/gear_data/New(var/path, var/location)
+/datum/gear_data/New(var/path, location)
 	src.path = path
 	src.location = location
 
-/datum/gear/proc/spawn_item(var/location, var/metadata, var/dummy)
+/datum/gear/proc/spawn_item(var/location, metadata, dummy)
 	var/datum/gear_data/gd = new(path, location)
 	if (metadata)
 		for(var/datum/gear_tweak/gt in gear_tweaks)
@@ -90,7 +90,7 @@
 		gt.tweak_item(item, (metadata ? metadata["[gt]"] : null), location)
 	return item
 
-/datum/gear/proc/spawn_on_mob(var/mob/living/carbon/human/H, var/metadata, var/dummy)
+/datum/gear/proc/spawn_on_mob(var/mob/living/carbon/human/H, metadata, dummy)
 
 	var/obj/item/item = spawn_item(H, metadata, dummy)
 
@@ -111,7 +111,7 @@
 
 	return FALSE
 
-/datum/gear/proc/spawn_in_storage_or_drop(var/mob/living/carbon/human/H, var/metadata, var/dummy)
+/datum/gear/proc/spawn_in_storage_or_drop(var/mob/living/carbon/human/H, metadata, dummy)
 	var/obj/item/item = spawn_item(H, metadata, dummy)
 
 	var/atom/placed_in = H.equip_to_storage(item)
@@ -138,7 +138,7 @@
 
 
 
-/datum/gear/proc/job_permitted(var/mob/living/carbon/human/H, var/datum/job/job)
+/datum/gear/proc/job_permitted(var/mob/living/carbon/human/H, datum/job/job)
 
 	var/permitted = 0
 	if(allowed_branches)

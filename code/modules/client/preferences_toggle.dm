@@ -39,7 +39,7 @@ var/list/client_preference_stats_
 	simulated = 0
 	var/datum/client_preference/client_preference
 
-/stat_client_preference/New(var/loc, var/preference)
+/stat_client_preference/New(var/loc, preference)
 	client_preference = preference
 	update_name(usr)
 	..()

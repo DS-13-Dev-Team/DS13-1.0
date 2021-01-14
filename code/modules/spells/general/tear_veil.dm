@@ -24,7 +24,7 @@
 	hole.density = 0
 	return list(hole)
 
-/spell/tear_veil/cast(var/list/targets, var/mob/holder, var/channel_count)
+/spell/tear_veil/cast(var/list/targets, mob/holder, channel_count)
 	if(channel_count == 1)
 		return
 	var/type = pick(possible_spawns)

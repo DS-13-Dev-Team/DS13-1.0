@@ -93,7 +93,7 @@
 	set desc = "If there is a powered, enabled fabricator in the game world with a prepared chassis, join as a maintenance drone."
 	try_drone_spawn(src)
 
-/proc/try_drone_spawn(var/mob/user, var/obj/machinery/drone_fabricator/fabricator)
+/proc/try_drone_spawn(var/mob/user, obj/machinery/drone_fabricator/fabricator)
 
 	if(ticker.current_state < GAME_STATE_PLAYING)
 		to_chat(user, "<span class='danger'>The game hasn't started yet!</span>")

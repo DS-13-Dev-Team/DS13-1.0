@@ -1,5 +1,5 @@
 // Generates a simple HTML crew manifest for use in various places
-/proc/html_crew_manifest(var/monochrome, var/OOC)
+/proc/html_crew_manifest(var/monochrome, OOC)
 	var/list/dept_data = list(
 		list("names" = list(), "header" = "Heads of Staff", "flag" = COM),
 		list("names" = list(), "header" = "Command Support", "flag" = SPT),
@@ -112,7 +112,7 @@
 		)))
 	return filtered_entries
 
-/proc/filtered_nano_crew_manifest(var/list/filter, var/blacklist = FALSE)
+/proc/filtered_nano_crew_manifest(var/list/filter, blacklist = FALSE)
 	var/list/filtered_entries = list()
 	for(var/datum/computer_file/report/crew_record/CR in department_crew_manifest(filter, blacklist))
 		filtered_entries.Add(list(list(

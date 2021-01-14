@@ -42,7 +42,7 @@
 		. += "<hr>"
 	. = jointext(.,null)
 
-/datum/category_item/player_setup_item/relations/OnTopic(var/href,var/list/href_list, var/mob/user)
+/datum/category_item/player_setup_item/relations/OnTopic(var/href,var/list/href_list, mob/user)
 	if(href_list["relation"])
 		var/R = href_list["relation"]
 		pref.relations ^= R

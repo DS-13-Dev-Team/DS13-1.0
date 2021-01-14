@@ -20,7 +20,7 @@
 	cached_ui_data = null
 	tg_ui_interact(user)
 
-/datum/storage_ui/tgui/on_post_remove(var/mob/user, var/obj/item/W)
+/datum/storage_ui/tgui/on_post_remove(var/mob/user, obj/item/W)
 	cached_ui_data = null
 	tg_ui_interact(user)
 
@@ -58,7 +58,7 @@
 		if(remove_item_by_name_and_type(params["name"], item_type))
 			return TRUE
 
-/datum/storage_ui/tgui/proc/remove_item_by_name_and_type(var/name, var/item_type)
+/datum/storage_ui/tgui/proc/remove_item_by_name_and_type(var/name, item_type)
 	if(!istext(name))
 		return FALSE
 	if(!item_type)

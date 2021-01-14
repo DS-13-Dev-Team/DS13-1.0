@@ -1,16 +1,16 @@
-/proc/cmp_appearance_data(var/datum/appearance_data/a, var/datum/appearance_data/b)
+/proc/cmp_appearance_data(var/datum/appearance_data/a, datum/appearance_data/b)
 	return b.priority - a.priority
 
-/proc/cmp_camera_ctag_asc(var/obj/machinery/camera/a, var/obj/machinery/camera/b)
+/proc/cmp_camera_ctag_asc(var/obj/machinery/camera/a, obj/machinery/camera/b)
 	return sorttext(b.c_tag, a.c_tag)
 
-/proc/cmp_camera_ctag_dsc(var/obj/machinery/camera/a, var/obj/machinery/camera/b)
+/proc/cmp_camera_ctag_dsc(var/obj/machinery/camera/a, obj/machinery/camera/b)
 	return sorttext(a.c_tag, b.c_tag)
 
-/proc/cmp_crew_sensor_modifier(var/crew_sensor_modifier/a, var/crew_sensor_modifier/b)
+/proc/cmp_crew_sensor_modifier(var/crew_sensor_modifier/a, crew_sensor_modifier/b)
 	return b.priority - a.priority
 
-/proc/cmp_follow_holder(var/datum/follow_holder/a, var/datum/follow_holder/b)
+/proc/cmp_follow_holder(var/datum/follow_holder/a, datum/follow_holder/b)
 	if(a.sort_order == b.sort_order)
 		return sorttext(b.get_name(), a.get_name())
 
@@ -65,12 +65,12 @@
 	return a.timeToRun - b.timeToRun
 
 
-/proc/cmp_necroshop_item(var/datum/necroshop_item/a, var/datum/necroshop_item/b)
+/proc/cmp_necroshop_item(var/datum/necroshop_item/a, datum/necroshop_item/b)
 	return a.price - b.price
 
-/proc/cmp_gear_priority(var/datum/gear/a, var/datum/gear/b)
+/proc/cmp_gear_priority(var/datum/gear/a, datum/gear/b)
 	return a.priority - b.priority
 
 
-/proc/cmp_gear_subcategory(var/datum/gear/a, var/datum/gear/b)
+/proc/cmp_gear_subcategory(var/datum/gear/a, datum/gear/b)
 	return sorttext(b.subcategory, a.subcategory)

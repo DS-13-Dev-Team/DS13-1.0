@@ -38,7 +38,7 @@
 	selected_soundtype = choice2
 	return TRUE
 
-/datum/signal_ability/audio/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/audio/on_cast(var/mob/user, atom/target, list/data)
 	var/volume = VOLUME_MID
 	if (selected_soundtype == SOUND_SHOUT || selected_soundtype == SOUND_SHOUT_LONG || selected_soundtype == SOUND_DEATH)
 		volume = VOLUME_LOUD

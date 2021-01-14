@@ -179,7 +179,7 @@
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
 //The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
 //such as when picking up all the items on a tile with one click.
-/obj/item/weapon/storage/proc/handle_item_insertion(var/obj/item/W, var/prevent_warning = 0, var/NoUpdate = 0)
+/obj/item/weapon/storage/proc/handle_item_insertion(var/obj/item/W, prevent_warning = 0, NoUpdate = 0)
 	if(!istype(W))
 		return FALSE
 	if(istype(W.loc, /mob))
@@ -205,7 +205,7 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/storage/store_item(var/obj/item/input, var/mob/user)
+/obj/item/weapon/storage/store_item(var/obj/item/input, mob/user)
 	if (can_be_inserted(input, user))
 		handle_item_insertion(input, FALSE)
 		return TRUE
@@ -224,7 +224,7 @@
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
 //The drop flag should be set false when the item is going to go from storage worn by a mob, to that mob's hands
 //drop should be true when the item is going to go from storage to anywhere else
-/obj/item/weapon/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, var/NoUpdate = 0)
+/obj/item/weapon/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, NoUpdate = 0)
 	if(!istype(W)) return FALSE
 	new_location = new_location || get_turf(src)
 
@@ -286,7 +286,7 @@
 	src.add_fingerprint(user)
 	return
 
-/obj/item/weapon/storage/proc/gather_all(var/turf/T, var/mob/user)
+/obj/item/weapon/storage/proc/gather_all(var/turf/T, mob/user)
 	var/success = 0
 	var/failure = 0
 

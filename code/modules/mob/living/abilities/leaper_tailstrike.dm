@@ -32,7 +32,7 @@
 	var/stopped_at
 	var/attack_verb
 
-/datum/extension/tailstrike/New(var/atom/movable/_user, var/atom/_target, var/_damage, var/_windup_time, var/_winddown_time, var/_cooldown)
+/datum/extension/tailstrike/New(var/atom/movable/_user, atom/_target, _damage, _windup_time, _winddown_time, _cooldown)
 	..()
 	user = _user
 	target = _target //The thing we originally wanted to hit. We will hit them if they were in range and don't move
@@ -212,7 +212,7 @@
 	return tailstrike_attack(A)
 
 
-/atom/movable/proc/can_tailstrike(var/atom/target, var/error_messages = TRUE)
+/atom/movable/proc/can_tailstrike(var/atom/target, error_messages = TRUE)
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
 	var/datum/extension/tailstrike/ES = get_extension(src, /datum/extension/tailstrike)
 	if(istype(ES))
@@ -232,19 +232,19 @@
 
 	return TRUE
 
-/mob/living/can_tailstrike(var/atom/target, var/error_messages = TRUE)
+/mob/living/can_tailstrike(var/atom/target, error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 
 	.=..()
 
-/mob/living/carbon/human/can_tailstrike(var/atom/target, var/error_messages = TRUE)
+/mob/living/carbon/human/can_tailstrike(var/atom/target, error_messages = TRUE)
 	var/obj/item/organ/external/E = get_organ(BP_TAIL)
 	if(!E || E.is_stump() || (E.status & ORGAN_BROKEN))
 		return FALSE
 	.=..()
 
-/atom/movable/proc/tailstrike_attack(var/atom/_target, var/_damage = 25, var/_windup_time = 0.75, var/_winddown_time = 0.75, var/_cooldown = 0)
+/atom/movable/proc/tailstrike_attack(var/atom/_target, _damage = 25, _windup_time = 0.75, _winddown_time = 0.75, _cooldown = 0)
 	//First of all, lets check if we're currently able to do the thing
 	if (!can_tailstrike(_target, TRUE))
 		return FALSE

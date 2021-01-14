@@ -11,7 +11,7 @@
 			items_by_category[di.category] = list()
 		items_by_category[di.category] += di
 
-/mob/living/deity/proc/has_item(var/name, var/minimum_level = 1)
+/mob/living/deity/proc/has_item(var/name, minimum_level = 1)
 	if(!(name in items))
 		return FALSE
 	var/datum/deity_item/di = items[name]

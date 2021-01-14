@@ -131,7 +131,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 
 
 
-/datum/extension/execution/New(var/atom/user, var/mob/living/victim, var/atom/movable/weapon)
+/datum/extension/execution/New(var/atom/user, mob/living/victim, atom/movable/weapon)
 	.=..()
 	if (isliving(user))
 		src.user = user
@@ -368,7 +368,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 			return result
 
 //Called if the attacker takes a damaging impact while performing an execution
-/datum/extension/execution/proc/user_damaged(var/mob/living/damaged_user, var/obj/item/organ/external/organ, var/brute, var/burn, var/damage_flags, var/used_weapon)
+/datum/extension/execution/proc/user_damaged(var/mob/living/damaged_user, obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
 	hit_damage_taken += (brute + burn)
 	if (can_interrupt && (hit_damage_taken >= interrupt_damage_threshold))
 		to_chat(user, SPAN_WARNING("You took too much damage, execution interrupted! [hit_damage_taken] >= [interrupt_damage_threshold]"))
@@ -402,7 +402,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	.=..()
 
 
-/atom/proc/perform_execution(var/execution_type = /datum/extension/execution, var/atom/target)
+/atom/proc/perform_execution(var/execution_type = /datum/extension/execution, atom/target)
 	if (!can_execute(execution_type))
 		return FALSE
 	var/list/arguments = list(src, execution_type, target)

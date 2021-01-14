@@ -48,7 +48,7 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 	((A.normalspeed==0 && haspower)? "The 'Check Timing Mechanism' light is on." : "The 'Check Timing Mechanism' light is off."),
 	((A.aiDisabledIdScanner==0 && haspower)? "The IDScan light is on." : "The IDScan light is off."))
 
-/datum/wires/airlock/UpdateCut(var/index, var/mended)
+/datum/wires/airlock/UpdateCut(var/index, mended)
 
 	var/obj/machinery/door/airlock/A = holder
 	switch(index)

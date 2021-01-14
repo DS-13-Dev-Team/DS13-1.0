@@ -84,7 +84,7 @@
 
 
 
-/obj/machinery/turret/covered/proc/set_raised_raising(var/raised, var/raising)
+/obj/machinery/turret/covered/proc/set_raised_raising(var/raised, raising)
 	src.raised = raised
 	src.raising = raising
 	set_density(raised || raising)

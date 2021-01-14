@@ -1,7 +1,7 @@
 /turf/simulated/wall/diona/New(var/newloc)
 	..(newloc,"biomass")
 
-/turf/simulated/wall/diona/attack_generic(var/mob/user, var/damage, var/attack_message)
+/turf/simulated/wall/diona/attack_generic(var/mob/user, damage, attack_message)
 	if(istype(user, /mob/living/carbon/alien/diona))
 		if(can_open == WALL_OPENING)
 			return
@@ -66,7 +66,7 @@
 	floor_type = /turf/simulated/floor/diona
 
 // This is disgusting.
-/datum/random_map/automata/diona/proc/search_neighbors_for(var/search_val, var/x, var/y)
+/datum/random_map/automata/diona/proc/search_neighbors_for(var/search_val, x, y)
 	var/current_cell = get_map_cell(x-1,y-1)
 	if(current_cell && map[current_cell] == search_val) return 1
 	current_cell = get_map_cell(x-1,y)
@@ -150,7 +150,7 @@
 		if(WALL_CHAR)
 			return wall_type
 
-/datum/random_map/automata/diona/get_additional_spawns(var/value, var/turf/T)
+/datum/random_map/automata/diona/get_additional_spawns(var/value, turf/T)
 
 	if(value != FLOOR_CHAR)
 		for(var/thing in T)

@@ -462,7 +462,7 @@
 
 
 //Will only be called in saw launcher mode. Just overridden here so we can hook in the audio
-/obj/item/projectile/sawblade/launch(atom/target, var/target_zone, var/x_offset=0, var/y_offset=0, var/angle_offset=0)
+/obj/item/projectile/sawblade/launch(atom/target, target_zone, x_offset=0, y_offset=0, angle_offset=0)
 	set_sound(SOUND_NORMAL)
 	.=..()
 
@@ -480,7 +480,7 @@
 
 
 //Handle some effects on hitting mobs
-/obj/item/projectile/sawblade/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+/obj/item/projectile/sawblade/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
 	//Update our hit location to wherever user is currently aiming
 	if (user)
 		def_zone = user.zone_sel.selecting

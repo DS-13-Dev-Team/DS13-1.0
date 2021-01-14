@@ -115,7 +115,7 @@
 		if(open)
 			to_chat(usr, "It's equipped with [english_list(installed_modules)].")
 
-/obj/item/weapon/rig/New(var/location, var/dummy)
+/obj/item/weapon/rig/New(var/location, dummy)
 	src.dummy = dummy
 	.=..()
 
@@ -446,7 +446,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/weapon/rig/proc/check_power_cost(var/mob/living/user, var/cost, var/use_unconcious, var/obj/item/rig_module/mod, var/user_is_ai)
+/obj/item/weapon/rig/proc/check_power_cost(var/mob/living/user, cost, use_unconcious, obj/item/rig_module/mod, user_is_ai)
 
 	if(!istype(user))
 		return FALSE
@@ -479,7 +479,7 @@
 	cell.use(cost * CELLRATE)
 	return TRUE
 
-/obj/item/weapon/rig/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/nano_state = GLOB.inventory_state)
+/obj/item/weapon/rig/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, nano_state = GLOB.inventory_state)
 	if(!user)
 		return
 
@@ -667,7 +667,7 @@
 			to_chat(module.integrated_ai, "[message]")
 			. = 1
 
-/obj/item/weapon/rig/equipped(mob/living/carbon/human/M, var/slot)
+/obj/item/weapon/rig/equipped(mob/living/carbon/human/M, slot)
 	.=..()
 
 	if (!istype(M))
@@ -701,7 +701,7 @@
 		for(var/obj/item/rig_module/module in installed_modules)
 			module.rig_unequipped(M, slot)
 
-/obj/item/weapon/rig/proc/toggle_piece(var/piece, var/mob/initiator, var/deploy_mode)
+/obj/item/weapon/rig/proc/toggle_piece(var/piece, mob/initiator, deploy_mode)
 
 	if(sealing || !cell || !cell.charge)
 		return
@@ -905,7 +905,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/weapon/rig/proc/ai_can_move_suit(var/mob/user, var/check_user_module = 0, var/check_for_ai = 0)
+/obj/item/weapon/rig/proc/ai_can_move_suit(var/mob/user, check_user_module = 0, check_for_ai = 0)
 
 	if(check_for_ai)
 		if(!(locate(/obj/item/rig_module/ai_container) in contents))
@@ -948,7 +948,7 @@
 	wearer.lay_down()
 	to_chat(user, "<span class='notice'>\The [wearer] is now [wearer.resting ? "resting" : "getting up"].</span>")
 
-/obj/item/weapon/rig/proc/forced_move(var/direction, var/mob/user)
+/obj/item/weapon/rig/proc/forced_move(var/direction, mob/user)
 	if(malfunctioning)
 		direction = pick(GLOB.cardinal)
 
@@ -976,7 +976,7 @@
 /mob/living/carbon/human/get_rig()
 	return wearing_rig
 
-/obj/item/weapon/rig/store_item(var/obj/item/input, var/mob/user)
+/obj/item/weapon/rig/store_item(var/obj/item/input, mob/user)
 	if (storage && storage.container.can_be_inserted(input, user))
 		storage.container.handle_item_insertion(input, FALSE)
 		return TRUE

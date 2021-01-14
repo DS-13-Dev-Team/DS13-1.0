@@ -61,7 +61,7 @@
 /mob/living/carbon/slime/setToxLoss(var/amount)
 	adjustToxLoss(amount-getToxLoss())
 
-/mob/living/carbon/slime/New(var/location, var/colour="grey")
+/mob/living/carbon/slime/New(var/location, colour="grey")
 
 	verbs += /mob/living/proc/ventcrawl
 
@@ -277,7 +277,7 @@
 				visible_message("<span class='danger'>[M] has attempted to punch [src]!</span>")
 	return
 
-/mob/living/carbon/slime/attackby(var/obj/item/W, var/mob/user)
+/mob/living/carbon/slime/attackby(var/obj/item/W, mob/user)
 	if(W.force > 0)
 		attacked += 10
 		if(!(stat) && prob(25)) //Only run this check if we're alive or otherwise motile, otherwise surgery will be agonizing for xenobiologists.

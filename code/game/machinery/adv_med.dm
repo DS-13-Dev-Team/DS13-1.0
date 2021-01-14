@@ -88,7 +88,7 @@
 	src.add_fingerprint(user)
 	qdel(G)
 
-/obj/machinery/bodyscanner/proc/user_can_move_target_inside(var/mob/target, var/mob/user)
+/obj/machinery/bodyscanner/proc/user_can_move_target_inside(var/mob/target, mob/user)
 	if(!istype(user) || !istype(target))
 		return FALSE
 	if(!CanMouseDrop(target, user))
@@ -105,7 +105,7 @@
 	return TRUE
 
 //Like grap-put, but for mouse-drop.
-/obj/machinery/bodyscanner/MouseDrop_T(var/mob/target, var/mob/user)
+/obj/machinery/bodyscanner/MouseDrop_T(var/mob/target, mob/user)
 	if(!user_can_move_target_inside(target, user))
 		return
 	user.visible_message("<span class='notice'>\The [user] begins placing \the [target] into \the [src].</span>", "<span class='notice'>You start placing \the [target] into \the [src].</span>")

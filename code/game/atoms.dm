@@ -116,7 +116,7 @@
 		return FALSE
 	return -1
 
-/atom/proc/on_reagent_change(var/reagent_type, var/delta)
+/atom/proc/on_reagent_change(var/reagent_type, delta)
 	return
 
 /atom/proc/Bumped(AM as mob|obj)
@@ -274,7 +274,7 @@ its easier to just keep the beam vertical.
 
 
 //All atoms
-/atom/proc/examine(mob/user, var/distance = -1, var/infix = "", var/suffix = "")
+/atom/proc/examine(mob/user, distance = -1, infix = "", suffix = "")
 	//This reformat names to get a/an properly working on item descriptions when they are bloody
 	var/f_name = "\a [src][infix]."
 	if(src.blood_DNA && !istype(src, /obj/effect/decal))
@@ -316,17 +316,17 @@ its easier to just keep the beam vertical.
 /atom/proc/update_icon()
 	return
 
-/atom/proc/ex_act(var/severity, var/atom/epicentre)
+/atom/proc/ex_act(var/severity, atom/epicentre)
 	return
 
-/atom/proc/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
+/atom/proc/emag_act(var/remaining_charges, mob/user, emag_source)
 	return NO_EMAG_ACT
 
 /atom/proc/fire_act()
 	return
 
 //How much damage will a fire_act do?
-/atom/proc/get_fire_damage(var/temperature, var/multiplier)
+/atom/proc/get_fire_damage(var/temperature, multiplier)
 	return (temperature-get_heat_limit()) * FIRE_DAMAGE_MULTIPLIER * multiplier
 
 /atom/proc/melt()
@@ -363,7 +363,7 @@ its easier to just keep the beam vertical.
 	. = 1
 	return TRUE
 
-/atom/proc/add_vomit_floor(mob/living/carbon/M as mob, var/toxvomit = 0)
+/atom/proc/add_vomit_floor(mob/living/carbon/M as mob, toxvomit = 0)
 	if( istype(src, /turf/simulated) )
 		var/obj/effect/decal/cleanable/vomit/this = new /obj/effect/decal/cleanable/vomit(src)
 
@@ -411,7 +411,7 @@ its easier to just keep the beam vertical.
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
-/atom/proc/visible_message(var/message, var/blind_message, var/range = world.view, var/checkghosts = null)
+/atom/proc/visible_message(var/message, blind_message, range = world.view, checkghosts = null)
 	var/turf/T = get_turf(src)
 	var/list/mobs = list()
 	var/list/objs = list()
@@ -433,7 +433,7 @@ its easier to just keep the beam vertical.
 // message is the message output to anyone who can hear.
 // deaf_message (optional) is what deaf people will see.
 // hearing_distance (optional) is the range, how many tiles away the message can be heard.
-/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance = world.view, var/checkghosts = null)
+/atom/proc/audible_message(var/message, deaf_message, hearing_distance = world.view, checkghosts = null)
 	var/turf/T = get_turf(src)
 	var/list/mobs = list()
 	var/list/objs = list()
@@ -624,7 +624,7 @@ its easier to just keep the beam vertical.
 /*
 	used to restore health to non-organic objects, mobs, and turfs
 */
-/atom/proc/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+/atom/proc/repair(var/repair_power, datum/repair_source, mob/user)
 	return TRUE
 
 //Returns a value that somehow represents how much repairing is needed.

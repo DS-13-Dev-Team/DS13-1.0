@@ -2,7 +2,7 @@
 	if(!leader && current_antagonists.len && (flags & ANTAG_HAS_LEADER))
 		leader = current_antagonists[1]
 
-/datum/antagonist/proc/update_antag_mob(var/datum/mind/player, var/preserve_appearance)
+/datum/antagonist/proc/update_antag_mob(var/datum/mind/player, preserve_appearance)
 
 	// Get the mob.
 	if((flags & ANTAG_OVERRIDE_MOB) && (!player.current || (mob_path && !istype(player.current, mob_path))))
@@ -28,7 +28,7 @@
 		if(I.icon_state == antag_indicator || (faction_indicator && I.icon_state == faction_indicator))
 			qdel(I)
 
-/datum/antagonist/proc/get_indicator(var/datum/mind/recipient, var/datum/mind/other)
+/datum/antagonist/proc/get_indicator(var/datum/mind/recipient, datum/mind/other)
 	if(!antag_indicator || !other.current || !recipient.current)
 		return
 	var/indicator = (faction_indicator && (other in faction_members)) ? faction_indicator : antag_indicator

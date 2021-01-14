@@ -49,17 +49,17 @@
 /proc/check_signal(var/datum/signal/signal)
 	return signal && signal.data["done"]
 
-/proc/get_sender_reception(var/atom/sender, var/datum/signal/signal)
+/proc/get_sender_reception(var/atom/sender, datum/signal/signal)
 	return check_signal(signal) ? TELECOMMS_RECEPTION_SENDER : TELECOMMS_RECEPTION_NONE
 
-/proc/get_receiver_reception(var/receiver, var/datum/signal/signal)
+/proc/get_receiver_reception(var/receiver, datum/signal/signal)
 	if(receiver && check_signal(signal))
 		var/turf/pos = get_turf(receiver)
 		if(pos && (pos.z in signal.data["level"]))
 			return TELECOMMS_RECEPTION_RECEIVER
 	return TELECOMMS_RECEPTION_NONE
 
-/proc/get_reception(var/atom/sender, var/receiver, var/message = "", var/do_sleep = 1)
+/proc/get_reception(var/atom/sender, receiver, message = "", do_sleep = 1)
 	var/datum/reception/reception = new
 
 	// check if telecomms I/O route 1459 is stable
@@ -72,7 +72,7 @@
 
 	return reception
 
-/proc/get_receptions(var/atom/sender, var/list/atom/receivers, var/do_sleep = 1)
+/proc/get_receptions(var/atom/sender, list/atom/receivers, do_sleep = 1)
 	var/datum/receptions/receptions = new
 	receptions.message_server = get_message_server()
 

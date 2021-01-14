@@ -160,7 +160,7 @@
 			if(is_client_moving) M.moving = 0
 
 //For children to override
-/atom/movable/proc/can_fall(var/anchor_bypass = FALSE, var/turf/location_override = src.loc)
+/atom/movable/proc/can_fall(var/anchor_bypass = FALSE, turf/location_override = src.loc)
 	if(!simulated)
 		return FALSE
 

@@ -209,7 +209,7 @@
 
 datum/signal
 
-	proc/mem(var/address, var/value)
+	proc/mem(var/address, value)
 
 		if(istext(address))
 			var/obj/machinery/telecomms/server/S = data["server"]
@@ -221,7 +221,7 @@ datum/signal
 				S.memory[address] = value
 
 
-	proc/tcombroadcast(var/message, var/freq, var/source, var/job)
+	proc/tcombroadcast(var/message, freq, source, job)
 
 		var/datum/signal/newsign = new
 		var/obj/machinery/telecomms/server/S = data["server"]

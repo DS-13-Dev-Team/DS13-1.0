@@ -22,7 +22,7 @@
 
 	var/obj/structure/reagent_dispensers/watertank/tank
 
-/mob/living/bot/farmbot/New(var/newloc, var/newTank)
+/mob/living/bot/farmbot/New(var/newloc, newTank)
 	..(newloc)
 	if(!newTank)
 		newTank = new /obj/structure/reagent_dispensers/watertank(src)
@@ -63,7 +63,7 @@
 		if(2)
 			. += "ERROROROROROR-----"
 
-/mob/living/bot/farmbot/ProcessCommand(var/mob/user, var/command, var/href_list)
+/mob/living/bot/farmbot/ProcessCommand(var/mob/user, command, href_list)
 	..()
 	if(CanAccessPanel(user))
 		switch(command)
@@ -86,7 +86,7 @@
 				if(emagged < 2)
 					emagged = !emagged
 
-/mob/living/bot/farmbot/emag_act(var/remaining_charges, var/mob/user)
+/mob/living/bot/farmbot/emag_act(var/remaining_charges, mob/user)
 	. = ..()
 	if(!emagged)
 		if(user)
@@ -141,7 +141,7 @@
 	makeStep(target_path)
 	return
 
-/mob/living/bot/farmbot/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/bot/farmbot/UnarmedAttack(var/atom/A, proximity)
 	if(!..())
 		return
 	if(busy)
@@ -292,7 +292,7 @@
 	var/obj/tank
 	w_class = ITEM_SIZE_NORMAL
 
-/obj/item/weapon/farmbot_arm_assembly/New(var/newloc, var/theTank)
+/obj/item/weapon/farmbot_arm_assembly/New(var/newloc, theTank)
 	..(newloc)
 	if(!theTank) // If an admin spawned it, it won't have a watertank it, so lets make one for em!
 		tank = new /obj/structure/reagent_dispensers/watertank(src)

@@ -90,7 +90,7 @@
 	var/do_winddown_animation = TRUE	//If false, we will not animate back to normal. Only set it false when something else will handle it
 
 
-/datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
+/datum/extension/charge/New(var/datum/holder, atom/_target, _speed , _lifespan, _maxrange, _homing, _inertia = FALSE, _power, _cooldown, _delay)
 	.=..()
 	user = holder
 
@@ -263,7 +263,7 @@
 
 
 
-/datum/extension/charge/proc/bump(var/atom/movable/user, var/atom/obstacle, var/crossed = FALSE)
+/datum/extension/charge/proc/bump(var/atom/movable/user, atom/obstacle, crossed = FALSE)
 	if (obstacle in atoms_hit)
 		return //Don't hit the same atom more than once
 
@@ -325,7 +325,7 @@
 
 
 
-/datum/extension/charge/proc/moved(var/atom/mover, var/oldloc, var/newloc)
+/datum/extension/charge/proc/moved(var/atom/mover, oldloc, newloc)
 	.=TRUE
 
 
@@ -559,7 +559,7 @@
 	return charge_attack(A)
 
 
-/atom/movable/proc/can_charge(var/atom/target, var/error_messages = TRUE)
+/atom/movable/proc/can_charge(var/atom/target, error_messages = TRUE)
 	//Check for an existing charge extension. that means a charge is already in progress or cooling down, don't repeat
 	var/datum/extension/charge/EC = get_extension(src, /datum/extension/charge)
 	if(istype(EC))
@@ -577,7 +577,7 @@
 
 	return TRUE
 
-/mob/living/can_charge(var/atom/target, var/error_messages = TRUE)
+/mob/living/can_charge(var/atom/target, error_messages = TRUE)
 	if (incapacitated(INCAPACITATION_IMMOBILE))
 		return FALSE
 
@@ -596,7 +596,7 @@
 
 	return ..()
 
-/atom/movable/proc/charge_attack(var/atom/_target, var/_speed = 7, var/_lifespan = 3 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)
+/atom/movable/proc/charge_attack(var/atom/_target, _speed = 7, _lifespan = 3 SECONDS, _maxrange = null, _homing = TRUE, _inertia = FALSE, _power = 0, _cooldown = 20 SECONDS, _delay = 0)
 	//First of all, lets check if we're currently able to charge
 	if (!can_charge(_target, TRUE))
 		return FALSE

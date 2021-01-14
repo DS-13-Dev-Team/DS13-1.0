@@ -26,7 +26,7 @@
 	targeting_method	=	TARGET_CLICK
 
 
-/datum/signal_ability/psychic_tracer/on_cast(var/mob/user, var/atom/target, var/list/data)
+/datum/signal_ability/psychic_tracer/on_cast(var/mob/user, atom/target, list/data)
 	var/datum/extension/psychic_tracer/MW = get_extension(target, /datum/extension/psychic_tracer)
 	if (istype(MW))
 		MW.refresh_duration()

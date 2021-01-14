@@ -92,7 +92,7 @@ var/global/datum/controller/occupations/job_master
 	proc/GetPlayerAltTitle(mob/new_player/player, rank)
 		return player.client.prefs.GetPlayerAltTitle(GetJob(rank))
 
-	proc/CheckGeneralJoinBlockers(var/mob/new_player/joining, var/datum/job/job)
+	proc/CheckGeneralJoinBlockers(var/mob/new_player/joining, datum/job/job)
 		if(!istype(joining) || !joining.client || !joining.client.prefs)
 			return FALSE
 		if(!istype(job))
@@ -109,7 +109,7 @@ var/global/datum/controller/occupations/job_master
 			return FALSE
 		return TRUE
 
-	proc/CheckLatejoinBlockers(var/mob/new_player/joining, var/datum/job/job)
+	proc/CheckLatejoinBlockers(var/mob/new_player/joining, datum/job/job)
 		if(!CheckGeneralJoinBlockers(joining, job))
 			return FALSE
 		if(job.minimum_character_age && (joining.client.prefs.age < job.minimum_character_age))
@@ -123,7 +123,7 @@ var/global/datum/controller/occupations/job_master
 			return FALSE
 		return TRUE
 
-	proc/CheckUnsafeSpawn(var/mob/living/spawner, var/turf/spawn_turf)
+	proc/CheckUnsafeSpawn(var/mob/living/spawner, turf/spawn_turf)
 		var/radlevel = SSradiation.get_rads_at_turf(spawn_turf)
 		var/airstatus = IsTurfAtmosUnsafe(spawn_turf)
 		if(airstatus || radlevel > 0)
@@ -137,7 +137,7 @@ var/global/datum/controller/occupations/job_master
 				log_and_message_admins("User [spawner] spawned at spawn point with dangerous atmosphere.")
 		return TRUE
 
-	proc/AssignRole(var/mob/new_player/player, var/rank, var/latejoin = 0)
+	proc/AssignRole(var/mob/new_player/player, rank, latejoin = 0)
 		Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 		if(player && player.mind && rank)
 			var/datum/job/job = GetJob(rank)
@@ -402,7 +402,7 @@ var/global/datum/controller/occupations/job_master
 				unassigned -= player
 		return TRUE
 
-	proc/EquipCustomLoadout(var/mob/living/carbon/human/H, var/datum/job/job)
+	proc/EquipCustomLoadout(var/mob/living/carbon/human/H, datum/job/job)
 
 		if(!H || !H.client)
 			return
@@ -445,7 +445,7 @@ var/global/datum/controller/occupations/job_master
 	/*
 		Partially gutted by Nanako, this proc no longer handles equipment or items. IT still does setup of accounts and various nonphysical things
 	*/
-	proc/EquipRank(var/mob/living/carbon/human/H, var/rank, var/joined_late = 0, var/no_outfit = FALSE)
+	proc/EquipRank(var/mob/living/carbon/human/H, rank, joined_late = 0, no_outfit = FALSE)
 		if(!H)	return null
 
 		var/datum/job/job = GetJob(rank)
@@ -623,7 +623,7 @@ var/global/datum/controller/occupations/job_master
  *  preference is not set, or the preference is not appropriate for the rank, in
  *  which case a fallback will be selected.
  */
-/datum/controller/occupations/proc/get_spawnpoint_for(var/client/C, var/rank, var/datum/preferences/prefs, var/check_safety = FALSE)
+/datum/controller/occupations/proc/get_spawnpoint_for(var/client/C, rank, datum/preferences/prefs, check_safety = FALSE)
 
 	if(!C)
 		CRASH("Null client passed to get_spawnpoint_for() proc!")

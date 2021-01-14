@@ -61,7 +61,7 @@ var/list/outfits_decls_by_type_
 	var/list/all_possible_types = list()
 	var/list/implants
 
-/decl/hierarchy/outfit/New(var/full_init = TRUE, var/list_entry = FALSE)
+/decl/hierarchy/outfit/New(var/full_init = TRUE, list_entry = FALSE)
 	..()
 
 	setup_loadout_tags()
@@ -124,7 +124,7 @@ var/list/outfits_decls_by_type_
 
 // end of check_and_try_equip_xeno
 
-/decl/hierarchy/outfit/proc/equip(mob/living/carbon/human/H, var/rank, var/assignment, var/equip_adjustments)
+/decl/hierarchy/outfit/proc/equip(mob/living/carbon/human/H, rank, assignment, equip_adjustments)
 	equip_base(H, equip_adjustments)
 
 	rank = id_pda_assignment || rank
@@ -145,7 +145,7 @@ var/list/outfits_decls_by_type_
 		H.set_id_info(W)
 	return TRUE
 
-/decl/hierarchy/outfit/proc/equip_base(mob/living/carbon/human/H, var/equip_adjustments, var/overwrite = FALSE, var/dummy = FALSE)
+/decl/hierarchy/outfit/proc/equip_base(mob/living/carbon/human/H, equip_adjustments, overwrite = FALSE, dummy = FALSE)
 	pre_equip(H)
 	//Start with uniform,suit,backpack for additional slots
 	if(uniform)
@@ -228,7 +228,7 @@ var/list/outfits_decls_by_type_
 
 	check_and_try_equip_xeno(H)
 
-/decl/hierarchy/outfit/proc/equip_id(var/mob/living/carbon/human/H, var/rank, var/assignment, var/equip_adjustments, var/dummy)
+/decl/hierarchy/outfit/proc/equip_id(var/mob/living/carbon/human/H, rank, assignment, equip_adjustments, dummy)
 	if(!id_slot || !id_type)
 		return
 	if(OUTFIT_ADJUSTMENT_SKIP_ID_PDA & equip_adjustments)
@@ -244,7 +244,7 @@ var/list/outfits_decls_by_type_
 	if(H.equip_to_slot_or_store_or_drop(W, id_slot))
 		return W
 
-/decl/hierarchy/outfit/proc/equip_pda(var/mob/living/carbon/human/H, var/rank, var/assignment, var/equip_adjustments, var/dummy)
+/decl/hierarchy/outfit/proc/equip_pda(var/mob/living/carbon/human/H, rank, assignment, equip_adjustments, dummy)
 	if(!pda_slot || !pda_type)
 		return
 	if(OUTFIT_ADJUSTMENT_SKIP_ID_PDA & equip_adjustments)
@@ -253,7 +253,7 @@ var/list/outfits_decls_by_type_
 	if(H.equip_to_slot_or_store_or_drop(pda, pda_slot))
 		return pda
 
-/decl/hierarchy/outfit/proc/equip_stored(mob/living/carbon/human/H, var/equip_adjustments, var/overwrite = FALSE)
+/decl/hierarchy/outfit/proc/equip_stored(mob/living/carbon/human/H, equip_adjustments, overwrite = FALSE)
 	var/list/items_to_store = list()
 	for(var/path in backpack_contents)
 		var/number = backpack_contents[path]
@@ -271,7 +271,7 @@ var/list/outfits_decls_by_type_
 
 
 //Wrapper for creating, so that we can manipulate the items
-/decl/hierarchy/outfit/proc/create_item(var/path, var/location, var/dummy = FALSE)
+/decl/hierarchy/outfit/proc/create_item(var/path, location, dummy = FALSE)
 	var/datum/thing = path
 	if (dummy && initial(thing.implements_dummy))
 		return new path(location, dummy = TRUE)

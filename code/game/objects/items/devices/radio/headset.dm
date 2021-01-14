@@ -336,7 +336,7 @@
 	radio_desc = radio_text
 
 
-/obj/item/device/radio/headset/equipped(var/mob/user, var/slot)
+/obj/item/device/radio/headset/equipped(var/mob/user, slot)
 	update_active()
 	.=..()
 

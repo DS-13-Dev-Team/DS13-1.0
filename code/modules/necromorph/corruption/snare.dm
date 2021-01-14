@@ -103,7 +103,7 @@
 /*
 	Interaction
 */
-/obj/structure/corruption_node/snare/Click(var/location, var/control, var/params)
+/obj/structure/corruption_node/snare/Click(var/location, control, params)
 	register_awareness(usr)
 	.=..()
 
@@ -150,7 +150,7 @@
 	return TRUE
 
 //Someone tried to attack the snare with an item. Yoink!
-/obj/structure/corruption_node/snare/proc/yank_item(var/mob/user, var/obj/item/I)
+/obj/structure/corruption_node/snare/proc/yank_item(var/mob/user, obj/item/I)
 	//They need to be within reach
 	if (get_dist(src, user) > 1)
 		return

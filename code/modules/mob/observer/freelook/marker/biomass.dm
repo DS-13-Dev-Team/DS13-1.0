@@ -9,7 +9,7 @@
 	var/last_absorb = 0	//How much was absorbed during the last tick?
 	var/counts_toward_total = FALSE	//Does unabsorbed biomass in this source count towards the total biomass value?
 
-/datum/biomass_source/New(var/datum/_source = null, var/datum/_target = null, var/total_mass = 0, var/duration = 1 SECOND)
+/datum/biomass_source/New(var/datum/_source = null, datum/_target = null, total_mass = 0, duration = 1 SECOND)
 	.=..()
 	source = "\ref[_source]"
 	if (istype(_source, /atom))
@@ -67,7 +67,7 @@
 	return FALSE
 
 
-/datum/biomass_source/proc/calculate_tick(var/mass, var/duration)
+/datum/biomass_source/proc/calculate_tick(var/mass, duration)
 	mass_tick = mass / (duration * 0.1)	//Calculate the mass absorbed per second
 
 /datum/biomass_source/proc/mass_exhausted()
@@ -179,7 +179,7 @@
 /datum/biomass_source/harvest
 	var/obj/structure/corruption_node/harvester/harvester
 
-/datum/biomass_source/harvest/New(var/datum/_source = null, var/datum/_target = null, var/total_mass = 0, var/duration = 1 SECOND)
+/datum/biomass_source/harvest/New(var/datum/_source = null, datum/_target = null, total_mass = 0, duration = 1 SECOND)
 	harvester = _source
 	.=..()
 

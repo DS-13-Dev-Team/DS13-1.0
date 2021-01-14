@@ -1,7 +1,7 @@
 /decl/appearance_handler/cardborg
 	var/static/list/appearances
 
-/decl/appearance_handler/cardborg/proc/item_equipped(var/obj/item/item, var/mob/user, var/slot)
+/decl/appearance_handler/cardborg/proc/item_equipped(var/obj/item/item, mob/user, slot)
 	if(!(slot == slot_head || slot == slot_wear_suit|| slot == slot_back))
 		return
 	if(!ishuman(user))
@@ -19,7 +19,7 @@
 	AddAltAppearance(H, I, GLOB.silicon_mob_list+H) //you look like a robot to robots! (including yourself because you're totally a robot)
 	GLOB.logged_in_event.register_global(src, /decl/appearance_handler/cardborg/proc/mob_joined)	// Duplicate registration request are handled for us
 
-/decl/appearance_handler/cardborg/proc/item_removed(var/obj/item/item, var/mob/user)
+/decl/appearance_handler/cardborg/proc/item_removed(var/obj/item/item, mob/user)
 	if((istype(item, /obj/item/clothing/suit/cardborg) || istype(item, /obj/item/clothing/head/cardborg)) || istype(item, /obj/item/weapon/storage/backpack))
 		RemoveAltAppearance(user)
 		if(!appearance_sources.len)

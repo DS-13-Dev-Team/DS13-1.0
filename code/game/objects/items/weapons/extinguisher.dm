@@ -8,7 +8,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	throwforce = 10
 	w_class = ITEM_SIZE_NORMAL
-	
+
 	throw_range = 10
 	force = 10.0
 	matter = list(MATERIAL_STEEL = 90)
@@ -51,7 +51,7 @@
 	to_chat(user, "The safety is [safety ? "on" : "off"].")
 	return
 
-/obj/item/weapon/extinguisher/attack(var/mob/living/M, var/mob/user)
+/obj/item/weapon/extinguisher/attack(var/mob/living/M, mob/user)
 	if(user.a_intent == I_HELP)
 		if(src.safety || (world.time < src.last_use + 20)) // We still catch help intent to not randomly attack people
 			return
@@ -86,7 +86,7 @@
 		O.Move(get_step(user,movementdirection), movementdirection)
 		sleep(3)
 
-/obj/item/weapon/extinguisher/afterattack(var/atom/target, var/mob/user, var/flag)
+/obj/item/weapon/extinguisher/afterattack(var/atom/target, mob/user, flag)
 	//TODO; Add support for reagents in water.
 
 	if( istype(target, /obj/structure/reagent_dispensers) && flag)

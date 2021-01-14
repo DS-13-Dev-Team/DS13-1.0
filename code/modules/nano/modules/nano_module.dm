@@ -5,7 +5,7 @@
 	var/datum/topic_manager/topic_manager
 	var/list/using_access = list()
 
-/datum/nano_module/New(var/datum/host, var/topic_manager)
+/datum/nano_module/New(var/datum/host, topic_manager)
 	..()
 	src.host = host.nano_host()
 	src.topic_manager = topic_manager
@@ -32,7 +32,7 @@
 		if(I)
 			. |= I.access
 
-/datum/nano_module/proc/check_access(var/mob/user, var/access)
+/datum/nano_module/proc/check_access(var/mob/user, access)
 	if(!access)
 		return 1
 	if(!islist(access))
@@ -50,7 +50,7 @@
 	var/atom/host = nano_host()
 	return istype(host) ? get_z(host) : 0
 
-/datum/nano_module/proc/print_text(var/text, var/mob/user)
+/datum/nano_module/proc/print_text(var/text, mob/user)
 	var/obj/item/modular_computer/MC = nano_host()
 	if(istype(MC))
 		if(!MC.nano_printer)

@@ -23,7 +23,7 @@
 	var/selected_variant = null	//Used in cases where there are multiple possible results, This can't finish growing until a user selects which variant to grow it into
 
 
-/obj/item/organ/forming/New(var/location, var/template)
+/obj/item/organ/forming/New(var/location, template)
 
 	src.template = template
 

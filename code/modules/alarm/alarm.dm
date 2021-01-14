@@ -25,7 +25,7 @@
 	var/last_z_level				//The last acquired z-level, used should origin be lost
 	var/end_time					//Used to set when this alarm should clear, in case the origin is lost.
 
-/datum/alarm/New(var/atom/origin, var/atom/source, var/duration, var/severity)
+/datum/alarm/New(var/atom/origin, atom/source, duration, severity)
 	src.origin = origin
 
 	cameras()	// Sets up both cameras and last alarm area.
@@ -44,7 +44,7 @@
 			AS.duration = 0
 			AS.end_time = world.time + ALARM_RESET_DELAY
 
-/datum/alarm/proc/set_source_data(var/atom/source, var/duration, var/severity)
+/datum/alarm/proc/set_source_data(var/atom/source, duration, severity)
 	var/datum/alarm_source/AS = sources_assoc[source]
 	if(!AS)
 		AS = new/datum/alarm_source(source)

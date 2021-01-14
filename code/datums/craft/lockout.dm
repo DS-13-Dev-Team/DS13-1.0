@@ -7,7 +7,7 @@
 	var/duration
 	var/ongoing_timer
 
-/datum/extension/craft_lockout/New(var/atom/_holder, var/lock_time)
+/datum/extension/craft_lockout/New(var/atom/_holder, lock_time)
 	.=..()
 	duration = lock_time
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/craft_lockout/proc/stop), duration)
@@ -15,7 +15,7 @@
 /datum/extension/craft_lockout/proc/stop()
 	remove_extension(holder, /datum/extension/craft_lockout)
 
-/proc/apply_craft_lockout(var/mob/user, var/time)
+/proc/apply_craft_lockout(var/mob/user, time)
 	set_extension(user, /datum/extension/craft_lockout, time)
 
 /proc/release_craft_lockout(var/mob/user)

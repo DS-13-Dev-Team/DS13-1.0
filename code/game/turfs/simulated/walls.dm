@@ -29,7 +29,7 @@
 	var/list/blend_objects = list(/obj/machinery/door, /obj/structure/wall_frame, /obj/structure/grille, /obj/structure/window/reinforced/full, /obj/structure/window/reinforced/polarized/full, /obj/structure/window/shuttle, ,/obj/structure/window/phoronbasic/full, /obj/structure/window/phoronreinforced/full) // Objects which to blend with
 	var/list/noblend_objects = list(/obj/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
 
-/turf/simulated/wall/New(var/newloc, var/materialtype, var/rmaterialtype)
+/turf/simulated/wall/New(var/newloc, materialtype, rmaterialtype)
 	..(newloc)
 	icon_state = "blank"
 	if(!materialtype)
@@ -89,7 +89,7 @@
 	take_damage(damage)
 	return
 
-/turf/simulated/wall/hitby(AM as mob|obj, var/speed=THROWFORCE_SPEED_DIVISOR)
+/turf/simulated/wall/hitby(AM as mob|obj, speed=THROWFORCE_SPEED_DIVISOR)
 	..()
 	if(ismob(AM))
 		return
@@ -158,7 +158,7 @@
 		update_damage()
 	return
 
-/turf/simulated/wall/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+/turf/simulated/wall/repair(var/repair_power, datum/repair_source, mob/user)
 	damage = clamp(damage-repair_power, 0, damage)
 	update_damage()
 
@@ -180,7 +180,7 @@
 
 	return
 
-/turf/simulated/wall/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)//Doesn't fucking work because walls don't interact with air :(
+/turf/simulated/wall/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)//Doesn't fucking work because walls don't interact with air :(
 	burn(exposed_temperature)
 
 /turf/simulated/wall/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
@@ -190,7 +190,7 @@
 
 	return ..()
 
-/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product)
+/turf/simulated/wall/proc/dismantle_wall(var/devastated, explode, no_product)
 
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
@@ -285,5 +285,5 @@
 /turf/simulated/wall/get_color()
 	return paint_color
 
-/turf/simulated/wall/proc/CheckPenetration(var/base_chance, var/damage)
+/turf/simulated/wall/proc/CheckPenetration(var/base_chance, damage)
 	return round(damage/material.integrity*180)

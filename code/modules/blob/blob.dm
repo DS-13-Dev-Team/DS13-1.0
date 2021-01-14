@@ -28,7 +28,7 @@
 	update_icon()
 	return ..(loc)
 
-/obj/effect/blob/CanPass(var/atom/movable/mover, vra/turf/target, var/height = 0, var/air_group = 0)
+/obj/effect/blob/CanPass(var/atom/movable/mover, vra/turf/target, height = 0, air_group = 0)
 	if(air_group || height == 0)
 		return 1
 	return 0
@@ -120,7 +120,7 @@
 	else
 		new expandType(T, min(health, 30))
 
-/obj/effect/blob/proc/pulse(var/forceLeft, var/list/dirs)
+/obj/effect/blob/proc/pulse(var/forceLeft, list/dirs)
 	regen()
 	sleep(4)
 	var/pushDir = pick(dirs)
@@ -144,7 +144,7 @@
 			take_damage((Proj.damage / laser_resist) / fire_resist)
 	return 0
 
-/obj/effect/blob/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/blob/attackby(var/obj/item/weapon/W, mob/user)
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
@@ -250,5 +250,5 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/shield/CanPass(var/atom/movable/mover, var/turf/target, var/height = 0, var/air_group = 0)
+/obj/effect/blob/shield/CanPass(var/atom/movable/mover, turf/target, height = 0, air_group = 0)
 	return !density

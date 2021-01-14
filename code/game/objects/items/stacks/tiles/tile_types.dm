@@ -381,7 +381,7 @@
 		"orange carpet" = /obj/item/stack/tile/carpet/oracarpet
 	)
 
-/obj/item/stack/tile/floor/cyborg/afterattack(var/atom/A, var/mob/user, proximity, params)
+/obj/item/stack/tile/floor/cyborg/afterattack(var/atom/A, mob/user, proximity, params)
 	if(!proximity)
 		return
 

@@ -32,7 +32,7 @@ var/list/integrated_circuit_blacklist = list(/obj/item/integrated_circuit, /obj/
 	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
 	RefreshParts()
 
-/obj/machinery/integrated_circuit_printer/attackby(var/obj/item/O, var/mob/user)
+/obj/machinery/integrated_circuit_printer/attackby(var/obj/item/O, mob/user)
 	if(istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/stack = O
 		if(stack.material.name == MATERIAL_STEEL)

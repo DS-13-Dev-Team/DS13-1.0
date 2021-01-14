@@ -101,7 +101,7 @@
 			prefs.gear_list[gear_slot] -= thing
 
 //Takes a job datum or a job name,
-/datum/extension/loadout/proc/set_job(var/datum/job/newjob, var/set_rank = TRUE)
+/datum/extension/loadout/proc/set_job(var/datum/job/newjob, set_rank = TRUE)
 	if (job == newjob)
 		return
 
@@ -362,7 +362,7 @@
 
 
 
-/datum/extension/loadout/proc/equip_gear(var/datum/gear/G, var/check_job = TRUE, var/dummy = FALSE)
+/datum/extension/loadout/proc/equip_gear(var/datum/gear/G, check_job = TRUE, dummy = FALSE)
 	if (check_job && !G.job_permitted(H, job))
 		to_chat(H, "<span class='warning'>Your current species, job, branch or whitelist status does not permit you to spawn with [G]!</span>")
 		return

@@ -16,10 +16,10 @@
 	Direction: 2D vector of where the force is trying to push us
 	Strength: Intensity of force in Newton-seconds
 */
-/atom/proc/apply_impulse(var/direction, var/strength)
+/atom/proc/apply_impulse(var/direction, strength)
 	//Non movable atoms cant be moved, but this is defined here for use on mining turfs later
 
-/atom/movable/apply_impulse(var/direction, var/strength)
+/atom/movable/apply_impulse(var/direction, strength)
 	if (anchored || QDELETED(src))
 		return	//Anchored things never move
 
@@ -51,7 +51,7 @@
 /mob/living/var/knockdown_threshold_factor = 1.5	//Requires a force at least this * mass to knock down this mob
 /mob/living/var/stagger_threshold_factor = 0.1	//
 
-/mob/living/apply_impulse(var/direction, var/strength)
+/mob/living/apply_impulse(var/direction, strength)
 	//First of all since living creatures are unpredictable, strength gets some random variance
 	strength *= rand_between(0.85, 1.15)
 
@@ -77,7 +77,7 @@
 	Applies an impulse to this atom, originating from origin, to push it away from origin
 	Distance is optional, it will be calculated. But if specified, calculations
 */
-/atom/proc/apply_push_impulse_from(var/atom/origin, var/strength, var/falloff_factor = 1)
+/atom/proc/apply_push_impulse_from(var/atom/origin, strength, falloff_factor = 1)
 	var/list/data = Vector2.DirMagBetween(origin, src)
 	var/vector2/direction = data["direction"]
 	var/distance = data["magnitude"]
@@ -90,13 +90,13 @@
 
 
 //Strength falloff over distance
-/proc/force_falloff(var/strength, var/distance, var/falloff_factor)
+/proc/force_falloff(var/strength, distance, falloff_factor)
 	return (strength / (1 + (distance * falloff_factor)))
 
 
 
 
-/proc/get_turf_in_direction(var/atom/origin, var/vector2/direction, var/distance)
+/proc/get_turf_in_direction(var/atom/origin, vector2/direction, distance)
 	var/vector2/delta = direction * distance
 
 	var/turf/target = locate(origin.x + delta.x, origin.y + delta.y, origin.z)

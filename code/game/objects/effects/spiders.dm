@@ -20,7 +20,7 @@
 				qdel(src)
 	return
 
-/obj/effect/spider/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/spider/attackby(var/obj/item/weapon/W, mob/user)
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 
 	if(W.attack_verb.len)
@@ -43,7 +43,7 @@
 	if(health <= 0)
 		qdel(src)
 
-/obj/effect/spider/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/obj/effect/spider/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	if(exposed_temperature > 300 + T0C)
 		health -= 5
 		healthcheck()
@@ -78,7 +78,7 @@
 		pixel_y = rand(3,-3)
 		START_PROCESSING(SSobj, src)
 
-/obj/effect/spider/eggcluster/New(var/location, var/atom/parent)
+/obj/effect/spider/eggcluster/New(var/location, atom/parent)
 	get_light_and_color(parent)
 	..()
 
@@ -121,7 +121,7 @@
 
 	var/shift_range = 6
 
-/obj/effect/spider/spiderling/Initialize(var/mapload, var/atom/parent)
+/obj/effect/spider/spiderling/Initialize(var/mapload, atom/parent)
 	greater_form = pick(typesof(/mob/living/simple_animal/hostile/giant_spider))
 	icon_state = initial(greater_form.icon_state)
 	pixel_x = rand(-shift_range, shift_range)
@@ -152,7 +152,7 @@
 	walk(src, 0) // Because we might have called walk_to, we must stop the walk loop or BYOND keeps an internal reference to us forever.
 	. = ..()
 
-/obj/effect/spider/spiderling/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/spider/spiderling/attackby(var/obj/item/weapon/W, mob/user)
 	..()
 	if(health > 0)
 		disturbed()

@@ -282,7 +282,7 @@
 	return TRUE
 
 //Clears out a dead plant.
-/obj/machinery/portable_atmospherics/hydroponics/proc/remove_dead(var/mob/user, var/silent)
+/obj/machinery/portable_atmospherics/hydroponics/proc/remove_dead(var/mob/user, silent)
 	if(!user || !dead) return
 
 	if(closed_system)
@@ -393,7 +393,7 @@
 
 	return
 
-/obj/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, mob/user as mob)
 
 	if (O.is_open_container())
 		return 0
@@ -501,7 +501,7 @@
 			check_health()
 	return
 
-/obj/machinery/portable_atmospherics/hydroponics/proc/plant_seed(var/mob/user, var/obj/item/seeds/S)
+/obj/machinery/portable_atmospherics/hydroponics/proc/plant_seed(var/mob/user, obj/item/seeds/S)
 
 	if(seed)
 		to_chat(user, "<span class='warning'>\The [src] already has seeds in it!</span>")

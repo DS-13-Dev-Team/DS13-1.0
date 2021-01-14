@@ -40,7 +40,7 @@
 	var/force_cooldown_timer
 	var/force_notify_timer
 
-/datum/extension/curl/New(var/mob/living/_user, var/_automatic, var/_force_time, var/_animtime)
+/datum/extension/curl/New(var/mob/living/_user, _automatic, _force_time, _animtime)
 	..()
 	user = _user
 	force_time = _force_time
@@ -163,7 +163,7 @@
 
 	return TRUE
 
-/mob/living/can_curl(var/atom/target, var/error_messages = TRUE)
+/mob/living/can_curl(var/atom/target, error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 
@@ -179,7 +179,7 @@
 
 	return FALSE
 
-/atom/movable/proc/curl_ability(var/_automatic = FALSE, var/_force_time = 2 SECONDS, var/_animtime = 0.8 SECOND)
+/atom/movable/proc/curl_ability(var/_automatic = FALSE, _force_time = 2 SECONDS, _animtime = 0.8 SECOND)
 	//First of all, uncurling
 	if (can_uncurl())
 		var/datum/extension/curl/E = get_extension(src, /datum/extension/curl)

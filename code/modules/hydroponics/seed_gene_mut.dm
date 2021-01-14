@@ -1,4 +1,4 @@
-/datum/seed/proc/diverge_mutate_gene(var/decl/plantgene/G, var/turf/T)
+/datum/seed/proc/diverge_mutate_gene(var/decl/plantgene/G, turf/T)
 	if(!istype(G))
 		log_debug("Attempted to mutate [src] with a non-plantgene var.")
 		return src
@@ -90,7 +90,7 @@
 	if(prob(65))
 		S.set_trait(TRAIT_WATER_CONSUMPTION, S.get_trait(TRAIT_WATER_CONSUMPTION)+rand(-1,1),50,0)
 
-/decl/plantgene/output/mutate(var/datum/seed/S, var/turf/T)
+/decl/plantgene/output/mutate(var/datum/seed/S, turf/T)
 	if(prob(50))
 		S.set_trait(TRAIT_BIOLUM,         !S.get_trait(TRAIT_BIOLUM))
 		if(S.get_trait(TRAIT_BIOLUM))
@@ -113,7 +113,7 @@
 	if(prob(60))
 		S.set_trait(TRAIT_ENDURANCE, S.get_trait(TRAIT_ENDURANCE)+rand(-5,5),100,0)
 
-/decl/plantgene/vigour/mutate(var/datum/seed/S, var/turf/T)
+/decl/plantgene/vigour/mutate(var/datum/seed/S, turf/T)
 	if(prob(65))
 		S.set_trait(TRAIT_PRODUCTION, S.get_trait(TRAIT_PRODUCTION)+rand(-1,1),10,0)
 	if(prob(65))
