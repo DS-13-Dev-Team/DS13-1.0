@@ -36,7 +36,7 @@
 		return
 
 	if(specials_outfits)
-		ertfit = pick_n_take(specials_outfits)
+		ertfit = new(pick_n_take(specials_outfits))
 		dressup_human(H, ertfit)
 		return
 

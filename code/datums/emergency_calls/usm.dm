@@ -35,7 +35,7 @@
 		return
 
 	if(specials_outfits)
-		ertfit = pick_n_take(specials_outfits)
+		ertfit = new(pick_n_take(specials_outfits))
 		dressup_human(H, ertfit)
 		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are a member of the elite Asset Protection commando squad.</span></p>")
 		return
