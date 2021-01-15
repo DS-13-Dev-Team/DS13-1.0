@@ -1,7 +1,7 @@
 proc
 	hypot(x, y)
 		if(x || y)
-			var t
+			var/t
 			x = abs(x)
 			y = abs(y)
 			if(x <= y)

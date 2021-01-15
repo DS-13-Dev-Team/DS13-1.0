@@ -1,38 +1,38 @@
-/datum/map_template/ruin/exoplanet/marooned 
-	name = "Marooned" 
-	id = "awaysite_marooned" 
-	description = "crashed dropship with marooned Magnitka officer" 
-	suffixes = list("marooned/marooned.dmm") 
-	cost = 1 
+/datum/map_template/ruin/exoplanet/marooned
+	name = "Marooned"
+	id = "awaysite_marooned"
+	description = "crashed dropship with marooned Magnitka officer"
+	suffixes = list("marooned/marooned.dmm")
+	cost = 1
 	template_flags = TEMPLATE_FLAG_CLEAR_CONTENTS | TEMPLATE_FLAG_NO_RUINS
 
-/obj/item/clothing/under/magintka_uniform 
-	name = "officer uniform" 
-	desc = "A dark uniform coat worn by Magnitka fleet officers." 
-	icon_state = "magnitka_officer" 
-	icon = 'maps/random_ruins/exoplanet_ruins/marooned/marooned_icons.dmi' 
-	item_icons = list(slot_w_uniform_str = 'maps/random_ruins/exoplanet_ruins/marooned/marooned_icons.dmi') 
- 
-/obj/item/clothing/accessory/medal/silver/marooned_medal 
-	name = "silver medal" 
-	desc = "An silver round medal of marooned officer. It has inscription \"For Distinguished Service\" in lower part. On medal's plank it's engraved \"H. Warda\"" 
-	icon_state = "marooned_medal" 
-	icon = 'maps/random_ruins/exoplanet_ruins/marooned/marooned_icons.dmi' 
- 
-/obj/effect/landmark/corpse/marooned_officer 
-	name = "Horazy Warda" 
-	corpse_outfits = list(/decl/hierarchy/outfit/marooned_officer) 
-	spawn_flags = ~CORPSE_SPAWNER_RANDOM_NAME 
- 
-/decl/hierarchy/outfit/marooned_officer 
-	name = "Dead Magnitka's fleet officer" 
-	uniform = /obj/item/clothing/under/magintka_uniform 
-	suit = /obj/item/clothing/suit/storage/hooded/wintercoat 
-	shoes = /obj/item/clothing/shoes/jungleboots 
-	gloves = /obj/item/clothing/gloves/thick 
-	head = /obj/item/clothing/head/beret 
-	l_pocket = /obj/item/weapon/material/butterfly/switchblade 
- 
+/obj/item/clothing/under/magintka_uniform
+	name = "officer uniform"
+	desc = "A dark uniform coat worn by Magnitka fleet officers."
+	icon_state = "magnitka_officer"
+	icon = 'maps/random_ruins/exoplanet_ruins/marooned/marooned_icons.dmi'
+	item_icons = list(slot_w_uniform_str = 'maps/random_ruins/exoplanet_ruins/marooned/marooned_icons.dmi')
+
+/obj/item/clothing/accessory/medal/silver/marooned_medal
+	name = "silver medal"
+	desc = "An silver round medal of marooned officer. It has inscription \"For Distinguished Service\" in lower part. On medal's plank it's engraved \"H. Warda\""
+	icon_state = "marooned_medal"
+	icon = 'maps/random_ruins/exoplanet_ruins/marooned/marooned_icons.dmi'
+
+/obj/effect/landmark/corpse/marooned_officer
+	name = "Horazy Warda"
+	corpse_outfits = list(/decl/hierarchy/outfit/marooned_officer)
+	spawn_flags = ~CORPSE_SPAWNER_RANDOM_NAME
+
+/decl/hierarchy/outfit/marooned_officer
+	name = "Dead Magnitka's fleet officer"
+	uniform = /obj/item/clothing/under/magintka_uniform
+	suit = /obj/item/clothing/suit/storage/hooded/wintercoat
+	shoes = /obj/item/clothing/shoes/jungleboots
+	gloves = /obj/item/clothing/gloves/thick
+	head = /obj/item/clothing/head/beret
+	l_pocket = /obj/item/weapon/material/butterfly/switchblade
+
 /obj/item/weapon/gun/projectile/revolver/webley/marooned
 	name = "worn-out revolver"
 
@@ -52,7 +52,7 @@
 	..()
 	var/turf/simulated/T = get_turf(src)
 	if(istype(T))
-		T.fire_act(temperature = T0C + 3000)
+		T.fire_act(exposed_temperature = T0C + 3000)
 	return INITIALIZE_HINT_QDEL
 
 /obj/item/weapon/paper/marooned/

@@ -185,8 +185,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 
 
-#define SIGN(X) ((X<0)?-1:1)
-
 proc/isInSight(var/atom/A, var/atom/B)
 	var/turf/Aturf = get_turf(A)
 	var/turf/Bturf = get_turf(B)
@@ -207,7 +205,7 @@ proc
 			if(Y1==Y2)
 				return 1 //Light cannot be blocked on same tile
 			else
-				var/s = SIGN(Y2-Y1)
+				var/s = SIMPLE_SIGN(Y2-Y1)
 				Y1+=s
 				while(Y1!=Y2)
 					T=locate(X1,Y1,Z)
@@ -217,8 +215,8 @@ proc
 		else
 			var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
 			var/b=(Y1+PY1/32-0.015625)-m*(X1+PX1/32-0.015625) //In tiles
-			var/signX = SIGN(X2-X1)
-			var/signY = SIGN(Y2-Y1)
+			var/signX = SIMPLE_SIGN(X2-X1)
+			var/signY = SIMPLE_SIGN(Y2-Y1)
 			if(X1<X2)
 				b+=m
 			while(X1!=X2 || Y1!=Y2)
@@ -230,7 +228,6 @@ proc
 				if(T.opacity)
 					return 0
 		return 1
-#undef SIGN
 
 
 /proc/able_mobs_in_oview(var/origin)

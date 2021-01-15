@@ -87,7 +87,7 @@ obj/item/weapon/paper/admin/proc/updateDisplay()
 		if(!t)
 			return
 
-		var last_fields_value = fields
+		var/last_fields_value = fields
 
 		//t = html_encode(t)
 		t = replacetext(t, "\n", "<BR>")
@@ -149,7 +149,7 @@ obj/item/weapon/paper/admin/proc/updateDisplay()
 		footerOn = !footerOn
 		updateDisplay()
 		return
-	
+
 	if(href_list["changelogo"])
 		logo = input(usr, "What logo?", "Choose a logo", "") as null|anything in (logo_list)
 		generateHeader()

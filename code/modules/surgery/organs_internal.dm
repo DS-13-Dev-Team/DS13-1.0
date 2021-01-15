@@ -291,7 +291,7 @@
 		return SURGERY_FAILURE
 
 	if(!target.species)
-		CRASH("Target ([target]) of surgery [type] has no species!")
+		crash_with("Target ([target]) of surgery [type] has no species!")
 		return SURGERY_FAILURE
 
 	var/o_is = (O.gender == PLURAL) ? "are" : "is"
