@@ -59,6 +59,7 @@
 		return list(
 		/obj/item/device/radio/headset/headset_cargo,
 		/obj/item/clothing/under/deadspace/planet_cracker,
+		/obj/item/weapon/rig/mining,
 		/obj/item/clothing/shoes/dutyboots,
 		/obj/item/clothing/glasses/meson,
 		/obj/item/clothing/gloves/thick,

@@ -80,6 +80,21 @@
 		. = construct_extension_instance(extension_data[1], extension_data[2], extension_data.Copy(3))
 		source.extensions[base_type] = .
 
+/*
+	Gets the first matching extension using istype
+*/
+/proc/get_extension_of_type(var/datum/source, var/search_type)
+	if(!source.extensions)
+		return
+	for (var/typepath in source.extensions)
+		var/datum/extension/E = source.extensions[typepath]
+		if (istype(E, search_type))
+			.=E
+			break
+	if(!. || !istype(., /datum/extension))
+		return null
+
+
 //Fast way to check if it has an extension, also doesn't trigger instantiation of lazy loaded extensions
 /proc/has_extension(var/datum/source, var/base_type)
 	return (source.extensions && source.extensions[base_type])
