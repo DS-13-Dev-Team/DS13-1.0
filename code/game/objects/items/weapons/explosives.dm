@@ -24,7 +24,7 @@
 	wires = null
 	return ..()
 
-/obj/item/weapon/plastique/attackby(var/obj/item/I, mob/user)
+/obj/item/weapon/plastique/attackby(obj/item/I, mob/user)
 	if(isScrewdriver(I))
 		open_panel = !open_panel
 		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")

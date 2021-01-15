@@ -394,7 +394,7 @@
 	if(istext(data))
 		write_data_to_pin("ERROR")
 
-/datum/integrated_io/activate/scramble(var/severity)
+/datum/integrated_io/activate/scramble(severity)
 	if(prob(99/severity))
 		activate()
 
@@ -408,7 +408,7 @@
 		return TRUE
 	return FALSE
 
-/datum/integrated_io/output/write_data_to_pin(var/new_data)
+/datum/integrated_io/output/write_data_to_pin(new_data)
 	. = ..()
 	if(.)
 		push_data()

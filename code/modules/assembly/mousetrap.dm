@@ -80,7 +80,7 @@
 		..()
 
 
-	Crossed(var/atom/movable/AM)
+	Crossed(atom/movable/AM)
 		if(armed && !(AM.pass_flags & PASS_FLAG_FLYING))
 			if(ishuman(AM))
 				var/mob/living/carbon/H = AM

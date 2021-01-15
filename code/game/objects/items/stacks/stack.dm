@@ -50,7 +50,7 @@
 		else
 			to_chat(user, "There is enough charge for [get_amount()].")
 
-/obj/item/stack/attack_self(var/mob/living/user as mob)
+/obj/item/stack/attack_self(mob/living/user as mob)
 	if (recipes)
 		user.open_craft_menu()
 	//list_recipes(user)

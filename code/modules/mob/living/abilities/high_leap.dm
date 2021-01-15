@@ -255,7 +255,7 @@
 	return
 
 //When a human does it, we call the same proc on their species. This allows various people to do stuff
-/mob/living/carbon/human/high_leap_impact(var/atom/target, distance, start_location)
+/mob/living/carbon/human/high_leap_impact(atom/target, distance, start_location)
 	shake_camera(src,3,1)
 	if (species)
 		return species.high_leap_impact(src, target, distance, start_location)
@@ -283,7 +283,7 @@
 
 	return TRUE
 
-/mob/living/can_high_leap(var/error_messages = TRUE)
+/mob/living/can_high_leap(error_messages = TRUE)
 	if (incapacitated(INCAPACITATION_IMMOBILE))
 		return FALSE
 

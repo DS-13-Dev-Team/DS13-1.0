@@ -205,7 +205,7 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/storage/store_item(var/obj/item/input, mob/user)
+/obj/item/weapon/storage/store_item(obj/item/input, mob/user)
 	if (can_be_inserted(input, user))
 		handle_item_insertion(input, FALSE)
 		return TRUE

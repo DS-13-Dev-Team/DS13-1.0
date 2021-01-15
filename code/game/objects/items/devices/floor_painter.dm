@@ -68,7 +68,7 @@
 		)
 
 
-/obj/item/device/floor_painter/resolve_attackby(var/atom/A, mob/user, proximity, params)
+/obj/item/device/floor_painter/resolve_attackby(atom/A, mob/user, proximity, params)
 	if(!proximity)
 		return
 
@@ -169,7 +169,7 @@
 	playsound(get_turf(src), 'sound/effects/spray3.ogg', 30, 1, -6)
 	new painting_decal(F, painting_dir, painting_colour)
 
-/obj/item/device/floor_painter/attack_self(var/mob/user)
+/obj/item/device/floor_painter/attack_self(mob/user)
 	var/choice = input("What do you wish to change?") as null|anything in list("Decal","Direction", "Colour", "Preset Colour", "Mode")
 	if(choice == "Decal")
 		choose_decal()

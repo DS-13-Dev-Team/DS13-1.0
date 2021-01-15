@@ -258,7 +258,7 @@
 		update_icon()
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/device/flashlight/flare/attack_self(var/mob/user)
+/obj/item/device/flashlight/flare/attack_self(mob/user)
 	if(!fuel)
 		to_chat(user,"<span class='notice'>\The [src] is spent.</span>")
 		return
@@ -336,7 +336,7 @@
 		if(M.r_hand == src)
 			M.update_inv_r_hand()
 
-/obj/item/device/flashlight/flare/glowstick/activate(var/mob/user)
+/obj/item/device/flashlight/flare/glowstick/activate(mob/user)
 	if(on)
 		return
 	if(user)

@@ -38,7 +38,7 @@ GLOBAL_DATUM_INIT(density_set_event, /decl/observ/density_set, new)
 
 
 
-/turf/Entered(var/atom/A)
+/turf/Entered(atom/A)
 	.=..()
 	if (A.density)
 		if (clear)	//If clear was previously true, null it

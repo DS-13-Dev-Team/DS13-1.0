@@ -91,7 +91,7 @@
 	remove_light()
 	return ..()
 
-/obj/item/modular_computer/emag_act(var/remaining_charges, mob/user)
+/obj/item/modular_computer/emag_act(remaining_charges, mob/user)
 	if(computer_emagged)
 		to_chat(user, "\The [src] was already emagged.")
 		return NO_EMAG_ACT
@@ -281,7 +281,7 @@
 		update_uis()
 
 // Used by camera monitor program
-/obj/item/modular_computer/check_eye(var/mob/user)
+/obj/item/modular_computer/check_eye(mob/user)
 	if(active_program)
 		return active_program.check_eye(user)
 	else

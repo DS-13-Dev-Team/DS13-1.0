@@ -41,7 +41,7 @@
 	if(germ_level < GERM_LEVEL_MOVE_CAP && prob(8))
 		germ_level++
 
-/mob/living/carbon/relaymove(var/mob/living/user, direction)
+/mob/living/carbon/relaymove(mob/living/user, direction)
 	if((user in src.stomach_contents) && istype(user))
 		if(user.last_special <= world.time)
 			user.last_special = world.time + 50
@@ -280,14 +280,14 @@
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
 		usr.sleeping = 20 //Short nap
 
-/mob/living/carbon/Bump(var/atom/movable/AM, yes)
+/mob/living/carbon/Bump(atom/movable/AM, yes)
 	if(now_pushing || !yes)
 		return
 	..()
 	if(istype(AM, /mob/living/carbon) && prob(10))
 		src.spread_disease_to(AM, "Contact")
 
-/mob/living/carbon/slip(var/slipped_on,stun_duration=4)
+/mob/living/carbon/slip(slipped_on,stun_duration=4)
 	if(buckled)
 		return 0
 	stop_pulling()
@@ -344,7 +344,7 @@
 
 	return FALSE
 
-/mob/living/carbon/onDropInto(var/atom/movable/AM)
+/mob/living/carbon/onDropInto(atom/movable/AM)
 	for( var/e in stomach_contents)
 		var/atom/movable/stomach_content = e
 		if(stomach_content.contains(AM))

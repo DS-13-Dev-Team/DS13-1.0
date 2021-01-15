@@ -90,10 +90,10 @@
 
 /*
 
-/obj/machinery/marker/attack_hand(var/mob/user)//Temporary
+/obj/machinery/marker/attack_hand(mob/user)//Temporary
 	open_shop(user)
 
-/obj/machinery/marker/attack_ghost(var/mob/user)//Temporary
+/obj/machinery/marker/attack_ghost(mob/user)//Temporary
 	open_shop(user)
 */
 
@@ -362,13 +362,13 @@
 /obj/machinery/marker/bullet_act()
 	return null	//We do NOT break
 
-/obj/machinery/marker/default_deconstruction_crowbar(var/mob/user, obj/item/weapon/tool/crowbar/C)
+/obj/machinery/marker/default_deconstruction_crowbar(mob/user, obj/item/weapon/tool/crowbar/C)
 	return
 
-/obj/machinery/marker/default_deconstruction_screwdriver(var/mob/user, obj/item/weapon/tool/screwdriver/S)
+/obj/machinery/marker/default_deconstruction_screwdriver(mob/user, obj/item/weapon/tool/screwdriver/S)
 	return
 
-/obj/machinery/marker/default_part_replacement(var/mob/user, obj/item/weapon/storage/part_replacer/R)
+/obj/machinery/marker/default_part_replacement(mob/user, obj/item/weapon/storage/part_replacer/R)
 	return
 
 /obj/machinery/marker/dismantle()

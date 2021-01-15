@@ -46,7 +46,7 @@
 	if(patched)
 		descriptor = "patched [descriptor]"
 
-/obj/item/clothing/suit/space/repair(var/repair_power, datum/repair_source, mob/user)
+/obj/item/clothing/suit/space/repair(repair_power, datum/repair_source, mob/user)
 	.=..()
 	repair_breaches(BRUTE, 1, user)
 	repair_breaches(BURN, 1, user)

@@ -12,7 +12,7 @@
 	nanomodule_path = /datum/nano_module/program/revelation/
 	var/armed = 0
 
-/datum/computer_file/program/revelation/run_program(var/mob/living/user)
+/datum/computer_file/program/revelation/run_program(mob/living/user)
 	. = ..(user)
 	if(armed)
 		activate()

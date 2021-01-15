@@ -43,7 +43,7 @@
 			playsound(src, 'sound/machines/boop1.ogg', 30)
 			return
 
-/mob/living/bot/cleanbot/confirmTarget(var/obj/effect/decal/cleanable/D)
+/mob/living/bot/cleanbot/confirmTarget(obj/effect/decal/cleanable/D)
 	if(!..())
 		return 0
 	for( var/T in target_types)
@@ -55,7 +55,7 @@
 	if(get_turf(target) == src.loc)
 		UnarmedAttack(target)
 
-/mob/living/bot/cleanbot/UnarmedAttack(var/obj/effect/decal/cleanable/D, proximity)
+/mob/living/bot/cleanbot/UnarmedAttack(obj/effect/decal/cleanable/D, proximity)
 	if(!..())
 		return
 
@@ -116,7 +116,7 @@
 	. = "Odd looking screw twiddled: <a href='?src=\ref[src];command=screw'>[screwloose ? "Yes" : "No"]</a>"
 	. += "<br>Weird button pressed: <a href='?src=\ref[src];command=oddbutton'>[oddbutton ? "Yes" : "No"]</a>"
 
-/mob/living/bot/cleanbot/ProcessCommand(var/mob/user, command, href_list)
+/mob/living/bot/cleanbot/ProcessCommand(mob/user, command, href_list)
 	..()
 	if(CanAccessPanel(user))
 		switch(command)
@@ -134,7 +134,7 @@
 			if("oddbutton")
 				oddbutton = !oddbutton
 
-/mob/living/bot/cleanbot/emag_act(var/remaining_uses, mob/user)
+/mob/living/bot/cleanbot/emag_act(remaining_uses, mob/user)
 	. = ..()
 	if(!screwloose || !oddbutton)
 		if(user)
@@ -170,7 +170,7 @@
 	w_class = ITEM_SIZE_NORMAL
 	var/created_name = "Cleanbot"
 
-/obj/item/weapon/bucket_sensor/attackby(var/obj/item/O, mob/user)
+/obj/item/weapon/bucket_sensor/attackby(obj/item/O, mob/user)
 	..()
 	if(istype(O, /obj/item/robot_parts/l_arm) || istype(O, /obj/item/robot_parts/r_arm))
 		qdel(O)

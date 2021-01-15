@@ -10,7 +10,7 @@
 	var/obj/item/device/mmi/brain = null
 	var/authorized
 
-/obj/structure/AIcore/emag_act(var/remaining_charges, mob/user, emag_source)
+/obj/structure/AIcore/emag_act(remaining_charges, mob/user, emag_source)
 	if(!authorized)
 		to_chat(user, "<span class='warning'>You swipe [emag_source] at [src] and jury rig it into the systems of [GLOB.using_map.full_name]!</span>")
 		authorized = 1
@@ -220,7 +220,7 @@
 		if (ai.mind == malfai)
 			return 1
 
-/obj/structure/AIcore/deactivated/attackby(var/obj/item/weapon/W, mob/user)
+/obj/structure/AIcore/deactivated/attackby(obj/item/weapon/W, mob/user)
 
 	if(istype(W, /obj/item/weapon/aicard))
 		var/obj/item/weapon/aicard/card = W

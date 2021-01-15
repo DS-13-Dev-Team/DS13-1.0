@@ -47,7 +47,7 @@
 	// Begin recursion.
 	subdivide(1,1,1,(limit_y-1))
 
-/datum/random_map/noise/get_map_char(var/value)
+/datum/random_map/noise/get_map_char(value)
 	var/val = min(9,max(0,round((value/cell_range)*10)))
 	if(isnull(val)) val = 0
 	return "[val]"

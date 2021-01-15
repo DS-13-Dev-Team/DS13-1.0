@@ -87,7 +87,7 @@
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL
 	var/eye_icon = 'icons/mob/necromorph/ubermorph.dmi'
 
-/obj/item/organ/external/head/ubermorph/replaced(var/mob/newowner)
+/obj/item/organ/external/head/ubermorph/replaced(mob/newowner)
 	.=..()
 
 

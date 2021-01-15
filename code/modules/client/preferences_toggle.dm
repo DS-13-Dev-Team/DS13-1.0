@@ -15,7 +15,7 @@ var/list/client_preference_stats_
 			scp.update_name(user)
 			.[client_pref_description] = scp
 
-/client/verb/toggle_preference_verb(var/client_pref_name in client_preference_stats_for_usr())
+/client/verb/toggle_preference_verb(client_pref_name in client_preference_stats_for_usr())
 	set name = "Toggle Preference"
 	set desc = "Toggles the selected preference."
 	set category = "OOC"

@@ -111,7 +111,7 @@
 	subsystem = null
 	. = ..()
 
-/stat_silicon_subsystem/Click(var/mob/given = usr)
+/stat_silicon_subsystem/Click(mob/given = usr)
 	if (istype(given))
 		subsystem.ui_interact(given, state = ui_state)
 	else

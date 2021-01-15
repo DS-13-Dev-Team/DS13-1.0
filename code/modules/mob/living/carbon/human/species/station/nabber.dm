@@ -134,7 +134,7 @@
 /datum/species/nabber/get_blood_name()
 	return "haemolymph"
 
-/datum/species/nabber/can_overcome_gravity(var/mob/living/carbon/human/H)
+/datum/species/nabber/can_overcome_gravity(mob/living/carbon/human/H)
 	var/datum/gas_mixture/mixture = H.loc.return_air()
 
 	if(mixture)
@@ -147,13 +147,13 @@
 
 	return FALSE
 
-/datum/species/nabber/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/nabber/handle_environment_special(mob/living/carbon/human/H)
 	if(!H.on_fire && H.fire_stacks < 2)
 		H.fire_stacks += 0.2
 	return
 
 // Nabbers will only fall when there isn't enough air pressure for them to keep themselves aloft.
-/datum/species/nabber/can_fall(var/mob/living/carbon/human/H)
+/datum/species/nabber/can_fall(mob/living/carbon/human/H)
 	var/datum/gas_mixture/mixture = H.loc.return_air()
 
 	if(mixture)
@@ -164,7 +164,7 @@
 	return TRUE
 
 // Even when nabbers do fall, if there's enough air pressure they won't hurt themselves.
-/datum/species/nabber/handle_fall_special(var/mob/living/carbon/human/H, turf/landing)
+/datum/species/nabber/handle_fall_special(mob/living/carbon/human/H, turf/landing)
 
 	var/datum/gas_mixture/mixture = H.loc.return_air()
 
@@ -181,13 +181,13 @@
 	return FALSE
 
 
-/datum/species/nabber/can_shred(var/mob/living/carbon/human/H, ignore_intent)
+/datum/species/nabber/can_shred(mob/living/carbon/human/H, ignore_intent)
 	if(!H.handcuffed || H.buckled)
 		return ..()
 	else
 		return 0
 
-/datum/species/nabber/handle_movement_delay_special(var/mob/living/carbon/human/H)
+/datum/species/nabber/handle_movement_delay_special(mob/living/carbon/human/H)
 	var/tally = 0
 
 	H.remove_cloaking_source(src)
@@ -211,7 +211,7 @@
 	affecting.visible_message("<span class='danger'>[assailant]'s spikes dig in PAINFULy!</span>")
 	affecting.Stun(10)
 
-/datum/species/nabber/update_skin(var/mob/living/carbon/human/H)
+/datum/species/nabber/update_skin(mob/living/carbon/human/H)
 
 	if(H.stat)
 		H.skin_state = SKIN_NORMAL
@@ -250,7 +250,7 @@
 			return(threat_image)
 	return
 
-/datum/species/nabber/disarm_attackhand(var/mob/living/carbon/human/attacker, mob/living/carbon/human/target)
+/datum/species/nabber/disarm_attackhand(mob/living/carbon/human/attacker, mob/living/carbon/human/target)
 	if(attacker.pulling_punches || target.lying || attacker == target)
 		return ..(attacker, target)
 	if(world.time < attacker.last_attack + 20)
@@ -267,21 +267,21 @@
 	if(prob(50))
 		target.set_dir(GLOB.reverse_dir[target.dir])
 
-/datum/species/nabber/get_additional_examine_text(var/mob/living/carbon/human/H)
+/datum/species/nabber/get_additional_examine_text(mob/living/carbon/human/H)
 	var/datum/gender/T = gender_datums[H.get_gender()]
 	if(H.pulling_punches)
 		return "\n[T.His] manipulation arms are out and [T.he] looks ready to use complex items."
 	else
 		return "\n<span class='warning'>[T.His] deadly upper arms are raised and [T.he] looks ready to attack!</span>"
 
-/datum/species/nabber/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/nabber/handle_post_spawn(mob/living/carbon/human/H)
 	..()
 	H.pulling_punches = TRUE
 
-/datum/species/nabber/has_fine_manipulation(var/mob/living/carbon/human/H)
+/datum/species/nabber/has_fine_manipulation(mob/living/carbon/human/H)
 	return (..() && (H && H.pulling_punches))
 
-/datum/species/nabber/attempt_grab(var/mob/living/carbon/human/grabber, mob/living/target)
+/datum/species/nabber/attempt_grab(mob/living/carbon/human/grabber, mob/living/target)
 
 	if(grabber.pulling_punches)
 		return ..()
@@ -310,7 +310,7 @@
 	else
 		grabber.visible_message("<span class='danger'>\The [grabber] suddenly lunges out, almost grabbing \the [target]!</span>")
 
-/datum/species/nabber/toggle_stance(var/mob/living/carbon/human/H)
+/datum/species/nabber/toggle_stance(mob/living/carbon/human/H)
 	if(H.incapacitated())
 		return FALSE
 	to_chat(H, "<span class='notice'>You begin to adjust the fluids in your arms, dropping everything and getting ready to swap which set you're using.</span>")

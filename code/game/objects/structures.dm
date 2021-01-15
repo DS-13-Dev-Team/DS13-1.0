@@ -55,7 +55,7 @@
 /obj/structure/attack_tk()
 	return
 
-/obj/structure/attack_generic(var/mob/user, damage, attack_verb, wallbreaker)
+/obj/structure/attack_generic(mob/user, damage, attack_verb, wallbreaker)
 	if(!breakable || !damage)
 		return 0
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
@@ -142,14 +142,14 @@
 		if(3.0)
 			take_damage(rand(25,100), BRUTE, null, epicentre)
 
-/obj/structure/bullet_act(var/obj/item/projectile/P)
+/obj/structure/bullet_act(obj/item/projectile/P)
 	take_damage(P.get_structure_damage(), user = P.firer, used_weapon = P)
 	if (health > 0)
 		return FALSE
 	return TRUE
 
 
-/obj/structure/attackby(var/obj/item/C, mob/user)
+/obj/structure/attackby(obj/item/C, mob/user)
 	if (breakable && user.a_intent == I_HURT)
 		playsound(src, hitsound, VOLUME_MID, 1)
 		user.do_attack_animation(src)
@@ -195,7 +195,7 @@
 		qdel(src)
 	return TRUE
 
-/obj/structure/repair(var/repair_power, datum/repair_source, mob/user)
+/obj/structure/repair(repair_power, datum/repair_source, mob/user)
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()

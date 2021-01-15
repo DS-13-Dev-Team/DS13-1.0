@@ -27,7 +27,7 @@
 	..()
 	name = "[name] (Malf)"
 
-/datum/ai_icon/malf/may_used_by_ai(var/mob/living/silicon/ai/AI)
+/datum/ai_icon/malf/may_used_by_ai(mob/living/silicon/ai/AI)
 	return istype(AI) && AI.is_malf_or_traitor()
 
 /datum/ai_icon/red

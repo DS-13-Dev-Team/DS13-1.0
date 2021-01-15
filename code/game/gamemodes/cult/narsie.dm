@@ -97,7 +97,7 @@ var/global/list/narsie_list = list()
 	else if(istype(A, /obj/structure/cult))
 		qdel(A)
 
-/obj/singularity/narsie/move(var/force_move = 0)
+/obj/singularity/narsie/move(force_move = 0)
 	if(!move_self)
 		return 0
 
@@ -115,7 +115,7 @@ var/global/list/narsie_list = list()
 		step(src, movement_dir)
 	return 1
 
-/obj/singularity/narsie/large/move(var/force_move = 0)
+/obj/singularity/narsie/large/move(force_move = 0)
 	if(!move_self)
 		return 0
 

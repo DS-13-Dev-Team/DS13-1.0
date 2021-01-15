@@ -35,12 +35,12 @@
 	..()
 	robotize()
 
-/obj/item/organ/internal/eyes/removed(var/mob/living/user, drop_organ=1)
+/obj/item/organ/internal/eyes/removed(mob/living/user, drop_organ=1)
 	if (owner)
 		owner.handle_vision()
 	.=..()
 
-/obj/item/organ/internal/eyes/replaced(var/mob/living/carbon/human/target)
+/obj/item/organ/internal/eyes/replaced(mob/living/carbon/human/target)
 
 	// Apply our eye colour to the target.
 	if(istype(target) && eye_colour)

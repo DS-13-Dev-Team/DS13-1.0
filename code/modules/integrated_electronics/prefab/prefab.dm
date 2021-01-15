@@ -60,7 +60,7 @@
 	var/list/value_presets = list()
 	var/list/connections = list()
 
-/decl/prefab/ic_assembly/create(var/atom/location)
+/decl/prefab/ic_assembly/create(atom/location)
 	..()
 	var/obj/item/device/electronic_assembly/assembly = new assembly_type(location)
 	assembly.SetName(assembly_name || assembly.name)

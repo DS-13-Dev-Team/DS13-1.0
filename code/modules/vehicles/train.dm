@@ -94,7 +94,7 @@
 
 	return 1
 
-/obj/vehicle/train/MouseDrop_T(var/atom/movable/C, mob/user as mob)
+/obj/vehicle/train/MouseDrop_T(atom/movable/C, mob/user as mob)
 	if(!CanPhysicallyInteract(user) || !user.Adjacent(C) || !istype(C) || (user == C))
 		return
 	if(istype(C,/obj/vehicle/train))

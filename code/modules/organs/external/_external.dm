@@ -192,7 +192,7 @@
 		owner.custom_pain("Something inside your [src] burns a [severity < 2 ? "bit" : "lot"]!", power * 15) //robotic organs won't feel it anyway
 		take_external_damage(0, burn_damage, 0, used_weapon = "Hot metal")
 
-/obj/item/organ/external/attack_self(var/mob/user)
+/obj/item/organ/external/attack_self(mob/user)
 	if(!contents.len)
 		return ..()
 	var/list/removable_objects = list()
@@ -322,7 +322,7 @@
 	return
 
 
-/obj/item/organ/external/replaced(var/mob/living/carbon/human/target, update = TRUE)
+/obj/item/organ/external/replaced(mob/living/carbon/human/target, update = TRUE)
 	..()
 
 	if(istype(owner))
@@ -410,7 +410,7 @@
 /*
 This function completely restores a damaged organ to perfect condition.
 */
-/obj/item/organ/external/rejuvenate(var/ignore_prosthetic_prefs)
+/obj/item/organ/external/rejuvenate(ignore_prosthetic_prefs)
 	damage_state = "00"
 
 	status = 0
@@ -1146,7 +1146,7 @@ obj/item/organ/external/proc/remove_clamps()
 		return 1
 	return 0
 
-/obj/item/organ/external/robotize(var/company, skip_prosthetics = 0, keep_organs = 0)
+/obj/item/organ/external/robotize(company, skip_prosthetics = 0, keep_organs = 0)
 
 	if(BP_IS_ROBOTIC(src))
 		return
@@ -1272,7 +1272,7 @@ obj/item/organ/external/proc/remove_clamps()
 	I.forceMove(new_location)
 
 
-/obj/item/organ/external/removed(var/mob/living/user, ignore_children = 0)
+/obj/item/organ/external/removed(mob/living/user, ignore_children = 0)
 
 	if(!owner)
 		return

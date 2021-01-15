@@ -70,7 +70,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/ntnet_relay/attack_hand(var/mob/living/user)
+/obj/machinery/ntnet_relay/attack_hand(mob/living/user)
 	ui_interact(user)
 
 /obj/machinery/ntnet_relay/Topic(href, href_list)
@@ -115,7 +115,7 @@
 		D.error = "Connection to quantum relay severed"
 	..()
 
-/obj/machinery/ntnet_relay/attackby(var/obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/ntnet_relay/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(isScrewdriver(W))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 		panel_open = !panel_open

@@ -56,7 +56,7 @@
 	return 1
 
 
-/obj/item/device/assembly/pulsed(var/radio = 0)
+/obj/item/device/assembly/pulsed(radio = 0)
 	if(holder && (wires & WIRE_RECEIVE))
 		activate()
 	if(radio && (wires & WIRE_RADIO_RECEIVE))
@@ -64,7 +64,7 @@
 	return 1
 
 
-/obj/item/device/assembly/pulse(var/radio = 0)
+/obj/item/device/assembly/pulse(radio = 0)
 	if(holder && (wires & WIRE_PULSE))
 		holder.process_activation(src, 1, 0)
 	if(holder && (wires & WIRE_PULSE_SPECIAL))
@@ -88,7 +88,7 @@
 	return secured
 
 
-/obj/item/device/assembly/attach_assembly(var/obj/item/device/assembly/A, mob/user)
+/obj/item/device/assembly/attach_assembly(obj/item/device/assembly/A, mob/user)
 	holder = new/obj/item/device/assembly_holder(get_turf(src))
 	if(holder.attach(A,src,user))
 		to_chat(user, "<span class='notice'>You attach \the [A] to \the [src]!</span>")
@@ -149,7 +149,7 @@
 	proc
 		Activate()//Called when this assembly is pulsed by another one
 		Process_cooldown()//Call this via spawn(10) to have it count down the cooldown var
-		Attach_Holder(var/obj/H, mob/user)//Called when an assembly holder attempts to attach, sets src's loc in here
+		Attach_Holder(obj/H, mob/user)//Called when an assembly holder attempts to attach, sets src's loc in here
 
 
 	Activate()
@@ -170,7 +170,7 @@
 		return 1
 
 
-	Attach_Holder(var/obj/H, mob/user)
+	Attach_Holder(obj/H, mob/user)
 		if(!H)	return 0
 		if(!H.IsAssemblyHolder())	return 0
 		//Remember to have it set its loc somewhere in here

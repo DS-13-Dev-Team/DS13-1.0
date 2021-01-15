@@ -20,7 +20,7 @@
 /datum/ship_engine/gas_thruster/burn()
 	return nozzle.burn()
 
-/datum/ship_engine/gas_thruster/set_thrust_limit(var/new_limit)
+/datum/ship_engine/gas_thruster/set_thrust_limit(new_limit)
 	nozzle.thrust_limit = new_limit
 
 /datum/ship_engine/gas_thruster/get_thrust_limit()

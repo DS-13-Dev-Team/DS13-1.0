@@ -83,7 +83,7 @@
 	landmark_tag += "-[x]-[y]-[z]"
 	return ..()
 
-/obj/effect/shuttle_landmark/automatic/sector_set(var/obj/effect/overmap/O)
+/obj/effect/shuttle_landmark/automatic/sector_set(obj/effect/overmap/O)
 	..()
 	SetName("[O.name] - [name]")
 
@@ -107,7 +107,7 @@
 	light_color = "#3728ff"
 	var/active
 
-/obj/item/device/spaceflare/attack_self(var/mob/user)
+/obj/item/device/spaceflare/attack_self(mob/user)
 	if(!active)
 		visible_message("<span class='notice'>[user] pulls the cord, activating the [src].</span>")
 		activate()

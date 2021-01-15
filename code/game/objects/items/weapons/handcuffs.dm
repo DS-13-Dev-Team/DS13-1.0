@@ -27,7 +27,7 @@
 		return "legcuff1"
 	return ..()
 
-/obj/item/weapon/handcuffs/attack(var/mob/living/carbon/C, mob/living/user)
+/obj/item/weapon/handcuffs/attack(mob/living/carbon/C, mob/living/user)
 
 	if(!user.is_advanced_tool_user())
 		return
@@ -102,7 +102,7 @@
 	return 1
 
 var/last_chew = 0
-/mob/living/carbon/human/RestrainedClickOn(var/atom/A)
+/mob/living/carbon/human/RestrainedClickOn(atom/A)
 	if (A != src) return ..()
 	if (last_chew + 26 > world.time) return
 
@@ -156,7 +156,7 @@ var/last_chew = 0
 /obj/item/weapon/handcuffs/cable/white
 	color = COLOR_SILVER
 
-/obj/item/weapon/handcuffs/cable/attackby(var/obj/item/I, mob/user as mob)
+/obj/item/weapon/handcuffs/cable/attackby(obj/item/I, mob/user as mob)
 	..()
 	if(istype(I, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = I

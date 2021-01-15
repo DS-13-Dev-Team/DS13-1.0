@@ -20,10 +20,10 @@
 		spawn(10)
 			scanscrubbers()
 
-	attack_ai(var/mob/user as mob)
+	attack_ai(mob/user as mob)
 		return src.attack_hand(user)
 
-	attack_hand(var/mob/user as mob)
+	attack_hand(mob/user as mob)
 		if(..(user))
 			return
 		var/dat = {"

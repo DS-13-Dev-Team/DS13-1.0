@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(skills)
 						"Master"		= "You are an exceptional shot with a variety of military-grade weapons, you can field strip, clean and reassemble any modern weapon placed before you in a matter of minutes. You use a weapon as naturally as though it were a part of your own body. You are likely an active member of the Earth Defense Force.")
 	difficulty = SKILL_AVERAGE
 
-/decl/hierarchy/skill/security/weapons/get_cost(var/level)
+/decl/hierarchy/skill/security/weapons/get_cost(level)
 	switch(level)
 		if(SKILL_BASIC)
 			return difficulty
@@ -185,7 +185,7 @@ GLOBAL_LIST_EMPTY(skills)
 						"Master"		= "You're a big name in forensic science. You might be an investigator who cracked a famous case, or you published papers on new methods of forensics. Either way, if there's a forensic trail, you will find it, period.<br>- You can notice traces of wiped off blood.")
 
 
-/decl/hierarchy/skill/security/forensics/get_cost(var/level)
+/decl/hierarchy/skill/security/forensics/get_cost(level)
 	switch(level)
 		if(SKILL_BASIC, SKILL_ADEPT, SKILL_EXPERT)
 			return difficulty * 2

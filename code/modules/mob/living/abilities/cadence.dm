@@ -122,7 +122,7 @@
 			max_speed_reached()
 
 //Just return the speed we've cached
-/datum/extension/cadence/get_statmod(var/modtype)
+/datum/extension/cadence/get_statmod(modtype)
 	if (modtype == STATMOD_MOVESPEED_ADDITIVE)
 		return current_speed_buff
 	.=..()

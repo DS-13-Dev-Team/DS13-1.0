@@ -3,12 +3,12 @@
 	var/required_slot_flags
 	var/required_free_body_parts
 
-/obj/item/underwear/afterattack(var/atom/target, mob/user, proximity)
+/obj/item/underwear/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return // Might as well check
 	DelayedEquipUnderwear(user, target)
 
-/obj/item/underwear/MouseDrop(var/atom/target)
+/obj/item/underwear/MouseDrop(atom/target)
 	DelayedEquipUnderwear(usr, target)
 
 /obj/item/underwear/proc/CanEquipUnderwear(mob/user, mob/living/carbon/human/H)

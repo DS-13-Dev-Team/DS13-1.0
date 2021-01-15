@@ -51,7 +51,7 @@
 	GLOB.cult.remove_cultiness(CULTINESS_PER_TURF)
 	..()
 
-/turf/simulated/wall/cult/can_join_with(var/turf/simulated/wall/W)
+/turf/simulated/wall/cult/can_join_with(turf/simulated/wall/W)
 	if(material && W.material && material.icon_base == W.material.icon_base)
 		return 1
 	else if(istype(W, /turf/simulated/wall))

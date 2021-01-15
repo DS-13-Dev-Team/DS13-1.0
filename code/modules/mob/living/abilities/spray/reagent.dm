@@ -14,7 +14,7 @@ Vars in extradata list
 	var/volume_tick
 	var/reagent_type
 
-/datum/extension/spray/reagent/handle_extra_data(var/list/data)
+/datum/extension/spray/reagent/handle_extra_data(list/data)
 	.=..()
 	src.reagent_type = data["reagent"]
 	src.volume_tick = data["volume"] * 0.2

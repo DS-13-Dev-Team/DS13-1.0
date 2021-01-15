@@ -27,7 +27,7 @@
 	var/step_priority = 1
 
 
-/turf/simulated/floor/Entered(var/atom/movable/AM, atom/old_loc)
+/turf/simulated/floor/Entered(atom/movable/AM, atom/old_loc)
 	..(AM, old_loc)
 	if (flooring)
 		flooring.Entered(AM, old_loc)

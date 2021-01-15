@@ -26,7 +26,7 @@ var/const/CAMERA_WIRE_ALARM = 8
 var/const/CAMERA_WIRE_NOTHING1 = 16
 var/const/CAMERA_WIRE_NOTHING2 = 32
 
-/datum/wires/camera/UpdateCut(var/index, mended)
+/datum/wires/camera/UpdateCut(index, mended)
 	var/obj/machinery/camera/C = holder
 
 	switch(index)
@@ -48,7 +48,7 @@ var/const/CAMERA_WIRE_NOTHING2 = 32
 				C.cancelCameraAlarm()
 	return
 
-/datum/wires/camera/UpdatePulsed(var/index)
+/datum/wires/camera/UpdatePulsed(index)
 	var/obj/machinery/camera/C = holder
 	if(IsIndexCut(index))
 		return

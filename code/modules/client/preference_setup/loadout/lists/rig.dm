@@ -21,7 +21,7 @@
 	equip_adjustments = OUTFIT_ADJUSTMENT_SKIP_BACKPACK
 
 /*	There's no space to display this, need to reformat the loadout menu in future
-/datum/gear/RIG/frame/get_description(var/metadata)
+/datum/gear/RIG/frame/get_description(metadata)
 	.=..()
 	. += "\n\n"
 	. += "Included Modules:\n"
@@ -75,7 +75,7 @@
 
 
 //Rig modules attempt to install into any worn rig
-/datum/gear/RIG/module/spawn_special(var/mob/living/carbon/human/H, metadata)
+/datum/gear/RIG/module/spawn_special(mob/living/carbon/human/H, metadata)
 	var/obj/item/rig_module/RM = ..()
 	if (H.wearing_rig)
 		if (H.wearing_rig.attempt_install(RM, user = null, force = TRUE, instant = TRUE, delete_replaced = TRUE))

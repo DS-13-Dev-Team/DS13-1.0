@@ -87,7 +87,7 @@
 		if(2)
 			. += "ERROROROROROR-----"
 
-/mob/living/bot/secbot/ProcessCommand(var/mob/user, command, href_list)
+/mob/living/bot/secbot/ProcessCommand(mob/user, command, href_list)
 	..()
 	if(CanAccessPanel(user))
 		switch(command)
@@ -108,13 +108,13 @@
 				if(emagged < 2)
 					emagged = !emagged
 
-/mob/living/bot/secbot/attackby(var/obj/item/O, mob/user)
+/mob/living/bot/secbot/attackby(obj/item/O, mob/user)
 	var/curhealth = health
 	. = ..()
 	if(health < curhealth)
 		react_to_attack(user)
 
-/mob/living/bot/secbot/emag_act(var/remaining_charges, mob/user)
+/mob/living/bot/secbot/emag_act(remaining_charges, mob/user)
 	. = ..()
 	if(!emagged)
 		if(user)
@@ -123,7 +123,7 @@
 		emagged = 2
 		return 1
 
-/mob/living/bot/secbot/bullet_act(var/obj/item/projectile/P)
+/mob/living/bot/secbot/bullet_act(obj/item/projectile/P)
 	var/curhealth = health
 	var/mob/shooter = P.firer
 	. = ..()
@@ -162,7 +162,7 @@
 		return
 	..()
 
-/mob/living/bot/secbot/confirmTarget(var/atom/A)
+/mob/living/bot/secbot/confirmTarget(atom/A)
 	if(!..())
 		return 0
 	return (check_threat(A) >= SECBOT_THREAT_ARREST)
@@ -194,7 +194,7 @@
 		handcuffs.place_handcuffs(C, src)
 	resetTarget() //we're done, failed or not. Don't want to get stuck if C is not
 
-/mob/living/bot/secbot/UnarmedAttack(var/mob/M, proximity)
+/mob/living/bot/secbot/UnarmedAttack(mob/M, proximity)
 	if(!..())
 		return
 
@@ -251,7 +251,7 @@
 
 //Secbot Construction
 
-/obj/item/clothing/head/helmet/attackby(var/obj/item/device/assembly/signaler/S, mob/user as mob)
+/obj/item/clothing/head/helmet/attackby(obj/item/device/assembly/signaler/S, mob/user as mob)
 	..()
 	if(!issignaler(S))
 		..()
@@ -278,7 +278,7 @@
 	var/build_step = 0
 	var/created_name = "Securitron"
 
-/obj/item/weapon/secbot_assembly/attackby(var/obj/item/O, mob/user)
+/obj/item/weapon/secbot_assembly/attackby(obj/item/O, mob/user)
 	..()
 	if(isWelder(O) && !build_step)
 		if(O.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))

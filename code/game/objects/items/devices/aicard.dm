@@ -144,7 +144,7 @@
 		carded_ai.show_message(rendered, type)
 	..()
 
-/obj/item/weapon/aicard/relaymove(var/mob/user, direction)
+/obj/item/weapon/aicard/relaymove(mob/user, direction)
 	if(user.stat || user.stunned)
 		return
 	var/obj/item/weapon/rig/rig = src.get_rig()

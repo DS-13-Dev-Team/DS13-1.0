@@ -2,7 +2,7 @@
 /mob/proc/trigger_aiming(trigger_type)
 	return
 
-/mob/living/trigger_aiming(var/trigger_type)
+/mob/living/trigger_aiming(trigger_type)
 	if(!aimed.len)
 		return
 	for( var/obj/aiming_overlay/AO in aimed)

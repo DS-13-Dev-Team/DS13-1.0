@@ -251,7 +251,7 @@
 
 	return TRUE
 
-/mob/living/can_slam(var/atom/target, error_messages = TRUE)
+/mob/living/can_slam(atom/target, error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 

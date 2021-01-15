@@ -38,7 +38,7 @@
 	if(start_grab_name)
 		current_grab = all_grabstates[start_grab_name]
 
-/obj/item/grab/examine(var/user)
+/obj/item/grab/examine(user)
 	..()
 	var/obj/item/O = get_targeted_organ()
 	if (O)

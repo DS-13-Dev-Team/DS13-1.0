@@ -33,7 +33,7 @@
 
 	pass_flags = PASS_FLAG_TABLE
 
-/mob/living/simple_animal/hostile/carp/Allow_Spacemove(var/check_drift = 0)
+/mob/living/simple_animal/hostile/carp/Allow_Spacemove(check_drift = 0)
 	return 1	//No drifting in space for space carp!	//original comments do not steal
 
 /mob/living/simple_animal/hostile/carp/FindTarget()

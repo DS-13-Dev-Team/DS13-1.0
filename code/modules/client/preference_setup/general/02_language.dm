@@ -5,10 +5,10 @@
 	name = "Language"
 	sort_order = 2
 
-/datum/category_item/player_setup_item/general/language/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/general/language/load_character(savefile/S)
 	S["language"]			>> pref.alternate_languages
 
-/datum/category_item/player_setup_item/general/language/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/general/language/save_character(savefile/S)
 	S["language"]			<< pref.alternate_languages
 
 /datum/category_item/player_setup_item/general/language/sanitize_character()
@@ -33,7 +33,7 @@
 	else
 		. += "- [pref.species] cannot choose secondary languages.<br>"
 
-/datum/category_item/player_setup_item/general/language/OnTopic(var/href, list/href_list, mob/user)
+/datum/category_item/player_setup_item/general/language/OnTopic(href, list/href_list, mob/user)
 	if(href_list["remove_language"])
 		var/index = text2num(href_list["remove_language"])
 		pref.alternate_languages.Cut(index, index+1)

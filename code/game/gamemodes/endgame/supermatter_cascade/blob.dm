@@ -87,7 +87,7 @@
 
 #define MayConsume(A) (istype(A) && A.simulated && !isobserver(A))
 
-/turf/unsimulated/wall/supermatter/Bumped(var/atom/movable/AM)
+/turf/unsimulated/wall/supermatter/Bumped(atom/movable/AM)
 	if(!MayConsume(AM))
 		return
 
@@ -102,7 +102,7 @@
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 	Consume(AM)
 
-/turf/unsimulated/wall/supermatter/Entered(var/atom/movable/AM)
+/turf/unsimulated/wall/supermatter/Entered(atom/movable/AM)
 	Bumped(AM)
 
 /turf/unsimulated/wall/supermatter/proc/Consume(atom/movable/AM)

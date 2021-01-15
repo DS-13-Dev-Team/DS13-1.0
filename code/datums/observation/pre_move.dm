@@ -20,7 +20,7 @@ GLOBAL_DATUM_INIT(pre_move_event, /decl/observ/pre_move, new)
 * Movement Handling *
 ********************/
 
-/atom/movable/Move(var/newloc, Dir=0, step_x=0, step_y=0)
+/atom/movable/Move(newloc, Dir=0, step_x=0, step_y=0)
 	GLOB.pre_move_event.raise_event(src, loc, newloc)
 	. = ..()
 

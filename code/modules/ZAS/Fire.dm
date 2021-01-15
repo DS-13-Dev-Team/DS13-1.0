@@ -408,7 +408,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 
 
 
-/mob/living/carbon/human/FireBurn(var/firelevel, last_temperature, pressure)
+/mob/living/carbon/human/FireBurn(firelevel, last_temperature, pressure)
 	//Burns mobs due to fire. Respects heat transfer coefficients on various body parts.
 	//Due to TG reworking how fireprotection works, this is kinda less meaningful.
 

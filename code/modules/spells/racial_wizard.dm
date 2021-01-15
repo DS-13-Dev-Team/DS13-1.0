@@ -72,7 +72,7 @@
 /spell/messa_shroud/choose_targets()
 	return list(get_turf(holder))
 
-/spell/messa_shroud/cast(var/list/targets, mob/user)
+/spell/messa_shroud/cast(list/targets, mob/user)
 	var/turf/T = targets[1]
 
 	if(!istype(T))
@@ -133,7 +133,7 @@
 			hands += I
 	return hands
 
-/spell/moghes_blessing/cast(var/list/targets, mob/user)
+/spell/moghes_blessing/cast(list/targets, mob/user)
 	for( var/obj/item/I in targets)
 		set_extension(I, /datum/extension/moghes_blessing)
 
@@ -241,7 +241,7 @@
 		return null
 	return list(holder)
 
-/spell/camera_connection/cast(var/list/targets, mob/user)
+/spell/camera_connection/cast(list/targets, mob/user)
 	var/mob/living/L = targets[1]
 
 	vision.possess(L)

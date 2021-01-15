@@ -37,12 +37,12 @@
 	grab_action = "jointlock"
 	harm_action = "dislocate"
 
-/datum/grab/normal/on_hit_help(var/obj/item/grab/normal/G)
+/datum/grab/normal/on_hit_help(obj/item/grab/normal/G)
 	var/obj/item/organ/external/O = G.get_targeted_organ()
 	if(O)
 		return O.inspect(G.assailant)
 
-/datum/grab/normal/on_hit_disarm(var/obj/item/grab/G)
+/datum/grab/normal/on_hit_disarm(obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
 	var/mob/living/carbon/human/assailant = G.assailant
 
@@ -66,7 +66,7 @@
 		return 0
 
 
-/datum/grab/normal/on_hit_grab(var/obj/item/grab/G)
+/datum/grab/normal/on_hit_grab(obj/item/grab/G)
 	var/obj/item/organ/external/O = G.get_targeted_organ()
 	var/mob/living/carbon/human/assailant = G.assailant
 	var/mob/living/carbon/human/affecting = G.affecting
@@ -97,7 +97,7 @@
 		return 0
 
 
-/datum/grab/normal/on_hit_harm(var/obj/item/grab/G)
+/datum/grab/normal/on_hit_harm(obj/item/grab/G)
 	var/obj/item/organ/external/O = G.get_targeted_organ()
 	var/mob/living/carbon/human/assailant = G.assailant
 	var/mob/living/carbon/human/affecting = G.affecting
@@ -136,7 +136,7 @@
 		to_chat(assailant, "<span class='warning'>You can't dislocate [affecting]'s [O.joint]!</span>")
 		return 0
 
-/datum/grab/normal/resolve_openhand_attack(var/obj/item/grab/G)
+/datum/grab/normal/resolve_openhand_attack(obj/item/grab/G)
 	if(G.assailant.a_intent != I_HELP)
 		if(G.target_zone == BP_HEAD)
 			if(G.assailant.zone_sel.selecting == BP_EYES)
@@ -206,7 +206,7 @@
 	return 1
 
 // Handles special targeting like eyes and mouth being covered.
-/datum/grab/normal/special_target_effect(var/obj/item/grab/G)
+/datum/grab/normal/special_target_effect(obj/item/grab/G)
 	if(G.special_target_functional)
 		switch(G.last_target)
 			if(BP_MOUTH)
@@ -217,7 +217,7 @@
 					G.affecting.eye_blind = 3
 
 // Handles when they change targeted areas and something is supposed to happen.
-/datum/grab/normal/special_target_change(var/obj/item/grab/G, diff_zone)
+/datum/grab/normal/special_target_change(obj/item/grab/G, diff_zone)
 	if(G.target_zone != BP_HEAD && G.target_zone != BP_CHEST)
 		return
 	switch(diff_zone)
@@ -227,7 +227,7 @@
 			G.assailant.visible_message("<span class='warning'>\The [G.assailant] covers [G.affecting]'s eyes!</span>")
 
 
-/datum/grab/normal/check_special_target(var/obj/item/grab/G)
+/datum/grab/normal/check_special_target(obj/item/grab/G)
 	switch(G.last_target)
 		if(BP_MOUTH)
 			if(!G.affecting.check_has_mouth())
@@ -239,7 +239,7 @@
 				return 0
 	return 1
 
-/datum/grab/normal/resolve_item_attack(var/obj/item/grab/G, mob/living/carbon/human/user, obj/item/I)
+/datum/grab/normal/resolve_item_attack(obj/item/grab/G, mob/living/carbon/human/user, obj/item/I)
 	switch(G.target_zone)
 		if(BP_HEAD)
 			return attack_throat(G, I, user)

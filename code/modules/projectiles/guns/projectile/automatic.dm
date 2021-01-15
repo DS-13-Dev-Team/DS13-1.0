@@ -275,7 +275,7 @@
 		item_state = "l6[cover_open ? "open" : "closed"]-empty"
 	..()
 
-/obj/item/weapon/gun/projectile/automatic/l6_saw/load_ammo(var/obj/item/A, mob/user)
+/obj/item/weapon/gun/projectile/automatic/l6_saw/load_ammo(obj/item/A, mob/user)
 	if(!cover_open)
 		to_chat(user, "<span class='warning'>You need to open the cover to load that into [src].</span>")
 		return

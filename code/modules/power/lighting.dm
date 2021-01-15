@@ -209,7 +209,7 @@
 		return
 	else .=..()
 
-/obj/machinery/light/update_icon(var/trigger = 1)
+/obj/machinery/light/update_icon(trigger = 1)
 	overlays = overlays.Cut()
 	icon_state = "[base_state]_empty" //Never use the initial state. That'll just reset it to the mapping icon.
 	pixel_y = 0
@@ -270,7 +270,7 @@
 	if(get_status() != LIGHT_OK)
 		set_light(0)
 
-/obj/machinery/light/attack_generic(var/mob/user, damage)
+/obj/machinery/light/attack_generic(mob/user, damage)
 	if(!damage)
 		return
 	var/status = get_status()
@@ -667,7 +667,7 @@
 
 // attack bulb/tube with object
 // if a syringe, can inject phoron to make it explode
-/obj/item/weapon/light/attackby(var/obj/item/I, mob/user)
+/obj/item/weapon/light/attackby(obj/item/I, mob/user)
 	..()
 	if(istype(I, /obj/item/weapon/reagent_containers/syringe))
 		var/obj/item/weapon/reagent_containers/syringe/S = I

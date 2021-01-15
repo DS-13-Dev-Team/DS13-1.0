@@ -110,7 +110,7 @@
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
 	return
 
-/mob/living/carbon/human/attack_generic(var/mob/user, damage, attack_message, environment_smash, damtype = BRUTE, armorcheck = "melee")
+/mob/living/carbon/human/attack_generic(mob/user, damage, attack_message, environment_smash, damtype = BRUTE, armorcheck = "melee")
 
 	if(!damage || !istype(user))
 		return

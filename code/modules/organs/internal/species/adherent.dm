@@ -11,7 +11,7 @@
 		action.button_icon_state = "adherent-brain"
 		if(action.button) action.button.UpdateIcon()
 
-/obj/item/organ/internal/brain/adherent/attack_self(var/mob/user)
+/obj/item/organ/internal/brain/adherent/attack_self(mob/user)
 	. = ..()
 	if(. && istype(species, /datum/species/adherent))
 		var/datum/species/adherent/adherents = species
@@ -40,7 +40,7 @@
 		action.button_icon_state = "[base_action_state]-[active ? "on" : "off"]"
 		if(action.button) action.button.UpdateIcon()
 
-/obj/item/organ/internal/powered/attack_self(var/mob/user)
+/obj/item/organ/internal/powered/attack_self(mob/user)
 	. = ..()
 	if(.)
 		if(is_broken())

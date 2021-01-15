@@ -62,7 +62,7 @@
 			if(get_dist(M.current, src) <= 3)
 				. += M.current
 
-/obj/structure/deity/radiant_statue/attack_deity(var/mob/living/deity/deity)
+/obj/structure/deity/radiant_statue/attack_deity(mob/living/deity/deity)
 	if(activate_charging())
 		to_chat(deity,"<span class='notice'>You activate \the [src], and it begins to charge as long as at least one of your followers is nearby.</span>")
 	else

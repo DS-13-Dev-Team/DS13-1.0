@@ -29,7 +29,7 @@
 /obj/item/weapon/gun/energy/laser/practice/proc/hacked()
 	return projectile_type != /obj/item/projectile/beam/practice
 
-/obj/item/weapon/gun/energy/laser/practice/emag_act(var/remaining_charges, mob/user, emag_source)
+/obj/item/weapon/gun/energy/laser/practice/emag_act(remaining_charges, mob/user, emag_source)
 	if(hacked())
 		return NO_EMAG_ACT
 	to_chat(user, "<span class='warning'>You disable the safeties on [src] and crank the output to the lethal levels.</span>")

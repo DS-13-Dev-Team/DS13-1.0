@@ -171,7 +171,7 @@
 	//The full auto clickhandler we have
 	var/datum/click_handler/sustained/CH = null
 
-/datum/firemode/remote/update(var/force_state = null)
+/datum/firemode/remote/update(force_state = null)
 	var/mob/living/L
 
 	if (gun && gun.is_held())

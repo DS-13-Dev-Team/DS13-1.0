@@ -8,7 +8,7 @@
 							/obj/item/clothing/head/culthood/alt = 10,
 							)
 
-/datum/deity_item/blood_crafting/buy(var/mob/living/deity/user)
+/datum/deity_item/blood_crafting/buy(mob/living/deity/user)
 	..()
 	user.form.buildables |= /obj/structure/deity/blood_forge //put structure here
 	var/list/L = user.feats[DEITY_BLOOD_CRAFT]

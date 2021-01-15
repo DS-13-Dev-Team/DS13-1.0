@@ -6,7 +6,7 @@
 	flags = PHENOMENA_NEAR_STRUCTURE|PHENOMENA_MUNDANE|PHENOMENA_FOLLOWER|PHENOMENA_NONFOLLOWER
 	expected_type = /mob/living
 
-/datum/phenomena/warp/activate(var/mob/living/L)
+/datum/phenomena/warp/activate(mob/living/L)
 	..()
 	L.adjustCloneLoss(20)
 	L.Weaken(2)
@@ -19,7 +19,7 @@
 	flags = PHENOMENA_NEAR_STRUCTURE|PHENOMENA_FOLLOWER
 	expected_type = /mob/living/carbon/human
 
-/datum/phenomena/rock_form/activate(var/mob/living/carbon/human/H)
+/datum/phenomena/rock_form/activate(mob/living/carbon/human/H)
 	..()
 	to_chat(H, "<span class='danger'>You feel your body harden as it rapidly is transformed into living crystal!</span>")
 	H.set_species("Golem")

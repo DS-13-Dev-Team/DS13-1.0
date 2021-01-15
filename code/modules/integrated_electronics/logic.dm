@@ -7,7 +7,7 @@
 	activators = list("compare", "on true result")
 	category = /obj/item/integrated_circuit/logic
 
-/obj/item/integrated_circuit/logic/do_work(var/activator_pin)
+/obj/item/integrated_circuit/logic/do_work(activator_pin)
 	if(activator_pin != activators[1])
 		return
 
@@ -207,7 +207,7 @@
 	available_accesses = get_all_station_access()
 	..()
 
-/obj/item/integrated_circuit/logic/unary/access_verifier/attack_self(var/mob/user)
+/obj/item/integrated_circuit/logic/unary/access_verifier/attack_self(mob/user)
 	tg_ui_interact(user)
 
 /obj/item/integrated_circuit/logic/unary/access_verifier/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = tg_hands_state)
@@ -285,7 +285,7 @@
 	if(.)
 		cached_ui_data = null
 
-/obj/item/integrated_circuit/logic/unary/access_verifier/examine/(var/mob/user)
+/obj/item/integrated_circuit/logic/unary/access_verifier/examine/(mob/user)
 	. = ..(user, 1)
 	if(.)
 		to_chat(user, "A small screen displays 'Last configured by: [last_configurator ? last_configurator : "N/A"]'.")

@@ -79,12 +79,12 @@
 /turf/simulated/open/update_dirt()
 	return 0
 
-/turf/simulated/open/Entered(var/atom/movable/mover)
+/turf/simulated/open/Entered(atom/movable/mover)
 	..()
 	mover.fall()
 
 // Called when thrown object lands on this turf.
-/turf/simulated/open/hitby(var/atom/movable/AM, speed)
+/turf/simulated/open/hitby(atom/movable/AM, speed)
 	. = ..()
 	AM.fall()
 
@@ -230,7 +230,7 @@
 
 //The two situations which require unregistering
 
-/turf/simulated/open/ChangeTurf(var/turf/N, tell_universe=1, force_lighting_update = 0)
+/turf/simulated/open/ChangeTurf(turf/N, tell_universe=1, force_lighting_update = 0)
 	//We do not want to change any of the behaviour, just make sure this goes away
 	src.clean_up()
 	. = ..()

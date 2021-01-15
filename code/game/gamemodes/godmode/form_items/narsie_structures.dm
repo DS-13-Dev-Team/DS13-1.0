@@ -13,7 +13,7 @@
 
 	power_adjustment = 2
 
-/obj/structure/deity/blood_forge/attack_hand(var/mob/user)
+/obj/structure/deity/blood_forge/attack_hand(mob/user)
 	if(!linked_god || !linked_god.is_follower(user, silent = 1) || !ishuman(user))
 		return
 
@@ -28,12 +28,12 @@
 		dat += "<A href='?src=\ref[src];make_recipe=\ref[type];'>[initial(a.name)]</a> - [cost]<br><i>[initial(a.desc)]</i><br><br>"
 	show_browser(user, dat, "window=forge")
 
-/obj/structure/deity/blood_forge/CanUseTopic(var/user)
+/obj/structure/deity/blood_forge/CanUseTopic(user)
 	if(!linked_god || !linked_god.is_follower(user, silent = 1) || !ishuman(user))
 		return STATUS_CLOSE
 	return ..()
 
-/obj/structure/deity/blood_forge/OnTopic(var/user, list/href_list)
+/obj/structure/deity/blood_forge/OnTopic(user, list/href_list)
 	if(href_list["make_recipe"])
 		var/list/recipes = linked_god.feats[recipe_feat_list]
 		var/type = locate(href_list["make_recipe"]) in recipes
@@ -73,7 +73,7 @@
 	health = 100 //Its a piece of rock.
 	build_cost = 700
 
-/obj/structure/deity/blood_stone/attack_hand(var/mob/user)
+/obj/structure/deity/blood_stone/attack_hand(mob/user)
 	if(!linked_god || !linked_god.is_follower(user, silent = 1) || !ishuman(user))
 		return
 

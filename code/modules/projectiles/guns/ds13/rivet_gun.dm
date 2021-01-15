@@ -92,7 +92,7 @@
 /datum/firemode/rivet_frag
 	override_fire = TRUE
 
-/datum/firemode/rivet_frag/fire(var/atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+/datum/firemode/rivet_frag/fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	var/obj/item/weapon/gun/projectile/rivet/R = gun
 	if (R.rivets.len)
 		var/detonated = 0
@@ -163,7 +163,7 @@
 	Special Effect:
 	When the rivet gun is fired into non organic objects or turfs, it repairs instead of damaging them
 */
-/obj/item/projectile/bullet/rivet/attack_atom(var/atom/A, distance, miss_modifier=0)
+/obj/item/projectile/bullet/rivet/attack_atom(atom/A, distance, miss_modifier=0)
 	var/cached_damage = damage
 
 	//If the atom is inorganic, we briefly set our damage to 0 before hitting it

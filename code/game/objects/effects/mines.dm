@@ -173,12 +173,12 @@
 	MP.attach_mob_dead	=	FALSE	//Can this be/remain attached to mobs that are dead?
 
 //Mines can be aimed at the floor, they will deploy when they enter the target tile
-/obj/item/projectile/deploy/Move(var/atom/new_loc, direction)
+/obj/item/projectile/deploy/Move(atom/new_loc, direction)
 	.=..()
 	if (!expired && get_turf(new_loc) == get_turf(original))
 		expire()
 
-/obj/item/projectile/deploy/on_impact(var/atom/A)
+/obj/item/projectile/deploy/on_impact(atom/A)
 	//We have hit something, maybe we can stick to it!
 	if (sticky && !deployed)
 		if (is_valid_mount_target(A, MP))

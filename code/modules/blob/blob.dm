@@ -28,12 +28,12 @@
 	update_icon()
 	return ..(loc)
 
-/obj/effect/blob/CanPass(var/atom/movable/mover, vra/turf/target, height = 0, air_group = 0)
+/obj/effect/blob/CanPass(atom/movable/mover, vra/turf/target, height = 0, air_group = 0)
 	if(air_group || height == 0)
 		return 1
 	return 0
 
-/obj/effect/blob/ex_act(var/severity)
+/obj/effect/blob/ex_act(severity)
 	switch(severity)
 		if(1)
 			take_damage(rand(100, 120) / brute_resist)
@@ -133,7 +133,7 @@
 	if(forceLeft)
 		B.pulse(forceLeft - 1, dirs)
 
-/obj/effect/blob/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/blob/bullet_act(obj/item/projectile/Proj)
 	if(!Proj)
 		return
 
@@ -144,7 +144,7 @@
 			take_damage((Proj.damage / laser_resist) / fire_resist)
 	return 0
 
-/obj/effect/blob/attackby(var/obj/item/weapon/W, mob/user)
+/obj/effect/blob/attackby(obj/item/weapon/W, mob/user)
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
@@ -250,5 +250,5 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/shield/CanPass(var/atom/movable/mover, turf/target, height = 0, air_group = 0)
+/obj/effect/blob/shield/CanPass(atom/movable/mover, turf/target, height = 0, air_group = 0)
 	return !density

@@ -77,7 +77,7 @@
 	base_type = /datum/extension/psi_energy/signal
 
 
-/datum/extension/psi_energy/signal/is_valid_mob(var/mob/M)
+/datum/extension/psi_energy/signal/is_valid_mob(mob/M)
 	if (issignal(M))
 		return TRUE
 
@@ -92,7 +92,7 @@
 	energy_per_tick = 5	//5 Per second
 	max_energy = 4500	//Stores 15 minutes worth of energy
 
-/datum/extension/psi_energy/marker/is_valid_mob(var/mob/M)
+/datum/extension/psi_energy/marker/is_valid_mob(mob/M)
 	return TRUE	//Always gives energy regardless of mob
 
 

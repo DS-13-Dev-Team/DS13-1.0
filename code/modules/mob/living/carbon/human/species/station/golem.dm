@@ -25,7 +25,7 @@
 	death_message = "becomes completely motionless..."
 	genders = list(NEUTER)
 
-/datum/species/golem/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/golem/handle_post_spawn(mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.assigned_role = "Golem"
 		H.mind.special_role = "Golem"
@@ -33,6 +33,6 @@
 	H.SetName(H.real_name)
 	..()
 
-/datum/species/golem/post_organ_rejuvenate(var/obj/item/organ/org)
+/datum/species/golem/post_organ_rejuvenate(obj/item/organ/org)
 	org.status |= ORGAN_BRITTLE
 	org.status |= ORGAN_CRYSTAL

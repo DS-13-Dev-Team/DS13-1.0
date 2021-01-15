@@ -554,7 +554,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/item/weapon/rig/update_icon(var/update_mob_icon)
+/obj/item/weapon/rig/update_icon(update_mob_icon)
 
 	//TODO: Maybe consider a cache for this (use mob_icon as blank canvas, use suit icon overlay).
 	overlays.Cut()
@@ -815,7 +815,7 @@
 	for( var/piece in list("helmet","gauntlets","chest","boots"))
 		toggle_piece(piece, null, ONLY_RETRACT)
 
-/obj/item/weapon/rig/dropped(var/mob/user)
+/obj/item/weapon/rig/dropped(mob/user)
 	..()
 	for( var/piece in list("helmet","gauntlets","chest","boots"))
 		toggle_piece(piece, user, ONLY_RETRACT)
@@ -976,7 +976,7 @@
 /mob/living/carbon/human/get_rig()
 	return wearing_rig
 
-/obj/item/weapon/rig/store_item(var/obj/item/input, mob/user)
+/obj/item/weapon/rig/store_item(obj/item/input, mob/user)
 	if (storage && storage.container.can_be_inserted(input, user))
 		storage.container.handle_item_insertion(input, FALSE)
 		return TRUE

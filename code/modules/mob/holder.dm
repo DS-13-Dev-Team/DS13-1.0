@@ -56,7 +56,7 @@ var/list/holder_mob_icon_cache = list()
 
 	last_holder = loc
 
-/obj/item/weapon/holder/onDropInto(var/atom/movable/AM)
+/obj/item/weapon/holder/onDropInto(atom/movable/AM)
 	if(ismob(loc))   // Bypass our holding mob and drop directly to its loc
 		return loc.loc
 	return ..()
@@ -158,7 +158,7 @@ var/list/holder_mob_icon_cache = list()
 	H.sync(src)
 	return H
 
-/mob/living/MouseDrop(var/mob/living/carbon/human/over_object)
+/mob/living/MouseDrop(mob/living/carbon/human/over_object)
 	if(istype(over_object) && Adjacent(over_object) && (usr == src || usr == over_object) && over_object.a_intent == I_GRAB)
 		if(scoop_check(over_object))
 			get_scooped(over_object, (usr == src))
@@ -168,7 +168,7 @@ var/list/holder_mob_icon_cache = list()
 /mob/living/proc/scoop_check(mob/living/scooper)
 	return 1
 
-/mob/living/carbon/human/scoop_check(var/mob/living/scooper)
+/mob/living/carbon/human/scoop_check(mob/living/scooper)
 	return (scooper.mob_size > src.mob_size && a_intent == I_HELP)
 
 /obj/item/weapon/holder/human
@@ -176,7 +176,7 @@ var/list/holder_mob_icon_cache = list()
 	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, slot_back_str)
 	slot_flags = SLOT_BACK
 
-/obj/item/weapon/holder/human/sync(var/mob/living/M)
+/obj/item/weapon/holder/human/sync(mob/living/M)
 	// Generate appropriate on-mob icons.
 	var/mob/living/carbon/human/owner = M
 	if(istype(owner) && owner.species)

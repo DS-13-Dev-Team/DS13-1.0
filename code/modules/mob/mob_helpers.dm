@@ -467,7 +467,7 @@ proc/is_blind(A)
 	check_eye(src)
 	return 1
 
-/mob/living/silicon/ai/switch_to_camera(var/obj/machinery/camera/C)
+/mob/living/silicon/ai/switch_to_camera(obj/machinery/camera/C)
 	if(!C.can_use() || !is_in_chassis())
 		return 0
 
@@ -491,13 +491,13 @@ proc/is_blind(A)
 
 	return 0
 
-/mob/living/carbon/assess_perp(var/obj/access_obj, check_access, auth_weapons, check_records, check_arrest)
+/mob/living/carbon/assess_perp(obj/access_obj, check_access, auth_weapons, check_records, check_arrest)
 	if(handcuffed)
 		return SAFE_PERP
 
 	return ..()
 
-/mob/living/carbon/human/assess_perp(var/obj/access_obj, check_access, auth_weapons, check_records, check_arrest)
+/mob/living/carbon/human/assess_perp(obj/access_obj, check_access, auth_weapons, check_records, check_arrest)
 	var/threatcount = ..()
 	if(. == SAFE_PERP)
 		return SAFE_PERP
@@ -544,7 +544,7 @@ proc/is_blind(A)
 
 	return threatcount
 
-/mob/living/simple_animal/hostile/assess_perp(var/obj/access_obj, check_access, auth_weapons, check_records, check_arrest)
+/mob/living/simple_animal/hostile/assess_perp(obj/access_obj, check_access, auth_weapons, check_records, check_arrest)
 	var/threatcount = ..()
 	if(. == SAFE_PERP)
 		return SAFE_PERP
@@ -711,7 +711,7 @@ proc/is_blind(A)
 
 
 //A true value means left
-/mob/living/carbon/human/get_grasping_limb(var/side)
+/mob/living/carbon/human/get_grasping_limb(side)
 	if (species)
 		return species.get_grasping_limb(src, side)
 

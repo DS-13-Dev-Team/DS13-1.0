@@ -235,7 +235,7 @@
 		smoke.initial_splash()
 
 
-/datum/effect/effect/system/smoke_spread/chem/spores/spawnSmoke(var/turf/T, icon/I, smoke_duration, dist = 1)
+/datum/effect/effect/system/smoke_spread/chem/spores/spawnSmoke(turf/T, icon/I, smoke_duration, dist = 1)
 	var/obj/effect/effect/smoke/chem/spores = new /obj/effect/effect/smoke/chem(location)
 	spores.SetName("cloud of [seed.seed_name] [seed.seed_noun]")
 	..(T, I, smoke_duration, dist, passed_smoke=spores)

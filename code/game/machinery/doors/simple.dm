@@ -52,7 +52,7 @@
 /obj/machinery/door/unpowered/simple/get_material_name()
 	return material.name
 
-/obj/machinery/door/unpowered/simple/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/door/unpowered/simple/bullet_act(obj/item/projectile/Proj)
 	var/damage = Proj.get_structure_damage()
 	if(damage)
 		//cap projectile damage so that there's still a minimum number of hits required to break the door
@@ -73,16 +73,16 @@
 			flick("[icon_base]closing", src)
 	return
 
-/obj/machinery/door/unpowered/simple/inoperable(var/additional_flags = 0)
+/obj/machinery/door/unpowered/simple/inoperable(additional_flags = 0)
 	return (stat & (BROKEN|additional_flags))
 
-/obj/machinery/door/unpowered/simple/close(var/forced = 0)
+/obj/machinery/door/unpowered/simple/close(forced = 0)
 	if(!can_close(forced))
 		return
 	playsound(src.loc, material.dooropen_noise, 100, 1)
 	..()
 
-/obj/machinery/door/unpowered/simple/open(var/forced = 0)
+/obj/machinery/door/unpowered/simple/open(forced = 0)
 	if(!can_open(forced))
 		return
 	playsound(src.loc, material.dooropen_noise, 100, 1)

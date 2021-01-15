@@ -30,7 +30,7 @@
 	health = 100	//Hard to break
 
 
-/obj/structure/ladder/register_zstructure(var/turf/T)
+/obj/structure/ladder/register_zstructure(turf/T)
 	LAZYSET(T.zstructures, src, 2)	//Ladders have a ztransition priority of 2 to overrule other things
 
 
@@ -72,10 +72,10 @@
 /obj/structure/ladder/attackby(obj/item/C as obj, mob/user as mob)
 	climb(user)
 
-/obj/structure/ladder/attack_hand(var/mob/M)
+/obj/structure/ladder/attack_hand(mob/M)
 	climb(M)
 
-/obj/structure/ladder/attack_ai(var/mob/M)
+/obj/structure/ladder/attack_ai(mob/M)
 	var/mob/living/silicon/ai/ai = M
 	if(!istype(ai))
 		return
@@ -83,7 +83,7 @@
 	if(istype(AIeye))
 		instant_climb(AIeye)
 
-/obj/structure/ladder/attack_robot(var/mob/M)
+/obj/structure/ladder/attack_robot(mob/M)
 	climb(M)
 
 /obj/structure/ladder/proc/instant_climb(mob/M)
@@ -128,7 +128,7 @@
 		for( var/obj/item/grab/G in M)
 			G.adjust_position(force = 1)
 
-/obj/structure/ladder/attack_ghost(var/mob/M)
+/obj/structure/ladder/attack_ghost(mob/M)
 	instant_climb(M)
 
 /obj/structure/ladder/proc/getTargetLadder(mob/M)
@@ -173,7 +173,7 @@
 
 	return TRUE
 
-/mob/observer/ghost/may_climb_ladders(var/ladder)
+/mob/observer/ghost/may_climb_ladders(ladder)
 	return TRUE
 
 /obj/structure/ladder/proc/climbLadder(mob/M, target_ladder)

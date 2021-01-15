@@ -45,7 +45,7 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/refresh_action_button()
 	return action
 
-/obj/item/organ/attack_self(var/mob/user)
+/obj/item/organ/attack_self(mob/user)
 	return (owner && loc == owner && owner == user)
 
 /obj/item/organ/proc/update_health()
@@ -309,7 +309,7 @@ var/list/organ_cache = list()
 		set_dna(owner.dna)
 	return 1
 
-/obj/item/organ/attack(var/mob/target, mob/user)
+/obj/item/organ/attack(mob/target, mob/user)
 	//This cannibalism code is temporarily disabled. We will bring it back in future, but with a psychosis requirement
 	.=..()
 	/*

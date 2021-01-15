@@ -44,7 +44,7 @@
 	if(stat & BROKEN)
 		to_chat(user, "<span class='warning'>It is completely demolished.</span>")
 
-/obj/machinery/camera/malf_upgrade(var/mob/living/silicon/ai/user)
+/obj/machinery/camera/malf_upgrade(mob/living/silicon/ai/user)
 	..()
 	malf_upgraded = 1
 
@@ -140,7 +140,7 @@
 			update_coverage()
 			START_PROCESSING(SSmachines, src)
 
-/obj/machinery/camera/bullet_act(var/obj/item/projectile/P)
+/obj/machinery/camera/bullet_act(obj/item/projectile/P)
 	take_damage(P.get_structure_damage())
 
 /obj/machinery/camera/ex_act(severity)

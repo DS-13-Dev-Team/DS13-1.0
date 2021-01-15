@@ -221,7 +221,7 @@
 	followed_type = /obj/mecha
 	suffix = "Mech"
 
-/datum/follow_holder/mech/get_suffix(var/obj/mecha/M)
+/datum/follow_holder/mech/get_suffix(obj/mecha/M)
 	suffix = M.occupant ? "\[[M.occupant]\] \[[initial(suffix)]\]" : "\[[initial(suffix)]\]"
 	return ..()
 

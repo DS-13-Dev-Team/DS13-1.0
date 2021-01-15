@@ -103,19 +103,19 @@
 	// Possible deactivation messages
 	var/list/deactivation_messages=list()
 
-/datum/dna/gene/basic/can_activate(var/mob/M, flags)
+/datum/dna/gene/basic/can_activate(mob/M, flags)
 	if(flags & MUTCHK_FORCED)
 		return 1
 	// Probability check
 	return probinj(activation_prob,(flags&MUTCHK_FORCED))
 
-/datum/dna/gene/basic/activate(var/mob/M)
+/datum/dna/gene/basic/activate(mob/M)
 	M.mutations.Add(mutation)
 	if(activation_messages.len)
 		var/msg = pick(activation_messages)
 		to_chat(M, "<span class='notice'>[msg]</span>")
 
-/datum/dna/gene/basic/deactivate(var/mob/M)
+/datum/dna/gene/basic/deactivate(mob/M)
 	M.mutations.Remove(mutation)
 	if(deactivation_messages.len)
 		var/msg = pick(deactivation_messages)

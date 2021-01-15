@@ -86,7 +86,7 @@
 	..()
 #undef RANDOM_COEF
 
-/datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
+/datum/species/human/get_bodytype(mob/living/carbon/human/H)
 	return SPECIES_HUMAN
 
 /datum/species/alium/proc/adapt_to_atmosphere(datum/gas_mixture/atmosphere)

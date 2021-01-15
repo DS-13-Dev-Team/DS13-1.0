@@ -156,7 +156,7 @@
 	name = "DV-136ZB #[random_id(/obj/machinery/camera/spy, 1000,9999)]"
 	c_tag = name
 
-/obj/machinery/camera/spy/check_eye(var/mob/user as mob)
+/obj/machinery/camera/spy/check_eye(mob/user as mob)
 	return 0
 
 /obj/item/device/radio/spy

@@ -232,7 +232,7 @@
 		return 100
 	return BASE_STORAGE_COST(w_class)
 
-/mob/living/carbon/human/handle_fall_effect(var/turf/landing)
+/mob/living/carbon/human/handle_fall_effect(turf/landing)
 	if(species && species.handle_fall_special(src, landing))
 		return
 

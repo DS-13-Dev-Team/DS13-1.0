@@ -179,7 +179,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 
 
 
-/obj/item/projectile/bullet/acid/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
+/obj/item/projectile/bullet/acid/attack_mob(mob/living/target_mob, distance, miss_modifier=0)
 	if (firer.is_allied(target_mob))	//The bullet passes through our own allies harmlessly
 		return TRUE
 

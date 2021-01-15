@@ -8,10 +8,10 @@
 	req_access = list(access_research)
 	circuit = /obj/item/weapon/circuitboard/robotics
 
-/obj/machinery/computer/robotics/attack_ai(var/mob/user as mob)
+/obj/machinery/computer/robotics/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/computer/robotics/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/robotics/attack_hand(mob/user as mob)
 	ui_interact(user)
 
 /obj/machinery/computer/robotics/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
@@ -32,7 +32,7 @@
 		return STATUS_CLOSE
 	return ..()
 
-/obj/machinery/computer/robotics/OnTopic(var/mob/user, href_list)
+/obj/machinery/computer/robotics/OnTopic(mob/user, href_list)
 	// Locks or unlocks the cyborg
 	if (href_list["lockdown"])
 		var/mob/living/silicon/robot/target = get_cyborg_by_name(href_list["lockdown"])

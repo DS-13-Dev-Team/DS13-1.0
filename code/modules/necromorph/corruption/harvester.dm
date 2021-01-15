@@ -253,7 +253,7 @@
 */
 /datum/click_handler/placement/necromorph/harvester
 
-/datum/click_handler/placement/necromorph/harvester/placement_blocked(var/turf/candidate)
+/datum/click_handler/placement/necromorph/harvester/placement_blocked(turf/candidate)
 	.=..()
 	if (!.)
 		/*
@@ -349,7 +349,7 @@
 
 	return harvesters
 
-/datum/signal_ability/harvester/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/harvester/on_cast(mob/user, atom/target, list/data)
 	var/list/harvesters = get_harvesters(target)
 	if (!harvesters || !harvesters.len)
 		to_chat(user, SPAN_WARNING("No nearby harvesters found to attack from."))
@@ -373,7 +373,7 @@
 	cooldown = HARVESTER_SPINE_COOLDOWN*1.5
 
 
-/datum/signal_ability/harvester/spine/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/harvester/spine/on_cast(mob/user, atom/target, list/data)
 	var/list/harvesters = ..()
 	if (!harvesters)
 		return
@@ -414,7 +414,7 @@
 
 	cooldown = HARVESTER_ACID_COOLDOWN*2
 
-/datum/signal_ability/harvester/acid/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/harvester/acid/on_cast(mob/user, atom/target, list/data)
 	var/list/harvesters = ..()
 	if (!harvesters)
 		return
@@ -459,7 +459,7 @@
 
 	cooldown = HARVESTER_WHIP_COOLDOWN*2
 
-/datum/signal_ability/harvester/tentacle/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/harvester/tentacle/on_cast(mob/user, atom/target, list/data)
 	var/list/harvesters = ..()
 	if (!harvesters)
 		return
@@ -511,7 +511,7 @@
 
 
 
-/datum/extension/swing/harvester_tentacle/hit_mob(var/mob/living/L)
+/datum/extension/swing/harvester_tentacle/hit_mob(mob/living/L)
 	//We harmlessly swooce over lying targets
 	if (L.lying)
 		return FALSE

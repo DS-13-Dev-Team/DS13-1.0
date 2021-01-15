@@ -55,10 +55,10 @@
 /mob/living/carbon/slime/getToxLoss()
 	return toxloss
 
-/mob/living/carbon/slime/adjustToxLoss(var/amount)
+/mob/living/carbon/slime/adjustToxLoss(amount)
 	toxloss = Clamp(toxloss + amount, 0, max_health)
 
-/mob/living/carbon/slime/setToxLoss(var/amount)
+/mob/living/carbon/slime/setToxLoss(amount)
 	adjustToxLoss(amount-getToxLoss())
 
 /mob/living/carbon/slime/New(location, colour="grey")
@@ -160,7 +160,7 @@
 	..(-abs(amount)) // Heals them
 	return
 
-/mob/living/carbon/slime/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/carbon/slime/bullet_act(obj/item/projectile/Proj)
 	attacked += 10
 	..(Proj)
 	return 0
@@ -277,7 +277,7 @@
 				visible_message("<span class='danger'>[M] has attempted to punch [src]!</span>")
 	return
 
-/mob/living/carbon/slime/attackby(var/obj/item/W, mob/user)
+/mob/living/carbon/slime/attackby(obj/item/W, mob/user)
 	if(W.force > 0)
 		attacked += 10
 		if(!(stat) && prob(25)) //Only run this check if we're alive or otherwise motile, otherwise surgery will be agonizing for xenobiologists.

@@ -21,7 +21,7 @@
 	var/toggle = 0 //Can we toggle this?
 	var/list/transformed_dudes = list() //Who we transformed. Transformed = Transformation. Both mobs.
 
-/spell/targeted/shapeshift/cast(var/list/targets, mob/user)
+/spell/targeted/shapeshift/cast(list/targets, mob/user)
 	for( var/m in targets)
 		var/mob/living/M = m
 		if(M.stat == DEAD)

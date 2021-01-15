@@ -14,7 +14,7 @@
 	var/malfunction_probability = 10// Chance of malfunction when the component is damaged
 	var/usage_flags = PROGRAM_ALL
 
-/obj/item/weapon/computer_hardware/attackby(var/obj/item/W as obj, mob/living/user as mob)
+/obj/item/weapon/computer_hardware/attackby(obj/item/W as obj, mob/living/user as mob)
 	// Multitool. Runs diagnostics
 	if(isMultitool(W))
 		to_chat(user, "***** DIAGNOSTICS REPORT *****")
@@ -73,7 +73,7 @@
 	// Good to go.
 	return 1
 
-/obj/item/weapon/computer_hardware/examine(var/mob/user)
+/obj/item/weapon/computer_hardware/examine(mob/user)
 	. = ..()
 	if(damage > damage_failure)
 		to_chat(user, "<span class='danger'>It seems to be severely damaged!</span>")
@@ -83,7 +83,7 @@
 		to_chat(user, "It seems to be slightly damaged.")
 
 // Damages the component. Contains necessary checks. Negative damage "heals" the component.
-/obj/item/weapon/computer_hardware/take_damage(var/amount)
+/obj/item/weapon/computer_hardware/take_damage(amount)
 	damage += round(amount) 					// We want nice rounded numbers here.
 	damage = between(0, damage, max_damage)		// Clamp the value.
 

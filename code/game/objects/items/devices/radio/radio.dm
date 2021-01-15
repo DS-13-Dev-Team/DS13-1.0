@@ -188,7 +188,7 @@
 	var/obj/item/weapon/card/id/I = GetIdCard()
 	return has_access(list(), req_one_accesses, I ? I.GetAccess() : list())
 
-/mob/observer/ghost/has_internal_radio_channel_access(var/list/req_one_accesses)
+/mob/observer/ghost/has_internal_radio_channel_access(list/req_one_accesses)
 	return can_admin_interact()
 
 /obj/item/device/radio/proc/text_wires()
@@ -665,7 +665,7 @@
 	myborg = null
 	return ..()
 
-/obj/item/device/radio/borg/list_channels(var/mob/user)
+/obj/item/device/radio/borg/list_channels(mob/user)
 	return list_secure_channels(user)
 
 /obj/item/device/radio/borg/talk_into()
@@ -859,7 +859,7 @@
 	..()
 	internal_channels = GLOB.default_medbay_channels.Copy()
 
-/obj/item/device/radio/CouldUseTopic(var/mob/user)
+/obj/item/device/radio/CouldUseTopic(mob/user)
 	..()
 	if(istype(user, /mob/living/carbon))
 		playsound(src, "button", 10)

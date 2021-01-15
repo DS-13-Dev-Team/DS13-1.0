@@ -266,7 +266,7 @@
 	return TRUE
 
 
-/mob/living/can_swing(var/swing_type = /datum/extension/swing)
+/mob/living/can_swing(swing_type = /datum/extension/swing)
 	if (incapacitated())
 		return FALSE
 

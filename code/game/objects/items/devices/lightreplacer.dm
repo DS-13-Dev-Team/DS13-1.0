@@ -63,7 +63,7 @@
 	if(..(user, 2))
 		to_chat(user, "It has [uses] light\s remaining.")
 
-/obj/item/device/lightreplacer/resolve_attackby(var/atom/A, mob/user)
+/obj/item/device/lightreplacer/resolve_attackby(atom/A, mob/user)
 
 	//Check for lights in a container, refilling our charges.
 	if(istype(A, /obj/item/weapon/storage/))
@@ -166,7 +166,7 @@
 		target.insert_bulb(L)
 
 
-/obj/item/device/lightreplacer/emag_act(var/remaining_charges, mob/user)
+/obj/item/device/lightreplacer/emag_act(remaining_charges, mob/user)
 	emagged = !emagged
 	playsound(src.loc, "sparks", 100, 1)
 	update_icon()

@@ -41,7 +41,7 @@
 	else
 		icon_state = "Shield_Gen +a"
 
-/obj/machinery/shieldwallgen/OnTopic(var/mob/user, href_list)
+/obj/machinery/shieldwallgen/OnTopic(mob/user, href_list)
 	if(href_list["toggle"])
 		if(src.active >= 1)
 			src.active = 0
@@ -59,7 +59,7 @@
 				"You hear heavy droning.")
 		return TOPIC_REFRESH
 
-/obj/machinery/shieldwallgen/ex_act(var/severity)
+/obj/machinery/shieldwallgen/ex_act(severity)
 	switch(severity)
 		if(1)
 			active = 0
@@ -69,7 +69,7 @@
 		if(3)
 			storedpower -= rand(0, max_stored_power)
 
-/obj/machinery/shieldwallgen/emp_act(var/severity)
+/obj/machinery/shieldwallgen/emp_act(severity)
 	switch(severity)
 		if(1)
 			storedpower = 0
@@ -293,7 +293,7 @@
 /obj/machinery/shieldwall/attack_hand(mob/user as mob)
 	return
 
-/obj/machinery/shieldwall/attackby(var/obj/item/I, mob/user)
+/obj/machinery/shieldwall/attackby(obj/item/I, mob/user)
 	var/obj/machinery/shieldwallgen/G = prob(50) ? gen_primary : gen_secondary
 	G.storedpower -= I.force*2500
 	user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [I]!</span>")
@@ -315,7 +315,7 @@
 		G.storedpower -= power_usage
 
 
-/obj/machinery/shieldwall/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/shieldwall/bullet_act(obj/item/projectile/Proj)
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G = prob(50) ? gen_primary : gen_secondary
 		G.storedpower -= 400 * Proj.get_structure_damage()

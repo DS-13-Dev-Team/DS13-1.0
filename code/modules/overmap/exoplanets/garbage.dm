@@ -28,7 +28,7 @@
 		if(prob(40))
 			S.set_trait(TRAIT_STINGS,1)
 
-/obj/effect/overmap/sector/exoplanet/garbage/adapt_animal(var/mob/living/simple_animal/A)
+/obj/effect/overmap/sector/exoplanet/garbage/adapt_animal(mob/living/simple_animal/A)
 	..()
 	A.faction = "Guardian" //stops bots form hitting each other
 
@@ -51,7 +51,7 @@
 		fallout = rand(20, 100)
 	..()
 
-/datum/random_map/noise/exoplanet/garbage/get_additional_spawns(var/value, turf/T)
+/datum/random_map/noise/exoplanet/garbage/get_additional_spawns(value, turf/T)
 	..()
 	var/v = noise2value(value)
 	if(v > 5)
@@ -75,7 +75,7 @@
 		S.range = limit_x
 		SSradiation.add_source(S)
 
-/datum/random_map/noise/exoplanet/garbage/get_appropriate_path(var/value)
+/datum/random_map/noise/exoplanet/garbage/get_appropriate_path(value)
 	var/v = noise2value(value)
 	if(v > 6)
 		return /turf/simulated/floor/exoplanet/concrete

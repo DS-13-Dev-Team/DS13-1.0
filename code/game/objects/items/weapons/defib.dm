@@ -101,7 +101,7 @@
 	else
 		return ..()
 
-/obj/item/weapon/defibrillator/emag_act(var/uses, mob/user)
+/obj/item/weapon/defibrillator/emag_act(uses, mob/user)
 	if(paddles)
 		return paddles.emag_act(uses, user, src)
 	return NO_EMAG_ACT
@@ -456,7 +456,7 @@
 /obj/item/weapon/shockpaddles/proc/make_announcement(message, msg_class)
 	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")
 
-/obj/item/weapon/shockpaddles/emag_act(var/uses, mob/user, obj/item/weapon/defibrillator/base)
+/obj/item/weapon/shockpaddles/emag_act(uses, mob/user, obj/item/weapon/defibrillator/base)
 	if(istype(src, /obj/item/weapon/shockpaddles/linked))
 		var/obj/item/weapon/shockpaddles/linked/dfb = src
 		if(dfb.base_unit)
@@ -498,12 +498,12 @@
 	item_state = "defibpaddles0"
 	cooldowntime = (3 SECONDS)
 
-/obj/item/weapon/shockpaddles/robot/check_charge(var/charge_amt)
+/obj/item/weapon/shockpaddles/robot/check_charge(charge_amt)
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return (R.cell && R.cell.check_charge(charge_amt))
 
-/obj/item/weapon/shockpaddles/robot/checked_use(var/charge_amt)
+/obj/item/weapon/shockpaddles/robot/checked_use(charge_amt)
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return (R.cell && R.cell.checked_use(charge_amt))
@@ -532,13 +532,13 @@
 	if(base_unit)
 		base_unit.reattach_paddles(user) //paddles attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
-/obj/item/weapon/shockpaddles/linked/check_charge(var/charge_amt)
+/obj/item/weapon/shockpaddles/linked/check_charge(charge_amt)
 	return (base_unit.bcell && base_unit.bcell.check_charge(charge_amt))
 
-/obj/item/weapon/shockpaddles/linked/checked_use(var/charge_amt)
+/obj/item/weapon/shockpaddles/linked/checked_use(charge_amt)
 	return (base_unit.bcell && base_unit.bcell.checked_use(charge_amt))
 
-/obj/item/weapon/shockpaddles/linked/make_announcement(var/message, msg_class)
+/obj/item/weapon/shockpaddles/linked/make_announcement(message, msg_class)
 	base_unit.audible_message("<b>\The [base_unit]</b> [message]", "\The [base_unit] vibrates slightly.")
 
 /*
@@ -554,10 +554,10 @@
 	if(fail_counter)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/weapon/shockpaddles/standalone/check_charge(var/charge_amt)
+/obj/item/weapon/shockpaddles/standalone/check_charge(charge_amt)
 	return 1
 
-/obj/item/weapon/shockpaddles/standalone/checked_use(var/charge_amt)
+/obj/item/weapon/shockpaddles/standalone/checked_use(charge_amt)
 	SSradiation.radiate(src, charge_amt/12) //just a little bit of radiation. It's the price you pay for being powered by magic I guess
 	return 1
 

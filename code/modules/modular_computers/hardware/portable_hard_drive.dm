@@ -48,7 +48,7 @@
 //We don't want or need any default programs on this drive
 /obj/item/weapon/computer_hardware/hard_drive/portable/autorun/manual/install_default_programs()
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/autorun/installed(var/obj/item/modular_computer/M)
+/obj/item/weapon/computer_hardware/hard_drive/portable/autorun/installed(obj/item/modular_computer/M)
 	//Find the word processor
 	var/datum/computer_file/program/wordprocessor/WP = M.hard_drive.find_file_by_name("wordprocessor")
 	var/size = 0

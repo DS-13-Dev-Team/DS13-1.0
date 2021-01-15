@@ -34,7 +34,7 @@
 	return 1 //doesn't require an external power source
 
 // common helper procs for all power machines
-/obj/machinery/power/drain_power(var/drain_check, surge, amount = 0)
+/obj/machinery/power/drain_power(drain_check, surge, amount = 0)
 	if(drain_check)
 		return 1
 

@@ -16,7 +16,7 @@
 		qdel(src)
 
 //Sets the pixelmarker to be on the target pixel exactly
-/obj/effect/pixelmarker/set_global_pixel_loc(var/vector2/coords)
+/obj/effect/pixelmarker/set_global_pixel_loc(vector2/coords)
 	..(coords + get_new_vector(16, 16))
 
 

@@ -23,7 +23,7 @@
 	var/obj/item/weapon/airlock_electronics/brace/electronics
 
 
-/obj/item/weapon/airlock_brace/examine(var/mob/user)
+/obj/item/weapon/airlock_brace/examine(mob/user)
 	. = ..()
 	to_chat(user, examine_health())
 
@@ -110,7 +110,7 @@
 				to_chat(user, "You repair some dents on \the [src].")
 
 
-/obj/item/weapon/airlock_brace/take_damage(var/amount)
+/obj/item/weapon/airlock_brace/take_damage(amount)
 	health = between(0, health - amount, max_health)
 	if(!health)
 		if(airlock)

@@ -77,7 +77,7 @@
 	charge = 0
 	should_be_mapped = 1
 
-/obj/machinery/power/smes/buildable/malf_upgrade(var/mob/living/silicon/ai/user)
+/obj/machinery/power/smes/buildable/malf_upgrade(mob/living/silicon/ai/user)
 	..()
 	malf_upgraded = 1
 	emp_proof = 1
@@ -326,7 +326,7 @@
 // Proc: attackby()
 // Parameters: 2 (W - object that was used on this machine, user - person which used the object)
 // Description: Handles tool interaction. Allows deconstruction/upgrading/fixing.
-/obj/machinery/power/smes/buildable/attackby(var/obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/power/smes/buildable/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if (failing)
 		to_chat(user, "<span class='warning'>The [src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea.</span>")
@@ -426,7 +426,7 @@
 	output_level = between(0, new_output, output_level_max)
 	update_icon()
 
-/obj/machinery/power/smes/buildable/emp_act(var/severity)
+/obj/machinery/power/smes/buildable/emp_act(severity)
 	if(emp_proof)
 		return
 	..(severity)

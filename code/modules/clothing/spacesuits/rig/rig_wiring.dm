@@ -15,7 +15,7 @@
  * Interface lock can be pulsed to toggle whether or not the interface can be accessed.
  */
 
-/datum/wires/rig/UpdateCut(var/index, mended)
+/datum/wires/rig/UpdateCut(index, mended)
 
 	var/obj/item/weapon/rig/rig = holder
 	switch(index)
@@ -27,7 +27,7 @@
 			rig.electrified = mended ? 0 : -1
 			rig.shock(usr,100)
 
-/datum/wires/rig/UpdatePulsed(var/index)
+/datum/wires/rig/UpdatePulsed(index)
 
 	var/obj/item/weapon/rig/rig = holder
 	switch(index)

@@ -227,7 +227,7 @@
 		/obj/item/ammo_casing/a556              = "5.56mm"
 		)
 
-/obj/item/weapon/gun/projectile/pirate/toggle_safety(var/mob/user)
+/obj/item/weapon/gun/projectile/pirate/toggle_safety(mob/user)
 	to_chat(user, "<span class='warning'>There's no safety on \the [src]!</span>")
 
 /obj/item/weapon/gun/projectile/pirate/New()
@@ -257,7 +257,7 @@
 		if(2) to_chat(user, "It has a barrel that has been secured to the stock with tape.")
 		if(3) to_chat(user, "It has a trigger and firing pin assembly loosely fitted into place.")
 
-/obj/item/weapon/zipgunframe/attackby(var/obj/item/thing, mob/user)
+/obj/item/weapon/zipgunframe/attackby(obj/item/thing, mob/user)
 	if(istype(thing,/obj/item/pipe) && buildstate == 0)
 		qdel(thing)
 		user.visible_message("<span class='notice'>\The [user] fits \the [thing] to \the [src] as a crude barrel.</span>")

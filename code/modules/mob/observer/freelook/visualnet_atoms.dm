@@ -14,5 +14,5 @@ It does not actually determine which tiles can be seen at any given moment
 /datum/proc/get_visualnet_tiles(datum/visualnet/network)
 	return list()
 
-/atom/get_visualnet_tiles(var/datum/visualnet/network)
+/atom/get_visualnet_tiles(datum/visualnet/network)
 	return turfs_in_view()

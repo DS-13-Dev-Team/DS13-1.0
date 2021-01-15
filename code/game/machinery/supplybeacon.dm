@@ -11,7 +11,7 @@
 	name = "inactive supermatter supply beacon"
 	deploy_path = /obj/machinery/power/supply_beacon/supermatter
 
-/obj/item/supply_beacon/attack_self(var/mob/user)
+/obj/item/supply_beacon/attack_self(mob/user)
 	user.visible_message("<span class='notice'>\The [user] begins setting up \the [src].</span>")
 	if(!do_after(user, deploy_time, src))
 		return
@@ -44,7 +44,7 @@
 	name = "supermatter supply beacon"
 	drop_type = "supermatter"
 
-/obj/machinery/power/supply_beacon/attackby(var/obj/item/weapon/W, mob/user)
+/obj/machinery/power/supply_beacon/attackby(obj/item/weapon/W, mob/user)
 	if(!use_power && isWrench(W))
 		if(!anchored && !connect_to_network())
 			to_chat(user, "<span class='warning'>This device must be placed over an exposed cable.</span>")
@@ -55,7 +55,7 @@
 		return
 	return ..()
 
-/obj/machinery/power/supply_beacon/attack_hand(var/mob/user)
+/obj/machinery/power/supply_beacon/attack_hand(mob/user)
 
 	if(expended)
 		use_power = 0
@@ -68,7 +68,7 @@
 		to_chat(user, "<span class='warning'>You need to secure the beacon with a wrench first!</span>")
 		return
 
-/obj/machinery/power/supply_beacon/attack_ai(var/mob/user)
+/obj/machinery/power/supply_beacon/attack_ai(mob/user)
 	if(user.Adjacent(src))
 		attack_hand(user)
 

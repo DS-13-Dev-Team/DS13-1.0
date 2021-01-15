@@ -193,7 +193,7 @@
 		for( var/obj/item/integrated_circuit/IO in contents)
 			IO.external_examine(user, opened)
 
-/obj/item/device/electronic_assembly/attackby(var/obj/item/I, mob/user)
+/obj/item/device/electronic_assembly/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/integrated_circuit))
 		if(!user.unEquip(I))
 			return 0

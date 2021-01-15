@@ -116,7 +116,7 @@
 	return 0*/
 
 
-/obj/item/device/assembly/signaler/pulse(var/radio = 0)
+/obj/item/device/assembly/signaler/pulse(radio = 0)
 	if(src.connected && src.wires)
 		connected.Pulse(src)
 	else if(holder)

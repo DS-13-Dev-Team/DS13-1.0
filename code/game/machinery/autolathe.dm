@@ -190,7 +190,7 @@
 		// open the new ui window
 		ui.open()
 
-/obj/machinery/autolathe/attackby(var/obj/item/I, mob/user)
+/obj/machinery/autolathe/attackby(obj/item/I, mob/user)
 	if(default_deconstruction_crowbar(I, user))
 		return
 

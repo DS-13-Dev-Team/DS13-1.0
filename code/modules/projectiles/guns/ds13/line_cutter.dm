@@ -106,9 +106,9 @@
 		if (RIGHT)
 			icon_state = "linecutter_right"
 
-//get_limbs_at_height(var/altitude, height = 0.01)
+//get_limbs_at_height(altitude, height = 0.01)
 
-/obj/item/projectile/wave/linecutter/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
+/obj/item/projectile/wave/linecutter/attack_mob(mob/living/target_mob, distance, miss_modifier=0)
 	//We'll only do our special effect if we haven't already hit this mob
 	var/do_hit = TRUE
 	if (PW && (target_mob in PW.damaged_atoms))
@@ -130,7 +130,7 @@
 
 
 
-/obj/item/projectile/wave/linecutter/Bump(var/atom/A)
+/obj/item/projectile/wave/linecutter/Bump(atom/A)
 	if(istype(A, /turf/simulated/mineral))
 		var/turf/simulated/mineral/M = A
 		if (dig_power)

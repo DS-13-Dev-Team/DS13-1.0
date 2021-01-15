@@ -9,7 +9,7 @@
 /obj/item/weapon/forensics/swab/proc/is_used()
 	return used
 
-/obj/item/weapon/forensics/swab/attack(var/mob/living/M, mob/user)
+/obj/item/weapon/forensics/swab/attack(mob/living/M, mob/user)
 
 	if(!ishuman(M))
 		return ..()
@@ -69,7 +69,7 @@
 		return
 	return 1
 
-/obj/item/weapon/forensics/swab/afterattack(var/atom/A, mob/user, proximity)
+/obj/item/weapon/forensics/swab/afterattack(atom/A, mob/user, proximity)
 
 	if(!proximity || istype(A, /obj/machinery/dnaforensics))
 		return

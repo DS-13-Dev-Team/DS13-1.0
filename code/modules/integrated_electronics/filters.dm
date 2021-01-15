@@ -21,7 +21,7 @@
 	category = /obj/item/integrated_circuit/filter/ref
 	var/filter_type
 
-/obj/item/integrated_circuit/filter/ref/may_pass(var/weakref/data)
+/obj/item/integrated_circuit/filter/ref/may_pass(weakref/data)
 	if(!(filter_type && isweakref(data)))
 		return FALSE
 	var/weakref/wref = data
@@ -75,7 +75,7 @@
 	size = 3
 	icon_state = "filter_custom"
 
-/obj/item/integrated_circuit/filter/ref/custom/may_pass(var/weakref/data)
+/obj/item/integrated_circuit/filter/ref/custom/may_pass(weakref/data)
 	if(!filter_type)
 		return FALSE
 	if(!isweakref(data))
@@ -83,7 +83,7 @@
 	var/weakref/wref = data
 	return istype(wref.resolve(), filter_type)
 
-/obj/item/integrated_circuit/filter/ref/custom/MouseDrop(var/atom/over_object)
+/obj/item/integrated_circuit/filter/ref/custom/MouseDrop(atom/over_object)
 	if(!CanMouseDrop(over_object))
 		return
 

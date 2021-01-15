@@ -54,7 +54,7 @@
 	holder.storage = src //Set ourselves as the storage mod
 	container.master_item = holder //When its inside a rig, that rig is the thing we use for location checks
 
-/obj/item/rig_module/storage/uninstalled(var/obj/item/weapon/rig/former, mob/living/user)
+/obj/item/rig_module/storage/uninstalled(obj/item/weapon/rig/former, mob/living/user)
 	former.storage = null //Unset the storage mod
 	.=..()
 
@@ -67,7 +67,7 @@
 	Internal Handling
 *****************************/
 //This is called whenever people use something on the rig backpack
-/obj/item/rig_module/storage/accepts_item(var/obj/item/input_device)
+/obj/item/rig_module/storage/accepts_item(obj/item/input_device)
 	if (container)
 		return container.attackby(input_device, usr)
 	return FALSE

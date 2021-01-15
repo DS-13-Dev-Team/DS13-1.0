@@ -149,7 +149,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 		dat += "<center><A href='byond://?src=\ref[src];lock=1'>[spellbook.book_flags & LOCKED ? "Unlock" : "Lock"] the spellbook.</a></center>"
 	user << browse(dat,"window=spellbook")
 
-/obj/item/weapon/spellbook/CanUseTopic(var/mob/living/carbon/human/H)
+/obj/item/weapon/spellbook/CanUseTopic(mob/living/carbon/human/H)
 	if(!istype(H))
 		return STATUS_CLOSE
 
@@ -158,7 +158,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 
 	return ..()
 
-/obj/item/weapon/spellbook/OnTopic(var/mob/living/carbon/human/user, href_list)
+/obj/item/weapon/spellbook/OnTopic(mob/living/carbon/human/user, href_list)
 	if(href_list["lock"])
 		if(spellbook.book_flags & LOCKED)
 			spellbook.book_flags &= ~LOCKED

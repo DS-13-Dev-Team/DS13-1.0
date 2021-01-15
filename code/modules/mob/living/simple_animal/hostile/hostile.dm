@@ -163,7 +163,7 @@
 			target_mob = null
 
 
-/mob/living/simple_animal/hostile/attackby(var/obj/item/O, mob/user)
+/mob/living/simple_animal/hostile/attackby(obj/item/O, mob/user)
 	var/oldhealth = health
 	. = ..()
 	if(health < oldhealth && !incapacitated(INCAPACITATION_KNOCKOUT))
@@ -176,7 +176,7 @@
 		target_mob = M
 		MoveToTarget()
 
-/mob/living/simple_animal/hostile/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_animal/hostile/bullet_act(obj/item/projectile/Proj)
 	var/oldhealth = health
 	. = ..()
 	if(!target_mob && health < oldhealth && !incapacitated(INCAPACITATION_KNOCKOUT))

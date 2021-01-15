@@ -154,7 +154,7 @@
 	event_icon_states = list("meteor1", "meteor2", "meteor3", "meteor4")
 	difficulty = EVENT_LEVEL_MAJOR
 
-/datum/overmap_event/meteor/enter(var/obj/effect/overmap/ship/victim)
+/datum/overmap_event/meteor/enter(obj/effect/overmap/ship/victim)
 	..()
 	if(victims[victim])
 		var/datum/event/meteor_wave/overmap/E = victims[victim]

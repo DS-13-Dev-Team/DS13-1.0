@@ -47,7 +47,7 @@
 
 
 
-/datum/extension/retractable_cover/get_statmod(var/modtype)
+/datum/extension/retractable_cover/get_statmod(modtype)
 	if (modtype == STATMOD_MOVESPEED_MULTIPLICATIVE)
 		if (open)
 			return speed_open
@@ -119,7 +119,7 @@
 /atom/proc/can_toggle_cover(error_messages = TRUE)
 	return TRUE
 
-/mob/living/can_toggle_cover(var/error_messages = TRUE)
+/mob/living/can_toggle_cover(error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 

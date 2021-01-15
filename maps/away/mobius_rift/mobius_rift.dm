@@ -35,7 +35,7 @@
 /obj/effect/step_trigger/mobius_rift/seamless_portal/proc/set_destination(D)
 	dest = D
 
-/obj/effect/step_trigger/mobius_rift/seamless_portal/Trigger(var/atom/movable/AM)
+/obj/effect/step_trigger/mobius_rift/seamless_portal/Trigger(atom/movable/AM)
 	if(!istype(AM))
 		return
 	//moving player one tile past portal to avoid portal spamming

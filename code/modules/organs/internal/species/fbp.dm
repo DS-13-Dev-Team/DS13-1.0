@@ -148,7 +148,7 @@
 		owner.switch_from_dead_to_living_mob_list()
 		owner.visible_message("<span class='danger'>\The [owner] twitches visibly!</span>")
 
-/obj/item/organ/internal/mmi_holder/cut_away(var/mob/living/user)
+/obj/item/organ/internal/mmi_holder/cut_away(mob/living/user)
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
 	if(istype(parent))
 		removed(user, 0)

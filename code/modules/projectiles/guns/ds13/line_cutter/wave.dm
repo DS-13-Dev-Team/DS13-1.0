@@ -103,7 +103,7 @@
 	var/wave_type = /obj/item/projectile/wave
 	var/width = 3
 
-/obj/item/projectile/wavespawner/finalize_launch(var/turf/curloc, turf/targloc, x_offset, y_offset, angle_offset)
+/obj/item/projectile/wavespawner/finalize_launch(turf/curloc, turf/targloc, x_offset, y_offset, angle_offset)
 
 	launch_wave(firer, original, wave_type, width, firer, shot_from)
 	expire()
@@ -476,7 +476,7 @@
 
 /*
 */
-/obj/item/projectile/wave/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
+/obj/item/projectile/wave/attack_mob(mob/living/target_mob, distance, miss_modifier=0)
 	//We've already hit it, return the same result as the last time without hitting it again
 	if (target_mob in PW.damaged_atoms)
 		return PW.damaged_atoms[target_mob]
@@ -489,7 +489,7 @@
 
 
 
-/obj/item/projectile/wave/attack_atom(var/atom/A, distance, miss_modifier=0)
+/obj/item/projectile/wave/attack_atom(atom/A, distance, miss_modifier=0)
 	//We've already hit it, return the same result as the last time without hitting it again
 	if (A in PW.damaged_atoms)
 		return PW.damaged_atoms[A]

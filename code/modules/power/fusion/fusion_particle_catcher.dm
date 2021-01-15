@@ -32,10 +32,10 @@
 		set_density(0)
 		SetName("collector [mysize] OFF")
 
-/obj/effect/fusion_particle_catcher/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/fusion_particle_catcher/bullet_act(obj/item/projectile/Proj)
 	parent.AddEnergy(Proj.damage)
 	update_icon()
 	return 0
 
-/obj/effect/fusion_particle_catcher/CanPass(var/atom/movable/mover, turf/target, height=0, air_group=0)
+/obj/effect/fusion_particle_catcher/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	return ismob(mover)

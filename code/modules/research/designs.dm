@@ -1318,7 +1318,7 @@
 	if(fabrication)
 		name = "Device ([fabrication.assembly_name])"
 
-/datum/design/prefab/Fabricate(var/newloc)
+/datum/design/prefab/Fabricate(newloc)
 	if(!fabrication)
 		return
 	var/obj/O = fabrication.create(newloc)

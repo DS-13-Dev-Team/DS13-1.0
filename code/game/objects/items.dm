@@ -1002,7 +1002,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 
 
-/obj/item/repair(var/repair_power, datum/repair_source, mob/user)
+/obj/item/repair(repair_power, datum/repair_source, mob/user)
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()

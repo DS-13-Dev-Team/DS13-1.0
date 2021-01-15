@@ -60,7 +60,7 @@
 
 		animate_movement = SLIDE_STEPS
 
-		New(var/location, segments = 6)
+		New(location, segments = 6)
 			..()
 
 			var/mob/living/simple_animal/space_worm/current = src

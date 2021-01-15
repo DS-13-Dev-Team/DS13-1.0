@@ -91,7 +91,7 @@
 	return 0
 
 
-/turf/simulated/wall/attack_hand(var/mob/user)
+/turf/simulated/wall/attack_hand(mob/user)
 
 	radiate()
 	add_fingerprint(user)
@@ -106,7 +106,7 @@
 
 	try_touch(user, rotting)
 
-/turf/simulated/wall/attack_generic(var/mob/user, damage, attack_message, wallbreaker)
+/turf/simulated/wall/attack_generic(mob/user, damage, attack_message, wallbreaker)
 
 	radiate()
 	if(!istype(user))

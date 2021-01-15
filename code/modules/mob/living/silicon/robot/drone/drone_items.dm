@@ -171,7 +171,7 @@
 	// Don't fall through and smack people with gripper, instead just no-op
 	return 0
 
-/obj/item/weapon/gripper/resolve_attackby(var/atom/target, mob/living/user, params)
+/obj/item/weapon/gripper/resolve_attackby(atom/target, mob/living/user, params)
 
 	//There's some weirdness with items being lost inside the arm. Trying to fix all cases. ~Z
 	if(!wrapped)

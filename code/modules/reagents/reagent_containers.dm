@@ -189,7 +189,7 @@
 	if(user.zone_sel.selecting != BP_MOUTH) //in case it is ever used as a surgery tool
 		return ..()
 
-/obj/item/weapon/reagent_containers/AltClick(var/mob/user)
+/obj/item/weapon/reagent_containers/AltClick(mob/user)
 	if(possible_transfer_amounts)
 		if(CanPhysicallyInteract(user))
 			set_APTFT()
@@ -206,7 +206,7 @@
 	else if((loc == user) && user.skill_check(SKILL_MEDICAL, SKILL_EXPERT))
 		to_chat(user, "<span class='notice'>Using your chemistry knowledge, you indentify the following reagents in \the [src]: [reagents.get_reagents(0, 5)].</span>")
 
-/obj/item/weapon/reagent_containers/adjust_biomass(var/change)
+/obj/item/weapon/reagent_containers/adjust_biomass(change)
 
 	if (!biomass)
 		return 0

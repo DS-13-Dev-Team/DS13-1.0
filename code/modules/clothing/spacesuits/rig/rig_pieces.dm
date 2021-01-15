@@ -49,7 +49,7 @@
 	check_limb_support(M)
 	..()
 
-/obj/item/clothing/suit/space/rig/dropped(var/mob/user)
+/obj/item/clothing/suit/space/rig/dropped(mob/user)
 	check_limb_support(user)
 	..()
 
@@ -88,7 +88,7 @@
 		supporting_limbs |= E
 
 
-/obj/item/clothing/gloves/rig/Touch(var/atom/A, proximity)
+/obj/item/clothing/gloves/rig/Touch(atom/A, proximity)
 
 	if(!A || !proximity)
 		return 0
@@ -147,7 +147,7 @@
 
 //When rig pieces take damage, they send that damage to their frame instead
 //The frame will spread the damage evenly over the pieces
-/obj/item/clothing/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
+/obj/item/clothing/take_damage(amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	if (!rig)
 		.=..()
 		return
@@ -175,7 +175,7 @@
 	malfunctioning = NEAR_INFINITY
 	malfunction_delay = NEAR_INFINITY
 
-/obj/item/weapon/rig/repair(var/repair_power, datum/repair_source, mob/user)
+/obj/item/weapon/rig/repair(repair_power, datum/repair_source, mob/user)
 	.=..()
 	malfunctioning = 0
 	malfunction_delay = 0

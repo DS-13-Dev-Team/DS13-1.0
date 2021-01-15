@@ -45,7 +45,7 @@
 /obj/item/weapon/rcd/proc/can_use(mob/user, turf/T)
 	return (user.Adjacent(T) && user.get_active_hand() == src && !user.incapacitated())
 
-/obj/item/weapon/rcd/examine(var/user)
+/obj/item/weapon/rcd/examine(user)
 	. = ..()
 	if(src.type == /obj/item/weapon/rcd && loc == user)
 		to_chat(user, "The current mode is '[work_mode]'")
@@ -110,7 +110,7 @@
 	matter = list(MATERIAL_STEEL = 15000,MATERIAL_GLASS = 7500)
 	var/remaining = 10
 
-/obj/item/weapon/rcd_ammo/examine(var/mob/user)
+/obj/item/weapon/rcd_ammo/examine(mob/user)
 	. = ..(user,1)
 	if(.)
 		to_chat(user, "<span class='notice'>It has [remaining] unit\s of matter left.</span>")
@@ -125,7 +125,7 @@
 /obj/item/weapon/rcd/borg
 	canRwall = 1
 
-/obj/item/weapon/rcd/borg/useResource(var/amount, mob/user)
+/obj/item/weapon/rcd/borg/useResource(amount, mob/user)
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user
 		if(R.cell)
@@ -138,11 +138,11 @@
 /obj/item/weapon/rcd/borg/attackby()
 	return
 
-/obj/item/weapon/rcd/borg/can_use(var/mob/user, turf/T)
+/obj/item/weapon/rcd/borg/can_use(mob/user, turf/T)
 	return (user.Adjacent(T) && !user.incapacitated())
 
 
-/obj/item/weapon/rcd/mounted/useResource(var/amount, mob/user)
+/obj/item/weapon/rcd/mounted/useResource(amount, mob/user)
 	var/cost = amount*130 //so that a rig with default powercell can build ~2.5x the stuff a fully-loaded RCD can.
 	if(istype(loc,/obj/item/rig_module))
 		var/obj/item/rig_module/module = loc
@@ -155,7 +155,7 @@
 /obj/item/weapon/rcd/mounted/attackby()
 	return
 
-/obj/item/weapon/rcd/mounted/can_use(var/mob/user, turf/T)
+/obj/item/weapon/rcd/mounted/can_use(mob/user, turf/T)
 	return (user.Adjacent(T) && !user.incapacitated())
 
 
@@ -226,7 +226,7 @@
 	handles_type = /turf/simulated/floor
 	work_type = /obj/machinery/door/airlock
 
-/decl/hierarchy/rcd_mode/airlock/basic/can_handle_work(var/rcd, turf/target)
+/decl/hierarchy/rcd_mode/airlock/basic/can_handle_work(rcd, turf/target)
 	return ..() && !target.contains_dense_objects() && !(locate(/obj/machinery/door/airlock) in target)
 
 /*
@@ -240,7 +240,7 @@
 	delay = 2 SECONDS
 	work_type = /turf/simulated/floor/airless
 
-/decl/hierarchy/rcd_mode/floor_and_walls/base_turf/can_handle_work(var/rcd, turf/target)
+/decl/hierarchy/rcd_mode/floor_and_walls/base_turf/can_handle_work(rcd, turf/target)
 	return istype(target) && (isspace(target) || istype(target, get_base_turf_by_area(target)))
 
 /decl/hierarchy/rcd_mode/floor_and_walls/floor_turf
@@ -255,7 +255,7 @@
 /decl/hierarchy/rcd_mode/deconstruction
 	name = "Deconstruction"
 
-/decl/hierarchy/rcd_mode/deconstruction/work_message(var/atom/target, mob/user, rcd)
+/decl/hierarchy/rcd_mode/deconstruction/work_message(atom/target, mob/user, rcd)
 	user.visible_message("<span class='warning'>\The [user] is using \a [rcd] to deconstruct \the [target]!</span>", "<span class='warning'>You are deconstructing \the [target]!</span>")
 
 /decl/hierarchy/rcd_mode/deconstruction/airlock
@@ -268,7 +268,7 @@
 	delay = 2 SECONDS
 	handles_type = /turf/simulated/floor
 
-/decl/hierarchy/rcd_mode/deconstruction/floor/get_work_result(var/target)
+/decl/hierarchy/rcd_mode/deconstruction/floor/get_work_result(target)
 	return get_base_turf_by_area(target)
 
 /decl/hierarchy/rcd_mode/deconstruction/wall
@@ -277,5 +277,5 @@
 	handles_type = /turf/simulated/wall
 	work_type = /turf/simulated/floor
 
-/decl/hierarchy/rcd_mode/deconstruction/wall/can_handle_work(var/obj/item/weapon/rcd/rcd, turf/simulated/wall/target)
+/decl/hierarchy/rcd_mode/deconstruction/wall/can_handle_work(obj/item/weapon/rcd/rcd, turf/simulated/wall/target)
 	return ..() && (rcd.canRwall || !target.reinf_material)

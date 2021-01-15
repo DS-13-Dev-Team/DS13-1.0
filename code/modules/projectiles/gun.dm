@@ -250,7 +250,7 @@
 	else
 		return ..() //Pistolwhippin'
 
-/obj/item/weapon/gun/dropped(var/mob/living/user)
+/obj/item/weapon/gun/dropped(mob/living/user)
 	if(istype(user) && istype(loc, /turf))
 		if(!safety() && prob(5) && !user.skill_check(SKILL_WEAPONS, SKILL_BASIC) && can_fire(null, user, TRUE))
 			to_chat(user, "<span class='warning'>[src] fires on its own!</span>")
@@ -305,7 +305,7 @@
 	return TRUE
 
 
-/obj/item/weapon/gun/is_held_twohanded(var/mob/user)
+/obj/item/weapon/gun/is_held_twohanded(mob/user)
 	.=..()
 	if (.)
 		if (!user.can_wield_item(src))
@@ -674,7 +674,7 @@
 	if(usr == loc)
 		toggle_safety(usr)
 
-/obj/item/weapon/gun/CtrlClick(var/mob/user)
+/obj/item/weapon/gun/CtrlClick(mob/user)
 	if(loc == user)
 		toggle_safety(user)
 	else
@@ -700,7 +700,7 @@
 
 
 //Updating firing modes at appropriate times
-/obj/item/weapon/gun/equipped(var/mob/user, slot)
+/obj/item/weapon/gun/equipped(mob/user, slot)
 	.=..()
 	update_icon()
 	update_firemode()
@@ -744,7 +744,7 @@
 /obj/item/weapon/gun/proc/load_ammo(obj/item/A, mob/user)
 	playsound(loc, mag_insert_sound, 50, 1)
 
-/obj/item/weapon/gun/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/weapon/gun/attackby(obj/item/A as obj, mob/user as mob)
 	load_ammo(A, user)
 
 
@@ -803,14 +803,14 @@
 	if (usr)
 		to_chat(usr, SPAN_NOTICE("Selected [initial(AR.name)]"))
 
-/obj/item/weapon/gun/AltClick(var/mob/user)
+/obj/item/weapon/gun/AltClick(mob/user)
 	if (user == loc && is_held() && selected_aiming_mode)
 		toggle_aiming_mode()
 		return
 	.=..()
 
 
-/obj/item/weapon/gun/CtrlAltClick(var/mob/user)
+/obj/item/weapon/gun/CtrlAltClick(mob/user)
 	if (user == loc && is_held() && aiming_modes.len > 1)
 		cycle_aiming_mode()
 		return

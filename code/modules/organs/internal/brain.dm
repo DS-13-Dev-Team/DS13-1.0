@@ -83,7 +83,7 @@
 		if(brainmob && brainmob.client)
 			brainmob.client.screen.len = null //clear the hud
 
-/obj/item/organ/internal/brain/set_max_damage(var/ndamage)
+/obj/item/organ/internal/brain/set_max_damage(ndamage)
 	..()
 	damage_threshold_value = round(max_damage / damage_threshold_count)
 
@@ -113,7 +113,7 @@
 	else
 		to_chat(user, "This one seems particularly lifeless. Perhaps it will regain some of its luster later..")
 
-/obj/item/organ/internal/brain/removed(var/mob/living/user)
+/obj/item/organ/internal/brain/removed(mob/living/user)
 	if(!istype(owner))
 		return ..()
 
@@ -130,7 +130,7 @@
 
 	..()
 
-/obj/item/organ/internal/brain/replaced(var/mob/living/target)
+/obj/item/organ/internal/brain/replaced(mob/living/target)
 
 	if(!..()) return 0
 
@@ -223,7 +223,7 @@
 						take_internal_damage(1)
 	..()
 
-/obj/item/organ/internal/brain/take_internal_damage(var/damage, silent)
+/obj/item/organ/internal/brain/take_internal_damage(damage, silent)
 	set waitfor = 0
 	.=..()
 	if(damage >= 10) //This probably won't be triggered by oxyloss or mercury. Probably.

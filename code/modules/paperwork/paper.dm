@@ -111,7 +111,7 @@
 			spawn(20)
 				spam_flag = 0
 
-/obj/item/weapon/paper/attack_ai(var/mob/living/silicon/ai/user)
+/obj/item/weapon/paper/attack_ai(mob/living/silicon/ai/user)
 	show_content(user)
 
 /obj/item/weapon/paper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)

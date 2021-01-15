@@ -157,7 +157,7 @@
 
 	src.make_it_rain(user)
 
-/obj/item/weapon/gun/launcher/money/emag_act(var/remaining_charges, mob/user)
+/obj/item/weapon/gun/launcher/money/emag_act(remaining_charges, mob/user)
 	// Overloads the motors, causing it to shoot money harder and do harm.
 	if(!emagged)
 		emagged = 1

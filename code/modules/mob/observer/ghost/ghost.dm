@@ -322,7 +322,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		GLOB.destroyed_event.unregister(following, src)
 		following = null
 
-/mob/observer/ghost/move_to_turf(var/atom/movable/am, old_loc, new_loc)
+/mob/observer/ghost/move_to_turf(atom/movable/am, old_loc, new_loc)
 	var/turf/T = get_turf(new_loc)
 	if(check_is_holy_turf(T))
 		to_chat(src, "<span class='warning'>You cannot follow something standing on holy grounds!</span>")
@@ -503,7 +503,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		client.images |= ghost_sightless_images
 	client.images -= ghost_image //remove ourself
 
-/mob/observer/ghost/MayRespawn(var/feedback = 0, respawn_time = 0)
+/mob/observer/ghost/MayRespawn(feedback = 0, respawn_time = 0)
 	if(!client)
 		return 0
 	if(mind && mind.current && mind.current.stat != DEAD && can_reenter_corpse == CORPSE_CAN_REENTER && !check_rights(R_ADMIN|R_DEBUG))
@@ -529,7 +529,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/proc/check_is_holy_turf(turf/T)
 	return 0
 
-/mob/observer/ghost/check_is_holy_turf(var/turf/T)
+/mob/observer/ghost/check_is_holy_turf(turf/T)
 	if(shall_check_if_holy() && is_holy_turf(T))
 		return TRUE
 

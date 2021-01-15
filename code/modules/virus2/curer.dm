@@ -9,7 +9,7 @@
 
 	var/obj/item/weapon/reagent_containers/container = null
 
-/obj/machinery/computer/curer/attackby(var/obj/I as obj, mob/user as mob)
+/obj/machinery/computer/curer/attackby(obj/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/weapon/reagent_containers))
 		if(!container)
 			if(!user.unEquip(I, src))
@@ -34,10 +34,10 @@
 	..()
 	return
 
-/obj/machinery/computer/curer/attack_ai(var/mob/user as mob)
+/obj/machinery/computer/curer/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/curer/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/curer/attack_hand(mob/user as mob)
 	if(..())
 		return
 	user.machine = src

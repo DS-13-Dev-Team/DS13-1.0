@@ -110,7 +110,7 @@
 	base_parry_chance = 50
 	var/blade_color
 
-/obj/item/weapon/melee/energy/sword/dropped(var/mob/user)
+/obj/item/weapon/melee/energy/sword/dropped(mob/user)
 	..()
 	if(!istype(loc,/mob))
 		deactivate(user)

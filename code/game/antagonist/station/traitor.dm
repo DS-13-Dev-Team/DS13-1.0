@@ -71,7 +71,7 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 					traitor.objectives += hijack_objective
 	return
 
-/datum/antagonist/traitor/equip(var/mob/living/carbon/human/traitor_mob)
+/datum/antagonist/traitor/equip(mob/living/carbon/human/traitor_mob)
 	if(istype(traitor_mob, /mob/living/silicon)) // this needs to be here because ..() returns false if the mob isn't human
 		add_law_zero(traitor_mob)
 		give_intel(traitor_mob)

@@ -27,7 +27,7 @@ var/const/VENDING_WIRE_IDSCAN = 8
 	. += "The green light is [(V.categories & CAT_HIDDEN) ? "on" : "off"].<BR>"
 	. += "The [V.scan_id ? "purple" : "yellow"] light is on.<BR>"
 
-/datum/wires/vending/UpdatePulsed(var/index)
+/datum/wires/vending/UpdatePulsed(index)
 	var/obj/machinery/vending/V = holder
 	switch(index)
 		if(VENDING_WIRE_THROW)
@@ -39,7 +39,7 @@ var/const/VENDING_WIRE_IDSCAN = 8
 		if(VENDING_WIRE_IDSCAN)
 			V.scan_id = !V.scan_id
 
-/datum/wires/vending/UpdateCut(var/index, mended)
+/datum/wires/vending/UpdateCut(index, mended)
 	var/obj/machinery/vending/V = holder
 	switch(index)
 		if(VENDING_WIRE_THROW)

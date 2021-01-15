@@ -14,7 +14,7 @@
 	var/foodsupply = 0
 	var/toxins = 0
 
-/obj/machinery/disease2/incubator/attackby(var/obj/O as obj, mob/user as mob)
+/obj/machinery/disease2/incubator/attackby(obj/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/weapon/reagent_containers/glass) || istype(O,/obj/item/weapon/reagent_containers/syringe))
 
 		if(beaker)

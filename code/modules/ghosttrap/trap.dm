@@ -135,7 +135,7 @@ var/list/ghost_traps
 	ghost_trap_message = "They are occupying a living plant now."
 	ghost_trap_role = "Plant"
 
-/datum/ghosttrap/plant/welcome_candidate(var/mob/target)
+/datum/ghosttrap/plant/welcome_candidate(mob/target)
 	to_chat(target, "<span class='alium'><B>You awaken slowly, stirring into sluggish motion as the air caresses you.</B></span>")
 	// This is a hack, replace with some kind of species blurb proc.
 	if(istype(target,/mob/living/carbon/alien/diona))
@@ -153,7 +153,7 @@ var/list/ghost_traps
 	can_set_own_name = FALSE
 	list_as_special_role = FALSE
 
-/datum/ghosttrap/borer/welcome_candidate(var/mob/target)
+/datum/ghosttrap/borer/welcome_candidate(mob/target)
 	to_chat(target, "<span class='notice'>You are a cortical borer!</span> You are a brain slug that worms its way \
 	into the head of its victim. Use stealth, persuasion and your powers of mind control to keep you, \
 	your host and your eventual spawn safe and warm.")
@@ -173,12 +173,12 @@ var/list/ghost_traps
 	minutes_since_death = DRONE_SPAWN_DELAY
 	..()
 
-datum/ghosttrap/drone/assess_candidate(var/mob/observer/ghost/candidate, mob/target)
+datum/ghosttrap/drone/assess_candidate(mob/observer/ghost/candidate, mob/target)
 	. = ..()
 	if(. && !target.can_be_possessed_by(candidate))
 		return 0
 
-datum/ghosttrap/drone/transfer_personality(var/mob/candidate, mob/living/silicon/robot/drone/drone)
+datum/ghosttrap/drone/transfer_personality(mob/candidate, mob/living/silicon/robot/drone/drone)
 	if(!assess_candidate(candidate))
 		return 0
 	drone.transfer_personality(candidate.client)
@@ -192,10 +192,10 @@ datum/ghosttrap/drone/transfer_personality(var/mob/candidate, mob/living/silicon
 	ghost_trap_message = "They are occupying a pAI now."
 	ghost_trap_role = "pAI"
 
-datum/ghosttrap/pai/assess_candidate(var/mob/observer/ghost/candidate, mob/target)
+datum/ghosttrap/pai/assess_candidate(mob/observer/ghost/candidate, mob/target)
 	return 0
 
-datum/ghosttrap/pai/transfer_personality(var/mob/candidate, mob/living/silicon/robot/drone/drone)
+datum/ghosttrap/pai/transfer_personality(mob/candidate, mob/living/silicon/robot/drone/drone)
 	return 0
 
 /******************
@@ -208,7 +208,7 @@ datum/ghosttrap/pai/transfer_personality(var/mob/candidate, mob/living/silicon/r
 	ghost_trap_role = "Wizard Familiar"
 	ban_checks = list(MODE_WIZARD)
 
-/datum/ghosttrap/familiar/welcome_candidate(var/mob/target)
+/datum/ghosttrap/familiar/welcome_candidate(mob/target)
 	return 0
 
 /datum/ghosttrap/cult
@@ -219,7 +219,7 @@ datum/ghosttrap/pai/transfer_personality(var/mob/candidate, mob/living/silicon/r
 	ghost_trap_message = "They are occupying a cultist's body now."
 	ghost_trap_role = "Cultist"
 
-/datum/ghosttrap/cult/welcome_candidate(var/mob/target)
+/datum/ghosttrap/cult/welcome_candidate(mob/target)
 	var/obj/item/device/soulstone/S = target.loc
 	if(istype(S))
 		if(S.is_evil)

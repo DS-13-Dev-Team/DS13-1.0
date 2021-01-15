@@ -275,7 +275,7 @@
 /decl/hierarchy/outfit/death_command
 	name = "Spec Ops - Death commando"
 
-/decl/hierarchy/outfit/death_command/equip(var/mob/living/carbon/human/H)
+/decl/hierarchy/outfit/death_command/equip(mob/living/carbon/human/H)
 	GLOB.deathsquad.equip(H)
 	return 1
 */

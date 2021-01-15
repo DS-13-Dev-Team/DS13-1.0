@@ -246,7 +246,7 @@
 	else
 		to_chat(src, "<span class='notice'>You need to disable a module first!</span>")
 
-/mob/living/silicon/robot/put_in_hands(var/obj/item/W) // No hands.
+/mob/living/silicon/robot/put_in_hands(obj/item/W) // No hands.
 	W.forceMove(get_turf(src))
 	return 1
 

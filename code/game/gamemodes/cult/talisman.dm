@@ -3,21 +3,21 @@
 	var/imbue = null
 	info = "<center><img src='talisman.png'></center><br/><br/>"
 
-/obj/item/weapon/paper/talisman/attack_self(var/mob/living/user)
+/obj/item/weapon/paper/talisman/attack_self(mob/living/user)
 	if(iscultist(user))
 		to_chat(user, "Attack your target to use this talisman.")
 	else
 		to_chat(user, "You see strange symbols on the paper. Are they supposed to mean something?")
 
-/obj/item/weapon/paper/talisman/attack(var/mob/living/M, mob/living/user)
+/obj/item/weapon/paper/talisman/attack(mob/living/M, mob/living/user)
 	return
 
-/obj/item/weapon/paper/talisman/emp/attack_self(var/mob/living/user)
+/obj/item/weapon/paper/talisman/emp/attack_self(mob/living/user)
 	if(iscultist(user))
 		to_chat(user, "This is an emp talisman.")
 	..()
 
-/obj/item/weapon/paper/talisman/emp/afterattack(var/atom/target, mob/user, proximity)
+/obj/item/weapon/paper/talisman/emp/afterattack(atom/target, mob/user, proximity)
 	if(!iscultist(user))
 		return
 	if(!proximity)

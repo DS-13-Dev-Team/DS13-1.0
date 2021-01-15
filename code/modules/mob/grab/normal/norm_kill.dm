@@ -21,7 +21,7 @@
 
 	break_chance_table = list(5, 20, 40, 80, 100)
 
-/datum/grab/normal/kill/process_effect(var/obj/item/grab/G)
+/datum/grab/normal/kill/process_effect(obj/item/grab/G)
 	if (ishuman(G.affecting))
 		var/mob/living/carbon/human/affecting = G.affecting
 

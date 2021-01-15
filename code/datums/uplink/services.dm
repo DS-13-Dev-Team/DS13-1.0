@@ -68,7 +68,7 @@
 		deactivate()
 	. = ..()
 
-/obj/item/device/uplink_service/examine(var/user)
+/obj/item/device/uplink_service/examine(user)
 	. = ..(user, 1)
 	if(.)
 		switch(state)

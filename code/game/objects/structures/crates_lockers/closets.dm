@@ -230,7 +230,7 @@
 
 
 
-/obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/bullet_act(obj/item/projectile/Proj)
 	..()
 	if(Proj.penetrating)
 		var/distance = get_dist(Proj.starting, get_turf(loc))
@@ -379,7 +379,7 @@
 	else
 		icon_state = icon_opened
 
-/obj/structure/closet/attack_generic(var/mob/user, damage, attack_message = "destroys", wallbreaker)
+/obj/structure/closet/attack_generic(mob/user, damage, attack_message = "destroys", wallbreaker)
 	if(!damage || !wallbreaker)
 		return
 	attack_animation(user)
@@ -452,7 +452,7 @@
 		BD.unwrap()
 	open()
 
-/obj/structure/closet/onDropInto(var/atom/movable/AM)
+/obj/structure/closet/onDropInto(atom/movable/AM)
 	return
 
 // If we use the /obj/structure/closet/proc/togglelock variant BYOND asks the user to select an input for id_card, which is then mostly irrelevant.
@@ -503,13 +503,13 @@
 /obj/structure/closet/proc/CanToggleLock(mob/user, obj/item/weapon/card/id/id_card)
 	return allowed(user) || (istype(id_card) && check_access_list(id_card.GetAccess()))
 
-/obj/structure/closet/AltClick(var/mob/user)
+/obj/structure/closet/AltClick(mob/user)
 	if(!src.opened)
 		togglelock(user)
 	else
 		return ..()
 
-/obj/structure/closet/CtrlAltClick(var/mob/user)
+/obj/structure/closet/CtrlAltClick(mob/user)
 	verb_toggleopen()
 
 /obj/structure/closet/emp_act(severity)
@@ -527,7 +527,7 @@
 				src.req_access += pick(get_all_station_access())
 	..()
 
-/obj/structure/closet/emag_act(var/remaining_charges, mob/user, emag_source, visual_feedback = "", audible_feedback = "")
+/obj/structure/closet/emag_act(remaining_charges, mob/user, emag_source, visual_feedback = "", audible_feedback = "")
 	if(make_broken())
 		update_icon()
 		if(visual_feedback)

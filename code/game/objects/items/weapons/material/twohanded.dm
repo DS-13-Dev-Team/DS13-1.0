@@ -119,7 +119,7 @@
 	attack_noun = list("attack", "poke", "jab", "tear", "gore")
 	default_material = MATERIAL_GLASS
 
-/obj/item/weapon/material/twohanded/spear/shatter(var/consumed)
+/obj/item/weapon/material/twohanded/spear/shatter(consumed)
 	if(!consumed)
 		new /obj/item/weapon/material/wirerod(get_turf(src)) //give back the wired rod
 	..()

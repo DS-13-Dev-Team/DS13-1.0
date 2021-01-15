@@ -221,7 +221,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 /*--------------------------------
 	Cadence
 --------------------------------*/
-/datum/species/necromorph/tripod/setup_movement(var/mob/living/carbon/human/H)
+/datum/species/necromorph/tripod/setup_movement(mob/living/carbon/human/H)
 	.=..()
 	set_extension(H, /datum/extension/cadence/tripod)
 
@@ -235,7 +235,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 /*--------------------------------
 	Evasion
 --------------------------------*/
-/datum/species/necromorph/tripod/setup_defense(var/mob/living/carbon/human/H)
+/datum/species/necromorph/tripod/setup_defense(mob/living/carbon/human/H)
 	.=..()
 	set_extension(H, /datum/extension/tripod_evasion)
 
@@ -266,7 +266,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	if(.)
 		play_species_audio(src, SOUND_SHOUT, VOLUME_MID, 1, 2)
 
-/datum/species/necromorph/tripod/high_leap_impact(var/mob/living/user, atom/target, distance, start_location)
+/datum/species/necromorph/tripod/high_leap_impact(mob/living/user, atom/target, distance, start_location)
 
 	//We play a sound!
 	var/sound_file = pick(list('sound/effects/impacts/hard_impact_1.ogg',
@@ -397,7 +397,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 
 //The arm swing may be terminated early by obstacles
-/datum/extension/swing/arm/tripod/hit_turf(var/turf/T)
+/datum/extension/swing/arm/tripod/hit_turf(turf/T)
 	var/timepercent = current_stage / stages
 	var/range = get_dist(user, T)
 
@@ -423,7 +423,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	.=..()
 
 
-/datum/extension/swing/arm/tripod/hit_mob(var/mob/living/L)
+/datum/extension/swing/arm/tripod/hit_mob(mob/living/L)
 	//We harmlessly swooce over lying targets
 	if (L.lying)
 		return FALSE

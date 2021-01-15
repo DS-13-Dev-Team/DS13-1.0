@@ -19,7 +19,7 @@
 /atom/proc/apply_impulse(direction, strength)
 	//Non movable atoms cant be moved, but this is defined here for use on mining turfs later
 
-/atom/movable/apply_impulse(var/direction, strength)
+/atom/movable/apply_impulse(direction, strength)
 	if (anchored || QDELETED(src))
 		return	//Anchored things never move
 
@@ -51,7 +51,7 @@
 /mob/living/var/knockdown_threshold_factor = 1.5	//Requires a force at least this * mass to knock down this mob
 /mob/living/var/stagger_threshold_factor = 0.1	//
 
-/mob/living/apply_impulse(var/direction, strength)
+/mob/living/apply_impulse(direction, strength)
 	//First of all since living creatures are unpredictable, strength gets some random variance
 	strength *= rand_between(0.85, 1.15)
 

@@ -62,25 +62,25 @@
 /obj/machinery/atmospherics/proc/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node1 || target == node2)
 
-/obj/machinery/atmospherics/pipe/manifold/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/pipe/manifold/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
-obj/machinery/atmospherics/trinary/isConnectable(var/obj/machinery/atmospherics/target)
+obj/machinery/atmospherics/trinary/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
-/obj/machinery/atmospherics/pipe/manifold4w/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/pipe/manifold4w/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node3 || target == node4 || ..())
 
-/obj/machinery/atmospherics/tvalve/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/tvalve/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
-/obj/machinery/atmospherics/pipe/cap/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/pipe/cap/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node || ..())
 
-/obj/machinery/atmospherics/portables_connector/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/portables_connector/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node || ..())
 
-/obj/machinery/atmospherics/unary/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/unary/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node || ..())
 
 /obj/machinery/atmospherics/valve/isConnectable()

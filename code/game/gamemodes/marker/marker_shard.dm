@@ -149,7 +149,7 @@
 */
 
 //If you attempt to put a marker shard into a disposal, it hurts you and escapes your grasp!
-/obj/item/marker_shard/attempt_dispose(var/obj/machinery/disposal/D, mob/living/user)
+/obj/item/marker_shard/attempt_dispose(obj/machinery/disposal/D, mob/living/user)
 	if (istype(user))
 		to_chat(user, span("necromarker", "You are punished for your hubris!"))
 

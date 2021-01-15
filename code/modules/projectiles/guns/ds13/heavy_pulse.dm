@@ -146,7 +146,7 @@
 	gain_heat(heat_per_burst)
 
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/show_remaining_ammo(var/mob/living/user)
+/obj/item/weapon/gun/projectile/automatic/pulse_heavy/show_remaining_ammo(mob/living/user)
 	if (overheating)
 		to_chat(user, SPAN_DANGER("The heat meter reads [round(heat*100,1)]%"))
 		to_chat(user, SPAN_DANGER("It is overheating and will require several minutes to cool down."))
@@ -155,7 +155,7 @@
 		if(user.skill_check(SKILL_WEAPONS, SKILL_ADEPT))
 			to_chat(user, "It can fire approximately [get_remaining_ammo()] round\s.")
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/load_ammo(var/obj/item/A, mob/user)
+/obj/item/weapon/gun/projectile/automatic/pulse_heavy/load_ammo(obj/item/A, mob/user)
 	return
 
 /obj/item/weapon/gun/projectile/automatic/pulse_heavy/unload_ammo(mob/user, allow_dump=1)

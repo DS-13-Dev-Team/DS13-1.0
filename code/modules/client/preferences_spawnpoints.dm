@@ -102,7 +102,7 @@ GLOBAL_VAR(spawntypes)
 	msg = "has completed cryogenic revival"
 	disallow_job = list("Robot")
 
-/datum/spawnpoint/cryo/turf_is_safe(var/mob/living/spawner, turf/spawn_turf)
+/datum/spawnpoint/cryo/turf_is_safe(mob/living/spawner, turf/spawn_turf)
 	var/obj/machinery/cryopod/C = locate(/obj/machinery/cryopod) in spawn_turf
 	if (!C || C.occupant)
 		return FALSE
@@ -113,7 +113,7 @@ GLOBAL_VAR(spawntypes)
 	turfs = GLOB.latejoin_cryo
 
 
-/datum/spawnpoint/cryo/post_spawn(var/mob/living/spawner, turf/location)
+/datum/spawnpoint/cryo/post_spawn(mob/living/spawner, turf/location)
 	var/obj/machinery/cryopod/C = locate(/obj/machinery/cryopod) in location
 	if (istype(C))
 		C.set_occupant(spawner, FALSE)
@@ -139,13 +139,13 @@ GLOBAL_VAR(spawntypes)
 	turfs = GLOB.latejoin_dorm
 
 
-/datum/spawnpoint/dorm/turf_is_safe(var/mob/living/spawner, turf/spawn_turf)
+/datum/spawnpoint/dorm/turf_is_safe(mob/living/spawner, turf/spawn_turf)
 	var/obj/structure/bed/C = locate(/obj/structure/bed) in spawn_turf
 	if (!C || C.buckled_mob)
 		return FALSE
 	.=..()
 
-/datum/spawnpoint/dorm/post_spawn(var/mob/living/spawner, turf/location)
+/datum/spawnpoint/dorm/post_spawn(mob/living/spawner, turf/location)
 	var/obj/structure/bed/C = locate(/obj/structure/bed) in location
 	if (istype(C))
 		C.buckle_mob(spawner)
@@ -189,7 +189,7 @@ GLOBAL_VAR(spawntypes)
 	turfs = GLOB.maintenance_turfs
 
 //Custom safety checks, more localised
-/datum/spawnpoint/maint/turf_is_safe(var/mob/living/spawner, turf/spawn_turf)
+/datum/spawnpoint/maint/turf_is_safe(mob/living/spawner, turf/spawn_turf)
 	var/radlevel = SSradiation.get_rads_at_turf(spawn_turf)
 	var/airstatus = IsTurfAtmosUnsafe(spawn_turf)
 	if(airstatus || radlevel > 0)
@@ -206,7 +206,7 @@ GLOBAL_VAR(spawntypes)
 	return TRUE
 
 
-/datum/spawnpoint/maint/post_spawn(var/mob/living/spawner, turf/location)
+/datum/spawnpoint/maint/post_spawn(mob/living/spawner, turf/location)
 	.=..()
 	new /obj/item/device/flashlight/flare/active(location)
 	spawner.Paralyse(2)

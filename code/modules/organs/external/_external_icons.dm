@@ -45,7 +45,7 @@ var/list/limb_icon_cache = list()
 	if(species.appearance_flags & HAS_SKIN_COLOR)
 		s_col = list(dna.GetUIValue(DNA_UI_SKIN_R), dna.GetUIValue(DNA_UI_SKIN_G), dna.GetUIValue(DNA_UI_SKIN_B))
 
-/obj/item/organ/external/head/sync_colour_to_human(var/mob/living/carbon/human/human)
+/obj/item/organ/external/head/sync_colour_to_human(mob/living/carbon/human/human)
 	..()
 	var/obj/item/organ/internal/eyes/eyes = owner.internal_organs_by_name[BP_EYES]
 	if(eyes) eyes.update_colour()
@@ -66,7 +66,7 @@ var/list/limb_icon_cache = list()
 		icon_cache_key += "[M][markings[M]["color"]]"
 
 /obj/item/organ/external/var/icon_cache_key
-/obj/item/organ/external/update_icon(var/regenerate = 0)
+/obj/item/organ/external/update_icon(regenerate = 0)
 	var/gender = "_m"
 	if(!(limb_flags & ORGAN_FLAG_GENDERED_ICON))
 		gender = null

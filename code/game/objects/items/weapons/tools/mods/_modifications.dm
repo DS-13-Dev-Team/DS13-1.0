@@ -43,7 +43,7 @@
 	var/removeable = TRUE //Can this mod be uninstalled when removed. Set false to make it permanant
 	var/recoverable = TRUE //If removed, do you get this mod back? Set false to make it delete when removed
 
-/obj/item/weapon/tool_modification/examine(var/mob/user)
+/obj/item/weapon/tool_modification/examine(mob/user)
 	.=..()
 	if (precision > 0)
 		user << SPAN_NOTICE("Enhances precision by [precision]")

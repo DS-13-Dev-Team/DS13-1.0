@@ -63,7 +63,7 @@
 		return 0
 	return ..()
 
-/obj/item/weapon/gun/projectile/heavysniper/load_ammo(var/obj/item/A, mob/user)
+/obj/item/weapon/gun/projectile/heavysniper/load_ammo(obj/item/A, mob/user)
 	if(!bolt_open)
 		return
 	..()

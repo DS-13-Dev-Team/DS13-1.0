@@ -238,7 +238,7 @@
 
 /*
 	Override these procs to set how the grab state will work. Some of them are best
-	overriden in the parent of the grab set (for example, the behaviour for on_hit_intent(var/obj/item/grab/G)
+	overriden in the parent of the grab set (for example, the behaviour for on_hit_intent(obj/item/grab/G)
 	procs is determined in /datum/grab/normal and then inherited by each intent).
 */
 

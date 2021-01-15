@@ -9,7 +9,7 @@
 /decl/backpack_outfit/nothing
 	name = "Nothing"
 
-/decl/backpack_outfit/nothing/spawn_backpack(var/location, metadata, desired_type)
+/decl/backpack_outfit/nothing/spawn_backpack(location, metadata, desired_type)
 	return
 
 /decl/backpack_outfit/backpack
@@ -125,19 +125,19 @@
 	selections += RETURN_GIVEN_BACKPACK
 	selections += RETURN_RANDOM_BACKPACK
 
-/datum/backpack_tweak/selection/get_ui_content(var/metadata)
+/datum/backpack_tweak/selection/get_ui_content(metadata)
 	return "Type: [metadata]"
 
 /datum/backpack_tweak/selection/get_default_metadata()
 	return RETURN_GIVEN_BACKPACK
 
-/datum/backpack_tweak/selection/validate_metadata(var/metadata)
+/datum/backpack_tweak/selection/validate_metadata(metadata)
 	return (metadata in selections) ? metadata : ..()
 
-/datum/backpack_tweak/selection/get_metadata(var/user, metadata, title = CHARACTER_PREFERENCE_INPUT_TITLE)
+/datum/backpack_tweak/selection/get_metadata(user, metadata, title = CHARACTER_PREFERENCE_INPUT_TITLE)
 	return input(user, "Choose a type.", title, metadata) as null|anything in selections
 
-/datum/backpack_tweak/selection/get_backpack_type(var/given_backpack_type, metadata)
+/datum/backpack_tweak/selection/get_backpack_type(given_backpack_type, metadata)
 	switch(metadata)
 		if(RETURN_GIVEN_BACKPACK)
 			return given_backpack_type

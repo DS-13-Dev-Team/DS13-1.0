@@ -682,7 +682,7 @@
 
 	return
 
-/obj/item/weapon/tool/consume_resources(var/timespent, user)
+/obj/item/weapon/tool/consume_resources(timespent, user)
 	last_resource_consumption = world.time
 
 	if(use_power_cost)
@@ -1036,7 +1036,7 @@
 	unreliability += rand_between(0, degradation*acid_damage)
 
 //1 point of repair fixes one second worth of degradation
-obj/item/weapon/tool/repair(var/repair_power, datum/repair_source, mob/user)
+obj/item/weapon/tool/repair(repair_power, datum/repair_source, mob/user)
 	unreliability = clamp(unreliability - degradation*repair_power, 0, 100)
 	updatehealth()
 	update_icon()

@@ -216,5 +216,5 @@
 	// Normal power usage.
 	return 2
 
-/obj/machinery/ai_powersupply/powered(var/chan = -1)
+/obj/machinery/ai_powersupply/powered(chan = -1)
 	return ..(chan, get_area(powered_ai))

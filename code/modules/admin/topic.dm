@@ -2062,18 +2062,18 @@ mob/living/silicon/ai/can_centcom_reply()
 /datum/proc/extra_admin_link(prefix, sufix, short_links)
 	return list()
 
-/atom/movable/extra_admin_link(var/source, prefix, sufix, short_links)
+/atom/movable/extra_admin_link(source, prefix, sufix, short_links)
 	return list("<A HREF='?[source];adminplayerobservefollow=\ref[src]'>[prefix][short_links ? "J" : "JMP"][sufix]</A>")
 
 /client/extra_admin_link(source, prefix, sufix, short_links)
 	return mob ? mob.extra_admin_link(source, prefix, sufix, short_links) : list()
 
-/mob/extra_admin_link(var/source, prefix, sufix, short_links)
+/mob/extra_admin_link(source, prefix, sufix, short_links)
 	. = ..()
 	if(client && eyeobj)
 		. += "<A HREF='?[source];adminplayerobservefollow=\ref[eyeobj]'>[prefix][short_links ? "E" : "EYE"][sufix]</A>"
 
-/mob/observer/ghost/extra_admin_link(var/source, prefix, sufix, short_links)
+/mob/observer/ghost/extra_admin_link(source, prefix, sufix, short_links)
 	. = ..()
 	if(mind && (mind.current && !isghost(mind.current)))
 		. += "<A HREF='?[source];adminplayerobservefollow=\ref[mind.current]'>[prefix][short_links ? "B" : "BDY"][sufix]</A>"
@@ -2091,10 +2091,10 @@ mob/living/silicon/ai/can_centcom_reply()
 /datum/proc/get_admin_jump_link(atom/target)
 	return
 
-/mob/get_admin_jump_link(var/atom/target, delimiter, prefix, sufix)
+/mob/get_admin_jump_link(atom/target, delimiter, prefix, sufix)
 	return client && client.get_admin_jump_link(target, delimiter, prefix, sufix)
 
-/client/get_admin_jump_link(var/atom/target, delimiter, prefix, sufix)
+/client/get_admin_jump_link(atom/target, delimiter, prefix, sufix)
 	if(holder)
 		var/short_links = get_preference_value(/datum/client_preference/ghost_follow_link_length) == GLOB.PREF_SHORT
 		return admin_jump_link(target, src, delimiter, prefix, sufix, short_links)

@@ -1,7 +1,7 @@
 /datum/deity_item/boon
 	var/boon_path
 
-/datum/deity_item/boon/buy(var/mob/living/deity/D)
+/datum/deity_item/boon/buy(mob/living/deity/D)
 	..()
 	if(boon_path)
 		. = new boon_path()
@@ -11,7 +11,7 @@
 	var/phenomena_path
 	max_level = 1
 
-/datum/deity_item/phenomena/buy(var/mob/living/deity/D)
+/datum/deity_item/phenomena/buy(mob/living/deity/D)
 	..()
 	if(level == 1 && phenomena_path)
 		D.add_phenomena(phenomena_path)

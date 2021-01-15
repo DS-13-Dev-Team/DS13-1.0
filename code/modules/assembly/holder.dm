@@ -32,7 +32,7 @@
 		return 1
 
 
-	attach(var/obj/item/device/assembly/D, obj/item/device/assembly/D2, mob/user)
+	attach(obj/item/device/assembly/D, obj/item/device/assembly/D2, mob/user)
 		if((!D)||(!D2))
 			return 0
 		if((!istype(D))||(!istype(D2)))
@@ -55,7 +55,7 @@
 		return 1
 
 
-	attach_special(var/obj/O, mob/user)
+	attach_special(obj/O, mob/user)
 		if(!O)	return
 		if(!O.IsSpecialAssembly())	return 0
 
@@ -198,7 +198,7 @@
 		return
 
 
-	process_activation(var/obj/D, normal = 1, special = 1)
+	process_activation(obj/D, normal = 1, special = 1)
 		if(!D)	return 0
 		if(!secured)
 			visible_message("\icon[src] *beep* *beep*", "*beep* *beep*")

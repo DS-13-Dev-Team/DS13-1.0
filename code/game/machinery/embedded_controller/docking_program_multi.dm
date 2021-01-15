@@ -207,7 +207,7 @@
 	toggleDoor(memory["interior_status"], tag_interior_door, memory["secure"], "open")
 	toggleDoor(memory["exterior_status"], tag_exterior_door, memory["secure"], "open")
 
-/datum/computer/file/embedded_program/airlock/multi_docking/cycleDoors(var/target)
+/datum/computer/file/embedded_program/airlock/multi_docking/cycleDoors(target)
 	if (!docking_enabled|| override_enabled)	//only allow the port to be used as an airlock if nothing is docked here or the override is enabled
 		..(target)
 

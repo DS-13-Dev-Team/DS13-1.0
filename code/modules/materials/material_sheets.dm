@@ -54,7 +54,7 @@
 		desc = "A [material.sheet_singular_name] of [material.use_name]."
 		gender = NEUTER
 
-/obj/item/stack/material/use(var/used)
+/obj/item/stack/material/use(used)
 	. = ..()
 	update_strings()
 	return
@@ -68,11 +68,11 @@
 	if(M) M.update_strings()
 	return transfer
 
-/obj/item/stack/material/attack_self(var/mob/user)
+/obj/item/stack/material/attack_self(mob/user)
 	if(!material.build_windows(user, src))
 		..()
 
-/obj/item/stack/material/attackby(var/obj/item/W, mob/user)
+/obj/item/stack/material/attackby(obj/item/W, mob/user)
 	if(isCoil(W))
 		material.build_wired_product(user, W, src)
 		return

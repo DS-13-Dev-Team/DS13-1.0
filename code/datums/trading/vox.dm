@@ -82,10 +82,10 @@
 		return ..()
 	return 0
 
-/datum/trader/ship/vox/get_response(var/text, generic)
+/datum/trader/ship/vox/get_response(text, generic)
 	return ..("[text][hailed_vox]", generic)
 
-/datum/trader/ship/vox/get_item_value(var/trading_num)
+/datum/trader/ship/vox/get_item_value(trading_num)
 	. = ..()
 	if(!hailed_vox)
 		. *= 2

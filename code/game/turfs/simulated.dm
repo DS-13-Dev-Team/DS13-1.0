@@ -167,7 +167,7 @@
 /turf/simulated/proc/can_build_cable(mob/user)
 	return 0
 
-/turf/simulated/attackby(var/obj/item/thing, mob/user)
+/turf/simulated/attackby(obj/item/thing, mob/user)
 	if(isCoil(thing) && can_build_cable(user))
 		var/obj/item/stack/cable_coil/coil = thing
 		coil.turf_place(src, user)

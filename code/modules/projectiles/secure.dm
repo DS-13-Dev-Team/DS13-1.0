@@ -18,7 +18,7 @@
 	GLOB.registered_weapons -= src
 	. = ..()
 
-/obj/item/weapon/gun/examine(var/mob/user)
+/obj/item/weapon/gun/examine(mob/user)
 	..()
 	if(registered_owner)
 		to_chat(user, "A small screen on the side of the weapon indicates that it is registered to [registered_owner].")
@@ -36,7 +36,7 @@
 	else
 		..()
 
-/obj/item/weapon/gun/emag_act(var/charges, mob/user)
+/obj/item/weapon/gun/emag_act(charges, mob/user)
 	if(!charges)
 		return NO_EMAG_ACT
 	else if (is_secure_gun())

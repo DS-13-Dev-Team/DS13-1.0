@@ -36,7 +36,7 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/anodevice/attackby(var/obj/I as obj, mob/user as mob)
+/obj/item/weapon/anodevice/attackby(obj/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/weapon/anobattery))
 		if(!inserted_battery)
 			if(!user.unEquip(I, src))
@@ -47,10 +47,10 @@
 	else
 		return ..()
 
-/obj/item/weapon/anodevice/attack_self(var/mob/user as mob)
+/obj/item/weapon/anodevice/attack_self(mob/user as mob)
 	return src.interact(user)
 
-/obj/item/weapon/anodevice/interact(var/mob/user)
+/obj/item/weapon/anodevice/interact(mob/user)
 	var/dat = "<b>Anomalous Materials Energy Utiliser</b><br>"
 	if(inserted_battery)
 		if(activated)

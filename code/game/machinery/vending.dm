@@ -148,7 +148,7 @@
 		else
 	return
 
-/obj/machinery/vending/emag_act(var/remaining_charges, mob/user)
+/obj/machinery/vending/emag_act(remaining_charges, mob/user)
 	if (!emagged)
 		src.emagged = 1
 		to_chat(user, "You short out the product lock on \the [src]")
@@ -214,7 +214,7 @@
 	..()
 	return
 
-/obj/machinery/vending/MouseDrop_T(var/obj/item/I as obj, mob/user as mob)
+/obj/machinery/vending/MouseDrop_T(obj/item/I as obj, mob/user as mob)
 	if (I == user)
 		return ..()
 	if(!CanMouseDrop(I, user) || (I.loc != user))
@@ -1320,7 +1320,7 @@
 	else
 		return MASS_FAIL
 
-/obj/machinery/vending/harvest_biomass(var/ticks)
+/obj/machinery/vending/harvest_biomass(ticks)
 	var/target_biomass = ticks * BIOMASS_HARVEST_SMALL
 	while (product_records.len && target_biomass > biomass_cache)
 		//We don't have enough, lets pick something to spawn

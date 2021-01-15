@@ -86,7 +86,7 @@
 			src.close(M)
 	return 1
 
-/obj/item/weapon/storage/internal/Adjacent(var/atom/neighbor)
+/obj/item/weapon/storage/internal/Adjacent(atom/neighbor)
 	return master_item.Adjacent(neighbor)
 
 // Used by webbings, coat pockets, etc

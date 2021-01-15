@@ -125,7 +125,7 @@
 			if (UpdateNeighbors)
 				R.update_icon(0)
 
-/obj/structure/railing/update_icon(var/update_neighbors = TRUE)
+/obj/structure/railing/update_icon(update_neighbors = TRUE)
 	NeighborsCheck(update_neighbors)
 	overlays.Cut()
 	if (!neighbor_status || !anchored)
@@ -202,14 +202,14 @@
 	set_dir(turn(dir, 180))
 	update_icon()
 
-/obj/structure/railing/CheckExit(var/atom/movable/O, turf/target)
+/obj/structure/railing/CheckExit(atom/movable/O, turf/target)
 	if(istype(O) && O.checkpass(PASS_FLAG_TABLE))
 		return 1
 	if(get_dir(O.loc, target) == dir)
 		return 0
 	return 1
 
-/obj/structure/railing/attackby(var/obj/item/W, mob/user)
+/obj/structure/railing/attackby(obj/item/W, mob/user)
 	// Handle harm intent grabbing/tabling.
 	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W
@@ -271,7 +271,7 @@
 	. = ..()
 
 
-/obj/structure/railing/do_climb(var/mob/living/user)
+/obj/structure/railing/do_climb(mob/living/user)
 	if(!can_climb(user))
 		return
 

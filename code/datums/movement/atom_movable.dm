@@ -32,6 +32,6 @@
 	return world.time >= next_move ? MOVEMENT_PROCEED : MOVEMENT_STOP
 
 // Relay self
-/datum/movement_handler/move_relay_self/DoMove(var/direction, mover)
+/datum/movement_handler/move_relay_self/DoMove(direction, mover)
 	host.relaymove(mover, direction)
 	return MOVEMENT_HANDLED

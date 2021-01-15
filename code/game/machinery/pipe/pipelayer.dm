@@ -37,7 +37,7 @@
 	user.visible_message("<span class='notice'>[user] has [!on?"de":""]activated \the [src].</span>", "<span class='notice'>You [!on?"de":""]activate \the [src].</span>")
 	return
 
-/obj/machinery/pipelayer/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/machinery/pipelayer/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(isWrench(W))
 		P_type_t = input("Choose pipe type", "Pipe type") as null|anything in Pipes

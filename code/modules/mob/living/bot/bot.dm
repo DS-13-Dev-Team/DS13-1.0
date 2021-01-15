@@ -74,7 +74,7 @@
 /mob/living/bot/death()
 	explode()
 
-/mob/living/bot/attackby(var/obj/item/O, mob/user)
+/mob/living/bot/attackby(obj/item/O, mob/user)
 	if(O.GetIdCard())
 		if(access_scanner.allowed(user) && !open)
 			locked = !locked
@@ -106,10 +106,10 @@
 	else
 		..()
 
-/mob/living/bot/attack_ai(var/mob/user)
+/mob/living/bot/attack_ai(mob/user)
 	Interact(user)
 
-/mob/living/bot/attack_hand(var/mob/user)
+/mob/living/bot/attack_hand(mob/user)
 	if (user.is_advanced_tool_user() && user.a_intent != I_HURT)
 		return Interact(user)
 	else
@@ -142,7 +142,7 @@
 	popup.set_content(dat)
 	popup.open()
 
-/mob/living/bot/Topic(var/href, href_list)
+/mob/living/bot/Topic(href, href_list)
 	if(..())
 		return 1
 
@@ -188,14 +188,14 @@
 /mob/living/bot/proc/CanAccessMaintenance(mob/user)
 	return (open || issilicon(user))
 
-/mob/living/bot/say(var/message)
+/mob/living/bot/say(message)
 	var/verb = "beeps"
 
 	message = sanitize(message)
 
 	..(message, null, verb)
 
-/mob/living/bot/Bump(var/atom/A)
+/mob/living/bot/Bump(atom/A)
 	if(on && botcard && istype(A, /obj/machinery/door))
 		var/obj/machinery/door/D = A
 		if(!istype(D, /obj/machinery/door/firedoor) && !istype(D, /obj/machinery/door/blast) && D.check_access(botcard))
@@ -203,7 +203,7 @@
 	else
 		..()
 
-/mob/living/bot/emag_act(var/remaining_charges, mob/user)
+/mob/living/bot/emag_act(remaining_charges, mob/user)
 	return 0
 
 /mob/living/bot/proc/handleAI()

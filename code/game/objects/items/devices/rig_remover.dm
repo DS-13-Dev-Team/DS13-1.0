@@ -24,7 +24,7 @@
 	var/timeout_end
 
 
-/obj/item/device/rig_remover/afterattack(var/mob/living/carbon/human/target, mob/user, proximity)
+/obj/item/device/rig_remover/afterattack(mob/living/carbon/human/target, mob/user, proximity)
 	if (!is_valid_target(target,user, proximity))
 		return
 

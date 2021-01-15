@@ -1,7 +1,7 @@
 /decl/turf_selection/proc/get_turfs(atom/origin, range)
 	return list()
 
-/decl/turf_selection/line/get_turfs(var/atom/origin, range)
+/decl/turf_selection/line/get_turfs(atom/origin, range)
 	. = list()
 	var/center = get_turf(origin)
 	if(!center)
@@ -12,7 +12,7 @@
 			return
 		. += center
 
-/decl/turf_selection/square/get_turfs(var/atom/origin, range)
+/decl/turf_selection/square/get_turfs(atom/origin, range)
 	. = list()
 	var/center = get_turf(origin)
 	if(!center)
@@ -21,11 +21,11 @@
 		. += T
 
 
-/decl/turf_selection/view/get_turfs(var/atom/origin, range)
+/decl/turf_selection/view/get_turfs(atom/origin, range)
 	return origin.turfs_in_view(range)
 
 
-/decl/turf_selection/cone/get_turfs(var/atom/origin, range, angle = 90, vector2/direction = null)
+/decl/turf_selection/cone/get_turfs(atom/origin, range, angle = 90, vector2/direction = null)
 	var/dirmade = FALSE
 	if (!direction)
 		dirmade = TRUE
@@ -36,7 +36,7 @@
 
 
 //Solid line ensures it has no gaps in it
-/decl/turf_selection/solidline/get_turfs(var/atom/origin, range, target)
+/decl/turf_selection/solidline/get_turfs(atom/origin, range, target)
 	. = get_line_between(origin, target, FALSE, TRUE)
 	for( var/turf/T in .)
 		debug_mark_turf(T)

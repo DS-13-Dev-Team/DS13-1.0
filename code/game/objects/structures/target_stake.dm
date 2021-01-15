@@ -9,12 +9,12 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	var/obj/item/target/pinned_target
 
-/obj/structure/target_stake/attackby(var/obj/item/W, mob/user)
+/obj/structure/target_stake/attackby(obj/item/W, mob/user)
 	if (!pinned_target && istype(W, /obj/item/target) && user.unEquip(W, get_turf(src)))
 		to_chat(user, "<span class='notice'>You slide [W] into the stake.</span>")
 		set_target(W)
 
-/obj/structure/target_stake/attack_hand(var/mob/user)
+/obj/structure/target_stake/attack_hand(mob/user)
 	. = ..()
 	if (pinned_target && ishuman(user))
 		var/obj/item/target/T = pinned_target

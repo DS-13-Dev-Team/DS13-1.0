@@ -15,7 +15,7 @@
 	minimal_access = list()
 	outfit_type = null
 
-	equip(var/mob/living/carbon/human/H, alt_title, ask_questions = TRUE)
+	equip(mob/living/carbon/human/H, alt_title, ask_questions = TRUE)
 		. = ..()
 		if(!.)
 			return

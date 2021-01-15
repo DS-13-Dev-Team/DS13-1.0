@@ -91,7 +91,7 @@
 	return cost_multiplier
 
 //This routes to repair_tick. We consume the resources here to prevent a double consumption from the finishing
-/obj/item/weapon/tool/repairkit/work_in_progress(var/mob/user, atom/target, delta)
+/obj/item/weapon/tool/repairkit/work_in_progress(mob/user, atom/target, delta)
 	.=..()
 	var/timespent = repair_tick(user, target, delta)
 	if (timespent)

@@ -126,7 +126,7 @@
 //-------------------
 //When a non-necromorph steps into a maw, it bites them and starts chewing
 //Most of the below code is copied from beartraps
-/obj/structure/corruption_node/maw/Crossed(var/atom/movable/AM)
+/obj/structure/corruption_node/maw/Crossed(atom/movable/AM)
 	if((!AM.is_necromorph()) && isliving(AM) && !(AM.pass_flags & PASS_FLAG_FLYING))
 		var/mob/living/L = AM
 		L.visible_message(
@@ -151,13 +151,13 @@
 		return
 	.=..()
 
-/obj/structure/corruption_node/maw/attack_generic(var/mob/user, damage)
+/obj/structure/corruption_node/maw/attack_generic(mob/user, damage)
 	if (buckled_mob)
 		attempt_release(user)
 		return
 	.=..()
 
-/obj/structure/corruption_node/maw/attack_robot(var/mob/user)
+/obj/structure/corruption_node/maw/attack_robot(mob/user)
 	if (buckled_mob)
 		attempt_release(user)
 		return
@@ -176,7 +176,7 @@
 	GLOB.updatehealth_event.unregister(buckled_mob, src, /obj/structure/corruption_node/maw/proc/check_grip)
 
 //Attempting to resist out of a maw will not work, and you'll get nothing but pain for trying
-/obj/structure/corruption_node/maw/resist_buckle(var/mob/user)
+/obj/structure/corruption_node/maw/resist_buckle(mob/user)
 	if (user == buckled_mob && !user.stunned)
 		//We check stunned here, and a failure stuns the victim. This prevents someone from just spam-resisting and instantly killing themselves
 		if (user.client)

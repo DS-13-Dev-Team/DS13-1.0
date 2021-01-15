@@ -58,7 +58,7 @@
 		if(2)
 			. += "ERROROROROROR-----"
 
-/mob/living/bot/floorbot/ProcessCommand(var/mob/user, command, href_list)
+/mob/living/bot/floorbot/ProcessCommand(mob/user, command, href_list)
 	..()
 	if(CanAccessPanel(user))
 		switch(command)
@@ -75,7 +75,7 @@
 				if(emagged < 2)
 					emagged = !emagged
 
-/mob/living/bot/floorbot/emag_act(var/remaining_charges, mob/user)
+/mob/living/bot/floorbot/emag_act(remaining_charges, mob/user)
 	. = ..()
 	if(!emagged)
 		emagged = 1
@@ -108,7 +108,7 @@
 				target = S
 				return
 
-/mob/living/bot/floorbot/confirmTarget(var/atom/A) // The fact that we do some checks twice may seem confusing but remember that the bot's settings may be toggled while it's moving and we want them to stop in that case
+/mob/living/bot/floorbot/confirmTarget(atom/A) // The fact that we do some checks twice may seem confusing but remember that the bot's settings may be toggled while it's moving and we want them to stop in that case
 	anchored = FALSE
 	if(!..())
 		return 0
@@ -128,7 +128,7 @@
 		else
 			return (amount && (T.broken || T.burnt || (improvefloors && !T.flooring)))
 
-/mob/living/bot/floorbot/UnarmedAttack(var/atom/A, proximity)
+/mob/living/bot/floorbot/UnarmedAttack(atom/A, proximity)
 	if(!..())
 		return
 
@@ -249,7 +249,7 @@
 
 /* Assembly */
 
-/obj/item/weapon/storage/toolbox/attackby(var/obj/item/stack/tile/floor/T, mob/user as mob)
+/obj/item/weapon/storage/toolbox/attackby(obj/item/stack/tile/floor/T, mob/user as mob)
 	if(!istype(T, /obj/item/stack/tile/floor))
 		..()
 		return
@@ -281,7 +281,7 @@
 	var/boxtype = ""
 	var/created_name = "Floorbot"
 
-/obj/item/weapon/toolbox_tiles/attackby(var/obj/item/W, mob/user)
+/obj/item/weapon/toolbox_tiles/attackby(obj/item/W, mob/user)
 	..()
 	if(isprox(W))
 		qdel(W)
@@ -312,7 +312,7 @@
 	var/created_name = "Floorbot"
 	var/boxtype = ""
 
-/obj/item/weapon/toolbox_tiles_sensor/attackby(var/obj/item/W, mob/user as mob)
+/obj/item/weapon/toolbox_tiles_sensor/attackby(obj/item/W, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm))
 		qdel(W)

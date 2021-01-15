@@ -65,32 +65,32 @@
 	QDEL_NULL(closer)
 	. = ..()
 
-/datum/storage_ui/default/on_open(var/mob/user)
+/datum/storage_ui/default/on_open(mob/user)
 	if (user.s_active)
 		user.s_active.close(user)
 
-/datum/storage_ui/default/after_close(var/mob/user)
+/datum/storage_ui/default/after_close(mob/user)
 	user.s_active = null
 
-/datum/storage_ui/default/on_insertion(var/mob/user)
+/datum/storage_ui/default/on_insertion(mob/user)
 	if(user.s_active)
 		user.s_active.show_to(user)
 
-/datum/storage_ui/default/on_pre_remove(var/obj/item/W)
+/datum/storage_ui/default/on_pre_remove(obj/item/W)
 	for( var/mob/M in is_seeing)
 		if (M.client)
 			M.client.screen -= W
 
-/datum/storage_ui/default/on_post_remove(var/mob/user)
+/datum/storage_ui/default/on_post_remove(mob/user)
 	if(user.s_active)
 		user.s_active.show_to(user)
 
-/datum/storage_ui/default/on_hand_attack(var/mob/user)
+/datum/storage_ui/default/on_hand_attack(mob/user)
 	for( var/mob/M in is_seeing)
 		if (M.s_active == storage)
 			storage.close(M)
 
-/datum/storage_ui/default/show_to(var/mob/user)
+/datum/storage_ui/default/show_to(mob/user)
 	if(user.s_active != storage)
 		for( var/obj/item/I in storage)
 			if(I.on_found(user))
@@ -114,7 +114,7 @@
 	is_seeing |= user
 	user.s_active = storage
 
-/datum/storage_ui/default/hide_from(var/mob/user)
+/datum/storage_ui/default/hide_from(mob/user)
 	is_seeing -= user
 	if(!user.client)
 		return
@@ -239,7 +239,7 @@
 
 // Sets up numbered display to show the stack size of each stored mineral
 // NOTE: numbered display is turned off currently because it's broken
-/datum/storage_ui/default/sheetsnatcher/prepare_ui(var/mob/user)
+/datum/storage_ui/default/sheetsnatcher/prepare_ui(mob/user)
 	var/adjusted_contents = storage.contents.len
 
 	var/row_num = 0

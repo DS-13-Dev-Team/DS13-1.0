@@ -111,7 +111,7 @@ vector2
 		/*
 			Get a vector in the same direction, with its magnitude clamped between minimum and maximum
 		*/
-		ClampMag(var/minimum, maximum)
+		ClampMag(minimum, maximum)
 
 			var/current_magnitude = Magnitude()
 			if (current_magnitude < minimum)
@@ -188,24 +188,24 @@ vector2
 
 
 		//Projects this vector onto another
-		Projection(var/vector2/onto)
+		Projection(vector2/onto)
 			var/vector2/result = (onto*(src.Dot(onto) / onto.Dot(onto)))
 			return result
 
 
-		Rejection(var/vector2/onto)
+		Rejection(vector2/onto)
 			var/vector2/result = src - Projection(onto)
 			return result
 
 
-		SafeProjection(var/vector2/onto)
+		SafeProjection(vector2/onto)
 			if (NonZero() && onto && onto.NonZero())
 				var/vector2/result = (onto*(src.Dot(onto) / onto.Dot(onto)))
 				return result
 			return get_new_vector(0,0)
 
 
-		SafeRejection(var/vector2/onto)
+		SafeRejection(vector2/onto)
 			if (NonZero() && onto && onto.NonZero())
 				var/vector2/result = src - Projection(onto)
 				return result
@@ -249,20 +249,20 @@ vector2
 
 
 		//Self Functions: These modify src instead of creating new vectors. Better for performance in the right circumstances, but less flexible
-		SelfSubtract(var/vector2/delta)
+		SelfSubtract(vector2/delta)
 			x -= delta.x
 			y -= delta.y
 
-		SelfAdd(var/vector2/delta)
+		SelfAdd(vector2/delta)
 			x += delta.x
 			y += delta.y
 
 		//Scalar only
-		SelfDivide(var/scalar)
+		SelfDivide(scalar)
 			x /= scalar
 			y /= scalar
 
-		SelfMultiply(var/scalar)
+		SelfMultiply(scalar)
 			x *= scalar
 			y *= scalar
 
@@ -280,13 +280,13 @@ vector2
 		*/
 		SelfNormalize() SelfToMagnitude(1)
 
-		SelfToMagnitude(var/m)
+		SelfToMagnitude(m)
 			m /= Magnitude()
 			x *= m
 			y *= m
 
 
-		SelfClampMag(var/minimum, maximum)
+		SelfClampMag(minimum, maximum)
 
 			var/current_magnitude = Magnitude()
 

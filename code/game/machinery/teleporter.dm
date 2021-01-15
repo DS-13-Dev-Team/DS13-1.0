@@ -46,7 +46,7 @@
 		to_chat(user, "<span class='notice'>The console is locked on to \[[T.loc.name]\].</span>")
 
 
-/obj/machinery/computer/teleporter/attackby(var/obj/I, mob/living/user)
+/obj/machinery/computer/teleporter/attackby(obj/I, mob/living/user)
 	if(istype(I, /obj/item/weapon/card/data/))
 		var/obj/item/weapon/card/data/C = I
 		if(stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))
@@ -93,10 +93,10 @@
 
 	return
 
-/obj/machinery/teleport/station/attack_ai(var/mob/user)
+/obj/machinery/teleport/station/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/computer/teleporter/attack_hand(var/mob/user)
+/obj/machinery/computer/teleporter/attack_hand(mob/user)
 	if(..()) return
 
 	/* Ghosts can't use this one because it's a direct selection */
@@ -247,13 +247,13 @@
 	overlays.Cut()
 	overlays += image('icons/obj/stationobjs.dmi', icon_state = "controller-wires")
 
-/obj/machinery/teleport/station/attackby(var/obj/item/weapon/W, mob/user)
+/obj/machinery/teleport/station/attackby(obj/item/weapon/W, mob/user)
 	attack_hand(user)
 
-/obj/machinery/teleport/station/attack_ai(var/mob/user)
+/obj/machinery/teleport/station/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/teleport/station/attack_hand(var/mob/user)
+/obj/machinery/teleport/station/attack_hand(mob/user)
 	. = ..()
 	if(engaged)
 		src.disengage()

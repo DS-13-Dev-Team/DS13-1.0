@@ -195,13 +195,13 @@
 /obj/item/projectile/bullet/biobomb/is_necromorph()
 	return TRUE
 
-/obj/item/projectile/bullet/biobomb/on_hit(var/atom/target, blocked = 0)
+/obj/item/projectile/bullet/biobomb/on_hit(atom/target, blocked = 0)
 	if (!exploded)
 		bioblast(target, blast_power)
 		exploded = TRUE
 	return 1
 
-/obj/item/projectile/bullet/biobomb/on_impact(var/atom/target)
+/obj/item/projectile/bullet/biobomb/on_impact(atom/target)
 	if (!exploded)
 		//Target may be null if it was deleted before we got here. For example metal foam walls that break when hit
 		if (QDELETED(target))
@@ -220,7 +220,7 @@
 	muzzle_type	= /obj/effect/projectile/bio/muzzle
 
 
-/obj/item/projectile/bullet/biobomb/cyst/muzzle_effect(var/matrix/T)
+/obj/item/projectile/bullet/biobomb/cyst/muzzle_effect(matrix/T)
 	var/obj/effect/projectile/M = new muzzle_type(get_turf(launcher))
 	M.dir = launcher.dir
 	QDEL_IN(M,8)
@@ -238,14 +238,14 @@
 	placement_location = PLACEMENT_WALL
 
 //Check we have a surface to place it on
-/datum/click_handler/placement/necromorph/cyst/placement_blocked(var/turf/candidate)
+/datum/click_handler/placement/necromorph/cyst/placement_blocked(turf/candidate)
 	mount_target = get_mount_target_at_direction(candidate, dir)
 	if (!mount_target)
 		return "This must be placed against a wall or similar hard surface"
 
 	.=..()
 
-/datum/click_handler/placement/necromorph/cyst/spawn_result(var/turf/site)
+/datum/click_handler/placement/necromorph/cyst/spawn_result(turf/site)
 	var/atom/movable/result = ..()
 	var/mountpoint = get_mount_target_at_direction(result, dir)
 
@@ -302,7 +302,7 @@
 	click_handler_type = /datum/click_handler/placement/ability/cyst
 
 
-/datum/signal_ability/placement/corruption/cyst/on_cast(var/atom/target, mob/user, list/data)
+/datum/signal_ability/placement/corruption/cyst/on_cast(atom/target, mob/user, list/data)
 	.=..()
 	var/atom/A = .
 	var/mountpoint = get_mount_target_at_direction(A, data["direction"])
@@ -318,7 +318,7 @@
 	placement_location = PLACEMENT_WALL
 
 //Check we have a surface to place it on
-/datum/click_handler/placement/ability/cyst/placement_blocked(var/turf/candidate)
+/datum/click_handler/placement/ability/cyst/placement_blocked(turf/candidate)
 	mount_target = get_mount_target_at_direction(candidate, dir)
 	if (!mount_target)
 		return "This must be placed against a wall or similar hard surface"

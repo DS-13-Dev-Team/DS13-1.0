@@ -50,7 +50,7 @@
 	start_processing()
 
 
-/obj/structure/corruption_node/get_biomass(var/who_is_asking)
+/obj/structure/corruption_node/get_biomass(who_is_asking)
 
 	//This is needed for invested biomass handling
 	if (istype(who_is_asking, /obj/machinery/marker))
@@ -109,7 +109,7 @@
 /obj/structure/corruption_node/proc/degenerate()
 	take_damage(degen, BRUTE, null, null, bypass_resist = TRUE)
 
-/obj/structure/corruption_node/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
+/obj/structure/corruption_node/take_damage(amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	.=..()
 	if (.)
 		start_processing()

@@ -669,7 +669,7 @@ owbar
 	if(!tool) return 0
 	return (tool ? tool.attack(M,user) : 0)
 
-/obj/item/weapon/combitool/afterattack(var/atom/target, mob/living/user, proximity, params)
+/obj/item/weapon/combitool/afterattack(atom/target, mob/living/user, proximity, params)
 	if(!proximity)
 		return 0
 	var/obj/item/tool = tools[current_tool]

@@ -329,7 +329,7 @@
 /datum/random_map/noise/exoplanet/proc/noise2value(value)
 	return min(9,max(0,round((value/cell_range)*10)))
 
-/datum/random_map/noise/exoplanet/apply_to_turf(var/x, y)
+/datum/random_map/noise/exoplanet/apply_to_turf(x, y)
 	var/turf/T = ..()
 	if(!T)
 		return
@@ -342,18 +342,18 @@
 	if(T.x <= TRANSITIONEDGE || T.x >= (limit_x - TRANSITIONEDGE + 1) || T.y <= TRANSITIONEDGE || T.y >= (limit_y - TRANSITIONEDGE + 1))
 		new/obj/effect/fogofwar(T)
 
-/datum/random_map/noise/exoplanet/get_map_char(var/value)
+/datum/random_map/noise/exoplanet/get_map_char(value)
 	if(water_type && noise2value(value) < water_level)
 		return "~"
 	return "[noise2value(value)]"
 
-/datum/random_map/noise/exoplanet/get_appropriate_path(var/value)
+/datum/random_map/noise/exoplanet/get_appropriate_path(value)
 	if(water_type && noise2value(value) < water_level)
 		return water_type
 	else
 		return land_type
 
-/datum/random_map/noise/exoplanet/get_additional_spawns(var/value, turf/T)
+/datum/random_map/noise/exoplanet/get_additional_spawns(value, turf/T)
 	planetary_area.contents.Add(T)
 	switch(noise2value(value))
 		if(2 to 3)

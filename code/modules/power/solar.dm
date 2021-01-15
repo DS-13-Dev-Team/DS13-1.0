@@ -211,7 +211,7 @@ var/list/solars_list = list()
 	var/tracker = 0
 	var/glass_type = null
 
-/obj/item/solar_assembly/attack_hand(var/mob/user)
+/obj/item/solar_assembly/attack_hand(mob/user)
 	if(!anchored && isturf(loc)) // You can't pick it up
 		..()
 
@@ -223,7 +223,7 @@ var/list/solars_list = list()
 		glass_type = null
 
 
-/obj/item/solar_assembly/attackby(var/obj/item/weapon/W, mob/user)
+/obj/item/solar_assembly/attackby(obj/item/weapon/W, mob/user)
 
 	if(!anchored && isturf(loc))
 		if(isWrench(W))
@@ -401,7 +401,7 @@ var/list/solars_list = list()
 
 	return
 
-/obj/machinery/power/solar_control/attackby(var/obj/item/I, user as mob)
+/obj/machinery/power/solar_control/attackby(obj/item/I, user as mob)
 	if(isScrewdriver(I))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 		if(do_after(user, 20,src))

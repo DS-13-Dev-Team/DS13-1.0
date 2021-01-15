@@ -56,7 +56,7 @@
 		return
 	..()
 
-/obj/item/weapon/soap/attackby(var/obj/item/I, mob/user)
+/obj/item/weapon/soap/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/key))
 		if(!key_data)
 			to_chat(user, "<span class='notice'>You imprint \the [I] into \the [src].</span>")

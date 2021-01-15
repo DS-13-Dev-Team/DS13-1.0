@@ -77,7 +77,7 @@
 			to_chat(user, "The [src] is already empty.")
 
 
-/obj/item/weapon/portable_destructive_analyzer/afterattack(var/atom/target, mob/living/user, proximity)
+/obj/item/weapon/portable_destructive_analyzer/afterattack(atom/target, mob/living/user, proximity)
 	if(!target)
 		return
 	if(!proximity)
@@ -174,7 +174,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "autoharvester"
 
-/obj/item/weapon/robot_harvester/afterattack(var/atom/target, mob/living/user, proximity)
+/obj/item/weapon/robot_harvester/afterattack(atom/target, mob/living/user, proximity)
 	if(!target)
 		return
 	if(!proximity)
@@ -388,7 +388,7 @@
 	max_walls = 10
 	max_doors = 5
 
-/obj/item/weapon/inflatable_dispenser/examine(var/mob/user)
+/obj/item/weapon/inflatable_dispenser/examine(mob/user)
 	if(!..(user))
 		return
 	to_chat(user, "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored.")
@@ -398,7 +398,7 @@
 	mode = !mode
 	to_chat(usr, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
 
-/obj/item/weapon/inflatable_dispenser/afterattack(var/atom/A, mob/user)
+/obj/item/weapon/inflatable_dispenser/afterattack(atom/A, mob/user)
 	..(A, user)
 	if(!user)
 		return

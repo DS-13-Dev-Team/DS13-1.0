@@ -6,7 +6,7 @@
 	..()
 	filters_per_client = list()
 
-/datum/admin_secret_item/investigation/attack_logs/execute(var/mob/user)
+/datum/admin_secret_item/investigation/attack_logs/execute(mob/user)
 	. = ..()
 	if(!.)
 		return

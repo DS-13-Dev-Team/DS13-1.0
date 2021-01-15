@@ -169,7 +169,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /obj/effect/vine/corruption/is_necromorph()
 	return TRUE
 
-/obj/effect/vine/corruption/can_reach(var/turf/floor)
+/obj/effect/vine/corruption/can_reach(turf/floor)
 	if (!QDELETED(source) && source.can_support(floor))
 		next_source = source
 		return TRUE
@@ -187,7 +187,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		return TRUE
 	return FALSE
 
-/obj/effect/vine/corruption/wake_up(var/wake_adjacent = TRUE)
+/obj/effect/vine/corruption/wake_up(wake_adjacent = TRUE)
 	if (QDELETED(source))
 		source = null
 	.=..()
@@ -273,7 +273,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /obj/effect/vine/corruption/get_visualnet_tiles(datum/visualnet/network)
 	return trange(1, src)
 
-/obj/effect/vine/corruption/watched_tile_updated(var/turf/T)
+/obj/effect/vine/corruption/watched_tile_updated(turf/T)
 	source.needs_update = TRUE
 	.=..()
 
@@ -385,7 +385,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 	START_PROCESSING(SSprocessing, src)
 
-/datum/extension/corruption_effect/get_statmod(var/modtype)
+/datum/extension/corruption_effect/get_statmod(modtype)
 	var/mob/living/L = holder
 	if (L.is_necromorph())
 		.=..()	//Default values are for necros

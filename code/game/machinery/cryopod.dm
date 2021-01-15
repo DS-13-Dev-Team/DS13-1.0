@@ -269,7 +269,7 @@
 	find_control_computer()
 
 //Clicking it while you're inside, lets you out
-/obj/machinery/cryopod/attack_hand(var/mob/user)
+/obj/machinery/cryopod/attack_hand(mob/user)
 	if (occupant == user)
 		go_out()
 		return
@@ -440,7 +440,7 @@
 	set_occupant(null)
 
 
-/obj/machinery/cryopod/attackby(var/obj/item/weapon/G as obj, mob/user as mob)
+/obj/machinery/cryopod/attackby(obj/item/weapon/G as obj, mob/user as mob)
 
 	if(istype(G, /obj/item/grab))
 		var/obj/item/grab/grab = G

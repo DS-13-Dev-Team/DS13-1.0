@@ -18,11 +18,11 @@
 
 
 
-/datum/signal_ability/meddle/on_cast(var/mob/user, obj/target, list/data)
+/datum/signal_ability/meddle/on_cast(mob/user, obj/target, list/data)
 	target.meddle(user)
 
 
-/datum/signal_ability/meddle/special_check(var/atom/thing)
+/datum/signal_ability/meddle/special_check(atom/thing)
 	var/obj/O = thing
 	if (istype(O) && isturf(O.loc))
 		return TRUE

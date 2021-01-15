@@ -16,7 +16,7 @@
 		QDEL_NULL(cabinet)
 	. = ..()
 
-/datum/phenomena/dimensional_locker/activate(var/atom/a, mob/living/deity/user)
+/datum/phenomena/dimensional_locker/activate(atom/a, mob/living/deity/user)
 	..()
 	for( var/i in cabinet)
 		if(ismob(i))
@@ -44,7 +44,7 @@
 	expected_type = /atom
 	var/list/portals = list()
 
-/datum/phenomena/portals/activate(var/atom/a, mob/living/deity/user)
+/datum/phenomena/portals/activate(atom/a, mob/living/deity/user)
 	..()
 	var/obj/effect/portal/P = new(get_turf(a), null, 0)
 	P.failchance = 0
@@ -76,7 +76,7 @@
 	flags = PHENOMENA_NEAR_STRUCTURE|PHENOMENA_MUNDANE|PHENOMENA_FOLLOWER|PHENOMENA_NONFOLLOWER
 	expected_type = /mob/living
 
-/datum/phenomena/banishing_smite/activate(var/mob/living/L, mob/living/deity/user)
+/datum/phenomena/banishing_smite/activate(mob/living/L, mob/living/deity/user)
 	..()
 	L.take_overall_damage(rand(5,30),0,0,0,"blunt intrument") //Actual spell does 5d10 but maaaybe too much.
 	playsound(get_turf(L), 'sound/effects/bamf.ogg', 100, 1)

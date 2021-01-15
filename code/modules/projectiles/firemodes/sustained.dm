@@ -12,7 +12,7 @@
 	var/firing = FALSE
 	override_fire = TRUE
 
-/datum/firemode/sustained/update(var/force_state = null)
+/datum/firemode/sustained/update(force_state = null)
 	var/mob/living/L
 	if (gun && gun.is_held())
 		L = gun.loc

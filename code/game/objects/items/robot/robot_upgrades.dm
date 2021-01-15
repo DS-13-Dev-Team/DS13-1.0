@@ -23,7 +23,7 @@
 	icon_state = "cyborg_upgrade1"
 	require_module = 1
 
-/obj/item/borg/upgrade/reset/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/reset/action(mob/living/silicon/robot/R)
 	if((. = ..())) return 0
 
 	R.reset_module()
@@ -38,7 +38,7 @@
 	require_module = 0
 	var/new_module = null
 
-/obj/item/borg/upgrade/uncertified/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/uncertified/action(mob/living/silicon/robot/R)
 	if((. = ..())) return 0
 	if(!new_module)
 		to_chat(usr, "<span class='warning'>[R]'s error lights strobe repeatedly - something seems to be wrong with the chip.</span>")
@@ -76,7 +76,7 @@
 /obj/item/borg/upgrade/rename/attack_self(mob/user as mob)
 	heldname = sanitizeSafe(input(user, "Enter new robot name", "Robot Reclassification", heldname), MAX_NAME_LEN)
 
-/obj/item/borg/upgrade/rename/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/rename/action(mob/living/silicon/robot/R)
 	if(..()) return 0
 	R.notify_ai(ROBOT_NOTIFICATION_NEW_NAME, R.name, heldname)
 	R.SetName(heldname)
@@ -90,7 +90,7 @@
 	desc = "Used to boost cyborg's light intensity."
 	icon_state = "cyborg_upgrade1"
 
-/obj/item/borg/upgrade/floodlight/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/floodlight/action(mob/living/silicon/robot/R)
 	if(..()) return 0
 
 	if(R.intenselight)
@@ -108,7 +108,7 @@
 	icon_state = "cyborg_upgrade1"
 
 
-/obj/item/borg/upgrade/restart/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/restart/action(mob/living/silicon/robot/R)
 	if(R.health < 0)
 		to_chat(usr, "You have to repair the robot before using this module!")
 		return 0
@@ -130,7 +130,7 @@
 	icon_state = "cyborg_upgrade2"
 	require_module = 1
 
-/obj/item/borg/upgrade/vtec/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/vtec/action(mob/living/silicon/robot/R)
 	if(..()) return 0
 
 	if(R.speed == -1)
@@ -147,7 +147,7 @@
 	require_module = 1
 
 
-/obj/item/borg/upgrade/weaponcooler/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/weaponcooler/action(mob/living/silicon/robot/R)
 	if(..()) return 0
 
 	if(!R.module || !(type in R.module.supported_upgrades))
@@ -178,7 +178,7 @@
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
 
-/obj/item/borg/upgrade/jetpack/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/jetpack/action(mob/living/silicon/robot/R)
 	if(..()) return 0
 
 	if(!R.module || !(type in R.module.supported_upgrades))
@@ -198,7 +198,7 @@
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
 
-/obj/item/borg/upgrade/rcd/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/rcd/action(mob/living/silicon/robot/R)
 	if(..()) return 0
 
 	if(!R.module || !(type in R.module.supported_upgrades))
@@ -215,7 +215,7 @@
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
 
-/obj/item/borg/upgrade/syndicate/action(var/mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/syndicate/action(mob/living/silicon/robot/R)
 	if(..()) return 0
 
 	if(R.emagged == 1)

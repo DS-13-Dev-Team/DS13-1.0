@@ -11,7 +11,7 @@ var/const/NETWORK_HANGAR      = "Hangar"
 var/const/NETWORK_EXPLO       = "Exploration"
 var/const/NETWORK_THIRD_DECK  = "Third Deck"
 
-/datum/map/torch/get_network_access(var/network)
+/datum/map/torch/get_network_access(network)
 	switch(network)
 		if(NETWORK_AQUILA)
 			return access_aquila

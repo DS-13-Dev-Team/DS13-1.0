@@ -139,13 +139,13 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 		return
 	.=..()
 
-/obj/item/weapon/beartrap/attack_generic(var/mob/user, damage)
+/obj/item/weapon/beartrap/attack_generic(mob/user, damage)
 	if (buckled_mob)
 		attempt_release(user)
 		return
 	.=..()
 
-/obj/item/weapon/beartrap/attack_robot(var/mob/user)
+/obj/item/weapon/beartrap/attack_robot(mob/user)
 	if (buckled_mob)
 		attempt_release(user)
 		return
@@ -164,7 +164,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	GLOB.updatehealth_event.unregister(buckled_mob, src, /obj/item/weapon/beartrap/proc/check_grip)
 
 //Attempting to resist out of a beartrap will not work, and you'll get nothing but pain for trying
-/obj/item/weapon/beartrap/resist_buckle(var/mob/user)
+/obj/item/weapon/beartrap/resist_buckle(mob/user)
 	if (user == buckled_mob && !user.stunned)
 		//We check stunned here, and a failure stuns the victim. This prevents someone from just spam-resisting and instantly killing themselves
 		if (user.client)
@@ -317,7 +317,7 @@ Very rarely it might escape
 
 
 
-/obj/item/weapon/beartrap/Crossed(var/atom/movable/AM)
+/obj/item/weapon/beartrap/Crossed(atom/movable/AM)
 	if(deployed && isliving(AM) && !(AM.pass_flags & PASS_FLAG_FLYING))
 		var/mob/living/L = AM
 		L.visible_message(
@@ -372,7 +372,7 @@ Very rarely it might escape
 		check_integrity()
 
 //Takes 1 damage every time they fail to open it
-/obj/item/weapon/beartrap/makeshift/fail_attempt(var/user, difficulty)
+/obj/item/weapon/beartrap/makeshift/fail_attempt(user, difficulty)
 	.=..()
 	integrity -= 0.8
 	spawn(5)

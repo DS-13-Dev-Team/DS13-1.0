@@ -84,7 +84,7 @@
 
 
 //Signals don't leave behind ghosts if they are clientless
-/mob/observer/eye/signal/ghostize(var/can_reenter_corpse = CORPSE_CAN_REENTER)
+/mob/observer/eye/signal/ghostize(can_reenter_corpse = CORPSE_CAN_REENTER)
 	if (!client)
 		return null
 
@@ -93,7 +93,7 @@
 
 //Possession and evacuating
 //-------------------------------
-/mob/observer/eye/signal/verb/necro_possess(var/mob/living/L)
+/mob/observer/eye/signal/verb/necro_possess(mob/living/L)
 	set name = "Possess"
 	set category = "Necromorph"
 	set desc = "Take control of a necromorph vessel"
@@ -220,10 +220,10 @@
 */
 /datum/click_handler/signal
 
-/datum/click_handler/signal/OnLeftClick(var/atom/A, params)
+/datum/click_handler/signal/OnLeftClick(atom/A, params)
 	return A.attack_signal(user)
 
-/datum/click_handler/signal/OnShiftClick(var/atom/A, params)
+/datum/click_handler/signal/OnShiftClick(atom/A, params)
 	return user.examinate(A)
 
 /atom/proc/attack_signal(mob/observer/eye/signal/user)

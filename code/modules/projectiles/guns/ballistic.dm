@@ -93,7 +93,7 @@
 
 
 //Expends a specified number of rounds, deleting their casings, and returning their projectiles to be fired, if desired
-/obj/item/weapon/gun/projectile/consume_projectiles(var/number = 1)
+/obj/item/weapon/gun/projectile/consume_projectiles(number = 1)
 	if (get_remaining_ammo() < number)
 		return FALSE
 
@@ -191,7 +191,7 @@
 
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
-/obj/item/weapon/gun/projectile/load_ammo(var/obj/item/A, mob/user)
+/obj/item/weapon/gun/projectile/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
 		if(!(load_method & AM.mag_type) || caliber != AM.caliber)

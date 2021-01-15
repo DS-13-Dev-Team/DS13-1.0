@@ -42,7 +42,7 @@
 	..()
 	to_chat(user,"Its outlet port is to the [dir2text(dir)]")
 
-/obj/machinery/atmospherics/binary/oxyregenerator/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/machinery/atmospherics/binary/oxyregenerator/attackby(obj/item/O as obj, mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
 		return
 	if(default_deconstruction_crowbar(user, O))
@@ -101,7 +101,7 @@
 
 	src.set_dir(turn(src.dir, 90))
 
-/obj/machinery/atmospherics/binary/oxyregenerator/Process(var/delay)
+/obj/machinery/atmospherics/binary/oxyregenerator/Process(delay)
 	if((stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 

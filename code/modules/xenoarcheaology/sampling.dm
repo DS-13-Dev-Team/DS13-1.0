@@ -90,11 +90,11 @@
 	var/num_stored_bags = 10
 	var/obj/item/weapon/evidencebag/filled_bag
 
-/obj/item/device/core_sampler/examine(var/mob/user)
+/obj/item/device/core_sampler/examine(mob/user)
 	if(..(user, 2))
 		to_chat(user, "<span class='notice'>Used to extract geological core samples - this one is [sampled_turf ? "full" : "empty"], and has [num_stored_bags] bag[num_stored_bags != 1 ? "s" : ""] remaining.</span>")
 
-/obj/item/device/core_sampler/attackby(var/obj/item/I, mob/living/user)
+/obj/item/device/core_sampler/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/weapon/evidencebag))
 		if(I.contents.len)
 			to_chat(user, "<span class='warning'>\The [I] is full.</span>")
@@ -148,7 +148,7 @@
 	else
 		to_chat(user, "<span class='warning'>You are unable to take a sample of [item_to_sample].</span>")
 
-/obj/item/device/core_sampler/attack_self(var/mob/living/user)
+/obj/item/device/core_sampler/attack_self(mob/living/user)
 	if(filled_bag)
 		to_chat(user, "<span class='notice'>You eject the full sample bag.</span>")
 		var/success = 0

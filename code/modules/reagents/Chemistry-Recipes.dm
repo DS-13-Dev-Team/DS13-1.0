@@ -2011,7 +2011,7 @@
 	overdose = REAGENTS_OVERDOSE * 0.5
 	value = 2.6
 
-/datum/reagent/vecuronium_bromide/affect_blood(var/mob/living/carbon/M, alien, removed)
+/datum/reagent/vecuronium_bromide/affect_blood(mob/living/carbon/M, alien, removed)
 	var/threshold = 2
 
 	if(M.chem_doses[type] >= metabolism * threshold * 0.5)

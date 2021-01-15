@@ -51,7 +51,7 @@
 		else
 			to_chat(user, "<span class='notice'>There is a thick layer of silicate covering it.</span>")
 
-/obj/structure/window/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
+/obj/structure/window/take_damage(amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	playsound(loc, hitsound, 100, 1)
 	.=..()
 
@@ -175,7 +175,7 @@
 /obj/structure/window/meddle()
 	playsound(src.loc, 'sound/effects/glassknock.ogg', VOLUME_HIGH, 1)
 
-/obj/structure/window/attack_generic(var/mob/user, damage, attack_verb, environment_smash)
+/obj/structure/window/attack_generic(mob/user, damage, attack_verb, environment_smash)
 	if(environment_smash >= 1)
 		damage = max(damage, 10)
 
@@ -356,7 +356,7 @@
 /obj/structure/window/can_visually_connect()
 	return ..() && is_fulltile()
 
-/obj/structure/window/can_visually_connect_to(var/obj/structure/S)
+/obj/structure/window/can_visually_connect_to(obj/structure/S)
 	return istype(S, /obj/structure/window)
 
 //merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)

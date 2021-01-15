@@ -352,7 +352,7 @@ var/list/name_to_material
 	luminescence = 3
 
 //Controls phoron and phoron based objects reaction to being in a turf over 200c -- Phoron's flashpoint.
-/material/phoron/combustion_effect(var/turf/T, temperature, effect_multiplier)
+/material/phoron/combustion_effect(turf/T, temperature, effect_multiplier)
 	if(isnull(ignition_point))
 		return 0
 	if(temperature < ignition_point)
@@ -475,7 +475,7 @@ var/list/name_to_material
 	hitsound = 'sound/effects/Glasshit.ogg'
 	conductive = 0
 
-/material/glass/build_windows(var/mob/living/user, obj/item/stack/used_stack)
+/material/glass/build_windows(mob/living/user, obj/item/stack/used_stack)
 
 	if(!user || !used_stack || !created_window || !window_options.len)
 		return 0
@@ -782,7 +782,7 @@ var/list/name_to_material
 	conductive = 0
 	construction_difficulty = 1
 
-/material/cult/place_dismantled_girder(var/turf/target)
+/material/cult/place_dismantled_girder(turf/target)
 	new /obj/structure/girder/cult(target)
 
 /material/cult/reinf
@@ -799,7 +799,7 @@ var/list/name_to_material
 	sheet_plural_name = "blobs"
 	conductive = 0
 
-/material/resin/can_open_material_door(var/mob/living/user)
+/material/resin/can_open_material_door(mob/living/user)
 	var/mob/living/carbon/M = user
 	if(istype(M) && locate(/obj/item/organ/internal/xeno/hivenode) in M.internal_organs)
 		return 1
@@ -829,7 +829,7 @@ var/list/name_to_material
 	melting_point = rand(400,10000)
 	..()
 
-/material/aliumium/place_dismantled_girder(var/turf/target, material/reinf_material)
+/material/aliumium/place_dismantled_girder(turf/target, material/reinf_material)
 	return
 
 //TODO PLACEHOLDERS:

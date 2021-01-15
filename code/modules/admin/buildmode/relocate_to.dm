@@ -13,7 +13,7 @@
 	to_chat(user, "<span class='notice'>Right Click on Turf        = Destination to be relocated to</span>")
 	to_chat(user, "<span class='notice'>***********************************************************</span>")
 
-/datum/build_mode/relocate_to/OnClick(var/atom/A, list/parameters)
+/datum/build_mode/relocate_to/OnClick(atom/A, list/parameters)
 	if(parameters["left"])
 		if(istype(A, /atom/movable))
 			SetRelocator(A)

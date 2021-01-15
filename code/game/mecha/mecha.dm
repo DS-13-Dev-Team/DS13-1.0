@@ -81,7 +81,7 @@
 	var/max_equip = 3
 	var/datum/events/events
 
-/obj/mecha/drain_power(var/drain_check)
+/obj/mecha/drain_power(drain_check)
 
 	if(drain_check)
 		return 1
@@ -319,7 +319,7 @@
 		return 1
 	return 0
 
-/obj/mecha/contents_nano_distance(var/src_object, mob/living/user)
+/obj/mecha/contents_nano_distance(src_object, mob/living/user)
 	. = user.shared_living_nano_distance(src_object) //allow them to interact with anything they can interact with normally.
 	if(. != STATUS_INTERACTIVE)
 		//Allow interaction with the mecha or anything that is part of the mecha
@@ -406,7 +406,7 @@
 		playsound(src,'sound/mecha/mechstep.ogg',40,1)
 	return result
 
-/obj/mecha/Bump(var/atom/obstacle)
+/obj/mecha/Bump(atom/obstacle)
 //	src.inertia_dir = null
 	if(istype(obstacle, /obj))
 		var/obj/O = obstacle
@@ -543,7 +543,7 @@
 			B.set_ready_state(0)
 			B.do_after_cooldown()
 
-/obj/mecha/airlock_crush(var/crush_damage)
+/obj/mecha/airlock_crush(crush_damage)
 	..()
 	hit_damage(crush_damage, is_melee=1)
 	check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
@@ -608,7 +608,7 @@
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
 
-/obj/mecha/bullet_act(var/obj/item/projectile/Proj)
+/obj/mecha/bullet_act(obj/item/projectile/Proj)
 	if(Proj.damage_type == PAIN && !(src.r_deflect_coeff > 1))
 		use_power(Proj.agony * 5)
 
@@ -836,7 +836,7 @@
 	return
 
 /*
-/obj/mecha/attack_ai(var/mob/living/silicon/ai/user as mob)
+/obj/mecha/attack_ai(mob/living/silicon/ai/user as mob)
 	if(!istype(user, /mob/living/silicon/ai))
 		return
 	var/output = {"<b>Assume direct control over [src]?</b>
@@ -1699,7 +1699,7 @@
 		icon_state = initial(icon_state)
 	return icon_state
 
-/obj/mecha/attack_generic(var/mob/user, damage, attack_message)
+/obj/mecha/attack_generic(mob/user, damage, attack_message)
 
 	if(!damage)
 		return 0
@@ -1720,7 +1720,7 @@
 		admin_attacker_log(user, "attacked \the [src] but rebounded")
 	return 1
 
-/obj/mecha/onDropInto(var/atom/movable/AM)
+/obj/mecha/onDropInto(atom/movable/AM)
 	dropped_items |= AM
 
 //////////////////////////////////////////
@@ -1731,7 +1731,7 @@
 /datum/global_iterator/mecha_preserve_temp  //normalizing cabin air temperature to 20 degrees celsius
 	delay = 20
 
-	process(var/obj/mecha/mecha)
+	process(obj/mecha/mecha)
 		if(mecha.cabin_air && mecha.cabin_air.volume > 0)
 			var/delta = mecha.cabin_air.temperature - T20C
 			mecha.cabin_air.temperature -= max(-10, min(10, round(delta/4,0.1)))
@@ -1740,7 +1740,7 @@
 /datum/global_iterator/mecha_tank_give_air
 	delay = 15
 
-	process(var/obj/mecha/mecha)
+	process(obj/mecha/mecha)
 		if(mecha.internal_tank)
 			var/datum/gas_mixture/tank_air = mecha.internal_tank.return_air()
 			var/datum/gas_mixture/cabin_air = mecha.cabin_air
@@ -1773,7 +1773,7 @@
 /datum/global_iterator/mecha_inertial_movement //inertial movement in space
 	delay = 7
 
-	process(var/obj/mecha/mecha as obj,direction)
+	process(obj/mecha/mecha as obj,direction)
 		if(direction)
 			if(!step(mecha, direction)||mecha.check_for_support())
 				src.stop()
@@ -1783,7 +1783,7 @@
 
 /datum/global_iterator/mecha_internal_damage // processing internal damage
 
-	process(var/obj/mecha/mecha)
+	process(obj/mecha/mecha)
 		if(!mecha.hasInternalDamage())
 			return stop()
 		if(mecha.hasInternalDamage(MECHA_INT_FIRE))

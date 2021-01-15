@@ -33,7 +33,7 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 		power_supply.update_icon()
 		power_supply = null
 
-/obj/item/weapon/gun/energy/load_ammo(var/obj/item/A, mob/user)
+/obj/item/weapon/gun/energy/load_ammo(obj/item/A, mob/user)
 	if (istype(A, /obj/item/weapon/cell))
 		if (power_supply)
 			return	//Already got a cell
@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 		power_supply = A
 		.=..()
 
-/obj/item/weapon/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/weapon/gun/energy/attackby(obj/item/A as obj, mob/user as mob)
 	load_ammo(A, user)
 
 /obj/item/weapon/gun/energy/attack_hand(mob/user as mob)

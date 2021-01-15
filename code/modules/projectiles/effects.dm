@@ -217,7 +217,7 @@
 	lifespan = 12
 	random_iconstate = list("impact_acid_1","impact_acid_2","impact_acid_3","impact_acid_4")
 
-/obj/effect/projectile/acid/impact/set_transform(var/matrix/M)
+/obj/effect/projectile/acid/impact/set_transform(matrix/M)
 	M *= default_scale
 	.=..()
 

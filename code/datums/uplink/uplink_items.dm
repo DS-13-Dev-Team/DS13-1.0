@@ -119,7 +119,7 @@ datum/uplink_item/dd_SortValue()
 *	Physical Uplink Entries		*
 *                           	*
 ********************************/
-/datum/uplink_item/item/buy(var/obj/item/device/uplink/U, mob/user)
+/datum/uplink_item/item/buy(obj/item/device/uplink/U, mob/user)
 	var/obj/item/I = ..()
 	if(!I)
 		return
@@ -133,7 +133,7 @@ datum/uplink_item/dd_SortValue()
 		A.put_in_any_hand_if_possible(I)
 	return I
 
-/datum/uplink_item/item/get_goods(var/obj/item/device/uplink/U, loc)
+/datum/uplink_item/item/get_goods(obj/item/device/uplink/U, loc)
 	var/obj/item/I = new path(loc)
 	return I
 

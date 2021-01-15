@@ -24,7 +24,7 @@
 		. = ..()
 
 	// update the invisibility and icon
-	hide(var/intact)
+	hide(intact)
 		set_invisibility(intact ? 101 : 0)
 		update_icon()
 

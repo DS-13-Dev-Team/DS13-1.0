@@ -57,7 +57,7 @@
 	impact_type = /obj/effect/projectile/trilaser/impact
 	fire_sound = 'sound/weapons/plasma_cutter.ogg'
 
-/obj/item/projectile/beam/cutter/Bump(var/atom/A)
+/obj/item/projectile/beam/cutter/Bump(atom/A)
 	if(istype(A, /turf/simulated/mineral))
 		var/turf/simulated/mineral/M = A
 		if (dig_power)

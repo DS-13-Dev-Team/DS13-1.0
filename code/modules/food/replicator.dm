@@ -32,7 +32,7 @@
 
 	RefreshParts()
 
-/obj/machinery/food_replicator/attackby(var/obj/item/O, mob/user)
+/obj/machinery/food_replicator/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks))
 		var/obj/item/weapon/reagent_containers/food/snacks/S = O
 		for( var/datum/reagent/nutriment/N in S.reagents.reagent_list)

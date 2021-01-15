@@ -140,7 +140,7 @@
 	if(terminal)
 		terminal.connect_to_network()
 
-/obj/machinery/power/apc/drain_power(var/drain_check, surge, amount = 0)
+/obj/machinery/power/apc/drain_power(drain_check, surge, amount = 0)
 
 	if(drain_check)
 		return 1
@@ -678,7 +678,7 @@
 
 // attack with hand - remove cell (if cover open) or interact with the APC
 
-/obj/machinery/power/apc/emag_act(var/remaining_charges, mob/user)
+/obj/machinery/power/apc/emag_act(remaining_charges, mob/user)
 	if (!(emagged || (hacker && !hacker.hacked_apcs_hidden)))		// trying to unlock with an emag card
 		if(opened)
 			to_chat(user, "You must close the cover to swipe an ID card.")
@@ -980,7 +980,7 @@
 	return (chargemode && charging == 1 && operating)
 
 
-/obj/machinery/power/apc/draw_power(var/amount)
+/obj/machinery/power/apc/draw_power(amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
 	return 0
@@ -1207,7 +1207,7 @@ obj/machinery/power/apc/proc/autoset(cur_state, on)
 					cell.ex_act(3.0, epicentre)
 	return
 
-/obj/machinery/power/apc/disconnect_terminal(var/obj/machinery/power/terminal/term)
+/obj/machinery/power/apc/disconnect_terminal(obj/machinery/power/terminal/term)
 	if(terminal)
 		terminal.master = null
 		terminal = null
@@ -1290,7 +1290,7 @@ obj/machinery/power/apc/proc/autoset(cur_state, on)
 	w_class = ITEM_SIZE_SMALL
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 
-/obj/machinery/power/apc/malf_upgrade(var/mob/living/silicon/ai/user)
+/obj/machinery/power/apc/malf_upgrade(mob/living/silicon/ai/user)
 	..()
 	malf_upgraded = 1
 	emp_hardened = 1

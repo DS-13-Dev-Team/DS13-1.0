@@ -33,7 +33,7 @@
 	.=..()
 	add_modclick_verb(KEY_CTRLALT, /mob/living/simple_animal/necromorph/divider_component/head/proc/takeover_verb)
 
-/mob/living/simple_animal/necromorph/divider_component/head/get_controlling_player(var/fetch = FALSE)
+/mob/living/simple_animal/necromorph/divider_component/head/get_controlling_player(fetch = FALSE)
 	if (!fetch)
 		return
 	.=..()
@@ -162,7 +162,7 @@
 
 
 //It becomes a head mob again if severed
-/obj/item/organ/external/head/simple/divider/droplimb(var/clean, disintegrate = DROPLIMB_EDGE, ignore_children, silent, atom/cutter)
+/obj/item/organ/external/head/simple/divider/droplimb(clean, disintegrate = DROPLIMB_EDGE, ignore_children, silent, atom/cutter)
 	if (!QDELETED(src) && owner)
 		create_divider_component(owner, 0)
 		qdel(src)
@@ -182,7 +182,7 @@
 	Base Organ Code
 */
 //If the divider player is still connected, they transfer control to the head
-/obj/item/organ/external/head/create_divider_component(var/mob/living/carbon/human/H, deletion_delay)
+/obj/item/organ/external/head/create_divider_component(mob/living/carbon/human/H, deletion_delay)
 	.=..()
 	if (.)
 		var/mob/living/simple_animal/necromorph/divider_component/L = .

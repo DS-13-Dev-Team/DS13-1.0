@@ -38,7 +38,7 @@
 
 // Not going to check type repeatedly, if you code or varedit
 // load_type and get runtime errors, don't come crying to me.
-/obj/item/weapon/gun/magnetic/railgun/show_ammo(var/mob/user)
+/obj/item/weapon/gun/magnetic/railgun/show_ammo(mob/user)
 	var/obj/item/weapon/rcd_ammo/ammo = loaded
 	if (ammo)
 		to_chat(user, "<span class='notice'>There are [ammo.remaining] shot\s remaining in \the [loaded].</span>")
@@ -83,7 +83,7 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 3, TECH_MAGNET = 5)
 	slowdown_worn = 3 // Little slower when worn
 
-/obj/item/weapon/gun/magnetic/railgun/tcc/show_ammo(var/mob/user)
+/obj/item/weapon/gun/magnetic/railgun/tcc/show_ammo(mob/user)
 	var/obj/item/stack/rods/ammo = loaded
 	if(istype(ammo))
 		to_chat(user, "<span class='notice'>It has [ammo.amount] shots loaded.</span>")
@@ -128,7 +128,7 @@
 		list(mode_name="long bursts",  burst=6, fire_delay=null, move_delay=10,    one_hand_penalty=-10, burst_accuracy=list(0,-5,-6,-7,-10), dispersion=list(0.6, 0.6, 1.0, 1.0, 1.2)),
 		)
 
-/obj/item/weapon/gun/magnetic/railgun/automatic/examine(var/mob/user)
+/obj/item/weapon/gun/magnetic/railgun/automatic/examine(mob/user)
 	. = ..(user,1)
 	if(.)
 		to_chat(user, "<span class='notice'>Someone has scratched <i>Ultima Ratio Regum</i> onto the side of the barrel.</span>")

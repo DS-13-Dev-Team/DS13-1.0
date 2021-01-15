@@ -83,10 +83,10 @@
 	to_chat(src, "<span class='danger'>Warning: Electromagnetic pulse detected.</span>")
 	..()
 
-/mob/living/silicon/stun_effect_act(var/stun_amount, agony_amount)
+/mob/living/silicon/stun_effect_act(stun_amount, agony_amount)
 	return	//immune
 
-/mob/living/silicon/electrocute_act(var/shock_damage, obj/source, siemens_coeff = 1.0)
+/mob/living/silicon/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0)
 
 	if (istype(source, /obj/machinery/containment_field))
 		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
@@ -108,7 +108,7 @@
 /mob/living/silicon/is_advanced_tool_user()
 	return 1
 
-/mob/living/silicon/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/silicon/bullet_act(obj/item/projectile/Proj)
 
 	if(!Proj.nodamage)
 		switch(Proj.damage_type)
@@ -121,7 +121,7 @@
 	updatehealth()
 	return 100
 
-/mob/living/silicon/apply_effect(var/effect = 0, effecttype = STUN, blocked = 0)
+/mob/living/silicon/apply_effect(effect = 0, effecttype = STUN, blocked = 0)
 	return 0//The only effect that can hit them atm is flashes and they still directly edit so this works for now
 
 /proc/islinked(mob/living/silicon/robot/bot, mob/living/silicon/ai/ai)
@@ -170,7 +170,7 @@
 	onclose(src, "airoster")
 
 //can't inject synths
-/mob/living/silicon/can_inject(var/mob/user, target_zone)
+/mob/living/silicon/can_inject(mob/user, target_zone)
 	to_chat(user, "<span class='warning'>The armoured plating is too tough.</span>")
 	return 0
 
@@ -180,7 +180,7 @@
 /mob/living/silicon/can_speak(datum/language/speaking)
 	return universal_speak || (speaking in src.speech_synthesizer_langs)	//need speech synthesizer support to vocalize a language
 
-/mob/living/silicon/add_language(var/language, can_speak=1)
+/mob/living/silicon/add_language(language, can_speak=1)
 	var/var/datum/language/added_language = all_languages[language]
 	if(!added_language)
 		return
@@ -190,7 +190,7 @@
 		speech_synthesizer_langs += added_language
 		return 1
 
-/mob/living/silicon/remove_language(var/rem_language)
+/mob/living/silicon/remove_language(rem_language)
 	var/var/datum/language/removed_language = all_languages[rem_language]
 	if(!removed_language)
 		return

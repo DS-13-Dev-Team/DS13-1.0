@@ -6,7 +6,7 @@
 	nodamage = 1
 	check_armour = "energy"
 
-/obj/item/projectile/change/on_hit(var/atom/change)
+/obj/item/projectile/change/on_hit(atom/change)
 	wabbajack(change)
 
 /obj/item/projectile/change/proc/wabbajack(mob/M)

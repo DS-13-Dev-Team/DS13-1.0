@@ -12,7 +12,7 @@
 
 	hud_state = "wiz_charge"
 
-/spell/aoe_turf/charge/cast(var/list/targets, mob/user)
+/spell/aoe_turf/charge/cast(list/targets, mob/user)
 	for( var/turf/T in targets)
 		depth_cast(T)
 

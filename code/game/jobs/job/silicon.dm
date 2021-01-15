@@ -16,7 +16,7 @@
 	skill_points = 0
 	no_skill_buffs = TRUE
 
-/datum/job/ai/equip(var/mob/living/carbon/human/H)
+/datum/job/ai/equip(mob/living/carbon/human/H)
 	if(!H)	return 0
 	return 1
 
@@ -41,6 +41,6 @@
 	skill_points = 0
 	no_skill_buffs = TRUE
 
-/datum/job/cyborg/equip(var/mob/living/carbon/human/H)
+/datum/job/cyborg/equip(mob/living/carbon/human/H)
 	if(!H)	return 0
 	return 1

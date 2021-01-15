@@ -67,7 +67,7 @@
 
 
 
-/turf/attack_robot(var/mob/user)
+/turf/attack_robot(mob/user)
 	if(Adjacent(user))
 		attack_hand(user)
 

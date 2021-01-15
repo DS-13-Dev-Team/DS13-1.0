@@ -151,7 +151,7 @@ proc/trigger_armed_response_team(force = 0)
 /datum/evacuation_predicate/ert/is_valid()
 	return world.time < prevent_until
 
-/datum/evacuation_predicate/ert/can_call(var/user)
+/datum/evacuation_predicate/ert/can_call(user)
 	if(world.time >= prevent_until)
 		return TRUE
 	to_chat(user, "<span class='warning'>An emergency response team has been dispatched. Evacuation requests will be denied until [duration2stationtime(prevent_until - world.time)].</span>")

@@ -66,7 +66,7 @@
 	else
 		verb_holder.forceMove(src)
 
-/obj/item/rig_module/ai_container/accepts_item(var/obj/item/input_device, mob/living/user)
+/obj/item/rig_module/ai_container/accepts_item(obj/item/input_device, mob/living/user)
 
 	// Check if there's actually an AI to deal with.
 	var/mob/living/silicon/ai/target_ai
@@ -251,7 +251,7 @@
 			return 0
 	return 1
 
-/obj/item/rig_module/datajack/accepts_item(var/obj/item/input_device, mob/living/user)
+/obj/item/rig_module/datajack/accepts_item(obj/item/input_device, mob/living/user)
 
 	if(istype(input_device,/obj/item/weapon/disk/tech_disk))
 		to_chat(user, "You slot the disk into [src].")

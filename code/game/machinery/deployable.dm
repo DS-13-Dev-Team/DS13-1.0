@@ -164,7 +164,7 @@ for reference:
 			qdel(src)
 
 
-/obj/machinery/deployable/barrier/emag_act(var/remaining_charges, mob/user)
+/obj/machinery/deployable/barrier/emag_act(remaining_charges, mob/user)
 	if (src.emagged == 0)
 		src.emagged = 1
 		src.req_access.Cut()

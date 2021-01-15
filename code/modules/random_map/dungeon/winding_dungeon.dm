@@ -141,7 +141,7 @@
 
 	monster_available = null //Get rid of all the references
 
-/datum/random_map/winding_dungeon/apply_to_turf(var/x, y)
+/datum/random_map/winding_dungeon/apply_to_turf(x, y)
 	. = ..()
 	var/turf/T = locate((origin_x-1)+x,(origin_y-1)+y,origin_z)
 	if(T && !T.density)
@@ -321,7 +321,7 @@
 	var/datum/room/room = pick(rooms)
 	return room.add_loot(type)
 
-/datum/random_map/winding_dungeon/get_appropriate_path(var/value)
+/datum/random_map/winding_dungeon/get_appropriate_path(value)
 	switch(value)
 		if(WALL_CHAR)
 			return wall_type
@@ -332,7 +332,7 @@
 		else
 			return floor_type
 
-/datum/random_map/winding_dungeon/get_map_char(var/value)
+/datum/random_map/winding_dungeon/get_map_char(value)
 	. = ..(value)
 	switch(value)
 		if(BORDER_CHAR)

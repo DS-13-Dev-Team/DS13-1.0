@@ -239,7 +239,7 @@ default behaviour is:
 	return
 
 //Recursive function to find everything a mob is holding.
-/mob/living/get_contents(var/obj/item/weapon/storage/Storage = null)
+/mob/living/get_contents(obj/item/weapon/storage/Storage = null)
 	var/list/L = list()
 
 	if(Storage) //If it called itself
@@ -516,7 +516,7 @@ default behaviour is:
 	return 1
 
 //Organs should not be removed via inventory procs.
-/mob/living/carbon/drop_from_inventory(var/obj/item/W, atom/Target = null)
+/mob/living/carbon/drop_from_inventory(obj/item/W, atom/Target = null)
 	if(W in internal_organs)
 		return
 	if(W in organs)
@@ -524,12 +524,12 @@ default behaviour is:
 	. = ..()
 
 //damage/heal the mob ears and adjust the deaf amount
-/mob/living/adjustEarDamage(var/damage, deaf)
+/mob/living/adjustEarDamage(damage, deaf)
 	ear_damage = max(0, ear_damage + damage)
 	ear_deaf = max(0, ear_deaf + deaf)
 
 //pass a negative argument to skip one of the variable
-/mob/living/setEarDamage(var/damage = null, deaf = null)
+/mob/living/setEarDamage(damage = null, deaf = null)
 	if(!isnull(damage))
 		ear_damage = damage
 	if(!isnull(deaf))
@@ -538,7 +538,7 @@ default behaviour is:
 /mob/proc/can_be_possessed_by(mob/observer/ghost/possessor)
 	return istype(possessor) && possessor.client
 
-/mob/living/can_be_possessed_by(var/mob/observer/ghost/possessor)
+/mob/living/can_be_possessed_by(mob/observer/ghost/possessor)
 	if(!..())
 		return 0
 	if(!possession_candidate)

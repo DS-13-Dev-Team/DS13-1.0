@@ -46,7 +46,7 @@
 /datum/firemode/tripmine
 	override_fire = TRUE
 
-/datum/firemode/tripmine/fire(var/atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+/datum/firemode/tripmine/fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	var/obj/item/weapon/gun/projectile/detonator/R = gun
 	if (R.deployed_mines.len)
 		var/obj/effect/mine/trip/M = R.deployed_mines[R.deployed_mines.len]
@@ -102,7 +102,7 @@
 	fire_sound = 'sound/weapons/guns/fire/detonator_fire.ogg'
 
 
-/obj/item/projectile/deploy/detonator/deploy_to_floor(var/turf/T)
+/obj/item/projectile/deploy/detonator/deploy_to_floor(turf/T)
 	set waitfor = FALSE
 	if (deployed)
 		return
@@ -112,7 +112,7 @@
 	trip.floor_deployed(T)
 
 //Detonator can be used as an impact grenade launcher, but its less effective
-/obj/item/projectile/deploy/detonator/attack_mob(var/mob/living/victim)
+/obj/item/projectile/deploy/detonator/attack_mob(mob/living/victim)
 	set waitfor = FALSE
 	if (deployed)
 		return
@@ -153,7 +153,7 @@
 	D.deployed_mines += src
 	gunref = "\ref[D]"
 
-/obj/effect/mine/trip/explode(var/atom/victim)
+/obj/effect/mine/trip/explode(atom/victim)
 	triggered = TRUE
 
 	playsound(get_turf(src), pick(list('sound/weapons/guns/blast/detonator_explosion_1.ogg',

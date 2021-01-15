@@ -27,7 +27,7 @@
 		announcer.autosay(message, "A.L.I.C.E.", "Response Team")
 
 
-/datum/shuttle/autodock/ferry/specops/launch(var/user)
+/datum/shuttle/autodock/ferry/specops/launch(user)
 	if (!can_launch())
 		return
 

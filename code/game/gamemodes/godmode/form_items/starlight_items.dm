@@ -1,12 +1,12 @@
 /obj/item/clothing/ring/aura_ring
 	var/obj/aura/granted_aura
 
-/obj/item/clothing/ring/aura_ring/equipped(var/mob/living/L, slot)
+/obj/item/clothing/ring/aura_ring/equipped(mob/living/L, slot)
 	..()
 	if(granted_aura && slot == slot_gloves)
 		L.add_aura(granted_aura)
 
-/obj/item/clothing/ring/aura_ring/dropped(var/mob/living/L)
+/obj/item/clothing/ring/aura_ring/dropped(mob/living/L)
 	..()
 	if(granted_aura)
 		L.remove_aura(granted_aura)
@@ -66,7 +66,7 @@
 	force_divisor = 0.3
 	var/charge = 5
 
-/obj/item/weapon/material/knife/ritual/shadow/attack(var/mob/living/M, mob/living/user, hit_zone)
+/obj/item/weapon/material/knife/ritual/shadow/attack(mob/living/M, mob/living/user, hit_zone)
 	. = ..()
 	if(.)
 		if(charge)

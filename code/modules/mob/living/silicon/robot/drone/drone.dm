@@ -85,7 +85,7 @@ var/list/mob_hat_cache = list()
 	// None of the tests passed, good bye
 	self_destruct()
 
-/mob/living/silicon/robot/drone/can_be_possessed_by(var/mob/observer/ghost/possessor)
+/mob/living/silicon/robot/drone/can_be_possessed_by(mob/observer/ghost/possessor)
 	if(!istype(possessor) || !possessor.client || !possessor.ckey)
 		return 0
 	if(!config.allow_drone_spawn)
@@ -101,7 +101,7 @@ var/list/mob_hat_cache = list()
 		return 0
 	return 1
 
-/mob/living/silicon/robot/drone/do_possession(var/mob/observer/ghost/possessor)
+/mob/living/silicon/robot/drone/do_possession(mob/observer/ghost/possessor)
 	if(!(istype(possessor) && possessor.ckey))
 		return 0
 	if(src.ckey || src.client)
@@ -193,7 +193,7 @@ var/list/mob_hat_cache = list()
 	update_icon()
 
 //Drones cannot be upgraded with borg modules so we need to catch some items before they get used in ..().
-/mob/living/silicon/robot/drone/attackby(var/obj/item/weapon/W, mob/user)
+/mob/living/silicon/robot/drone/attackby(obj/item/weapon/W, mob/user)
 
 	if(user.a_intent == I_HELP && istype(W, /obj/item/clothing/head))
 		if(hat)
@@ -241,7 +241,7 @@ var/list/mob_hat_cache = list()
 
 	..()
 
-/mob/living/silicon/robot/drone/emag_act(var/remaining_charges, mob/user)
+/mob/living/silicon/robot/drone/emag_act(remaining_charges, mob/user)
 	if(!client || stat == 2)
 		to_chat(user, "<span class='danger'>There's not much point subverting this heap of junk.</span>")
 		return
@@ -305,7 +305,7 @@ var/list/mob_hat_cache = list()
 	gib()
 
 //DRONE MOVEMENT.
-/mob/living/silicon/robot/drone/slip_chance(var/prob_slip)
+/mob/living/silicon/robot/drone/slip_chance(prob_slip)
 	return 0
 
 //CONSOLE PROCS
@@ -393,7 +393,7 @@ var/list/mob_hat_cache = list()
 			drones++
 	return drones >= config.max_maint_drones
 
-/mob/living/silicon/robot/drone/show_laws(var/everyone = 0)
+/mob/living/silicon/robot/drone/show_laws(everyone = 0)
 	if(!controlling_ai)
 		return..()
 	to_chat(src, "<b>Obey these laws:</b>")

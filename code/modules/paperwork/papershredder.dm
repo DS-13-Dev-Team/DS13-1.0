@@ -18,7 +18,7 @@
 		/obj/item/weapon/paper_bundle = 3,
 		)
 
-/obj/machinery/papershredder/attackby(var/obj/item/W, mob/user)
+/obj/machinery/papershredder/attackby(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/weapon/storage))
 		empty_bin(user, W)
@@ -102,7 +102,7 @@
 /obj/machinery/papershredder/update_icon()
 	icon_state = "papershredder[max(0,min(5,Floor(paperamount/2)))]"
 
-/obj/item/weapon/shreddedp/attackby(var/obj/item/W as obj, mob/user)
+/obj/item/weapon/shreddedp/attackby(obj/item/W as obj, mob/user)
 	if(istype(W, /obj/item/weapon/flame/lighter))
 		burn_with_object(W, user)
 	else

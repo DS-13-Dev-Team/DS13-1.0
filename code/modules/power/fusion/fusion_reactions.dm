@@ -121,7 +121,7 @@ proc/get_fusion_reaction(p_react, s_react, m_energy)
 	radiation = 20
 	instability = 20
 
-/decl/fusion_reaction/phoron_supermatter/handle_reaction_special(var/obj/effect/fusion_em_field/holder)
+/decl/fusion_reaction/phoron_supermatter/handle_reaction_special(obj/effect/fusion_em_field/holder)
 
 	wormhole_event()
 

@@ -9,10 +9,10 @@
 	var/power = 1
 	var/meltdose = 23 // How much is needed to melt
 
-/datum/reagent/acid/affect_blood(var/mob/living/carbon/M, alien, removed)
+/datum/reagent/acid/affect_blood(mob/living/carbon/M, alien, removed)
 	M.take_organ_damage(0, removed * power)
 
-/datum/reagent/acid/affect_touch(var/mob/living/carbon/M, alien, removed) // This is the most interesting
+/datum/reagent/acid/affect_touch(mob/living/carbon/M, alien, removed) // This is the most interesting
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.head)
@@ -104,13 +104,13 @@
 	power = NECROMORPH_ACID_POWER
 	meltdose = 30 // How much is needed to melt
 
-/datum/reagent/acid/necromorph/affect_blood(var/mob/living/carbon/M, alien, removed)
+/datum/reagent/acid/necromorph/affect_blood(mob/living/carbon/M, alien, removed)
 	if (alien == IS_NECROMORPH)
 		removed *= NECROMORPH_FRIENDLY_FIRE_FACTOR	//Necromorph acid deals reduced friendly fire, but not nothing
 	.=..()
 
 
-/datum/reagent/acid/touch_turf(var/turf/simulated/T, amount)
+/datum/reagent/acid/touch_turf(turf/simulated/T, amount)
 	var/obj/effect/decal/cleanable/acid_spill/AS = (locate(/obj/effect/decal/cleanable/acid_spill) in T)
 	if (!AS)
 		AS = new(T)
@@ -119,7 +119,7 @@
 	AS.adjust_volume(amount, type)
 
 
-/datum/reagent/acid/touch_obj(var/obj/O, amount)
+/datum/reagent/acid/touch_obj(obj/O, amount)
 	O.acid_act(src, amount)
 
 
@@ -128,7 +128,7 @@
 /atom/proc/acid_act(datum/reagent/acid/acid, volume)
 	return TRUE
 
-/obj/acid_act(var/datum/reagent/acid/acid, volume)
+/obj/acid_act(datum/reagent/acid/acid, volume)
 	if (unacidable)
 		return FALSE
 	.=..()
@@ -180,7 +180,7 @@
 	var/datum/reagents/R
 	var/min_alpha = 50	//Its not fun to have an invisible patch of acid. It will only have harmful effects while alpha is above this value
 
-/obj/effect/decal/cleanable/acid_spill/examine(var/mob/user)
+/obj/effect/decal/cleanable/acid_spill/examine(mob/user)
 
 	if (alpha > min_alpha)
 		desc = SPAN_WARNING("That looks dangerous to walk on.")
@@ -246,7 +246,7 @@
 
 //Walking over the acid spill soaks some of it up.
 //Crawling over it soaks up a lot more
-/obj/effect/decal/cleanable/acid_spill/Crossed(var/atom/mover)
+/obj/effect/decal/cleanable/acid_spill/Crossed(atom/mover)
 	.=..()
 	if (iscarbon(mover) && !mover.is_necromorph() && alpha > min_alpha)
 		var/sound = pick(list('sound/effects/footstep/footstep_wet_1.ogg',
@@ -266,7 +266,7 @@
 	Slowing Effect
 ******************/
 
-/datum/reagent/acid/necromorph/affect_touch(var/mob/living/carbon/M, alien, removed)
+/datum/reagent/acid/necromorph/affect_touch(mob/living/carbon/M, alien, removed)
 	.=..()
 	//Slowing effect
 	if (!M.is_necromorph())

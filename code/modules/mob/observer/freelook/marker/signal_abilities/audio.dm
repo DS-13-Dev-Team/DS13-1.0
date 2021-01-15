@@ -25,7 +25,7 @@
 	marker_active_required = TRUE
 
 
-/datum/signal_ability/audio/pre_cast(var/mob/user)
+/datum/signal_ability/audio/pre_cast(mob/user)
 	var/choice1 = input(user,"Select which necromorph type to impersonate. Try to pick something plausible for the current round time.","Species Selection") as null|anything in GLOB.all_necromorph_species
 	if (!choice1)
 		return FALSE
@@ -38,7 +38,7 @@
 	selected_soundtype = choice2
 	return TRUE
 
-/datum/signal_ability/audio/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/audio/on_cast(mob/user, atom/target, list/data)
 	var/volume = VOLUME_MID
 	if (selected_soundtype == SOUND_SHOUT || selected_soundtype == SOUND_SHOUT_LONG || selected_soundtype == SOUND_DEATH)
 		volume = VOLUME_LOUD

@@ -83,14 +83,14 @@
 		T += M.rating
 	speed = T / 2 // 1 -> 3
 
-/obj/machinery/mecha_part_fabricator/attack_hand(var/mob/user)
+/obj/machinery/mecha_part_fabricator/attack_hand(mob/user)
 	if(..())
 		return
 	if(!allowed(user))
 		return
 	ui_interact(user)
 
-/obj/machinery/mecha_part_fabricator/ui_interact(var/mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
+/obj/machinery/mecha_part_fabricator/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/data[0]
 
 	var/datum/design/current = queue.len ? queue[1] : null
@@ -150,7 +150,7 @@
 
 	return 1
 
-/obj/machinery/mecha_part_fabricator/attackby(var/obj/item/I, mob/user)
+/obj/machinery/mecha_part_fabricator/attackby(obj/item/I, mob/user)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
 		return 1
@@ -194,7 +194,7 @@
 		to_chat(user, "The fabricator cannot hold more [stack_plural].")// use the plural form even if the given sheet is singular
 
 
-/obj/machinery/mecha_part_fabricator/emag_act(var/remaining_charges, mob/user)
+/obj/machinery/mecha_part_fabricator/emag_act(remaining_charges, mob/user)
 	switch(emagged)
 		if(0)
 			emagged = 0.5

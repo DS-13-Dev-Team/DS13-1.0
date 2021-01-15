@@ -28,7 +28,7 @@
 /obj/structure/cult/pylon/attack_hand(mob/M as mob)
 	attackpylon(M, 5)
 
-/obj/structure/cult/pylon/attack_generic(var/mob/user, damage)
+/obj/structure/cult/pylon/attack_generic(mob/user, damage)
 	attackpylon(user, damage)
 
 /obj/structure/cult/pylon/attackby(obj/item/W as obj, mob/user as mob)
@@ -61,7 +61,7 @@
 		playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
 
 
-/obj/structure/cult/pylon/repair(var/repair_power, datum/repair_source, mob/user)
+/obj/structure/cult/pylon/repair(repair_power, datum/repair_source, mob/user)
 	if(isbroken)
 		to_chat(user, "You repair the pylon.")
 		isbroken = 0
@@ -122,7 +122,7 @@
 	new t(src.loc)
 	qdel(src)
 
-/obj/effect/gateway/active/Crossed(var/atom/A)
+/obj/effect/gateway/active/Crossed(atom/A)
 	if(!istype(A, /mob/living))
 		return
 

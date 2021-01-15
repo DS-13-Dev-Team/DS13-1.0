@@ -130,7 +130,7 @@
 			data_to_write = null
 			to_chat(user, "<span class='notice'>You set \the [src]'s memory to absolutely nothing.</span>")
 
-/obj/item/device/integrated_electronics/debugger/MouseDrop(var/atom/over_object)
+/obj/item/device/integrated_electronics/debugger/MouseDrop(atom/over_object)
 	if(!accepting_refs)
 		return ..()
 
@@ -164,7 +164,7 @@
 	w_class = 2
 	var/last_scan = ""
 
-/obj/item/device/integrated_electronics/analyzer/examine(var/mob/user)
+/obj/item/device/integrated_electronics/analyzer/examine(mob/user)
 	. = ..(user, 1)
 	if(.)
 		if(last_scan)
@@ -172,7 +172,7 @@
 		else
 			to_chat(user, "\The [src] has not yet been used to analyze any assemblies.")
 
-/obj/item/device/integrated_electronics/analyzer/afterattack(var/obj/item/device/electronic_assembly/assembly, mob/user)
+/obj/item/device/integrated_electronics/analyzer/afterattack(obj/item/device/electronic_assembly/assembly, mob/user)
 	if(!istype(assembly))
 		return ..()
 

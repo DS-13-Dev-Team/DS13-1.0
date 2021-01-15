@@ -21,7 +21,7 @@
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION
 	secondary_langs = list(LANGUAGE_GUTTER)
 
-/datum/species/starlight/shadow/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/starlight/shadow/handle_environment_special(mob/living/carbon/human/H)
 	if(H.InStasis() || H.stat == DEAD || H.isSynthetic())
 		return
 	var/light_amount = 0

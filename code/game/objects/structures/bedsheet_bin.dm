@@ -21,7 +21,7 @@ LINEN BINS
 
 
 //If you're lying in bed, pass clicks on the sheet to that bed
-/obj/item/weapon/bedsheet/attack_hand(var/mob/user)
+/obj/item/weapon/bedsheet/attack_hand(mob/user)
 	if (user.buckled && get_turf(user.buckled) == get_turf(src))
 		user.buckled.attack_hand(user)
 		return

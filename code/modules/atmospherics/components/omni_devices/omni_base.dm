@@ -72,7 +72,7 @@
 		return 0
 	return 1
 
-/obj/machinery/atmospherics/omni/attackby(var/obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/atmospherics/omni/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(!isWrench(W))
 		return ..()
 
@@ -197,7 +197,7 @@
 		P.update = 1
 	update_ports()
 
-/obj/machinery/atmospherics/omni/hide(var/i)
+/obj/machinery/atmospherics/omni/hide(i)
 	update_underlays()
 
 /obj/machinery/atmospherics/omni/proc/update_ports()

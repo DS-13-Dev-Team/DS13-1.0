@@ -40,7 +40,7 @@
 	var/current_tab = "General"
 	var/hide_unavailable_gear = 0
 
-/datum/category_item/player_setup_item/loadout/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/loadout/load_character(savefile/S)
 	from_file(S["gear_list"], pref.gear_list)
 	from_file(S["gear_slot"], pref.gear_slot)
 	if (!pref.gear_slot)
@@ -49,7 +49,7 @@
 	if (pref.loadout)
 		pref.loadout.set_prefs(pref)
 
-/datum/category_item/player_setup_item/loadout/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/loadout/save_character(savefile/S)
 	to_file(S["gear_list"], pref.gear_list)
 	to_file(S["gear_slot"], pref.gear_slot)
 
@@ -294,7 +294,7 @@
 
 
 
-/datum/category_item/player_setup_item/loadout/update_setup(var/savefile/preferences, savefile/character)
+/datum/category_item/player_setup_item/loadout/update_setup(savefile/preferences, savefile/character)
 	if(preferences["version"] < 14)
 		var/list/old_gear = character["gear"]
 		if(istype(old_gear)) // During updates data isn't sanitized yet, we have to do manual checks

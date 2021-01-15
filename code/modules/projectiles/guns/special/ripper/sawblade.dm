@@ -131,7 +131,7 @@
 	sharp = TRUE
 	edge = TRUE
 
-/obj/item/ammo_casing/sawblade/examine(var/mob/user)
+/obj/item/ammo_casing/sawblade/examine(mob/user)
 	.=..()
 	//Show damage on inspection
 	if (health < initial(health))
@@ -469,7 +469,7 @@
 
 //Only called for blades in saw launcher mode, and only if they fail to penetrate through an object under normal rules.
 //This proc basically asks if we want to override a failed result.
-/obj/item/projectile/sawblade/check_penetrate(var/atom/A)
+/obj/item/projectile/sawblade/check_penetrate(atom/A)
 	//Blades will always slice through mobs
 	//Possible TODO: Check that the mob is organic
 	if (istype(A, /mob/living))
@@ -480,7 +480,7 @@
 
 
 //Handle some effects on hitting mobs
-/obj/item/projectile/sawblade/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
+/obj/item/projectile/sawblade/attack_mob(mob/living/target_mob, distance, miss_modifier=0)
 	//Update our hit location to wherever user is currently aiming
 	if (user)
 		def_zone = user.zone_sel.selecting
@@ -496,7 +496,7 @@
 		updatehealth()
 
 
-/obj/item/projectile/sawblade/on_impact(var/atom/A)
+/obj/item/projectile/sawblade/on_impact(atom/A)
 	if (!remote_controlled)
 		global_pixel_loc = get_global_pixel_loc() //Cache this so we know where to drop a remnant, for non remote blades
 		A.ex_act(3) //Some hefty damage is dealt, though its still less effective than remote control mode

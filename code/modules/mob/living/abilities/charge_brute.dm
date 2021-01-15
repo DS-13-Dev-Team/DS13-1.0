@@ -11,7 +11,7 @@
 	return TRUE
 
 
-/datum/extension/charge/brute/moved(var/atom/movable/mover, oldloc, newloc)
+/datum/extension/charge/brute/moved(atom/movable/mover, oldloc, newloc)
 	.=..()
 	//Parent will return false if something stopped our charge
 	if (.)

@@ -18,7 +18,7 @@
 /datum/nano_module/program/uplink
 	name = "TaxQuickly 2559"
 
-/datum/nano_module/program/uplink/ui_interact(var/mob/user)
+/datum/nano_module/program/uplink/ui_interact(mob/user)
 	var/datum/computer_file/program/uplink/prog = program
 	var/obj/item/modular_computer/computer = host
 	if(istype(computer) && istype(prog))

@@ -43,7 +43,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	can_block_movement = FALSE
 
 
-/obj/structure/cable/drain_power(var/drain_check, surge, amount = 0)
+/obj/structure/cable/drain_power(drain_check, surge, amount = 0)
 
 	if(drain_check)
 		return 1
@@ -120,7 +120,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	return "[round(powernet.avail)] W"
 
 //If underfloor, hide the cable
-/obj/structure/cable/hide(var/i)
+/obj/structure/cable/hide(i)
 	if(istype(loc, /turf))
 		set_invisibility(i ? 101 : 0)
 	update_icon()
@@ -523,7 +523,7 @@ obj/structure/cable/proc/cableColor(colorC)
 ///////////////////////////////////
 
 //you can use wires to heal robotics
-/obj/item/stack/cable_coil/attack(var/atom/A, mob/living/user, def_zone)
+/obj/item/stack/cable_coil/attack(atom/A, mob/living/user, def_zone)
 	if(ishuman(A) && user.a_intent == I_HELP)
 		var/mob/living/carbon/human/H = A
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]

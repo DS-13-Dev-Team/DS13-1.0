@@ -37,6 +37,6 @@
 	base_cost = 50
 	max_level = 1
 
-/datum/deity_item/blood_stone/buy(var/mob/living/deity/user)
+/datum/deity_item/blood_stone/buy(mob/living/deity/user)
 	..()
 	user.form.buildables |= /obj/structure/deity/blood_stone

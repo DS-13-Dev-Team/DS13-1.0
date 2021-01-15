@@ -23,7 +23,7 @@
 	hack_state = null
 	return ..()
 
-/obj/item/weapon/tool/multitool/hacktool/attackby(var/obj/W, mob/user)
+/obj/item/weapon/tool/multitool/hacktool/attackby(obj/W, mob/user)
 	if(isScrewdriver(W))
 		in_hack_mode = !in_hack_mode
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
@@ -89,7 +89,7 @@
 	hacktool = null
 	return ..()
 
-/datum/topic_state/default/must_hack/can_use_topic(var/src_object, mob/user)
+/datum/topic_state/default/must_hack/can_use_topic(src_object, mob/user)
 	if(!hacktool || !hacktool.in_hack_mode || !(src_object in hacktool.known_targets))
 		return STATUS_CLOSE
 	return ..()

@@ -377,7 +377,7 @@ var/list/ai_verbs_default = list(
 		emergency_message_cooldown = 0
 
 
-/mob/living/silicon/ai/check_eye(var/mob/user as mob)
+/mob/living/silicon/ai/check_eye(mob/user as mob)
 	if (!camera)
 		return -1
 	return 0

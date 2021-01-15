@@ -71,7 +71,7 @@ var/list/mining_floors = list()
 /turf/simulated/mineral/is_plating()
 	return 1
 
-/turf/simulated/mineral/update_icon(var/update_neighbors)
+/turf/simulated/mineral/update_icon(update_neighbors)
 	if(!mineral)
 		SetName(initial(name))
 		icon_state = "rock"
@@ -117,12 +117,12 @@ var/list/mining_floors = list()
 		if(1)
 			dig(rand(350,500))
 
-/turf/simulated/mineral/apply_impulse(var/direction, strength)
+/turf/simulated/mineral/apply_impulse(direction, strength)
 
 	var/dig_power = (rand_between(0.85,1.15)*strength)*1.5
 	dig(dig_power)
 
-/turf/simulated/mineral/bullet_act(var/obj/item/projectile/proj)
+/turf/simulated/mineral/bullet_act(obj/item/projectile/proj)
 	dig(proj.damage)
 	if (health <= 0)
 		return PROJECTILE_CONTINUE
@@ -172,7 +172,7 @@ var/list/mining_floors = list()
 
 
 //Completely remaking this pile of spaghetti	~Nanako
-/turf/simulated/mineral/attackby(var/obj/item/I, mob/living/user)
+/turf/simulated/mineral/attackby(obj/item/I, mob/living/user)
 	if (istype(I))
 		var/list/valid_qualities = I.has_qualities(list(QUALITY_DIGGING, QUALITY_EXCAVATION))
 		if (QUALITY_DIGGING in valid_qualities)
@@ -203,7 +203,7 @@ var/list/mining_floors = list()
 //Alt-clicking a mining turf does the opposite of what your tool normally does.
 	//If it defaults full dig, altclick does a single strike
 	//And if it defaults single strike, altclick does a full dig
-/turf/simulated/mineral/AltClick(var/mob/user)
+/turf/simulated/mineral/AltClick(mob/user)
 	var/obj/item/I = user.get_active_hand()
 	if (istype(I,/obj/item/weapon/tool/pickaxe))
 		var/obj/item/weapon/tool/pickaxe/P = I

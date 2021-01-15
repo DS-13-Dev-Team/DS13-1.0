@@ -10,7 +10,7 @@
 	target_types = list(/turf/simulated)
 
 
-/datum/signal_ability/writing/special_check(var/turf/target)
+/datum/signal_ability/writing/special_check(turf/target)
 	var/num_doodles = 0
 	for( var/obj/effect/decal/cleanable/blood/writing/W in target)
 		num_doodles++
@@ -19,7 +19,7 @@
 		return
 	return TRUE
 
-/datum/signal_ability/writing/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/writing/on_cast(mob/user, atom/target, list/data)
 	var/message = sanitize(input("Write a message", "Blood writing", ""))
 	if (!message)
 		refund()

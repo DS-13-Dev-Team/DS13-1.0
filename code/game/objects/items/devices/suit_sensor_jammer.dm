@@ -37,7 +37,7 @@
 	suit_sensor_jammer_methods_by_type = null
 	disable()
 
-/obj/item/device/suit_sensor_jammer/attack_self(var/mob/user)
+/obj/item/device/suit_sensor_jammer/attack_self(mob/user)
 	tg_ui_interact(user)
 
 /obj/item/device/suit_sensor_jammer/get_cell()
@@ -84,7 +84,7 @@
 		if(active)
 			overlays += "active"
 
-/obj/item/device/suit_sensor_jammer/emp_act(var/severity)
+/obj/item/device/suit_sensor_jammer/emp_act(severity)
 	..()
 	if(bcell)
 		bcell.emp_act(severity)
@@ -102,7 +102,7 @@
 	var/new_range = range + (rand(0,6) / severity) - (rand(0,3) / severity)
 	set_range(new_range)
 
-obj/item/device/suit_sensor_jammer/examine(var/user)
+obj/item/device/suit_sensor_jammer/examine(user)
 	. = ..(user, 3)
 	if(.)
 		var/list/message = list()
@@ -165,7 +165,7 @@ obj/item/device/suit_sensor_jammer/ui_act(action, params)
 				set_method(method)
 				. = TRUE
 
-/obj/item/device/suit_sensor_jammer/Process(var/wait)
+/obj/item/device/suit_sensor_jammer/Process(wait)
 	if(bcell)
 		// With a range of 2 and jammer cost of 3 the default (high capacity) cell will last for almost 14 minutes, give or take
 		// 10000 / (2^2 * 3 / 10) ~= 8333 ticks ~= 13.8 minutes

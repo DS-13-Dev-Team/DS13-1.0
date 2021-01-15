@@ -66,7 +66,7 @@
 
 	return 1
 
-/obj/item/rig_module/power_sink/accepts_item(var/obj/item/input_device, mob/living/user)
+/obj/item/rig_module/power_sink/accepts_item(obj/item/input_device, mob/living/user)
 	var/can_drain = input_device.drain_power(1)
 	if(can_drain > 0)
 		engage(input_device)

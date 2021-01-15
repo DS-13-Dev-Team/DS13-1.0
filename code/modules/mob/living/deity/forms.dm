@@ -88,7 +88,7 @@ Each plays slightly different and has different challenges/benefits
 				/datum/deity_item/blood_crafting/space
 				)
 
-/datum/god_form/narsie/take_charge(var/mob/living/user, charge)
+/datum/god_form/narsie/take_charge(mob/living/user, charge)
 	charge = min(100, charge * 0.25)
 	if(prob(charge))
 		to_chat(user, "<span class='warning'>You feel drained...</span>")
@@ -145,6 +145,6 @@ Each plays slightly different and has different challenges/benefits
 				/datum/deity_item/phenomena/rock_form
 				)
 
-/datum/god_form/wizard/take_charge(var/mob/living/user, charge)
+/datum/god_form/wizard/take_charge(mob/living/user, charge)
 	linked_god.adjust_power_min(max(round(charge/100), 1),silent = 1)
 	return 1

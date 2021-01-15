@@ -90,7 +90,7 @@
 /datum/biomass_source/baseline/can_absorb()
 	return MASS_READY
 
-/datum/biomass_source/baseline/absorb(var/ticks = 1)
+/datum/biomass_source/baseline/absorb(ticks = 1)
 	return mass_tick
 
 /datum/biomass_source/baseline/calculate_tick()
@@ -119,7 +119,7 @@
 
 //Todo here: Check if the human body is near enough to the marker, or some sort of corruption-corpse-deposit node
 //If its too far away, return pause
-/datum/biomass_source/convergence/can_absorb(var/ticks = 1)
+/datum/biomass_source/convergence/can_absorb(ticks = 1)
 
 	var/mob/living/L = locate(source)
 	if (!L || QDELETED(L))
@@ -137,7 +137,7 @@
 
 	return ..()
 
-/datum/biomass_source/convergence/absorb(var/ticks = 1)
+/datum/biomass_source/convergence/absorb(ticks = 1)
 	.=..()
 	var/mob/L = locate(source)
 	if (ishuman(L) && remaining_mass)
@@ -183,7 +183,7 @@
 	harvester = _source
 	.=..()
 
-/datum/biomass_source/harvest/can_absorb(var/ticks = 1)
+/datum/biomass_source/harvest/can_absorb(ticks = 1)
 	//If the harvester is gone, we stop
 	if (QDELETED(harvester))
 		return MASS_FAIL
@@ -196,7 +196,7 @@
 
 //Passive harvesting just returns the same value each tick.
 //The harvester node will intially set this value
-/datum/biomass_source/harvest/absorb(var/ticks = 1)
+/datum/biomass_source/harvest/absorb(ticks = 1)
 	return last_absorb
 
 //Harvest (Active)
@@ -204,7 +204,7 @@
 //------------------------------------------------------------------------------------------------------------------
 
 
-/datum/biomass_source/harvest/active/absorb(var/ticks)
+/datum/biomass_source/harvest/active/absorb(ticks)
 	return harvester.handle_active_absorb(ticks)
 
 /*
@@ -222,7 +222,7 @@
 
 /datum/proc/adjust_biomass(change)
 
-/obj/adjust_biomass(var/change)
+/obj/adjust_biomass(change)
 	//Account for the possibility of going sub zero
 	if ((biomass + change) < 0)
 		change = biomass * -1
@@ -233,7 +233,7 @@
 	return change
 
 //Called when the biomass of a live mob changes at any time other than initial spawning
-/mob/living/adjust_biomass(var/change)
+/mob/living/adjust_biomass(change)
 	//Account for the possibility of going sub zero
 	if ((biomass + change) < 0)
 		change = biomass * -1

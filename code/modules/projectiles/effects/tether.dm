@@ -177,14 +177,14 @@
 		if(3.0)
 			take_damage(rand(25,60), BRUTE, null, epicentre)
 
-/obj/effect/projectile/tether/bullet_act(var/obj/item/projectile/P)
+/obj/effect/projectile/tether/bullet_act(obj/item/projectile/P)
 	take_damage(P.get_structure_damage(), user = P.firer, used_weapon = P)
 	if (health > 0)
 		return FALSE
 	return TRUE
 
 
-/obj/effect/projectile/tether/attackby(var/obj/item/C, mob/user)
+/obj/effect/projectile/tether/attackby(obj/item/C, mob/user)
 	if (!(obj_flags & OBJ_FLAG_INVINCIBLE))
 		playsound(src, C.hitsound, VOLUME_MID, 1)
 		user.do_attack_animation(src)
@@ -233,7 +233,7 @@
 		qdel(src)
 	return TRUE
 
-/obj/effect/projectile/tether/repair(var/repair_power, datum/repair_source, mob/user)
+/obj/effect/projectile/tether/repair(repair_power, datum/repair_source, mob/user)
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()

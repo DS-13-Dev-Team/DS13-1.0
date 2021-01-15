@@ -54,7 +54,7 @@
 	..()
 	add_glow()
 
-/mob/living/simple_animal/construct/attack_generic(var/mob/user)
+/mob/living/simple_animal/construct/attack_generic(mob/user)
 	if(istype(user, /mob/living/simple_animal/construct/builder))
 		if(health < max_health)
 			adjustBruteLoss(-5)
@@ -117,7 +117,7 @@
 	weakened = 0
 	..()
 
-/mob/living/simple_animal/construct/armoured/bullet_act(var/obj/item/projectile/P)
+/mob/living/simple_animal/construct/armoured/bullet_act(obj/item/projectile/P)
 	if(istype(P, /obj/item/projectile/energy) || istype(P, /obj/item/projectile/beam))
 		var/reflectchance = 80 - round(P.damage/3)
 		if(prob(reflectchance))

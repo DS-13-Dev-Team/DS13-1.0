@@ -92,7 +92,7 @@ GLOBAL_DATUM_INIT(malf, /datum/antagonist/rogue_ai, new)
 	player.original = player.current
 	return player.current
 
-/datum/antagonist/rogue_ai/set_antag_name(var/mob/living/silicon/player)
+/datum/antagonist/rogue_ai/set_antag_name(mob/living/silicon/player)
 	if(!istype(player))
 		testing("rogue_ai set_antag_name called on non-silicon mob [player]!")
 		return

@@ -387,7 +387,7 @@
 	name = "Change Charge"
 	module_mode = "select_charge_type"
 
-/datum/stat_rig_module/charge/AddHref(var/list/href_list)
+/datum/stat_rig_module/charge/AddHref(list/href_list)
 	var/charge_index = module.charges.Find(module.charge_selected)
 	if(!charge_index)
 		charge_index = 0

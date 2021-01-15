@@ -72,7 +72,7 @@
 	var/hand_timer = null
 	var/hand_duration = 0
 
-/spell/hand/duration/cast(var/list/targets, mob/user)
+/spell/hand/duration/cast(list/targets, mob/user)
 	. = ..()
 	if(.)
 		hand_timer = addtimer(CALLBACK(src, .proc/cancel_hand), hand_duration, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_OVERRIDE)

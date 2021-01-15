@@ -189,7 +189,7 @@
 /mob/living/simple_animal/proc/audible_emote(act_desc)
 	custom_emote(2, act_desc)
 
-/mob/living/simple_animal/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_animal/bullet_act(obj/item/projectile/Proj)
 	if(!Proj || Proj.nodamage)
 		return
 
@@ -253,7 +253,7 @@
 
 	return
 
-/mob/living/simple_animal/attackby(var/obj/item/O, mob/user)
+/mob/living/simple_animal/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/stack/medical))
 		if(stat != DEAD)
 			var/obj/item/stack/medical/MED = O
@@ -373,7 +373,7 @@
 			return (0)
 	return 1
 
-/mob/living/simple_animal/say(var/message)
+/mob/living/simple_animal/say(message)
 	var/verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)
@@ -385,7 +385,7 @@
 /mob/living/simple_animal/get_speech_ending(verb, ending)
 	return verb
 
-/mob/living/simple_animal/put_in_hands(var/obj/item/W) // No hands.
+/mob/living/simple_animal/put_in_hands(obj/item/W) // No hands.
 	W.loc = get_turf(src)
 	return 1
 
@@ -421,7 +421,7 @@
 /*
 	Animals
 */
-/mob/living/simple_animal/UnarmedAttack(var/atom/A, proximity)
+/mob/living/simple_animal/UnarmedAttack(atom/A, proximity)
 
 	if(!..())
 		return
@@ -445,7 +445,7 @@
 	Temperature handling
 */
 
-/mob/living/simple_animal/get_cold_protection(var/temperature)
+/mob/living/simple_animal/get_cold_protection(temperature)
 	if (temperature > minbodytemp)
 		return 1
 
@@ -455,7 +455,7 @@
 	else
 		return 1 //Special case for 0 temperature
 
-/mob/living/simple_animal/get_heat_protection(var/temperature)
+/mob/living/simple_animal/get_heat_protection(temperature)
 	var/limit = get_heat_limit()
 	if (temperature < limit)
 		return 1

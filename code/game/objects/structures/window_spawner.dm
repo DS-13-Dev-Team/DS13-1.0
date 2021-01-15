@@ -126,6 +126,6 @@
 	fulltile = TRUE
 	win_path = /obj/structure/window/reinforced/polarized/full
 
-/obj/effect/wingrille_spawn/reinforced/polarized/handle_window_spawn(var/obj/structure/window/reinforced/polarized/P)
+/obj/effect/wingrille_spawn/reinforced/polarized/handle_window_spawn(obj/structure/window/reinforced/polarized/P)
 	if(id)
 		P.id = id

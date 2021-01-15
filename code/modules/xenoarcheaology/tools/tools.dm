@@ -8,10 +8,10 @@
 	matter = list(MATERIAL_STEEL = 500)
 	w_class = ITEM_SIZE_SMALL
 
-/obj/item/device/gps/attack_self(var/mob/user as mob)
+/obj/item/device/gps/attack_self(mob/user as mob)
 	to_chat(user, "<span class='notice'>\icon[src] \The [src] flashes <i>[get_coordinates()]</i>.</span>")
 
-/obj/item/device/gps/examine(var/mob/user)
+/obj/item/device/gps/examine(mob/user)
 	..()
 	to_chat(user, "<span class='notice'>\The [src]'s screen shows: <i>[get_coordinates()]</i>.</span>")
 
@@ -72,10 +72,10 @@
 	var/last_scan_time = 0
 	var/scan_delay = 25
 
-/obj/item/device/ano_scanner/attack_self(var/mob/living/user)
+/obj/item/device/ano_scanner/attack_self(mob/living/user)
 	interact(user)
 
-/obj/item/device/ano_scanner/interact(var/mob/living/user)
+/obj/item/device/ano_scanner/interact(mob/living/user)
 	if(world.time - last_scan_time >= scan_delay)
 		last_scan_time = world.time
 
@@ -180,10 +180,10 @@
 
 			to_chat(user, "<span class='notice'>\icon[src] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
-/obj/item/device/depth_scanner/attack_self(var/mob/living/user)
+/obj/item/device/depth_scanner/attack_self(mob/living/user)
 	interact(user)
 
-/obj/item/device/depth_scanner/interact(var/mob/user as mob)
+/obj/item/device/depth_scanner/interact(mob/user as mob)
 	var/dat = "<b>Coordinates with positive matches</b><br>"
 
 	dat += "<A href='?src=\ref[src];clear=0'>== Clear all ==</a><br>"
@@ -256,10 +256,10 @@
 				cur_dist = check_dist
 				. = weakref(R)
 
-/obj/item/weapon/pinpointer/radio/attack_self(var/mob/user as mob)
+/obj/item/weapon/pinpointer/radio/attack_self(mob/user as mob)
 	interact(user)
 
-/obj/item/weapon/pinpointer/radio/interact(var/mob/user)
+/obj/item/weapon/pinpointer/radio/interact(mob/user)
 	var/dat = "<b>Radio frequency tracker</b><br>"
 	dat += {"
 				Tracking: <A href='byond://?src=\ref[src];toggle=1'>[active ? "Enabled" : "Disabled"]</A><BR>

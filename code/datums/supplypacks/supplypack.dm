@@ -87,7 +87,7 @@ var/list/supply_methods_
 	. += "</ul>"
 	. = jointext(.,null)
 
-/decl/supply_method/randomized/spawn_contents(var/decl/hierarchy/supply_pack/sp, location)
+/decl/supply_method/randomized/spawn_contents(decl/hierarchy/supply_pack/sp, location)
 	if(!sp || !location)
 		return
 	. = list()
@@ -95,5 +95,5 @@ var/list/supply_methods_
 		var/picked = pick(sp.contains)
 		. += new picked(location)
 
-/decl/supply_method/randomized/setup_manifest(var/decl/hierarchy/supply_pack/sp)
+/decl/supply_method/randomized/setup_manifest(decl/hierarchy/supply_pack/sp)
 	return "Contains any [sp.num_contained] of:" + ..()

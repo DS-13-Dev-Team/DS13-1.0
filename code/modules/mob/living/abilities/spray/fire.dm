@@ -8,7 +8,7 @@
 	var/temperature = T0C + 2600
 	fx_type = /obj/effect/particle_system/spray/fire
 
-/datum/extension/spray/flame/handle_extra_data(var/list/extra_data)
+/datum/extension/spray/flame/handle_extra_data(list/extra_data)
 	.=..()
 	src.temperature = extra_data["temperature"]
 

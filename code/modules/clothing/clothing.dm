@@ -80,7 +80,7 @@
 	coverage = get_coverage()
 
 //BS12: Species-restricted clothing check.
-/obj/item/clothing/mob_can_equip(var/mob/M, slot, disable_warning = 0, force = 0)
+/obj/item/clothing/mob_can_equip(mob/M, slot, disable_warning = 0, force = 0)
 
 	//if we can't equip the item anyway, don't bother with species_restricted (cuts down on spam)
 	if (!..())
@@ -108,7 +108,7 @@
 				return 0
 	return 1
 
-/obj/item/clothing/equipped(var/mob/user)
+/obj/item/clothing/equipped(mob/user)
 	if(needs_vision_update())
 		update_vision()
 	return ..()
@@ -129,7 +129,7 @@
 	else
 		icon = initial(icon)
 
-/obj/item/clothing/head/helmet/refit_for_species(var/target_species)
+/obj/item/clothing/head/helmet/refit_for_species(target_species)
 	if(!species_restricted)
 		return //this item doesn't use the species_restricted system
 
@@ -158,11 +158,11 @@
 	if(accessories.len > ties.len)
 		.+= ". <a href='?src=\ref[src];list_ungabunga=1'>\[See accessories\]</a>"
 
-/obj/item/clothing/CanUseTopic(var/user)
+/obj/item/clothing/CanUseTopic(user)
 	if(user in view(get_turf(src)))
 		return STATUS_INTERACTIVE
 
-/obj/item/clothing/OnTopic(var/user, list/href_list, datum/topic_state/state)
+/obj/item/clothing/OnTopic(user, list/href_list, datum/topic_state/state)
 	if(href_list["list_ungabunga"])
 		if(accessories.len)
 			var/list/ties = list()
@@ -452,11 +452,11 @@ BLIND     // can't see anything
 	update_icon(user)
 	user.update_action_buttons()
 
-/obj/item/clothing/head/attack_ai(var/mob/user)
+/obj/item/clothing/head/attack_ai(mob/user)
 	if(!mob_wear_hat(user))
 		return ..()
 
-/obj/item/clothing/head/attack_generic(var/mob/user)
+/obj/item/clothing/head/attack_generic(mob/user)
 	if(!istype(user) || !mob_wear_hat(user))
 		return ..()
 
@@ -487,7 +487,7 @@ BLIND     // can't see anything
 		to_chat(user, "<span class='notice'>You crawl under \the [src].</span>")
 	return 1
 
-/obj/item/clothing/head/update_icon(var/mob/user)
+/obj/item/clothing/head/update_icon(mob/user)
 
 	overlays.Cut()
 	var/mob/living/carbon/human/H
@@ -632,13 +632,13 @@ BLIND     // can't see anything
 	update_icon()
 	return
 
-/obj/item/clothing/shoes/attack_hand(var/mob/living/M)
+/obj/item/clothing/shoes/attack_hand(mob/living/M)
 	if(can_hold_knife && holding && src.loc == M)
 		draw_knife()
 		return
 	..()
 
-/obj/item/clothing/shoes/attackby(var/obj/item/I, mob/user)
+/obj/item/clothing/shoes/attackby(obj/item/I, mob/user)
 	if(can_hold_knife && is_type_in_list(I, list(/obj/item/weapon/material/shard, /obj/item/weapon/material/butterfly, /obj/item/weapon/material/kitchen/utensil, /obj/item/weapon/material/hatchet/tacknife)))
 		if(holding)
 			to_chat(user, "<span class='warning'>\The [src] is already holding \a [holding].</span>")
@@ -770,7 +770,7 @@ BLIND     // can't see anything
 			mob_state = "[mob_state][user_human.species.icon_lying]"
 	return "[mob_state]_s"
 
-/obj/item/clothing/under/attack_hand(var/mob/user)
+/obj/item/clothing/under/attack_hand(mob/user)
 	if(accessories && accessories.len)
 		..()
 	if ((ishuman(usr) || issmall(usr)) && src.loc == user)
@@ -894,7 +894,7 @@ BLIND     // can't see anything
 	else
 		user.visible_message("[user] adjusts the tracking sensor on [src]", "You adjust the sensor on [src].")
 
-/obj/item/clothing/under/emp_act(var/severity)
+/obj/item/clothing/under/emp_act(severity)
 	..()
 	var/new_mode
 	switch(severity)

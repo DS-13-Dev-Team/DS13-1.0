@@ -630,7 +630,7 @@
 
 			data["thresholds"] = thresholds
 
-/obj/machinery/alarm/CanUseTopic(var/mob/user, datum/topic_state/state, href_list = list())
+/obj/machinery/alarm/CanUseTopic(mob/user, datum/topic_state/state, href_list = list())
 	if(buildstage != 2)
 		return STATUS_CLOSE
 

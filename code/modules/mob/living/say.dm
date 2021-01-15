@@ -140,7 +140,7 @@ proc/get_radio_key_from_channel(channel)
 		return "asks"
 	return verb
 
-/mob/living/say(var/message, datum/language/speaking = null, verb="says", alt_name="", whispering)
+/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", whispering)
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
 			to_chat(src, "<span class='warning'>You cannot speak in IC (Muted).</span>")

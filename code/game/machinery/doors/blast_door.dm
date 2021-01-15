@@ -156,7 +156,7 @@
 // Proc: open()
 // Parameters: None
 // Description: Opens the door. Does necessary checks. Automatically closes if autoclose is true
-/obj/machinery/door/blast/open(var/forced = FALSE)
+/obj/machinery/door/blast/open(forced = FALSE)
 	if (src.operating || (!forced && (stat & BROKEN || stat & NOPOWER)))
 		return
 	force_open()

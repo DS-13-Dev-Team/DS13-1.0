@@ -20,7 +20,7 @@
 			var/decl/backpack_outfit/backpack_outfit = bos[bo]
 			backpacks_by_name[backpack_outfit.name] = backpack_outfit
 
-/datum/category_item/player_setup_item/general/equipment/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/general/equipment/load_character(savefile/S)
 	var/load_backbag
 
 	from_file(S["all_underwear"], pref.all_underwear)
@@ -30,7 +30,7 @@
 
 	pref.backpack = backpacks_by_name[load_backbag] || get_default_outfit_backpack()
 
-/datum/category_item/player_setup_item/general/equipment/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/general/equipment/save_character(savefile/S)
 	to_file(S["all_underwear"], pref.all_underwear)
 	to_file(S["all_underwear_metadata"], pref.all_underwear_metadata)
 	to_file(S["backpack"], pref.backpack.name)
@@ -133,7 +133,7 @@
 	var/metadata = pref.backpack_metadata[backpack_outfit.name]
 	metadata["[bt]"] = new_metadata
 
-/datum/category_item/player_setup_item/general/equipment/OnTopic(var/href, list/href_list, mob/user)
+/datum/category_item/player_setup_item/general/equipment/OnTopic(href, list/href_list, mob/user)
 	if(href_list["change_underwear"])
 		var/datum/category_group/underwear/UWC = GLOB.underwear.categories_by_name[href_list["change_underwear"]]
 		if(!UWC)
@@ -173,7 +173,7 @@
 
 	return ..()
 
-/datum/category_item/player_setup_item/general/equipment/update_setup(var/savefile/preferences, savefile/character)
+/datum/category_item/player_setup_item/general/equipment/update_setup(savefile/preferences, savefile/character)
 	if(preferences["version"]  <= 16)
 		var/list/old_index_to_backpack_type = list(
 			/decl/backpack_outfit/nothing,

@@ -130,7 +130,7 @@
 		return 1
 	return ..()
 
-/obj/machinery/portable_atmospherics/hydroponics/attack_ghost(var/mob/observer/ghost/user)
+/obj/machinery/portable_atmospherics/hydroponics/attack_ghost(mob/observer/ghost/user)
 	if(!(harvest && seed && seed.has_mob_product))
 		return
 
@@ -157,7 +157,7 @@
 	if(locate(/obj/item/seeds) in get_turf(src))
 		plant()
 
-/obj/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/portable_atmospherics/hydroponics/bullet_act(obj/item/projectile/Proj)
 
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.get_trait(TRAIT_IMMUTABLE) > 0)
@@ -393,7 +393,7 @@
 
 	return
 
-/obj/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/machinery/portable_atmospherics/hydroponics/attackby(obj/item/O as obj, mob/user as mob)
 
 	if (O.is_open_container())
 		return 0

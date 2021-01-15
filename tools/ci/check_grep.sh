@@ -106,7 +106,7 @@ while read f; do
         st=1
     fi;
 done < <(find . -type f -name '*.dm')
-if grep -nP '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
+if grep -nP '^/[\w/]\S+\(.*(|, ?var/.*).*\)' code/**/*.dm; then
     echo "changed files contains proc argument starting with 'var'"
     st=1
 fi;

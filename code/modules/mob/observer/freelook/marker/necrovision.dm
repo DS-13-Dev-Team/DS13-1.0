@@ -12,7 +12,7 @@
 	/obj/item/marker_shard)
 	chunk_type = /datum/chunk/necrovision
 
-/datum/chunk/necrovision/acquire_visible_turfs(var/list/visible)
+/datum/chunk/necrovision/acquire_visible_turfs(list/visible)
 	for( var/datum/source as anything in sources)
 		if (!istype(source))
 			sources -= source

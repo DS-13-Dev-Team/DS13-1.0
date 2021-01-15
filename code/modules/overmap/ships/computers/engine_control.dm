@@ -12,7 +12,7 @@
 	. = ..()
 	linked = map_sectors["[z]"]
 
-/obj/machinery/computer/engines/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/engines/attack_hand(mob/user as mob)
 	if(..())
 		user.unset_machine()
 		return

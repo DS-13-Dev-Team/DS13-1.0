@@ -14,7 +14,7 @@
 	targeting_method	=	TARGET_CLICK
 
 
-/datum/signal_ability/lock/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/lock/on_cast(mob/user, atom/target, list/data)
 	var/obj/machinery/door/airlock/A = target
 	if (!A.can_lockdown(user, 1))
 		refund(user)
@@ -42,7 +42,7 @@
 
 	targeting_method	=	TARGET_CLICK
 
-/datum/signal_ability/lockdown/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/lockdown/on_cast(mob/user, atom/target, list/data)
 	var/duration = 1.5 MINUTES
 	var/area/A = get_area(target)
 	if (istype(A) && A.bordering_doors.len)

@@ -31,7 +31,7 @@
 	use_stock_cost = 0.10
 	max_stock = 100
 
-/obj/item/weapon/tool/tape_roll/attack(var/mob/living/carbon/human/H, mob/user)
+/obj/item/weapon/tool/tape_roll/attack(mob/living/carbon/human/H, mob/user)
 	if(istype(H))
 		if(user.zone_sel.selecting == BP_EYES)
 
@@ -94,7 +94,7 @@
 			return ..()
 		return 1
 
-/obj/item/weapon/tool/tape_roll/stick(var/obj/item/target, mob/user)
+/obj/item/weapon/tool/tape_roll/stick(obj/item/target, mob/user)
 	if (!istype(target) || target.anchored)
 		return
 
@@ -171,7 +171,7 @@
 	overlays = null
 	qdel(src)
 
-/obj/item/weapon/ducttape/afterattack(var/A, mob/user, flag, params)
+/obj/item/weapon/ducttape/afterattack(A, mob/user, flag, params)
 
 	if(!in_range(user, A) || istype(A, /obj/machinery/door) || !stuck)
 		return

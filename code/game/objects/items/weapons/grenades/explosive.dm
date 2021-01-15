@@ -114,6 +114,6 @@
 	num_fragments = 200  //total number of fragments produced by the grenade
 	explosion_size = 5
 
-/obj/item/weapon/grenade/frag/high_yield/on_explosion(var/turf/O)
+/obj/item/weapon/grenade/frag/high_yield/on_explosion(turf/O)
 	if(explosion_size)
 		O.explosion(explosion_size, round(explosion_size/2)) //has a chance to blow a hole in the floor

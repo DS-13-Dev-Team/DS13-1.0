@@ -19,7 +19,7 @@
 	desc = "a fragile key made using a bar of soap."
 	var/uses = 0
 
-/obj/item/weapon/key/soap/get_data(var/mob/user)
+/obj/item/weapon/key/soap/get_data(mob/user)
 	uses--
 	if(uses == 1)
 		to_chat(user, "<span class='warning'>\The [src] is going to break soon!</span>")

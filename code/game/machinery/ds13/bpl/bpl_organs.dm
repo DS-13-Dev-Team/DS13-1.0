@@ -43,7 +43,7 @@
 		O = types[types[1]]
 	target_biomass = initial(O.biomass)
 
-/obj/item/organ/forming/adjust_biomass(var/change)
+/obj/item/organ/forming/adjust_biomass(change)
 	biomass += change
 
 /obj/item/organ/forming/get_growth_state()

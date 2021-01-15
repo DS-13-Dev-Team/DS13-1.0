@@ -85,7 +85,7 @@
 		else
 			return !density
 
-/obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/grille/bullet_act(obj/item/projectile/Proj)
 	if(!Proj)	return
 
 	//Flimsy grilles aren't so great at stopping projectiles. However they can absorb some of the impact
@@ -240,7 +240,7 @@
 			healthcheck()
 	..()
 
-/obj/structure/grille/attack_generic(var/mob/user, damage, attack_verb)
+/obj/structure/grille/attack_generic(mob/user, damage, attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
 	attack_animation(user)
 	health -= damage

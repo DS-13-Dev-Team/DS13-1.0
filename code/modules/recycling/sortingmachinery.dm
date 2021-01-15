@@ -254,7 +254,7 @@
 
 	throw_range = 5
 
-/obj/item/stack/package_wrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
+/obj/item/stack/package_wrap/afterattack(obj/target as obj, mob/user as mob, proximity)
 	if(!proximity) return
 	if(!istype(target))	//this really shouldn't be necessary (but it is).	-Pete
 		return
@@ -407,7 +407,7 @@
 /obj/machinery/disposal/deliveryChute/update_icon()
 	return
 
-/obj/machinery/disposal/deliveryChute/Bumped(var/atom/movable/AM) //Go straight into the chute
+/obj/machinery/disposal/deliveryChute/Bumped(atom/movable/AM) //Go straight into the chute
 	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect))	return
 	if(istype(AM, /obj/mecha))	return
 	switch(dir)
@@ -461,7 +461,7 @@
 	update_icon()
 	return
 
-/obj/machinery/disposal/deliveryChute/attackby(var/obj/item/I, mob/user)
+/obj/machinery/disposal/deliveryChute/attackby(obj/item/I, mob/user)
 	if(!I || !user)
 		return
 

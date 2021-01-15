@@ -2,11 +2,11 @@
 	name = "Prison Warp"
 	warn_before_use = TRUE
 
-/datum/admin_secret_item/admin_secret/prison_warp/can_execute(var/mob/user)
+/datum/admin_secret_item/admin_secret/prison_warp/can_execute(mob/user)
 	if(!ticker) return 0
 	return ..()
 
-/datum/admin_secret_item/admin_secret/prison_warp/execute(var/mob/user)
+/datum/admin_secret_item/admin_secret/prison_warp/execute(mob/user)
 	. = ..()
 	if(!.)
 		return

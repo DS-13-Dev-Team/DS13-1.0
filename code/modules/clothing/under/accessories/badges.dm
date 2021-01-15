@@ -19,11 +19,11 @@
 
 /obj/item/clothing/accessory/badge/proc/set_desc(mob/living/carbon/human/H)
 
-/obj/item/clothing/accessory/badge/CanUseTopic(var/user)
+/obj/item/clothing/accessory/badge/CanUseTopic(user)
 	if(user in view(get_turf(src)))
 		return STATUS_INTERACTIVE
 
-/obj/item/clothing/accessory/badge/OnTopic(var/mob/user, list/href_list)
+/obj/item/clothing/accessory/badge/OnTopic(mob/user, list/href_list)
 	if(href_list["look_at_me"])
 		if(istype(user))
 			user.examinate(src)
@@ -92,7 +92,7 @@
 	icon_state = "holobadge-cord"
 	slot_flags = SLOT_MASK | SLOT_TIE
 
-/obj/item/clothing/accessory/badge/holo/set_name(var/new_name)
+/obj/item/clothing/accessory/badge/holo/set_name(new_name)
 	..()
 	badge_number = random_id(type,1000,9999)
 	name = "[name] ([badge_number])"
@@ -108,7 +108,7 @@
 		return
 	return ..()
 
-/obj/item/clothing/accessory/badge/holo/emag_act(var/remaining_charges, mob/user)
+/obj/item/clothing/accessory/badge/holo/emag_act(remaining_charges, mob/user)
 	if (emagged)
 		to_chat(user, "<span class='danger'>\The [src] is already cracked.</span>")
 		return
@@ -117,7 +117,7 @@
 		to_chat(user, "<span class='danger'>You crack the holobadge security checks.</span>")
 		return 1
 
-/obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/item/clothing/accessory/badge/holo/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/weapon/card/id) || istype(O, /obj/item/modular_computer))
 
 		var/obj/item/weapon/card/id/id_card = O.GetIdCard()

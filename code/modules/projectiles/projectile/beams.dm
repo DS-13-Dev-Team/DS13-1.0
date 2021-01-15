@@ -71,7 +71,7 @@
 	name = "destroyer pulse"
 	damage = 60 //badmins be badmins I don't give a fuck
 
-/obj/item/projectile/beam/pulse/destroy/on_hit(var/atom/target, blocked = 0)
+/obj/item/projectile/beam/pulse/destroy/on_hit(atom/target, blocked = 0)
 	if(isturf(target))
 		target.ex_act(2, src)
 	..()

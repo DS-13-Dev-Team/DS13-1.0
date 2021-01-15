@@ -4,23 +4,23 @@
 /datum/storage_ui/tgui/ui_host()
 	return storage.ui_host()
 
-/datum/storage_ui/tgui/show_to(var/mob/user)
+/datum/storage_ui/tgui/show_to(mob/user)
 	tg_ui_interact(user)
 
-/datum/storage_ui/tgui/hide_from(var/mob/user)
+/datum/storage_ui/tgui/hide_from(mob/user)
 	tg_ui_interact(user)
 
 /datum/storage_ui/tgui/close_all()
 	SStgui.close_uis(src)
 
-/datum/storage_ui/tgui/on_open(var/mob/user)
+/datum/storage_ui/tgui/on_open(mob/user)
 	tg_ui_interact(user)
 
-/datum/storage_ui/tgui/on_insertion(var/mob/user)
+/datum/storage_ui/tgui/on_insertion(mob/user)
 	cached_ui_data = null
 	tg_ui_interact(user)
 
-/datum/storage_ui/tgui/on_post_remove(var/mob/user, obj/item/W)
+/datum/storage_ui/tgui/on_post_remove(mob/user, obj/item/W)
 	cached_ui_data = null
 	tg_ui_interact(user)
 

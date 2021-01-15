@@ -23,7 +23,7 @@ var/const/SUIT_STORAGE_WIRE_LOCKED		= 4
 	. += "The red light is [S.safeties ? "off" : "blinking"].<BR>"
 	. += "The yellow light is [S.locked ? "on" : "off"].<BR>"
 
-/datum/wires/suit_storage_unit/UpdatePulsed(var/index)
+/datum/wires/suit_storage_unit/UpdatePulsed(index)
 	var/obj/machinery/suit_cycler/S = holder
 	switch(index)
 		if(SUIT_STORAGE_WIRE_SAFETY)
@@ -33,7 +33,7 @@ var/const/SUIT_STORAGE_WIRE_LOCKED		= 4
 		if(SUIT_STORAGE_WIRE_LOCKED)
 			S.locked = !S.locked
 
-/datum/wires/suit_storage_unit/UpdateCut(var/index, mended)
+/datum/wires/suit_storage_unit/UpdateCut(index, mended)
 	var/obj/machinery/suit_cycler/S = holder
 	switch(index)
 		if(SUIT_STORAGE_WIRE_SAFETY)

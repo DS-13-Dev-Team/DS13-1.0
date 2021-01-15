@@ -42,7 +42,7 @@
 	holder_type = /obj/item/weapon/holder
 	override_limb_types = list(BP_HEAD = /obj/item/organ/external/head/no_eyes)
 
-/datum/species/monkey/handle_npc(var/mob/living/carbon/human/H)
+/datum/species/monkey/handle_npc(mob/living/carbon/human/H)
 	if(H.stat != CONSCIOUS)
 		return
 	if(prob(33) && isturf(H.loc) && !H.pulledby) //won't move if being pulled
@@ -65,7 +65,7 @@
 /datum/species/monkey/get_random_name()
 	return "[lowertext(name)] ([rand(100,999)])"
 
-/datum/species/monkey/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/monkey/handle_post_spawn(mob/living/carbon/human/H)
 	..()
 	H.item_state = lowertext(name)
 

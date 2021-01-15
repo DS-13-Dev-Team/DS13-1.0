@@ -25,7 +25,7 @@
 	sort_order = 1
 	var/datum/browser/panel
 
-/datum/category_item/player_setup_item/occupation/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/occupation/load_character(savefile/S)
 	from_file(S["alternate_option"], 	pref.alternate_option)
 	from_file(S["job_high"],			pref.job_high)
 	from_file(S["job_medium"],			pref.job_medium)
@@ -37,7 +37,7 @@
 
 	load_skills()
 
-/datum/category_item/player_setup_item/occupation/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/occupation/save_character(savefile/S)
 	save_skills()
 
 	to_file(S["alternate_option"],		pref.alternate_option)

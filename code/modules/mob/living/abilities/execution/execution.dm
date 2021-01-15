@@ -396,7 +396,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	return TRUE
 
 
-/mob/living/can_execute(var/error_messages = TRUE)
+/mob/living/can_execute(error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 	.=..()

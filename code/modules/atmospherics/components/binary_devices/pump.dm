@@ -62,7 +62,7 @@ Thus, the two variables affect pump operation are set in New():
 		add_underlay(T, node1, turn(dir, -180))
 		add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/binary/pump/hide(var/i)
+/obj/machinery/atmospherics/binary/pump/hide(i)
 	update_underlays()
 
 /obj/machinery/atmospherics/binary/pump/Process()
@@ -214,7 +214,7 @@ Thus, the two variables affect pump operation are set in New():
 	if(.)
 		src.update_icon()
 
-/obj/machinery/atmospherics/binary/pump/attackby(var/obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/atmospherics/binary/pump/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(!isWrench(W))
 		return ..()
 	if (!(stat & NOPOWER) && use_power)

@@ -1,7 +1,7 @@
 /turf/simulated/wall/diona/New(newloc)
 	..(newloc,"biomass")
 
-/turf/simulated/wall/diona/attack_generic(var/mob/user, damage, attack_message)
+/turf/simulated/wall/diona/attack_generic(mob/user, damage, attack_message)
 	if(istype(user, /mob/living/carbon/alien/diona))
 		if(can_open == WALL_OPENING)
 			return
@@ -143,14 +143,14 @@
 				nymph_count--
 	return
 
-/datum/random_map/automata/diona/get_appropriate_path(var/value)
+/datum/random_map/automata/diona/get_appropriate_path(value)
 	switch(value)
 		if(EMPTY_CHAR, DOOR_CHAR, MONSTER_CHAR, ARTIFACT_CHAR)
 			return floor_type
 		if(WALL_CHAR)
 			return wall_type
 
-/datum/random_map/automata/diona/get_additional_spawns(var/value, turf/T)
+/datum/random_map/automata/diona/get_additional_spawns(value, turf/T)
 
 	if(value != FLOOR_CHAR)
 		for( var/thing in T)

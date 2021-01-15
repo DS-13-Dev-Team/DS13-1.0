@@ -71,7 +71,7 @@ GLOBAL_DATUM_INIT(cult, /datum/antagonist/cultist, new)
 	sacrifice_target = sacrifice.target
 	global_objectives |= sacrifice
 
-/datum/antagonist/cultist/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/cultist/equip(mob/living/carbon/human/player)
 
 	if(!..())
 		return 0

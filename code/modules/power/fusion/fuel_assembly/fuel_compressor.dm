@@ -6,12 +6,12 @@
 	anchored = 1
 	layer = 4
 
-/obj/machinery/fusion_fuel_compressor/MouseDrop_T(var/atom/movable/target, mob/user)
+/obj/machinery/fusion_fuel_compressor/MouseDrop_T(atom/movable/target, mob/user)
 	if(user.incapacitated() || !user.Adjacent(src))
 		return
 	return do_fuel_compression(target, user)
 
-/obj/machinery/fusion_fuel_compressor/attackby(var/obj/item/thing, mob/user)
+/obj/machinery/fusion_fuel_compressor/attackby(obj/item/thing, mob/user)
 	return do_fuel_compression(thing, user) || ..()
 
 /obj/machinery/fusion_fuel_compressor/proc/do_fuel_compression(obj/item/thing, mob/user)

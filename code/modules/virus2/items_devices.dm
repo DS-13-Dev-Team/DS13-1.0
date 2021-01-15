@@ -54,7 +54,7 @@
 	src.virus2.makerandom()
 	growth = rand(5, 50)
 
-/obj/item/weapon/virusdish/attackby(var/obj/item/weapon/W as obj, mob/living/carbon/user as mob)
+/obj/item/weapon/virusdish/attackby(obj/item/weapon/W as obj, mob/living/carbon/user as mob)
 	if(istype(W,/obj/item/weapon/hand_labeler) || istype(W,/obj/item/weapon/reagent_containers/syringe))
 		return
 	..()
@@ -82,7 +82,7 @@
 	icon_state = "implantcase-b"
 	desc = "The bacteria in the dish are completely dead."
 
-/obj/item/weapon/ruinedvirusdish/attackby(var/obj/item/weapon/W as obj, mob/living/carbon/user as mob)
+/obj/item/weapon/ruinedvirusdish/attackby(obj/item/weapon/W as obj, mob/living/carbon/user as mob)
 	if(istype(W,/obj/item/weapon/hand_labeler) || istype(W,/obj/item/weapon/reagent_containers/syringe))
 		return ..()
 

@@ -381,11 +381,11 @@
 		"orange carpet" = /obj/item/stack/tile/carpet/oracarpet
 	)
 
-/obj/item/stack/tile/floor/cyborg/afterattack(var/atom/A, mob/user, proximity, params)
+/obj/item/stack/tile/floor/cyborg/afterattack(atom/A, mob/user, proximity, params)
 	if(!proximity)
 		return
 
-/obj/item/stack/tile/floor/cyborg/attack_self(var/mob/user)
+/obj/item/stack/tile/floor/cyborg/attack_self(mob/user)
 
 	var/new_cyborg_floor = input("Choose type of floor", "Tile synthesizer")as null|anything in cyborg_floor
 	if(new_cyborg_floor && !isnull(cyborg_floor[new_cyborg_floor]))

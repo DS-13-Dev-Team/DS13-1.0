@@ -67,7 +67,7 @@
 		handle_blood()
 	..()
 
-/obj/item/organ/internal/heart/rejuvenate(var/ignore_prosthetic_prefs)
+/obj/item/organ/internal/heart/rejuvenate(ignore_prosthetic_prefs)
 	pulse = PULSE_NORM
 	.=..()
 

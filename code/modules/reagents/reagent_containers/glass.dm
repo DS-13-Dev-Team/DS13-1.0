@@ -46,7 +46,7 @@
 	..()
 	base_name = name
 
-/obj/item/weapon/reagent_containers/glass/examine(var/mob/user)
+/obj/item/weapon/reagent_containers/glass/examine(mob/user)
 	if(!..(user, 2))
 		return
 	if(reagents && reagents.reagent_list.len)
@@ -73,7 +73,7 @@
 		return
 	return 0
 
-/obj/item/weapon/reagent_containers/glass/standard_feed_mob(var/mob/user, mob/target)
+/obj/item/weapon/reagent_containers/glass/standard_feed_mob(mob/user, mob/target)
 	if(!is_open_container())
 		to_chat(user, "<span class='notice'>You need to open \the [src] first.</span>")
 		return 1
@@ -81,10 +81,10 @@
 		return 1
 	return ..()
 
-/obj/item/weapon/reagent_containers/glass/self_feed_message(var/mob/user)
+/obj/item/weapon/reagent_containers/glass/self_feed_message(mob/user)
 	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
 
-/obj/item/weapon/reagent_containers/glass/afterattack(var/obj/target, mob/user, proximity)
+/obj/item/weapon/reagent_containers/glass/afterattack(obj/target, mob/user, proximity)
 	if(!is_open_container() || !proximity) //Is the container open & are they next to whatever they're clicking?
 		return 1 //If not, do nothing.
 	for( var/type in can_be_placed_into) //Is it something it can be placed into?
@@ -238,7 +238,7 @@
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 	unacidable = 0
 
-/obj/item/weapon/reagent_containers/glass/bucket/attackby(var/obj/D, mob/user as mob)
+/obj/item/weapon/reagent_containers/glass/bucket/attackby(obj/D, mob/user as mob)
 
 	if(isprox(D))
 		to_chat(user, "You add [D] to [src].")

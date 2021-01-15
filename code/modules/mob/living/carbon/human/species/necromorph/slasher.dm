@@ -222,7 +222,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 
 
 //Can't slash things without arms
-/datum/unarmed_attack/blades/is_usable(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
+/datum/unarmed_attack/blades/is_usable(mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 	if(!user.has_organ(BP_R_ARM) && !user.has_organ(BP_L_ARM))
 		return FALSE
 	return TRUE
@@ -327,7 +327,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 
 
 //Special death condition: Slashers die when they lose both blade arms
-/datum/species/necromorph/slasher/handle_death_check(var/mob/living/carbon/human/H)
+/datum/species/necromorph/slasher/handle_death_check(mob/living/carbon/human/H)
 	.=..()
 	if (!.)
 		if (!H.has_organ(BP_L_ARM) && !H.has_organ(BP_R_ARM))

@@ -68,14 +68,14 @@
 	return CLAMP01(totallums)
 
 // If an opaque movable atom moves around we need to potentially update visibility.
-/turf/Entered(var/atom/movable/Obj, atom/OldLoc)
+/turf/Entered(atom/movable/Obj, atom/OldLoc)
 	. = ..()
 	if(Obj && Obj.opacity)
 		if(!opaque_counter++)
 			reconsider_lights()
 
 
-/turf/Exited(var/atom/movable/Obj, atom/newloc)
+/turf/Exited(atom/movable/Obj, atom/newloc)
 	. = ..()
 	if(Obj && Obj.opacity)
 		if(!(--opaque_counter))

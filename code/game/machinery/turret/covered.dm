@@ -15,7 +15,7 @@
 	else
 		icon_state = "turretCover"
 
-/obj/machinery/turret/covered/take_damage(var/force)
+/obj/machinery/turret/covered/take_damage(force)
 	if(!raised && !raising)
 		force = force / 8
 
@@ -26,12 +26,12 @@
 	set_popdown_timer()
 
 
-/obj/machinery/turret/covered/select_target(var/mob/living/target)
+/obj/machinery/turret/covered/select_target(mob/living/target)
 	.=..()
 	set_popdown_timer()
 
 
-/obj/machinery/turret/covered/fire_at(var/mob/living/target)
+/obj/machinery/turret/covered/fire_at(mob/living/target)
 	.=..()
 	if (.)	//Only reset timer if we actually fired
 		set_popdown_timer()
@@ -99,7 +99,7 @@
 			return FALSE
 
 
-/obj/machinery/turret/covered/select_target(var/atom/target)
+/obj/machinery/turret/covered/select_target(atom/target)
 	.=..()
 	pop_up()
 

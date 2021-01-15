@@ -47,7 +47,7 @@
 	flora_diversity = 4
 	fauna_types = list(/mob/living/simple_animal/thinbug, /mob/living/simple_animal/tindalos, /mob/living/simple_animal/hostile/voxslug)
 
-/datum/random_map/noise/exoplanet/desert/get_additional_spawns(var/value, turf/T)
+/datum/random_map/noise/exoplanet/desert/get_additional_spawns(value, turf/T)
 	..()
 	var/v = noise2value(value)
 	if(v > 6)
@@ -130,7 +130,7 @@
 	..()
 	update_icon()
 
-/obj/structure/quicksand/buckle_mob(var/mob/L)
+/obj/structure/quicksand/buckle_mob(mob/L)
 	..()
 	update_icon()
 

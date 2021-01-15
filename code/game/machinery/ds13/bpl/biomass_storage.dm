@@ -16,7 +16,7 @@
 	else
 		return MASS_FAIL
 
-/obj/structure/reagent_dispensers/biomass/harvest_biomass(var/ticks = 1)
+/obj/structure/reagent_dispensers/biomass/harvest_biomass(ticks = 1)
 	var/target_biomass = ticks * BIOMASS_HARVEST_ACTIVE
 	var/target_reagent = target_biomass * BIOMASS_TO_REAGENT
 	var/amount_removed = reagents.remove_reagent(/datum/reagent/nutriment/biomass, target_reagent)

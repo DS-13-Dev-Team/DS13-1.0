@@ -9,7 +9,7 @@
 	var/heavy_effect_range = 1
 	var/light_effect_range = 2
 
-	on_impact(var/atom/A)
+	on_impact(atom/A)
 		empulse(A, heavy_effect_range, light_effect_range)
 		return 1
 
@@ -26,7 +26,7 @@
 	sharp = 1
 	edge = 1
 
-	on_hit(var/atom/target, blocked = 0)
+	on_hit(atom/target, blocked = 0)
 		target.explosion(3,1)
 		return 1
 
@@ -41,7 +41,7 @@
 	var/temperature = 300
 
 
-	on_hit(var/atom/target, blocked = 0)//These two could likely check temp protection on the mob
+	on_hit(atom/target, blocked = 0)//These two could likely check temp protection on the mob
 		if(istype(target, /mob/living))
 			var/mob/M = target
 			M.bodytemperature = temperature
@@ -87,7 +87,7 @@
 	nodamage = 1
 	check_armour = "energy"
 
-	on_hit(var/atom/target, blocked = 0)
+	on_hit(atom/target, blocked = 0)
 		var/mob/living/M = target
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = M
@@ -131,7 +131,7 @@
 	nodamage = 1
 	check_armour = "energy"
 
-	on_hit(var/atom/target, blocked = 0)
+	on_hit(atom/target, blocked = 0)
 		var/mob/M = target
 		if(ishuman(target)) //These rays make plantmen fat.
 			var/mob/living/carbon/human/H = M
@@ -146,7 +146,7 @@
 /obj/item/projectile/beam/mindflayer
 	name = "flayer ray"
 
-	on_hit(var/atom/target, blocked = 0)
+	on_hit(atom/target, blocked = 0)
 		if(ishuman(target))
 			var/mob/living/carbon/human/M = target
 			M.confused += rand(5,8)

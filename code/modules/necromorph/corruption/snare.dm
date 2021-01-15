@@ -66,7 +66,7 @@
 	return ..()
 
 
-/obj/structure/corruption_node/snare/Crossed(var/atom/movable/AM)
+/obj/structure/corruption_node/snare/Crossed(atom/movable/AM)
 	if (ishuman(AM) && !AM.is_necromorph())
 		attempt_trip(AM)
 
@@ -103,7 +103,7 @@
 /*
 	Interaction
 */
-/obj/structure/corruption_node/snare/Click(var/location, control, params)
+/obj/structure/corruption_node/snare/Click(location, control, params)
 	register_awareness(usr)
 	.=..()
 
@@ -253,7 +253,7 @@
 	rotate_angle = 0
 
 //Check we have a surface to place it on
-/datum/click_handler/placement/ability/snare/placement_blocked(var/turf/candidate)
+/datum/click_handler/placement/ability/snare/placement_blocked(turf/candidate)
 	for( var/mob/living/carbon/human/H in orange(SNARE_PLACEMENT_BUFFER, candidate))
 		if (!H.is_necromorph() && !H.stat)
 			return "Cannot be placed within [SNARE_PLACEMENT_BUFFER] tiles of a conscious crewmember."

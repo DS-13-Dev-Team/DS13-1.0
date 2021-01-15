@@ -29,7 +29,7 @@
 	to_chat(user, "<span class='notice'>You transfer the contents of \the [supplied] into \the [src].</span>")
 	return 1
 
-/obj/item/weapon/sample/print/merge_evidence(var/obj/item/weapon/sample/supplied, mob/user)
+/obj/item/weapon/sample/print/merge_evidence(obj/item/weapon/sample/supplied, mob/user)
 	if(!supplied.evidence || !supplied.evidence.len)
 		return 0
 	for( var/print in supplied.evidence)
@@ -45,7 +45,7 @@
 	// Fingerprints will be handled in after_attack() to not mess up the samples taken
 	return A.attackby(src, user, click_params)
 
-/obj/item/weapon/sample/attackby(var/obj/O, mob/user)
+/obj/item/weapon/sample/attackby(obj/O, mob/user)
 	if(O.type == src.type)
 		if(user.unEquip(O) && merge_evidence(O, user))
 			qdel(O)
@@ -64,7 +64,7 @@
 	icon_state = "fingerprint0"
 	item_state = "paper"
 
-/obj/item/weapon/sample/print/attack_self(var/mob/user)
+/obj/item/weapon/sample/print/attack_self(mob/user)
 	if(evidence && evidence.len)
 		return
 	if(!ishuman(user))
@@ -80,7 +80,7 @@
 	SetName("[initial(name)] (\the [H])")
 	icon_state = "fingerprint1"
 
-/obj/item/weapon/sample/print/attack(var/mob/living/M, mob/user)
+/obj/item/weapon/sample/print/attack(mob/living/M, mob/user)
 
 	if(!ishuman(M))
 		return ..()
@@ -119,7 +119,7 @@
 		return 1
 	return 0
 
-/obj/item/weapon/sample/print/copy_evidence(var/atom/supplied)
+/obj/item/weapon/sample/print/copy_evidence(atom/supplied)
 	if(supplied.fingerprints && supplied.fingerprints.len)
 		for( var/print in supplied.fingerprints)
 			evidence[print] = supplied.fingerprints[print]
@@ -143,7 +143,7 @@
 	var/obj/item/weapon/sample/S = new evidence_path(get_turf(user), supplied)
 	to_chat(user, "<span class='notice'>You transfer [S.evidence.len] [S.evidence.len > 1 ? "[evidence_type]s" : "[evidence_type]"] to \the [S].</span>")
 
-/obj/item/weapon/forensics/sample_kit/afterattack(var/atom/A, mob/user, proximity)
+/obj/item/weapon/forensics/sample_kit/afterattack(atom/A, mob/user, proximity)
 	if(!proximity)
 		return
 	if(user.skill_check(SKILL_FORENSICS, SKILL_ADEPT) && can_take_sample(user, A))
@@ -165,5 +165,5 @@
 	evidence_type = "fingerprint"
 	evidence_path = /obj/item/weapon/sample/print
 
-/obj/item/weapon/forensics/sample_kit/powder/can_take_sample(var/mob/user, atom/supplied)
+/obj/item/weapon/forensics/sample_kit/powder/can_take_sample(mob/user, atom/supplied)
 	return (supplied.fingerprints && supplied.fingerprints.len)

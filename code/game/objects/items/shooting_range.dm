@@ -15,7 +15,7 @@
 	if (stake)
 		stake.set_target(null)
 
-/obj/item/target/attackby(var/obj/item/W, mob/user)
+/obj/item/target/attackby(obj/item/W, mob/user)
 	if(isWelder(W))
 		if(W.use_tool(user, src, WORKTIME_SLOW, QUALITY_WELDING, FAILCHANCE_NORMAL))
 			overlays.Cut()
@@ -24,7 +24,7 @@
 			to_chat(usr, "<span class='notice'>You slice off [src]'s uneven chunks of aluminum and scorch marks.</span>")
 			return
 
-/obj/item/target/attack_hand(var/mob/user)
+/obj/item/target/attack_hand(mob/user)
 	// taking pinned targets off!
 	if (stake)
 		stake.attack_hand(user)
@@ -40,7 +40,7 @@
 	desc = "A shooting target with a threatening silhouette."
 	hp = 2350 // alium onest too kinda
 
-/obj/item/target/bullet_act(var/obj/item/projectile/Proj)
+/obj/item/target/bullet_act(obj/item/projectile/Proj)
 	var/p_x = Proj.pixel_click.x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset Proj.p_x!"
 	var/p_y = Proj.pixel_click.y + pick(0,0,0,0,0,-1,1)
 	var/decaltype = 1 // 1 - scorch, 2 - bullet
@@ -123,7 +123,7 @@
 	var/b2y1 = 0
 	var/b2y2 = 0
 
-	New(var/obj/item/target/Target, pixel_x = 0, pixel_y = 0)
+	New(obj/item/target/Target, pixel_x = 0, pixel_y = 0)
 		if(!Target) return
 
 		// Randomize the first box

@@ -8,7 +8,7 @@
 			if (AC.slot == A.slot)
 				return 0
 
-/obj/item/clothing/attackby(var/obj/item/I, mob/user)
+/obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/clothing/accessory))
 
 		if(!valid_accessory_slots || !valid_accessory_slots.len)
@@ -32,7 +32,7 @@
 
 	..()
 
-/obj/item/clothing/attack_hand(var/mob/user)
+/obj/item/clothing/attack_hand(mob/user)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)
 	if(accessories.len && src.loc == user)
 		for( var/obj/item/clothing/accessory/A in accessories)
@@ -40,7 +40,7 @@
 		return
 	return ..()
 
-/obj/item/clothing/MouseDrop(var/obj/over_object)
+/obj/item/clothing/MouseDrop(obj/over_object)
 	if (!over_object || !(ishuman(usr) || issmall(usr)))
 		return
 
@@ -61,7 +61,7 @@
 			usr.put_in_l_hand(src)
 	src.add_fingerprint(usr)
 
-/obj/item/clothing/examine(var/mob/user)
+/obj/item/clothing/examine(mob/user)
 	. = ..(user)
 	for( var/obj/item/clothing/accessory/A in accessories)
 		to_chat(user, "\icon[A] \A [A] is attached to it.")

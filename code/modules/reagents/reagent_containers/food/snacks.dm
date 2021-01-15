@@ -201,7 +201,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// FOOD END
 ////////////////////////////////////////////////////////////////////////////////
-/obj/item/weapon/reagent_containers/food/snacks/attack_generic(var/mob/living/user)
+/obj/item/weapon/reagent_containers/food/snacks/attack_generic(mob/living/user)
 	if(!isanimal(user) && !isalien(user))
 		return
 	user.visible_message("<b>[user]</b> nibbles away at \the [src].","You nibble away at \the [src].")
@@ -1357,7 +1357,7 @@
 	..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
 
-/obj/item/weapon/reagent_containers/food/snacks/monkeycube/attack_self(var/mob/user)
+/obj/item/weapon/reagent_containers/food/snacks/monkeycube/attack_self(mob/user)
 	if(wrapped)
 		Unwrap(user)
 
@@ -1376,7 +1376,7 @@
 	wrapped = 0
 	atom_flags |= ATOM_FLAG_OPEN_CONTAINER
 
-/obj/item/weapon/reagent_containers/food/snacks/monkeycube/On_Consume(var/mob/M)
+/obj/item/weapon/reagent_containers/food/snacks/monkeycube/On_Consume(mob/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.visible_message("<span class='warning'>A screeching creature bursts out of [M]'s chest!</span>")

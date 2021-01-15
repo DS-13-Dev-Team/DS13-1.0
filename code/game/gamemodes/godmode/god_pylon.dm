@@ -6,7 +6,7 @@
 	icon_state = "pylon"
 	var/list/intuned = list()
 
-/obj/structure/deity/pylon/attack_deity(var/mob/living/deity/D)
+/obj/structure/deity/pylon/attack_deity(mob/living/deity/D)
 	if(D.pylon == src)
 		D.leave_pylon()
 	else
@@ -17,7 +17,7 @@
 		linked_god.leave_pylon()
 	return ..()
 
-/obj/structure/deity/pylon/attack_hand(var/mob/living/L)
+/obj/structure/deity/pylon/attack_hand(mob/living/L)
 	if(!linked_god)
 		return
 	if(L in intuned)

@@ -172,7 +172,7 @@
 	var/fall_override = TRUE
 	var/mob/original_body = null
 
-/mob/living/carbon/human/bst/can_inject(var/mob/user, error_msg, target_zone)
+/mob/living/carbon/human/bst/can_inject(mob/user, error_msg, target_zone)
 	user << span("alert", "The [src] disarms you before you can inject them.")
 	user.drop_item()
 	return FALSE
@@ -278,7 +278,7 @@
 	else
 		..()
 
-/obj/item/device/radio/headset/ert/bst/recalculateChannels(var/setDescription = FALSE)
+/obj/item/device/radio/headset/ert/bst/recalculateChannels(setDescription = FALSE)
 	..(setDescription)
 	translate_binary = TRUE
 	//translate_hive = TRUE
@@ -414,7 +414,7 @@
 	down()
 
 
-/mob/living/carbon/human/bst/verb/blur_filter(var/atom/A)
+/mob/living/carbon/human/bst/verb/blur_filter(atom/A)
 	set name = "Blur"
 	set category = "BST"
 

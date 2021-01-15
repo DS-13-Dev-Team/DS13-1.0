@@ -63,7 +63,7 @@
 
 */
 
-/obj/machinery/door/attack_generic(var/mob/user, damage, attack_verb, environment_smash)
+/obj/machinery/door/attack_generic(mob/user, damage, attack_verb, environment_smash)
 	if(environment_smash >= 1)
 		damage = max(damage, min_force)
 
@@ -213,7 +213,7 @@
 			do_animate("deny")
 	return
 
-/obj/machinery/door/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/door/bullet_act(obj/item/projectile/Proj)
 	..()
 
 	var/damage = Proj.get_structure_damage()
@@ -341,7 +341,7 @@
 	update_icon()
 	return
 
-/obj/machinery/door/emag_act(var/remaining_charges)
+/obj/machinery/door/emag_act(remaining_charges)
 	if(density && operable())
 		do_animate("emag")
 		sleep(6)
@@ -633,7 +633,7 @@
 	. = force_time * get_force_difficulty()
 
 
-/obj/machinery/door/repair(var/repair_power, datum/repair_source, mob/user)
+/obj/machinery/door/repair(repair_power, datum/repair_source, mob/user)
 	health = clamp(health+repair_power, 0, max_health)
 	if(stat & BROKEN)
 		stat &= ~BROKEN

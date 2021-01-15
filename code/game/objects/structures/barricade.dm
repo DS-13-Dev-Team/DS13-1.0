@@ -133,17 +133,17 @@
 
 	impale_victim(victim, damage_mult)
 
-/obj/structure/barricade/spike/charge_act(var/atom/mover, power)
+/obj/structure/barricade/spike/charge_act(atom/mover, power)
 	impale_victim(mover, 3)	//Charging into this thing HURTS!
 	.=..()	//The charge will probably still destroy us though
 
 
-/obj/structure/barricade/spike/attack_hand(var/mob/user)
+/obj/structure/barricade/spike/attack_hand(mob/user)
 	impale_victim(user, 0.5)	//Touching it with your hands hurts, but less than walking into it
 	.=..()
 
 //Attempting to climb spiked barricades is a bad idea.
-/obj/structure/barricade/spike/do_climb(var/mob/living/user)
+/obj/structure/barricade/spike/do_climb(mob/living/user)
 	//First of all, we stab them once while mounting
 	impale_victim(user, 1.5)
 	.=..()	//Then call parent

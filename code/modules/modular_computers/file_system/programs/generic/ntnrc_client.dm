@@ -175,7 +175,7 @@
 	else
 		ui_header = "ntnrc_idle.gif"
 
-/datum/computer_file/program/chatclient/kill_program(var/forced = 0)
+/datum/computer_file/program/chatclient/kill_program(forced = 0)
 	if(channel)
 		channel.remove_client(src)
 		channel = null

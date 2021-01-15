@@ -4,7 +4,7 @@
 	icon_state = "nymph"
 	organ_tag = "special" // Turns into a nymph instantly, no transplanting possible.
 
-/obj/item/organ/internal/diona/removed(var/mob/living/user, skip_nymph)
+/obj/item/organ/internal/diona/removed(mob/living/user, skip_nymph)
 	if(BP_IS_ROBOTIC(src))
 		return ..()
 	var/mob/living/carbon/human/H = owner
@@ -55,7 +55,7 @@
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "claw"
 
-/obj/item/organ/internal/diona/nutrients/removed(var/mob/user)
+/obj/item/organ/internal/diona/nutrients/removed(mob/user)
 	return ..(user, 1)
 
 /obj/item/organ/internal/diona/node
@@ -77,5 +77,5 @@
 	owner.shock_stage -= light_amount
 	owner.nutrition    = Clamp(owner.nutrition, 0, 550)
 
-/obj/item/organ/internal/diona/node/removed(var/mob/user)
+/obj/item/organ/internal/diona/node/removed(mob/user)
 	return ..(user, 1)

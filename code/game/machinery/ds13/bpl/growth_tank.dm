@@ -52,7 +52,7 @@
 	turn_off()
 	.=..()
 
-/obj/machinery/growth_tank/examine(var/mob/user)
+/obj/machinery/growth_tank/examine(mob/user)
 	.=..()
 	if (current_growth_atom)
 		if (forming)
@@ -371,10 +371,10 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 /*
 	Interaction
 */
-/obj/machinery/growth_tank/attack_hand(var/mob/living/carbon/human/user)
+/obj/machinery/growth_tank/attack_hand(mob/living/carbon/human/user)
 	show_menu(user)
 
-/obj/machinery/growth_tank/attackby(var/obj/item/I, mob/user)
+/obj/machinery/growth_tank/attackby(obj/item/I, mob/user)
 	if(!I || !user)
 		return
 

@@ -49,19 +49,19 @@ LEGACY_RECORD_STRUCTURE(all_waypoints, waypoint)
 
 		return
 
-/obj/machinery/computer/helm/relaymove(var/mob/user, direction)
+/obj/machinery/computer/helm/relaymove(mob/user, direction)
 	if(manual_control && linked)
 		linked.relaymove(user,direction)
 		return 1
 
-/obj/machinery/computer/helm/check_eye(var/mob/user as mob)
+/obj/machinery/computer/helm/check_eye(mob/user as mob)
 	if (!manual_control)
 		return -1
 	if (!get_dist(user, src) > 1 || user.blinded || !linked )
 		return -1
 	return 0
 
-/obj/machinery/computer/helm/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/helm/attack_hand(mob/user as mob)
 	if(..())
 		user.unset_machine()
 		manual_control = 0
@@ -248,7 +248,7 @@ LEGACY_RECORD_STRUCTURE(all_waypoints, waypoint)
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/computer/navigation/check_eye(var/mob/user as mob)
+/obj/machinery/computer/navigation/check_eye(mob/user as mob)
 	if (!viewing)
 		return -1
 	if (!get_dist(user, src) > 1 || user.blinded || !linked )
@@ -256,7 +256,7 @@ LEGACY_RECORD_STRUCTURE(all_waypoints, waypoint)
 		return -1
 	return 0
 
-/obj/machinery/computer/navigation/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/navigation/attack_hand(mob/user as mob)
 	if(..())
 		user.unset_machine()
 		viewing = 0

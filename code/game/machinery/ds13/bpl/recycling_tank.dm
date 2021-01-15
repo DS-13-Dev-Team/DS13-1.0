@@ -97,7 +97,7 @@
 
 
 
-/obj/machinery/recycling_tank/attackby(var/obj/item/I, mob/user)
+/obj/machinery/recycling_tank/attackby(obj/item/I, mob/user)
 	if(!I || !user)
 		return
 

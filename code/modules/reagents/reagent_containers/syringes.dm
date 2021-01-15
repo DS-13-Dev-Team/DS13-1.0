@@ -313,11 +313,11 @@
 	visible_name = "a giant syringe"
 	time = 300
 
-/obj/item/weapon/reagent_containers/syringe/ld50_syringe/syringestab(var/mob/living/carbon/target, mob/living/carbon/user)
+/obj/item/weapon/reagent_containers/syringe/ld50_syringe/syringestab(mob/living/carbon/target, mob/living/carbon/user)
 	to_chat(user, "<span class='notice'>This syringe is too big to stab someone with it.</span>")
 	return // No instant injecting
 
-/obj/item/weapon/reagent_containers/syringe/ld50_syringe/drawReagents(var/target, mob/user)
+/obj/item/weapon/reagent_containers/syringe/ld50_syringe/drawReagents(target, mob/user)
 	if(ismob(target)) // No drawing 60 units of blood at once
 		to_chat(user, "<span class='notice'>This needle isn't designed for drawing blood.</span>")
 		return

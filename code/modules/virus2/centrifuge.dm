@@ -10,7 +10,7 @@
 	var/datum/disease2/disease/virus2 = null
 	core_skill = SKILL_MEDICAL
 
-/obj/machinery/computer/centrifuge/attackby(var/obj/O as obj, mob/user as mob)
+/obj/machinery/computer/centrifuge/attackby(obj/O as obj, mob/user as mob)
 	if(isScrewdriver(O))
 		return ..(O,user)
 
@@ -32,7 +32,7 @@
 	if(! (stat & (BROKEN|NOPOWER)))
 		icon_state = (isolating || curing) ? "centrifuge_moving" : "centrifuge"
 
-/obj/machinery/computer/centrifuge/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/centrifuge/attack_hand(mob/user as mob)
 	if(..()) return
 	ui_interact(user)
 

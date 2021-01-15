@@ -41,21 +41,21 @@ GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)
 	return
 
 
-/turf/bioblast_act(var/power = 1)
+/turf/bioblast_act(power = 1)
 	for( var/atom/A in contents)
 		A.bioblast_act(power)
 
 
 
 //On living mobs, power is dealt as burn damage
-/mob/living/bioblast_act(var/power = 1)
+/mob/living/bioblast_act(power = 1)
 	if (is_necromorph())
 		power *= NECROMORPH_FRIENDLY_FIRE_FACTOR	//Less friendly fire damage
 	take_overall_damage(brute = 0, burn = power, sharp = FALSE, edge = FALSE, used_weapon = "bioblast", armortype ="bio")
 
 
 //For carbon mobs, half of the damage is dealt over time by dousing the victim in acid
-/mob/living/carbon/bioblast_act(var/power = 1)
+/mob/living/carbon/bioblast_act(power = 1)
 	var/acid_volume = (power*0.5) / NECROMORPH_ACID_POWER	//Figure out how many units of acid we need to deal half of the power in damage
 	//var/atom/bioblast_acid_holder = new()
 	var/datum/reagents/R = new(acid_volume, GLOB.bioblast_acid_holder)	//Populate this
@@ -66,7 +66,7 @@ GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)
 	.=..(power*0.5)
 
 
-/atom/bioblast_act(var/power = 1)
+/atom/bioblast_act(power = 1)
 	if (power >= BIOBLAST_TIER_1)
 		ex_act(1)
 	else if (power >= BIOBLAST_TIER_2)

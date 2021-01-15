@@ -104,12 +104,12 @@
 	return S
 
 /*
-/obj/effect/chem_spray(var/atom/location, atom/host, initial_target)
+/obj/effect/chem_spray(atom/location, atom/host, initial_target)
 	origin = host
 	if (initial(target))
 
 
-/obj/effect/chem_spray/set_target(var/vector2/target)
+/obj/effect/chem_spray/set_target(vector2/target)
 	target_point = target
 	direction = VecDirectionBetween(origin.get_global_pixel_loc(), target)
 	default_rotation = direction.Rotation()

@@ -128,7 +128,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 
 
 //Setup the twitch extension which handles a lot of the special behaviour
-/datum/species/necromorph/slasher/twitcher/add_inherent_verbs(var/mob/living/carbon/human/H)
+/datum/species/necromorph/slasher/twitcher/add_inherent_verbs(mob/living/carbon/human/H)
 	.=..()
 	set_extension(H, /datum/extension/twitch)
 
@@ -188,7 +188,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 
 //Defensive blinking
 //The twitcher will dodge one attack every 5 secs or so, greatly reducing its damage and moving to a nearby tile
-/datum/species/necromorph/slasher/twitcher/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+/datum/species/necromorph/slasher/twitcher/handle_organ_external_damage(obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
 	var/mob/living/L = organ.owner
 	var/datum/extension/twitch/T = get_extension(L, /datum/extension/twitch)
 	if (T && T.displace(TRUE))

@@ -95,7 +95,7 @@
 		AM.dropInto(loc)
 	return ..()
 
-/obj/effect/dummy/spell_jaunt/relaymove(var/mob/user, direction)
+/obj/effect/dummy/spell_jaunt/relaymove(mob/user, direction)
 	if (!canmove || reappearing) return
 	var/turf/newLoc = get_step(src, direction)
 	if(!(newLoc.turf_flags & TURF_FLAG_NOJAUNT))

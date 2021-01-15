@@ -54,7 +54,7 @@
 			playsound(loc, 'sound/items/polaroid2.ogg', 50, 1)
 		break
 
-/obj/machinery/atm/emag_act(var/remaining_charges, mob/user)
+/obj/machinery/atm/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		//short out the machine, shoot sparks, spew money!
 		emagged = 1
@@ -229,7 +229,7 @@
 	else
 		return
 
-/obj/machinery/atm/Topic(var/href, href_list)
+/obj/machinery/atm/Topic(href, href_list)
 	if(href_list["choice"])
 		switch(href_list["choice"])
 			if("transfer")

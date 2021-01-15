@@ -506,7 +506,7 @@
 	STOP_PROCESSING(SSfastprocess, src)
 
 
-/obj/item/rig_module/kinesis/Process(var/wait)
+/obj/item/rig_module/kinesis/Process(wait)
 
 
 	var/tick_cost = 0
@@ -866,10 +866,10 @@
 /*
 	Hotkey
 */
-/obj/item/rig_module/kinesis/rig_equipped(var/mob/user, slot)
+/obj/item/rig_module/kinesis/rig_equipped(mob/user, slot)
 	update_hotkeys()
 
-/obj/item/rig_module/kinesis/rig_unequipped(var/mob/user, slot)
+/obj/item/rig_module/kinesis/rig_unequipped(mob/user, slot)
 	remove_hotkeys(user)
 
 

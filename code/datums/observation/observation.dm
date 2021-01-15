@@ -214,7 +214,7 @@
 			// If the callback crashes, record the error and remove it.
 			try
 				call(listener, proc_call)(arglist(args))
-			catch (var/exception/e)
+			catch (exception/e)
 				error("[e.name] - [e.file] - [e.line]")
 				error(e.desc)
 				unregister_global(listener, proc_call)
@@ -230,7 +230,7 @@
 				// If the callback crashes, record the error and remove it.
 				try
 					call(listener, proc_call)(arglist(args))
-				catch (var/exception/e)
+				catch (exception/e)
 					error("[e.name] - [e.file] - [e.line]")
 					error(e.desc)
 					unregister(source, listener, proc_call)

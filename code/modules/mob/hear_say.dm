@@ -92,7 +92,7 @@
 /mob/proc/on_hear_say(message)
 	to_chat(src, message)
 
-/mob/living/silicon/on_hear_say(var/message)
+/mob/living/silicon/on_hear_say(message)
 	var/time = say_timestamp()
 	to_chat(src, "[time] [message]")
 

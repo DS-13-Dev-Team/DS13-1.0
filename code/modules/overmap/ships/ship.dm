@@ -139,7 +139,7 @@
 		return 0
 	for( var/datum/ship_engine/E in engines)
 		. |= E.can_burn()
-		
+
 //deciseconds to next step
 /obj/effect/overmap/ship/proc/ETA()
 	. = INFINITY
@@ -169,7 +169,7 @@
 	if(T)
 		forceMove(T)
 
-/obj/effect/overmap/ship/Bump(var/atom/A)
+/obj/effect/overmap/ship/Bump(atom/A)
 	if(istype(A,/turf/unsimulated/map/edge))
 		handle_wraparound()
 	..()

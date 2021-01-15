@@ -20,7 +20,7 @@
 	..()
 	visualnet = GLOB.cameranet
 
-/mob/observer/eye/aiEye/setLoc(var/T, cancel_tracking = 1)
+/mob/observer/eye/aiEye/setLoc(T, cancel_tracking = 1)
 	. = ..()
 	if(. && isAI(owner))
 		var/mob/living/silicon/ai/ai = owner

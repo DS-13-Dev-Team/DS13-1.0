@@ -41,12 +41,12 @@
 	color = bcolor
 	desc = "A strange collection of symbols drawn in [blood]."
 
-/obj/effect/rune/examine(var/mob/user)
+/obj/effect/rune/examine(mob/user)
 	. = ..()
 	if(iscultist(user))
 		to_chat(user, "This is \a [cultname] rune.")
 
-/obj/effect/rune/attackby(var/obj/item/I, mob/living/user)
+/obj/effect/rune/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/weapon/book/tome) && iscultist(user))
 		user.visible_message("<span class='notice'>[user] rubs \the [src] with \the [I], and \the [src] is absorbed by it.</span>", "You retrace your steps, carefully undoing the lines of \the [src].")
 		qdel(src)
@@ -56,7 +56,7 @@
 		qdel(src)
 		return
 
-/obj/effect/rune/attack_hand(var/mob/living/user)
+/obj/effect/rune/attack_hand(mob/living/user)
 	if(!iscultist(user))
 		to_chat(user, "You can't mouth the arcane scratchings without fumbling over them.")
 		return
@@ -68,11 +68,11 @@
 		return fizzle(user)
 	cast(user)
 
-/obj/effect/rune/attack_ai(var/mob/living/user) // Cult borgs!
+/obj/effect/rune/attack_ai(mob/living/user) // Cult borgs!
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/effect/rune/attack_generic(var/mob/living/user) // Cult constructs/slimes/whatnot!
+/obj/effect/rune/attack_generic(mob/living/user) // Cult constructs/slimes/whatnot!
 	attack_hand(user)
 
 /obj/effect/rune/proc/cast(mob/living/user)
@@ -99,7 +99,7 @@
 	cultname = "convert"
 	var/spamcheck = 0
 
-/obj/effect/rune/convert/cast(var/mob/living/user)
+/obj/effect/rune/convert/cast(mob/living/user)
 	if(spamcheck)
 		return
 
@@ -162,12 +162,12 @@
 		A.forceMove(T)
 	return ..()
 
-/obj/effect/rune/teleport/examine(var/mob/user)
+/obj/effect/rune/teleport/examine(mob/user)
 	. = ..()
 	if(iscultist(user))
 		to_chat(user, "Its name is [destination].")
 
-/obj/effect/rune/teleport/cast(var/mob/living/user)
+/obj/effect/rune/teleport/cast(mob/living/user)
 	if(user.loc == src)
 		showOptions(user)
 	else if(user.loc == get_turf(src))
@@ -227,7 +227,7 @@
 /obj/effect/rune/tome
 	cultname = "summon tome"
 
-/obj/effect/rune/tome/cast(var/mob/living/user)
+/obj/effect/rune/tome/cast(mob/living/user)
 	new /obj/item/weapon/book/tome(get_turf(src))
 	speak_incantation(user, "N[pick("'","`")]ath reth sh'yro eth d'raggathnor!")
 	visible_message("<span class='notice'>\The [src] disappears with a flash of red light, and in its place now a book lies.</span>", "You hear a pop.")
@@ -242,7 +242,7 @@
 	QDEL_NULL(wall)
 	return ..()
 
-/obj/effect/rune/wall/cast(var/mob/living/user)
+/obj/effect/rune/wall/cast(mob/living/user)
 	var/t
 	if(wall)
 		if(wall.health >= wall.max_health)
@@ -283,7 +283,7 @@
 		rune = null
 	return ..()
 
-/obj/effect/cultwall/examine(var/mob/user)
+/obj/effect/cultwall/examine(mob/user)
 	. = ..()
 	if(iscultist(user))
 		if(health == max_health)
@@ -293,14 +293,14 @@
 		else
 			to_chat(user, "<span class='danger'>It is about to dissipate.</span>")
 
-/obj/effect/cultwall/attack_hand(var/mob/living/user)
+/obj/effect/cultwall/attack_hand(mob/living/user)
 	if(iscultist(user))
 		user.visible_message("<span class='notice'>\The [user] touches \the [src], and it fades.</span>", "<span class='notice'>You touch \the [src], whispering the old ritual, making it disappear.</span>")
 		qdel(src)
 	else
 		to_chat(user, "<span class='notice'>You touch \the [src]. It feels wet and becomes harder the further you push your arm.</span>")
 
-/obj/effect/cultwall/attackby(var/obj/item/I, mob/living/user)
+/obj/effect/cultwall/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/weapon/nullrod))
 		user.visible_message("<span class='notice'>\The [user] touches \the [src] with \the [I], and it disappears.</span>", "<span class='notice'>You disrupt the vile magic with the deadening field of \the [I].</span>")
 		qdel(src)
@@ -310,7 +310,7 @@
 		user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 		user.do_attack_animation(src)
 
-/obj/effect/cultwall/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/cultwall/bullet_act(obj/item/projectile/Proj)
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		return
 	take_damage(Proj.damage)
@@ -325,7 +325,7 @@
 /obj/effect/rune/ajorney
 	cultname = "astral journey"
 
-/obj/effect/rune/ajorney/cast(var/mob/living/user)
+/obj/effect/rune/ajorney/cast(mob/living/user)
 	var/tmpkey = user.key
 	if(user.loc != get_turf(src))
 		return
@@ -352,7 +352,7 @@
 /obj/effect/rune/defile
 	cultname = "defile"
 
-/obj/effect/rune/defile/cast(var/mob/living/user)
+/obj/effect/rune/defile/cast(mob/living/user)
 	speak_incantation(user, "Ia! Ia! Zasan therium viortia!")
 	for( var/turf/T in range(1, src))
 		if(T.holy)
@@ -368,7 +368,7 @@
 	strokes = 3
 	var/mob/living/victim
 
-/obj/effect/rune/offering/cast(var/mob/living/user)
+/obj/effect/rune/offering/cast(mob/living/user)
 	var/list/mob/living/cultists = get_cultists()
 	if(victim)
 		to_chat(user, "<span class='warning'>You are already sarcificing \the [victim] on this rune.</span>")
@@ -442,7 +442,7 @@
 	cultname = "blood drain"
 	strokes = 3
 
-/obj/effect/rune/drain/cast(var/mob/living/user)
+/obj/effect/rune/drain/cast(mob/living/user)
 	var/mob/living/carbon/human/victim
 	for( var/mob/living/carbon/human/M in get_turf(src))
 		if(iscultist(M))
@@ -531,7 +531,7 @@
 	color = "#0050a177"
 	metabolism = REM * 0.1
 
-/datum/reagent/hell_water/affect_ingest(var/mob/living/carbon/M, alien, removed)
+/datum/reagent/hell_water/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(iscultist(M))
 		M.AdjustParalysis(-1)
 		M.AdjustStunned(-1)
@@ -549,7 +549,7 @@
 	cultname = "emp"
 	strokes = 4
 
-/obj/effect/rune/emp/cast(var/mob/living/user)
+/obj/effect/rune/emp/cast(mob/living/user)
 	empulse(get_turf(src), 4, 2, 1)
 	speak_incantation(user, "Ta'gh fara[pick("'","`")]qha fel d'amar det!")
 	qdel(src)
@@ -557,7 +557,7 @@
 /obj/effect/rune/massdefile //Defile but with a huge range. Bring a buddy for this, you're hitting the floor.
 	cultname = "mass defile"
 
-/obj/effect/rune/massdefile/cast(var/mob/living/user)
+/obj/effect/rune/massdefile/cast(mob/living/user)
 	var/list/mob/living/cultists = get_cultists()
 	if(cultists.len < 3)
 		to_chat(user, "<span class='warning'>You need three cultists around this rune to make it work.</span>")
@@ -579,7 +579,7 @@
 	cultname = "summon weapon"
 	strokes = 4
 
-/obj/effect/rune/weapon/cast(var/mob/living/user)
+/obj/effect/rune/weapon/cast(mob/living/user)
 	if(!istype(user.get_equipped_item(slot_head), /obj/item/clothing/head/culthood) || !istype(user.get_equipped_item(slot_wear_suit), /obj/item/clothing/suit/cultrobes) || !istype(user.get_equipped_item(slot_shoes), /obj/item/clothing/shoes/cult))
 		to_chat(user, "<span class='warning'>You need to be wearing your robes to use this rune.</span>")
 		return fizzle(user)
@@ -595,7 +595,7 @@
 	cultname = "summon shell"
 	strokes = 4
 
-/obj/effect/rune/shell/cast(var/mob/living/user)
+/obj/effect/rune/shell/cast(mob/living/user)
 	var/turf/T = get_turf(src)
 	if(T.icon_state != "cult" && T.icon_state != "cult-narsie")
 		to_chat(user, "<span class='warning'>This rune needs to be placed on the defiled ground.</span>")
@@ -621,7 +621,7 @@
 	cultname = "confuse"
 	strokes = 4
 
-/obj/effect/rune/confuse/cast(var/mob/living/user)
+/obj/effect/rune/confuse/cast(mob/living/user)
 	speak_incantation(user, "Fuu ma[pick("'","`")]jin!")
 	visible_message("<span class='danger'>\The [src] explodes in a bright flash.</span>")
 	var/list/mob/affected = list()
@@ -647,7 +647,7 @@
 	cultname = "revive"
 	strokes = 4
 
-/obj/effect/rune/revive/cast(var/mob/living/user)
+/obj/effect/rune/revive/cast(mob/living/user)
 	var/mob/living/carbon/human/target
 	var/obj/item/device/soulstone/source
 	for( var/mob/living/carbon/human/M in get_turf(src))
@@ -673,7 +673,7 @@
 	cultname = "blood boil"
 	strokes = 4
 
-/obj/effect/rune/blood_boil/cast(var/mob/living/user)
+/obj/effect/rune/blood_boil/cast(mob/living/user)
 	var/list/mob/living/cultists = get_cultists()
 	if(cultists.len < 3)
 		return fizzle()
@@ -711,7 +711,7 @@
 	var/obj/singularity/narsie/large/HECOMES = null
 	strokes = 9
 
-/obj/effect/rune/tearreality/cast(var/mob/living/user)
+/obj/effect/rune/tearreality/cast(mob/living/user)
 	if(!GLOB.cult.allow_narsie)
 		return
 	if(the_end_comes)
@@ -752,7 +752,7 @@
 		command_announcement.Announce("Bluespace anomaly has ceased.")
 		qdel(src)
 
-/obj/effect/rune/tearreality/attack_hand(var/mob/living/user)
+/obj/effect/rune/tearreality/attack_hand(mob/living/user)
 	..()
 	if(HECOMES && !iscultist(user))
 		var/input = input(user, "Are you SURE you want to sacrifice yourself?", "DO NOT DO THIS") in list("Yes", "No")
@@ -783,7 +783,7 @@
 	cultname = "otherwordly abomination that shouldn't exist and that you should report to your local god as soon as you see it, along with the instructions for making this"
 	var/papertype
 
-/obj/effect/rune/imbue/cast(var/mob/living/user)
+/obj/effect/rune/imbue/cast(mob/living/user)
 	var/obj/item/weapon/paper/target
 	var/tainted = 0
 	for( var/obj/item/weapon/paper/P in get_turf(src))

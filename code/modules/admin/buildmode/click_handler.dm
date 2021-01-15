@@ -40,11 +40,11 @@
 	for( var/build_button in build_buttons)
 		user.my_client.screen -= build_button
 
-/datum/click_handler/build_mode/OnDblClick(var/atom/A, params)
+/datum/click_handler/build_mode/OnDblClick(atom/A, params)
 	OnClick(A, params) // We treat double-clicks as normal clicks
 	return TRUE
 
-/datum/click_handler/build_mode/OnClick(var/atom/A, params)
+/datum/click_handler/build_mode/OnClick(atom/A, params)
 	params = params2list(params)
 	if(A in build_buttons)
 		var/obj/effect/bmode/build_button = A

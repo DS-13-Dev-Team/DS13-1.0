@@ -41,7 +41,7 @@
 	s.start()
 	qdel(src)
 
-/mob/living/bot/remotebot/attackby(var/obj/item/I, mob/living/user)
+/mob/living/bot/remotebot/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/device/bot_controller) && !controller)
 		user.visible_message("\The [user] waves \the [I] over \the [src].")
 		to_chat(user, "<span class='notice'>You link \the [src] to \the [I].</span>")
@@ -102,10 +102,10 @@
 	item_state = "electronic"
 	var/mob/living/bot/remotebot/bot
 
-/obj/item/device/bot_controller/attack_self(var/mob/user)
+/obj/item/device/bot_controller/attack_self(mob/user)
 	src.interact(user)
 
-/obj/item/device/bot_controller/interact(var/mob/user)
+/obj/item/device/bot_controller/interact(mob/user)
 	user.set_machine(src)
 	if(!(src in user) || !bot)
 		user << browse(null, "window=bot_controller")
@@ -140,7 +140,7 @@
 	src.interact(usr)
 
 
-/obj/item/device/bot_controller/dropped(var/mob/living/user)
+/obj/item/device/bot_controller/dropped(mob/living/user)
 	if(user.client.eye == bot)
 		user.client.eye = user
 	return ..()
@@ -162,7 +162,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "remotebot"
 
-/obj/item/device/bot_kit/attack_self(var/mob/living/user)
+/obj/item/device/bot_kit/attack_self(mob/living/user)
 	to_chat(user, "You quickly dismantle the box and retrieve the controller and the remote bot itself.")
 	var/turf/T = get_turf(src.loc)
 	new /mob/living/bot/remotebot(T)

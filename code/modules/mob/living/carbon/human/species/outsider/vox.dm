@@ -64,10 +64,10 @@
 
 	genders = list(NEUTER)
 
-/datum/species/vox/get_random_name(var/gender)
+/datum/species/vox/get_random_name(gender)
 	var/datum/language/species_language = all_languages[default_language]
 	return species_language.get_random_name(gender)
 
-/datum/species/vox/disfigure_msg(var/mob/living/carbon/human/H)
+/datum/species/vox/disfigure_msg(mob/living/carbon/human/H)
 	var/datum/gender/T = gender_datums[H.get_gender()]
 	return "<span class='danger'>[T.His] beak is chipped! [T.He] [T.is] not even recognizable.</span>\n" //Pretty birds.

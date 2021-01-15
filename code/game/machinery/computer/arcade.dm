@@ -148,7 +148,7 @@
 	onclose(user, "arcade")
 	return
 
-/obj/machinery/computer/arcade/battle/CanUseTopic(var/mob/user, datum/topic_state/state, href_list)
+/obj/machinery/computer/arcade/battle/CanUseTopic(mob/user, datum/topic_state/state, href_list)
 	if((blocked || gameover) && (href_list["attack"] || href_list["heal"] || href_list["charge"]))
 		return min(..(), STATUS_UPDATE)
 	return ..()
@@ -277,7 +277,7 @@
 	explosion(4, 2)
 	qdel(src)
 
-/obj/machinery/computer/arcade/battle/emag_act(var/charges, mob/user)
+/obj/machinery/computer/arcade/battle/emag_act(charges, mob/user)
 	if(!emagged)
 		temp = "If you die in the game, you die for real!"
 		player_hp = 30

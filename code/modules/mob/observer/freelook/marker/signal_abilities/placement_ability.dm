@@ -10,7 +10,7 @@
 
 	require_corruption = TRUE
 
-/datum/signal_ability/placement/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/placement/on_cast(mob/user, atom/target, list/data)
 	var/atom/movable/A = new placement_atom(target)
 	if (LAZYACCESS(data, "direction"))
 		A.set_dir(data["direction"])
@@ -40,7 +40,7 @@
 		qdel(C)
 
 
-/datum/signal_ability/placement/corruption/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/placement/corruption/on_cast(mob/user, atom/target, list/data)
 	.=..()
 	var/obj/structure/corruption_node/C = .
 	if (istype(C))
@@ -60,7 +60,7 @@
 	var/require_corruption = FALSE
 	var/LOS_block = TRUE
 
-/datum/click_handler/placement/ability/placement_blocked(var/turf/candidate)
+/datum/click_handler/placement/ability/placement_blocked(turf/candidate)
 	.=..()
 	if (!.)
 		if (require_corruption && !turf_corrupted(candidate))
@@ -75,7 +75,7 @@
 			if (M)
 				return "Placement here is blocked, because [M] can see this tile. Must be placed out of sight"
 
-/datum/click_handler/placement/ability/spawn_result(var/turf/site)
+/datum/click_handler/placement/ability/spawn_result(turf/site)
 	//We should have done all necessary checks here, so we are clear to proceed
 	call_on_place.Invoke(site, list("direction"=dir))	//User is already included as the first argument when the callback was created. Site and data will be 2 and 3
 

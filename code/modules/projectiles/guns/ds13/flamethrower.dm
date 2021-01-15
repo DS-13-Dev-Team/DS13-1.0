@@ -73,7 +73,7 @@
 	update_firemode()
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/examine(var/mob/user)
+/obj/item/weapon/gun/spray/hydrazine_torch/examine(mob/user)
 	.=..()
 	if (!tank)
 		to_chat(user, SPAN_WARNING("No fuel tank is installed."))
@@ -120,7 +120,7 @@
 
 
 //If the pilot light isn't on when we fire, it will be turned on, at the cost of a significant time delay
-/obj/item/weapon/gun/spray/hydrazine_torch/pre_fire(var/atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+/obj/item/weapon/gun/spray/hydrazine_torch/pre_fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	//Specific check here, we're gonna set it to an interim value
 	if (pilot_light != TRUE)
 		toggle_pilot_light()
@@ -238,7 +238,7 @@
 
 
 //The torch has no safety switch, that's routed to the pilot light instead
-/obj/item/weapon/gun/spray/hydrazine_torch/toggle_safety(var/mob/user)
+/obj/item/weapon/gun/spray/hydrazine_torch/toggle_safety(mob/user)
 	safety_state = FALSE
 	toggle_pilot_light()
 
@@ -275,7 +275,7 @@
 
 	.=..()
 
-/obj/item/weapon/gun/spray/hydrazine_torch/unload_ammo(var/mob/user, allow_dump=0)
+/obj/item/weapon/gun/spray/hydrazine_torch/unload_ammo(mob/user, allow_dump=0)
 	if(tank)
 		user.put_in_hands(tank)
 		user.visible_message("[user] removes [tank] from [src].", "<span class='notice'>You remove [tank] from [src].</span>")
@@ -288,7 +288,7 @@
 
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/consume_projectiles(var/number = 1)
+/obj/item/weapon/gun/spray/hydrazine_torch/consume_projectiles(number = 1)
 	if (!tank)
 		return FALSE
 
@@ -394,7 +394,7 @@
 	)
 
 
-/obj/item/weapon/reagent_containers/glass/fuel_tank/examine(var/mob/user)
+/obj/item/weapon/reagent_containers/glass/fuel_tank/examine(mob/user)
 	.=..()
 	var/fuelname = "hydrazine"
 	if (fueltype == /datum/reagent/fuel)
@@ -416,7 +416,7 @@
 
 
 //To save processing, lets not recheck the fuel unless something other than our designated fuel went in or out
-/obj/item/weapon/reagent_containers/glass/fuel_tank/on_reagent_change(var/reagent_type, delta)
+/obj/item/weapon/reagent_containers/glass/fuel_tank/on_reagent_change(reagent_type, delta)
 	if (reagent_type != fueltype)
 		check_fuel_type_and_contamination()
 
@@ -540,13 +540,13 @@
 	range = 5
 
 
-/datum/firemode/sustained/spray/update(var/forced_state)
+/datum/firemode/sustained/spray/update(forced_state)
 	var/obj/item/weapon/gun/spray/HT = gun
 	range = HT.range
 	angle = HT.angle
 	.=..()
 
-/datum/firemode/sustained/spray/flame/update(var/forced_state)
+/datum/firemode/sustained/spray/flame/update(forced_state)
 	var/obj/item/weapon/gun/spray/hydrazine_torch/HT = gun
 	extra_data = list("temperature" = HT.temperature)
 	.=..()

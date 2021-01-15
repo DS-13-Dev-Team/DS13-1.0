@@ -192,7 +192,7 @@
 	return ..()
 
 
-/turf/simulated/floor/can_build_cable(var/mob/user)
+/turf/simulated/floor/can_build_cable(mob/user)
 	if(flooring && (flooring.flags & TURF_HIDES_THINGS))
 		to_chat(user, SPAN_WARNING("You must remove the [flooring.descriptor] first."))
 		return 0

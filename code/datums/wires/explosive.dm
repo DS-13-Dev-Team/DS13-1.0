@@ -6,12 +6,12 @@ var/const/WIRE_EXPLODE = 1
 /datum/wires/explosive/proc/explode()
 	return
 
-/datum/wires/explosive/UpdatePulsed(var/index)
+/datum/wires/explosive/UpdatePulsed(index)
 	switch(index)
 		if(WIRE_EXPLODE)
 			explode()
 
-/datum/wires/explosive/UpdateCut(var/index, mended)
+/datum/wires/explosive/UpdateCut(index, mended)
 	switch(index)
 		if(WIRE_EXPLODE)
 			if(!mended)

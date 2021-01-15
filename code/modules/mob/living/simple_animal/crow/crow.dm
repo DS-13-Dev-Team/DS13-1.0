@@ -43,7 +43,7 @@
 /mob/living/simple_animal/crow/GetIdCard()
 	return access_card
 
-/mob/living/simple_animal/crow/show_inv(var/mob/user)
+/mob/living/simple_animal/crow/show_inv(mob/user)
 	if(user.incapacitated())
 		return
 	var/list/dat = list()
@@ -114,7 +114,7 @@
 			show_inv(usr)
 			return 1
 
-/mob/living/simple_animal/crow/examine(var/mob/user)
+/mob/living/simple_animal/crow/examine(mob/user)
 	. = ..()
 	if(Adjacent(src))
 		if(messenger_bag)

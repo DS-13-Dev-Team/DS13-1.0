@@ -12,12 +12,12 @@
 /obj/structure/table/workbench
 
 //Quick ways to open crafting menu at this workbench
-/obj/structure/table/workbench/AltClick(var/mob/user)
+/obj/structure/table/workbench/AltClick(mob/user)
 	if (isliving(user))
 		var/mob/living/L = user
 		L.open_craft_menu()
 
-/obj/structure/table/workbench/consume_resources(var/timespent, user)
+/obj/structure/table/workbench/consume_resources(timespent, user)
 	var/time_in_seconds = timespent * 0.1 //This line is solely to make things more readable
 	use_power(time_in_seconds * active_power_usage)
 
@@ -87,7 +87,7 @@
 	else
 		return 0
 
-/obj/structure/table/workbench/get_tool_type(var/mob/living/user, list/required_qualities, atom/use_on, datum/callback/CB)
+/obj/structure/table/workbench/get_tool_type(mob/living/user, list/required_qualities, atom/use_on, datum/callback/CB)
 	if (powered())
 		.=..()
 	else

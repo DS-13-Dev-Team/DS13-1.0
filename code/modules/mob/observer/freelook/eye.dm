@@ -33,7 +33,7 @@
 		return EyeMove(direct)
 	return 0
 
-/mob/observer/eye/facedir(var/ndir)
+/mob/observer/eye/facedir(ndir)
 	if(!canface())
 		return 0
 	set_dir(ndir)

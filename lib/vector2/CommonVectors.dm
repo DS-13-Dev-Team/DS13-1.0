@@ -49,7 +49,7 @@ Vector2
 
 	proc
 		//Gets a directional vector between two atoms
-		DirectionBetween(var/atom/A, atom/B)
+		DirectionBetween(atom/A, atom/B)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
 			delta.SelfToMagnitude(1)
 			return delta
@@ -57,7 +57,7 @@ Vector2
 
 	proc
 		//Returns a directional vector and a magnitude between, handles things on the same tile intelligently
-		SmartDirectionBetween(var/atom/movable/A, atom/movable/B)
+		SmartDirectionBetween(atom/movable/A, atom/movable/B)
 			if (get_turf(A) != get_turf(B))
 				return Vector2.DirectionBetween(A, B)
 
@@ -73,14 +73,14 @@ Vector2
 			return get_new_vector(0, 0)
 
 	proc
-		VecDirectionBetween(var/vector2/A, vector2/B)
+		VecDirectionBetween(vector2/A, vector2/B)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
 			delta.SelfToMagnitude(1)
 			return delta
 
 	proc
 		//Returns a directional vector and a magnitude between
-		DirMagBetween(var/atom/A, atom/B)
+		DirMagBetween(atom/A, atom/B)
 			if (get_turf(A) == get_turf(B))
 				return list("direction" = SmartDirectionBetween(A, B), "magnitude" = 0)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
@@ -88,13 +88,13 @@ Vector2
 			release_vector(delta)
 			return returnlist
 	proc
-		MagnitudeBetween(var/atom/A, atom/B, magnitude)
+		MagnitudeBetween(atom/A, atom/B, magnitude)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
 			delta.SelfToMagnitude(magnitude)
 			return delta
 
 	proc
-		TurfAtMagnitudeBetween(var/atom/A, atom/B, magnitude)
+		TurfAtMagnitudeBetween(atom/A, atom/B, magnitude)
 			var/vector2/delta = MagnitudeBetween(A, B, magnitude)
 			var/turf/T = locate(A.x + delta.x, A.y + delta.y, A.z)
 			release_vector(delta)
@@ -106,7 +106,7 @@ Vector2
 			return (delta.SelfToMagnitude(1))
 
 	proc
-		VectorAverage(var/vector2/A)
+		VectorAverage(vector2/A)
 			if (A)
 				return (A.x + A.y) / 2
 			return 0

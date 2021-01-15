@@ -260,7 +260,7 @@
 	playing = 0
 	updateUsrDialog()
 
-/obj/structure/device/piano/attack_hand(var/mob/user as mob)
+/obj/structure/device/piano/attack_hand(mob/user as mob)
 	if(!anchored)
 		return
 

@@ -96,7 +96,7 @@ GLOBAL_DATUM_INIT(raiders, /datum/antagonist/raider, new)
 		/obj/item/clothing/accessory/storage/holster/hip
 		)
 
-/datum/antagonist/raider/update_access(var/mob/living/player)
+/datum/antagonist/raider/update_access(mob/living/player)
 	for( var/obj/item/weapon/storage/wallet/W in player.contents)
 		for( var/obj/item/weapon/card/id/id in W.contents)
 			id.SetName("[player.real_name]'s Passport")
@@ -187,7 +187,7 @@ GLOBAL_DATUM_INIT(raiders, /datum/antagonist/raider, new)
 			return 0
 	return 1
 
-/datum/antagonist/raider/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/raider/equip(mob/living/carbon/human/player)
 
 	if(!..())
 		return 0

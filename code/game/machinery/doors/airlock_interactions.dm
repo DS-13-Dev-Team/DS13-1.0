@@ -40,25 +40,25 @@
 /atom/movable/proc/airlock_crush(crush_damage)
 	return
 
-/obj/structure/window/airlock_crush(var/crush_damage)
+/obj/structure/window/airlock_crush(crush_damage)
 	ex_act(2)//Smashin windows
 
-/obj/machinery/portable_atmospherics/canister/airlock_crush(var/crush_damage)
+/obj/machinery/portable_atmospherics/canister/airlock_crush(crush_damage)
 	. = ..()
 	health -= crush_damage
 	healthcheck()
 
-/obj/effect/energy_field/airlock_crush(var/crush_damage)
+/obj/effect/energy_field/airlock_crush(crush_damage)
 	Stress(crush_damage)
 
-/obj/structure/closet/airlock_crush(var/crush_damage)
+/obj/structure/closet/airlock_crush(crush_damage)
 	..()
 	take_damage(crush_damage, used_weapon = src)
 	for( var/atom/movable/AM in src)
 		AM.airlock_crush()
 	return
 
-/mob/living/airlock_crush(var/crush_damage)
+/mob/living/airlock_crush(crush_damage)
 	. = ..()
 
 	//using getarmor() instead of run_armor_check() to reflect the fact that this is "slow" damage and not high-impact damage
@@ -88,10 +88,10 @@
 		if(src.Move(T))
 			return
 
-/mob/living/carbon/airlock_crush(var/crush_damage)
+/mob/living/carbon/airlock_crush(crush_damage)
 	. = ..()
 	if (can_feel_pain())
 		emote("scream")
 
-/mob/living/silicon/robot/airlock_crush(var/crush_damage)
+/mob/living/silicon/robot/airlock_crush(crush_damage)
 	return ..(round(crush_damage / CYBORG_AIRLOCKCRUSH_RESISTANCE)) //TODO implement robot melee armour and remove this.

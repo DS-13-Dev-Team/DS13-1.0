@@ -49,7 +49,7 @@
 		removed(user, 0)
 		parent.implants += src
 
-/obj/item/organ/internal/removed(var/mob/living/user, drop_organ=1, detach=1)
+/obj/item/organ/internal/removed(mob/living/user, drop_organ=1, detach=1)
 	if(owner)
 		severed_time = world.time
 		owner.internal_organs_by_name[organ_tag] = null
@@ -63,7 +63,7 @@
 				status |= ORGAN_CUT_AWAY
 	..()
 
-/obj/item/organ/internal/replaced(var/mob/living/carbon/human/target, obj/item/organ/external/affected)
+/obj/item/organ/internal/replaced(mob/living/carbon/human/target, obj/item/organ/external/affected)
 
 	if(!istype(target))
 		return 0
@@ -126,7 +126,7 @@
 	min_broken_damage = Floor(0.75 * max_damage)
 	min_bruised_damage = Floor(0.25 * max_damage)
 
-obj/item/organ/internal/take_general_damage(var/amount, silent = FALSE)
+obj/item/organ/internal/take_general_damage(amount, silent = FALSE)
 	take_internal_damage(amount, silent)
 
 /obj/item/organ/internal/proc/take_internal_damage(amount, silent=0)

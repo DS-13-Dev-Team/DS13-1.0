@@ -107,7 +107,7 @@
 	else
 		..()
 
-/obj/vehicle/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	..()
 	healthcheck()
@@ -175,7 +175,7 @@
 	set_light(0)
 	update_icon()
 
-/obj/vehicle/emag_act(var/remaining_charges, mob/user as mob)
+/obj/vehicle/emag_act(remaining_charges, mob/user as mob)
 	if(!emagged)
 		emagged = 1
 		if(locked)
@@ -348,7 +348,7 @@
 /obj/vehicle/proc/update_stats()
 	return
 
-/obj/vehicle/attack_generic(var/mob/user, damage, attack_message)
+/obj/vehicle/attack_generic(mob/user, damage, attack_message)
 	if(!damage)
 		return
 	visible_message("<span class='danger'>\The [user] [attack_message] the \the [src]!</span>")

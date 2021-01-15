@@ -91,7 +91,7 @@ GLOBAL_DATUM_INIT(ninjas, /datum/antagonist/ninja, new)
 		H.SetName(H.real_name)
 	player.name = H.name
 
-/datum/antagonist/ninja/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/ninja/equip(mob/living/carbon/human/player)
 
 	if(!..())
 		return 0

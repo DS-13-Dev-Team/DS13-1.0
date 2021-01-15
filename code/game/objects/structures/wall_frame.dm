@@ -30,7 +30,7 @@
 /obj/structure/wall_frame/Initialize()
 	. = ..()
 
-/obj/structure/wall_frame/attackby(var/obj/item/weapon/W, mob/user)
+/obj/structure/wall_frame/attackby(obj/item/weapon/W, mob/user)
 	src.add_fingerprint(user)
 
 	//grille placing begin
@@ -155,7 +155,7 @@
 			color = adjust_brightness(color, bleach_factor)
 	update_icon()
 
-/obj/structure/wall_frame/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/wall_frame/bullet_act(obj/item/projectile/Proj)
 	var/proj_damage = Proj.get_structure_damage()
 	var/damage = min(proj_damage, 100)
 	take_damage(damage)

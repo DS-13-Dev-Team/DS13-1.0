@@ -1,4 +1,4 @@
-/mob/living/carbon/alien/diona/drop_from_inventory(var/obj/item/I)
+/mob/living/carbon/alien/diona/drop_from_inventory(obj/item/I)
 	. = ..()
 	if(I == holding_item)
 		holding_item = null
@@ -6,7 +6,7 @@
 		hat = null
 		update_icons()
 
-/mob/living/carbon/alien/diona/put_in_hands(var/obj/item/W) // No hands. Use mouth.
+/mob/living/carbon/alien/diona/put_in_hands(obj/item/W) // No hands. Use mouth.
 	if(can_collect(W))
 		collect(W)
 	else

@@ -27,7 +27,7 @@ GLOBAL_DATUM_INIT(borers, /datum/antagonist/xenos/borer, new)
 	player.objectives += new /datum/objective/borer_reproduce()
 	player.objectives += new /datum/objective/escape()
 
-/datum/antagonist/xenos/borer/place_mob(var/mob/living/mob)
+/datum/antagonist/xenos/borer/place_mob(mob/living/mob)
 	var/mob/living/simple_animal/borer/borer = mob
 	if(istype(borer))
 		var/mob/living/carbon/human/host

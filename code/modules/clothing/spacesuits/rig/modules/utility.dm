@@ -156,7 +156,7 @@
 		list("radium",        "radium",        /datum/reagent/radium,            20)
 		)
 
-/obj/item/rig_module/chem_dispenser/accepts_item(var/obj/item/input_item, mob/living/user)
+/obj/item/rig_module/chem_dispenser/accepts_item(obj/item/input_item, mob/living/user)
 
 	if(!input_item.is_open_container())
 		return 0
@@ -383,7 +383,7 @@
 	jets.holder = holder
 	jets.ion_trail.set_up(holder)
 
-/obj/item/rig_module/maneuvering_jets/uninstalled(var/obj/item/weapon/rig/former, mob/living/user)
+/obj/item/rig_module/maneuvering_jets/uninstalled(obj/item/weapon/rig/former, mob/living/user)
 	..()
 	jets.holder = null
 	jets.ion_trail.set_up(jets)
@@ -496,6 +496,6 @@
 	.=..()
 	holder.hotswap = TRUE
 
-/obj/item/rig_module/hotswap/uninstalled(var/obj/item/weapon/rig/former, mob/living/user)
+/obj/item/rig_module/hotswap/uninstalled(obj/item/weapon/rig/former, mob/living/user)
 	former.hotswap = FALSE
 	.=..()

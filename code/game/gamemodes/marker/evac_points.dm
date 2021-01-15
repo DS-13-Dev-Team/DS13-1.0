@@ -82,7 +82,7 @@
 		return TRUE
 	return FALSE
 
-/datum/evacuation_predicate/travel_points/can_call(var/user)
+/datum/evacuation_predicate/travel_points/can_call(user)
 
 	var/datum/game_mode/marker/GM = ticker.mode
 	if (GM.evac_points >= GM.evac_threshold)

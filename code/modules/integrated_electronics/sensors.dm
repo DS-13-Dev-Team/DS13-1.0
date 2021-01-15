@@ -50,7 +50,7 @@
 		proximity_trigger = null
 	. = ..()
 
-/obj/item/integrated_circuit/sensor/proximity/do_work(var/activated_pin)
+/obj/item/integrated_circuit/sensor/proximity/do_work(activated_pin)
 	if(activated_pin != activators[1])
 		return
 
@@ -123,7 +123,7 @@
 			current_beam_visibility = new_beam_visibility
 			update_beam()
 
-/obj/item/integrated_circuit/sensor/proximity/ir/on_turfs_changed(var/list/old_turfs, list/new_turfs)
+/obj/item/integrated_circuit/sensor/proximity/ir/on_turfs_changed(list/old_turfs, list/new_turfs)
 	seen_turfs = new_turfs
 	update_beam()
 
@@ -158,7 +158,7 @@
 	var/list/last_location = list(0,0,0)
 	var/on = 0
 
-/obj/item/integrated_circuit/accelerometer/do_work(var/activated_pin)
+/obj/item/integrated_circuit/accelerometer/do_work(activated_pin)
 	if(activated_pin != activators[1])
 		return
 	on = !on

@@ -60,7 +60,7 @@
 	return 0
 
 
-/mob/living/bullet_act(var/obj/item/projectile/P, def_zone)
+/mob/living/bullet_act(obj/item/projectile/P, def_zone)
 
 	//Being hit while using a deadman switch
 	var/obj/item/device/assembly/signaler/signaler = get_active_hand()
@@ -248,7 +248,7 @@
 
 // End BS12 momentum-transfer code.
 
-/mob/living/attack_generic(var/mob/user, damage, attack_message)
+/mob/living/attack_generic(mob/user, damage, attack_message)
 
 	if(!damage || !istype(user))
 		return

@@ -30,7 +30,7 @@
 		spray_extension.stop()
 		spray_extension = null
 
-/datum/firemode/sustained/spray/update(var/force_state = null)
+/datum/firemode/sustained/spray/update(force_state = null)
 	var/obj/item/weapon/gun/spray/sprayer = gun
 	spray_type = sprayer.spray_type
 	.=..()

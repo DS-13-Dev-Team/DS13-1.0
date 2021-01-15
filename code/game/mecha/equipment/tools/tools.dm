@@ -651,7 +651,7 @@
 
 /datum/global_iterator/mecha_repair_droid
 
-	process(var/obj/item/mecha_parts/mecha_equipment/repair_droid/RD as obj)
+	process(obj/item/mecha_parts/mecha_equipment/repair_droid/RD as obj)
 		if(!RD.chassis)
 			stop()
 			RD.set_ready_state(1)
@@ -739,7 +739,7 @@
 
 /datum/global_iterator/mecha_energy_relay
 
-	process(var/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/ER)
+	process(obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/ER)
 		if(!ER.chassis || ER.chassis.hasInternalDamage(MECHA_INT_SHORT_CIRCUIT))
 			stop()
 			ER.set_ready_state(1)
@@ -877,7 +877,7 @@
 
 /datum/global_iterator/mecha_generator
 
-	process(var/obj/item/mecha_parts/mecha_equipment/generator/EG)
+	process(obj/item/mecha_parts/mecha_equipment/generator/EG)
 		if(!EG.chassis)
 			stop()
 			EG.set_ready_state(1)
@@ -926,7 +926,7 @@
 
 /datum/global_iterator/mecha_generator/nuclear
 
-	process(var/obj/item/mecha_parts/mecha_equipment/generator/nuclear/EG)
+	process(obj/item/mecha_parts/mecha_equipment/generator/nuclear/EG)
 		if(..())
 			SSradiation.radiate(EG, (EG.rad_per_cycle * 3))
 		return 1
@@ -1170,7 +1170,7 @@
 	chassis.events.clearEvent("onMove",event)
 	return ..()
 
-/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/action(var/obj/item/stack/cable_coil/target)
+/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/action(obj/item/stack/cable_coil/target)
 	if(!action_checks(target))
 		return
 	var/result = load_cable(target)

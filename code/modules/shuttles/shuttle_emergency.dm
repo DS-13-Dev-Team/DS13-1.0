@@ -24,7 +24,7 @@
 		var/obj/machinery/computer/shuttle_control/emergency/C = in_use
 		C.reset_authorization()
 
-/datum/shuttle/autodock/ferry/emergency/long_jump(var/destination, interim, travel_time, direction)
+/datum/shuttle/autodock/ferry/emergency/long_jump(destination, interim, travel_time, direction)
 	..(destination, interim, emergency_controller.get_long_jump_time(), direction)
 
 /datum/shuttle/autodock/ferry/emergency/shuttle_moved()
@@ -35,14 +35,14 @@
 		emergency_controller.shuttle_evacuated()
 	..()
 
-/datum/shuttle/autodock/ferry/emergency/can_launch(var/user)
+/datum/shuttle/autodock/ferry/emergency/can_launch(user)
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))
 		var/obj/machinery/computer/shuttle_control/emergency/C = user
 		if (!C.has_authorization())
 			return 0
 	return ..()
 
-/datum/shuttle/autodock/ferry/emergency/can_force(var/user)
+/datum/shuttle/autodock/ferry/emergency/can_force(user)
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))
 		var/obj/machinery/computer/shuttle_control/emergency/C = user
 
@@ -52,7 +52,7 @@
 			return 0
 	return ..()
 
-/datum/shuttle/autodock/ferry/emergency/can_cancel(var/user)
+/datum/shuttle/autodock/ferry/emergency/can_cancel(user)
 	if(emergency_controller.has_evacuated())
 		return 0
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))
@@ -61,7 +61,7 @@
 			return 0
 	return ..()
 
-/datum/shuttle/autodock/ferry/emergency/launch(var/user)
+/datum/shuttle/autodock/ferry/emergency/launch(user)
 	if (!can_launch(user)) return
 
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))	//if we were given a command by an emergency shuttle console
@@ -75,7 +75,7 @@
 
 	..(user)
 
-/datum/shuttle/autodock/ferry/emergency/force_launch(var/user)
+/datum/shuttle/autodock/ferry/emergency/force_launch(user)
 	if (!can_force(user)) return
 
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))	//if we were given a command by an emergency shuttle console
@@ -89,7 +89,7 @@
 
 	..(user)
 
-/datum/shuttle/autodock/ferry/emergency/cancel_launch(var/user)
+/datum/shuttle/autodock/ferry/emergency/cancel_launch(user)
 
 	if (!can_cancel(user)) return
 
@@ -166,7 +166,7 @@
 
 	return 1
 
-/obj/machinery/computer/shuttle_control/emergency/emag_act(var/remaining_charges, mob/user)
+/obj/machinery/computer/shuttle_control/emergency/emag_act(remaining_charges, mob/user)
 	if (!emagged)
 		to_chat(user, "<span class='notice'>You short out \the [src]'s authorization protocols.</span>")
 		emagged = 1

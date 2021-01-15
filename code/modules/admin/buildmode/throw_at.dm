@@ -13,7 +13,7 @@
 	to_chat(user, "<span class='notice'>Right Click on Atom        = Throw at the target</span>")
 	to_chat(user, "<span class='notice'>***********************************************************</span>")
 
-/datum/build_mode/throw_at/OnClick(var/atom/A, list/parameters)
+/datum/build_mode/throw_at/OnClick(atom/A, list/parameters)
 	if(parameters["left"])
 		if(istype(A, /atom/movable))
 			SetThrowable(A)

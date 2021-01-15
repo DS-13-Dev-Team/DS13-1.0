@@ -19,7 +19,7 @@
 	var/brightness = 7
 	var/light_colour = "#ffffff"
 
-/obj/item/projectile/energy/flash/on_impact(var/atom/A)
+/obj/item/projectile/energy/flash/on_impact(atom/A)
 	var/turf/T = flash_range? src.loc : get_turf(A)
 	if(!istype(T)) return
 
@@ -49,7 +49,7 @@
 	flash_range = 2
 	brightness = 15
 
-/obj/item/projectile/energy/flash/flare/on_impact(var/atom/A)
+/obj/item/projectile/energy/flash/flare/on_impact(atom/A)
 	light_colour = pick("#e58775", "#ffffff", "#90ff90", "#a09030")
 	set_light(1, 1, 4, 2, light_colour)
 	..() //initial flash
@@ -166,6 +166,6 @@
 				to_chat(M, "<span class='danger'>Your ears start to ring!</span>")
 		M.update_icons()
 
-/obj/item/projectile/energy/plasmastun/on_hit(var/atom/target)
+/obj/item/projectile/energy/plasmastun/on_hit(atom/target)
 	bang(target)
 	. = ..()

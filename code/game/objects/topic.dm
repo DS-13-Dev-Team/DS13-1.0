@@ -1,7 +1,7 @@
 /obj/proc/DefaultTopicState()
 	return GLOB.default_state
 
-/obj/Topic(var/href, href_list = list(), datum/topic_state/state)
+/obj/Topic(href, href_list = list(), datum/topic_state/state)
 	if((. = ..()))
 		return
 	state = state || DefaultTopicState() || GLOB.default_state
@@ -14,12 +14,12 @@
 /obj/proc/OnTopic(mob/user, href_list, datum/topic_state/state)
 	return TOPIC_NOACTION
 
-/obj/CanUseTopic(var/mob/user, datum/topic_state/state, href_list)
+/obj/CanUseTopic(mob/user, datum/topic_state/state, href_list)
 	if(user.CanUseObjTopic(src))
 		return ..()
 	return STATUS_CLOSE
 
-/mob/living/silicon/CanUseObjTopic(var/obj/O)
+/mob/living/silicon/CanUseObjTopic(obj/O)
 	var/id = src.GetIdCard()
 	if(id && O.check_access(id))
 		return TRUE
@@ -37,7 +37,7 @@
 		return
 	target.add_hiddenprint(src)
 
-/mob/living/AddTopicPrint(var/atom/target)
+/mob/living/AddTopicPrint(atom/target)
 	if(!istype(target))
 		return
 	if(Adjacent(target))
@@ -45,7 +45,7 @@
 	else
 		target.add_hiddenprint(src)
 
-/mob/living/silicon/ai/AddTopicPrint(var/atom/target)
+/mob/living/silicon/ai/AddTopicPrint(atom/target)
 	if(!istype(target))
 		return
 	target.add_hiddenprint(src)

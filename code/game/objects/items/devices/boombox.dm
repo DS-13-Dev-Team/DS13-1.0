@@ -15,7 +15,7 @@
 	var/list/datum/track/tracks
 	var/sound_id
 
-/obj/item/device/boombox/attack_self(var/mob/user)
+/obj/item/device/boombox/attack_self(mob/user)
 	interact(user)
 
 /obj/item/device/boombox/Initialize()
@@ -27,7 +27,7 @@
 	stop()
 	. = ..()
 
-/obj/item/device/boombox/interact(var/mob/user)
+/obj/item/device/boombox/interact(mob/user)
 	if(!CanPhysicallyInteract(user))
 		return
 	var/dat = "<A href='?src=\ref[src];tracknum=1;'>NEXT</a>"
@@ -41,11 +41,11 @@
 /obj/item/device/boombox/DefaultTopicState()
 	return GLOB.physical_state
 
-/obj/item/device/boombox/CouldUseTopic(var/mob/user)
+/obj/item/device/boombox/CouldUseTopic(mob/user)
 	..()
 	playsound(src, "switch", 40)
 
-/obj/item/device/boombox/OnTopic(var/user, list/href_list)
+/obj/item/device/boombox/OnTopic(user, list/href_list)
 	if(href_list["tracknum"])
 		var/diff = text2num(href_list["tracknum"])
 		track_num += diff
@@ -63,7 +63,7 @@
 		start()
 		return TOPIC_HANDLED
 
-/obj/item/device/boombox/attackby(var/obj/item/W, mob/user)
+/obj/item/device/boombox/attackby(obj/item/W, mob/user)
 	if(isScrewdriver(W))
 		AdjustFrequency(W, user)
 		return TRUE

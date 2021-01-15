@@ -22,7 +22,7 @@ dmm_suite{
 			"Z"
 			)
 		}
-	save_map(var/turf/t1 as turf, turf/t2 as turf, map_name as text, flags as num){
+	save_map(turf/t1 as turf, turf/t2 as turf, map_name as text, flags as num){
 		//Check for illegal characters in file name... in a cheap way.
 		if(!((ckeyEx(map_name)==map_name) && ckeyEx(map_name))){
 			CRASH("Invalid text supplied to proc save_map, invalid characters or empty string.")
@@ -39,7 +39,7 @@ dmm_suite{
 		saved_map << file_text
 		return saved_map
 		}
-	write_map(var/turf/t1 as turf, turf/t2 as turf, flags as num){
+	write_map(turf/t1 as turf, turf/t2 as turf, flags as num){
 		//Check for valid turfs.
 		if(!isturf(t1) || !isturf(t2)){
 			CRASH("Invalid arguments supplied to proc write_map, arguments were not turfs.")
@@ -97,7 +97,7 @@ dmm_suite{
 		return dmm_text
 		}
 	proc{
-		make_template(var/turf/model as turf, flags as num){
+		make_template(turf/model as turf, flags as num){
 			var/template = ""
 			var/obj_template = ""
 			var/mob_template = ""
@@ -130,7 +130,7 @@ dmm_suite{
 			template = "[obj_template][mob_template][turf_template][area_template]"
 			return template
 			}
-		check_attributes(var/atom/A){
+		check_attributes(atom/A){
 			var/attributes_text = {"{"}
 			for( var/V in A.vars){
 				sleep(-1)
@@ -160,7 +160,7 @@ dmm_suite{
 			attributes_text += {"}"}
 			return attributes_text
 			}
-		get_model_key(var/which as num, key_length as num){
+		get_model_key(which as num, key_length as num){
 			var/key = ""
 			var/working_digit = which-1
 			for( var/digit_pos=key_length;digit_pos>=1;digit_pos--){

@@ -163,7 +163,7 @@
 
 	return TRUE
 
-/mob/living/can_curl(var/atom/target, error_messages = TRUE)
+/mob/living/can_curl(atom/target, error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 

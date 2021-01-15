@@ -46,7 +46,7 @@ var/list/escape_pods_by_name = list()
 
 
 
-/datum/shuttle/autodock/ferry/escape_pod/force_launch(var/user)
+/datum/shuttle/autodock/ferry/escape_pod/force_launch(user)
 	launch(user)
 	.=..()
 
@@ -122,7 +122,7 @@ var/list/escape_pods_by_name = list()
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/emag_act(var/remaining_charges, mob/user)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/emag_act(remaining_charges, mob/user)
 	if (!emagged)
 		to_chat(user, "<span class='notice'>You emag the [src], arming the escape pod!</span>")
 		emagged = 1

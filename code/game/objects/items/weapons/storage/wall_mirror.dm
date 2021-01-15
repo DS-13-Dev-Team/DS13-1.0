@@ -26,7 +26,7 @@
 		return
 	flick("mirror_open",src)
 
-/obj/item/weapon/storage/mirror/attack_hand(var/mob/living/carbon/human/user)
+/obj/item/weapon/storage/mirror/attack_hand(mob/living/carbon/human/user)
 	use_mirror(user)
 
 /obj/item/weapon/storage/mirror/proc/use_mirror(mob/living/carbon/human/user)
@@ -49,7 +49,7 @@
 	playsound(src, "shatter", 70, 1)
 	desc = "Oh no, seven years of bad luck!"
 
-/obj/item/weapon/storage/mirror/bullet_act(var/obj/item/projectile/Proj)
+/obj/item/weapon/storage/mirror/bullet_act(obj/item/projectile/Proj)
 
 	if(prob(Proj.get_structure_damage() * 2))
 		if(!shattered)
@@ -67,7 +67,7 @@
 		if(!shattered)
 			shatter()
 
-/obj/item/weapon/storage/mirror/attack_generic(var/mob/user, damage)
+/obj/item/weapon/storage/mirror/attack_generic(mob/user, damage)
 	attack_animation(user)
 	if(shattered)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)

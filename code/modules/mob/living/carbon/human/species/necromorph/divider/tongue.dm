@@ -113,7 +113,7 @@
 	release_vector(current_pixels)
 
 
-/obj/item/projectile/tongue/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
+/obj/item/projectile/tongue/attack_mob(mob/living/target_mob, distance, miss_modifier=0)
 
 	//Are they a valid execution target?
 	if (divider_tongue_start(firer, target_mob) == EXECUTION_CONTINUE)
@@ -150,7 +150,7 @@
 	obj_flags = 0
 
 //Tongue takes double damage from edged weapons
-/obj/effect/projectile/tether/tongue/take_damage(var/amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
+/obj/effect/projectile/tether/tongue/take_damage(amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	var/obj/item/I = used_weapon
 	if (I && istype(I) && I.edge)
 		amount *= 2
@@ -158,7 +158,7 @@
 	.=..()
 
 
-/obj/effect/projectile/tether/tongue/retract(var/time = 1 SECOND, delete_on_finish = TRUE, steps = 3)
+/obj/effect/projectile/tether/tongue/retract(time = 1 SECOND, delete_on_finish = TRUE, steps = 3)
 	if (origin_atom)
 		var/datum/extension/shoot/tongue/T = get_extension(origin_atom, /datum/extension/shoot/tongue)
 		if (T && T.tongue == src)

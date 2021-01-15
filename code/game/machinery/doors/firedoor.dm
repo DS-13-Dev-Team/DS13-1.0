@@ -345,7 +345,7 @@
 	latetoggle()
 	.= ..()
 
-/obj/machinery/door/firedoor/open(var/forced = 0)
+/obj/machinery/door/firedoor/open(forced = 0)
 	if(hatch_open)
 		hatch_open = 0
 		visible_message("The maintenance hatch of \the [src] closes.")

@@ -22,7 +22,7 @@
 	laws.set_zeroth_law(law, law_borg)
 	log_law("has given [src] the zeroth law: '[law]'[law_borg ? " / '[law_borg]'" : ""]")
 
-/mob/living/silicon/robot/set_zeroth_law(var/law, law_borg)
+/mob/living/silicon/robot/set_zeroth_law(law, law_borg)
 	..()
 	if(tracking_entities)
 		to_chat(src, "<span class='warning'>Internal camera is currently being accessed.</span>")

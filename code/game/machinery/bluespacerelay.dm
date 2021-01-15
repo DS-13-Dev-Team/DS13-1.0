@@ -39,7 +39,7 @@
 	else
 		on = 1
 
-/obj/machinery/bluespacerelay/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/machinery/bluespacerelay/attackby(obj/item/O as obj, mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
 		return
 	if(default_deconstruction_crowbar(user, O))

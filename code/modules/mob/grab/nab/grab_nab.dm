@@ -35,7 +35,7 @@
 	ladder_carry = 1
 	force_danger = 1
 
-/datum/grab/nab/on_hit_grab(var/obj/item/grab/G)
+/datum/grab/nab/on_hit_grab(obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
 	var/mob/living/carbon/human/assailant = G.assailant
 
@@ -53,7 +53,7 @@
 		affecting.visible_message("<span class='notice'>[assailant] stops crushing [affecting]!</span>")
 		return 0
 
-/datum/grab/nab/on_hit_harm(var/obj/item/grab/G)
+/datum/grab/nab/on_hit_harm(obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
 	var/mob/living/carbon/human/assailant = G.assailant
 

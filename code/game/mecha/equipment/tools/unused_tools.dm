@@ -137,7 +137,7 @@
 /*
 /obj/item/mecha_parts/mecha_equipment/book_stocker
 
-	action(var/mob/target)
+	action(mob/target)
 		if(!istype(target))
 			return
 		if(target.search_contents_for(/obj/item/book/WGW))

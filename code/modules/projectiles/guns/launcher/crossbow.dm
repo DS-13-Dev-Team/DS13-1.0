@@ -65,7 +65,7 @@
 	var/obj/item/weapon/cell/cell = null    // Used for firing superheated rods.
 	var/current_user                        // Used to check if the crossbow has changed hands since being drawn.
 
-/obj/item/weapon/gun/launcher/crossbow/toggle_safety(var/mob/user)
+/obj/item/weapon/gun/launcher/crossbow/toggle_safety(mob/user)
 	to_chat(user, "<span class='warning'>There's no safety on \the [src]!</span>")
 
 /obj/item/weapon/gun/launcher/crossbow/update_release_force()

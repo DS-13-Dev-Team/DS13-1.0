@@ -47,7 +47,7 @@
 		src.laws_sanity_check()
 		src.laws.show_laws(M)
 
-/mob/living/silicon/sil_brainmob/open_subsystem(var/subsystem_type, mob/given = src)
+/mob/living/silicon/sil_brainmob/open_subsystem(subsystem_type, mob/given = src)
 	update_owner_channels()
 	return ..(subsystem_type, given)
 
@@ -74,7 +74,7 @@
 	owner_channels = new_channels
 	return 1
 
-/mob/living/silicon/sil_brainmob/statelaw(var/law, mob/living/L = src)
+/mob/living/silicon/sil_brainmob/statelaw(law, mob/living/L = src)
 	if(container && container.owner)
 		L = container.owner
 	return ..(law, L)

@@ -35,11 +35,11 @@
 	GLOB.using_map.accessible_z_levels = old_accessible_z_levels
 	old_accessible_z_levels = null
 
-/datum/universal_state/bluespace_jump/OnPlayerLatejoin(var/mob/living/M)
+/datum/universal_state/bluespace_jump/OnPlayerLatejoin(mob/living/M)
 	if(M.z in affected_levels)
 		apply_bluespaced(M)
 
-/datum/universal_state/bluespace_jump/OnTouchMapEdge(var/atom/A)
+/datum/universal_state/bluespace_jump/OnTouchMapEdge(atom/A)
 	if((A.z in affected_levels) && (A in bluespaced))
 		if(ismob(A))
 			to_chat(A,"<span class='warning'>You drift away into the shifting expanse, never to be seen again.</span>")

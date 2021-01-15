@@ -95,7 +95,7 @@
 	update_icon()
 	update_explosion_resistance()
 
-/obj/effect/shield/attack_generic(var/source, damage, emote)
+/obj/effect/shield/attack_generic(source, damage, emote)
 	take_damage(damage, SHIELD_DAMTYPE_PHYSICAL)
 	if(gen.check_flag(MODEFLAG_OVERCHARGE) && istype(source, /mob/living/))
 		overcharge_shock(source)
@@ -150,7 +150,7 @@
 
 
 // As we have various shield modes, this handles whether specific things can pass or not.
-/obj/effect/shield/CanPass(var/atom/movable/mover, turf/target, height=0, air_group=0)
+/obj/effect/shield/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	// Somehow we don't have a generator. This shouldn't happen. Delete the shield.
 	if(!gen)
 		qdel(src)
@@ -173,13 +173,13 @@
 
 
 // EMP. It may seem weak but keep in mind that multiple shield segments are likely to be affected.
-/obj/effect/shield/emp_act(var/severity)
+/obj/effect/shield/emp_act(severity)
 	if(!disabled_for)
 		take_damage(rand(30,60) / severity, SHIELD_DAMTYPE_EM)
 
 
 // Explosions
-/obj/effect/shield/ex_act(var/severity)
+/obj/effect/shield/ex_act(severity)
 	if(!disabled_for)
 		take_damage(rand(10,15) / severity, SHIELD_DAMTYPE_PHYSICAL)
 
@@ -191,7 +191,7 @@
 
 
 // Projectiles
-/obj/effect/shield/bullet_act(var/obj/item/projectile/proj)
+/obj/effect/shield/bullet_act(obj/item/projectile/proj)
 	if(proj.damage_type == BURN)
 		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_HEAT)
 	else if (proj.damage_type == BRUTE)
@@ -201,7 +201,7 @@
 
 
 // Attacks with hand tools. Blocked by Hyperkinetic flag.
-/obj/effect/shield/attackby(var/obj/item/weapon/I as obj, mob/user as mob)
+/obj/effect/shield/attackby(obj/item/weapon/I as obj, mob/user as mob)
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 
@@ -218,7 +218,7 @@
 
 
 // Special treatment for meteors because they would otherwise penetrate right through the shield.
-/obj/effect/shield/Bumped(var/atom/movable/mover)
+/obj/effect/shield/Bumped(atom/movable/mover)
 	if(!gen)
 		qdel(src)
 		return 0
@@ -259,26 +259,26 @@
 
 
 // Other mobs
-/mob/living/can_pass_shield(var/obj/machinery/power/shield_generator/gen)
+/mob/living/can_pass_shield(obj/machinery/power/shield_generator/gen)
 	return !gen.check_flag(MODEFLAG_NONHUMANS)
 
 // Human mobs
-/mob/living/carbon/human/can_pass_shield(var/obj/machinery/power/shield_generator/gen)
+/mob/living/carbon/human/can_pass_shield(obj/machinery/power/shield_generator/gen)
 	if(isSynthetic())
 		return !gen.check_flag(MODEFLAG_ANORGANIC)
 	return !gen.check_flag(MODEFLAG_HUMANOIDS)
 
 // Silicon mobs
-/mob/living/silicon/can_pass_shield(var/obj/machinery/power/shield_generator/gen)
+/mob/living/silicon/can_pass_shield(obj/machinery/power/shield_generator/gen)
 	return !gen.check_flag(MODEFLAG_ANORGANIC)
 
 
 // Generic objects. Also applies to bullets and meteors.
-/obj/can_pass_shield(var/obj/machinery/power/shield_generator/gen)
+/obj/can_pass_shield(obj/machinery/power/shield_generator/gen)
 	return !gen.check_flag(MODEFLAG_HYPERKINETIC)
 
 // Beams
-/obj/item/projectile/beam/can_pass_shield(var/obj/machinery/power/shield_generator/gen)
+/obj/item/projectile/beam/can_pass_shield(obj/machinery/power/shield_generator/gen)
 	return !gen.check_flag(MODEFLAG_PHOTONIC)
 
 
@@ -286,12 +286,12 @@
 /atom/movable/proc/shield_impact(obj/effect/shield/S)
 	return
 
-/mob/living/shield_impact(var/obj/effect/shield/S)
+/mob/living/shield_impact(obj/effect/shield/S)
 	if(!S.gen.check_flag(MODEFLAG_OVERCHARGE))
 		return
 	S.overcharge_shock(src)
 
-/obj/effect/meteor/shield_impact(var/obj/effect/shield/S)
+/obj/effect/meteor/shield_impact(obj/effect/shield/S)
 	if(!S.gen.check_flag(MODEFLAG_HYPERKINETIC))
 		return
 	S.take_damage(get_shield_damage(), SHIELD_DAMTYPE_PHYSICAL, src)

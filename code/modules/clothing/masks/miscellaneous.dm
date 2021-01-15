@@ -68,7 +68,7 @@
 		eye = null
 	..()
 
-/obj/item/clothing/mask/ai/attack_self(var/mob/user)
+/obj/item/clothing/mask/ai/attack_self(mob/user)
 	if(user.incapacitated())
 		return
 	active = !active
@@ -78,11 +78,11 @@
 	else
 		disengage_mask(user)
 
-/obj/item/clothing/mask/ai/equipped(var/mob/user, slot)
+/obj/item/clothing/mask/ai/equipped(mob/user, slot)
 	..(user, slot)
 	engage_mask(user)
 
-/obj/item/clothing/mask/ai/dropped(var/mob/user)
+/obj/item/clothing/mask/ai/dropped(mob/user)
 	..()
 	disengage_mask(user)
 
@@ -121,7 +121,7 @@
 	item_flags = ITEM_FLAG_FLEXIBLEMATERIAL
 	w_class = ITEM_SIZE_SMALL
 
-/obj/item/clothing/mask/bandana/equipped(var/mob/user, slot)
+/obj/item/clothing/mask/bandana/equipped(mob/user, slot)
 	switch(slot)
 		if(slot_wear_mask) //Mask is the default for all the settings
 			flags_inv = initial(flags_inv)

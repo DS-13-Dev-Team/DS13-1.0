@@ -67,7 +67,7 @@
 		else
 	return
 
-/obj/machinery/computer/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/computer/bullet_act(obj/item/projectile/Proj)
 	if(prob(Proj.get_structure_damage()))
 		set_broken()
 	..()
@@ -99,7 +99,7 @@
 	text = replacetext(text, "\n", "<BR>")
 	return text
 
-/obj/machinery/computer/attackby(var/obj/item/I, user as mob)
+/obj/machinery/computer/attackby(obj/item/I, user as mob)
 	if(isScrewdriver(I) && circuit)
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 		if(do_after(user, 20, src))
@@ -123,5 +123,5 @@
 	else
 		..()
 
-/obj/machinery/computer/attack_ghost(var/mob/ghost)
+/obj/machinery/computer/attack_ghost(mob/ghost)
 	attack_hand(ghost)

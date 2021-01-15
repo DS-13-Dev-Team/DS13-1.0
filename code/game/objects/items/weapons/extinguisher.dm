@@ -51,7 +51,7 @@
 	to_chat(user, "The safety is [safety ? "on" : "off"].")
 	return
 
-/obj/item/weapon/extinguisher/attack(var/mob/living/M, mob/user)
+/obj/item/weapon/extinguisher/attack(mob/living/M, mob/user)
 	if(user.a_intent == I_HELP)
 		if(src.safety || (world.time < src.last_use + 20)) // We still catch help intent to not randomly attack people
 			return
@@ -86,7 +86,7 @@
 		O.Move(get_step(user,movementdirection), movementdirection)
 		sleep(3)
 
-/obj/item/weapon/extinguisher/afterattack(var/atom/target, mob/user, flag)
+/obj/item/weapon/extinguisher/afterattack(atom/target, mob/user, flag)
 	//TODO; Add support for reagents in water.
 
 	if( istype(target, /obj/structure/reagent_dispensers) && flag)

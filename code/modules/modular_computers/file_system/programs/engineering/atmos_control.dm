@@ -81,12 +81,12 @@
 	var/datum/nano_module/atmos_control/atmos_control	= null
 	var/obj/machinery/alarm/air_alarm					= null
 
-/datum/topic_state/air_alarm/can_use_topic(var/src_object, mob/user)
+/datum/topic_state/air_alarm/can_use_topic(src_object, mob/user)
 	if(has_access(user))
 		return STATUS_INTERACTIVE
 	return STATUS_UPDATE
 
-/datum/topic_state/air_alarm/href_list(var/mob/user)
+/datum/topic_state/air_alarm/href_list(mob/user)
 	var/list/extra_href = list()
 	extra_href["remote_connection"] = 1
 	extra_href["remote_access"] = has_access(user)

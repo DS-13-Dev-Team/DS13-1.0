@@ -16,7 +16,7 @@
 	var/target_progress = 300
 	var/datum/access/target_access = null
 
-/datum/computer_file/program/access_decrypter/kill_program(var/forced)
+/datum/computer_file/program/access_decrypter/kill_program(forced)
 	reset()
 	..(forced)
 

@@ -78,7 +78,7 @@
 	desc = "A friend! Or are they a pet? They can transform into animals, and take some particular traits from said creatures."
 	spiel = "This form of yours is weak in comparison to your transformed form, but that certainly won�t pose a problem, considering the fact that you have an alternative. Whatever it is you can turn into, use its powers wisely and serve your Master as well as possible!"
 
-/datum/spellbound_type/servant/familiar/modify_servant(var/list/equipment, mob/living/carbon/human/H)
+/datum/spellbound_type/servant/familiar/modify_servant(list/equipment, mob/living/carbon/human/H)
 	var/familiar_type
 	switch(input(H,"Choose your desired animal form:", "Form") as anything in list("Space Pike", "Mouse", "Cat", "Bear"))
 		if("Space Pike")
@@ -134,7 +134,7 @@
 				/spell/invisibility,
 				/spell/targeted/revoke)
 
-/datum/spellbound_type/servant/overseer/equip_servant(var/mob/living/carbon/human/H)
+/datum/spellbound_type/servant/overseer/equip_servant(mob/living/carbon/human/H)
 	..()
 	H.add_aura(new /obj/aura/regenerating(H))
 
@@ -150,7 +150,7 @@
 	stype = new spell_type()
 	return ..(loc)
 
-/obj/effect/cleanable/spellbound/attack_hand(var/mob/user)
+/obj/effect/cleanable/spellbound/attack_hand(mob/user)
 	if(last_called > world.time )
 		return
 	last_called = world.time + 30 SECONDS
@@ -159,12 +159,12 @@
 		if(G.assess_candidate(ghost,null,FALSE))
 			to_chat(ghost,"<span class='notice'><b>A wizard is requesting a Spell-Bound Servant!</b></span> (<a href='?src=\ref[src];master=\ref[user]'>Join</a>)")
 
-/obj/effect/cleanable/spellbound/CanUseTopic(var/mob)
+/obj/effect/cleanable/spellbound/CanUseTopic(mob)
 	if(isliving(mob))
 		return STATUS_CLOSE
 	return STATUS_INTERACTIVE
 
-/obj/effect/cleanable/spellbound/OnTopic(var/mob/user, href_list, state)
+/obj/effect/cleanable/spellbound/OnTopic(mob/user, href_list, state)
 	if(href_list["master"])
 		var/mob/master = locate(href_list["master"])
 		stype.spawn_servant(get_turf(src),master,user)
@@ -184,14 +184,14 @@
 	throw_range = 10
 	w_class = ITEM_SIZE_TINY
 
-/obj/item/weapon/summoning_stone/attack_self(var/mob/user)
+/obj/item/weapon/summoning_stone/attack_self(mob/user)
 	if(user.z in GLOB.using_map.admin_levels)
 		to_chat(user, "<span class='warning'>You cannot use \the [src] here.</span>")
 		return
 	user.set_machine(src)
 	interact(user)
 
-/obj/item/weapon/summoning_stone/interact(var/mob/user)
+/obj/item/weapon/summoning_stone/interact(mob/user)
 	var/list/types = subtypesof(/datum/spellbound_type) - /datum/spellbound_type/servant
 	if(user.mind && !GLOB.wizards.is_antagonist(user.mind))
 		use_type(pick(types),user)

@@ -16,7 +16,7 @@
 	light_color = get_random_colour(lower = 190)
 	set_light(0.6, 3, 5, 2, light_color)
 
-/obj/structure/fountain/attack_hand(var/mob/living/user as mob)
+/obj/structure/fountain/attack_hand(mob/living/user as mob)
 	if(user.incapacitated())
 		return
 	if(!CanPhysicallyInteract(user))

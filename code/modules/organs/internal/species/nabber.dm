@@ -20,7 +20,7 @@
 
 	var/eyes_shielded
 
-/obj/item/organ/internal/eyes/nabber/additional_flash_effects(var/intensity)
+/obj/item/organ/internal/eyes/nabber/additional_flash_effects(intensity)
 	if(!eyes_shielded)
 		take_internal_damage(max(0, 4 * (intensity)))
 		return 1
@@ -33,7 +33,7 @@
 		action.button_icon_state = "nabber-shield-[eyes_shielded ? 1 : 0]"
 		if(action.button) action.button.UpdateIcon()
 
-/obj/item/organ/internal/eyes/nabber/attack_self(var/mob/user)
+/obj/item/organ/internal/eyes/nabber/attack_self(mob/user)
 	. = ..()
 	if(.)
 		eyes_shielded = !eyes_shielded

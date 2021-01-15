@@ -1,4 +1,4 @@
-/mob/living/silicon/say(var/message, sanitize = 1)
+/mob/living/silicon/say(message, sanitize = 1)
 	return ..(sanitize ? sanitize(message) : message)
 
 /mob/living/silicon/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
@@ -33,7 +33,7 @@
 			message_mode = null
 		return silicon_radio.talk_into(src,message,message_mode,verb,speaking)
 
-/mob/living/silicon/say_quote(var/text)
+/mob/living/silicon/say_quote(text)
 	var/ending = copytext(text, length(text))
 	if (ending == "?")
 		return speak_query
@@ -45,7 +45,7 @@
 #define IS_ROBOT 2
 #define IS_PAI 3
 
-/mob/living/silicon/say_understands(var/other, datum/language/speaking = null)
+/mob/living/silicon/say_understands(other, datum/language/speaking = null)
 	//These only pertain to common. Languages are handled by mob/say_understands()
 	if (!speaking)
 		if (istype(other, /mob/living/carbon))

@@ -60,7 +60,7 @@
 
 
 //Inflatables have no defense against sharp tools
-/obj/structure/inflatable/take_damage(var/amount, damtype = BRUTE, mob/user, used_weapon, bypass_resist = FALSE)
+/obj/structure/inflatable/take_damage(amount, damtype = BRUTE, mob/user, used_weapon, bypass_resist = FALSE)
 
 	if (isitem(used_weapon))
 		var/obj/item/I = used_weapon
@@ -196,7 +196,7 @@
 	else
 		icon_state = "door_closed"
 
-/obj/structure/inflatable/door/deflate(var/violent=0)
+/obj/structure/inflatable/door/deflate(violent=0)
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
 	if(violent)
 		visible_message("[src] rapidly deflates!")

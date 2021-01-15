@@ -10,7 +10,7 @@
 		action.button_icon_state = "nabber-cloak-[owner && owner.is_cloaked_by(species) ? 1 : 0]"
 		if(action.button) action.button.UpdateIcon()
 
-/obj/item/organ/external/groin/nabber/attack_self(var/mob/user)
+/obj/item/organ/external/groin/nabber/attack_self(mob/user)
 	. = ..()
 	if(.)
 		if(owner.is_cloaked_by(species))

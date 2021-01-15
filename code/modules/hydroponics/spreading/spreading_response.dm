@@ -1,4 +1,4 @@
-/obj/effect/vine/HasProximity(var/atom/movable/AM)
+/obj/effect/vine/HasProximity(atom/movable/AM)
 	if(!is_mature() || seed.get_trait(TRAIT_SPREAD) != 2)
 		return
 
@@ -13,10 +13,10 @@
 			if(prob(seed.get_trait(((TRAIT_POTENCY)/2)*3)))
 				entangle(M)
 
-/obj/effect/vine/attack_hand(var/mob/user)
+/obj/effect/vine/attack_hand(mob/user)
 	manual_unbuckle(user)
 
-/obj/effect/vine/attack_generic(var/mob/user)
+/obj/effect/vine/attack_generic(mob/user)
 	manual_unbuckle(user)
 
 /obj/effect/vine/Crossed(atom/movable/O)

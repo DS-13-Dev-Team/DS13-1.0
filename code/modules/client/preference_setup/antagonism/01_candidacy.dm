@@ -7,12 +7,12 @@
 	name = "Candidacy"
 	sort_order = 1
 
-/datum/category_item/player_setup_item/antagonism/candidacy/load_character(var/savefile/S)
+/datum/category_item/player_setup_item/antagonism/candidacy/load_character(savefile/S)
 	from_file(S["be_special"],           pref.be_special_role)
 	from_file(S["never_be_special"],     pref.never_be_special_role)
 	from_file(S["auto_necroqueue"],           pref.auto_necroqueue)
 
-/datum/category_item/player_setup_item/antagonism/candidacy/save_character(var/savefile/S)
+/datum/category_item/player_setup_item/antagonism/candidacy/save_character(savefile/S)
 	to_file(S["be_special"],             pref.be_special_role)
 	to_file(S["never_be_special"],       pref.never_be_special_role)
 	to_file(S["auto_necroqueue"],           pref.auto_necroqueue)
@@ -33,7 +33,7 @@
 		if(!(role in special_roles))
 			pref.never_be_special_role -= role
 
-/datum/category_item/player_setup_item/antagonism/candidacy/content(var/mob/user)
+/datum/category_item/player_setup_item/antagonism/candidacy/content(mob/user)
 	. = list()
 	. += "Auto Join Necroqueue:"
 	. += {"<a class='linkActive noIcon checkbox' unselectable='on' title='If ticked, you will automatically be placed in the necroqueue when joining the necromorph team, or leaving a necromorph body.'  style='display:inline-block;' onclick='document.location="?src=\ref[src];auto_necroqueue=[pref.auto_necroqueue ? "false" : "true"]"' ><div><form><input type='checkbox' [pref.auto_necroqueue ? "checked" : ""]></form></div></a><br>"}
@@ -94,7 +94,7 @@
 			return 1
 	return 0
 
-/datum/category_item/player_setup_item/antagonism/candidacy/OnTopic(var/href, list/href_list, mob/user)
+/datum/category_item/player_setup_item/antagonism/candidacy/OnTopic(href, list/href_list, mob/user)
 	if(href_list["add_special"])
 		if(!(href_list["add_special"] in valid_special_roles()))
 			return TOPIC_HANDLED

@@ -81,7 +81,7 @@
 
 
 // attack by item places it in to disposal
-/obj/machinery/disposal/attackby(var/obj/item/I, mob/user)
+/obj/machinery/disposal/attackby(obj/item/I, mob/user)
 	if(stat & BROKEN || !I || !user)
 		return
 
@@ -745,7 +745,7 @@
 
 	// hide called by levelupdate if turf intact status changes
 	// change visibility status and force update of icon
-	hide(var/intact)
+	hide(intact)
 		set_invisibility(intact ? 101: 0)	// hide if floor is intact
 		update_icon()
 
@@ -873,7 +873,7 @@
 	//attack by item
 	//weldingtool: unfasten and convert to obj/disposalconstruct
 
-	attackby(var/obj/item/I, mob/user)
+	attackby(obj/item/I, mob/user)
 
 		var/turf/T = src.loc
 		if(!T.is_plating())
@@ -984,7 +984,7 @@
 		update()
 		return
 
-	nextdir(var/fromdir)
+	nextdir(fromdir)
 		var/nextdir
 		if(fromdir == 11)
 			nextdir = dir
@@ -992,7 +992,7 @@
 			nextdir = 12
 		return nextdir
 
-	transfer(var/obj/structure/disposalholder/H)
+	transfer(obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir)
 		H.set_dir(nextdir)
 
@@ -1034,7 +1034,7 @@
 		update()
 		return
 
-	nextdir(var/fromdir)
+	nextdir(fromdir)
 		var/nextdir
 		if(fromdir == 12)
 			nextdir = dir
@@ -1042,7 +1042,7 @@
 			nextdir = 11
 		return nextdir
 
-	transfer(var/obj/structure/disposalholder/H)
+	transfer(obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir)
 		H.dir = nextdir
 
@@ -1099,7 +1099,7 @@
 	// if coming in from secondary dirs, then next is primary dir
 	// if coming in from primary dir, then next is equal chance of other dirs
 
-	nextdir(var/fromdir)
+	nextdir(fromdir)
 		var/flipdir = turn(fromdir, 180)
 		if(flipdir != dir)	// came from secondary dir
 			return dir		// so exit through primary
@@ -1149,7 +1149,7 @@
 		updatedesc()
 		update()
 
-	attackby(var/obj/item/I, mob/user)
+	attackby(obj/item/I, mob/user)
 		if(..())
 			return
 
@@ -1163,7 +1163,7 @@
 				updatename()
 				updatedesc()
 
-	transfer(var/obj/structure/disposalholder/H)
+	transfer(obj/structure/disposalholder/H)
 		if(sort_tag)
 			if(partial)
 				H.setpartialtag(sort_tag)
@@ -1295,7 +1295,7 @@
 	linked = null
 	return ..()
 
-/obj/structure/disposalpipe/diversion_junction/attackby(var/obj/item/I, mob/user)
+/obj/structure/disposalpipe/diversion_junction/attackby(obj/item/I, mob/user)
 	if(..())
 		return 1
 
@@ -1307,7 +1307,7 @@
 			user.visible_message("<span class='notice'>\The [user] changes \the [src]'s tag.</span>")
 
 
-/obj/structure/disposalpipe/diversion_junction/nextdir(var/fromdir, sortTag)
+/obj/structure/disposalpipe/diversion_junction/nextdir(fromdir, sortTag)
 	if(fromdir != sortdir)
 		if(active)
 			return sortdir
@@ -1316,7 +1316,7 @@
 	else
 		return inactive_dir
 
-/obj/structure/disposalpipe/diversion_junction/transfer(var/obj/structure/disposalholder/H)
+/obj/structure/disposalpipe/diversion_junction/transfer(obj/structure/disposalholder/H)
 	var/nextdir = nextdir(H.dir, H.destinationTag)
 	H.set_dir(nextdir)
 	var/turf/T = H.nextloc()
@@ -1378,7 +1378,7 @@
 		updatedesc()
 		update()
 
-	attackby(var/obj/item/I, mob/user)
+	attackby(obj/item/I, mob/user)
 		if(..())
 			return
 
@@ -1400,7 +1400,7 @@
 	// if coming in from posdir, then flip around and go back to posdir
 	// if coming in from sortdir, go to posdir
 
-	nextdir(var/fromdir, sortTag)
+	nextdir(fromdir, sortTag)
 		if(fromdir != sortdir)	// probably came from the negdir
 			if(divert_check(sortTag))
 				return sortdir
@@ -1410,7 +1410,7 @@
 							// so go with the flow to positive direction
 			return posdir
 
-	transfer(var/obj/structure/disposalholder/H)
+	transfer(obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir, H.destinationTag)
 		H.set_dir(nextdir)
 		var/turf/T = H.nextloc()
@@ -1434,7 +1434,7 @@
 	name = "wildcard sorting junction"
 	desc = "An underfloor disposal pipe which filters all wrapped and tagged items."
 	subtype = 1
-	divert_check(var/checkTag)
+	divert_check(checkTag)
 		return checkTag != ""
 
 //junction that filters all untagged items
@@ -1442,7 +1442,7 @@
 	name = "untagged sorting junction"
 	desc = "An underfloor disposal pipe which filters all untagged items."
 	subtype = 2
-	divert_check(var/checkTag)
+	divert_check(checkTag)
 		return checkTag == ""
 
 /obj/structure/disposalpipe/sortjunction/flipped //for easier and cleaner mapping
@@ -1484,7 +1484,7 @@
 	return
 
 	// Override attackby so we disallow trunkremoval when somethings ontop
-/obj/structure/disposalpipe/trunk/attackby(var/obj/item/I, mob/user)
+/obj/structure/disposalpipe/trunk/attackby(obj/item/I, mob/user)
 
 	//Disposal bins or chutes
 	/*
@@ -1516,7 +1516,7 @@
 	// if not entering from disposal bin,
 	// transfer to linked object (outlet or bin)
 
-/obj/structure/disposalpipe/trunk/transfer(var/obj/structure/disposalholder/H)
+/obj/structure/disposalpipe/trunk/transfer(obj/structure/disposalholder/H)
 
 	if(H.dir == DOWN)		// we just entered from a disposer
 		return ..()		// so do base transfer proc
@@ -1536,7 +1536,7 @@
 
 	// nextdir
 
-/obj/structure/disposalpipe/trunk/nextdir(var/fromdir)
+/obj/structure/disposalpipe/trunk/nextdir(fromdir)
 	if(fromdir == DOWN)
 		return dir
 	else
@@ -1608,7 +1608,7 @@
 
 		return
 
-	attackby(var/obj/item/I, mob/user)
+	attackby(obj/item/I, mob/user)
 		if(!I || !user)
 			return
 		src.add_fingerprint(user, 0, I)
@@ -1643,14 +1643,14 @@
 	return
 
 // check if mob has client, if so restore client view on eject
-/mob/pipe_eject(var/direction)
+/mob/pipe_eject(direction)
 	if (src.client)
 		src.client.perspective = MOB_PERSPECTIVE
 		src.client.eye = src
 
 	return
 
-/obj/effect/decal/cleanable/blood/gibs/pipe_eject(var/direction)
+/obj/effect/decal/cleanable/blood/gibs/pipe_eject(direction)
 	var/list/dirs
 	if(direction)
 		dirs = list( direction, turn(direction, -45), turn(direction, 45))
@@ -1659,7 +1659,7 @@
 
 	src.streak(dirs)
 
-/obj/effect/decal/cleanable/blood/gibs/robot/pipe_eject(var/direction)
+/obj/effect/decal/cleanable/blood/gibs/robot/pipe_eject(direction)
 	var/list/dirs
 	if(direction)
 		dirs = list( direction, turn(direction, -45), turn(direction, 45))

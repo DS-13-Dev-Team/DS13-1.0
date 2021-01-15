@@ -66,7 +66,7 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	welcome_text = "While on a planetary survey team on Aegis VII below, you uncovered the Holy Marker. It spoke to you, and you followed its directions, chipping off a piece and smuggling it aboard with you. <br>\
 	The shard still speaks to you now. It tells you to hide it. Plant it somewhere in a dark, hidden corner of the Ishimura, where it will not be discovered"
 
-/datum/antagonist/unitologist/shardbearer/equip(var/mob/living/carbon/human/H)
+/datum/antagonist/unitologist/shardbearer/equip(mob/living/carbon/human/H)
 	.=..()
 	H.equip_to_storage_or_drop(new /obj/item/marker_shard)
 

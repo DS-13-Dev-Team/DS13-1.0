@@ -1,7 +1,7 @@
 /mob/proc/can_emote(emote_type)
 	return (stat == CONSCIOUS)
 
-/mob/living/can_emote(var/emote_type)
+/mob/living/can_emote(emote_type)
 	return (..() && !(silent && emote_type == AUDIBLE_MESSAGE))
 
 /mob/proc/emote(act, m_type, message)
@@ -136,16 +136,16 @@
 		audible_message(message, checkghosts = check_ghosts)
 
 // Specific mob type exceptions below.
-/mob/living/silicon/ai/emote(var/act, type, message)
+/mob/living/silicon/ai/emote(act, type, message)
 	var/obj/machinery/hologram/holopad/T = src.holo
 	if(T && T.masters[src]) //Is the AI using a holopad?
 		src.holopad_emote(message)
 	else //Emote normally, then.
 		..()
 
-/mob/living/captive_brain/emote(var/message)
+/mob/living/captive_brain/emote(message)
 	return
 
-/mob/observer/ghost/emote(var/act, type, message)
+/mob/observer/ghost/emote(act, type, message)
 	if(message && act == "me")
 		communicate(/decl/communication_channel/dsay, client, message, null, /decl/dsay_communication/emote)

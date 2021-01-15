@@ -251,7 +251,7 @@
 			reagents.add_reagent(/datum/reagent/kelotane, 2)
 			bitesize = 4
 
-/obj/structure/chaoscake/attackby(var/obj/item/weapon/W, mob/living/user)
+/obj/structure/chaoscake/attackby(obj/item/weapon/W, mob/living/user)
 	if(istype(W,/obj/item/weapon/material/knife))
 		if(edible == 1)
 			HasSliceMissing()

@@ -53,7 +53,7 @@
 	suffix = num2text(++amount)
 	name = "Mulebot #[suffix]"
 
-/mob/living/bot/mulebot/MouseDrop_T(var/atom/movable/C, mob/user)
+/mob/living/bot/mulebot/MouseDrop_T(atom/movable/C, mob/user)
 	if(user.stat)
 		return
 
@@ -86,7 +86,7 @@
 /mob/living/bot/mulebot/GetInteractMaintenance()
 	. = "<a href='?src=\ref[src];command=safety'>Toggle safety</a> ([safety ? "On" : "Off - DANGER"])"
 
-/mob/living/bot/mulebot/ProcessCommand(var/mob/user, command, href_list)
+/mob/living/bot/mulebot/ProcessCommand(mob/user, command, href_list)
 	..()
 	if(CanAccessPanel(user))
 		switch(command)
@@ -120,7 +120,7 @@
 			if("safety")
 				safety = !safety
 
-/mob/living/bot/mulebot/attackby(var/obj/item/O, mob/user)
+/mob/living/bot/mulebot/attackby(obj/item/O, mob/user)
 	..()
 	update_icons()
 
@@ -146,7 +146,7 @@
 		if("Stop")
 			paused = 1
 
-/mob/living/bot/mulebot/emag_act(var/remaining_charges, user)
+/mob/living/bot/mulebot/emag_act(remaining_charges, user)
 	locked = !locked
 	to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the mulebot's controls.</span>")
 	flick("mulebot-emagged", src)
@@ -197,11 +197,11 @@
 		return
 	..()
 
-/mob/living/bot/mulebot/UnarmedAttack(var/turf/T)
+/mob/living/bot/mulebot/UnarmedAttack(turf/T)
 	if(T == src.loc)
 		unload(dir)
 
-/mob/living/bot/mulebot/Bump(var/mob/living/carbon/human/M)
+/mob/living/bot/mulebot/Bump(mob/living/carbon/human/M)
 	if(!safety && istype(M))
 		visible_message("<span class='warning'>[src] knocks over [M]!</span>")
 		M.Stun(8)
@@ -224,7 +224,7 @@
 		blood_splatter(src, H, 1)
 	..()
 
-/mob/living/bot/mulebot/relaymove(var/mob/user, direction)
+/mob/living/bot/mulebot/relaymove(mob/user, direction)
 	if(load == user)
 		unload(direction)
 

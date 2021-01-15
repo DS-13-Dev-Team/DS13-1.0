@@ -164,7 +164,7 @@ var/global/list/image/fluidtrack_cache=list()
 	coming_state = "human2"
 	going_state = "human1"
 
-/obj/effect/decal/cleanable/blood/tracks/footprints/reversed/AddTracks(var/list/DNA, comingdir, goingdir, bloodcolor=COLOR_BLOOD_HUMAN)
+/obj/effect/decal/cleanable/blood/tracks/footprints/reversed/AddTracks(list/DNA, comingdir, goingdir, bloodcolor=COLOR_BLOOD_HUMAN)
 	comingdir = reverse_direction(comingdir)
 	goingdir = reverse_direction(goingdir)
 	..(DNA, comingdir, goingdir, bloodcolor)

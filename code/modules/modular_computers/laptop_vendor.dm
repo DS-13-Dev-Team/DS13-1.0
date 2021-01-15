@@ -228,7 +228,7 @@
 		return 1
 	return 0
 
-/obj/machinery/lapvend/attack_hand(var/mob/user)
+/obj/machinery/lapvend/attack_hand(mob/user)
 	ui_interact(user)
 
 /obj/machinery/lapvend/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)

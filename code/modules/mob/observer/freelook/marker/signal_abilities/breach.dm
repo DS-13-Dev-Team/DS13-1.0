@@ -12,7 +12,7 @@
 	require_necrovision = FALSE
 
 
-/datum/signal_ability/breach/special_check(var/obj/machinery/door/D)
+/datum/signal_ability/breach/special_check(obj/machinery/door/D)
 	var/list/turfs = D.get_cardinal_corruption()
 	if (!turfs.len)
 		return "No nearby corruption."
@@ -25,7 +25,7 @@
 
 
 
-/datum/signal_ability/breach/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/breach/on_cast(mob/user, atom/target, list/data)
 	var/list/turfs = target.get_cardinal_corruption()
 	var/turf/T = pick(turfs)
 	var/obj/effect/vine/corruption/C = locate(/obj/effect/vine/corruption) in T

@@ -175,7 +175,7 @@ var/const/SHOCKED = 2
 var/const/SAFETY = 4
 var/const/POWER = 8
 
-/datum/wires/door/UpdateCut(var/index, mended)
+/datum/wires/door/UpdateCut(index, mended)
 	var/obj/machinery/door/airlock/A = holder
 	switch(index)
 		if(BOLTED)

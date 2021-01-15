@@ -232,13 +232,13 @@
 
 	return TRUE
 
-/mob/living/can_tailstrike(var/atom/target, error_messages = TRUE)
+/mob/living/can_tailstrike(atom/target, error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 
 	.=..()
 
-/mob/living/carbon/human/can_tailstrike(var/atom/target, error_messages = TRUE)
+/mob/living/carbon/human/can_tailstrike(atom/target, error_messages = TRUE)
 	var/obj/item/organ/external/E = get_organ(BP_TAIL)
 	if(!E || E.is_stump() || (E.status & ORGAN_BROKEN))
 		return FALSE

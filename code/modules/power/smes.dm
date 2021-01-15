@@ -52,7 +52,7 @@
 	var/list/terminals = list()
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
 
-/obj/machinery/power/smes/drain_power(var/drain_check, surge, amount = 0)
+/obj/machinery/power/smes/drain_power(drain_check, surge, amount = 0)
 
 	if(drain_check)
 		return 1
@@ -81,14 +81,14 @@
 		return
 	update_icon()
 
-/obj/machinery/power/smes/add_avail(var/amount)
+/obj/machinery/power/smes/add_avail(amount)
 	if(..(amount))
 		powernet.smes_newavail += amount
 		return 1
 	return 0
 
 
-/obj/machinery/power/smes/disconnect_terminal(var/obj/machinery/power/terminal/term)
+/obj/machinery/power/smes/disconnect_terminal(obj/machinery/power/terminal/term)
 	terminals -= term
 	term.master = null
 
@@ -253,7 +253,7 @@
 			return 1
 	return 0
 
-/obj/machinery/power/smes/draw_power(var/amount)
+/obj/machinery/power/smes/draw_power(amount)
 	var/drained = 0
 	for( var/obj/machinery/power/terminal/term in terminals)
 		if(!term.powernet)
@@ -273,7 +273,7 @@
 	ui_interact(user)
 
 
-/obj/machinery/power/smes/attackby(var/obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/power/smes/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -467,16 +467,16 @@
 	update_icon()
 	..()
 
-/obj/machinery/power/smes/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/power/smes/bullet_act(obj/item/projectile/Proj)
 	if(Proj.damage_type == BRUTE || Proj.damage_type == BURN)
 		take_damage(Proj.damage)
 
-/obj/machinery/power/smes/ex_act(var/severity)
+/obj/machinery/power/smes/ex_act(severity)
 	// Two strong explosions will destroy a SMES.
 	// Given the SMES creates another explosion on it's destruction it sounds fairly reasonable.
 	take_damage(250 / severity)
 
-/obj/machinery/power/smes/examine(var/mob/user)
+/obj/machinery/power/smes/examine(mob/user)
 	. = ..()
 	to_chat(user, "The service hatch is [panel_open ? "open" : "closed"].")
 	if(!damage)

@@ -55,7 +55,7 @@
 	for( var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/protects_atom(var/atom/A)
+/turf/simulated/wall/protects_atom(atom/A)
 	var/obj/O = A
 	return (istype(O) && O.hides_under_flooring()) || ..()
 
@@ -69,7 +69,7 @@
 /turf/simulated/wall/proc/get_material()
 	return material
 
-/turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)
+/turf/simulated/wall/bullet_act(obj/item/projectile/Proj)
 	if(istype(Proj,/obj/item/projectile/beam))
 		burn(2500)
 	else if(istype(Proj,/obj/item/projectile/ion))
@@ -112,7 +112,7 @@
 			plant.pixel_y = 0
 		plant.get_neighbors()
 
-/turf/simulated/wall/ChangeTurf(var/newtype)
+/turf/simulated/wall/ChangeTurf(newtype)
 	clear_plants()
 	return ..(newtype)
 
@@ -158,7 +158,7 @@
 		update_damage()
 	return
 
-/turf/simulated/wall/repair(var/repair_power, datum/repair_source, mob/user)
+/turf/simulated/wall/repair(repair_power, datum/repair_source, mob/user)
 	damage = clamp(damage-repair_power, 0, damage)
 	update_damage()
 

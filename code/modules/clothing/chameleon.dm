@@ -386,7 +386,7 @@
 		M.update_inv_r_hand()
 		M.update_inv_l_hand()
 
-/obj/item/weapon/gun/energy/chameleon/disguise(var/newtype)
+/obj/item/weapon/gun/energy/chameleon/disguise(newtype)
 	var/obj/item/weapon/gun/copy = ..()
 	if(!copy)
 		return

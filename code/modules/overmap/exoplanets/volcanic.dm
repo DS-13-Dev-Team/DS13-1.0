@@ -29,7 +29,7 @@
 	S.set_trait(TRAIT_REQUIRES_WATER,0)
 	S.set_trait(TRAIT_HEAT_TOLERANCE, 1000 + S.get_trait(TRAIT_HEAT_TOLERANCE))
 
-/obj/effect/overmap/sector/exoplanet/volcanic/adapt_animal(var/mob/living/simple_animal/A)
+/obj/effect/overmap/sector/exoplanet/volcanic/adapt_animal(mob/living/simple_animal/A)
 	..()
 	A.heat_damage_per_tick = 0 //animals not hot, no burning in lava
 
@@ -83,7 +83,7 @@
 	. = ..()
 	update_icon(1)
 
-/turf/simulated/floor/exoplanet/volcanic/update_icon(var/update_neighbors)
+/turf/simulated/floor/exoplanet/volcanic/update_icon(update_neighbors)
 	overlays.Cut()
 	for( var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)

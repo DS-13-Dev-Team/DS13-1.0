@@ -59,7 +59,7 @@
 			to_chat(src, "<span class='warning'>You do not feel a malleable mind behind that frame.</span>")
 	return 0
 
-/mob/living/deity/fully_replace_character_name(var/new_name, in_depth = TRUE)
+/mob/living/deity/fully_replace_character_name(new_name, in_depth = TRUE)
 	if(!..())
 		return 0
 	for( var/m in minions)

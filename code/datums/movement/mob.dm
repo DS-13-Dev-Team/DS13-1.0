@@ -296,7 +296,7 @@
 	LAZYREMOVE(allowed_movers, mover)
 
 // Admin object possession
-/datum/movement_handler/mob/admin_possess/DoMove(var/direction)
+/datum/movement_handler/mob/admin_possess/DoMove(direction)
 	if(QDELETED(mob.control_object))
 		return MOVEMENT_REMOVE
 
@@ -319,7 +319,7 @@
 	mob.ghostize()
 
 // Incorporeal/Ghost movement
-/datum/movement_handler/mob/incorporeal/DoMove(var/direction)
+/datum/movement_handler/mob/incorporeal/DoMove(direction)
 	. = MOVEMENT_HANDLED
 	direction = mob.AdjustMovementDirection(direction)
 
@@ -335,7 +335,7 @@
 	mob.PostIncorporealMovement()
 
 //Variation of incorporeal movement for signal eyes. Uses eyemove instead of forcemove
-/datum/movement_handler/mob/incorporeal/eye/DoMove(var/direction)
+/datum/movement_handler/mob/incorporeal/eye/DoMove(direction)
 	. = MOVEMENT_HANDLED
 	direction = mob.AdjustMovementDirection(direction)
 
@@ -356,7 +356,7 @@
 	return
 
 // Eye movement
-/datum/movement_handler/mob/eye/DoMove(var/direction, mob/mover)
+/datum/movement_handler/mob/eye/DoMove(direction, mob/mover)
 	if(IS_NOT_SELF(mover)) // We only care about direct movement
 		return
 	if(!mob.eyeobj)
@@ -421,7 +421,7 @@
 			direction = mob.AdjustMovementDirection(direction)
 			mob.buckled.DoMove(direction, mob)
 
-/datum/movement_handler/mob/buckle_relay/MayMove(var/mover)
+/datum/movement_handler/mob/buckle_relay/MayMove(mover)
 	if(mob.buckled)
 		return mob.buckled.MayMove(mover, FALSE) ? (MOVEMENT_PROCEED|MOVEMENT_HANDLED) : MOVEMENT_STOP
 	return MOVEMENT_PROCEED
@@ -431,12 +431,12 @@
 	var/next_move
 	var/overflow = 0
 
-/datum/movement_handler/mob/delay/DoMove(var/direction, mover, is_external)
+/datum/movement_handler/mob/delay/DoMove(direction, mover, is_external)
 	if(is_external)
 		return
 	next_move = world.time + max(1, mob.movement_delay()-overflow)
 
-/datum/movement_handler/mob/delay/MayMove(var/mover, is_external)
+/datum/movement_handler/mob/delay/MayMove(mover, is_external)
 	if(IS_NOT_SELF(mover) && is_external)
 		return MOVEMENT_PROCEED
 	if ((mover && mover != mob) ||  world.time >= next_move)
@@ -528,7 +528,7 @@
 
 
 // Finally.. the last of the mob movement junk
-/datum/movement_handler/mob/movement/DoMove(var/direction, mob/mover)
+/datum/movement_handler/mob/movement/DoMove(direction, mob/mover)
 	. = MOVEMENT_HANDLED
 	if(mob.moving)
 

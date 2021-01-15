@@ -86,7 +86,7 @@
 			sleep(15) // Let the explosion finish proccing before we ChangeTurf(), otherwise it might destroy our spawned objects.
 	return ..()
 
-/datum/random_map/droppod/get_appropriate_path(var/value)
+/datum/random_map/droppod/get_appropriate_path(value)
 	if(value == SD_FLOOR_TILE || value == SD_SUPPLY_TILE)
 		return floor_type
 	else if(value == SD_WALL_TILE)
@@ -96,7 +96,7 @@
 	return null
 
 // Pods are circular. Get the direction this object is facing from the center of the pod.
-/datum/random_map/droppod/get_spawn_dir(var/x, y)
+/datum/random_map/droppod/get_spawn_dir(x, y)
 	var/x_midpoint = n_ceil(limit_x / 2)
 	var/y_midpoint = n_ceil(limit_y / 2)
 	if(x == x_midpoint && y == y_midpoint)
@@ -107,7 +107,7 @@
 		return null
 	return get_dir(middle, target)
 
-/datum/random_map/droppod/get_additional_spawns(var/value, turf/T, spawn_dir)
+/datum/random_map/droppod/get_additional_spawns(value, turf/T, spawn_dir)
 
 	// Splatter anything under us that survived the explosion.
 	if(value != SD_EMPTY_TILE && T.contents.len)

@@ -70,7 +70,7 @@
 	recalculate_growth()
 	return TRUE
 
-/obj/structure/corruption_node/nest/verb/upgrade_spawner(var/mob/user)
+/obj/structure/corruption_node/nest/verb/upgrade_spawner(mob/user)
 	set name = "Upgrade Spawner"
 	set desc = "Allows turning a nest into a spawner"
 	set category = null
@@ -205,7 +205,7 @@
 	. = "The nest node is vital for a forward base, as it provides an additional spawnpoint, allowing the marker to create new necromorphs at its location, thus cutting down travel times. <br>\
 	In addition, the nest can be upgraded with a Spawner, allowing it to automatically generate low-tier necromorphs for signal posession"
 
-/obj/structure/corruption_node/nest/examine(var/mob/user)
+/obj/structure/corruption_node/nest/examine(mob/user)
 	.=..()
 	if (user.is_necromorph() && spawner_species)
 		user << "This nest is configured to spawn [spawner_species.name_plural]"
@@ -226,7 +226,7 @@
 	L.biomass = 0	//This won't give anything when slain
 	return L
 
-/obj/structure/corruption_node/nest/attack_signal(var/mob/observer/eye/signal/user)
+/obj/structure/corruption_node/nest/attack_signal(mob/observer/eye/signal/user)
 	if (is_marker_master(user))
 		upgrade_spawner(user)
 	else

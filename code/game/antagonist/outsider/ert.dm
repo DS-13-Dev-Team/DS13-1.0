@@ -38,7 +38,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		/decl/hierarchy/outfit/edf_medic,
 		/decl/hierarchy/outfit/edf_engie)
 
-/datum/antagonist/ert/create_default(var/mob/source)
+/datum/antagonist/ert/create_default(mob/source)
 	var/mob/living/carbon/human/M = ..()
 	if(istype(M)) M.age = rand(25,45)
 
@@ -71,7 +71,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	candidates = list()
 
 
-/datum/antagonist/ert/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/ert/equip(mob/living/carbon/human/player)
 	if(!..())
 		return 0
 	if(!outfits.len)

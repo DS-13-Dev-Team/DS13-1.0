@@ -14,10 +14,10 @@
 		movable_flags |= MOVABLE_FLAG_PROXMOVE //Dont want it active during the throw... loooots of unneeded checking.
 	return ..()
 
-/obj/item/weapon/slugegg/attack_self(var/mob/living/user)
+/obj/item/weapon/slugegg/attack_self(mob/living/user)
 	squish()
 
-/obj/item/weapon/slugegg/HasProximity(var/atom/movable/AM)
+/obj/item/weapon/slugegg/HasProximity(atom/movable/AM)
 	if(isliving(AM))
 		if(istype(AM,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = AM
@@ -60,6 +60,6 @@
 	return S
 
 
-/obj/item/weapon/gun/launcher/alien/slugsling/attack_self(var/mob/living/user)
+/obj/item/weapon/gun/launcher/alien/slugsling/attack_self(mob/living/user)
 	mode = mode == "Impact" ? "Sentry" : "Impact"
 	to_chat(user,"<span class='notice'>You switch \the [src]'s mode to \"[mode]\"</span>")

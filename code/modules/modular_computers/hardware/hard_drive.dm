@@ -61,7 +61,7 @@
 	icon_state = "hdd_micro"
 	hardware_size = 1
 
-/obj/item/weapon/computer_hardware/hard_drive/diagnostics(var/mob/user)
+/obj/item/weapon/computer_hardware/hard_drive/diagnostics(mob/user)
 	..()
 	// 999 is a byond limit that is in place. It's unlikely someone will reach that many files anyway, since you would sooner run out of space.
 	to_chat(user, "NT-NFS File Table Status: [stored_files.len]/999")

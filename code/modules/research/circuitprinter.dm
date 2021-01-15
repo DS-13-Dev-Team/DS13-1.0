@@ -80,7 +80,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 		icon_state = "circuit_imprinter"
 
 
-/obj/machinery/r_n_d/circuit_imprinter/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/machinery/r_n_d/circuit_imprinter/attackby(obj/item/O as obj, mob/user as mob)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
 		return 1

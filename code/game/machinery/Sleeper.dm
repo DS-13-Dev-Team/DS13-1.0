@@ -53,13 +53,13 @@
 /obj/machinery/sleeper/update_icon()
 	icon_state = "sleeper_[occupant ? "1" : "0"]"
 
-/obj/machinery/sleeper/attack_hand(var/mob/user)
+/obj/machinery/sleeper/attack_hand(mob/user)
 	if(..())
 		return 1
 
 	ui_interact(user)
 
-/obj/machinery/sleeper/ui_interact(var/mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.outside_state)
+/obj/machinery/sleeper/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.outside_state)
 	var/data[0]
 
 	data["power"] = stat & (NOPOWER|BROKEN) ? 0 : 1
@@ -129,10 +129,10 @@
 			stasis = text2num(href_list["stasis"])
 			return TOPIC_REFRESH
 
-/obj/machinery/sleeper/attack_ai(var/mob/user)
+/obj/machinery/sleeper/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/sleeper/attackby(var/obj/item/I, mob/user)
+/obj/machinery/sleeper/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/reagent_containers/glass))
 		add_fingerprint(user)
 		if(!beaker)
@@ -146,7 +146,7 @@
 	else
 		..()
 
-/obj/machinery/sleeper/MouseDrop_T(var/mob/target, mob/user)
+/obj/machinery/sleeper/MouseDrop_T(mob/target, mob/user)
 	if(!CanMouseDrop(target, user))
 		return
 	if(!istype(target))
@@ -156,11 +156,11 @@
 		return
 	go_in(target, user)
 
-/obj/machinery/sleeper/relaymove(var/mob/user)
+/obj/machinery/sleeper/relaymove(mob/user)
 	..()
 	go_out()
 
-/obj/machinery/sleeper/emp_act(var/severity)
+/obj/machinery/sleeper/emp_act(severity)
 	if(filtering)
 		toggle_filter()
 

@@ -215,7 +215,7 @@ Vars/
 
 	return TRUE
 
-/mob/living/can_spray(var/error_messages = TRUE)
+/mob/living/can_spray(error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 	.=..()

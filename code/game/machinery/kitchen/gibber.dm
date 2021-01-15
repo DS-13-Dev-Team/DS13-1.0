@@ -44,7 +44,7 @@
 			log_misc("a [src] didn't find an input plate.")
 			return
 
-/obj/machinery/gibber/autogibber/Bumped(var/atom/A)
+/obj/machinery/gibber/autogibber/Bumped(atom/A)
 	if(!input_plate) return
 
 	if(ismob(A))
@@ -89,12 +89,12 @@
 	. = ..()
 	to_chat(usr, "The safety guard is [emagged ? "<span class='danger'>disabled</span>" : "enabled"].")
 
-/obj/machinery/gibber/emag_act(var/remaining_charges, mob/user)
+/obj/machinery/gibber/emag_act(remaining_charges, mob/user)
 	emagged = !emagged
 	to_chat(user, "<span class='danger'>You [emagged ? "disable" : "enable"] \the [src]'s safety guard.</span>")
 	return 1
 
-/obj/machinery/gibber/attackby(var/obj/item/W, mob/user)
+/obj/machinery/gibber/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(!G.force_danger())

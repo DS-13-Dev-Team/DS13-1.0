@@ -95,14 +95,14 @@
 		if(H.mind) H.mind.name = H.real_name
 		H.SetName(H.real_name)
 
-/datum/species/adherent/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/adherent/handle_post_spawn(mob/living/carbon/human/H)
 	. = ..()
 	if(H) addtimer(CALLBACK(src, .proc/sync_ident_to_role, H), 3 SECONDS)
 
-/datum/species/adherent/get_random_name(var/gender)
+/datum/species/adherent/get_random_name(gender)
 	return "[uppertext("[pick(GLOB.full_alphabet)][pick(GLOB.full_alphabet)]-[pick(GLOB.full_alphabet)] [rand(1000,9999)]")]"
 
-/datum/species/adherent/can_overcome_gravity(var/mob/living/carbon/human/H)
+/datum/species/adherent/can_overcome_gravity(mob/living/carbon/human/H)
 	. = FALSE
 	if(H && H.stat == CONSCIOUS)
 		for( var/obj/item/organ/internal/powered/float/float in H.internal_organs)
@@ -110,10 +110,10 @@
 				. = TRUE
 				break
 
-/datum/species/adherent/can_fall(var/mob/living/carbon/human/H)
+/datum/species/adherent/can_fall(mob/living/carbon/human/H)
 	. = !can_overcome_gravity(H)
 
-/datum/species/adherent/handle_fall_special(var/mob/living/carbon/human/H, turf/landing)
+/datum/species/adherent/handle_fall_special(mob/living/carbon/human/H, turf/landing)
 
 	if(can_overcome_gravity(H))
 		if(istype(landing, /turf/simulated/open))
@@ -134,7 +134,7 @@
 /datum/species/adherent/sanitize_name(name)
 	return sanitizeName(name, allow_numbers=TRUE)
 
-/datum/species/adherent/get_additional_examine_text(var/mob/living/carbon/human/H)
+/datum/species/adherent/get_additional_examine_text(mob/living/carbon/human/H)
 	if(can_overcome_gravity(H)) return "\nThey are floating on a cloud of shimmering distortion."
 
 /datum/hud_data/adherent
@@ -147,5 +147,5 @@
 		"belt" =  list("loc" = ui_belt,      "name" = "Belt",     "slot" = slot_belt,    "state" = "belt")
 	)
 
-/datum/species/adherent/post_organ_rejuvenate(var/obj/item/organ/org)
+/datum/species/adherent/post_organ_rejuvenate(obj/item/organ/org)
 	org.status |= (ORGAN_BRITTLE|ORGAN_CRYSTAL|ORGAN_ROBOTIC)

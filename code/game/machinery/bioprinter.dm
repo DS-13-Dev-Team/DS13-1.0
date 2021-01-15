@@ -21,7 +21,7 @@
 	// These should be subtypes of /obj/item/organ
 	var/list/products = list()
 
-/obj/machinery/organ_printer/attackby(var/obj/item/O, mob/user)
+/obj/machinery/organ_printer/attackby(obj/item/O, mob/user)
 	if(default_deconstruction_screwdriver(user, O))
 		updateUsrDialog()
 		return
@@ -47,7 +47,7 @@
 	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
 	RefreshParts()
 
-/obj/machinery/organ_printer/examine(var/mob/user)
+/obj/machinery/organ_printer/examine(mob/user)
 	. = ..()
 	to_chat(user, "<span class='notice'>It is loaded with [stored_matter]/[max_stored_matter] matter units.</span>")
 
@@ -143,14 +143,14 @@
 	..()
 	component_parts += new /obj/item/weapon/circuitboard/roboprinter
 
-/obj/machinery/organ_printer/robot/print_organ(var/choice)
+/obj/machinery/organ_printer/robot/print_organ(choice)
 	var/obj/item/organ/O = ..()
 	O.robotize()
 	O.status |= ORGAN_CUT_AWAY  // robotize() resets status to 0
 	visible_message("<span class='info'>\The [src] churns for a moment, then spits out \a [O].</span>")
 	return O
 
-/obj/machinery/organ_printer/robot/attackby(var/obj/item/weapon/W, mob/user)
+/obj/machinery/organ_printer/robot/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == matter_type)
 		if((max_stored_matter-stored_matter) < matter_amount_per_sheet)
 			to_chat(user, "<span class='warning'>\The [src] is too full.</span>")
@@ -197,7 +197,7 @@
 	component_parts += new /obj/item/device/healthanalyzer
 	component_parts += new /obj/item/weapon/circuitboard/bioprinter
 
-/obj/machinery/organ_printer/flesh/print_organ(var/choice)
+/obj/machinery/organ_printer/flesh/print_organ(choice)
 	var/obj/item/organ/O
 	var/weakref/R = loaded_dna["donor"]
 	var/mob/living/carbon/human/H = R.resolve()

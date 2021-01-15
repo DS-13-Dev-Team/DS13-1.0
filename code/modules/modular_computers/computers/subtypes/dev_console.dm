@@ -20,7 +20,7 @@
 	//A rare case of a dense item
 	can_block_movement = TRUE
 
-/obj/item/modular_computer/console/CouldUseTopic(var/mob/user)
+/obj/item/modular_computer/console/CouldUseTopic(mob/user)
 	..()
 	if(istype(user, /mob/living/carbon))
 		if(prob(50))

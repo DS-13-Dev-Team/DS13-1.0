@@ -89,10 +89,10 @@
 	else
 		to_chat(user, "<span class='warning'>\The [src] has no reagent container loaded.</span>")
 
-/obj/machinery/portable_atmospherics/reagent_sublimator/attack_ai(var/mob/user)
+/obj/machinery/portable_atmospherics/reagent_sublimator/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/portable_atmospherics/reagent_sublimator/attack_hand(var/mob/user)
+/obj/machinery/portable_atmospherics/reagent_sublimator/attack_hand(mob/user)
 	if(stat & (BROKEN|NOPOWER))
 		to_chat(user, "<span class='warning'>\The [src] is not currently functional.</span>")
 		return
@@ -100,7 +100,7 @@
 	user.visible_message("<span class='notice'>\The [user] switches \the [src] [use_power == 2 ? "on" : "off"].</span>")
 	update_icon()
 
-/obj/machinery/portable_atmospherics/reagent_sublimator/attackby(var/obj/item/weapon/thing, mob/user)
+/obj/machinery/portable_atmospherics/reagent_sublimator/attackby(obj/item/weapon/thing, mob/user)
 	if(istype(thing, /obj/item/weapon/tank))
 		to_chat(user, "<span class='warning'>\The [src] has no socket for a gas tank.</span>")
 	else if(istype(thing, /obj/item/weapon/reagent_containers))
@@ -151,7 +151,7 @@
 /obj/machinery/portable_atmospherics/reagent_sublimator/update_icon()
 	icon_state = "sublimator-[use_power == 2 ? "on" : "off"]-[container ? "loaded" : "unloaded"]-[holding ? "tank" : "notank"]"
 
-/obj/machinery/portable_atmospherics/reagent_sublimator/examine(var/mob/user)
+/obj/machinery/portable_atmospherics/reagent_sublimator/examine(mob/user)
 	. = ..()
 	if(container)
 		if(container.reagents && container.reagents.total_volume)

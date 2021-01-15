@@ -123,7 +123,7 @@
 	..()
 	master.disrupt()
 
-/obj/effect/dummy/chameleon/relaymove(var/mob/user, direction)
+/obj/effect/dummy/chameleon/relaymove(mob/user, direction)
 	var/area/A = get_area(src)
 	if(!A || !A.has_gravity()) return //No magical space movement!
 

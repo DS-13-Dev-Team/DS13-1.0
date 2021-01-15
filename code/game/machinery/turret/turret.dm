@@ -101,7 +101,7 @@
 	lethal = 1
 	installation = /obj/item/weapon/gun/energy/laser
 
-/obj/machinery/turret/malf_upgrade(var/mob/living/silicon/ai/user)
+/obj/machinery/turret/malf_upgrade(mob/living/silicon/ai/user)
 	..()
 	ailock = 0
 	malf_upgraded = 1
@@ -275,7 +275,7 @@ var/list/turret_icons
 					attacked = 0
 		..()
 
-/obj/machinery/turret/emag_act(var/remaining_charges, mob/user)
+/obj/machinery/turret/emag_act(remaining_charges, mob/user)
 	if(!emagged)
 		//Emagging the turret makes it go bonkers and stun everyone. It also makes
 		//the turret shoot much, much faster.

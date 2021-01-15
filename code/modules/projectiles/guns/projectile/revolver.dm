@@ -36,7 +36,7 @@
 		return
 	return ..()
 
-/obj/item/weapon/gun/projectile/revolver/load_ammo(var/obj/item/A, mob/user)
+/obj/item/weapon/gun/projectile/revolver/load_ammo(obj/item/A, mob/user)
 	chamber_offset = 0
 	return ..()
 
@@ -91,7 +91,7 @@
 	else
 		icon_state = "deckard-empty"
 
-/obj/item/weapon/gun/projectile/revolver/deckard/load_ammo(var/obj/item/A, mob/user)
+/obj/item/weapon/gun/projectile/revolver/deckard/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		flick("deckard-reload",src)
 	..()
@@ -107,7 +107,7 @@
 	max_shells = 7
 	ammo_type = /obj/item/ammo_casing/cap
 
-/obj/item/weapon/gun/projectile/revolver/capgun/attackby(var/obj/item/weapon/tool/wirecutters/W, mob/user)
+/obj/item/weapon/gun/projectile/revolver/capgun/attackby(obj/item/weapon/tool/wirecutters/W, mob/user)
 	if(!istype(W) || icon_state == "revolver")
 		return ..()
 	to_chat(user, "<span class='notice'>You snip off the toy markings off the [src].</span>")

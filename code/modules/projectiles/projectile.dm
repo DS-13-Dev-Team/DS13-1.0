@@ -593,7 +593,7 @@
 	flying = FALSE	//Stop flying so it can be moved around
 
 
-/obj/item/projectile/telegrip_released(var/obj/item/rig_module/kinesis/gripper)
+/obj/item/projectile/telegrip_released(obj/item/rig_module/kinesis/gripper)
 	//Drop and hit the floor beneath us if we were dropped
 	if (gripper.release_type == RELEASE_DROP)
 		var/turf/T = get_turf(src)

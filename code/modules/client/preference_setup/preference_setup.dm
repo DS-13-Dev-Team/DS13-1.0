@@ -94,7 +94,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	if(selected_category)
 		return selected_category.content(user)
 
-/datum/category_collection/player_setup_collection/Topic(var/href, list/href_list)
+/datum/category_collection/player_setup_collection/Topic(href, list/href_list)
 	if(..())
 		return 1
 	var/mob/user = usr
@@ -161,7 +161,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 		. += "[PI.content(user)]<br>"
 	. += "</td></tr></table>"
 
-/datum/category_group/player_setup_category/occupation_preferences/content(var/mob/user)
+/datum/category_group/player_setup_category/occupation_preferences/content(mob/user)
 	for( var/datum/category_item/player_setup_item/PI in items)
 		. += "[PI.content(user)]<br>"
 
@@ -223,7 +223,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 /datum/category_item/player_setup_item/proc/sanitize_preferences()
 	return
 
-/datum/category_item/player_setup_item/Topic(var/href, list/href_list)
+/datum/category_item/player_setup_item/Topic(href, list/href_list)
 	if(..())
 		return 1
 	var/mob/pref_mob = preference_mob()
@@ -242,7 +242,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	if(. & TOPIC_REFRESH)
 		pref_mob.client.prefs.ShowChoices(usr)
 
-/datum/category_item/player_setup_item/CanUseTopic(var/mob/user)
+/datum/category_item/player_setup_item/CanUseTopic(mob/user)
 	return 1
 
 /datum/category_item/player_setup_item/proc/OnTopic(href, list/href_list, mob/user)

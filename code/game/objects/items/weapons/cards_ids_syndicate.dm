@@ -20,7 +20,7 @@
 /obj/item/weapon/card/id/syndicate/prevent_tracking()
 	return electronic_warfare
 
-/obj/item/weapon/card/id/syndicate/afterattack(var/obj/item/weapon/O as obj, mob/user as mob, proximity)
+/obj/item/weapon/card/id/syndicate/afterattack(obj/item/weapon/O as obj, mob/user as mob, proximity)
 	if(!proximity) return
 	if(istype(O, /obj/item/weapon/card/id))
 		var/obj/item/weapon/card/id/I = O

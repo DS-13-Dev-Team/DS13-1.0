@@ -5,7 +5,7 @@
 	max_level = 3
 	base_cost = 50
 
-/datum/deity_item/conjuration/get_cost(var/mob/living/deity/D)
+/datum/deity_item/conjuration/get_cost(mob/living/deity/D)
 	return base_cost * (level + 1)
 
 //Level 1

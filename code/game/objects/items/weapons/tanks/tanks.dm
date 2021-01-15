@@ -336,7 +336,7 @@ var/list/global/tank_gauge_cache = list()
 	update_icon()
 	check_status()
 
-/obj/item/weapon/tank/update_icon(var/override)
+/obj/item/weapon/tank/update_icon(override)
 	if((atom_flags & ATOM_FLAG_INITIALIZED) && istype(loc, /obj/) && !istype(loc, /obj/item/clothing/suit/) && !override) //So we don't eat up our tick. Every tick, when we're not actually in play.
 		return
 	overlays.Cut()

@@ -11,7 +11,7 @@
 
 
 
-/datum/signal_ability/succ/on_cast(var/mob/user, atom/target, list/data)
+/datum/signal_ability/succ/on_cast(mob/user, atom/target, list/data)
 	var/obj/machinery/marker/M	= get_marker()
 	if (!M)
 		refund(user)

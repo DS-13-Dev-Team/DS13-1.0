@@ -9,7 +9,7 @@
 
 	var/datum/turbolift/lift
 
-/obj/structure/lift/set_dir(var/newdir)
+/obj/structure/lift/set_dir(newdir)
 	. = ..()
 	pixel_x = 0
 	pixel_y = 0
@@ -34,16 +34,16 @@
 	lift = _lift
 	return ..(newloc)
 
-/obj/structure/lift/attack_ai(var/mob/user)
+/obj/structure/lift/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/structure/lift/attack_generic(var/mob/user)
+/obj/structure/lift/attack_generic(mob/user)
 	return attack_hand(user)
 
-/obj/structure/lift/attack_hand(var/mob/user)
+/obj/structure/lift/attack_hand(mob/user)
 	return interact(user)
 
-/obj/structure/lift/interact(var/mob/user)
+/obj/structure/lift/interact(mob/user)
 	if(!lift.is_functional())
 		return 0
 	return 1
@@ -67,7 +67,7 @@
 	light_up = FALSE
 	update_icon()
 
-/obj/structure/lift/button/interact(var/mob/user)
+/obj/structure/lift/button/interact(mob/user)
 	if(!..())
 		return
 	light_up()
@@ -97,10 +97,10 @@
 	icon_state = "panel"
 
 
-/obj/structure/lift/panel/attack_ghost(var/mob/user)
+/obj/structure/lift/panel/attack_ghost(mob/user)
 	return interact(user)
 
-/obj/structure/lift/panel/interact(var/mob/user)
+/obj/structure/lift/panel/interact(mob/user)
 	if(!..())
 		return
 

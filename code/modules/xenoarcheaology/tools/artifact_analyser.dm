@@ -24,7 +24,7 @@
 	if(!owned_scanner)
 		owned_scanner = locate(/obj/machinery/artifact_scanpad) in orange(1, src)
 
-/obj/machinery/artifact_analyser/attack_hand(var/mob/user as mob)
+/obj/machinery/artifact_analyser/attack_hand(mob/user as mob)
 	src.add_fingerprint(user)
 	interact(user)
 
