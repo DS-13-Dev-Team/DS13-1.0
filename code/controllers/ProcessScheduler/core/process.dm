@@ -327,7 +327,7 @@
 	var/highestRunTime = round(getHighestRunTime(), 0.1)/10
 	stat("[name]", "T#[getTicks()] | AR [averageRunTime] | LR [lastRunTime] | HR [highestRunTime] | D [cpu_defer_count]")
 
-/datum/controller/process/proc/catchException(var/exception/e, thrower)
+/datum/controller/process/proc/catchException(exception/e, thrower)
 	if(istype(e)) // Real runtimes go to the real error handler
 		throw e
 	var/etext = "[e]"
