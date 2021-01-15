@@ -3,7 +3,6 @@
 	pref_name = "EDF Marine"
 	weigh = 25
 	landmark_tag = "edfteam"
-	specials_outfits = list(/decl/hierarchy/outfit/edf_engie, /decl/hierarchy/outfit/edf_medic)
 
 /datum/emergency_call/usm/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, "<B>You are USM Valor Marine EarthGov.</b>")
@@ -33,10 +32,18 @@
 		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of the elite Asset Protection commando squad.</span></p>")
 		return
 
-	if(specials_outfits)
-		ertfit = new(pick_n_take(specials_outfits))
+	if(medics < max_medics)
+		ertfit = new /decl/hierarchy/outfit/edf_medic
 		dressup_human(H, ertfit)
-		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are a member of the elite Asset Protection commando squad.</span></p>")
+		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of the Unitologist squad.</span></p>")
+		medics++
+		return
+
+	if(enginers < max_enginers)
+		ertfit = new /decl/hierarchy/outfit/edf_engie
+		dressup_human(H, ertfit)
+		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of the Unitologist squad.</span></p>")
+		enginers++
 		return
 
 	dressup_human(H, ertfit)

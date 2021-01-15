@@ -3,7 +3,6 @@
 	pref_name = "CEC Repair Crew"
 	weigh = 50
 	landmark_tag = "kellionteam"
-	specials_outfits = list(/decl/hierarchy/outfit/isaac, /decl/hierarchy/outfit/kendra)
 
 /datum/emergency_call/kellionteam/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, "<B> You are part of the Kellion Repair Team.</b>")
@@ -34,10 +33,18 @@
 		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of squad.</span></p>")
 		return
 
-	if(specials_outfits)
-		ertfit = new(pick_n_take(specials_outfits))
+	if(medics < max_medics)
+		ertfit = new /decl/hierarchy/outfit/kendra
 		dressup_human(H, ertfit)
-		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are a member of squad.</span></p>")
+		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of the Unitologist squad.</span></p>")
+		medics++
+		return
+
+	if(enginers < max_enginers)
+		ertfit = new /decl/hierarchy/outfit/isaac
+		dressup_human(H, ertfit)
+		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of the Unitologist squad.</span></p>")
+		enginers++
 		return
 
 	dressup_human(H, ertfit)

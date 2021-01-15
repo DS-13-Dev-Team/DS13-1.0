@@ -3,7 +3,6 @@
 	pref_name = "Unitologist Missionary"
 	weigh = 25
 	landmark_tag = "unitologiststeam"
-	specials_outfits = list(/decl/hierarchy/outfit/healer, /decl/hierarchy/outfit/mechanic, /decl/hierarchy/outfit/faithful)
 
 /datum/emergency_call/deliverance/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, "<B>You are Unitologist.</b>")
@@ -34,9 +33,18 @@
 		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of the Unitologist squad.</span></p>")
 		return
 
-	if(specials_outfits)
-		ertfit = new(pick_n_take(specials_outfits))
+	if(medics < max_medics)
+		ertfit = new /decl/hierarchy/outfit/healer
 		dressup_human(H, ertfit)
+		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of the Unitologist squad.</span></p>")
+		medics++
+		return
+
+	if(enginers < max_enginers)
+		ertfit = new /decl/hierarchy/outfit/mechanic
+		dressup_human(H, ertfit)
+		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of the Unitologist squad.</span></p>")
+		enginers++
 		return
 
 	dressup_human(H, ertfit)

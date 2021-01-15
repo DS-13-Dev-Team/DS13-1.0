@@ -18,7 +18,10 @@
 	var/candidate_timer
 	var/cooldown_timer
 	var/spawn_type = /mob/living/carbon/human
-	var/list/specials_outfits = list()
+	var/max_medics = 1
+	var/medics = 0
+	var/max_enginers = 1
+	var/enginers = 0
 	var/datum/announcement/priority/command/special/pr_announce = new(0)
 
 /datum/game_mode/proc/initialize_emergency_calls()
@@ -169,6 +172,8 @@
 
 	if(members_min > 0)
 		if(length(picked_candidates))
+			max_medics = max(round(length(picked_candidates) * 0.25), 1)
+			max_enginers = max(round(length(picked_candidates) * 0.25), 1)
 			for(var/i in picked_candidates)
 				var/datum/mind/candidate_mind = i
 				members += candidate_mind
