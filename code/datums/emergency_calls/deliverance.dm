@@ -18,32 +18,27 @@
 	var/mob/original = M.current
 	var/mob/living/carbon/human/H = .
 
-	var/choosen = input(original.client, "Random name or input name?", "Name") as null|anything in list("Random", "Input")
-	if(choosen == "Input")
-		H.name = input(original.client, "Input name of character.", "Name") as text
-	else
-		H.name = pick(GLOB.first_names_female + GLOB.first_names_male) + " " + pick(GLOB.last_names) //Random as default
-	H.real_name = H.name
-
 	M.transfer_to(H, TRUE)
-	H.fully_replace_character_name(M.name, H.real_name)
-
 	if(original)
 		qdel(original)
 
+	GLOB.actor.add_antagonist(M, TRUE, FALSE, do_not_announce = FALSE, preserve_appearance = FALSE)
+	H.change_appearance(APPEARANCE_ALL_HAIR|APPEARANCE_GENDER|APPEARANCE_SKIN, H.loc, H, SPECIES_HUMAN, state = GLOB.z_state)
+
 	print_backstory(H)
 
+	var/decl/hierarchy/outfit/ertfit = new /decl/hierarchy/outfit/berserker
 	if(!leader)
 		leader = H
-		dressup_human(H, /decl/hierarchy/outfit/deacon)
+		ertfit = new /decl/hierarchy/outfit/deacon
+		dressup_human(H, ertfit)
 		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are the leader of the Unitologist squad.</span></p>")
 		return
 
 	if(specials_outfits)
-		var/k = pick(specials_outfits)
-		specials_outfits -= k
-		dressup_human(H, k)
+		ertfit = pick_n_take(specials_outfits)
+		dressup_human(H, ertfit)
 		return
 
-	dressup_human(H, /decl/hierarchy/outfit/berserker)
+	dressup_human(H, ertfit)
 	to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are a member of the Unitologist squad.</span></p>")

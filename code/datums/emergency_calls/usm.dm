@@ -18,18 +18,12 @@
 	var/mob/original = M.current
 	var/mob/living/carbon/human/H = .
 
-	var/choosen = input(M, "Random name or input name?", "Name") as null|anything in list("Random", "Input")
-	if(choosen == "Input")
-		H.name = input(M, "Input name of character.", "Name") as text
-	else
-		H.name = pick(GLOB.first_names_female + GLOB.first_names_male) + " " + pick(GLOB.last_names) //Random as default
-	H.real_name = H.name
-
 	M.transfer_to(H, TRUE)
-	H.fully_replace_character_name(M.name, H.real_name)
 	if(original)
 		qdel(original)
 
+	GLOB.actor.add_antagonist(M, TRUE, FALSE, do_not_announce = FALSE, preserve_appearance = FALSE)
+	H.change_appearance(APPEARANCE_ALL_HAIR|APPEARANCE_GENDER|APPEARANCE_SKIN, H.loc, H, SPECIES_HUMAN, state = GLOB.z_state)
 	print_backstory(H)
 
 	var/decl/hierarchy/outfit/ertfit = new /decl/hierarchy/outfit/edf_grunt
@@ -41,8 +35,7 @@
 		return
 
 	if(specials_outfits)
-		ertfit = pick(specials_outfits)
-		specials_outfits -= ertfit
+		ertfit = pick_n_take(specials_outfits)
 		dressup_human(H, ertfit)
 		to_chat(H, "<p style='font-size:1.5em'><span class='notice'>You are a member of the elite Asset Protection commando squad.</span></p>")
 		return
