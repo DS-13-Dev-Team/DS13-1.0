@@ -466,7 +466,7 @@
 
 //Visual Filters
 //------------------------
-/datum/extension/charge/proc/update_blur_filter(atom/mover,	var/atom/oldloc,	var/atom/newloc)
+/datum/extension/charge/proc/update_blur_filter(atom/mover,	atom/oldloc, atom/newloc)
 	if (stopped_at || !blur_filter_strength)
 		return
 

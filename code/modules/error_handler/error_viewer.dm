@@ -107,7 +107,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 
 	browse_to(user, html)
 
-/datum/error_viewer/error_cache/proc/log_error(var/exception/e, list/desclines, skip_count)
+/datum/error_viewer/error_cache/proc/log_error(exception/e, list/desclines, skip_count)
 	if (!istype(e))
 		return // Abnormal exception, don't even bother
 
@@ -140,7 +140,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 	var/list/errors = list()
 	var/next_message_at = 0
 
-/datum/error_viewer/error_source/New(var/exception/e)
+/datum/error_viewer/error_source/New(exception/e)
 	if (!istype(e))
 		name = "\[[time_stamp()]] Uncaught exceptions"
 		return
@@ -168,7 +168,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 	var/info_name
 	var/info
 
-/datum/error_viewer/error_entry/New(var/exception/e, list/desclines, skip_count)
+/datum/error_viewer/error_entry/New(exception/e, list/desclines, skip_count)
 	if (!istype(e))
 		name = "<b>\[[time_stamp()]]</b> Uncaught exception: <b>[html_encode(e.name)]</b>"
 		return
