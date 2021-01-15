@@ -36,7 +36,7 @@
 		if(istype(E)) E.internal_organs -= src
 	return ..()
 
-/obj/item/organ/internal/set_dna(var/datum/dna/new_dna)
+/obj/item/organ/internal/set_dna(datum/dna/new_dna)
 	..()
 	if(species && species.organs_icon)
 		icon = species.organs_icon

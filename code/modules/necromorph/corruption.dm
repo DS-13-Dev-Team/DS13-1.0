@@ -270,7 +270,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 /* Visualnet Handling */
 //-------------------
-/obj/effect/vine/corruption/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/effect/vine/corruption/get_visualnet_tiles(datum/visualnet/network)
 	return trange(1, src)
 
 /obj/effect/vine/corruption/watched_tile_updated(var/turf/T)

@@ -50,11 +50,11 @@
 	get_controlling_player()
 
 //Called when this atom starts charging at another, just before taking the first step
-/mob/living/simple_animal/necromorph/divider_component/charge_started(var/datum/extension/charge/charge)
+/mob/living/simple_animal/necromorph/divider_component/charge_started(datum/extension/charge/charge)
 	update_icon()
 
 //Called when this atom starts finishes a charge, called after everything, just before the cooldown timer starts
-/mob/living/simple_animal/necromorph/divider_component/charge_ended(var/datum/extension/charge/charge)
+/mob/living/simple_animal/necromorph/divider_component/charge_ended(datum/extension/charge/charge)
 	update_icon()
 
 

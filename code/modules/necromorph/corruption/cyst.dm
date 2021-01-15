@@ -62,7 +62,7 @@
 
 
 //Cysts can stack if they dont share directions
-/obj/structure/corruption_node/cyst/check_overlap(var/datum/click_handler/placement/P)
+/obj/structure/corruption_node/cyst/check_overlap(datum/click_handler/placement/P)
 	if (placement_location == P.placement_location)
 		if (dir == P.dir)
 			return FALSE

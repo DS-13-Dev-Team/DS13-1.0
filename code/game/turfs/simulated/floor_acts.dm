@@ -19,7 +19,7 @@
 			take_damage(rand(20, 100), BLAST) //Breaks 1-2 layers
 
 
-/turf/simulated/floor/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
+/turf/simulated/floor/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 
 	var/burn_damage = get_fire_damage(exposed_temperature, 0.5*multiplier)
 	if (burn_damage > 0)

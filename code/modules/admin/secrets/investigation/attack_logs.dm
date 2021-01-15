@@ -146,7 +146,7 @@
 /attack_filter/no_client/reset()
 	filter_missing_clients = initial(filter_missing_clients)
 
-/attack_filter/no_client/filter_attack(var/datum/attack_log/al)
+/attack_filter/no_client/filter_attack(datum/attack_log/al)
 	if(!filter_missing_clients)
 		return FALSE
 	if(al.attacker && al.attacker.client.ckey == NO_CLIENT_CKEY)
@@ -192,7 +192,7 @@
 	. = sortList(.)
 	. += "*ANY*"
 
-/attack_filter/must_be_given_ckey/filter_attack(var/datum/attack_log/al)
+/attack_filter/must_be_given_ckey/filter_attack(datum/attack_log/al)
 	if(!ckey_filter)
 		return FALSE
 	if(check_attacker && al.attacker && al.attacker.client.ckey == ckey_filter)

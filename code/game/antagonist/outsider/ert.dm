@@ -47,7 +47,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	..()
 	welcome_text = "As member of the Emergency Response Team, you answer only to your leader and [GLOB.using_map.company_name] officials."
 
-/datum/antagonist/ert/greet(var/datum/mind/player)
+/datum/antagonist/ert/greet(datum/mind/player)
 	if(!..())
 		return
 	to_chat(player.current, "You should first gear up and discuss a plan with your team. More members may be joining, don't move out before you're ready.")

@@ -173,7 +173,7 @@ update_flag
 		overlays += "can-o3"
 	return
 
-/obj/machinery/portable_atmospherics/canister/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
+/obj/machinery/portable_atmospherics/canister/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	if(exposed_temperature > temperature_resistance)
 		health -= 5
 		healthcheck()

@@ -501,7 +501,7 @@
 
 
 //Mobs take some damage and get stunned
-/mob/living/charge_act(var/datum/extension/charge/charge)
+/mob/living/charge_act(datum/extension/charge/charge)
 	shake_camera(src,10*charge.power,1)
 	var/charge_power = charge.get_total_power()
 	shake_camera(src,10*charge_power,1)
@@ -531,7 +531,7 @@
 
 
 //When a human does it, we call the same proc on their species. This allows various people to do stuff
-/mob/living/carbon/human/charge_impact(var/datum/extension/charge/charge)
+/mob/living/carbon/human/charge_impact(datum/extension/charge/charge)
 	shake_camera(src,3,1)
 	if (species)
 		return species.charge_impact(charge)

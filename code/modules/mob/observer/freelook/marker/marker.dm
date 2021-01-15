@@ -267,7 +267,7 @@
 //Necrovision
 
 //The marker reveals an area around it, seeing through walls
-/obj/machinery/marker/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/machinery/marker/get_visualnet_tiles(datum/visualnet/network)
 	return trange(visualnet_range, src)
 
 //Spawnpoints

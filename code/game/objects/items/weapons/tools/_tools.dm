@@ -1031,7 +1031,7 @@
 
 
 //Tools take heavy damage from being soaked in acid
-/obj/item/weapon/tool/acid_act(var/datum/reagent/acid/acid, volume)
+/obj/item/weapon/tool/acid_act(datum/reagent/acid/acid, volume)
 	var/acid_damage = acid.power * volume
 	unreliability += rand_between(0, degradation*acid_damage)
 

@@ -299,7 +299,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 /*
 	Slashers have a special charge impact. Each of their blade arms gets a free hit on impact with the primary target
 */
-/datum/species/necromorph/slasher/charge_impact(var/datum/extension/charge/charge)
+/datum/species/necromorph/slasher/charge_impact(datum/extension/charge/charge)
 	if (charge.last_target_type == CHARGE_TARGET_PRIMARY && isliving(charge.last_obstacle))
 		var/mob/living/carbon/human/H = charge.user
 		var/mob/living/L = charge.last_obstacle

@@ -388,7 +388,7 @@
 				I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
 			overlays += I
 
-/obj/structure/window/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
+/obj/structure/window/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	if(exposed_temperature > maximal_heat)
 		hit(damage_per_fire_tick, 0)
 	..()

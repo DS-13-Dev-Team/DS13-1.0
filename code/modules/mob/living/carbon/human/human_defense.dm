@@ -196,7 +196,7 @@ meteor_act
 	return affecting.organ_tag
 	*/
 
-/mob/living/carbon/human/hit_with_weapon(var/datum/strike/implement/strike)
+/mob/living/carbon/human/hit_with_weapon(datum/strike/implement/strike)
 	return standard_weapon_hit_effects(strike.used_item, strike.user, strike.get_final_damage(), strike.blocked, strike.target_zone)
 
 
@@ -599,7 +599,7 @@ meteor_act
 	If successful, the attack is redirected to the limb, AND its damage is reduced a little.
 	An attack aimed at the face, but blocked by an arm hurts the arm less than an attack specifically aimed at that arm
 */
-/mob/living/carbon/human/handle_strike_defense(var/datum/strike/strike)
+/mob/living/carbon/human/handle_strike_defense(datum/strike/strike)
 	if (!can_defend(strike))
 		return
 
@@ -677,7 +677,7 @@ meteor_act
 /*
 	This proc checks if this person can defend against an incoming strike
 */
-/mob/living/carbon/human/can_defend(var/datum/strike/strike)
+/mob/living/carbon/human/can_defend(datum/strike/strike)
 
 	if (strike.luser == src)
 		//We don't block ourselves

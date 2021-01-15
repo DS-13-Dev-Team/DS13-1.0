@@ -147,7 +147,7 @@
 
 
 //Future TODO: Make this generic atom behaviour
-/obj/structure/corruption_node/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
+/obj/structure/corruption_node/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	.=..(air, exposed_temperature, exposed_volume, multiplier*fire_damage_multiplier)
 
 

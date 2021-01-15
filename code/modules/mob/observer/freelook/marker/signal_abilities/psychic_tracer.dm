@@ -47,7 +47,7 @@
 	visualnet_range = TRACER_MAX_RANGE
 
 
-/obj/effect/psychic_tracer/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/effect/psychic_tracer/get_visualnet_tiles(datum/visualnet/network)
 	return EM.get_visualnet_tiles(network)
 
 
@@ -125,7 +125,7 @@
 	object.visualnet_range = radius
 	GLOB.necrovision.add_source(object, TRUE, TRUE)
 
-/datum/extension/psychic_tracer/get_visualnet_tiles(var/datum/visualnet/network)
+/datum/extension/psychic_tracer/get_visualnet_tiles(datum/visualnet/network)
 	return A.turfs_in_view(radius)
 
 

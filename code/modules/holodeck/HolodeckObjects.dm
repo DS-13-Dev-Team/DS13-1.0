@@ -233,7 +233,7 @@
 	New()
 		item_color = "red"
 
-/obj/item/weapon/holo/esword/handle_block(var/datum/strike/strike)
+/obj/item/weapon/holo/esword/handle_block(datum/strike/strike)
 	. = ..()
 	if(.)
 		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()

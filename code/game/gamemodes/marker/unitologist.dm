@@ -30,7 +30,7 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 /datum/objective/unitologist
 	explanation_text = "Serve the marker at all costs."
 
-/datum/antagonist/unitologist/create_objectives(var/datum/mind/marker_minion)
+/datum/antagonist/unitologist/create_objectives(datum/mind/marker_minion)
 	.=..()
 	if(!.)
 		return
@@ -73,7 +73,7 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 
 
 
-/datum/antagonist/unitologist/shardbearer/create_objectives(var/datum/mind/marker_minion)
+/datum/antagonist/unitologist/shardbearer/create_objectives(datum/mind/marker_minion)
 	if(!..())
 		return
 	var/datum/objective/unitologist/shard/unitologist_objective = new

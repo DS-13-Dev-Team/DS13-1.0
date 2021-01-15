@@ -52,7 +52,7 @@
 	..()
 	update_icon()
 
-/obj/item/weapon/material/twohanded/get_block_chance(var/datum/strike/strike)
+/obj/item/weapon/material/twohanded/get_block_chance(datum/strike/strike)
 	. = ..()
 	if(wielded)
 		. += wielded_parry_bonus

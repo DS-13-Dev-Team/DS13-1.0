@@ -307,7 +307,7 @@
 	var/turf/location = get_turf(src)
 	location.hotspot_expose(fire_burn_temperature(), 50, 1)
 
-/mob/living/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
+/mob/living/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	var/protection = get_heat_protection(exposed_temperature)
 	if (protection >= 1)
 		return

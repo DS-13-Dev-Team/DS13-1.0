@@ -45,6 +45,6 @@
 /obj/effect/scry_eye/ex_act()
 	return null
 
-/obj/effect/scry_eye/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/effect/scry_eye/get_visualnet_tiles(datum/visualnet/network)
 
 	return trange(visualnet_range, src)

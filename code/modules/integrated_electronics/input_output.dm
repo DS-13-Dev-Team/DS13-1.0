@@ -252,7 +252,7 @@
 	signal.data["message"] = "ACTIVATE"
 	return signal
 
-/obj/item/integrated_circuit/input/signaler/do_work(var/datum/io) // Sends a signal.
+/obj/item/integrated_circuit/input/signaler/do_work(datum/io) // Sends a signal.
 	if(!radio_connection || io != activators[1])
 		return
 
@@ -284,7 +284,7 @@
 
 	return 1
 
-/obj/item/integrated_circuit/input/signaler/receive_signal(var/datum/signal/signal)
+/obj/item/integrated_circuit/input/signaler/receive_signal(datum/signal/signal)
 
 	if(!signal_good(signal))
 		return 0
@@ -316,7 +316,7 @@
 	new_id.data = "Integrated_Circuit"
 	new_rec.data = "ACTIVATE"
 
-/obj/item/integrated_circuit/input/signaler/signal_good(var/datum/signal/signal)
+/obj/item/integrated_circuit/input/signaler/signal_good(datum/signal/signal)
 	. = ..()
 	var/datum/integrated_io/id_tag = inputs[2]
 	if(!id_tag.data || id_tag.data != signal.data["tag"])
@@ -331,7 +331,7 @@
 	signal.encryption = null
 	return signal
 
-/obj/item/integrated_circuit/input/signaler/advanced/receive_signal(var/datum/signal/signal)
+/obj/item/integrated_circuit/input/signaler/advanced/receive_signal(datum/signal/signal)
 	if(!signal_good(signal))
 		return 0
 	if(signal.data["command"])

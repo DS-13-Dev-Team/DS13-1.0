@@ -40,7 +40,7 @@ GLOBAL_DATUM_INIT(xenomorphs, /datum/antagonist/xenos, new)
 				vents += temp_vent
 	return vents
 
-/datum/antagonist/xenos/create_objectives(var/datum/mind/player)
+/datum/antagonist/xenos/create_objectives(datum/mind/player)
 	if(!..())
 		return
 	player.objectives += new /datum/objective/survive()

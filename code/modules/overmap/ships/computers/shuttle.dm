@@ -3,7 +3,7 @@
 	name = "general shuttle control console"
 	ui_template = "shuttle_control_console_exploration.tmpl"
 
-/obj/machinery/computer/shuttle_control/explore/get_ui_data(var/datum/shuttle/autodock/overmap/shuttle)
+/obj/machinery/computer/shuttle_control/explore/get_ui_data(datum/shuttle/autodock/overmap/shuttle)
 	. = ..()
 	if(istype(shuttle))
 		var/fuel_pressure = 0

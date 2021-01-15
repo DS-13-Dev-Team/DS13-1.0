@@ -188,7 +188,7 @@
 	QDEL_NULL(laser)
 	.=..()
 
-/obj/effect/mine/trip/on_mount(var/datum/extension/mount/ME)
+/obj/effect/mine/trip/on_mount(datum/extension/mount/ME)
 	icon_state = "detonator_mine_deployed"
 	spawn(0.3 SECONDS)
 		playsound(get_turf(src), 'sound/weapons/guns/misc/detonator_mine_arm.ogg',VOLUME_HIGH,FALSE)

@@ -201,7 +201,7 @@
 //-------------------
 
 //A corruption source caches the visual data from all the turfs under its banner
-/datum/extension/corruption_source/get_visualnet_tiles(var/datum/visualnet/network)
+/datum/extension/corruption_source/get_visualnet_tiles(datum/visualnet/network)
 
 	if (needs_update)
 		update_visualnet()

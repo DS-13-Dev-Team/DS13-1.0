@@ -262,7 +262,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 
 //Special effects for leaper impact, its pretty powerful if it lands on the primary target mob, but it backfires if it was blocked by anything else
-/datum/species/necromorph/leaper/charge_impact(var/datum/extension/charge/leap/charge)
+/datum/species/necromorph/leaper/charge_impact(datum/extension/charge/leap/charge)
 	.=..()	//We call the parent charge impact too, all the following effects are in addition to the default behaviour
 	var/mob/living/carbon/human/H = charge.user
 	shake_camera(charge.user,5,3)

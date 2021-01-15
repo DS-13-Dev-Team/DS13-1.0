@@ -63,7 +63,7 @@
 	SSS.Click(given)
 	return TRUE
 
-/mob/living/silicon/verb/activate_subsystem(var/datum/silicon_subsystem_name in silicon_subsystems_by_name)
+/mob/living/silicon/verb/activate_subsystem(datum/silicon_subsystem_name in silicon_subsystems_by_name)
 	set name = "Subsystems"
 	set desc = "Activates the given subsystem"
 	set category = "Silicon Commands"

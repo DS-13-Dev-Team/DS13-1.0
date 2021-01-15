@@ -180,7 +180,7 @@
 	return 0
 
 
-/obj/item/weapon/melee/baton/get_strike_damage(var/datum/strike/strike)
+/obj/item/weapon/melee/baton/get_strike_damage(datum/strike/strike)
 	var/mob/living/L = strike.user
 
 	if (L && L.a_intent == I_HURT)

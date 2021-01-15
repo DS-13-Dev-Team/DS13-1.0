@@ -74,7 +74,7 @@
 /datum/computer_file/data/email_account/service/broadcaster/
 	login = EMAIL_BROADCAST
 
-/datum/computer_file/data/email_account/service/broadcaster/receive_mail(var/datum/computer_file/data/email_message/received_message, relayed)
+/datum/computer_file/data/email_account/service/broadcaster/receive_mail(datum/computer_file/data/email_message/received_message, relayed)
 	if(!istype(received_message) || relayed)
 		return 0
 	// Possibly exploitable for user spamming so keep admins informed.

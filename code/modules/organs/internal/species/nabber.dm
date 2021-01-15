@@ -57,7 +57,7 @@
 	if(dna)
 		color = rgb(dna.GetUIValue(DNA_UI_EYES_R), dna.GetUIValue(DNA_UI_EYES_G), dna.GetUIValue(DNA_UI_EYES_B))
 
-/obj/item/organ/internal/eyes/nabber/set_dna(var/datum/dna/new_dna)
+/obj/item/organ/internal/eyes/nabber/set_dna(datum/dna/new_dna)
 	. = ..()
 	color = rgb(new_dna.GetUIValue(DNA_UI_EYES_R), new_dna.GetUIValue(DNA_UI_EYES_G), new_dna.GetUIValue(DNA_UI_EYES_B))
 

@@ -24,7 +24,7 @@
 		atmosphere.temperature = T20C + rand(220, 800)
 		atmosphere.update_values()
 
-/obj/effect/overmap/sector/exoplanet/volcanic/adapt_seed(var/datum/seed/S)
+/obj/effect/overmap/sector/exoplanet/volcanic/adapt_seed(datum/seed/S)
 	..()
 	S.set_trait(TRAIT_REQUIRES_WATER,0)
 	S.set_trait(TRAIT_HEAT_TOLERANCE, 1000 + S.get_trait(TRAIT_HEAT_TOLERANCE))

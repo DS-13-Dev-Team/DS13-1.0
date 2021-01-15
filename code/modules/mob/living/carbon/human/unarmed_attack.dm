@@ -304,7 +304,7 @@ var/global/list/sparring_attack_cache = list()
 	eye_attack_text_victim = "digits"
 
 
-/datum/unarmed_attack/punch/show_attack(var/datum/strike/strike)
+/datum/unarmed_attack/punch/show_attack(datum/strike/strike)
 
 	if (strike.luser)
 		strike.luser.do_attack_animation(strike.target)

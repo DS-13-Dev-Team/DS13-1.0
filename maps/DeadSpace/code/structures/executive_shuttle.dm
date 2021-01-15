@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(executive_shuttle_controllers, list())
 	data["authorised"] = authorised
 	return data
 
-/obj/machinery/computer/shuttle_control/executive/handle_topic_href(var/datum/shuttle/autodock/shuttle, list/href_list, user)
+/obj/machinery/computer/shuttle_control/executive/handle_topic_href(datum/shuttle/autodock/shuttle, list/href_list, user)
 	. = ..()
 	if(!istype(shuttle))
 		return TOPIC_NOACTION

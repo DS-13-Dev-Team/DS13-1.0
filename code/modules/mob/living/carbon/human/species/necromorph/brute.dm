@@ -234,7 +234,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	shredding = TRUE //Better environment interactions, even if not sharp
 
 //Brute punch causes knockback on any mob smaller than itself
-/datum/unarmed_attack/punch/brute/apply_effects(var/datum/strike/strike)
+/datum/unarmed_attack/punch/brute/apply_effects(datum/strike/strike)
 	if (istype(strike.target, /atom/movable))
 		var/mob/living/carbon/human/user = strike.user
 		var/atom/movable/AM = strike.target

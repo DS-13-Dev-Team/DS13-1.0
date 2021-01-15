@@ -260,7 +260,7 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 
 
 //The impale
-/datum/species/necromorph/ubermorph/charge_impact(var/datum/extension/charge/charge)
+/datum/species/necromorph/ubermorph/charge_impact(datum/extension/charge/charge)
 	var/mob/living/carbon/human/ubermorph = charge.user
 	if (isliving(charge.last_obstacle))
 		var/mob/living/L = charge.last_obstacle

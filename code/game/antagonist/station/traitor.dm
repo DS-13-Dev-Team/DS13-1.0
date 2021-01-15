@@ -7,7 +7,7 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	skill_setter = /datum/antag_skill_setter/station
 
-/datum/antagonist/traitor/get_extra_panel_options(var/datum/mind/player)
+/datum/antagonist/traitor/get_extra_panel_options(datum/mind/player)
 	return "<a href='?src=\ref[player];common=crystals'>\[set crystals\]</a><a href='?src=\ref[src];spawn_uplink=\ref[player.current]'>\[spawn uplink\]</a>"
 
 /datum/antagonist/traitor/Topic(href, href_list)
@@ -17,7 +17,7 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 		spawn_uplink(locate(href_list["spawn_uplink"]))
 		return 1
 
-/datum/antagonist/traitor/create_objectives(var/datum/mind/traitor)
+/datum/antagonist/traitor/create_objectives(datum/mind/traitor)
 	if(!..())
 		return
 

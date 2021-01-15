@@ -23,7 +23,7 @@ GLOBAL_DATUM_INIT(godcult, /datum/antagonist/godcultist, new)
 	antaghud_indicator = "hudcultist"
 	skill_setter = /datum/antag_skill_setter/station
 
-/datum/antagonist/godcultist/add_antagonist_mind(var/datum/mind/player, ignore_role, nonstandard_role_type, nonstandard_role_msg, mob/living/deity/specific_god)
+/datum/antagonist/godcultist/add_antagonist_mind(datum/mind/player, ignore_role, nonstandard_role_type, nonstandard_role_msg, mob/living/deity/specific_god)
 	if(!..())
 		return 0
 
@@ -48,13 +48,13 @@ GLOBAL_DATUM_INIT(godcult, /datum/antagonist/godcultist, new)
 		deity_count++
 
 
-/datum/antagonist/godcultist/remove_antagonist(var/datum/mind/player, show_message, implanted)
+/datum/antagonist/godcultist/remove_antagonist(datum/mind/player, show_message, implanted)
 	if(!..())
 		return 0
 	remove_cultist(player)
 	return 1
 
-/datum/antagonist/godcultist/get_extra_panel_options(var/datum/mind/player)
+/datum/antagonist/godcultist/get_extra_panel_options(datum/mind/player)
 	return "<a href='?src=\ref[src];selectgod=\ref[player]'>\[Select Deity\]</a>"
 
 /datum/antagonist/godcultist/Topic(href, href_list)

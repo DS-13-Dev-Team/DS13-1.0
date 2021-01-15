@@ -28,7 +28,7 @@
 
 		set_light(1, 1, light_range, 2, COLOR_NECRO_YELLOW)
 
-/obj/structure/corruption_node/eye/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/structure/corruption_node/eye/get_visualnet_tiles(datum/visualnet/network)
 
 	return turfs_in_view(visualnet_range)
 

@@ -38,7 +38,7 @@
 
 //The leg's leap impact is a dropkick, both victim and leg are propelled away from each other wildly
 //The victim recieves a heavy blunt hit
-/mob/living/simple_animal/necromorph/divider_component/leg/charge_impact(var/datum/extension/charge/leap/charge)
+/mob/living/simple_animal/necromorph/divider_component/leg/charge_impact(datum/extension/charge/leap/charge)
 	shake_camera(charge.user,5,3)
 	.=TRUE
 	if (isliving(charge.last_obstacle))

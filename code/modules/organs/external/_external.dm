@@ -156,7 +156,7 @@
 
 	return ..()
 
-/obj/item/organ/external/set_dna(var/datum/dna/new_dna)
+/obj/item/organ/external/set_dna(datum/dna/new_dna)
 	..()
 	s_col_blend = species.limb_blend
 	s_base = new_dna.s_base

@@ -14,7 +14,7 @@
 
 
 
-/obj/item/weapon/shield/handle_block(var/datum/strike/strike)
+/obj/item/weapon/shield/handle_block(datum/strike/strike)
 	var/blocked_damage = min(max_block, min(health+resistance, strike.damage))
 	strike.blocked_damage += blocked_damage
 	strike.blocker = src
@@ -24,10 +24,10 @@
 	spawn()
 		take_damage(blocked_damage, strike.damage_type, strike.user, strike.used_weapon, bypass_resist = FALSE)
 
-/obj/item/weapon/shield/can_block(var/datum/strike/strike)
+/obj/item/weapon/shield/can_block(datum/strike/strike)
 	return (health > 0)
 
-/obj/item/weapon/shield/get_block_chance(var/datum/strike/strike)
+/obj/item/weapon/shield/get_block_chance(datum/strike/strike)
 	return base_block_chance
 
 
@@ -45,7 +45,7 @@
 	slot_flags = SLOT_BACK
 	force = 5.0
 	throwforce = 5.0
-	
+
 	throw_range = 4
 	w_class = ITEM_SIZE_HUGE
 	origin_tech = list(TECH_MATERIAL = 2)
@@ -93,7 +93,7 @@
 	name = "round handmade shield"
 	desc = "A handmade stout shield, but with a small size."
 	icon_state = "buckler"
-	
+
 	throw_range = 6
 	matter = list(MATERIAL_STEEL = 6)
 	base_block_chance = 65
@@ -107,7 +107,7 @@
 	name = "tray shield"
 	desc = "A thin metal tray held on the arm, won't endure much punishment"
 	icon_state = "tray_shield"
-	
+
 	throw_range = 4
 	matter = list(MATERIAL_STEEL = 4)
 	base_block_chance = 80
@@ -130,7 +130,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	force = 3.0
 	throwforce = 5.0
-	
+
 	throw_range = 4
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_ILLEGAL = 4)
@@ -145,7 +145,7 @@
 /obj/item/weapon/shield/energy/can_block()
 	return active
 
-/obj/item/weapon/shield/energy/handle_block(var/datum/strike/strike)
+/obj/item/weapon/shield/energy/handle_block(datum/strike/strike)
 	if(!active)
 		return 0 //turn it on first!
 	. = ..()

@@ -174,7 +174,7 @@
 /decl/noi_feedback/proc/print(datum/unit_test/ut, type, key, list/entries)
 	priv_print(ut, type, key, english_list(entries))
 
-/decl/noi_feedback/detailed/print(var/datum/unit_test/ut, type, key, list/entries)
+/decl/noi_feedback/detailed/print(datum/unit_test/ut, type, key, list/entries)
 	var/list/pretty_print = list()
 	pretty_print += ""
 	for(var/entry in entries)

@@ -46,7 +46,7 @@
 	.=..()
 	set_extension(src, /datum/extension/wallrun)
 
-/mob/living/simple_animal/necromorph/divider_component/arm/charge_impact(var/datum/extension/charge/leap/charge)
+/mob/living/simple_animal/necromorph/divider_component/arm/charge_impact(datum/extension/charge/leap/charge)
 	shake_camera(charge.user,5,3)
 	.=TRUE
 	if (isliving(charge.last_obstacle))

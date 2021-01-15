@@ -329,7 +329,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 	spawn()
 		H.hookblade_swing(target)
 
-/datum/species/necromorph/hunter/charge_impact(var/datum/extension/charge/charge)
+/datum/species/necromorph/hunter/charge_impact(datum/extension/charge/charge)
 	var/mob/living/carbon/human/H = charge.user
 	spawn()
 		H.hookblade_swing(charge.target)

@@ -133,7 +133,7 @@
 		return FALSE
 	.=..()
 
-/obj/item/acid_act(var/datum/reagent/acid/acid, volume)
+/obj/item/acid_act(datum/reagent/acid/acid, volume)
 	.=..()
 	if (.)//The unacidable flag is checked in parent
 		var/melt = FALSE

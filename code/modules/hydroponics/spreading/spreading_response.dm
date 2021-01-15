@@ -90,7 +90,7 @@
 	if(.) START_PROCESSING(SSvines, src)
 
 //Future TODO: Make this generic atom behaviour
-/obj/effect/vine/fire_act(var/datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
+/obj/effect/vine/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume, multiplier = 1)
 	var/damage = get_fire_damage(exposed_temperature, 3*multiplier) //Plants and corruption take 3x damage from fire
 	if (damage > 0)
 		adjust_health(-damage)

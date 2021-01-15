@@ -22,7 +22,7 @@
 	remote_target = null
 	return ..()
 
-/datum/topic_state/remote/can_use_topic(var/datum/src_object, mob/user)
+/datum/topic_state/remote/can_use_topic(datum/src_object, mob/user)
 	if(!(remoter && remoter_state))	// The remoter is gone, let us leave
 		return STATUS_CLOSE
 
