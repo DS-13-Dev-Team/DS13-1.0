@@ -22,8 +22,7 @@
 	if(original)
 		qdel(original)
 
-	GLOB.actor.add_antagonist(M, TRUE, FALSE, do_not_announce = FALSE, preserve_appearance = FALSE)
-	H.change_appearance(APPEARANCE_ALL_HAIR|APPEARANCE_GENDER|APPEARANCE_SKIN, H.loc, H, SPECIES_HUMAN, state = GLOB.z_state)
+	GLOB.actor.add_antagonist(M, TRUE, FALSE, do_not_announce = FALSE)
 
 	print_backstory(H)
 
