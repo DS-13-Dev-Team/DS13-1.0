@@ -84,7 +84,7 @@
 	//Update our name based on whether our face is obscured/disfigured
 	SetName(get_visible_name())
 
-/mob/living/carbon/human/set_stat(var/new_stat)
+/mob/living/carbon/human/set_stat(new_stat)
 	. = ..()
 	if(stat)
 		update_skin(1)
@@ -125,7 +125,7 @@
 	return pressure_adjustment_coefficient
 
 // Calculate how much of the enviroment pressure-difference affects the human.
-/mob/living/carbon/human/calculate_affecting_pressure(var/pressure)
+/mob/living/carbon/human/calculate_affecting_pressure(pressure)
 	var/pressure_difference
 
 	// First get the absolute pressure difference.
@@ -575,7 +575,7 @@
 
 	return TRUE
 
-/mob/living/carbon/human/handle_regular_hud_updates(var/update_vision = TRUE)
+/mob/living/carbon/human/handle_regular_hud_updates(update_vision = TRUE)
 	if(hud_updateflag) // update our mob's hud overlays, AKA what others see flaoting above our head
 		handle_hud_list()
 

@@ -87,7 +87,7 @@
 	. = ..()
 	. += species.strength
 
-/mob/living/carbon/human/Allow_Spacemove(var/check_drift = 0)
+/mob/living/carbon/human/Allow_Spacemove(check_drift = 0)
 	. = ..()
 	if(.)
 		return
@@ -121,7 +121,7 @@
 			inertia_dir = 0
 			return 1
 
-/mob/living/carbon/human/slip_chance(var/prob_slip = 5)
+/mob/living/carbon/human/slip_chance(prob_slip = 5)
 	if(!..())
 		return 0
 
@@ -164,7 +164,7 @@
 
 
 
-/mob/living/carbon/human/set_move_intent(var/decl/move_intent/M)
+/mob/living/carbon/human/set_move_intent(decl/move_intent/M)
 	. = ..()
 	step_interval = M.footstep_interval
 

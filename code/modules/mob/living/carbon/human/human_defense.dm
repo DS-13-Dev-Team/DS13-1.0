@@ -12,7 +12,7 @@ meteor_act
 ---------------------------------*/
 //Takes an accuracy value, a targeted bodypart, and the projectile, tool or mob doing the hitting.
 //Calculate all bonuses on the attacker's side before calling this, this proc handles the evasion on the defensive side
-/mob/living/carbon/human/get_zone_with_miss_chance(var/accuracy, desired_zone, weapon)
+/mob/living/carbon/human/get_zone_with_miss_chance(accuracy, desired_zone, weapon)
 	//Mobs on the floor are less good at evading
 	var/evasion_mod = evasion
 	if (lying)
@@ -38,7 +38,7 @@ meteor_act
 	else
 		return pick(organs_by_name)	//Check if this is valid
 
-/mob/living/carbon/human/bullet_act(var/obj/item/projectile/P, def_zone)
+/mob/living/carbon/human/bullet_act(obj/item/projectile/P, def_zone)
 
 	def_zone = check_zone(def_zone)
 	if(!has_organ(def_zone))
@@ -74,7 +74,7 @@ meteor_act
 
 	return blocked
 
-/mob/living/carbon/human/stun_effect_act(var/stun_amount, agony_amount, def_zone)
+/mob/living/carbon/human/stun_effect_act(stun_amount, agony_amount, def_zone)
 	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))
 	if(!affected)
 		return
@@ -88,7 +88,7 @@ meteor_act
 
 	..(stun_amount, agony_amount, def_zone)
 
-/mob/living/carbon/human/getarmor(var/def_zone, type)
+/mob/living/carbon/human/getarmor(def_zone, type)
 	var/armorval = 0
 	var/total = 0
 
@@ -317,7 +317,7 @@ meteor_act
 		return 1
 	return 0
 
-/mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, emag_source)
+/mob/living/carbon/human/emag_act(remaining_charges, mob/user, emag_source)
 	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
 	if(!affecting || !BP_IS_ROBOTIC(affecting))
 		to_chat(user, "<span class='warning'>That limb isn't robotic.</span>")
@@ -344,7 +344,7 @@ meteor_act
 
 	AM.launch_throw_strike(src, speed)
 
-/mob/living/carbon/human/embed(var/obj/O, def_zone=null, datum/wound/supplied_wound)
+/mob/living/carbon/human/embed(obj/O, def_zone=null, datum/wound/supplied_wound)
 	if(!def_zone) ..()
 
 	var/obj/item/organ/external/affecting = get_organ(def_zone)
@@ -354,7 +354,7 @@ meteor_act
 /mob/proc/unembed(obj/item/I, atom/new_location, silent = 0, supplied_message)
 	return
 
-/mob/living/carbon/human/unembed(var/obj/item/I, atom/new_location, silent = 0, supplied_message)
+/mob/living/carbon/human/unembed(obj/item/I, atom/new_location, silent = 0, supplied_message)
 	if (!(I in implants))
 		return
 	for (var/obj/item/organ/external/affecting in src)
@@ -456,7 +456,7 @@ meteor_act
 
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
-/mob/living/carbon/human/electrocute_act(var/shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
+/mob/living/carbon/human/electrocute_act(shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
 
 	if(status_flags & GODMODE)	return 0	//godmode
 
@@ -472,7 +472,7 @@ meteor_act
 
 	return ..(shock_damage, source, base_siemens_coeff, def_zone)
 
-/mob/living/carbon/human/apply_shock(var/shock_damage, def_zone, base_siemens_coeff = 1.0)
+/mob/living/carbon/human/apply_shock(shock_damage, def_zone, base_siemens_coeff = 1.0)
 	var/obj/item/organ/external/initial_organ = get_organ(check_zone(def_zone))
 	if(!initial_organ)
 		initial_organ = pick(organs)
@@ -729,7 +729,7 @@ meteor_act
 			if(C.min_cold_protection_temperature && C.min_cold_protection_temperature <= temperature)
 				. |= C.cold_protection
 
-/mob/living/carbon/human/get_heat_protection(var/temperature) //Temperature is the temperature you're being exposed to.
+/mob/living/carbon/human/get_heat_protection(temperature) //Temperature is the temperature you're being exposed to.
 	//Not hot enough to bother us
 	var/limit = get_heat_limit()
 	if (temperature < limit)

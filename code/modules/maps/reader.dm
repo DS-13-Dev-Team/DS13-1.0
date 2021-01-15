@@ -523,7 +523,7 @@ GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
 			value = deepCopyList(value)
 		try
 			what.vars[attribute] = value
-		catch (ex)
+		catch (var/ex)
 			var/found = FALSE
 			for (var/V in what.vars)
 				if (deep_string_equals(V, attribute))

@@ -8,7 +8,7 @@ var/const/PARTICLE_INTERFACE_WIRE = 4 // Determines the interface showing up.
 var/const/PARTICLE_LIMIT_POWER_WIRE = 8 // Determines how strong the PA can be.
 //var/const/PARTICLE_NOTHING_WIRE = 16 // Blank wire
 
-/datum/wires/particle_acc/control_box/CanUse(var/mob/living/L)
+/datum/wires/particle_acc/control_box/CanUse(mob/living/L)
 	var/obj/machinery/particle_accelerator/control_box/C = holder
 	if(C.construction_state == 2)
 		return 1

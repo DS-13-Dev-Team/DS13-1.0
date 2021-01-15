@@ -25,8 +25,8 @@
 	return
 
 // What does the implant do upon injection?
-// return 0 if the implant fails (ex. Revhead and loyalty implant.)
-// return TRUE if the implant succeeds (ex. Nonrevhead and loyalty implant.)
+// return 0 if the implant fails (var/ex. Revhead and loyalty implant.)
+// return TRUE if the implant succeeds (var/ex. Nonrevhead and loyalty implant.)
 /obj/item/weapon/implant/proc/implanted(mob/source)
 	return TRUE
 

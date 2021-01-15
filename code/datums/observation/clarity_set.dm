@@ -42,7 +42,7 @@ GLOBAL_DATUM_INIT(clarity_set_event, /decl/observ/clarity_set, new)
 
 
 
-/turf/Entered(var/atom/A)
+/turf/Entered(atom/A)
 	.=..()
 	if (A.density)
 		if (clear)	//If clear was previously true, null it
@@ -53,7 +53,7 @@ GLOBAL_DATUM_INIT(clarity_set_event, /decl/observ/clarity_set, new)
 			content_density_set(A.density)
 
 
-/turf/Exited(var/atom/A, atom/newloc)
+/turf/Exited(atom/A, atom/newloc)
 	.=..()
 	if (A.density)
 		if (!clear)	//If clear was previously true, null it

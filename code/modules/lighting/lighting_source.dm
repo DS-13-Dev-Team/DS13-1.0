@@ -230,7 +230,7 @@
 	applied_lum_g = lum_g
 	applied_lum_b = lum_b
 
-	FOR_DVIEW(turf/T, light_outer_range, source_turf, INVISIBILITY_LIGHTING)
+	FOR_DVIEW(var/turf/T, light_outer_range, source_turf, INVISIBILITY_LIGHTING)
 		if(!T.lighting_corners_initialised)
 			T.generate_missing_corners()
 
@@ -323,7 +323,7 @@
 /datum/light_source/proc/smart_vis_update()
 	var/list/datum/lighting_corner/corners = list()
 	var/list/turf/turfs                    = list()
-	FOR_DVIEW(turf/T, light_outer_range, source_turf, 0)
+	FOR_DVIEW(var/turf/T, light_outer_range, source_turf, 0)
 		if(!T.lighting_corners_initialised)
 			T.generate_missing_corners()
 		corners |= T.get_corners()

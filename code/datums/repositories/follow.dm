@@ -161,7 +161,7 @@
 	var/mob/living/silicon/robot/R = followed_instance
 	return ..() && R.braintype
 
-/datum/follow_holder/robot/get_suffix(var/mob/living/silicon/robot/R)
+/datum/follow_holder/robot/get_suffix(mob/living/silicon/robot/R)
 	suffix = "\[[R.braintype]\][R.module ? " \[[R.module.name]\]" : ""]"
 	return ..()
 
@@ -169,7 +169,7 @@
 	sort_order = 2
 	followed_type = /mob/living/carbon/human
 
-/datum/follow_holder/human/get_suffix(var/mob/living/carbon/human/H)
+/datum/follow_holder/human/get_suffix(mob/living/carbon/human/H)
 	suffix = "\[[H.species.name]\]"
 	return ..()
 

@@ -72,7 +72,7 @@
 		//Utilise try/catch keywords here so the code continues even if an error occurs.
 		try
 			call(obj, thread_proc)(arglist(args.Copy(3)))
-		catch(var/exception/e)
+		catch(var/var/exception/e)
 			error("[e] on [e.file]:[e.line]")
 		close()
 

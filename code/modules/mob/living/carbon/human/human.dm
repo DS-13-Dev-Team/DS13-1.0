@@ -191,7 +191,7 @@
 
 // called when something steps onto a human
 // this handles mulebots and vehicles
-/mob/living/carbon/human/Crossed(var/atom/movable/AM)
+/mob/living/carbon/human/Crossed(atom/movable/AM)
 	if(istype(AM, /mob/living/bot/mulebot))
 		var/mob/living/bot/mulebot/MB = AM
 		MB.runOver(src)
@@ -414,7 +414,7 @@
 		return FLASH_PROTECTION_MAJOR
 	return total_protection
 
-/mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/living/carbon/human/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
 	if(internal_organs_by_name[BP_EYES]) // Eyes are fucked, not a 'weak point'.
 		var/obj/item/organ/internal/eyes/I = internal_organs_by_name[BP_EYES]
 		I.additional_flash_effects(intensity)
@@ -440,14 +440,14 @@
 
 	return TRUE
 
-/mob/living/carbon/human/is_advanced_tool_user(var/silent)
+/mob/living/carbon/human/is_advanced_tool_user(silent)
 	if(species.has_fine_manipulation(src))
 		return TRUE
 	if(!silent)
 		to_chat(src, "<span class='warning'>You don't have the dexterity to use that!</span>")
 	return FALSE
 
-/mob/living/carbon/human/abiotic(var/full_body = TRUE)
+/mob/living/carbon/human/abiotic(full_body = TRUE)
 	if(full_body)
 		if(src.head || src.shoes || src.w_uniform || src.wear_suit || src.glasses || src.l_ear || src.r_ear || src.gloves)
 			return FALSE
@@ -748,7 +748,7 @@
 	verbs += /mob/living/carbon/human/proc/bloody_doodle
 	return TRUE //we applied blood to the item
 
-/mob/living/carbon/human/clean_blood(var/clean_feet)
+/mob/living/carbon/human/clean_blood(clean_feet)
 	.=..()
 	gunshot_residue = null
 	if(clean_feet && !shoes)
@@ -757,7 +757,7 @@
 		update_inv_shoes(1)
 		return TRUE
 
-/mob/living/carbon/human/get_visible_implants(var/class = 0)
+/mob/living/carbon/human/get_visible_implants(class = 0)
 
 	var/list/visible_implants = list()
 	for(var/obj/item/organ/external/organ in src.organs)
@@ -1058,7 +1058,7 @@
 
 #define CAN_INJECT 1
 #define INJECTION_PORT 2
-/mob/living/carbon/human/can_inject(var/mob/user, target_zone)
+/mob/living/carbon/human/can_inject(mob/user, target_zone)
 	var/obj/item/organ/external/affecting = get_organ(target_zone)
 
 	if(!affecting)
@@ -1079,7 +1079,7 @@
 				return FALSE
 
 
-/mob/living/carbon/human/print_flavor_text(var/shrink = 1)
+/mob/living/carbon/human/print_flavor_text(shrink = 1)
 	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)
 	var/head_exposed = 1
 	var/face_exposed = 1
@@ -1147,7 +1147,7 @@
 			return TRUE
 	return FALSE
 
-/mob/living/carbon/human/slip(var/slipped_on, stun_duration=2)
+/mob/living/carbon/human/slip(slipped_on, stun_duration=2)
 	if((species.species_flags & SPECIES_FLAG_NO_SLIP) || (shoes && (shoes.item_flags & ITEM_FLAG_NOSLIP)))
 		return FALSE
 	return !!(..(slipped_on,stun_duration))
@@ -1299,7 +1299,7 @@
 				return DEVOUR_FAST
 	return ..()
 
-/mob/living/carbon/human/should_have_organ(var/organ_check)
+/mob/living/carbon/human/should_have_organ(organ_check)
 
 	var/obj/item/organ/external/affecting
 	if(organ_check in list(BP_HEART, BP_LUNGS))
@@ -1311,7 +1311,7 @@
 		return FALSE
 	return (species && species.should_have_organ(organ_check))
 
-/mob/living/carbon/human/can_feel_pain(var/obj/item/organ/check_organ)
+/mob/living/carbon/human/can_feel_pain(obj/item/organ/check_organ)
 	if(isSynthetic())
 		return FALSE
 	if(check_organ)
@@ -1335,7 +1335,7 @@
 /mob/living/carbon/human/get_adjusted_metabolism(metabolism)
 	return ..() * (species ? species.metabolism_mod : 1)
 
-/mob/living/carbon/human/is_invisible_to(var/mob/viewer)
+/mob/living/carbon/human/is_invisible_to(mob/viewer)
 	return (is_cloaked() || ..())
 
 /mob/living/carbon/human/help_shake_act(mob/living/carbon/M)

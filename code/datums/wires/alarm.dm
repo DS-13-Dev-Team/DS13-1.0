@@ -9,7 +9,7 @@ var/const/AALARM_WIRE_AI_CONTROL = 8
 var/const/AALARM_WIRE_AALARM = 16
 
 
-/datum/wires/alarm/CanUse(var/mob/living/L)
+/datum/wires/alarm/CanUse(mob/living/L)
 	var/obj/machinery/alarm/A = holder
 	if(A.wiresexposed && A.buildstage == 2)
 		return 1

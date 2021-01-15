@@ -250,7 +250,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 */
 
 //The brute takes less damage from front and side attacks.
-/datum/species/necromorph/brute/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+/datum/species/necromorph/brute/handle_organ_external_damage(obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
 	//First of all, we need to figure out where the attack is coming from
 	var/atom/source
 	var/penetration = 0

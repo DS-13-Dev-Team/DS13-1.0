@@ -7,7 +7,7 @@
 	flash_protection += C.flash_protection; \
 	equipment_tint_total += C.tint;
 
-/mob/living/carbon/human/can_eat(var/food, feedback = 1)
+/mob/living/carbon/human/can_eat(food, feedback = 1)
 	var/list/status = can_eat_status()
 	if(status[1] == HUMAN_EATING_NO_ISSUE)
 		return 1
@@ -18,7 +18,7 @@
 			to_chat(src, "<span class='warning'>\The [status[2]] is in the way!</span>")
 	return 0
 
-/mob/living/carbon/human/can_force_feed(var/feeder, food, feedback = 1)
+/mob/living/carbon/human/can_force_feed(feeder, food, feedback = 1)
 	var/list/status = can_eat_status()
 	if(status[1] == HUMAN_EATING_NO_ISSUE)
 		return 1
@@ -86,7 +86,7 @@
 /mob/living/carbon/human/get_gender()
 	return gender
 
-/mob/living/carbon/human/fully_replace_character_name(var/new_name, in_depth = TRUE)
+/mob/living/carbon/human/fully_replace_character_name(new_name, in_depth = TRUE)
 	var/old_name = real_name
 	. = ..()
 	if(!. || !in_depth)

@@ -1,4 +1,4 @@
-/mob/living/carbon/human/say(var/message, datum/language/speaking = null, whispering)
+/mob/living/carbon/human/say(message, datum/language/speaking = null, whispering)
 	var/alt_name = ""
 	if(name != GetVoice())
 		if(get_id_name("Unknown") != GetVoice())
@@ -69,7 +69,7 @@
 					say(temp)
 				winset(client, "input", "text=[null]")
 
-/mob/living/carbon/human/say_understands(var/mob/other, datum/language/speaking = null)
+/mob/living/carbon/human/say_understands(mob/other, datum/language/speaking = null)
 
 	if(has_brain_worms()) //Brain worms translate everything. Even mice and alien speak.
 		return 1
@@ -133,7 +133,7 @@
 	return special_voice
 
 
-/mob/living/carbon/human/say_quote(var/message, datum/language/speaking = null)
+/mob/living/carbon/human/say_quote(message, datum/language/speaking = null)
 	var/verb = "says"
 	var/ending = copytext(message, length(message))
 
@@ -147,7 +147,7 @@
 
 	return verb
 
-/mob/living/carbon/human/handle_speech_problems(var/list/message_data)
+/mob/living/carbon/human/handle_speech_problems(list/message_data)
 	if(silent || (sdisabilities & MUTE))
 		message_data[1] = ""
 		. = 1
@@ -240,7 +240,7 @@
 
 	return ..()
 
-/mob/living/carbon/human/parse_language(var/message)
+/mob/living/carbon/human/parse_language(message)
 	var/prefix = copytext(message,1,2)
 	if(length(message) >= 1 && prefix == get_prefix_key(/decl/prefix/audible_emote))
 		return all_languages["Noise"]

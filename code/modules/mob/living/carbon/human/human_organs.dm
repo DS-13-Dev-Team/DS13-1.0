@@ -290,7 +290,7 @@
 /mob/proc/get_locomotion_limbs(include_stump = FALSE)
 	return list()
 
-/mob/living/carbon/human/get_locomotion_limbs(var/include_stump = FALSE)
+/mob/living/carbon/human/get_locomotion_limbs(include_stump = FALSE)
 	var/found = list()
 	for (var/organ_tag in species.locomotion_limbs)
 		var/obj/item/organ/external/E = get_organ(organ_tag)

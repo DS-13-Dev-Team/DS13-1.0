@@ -9,7 +9,7 @@ var/const/SMES_WIRE_GROUNDING = 8	// Cut to quickly discharge causing sparks, pu
 var/const/SMES_WIRE_FAILSAFES = 16	// Cut to disable failsafes, mend to reenable
 
 
-/datum/wires/smes/CanUse(var/mob/living/L)
+/datum/wires/smes/CanUse(mob/living/L)
 	var/obj/machinery/power/smes/buildable/S = holder
 	if(S.panel_open)
 		return 1
