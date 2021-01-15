@@ -28,7 +28,7 @@
 	icon_state = "tomealtar"
 	resistance = 0
 
-/obj/structure/deity/New(var/newloc, god)
+/obj/structure/deity/New(newloc, god)
 	..(newloc)
 	if(god)
 		linked_god = god

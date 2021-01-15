@@ -76,7 +76,7 @@
 
 	var/translator_on = 0 // keeps track of the translator module
 
-/mob/living/silicon/pai/New(var/obj/item/device/paicard)
+/mob/living/silicon/pai/New(obj/item/device/paicard)
 	status_flags |= NO_ANTAG
 	src.loc = paicard
 	card = paicard

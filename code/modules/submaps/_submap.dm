@@ -5,7 +5,7 @@
 	var/associated_z
 	var/datum/antag_skill_setter/skill_setter = /datum/antag_skill_setter/station
 
-/datum/submap/New(var/existing_z)
+/datum/submap/New(existing_z)
 	SSmapping.submaps[src] = TRUE
 	associated_z = existing_z
 	if(ispath(skill_setter))

@@ -313,7 +313,7 @@
 	var/module_mode = ""
 	var/obj/item/rig_module/module
 
-/datum/stat_rig_module/New(var/obj/item/rig_module/module)
+/datum/stat_rig_module/New(obj/item/rig_module/module)
 	..()
 	src.module = module
 
@@ -339,7 +339,7 @@
 /datum/stat_rig_module/DblClick()
 	return Click()
 
-/datum/stat_rig_module/activate/New(var/obj/item/rig_module/module)
+/datum/stat_rig_module/activate/New(obj/item/rig_module/module)
 	..()
 	name = module.activate_string
 	if(module.active_power_cost)
@@ -349,7 +349,7 @@
 /datum/stat_rig_module/activate/CanUse()
 	return module.toggleable && !module.active
 
-/datum/stat_rig_module/deactivate/New(var/obj/item/rig_module/module)
+/datum/stat_rig_module/deactivate/New(obj/item/rig_module/module)
 	..()
 	name = module.deactivate_string
 	// Show cost despite being 0, if it means changing from an active cost.
@@ -361,7 +361,7 @@
 /datum/stat_rig_module/deactivate/CanUse()
 	return module.toggleable && module.active
 
-/datum/stat_rig_module/engage/New(var/obj/item/rig_module/module)
+/datum/stat_rig_module/engage/New(obj/item/rig_module/module)
 	..()
 	name = module.engage_string
 	if(module.use_power_cost)

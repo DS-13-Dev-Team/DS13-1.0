@@ -19,7 +19,7 @@
 	continue_check = FALSE	//We're not gonna be stopped if we die mid air, the leap continues til it impacts
 	blur_filter_strength = 4
 
-/datum/extension/charge/leap/New(var/datum/holder, atom/_target, _speed , _lifespan, _maxrange, _homing, _inertia = FALSE, _power, _cooldown, _delay)
+/datum/extension/charge/leap/New(datum/holder, atom/_target, _speed , _lifespan, _maxrange, _homing, _inertia = FALSE, _power, _cooldown, _delay)
 	.=..()
 	homing = FALSE
 

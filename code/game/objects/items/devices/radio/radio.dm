@@ -648,7 +648,7 @@
 /obj/item/device/radio/borg/syndicate
 	keyslot = /obj/item/device/encryptionkey/syndicate
 
-/obj/item/device/radio/borg/New(var/mob/living/silicon/robot/loc)
+/obj/item/device/radio/borg/New(mob/living/silicon/robot/loc)
 	if(!istype(loc))
 		CRASH("Invalid spawn location: [log_info_line(loc)]")
 	..()

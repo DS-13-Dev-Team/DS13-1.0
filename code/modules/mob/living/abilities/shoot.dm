@@ -53,7 +53,7 @@
 	nomove: optional, default false. If true, the user can't move during windup. If a number, the user can't move during windup and for that long after firing
 */
 
-/datum/extension/shoot/New(var/atom/user, atom/target, projectile_type, accuracy = 0, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = FALSE, cooldown = 0, vector2/_starting_pixel_offset)
+/datum/extension/shoot/New(atom/user, atom/target, projectile_type, accuracy = 0, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = FALSE, cooldown = 0, vector2/_starting_pixel_offset)
 	.=..()
 	src.user = user
 	src.target = target

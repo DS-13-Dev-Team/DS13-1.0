@@ -29,7 +29,7 @@
 /datum/gear_tweak/color
 	var/list/valid_colors
 
-/datum/gear_tweak/color/New(var/list/valid_colors)
+/datum/gear_tweak/color/New(list/valid_colors)
 	src.valid_colors = valid_colors
 	..()
 
@@ -56,7 +56,7 @@
 /datum/gear_tweak/path
 	var/list/valid_paths
 
-/datum/gear_tweak/path/New(var/list/valid_paths)
+/datum/gear_tweak/path/New(list/valid_paths)
 	if(!valid_paths.len)
 		CRASH("No type paths given")
 	var/list/duplicate_keys = duplicates(valid_paths)
@@ -73,13 +73,13 @@
 			CRASH("Expected an /obj/item path, was [log_info_line(selection_type)]")
 	src.valid_paths = sortAssoc(valid_paths)
 
-/datum/gear_tweak/path/type/New(var/type_path)
+/datum/gear_tweak/path/type/New(type_path)
 	..(atomtype2nameassoclist(type_path))
 
-/datum/gear_tweak/path/subtype/New(var/type_path)
+/datum/gear_tweak/path/subtype/New(type_path)
 	..(atomtypes2nameassoclist(subtypesof(type_path)))
 
-/datum/gear_tweak/path/specified_types_list/New(var/type_paths)
+/datum/gear_tweak/path/specified_types_list/New(type_paths)
 	..(atomtypes2nameassoclist(type_paths))
 
 /datum/gear_tweak/path/specified_types_args/New()
@@ -160,7 +160,7 @@
 /datum/gear_tweak/reagents
 	var/list/valid_reagents
 
-/datum/gear_tweak/reagents/New(var/list/reagents)
+/datum/gear_tweak/reagents/New(list/reagents)
 	valid_reagents = reagents.Copy()
 	..()
 

@@ -43,7 +43,7 @@
 
 
 
-/datum/extension/taunt/New(var/mob/user, duration, cooldown)
+/datum/extension/taunt/New(mob/user, duration, cooldown)
 	.=..()
 	if (isliving(user))
 		src.user = user
@@ -168,7 +168,7 @@
 
 	var/tick_interval = 1 SECOND
 
-/datum/extension/taunt_companion/New(var/datum/holder, mob/shield)
+/datum/extension/taunt_companion/New(datum/holder, mob/shield)
 	.=..()
 	user = holder
 	src.shield = shield

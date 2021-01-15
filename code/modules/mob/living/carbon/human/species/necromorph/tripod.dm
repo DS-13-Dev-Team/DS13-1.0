@@ -332,7 +332,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	statmods = list(STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = 0.6)
 
 
-/datum/extension/tripod_leap_defense/New(var/atom/holder)
+/datum/extension/tripod_leap_defense/New(atom/holder)
 	.=..()
 	addtimer(CALLBACK(src, /datum/extension/proc/remove_self), 3 SECONDS)
 

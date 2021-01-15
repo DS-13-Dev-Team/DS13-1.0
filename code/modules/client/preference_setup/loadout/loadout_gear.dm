@@ -69,7 +69,7 @@
 	var/path
 	var/location
 
-/datum/gear_data/New(var/path, location)
+/datum/gear_data/New(path, location)
 	src.path = path
 	src.location = location
 

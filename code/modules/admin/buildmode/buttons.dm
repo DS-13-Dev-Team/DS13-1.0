@@ -6,7 +6,7 @@
 	icon = 'icons/misc/buildmode.dmi'
 	var/datum/click_handler/build_mode/host
 
-/obj/effect/bmode/New(var/host)
+/obj/effect/bmode/New(host)
 	..()
 	src.host = host
 

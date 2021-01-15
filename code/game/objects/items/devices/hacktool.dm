@@ -81,7 +81,7 @@
 /datum/topic_state/default/must_hack
 	var/obj/item/weapon/tool/multitool/hacktool/hacktool
 
-/datum/topic_state/default/must_hack/New(var/hacktool)
+/datum/topic_state/default/must_hack/New(hacktool)
 	src.hacktool = hacktool
 	..()
 

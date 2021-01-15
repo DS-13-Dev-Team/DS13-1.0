@@ -27,7 +27,7 @@
 /*
 	Initialization
 */
-/datum/extension/corruption_source/New(var/atom/holder, range, speed, falloff, limit)
+/datum/extension/corruption_source/New(atom/holder, range, speed, falloff, limit)
 	source = holder
 	sourceturf = get_turf(source)
 	GLOB.corruption_sources |= src

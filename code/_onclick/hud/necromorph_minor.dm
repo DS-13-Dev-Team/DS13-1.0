@@ -6,7 +6,7 @@
 /mob/living/simple_animal/necromorph
 	hud_type = /datum/hud/necromorph_minor
 
-/datum/hud/necromorph_minor/FinalizeInstantiation(var/ui_style='icons/mob/screen1_White.dmi', ui_color = "#ffffff", ui_alpha = 255)
+/datum/hud/necromorph_minor/FinalizeInstantiation(ui_style='icons/mob/screen1_White.dmi', ui_color = "#ffffff", ui_alpha = 255)
 
 	var/list/hud_elements = list()
 

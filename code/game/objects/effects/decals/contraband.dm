@@ -14,7 +14,7 @@
 	icon_state = "rolled_poster"
 	var/poster_type
 
-/obj/item/weapon/contraband/poster/New(var/maploading, given_poster_type)
+/obj/item/weapon/contraband/poster/New(maploading, given_poster_type)
 	if(given_poster_type && !ispath(given_poster_type, /decl/poster))
 		CRASH("Invalid poster type: [log_info_line(given_poster_type)]")
 
@@ -92,7 +92,7 @@
 /obj/structure/sign/poster/bay_50
 	poster_type = /decl/poster/bay_50
 
-/obj/structure/sign/poster/New(var/newloc, placement_dir = null, give_poster_type = null)
+/obj/structure/sign/poster/New(newloc, placement_dir = null, give_poster_type = null)
 	..(newloc)
 
 	if(!poster_type)

@@ -49,7 +49,7 @@
 	var/datum/obfuscation/obfuscation = new()
 
 // Create a new chunk, since the chunks are made as they are needed.
-/datum/chunk/New(var/datum/visualnet/visualnet, x, y, z)
+/datum/chunk/New(datum/visualnet/visualnet, x, y, z)
 	..()
 	src.visualnet = visualnet
 	SSchunk.chunks += src

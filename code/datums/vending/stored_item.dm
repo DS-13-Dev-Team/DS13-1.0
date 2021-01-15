@@ -5,7 +5,7 @@
 	var/list/instances		//What items are actually stored
 	var/atom/storing_object
 
-/datum/stored_items/New(var/atom/storing_object, path, name = null, amount = 0)
+/datum/stored_items/New(atom/storing_object, path, name = null, amount = 0)
 	if(!istype(storing_object))
 		CRASH("Unexpected storing object.")
 	src.storing_object = storing_object

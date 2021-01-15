@@ -13,7 +13,7 @@
 	var/strokes = 2 // IF YOU EVER SET THIS TO MORE THAN TEN, EVERYTHING WILL BREAK
 	var/cultname = ""
 
-/obj/effect/rune/New(var/loc, blcolor = "#c80000", nblood = "blood")
+/obj/effect/rune/New(loc, blcolor = "#c80000", nblood = "blood")
 	..()
 	bcolor = blcolor
 	blood = nblood
@@ -271,7 +271,7 @@
 	health
 	max_health = 200
 
-/obj/effect/cultwall/New(var/loc, bcolor)
+/obj/effect/cultwall/New(loc, bcolor)
 	..()
 	health = max_health
 	if(bcolor)

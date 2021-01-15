@@ -7,7 +7,7 @@
 	return host.anchored ? MOVEMENT_STOP : MOVEMENT_PROCEED
 
 // Movement relay
-/datum/movement_handler/move_relay/DoMove(var/direction, mover)
+/datum/movement_handler/move_relay/DoMove(direction, mover)
 	var/atom/movable/AM = host.loc
 	if(!istype(AM))
 		return
@@ -21,7 +21,7 @@
 	var/delay = 1
 	var/next_move
 
-/datum/movement_handler/delay/New(var/host, delay)
+/datum/movement_handler/delay/New(host, delay)
 	..()
 	src.delay = max(1, delay)
 

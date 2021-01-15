@@ -10,7 +10,7 @@
 	var/list/role_weights = list()
 	var/datum/event/event_type
 
-/datum/event_meta/New(var/event_severity, event_name, datum/event/type, event_weight, list/job_weights, is_one_shot = 0, min_event_weight = 0, max_event_weight = 0, add_to_queue = 1)
+/datum/event_meta/New(event_severity, event_name, datum/event/type, event_weight, list/job_weights, is_one_shot = 0, min_event_weight = 0, max_event_weight = 0, add_to_queue = 1)
 	name = event_name
 	severity = event_severity
 	event_type = type
@@ -135,7 +135,7 @@
 	endedAt = world.time
 	SSevent.event_complete(src)
 
-/datum/event/New(var/datum/event_meta/EM)
+/datum/event/New(datum/event_meta/EM)
 	// event needs to be responsible for this, as stuff like APLUs currently make their own events for curious reasons
 	SSevent.active_events += src
 

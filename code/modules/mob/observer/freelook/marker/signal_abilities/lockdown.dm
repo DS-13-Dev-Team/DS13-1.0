@@ -95,7 +95,7 @@
 	var/priority
 
 
-/datum/extension/lockdown/New(var/obj/machinery/door/airlock/A, duration = 2 MINUTES, priority = 1)
+/datum/extension/lockdown/New(obj/machinery/door/airlock/A, duration = 2 MINUTES, priority = 1)
 	.=..()
 	src.duration = duration
 	src.priority = priority

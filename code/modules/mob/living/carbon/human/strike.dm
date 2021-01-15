@@ -142,7 +142,7 @@
 
 	var/damage_type = BRUTE
 
-/datum/strike/New(var/atom/user, atom/target)
+/datum/strike/New(atom/user, atom/target)
 	cache_data(arglist(args))
 	cache_origin()
 	.=..()

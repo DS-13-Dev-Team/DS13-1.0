@@ -29,7 +29,7 @@
 	auto_register_statmods = FALSE
 
 
-/datum/extension/aim_mode/New(var/atom/holder, obj/item/weapon/gun/_gun)
+/datum/extension/aim_mode/New(atom/holder, obj/item/weapon/gun/_gun)
 	.=..()
 	user = holder
 	gun = _gun

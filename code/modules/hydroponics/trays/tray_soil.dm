@@ -34,7 +34,7 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil/is_burnable()
 	return ..() && seed.get_trait(TRAIT_HEAT_TOLERANCE) < 1000
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/New(var/newloc, datum/seed/newseed, start_mature)
+/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/New(newloc, datum/seed/newseed, start_mature)
 	..()
 	seed = newseed
 	dead = 0

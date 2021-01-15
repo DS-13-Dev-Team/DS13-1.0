@@ -175,7 +175,7 @@
 	icon = 'icons/obj/weapons/ds13_deployables.dmi'
 	icon_state = "plasma_mine_light"
 
-/obj/effect/plasma_light/New(var/atom/location, duration = 5 SECONDS)
+/obj/effect/plasma_light/New(atom/location, duration = 5 SECONDS)
 	.=..()
 	animate(src, pixel_y = pixel_y+13, time = duration)
 

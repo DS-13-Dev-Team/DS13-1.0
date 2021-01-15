@@ -8,7 +8,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	var/sender = "Unspecified" //name of the sender
 	var/message = "Blank" //transferred message
 
-/datum/data_pda_msg/New(var/param_rec = "", param_sender = "", param_message = "")
+/datum/data_pda_msg/New(param_rec = "", param_sender = "", param_message = "")
 
 	if(param_rec)
 		recipient = param_rec
@@ -25,7 +25,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	var/id_auth = "Unauthenticated"
 	var/priority = "Normal"
 
-/datum/data_rc_msg/New(var/param_rec = "", param_sender = "", param_message = "", param_stamp = "", param_id_auth = "", param_priority)
+/datum/data_rc_msg/New(param_rec = "", param_sender = "", param_message = "", param_stamp = "", param_id_auth = "", param_priority)
 	if(param_rec)
 		rec_dpt = param_rec
 	if(param_sender)
@@ -166,7 +166,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	var/value
 	var/details
 
-/datum/feedback_variable/New(var/param_variable, param_value = 0)
+/datum/feedback_variable/New(param_variable, param_value = 0)
 	variable = param_variable
 	value = param_value
 

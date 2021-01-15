@@ -37,7 +37,7 @@
 
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1)
 
-/datum/extension/retractable_cover/New(var/atom/_user, cover, list/limbs)
+/datum/extension/retractable_cover/New(atom/_user, cover, list/limbs)
 	.=..()
 	if (isliving(_user))
 		user = _user

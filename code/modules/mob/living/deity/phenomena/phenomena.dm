@@ -8,7 +8,7 @@
 	var/refresh_time = 0
 	var/expected_type
 
-/datum/phenomena/New(var/master)
+/datum/phenomena/New(master)
 	linked = master
 	..()
 

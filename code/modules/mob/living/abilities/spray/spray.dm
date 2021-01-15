@@ -55,7 +55,7 @@ Vars/
 	Duration:	How long to spray for
 	Cooldown:	Starts after duration
 */
-/datum/extension/spray/New(var/atom/source, atom/target, angle, length, stun, duration, cooldown, mob/override_user = null, list/extra_data)
+/datum/extension/spray/New(atom/source, atom/target, angle, length, stun, duration, cooldown, mob/override_user = null, list/extra_data)
 	.=..()
 	src.source = source
 	if (override_user)

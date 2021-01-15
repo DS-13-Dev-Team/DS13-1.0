@@ -61,7 +61,7 @@
 /mob/living/carbon/slime/setToxLoss(var/amount)
 	adjustToxLoss(amount-getToxLoss())
 
-/mob/living/carbon/slime/New(var/location, colour="grey")
+/mob/living/carbon/slime/New(location, colour="grey")
 
 	verbs += /mob/living/proc/ventcrawl
 

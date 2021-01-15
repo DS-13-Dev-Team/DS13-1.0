@@ -5,7 +5,7 @@
 	var/list/affected_levels
 	var/list/old_accessible_z_levels
 
-/datum/universal_state/bluespace_jump/New(var/list/zlevels)
+/datum/universal_state/bluespace_jump/New(list/zlevels)
 	affected_levels = zlevels
 
 /datum/universal_state/bluespace_jump/OnEnter()

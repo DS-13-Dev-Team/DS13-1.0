@@ -127,7 +127,7 @@ Class Procs:
 	var/list/processing_parts // Component parts queued for processing by the machine. Expected type: /obj/item/weapon/stock_parts
 	var/processing_flags         // What is being processed
 
-/obj/machinery/New(var/atom/location, direction, nocircuit = FALSE)
+/obj/machinery/New(atom/location, direction, nocircuit = FALSE)
 
 
 	//Nocircuit=TRUE will skip the default circuit init

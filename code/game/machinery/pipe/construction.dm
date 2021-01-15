@@ -18,7 +18,7 @@ Buildable meters
 	w_class = ITEM_SIZE_NORMAL
 	level = 2
 
-/obj/item/pipe/New(var/loc, pipe_type as num, dir as num, obj/machinery/atmospherics/make_from = null)
+/obj/item/pipe/New(loc, pipe_type as num, dir as num, obj/machinery/atmospherics/make_from = null)
 	..()
 	if (make_from)
 		src.set_dir(make_from.dir)

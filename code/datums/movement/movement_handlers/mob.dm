@@ -5,7 +5,7 @@
 	expected_host_type = /mob
 	var/mob/mob
 
-/datum/movement_handler/mob/New(var/host)
+/datum/movement_handler/mob/New(host)
 	..()
 	src.mob = host
 

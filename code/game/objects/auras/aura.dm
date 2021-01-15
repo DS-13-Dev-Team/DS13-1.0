@@ -6,7 +6,7 @@ They should also be used for when you want to effect the ENTIRE mob, like having
 /obj/aura
 	var/mob/living/user
 
-/obj/aura/New(var/mob/living/target)
+/obj/aura/New(mob/living/target)
 	..()
 	if(target)
 		user = target

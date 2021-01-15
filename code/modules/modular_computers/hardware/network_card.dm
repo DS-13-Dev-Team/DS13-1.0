@@ -25,7 +25,7 @@ var/global/ntnet_card_uid = 1
 	if(ethernet)
 		to_chat(user, "OpenEth (Physical Connection) - Physical network connection port")
 
-/obj/item/weapon/computer_hardware/network_card/New(var/l)
+/obj/item/weapon/computer_hardware/network_card/New(l)
 	..(l)
 	identification_id = ntnet_card_uid
 	ntnet_card_uid++

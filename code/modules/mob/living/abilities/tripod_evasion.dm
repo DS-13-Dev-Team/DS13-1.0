@@ -48,7 +48,7 @@
 
 
 
-/datum/extension/tripod_evasion/New(var/mob/living/_user)
+/datum/extension/tripod_evasion/New(mob/living/_user)
 	.=..()
 	user = _user
 	tile_evasion = max_evasion_buff / max_clear_tiles

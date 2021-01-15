@@ -5,14 +5,14 @@
 	log_proc = /proc/log_necro
 	show_preference_setting = /datum/client_preference/show_necrochat
 
-/decl/communication_channel/necrochat/can_ignore(var/client/C)
+/decl/communication_channel/necrochat/can_ignore(client/C)
 	.=..()
 	if (.)
 		if (C.mob && C.mob.is_necromorph())
 			return FALSE	//Necromorphs must listen to the necrochat
 
 
-/decl/communication_channel/necrochat/can_communicate(var/A, message)
+/decl/communication_channel/necrochat/can_communicate(A, message)
 	. = ..()
 	if(!.)
 		return
@@ -69,12 +69,12 @@
 
 
 
-/mob/observer/eye/signal/say(var/message)
+/mob/observer/eye/signal/say(message)
 	sanitize_and_communicate(/decl/communication_channel/necrochat, client, message)
 
 
 /*
-/mob/living/carbon/human/necromorph/say(var/message)
+/mob/living/carbon/human/necromorph/say(message)
 	sanitize_and_communicate(/decl/communication_channel/necrochat, client, message)
 
 	if(prob(species.speech_chance) && check_audio_cooldown(SOUND_SPEECH))
@@ -82,7 +82,7 @@
 		play_species_audio(src, SOUND_SPEECH, VOLUME_LOW, TRUE)
 */
 
-/mob/living/simple_animal/necromorph/say(var/message)
+/mob/living/simple_animal/necromorph/say(message)
 	sanitize_and_communicate(/decl/communication_channel/necrochat, client, message)
 
 	if(LAZYLEN(attack_sounds) && check_audio_cooldown(SOUND_SPEECH))
@@ -106,7 +106,7 @@
 	syllables = list("hs","zt","kr","st","sh")
 	shorthand = "RT"
 
-/datum/language/necromorph/broadcast(var/mob/living/speaker, message, speaker_mask)
+/datum/language/necromorph/broadcast(mob/living/speaker, message, speaker_mask)
 
 	/*
 	*/

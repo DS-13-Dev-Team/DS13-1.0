@@ -85,7 +85,7 @@
 	anchored = 1
 	var/turf/last_valid_turf
 
-/obj/effect/dummy/spell_jaunt/New(var/location)
+/obj/effect/dummy/spell_jaunt/New(location)
 	..()
 	last_valid_turf = get_turf(location)
 

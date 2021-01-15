@@ -90,7 +90,7 @@
 	var/do_winddown_animation = TRUE	//If false, we will not animate back to normal. Only set it false when something else will handle it
 
 
-/datum/extension/charge/New(var/datum/holder, atom/_target, _speed , _lifespan, _maxrange, _homing, _inertia = FALSE, _power, _cooldown, _delay)
+/datum/extension/charge/New(datum/holder, atom/_target, _speed , _lifespan, _maxrange, _homing, _inertia = FALSE, _power, _cooldown, _delay)
 	.=..()
 	user = holder
 

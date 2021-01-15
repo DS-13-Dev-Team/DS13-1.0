@@ -12,7 +12,7 @@
 	var/list/stance_limbs
 	var/list/grasp_limbs
 
-/mob/living/carbon/human/New(var/new_loc, new_species = null)
+/mob/living/carbon/human/New(new_loc, new_species = null)
 
 	grasp_limbs = list()
 	stance_limbs = list()

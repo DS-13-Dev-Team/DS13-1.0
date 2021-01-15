@@ -25,7 +25,7 @@
 	var/ui_header = null							// Example: "something.gif" - a header image that will be rendered in computer's UI when this program is running at background. Images are taken from /nano/images/status_icons. Be careful not to use too large images!
 	var/ntnet_speed = 0								// GQ/s - current network connectivity transfer rate
 
-/datum/computer_file/program/New(var/obj/item/modular_computer/comp = null)
+/datum/computer_file/program/New(obj/item/modular_computer/comp = null)
 	..()
 	if(comp && istype(comp))
 		computer = comp
@@ -211,14 +211,14 @@
 	available_to_ai = FALSE
 	var/datum/computer_file/program/program = null	// Program-Based computer program that runs this nano module. Defaults to null.
 
-/datum/nano_module/program/New(var/host, topic_manager, program)
+/datum/nano_module/program/New(host, topic_manager, program)
 	..()
 	src.program = program
 
 /datum/topic_manager/program
 	var/datum/program
 
-/datum/topic_manager/program/New(var/datum/program)
+/datum/topic_manager/program/New(datum/program)
 	..()
 	src.program = program
 

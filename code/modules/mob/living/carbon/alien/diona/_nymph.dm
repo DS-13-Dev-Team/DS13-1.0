@@ -54,10 +54,10 @@
 	emote_prob =  0
 	wander_prob = 0
 
-/mob/living/carbon/alien/diona/sterile/Initialize(var/mapload)
+/mob/living/carbon/alien/diona/sterile/Initialize(mapload)
 	. = ..(mapload, 0)
 
-/mob/living/carbon/alien/diona/Initialize(var/mapload, flower_chance = 15)
+/mob/living/carbon/alien/diona/Initialize(mapload, flower_chance = 15)
 
 	species = all_species[SPECIES_DIONA]
 	add_language(LANGUAGE_GUTTER)

@@ -8,7 +8,7 @@
 	layer = CATWALK_LAYER//probably? Should cover cables, pipes and the rest of objects that are secured on the floor
 	health = 100
 
-obj/structure/net/Initialize(var/mapload)
+obj/structure/net/Initialize(mapload)
 	. = ..()
 	update_connections()
 	if (!mapload)//if it's not mapped object but rather created during round, we should update visuals of adjacent net objects
@@ -62,7 +62,7 @@ obj/structure/net/Initialize(var/mapload)
 	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 
-/obj/structure/net/net_wall/Initialize(var/mapload)
+/obj/structure/net/net_wall/Initialize(mapload)
 	. = ..()
 	if (mapload)//if it's pre-mapped, it should put floor-net below itself
 		var/turf/T = get_turf(src)

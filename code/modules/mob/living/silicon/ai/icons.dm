@@ -8,7 +8,7 @@
 	var/dead_icon = "ai-crash"
 	var/dead_light = "#000099"
 
-/datum/ai_icon/New(var/name, alive_icon, dead_icon, dead_light, icon)
+/datum/ai_icon/New(name, alive_icon, dead_icon, dead_light, icon)
 	src.name          = name       || src.name
 	src.icon          = icon       || src.icon
 	src.alive_icon    = alive_icon || src.alive_icon

@@ -1,7 +1,7 @@
 /obj/item/modular_computer
 	implements_dummy = TRUE
 
-/obj/item/modular_computer/New(var/location, dummy)
+/obj/item/modular_computer/New(location, dummy)
 	src.dummy = dummy
 	.=..()
 

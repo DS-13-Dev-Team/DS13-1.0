@@ -53,7 +53,7 @@
 	popup.set_content(dat)
 	popup.open()
 
-/obj/machinery/uniform_vendor/OnTopic(var/mob/user, href_list)
+/obj/machinery/uniform_vendor/OnTopic(mob/user, href_list)
 	if(href_list["ID"])
 		if(ID)
 			if(!issilicon(user))
@@ -92,7 +92,7 @@
 	if(.)
 		attack_hand(user)
 
-/obj/machinery/uniform_vendor/attackby(var/obj/item/weapon/W, mob/user)
+/obj/machinery/uniform_vendor/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/weapon/clothingbag))
 		if(W.contents.len)
 			to_chat(user, "<span class='notice'>You must empty \the [W] before you can put it in \the [src].</span>")

@@ -168,7 +168,7 @@
 	//location.hotspot_expose(1000,500,1)
 	return
 
-/obj/item/weapon/flamethrower/full/New(var/loc)
+/obj/item/weapon/flamethrower/full/New(loc)
 	..()
 	igniter = new /obj/item/device/assembly/igniter(src)
 	igniter.secured = 0

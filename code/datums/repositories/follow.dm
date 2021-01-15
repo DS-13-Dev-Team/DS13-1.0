@@ -96,7 +96,7 @@
 	var/sort_order
 	var/atom/movable/followed_instance
 
-/datum/follow_holder/New(var/atom/movable/followed_instance)
+/datum/follow_holder/New(atom/movable/followed_instance)
 	..()
 	src.followed_instance = followed_instance
 	suffix = suffix ? "\[[suffix]\]" : suffix

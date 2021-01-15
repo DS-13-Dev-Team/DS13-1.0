@@ -1,7 +1,7 @@
 /datum/storage_ui
 	var/obj/item/weapon/storage/storage
 
-/datum/storage_ui/New(var/storage)
+/datum/storage_ui/New(storage)
 	src.storage = storage
 	..()
 

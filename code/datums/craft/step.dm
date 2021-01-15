@@ -12,7 +12,7 @@
 	//Some things, notably passives, may set it higher
 
 
-/datum/craft_step/New(var/list/params, datum/craft_recipe/_parent)
+/datum/craft_step/New(list/params, datum/craft_recipe/_parent)
 	parent = _parent
 	if (parent)
 		time = parent.time

@@ -13,7 +13,7 @@
 	var/size = 7
 	var/cached_color
 
-/obj/lighting_general/New(var/atom/location, client/C)
+/obj/lighting_general/New(atom/location, client/C)
 	. = ..()
 	var/newscale = ((C.view * 2) + 1) / C.view
 	transform *= newscale

@@ -1,7 +1,7 @@
 /datum/movement_handler/root
 	var/finish_time = INFINITY
 
-/datum/movement_handler/root/New(var/atom/movable/host, duration)
+/datum/movement_handler/root/New(atom/movable/host, duration)
 	.=..()
 	if (duration)
 		finish_time  = world.time + duration

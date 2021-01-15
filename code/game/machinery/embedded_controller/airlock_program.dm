@@ -28,7 +28,7 @@
 	var/tag_pump_out_external
 	var/tag_pump_out_internal
 
-/datum/computer/file/embedded_program/airlock/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/airlock/New(obj/machinery/embedded_controller/M)
 	..(M)
 
 	memory["chamber_sensor_pressure"] = ONE_ATMOSPHERE

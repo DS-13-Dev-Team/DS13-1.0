@@ -25,7 +25,7 @@ var/repository/client/client_repository = new()
 	var/ckey = NO_CLIENT_CKEY
 	var/ref // If ref is unset but ckey is set that means the client wasn't logged in at the time
 
-/datum/client_lite/New(var/mob/M)
+/datum/client_lite/New(mob/M)
 	if(!M)
 		return
 

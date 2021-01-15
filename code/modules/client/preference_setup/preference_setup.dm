@@ -47,7 +47,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	var/datum/preferences/preferences
 	var/datum/category_group/player_setup_category/selected_category = null
 
-/datum/category_collection/player_setup_collection/New(var/datum/preferences/preferences)
+/datum/category_collection/player_setup_collection/New(datum/preferences/preferences)
 	src.preferences = preferences
 	..()
 	selected_category = categories[1]

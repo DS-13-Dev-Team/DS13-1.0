@@ -26,7 +26,7 @@
 
 // Prevents shuttles, singularities and pretty much everything else from moving the field segments away.
 // The only thing that is allowed to move us is the Destroy() proc.
-/obj/effect/shield/forceMove(var/newloc, qdeled = 0)
+/obj/effect/shield/forceMove(newloc, qdeled = 0)
 	if(qdeled)
 		return ..()
 	return 0

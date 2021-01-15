@@ -30,7 +30,7 @@
 	else
 		. += "No connection stored in the buffer."
 
-/datum/extension/interactive/multitool/extension_status(var/mob/user)
+/datum/extension/interactive/multitool/extension_status(mob/user)
 	if(!user.get_multitool())
 		return STATUS_CLOSE
 	. = ..()

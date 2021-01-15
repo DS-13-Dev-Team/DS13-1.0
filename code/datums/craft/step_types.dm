@@ -11,7 +11,7 @@
 	var/noconsume = FALSE
 
 
-/datum/craft_step/object/load_params(var/list/params)
+/datum/craft_step/object/load_params(list/params)
 	//The second var either contains a list of types or a single type
 	if (istype(params[2], /list))
 		valid_types = params[2] //If its a list, replace our list with it
@@ -45,7 +45,7 @@
 
 
 //Object must check if the item is a valid type
-/datum/craft_step/object/can_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/object/can_apply(obj/I, mob/living/user, atom/target = null)
 	.=..()
 	if (.)
 		if (!noconsume && !is_valid_to_consume(I, user))
@@ -60,7 +60,7 @@
 
 
 //Unless noconsume is set, this step moves the ingredient inside the crafting atom
-/datum/craft_step/object/post_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/object/post_apply(obj/I, mob/living/user, atom/target = null)
 	if (noconsume)
 		.=..()
 	else if (I && target)
@@ -99,7 +99,7 @@
 	var/required_material
 	var/required_quantity = 1
 
-/datum/craft_step/material/load_params(var/list/params)
+/datum/craft_step/material/load_params(list/params)
 	//The second var contains the name of a material
 	required_material = params[2] //If its a type, add it to our list
 
@@ -127,7 +127,7 @@
 
 
 //Check that this is the correct material and there's enough of it
-/datum/craft_step/material/can_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/material/can_apply(obj/I, mob/living/user, atom/target = null)
 	.=..()
 	if (.)
 		if (istype(I, /obj/item/stack/material))
@@ -146,7 +146,7 @@
 
 
 //Consume things from the stack
-/datum/craft_step/material/post_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/material/post_apply(obj/I, mob/living/user, atom/target = null)
 	var/obj/item/stack/material/MA = I
 	MA.use(required_quantity)
 
@@ -180,7 +180,7 @@
 	var/required_type = /obj/item/stack
 	var/required_quantity = 1
 
-/datum/craft_step/stack/load_params(var/list/params)
+/datum/craft_step/stack/load_params(list/params)
 	//The second var contains the typepath
 	required_type = params[2]
 	icon_type = required_type
@@ -208,7 +208,7 @@
 
 
 //Check that this is the correct stack and there's enough of it
-/datum/craft_step/stack/can_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/stack/can_apply(obj/I, mob/living/user, atom/target = null)
 	.=..()
 	if (.)
 		if (istype(I, required_type))
@@ -223,7 +223,7 @@
 
 
 //Consume things from the stack
-/datum/craft_step/stack/post_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/stack/post_apply(obj/I, mob/living/user, atom/target = null)
 	var/obj/item/stack/MA = I
 	MA.use(required_quantity)
 
@@ -257,7 +257,7 @@
 	var/difficulty = FAILCHANCE_NORMAL
 	var/required_skill = SKILL_CONSTRUCTION
 
-/datum/craft_step/tool/load_params(var/list/params)
+/datum/craft_step/tool/load_params(list/params)
 	//The second var contains the typepath
 	required_quality = params[2]
 	icon_type = GLOB.iconic_tools[required_quality]
@@ -289,7 +289,7 @@
 
 
 //Check that this tool has the correct qualities
-/datum/craft_step/tool/can_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/tool/can_apply(obj/I, mob/living/user, atom/target = null)
 	.=..()
 	if (.)
 		if (I.get_tool_quality(required_quality) >= required_level)
@@ -300,7 +300,7 @@
 
 
 //Unlike most of the other step types, tools override do_apply
-/datum/craft_step/tool/do_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/tool/do_apply(obj/I, mob/living/user, atom/target = null)
 	//If the craft is instant, then just return success now
 	if (!user)
 		return TRUE //Automated crafting by code
@@ -312,7 +312,7 @@
 	return FALSE
 
 //Consume things from the stack
-/datum/craft_step/tool/post_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/tool/post_apply(obj/I, mob/living/user, atom/target = null)
 	return //Use tool already consumed resources so we short circuit this
 
 
@@ -339,7 +339,7 @@
 	var/required_level = 1
 
 
-/datum/craft_step/passive/load_params(var/list/params)
+/datum/craft_step/passive/load_params(list/params)
 	//The second var contains the typepath
 	required_quality = params[2]
 	icon_type = GLOB.iconic_tools[required_quality]
@@ -358,7 +358,7 @@
 
 //Look for the required thing in a radius around the construction
 //Possible TODO: Find some way to cache the found object so we don't need to search for it
-/datum/craft_step/passive/can_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/passive/can_apply(obj/I, mob/living/user, atom/target = null)
 	if (find_item(user, target))
 		return TRUE
 	user << SPAN_WARNING("You need have a [required_quality] [apply_range > 0?"within [apply_range] tiles":"in the same tile"] in order to continue crafting this!")
@@ -366,7 +366,7 @@
 
 
 //Passives are never directly applied, they have no do_apply
-/datum/craft_step/passive/post_apply(var/obj/I, mob/living/user, atom/target = null)
+/datum/craft_step/passive/post_apply(obj/I, mob/living/user, atom/target = null)
 	I = find_item(user, target)
 	.=..(I, user, target)
 

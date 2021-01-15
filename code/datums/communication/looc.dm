@@ -5,7 +5,7 @@
 	show_preference_setting = /datum/client_preference/show_looc
 	allow_admincomm = FALSE
 
-/decl/communication_channel/ooc/looc/can_communicate(var/client/C, message)
+/decl/communication_channel/ooc/looc/can_communicate(client/C, message)
 	. = ..()
 	if(!.)
 		return
@@ -18,7 +18,7 @@
 		to_chat(C, "<span class='danger'>You cannot use [name] while in nullspace.</span>")
 		return FALSE
 
-/decl/communication_channel/ooc/looc/do_communicate(var/client/C, message)
+/decl/communication_channel/ooc/looc/do_communicate(client/C, message)
 	var/mob/M = C.mob ? C.mob.get_looc_mob() : null
 	var/list/listening_hosts = hosts_in_view_range(M)
 	var/list/listening_clients = list()

@@ -19,7 +19,7 @@
 	var/active =    0          // Is our owner intending to take hostages?
 	var/target_permissions = TARGET_CAN_RADIO // Permission bitflags.
 
-/obj/aiming_overlay/New(var/newowner)
+/obj/aiming_overlay/New(newowner)
 	..()
 	owner = newowner
 	loc = null

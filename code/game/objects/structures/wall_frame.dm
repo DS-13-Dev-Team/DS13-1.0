@@ -21,7 +21,7 @@
 	blend_objects = list(/obj/machinery/door, /turf/simulated/wall) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window)
 
-/obj/structure/wall_frame/New(var/new_loc)
+/obj/structure/wall_frame/New(new_loc)
 	..(new_loc)
 
 	update_connections(1)

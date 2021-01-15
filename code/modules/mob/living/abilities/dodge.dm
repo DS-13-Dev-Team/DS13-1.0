@@ -30,7 +30,7 @@
 	if (can_dodge())
 		set_extension(src, /datum/extension/dodge, _duration,_cooldown,_power)
 
-/datum/extension/dodge/New(var/mob/living/_user, _duration, _cooldown, _power)
+/datum/extension/dodge/New(mob/living/_user, _duration, _cooldown, _power)
 	.=..()
 	user = _user
 	duration = _duration

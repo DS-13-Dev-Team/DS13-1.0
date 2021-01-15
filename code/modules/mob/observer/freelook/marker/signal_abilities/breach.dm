@@ -45,7 +45,7 @@
 	var/obj/machinery/door/target
 	var/obj/effect/vine/corruption/user
 
-/datum/extension/breaching_growth/New(var/atom/user, atom/target)
+/datum/extension/breaching_growth/New(atom/user, atom/target)
 	.=..()
 	src.user = user
 	src.target = target

@@ -23,7 +23,7 @@
 	var/datum/sound_token/hum
 
 
-/datum/extension/kinesis_gripped/New(var/holder)
+/datum/extension/kinesis_gripped/New(holder)
 	.=..()
 	subject = holder
 

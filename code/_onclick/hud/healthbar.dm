@@ -59,7 +59,7 @@
 		C = null
 	.=..()
 
-/obj/screen/healthbar/added_to_screen(var/client/newclient)
+/obj/screen/healthbar/added_to_screen(client/newclient)
 	if (newclient != C)
 		if (C)
 			C.screen -= remaining_health_meter
@@ -242,7 +242,7 @@
 
 	mouse_opacity = 2
 
-/obj/screen/healthbar_component/New(var/obj/screen/healthbar/newparent)
+/obj/screen/healthbar_component/New(obj/screen/healthbar/newparent)
 	parent = newparent
 	parent.C.screen += src
 	update_total()
@@ -316,7 +316,7 @@
 
 	var/health_per_tick = 10
 
-/obj/screen/healthbar_component/delta/New(var/obj/screen/healthbar/newparent)
+/obj/screen/healthbar_component/delta/New(obj/screen/healthbar/newparent)
 	.=..()
 	head_health = parent.total_health
 	animate_time = (1 SECOND / ticks_per_second)
@@ -457,7 +457,7 @@
 /datum/species/proc/get_health_report(mob/living/carbon/human/H)
 	return list ("max" = total_health, "damage" = 0, "blocked" = H.lasting_damage)
 
-/datum/species/necromorph/get_health_report(var/mob/living/carbon/human/H)
+/datum/species/necromorph/get_health_report(mob/living/carbon/human/H)
 	var/list/things = get_weighted_total_limb_damage(H, TRUE)
 	things["max"] = total_health
 	return things

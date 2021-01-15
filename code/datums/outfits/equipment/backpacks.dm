@@ -101,7 +101,7 @@
 	var/const/RETURN_RANDOM_BACKPACK = "random"
 	var/list/selections
 
-/datum/backpack_tweak/selection/New(var/list/selections)
+/datum/backpack_tweak/selection/New(list/selections)
 	if(!selections.len)
 		CRASH("No selections offered")
 	if(RETURN_GIVEN_BACKPACK in selections)
@@ -147,13 +147,13 @@
 		else
 			return selections[metadata]
 
-/datum/backpack_tweak/selection/types/New(var/selection_type)
+/datum/backpack_tweak/selection/types/New(selection_type)
 	..(atomtype2nameassoclist(selection_type))
 
-/datum/backpack_tweak/selection/subtypes/New(var/selection_type)
+/datum/backpack_tweak/selection/subtypes/New(selection_type)
 	..(atomtypes2nameassoclist(subtypesof(selection_type)))
 
-/datum/backpack_tweak/selection/specified_types_as_list/New(var/selection_list)
+/datum/backpack_tweak/selection/specified_types_as_list/New(selection_list)
 	..(atomtypes2nameassoclist(selection_list))
 
 /datum/backpack_tweak/selection/specified_types_as_args/New()
@@ -166,7 +166,7 @@
 	var/decl/backpack_outfit/backpack
 	var/metadata
 
-/datum/backpack_setup/New(var/backpack, metadata)
+/datum/backpack_setup/New(backpack, metadata)
 	src.backpack = backpack
 	src.metadata = metadata
 

@@ -111,7 +111,7 @@
 		elect_master(exclude_self = TRUE)
 	return ..()
 
-/obj/machinery/alarm/New(var/loc, dir, atom/frame)
+/obj/machinery/alarm/New(loc, dir, atom/frame)
 	..(loc)
 
 	if(dir)

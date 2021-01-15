@@ -12,7 +12,7 @@
 	var/lifetimer
 	mouse_opacity = 0
 
-/obj/screen/movable/tracker/New(var/mob/host, atom/_tracked, lifetime)
+/obj/screen/movable/tracker/New(mob/host, atom/_tracked, lifetime)
 	if (host.client)
 		origin = host
 		C = origin.client

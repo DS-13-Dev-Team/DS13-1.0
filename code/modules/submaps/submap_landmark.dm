@@ -10,7 +10,7 @@
 	icon_state = "x4"
 	var/archetype
 
-/obj/effect/submap_landmark/joinable_submap/Initialize(var/mapload)
+/obj/effect/submap_landmark/joinable_submap/Initialize(mapload)
 	. = ..(mapload)
 	if(!SSmapping.submaps[name] && SSmapping.submap_archetypes[archetype])
 		var/datum/submap/submap = new(z)

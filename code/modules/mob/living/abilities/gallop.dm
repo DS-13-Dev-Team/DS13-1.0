@@ -29,7 +29,7 @@
 		set_extension(src, /datum/extension/gallop, _duration,_cooldown,_power)
 		return TRUE
 
-/datum/extension/gallop/New(var/mob/living/_user, _duration, _cooldown, _power)
+/datum/extension/gallop/New(mob/living/_user, _duration, _cooldown, _power)
 	statmods[STATMOD_MOVESPEED_MULTIPLICATIVE] = 1 + _power
 	.=..()
 	user = _user

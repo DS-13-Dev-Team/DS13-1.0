@@ -5,7 +5,7 @@
 	var/list/obj/item/seeds/seeds = list() // Tracks actual objects contained in the pile
 	var/ID
 
-/datum/seed_pile/New(var/obj/item/seeds/O, ID)
+/datum/seed_pile/New(obj/item/seeds/O, ID)
 	name = O.name
 	amount = 1
 	seed_type = O.seed
@@ -31,7 +31,7 @@
 	var/list/starting_seeds = list()
 	var/list/scanner = list() // What properties we can view
 
-/obj/machinery/seed_storage/Initialize(var/mapload)
+/obj/machinery/seed_storage/Initialize(mapload)
 	. = ..()
 	for(var/typepath in starting_seeds)
 		var/amount = starting_seeds[typepath]

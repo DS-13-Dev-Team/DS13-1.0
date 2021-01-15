@@ -12,7 +12,7 @@
 	var/global/list/datum/ai_laws/player_laws
 	var/mob/living/silicon/owner = null
 
-/datum/nano_module/law_manager/New(var/mob/living/silicon/S)
+/datum/nano_module/law_manager/New(mob/living/silicon/S)
 	..()
 	owner = S
 

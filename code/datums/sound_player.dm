@@ -113,7 +113,7 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 	var/datum/proximity_trigger/square/proxy_listener
 	var/list/can_be_heard_from
 
-/datum/sound_token/New(var/atom/source, sound_id, sound/sound, range = 4, prefer_mute = FALSE)
+/datum/sound_token/New(atom/source, sound_id, sound/sound, range = 4, prefer_mute = FALSE)
 	..()
 	if(!istype(source))
 		CRASH("Invalid sound source: [log_info_line(source)]")

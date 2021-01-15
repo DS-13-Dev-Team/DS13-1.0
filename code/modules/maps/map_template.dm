@@ -10,7 +10,7 @@
 	var/accessibility_weight = 0
 	var/template_flags = TEMPLATE_FLAG_ALLOW_DUPLICATES
 
-/datum/map_template/New(var/list/paths = null, rename = null)
+/datum/map_template/New(list/paths = null, rename = null)
 	if(paths && !islist(paths))
 		crash_with("Non-list paths passed into map template constructor.")
 	if(paths)

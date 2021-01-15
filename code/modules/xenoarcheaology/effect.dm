@@ -10,7 +10,7 @@
 	var/artifact_id = ""
 	var/effect_type = 0
 
-/datum/artifact_effect/New(var/atom/location)
+/datum/artifact_effect/New(atom/location)
 	..()
 	holder = location
 	effect = rand(0, MAX_EFFECT)

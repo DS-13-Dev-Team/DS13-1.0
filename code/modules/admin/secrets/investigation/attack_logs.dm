@@ -97,7 +97,7 @@
 	var/category = /attack_filter
 	var/datum/admin_secret_item/investigation/attack_logs/holder
 
-/attack_filter/New(var/holder)
+/attack_filter/New(holder)
 	..()
 	src.holder = holder
 

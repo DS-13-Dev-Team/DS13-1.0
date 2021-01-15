@@ -56,7 +56,7 @@
 	statmods = list(STATMOD_EVASION, 200)
 	auto_register_statmods = FALSE
 
-/datum/extension/high_leap/New(var/atom/movable/user, target, windup_time, winddown_time, cooldown, minimum_range = 3, travel_speed = 6)
+/datum/extension/high_leap/New(atom/movable/user, target, windup_time, winddown_time, cooldown, minimum_range = 3, travel_speed = 6)
 	.=..()
 	if (isliving(user))
 		src.user = user

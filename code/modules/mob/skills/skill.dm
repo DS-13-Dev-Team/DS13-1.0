@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(skills)
 			return 0
 
 //Do not attempt to get_decl any of these except /decl/hierarchy/skill from decls_repository. Use the children variable or GLOB.skills instead.
-/decl/hierarchy/skill/New(var/full_init = TRUE)
+/decl/hierarchy/skill/New(full_init = TRUE)
 	..(full_init)
 	if(full_init)
 		if(!GLOB.skills.len)

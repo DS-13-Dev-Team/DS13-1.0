@@ -5,7 +5,7 @@
 	var/datum/click_handler/build_mode/host
 	var/mob/user
 
-/datum/build_mode/New(var/host)
+/datum/build_mode/New(host)
 	..()
 	src.host = host
 	user = src.host.user

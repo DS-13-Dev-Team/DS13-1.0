@@ -41,7 +41,7 @@
 	var/ongoing_timer
 
 
-/datum/extension/regenerate/New(var/datum/holder, duration, cooldown)
+/datum/extension/regenerate/New(datum/holder, duration, cooldown)
 	..()
 	user = holder
 	if (duration)

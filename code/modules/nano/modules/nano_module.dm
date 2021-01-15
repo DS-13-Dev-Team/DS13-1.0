@@ -5,7 +5,7 @@
 	var/datum/topic_manager/topic_manager
 	var/list/using_access = list()
 
-/datum/nano_module/New(var/datum/host, topic_manager)
+/datum/nano_module/New(datum/host, topic_manager)
 	..()
 	src.host = host.nano_host()
 	src.topic_manager = topic_manager

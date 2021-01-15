@@ -43,7 +43,7 @@
 
 	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -1)
 
-/datum/extension/cadence/New(var/mob/living/_user)
+/datum/extension/cadence/New(mob/living/_user)
 	.=..()
 	user = _user
 	step_amount = max_speed_buff / max_steps

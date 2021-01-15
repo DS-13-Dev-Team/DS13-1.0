@@ -3,7 +3,7 @@
 	var/atom/holder
 	var/may_process_proc
 
-/crew_sensor_modifier/New(var/atom/holder, may_process_proc)
+/crew_sensor_modifier/New(atom/holder, may_process_proc)
 	..()
 	src.holder = holder
 	src.may_process_proc = may_process_proc

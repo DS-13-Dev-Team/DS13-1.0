@@ -15,7 +15,7 @@
 	var/reset_handle
 	var/atom/movable/AM
 
-/datum/extension/reset_move_animation/New(var/datum/holder)
+/datum/extension/reset_move_animation/New(datum/holder)
 	.=..()
 	AM = holder
 

@@ -20,7 +20,7 @@
 	var/material/material
 	var/drops_debris = 1
 
-/obj/item/weapon/material/New(var/newloc, material_key)
+/obj/item/weapon/material/New(newloc, material_key)
 	..(newloc)
 	if(!material_key)
 		material_key = default_material

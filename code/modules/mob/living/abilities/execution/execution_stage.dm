@@ -22,7 +22,7 @@
 	//How long to remain in this stage before moving to the next one
 	var/duration = 1 SECOND
 
-/datum/execution_stage/New(var/datum/extension/execution/host)
+/datum/execution_stage/New(datum/extension/execution/host)
 	src.host = host
 	.=..()
 

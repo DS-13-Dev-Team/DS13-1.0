@@ -16,7 +16,7 @@
 	//Last cached coordinates, set on logout
 	var/list/last_location = list("x" = 0, "y" = 0, "z" = 0)
 
-/datum/player/New(var/newkey)
+/datum/player/New(newkey)
 	src.key = newkey
 	update_patron()
 

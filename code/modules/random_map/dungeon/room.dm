@@ -13,7 +13,7 @@ If its complexity is lower than our theme's then
 	var/datum/room_theme/room_theme = null
 	var/generate_doors = 1 //do we want to generate doors for this place?
 
-/datum/room/New(var/rt, _x, _y, w, h, doors)
+/datum/room/New(rt, _x, _y, w, h, doors)
 	var/gen_type
 	if(rt)
 		room_theme = rt

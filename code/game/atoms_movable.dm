@@ -28,7 +28,7 @@
 	var/mass = 1
 
 
-/atom/movable/Initialize(var/mapload)
+/atom/movable/Initialize(mapload)
 	if (can_block_movement && isturf(loc))
 		var/turf/T = loc
 		T.movement_blocking_atoms |= src

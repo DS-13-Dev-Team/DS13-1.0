@@ -25,7 +25,7 @@
 	if(shield)
 		shield.take_charge()
 
-/obj/aura/personal_shield/device/New(var/mob/living/user, user_shield)
+/obj/aura/personal_shield/device/New(mob/living/user, user_shield)
 	..()
 	shield = user_shield
 

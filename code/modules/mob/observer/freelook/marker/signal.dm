@@ -20,7 +20,7 @@
 
 
 //This will have a mob passed in that we were created from
-/mob/observer/eye/signal/New(var/mob/body)
+/mob/observer/eye/signal/New(mob/body)
 	..()
 	visualnet = GLOB.necrovision	//Set the visualnet of course
 

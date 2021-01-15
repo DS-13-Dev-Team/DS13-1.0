@@ -25,7 +25,7 @@ var/list/solars_list = list()
 /obj/machinery/power/solar/drain_power()
 	return -1
 
-/obj/machinery/power/solar/New(var/turf/loc, obj/item/solar_assembly/S)
+/obj/machinery/power/solar/New(turf/loc, obj/item/solar_assembly/S)
 	..(loc)
 	Make(S)
 	connect_to_network()
@@ -165,7 +165,7 @@ var/list/solars_list = list()
 	return
 
 
-/obj/machinery/power/solar/fake/New(var/turf/loc, obj/item/solar_assembly/S)
+/obj/machinery/power/solar/fake/New(turf/loc, obj/item/solar_assembly/S)
 	..(loc, S, 0)
 
 /obj/machinery/power/solar/fake/Process()

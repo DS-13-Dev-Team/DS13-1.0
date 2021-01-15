@@ -11,7 +11,7 @@
 	var/title
 	var/vector2/dimensions
 
-/datum/extension/interactive/New(var/datum/holder, host_predicates = list(), user_predicates = list())
+/datum/extension/interactive/New(datum/holder, host_predicates = list(), user_predicates = list())
 	..()
 
 	src.host_predicates = host_predicates ? host_predicates : list()
@@ -39,7 +39,7 @@
 /datum/extension/interactive/proc/extension_act(href, list/href_list, mob/user)
 	return extension_status(user) == STATUS_CLOSE
 
-/datum/extension/interactive/Topic(var/href, list/href_list)
+/datum/extension/interactive/Topic(href, list/href_list)
 	if(..())
 		return TRUE
 	return extension_act(href, href_list, usr)
@@ -65,5 +65,5 @@
 /datum/extension/interactive/proc/generate_content_data()
 	return
 
-/datum/extension/interactive/ui_data(var/mob/user)
+/datum/extension/interactive/ui_data(mob/user)
 	return list()

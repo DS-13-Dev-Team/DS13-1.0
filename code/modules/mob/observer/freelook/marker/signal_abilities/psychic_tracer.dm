@@ -76,7 +76,7 @@
 
 
 
-/datum/extension/psychic_tracer/New(var/datum/holder)
+/datum/extension/psychic_tracer/New(datum/holder)
 	.=..()
 	A = holder
 	duration = initial_duration

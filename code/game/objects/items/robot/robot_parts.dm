@@ -14,7 +14,7 @@
 /obj/item/robot_parts/set_dir()
 	return
 
-/obj/item/robot_parts/New(var/newloc, model)
+/obj/item/robot_parts/New(newloc, model)
 	..(newloc)
 	if(model_info && model)
 		model_info = model

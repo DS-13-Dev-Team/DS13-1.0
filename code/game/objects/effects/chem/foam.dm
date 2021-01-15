@@ -15,7 +15,7 @@
 	var/expand = 1
 	var/metal = 0
 
-/obj/effect/effect/foam/New(var/loc, ismetal = 0)
+/obj/effect/effect/foam/New(loc, ismetal = 0)
 	..(loc)
 	icon_state = "[ismetal? "m" : ""]foam"
 	metal = ismetal

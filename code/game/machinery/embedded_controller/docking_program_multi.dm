@@ -11,7 +11,7 @@
 	var/list/children_ready
 	var/list/children_override
 
-/datum/computer/file/embedded_program/docking/multi/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/docking/multi/New(obj/machinery/embedded_controller/M)
 	..(M)
 
 	if (istype(M,/obj/machinery/embedded_controller/radio/docking_port_multi))	//if our parent controller is the right type, then we can auto-init stuff at construction
@@ -115,7 +115,7 @@
 	var/docking_mode = 0	//0 = docking, 1 = undocking
 	var/response_sent = 0
 
-/datum/computer/file/embedded_program/airlock/multi_docking/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/airlock/multi_docking/New(obj/machinery/embedded_controller/M)
 	..(M)
 
 	if (istype(M, /obj/machinery/embedded_controller/radio/airlock/docking_port_multi))	//if our parent controller is the right type, then we can auto-init stuff at construction

@@ -10,7 +10,7 @@ var/list/ticket_panels = list()
 	var/id
 	var/opened_time
 
-/datum/ticket/New(var/datum/client_lite/owner)
+/datum/ticket/New(datum/client_lite/owner)
 	src.owner = owner
 	tickets |= src
 	id = tickets.len
@@ -87,7 +87,7 @@ proc/get_open_ticket_by_client(datum/client_lite/owner)
 	var/msg
 	var/time_stamp
 
-/datum/ticket_msg/New(var/msg_from, msg_to, msg)
+/datum/ticket_msg/New(msg_from, msg_to, msg)
 	src.msg_from = msg_from
 	src.msg_to = msg_to
 	src.msg = msg

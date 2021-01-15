@@ -33,7 +33,7 @@
 	var/destroyed       // Whether we are destroyed and need to stop emitting light.
 	var/force_update
 
-/datum/light_source/New(var/atom/owner, atom/top)
+/datum/light_source/New(atom/owner, atom/top)
 	total_lighting_sources++
 	source_atom = owner // Set our new owner.
 	if(!source_atom.light_sources)

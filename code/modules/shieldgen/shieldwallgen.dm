@@ -272,7 +272,7 @@
 	var/power_usage = 800	//how much power it takes to sustain the shield
 	var/generate_power_usage = 5000	//how much power it takes to start up the shield
 
-/obj/machinery/shieldwall/New(var/obj/machinery/shieldwallgen/A, obj/machinery/shieldwallgen/B)
+/obj/machinery/shieldwall/New(obj/machinery/shieldwallgen/A, obj/machinery/shieldwallgen/B)
 	..()
 	update_nearby_tiles()
 	src.gen_primary = A

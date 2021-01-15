@@ -26,7 +26,7 @@
 	H = null
 	.=..()
 
-/obj/screen/health_doll/New(var/mob/living/carbon/human/owner)
+/obj/screen/health_doll/New(mob/living/carbon/human/owner)
 	H = owner
 	.=..()
 

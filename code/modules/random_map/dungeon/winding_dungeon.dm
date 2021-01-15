@@ -60,7 +60,7 @@
 	limit_x = 50
 	limit_y = 50
 
-/datum/random_map/winding_dungeon/New(var/seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, list/variable_list)
+/datum/random_map/winding_dungeon/New(seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, list/variable_list)
 	for(var/variable in variable_list)
 		if(variable in src.vars)
 			src.vars[variable] = variable_list[variable]

@@ -25,5 +25,5 @@
 	..()
 	src.proc_call = proc_call
 
-/datum/extension/penetration/proc_call/PenetrationProbability(var/base_probability, damage, damage_type)
+/datum/extension/penetration/proc_call/PenetrationProbability(base_probability, damage, damage_type)
 	return call(holder, proc_call)(base_probability, damage, damage_type)

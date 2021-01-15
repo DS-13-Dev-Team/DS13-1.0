@@ -281,7 +281,7 @@
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.7)
 	var/removal_timer
 
-/datum/extension/acid_slow/New(var/datum/holder)
+/datum/extension/acid_slow/New(datum/holder)
 	.=..()
 	var/mob/living/carbon/L = holder
 	//Does not affect necromorphs

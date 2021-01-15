@@ -34,7 +34,7 @@
 	var/last_defensive_displace = 0
 	var/idle_twitch_timer
 
-/datum/extension/twitch/New(var/mob/living/carbon/human/_user)
+/datum/extension/twitch/New(mob/living/carbon/human/_user)
 	..()
 	user = _user
 	GLOB.moved_event.register(user, src, /datum/extension/twitch/proc/moved)

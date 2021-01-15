@@ -47,7 +47,7 @@ var/global/list/robot_modules = list(
 	var/list/original_languages = list()
 	var/list/added_networks = list()
 
-/obj/item/weapon/robot_module/New(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/New(mob/living/silicon/robot/R)
 	..()
 	if (!istype(R))
 		return
@@ -654,7 +654,7 @@ var/global/list/robot_modules = list(
 				)
 	var/id
 
-/obj/item/weapon/robot_module/syndicate/New(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/syndicate/New(mob/living/silicon/robot/R)
 	loc = R
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/weapon/melee/energy/sword(src)
@@ -693,7 +693,7 @@ var/global/list/robot_modules = list(
 	no_slip = 1
 	networks = list(NETWORK_ENGINEERING)
 
-/obj/item/weapon/robot_module/drone/New(var/mob/living/silicon/robot/robot)
+/obj/item/weapon/robot_module/drone/New(mob/living/silicon/robot/robot)
 	src.modules += new /obj/item/weapon/tool/weldingtool(src)
 	src.modules += new /obj/item/weapon/tool/screwdriver(src)
 	src.modules += new /obj/item/weapon/tool/wrench(src)

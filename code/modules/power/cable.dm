@@ -499,7 +499,7 @@ obj/structure/cable/proc/cableColor(colorC)
 /obj/item/stack/cable_coil/single
 	amount = 1
 
-/obj/item/stack/cable_coil/single/New(var/loc, length = 1, param_color = null)
+/obj/item/stack/cable_coil/single/New(loc, length = 1, param_color = null)
 	..(loc, length, param_color)
 
 /obj/item/stack/cable_coil/cyborg

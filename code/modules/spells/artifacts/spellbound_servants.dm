@@ -146,7 +146,7 @@
 	var/datum/spellbound_type/stype
 	var/last_called = 0
 
-/obj/effect/cleanable/spellbound/New(var/loc, spell_type)
+/obj/effect/cleanable/spellbound/New(loc, spell_type)
 	stype = new spell_type()
 	return ..(loc)
 

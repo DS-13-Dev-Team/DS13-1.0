@@ -60,7 +60,7 @@
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1.15, STATMOD_EVASION = 10, STATMOD_VIEW_RANGE = 1)
 	auto_register_statmods = FALSE
 
-/datum/extension/wallrun/New(var/atom/movable/_user)
+/datum/extension/wallrun/New(atom/movable/_user)
 	.=..()
 
 

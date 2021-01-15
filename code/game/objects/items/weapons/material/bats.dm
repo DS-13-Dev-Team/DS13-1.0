@@ -16,17 +16,17 @@
 	slot_flags = SLOT_BACK
 
 //Predefined materials go here.
-/obj/item/weapon/material/twohanded/baseballbat/metal/New(var/newloc)
+/obj/item/weapon/material/twohanded/baseballbat/metal/New(newloc)
 	..(newloc,"steel")
 
-/obj/item/weapon/material/twohanded/baseballbat/uranium/New(var/newloc)
+/obj/item/weapon/material/twohanded/baseballbat/uranium/New(newloc)
 	..(newloc,"uranium")
 
-/obj/item/weapon/material/twohanded/baseballbat/gold/New(var/newloc)
+/obj/item/weapon/material/twohanded/baseballbat/gold/New(newloc)
 	..(newloc,MATERIAL_GOLD)
 
-/obj/item/weapon/material/twohanded/baseballbat/platinum/New(var/newloc)
+/obj/item/weapon/material/twohanded/baseballbat/platinum/New(newloc)
 	..(newloc,"platinum")
 
-/obj/item/weapon/material/twohanded/baseballbat/diamond/New(var/newloc)
+/obj/item/weapon/material/twohanded/baseballbat/diamond/New(newloc)
 	..(newloc,MATERIAL_DIAMOND)

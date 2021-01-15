@@ -88,7 +88,7 @@ GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)
 	var/target_scale = 1
 
 
-/obj/effect/effect/bioblast/New(var/atom/loc, _lifespan = 1 SECOND, radius = 1)
+/obj/effect/effect/bioblast/New(atom/loc, _lifespan = 1 SECOND, radius = 1)
 	//Lets figure out the desired scale. Since this is a 96x96 sprite, its 3x3 at 1 scale
 	var/target_diameter = (radius*2)+1
 	target_scale = target_diameter / 3

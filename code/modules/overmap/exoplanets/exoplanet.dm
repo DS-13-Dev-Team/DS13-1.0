@@ -310,7 +310,7 @@
 	var/list/big_flora_types = list()
 	var/list/plantcolors = list("RANDOM")
 
-/datum/random_map/noise/exoplanet/New(var/seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, never_be_priority = 0)
+/datum/random_map/noise/exoplanet/New(seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, never_be_priority = 0)
 	target_turf_type = world.turf
 	planetary_area = new planetary_area()
 	water_level = rand(water_level_min,water_level_max)

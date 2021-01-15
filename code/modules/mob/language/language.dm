@@ -114,7 +114,7 @@
 		var/msg = "<i><span class='game say'>[language.name], <span class='name'>[speaker_name]</span> [message]</span></i>"
 		to_chat(src, msg)
 
-/mob/new_player/hear_broadcast(var/datum/language/language, mob/speaker, speaker_name, message)
+/mob/new_player/hear_broadcast(datum/language/language, mob/speaker, speaker_name, message)
 	return
 
 /mob/observer/ghost/hear_broadcast(var/datum/language/language, mob/speaker, speaker_name, message)

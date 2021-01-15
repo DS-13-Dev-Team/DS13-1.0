@@ -307,7 +307,7 @@
 	var/list/linked = list()
 	var/io_type = DATA_CHANNEL
 
-/datum/integrated_io/New(var/newloc, name, data)
+/datum/integrated_io/New(newloc, name, data)
 	..()
 	src.name = name
 	src.data = data

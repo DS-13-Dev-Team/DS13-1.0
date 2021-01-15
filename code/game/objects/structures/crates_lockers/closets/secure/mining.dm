@@ -72,7 +72,7 @@
 	)
 
 
-/obj/structure/closet/secure_closet/planet_cracker/New(var/atom/location)
+/obj/structure/closet/secure_closet/planet_cracker/New(atom/location)
 	if (prob(30))	//Not all planet crackers get a cutter
 		new /obj/item/weapon/gun/energy/cutter(src)
 

@@ -35,7 +35,7 @@
 		to_chat(usr, directives)
 		return TOPIC_HANDLED
 
-/obj/structure/sign/ecplaque/attackby(var/obj/I, mob/user)
+/obj/structure/sign/ecplaque/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		if(!ishuman(G.affecting))

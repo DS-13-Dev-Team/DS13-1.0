@@ -17,7 +17,7 @@
 	var/list/blacklisted_species
 	var/list/whitelisted_species
 
-/datum/job/submap/New(var/datum/submap/_owner)
+/datum/job/submap/New(datum/submap/_owner)
 	spawnpoints = list()
 	owner = _owner
 	..()

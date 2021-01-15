@@ -65,7 +65,7 @@
 	var/necro = FALSE
 
 
-/datum/extension/assault_wave/New(var/datum/holder)
+/datum/extension/assault_wave/New(datum/holder)
 	.=..()
 	var/mob/living/L = holder
 

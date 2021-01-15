@@ -18,7 +18,7 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/weapon/stool/padded
 	icon_state = "stool_padded_preview" //set for the map
 
-/obj/item/weapon/stool/New(var/newloc, new_material, new_padding_material)
+/obj/item/weapon/stool/New(newloc, new_material, new_padding_material)
 	..(newloc)
 	if(!new_material)
 		new_material = MATERIAL_STEEL
@@ -31,7 +31,7 @@ var/global/list/stool_cache = list() //haha stool
 	force = round(material.get_blunt_damage()*0.4)
 	update_icon()
 
-/obj/item/weapon/stool/padded/New(var/newloc, new_material)
+/obj/item/weapon/stool/padded/New(newloc, new_material)
 	..(newloc, "steel", "carpet")
 
 /obj/item/weapon/stool/bar
@@ -43,7 +43,7 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/weapon/stool/bar/padded
 	icon_state = "bar_stool_padded_preview"
 
-/obj/item/weapon/stool/bar/padded/New(var/newloc, new_material)
+/obj/item/weapon/stool/bar/padded/New(newloc, new_material)
 	..(newloc, "steel", "carpet")
 
 /obj/item/weapon/stool/update_icon()

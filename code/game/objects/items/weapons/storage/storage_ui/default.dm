@@ -10,7 +10,7 @@
 	var/obj/screen/storage/stored_end
 	var/obj/screen/close/closer
 
-/datum/storage_ui/default/New(var/storage)
+/datum/storage_ui/default/New(storage)
 	..()
 	boxes = new /obj/screen/storage(  )
 	boxes.SetName("storage")

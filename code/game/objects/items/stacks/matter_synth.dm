@@ -6,7 +6,7 @@
 	var/multiplier = 1						// Robot may be upgraded with better matter bin to multiply capacity of it's synthetisers
 	var/energy
 
-/datum/matter_synth/New(var/store = 0)
+/datum/matter_synth/New(store = 0)
 	if(store)
 		max_energy = store
 	energy = max_energy_multiplied

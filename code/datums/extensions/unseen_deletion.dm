@@ -22,7 +22,7 @@
 
 
 
-/datum/extension/delete_unseen/New(var/atom/holder)
+/datum/extension/delete_unseen/New(atom/holder)
 	.=..()
 	subject = holder
 	if (QDELETED(subject))

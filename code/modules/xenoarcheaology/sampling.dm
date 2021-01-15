@@ -21,7 +21,7 @@
 	var/source_mineral = "chlorine"
 	var/list/find_presence = list()
 
-/datum/geosample/New(var/turf/simulated/mineral/container)
+/datum/geosample/New(turf/simulated/mineral/container)
 	UpdateTurf(container)
 
 /datum/geosample/proc/UpdateTurf(turf/simulated/mineral/container)

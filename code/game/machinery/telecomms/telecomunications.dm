@@ -357,7 +357,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	var/broadcasting = 1
 	var/receiving = 1
 
-/obj/machinery/telecomms/relay/forceMove(var/newloc)
+/obj/machinery/telecomms/relay/forceMove(newloc)
 	. = ..(newloc)
 	listening_levels = GetConnectedZlevels(z)
 	update_power()

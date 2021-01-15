@@ -1,7 +1,7 @@
 /obj/effect/temporary/item_pickup_ghost
 	var/lifetime = 0.2 SECONDS
 
-/obj/effect/temporary/item_pickup_ghost/Initialize(var/mapload, obj/item/picked_up)
+/obj/effect/temporary/item_pickup_ghost/Initialize(mapload, obj/item/picked_up)
 	. = ..(mapload, lifetime, picked_up.icon, picked_up.icon_state)
 	pixel_x = picked_up.pixel_x
 	pixel_y = picked_up.pixel_y

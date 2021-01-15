@@ -22,7 +22,7 @@
 	var/list/charge_costs = null
 	var/list/datum/matter_synth/synths = null
 
-/obj/item/stack/New(var/loc, amount=null)
+/obj/item/stack/New(loc, amount=null)
 	..()
 	if (!stacktype)
 		stacktype = type

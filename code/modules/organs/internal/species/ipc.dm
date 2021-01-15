@@ -28,7 +28,7 @@
 		)
 	var/shackle = 0
 
-/obj/item/organ/internal/posibrain/New(var/mob/living/carbon/H)
+/obj/item/organ/internal/posibrain/New(mob/living/carbon/H)
 	..()
 	if(!brainmob && H)
 		init(H)

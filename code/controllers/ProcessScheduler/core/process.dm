@@ -90,7 +90,7 @@
 	// Number of deciseconds to delay before starting the process
 	var/start_delay = 0
 
-/datum/controller/process/New(var/datum/controller/processScheduler/scheduler)
+/datum/controller/process/New(datum/controller/processScheduler/scheduler)
 	..()
 	main = scheduler
 	previousStatus = "idle"

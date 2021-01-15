@@ -29,7 +29,7 @@
 
 	var/update_gen = 0
 
-/datum/lighting_corner/New(var/turf/new_turf, diagonal)
+/datum/lighting_corner/New(turf/new_turf, diagonal)
 	. = ..()
 
 	total_lighting_corners++

@@ -49,7 +49,7 @@
 	spark.attach(T)
 	spark.start()
 
-/decl/teleport/sparks/teleport_target(var/atom/target, atom/destination, precision)
+/decl/teleport/sparks/teleport_target(atom/target, atom/destination, precision)
 	do_spark(target)
 	..()
 	do_spark(target)

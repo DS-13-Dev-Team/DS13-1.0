@@ -286,7 +286,7 @@
 	icon_state = null
 
 //Rather than a single effect, the focus mode uses a little spawner which creates multiple staggered effects
-/obj/effect/effect/repulse/New(var/atom/location, _lifespan = 2 SECOND, matrix/rotation, mob/living/user)
+/obj/effect/effect/repulse/New(atom/location, _lifespan = 2 SECOND, matrix/rotation, mob/living/user)
 
 
 	playsound(src, pick(list('sound/weapons/guns/blast/contact_blast_1.ogg',

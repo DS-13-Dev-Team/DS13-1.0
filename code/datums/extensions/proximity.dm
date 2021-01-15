@@ -12,7 +12,7 @@
 	var/list/triggers = list()
 
 //Must pass in a trigger on new, because why wouldn't you
-/datum/extension/proximity_manager/New(var/atom/holder, datum/proximity_trigger/P)
+/datum/extension/proximity_manager/New(atom/holder, datum/proximity_trigger/P)
 	.=..()
 	triggers.Add(P)
 

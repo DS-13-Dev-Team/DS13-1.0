@@ -2,7 +2,7 @@
 	var/overlay
 	var/ckey
 
-/datum/ai_emotion/New(var/over, key)
+/datum/ai_emotion/New(over, key)
 	overlay = over
 	ckey = key
 

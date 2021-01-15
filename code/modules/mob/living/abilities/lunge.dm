@@ -10,7 +10,7 @@
 	var/vector2/cached_pixels
 	force_multiplier = 0 //No knockback
 
-/datum/extension/charge/lunge/New(var/datum/holder, atom/_target, _speed , _lifespan, _maxrange, _homing, _inertia = FALSE, _power, _cooldown, _delay)
+/datum/extension/charge/lunge/New(datum/holder, atom/_target, _speed , _lifespan, _maxrange, _homing, _inertia = FALSE, _power, _cooldown, _delay)
 	..()
 	//Do a chargeup animation
 	var/mob/living/M = user

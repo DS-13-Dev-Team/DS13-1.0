@@ -549,10 +549,10 @@
 /mob/new_player/is_ready()
 	return ready && ..()
 
-/mob/new_player/hear_say(var/message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null)
+/mob/new_player/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null)
 	return
 
-/mob/new_player/hear_radio(var/message, verb="says", datum/language/language=null, part_a, part_b, part_c, mob/speaker = null, hard_to_hear = 0)
+/mob/new_player/hear_radio(message, verb="says", datum/language/language=null, part_a, part_b, part_c, mob/speaker = null, hard_to_hear = 0)
 	return
 
 /mob/new_player/show_message(msg, type, alt, alt_type)
@@ -564,5 +564,5 @@ mob/new_player/MayRespawn()
 /mob/new_player/touch_map_edge()
 	return
 
-/mob/new_player/say(var/message)
+/mob/new_player/say(message)
 	sanitize_and_communicate(/decl/communication_channel/ooc, client, message)

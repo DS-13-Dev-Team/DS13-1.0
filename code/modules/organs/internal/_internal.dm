@@ -10,7 +10,7 @@
 	var/min_bruised_damage = 10       // Damage before considered bruised
 	biomass = 1	//By default, internal organs are worth 1kg of biomass. A little inaccurate, could find more exact values
 
-/obj/item/organ/internal/New(var/mob/living/carbon/holder)
+/obj/item/organ/internal/New(mob/living/carbon/holder)
 	if(max_damage)
 		min_bruised_damage = Floor(max_damage / 4)
 	..()

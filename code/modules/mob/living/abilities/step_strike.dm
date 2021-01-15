@@ -20,7 +20,7 @@
 
 
 
-/datum/extension/step_strike/New(var/mob/living/carbon/human/_user, mob/living/_target, _distance, _cooldown)
+/datum/extension/step_strike/New(mob/living/carbon/human/_user, mob/living/_target, _distance, _cooldown)
 	.=..()
 	user = _user
 	target = _target

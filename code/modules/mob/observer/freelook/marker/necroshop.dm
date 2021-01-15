@@ -21,7 +21,7 @@
 	var/list/content_data	=	list()	//No need to regenerate this every second
 	var/necroqueue_fill	 = TRUE//Shop-level toggle for using necroqueue to fill new spawns
 
-/datum/necroshop/New(var/newhost)
+/datum/necroshop/New(newhost)
 	host = newhost
 
 	//Lets construct the shop inventory
@@ -98,7 +98,7 @@
 	var/name = "Marker"				//What do we call this spawn location?
 	//TODO: Support for a preview image of the area
 
-/datum/necrospawn/New(var/atom/origin, _name)
+/datum/necrospawn/New(atom/origin, _name)
 	spawnpoint = origin
 	name = _name
 	id = "\ref[spawnpoint]"
@@ -110,7 +110,7 @@
 /datum/necrospawn_selector
 	var/datum/necroshop/host
 
-/datum/necrospawn_selector/New(var/datum/necroshop/_host)
+/datum/necrospawn_selector/New(datum/necroshop/_host)
 	host = _host
 
 /datum/necrospawn_selector/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)

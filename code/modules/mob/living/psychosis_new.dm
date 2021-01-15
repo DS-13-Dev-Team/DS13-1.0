@@ -59,7 +59,7 @@ Extension code.
 	var/countdown
 	var/psychosis_timer
 
-/datum/extension/psychosis/New(var/datum/holder, _duration, _intensity)
+/datum/extension/psychosis/New(datum/holder, _duration, _intensity)
 	. = ..()
 	duration = _duration SECONDS
 	intensity = (_intensity <= max_intensity) ? _intensity : max_intensity //Strip off over-intensities that may break things.
@@ -156,7 +156,7 @@ Traumatic sight extensions
 	var/poll_timer
 	var/atom/source
 
-/datum/extension/traumatic_sight/New(var/datum/holder, _poll_rate, _view_range, _duration, _intensity)
+/datum/extension/traumatic_sight/New(datum/holder, _poll_rate, _view_range, _duration, _intensity)
 	. = ..()
 	poll_rate = _poll_rate SECONDS
 	src.holder = holder

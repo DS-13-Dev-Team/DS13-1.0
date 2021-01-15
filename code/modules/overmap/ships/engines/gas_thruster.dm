@@ -3,7 +3,7 @@
 	name = "gas thruster"
 	var/obj/machinery/atmospherics/unary/engine/nozzle
 
-/datum/ship_engine/gas_thruster/New(var/obj/machinery/_holder)
+/datum/ship_engine/gas_thruster/New(obj/machinery/_holder)
 	..()
 	nozzle = _holder
 
@@ -113,7 +113,7 @@
 	light_color = "#ed9200"
 	anchored = 1
 
-/obj/effect/engine_exhaust/New(var/turf/nloc, ndir, flame)
+/obj/effect/engine_exhaust/New(turf/nloc, ndir, flame)
 	..(nloc)
 	if(flame)
 		icon_state = "exhaust"

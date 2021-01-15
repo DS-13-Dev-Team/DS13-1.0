@@ -47,7 +47,7 @@
 /datum/computer/file/embedded_program/docking/simple
 	var/tag_door
 
-/datum/computer/file/embedded_program/docking/simple/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/docking/simple/New(obj/machinery/embedded_controller/M)
 	..(M)
 	memory["door_status"] = list(state = "closed", lock = "locked")		//assume closed and locked in case the doors dont report in
 

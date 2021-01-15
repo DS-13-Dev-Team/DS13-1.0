@@ -5,7 +5,7 @@ var/list/ship_engines = list()
 	var/name = "ship engine"
 	var/obj/machinery/holder	//actual engine object
 
-/datum/ship_engine/New(var/obj/machinery/_holder)
+/datum/ship_engine/New(obj/machinery/_holder)
 	..()
 	holder = _holder
 	ship_engines += src

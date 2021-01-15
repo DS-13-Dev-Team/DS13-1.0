@@ -30,7 +30,7 @@
 	var/obj/machinery/atmospherics/node
 	var/datum/pipe_network/network
 
-/datum/omni_port/New(var/obj/machinery/atmospherics/omni/M, direction = NORTH)
+/datum/omni_port/New(obj/machinery/atmospherics/omni/M, direction = NORTH)
 	..()
 	dir = direction
 	if(istype(M))

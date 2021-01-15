@@ -61,7 +61,7 @@ var/list/outfits_decls_by_type_
 	var/list/all_possible_types = list()
 	var/list/implants
 
-/decl/hierarchy/outfit/New(var/full_init = TRUE, list_entry = FALSE)
+/decl/hierarchy/outfit/New(full_init = TRUE, list_entry = FALSE)
 	..()
 
 	setup_loadout_tags()

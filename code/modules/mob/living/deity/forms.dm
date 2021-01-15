@@ -16,7 +16,7 @@ Each plays slightly different and has different challenges/benefits
 	var/list/icon_states = list()
 	var/list/items
 
-/datum/god_form/New(var/mob/living/deity/D)
+/datum/god_form/New(mob/living/deity/D)
 	..()
 	D.icon_state = god_icon_state
 	D.desc = desc

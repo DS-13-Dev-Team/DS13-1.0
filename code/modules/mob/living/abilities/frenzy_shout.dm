@@ -19,7 +19,7 @@
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1,
 	STATMOD_ATTACK_SPEED = 1)
 
-/datum/extension/frenzy_buff/New(var/datum/holder, _duration, _intensity)
+/datum/extension/frenzy_buff/New(datum/holder, _duration, _intensity)
 	statmods[STATMOD_MOVESPEED_MULTIPLICATIVE] = 1+intensity
 	statmods[STATMOD_ATTACK_SPEED] = intensity
 	..()
@@ -53,7 +53,7 @@
 	var/cooltimer
 	var/started_at
 
-/datum/extension/frenzy_cooldown/New(var/datum/holder, cooldown)
+/datum/extension/frenzy_cooldown/New(datum/holder, cooldown)
 	..()
 	started_at = world.time
 	cooldown_time = cooldown

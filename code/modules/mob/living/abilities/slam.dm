@@ -32,7 +32,7 @@
 	var/list/affected_turfs_secondary
 	var/stopped_at
 
-/datum/extension/slam/New(var/atom/movable/user, atom/target, _damage, _down_factor, _weaken_time, _power, _windup_time, _cooldown)
+/datum/extension/slam/New(atom/movable/user, atom/target, _damage, _down_factor, _weaken_time, _power, _windup_time, _cooldown)
 	..()
 	src.user = user
 	epicentre = get_turf(target) //This attack can be dodged. If we target a mob, we'll hit where they were standing at the initiation time, whether they're still there or not

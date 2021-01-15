@@ -583,7 +583,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /obj/item/weapon/tool/multitool/ghost
 	var/mob/observer/ghost/ghost
 
-/obj/item/weapon/tool/multitool/ghost/New(var/mob/observer/ghost/ghost)
+/obj/item/weapon/tool/multitool/ghost/New(mob/observer/ghost/ghost)
 	src.ghost = ghost
 	.=..()
 

@@ -39,7 +39,7 @@
 		//TODO: FIND OUT WHY ANYTHING COULD HAVE NULL FLOORING
 		return TRUE
 
-/turf/simulated/floor/New(var/newloc, floortype)
+/turf/simulated/floor/New(newloc, floortype)
 	if(!floortype && initial_flooring)
 		floortype = initial_flooring
 	if(floortype)
@@ -52,7 +52,7 @@
 	return INITIALIZE_HINT_LATELOAD
 
 //Floors no longer update their icon in New, but instead update it here, after everything else is setup
-/turf/simulated/floor/LateInitialize(var/list/mapload_arg)
+/turf/simulated/floor/LateInitialize(list/mapload_arg)
 	..()
 	//At roundstart, we call update icon with update_neighbors set to false.
 	//So each floor tile will only work once

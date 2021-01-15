@@ -7,7 +7,7 @@
 	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 
-/obj/effect/temporary/Initialize(var/mapload, duration = 30, _icon = 'icons/effects/effects.dmi', _state)
+/obj/effect/temporary/Initialize(mapload, duration = 30, _icon = 'icons/effects/effects.dmi', _state)
 	. = ..()
 	icon = _icon
 	icon_state = _state

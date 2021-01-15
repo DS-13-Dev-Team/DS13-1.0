@@ -216,7 +216,7 @@
 	plane = ABOVE_OBJ_PLANE
 	layer = 0
 
-/obj/item/embedded_rivet/New(var/atom/location, obj/item/projectile/bullet/rivet/rivet)
+/obj/item/embedded_rivet/New(atom/location, obj/item/projectile/bullet/rivet/rivet)
 	if (istype(rivet.launcher, /obj/item/weapon/gun/projectile/rivet))
 		rivetgun = rivet.launcher
 		rivetgun.register_rivet(src)

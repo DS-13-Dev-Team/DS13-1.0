@@ -7,7 +7,7 @@
 	var/duration
 	var/ongoing_timer
 
-/datum/extension/craft_lockout/New(var/atom/_holder, lock_time)
+/datum/extension/craft_lockout/New(atom/_holder, lock_time)
 	.=..()
 	duration = lock_time
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/craft_lockout/proc/stop), duration)

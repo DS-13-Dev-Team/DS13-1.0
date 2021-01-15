@@ -7,7 +7,7 @@
 
 	var/datum/build_mode/current_build_mode
 
-/datum/click_handler/build_mode/New(var/mob/user)
+/datum/click_handler/build_mode/New(mob/user)
 	..()
 
 	build_modes = list()

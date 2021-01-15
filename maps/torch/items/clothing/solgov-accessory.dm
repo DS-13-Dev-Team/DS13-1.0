@@ -194,7 +194,7 @@ badges
 		set_name(H.real_name)
 		set_desc(H)
 
-/obj/item/clothing/accessory/badge/solgov/tags/set_desc(var/mob/living/carbon/human/H)
+/obj/item/clothing/accessory/badge/solgov/tags/set_desc(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	desc = "[initial(desc)]\nName: [H.real_name] ([H.get_species()])[H.char_branch ? "\nBranch: [H.char_branch.name]" : ""]\nReligion: [H.religion]\nBlood type: [H.b_type]"

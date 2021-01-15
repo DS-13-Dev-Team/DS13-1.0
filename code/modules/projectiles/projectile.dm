@@ -97,7 +97,7 @@
 	var/shrapnel_type = /obj/item/weapon/material/shard/shrapnel	//When this projectile embeds in a mob, what kind of shrapnel does it turn into?	The actual projectile will be deleted
 
 
-/obj/item/projectile/New(var/atom/location)
+/obj/item/projectile/New(atom/location)
 	//To prevent visual glitches, projectiles start off invisible
 	default_alpha = alpha
 	alpha = 0

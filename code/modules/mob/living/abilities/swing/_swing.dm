@@ -55,7 +55,7 @@
 
 
 
-/datum/extension/swing/New(var/atom/user, atom/source, atom/target, angle = 90, range = 3, duration = 1 SECOND, windup = 0, cooldown = 0, effect_type, damage = 1, damage_flags = 0, stages = 8, swing_direction = CLOCKWISE)
+/datum/extension/swing/New(atom/user, atom/source, atom/target, angle = 90, range = 3, duration = 1 SECOND, windup = 0, cooldown = 0, effect_type, damage = 1, damage_flags = 0, stages = 8, swing_direction = CLOCKWISE)
 	.=..()
 	if (isliving(user))
 		src.user = user
@@ -295,7 +295,7 @@
 	var/inherit_order = TRUE
 	pass_flags = PASS_FLAG_NOMOB | PASS_FLAG_TABLE | PASS_FLAG_FLYING
 
-/obj/effect/effect/swing/New(var/location, atom/holder, matrix/starting_rotation)
+/obj/effect/effect/swing/New(location, atom/holder, matrix/starting_rotation)
 	//TODO: Make the effect move with the holder atom
 	starting_rotation = starting_rotation.Scale(default_scale)
 	transform = starting_rotation

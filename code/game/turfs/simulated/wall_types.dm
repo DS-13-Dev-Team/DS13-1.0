@@ -1,11 +1,11 @@
 /turf/simulated/wall/r_wall
 	icon_state = "rgeneric"
 
-/turf/simulated/wall/r_wall/New(var/newloc)
+/turf/simulated/wall/r_wall/New(newloc)
 	..(newloc, MATERIAL_PLASTEEL,MATERIAL_PLASTEEL) //3strong
 
 
-/turf/simulated/wall/r_wall/rglass_wall/New(var/newloc) //Structural, but doesn't impede line of sight. Fairly pretty anyways.
+/turf/simulated/wall/r_wall/rglass_wall/New(newloc) //Structural, but doesn't impede line of sight. Fairly pretty anyways.
 	..(newloc, "rglass", "steel")
 	icon_state = "rgeneric"
 
@@ -41,10 +41,10 @@
 	icon_state = "cult"
 	blend_turfs = list(/turf/simulated/wall)
 
-/turf/simulated/wall/cult/New(var/newloc, reinforce = 0)
+/turf/simulated/wall/cult/New(newloc, reinforce = 0)
 	..(newloc,"cult",reinforce ? "cult2" : null)
 
-/turf/simulated/wall/cult/reinf/New(var/newloc)
+/turf/simulated/wall/cult/reinf/New(newloc)
 	..(newloc, 1)
 
 /turf/simulated/wall/cult/dismantle_wall()
@@ -64,49 +64,49 @@
 	icon = 'icons/turf/wall_masks.dmi'
 	icon_state = "cult"
 
-/turf/simulated/wall/iron/New(var/newloc)
+/turf/simulated/wall/iron/New(newloc)
 	..(newloc,"iron")
 
-/turf/simulated/wall/uranium/New(var/newloc)
+/turf/simulated/wall/uranium/New(newloc)
 	..(newloc,"uranium")
 
-/turf/simulated/wall/diamond/New(var/newloc)
+/turf/simulated/wall/diamond/New(newloc)
 	..(newloc,MATERIAL_DIAMOND)
 
-/turf/simulated/wall/gold/New(var/newloc)
+/turf/simulated/wall/gold/New(newloc)
 	..(newloc,MATERIAL_GOLD)
 
-/turf/simulated/wall/silver/New(var/newloc)
+/turf/simulated/wall/silver/New(newloc)
 	..(newloc,MATERIAL_SILVER)
 
-/turf/simulated/wall/phoron/New(var/newloc)
+/turf/simulated/wall/phoron/New(newloc)
 	..(newloc,MATERIAL_PHORON)
 
-/turf/simulated/wall/sandstone/New(var/newloc)
+/turf/simulated/wall/sandstone/New(newloc)
 	..(newloc,MATERIAL_SANDSTONE)
 
-/turf/simulated/wall/wood/New(var/newloc)
+/turf/simulated/wall/wood/New(newloc)
 	..(newloc,"wood")
 
-/turf/simulated/wall/ironphoron/New(var/newloc)
+/turf/simulated/wall/ironphoron/New(newloc)
 	..(newloc,"iron",MATERIAL_PHORON)
 
-/turf/simulated/wall/golddiamond/New(var/newloc)
+/turf/simulated/wall/golddiamond/New(newloc)
 	..(newloc,MATERIAL_GOLD,MATERIAL_DIAMOND)
 
-/turf/simulated/wall/silvergold/New(var/newloc)
+/turf/simulated/wall/silvergold/New(newloc)
 	..(newloc,MATERIAL_SILVER,MATERIAL_GOLD)
 
-/turf/simulated/wall/sandstonediamond/New(var/newloc)
+/turf/simulated/wall/sandstonediamond/New(newloc)
 	..(newloc,MATERIAL_SANDSTONE,MATERIAL_DIAMOND)
 
 
 // Kind of wondering if this is going to bite me in the butt.
-/turf/simulated/wall/voxshuttle/New(var/newloc)
+/turf/simulated/wall/voxshuttle/New(newloc)
 	..(newloc,"voxalloy")
 /turf/simulated/wall/voxshuttle/attackby()
 	return
-/turf/simulated/wall/titanium/New(var/newloc)
+/turf/simulated/wall/titanium/New(newloc)
 	..(newloc,MATERIAL_TITANIUM)
 
 /turf/simulated/wall/alium
@@ -114,7 +114,7 @@
 	floor_type = /turf/simulated/floor/fixed/alium
 	list/blend_objects = newlist()
 
-/turf/simulated/wall/alium/New(var/newloc)
+/turf/simulated/wall/alium/New(newloc)
 	..(newloc,"aliumium")
 
 /turf/simulated/wall/alium/ex_act(severity)

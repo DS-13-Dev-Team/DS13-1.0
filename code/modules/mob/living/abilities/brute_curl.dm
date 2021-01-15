@@ -40,7 +40,7 @@
 	var/force_cooldown_timer
 	var/force_notify_timer
 
-/datum/extension/curl/New(var/mob/living/_user, _automatic, _force_time, _animtime)
+/datum/extension/curl/New(mob/living/_user, _automatic, _force_time, _animtime)
 	..()
 	user = _user
 	force_time = _force_time

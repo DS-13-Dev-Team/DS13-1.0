@@ -100,7 +100,7 @@
 	var/last_near_structure = 0
 	var/mob/living/deity/linked
 
-/obj/item/weapon/material/sword/blazing/Initialize(var/maploading, material, deity)
+/obj/item/weapon/material/sword/blazing/Initialize(maploading, material, deity)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	linked = deity

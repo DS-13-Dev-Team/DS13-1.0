@@ -6,7 +6,7 @@
 	var/expected_host_type = /atom/movable
 	var/atom/movable/host
 
-/datum/movement_handler/New(var/atom/movable/host)
+/datum/movement_handler/New(atom/movable/host)
 	if(!istype(host, expected_host_type))
 		CRASH("Invalid host type. Expected [expected_host_type], was [host ? host.type : "*null*"]")
 	src.host = host

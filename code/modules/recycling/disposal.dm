@@ -1234,7 +1234,7 @@
 	w_class = ITEM_SIZE_LARGE
 	var/id_tag
 
-/obj/item/disposal_switch_construct/New(var/turf/loc, id)
+/obj/item/disposal_switch_construct/New(turf/loc, id)
 	..(loc)
 	if(id) id_tag = id
 	else

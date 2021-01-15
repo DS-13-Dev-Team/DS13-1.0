@@ -63,7 +63,7 @@
 /obj/effect/vine/single
 	spread_chance = 0
 
-/obj/effect/vine/New(var/newloc, datum/seed/newseed, obj/effect/vine/newparent, start_matured = 0)
+/obj/effect/vine/New(newloc, datum/seed/newseed, obj/effect/vine/newparent, start_matured = 0)
 	if(!newparent)
 		parent = src
 	else

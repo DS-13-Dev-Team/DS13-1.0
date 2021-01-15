@@ -7,7 +7,7 @@
 	var/min_rare_ratio = MIN_RARE_COUNT_PER_CHUNK
 	var/min_deep_ratio = MIN_DEEP_COUNT_PER_CHUNK
 
-/datum/random_map/noise/ore/New(var/seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, never_be_priority = 0)
+/datum/random_map/noise/ore/New(seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, never_be_priority = 0)
 	rare_val = cell_range * rare_val
 	deep_val = cell_range * deep_val
 	..(seed, tx, ty, tz, (tlx / chunk_size), (tly / chunk_size), do_not_apply, do_not_announce, never_be_priority)

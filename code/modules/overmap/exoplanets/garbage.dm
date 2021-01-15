@@ -46,7 +46,7 @@
 	fauna_prob = 1
 	var/fallout = 0
 
-/datum/random_map/noise/exoplanet/garbage/New(var/seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, never_be_priority = 0)
+/datum/random_map/noise/exoplanet/garbage/New(seed, tx, ty, tz, tlx, tly, do_not_apply, do_not_announce, never_be_priority = 0)
 	if(prob(60))
 		fallout = rand(20, 100)
 	..()

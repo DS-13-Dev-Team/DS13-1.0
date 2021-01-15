@@ -8,7 +8,7 @@ var/list/cached_space = list()
 	invisibility = 101
 	known = 0
 
-/obj/effect/overmap/sector/temporary/New(var/nx, ny, nz)
+/obj/effect/overmap/sector/temporary/New(nx, ny, nz)
 	loc = locate(nx, ny, GLOB.using_map.overmap_z)
 	x = nx
 	y = ny

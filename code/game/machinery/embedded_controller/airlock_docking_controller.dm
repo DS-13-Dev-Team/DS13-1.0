@@ -82,7 +82,7 @@
 /datum/computer/file/embedded_program/docking/airlock
 	var/datum/computer/file/embedded_program/airlock/docking/airlock_program
 
-/datum/computer/file/embedded_program/docking/airlock/New(var/obj/machinery/embedded_controller/M, datum/computer/file/embedded_program/airlock/docking/A)
+/datum/computer/file/embedded_program/docking/airlock/New(obj/machinery/embedded_controller/M, datum/computer/file/embedded_program/airlock/docking/A)
 	..(M)
 	airlock_program = A
 	airlock_program.master_prog = src

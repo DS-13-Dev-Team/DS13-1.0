@@ -32,7 +32,7 @@
 
 
 //Checks for a valid mount point in the specified location and facing. Returns that atom if we find one, returns null/false if there's nothing to mount to
-/proc/get_mount_target_at_direction(location, direction,	var/datum/mount_parameters/WP = new())
+/proc/get_mount_target_at_direction(location, direction, datum/mount_parameters/WP = new())
 	var/list/searchdirs = get_opposite_cardinal_directions(direction)
 	var/list/searchtiles = list()
 	for (var/direction2 in searchdirs)
@@ -141,7 +141,7 @@
 /datum/extension/mount/sticky
 	face_away_from_mountpoint = TRUE
 
-/datum/extension/mount/New(var/atom/holder, atom/target, datum/mount_parameters/WP = new())
+/datum/extension/mount/New(atom/holder, atom/target, datum/mount_parameters/WP = new())
 	.=..()
 	src.WP = WP
 	mountee = holder

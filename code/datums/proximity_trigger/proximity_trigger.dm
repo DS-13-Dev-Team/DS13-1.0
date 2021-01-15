@@ -49,7 +49,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 /datum/proximity_trigger/cone
 	turf_selection = /decl/turf_selection/cone
 
-/datum/proximity_trigger/New(var/holder, on_turf_entered, on_turfs_changed, range = 2, proximity_flags = 0, proc_owner, list/extra_args)
+/datum/proximity_trigger/New(holder, on_turf_entered, on_turfs_changed, range = 2, proximity_flags = 0, proc_owner, list/extra_args)
 	..()
 	if(!ispath(turf_selection, /decl/turf_selection))
 		CRASH("Invalid turf selection type set: [turf_selection]")

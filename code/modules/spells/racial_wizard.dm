@@ -141,7 +141,7 @@
 	expected_type = /obj/item
 	flags = EXTENSION_FLAG_IMMEDIATE
 
-/datum/extension/moghes_blessing/New(var/datum/holder)
+/datum/extension/moghes_blessing/New(datum/holder)
 	..(holder)
 	apply_blessing(holder)
 
@@ -179,7 +179,7 @@
 	color = "#3366ff"
 	contract_spells = list(/spell/contract/return_master) //somewhat of a necessity due to how many spells they would have after a while.
 
-/obj/item/weapon/contract/apprentice/skrell/New(var/newloc, spellbook, owner)
+/obj/item/weapon/contract/apprentice/skrell/New(newloc, spellbook, owner)
 	..()
 	if(istype(spellbook,/obj/item/weapon/spellbook))
 		linked = spellbook

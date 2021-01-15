@@ -1,4 +1,4 @@
-/turf/simulated/wall/diona/New(var/newloc)
+/turf/simulated/wall/diona/New(newloc)
 	..(newloc,"biomass")
 
 /turf/simulated/wall/diona/attack_generic(var/mob/user, damage, attack_message)
@@ -52,7 +52,7 @@
 	desc = "A glowing bulb of some sort."
 	icon_state = "glowbulb"
 
-/obj/structure/diona/bulb/New(var/newloc)
+/obj/structure/diona/bulb/New(newloc)
 	..()
 	set_light(0.3, 0.1, 3, 2, "#557733")
 

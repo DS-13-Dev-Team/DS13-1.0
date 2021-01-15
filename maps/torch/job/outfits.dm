@@ -646,7 +646,7 @@ Keeping them simple for now, just spawning with basic EC uniforms, and pretty mu
 /decl/hierarchy/outfit/job/torch/passenger/passenger/investor
 	name = OUTFIT_JOB_NAME("Investor - Torch")
 
-/decl/hierarchy/outfit/job/torch/passenger/passenger/investor/post_equip(var/mob/living/carbon/human/H)
+/decl/hierarchy/outfit/job/torch/passenger/passenger/investor/post_equip(mob/living/carbon/human/H)
 	..()
 	var/obj/item/weapon/storage/secure/briefcase/money/case = new(H.loc)
 	H.put_in_hands(case)
@@ -667,7 +667,7 @@ Keeping them simple for now, just spawning with basic EC uniforms, and pretty mu
 	l_pocket = /obj/item/weapon/tool/wrench
 	r_pocket = /obj/item/weapon/tool/crowbar
 
-/decl/hierarchy/outfit/job/torch/stowaway/post_equip(var/mob/living/carbon/human/H)
+/decl/hierarchy/outfit/job/torch/stowaway/post_equip(mob/living/carbon/human/H)
 	..()
 	var/obj/item/weapon/card/id/torch/stowaway/ID = new(H.loc)
 	H.put_in_hands(ID)

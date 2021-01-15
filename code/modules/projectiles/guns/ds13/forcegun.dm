@@ -127,7 +127,7 @@
 	var/scale_growth
 	var/fadeout_time = 0.2 SECONDS
 
-/obj/effect/effect/forceblast/New(var/atom/location, _lifespan = 2 SECOND, matrix/rotation)
+/obj/effect/effect/forceblast/New(atom/location, _lifespan = 2 SECOND, matrix/rotation)
 	lifespan = _lifespan
 	if (rotation)
 		transform = rotation
@@ -159,7 +159,7 @@
 	icon_state = null
 
 //Rather than a single effect, the focus mode uses a little spawner which creates multiple staggered effects
-/obj/effect/effect/forceblast_focus_spawner/New(var/atom/location, _lifespan = 2 SECOND, matrix/rotation)
+/obj/effect/effect/forceblast_focus_spawner/New(atom/location, _lifespan = 2 SECOND, matrix/rotation)
 	spawn()
 		for (var/i in 1 to 7)
 			new /obj/effect/effect/forceblast/focus(location, _lifespan, rotation)

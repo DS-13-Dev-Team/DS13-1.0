@@ -19,7 +19,7 @@
 
 	var/reset_animate = TRUE
 
-/datum/extension/conditionalmove/New(var/datum/holder)
+/datum/extension/conditionalmove/New(datum/holder)
 	.=..()
 	L = holder
 	GLOB.moved_event.register(holder, src, /datum/extension/conditionalmove/proc/handle_move)
@@ -75,7 +75,7 @@
 	var/animate_time = 3
 
 
-/datum/extension/conditionalmove/pixel_align/conditional_move(var/atom/movable/am, atom/old_loc, atom/new_loc)
+/datum/extension/conditionalmove/pixel_align/conditional_move(atom/movable/am, atom/old_loc, atom/new_loc)
 	var/vector2/target_pixels = get_new_vector(L.default_pixel_x, L.default_pixel_y)
 
 	//If we are at the target pixel coords, we are done

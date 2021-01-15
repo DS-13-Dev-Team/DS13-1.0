@@ -22,7 +22,7 @@
 
 	var/obj/structure/reagent_dispensers/watertank/tank
 
-/mob/living/bot/farmbot/New(var/newloc, newTank)
+/mob/living/bot/farmbot/New(newloc, newTank)
 	..(newloc)
 	if(!newTank)
 		newTank = new /obj/structure/reagent_dispensers/watertank(src)
@@ -292,7 +292,7 @@
 	var/obj/tank
 	w_class = ITEM_SIZE_NORMAL
 
-/obj/item/weapon/farmbot_arm_assembly/New(var/newloc, theTank)
+/obj/item/weapon/farmbot_arm_assembly/New(newloc, theTank)
 	..(newloc)
 	if(!theTank) // If an admin spawned it, it won't have a watertank it, so lets make one for em!
 		tank = new /obj/structure/reagent_dispensers/watertank(src)

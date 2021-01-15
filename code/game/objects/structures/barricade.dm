@@ -12,7 +12,7 @@
 	layer = ABOVE_WINDOW_LAYER
 	var/spiky = FALSE
 
-/obj/structure/barricade/New(var/location, material_name)
+/obj/structure/barricade/New(location, material_name)
 	if(!material_name)
 		material_name = MATERIAL_WOOD
 	material = get_material_by_name("[material_name]")
@@ -26,7 +26,7 @@
 	.=..()
 
 
-/obj/structure/barricade/Initialize(var/mapload)
+/obj/structure/barricade/Initialize(mapload)
 	if(!material)
 		qdel(src)
 		return
@@ -108,7 +108,7 @@
 	var/damage //how badly it smarts when you run into this like a rube
 	var/list/poke_description = list("gored", "spiked", "speared", "stuck", "stabbed")
 
-/obj/structure/barricade/spike/Initialize(var/mapload)
+/obj/structure/barricade/spike/Initialize(mapload)
 	. = ..()
 	rod_material = get_material_by_name(MATERIAL_STEEL)
 	SetName("cheval-de-frise")
@@ -176,10 +176,10 @@
 
 
 //Special types
-/obj/structure/barricade/wood/New(var/location)
+/obj/structure/barricade/wood/New(location)
 	max_health = 75 // Wood is flimsy. Less structurally sound than our steel variant!
 	.=..(location, MATERIAL_WOOD)
 
-/obj/structure/barricade/steel/New(var/location)
+/obj/structure/barricade/steel/New(location)
 	max_health = 125 // The only way you should do this anyway.
 	.=..(location, MATERIAL_STEEL)

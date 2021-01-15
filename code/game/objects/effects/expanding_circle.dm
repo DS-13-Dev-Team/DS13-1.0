@@ -8,7 +8,7 @@
 	pixel_y = -112
 
 
-/obj/effect/effect/expanding_circle/New(var/atom/loc, _expansion_rate = 2, _lifespan = 2 SECOND, _color = "#ffffff")
+/obj/effect/effect/expanding_circle/New(atom/loc, _expansion_rate = 2, _lifespan = 2 SECOND, _color = "#ffffff")
 	lifespan = _lifespan
 	expansion_rate = _expansion_rate //What scale multiplier to gain per second
 	color = _color

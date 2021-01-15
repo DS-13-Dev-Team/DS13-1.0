@@ -6,7 +6,7 @@
 	w_class = 1
 	var/key_data = ""
 
-/obj/item/weapon/key/New(var/newloc, data)
+/obj/item/weapon/key/New(newloc, data)
 	if(data)
 		key_data = data
 	..(newloc)

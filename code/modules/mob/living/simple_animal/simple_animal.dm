@@ -68,7 +68,7 @@
 	// contained in a cage
 	var/in_stasis = 0
 
-/mob/living/simple_animal/New(var/atom/location)
+/mob/living/simple_animal/New(atom/location)
 	health = max_health
 	.=..()
 

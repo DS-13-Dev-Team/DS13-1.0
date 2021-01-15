@@ -4,7 +4,7 @@
 	var/title
 	var/track
 
-/datum/track/New(var/title, track)
+/datum/track/New(title, track)
 	src.title = title
 	src.track = track
 

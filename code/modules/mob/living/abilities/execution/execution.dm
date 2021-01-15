@@ -131,7 +131,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 
 
 
-/datum/extension/execution/New(var/atom/user, mob/living/victim, atom/movable/weapon)
+/datum/extension/execution/New(atom/user, mob/living/victim, atom/movable/weapon)
 	.=..()
 	if (isliving(user))
 		src.user = user

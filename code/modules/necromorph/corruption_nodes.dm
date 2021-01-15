@@ -28,7 +28,7 @@
 	can_block_movement = FALSE
 	implements_dummy = TRUE
 
-/obj/structure/corruption_node/New(var/location, dummy)
+/obj/structure/corruption_node/New(location, dummy)
 	src.dummy = dummy
 	.=..()
 

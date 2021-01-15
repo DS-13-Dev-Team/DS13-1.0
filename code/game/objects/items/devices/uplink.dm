@@ -35,7 +35,7 @@
 /obj/item/device/uplink/nano_host()
 	return loc
 
-/obj/item/device/uplink/New(var/atom/location, datum/mind/owner, telecrystals = DEFAULT_TELECRYSTAL_AMOUNT)
+/obj/item/device/uplink/New(atom/location, datum/mind/owner, telecrystals = DEFAULT_TELECRYSTAL_AMOUNT)
 	if(!istype(location, /atom))
 		CRASH("Invalid spawn location. Expected /atom, was [location ? location.type : "NULL"]")
 
@@ -215,7 +215,7 @@
 // Includes normal radio uplink, multitool uplink,
 // implant uplink (not the implant tool) and a preset headset uplink.
 
-/obj/item/device/radio/uplink/New(var/loc, owner, amount)
+/obj/item/device/radio/uplink/New(loc, owner, amount)
 	..()
 	hidden_uplink = new(src, owner, amount)
 	icon_state = "radio"
@@ -224,7 +224,7 @@
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 
-/obj/item/weapon/tool/multitool/uplink/New(var/loc, owner)
+/obj/item/weapon/tool/multitool/uplink/New(loc, owner)
 	..()
 	hidden_uplink = new(src, owner)
 

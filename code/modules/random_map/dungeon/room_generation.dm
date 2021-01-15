@@ -8,7 +8,7 @@
 	var/y = 0
 	var/list/item_spawns
 
-/datum/random_room/New(var/_x, _y, _width, _height)
+/datum/random_room/New(_x, _y, _width, _height)
 	width = _width
 	height = _height
 	x = _x

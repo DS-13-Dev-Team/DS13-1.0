@@ -97,7 +97,7 @@
 
 	update_nearby_tiles(need_rebuild=1)
 
-/obj/machinery/door/Initialize(var/mapload)
+/obj/machinery/door/Initialize(mapload)
 	set_extension(src, /datum/extension/penetration/proc_call, .proc/CheckPenetration)
 	if (isturf(loc))
 		if (mapload)

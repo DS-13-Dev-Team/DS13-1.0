@@ -18,7 +18,7 @@
 	category = /datum/shuttle/autodock
 	flags = SHUTTLE_FLAGS_PROCESS
 
-/datum/shuttle/autodock/New(var/_name, obj/effect/shuttle_landmark/start_waypoint)
+/datum/shuttle/autodock/New(_name, obj/effect/shuttle_landmark/start_waypoint)
 	..(_name, start_waypoint)
 
 	//Initial dock

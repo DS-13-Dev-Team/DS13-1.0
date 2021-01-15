@@ -155,7 +155,7 @@
 	can_regrow = FALSE
 
 
-/obj/item/organ/external/head/simple/divider/New(var/mob/living/carbon/holder, datum/dna/given_dna)
+/obj/item/organ/external/head/simple/divider/New(mob/living/carbon/holder, datum/dna/given_dna)
 	.=..()
 	GLOB.death_event.register(holder, src, /obj/item/organ/external/head/simple/divider/proc/holder_death)
 
@@ -219,7 +219,7 @@
 	statmods = list(STATMOD_RANGED_ACCURACY = -20,
 	STATMOD_MOVESPEED_MULTIPLICATIVE = 0.70)
 
-/datum/extension/divider_puppet/New(var/mob/newholder)
+/datum/extension/divider_puppet/New(mob/newholder)
 	.=..()
 	H = newholder
 	if (H.client)

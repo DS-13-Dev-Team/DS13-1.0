@@ -146,7 +146,7 @@
 	triggerproc = /obj/effect/mine/trip/explode
 	density = FALSE
 
-/obj/effect/mine/trip/New(var/atom/newloc, obj/item/projectile/deploy/projectile)
+/obj/effect/mine/trip/New(atom/newloc, obj/item/projectile/deploy/projectile)
 
 	.=..()
 	var/obj/item/weapon/gun/projectile/detonator/D = projectile.launcher

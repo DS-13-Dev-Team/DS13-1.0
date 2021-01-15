@@ -315,7 +315,7 @@
 
 var/list/fruit_icon_cache = list()
 
-/obj/item/weapon/reagent_containers/food/snacks/fruit_slice/New(var/newloc, datum/seed/S)
+/obj/item/weapon/reagent_containers/food/snacks/fruit_slice/New(newloc, datum/seed/S)
 	..(newloc)
 	// Need to go through and make a general image caching controller. Todo.
 	if(!istype(S))

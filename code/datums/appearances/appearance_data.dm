@@ -3,7 +3,7 @@
 	var/list/images
 	var/list/viewers
 
-/datum/appearance_data/New(var/images, viewers, priority)
+/datum/appearance_data/New(images, viewers, priority)
 	..()
 	src.priority = priority
 	src.images = images

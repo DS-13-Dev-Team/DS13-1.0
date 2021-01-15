@@ -12,7 +12,7 @@
 	var/layout_chance = 50//chance of having a lyout period
 	var/list/room_layouts = list()
 
-/datum/room_theme/New(var/x, y, z)
+/datum/room_theme/New(x, y, z)
 	xorigin = x
 	yorigin = y
 	zorigin = z

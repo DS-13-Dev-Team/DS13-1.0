@@ -32,7 +32,7 @@
 	var/stopped_at
 	var/attack_verb
 
-/datum/extension/tailstrike/New(var/atom/movable/_user, atom/_target, _damage, _windup_time, _winddown_time, _cooldown)
+/datum/extension/tailstrike/New(atom/movable/_user, atom/_target, _damage, _windup_time, _winddown_time, _cooldown)
 	..()
 	user = _user
 	target = _target //The thing we originally wanted to hit. We will hit them if they were in range and don't move

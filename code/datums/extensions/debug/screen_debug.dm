@@ -10,7 +10,7 @@
 	var/client/C
 	var/mob/living/user
 
-/datum/extension/screen_debug/New(var/client/client, mob/living/user)
+/datum/extension/screen_debug/New(client/client, mob/living/user)
 	C = client
 	src.user = user
 
