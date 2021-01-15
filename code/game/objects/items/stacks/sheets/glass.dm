@@ -65,7 +65,7 @@
 
 			var/list/directions = new/list(cardinal)
 			var/i = 0
-			for( var/obj/structure/window/win in user.loc)
+			for (var/obj/structure/window/win in user.loc)
 				i++
 				if(i >= 4)
 					to_chat(user, "<span class='warning'>There are too many windows in this location.</span>")
@@ -77,9 +77,9 @@
 
 			//Determine the direction. It will first check in the direction the person making the window is facing, if it finds an already made window it will try looking at the next cardinal direction, etc.
 			var/dir_to_set = 2
-			for( var/direction in list( user.dir, turn(user.dir,90), turn(user.dir,180), turn(user.dir,270) ))
+			for(var/direction in list( user.dir, turn(user.dir,90), turn(user.dir,180), turn(user.dir,270) ))
 				var/found = 0
-				for( var/obj/structure/window/WT in user.loc)
+				for(var/obj/structure/window/WT in user.loc)
 					if(WT.dir == direction)
 						found = 1
 				if(!found)

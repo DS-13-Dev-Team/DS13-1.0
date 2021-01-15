@@ -25,7 +25,7 @@
 
 		potency = S.get_trait(TRAIT_POTENCY)
 
-		for( var/rid in S.chems)
+		for(var/rid in S.chems)
 			var/list/reagent_data = S.chems[rid]
 			var/rtotal = reagent_data[1]
 			if(reagent_data.len > 1 && potency > 0)
@@ -40,7 +40,7 @@
 	item_state = "corncob"
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 0
-
+	
 	throw_range = 20
 
 /obj/item/weapon/corncob/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -59,5 +59,5 @@
 	item_state = "banana_peel"
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 0
-
+	
 	throw_range = 20

@@ -20,7 +20,7 @@
 	obj_flags = OBJ_FLAG_ANCHORABLE
 
 /obj/structure/bookcase/Initialize()
-	for( var/obj/item/I in loc)
+	for(var/obj/item/I in loc)
 		if(istype(I, /obj/item/weapon/book))
 			I.forceMove(src)
 	update_icon()
@@ -43,7 +43,7 @@
 		if(do_after(user,25,src))
 			to_chat(user, "<span class='notice'>You dismantle \the [src].</span>")
 			new/obj/item/stack/material/wood(get_turf(src), 5)
-			for( var/obj/item/weapon/book/b in contents)
+			for(var/obj/item/weapon/book/b in contents)
 				b.loc = (get_turf(src))
 			qdel(src)
 
@@ -67,19 +67,19 @@
 /obj/structure/bookcase/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			for( var/obj/item/weapon/book/b in contents)
+			for(var/obj/item/weapon/book/b in contents)
 				qdel(b)
 			qdel(src)
 			return
 		if(2.0)
-			for( var/obj/item/weapon/book/b in contents)
+			for(var/obj/item/weapon/book/b in contents)
 				if (prob(50)) b.loc = (get_turf(src))
 				else qdel(b)
 			qdel(src)
 			return
 		if(3.0)
 			if (prob(50))
-				for( var/obj/item/weapon/book/b in contents)
+				for(var/obj/item/weapon/book/b in contents)
 					b.loc = (get_turf(src))
 				qdel(src)
 			return
@@ -136,7 +136,7 @@
 	name = "book"
 	icon = 'icons/obj/library.dmi'
 	icon_state ="book"
-
+	
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
 	attack_verb = list("bashed", "whacked", "educated")
@@ -232,3 +232,4 @@
 /obj/item/weapon/book/manual
 	icon = 'icons/obj/library.dmi'
 	unique = 1   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
+	

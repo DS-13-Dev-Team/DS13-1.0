@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(craft)
 /datum/controller/subsystem/craft/Initialize(timeofday)
 	categories = list()
 	cat_names = list()
-	for( var/path in subtypesof(/datum/craft_recipe))
+	for(var/path in subtypesof(/datum/craft_recipe))
 		var/datum/craft_recipe/CR = path
 		if(!initial(CR.name))
 			continue

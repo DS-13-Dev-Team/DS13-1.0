@@ -216,7 +216,7 @@
 
 /obj/structure/AIcore/deactivated/proc/check_malf(mob/living/silicon/ai/ai)
 	if(!ai) return
-	for( var/datum/mind/malfai in GLOB.malf.current_antagonists)
+	for (var/datum/mind/malfai in GLOB.malf.current_antagonists)
 		if (ai.mind == malfai)
 			return 1
 
@@ -255,7 +255,7 @@
 	set category = "Admin"
 
 	var/list/cores = list()
-	for( var/obj/structure/AIcore/deactivated/D in world)
+	for(var/obj/structure/AIcore/deactivated/D in world)
 		cores["[D] ([D.loc.loc])"] = D
 
 	var/id = input("Which core?", "Toggle AI Core Latejoin", null) as null|anything in cores

@@ -10,23 +10,23 @@ var/global/datum/matchmaker/matchmaker = new()
 
 /datum/matchmaker/New()
 	..()
-	for( var/T in subtypesof(/datum/relation/))
+	for(var/T in subtypesof(/datum/relation/))
 		var/datum/relation/R = T
 		relation_types[initial(R.name)] = T
 
 /datum/matchmaker/proc/do_matchmaking()
 	var/list/to_warn = list()
-	for( var/datum/relation/R in relations)
+	for(var/datum/relation/R in relations)
 		if(!R.other)
 			R.find_match()
 		if(R.other && !R.finalized)
 			to_warn |= R.holder.current
-	for( var/mob/M in to_warn)
+	for(var/mob/M in to_warn)
 		to_chat(M,"<span class='warning'>You have new connections. Use \"See Relationship Info\" to view and finalize them.</span>")
 
 /datum/matchmaker/proc/get_relationships(datum/mind/M)
 	. = list()
-	for( var/datum/relation/R in relations)
+	for(var/datum/relation/R in relations)
 		if(R.holder == M && R.other)
 			. += R
 
@@ -51,7 +51,7 @@ var/global/datum/matchmaker/matchmaker = new()
 
 /datum/relation/proc/get_candidates()
 	.= list()
-	for( var/datum/relation/R in matchmaker.relations)
+	for(var/datum/relation/R in matchmaker.relations)
 		if(!valid_candidate(R.holder) || !can_connect(R))
 			continue
 		. += R
@@ -70,7 +70,7 @@ var/global/datum/matchmaker/matchmaker = new()
 	return TRUE
 
 /datum/relation/proc/can_connect(datum/relation/R)
-	for( var/datum/relation/D in matchmaker.relations) //have to check all connections between us and them
+	for(var/datum/relation/D in matchmaker.relations) //have to check all connections between us and them
 		if(D.holder == R.holder && D.other && D.other.holder == holder)
 			if(D.name in incompatible)
 				return 0
@@ -116,7 +116,7 @@ var/global/datum/matchmaker/matchmaker = new()
 		var/list/candidates = filter_list(GLOB.player_list, /mob/living/carbon/human)
 		candidates -= holder.current
 		candidates -= other.holder.current
-		for( var/mob/living/carbon/human/M in candidates)
+		for(var/mob/living/carbon/human/M in candidates)
 			if(!M.mind || M.stat == DEAD || !valid_candidate(M.mind))
 				candidates -= M
 				continue
@@ -125,7 +125,7 @@ var/global/datum/matchmaker/matchmaker = new()
 				if((coworker.department_flag & holder.assigned_job.department_flag) || (coworker.department_flag & other.holder.assigned_job.department_flag))
 					candidates[M] = 5	//coworkers are 5 times as likely to know about your relations
 
-		for( var/i=1 to 5)
+		for(var/i=1 to 5)
 			if(!candidates.len)
 				break
 			var/mob/M = pickweight(candidates)
@@ -152,7 +152,7 @@ var/global/datum/matchmaker/matchmaker = new()
 		dat += "<b>Things they all know about you:</b><br>[mind.gen_relations_info]<hr>"
 		dat += "An <b>\[F\]</b> indicates that the other player has finalized the connection.<br>"
 		dat += "<br>"
-	for( var/datum/relation/R in relations)
+	for(var/datum/relation/R in relations)
 		dat += "<b>[R.other.finalized ? "\[F\] " : ""][R.other.holder]</b>, [R.other.holder.role_alt_title ? R.other.holder.role_alt_title : R.other.holder.assigned_role]."
 		if (!R.finalized)
 			dat += " <a href='?src=\ref[src];del_relation=\ref[R]'>Remove</a>"
@@ -166,7 +166,7 @@ var/global/datum/matchmaker/matchmaker = new()
 
 	if(mind.known_connections && mind.known_connections.len)
 		dat += "<b>Other people:</b>"
-		for( var/I in mind.known_connections)
+		for(var/I in mind.known_connections)
 			dat += "<br><i>[I]</i>"
 
 	var/datum/browser/popup = new(usr, "relations", "Relationship Info")
@@ -198,7 +198,7 @@ var/global/datum/matchmaker/matchmaker = new()
 		ok = alert("HEY! You have some non-finalized relationships. You can terminate them if they do not fit your character, or edit the info tidbit that the other party is given. THIS IS YOUR ONLY CHANCE to do so - after you close the window, they won't be editable.","Finalize relationships","Return to edit", "Close anyway")
 		if(ok == "Close anyway")
 			var/list/relations = matchmaker.get_relationships(mind)
-			for( var/datum/relation/R in relations)
+			for(var/datum/relation/R in relations)
 				R.finalize()
 			show_browser(usr,null, "window=relations")
 		else

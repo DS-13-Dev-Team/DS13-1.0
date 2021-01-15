@@ -60,7 +60,7 @@
 		return FALSE	//If we don't have a source we're not a duplicate
 
 	//Same source and type? Its duplicate
-	for( var/datum/biomass_source/S as anything in stack)
+	for (var/datum/biomass_source/S as anything in stack)
 		if (S.source == source && S.type == type)
 			return TRUE
 
@@ -131,7 +131,7 @@
 
 	//Are we still near the marker?
 	if (get_dist(L, target) > 10)
-		for( var/obj/structure/corruption_node/maw/M in range(MAW_EAT_RANGE, L))
+		for (var/obj/structure/corruption_node/maw/M in range(MAW_EAT_RANGE, L))
 			return ..()
 		return MASS_PAUSE
 
@@ -151,7 +151,7 @@
 		var/remaining_organs = Ceiling(H.species.has_limbs.len * remaining)
 
 		var/current_organs=  0
-		for( var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E in H.organs)
 			if (E.is_stump())
 				continue
 			current_organs++
@@ -245,7 +245,7 @@
 
 	//Now we search through all biomass sources to find one where the source equals us
 	var/list/sources = get_biomass_sources()
-	for( var/datum/biomass_source/BS in sources)
+	for (var/datum/biomass_source/BS in sources)
 		var/atom/A = locate(BS.source)
 		if (!A)
 			continue

@@ -92,7 +92,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 	//Lets add the edge sprites
 	overlays.Cut()
-	for( var/turf/simulated/floor/floor in get_neighbors(FALSE, FALSE))
+	for(var/turf/simulated/floor/floor in get_neighbors(FALSE, FALSE))
 		var/direction = get_dir(src, floor)
 		var/vector2/offset = Vector2.NewFromDir(direction)
 		offset.SelfMultiply(WORLD_ICON_SIZE * vine_scale)
@@ -129,7 +129,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		if (alternative)
 			return alternative
 
-	for( var/datum/extension/corruption_source/CS in GLOB.corruption_sources)
+	for (var/datum/extension/corruption_source/CS in GLOB.corruption_sources)
 		if (CS.can_support(src))
 			return CS
 
@@ -243,7 +243,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		return null
 	var/best_multiplier = 9999999999999
 	var/best_source = null
-	for( var/ref in alternatives)
+	for (var/ref in alternatives)
 		var/datum/extension/corruption_source/CS = locate(ref)
 		if (QDELETED(CS) || !istype(CS))
 			//No longer valid
@@ -280,7 +280,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 //Finds all visualnet chunks that this vine could possibly infringe on.
 /obj/effect/vine/corruption/proc/get_chunks()
 	var/list/chunksfound = list(GLOB.necrovision.get_chunk(x, y, z))
-	for( var/direction in list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
+	for (var/direction in list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 		var/turf/T = get_step(src, direction)
 		var/datum/chunk/newchunk = GLOB.necrovision.get_chunk(T.x, T.y, T.z)
 		if (istype(newchunk))
@@ -295,7 +295,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	//Clear the necrovision cache
 	GLOB.necrovision.visibility_cache = list()
 	if (chunks)
-		for( var/datum/chunk/C as anything in chunks)
+		for (var/datum/chunk/C as anything in chunks)
 			C.visibility_changed()
 	else
 		var/turf/T = get_turf(src)

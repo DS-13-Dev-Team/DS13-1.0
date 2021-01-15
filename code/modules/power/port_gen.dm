@@ -139,7 +139,7 @@
 
 /obj/machinery/power/port_gen/pacman/RefreshParts()
 	var/temp_rating = 0
-	for( var/obj/item/weapon/stock_parts/SP in component_parts)
+	for(var/obj/item/weapon/stock_parts/SP in component_parts)
 		if(istype(SP, /obj/item/weapon/stock_parts/matter_bin))
 			max_sheets = SP.rating * SP.rating * 50
 		else if(istype(SP, /obj/item/weapon/stock_parts/micro_laser) || istype(SP, /obj/item/weapon/stock_parts/capacitor))
@@ -293,7 +293,7 @@
 				to_chat(user, "<span class='notice'>You close the access panel.</span>")
 		else if(isCrowbar(O) && open)
 			var/obj/machinery/constructable_frame/machine_frame/new_frame = new /obj/machinery/constructable_frame/machine_frame(src.loc)
-			for( var/obj/item/I in component_parts)
+			for(var/obj/item/I in component_parts)
 				I.loc = src.loc
 			while ( sheets > 0 )
 				DropFuel()

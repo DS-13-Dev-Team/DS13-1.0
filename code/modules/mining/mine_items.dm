@@ -74,7 +74,7 @@
 		to_chat(user, "<span class='warning'>There's no solid surface to plant the flag on.</span>")
 		return
 
-	for( var/obj/item/stack/flag/F in T)
+	for(var/obj/item/stack/flag/F in T)
 		if(F.upright)
 			to_chat(user, "<span class='warning'>\The [F] is already planted here.</span>")
 			return

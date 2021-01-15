@@ -103,7 +103,7 @@
 
 
 	var/list/L = list()
-	for( var/d in design_list())
+	for(var/d in design_list())
 		var/datum/computer_file/binary/design/design_file = d
 		L.Add(list(design_file.ui_data()))
 	data["designs"] = L
@@ -113,7 +113,7 @@
 		data["container"] = TRUE
 		if(container.reagents)
 			L = list()
-			for( var/datum/reagent/R in container.reagents.reagent_list)
+			for(var/datum/reagent/R in container.reagents.reagent_list)
 				var/list/LE = list("name" = R.name, "count" = "[R.volume]")
 
 				L.Add(list(LE))
@@ -121,7 +121,7 @@
 			data["reagents"] = L
 
 	var/list/M = list()
-	for( var/mtype in stored_material)
+	for(var/mtype in stored_material)
 		if(stored_material[mtype] <= 0)
 			continue
 
@@ -143,7 +143,7 @@
 	var/licenses_used = 0
 	var/list/qmats = stored_material.Copy()
 
-	for( var/i = 1; i <= queue.len; i++)
+	for(var/i = 1; i <= queue.len; i++)
 		var/datum/computer_file/binary/design/design_file = queue[i]
 		var/list/QR = design_file.ui_data()
 
@@ -157,7 +157,7 @@
 			if(!disk || licenses_used > disk.license)
 				QR["error"] = 1
 
-		for( var/rmat in design_file.design.materials)
+		for(var/rmat in design_file.design.materials)
 			if(!(rmat in qmats))
 				qmats[rmat] = 0
 
@@ -272,7 +272,7 @@
 		var/recipe_filename = href_list["add_to_queue"]
 		var/datum/computer_file/binary/design/design_file
 
-		for( var/f in design_list())
+		for(var/f in design_list())
 			var/datum/computer_file/temp_file = f
 			if(temp_file.filename == recipe_filename)
 				design_file = temp_file
@@ -405,10 +405,10 @@
 	var/mass_per_sheet = 0 // Amount of material constituting one sheet.
 	var/multiplier = 1
 
-	for( var/obj/O in eating.GetAllContents(includeSelf = TRUE))
+	for(var/obj/O in eating.GetAllContents(includeSelf = TRUE))
 		var/list/_matter = O.get_matter()
 		if(_matter)
-			for( var/material in _matter)
+			for(var/material in _matter)
 				if(!(material in stored_material))
 					stored_material[material] = 0
 
@@ -442,7 +442,7 @@
 		if(O.matter_reagents)
 			if(container)
 				var/datum/reagents/RG = new(0)
-				for( var/r in O.matter_reagents)
+				for(var/r in O.matter_reagents)
 					RG.maximum_volume += O.matter_reagents[r]
 					RG.add_reagent(r ,O.matter_reagents[r])
 				reagents_filltype = 1
@@ -511,7 +511,7 @@
 
 		var/datum/design/design = design_file.design
 
-		for( var/rmat in design.materials)
+		for(var/rmat in design.materials)
 			if(!(rmat in stored_material))
 				return ERR_NOMATERIAL
 
@@ -522,7 +522,7 @@
 			if(!container || !container.is_drawable())
 				return ERR_NOREAGENT
 
-			for( var/rgn in design.chemicals)
+			for(var/rgn in design.chemicals)
 				if(!container.reagents.has_reagent(rgn, design.chemicals[rgn]))
 					return ERR_NOREAGENT
 
@@ -581,10 +581,10 @@
 		icon_state = "autolathe_n"
 
 /obj/machinery/autolathe/proc/consume_materials(datum/design/design)
-	for( var/material in design.materials)
+	for(var/material in design.materials)
 		stored_material[material] = max(0, stored_material[material] - SANITIZE_LATHE_COST(design.materials[material]))
 
-	for( var/reagent in design.chemicals)
+	for(var/reagent in design.chemicals)
 		container.reagents.remove_reagent(reagent, design.chemicals[reagent])
 
 	return TRUE
@@ -634,7 +634,7 @@
 			//And how many sheets leftover for this stack
 			S.amount = whole_amount % S.max_amount
 
-			for( var/i = 0; i < fullstacks; i++)
+			for(var/i = 0; i < fullstacks; i++)
 				var/obj/item/stack/material/MS = new M.stack_type(get_turf(src))
 				MS.amount = MS.max_amount
 
@@ -649,7 +649,7 @@
 
 
 /obj/machinery/autolathe/dismantle()
-	for( var/mat in stored_material)
+	for(var/mat in stored_material)
 		eject(mat, stored_material[mat])
 
 	eject_disk()
@@ -661,9 +661,9 @@
 	..()
 	var/mb_rating = 0
 	var/man_rating = 0
-	for( var/obj/item/weapon/stock_parts/matter_bin/MB in component_parts)
+	for(var/obj/item/weapon/stock_parts/matter_bin/MB in component_parts)
 		mb_rating += MB.rating
-	for( var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
 		man_rating += M.rating
 
 	storage_capacity = round(initial(storage_capacity)*(mb_rating/3))
@@ -710,7 +710,7 @@
 	var/list/design_list = design_list()
 
 	// Go through the queue and remove any recipes we find which came from this disk
-	for( var/design in queue)
+	for(var/design in queue)
 		if(design in design_list)
 			queue -= design
 

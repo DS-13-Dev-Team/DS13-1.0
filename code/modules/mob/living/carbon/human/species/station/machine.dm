@@ -77,7 +77,7 @@
 	handle_limbs_setup(H)
 
 /datum/species/machine/handle_limbs_setup(mob/living/carbon/human/H)
-	for( var/obj/item/organ/external/E in H.organs)
+	for(var/obj/item/organ/external/E in H.organs)
 		if(!BP_IS_ROBOTIC(E))
 			E.robotize("Morpheus")
 	return

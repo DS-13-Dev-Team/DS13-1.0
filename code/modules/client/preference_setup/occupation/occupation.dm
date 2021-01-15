@@ -57,10 +57,10 @@
 	pref.alternate_option	= sanitize_integer(pref.alternate_option, 0, 2, initial(pref.alternate_option))
 	pref.job_high	        = sanitize(pref.job_high, null)
 	if(pref.job_medium && pref.job_medium.len)
-		for( var/i in 1 to pref.job_medium.len)
+		for(var/i in 1 to pref.job_medium.len)
 			pref.job_medium[i]  = sanitize(pref.job_medium[i])
 	if(pref.job_low && pref.job_low.len)
-		for( var/i in 1 to pref.job_low.len)
+		for(var/i in 1 to pref.job_low.len)
 			pref.job_low[i]  = sanitize(pref.job_low[i])
 	if(!pref.player_alt_titles) pref.player_alt_titles = new()
 
@@ -71,7 +71,7 @@
 	pref.skills_allocated = pref.sanitize_skills(pref.skills_allocated)		//this proc also automatically computes and updates points_by_job
 
 	var/jobs_by_type = decls_repository.get_decls(GLOB.using_map.allowed_jobs)
-	for( var/job_type in jobs_by_type)
+	for(var/job_type in jobs_by_type)
 		var/datum/job/job = jobs_by_type[job_type]
 		var/alt_title = pref.player_alt_titles[job.title]
 		if(alt_title && !(alt_title in job.alt_titles))
@@ -108,7 +108,7 @@
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 	var/datum/job/lastJob
-	for( var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in job_master.occupations)
 		var/unspent = pref.points_by_job[job]
 		var/current_level = JOB_LEVEL_NEVER
 		if(pref.job_high == job.title)
@@ -123,7 +123,7 @@
 			if((index < limit) && (lastJob != null))
 				//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
 				//the last job's selection color. Creating a rather nice effect.
-				for( var/i = 0, i < (limit - index), i += 1)
+				for(var/i = 0, i < (limit - index), i += 1)
 					. += "<tr bgcolor='[lastJob.selection_color]'><td width='40%' align='right'><a>&nbsp</a></td><td><a>&nbsp</a></td></tr>"
 			. += "</table></td><td width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
@@ -308,7 +308,7 @@
 
 		if(job.allowed_branches)
 			dat += "You can be of following ranks:"
-			for( var/T in job.allowed_branches)
+			for(var/T in job.allowed_branches)
 				var/datum/mil_branch/B = mil_branches.get_branch_by_type(T)
 				dat += "<li>[B.name]: [job.get_ranks(B.name)]"
 		dat += "<hr style='clear:left;'>"
@@ -400,7 +400,7 @@
 /datum/category_item/player_setup_item/proc/prune_job_prefs()
 	var/allowed_titles = list()
 	var/jobs_by_type = decls_repository.get_decls(GLOB.using_map.allowed_jobs)
-	for( var/job_type in jobs_by_type)
+	for(var/job_type in jobs_by_type)
 		var/datum/job/job = jobs_by_type[job_type]
 		allowed_titles += job.title
 
@@ -419,11 +419,11 @@
 	if(pref.job_high && !(pref.job_high in allowed_titles))
 		pref.job_high = null
 
-	for( var/job_title in pref.job_medium)
+	for(var/job_title in pref.job_medium)
 		if(!(job_title in allowed_titles))
 			pref.job_medium -= job_title
 
-	for( var/job_title in pref.job_low)
+	for(var/job_title in pref.job_low)
 		if(!(job_title in allowed_titles))
 			pref.job_low -= job_title
 

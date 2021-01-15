@@ -15,7 +15,7 @@
 	. += "<br>\n[(C.alarm_on ? "The alarm light is on." : "The alarm light is off.")]"
 	return .
 
-/datum/wires/camera/CanUse(mob/living/L)
+/datum/wires/camera/CanUse(var/mob/living/L)
 	var/obj/machinery/camera/C = holder
 	return C.panel_open
 

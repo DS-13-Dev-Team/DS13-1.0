@@ -54,7 +54,7 @@
 
 		var/obj/L = null
 
-		for( var/obj/effect/landmark/sloc in landmarks_list)
+		for(var/obj/effect/landmark/sloc in landmarks_list)
 			if(sloc.name != C.data) continue
 			if(locate(/mob/living) in sloc.loc) continue
 			L = sloc
@@ -73,16 +73,16 @@
 
 			if(C.data == "Clown Land")
 				//whoops
-				for( var/mob/O in hearers(src, null))
+				for(var/mob/O in hearers(src, null))
 					O.show_message("<span class='warning'>Incoming bluespace portal detected, unable to lock in.</span>", 2)
 
-				for( var/obj/machinery/teleport/hub/H in range(1))
+				for(var/obj/machinery/teleport/hub/H in range(1))
 					var/amount = rand(2,5)
-					for( var/i=0;i<amount;i++)
+					for(var/i=0;i<amount;i++)
 						new /mob/living/simple_animal/hostile/carp(get_turf(H))
 				//
 			else
-				for( var/mob/O in hearers(src, null))
+				for(var/mob/O in hearers(src, null))
 					O.show_message("<span class='notice'>Locked in.</span>", 2)
 				src.locked = L
 				one_time_use = 1
@@ -105,7 +105,7 @@
 	var/list/L = list()
 	var/list/areaindex = list()
 
-	for( var/obj/item/device/radio/beacon/R in world)
+	for(var/obj/item/device/radio/beacon/R in world)
 		var/turf/T = get_turf(R)
 		if (!T)
 			continue
@@ -118,7 +118,7 @@
 			areaindex[tmpname] = 1
 		L[tmpname] = R
 
-	for( var/obj/item/weapon/implant/tracking/I in world)
+	for (var/obj/item/weapon/implant/tracking/I in world)
 		if (!I.implanted || !ismob(I.loc))
 			continue
 		else
@@ -144,7 +144,7 @@
 	if(get_dist(src, usr) > 1 && !issilicon(usr))
 		return
 	set_target(L[desc])
-	for( var/mob/O in hearers(src, null))
+	for(var/mob/O in hearers(src, null))
 		O.show_message("<span class='notice'>Locked In</span>", 2)
 	return
 

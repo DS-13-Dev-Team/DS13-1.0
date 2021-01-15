@@ -27,12 +27,12 @@
 		"exotic matter" = 0
 		)
 	var/new_data = 0
-	for( var/turf/simulated/T in range(2, get_turf(user)))
+	for(var/turf/simulated/T in range(2, get_turf(user)))
 
 		if(!T.has_resources)
 			continue
 
-		for( var/metal in T.resources)
+		for(var/metal in T.resources)
 			var/ore_type
 			var/data_value = 1
 
@@ -58,7 +58,7 @@
 
 	to_chat(user, "\icon[src] <span class='notice'>The scanner beeps and displays a readout.</span>")
 
-	for( var/ore_type in metals)
+	for(var/ore_type in metals)
 		var/result = "no sign"
 
 		switch(metals[ore_type])

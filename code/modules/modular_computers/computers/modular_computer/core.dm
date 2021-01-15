@@ -17,7 +17,7 @@
 	if(active_program && active_program.requires_ntnet && !get_ntnet_status(active_program.requires_ntnet_feature)) // Active program requires NTNet to run but we've just lost connection. Crash.
 		active_program.event_networkfailure(0)
 
-	for( var/datum/computer_file/program/P in idle_threads)
+	for(var/datum/computer_file/program/P in idle_threads)
 		if(P.requires_ntnet && !get_ntnet_status(P.requires_ntnet_feature))
 			P.event_networkfailure(1)
 
@@ -29,7 +29,7 @@
 		else
 			active_program = null
 
-	for( var/datum/computer_file/program/P in idle_threads)
+	for(var/datum/computer_file/program/P in idle_threads)
 		if(P.program_state != PROGRAM_STATE_KILLED)
 			P.ntnet_status = get_ntnet_status()
 			P.computer_emagged = computer_emagged
@@ -56,7 +56,7 @@
 /obj/item/modular_computer/proc/install_default_programs_by_job(mob/living/carbon/human/H)
 	var/datum/job/jb = job_master.occupations_by_title[H.job]
 	if(!jb) return
-	for( var/prog_type in jb.software_on_spawn)
+	for(var/prog_type in jb.software_on_spawn)
 		var/datum/computer_file/program/prog_file = prog_type
 		if(initial(prog_file.usage_flags) & hardware_flag)
 			prog_file = new prog_file
@@ -85,7 +85,7 @@
 	//STOP_PROCESSING(SSobj, src) //The parent call will handle ending processing
 	if(istype(stored_pen))
 		QDEL_NULL(stored_pen)
-	for( var/obj/item/weapon/computer_hardware/CH in src.get_all_components())
+	for(var/obj/item/weapon/computer_hardware/CH in src.get_all_components())
 		uninstall_component(null, CH)
 		qdel(CH)
 	remove_light()
@@ -169,7 +169,7 @@
 
 /obj/item/modular_computer/proc/shutdown_computer(loud = 1)
 	kill_program(1)
-	for( var/datum/computer_file/program/P in idle_threads)
+	for(var/datum/computer_file/program/P in idle_threads)
 		P.kill_program(1)
 		idle_threads.Remove(P)
 	if(loud)
@@ -260,7 +260,7 @@
 
 	if(idle_threads.len)
 		var/list/current_header_icons = list()
-		for( var/datum/computer_file/program/P in idle_threads)
+		for(var/datum/computer_file/program/P in idle_threads)
 			if(!P.ui_header)
 				continue
 			current_header_icons[P.type] = P.ui_header
@@ -271,7 +271,7 @@
 			last_header_icons = current_header_icons
 			ui_update_needed = 1
 		else
-			for( var/x in last_header_icons|current_header_icons)
+			for(var/x in last_header_icons|current_header_icons)
 				if(last_header_icons[x]!=current_header_icons[x])
 					last_header_icons = current_header_icons
 					ui_update_needed = 1

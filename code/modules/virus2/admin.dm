@@ -9,7 +9,7 @@
 		to_chat(usr, "Infection chance: [infectionchance]; Speed: [speed]; Spread type: [spreadtype]")
 		to_chat(usr, "Affected species: [english_list(affected_species)]")
 		to_chat(usr, "Effects:")
-		for( var/datum/disease2/effect/E in effects)
+		for(var/datum/disease2/effect/E in effects)
 			to_chat(usr, "[E.stage]: [E.name]; chance=[E.chance]; multiplier=[E.multiplier]")
 		to_chat(usr, "Antigens: [antigens2string(antigen)]")
 
@@ -17,7 +17,7 @@
 
 /datum/disease2/disease/get_view_variables_header()
 	. = list()
-	for( var/datum/disease2/effect/E in effects)
+	for(var/datum/disease2/effect/E in effects)
 		. += "[E.stage]: [E.name]"
 	return {"
 		<b>[name()]</b><br><font size=1>
@@ -56,7 +56,7 @@
 
 		var/list/L = list()
 
-		for( var/e in (typesof(/datum/disease2/effect) - /datum/disease2/effect))
+		for(var/e in (typesof(/datum/disease2/effect) - /datum/disease2/effect))
 			var/datum/disease2/effect/f = e
 			if(initial(f.stage) <= stage)
 				L[initial(f.name)] = e
@@ -72,7 +72,7 @@
 		<center><h3>Virus2 Virus Editor</h3></center><br />
 		<b>Effects:</b><br />
 		"}
-		for( var/i = 1 to 4)
+		for(var/i = 1 to 4)
 			var/datum/disease2/effect/Eff = s[i]
 			H += {"
 					<a href='?src=\ref[src];what=effect;stage=[i];effect=1'>[initial(Eff.name)]</a>
@@ -85,7 +85,7 @@
 		<b>Infectable Species:</b><br />
 		"}
 		var/f = 1
-		for( var/k in all_species)
+		for(var/k in all_species)
 			var/datum/species/S = all_species[k]
 			if(S.get_virus_immune())
 				continue
@@ -101,7 +101,7 @@
 		<br />
 		"}
 		f = 1
-		for( var/k in ALL_ANTIGENS)
+		for(var/k in ALL_ANTIGENS)
 			if(!f) H += " | "
 			else f = 0
 			H += "<a href='?src=\ref[src];what=antigen;toggle=[k]' style='color:[(k in antigens) ? "#006600" : "#ff0000"]'>[k]</a>"
@@ -172,7 +172,7 @@
 					antigens = list()
 			if("infectee")
 				var/list/candidates = list()
-				for( var/mob/living/carbon/G in GLOB.living_mob_list)
+				for(var/mob/living/carbon/G in GLOB.living_mob_list)
 					if(G.stat != DEAD && G.species)
 						if(G.species.get_bodytype(G) in species)
 							candidates["[G.name][G.client ? "" : " (no client)"]"] = G
@@ -195,7 +195,7 @@
 				D.antigen = antigens
 				D.affected_species = species
 				D.speed = speed
-				for( var/i in 1 to 4)
+				for(var/i in 1 to 4)
 					var/datum/disease2/effect/E = new
 					var/Etype = s[i]
 					E = new Etype()

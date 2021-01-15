@@ -33,11 +33,11 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	var/list/statmods = null
 
 /datum/extension/proc/register_statmods()
-	for( var/modtype in statmods)
+	for (var/modtype in statmods)
 		register_statmod(modtype)
 
 /datum/extension/proc/unregister_statmods()
-	for( var/modtype in statmods)
+	for (var/modtype in statmods)
 		unregister_statmod(modtype)
 
 //Trigger all relevant update procs without changing registration
@@ -45,7 +45,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	var/mob/M = holder
 	if (!istype(M))
 		return
-	for( var/modtype in statmods)
+	for (var/modtype in statmods)
 		var/list/data = GLOB.statmods[modtype]
 		var/update_proc = data[1]
 		call(M, update_proc)()
@@ -101,11 +101,11 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	move_speed_factor = 1
 
 	//We add the result of each additive modifier
-	for( var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_MOVESPEED_ADDITIVE))
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_MOVESPEED_ADDITIVE))
 		move_speed_factor += E.get_statmod(STATMOD_MOVESPEED_ADDITIVE)
 
 	//We multiply by the result of each multiplicative modifier
-	for( var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_MOVESPEED_MULTIPLICATIVE))
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_MOVESPEED_MULTIPLICATIVE))
 		move_speed_factor *= E.get_statmod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 
@@ -120,7 +120,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	incoming_damage_mult = 1
 
 	//We multiply by the result of each multiplicative modifier
-	for( var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE))
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE))
 		incoming_damage_mult *= E.get_statmod(STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE)
 
 
@@ -134,7 +134,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	ranged_accuracy_modifier = 0
 
 	//We multiply by the result of each multiplicative modifier
-	for( var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_RANGED_ACCURACY))
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_RANGED_ACCURACY))
 		ranged_accuracy_modifier += E.get_statmod(STATMOD_RANGED_ACCURACY)
 
 
@@ -147,7 +147,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	attack_speed_factor = 1
 
 	//We multiply by the result of each multiplicative modifier
-	for( var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_ATTACK_SPEED))
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_ATTACK_SPEED))
 		attack_speed_factor += E.get_statmod(STATMOD_ATTACK_SPEED)
 
 
@@ -161,7 +161,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	evasion = get_base_evasion()
 
 	//We multiply by the result of each multiplicative modifier
-	for( var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_EVASION))
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_EVASION))
 		evasion += E.get_statmod(STATMOD_EVASION)
 
 
@@ -189,7 +189,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	var/range = world.view
 
 	//We multiply by the result of each multiplicative modifier
-	for( var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_VIEW_RANGE))
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_VIEW_RANGE))
 		range += E.get_statmod(STATMOD_VIEW_RANGE)
 
 	//Vision range can't go below 1

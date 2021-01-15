@@ -70,7 +70,7 @@
 			job.apply_fingerprints(character)
 			var/list/spawn_in_storage = job_master.EquipCustomLoadout(character, job)
 			if(spawn_in_storage)
-				for( var/datum/gear/G in spawn_in_storage)
+				for(var/datum/gear/G in spawn_in_storage)
 					G.spawn_in_storage_or_drop(user_human, user_human.client.prefs.Gear()[G.display_name])
 			equip_custom_items(user_human)
 

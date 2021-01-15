@@ -69,7 +69,7 @@
 				<font color="red">[status]</font><br>
 				<a href="?src=\ref[src];scan=1">Scan</a>
 				<table border="1" width="90%">"}
-		for( var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in connectedscrubbers)
+		for(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in connectedscrubbers)
 			dat += {"
 					<tr>
 						<td>
@@ -123,7 +123,7 @@
 		connectedscrubbers = new()
 
 		var/found = 0
-		for( var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in range(range, src.loc))
+		for(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in range(range, src.loc))
 			if(istype(scrubber))
 				found = 1
 				connectedscrubbers += scrubber
@@ -165,7 +165,7 @@
 		var/turf/T = get_turf(src)
 		if(!T.loc) return
 		var/area/A = T.loc
-		for( var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in world )
+		for(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in world )
 			var/turf/T2 = get_turf(scrubber)
 			if(T2 && T2.loc)
 				var/area/A2 = T2.loc

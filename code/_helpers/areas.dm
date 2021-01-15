@@ -7,7 +7,7 @@
 		return
 	if(!islist(predicates))
 		predicates = list(predicates)
-	for( var/area/A)
+	for(var/area/A)
 		if(all_predicates_true(list(A), predicates))
 			. += A
 
@@ -16,7 +16,7 @@
 	A = istype(A) ? A : locate(A)
 	if(!A)
 		return
-	for( var/turf/T in A.contents)
+	for(var/turf/T in A.contents)
 		if(!predicates || all_predicates_true(list(T), predicates))
 			. += T
 
@@ -25,20 +25,20 @@
 	A = istype(A) ? A.type : A
 	if(!A)
 		return
-	for( var/sub_area_type in typesof(A))
+	for(var/sub_area_type in typesof(A))
 		var/area/sub_area = locate(sub_area_type)
-		for( var/turf/T in sub_area.contents)
+		for(var/turf/T in sub_area.contents)
 			if(!predicates || all_predicates_true(list(T), predicates))
 				. += T
 
 /proc/group_areas_by_name(list/predicates)
 	. = list()
-	for( var/area/A in get_filtered_areas(predicates))
+	for(var/area/A in get_filtered_areas(predicates))
 		group_by(., A.name, A)
 
 /proc/group_areas_by_z_level(list/predicates)
 	. = list()
-	for( var/area/A in get_filtered_areas(predicates))
+	for(var/area/A in get_filtered_areas(predicates))
 		group_by(., num2text(A.z), A)
 
 /*
@@ -97,7 +97,7 @@
 
 /proc/area_corrupted(atom/A, require_support = TRUE)
 	var/area/T = get_area(A)
-	for( var/obj/effect/vine/corruption/C in T)
+	for (var/obj/effect/vine/corruption/C in T)
 		if (!require_support || C.is_supported())
 			return TRUE
 
@@ -106,7 +106,7 @@
 
 /proc/area_contains_necromorphs(atom/A)
 	var/area/T = get_area(A)
-	for( var/mob/living/L in T)
+	for (var/mob/living/L in T)
 		if (L.stat != DEAD && L.is_necromorph())
 			return TRUE
 

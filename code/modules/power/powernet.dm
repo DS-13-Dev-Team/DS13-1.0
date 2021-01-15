@@ -25,10 +25,10 @@
 	..()
 
 /datum/powernet/Destroy()
-	for( var/obj/structure/cable/C in cables)
+	for(var/obj/structure/cable/C in cables)
 		cables -= C
 		C.powernet = null
-	for( var/obj/machinery/power/M in nodes)
+	for(var/obj/machinery/power/M in nodes)
 		nodes -= M
 		M.powernet = null
 	STOP_PROCESSING_POWERNET(src)
@@ -102,7 +102,7 @@
 		problem = max(problem - 1, 0)
 
 	if(nodes && nodes.len) // Added to fix a bad list bug -- TLE
-		for( var/obj/machinery/power/terminal/term in nodes)
+		for(var/obj/machinery/power/terminal/term in nodes)
 			if( istype( term.master, /obj/machinery/power/apc ) )
 				numapc++
 
@@ -122,14 +122,14 @@
 	// At this point, all other machines have finished using power. Anything left over may be used up to charge SMESs.
 	if(inputting.len && smes_demand)
 		var/smes_input_percentage = between(0, (netexcess / smes_demand) * 100, 100)
-		for( var/obj/machinery/power/smes/S in inputting)
+		for(var/obj/machinery/power/smes/S in inputting)
 			S.input_power(smes_input_percentage)
 
 	netexcess = avail - load
 
 	if(netexcess)
 		var/perc = get_percent_load(1)
-		for( var/obj/machinery/power/smes/S in nodes)
+		for(var/obj/machinery/power/smes/S in nodes)
 			S.restore(perc)
 
 	//updates the viewed load (as seen on power computers)
@@ -180,7 +180,7 @@
 /turf/proc/get_cable_node()
 	if(!istype(src, /turf/simulated))
 		return null
-	for( var/obj/structure/cable/C in src)
+	for(var/obj/structure/cable/C in src)
 		if(C.d1 == 0)
 			return C
 	return null

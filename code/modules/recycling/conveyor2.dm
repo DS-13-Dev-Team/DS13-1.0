@@ -70,7 +70,7 @@
 	affecting = loc.contents - src		// moved items will be all in loc
 	spawn(1)	// slight delay to prevent infinite propagation due to map order	//TODO: please no spawn() in process(). It's a very bad idea
 		var/items_moved = 0
-		for( var/atom/movable/A in affecting)
+		for(var/atom/movable/A in affecting)
 			if(!A.anchored)
 				if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
 					step(A,movedir)
@@ -172,7 +172,7 @@
 
 	spawn(5)		// allow map load
 		conveyors = list()
-		for( var/obj/machinery/conveyor/C in world)
+		for(var/obj/machinery/conveyor/C in world)
 			if(C.id == id)
 				conveyors += C
 
@@ -195,7 +195,7 @@
 		return
 	operated = 0
 
-	for( var/obj/machinery/conveyor/C in conveyors)
+	for(var/obj/machinery/conveyor/C in conveyors)
 		C.operating = position
 		C.setmove()
 
@@ -220,7 +220,7 @@
 	update_icon()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for( var/obj/machinery/conveyor_switch/S in world)
+	for(var/obj/machinery/conveyor_switch/S in world)
 		if(S.id == src.id)
 			S.position = position
 			S.update_icon()
@@ -252,7 +252,7 @@
 	update_icon()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for( var/obj/machinery/conveyor_switch/S in world)
+	for(var/obj/machinery/conveyor_switch/S in world)
 		if(S.id == src.id)
 			S.position = position
 			S.update_icon()
@@ -284,7 +284,7 @@
 	var/cdir = get_dir(A, user)
 	if(!(cdir in GLOB.cardinal) || A == user.loc)
 		return
-	for( var/obj/machinery/conveyor/CB in A)
+	for(var/obj/machinery/conveyor/CB in A)
 		if(CB.dir == cdir || CB.dir == turn(cdir,180))
 			return
 		cdir |= CB.dir
@@ -310,7 +310,7 @@
 	if(!proximity || !istype(A, /turf/simulated/floor) || istype(A, /area/shuttle) || user.incapacitated())
 		return
 	var/found = 0
-	for( var/obj/machinery/conveyor/C in view())
+	for(var/obj/machinery/conveyor/C in view())
 		if(C.id == src.id)
 			found = 1
 			break

@@ -65,7 +65,7 @@
 	var/list/duplicate_values = duplicates(list_values(valid_paths))
 	if(duplicate_values.len)
 		CRASH("Duplicate types found: [english_list(duplicate_values)]")
-	for( var/path_name in valid_paths)
+	for(var/path_name in valid_paths)
 		if(!istext(path_name))
 			CRASH("Expected a text key, was [log_info_line(path_name)]")
 		var/selection_type = valid_paths[path_name]
@@ -121,14 +121,14 @@
 
 /datum/gear_tweak/contents/get_default()
 	. = list()
-	for( var/i = 1 to valid_contents.len)
+	for(var/i = 1 to valid_contents.len)
 		. += "Random"
 
 /datum/gear_tweak/contents/get_metadata(user, list/metadata)
 	. = list()
-	for( var/i = metadata.len to (valid_contents.len - 1))
+	for(var/i = metadata.len to (valid_contents.len - 1))
 		metadata += "Random"
-	for( var/i = 1 to valid_contents.len)
+	for(var/i = 1 to valid_contents.len)
 		var/entry = input(user, "Choose an entry.", CHARACTER_PREFERENCE_INPUT_TITLE, metadata[i]) as null|anything in (valid_contents[i] + list("Random", "None"))
 		if(entry)
 			. += entry
@@ -138,7 +138,7 @@
 /datum/gear_tweak/contents/tweak_item(obj/item/I, list/metadata)
 	if(metadata.len != valid_contents.len)
 		return
-	for( var/i = 1 to valid_contents.len)
+	for(var/i = 1 to valid_contents.len)
 		var/path
 		var/list/contents = valid_contents[i]
 		if(metadata[i] == "Random")
@@ -223,7 +223,7 @@
 
 	var/list/names = list()
 	var/counter = 1
-	for( var/i in ValidProcessors)
+	for(var/i in ValidProcessors)
 		if(i)
 			var/obj/O = i
 			names[initial(O.name)] = counter++
@@ -235,7 +235,7 @@
 
 	names = list()
 	counter = 1
-	for( var/i in ValidBatteries)
+	for(var/i in ValidBatteries)
 		if(i)
 			var/obj/O = i
 			names[initial(O.name)] = counter++
@@ -247,7 +247,7 @@
 
 	names = list()
 	counter = 1
-	for( var/i in ValidHardDrives)
+	for(var/i in ValidHardDrives)
 		if(i)
 			var/obj/O = i
 			names[initial(O.name)] = counter++
@@ -259,7 +259,7 @@
 
 	names = list()
 	counter = 1
-	for( var/i in ValidNetworkCards)
+	for(var/i in ValidNetworkCards)
 		if(i)
 			var/obj/O = i
 			names[initial(O.name)] = counter++
@@ -271,7 +271,7 @@
 
 	names = list()
 	counter = 1
-	for( var/i in ValidNanoPrinters)
+	for(var/i in ValidNanoPrinters)
 		if(i)
 			var/obj/O = i
 			names[initial(O.name)] = counter++
@@ -283,7 +283,7 @@
 
 	names = list()
 	counter = 1
-	for( var/i in ValidCardSlots)
+	for(var/i in ValidCardSlots)
 		if(i)
 			var/obj/O = i
 			names[initial(O.name)] = counter++
@@ -295,7 +295,7 @@
 
 	names = list()
 	counter = 1
-	for( var/i in ValidTeslaLinks)
+	for(var/i in ValidTeslaLinks)
 		if(i)
 			var/obj/O = i
 			names[initial(O.name)] = counter++

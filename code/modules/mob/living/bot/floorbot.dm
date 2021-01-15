@@ -97,13 +97,13 @@
 		UnarmedAttack(target)
 
 /mob/living/bot/floorbot/lookForTargets()
-	for( var/turf/simulated/floor/T in view(src))
+	for(var/turf/simulated/floor/T in view(src))
 		if(confirmTarget(T))
 			target = T
 			return
 
 	if(amount < maxAmount && (eattiles || maketiles))
-		for( var/obj/item/stack/S in view(src))
+		for(var/obj/item/stack/S in view(src))
 			if(confirmTarget(S))
 				target = S
 				return
@@ -214,15 +214,15 @@
 
 
 	var/list/things = list()
-	for( var/atom/A in orange(5, src.loc))
+	for(var/atom/A in orange(5, src.loc))
 		things += A
 
 	var/list/shrapnel = list()
 
-	for( var/I = 3, I<3 , I++) //Toolbox shatters.
+	for(var/I = 3, I<3 , I++) //Toolbox shatters.
 		shrapnel += new /obj/item/weapon/material/shrapnel(Tsec)
 
-	for( var/Amt = amount, Amt>0, Amt--) //Why not just spit them out in a disorganized jumble?
+	for(var/Amt = amount, Amt>0, Amt--) //Why not just spit them out in a disorganized jumble?
 		shrapnel += new /obj/item/stack/tile/floor(Tsec)
 
 	if(prob(50))
@@ -233,7 +233,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 
-	for( var/atom/movable/AM in shrapnel)
+	for(var/atom/movable/AM in shrapnel)
 		AM.throw_at(pick(things),5)
 
 	qdel(src)

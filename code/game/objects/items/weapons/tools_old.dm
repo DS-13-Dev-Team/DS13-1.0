@@ -645,12 +645,12 @@ owbar
 	..()
 	if(loc == usr && tools.len)
 		to_chat(usr, "It has the following fittings:")
-		for( var/obj/item/tool in tools)
+		for(var/obj/item/tool in tools)
 			to_chat(usr, "\icon[tool] - [tool.name][tools[current_tool]==tool?" (selected)":""]")
 
 /obj/item/weapon/combitool/New()
 	..()
-	for( var/type in spawn_tools)
+	for(var/type in spawn_tools)
 		tools |= new type(src)
 
 /obj/item/weapon/combitool/attack_self(mob/user as mob)

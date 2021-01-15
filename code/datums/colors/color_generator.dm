@@ -9,7 +9,7 @@ decl/color_generator
 
 /decl/color_generator/proc/GenerateRGB()
 	. = create_color()
-	for( var/i in 1 to 3)
+	for(var/i in 1 to 3)
 		.[i] += rand(min_random_span, max_random_span)
 		.[i] = Clamp(.[i], 0, 255)
 

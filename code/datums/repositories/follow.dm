@@ -18,7 +18,7 @@
 	followed_objects_assoc = list()
 	followed_subtypes = list()
 
-	for( var/fht in subtypesof(/datum/follow_holder))
+	for(var/fht in subtypesof(/datum/follow_holder))
 		var/datum/follow_holder/fh = fht
 		followed_subtypes[initial(fh.followed_type)] = fht
 
@@ -46,7 +46,7 @@
 	qdel(follow_holder)
 
 /repository/follow/proc/get_follow_type(atom/movable/AM)
-	for( var/follow_type in followed_subtypes)
+	for(var/follow_type in followed_subtypes)
 		if(istype(AM, follow_type))
 			return followed_subtypes[follow_type]
 
@@ -58,19 +58,19 @@
 	cache = new(5 SECONDS)
 
 	var/list/followed_by_name = list()
-	for( var/followed_object in followed_objects)
+	for(var/followed_object in followed_objects)
 		var/datum/follow_holder/fh = followed_object
 		if(fh.show_entry())
 			group_by(followed_by_name, fh.get_name(TRUE), fh)
 
 	var/list/L = list()
 
-	for( var/followed_name in followed_by_name)
+	for(var/followed_name in followed_by_name)
 		var/list/followed_things = followed_by_name[followed_name]
 		if(followed_things.len == 1)
 			ADD_SORTED(L, followed_things[1], /proc/cmp_follow_holder)
 		else
-			for( var/i = 1 to followed_things.len)
+			for(var/i = 1 to followed_things.len)
 				var/datum/follow_holder/followed_thing = followed_things[i]
 				followed_thing.instance = i
 				followed_thing.get_name(TRUE)
@@ -161,7 +161,7 @@
 	var/mob/living/silicon/robot/R = followed_instance
 	return ..() && R.braintype
 
-/datum/follow_holder/robot/get_suffix(mob/living/silicon/robot/R)
+/datum/follow_holder/robot/get_suffix(var/mob/living/silicon/robot/R)
 	suffix = "\[[R.braintype]\][R.module ? " \[[R.module.name]\]" : ""]"
 	return ..()
 
@@ -169,7 +169,7 @@
 	sort_order = 2
 	followed_type = /mob/living/carbon/human
 
-/datum/follow_holder/human/get_suffix(mob/living/carbon/human/H)
+/datum/follow_holder/human/get_suffix(var/mob/living/carbon/human/H)
 	suffix = "\[[H.species.name]\]"
 	return ..()
 

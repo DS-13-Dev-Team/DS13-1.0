@@ -71,7 +71,7 @@
 		return
 	if(M.ingested && M.ingested.reagent_list.len > 1) // Need to have at least 2 reagents - cabon and something to remove
 		var/effect = 1 / (M.ingested.reagent_list.len - 1)
-		for( var/datum/reagent/R in M.ingested.reagent_list)
+		for(var/datum/reagent/R in M.ingested.reagent_list)
 			if(R == src)
 				continue
 			M.ingested.remove_reagent(R.type, removed * effect)
@@ -268,7 +268,7 @@
 /datum/reagent/radium/affect_blood(mob/living/carbon/M, alien, removed)
 	M.apply_effect(10 * removed, IRRADIATE, blocked = 0) // Radium may increase your chances to cure a disease
 	if(M.virus2.len)
-		for( var/ID in M.virus2)
+		for(var/ID in M.virus2)
 			var/datum/disease2/disease/V = M.virus2[ID]
 			if(prob(5))
 				M.antibodies |= V.antigen

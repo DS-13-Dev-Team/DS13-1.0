@@ -21,13 +21,13 @@
 		cell.use(power_use * CELLRATE)
 
 		var/turf/T = get_turf(suspension_field)
-		for( var/mob/living/M in T)
+		for(var/mob/living/M in T)
 			M.weakened = max(M.weakened, 3)
 			cell.use(power_use * CELLRATE)
 			if(prob(5))
 				to_chat(M, "<span class='warning'>[pick("You feel tingly","You feel like floating","It is hard to speak","You can barely move")].</span>")
 
-		for( var/obj/item/I in T)
+		for(var/obj/item/I in T)
 			if(!suspension_field.contents.len)
 				suspension_field.icon_state = "energynet"
 				suspension_field.overlays += "shield2"
@@ -181,7 +181,7 @@
 	var/turf/T = get_turf(get_step(src,dir))
 	var/collected = 0
 
-	for( var/mob/living/M in T)
+	for(var/mob/living/M in T)
 		M.weakened += 5
 		M.visible_message("<span class='notice'>\icon[M] [M] begins to float in the air!</span>","You feel tingly and light, but it is difficult to move.")
 
@@ -189,7 +189,7 @@
 	src.visible_message("<span class='notice'>\icon[src] [src] activates with a low hum.</span>")
 	icon_state = "suspension3"
 
-	for( var/obj/item/I in T)
+	for(var/obj/item/I in T)
 		I.forceMove(suspension_field)
 		collected++
 
@@ -207,7 +207,7 @@
 	//drop anything we picked up
 	var/turf/T = get_turf(suspension_field)
 
-	for( var/mob/living/M in T)
+	for(var/mob/living/M in T)
 		to_chat(M, "<span class='info'>You no longer feel like floating.</span>")
 		M.weakened = min(M.weakened, 3)
 
@@ -247,6 +247,6 @@
 	density = 1
 
 /obj/effect/suspension_field/Destroy()
-	for( var/atom/movable/I in src)
+	for(var/atom/movable/I in src)
 		I.dropInto(loc)
 	return ..()

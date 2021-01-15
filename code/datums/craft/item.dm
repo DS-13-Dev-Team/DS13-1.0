@@ -17,7 +17,7 @@
 	desc = ""
 	var/offset = step + recipe.passive_steps.len
 	var/list/allsteps = recipe.passive_steps + recipe.steps
-	for( var/datum/craft_step/CS in allsteps)
+	for (var/datum/craft_step/CS in allsteps)
 		if (offset > 0)
 			offset--
 			continue

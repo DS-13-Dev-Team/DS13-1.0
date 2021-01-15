@@ -21,7 +21,7 @@ LEGACY_RECORD_STRUCTURE(all_waypoints, waypoint)
 
 /obj/machinery/computer/helm/proc/get_known_sectors()
 	var/area/overmap/map = locate() in world
-	for( var/obj/effect/overmap/sector/S in map)
+	for(var/obj/effect/overmap/sector/S in map)
 		if (S.known)
 			var/datum/computer_file/data/waypoint/R = new()
 			R.fields["name"] = S.name
@@ -105,7 +105,7 @@ LEGACY_RECORD_STRUCTURE(all_waypoints, waypoint)
 		data["ETAnext"] = "N/A"
 
 	var/list/locations[0]
-	for( var/key in known_sectors)
+	for (var/key in known_sectors)
 		var/datum/computer_file/data/waypoint/R = known_sectors[key]
 		var/list/rdata[0]
 		rdata["name"] = R.fields["name"]

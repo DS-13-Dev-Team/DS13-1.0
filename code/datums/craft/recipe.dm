@@ -32,12 +32,12 @@
 	var/list/step_definitions = steps
 	steps = new
 
-	for( var/i in step_definitions)
+	for(var/i in step_definitions)
 		steps += create_step_from_params(i)
 
 	var/list/passive_step_definitions = passive_steps
 	passive_steps = new
-	for( var/i in passive_step_definitions)
+	for (var/i in passive_step_definitions)
 		passive_steps += create_step_from_params(i)
 
 
@@ -65,9 +65,9 @@
 
 /datum/craft_recipe/proc/get_step_descriptions(skip = 0)
 	var/list/data = list()
-	for( var/datum/craft_step/CS in passive_steps)
+	for(var/datum/craft_step/CS in passive_steps)
 		data += list(list("icon" = getAtomCacheFilename(CS.icon_type), "desc" = CS.desc))
-	for( var/datum/craft_step/CS in steps)
+	for(var/datum/craft_step/CS in steps)
 		if (skip > 0)
 			skip--
 			continue
@@ -89,7 +89,7 @@
 	if (user && (flags & CRAFT_ON_SURFACE))
 		var/list/stuff = range(get_step(user, user.dir), 0)
 		var/surfacefound = FALSE
-		for( var/obj/A in stuff)
+		for (var/obj/A in stuff)
 			if (A.is_surface())
 				surfacefound = TRUE
 				break
@@ -106,7 +106,7 @@
 			//Prevent building dense things in turfs that already contain dense objects
 			var/atom/A = result
 			if (initial(A.density))
-				for( var/atom/movable/AM in T)
+				for (var/atom/movable/AM in T)
 					if (AM != user && AM.density)
 						user << SPAN_WARNING("You can't build here, it's blocked by [AM]!")
 						return FALSE

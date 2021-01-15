@@ -84,7 +84,7 @@
 	if(photo)
 		newMsg.img = photo.img
 		newMsg.caption = photo.scribble
-	for( var/datum/feed_channel/FC in network_channels)
+	for(var/datum/feed_channel/FC in network_channels)
 		if(FC.channel_name == channel_name)
 			insert_message_in_channel(FC, newMsg) //Adding message to the network's appropriate feed_channel
 			break
@@ -98,7 +98,7 @@
 	alert_readers(FC.announcement)
 
 /datum/feed_network/proc/alert_readers(annoncement)
-	for( var/obj/machinery/newscaster/NEWSCASTER in allCasters)
+	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
 		NEWSCASTER.newsAlert(annoncement)
 		NEWSCASTER.update_icon()
 
@@ -159,7 +159,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 /obj/machinery/newscaster/New()         //Constructor, ho~
 	allCasters += src
 	src.paper_remaining = 15            // Will probably change this to something better
-	for( var/obj/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
+	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
 		src.unit_no++
 	src.update_icon() //for any custom ones on the map...
 	..()                                //I just realised the newscasters weren't in the global machines list. The superconstructor call will tend to that
@@ -236,7 +236,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				if( isemptylist(news_network.network_channels) )
 					dat+="<I>No active channels found...</I>"
 				else
-					for( var/datum/feed_channel/CHANNEL in news_network.network_channels)
+					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
 						if(CHANNEL.is_admin_channel)
 							dat+="<B><FONT style='BACKGROUND-COLOR: LightGreen '><A href='?src=\ref[src];show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A></FONT></B><BR>"
 						else
@@ -275,7 +275,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			if(7)
 				dat+="<B><FONT COLOR='maroon'>ERROR: Could not submit Feed Channel to Network.</B></FONT><HR><BR>"
 				var/list/existing_authors = list()
-				for( var/datum/feed_channel/FC in news_network.network_channels)
+				for(var/datum/feed_channel/FC in news_network.network_channels)
 					if(FC.author == "\[REDACTED\]")
 						existing_authors += FC.backup_author
 					else
@@ -285,7 +285,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				if(src.channel_name=="" || src.channel_name == "\[REDACTED\]")
 					dat+="<FONT COLOR='maroon'>Invalid channel name.</FONT><BR>"
 				var/check = 0
-				for( var/datum/feed_channel/FC in news_network.network_channels)
+				for(var/datum/feed_channel/FC in news_network.network_channels)
 					if(FC.channel_name == src.channel_name)
 						check = 1
 						break
@@ -298,7 +298,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				var/total_num=length(news_network.network_channels)
 				var/active_num=total_num
 				var/message_num=0
-				for( var/datum/feed_channel/FC in news_network.network_channels)
+				for(var/datum/feed_channel/FC in news_network.network_channels)
 					if(!FC.censored)
 						message_num += length(FC.messages)    //Dont forget, datum/feed_channel's var messages is a list of datum/feed_message
 					else
@@ -317,7 +317,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 						dat+="<I>No feed messages found in channel...</I><BR>"
 					else
 						var/i = 0
-						for( var/datum/feed_message/MESSAGE in src.viewing_channel.messages)
+						for(var/datum/feed_message/MESSAGE in src.viewing_channel.messages)
 							++i
 							dat+="-[MESSAGE.body] <BR>"
 							if(MESSAGE.img)
@@ -338,7 +338,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				if(isemptylist(news_network.network_channels))
 					dat+="<I>No feed channels found active...</I><BR>"
 				else
-					for( var/datum/feed_channel/CHANNEL in news_network.network_channels)
+					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
 						dat+="<A href='?src=\ref[src];pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
 				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Cancel</A>"
 			if(11)
@@ -349,7 +349,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				if(isemptylist(news_network.network_channels))
 					dat+="<I>No feed channels found active...</I><BR>"
 				else
-					for( var/datum/feed_channel/CHANNEL in news_network.network_channels)
+					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
 						dat+="<A href='?src=\ref[src];pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
 
 				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Back</A>"
@@ -361,7 +361,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				if( isemptylist(src.viewing_channel.messages) )
 					dat+="<I>No feed messages found in channel...</I><BR>"
 				else
-					for( var/datum/feed_message/MESSAGE in src.viewing_channel.messages)
+					for(var/datum/feed_message/MESSAGE in src.viewing_channel.messages)
 						dat+="-[MESSAGE.body] <BR><FONT SIZE=1>\[[MESSAGE.message_type] by <FONT COLOR='maroon'>[MESSAGE.author]</FONT>\]</FONT><BR>"
 						dat+="<FONT SIZE=2><A href='?src=\ref[src];censor_channel_story_body=\ref[MESSAGE]'>[(MESSAGE.body == "\[REDACTED\]") ? ("Undo story censorship") : ("Censor story")]</A>  -  <A href='?src=\ref[src];censor_channel_story_author=\ref[MESSAGE]'>[(MESSAGE.author == "\[REDACTED\]") ? ("Undo Author Censorship") : ("Censor message Author")]</A></FONT><BR>"
 				dat+="<BR><A href='?src=\ref[src];setScreen=[10]'>Back</A>"
@@ -375,7 +375,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					if( isemptylist(src.viewing_channel.messages) )
 						dat+="<I>No feed messages found in channel...</I><BR>"
 					else
-						for( var/datum/feed_message/MESSAGE in src.viewing_channel.messages)
+						for(var/datum/feed_message/MESSAGE in src.viewing_channel.messages)
 							dat+="-[MESSAGE.body] <BR><FONT SIZE=1>\[[MESSAGE.message_type] by <FONT COLOR='maroon'>[MESSAGE.author]</FONT>\]</FONT><BR>"
 
 				dat+="<BR><A href='?src=\ref[src];setScreen=[11]'>Back</A>"
@@ -461,14 +461,14 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["submit_new_channel"])
 			//var/list/existing_channels = list() //OBSOLETE
 			var/list/existing_authors = list()
-			for( var/datum/feed_channel/FC in news_network.network_channels)
+			for(var/datum/feed_channel/FC in news_network.network_channels)
 				//existing_channels += FC.channel_name
 				if(FC.author == "\[REDACTED\]")
 					existing_authors += FC.backup_author
 				else
 					existing_authors  +=FC.author
 			var/check = 0
-			for( var/datum/feed_channel/FC in news_network.network_channels)
+			for(var/datum/feed_channel/FC in news_network.network_channels)
 				if(FC.channel_name == src.channel_name)
 					check = 1
 					break
@@ -485,7 +485,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["set_channel_receiving"])
 			//var/list/datum/feed_channel/available_channels = list()
 			var/list/available_channels = list()
-			for( var/datum/feed_channel/F in news_network.network_channels)
+			for(var/datum/feed_channel/F in news_network.network_channels)
 				if( (!F.locked || F.author == scanned_user) && !F.censored)
 					available_channels += F.channel_name
 			src.channel_name = input(usr, "Choose receiving Feed Channel", "Network Channel Handler") in available_channels
@@ -595,7 +595,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			var/choice = alert("Please confirm Wanted Issue removal","Network Security Handler","Confirm","Cancel")
 			if(choice=="Confirm")
 				news_network.wanted_issue = null
-				for( var/obj/machinery/newscaster/NEWSCASTER in allCasters)
+				for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
 					NEWSCASTER.update_icon()
 				src.screen=17
 			src.updateUsrDialog()
@@ -698,25 +698,25 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 /obj/machinery/newscaster/attackby(obj/item/I as obj, mob/user as mob)
 	if (stat & BROKEN)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 100, 1)
-		for( var/mob/O in hearers(5, src.loc))
+		for (var/mob/O in hearers(5, src.loc))
 			O.show_message("<EM>[user.name]</EM> further abuses the shattered [src.name].")
 	else
 		if(istype(I, /obj/item/weapon) )
 			user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 			var/obj/item/weapon/W = I
 			if(W.force <15)
-				for( var/mob/O in hearers(5, src.loc))
+				for (var/mob/O in hearers(5, src.loc))
 					O.show_message("[user.name] hits the [src.name] with the [W.name] with no visible effect." )
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 100, 1)
 			else
 				src.hitstaken++
 				if(hitstaken==3)
-					for( var/mob/O in hearers(5, src.loc))
+					for (var/mob/O in hearers(5, src.loc))
 						O.show_message("[user.name] smashes the [src.name]!" )
 					stat |= BROKEN
 					playsound(src.loc, 'sound/effects/Glassbr3.ogg', 100, 1)
 				else
-					for( var/mob/O in hearers(5, src.loc))
+					for (var/mob/O in hearers(5, src.loc))
 						O.show_message("[user.name] forcefully slams the [src.name] with the [I.name]!" )
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 100, 1)
 		else
@@ -793,12 +793,12 @@ obj/item/weapon/newspaper/attack_self(mob/user as mob)
 						dat+="<I>Other than the title, the rest of the newspaper is unprinted...</I>"
 				else
 					dat+="Contents:<BR><ul>"
-					for( var/datum/feed_channel/NP in src.news_content)
+					for(var/datum/feed_channel/NP in src.news_content)
 						src.pages++
 					if(src.important_message)
 						dat+="<B><FONT COLOR='red'>**</FONT>Important Security Announcement<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [src.pages+2]\]</FONT><BR>"
 					var/temp_page=0
-					for( var/datum/feed_channel/NP in src.news_content)
+					for(var/datum/feed_channel/NP in src.news_content)
 						temp_page++
 						dat+="<B>[NP.channel_name]</B> <FONT SIZE=2>\[page [temp_page+1]\]</FONT><BR>"
 					dat+="</ul>"
@@ -806,7 +806,7 @@ obj/item/weapon/newspaper/attack_self(mob/user as mob)
 					dat+="<BR><I>There is a small scribble near the end of this page... It reads: \"[src.scribble]\"</I>"
 				dat+= "<HR><DIV STYLE='float:right;'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV> <div style='float:left;'><A href='?src=\ref[human_user];mach_close=newspaper_main'>Done reading</A></DIV>"
 			if(1) // X channel pages inbetween.
-				for( var/datum/feed_channel/NP in src.news_content)
+				for(var/datum/feed_channel/NP in src.news_content)
 					src.pages++ //Let's get it right again.
 				var/datum/feed_channel/C = src.news_content[src.curr_page]
 				dat+="<FONT SIZE=4><B>[C.channel_name]</B></FONT><FONT SIZE=1> \[created by: <FONT COLOR='maroon'>[C.author]</FONT>\]</FONT><BR><BR>"
@@ -818,7 +818,7 @@ obj/item/weapon/newspaper/attack_self(mob/user as mob)
 					else
 						dat+="<ul>"
 						var/i = 0
-						for( var/datum/feed_message/MESSAGE in C.messages)
+						for(var/datum/feed_message/MESSAGE in C.messages)
 							++i
 							dat+="-[MESSAGE.body] <BR>"
 							if(MESSAGE.img)
@@ -831,7 +831,7 @@ obj/item/weapon/newspaper/attack_self(mob/user as mob)
 					dat+="<BR><I>There is a small scribble near the end of this page... It reads: \"[src.scribble]\"</I>"
 				dat+= "<BR><HR><DIV STYLE='float:left;'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV> <DIV STYLE='float:right;'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV>"
 			if(2) //Last page
-				for( var/datum/feed_channel/NP in src.news_content)
+				for(var/datum/feed_channel/NP in src.news_content)
 					src.pages++
 				if(src.important_message!=null)
 					dat+="<DIV STYLE='float:center;'><FONT SIZE=4><B>Wanted Issue:</B></FONT SIZE></DIV><BR><BR>"
@@ -926,7 +926,7 @@ obj/item/weapon/newspaper/attackby(obj/item/weapon/W as obj, mob/user as mob)
 /obj/machinery/newscaster/proc/print_paper()
 	feedback_inc("newscaster_newspapers_printed",1)
 	var/obj/item/weapon/newspaper/NEWSPAPER = new /obj/item/weapon/newspaper
-	for( var/datum/feed_channel/FC in news_network.network_channels)
+	for(var/datum/feed_channel/FC in news_network.network_channels)
 		NEWSPAPER.news_content += FC
 	if(news_network.wanted_issue)
 		NEWSPAPER.important_message = news_network.wanted_issue
@@ -941,7 +941,7 @@ obj/item/weapon/newspaper/attackby(obj/item/weapon/W as obj, mob/user as mob)
 /obj/machinery/newscaster/proc/newsAlert(news_call)   //This isn't Agouri's work, for it is ugly and vile.
 	var/turf/T = get_turf(src)                      //Who the fuck uses spawn(600) anyway, jesus christ
 	if(news_call)
-		for( var/mob/O in hearers(world.view-1, T))
+		for(var/mob/O in hearers(world.view-1, T))
 			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"[news_call]\"</span>",2)
 		src.alert = 1
 		src.update_icon()
@@ -950,7 +950,7 @@ obj/item/weapon/newspaper/attackby(obj/item/weapon/W as obj, mob/user as mob)
 			src.update_icon()
 		playsound(src.loc, 'sound/machines/twobeep.ogg', 75, 1)
 	else
-		for( var/mob/O in hearers(world.view-1, T))
+		for(var/mob/O in hearers(world.view-1, T))
 			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Attention! Wanted issue distributed!\"</span>",2)
 		playsound(src.loc, 'sound/machines/warning-buzzer.ogg', 75, 1)
 	return

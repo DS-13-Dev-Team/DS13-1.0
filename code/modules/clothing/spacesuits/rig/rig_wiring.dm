@@ -50,7 +50,7 @@
 				rig.electrified = 30
 			rig.shock(usr,100)
 
-/datum/wires/rig/CanUse(mob/living/L)
+/datum/wires/rig/CanUse(var/mob/living/L)
 	var/obj/item/weapon/rig/rig = holder
 	if(rig.open)
 		return 1

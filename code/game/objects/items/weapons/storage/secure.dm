@@ -119,7 +119,7 @@
 					src.code += text("[]", href_list["type"])
 					if (length(src.code) > 5)
 						src.code = "ERROR"
-			for( var/mob/M in viewers(1, src.loc))
+			for(var/mob/M in viewers(1, src.loc))
 				if ((M.client && M.machine == src))
 					src.attack_self(M)
 				return
@@ -160,7 +160,7 @@
 			src.open(usr)
 		else
 			..()
-			for( var/mob/M in range(1))
+			for(var/mob/M in range(1))
 				if (M.s_active == src)
 					src.close(M)
 		src.add_fingerprint(user)

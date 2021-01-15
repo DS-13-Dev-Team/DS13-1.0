@@ -44,7 +44,7 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 		if(range == -2)
 			targets = GLOB.living_mob_list
 		else
-			for( var/mob/living/target in view_or_range(range, holder, selection_type))
+			for(var/mob/living/target in view_or_range(range, holder, selection_type))
 				targets += target
 
 	else if(max_targets == 1) //single target can be picked
@@ -58,7 +58,7 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 			else
 				starting_targets = view_or_range(range, holder, selection_type)
 
-			for( var/mob/living/M in starting_targets)
+			for(var/mob/living/M in starting_targets)
 				if(!(spell_flags & INCLUDEUSER) && M == user)
 					continue
 				if((spell_flags & NOFACTION) && user.faction == M.faction)
@@ -90,7 +90,7 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 		else
 			starting_targets = view_or_range(range, holder, selection_type)
 
-		for( var/mob/living/target in starting_targets)
+		for(var/mob/living/target in starting_targets)
 			if(!(spell_flags & INCLUDEUSER) && target == user)
 				continue
 			if(compatible_mobs && !is_type_in_list(target, compatible_mobs))
@@ -98,7 +98,7 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 			possible_targets += target
 
 		if(spell_flags & SELECTABLE)
-			for( var/i = 1; i<=max_targets, i++)
+			for(var/i = 1; i<=max_targets, i++)
 				if(!possible_targets.len)
 					break
 				var/mob/M = input(user, "Choose the target for the spell.", "Targeting") as null|mob in possible_targets
@@ -110,7 +110,7 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 				targets += M
 				possible_targets -= M
 		else
-			for( var/i=1,i<=max_targets,i++)
+			for(var/i=1,i<=max_targets,i++)
 				if(!possible_targets.len)
 					break
 				if(target_ignore_prev)
@@ -124,14 +124,14 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 		targets -= user
 
 	if(compatible_mobs && compatible_mobs.len)
-		for( var/mob/living/target in targets) //filters out all the non-compatible mobs
+		for(var/mob/living/target in targets) //filters out all the non-compatible mobs
 			if(!is_type_in_list(target, compatible_mobs))
 				targets -= target
 
 	return targets
 
 /spell/targeted/cast(list/targets, mob/user)
-	for( var/mob/living/target in targets)
+	for(var/mob/living/target in targets)
 		if(range >= 0)
 			if(!(target in view_or_range(range, holder, selection_type))) //filter at time of casting
 				targets -= target
@@ -145,7 +145,7 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 	target.adjustOxyLoss(amt_dam_oxy)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		for( var/obj/item/organ/external/affecting in H.organs)
+		for(var/obj/item/organ/external/affecting in H.organs)
 			if(affecting && istype(affecting))
 				affecting.heal_damage(amt_organ, amt_organ)
 		H.vessel.add_reagent(/datum/reagent/blood,amt_blood)

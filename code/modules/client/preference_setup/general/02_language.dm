@@ -24,7 +24,7 @@
 		. += "- [S.default_language]<br>"
 	if(S.num_alternate_languages)
 		if(pref.alternate_languages.len)
-			for( var/i = 1 to pref.alternate_languages.len)
+			for(var/i = 1 to pref.alternate_languages.len)
 				var/lang = pref.alternate_languages[i]
 				. += "- [lang] - <a href='?src=\ref[src];remove_language=[i]'>remove</a><br>"
 
@@ -45,7 +45,7 @@
 		else
 			var/preference_mob = preference_mob()
 			var/list/available_languages = S.secondary_langs.Copy()
-			for( var/L in all_languages)
+			for(var/L in all_languages)
 				var/datum/language/lang = all_languages[L]
 				if(is_allowed_language(preference_mob, lang))
 					available_languages |= L
@@ -79,7 +79,7 @@
 	if(!istype(pref.alternate_languages)) pref.alternate_languages = list()
 
 	var/preference_mob = preference_mob()
-	for( var/L in pref.alternate_languages)
+	for(var/L in pref.alternate_languages)
 		var/datum/language/lang = all_languages[L]
 		if(!lang || !is_allowed_language(preference_mob, lang))
 			pref.alternate_languages -= L

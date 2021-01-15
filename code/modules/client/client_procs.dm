@@ -298,7 +298,7 @@
 	var/admin_rank = "Player"
 	if(src.holder)
 		admin_rank = src.holder.rank
-		for( var/client/C in GLOB.clients)
+		for(var/client/C in GLOB.clients)
 			if(C.staffwarn)
 				C.mob.send_staffwarn(src, "is connected", 0)
 
@@ -392,6 +392,6 @@ client/verb/character_setup()
 	if (!islist(things))
 		things = list(things)
 
-	for( var/obj/O as anything in things)
+	for (var/obj/O as anything in things)
 		screen += O
 		O.added_to_screen(src)

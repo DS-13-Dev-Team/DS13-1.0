@@ -74,7 +74,7 @@
 		end()
 		return
 
-	for( var/i in 1 to particles_per_tick)
+	for (var/i in 1 to particles_per_tick)
 		spawn_particle()
 	//addtimer(CALLBACK(src, /obj/effect/particle_system/proc/tick), tick_delay)
 

@@ -18,10 +18,10 @@ var/list/default_material_composition = list("steel" = 0, MATERIAL_GLASS = 0, MA
 	return
 
 /obj/machinery/r_n_d/dismantle()
-	for( var/obj/I in component_parts)
+	for(var/obj/I in component_parts)
 		if(istype(I, /obj/item/weapon/reagent_containers/glass/beaker))
 			reagents.trans_to_obj(I, reagents.total_volume)
-	for( var/f in materials)
+	for(var/f in materials)
 		if(materials[f] >= SHEET_MATERIAL_AMOUNT)
 			var/path = get_material_by_name(f)
 			if(path)
@@ -44,15 +44,15 @@ var/list/default_material_composition = list("steel" = 0, MATERIAL_GLASS = 0, MA
 	materials[material] -= eject * perUnit
 
 /obj/machinery/r_n_d/proc/TotalMaterials()
-	for( var/f in materials)
+	for(var/f in materials)
 		. += materials[f]
 
 /obj/machinery/r_n_d/proc/getLackingMaterials(datum/design/D)
 	var/list/ret = list()
-	for( var/M in D.materials)
+	for(var/M in D.materials)
 		if(materials[M] < D.materials[M])
 			ret += "[D.materials[M] - materials[M]] [M]"
-	for( var/C in D.chemicals)
+	for(var/C in D.chemicals)
 		if(!reagents.has_reagent(C, D.chemicals[C]))
 			ret += C
 	return english_list(ret)

@@ -4,7 +4,7 @@
 	else
 		return 0
 	if(accessories.len && restricted_accessory_slots && (A.slot in restricted_accessory_slots))
-		for( var/obj/item/clothing/accessory/AC in accessories)
+		for(var/obj/item/clothing/accessory/AC in accessories)
 			if (AC.slot == A.slot)
 				return 0
 
@@ -26,7 +26,7 @@
 		return
 
 	if(accessories.len)
-		for( var/obj/item/clothing/accessory/A in accessories)
+		for(var/obj/item/clothing/accessory/A in accessories)
 			A.attackby(I, user)
 		return
 
@@ -35,7 +35,7 @@
 /obj/item/clothing/attack_hand(mob/user)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)
 	if(accessories.len && src.loc == user)
-		for( var/obj/item/clothing/accessory/A in accessories)
+		for(var/obj/item/clothing/accessory/A in accessories)
 			A.attack_hand(user)
 		return
 	return ..()
@@ -63,7 +63,7 @@
 
 /obj/item/clothing/examine(mob/user)
 	. = ..(user)
-	for( var/obj/item/clothing/accessory/A in accessories)
+	for(var/obj/item/clothing/accessory/A in accessories)
 		to_chat(user, "\icon[A] \A [A] is attached to it.")
 	switch(ironed_state)
 		if(WRINKLES_WRINKLY)
@@ -73,7 +73,7 @@
 
 /obj/item/clothing/proc/update_accessory_slowdown()
 	slowdown_accessory = 0
-	for( var/obj/item/clothing/accessory/A in accessories)
+	for(var/obj/item/clothing/accessory/A in accessories)
 		slowdown_accessory += A.slowdown
 
 /**
@@ -108,7 +108,7 @@
 	if(!accessories.len) return
 	var/obj/item/clothing/accessory/A
 	var/list/removables = list()
-	for( var/obj/item/clothing/accessory/ass in accessories)
+	for(var/obj/item/clothing/accessory/ass in accessories)
 		if(ass.removable)
 			removables |= ass
 	if(accessories.len > 1)
@@ -122,6 +122,6 @@
 
 /obj/item/clothing/emp_act(severity)
 	if(accessories.len)
-		for( var/obj/item/clothing/accessory/A in accessories)
+		for(var/obj/item/clothing/accessory/A in accessories)
 			A.emp_act(severity)
 	..()

@@ -64,12 +64,12 @@
 
 	spawn(2 SECONDS)
 		if (!location)	//just arrived home
-			for( var/turf/T in get_area_turfs(shuttle_area))
+			for(var/turf/T in get_area_turfs(shuttle_area))
 				var/mob/M = locate(/mob) in T
 				to_chat(M, "<span class='danger'>You have arrived at [GLOB.using_map.boss_name]. Operation has ended!</span>")
 		else	//just left for the station
 			launch_mauraders()
-			for( var/turf/T in get_area_turfs(shuttle_area))
+			for(var/turf/T in get_area_turfs(shuttle_area))
 				var/mob/M = locate(/mob) in T
 				to_chat(M, "<span class='danger'>You have arrived at [GLOB.using_map.station_name]. Commence operation!</span>")
 
@@ -134,7 +134,7 @@
 	var/area/centcom/specops/special_ops = locate()//Where is the specops area located?
 	//Begin Marauder launchpad.
 	spawn(0)//So it parallel processes it.
-		for( var/obj/machinery/door/blast/M in special_ops)
+		for(var/obj/machinery/door/blast/M in special_ops)
 			switch(M.id)
 				if("ASSAULT0")
 					spawn(10)//1 second delay between each.
@@ -152,10 +152,10 @@
 		sleep(10)
 
 		var/spawn_marauder[] = new()
-		for( var/obj/effect/landmark/L in world)
+		for(var/obj/effect/landmark/L in world)
 			if(L.name == "Marauder Entry")
 				spawn_marauder.Add(L)
-		for( var/obj/effect/landmark/L in world)
+		for(var/obj/effect/landmark/L in world)
 			if(L.name == "Marauder Exit")
 				var/obj/effect/portal/P = new(L.loc)
 				P.set_invisibility(101)//So it is not seen by anyone.
@@ -165,7 +165,7 @@
 
 		sleep(10)
 
-		for( var/obj/machinery/mass_driver/M in special_ops)
+		for(var/obj/machinery/mass_driver/M in special_ops)
 			switch(M.id)
 				if("ASSAULT0")
 					spawn(10)
@@ -182,7 +182,7 @@
 
 		sleep(50)//Doors remain open for 5 seconds.
 
-		for( var/obj/machinery/door/blast/M in special_ops)
+		for(var/obj/machinery/door/blast/M in special_ops)
 			switch(M.id)//Doors close at the same time.
 				if("ASSAULT0")
 					spawn(0)

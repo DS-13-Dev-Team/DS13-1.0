@@ -31,7 +31,7 @@
 //Boxes are cardboard, so biodegradeable
 /obj/item/weapon/storage/box/get_biomass()
 	var/total = 0.2	//Little bit of cardboard is biomass itself
-	for( var/datum/D as anything in contents)
+	for (var/datum/D as anything in contents)
 		total += D.get_biomass()
 	return total
 
@@ -54,7 +54,7 @@
 		return
 	var/found = 0
 	// Close any open UI windows first
-	for( var/mob/M in range(1))
+	for(var/mob/M in range(1))
 		if (M.s_active == src)
 			src.close(M)
 		if ( M == user )

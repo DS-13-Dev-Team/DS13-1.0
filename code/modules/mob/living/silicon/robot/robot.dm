@@ -127,7 +127,7 @@
 	initialize_components()
 	//if(!unfinished)
 	// Create all the robot parts.
-	for( var/V in components) if(V != "power cell")
+	for(var/V in components) if(V != "power cell")
 		var/datum/robot_component/C = components[V]
 		C.installed = 1
 		C.wrapped = new C.external_type
@@ -162,7 +162,7 @@
 	var/mult = 1
 	if(storage)
 		mult += storage.rating
-	for( var/datum/matter_synth/M in module.synths)
+	for(var/datum/matter_synth/M in module.synths)
 		M.set_multiplier(mult)
 
 /mob/living/silicon/robot/proc/init()
@@ -368,7 +368,7 @@
 		return null
 
 	var/dat = "<HEAD><TITLE>[src.name] Self-Diagnosis Report</TITLE></HEAD><BODY>\n"
-	for( var/V in components)
+	for (var/V in components)
 		var/datum/robot_component/C = components[V]
 		dat += "<b>[C.name]</b><br><table><tr><td>Brute Damage:</td><td>[C.brute_damage]</td></tr><tr><td>Electronics Damage:</td><td>[C.electronics_damage]</td></tr><tr><td>Powered:</td><td>[(!C.idle_usage || C.is_powered()) ? "Yes" : "No"]</td></tr><tr><td>Toggled:</td><td>[ C.toggled ? "Yes" : "No"]</td></table><br>"
 
@@ -407,7 +407,7 @@
 	set desc = "Toggle a component, conserving power."
 
 	var/list/installed_components = list()
-	for( var/V in components)
+	for(var/V in components)
 		if(V == "power cell") continue
 		var/datum/robot_component/C = components[V]
 		if(C.installed)
@@ -467,7 +467,7 @@
 		show_jetpack_pressure()
 		stat(null, text("Lights: [lights_on ? "ON" : "OFF"]"))
 		if(module)
-			for( var/datum/matter_synth/ms in module.synths)
+			for(var/datum/matter_synth/ms in module.synths)
 				stat("[ms.name]: [ms.energy]/[ms.max_energy_multiplied]")
 
 /mob/living/silicon/robot/restrained()
@@ -483,7 +483,7 @@
 		return
 
 	if(opened) // Are they trying to insert something?
-		for( var/V in components)
+		for(var/V in components)
 			var/datum/robot_component/C = components[V]
 			if(!C.installed && istype(W, C.external_type))
 				if(!user.unEquip(W))
@@ -515,7 +515,7 @@
 			adjustBruteLoss(-30)
 			updatehealth()
 			add_fingerprint(user)
-			for( var/mob/O in viewers(user, null))
+			for(var/mob/O in viewers(user, null))
 				O.show_message(text("<span class='warning'>[user] has fixed some of the dents on [src]!</span>"), 1)
 		else
 			to_chat(user, "Need more welding fuel!")
@@ -530,7 +530,7 @@
 			user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 			adjustFireLoss(-30)
 			updatehealth()
-			for( var/mob/O in viewers(user, null))
+			for(var/mob/O in viewers(user, null))
 				O.show_message(text("<span class='warning'>[user] has fixed some of the burnt wires on [src]!</span>"), 1)
 
 	else if(isCrowbar(W))	// crowbar means open or close the cover - we all know what a crowbar is by now
@@ -563,7 +563,7 @@
 			else
 				// Okay we're not removing the cell or an MMI, but maybe something else?
 				var/list/removable_components = list()
-				for( var/V in components)
+				for(var/V in components)
 					if(V == "power cell") continue
 					var/datum/robot_component/C = components[V]
 					if(C.installed == 1 || C.installed == -1)
@@ -747,7 +747,7 @@
 		return 1
 	if(!I || !istype(I, /obj/item/weapon/card/id) || !I.access) //not ID or no access
 		return 0
-	for( var/req in req_access)
+	for(var/req in req_access)
 		if(req in I.access) //have one of the required accesses
 			return 1
 	return 0
@@ -805,7 +805,7 @@
 	<B>Installed Modules</B><BR><BR>"}
 
 
-	for( var/obj in module.modules)
+	for (var/obj in module.modules)
 		if (!obj)
 			dat += text("<B>Resource depleted</B><BR>")
 		else if(activated(obj))
@@ -912,7 +912,7 @@
 				if (istype(tile, /turf/simulated))
 					var/turf/simulated/S = tile
 					S.dirt = 0
-				for( var/A in tile)
+				for(var/A in tile)
 					if(istype(A, /obj/effect))
 						if(istype(A, /obj/effect/rune) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
 							qdel(A)

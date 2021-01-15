@@ -113,7 +113,7 @@
 /obj/item/weapon/storage/fancy/crayons/update_icon()
 	overlays = list() //resets list
 	overlays += image('icons/obj/crayons.dmi',"crayonbox")
-	for( var/obj/item/weapon/pen/crayon/crayon in contents)
+	for(var/obj/item/weapon/pen/crayon/crayon in contents)
 		overlays += image('icons/obj/crayons.dmi',crayon.colourName)
 
 ////////////
@@ -153,7 +153,7 @@
 	if(M == user && user.zone_sel.selecting == BP_MOUTH && contents.len > 0 && !user.wear_mask)
 		// Find ourselves a cig. Note that we could be full of lighters.
 		var/obj/item/clothing/mask/smokable/cigarette/cig = null
-		for( var/obj/item/clothing/mask/smokable/cigarette/C in contents)
+		for(var/obj/item/clothing/mask/smokable/cigarette/C in contents)
 			cig = C
 			break
 

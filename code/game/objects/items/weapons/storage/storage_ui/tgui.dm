@@ -34,11 +34,11 @@
 	if(!cached_ui_data)
 
 		var/list/items_by_name_and_type = list()
-		for( var/obj/item/W in storage)
+		for(var/obj/item/W in storage)
 			group_by(items_by_name_and_type, "[W.name]�[W.type]", W)
 
 		var/list/item_list = list()
-		for( var/name_and_type in items_by_name_and_type)
+		for(var/name_and_type in items_by_name_and_type)
 			var/list/items = items_by_name_and_type[name_and_type]
 			var/obj/item/first_item = items[1]
 			item_list[++item_list.len] = list("name" = first_item.name, "type" = any2ref(first_item.type), "amount" = items.len)
@@ -63,7 +63,7 @@
 		return FALSE
 	if(!item_type)
 		return FALSE
-	for( var/obj/item/W in storage)
+	for(var/obj/item/W in storage)
 		if(W.name == name && W.type == item_type)
 			if(storage.remove_from_storage(W))
 				return TRUE

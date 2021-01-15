@@ -54,9 +54,9 @@
 /obj/machinery/organ_printer/RefreshParts()
 	print_delay = initial(print_delay)
 	max_stored_matter = 0
-	for( var/obj/item/weapon/stock_parts/matter_bin/bin in component_parts)
+	for(var/obj/item/weapon/stock_parts/matter_bin/bin in component_parts)
 		max_stored_matter += bin.rating * 50
-	for( var/obj/item/weapon/stock_parts/manipulator/manip in component_parts)
+	for(var/obj/item/weapon/stock_parts/manipulator/manip in component_parts)
 		print_delay -= (manip.rating-1)*10
 	print_delay = max(0,print_delay)
 	. = ..()
@@ -233,7 +233,7 @@
 
 /obj/machinery/organ_printer/flesh/attackby(obj/item/weapon/W, mob/user)
 	// Load with matter for printing.
-	for( var/path in amount_list)
+	for(var/path in amount_list)
 		if(istype(W, path))
 			if(max_stored_matter == stored_matter)
 				to_chat(user, "<span class='warning'>\The [src] is too full.</span>")

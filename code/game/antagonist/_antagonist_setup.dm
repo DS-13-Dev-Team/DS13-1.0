@@ -20,21 +20,21 @@
 		return GLOB.all_antag_types_[antag_type]
 	else
 		var/list/all_antag_types = GLOB.all_antag_types_
-		for( var/cur_antag_type in all_antag_types)
+		for(var/cur_antag_type in all_antag_types)
 			var/datum/antagonist/antag = all_antag_types[cur_antag_type]
 			if(antag && antag.is_type(antag_type))
 				return antag
 
 /proc/clear_antag_roles(datum/mind/player, implanted)
 	var/list/all_antag_types = GLOB.all_antag_types_
-	for( var/antag_type in all_antag_types)
+	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
 		if(!implanted || !(antag.flags & ANTAG_IMPLANT_IMMUNE))
 			antag.remove_antagonist(player, 1, implanted)
 
 /proc/update_antag_icons(datum/mind/player)
 	var/list/all_antag_types = GLOB.all_antag_types_
-	for( var/antag_type in all_antag_types)
+	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
 		if(player)
 			antag.update_icons_removed(player)
@@ -51,7 +51,7 @@
 
 /proc/player_is_antag(datum/mind/player, only_offstation_roles = 0)
 	var/list/all_antag_types = GLOB.all_antag_types_
-	for( var/antag_type in all_antag_types)
+	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
 		if(only_offstation_roles && !(antag.flags & ANTAG_OVERRIDE_JOB))
 			continue

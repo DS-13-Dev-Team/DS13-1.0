@@ -1,5 +1,5 @@
 /proc/get_archeological_find_by_findtype(find_type)
-	for( var/T in typesof(/obj/item/weapon/archaeological_find))
+	for(var/T in typesof(/obj/item/weapon/archaeological_find))
 		var/obj/item/weapon/archaeological_find/F = T
 		if(find_type == initial(F.find_type))
 			return T
@@ -46,7 +46,7 @@
 			descriptors.Add("menaces with spikes of [pick("solid phoron","uranium","white pearl","black steel")]")
 		if(descriptors.len > 0)
 			decorations = "It "
-			for( var/index=1, index <= descriptors.len, index++)
+			for(var/index=1, index <= descriptors.len, index++)
 				if(index > 1)
 					if(index == descriptors.len)
 						decorations += " and "
@@ -406,7 +406,7 @@
 	new_gun.loaded.Cut()
 	if(prob(33))
 		var/num_bullets = rand(1, new_gun.max_shells)
-		for( var/i = 1 to num_bullets)
+		for(var/i = 1 to num_bullets)
 			var/obj/item/ammo_casing/A = new new_gun.ammo_type(new_gun)
 			new_gun.loaded += A
 			if(A.caliber != new_gun.caliber)

@@ -26,7 +26,7 @@ var/list/stored_shock_by_ref = list()
 			var/list/shifts = equip_adjust[slot]
 
 			// Apply all pixel shifts for each direction.
-			for( var/shift_facing in shifts)
+			for(var/shift_facing in shifts)
 				var/list/facing_list = shifts[shift_facing]
 				var/use_dir = text2dir(shift_facing)
 

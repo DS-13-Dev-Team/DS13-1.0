@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(floating_chat_colors)
 	var/image/understood = generate_floating_text(src, capitalize(message), style, fontsize, duration, show_to)
 	var/image/gibberish = language ? generate_floating_text(src, language.scramble(message), style, fontsize, duration, show_to) : understood
 
-	for( var/client/C in show_to)
+	for(var/client/C in show_to)
 		if(C.get_preference_value(/datum/client_preference/floating_messages) == GLOB.PREF_SHOW)
 			if(C.mob.say_understands(null, language))
 				C.images += understood
@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(floating_chat_colors)
 	I.maptext = "<center><span style=\"[style]\">[message]</span></center>"
 	animate(I, 1, alpha = 255, pixel_y = 16)
 
-	for( var/image/old in holder.stored_chat_text)
+	for(var/image/old in holder.stored_chat_text)
 		animate(old, 2, pixel_y = old.pixel_y + 4)
 	LAZYADD(holder.stored_chat_text, I)
 

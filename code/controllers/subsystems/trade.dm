@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(trade)
 
 /datum/controller/subsystem/trade/Initialize()
 	. = ..()
-	for( var/i in 1 to rand(1,3))
+	for(var/i in 1 to rand(1,3))
 		generate_trader(1)
 
 /datum/controller/subsystem/trade/fire(resumed = FALSE)
@@ -42,10 +42,10 @@ SUBSYSTEM_DEF(trade)
 		else
 			possible += subtypesof(/datum/trader/ship) - typesof(/datum/trader/ship/unique)
 
-	for( var/i in 1 to 10)
+	for(var/i in 1 to 10)
 		var/type = pick(possible)
 		var/bad = 0
-		for( var/trader in traders)
+		for(var/trader in traders)
 			if(istype(trader,type))
 				bad = 1
 				break

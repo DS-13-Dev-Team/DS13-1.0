@@ -14,7 +14,7 @@
 	var/list/L = user.feats[DEITY_BLOOD_CRAFT]
 	if(!L)
 		L = list()
-	for( var/type in recipes)
+	for(var/type in recipes)
 		L[type] = recipes[type]
 	user.feats[DEITY_BLOOD_CRAFT] = L
 

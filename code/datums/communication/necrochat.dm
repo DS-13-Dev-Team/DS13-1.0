@@ -50,7 +50,7 @@
 
 	message = "<span class='[style]'>[sender_name ? sender_name+": ":""][message]</span>"
 
-	for( var/ckey in SSnecromorph.necromorph_players)
+	for (var/ckey in SSnecromorph.necromorph_players)
 		var/datum/player/P = SSnecromorph.necromorph_players[ckey]
 		if (P)
 			var/client/target = P.get_client()
@@ -63,7 +63,7 @@
 			SSnecromorph.necromorph_players -= ckey
 
 	var/list/valid_admins = GLOB.admins - messaged
-	for( var/client/target in valid_admins)
+	for(var/client/target in valid_admins)
 		receive_communication(A, target, message)
 
 
@@ -127,7 +127,7 @@
 //-------------------------
 /proc/message_necromorphs(message, include_admins = TRUE, messaged = list())
 	//Message all the necromorphs
-	for( var/ckey in SSnecromorph.necromorph_players)
+	for (var/ckey in SSnecromorph.necromorph_players)
 		var/datum/player/P = SSnecromorph.necromorph_players[ckey]
 		var/mob/M = P.get_mob()
 		if (!(M in messaged))
@@ -137,7 +137,7 @@
 
 	//Message all the admins too, but only if they have show necrochat enabled
 	var/list/valid_admins = GLOB.admins - messaged
-	for( var/client/C in valid_admins)
+	for(var/client/C in valid_admins)
 		if ((C.mob in messaged))
 			continue
 		if(C.get_preference_value(/datum/client_preference/show_necrochat) == GLOB.PREF_SHOW)
@@ -146,6 +146,6 @@
 
 	//Message all the unitologists too
 	/*
-	for( var/atom/M in GLOB.unitologists_list)
+	for(var/atom/M in GLOB.unitologists_list)
 		to_chat(M, "<span class='cult'>[src]: [message]</span>")
 		*/

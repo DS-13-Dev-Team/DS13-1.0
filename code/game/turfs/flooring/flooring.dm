@@ -3,7 +3,7 @@ var/list/flooring_types
 /proc/get_flooring_data(flooring_path)
 	if(!flooring_types)
 		flooring_types = list()
-		for( var/path in typesof(/decl/flooring))
+		for(var/path in typesof(/decl/flooring))
 			flooring_types["[path]"] = new path
 	return flooring_types["[flooring_path]"]
 
@@ -223,7 +223,7 @@ var/list/flooring_types
 	else return null
 
 /decl/flooring/reinforced/plating/under/Entered(mob/living/M as mob)
-	for( var/obj/structure/catwalk/C in get_turf(M))
+	for(var/obj/structure/catwalk/C in get_turf(M))
 		return
 
 	//BSTs need this or they generate tons of soundspam while flying through the ship

@@ -6,7 +6,7 @@
 	var/center = get_turf(origin)
 	if(!center)
 		return
-	for( var/i = 0 to range)
+	for(var/i = 0 to range)
 		center = get_step(center, origin.dir)
 		if(!center) // Reached the end of the world most likely
 			return
@@ -17,7 +17,7 @@
 	var/center = get_turf(origin)
 	if(!center)
 		return
-	for( var/turf/T in trange(range, center))
+	for(var/turf/T in trange(range, center))
 		. += T
 
 
@@ -38,5 +38,5 @@
 //Solid line ensures it has no gaps in it
 /decl/turf_selection/solidline/get_turfs(atom/origin, range, target)
 	. = get_line_between(origin, target, FALSE, TRUE)
-	for( var/turf/T in .)
+	for (var/turf/T in .)
 		debug_mark_turf(T)

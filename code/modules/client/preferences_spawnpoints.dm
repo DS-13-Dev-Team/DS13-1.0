@@ -3,7 +3,7 @@ GLOBAL_VAR(spawntypes)
 /proc/spawntypes()
 	if(!GLOB.spawntypes)
 		GLOB.spawntypes = list()
-		for( var/type in typesof(/datum/spawnpoint)-/datum/spawnpoint)
+		for(var/type in typesof(/datum/spawnpoint)-/datum/spawnpoint)
 			var/datum/spawnpoint/S = type
 			var/display_name = initial(S.display_name)
 			if((display_name in GLOB.using_map.allowed_spawns) || initial(S.always_visible))
@@ -61,7 +61,7 @@ GLOBAL_VAR(spawntypes)
 /datum/spawnpoint/proc/get_safe_turf(mob/spawner, guaranteed = TRUE)
 	var/list/checkturfs = turfs.Copy()
 	checkturfs = shuffle(checkturfs)
-	for( var/t in checkturfs)
+	for (var/t in checkturfs)
 		if (turf_is_safe(spawner, t))
 			return t
 

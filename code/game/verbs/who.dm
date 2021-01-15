@@ -8,7 +8,7 @@
 	var/list/Lines = list()
 
 	if(check_rights(R_INVESTIGATE, 0))
-		for( var/client/C in GLOB.clients)
+		for(var/client/C in GLOB.clients)
 			var/entry = "\t[C.key]"
 			if(!C.mob) //If mob is null, print error and skip rest of info for client.
 				entry += " - <font color='red'><i>HAS NO MOB</i></font>"
@@ -49,11 +49,11 @@
 			entry += " (<A HREF='?_src_=holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
 			Lines += entry
 	else
-		for( var/client/C in GLOB.clients)
+		for(var/client/C in GLOB.clients)
 			if(!C.is_stealthed())
 				Lines += C.key
 
-	for( var/line in sortList(Lines))
+	for(var/line in sortList(Lines))
 		msg += "[line]\n"
 
 	msg += "<b>Total Players: [length(Lines)]</b>"
@@ -73,7 +73,7 @@
 	var/ment_count = 0
 	var/dev_count = 0
 
-	for( var/client in GLOB.admins)
+	for(var/client in GLOB.admins)
 		var/client/C = client
 		if(C.is_stealthed() && !check_rights(R_MOD|R_ADMIN, 0, src)) // Normal players and mentors can't see stealthmins
 			continue

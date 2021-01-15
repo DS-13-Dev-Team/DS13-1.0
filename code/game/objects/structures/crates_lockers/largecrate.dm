@@ -8,7 +8,7 @@
 
 /obj/structure/largecrate/Initialize()
 	. = ..()
-	for( var/obj/I in src.loc)
+	for(var/obj/I in src.loc)
 		if(I.density || I.anchored || I == src || !I.simulated)
 			continue
 		I.forceMove(src)
@@ -21,7 +21,7 @@
 	if(isCrowbar(W))
 		new /obj/item/stack/material/wood(src)
 		var/turf/T = get_turf(src)
-		for( var/atom/movable/AM in contents)
+		for(var/atom/movable/AM in contents)
 			if(AM.simulated) AM.forceMove(T)
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
 							 "<span class='notice'>You pry open \the [src].</span>", \
@@ -58,7 +58,7 @@
 /obj/structure/largecrate/animal/New()
 	..()
 	if(held_type)
-		for( var/i = 1;i<=held_count;i++)
+		for(var/i = 1;i<=held_count;i++)
 			new held_type(src)
 
 /obj/structure/largecrate/animal/mulebot

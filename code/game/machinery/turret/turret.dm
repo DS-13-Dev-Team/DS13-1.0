@@ -642,7 +642,7 @@ var/list/turret_icons
 	var/list/secondarytargets = list()	//targets that are least important
 
 
-	for( var/mob/M in mobs_in_view(world.view, src))
+	for(var/mob/M in mobs_in_view(world.view, src))
 		assess_and_assign(M, targets, secondarytargets)
 
 	if(!targets.len && !secondarytargets.len)

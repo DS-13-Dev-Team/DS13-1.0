@@ -16,7 +16,7 @@
 
 /datum/money_account/proc/get_balance()
 	. = 0
-	for( var/datum/transaction/T in transaction_log)
+	for(var/datum/transaction/T in transaction_log)
 		if(T.purpose == "Account creation")
 			continue
 		T.sanitize_amount()
@@ -128,6 +128,6 @@
 		return D
 
 /proc/get_account(account_number)
-	for( var/datum/money_account/D in all_money_accounts)
+	for(var/datum/money_account/D in all_money_accounts)
 		if(D.account_number == account_number)
 			return D

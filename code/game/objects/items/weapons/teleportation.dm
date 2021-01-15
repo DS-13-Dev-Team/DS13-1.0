@@ -19,7 +19,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	w_class = ITEM_SIZE_SMALL
 	item_state = "electronic"
-
+	
 	throw_range = 20
 	origin_tech = list(TECH_MAGNET = 1)
 	matter = list(MATERIAL_STEEL = 400)
@@ -60,7 +60,7 @@ Frequency:
 			if (sr)
 				src.temp += "<B>Located Beacons:</B><BR>"
 
-				for( var/obj/item/device/radio/beacon/W in world)
+				for(var/obj/item/device/radio/beacon/W in world)
 					if (W.frequency == src.frequency)
 						var/turf/tr = get_turf(W)
 						if (tr.z == sr.z && tr)
@@ -78,7 +78,7 @@ Frequency:
 							src.temp += "[W.code]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
 
 				src.temp += "<B>Extranneous Signals:</B><BR>"
-				for( var/obj/item/weapon/implant/tracking/W in world)
+				for (var/obj/item/weapon/implant/tracking/W in world)
 					if (!W.implanted || !(istype(W.loc,/obj/item/organ/external) || ismob(W.loc)))
 						continue
 					else
@@ -113,7 +113,7 @@ Frequency:
 		if (istype(src.loc, /mob))
 			attack_self(src.loc)
 		else
-			for( var/mob/M in viewers(1, src))
+			for(var/mob/M in viewers(1, src))
 				if (M.client)
 					src.attack_self(M)
 	return

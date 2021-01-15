@@ -14,7 +14,7 @@
 
 /datum/unit_test/subsystem_shall_be_initialized/start_test()
 	var/list/bad_subsystems = list()
-	for( var/datum/controller/subsystem/SS in Master.subsystems)
+	for(var/datum/controller/subsystem/SS in Master.subsystems)
 		if (SS.flags & SS_NO_INIT)
 			continue
 		if(!SS.initialized)

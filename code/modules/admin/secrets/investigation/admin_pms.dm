@@ -15,7 +15,7 @@
 	dat += "<table border='1' style='width:100%;border-collapse:collapse;'>"
 	dat += "<tr><th style='text-align:left;'>Time</th><th style='text-align:left;'>Sender</th><th style='text-align:left;'>Receiver</th></tr>"
 
-	for( var/datum/admin_privat_message/pm in admin_pm_repository.admin_pms_)
+	for(var/datum/admin_privat_message/pm in admin_pm_repository.admin_pms_)
 		var/datum/client_lite/sender = pm.sender
 		var/datum/client_lite/receiver = pm.receiver
 

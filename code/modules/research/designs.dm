@@ -1322,7 +1322,7 @@
 	if(!fabrication)
 		return
 	var/obj/O = fabrication.create(newloc)
-	for( var/obj/item/integrated_circuit/circ in O.contents)
+	for(var/obj/item/integrated_circuit/circ in O.contents)
 		circ.removable = 0
 	return O
 

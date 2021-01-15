@@ -18,7 +18,7 @@
 	var/list/bad_areas = list()
 	var/area_test_count = 0
 
-	for( var/area/A in world)
+	for(var/area/A in world)
 		if(!A.z)
 			continue
 		if(!isPlayerLevel(A.z))
@@ -61,7 +61,7 @@
 
 /datum/unit_test/apc_area_test/proc/get_exemptions(area)
 	// We assume deeper types come last
-	for( var/i = GLOB.using_map.apc_test_exempt_areas.len; i>0; i--)
+	for(var/i = GLOB.using_map.apc_test_exempt_areas.len; i>0; i--)
 		var/exempt_type = GLOB.using_map.apc_test_exempt_areas[i]
 		if(istype(area, exempt_type))
 			return GLOB.using_map.apc_test_exempt_areas[exempt_type]
@@ -109,7 +109,7 @@
 /datum/unit_test/wire_dir_and_icon_stat/start_test()
 	var/list/bad_cables = list()
 
-	for( var/obj/structure/cable/C in world)
+	for(var/obj/structure/cable/C in world)
 		var/expected_icon_state = "[C.d1]-[C.d2]"
 		if(C.icon_state != expected_icon_state)
 			bad_cables |= C
@@ -133,10 +133,10 @@
 /datum/unit_test/closet_test/start_test()
 	var/bad_tests = 0
 
-	for( var/obj/structure/closet/C in world)
+	for(var/obj/structure/closet/C in world)
 		if(!C.opened && isPlayerLevel(C.z))
 			var/total_content_size = 0
-			for( var/atom/movable/AM in C.contents)
+			for(var/atom/movable/AM in C.contents)
 				total_content_size += C.content_size(AM)
 			if(total_content_size > C.storage_capacity)
 				log_bad("[log_info_line(C)] contains more objects than able to hold ([total_content_size] / [C.storage_capacity]).")
@@ -157,7 +157,7 @@
 /datum/unit_test/closet_containment_test/start_test()
 	var/bad_tests = 0
 
-	for( var/obj/structure/closet/C in world)
+	for(var/obj/structure/closet/C in world)
 		if(!C.opened && isPlayerLevel(C.z))
 			var/contents_pre_open = C.contents.Copy()
 			C.dump_contents()
@@ -186,7 +186,7 @@
 /datum/unit_test/storage_map_test/start_test()
 	var/bad_tests = 0
 
-	for( var/obj/item/weapon/storage/S in world)
+	for(var/obj/item/weapon/storage/S in world)
 		if(isPlayerLevel(S.z))
 			var/bad_msg = "[ascii_red]--------------- [S.name] \[[S.type]\] \[[S.x] / [S.y] / [S.z]\]"
 			bad_tests += test_storage_capacity(S, bad_msg)
@@ -204,7 +204,7 @@
 /datum/unit_test/map_image_map_test/start_test()
 	var/failed = FALSE
 
-	for( var/z in GLOB.using_map.map_levels)
+	for(var/z in GLOB.using_map.map_levels)
 		var/file_name = map_image_file_name(z)
 		var/file_path = MAP_IMAGE_PATH + file_name
 		if(!fexists(file_path))
@@ -226,7 +226,7 @@ datum/unit_test/correct_allowed_spawn_test
 datum/unit_test/correct_allowed_spawn_test/start_test()
 	var/failed = FALSE
 
-	for( var/spawn_name in GLOB.using_map.allowed_spawns)
+	for(var/spawn_name in GLOB.using_map.allowed_spawns)
 		var/datum/spawnpoint/spawnpoint = spawntypes()[spawn_name]
 		if(!spawnpoint)
 			log_unit_test("Map allows spawning in [spawn_name], but [spawn_name] is null!")
@@ -237,10 +237,10 @@ datum/unit_test/correct_allowed_spawn_test/start_test()
 
 	if(failed)
 		log_unit_test("Following spawn points exist:")
-		for( var/spawnpoint in spawntypes())
+		for(var/spawnpoint in spawntypes())
 			log_unit_test("\t[spawnpoint] ([any2ref(spawnpoint)])")
 		log_unit_test("Following spawn points are allowed:")
-		for( var/spawnpoint in GLOB.using_map.allowed_spawns)
+		for(var/spawnpoint in GLOB.using_map.allowed_spawns)
 			log_unit_test("\t[spawnpoint] ([any2ref(spawnpoint)])")
 		fail("Some of the entries in allowed_spawns have no spawnpoint turfs.")
 	else
@@ -266,7 +266,7 @@ datum/unit_test/ladder_check
 
 datum/unit_test/ladder_check/start_test()
 	var/succeeded = TRUE
-	for( var/obj/structure/ladder/L)
+	for(var/obj/structure/ladder/L)
 		if(L.allowed_directions & UP)
 			succeeded = check_direction(L, GetAbove(L), UP, DOWN) && succeeded
 		if(L.allowed_directions & DOWN)
@@ -308,7 +308,7 @@ datum/unit_test/ladder_check/start_test()
 	var/safe_landmarks = 0
 	var/space_landmarks = 0
 
-	for( var/lm in landmarks_list)
+	for(var/lm in landmarks_list)
 		var/obj/effect/landmark/landmark = lm
 		if(istype(landmark, /obj/effect/landmark/test/safe_turf))
 			log_debug("Safe landmark found: [log_info_line(landmark)]")
@@ -338,12 +338,12 @@ datum/unit_test/ladder_check/start_test()
 /datum/unit_test/cryopod_comp_check/start_test()
 	var/pass = TRUE
 
-	for( var/obj/machinery/cryopod/C in SSmachines.machinery)
+	for(var/obj/machinery/cryopod/C in SSmachines.machinery)
 		if(!C.control_computer)
 			log_bad("[get_area(C)] lacks a cryopod control computer while holding a cryopod.")
 			pass = FALSE
 
-	for( var/obj/machinery/computer/cryopod/C in SSmachines.machinery)
+	for(var/obj/machinery/computer/cryopod/C in SSmachines.machinery)
 		if(!(locate(/obj/machinery/cryopod) in get_area(C)))
 			log_bad("[get_area(C)] lacks a cryopod while holding a control computer.")
 			pass = FALSE
@@ -363,7 +363,7 @@ datum/unit_test/ladder_check/start_test()
 /datum/unit_test/camera_nil_c_tag_check/start_test()
 	var/pass = TRUE
 
-	for( var/obj/machinery/camera/C in world)
+	for(var/obj/machinery/camera/C in world)
 		if(!C.c_tag)
 			log_bad("Following camera does not have a c_tag set: [log_info_line(C)]")
 			pass = FALSE
@@ -384,7 +384,7 @@ datum/unit_test/ladder_check/start_test()
 	var/cameras_by_ctag = list()
 	var/checked_cameras = 0
 
-	for( var/obj/machinery/camera/C in world)
+	for(var/obj/machinery/camera/C in world)
 		if(!C.c_tag)
 			continue
 		checked_cameras++
@@ -419,7 +419,7 @@ datum/unit_test/ladder_check/start_test()
 		num2text(SOUTH) = list(list(SOUTH, list(NORTH, WEST)), list(EAST,  list(NORTH, EAST))),
 		num2text(WEST)  = list(list(EAST,  list(NORTH, EAST)), list(SOUTH, list(SOUTH, EAST))))
 
-	for( var/obj/structure/disposalpipe/segment/D in world)
+	for(var/obj/structure/disposalpipe/segment/D in world)
 		if(D.icon_state == "pipe-s")
 			if(!(D.dir == SOUTH || D.dir == EAST))
 				log_bad("Following disposal pipe has an invalid direction set: [log_info_line(D)]")
@@ -455,7 +455,7 @@ datum/unit_test/ladder_check/start_test()
 		return FALSE
 
 	// We need to loop over all potential pipes in a turf as long as there isn't a dir match, as they may be overlapping (i.e. 2 straight pipes in a cross)
-	for( var/obj/structure/disposalpipe/D in T)
+	for(var/obj/structure/disposalpipe/D in T)
 		if(D.type == /obj/structure/disposalpipe/segment)
 			if(D.icon_state == "pipe-s")
 				if(D.dir == straight_dir)
@@ -474,7 +474,7 @@ datum/unit_test/ladder_check/start_test()
 
 /datum/unit_test/simple_pipes_shall_not_face_north_or_west/start_test()
 	var/failures = 0
-	for( var/obj/machinery/atmospherics/pipe/simple/pipe in SSmachines.machinery)
+	for(var/obj/machinery/atmospherics/pipe/simple/pipe in SSmachines.machinery)
 		if(!istype(pipe, /obj/machinery/atmospherics/pipe/simple/hidden) && !istype(pipe, /obj/machinery/atmospherics/pipe/simple/visible))
 			continue
 		if(pipe.dir == NORTH || pipe.dir == WEST)
@@ -494,9 +494,9 @@ datum/unit_test/ladder_check/start_test()
 
 /datum/unit_test/shutoff_valves_shall_connect_to_two_different_pipe_networks/start_test()
 	var/failures = 0
-	for( var/obj/machinery/atmospherics/valve/shutoff/SV in SSmachines.machinery)
+	for(var/obj/machinery/atmospherics/valve/shutoff/SV in SSmachines.machinery)
 		SV.close()
-	for( var/obj/machinery/atmospherics/valve/shutoff/SV in SSmachines.machinery)
+	for(var/obj/machinery/atmospherics/valve/shutoff/SV in SSmachines.machinery)
 		if(SV.network_node1 == SV.network_node2)
 			log_bad("Following shutoff valve does not connect to two different pipe networks: [log_info_line(SV)]")
 			failures++

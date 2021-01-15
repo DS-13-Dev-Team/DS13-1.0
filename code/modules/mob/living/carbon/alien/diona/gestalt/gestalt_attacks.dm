@@ -1,4 +1,4 @@
-/obj/structure/diona_gestalt/attack_generic(mob/user, damage, attack_message)
+/obj/structure/diona_gestalt/attack_generic(var/mob/user, damage, attack_message)
 	if(user.loc == src)
 		return
 
@@ -9,15 +9,15 @@
 	visible_message("<span class='danger'>\The [user] has [attack_message] \the [src]!</span>")
 	shed_nymph(forcefully = TRUE)
 
-/obj/structure/diona_gestalt/attackby(obj/item/thing, mob/user)
+/obj/structure/diona_gestalt/attackby(var/obj/item/thing, mob/user)
 	. = ..()
 	if(thing.force) shed_nymph(forcefully = TRUE)
 
-/obj/structure/diona_gestalt/hitby(atom/movable/AM, speed = THROWFORCE_SPEED_DIVISOR)
+/obj/structure/diona_gestalt/hitby(var/atom/movable/AM, speed = THROWFORCE_SPEED_DIVISOR)
 	. = ..()
 	shed_nymph(forcefully = TRUE)
 
-/obj/structure/diona_gestalt/bullet_act(obj/item/projectile/P, def_zone)
+/obj/structure/diona_gestalt/bullet_act(var/obj/item/projectile/P, def_zone)
 	. = ..()
 	if(P && (P.damage_type == BRUTE || P.damage_type == BURN))
 		shed_nymph(forcefully = TRUE)

@@ -18,7 +18,7 @@
 
 /datum/phenomena/dimensional_locker/activate(atom/a, mob/living/deity/user)
 	..()
-	for( var/i in cabinet)
+	for(var/i in cabinet)
 		if(ismob(i))
 			var/mob/M = i
 			M.forceMove(get_turf(cabinet))
@@ -30,7 +30,7 @@
 		//No dense turf/stuff
 		if(T.density)
 			return
-		for( var/i in T)
+		for(var/i in T)
 			var/atom/A = i
 			if(A.density)
 				return
@@ -64,7 +64,7 @@
 	portals -= portal
 	GLOB.destroyed_event.unregister(portal,src)
 	var/turf/T = get_turf(portal)
-	for( var/obj/effect/portal/P in portals)
+	for(var/obj/effect/portal/P in portals)
 		if(P.target == T)
 			P.target = null
 
@@ -98,7 +98,7 @@
 	density = 0
 
 /obj/effect/rift/Destroy()
-	for( var/o in contents)
+	for(var/o in contents)
 		var/atom/movable/M = o
 		M.forceMove(get_turf(src))
 	. = ..()

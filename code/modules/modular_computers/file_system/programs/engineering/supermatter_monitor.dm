@@ -45,7 +45,7 @@
 	if(!T)
 		return
 	var/valid_z_levels = (GetConnectedZlevels(T.z) & GLOB.using_map.station_levels)
-	for( var/obj/machinery/power/supermatter/S in SSmachines.machinery)
+	for(var/obj/machinery/power/supermatter/S in SSmachines.machinery)
 		// Delaminating, not within coverage, not on a tile.
 		if(S.grav_pulling || S.exploded || !(S.z in valid_z_levels) || !istype(S.loc, /turf/))
 			continue
@@ -56,7 +56,7 @@
 
 /datum/nano_module/supermatter_monitor/proc/get_status()
 	. = SUPERMATTER_INACTIVE
-	for( var/obj/machinery/power/supermatter/S in supermatters)
+	for(var/obj/machinery/power/supermatter/S in supermatters)
 		. = max(., S.get_status())
 
 /datum/nano_module/supermatter_monitor/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.default_state)
@@ -94,7 +94,7 @@
 			data["SM_gas_H2"] = 0
 	else
 		var/list/SMS = list()
-		for( var/obj/machinery/power/supermatter/S in supermatters)
+		for(var/obj/machinery/power/supermatter/S in supermatters)
 			var/area/A = get_area(S)
 			if(!A)
 				continue
@@ -128,7 +128,7 @@
 		return 1
 	if( href_list["set"] )
 		var/newuid = text2num(href_list["set"])
-		for( var/obj/machinery/power/supermatter/S in supermatters)
+		for(var/obj/machinery/power/supermatter/S in supermatters)
 			if(S.uid == newuid)
 				active = S
 		return 1

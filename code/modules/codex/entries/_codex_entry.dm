@@ -24,7 +24,7 @@
 	if(_antag_text)         antag_text =         _antag_text
 
 	if(associated_paths && associated_paths.len)
-		for( var/tpath in associated_paths)
+		for(var/tpath in associated_paths)
 			var/atom/thing = tpath
 			LAZYADD(associated_strings, sanitize(lowertext(initial(thing.name))))
 	if(display_name)

@@ -87,7 +87,7 @@
 
 /obj/item/weapon/tool/Initialize()
 	base_max_modifications = max_modifications
-	for( var/modtype in preinstalled_mods)
+	for(var/modtype in preinstalled_mods)
 		var/obj/item/weapon/tool_modification/TU = new modtype(src)
 		TU.apply(src)
 		TU.removeable = FALSE //Preinstalled mods are permanant
@@ -156,7 +156,7 @@
 	//Using a laser guided stabilised screwdriver is recommended. Precision mods will make this easier
 	if (modifications.len && C.has_quality(QUALITY_SCREW_DRIVING))
 		var/list/possibles = modifications.Copy()
-		for( var/obj/item/weapon/tool_modification/TU in possibles)
+		for (var/obj/item/weapon/tool_modification/TU in possibles)
 			if (!TU.removeable)
 				possibles.Remove(TU) //Some mods cannot be removed
 		possibles += "Cancel"
@@ -216,7 +216,7 @@
 
 	var/list/tm = matter.Copy()
 	//Every point of damage reduces matter by 2% of total
-	for( var/mat in tm)
+	for (var/mat in tm)
 		tm[mat] *= 1 - (unreliability * 0.02)
 
 	return tm
@@ -481,7 +481,7 @@
 			//Hit a random atom around you
 			if("swing")
 				var/list/targets = list()
-				for( var/atom/movable/AM in orange(user, 1))
+				for (var/atom/movable/AM in orange(user, 1))
 					targets.Add(AM)
 				if (!targets.len)
 					return
@@ -529,7 +529,7 @@
 
 				//To encourage using makeshift tools, modifications are preserved if the tool breaks
 				if (T)
-					for( var/obj/item/weapon/tool_modification/A in T.modifications)
+					for (var/obj/item/weapon/tool_modification/A in T.modifications)
 						A.forceMove(get_turf(src))
 						A.holder = null
 
@@ -584,7 +584,7 @@
 //Returns a assoc list which contains quality = value for the qualities we do have, and the ones we don't have removed
 /obj/proc/has_qualities(list/qualities)
 	if (tool_qualities && tool_qualities.len)
-		for( var/quality in qualities)
+		for (var/quality in qualities)
 			var/value = tool_qualities[quality]
 			if (value)
 				qualities[quality] = value
@@ -621,7 +621,7 @@
 	var/return_quality
 	if(L.len > 1)
 		return_quality = input(user,"What quality you using?", "Tool options", ABORT_CHECK) in L
-		//for( var/i in L)
+		//for(var/i in L)
 		//Radial menu not ported
 		//L[i] = image(icon = 'icons/mob/radial/tools.dmi', icon_state = i)
 		//return_quality = show_radial_menu(user, use_on ? use_on : user, L, tooltips = TRUE, require_near = TRUE, custom_check = CB)
@@ -785,10 +785,10 @@
 	prefixes = list()
 
 	//Now lets have each modification reapply its modifications
-	for( var/obj/item/weapon/tool_modification/T in modifications)
+	for (var/obj/item/weapon/tool_modification/T in modifications)
 		T.apply_values()
 
-	for( var/prefix in prefixes)
+	for (var/prefix in prefixes)
 		name = "[prefix] [name]"
 
 	//Set the fuel volume, incase any mods altered our max fuel
@@ -821,7 +821,7 @@
 
 	if (modifications.len)
 		user << "It has the following modifications installed:"
-		for( var/obj/item/weapon/tool_modification/TU in modifications)
+		for (var/obj/item/weapon/tool_modification/TU in modifications)
 			user << SPAN_NOTICE(TU.name)
 
 	if (unreliability)

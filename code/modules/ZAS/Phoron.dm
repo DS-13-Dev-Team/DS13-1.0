@@ -138,7 +138,7 @@ obj/var/contaminated = 0
 /mob/living/carbon/human/proc/pl_suit_protected()
 	//Checks if the suit is adequately sealed.
 	var/coverage = 0
-	for( var/obj/item/protection in list(wear_suit, gloves, shoes))
+	for(var/obj/item/protection in list(wear_suit, gloves, shoes))
 		if(!protection)
 			continue
 		if(vsc.plc.PHORONGUARD_ONLY && !(protection.item_flags & ITEM_FLAG_PHORONGUARD))
@@ -164,7 +164,7 @@ turf/Entered(obj/item/I)
 		var/datum/gas_mixture/env = return_air(1)
 		if(!env)
 			return
-		for( var/g in env.gas)
+		for(var/g in env.gas)
 			if(gas_data.flags[g] & XGM_GAS_CONTAMINANT && env.gas[g] > gas_data.overlay_limit[g] + 1)
 				I.contaminate()
 				break

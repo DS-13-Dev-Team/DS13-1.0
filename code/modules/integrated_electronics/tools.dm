@@ -185,7 +185,7 @@
 	last_scan = list()
 	last_scan += "Results from the scan of \the [assembly]:"
 	var/found_parts = FALSE
-	for( var/obj/item/integrated_circuit/part in assembly)
+	for(var/obj/item/integrated_circuit/part in assembly)
 		found_parts = TRUE
 		last_scan += "\t [initial(part.name)]"
 	if(!found_parts)
@@ -231,12 +231,12 @@
 		/obj/item/integrated_circuit/time/clock
 		)
 
-	for( var/thing in types_to_spawn)
+	for(var/thing in types_to_spawn)
 		var/obj/item/integrated_circuit/ic = thing
 		if(initial(ic.category) == thing)
 			continue
 
-		for( var/i = 1 to 4)
+		for(var/i = 1 to 4)
 			new thing(src)
 
 	new /obj/item/device/electronic_assembly(src)
@@ -250,11 +250,11 @@
 	. = ..()
 	SetName("[name] - not intended for general use")
 	desc = "[desc] - not intended for general use"
-	for( var/subtype in subtypesof(/obj/item/integrated_circuit))
+	for(var/subtype in subtypesof(/obj/item/integrated_circuit))
 		var/obj/item/integrated_circuit/ic = subtype
 		if(initial(ic.category) == subtype)
 			continue
-		for( var/i = 1 to 10)
+		for(var/i = 1 to 10)
 			new subtype(src)
 
 	new /obj/item/device/electronic_assembly(src)

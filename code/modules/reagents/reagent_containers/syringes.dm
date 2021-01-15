@@ -167,7 +167,7 @@
 
 			T.take_blood(src, amount)
 			to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
-			for( var/mob/O in viewers(4, user))
+			for(var/mob/O in viewers(4, user))
 				O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)
 
 	else //if not mob
@@ -275,7 +275,7 @@
 
 
 		if (target != user && H.getarmor(target_zone, "melee") > 5 && prob(50))
-			for( var/mob/O in viewers(world.view, user))
+			for(var/mob/O in viewers(world.view, user))
 				O.show_message(text("<span class='danger'>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</span>"), 1)
 			qdel(src)
 

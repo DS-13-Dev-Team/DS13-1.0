@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(tgui)
 	else if(isnull(tg_open_uis[src_object_key][ui_key]) || !istype(tg_open_uis[src_object_key][ui_key], /list))
 		return null // No UIs open for this object.
 
-	for( var/datum/tgui/ui in tg_open_uis[src_object_key][ui_key]) // Find UIs for this object.
+	for(var/datum/tgui/ui in tg_open_uis[src_object_key][ui_key]) // Find UIs for this object.
 		if(ui.user == user) // Make sure we have the right user
 			return ui
 
@@ -113,8 +113,8 @@ SUBSYSTEM_DEF(tgui)
 		return 0 // Couldn't find any UIs for this object.
 
 	var/update_count = 0
-	for( var/ui_key in tg_open_uis[src_object_key])
-		for( var/datum/tgui/ui in tg_open_uis[src_object_key][ui_key])
+	for(var/ui_key in tg_open_uis[src_object_key])
+		for(var/datum/tgui/ui in tg_open_uis[src_object_key][ui_key])
 			if(ui && ui.src_object && ui.user && ui.src_object.ui_host()) // Check the UI is valid.
 				ui.process(force = 1) // Update the UI.
 				update_count++ // Count each UI we update.
@@ -135,8 +135,8 @@ SUBSYSTEM_DEF(tgui)
 		return 0 // Couldn't find any UIs for this object.
 
 	var/close_count = 0
-	for( var/ui_key in tg_open_uis[src_object_key])
-		for( var/datum/tgui/ui in tg_open_uis[src_object_key][ui_key])
+	for(var/ui_key in tg_open_uis[src_object_key])
+		for(var/datum/tgui/ui in tg_open_uis[src_object_key][ui_key])
 			if(ui && ui.src_object && ui.user && ui.src_object.ui_host()) // Check the UI is valid.
 				ui.close() // Close the UI.
 				close_count++ // Count each UI we close.
@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(tgui)
 		return 0 // Couldn't find any UIs for this user.
 
 	var/update_count = 0
-	for( var/datum/tgui/ui in user.tg_open_uis)
+	for(var/datum/tgui/ui in user.tg_open_uis)
 		if((isnull(src_object) || !isnull(src_object) && ui.src_object == src_object) && (isnull(ui_key) || !isnull(ui_key) && ui.ui_key == ui_key))
 			ui.process(force = 1) // Update the UI.
 			update_count++ // Count each UI we upadte.
@@ -180,7 +180,7 @@ SUBSYSTEM_DEF(tgui)
 		return 0 // Couldn't find any UIs for this user.
 
 	var/close_count = 0
-	for( var/datum/tgui/ui in user.tg_open_uis)
+	for(var/datum/tgui/ui in user.tg_open_uis)
 		if((isnull(src_object) || !isnull(src_object) && ui.src_object == src_object) && (isnull(ui_key) || !isnull(ui_key) && ui.ui_key == ui_key))
 			ui.close() // Close the UI.
 			close_count++ // Count each UI we close.
@@ -265,7 +265,7 @@ SUBSYSTEM_DEF(tgui)
 	if(isnull(target.tg_open_uis) || !istype(target.tg_open_uis, /list))
 		target.tg_open_uis = list() // Create a list for the new mob if needed.
 
-	for( var/datum/tgui/ui in source.tg_open_uis)
+	for(var/datum/tgui/ui in source.tg_open_uis)
 		ui.user = target // Inform the UIs of their new owner.
 		target.tg_open_uis.Add(ui) // Transfer all the UIs.
 

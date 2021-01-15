@@ -76,7 +76,7 @@
 	. = ..()
 	to_chat(usr, "This kit will convert an exosuit into: [new_name].")
 	to_chat(usr, "This kit can be used on the following exosuit models:")
-	for( var/exotype in allowed_types)
+	for(var/exotype in allowed_types)
 		to_chat(usr, "- [capitalize(exotype)]")
 
 /obj/mecha/attackby(obj/item/weapon/W, mob/user)
@@ -88,7 +88,7 @@
 		var/obj/item/device/kit/paint/P = W
 		var/found = null
 
-		for( var/type in P.allowed_types)
+		for(var/type in P.allowed_types)
 			if(type==src.initial_icon)
 				found = 1
 				break

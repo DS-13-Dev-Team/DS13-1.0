@@ -25,13 +25,13 @@
 	overlays.Cut()
 	if(GLOB.cult.rune_strokes[type])
 		var/list/f = GLOB.cult.rune_strokes[type]
-		for( var/i in f)
+		for(var/i in f)
 			var/image/t = image('icons/effects/uristrunes.dmi', "rune-[i]")
 			overlays += t
 	else
 		var/list/q = list(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 		var/list/f = list()
-		for( var/i = 1 to strokes)
+		for(var/i = 1 to strokes)
 			var/j = pick(q)
 			f += j
 			q -= f
@@ -80,7 +80,7 @@
 
 /obj/effect/rune/proc/get_cultists()
 	. = list()
-	for( var/mob/living/M in range(1))
+	for(var/mob/living/M in range(1))
 		if(iscultist(M))
 			. += M
 
@@ -104,7 +104,7 @@
 		return
 
 	var/mob/living/carbon/target = null
-	for( var/mob/living/carbon/M in get_turf(src))
+	for(var/mob/living/carbon/M in get_turf(src))
 		if(!iscultist(M) && M.stat != DEAD)
 			target = M
 			break
@@ -158,7 +158,7 @@
 /obj/effect/rune/teleport/Destroy()
 	GLOB.cult.teleport_runes -= src
 	var/turf/T = get_turf(src)
-	for( var/atom/movable/A in contents)
+	for(var/atom/movable/A in contents)
 		A.forceMove(T)
 	return ..()
 
@@ -212,7 +212,7 @@
 
 /obj/effect/rune/teleport/proc/showOptions(mob/living/user)
 	var/list/t = list()
-	for( var/obj/effect/rune/teleport/T in GLOB.cult.teleport_runes)
+	for(var/obj/effect/rune/teleport/T in GLOB.cult.teleport_runes)
 		if(T == src)
 			continue
 		t += "<a href='?src=\ref[src];target=\ref[T]'>[T.destination]</a>"
@@ -333,7 +333,7 @@
 	user.visible_message("<span class='warning'>\The [user]'s eyes glow blue as \he freezes in place, absolutely motionless.</span>", "<span class='warning'>The shadow that is your spirit separates itself from your body. You are now in the realm beyond. While this is a great sight, being here strains your mind and body. Hurry...</span>", "You hear only complete silence for a moment.")
 	announce_ghost_joinleave(user.ghostize(1), 1, "You feel that they had to use some [pick("dark", "black", "blood", "forgotten", "forbidden")] magic to [pick("invade", "disturb", "disrupt", "infest", "taint", "spoil", "blight")] this place!")
 	var/mob/observer/ghost/soul
-	for( var/mob/observer/ghost/O in GLOB.ghost_mob_list)
+	for(var/mob/observer/ghost/O in GLOB.ghost_mob_list)
 		if(O.key == tmpkey)
 			soul = O
 			break
@@ -354,7 +354,7 @@
 
 /obj/effect/rune/defile/cast(mob/living/user)
 	speak_incantation(user, "Ia! Ia! Zasan therium viortia!")
-	for( var/turf/T in range(1, src))
+	for(var/turf/T in range(1, src))
 		if(T.holy)
 			T.holy = 0
 		else
@@ -377,14 +377,14 @@
 		to_chat(user, "<span class='warning'>You need three cultists around this rune to make it work.</span>")
 		return fizzle(user)
 	var/turf/T = get_turf(src)
-	for( var/mob/living/M in T)
+	for(var/mob/living/M in T)
 		if(M.stat != DEAD && !iscultist(M))
 			victim = M
 			break
 	if(!victim)
 		return fizzle(user)
 
-	for( var/mob/living/M in cultists)
+	for(var/mob/living/M in cultists)
 		M.say("Barhah hra zar[pick("'","`")]garis!")
 
 	while(victim && victim.loc == T && victim.stat != DEAD)
@@ -403,12 +403,12 @@
 	if(victim && victim.loc == T && victim.stat == DEAD)
 		GLOB.cult.add_cultiness(CULTINESS_PER_SACRIFICE)
 		var/obj/item/device/soulstone/full/F = new(get_turf(src))
-		for( var/mob/M in cultists | get_cultists())
+		for(var/mob/M in cultists | get_cultists())
 			to_chat(M, "<span class='warning'>The Geometer of Blood accepts this offering.</span>")
 		visible_message("<span class='notice'>\The [F] appears over \the [src].</span>")
 		GLOB.cult.sacrificed += victim.mind
 		if(victim.mind == GLOB.cult.sacrifice_target)
-			for( var/datum/mind/H in GLOB.cult.current_antagonists)
+			for(var/datum/mind/H in GLOB.cult.current_antagonists)
 				if(H.current)
 					to_chat(H.current, "<span class='cult'>Your objective is now complete.</span>")
 		//TODO: other rewards?
@@ -444,7 +444,7 @@
 
 /obj/effect/rune/drain/cast(mob/living/user)
 	var/mob/living/carbon/human/victim
-	for( var/mob/living/carbon/human/M in get_turf(src))
+	for(var/mob/living/carbon/human/M in get_turf(src))
 		if(iscultist(M))
 			continue
 		victim = M
@@ -497,7 +497,7 @@
 		if(!charges)
 			return statuses
 	if(charges >= 15)
-		for( var/obj/item/organ/external/e in user.organs)
+		for(var/obj/item/organ/external/e in user.organs)
 			if(e && e.status & ORGAN_BROKEN)
 				e.status &= ~ORGAN_BROKEN
 				statuses += "bones in your [e.name] snap into place"
@@ -507,7 +507,7 @@
 	if(!charges)
 		return statuses
 	var/list/obj/item/organ/damaged = list()
-	for( var/obj/item/organ/I in user.internal_organs)
+	for(var/obj/item/organ/I in user.internal_organs)
 		if(I.damage)
 			damaged += I
 	if(damaged.len)
@@ -563,9 +563,9 @@
 		to_chat(user, "<span class='warning'>You need three cultists around this rune to make it work.</span>")
 		return fizzle(user)
 	else
-		for( var/mob/living/M in cultists)
+		for(var/mob/living/M in cultists)
 			M.say("Ia! Ia! Zasan therium viortia! Razan gilamrua kioha!")
-		for( var/turf/T in range(5, src))
+		for(var/turf/T in range(5, src))
 			if(T.holy)
 				T.holy = 0
 			else
@@ -602,7 +602,7 @@
 		return fizzle(user)
 
 	var/obj/item/stack/material/steel/target
-	for( var/obj/item/stack/material/steel/S in get_turf(src))
+	for(var/obj/item/stack/material/steel/S in get_turf(src))
 		if(S.get_amount() >= 10)
 			target = S
 			break
@@ -625,7 +625,7 @@
 	speak_incantation(user, "Fuu ma[pick("'","`")]jin!")
 	visible_message("<span class='danger'>\The [src] explodes in a bright flash.</span>")
 	var/list/mob/affected = list()
-	for( var/mob/living/M in viewers(src))
+	for(var/mob/living/M in viewers(src))
 		if(iscultist(M))
 			continue
 		var/obj/item/weapon/nullrod/N = locate() in M
@@ -650,7 +650,7 @@
 /obj/effect/rune/revive/cast(mob/living/user)
 	var/mob/living/carbon/human/target
 	var/obj/item/device/soulstone/source
-	for( var/mob/living/carbon/human/M in get_turf(src))
+	for(var/mob/living/carbon/human/M in get_turf(src))
 		if(M.stat == DEAD)
 			if(iscultist(M))
 				if(M.key)
@@ -658,7 +658,7 @@
 					break
 	if(!target)
 		return fizzle(user)
-	for( var/obj/item/device/soulstone/S in get_turf(src))
+	for(var/obj/item/device/soulstone/S in get_turf(src))
 		if(S.full && !S.shade.key)
 			source = S
 			break
@@ -678,14 +678,14 @@
 	if(cultists.len < 3)
 		return fizzle()
 
-	for( var/mob/living/M in cultists)
+	for(var/mob/living/M in cultists)
 		M.say("Dedo ol[pick("'","`")]btoh!")
 
 	var/list/mob/living/previous = list()
 	var/list/mob/living/current = list()
 	while(cultists.len >= 3)
 		cultists = get_cultists()
-		for( var/mob/living/carbon/M in viewers(src))
+		for(var/mob/living/carbon/M in viewers(src))
 			if(iscultist(M))
 				continue
 			current |= M
@@ -720,7 +720,7 @@
 	var/list/mob/living/cultists = get_cultists()
 	if(cultists.len < 5)
 		return fizzle()
-	for( var/mob/living/M in cultists)
+	for(var/mob/living/M in cultists)
 		M.say("Tok-lyr rqa'nap g[pick("'","`")]lt-ulotf!")
 		to_chat(M, "<span class='cult'>You are staring to tear the reality to bring Him back... stay around the rune!</span>")
 	log_and_message_admins_many(cultists, "started summoning Nar-sie.")
@@ -737,11 +737,11 @@
 			--the_end_comes
 		if(the_end_comes >= the_time_has_come)
 			break
-		for( var/mob/living/M in cultists)
+		for(var/mob/living/M in cultists)
 			if(prob(5))
 				M.say(pick("Hakkrutju gopoenjim.", "Nherasai pivroiashan.", "Firjji prhiv mazenhor.", "Tanah eh wakantahe.", "Obliyae na oraie.", "Miyf hon vnor'c.", "Wakabai hij fen juswix."))
 
-		for( var/turf/T in range(min(the_end_comes, 15)))
+		for(var/turf/T in range(min(the_end_comes, 15)))
 			if(prob(the_end_comes / 3))
 				T.cultify()
 		sleep(10)
@@ -760,7 +760,7 @@
 			return
 		speak_incantation(user, "Uhrast ka'hfa heldsagen ver[pick("'","`")]lot!")
 		to_chat(user, "<span class='warning'>In the last moment of your humble life, you feel an immense pain as fabric of reality mends... with your blood.</span>")
-		for( var/mob/M in GLOB.living_mob_list)
+		for(var/mob/M in GLOB.living_mob_list)
 			if(iscultist(M))
 				to_chat(M, "You see a vision of \the [user] keeling over dead, his blood glowing blue as it escapes \his body and dissipates into thin air; you hear an otherwordly scream and feel that a great disaster has just been averted.")
 			else
@@ -786,7 +786,7 @@
 /obj/effect/rune/imbue/cast(mob/living/user)
 	var/obj/item/weapon/paper/target
 	var/tainted = 0
-	for( var/obj/item/weapon/paper/P in get_turf(src))
+	for(var/obj/item/weapon/paper/P in get_turf(src))
 		if(!P.info)
 			target = P
 			break

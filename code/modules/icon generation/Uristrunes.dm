@@ -21,8 +21,8 @@
 
 	//Loop over the image, calculating the border value, and storing it in the red channel
 	//Store border's alpha in the blue channel
-	for( var/x = 1, x <= 32, x++)
-		for( var/y = 1, y <= 32, y++)
+	for(var/x = 1, x <= 32, x++)
+		for(var/y = 1, y <= 32, y++)
 			var/p = I.GetPixel(x, y)
 
 			if(p == null)
@@ -178,7 +178,7 @@ var/list/rune_animation = list(
 
 	var/icon/base = icon('icons/effects/uristrunes.dmi', "")
 
-	for( var/i = 0, i < 10, i++)
+	for(var/i = 0, i < 10, i++)
 		if(BITTEST(rune_bits, i))
 			base.Blend(icon('icons/effects/uristrunes.dmi', "rune-[1 << i]"), ICON_OVERLAY)
 
@@ -207,7 +207,7 @@ var/list/rune_animation = list(
 	o.icon = get_rune(rand(1, 1023), 1)
 
 /mob/verb/runes_15x15()
-	for( var/turf/t in range(7))
+	for(var/turf/t in range(7))
 		var/obj/o = new /obj(t)
 		o.icon = get_rune(rand(1, 1023), 1)
 
@@ -216,7 +216,7 @@ var/list/rune_animation = list(
 /mob/verb/create_rune_custom(rune as num, color1 as color, border1 as color, color2 as color, border2 as color, alpha1 as num, alpha2 as num)
 	var/icon/I = icon('icons/effects/uristrunes.dmi', "blank")
 
-	for( var/i = 0, i < 10, i++)
+	for(var/i = 0, i < 10, i++)
 		if(BITTEST(rune, i))
 			I.Blend(icon('icons/effects/uristrunes.dmi', "rune-[1 << i]"), ICON_OVERLAY)
 
@@ -224,11 +224,11 @@ var/list/rune_animation = list(
 	o.icon = animate_rune(I, color1, border1, color2, border2, alpha1, alpha2)
 
 /mob/verb/spam()
-	for( var/turf/t in range(4))
+	for(var/turf/t in range(4))
 		var/icon/I = icon('icons/effects/uristrunes.dmi', "blank")
 
 		var/rune = rand(1, 1023)
-		for( var/i = 0, i < 10, i++)
+		for(var/i = 0, i < 10, i++)
 			if(BITTEST(rune, i))
 				I.Blend(icon('icons/effects/uristrunes.dmi', "rune-[1 << i]"), ICON_OVERLAY)
 

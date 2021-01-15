@@ -39,10 +39,10 @@ var/inactive_keys = "None<br>"
 	var/file = file2text("config/custom_items.txt")
 	var/lines = splittext(file, "\n")
 
-	for( var/line in lines)
+	for(var/line in lines)
 		// split & clean up
 		var/list/Entry = splittext(line, ":")
-		for( var/i = 1 to Entry.len)
+		for(var/i = 1 to Entry.len)
 			Entry[i] = trim(Entry[i])
 
 		if(Entry.len < 1)
@@ -66,7 +66,7 @@ var/inactive_keys = "None<br>"
 
 	//if there are ckeys left over, check whether they have a database entry at all
 	if(ckeys_with_customitems.len)
-		for( var/cur_ckey in ckeys_with_customitems)
+		for(var/cur_ckey in ckeys_with_customitems)
 			var/DBQuery/query_inactive = dbcon.NewQuery("SELECT ckey FROM erro_player WHERE ckey = '[cur_ckey]'")
 			query_inactive.Execute()
 			if(!query_inactive.RowCount())
@@ -74,7 +74,7 @@ var/inactive_keys = "None<br>"
 
 	if(inactive_ckeys.len)
 		inactive_keys = ""
-		for( var/cur_key in inactive_ckeys)
+		for(var/cur_key in inactive_ckeys)
 			if(inactive_ckeys[cur_key])
 				inactive_keys += "<b>[cur_key]</b> - [inactive_ckeys[cur_key]]<br>"
 			else

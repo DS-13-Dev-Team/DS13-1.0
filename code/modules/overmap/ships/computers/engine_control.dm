@@ -34,7 +34,7 @@
 	var/total_thrust = 0
 
 	var/list/enginfo[0]
-	for( var/datum/ship_engine/E in linked.engines)
+	for(var/datum/ship_engine/E in linked.engines)
 		var/list/rdata[0]
 		rdata["eng_type"] = E.name
 		rdata["eng_on"] = E.is_on()
@@ -64,7 +64,7 @@
 
 	if(href_list["global_toggle"])
 		linked.engines_state = !linked.engines_state
-		for( var/datum/ship_engine/E in linked.engines)
+		for(var/datum/ship_engine/E in linked.engines)
 			if(linked.engines_state != E.is_on())
 				E.toggle()
 
@@ -73,12 +73,12 @@
 		if(!CanInteract(usr,ui_state))
 			return
 		linked.thrust_limit = Clamp(newlim/100, 0, 1)
-		for( var/datum/ship_engine/E in linked.engines)
+		for(var/datum/ship_engine/E in linked.engines)
 			E.set_thrust_limit(linked.thrust_limit)
 
 	if(href_list["global_limit"])
 		linked.thrust_limit = Clamp(linked.thrust_limit + text2num(href_list["global_limit"]), 0, 1)
-		for( var/datum/ship_engine/E in linked.engines)
+		for(var/datum/ship_engine/E in linked.engines)
 			E.set_thrust_limit(linked.thrust_limit)
 
 	if(href_list["engine"])

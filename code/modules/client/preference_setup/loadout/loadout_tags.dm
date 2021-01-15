@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(loadout_tag_cache)
 */
 /obj/item/weapon/rig/get_loadout_tags()
 	var/list/tags = list(LOADOUT_TAG_RIG)
-	for( var/obj/item/rig_module/RM in installed_modules)
+	for (var/obj/item/rig_module/RM in installed_modules)
 		tags |= RM.get_loadout_tags()
 
 	return tags

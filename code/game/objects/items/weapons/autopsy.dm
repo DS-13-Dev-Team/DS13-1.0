@@ -40,7 +40,7 @@
 /obj/item/weapon/autopsy_scanner/proc/add_data(obj/item/organ/external/O)
 	if(!O.autopsy_data.len) return
 
-	for( var/V in O.autopsy_data)
+	for(var/V in O.autopsy_data)
 		var/datum/autopsy_data/W = O.autopsy_data[V]
 
 		if(!W.pretend_weapon)
@@ -85,14 +85,14 @@
 		scan_data += "<b>Time of death:</b> [worldtime2stationtime(timeofdeath)]<br><br>"
 
 	var/n = 1
-	for( var/wdata_idx in wdata)
+	for(var/wdata_idx in wdata)
 		var/datum/autopsy_data_scanner/D = wdata[wdata_idx]
 		var/total_hits = 0
 		var/total_score = 0
 		var/list/weapon_chances = list() // maps weapon names to a score
 		var/age = 0
 
-		for( var/wound_idx in D.organs_scanned)
+		for(var/wound_idx in D.organs_scanned)
 			var/datum/autopsy_data/W = D.organs_scanned[wound_idx]
 			total_hits += W.hits
 
@@ -132,7 +132,7 @@
 		scan_data += "Approximate time of wound infliction: [worldtime2stationtime(age)]<br>"
 		scan_data += "Affected limbs: [D.organ_names]<br>"
 		scan_data += "Possible weapons:<br>"
-		for( var/weapon_name in weapon_chances)
+		for(var/weapon_name in weapon_chances)
 			scan_data += "\t[100*weapon_chances[weapon_name]/total_score]% [weapon_name]<br>"
 
 		scan_data += "<br>"
@@ -141,11 +141,11 @@
 
 	if(chemtraces.len)
 		scan_data += "<b>Trace Chemicals: </b><br>"
-		for( var/chemID in chemtraces)
+		for(var/chemID in chemtraces)
 			scan_data += chemID
 			scan_data += "<br>"
 
-	for( var/mob/O in viewers(usr))
+	for(var/mob/O in viewers(usr))
 		O.show_message("<span class='notice'>\The [src] rattles and prints out a sheet of paper.</span>", 1)
 
 	sleep(10)
@@ -182,7 +182,7 @@
 	M.visible_message("<span class='notice'>\The [user] scans the wounds on [M]'s [S.name] with [src]</span>")
 
 	src.add_data(S)
-	for( var/T in M.chem_doses)
+	for(var/T in M.chem_doses)
 		var/datum/reagent/R = T
 		chemtraces += initial(R.name)
 

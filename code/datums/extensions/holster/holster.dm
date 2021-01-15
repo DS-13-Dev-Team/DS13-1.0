@@ -131,15 +131,15 @@
 /obj/item/clothing/under/get_holsters()
 	. = ..()
 	var/holster_accessories_by_name = list()
-	for( var/obj/accessory in accessories)
+	for(var/obj/accessory in accessories)
 		if(has_extension(accessory, /datum/extension/holster))
 			group_by(holster_accessories_by_name , accessory.name, accessory)
 
-	for( var/accessory_name in holster_accessories_by_name)
+	for(var/accessory_name in holster_accessories_by_name)
 		var/list/holster_accessories = holster_accessories_by_name[accessory_name]
 		if(holster_accessories.len == 1)
 			.[accessory_name] = get_extension(holster_accessories[1], /datum/extension/holster)
 		else
-			for( var/i = 1 to holster_accessories.len)
+			for(var/i = 1 to holster_accessories.len)
 				var/holster_name = "[accessory_name] [i]"
 				.[holster_name] = get_extension(holster_accessories[i], /datum/extension/holster)

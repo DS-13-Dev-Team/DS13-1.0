@@ -58,7 +58,7 @@
 	. = list()
 	var/sum = src.worth
 	var/num = 0
-	for( var/i in denominations)
+	for(var/i in denominations)
 		while(sum >= i && num < 50)
 			sum -= i
 			num++
@@ -70,7 +70,7 @@
 	overlays.Cut()
 	var/list/images = src.getMoneyImages()
 
-	for( var/A in images)
+	for(var/A in images)
 		var/image/banknote = image('icons/obj/items.dmi', A)
 		var/matrix/M = matrix()
 		M.Translate(rand(-6, 6), rand(-4, 8))

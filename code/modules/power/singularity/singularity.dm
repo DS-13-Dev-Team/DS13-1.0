@@ -41,7 +41,7 @@
 
 	..()
 	START_PROCESSING(SSobj, src)
-	for( var/obj/machinery/power/singularity_beacon/singubeacon in SSmachines.machinery)
+	for(var/obj/machinery/power/singularity_beacon/singubeacon in SSmachines.machinery)
 		if(singubeacon.active)
 			target = singubeacon
 			break
@@ -268,7 +268,7 @@
 	return 1
 
 /obj/singularity/proc/eat()
-	for( var/atom/X in orange(grav_pull, src))
+	for(var/atom/X in orange(grav_pull, src))
 		var/dist = get_dist(X, src)
 		var/obj/singularity/S = src
 		if(!istype(src))
@@ -278,7 +278,7 @@
 		else if(dist <= consume_range)
 			consume(X)
 
-	//for( var/turf/T in trange(grav_pull, src)) //TODO: Create a similar trange for orange to prevent snowflake of self check.
+	//for (var/turf/T in trange(grav_pull, src)) //TODO: Create a similar trange for orange to prevent snowflake of self check.
 	//	consume(T)
 
 	return
@@ -336,7 +336,7 @@
 		steps = step
 	var/list/turfs = list()
 	var/turf/T = src.loc
-	for( var/i = 1 to steps)
+	for(var/i = 1 to steps)
 		T = get_step(T,direction)
 	if(!isturf(T))
 		return 0
@@ -351,17 +351,17 @@
 			dir2 = 1
 			dir3 = 2
 	var/turf/T2 = T
-	for( var/j = 1 to steps)
+	for(var/j = 1 to steps)
 		T2 = get_step(T2,dir2)
 		if(!isturf(T2))
 			return 0
 		turfs.Add(T2)
-	for( var/k = 1 to steps)
+	for(var/k = 1 to steps)
 		T = get_step(T,dir3)
 		if(!isturf(T))
 			return 0
 		turfs.Add(T)
-	for( var/turf/T3 in turfs)
+	for(var/turf/T3 in turfs)
 		if(isnull(T3))
 			continue
 		if(!can_move(T3))
@@ -411,7 +411,7 @@
 		toxdamage = round(((src.energy-150)/50)*4,1)
 		radiation = round(((src.energy-150)/50)*5,1)
 	SSradiation.radiate(src, radiation) //Always radiate at max, so a decent dose of radiation is applied
-	for( var/mob/living/M in view(toxrange, src.loc))
+	for(var/mob/living/M in view(toxrange, src.loc))
 		if(M.status_flags & GODMODE)
 			continue
 		toxdamage = (toxdamage - (toxdamage*M.getarmor(null, "rad")))
@@ -420,7 +420,7 @@
 
 
 /obj/singularity/proc/mezzer()
-	for( var/mob/living/carbon/M in oviewers(8, src))
+	for(var/mob/living/carbon/M in oviewers(8, src))
 		if(istype(M, /mob/living/carbon/brain)) //Ignore brains
 			continue
 		if(M.status_flags & GODMODE)
@@ -435,7 +435,7 @@
 					to_chat(H, "<span class=\"warning\">You look directly into The [src.name], but your eyewear does absolutely nothing to protect you from it!</span>")
 		to_chat(M, "<span class='danger'>You look directly into The [src.name] and feel [current_size == 11 ? "helpless" : "weak"].</span>")
 		M.apply_effect(3, STUN)
-		for( var/mob/O in viewers(M, null))
+		for(var/mob/O in viewers(M, null))
 			O.show_message(text("<span class='danger'>[] stares blankly at The []!</span>", M, src), 1)
 
 /obj/singularity/proc/emp_area()
@@ -445,7 +445,7 @@
 		empulse(src, 12, 16)
 
 /obj/singularity/proc/smwave()
-	for( var/mob/living/M in view(10, src.loc))
+	for(var/mob/living/M in view(10, src.loc))
 		if(prob(67))
 			to_chat(M, "<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
 			to_chat(M, "<span class=\"notice\">Miraculously, it fails to kill you.</span>")
@@ -457,7 +457,7 @@
 	return
 
 /obj/singularity/proc/pulse()
-	for( var/obj/machinery/power/rad_collector/R in rad_collectors)
+	for(var/obj/machinery/power/rad_collector/R in rad_collectors)
 		if (get_dist(R, src) <= 15) //Better than using orange() every process.
 			R.receive_pulse(energy)
 

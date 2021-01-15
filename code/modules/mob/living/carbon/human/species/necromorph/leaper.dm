@@ -332,5 +332,5 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 
 //Wallrunning
-/datum/species/necromorph/leaper/setup_movement(mob/living/carbon/human/H)
+/datum/species/necromorph/leaper/setup_movement(var/mob/living/carbon/human/H)
 	set_extension(H, /datum/extension/wallrun)

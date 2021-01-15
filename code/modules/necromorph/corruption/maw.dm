@@ -77,7 +77,7 @@
 
 //While eating mobs, the maw will do chomp animations
 /obj/structure/corruption_node/maw/Process()
-	for( var/datum/biomass_source/S as anything in eating)
+	for (var/datum/biomass_source/S as anything in eating)
 		if (QDELETED(S))
 			eating -= S
 			continue

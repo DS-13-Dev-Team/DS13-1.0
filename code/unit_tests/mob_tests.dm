@@ -26,7 +26,7 @@ datum/unit_test/human_breath/start_test()
 
 	if(!istype(T, /turf/space))	//If the above isn't a space turf then we force it to find one will most likely pick 1,1,1
 		T = locate(/turf/space)
-	for( var/species_name in all_species)
+	for(var/species_name in all_species)
 		var/datum/species/S = all_species[species_name]
 		var/mob/living/carbon/human/H = new(T, S.name)
 		if(H.need_breathe())
@@ -39,13 +39,13 @@ datum/unit_test/human_breath/start_test()
 	return 1
 
 datum/unit_test/human_breath/check_result()
-	for( var/i in test_subjects)
+	for(var/i in test_subjects)
 		var/mob/living/carbon/human/H = test_subjects[i][1]
 		if(H.life_tick < 10) 	// Finish Condition
 			return 0	// Return 0 to try again later.
 
 	var/failcount = 0
-	for( var/i in test_subjects)
+	for(var/i in test_subjects)
 		var/mob/living/carbon/human/H = test_subjects[i][1]
 		var/ending_oxyloss = damage_check(H, OXY)
 		var/starting_oxyloss = test_subjects[i][2]
@@ -69,7 +69,7 @@ proc/create_test_mob_with_mind(turf/mobloc = null, mobtype = /mob/living/carbon/
 
 	if(isnull(mobloc))
 		if(!default_mobloc)
-			for( var/turf/simulated/floor/tiled/T in world)
+			for(var/turf/simulated/floor/tiled/T in world)
 				var/pressure = T.zone.air.return_pressure()
 				if(90 < pressure && pressure < 120) // Find a turf between 90 and 120
 					default_mobloc = T
@@ -518,7 +518,7 @@ datum/unit_test/robot_module_icons/start_test()
 	if(!valid_states.len)
 		return 1
 
-	for( var/i=1, i<=robot_modules.len, i++)
+	for(var/i=1, i<=robot_modules.len, i++)
 		var/bad_msg = "[ascii_red]--------------- [robot_modules[i]]"
 		if(!(lowertext(robot_modules[i]) in valid_states))
 			log_unit_test("[bad_msg] does not contain a valid icon state in [icon_file][ascii_reset]")
@@ -542,7 +542,7 @@ datum/unit_test/species_base_skin
 	var/failcount = 0
 
 datum/unit_test/species_base_skin/start_test()
-	for( var/species_name in all_species)
+	for(var/species_name in all_species)
 		var/datum/species/S = all_species[species_name]
 		if(S.base_skin_colours)
 			if(!(S.appearance_flags & HAS_BASE_SKIN_COLOURS))
@@ -554,7 +554,7 @@ datum/unit_test/species_base_skin/start_test()
 				failcount++
 				continue
 			var/to_fail = FALSE
-			for( var/tag in S.has_limbs)
+			for(var/tag in S.has_limbs)
 				var/list/paths = S.has_limbs[tag]
 				var/obj/item/organ/external/E = paths["path"]
 				var/list/gender_test = list("")
@@ -562,8 +562,8 @@ datum/unit_test/species_base_skin/start_test()
 					gender_test = list("_m", "_f")
 				var/icon_name = initial(E.icon_name)
 
-				for( var/base in S.base_skin_colours)
-					for( var/gen in gender_test)
+				for(var/base in S.base_skin_colours)
+					for(var/gen in gender_test)
 						if(!("[icon_name][gen][S.base_skin_colours[base]]" in icon_states(S.icobase)))
 							to_fail = TRUE
 							log_debug("[S.name] has missing icon: [icon_name][gen][S.base_skin_colours[base]] for base [base] and limb tag [tag].")
@@ -592,13 +592,13 @@ datum/unit_test/species_base_skin/start_test()
 
 /datum/unit_test/mob_nullspace/start_test()
 	// Simply create one of each species type in nullspace
-	for( var/species_name in all_species)
+	for(var/species_name in all_species)
 		var/test_subject = new/mob/living/carbon/human(null, species_name)
 		test_subjects += test_subject
 	return TRUE
 
 /datum/unit_test/mob_nullspace/check_result()
-	for( var/ts in test_subjects)
+	for(var/ts in test_subjects)
 		var/mob/living/carbon/human/H = ts
 		if(H.life_tick < 10)
 			return FALSE

@@ -45,7 +45,7 @@
 		trace.obj_flags = obj_flags
 	trace.pass_flags = pass_flags
 
-	for( var/atom/A as anything in targets)
+	for (var/atom/A as anything in targets)
 		if (allow_sleep)
 			CHECK_TICK
 		trace.result = null
@@ -105,7 +105,7 @@
 		trace.obj_flags = obj_flags
 	trace.pass_flags = pass_flags
 
-	for( var/atom/A as anything in targets)
+	for (var/atom/A as anything in targets)
 		if (allow_sleep)
 			CHECK_TICK
 		trace.result = null

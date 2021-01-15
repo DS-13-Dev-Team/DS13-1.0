@@ -48,7 +48,7 @@
 	wires = new(src)
 
 	mode_list = list()
-	for( var/st in subtypesof(/datum/shield_mode/))
+	for(var/st in subtypesof(/datum/shield_mode/))
 		var/datum/shield_mode/SM = new st()
 		mode_list.Add(SM)
 
@@ -64,12 +64,12 @@
 
 /obj/machinery/power/shield_generator/RefreshParts()
 	max_energy = 0
-	for( var/obj/item/weapon/smes_coil/S in component_parts)
+	for(var/obj/item/weapon/smes_coil/S in component_parts)
 		max_energy += (S.ChargeCapacity / CELLRATE)
 	current_energy = between(0, current_energy, max_energy)
 
 	mitigation_max = MAX_MITIGATION_BASE
-	for( var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
 		mitigation_max += MAX_MITIGATION_RESEARCH * C.rating
 	mitigation_em = between(0, mitigation_em, mitigation_max)
 	mitigation_physical = between(0, mitigation_physical, mitigation_max)
@@ -78,7 +78,7 @@
 
 // Shuts down the shield, removing all shield segments and unlocking generator settings.
 /obj/machinery/power/shield_generator/proc/shutdown_field()
-	for( var/obj/effect/shield/S in field_segments)
+	for(var/obj/effect/shield/S in field_segments)
 		qdel(S)
 
 	running = SHIELD_OFF
@@ -92,7 +92,7 @@
 // Generates the field objects. Deletes existing field, if applicable.
 /obj/machinery/power/shield_generator/proc/regenerate_field()
 	if(field_segments.len)
-		for( var/obj/effect/shield/S in field_segments)
+		for(var/obj/effect/shield/S in field_segments)
 			qdel(S)
 
 	// The generator is not turned on, so don't generate any new tiles.
@@ -106,7 +106,7 @@
 	else
 		shielded_turfs = fieldtype_square()
 
-	for( var/turf/T in shielded_turfs)
+	for(var/turf/T in shielded_turfs)
 		var/obj/effect/shield/S = new(T)
 		S.gen = src
 		S.flags_updated()
@@ -117,7 +117,7 @@
 // Recalculates and updates the upkeep multiplier
 /obj/machinery/power/shield_generator/proc/update_upkeep_multiplier()
 	var/new_upkeep = 1.0
-	for( var/datum/shield_mode/SM in mode_list)
+	for(var/datum/shield_mode/SM in mode_list)
 		if(check_flag(SM.mode_flag))
 			new_upkeep *= SM.multiplier
 
@@ -167,7 +167,7 @@
 		energy_failure()
 
 	if(!overloaded)
-		for( var/obj/effect/shield/S in damaged_segments)
+		for(var/obj/effect/shield/S in damaged_segments)
 			S.regenerate()
 	else if (field_integrity() > 25)
 		overloaded = 0
@@ -201,7 +201,7 @@
 	else
 		current_energy = 0
 		overloaded = 1
-		for( var/obj/effect/shield/S in field_segments)
+		for(var/obj/effect/shield/S in field_segments)
 			S.fail(1)
 
 
@@ -361,7 +361,7 @@
 /obj/machinery/power/shield_generator/proc/toggle_flag(flag)
 	shield_modes ^= flag
 	update_upkeep_multiplier()
-	for( var/obj/effect/shield/S in field_segments)
+	for(var/obj/effect/shield/S in field_segments)
 		S.flags_updated()
 
 	if((flag & (MODEFLAG_HULL|MODEFLAG_MULTIZ)) && running)
@@ -375,7 +375,7 @@
 
 /obj/machinery/power/shield_generator/proc/get_flag_descriptions()
 	var/list/all_flags = list()
-	for( var/datum/shield_mode/SM in mode_list)
+	for(var/datum/shield_mode/SM in mode_list)
 		if(SM.hacked_only && !hacked)
 			continue
 		all_flags.Add(list(list(
@@ -396,9 +396,9 @@
 	var/list/out = list()
 	var/list/base_turfs = get_base_turfs()
 
-	for( var/turf/gen_turf in base_turfs)
+	for(var/turf/gen_turf in base_turfs)
 		var/turf/T
-		for( var/x_offset = -field_radius; x_offset <= field_radius; x_offset++)
+		for (var/x_offset = -field_radius; x_offset <= field_radius; x_offset++)
 			T = locate(gen_turf.x + x_offset, gen_turf.y - field_radius, gen_turf.z)
 			if(T)
 				out += T
@@ -406,7 +406,7 @@
 			if(T)
 				out += T
 
-		for( var/y_offset = -field_radius+1; y_offset < field_radius; y_offset++)
+		for (var/y_offset = -field_radius+1; y_offset < field_radius; y_offset++)
 			T = locate(gen_turf.x - field_radius, gen_turf.y + y_offset, gen_turf.z)
 			if(T)
 				out += T
@@ -424,15 +424,15 @@
 
 
 
-	for( var/turf/gen_turf in base_turfs)
+	for(var/turf/gen_turf in base_turfs)
 		var/area/TA = null // Variable for area checking. Defining it here so memory does not have to be allocated repeatedly.
-		for( var/turf/T in trange(field_radius, gen_turf))
+		for(var/turf/T in trange(field_radius, gen_turf))
 			// Don't expand to space or on shuttle areas.
 			if(istype(T, /turf/space) || istype(T, /turf/simulated/open))
 				continue
 
 			// Find adjacent space/shuttle tiles and cover them. Shuttles won't be blocked if shield diffuser is mapped in and turned on.
-			for( var/turf/TN in orange(1, T))
+			for(var/turf/TN in orange(1, T))
 				TA = get_area(TN)
 				if ((istype(TN, /turf/space) || (istype(TN, /turf/simulated/open) && (istype(TA, /area/space) || TA.area_flags & AREA_FLAG_EXTERNAL))))
 					. |= TN

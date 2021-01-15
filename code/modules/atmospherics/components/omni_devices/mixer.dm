@@ -28,7 +28,7 @@
 	..()
 	if(mapper_set())
 		var/con = 0
-		for( var/datum/omni_port/P in ports)
+		for(var/datum/omni_port/P in ports)
 			switch(P.dir)
 				if(NORTH)
 					if(tag_north_con && tag_north == 1)
@@ -47,7 +47,7 @@
 						P.concentration = tag_west_con
 						con += max(0, tag_west_con)
 
-	for( var/datum/omni_port/P in ports)
+	for(var/datum/omni_port/P in ports)
 		P.air.volume = ATMOS_DEFAULT_VOLUME_MIXER
 
 /obj/machinery/atmospherics/omni/mixer/Destroy()
@@ -56,7 +56,7 @@
 	. = ..()
 
 /obj/machinery/atmospherics/omni/mixer/sort_ports()
-	for( var/datum/omni_port/P in ports)
+	for(var/datum/omni_port/P in ports)
 		if(P.update)
 			if(output == P)
 				output = null
@@ -70,7 +70,7 @@
 					output = P
 
 	if(!mapper_set())
-		for( var/datum/omni_port/P in inputs)
+		for(var/datum/omni_port/P in inputs)
 			P.concentration = 1 / max(1, inputs.len)
 
 	if(output)
@@ -90,7 +90,7 @@
 
 	//concentration must add to 1
 	var/total = 0
-	for( var/datum/omni_port/P in inputs)
+	for (var/datum/omni_port/P in inputs)
 		total += P.concentration
 
 	if (total != 1)
@@ -108,7 +108,7 @@
 	var/delta = between(0, (output_gas ? (max_output_pressure - output_gas.return_pressure()) : 0), max_output_pressure)
 	var/transfer_moles_max = INFINITY
 
-	for( var/datum/omni_port/P in inputs)
+	for (var/datum/omni_port/P in inputs)
 		transfer_moles += (set_flow_rate*P.concentration/P.air.volume)*P.air.total_moles
 		transfer_moles_max = min(transfer_moles_max, calculate_transfer_moles(P.air, output.air, delta, (output && output.network && output.network.volume) ? output.network.volume : 0))
 	transfer_moles = between(0, transfer_moles, transfer_moles_max)
@@ -121,7 +121,7 @@
 		last_power_draw = power_draw
 		use_power(power_draw)
 
-		for( var/datum/omni_port/P in inputs)
+		for(var/datum/omni_port/P in inputs)
 			if(P.concentration && P.network)
 				P.network.update = 1
 
@@ -152,7 +152,7 @@
 	data["config"] = configuring
 
 	var/portData[0]
-	for( var/datum/omni_port/P in ports)
+	for(var/datum/omni_port/P in ports)
 		if(!configuring && P.mode == 0)
 			continue
 
@@ -219,7 +219,7 @@
 			else
 				mode = ATM_NONE
 
-	for( var/datum/omni_port/P in ports)
+	for(var/datum/omni_port/P in ports)
 		var/old_mode = P.mode
 		if(P.dir == port)
 			switch(mode)
@@ -259,7 +259,7 @@
 	var/non_locked = 0
 	var/remain_con = 1
 
-	for( var/datum/omni_port/P in inputs)
+	for(var/datum/omni_port/P in inputs)
 		if(P.dir == port)
 			old_con = P.concentration
 		else if(!P.con_lock)
@@ -284,7 +284,7 @@
 	//distribute remaining concentration between unlocked ports evenly
 	remain_con /= max(1, non_locked)
 
-	for( var/datum/omni_port/P in inputs)
+	for(var/datum/omni_port/P in inputs)
 		if(P.dir == port)
 			P.concentration = new_con
 		else if(!P.con_lock)
@@ -294,10 +294,10 @@
 
 /obj/machinery/atmospherics/omni/mixer/proc/rebuild_mixing_inputs()
 	mixing_inputs.Cut()
-	for( var/datum/omni_port/P in inputs)
+	for(var/datum/omni_port/P in inputs)
 		mixing_inputs[P.air] = P.concentration
 
 /obj/machinery/atmospherics/omni/mixer/proc/con_lock(port = NORTH)
-	for( var/datum/omni_port/P in inputs)
+	for(var/datum/omni_port/P in inputs)
 		if(P.dir == port)
 			P.con_lock = !P.con_lock

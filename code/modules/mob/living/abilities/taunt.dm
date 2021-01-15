@@ -106,7 +106,7 @@
 	else
 		time_without_enemy = 0
 		//Lets apply the effect to other necros
-		for( var/mob/living/carbon/human/H in view(user, 10))
+		for (var/mob/living/carbon/human/H in view(user, 10))
 			if (!H.is_necromorph())
 				continue
 

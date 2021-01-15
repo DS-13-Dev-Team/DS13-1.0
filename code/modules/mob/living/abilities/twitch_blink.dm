@@ -86,7 +86,7 @@
 
 
 	var/list/possible = list()
-	for( var/turf/simulated/floor/F in orange(user, 1))
+	for (var/turf/simulated/floor/F in orange(user, 1))
 		if (turf_clear(F))
 			possible.Add(F)
 

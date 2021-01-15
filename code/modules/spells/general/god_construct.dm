@@ -17,7 +17,7 @@
 /spell/construction/choose_targets()
 	var/list/possible_targets = list()
 	if(connected_god && connected_god.form)
-		for( var/type in connected_god.form.buildables)
+		for(var/type in connected_god.form.buildables)
 			var/cost = 10
 			if(ispath(type, /obj/structure/deity))
 				var/obj/structure/deity/D = type
@@ -40,7 +40,7 @@
 	if(skipcharge && !valid_deity_structure_spot(targets[CONSTRUCT_SPELL_TYPE], T, connected_god, user))
 		return 0
 	else
-		for( var/obj/O in T)
+		for(var/obj/O in T)
 			if(O.density)
 				to_chat(user, "<span class='warning'>Something here is blocking your construction!</span>")
 				return 0

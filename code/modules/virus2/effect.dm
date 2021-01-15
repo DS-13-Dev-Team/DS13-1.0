@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////
 /proc/get_random_virus2_effect(stage, badness, exclude)
 	var/list/datum/disease2/effect/candidates = list()
-	for( var/T in subtypesof(/datum/disease2/effect))
+	for(var/T in subtypesof(/datum/disease2/effect))
 		var/datum/disease2/effect/E = T
 		if(E in exclude)
 			continue
@@ -136,15 +136,15 @@
 		if (!(E.status & ORGAN_DEAD))
 			E.status |= ORGAN_DEAD
 			to_chat(mob, "<span class='notice'>You can't feel your [E.name] anymore...</span>")
-			for( var/obj/item/organ/external/C in E.children)
+			for (var/obj/item/organ/external/C in E.children)
 				C.status |= ORGAN_DEAD
 		mob.update_body(1)
 		mob.adjustToxLoss(15*multiplier)
 
-	deactivate(mob/living/carbon/human/mob, multiplier)
-		for( var/obj/item/organ/external/E in mob.organs)
+	deactivate(var/mob/living/carbon/human/mob, multiplier)
+		for (var/obj/item/organ/external/E in mob.organs)
 			E.status &= ~ORGAN_DEAD
-			for( var/obj/item/organ/external/C in E.children)
+			for (var/obj/item/organ/external/C in E.children)
 				C.status &= ~ORGAN_DEAD
 		mob.update_body(1)
 
@@ -152,14 +152,14 @@
 	name = "Longevity Syndrome"
 	stage = 4
 	badness = VIRUS_ENGINEERED
-	activate(mob/living/carbon/human/mob, multiplier)
-		for( var/external in mob.organs)
+	activate(var/mob/living/carbon/human/mob, multiplier)
+		for (var/external in mob.organs)
 			var/obj/item/organ/external/E = external
 			if (E.status & ORGAN_BROKEN && prob(30))
 				to_chat(mob, "<span class='notice'>Your [E.name] suddenly feels much better!</span>")
 				E.status ^= ORGAN_BROKEN
 				break
-		for( var/internal in mob.internal_organs)
+		for (var/internal in mob.internal_organs)
 			var/obj/item/organ/internal/I = internal
 			if (I.damage && prob(30))
 				to_chat(mob, "<span class='notice'>Your [mob.get_organ(I.parent_organ)] feels a bit warm...</span>")
@@ -178,12 +178,12 @@
 	name = "Fragile Bones Syndrome"
 	stage = 4
 	badness = VIRUS_ENGINEERED
-	activate(mob/living/carbon/human/mob, multiplier)
-		for( var/obj/item/organ/external/E in mob.organs)
+	activate(var/mob/living/carbon/human/mob, multiplier)
+		for (var/obj/item/organ/external/E in mob.organs)
 			E.min_broken_damage = max(5, E.min_broken_damage - 30)
 
-	deactivate(mob/living/carbon/human/mob, multiplier)
-		for( var/obj/item/organ/external/E in mob.organs)
+	deactivate(var/mob/living/carbon/human/mob, multiplier)
+		for (var/obj/item/organ/external/E in mob.organs)
 			E.min_broken_damage = initial(E.min_broken_damage)
 
 ////////////////////////STAGE 3/////////////////////////////////
@@ -296,7 +296,7 @@
 		mob.emote("cough")
 		if (mob.wear_mask)
 			return
-		for( var/mob/living/carbon/human/M in oview(2,mob))
+		for(var/mob/living/carbon/human/M in oview(2,mob))
 			mob.spread_disease_to(M)
 
 /datum/disease2/effect/hungry
@@ -347,7 +347,7 @@
 			to_chat(mob, "<span class='warning'>You feel like you are about to sneeze!</span>")
 		sleep(5)
 		mob.emote("sneeze")
-		for( var/mob/living/carbon/human/M in get_step(mob,mob.dir))
+		for(var/mob/living/carbon/human/M in get_step(mob,mob.dir))
 			mob.spread_disease_to(M)
 		if (prob(50) && !mob.wear_mask)
 			var/obj/effect/decal/cleanable/mucus/M = new(get_turf(mob))

@@ -130,7 +130,7 @@
 	all_sources = passive_sources + active_sources
 
 	//Ok now lets do individual stuff for them
-	for( var/atom/A as anything in all_sources)
+	for (var/atom/A as anything in all_sources)
 		GLOB.moved_event.register(A, src, /obj/structure/corruption_node/harvester/proc/source_moved)
 		GLOB.destroyed_event.register(A, src, /obj/structure/corruption_node/harvester/proc/source_deleted)
 		set_extension(A, /datum/extension/being_harvested)
@@ -140,7 +140,7 @@
 	if (LAZYLEN(passive_sources))
 		passive_datum = M.add_biomass_source(src, INFINITY, INFINITY, /datum/biomass_source/harvest)
 		var/passive_biomass = 0
-		for( var/datum/D as anything in passive_sources)
+		for (var/datum/D as anything in passive_sources)
 			passive_biomass += D.harvest_biomass(1)
 		//This is how much the passive biomass sources will give in total each tick
 		passive_datum.last_absorb = passive_biomass
@@ -149,7 +149,7 @@
 		active_datum = M.add_biomass_source(src, INFINITY, INFINITY, /datum/biomass_source/harvest/active)
 
 	//We add an outline visual effect to each thing we're absorbing from
-	for( var/atom/A in all_sources)
+	for (var/atom/A in all_sources)
 		var/newfilter = filter(type="outline", size=1, color=COLOR_MARKER_RED)
 		A.filters.Add(newfilter)
 		all_sources[A] = newfilter//We store the reference to that filter in the all_sources list, so we can cleanly remove it later if needed
@@ -158,7 +158,7 @@
 
 
 /obj/structure/corruption_node/harvester/proc/unregister_sources()
-	for( var/atom/A as anything in all_sources)
+	for (var/atom/A as anything in all_sources)
 		if (!QDELETED(A))
 			GLOB.moved_event.unregister(A, src, /obj/structure/corruption_node/harvester/proc/source_moved)
 			GLOB.destroyed_event.unregister(A, src, /obj/structure/corruption_node/harvester/proc/source_deleted)
@@ -226,7 +226,7 @@
 	//If anything returns MASS_FAIL, we will have to redo our sources
 	var/failed = FALSE
 	var/total = 0
-	for( var/datum/D as anything in active_sources)
+	for (var/datum/D as anything in active_sources)
 		var/result = D.can_harvest_biomass()
 		//This thing is no longer viable
 		if (result == MASS_FAIL)
@@ -262,10 +262,10 @@
 			return "There are no objects within range of this location which contain harvestable biomass."
 		*/
 
-		for( var/obj/structure/corruption_node/harvester/H in range(4, candidate))
+		for (var/obj/structure/corruption_node/harvester/H in range(4, candidate))
 			return "Cannot be placed within 4 tiles of an existing harvester."
 
-		for( var/turf/T in trange(1, candidate))
+		for (var/turf/T in trange(1, candidate))
 			if (!turf_clear(T, TRUE))
 				return "Requires a 3x3 clear area to place within."
 
@@ -277,7 +277,7 @@
 /proc/get_harvestable_biomass_sources(atom/source, single_check = FALSE)
 	var/list/passive_sources = list()
 	var/list/active_sources = list()
-	for( var/atom/O in view(HARVESTER_HARVEST_RANGE, source))
+	for (var/atom/O in view(HARVESTER_HARVEST_RANGE, source))
 		var/result = O.can_harvest_biomass()
 		if (result == MASS_FAIL)
 			continue
@@ -344,7 +344,7 @@
 /datum/signal_ability/harvester/proc/get_harvesters(atom/origin)
 	var/list/harvesters = list()
 	var/turf/T = get_turf(origin)
-	for( var/obj/structure/corruption_node/harvester/H in range(15, T))
+	for (var/obj/structure/corruption_node/harvester/H in range(15, T))
 		harvesters += H
 
 	return harvesters
@@ -381,7 +381,7 @@
 	var/fired = FALSE
 
 	//In case of multiple nearby harvesters, we will loop through them in hopes of finding one off cooldown
-	for( var/obj/structure/corruption_node/harvester/H in harvesters)
+	for (var/obj/structure/corruption_node/harvester/H in harvesters)
 		fired = H.shoot_ability(/datum/extension/shoot/harvester_spine, target , /obj/item/projectile/bullet/spine, accuracy = 20, dispersion = list(0), num = 1, windup_time = 0, fire_sound  = list('sound/effects/creatures/necromorph/lurker/spine_fire_1.ogg',
 		'sound/effects/creatures/necromorph/lurker/spine_fire_2.ogg',
 		'sound/effects/creatures/necromorph/lurker/spine_fire_3.ogg'), nomove = 0, cooldown = HARVESTER_SPINE_COOLDOWN)
@@ -422,7 +422,7 @@
 	var/fired = FALSE
 
 	//In case of multiple nearby harvesters, we will loop through them in hopes of finding one off cooldown
-	for( var/obj/structure/corruption_node/harvester/H in harvesters)
+	for (var/obj/structure/corruption_node/harvester/H in harvesters)
 		var/list/spraydata = list("reagent" = /datum/reagent/acid/necromorph, "volume" = 5)
 		fired = H.spray_ability(subtype = /datum/extension/spray/reagent, target = target, angle = 25, length = 6,  stun = TRUE, duration = 2 SECONDS, cooldown = HARVESTER_ACID_COOLDOWN, windup = 0, override_user = user, extra_data = spraydata)
 
@@ -467,7 +467,7 @@
 	var/fired = FALSE
 
 	//In case of multiple nearby harvesters, we will loop through them in hopes of finding one off cooldown
-	for( var/obj/structure/corruption_node/harvester/H in harvesters)
+	for (var/obj/structure/corruption_node/harvester/H in harvesters)
 		fired = H.swing_attack(swing_type = /datum/extension/swing/harvester_tentacle,
 		source = H,
 		target = target,

@@ -52,14 +52,14 @@
 /obj/effect/shuttle_landmark/proc/is_valid(datum/shuttle/shuttle)
 	if(shuttle.current_location == src)
 		return FALSE
-	for( var/area/A in shuttle.shuttle_area)
+	for(var/area/A in shuttle.shuttle_area)
 		var/list/translation = get_turf_translation(get_turf(shuttle.current_location), get_turf(src), A.contents)
 		if(check_collision(base_area, list_values(translation)))
 			return FALSE
 	return TRUE
 
 /proc/check_collision(area/target_area, list/target_turfs)
-	for( var/target_turf in target_turfs)
+	for(var/target_turf in target_turfs)
 		var/turf/target = target_turf
 		if(!target)
 			message_admins("Edge of map")
@@ -96,7 +96,7 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/effect/shuttle_landmark/automatic/clearing/LateInitialize()
-	for( var/turf/T in range(radius, src))
+	for(var/turf/T in range(radius, src))
 		if(T.density)
 			T.ChangeTurf(get_base_turf_by_area(T))
 

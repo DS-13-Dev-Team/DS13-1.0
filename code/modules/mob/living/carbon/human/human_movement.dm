@@ -25,7 +25,7 @@
 		if(get_shock() >= 10) tally += (get_shock() / 10) //pain shouldn't slow you down if you can't even feel it
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
-		for( var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
+		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
 			var/obj/item/organ/external/E = get_organ(organ_name)
 			if(!E || E.is_stump())
 				tally += 4
@@ -35,7 +35,7 @@
 				tally += 1.5
 	else
 		var/total_item_slowdown = -1
-		for( var/slot = slot_first to slot_last)
+		for(var/slot = slot_first to slot_last)
 			var/obj/item/I = get_equipped_item(slot)
 			if(I)
 				var/item_slowdown = 0
@@ -52,7 +52,7 @@
 				total_item_slowdown += max(item_slowdown, 0)
 		tally += round(total_item_slowdown)
 
-		for( var/organ_name in species.locomotion_limbs)
+		for(var/organ_name in species.locomotion_limbs)
 			var/obj/item/organ/external/E = get_organ(organ_name)
 			if(!E || E.is_stump())
 				tally += 4
@@ -87,14 +87,14 @@
 	. = ..()
 	. += species.strength
 
-/mob/living/carbon/human/Allow_Spacemove(check_drift = 0)
+/mob/living/carbon/human/Allow_Spacemove(var/check_drift = 0)
 	. = ..()
 	if(.)
 		return
 
 	// This is horrible but short of spawning a jetpack inside the organ than locating
 	// it, I don't really see another viable approach short of a total jetpack refactor.
-	for( var/obj/item/organ/internal/powered/jets/jet in internal_organs)
+	for(var/obj/item/organ/internal/powered/jets/jet in internal_organs)
 		if(!jet.is_broken() && jet.active)
 			inertia_dir = 0
 			return 1
@@ -107,7 +107,7 @@
 			thrust = back
 		else if(istype(back,/obj/item/weapon/rig))
 			var/obj/item/weapon/rig/rig = back
-			for( var/obj/item/rig_module/maneuvering_jets/module in rig.installed_modules)
+			for(var/obj/item/rig_module/maneuvering_jets/module in rig.installed_modules)
 				thrust = module.jets
 				break
 
@@ -121,7 +121,7 @@
 			inertia_dir = 0
 			return 1
 
-/mob/living/carbon/human/slip_chance(prob_slip = 5)
+/mob/living/carbon/human/slip_chance(var/prob_slip = 5)
 	if(!..())
 		return 0
 
@@ -164,7 +164,7 @@
 
 
 
-/mob/living/carbon/human/set_move_intent(decl/move_intent/M)
+/mob/living/carbon/human/set_move_intent(var/decl/move_intent/M)
 	. = ..()
 	step_interval = M.footstep_interval
 

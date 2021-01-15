@@ -57,7 +57,7 @@ var/list/channel_to_radio_key = new
 proc/get_radio_key_from_channel(channel)
 	var/key = channel_to_radio_key[channel]
 	if(!key)
-		for( var/radio_key in department_radio_keys)
+		for(var/radio_key in department_radio_keys)
 			if(department_radio_keys[radio_key] == channel)
 				key = radio_key
 				break
@@ -122,7 +122,7 @@ proc/get_radio_key_from_channel(channel)
 
 /mob/living/proc/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
 	if(message_mode == "intercom")
-		for( var/obj/item/device/radio/intercom/I in view(1, null))
+		for(var/obj/item/device/radio/intercom/I in view(1, null))
 			I.talk_into(src, message, verb, speaking)
 			used_radios += I
 	return 0
@@ -228,7 +228,7 @@ proc/get_radio_key_from_channel(channel)
 		var/msg
 		if(!speaking || !(speaking.flags & NO_TALK_MSG))
 			msg = "<span class='notice'>\The [src] talks into \the [used_radios[1]]</span>"
-		for( var/mob/living/M in hearers(5, src))
+		for(var/mob/living/M in hearers(5, src))
 			if((M != src) && msg)
 				M.show_message(msg)
 			if (speech_sound)
@@ -262,12 +262,12 @@ proc/get_radio_key_from_channel(channel)
 		get_mobs_and_objs_in_view_fast(T, message_range, listening, listening_obj, /datum/client_preference/ghost_ears)
 
 	var/list/listening_clients = list()
-	for( var/mob/M in listening)
+	for(var/mob/M in listening)
 		if(M)
 			if(M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol))
 				listening_clients += M.client
 
-	for( var/obj/O in listening_obj)
+	for(var/obj/O in listening_obj)
 		spawn(0)
 			if(O) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking)
@@ -280,12 +280,12 @@ proc/get_radio_key_from_channel(channel)
 		get_mobs_and_objs_in_view_fast(T, eavesdroping_range, eavesdroping, eavesdroping_obj)
 		eavesdroping -= listening
 		eavesdroping_obj -= listening_obj
-		for( var/mob/M in eavesdroping)
+		for(var/mob/M in eavesdroping)
 			if(M)
 				if(M.hear_say(stars(message), verb, speaking, alt_name, italics, src, speech_sound, sound_vol))
 					eavesdroping_clients += M.client
 
-		for( var/obj/O in eavesdroping)
+		for(var/obj/O in eavesdroping)
 			spawn(0)
 				if(O) //It's possible that it could be deleted in the meantime.
 					O.hear_talk(src, stars(message), verb, speaking)
@@ -299,7 +299,7 @@ proc/get_radio_key_from_channel(channel)
 	return 1
 
 /mob/living/proc/say_signlang(message, verb="gestures", datum/language/language)
-	for( var/mob/O in viewers(src, null))
+	for (var/mob/O in viewers(src, null))
 		O.hear_signlang(message, verb, language, src)
 	return 1
 

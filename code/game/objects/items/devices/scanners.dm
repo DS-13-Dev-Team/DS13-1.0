@@ -57,11 +57,11 @@ REAGENT SCANNER
 		var/obj/structure/closet/body_bag/B = target
 		if(!B.opened)
 			var/list/scan_content = list()
-			for( var/mob/living/L in B.contents)
+			for(var/mob/living/L in B.contents)
 				scan_content.Add(L)
 
 			if (scan_content.len == 1)
-				for( var/mob/living/carbon/human/L in scan_content)
+				for(var/mob/living/carbon/human/L in scan_content)
 					scan_subject = L
 			else if (scan_content.len > 1)
 				to_chat(user, "<span class='warning'>\The [scanner] picks up multiple readings inside \the [target], too close together to scan properly.</span>")
@@ -195,7 +195,7 @@ REAGENT SCANNER
 		dat += "<span class='scan_red'>[b]Severe anatomical damage detected.[endb]</span>"
 
 	if(skill_level >= SKILL_BASIC)
-		for( var/name in H.organs_by_name)
+		for(var/name in H.organs_by_name)
 			var/obj/item/organ/external/e = H.organs_by_name[name]
 			if(!e)
 				continue
@@ -206,7 +206,7 @@ REAGENT SCANNER
 			if(e.has_infected_wound())
 				dat += "<span class='scan_warning'>Infected wound detected in subject [limb]. Disinfection recommended.</span>"
 
-		for( var/name in H.organs_by_name)
+		for(var/name in H.organs_by_name)
 			var/obj/item/organ/external/e = H.organs_by_name[name]
 			if(e && e.status & ORGAN_BROKEN)
 				dat += "<span class='scan_warning'>Bone fractures detected. Advanced scanner required for location.</span>"
@@ -215,7 +215,7 @@ REAGENT SCANNER
 		var/found_bleed
 		var/found_tendon
 		var/found_disloc
-		for( var/obj/item/organ/external/e in H.organs)
+		for(var/obj/item/organ/external/e in H.organs)
 			if(e)
 				if(!found_disloc && e.dislocated == 2)
 					dat += "<span class='scan_warning'>Dislocation detected. Advanced scanner required for location.</span>"
@@ -238,7 +238,7 @@ REAGENT SCANNER
 
 		var/list/damaged = H.get_damaged_organs(1,1)
 		if(damaged.len)
-			for( var/obj/item/organ/external/org in damaged)
+			for(var/obj/item/organ/external/org in damaged)
 				var/limb_result = "[capitalize(org.name)][BP_IS_ROBOTIC(org) ? " (Cybernetic)" : ""]:"
 				if(org.brute_dam > 0)
 					limb_result = "[limb_result] \[<font color = 'red'><b>[get_wound_severity(org.brute_ratio, (org.limb_flags & ORGAN_FLAG_HEALS_OVERKILL))] physical trauma</b></font>\]"
@@ -258,7 +258,7 @@ REAGENT SCANNER
 	if(H.reagents.total_volume)
 		var/unknown = 0
 		var/reagentdata[0]
-		for( var/A in H.reagents.reagent_list)
+		for(var/A in H.reagents.reagent_list)
 			var/datum/reagent/R = A
 			if(R.scannable)
 				print_reagent_default_message = FALSE
@@ -268,7 +268,7 @@ REAGENT SCANNER
 		if(reagentdata.len)
 			print_reagent_default_message = FALSE
 			. += "<span class='scan_notice'>Beneficial reagents detected in subject's blood:</span>"
-			for( var/d in reagentdata)
+			for(var/d in reagentdata)
 				. += reagentdata[d]
 		if(unknown)
 			print_reagent_default_message = FALSE
@@ -276,7 +276,7 @@ REAGENT SCANNER
 
 	if(H.ingested && H.ingested.total_volume)
 		var/unknown = 0
-		for( var/datum/reagent/R in H.ingested.reagent_list)
+		for(var/datum/reagent/R in H.ingested.reagent_list)
 			if(R.scannable)
 				print_reagent_default_message = FALSE
 				. += "<span class='scan_notice'>[R.name] found in subject's stomach.</span>"
@@ -288,7 +288,7 @@ REAGENT SCANNER
 
 	if(H.chem_doses.len)
 		var/list/chemtraces = list()
-		for( var/T in H.chem_doses)
+		for(var/T in H.chem_doses)
 			var/datum/reagent/R = T
 			if(initial(R.scannable))
 				chemtraces += "[initial(R.name)] ([H.chem_doses[T]])"
@@ -296,7 +296,7 @@ REAGENT SCANNER
 			. += "<span class='scan_notice'>Metabolism products of [english_list(chemtraces)] found in subject's system.</span>"
 
 	if(H.virus2.len)
-		for( var/ID in H.virus2)
+		for (var/ID in H.virus2)
 			if (ID in virusDB)
 				print_reagent_default_message = FALSE
 				var/datum/computer_file/data/virus_record/V = virusDB[ID]
@@ -427,7 +427,7 @@ proc/get_wound_severity(damage_ratio, can_heal_overkill = 0)
 	if(reagents.total_volume)
 		var/list/blood_traces = list()
 		var/list/blood_doses = list()
-		for( var/datum/reagent/R in reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.reagent_list)
 			if(R.type != /datum/reagent/blood)
 				reagents.clear_reagents()
 				to_chat(user, "<span class='warning'>The sample was contaminated! Please insert another sample</span>")
@@ -437,7 +437,7 @@ proc/get_wound_severity(damage_ratio, can_heal_overkill = 0)
 				blood_doses = R.data["dose_chem"]
 				break
 		var/dat = "Trace Chemicals Found: "
-		for( var/T in blood_traces)
+		for(var/T in blood_traces)
 			var/datum/reagent/R = T
 			if(details)
 				dat += "[initial(R.name)] ([blood_traces[T]] units) "
@@ -445,7 +445,7 @@ proc/get_wound_severity(damage_ratio, can_heal_overkill = 0)
 				dat += "[initial(R.name)] "
 		if(details)
 			dat += "\nMetabolism Products of Chemicals Found:"
-			for( var/T in blood_doses)
+			for(var/T in blood_doses)
 				var/datum/reagent/R = T
 				dat += "[initial(R.name)] ([blood_doses[T]] units) "
 		to_chat(user, "[dat]")
@@ -494,7 +494,7 @@ proc/get_wound_severity(damage_ratio, can_heal_overkill = 0)
 		return list("No active chemical agents found in [O].")
 	. = list("Chemicals found:")
 	var/one_percent = O.reagents.total_volume / 100
-	for( var/datum/reagent/R in O.reagents.reagent_list)
+	for (var/datum/reagent/R in O.reagents.reagent_list)
 		. += "[R][details ? ": [R.volume / one_percent]%" : ""]"
 
 /obj/item/device/reagent_scanner/adv
@@ -536,7 +536,7 @@ proc/get_wound_severity(damage_ratio, can_heal_overkill = 0)
 
 /obj/item/device/slime_scanner/proc/list_gases(gases)
 	. = list()
-	for( var/g in gases)
+	for(var/g in gases)
 		. += "[gas_data.name[g]] ([gases[g]]%)"
 	return english_list(.)
 
@@ -582,7 +582,7 @@ proc/get_wound_severity(damage_ratio, can_heal_overkill = 0)
 			user.show_message("This slime will never mutate.")
 		else
 			var/list/mutationChances = list()
-			for( var/i in mutations)
+			for(var/i in mutations)
 				if(i == T.colour)
 					continue
 				if(mutationChances[i])
@@ -591,7 +591,7 @@ proc/get_wound_severity(damage_ratio, can_heal_overkill = 0)
 					mutationChances[i] = T.mutation_chance / mutations.len
 
 			var/list/mutationTexts = list("[T.colour] ([100 - T.mutation_chance]%)")
-			for( var/i in mutationChances)
+			for(var/i in mutationChances)
 				mutationTexts += "[i] ([mutationChances[i]]%)"
 
 			user.show_message("Possible colours on splitting:\t[english_list(mutationTexts)]")

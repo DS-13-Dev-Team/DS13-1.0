@@ -15,7 +15,7 @@ Use add_modclick_verb to add a verb,
 
 //We call each callback in our verbs list. If it returns true, we return false to terminate the click
 /datum/click_handler/modifier/proc/handle_click(atom/A, params)
-	for( var/datum/callback/C in verbs)
+	for (var/datum/callback/C in verbs)
 		if (C.Invoke(A, params))
 			return FALSE
 	return TRUE
@@ -76,6 +76,6 @@ Use add_modclick_verb to add a verb,
 	if (!CHM)
 		return
 
-	for( var/datum/callback/C in CHM.verbs)
+	for (var/datum/callback/C in CHM.verbs)
 		if (C.delegate == function)
 			CHM.verbs.Remove(C)

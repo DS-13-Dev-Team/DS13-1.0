@@ -194,15 +194,15 @@ move an amendment</a> to the drawing, or <a href='?src=\ref[src];action=delete_a
 	if (!oldtitle) // or replacetext goes to infinite loop
 		return
 
-	for( var/obj/machinery/alarm/M in A)
+	for(var/obj/machinery/alarm/M in A)
 		M.SetName(replacetext(M.name,oldtitle,title))
-	for( var/obj/machinery/power/apc/M in A)
+	for(var/obj/machinery/power/apc/M in A)
 		M.SetName(replacetext(M.name,oldtitle,title))
-	for( var/obj/machinery/atmospherics/unary/vent_scrubber/M in A)
+	for(var/obj/machinery/atmospherics/unary/vent_scrubber/M in A)
 		M.SetName(replacetext(M.name,oldtitle,title))
-	for( var/obj/machinery/atmospherics/unary/vent_pump/M in A)
+	for(var/obj/machinery/atmospherics/unary/vent_pump/M in A)
 		M.SetName(replacetext(M.name,oldtitle,title))
-	for( var/obj/machinery/door/M in A)
+	for(var/obj/machinery/door/M in A)
 		M.SetName(replacetext(M.name,oldtitle,title))
 	//TODO: much much more. Unnamed airlocks, cameras, etc.
 
@@ -218,12 +218,12 @@ move an amendment</a> to the drawing, or <a href='?src=\ref[src];action=delete_a
 	if (!istype(T2, /turf/simulated))
 		return BORDER_BETWEEN
 
-	for( var/obj/structure/window/W in T2)
+	for (var/obj/structure/window/W in T2)
 		if(turn(dir,180) == W.dir)
 			return BORDER_BETWEEN
 		if (W.dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST))
 			return BORDER_2NDTILE
-	for( var/obj/machinery/door/window/D in T2)
+	for(var/obj/machinery/door/window/D in T2)
 		if(turn(dir,180) == D.dir)
 			return BORDER_BETWEEN
 	if (locate(/obj/machinery/door) in T2)
@@ -239,13 +239,13 @@ move an amendment</a> to the drawing, or <a href='?src=\ref[src];action=delete_a
 			return ROOM_ERR_TOOLARGE
 		var/turf/T = pending[1] //why byond havent list::pop()?
 		pending -= T
-		for( var/dir in GLOB.cardinal)
+		for (var/dir in GLOB.cardinal)
 			var/skip = 0
-			for( var/obj/structure/window/W in T)
+			for (var/obj/structure/window/W in T)
 				if(dir == W.dir || (W.dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST)))
 					skip = 1; break
 			if (skip) continue
-			for( var/obj/machinery/door/window/D in T)
+			for(var/obj/machinery/door/window/D in T)
 				if(dir == D.dir)
 					skip = 1; break
 			if (skip) continue

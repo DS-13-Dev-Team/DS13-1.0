@@ -52,7 +52,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	air.merge(burn_gas)
 
 	if(firelevel)
-		for( var/turf/T in fire_tiles)
+		for(var/turf/T in fire_tiles)
 			if(T.fire)
 				T.fire.firelevel = firelevel
 			else
@@ -60,7 +60,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 				fire_tiles -= T
 				fuel_objs -= fuel
 	else
-		for( var/turf/simulated/T in fire_tiles)
+		for(var/turf/simulated/T in fire_tiles)
 			if(istype(T.fire))
 				T.fire.RemoveFire()
 			T.fire = null
@@ -79,7 +79,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 	var/fuel_to_remove = used_liquid_fuel/(fuel_objs.len*LIQUIDFUEL_AMOUNT_TO_MOL) //convert back to liquid volume units
 
-	for( var/O in fuel_objs)
+	for(var/O in fuel_objs)
 		var/obj/effect/decal/cleanable/liquid_fuel/fuel = O
 		if(!istype(fuel))
 			fuel_objs -= fuel
@@ -155,15 +155,15 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		icon_state = "1"
 		set_light(0.5, 1, 3)
 
-	for( var/mob/living/L in loc)
+	for(var/mob/living/L in loc)
 		L.FireBurn(firelevel, air_contents.temperature, air_contents.return_pressure())  //Burn the mobs!
 
 	loc.fire_act(air_contents, air_contents.temperature, air_contents.volume)
-	for( var/atom/A in loc)
+	for(var/atom/A in loc)
 		A.fire_act(air_contents, air_contents.temperature, air_contents.volume)
 
 	//spread
-	for( var/direction in GLOB.cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/simulated/enemy_tile = get_step(my_tile, direction)
 
 		if(istype(enemy_tile))
@@ -249,7 +249,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		var/total_oxidizers = 0
 
 		//*** Get the fuel and oxidizer amounts
-		for( var/g in gas)
+		for(var/g in gas)
 			if(gas_data.flags[g] & XGM_GAS_FUEL)
 				gas_fuel += gas[g]
 			if(gas_data.flags[g] & XGM_GAS_OXIDIZER)
@@ -260,7 +260,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		//Liquid Fuel
 		var/fuel_area = 0
 		if(zone)
-			for( var/obj/effect/decal/cleanable/liquid_fuel/fuel in zone.fuel_objs)
+			for(var/obj/effect/decal/cleanable/liquid_fuel/fuel in zone.fuel_objs)
 				liquid_fuel += fuel.amount*LIQUIDFUEL_AMOUNT_TO_MOL
 				fuel_area++
 
@@ -317,7 +317,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		//remove_by_flag() and adjust_gas() handle the group_multiplier for us.
 		remove_by_flag(XGM_GAS_OXIDIZER, used_oxidizers)
 		var/datum/gas_mixture/burned_fuel = remove_by_flag(XGM_GAS_FUEL, used_gas_fuel)
-		for( var/g in burned_fuel.gas)
+		for(var/g in burned_fuel.gas)
 			adjust_gas(gas_data.burn_product[g], burned_fuel.gas[g])
 
 		if(zone)
@@ -336,7 +336,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
-	for( var/g in gas)
+	for(var/g in gas)
 		if(gas_data.flags[g] & XGM_GAS_OXIDIZER && gas[g] >= 0.1)
 			. = 1
 			break
@@ -348,14 +348,14 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 		return 1
 
 	. = 0
-	for( var/g in gas)
+	for(var/g in gas)
 		if(gas_data.flags[g] & XGM_GAS_FUEL && gas[g] >= 0.1)
 			. = 1
 			break
 
 /datum/gas_mixture/proc/check_combustability(obj/effect/decal/cleanable/liquid_fuel/liquid=null)
 	. = 0
-	for( var/g in gas)
+	for(var/g in gas)
 		if(gas_data.flags[g] & XGM_GAS_OXIDIZER && QUANTIZE(gas[g] * vsc.fire_consuption_rate) >= 0.1)
 			. = 1
 			break
@@ -367,7 +367,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 		return 1
 
 	. = 0
-	for( var/g in gas)
+	for(var/g in gas)
 		if(gas_data.flags[g] & XGM_GAS_FUEL && QUANTIZE(gas[g] * vsc.fire_consuption_rate) >= 0.1)
 			. = 1
 			break
@@ -422,7 +422,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 
 	//Get heat transfer coefficients for clothing.
 
-	for( var/obj/item/clothing/C in src)
+	for(var/obj/item/clothing/C in src)
 		if(l_hand == C || r_hand == C)
 			continue
 

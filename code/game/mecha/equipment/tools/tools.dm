@@ -100,25 +100,25 @@
 						log_message("Drilled through \the [target]")
 						target.ex_act(2, chassis)
 				else if(istype(target, /turf/simulated/mineral))
-					for( var/turf/simulated/mineral/M in range(chassis,1))
+					for(var/turf/simulated/mineral/M in range(chassis,1))
 						if(get_dir(chassis,M)&chassis.dir)
 							M.dig(500)
 					log_message("Drilled through \the [target]")
 					if(locate(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp) in chassis.equipment)
 						var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 						if(ore_box)
-							for( var/obj/item/weapon/ore/ore in range(chassis,1))
+							for(var/obj/item/weapon/ore/ore in range(chassis,1))
 								if(get_dir(chassis,ore)&chassis.dir)
 									ore.Move(ore_box)
 				else if(istype(target, /turf/simulated/floor/asteroid))
-					for( var/turf/simulated/floor/asteroid/M in range(chassis,1))
+					for(var/turf/simulated/floor/asteroid/M in range(chassis,1))
 						if(get_dir(chassis,M)&chassis.dir)
 							M.gets_dug()
 					log_message("Drilled through \the [target]")
 					if(locate(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp) in chassis.equipment)
 						var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 						if(ore_box)
-							for( var/obj/item/weapon/ore/ore in range(chassis,1))
+							for(var/obj/item/weapon/ore/ore in range(chassis,1))
 								if(get_dir(chassis,ore)&chassis.dir)
 									ore.Move(ore_box)
 				else if(target.loc == C)
@@ -153,24 +153,24 @@
 						log_message("Drilled through \the [target]")
 						target.ex_act(3, chassis)
 				else if(istype(target, /turf/simulated/mineral))
-					for( var/turf/simulated/mineral/M in range(chassis,1))
+					for(var/turf/simulated/mineral/M in range(chassis,1))
 						if(get_dir(chassis,M)&chassis.dir)
 							M.dig(500)
 					log_message("Drilled through \the [target]")
 					if(locate(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp) in chassis.equipment)
 						var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 						if(ore_box)
-							for( var/obj/item/weapon/ore/ore in range(chassis,1))
+							for(var/obj/item/weapon/ore/ore in range(chassis,1))
 								if(get_dir(chassis,ore)&chassis.dir)
 									ore.Move(ore_box)
 				else if(istype(target,/turf/simulated/floor/asteroid))
-					for( var/turf/simulated/floor/asteroid/M in range(target,1))
+					for(var/turf/simulated/floor/asteroid/M in range(target,1))
 						M.gets_dug()
 					log_message("Drilled through \the [target]")
 					if(locate(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp) in chassis.equipment)
 						var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 						if(ore_box)
-							for( var/obj/item/weapon/ore/ore in range(target,1))
+							for(var/obj/item/weapon/ore/ore in range(target,1))
 								ore.Move(ore_box)
 				else if(target.loc == C)
 					log_message("Drilled through \the [target]")
@@ -230,7 +230,7 @@
 
 	var/list/the_targets = list(T,T1,T2)
 
-	for( var/a = 1 to 5)
+	for(var/a = 1 to 5)
 		var/obj/effect/effect/water/W = new /obj/effect/effect/water(get_turf(chassis))
 		var/turf/my_target
 		if(a == 1)
@@ -385,7 +385,7 @@
 	action(atom/target)
 		if(!action_checks(target) || src.loc.z == 2) return
 		var/list/theareas = list()
-		for( var/area/AR in orange(100, chassis))
+		for(var/area/AR in orange(100, chassis))
 			if(AR in theareas) continue
 			theareas += AR
 		if(!theareas.len)
@@ -393,10 +393,10 @@
 		var/area/thearea = pick(theareas)
 		var/list/L = list()
 		var/turf/pos = get_turf(src)
-		for( var/turf/T in get_area_turfs(thearea))
+		for(var/turf/T in get_area_turfs(thearea))
 			if(!T.density && pos.z == T.z)
 				var/clear = 1
-				for( var/obj/O in T)
+				for(var/obj/O in T)
 					if(O.density)
 						clear = 0
 						break
@@ -475,11 +475,11 @@
 					atoms = range(target,3)
 				else
 					atoms = orange(target,3)
-				for( var/atom/movable/A in atoms)
+				for(var/atom/movable/A in atoms)
 					if(A.anchored) continue
 					spawn(0)
 						var/iter = 5-get_dist(A,target)
-						for( var/i=0 to iter)
+						for(var/i=0 to iter)
 							step_away(A,target)
 							sleep(2)
 				set_ready_state(0)
@@ -661,7 +661,7 @@
 		if(RD.chassis.hasInternalDamage(MECHA_INT_SHORT_CIRCUIT))
 			health_boost *= -2
 		else if(RD.chassis.hasInternalDamage() && prob(15))
-			for( var/int_dam_flag in RD.repairable_damage)
+			for(var/int_dam_flag in RD.repairable_damage)
 				if(RD.chassis.hasInternalDamage(int_dam_flag))
 					RD.chassis.clearInternalDamage(int_dam_flag)
 					repaired = 1
@@ -716,7 +716,7 @@
 	proc/get_power_channel(area/A)
 		var/pow_chan
 		if(A)
-			for( var/c in use_channels)
+			for(var/c in use_channels)
 				if(A.powered(c))
 					pow_chan = c
 					break
@@ -754,7 +754,7 @@
 			var/area/A = get_area(ER.chassis)
 			if(A)
 				var/pow_chan
-				for( var/c in list(EQUIP,ENVIRON,LIGHT))
+				for(var/c in list(EQUIP,ENVIRON,LIGHT))
 					if(A.powered(c))
 						pow_chan = c
 						break
@@ -1007,7 +1007,7 @@
 	salvageable = 0
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/destroy()
-	for( var/atom/movable/AM in src)
+	for(var/atom/movable/AM in src)
 		AM.forceMove(get_turf(src))
 		to_chat(AM, "<span class='danger'>You tumble out of the destroyed [src.name]!</span>")
 	return ..()
@@ -1109,14 +1109,14 @@
 			to_chat(usr, "<span class='danger'>Kinda hard to climb in while handcuffed don't you think?</span>")
 			return
 
-	for( var/mob/living/carbon/slime/M in range(1,usr))
+	for(var/mob/living/carbon/slime/M in range(1,usr))
 		if(M.Victim == usr)
 			to_chat(usr, "<span class='danger'>You're too busy getting your life sucked out of you.</span>")
 			return
 
 	//search for a valid passenger compartment
 	var/feedback = 0 //for nicer user feedback
-	for( var/obj/item/mecha_parts/mecha_equipment/tool/passenger/P in src)
+	for(var/obj/item/mecha_parts/mecha_equipment/tool/passenger/P in src)
 		if (P.occupant)
 			feedback |= OCCUPIED
 			continue
@@ -1253,7 +1253,7 @@
 	if(equip_ready || !istype(new_turf) || !dismantleFloor(new_turf))
 		return reset()
 	var/fdirn = turn(chassis.dir,180)
-	for( var/obj/structure/cable/LC in new_turf)		// check to make sure there's not a cable there already
+	for(var/obj/structure/cable/LC in new_turf)		// check to make sure there's not a cable there already
 		if(LC.d1 == fdirn || LC.d2 == fdirn)
 			return reset()
 	if(!use_cable(1))

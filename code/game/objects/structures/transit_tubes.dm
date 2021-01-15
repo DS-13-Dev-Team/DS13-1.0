@@ -49,7 +49,7 @@
 
 
 /obj/structure/transit_tube_pod/Destroy()
-	for( var/atom/movable/AM in contents)
+	for(var/atom/movable/AM in contents)
 		AM.loc = loc
 
 	..()
@@ -97,7 +97,7 @@
 
 /obj/structure/transit_tube/station/Bumped(mob/AM as mob|obj)
 	if(!pod_moving && icon_state == "open" && istype(AM, /mob))
-		for( var/obj/structure/transit_tube_pod/pod in loc)
+		for(var/obj/structure/transit_tube_pod/pod in loc)
 			if(pod.contents.len)
 				to_chat(AM, "<span class='notice'>The pod is already occupied.</span>")
 				return
@@ -108,7 +108,7 @@
 
 /obj/structure/transit_tube/station/attack_hand(mob/user as mob)
 	if(!pod_moving)
-		for( var/obj/structure/transit_tube_pod/pod in loc)
+		for(var/obj/structure/transit_tube_pod/pod in loc)
 			if(!pod.moving && pod.dir in directions())
 				if(icon_state == "closed")
 					open_animation()
@@ -137,7 +137,7 @@
 
 
 /obj/structure/transit_tube/station/proc/launch_pod()
-	for( var/obj/structure/transit_tube_pod/pod in loc)
+	for(var/obj/structure/transit_tube_pod/pod in loc)
 		if(!pod.moving && pod.dir in directions())
 			spawn(5)
 				pod_moving = 1
@@ -147,7 +147,7 @@
 				//reverse directions for automated cycling
 				var/turf/next_loc = get_step(loc, pod.dir)
 				var/obj/structure/transit_tube/nexttube
-				for( var/obj/structure/transit_tube/tube in next_loc)
+				for(var/obj/structure/transit_tube/tube in next_loc)
 					if(tube.has_entrance(pod.dir))
 						nexttube = tube
 						break
@@ -213,7 +213,7 @@
 /obj/structure/transit_tube/proc/has_entrance(from_dir)
 	from_dir = turn(from_dir, 180)
 
-	for( var/direction in directions())
+	for(var/direction in directions())
 		if(direction == from_dir)
 			return 1
 
@@ -222,7 +222,7 @@
 
 
 /obj/structure/transit_tube/proc/has_exit(in_dir)
-	for( var/direction in directions())
+	for(var/direction in directions())
 		if(direction == in_dir)
 			return 1
 
@@ -237,7 +237,7 @@
 	var/in_dir_cw = turn(in_dir, -45)
 	var/in_dir_ccw = turn(in_dir, 45)
 
-	for( var/direction in directions())
+	for(var/direction in directions())
 		if(direction == in_dir)
 			return direction
 
@@ -277,7 +277,7 @@
 		var/last_delay = 0
 		var/exit_delay
 
-		for( var/obj/structure/transit_tube/tube in loc)
+		for(var/obj/structure/transit_tube/tube in loc)
 			if(tube.has_exit(dir))
 				current_tube = tube
 				break
@@ -296,7 +296,7 @@
 			next_loc = get_step(loc, next_dir)
 
 			current_tube = null
-			for( var/obj/structure/transit_tube/tube in next_loc)
+			for(var/obj/structure/transit_tube/tube in next_loc)
 				if(tube.has_entrance(next_dir))
 					current_tube = tube
 					break
@@ -370,7 +370,7 @@
 				//  Same direction as pod? Direcion you moved? Halfway between?
 
 		if(!moving)
-			for( var/obj/structure/transit_tube/station/station in loc)
+			for(var/obj/structure/transit_tube/station/station in loc)
 				if(dir in station.directions())
 					if(!station.pod_moving)
 						if(direction == station.dir)
@@ -386,7 +386,7 @@
 							station.launch_pod()
 					return
 
-			for( var/obj/structure/transit_tube/tube in loc)
+			for(var/obj/structure/transit_tube/tube in loc)
 				if(dir in tube.directions())
 					if(tube.has_exit(direction))
 						set_dir(direction)
@@ -428,9 +428,9 @@
 	var/list/connected = list()
 	var/list/connected_auto = list()
 
-	for( var/direction in tube_dir_list)
+	for(var/direction in tube_dir_list)
 		var/location = get_step(loc, direction)
-		for( var/obj/structure/transit_tube/tube in location)
+		for(var/obj/structure/transit_tube/tube in location)
 			if(tube.directions() == null && tube.icon_state == "auto")
 				connected_auto += direction
 				break
@@ -458,8 +458,8 @@
 	if(length(connected) < 1)
 		return list()
 
-	for( var/i = 1, i <= length(connected), i++)
-		for( var/j = i + 1, j <= length(connected), j++)
+	for(var/i = 1, i <= length(connected), i++)
+		for(var/j = i + 1, j <= length(connected), j++)
 			var/d1 = connected[i]
 			var/d2 = connected[j]
 
@@ -478,7 +478,7 @@
 
 // Look for diagonal directions, generate the decorative corners in each.
 /obj/structure/transit_tube/proc/generate_automatic_corners(directions)
-	for( var/direction in directions)
+	for(var/direction in directions)
 		if(direction == 5 || direction == 6 || direction == 9 || direction == 10)
 			if(direction & NORTH)
 				create_automatic_decorative_corner(get_step(loc, NORTH), direction ^ 3)
@@ -498,7 +498,7 @@
 /obj/structure/transit_tube/proc/create_automatic_decorative_corner(location, direction)
 	var/state = "D-[dir2text_short(direction)]"
 
-	for( var/obj/structure/transit_tube/tube in location)
+	for(var/obj/structure/transit_tube/tube in location)
 		if(tube.icon_state == state)
 			return
 
@@ -532,7 +532,7 @@
 
 	var/list/directions = list()
 
-	for( var/text_part in split_text)
+	for(var/text_part in split_text)
 		var/direction = text2dir_extended(text_part)
 
 		if(direction > 0)

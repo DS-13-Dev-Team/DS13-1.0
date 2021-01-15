@@ -137,7 +137,7 @@
 	//Lets start with mobs.
 	var/list/possible_standing = list()
 	var/list/possible = list()
-	for( var/mob/living/L in search)
+	for (var/mob/living/L in search)
 		//If our originally intended victim is in the target turf, we hit them
 		if (L == target)
 			return L
@@ -163,7 +163,7 @@
 		possible_dense += search
 	else
 		possible += search
-	for( var/atom/A in search)
+	for (var/atom/A in search)
 		if (ismob(A))
 			continue //Lets not hit ghosts
 

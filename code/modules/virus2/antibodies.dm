@@ -16,7 +16,7 @@ var/global/list/ALL_ANTIGENS = list(
 		return none
 
 	var/code = ""
-	for( var/V in ALL_ANTIGENS)
+	for(var/V in ALL_ANTIGENS)
 		if(V in antigens)
 			code += V
 

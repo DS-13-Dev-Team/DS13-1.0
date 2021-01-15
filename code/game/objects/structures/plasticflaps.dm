@@ -33,7 +33,7 @@
 	if(istype(M))
 		if(M.lying)
 			return ..()
-		for( var/mob_type in mobs_can_pass)
+		for(var/mob_type in mobs_can_pass)
 			if(istype(A, mob_type))
 				return ..()
 		return issmall(M)

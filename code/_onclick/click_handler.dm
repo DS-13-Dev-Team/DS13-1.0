@@ -234,7 +234,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	if(!click_handlers)
 		return
 
-	for( var/thing in click_handlers.stack)
+	for (var/thing in click_handlers.stack)
 		if (istype(thing, typepath))
 			click_handlers.Remove(thing)
 			qdel(thing)

@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(wireless)
 		var/datum/connection_request/C = process_connections[process_connections.len]
 		process_connections--
 		var/target_found = 0
-		for( var/datum/wifi/receiver/R in receiver_list)
+		for(var/datum/wifi/receiver/R in receiver_list)
 			if(R.id == C.id)
 				var/datum/wifi/sender/S = C.source
 				S.connect_device(R)

@@ -53,7 +53,7 @@
 
 /datum/wifi/Destroy(wifi/device)
 	parent = null
-	for( var/datum/wifi/D in connected_devices)
+	for(var/datum/wifi/D in connected_devices)
 		D.disconnect_device(src)
 		disconnect_device(D)
 	return ..()

@@ -104,7 +104,7 @@
 // Loops through all stored files and recalculates used_capacity of this drive
 /obj/item/weapon/computer_hardware/hard_drive/proc/recalculate_size()
 	var/total_size = 0
-	for( var/datum/computer_file/F in stored_files)
+	for(var/datum/computer_file/F in stored_files)
 		total_size += F.size
 
 	used_capacity = total_size
@@ -132,7 +132,7 @@
 		return 0
 
 	var/list/badchars = list("/","\\",":","*","?","\"","<",">","|","#", ".")
-	for( var/char in badchars)
+	for(var/char in badchars)
 		if(findtext(F.filename, char))
 			return 0
 
@@ -141,7 +141,7 @@
 		return 0
 
 	var/name = F.filename + "." + F.filetype
-	for( var/datum/computer_file/file in stored_files)
+	for(var/datum/computer_file/file in stored_files)
 		if((file.filename + "." + file.filetype) == name)
 			return 0
 	return 1
@@ -157,7 +157,7 @@
 	if(!stored_files)
 		return null
 
-	for( var/datum/computer_file/F in stored_files)
+	for(var/datum/computer_file/F in stored_files)
 		if(F.filename == filename)
 			return F
 	return null
@@ -172,7 +172,7 @@
 	if(!typepath)
 		return files
 
-	for( var/f in stored_files)
+	for(var/f in stored_files)
 		if(istype(f, typepath))
 			files += f
 
@@ -192,7 +192,7 @@
 
 // Adds default files to the drive.
 /obj/item/weapon/computer_hardware/hard_drive/proc/install_default_files()
-	for( var/file_typepath in default_files)
+	for(var/file_typepath in default_files)
 		store_file(new file_typepath)
 	return TRUE
 

@@ -12,7 +12,7 @@
 #define INIT_MOVEMENT_HANDLERS \
 if(LAZYLEN(movement_handlers) && ispath(movement_handlers[1])) { \
 	var/new_handlers = list(); \
-	for( var/path in movement_handlers){ \
+	for(var/path in movement_handlers){ \
 		var/arguments = movement_handlers[path];   \
 		arguments = arguments ? (list(src) | (arguments)) : list(src); \
 		new_handlers += new path(arglist(arguments)); \

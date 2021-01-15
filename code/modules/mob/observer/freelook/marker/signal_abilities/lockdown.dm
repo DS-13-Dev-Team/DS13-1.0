@@ -49,7 +49,7 @@
 
 		//Lets check if we have necromorphs here
 		var/necromorph_found = FALSE
-		for( var/mob/living/L in A)
+		for (var/mob/living/L in A)
 			if (L.is_necromorph() && L.stat != DEAD)
 				necromorph_found = TRUE
 				break
@@ -60,7 +60,7 @@
 		else
 			to_chat(user, SPAN_DANGER("No necromorphs found in the target area, lockdown duration reduced to 1.5 minutes"))
 
-		for( var/obj/machinery/door/airlock/AL in A.bordering_doors)
+		for (var/obj/machinery/door/airlock/AL in A.bordering_doors)
 			if (AL.can_lockdown(null, 2))
 				var/datum/extension/lockdown/lock = set_extension(AL, /datum/extension/lockdown, duration, 2)
 				if (!lock.start())

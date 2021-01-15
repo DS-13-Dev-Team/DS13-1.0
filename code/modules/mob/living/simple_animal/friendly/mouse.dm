@@ -39,7 +39,7 @@
 /mob/living/simple_animal/mouse/Life()
 	..()
 	if(!stat && prob(speak_chance))
-		for( var/mob/M in view())
+		for(var/mob/M in view())
 			sound_to(M, 'sound/effects/mousesqueek.ogg')
 
 	if(!ckey && stat == CONSCIOUS && prob(0.5))

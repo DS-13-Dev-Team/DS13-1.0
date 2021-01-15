@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(research)
 
 	// Initialize research holders that were created before
 	/*
-	for( var/research in research_holders_to_init)
+	for(var/research in research_holders_to_init)
 		initialize_designs(research)
 	research_holders_to_init = list()
 	*/
@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(research)
 
 /datum/controller/subsystem/research/proc/generate_integrated_circuit_designs()
 	/*
-	for( var/obj/item/integrated_circuit/IC in all_integrated_circuits)
+	for(var/obj/item/integrated_circuit/IC in all_integrated_circuits)
 		if(!(IC.spawn_flags & IC_SPAWN_RESEARCH))
 			continue
 		var/datum/design/design = new /datum/design/research/circuit(src)
@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(research)
 	// If not, add them to the list to be initialized later
 	/*
 	if(designs_initialized)
-		for( var/datum/design/D in all_designs)
+		for(var/datum/design/D in all_designs)
 			if(!D.req_tech)
 				continue
 

@@ -132,7 +132,7 @@
 	var/step_percent = 1 / steps
 	if (delete_on_finish)
 		QDEL_IN(src, time+1)
-	for( var/i = 1; i <= steps; i++)
+	for (var/i = 1; i <= steps; i++)
 		var/vector2/delta = tether_direction.ToMagnitude(max(1,magnitude * (1 - (i * step_percent))))
 		var/vector2/temp_end = start + delta
 		set_ends(start, temp_end, step_time, apply_offset = FALSE)
@@ -163,13 +163,13 @@
 /obj/effect/projectile/tether/ex_act(severity, atom/epicentre)
 	switch(severity)
 		if(1.0)
-			for( var/atom/movable/AM in contents)
+			for(var/atom/movable/AM in contents)
 				AM.ex_act(severity++, epicentre)
 
 			take_damage(rand(150,300), BRUTE, null, epicentre)
 		if(2.0)
 			if(prob(50))
-				for( var/atom/movable/AM in contents)
+				for(var/atom/movable/AM in contents)
 					AM.ex_act(severity++, epicentre)
 
 			take_damage(rand(60,150), BRUTE, null, epicentre)

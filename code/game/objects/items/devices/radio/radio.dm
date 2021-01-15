@@ -75,7 +75,7 @@
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 
 	GLOB.listening_objects |= src
-	for( var/ch_name in channels)
+	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
 	active = TRUE
@@ -98,7 +98,7 @@
 	radio_connection = null
 
 	GLOB.listening_objects -= src
-	for( var/ch_name in channels)
+	for (var/ch_name in channels)
 		radio_controller.remove_object(src, radiochannels[ch_name])
 
 	secure_radio_connections = list()
@@ -159,7 +159,7 @@
 /obj/item/device/radio/proc/list_secure_channels(mob/user)
 	var/dat[0]
 
-	for( var/ch_name in channels)
+	for(var/ch_name in channels)
 		var/chan_stat = channels[ch_name]
 		var/listening = !!(chan_stat & FREQ_LISTENING) != 0
 
@@ -169,7 +169,7 @@
 
 /obj/item/device/radio/proc/list_internal_channels(mob/user)
 	var/dat[0]
-	for( var/internal_chan in internal_channels)
+	for(var/internal_chan in internal_channels)
 		if(has_channel_access(user, internal_chan))
 			dat.Add(list(list("chan" = internal_chan, "display_name" = get_frequency_default_name(text2num(internal_chan)), "chan_span" = frequency_span_class(text2num(internal_chan)))))
 
@@ -445,11 +445,11 @@
 
 	  //#### Sending the signal to all subspace receivers ####//
 
-		for( var/obj/machinery/telecomms/receiver/R in telecomms_list)
+		for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
 			R.receive_signal(signal)
 
 		// Allinone can act as receivers.
-		for( var/obj/machinery/telecomms/allinone/R in telecomms_list)
+		for(var/obj/machinery/telecomms/allinone/R in telecomms_list)
 			R.receive_signal(signal)
 
 		// Receiving code can be located in Telecommunications.dm
@@ -457,7 +457,7 @@
 			return TRUE //Huzzah, sent via subspace
 
 		else //Less huzzah, we have to fallback
-			for( var/obj/item/device/radio/R in loc)
+			for(var/obj/item/device/radio/R in loc)
 				if(!R.subspace_transmission)
 					return R.talk_into(M, message, channel, verb, speaking)
 			return FALSE
@@ -507,7 +507,7 @@
 	signal.frequency = connection.frequency // Quick frequency set
 	if(cell && cell.percent() < 20)
 		signal.data["compression"] = max(0, 80 - cell.percent()*3)
-	for( var/obj/machinery/telecomms/receiver/R in telecomms_list)
+	for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
 		R.receive_signal(signal)
 
 	sleep(rand(10,25)) // wait a little...
@@ -570,7 +570,7 @@
 	else
 		var/accept = (freq==frequency && listening)
 		if (!accept)
-			for( var/ch_name in channels)
+			for (var/ch_name in channels)
 				var/datum/radio_frequency/RF = secure_radio_connections[ch_name]
 				if (RF.frequency==freq && (channels[ch_name]&FREQ_LISTENING))
 					accept = 1
@@ -617,7 +617,7 @@
 /obj/item/device/radio/emp_act(severity)
 	broadcasting = 0
 	listening = 0
-	for( var/ch_name in channels)
+	for (var/ch_name in channels)
 		channels[ch_name] = 0
 	if(cell)
 		cell.emp_act(severity)
@@ -685,7 +685,7 @@
 		if(keyslot)
 
 
-			for( var/ch_name in channels)
+			for(var/ch_name in channels)
 				radio_controller.remove_object(src, radiochannels[ch_name])
 				secure_radio_connections[ch_name] = null
 
@@ -722,13 +722,13 @@
 
 	var/mob/living/silicon/robot/D = src.loc
 	if(D.module)
-		for( var/ch_name in D.module.channels)
+		for(var/ch_name in D.module.channels)
 			if(ch_name in src.channels)
 				continue
 			src.channels += ch_name
 			src.channels[ch_name] += D.module.channels[ch_name]
 	if(keyslot)
-		for( var/ch_name in keyslot.channels)
+		for(var/ch_name in keyslot.channels)
 			if(ch_name in src.channels)
 				continue
 			src.channels += ch_name
@@ -737,7 +737,7 @@
 		if(keyslot.syndie)
 			src.syndie = 1
 
-	for( var/ch_name in src.channels)
+	for (var/ch_name in src.channels)
 		if(!radio_controller)
 			src.SetName("broken radio")
 			return
@@ -811,12 +811,12 @@
 
 /obj/item/device/radio/proc/config(op)
 	if(radio_controller)
-		for( var/ch_name in channels)
+		for (var/ch_name in channels)
 			radio_controller.remove_object(src, radiochannels[ch_name])
 	secure_radio_connections = new
 	channels = op
 	if(radio_controller)
-		for( var/ch_name in op)
+		for (var/ch_name in op)
 			secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 	return
 

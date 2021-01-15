@@ -12,7 +12,7 @@
 /obj/item/device/pipe_painter/New()
 	..()
 	modes = new()
-	for( var/C in pipe_colors)
+	for(var/C in pipe_colors)
 		modes += "[C]"
 	mode = pick(modes)
 

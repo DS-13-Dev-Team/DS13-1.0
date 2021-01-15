@@ -120,9 +120,9 @@
 		return
 
 	dat += "<style>div.var { padding: 5px; } div.var:nth-child(even) { background-color: #555; }</style>"
-	for( var/datum/D in user.client.watched_variables)
+	for(var/datum/D in user.client.watched_variables)
 		dat += "<h1>[make_view_variables_value(D)]</h1>"
-		for( var/v in user.client.watched_variables[D])
+		for(var/v in user.client.watched_variables[D])
 			dat += "<div class='var'>"
 			dat += "(<a href='?_src_=vars;datumunwatch=\ref[D];varnameunwatch=[v]'>X</a>) "
 			dat += "[D.make_view_variables_variable_entry(v, D.get_variable_value(v), 1)] [v] = [make_view_variables_value(D.get_variable_value(v), v)]"
@@ -146,7 +146,7 @@
 	. = list()
 	var/list/variables = D.get_variables()
 	variables = sortList(variables)
-	for( var/x in variables)
+	for(var/x in variables)
 		. += make_view_variables_var_entry(D, x, D.get_variable_value(x))
 	return jointext(., null)
 
@@ -175,7 +175,7 @@
 		vtext = "/list ([L.len])"
 		if(!(varname in view_variables_dont_expand) && L.len > 0 && L.len < 100)
 			extra += "<ul>"
-			for( var/index = 1 to L.len)
+			for (var/index = 1 to L.len)
 				var/entry = L[index]
 				if(!isnum(entry) && !isnull(entry) && !(varname in view_variables_no_assoc) && L[entry] != null)
 					extra += "<li>[index]: [make_view_variables_value(entry)] -> [make_view_variables_value(L[entry])]</li>"

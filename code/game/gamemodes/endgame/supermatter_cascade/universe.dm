@@ -40,7 +40,7 @@ var/global/universe_has_ended = 0
 	to_world("<span class='sinister' style='font-size:22pt'>You are blinded by a brilliant flash of energy.</span>")
 	sound_to(world, sound('sound/effects/cascade.ogg'))
 
-	for( var/mob/M in GLOB.player_list)
+	for(var/mob/M in GLOB.player_list)
 		M.flash_eyes()
 
 	if(evacuation_controller.cancel_evacuation())
@@ -79,7 +79,7 @@ AUTOMATED ALERT: Link to [command_name()] lost.
 		return
 
 /datum/universal_state/supermatter_cascade/proc/AreaSet()
-	for( var/area/A)
+	for(var/area/A)
 		if(!istype(A,/area) || istype(A, /area/space) || istype(A,/area/beach))
 			continue
 
@@ -87,22 +87,22 @@ AUTOMATED ALERT: Link to [command_name()] lost.
 
 /datum/universal_state/supermatter_cascade/OverlayAndAmbientSet()
 	spawn(0)
-		for( var/datum/lighting_corner/L in world)
+		for(var/datum/lighting_corner/L in world)
 			if(L.z in GLOB.using_map.admin_levels)
 				L.update_lumcount(1,1,1)
 			else
 				L.update_lumcount(0.0, 0.4, 1)
 
-		for( var/turf/space/T)
+		for(var/turf/space/T)
 			OnTurfChange(T)
 
 /datum/universal_state/supermatter_cascade/proc/MiscSet()
-	for( var/obj/machinery/firealarm/alm in SSmachines.machinery)
+	for (var/obj/machinery/firealarm/alm in SSmachines.machinery)
 		if (!(alm.stat & BROKEN))
 			alm.ex_act(2)
 
 /datum/universal_state/supermatter_cascade/proc/APCSet()
-	for( var/obj/machinery/power/apc/APC in SSmachines.machinery)
+	for (var/obj/machinery/power/apc/APC in SSmachines.machinery)
 		if (!(APC.stat & BROKEN) && !APC.is_critical)
 			APC.chargemode = 0
 			if(APC.cell)
@@ -111,7 +111,7 @@ AUTOMATED ALERT: Link to [command_name()] lost.
 			APC.queue_icon_update()
 
 /datum/universal_state/supermatter_cascade/proc/PlayerSet()
-	for( var/datum/mind/M in GLOB.player_list)
+	for(var/datum/mind/M in GLOB.player_list)
 		if(!istype(M.current,/mob/living))
 			continue
 		if(M.current.stat!=2)

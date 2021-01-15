@@ -83,7 +83,7 @@
 	var/last_char_group			= 0
 	var/output = ""
 
-	for( var/i=1, i<=length(input), i++)
+	for(var/i=1, i<=length(input), i++)
 		var/ascii_char = text2ascii(input,i)
 		switch(ascii_char)
 			// A  .. Z
@@ -135,7 +135,7 @@
 	if(last_char_group == 1)
 		output = copytext(output,1,length(output))	//removes the last character (in this case a space)
 
-	for( var/bad_name in list("space","floor","wall","r-wall","monkey","unknown","inactive ai","plating"))	//prevents these common metagamey names
+	for(var/bad_name in list("space","floor","wall","r-wall","monkey","unknown","inactive ai","plating"))	//prevents these common metagamey names
 		if(cmptext(output,bad_name))	return	//(not case sensitive)
 
 	return output
@@ -146,7 +146,7 @@
 	if(!text) return ""
 	var/list/dat = list()
 	var/last_was_space = 1
-	for( var/i=1, i<=length(text), i++)
+	for(var/i=1, i<=length(text), i++)
 		var/ascii_char = text2ascii(text,i)
 		switch(ascii_char)
 			if(65 to 90)	//A-Z, make them lowercase
@@ -170,7 +170,7 @@
 /proc/reject_bad_text(text, max_length=512)
 	if(length(text) > max_length)	return			//message too long
 	var/non_whitespace = 0
-	for( var/i=1, i<=length(text), i++)
+	for(var/i=1, i<=length(text), i++)
 		switch(text2ascii(text,i))
 			if(62,60,92,47)	return			//rejects the text if it contains these bad characters: <, >, \ or /
 			if(127 to 255)	return			//rejects weird letters like �
@@ -222,7 +222,7 @@
  */
 
 /proc/replace_characters(t, list/repl_chars)
-	for( var/char in repl_chars)
+	for(var/char in repl_chars)
 		t = replacetext(t, char, repl_chars[char])
 	return t
 
@@ -246,14 +246,14 @@
 
 //Returns a string with reserved characters and spaces before the first letter removed
 /proc/trim_left(text)
-	for( var/i = 1 to length(text))
+	for (var/i = 1 to length(text))
 		if (text2ascii(text, i) > 32)
 			return copytext(text, i)
 	return ""
 
 //Returns a string with reserved characters and spaces after the last letter removed
 /proc/trim_right(text)
-	for( var/i = length(text), i > 0, i--)
+	for (var/i = length(text), i > 0, i--)
 		if (text2ascii(text, i) > 32)
 			return copytext(text, 1, i + 1)
 	return ""
@@ -298,7 +298,7 @@
 	var/newtext = text
 	if(length(text) != length(compare))
 		return 0
-	for( var/i = 1, i < length(text), i++)
+	for(var/i = 1, i < length(text), i++)
 		var/a = copytext(text,i,i+1)
 		var/b = copytext(compare,i,i+1)
 		//if it isn't both the same letter, or if they are both the replacement character
@@ -318,7 +318,7 @@
 	if(!text || !character)
 		return 0
 	var/count = 0
-	for( var/i = 1, i <= length(text), i++)
+	for(var/i = 1, i <= length(text), i++)
 		var/a = copytext(text,i,i+1)
 		if(a == character)
 			count++
@@ -326,7 +326,7 @@
 
 /proc/reverse_text(text = "")
 	var/new_text = ""
-	for( var/i = length(text); i > 0; i--)
+	for(var/i = length(text); i > 0; i--)
 		new_text += copytext(text, i, i+1)
 	return new_text
 
@@ -355,7 +355,7 @@ proc/TextPreview(string, len=40)
 	return "<IMG src='\ref[text_tag_icons.icon]' class='text_tag' iconstate='[tagname]'" + (tagdesc ? " alt='[tagdesc]'" : "") + ">"
 
 /proc/contains_az09(input)
-	for( var/i=1, i<=length(input), i++)
+	for(var/i=1, i<=length(input), i++)
 		var/ascii_char = text2ascii(input,i)
 		switch(ascii_char)
 			// A  .. Z
@@ -372,7 +372,7 @@ proc/TextPreview(string, len=40)
 
 /proc/generateRandomString(length)
 	. = list()
-	for( var/a in 1 to length)
+	for(var/a in 1 to length)
 		var/letter = rand(33,126)
 		. += ascii2text(letter)
 	. = jointext(.,null)
@@ -530,7 +530,7 @@ proc/TextPreview(string, len=40)
 /proc/deep_string_equals(A, B)
 	if (length(A) != length(B))
 		return FALSE
-	for( var/i = 1 to length(A))
+	for (var/i = 1 to length(A))
 		if (text2ascii(A, i) != text2ascii(B, i))
 			return FALSE
 	return TRUE
@@ -565,7 +565,7 @@ proc/TextPreview(string, len=40)
 
 
 /proc/link_necromorphs_to(message, target)
-	for( var/ckey in SSnecromorph.necromorph_players)
+	for (var/ckey in SSnecromorph.necromorph_players)
 		if (!ckey)
 			continue
 		var/datum/player/P = get_or_create_player(ckey)

@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(lighting)
 
 /datum/controller/subsystem/lighting/stat_entry()
 	var/list/out = list("Queued:{L:[light_queue.len] C:[corner_queue.len] O:[overlay_queue.len]}")
-	for( var/stype in stats_lists)
+	for (var/stype in stats_lists)
 		out += "[stype] updates: [jointext(stats_lists[stype], " | ")]"
 
 	..(out.Join("\n"))
@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(lighting)
 
 // It's safe to pass a list of non-turfs to this list - it'll only check turfs.
 /datum/controller/subsystem/lighting/proc/InitializeTurfs(list/targets)
-	for( var/turf/T in (targets || world))
+	for (var/turf/T in (targets || world))
 		if (T.dynamic_lighting && T.loc:dynamic_lighting)
 			T.lighting_build_overlay()
 
@@ -63,10 +63,10 @@ SUBSYSTEM_DEF(lighting)
 
 		if(next_stats_update <= world.time)
 			next_stats_update = world.time + update_stats_every
-			for( var/stat_name in stats_queues)
+			for(var/stat_name in stats_queues)
 				var/stat_sum = 0
 				var/list/stats_queue = stats_queues[stat_name]
-				for( var/count in stats_queue)
+				for(var/count in stats_queue)
 					stat_sum += count
 				stats_queue.Cut()
 

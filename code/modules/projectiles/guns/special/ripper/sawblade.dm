@@ -151,7 +151,7 @@
 	var/hp = health / initial(health)
 	var/matmult = (0.5 * hp) + 0.5 //This will give a value in the range 0.5..1.0
 	var/list/returnmat = list()
-	for( var/m in matter)
+	for (var/m in matter)
 		returnmat[m] = matter[m] * matmult
 
 	return returnmat
@@ -309,7 +309,7 @@
 	//Solid objects will block the blade first
 	if (status == STATE_GRINDING)
 		//We iterate through the grind atoms and see if we can hit any of them
-		for( var/list/l in grind_atoms)
+		for (var/list/l in grind_atoms)
 			var/atom/A = l[1]
 			//If the atom is gone, remove from this list
 			if (QDELETED(A))
@@ -368,7 +368,7 @@
 	set_sound(SOUND_NORMAL)
 
 	//Deals damage to mobs in the damage tile
-	for( var/mob/living/L in damage_tile)
+	for (var/mob/living/L in damage_tile)
 		var/cache_damage = damage
 		attack_mob(L, 0, 0)
 		damage = cache_damage

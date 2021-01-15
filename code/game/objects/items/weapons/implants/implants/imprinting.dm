@@ -18,7 +18,7 @@
 	It is HIGLY ILLEGAL and NanoTrasen does NOT endorse use of this device in such way.
 	Any amount of Nanotrasen brand "Mind-Breaker"(TM) present in bloodstream will trigger this side-effect.<BR>"}
 	. += "<HR><B>Instructions:</B><BR>"
-	for( var/i = 1 to instructions.len)
+	for(var/i = 1 to instructions.len)
 		. += "- [instructions[i]] <A href='byond://?src=\ref[src];edit=[i]'>Edit</A> <A href='byond://?src=\ref[src];del=[i]'>Remove</A><br>"
 	. += "<A href='byond://?src=\ref[src];add=1'>Add</A>"
 
@@ -50,7 +50,7 @@
 		msg += "<span class='danger'>The fog in your head clears, and you remember some important things. You hold following things as deep convictions, almost like synthetics' laws:</span><br>"
 	else
 		msg += "<span class='notice'>You hear an annoying voice in the back of your head. The things it keeps reminding you of:</span><br>"
-	for( var/thing in instructions)
+	for(var/thing in instructions)
 		msg += "- [thing]<br>"
 	to_chat(M, msg)
 	if(M.mind)

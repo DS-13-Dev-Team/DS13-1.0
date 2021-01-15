@@ -20,7 +20,7 @@
 	if(!enemies.len)
 		return
 	var/list/see = ..()
-	for( var/weakref/W in enemies) // Remove all entries that aren't in enemies
+	for(var/weakref/W in enemies) // Remove all entries that aren't in enemies
 		var/mob/M = W.resolve()
 		if(M in see)
 			. += M
@@ -29,7 +29,7 @@
 	..()
 	var/list/around = view(src, 7)
 
-	for( var/atom/movable/A in around)
+	for(var/atom/movable/A in around)
 		if(A == src)
 			continue
 		if(isliving(A))
@@ -42,7 +42,7 @@
 				enemies |= weakref(M)
 				enemies |= weakref(M.occupant)
 
-	for( var/mob/living/simple_animal/hostile/retaliate/H in around)
+	for(var/mob/living/simple_animal/hostile/retaliate/H in around)
 		if(!attack_same && !H.attack_same && H.faction == faction)
 			H.enemies |= enemies
 	return 0

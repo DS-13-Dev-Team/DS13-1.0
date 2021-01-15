@@ -223,7 +223,7 @@
 
 			var/image_key = "[H.species.get_race_key(src)]"
 
-			for( var/organ_tag in H.species.has_limbs)
+			for(var/organ_tag in H.species.has_limbs)
 				var/obj/item/organ/external/part = H.organs_by_name[organ_tag]
 				if(isnull(part) || part.is_stump())
 					image_key += "0"

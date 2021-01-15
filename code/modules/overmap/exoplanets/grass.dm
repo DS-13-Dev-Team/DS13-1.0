@@ -16,7 +16,7 @@
 /obj/effect/overmap/sector/exoplanet/grass/generate_map()
 	if(prob(40))
 		lightlevel = rand(1,7)/10	//give a chance of twilight jungle
-	for( var/zlevel in map_z)
+	for(var/zlevel in map_z)
 		var/datum/random_map/noise/exoplanet/M = new /datum/random_map/noise/exoplanet/grass(md5(world.time + rand(-100,1000)),1,1,zlevel,maxx,maxy,0,1,1)
 		get_biostuff(M)
 

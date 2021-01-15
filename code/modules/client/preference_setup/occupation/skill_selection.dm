@@ -35,7 +35,7 @@
 /datum/preferences/proc/get_level_cost(datum/job/job, decl/hierarchy/skill/S, level)
 	var/min = get_min_skill(job, S)
 	. = 0
-	for( var/i=min+1, i <= level, i++)
+	for(var/i=min+1, i <= level, i++)
 		. += S.get_cost(i)
 
 /datum/preferences/proc/get_max_affordable(datum/job/job, decl/hierarchy/skill/S)
@@ -46,7 +46,7 @@
 	var/max = get_max_skill(job, S)
 	var/budget = points_by_job[job]
 	. = max
-	for( var/i=current_level+1, i <= max, i++)
+	for(var/i=current_level+1, i <= max, i++)
 		if(budget - S.get_cost(i) < 0)
 			return i-1
 		budget -= S.get_cost(i)
@@ -58,12 +58,12 @@
 
 	pref.skills_allocated = list()
 	var/jobs_by_type = decls_repository.get_decls(GLOB.using_map.allowed_jobs)
-	for( var/job_type in jobs_by_type)
+	for(var/job_type in jobs_by_type)
 		var/datum/job/job = jobs_by_type[job_type]
 		if("[job.type]" in pref.skills_saved)
 			var/S = pref.skills_saved["[job.type]"]
 			var/L = list()
-			for( var/decl/hierarchy/skill/skill in GLOB.skills)
+			for(var/decl/hierarchy/skill/skill in GLOB.skills)
 				if("[skill.type]" in S)
 					L[skill] = S["[skill.type]"]
 			if(length(L))
@@ -71,10 +71,10 @@
 
 /datum/category_item/player_setup_item/occupation/proc/save_skills()
 	pref.skills_saved = list()
-	for( var/datum/job/job in pref.skills_allocated)
+	for(var/datum/job/job in pref.skills_allocated)
 		var/S = pref.skills_allocated[job]
 		var/L = list()
-		for( var/decl/hierarchy/skill/skill in S)
+		for(var/decl/hierarchy/skill/skill in S)
 			L["[skill.type]"] = S[skill]
 		if(length(L))
 			pref.skills_saved["[job.type]"] = L
@@ -84,7 +84,7 @@
 	. = list()
 	var/datum/species/S = all_species[species]
 	var/jobs_by_type = decls_repository.get_decls(GLOB.using_map.allowed_jobs)
-	for( var/job_type in jobs_by_type)
+	for(var/job_type in jobs_by_type)
 		var/datum/job/job = jobs_by_type[job_type]
 		var/input_skills = list()
 		if((job in input) && istype(input[job], /list))
@@ -92,8 +92,8 @@
 
 		var/L = list()
 		var/sum = 0
-
-		for( var/decl/hierarchy/skill/skill in GLOB.skills)
+		
+		for(var/decl/hierarchy/skill/skill in GLOB.skills)
 			if(skill in input_skills)
 				var/min = get_min_skill(job, skill)
 				var/max = get_max_skill(job, skill)
@@ -154,19 +154,19 @@
 	dat += "<b>Skill points remaining: [pref.points_by_job[job]].</b><hr>"
 	dat += "<hr>"
 	dat += "</center></tt>"
-
+	
 	dat += "<table>"
 	var/decl/hierarchy/skill/skill = decls_repository.get_decl(/decl/hierarchy/skill)
-	for( var/decl/hierarchy/skill/cat in skill.children)
+	for(var/decl/hierarchy/skill/cat in skill.children)
 		dat += "<tr><th colspan = 4><b>[cat.name]</b>"
 		dat += "</th></tr>"
-		for( var/decl/hierarchy/skill/S in cat.children)
+		for(var/decl/hierarchy/skill/S in cat.children)
 			var/min = pref.get_min_skill(job,S)
 			var/level = min + (allocation[S] || 0)				//the current skill level
 			var/cap = pref.get_max_affordable(job, S) //if selecting the skill would make you overspend, it won't be shown
 			dat += "<tr style='text-align:left;'>"
 			dat += "<th><a href='?src=\ref[src];skillinfo=\ref[S]'>[S.name] ([pref.get_spent_points(job, S)])</a></th>"
-			for( var/i = SKILL_MIN, i <= SKILL_MAX, i++)
+			for(var/i = SKILL_MIN, i <= SKILL_MAX, i++)
 				dat += skill_to_button(S, job, level, i, min, cap)
 			dat += "</tr>"
 	dat += "</table>"

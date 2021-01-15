@@ -27,7 +27,7 @@
 	..()
 
 	if(spawn_cartridges)
-		for( var/type in spawn_cartridges)
+		for(var/type in spawn_cartridges)
 			add_cartridge(new type(src))
 
 /obj/machinery/chemical_dispenser/examine(mob/user)
@@ -117,7 +117,7 @@
 	data[MATERIAL_GLASS] = accept_drinking
 	var beakerD[0]
 	if(container && container.reagents && container.reagents.reagent_list.len)
-		for( var/datum/reagent/R in container.reagents.reagent_list)
+		for(var/datum/reagent/R in container.reagents.reagent_list)
 			beakerD[++beakerD.len] = list("name" = R.name, "volume" = R.volume)
 	data["beakerContents"] = beakerD
 
@@ -129,7 +129,7 @@
 		data["beakerMaxVolume"] = null
 
 	var chemicals[0]
-	for( var/label in cartridges)
+	for(var/label in cartridges)
 		var/obj/item/weapon/reagent_containers/chem_disp_cartridge/C = cartridges[label]
 		chemicals[++chemicals.len] = list("label" = label, "amount" = C.reagents.total_volume)
 	data["chemicals"] = chemicals

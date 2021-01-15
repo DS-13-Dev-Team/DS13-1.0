@@ -41,7 +41,7 @@ PROCESSING_SUBSYSTEM_DEF(nano)
 	if (!open_uis[src_object_key] || !open_uis[src_object_key][ui_key])
 		return
 
-	for( var/datum/nanoui/ui in open_uis[src_object_key][ui_key])
+	for (var/datum/nanoui/ui in open_uis[src_object_key][ui_key])
 		if (ui.user == user)
 			return ui
 
@@ -58,8 +58,8 @@ PROCESSING_SUBSYSTEM_DEF(nano)
 	if (!open_uis[src_object_key])
 		return
 
-	for( var/ui_key in open_uis[src_object_key])
-		for( var/datum/nanoui/ui in open_uis[src_object_key][ui_key])
+	for (var/ui_key in open_uis[src_object_key])
+		for (var/datum/nanoui/ui in open_uis[src_object_key][ui_key])
 			if(ui.src_object && ui.user && ui.src_object.nano_host())
 				ui.try_update(1)
 				.++
@@ -79,8 +79,8 @@ PROCESSING_SUBSYSTEM_DEF(nano)
 	if (!open_uis[src_object_key])
 		return
 
-	for( var/ui_key in open_uis[src_object_key])
-		for( var/datum/nanoui/ui in open_uis[src_object_key][ui_key])
+	for (var/ui_key in open_uis[src_object_key])
+		for (var/datum/nanoui/ui in open_uis[src_object_key][ui_key])
 			ui.close() // If it's missing src_object or user, we want to close it even more.
 			.++
 
@@ -98,7 +98,7 @@ PROCESSING_SUBSYSTEM_DEF(nano)
 	if (!length(user.open_uis))
 		return // has no open uis
 
-	for( var/datum/nanoui/ui in user.open_uis)
+	for (var/datum/nanoui/ui in user.open_uis)
 		if ((isnull(src_object) || ui.src_object == src_object) && (isnull(ui_key) || ui.ui_key == ui_key))
 			ui.try_update(1)
 			.++
@@ -117,7 +117,7 @@ PROCESSING_SUBSYSTEM_DEF(nano)
 	if (!length(user.open_uis))
 		return // has no open uis
 
-	for( var/datum/nanoui/ui in user.open_uis)
+	for (var/datum/nanoui/ui in user.open_uis)
 		if ((isnull(src_object) || ui.src_object == src_object) && (isnull(ui_key) || ui.ui_key == ui_key))
 			ui.close()
 			.++
@@ -185,7 +185,7 @@ PROCESSING_SUBSYSTEM_DEF(nano)
 		return 0 // has no open uis
 
 	LAZYINITLIST(newMob.open_uis)
-	for( var/datum/nanoui/ui in oldMob.open_uis)
+	for (var/datum/nanoui/ui in oldMob.open_uis)
 		ui.user = newMob
 		newMob.open_uis += ui
 	oldMob.open_uis = null

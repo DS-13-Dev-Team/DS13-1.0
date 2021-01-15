@@ -157,7 +157,7 @@
 
 	if(!attack)
 		return
-	for( var/obj/item/protection in list(target.head, target.wear_mask, target.glasses))
+	for(var/obj/item/protection in list(target.head, target.wear_mask, target.glasses))
 		if(protection && (protection.body_parts_covered & EYES))
 			to_chat(attacker, "<span class='danger'>You're going to need to remove the eye covering first.</span>")
 			return
@@ -273,7 +273,7 @@
 
 	var/total_damage = 0
 	var/damage_flags = W.damage_flags()
-	for( var/i in 1 to 3)
+	for(var/i in 1 to 3)
 		var/damage = min(W.force*1.5, 20)*damage_mod
 		affecting.apply_damage(damage, W.damtype, BP_HEAD, 0, damage_flags, used_weapon=W)
 		total_damage += damage

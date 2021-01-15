@@ -52,7 +52,7 @@
 
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
-	for( var/obj/O in src)
+	for(var/obj/O in src)
 		O.hide(1)
 
 /turf/simulated/wall/protects_atom(atom/A)
@@ -102,9 +102,9 @@
 	take_damage(tforce)
 
 /turf/simulated/wall/proc/clear_plants()
-	for( var/obj/effect/overlay/wallrot/WR in src)
+	for(var/obj/effect/overlay/wallrot/WR in src)
 		qdel(WR)
-	for( var/obj/effect/vine/plant in range(src, 1))
+	for(var/obj/effect/vine/plant in range(src, 1))
 		if(!plant.floor) //shrooms drop to the floor
 			plant.floor = 1
 			plant.update_icon()
@@ -200,7 +200,7 @@
 			material.place_dismantled_girder(src)
 		material.place_dismantled_product(src,devastated)
 
-	for( var/obj/O in src.contents) //Eject contents!
+	for(var/obj/O in src.contents) //Eject contents!
 		if(istype(O,/obj/structure/sign/poster))
 			var/obj/structure/sign/poster/P = O
 			P.roll_and_drop(src)
@@ -230,7 +230,7 @@
 	if(locate(/obj/effect/overlay/wallrot) in src)
 		return
 	var/number_rots = rand(2,3)
-	for( var/i=0, i<number_rots, i++)
+	for(var/i=0, i<number_rots, i++)
 		new/obj/effect/overlay/wallrot(src)
 
 /turf/simulated/wall/proc/can_melt()
@@ -277,9 +277,9 @@
 		spawn(2)
 			new /obj/structure/girder(src)
 			src.ChangeTurf(/turf/simulated/floor)
-			for( var/turf/simulated/wall/W in range(3,src))
+			for(var/turf/simulated/wall/W in range(3,src))
 				W.burn((temperature/4))
-			for( var/obj/machinery/door/airlock/phoron/D in range(3,src))
+			for(var/obj/machinery/door/airlock/phoron/D in range(3,src))
 				D.ignite(temperature/4)
 
 /turf/simulated/wall/get_color()

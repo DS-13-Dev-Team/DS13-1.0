@@ -30,7 +30,7 @@
 	RefreshParts()
 
 /obj/machinery/atmospherics/binary/oxyregenerator/RefreshParts()
-	for( var/obj/item/weapon/stock_parts/P in component_parts)
+	for(var/obj/item/weapon/stock_parts/P in component_parts)
 		if(istype(P, /obj/item/weapon/stock_parts/matter_bin))
 			carbon_efficiency += 0.25 * (P.rating-1) //plus 25% per stock item rank
 		if(istype(P, /obj/item/weapon/stock_parts/manipulator))

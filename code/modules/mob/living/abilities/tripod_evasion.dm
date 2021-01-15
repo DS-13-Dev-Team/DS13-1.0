@@ -92,7 +92,7 @@
 
 	//Alright lets get the number of clear tiles around us
 	var/clear_turfs = 0
-	for( var/turf/T as anything in L.turfs_in_view(check_range))
+	for (var/turf/T as anything in L.turfs_in_view(check_range))
 		if (turf_clear(T))
 			clear_turfs++
 			if (clear_turfs >= max_clear_tiles)	//don't go over the max

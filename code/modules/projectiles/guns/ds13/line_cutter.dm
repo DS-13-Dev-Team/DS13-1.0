@@ -121,7 +121,7 @@
 		var/already_hit = list(def_zone)
 
 		//Linecutter projectiles hit all limbs at the same height
-		for( var/obj/item/organ/external/E as anything in H.get_limbs_at_height(altitude, height))
+		for (var/obj/item/organ/external/E as anything in H.get_limbs_at_height(altitude, height))
 			if ((E.organ_tag in already_hit))
 				continue
 

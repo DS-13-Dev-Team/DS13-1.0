@@ -45,7 +45,7 @@
 	var/chargerate_multiplier = 0
 	var/chargerate_divisor = 0
 	repair = -5
-	for( var/obj/item/weapon/stock_parts/P in component_parts)
+	for(var/obj/item/weapon/stock_parts/P in component_parts)
 		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
 			chargerate_multiplier += P.rating
 			chargerate_divisor++

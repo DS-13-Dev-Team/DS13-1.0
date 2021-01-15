@@ -10,7 +10,7 @@
 	. = ..()
 	if(!.)
 		return
-	for( var/mob/living/carbon/human/H in SSmobs.mob_list)
+	for(var/mob/living/carbon/human/H in SSmobs.mob_list)
 		var/turf/T = get_turf(H)
 		var/security = 0
 		if((T && (T in GLOB.using_map.admin_levels)) || GLOB.prisonwarped.Find(H))
@@ -19,12 +19,12 @@
 		H.Paralyse(5)
 		if(H.wear_id)
 			var/obj/item/weapon/card/id/id = H.GetIdCard()
-			for( var/A in id.access)
+			for(var/A in id.access)
 				if(A == access_security)
 					security++
 		if(!security)
 			//strip their stuff before they teleport into a cell :downs:
-			for( var/obj/item/weapon/W in H)
+			for(var/obj/item/weapon/W in H)
 				if(istype(W, /obj/item/organ/external))
 					continue
 					//don't strip organs

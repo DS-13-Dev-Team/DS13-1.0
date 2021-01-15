@@ -34,7 +34,7 @@
 
 
 /obj/structure/corruption_node/eye/proc/mark_turfs()
-	for( var/turf/T in turfs_in_view(visualnet_range))
+	for (var/turf/T in turfs_in_view(visualnet_range))
 		debug_mark_turf(T)
 
 /obj/structure/corruption_node/eye/proc/nearby_movement(atom/movable/AM, atom/old_loc)
@@ -78,7 +78,7 @@
 /datum/sighting_menu/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/list/data = list()
 	var/list/prey = list()
-	for( var/mob/living/L in SSnecromorph.sightings)
+	for (var/mob/living/L in SSnecromorph.sightings)
 
 		var/datum/sighting/S = SSnecromorph.sightings[L]
 		var/list/sublist = list()

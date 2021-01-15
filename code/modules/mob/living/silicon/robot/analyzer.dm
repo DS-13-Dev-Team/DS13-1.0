@@ -10,7 +10,7 @@
 	slot_flags = SLOT_BELT
 	throwforce = 3
 	w_class = ITEM_SIZE_SMALL
-
+	
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 1, TECH_ENGINEERING = 2)
 	matter = list(MATERIAL_STEEL = 500, MATERIAL_GLASS = 200)
@@ -19,7 +19,7 @@
 /obj/item/device/robotanalyzer/attack(mob/living/M as mob, mob/living/user as mob)
 	if((CLUMSY in user.mutations) && prob(50))
 		to_chat(user, text("<span class='warning'>You try to analyze the floor's vitals!</span>"))
-		for( var/mob/O in viewers(M, null))
+		for(var/mob/O in viewers(M, null))
 			O.show_message(text("<span class='warning'>[user] has analyzed the floor's vitals!</span>"), 1)
 		user.show_message(text("<span class='notice'>Analyzing Results for The floor:\n\t Overall Status: Healthy</span>"), 1)
 		user.show_message(text("<span class='notice'>\t Damage Specifics: [0]-[0]-[0]-[0]</span>"), 1)
@@ -50,7 +50,7 @@
 			var/list/damaged = H.get_damaged_components(1,1,1)
 			user.show_message("<span class='notice'>Localized Damage:</span>",1)
 			if(length(damaged)>0)
-				for( var/datum/robot_component/org in damaged)
+				for(var/datum/robot_component/org in damaged)
 					user.show_message(text("<span class='notice'>\t []: [][] - [] - [] - []</span>",	\
 					capitalize(org.name),					\
 					(org.installed == -1)	?	"<font color='red'><b>DESTROYED</b></font> "							:"",\
@@ -71,7 +71,7 @@
 			to_chat(user, "Key: <font color='#ffa500'>Electronics</font>/<font color='red'>Brute</font>")
 			to_chat(user, "<span class='notice'>External prosthetics:</span>")
 			var/organ_found
-			for( var/obj/item/organ/external/E in H.organs)
+			for(var/obj/item/organ/external/E in H.organs)
 				if(!BP_IS_ROBOTIC(E))
 					continue
 				organ_found = 1
@@ -81,7 +81,7 @@
 			to_chat(user, "<hr>")
 			to_chat(user, "<span class='notice'>Internal prosthetics:</span>")
 			organ_found = null
-			for( var/obj/item/organ/O in H.internal_organs)
+			for(var/obj/item/organ/O in H.internal_organs)
 				if(!BP_IS_ROBOTIC(O))
 					continue
 				organ_found = 1

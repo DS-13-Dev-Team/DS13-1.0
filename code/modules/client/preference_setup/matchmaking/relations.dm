@@ -27,7 +27,7 @@
 	. += "<br><b>What do they know about you?</b> This is the general info that all kinds of your connections would know. <a href='?src=\ref[src];relation_info=["general"]'>Edit</a>"
 	. += "<br><i>[pref.relations_info["general"] ? pref.relations_info["general"] : "Nothing specific."]</i>"
 	. += "<hr>"
-	for( var/T in subtypesof(/datum/relation))
+	for(var/T in subtypesof(/datum/relation))
 		var/datum/relation/R = T
 		. += "<b>[initial(R.name)]</b>\t"
 		if(initial(R.name) in pref.relations)

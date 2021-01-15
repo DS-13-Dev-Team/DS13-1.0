@@ -18,7 +18,7 @@
 
 	if (suffixes)
 		mappaths = list()
-		for( var/suffix in suffixes)
+		for (var/suffix in suffixes)
 			mappaths += (prefix + suffix)
 
 	..()

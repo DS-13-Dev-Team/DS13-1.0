@@ -71,7 +71,7 @@
 ///////////////////////////////
 
 /proc/spawn_meteors(number = 10, list/meteortypes, startSide, zlevel)
-	for( var/i = 0; i < number; i++)
+	for(var/i = 0; i < number; i++)
 		spawn_meteor(meteortypes, startSide, zlevel)
 
 /proc/spawn_meteor(list/meteortypes, startSide, zlevel)
@@ -181,7 +181,7 @@
 
 /obj/effect/meteor/proc/ram_turf(turf/T)
 	//first bust whatever is in the turf
-	for( var/atom/A in T)
+	for(var/atom/A in T)
 		if(A != src && !A.CanPass(src, src.loc, 0.5, 0)) //only ram stuff that would actually block us
 			A.ex_act(hitpwr, src)
 
@@ -208,13 +208,13 @@
 	..()
 
 /obj/effect/meteor/proc/make_debris()
-	for( var/throws = dropamt, throws > 0, throws--)
+	for(var/throws = dropamt, throws > 0, throws--)
 		var/obj/item/O = new meteordrop(get_turf(src))
 		O.throw_at(dest, 5, 10)
 
 /obj/effect/meteor/proc/meteor_effect()
 	if(heavy)
-		for( var/mob/M in GLOB.player_list)
+		for(var/mob/M in GLOB.player_list)
 			var/turf/T = get_turf(M)
 			if(!T || T.z != src.z)
 				continue
@@ -334,7 +334,7 @@
 /obj/effect/meteor/supermatter/meteor_effect()
 	..()
 	explosion(4, 2)
-	for( var/obj/machinery/power/apc/A in range(rand(12, 20), src))
+	for(var/obj/machinery/power/apc/A in range(rand(12, 20), src))
 		A.energy_fail(round(10 * rand(8, 12)))
 
 /obj/effect/meteor/supermatter/get_shield_damage()

@@ -274,7 +274,7 @@
 			raytrace_turfs = check_trajectory_mass_verbose(raytrace_turfs, AM, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING, allow_sleep = FALSE)
 
 			//Now remove the ones from the list which failed to hit
-			for( var/t in raytrace_turfs)
+			for (var/t in raytrace_turfs)
 				var/list/params = raytrace_turfs[t]
 				if (!params[1])	//First param is a true/false of if we got to it
 					raytrace_turfs -= t
@@ -287,7 +287,7 @@
 			//Thirdly, we see which of those have a clear LOS to us
 			var/list/hit_turfs = check_trajectory_mass(raytrace_turfs, src, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING, allow_sleep = FALSE)
 
-			for( var/t in hit_turfs)
+			for (var/t in hit_turfs)
 				if (!hit_turfs[t])
 					raytrace_turfs -= t
 				else
@@ -908,7 +908,7 @@
 	set category = null
 
 	if (wearing_rig)
-		for( var/obj/item/rig_module/kinesis/K in wearing_rig.installed_modules)
+		for (var/obj/item/rig_module/kinesis/K in wearing_rig.installed_modules)
 			K.toggle()
 			return
 
@@ -925,8 +925,8 @@
 	var/list/nearby_stuff = range(1, origin)
 
 
-	for( var/target_type in target_priority)
-		for( var/atom/movable/A in nearby_stuff)
+	for (var/target_type in target_priority)
+		for (var/atom/movable/A in nearby_stuff)
 			if (!istype(A, target_type))
 				continue
 

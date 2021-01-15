@@ -93,7 +93,7 @@ proc/AStar(start, end, proc/adjacent, proc/dist, max_nodes, max_node_depth = 30,
 			if(current.nodes_traversed >= max_node_depth)
 				continue
 
-		for( var/datum/datum in call(current.position, adjacent)(id))
+		for(var/datum/datum in call(current.position, adjacent)(id))
 			if(datum == exclude)
 				continue
 

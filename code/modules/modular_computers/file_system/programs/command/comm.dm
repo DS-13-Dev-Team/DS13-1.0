@@ -72,7 +72,7 @@
 	data["cannot_change_security_level"] = !security_state.can_change_security_level()
 	data["current_security_level_is_high_security_level"] = security_state.current_security_level == security_state.high_security_level
 	var/list/security_levels = list()
-	for( var/decl/security_level/security_level in security_state.comm_console_security_levels)
+	for(var/decl/security_level/security_level in security_state.comm_console_security_levels)
 		var/list/security_setup = list()
 		security_setup["title"] = security_level.name
 		security_setup["ref"] = any2ref(security_level)
@@ -88,7 +88,7 @@
 
 	var/list/processed_evac_options = list()
 	if(!isnull(evacuation_controller))
-		for( var/datum/evacuation_option/EO in evacuation_controller.available_evac_options())
+		for (var/datum/evacuation_option/EO in evacuation_controller.available_evac_options())
 			var/list/option = list()
 			option["option_text"] = EO.option_text
 			option["option_target"] = EO.option_target
@@ -229,7 +229,7 @@
 			. = 1
 			if(is_autenthicated(user) && ntn_comm)
 				current_viewing_message_id = text2num(href_list["target"])
-				for( var/list/m in l.messages)
+				for(var/list/m in l.messages)
 					if(m["id"] == current_viewing_message_id)
 						current_viewing_message = m
 				current_status = STATE_VIEWMESSAGE
@@ -270,7 +270,7 @@ var/last_message_id = 0
 	message["title"] = message_title
 	message["contents"] = message_text
 
-	for( var/datum/comm_message_listener/l in comm_message_listeners)
+	for (var/datum/comm_message_listener/l in comm_message_listeners)
 		l.Add(message)
 
 /datum/comm_message_listener
@@ -320,7 +320,7 @@ var/last_message_id = 0
 
 
 /proc/is_relay_online()
-	for( var/obj/machinery/bluespacerelay/M in SSmachines.machinery)
+	for(var/obj/machinery/bluespacerelay/M in SSmachines.machinery)
 		if(M.stat == 0)
 			return 1
 	return 0

@@ -30,7 +30,7 @@
 	if (A.get_apc())
 		to_chat(usr, "<span class='warning'>This area already has an APC.</span>")
 		return //only one APC per area
-	for( var/obj/machinery/power/terminal/T in loc)
+	for(var/obj/machinery/power/terminal/T in loc)
 		if (T.master)
 			to_chat(usr, "<span class='warning'>There is another network terminal here.</span>")
 			return

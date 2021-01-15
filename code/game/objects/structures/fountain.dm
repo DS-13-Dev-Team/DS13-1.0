@@ -35,7 +35,7 @@
 		visible_message("\The [user] retracts their hand suddenly.")
 
 /obj/structure/fountain/proc/time_dilation(mob/living/carbon/human/user as mob)
-	for( var/mob/living/L in oviewers(7, src))
+	for(var/mob/living/L in oviewers(7, src))
 		L.flash_eyes(3)
 		L.eye_blurry += 9
 	visible_message("<span class='warning'>\The [src] erupts in a bright flash of light!</span>")

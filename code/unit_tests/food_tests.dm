@@ -11,7 +11,7 @@
 /datum/unit_test/food_slices_and_origin_items_should_be_consistent/start_test()
 	var/any_failed = FALSE
 
-	for( var/subtype in subtypesof(/obj/item/weapon/reagent_containers/food/snacks/slice))
+	for (var/subtype in subtypesof(/obj/item/weapon/reagent_containers/food/snacks/slice))
 		var/obj/item/weapon/reagent_containers/food/snacks/slice/slice = subtype
 		if(!initial(slice.whole_path))
 			log_bad("[slice] does not define a whole_path.")

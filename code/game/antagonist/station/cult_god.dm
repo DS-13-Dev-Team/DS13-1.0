@@ -63,11 +63,11 @@ GLOBAL_DATUM_INIT(godcult, /datum/antagonist/godcultist, new)
 	if(href_list["selectgod"])
 		var/list/god_list = list()
 		if(GLOB.deity && GLOB.deity.current_antagonists.len)
-			for( var/m in GLOB.deity.current_antagonists)
+			for(var/m in GLOB.deity.current_antagonists)
 				var/datum/mind/mind = m
 				god_list += mind.current
 		else
-			for( var/mob/living/deity/deity in GLOB.player_list)
+			for(var/mob/living/deity/deity in GLOB.player_list)
 				god_list += deity
 		if(god_list.len)
 			var/mob/living/deity/D = input(usr, "Select a deity for this cultist.") in null|god_list
@@ -91,7 +91,7 @@ GLOBAL_DATUM_INIT(godcult, /datum/antagonist/godcultist, new)
 	player.current.remove_language(LANGUAGE_GUTTER)
 
 /datum/antagonist/godcultist/proc/get_deity(datum/mind/player)
-	for( var/m in GLOB.deity.current_antagonists)
+	for(var/m in GLOB.deity.current_antagonists)
 		var/datum/mind/mind = m
 		var/mob/living/deity/god = mind.current
 		if(god.is_follower(player.current,1))

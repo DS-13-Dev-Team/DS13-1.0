@@ -136,8 +136,8 @@
 		)
 
 
-		for( var/i = 0, i<2, i++)
-			for( var/res in resources)
+		for(var/i = 0, i<2, i++)
+			for(var/res in resources)
 				var/obj/item/stack/R = new res(src)
 				R.amount = R.max_amount
 

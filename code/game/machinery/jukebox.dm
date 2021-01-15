@@ -113,7 +113,7 @@ datum/track/proc/GetTrack()
 
 /obj/machinery/media/jukebox/ui_data()
 	var/list/juke_tracks = new
-	for( var/datum/track/T in tracks)
+	for(var/datum/track/T in tracks)
 		juke_tracks.Add(T.title)
 
 	var/list/data = list(
@@ -130,7 +130,7 @@ datum/track/proc/GetTrack()
 		return TRUE
 	switch(action)
 		if("change_track")
-			for( var/datum/track/T in tracks)
+			for(var/datum/track/T in tracks)
 				if(T.title == params["title"])
 					current_track = T
 					StartPlaying()
@@ -162,7 +162,7 @@ datum/track/proc/GetTrack()
 
 /obj/machinery/media/jukebox/proc/emag_play()
 	playsound(loc, 'sound/items/AirHorn.ogg', 100, 1)
-	for( var/mob/living/carbon/M in ohearers(6, src))
+	for(var/mob/living/carbon/M in ohearers(6, src))
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(istype(H.l_ear, /obj/item/clothing/ears/earmuffs) || istype(H.r_ear, /obj/item/clothing/ears/earmuffs))

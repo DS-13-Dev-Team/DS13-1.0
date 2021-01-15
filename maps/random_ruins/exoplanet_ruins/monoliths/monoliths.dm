@@ -53,7 +53,7 @@
 				else
 					to_chat(H, "<span class='warning'>An overwhelming stream of information invades your mind!</span>")
 					var/vision = ""
-					for( var/i = 1 to 10)
+					for(var/i = 1 to 10)
 						vision += pick(E.actors) + " " + pick("killing","dying","gored","expiring","exploding","mauled","burning","flayed","in agony") + ". "
 					to_chat(H, "<span class='danger'><font size=2>[uppertext(vision)]</font></span>")
 					H.Paralyse(2)

@@ -21,21 +21,21 @@
 		qdel(src)
 		return
 	if (!QDELETED(src))
-		for( var/obj/structure/lattice/LAT in loc)
+		for(var/obj/structure/lattice/LAT in loc)
 			if(LAT != src && !QDELETED(LAT))
 				crash_with("Found multiple lattices at '[log_info_line(loc)]'")
 				qdel(LAT)
 	icon = 'icons/obj/smoothlattice.dmi'
 	icon_state = "latticeblank"
 	updateOverlays()
-	for( var/dir in GLOB.cardinal)
+	for (var/dir in GLOB.cardinal)
 		var/obj/structure/lattice/L
 		if(locate(/obj/structure/lattice, get_step(src, dir)))
 			L = locate(/obj/structure/lattice, get_step(src, dir))
 			L.updateOverlays()
 
 /obj/structure/lattice/Destroy()
-	for( var/dir in GLOB.cardinal)
+	for (var/dir in GLOB.cardinal)
 		var/obj/structure/lattice/L
 		if(locate(/obj/structure/lattice, get_step(src, dir)))
 			L = locate(/obj/structure/lattice, get_step(src, dir))
@@ -88,7 +88,7 @@
 		var/dir_sum = 0
 
 		var/turf/T
-		for( var/direction in GLOB.cardinal)
+		for (var/direction in GLOB.cardinal)
 			T = get_step(src, direction)
 			if(locate(/obj/structure/lattice, T) || locate(/obj/structure/catwalk, T))
 				dir_sum += direction

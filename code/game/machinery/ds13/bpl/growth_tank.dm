@@ -41,7 +41,7 @@
 /obj/machinery/growth_tank/Initialize()
 	create_reagents(max_biomass)
 	//If we find another tank in our turf, put ourselves ontop of it
-	for( var/obj/machinery/growth_tank/GT in loc)
+	for (var/obj/machinery/growth_tank/GT in loc)
 		if (GT != src && GT.upper == FALSE)
 			upper = TRUE
 			default_pixel_y = 24

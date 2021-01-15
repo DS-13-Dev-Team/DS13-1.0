@@ -113,7 +113,7 @@
 /obj/machinery/computer/robotics/proc/get_cyborgs(mob/operator)
 	var/list/robots = list()
 
-	for( var/mob/living/silicon/robot/R in GLOB.silicon_mob_list)
+	for(var/mob/living/silicon/robot/R in GLOB.silicon_mob_list)
 		// Ignore drones
 		if(istype(R, /mob/living/silicon/robot/drone))
 			continue
@@ -162,6 +162,6 @@
 /obj/machinery/computer/robotics/proc/get_cyborg_by_name(name)
 	if (!name)
 		return
-	for( var/mob/living/silicon/robot/R in GLOB.silicon_mob_list)
+	for(var/mob/living/silicon/robot/R in GLOB.silicon_mob_list)
 		if(R.name == name)
 			return R

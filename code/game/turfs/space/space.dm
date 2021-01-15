@@ -11,7 +11,7 @@
 
 /turf/space/proc/build_dust_cache()
 	LAZYINITLIST(dust_cache)
-	for( var/i in 0 to 25)
+	for (var/i in 0 to 25)
 		var/image/im = image('icons/turf/space_dust.dmi',"[i]")
 		im.plane = DUST_PLANE
 		im.alpha = 80
@@ -49,7 +49,7 @@
 
 // override for space turfs, since they should never hide anything
 /turf/space/levelupdate()
-	for( var/obj/O in src)
+	for(var/obj/O in src)
 		O.hide(0)
 
 /turf/space/is_solid_structure()

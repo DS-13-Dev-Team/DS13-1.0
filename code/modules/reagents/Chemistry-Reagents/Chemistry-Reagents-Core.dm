@@ -38,7 +38,7 @@
 	data["species"] = C.species.name
 	data["has_oxy"] = C.species.blood_oxy
 	var/list/temp_chem = list()
-	for( var/datum/reagent/R in C.reagents.reagent_list)
+	for(var/datum/reagent/R in C.reagents.reagent_list)
 		temp_chem[R.type] = R.volume
 	data["trace_chem"] = temp_chem
 	data["dose_chem"] = C.chem_doses.Copy()
@@ -85,7 +85,7 @@
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
 		if(vlist.len)
-			for( var/ID in vlist)
+			for(var/ID in vlist)
 				var/datum/disease2/disease/V = vlist[ID]
 				if(V && V.spreadtype == "Contact")
 					infect_virus2(M, V.getcopy())
@@ -98,7 +98,7 @@
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
 		if(vlist.len)
-			for( var/ID in vlist)
+			for(var/ID in vlist)
 				var/datum/disease2/disease/V = vlist[ID]
 				if(V.spreadtype == "Contact")
 					infect_virus2(M, V.getcopy())

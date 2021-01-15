@@ -20,12 +20,12 @@ var/list/holder_mob_icon_cache = list()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/holder/proc/destroy_all()
-	for( var/atom/movable/AM in src)
+	for(var/atom/movable/AM in src)
 		qdel(AM)
 	qdel(src)
 
 /obj/item/weapon/holder/Destroy()
-	for( var/atom/movable/AM in src)
+	for(var/atom/movable/AM in src)
 		AM.forceMove(get_turf(src))
 	last_holder = null
 	STOP_PROCESSING(SSobj, src)
@@ -41,17 +41,17 @@ var/list/holder_mob_icon_cache = list()
 
 /obj/item/weapon/holder/proc/update_state()
 	if(last_holder != loc)
-		for( var/mob/M in contents)
+		for(var/mob/M in contents)
 			unregister_all_movement(last_holder, M)
 
 	if(istype(loc,/turf) || !(contents.len))
-		for( var/mob/M in contents)
+		for(var/mob/M in contents)
 			var/atom/movable/mob_container = M
 			mob_container.dropInto(loc)
 			M.reset_view()
 		qdel(src)
 	else if(last_holder != loc)
-		for( var/mob/M in contents)
+		for(var/mob/M in contents)
 			register_all_movement(loc, M)
 
 	last_holder = loc
@@ -62,7 +62,7 @@ var/list/holder_mob_icon_cache = list()
 	return ..()
 
 /obj/item/weapon/holder/GetIdCard()
-	for( var/mob/M in contents)
+	for(var/mob/M in contents)
 		var/obj/item/I = M.GetIdCard()
 		if(I)
 			return I
@@ -73,7 +73,7 @@ var/list/holder_mob_icon_cache = list()
 	return I ? I.GetAccess() : ..()
 
 /obj/item/weapon/holder/attack_self()
-	for( var/mob/M in contents)
+	for(var/mob/M in contents)
 		M.show_inv(usr)
 
 /obj/item/weapon/holder/attack(mob/target, mob/user)
@@ -81,7 +81,7 @@ var/list/holder_mob_icon_cache = list()
 	if(target == user && istype(user,/mob/living/carbon))
 		var/mob/living/carbon/M = user
 
-		for( var/mob/victim in src.contents)
+		for(var/mob/victim in src.contents)
 			M.devour(victim)
 
 		update_state()
@@ -119,7 +119,7 @@ var/list/holder_mob_icon_cache = list()
 	origin_tech = list(TECH_BIO = 4)
 
 /obj/item/weapon/holder/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	for( var/mob/M in src.contents)
+	for(var/mob/M in src.contents)
 		M.attackby(W,user)
 
 //Mob procs and vars for scooping up
@@ -186,7 +186,7 @@ var/list/holder_mob_icon_cache = list()
 		var/eye_colour =  rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes)
 		var/species_name = lowertext(owner.species.get_bodytype(owner))
 
-		for( var/cache_entry in generate_for_slots)
+		for(var/cache_entry in generate_for_slots)
 			var/cache_key = "[owner.species]-[cache_entry]-[skin_colour]-[hair_colour]"
 			if(!holder_mob_icon_cache[cache_key])
 

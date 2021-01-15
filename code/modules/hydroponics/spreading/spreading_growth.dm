@@ -18,7 +18,7 @@
 
 //Remove the observations from tiles we're watching
 /obj/effect/vine/proc/unwatch_tiles()
-	for( var/turf/T in watched_tiles)
+	for (var/turf/T in watched_tiles)
 		GLOB.clarity_set_event.unregister(T, src, /obj/effect/vine/proc/watched_tile_updated)
 
 	watched_tiles = list()
@@ -33,7 +33,7 @@
 
 /obj/effect/vine/proc/get_cardinal_neighbors()
 	var/list/cardinal_neighbors = list()
-	for( var/check_dir in GLOB.cardinal)
+	for(var/check_dir in GLOB.cardinal)
 		var/turf/simulated/T = get_step(get_turf(src), check_dir)
 		if(istype(T))
 			cardinal_neighbors |= T
@@ -64,7 +64,7 @@
 	if (zcheck)
 		candidates |= get_zlevel_neighbors()
 
-	for( var/turf/T as anything in candidates)
+	for(var/turf/T as anything in candidates)
 		var/result = can_spread_to(T, bounds)
 		//The special result of -1 is returned when we can't spread there yet, but maybe we can in future
 		if (result == -1)
@@ -85,7 +85,7 @@
 		return FALSE
 
 	var/blocked = 0
-	for( var/obj/effect/vine/other in floor.contents)
+	for(var/obj/effect/vine/other in floor.contents)
 		if(other.seed == src.seed && !QDELETED(other))
 			blocked = 1
 			break
@@ -110,7 +110,7 @@
 		return
 
 	//Vine fight!
-	for( var/obj/effect/vine/other in T)
+	for(var/obj/effect/vine/other in T)
 		if(other.seed != seed)
 			other.vine_overrun(seed, src)
 
@@ -225,27 +225,27 @@
 
 /obj/effect/vine/proc/wake_neighbors()
 	// This turf is clear now, let our buddies know.
-	for( var/turf/simulated/check_turf in (get_cardinal_neighbors() | get_zlevel_neighbors()))
+	for(var/turf/simulated/check_turf in (get_cardinal_neighbors() | get_zlevel_neighbors()))
 		if(!istype(check_turf))
 			continue
-		for( var/obj/effect/vine/neighbor in check_turf.contents)
+		for(var/obj/effect/vine/neighbor in check_turf.contents)
 			neighbor.wake_up(FALSE)
 
 /obj/effect/vine/proc/wake_list(list/things)
 	set waitfor = FALSE
 	sleep()
-	for( var/turf/T in things)
-		for( var/obj/effect/vine/neighbor in T)
+	for(var/turf/T in things)
+		for (var/obj/effect/vine/neighbor in T)
 			neighbor.wake_up(FALSE)
 			sleep()
 
 
 /obj/effect/vine/proc/targets_in_range()
 	var/mob/list/targets = list()
-	for( var/turf/simulated/check_turf in (get_cardinal_neighbors() | get_zlevel_neighbors() | list(loc)))
+	for(var/turf/simulated/check_turf in (get_cardinal_neighbors() | get_zlevel_neighbors() | list(loc)))
 		if(!istype(check_turf))
 			continue
-		for( var/mob/living/M in check_turf.contents)
+		for(var/mob/living/M in check_turf.contents)
 			targets |= M
 	if(targets.len)
 		return targets

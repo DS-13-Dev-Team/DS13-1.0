@@ -109,7 +109,7 @@
 
 	var/datum/species/necromorph/divider/D = all_species[SPECIES_NECROMORPH_DIVIDER]
 
-	for( var/obj/item/organ/O in new_organs)
+	for(var/obj/item/organ/O in new_organs)
 		D.post_organ_rejuvenate(O)
 
 	H.update_body()

@@ -34,7 +34,7 @@
 			var/display_name = C.key
 			player_display = holder ? "[display_name]([usr.client.holder.rank])" : display_name
 
-	for( var/client/target in GLOB.clients)
+	for(var/client/target in GLOB.clients)
 		if(target.holder)
 			receive_communication(A, target, "<span class='ooc'><span class='aooc'>[create_text_tag("aooc", "Antag-OOC:", target)] <EM>[sender_override ? player_display : get_options_bar(A, 0, 1, 1)]:</EM> <span class='message'>[message]</span></span></span>")
 		else if(target.mob && target.mob.mind && target.mob.mind.special_role)

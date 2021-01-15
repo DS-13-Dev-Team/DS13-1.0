@@ -256,7 +256,7 @@
 	.=..()
 
 
-/datum/strike/unarmed/cache_data(atom/user, atom/target, datum/unarmed_attack/attack)
+/datum/strike/unarmed/cache_data(var/atom/user, atom/target, datum/unarmed_attack/attack)
 	src.user = user
 	src.target = target
 	src.attack = attack
@@ -315,7 +315,7 @@
 	used_item = null
 	.=..()
 
-/datum/strike/implement/cache_data(atom/user, atom/target, obj/item/used_weapon)
+/datum/strike/implement/cache_data(var/atom/user, atom/target, obj/item/used_weapon)
 	src.user = user
 	src.target = target
 	damage = used_weapon.force
@@ -391,7 +391,7 @@
 		var/distance = get_dist(AM.throw_source, get_turf(target))
 		accuracy -= min(max(5*(distance-2), 0), 60)	//Distance makes things less accurate, but only to a point
 
-/datum/strike/thrown/cache_data(atom/movable/self, atom/target, speed)
+/datum/strike/thrown/cache_data(var/atom/movable/self, atom/target, speed)
 	src.user = self.thrower
 	src.target = target
 

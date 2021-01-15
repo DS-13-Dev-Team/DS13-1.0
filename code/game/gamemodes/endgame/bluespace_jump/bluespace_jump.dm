@@ -10,7 +10,7 @@
 
 /datum/universal_state/bluespace_jump/OnEnter()
 	var/space_zlevel = GLOB.using_map.get_empty_zlevel() //get a place for stragglers
-	for( var/mob/living/M in SSmobs.mob_list)
+	for(var/mob/living/M in SSmobs.mob_list)
 		if(M.z in affected_levels)
 			var/area/A = get_area(M)
 			if(istype(A,/area/space)) //straggler
@@ -19,16 +19,16 @@
 					M.forceMove(T)
 			else
 				apply_bluespaced(M)
-	for( var/mob/goast in GLOB.ghost_mob_list)
+	for(var/mob/goast in GLOB.ghost_mob_list)
 		goast.mouse_opacity = 0	//can't let you click that Dave
 		goast.set_invisibility(SEE_INVISIBLE_LIVING)
 		goast.alpha = 255
 	old_accessible_z_levels = GLOB.using_map.accessible_z_levels.Copy()
-	for( var/z in affected_levels)
+	for(var/z in affected_levels)
 		GLOB.using_map.accessible_z_levels -= "[z]" //not accessible during the jump
 
 /datum/universal_state/bluespace_jump/OnExit()
-	for( var/M in bluespaced)
+	for(var/M in bluespaced)
 		clear_bluespaced(M)
 
 	bluespaced.Cut()
@@ -60,11 +60,11 @@
 		to_chat(M,"<span class='notice'>You feel rooted in material world again.</span>")
 		M.clear_fullscreen("bluespace")
 	M.confused = 0
-	for( var/mob/goast in GLOB.ghost_mob_list)
+	for(var/mob/goast in GLOB.ghost_mob_list)
 		goast.mouse_opacity = initial(goast.mouse_opacity)
 		goast.set_invisibility(initial(goast.invisibility))
 		goast.alpha = initial(goast.alpha)
-	for( var/G in bluegoasts)
+	for(var/G in bluegoasts)
 		qdel(G)
 	bluegoasts.Cut()
 

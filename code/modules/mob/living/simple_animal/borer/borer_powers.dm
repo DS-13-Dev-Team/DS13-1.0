@@ -2,7 +2,7 @@ GLOBAL_LIST_INIT(borer_reagent_types_by_name, setup_borer_reagents())
 
 /proc/setup_borer_reagents()
 	. = list()
-	for( var/reagent_type in list(/datum/reagent/alkysine, /datum/reagent/bicaridine, /datum/reagent/hyperzine, /datum/reagent/tramadol))
+	for(var/reagent_type in list(/datum/reagent/alkysine, /datum/reagent/bicaridine, /datum/reagent/hyperzine, /datum/reagent/tramadol))
 		var/datum/reagent/R = reagent_type
 		.[initial(R.name)] = reagent_type
 
@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(borer_reagent_types_by_name, setup_borer_reagents())
 		return
 
 	var/list/choices = list()
-	for( var/mob/living/carbon/C in view(1,src))
+	for(var/mob/living/carbon/C in view(1,src))
 		if(src.Adjacent(C))
 			choices += C
 
@@ -253,7 +253,7 @@ GLOBAL_LIST_INIT(borer_reagent_types_by_name, setup_borer_reagents())
 		return
 
 	var/list/choices = list()
-	for( var/mob/living/carbon/C in view(3,src))
+	for(var/mob/living/carbon/C in view(3,src))
 		if(C.stat != 2)
 			choices += C
 

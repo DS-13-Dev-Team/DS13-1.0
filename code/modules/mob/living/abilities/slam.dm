@@ -83,7 +83,7 @@
 	LAZYADD(affected_turfs, get_step(user, turn(dir2centre, -45)))
 
 	//Next lets add secondary turfs
-	for( var/turf/T in affected_turfs)
+	for (var/turf/T in affected_turfs)
 		var/turf/T2 = get_step(T, dir2centre)
 		if (istype(T2))
 			LAZYADD(affected_turfs_secondary,T2)
@@ -108,9 +108,9 @@
 
 
 	//Now lets damage all the things
-	for( var/turf/T in affected_turfs)
+	for (var/turf/T in affected_turfs)
 
-		for( var/atom/A in T.contents)
+		for (var/atom/A in T.contents)
 			A.shake_animation(damage)	//Shake things!
 
 			//Mobs take damage, with more if they're lying down
@@ -148,9 +148,9 @@
 	power = min(power-1, 0)
 
 	//Secondary turfs damage, copypaste of above
-	for( var/turf/T in affected_turfs_secondary)
+	for (var/turf/T in affected_turfs_secondary)
 
-		for( var/atom/A in T.contents)
+		for (var/atom/A in T.contents)
 			A.shake_animation(damage)	//Shake things!
 
 			//Mobs take damage, with more if they're lying down

@@ -34,7 +34,7 @@
 		data["flushing"] = flush
 
 		var/laws[0]
-		for( var/datum/ai_law/AL in carded_ai.laws.all_laws())
+		for(var/datum/ai_law/AL in carded_ai.laws.all_laws())
 			laws[++laws.len] = list("index" = AL.get_index(), "law" = sanitize(AL.law))
 		data["laws"] = laws
 		data["has_laws"] = laws.len

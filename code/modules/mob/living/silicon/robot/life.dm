@@ -38,7 +38,7 @@
 //	log_debug(life.dm line 35: cyborg use_power() called at tick [controller_iteration]")
 
 	used_power_this_tick = 0
-	for( var/V in components)
+	for(var/V in components)
 		var/datum/robot_component/C = components[V]
 		C.update_power_state()
 
@@ -202,7 +202,7 @@
 			src.healths.icon_state = "health7"
 
 	if (src.syndicate && src.client)
-		for( var/datum/mind/tra in GLOB.traitors.current_antagonists)
+		for(var/datum/mind/tra in GLOB.traitors.current_antagonists)
 			if(tra.current)
 				// TODO: Update to new antagonist system.
 				var/I = image('icons/mob/mob.dmi', loc = tra.current, icon_state = "traitor")
@@ -282,7 +282,7 @@
 /mob/living/silicon/robot/proc/update_items()
 	if (src.client)
 		src.client.screen -= src.contents
-		for( var/obj/I in src.contents)
+		for(var/obj/I in src.contents)
 			if(I && !(istype(I,/obj/item/weapon/cell) || istype(I,/obj/item/device/radio)  || istype(I,/obj/machinery/camera) || istype(I,/obj/item/device/mmi)))
 				src.client.screen += I
 	if(src.module_state_1)

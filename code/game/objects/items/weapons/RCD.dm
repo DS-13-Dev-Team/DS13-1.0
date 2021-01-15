@@ -167,7 +167,7 @@
 	var/work_type
 
 /decl/hierarchy/rcd_mode/proc/do_work(obj/item/weapon/rcd/rcd, atom/target, user)
-	for( var/child in children)
+	for(var/child in children)
 		var/decl/hierarchy/rcd_mode/rcdm = child
 		if(!rcdm.can_handle_work(rcd, target))
 			continue

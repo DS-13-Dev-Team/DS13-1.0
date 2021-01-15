@@ -56,14 +56,14 @@
 
 /obj/machinery/r_n_d/protolathe/RefreshParts()
 	var/T = 0
-	for( var/obj/item/weapon/reagent_containers/glass/G in component_parts)
+	for(var/obj/item/weapon/reagent_containers/glass/G in component_parts)
 		T += G.reagents.maximum_volume
 	create_reagents(T)
 	max_material_storage = 0
-	for( var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
+	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
 		max_material_storage += M.rating * 75000
 	T = 0
-	for( var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
 		T += M.rating
 	mat_efficiency = 1 - (T - 2) / 8
 	speed = T / 2
@@ -138,23 +138,23 @@
 	return
 
 /obj/machinery/r_n_d/protolathe/proc/canBuild(datum/design/D)
-	for( var/M in D.materials)
+	for(var/M in D.materials)
 		if(materials[M] < D.materials[M])
 			return 0
-	for( var/C in D.chemicals)
+	for(var/C in D.chemicals)
 		if(!reagents.has_reagent(C, D.chemicals[C]))
 			return 0
 	return 1
 
 /obj/machinery/r_n_d/protolathe/proc/build(datum/design/D)
 	var/power = active_power_usage
-	for( var/M in D.materials)
+	for(var/M in D.materials)
 		power += round(D.materials[M] / 5)
 	power = max(active_power_usage, power)
 	use_power(power)
-	for( var/M in D.materials)
+	for(var/M in D.materials)
 		materials[M] = max(0, materials[M] - D.materials[M] * mat_efficiency)
-	for( var/C in D.chemicals)
+	for(var/C in D.chemicals)
 		reagents.remove_reagent(C, D.chemicals[C] * mat_efficiency)
 
 	if(D.build_path)
@@ -162,5 +162,5 @@
 		new_item.loc = loc
 		if(mat_efficiency != 1) // No matter out of nowhere
 			if(new_item.matter && new_item.matter.len > 0)
-				for( var/i in new_item.matter)
+				for(var/i in new_item.matter)
 					new_item.matter[i] = new_item.matter[i] * mat_efficiency

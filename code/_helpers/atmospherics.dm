@@ -12,7 +12,7 @@
 	return 1
 
 /proc/print_atmos_analysis(user, list/result)
-	for( var/line in result)
+	for(var/line in result)
 		to_chat(user, "<span class='notice'>[line]</span>")
 
 /proc/atmosanalyzer_scan(atom/target, datum/gas_mixture/mixture, advanced)
@@ -30,7 +30,7 @@
 				. += "<span class='notice'>Pressure: [round(pressure,0.1)] kPa</span>"
 			else
 				. += "<span class='warning'>Pressure: [round(pressure,0.1)] kPa</span>"
-			for( var/mix in mixture.gas)
+			for(var/mix in mixture.gas)
 				var/percentage = round(mixture.gas[mix]/total_moles * 100, advanced ? 0.01 : 1)
 				if(!percentage)
 					continue

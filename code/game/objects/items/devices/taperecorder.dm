@@ -249,7 +249,7 @@
 	playing = 1
 	update_icon()
 	to_chat(usr, "<span class='notice'>Audio playback started.</span>")
-	for( var/i=1 , i < mytape.max_capacity , i++)
+	for(var/i=1 , i < mytape.max_capacity , i++)
 		if(!mytape || !playing)
 			break
 		if(mytape.storedinfo.len < i)
@@ -322,7 +322,7 @@
 	to_chat(usr, "<span class='notice'>Transcript printed.</span>")
 	var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(src))
 	var/t1 = "<B>Transcript:</B><BR><BR>"
-	for( var/i=1,mytape.storedinfo.len >= i,i++)
+	for(var/i=1,mytape.storedinfo.len >= i,i++)
 		var/printedmessage = mytape.storedinfo[i]
 		if (findtextEx(printedmessage,"*",1,2)) //replace action sounds
 			printedmessage = "\[[time2text(mytape.timestamp[i]*10,"mm:ss")]\] (Unrecognized sound)"

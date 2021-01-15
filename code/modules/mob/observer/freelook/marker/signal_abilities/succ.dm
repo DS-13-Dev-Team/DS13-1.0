@@ -24,16 +24,16 @@
 	var/total_gain  = 0
 	var/total_objects = 0
 	var/list/absorbing = list()
-	for( var/turf/T in trange(2, target))
+	for (var/turf/T in trange(2, target))
 		if (!near_marker && !turf_near_corrupted(T, 3))
 			continue
-		for( var/obj/O in T)
+		for (var/obj/O in T)
 			var/biomass_gain = O.get_biomass()
 			if (isnum(biomass_gain) && biomass_gain > 0)
 				absorbing[O] = biomass_gain
 
 
-	for( var/obj/O as anything in absorbing)
+	for (var/obj/O as anything in absorbing)
 		total_gain += absorbing[O]
 		total_objects++
 		spawn()

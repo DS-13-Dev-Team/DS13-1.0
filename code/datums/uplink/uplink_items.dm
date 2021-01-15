@@ -11,19 +11,19 @@ var/datum/uplink/uplink = new()
 	categories = init_subtypes(/datum/uplink_category)
 	categories = dd_sortedObjectList(categories)
 
-	for( var/datum/uplink_item/item in items)
+	for(var/datum/uplink_item/item in items)
 		if(!item.name)
 			items -= item
 			continue
 
 		items_assoc[item.type] = item
 
-		for( var/datum/uplink_category/category in categories)
+		for(var/datum/uplink_category/category in categories)
 			if(item.category == category.type)
 				category.items += item
 				item.category = category
 
-	for( var/datum/uplink_category/category in categories)
+	for(var/datum/uplink_category/category in categories)
 		category.items = dd_sortedObjectList(category.items)
 
 /datum/uplink_item
@@ -75,7 +75,7 @@ var/datum/uplink/uplink = new()
 	if(!U.uplink_owner)
 		return 0
 
-	for( var/antag_role in antag_roles)
+	for(var/antag_role in antag_roles)
 		if(antag_role == "Exclude")
 			continue
 		var/datum/antagonist/antag = GLOB.all_antag_types_[antag_role]
@@ -86,7 +86,7 @@ var/datum/uplink/uplink = new()
 /datum/uplink_item/proc/cost(telecrystals, obj/item/device/uplink/U)
 	. = item_cost
 	if(U && U.uplink_owner)
-		for( var/antag_role in antag_costs)
+		for(var/antag_role in antag_costs)
 			var/datum/antagonist/antag = GLOB.all_antag_types_[antag_role]
 			if(antag.is_antagonist(U.uplink_owner))
 				. = min(antag_costs[antag_role], .)

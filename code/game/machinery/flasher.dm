@@ -76,7 +76,7 @@
 	src.last_flash = world.time
 	use_power(1500)
 
-	for( var/mob/living/O in viewers(src, null))
+	for (var/mob/living/O in viewers(src, null))
 		if (get_dist(src, O) > src.range)
 			continue
 
@@ -145,7 +145,7 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for( var/obj/machinery/flasher/M in SSmachines.machinery)
+	for(var/obj/machinery/flasher/M in SSmachines.machinery)
 		if(M.id == src.id)
 			spawn()
 				M.flash()

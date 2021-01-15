@@ -33,7 +33,7 @@ var/list/ai_verbs_default = list(
 /proc/AutoUpdateAI(obj/subject)
 	var/is_in_use = 0
 	if (subject!=null)
-		for( var/A in ai_list)
+		for(var/A in ai_list)
 			var/mob/living/silicon/ai/M = A
 			if ((M.client && M.machine == subject))
 				is_in_use = 1
@@ -124,7 +124,7 @@ var/list/ai_verbs_default = list(
 	var/pickedName = null
 	while(!pickedName)
 		pickedName = pick(GLOB.ai_names)
-		for( var/mob/living/silicon/ai/A in GLOB.silicon_mob_list)
+		for (var/mob/living/silicon/ai/A in GLOB.silicon_mob_list)
 			if (A.real_name == pickedName && possibleNames.len > 1) //fixing the theoretically possible infinite loop
 				possibleNames -= pickedName
 				pickedName = null
@@ -185,7 +185,7 @@ var/list/ai_verbs_default = list(
 	to_chat(src, "For department channels, use the following say commands:")
 
 	var/radio_text = ""
-	for( var/i = 1 to silicon_radio.channels.len)
+	for(var/i = 1 to silicon_radio.channels.len)
 		var/channel = silicon_radio.channels[i]
 		var/key = get_radio_key_from_channel(channel)
 		radio_text += "[key] - [channel]"
@@ -203,7 +203,7 @@ var/list/ai_verbs_default = list(
 	eyeobj.possess(src)
 
 /mob/living/silicon/ai/Destroy()
-	for( var/robot in connected_robots)
+	for(var/robot in connected_robots)
 		var/mob/living/silicon/robot/S = robot
 		S.connected_ai = null
 	connected_robots.Cut()
@@ -231,10 +231,10 @@ var/list/ai_verbs_default = list(
 	var/custom_index = 1
 	var/custom_icon_states = icon_states(CUSTOM_ITEM_SYNTH)
 
-	for( var/line in lines)
+	for(var/line in lines)
 	// split & clean up
 		var/list/Entry = splittext(line, ":")
-		for( var/i = 1 to Entry.len)
+		for(var/i = 1 to Entry.len)
 			Entry[i] = trim(Entry[i])
 
 		if(Entry.len < 2)
@@ -285,7 +285,7 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/proc/available_icons()
 	. = list()
 	var/all_ai_icons = decls_repository.get_decls_of_subtype(/datum/ai_icon)
-	for( var/ai_icon_type in all_ai_icons)
+	for(var/ai_icon_type in all_ai_icons)
 		var/datum/ai_icon/ai_icon = all_ai_icons[ai_icon_type]
 		if(ai_icon.may_used_by_ai(src))
 			dd_insertObjectList(., ai_icon)
@@ -465,11 +465,11 @@ var/list/ai_verbs_default = list(
 		return
 
 	var/list/cameralist = new()
-	for( var/obj/machinery/camera/C in GLOB.cameranet.cameras)
+	for (var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.can_use())
 			continue
 		var/list/tempnetwork = difflist(C.network,restricted_camera_networks,1)
-		for( var/i in tempnetwork)
+		for(var/i in tempnetwork)
 			cameralist[i] = i
 
 	cameralist = sortAssoc(cameralist)
@@ -489,7 +489,7 @@ var/list/ai_verbs_default = list(
 
 	src.network = network
 
-	for( var/obj/machinery/camera/C in GLOB.cameranet.cameras)
+	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.can_use())
 			continue
 		if(network in C.network)
@@ -522,7 +522,7 @@ var/list/ai_verbs_default = list(
 
 		var/personnel_list[] = list()
 
-		for( var/datum/computer_file/report/crew_record/t in GLOB.all_crew_records)//Look in data core locked.
+		for(var/datum/computer_file/report/crew_record/t in GLOB.all_crew_records)//Look in data core locked.
 			personnel_list["[t.get_name()]: [t.get_rank()]"] = t.photo_front//Pull names, rank, and image.
 
 		if(personnel_list.len)
@@ -539,7 +539,7 @@ var/list/ai_verbs_default = list(
 	else
 		var/list/hologramsAICanUse = list()
 		var/holograms_by_type = decls_repository.get_decls_of_subtype(/decl/ai_holo)
-		for( var/holo_type in holograms_by_type)
+		for (var/holo_type in holograms_by_type)
 			var/decl/ai_holo/holo = holograms_by_type[holo_type]
 			if (holo.may_be_used_by_ai(src))
 				hologramsAICanUse.Add(holo)

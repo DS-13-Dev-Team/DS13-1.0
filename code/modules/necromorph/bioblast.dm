@@ -21,7 +21,7 @@ GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)
 	var/list/turfs = epicentre.turfs_in_view(Ceiling(maxrange))	//Find all the possible turfs in range
 
 	//And narrow it to those actually in range, probably clipping off the corners of a square
-	for( var/turf/T as anything in turfs)
+	for (var/turf/T as anything in turfs)
 		var/dist = get_dist_euclidian(epicentre, T)
 		if (dist > maxrange)
 			turfs.Remove(T)
@@ -30,7 +30,7 @@ GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)
 		turfs[T] = dist	//Also record the distance, we'll use that in a sec
 
 	//Now we'll affect the turfs
-	for( var/turf/T as anything in turfs)
+	for (var/turf/T as anything in turfs)
 		//Power falls off with distance, the rate at which this happens is multiplied by falloff factor
 		var/distance_reduction = turfs[T] * falloff_factor
 		var/reduced_power = power / (1+distance_reduction)
@@ -42,7 +42,7 @@ GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)
 
 
 /turf/bioblast_act(power = 1)
-	for( var/atom/A in contents)
+	for (var/atom/A in contents)
 		A.bioblast_act(power)
 
 

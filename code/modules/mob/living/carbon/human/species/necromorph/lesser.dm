@@ -64,7 +64,7 @@
 
 
 //Screaming sounds on taking damage
-/mob/living/simple_animal/necromorph/adjustBruteLoss(damage)
+/mob/living/simple_animal/necromorph/adjustBruteLoss(var/damage)
 	.=..()
 	if (damage > 0 && LAZYLEN(pain_sounds) && check_audio_cooldown(SOUND_PAIN))
 		playsound(src, pick(pain_sounds), VOLUME_MID, TRUE)
@@ -79,7 +79,7 @@
 	.=..()
 
 //Attack sounds when hitting
-/mob/living/simple_animal/necromorph/UnarmedAttack(atom/A, proximity)
+/mob/living/simple_animal/necromorph/UnarmedAttack(var/atom/A, proximity)
 	if (LAZYLEN(attack_sounds) && check_audio_cooldown(SOUND_ATTACK))
 		playsound(src, pick(attack_sounds), VOLUME_HIGH, TRUE)
 		set_audio_cooldown(SOUND_ATTACK, 3 SECONDS)

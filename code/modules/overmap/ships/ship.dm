@@ -18,20 +18,20 @@
 
 /obj/effect/overmap/ship/Initialize()
 	. = ..()
-	for( var/datum/ship_engine/E in ship_engines)
+	for(var/datum/ship_engine/E in ship_engines)
 		if (E.holder.z in map_z)
 			engines |= E
-	for( var/obj/machinery/computer/engines/E in SSmachines.machinery)
+	for(var/obj/machinery/computer/engines/E in SSmachines.machinery)
 		if (E.z in map_z)
 			E.linked = src
 			//testing("Engines console at level [E.z] linked to overmap object '[name]'.")
-	for( var/obj/machinery/computer/helm/H in SSmachines.machinery)
+	for(var/obj/machinery/computer/helm/H in SSmachines.machinery)
 		if (H.z in map_z)
 			nav_control = H
 			H.linked = src
 			H.get_known_sectors()
 			//testing("Helm console at level [H.z] linked to overmap object '[name]'.")
-	for( var/obj/machinery/computer/navigation/N in SSmachines.machinery)
+	for(var/obj/machinery/computer/navigation/N in SSmachines.machinery)
 		if (N.z in map_z)
 			N.linked = src
 			//testing("Navigation console at level [N.z] linked to overmap object '[name]'.")
@@ -71,7 +71,7 @@
 /obj/effect/overmap/ship/proc/adjust_speed(n_x, n_y)
 	speed[1] = round(Clamp(speed[1] + n_x, -default_delay, default_delay),0.1)
 	speed[2] = round(Clamp(speed[2] + n_y, -default_delay, default_delay),0.1)
-	for( var/zz in map_z)
+	for(var/zz in map_z)
 		if(is_still())
 			toggle_move_stars(zz)
 		else
@@ -109,7 +109,7 @@
 /obj/effect/overmap/ship/Process()
 	if(!is_still())
 		var/list/deltas = list(0,0)
-		for( var/i=1, i<=2, i++)
+		for(var/i=1, i<=2, i++)
 			if(speed[i] && world.time > last_movement[i] + default_delay - speed_mod*abs(speed[i]))
 				deltas[i] = speed[i] > 0 ? 1 : -1
 				last_movement[i] = world.time
@@ -127,23 +127,23 @@
 		icon_state = "ship"
 
 /obj/effect/overmap/ship/proc/burn()
-	for( var/datum/ship_engine/E in engines)
+	for(var/datum/ship_engine/E in engines)
 		. += E.burn()
 
 /obj/effect/overmap/ship/proc/get_total_thrust()
-	for( var/datum/ship_engine/E in engines)
+	for(var/datum/ship_engine/E in engines)
 		. += E.get_thrust()
 
 /obj/effect/overmap/ship/proc/can_burn()
 	if (world.time < last_burn + burn_delay)
 		return 0
-	for( var/datum/ship_engine/E in engines)
+	for(var/datum/ship_engine/E in engines)
 		. |= E.can_burn()
 
 //deciseconds to next step
 /obj/effect/overmap/ship/proc/ETA()
 	. = INFINITY
-	for( var/i=1, i<=2, i++)
+	for(var/i=1, i<=2, i++)
 		if(speed[i])
 			. = min(last_movement[i] + default_delay - speed_mod*abs(speed[i]) - world.time, .)
 	. = max(.,0)

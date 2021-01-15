@@ -39,7 +39,7 @@
 			msg+=" "*/
 		seperate = splittext(msg, " ")
 
-	for( var/Xa = 1,Xa<seperate.len,Xa++)
+	for(var/Xa = 1,Xa<seperate.len,Xa++)
 		var/next = Xa + 1
 		if(heard_words.len > 20 + rand(10,20))
 			heard_words.Remove(heard_words[1])
@@ -62,10 +62,10 @@
 
 /*/obj/item/weapon/talkingcrystal/proc/debug()
 	//set src in view()
-	for( var/v in heard_words)
+	for(var/v in heard_words)
 		log_debug("[uppertext(v)]")
 		var/list/d = heard_words["[v]"]
-		for( var/X in d)
+		for(var/X in d)
 			log_debug("[X]") */
 
 /datum/talking_atom/proc/SaySomething(word = null)
@@ -92,7 +92,7 @@
 		q=1
 
 	text=lowertext(text)
-	for( var/ya,ya <= limit,ya++)
+	for(var/ya,ya <= limit,ya++)
 
 		if(heard_words.Find("[text]"))
 			var/list/w = heard_words["[text]"]
@@ -109,7 +109,7 @@
 			msg+="!"
 
 	var/list/listening = viewers(holder_atom)
-	for( var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in SSmobs.mob_list)
 		if (!M.client)
 			continue //skip monkeys and leavers
 		if (istype(M, /mob/new_player))
@@ -117,6 +117,6 @@
 		if(M.stat == DEAD && M.get_preference_value(/datum/client_preference/ghost_ears) == GLOB.PREF_ALL_SPEECH)
 			listening|=M
 
-	for( var/mob/M in listening)
+	for(var/mob/M in listening)
 		to_chat(M, "\icon[holder_atom] <b>[holder_atom]</b> reverberates, <span class='notice'>\"[msg]\"</span>")
 	last_talk_time = world.time

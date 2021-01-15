@@ -118,7 +118,7 @@ obj/machinery/computer/general_air_control/Destroy()
 /obj/machinery/computer/general_air_control/proc/return_text()
 	var/sensor_data
 	if(sensors.len)
-		for( var/id_tag in sensors)
+		for(var/id_tag in sensors)
 			var/long_name = sensors[id_tag]
 			var/list/data = sensor_information[id_tag]
 			var/sensor_part = "<B>[long_name]</B>:<BR>"
@@ -421,7 +421,7 @@ Min Core Pressure: [pressure_limit] kPa<BR>"}
 			return 0
 
 		var/injecting = 0
-		for( var/id_tag in sensor_information)
+		for(var/id_tag in sensor_information)
 			var/list/data = sensor_information[id_tag]
 			if(data["temperature"])
 				if(data["temperature"] >= cutoff_temperature)

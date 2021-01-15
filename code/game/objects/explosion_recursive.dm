@@ -33,7 +33,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 1, shaped)
 	CHECK_TICK
 
 	//This steap handles the gathering of turfs which will be ex_act() -ed in the next step. It also ensures each turf gets the maximum possible amount of power dealt to it.
-	for( var/direction in GLOB.cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(epicenter, direction)
 		var/adj_power = power - epicenter.get_explosion_resistance()
 		if(shaped)
@@ -55,7 +55,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 1, shaped)
 
 
 	//This step applies the ex_act effects for the explosion, as planned in the previous step.
-	for( var/spot in explosion_turfs)
+	for(var/spot in explosion_turfs)
 		var/turf/T = spot
 		if(explosion_turfs[T] <= 0) continue
 		if(!T) continue
@@ -85,7 +85,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 1, shaped)
 		CHECK_TICK
 
 		var/throw_target = get_edge_target_turf(T, get_dir(epicenter,T))
-		for( var/atom_movable in T.contents)
+		for(var/atom_movable in T.contents)
 			var/atom/movable/AM = atom_movable
 			if(AM && !(AM.atom_flags & ATOM_FLAG_INTANGIBLE) && AM.simulated && !T.protects_atom(AM))
 				AM.ex_act(severity, epicenter)

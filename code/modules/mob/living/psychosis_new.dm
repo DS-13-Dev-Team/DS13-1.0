@@ -186,7 +186,7 @@ A method to apply physical psychosis effects.
 */
 
 /datum/extension/traumatic_sight/proc/apply_psychosis_effects()
-	for( var/mob/living/carbon/human/M in source.atoms_in_view(view_range))
+	for(var/mob/living/carbon/human/M in source.atoms_in_view(view_range))
 		if(!istype(M))
 			continue
 		if(M.eye_blind <= 0 && M.species?.psychosis_vulnerable() && M.equipment_tint_total < TINT_BLIND) //The blinded cannot be scared by what they see.

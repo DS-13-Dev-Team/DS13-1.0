@@ -15,7 +15,7 @@
 /datum/map/away_sites_testing/build_away_sites()
 	var/list/unsorted_sites = list_values(SSmapping.away_sites_templates)
 	var/list/sorted_sites = sortTim(unsorted_sites, /proc/cmp_sort_templates_tallest_to_shortest)
-	for( var/datum/map_template/ruin/away_site/A in sorted_sites)
+	for (var/datum/map_template/ruin/away_site/A in sorted_sites)
 		testing("Spawning [A]")
 		A.load_new_z()
 

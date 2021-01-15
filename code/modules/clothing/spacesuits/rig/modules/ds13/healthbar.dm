@@ -97,7 +97,7 @@
 	var/death_message = "[mobname] has died in [location]!"
 
 	//Send a message to these radio channels
-	for( var/channel in list("Security", "Medical", "Command"))
+	for(var/channel in list("Security", "Medical", "Command"))
 		var/frequency = radiochannels[channel]
 		var/datum/radio_frequency/connection = radio_controller.return_frequency(frequency)
 
@@ -123,12 +123,12 @@
 
 	//And, lets also send AUDIO THROUGH THE RADIO!!
 	var/list/hearer_mobs = list()
-	for( var/channel in list("Security", "Medical", "Command"))
+	for(var/channel in list("Security", "Medical", "Command"))
 		hearer_mobs |= get_channel_listeners(channel) //This gets a list of mobs that can hear this channel
 		//We use |= to prevent duplicates
 
 
-	for( var/mob/M in hearer_mobs)
+	for (var/mob/M in hearer_mobs)
 		if (!M.client)
 			continue //Disconnected people cant hear sounds
 		//Send the sound to them. playsound_local does a sound that's only heard by this mob

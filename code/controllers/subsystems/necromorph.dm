@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(necromorph)
 
 
 /datum/controller/subsystem/necromorph/proc/fill_vessel_from_queue(mob/vessel, vessel_id)
-	for( var/mob/observer/eye/signal/M in necroqueue)
+	for (var/mob/observer/eye/signal/M in necroqueue)
 		if (!M.client || !M.key)
 			continue	//Gotta be connected
 
@@ -100,7 +100,7 @@ SUBSYSTEM_DEF(necromorph)
 	//Message all the necros with a useable jumplink
 	if (istype(spotter))
 		if (difference >= spotter.minimum_notify_delay)
-			for( var/key in SSnecromorph.necromorph_players)
+			for (var/key in SSnecromorph.necromorph_players)
 				var/mob/M = SSnecromorph.necromorph_players[key]
 				to_chat(M, SPAN_WARNING("[AM] detected at [jumplink_public(M, S.last_location)]"))
 
@@ -141,7 +141,7 @@ SUBSYSTEM_DEF(necromorph)
 
 //Updates the energy holders of all necromorph players, refreshing their spell list
 /datum/controller/subsystem/necromorph/proc/update_all_ability_lists(clear = FALSE)
-	for( var/key in GLOB.players)
+	for (var/key in GLOB.players)
 		if (!key)
 			continue
 		var/datum/player/P = GLOB.players[key]

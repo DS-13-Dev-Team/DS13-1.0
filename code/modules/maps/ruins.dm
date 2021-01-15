@@ -5,14 +5,14 @@ GLOBAL_LIST_EMPTY(banned_ruin_ids)
 		WARNING("No Z levels provided - Not generating ruins")
 		return
 
-	for( var/zl in z_levels)
+	for(var/zl in z_levels)
 		var/turf/T = locate(1, 1, zl)
 		if(!T)
 			WARNING("Z level [zl] does not exist - Not generating ruins")
 			return
 
 	var/list/ruins = potentialRuins.Copy()
-	for( var/R in potentialRuins)
+	for(var/R in potentialRuins)
 		var/datum/map_template/ruin/ruin = R
 		if(ruin.id in GLOB.banned_ruin_ids)
 			ruins -= ruin //remove all prohibited ids from the candidate list; used to forbit global duplicates.
@@ -46,7 +46,7 @@ GLOBAL_LIST_EMPTY(banned_ruin_ids)
 			var/turf/T = locate(rand(width_border, maxx - width_border), rand(height_border, maxy - height_border), z_level)
 			var/valid = TRUE
 
-			for( var/turf/check in ruin.get_affected_turfs(T,1))
+			for(var/turf/check in ruin.get_affected_turfs(T,1))
 				var/area/new_area = get_area(check)
 				if(!(istype(new_area, whitelist)) || check.turf_flags & TURF_FLAG_NORUINS)
 					if(sanity == 0)
@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(banned_ruin_ids)
 			if(ruin.cost >= 0)
 				budget -= ruin.cost
 			if(!(ruin.template_flags & TEMPLATE_FLAG_ALLOW_DUPLICATES))
-				for( var/other_ruin_datum in ruins)
+				for(var/other_ruin_datum in ruins)
 					var/datum/map_template/ruin/other_ruin = other_ruin_datum
 					if(ruin.id == other_ruin.id)
 						ruins -= ruin //Remove all ruins with the same id if we don't allow duplicates
@@ -72,9 +72,9 @@ GLOBAL_LIST_EMPTY(banned_ruin_ids)
 proc/load_ruin(turf/central_turf, datum/map_template/template)
 	if(!template)
 		return FALSE
-	for( var/i in template.get_affected_turfs(central_turf, 1))
+	for(var/i in template.get_affected_turfs(central_turf, 1))
 		var/turf/T = i
-		for( var/mob/living/simple_animal/monster in T)
+		for(var/mob/living/simple_animal/monster in T)
 			qdel(monster)
 	template.load(central_turf,centered = TRUE)
 	var/datum/map_template/ruin = template
@@ -82,7 +82,7 @@ proc/load_ruin(turf/central_turf, datum/map_template/template)
 		new /obj/effect/landmark/ruin(central_turf, ruin)
 
 	if(template.template_flags & TEMPLATE_FLAG_NO_RUINS)
-		for( var/i in template.get_affected_turfs(central_turf, 1))
+		for(var/i in template.get_affected_turfs(central_turf, 1))
 			var/turf/T = i
 			T.turf_flags |= TURF_FLAG_NORUINS
 

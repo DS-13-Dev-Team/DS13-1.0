@@ -113,7 +113,7 @@
 	if(cooldown && cooldown < world.time)
 		sprint = initial
 
-	for( var/i = 0; i < max(sprint, initial); i += 20)
+	for(var/i = 0; i < max(sprint, initial); i += 20)
 		var/turf/step = get_turf(get_step(src, direct))
 		if(step)
 			setLoc(step)

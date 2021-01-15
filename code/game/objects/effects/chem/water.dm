@@ -15,7 +15,7 @@
 /obj/effect/effect/water/proc/set_up(turf/target, step_count = 5, delay = 5)
 	if(!target)
 		return
-	for( var/i = 1 to step_count)
+	for(var/i = 1 to step_count)
 		if(!loc)
 			return
 		step_towards(src, target)
@@ -23,7 +23,7 @@
 		if(T && reagents)
 			var/list/splash_mobs = list()
 			var/list/splash_others = list(T)
-			for( var/atom/A in T)
+			for(var/atom/A in T)
 				if(A.simulated)
 					if(!ismob(A))
 						splash_others += A
@@ -32,14 +32,14 @@
 
 			//each step splash 1/5 of the reagents on non-mobs
 			//could determine the # of steps until target, but that would be complicated
-			for( var/atom/A in splash_others)
+			for(var/atom/A in splash_others)
 				reagents.splash(A, (reagents.total_volume/step_count)/splash_others.len)
-			for( var/mob/living/M in splash_mobs)
+			for(var/mob/living/M in splash_mobs)
 				reagents.splash(M, reagents.total_volume/splash_mobs.len)
 			if(reagents.total_volume < 1)
 				break
 			if(T == get_turf(target))
-				for( var/atom/A in splash_others)
+				for(var/atom/A in splash_others)
 					reagents.splash(A, reagents.total_volume/splash_others.len) //splash anything left
 				break
 

@@ -6,7 +6,7 @@
 //Writes a list into a specified file
 /proc/list2file(list/textlist, filename)
 	var/text = ""
-	for( var/line in textlist)
+	for (var/line in textlist)
 		text += "[line]\n"
 
 	text2file(text, filename)

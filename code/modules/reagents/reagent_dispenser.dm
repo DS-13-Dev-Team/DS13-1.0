@@ -21,7 +21,7 @@
 	if (!possible_transfer_amounts)
 		src.verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
 
-	for( var/reagent_type in initial_reagent_types)
+	for(var/reagent_type in initial_reagent_types)
 		var/reagent_ratio = initial_reagent_types[reagent_type]
 		reagents.add_reagent(reagent_type, reagent_ratio * initial_capacity)
 
@@ -32,7 +32,7 @@
 		return
 	to_chat(user, "<span class='notice'>It contains:</span>")
 	if(reagents && reagents.reagent_list.len)
-		for( var/datum/reagent/R in reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.reagent_list)
 			to_chat(user, "<span class='notice'>[R.volume] units of [R.name]</span>")
 	else
 		to_chat(user, "<span class='notice'>Nothing.</span>")

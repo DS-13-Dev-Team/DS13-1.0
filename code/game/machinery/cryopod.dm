@@ -68,7 +68,7 @@
 /obj/machinery/computer/cryopod/OnTopic(user, href_list, state)
 	if(href_list["log"])
 		var/dat = "<b>Recently stored [storage_type]</b><br/><hr/><br/>"
-		for( var/person in frozen_crew)
+		for(var/person in frozen_crew)
 			dat += "[person]<br/>"
 		dat += "<hr/>"
 		show_browser(user, dat, "window=cryolog")
@@ -78,7 +78,7 @@
 		if(!allow_items) return
 
 		var/dat = "<b>Recently stored objects</b><br/><hr/><br/>"
-		for( var/obj/item/I in frozen_items)
+		for(var/obj/item/I in frozen_items)
 			dat += "[I.name]<br/>"
 		dat += "<hr/>"
 
@@ -115,7 +115,7 @@
 
 		visible_message("<span class='notice'>The console beeps happily as it disgorges the desired objects.</span>", 3)
 
-		for( var/obj/item/I in frozen_items)
+		for(var/obj/item/I in frozen_items)
 			I.dropInto(loc)
 			frozen_items -= I
 		. = TOPIC_REFRESH
@@ -223,7 +223,7 @@
 
 /obj/machinery/cryopod/lifepod/proc/launch()
 	launched = 1
-	for( var/d in GLOB.cardinal)
+	for(var/d in GLOB.cardinal)
 		var/turf/T = get_step(src,d)
 		var/obj/machinery/door/blast/B = locate() in T
 		if(B && B.density)
@@ -233,7 +233,7 @@
 	var/list/possible_locations = list()
 	if(GLOB.using_map.use_overmap)
 		var/obj/effect/overmap/O = map_sectors["[z]"]
-		for( var/obj/effect/overmap/OO in range(O,2))
+		for(var/obj/effect/overmap/OO in range(O,2))
 			if(OO.in_space || istype(OO,/obj/effect/overmap/sector/exoplanet))
 				possible_locations |= text2num(level)
 
@@ -278,7 +278,7 @@
 
 /obj/machinery/cryopod/proc/find_control_computer(urgent=0)
 	// Workaround for http://www.byond.com/forum/?post=2007448
-	for( var/obj/machinery/computer/cryopod/C in src.loc.loc)
+	for(var/obj/machinery/computer/cryopod/C in src.loc.loc)
 		control_computer = C
 		break
 	// control_computer = locate(/obj/machinery/computer/cryopod) in src.loc.loc
@@ -293,14 +293,14 @@
 
 /obj/machinery/cryopod/proc/check_occupant_allowed(mob/M)
 	var/correct_type = 0
-	for( var/type in allow_occupant_types)
+	for(var/type in allow_occupant_types)
 		if(istype(M, type))
 			correct_type = 1
 			break
 
 	if(!correct_type) return 0
 
-	for( var/type in disallow_occupant_types)
+	for(var/type in disallow_occupant_types)
 		if(istype(M, type))
 			return 0
 
@@ -331,8 +331,8 @@
 	if(!istype(R)) return ..()
 
 	qdel(R.mmi)
-	for( var/obj/item/I in R.module) // the tools the borg has; metal, glass, guns etc
-		for( var/obj/item/O in I) // the things inside the tools, if anything; mainly for janiborg trash bags
+	for(var/obj/item/I in R.module) // the tools the borg has; metal, glass, guns etc
+		for(var/obj/item/O in I) // the things inside the tools, if anything; mainly for janiborg trash bags
 			O.forceMove(R)
 		qdel(I)
 	qdel(R.module)
@@ -343,12 +343,12 @@
 // Also make sure there is a valid control computer
 /obj/machinery/cryopod/proc/despawn_occupant()
 	//Drop all items into the pod.
-	for( var/obj/item/W in occupant)
+	for(var/obj/item/W in occupant)
 		occupant.drop_from_inventory(W)
 		W.forceMove(src)
 
 		if(W.contents.len) //Make sure we catch anything not handled by qdel() on the items.
-			for( var/obj/item/O in W.contents)
+			for(var/obj/item/O in W.contents)
 				if(istype(O,/obj/item/weapon/storage/internal)) //Stop eating pockets, you fuck!
 					continue
 				O.forceMove(src)
@@ -358,7 +358,7 @@
 	items -= occupant // Don't delete the occupant
 	items -= announce // or the autosay radio.
 
-	for( var/obj/item/W in items)
+	for(var/obj/item/W in items)
 
 		var/preserve = null
 		// Snowflaaaake.
@@ -369,7 +369,7 @@
 			else
 				continue
 		else
-			for( var/T in preserve_items)
+			for(var/T in preserve_items)
 				if(istype(W,T))
 					preserve = 1
 					break
@@ -384,7 +384,7 @@
 				W.forceMove(src.loc)
 
 	//Update any existing objectives involving this mob.
-	for( var/datum/objective/O in all_objectives)
+	for(var/datum/objective/O in all_objectives)
 		// We don't want revs to get objectives that aren't for heads of staff. Letting
 		// them win or lose based on cryo is silly so we remove the objective.
 		if(O.target == occupant.mind)
@@ -495,7 +495,7 @@
 	if(occupant) items -= occupant
 	if(announce) items -= announce
 
-	for( var/obj/item/W in items)
+	for(var/obj/item/W in items)
 		W.forceMove(get_turf(src))
 
 	src.go_out()
@@ -516,7 +516,7 @@
 		to_chat(usr, "<span class='notice'><B>\The [src] is in use.</B></span>")
 		return
 
-	for( var/mob/living/carbon/slime/M in range(1,usr))
+	for(var/mob/living/carbon/slime/M in range(1,usr))
 		if(M.Victim == usr)
 			to_chat(usr, "You're too busy getting your life sucked out of you.")
 			return

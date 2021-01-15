@@ -29,11 +29,11 @@
 	return has_access(req_access, req_one_access, L)
 
 /proc/has_access(list/req_access, list/req_one_access, list/accesses)
-	for( var/req in req_access)
+	for(var/req in req_access)
 		if(!(req in accesses)) //doesn't have this access
 			return 0
 	if(req_one_access.len)
-		for( var/req in req_one_access)
+		for(var/req in req_one_access)
 			if(req in accesses) //has an access from the single access list
 				return 1
 		return 0
@@ -43,7 +43,7 @@
 /proc/has_access_pattern(list/access_patterns, access)
 	if(!islist(access))
 		access = list(access)
-	for( var/access_pattern in access_patterns)
+	for(var/access_pattern in access_patterns)
 		if(has_access(access_pattern, list(), access))
 			return 1
 
@@ -63,7 +63,7 @@
 /proc/get_all_access_datums_by_id()
 	if(!priv_all_access_datums_id)
 		priv_all_access_datums_id = list()
-		for( var/datum/access/A in get_all_access_datums())
+		for(var/datum/access/A in get_all_access_datums())
 			priv_all_access_datums_id["[A.id]"] = A
 
 	return priv_all_access_datums_id.Copy()
@@ -72,7 +72,7 @@
 /proc/get_all_access_datums_by_region()
 	if(!priv_all_access_datums_region)
 		priv_all_access_datums_region = list()
-		for( var/datum/access/A in get_all_access_datums())
+		for(var/datum/access/A in get_all_access_datums())
 			if(!priv_all_access_datums_region[A.region])
 				priv_all_access_datums_region[A.region] = list()
 			priv_all_access_datums_region[A.region] += A
@@ -81,7 +81,7 @@
 
 /proc/get_access_ids(access_types = ACCESS_TYPE_ALL)
 	var/list/L = new()
-	for( var/datum/access/A in get_all_access_datums())
+	for(var/datum/access/A in get_all_access_datums())
 		if(A.access_type & access_types)
 			L += A.id
 	return L
@@ -121,7 +121,7 @@
 
 	if(!priv_region_access)
 		priv_region_access = list()
-		for( var/datum/access/A in get_all_access_datums())
+		for(var/datum/access/A in get_all_access_datums())
 			if(!priv_region_access["[A.region]"])
 				priv_region_access["[A.region]"] = list()
 			priv_region_access["[A.region]"] += A.id
@@ -166,7 +166,7 @@
 	var/list/all_datums = typesof(/datum/job)
 	all_datums -= exclude_jobs
 	var/datum/job/jobdatum
-	for( var/jobtype in all_datums)
+	for(var/jobtype in all_datums)
 		jobdatum = new jobtype
 		all_jobs.Add(jobdatum.title)
 	return all_jobs
@@ -200,7 +200,7 @@
 
 #define HUMAN_ID_CARDS list(get_active_hand(), wear_id, get_inactive_hand())
 /mob/living/carbon/human/GetIdCard()
-	for( var/item_slot in HUMAN_ID_CARDS)
+	for(var/item_slot in HUMAN_ID_CARDS)
 		var/obj/item/I = item_slot
 		var/obj/item/weapon/card/id = I ? I.GetIdCard() : null
 		if(id)
@@ -208,7 +208,7 @@
 
 /mob/living/carbon/human/GetAccess()
 	. = list()
-	for( var/item_slot in HUMAN_ID_CARDS)
+	for(var/item_slot in HUMAN_ID_CARDS)
 		var/obj/item/I = item_slot
 		if(I)
 			. |= I.GetAccess()

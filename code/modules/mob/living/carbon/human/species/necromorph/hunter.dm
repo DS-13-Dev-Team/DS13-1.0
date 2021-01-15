@@ -183,7 +183,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL
 	var/eye_icon = 'icons/mob/necromorph/hunter.dmi'
 
-/obj/item/organ/external/head/hunter/replaced(mob/newowner)
+/obj/item/organ/external/head/hunter/replaced(var/mob/newowner)
 	.=..()
 
 
@@ -255,7 +255,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 /*
 	Immortality
 */
-/datum/species/necromorph/hunter/get_weighted_total_limb_damage(mob/living/carbon/human/H, return_list)
+/datum/species/necromorph/hunter/get_weighted_total_limb_damage(var/mob/living/carbon/human/H, return_list)
 	.=..()
 	if (islist(.))
 		.["burn"] = H.getFireLoss()
@@ -269,7 +269,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 
 
 //Hunter has special death rules
-/datum/species/necromorph/hunter/handle_death_check(mob/living/carbon/human/H)
+/datum/species/necromorph/hunter/handle_death_check(var/mob/living/carbon/human/H)
 	var/list/results = get_weighted_total_limb_damage(H, TRUE)
 
 	//Is damage higher than our max health?
@@ -401,7 +401,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 
 
 
-/datum/extension/swing/arm/hunter/hit_mob(mob/living/L)
+/datum/extension/swing/arm/hunter/hit_mob(var/mob/living/L)
 	.=..()
 	if (.)
 		//If we hit someone, we'll pull them in a direction which is generally towards us

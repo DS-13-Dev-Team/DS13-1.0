@@ -7,7 +7,7 @@
 	w_class = ITEM_SIZE_LARGE
 	force = 9.0
 	throwforce = 15.0
-
+	
 	throw_range = 20
 	matter = list(MATERIAL_STEEL = 1875)
 	max_amount = 100
@@ -43,7 +43,7 @@
 		if(W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
 			var/obj/item/stack/material/steel/new_item = new(usr.loc)
 			new_item.add_to_stacks(usr)
-			for( var/mob/M in viewers(src))
+			for (var/mob/M in viewers(src))
 				M.show_message("<span class='notice'>[src] is shaped into metal by [user.name] with the weldingtool.</span>", 3, "<span class='notice'>You hear welding.</span>", 2)
 			var/obj/item/stack/rods/R = src
 			src = null
@@ -72,7 +72,7 @@
 	if(!istype(user.loc,/turf)) return 0
 
 	if (locate(/obj/structure/grille, usr.loc))
-		for( var/obj/structure/grille/G in usr.loc)
+		for(var/obj/structure/grille/G in usr.loc)
 			if (G.destroyed)
 				G.health = 10
 				G.set_density(1)

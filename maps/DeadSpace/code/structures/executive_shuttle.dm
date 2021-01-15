@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(executive_shuttle_controllers, list())
 /obj/machinery/computer/shuttle_control/executive_master/proc/can_launch()
 	var/requisite = (requires_authorisation) ? GLOB.executive_shuttle_controllers.len : 0
 	var/authcount = 0
-	for( var/obj/machinery/computer/shuttle_control/executive/E in GLOB.executive_shuttle_controllers)
+	for(var/obj/machinery/computer/shuttle_control/executive/E in GLOB.executive_shuttle_controllers)
 		if(E.authorised)
 			authcount ++
 	return (evacuation_controller.state >= EVAC_PREPPING) && authcount >= requisite

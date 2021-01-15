@@ -24,7 +24,7 @@
 
 	//Lets gather up every living necromorph
 	var/list/necromorphs = list()
-	for( var/key in SSnecromorph.necromorph_players)
+	for (var/key in SSnecromorph.necromorph_players)
 		var/datum/player/P = get_player_from_key(key)
 		if (!P)
 			continue
@@ -40,7 +40,7 @@
 	necromorphs |= SSnecromorph.major_vessels
 	necromorphs |= SSnecromorph.minor_vessels
 
-	for( var/mob/living/L in necromorphs)
+	for (var/mob/living/L in necromorphs)
 		set_extension(L, /datum/extension/assault_wave)
 		spawn(rand(1, 30))
 			L.shout()

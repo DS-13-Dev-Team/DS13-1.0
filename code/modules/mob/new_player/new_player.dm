@@ -86,7 +86,7 @@
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
-			for( var/mob/new_player/player in GLOB.player_list)
+			for(var/mob/new_player/player in GLOB.player_list)
 				var/highjob
 				if(player.client && player.client.prefs && player.client.prefs.job_high)
 					highjob = " as [player.client.prefs.job_high]"
@@ -229,7 +229,7 @@
 					to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
 					return
 
-				for( var/optionid = id_min; optionid <= id_max; optionid++)
+				for(var/optionid = id_min; optionid <= id_max; optionid++)
 					if(!isnull(href_list["o[optionid]"]))	//Test if this optionid was replied to
 						var/rating
 						if(href_list["o[optionid]"] == "abstain")
@@ -248,7 +248,7 @@
 					to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
 					return
 
-				for( var/optionid = id_min; optionid <= id_max; optionid++)
+				for(var/optionid = id_min; optionid <= id_max; optionid++)
 					if(!isnull(href_list["option_[optionid]"]))	//Test if this optionid was selected
 						vote_on_poll(pollid, optionid, 1)
 
@@ -381,7 +381,7 @@
 
 	// TORCH JOBS
 	var/list/job_summaries = list()
-	for( var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in job_master.occupations)
 		var/summary = job.get_join_link(client, "byond://?src=\ref[src];SelectedJob=[job.title]", show_invalid_jobs)
 		if(summary && summary != "")
 			job_summaries += summary
@@ -392,12 +392,12 @@
 	// END TORCH JOBS
 
 	// SUBMAP JOBS
-	for( var/thing in SSmapping.submaps)
+	for(var/thing in SSmapping.submaps)
 		var/datum/submap/submap = thing
 		if(submap && submap.available())
 			dat += "<tr><td colspan = 3><b>[submap.name] ([submap.archetype.descriptor]):</b></td></tr>"
 			job_summaries = list()
-			for( var/otherthing in submap.jobs)
+			for(var/otherthing in submap.jobs)
 				var/datum/job/job = submap.jobs[otherthing]
 				var/summary = job.get_join_link(client, "byond://?src=\ref[submap];joining=\ref[src];join_as=[otherthing]", show_invalid_jobs)
 				if(summary && summary != "")
@@ -442,7 +442,7 @@
 
 	new_character.lastarea = get_area(spawn_turf)
 
-	for( var/lang in client.prefs.alternate_languages)
+	for(var/lang in client.prefs.alternate_languages)
 		var/datum/language/chosen_language = all_languages[lang]
 		if(chosen_language)
 			var/is_species_lang = (chosen_language.name in new_character.species.secondary_langs)
@@ -465,7 +465,7 @@
 		if(client.prefs.memory)
 			mind.store_memory(client.prefs.memory)
 		if(client.prefs.relations.len)
-			for( var/T in client.prefs.relations)
+			for(var/T in client.prefs.relations)
 				var/TT = matchmaker.relation_types[T]
 				var/datum/relation/R = new TT
 				R.holder = mind

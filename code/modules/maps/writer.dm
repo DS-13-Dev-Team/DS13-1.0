@@ -49,9 +49,9 @@ dmm_suite{
 		var/list/templates[0]
 		var/template_buffer = {""}
 		var/dmm_text = {""}
-		for( var/pos_z=nw.z;pos_z<=se.z;pos_z++){
-			for( var/pos_y=nw.y;pos_y>=se.y;pos_y--){
-				for( var/pos_x=nw.x;pos_x<=se.x;pos_x++){
+		for(var/pos_z=nw.z;pos_z<=se.z;pos_z++){
+			for(var/pos_y=nw.y;pos_y>=se.y;pos_y--){
+				for(var/pos_x=nw.x;pos_x<=se.x;pos_x++){
 					var/turf/test_turf = locate(pos_x,pos_y,pos_z)
 					var/test_template = make_template(test_turf, flags)
 					var/template_number = templates.Find(test_template)
@@ -67,20 +67,20 @@ dmm_suite{
 			}
 		var/key_length = round/*floor*/(log(letter_digits.len,templates.len-1)+1)
 		var/list/keys[templates.len]
-		for( var/key_pos=1;key_pos<=templates.len;key_pos++){
+		for(var/key_pos=1;key_pos<=templates.len;key_pos++){
 			keys[key_pos] = get_model_key(key_pos,key_length)
 			dmm_text += {""[keys[key_pos]]" = ([templates[key_pos]])\n"}
 			}
 		var/z_level = 0
-		for( var/z_pos=1;TRUE;z_pos=findtext(template_buffer,".",z_pos)+1){
+		for(var/z_pos=1;TRUE;z_pos=findtext(template_buffer,".",z_pos)+1){
 			if(z_pos>=length(template_buffer)){break}
 			if(z_level){dmm_text+={"\n"}}
 			dmm_text += {"\n(1,1,[++z_level]) = {"\n"}
 			var/z_block = copytext(template_buffer,z_pos,findtext(template_buffer,".",z_pos))
-			for( var/y_pos=1;TRUE;y_pos=findtext(z_block,";",y_pos)+1){
+			for(var/y_pos=1;TRUE;y_pos=findtext(z_block,";",y_pos)+1){
 				if(y_pos>=length(z_block)){break}
 				var/y_block = copytext(z_block,y_pos,findtext(z_block,";",y_pos))
-				for( var/x_pos=1;TRUE;x_pos=findtext(y_block,",",x_pos)+1){
+				for(var/x_pos=1;TRUE;x_pos=findtext(y_block,",",x_pos)+1){
 					if(x_pos>=length(y_block)){break}
 					var/x_block = copytext(y_block,x_pos,findtext(y_block,",",x_pos))
 					var/key_number = text2num(x_block)
@@ -107,11 +107,11 @@ dmm_suite{
 				} else{ turf_template = "[world.turf],"}
 			var/area_template = ""
 			if(!(flags & DMM_IGNORE_OBJS)){
-				for( var/obj/O in model.contents){
+				for(var/obj/O in model.contents){
 					obj_template += "[O.type][check_attributes(O)],"
 					}
 				}
-			for( var/mob/M in model.contents){
+			for(var/mob/M in model.contents){
 				if(M.client){
 					if(!(flags & DMM_IGNORE_PLAYERS)){
 						mob_template += "[M.type][check_attributes(M)],"
@@ -132,7 +132,7 @@ dmm_suite{
 			}
 		check_attributes(atom/A){
 			var/attributes_text = {"{"}
-			for( var/V in A.vars){
+			for(var/V in A.vars){
 				sleep(-1)
 				if((!issaved(A.vars[V])) || (A.vars[V]==initial(A.vars[V]))){continue}
 				if(istext(A.vars[V])){
@@ -163,7 +163,7 @@ dmm_suite{
 		get_model_key(which as num, key_length as num){
 			var/key = ""
 			var/working_digit = which-1
-			for( var/digit_pos=key_length;digit_pos>=1;digit_pos--){
+			for(var/digit_pos=key_length;digit_pos>=1;digit_pos--){
 				var/place_value = round/*floor*/(working_digit/(letter_digits.len**(digit_pos-1)))
 				working_digit-=place_value*(letter_digits.len**(digit_pos-1))
 				key = "[key][letter_digits[place_value+1]]"

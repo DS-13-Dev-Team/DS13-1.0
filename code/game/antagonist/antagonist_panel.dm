@@ -23,7 +23,7 @@
 		return ""
 
 	var/dat = "<br><table cellspacing=5><tr><td><B>[role_text_plural]</B></td><td></td></tr>"
-	for( var/datum/mind/player in current_antagonists)
+	for(var/datum/mind/player in current_antagonists)
 		var/mob/M = player.current
 		dat += "<tr>"
 		if(M)
@@ -39,7 +39,7 @@
 
 	if(flags & ANTAG_HAS_NUKE)
 		dat += "<br><table><tr><td><B>Nuclear disk(s)</B></td></tr>"
-		for( var/obj/item/weapon/disk/nuclear/N in world)
+		for(var/obj/item/weapon/disk/nuclear/N in world)
 			dat += "<tr><td>[N.name], "
 			var/atom/disk_loc = N.loc
 			while(!istype(disk_loc, /turf))

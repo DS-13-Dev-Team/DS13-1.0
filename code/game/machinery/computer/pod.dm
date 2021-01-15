@@ -16,7 +16,7 @@
 /obj/machinery/computer/pod/New()
 	..()
 	spawn( 5 )
-		for( var/obj/machinery/mass_driver/M in world)
+		for(var/obj/machinery/mass_driver/M in world)
 			if(M.id == id)
 				connected = M
 			else
@@ -32,19 +32,19 @@
 		to_chat(viewers(null, null), "Cannot locate mass driver connector. Cancelling firing sequence!")
 		return
 
-	for( var/obj/machinery/door/blast/M in world)
+	for(var/obj/machinery/door/blast/M in world)
 		if(M.id == id)
 			M.open()
 
 	sleep(20)
 
-	for( var/obj/machinery/mass_driver/M in world)
+	for(var/obj/machinery/mass_driver/M in world)
 		if(M.id == id)
 			M.power = connected.power
 			M.drive()
 
 	sleep(50)
-	for( var/obj/machinery/door/blast/M in world)
+	for(var/obj/machinery/door/blast/M in world)
 		if(M.id == id)
 			M.close()
 			return
@@ -71,7 +71,7 @@
 				else //it's not an old computer. Generate standard pod circuitboard.
 					M = new /obj/item/weapon/circuitboard/pod( A )
 
-				for( var/obj/C in src)
+				for (var/obj/C in src)
 					C.dropInto(loc)
 				M.id = id
 				A.circuit = M
@@ -94,7 +94,7 @@
 				else //it's not an old computer. Generate standard pod circuitboard.
 					M = new /obj/item/weapon/circuitboard/pod( A )
 
-				for( var/obj/C in src)
+				for (var/obj/C in src)
 					C.dropInto(loc)
 				M.id = id
 				A.circuit = M
@@ -128,7 +128,7 @@
 		dat += "<HR>\nTimer System: [d2]\nTime Left: [minute ? "[minute]:" : null][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>"
 		var/temp = ""
 		var/list/L = list( 0.25, 0.5, 1, 2, 4, 8, 16 )
-		for( var/t in L)
+		for(var/t in L)
 			if(t == connected.power)
 				temp += "[t] "
 			else
@@ -167,7 +167,7 @@
 		alarm()
 		. = TOPIC_REFRESH
 	else if(href_list["drive"])
-		for( var/obj/machinery/mass_driver/M in SSmachines.machinery)
+		for(var/obj/machinery/mass_driver/M in SSmachines.machinery)
 			if(M.id == id)
 				M.power = connected.power
 				M.drive()
@@ -181,7 +181,7 @@
 		time = min(max(round(time), 0), 120)
 		. = TOPIC_REFRESH
 	else if(href_list["door"])
-		for( var/obj/machinery/door/blast/M in world)
+		for(var/obj/machinery/door/blast/M in world)
 			if(M.id == id)
 				if(M.density)
 					M.open()

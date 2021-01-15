@@ -3,7 +3,7 @@
 	desc = "Recipies for a variety of reagents."
 
 /datum/codex_category/recipes/Initialize()
-	for( var/datum/recipe/recipe in SScuisine.microwave_recipes)
+	for(var/datum/recipe/recipe in SScuisine.microwave_recipes)
 		if(recipe.hidden_from_codex || !recipe.result)
 			continue
 
@@ -11,13 +11,13 @@
 		if(recipe.mechanics_text)
 			mechanics_text = "[recipe.mechanics_text]<br><br>"
 		mechanics_text += "This recipe requires the following ingredients:<br><ul>"
-		for( var/thing in recipe.reagents)
+		for(var/thing in recipe.reagents)
 			var/datum/reagent/thing_reagent = thing
 			mechanics_text += "<li>[recipe.reagents[thing]]u [initial(thing_reagent.name)]</li>"
-		for( var/thing in recipe.items)
+		for(var/thing in recipe.items)
 			var/atom/thing_atom = thing
 			mechanics_text += "<li>\a [initial(thing_atom.name)]</li>"
-		for( var/thing in recipe.fruit)
+		for(var/thing in recipe.fruit)
 			mechanics_text += "<li>[recipe.fruit[thing]] [thing]\s</li>"
 		mechanics_text += "</ul>"
 		var/atom/recipe_product = recipe.result

@@ -44,7 +44,7 @@
 	to_chat(user, "<span class='notice'>You empty [src].</span>")
 	var/turf/T = get_turf(src)
 	hold.hide_from(usr)
-	for( var/obj/item/I in hold.contents)
+	for(var/obj/item/I in hold.contents)
 		if(hold)
 			hold.remove_from_storage(I, T)
 	src.add_fingerprint(user)
@@ -158,5 +158,5 @@
 /obj/item/clothing/accessory/storage/bandolier/safari/Initialize()
 	. = ..()
 
-	for( var/i = 0, i < slots, i++)
+	for(var/i = 0, i < slots, i++)
 		new /obj/item/weapon/net_shell(hold)

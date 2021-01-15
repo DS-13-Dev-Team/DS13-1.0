@@ -42,7 +42,7 @@
 /decl/appearance_handler/cardborg/proc/init_appearances()
 	if(!appearances)
 		appearances = list()
-		for( var/decl/cardborg_appearance/ca in init_subtypes(/decl/cardborg_appearance))
+		for(var/decl/cardborg_appearance/ca in init_subtypes(/decl/cardborg_appearance))
 			appearances[ca.backpack_type] = ca
 
 /decl/cardborg_appearance

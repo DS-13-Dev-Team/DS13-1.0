@@ -54,7 +54,7 @@
 /obj/structure/closet/airlock_crush(crush_damage)
 	..()
 	take_damage(crush_damage, used_weapon = src)
-	for( var/atom/movable/AM in src)
+	for(var/atom/movable/AM in src)
 		AM.airlock_crush()
 	return
 
@@ -65,7 +65,7 @@
 	var/protection = blocked_mult(getarmor(null, "melee"))
 	crush_damage *= protection
 
-	for( var/i in 1 to round(crush_damage/AIRLOCK_CRUSH_INCREMENT, 1))
+	for(var/i in 1 to round(crush_damage/AIRLOCK_CRUSH_INCREMENT, 1))
 		apply_damage(AIRLOCK_CRUSH_INCREMENT, BRUTE, null, 0)
 
 	SetStunned(round(crush_damage / 8, 1))
@@ -76,7 +76,7 @@
 		return
 
 	var/list/valid_turfs = list()
-	for( var/dir_to_test in GLOB.cardinal)
+	for(var/dir_to_test in GLOB.cardinal)
 		var/turf/new_turf = get_step(T, dir_to_test)
 		if(!new_turf.contains_dense_objects())
 			valid_turfs |= new_turf

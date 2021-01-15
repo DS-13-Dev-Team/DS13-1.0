@@ -37,7 +37,7 @@
 			user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN*1.5) //This longer cooldown helps promote skill in melee combat by punishing misclicks a bit
 			return TRUE
 
-	for( var/atom/movable/A in src)
+	for(var/atom/movable/A in src)
 		if(A.preventsTurfInteractions())
 			to_chat(user, SPAN_NOTICE("[A] is in the way."))
 			A.attackby(I, user)
@@ -62,7 +62,7 @@
 				return
 			var/obj/item/stack/S = I
 			var/decl/flooring/use_flooring
-			for( var/flooring_type in flooring_types)
+			for(var/flooring_type in flooring_types)
 				var/decl/flooring/F = flooring_types[flooring_type]
 				if(!F.build_type)
 					continue

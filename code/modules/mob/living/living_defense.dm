@@ -91,7 +91,7 @@
 		return TRUE
 	. = TRUE
 	var/list/newargs = args - args[1]
-	for( var/a in auras)
+	for(var/a in auras)
 		var/obj/aura/aura = a
 		var/result = 0
 		switch(type)
@@ -129,7 +129,7 @@
 
 /mob/living/emp_act(severity)
 	var/list/L = src.get_contents()
-	for( var/obj/O in L)
+	for(var/obj/O in L)
 		O.emp_act(severity)
 	..()
 
@@ -343,10 +343,10 @@
 
 /mob/living/proc/handle_actions()
 	//Pretty bad, i'd use picked/dropped instead but the parent calls in these are nonexistent
-	for( var/datum/action/A in actions)
+	for(var/datum/action/A in actions)
 		if(A.CheckRemoval(src))
 			A.Remove(src)
-	for( var/obj/item/I in src)
+	for(var/obj/item/I in src)
 		if(I.action_button_name)
 			if(!I.action)
 				I.action = new I.default_action_type
@@ -363,7 +363,7 @@
 		return
 
 	client.screen -= hud_used.hide_actions_toggle
-	for( var/datum/action/A in actions)
+	for(var/datum/action/A in actions)
 		if(A.button)
 			client.screen -= A.button
 
@@ -380,7 +380,7 @@
 		return
 
 	var/button_number = 0
-	for( var/datum/action/A in actions)
+	for(var/datum/action/A in actions)
 		button_number++
 		if(A.button == null)
 			var/obj/screen/movable/action_button/N = new(hud_used)

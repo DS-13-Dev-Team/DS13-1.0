@@ -32,7 +32,7 @@
 			return "This subject does not have an edible life energy..."
 	if (istype(M, /mob/living/carbon) && M.getCloneLoss() >= M.max_health * 1.5 || istype(M, /mob/living/simple_animal) && M.stat == DEAD)
 		return "This subject does not have an edible life energy..."
-	for( var/mob/living/carbon/slime/met in view())
+	for(var/mob/living/carbon/slime/met in view())
 		if(met.Victim == M && met != src)
 			return "\The [met] is already feeding on this subject..."
 	return 0
@@ -156,7 +156,7 @@
 
 			var/list/babies = list()
 			var/list/mutations = GetMutations()
-			for( var/i = 1 to 4)
+			for(var/i = 1 to 4)
 				var/t = colour
 				if(prob(mutation_chance))
 					t = pick(mutations)

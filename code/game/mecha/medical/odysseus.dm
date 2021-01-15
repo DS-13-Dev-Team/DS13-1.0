@@ -68,17 +68,17 @@
 /*
 		log_debug("view(M)")
 
-		for( var/mob/mob in view(M))
+		for(var/mob/mob in view(M))
 			log_debug("[mob]")
 
 		log_debug("view(M.client)")
 
-		for( var/mob/mob in view(M.client))
+		for(var/mob/mob in view(M.client))
 			log_debug("[mob]")
 
 		log_debug("view(M.loc)")
 
-		for( var/mob/mob in view(M.loc))
+		for(var/mob/mob in view(M.loc))
 			log_debug("[mob]")
 
 */
@@ -87,12 +87,12 @@
 		if(!M.client)	return
 		var/client/C = M.client
 		var/image/holder
-		for( var/mob/living/carbon/human/patient in view(M.loc))
+		for(var/mob/living/carbon/human/patient in view(M.loc))
 			if(M.see_invisible < patient.invisibility)
 				continue
 			var/foundVirus = 0
 
-			for( var/ID in patient.virus2)
+			for (var/ID in patient.virus2)
 				if (ID in virusDB)
 					foundVirus = 1
 					break

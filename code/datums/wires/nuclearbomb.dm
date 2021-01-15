@@ -7,7 +7,7 @@ var/const/NUCLEARBOMB_WIRE_LIGHT		= 1
 var/const/NUCLEARBOMB_WIRE_TIMING		= 2
 var/const/NUCLEARBOMB_WIRE_SAFETY		= 4
 
-/datum/wires/nuclearbomb/CanUse(mob/living/L)
+/datum/wires/nuclearbomb/CanUse(var/mob/living/L)
 	var/obj/machinery/nuclearbomb/N = holder
 	return N.panel_open
 

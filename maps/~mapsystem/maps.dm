@@ -5,7 +5,7 @@ var/const/MAP_HAS_BRANCH = 1	//Branch system for occupations, togglable
 var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 /hook/startup/proc/initialise_map_list()
-	for( var/type in typesof(/datum/map) - /datum/map)
+	for(var/type in typesof(/datum/map) - /datum/map)
 		var/datum/map/M
 		if(type == GLOB.using_map.type)
 			M = GLOB.using_map
@@ -182,7 +182,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		return
 	report_progress("Loading away sites...")
 	var/list/sites_by_spawn_weight = list()
-	for( var/site_name in SSmapping.away_sites_templates)
+	for (var/site_name in SSmapping.away_sites_templates)
 		var/datum/map_template/ruin/away_site/site = SSmapping.away_sites_templates[site_name]
 
 		if((site.template_flags & TEMPLATE_FLAG_SPAWN_GUARANTEED) && site.load_new_z()) // no check for budget, but guaranteed means guaranteed
@@ -208,7 +208,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	if(!use_overmap || config.no_overmap)
 		return
 
-	for( var/i = 0, i < num_exoplanets, i++)
+	for(var/i = 0, i < num_exoplanets, i++)
 		var/exoplanet_type = pick(subtypesof(/obj/effect/overmap/sector/exoplanet))
 		var/obj/effect/overmap/sector/exoplanet/new_planet = new exoplanet_type(null, planet_size[1], planet_size[2])
 		new_planet.build_level()
@@ -219,10 +219,10 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	set background = 1
 	set waitfor = 0
 
-	for( var/thing in mining_walls["[zlevel]"])
+	for(var/thing in mining_walls["[zlevel]"])
 		var/turf/simulated/mineral/M = thing
 		M.update_icon()
-	for( var/thing in mining_floors["[zlevel]"])
+	for(var/thing in mining_floors["[zlevel]"])
 		var/turf/simulated/floor/asteroid/M = thing
 		if(istype(M))
 			M.updateMineralOverlays()
@@ -250,7 +250,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	news_network.CreateFeedChannel("Nyx Daily", "SolGov Minister of Information", 1, 1)
 	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
 
-	for( var/loc_type in typesof(/datum/trade_destination) - /datum/trade_destination)
+	for(var/loc_type in typesof(/datum/trade_destination) - /datum/trade_destination)
 		var/datum/trade_destination/D = new loc_type
 		weighted_randomevent_locations[D] = D.viable_random_events.len
 		weighted_mundaneevent_locations[D] = D.viable_mundane_events.len
@@ -258,11 +258,11 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	if(!station_account)
 		station_account = create_account("[station_name()] Primary Account", starting_money)
 
-	for( var/job in allowed_jobs)
+	for(var/job in allowed_jobs)
 		var/datum/job/J = decls_repository.get_decl(job)
 		if(J.department)
 			station_departments |= J.department
-	for( var/department in station_departments)
+	for(var/department in station_departments)
 		department_accounts[department] = create_account("[department] Account", department_money)
 
 	department_accounts["Vendor"] = create_account("Vendor Account", 0)

@@ -39,10 +39,10 @@
 	var/list/data = list()
 	var/list/regions = list()
 
-	for( var/i in ACCESS_REGION_SECURITY to ACCESS_REGION_SUPPLY) //code/game/jobs/_access_defs.dm
+	for(var/i in ACCESS_REGION_SECURITY to ACCESS_REGION_SUPPLY) //code/game/jobs/_access_defs.dm
 		var/list/region = list()
 		var/list/accesses = list()
-		for( var/j in get_region_accesses(i))
+		for(var/j in get_region_accesses(i))
 			var/list/access = list()
 			access["name"] = get_access_desc(j)
 			access["id"] = j

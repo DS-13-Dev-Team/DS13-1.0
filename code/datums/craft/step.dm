@@ -41,7 +41,7 @@
 /datum/craft_step/proc/apply(obj/item/I, mob/living/user, atom/target = null)
 	if (can_apply(I, user, target))
 		//Before doing the step, we check passive requirements
-		for( var/datum/craft_step/CS in parent.passive_steps)
+		for (var/datum/craft_step/CS in parent.passive_steps)
 			if (!CS.can_apply(I, user, target))
 				return FALSE
 
@@ -49,7 +49,7 @@
 		if (do_apply(I, user, target))
 			//And if it succeeded, call post_apply
 			post_apply(I, user, target)
-			for( var/datum/craft_step/CS in parent.passive_steps)
+			for (var/datum/craft_step/CS in parent.passive_steps)
 				CS.post_apply(I, user, target)
 			return TRUE
 

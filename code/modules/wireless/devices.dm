@@ -6,11 +6,11 @@
 //			  it in a subtype if you want it to do something.
 //-------------------------------
 /datum/wifi/sender/button/activate(mob/living/user)
-	for( var/datum/wifi/receiver/button/B in connected_devices)
+	for(var/datum/wifi/receiver/button/B in connected_devices)
 		B.activate(user)
 
 /datum/wifi/sender/button/deactivate(mob/living/user)
-	for( var/datum/wifi/receiver/button/B in connected_devices)
+	for(var/datum/wifi/receiver/button/B in connected_devices)
 		B.deactivate(user)
 
 /datum/wifi/receiver/button/proc/activate(mob/living/user)
@@ -32,7 +32,7 @@
 
 	var/datum/spawn_sync/S = new()
 
-	for( var/datum/wifi/receiver/button/door/D in connected_devices)
+	for(var/datum/wifi/receiver/button/door/D in connected_devices)
 		S.start_worker(D, command)
 	S.wait_until_done()
 	return
@@ -175,19 +175,19 @@
 	var/datum/spawn_sync/S = new()
 
 	//tell all doors to open
-	for( var/datum/wifi/receiver/button/door/D in connected_devices)
+	for(var/datum/wifi/receiver/button/door/D in connected_devices)
 		S.start_worker(D, "open")
 	S.wait_until_done()
 	S.reset()
 	//tell all mass drivers to launch
-	for( var/datum/wifi/receiver/button/mass_driver/M in connected_devices)
+	for(var/datum/wifi/receiver/button/mass_driver/M in connected_devices)
 		spawn()
 			M.activate()
 	sleep(20)
 
 	//tell all doors to close
 	S.reset()
-	for( var/datum/wifi/receiver/button/door/D in connected_devices)
+	for(var/datum/wifi/receiver/button/door/D in connected_devices)
 		S.start_worker(D, "close")
 	S.wait_until_done()
 	return

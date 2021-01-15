@@ -21,7 +21,7 @@
 
 /datum/extension/screen_debug/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/list/screenobjects = list()
-	for( var/obj/O in C.screen)
+	for (var/obj/O in C.screen)
 		screenobjects += list(list("name" = O.name, "ref" = "\ref[O]", "type" = O.type, "icon" = "[O.icon] | [O.icon_state]"))
 
 	var/list/data = list()

@@ -92,7 +92,7 @@
 
 
 	//Lets validate and add all the gear
-	for( var/thing in prefs.Gear())
+	for (var/thing in prefs.Gear())
 		//This is a list of gear names, we must retrieve the datums from a global list, they are singletons
 		var/datum/gear/G = GLOB.gear_datums[thing]
 		//Each retrieved thing is added to our loadout datum
@@ -241,7 +241,7 @@
 	points = max_points
 	gear_tags = list()
 	equip_adjustments = 0
-	for( var/datum/gear/G in gear_list)
+	for (var/datum/gear/G in gear_list)
 		points -= G.cost
 		gear_tags |= G.tags
 		equip_adjustments |= G.equip_adjustments
@@ -260,7 +260,7 @@
 
 	//First of all, slot overriding
 	//Here we handle deleting things from the outfit which claim a slot that the loadout has also claimed. Loadout gets preference
-	for( var/datum/gear/G in gear_list)
+	for (var/datum/gear/G in gear_list)
 		//This gear doesnt want to override
 		if (!G.override_slot)
 			continue
@@ -280,7 +280,7 @@
 
 		//Alright, once we get here, we have a gear item which is claiming a specific slot, and wants to evict any existing outfit
 		// item from that slot, in order to take control.
-		for( var/list/outfit_item in outfit_data)
+		for (var/list/outfit_item in outfit_data)
 			//Outfit item is a sublist in the format: list(inventory slot, outfit_slot,typepath, quantity)
 
 			//We only care if we match the inventory slot
@@ -306,7 +306,7 @@
 	//Some additional preparation, lets divide the gear into two lists based on whether or not they have any job/role restrictions. This is critical
 	var/list/unrestricted_gear = list()
 	var/list/restricted_gear = list()
-	for( var/datum/gear/G in gear_list)
+	for(var/datum/gear/G in gear_list)
 		if (G.allowed_roles || G.allowed_branches || G.whitelisted || G.priority > 1)
 			//Items with a larger than normal priority go here too, since they may depend on something else
 			restricted_gear += G
@@ -324,7 +324,7 @@
 
 
 	//Secondly, we'll equip our unrestricted gear items
-	for( var/datum/gear/G in unrestricted_gear)
+	for(var/datum/gear/G in unrestricted_gear)
 		equip_gear(G, FALSE, dummy = dummy)
 
 
@@ -336,7 +336,7 @@
 
 
 	//Fourthly, we equip any restricted gear
-	for( var/datum/gear/G in restricted_gear)
+	for(var/datum/gear/G in restricted_gear)
 		equip_gear(G, dummy = dummy)
 
 
@@ -346,7 +346,7 @@
 
 	//Sixth, stored items
 	outfit.equip_stored(H, equip_adjustments)
-	for( var/datum/gear/G in spawn_in_storage)
+	for(var/datum/gear/G in spawn_in_storage)
 		G.spawn_in_storage_or_drop(H, prefs.Gear()[G.display_name], dummy = dummy)
 
 	//Seventh: Some finishing touches
@@ -397,16 +397,16 @@
 
 
 	/*
-	for( var/index = 1 to LOADOUT_SLOTS)
+	for(var/index = 1 to LOADOUT_SLOTS)
 		var/list/gears = pref.gear_list[index]
 
 		if(istype(gears))
-			for( var/gear_name in gears)
+			for(var/gear_name in gears)
 				if(!(gear_name in gear_datums))
 					gears -= gear_name
 
 			var/total_cost = 0
-			for( var/gear_name in gears)
+			for(var/gear_name in gears)
 				if(!gear_datums[gear_name])
 					gears -= gear_name
 				else if(!(gear_name in valid_gear_choices()))

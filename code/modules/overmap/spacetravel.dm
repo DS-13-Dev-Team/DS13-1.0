@@ -22,7 +22,7 @@ var/list/cached_space = list()
 
 /obj/effect/overmap/sector/temporary/proc/can_die(mob/observer)
 	testing("Checking if sector at [map_z[1]] can die.")
-	for( var/mob/M in GLOB.player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M != observer && M.z in map_z)
 			testing("There are people on it.")
 			return 0
@@ -84,7 +84,7 @@ proc/overmap_spacetravel(turf/space/T, atom/movable/A)
 
 	var/turf/map = locate(M.x,M.y,GLOB.using_map.overmap_z)
 	var/obj/effect/overmap/TM
-	for( var/obj/effect/overmap/O in map)
+	for(var/obj/effect/overmap/O in map)
 		if(O != M && O.in_space && prob(50))
 			TM = O
 			break

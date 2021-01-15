@@ -46,7 +46,7 @@
 		wet_overlay = null
 
 /turf/simulated/clean_blood()
-	for( var/obj/effect/decal/cleanable/blood/B in contents)
+	for(var/obj/effect/decal/cleanable/blood/B in contents)
 		B.clean_blood()
 	..()
 
@@ -129,7 +129,7 @@
 				slip_stun = 10
 
 			if(M.slip("the [floor_type] floor", slip_stun))
-				for( var/i = 1 to slip_dist)
+				for(var/i = 1 to slip_dist)
 					step(M, M.dir)
 					sleep(1)
 			else
@@ -145,7 +145,7 @@
 		return 0
 
 	if(istype(M))
-		for( var/obj/effect/decal/cleanable/blood/B in contents)
+		for(var/obj/effect/decal/cleanable/blood/B in contents)
 			if(!B.blood_DNA)
 				B.blood_DNA = list()
 			if(!B.blood_DNA[M.dna.unique_enzymes])

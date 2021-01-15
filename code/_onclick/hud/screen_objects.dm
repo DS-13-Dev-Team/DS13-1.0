@@ -263,7 +263,7 @@
 									nicename |= "hardsuit"
 									tankcheck |= rig.air_supply
 
-							for( var/i=1, i<tankcheck.len+1, ++i)
+							for(var/i=1, i<tankcheck.len+1, ++i)
 								if(istype(tankcheck[i], /obj/item/weapon/tank))
 									var/obj/item/weapon/tank/t = tankcheck[i]
 									if (!isnull(t.manipulated_by) && t.manipulated_by != C.real_name && findtext(t.desc,breathes))
@@ -300,7 +300,7 @@
 
 							var/best = 0
 							var/bestcontents = 0
-							for( var/i=1, i <  contents.len + 1 , ++i)
+							for(var/i=1, i <  contents.len + 1 , ++i)
 								if(!contents[i])
 									continue
 								if(contents[i] > bestcontents)

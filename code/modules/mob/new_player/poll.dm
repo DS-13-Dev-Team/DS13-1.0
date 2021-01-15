@@ -141,7 +141,7 @@
 					output += "<input type='hidden' name='votetype' value='OPTION'>"
 
 				output += "<table><tr><td>"
-				for( var/datum/polloption/O in options)
+				for(var/datum/polloption/O in options)
 					if(O.optionid && O.optiontext)
 						if(voted)
 							if(votedoptionid == O.optionid)
@@ -253,7 +253,7 @@
 
 						output += "<br>[optiontext]: <select name='o[optionid]'>"
 						output += "<option value='abstain'>abstain</option>"
-						for( var/j = minvalue; j <= maxvalue; j++)
+						for (var/j = minvalue; j <= maxvalue; j++)
 							if(j == minvalue && descmin)
 								output += "<option value='[j]'>[j] ([descmin])</option>"
 							else if (j == midvalue && descmid)
@@ -316,7 +316,7 @@
 					output += "<input type='hidden' name='minoptionid' value='[minoptionid]'>"
 
 				output += "<table><tr><td>"
-				for( var/datum/polloption/O in options)
+				for(var/datum/polloption/O in options)
 					if(O.optionid && O.optiontext)
 						if(voted)
 							if(O.optionid in votedfor)

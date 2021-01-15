@@ -15,7 +15,7 @@
 	var/list/valid_states = icon_states('icons/mob/robots.dmi')
 
 	var/list/original_valid_states = valid_states.Copy()
-	for( var/icon_state in valid_states)
+	for(var/icon_state in valid_states)
 		if(icon_state in excepted_icon_states_)
 			continue
 		if(starts_with(icon_state, "eyes-"))
@@ -51,9 +51,9 @@
 	var/icon_state_cache = list()
 	var/duplicates_found = FALSE
 
-	for( var/sprite_accessory_main_type in sprite_accessory_subtypes)
+	for(var/sprite_accessory_main_type in sprite_accessory_subtypes)
 		var/sprite_accessories_by_name = list()
-		for( var/sprite_accessory_type in subtypesof(sprite_accessory_main_type))
+		for(var/sprite_accessory_type in subtypesof(sprite_accessory_main_type))
 			var/failed = FALSE
 			var/datum/sprite_accessory/sat = sprite_accessory_type
 
@@ -104,7 +104,7 @@
 	var/contraband_icons = icon_states('icons/obj/contraband.dmi')
 	var/list/invalid_posters = list()
 
-	for( var/poster_type in subtypesof(/decl/poster))
+	for(var/poster_type in subtypesof(/decl/poster))
 		var/decl/poster/P = decls_repository.get_decl(poster_type)
 		if(!(P.icon_state in contraband_icons))
 			invalid_posters += poster_type

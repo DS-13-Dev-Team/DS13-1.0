@@ -9,13 +9,13 @@
 		return see
 	if(prey.len)
 		. = list()
-		for( var/weakref/W in prey)
+		for(var/weakref/W in prey)
 			var/mob/M = W.resolve()
 			if(M)
 				. += M
 		return
 	if(hunger > 500) //time to look for some food
-		for( var/mob/living/L in view(src, dist))
+		for(var/mob/living/L in view(src, dist))
 			if(!attack_same && L.faction != faction)
 				prey |= weakref(L)
 
@@ -26,7 +26,7 @@
 		if(hunger < 100) //stop hunting when satiated
 			prey.Cut()
 		else
-			for( var/mob/living/simple_animal/S in range(src,1))
+			for(var/mob/living/simple_animal/S in range(src,1))
 				if(S.stat == DEAD)
 					visible_message("[src] consumes \the body of [S]!")
 					var/turf/T = get_turf(S)
@@ -48,7 +48,7 @@
 	if(!CanInteract(usr, GLOB.conscious_state))
 		return
 
-	for( var/obj/effect/overmap/sector/exoplanet/E)
+	for(var/obj/effect/overmap/sector/exoplanet/E)
 		if(src in E.animals)
 			var/newname = input("What do you want to name this species?", "Species naming", E.get_random_species_name()) as text|null
 			newname = sanitizeName(newname, allow_numbers = TRUE, force_first_letter_uppercase = FALSE)

@@ -100,7 +100,7 @@ var/global/datum/controller/processScheduler/processScheduler
 /datum/controller/processScheduler/proc/process()
 	updateCurrentTickData()
 
-	for( var/i=world.tick_lag,i<world.tick_lag*50,i+=world.tick_lag)
+	for(var/i=world.tick_lag,i<world.tick_lag*50,i+=world.tick_lag)
 		spawn(i) updateCurrentTickData()
 	while(isRunning)
 		// Hopefully spawning this for 50 ticks in the future will make it the first thing in the queue.
@@ -114,7 +114,7 @@ var/global/datum/controller/processScheduler/processScheduler
 	isRunning = 0
 
 /datum/controller/processScheduler/proc/checkRunningProcesses()
-	for( var/datum/controller/process/p in running)
+	for(var/datum/controller/process/p in running)
 		p.update()
 
 		if (isnull(p)) // Process was killed
@@ -133,7 +133,7 @@ var/global/datum/controller/processScheduler/processScheduler
 					message_admins("Process '[p.name]' is hung and will be restarted.")
 
 /datum/controller/processScheduler/proc/queueProcesses()
-	for( var/datum/controller/process/p in processes)
+	for(var/datum/controller/process/p in processes)
 		// Don't double-queue, don't queue running processes
 		if (p.disabled || p.running || p.queued || !p.idle)
 			continue
@@ -143,7 +143,7 @@ var/global/datum/controller/processScheduler/processScheduler
 			setQueuedProcessState(p)
 
 /datum/controller/processScheduler/proc/runQueuedProcesses()
-	for( var/datum/controller/process/p in queued)
+	for(var/datum/controller/process/p in queued)
 		runProcess(p)
 
 /datum/controller/processScheduler/proc/addProcess(datum/controller/process/process)
@@ -209,7 +209,7 @@ var/global/datum/controller/processScheduler/processScheduler
 	nameToProcessMap[newProcess.name] = newProcess
 
 /datum/controller/processScheduler/proc/updateStartDelays()
-	for( var/datum/controller/process/p in processes)
+	for(var/datum/controller/process/p in processes)
 		if(p.start_delay)
 			last_queued[p] = world.time - p.start_delay
 
@@ -298,7 +298,7 @@ var/global/datum/controller/processScheduler/processScheduler
 
 	var/t = 0
 	var/c = 0
-	for( var/time in lastTwenty)
+	for(var/time in lastTwenty)
 		t += time
 		c++
 
@@ -318,7 +318,7 @@ var/global/datum/controller/processScheduler/processScheduler
 /datum/controller/processScheduler/proc/getStatusData()
 	var/list/data = new
 
-	for( var/datum/controller/process/p in processes)
+	for (var/datum/controller/process/p in processes)
 		data.len++
 		data[data.len] = p.getContextData()
 
@@ -380,7 +380,7 @@ var/global/datum/controller/processScheduler/processScheduler
 		return
 	stat("Processes", "[processes.len] (R [running.len] / Q [queued.len] / I [idle.len])")
 	stat(null, "[round(cpuAverage, 0.1)] CPU, [round(timeAllowance, 0.1)/10] TA")
-	for( var/datum/controller/process/p in processes)
+	for(var/datum/controller/process/p in processes)
 		p.statProcess()
 
 /datum/controller/processScheduler/proc/getProcess(process_name)

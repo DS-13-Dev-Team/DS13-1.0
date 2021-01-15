@@ -7,7 +7,7 @@ GLOBAL_DATUM_INIT(prometheus_metrics, /datum/prometheus_metrics, new)
 
 /datum/prometheus_metrics/New()
 	metric_families = list()
-	for( var/T in typesof(/datum/metric_family) - /datum/metric_family)
+	for(var/T in typesof(/datum/metric_family) - /datum/metric_family)
 		var/datum/metric_family/mf = T
 		if(initial(mf.name) == null || initial(mf.metric_type) == null)
 			continue
@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(prometheus_metrics, /datum/prometheus_metrics, new)
 /datum/prometheus_metrics/proc/collect()
 	var/list/out = list()
 
-	for( var/datum/metric_family/MF in metric_families)
+	for(var/datum/metric_family/MF in metric_families)
 		var/proto = MF._to_proto()
 		if(proto != null)
 			out[++out.len] = MF._to_proto()

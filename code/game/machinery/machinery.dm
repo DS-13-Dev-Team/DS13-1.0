@@ -159,11 +159,11 @@ Class Procs:
 	if(circuit)
 		component_parts += circuit
 
-	for( var/item in circuit.req_components)
+	for(var/item in circuit.req_components)
 		if(item == /obj/item/stack/cable_coil)
 			component_parts += new item(null, circuit.req_components[item])
 		else
-			for( var/j = 1 to circuit.req_components[item])
+			for(var/j = 1 to circuit.req_components[item])
 				component_parts += new item
 
 	RefreshParts()
@@ -174,7 +174,7 @@ Class Procs:
 	SSmachines.machinery -= src
 	STOP_PROCESSING_MACHINE(src, MACHINERY_PROCESS_ALL)
 	if(component_parts)
-		for( var/atom/A in component_parts)
+		for(var/atom/A in component_parts)
 			if(A.loc == src) // If the components are inside the machine, delete them.
 				qdel(A)
 			else // Otherwise we assume they were dropped to the ground during deconstruction, and were not removed from the component_parts list by deconstruction code.
@@ -185,7 +185,7 @@ Class Procs:
 	//Bay part processing, not fully ported. Investigate in future to see if worthwhile
 	/*
 	if(processing_flags & MACHINERY_PROCESS_COMPONENTS)
-		for( var/thing in processing_parts)
+		for(var/thing in processing_parts)
 			var/obj/item/weapon/stock_parts/part = thing
 			if(part.machine_process(src) == PROCESS_KILL)
 				part.stop_processing()
@@ -312,7 +312,7 @@ Class Procs:
 	gl_uid++
 
 /obj/machinery/proc/state(msg)
-	for( var/mob/O in hearers(src, null))
+	for(var/mob/O in hearers(src, null))
 		O.show_message("\icon[src] <span class = 'notice'>[msg]</span>", 2)
 
 /obj/machinery/proc/ping(text=null)
@@ -365,12 +365,12 @@ Class Procs:
 	if(panel_open)
 		var/obj/item/weapon/circuitboard/CB = locate(/obj/item/weapon/circuitboard) in component_parts
 		var/P
-		for( var/obj/item/weapon/stock_parts/A in component_parts)
-			for( var/T in CB.req_components)
+		for(var/obj/item/weapon/stock_parts/A in component_parts)
+			for(var/T in CB.req_components)
 				if(ispath(A.type, T))
 					P = T
 					break
-			for( var/obj/item/weapon/stock_parts/B in R.contents)
+			for(var/obj/item/weapon/stock_parts/B in R.contents)
 				if(istype(B, P) && istype(A, P))
 					if(B.rating > A.rating)
 						R.remove_from_storage(B, src)
@@ -392,7 +392,7 @@ Class Procs:
 	M.set_dir(src.dir)
 	M.state = 2
 	M.icon_state = "box_1"
-	for( var/obj/I in component_parts)
+	for(var/obj/I in component_parts)
 		I.forceMove(get_turf(src))
 
 	qdel(src)
@@ -417,7 +417,7 @@ Class Procs:
 
 /obj/machinery/proc/display_parts(mob/user)
 	to_chat(user, "<span class='notice'>Following parts detected in the machine:</span>")
-	for( var/var/obj/item/C in component_parts)
+	for(var/var/obj/item/C in component_parts)
 		to_chat(user, "<span class='notice'>	[C.name]</span>")
 
 /obj/machinery/examine(mob/user)

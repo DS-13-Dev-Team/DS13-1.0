@@ -172,7 +172,7 @@ Note: This proc can be overwritten to allow for different types of auto-alignmen
 		..(W)
 
 	var/i = -1
-	for( var/obj/item/I in get_turf(src))
+	for (var/obj/item/I in get_turf(src))
 		if (I.anchored || !I.center_of_mass)
 			continue
 		i++

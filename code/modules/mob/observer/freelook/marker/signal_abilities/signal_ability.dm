@@ -162,7 +162,7 @@
 /datum/signal_ability/proc/stop_casting(mob/user)
 
 	//Search the user's clickhandlers for any which have an id matching our type, indicating we put them there. And remove those
-	for( var/datum/click_handler/CH in user.GetClickHandlers())
+	for (var/datum/click_handler/CH in user.GetClickHandlers())
 		if (CH.id == "[src.type]")
 			user.RemoveClickHandler(CH)
 
@@ -358,7 +358,7 @@
 //Does a lot of checking to see if the specified target is valid
 /datum/signal_ability/proc/is_valid_target(atom/thing, mob/user, silent = FALSE)
 	var/correct_type = FALSE
-	for( var/typepath in target_types)
+	for (var/typepath in target_types)
 		if (istype(thing, typepath))
 			correct_type = TRUE
 			break

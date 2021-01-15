@@ -65,7 +65,7 @@
 
 			var/mob/living/simple_animal/space_worm/current = src
 
-			for( var/i = 1 to segments)
+			for(var/i = 1 to segments)
 				var/mob/living/simple_animal/space_worm/newSegment = new /mob/living/simple_animal/space_worm(loc)
 				current.Attach(newSegment)
 				current = newSegment
@@ -166,7 +166,7 @@
 			newHead.death()
 
 	proc/ProcessStomach()
-		for( var/atom/movable/stomachContent in contents)
+		for(var/atom/movable/stomachContent in contents)
 			if(prob(digestionProbability))
 				if(istype(stomachContent,/obj/item/stack)) //converts to plasma, keeping the stack value
 					if(!istype(stomachContent,/obj/item/stack/material/phoron))
@@ -185,10 +185,10 @@
 					continue
 
 		if(previous)
-			for( var/atom/movable/stomachContent in contents) //transfer it along the digestive tract
+			for(var/atom/movable/stomachContent in contents) //transfer it along the digestive tract
 				previous.contents += stomachContent
 		else
-			for( var/atom/movable/stomachContent in contents) //or poop it out
+			for(var/atom/movable/stomachContent in contents) //or poop it out
 				loc.contents += stomachContent
 
 		return

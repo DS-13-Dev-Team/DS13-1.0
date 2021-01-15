@@ -5,7 +5,7 @@
 	if(ispath(movement_handlers[1]))
 		return (handler_path in movement_handlers)
 	else
-		for( var/mh in movement_handlers)
+		for(var/mh in movement_handlers)
 			var/datum/MH = mh
 			if(MH.type == handler_path)
 				return TRUE
@@ -19,7 +19,7 @@
 	// If a handler_path_to_add_before was given, attempt to find it and insert our handler just before it
 	if(handler_path_to_add_before && LAZYLEN(movement_handlers))
 		var/index = 0
-		for( var/handler in movement_handlers)
+		for(var/handler in movement_handlers)
 			index++
 			var/datum/H = handler
 			if(H.type == handler_path_to_add_before)
@@ -33,7 +33,7 @@
 	INIT_MOVEMENT_HANDLERS
 
 	if(ispath(handler_path))
-		for( var/handler in movement_handlers)
+		for(var/handler in movement_handlers)
 			var/datum/H = handler
 			if(H.type == handler_path)
 				REMOVE_AND_QDEL(H)
@@ -44,7 +44,7 @@
 /atom/movable/proc/RemoveMovementHandlerDatum(datum/movement_handler/thing)
 	INIT_MOVEMENT_HANDLERS
 
-	for( var/handler in movement_handlers)
+	for(var/handler in movement_handlers)
 		var/datum/H = handler
 		if(H == thing || movement_handlers[H] == thing)
 			REMOVE_AND_QDEL(H)
@@ -57,7 +57,7 @@
 /atom/movable/proc/GetMovementHandler(handler_path)
 	INIT_MOVEMENT_HANDLERS
 
-	for( var/handler in movement_handlers)
+	for(var/handler in movement_handlers)
 		var/datum/H = handler
 		if(H.type == handler_path)
 			return H

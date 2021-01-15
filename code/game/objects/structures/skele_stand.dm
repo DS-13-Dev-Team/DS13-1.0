@@ -39,7 +39,7 @@
 	..()
 	if(swag.len)
 		var/list/swagnames = list()
-		for( var/slot in swag)
+		for(var/slot in swag)
 			var/obj/item/clothing/C = swag[slot]
 			swagnames += C.get_examine_line()
 		to_chat(user,"[gender == MALE ? "He" : "She"] is wearing [english_list(swagnames)].")
@@ -73,13 +73,13 @@
 		rattle_bones(user, W)
 
 /obj/structure/skele_stand/Destroy()
-	for( var/slot in swag)
+	for(var/slot in swag)
 		var/obj/item/I = swag[slot]
 		I.forceMove(loc)
 	. = ..()
 
 /obj/structure/skele_stand/update_icon()
 	overlays.Cut()
-	for( var/slot in swag)
+	for(var/slot in swag)
 		var/obj/item/I = swag[slot]
 		overlays += I.get_mob_overlay(null, slot)

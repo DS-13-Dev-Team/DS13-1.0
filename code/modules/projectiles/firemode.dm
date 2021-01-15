@@ -18,7 +18,7 @@
 
 	gun = _gun //Cache the weapon
 
-	for( var/propname in properties)
+	for(var/propname in properties)
 		var/propvalue = properties[propname]
 
 		if(propname == "mode_name")
@@ -36,7 +36,7 @@
 /datum/firemode/proc/apply_to(obj/item/weapon/gun/_gun)
 	gun = _gun
 	gun.current_firemode = src
-	for( var/propname in settings)
+	for(var/propname in settings)
 		if (propname in gun.vars)
 			original_vars[propname] = gun.vars[propname]
 			gun.vars[propname] = settings[propname]
@@ -46,7 +46,7 @@
 	gun = _gun
 	if (gun.current_firemode == src)
 		gun.current_firemode = null
-	for( var/propname in settings)
+	for(var/propname in settings)
 		if (propname in gun.vars)
 			gun.vars[propname] = original_vars[propname]
 

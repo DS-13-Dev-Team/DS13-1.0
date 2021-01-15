@@ -5,7 +5,7 @@
 	item_state = "holowarrant"
 	throwforce = 5
 	w_class = ITEM_SIZE_SMALL
-
+	
 	throw_range = 10
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
@@ -25,7 +25,7 @@
 /obj/item/device/holowarrant/attack_self(mob/living/user as mob)
 	active = null
 	var/list/warrants = list()
-	for( var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
+	for(var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
 		if(!W.archived)
 			warrants += W.fields["namewarrant"]
 	if(warrants.len == 0)
@@ -33,7 +33,7 @@
 		return
 	var/temp
 	temp = input(user, "Which warrant would you like to load?") as null|anything in warrants
-	for( var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
+	for(var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
 		if(W.fields["namewarrant"] == temp)
 			active = W
 	update_icon()

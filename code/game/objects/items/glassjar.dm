@@ -18,7 +18,7 @@
 		return
 	if(istype(A, /mob))
 		var/accept = 0
-		for( var/D in accept_mobs)
+		for(var/D in accept_mobs)
 			if(istype(A, D))
 				accept = 1
 		if(!accept)
@@ -42,21 +42,21 @@
 /obj/item/glass_jar/attack_self(mob/user)
 	switch(contains)
 		if(1)
-			for( var/obj/O in src)
+			for(var/obj/O in src)
 				O.loc = user.loc
 			to_chat(user, "<span class='notice'>You take money out of \the [src].</span>")
 			contains = 0
 			update_icon()
 			return
 		if(2)
-			for( var/mob/M in src)
+			for(var/mob/M in src)
 				M.loc = user.loc
 				user.visible_message("<span class='notice'>[user] releases [M] from \the [src].</span>", "<span class='notice'>You release [M] from \the [src].</span>")
 			contains = 0
 			update_icon()
 			return
 		if(3)
-			for( var/obj/effect/spider/spiderling/S in src)
+			for(var/obj/effect/spider/spiderling/S in src)
 				S.dropInto(user.loc)
 				user.visible_message("<span class='notice'>[user] releases [S] from \the [src].</span>", "<span class='notice'>You release [S] from \the [src].</span>")
 				START_PROCESSING(SSobj, S) // They can grow after being let out though
@@ -86,23 +86,23 @@
 		if(1)
 			SetName("tip jar")
 			desc = "A small jar with money inside."
-			for( var/obj/item/weapon/spacecash/S in src)
+			for(var/obj/item/weapon/spacecash/S in src)
 				var/list/moneyImages = S.getMoneyImages()
-				for( var/A in moneyImages)
+				for(var/A in moneyImages)
 					var/image/money = image('icons/obj/items.dmi', A)
 					money.pixel_x = rand(-2, 3)
 					money.pixel_y = rand(-6, 6)
 					money.transform *= 0.6
 					underlays += money
 		if(2)
-			for( var/mob/M in src)
+			for(var/mob/M in src)
 				var/image/victim = image(M.icon, M.icon_state)
 				victim.pixel_y = 6
 				underlays += victim
 				SetName("glass jar with [M]")
 				desc = "A small jar with [M] inside."
 		if(3)
-			for( var/obj/effect/spider/spiderling/S in src)
+			for(var/obj/effect/spider/spiderling/S in src)
 				var/image/victim = image(S.icon, S.icon_state)
 				underlays += victim
 				SetName("glass jar with [S]")

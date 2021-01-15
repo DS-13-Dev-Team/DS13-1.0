@@ -279,7 +279,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 	//Firstly, to mobs within 1 tile of us
 	new /obj/effect/effect/expanding_circle(user.loc, -0.65, 0.5 SECONDS)
-	for( var/mob/living/L in range(1, user))
+	for (var/mob/living/L in range(1, user))
 		if (L == user)
 			continue
 
@@ -298,8 +298,8 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 		new /obj/effect/effect/forceblast/tripod(user.loc, 0.65 SECOND, rotation)
 	spawn(3)
 		new /obj/effect/effect/forceblast/tripod(user.loc, 0.75 SECOND, rotation)
-	for( var/turf/T as anything in get_cone(user.loc, direction, 3, 80))
-		for( var/mob/living/L in T)
+	for (var/turf/T as anything in get_cone(user.loc, direction, 3, 80))
+		for (var/mob/living/L in T)
 			if (L == user)
 				continue
 
@@ -407,7 +407,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 		var/list/tocheck = list(T)
 		tocheck += T.contents
 
-		for( var/atom/A in tocheck)
+		for (var/atom/A in tocheck)
 			if (ismob(A))
 				continue
 
@@ -606,7 +606,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 		num_required = 0,
 		special_check = null)
 
-		for( var/mob/living/carbon/human/H in possible_targets)
+		for (var/mob/living/carbon/human/H in possible_targets)
 			if (H.stat == DEAD && H.lying)
 				target = H
 				break

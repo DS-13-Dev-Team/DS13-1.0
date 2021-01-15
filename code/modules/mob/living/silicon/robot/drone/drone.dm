@@ -136,7 +136,7 @@ var/list/mob_hat_cache = list()
 	mmi = null
 
 	//We need to screw with their HP a bit. They have around one fifth as much HP as a full borg.
-	for( var/V in components) if(V != "power cell")
+	for(var/V in components) if(V != "power cell")
 		var/datum/robot_component/C = components[V]
 		C.max_damage = 10
 
@@ -388,7 +388,7 @@ var/list/mob_hat_cache = list()
 
 /proc/too_many_active_drones()
 	var/drones = 0
-	for( var/mob/living/silicon/robot/drone/D in GLOB.silicon_mob_list)
+	for(var/mob/living/silicon/robot/drone/D in GLOB.silicon_mob_list)
 		if(D.key && D.client)
 			drones++
 	return drones >= config.max_maint_drones

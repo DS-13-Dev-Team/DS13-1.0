@@ -97,7 +97,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	new_dna.species=species
 	new_dna.body_markings=body_markings.Copy()
 	new_dna.s_base=s_base
-	for( var/b=1;b<=DNA_SE_LENGTH;b++)
+	for(var/b=1;b<=DNA_SE_LENGTH;b++)
 		new_dna.SE[b]=SE[b]
 		if(b<=DNA_UI_LENGTH)
 			new_dna.UI[b]=UI[b]
@@ -110,7 +110,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 
 // Create random UI.
 /datum/dna/proc/ResetUI(defer=0)
-	for( var/i=1,i<=DNA_UI_LENGTH,i++)
+	for(var/i=1,i<=DNA_UI_LENGTH,i++)
 		switch(i)
 			if(DNA_UI_SKIN_TONE)
 				SetUIValueRange(DNA_UI_SKIN_TONE,rand(1,220),220,1) // Otherwise, it gets fucked
@@ -158,7 +158,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 
 	body_markings.Cut()
 	s_base = character.s_base
-	for( var/obj/item/organ/external/E in character.organs)
+	for(var/obj/item/organ/external/E in character.organs)
 		E.s_base = s_base
 		if(E.markings.len)
 			body_markings[E.organ_tag] = E.markings.Copy()
@@ -235,7 +235,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	if (block<=0) return
 	var/oldBlock=GetUIBlock(block)
 	var/newBlock=""
-	for( var/i=1, i<=length(oldBlock), i++)
+	for(var/i=1, i<=length(oldBlock), i++)
 		if(i==subBlock)
 			newBlock+=newSubBlock
 		else
@@ -248,7 +248,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 
 // "Zeroes out" all of the blocks.
 /datum/dna/proc/ResetSE()
-	for( var/i = 1, i <= DNA_SE_LENGTH, i++)
+	for(var/i = 1, i <= DNA_SE_LENGTH, i++)
 		SetSEValue(i,rand(1,1024),1)
 	UpdateSE()
 
@@ -323,7 +323,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	if (block<=0) return
 	var/oldBlock=GetSEBlock(block)
 	var/newBlock=""
-	for( var/i=1, i<=length(oldBlock), i++)
+	for(var/i=1, i<=length(oldBlock), i++)
 		if(i==subBlock)
 			newBlock+=newSubBlock
 		else
@@ -337,7 +337,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 
 /datum/dna/proc/UpdateUI()
 	src.uni_identity=""
-	for( var/block in UI)
+	for(var/block in UI)
 		uni_identity += EncodeDNABlock(block)
 	//testing("New UI: [uni_identity]")
 	dirtyUI=0
@@ -345,7 +345,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 /datum/dna/proc/UpdateSE()
 	//var/oldse=struc_enzymes
 	struc_enzymes=""
-	for( var/block in SE)
+	for(var/block in SE)
 		struc_enzymes += EncodeDNABlock(block)
 	//testing("Old SE: [oldse]")
 	//testing("New SE: [struc_enzymes]")

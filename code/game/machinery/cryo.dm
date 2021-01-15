@@ -41,7 +41,7 @@
 	..()
 	if(node) return
 	var/node_connect = dir
-	for( var/obj/machinery/atmospherics/target in get_step(src,node_connect))
+	for(var/obj/machinery/atmospherics/target in get_step(src,node_connect))
 		if(target.initialize_directions & get_dir(target,src))
 			node = target
 			break
@@ -184,7 +184,7 @@
 	else if(istype(G, /obj/item/grab))
 		if(!ismob(G:affecting))
 			return
-		for( var/mob/living/carbon/slime/M in range(1,G:affecting))
+		for(var/mob/living/carbon/slime/M in range(1,G:affecting))
 			if(M.Victim == G:affecting)
 				to_chat(usr, "[G:affecting:name] will not fit into the cryo because they have a slime latched onto their head.")
 				return
@@ -255,7 +255,7 @@
 /obj/machinery/atmospherics/unary/cryo_cell/proc/go_out()
 	if(!( occupant ))
 		return
-	//for( var/obj/O in src)
+	//for(var/obj/O in src)
 	//	O.loc = loc
 	if (occupant.client)
 		occupant.client.eye = occupant.client.mob
@@ -338,7 +338,7 @@
 	set name = "Move Inside"
 	set category = "Object"
 	set src in oview(1)
-	for( var/mob/living/carbon/slime/M in range(1,usr))
+	for(var/mob/living/carbon/slime/M in range(1,usr))
 		if(M.Victim == usr)
 			to_chat(usr, "You're too busy getting your life sucked out of you.")
 			return

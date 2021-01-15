@@ -57,7 +57,7 @@
 /obj/structure/deity/radiant_statue/proc/get_followers_nearby()
 	. = list()
 	if(linked_god)
-		for( var/m in linked_god.minions)
+		for(var/m in linked_god.minions)
 			var/datum/mind/M = m
 			if(get_dist(M.current, src) <= 3)
 				. += M.current
@@ -92,12 +92,12 @@
 		charge -= 0.5
 		var/list/followers = get_followers_nearby()
 		if(followers.len)
-			for( var/m in followers)
+			for(var/m in followers)
 				var/mob/living/L = m
 				L.adjustFireLoss(-5)
 				if(prob(50))
 					to_chat(L, "<span class='notice'>You feel a pleasant warmth spread throughout your body...</span>")
-				for( var/s in L.mind.learned_spells)
+				for(var/s in L.mind.learned_spells)
 					var/spell/spell = s
 					spell.charge_counter = spell.charge_max
 		if(charge == 0)

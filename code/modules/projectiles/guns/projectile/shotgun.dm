@@ -96,7 +96,7 @@
 	if(w_class > 3 && (istype(A, /obj/item/weapon/tool/saw/circular) || istype(A, /obj/item/weapon/melee/energy)))
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
 		if(loaded.len)
-			for( var/i in 1 to max_shells)
+			for(var/i in 1 to max_shells)
 				Fire(user, user)	//will this work? //it will. we call it twice, for twice the FUN
 			user.visible_message("<span class='danger'>The shotgun goes off!</span>", "<span class='danger'>The shotgun goes off in your face!</span>")
 			return

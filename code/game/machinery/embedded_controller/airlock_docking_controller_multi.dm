@@ -18,7 +18,7 @@
 	var/list/tags = splittext(child_tags_txt, ";")
 
 	if (names.len == tags.len)
-		for( var/i = 1; i <= tags.len; i++)
+		for (var/i = 1; i <= tags.len; i++)
 			child_names[tags[i]] = names[i]
 
 
@@ -27,7 +27,7 @@
 
 	var/list/airlocks[child_names.len]
 	var/i = 1
-	for( var/child_tag in child_names)
+	for (var/child_tag in child_names)
 		airlocks[i++] = list("name"=child_names[child_tag], "override_enabled"=(docking_program.children_override[child_tag] == "enabled"))
 
 	data = list(

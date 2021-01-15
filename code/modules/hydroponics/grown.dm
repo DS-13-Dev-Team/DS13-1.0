@@ -48,7 +48,7 @@
 		create_reagents(volume)
 	reagents.clear_reagents()
 	// Fill the object up with the appropriate reagents.
-	for( var/rid in seed.chems)
+	for(var/rid in seed.chems)
 		var/list/reagent_data = seed.chems[rid]
 		if(reagent_data && reagent_data.len)
 			var/rtotal = reagent_data[1]
@@ -192,10 +192,10 @@
 					user.show_message("<span class='notice'>You make planks out of \the [src]!</span>", 1)
 					var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)
 					if(!flesh_colour) flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
-					for( var/i=0,i<2,i++)
+					for(var/i=0,i<2,i++)
 						var/obj/item/stack/material/wood/NG = new (user.loc)
 						if(flesh_colour) NG.color = flesh_colour
-						for( var/obj/item/stack/material/wood/G in user.loc)
+						for (var/obj/item/stack/material/wood/G in user.loc)
 							if(G==NG)
 								continue
 							if(G.amount>=G.max_amount)
@@ -223,7 +223,7 @@
 					to_chat(user, "You slice up \the [src].")
 					var/slices = rand(3,5)
 					var/reagents_to_transfer = round(reagents.total_volume/slices)
-					for( var/i=i;i<=slices;i++)
+					for(var/i=i;i<=slices;i++)
 						var/obj/item/weapon/reagent_containers/food/snacks/fruit_slice/F = new(get_turf(src),seed)
 						if(reagents_to_transfer) reagents.trans_to_obj(F,reagents_to_transfer)
 					qdel(src)
@@ -265,10 +265,10 @@
 		user.show_message("<span class='notice'>You make a grass tile out of \the [src]!</span>", 1)
 		var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)
 		if(!flesh_colour) flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
-		for( var/i=0,i<2,i++)
+		for(var/i=0,i<2,i++)
 			var/obj/item/stack/tile/grass/G = new (user.loc)
 			if(flesh_colour) G.color = flesh_colour
-			for( var/obj/item/stack/tile/grass/NG in user.loc)
+			for (var/obj/item/stack/tile/grass/NG in user.loc)
 				if(G==NG)
 					continue
 				if(NG.amount>=NG.max_amount)

@@ -66,7 +66,7 @@
 		if (require_corruption && !turf_corrupted(candidate))
 			return "This can only be placed on corrupted tiles."
 
-		for( var/obj/structure/corruption_node/CN in candidate)
+		for (var/obj/structure/corruption_node/CN in candidate)
 			if (CN.placement_location == src.placement_location)
 				return "Only one corruption node can be placed per tile."
 

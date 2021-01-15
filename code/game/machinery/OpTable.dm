@@ -92,7 +92,7 @@
 		suppressing = FALSE
 		victim = null
 		if(locate(/mob/living/carbon/human) in loc)
-			for( var/mob/living/carbon/human/H in loc)
+			for(var/mob/living/carbon/human/H in loc)
 				if(H.lying)
 					victim = H
 					break
@@ -116,7 +116,7 @@
 		C.client.eye = src
 	C.resting = 1
 	C.dropInto(loc)
-	for( var/obj/O in src)
+	for(var/obj/O in src)
 		O.dropInto(loc)
 	src.add_fingerprint(user)
 	if(ishuman(C))

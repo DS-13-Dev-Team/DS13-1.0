@@ -82,14 +82,14 @@
 	//Spawn the effect, and also rotate it
 	new effect_type(origin, 0.6 SECONDS, fire_direction.Rotation())
 
-	for( var/turf/T as anything in affected_turfs)
+	for (var/turf/T as anything in affected_turfs)
 		//debug_mark_turf(T)
 		if (T == origin)
 			continue	//Don't hit yourself!
 		var/distance = get_dist_euclidian(origin, T)	//Calculate distance and damage for things in this turf
 		var/turf_damage = force_falloff(damage, distance, falloff_factor)
 		T.apply_push_impulse_from(origin, force, falloff_factor)
-		for( var/atom/movable/AM in T)
+		for (var/atom/movable/AM in T)
 			if (!(AM.atom_flags & ATOM_FLAG_INTANGIBLE))
 				AM.apply_push_impulse_from(origin, force, falloff_factor)	//Push the thing. This will shove objects, stagger/knockdown mobs
 				if (isliving(AM))
@@ -161,7 +161,7 @@
 //Rather than a single effect, the focus mode uses a little spawner which creates multiple staggered effects
 /obj/effect/effect/forceblast_focus_spawner/New(atom/location, _lifespan = 2 SECOND, matrix/rotation)
 	spawn()
-		for( var/i in 1 to 7)
+		for (var/i in 1 to 7)
 			new /obj/effect/effect/forceblast/focus(location, _lifespan, rotation)
 			sleep(rand_between(1,3))
 		qdel(src)

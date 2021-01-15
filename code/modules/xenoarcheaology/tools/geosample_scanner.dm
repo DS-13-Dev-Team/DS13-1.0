@@ -104,7 +104,7 @@
 	fresh_coolant = 0
 	coolant_purity = 0
 	var/num_reagent_types = 0
-	for( var/datum/reagent/current_reagent in src.reagents.reagent_list)
+	for (var/datum/reagent/current_reagent in src.reagents.reagent_list)
 		if (!current_reagent)
 			continue
 		var/cur_purity = coolant_reagents_purity[current_reagent.type]
@@ -301,7 +301,7 @@
 			else
 				data += " - Radiometric dating shows age of [G.age_thousand * 1000 + G.age] years<br>"
 			data += " - Chromatographic analysis shows the following materials present:<br>"
-			for( var/carrier in G.find_presence)
+			for(var/carrier in G.find_presence)
 				if(G.find_presence[carrier])
 					var/index = responsive_carriers.Find(carrier)
 					if(index > 0 && index <= finds_as_strings.len)

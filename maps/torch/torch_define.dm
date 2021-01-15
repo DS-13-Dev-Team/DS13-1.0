@@ -95,13 +95,13 @@
 	welcome_text += "Scan results show the following points of interest:<br />"
 	var/list/space_things = list()
 	var/obj/effect/overmap/torch = map_sectors["1"]
-	for( var/zlevel in map_sectors)
+	for(var/zlevel in map_sectors)
 		var/obj/effect/overmap/O = map_sectors[zlevel]
 		if(O.name == torch.name)
 			continue
 		space_things |= O
 
-	for( var/obj/effect/overmap/O in space_things)
+	for(var/obj/effect/overmap/O in space_things)
 		var/location_desc = " at present co-ordinates."
 		if (O.loc != torch.loc)
 			var/bearing = round(90 - Atan2(O.x - torch.x, O.y - torch.y),5) //fucking triangles how do they work

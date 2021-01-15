@@ -28,7 +28,7 @@
 			preferences_disabled = list()
 
 		pref.preference_values = list()
-		for( var/datum/client_preference/cp in get_client_preferences())
+		for(var/datum/client_preference/cp in get_client_preferences())
 			if(cp.key in preferences_enabled)
 				pref.preference_values[cp.key] = cp.options[1] // for the converted preferences, the truthy value is going to be the first one...
 			else if(cp.key in preferences_disabled)
@@ -43,7 +43,7 @@
 		pref.preference_values = list()
 
 	var/list/client_preference_keys = list()
-	for( var/cp in get_client_preferences())
+	for(var/cp in get_client_preferences())
 		var/datum/client_preference/client_pref = cp
 
 		client_preference_keys |= client_pref.key
@@ -54,7 +54,7 @@
 
 
 	// Clean out preferences that no longer exist.
-	for( var/key in pref.preference_values)
+	for(var/key in pref.preference_values)
 		if(!(key in client_preference_keys))
 			pref.preference_values -= key
 
@@ -67,7 +67,7 @@
 	. += "<table>"
 
 	var/mob/pref_mob = preference_mob()
-	for( var/cp in get_client_preferences())
+	for(var/cp in get_client_preferences())
 		var/datum/client_preference/client_pref = cp
 
 		if(!client_pref.may_set(pref_mob))
@@ -76,7 +76,7 @@
 		. += "<tr><td>[client_pref.description]: </td>"
 
 		var/selected_option = pref_mob.get_preference_value(client_pref.key)
-		for( var/option in client_pref.options)
+		for(var/option in client_pref.options)
 			var/is_selected = selected_option == option
 			. += "<td><a class='[is_selected ? "linkOn" : ""]' href='?src=\ref[src];pref=[client_pref.key];value=[option]'><b>[option]</b></a>"
 

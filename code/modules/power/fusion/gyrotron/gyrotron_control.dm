@@ -30,7 +30,7 @@
 	dat += "<td><b>Power</b></td>"
 	dat += "</tr>"
 
-	for( var/obj/machinery/power/emitter/gyrotron/G in gyrotrons)
+	for(var/obj/machinery/power/emitter/gyrotron/G in gyrotrons)
 		if(!G || G.id_tag != id_tag || get_dist(src, G) > scan_range)
 			continue
 

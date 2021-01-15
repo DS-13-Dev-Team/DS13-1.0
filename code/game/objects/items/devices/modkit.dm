@@ -27,7 +27,7 @@
 		return
 
 	var/allowed = 0
-	for( var/permitted_type in permitted_types)
+	for (var/permitted_type in permitted_types)
 		if(istype(O, permitted_type))
 			allowed = 1
 

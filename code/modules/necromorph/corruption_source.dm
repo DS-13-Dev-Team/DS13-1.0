@@ -137,7 +137,7 @@
 //Tells all the associated vines to update various things, and/or find a new parent to support them now that we're gone
 //If we are being deleted, plant will be nulled out before calling this
 /datum/extension/corruption_source/proc/update_vines()
-	for( var/obj/effect/vine/corruption/C as anything in corruption_vines)
+	for (var/obj/effect/vine/corruption/C as anything in corruption_vines)
 		C.wake_up(FALSE)
 
 
@@ -150,7 +150,7 @@
 //Called when we're first created, this examines all the existing nearby corruption vines.
 /datum/extension/corruption_source/proc/evaluate_existing()
 
-	for( var/obj/effect/vine/corruption/C as anything in get_reachable())
+	for (var/obj/effect/vine/corruption/C as anything in get_reachable())
 		//We'll take control of any that lack a source regardless of anything else
 		if (!C.source)
 			register(C)
@@ -183,8 +183,8 @@
 //This finds a list of all existing corruption vines that we could possibly reach, whether they're ours or not
 /datum/extension/corruption_source/proc/get_reachable()
 	.=list()
-	for( var/turf/T in trange(range, sourceturf))
-		for( var/obj/effect/vine/corruption/C in T)
+	for (var/turf/T in trange(range, sourceturf))
+		for (var/obj/effect/vine/corruption/C in T)
 			.+=C
 
 
@@ -212,6 +212,6 @@
 //This proc reads and stores the visualnet tiles from all of our vines. It is only called when potentially necessary
 /datum/extension/corruption_source/proc/update_visualnet()
 	visualnet_tiles = list()
-	for( var/obj/effect/vine/corruption/C in corruption_vines)
+	for (var/obj/effect/vine/corruption/C in corruption_vines)
 		visualnet_tiles += C.get_visualnet_tiles(GLOB.necrovision)
 	needs_update = FALSE

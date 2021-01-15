@@ -140,7 +140,7 @@
 		return
 
 	to_chat(user, "You place \the [I] into the [src].")
-	for( var/mob/M in viewers(src))
+	for(var/mob/M in viewers(src))
 		if(M == user)
 			continue
 		M.show_message("[user.name] places \the [I] into the [src].", 3)
@@ -329,7 +329,7 @@
 
 // eject the contents of the disposal unit
 /obj/machinery/disposal/proc/eject()
-	for( var/atom/movable/AM in src)
+	for(var/atom/movable/AM in src)
 		AM.forceMove(src.loc)
 		AM.pipe_eject(0)
 	update_icon()
@@ -420,10 +420,10 @@
 	var/obj/structure/disposalholder/H = new()	// virtual holder object which actually
 												// travels through the pipes.
 	//Hacky test to get drones to mail themselves through disposals.
-	for( var/mob/living/silicon/robot/drone/D in src)
+	for(var/mob/living/silicon/robot/drone/D in src)
 		wrapcheck = 1
 
-	for( var/obj/item/smallDelivery/O in src)
+	for(var/obj/item/smallDelivery/O in src)
 		wrapcheck = 1
 
 	if(wrapcheck == 1)
@@ -464,7 +464,7 @@
 	var/turf/target
 	playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
 	if(H) // Somehow, someone managed to flush a window which broke mid-transit and caused the disposal to go in an infinite loop trying to expel null, hopefully this fixes it
-		for( var/atom/movable/AM in H)
+		for(var/atom/movable/AM in H)
 			target = get_offset_target_turf(src.loc, rand(5)-rand(5), rand(5)-rand(5))
 
 			AM.forceMove(src.loc)
@@ -486,10 +486,10 @@
 			if (!mover.attempt_dispose(src, mover.thrower))
 				return
 			I.forceMove(src)
-			for( var/mob/M in viewers(src))
+			for(var/mob/M in viewers(src))
 				M.show_message("\The [I] lands in \the [src].", 3)
 		else
-			for( var/mob/M in viewers(src))
+			for(var/mob/M in viewers(src))
 				M.show_message("\The [I] bounces off of \the [src]'s rim!", 3)
 		return 0
 	else
@@ -519,21 +519,21 @@
 
 		//Check for any living mobs trigger hasmob.
 		//hasmob effects whether the package goes to cargo or its tagged destination.
-		for( var/mob/living/M in D)
+		for(var/mob/living/M in D)
 			if(M && M.stat != 2 && !istype(M,/mob/living/silicon/robot/drone))
 				hasmob = 1
 
 		//Checks 1 contents level deep. This means that players can be sent through disposals...
 		//...but it should require a second person to open the package. (i.e. person inside a wrapped locker)
-		for( var/obj/O in D)
+		for(var/obj/O in D)
 			if(O.contents)
-				for( var/mob/living/M in O.contents)
+				for(var/mob/living/M in O.contents)
 					if(M && M.stat != 2 && !istype(M,/mob/living/silicon/robot/drone))
 						hasmob = 1
 
 		// now everything inside the disposal gets put into the holder
 		// note AM since can contain mobs or objs
-		for( var/atom/movable/AM in D)
+		for(var/atom/movable/AM in D)
 			AM.forceMove(src)
 			if(istype(AM, /obj/structure/bigDelivery) && !hasmob)
 				var/obj/structure/bigDelivery/T = AM
@@ -570,7 +570,7 @@
 			if(!loc) return // check if we got GC'd
 
 			if(hasmob && prob(3))
-				for( var/mob/living/H in src)
+				for(var/mob/living/H in src)
 					if(!istype(H,/mob/living/silicon/robot/drone)) //Drones use the mailing code to move through the disposal system,
 						H.take_overall_damage(20, 0, "Blunt Trauma")//horribly maim any living creature jumping down disposals.  c'est la vie
 
@@ -601,7 +601,7 @@
 			return null
 
 		var/fdir = turn(dir, 180)	// flip the movement direction
-		for( var/obj/structure/disposalpipe/P in T)
+		for(var/obj/structure/disposalpipe/P in T)
 			if(fdir & P.dpdir)		// find pipe direction mask that matches flipped dir
 				return P
 		// if no matching pipe, return null
@@ -610,7 +610,7 @@
 	// merge two holder objects
 	// used when a a holder meets a stuck holder
 	proc/merge(obj/structure/disposalholder/other)
-		for( var/atom/movable/AM in other)
+		for(var/atom/movable/AM in other)
 			AM.forceMove(src)		// move everything in other holder to this one
 			if(ismob(AM))
 				var/mob/M = AM
@@ -645,7 +645,7 @@
 		U.last_special = world.time+100
 
 		if (src.loc)
-			for( var/mob/M in hearers(src.loc.loc))
+			for (var/mob/M in hearers(src.loc.loc))
 				to_chat(M, "<FONT size=[max(0, 5 - get_dist(src, M))]>CLONG, clong!</FONT>")
 
 		playsound(src.loc, 'sound/effects/clang.ogg', 50, 0, 0)
@@ -699,7 +699,7 @@
 				// deleting pipe is inside a dense turf (wall)
 				// this is unlikely, but just dump out everything into the turf in case
 
-				for( var/atom/movable/AM in H)
+				for(var/atom/movable/AM in H)
 					AM.forceMove(T)
 					AM.pipe_eject(0)
 				qdel(H)
@@ -771,7 +771,7 @@
 		// Empty the holder if it is expelled into a dense turf.
 		// Leaving it intact and sitting in a wall is stupid.
 		if(T.density)
-			for( var/atom/movable/AM in H)
+			for(var/atom/movable/AM in H)
 				AM.loc = T
 				AM.pipe_eject(0)
 			qdel(H)
@@ -792,7 +792,7 @@
 
 			playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
 			if(H)
-				for( var/atom/movable/AM in H)
+				for(var/atom/movable/AM in H)
 					AM.forceMove(T)
 					AM.pipe_eject(direction)
 					spawn(1)
@@ -805,7 +805,7 @@
 
 			playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
 			if(H)
-				for( var/atom/movable/AM in H)
+				for(var/atom/movable/AM in H)
 					target = get_offset_target_turf(T, rand(5)-rand(5), rand(5)-rand(5))
 
 					AM.forceMove(T)
@@ -825,7 +825,7 @@
 	// remains : set to leave broken pipe pieces in place
 	proc/broken(remains = 0)
 		if(remains)
-			for( var/D in GLOB.cardinal)
+			for(var/D in GLOB.cardinal)
 				if(D & dpdir)
 					var/obj/structure/disposalpipe/broken/P = new(src.loc)
 					P.set_dir(D)
@@ -840,7 +840,7 @@
 				// broken pipe is inside a dense turf (wall)
 				// this is unlikely, but just dump out everything into the turf in case
 
-				for( var/atom/movable/AM in H)
+				for(var/atom/movable/AM in H)
 					AM.forceMove(T)
 					AM.pipe_eject(0)
 				qdel(H)
@@ -941,7 +941,7 @@
 			// deleting pipe is inside a dense turf (wall)
 			// this is unlikely, but just dump out everything into the turf in case
 
-			for( var/atom/movable/AM in H)
+			for(var/atom/movable/AM in H)
 				AM.forceMove(T)
 				AM.pipe_eject(0)
 			qdel(H)
@@ -957,7 +957,7 @@
 
 // *** TEST verb
 //client/verb/dispstop()
-//	for( var/obj/structure/disposalholder/H in world)
+//	for(var/obj/structure/disposalholder/H in world)
 //		H.active = 0
 
 // a straight or bent segment
@@ -1005,7 +1005,7 @@
 				H.forceMove(loc)
 				return
 			else
-				for( var/obj/structure/disposalpipe/down/F in T)
+				for(var/obj/structure/disposalpipe/down/F in T)
 					P = F
 
 		else
@@ -1055,7 +1055,7 @@
 				H.forceMove(src.loc)
 				return
 			else
-				for( var/obj/structure/disposalpipe/up/F in T)
+				for(var/obj/structure/disposalpipe/up/F in T)
 					P = F
 
 		else
@@ -1192,7 +1192,7 @@
 		id_tag = newid
 
 /obj/machinery/disposal_switch/Initialize()
-	for( var/obj/structure/disposalpipe/diversion_junction/D in world)
+	for(var/obj/structure/disposalpipe/diversion_junction/D in world)
 		if(D.id_tag && !D.linked && D.id_tag == src.id_tag)
 			junctions += D
 			D.linked = src
@@ -1217,7 +1217,7 @@
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 	on = !on
-	for( var/obj/structure/disposalpipe/diversion_junction/D in junctions)
+	for(var/obj/structure/disposalpipe/diversion_junction/D in junctions)
 		if(D.id_tag == src.id_tag)
 			D.active = on
 	if(on)
@@ -1244,7 +1244,7 @@
 	if(!proximity || !istype(A, /turf/simulated/floor) || istype(A, /area/shuttle) || user.incapacitated() || !id_tag)
 		return
 	var/found = 0
-	for( var/obj/structure/disposalpipe/diversion_junction/D in world)
+	for(var/obj/structure/disposalpipe/diversion_junction/D in world)
 		if(D.id_tag == src.id_tag)
 			found = 1
 			break
@@ -1597,7 +1597,7 @@
 		playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
 
 		if(H)
-			for( var/atom/movable/AM in H)
+			for(var/atom/movable/AM in H)
 				AM.forceMove(src.loc)
 				AM.pipe_eject(dir)
 				if(!istype(AM,/mob/living/silicon/robot/drone)) //Drones keep smashing windows from being fired out of chutes. Bad for the station. ~Z

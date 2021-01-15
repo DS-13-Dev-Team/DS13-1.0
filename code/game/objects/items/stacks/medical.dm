@@ -92,7 +92,7 @@
 			user.visible_message("<span class='notice'>\The [user] starts treating [M]'s [affecting.name].</span>", \
 					             "<span class='notice'>You start treating [M]'s [affecting.name].</span>" )
 			var/used = 0
-			for( var/datum/wound/W in affecting.wounds)
+			for (var/datum/wound/W in affecting.wounds)
 				if(W.bandaged)
 					continue
 				if(used == amount)
@@ -182,7 +182,7 @@
 			user.visible_message("<span class='notice'>\The [user] starts treating [M]'s [affecting.name].</span>", \
 					             "<span class='notice'>You start treating [M]'s [affecting.name].</span>" )
 			var/used = 0
-			for( var/datum/wound/W in affecting.wounds)
+			for (var/datum/wound/W in affecting.wounds)
 				if (W.bandaged && W.disinfected)
 					continue
 				if(used == amount)

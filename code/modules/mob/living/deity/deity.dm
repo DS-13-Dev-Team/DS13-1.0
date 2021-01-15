@@ -26,13 +26,13 @@
 /mob/living/deity/death()
 	. = ..()
 	if(.)
-		for( var/m in minions)
+		for(var/m in minions)
 			var/datum/mind/M = m
 			remove_follower_spells(M)
 			to_chat(M.current, "<font size='3'><span class='danger'>Your connection has been severed! \The [src] is no more!</span></font>")
 			sound_to(M.current, 'sound/hallucinations/far_noise.ogg')
 			M.current.Weaken(10)
-		for( var/s in structures)
+		for(var/s in structures)
 			var/obj/structure/deity/S = s
 			S.linked_god = null
 
@@ -70,7 +70,7 @@
 	</tr>"}
 	var/list/forms = subtypesof(/datum/god_form)
 
-	for( var/form in forms)
+	for(var/form in forms)
 		var/datum/god_form/G = form
 		var/god_name = initial(G.name)
 		var/icon/god_icon = icon('icons/mob/mob.dmi', initial(G.pylon_icon_state))
@@ -93,7 +93,7 @@
 			fully_replace_character_name(newname)
 	src.verbs -= /mob/living/deity/verb/choose_form
 	show_browser(src, null, "window=godform")
-	for( var/m in minions)
+	for(var/m in minions)
 		var/datum/mind/mind = m
 		var/mob/living/L = mind.current
 		L.faction = form.faction

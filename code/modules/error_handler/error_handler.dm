@@ -72,7 +72,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 	var/list/splitlines = splittext(E.desc, "\n")
 	var/list/desclines = list()
 	if(LAZYLEN(splitlines) > ERROR_USEFUL_LEN) // If there aren't at least three lines, there's no info
-		for( var/line in splitlines)
+		for(var/line in splitlines)
 			if(LAZYLEN(line) < 3 || findtext(line, "source file:") || findtext(line, "usr.loc:"))
 				continue
 			if(findtext(line, "usr:"))
@@ -93,7 +93,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		GLOB.error_cache.log_error(E, desclines)
 
 	to_world_log("\[[time_stamp()]] Runtime in [E.file],[E.line]: [E]")
-	for( var/line in desclines)
+	for(var/line in desclines)
 		to_world_log(line)
 
 #endif

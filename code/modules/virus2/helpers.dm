@@ -3,7 +3,7 @@
 
 /obj/machinery/proc/infect_nearby(datum/disease2/disease/disease, base_chance = 10, skill_threshold = SKILL_BASIC, dist = 2)
 	if(operator_skill <= skill_threshold)
-		for( var/mob/living/carbon/victim in range(dist, src))
+		for(var/mob/living/carbon/victim in range(dist, src))
 			if(prob(base_chance * 2**(SKILL_MIN - operator_skill)))
 				infect_virus2(victim, disease)
 
@@ -135,7 +135,7 @@ proc/infection_chance(mob/living/carbon/M, vector = "Airborne")
 
 //	log_debug("Spreading [vector] diseases from [src] to [victim]")
 	if (virus2.len > 0)
-		for( var/ID in virus2)
+		for (var/ID in virus2)
 //			log_debug("Attempting virus [ID]")
 			var/datum/disease2/disease/V = virus2[ID]
 			if(V.spreadtype != vector) continue
@@ -177,12 +177,12 @@ proc/infection_chance(mob/living/carbon/M, vector = "Airborne")
 				nudity = 0 //cant contact a missing body part
 			else
 				var/list/clothes = list(H.head, H.wear_mask, H.wear_suit, H.w_uniform, H.gloves, H.shoes)
-				for( var/obj/item/clothing/C in clothes)
+				for(var/obj/item/clothing/C in clothes)
 					if(C && istype(C))
 						if(C.body_parts_covered & select_area.body_part)
 							nudity = 0
 		if (nudity)
-			for( var/ID in victim.virus2)
+			for (var/ID in victim.virus2)
 				var/datum/disease2/disease/V = victim.virus2[ID]
 				if(V && V.spreadtype != vector) continue
 				if(!infection_spreading_check(victim, V.spreadtype)) continue

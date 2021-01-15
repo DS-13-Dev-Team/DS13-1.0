@@ -3,7 +3,7 @@
 	set name = "List Traders"
 	set desc = "Lists all the current traders"
 
-	for( var/a in SStrade.traders)
+	for(var/a in SStrade.traders)
 		var/datum/trader/T = a
 		to_chat(src, "[T.name] <a href='?_src_=vars;Vars=\ref[T]'>\ref[T]</a>")
 

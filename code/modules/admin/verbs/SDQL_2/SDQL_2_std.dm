@@ -9,7 +9,7 @@
 
 	// The appearance churn is real.
 	// WILL perform like shit until we get 511 and we get mutable appearances.
-	for( var/variable in variables)
+	for (var/variable in variables)
 		I.vars[variable] = variables[variable]
 
 	animate(A, appearance = I.appearance, time, loop, easing)

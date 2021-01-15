@@ -96,7 +96,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 		authmsg += "[id_auth]<br>"
 	if (stamp)
 		authmsg += "[stamp]<br>"
-	for( var/obj/machinery/requests_console/Console in allConsoles)
+	for (var/obj/machinery/requests_console/Console in allConsoles)
 		if (ckey(Console.department) == ckey(recipient))
 			if(Console.inoperable())
 				Console.message_log += "<B>Message lost due to console failure.</B><BR>Please contact [station_name()] system administrator or AI for technical assistance.<BR>"
@@ -146,7 +146,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 /obj/machinery/message_server/proc/send_to_department(department, message, tone)
 	var/reached = 0
 
-	for( var/mob/living/carbon/human/H in GLOB.human_mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		var/obj/item/modular_computer/pda/pda = locate() in H
 		if(!pda)
 			continue
@@ -281,7 +281,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 	.=..()
 
 /obj/machinery/blackbox_recorder/proc/find_feedback_datum(variable)
-	for( var/datum/feedback_variable/FV in feedback)
+	for(var/datum/feedback_variable/FV in feedback)
 		if(FV.get_variable() == variable)
 			return FV
 	var/datum/feedback_variable/FV = new(variable)
@@ -296,7 +296,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 	var/pda_msg_amt = 0
 	var/rc_msg_amt = 0
 
-	for( var/obj/machinery/message_server/MS in SSmachines.machinery)
+	for(var/obj/machinery/message_server/MS in SSmachines.machinery)
 		if(MS.pda_msgs.len > pda_msg_amt)
 			pda_msg_amt = MS.pda_msgs.len
 		if(MS.rc_msgs.len > rc_msg_amt)
@@ -340,7 +340,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 		round_id = text2num(round_id)
 	round_id++
 
-	for( var/datum/feedback_variable/FV in feedback)
+	for(var/datum/feedback_variable/FV in feedback)
 		var/sql = "INSERT INTO erro_feedback VALUES (null, Now(), [round_id], \"[FV.get_variable()]\", [FV.get_value()], \"[FV.get_details()]\")"
 		var/DBQuery/query_insert = dbcon.NewQuery(sql)
 		query_insert.Execute()

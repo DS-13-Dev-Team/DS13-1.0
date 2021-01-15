@@ -26,7 +26,7 @@
 	. += "\n\n"
 	. += "Included Modules:\n"
 	var/obj/item/weapon/rig/R = path
-	for( var/typepath in initial(R.initial_modules))
+	for (var/typepath in initial(R.initial_modules))
 		var/obj/item/rig_module/RM = typepath
 		. += "	-[initial(RM.name)]\n"
 

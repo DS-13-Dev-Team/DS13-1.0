@@ -55,7 +55,7 @@
 	if(!LAZYLEN(labels))
 		return name
 	. = list(name)
-	for( var/entry in labels)
+	for(var/entry in labels)
 		. += " ([entry])"
 	. = jointext(., null)
 
@@ -69,7 +69,7 @@
 /datum/extension/labels/proc/ExcessLabelLength(label, user)
 	. = length(label) + 3 // Each label also adds a space and two brackets when applied to a name
 	if(LAZYLEN(labels))
-		for( var/entry in labels)
+		for(var/entry in labels)
 			. += length(entry) + 3
 	. = . > 64 ? TRUE : FALSE
 	if(. && user)

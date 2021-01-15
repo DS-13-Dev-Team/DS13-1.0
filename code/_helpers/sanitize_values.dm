@@ -39,7 +39,7 @@
 	if(len != 7 && len !=4) return default
 	if(text2ascii(color,1) != 35) return default	//35 is the ascii code for "#"
 	. = "#"
-	for( var/i=2,i<=len,i++)
+	for(var/i=2,i<=len,i++)
 		var/ascii = text2ascii(color,i)
 		switch(ascii)
 			if(48 to 57)	. += ascii2text(ascii)		//numbers 0 to 9
@@ -54,7 +54,7 @@
 		return default
 	var/fragment = ""
 	. = list()
-	for( var/i = 1, i <= length(format), i++)
+	for(var/i = 1, i <= length(format), i++)
 		fragment += copytext(format,i,i+1)
 		if(fragment in list("YY", "YEAR", "MM", "DD", "hh", "mm", "ss"))
 			. += sanitize_one_time(copytext(time, i - length(fragment) + 1, i + 1), copytext(default, i - length(fragment) + 1, i + 1), fragment)
@@ -69,7 +69,7 @@
 //Internal proc, expects valid format and text input of equal length to format.
 /proc/sanitize_one_time(input, default, format)
 	var/list/ainput = list()
-	for( var/i = 1, i <= length(input), i++)
+	for(var/i = 1, i <= length(input), i++)
 		ainput += text2ascii(input, i)
 	switch(format)
 		if("YY")
@@ -77,7 +77,7 @@
 				return (default || "00")
 			return input
 		if("YEAR")
-			for( var/i = 1, i <= 4, i++)
+			for(var/i = 1, i <= 4, i++)
 				if(!(ainput[i] in 48 to 57))//0 to 9
 					return (default || "0000")
 			return input

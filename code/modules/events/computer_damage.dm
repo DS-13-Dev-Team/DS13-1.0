@@ -11,7 +11,7 @@
 		if(EVENT_LEVEL_MAJOR)
 			number_of_victims = 16
 	var/list/victims = list()
-	for( var/obj/item/modular_computer/console/C in SSobj.processing) //yep they're in obj, yep gross
+	for(var/obj/item/modular_computer/console/C in SSobj.processing) //yep they're in obj, yep gross
 		if((C.z in GLOB.using_map.station_levels) && C.enabled && C.hard_drive)
 			victims += C
 	while(number_of_victims && victims.len)

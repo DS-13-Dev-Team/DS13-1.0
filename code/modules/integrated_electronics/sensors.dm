@@ -176,7 +176,7 @@
 		return
 	var/list/cur = list(T.x, T.y, T.z)
 	var/activate = 0
-	for( var/i in 1 to 3)
+	for(var/i in 1 to 3)
 		var/acc = cur[i] - last_location[i]
 		if(acc)
 			activate = 1

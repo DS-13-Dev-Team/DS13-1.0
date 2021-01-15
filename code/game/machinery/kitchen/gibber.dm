@@ -31,7 +31,7 @@
 /obj/machinery/gibber/autogibber/New()
 	..()
 	spawn(5)
-		for( var/i in GLOB.cardinal)
+		for(var/i in GLOB.cardinal)
 			var/obj/machinery/mineral/input/input_obj = locate( /obj/machinery/mineral/input, get_step(src.loc, i) )
 			if(input_obj)
 				if(isturf(input_obj.loc))
@@ -164,7 +164,7 @@
 /obj/machinery/gibber/proc/go_out()
 	if(operating || !src.occupant)
 		return
-	for( var/obj/O in src)
+	for(var/obj/O in src)
 		O.dropInto(loc)
 	if (src.occupant.client)
 		src.occupant.client.eye = src.occupant.client.mob
@@ -211,7 +211,7 @@
 		slab_nutrition *= 0.5
 	slab_nutrition /= slab_count
 
-	for( var/i=1 to slab_count)
+	for(var/i=1 to slab_count)
 		var/obj/item/weapon/reagent_containers/food/snacks/meat/new_meat = new slab_type(src, rand(3,8))
 		if(istype(new_meat))
 			new_meat.SetName("[slab_name] [new_meat.name]")
@@ -230,7 +230,7 @@
 
 		playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 		operating = 0
-		for( var/obj/thing in contents)
+		for (var/obj/thing in contents)
 			// There's a chance that the gibber will fail to destroy some evidence.
 			if(istype(thing,/obj/item/organ) && prob(80))
 				qdel(thing)

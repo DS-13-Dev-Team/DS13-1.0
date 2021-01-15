@@ -27,7 +27,7 @@ obj/machinery/seed_extractor/attackby(obj/item/O as obj, mob/user as mob)
 		if(new_seed_type)
 			to_chat(user, "<span class='notice'>You extract some seeds from [O].</span>")
 			var/produce = rand(1,4)
-			for( var/i = 0;i<=produce;i++)
+			for(var/i = 0;i<=produce;i++)
 				var/obj/item/seeds/seeds = new(get_turf(src))
 				seeds.seed_type = new_seed_type.name
 				seeds.update_seed()

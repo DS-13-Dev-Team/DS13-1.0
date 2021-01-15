@@ -35,7 +35,7 @@
 
 /turf/proc/calc_rad_resistance()
 	cached_rad_resistance = 0
-	for( var/obj/O in src.contents)
+	for(var/obj/O in src.contents)
 		if(O.rad_resistance) //Override
 			cached_rad_resistance += O.rad_resistance
 
@@ -60,5 +60,5 @@
 /mob/living/rad_act(severity)
 	if(severity)
 		src.apply_effect(severity, IRRADIATE, src.getarmor(null, "rad"))
-		for( var/atom/I in src)
+		for(var/atom/I in src)
 			I.rad_act(severity)

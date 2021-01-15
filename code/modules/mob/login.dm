@@ -6,7 +6,7 @@
 	log_access("Login: [key_name(src)] from [lastKnownIP ? lastKnownIP : "localhost"]-[computer_id] || BYOND v[client.byond_version]")
 	if(config.log_access)
 		var/is_multikeying = 0
-		for( var/mob/M in GLOB.player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(M == src)	continue
 			if( M.key && (M.key != key) )
 				var/matches
@@ -43,7 +43,7 @@
 
 /mob/proc/maybe_send_staffwarns(action)
 	if(client.staffwarn)
-		for( var/client/C in GLOB.admins)
+		for(var/client/C in GLOB.admins)
 			send_staffwarn(C, action)
 
 /mob/proc/send_staffwarn(client/C, action, noise = 1)

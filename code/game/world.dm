@@ -10,12 +10,12 @@
 	var/l = c.len
 
 	var/t = world.timeofday
-	for( var/_ = 1 to 4)
+	for(var/_ = 1 to 4)
 		game_id = "[c[(t % l) + 1]][game_id]"
 		t = round(t / l)
 	game_id = "-[game_id]"
 	t = round(world.realtime / (10 * 60 * 60 * 24))
-	for( var/_ = 1 to 3)
+	for(var/_ = 1 to 3)
 		game_id = "[c[(t % l) + 1]][game_id]"
 		t = round(t / l)
 	return 1
@@ -31,12 +31,12 @@
 /proc/text_find_mobs(search_string, restrict_type = null)
 	var/list/search = params2list(search_string)
 	var/list/ckeysearch = list()
-	for( var/text in search)
+	for(var/text in search)
 		ckeysearch += ckey(text)
 
 	var/list/match = list()
 
-	for( var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in SSmobs.mob_list)
 		if(restrict_type && !istype(M, restrict_type))
 			continue
 		var/strings = list(M.name, M.ckey)
@@ -47,18 +47,18 @@
 			var/mob/living/carbon/human/H = M
 			if(H.species)
 				strings += H.species.name
-		for( var/text in strings)
+		for(var/text in strings)
 			if(ckey(text) in ckeysearch)
 				match[M] += 10 // an exact match is far better than a partial one
 			else
-				for( var/searchstr in search)
+				for(var/searchstr in search)
 					if(findtext(text, searchstr))
 						match[M] += 1
 
 	var/maxstrength = 0
-	for( var/mob/M in match)
+	for(var/mob/M in match)
 		maxstrength = max(match[M], maxstrength)
-	for( var/mob/M in match)
+	for(var/mob/M in match)
 		if(match[M] < maxstrength)
 			match -= M
 
@@ -131,13 +131,13 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	if (T == "ping")
 		var/x = 1
-		for( var/client/C)
+		for (var/client/C)
 			x++
 		return x
 
 	else if(T == "players")
 		var/n = 0
-		for( var/mob/M in GLOB.player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(M.client)
 				n++
 		return n
@@ -163,7 +163,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/list/players = list()
 		var/list/admins = list()
 		var/legacy = input["status"] != "2"
-		for( var/client/C in GLOB.clients)
+		for(var/client/C in GLOB.clients)
 			if(C.holder)
 				if(C.is_stealthed())
 					continue	//so stealthmins aren't revealed by the hub
@@ -187,14 +187,14 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/list/positions = list()
 		var/list/nano_crew_manifest = nano_crew_manifest()
 		// We rebuild the list in the format external tools expect
-		for( var/dept in nano_crew_manifest)
+		for(var/dept in nano_crew_manifest)
 			var/list/dept_list = nano_crew_manifest[dept]
 			if(dept_list.len > 0)
 				positions[dept] = list()
-				for( var/list/person in dept_list)
+				for(var/list/person in dept_list)
 					positions[dept][person["name"]] = person["rank"]
 
-		for( var/k in positions)
+		for(var/k in positions)
 			positions[k] = list2params(positions[k]) // converts positions["heads"] = list("Bob"="Captain", "Bill"="CMO") into positions["heads"] = "Bob=Captain&Bill=CMO"
 
 		return list2params(positions)
@@ -248,9 +248,9 @@ var/world_topic_spam_protect_time = world.timeofday
 				"supplied" = S.laws.supplied_laws
 			)
 
-			for( var/law_type in lawset_parts)
+			for(var/law_type in lawset_parts)
 				var/laws = list()
-				for( var/datum/ai_law/L in lawset_parts[law_type])
+				for(var/datum/ai_law/L in lawset_parts[law_type])
 					laws += L.law
 				info[law_type] = list2params(laws)
 
@@ -260,7 +260,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		else
 			var/list/ret = list()
-			for( var/mob/M in match)
+			for(var/mob/M in match)
 				ret[M.key] = M.name
 			return list2params(ret)
 
@@ -318,7 +318,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			return list2params(info)
 		else
 			var/list/ret = list()
-			for( var/mob/M in match)
+			for(var/mob/M in match)
 				ret[M.key] = M.name
 			return list2params(ret)
 
@@ -349,7 +349,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/client/C
 		var/req_ckey = ckey(input["adminmsg"])
 
-		for( var/client/K in GLOB.clients)
+		for(var/client/K in GLOB.clients)
 			if(K.ckey == req_ckey)
 				C = K
 				break
@@ -371,7 +371,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		sound_to(C, 'sound/effects/adminhelp.ogg')
 		to_chat(C, message)
 
-		for( var/client/A in GLOB.admins)
+		for(var/client/A in GLOB.admins)
 			if(A != C)
 				to_chat(A, amessage)
 		return "Message Successful"
@@ -435,7 +435,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/target = ckey(input["target"])
 
 		var/client/C
-		for( var/client/K in GLOB.clients)
+		for(var/client/K in GLOB.clients)
 			if(K.ckey == target)
 				C = K
 				break
@@ -477,7 +477,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	processScheduler.stop()
 
 	if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-		for( var/client/C in GLOB.clients)
+		for(var/client/C in GLOB.clients)
 			to_chat(C, link("byond://[config.server]"))
 
 	if(config.wait_for_sigusr1_reboot && reason != 3)
@@ -538,7 +538,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			error("Failed to load config/mods.txt")
 		else
 			var/list/lines = splittext(text, "\n")
-			for( var/line in lines)
+			for(var/line in lines)
 				if (!line)
 					continue
 
@@ -559,7 +559,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			error("Failed to load config/mentors.txt")
 		else
 			var/list/lines = splittext(text, "\n")
-			for( var/line in lines)
+			for(var/line in lines)
 				if (!line)
 					continue
 				if (copytext(line, 1, 2) == ";")
@@ -606,7 +606,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		features += "AI allowed"
 
 	var/n = 0
-	for( var/mob/M in GLOB.player_list)
+	for (var/mob/M in GLOB.player_list)
 		if (M.client)
 			n++
 

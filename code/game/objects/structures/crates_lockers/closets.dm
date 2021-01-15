@@ -64,7 +64,7 @@
 /obj/structure/closet/examine(mob/user)
 	if(..(user, 1) && !opened)
 		var/content_size = 0
-		for( var/atom/movable/AM in src.contents)
+		for(var/atom/movable/AM in src.contents)
 			if(!AM.anchored)
 				content_size += content_size(AM)
 		if(!content_size)
@@ -90,19 +90,19 @@
 	return 1
 
 /obj/structure/closet/proc/can_close()
-	for( var/obj/structure/closet/closet in get_turf(src))
+	for(var/obj/structure/closet/closet in get_turf(src))
 		if(closet != src)
 			return 0
 	return 1
 
 /obj/structure/closet/proc/dump_contents()
-	for( var/mob/M in src)
+	for(var/mob/M in src)
 		M.dropInto(loc)
 		if(M.client)
 			M.client.eye = M.client.mob
 			M.client.perspective = MOB_PERSPECTIVE
 
-	for( var/atom/movable/AM in src)
+	for(var/atom/movable/AM in src)
 		AM.dropInto(loc)
 
 /obj/structure/closet/proc/store_contents()
@@ -150,13 +150,13 @@
 /obj/structure/closet/proc/store_items(stored_units)
 	. = 0
 
-	for( var/obj/effect/dummy/chameleon/AD in loc)
+	for(var/obj/effect/dummy/chameleon/AD in loc)
 		if(CLOSET_CHECK_TOO_BIG(1))
 			break
 		.++
 		AD.forceMove(src)
 
-	for( var/obj/item/I in loc)
+	for(var/obj/item/I in loc)
 		if(I.anchored)
 			continue
 		var/item_size = content_size(I)
@@ -170,7 +170,7 @@
 
 /obj/structure/closet/proc/store_mobs(stored_units)
 	. = 0
-	for( var/mob/living/M in loc)
+	for(var/mob/living/M in loc)
 		if(M.buckled || M.pinned.len || M.anchored)
 			continue
 		if (M.mob_size > max_mob_size)
@@ -187,7 +187,7 @@
 /obj/structure/closet/proc/store_structures(stored_units)
 	. = 0
 
-	for( var/obj/structure/S in loc)
+	for(var/obj/structure/S in loc)
 		if(S == src)
 			continue
 		if(S.anchored)
@@ -198,7 +198,7 @@
 		. += structure_size
 		S.forceMove(src)
 
-	for( var/obj/machinery/M in loc)
+	for(var/obj/machinery/M in loc)
 		if(M.anchored)
 			continue
 		var/structure_size = content_size(M)
@@ -234,7 +234,7 @@
 	..()
 	if(Proj.penetrating)
 		var/distance = get_dist(Proj.starting, get_turf(loc))
-		for( var/mob/living/L in contents)
+		for(var/mob/living/L in contents)
 			Proj.attack_mob(L, distance)
 			if(!(--Proj.penetrating))
 				break
@@ -254,7 +254,7 @@
 		if(istype(W, /obj/item/weapon/storage/laundry_basket) && W.contents.len)
 			var/obj/item/weapon/storage/laundry_basket/LB = W
 			var/turf/T = get_turf(src)
-			for( var/obj/item/I in LB.contents)
+			for(var/obj/item/I in LB.contents)
 				LB.remove_from_storage(I, T)
 			user.visible_message("<span class='notice'>[user] empties \the [LB] into \the [src].</span>", \
 								 "<span class='notice'>You empty \the [LB] into \the [src].</span>", \
@@ -419,7 +419,7 @@
 	visible_message("<span class='danger'>\The [src] begins to shake violently!</span>")
 
 	breakout = 1 //can't think of a better way to do this right now.
-	for( var/i in 1 to Ceiling(breakout_time*0.02)) //minutes * 6 * 5seconds * 2
+	for(var/i in 1 to Ceiling(breakout_time*0.02)) //minutes * 6 * 5seconds * 2
 		if(!do_after(escapee, 50, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED)) //5 seconds
 			breakout = 0
 			return
@@ -513,7 +513,7 @@
 	verb_toggleopen()
 
 /obj/structure/closet/emp_act(severity)
-	for( var/obj/O in src)
+	for(var/obj/O in src)
 		O.emp_act(severity)
 	if(!broken && (setup & CLOSET_HAS_LOCK))
 		if(prob(50/severity))
@@ -555,6 +555,6 @@
 /obj/structure/closet/get_mass()
 
 	.=mass
-	for( var/a in contents)
+	for (var/a in contents)
 		var/atom/movable/AM = a
 		.+=AM.get_mass()

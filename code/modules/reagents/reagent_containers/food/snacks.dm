@@ -182,7 +182,7 @@
 				user.visible_message("<span class='notice'>\The [user] slices \the [src]!</span>", "<span class='notice'>You slice \the [src]!</span>")
 
 			var/reagents_per_slice = reagents.total_volume/slices_num
-			for( var/i=1 to (slices_num-slices_lost))
+			for(var/i=1 to (slices_num-slices_lost))
 				var/obj/slice = new slice_path (src.loc)
 				reagents.trans_to_obj(slice, reagents_per_slice)
 
@@ -194,7 +194,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/Destroy()
 	if(contents)
-		for( var/atom/movable/something in contents)
+		for(var/atom/movable/something in contents)
 			something.dropInto(loc)
 	. = ..()
 
@@ -551,7 +551,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/donkpocket/proc/heat()
 	warm = 1
-	for( var/reagent in heated_reagents)
+	for(var/reagent in heated_reagents)
 		reagents.add_reagent(reagent, heated_reagents[reagent])
 	bitesize = 6
 	SetName("warm " + name)
@@ -561,7 +561,7 @@
 	if (src.warm)
 		spawn(4200)
 			src.warm = 0
-			for( var/reagent in heated_reagents)
+			for(var/reagent in heated_reagents)
 				src.reagents.del_reagent(reagent)
 			src.SetName(initial(name))
 
@@ -2691,7 +2691,7 @@
 			// make a list of all boxes to be added
 			var/list/boxestoadd = list()
 			boxestoadd += box
-			for( var/obj/item/pizzabox/i in box.boxes)
+			for(var/obj/item/pizzabox/i in box.boxes)
 				boxestoadd += i
 
 			if( (boxes.len+1) + boxestoadd.len <= 5 )

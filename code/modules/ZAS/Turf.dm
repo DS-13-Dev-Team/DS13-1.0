@@ -17,9 +17,9 @@
 		return 1
 
 	#ifdef MULTIZAS
-	for( var/d = 1, d < 64, d *= 2)
+	for(var/d = 1, d < 64, d *= 2)
 	#else
-	for( var/d = 1, d < 16, d *= 2)
+	for(var/d = 1, d < 16, d *= 2)
 	#endif
 
 		var/turf/unsim = get_step(src, d)
@@ -62,7 +62,7 @@
 	var/to_check = GLOB.cornerdirs
 	#endif
 
-	for( var/dir in to_check)
+	for(var/dir in to_check)
 
 		//for each pair of "adjacent" cardinals (e.g. NORTH and WEST, but not NORTH and SOUTH)
 		if((dir & check_dirs) == dir)
@@ -83,7 +83,7 @@
 		#else
 		var/to_check = GLOB.cardinal
 		#endif
-		for( var/dir in to_check)
+		for(var/dir in to_check)
 			var/turf/simulated/other = get_step(T, dir)
 			if(istype(other) && other.zone == T.zone && !(other.c_airblock(T) & AIR_BLOCKED) && get_dist(src, other) <= 1)
 				. |= dir
@@ -116,9 +116,9 @@
 
 	var/list/postponed
 	#ifdef MULTIZAS
-	for( var/d = 1, d < 64, d *= 2)
+	for(var/d = 1, d < 64, d *= 2)
 	#else
-	for( var/d = 1, d < 16, d *= 2)
+	for(var/d = 1, d < 16, d *= 2)
 	#endif
 
 		var/turf/unsim = get_step(src, d)
@@ -222,7 +222,7 @@
 
 	//At this point, a zone should have happened. If it hasn't, don't add more checks, fix the bug.
 
-	for( var/turf/T in postponed)
+	for(var/turf/T in postponed)
 		SSair.connect(src, T)
 
 /turf/proc/post_update_air_properties()

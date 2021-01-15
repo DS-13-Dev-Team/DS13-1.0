@@ -89,7 +89,7 @@
 	else if(istype(O, /obj/item/weapon/storage/plants))
 		var/obj/item/weapon/storage/plants/P = O
 		var/hadPlants = 0
-		for( var/obj/item/weapon/reagent_containers/food/snacks/grown/G in P.contents)
+		for(var/obj/item/weapon/reagent_containers/food/snacks/grown/G in P.contents)
 			hadPlants = 1
 			P.remove_from_storage(G, src, 1) //No UI updates until we are all done.
 			ingredients++
@@ -126,11 +126,11 @@
 	if (state == BG_READY)
 		data["points"] = points
 		var/list/listed_types = list()
-		for( var/c_type =1 to products.len)
+		for(var/c_type =1 to products.len)
 			type_name = products[c_type]
 			var/list/current_content = products[type_name]
 			var/list/listed_products = list()
-			for( var/c_product =1 to current_content.len)
+			for(var/c_product =1 to current_content.len)
 				path = current_content[c_product]
 				var/atom/A = path
 				name = initial(A.name)
@@ -186,7 +186,7 @@
 		return
 
 	var/S = 0
-	for( var/obj/item/weapon/reagent_containers/food/snacks/grown/I in contents)
+	for(var/obj/item/weapon/reagent_containers/food/snacks/grown/I in contents)
 		S += 5
 		ingredients--
 		if(I.reagents.get_reagent_amount(/datum/reagent/nutriment) < 0.1)
@@ -226,7 +226,7 @@
 	var/man_rating = 0
 	var/bin_rating = 0
 
-	for( var/obj/item/weapon/stock_parts/P in component_parts)
+	for(var/obj/item/weapon/stock_parts/P in component_parts)
 		if(istype(P, /obj/item/weapon/stock_parts/matter_bin))
 			bin_rating += P.rating
 		if(istype(P, /obj/item/weapon/stock_parts/manipulator))

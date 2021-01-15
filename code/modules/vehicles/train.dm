@@ -23,7 +23,7 @@
 //-------------------------------------------
 /obj/vehicle/train/Initialize()
 	. = ..()
-	for( var/obj/vehicle/train/T in orange(1, src))
+	for(var/obj/vehicle/train/T in orange(1, src))
 		latch(T)
 
 /obj/vehicle/train/Move()

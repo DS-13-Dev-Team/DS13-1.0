@@ -22,7 +22,7 @@
 	overlays = 0
 
 /obj/singularity/narsie/large/exit/Process()
-	for( var/mob/M in GLOB.player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.client)
 			M.see_rift(src)
 	eat()
@@ -52,7 +52,7 @@
 		if (dist <= consume_range && T.density)
 			T.set_density(0)
 
-		for( var/atom/movable/AM in T.contents)
+		for (var/atom/movable/AM in T.contents)
 			if (AM == src) // This is the snowflake.
 				continue
 

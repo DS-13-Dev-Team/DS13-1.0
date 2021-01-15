@@ -9,7 +9,7 @@
 /obj/item/weapon/reagent_containers/Value()
 	. = ..()
 	if(reagents)
-		for( var/a in reagents.reagent_list)
+		for(var/a in reagents.reagent_list)
 			var/datum/reagent/reg = a
 			. += reg.value * reg.volume
 	. = round(.)

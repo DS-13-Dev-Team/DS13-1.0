@@ -107,7 +107,7 @@
 		// If we are capable of repairing damage, reboot destroyed components and allow them to be repaired for very large power spike.
 		var/list/damaged = R.get_damaged_components(1,1,1)
 		if(damaged.len && wire_rate && weld_rate)
-			for( var/datum/robot_component/C in damaged)
+			for(var/datum/robot_component/C in damaged)
 				if((C.installed == -1) && cell.checked_use(100 KILOWATTS * CELLRATE))
 					C.repair()
 
@@ -162,7 +162,7 @@
 	var/man_rating = 0
 	var/cap_rating = 0
 
-	for( var/obj/item/weapon/stock_parts/P in component_parts)
+	for(var/obj/item/weapon/stock_parts/P in component_parts)
 		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
 			cap_rating += P.rating
 		if(istype(P, /obj/item/weapon/stock_parts/manipulator))

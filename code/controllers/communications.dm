@@ -291,7 +291,7 @@ var/global/datum/controller/radio/radio_controller
 		send_to_filter(source, signal, RADIO_DEFAULT, start_point, range)
 	else
 		//Broadcast the signal to everyone!
-		for( var/next_filter in devices)
+		for (var/next_filter in devices)
 			send_to_filter(source, signal, next_filter, start_point, range)
 
 //Sends a signal to all machines belonging to a given filter. Should be called by post_signal()
@@ -299,7 +299,7 @@ var/global/datum/controller/radio/radio_controller
 	if (range && !start_point)
 		return
 
-	for( var/obj/device in devices[filter])
+	for(var/obj/device in devices[filter])
 		if(device == source)
 			continue
 		if(range)
@@ -326,7 +326,7 @@ var/global/datum/controller/radio/radio_controller
 	//log_admin("DEBUG: devices(filter_str).len=[l]")
 
 /datum/radio_frequency/proc/remove_listener(obj/device)
-	for( var/devices_filter in devices)
+	for (var/devices_filter in devices)
 		var/list/devices_line = devices[devices_filter]
 		devices_line-=device
 		while (null in devices_line)
@@ -359,9 +359,9 @@ var/global/datum/controller/radio/radio_controller
 		. = "signal = {source = '[source]' ([source:x],[source:y],[source:z])\n"
 	else
 		. = "signal = {source = '[source]' ()\n"
-	for( var/i in data)
+	for (var/i in data)
 		. += "data\[\"[i]\"\] = \"[data[i]]\"\n"
 		if(islist(data[i]))
 			var/list/L = data[i]
-			for( var/t in L)
+			for(var/t in L)
 				. += "data\[\"[i]\"\] list has: [t]"

@@ -23,7 +23,7 @@ datum/objective
 
 	proc/find_target()
 		var/list/possible_targets = list()
-		for( var/datum/mind/possible_target in ticker.minds)
+		for(var/datum/mind/possible_target in ticker.minds)
 			if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2))
 				possible_targets += possible_target
 		if(possible_targets.len > 0)
@@ -31,7 +31,7 @@ datum/objective
 
 
 	proc/find_target_by_role(role, role_type=0)//Option sets either to check assigned role or special role. Default to assigned.
-		for( var/datum/mind/possible_target in ticker.minds)
+		for(var/datum/mind/possible_target in ticker.minds)
 			if((possible_target != owner) && ishuman(possible_target.current) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
 				target = possible_target
 				break
@@ -227,7 +227,7 @@ datum/objective/hijack/check_completion()
 	if(!istype(shuttle_area) || !(shuttle_area.z in GLOB.using_map.admin_levels))
 		return 0
 
-	for( var/mob/living/player in GLOB.player_list)
+	for(var/mob/living/player in GLOB.player_list)
 		if(is_type_in_list(player.type, list(/mob/living/silicon/ai, /mob/living/silicon/pai)))
 			continue
 		if (!player.mind || player.mind == owner)
@@ -250,7 +250,7 @@ datum/objective/block
 			return 0
 		var/area/shuttle = locate(/area/shuttle/escape/centcom)
 		var/protected_mobs[] = list(/mob/living/silicon/ai, /mob/living/silicon/pai, /mob/living/silicon/robot)
-		for( var/mob/living/player in GLOB.player_list)
+		for(var/mob/living/player in GLOB.player_list)
 			if(player.type in protected_mobs)	continue
 			if (player.mind)
 				if (player.stat != 2)
@@ -265,7 +265,7 @@ datum/objective/silence
 		if(!evacuation_controller.has_evacuated())
 			return 0
 
-		for( var/mob/living/player in GLOB.player_list)
+		for(var/mob/living/player in GLOB.player_list)
 			if(player == owner.current)
 				continue
 			if(player.mind)
@@ -377,14 +377,14 @@ datum/objective/harm
 				return 0
 
 			var/mob/living/carbon/human/H = target.current
-			for( var/obj/item/organ/external/E in H.organs)
+			for(var/obj/item/organ/external/E in H.organs)
 				if(E.status & ORGAN_BROKEN)
 					return 1
-			for( var/limb_tag in H.species.has_limbs) //todo check prefs for robotic limbs and amputations.
+			for(var/limb_tag in H.species.has_limbs) //todo check prefs for robotic limbs and amputations.
 				var/list/organ_data = H.species.has_limbs[limb_tag]
 				var/limb_type = organ_data["path"]
 				var/found
-				for( var/obj/item/organ/external/E in H.organs)
+				for(var/obj/item/organ/external/E in H.organs)
 					if(limb_type == E.type)
 						found = 1
 						break
@@ -479,13 +479,13 @@ datum/objective/steal
 				var/target_amount = text2num(target_name)//Non-numbers are ignored.
 				var/found_amount = 0.0//Always starts as zero.
 
-				for( var/obj/item/I in all_items) //Check for phoron tanks
+				for(var/obj/item/I in all_items) //Check for phoron tanks
 					if(istype(I, steal_target))
 						found_amount += (target_name=="28 moles of phoron (full tank)" ? (I:air_contents:gas[MATERIAL_PHORON]) : (I:amount))
 				return found_amount>=target_amount
 
 			if("a functional AI")
-				for( var/mob/living/silicon/ai/ai in SSmobs.mob_list)
+				for(var/mob/living/silicon/ai/ai in SSmobs.mob_list)
 					if(ai.stat == DEAD)
 						continue
 					var/turf/T = get_turf(ai)
@@ -493,7 +493,7 @@ datum/objective/steal
 						return 1
 			else
 
-				for( var/obj/I in all_items) //Check for items
+				for(var/obj/I in all_items) //Check for items
 					if(istype(I, steal_target))
 						return 1
 		return 0
@@ -526,7 +526,7 @@ datum/objective/download
 		if(!istype(stolen_data))
 			return 0
 
-		for( var/datum/tech/current_data in stolen_data.stored_research)
+		for(var/datum/tech/current_data in stolen_data.stored_research)
 			if(current_data.level > 1)
 				current_amount += (current_data.level-1)
 
@@ -543,14 +543,14 @@ datum/objective/capture
 		var/captured_amount = 0
 		var/area/centcom/holding/A = locate()
 
-		for( var/mob/living/carbon/human/M in A) // Humans (and subtypes).
+		for(var/mob/living/carbon/human/M in A) // Humans (and subtypes).
 			var/worth = M.species.rarity_value
 			if(M.stat==DEAD)//Dead folks are worth less.
 				worth*=0.5
 				continue
 			captured_amount += worth
 
-		for( var/mob/living/carbon/alien/larva/M in A)//Larva are important for research.
+		for(var/mob/living/carbon/alien/larva/M in A)//Larva are important for research.
 			if(M.stat==DEAD)
 				captured_amount+=0.5
 				continue
@@ -568,11 +568,11 @@ datum/objective/capture
 		if (ticker)
 			var/n_p = 1 //autowin
 			if (ticker.current_state == GAME_STATE_SETTING_UP)
-				for( var/mob/new_player/P in GLOB.player_list)
+				for(var/mob/new_player/P in GLOB.player_list)
 					if(P.client && P.ready && P.mind!=owner)
 						n_p ++
 			else if (ticker.current_state == GAME_STATE_PLAYING)
-				for( var/mob/living/carbon/human/P in GLOB.player_list)
+				for(var/mob/living/carbon/human/P in GLOB.player_list)
 					if(P.client && !(P.mind.changeling) && P.mind!=owner)
 						n_p ++
 			target_amount = min(target_amount, n_p)
@@ -597,10 +597,10 @@ datum/objective/heist/kidnap
 		var/list/possible_targets = list()
 		var/list/priority_targets = list()
 
-		for( var/datum/mind/possible_target in ticker.minds)
+		for(var/datum/mind/possible_target in ticker.minds)
 			if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2) && (!possible_target.special_role))
 				possible_targets += possible_target
-				for( var/role in roles)
+				for(var/role in roles)
 					if(possible_target.assigned_role == role)
 						priority_targets += possible_target
 						continue
@@ -624,7 +624,7 @@ datum/objective/heist/kidnap
 			//	return 0 // They're loose. Close but no cigar.
 
 			var/area/skipjack_station/start/A = locate()
-			for( var/mob/living/carbon/human/M in A)
+			for(var/mob/living/carbon/human/M in A)
 				if(target.current == M)
 					return 1 //They're restrained on the shuttle. Success.
 		else
@@ -674,15 +674,15 @@ datum/objective/heist/loot
 
 		var/total_amount = 0
 
-		for( var/obj/O in locate(/area/skipjack_station/start))
+		for(var/obj/O in locate(/area/skipjack_station/start))
 			if(istype(O,target)) total_amount++
-			for( var/obj/I in O.contents)
+			for(var/obj/I in O.contents)
 				if(istype(I,target)) total_amount++
 			if(total_amount >= target_amount) return 1
 
-		for( var/datum/mind/raider in GLOB.raiders.current_antagonists)
+		for(var/datum/mind/raider in GLOB.raiders.current_antagonists)
 			if(raider.current)
-				for( var/obj/O in raider.current.get_contents())
+				for(var/obj/O in raider.current.get_contents())
 					if(istype(O,target)) total_amount++
 					if(total_amount >= target_amount) return 1
 
@@ -723,22 +723,22 @@ datum/objective/heist/salvage
 
 		var/total_amount = 0
 
-		for( var/obj/item/O in locate(/area/skipjack_station/start))
+		for(var/obj/item/O in locate(/area/skipjack_station/start))
 
 			var/obj/item/stack/material/S
 			if(istype(O,/obj/item/stack/material))
 				if(O.name == target)
 					S = O
 					total_amount += S.get_amount()
-			for( var/obj/I in O.contents)
+			for(var/obj/I in O.contents)
 				if(istype(I,/obj/item/stack/material))
 					if(I.name == target)
 						S = I
 						total_amount += S.get_amount()
 
-		for( var/datum/mind/raider in GLOB.raiders.current_antagonists)
+		for(var/datum/mind/raider in GLOB.raiders.current_antagonists)
 			if(raider.current)
-				for( var/obj/item/O in raider.current.get_contents())
+				for(var/obj/item/O in raider.current.get_contents())
 					if(istype(O,/obj/item/stack/material))
 						if(O.name == target)
 							var/obj/item/stack/material/S = O
@@ -779,7 +779,7 @@ datum/objective/heist/salvage
 
 /datum/objective/ninja_highlander/check_completion()
 	if(owner)
-		for( var/datum/mind/ninja in get_antags("ninja"))
+		for(var/datum/mind/ninja in get_antags("ninja"))
 			if(ninja != owner)
 				if(ninja.current.stat < 2) return 0
 		return 1
@@ -797,7 +797,7 @@ datum/objective/heist/salvage
 	var/acolytes_survived = 0
 	if(!GLOB.cult)
 		return 0
-	for( var/datum/mind/cult_mind in GLOB.cult.current_antagonists)
+	for(var/datum/mind/cult_mind in GLOB.cult.current_antagonists)
 		if (cult_mind.current && cult_mind.current.stat!=2)
 			var/area/A = get_area(cult_mind.current )
 			if ( is_type_in_list(A, GLOB.using_map.post_round_safe_areas))
@@ -819,7 +819,7 @@ datum/objective/heist/salvage
 /datum/objective/cult/sacrifice/find_target()
 	var/list/possible_targets = list()
 	if(!possible_targets.len)
-		for( var/mob/living/carbon/human/player in GLOB.player_list)
+		for(var/mob/living/carbon/human/player in GLOB.player_list)
 			if(player.mind && !(player.mind in GLOB.cult.current_antagonists))
 				possible_targets += player.mind
 	if(possible_targets.len > 0)

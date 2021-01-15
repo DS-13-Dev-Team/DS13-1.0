@@ -71,7 +71,7 @@
 
 
 /obj/item/weapon/gun/projectile/rivet/Destroy()
-	for( var/obj/item/embedded_rivet/r in rivets)
+	for (var/obj/item/embedded_rivet/r in rivets)
 		unregister_rivet(r)
 		if (!QDELETED(r))
 			qdel(r)
@@ -96,7 +96,7 @@
 	var/obj/item/weapon/gun/projectile/rivet/R = gun
 	if (R.rivets.len)
 		var/detonated = 0
-		for( var/obj/item/embedded_rivet/ER in R.rivets)
+		for (var/obj/item/embedded_rivet/ER in R.rivets)
 			ER.detonate()
 			detonated++
 		to_chat(user, SPAN_NOTICE("Detonated [detonated] rivets!"))

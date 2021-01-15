@@ -4,14 +4,14 @@
 	color = "#8e3900"
 
 /obj/effect/overmap/sector/exoplanet/volcanic/generate_map()
-	for( var/zlevel in map_z)
+	for(var/zlevel in map_z)
 		new /datum/random_map/automata/cave_system/mountains/volcanic(md5(world.time + rand(-100,1000)),1,1,zlevel,maxx,maxy,0,1,1)
 		var/datum/random_map/noise/exoplanet/M = new /datum/random_map/noise/exoplanet/volcanic(md5(world.time + rand(-100,1000)),1,1,zlevel,maxx,maxy,0,1,1)
 		get_biostuff(M)
 		new /datum/random_map/noise/ore/filthy_rich(md5(world.time + rand(-100,1000)),1,1,zlevel,maxx,maxy,0,1,1)
 		var/area/A = M.planetary_area
-		for( var/_x = 1 to maxx)
-			for( var/_y = 1 to maxy)
+		for(var/_x = 1 to maxx)
+			for(var/_y = 1 to maxy)
 				var/turf/T = locate(_x,_y,zlevel)
 				A.contents.Add(T)
 				if(istype(T,/turf/simulated/mineral))
@@ -51,14 +51,14 @@
 
 //Squashing most of 1 tile lava puddles
 /datum/random_map/noise/exoplanet/volcanic/cleanup()
-	for( var/x = 1, x <= limit_x, x++)
-		for( var/y = 1, y <= limit_y, y++)
+	for(var/x = 1, x <= limit_x, x++)
+		for(var/y = 1, y <= limit_y, y++)
 			var/current_cell = get_map_cell(x,y)
 			if(noise2value(map[current_cell]) < water_level)
 				continue
 			var/frendos
-			for( var/dx in list(-1,0,1))
-				for( var/dy in list(-1,0,1))
+			for(var/dx in list(-1,0,1))
+				for(var/dy in list(-1,0,1))
 					var/tmp_cell = get_map_cell(x+dx,y+dy)
 					if(tmp_cell && tmp_cell != current_cell && noise2value(map[tmp_cell]) >= water_level)
 						frendos = 1
@@ -85,7 +85,7 @@
 
 /turf/simulated/floor/exoplanet/volcanic/update_icon(update_neighbors)
 	overlays.Cut()
-	for( var/direction in GLOB.cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
 		if(!istype(turf_to_check, type))
 			var/image/rock_side = image(icon, "edge[pick(1,2)]", dir = turn(direction, 180))
@@ -140,7 +140,7 @@
 	if(locate(/obj/structure/catwalk/) in src)
 		victims = null
 		return PROCESS_KILL
-	for( var/weakref/W in victims)
+	for(var/weakref/W in victims)
 		var/atom/movable/AM = W.resolve()
 		if(!(AM && AM.is_burnable()))
 			victims -= W

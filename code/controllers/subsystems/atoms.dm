@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(atoms)
 	// Instead, atoms without extra arguments in New created on server start are fished out of world directly.
 	// We do this exactly once.
 	if(!initialized)
-		for( var/atom/A in world)
+		for(var/atom/A in world)
 			if(!(A.atom_flags & ATOM_FLAG_INITIALIZED))
 				InitAtom(A, mapload_arg)
 				++count
@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(atoms)
 	atom_init_stage = INITIALIZATION_INNEW_REGULAR
 
 	if(late_loaders.len)
-		for( var/I in late_loaders)
+		for(var/I in late_loaders)
 			var/atom/A = I
 			A.LateInitialize(arglist(late_loaders[A]))
 		report_progress("Late initialized [late_loaders.len] atom\s")
@@ -116,7 +116,7 @@ SUBSYSTEM_DEF(atoms)
 
 /datum/controller/subsystem/atoms/proc/InitLog()
 	. = ""
-	for( var/path in BadInitializeCalls)
+	for(var/path in BadInitializeCalls)
 		. += "Path : [path] \n"
 		var/fails = BadInitializeCalls[path]
 		if(fails & BAD_INIT_DIDNT_INIT)

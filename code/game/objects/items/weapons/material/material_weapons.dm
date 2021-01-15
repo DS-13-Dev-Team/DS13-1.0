@@ -31,7 +31,7 @@
 
 	matter = material.get_matter()
 	if(matter.len)
-		for( var/material_type in matter)
+		for(var/material_type in matter)
 			if(!isnull(matter[material_type]))
 				matter[material_type] *= force_divisor // May require a new var instead.
 
@@ -94,7 +94,7 @@ Commenting this out pending rebalancing of radiation based on small objects.
 /obj/item/weapon/material/process()
 	if(!material.radioactivity)
 		return
-	for( var/mob/living/L in range(1,src))
+	for(var/mob/living/L in range(1,src))
 		L.apply_effect(round(material.radioactivity/30),IRRADIATE, blocked = L.getarmor(null, "rad"))
 */
 

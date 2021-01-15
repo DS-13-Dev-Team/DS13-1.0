@@ -7,7 +7,7 @@
 	will_assist_languages = list(LANGUAGE_GUTTER)
 
 /obj/item/organ/internal/voicebox/nabber/New()
-	for( var/L in will_assist_languages)
+	for(var/L in will_assist_languages)
 		assists_languages += all_languages[L]
 	robotize()
 

@@ -138,7 +138,7 @@
 	if(active_program)
 		active_program.event_idremoved(0)
 
-	for( var/datum/computer_file/program/P in idle_threads)
+	for(var/datum/computer_file/program/P in idle_threads)
 		P.event_idremoved(1)
 
 	card_slot.stored_card.forceMove(get_turf(src))
@@ -274,7 +274,7 @@
 			to_chat(user, "This device doesn't have any components installed.")
 			return
 		var/list/component_names = list()
-		for( var/obj/item/weapon/computer_hardware/H in all_components)
+		for(var/obj/item/weapon/computer_hardware/H in all_components)
 			component_names.Add(H.name)
 
 		var/choice = input(usr, "Which component do you want to uninstall?", "Computer maintenance", null) as null|anything in component_names

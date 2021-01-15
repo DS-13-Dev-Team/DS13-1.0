@@ -142,7 +142,7 @@
 	TLV["pressure"] =		list(ONE_ATMOSPHERE*0.80,ONE_ATMOSPHERE*0.90,ONE_ATMOSPHERE*1.10,ONE_ATMOSPHERE*1.20) /* kpa */
 	TLV["temperature"] =	list(T0C-26, T0C, T0C+40, T0C+66) // K
 
-	for( var/g in gas_data.gases)
+	for(var/g in gas_data.gases)
 		if(!(g in list("oxygen","nitrogen","carbon_dioxide")))
 			trace_gas += g
 
@@ -246,7 +246,7 @@
 	var/environment_pressure = environment.return_pressure()
 
 	var/other_moles = 0
-	for( var/g in trace_gas)
+	for(var/g in trace_gas)
 		other_moles += environment.gas[g] //this is only going to be used in a partial pressure calc, so we don't need to worry about group_multiplier here.
 
 	pressure_dangerlevel = get_danger_level(environment_pressure, TLV["pressure"])
@@ -293,7 +293,7 @@
 
 
 /obj/machinery/alarm/proc/elect_master(exclude_self = FALSE)
-	for( var/obj/machinery/alarm/AA in alarm_area)
+	for (var/obj/machinery/alarm/AA in alarm_area)
 		if(exclude_self && AA == src)
 			continue
 		if (!(AA.stat & (NOPOWER|BROKEN)))
@@ -390,12 +390,12 @@
 		send_signal(m_id, list("init" = new_name) )
 
 /obj/machinery/alarm/proc/refresh_all()
-	for( var/id_tag in alarm_area.air_vent_names)
+	for(var/id_tag in alarm_area.air_vent_names)
 		var/list/I = alarm_area.air_vent_info[id_tag]
 		if (I && I["timestamp"]+AALARM_REPORT_TIMEOUT/2 > world.time)
 			continue
 		send_signal(id_tag, list("status") )
-	for( var/id_tag in alarm_area.air_scrub_names)
+	for(var/id_tag in alarm_area.air_scrub_names)
 		var/list/I = alarm_area.air_scrub_info[id_tag]
 		if (I && I["timestamp"]+AALARM_REPORT_TIMEOUT/2 > world.time)
 			continue
@@ -425,38 +425,38 @@
 /obj/machinery/alarm/proc/apply_mode()
 	//propagate mode to other air alarms in the area
 	//TODO: make it so that players can choose between applying the new mode to the room they are in (related area) vs the entire alarm area
-	for( var/obj/machinery/alarm/AA in alarm_area)
+	for (var/obj/machinery/alarm/AA in alarm_area)
 		AA.mode = mode
 
 	switch(mode)
 		if(AALARM_MODE_SCRUBBING)
-			for( var/device_id in alarm_area.air_scrub_names)
+			for(var/device_id in alarm_area.air_scrub_names)
 				send_signal(device_id, list("power"= 1, "co2_scrub"= 1, "scrubbing"= SCRUBBER_SCRUB, "panic_siphon"= 0) )
-			for( var/device_id in alarm_area.air_vent_names)
+			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 1, "checks"= "default", "set_external_pressure"= "default") )
 
 		if(AALARM_MODE_PANIC, AALARM_MODE_CYCLE)
-			for( var/device_id in alarm_area.air_scrub_names)
+			for(var/device_id in alarm_area.air_scrub_names)
 				send_signal(device_id, list("power"= 1, "panic_siphon"= 1) )
-			for( var/device_id in alarm_area.air_vent_names)
+			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 0) )
 
 		if(AALARM_MODE_REPLACEMENT)
-			for( var/device_id in alarm_area.air_scrub_names)
+			for(var/device_id in alarm_area.air_scrub_names)
 				send_signal(device_id, list("power"= 1, "panic_siphon"= 1) )
-			for( var/device_id in alarm_area.air_vent_names)
+			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 1, "checks"= "default", "set_external_pressure"= "default") )
 
 		if(AALARM_MODE_FILL)
-			for( var/device_id in alarm_area.air_scrub_names)
+			for(var/device_id in alarm_area.air_scrub_names)
 				send_signal(device_id, list("power"= 0) )
-			for( var/device_id in alarm_area.air_vent_names)
+			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 1, "checks"= "default", "set_external_pressure"= "default") )
 
 		if(AALARM_MODE_OFF)
-			for( var/device_id in alarm_area.air_scrub_names)
+			for(var/device_id in alarm_area.air_scrub_names)
 				send_signal(device_id, list("power"= 0) )
-			for( var/device_id in alarm_area.air_vent_names)
+			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 0) )
 
 /obj/machinery/alarm/proc/apply_danger_level(new_danger_level)
@@ -540,7 +540,7 @@
 		environment_data[++environment_data.len] = list("name" = "Carbon dioxide", "value" = environment.gas["carbon_dioxide"] / total * 100, "unit" = "%", "danger_level" = co2_dangerlevel)
 
 		var/other_moles = 0
-		for( var/g in trace_gas)
+		for(var/g in trace_gas)
 			other_moles += environment.gas[g]
 		environment_data[++environment_data.len] = list("name" = "Other Gases", "value" = other_moles / total * 100, "unit" = "%", "danger_level" = other_dangerlevel)
 
@@ -557,7 +557,7 @@
 			data["mode"] = mode
 		if(AALARM_SCREEN_VENT)
 			var/vents[0]
-			for( var/id_tag in alarm_area.air_vent_names)
+			for(var/id_tag in alarm_area.air_vent_names)
 				var/long_name = alarm_area.air_vent_names[id_tag]
 				var/list/info = alarm_area.air_vent_info[id_tag]
 				if(!info)
@@ -573,7 +573,7 @@
 			data["vents"] = vents
 		if(AALARM_SCREEN_SCRUB)
 			var/scrubbers[0]
-			for( var/id_tag in alarm_area.air_scrub_names)
+			for(var/id_tag in alarm_area.air_scrub_names)
 				var/long_name = alarm_area.air_scrub_names[id_tag]
 				var/list/info = alarm_area.air_scrub_info[id_tag]
 				if(!info)
@@ -611,20 +611,20 @@
 				"carbon dioxide" = "CO<sub>2</sub>",
 				MATERIAL_PHORON         = "Toxin",
 				"other"          = "Other")
-			for( var/g in gas_names)
+			for (var/g in gas_names)
 				thresholds[++thresholds.len] = list("name" = gas_names[g], "settings" = list())
 				selected = TLV[g]
-				for( var/i = 1, i <= 4, i++)
+				for(var/i = 1, i <= 4, i++)
 					thresholds[thresholds.len]["settings"] += list(list("env" = g, "val" = i, "selected" = selected[i]))
 
 			selected = TLV["pressure"]
 			thresholds[++thresholds.len] = list("name" = "Pressure", "settings" = list())
-			for( var/i = 1, i <= 4, i++)
+			for(var/i = 1, i <= 4, i++)
 				thresholds[thresholds.len]["settings"] += list(list("env" = "pressure", "val" = i, "selected" = selected[i]))
 
 			selected = TLV["temperature"]
 			thresholds[++thresholds.len] = list("name" = "Temperature", "settings" = list())
-			for( var/i = 1, i <= 4, i++)
+			for(var/i = 1, i <= 4, i++)
 				thresholds[thresholds.len]["settings"] += list(list("env" = "temperature", "val" = i, "selected" = selected[i]))
 
 
@@ -1118,7 +1118,7 @@ FIRE ALARM
 	if (!( src.working ))
 		return
 	var/area/area = get_area(src)
-	for( var/obj/machinery/firealarm/FA in area)
+	for(var/obj/machinery/firealarm/FA in area)
 		fire_alarm.clearAlarm(loc, FA)
 	update_icon()
 	return
@@ -1127,7 +1127,7 @@ FIRE ALARM
 	if (!( src.working))
 		return
 	var/area/area = get_area(src)
-	for( var/obj/machinery/firealarm/FA in area)
+	for(var/obj/machinery/firealarm/FA in area)
 		fire_alarm.triggerAlarm(loc, FA, duration)
 	update_icon()
 	playsound(src, 'sound/machines/fire_alarm.ogg', 75, 0)

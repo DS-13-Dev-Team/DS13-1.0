@@ -104,7 +104,7 @@
 
 	var/list/spawn_possibilities = list()
 	//Right lets get the list of possible species it could be upgraded to
-	for( var/species_name in GLOB.all_necromorph_species)
+	for (var/species_name in GLOB.all_necromorph_species)
 		var/datum/species/necromorph/N = GLOB.all_necromorph_species[species_name]
 		if (N.spawner_spawnable)
 			spawn_possibilities["[N.name]    [N.biomass]"] = N
@@ -190,7 +190,7 @@
 
 /obj/structure/corruption_node/nest/proc/total_spawns()
 	.=spawns_ready
-	for( var/a in spawned_creatures)
+	for (var/a in spawned_creatures)
 		var/mob/living/L = a
 		if (QDELETED(L) || L.stat == DEAD)
 			GLOB.death_event.unregister(L, src, /obj/structure/corruption_node/nest/proc/start_growth)

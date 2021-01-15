@@ -30,7 +30,7 @@
 		build_overmap()
 
 	map_z = GetConnectedZlevels(z)
-	for( var/zlevel in map_z)
+	for(var/zlevel in map_z)
 		map_sectors["[zlevel]"] = src
 
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
@@ -52,7 +52,7 @@
 
 	SSshuttle.initialize_sector(src) //Will populate the waypoint lists; waypoints not spawned yet will be added in as they spawn.
 
-	for( var/obj/machinery/computer/sensors/S in SSmachines.machinery)
+	for(var/obj/machinery/computer/sensors/S in SSmachines.machinery)
 		if (S.z in map_z)
 			S.linked = src
 
@@ -80,7 +80,7 @@ obj/effect/overmap/proc/add_landmark(obj/effect/shuttle_landmark/landmark, shutt
 	if(known)
 		layer = ABOVE_LIGHTING_LAYER
 		plane = EFFECTS_ABOVE_LIGHTING_PLANE
-		for( var/obj/machinery/computer/helm/H in SSmachines.machinery)
+		for(var/obj/machinery/computer/helm/H in SSmachines.machinery)
 			H.get_known_sectors()
 
 /proc/build_overmap()
@@ -91,7 +91,7 @@ obj/effect/overmap/proc/add_landmark(obj/effect/shuttle_landmark/landmark, shutt
 	world.maxz++
 	GLOB.using_map.overmap_z = world.maxz
 	var/list/turfs = list()
-	for( var/square in block(locate(1,1,GLOB.using_map.overmap_z), locate(GLOB.using_map.overmap_size,GLOB.using_map.overmap_size,GLOB.using_map.overmap_z)))
+	for (var/square in block(locate(1,1,GLOB.using_map.overmap_z), locate(GLOB.using_map.overmap_size,GLOB.using_map.overmap_size,GLOB.using_map.overmap_z)))
 		var/turf/T = square
 		if(T.x == GLOB.using_map.overmap_size || T.y == GLOB.using_map.overmap_size)
 			T = T.ChangeTurf(/turf/unsimulated/map/edge)

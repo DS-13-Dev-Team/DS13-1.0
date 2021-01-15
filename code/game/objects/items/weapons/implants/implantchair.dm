@@ -79,7 +79,7 @@
 			var/obj/item/grab/grab = G
 			if(!ismob(grab.affecting))
 				return
-			for( var/mob/living/carbon/slime/M in range(1,G:affecting))
+			for(var/mob/living/carbon/slime/M in range(1,G:affecting))
 				if(M.Victim == grab.affecting)
 					to_chat(usr, "[grab.affecting:name] will not fit into the [src.name] because they have a slime latched onto their head.")
 					return
@@ -129,10 +129,10 @@
 		if (!istype(M, /mob/living/carbon))
 			return
 		if(!implant_list.len)	return
-		for( var/obj/item/weapon/implant/loyalty/imp in implant_list)
+		for(var/obj/item/weapon/implant/loyalty/imp in implant_list)
 			if(!imp)	continue
 			if(istype(imp, /obj/item/weapon/implant/loyalty))
-				for( var/mob/O in viewers(M, null))
+				for (var/mob/O in viewers(M, null))
 					O.show_message("<span class='warning'>\The [M] has been implanted by \the [src].</span>", 1)
 
 				if(imp.implanted(M))
@@ -145,7 +145,7 @@
 
 
 	add_implants()
-		for( var/i=0, i<src.max_implants, i++)
+		for(var/i=0, i<src.max_implants, i++)
 			var/obj/item/weapon/implant/loyalty/I = new /obj/item/weapon/implant/loyalty(src)
 			implant_list += I
 		return

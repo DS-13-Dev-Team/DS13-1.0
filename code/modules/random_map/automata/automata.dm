@@ -12,7 +12,7 @@
 
 // Automata-specific procs and processing.
 /datum/random_map/automata/generate_map()
-	for( var/iter = 1 to iterations)
+	for(var/iter = 1 to iterations)
 		var/list/next_map[limit_x*limit_y]
 		var/count
 		var/is_not_border_left
@@ -24,7 +24,7 @@
 		if (!islist(map))
 			set_map_size()
 
-		for( var/i in 1 to (limit_x * limit_y))
+		for (var/i in 1 to (limit_x * limit_y))
 			count = 0
 
 			is_not_border_left = i != 1 && ((i - 1) % limit_x)

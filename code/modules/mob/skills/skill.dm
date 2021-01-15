@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(skills)
 	..(full_init)
 	if(full_init)
 		if(!GLOB.skills.len)
-			for( var/decl/hierarchy/skill/C in children)
+			for(var/decl/hierarchy/skill/C in children)
 				GLOB.skills += C.children
 		else
 			log_error("<span class='warning'>Warning: multiple instances of /decl/hierarchy/skill have been created!</span>")

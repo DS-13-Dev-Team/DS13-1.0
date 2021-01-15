@@ -26,7 +26,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 			if(config.usewhitelist && !check_whitelist(M))
 				return "Whitelisted Job"
 
-		for( var/s in jobban_keylist)
+		for (var/s in jobban_keylist)
 			if( findtext(s,"[M.ckey] - [rank]") == 1 )
 				var/startpos = findtext(s, "## ")+3
 				if(startpos && startpos<length(s))
@@ -41,7 +41,7 @@ DEBUG
 /mob/verb/list_all_jobbans()
 	set name = "list all jobbans"
 
-	for( var/s in jobban_keylist)
+	for(var/s in jobban_keylist)
 		log_debug(s)
 
 /mob/verb/reload_jobbans()
@@ -106,7 +106,7 @@ DEBUG
 
 
 /proc/jobban_remove(X)
-	for( var/i = 1; i <= length(jobban_keylist); i++)
+	for (var/i = 1; i <= length(jobban_keylist); i++)
 		if( findtext(jobban_keylist[i], "[X]") )
 			jobban_keylist.Remove(jobban_keylist[i])
 			jobban_savebanfile()

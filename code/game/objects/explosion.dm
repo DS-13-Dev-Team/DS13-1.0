@@ -10,7 +10,7 @@
 
 /turf/get_explosion_resistance()
 	. = ..()
-	for( var/obj/O in src)
+	for(var/obj/O in src)
 		. += O.get_explosion_resistance()
 
 /turf/space
@@ -76,7 +76,7 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 	E.start()
 
 
-	for( var/mob/M in GLOB.player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.z == epicenter.z)
 			var/turf/M_turf = get_turf(M)
 			var/dist = get_dist(M_turf, epicenter)
@@ -112,7 +112,7 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 	next_explosion_impact = world.time + 0.45 SECONDS //Prevents getting spammed by multiple explosions and causing unecessary lag. Yeah this is a little lazy, but I'd rather not assign lists of "processed" turfs or whatever for memory's sake
 	if(!istype(src, /turf/space))
 		shake_animation(strength)
-	for( var/atom/movable/AM in contents)
+	for(var/atom/movable/AM in contents)
 		if(world.time < AM.next_explosion_impact)
 			continue
 		AM.next_explosion_impact = world.time + 0.45 SECONDS
@@ -148,7 +148,7 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 	power -= location.get_explosion_resistance() > 1 ? location.get_explosion_resistance() : (power_cap + (location.get_explosion_resistance()))
 	location.explosion_ripple(explosion_power_to_ex_act(MAP(power, 0, 100, 0, 3)))
 	//Secondly, we push the wave outwards from the centre turf, blocking it off as needed.
-	for( var/turf/T in orange(distance_travelled, location))
+	for(var/turf/T in orange(distance_travelled, location))
 		var/resistance = T.get_explosion_resistance()
 		//Prevent unmitigated explosions.
 		var/epower = power
@@ -174,7 +174,7 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 /datum/extension/explosion/proc/explosion(turf/epicenter, radius, max_power=2)
 	. = ..()
 	explosion_FX(epicenter, radius)
-	for( var/dir in GLOB.alldirs)
+	for(var/dir in GLOB.alldirs)
 		new /datum/explosion_wave(epicenter, dir, radius, max_power)
 	//And ensure the epicenter takes the full whack. This takes the power cap and directly applies it to the epicenter
 	epicenter.explosion_ripple(explosion_power_to_ex_act(max_power)) //All explosions are always going to hit badly at the epicenter.
@@ -182,7 +182,7 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 //Near instant "cheap" explosion that doesn't take into account things blocking it.
 /datum/extension/explosion/proc/simple_explosion(atom/movable/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, z_transfer, shaped)
 	. = ..()
-	for( var/turf/T in orange(devastation_range, epicenter)) //TODO: Account for the other ranges.
+	for(var/turf/T in orange(devastation_range, epicenter)) //TODO: Account for the other ranges.
 		var/dist = get_dist(T, epicenter)
 		dist = (dist > 0) ? dist : 1
 		T.explosion_ripple(round(devastation_range/dist*dist))

@@ -23,7 +23,7 @@
 
 //returns how well tool is suited for this step
 /datum/surgery_step/proc/tool_quality(obj/item/tool)
-	for( var/T in allowed_tools)
+	for (var/T in allowed_tools)
 		if (istype(tool,T))
 			return allowed_tools[T]
 	return 0
@@ -34,12 +34,12 @@
 		return 0
 
 	if(allowed_species)
-		for( var/species in allowed_species)
+		for(var/species in allowed_species)
 			if(target.species.get_bodytype(target) == species)
 				return 1
 
 	if(disallowed_species)
-		for( var/species in disallowed_species)
+		for(var/species in disallowed_species)
 			if(target.species.get_bodytype(target) == species)
 				return 0
 
@@ -125,7 +125,7 @@
 	if(zone in M.op_stage.in_progress) //Can't operate on someone repeatedly.
 		to_chat(user, "<span class='warning'>You can't operate on this area while surgery is already in progress.</span>")
 		return 1
-	for( var/datum/surgery_step/S in surgery_steps)
+	for(var/datum/surgery_step/S in surgery_steps)
 		//check if tool is right or close enough and if this step is possible
 		if(S.tool_quality(src))
 			var/step_is_valid = S.can_use(user, M, zone, src)
@@ -159,7 +159,7 @@
 			gap = round(gap / 1.247330950103979)
 		if(gap < 1)
 			gap = 1
-		for( var/i = 1; gap + i <= surgery_steps.len; i++)
+		for(var/i = 1; gap + i <= surgery_steps.len; i++)
 			var/datum/surgery_step/l = surgery_steps[i]		//Fucking hate
 			var/datum/surgery_step/r = surgery_steps[gap+i]	//how lists work here
 			if(l.priority < r.priority)

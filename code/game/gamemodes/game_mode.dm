@@ -126,7 +126,7 @@ var/global/list/additional_antag_types = list()
 
 	// I am very sure there's a better way to do this, but I'm not sure what it might be. ~Z
 	spawn(1)
-		for( var/datum/admins/admin in world)
+		for(var/datum/admins/admin in world)
 			if(usr.client == admin.owner)
 				admin.show_game_mode(usr)
 				return
@@ -138,7 +138,7 @@ var/global/list/additional_antag_types = list()
 	if(antag_templates && antag_templates.len)
 		var/antag_summary = "<b>Possible antagonist types:</b> "
 		var/i = 1
-		for( var/datum/antagonist/antag in antag_templates)
+		for(var/datum/antagonist/antag in antag_templates)
 			if(i > 1)
 				if(i == antag_templates.len)
 					antag_summary += " and "
@@ -157,7 +157,7 @@ var/global/list/additional_antag_types = list()
 // Returns 0 if the mode can start and a message explaining the reason why it can't otherwise.
 /datum/game_mode/proc/startRequirements()
 	var/playerC = 0
-	for( var/mob/new_player/player in GLOB.player_list)
+	for(var/mob/new_player/player in GLOB.player_list)
 		if((player.client)&&(player.ready))
 			playerC++
 
@@ -167,7 +167,7 @@ var/global/list/additional_antag_types = list()
 	var/enemy_count = 0
 	var/list/all_antag_types = GLOB.all_antag_types_
 	if(antag_tags && antag_tags.len)
-		for( var/antag_tag in antag_tags)
+		for(var/antag_tag in antag_tags)
 			var/datum/antagonist/antag = all_antag_types[antag_tag]
 			if(!antag)
 				continue
@@ -200,7 +200,7 @@ var/global/list/additional_antag_types = list()
 			EMajor.delay_modifier = event_delay_mod_major
 
 /datum/game_mode/proc/pre_setup()
-	for( var/datum/antagonist/antag in antag_templates)
+	for(var/datum/antagonist/antag in antag_templates)
 		antag.update_current_antag_max()
 		antag.build_candidate_list() //compile a list of all eligible candidates
 
@@ -224,13 +224,13 @@ var/global/list/additional_antag_types = list()
 		announce_ert_disabled()
 
 	//Assign all antag types for this game mode. Any players spawned as antags earlier should have been removed from the pending list, so no need to worry about those.
-	for( var/datum/antagonist/antag in antag_templates)
+	for(var/datum/antagonist/antag in antag_templates)
 		if(!(antag.flags & ANTAG_OVERRIDE_JOB))
 			antag.attempt_spawn() //select antags to be spawned
 		antag.finalize_spawn() //actually spawn antags
 
 	//Finally do post spawn antagonist stuff.
-	for( var/datum/antagonist/antag in antag_templates)
+	for(var/datum/antagonist/antag in antag_templates)
 		antag.post_spawn()
 
 	if(evacuation_controller && auto_recall_shuttle)
@@ -244,7 +244,7 @@ var/global/list/additional_antag_types = list()
 	return 1
 
 /datum/game_mode/proc/fail_setup()
-	for( var/datum/antagonist/antag in antag_templates)
+	for(var/datum/antagonist/antag in antag_templates)
 		antag.reset_antag_selection()
 
 /datum/game_mode/proc/announce_ert_disabled()
@@ -291,7 +291,7 @@ var/global/list/additional_antag_types = list()
 		return 1
 	if(end_on_antag_death && antag_templates && antag_templates.len)
 		var/has_antags = 0
-		for( var/datum/antagonist/antag in antag_templates)
+		for(var/datum/antagonist/antag in antag_templates)
 			if(!antag.antags_are_dead())
 				has_antags = 1
 				break
@@ -310,11 +310,11 @@ var/global/list/additional_antag_types = list()
 	sleep(2)
 
 	var/list/all_antag_types = GLOB.all_antag_types_
-	for( var/datum/antagonist/antag in antag_templates)
+	for(var/datum/antagonist/antag in antag_templates)
 		antag.check_victory()
 		antag.print_player_summary()
 		sleep(2)
-	for( var/antag_type in all_antag_types)
+	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
 		if(!antag.current_antagonists.len || (antag in antag_templates))
 			continue
@@ -332,7 +332,7 @@ var/global/list/additional_antag_types = list()
 	var/alive_necros = 0
 	var/escaped_necros = 0
 
-	for( var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in SSmobs.mob_list)
 		if (QDELETED(M))
 			continue
 
@@ -459,7 +459,7 @@ var/global/list/additional_antag_types = list()
 
 	// If this is being called post-roundstart then it doesn't care about ready status.
 	if(ticker && ticker.current_state == GAME_STATE_PLAYING)
-		for( var/mob/player in GLOB.player_list)
+		for(var/mob/player in GLOB.player_list)
 			if(!player.client)
 				continue
 			if(istype(player, /mob/new_player))
@@ -469,12 +469,12 @@ var/global/list/additional_antag_types = list()
 				candidates += player.mind
 	else
 		// Assemble a list of active players without jobbans.
-		for( var/mob/new_player/player in GLOB.player_list)
+		for(var/mob/new_player/player in GLOB.player_list)
 			if( player.client && player.ready )
 				players += player
 
 		// Get a list of all the people who want to be the antagonist for this round
-		for( var/mob/new_player/player in players)
+		for(var/mob/new_player/player in players)
 			if(!antag_id || (antag_id in player.client.prefs.be_special_role))
 				log_debug("[player.key] had [antag_id] enabled, so we are drafting them.")
 				candidates += player.mind
@@ -482,7 +482,7 @@ var/global/list/additional_antag_types = list()
 
 		// If we don't have enough antags, draft people who voted for the round.
 		if(candidates.len < max(required_enemies, antag_template.initial_spawn_target))
-			for( var/mob/new_player/player in players)
+			for(var/mob/new_player/player in players)
 				if(!antag_id || !(antag_id in player.client.prefs.never_be_special_role))
 					log_debug("[player.key] has not selected never for this role, so we are drafting them.")
 					candidates += player.mind
@@ -497,7 +497,7 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/num_players()
 	. = 0
-	for( var/mob/new_player/P in GLOB.player_list)
+	for(var/mob/new_player/P in GLOB.player_list)
 		if(P.client && P.ready)
 			. ++
 
@@ -512,7 +512,7 @@ var/global/list/additional_antag_types = list()
 	var/list/all_antag_types = GLOB.all_antag_types_
 	if(antag_tags && antag_tags.len)
 		antag_templates = list()
-		for( var/antag_tag in antag_tags)
+		for(var/antag_tag in antag_tags)
 			var/datum/antagonist/antag = all_antag_types[antag_tag]
 			if(antag)
 				antag_templates |= antag
@@ -520,7 +520,7 @@ var/global/list/additional_antag_types = list()
 	if(additional_antag_types && additional_antag_types.len)
 		if(!antag_templates)
 			antag_templates = list()
-		for( var/antag_type in additional_antag_types)
+		for(var/antag_type in additional_antag_types)
 			var/datum/antagonist/antag = all_antag_types[antag_type]
 			if(antag)
 				antag_templates |= antag
@@ -536,11 +536,11 @@ var/global/list/additional_antag_types = list()
 //////////////////////////
 proc/display_roundstart_logout_report()
 	var/msg = "<span class='notice'><b>Roundstart logout report</b>\n\n"
-	for( var/mob/living/L in SSmobs.mob_list)
+	for(var/mob/living/L in SSmobs.mob_list)
 
 		if(L.ckey)
 			var/found = 0
-			for( var/client/C in GLOB.clients)
+			for(var/client/C in GLOB.clients)
 				if(C.ckey == L.ckey)
 					found = 1
 					break
@@ -560,7 +560,7 @@ proc/display_roundstart_logout_report()
 					continue //Dead
 
 			continue //Happy connected client
-		for( var/mob/observer/ghost/D in SSmobs.mob_list)
+		for(var/mob/observer/ghost/D in SSmobs.mob_list)
 			if(D.mind && (D.mind.original == L || D.mind.current == L))
 				if(L.stat == DEAD)
 					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
@@ -575,12 +575,12 @@ proc/display_roundstart_logout_report()
 
 	msg += "</span>" // close the span from right at the top
 
-	for( var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in SSmobs.mob_list)
 		if(M.client && M.client.holder)
 			to_chat(M, msg)
 proc/get_nt_opposed()
 	var/list/dudes = list()
-	for( var/mob/living/carbon/human/man in GLOB.player_list)
+	for(var/mob/living/carbon/human/man in GLOB.player_list)
 		if(man.client)
 			if(man.client.prefs.nanotrasen_relation == COMPANY_OPPOSED)
 				dudes += man
@@ -598,7 +598,7 @@ proc/get_nt_opposed()
 
 	var/obj_count = 1
 	to_chat(player.current, "<span class='notice'>Your current objectives:</span>")
-	for( var/datum/objective/objective in player.objectives)
+	for(var/datum/objective/objective in player.objectives)
 		to_chat(player.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 
@@ -637,7 +637,7 @@ proc/get_nt_opposed()
 
 /datum/game_mode/proc/update_living_crew()
 	GLOB.living_crew = list()
-	for( var/datum/mind/M in GLOB.all_crew)
+	for (var/datum/mind/M in GLOB.all_crew)
 		if (M && !QDELETED(M.current) && ishuman(M.current))
 			var/mob/living/L = M.current
 			if (L.stat != DEAD) //They're alive!

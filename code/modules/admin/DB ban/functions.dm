@@ -90,14 +90,14 @@ datum/admins/proc/DB_ban_record(bantype, mob/banned_mob, duration = -1, reason, 
 		ip = banip
 
 	var/who
-	for( var/client/C in GLOB.clients)
+	for(var/client/C in GLOB.clients)
 		if(!who)
 			who = "[C]"
 		else
 			who += ", [C]"
 
 	var/adminwho
-	for( var/client/C in GLOB.admins)
+	for(var/client/C in GLOB.admins)
 		if(!adminwho)
 			adminwho = "[C]"
 		else
@@ -328,16 +328,16 @@ datum/admins/proc/DB_ban_unban_by_id(id)
 	output += "<tr><td width='50%' align='right'><b>Duration:</b> <input type='text' name='dbbaddduration'></td>"
 	output += "<td width='50%' align='right'><b>Job:</b><select name='dbbanaddjob'>"
 	output += "<option value=''>--</option>"
-	for( var/j in get_all_jobs())
+	for(var/j in get_all_jobs())
 		output += "<option value='[j]'>[j]</option>"
-	for( var/j in GLOB.nonhuman_positions)
+	for(var/j in GLOB.nonhuman_positions)
 		output += "<option value='[j]'>[j]</option>"
 	var/list/bantypes = list("traitor","changeling","operative","revolutionary","cultist","wizard") //For legacy bans.
 	var/list/all_antag_types = GLOB.all_antag_types_
-	for( var/antag_type in all_antag_types) // Grab other bans.
+	for(var/antag_type in all_antag_types) // Grab other bans.
 		var/datum/antagonist/antag = all_antag_types[antag_type]
 		bantypes |= antag.id
-	for( var/j in bantypes)
+	for(var/j in bantypes)
 		output += "<option value='[j]'>[j]</option>"
 	output += "</select></td></tr></table>"
 	output += "<b>Reason:<br></b><textarea name='dbbanreason' cols='50'></textarea><br>"

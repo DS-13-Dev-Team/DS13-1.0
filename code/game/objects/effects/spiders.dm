@@ -97,7 +97,7 @@
 		if(istype(loc, /obj/item/organ/external))
 			O = loc
 
-		for( var/i=0, i<num, i++)
+		for(var/i=0, i<num, i++)
 			var/spiderling = new /obj/effect/spider/spiderling(loc, src)
 			if(O)
 				O.implants += spiderling
@@ -200,7 +200,7 @@
 		if(get_dist(src, entry_vent) <= 1)
 			if(entry_vent.network && entry_vent.network.normal_members.len)
 				var/list/vents = list()
-				for( var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in entry_vent.network.normal_members)
+				for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in entry_vent.network.normal_members)
 					vents.Add(temp_vent)
 				if(!vents.len)
 					entry_vent = null
@@ -254,7 +254,7 @@
 					pixel_y = Clamp(pixel_y + rand(min_y, max_y), -shift_range, shift_range)
 		else if(prob(5))
 			//vent crawl!
-			for( var/obj/machinery/atmospherics/unary/vent_pump/v in view(7,src))
+			for(var/obj/machinery/atmospherics/unary/vent_pump/v in view(7,src))
 				if(!v.welded)
 					entry_vent = v
 					walk_to(src, entry_vent, 5)
@@ -304,6 +304,6 @@
 
 /obj/effect/spider/cocoon/Destroy()
 	src.visible_message("<span class='warning'>\The [src] splits open.</span>")
-	for( var/atom/movable/A in contents)
+	for(var/atom/movable/A in contents)
 		A.dropInto(loc)
 	return ..()

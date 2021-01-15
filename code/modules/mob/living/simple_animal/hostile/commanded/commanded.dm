@@ -47,7 +47,7 @@
 	var/mode = "specific"
 	if(allowed_targets[1] == "everyone") //we have been given the golden gift of murdering everything. Except our master, of course. And our friends. So just mostly everyone.
 		mode = "everyone"
-	for( var/atom/A in ListTargets(10))
+	for(var/atom/A in ListTargets(10))
 		var/mob/M = null
 		if(A == src)
 			continue
@@ -83,7 +83,7 @@
 	return
 
 /mob/living/simple_animal/hostile/commanded/proc/listen(mob/speaker, text)
-	for( var/command in known_commands)
+	for(var/command in known_commands)
 		if(findtext(text,command))
 			switch(command)
 				if("stay")
@@ -107,7 +107,7 @@
 /mob/living/simple_animal/hostile/commanded/proc/get_targets_by_name(text, filter_friendlies = 0)
 	var/list/possible_targets = hearers(src,10)
 	. = list()
-	for( var/mob/M in possible_targets)
+	for(var/mob/M in possible_targets)
 		if(filter_friendlies && ((weakref(M) in friends) || M.faction == faction || M == master))
 			continue
 		var/found = 0
@@ -115,7 +115,7 @@
 			found = 1
 		else
 			var/list/parsed_name = splittext(replace_characters(lowertext(html_decode("[M]")),list("-"=" ", "."=" ", "," = " ", "'" = " ")), " ") //this big MESS is basically 'turn this into words, no punctuation, lowercase so we can check first name/last name/etc'
-			for( var/a in parsed_name)
+			for(var/a in parsed_name)
 				if(a == "the" || length(a) < 2) //get rid of shit words.
 					continue
 				if(findtext(text,"[a]"))

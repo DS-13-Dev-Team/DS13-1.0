@@ -248,7 +248,7 @@
 
 /mob/living/bot/mulebot/proc/GetBeaconList()
 	var/list/beaconlist = list()
-	for( var/obj/machinery/navbeacon/N in navbeacons)
+	for(var/obj/machinery/navbeacon/N in navbeacons)
 		if(!N.codes["delivery"])
 			continue
 		beaconlist.Add(N.location)
@@ -259,7 +259,7 @@
 	if(busy || load || get_dist(C, src) > 1 || !isturf(C.loc))
 		return
 
-	for( var/obj/structure/plasticflaps/P in src.loc)//Takes flaps into account
+	for(var/obj/structure/plasticflaps/P in src.loc)//Takes flaps into account
 		if(!CanPass(C,P))
 			return
 
@@ -316,7 +316,7 @@
 
 	load = null
 
-	for( var/atom/movable/AM in src)
+	for(var/atom/movable/AM in src)
 		if(AM == botcard || AM == access_scanner) continue
 
 		AM.forceMove(loc)

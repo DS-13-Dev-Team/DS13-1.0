@@ -29,7 +29,7 @@
 				stage=0
 				icon_state = initial(icon_state)
 			else if(beakers.len)
-				for( var/obj/B in beakers)
+				for(var/obj/B in beakers)
 					if(istype(B))
 						beakers -= B
 						user.put_in_hands(B)
@@ -143,7 +143,7 @@
 		if(!stage || stage<2) return
 
 		var/has_reagents = 0
-		for( var/obj/item/weapon/reagent_containers/glass/G in beakers)
+		for(var/obj/item/weapon/reagent_containers/glass/G in beakers)
 			if(G.reagents.total_volume) has_reagents = 1
 
 		active = 0
@@ -161,7 +161,7 @@
 
 		playsound(src.loc, 'sound/effects/bamf.ogg', 50, 1)
 
-		for( var/obj/item/weapon/reagent_containers/glass/G in beakers)
+		for(var/obj/item/weapon/reagent_containers/glass/G in beakers)
 			G.reagents.trans_to_obj(src, G.reagents.total_volume)
 
 		if(src.reagents.total_volume) //The possible reactions didnt use up all reagents.
@@ -170,7 +170,7 @@
 			steam.attach(src)
 			steam.start()
 
-			for( var/atom/A in view(affected_area, src.loc))
+			for(var/atom/A in view(affected_area, src.loc))
 				if( A == src ) continue
 				src.reagents.touch(A)
 

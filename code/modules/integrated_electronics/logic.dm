@@ -117,7 +117,7 @@
 	var/number_of_inputs = 2
 
 /obj/item/integrated_circuit/logic/multiplexer/New()
-	for( var/i = 1 to number_of_inputs)
+	for(var/i = 1 to number_of_inputs)
 		inputs += "input [i]"
 	complexity = number_of_inputs
 	..()
@@ -157,7 +157,7 @@
 	var/number_of_outputs = 2
 
 /obj/item/integrated_circuit/logic/demultiplexer/New()
-	for( var/i = 1 to number_of_outputs)
+	for(var/i = 1 to number_of_outputs)
 		outputs += "output [i]"
 	complexity = number_of_outputs
 
@@ -169,7 +169,7 @@
 	var/output_index = get_pin_data(IC_INPUT, 1)
 	var/output = get_pin_data(IC_INPUT, 2)
 
-	for( var/i = 1 to outputs.len)
+	for(var/i = 1 to outputs.len)
 		set_pin_data(IC_OUTPUT, i, i == output_index ? output : null)
 
 /obj/item/integrated_circuit/logic/demultiplexer/medium
@@ -222,15 +222,15 @@
 		if(!locked)
 			var/list/regions = list()
 			var/accesses_by_region = list()
-			for( var/i in available_accesses)
+			for(var/i in available_accesses)
 				var/datum/access/A = get_access_by_id(i)
 				group_by(accesses_by_region, num2text(A.region), A.)
 			regions = sortAssoc(regions)
 
-			for( var/region_key in accesses_by_region)
+			for(var/region_key in accesses_by_region)
 				var/list/region = list()
 				var/list/accesses = list()
-				for( var/j in accesses_by_region[region_key])
+				for(var/j in accesses_by_region[region_key])
 					var/list/access = list()
 					var/datum/access/A = j
 					access["name"] = A.desc

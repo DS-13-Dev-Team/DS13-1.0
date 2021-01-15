@@ -110,7 +110,7 @@
 		ntnet_global.relays.Remove(src)
 		ntnet_global.add_log("Quantum relay connection severed. Current amount of linked relays: [NTNet.relays.len]")
 		NTNet = null
-	for( var/datum/computer_file/program/ntnet_dos/D in dos_sources)
+	for(var/datum/computer_file/program/ntnet_dos/D in dos_sources)
 		D.target = null
 		D.error = "Connection to quantum relay severed"
 	..()
@@ -128,7 +128,7 @@
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 		to_chat(user, "You disassemble \the [src]!")
 
-		for( var/atom/movable/A in component_parts)
+		for(var/atom/movable/A in component_parts)
 			A.forceMove(src.loc)
 		new/obj/machinery/constructable_frame/machine_frame(src.loc)
 		qdel(src)

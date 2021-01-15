@@ -23,10 +23,10 @@
 
 /datum/visualnet/Destroy()
 	GLOB.visual_nets -= src
-	for( var/source in sources)
+	for(var/source in sources)
 		remove_source(source, FALSE)
 	sources.Cut()
-	for( var/chunk in chunks)
+	for(var/chunk in chunks)
 		qdel(chunk)
 	chunks.Cut()
 	. = ..()
@@ -61,8 +61,8 @@
 		var/x2 = min(world.maxx, T.x + CHUNK_SIZE) & ~0xf
 		var/y2 = min(world.maxy, T.y + CHUNK_SIZE) & ~0xf
 
-		for( var/x = x1; x <= x2; x += CHUNK_SIZE)
-			for( var/y = y1; y <= y2; y += CHUNK_SIZE)
+		for(var/x = x1; x <= x2; x += CHUNK_SIZE)
+			for(var/y = y1; y <= y2; y += CHUNK_SIZE)
 				. += get_chunk(x, y, T.z)
 
 	if(full_update)
@@ -71,16 +71,16 @@
 	var/list/remove = eye.visibleChunks - .
 	var/list/add = . - eye.visibleChunks
 
-	for( var/chunk in remove)
+	for(var/chunk in remove)
 		var/datum/chunk/c = chunk
 		c.remove_eye(eye)
 
-	for( var/chunk in add)
+	for(var/chunk in add)
 		var/datum/chunk/c = chunk
 		c.add_eye(eye)
 
 /datum/visualnet/proc/remove_eye(mob/observer/eye/eye)
-	for( var/chunk in eye.visibleChunks)
+	for(var/chunk in eye.visibleChunks)
 		var/datum/chunk/c = chunk
 		c.remove_eye(eye)
 
@@ -170,8 +170,8 @@
 	var/x2 = ceiling_to_multiple(min(world.maxx, T.x + range), CHUNK_SIZE)// & ~0xf
 	var/y2 = ceiling_to_multiple(min(world.maxy, T.y + range), CHUNK_SIZE)// & ~0xf
 
-	for( var/x = x1; x <= x2; x += CHUNK_SIZE)
-		for( var/y = y1; y <= y2; y += CHUNK_SIZE)
+	for(var/x = x1; x <= x2; x += CHUNK_SIZE)
+		for(var/y = y1; y <= y2; y += CHUNK_SIZE)
 			var/datum/chunk/c = get_chunk(x, y, T.z)
 			call(c, proc_call)(arglist(proc_args))
 
@@ -221,9 +221,9 @@
 
 
 /turf/proc/is_in_visualnet(datum/visualnet/V)
-	for( var/coord as anything in V.chunks)
+	for (var/coord as anything in V.chunks)
 		var/datum/chunk/C = V.chunks[coord]
-		for( var/turf/T as anything in C.visibleTurfs)
+		for (var/turf/T as anything in C.visibleTurfs)
 			if (T == src)
 				return TRUE
 

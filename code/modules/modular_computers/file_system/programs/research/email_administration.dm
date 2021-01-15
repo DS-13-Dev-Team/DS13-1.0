@@ -34,7 +34,7 @@
 		data["current_account"] = current_account.login
 		data["cur_suspended"] = current_account.suspended
 		var/list/all_messages = list()
-		for( var/datum/computer_file/data/email_message/message in (current_account.inbox | current_account.spam | current_account.deleted))
+		for(var/datum/computer_file/data/email_message/message in (current_account.inbox | current_account.spam | current_account.deleted))
 			all_messages.Add(list(list(
 				"title" = message.title,
 				"source" = message.source,
@@ -45,7 +45,7 @@
 		data["messagecount"] = all_messages.len
 	else
 		var/list/all_accounts = list()
-		for( var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
+		for(var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
 			if(!account.can_login)
 				continue
 			all_accounts.Add(list(list(
@@ -111,14 +111,14 @@
 		if(!current_account)
 			return 1
 
-		for( var/datum/computer_file/data/email_message/received_message in (current_account.inbox | current_account.spam | current_account.deleted))
+		for(var/datum/computer_file/data/email_message/received_message in (current_account.inbox | current_account.spam | current_account.deleted))
 			if(received_message.uid == text2num(href_list["viewmail"]))
 				current_message = received_message
 				break
 		return 1
 
 	if(href_list["viewaccount"])
-		for( var/datum/computer_file/data/email_account/email_account in ntnet_global.email_accounts)
+		for(var/datum/computer_file/data/email_account/email_account in ntnet_global.email_accounts)
 			if(email_account.uid == text2num(href_list["viewaccount"]))
 				current_account = email_account
 				break

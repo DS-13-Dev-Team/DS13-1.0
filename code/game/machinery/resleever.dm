@@ -242,21 +242,21 @@ obj/machinery/resleever/Process()
 /obj/machinery/resleever/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			for( var/atom/movable/A as mob|obj in src)
+			for(var/atom/movable/A as mob|obj in src)
 				A.forceMove(loc)
 				ex_act(severity)
 			qdel(src)
 			return
 		if(2.0)
 			if(prob(50))
-				for( var/atom/movable/A as mob|obj in src)
+				for(var/atom/movable/A as mob|obj in src)
 					A.forceMove(loc)
 					ex_act(severity)
 				qdel(src)
 				return
 		if(3.0)
 			if(prob(25))
-				for( var/atom/movable/A as mob|obj in src)
+				for(var/atom/movable/A as mob|obj in src)
 					A.forceMove(loc)
 					ex_act(severity)
 				qdel(src)
@@ -273,14 +273,14 @@ obj/machinery/resleever/Process()
 
 /obj/machinery/resleever/proc/check_occupant_allowed(mob/M)
 	var/correct_type = 0
-	for( var/type in allow_occupant_types)
+	for(var/type in allow_occupant_types)
 		if(istype(M, type))
 			correct_type = 1
 			break
 
 	if(!correct_type) return 0
 
-	for( var/type in disallow_occupant_types)
+	for(var/type in disallow_occupant_types)
 		if(istype(M, type))
 			return 0
 

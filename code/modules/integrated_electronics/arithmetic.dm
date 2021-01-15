@@ -15,7 +15,7 @@
 
 /obj/item/integrated_circuit/arithmetic/addition/do_work()
 	var/result = 0
-	for( var/datum/integrated_io/input/I in inputs)
+	for(var/datum/integrated_io/input/I in inputs)
 		I.pull_data()
 		if(isnum(I.data))
 			result = result + I.data
@@ -30,7 +30,7 @@
 
 /obj/item/integrated_circuit/arithmetic/subtraction/do_work()
 	var/result = 0
-	for( var/datum/integrated_io/input/I in inputs)
+	for(var/datum/integrated_io/input/I in inputs)
 		I.pull_data()
 		if(isnum(I.data))
 			result = result - I.data
@@ -45,7 +45,7 @@
 
 /obj/item/integrated_circuit/arithmetic/subtraction/do_work()
 	var/result = 0
-	for( var/datum/integrated_io/input/I in inputs)
+	for(var/datum/integrated_io/input/I in inputs)
 		I.pull_data()
 		if(isnum(I.data))
 			result = result * I.data
@@ -60,7 +60,7 @@
 
 /obj/item/integrated_circuit/arithmetic/division/do_work()
 	var/result = 0
-	for( var/datum/integrated_io/input/I in inputs)
+	for(var/datum/integrated_io/input/I in inputs)
 		I.pull_data()
 		if(isnum(I.data) && I.data != 0) //No runtimes here.
 			result = result / I.data
@@ -76,7 +76,7 @@
 
 /obj/item/integrated_circuit/arithmetic/absolute/do_work()
 	var/result = 0
-	for( var/datum/integrated_io/input/I in inputs)
+	for(var/datum/integrated_io/input/I in inputs)
 		I.pull_data()
 		if(isnum(I.data) && I.data != 0)
 			result = abs(result)
@@ -92,7 +92,7 @@
 /obj/item/integrated_circuit/arithmetic/average/do_work()
 	var/result = 0
 	var/inputs_used = 0
-	for( var/datum/integrated_io/input/I in inputs)
+	for(var/datum/integrated_io/input/I in inputs)
 		I.pull_data()
 		if(isnum(I.data))
 			inputs_used++

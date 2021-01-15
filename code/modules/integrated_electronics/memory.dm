@@ -10,7 +10,7 @@
 	var/memory_pins = 1
 
 /obj/item/integrated_circuit/memory/New()
-	for( var/i = 1 to memory_pins)
+	for(var/i = 1 to memory_pins)
 		inputs += "input [i]"
 		outputs += "output [i]"
 	complexity = memory_pins
@@ -30,7 +30,7 @@
 			data = O.data
 		to_chat(user, "\The [src] has [data] saved to address [i].")
 /obj/item/integrated_circuit/memory/do_work()
-	for( var/i = 1 to inputs.len)
+	for(var/i = 1 to inputs.len)
 		set_pin_data(IC_OUTPUT, i, get_pin_data(IC_INPUT, i))
 
 /obj/item/integrated_circuit/memory/medium

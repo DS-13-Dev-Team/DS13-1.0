@@ -11,7 +11,7 @@
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/install_default_files()
 	..()
 	// Add design files to the disk
-	for( var/design_typepath in designs)
+	for(var/design_typepath in designs)
 		var/datum/computer_file/binary/design/D = new
 		D.set_design_type(design_typepath)
 		if(license)

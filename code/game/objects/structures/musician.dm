@@ -208,7 +208,7 @@
 //	sound_to(hearers(15, src), sound(soundfile))
 
 	var/turf/source = get_turf(src)
-	for( var/mob/M in hearers(15, source))
+	for(var/mob/M in hearers(15, source))
 		M.playsound_local(source, file(soundfile), 100, falloff = 5)
 
 
@@ -216,18 +216,18 @@
 	do
 		var/cur_oct[7]
 		var/cur_acc[7]
-		for( var/i = 1 to 7)
+		for(var/i = 1 to 7)
 			cur_oct[i] = "3"
 			cur_acc[i] = "n"
 
-		for( var/line in song.lines)
+		for(var/line in song.lines)
 //			log_debug(line)
 
-			for( var/beat in splittext(lowertext(line), ","))
+			for(var/beat in splittext(lowertext(line), ","))
 //				log_debug("beat: [beat]")
 
 				var/list/notes = splittext(beat, "/")
-				for( var/note in splittext(notes[1], "-"))
+				for(var/note in splittext(notes[1], "-"))
 //					log_debug("note: [note]")
 
 					if(!playing || !anchored)//If the piano is playing, or is loose
@@ -240,7 +240,7 @@
 					var/cur_note = text2ascii(note) - 96
 					if(cur_note < 1 || cur_note > 7)
 						continue
-					for( var/i=2 to length(note))
+					for(var/i=2 to length(note))
 						var/ni = copytext(note,i,i+1)
 						if(!text2num(ni))
 							if(ni == "#" || ni == "b" || ni == "n")
@@ -284,7 +284,7 @@
 			var/calctempo = (10/song.tempo)*60
 			dat += "Tempo : <A href='?src=\ref[src];tempo=10'>-</A><A href='?src=\ref[src];tempo=1'>-</A> [calctempo] BPM <A href='?src=\ref[src];tempo=-1'>+</A><A href='?src=\ref[src];tempo=-10'>+</A><BR><BR>"
 			var/linecount = 0
-			for( var/line in song.lines)
+			for(var/line in song.lines)
 				linecount += 1
 				dat += "Line [linecount]: [line] <A href='?src=\ref[src];deleteline=[linecount]'>Delete Line</A> <A href='?src=\ref[src];modifyline=[linecount]'>Modify Line</A><BR>"
 			dat += "<A href='?src=\ref[src];newline=1'>Add Line</A><BR><BR>"
@@ -401,7 +401,7 @@
 					to_chat(usr, "Too many lines!")
 					lines.Cut(51)
 				var/linenum = 1
-				for( var/l in lines)
+				for(var/l in lines)
 					if(length(l) > 50)
 						to_chat(usr, "Line [linenum] too long!")
 						lines.Remove(l)

@@ -31,7 +31,7 @@
 
 	//Now setting the name and desc
 	desc = "Apply "
-	for( var/i = 1; i <= valid_types.len;i++)
+	for (var/i = 1; i <= valid_types.len;i++)
 		var/var/obj/I = valid_types[i]
 		var/name = initial(I.name)
 		if (i == 1)
@@ -52,7 +52,7 @@
 			user << "That item can't be used for crafting!"
 			return FALSE
 
-		for( var/path in valid_types)
+		for (var/path in valid_types)
 			if (istype(I, path))
 				return TRUE
 		user << "Wrong item!"
@@ -77,8 +77,8 @@
 
 /datum/craft_step/object/find_item(mob/living/user, atom/craft = null)
 	var/list/items = get_search_list(user, craft)
-	for( var/a in items)
-		for( var/b in valid_types)
+	for (var/a in items)
+		for (var/b in valid_types)
 			if (istype(a, b))
 				return a
 
@@ -155,7 +155,7 @@
 /datum/craft_step/material/find_item(mob/living/user, atom/craft = null)
 	var/list/items = get_search_list(user, craft)
 	var/foundmat = FALSE
-	for( var/a in items)
+	for (var/a in items)
 		if (istype(a, /obj/item/stack/material))
 			var/obj/item/stack/material/MA = a
 			if (MA.material && (MA.material.name == required_material))
@@ -231,7 +231,7 @@
 /datum/craft_step/stack/find_item(mob/living/user, atom/craft = null)
 	var/list/items = get_search_list(user, craft)
 	var/foundstack = FALSE
-	for( var/a in items)
+	for (var/a in items)
 		if (istype(a, required_type))
 			var/obj/item/stack/MA = a
 			foundstack = TRUE
@@ -319,7 +319,7 @@
 
 /datum/craft_step/tool/find_item(mob/living/user, atom/craft = null)
 	var/list/items = get_search_list(user, craft)
-	for( var/obj/I in items)
+	for (var/obj/I in items)
 		if (I.get_tool_quality(required_quality) >= required_level)
 			return I
 
@@ -373,7 +373,7 @@
 
 /datum/craft_step/passive/find_item(mob/living/user, atom/craft = null)
 	var/list/items = get_search_list(user, craft)
-	for( var/obj/I in items)
+	for (var/obj/I in items)
 		if (I.get_tool_quality(required_quality) >= required_level)
 			return I
 

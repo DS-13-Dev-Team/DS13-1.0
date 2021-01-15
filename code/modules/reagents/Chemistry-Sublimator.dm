@@ -130,7 +130,7 @@
 	if(use_power >= 2 && container && container.reagents)
 		var/datum/gas_mixture/produced = new
 		var/added_gas = FALSE
-		for( var/datum/reagent/R in container.reagents.reagent_list)
+		for(var/datum/reagent/R in container.reagents.reagent_list)
 			var/gas_id = lowertext(R.name)
 			if(!(gas_id in gas_data.gases))
 				create_gas_data_for_reagent(R)

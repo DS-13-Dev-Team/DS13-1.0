@@ -50,7 +50,7 @@
 		if(!newname)
 			return
 		filedesc = newname
-		for( var/datum/computer_file/program/P in ntnet_global.available_station_software)
+		for(var/datum/computer_file/program/P in ntnet_global.available_station_software)
 			if(filedesc == P.filedesc)
 				program_menu_icon = P.program_menu_icon
 				break

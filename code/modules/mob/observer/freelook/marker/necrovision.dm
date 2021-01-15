@@ -13,11 +13,11 @@
 	chunk_type = /datum/chunk/necrovision
 
 /datum/chunk/necrovision/acquire_visible_turfs(list/visible)
-	for( var/datum/source as anything in sources)
+	for(var/datum/source as anything in sources)
 		if (!istype(source))
 			sources -= source
 			continue
-		for( var/t in get_datum_visible_turfs(source))//source.get_visualnet_tiles(visualnet))
+		for(var/t in get_datum_visible_turfs(source))//source.get_visualnet_tiles(visualnet))
 			visible[t] = t
 
 

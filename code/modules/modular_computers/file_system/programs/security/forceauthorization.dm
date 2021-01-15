@@ -22,7 +22,7 @@
 	if(!istype(AM))
 		return
 	var/list/zlevels = GetConnectedZlevels(AM.z)
-	for( var/obj/item/weapon/gun/G in GLOB.registered_weapons)
+	for(var/obj/item/weapon/gun/G in GLOB.registered_weapons)
 		if(G.standby)
 			continue
 		var/turf/T = get_turf(G)
@@ -30,7 +30,7 @@
 			continue
 
 		var/list/modes = list()
-		for( var/i = 1 to G.firemodes.len)
+		for(var/i = 1 to G.firemodes.len)
 			if(G.authorized_modes[i] == ALWAYS_AUTHORIZED)
 				continue
 			var/datum/firemode/firemode = G.firemodes[i]
@@ -43,9 +43,9 @@
 
 	if(!data["is_silicon_usr"]) // don't send data even though they won't be able to see it
 		data["cyborg_guns"] = list()
-		for( var/obj/item/weapon/gun/energy/gun/secure/mounted/G in GLOB.registered_cyborg_weapons)
+		for(var/obj/item/weapon/gun/energy/gun/secure/mounted/G in GLOB.registered_cyborg_weapons)
 			var/list/modes = list() // we don't get location, unlike inside of the last loop, because borg locations are reported elsewhere.
-			for( var/i = 1 to G.firemodes.len)
+			for(var/i = 1 to G.firemodes.len)
 				if(G.authorized_modes[i] == ALWAYS_AUTHORIZED)
 					continue
 				var/datum/firemode/firemode = G.firemodes[i]

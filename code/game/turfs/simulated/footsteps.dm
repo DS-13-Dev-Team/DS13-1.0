@@ -138,7 +138,7 @@
 		footsound = get_species_audio(SOUND_FOOTSTEP)
 		best_priority = species.step_priority
 
-	for( var/obj/structure/S as anything in T.step_structures)
+	for(var/obj/structure/S as anything in T.step_structures)
 		if (S.step_priority > best_priority)
 			best_priority = S.step_priority
 			footsound = S.get_footstep_sound()

@@ -33,11 +33,11 @@
 
 /obj/machinery/seed_storage/Initialize(mapload)
 	. = ..()
-	for( var/typepath in starting_seeds)
+	for(var/typepath in starting_seeds)
 		var/amount = starting_seeds[typepath]
 		if(isnull(amount))
 			amount = 1
-		for( var/i = 1 to amount)
+		for (var/i = 1 to amount)
 			var/O = new typepath
 			add(O)
 
@@ -177,7 +177,7 @@
 		if ("soil" in scanner)
 			dat += "<td>Nutri</td><td>Water</td>"
 		dat += "<td>Notes</td><td>Amount</td><td></td></tr>"
-		for( var/datum/seed_pile/S in piles)
+		for (var/datum/seed_pile/S in piles)
 			var/datum/seed/seed = S.seed_type
 			if(!seed)
 				continue
@@ -276,7 +276,7 @@
 	var/task = href_list["task"]
 	var/ID = text2num(href_list["id"])
 
-	for( var/datum/seed_pile/N in piles)
+	for (var/datum/seed_pile/N in piles)
 		if (N.ID == ID)
 			if (task == "vend")
 				var/obj/O = pick(N.seeds)
@@ -291,7 +291,7 @@
 					piles -= N
 					qdel(N)
 			else if (task == "purge")
-				for( var/obj/O in N.seeds)
+				for (var/obj/O in N.seeds)
 					qdel(O)
 					piles -= N
 					qdel(N)
@@ -306,7 +306,7 @@
 	else if (istype(O, /obj/item/weapon/storage/plants))
 		var/obj/item/weapon/storage/P = O
 		var/loaded = 0
-		for( var/obj/item/seeds/G in P.contents)
+		for(var/obj/item/seeds/G in P.contents)
 			++loaded
 			P.remove_from_storage(G, src, 1)
 			add(G, 1)
@@ -334,7 +334,7 @@
 	O.forceMove(src)
 	var/newID = 0
 
-	for( var/datum/seed_pile/N in piles)
+	for (var/datum/seed_pile/N in piles)
 		if (N.matches(O))
 			++N.amount
 			N.seeds += (O)

@@ -49,7 +49,7 @@
 		return
 
 	try
-		for( var/list/query_tree in querys)
+		for(var/list/query_tree in querys)
 			var/list/from_objs = list()
 			var/list/select_types = list()
 
@@ -73,32 +73,32 @@
 
 			var/list/objs = list()
 
-			for( var/type in select_types)
+			for(var/type in select_types)
 				objs += SDQL_get_all(type, from_objs)
 				CHECK_TICK
 
 			if("where" in query_tree)
 				var/objs_temp = objs
 				objs = list()
-				for( var/datum/d in objs_temp)
+				for(var/datum/d in objs_temp)
 					if(SDQL_expression(d, query_tree["where"]))
 						objs += d
 					CHECK_TICK
 
 			switch(query_tree[1])
 				if("call")
-					for( var/datum/d in objs)
+					for(var/datum/d in objs)
 						SDQL_var(d, query_tree["call"][1], source = d)
 						CHECK_TICK
 
 				if("delete")
-					for( var/datum/d in objs)
+					for(var/datum/d in objs)
 						qdel(d)
 						CHECK_TICK
 
 				if("select")
 					var/text = ""
-					for( var/datum/t in objs)
+					for(var/datum/t in objs)
 						text += "<A HREF='?_src_=vars;Vars=\ref[t]'>\ref[t]</A>"
 						if(istype(t, /atom))
 							var/atom/a = t
@@ -122,11 +122,11 @@
 				if("update")
 					if("set" in query_tree)
 						var/list/set_list = query_tree["set"]
-						for( var/datum/d in objs)
-							for( var/list/sets in set_list)
+						for(var/datum/d in objs)
+							for(var/list/sets in set_list)
 								var/datum/temp = d
 								var/i = 0
-								for( var/v in sets)
+								for(var/v in sets)
 									if(++i == sets.len)
 										if(istype(temp, /turf) && (v == "x" || v == "y" || v == "z"))
 											break
@@ -156,7 +156,7 @@
 	var/pos = 1
 	var/querys_pos = 1
 	var/do_parse = 0
-	for( var/val in query_list)
+	for(var/val in query_list)
 		if(val == ";")
 			do_parse = 1
 		else if(pos >= query_list.len)
@@ -187,10 +187,10 @@
 
 /proc/SDQL_testout(list/query_tree, indent = 0)
 	var/spaces = ""
-	for( var/s = 0, s < indent, s++)
+	for(var/s = 0, s < indent, s++)
 		spaces += "&nbsp;&nbsp;&nbsp;&nbsp;"
 
-	for( var/item in query_tree)
+	for(var/item in query_tree)
 		if(istype(item, /list))
 			to_chat(usr, "[spaces](")
 			SDQL_testout(item, indent + 1)
@@ -226,32 +226,32 @@
 	type = text2path(type)
 
 	if(ispath(type, /mob))
-		for( var/mob/d in location)
+		for(var/mob/d in location)
 			if(istype(d, type))
 				out += d
 
 	else if(ispath(type, /turf))
-		for( var/turf/d in location)
+		for(var/turf/d in location)
 			if(istype(d, type))
 				out += d
 
 	else if(ispath(type, /obj))
-		for( var/obj/d in location)
+		for(var/obj/d in location)
 			if(istype(d, type))
 				out += d
 
 	else if(ispath(type, /area))
-		for( var/area/d in location)
+		for(var/area/d in location)
 			if(istype(d, type))
 				out += d
 
 	else if(ispath(type, /atom))
-		for( var/atom/d in location)
+		for(var/atom/d in location)
 			if(istype(d, type))
 				out += d
 
 	else
-		for( var/datum/d in location)
+		for(var/datum/d in location)
 			if(istype(d, type))
 				out += d
 
@@ -262,7 +262,7 @@
 	var/result = 0
 	var/val
 
-	for( var/i = start, i <= expression.len, i++)
+	for(var/i = start, i <= expression.len, i++)
 		var/op = ""
 
 		if(i > start)
@@ -350,7 +350,7 @@
 	else if(expression[i] == "\[")
 		var/list/expressions_list = expression[++i]
 		val = list()
-		for( var/list/expression_list in expressions_list)
+		for(var/list/expression_list in expressions_list)
 			var/result = SDQL_expression(object, expression_list)
 			var/assoc
 			if (expressions_list[expression_list] != null)
@@ -436,7 +436,7 @@
 	set waitfor = FALSE
 
 	var/list/new_args = list()
-	for( var/arg in arguments)
+	for(var/arg in arguments)
 		new_args[++new_args.len] = SDQL_expression(source, arg)
 
 	if (object == world) // Global proc.
@@ -461,7 +461,7 @@
 	var/list/query_list = list()
 	var/len = length(query_text)
 
-	for( var/i = 1, i <= len, i++)
+	for(var/i = 1, i <= len, i++)
 		var/char = copytext(query_text, i, i + 1)
 
 		if(char in whitespace)

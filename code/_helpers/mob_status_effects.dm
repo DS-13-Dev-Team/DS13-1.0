@@ -48,7 +48,7 @@
 	if (!.)
 		return
 
-	for( var/obj/item/organ/O in internal_organs)
+	for (var/obj/item/organ/O in internal_organs)
 		O.rejuvenate()
 
 	shock_stage = 0

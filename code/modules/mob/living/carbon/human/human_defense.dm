@@ -12,7 +12,7 @@ meteor_act
 ---------------------------------*/
 //Takes an accuracy value, a targeted bodypart, and the projectile, tool or mob doing the hitting.
 //Calculate all bonuses on the attacker's side before calling this, this proc handles the evasion on the defensive side
-/mob/living/carbon/human/get_zone_with_miss_chance(accuracy, desired_zone, weapon)
+/mob/living/carbon/human/get_zone_with_miss_chance(var/accuracy, desired_zone, weapon)
 	//Mobs on the floor are less good at evading
 	var/evasion_mod = evasion
 	if (lying)
@@ -38,7 +38,7 @@ meteor_act
 	else
 		return pick(organs_by_name)	//Check if this is valid
 
-/mob/living/carbon/human/bullet_act(obj/item/projectile/P, def_zone)
+/mob/living/carbon/human/bullet_act(var/obj/item/projectile/P, def_zone)
 
 	def_zone = check_zone(def_zone)
 	if(!has_organ(def_zone))
@@ -74,7 +74,7 @@ meteor_act
 
 	return blocked
 
-/mob/living/carbon/human/stun_effect_act(stun_amount, agony_amount, def_zone)
+/mob/living/carbon/human/stun_effect_act(var/stun_amount, agony_amount, def_zone)
 	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))
 	if(!affected)
 		return
@@ -88,7 +88,7 @@ meteor_act
 
 	..(stun_amount, agony_amount, def_zone)
 
-/mob/living/carbon/human/getarmor(def_zone, type)
+/mob/living/carbon/human/getarmor(var/def_zone, type)
 	var/armorval = 0
 	var/total = 0
 
@@ -101,7 +101,7 @@ meteor_act
 		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
 
 	//If you don't specify a bodypart, it checks ALL your bodyparts for protection, and averages out the values
-	for( var/organ_name in organs_by_name)
+	for(var/organ_name in organs_by_name)
 		if (organ_name in organ_rel_size)
 			var/obj/item/organ/external/organ = organs_by_name[organ_name]
 			if(organ)
@@ -118,7 +118,7 @@ meteor_act
 	var/siemens_coefficient = max(species.siemens_coefficient,0)
 
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes) // What all are we checking?
-	for( var/obj/item/clothing/C in clothing_items)
+	for(var/obj/item/clothing/C in clothing_items)
 		if(istype(C) && (C.body_parts_covered & def_zone.body_part)) // Is that body part being targeted covered?
 			siemens_coefficient *= C.siemens_coefficient
 
@@ -133,11 +133,11 @@ meteor_act
 		return 0
 	var/protection = def_zone.species.natural_armour_values ? def_zone.species.natural_armour_values[type] : 0
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
-	for( var/obj/item/clothing/gear in protective_gear)
+	for(var/obj/item/clothing/gear in protective_gear)
 		if(gear.body_parts_covered & def_zone.body_part)
 			protection = add_armor(protection, gear.armor[type])
 		if(gear.accessories.len)
-			for( var/obj/item/clothing/accessory/bling in gear.accessories)
+			for(var/obj/item/clothing/accessory/bling in gear.accessories)
 				if(bling.body_parts_covered & def_zone.body_part)
 					protection = add_armor(protection, bling.armor[type])
 	return Clamp(protection,0,100)
@@ -145,7 +145,7 @@ meteor_act
 /mob/living/carbon/human/proc/check_head_coverage()
 
 	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform)
-	for( var/bp in body_parts)
+	for(var/bp in body_parts)
 		if(!bp)	continue
 		if(bp && istype(bp ,/obj/item/clothing))
 			var/obj/item/clothing/C = bp
@@ -156,7 +156,7 @@ meteor_act
 //Used to check if they can be fed food/drinks/pills
 /mob/living/carbon/human/check_mouth_coverage()
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform)
-	for( var/obj/item/gear in protective_gear)
+	for(var/obj/item/gear in protective_gear)
 		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.item_flags & ITEM_FLAG_FLEXIBLEMATERIAL))
 			return gear
 	return null
@@ -164,7 +164,7 @@ meteor_act
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, target_zone)
 
-	for( var/obj/item/grab/G in grabbed_by)
+	for (var/obj/item/grab/G in grabbed_by)
 		if(G.resolve_item_attack(user, I, target_zone))
 			return null
 
@@ -317,7 +317,7 @@ meteor_act
 		return 1
 	return 0
 
-/mob/living/carbon/human/emag_act(remaining_charges, mob/user, emag_source)
+/mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, emag_source)
 	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
 	if(!affecting || !BP_IS_ROBOTIC(affecting))
 		to_chat(user, "<span class='warning'>That limb isn't robotic.</span>")
@@ -344,7 +344,7 @@ meteor_act
 
 	AM.launch_throw_strike(src, speed)
 
-/mob/living/carbon/human/embed(obj/O, def_zone=null, datum/wound/supplied_wound)
+/mob/living/carbon/human/embed(var/obj/O, def_zone=null, datum/wound/supplied_wound)
 	if(!def_zone) ..()
 
 	var/obj/item/organ/external/affecting = get_organ(def_zone)
@@ -354,10 +354,10 @@ meteor_act
 /mob/proc/unembed(obj/item/I, atom/new_location, silent = 0, supplied_message)
 	return
 
-/mob/living/carbon/human/unembed(obj/item/I, atom/new_location, silent = 0, supplied_message)
+/mob/living/carbon/human/unembed(var/obj/item/I, atom/new_location, silent = 0, supplied_message)
 	if (!(I in implants))
 		return
-	for( var/obj/item/organ/external/affecting in src)
+	for (var/obj/item/organ/external/affecting in src)
 		if (I in affecting.implants)
 			affecting.unembed(I, new_location, silent, supplied_message)
 			return
@@ -410,7 +410,7 @@ meteor_act
 		"hands" = THERMAL_PROTECTION_HAND_LEFT + THERMAL_PROTECTION_HAND_RIGHT
 		)
 
-	for( var/obj/item/clothing/C in src.get_equipped_items())
+	for(var/obj/item/clothing/C in src.get_equipped_items())
 		if(C.permeability_coefficient == 1 || !C.body_parts_covered)
 			continue
 		if(C.body_parts_covered & HEAD)
@@ -428,7 +428,7 @@ meteor_act
 		if(C.body_parts_covered & HANDS)
 			perm_by_part["hands"] *= C.get_permeability()
 
-	for( var/part in perm_by_part)
+	for(var/part in perm_by_part)
 		perm += perm_by_part[part]
 
 	return perm
@@ -456,7 +456,7 @@ meteor_act
 
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
-/mob/living/carbon/human/electrocute_act(shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
+/mob/living/carbon/human/electrocute_act(var/shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
 
 	if(status_flags & GODMODE)	return 0	//godmode
 
@@ -472,7 +472,7 @@ meteor_act
 
 	return ..(shock_damage, source, base_siemens_coeff, def_zone)
 
-/mob/living/carbon/human/apply_shock(shock_damage, def_zone, base_siemens_coeff = 1.0)
+/mob/living/carbon/human/apply_shock(var/shock_damage, def_zone, base_siemens_coeff = 1.0)
 	var/obj/item/organ/external/initial_organ = get_organ(check_zone(def_zone))
 	if(!initial_organ)
 		initial_organ = pick(organs)
@@ -481,7 +481,7 @@ meteor_act
 
 	if(!lying)
 		var/obj/item/organ/external/list/standing = list()
-		for( var/limb_tag in species.locomotion_limbs)
+		for(var/limb_tag in species.locomotion_limbs)
 			var/obj/item/organ/external/E = organs_by_name[limb_tag]
 			if(E && E.is_usable())
 				standing[limb_tag] = E
@@ -505,7 +505,7 @@ meteor_act
 
 	var/total_damage = 0
 
-	for( var/obj/item/organ/external/E in to_shock)
+	for(var/obj/item/organ/external/E in to_shock)
 		total_damage += ..(shock_damage, E.organ_tag, base_siemens_coeff * get_siemens_coefficient_organ(E))
 	return total_damage
 
@@ -518,7 +518,7 @@ meteor_act
 	if(!floor || init == floor)
 		return list(init)
 
-	for( var/obj/item/organ/external/E in list(floor, init))
+	for(var/obj/item/organ/external/E in list(floor, init))
 		while(E && E.parent_organ)
 			E = organs_by_name[E.parent_organ]
 			traced_organs += E
@@ -630,7 +630,7 @@ meteor_act
 	//We can block with exactly one object or limb per attack.
 	//Objects are -far- more effective so we check those first
 	var/list/items = list(l_hand, r_hand)
-	for( var/obj/item/I in items)
+	for (var/obj/item/I in items)
 		if (I.can_block(strike))
 			var/item_block_chance = I.get_block_chance(src) + block_chance_modifier
 			if (prob(item_block_chance))
@@ -715,7 +715,7 @@ meteor_act
 /mob/living/carbon/human/proc/get_heat_protection_flags(temperature) //Temperature is the temperature you're being exposed to.
 	. = 0
 	//Handle normal clothing
-	for( var/obj/item/clothing/C in list(head,wear_suit,w_uniform,shoes,gloves,wear_mask))
+	for(var/obj/item/clothing/C in list(head,wear_suit,w_uniform,shoes,gloves,wear_mask))
 		if(C)
 			if(C.max_heat_protection_temperature && C.max_heat_protection_temperature >= temperature)
 				. |= C.heat_protection
@@ -724,12 +724,12 @@ meteor_act
 /mob/living/carbon/human/proc/get_cold_protection_flags(temperature)
 	. = 0
 	//Handle normal clothing
-	for( var/obj/item/clothing/C in list(head,wear_suit,w_uniform,shoes,gloves,wear_mask))
+	for(var/obj/item/clothing/C in list(head,wear_suit,w_uniform,shoes,gloves,wear_mask))
 		if(C)
 			if(C.min_cold_protection_temperature && C.min_cold_protection_temperature <= temperature)
 				. |= C.cold_protection
 
-/mob/living/carbon/human/get_heat_protection(temperature) //Temperature is the temperature you're being exposed to.
+/mob/living/carbon/human/get_heat_protection(var/temperature) //Temperature is the temperature you're being exposed to.
 	//Not hot enough to bother us
 	var/limit = get_heat_limit()
 	if (temperature < limit)

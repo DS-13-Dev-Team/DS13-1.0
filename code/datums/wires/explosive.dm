@@ -20,7 +20,7 @@ var/const/WIRE_EXPLODE = 1
 /datum/wires/explosive/c4
 	holder_type = /obj/item/weapon/plastique
 
-/datum/wires/explosive/c4/CanUse(mob/living/L)
+/datum/wires/explosive/c4/CanUse(var/mob/living/L)
 	var/obj/item/weapon/plastique/P = holder
 	if(P.open_panel)
 		return 1

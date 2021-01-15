@@ -19,7 +19,7 @@
 
 /mob/living/deity/proc/remove_follower_spells(datum/mind/M)
 	if(M.learned_spells)
-		for( var/s in M.learned_spells)
+		for(var/s in M.learned_spells)
 			var/spell/S = s
 			if(S.connected_god == src)
 				M.current.remove_spell(S)
@@ -62,7 +62,7 @@
 /mob/living/deity/fully_replace_character_name(new_name, in_depth = TRUE)
 	if(!..())
 		return 0
-	for( var/m in minions)
+	for(var/m in minions)
 		var/datum/mind/minion = m
 		to_chat(minion.current, "Your master is now known as [new_name]")
 		minion.special_role = "Servant of [new_name]"
@@ -73,7 +73,7 @@
 //Whether we are near an important structure.
 /mob/living/deity/proc/near_structure(atom/A, all_structures = 0)
 	var/turf/T = get_turf(A)
-	for( var/s in structures)
+	for(var/s in structures)
 		if(!all_structures)
 			var/obj/structure/deity/D = s
 			if(D.deity_flags & DEITY_STRUCTURE_NEAR_IMPORTANT)//If it needs to be near an important structure, it isn't important.

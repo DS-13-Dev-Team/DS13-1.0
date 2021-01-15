@@ -6,7 +6,7 @@
 */
 
 /*/client/verb/debugmodifications()
-	for( var/t in subtypesof(/obj/item/weapon/tool_modification))
+	for (var/t in subtypesof(/obj/item/weapon/tool_modification))
 		new t(usr.loc)
 */
 
@@ -103,7 +103,7 @@
 		if(!R.opened)
 			user << SPAN_WARNING("You need to open [R]'s panel to access its tools.")
 		var/list/robotools = list()
-		for( var/obj/item/weapon/tool/robotool in R.module.modules)
+		for(var/obj/item/weapon/tool/robotool in R.module.modules)
 			robotools.Add(robotool)
 		if(robotools.len)
 			var/obj/item/weapon/tool/chosen_tool = input(user,"Which tool are you trying to modify?","Tool Modification","Cancel") in robotools + "Cancel"
@@ -124,7 +124,7 @@
 
 	if (required_qualities.len)
 		var/qmatch = FALSE
-		for( var/q in required_qualities)
+		for (var/q in required_qualities)
 			if (T.ever_has_quality(q))
 				qmatch = TRUE
 				break
@@ -142,7 +142,7 @@
 		return
 
 	//No using multiples of the same modification
-	for( var/obj/item/weapon/tool_modification/U in T.modifications)
+	for (var/obj/item/weapon/tool_modification/U in T.modifications)
 		if (U.type == type)
 			user << SPAN_WARNING("An modification of this type is already installed!")
 			return

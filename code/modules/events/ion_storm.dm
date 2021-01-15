@@ -8,7 +8,7 @@
 	endWhen = rand(500, 1500)
 
 /datum/event/ionstorm/announce()
-	for( var/mob/living/silicon/S in SSmobs.mob_list)
+	for(var/mob/living/silicon/S in SSmobs.mob_list)
 		if(is_drone(S) || !(isAI(S) || isrobot(S)))
 			continue
 		if(isrobot(S))
@@ -86,7 +86,7 @@
 		S.show_laws()
 
 	if(message_servers)
-		for( var/obj/machinery/message_server/MS in message_servers)
+		for (var/obj/machinery/message_server/MS in message_servers)
 			MS.spamfilter.Cut()
 			var/i
 			for (i = 1, i <= MS.spamfilter_limit, i++)
@@ -96,7 +96,7 @@
 
 /datum/event/ionstorm/tick()
 	if(botEmagChance)
-		for( var/mob/living/bot/bot in world)
+		for(var/mob/living/bot/bot in world)
 			if(prob(botEmagChance))
 				bot.emag_act(1)
 
@@ -107,7 +107,7 @@
 
 
 /datum/event/ionstorm/proc/get_random_humanoid_player_name(default_if_none)
-	for( var/mob/living/carbon/human/player in GLOB.player_list)
+	for (var/mob/living/carbon/human/player in GLOB.player_list)
 		if(!player.mind || player_is_antag(player.mind, only_offstation_roles = 1) || !player.is_client_active(5))
 			continue
 		players += player.real_name
@@ -118,7 +118,7 @@
 
 /datum/event/ionstorm/proc/get_random_species_name(default_if_none = "Humans")
 	var/list/species = list()
-	for( var/S in typesof(/datum/species))
+	for(var/S in typesof(/datum/species))
 		var/datum/species/specimen = S
 		if(initial(specimen.spawn_flags) & SPECIES_CAN_JOIN)
 			species += initial(specimen.name_plural)
@@ -129,7 +129,7 @@
 
 /datum/event/ionstorm/proc/get_random_language(mob/living/silicon/S)
 	var/list/languages = S.speech_synthesizer_langs.Copy()
-	for( var/datum/language/L in languages)
+	for(var/datum/language/L in languages)
 		// Removing GalCom from the random selection. If you want to be more generic you may instead want to use S.default_language
 		if(L.type == /datum/language/common)
 			languages -= L

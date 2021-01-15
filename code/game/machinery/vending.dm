@@ -108,10 +108,10 @@
 		list(src.contraband, CAT_HIDDEN),
 		list(src.premium, CAT_COIN))
 
-	for( var/current_list in all_products)
+	for(var/current_list in all_products)
 		var/category = current_list[2]
 
-		for( var/entry in current_list[1])
+		for(var/entry in current_list[1])
 			var/datum/stored_items/vending_products/product = new/datum/stored_items/vending_products(src, entry)
 
 			product.price = (entry in src.prices) ? src.prices[entry] : 0
@@ -125,7 +125,7 @@
 	wires = null
 	qdel(coin)
 	coin = null
-	for( var/datum/stored_items/vending_products/R in product_records)
+	for(var/datum/stored_items/vending_products/R in product_records)
 		qdel(R)
 	product_records = null
 	return ..()
@@ -222,7 +222,7 @@
 	return attempt_to_stock(I, user)
 
 /obj/machinery/vending/proc/attempt_to_stock(obj/item/I as obj, mob/user as mob)
-	for( var/datum/stored_items/vending_products/R in product_records)
+	for(var/datum/stored_items/vending_products/R in product_records)
 		if(I.type == R.item_path)
 			stock(I, R, user)
 			return 1
@@ -360,7 +360,7 @@
 		data["mode"] = 0
 		var/list/listed_products = list()
 
-		for( var/key = 1 to src.product_records.len)
+		for(var/key = 1 to src.product_records.len)
 			var/datum/stored_items/vending_products/I = src.product_records[key]
 
 			if(!(I.category & src.categories))
@@ -544,7 +544,7 @@
 	if (!message)
 		return
 
-	for( var/mob/O in hearers(src, null))
+	for(var/mob/O in hearers(src, null))
 		O.show_message("<span class='game say'><span class='name'>\The [src]</span> beeps, \"[message]\"</span>",2)
 	return
 
@@ -562,7 +562,7 @@
 
 //Oh no we're malfunctioning!  Dump out some product and break.
 /obj/machinery/vending/proc/malfunction()
-	for( var/datum/stored_items/vending_products/R in src.product_records)
+	for(var/datum/stored_items/vending_products/R in src.product_records)
 		while(R.get_amount()>0)
 			R.get_product(loc)
 		break
@@ -581,7 +581,7 @@
 	if(!target)
 		return 0
 
-	for( var/datum/stored_items/vending_products/R in shuffle(src.product_records))
+	for(var/datum/stored_items/vending_products/R in shuffle(src.product_records))
 		throw_item = R.get_product(loc)
 		if (throw_item)
 			break
@@ -1019,10 +1019,10 @@
 		list(src.contraband, CAT_HIDDEN),
 		list(src.premium, CAT_COIN))
 
-	for( var/current_list in all_products)
+	for(var/current_list in all_products)
 		var/category = current_list[2]
 
-		for( var/entry in current_list[1])
+		for(var/entry in current_list[1])
 			var/obj/item/seeds/S = new entry(src)
 			var/name = S.name
 			var/datum/stored_items/vending_products/product = new/datum/stored_items/vending_products(src, entry, name)

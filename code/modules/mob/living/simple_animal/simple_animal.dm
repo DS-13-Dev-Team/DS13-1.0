@@ -150,11 +150,11 @@
 		if( abs(environment.temperature - bodytemperature) > 40 )
 			bodytemperature += (environment.temperature - bodytemperature) / 5
 		if(min_gas)
-			for( var/gas in min_gas)
+			for(var/gas in min_gas)
 				if(environment.gas[gas] < min_gas[gas])
 					atmos_suitable = 0
 		if(max_gas)
-			for( var/gas in max_gas)
+			for(var/gas in max_gas)
 				if(environment.gas[gas] > max_gas[gas])
 					atmos_suitable = 0
 
@@ -393,7 +393,7 @@
 /mob/living/simple_animal/proc/harvest(mob/user)
 	var/actual_meat_amount = max(1,(meat_amount/2))
 	if(meat_type && actual_meat_amount>0 && (stat == DEAD))
-		for( var/i=0;i<actual_meat_amount;i++)
+		for(var/i=0;i<actual_meat_amount;i++)
 			var/obj/item/meat = new meat_type(get_turf(src))
 			meat.SetName("[src.name] [meat.name]")
 		if(issmall(src))

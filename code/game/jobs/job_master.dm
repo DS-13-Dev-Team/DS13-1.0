@@ -29,14 +29,14 @@ var/global/datum/controller/occupations/job_master
 		if(!all_jobs.len)
 			log_error("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return FALSE
-		for( var/J in all_jobs)
+		for(var/J in all_jobs)
 			var/datum/job/job = decls_repository.get_decl(J)
 			if(!job)	continue
 			occupations += job
 			occupations_by_type[job.type] = job
 			occupations_by_title[job.title] = job
 			job.current_positions = 0
-			for( var/alt_title in job.alt_titles)
+			for(var/alt_title in job.alt_titles)
 				occupations_by_title[alt_title] = job
 			if(!setup_titles) continue
 			if(job.department_flag & COM)
@@ -78,7 +78,7 @@ var/global/datum/controller/occupations/job_master
 
 	proc/GetJob(rank)
 		if(!rank)	return null
-		for( var/datum/job/J in occupations)
+		for(var/datum/job/J in occupations)
 			if(!J)	continue
 			if(J.title == rank)	return J
 		return null
@@ -175,7 +175,7 @@ var/global/datum/controller/occupations/job_master
 	proc/FindOccupationCandidates(datum/job/job, level, flag)
 		Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
 		var/list/candidates = list()
-		for( var/mob/new_player/player in unassigned)
+		for(var/mob/new_player/player in unassigned)
 			if(jobban_isbanned(player, job.title))
 				Debug("FOC isbanned failed, Player: [player]")
 				continue
@@ -195,7 +195,7 @@ var/global/datum/controller/occupations/job_master
 
 	proc/GiveRandomJob(mob/new_player/player)
 		Debug("GRJ Giving random job, Player: [player]")
-		for( var/datum/job/job in shuffle(occupations))
+		for(var/datum/job/job in shuffle(occupations))
 			if(!job)
 				continue
 
@@ -226,7 +226,7 @@ var/global/datum/controller/occupations/job_master
 				break
 
 	proc/ResetOccupations()
-		for( var/mob/new_player/player in GLOB.player_list)
+		for(var/mob/new_player/player in GLOB.player_list)
 			if((player) && (player.mind))
 				player.mind.assigned_role = null
 				player.mind.special_role = null
@@ -237,8 +237,8 @@ var/global/datum/controller/occupations/job_master
 
 	///This proc is called before the level loop of DivideOccupations() and will try to select a head, ignoring ALL non-head preferences for every level until it locates a head or runs out of levels to check
 	proc/FillHeadPosition()
-		for( var/level = 1 to 3)
-			for( var/command_position in GLOB.command_positions)
+		for(var/level = 1 to 3)
+			for(var/command_position in GLOB.command_positions)
 				var/datum/job/job = GetJob(command_position)
 				if(!job)	continue
 				var/list/candidates = FindOccupationCandidates(job, level)
@@ -246,7 +246,7 @@ var/global/datum/controller/occupations/job_master
 
 				// Build a weighted list, weight by age.
 				var/list/weightedCandidates = list()
-				for( var/mob/V in candidates)
+				for(var/mob/V in candidates)
 					// Log-out during round-start? What a bad boy, no head position for you!
 					if(!V.client) continue
 					var/age = V.client.prefs.age
@@ -278,7 +278,7 @@ var/global/datum/controller/occupations/job_master
 
 	///This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
 	proc/CheckHeadPositions(level)
-		for( var/command_position in GLOB.command_positions)
+		for(var/command_position in GLOB.command_positions)
 			var/datum/job/job = GetJob(command_position)
 			if(!job)	continue
 			var/list/candidates = FindOccupationCandidates(job, level)
@@ -299,13 +299,13 @@ var/global/datum/controller/occupations/job_master
 
 		//Holder for Triumvirate is stored in the ticker, this just processes it
 		if(ticker && ticker.triai)
-			for( var/datum/job/A in occupations)
+			for(var/datum/job/A in occupations)
 				if(A.title == "AI")
 					A.spawn_positions = 3
 					break
 
 		//Get the players who are ready
-		for( var/mob/new_player/player in GLOB.player_list)
+		for(var/mob/new_player/player in GLOB.player_list)
 			if(player.ready && player.mind && !player.mind.assigned_role)
 				unassigned += player
 
@@ -322,7 +322,7 @@ var/global/datum/controller/occupations/job_master
 		var/datum/job/assist = new DEFAULT_JOB_TYPE ()
 		var/list/assistant_candidates = FindOccupationCandidates(assist, 3)
 		Debug("AC1, Candidates: [assistant_candidates.len]")
-		for( var/mob/new_player/player in assistant_candidates)
+		for(var/mob/new_player/player in assistant_candidates)
 			Debug("AC1 pass, Player: [player]")
 			AssignRole(player, "Assistant")
 			assistant_candidates -= player
@@ -344,15 +344,15 @@ var/global/datum/controller/occupations/job_master
 		// Loop through all levels from high to low
 		var/list/shuffledoccupations = shuffle(occupations)
 		// var/list/disabled_jobs = ticker.mode.disabled_jobs  // So we can use .Find down below without a colon.
-		for( var/level = 1 to 3)
+		for(var/level = 1 to 3)
 			//Check the head jobs first each level
 			CheckHeadPositions(level)
 
 			// Loop through all unassigned players
-			for( var/mob/new_player/player in unassigned)
+			for(var/mob/new_player/player in unassigned)
 
 				// Loop through all jobs
-				for( var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
+				for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
 					if(!job || ticker.mode.disabled_jobs.Find(job.title) )
 						continue
 
@@ -376,7 +376,7 @@ var/global/datum/controller/occupations/job_master
 
 		// Hand out random jobs to the people who didn't get any in the last check
 		// Also makes sure that they got their preference correct
-		for( var/mob/new_player/player in unassigned)
+		for(var/mob/new_player/player in unassigned)
 			if(player.client.prefs.alternate_option == GET_RANDOM_JOB)
 				GiveRandomJob(player)
 
@@ -385,7 +385,7 @@ var/global/datum/controller/occupations/job_master
 		Debug("DO, Running AC2")
 
 		// For those who wanted to be assistant if their preferences were filled, here you go.
-		for( var/mob/new_player/player in unassigned)
+		for(var/mob/new_player/player in unassigned)
 			if(player.client.prefs.alternate_option == BE_ASSISTANT)
 				Debug("AC2 Assistant located, Player: [player]")
 				if(GLOB.using_map.flags & MAP_HAS_BRANCH)
@@ -395,7 +395,7 @@ var/global/datum/controller/occupations/job_master
 					AssignRole(player, "Assistant")
 
 		//For ones returning to lobby
-		for( var/mob/new_player/player in unassigned)
+		for(var/mob/new_player/player in unassigned)
 			if(player.client.prefs.alternate_option == RETURN_TO_LOBBY)
 				player.ready = 0
 				player.new_player_panel_proc()
@@ -411,7 +411,7 @@ var/global/datum/controller/occupations/job_master
 		var/list/spawn_in_storage = list()
 		var/list/loadout_taken_slots = list()
 		if(H.client.prefs.Gear() && job.loadout_allowed)
-			for( var/thing in H.client.prefs.Gear())
+			for(var/thing in H.client.prefs.Gear())
 				var/datum/gear/G = GLOB.gear_datums[thing]
 				if(G)
 					if (!G.job_permitted(H, job))
@@ -428,16 +428,16 @@ var/global/datum/controller/occupations/job_master
 
 		// do accessories last so they don't attach to a suit that will be replaced
 		if(H.char_rank && H.char_rank.accessory)
-			for( var/accessory_path in H.char_rank.accessory)
+			for(var/accessory_path in H.char_rank.accessory)
 				var/list/accessory_data = H.char_rank.accessory[accessory_path]
 				if(islist(accessory_data))
 					var/amt = accessory_data[1]
 					var/list/accessory_args = accessory_data.Copy()
 					accessory_args[1] = src
-					for( var/i in 1 to amt)
+					for(var/i in 1 to amt)
 						H.equip_to_slot_or_del(new accessory_path(arglist(accessory_args)), slot_tie)
 				else
-					for( var/i in 1 to (isnull(accessory_data)? 1 : accessory_data))
+					for(var/i in 1 to (isnull(accessory_data)? 1 : accessory_data))
 						H.equip_to_slot_or_del(new accessory_path(src), slot_tie)
 
 		return spawn_in_storage
@@ -556,7 +556,7 @@ var/global/datum/controller/occupations/job_master
 
 		var/list/jobEntries = file2list(jobsfile)
 
-		for( var/job in jobEntries)
+		for(var/job in jobEntries)
 			if(!job)
 				continue
 
@@ -586,7 +586,7 @@ var/global/datum/controller/occupations/job_master
 
 
 	proc/HandleFeedbackGathering()
-		for( var/datum/job/job in occupations)
+		for(var/datum/job/job in occupations)
 			var/tmp_str = "|[job.title]|"
 
 			var/level1 = 0 //high
@@ -595,7 +595,7 @@ var/global/datum/controller/occupations/job_master
 			var/level4 = 0 //never
 			var/level5 = 0 //banned
 			var/level6 = 0 //account too young
-			for( var/mob/new_player/player in GLOB.player_list)
+			for(var/mob/new_player/player in GLOB.player_list)
 				if(!(player.ready && player.mind && !player.mind.assigned_role))
 					continue //This player is not ready
 				if(jobban_isbanned(player, job.title))
@@ -658,7 +658,7 @@ var/global/datum/controller/occupations/job_master
 
 	if(!current_spawnpoint)
 		// Step through all spawnpoints and pick first appropriate for job
-		for( var/spawntype in GLOB.using_map.allowed_spawns)
+		for(var/spawntype in GLOB.using_map.allowed_spawns)
 			var/datum/spawnpoint/candidate = spawntypes()[spawntype]
 			if(candidate.check_job_spawning(rank))
 
@@ -681,7 +681,7 @@ var/global/datum/controller/occupations/job_master
 
 /datum/controller/occupations/proc/get_roundstart_spawnpoint(rank)
 	var/list/loc_list = list()
-	for( var/obj/effect/landmark/start/sloc in landmarks_list)
+	for(var/obj/effect/landmark/start/sloc in landmarks_list)
 		if(sloc.name != rank)	continue
 		if(locate(/mob/living) in sloc.loc)	continue
 		loc_list += sloc

@@ -53,7 +53,7 @@ turf/simulated/open/LateInitialize()
 			return
 
 /datum/controller/subsystem/open_space/proc/update_turf(turf/T)
-	for( var/atom/movable/A in T)
+	for(var/atom/movable/A in T)
 		A.fall()
 	T.update_icon()
 

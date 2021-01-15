@@ -15,7 +15,7 @@
 	if(display_freq in ANTAG_FREQS)
 		freq_text = "#unkn"
 	else
-		for( var/channel in radiochannels)
+		for(var/channel in radiochannels)
 			if(radiochannels[channel] == display_freq)
 				freq_text = channel
 				break
@@ -41,7 +41,7 @@
 		var/list/zlevels = GLOB.using_map.contact_levels
 		if(z)
 			zlevels = GetConnectedZlevels(z)
-		for( var/obj/machinery/message_server/MS in message_servers)
+		for (var/obj/machinery/message_server/MS in message_servers)
 			if(MS.active && (MS.z in zlevels))
 				return MS
 	return null
@@ -81,7 +81,7 @@
 		signal = sender.telecomms_process(do_sleep)
 		receptions.sender_reception = get_sender_reception(sender, signal)
 
-	for( var/atom/receiver in receivers)
+	for(var/atom/receiver in receivers)
 		if(!signal)
 			signal = receiver.telecomms_process()
 		receptions.receiver_reception[receiver] = get_receiver_reception(receiver, signal)

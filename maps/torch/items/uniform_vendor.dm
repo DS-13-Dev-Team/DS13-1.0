@@ -34,10 +34,10 @@
 		var/datum/job/job = job_master.GetJobByType(ID.job_access_type)
 		if(job)
 			uniforms = find_uniforms(ID.military_rank, ID.military_branch, job.department_flag)
-		for( var/T in uniforms)
+		for(var/T in uniforms)
 			dat += "<b>[T]</b> <a href='byond://?src=\ref[src];get_all=[T]'>Select All</a>"
 			var/list/uniform = uniforms[T]
-			for( var/piece in uniform)
+			for(var/piece in uniform)
 				if(piece)
 					var/obj/item/clothing/C = piece
 					if(piece in selected_outfit)
@@ -71,7 +71,7 @@
 		if(!(href_list["get_all"] in uniforms))
 			return TOPIC_NOACTION
 		var/list/addition = uniforms[href_list["get_all"]]
-		for( var/G in addition)
+		for(var/G in addition)
 			if(can_issue(G))
 				selected_outfit |= addition
 		. = TOPIC_REFRESH
@@ -120,7 +120,7 @@
 		mil_uniforms = new()
 
 	var/decl/hierarchy/mil_uniform/user_outfit = mil_uniforms
-	for( var/decl/hierarchy/mil_uniform/child in user_outfit.children)
+	for(var/decl/hierarchy/mil_uniform/child in user_outfit.children)
 		if(istype(user_branch,child.branch))
 			user_outfit = child
 
@@ -129,18 +129,18 @@
 
 	// we have found a branch.
 	if(department == COM) //Command only has one variant and they have to be an officer
-		for( var/decl/hierarchy/mil_uniform/child in user_outfit.children)
+		for(var/decl/hierarchy/mil_uniform/child in user_outfit.children)
 			if(child.departments & COM)
 				user_outfit = child
 	else
 		var/tmp_department = department
 		tmp_department &= ~COM //Parse departments, with complete disconsideration to the command flag (so we don't flag 2 outfit trees)
 
-		for( var/decl/hierarchy/mil_uniform/child in user_outfit.children)
+		for(var/decl/hierarchy/mil_uniform/child in user_outfit.children)
 			if(child.departments & tmp_department)
 				user_outfit = child
 				break
-		for( var/decl/hierarchy/mil_uniform/child in user_outfit.children)
+		for(var/decl/hierarchy/mil_uniform/child in user_outfit.children)
 			if(user_rank.sort_order >= child.min_rank && user_outfit.min_rank < child.min_rank)
 				user_outfit = child
 		if(department & COM) //user is in command of their department
@@ -195,7 +195,7 @@
 	var/list/checkedout = issued_items[user_id()]
 	if(selected_outfit.len > 1)
 		var/obj/item/weapon/clothingbag/bag = new /obj/item/weapon/clothingbag
-		for( var/item in selected_outfit)
+		for(var/item in selected_outfit)
 			new item(bag)
 			checkedout += item
 		bag.forceMove(get_turf(src))

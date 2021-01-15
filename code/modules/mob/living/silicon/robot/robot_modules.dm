@@ -65,7 +65,7 @@ var/global/list/robot_modules = list(
 	R.set_module_sprites(sprites)
 	R.choose_icon(R.module_sprites.len + 1, R.module_sprites)
 
-	for( var/obj/item/I in modules)
+	for(var/obj/item/I in modules)
 		I.canremove = 0
 
 /obj/item/weapon/robot_module/proc/Reset(mob/living/silicon/robot/R)
@@ -79,9 +79,9 @@ var/global/list/robot_modules = list(
 	R.choose_icon(0, R.set_module_sprites(list("Default" = "robot")))
 
 /obj/item/weapon/robot_module/Destroy()
-	for( var/module in modules)
+	for(var/module in modules)
 		qdel(module)
-	for( var/synth in synths)
+	for(var/synth in synths)
 		qdel(synth)
 	modules.Cut()
 	synths.Cut()
@@ -93,12 +93,12 @@ var/global/list/robot_modules = list(
 
 /obj/item/weapon/robot_module/emp_act(severity)
 	if(modules)
-		for( var/obj/O in modules)
+		for(var/obj/O in modules)
 			O.emp_act(severity)
 	if(emag)
 		emag.emp_act(severity)
 	if(synths)
-		for( var/datum/matter_synth/S in synths)
+		for(var/datum/matter_synth/S in synths)
 			S.emp_act(severity)
 	..()
 	return
@@ -116,37 +116,37 @@ var/global/list/robot_modules = list(
 	if(!synths || !synths.len)
 		return
 
-	for( var/datum/matter_synth/T in synths)
+	for(var/datum/matter_synth/T in synths)
 		T.add_charge(T.recharge_rate * rate)
 
 /obj/item/weapon/robot_module/proc/rebuild()//Rebuilds the list so it's possible to add/remove items from the module
 	var/list/temp_list = modules
 	modules = list()
-	for( var/obj/O in temp_list)
+	for(var/obj/O in temp_list)
 		if(O)
 			modules += O
 
 /obj/item/weapon/robot_module/proc/add_languages(mob/living/silicon/robot/R)
 	// Stores the languages as they were before receiving the module, and whether they could be synthezized.
-	for( var/datum/language/language_datum in R.languages)
+	for(var/datum/language/language_datum in R.languages)
 		original_languages[language_datum] = (language_datum in R.speech_synthesizer_langs)
 
-	for( var/language in languages)
+	for(var/language in languages)
 		R.add_language(language, languages[language])
 
 /obj/item/weapon/robot_module/proc/remove_languages(mob/living/silicon/robot/R)
 	// Clear all added languages, whether or not we originally had them.
-	for( var/language in languages)
+	for(var/language in languages)
 		R.remove_language(language)
 
 	// Then add back all the original languages, and the relevant synthezising ability
-	for( var/original_language in original_languages)
+	for(var/original_language in original_languages)
 		R.add_language(original_language, original_languages[original_language])
 	original_languages.Cut()
 
 /obj/item/weapon/robot_module/proc/add_camera_networks(mob/living/silicon/robot/R)
 	if(R.camera && (NETWORK_ROBOTS in R.camera.network))
-		for( var/network in networks)
+		for(var/network in networks)
 			if(!(network in R.camera.network))
 				R.camera.add_network(network)
 				added_networks |= network
@@ -157,11 +157,11 @@ var/global/list/robot_modules = list(
 	added_networks.Cut()
 
 /obj/item/weapon/robot_module/proc/add_subsystems(mob/living/silicon/robot/R)
-	for( var/subsystem_type in subsystems)
+	for(var/subsystem_type in subsystems)
 		R.init_subsystem(subsystem_type)
 
 /obj/item/weapon/robot_module/proc/remove_subsystems(mob/living/silicon/robot/R)
-	for( var/subsystem_type in subsystems)
+	for(var/subsystem_type in subsystems)
 		R.remove_subsystem(subsystem_type)
 
 /obj/item/weapon/robot_module/proc/apply_status_flags(mob/living/silicon/robot/R)

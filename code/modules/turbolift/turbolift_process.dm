@@ -12,7 +12,7 @@ var/datum/controller/process/turbolift/turbolift_controller
 	schedule_interval = 10
 
 /datum/controller/process/turbolift/doWork()
-	for( var/liftref in moving_lifts)
+	for(var/liftref in moving_lifts)
 		if(world.time < moving_lifts[liftref])
 			continue
 		var/datum/turbolift/lift = locate(liftref)

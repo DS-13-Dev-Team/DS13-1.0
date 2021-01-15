@@ -23,13 +23,13 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 		else if (istype(clong, /turf) && !istype(clong, /turf/unsimulated))
 			if(clong.density)
 				clong.ex_act(2, src)
-				for( var/mob/O in hearers(src, null))
+				for (var/mob/O in hearers(src, null))
 					O.show_message("CLANG", 2)
 
 		else if (istype(clong, /obj))
 			if(clong.density)
 				clong.ex_act(2, src)
-				for( var/mob/O in hearers(src, null))
+				for (var/mob/O in hearers(src, null))
 					O.show_message("CLANG", 2)
 
 		else if (istype(clong, /mob))
@@ -88,7 +88,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 		if(immrod.loc == end)
 			qdel(immrod)
 		sleep(10)
-	for( var/obj/effect/immovablerod/imm in world)
+	for(var/obj/effect/immovablerod/imm in world)
 		return
 	sleep(50)
 	command_announcement.Announce("What the fuck was that?!", "General Alert")

@@ -24,7 +24,7 @@ var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 	dd_insertObjectList(cargo_supply_packs, src)	// Add all non-category supply packs to the list
 
 	if(!num_contained)
-		for( var/entry in contains)
+		for(var/entry in contains)
 			num_contained += max(1, contains[entry])
 
 	var/decl/supply_method/sm = get_supply_method(supply_method)
@@ -72,14 +72,14 @@ var/list/supply_methods_
 	if(!sp || !location)
 		return
 	. = list()
-	for( var/entry in sp.contains)
-		for( var/i = 1 to max(1, sp.contains[entry]))
+	for(var/entry in sp.contains)
+		for(var/i = 1 to max(1, sp.contains[entry]))
 			dd_insertObjectList(.,new entry(location))
 
 /decl/supply_method/proc/setup_manifest(decl/hierarchy/supply_pack/sp)
 	. = list()
 	. += "<ul>"
-	for( var/path in sp.contains)
+	for(var/path in sp.contains)
 		var/atom/A = path
 		if(!ispath(A))
 			continue
@@ -91,7 +91,7 @@ var/list/supply_methods_
 	if(!sp || !location)
 		return
 	. = list()
-	for( var/j = 1 to sp.num_contained)
+	for(var/j = 1 to sp.num_contained)
 		var/picked = pick(sp.contains)
 		. += new picked(location)
 

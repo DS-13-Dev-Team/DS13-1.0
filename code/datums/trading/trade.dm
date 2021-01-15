@@ -53,7 +53,7 @@
 	if(possible_origins && possible_origins.len)
 		origin = pick(possible_origins)
 
-	for( var/i in 3 to 6)
+	for(var/i in 3 to 6)
 		add_to_pool(trading_items, possible_trading_items, force = 1)
 		add_to_pool(wanted_items, possible_wanted_items, force = 1)
 
@@ -84,7 +84,7 @@
 	if(!trading_pool || !trading_pool.len)
 		return
 	var/list/possible = list()
-	for( var/type in trading_pool)
+	for(var/type in trading_pool)
 		var/status = trading_pool[type]
 		if(status & TRADER_THIS_TYPE)
 			possible += type
@@ -157,7 +157,7 @@
 		return TRADER_NOT_ENOUGH
 	num = Clamp(num, 1, trading_items.len)
 	var/offer_worth = 0
-	for( var/item in offers)
+	for(var/item in offers)
 		var/atom/movable/offer = item
 		var/is_wanted = 0
 		if((trade_flags & TRADER_WANTED_ONLY) && is_type_in_list(offer,wanted_items))
@@ -223,7 +223,7 @@
 
 /datum/trader/proc/trade(list/offers, num, turf/location)
 	if(offers && offers.len)
-		for( var/offer in offers)
+		for(var/offer in offers)
 			if(istype(offer,/mob))
 				var/text = mob_transfer_message
 				to_chat(offer, replacetext(text, "ORIGIN", origin))
@@ -253,7 +253,7 @@
 
 	. = get_response("what_want", "Hm, I want")
 	var/list/want_english = list()
-	for( var/type in wanted_items)
+	for(var/type in wanted_items)
 		var/atom/a = type
 		want_english += initial(a.name)
 	. += " [english_list(want_english)]"
@@ -266,7 +266,7 @@
 
 	var/wanted
 	. = 0
-	for( var/offer in offers)
+	for(var/offer in offers)
 		if((trade_flags & TRADER_WANTED_ONLY) && is_type_in_list(offer,wanted_items))
 			wanted = 1
 		else if((trade_flags & TRADER_WANTED_ALL) && is_type_in_list(offer,possible_wanted_items))
@@ -276,7 +276,7 @@
 		. += get_buy_price(offer, wanted, skill)
 
 	playsound(get_turf(offers[1]), 'sound/effects/teleport.ogg', 50, 1)
-	for( var/offer in offers)
+	for(var/offer in offers)
 		qdel(offer)
 
 /datum/trader/proc/bribe_to_stay_longer(amt)

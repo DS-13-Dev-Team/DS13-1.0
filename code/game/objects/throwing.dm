@@ -97,7 +97,7 @@
 //decided whether a movable atom being thrown can pass through the turf it is in.
 /atom/movable/proc/handle_thrown_collision(speed)
 	if(src.throwing)
-		for( var/mob/living/A in get_turf(src))
+		for(var/mob/living/A in get_turf(src))
 			if(A == src)
 				continue
 

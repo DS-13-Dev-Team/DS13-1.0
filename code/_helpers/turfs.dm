@@ -19,7 +19,7 @@
 	if (T.density)
 		T.clear = FALSE
 		return FALSE
-	for( var/atom/A in T)
+	for(var/atom/A in T)
 		if(A.density)
 			T.clear = FALSE
 			if (ignore_mobs && ismob(A))
@@ -33,7 +33,7 @@
 
 /proc/turf_corrupted(atom/A, require_support = TRUE)
 	var/turf/T = get_turf(A)
-	for( var/obj/effect/vine/corruption/C in T)
+	for (var/obj/effect/vine/corruption/C in T)
 		if (require_support && !C.is_supported())
 			return FALSE
 
@@ -46,7 +46,7 @@
 	if (turf_corrupted(A))
 		return TRUE
 
-	for( var/obj/effect/vine/corruption/C in dview(range, A))
+	for (var/obj/effect/vine/corruption/C in dview(range, A))
 		if (require_support && !C.is_supported())
 			continue
 		//TODO here: Check that the corruption is still linked to an undestroyed node. Fail if it is orphaned
@@ -62,7 +62,7 @@
 	if (!T.is_in_visualnet(GLOB.necrovision))
 		return FALSE
 
-	for( var/mob/living/L in dview(range, T))
+	for (var/mob/living/L in dview(range, T))
 		if (L.stat != DEAD && L.is_necromorph())
 			return TRUE
 
@@ -76,7 +76,7 @@
 		return null
 
 	var/list/available_turfs = list()
-	for( var/start_turf in start_turfs)
+	for(var/start_turf in start_turfs)
 		var/mob/M = locate() in start_turf
 		if(!M)
 			available_turfs += start_turf
@@ -89,7 +89,7 @@
 	if(!origin)
 		return
 	var/list/turfs = list()
-	for( var/turf/T in orange(origin, outer_range))
+	for(var/turf/T in orange(origin, outer_range))
 		if(!(T.z in GLOB.using_map.sealed_levels)) // Picking a turf outside the map edge isn't recommended
 			if(T.x >= world.maxx-TRANSITIONEDGE || T.x <= TRANSITIONEDGE)	continue
 			if(T.y >= world.maxy-TRANSITIONEDGE || T.y <= TRANSITIONEDGE)	continue
@@ -159,7 +159,7 @@
 //turfs in turfs_src were translated by shifting the src_origin to the dst_origin
 /proc/get_turf_translation(turf/src_origin, turf/dst_origin, list/turfs_src)
 	var/list/turf_map = list()
-	for( var/turf/source in turfs_src)
+	for(var/turf/source in turfs_src)
 		var/x_pos = (source.x - src_origin.x)
 		var/y_pos = (source.y - src_origin.y)
 		var/z_pos = (source.z - src_origin.z)
@@ -173,7 +173,7 @@
 
 
 /proc/translate_turfs(list/translation, area/base_area = null, turf/base_turf)
-	for( var/turf/source in translation)
+	for(var/turf/source in translation)
 
 		var/turf/target = translation[source]
 
@@ -185,7 +185,7 @@
 			transport_turf_contents(source, target)
 
 	//change the old turfs
-	for( var/turf/source in translation)
+	for(var/turf/source in translation)
 		source.ChangeTurf(base_turf ? base_turf : get_base_turf_by_area(source), 1, 1)
 
 //Transports a turf from a source turf to a target turf, moving all of the turf's contents and making the target a copy of the source.
@@ -194,11 +194,11 @@
 	var/turf/new_turf = target.ChangeTurf(source.type, 1, 1)
 	new_turf.transport_properties_from(source)
 
-	for( var/obj/O in source)
+	for(var/obj/O in source)
 		if(O.simulated)
 			O.forceMove(new_turf)
 
-	for( var/mob/M in source)
+	for(var/mob/M in source)
 		if(isEye(M)) continue // If we need to check for more mobs, I'll add a variable
 		M.forceMove(new_turf)
 
@@ -226,7 +226,7 @@
 */
 /turf/proc/is_seen_by_crew()
 	.=FALSE
-	for( var/mob/living/carbon/human/H as anything in get_viewers(20, /mob/living/carbon/human))
+	for (var/mob/living/carbon/human/H as anything in get_viewers(20, /mob/living/carbon/human))
 		if (H.is_necromorph())
 			//Necromorphs don't count
 			continue
@@ -240,7 +240,7 @@
 
 /atom/proc/get_cardinal_corruption()
 	var/list/turfs = get_cardinal()
-	for( var/turf/T in turfs)
+	for (var/turf/T in turfs)
 		if (!turf_corrupted(T))
 			turfs -= T
 

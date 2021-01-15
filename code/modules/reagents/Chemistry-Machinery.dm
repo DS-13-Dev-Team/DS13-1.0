@@ -100,7 +100,7 @@
 					var/amount = Clamp((text2num(href_list["amount"])), 0, 200)
 					if(sloppy)
 						var/contaminants = fetch_contaminants(user, R, their_reagent)
-						for( var/datum/reagent/reagent in contaminants)
+						for(var/datum/reagent/reagent in contaminants)
 							R.trans_type_to(src, reagent.type, round(rand()*amount/5, 0.1))
 					else
 						mult -= 0.4 * (SKILL_MAX - user.get_skill_value(core_skill))/(SKILL_MAX-SKILL_MIN) //10% loss per skill level down from max
@@ -124,11 +124,11 @@
 					var/contaminants = fetch_contaminants(user, reagents, my_reagents)
 					if(mode)
 						reagents.trans_type_to(beaker, my_reagents.type, amount)
-						for( var/datum/reagent/reagent in contaminants)
+						for(var/datum/reagent/reagent in contaminants)
 							reagents.trans_type_to(beaker, reagent.type, round(rand()*amount, 0.1))
 					else
 						reagents.remove_reagent(my_reagents.type, amount)
-						for( var/datum/reagent/reagent in contaminants)
+						for(var/datum/reagent/reagent in contaminants)
 							reagents.remove_reagent(reagent.type, round(rand()*amount, 0.1))
 
 		else if (href_list["removecustom"])
@@ -189,14 +189,14 @@
 		else if(href_list["change_pill"])
 			#define MAX_PILL_SPRITE 25 //max icon state of the pill sprites
 			var/dat = "<table>"
-			for( var/i = 1 to MAX_PILL_SPRITE)
+			for(var/i = 1 to MAX_PILL_SPRITE)
 				dat += "<tr><td><a href=\"?src=\ref[src]&pill_sprite=[i]\"><img src=\"pill[i].png\" /></a></td></tr>"
 			dat += "</table>"
 			show_browser(user, dat, "window=chem_master")
 			return
 		else if(href_list["change_bottle"])
 			var/dat = "<table>"
-			for( var/sprite in BOTTLE_SPRITES)
+			for(var/sprite in BOTTLE_SPRITES)
 				dat += "<tr><td><a href=\"?src=\ref[src]&bottle_sprite=[sprite]\"><img src=\"[sprite].png\" /></a></td></tr>"
 			dat += "</table>"
 			show_browser(user, dat, "window=chem_master")
@@ -210,7 +210,7 @@
 
 /obj/machinery/chem_master/proc/fetch_contaminants(mob/user, datum/reagents/reagents, datum/reagent/main_reagent)
 	. = list()
-	for( var/datum/reagent/reagent in reagents.reagent_list)
+	for(var/datum/reagent/reagent in reagents.reagent_list)
 		if(reagent == main_reagent)
 			continue
 		if(prob(user.skill_fail_chance(core_skill, 100)))
@@ -251,9 +251,9 @@
 	if(!(user.client in has_sprites))
 		spawn()
 			has_sprites += user.client
-			for( var/i = 1 to MAX_PILL_SPRITE)
+			for(var/i = 1 to MAX_PILL_SPRITE)
 				usr << browse_rsc(icon('icons/obj/chemical.dmi', "pill" + num2text(i)), "pill[i].png")
-			for( var/sprite in BOTTLE_SPRITES)
+			for(var/sprite in BOTTLE_SPRITES)
 				usr << browse_rsc(icon('icons/obj/chemical.dmi', sprite), "[sprite].png")
 	var/dat = list()
 	dat += "<TITLE>[name]</TITLE>"
@@ -277,7 +277,7 @@
 			dat += "Beaker is empty."
 		else
 			dat += "Add to buffer:<BR>"
-			for( var/datum/reagent/G in R.reagent_list)
+			for(var/datum/reagent/G in R.reagent_list)
 				dat += "[G.name], [G.volume] Units - "
 				dat += "<A href='?src=\ref[src];analyze=\ref[G]'>(Analyze)</A> "
 				dat += "<A href='?src=\ref[src];add=\ref[G];amount=1'>(1)</A> "
@@ -288,7 +288,7 @@
 
 		dat += "<HR>Transfer to <A href='?src=\ref[src];toggle=1'>[(!mode ? "disposal" : "beaker")]:</A><BR>"
 		if(reagents.total_volume)
-			for( var/datum/reagent/N in reagents.reagent_list)
+			for(var/datum/reagent/N in reagents.reagent_list)
 				dat += "[N.name], [N.volume] Units - "
 				dat += "<A href='?src=\ref[src];analyze=\ref[N]'>(Analyze)</A> "
 				dat += "<A href='?src=\ref[src];remove=\ref[N];amount=1'>(1)</A> "
@@ -374,7 +374,7 @@
 	if(istype(O,/obj/item/weapon/storage/plants))
 		var/obj/item/weapon/storage/plants/bag = O
 		var/failed = 1
-		for( var/obj/item/G in O.contents)
+		for(var/obj/item/G in O.contents)
 			if(!G.reagents || !G.reagents.total_volume)
 				continue
 			failed = 0
@@ -436,7 +436,7 @@
 	var/dat = list()
 
 	if(!inuse)
-		for( var/obj/item/O in holdingitems)
+		for (var/obj/item/O in holdingitems)
 			processing_chamber += "\A [O.name]<BR>"
 
 		if (!processing_chamber)
@@ -448,7 +448,7 @@
 			is_beaker_ready = 1
 			beaker_contents = "<B>The beaker contains:</B><br>"
 			var/anything = 0
-			for( var/datum/reagent/R in beaker.reagents.reagent_list)
+			for(var/datum/reagent/R in beaker.reagents.reagent_list)
 				anything = 1
 				beaker_contents += "[R.volume] - [R.name]<br>"
 			if(!anything)
@@ -495,7 +495,7 @@
 	if (!holdingitems || holdingitems.len == 0)
 		return
 
-	for( var/obj/item/O in holdingitems)
+	for(var/obj/item/O in holdingitems)
 		O.loc = src.loc
 		holdingitems -= O
 	holdingitems.Cut()
@@ -525,7 +525,7 @@
 
 	var/skill_factor = CLAMP01(1 + 0.3*((user ? user.get_skill_value(SKILL_MEDICAL) - SKILL_EXPERT : 1))/(SKILL_EXPERT - SKILL_MIN))
 	// Process.
-	for( var/obj/item/O in holdingitems)
+	for (var/obj/item/O in holdingitems)
 
 		var/remaining_volume = beaker.reagents.maximum_volume - beaker.reagents.total_volume
 		if(remaining_volume <= 0)
@@ -539,7 +539,7 @@
 
 			var/list/chem_products = material.chem_products
 			var/sheet_volume = 0
-			for( var/chem in chem_products)
+			for(var/chem in chem_products)
 				sheet_volume += chem_products[chem]
 
 			var/amount_to_take = max(0,min(stack.amount,round(remaining_volume/sheet_volume)))
@@ -547,7 +547,7 @@
 				stack.use(amount_to_take)
 				if(QDELETED(stack))
 					holdingitems -= stack
-				for( var/chem in chem_products)
+				for(var/chem in chem_products)
 					beaker.reagents.add_reagent(chem, (amount_to_take*chem_products[chem]*skill_factor))
 				continue
 
@@ -583,7 +583,7 @@
 	addtimer(CALLBACK(src, .proc/shake, user, 40), 0)
 
 /obj/machinery/reagentgrinder/proc/shake(mob/user, duration)
-	for( var/i = 1, i<=duration, i++)
+	for(var/i = 1, i<=duration, i++)
 		sleep(1)
 		if(!user || !Adjacent(user))
 			break

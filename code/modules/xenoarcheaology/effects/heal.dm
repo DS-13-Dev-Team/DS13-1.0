@@ -12,7 +12,7 @@
 
 			if(ishuman(toucher))
 				var/mob/living/carbon/human/H = toucher
-				for( var/obj/item/organ/external/affecting in H.organs)
+				for(var/obj/item/organ/external/affecting in H.organs)
 					if(affecting && istype(affecting))
 						affecting.heal_damage(25 * weakness, 25 * weakness)
 				//H:heal_organ_damage(25, 25)
@@ -35,7 +35,7 @@
 	//todo: check over this properly
 	if(holder)
 		var/turf/T = get_turf(holder)
-		for( var/mob/living/carbon/C in range(src.effectrange,T))
+		for (var/mob/living/carbon/C in range(src.effectrange,T))
 			var/weakness = GetAnomalySusceptibility(C)
 			if(prob(weakness * 100))
 				if(prob(10))
@@ -51,7 +51,7 @@
 	//todo: check over this properly
 	if(holder)
 		var/turf/T = get_turf(holder)
-		for( var/mob/living/carbon/C in range(src.effectrange,T))
+		for (var/mob/living/carbon/C in range(src.effectrange,T))
 			var/weakness = GetAnomalySusceptibility(C)
 			if(prob(weakness * 100))
 				to_chat(C, "<span class='notice'>A wave of energy invigorates you.</span>")

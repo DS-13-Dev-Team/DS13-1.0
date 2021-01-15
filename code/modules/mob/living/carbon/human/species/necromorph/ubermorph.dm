@@ -204,7 +204,7 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 		play_species_audio(src, SOUND_SHOUT_LONG, VOLUME_MAX, 1, 6)//Very loud, heard far away
 		shake_camera(src, 6, 4)
 
-		for( var/mob/living/L in view(species.view_range, src))
+		for (var/mob/living/L in view(species.view_range, src))
 			if (!L.is_necromorph() && L.stat != DEAD)
 				L.take_overall_damage(15)
 

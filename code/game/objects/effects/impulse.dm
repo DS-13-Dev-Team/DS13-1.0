@@ -110,7 +110,7 @@
 	set category = "Debug"
 	set name = "Impulse Test"
 
-	for( var/atom/movable/AM in view(mob, 5))
+	for (var/atom/movable/AM in view(mob, 5))
 		AM.apply_push_impulse_from(mob, 50)
 
 /client/verb/cone_test()
@@ -118,6 +118,6 @@
 	set name = "Cone Test"
 
 	var/list/turfs = get_cone(mob, mob.dir,5, 90)
-	for( var/turf/T as anything in turfs)
+	for (var/turf/T as anything in turfs)
 		debug_mark_turf(T)
 		*/

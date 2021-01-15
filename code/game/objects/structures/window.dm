@@ -311,7 +311,7 @@
 	update_nearby_tiles()
 	var/turf/location = loc
 	. = ..()
-	for( var/obj/structure/window/W in orange(location, 1))
+	for(var/obj/structure/window/W in orange(location, 1))
 		W.update_icon()
 
 
@@ -340,7 +340,7 @@
 //This proc is used to update the icons of nearby windows. It should not be confused with update_nearby_tiles(), which is an atmos proc!
 /obj/structure/window/proc/update_nearby_icons()
 	update_icon()
-	for( var/obj/structure/window/W in orange(src, 1))
+	for(var/obj/structure/window/W in orange(src, 1))
 		W.update_icon()
 
 //Updates the availabiliy of the rotation verbs
@@ -374,14 +374,14 @@
 	var/image/I
 	icon_state = ""
 	if(on_frame)
-		for( var/i = 1 to 4)
+		for(var/i = 1 to 4)
 			if(other_connections[i] != "0")
 				I = image(icon, "[basestate]_other_onframe[connections[i]]", dir = 1<<(i-1))
 			else
 				I = image(icon, "[basestate]_onframe[connections[i]]", dir = 1<<(i-1))
 			overlays += I
 	else
-		for( var/i = 1 to 4)
+		for(var/i = 1 to 4)
 			if(other_connections[i] != "0")
 				I = image(icon, "[basestate]_other[connections[i]]", dir = 1<<(i-1))
 			else
@@ -559,7 +559,7 @@
 /obj/structure/window/proc/update_onframe()
 	var/success = FALSE
 	var/turf/T = get_turf(src)
-	for( var/obj/O in T)
+	for(var/obj/O in T)
 		if(istype(O, /obj/structure/wall_frame))
 			success = TRUE
 		if(success)
@@ -593,7 +593,7 @@
 	active = !active
 	update_icon()
 
-	for( var/obj/structure/window/reinforced/polarized/W in range(src,range))
+	for(var/obj/structure/window/reinforced/polarized/W in range(src,range))
 		if (W.id == src.id || !W.id)
 			spawn(0)
 				W.toggle()

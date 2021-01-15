@@ -40,7 +40,7 @@ var/list/flooring_cache = list()
 			if (isnull(set_update_icon))
 
 				//Check the cardinal turfs
-				for( var/step_dir in GLOB.cardinal)
+				for(var/step_dir in GLOB.cardinal)
 					var/turf/simulated/floor/T = get_step(src, step_dir)
 
 					//Test link is a flooring proc but its defined farther down in this file
@@ -128,7 +128,7 @@ var/list/flooring_cache = list()
 				overlays |= get_damage_overlay("scorched[n]-[plane]-[get_damagepercent()]", "burned[n]")
 
 	if(update_neighbors)
-		for( var/turf/simulated/floor/F in trange(1, src))
+		for(var/turf/simulated/floor/F in trange(1, src))
 			if(F == src)
 				continue
 			F.update_icon()
@@ -189,14 +189,14 @@ var/list/flooring_cache = list()
 
 				//If we get here it must be using a whitelist or blacklist
 				if (floor_smooth == SMOOTH_WHITELIST)
-					for( var/v in flooring_whitelist)
+					for (var/v in flooring_whitelist)
 						if (istype(t.flooring, v))
 							//Found a match on the list
 							is_linked = TRUE
 							break
 				else if(floor_smooth == SMOOTH_BLACKLIST)
 					is_linked = TRUE //Default to true for the blacklist, then make it false if a match comes up
-					for( var/v in flooring_whitelist)
+					for (var/v in flooring_whitelist)
 						if (istype(t.flooring, v))
 							//Found a match on the list
 							is_linked = FALSE
@@ -212,7 +212,7 @@ var/list/flooring_cache = list()
 	//And then this value becomes its priority
 	if (smooth_movable_atom != SMOOTH_NONE)
 		if (smooth_movable_atom == SMOOTH_WHITELIST || smooth_movable_atom == SMOOTH_GREYLIST)
-			for( var/list/v in movable_atom_whitelist)
+			for (var/list/v in movable_atom_whitelist)
 				var/d_type = v[1]
 				var/list/d_vars = v[2]
 				var/d_priority = v[3]
@@ -221,7 +221,7 @@ var/list/flooring_cache = list()
 					continue
 
 				//Ok, now we start testing all the atoms in the target turf
-				for( var/a in T) //No implicit typecasting here, faster
+				for (var/a in T) //No implicit typecasting here, faster
 
 					if (istype(a, d_type))
 						//It's the right type, so we're sure it will have the vars we want.
@@ -236,7 +236,7 @@ var/list/flooring_cache = list()
 
 
 						var/match = TRUE
-						for( var/d_var in d_vars)
+						for (var/d_var in d_vars)
 							//For each variable we want to check
 							if (AM.vars[d_var] != d_vars[d_var])
 								//We get a var of the same name from the atom's vars list.
@@ -255,7 +255,7 @@ var/list/flooring_cache = list()
 
 		if (smooth_movable_atom == SMOOTH_BLACKLIST || smooth_movable_atom == SMOOTH_GREYLIST)
 			//All of this blacklist code is copypasted from above, with only minor name changes
-			for( var/list/v in movable_atom_blacklist)
+			for (var/list/v in movable_atom_blacklist)
 				var/d_type = v[1]
 				var/list/d_vars = v[2]
 				var/d_priority = v[3]
@@ -264,7 +264,7 @@ var/list/flooring_cache = list()
 					continue
 
 				//Ok, now we start testing all the atoms in the target turf
-				for( var/a in T) //No implicit typecasting here, faster
+				for (var/a in T) //No implicit typecasting here, faster
 
 					if (istype(a, d_type))
 						//It's the right type, so we're sure it will have the vars we want.
@@ -278,7 +278,7 @@ var/list/flooring_cache = list()
 						//From here on out, we do dangerous stuff that may runtime if the coder screwed up
 
 						var/match = TRUE
-						for( var/d_var in d_vars)
+						for (var/d_var in d_vars)
 							//For each variable we want to check
 							if (AM.vars[d_var] != d_vars[d_var])
 								//We get a var of the same name from the atom's vars list.

@@ -63,7 +63,7 @@ var/list/integrated_circuit_blacklist = list(/obj/item/integrated_circuit, /obj/
 	dat += "<center><b>Integrated Circuit Printer<br>\
 				Metal: [metal]/[maxMetal]</b><br>\
 				<a href='?src=\ref[src];mode=Circuits'>Circuits</a>	<a href='?src=\ref[src];mode=Assemblies'>Assemblies</a></center><br><br>"
-	for( var/type in recipe_list[mode])
+	for(var/type in recipe_list[mode])
 		var/obj/O = type
 		dat += "<A href='?src=\ref[src];build=\ref[type]'>[initial(O.name)]</A>: [initial(O.desc)]<br>"
 
@@ -95,7 +95,7 @@ var/list/integrated_circuit_blacklist = list(/obj/item/integrated_circuit, /obj/
 /obj/machinery/integrated_circuit_printer/RefreshParts()
 	maxMetal = 0
 	metal_mult = 0
-	for( var/obj/item/weapon/stock_parts/S in component_parts)
+	for(var/obj/item/weapon/stock_parts/S in component_parts)
 		if(istype(S,/obj/item/weapon/stock_parts/matter_bin))
 			maxMetal += 100 * S.rating
 		else

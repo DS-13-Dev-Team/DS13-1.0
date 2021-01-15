@@ -111,7 +111,7 @@
 			id_login = id.associated_email_login.Copy()
 
 	var/datum/computer_file/data/email_account/target
-	for( var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
+	for(var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
 		if(!account || !account.can_login)
 			continue
 		if(id_login && id_login["login"] == account.login)
@@ -199,7 +199,7 @@
 		data["current_account"] = current_account.login
 		if(addressbook)
 			var/list/all_accounts = list()
-			for( var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
+			for(var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
 				if(!account.can_login)
 					continue
 				all_accounts.Add(list(list(
@@ -244,7 +244,7 @@
 			if(message_source)
 				data["folder"] = folder
 				var/list/all_messages = list()
-				for( var/datum/computer_file/data/email_message/message in message_source)
+				for(var/datum/computer_file/data/email_message/message in message_source)
 					all_messages.Add(list(list(
 						"title" = message.title,
 						"body" = pencode2html(message.stored_data),
@@ -275,7 +275,7 @@
 	if(istext(fuid))
 		fuid = text2num(fuid)
 
-	for( var/datum/computer_file/data/email_message/message in current_account.all_emails())
+	for(var/datum/computer_file/data/email_message/message in current_account.all_emails())
 		if(message.uid == fuid)
 			return message
 
@@ -514,7 +514,7 @@
 			return 1
 
 		var/list/filenames = list()
-		for( var/datum/computer_file/CF in MC.hard_drive.stored_files)
+		for(var/datum/computer_file/CF in MC.hard_drive.stored_files)
 			if(CF.unsendable)
 				continue
 			filenames.Add(CF.filename)
@@ -527,7 +527,7 @@
 			error = "Error uploading file. Are you using a functional and NTOSv2-compliant device?"
 			return 1
 
-		for( var/datum/computer_file/CF in MC.hard_drive.stored_files)
+		for(var/datum/computer_file/CF in MC.hard_drive.stored_files)
 			if(CF.unsendable)
 				continue
 			if(CF.filename == picked_file)

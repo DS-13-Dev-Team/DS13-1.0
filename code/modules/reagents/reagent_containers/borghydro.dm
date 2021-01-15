@@ -26,7 +26,7 @@
 /obj/item/weapon/reagent_containers/borghypo/Initialize()
 	. = ..()
 
-	for( var/T in reagent_ids)
+	for(var/T in reagent_ids)
 		reagent_volumes[T] = volume
 		var/datum/reagent/R = T
 		reagent_names += initial(R.name)
@@ -47,7 +47,7 @@
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
 		if(R && R.cell)
-			for( var/T in reagent_ids)
+			for(var/T in reagent_ids)
 				if(reagent_volumes[T] < volume)
 					R.cell.use(charge_cost)
 					reagent_volumes[T] = min(reagent_volumes[T] + 5, volume)
@@ -85,7 +85,7 @@
 
 /obj/item/weapon/reagent_containers/borghypo/attack_self(mob/user as mob) //Change the mode
 	var/t = ""
-	for( var/i = 1 to reagent_ids.len)
+	for(var/i = 1 to reagent_ids.len)
 		if(t)
 			t += ", "
 		if(mode == i)

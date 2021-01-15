@@ -50,7 +50,7 @@
 	if (stat & POWEROFF)
 		return PROCESS_KILL
 
-	for( var/atom/A as anything in content_atoms)
+	for (var/atom/A as anything in content_atoms)
 		var/change = A.adjust_biomass(-breakdown_rate)
 		add_purified_biomass(abs(change)*BIOMASS_TO_REAGENT)
 
@@ -61,7 +61,7 @@
 		if (stat & POWEROFF)
 			break
 
-	for( var/datum/reagent/R as anything in reagents.reagent_list)
+	for (var/datum/reagent/R as anything in reagents.reagent_list)
 		var/biomass_mult = R.biomass	//Cache this because R is likely to be deleted in the next step
 		var/change = reagents.remove_reagent(R.type, reagent_breakdown_rate)
 		if(biomass_mult)
@@ -105,7 +105,7 @@
 
 	if(istype(I, /obj/item/weapon/storage))
 		var/obj/item/weapon/storage/T = I
-		for( var/obj/item/O in T.contents)
+		for(var/obj/item/O in T.contents)
 			if (is_valid(O, user))
 				T.remove_from_storage(O,src)
 				insert_atom(O, user)

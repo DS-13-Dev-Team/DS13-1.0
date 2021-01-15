@@ -80,7 +80,7 @@
 	if(GR)
 		qdel(GR)
 		return
-	for( var/obj/machinery/door/D in T) // There can be several - and some of them can be open, locate() is not suitable
+	for(var/obj/machinery/door/D in T) // There can be several - and some of them can be open, locate() is not suitable
 		if(D.density)
 			D.ex_act(2, src)
 			return
@@ -108,7 +108,7 @@
 		return
 
 	// Above things, we destroy completely and thus can use locate. Mobs are different.
-	for( var/mob/living/L in T)
+	for(var/mob/living/L in T)
 		if(L.stat == DEAD)
 			continue
 		L.visible_message("<span class='danger'>The blob attacks \the [L]!</span>", "<span class='danger'>The blob attacks you!</span>")

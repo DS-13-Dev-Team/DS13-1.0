@@ -25,7 +25,7 @@
 		return
 	else
 		var/paper_result
-		for( var/shred_type in shred_amounts)
+		for(var/shred_type in shred_amounts)
 			if(istype(W, shred_type))
 				paper_result = shred_amounts[shred_type]
 		if(paper_result)
@@ -37,7 +37,7 @@
 			playsound(src.loc, 'sound/items/pshred.ogg', 75, 1)
 			if(paperamount > max_paper)
 				to_chat(user, "<span class='danger'>\The [src] was too full, and shredded paper goes everywhere!</span>")
-				for( var/i=(paperamount-max_paper);i>0;i--)
+				for(var/i=(paperamount-max_paper);i>0;i--)
 					var/obj/item/weapon/shreddedp/SP = get_shredded_paper()
 					SP.loc = get_turf(src)
 					SP.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),1,5)

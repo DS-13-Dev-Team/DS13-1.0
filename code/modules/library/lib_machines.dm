@@ -43,13 +43,13 @@
 		return
 
 	if(href_list["scan"])
-		for( var/obj/item/weapon/book/B in contents)
+		for(var/obj/item/weapon/book/B in contents)
 			cache = B
 			break
 	if(href_list["clear"])
 		cache = null
 	if(href_list["eject"])
-		for( var/obj/item/weapon/book/B in contents)
+		for(var/obj/item/weapon/book/B in contents)
 			B.loc = src.loc
 	src.add_fingerprint(usr)
 	src.updateUsrDialog()

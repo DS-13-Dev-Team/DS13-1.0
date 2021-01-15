@@ -144,7 +144,7 @@
 		overlays += image('icons/obj/pipes.dmi', "turb-o", FLY_LAYER)
 
 
-	for( var/mob/M in viewers(1, src))
+	for(var/mob/M in viewers(1, src))
 		if ((M.client && M.machine == src))
 			src.interact(M)
 	AutoUpdateAI(src)
@@ -200,11 +200,11 @@
 
 /obj/machinery/computer/turbine_computer/Initialize()
 	. = ..()
-	for( var/obj/machinery/compressor/C in SSmachines.machinery)
+	for(var/obj/machinery/compressor/C in SSmachines.machinery)
 		if(id == C.comp_id)
 			compressor = C
 	doors = new /list()
-	for( var/obj/machinery/door/blast/P in SSmachines.machinery)
+	for(var/obj/machinery/door/blast/P in SSmachines.machinery)
 		if(P.id == id)
 			doors += P
 
@@ -218,7 +218,7 @@
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 				new /obj/item/weapon/material/shard( src.loc )
 				var/obj/item/weapon/circuitboard/turbine_control/M = new /obj/item/weapon/circuitboard/turbine_control( A )
-				for( var/obj/C in src)
+				for (var/obj/C in src)
 					C.loc = src.loc
 				M.id = src.id
 				A.circuit = M
@@ -230,7 +230,7 @@
 				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 				var/obj/item/weapon/circuitboard/turbine_control/M = new /obj/item/weapon/circuitboard/turbine_control( A )
-				for( var/obj/C in src)
+				for (var/obj/C in src)
 					C.loc = src.loc
 				M.id = src.id
 				A.circuit = M
@@ -275,7 +275,7 @@
 		src.compressor.starter = !src.compressor.starter
 		. = TOPIC_REFRESH
 	else if (href_list["doors"])
-		for( var/obj/machinery/door/blast/D in src.doors)
+		for(var/obj/machinery/door/blast/D in src.doors)
 			if (door_status == 0)
 				spawn( 0 )
 					D.open()

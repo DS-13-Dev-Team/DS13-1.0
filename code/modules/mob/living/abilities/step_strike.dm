@@ -38,7 +38,7 @@
 		target = null
 		//If no target was passed, lets find one
 		//Also applies in the more likely scenario where the passed target is not a living mob
-		for( var/mob/living/L in orange(_distance+1, src))	//We search in distance+1 range since we'll be able to strike adjacent tiles after moving
+		for (var/mob/living/L in orange(_distance+1, src))	//We search in distance+1 range since we'll be able to strike adjacent tiles after moving
 			if (L == src)
 				continue	//Don't hit yourself
 			if (src.is_allied(L))
@@ -65,7 +65,7 @@
 	//First of all, lets pick a target location.
 	//This must be a tile adjacent to the target mob, which is within distance tiles of the user
 	var/list/candidates = list()
-	for( var/turf/T in orange(1, target))
+	for (var/turf/T in orange(1, target))
 		if (get_dist(user, T) <= distance)
 			candidates += T
 

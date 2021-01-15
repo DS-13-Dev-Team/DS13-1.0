@@ -36,7 +36,7 @@
 	//grille placing begin
 	if(istype(W, /obj/item/stack/rods))
 		var/obj/item/stack/rods/ST = W
-		for( var/obj/structure/window/WINDOW in loc)
+		for(var/obj/structure/window/WINDOW in loc)
 			if(WINDOW.dir == get_dir(src, user))
 				to_chat(user, "<span class='notice'>There is a window in the way.</span>")
 				return
@@ -63,13 +63,13 @@
 		if(!ST.material.created_window)
 			return 0
 
-		for( var/obj/structure/window/WINDOW in loc)
+		for(var/obj/structure/window/WINDOW in loc)
 			if(WINDOW)
 				to_chat(user, "<span class='notice'>There is already a window here.</span>")
 				return
 		to_chat(user, "<span class='notice'>You start placing the window.</span>")
 		if(do_after(user,20,src))
-			for( var/obj/structure/window/WINDOW in loc)
+			for(var/obj/structure/window/WINDOW in loc)
 				if(WINDOW)//checking this for a 2nd time to check if a window was made while we were waiting.
 					to_chat(user, "<span class='notice'>There is already a window here.</span>")
 					return
@@ -84,7 +84,7 @@
 	//window placing end
 
 	if(isWrench(W))
-		for( var/obj/structure/S in loc)
+		for(var/obj/structure/S in loc)
 			if(istype(S, /obj/structure/window))
 				to_chat(user, "<span class='notice'>There is still a window on the low wall!</span>")
 				return
@@ -115,7 +115,7 @@
 	var/image/I
 
 
-	for( var/i = 1 to 4)
+	for(var/i = 1 to 4)
 		if(other_connections[i] != "0")
 			I = image('icons/obj/wall_frame.dmi', "frame_other[connections[i]]", dir = 1<<(i-1))
 		else
@@ -123,7 +123,7 @@
 		overlays += I
 
 	if(stripe_color)
-		for( var/i = 1 to 4)
+		for(var/i = 1 to 4)
 			if(other_connections[i] != "0")
 				I = image('icons/obj/wall_frame.dmi', "stripe_other[connections[i]]", dir = 1<<(i-1))
 			else
@@ -144,7 +144,7 @@
 	. = ..()
 	if(prob(40))
 		var/spacefacing = FALSE
-		for( var/direction in GLOB.cardinal)
+		for(var/direction in GLOB.cardinal)
 			var/turf/T = get_step(src, direction)
 			var/area/A = get_area(T)
 			if(A && (A.area_flags & AREA_FLAG_EXTERNAL))

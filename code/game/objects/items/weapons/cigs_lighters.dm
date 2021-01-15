@@ -226,7 +226,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/New()
 	..()
-	for( var/R in filling)
+	for(var/R in filling)
 		reagents.add_reagent(R, filling[R])
 
 /obj/item/clothing/mask/smokable/cigarette/update_icon()
@@ -494,7 +494,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/weapon/reagent_containers/terrbacco/New()
 	..()
-	for( var/R in filling)
+	for(var/R in filling)
 		reagents.add_reagent(R, filling[R])
 
 /obj/item/weapon/reagent_containers/terrbacco/bad
@@ -814,7 +814,7 @@ obj/item/clothing/mask/chewable/New()
 	..()
 	atom_flags |= ATOM_FLAG_NO_REACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
-	for( var/R in filling)
+	for(var/R in filling)
 		reagents.add_reagent(R, filling[R])
 
 /obj/item/clothing/mask/chewable/equipped()

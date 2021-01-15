@@ -227,7 +227,7 @@
 	src.update_icon()
 	src.updateUsrDialog()
 /*
-	for( var/mob/M in viewers(1, src))
+	for(var/mob/M in viewers(1, src))
 		if ((M.client && M.machine == src))
 			src.attack_hand(M)
 */
@@ -264,17 +264,17 @@ obj/machinery/atmospherics/trinary/filter/m_filter/New()
 	var/node2_connect = turn(dir, 90)
 	var/node3_connect = dir
 
-	for( var/obj/machinery/atmospherics/target in get_step(src,node1_connect))
+	for(var/obj/machinery/atmospherics/target in get_step(src,node1_connect))
 		if(target.initialize_directions & get_dir(target,src))
 			node1 = target
 			break
 
-	for( var/obj/machinery/atmospherics/target in get_step(src,node2_connect))
+	for(var/obj/machinery/atmospherics/target in get_step(src,node2_connect))
 		if(target.initialize_directions & get_dir(target,src))
 			node2 = target
 			break
 
-	for( var/obj/machinery/atmospherics/target in get_step(src,node3_connect))
+	for(var/obj/machinery/atmospherics/target in get_step(src,node3_connect))
 		if(target.initialize_directions & get_dir(target,src))
 			node3 = target
 			break

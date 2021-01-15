@@ -20,11 +20,11 @@
 		var/list/turfs = list(get_step(mover, turn(charge_direction, 90)), get_step(mover, turn(charge_direction, -90)))
 
 		var/continue_charge = TRUE
-		for( var/turf/T in turfs)
+		for (var/turf/T in turfs)
 			if (!continue_charge)
 				break
 
-			for( var/mob/A in T)
+			for (var/mob/A in T)
 				if (ismob(A))
 					continue_charge = src.bump(mover, A)
 

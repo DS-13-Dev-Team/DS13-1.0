@@ -71,7 +71,7 @@
 
 /obj/machinery/disease2/diseaseanalyser/proc/get_fake_effects()
 	. = list()
-	for( var/datum/disease2/effect/E in dish.virus2.effects)
+	for(var/datum/disease2/effect/E in dish.virus2.effects)
 		if((operator_skill <= SKILL_BASIC && prob(60)) || (operator_skill == SKILL_ADEPT && prob(80)) || (operator_skill > SKILL_ADEPT))
 			. += E //Passed skill check, use real effect
 		else

@@ -7,7 +7,7 @@
 	anchored = 1
 
 /obj/machinery/disease2/biodestroyer/attackby(obj/I as obj, mob/user as mob)
-	for( var/path in accepts)
+	for(var/path in accepts)
 		if(I.type in typesof(path))
 			qdel(I)
 			overlays += image('icons/obj/pipes/disposal.dmi', "dispover-handle")
@@ -15,5 +15,5 @@
 	if(!user.unEquip(I, get_turf(src)))
 		return
 
-	for( var/mob/O in hearers(src, null))
+	for(var/mob/O in hearers(src, null))
 		O.show_message("\icon[src] <span class='notice'>\The [src] beeps</span>", 2)

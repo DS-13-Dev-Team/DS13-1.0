@@ -41,7 +41,7 @@
 		if(has_extension(has_suit, /datum/extension/holster))
 			remove_verb = FALSE
 
-		for( var/obj/accessory in has_suit.accessories)
+		for(var/obj/accessory in has_suit.accessories)
 			if(accessory == src)
 				continue
 			if(has_extension(accessory, /datum/extension/holster))

@@ -39,7 +39,7 @@ var/list/all_virtual_listeners = list()
 /mob/observer/virtual/update_icon()
 	if(!overlay_icons)
 		overlay_icons = list()
-		for( var/i_state in icon_states(icon))
+		for(var/i_state in icon_states(icon))
 			overlay_icons[i_state] = image(icon = icon, icon_state = i_state)
 	overlays.Cut()
 

@@ -37,7 +37,7 @@
 
 /mob/living/deity/proc/grant_spell(mob/living/target, spell/spell)
 	var/datum/mind/M = target.mind
-	for( var/s in M.learned_spells)
+	for(var/s in M.learned_spells)
 		var/spell/S = s
 		if(istype(S, spell.type))
 			to_chat(src, "<span class='warning'>They already know that spell!</span>")

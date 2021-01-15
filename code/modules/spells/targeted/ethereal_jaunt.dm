@@ -16,7 +16,7 @@
 	hud_state = "wiz_jaunt"
 
 /spell/targeted/ethereal_jaunt/cast(list/targets) //magnets, so mostly hardcoded
-	for( var/mob/living/target in targets)
+	for(var/mob/living/target in targets)
 		if(HAS_TRANSFORMATION_MOVEMENT_HANDLER(target))
 			continue
 
@@ -47,7 +47,7 @@
 			jaunt_reappear(animation, target)
 			sleep(5)
 			if(!target.forceMove(mobloc))
-				for( var/direction in list(1,2,4,8,5,6,9,10))
+				for(var/direction in list(1,2,4,8,5,6,9,10))
 					var/turf/T = get_step(mobloc, direction)
 					if(T)
 						if(target.forceMove(T))
@@ -91,7 +91,7 @@
 
 /obj/effect/dummy/spell_jaunt/Destroy()
 	// Eject contents if deleted somehow
-	for( var/atom/movable/AM in src)
+	for(var/atom/movable/AM in src)
 		AM.dropInto(loc)
 	return ..()
 

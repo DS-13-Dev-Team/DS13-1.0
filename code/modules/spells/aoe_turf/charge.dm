@@ -13,11 +13,11 @@
 	hud_state = "wiz_charge"
 
 /spell/aoe_turf/charge/cast(list/targets, mob/user)
-	for( var/turf/T in targets)
+	for(var/turf/T in targets)
 		depth_cast(T)
 
 /spell/aoe_turf/charge/proc/depth_cast(list/targets)
-	for( var/atom/A in targets)
+	for(var/atom/A in targets)
 		if(A.contents.len)
 			depth_cast(A.contents)
 		cast_charge(A)
@@ -26,7 +26,7 @@
 	if(!M.mind)
 		return
 	if(M.mind.learned_spells.len != 0)
-		for( var/spell/S in M.mind.learned_spells)
+		for(var/spell/S in M.mind.learned_spells)
 			if(!istype(S, /spell/aoe_turf/charge))
 				S.charge_counter = S.charge_max
 		to_chat(M, "<span class='notice'>You feel raw magic flowing through you, it feels good!</span>")

@@ -32,7 +32,7 @@
 
 /mob/living/carbon/human/proc/recheck_bad_external_organs()
 	var/damage_this_tick = getToxLoss()
-	for( var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in organs)
 		damage_this_tick += O.burn_dam + O.brute_dam
 
 	if(damage_this_tick > last_dam)
@@ -46,11 +46,11 @@
 
 	if(force_process)
 		bad_external_organs.Cut()
-		for( var/obj/item/organ/external/Ex in organs)
+		for(var/obj/item/organ/external/Ex in organs)
 			bad_external_organs |= Ex
 
 	//processing internal organs is pretty cheap, do that first.
-	for( var/obj/item/organ/I in internal_organs)
+	for(var/obj/item/organ/I in internal_organs)
 		I.Process()
 
 	handle_stance()
@@ -59,7 +59,7 @@
 	if(!force_process && !bad_external_organs.len)
 		return
 
-	for( var/obj/item/organ/external/E in bad_external_organs)
+	for(var/obj/item/organ/external/E in bad_external_organs)
 		if(!E)
 			continue
 		if(!E.need_process())
@@ -77,7 +77,7 @@
 
 				//Moving makes open wounds get infected much faster
 				if (E.wounds.len)
-					for( var/datum/wound/W in E.wounds)
+					for(var/datum/wound/W in E.wounds)
 						if (W.infection_check())
 							W.germ_level += 1
 
@@ -99,7 +99,7 @@
 		return
 
 	var/limb_pain
-	for( var/limb_tag in species.locomotion_limbs)
+	for(var/limb_tag in species.locomotion_limbs)
 		var/obj/item/organ/external/E = organs_by_name[limb_tag]
 		if(!E || !E.is_usable())
 			stance_damage += 2 // let it fail even if just foot&leg
@@ -158,7 +158,7 @@
 	if(!l_hand && !r_hand)
 		return
 
-	for( var/obj/item/organ/external/E in organs)
+	for (var/obj/item/organ/external/E in organs)
 		if(!E || !(E.limb_flags & ORGAN_FLAG_CAN_GRASP))
 			continue
 		if(((E.is_broken() || E.is_dislocated()) && !E.splinted) || E.is_malfunctioning())
@@ -225,7 +225,7 @@
 
 /mob/living/carbon/human/proc/sync_organ_dna()
 	var/list/all_bits = internal_organs|organs
-	for( var/obj/item/organ/O in all_bits)
+	for(var/obj/item/organ/O in all_bits)
 		O.set_dna(dna)
 
 /mob/living/proc/is_asystole()
@@ -274,7 +274,7 @@
 //Returns a list of all organs which have no children
 /mob/living/carbon/human/proc/get_extremities()
 	var/list/extremities = organs.Copy()
-	for( var/obj/item/organ/external/E in extremities)
+	for (var/obj/item/organ/external/E in extremities)
 		if (E.is_stump() || E.loc != src)
 			//Stumps don't count as organs, remove it from this list
 			extremities.Remove(E)
@@ -290,9 +290,9 @@
 /mob/proc/get_locomotion_limbs(include_stump = FALSE)
 	return list()
 
-/mob/living/carbon/human/get_locomotion_limbs(include_stump = FALSE)
+/mob/living/carbon/human/get_locomotion_limbs(var/include_stump = FALSE)
 	var/found = list()
-	for( var/organ_tag in species.locomotion_limbs)
+	for (var/organ_tag in species.locomotion_limbs)
 		var/obj/item/organ/external/E = get_organ(organ_tag)
 		if (!E)
 			continue
@@ -315,7 +315,7 @@
 	var/list/limbs = list()
 
 	//Todo: Pick a better sublist for this
-	for( var/obj/item/organ/external/E in organs)
+	for (var/obj/item/organ/external/E in organs)
 
 		//If its below our entire height range, we don't overlap
 		if (E.limb_height.y < ourheight.x)
@@ -348,7 +348,7 @@
 		suffix = species.icon_lying
 
 	//Lets go through all the organs we're supposed to have
-	for( var/organ_tag in species.has_limbs)
+	for (var/organ_tag in species.has_limbs)
 		var/obj/item/organ/external/E = get_organ(organ_tag)
 
 		//If we still have the organ, we're cool, continue
@@ -409,7 +409,7 @@
 	if (species)
 		damage_mask_icon = species.damage_mask
 
-	for( var/iconstate in missing_icon_names)
+	for (var/iconstate in missing_icon_names)
 		var/icon/limb_icon = new(damage_mask_icon, iconstate)
 		base_icon.Blend(limb_icon,ICON_OVERLAY)
 

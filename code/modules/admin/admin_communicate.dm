@@ -72,7 +72,7 @@
 		content_data = list()
 
 		var/list/radios = list()
-		for( var/channel in radiochannels)
+		for (var/channel in radiochannels)
 			radios += channel
 
 		content_data["radio"] = radios
@@ -83,7 +83,7 @@
 		var/list/channels = decls_repository.get_decls_of_subtype(/decl/communication_channel)
 
 		var/list/meta_names = list()
-		for( var/ctype in channels)
+		for (var/ctype in channels)
 			var/decl/communication_channel/C = channels[ctype]	//Get the object
 			if (C.allow_admincomm)
 				meta_names += C.name

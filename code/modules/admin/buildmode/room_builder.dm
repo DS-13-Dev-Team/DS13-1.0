@@ -76,8 +76,8 @@
 	var/high_bound_x = lower_left_corner.x + abs(width)
 	var/high_bound_y = lower_left_corner.y + abs(height)
 
-	for( var/i = low_bound_x, i <= high_bound_x, i++)
-		for( var/j = low_bound_y, j <= high_bound_y, j++)
+	for(var/i = low_bound_x, i <= high_bound_x, i++)
+		for(var/j = low_bound_y, j <= high_bound_y, j++)
 			var/turf/T = locate(i, j, z_level)
 			if(i == low_bound_x || i == high_bound_x || j == low_bound_y || j == high_bound_y)
 				if(ispath(wall_type, /turf))

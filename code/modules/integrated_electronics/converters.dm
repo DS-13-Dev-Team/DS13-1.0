@@ -107,7 +107,7 @@
 
 /obj/item/integrated_circuit/converter/concatenatior/do_work()
 	var/result = list()
-	for( var/datum/integrated_io/input/I in inputs)
+	for(var/datum/integrated_io/input/I in inputs)
 		I.pull_data()
 		if(istext(I.data))
 			result = result + I.data

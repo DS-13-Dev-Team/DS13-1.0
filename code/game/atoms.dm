@@ -188,12 +188,12 @@
 
 /atom/proc/search_contents_for(path,list/filter_path=null)
 	var/list/found = list()
-	for( var/atom/A in src)
+	for(var/atom/A in src)
 		if(istype(A, path))
 			found += A
 		if(filter_path)
 			var/pass = 0
-			for( var/type in filter_path)
+			for(var/type in filter_path)
 				pass |= istype(A, type)
 			if(!pass)
 				continue
@@ -227,7 +227,7 @@ its easier to just keep the beam vertical.
 
 		set_dir(get_dir(src,BeamTarget))	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
 
-		for( var/obj/effect/overlay/beam/O in orange(10,src))	//This section erases the previously drawn beam because I found it was easier to
+		for(var/obj/effect/overlay/beam/O in orange(10,src))	//This section erases the previously drawn beam because I found it was easier to
 			if(O.BeamSource==src)				//just draw another instance of the beam instead of trying to manipulate all the
 				qdel(O)							//pieces to a new orientation.
 		var/Angle=round(Get_Angle(src,BeamTarget))
@@ -251,26 +251,26 @@ its easier to just keep the beam vertical.
 			if(DX==0) Pixel_x=0
 			if(DY==0) Pixel_y=0
 			if(Pixel_x>32)
-				for( var/a=0, a<=Pixel_x,a+=32)
+				for(var/a=0, a<=Pixel_x,a+=32)
 					X.x++
 					Pixel_x-=32
 			if(Pixel_x<-32)
-				for( var/a=0, a>=Pixel_x,a-=32)
+				for(var/a=0, a>=Pixel_x,a-=32)
 					X.x--
 					Pixel_x+=32
 			if(Pixel_y>32)
-				for( var/a=0, a<=Pixel_y,a+=32)
+				for(var/a=0, a<=Pixel_y,a+=32)
 					X.y++
 					Pixel_y-=32
 			if(Pixel_y<-32)
-				for( var/a=0, a>=Pixel_y,a-=32)
+				for(var/a=0, a>=Pixel_y,a-=32)
 					X.y--
 					Pixel_y+=32
 			X.pixel_x=Pixel_x
 			X.pixel_y=Pixel_y
 		sleep(3)	//Changing this to a lower value will cause the beam to follow more smoothly with movement, but it will also be more laggy.
 					//I've found that 3 ticks provided a nice balance for my use.
-	for( var/obj/effect/overlay/beam/O in orange(10,src)) if(O.BeamSource==src) qdel(O)
+	for(var/obj/effect/overlay/beam/O in orange(10,src)) if(O.BeamSource==src) qdel(O)
 
 
 //All atoms
@@ -417,11 +417,11 @@ its easier to just keep the beam vertical.
 	var/list/objs = list()
 	get_mobs_and_objs_in_view_fast(T,range, mobs, objs, checkghosts)
 
-	for( var/o in objs)
+	for(var/o in objs)
 		var/obj/O = o
 		O.show_message(message, VISIBLE_MESSAGE, blind_message, AUDIBLE_MESSAGE)
 
-	for( var/m in mobs)
+	for(var/m in mobs)
 		var/mob/M = m
 		if(M.see_invisible >= invisibility)
 			M.show_message(message, VISIBLE_MESSAGE, blind_message, AUDIBLE_MESSAGE)
@@ -439,10 +439,10 @@ its easier to just keep the beam vertical.
 	var/list/objs = list()
 	get_mobs_and_objs_in_view_fast(T, hearing_distance, mobs, objs, checkghosts)
 
-	for( var/m in mobs)
+	for(var/m in mobs)
 		var/mob/M = m
 		M.show_message(message,2,deaf_message,1)
-	for( var/o in objs)
+	for(var/o in objs)
 		var/obj/O = o
 		O.show_message(message,2,deaf_message,1)
 
@@ -514,7 +514,7 @@ its easier to just keep the beam vertical.
 	var/turf/T = get_turf(src)
 	if(!T || !istype(T))
 		return FALSE
-	for( var/atom/A in T.contents)
+	for(var/atom/A in T.contents)
 		if(A.atom_flags & ATOM_FLAG_CLIMBABLE)
 			continue
 		if(A.density && !(A.atom_flags & ATOM_FLAG_CHECKS_BORDER)) //ON_BORDER structures are handled by the Adjacent() check.
@@ -546,12 +546,12 @@ its easier to just keep the beam vertical.
 	climbers -= user
 
 /atom/proc/object_shaken()
-	for( var/mob/living/M in climbers)
+	for(var/mob/living/M in climbers)
 		M.Weaken(1)
 		to_chat(M, "<span class='danger'>You topple as you are shaken off \the [src]!</span>")
 		climbers.Cut(1,2)
 
-	for( var/mob/living/M in get_turf(src))
+	for(var/mob/living/M in get_turf(src))
 		if(M.lying) return //No spamming this on people.
 
 		M.Weaken(3)

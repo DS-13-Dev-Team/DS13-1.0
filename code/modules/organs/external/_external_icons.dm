@@ -7,9 +7,9 @@ var/list/limb_icon_cache = list()
 /obj/item/organ/external/proc/compile_icon()
 	overlays.Cut()
 	 // This is a kludge, only one icon has more than one generation of children though.
-	for( var/obj/item/organ/external/organ in contents)
+	for(var/obj/item/organ/external/organ in contents)
 		if(organ.children && organ.children.len)
-			for( var/obj/item/organ/external/child in organ.children)
+			for(var/obj/item/organ/external/child in organ.children)
 				overlays += child.mob_icon
 		overlays += organ.mob_icon
 
@@ -57,7 +57,7 @@ var/list/limb_icon_cache = list()
 		addtimer(CALLBACK(owner, /mob/living/carbon/human/proc/update_hair), 1, TIMER_UNIQUE)
 	..()
 	//Head markings, duplicated (sadly) below.
-	for( var/M in markings)
+	for(var/M in markings)
 		var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
 		var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 		mark_s.Blend(markings[M]["color"], mark_style.blend)
@@ -102,7 +102,7 @@ var/list/limb_icon_cache = list()
 	mob_icon = apply_colouration(new/icon(icon, icon_state))
 
 	//Body markings, does not include head, duplicated (sadly) above.
-	for( var/M in markings)
+	for(var/M in markings)
 		var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
 		var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 		mark_s.Blend(markings[M]["color"], ICON_ADD)

@@ -4,7 +4,7 @@
 /datum/unit_test/seed_types_have_at_least_one_sprite/start_test()
 	var/any_failed = FALSE
 
-	for( var/subtype in subtypesof(/datum/seed))
+	for (var/subtype in subtypesof(/datum/seed))
 		var/datum/seed/S = new subtype()
 		var/sprite = S.get_trait(TRAIT_PLANT_ICON)
 		if(sprite && (!(sprite in plant_controller.plant_sprites)))

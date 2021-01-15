@@ -53,7 +53,7 @@
 	active = TRUE
 
 	//Any shards in the world become active
-	for( var/obj/item/marker_shard/MS in SSnecromorph.shards)
+	for (var/obj/item/marker_shard/MS in SSnecromorph.shards)
 		MS.activate()
 
 	SSnecromorph.update_all_ability_lists(FALSE)	//Unlock new spells for signals
@@ -139,7 +139,7 @@
 	biomass_tick = 0	//Reset this before we recalculate it
 
 	var/update_reclaiming = FALSE //Set true if a source which counts towards total changes its biomass
-	for( var/datum/biomass_source/S as anything in biomass_sources)
+	for (var/datum/biomass_source/S as anything in biomass_sources)
 
 		var/check = S.can_absorb()
 		if (check != MASS_READY)
@@ -277,7 +277,7 @@
 
 /obj/machinery/marker/proc/remove_spawnpoint(atom/source)
 	if (shop)
-		for( var/datum/necrospawn/N in shop.possible_spawnpoints)
+		for (var/datum/necrospawn/N in shop.possible_spawnpoints)
 			if (N.spawnpoint == source)
 				shop.possible_spawnpoints.Remove(N)
 				if (shop.selected_spawn == N)
@@ -316,7 +316,7 @@
 	//Alright first of all, lets get the total biomass of live necromorphs and corruption nodes
 	if (invested_biomass == NONSENSICAL_VALUE)
 		invested_biomass = 0
-		for( var/atom/A in SSnecromorph.massive_necroatoms)
+		for (var/atom/A in SSnecromorph.massive_necroatoms)
 			//If its gone, it isnt providing biomass
 			if (QDELETED(A))
 				SSnecromorph.massive_necroatoms -= A
@@ -337,7 +337,7 @@
 	//It does not include baseline tick, harvester gains, or human corpses currently being eaten
 	if (reclaiming_biomass == NONSENSICAL_VALUE)
 		reclaiming_biomass = 0
-		for( var/datum/biomass_source/BS in biomass_sources)
+		for (var/datum/biomass_source/BS in biomass_sources)
 			if (BS.counts_toward_total && BS.remaining_mass != NONSENSICAL_VALUE)
 				reclaiming_biomass += BS.remaining_mass
 

@@ -80,7 +80,7 @@
 		if(do_after(user,50))
 			to_chat(usr, "<span class='notice'>You cut the hair from this [src.singular_name]</span>")
 			//Try locating an exisitng stack on the tile and add to there if possible
-			for( var/obj/item/stack/material/hairlesshide/HS in usr.loc)
+			for(var/obj/item/stack/material/hairlesshide/HS in usr.loc)
 				if(HS.amount < 50)
 					HS.amount++
 					src.use(1)
@@ -102,7 +102,7 @@
 		wetness--
 		if(wetness == 0)
 			//Try locating an exisitng stack on the tile and add to there if possible
-			for( var/obj/item/stack/material/leather/HS in src.loc)
+			for(var/obj/item/stack/material/leather/HS in src.loc)
 				if(HS.amount < 50)
 					HS.amount++
 					src.use(1)

@@ -85,12 +85,12 @@
 			var/list/hear = hear(7, T)
 			var/list/hearturfs = list()
 
-			for( var/I in hear)
+			for(var/I in hear)
 				if(istype(I, /mob/))
 					var/mob/M = I
 					listening += M
 					hearturfs += M.locs[1]
-					for( var/obj/O in M.contents)
+					for(var/obj/O in M.contents)
 						listening_obj |= O
 				else if(istype(I, /obj/))
 					var/obj/O = I
@@ -98,7 +98,7 @@
 					listening_obj |= O
 
 
-			for( var/mob/M in GLOB.player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(M.stat == DEAD && M.get_preference_value(/datum/client_preference/ghost_ears) == GLOB.PREF_ALL_SPEECH)
 					M.hear_say(message,verb,speaking,null,null, src)
 					continue
@@ -125,7 +125,7 @@
 		var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[message]</span></span>"
 		to_chat(src, "<i><span class='game say'>Holopad action relayed, <span class='name'>[real_name]</span> <span class='message'>[message]</span></span></i>")
 
-		for( var/mob/M in viewers(T.loc))
+		for(var/mob/M in viewers(T.loc))
 			M.show_message(rendered, 2)
 	else //This shouldn't occur, but better safe then sorry.
 		to_chat(src, "No holopad connected.")

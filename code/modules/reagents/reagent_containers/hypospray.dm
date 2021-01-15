@@ -123,7 +123,7 @@
 
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/New()
 	..()
-	for( var/T in starts_with)
+	for(var/T in starts_with)
 		reagents.add_reagent(T, starts_with[T])
 	update_icon()
 	return

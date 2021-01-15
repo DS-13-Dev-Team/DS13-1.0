@@ -24,10 +24,10 @@
 #define QDESTROYING(X) (!X || X.gc_destroyed == GC_CURRENTLY_BEING_QDELETED)
 
 
-#define QDEL_NULL_LIST(x) if(x) { for( var/y in x) { qdel(y) } ; x = null }
+#define QDEL_NULL_LIST(x) if(x) { for(var/y in x) { qdel(y) } ; x = null }
 
-#define QDEL_LIST(x) if(x) { for( var/y in x) { qdel(y) } ; x = list() }
-#define QDEL_ASSOC_LIST(x) if(x) { for( var/y in x) { if(x[y]){qdel(x[y])} } ; x = list() }
+#define QDEL_LIST(x) if(x) { for(var/y in x) { qdel(y) } ; x = list() }
+#define QDEL_ASSOC_LIST(x) if(x) { for(var/y in x) { if(x[y]){qdel(x[y])} } ; x = list() }
 
 #define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
 

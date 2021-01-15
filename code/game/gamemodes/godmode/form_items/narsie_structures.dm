@@ -22,7 +22,7 @@
 		return
 
 	var/dat = "<center><b>Recipies</b></center><br><br><i>Item - [text_modifications["Cost"]] Cost</i><br>"
-	for( var/type in recipes)
+	for(var/type in recipes)
 		var/atom/a = type
 		var/cost = recipes[type]
 		dat += "<A href='?src=\ref[src];make_recipe=\ref[type];'>[initial(a.name)]</a> - [cost]<br><i>[initial(a.desc)]</i><br><br>"
@@ -49,7 +49,7 @@
 
 	busy = 1
 	to_chat(user, "<span class='notice'>You dip your hands into \the [src]'s [text_modifications["Dip"]]</span>")
-	for( var/count = 0, count < blood_cost/10, count++)
+	for(var/count = 0, count < blood_cost/10, count++)
 		if(!do_after(user, 50,src))
 			busy = 0
 			return

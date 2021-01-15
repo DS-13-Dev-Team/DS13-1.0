@@ -99,7 +99,7 @@
 
 /obj/item/weapon/gun/Initialize()
 	.=..()
-	for( var/i in 1 to firemodes.len)
+	for(var/i in 1 to firemodes.len)
 		var/list/L = firemodes[i]
 
 		//If this var is set, it means spawn a specific subclass of firemode
@@ -124,7 +124,7 @@
 /obj/item/weapon/gun/Destroy()
 	if (current_firemode)
 		current_firemode.unapply_to(src)
-	for( var/a in firemodes)
+	for (var/a in firemodes)
 		if (istype(a, /datum/firemode))
 			qdel(a)
 
@@ -201,7 +201,7 @@
 	return 1
 
 /obj/item/weapon/gun/emp_act(severity)
-	for( var/obj/O in contents)
+	for(var/obj/O in contents)
 		O.emp_act(severity)
 
 //Return true if we successfully fired
@@ -221,7 +221,7 @@
 
 	//When firing in harm intent, at anything that isn't a mob, you'll autoaim at viable mobs in the same tile
 	if (user && user.a_intent == I_HURT && !isliving(A))
-		for( var/mob/living/L in A)
+		for (var/mob/living/L in A)
 			if (L.stat != DEAD && L != user)
 				A = L
 
@@ -345,7 +345,7 @@
 
 	//actually attempt to shoot
 	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
-	for( var/i in 1 to burst)
+	for(var/i in 1 to burst)
 		var/obj/projectile = consume_next_projectile(user)
 		.=projectile	//We'll return the projectile
 		if(!projectile)
@@ -472,7 +472,7 @@
 	//determine multiplier due to the target being grabbed
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		for( var/obj/item/grab/G in H.grabbed_by)
+		for(var/obj/item/grab/G in H.grabbed_by)
 			if(G.point_blank_mult() > max_mult)
 				max_mult = G.point_blank_mult()
 	P.damage *= max_mult

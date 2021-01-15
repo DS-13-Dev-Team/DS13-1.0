@@ -32,7 +32,7 @@
 		transform = null
 
 /obj/structure/diona_gestalt/Destroy()
-	for( var/thing in contents)
+	for(var/thing in contents)
 		var/atom/movable/AM = thing
 		AM.dropInto(loc)
 	nymphs.Cut()

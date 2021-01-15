@@ -96,13 +96,13 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 	if (!linear)
 		html += "organized | [make_link("linear", null, 1)]<hr>"
 		var/datum/error_viewer/error_source/error_source
-		for( var/erroruid in error_sources)
+		for (var/erroruid in error_sources)
 			error_source = error_sources[erroruid]
 			html += "[error_source.make_link(null, src)]<br>"
 
 	else
 		html += "[make_link("organized", null)] | linear<hr>"
-		for( var/datum/error_viewer/error_entry/error_entry in errors)
+		for (var/datum/error_viewer/error_entry/error_entry in errors)
 			html += "[error_entry.make_link(null, src, 1)]<br>"
 
 	browse_to(user, html)
@@ -152,7 +152,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 		back_to = GLOB.error_cache
 
 	var/html = build_header(back_to)
-	for( var/datum/error_viewer/error_entry/error_entry in errors)
+	for (var/datum/error_viewer/error_entry/error_entry in errors)
 		html += "[error_entry.make_link(null, src)]<br>"
 
 	browse_to(user, html)
@@ -184,7 +184,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 
 	exc = e
 	if (istype(desclines))
-		for( var/line in desclines)
+		for (var/line in desclines)
 			// There's probably a better way to do this than non-breaking spaces...
 			desc += "<span class='runtime_line'>[html_encode(line)]</span><br>"
 			info += "\n  " + line

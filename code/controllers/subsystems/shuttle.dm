@@ -56,17 +56,17 @@ SUBSYSTEM_DEF(shuttle)
 //Checks if the given sector's landmarks have initialized; if so, registers them with the sector, if not, marks them for assignment after they come in.
 //Also adds automatic landmarks that were waiting on their sector to spawn.
 /datum/controller/subsystem/shuttle/proc/initialize_sector(obj/effect/overmap/given_sector)
-	for( var/landmark_tag in given_sector.initial_generic_waypoints)
+	for(var/landmark_tag in given_sector.initial_generic_waypoints)
 		if(!try_add_landmark_tag(landmark_tag, given_sector))
 			landmarks_still_needed[landmark_tag] = given_sector
 
-	for( var/shuttle_name in given_sector.initial_restricted_waypoints)
-		for( var/landmark_tag in given_sector.initial_restricted_waypoints[shuttle_name])
+	for(var/shuttle_name in given_sector.initial_restricted_waypoints)
+		for(var/landmark_tag in given_sector.initial_restricted_waypoints[shuttle_name])
 			if(!try_add_landmark_tag(landmark_tag, given_sector))
 				landmarks_still_needed[landmark_tag] = given_sector
 
 	var/landmarks_to_check = landmarks_awaiting_sector.Copy()
-	for( var/thing in landmarks_to_check)
+	for(var/thing in landmarks_to_check)
 		var/obj/effect/shuttle_landmark/automatic/landmark = thing
 		if(landmark.z in given_sector.map_z)
 			given_sector.add_landmark(landmark, landmark.shuttle_restricted)
@@ -80,14 +80,14 @@ SUBSYSTEM_DEF(shuttle)
 	if(landmark.landmark_tag in given_sector.initial_generic_waypoints)
 		given_sector.add_landmark(landmark)
 		. = 1
-	for( var/shuttle_name in given_sector.initial_restricted_waypoints)
+	for(var/shuttle_name in given_sector.initial_restricted_waypoints)
 		if(landmark.landmark_tag in given_sector.initial_restricted_waypoints[shuttle_name])
 			given_sector.add_landmark(landmark, shuttle_name)
 			. = 1
 
 //This is called by gameticker after all the machines and radio frequencies have been properly initialized
 /datum/controller/subsystem/shuttle/proc/initialize_shuttles()
-	for( var/shuttle_type in subtypesof(/datum/shuttle))
+	for(var/shuttle_type in subtypesof(/datum/shuttle))
 		var/datum/shuttle/shuttle = shuttle_type
 		if((shuttle in shuttles_to_initialize) || !initial(shuttle.defer_initialisation))
 			initialise_shuttle(shuttle_type, TRUE)

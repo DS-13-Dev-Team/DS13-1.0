@@ -45,7 +45,7 @@
 		update_use_power(0)
 		assembled = 0
 		active = 0
-		for( var/obj/structure/particle_accelerator/part in connected_parts)
+		for(var/obj/structure/particle_accelerator/part in connected_parts)
 			part.strength = null
 			part.powered = 0
 			part.update_icon()
@@ -111,7 +111,7 @@
 	return
 
 /obj/machinery/particle_accelerator/control_box/proc/strength_change()
-	for( var/obj/structure/particle_accelerator/part in connected_parts)
+	for(var/obj/structure/particle_accelerator/part in connected_parts)
 		part.strength = strength
 		part.update_icon()
 
@@ -155,14 +155,14 @@
 			src.toggle_power()
 			return
 		//emit some particles
-		for( var/obj/structure/particle_accelerator/particle_emitter/PE in connected_parts)
+		for(var/obj/structure/particle_accelerator/particle_emitter/PE in connected_parts)
 			if(PE)
 				PE.emit_particle(src.strength)
 	return
 
 
 /obj/machinery/particle_accelerator/control_box/proc/part_scan()
-	for( var/obj/structure/particle_accelerator/fuel_chamber/F in orange(1,src))
+	for(var/obj/structure/particle_accelerator/fuel_chamber/F in orange(1,src))
 		src.set_dir(F.dir)
 	connected_parts = list()
 	var/tally = 0
@@ -217,13 +217,13 @@
 	log_game("PA Control Computer turned [active ?"ON":"OFF"] by [usr.ckey]([usr]) in ([x],[y],[z])")
 	if(src.active)
 		update_use_power(2)
-		for( var/obj/structure/particle_accelerator/part in connected_parts)
+		for(var/obj/structure/particle_accelerator/part in connected_parts)
 			part.strength = src.strength
 			part.powered = 1
 			part.update_icon()
 	else
 		update_use_power(1)
-		for( var/obj/structure/particle_accelerator/part in connected_parts)
+		for(var/obj/structure/particle_accelerator/part in connected_parts)
 			part.strength = null
 			part.powered = 0
 			part.update_icon()

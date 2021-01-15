@@ -17,15 +17,15 @@
 
 /datum/shuttle/autodock/overmap/proc/refresh_fuel_ports_list() //loop through all
 	fuel_ports = list()
-	for( var/area/A in shuttle_area)
-		for( var/obj/structure/fuel_port/fuel_port_in_area in A)
+	for(var/area/A in shuttle_area)
+		for(var/obj/structure/fuel_port/fuel_port_in_area in A)
 			fuel_port_in_area.parent_shuttle = src
 			fuel_ports += fuel_port_in_area
 
 /datum/shuttle/autodock/overmap/fuel_check()
 	if(!src.try_consume_fuel()) //insufficient fuel
-		for( var/area/A in shuttle_area)
-			for( var/mob/living/M in A)
+		for(var/area/A in shuttle_area)
+			for(var/mob/living/M in A)
 				M.show_message("<spawn class='warning'>You hear the shuttle engines sputter... perhaps it doesn't have enough fuel?", AUDIBLE_MESSAGE,
 				"<spawn class='warning'>The shuttle shakes but fails to take off.", VISIBLE_MESSAGE)
 				return 0 //failure!
@@ -62,8 +62,8 @@
 
 /datum/shuttle/autodock/overmap/proc/get_possible_destinations()
 	var/list/res = list()
-	for( var/obj/effect/overmap/S in range(waypoint_sector(current_location), range))
-		for( var/obj/effect/shuttle_landmark/LZ in S.get_waypoints(src.name))
+	for (var/obj/effect/overmap/S in range(waypoint_sector(current_location), range))
+		for(var/obj/effect/shuttle_landmark/LZ in S.get_waypoints(src.name))
 			if(LZ.is_valid(src))
 				res["[S.name] - [LZ.name]"] = LZ
 	return res
@@ -84,7 +84,7 @@
 	else
 		if(fuel_ports.len)
 			var/list/obj/item/weapon/tank/fuel_tanks = list()
-			for( var/obj/structure/FP in fuel_ports) //loop through fuel ports and assemble list of all fuel tanks
+			for(var/obj/structure/FP in fuel_ports) //loop through fuel ports and assemble list of all fuel tanks
 				if(FP.contents.len)
 					var/obj/item/weapon/tank/FT = FP.contents[1]
 					if(istype(FT))
@@ -92,11 +92,11 @@
 			if(!fuel_tanks.len)
 				return 0 //can't launch if you have no fuel TANKS in the ports
 			var/total_flammable_gas_moles = 0
-			for( var/obj/item/weapon/tank/FT in fuel_tanks)
+			for(var/obj/item/weapon/tank/FT in fuel_tanks)
 				total_flammable_gas_moles += FT.air_contents.get_by_flag(XGM_GAS_FUEL)
 			if(total_flammable_gas_moles >= fuel_consumption) //launch is possible, so start consuming that fuel
 				var/fuel_to_consume = fuel_consumption
-				for( var/obj/item/weapon/tank/FT in fuel_tanks) //loop through tanks, consume their fuel one by one
+				for(var/obj/item/weapon/tank/FT in fuel_tanks) //loop through tanks, consume their fuel one by one
 					if(FT.air_contents.get_by_flag(XGM_GAS_FUEL) >= fuel_to_consume)
 						FT.air_contents.remove_by_flag(XGM_GAS_FUEL, fuel_to_consume)
 						return 1 //ALL REQUIRED FUEL HAS BEEN CONSUMED, GO FOR LAUNCH!

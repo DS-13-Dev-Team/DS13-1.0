@@ -64,7 +64,7 @@ var/const/BORG_WIRE_CAMERA = 16
 		if(BORG_WIRE_LOCKED_DOWN)
 			R.SetLockdown(!R.lockcharge) // Toggle
 
-/datum/wires/robot/CanUse(mob/living/L)
+/datum/wires/robot/CanUse(var/mob/living/L)
 	var/mob/living/silicon/robot/R = holder
 	if(R.wiresexposed)
 		return 1
