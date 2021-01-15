@@ -224,7 +224,7 @@ steam.start() -- spawns the effect
 
 /obj/effect/effect/smoke/bad/Move()
 	..()
-	for(var/mob/living/carbon/M in get_turf(src))
+	for( var/mob/living/carbon/M in get_turf(src))
 		affect(M)
 
 /obj/effect/effect/smoke/bad/affect(var/mob/living/carbon/M)
@@ -252,7 +252,7 @@ steam.start() -- spawns the effect
 
 /obj/effect/effect/smoke/sleepy/Move()
 	..()
-	for(var/mob/living/carbon/M in get_turf(src))
+	for( var/mob/living/carbon/M in get_turf(src))
 		affect(M)
 
 /obj/effect/effect/smoke/sleepy/affect(mob/living/carbon/M as mob )
@@ -277,7 +277,7 @@ steam.start() -- spawns the effect
 
 /obj/effect/effect/smoke/mustard/Move()
 	..()
-	for(var/mob/living/carbon/human/R in get_turf(src))
+	for( var/mob/living/carbon/human/R in get_turf(src))
 		affect(R)
 
 /obj/effect/effect/smoke/mustard/affect(var/mob/living/carbon/human/R)
@@ -466,9 +466,9 @@ steam.start() -- spawns the effect
 			s.set_up(2, 1, location)
 			s.start()
 
-			for(var/mob/M in viewers(5, location))
+			for( var/mob/M in viewers(5, location))
 				to_chat(M, "<span class='warning'>The solution violently explodes.</span>")
-			for(var/mob/M in viewers(1, location))
+			for( var/mob/M in viewers(1, location))
 				if (prob (50 * amount))
 					to_chat(M, "<span class='warning'>The explosion knocks you down.</span>")
 					M.Weaken(rand(1,5))
@@ -491,7 +491,7 @@ steam.start() -- spawns the effect
 		//	if (flashing && flashing_factor)
 		//		flash = (amount/4) * flashing_factor
 
-			for(var/mob/M in viewers(8, location))
+			for( var/mob/M in viewers(8, location))
 				to_chat(M, "<span class='warning'>The solution violently explodes.</span>")
 
 			location.explosion(

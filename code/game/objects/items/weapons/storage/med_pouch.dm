@@ -28,9 +28,9 @@ Single Use Emergency Pouches
 /obj/item/weapon/storage/med_pouch/Initialize()
 	. = ..()
 	name = "emergency [injury_type] pouch"
-	for(var/obj/item/weapon/reagent_containers/pill/P in contents)
+	for( var/obj/item/weapon/reagent_containers/pill/P in contents)
 		P.icon_state = base_icon
-	for(var/obj/item/weapon/reagent_containers/hypospray/autoinjector/pouch_auto/A in contents)
+	for( var/obj/item/weapon/reagent_containers/hypospray/autoinjector/pouch_auto/A in contents)
 		A.icon_colour = base_icon
 		A.update_icon()
 

@@ -32,12 +32,12 @@
 	var/list/points_for_spawn = list()
 	var/list/spawns = list()
 	if (spread_range && istype(loc, /turf))
-		for(var/turf/T in trange(spread_range, src.loc))
+		for( var/turf/T in trange(spread_range, src.loc))
 			//if (!T.is_wall && !T.is_hole)
 			points_for_spawn += T
 	else
 		points_for_spawn += loc //We do not use get turf here, so that things can spawn inside containers
-	for(var/i in 1 to rand(min_amount, max_amount))
+	for( var/i in 1 to rand(min_amount, max_amount))
 		var/build_path = item_to_spawn()
 		if (!build_path)
 			return list()
@@ -944,11 +944,11 @@ var/list/multi_point_spawns
 	new item_path(loc)
 
 /hook/roundstart/proc/generate_multi_spawn_items()
-	for(var/id in multi_point_spawns)
+	for( var/id in multi_point_spawns)
 		var/list/spawn_points = multi_point_spawns[id]
 		var/obj/random_multi/rm = pickweight(spawn_points)
 		rm.generate_items()
-		for(var/entry in spawn_points)
+		for( var/entry in spawn_points)
 			qdel(entry)
 	return 1
 

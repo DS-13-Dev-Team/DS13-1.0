@@ -90,7 +90,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		return 0
 	if (unreceived.len >= ASSET_CACHE_TELL_CLIENT_AMOUNT)
 		to_chat(client, "Sending Resources...")
-	for(var/asset in unreceived)
+	for( var/asset in unreceived)
 		if (asset in asset_cache.cache)
 			client << browse_rsc(asset_cache.cache[asset], asset)
 
@@ -125,7 +125,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 //This proc will download the files without clogging up the browse() queue, used for passively sending files on connection start.
 //The proc calls procs that sleep for long times.
 /proc/getFilesSlow(client/client, list/files, register_asset = TRUE)
-	for(var/file in files)
+	for( var/file in files)
 		if (!client)
 			break
 		if (register_asset)
@@ -190,7 +190,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	var/verify = FALSE
 
 /datum/asset/simple/register()
-	for(var/asset_name in assets)
+	for( var/asset_name in assets)
 		register_asset(asset_name, assets[asset_name])
 /datum/asset/simple/send(client)
 	send_asset_list(client,assets,verify)
@@ -201,7 +201,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 
 //This loads little icons used for proto/autolathe
 /datum/asset/simple/design_icons/register()
-	for(var/D in SSresearch.all_designs)
+	for( var/D in SSresearch.all_designs)
 		var/datum/design/design = D
 
 		var/filename = sanitizeFileName("[design.build_path].png")
@@ -236,26 +236,26 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 
 /datum/asset/nanoui/register()
 	// Crawl the directories to find files.
-	for (var/path in common_dirs)
+	for( var/path in common_dirs)
 		var/list/filenames = flist(path)
-		for(var/filename in filenames)
+		for( var/filename in filenames)
 			if(copytext(filename, length(filename)) != "/") // Ignore directories.
 				if(fexists(path + filename))
 					common[filename] = fcopy_rsc(path + filename)
 					register_asset(filename, common[filename])
-	for (var/path in uncommon_dirs)
+	for( var/path in uncommon_dirs)
 		var/list/filenames = flist(path)
-		for(var/filename in filenames)
+		for( var/filename in filenames)
 			if(copytext(filename, length(filename)) != "/") // Ignore directories.
 				if(fexists(path + filename))
 					register_asset(filename, fcopy_rsc(path + filename))
 
 	var/list/mapnames = list()
-	for(var/z in GLOB.using_map.map_levels)
+	for( var/z in GLOB.using_map.map_levels)
 		mapnames += map_image_file_name(z)
 
 	var/list/filenames = flist(MAP_IMAGE_PATH)
-	for(var/filename in filenames)
+	for( var/filename in filenames)
 		if(copytext(filename, length(filename)) != "/") // Ignore directories.
 			var/file_path = MAP_IMAGE_PATH + filename
 			if((filename in mapnames) && fexists(file_path))
@@ -285,11 +285,11 @@ var/decl/asset_cache/asset_cache = new()
 
 /*
 /hook/roundstart/proc/send_assets()
-	for(var/type in typesof(/datum/asset) - list(/datum/asset, /datum/asset/simple))
+	for( var/type in typesof(/datum/asset) - list(/datum/asset, /datum/asset/simple))
 		var/datum/asset/A = new type()
 		A.register()
 
-	for(var/client/C in GLOB.clients)
+	for( var/client/C in GLOB.clients)
 		// Doing this to a client too soon after they've connected can cause issues, also the proc we call sleeps.
 		spawn(10)
 			getFilesSlow(C, asset_cache.cache, FALSE)
@@ -299,8 +299,8 @@ var/decl/asset_cache/asset_cache = new()
 
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 /datum/asset/simple/craft/register()
-	for(var/name in SScraft.categories)
-		for(var/datum/craft_recipe/CR in SScraft.categories[name])
+	for( var/name in SScraft.categories)
+		for( var/datum/craft_recipe/CR in SScraft.categories[name])
 			if(CR.result)
 				var/filename = sanitizeFileName("[CR.result].png")
 				var/icon/I = getFlatTypeIcon(CR.result)
@@ -309,7 +309,7 @@ var/decl/asset_cache/asset_cache = new()
 
 			var/list/steplist = CR.steps + CR.passive_steps
 
-			for(var/datum/craft_step/CS in steplist)
+			for( var/datum/craft_step/CS in steplist)
 				if(CS.icon_type)
 					var/filename = sanitizeFileName("[CS.icon_type].png")
 					var/icon/I = getFlatTypeIcon(CS.icon_type)
@@ -319,7 +319,7 @@ var/decl/asset_cache/asset_cache = new()
 
 
 /datum/asset/simple/research_designs/register()
-	for(var/R in subtypesof(/datum/design))
+	for( var/R in subtypesof(/datum/design))
 		var/datum/design/design = new R
 		design.AssembleDesignInfo()
 		if(!design.build_path)
@@ -334,7 +334,7 @@ var/decl/asset_cache/asset_cache = new()
 
 	SSresearch.generate_integrated_circuit_designs()
 
-	for(var/d in SSresearch.all_designs)
+	for( var/d in SSresearch.all_designs)
 		var/datum/design/design = d
 		var/datum/computer_file/binary/design/design_file = new
 		design_file.design = design
@@ -344,6 +344,6 @@ var/decl/asset_cache/asset_cache = new()
 	SSresearch.designs_initialized = TRUE
 
 	// Initialize design files that were created before
-	for(var/file in SSresearch.design_files_to_init)
+	for( var/file in SSresearch.design_files_to_init)
 		SSresearch.initialize_design_file(file)
 	SSresearch.design_files_to_init = list()

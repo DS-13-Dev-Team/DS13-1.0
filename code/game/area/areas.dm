@@ -52,7 +52,7 @@
 
 /area/proc/get_cameras()
 	var/list/cameras = list()
-	for (var/obj/machinery/camera/C in src)
+	for( var/obj/machinery/camera/C in src)
 		cameras += C
 	return cameras
 
@@ -66,7 +66,7 @@
 		atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
-	for (var/obj/machinery/alarm/AA in src)
+	for( var/obj/machinery/alarm/AA in src)
 		if (!(AA.stat & (NOPOWER|BROKEN)) && !AA.shorted && AA.report_danger_level)
 			danger_level = max(danger_level, AA.danger_level)
 
@@ -78,7 +78,7 @@
 			air_doors_close()
 
 		atmosalm = danger_level
-		for (var/obj/machinery/alarm/AA in src)
+		for( var/obj/machinery/alarm/AA in src)
 			AA.update_icon()
 
 		return 1
@@ -89,7 +89,7 @@
 		air_doors_activated = 1
 		if(!all_doors)
 			return
-		for(var/obj/machinery/door/firedoor/E in all_doors)
+		for( var/obj/machinery/door/firedoor/E in all_doors)
 			if(!E.blocked)
 				if(E.operating)
 					E.nextstate = FIREDOOR_CLOSED
@@ -102,7 +102,7 @@
 		air_doors_activated = 0
 		if(!all_doors)
 			return
-		for(var/obj/machinery/door/firedoor/E in all_doors)
+		for( var/obj/machinery/door/firedoor/E in all_doors)
 			if(!E.blocked)
 				if(E.operating)
 					E.nextstate = FIREDOOR_OPEN
@@ -119,7 +119,7 @@
 		mouse_opacity = 0
 		if(!all_doors)
 			return
-		for(var/obj/machinery/door/firedoor/D in all_doors)
+		for( var/obj/machinery/door/firedoor/D in all_doors)
 			if(!D.blocked)
 				if(D.operating)
 					D.nextstate = FIREDOOR_CLOSED
@@ -134,7 +134,7 @@
 		mouse_opacity = 0
 		if(!all_doors)
 			return
-		for(var/obj/machinery/door/firedoor/D in all_doors)
+		for( var/obj/machinery/door/firedoor/D in all_doors)
 			if(!D.blocked)
 				if(D.operating)
 					D.nextstate = FIREDOOR_OPEN
@@ -166,7 +166,7 @@
 		party = 0
 		mouse_opacity = 0
 		update_icon()
-		for(var/obj/machinery/door/firedoor/D in src)
+		for( var/obj/machinery/door/firedoor/D in src)
 			if(!D.blocked)
 				if(D.operating)
 					D.nextstate = FIREDOOR_OPEN
@@ -215,7 +215,7 @@
 
 // called when power status changes
 /area/proc/power_change()
-	for(var/obj/machinery/M in src)	// for each machine in the area
+	for( var/obj/machinery/M in src)	// for each machine in the area
 		M.power_change()			// reverify power status (to update icons etc.)
 	if (fire || eject || party)
 		update_icon()
@@ -250,13 +250,13 @@
 /area/proc/set_lightswitch(new_switch)
 	if(lightswitch != new_switch)
 		lightswitch = new_switch
-		for(var/obj/machinery/light_switch/L in src)
+		for( var/obj/machinery/light_switch/L in src)
 			L.sync_state()
 		update_icon()
 		power_change()
 
 /area/proc/set_emergency_lighting(enable)
-	for(var/obj/machinery/light/M in src)
+	for( var/obj/machinery/light/M in src)
 		M.set_emergency_lighting(enable)
 
 
@@ -287,7 +287,7 @@ var/list/mob/living/forced_ambiance_list = new
 	var/turf/T = get_turf(L)
 	var/hum = 0
 	if(!L.ear_deaf && !always_unpowered && power_environ)
-		for(var/obj/machinery/atmospherics/unary/vent_pump/vent in src)
+		for( var/obj/machinery/atmospherics/unary/vent_pump/vent in src)
 			if(vent.can_pump())
 				hum = 1
 				break
@@ -314,7 +314,7 @@ var/list/mob/living/forced_ambiance_list = new
 /area/proc/gravitychange(gravitystate = 0)
 	has_gravity = gravitystate
 
-	for(var/mob/M in src)
+	for( var/mob/M in src)
 		if(has_gravity)
 			thunk(M)
 		M.update_floating()
@@ -340,11 +340,11 @@ var/list/mob/living/forced_ambiance_list = new
 /area/proc/prison_break()
 	var/obj/machinery/power/apc/theAPC = get_apc()
 	if(theAPC && theAPC.operating)
-		for(var/obj/machinery/power/apc/temp_apc in src)
+		for( var/obj/machinery/power/apc/temp_apc in src)
 			temp_apc.overload_lighting(70)
-		for(var/obj/machinery/door/airlock/temp_airlock in src)
+		for( var/obj/machinery/door/airlock/temp_airlock in src)
 			temp_airlock.prison_open()
-		for(var/obj/machinery/door/window/temp_windoor in src)
+		for( var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
 
 /area/proc/has_gravity()
@@ -364,7 +364,7 @@ var/list/mob/living/forced_ambiance_list = new
 /area/proc/get_dimensions()
 	var/list/res = list("x"=1,"y"=1)
 	var/list/min = list("x"=world.maxx,"y"=world.maxy)
-	for(var/turf/T in src)
+	for( var/turf/T in src)
 		res["x"] = max(T.x, res["x"])
 		res["y"] = max(T.y, res["y"])
 		min["x"] = min(T.x, min["x"])

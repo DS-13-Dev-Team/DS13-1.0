@@ -202,7 +202,7 @@
 
 		var/list/nearby_things = range(1, get_turf(src))
 		var/list/valid_things = list()
-		for(var/atom/thing in nearby_things)
+		for( var/atom/thing in nearby_things)
 			if(thing.type != desired_type)
 				continue
 			valid_things.Add(thing)
@@ -291,7 +291,7 @@
 
 	activate_pin(2)
 
-	for(var/mob/O in hearers(1, get_turf(src)))
+	for( var/mob/O in hearers(1, get_turf(src)))
 		O.show_message(text("\icon[] *beep* *beep*", src), 3, "*beep* *beep*", 2)
 
 	return 1
@@ -356,7 +356,7 @@
 	. = list()
 	. += "Current selection: [(current_console && current_console.id) || "None"]"
 	. += "Please select a teleporter to lock in on:"
-	for(var/obj/machinery/teleport/hub/R in SSmachines.machinery)
+	for( var/obj/machinery/teleport/hub/R in SSmachines.machinery)
 		var/obj/machinery/computer/teleporter/com = R.com
 		if (istype(com, /obj/machinery/computer/teleporter) && com.locked && !com.one_time_use && com.operable())
 			.["[com.id] ([R.icon_state == "tele1" ? "Active" : "Inactive"])"] = "tport=[any2ref(com)]"
@@ -487,7 +487,7 @@
 		var/first_found //The first valid object we find
 		var/found //The current object we find
 		var/count = 0 //The amount of objects we find.
-		for(var/c in T.contents) //Cycle through the turf's shit
+		for( var/c in T.contents) //Cycle through the turf's shit
 			var/atom/a = c
 			if(a == src.loc || !a.simulated || a.invisibility || !a.alpha) //cant see wont see
 				continue

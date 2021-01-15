@@ -179,7 +179,7 @@ var/list/solars_list = list()
 	var/ay = y
 	var/turf/T = null
 
-	for(var/i = 1 to 20)		// 20 steps is enough
+	for( var/i = 1 to 20)		// 20 steps is enough
 		ax += GLOB.sun.dx	// do step
 		ay += GLOB.sun.dy
 
@@ -298,7 +298,7 @@ var/list/solars_list = list()
 	return -1
 
 /obj/machinery/power/solar_control/Destroy()
-	for(var/obj/machinery/power/solar/M in connected_panels)
+	for( var/obj/machinery/power/solar/M in connected_panels)
 		M.unset_control()
 	if(connected_tracker)
 		connected_tracker.unset_control()
@@ -317,7 +317,7 @@ var/list/solars_list = list()
 //search for unconnected panels and trackers in the computer powernet and connect them
 /obj/machinery/power/solar_control/proc/search_for_connected()
 	if(powernet)
-		for(var/obj/machinery/power/M in powernet.nodes)
+		for( var/obj/machinery/power/M in powernet.nodes)
 			if(istype(M, /obj/machinery/power/solar))
 				var/obj/machinery/power/solar/S = M
 				if(!S.control) //i.e unconnected
@@ -410,7 +410,7 @@ var/list/solars_list = list()
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 				new /obj/item/weapon/material/shard( src.loc )
 				var/obj/item/weapon/circuitboard/solar_control/M = new /obj/item/weapon/circuitboard/solar_control( A )
-				for (var/obj/C in src)
+				for( var/obj/C in src)
 					C.loc = src.loc
 				A.circuit = M
 				A.state = 3
@@ -421,7 +421,7 @@ var/list/solars_list = list()
 				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 				var/obj/item/weapon/circuitboard/solar_control/M = new /obj/item/weapon/circuitboard/solar_control( A )
-				for (var/obj/C in src)
+				for( var/obj/C in src)
 					C.loc = src.loc
 				A.circuit = M
 				A.state = 4
@@ -495,7 +495,7 @@ var/list/solars_list = list()
 //rotates the panel to the passed angle
 /obj/machinery/power/solar_control/proc/set_panels(cdir)
 
-	for(var/obj/machinery/power/solar/S in connected_panels)
+	for( var/obj/machinery/power/solar/S in connected_panels)
 		S.adir = cdir //instantly rotates the panel
 		S.occlusion()//and
 		S.update_icon() //update it

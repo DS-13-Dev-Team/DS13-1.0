@@ -37,7 +37,7 @@
 			ignore_list -= g
 
 /mob/living/bot/cleanbot/lookForTargets()
-	for(var/obj/effect/decal/cleanable/D in view(world.view + 1, src))
+	for( var/obj/effect/decal/cleanable/D in view(world.view + 1, src))
 		if(confirmTarget(D))
 			target = D
 			playsound(src, 'sound/machines/boop1.ogg', 30)
@@ -46,7 +46,7 @@
 /mob/living/bot/cleanbot/confirmTarget(var/obj/effect/decal/cleanable/D)
 	if(!..())
 		return 0
-	for(var/T in target_types)
+	for( var/T in target_types)
 		if(istype(D, T))
 			return 1
 	return 0

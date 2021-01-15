@@ -132,6 +132,6 @@ Please wait until completion...</TT><BR>
 						src.overlays -= "fab-active"
 		return
 
-	for (var/mob/M in viewers(1, src))
+	for( var/mob/M in viewers(1, src))
 		if (M.client && M.machine == src)
 			src.attack_hand(M)

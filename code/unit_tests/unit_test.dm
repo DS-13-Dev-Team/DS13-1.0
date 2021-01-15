@@ -93,7 +93,7 @@ datum/unit_test/proc/check_result()
 
 datum/unit_test/proc/get_safe_turf()
 	if(!safe_landmark)
-		for(var/landmark in landmarks_list)
+		for( var/landmark in landmarks_list)
 			if(istype(landmark, /obj/effect/landmark/test/safe_turf))
 				safe_landmark = landmark
 				break
@@ -101,7 +101,7 @@ datum/unit_test/proc/get_safe_turf()
 
 datum/unit_test/proc/get_space_turf()
 	if(!space_landmark)
-		for(var/landmark in landmarks_list)
+		for( var/landmark in landmarks_list)
 			if(istype(landmark, /obj/effect/landmark/test/space_turf))
 				space_landmark = landmark
 				break
@@ -117,7 +117,7 @@ proc/load_unit_test_changes()
 
 /proc/get_test_datums()
 	var/list/tests = list()
-	for(var/test in typesof(/datum/unit_test))
+	for( var/test in typesof(/datum/unit_test))
 		var/datum/unit_test/d = test
 		if(findtext(initial(d.name), "template"))
 			continue
@@ -204,7 +204,7 @@ SUBSYSTEM_DEF(unit_tests)
 	//Start the Round.
 	//
 	world.save_mode("extended")
-	for(var/test_datum_type in get_test_datums())
+	for( var/test_datum_type in get_test_datums())
 		queue += new test_datum_type
 	log_unit_test("[queue.len] unit tests loaded.")
 	. = ..()

@@ -194,7 +194,7 @@
 //There are no decimal tiles, it will always be a whole number. Partially visible tiles can be included or excluded
 /client/proc/get_tile_bounds(include_partial = TRUE)
 	var/list/bounds = get_pixel_bounds()
-	for (var/thing in bounds)
+	for( var/thing in bounds)
 		var/vector2/corner = bounds[thing]
 		corner.SelfDivide(WORLD_ICON_SIZE)
 		if (include_partial)
@@ -302,7 +302,7 @@
 				var/list/intersections = ray_turf_intersect(current_pixel_loc, position_delta, newloc)
 				//This will contain exactly two elements, intersections, but we'll call them deltas here to save on an extra vector
 				//We find which one is closest to our current position, that's the face we collide with
-				for (var/vector2/delta as anything in intersections)
+				for( var/vector2/delta as anything in intersections)
 					delta.SelfSubtract(current_pixel_loc)
 					var/mag = delta.Magnitude()
 					if (mag < closest_magnitude)

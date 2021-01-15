@@ -144,16 +144,16 @@ GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
 
 			var/maxx = xcrdStart
 			if(measureOnly)
-				for(var/line in gridLines)
+				for( var/line in gridLines)
 					maxx = max(maxx, xcrdStart + length(line) / key_len - 1)
 			else
-				for(var/line in gridLines)
+				for( var/line in gridLines)
 					if((ycrd - y_offset + 1) < y_lower || (ycrd - y_offset + 1) > y_upper)				//Reverse operation and check if it is out of bounds of cropping.
 						--ycrd
 						continue
 					if(ycrd <= world.maxy && ycrd >= 1)
 						xcrd = xcrdStart
-						for(var/tpos = 1 to length(line) - key_len + 1 step key_len)
+						for( var/tpos = 1 to length(line) - key_len + 1 step key_len)
 							if((xcrd - x_offset + 1) < x_lower || (xcrd - x_offset + 1) > x_upper)			//Same as above.
 								++xcrd
 								continue								//X cropping.
@@ -193,7 +193,7 @@ GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
 	else
 		if(!measureOnly)
 			if(clear_contents)
-				for(var/atom/to_delete in atoms_to_delete)
+				for( var/atom/to_delete in atoms_to_delete)
 					qdel(to_delete)
 		var/datum/map_load_metadata/M = new
 		M.bounds = bounds
@@ -287,7 +287,7 @@ GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
 				if(fields.len)
 					if(!trim(fields[fields.len]))
 						--fields.len
-					for(var/I in fields)
+					for( var/I in fields)
 						var/value = fields[I]
 						if(istext(value))
 							fields[I] = apply_text_macros(value)
@@ -333,7 +333,7 @@ GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
 			GLOB._preloader.setup(attr)//preloader for assigning  set variables on atom creation
 		var/atype = members[index]
 		var/atom/instance
-		for(var/area/A in world)
+		for( var/area/A in world)
 			if(A.type == atype)
 				instance = A
 				break
@@ -374,8 +374,8 @@ GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
 			atoms_to_initialise += T
 
 	if (clear_contents && is_not_noop)
-		for (var/type_to_delete in types_to_delete())
-			for (var/atom/pre_existing in crds)
+		for( var/type_to_delete in types_to_delete())
+			for( var/atom/pre_existing in crds)
 				if (istype(pre_existing, type_to_delete))
 					atoms_to_delete |= pre_existing
 
@@ -517,7 +517,7 @@ GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
 		target_path = path
 
 /dmm_suite/preloader/proc/load(atom/what)
-	for(var/attribute in attributes)
+	for( var/attribute in attributes)
 		var/value = attributes[attribute]
 		if(islist(value))
 			value = deepCopyList(value)
@@ -525,7 +525,7 @@ GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
 			what.vars[attribute] = value
 		catch (var/ex)
 			var/found = FALSE
-			for (var/V in what.vars)
+			for( var/V in what.vars)
 				if (deep_string_equals(V, attribute))
 					what.vars[V] = value
 					log_debug("Successfully performed manual var detection for var [V] \ref[V] on provided attribute [attribute] \ref[attribute] for atom [what]")

@@ -111,25 +111,25 @@ var/global/list/string_slot_flags = list(
 
 	//Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
 	paths = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
-	for(var/path in paths)
+	for( var/path in paths)
 		var/datum/sprite_accessory/hair/H = new path()
 		GLOB.hair_styles_list[H.name] = H
 
 	//Facial Hair - Initialise all /datum/sprite_accessory/facial_hair into an list indexed by facialhair-style name
 	paths = typesof(/datum/sprite_accessory/facial_hair) - /datum/sprite_accessory/facial_hair
-	for(var/path in paths)
+	for( var/path in paths)
 		var/datum/sprite_accessory/facial_hair/H = new path()
 		GLOB.facial_hair_styles_list[H.name] = H
 
 	//Body markings - Initialise all /datum/sprite_accessory/marking into an list indexed by marking name
 	paths = typesof(/datum/sprite_accessory/marking) - /datum/sprite_accessory/marking
-	for(var/path in paths)
+	for( var/path in paths)
 		var/datum/sprite_accessory/marking/M = new path()
 		GLOB.body_marking_styles_list[M.name] = M
 
 	//Surgery Steps - Initialize all /datum/surgery_step into a list
 	paths = typesof(/datum/surgery_step)-/datum/surgery_step
-	for(var/T in paths)
+	for( var/T in paths)
 		var/datum/surgery_step/S = new T
 		surgery_steps += S
 	sort_surgeries()
@@ -137,24 +137,24 @@ var/global/list/string_slot_flags = list(
 	//List of job. I can't believe this was calculated multiple times per tick!
 	paths = typesof(/datum/job)-/datum/job
 	paths -= exclude_jobs
-	for(var/T in paths)
+	for( var/T in paths)
 		var/datum/job/J = new T
 		joblist[J.title] = J
 
 	//Languages and species.
 	paths = typesof(/datum/language)-/datum/language
-	for(var/T in paths)
+	for( var/T in paths)
 		var/datum/language/L = new T
 		all_languages[L.name] = L
 
-	for (var/language_name in all_languages)
+	for( var/language_name in all_languages)
 		var/datum/language/L = all_languages[language_name]
 		if(!(L.flags & NONGLOBAL))
 			language_keys[lowertext(L.key)] = L
 
 	var/rkey = 0
 	paths = typesof(/datum/species)
-	for(var/T in paths)
+	for( var/T in paths)
 		rkey++
 
 		var/datum/species/S = T
@@ -175,23 +175,23 @@ var/global/list/string_slot_flags = list(
 
 	//Grabs
 	paths = typesof(/datum/grab) - /datum/grab
-	for(var/T in paths)
+	for( var/T in paths)
 		var/datum/grab/G = new T
 		if(G.state_name)
 			all_grabstates[G.state_name] = G
 
 	paths = typesof(/obj/item/grab) - /obj/item/grab
-	for(var/T in paths)
+	for( var/T in paths)
 		var/obj/item/grab/G = T
 		all_grabobjects[initial(G.type_name)] = T
 
-	for(var/grabstate_name in all_grabstates)
+	for( var/grabstate_name in all_grabstates)
 		var/datum/grab/G = all_grabstates[grabstate_name]
 		G.refresh_updown()
 
 
 	//Signal Abilities
-	for (var/subtype in subtypesof(/datum/signal_ability))
+	for( var/subtype in subtypesof(/datum/signal_ability))
 		var/datum/signal_ability/SA = subtype
 		if (initial(SA.base_type) == subtype)
 			continue	//If base type matches type, its an abstract parent class, do not instantiate
@@ -202,7 +202,7 @@ var/global/list/string_slot_flags = list(
 
 
 
-	for (var/subtype in subtypesof(/datum/targeting_profile))
+	for( var/subtype in subtypesof(/datum/targeting_profile))
 		var/datum/targeting_profile/SA = subtype
 		if (initial(SA.base_type) == subtype)
 			continue	//If base type matches type, its an abstract parent class, do not instantiate
@@ -215,11 +215,11 @@ var/global/list/string_slot_flags = list(
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()
 
-	for (var/reaction in chemical_reactions_list)
+	for( var/reaction in chemical_reactions_list)
 		. += "chemical_reactions_list\[\"[reaction]\"\] = \"[chemical_reactions_list[reaction]]\"\n"
 		if(islist(chemical_reactions_list[reaction]))
 			var/list/L = chemical_reactions_list[reaction]
-			for(var/t in L)
+			for( var/t in L)
 				. += "    has: [t]\n"
 	log_debug(.)
 
@@ -240,13 +240,13 @@ var/global/list/paramslist_cache = list()
 
 /proc/key_number_decode(key_number_data)
 	var/list/L = params2list(key_number_data)
-	for(var/key in L)
+	for( var/key in L)
 		L[key] = text2num(L[key])
 	return L
 
 /proc/number_list_decode(number_list_data)
 	var/list/L = params2list(number_list_data)
-	for(var/i in 1 to L.len)
+	for( var/i in 1 to L.len)
 		L[i] = text2num(L[i])
 	return L
 

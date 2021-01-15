@@ -29,7 +29,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	var/the_reagent = null
 	var/the_volume = 0
 
-	for(var/datum/reagent/A in reagent_list)
+	for( var/datum/reagent/A in reagent_list)
 		if(A.volume > the_volume)
 			the_volume = A.volume
 			the_reagent = A
@@ -39,7 +39,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 /datum/reagents/proc/get_master_reagent_name() // Returns the name of the reagent with the biggest volume.
 	var/the_name = null
 	var/the_volume = 0
-	for(var/datum/reagent/A in reagent_list)
+	for( var/datum/reagent/A in reagent_list)
 		if(A.volume > the_volume)
 			the_volume = A.volume
 			the_name = A.name
@@ -49,7 +49,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 /datum/reagents/proc/get_master_reagent_type() // Returns the type of the reagent with the biggest volume.
 	var/the_type = null
 	var/the_volume = 0
-	for(var/datum/reagent/A in reagent_list)
+	for( var/datum/reagent/A in reagent_list)
 		if(A.volume > the_volume)
 			the_volume = A.volume
 			the_type = A.type
@@ -59,14 +59,14 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 // Returns the total biomass of the chemicals
 /datum/reagents/get_biomass()
 	var/biomass = 0
-	for(var/datum/reagent/A as anything in reagent_list)
+	for( var/datum/reagent/A as anything in reagent_list)
 		biomass += A.get_biomass()
 
 	return biomass
 
 /datum/reagents/proc/update_total() // Updates volume.
 	total_volume = 0
-	for(var/datum/reagent/R in reagent_list)
+	for( var/datum/reagent/R in reagent_list)
 		if(R.volume < MINIMUM_CHEMICAL_VOLUME)
 			del_reagent(R.type)
 		else
@@ -85,32 +85,32 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 	var/list/datum/chemical_reaction/eligible_reactions = list()
 
-	for(var/datum/reagent/R in reagent_list)
+	for( var/datum/reagent/R in reagent_list)
 		eligible_reactions |= chemical_reactions_list[R.type]
 
 	var/list/datum/chemical_reaction/active_reactions = list()
 
-	for(var/datum/chemical_reaction/C in eligible_reactions)
+	for( var/datum/chemical_reaction/C in eligible_reactions)
 		if(C.can_happen(src))
 			active_reactions |= C
 			reaction_occured = 1
 
 	var/list/used_reagents = list()
-	for(var/datum/chemical_reaction/C in active_reactions)
+	for( var/datum/chemical_reaction/C in active_reactions)
 		var/list/adding = C.get_used_reagents()
-		for(var/R in adding)
+		for( var/R in adding)
 			used_reagents[R] += 1
 
 	var/max_split = 1
-	for(var/R in used_reagents)
+	for( var/R in used_reagents)
 		if(used_reagents[R] > max_split)
 			max_split = used_reagents[R]
 
-	for(var/datum/chemical_reaction/C in active_reactions)
+	for( var/datum/chemical_reaction/C in active_reactions)
 		C.process(src, max_split, total_volume)
 		--max_split
 
-	for(var/datum/chemical_reaction/C in active_reactions)
+	for( var/datum/chemical_reaction/C in active_reactions)
 		C.post_reaction(src)
 
 	update_total()
@@ -129,7 +129,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	update_total()
 	amount = min(amount, get_free_space())
 
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		if(current.type == reagent_type)
 			current.volume += amount
 			last_added_quantity = amount
@@ -160,7 +160,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 /datum/reagents/proc/remove_reagent(reagent_type, amount, safety = 0)
 	if(!isnum(amount))
 		return 0
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		if(current.type == reagent_type)
 			var/change = min(current.volume, amount)
 			current.volume -= change // It can go negative, but it doesn't matter
@@ -173,7 +173,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	return 0
 
 /datum/reagents/proc/del_reagent(reagent_type)
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		if (current.type == reagent_type)
 			var/volume_removed = current.volume
 			reagent_list -= current
@@ -184,7 +184,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 			return 0
 
 /datum/reagents/proc/has_reagent(reagent_type, amount = null)
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		if(current.type == reagent_type)
 			if((isnull(amount) && current.volume > 0) || current.volume >= amount)
 				return 1
@@ -193,7 +193,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	return 0
 
 /datum/reagents/proc/has_any_reagent(list/check_reagents)
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		if(current.type in check_reagents)
 			if(current.volume >= check_reagents[current.type])
 				return 1
@@ -204,25 +204,25 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 /datum/reagents/proc/has_all_reagents(list/check_reagents)
 	//this only works if check_reagents has no duplicate entries... hopefully okay since it expects an associative list
 	var/missing = check_reagents.len
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		if(current.type in check_reagents)
 			if(current.volume >= check_reagents[current.type])
 				missing--
 	return !missing
 
 /datum/reagents/proc/clear_reagents()
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		del_reagent(current.type)
 	return
 
 /datum/reagents/proc/get_reagent_amount(reagent_type)
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		if(current.type == reagent_type)
 			return current.volume
 	return 0
 
 /datum/reagents/proc/get_data(reagent_type)
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		if(current.type == reagent_type)
 			return current.get_data()
 	return 0
@@ -234,7 +234,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 /datum/reagents/proc/get_reagents(scannable_only = 0, precision)
 	. = list()
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		if(scannable_only && !current.scannable)
 			continue
 		var/volume = current.volume
@@ -256,7 +256,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 	var/part = amount / total_volume
 
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		var/amount_to_remove = current.volume * part
 		remove_reagent(current.type, amount_to_remove, 1)
 
@@ -275,7 +275,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 	var/part = amount / total_volume
 
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		var/amount_to_transfer = current.volume * part
 		target.add_reagent(current.type, amount_to_transfer * multiplier, current.get_data(), safety = 1) // We don't react until everything is in place
 		if(!copy)
@@ -350,7 +350,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	if(!target || !istype(target) || !target.simulated)
 		return
 
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		current.touch_mob(target, amount ? amount : current.volume)
 
 	update_total()
@@ -359,7 +359,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	if(!target || !istype(target) || !target.simulated)
 		return
 
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		current.touch_turf(target, amount ? amount : current.volume)
 
 	update_total()
@@ -368,7 +368,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	if(!target || !istype(target) || !target.simulated)
 		return
 
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		current.touch_obj(target, amount ? amount : current.volume)
 
 	update_total()
@@ -392,7 +392,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 	//Lets figure out how much of a share each item will absorb
 	var/total_weight = 0
-	for (var/obj/item/I in worn_items)
+	for( var/obj/item/I in worn_items)
 		var/weight = I.w_class	//Use size as the basic measure of weight
 
 		//The weight of each clothing is multiplied by its coverage
@@ -418,7 +418,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	//Alrighty, now how much will be given. per weight unit, to each of the remaining items
 
 	var/share = leftover / total_weight
-	for (var/obj/item/I in worn_items)
+	for( var/obj/item/I in worn_items)
 		var/weight = worn_items[I]
 		trans_to_obj(I, share*weight)	//Splash each of those items
 
@@ -482,9 +482,9 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	istype is used, so subtypes count
 */
 /datum/reagents/proc/contains_purely(list/types)
-	for(var/datum/reagent/current as anything in reagent_list)
+	for( var/datum/reagent/current as anything in reagent_list)
 		var/valid = FALSE
-		for (var/test in types)
+		for( var/test in types)
 			if (istype(current, test))
 				valid = TRUE
 				break

@@ -32,7 +32,7 @@
 /obj/item/weapon/sample/print/merge_evidence(var/obj/item/weapon/sample/supplied, mob/user)
 	if(!supplied.evidence || !supplied.evidence.len)
 		return 0
-	for(var/print in supplied.evidence)
+	for( var/print in supplied.evidence)
 		if(evidence[print])
 			evidence[print] = stringmerge(evidence[print],supplied.evidence[print])
 		else
@@ -121,7 +121,7 @@
 
 /obj/item/weapon/sample/print/copy_evidence(var/atom/supplied)
 	if(supplied.fingerprints && supplied.fingerprints.len)
-		for(var/print in supplied.fingerprints)
+		for( var/print in supplied.fingerprints)
 			evidence[print] = supplied.fingerprints[print]
 		supplied.fingerprints.Cut()
 

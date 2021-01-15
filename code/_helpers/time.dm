@@ -128,7 +128,7 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 		time -= seconds SECONDS
 
 	var/finalstring = ""
-	for (var/component in components)
+	for( var/component in components)
 		if (finalstring)
 			finalstring += divider
 

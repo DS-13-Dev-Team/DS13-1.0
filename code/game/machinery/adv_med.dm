@@ -51,7 +51,7 @@
 	src.occupant = usr
 	update_use_power(2)
 	src.icon_state = "body_scanner_1"
-	for(var/obj/O in src)
+	for( var/obj/O in src)
 		//O = null
 		qdel(O)
 		//Foreach goto(124)
@@ -61,7 +61,7 @@
 /obj/machinery/bodyscanner/proc/go_out()
 	if ((!( src.occupant ) || src.locked))
 		return
-	for(var/obj/O in src)
+	for( var/obj/O in src)
 		O.dropInto(loc)
 		//Foreach goto(30)
 	if (src.occupant.client)
@@ -83,7 +83,7 @@
 	src.occupant = M
 	update_use_power(2)
 	src.icon_state = "body_scanner_1"
-	for(var/obj/O in src)
+	for( var/obj/O in src)
 		O.forceMove(loc)
 	src.add_fingerprint(user)
 	qdel(G)
@@ -118,14 +118,14 @@
 	src.occupant = M
 	update_use_power(2)
 	src.icon_state = "body_scanner_1"
-	for(var/obj/O in src)
+	for( var/obj/O in src)
 		O.forceMove(loc)
 	src.add_fingerprint(user)
 
 /obj/machinery/bodyscanner/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			for(var/atom/movable/A as mob|obj in src)
+			for( var/atom/movable/A as mob|obj in src)
 				A.dropInto(loc)
 				ex_act(severity)
 				//Foreach goto(35)
@@ -134,7 +134,7 @@
 			return
 		if(2.0)
 			if (prob(50))
-				for(var/atom/movable/A as mob|obj in src)
+				for( var/atom/movable/A as mob|obj in src)
 					A.dropInto(loc)
 					ex_act(severity)
 					//Foreach goto(108)
@@ -143,7 +143,7 @@
 				return
 		if(3.0)
 			if (prob(25))
-				for(var/atom/movable/A as mob|obj in src)
+				for( var/atom/movable/A as mob|obj in src)
 					A.dropInto(loc)
 					ex_act(severity)
 					//Foreach goto(181)
@@ -189,7 +189,7 @@
 
 
 /obj/machinery/body_scanconsole/Initialize()
-	for(var/D in GLOB.cardinal)
+	for( var/D in GLOB.cardinal)
 		src.connected = locate(/obj/machinery/bodyscanner, get_step(src, D))
 		if(src.connected)
 			break
@@ -337,13 +337,13 @@
 
 		if(H.reagents.total_volume)
 			var/reagentdata[0]
-			for(var/A in H.reagents.reagent_list)
+			for( var/A in H.reagents.reagent_list)
 				var/datum/reagent/R = A
 				if(R.scannable)
 					reagentdata[R.type] = "[round(H.reagents.get_reagent_amount(R.type), 1)]u [R.name]"
 			if(reagentdata.len)
 				dat += "Beneficial reagents detected in subject's blood:"
-				for(var/d in reagentdata)
+				for( var/d in reagentdata)
 					dat += reagentdata[d]
 
 	var/list/table = list()
@@ -352,7 +352,7 @@
 		table += "<tr><th>Organ</th><th>Damage</th><th>Status</th></tr>"
 	subdat = list()
 
-	for(var/obj/item/organ/external/E in H.organs)
+	for( var/obj/item/organ/external/E in H.organs)
 		var/row = list()
 		row += "<tr><td>[E.name]</td>"
 		if(E.is_stump())
@@ -377,7 +377,7 @@
 		table += "<tr><td>---</td><td><b>INTERNAL ORGANS</b></td><td>---</td></tr>"
 
 	if(skill_level >= SKILL_BASIC)
-		for(var/obj/item/organ/internal/I in H.internal_organs)
+		for( var/obj/item/organ/internal/I in H.internal_organs)
 			var/row = list()
 			row += "<tr><td>[I.name]</td>"
 			row += "<td>"
@@ -398,7 +398,7 @@
 
 	table += "</table>"
 	dat += jointext(table,null)
-	for(var/organ_name in H.species.has_organ)
+	for( var/organ_name in H.species.has_organ)
 		if(!locate(H.species.has_organ[organ_name]) in H.internal_organs)
 			dat += text("No [organ_name] detected.")
 

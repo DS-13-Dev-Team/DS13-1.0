@@ -6,7 +6,7 @@
 /mob/living/deity/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, uistate = GLOB.self_state)
 	if(!nano_data["categories"]) //If we don't have the categories set yet, we should populate our data.
 		var/list/categories = list()
-		for(var/cat in items_by_category)
+		for( var/cat in items_by_category)
 			categories += cat
 		nano_data["name"] = name
 		nano_data["form_name"] = form.name
@@ -37,14 +37,14 @@
 	var/actual_cat = nano_data["categories"][nano_data["category"] + 1]
 	var/list/cat_items = items_by_category[actual_cat]
 	var/list/item_data = list()
-	for(var/item in cat_items)
+	for( var/item in cat_items)
 		var/datum/deity_item/di = item
 		item_data[++item_data.len] = list("name" = di.name, "desc" = di.desc, "requirements" = di.print_requirements(), "level" = di.print_level(), "cost" = di.get_cost(), "ref" = "\ref[di]")
 	nano_data["item_data"] = item_data
 
 /mob/living/deity/proc/update_followers()
 	var/list/follower_data = list()
-	for(var/m in minions)
+	for( var/m in minions)
 		var/list/minion_data = list()
 		var/datum/mind/mind = m
 		if(mind.current)
@@ -58,16 +58,16 @@
 
 /mob/living/deity/proc/update_phenomenas()
 	var/list/phenomena_data = list()
-	for(var/p in phenomenas)
+	for( var/p in phenomenas)
 		var/datum/phenomena/P = phenomenas[p]
 		phenomena_data[++phenomena_data.len] = list("name" = p, "description" = P.desc, "cost" = P.cost, "cooldown" = P.cooldown)
 	nano_data["phenomenas"] = phenomena_data
 
 /mob/living/deity/proc/update_phenomena_bindings()
 	var/list/phenomena_bindings = list()
-	for(var/intent in intent_phenomenas)
+	for( var/intent in intent_phenomenas)
 		var/list/intent_data = list()
-		for(var/binding in intent_phenomenas[intent])
+		for( var/binding in intent_phenomenas[intent])
 			var/datum/phenomena/P = intent_phenomenas[intent][binding]
 			var/list/data = list()
 			if(P)

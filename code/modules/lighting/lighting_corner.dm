@@ -83,7 +83,7 @@
 
 /datum/lighting_corner/proc/update_active()
 	active = FALSE
-	for (var/turf/T in masters)
+	for( var/turf/T in masters)
 		if (T.lighting_overlay)
 			active = TRUE
 
@@ -122,7 +122,7 @@
 	#endif
 	cache_mx = round(mx, LIGHTING_ROUND_VALUE)
 
-	for (var/TT in masters)
+	for( var/TT in masters)
 		var/turf/T = TT
 		if (T.lighting_overlay)
 			if (!T.lighting_overlay.needs_update)

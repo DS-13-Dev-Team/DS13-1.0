@@ -38,7 +38,7 @@
 	QDEL_ASSOC_LIST(spawnable_structures)
 
 	//First up, necromorph species
-	for (var/spath in subtypesof(/datum/species/necromorph))
+	for( var/spath in subtypesof(/datum/species/necromorph))
 		var/datum/species/necromorph/N = spath	//This lets us use initial
 		N = all_species[initial(N.name)]
 		if (!initial(N.marker_spawnable))
@@ -67,7 +67,7 @@
 	sortTim(spawnable_necromorphs, /proc/cmp_necroshop_item, TRUE)
 
 	//Corruption nodes next
-	for (var/spath in subtypesof(/obj/structure/corruption_node))
+	for( var/spath in subtypesof(/obj/structure/corruption_node))
 		var/obj/structure/corruption_node/N = new spath()
 		if (!initial(N.marker_spawnable))
 			continue	//Check this one is spawnable
@@ -115,7 +115,7 @@
 
 /datum/necrospawn_selector/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	var/list/data = list()
-	for (var/datum/necrospawn/N in host.possible_spawnpoints)
+	for( var/datum/necrospawn/N in host.possible_spawnpoints)
 		data["spawnpoints"] += list(list("name" = "[N.name]	[jumplink_public(user, N.spawnpoint)]", "id" = N.id))
 
 	data["selected_id"] = host.selected_spawn.id
@@ -134,7 +134,7 @@
 		return
 
 	if (href_list["select_spawn"])	//This will be an id of a spawnpoint. lets find it
-		for (var/datum/necrospawn/N in host.possible_spawnpoints)
+		for( var/datum/necrospawn/N in host.possible_spawnpoints)
 			if (N.id == href_list["select_spawn"])	//We found it!
 				//Set it on the host
 				host.selected_spawn = N
@@ -176,7 +176,7 @@
 	if (SSnecromorph.necroqueue.len)
 		data["waiting_num"] = SSnecromorph.necroqueue.len
 		var/names = "Currently in necroqueue:"
-		for (var/mob/observer/eye/signal/S in SSnecromorph.necroqueue)
+		for( var/mob/observer/eye/signal/S in SSnecromorph.necroqueue)
 			names += "\n[S.key]"
 		data["waiting_names"] = names
 	else
@@ -218,7 +218,7 @@
 	content_data = list()
 
 	var/list/listed_necromorphs = list()
-	for(var/a in spawnable_necromorphs)
+	for( var/a in spawnable_necromorphs)
 		var/datum/necroshop_item/I = spawnable_necromorphs[a]
 
 		listed_necromorphs.Add(list(list("name" = I.name,
@@ -227,7 +227,7 @@
 
 
 	var/list/listed_structures = list()
-	for(var/a in spawnable_structures)
+	for( var/a in spawnable_structures)
 		var/datum/necroshop_item/I = spawnable_structures[a]
 
 		listed_structures.Add(list(list("name" = I.name,
@@ -436,7 +436,7 @@
 	set desc = "Use if the necromorph spawning menu stops responding"
 	set category = "Debug"
 
-	for (var/obj/machinery/marker/M in world)
+	for( var/obj/machinery/marker/M in world)
 		QDEL_NULL(M.shop)
 		M.shop = new(M)
 

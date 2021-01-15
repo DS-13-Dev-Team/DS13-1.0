@@ -34,7 +34,7 @@
 				dat += "<br>Current Network: <a href='?src=\ref[src];network=1'>[network]</a><br>"
 				if(servers.len)
 					dat += "<br>Detected Telecommunication Servers:<ul>"
-					for(var/obj/machinery/telecomms/T in servers)
+					for( var/obj/machinery/telecomms/T in servers)
 						dat += "<li><a href='?src=\ref[src];viewserver=[T.id]'>\ref[T] [T.name]</a> ([T.id])</li>"
 					dat += "</ul>"
 					dat += "<br><a href='?src=\ref[src];operation=release'>\[Flush Buffer\]</a>"
@@ -59,7 +59,7 @@
 				dat += "Stored Logs: <ol>"
 
 				var/i = 0
-				for(var/datum/comm_log_entry/C in SelectedServer.log_entries)
+				for( var/datum/comm_log_entry/C in SelectedServer.log_entries)
 					i++
 
 
@@ -119,7 +119,7 @@
 
 		if(href_list["viewserver"])
 			screen = 1
-			for(var/obj/machinery/telecomms/T in servers)
+			for( var/obj/machinery/telecomms/T in servers)
 				if(T.id == href_list["viewserver"])
 					SelectedServer = T
 					break
@@ -139,7 +139,7 @@
 						temp = "<font color = #d70b00>- FAILED: CANNOT PROBE WHEN BUFFER FULL -</font>"
 
 					else
-						for(var/obj/machinery/telecomms/server/T in range(25, src))
+						for( var/obj/machinery/telecomms/server/T in range(25, src))
 							if(T.network == network)
 								servers.Add(T)
 
@@ -195,7 +195,7 @@
 					var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 					new /obj/item/weapon/material/shard( src.loc )
 					var/obj/item/weapon/circuitboard/comm_server/M = new /obj/item/weapon/circuitboard/comm_server( A )
-					for (var/obj/C in src)
+					for( var/obj/C in src)
 						C.loc = src.loc
 					A.circuit = M
 					A.state = 3
@@ -206,7 +206,7 @@
 					to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
 					var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 					var/obj/item/weapon/circuitboard/comm_server/M = new /obj/item/weapon/circuitboard/comm_server( A )
-					for (var/obj/C in src)
+					for( var/obj/C in src)
 						C.loc = src.loc
 					A.circuit = M
 					A.state = 4

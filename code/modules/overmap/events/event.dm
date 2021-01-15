@@ -14,7 +14,7 @@
 	candidate_turfs -= events_by_turf
 	candidate_turfs = where(candidate_turfs, /proc/can_not_locate, /obj/effect/overmap)
 
-	for(var/i = 1 to number_of_events)
+	for( var/i = 1 to number_of_events)
 		if(!candidate_turfs.len)
 			break
 		var/overmap_event_type = pick(subtypesof(/datum/overmap_event))
@@ -23,7 +23,7 @@
 		var/list/event_turfs = acquire_event_turfs(overmap_event.count, overmap_event.radius, candidate_turfs, overmap_event.continuous)
 		candidate_turfs -= event_turfs
 
-		for(var/event_turf in event_turfs)
+		for( var/event_turf in event_turfs)
 			events_by_turf[event_turf] = overmap_event
 			GLOB.entered_event.register(event_turf, src, /decl/overmap_event_handler/proc/on_turf_entered)
 			GLOB.exited_event.register(event_turf, src, /decl/overmap_event_handler/proc/on_turf_exited)
@@ -70,7 +70,7 @@
 	else
 		fitting_turfs = trange(range, origin_turf)
 	fitting_turfs = shuffle(fitting_turfs)
-	for(var/turf/T in fitting_turfs)
+	for( var/turf/T in fitting_turfs)
 		if(T in candidate_turfs)
 			return T
 

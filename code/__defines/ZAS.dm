@@ -53,7 +53,7 @@ var/list/gzn_check = list(NORTH, SOUTH, EAST, WEST, UP, DOWN)
 	} \
 	else if (A.contents.len) { \
 		ret = 0;\
-		for (var/thing in A) { \
+		for( var/thing in A) { \
 			var/atom/movable/AM = thing; \
 			switch (AM.atmos_canpass) { \
 				if (CANPASS_ALWAYS) { \
@@ -90,7 +90,7 @@ var/list/gzn_check = list(NORTH, SOUTH, EAST, WEST)
 	} \
 	else if (A.contents.len) { \
 		ret = 0;\
-		for (var/thing in A) { \
+		for( var/thing in A) { \
 			var/atom/movable/AM = thing; \
 			switch (AM.atmos_canpass) { \
 				if (CANPASS_ALWAYS) { \

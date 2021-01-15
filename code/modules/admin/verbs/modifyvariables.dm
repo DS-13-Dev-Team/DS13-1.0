@@ -336,7 +336,7 @@
 /client/proc/modify_variables(atom/O, param_var_name = null, autodetect_class = 0)
 	if(!check_rights(R_VAREDIT))	return
 
-	for(var/p in forbidden_varedit_object_types())
+	for( var/p in forbidden_varedit_object_types())
 		if( istype(O,p) )
 			to_chat(usr, "<span class='danger'>It is forbidden to edit this object's variables.</span>")
 			return
@@ -399,7 +399,7 @@
 	else
 
 		var/list/names = list()
-		for (var/V in O.vars)
+		for( var/V in O.vars)
 			names += V
 
 		names = sortList(names)
@@ -583,7 +583,7 @@
 /client/proc/special_set_vv_var(datum/O, variable, var_value, client)
 	if(!vv_set_handlers)
 		vv_set_handlers = init_subtypes(/decl/vv_set_handler)
-	for(var/vv_handler in vv_set_handlers)
+	for( var/vv_handler in vv_set_handlers)
 		var/decl/vv_set_handler/sh = vv_handler
 		if(sh.can_handle_set_var(O, variable, var_value, client))
 			sh.handle_set_var(O, variable, var_value, client)

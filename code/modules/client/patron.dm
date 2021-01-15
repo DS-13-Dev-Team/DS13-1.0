@@ -12,7 +12,7 @@
 /proc/load_patrons()
 	var/list/Lines = file2list("config/patrons.txt")
 
-	for(var/line in Lines)
+	for( var/line in Lines)
 		if(!length(line))
 			continue
 		if(copytext(line,1,2) == "#")
@@ -48,7 +48,7 @@
 	//We will preserve the block of commented text at the top of the file
 	var/list/text = list()
 
-	for(var/line in Lines)
+	for( var/line in Lines)
 		if(!length(line))
 			text += line
 			continue
@@ -62,13 +62,13 @@
 	//Delete the file, we will remake it
 	fdel("config/patrons.txt")
 
-	for (var/ckey in GLOB.patron_keys)
+	for( var/ckey in GLOB.patron_keys)
 		text += "[ckey]	[GLOB.patron_keys[ckey]]"
 
 	list2file(text, "config/patrons.txt")
 
 /proc/update_patrons()
-	for (var/key in GLOB.players)
+	for( var/key in GLOB.players)
 		if (!key)
 			continue
 		var/datum/player/P = GLOB.players[key]
@@ -93,7 +93,7 @@
 	content_data = list()
 
 	var/list/patrons = list()
-	for (var/ckey in GLOB.patron_keys)
+	for( var/ckey in GLOB.patron_keys)
 		var/list/patron = list()
 		patron["key"] = ckey
 		patron["date"] = GLOB.patron_keys[ckey]

@@ -7,7 +7,7 @@
 	flash_protection += C.flash_protection; \
 	equipment_tint_total += C.tint;
 
-/mob/living/carbon/human/can_eat(var/food, feedback = 1)
+/mob/living/carbon/human/can_eat(food, feedback = 1)
 	var/list/status = can_eat_status()
 	if(status[1] == HUMAN_EATING_NO_ISSUE)
 		return 1
@@ -18,7 +18,7 @@
 			to_chat(src, "<span class='warning'>\The [status[2]] is in the way!</span>")
 	return 0
 
-/mob/living/carbon/human/can_force_feed(var/feeder, food, feedback = 1)
+/mob/living/carbon/human/can_force_feed(feeder, food, feedback = 1)
 	var/list/status = can_eat_status()
 	if(status[1] == HUMAN_EATING_NO_ISSUE)
 		return 1
@@ -86,7 +86,7 @@
 /mob/living/carbon/human/get_gender()
 	return gender
 
-/mob/living/carbon/human/fully_replace_character_name(var/new_name, in_depth = TRUE)
+/mob/living/carbon/human/fully_replace_character_name(new_name, in_depth = TRUE)
 	var/old_name = real_name
 	. = ..()
 	if(!. || !in_depth)
@@ -101,7 +101,7 @@
 	var/search_id = 1
 	var/search_pda = 1
 
-	for(var/A in searching)
+	for( var/A in searching)
 		if(search_id && istype(A,/obj/item/weapon/card/id))
 			var/obj/item/weapon/card/id/ID = A
 			if(ID.registered_name == old_name)
@@ -170,7 +170,7 @@
 	next_sonar_ping += 10 SECONDS
 	var/heard_something = FALSE
 	to_chat(src, "<span class='notice'>You take a moment to listen in to your environment...</span>")
-	for(var/mob/living/L in range(client.view, src))
+	for( var/mob/living/L in range(client.view, src))
 		var/turf/T = get_turf(L)
 		if(!T || L == src || L.stat == DEAD || is_below_sound_pressure(T))
 			continue
@@ -271,7 +271,7 @@
 		return FALSE
 
 	var/list/rogue_entries = list()
-	for(var/entry in cloaking_sources)
+	for( var/entry in cloaking_sources)
 		var/weakref/W = entry
 		if(!W.resolve())
 			cloaking_sources -= W

@@ -62,7 +62,7 @@
 		return
 
 	var/covered = 0 // Basic coverage can help.
-	for(var/obj/item/clothing/clothes in H)
+	for( var/obj/item/clothing/clothes in H)
 		if(H.l_hand == clothes || H.r_hand == clothes)
 			continue
 		if((clothes.body_parts_covered & UPPER_TORSO) && (clothes.body_parts_covered & LOWER_TORSO))

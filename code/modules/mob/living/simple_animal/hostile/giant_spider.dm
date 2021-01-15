@@ -96,7 +96,7 @@
 			//1% chance to skitter madly away
 			if(!busy && prob(1))
 				/*var/list/move_targets = list()
-				for(var/turf/T in orange(20, src))
+				for( var/turf/T in orange(20, src))
 					move_targets.Add(T)*/
 				stop_automated_movement = 1
 				walk_to(src, pick(orange(20, src)), 1, move_to_delay)
@@ -120,7 +120,7 @@
 			//30% chance to stop wandering and do something
 			if(!busy && prob(30))
 				//first, check for potential food nearby to cocoon
-				for(var/mob/living/C in can_see)
+				for( var/mob/living/C in can_see)
 					if(C.stat)
 						cocoon_target = C
 						busy = MOVING_TO_TARGET
@@ -157,7 +157,7 @@
 								stop_automated_movement = 0
 					else
 						//fourthly, cocoon any nearby items so those pesky pinkskins can't use them
-						for(var/obj/O in can_see)
+						for( var/obj/O in can_see)
 
 							if(O.anchored)
 								continue
@@ -183,7 +183,7 @@
 								var/large_cocoon = 0
 								C.pixel_x = cocoon_target.pixel_x
 								C.pixel_y = cocoon_target.pixel_y
-								for(var/mob/living/M in C.loc)
+								for( var/mob/living/M in C.loc)
 									if(istype(M, /mob/living/simple_animal/hostile/giant_spider))
 										continue
 									large_cocoon = 1
@@ -193,13 +193,13 @@
 									C.pixel_x = M.pixel_x
 									C.pixel_y = M.pixel_y
 									break
-								for(var/obj/item/I in C.loc)
+								for( var/obj/item/I in C.loc)
 									I.loc = C
-								for(var/obj/structure/S in C.loc)
+								for( var/obj/structure/S in C.loc)
 									if(!S.anchored)
 										S.loc = C
 										large_cocoon = 1
-								for(var/obj/machinery/M in C.loc)
+								for( var/obj/machinery/M in C.loc)
 									if(!M.anchored)
 										M.loc = C
 										large_cocoon = 1

@@ -21,12 +21,12 @@
 
 	children_ready = list()
 	children_override = list()
-	for (var/child_tag in children_tags)
+	for( var/child_tag in children_tags)
 		children_ready[child_tag] = 0
 		children_override[child_tag] = "disabled"
 
 /datum/computer/file/embedded_program/docking/multi/proc/clear_children_ready_status()
-	for (var/child_tag in children_tags)
+	for( var/child_tag in children_tags)
 		children_ready[child_tag] = 0
 
 /datum/computer/file/embedded_program/docking/multi/receive_signal(datum/signal/signal, receive_method, receive_param)
@@ -58,19 +58,19 @@
 	clear_children_ready_status()
 
 	//tell children to prepare for docking
-	for (var/child_tag in children_tags)
+	for( var/child_tag in children_tags)
 		send_docking_command(child_tag, "prepare_for_docking")
 
 /datum/computer/file/embedded_program/docking/multi/ready_for_docking()
 	//check children ready status
-	for (var/child_tag in children_tags)
+	for( var/child_tag in children_tags)
 		if (!children_ready[child_tag])
 			return 0
 	return 1
 
 /datum/computer/file/embedded_program/docking/multi/finish_docking()
 	//tell children to finish docking
-	for (var/child_tag in children_tags)
+	for( var/child_tag in children_tags)
 		send_docking_command(child_tag, "finish_docking")
 
 	//clear ready flags
@@ -81,19 +81,19 @@
 	clear_children_ready_status()
 
 	//tell children to prepare for undocking
-	for (var/child_tag in children_tags)
+	for( var/child_tag in children_tags)
 		send_docking_command(child_tag, "prepare_for_undocking")
 
 /datum/computer/file/embedded_program/docking/multi/ready_for_undocking()
 	//check children ready status
-	for (var/child_tag in children_tags)
+	for( var/child_tag in children_tags)
 		if (!children_ready[child_tag])
 			return 0
 	return 1
 
 /datum/computer/file/embedded_program/docking/multi/finish_undocking()
 	//tell children to finish undocking
-	for (var/child_tag in children_tags)
+	for( var/child_tag in children_tags)
 		send_docking_command(child_tag, "finish_undocking")
 
 	//clear ready flags

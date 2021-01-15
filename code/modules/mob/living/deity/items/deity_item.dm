@@ -14,7 +14,7 @@
 	if(cost && D.power < cost)
 		return FALSE
 	if(requirements && requirements.len)
-		for(var/name in requirements)
+		for( var/name in requirements)
 			if(!D.has_item(name,requirements[name]))
 				return FALSE
 	return TRUE
@@ -34,5 +34,5 @@
 	if(!requirements)
 		return "N/A"
 	. = ""
-	for(var/l in requirements)
+	for( var/l in requirements)
 		. += "[l] [requirements[l]]<br>"

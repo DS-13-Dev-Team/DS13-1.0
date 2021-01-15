@@ -60,7 +60,7 @@
 
 /obj/machinery/door/firedoor/Initialize()
 	. = ..()
-	for(var/obj/machinery/door/firedoor/F in loc)
+	for( var/obj/machinery/door/firedoor/F in loc)
 		if(F != src)
 			return INITIALIZE_HINT_QDEL
 	var/area/A = get_area(src)
@@ -69,14 +69,14 @@
 	LAZYADD(A.all_doors, src)
 	areas_added = list(A)
 
-	for(var/direction in GLOB.cardinal)
+	for( var/direction in GLOB.cardinal)
 		A = get_area(get_step(src,direction))
 		if(istype(A) && !(A in areas_added))
 			LAZYADD(A.all_doors, src)
 			areas_added += A
 
 /obj/machinery/door/firedoor/Destroy()
-	for(var/area/A in areas_added)
+	for( var/area/A in areas_added)
 		LAZYREMOVE(A.all_doors, src)
 	. = ..()
 
@@ -91,7 +91,7 @@
 	if(pdiff >= FIREDOOR_MAX_PRESSURE_DIFF)
 		to_chat(user, "<span class='warning'>WARNING: Current pressure differential is [pdiff]kPa! Opening door may result in injury!</span>")
 	to_chat(user, "<b>Sensor readings:</b>")
-	for(var/index = 1; index <= tile_info.len; index++)
+	for( var/index = 1; index <= tile_info.len; index++)
 		var/o = "&nbsp;&nbsp;"
 		switch(index)
 			if(1)
@@ -116,7 +116,7 @@
 	if(islist(users_to_open) && users_to_open.len)
 		var/users_to_open_string = users_to_open[1]
 		if(users_to_open.len >= 2)
-			for(var/i = 2 to users_to_open.len)
+			for( var/i = 2 to users_to_open.len)
 				users_to_open_string += ", [users_to_open[i]]"
 		to_chat(user, "These people have opened \the [src] during an alert: [users_to_open_string].")
 /obj/machinery/door/firedoor/Bumped(atom/AM)
@@ -143,7 +143,7 @@
 		return
 
 	var/alarmed = lockdown
-	for(var/area/A in areas_added)		//Checks if there are fire alarms in any areas associated with that firedoor
+	for( var/area/A in areas_added)		//Checks if there are fire alarms in any areas associated with that firedoor
 		if(A.fire || A.air_doors_activated)
 			alarmed = 1
 
@@ -180,7 +180,7 @@
 	if(needs_to_close)
 		spawn(50)
 			alarmed = 0
-			for(var/area/A in areas_added)		//Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
+			for( var/area/A in areas_added)		//Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
 				if(A.fire || A.air_doors_activated)
 					alarmed = 1
 			if(alarmed)
@@ -304,7 +304,7 @@
 
 		tile_info = getCardinalAirInfo(src.loc,list("temperature","pressure"))
 		var/old_alerts = dir_alerts
-		for(var/index = 1; index <= 4; index++)
+		for( var/index = 1; index <= 4; index++)
 			var/list/tileinfo=tile_info[index]
 			if(tileinfo==null)
 				continue // Bad data.
@@ -366,11 +366,11 @@
 // Only opens when all areas connecting with our turf have an air alarm and are cleared
 /obj/machinery/door/firedoor/proc/can_safely_open()
 	var/turf/neighbour
-	for(var/dir in GLOB.cardinal)
+	for( var/dir in GLOB.cardinal)
 		neighbour = get_step(src.loc, dir)
 		if(neighbour.c_airblock(src.loc) & AIR_BLOCKED)
 			continue
-		for(var/obj/O in src.loc)
+		for( var/obj/O in src.loc)
 			if(istype(O, /obj/machinery/door))
 				continue
 			. |= O.c_airblock(neighbour)
@@ -417,9 +417,9 @@
 			lights_overlay += "palert"
 			do_set_light = TRUE
 		if(dir_alerts)
-			for(var/d=1;d<=4;d++)
+			for( var/d=1;d<=4;d++)
 				var/cdir = GLOB.cardinal[d]
-				for(var/i=1;i<=ALERT_STATES.len;i++)
+				for( var/i=1;i<=ALERT_STATES.len;i++)
 					if(dir_alerts[d] & (1<<(i-1)))
 						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
 						do_set_light = TRUE

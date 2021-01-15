@@ -13,8 +13,8 @@ obj/structure/net/Initialize(mapload)
 	update_connections()
 	if (!mapload)//if it's not mapped object but rather created during round, we should update visuals of adjacent net objects
 		var/turf/T = get_turf(src)
-		for (var/turf/AT in T.CardinalTurfs(FALSE))
-			for (var/obj/structure/net/N in AT)
+		for( var/turf/AT in T.CardinalTurfs(FALSE))
+			for( var/obj/structure/net/N in AT)
 				if (type != N.type)//net-walls cause update for net-walls and floors for floors but not for each other
 					continue
 				N.update_connections()
@@ -51,7 +51,7 @@ obj/structure/net/Initialize(mapload)
 /obj/structure/net/update_connections()//maybe this should also be called when any of the walls nearby is removed but no idea how I can make it happen
 	overlays.Cut()
 	var/turf/T = get_turf(src)
-	for (var/turf/AT in T.CardinalTurfs(FALSE))
+	for( var/turf/AT in T.CardinalTurfs(FALSE))
 		if ( (locate(/obj/structure/net) in AT) || (!istype(AT, /turf/simulated/open) && !istype(AT, /turf/space)) || (locate(/obj/structure/lattice) in AT) )//connects to another net objects or walls/floors or lattices
 			var/image/I = image(icon,"[icon_state]_ol_[get_dir(src,AT)]")
 			overlays += I
@@ -66,7 +66,7 @@ obj/structure/net/Initialize(mapload)
 	. = ..()
 	if (mapload)//if it's pre-mapped, it should put floor-net below itself
 		var/turf/T = get_turf(src)
-		for (var/obj/structure/net/N in T)
+		for( var/obj/structure/net/N in T)
 			if (N.type != /obj/structure/net/net_wall)//if there's net that is not a net-wall, we don't need to spawn it
 				return
 		new /obj/structure/net(T)
@@ -75,7 +75,7 @@ obj/structure/net/Initialize(mapload)
 /obj/structure/net/net_wall/update_connections()//this is different for net-walls because they only connect to walls and net-walls
 	overlays.Cut()
 	var/turf/T = get_turf(src)
-	for (var/turf/AT in T.CardinalTurfs(FALSE))
+	for( var/turf/AT in T.CardinalTurfs(FALSE))
 		if ((locate(/obj/structure/net/net_wall) in AT) || istype(AT, /turf/simulated/wall)  || istype(AT, /turf/unsimulated/wall) || istype(AT, /turf/simulated/mineral))//connects to another net-wall objects or walls
 			var/image/I = image(icon,"[icon_state]_ol_[get_dir(src,AT)]")
 			overlays += I
@@ -115,7 +115,7 @@ obj/structure/net/Initialize(mapload)
 	if (!A.has_gravity)
 		return 1
 	var/turf/T = get_turf(src)
-	for (var/turf/AT in T.CardinalTurfs(FALSE))
+	for( var/turf/AT in T.CardinalTurfs(FALSE))
 		if ((locate(/obj/structure/net/net_wall) in AT) || istype(AT, /turf/simulated/wall)  || istype(AT, /turf/unsimulated/wall) || istype(AT, /turf/simulated/mineral))//connects to another net-wall objects or walls
 			return 1
 	return 0

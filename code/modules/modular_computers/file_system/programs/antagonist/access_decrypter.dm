@@ -96,18 +96,18 @@
 		// Stolen from DOS traffic generator, generates strings of 1s and 0s
 		var/percentage = (PRG.progress / PRG.target_progress) * 100
 		var/list/strings[0]
-		for(var/j, j<10, j++)
+		for( var/j, j<10, j++)
 			var/string = ""
-			for(var/i, i<20, i++)
+			for( var/i, i<20, i++)
 				string = "[string][prob(percentage)]"
 			strings.Add(string)
 		data["dos_strings"] = strings
 	else if(program.computer.card_slot && program.computer.card_slot.stored_card)
 		var/obj/item/weapon/card/id/id_card = program.computer.card_slot.stored_card
 		var/list/regions = list()
-		for(var/i = 1; i <= 7; i++)
+		for( var/i = 1; i <= 7; i++)
 			var/list/accesses = list()
-			for(var/access in get_region_accesses(i))
+			for( var/access in get_region_accesses(i))
 				if (get_access_desc(access))
 					accesses.Add(list(list(
 						"desc" = replacetext(get_access_desc(access), " ", "&nbsp"),

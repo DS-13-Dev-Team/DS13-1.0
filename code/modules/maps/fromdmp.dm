@@ -145,7 +145,7 @@ proc/dmp2swapmap(filename)
 			txt=i?copytext(txt,i+1):null
 	to_world("Map size: [X],[Y],[Z]")
 
-	//for(var/code in codes)
+	//for( var/code in codes)
 //		to_world("Code \"[code]\":\n[codes[code]]")
 
 	fdel("map_[mapname].txt")
@@ -184,10 +184,10 @@ proc/dmp2swapmap(filename)
 		// print out this z-level now
 		F << "\t[coords[3]]"
 		i=1
-		for(var/y=_y,y>0,--y)	// map is top-down
+		for( var/y=_y,y>0,--y)	// map is top-down
 			++i
 			F << "\t\t[y]"
-			for(var/x in 1 to _x)
+			for( var/x in 1 to _x)
 				F << "\t\t\t[x]"
 				j=i+codelen
 				F << codes[copytext(mtxt,i,j)]
@@ -195,9 +195,9 @@ proc/dmp2swapmap(filename)
 		txt=copytext(txt,k+1)
 	/* for(z in 1 to Z)
 		F << "\t[z]"
-		for(var/y in 1 to Y)
+		for( var/y in 1 to Y)
 			F << "\t\t[y]"
-			for(var/x in 1 to X)
+			for( var/x in 1 to X)
 				F << "\t\t\t[x]"
 				F << codes[pick(codes)] */
 
@@ -236,7 +236,7 @@ proc/d2sm_ConvertType(tt,tabs="")
 	.="[tabs]type = [copytext(tt,1,i)]\n"
 	var/list/L=d2sm_ParseCommaList(copytext(tt,i+1,d2sm_MatchBrace(tt,i,123)))
 	if(istext(L)) return
-	for(var/pair in L)
+	for( var/pair in L)
 		.="[.][tabs][pair]\n"
 
 proc/d2sm_Contents(list/conts,n,tabs="")

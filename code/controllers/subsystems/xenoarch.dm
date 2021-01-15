@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(xenoarch)
 		digsite_spawning_turfs = SSxenoarch.digsite_spawning_turfs
 
 /datum/controller/subsystem/xenoarch/proc/SetupXenoarch()
-	for(var/turf/simulated/mineral/M in world)
+	for( var/turf/simulated/mineral/M in world)
 		if(!M.density)
 			continue
 
@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(xenoarch)
 			continue
 
 		var/farEnough = 1
-		for(var/A in digsite_spawning_turfs)
+		for( var/A in digsite_spawning_turfs)
 			var/turf/T = A
 			if(T in range(5, M))
 				farEnough = 0
@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(xenoarch)
 
 		var/list/viable_adjacent_turfs = list()
 		if(target_digsite_size > 1)
-			for(var/turf/simulated/mineral/T in orange(2, M))
+			for( var/turf/simulated/mineral/T in orange(2, M))
 				if(!T.density)
 					continue
 				if(T.finds)
@@ -65,7 +65,7 @@ SUBSYSTEM_DEF(xenoarch)
 
 			target_digsite_size = min(target_digsite_size, viable_adjacent_turfs.len)
 
-		for(var/i = 1 to target_digsite_size)
+		for( var/i = 1 to target_digsite_size)
 			turfs_to_process += pick_n_take(viable_adjacent_turfs)
 
 		while(turfs_to_process.len)

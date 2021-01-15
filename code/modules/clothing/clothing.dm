@@ -52,7 +52,7 @@
 			ret.filters += user_human.limb_mask
 
 	if(accessories.len)
-		for(var/obj/item/clothing/accessory/A in accessories)
+		for( var/obj/item/clothing/accessory/A in accessories)
 			ret.overlays |= A.get_mob_overlay(user_mob, slot)
 	return ret
 
@@ -64,7 +64,7 @@
 /obj/item/clothing/proc/get_fibers()
 	. = "material from \a [name]"
 	var/list/acc = list()
-	for(var/obj/item/clothing/accessory/A in accessories)
+	for( var/obj/item/clothing/accessory/A in accessories)
 		if(prob(40) && A.get_fibers())
 			acc += A.get_fibers()
 	if(acc.len)
@@ -73,7 +73,7 @@
 /obj/item/clothing/New()
 	..()
 	if(starting_accessories)
-		for(var/T in starting_accessories)
+		for( var/T in starting_accessories)
 			var/obj/item/clothing/accessory/tie = new T(src)
 			src.attach_accessory(null, tie)
 
@@ -150,7 +150,7 @@
 /obj/item/clothing/get_examine_line()
 	. = ..()
 	var/list/ties = list()
-	for(var/obj/item/clothing/accessory/accessory in accessories)
+	for( var/obj/item/clothing/accessory/accessory in accessories)
 		if(accessory.high_visibility)
 			ties += "\a [accessory.get_examine_line()]"
 	if(ties.len)
@@ -166,7 +166,7 @@
 	if(href_list["list_ungabunga"])
 		if(accessories.len)
 			var/list/ties = list()
-			for(var/accessory in accessories)
+			for( var/accessory in accessories)
 				ties += "\icon[accessory] \a [accessory]"
 			to_chat(user, "Attached to \the [src] are [english_list(ties)].")
 		return TOPIC_HANDLED

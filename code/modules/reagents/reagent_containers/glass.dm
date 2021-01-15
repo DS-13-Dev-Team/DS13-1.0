@@ -87,7 +87,7 @@
 /obj/item/weapon/reagent_containers/glass/afterattack(var/obj/target, mob/user, proximity)
 	if(!is_open_container() || !proximity) //Is the container open & are they next to whatever they're clicking?
 		return 1 //If not, do nothing.
-	for(var/type in can_be_placed_into) //Is it something it can be placed into?
+	for( var/type in can_be_placed_into) //Is it something it can be placed into?
 		if(istype(target, type))
 			return 1
 	if(standard_dispenser_refill(user, target)) //Are they clicking a water tank/some dispenser?

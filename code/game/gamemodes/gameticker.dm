@@ -64,7 +64,7 @@ var/global/datum/controller/gameticker/ticker
 		while(current_state == GAME_STATE_PREGAME)
 			if(start_ASAP)
 				start_now()
-			for(var/i=0, i<10, i++)
+			for( var/i=0, i<10, i++)
 				sleep(1)
 				vote.process()
 			if(round_progressing)
@@ -74,7 +74,7 @@ var/global/datum/controller/gameticker/ticker
 				if(!vote.time_remaining)
 					vote.autogamemode()	//Quit calling this over and over and over and over.
 					while(vote.time_remaining)
-						for(var/i=0, i<10, i++)
+						for( var/i=0, i<10, i++)
 							sleep(1)
 							vote.process()
 			if(pregame_timeleft <= 0 || ((initialization_stage & INITIALIZATION_NOW_AND_COMPLETE) == INITIALIZATION_NOW_AND_COMPLETE))
@@ -111,7 +111,7 @@ var/global/datum/controller/gameticker/ticker
 			src.mode = config.pick_mode(secret_force_mode)
 		if(!src.mode)
 			var/list/weighted_modes = list()
-			for(var/datum/game_mode/GM in runnable_modes)
+			for( var/datum/game_mode/GM in runnable_modes)
 				weighted_modes[GM.config_tag] = config.probabilities[GM.config_tag]
 			src.mode = gamemode_cache[pickweight(weighted_modes)]
 	else
@@ -145,7 +145,7 @@ var/global/datum/controller/gameticker/ticker
 
 		if(runnable_modes.len)
 			var/list/tmpmodes = new
-			for (var/datum/game_mode/M in runnable_modes)
+			for( var/datum/game_mode/M in runnable_modes)
 				tmpmodes+=M.name
 			tmpmodes = sortList(tmpmodes)
 			if(tmpmodes.len)
@@ -160,7 +160,7 @@ var/global/datum/controller/gameticker/ticker
 	create_characters() //Create player characters and transfer them
 	collect_minds()
 	equip_characters()
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
+	for( var/mob/living/carbon/human/H in GLOB.player_list)
 		if(!H.mind || player_is_antag(H.mind, only_offstation_roles = 1) || !job_master.ShouldCreateRecords(H.mind.assigned_role))
 			continue
 		CreateModularRecord(H)
@@ -169,17 +169,17 @@ var/global/datum/controller/gameticker/ticker
 
 	//Here we will trigger the auto-observe and auto bst debug things
 	if (config.auto_observe)
-		for(var/client/C in GLOB.clients)
+		for( var/client/C in GLOB.clients)
 			if (C.mob)
 				make_observer(C.mob)
 	spawn(5)
 		if (config.auto_bst)
-			for(var/client/C in GLOB.clients)
+			for( var/client/C in GLOB.clients)
 				if (C.mob)
 					C.cmd_dev_bst(TRUE)
 
 		if (config.debug_verbs)
-			for(var/client/C in GLOB.clients)
+			for( var/client/C in GLOB.clients)
 				C.enable_debug_verbs(TRUE)
 
 	spawn(0)//Forking here so we dont have to wait for this to finish
@@ -191,7 +191,7 @@ var/global/datum/controller/gameticker/ticker
 		Holiday_Game_Start()
 
 	var/admins_number = 0
-	for(var/client/C)
+	for( var/client/C)
 		if(C.holder)
 			admins_number++
 	if(admins_number == 0)
@@ -226,12 +226,12 @@ var/global/datum/controller/gameticker/ticker
 		var/obj/structure/bed/temp_buckle = new(src)
 		//Incredibly hackish. It creates a bed within the gameticker (lol) to stop mobs running around
 		if(station_missed)
-			for(var/mob/living/M in GLOB.living_mob_list)
+			for( var/mob/living/M in GLOB.living_mob_list)
 				M.buckled = temp_buckle				//buckles the mob so it can't do anything
 				if(M.client)
 					M.client.screen += cinematic	//show every client the cinematic
 		else	//nuke kills everyone on z-level 1 to prevent "hurr-durr I survived"
-			for(var/mob/living/M in GLOB.living_mob_list)
+			for( var/mob/living/M in GLOB.living_mob_list)
 				M.buckled = temp_buckle
 				if(M.client)
 					M.client.screen += cinematic
@@ -296,7 +296,7 @@ var/global/datum/controller/gameticker/ticker
 						flick("station_explode_fade_red", cinematic)
 						sound_to(world, sound('sound/effects/explosionfar.ogg'))
 						cinematic.icon_state = "summary_selfdes"
-				for(var/mob/living/M in GLOB.living_mob_list)
+				for( var/mob/living/M in GLOB.living_mob_list)
 					if(is_station_turf(get_turf(M)))
 						M.death()//No mercy
 		//If its actually the end of the round, wait for it to end.
@@ -309,7 +309,7 @@ var/global/datum/controller/gameticker/ticker
 
 
 	proc/create_characters()
-		for(var/mob/new_player/player in GLOB.player_list)
+		for( var/mob/new_player/player in GLOB.player_list)
 			if(player && player.ready && player.mind)
 				if(player.mind.assigned_role=="AI")
 					player.close_spawn_windows()
@@ -322,14 +322,14 @@ var/global/datum/controller/gameticker/ticker
 
 
 	proc/collect_minds()
-		for(var/mob/living/player in GLOB.player_list)
+		for( var/mob/living/player in GLOB.player_list)
 			if(player.mind)
 				ticker.minds += player.mind
 
 
 	proc/equip_characters()
 		var/captainless=1
-		for(var/mob/living/carbon/human/player in GLOB.player_list)
+		for( var/mob/living/carbon/human/player in GLOB.player_list)
 			if(player && player.mind && player.mind.assigned_role)
 				if(player.mind.assigned_role == "Captain")
 					captainless=0
@@ -338,7 +338,7 @@ var/global/datum/controller/gameticker/ticker
 					//equip_custom_items(player)
 					equip_loadout(player, player.mind.assigned_role, player.client.prefs)
 		if(captainless)
-			for(var/mob/M in GLOB.player_list)
+			for( var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/new_player))
 					to_chat(M, "Captainship not forced on anyone.")
 
@@ -395,7 +395,7 @@ var/global/datum/controller/gameticker/ticker
 				var/delay_notified = 0
 				do
 					wait_for_tickets = 0
-					for(var/datum/ticket/ticket in tickets)
+					for( var/datum/ticket/ticket in tickets)
 						if(ticket.is_active())
 							wait_for_tickets = 1
 							break
@@ -434,10 +434,10 @@ var/global/datum/controller/gameticker/ticker
 
 /datum/controller/gameticker/proc/declare_completion()
 	to_world("<br><br><br><H1>A round of [mode.name] has ended!</H1>")
-	for(var/client/C)
+	for( var/client/C)
 		if(!C.credits)
 			C.RollCredits()
-	for(var/mob/Player in GLOB.player_list)
+	for( var/mob/Player in GLOB.player_list)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)
 				var/turf/playerTurf = get_turf(Player)
@@ -462,7 +462,7 @@ var/global/datum/controller/gameticker/ticker
 	to_world("<br>")
 
 
-	for (var/mob/living/silicon/ai/aiPlayer in SSmobs.mob_list)
+	for( var/mob/living/silicon/ai/aiPlayer in SSmobs.mob_list)
 		if (aiPlayer.stat != 2)
 			to_world("<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>")
 
@@ -473,14 +473,14 @@ var/global/datum/controller/gameticker/ticker
 
 		if (aiPlayer.connected_robots.len)
 			var/robolist = "<b>The AI's loyal minions were:</b> "
-			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
+			for( var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				robolist += "[robo.name][robo.stat?" (Deactivated) (Played by: [robo.key]), ":" (Played by: [robo.key]), "]"
 			to_world("[robolist]")
 
 
 	var/dronecount = 0
 
-	for (var/mob/living/silicon/robot/robo in SSmobs.mob_list)
+	for( var/mob/living/silicon/robot/robo in SSmobs.mob_list)
 
 		if(istype(robo,/mob/living/silicon/robot/drone))
 			dronecount++
@@ -503,7 +503,7 @@ var/global/datum/controller/gameticker/ticker
 	if(all_money_accounts.len)
 		var/datum/money_account/max_profit = all_money_accounts[1]
 		var/datum/money_account/max_loss = all_money_accounts[1]
-		for(var/datum/money_account/D in all_money_accounts)
+		for( var/datum/money_account/D in all_money_accounts)
 			if(D == vendor_account) //yes we know you get lots of money
 				continue
 			var/saldo = D.get_balance()
@@ -522,7 +522,7 @@ var/global/datum/controller/gameticker/ticker
 	//Print a list of antagonists to the server log
 	var/list/total_antagonists = list()
 	//Look into all mobs in world, dead or alive
-	for(var/datum/mind/Mind in minds)
+	for( var/datum/mind/Mind in minds)
 		var/temprole = Mind.special_role
 		if(temprole)							//if they are an antagonist of some sort.
 			if(temprole in total_antagonists)	//If the role exists already, add the name to it
@@ -533,7 +533,7 @@ var/global/datum/controller/gameticker/ticker
 
 	//Now print them all into the log!
 	log_game("Antagonists at round end were...")
-	for(var/i in total_antagonists)
+	for( var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
 
 	return TRUE
@@ -551,14 +551,14 @@ var/global/datum/controller/gameticker/ticker
 			looking_for_antags = 0
 			antag.update_current_antag_max()
 			antag.build_candidate_list(needs_ghost)
-			for(var/datum/mind/candidate in antag.candidates)
+			for( var/datum/mind/candidate in antag.candidates)
 				if(!(candidate in antag_pool))
 					antag.candidates -= candidate
 					log_debug("[candidate.key] was not in the antag pool and could not be selected.")
 		else
 			antag.update_current_antag_max()
 			antag.build_candidate_list(needs_ghost)
-			for(var/datum/mind/candidate in antag.candidates)
+			for( var/datum/mind/candidate in antag.candidates)
 				if(isghostmind(candidate))
 					antag.candidates -= candidate
 					log_debug("[candidate.key] is a ghost and can not be selected.")

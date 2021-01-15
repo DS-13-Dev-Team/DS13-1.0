@@ -764,7 +764,7 @@ var/list/admin_verbs_mentor = list(
 	if(mob.control_object)
 		if(!msg)
 			return
-		for (var/mob/V in hearers(mob.control_object))
+		for( var/mob/V in hearers(mob.control_object))
 			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
 	feedback_add_details("admin_verb","OT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -997,9 +997,9 @@ var/list/admin_verbs_mentor = list(
 	if(!holder) return
 
 	var/list/jobs = list()
-	for(var/thing in SSmapping.submaps)
+	for( var/thing in SSmapping.submaps)
 		var/datum/submap/submap = thing
-		for(var/otherthing in submap.jobs)
+		for( var/otherthing in submap.jobs)
 			var/datum/job/submap/job = submap.jobs[otherthing]
 			if(!job.is_position_available())
 				jobs["[job.title] - [submap.name]"] = job
@@ -1020,7 +1020,7 @@ var/list/admin_verbs_mentor = list(
 	set category = "Admin"
 	if(holder)
 		var/list/jobs = list()
-		for (var/datum/job/J in job_master.occupations)
+		for( var/datum/job/J in job_master.occupations)
 			if(!J.is_position_available())
 				jobs += J.title
 		if (!jobs.len)
@@ -1075,7 +1075,7 @@ var/list/admin_verbs_mentor = list(
 	set name = "Man Up Global"
 	set desc = "Tells everyone to man up and deal with it."
 
-	for (var/mob/T as mob in SSmobs.mob_list)
+	for( var/mob/T as mob in SSmobs.mob_list)
 		to_chat(T, "<br><center><span class='notice'><b><font size=4>Man up.<br> Deal with it.</font></b><br>Move on.</span></center><br>")
 		sound_to(T, 'sound/voice/ManUp1.ogg')
 

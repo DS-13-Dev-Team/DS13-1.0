@@ -254,7 +254,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	flags = EXTENSION_FLAG_IMMEDIATE | EXTENSION_FLAG_MULTIPLE_INSTANCES	//This version is allowed
 
 
-/datum/species/necromorph/puker/handle_amputated(var/mob/living/carbon/human/H, obj/item/organ/external/E, clean, disintegrate, ignore_children, silent)
+/datum/species/necromorph/puker/handle_amputated(mob/living/carbon/human/H, obj/item/organ/external/E, clean, disintegrate, ignore_children, silent)
 	H.puker_acidblood()
 
 #undef PUKER_SNAPSHOT_RANGE

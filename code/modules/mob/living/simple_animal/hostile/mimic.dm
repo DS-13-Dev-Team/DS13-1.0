@@ -105,18 +105,18 @@ var/global/list/protected_objects = list(/obj/machinery,
 		C.forceMove(src.loc)
 
 		if(istype(C,/obj/structure/closet))
-			for(var/atom/movable/M in src)
+			for( var/atom/movable/M in src)
 				M.forceMove(C)
 
 		if(istype(C,/obj/item/weapon/storage))
 			var/obj/item/weapon/storage/S = C
-			for(var/atom/movable/M in src)
+			for( var/atom/movable/M in src)
 				if(S.can_be_inserted(M,null,1))
 					S.handle_item_insertion(M)
 				else
 					M.forceMove(src.loc)
 
-		for(var/atom/movable/M in src)
+		for( var/atom/movable/M in src)
 			M.forceMove(get_turf(src))
 		qdel(src)
 

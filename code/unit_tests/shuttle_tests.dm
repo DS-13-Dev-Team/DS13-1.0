@@ -8,7 +8,7 @@
 
 /datum/unit_test/shuttle/shuttles_shall_have_a_name/start_test()
 	var/failed_shuttles = 0
-	for(var/datum/shuttle/shuttle in SSshuttle.shuttles)
+	for( var/datum/shuttle/shuttle in SSshuttle.shuttles)
 		if(!shuttle.name)
 			failed_shuttles++
 
@@ -23,7 +23,7 @@
 
 /datum/unit_test/shuttle/shuttles_shall_use_mapped_areas/start_test()
 	var/failed_shuttles = 0
-	for(var/shuttle_name in SSshuttle.shuttles)
+	for( var/shuttle_name in SSshuttle.shuttles)
 		var/datum/shuttle/shuttle = SSshuttle.shuttles[shuttle_name]
 		var/failed = FALSE
 		if(istype(shuttle, /datum/shuttle/autodock/ferry))
@@ -39,7 +39,7 @@
 			if(!ms.interim || !ms.interim.x)
 				log_bad("[ms.name]: Invalid interim area.")
 				failed = TRUE
-			for(var/destination in ms.destinations)
+			for( var/destination in ms.destinations)
 				var/area/destination_area = ms.destinations[destination]
 				if(!(destination_area && destination_area.x))
 					log_bad("[ms.name] - [destination]: Invalid destination area.")
@@ -63,14 +63,14 @@
 
 /datum/unit_test/shuttle/shuttles_shall_use_equally_sized_areas/start_test()
 	var/failed_shuttles = 0
-	for(var/shuttle_name in SSshuttle.shuttles)
+	for( var/shuttle_name in SSshuttle.shuttles)
 		var/datum/shuttle/shuttle = SSshuttle.shuttles[shuttle_name]
 		var/failed = FALSE
 		if(istype(shuttle, /datum/shuttle/multi_shuttle))
 			var/datum/shuttle/multi_shuttle/ms = shuttle
 			if(is_bad_area_size(ms, ms.origin, ms.interim))
 				failed = TRUE
-			for(var/destination in ms.destinations)
+			for( var/destination in ms.destinations)
 				if(is_bad_area_size(ms, ms.origin, ms.destinations[destination]))
 					failed = TRUE
 		if(failed)
@@ -90,7 +90,7 @@
 
 /datum/unit_test/shuttle/shuttles_shall_use_unique_areas/start_test()
 	var/list/shuttle_areas = list()
-	for(var/shuttle_name in SSshuttle.shuttles)
+	for( var/shuttle_name in SSshuttle.shuttles)
 		var/datum/shuttle/shuttle = SSshuttle.shuttles[shuttle_name]
 		if(istype(shuttle, /datum/shuttle/autodock/ferry))
 			var/datum/shuttle/autodock/ferry/f = shuttle
@@ -100,7 +100,7 @@
 			var/datum/shuttle/multi_shuttle/ms = shuttle
 			group_by(shuttle_areas, ms.origin.type, SHUTTLE_NAME_AID(ms))
 			group_by(shuttle_areas, ms.interim.type, SHUTTLE_NAME_AID(ms))
-			for(var/destination in ms.destinations)
+			for( var/destination in ms.destinations)
 				var/area/dest_area = ms.destinations[destination]
 				group_by(shuttle_areas, dest_area.type, SHUTTLE_NAME_AID(ms))
 
@@ -116,9 +116,9 @@
 /datum/unit_test/shuttle/shuttles_shall_use_equally_sized_areas/proc/is_bad_area_size(shuttle, area/main_area, area/checked_area)
 	var/main_size = 0
 	var/checked_size = 0
-	for(var/turf/T in main_area)
+	for( var/turf/T in main_area)
 		main_size++
-	for(var/turf/T in checked_area)
+	for( var/turf/T in checked_area)
 		checked_size++
 	if(main_size == checked_size)
 		return FALSE

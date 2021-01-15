@@ -15,7 +15,7 @@
 	hack_state = new(src)
 
 /obj/item/weapon/tool/multitool/hacktool/Destroy()
-	for(var/T in known_targets)
+	for( var/T in known_targets)
 		var/atom/target = T
 		GLOB.destroyed_event.unregister(target, src)
 	known_targets.Cut()
@@ -70,7 +70,7 @@
 	if(max_known_targets < 1) max_known_targets = 1
 	// Cut away the oldest items if the capacity has been reached
 	if(known_targets.len > max_known_targets)
-		for(var/i = (max_known_targets + 1) to known_targets.len)
+		for( var/i = (max_known_targets + 1) to known_targets.len)
 			var/atom/A = known_targets[i]
 			GLOB.destroyed_event.unregister(A, src)
 		known_targets.Cut(max_known_targets + 1)

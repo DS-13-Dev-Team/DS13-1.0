@@ -20,7 +20,7 @@ effective or pretty fucking useless.
 	icon_state = "batterer"
 	throwforce = 5
 	w_class = ITEM_SIZE_TINY
-	
+
 	throw_range = 10
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	item_state = "electronic"
@@ -36,7 +36,7 @@ effective or pretty fucking useless.
 		return
 
 	var/list/stun_victims = list()
-	for(var/mob/living/carbon/human/M in orange(10, user))
+	for( var/mob/living/carbon/human/M in orange(10, user))
 		stun_victims += M
 		spawn()
 			if(prob(50))

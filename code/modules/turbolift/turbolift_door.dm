@@ -31,8 +31,8 @@
 	return FALSE //only the lift machinery is allowed to operate this door
 
 /obj/machinery/door/airlock/lift/close(var/forced=0)
-	for(var/turf/turf in locs)
-		for(var/mob/living/LM in turf)
+	for( var/turf/turf in locs)
+		for( var/mob/living/LM in turf)
 			if(LM.mob_size <= MOB_TINY)
 				var/moved = 0
 				for(dir in shuffle(GLOB.cardinal.Copy()))

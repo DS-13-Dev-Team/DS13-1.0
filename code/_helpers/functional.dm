@@ -1,7 +1,7 @@
 /proc/all_predicates_true(list/input, list/predicates)
 	predicates = istype(predicates) ? predicates : list(predicates)
 
-	for(var/i = 1 to predicates.len)
+	for( var/i = 1 to predicates.len)
 		if(istype(input))
 			if(!call(predicates[i])(arglist(input)))
 				return FALSE
@@ -15,7 +15,7 @@
 	if(!predicates.len)
 		return TRUE
 
-	for(var/i = 1 to predicates.len)
+	for( var/i = 1 to predicates.len)
 		if(istype(input))
 			if(call(predicates[i])(arglist(input)))
 				return TRUE
@@ -53,7 +53,7 @@
 
 /proc/where(list/list_to_filter, list/predicates, list/extra_predicate_input)
 	. = list()
-	for(var/entry in list_to_filter)
+	for( var/entry in list_to_filter)
 		var/predicate_input
 		if(extra_predicate_input)
 			predicate_input = (list(entry) + extra_predicate_input)
@@ -65,5 +65,5 @@
 
 /proc/map(list/list_to_map, map_proc)
 	. = list()
-	for(var/entry in list_to_map)
+	for( var/entry in list_to_map)
 		. += call(map_proc)(entry)

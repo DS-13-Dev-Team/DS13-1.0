@@ -8,7 +8,7 @@
 	trigger = TRIGGER_TOUCH
 
 /datum/artifact_effect/forcefield/Destroy()
-	for(var/obj/effect/energy_field/F in created_field)
+	for( var/obj/effect/energy_field/F in created_field)
 		created_field.Remove(F)
 		qdel(F)
 	. = ..()
@@ -16,7 +16,7 @@
 /datum/artifact_effect/forcefield/ToggleActivate()
 	..()
 	if(created_field.len)
-		for(var/obj/effect/energy_field/F in created_field)
+		for( var/obj/effect/energy_field/F in created_field)
 			created_field.Remove(F)
 			qdel(F)
 	else if(holder)
@@ -36,7 +36,7 @@
 
 /datum/artifact_effect/forcefield/process()
 	..()
-	for(var/obj/effect/energy_field/E in created_field)
+	for( var/obj/effect/energy_field/E in created_field)
 		if(E.strength < 1)
 			E.Strengthen(0.15)
 		else if(E.strength < 5)

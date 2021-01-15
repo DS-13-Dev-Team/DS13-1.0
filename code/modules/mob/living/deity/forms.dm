@@ -25,7 +25,7 @@ Each plays slightly different and has different challenges/benefits
 	linked_god = D
 	if(items && items.len)
 		var/list/complete_items = list()
-		for(var/l in items)
+		for( var/l in items)
 			var/datum/deity_item/di = new l()
 			complete_items[di.name] = di
 		D.set_items(complete_items)
@@ -35,7 +35,7 @@ Each plays slightly different and has different challenges/benefits
 	var/list/svars = buildables[O.type]
 	if(!svars)
 		return
-	for(var/V in svars)
+	for( var/V in svars)
 		O.vars[V] = svars[V]
 
 /datum/god_form/proc/take_charge(mob/living/user, charge)

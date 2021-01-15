@@ -80,7 +80,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 	if(investing_time && !has_sacrificed)
 		var/list/objects = spellbook.sacrifice_objects
 		if(objects && objects.len)
-			for(var/type in objects)
+			for( var/type in objects)
 				if(istype(I,type))
 					make_sacrifice(I,user)
 					return
@@ -88,7 +88,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 			var/datum/reagents/R = I.reagents
 			var/list/reagent_list = spellbook.sacrifice_reagents
 			if(reagent_list && reagent_list.len)
-				for(var/id in reagent_list)
+				for( var/id in reagent_list)
 					if(R.has_reagent(id,5))
 						make_sacrifice(I,user, id)
 						return 1
@@ -102,7 +102,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 		dat = "<center><h3>[spellbook.title]</h3><i>[spellbook.title_desc]</i><br>You have [uses] spell slot[uses > 1 ? "s" : ""] left.</center><br>"
 		dat += "<center><font color='#ff33cc'>Requires Wizard Garb</font><br><font color='#ff6600'>Selectable Target</font><br><font color='#33cc33'>Spell Charge Type: Recharge, Sacrifice, Charges</font></center><br>"
 		dat += "<center><b>To use a contract, first bind it to your soul, then give it to someone to sign. This will bind their soul to you.</b></center><br>"
-		for(var/i in 1 to spellbook.spells.len)
+		for( var/i in 1 to spellbook.spells.len)
 			var/name = "" //name of target
 			var/desc = "" //description of target
 			var/info = "" //additional information
@@ -266,7 +266,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 
 
 /obj/item/weapon/spellbook/proc/add_spell(mob/user, spell_path)
-	for(var/spell/S in user.mind.learned_spells)
+	for( var/spell/S in user.mind.learned_spells)
 		if(istype(S,spell_path))
 			if(!S.can_improve())
 				return

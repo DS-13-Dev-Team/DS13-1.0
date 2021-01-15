@@ -180,7 +180,7 @@
 			HDD = PRG.computer.hard_drive
 			RHDD = PRG.computer.portable_drive
 			var/list/files[0]
-			for(var/datum/computer_file/F in HDD.stored_files)
+			for( var/datum/computer_file/F in HDD.stored_files)
 				files.Add(list(list(
 					"name" = F.filename,
 					"type" = F.filetype,
@@ -191,7 +191,7 @@
 			if(RHDD)
 				data["usbconnected"] = 1
 				var/list/usbfiles[0]
-				for(var/datum/computer_file/F in RHDD.stored_files)
+				for( var/datum/computer_file/F in RHDD.stored_files)
 					usbfiles.Add(list(list(
 						"name" = F.filename,
 						"type" = F.filetype,

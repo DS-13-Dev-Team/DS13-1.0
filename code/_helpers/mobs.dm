@@ -20,7 +20,7 @@
 
 /proc/mobs_in_view(range, source)
 	var/list/mobs = list()
-	for(var/atom/movable/AM in view(range, source))
+	for( var/atom/movable/AM in view(range, source))
 		var/M = AM.get_mob()
 		if(M)
 			mobs += M
@@ -110,7 +110,7 @@ proc/age2agedescription(age)
 
 /proc/RoundHealth(health)
 	var/list/icon_states = icon_states('icons/mob/hud_med.dmi')
-	for(var/icon_state in icon_states)
+	for( var/icon_state in icon_states)
 		if(health >= text2num(icon_state))
 			return icon_state
 	return icon_states[icon_states.len] // If we had no match, return the last element
@@ -299,14 +299,14 @@ var/datum/callback/proc_to_call, proc_interval = 10)
 	var/mob/selected = null
 
 	if(include_observers)
-		for(var/mob/M in GLOB.player_list)
+		for( var/mob/M in GLOB.player_list)
 			if((M.stat != DEAD) || (!M.client))
 				continue
 			if(M.ckey == find_key)
 				selected = M
 				break
 	else
-		for(var/mob/living/M in GLOB.player_list)
+		for( var/mob/living/M in GLOB.player_list)
 			//Dead people only thanks!
 			if((M.stat != DEAD) || (!M.client))
 				continue
@@ -340,9 +340,9 @@ var/datum/callback/proc_to_call, proc_interval = 10)
 	var/list/search_tiles = trange(searchrange, origin)
 	var/list/prime_targets = list()	//Main targets, we pick one
 	var/list/secondary_targets	=	list()	//Used only if there are no prime targets
-	for (var/t in search_tiles)
+	for( var/t in search_tiles)
 		var/turf/T = t
-		for (var/mob/living/L in T)
+		for( var/mob/living/L in T)
 
 			if (L.stat == DEAD)
 				continue	//Never target a dead mob
@@ -381,7 +381,7 @@ var/datum/callback/proc_to_call, proc_interval = 10)
 
 
 /mob/proc/enemy_in_view(require_standing = FALSE)
-	for (var/mob/living/carbon/human/H in atoms_in_view())
+	for( var/mob/living/carbon/human/H in atoms_in_view())
 		//People who are downed don't count
 		if (require_standing && (H.lying || H.stat))
 			continue

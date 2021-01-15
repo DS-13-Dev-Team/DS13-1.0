@@ -61,7 +61,7 @@
 	src.y = y
 	src.z = z
 
-	for(var/turf/t in range(10, locate(x + 8, y + 8, z)))
+	for( var/turf/t in range(10, locate(x + 8, y + 8, z)))
 		if(t.x >= x && t.y >= y && t.x < x + 16 && t.y < y + 16)
 			turfs[t] = t
 
@@ -72,7 +72,7 @@
 	visibleTurfs &= turfs
 	obscuredTurfs = turfs - visibleTurfs
 
-	for(var/turf in obscuredTurfs)
+	for( var/turf in obscuredTurfs)
 		var/turf/t = turf
 		obscured += obfuscation.get_obfuscation(t)
 
@@ -83,7 +83,7 @@
 
 /datum/chunk/proc/add_sources(list/sources)
 	var/turf/center = locate(x + 8, y + 8, z)
-	for(var/entry in sources)
+	for( var/entry in sources)
 		var/atom/A = entry
 		if(get_dist(get_turf(A), center) > (8+A.get_visualnet_range()))
 			continue
@@ -131,7 +131,7 @@ SUBSYSTEM_DEF(chunk)
 /datum/controller/subsystem/chunk/fire()
 	if(!chunks.len) //Well, yeah, no need right?
 		return
-	for(var/datum/chunk/C in chunks)
+	for( var/datum/chunk/C in chunks)
 		if(C.dirty && C.seenby.len) //Only update the chunks that are in view, and are marked as needing an update.
 			C.update()
 
@@ -164,13 +164,13 @@ SUBSYSTEM_DEF(chunk)
 	var/list/obfuscation_to_add = list()
 	var/list/obfuscation_to_remove = list()
 
-	for(var/turf/t in visAdded)
+	for( var/turf/t in visAdded)
 		if(obfuscation.has_obfuscation(t))
 			var/image/obfuscation_image = obfuscation.get_obfuscation(t)
 			obscured -= obfuscation_image
 			obfuscation_to_remove += obfuscation_image
 
-	for(var/turf/t in visRemoved)
+	for( var/turf/t in visRemoved)
 		if(obscuredTurfs[t])
 			var/image/obfuscation_image = obfuscation.get_obfuscation(t)
 			obscured += obfuscation_image
@@ -185,8 +185,8 @@ SUBSYSTEM_DEF(chunk)
 /datum/chunk/proc/apply_visibility(remove=TRUE, list/update_list)
 	set waitfor = FALSE
 	//There's no way of getting around this, we'll have to take the hit, however this shouldn't be too bad as each chunk is relatively small.
-	for(var/image/obfuscation_image in update_list)
-		for(var/eye in seenby)
+	for( var/image/obfuscation_image in update_list)
+		for( var/eye in seenby)
 			var/mob/observer/eye/m = eye
 			if(m && m.owner && m.owner.client)
 				if(remove)
@@ -206,7 +206,7 @@ SUBSYSTEM_DEF(chunk)
 /proc/seen_turfs_in_range(source, range)
 	var/turf/pos = get_turf(source)
 	var/list/things = hear(range, pos)
-	for (var/a in things)
+	for( var/a in things)
 		if (!isturf(a))
 			things.Remove(a)
 
@@ -220,7 +220,7 @@ SUBSYSTEM_DEF(chunk)
 		to_mark = obscuredTurfs
 
 
-	for (var/T in to_mark)
+	for( var/T in to_mark)
 		debug_mark_turf(T, duration)
 
 #undef UPDATE_BUFFER

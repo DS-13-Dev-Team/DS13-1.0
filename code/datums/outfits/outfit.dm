@@ -66,7 +66,7 @@ var/list/outfits_decls_by_type_
 
 	setup_loadout_tags()
 
-	for (var/a in ALL_OUTFIT_SLOTS)
+	for( var/a in ALL_OUTFIT_SLOTS)
 		if (islist(vars[a]))
 			contains_randomisation = TRUE
 			all_possible_types += vars[a]
@@ -255,9 +255,9 @@ var/list/outfits_decls_by_type_
 
 /decl/hierarchy/outfit/proc/equip_stored(mob/living/carbon/human/H, equip_adjustments, overwrite = FALSE)
 	var/list/items_to_store = list()
-	for(var/path in backpack_contents)
+	for( var/path in backpack_contents)
 		var/number = backpack_contents[path]
-		for(var/i=0,i<number,i++)
+		for( var/i=0,i<number,i++)
 			items_to_store += path
 
 	H.mass_equip_to_storage(items_to_store)
@@ -291,9 +291,9 @@ var/list/outfits_decls_by_type_
 //Returned list is in the format path = quantity
 /decl/hierarchy/outfit/proc/get_all_item_paths()
 	var/list/data = list()
-	for (var/item in all_types)
+	for( var/item in all_types)
 		data[item] = 1
-	for (var/implant in implants)
+	for( var/implant in implants)
 		data[implant] = 1
 
 	data.Add(backpack_contents)
@@ -302,9 +302,9 @@ var/list/outfits_decls_by_type_
 //Returns a list of all the paths this outfit could contain. This includes the entireity of random lists
 /decl/hierarchy/outfit/proc/get_all_possible_item_paths()
 	var/list/data = list()
-	for (var/item in all_possible_types)
+	for( var/item in all_possible_types)
 		data[item] = 1
-	for (var/implant in implants)
+	for( var/implant in implants)
 		data[implant] = 1
 
 	data.Add(backpack_contents)
@@ -317,7 +317,7 @@ var/list/outfits_decls_by_type_
 /decl/hierarchy/outfit/proc/get_slotted_item_paths()
 	var/list/slots = OUTFIT_SLOT_TO_INVENTORY_SLOT
 	var/list/data = list()
-	for (var/outfit_slot in slots)
+	for( var/outfit_slot in slots)
 		if (vars[outfit_slot])
 			var/inventory_slot = slots[outfit_slot]
 			var/list/subdata = list(inventory_slot, outfit_slot, vars[outfit_slot], 1)
@@ -327,7 +327,7 @@ var/list/outfits_decls_by_type_
 
 /decl/hierarchy/outfit/proc/setup_loadout_tags()
 	loadout_tags = list()
-	for (var/typepath in get_all_item_paths())
+	for( var/typepath in get_all_item_paths())
 		loadout_tags |= get_loadout_tags_from_type(typepath)
 
 /*
@@ -343,7 +343,7 @@ var/list/outfits_decls_by_type_
 	var/list/outfit_items = get_slotted_item_paths()
 
 	//Outfit item is a sublist in the format: list(inventory slot, outfit_slot,typepath, quantity)
-	for (var/list/outfit_item in outfit_items)
+	for( var/list/outfit_item in outfit_items)
 		var/list/itemtags = get_loadout_tags_from_type(outfit_item[3])
 
 		//Does this item have any of the excluded tags?

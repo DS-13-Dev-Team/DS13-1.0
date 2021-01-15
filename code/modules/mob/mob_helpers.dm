@@ -39,7 +39,7 @@
 /mob/living/carbon/human/isSynthetic()
 	if(isnull(full_prosthetic))
 		robolimb_count = 0
-		for(var/obj/item/organ/external/E in organs)
+		for( var/obj/item/organ/external/E in organs)
 			if(BP_IS_ROBOTIC(E))
 				robolimb_count++
 		full_prosthetic = (robolimb_count == organs.len)
@@ -182,7 +182,7 @@ var/list/global/organ_rel_size = list(
 		if(target.buckled || target.lying)
 			return zone
 		// if your target is being grabbed aggressively by someone you cannot miss either
-		for(var/obj/item/grab/G in target.grabbed_by)
+		for( var/obj/item/grab/G in target.grabbed_by)
 			if(G.stop_move())
 				return zone
 
@@ -207,7 +207,7 @@ var/list/global/organ_rel_size = list(
 	var/intag = 0
 	var/block = list()
 	. = list()
-	for(var/i = 1, i <= length(n), i++)
+	for( var/i = 1, i <= length(n), i++)
 		var/char = copytext(n, i, i+1)
 		if(!intag && (char == "<"))
 			intag = 1
@@ -225,7 +225,7 @@ var/list/global/organ_rel_size = list(
 /proc/stars_no_html(text, pr, re_encode)
 	text = html_decode(text) //We don't want to screw up escaped characters
 	. = list()
-	for(var/i = 1, i <= length(text), i++)
+	for( var/i = 1, i <= length(text), i++)
 		var/char = copytext(text, i, i+1)
 		if(char == " " || prob(pr))
 			. += char
@@ -285,14 +285,14 @@ proc/slur(phrase)
 proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
 	/* Turn text into complete gibberish! */
 	var/returntext = ""
-	for(var/i = 1, i <= length(t), i++)
+	for( var/i = 1, i <= length(t), i++)
 
 		var/letter = copytext(t, i, i+1)
 		if(prob(50))
 			if(p >= 70)
 				letter = ""
 
-			for(var/j = 1, j <= rand(0, 2), j++)
+			for( var/j = 1, j <= rand(0, 2), j++)
 				letter += pick("#","@","*","&","%","$","/", "<", ">", ";","*","*","*","*","*","*","*")
 
 		returntext += letter
@@ -333,7 +333,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 
 /proc/findname(msg)
-	for(var/mob/M in SSmobs.mob_list)
+	for( var/mob/M in SSmobs.mob_list)
 		if (M.real_name == text("[msg]"))
 			return 1
 	return 0
@@ -410,14 +410,14 @@ proc/is_blind(A)
 
 /proc/broadcast_hud_message(message, broadcast_source, list/targets, icon)
 	var/turf/sourceturf = get_turf(broadcast_source)
-	for(var/mob/M in targets)
+	for( var/mob/M in targets)
 		var/turf/targetturf = get_turf(M)
 		if(!sourceturf || (targetturf.z in GetConnectedZlevels(sourceturf.z)))
 			M.show_message("<span class='info'>\icon[icon] [message]</span>", 1)
 
 /proc/mobs_in_area(area/A)
 	var/list/mobs = new
-	for(var/mob/living/M in SSmobs.mob_list)
+	for( var/mob/living/M in SSmobs.mob_list)
 		if(get_area(M) == A)
 			mobs += M
 	return mobs
@@ -638,10 +638,10 @@ proc/is_blind(A)
 		if(istype(thearea, /list))
 			thearea = thearea[1]
 	var/list/L = list()
-	for(var/turf/T in get_area_turfs(thearea))
+	for( var/turf/T in get_area_turfs(thearea))
 		if(!T.density)
 			var/clear = 1
-			for(var/obj/O in T)
+			for( var/obj/O in T)
 				if(O.density)
 					clear = 0
 					break
@@ -671,7 +671,7 @@ proc/is_blind(A)
 
 //Tries to find the mob's email.
 /proc/find_email(real_name)
-	for(var/mob/mob in GLOB.living_mob_list)
+	for( var/mob/mob in GLOB.living_mob_list)
 		if(mob.real_name == real_name)
 			if(!mob.mind)
 				return
@@ -686,7 +686,7 @@ proc/is_blind(A)
 
 //Any useable grasping limb will do
 /mob/living/carbon/human/can_grasp()
-	for(var/obj/item/organ/external/E in organs)
+	for( var/obj/item/organ/external/E in organs)
 		if ((E.limb_flags & ORGAN_FLAG_CAN_GRASP) && E.is_usable())
 			return TRUE
 	return FALSE

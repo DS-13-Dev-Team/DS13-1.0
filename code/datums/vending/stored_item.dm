@@ -22,7 +22,7 @@
 /datum/stored_items/Destroy()
 	storing_object = null
 	if(instances)
-		for(var/instance in instances)
+		for( var/instance in instances)
 			qdel(instance)
 		instances = null
 	. = ..()
@@ -65,6 +65,6 @@
 	if(instances)
 		return
 	instances = list()
-	for(var/i = 1 to amount)
+	for( var/i = 1 to amount)
 		var/new_product = new item_path(storing_object)
 		instances += new_product

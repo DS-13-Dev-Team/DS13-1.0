@@ -13,7 +13,7 @@ datum/unit_test/roundstart_cable_connectivity/proc/get_connected_neighbours(obj/
 	var/reverse = GLOB.reverse_dir[dir]
 
 	. = list() //can have multiple connected neighbours for a dir, e.g. Y-junctions
-	for(var/obj/structure/cable/other in T)
+	for( var/obj/structure/cable/other in T)
 		if(other.d1 == reverse || other.d2 == reverse)
 			. += other
 
@@ -22,7 +22,7 @@ datum/unit_test/roundstart_cable_connectivity/start_test()
 	var/list/found_cables = list()
 
 	//there is a cable list, but for testing purposes we search every cable in the world
-	for(var/obj/structure/cable/C in world)
+	for( var/obj/structure/cable/C in world)
 		if(C in found_cables)
 			continue
 		var/list/to_search = list(C)
@@ -31,7 +31,7 @@ datum/unit_test/roundstart_cable_connectivity/start_test()
 			var/obj/structure/cable/next = to_search[to_search.len]
 			to_search.len--
 			searched += next
-			for(var/obj/structure/cable/other in get_connected_neighbours(next))
+			for( var/obj/structure/cable/other in get_connected_neighbours(next))
 				if(other in searched)
 					continue
 				if(next.powernet != other.powernet)
@@ -54,9 +54,9 @@ datum/unit_test/roundstart_cable_connectivity/start_test()
 
 /datum/unit_test/areas_apc_uniqueness/start_test()
 	var/failure = ""
-	for(var/area/A in world)
+	for( var/area/A in world)
 		var/obj/machinery/power/apc/found_apc = null
-		for(var/obj/machinery/power/apc/APC in A)
+		for( var/obj/machinery/power/apc/APC in A)
 			if(!found_apc)
 				found_apc = APC
 				continue

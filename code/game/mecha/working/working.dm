@@ -10,13 +10,13 @@
 		new /obj/item/mecha_parts/mecha_tracking(src)
 
 /obj/mecha/working/Destroy()
-	for(var/mob/M in src)
+	for( var/mob/M in src)
 		if(M==src.occupant)
 			continue
 		M.loc = get_turf(src)
 		M.loc.Entered(M)
 		step_rand(M)
-	for(var/atom/movable/A in src.cargo)
+	for( var/atom/movable/A in src.cargo)
 		A.loc = get_turf(src)
 		var/turf/T = get_turf(A)
 		if(T)
@@ -48,7 +48,7 @@
 	var/output = ..()
 	output += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
 	if(src.cargo.len)
-		for(var/obj/O in src.cargo)
+		for( var/obj/O in src.cargo)
 			output += "<a href='?src=\ref[src];drop_from_cargo=\ref[O]'>Unload</a> : [O]<br>"
 	else
 		output += "Nothing"

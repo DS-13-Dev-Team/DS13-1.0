@@ -73,7 +73,7 @@
 	update_statmods()
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
-		for (var/organ_tag in retract_limbs)
+		for( var/organ_tag in retract_limbs)
 			var/obj/item/organ/external/E = H.get_organ(organ_tag)
 			if (istype(E))
 
@@ -101,7 +101,7 @@
 	update_statmods()
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
-		for (var/organ_tag in retract_limbs)
+		for( var/organ_tag in retract_limbs)
 			var/obj/item/organ/external/E = H.get_organ(organ_tag)
 			if (istype(E))
 				E.retracted = FALSE

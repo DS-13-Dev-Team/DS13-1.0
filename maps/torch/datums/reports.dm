@@ -23,7 +23,7 @@
 	xo_fields += add_field(/datum/report_field/number, "Number of personnel in present/previous position")
 	xo_fields += add_field(/datum/report_field/number, "Number of personnel in requested position")
 	xo_fields += add_field(/datum/report_field/options/yes_no, "Approved")
-	for(var/datum/report_field/field in xo_fields)
+	for( var/datum/report_field/field in xo_fields)
 		field.set_access(access_edit = access_hop)
 
 /datum/computer_file/report/recipient/access_modification
@@ -49,7 +49,7 @@
 	xo_fields += add_field(/datum/report_field/signature, "Executive Officer's signature")
 	xo_fields += add_field(/datum/report_field/number, "Number of personnel in relevant position")
 	xo_fields += add_field(/datum/report_field/options/yes_no, "Approved")
-	for(var/datum/report_field/field in xo_fields)
+	for( var/datum/report_field/field in xo_fields)
 		field.set_access(access_edit = access_hop)
 
 /datum/computer_file/report/recipient/borging
@@ -70,7 +70,7 @@
 	add_field(/datum/report_field/signature, "Subject's signature")
 	xo_fields += add_field(/datum/report_field/signature, "Executive Officer's signature")
 	xo_fields += add_field(/datum/report_field/options/yes_no, "Approved")
-	for(var/datum/report_field/field in xo_fields)
+	for( var/datum/report_field/field in xo_fields)
 		field.set_access(access_edit = access_hop)
 
 /datum/computer_file/report/recipient/sec
@@ -360,7 +360,7 @@
 	add_field(/datum/report_field/signature, "Volunteer's Signature:")
 	temp_fields += add_field(/datum/report_field/signature, "NanoTrasen Representative's Signature")
 	temp_fields += add_field(/datum/report_field/options/yes_no, "Approved")
-	for(var/datum/report_field/temp_field in temp_fields)
+	for( var/datum/report_field/temp_field in temp_fields)
 		temp_field.set_access(access_edit = access_nanotrasen)
 
 /datum/computer_file/report/recipient/nt/deny

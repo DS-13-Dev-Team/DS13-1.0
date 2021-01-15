@@ -5,7 +5,7 @@
 /mob/living/deity/proc/set_items(list/_items)
 	items = _items
 	items_by_category = list()
-	for(var/i in items)
+	for( var/i in items)
 		var/datum/deity_item/di = items[i]
 		if(!items_by_category[di.category])
 			items_by_category[di.category] = list()
@@ -34,11 +34,11 @@
 
 
 /mob/living/deity/Destroy()
-	for(var/cat in items_by_category)
+	for( var/cat in items_by_category)
 		var/list/L = items_by_category[cat]
 		L.Cut()
 	items_by_category.Cut()
-	for(var/i in items)
+	for( var/i in items)
 		qdel(items[i])
 	items.Cut()
 	. = ..()

@@ -27,7 +27,7 @@
 	var/list/data = get_header_data()
 
 	var/list/programs = list()
-	for(var/datum/computer_file/program/P in hard_drive.stored_files)
+	for( var/datum/computer_file/program/P in hard_drive.stored_files)
 		var/list/program = list()
 		program["name"] = P.filename
 		program["desc"] = P.filedesc
@@ -137,7 +137,7 @@
 				data["PC_ntneticon"] = "sig_lan.gif"
 
 	var/list/program_headers = list()
-	for(var/datum/computer_file/program/P in idle_threads)
+	for( var/datum/computer_file/program/P in idle_threads)
 		if(!P.ui_header)
 			continue
 		program_headers.Add(list(list(

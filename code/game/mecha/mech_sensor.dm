@@ -27,7 +27,7 @@
 /obj/machinery/mech_sensor/proc/is_blocked(O as obj)
 	if(istype(O, /obj/mecha/medical/odysseus))
 		var/obj/mecha/medical/odysseus/M = O
-		for(var/obj/item/mecha_parts/mecha_equipment/ME in M.equipment)
+		for( var/obj/item/mecha_parts/mecha_equipment/ME in M.equipment)
 			if(istype(ME, /obj/item/mecha_parts/mecha_equipment/tool/sleeper))
 				var/obj/item/mecha_parts/mecha_equipment/tool/sleeper/S = ME
 				if(S.occupant != null)

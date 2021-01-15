@@ -1,9 +1,9 @@
 /mob/living/carbon/human/gib()
 
 
-	for(var/obj/item/organ/external/E in src.organs)
+	for( var/obj/item/organ/external/E in src.organs)
 		if (species.can_obliterate || (E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE))
-			for(var/obj/item/organ/I in E.internal_organs)
+			for( var/obj/item/organ/I in E.internal_organs)
 				I.removed()
 				if(istype(loc,/turf))
 					I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
@@ -11,7 +11,7 @@
 
 	sleep(1)
 
-	for(var/obj/item/I in src)
+	for( var/obj/item/I in src)
 		if (istype(I, /obj/item/organ))
 			continue	//Organs are already handled above
 		drop_from_inventory(I)
@@ -50,7 +50,7 @@
 	var/mob/living/simple_animal/borer/B
 
 	if(head)
-		for(var/I in head.implants)
+		for( var/I in head.implants)
 			if(istype(I,/mob/living/simple_animal/borer))
 				B = I
 		if(B)
@@ -95,7 +95,7 @@
 	update_hair(0)
 
 	mutations.Add(HUSK)
-	for(var/obj/item/organ/external/E in organs)
+	for( var/obj/item/organ/external/E in organs)
 		E.status |= ORGAN_DISFIGURED
 	update_body(1)
 	return
@@ -115,7 +115,7 @@
 	update_hair(0)
 
 	mutations.Add(SKELETON)
-	for(var/obj/item/organ/external/E in organs)
+	for( var/obj/item/organ/external/E in organs)
 		E.status |= ORGAN_DISFIGURED
 	update_body(1)
 	return

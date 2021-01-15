@@ -354,7 +354,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 	// Modify organ lists if necessary.
 	if(islist(override_limb_types))
-		for(var/ltag in override_limb_types)
+		for( var/ltag in override_limb_types)
 			if (override_limb_types[ltag])
 				if (islist(override_limb_types[ltag]))
 					has_limbs[ltag] = override_limb_types[ltag]
@@ -364,7 +364,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				has_limbs.Remove(ltag)
 
 	if(islist(override_organ_types))
-		for(var/ltag in override_organ_types)
+		for( var/ltag in override_organ_types)
 			if (override_organ_types[ltag])
 				has_organ[ltag] = list("path" = override_organ_types[ltag])
 			else
@@ -378,14 +378,14 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		breathing_organ = BP_LUNGS
 
 	unarmed_attacks = list()
-	for(var/u_type in unarmed_types)
+	for( var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
 
 
 
 
 	//Build organ descriptors
-	for(var/limb_type in has_limbs)
+	for( var/limb_type in has_limbs)
 		var/list/organ_data = has_limbs[limb_type]
 		var/obj/item/organ/limb_path = organ_data["path"]
 		organ_data["descriptor"] = initial(limb_path.name)
@@ -445,7 +445,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.mob_size = mob_size
 	H.mass = src.mass
 	H.biomass = src.biomass
-	for(var/obj/item/organ/organ in H.contents)
+	for( var/obj/item/organ/organ in H.contents)
 		if((organ in H.organs) || (organ in H.internal_organs))
 			qdel(organ)
 
@@ -459,7 +459,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.organs_by_name = list()
 	H.internal_organs_by_name = list()
 
-	for(var/limb_type in has_limbs)
+	for( var/limb_type in has_limbs)
 		var/list/organ_data = has_limbs[limb_type]
 		var/limb_path = organ_data["path"]
 		var/obj/item/organ/O = new limb_path(H)
@@ -471,7 +471,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			var/obj/item/organ/external/E = O
 			E.limb_height = organ_height.Copy()
 
-	for(var/organ_tag in has_organ)
+	for( var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]
 		var/obj/item/organ/O = new organ_type(H)
 		if(organ_tag != O.organ_tag)
@@ -479,13 +479,13 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			O.organ_tag = organ_tag
 		H.internal_organs_by_name[organ_tag] = O
 
-	for(var/name in H.organs_by_name)
+	for( var/name in H.organs_by_name)
 		H.organs |= H.organs_by_name[name]
 
-	for(var/name in H.internal_organs_by_name)
+	for( var/name in H.internal_organs_by_name)
 		H.internal_organs |= H.internal_organs_by_name[name]
 
-	for(var/obj/item/organ/O in (H.organs|H.internal_organs))
+	for( var/obj/item/organ/O in (H.organs|H.internal_organs))
 		O.owner = H
 		post_organ_rejuvenate(O)
 
@@ -508,13 +508,13 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/add_base_auras(mob/living/carbon/human/H)
 	if(base_auras)
-		for(var/type in base_auras)
+		for( var/type in base_auras)
 			H.add_aura(new type(H))
 
 /datum/species/proc/remove_base_auras(mob/living/carbon/human/H)
 	if(base_auras)
 		var/list/bcopy = base_auras.Copy()
-		for(var/a in H.auras)
+		for( var/a in H.auras)
 			var/obj/aura/A = a
 			if(is_type_in_list(a, bcopy))
 				bcopy -= A.type
@@ -523,11 +523,11 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/remove_inherent_verbs(mob/living/carbon/human/H)
 	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
+		for( var/verb_path in inherent_verbs)
 			H.verbs -= verb_path
 
 	if (modifier_verbs)
-		for (var/hotkey in modifier_verbs)
+		for( var/hotkey in modifier_verbs)
 			var/list/L = modifier_verbs[hotkey]
 			H.remove_modclick_verb(hotkey, L[1])
 
@@ -535,11 +535,11 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/add_inherent_verbs(mob/living/carbon/human/H)
 	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
+		for( var/verb_path in inherent_verbs)
 			H.verbs |= verb_path
 
 	if (modifier_verbs)
-		for (var/hotkey in modifier_verbs)
+		for( var/hotkey in modifier_verbs)
 			var/list/L = modifier_verbs[hotkey]
 			var/list/input_args = list(hotkey, L[1])
 			if (L.len >= 2)
@@ -623,7 +623,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	if((!ignore_intent && H.a_intent != I_HURT) || H.pulling_punches)
 		return 0
 
-	for(var/datum/unarmed_attack/attack in unarmed_attacks)
+	for( var/datum/unarmed_attack/attack in unarmed_attacks)
 		if(!attack.is_usable(H))
 			continue
 		if(attack.shredding)
@@ -665,7 +665,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.set_fullscreen(H.eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
 	H.set_fullscreen(H.druggy, "high", /obj/screen/fullscreen/high)
 
-	for(var/overlay in H.equipment_overlays)
+	for( var/overlay in H.equipment_overlays)
 		H.client.screen |= overlay
 
 	return 1
@@ -729,10 +729,10 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	var/list/holding = list(target.get_active_hand() = 40, target.get_inactive_hand() = 20)
 
 	//See if they have any guns that might go off
-	for(var/obj/item/weapon/gun/W in holding)
+	for( var/obj/item/weapon/gun/W in holding)
 		if(W && prob(holding[W]))
 			var/list/turfs = list()
-			for(var/turf/T in view())
+			for( var/turf/T in view())
 				turfs += T
 			if(turfs.len)
 				var/turf/shoot_to = pick(turfs)
@@ -760,7 +760,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			return
 
 		//Actually disarm them
-		for(var/obj/item/I in holding)
+		for( var/obj/item/I in holding)
 			if(I && target.unEquip(I))
 				target.visible_message("<span class='danger'>[attacker] has disarmed [target]!</span>")
 				playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -785,7 +785,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	if(!L)
 		L = list()
 		LAZYSET(hair_styles, type, L)
-		for(var/hairstyle in GLOB.hair_styles_list)
+		for( var/hairstyle in GLOB.hair_styles_list)
 			var/datum/sprite_accessory/S = GLOB.hair_styles_list[hairstyle]
 			if(!(get_bodytype() in S.species_allowed))
 				continue
@@ -804,7 +804,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		facial_hair_style_by_gender = list()
 		LAZYSET(facial_hair_styles_by_species, gender, facial_hair_style_by_gender)
 
-		for(var/facialhairstyle in GLOB.facial_hair_styles_list)
+		for( var/facialhairstyle in GLOB.facial_hair_styles_list)
 			var/datum/sprite_accessory/S = GLOB.facial_hair_styles_list[facialhairstyle]
 			if(gender == MALE && S.gender == FEMALE)
 				continue
@@ -863,7 +863,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		dat += "</br><b>Has a plantlike physiology.</b>"
 	if(slowdown)
 		dat += "</br><b>Moves [slowdown > 0 ? "slower" : "faster"] than most.</b>"
-	for(var/kind in damage_types)
+	for( var/kind in damage_types)
 		if(damage_types[kind] > 1)
 			dat += "</br><b>Vulnerable to [kind].</b>"
 		else if(damage_types[kind] < 1)
@@ -959,7 +959,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 //Shows information for the basic attacks of this species
 /datum/species/proc/get_unarmed_description()
-	for (var/U in unarmed_types)
+	for( var/U in unarmed_types)
 		var/datum/unarmed_attack/A = new U
 		.+= "<b>Basic Attack</b>: [A.name]<br>"
 		.+= "[A.delay ? "<b>Interval</b>: [A.delay * 0.1] seconds" : ""]<br>"
@@ -1078,7 +1078,7 @@ These procs should return their entire args list. Best just to return parent in 
 /mob/proc/play_species_audio()
 	return
 
-/mob/living/carbon/human/play_species_audio(var/atom/source, audio_type, volume = VOLUME_MID, vary = TRUE, extrarange as num, falloff, is_global, frequency, is_ambiance = 0)
+/mob/living/carbon/human/play_species_audio(atom/source, audio_type, volume = VOLUME_MID, vary = TRUE, extrarange as num, falloff, is_global, frequency, is_ambiance = 0)
 
 	if (species.species_audio_volume[audio_type])
 		volume = species.species_audio_volume[audio_type]
@@ -1087,7 +1087,7 @@ These procs should return their entire args list. Best just to return parent in 
 /mob/proc/get_species_audio()
 	return
 
-/mob/living/carbon/human/get_species_audio(var/audio_type)
+/mob/living/carbon/human/get_species_audio(audio_type)
 	return species.get_species_audio(arglist(args.Copy()))
 
 

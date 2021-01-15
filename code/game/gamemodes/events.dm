@@ -26,7 +26,7 @@ var/eventchance = 10 // Percent chance per 5 minutes.
 var/hadevent    = 0
 
 /proc/appendicitis()
-	for(var/mob/living/carbon/human/H in shuffle(GLOB.living_mob_list))
+	for( var/mob/living/carbon/human/H in shuffle(GLOB.living_mob_list))
 		if(H.client && H.stat != DEAD)
 			var/obj/item/organ/internal/appendix/A = H.internal_organs_by_name[BP_APPENDIX]
 			if(!istype(A) || (A && A.inflamed))
@@ -41,7 +41,7 @@ var/hadevent    = 0
 //	sound_to(world, sound('sound/AI/aliens.ogg'))
 
 	var/list/vents = list()
-	for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in SSmachines.machinery)
+	for( var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in SSmachines.machinery)
 		if(!temp_vent.welded && temp_vent.network && temp_vent.loc.z in GLOB.using_map.station_levels)
 			if(temp_vent.network.normal_members.len > 50) // Stops Aliens getting stuck in small networks. See: Security, Virology
 				vents += temp_vent
@@ -67,13 +67,13 @@ var/hadevent    = 0
 /proc/high_radiation_event()
 
 /* // Haha, this is way too laggy. I'll keep the prison break though.
-	for(var/obj/machinery/light/L in world)
+	for( var/obj/machinery/light/L in world)
 		if(isNotStationLevel(L.z)) continue
 		L.flicker(50)
 
 	sleep(100)
 */
-	for(var/mob/living/carbon/human/H in GLOB.living_mob_list)
+	for( var/mob/living/carbon/human/H in GLOB.living_mob_list)
 		var/turf/T = get_turf(H)
 		if(!T)
 			continue
@@ -100,33 +100,33 @@ var/hadevent    = 0
 
 
 	var/list/area/areas = list()
-	for(var/area/A in world)
+	for( var/area/A in world)
 		if(istype(A, /area/security/prison) || istype(A, /area/security/brig))
 			areas += A
 
 	if(areas && areas.len > 0)
 
-		for(var/area/A in areas)
-			for(var/obj/machinery/light/L in A)
+		for( var/area/A in areas)
+			for( var/obj/machinery/light/L in A)
 				L.flicker(10)
 
 		sleep(100)
 
-		for(var/area/A in areas)
-			for (var/obj/machinery/power/apc/temp_apc in A)
+		for( var/area/A in areas)
+			for( var/obj/machinery/power/apc/temp_apc in A)
 				temp_apc.overload_lighting()
 
-			for (var/obj/structure/closet/secure_closet/brig/temp_closet in A)
+			for( var/obj/structure/closet/secure_closet/brig/temp_closet in A)
 				temp_closet.locked = 0
 				temp_closet.icon_state = temp_closet.icon_closed
 
-			for (var/obj/machinery/door/airlock/security/temp_airlock in A)
+			for( var/obj/machinery/door/airlock/security/temp_airlock in A)
 				spawn(0) temp_airlock.prison_open()
 
-			for (var/obj/machinery/door/airlock/glass/security/temp_glassairlock in A)
+			for( var/obj/machinery/door/airlock/glass/security/temp_glassairlock in A)
 				spawn(0) temp_glassairlock.prison_open()
 
-			for (var/obj/machinery/door_timer/temp_timer in A)
+			for( var/obj/machinery/door_timer/temp_timer in A)
 				temp_timer.releasetime = 1
 
 		sleep(150)
@@ -135,7 +135,7 @@ var/hadevent    = 0
 		world.log << "ERROR: Could not initate grey-tide. Unable find prison or brig area."
 
 /proc/carp_migration() // -- Darem
-	for(var/obj/effect/landmark/C in landmarks_list)
+	for( var/obj/effect/landmark/C in landmarks_list)
 		if(C.name == "carpspawn")
 			new /mob/living/simple_animal/hostile/carp(C.loc)
 	//sleep(100)
@@ -149,9 +149,9 @@ var/hadevent    = 0
 	if(lightsoutAmount)
 		var/list/epicentreList = list()
 
-		for(var/i=1,i<=lightsoutAmount,i++)
+		for( var/i=1,i<=lightsoutAmount,i++)
 			var/list/possibleEpicentres = list()
-			for(var/obj/effect/landmark/newEpicentre in landmarks_list)
+			for( var/obj/effect/landmark/newEpicentre in landmarks_list)
 				if(newEpicentre.name == "lightsout" && !(newEpicentre in epicentreList))
 					possibleEpicentres += newEpicentre
 			if(possibleEpicentres.len)
@@ -162,12 +162,12 @@ var/hadevent    = 0
 		if(!epicentreList.len)
 			return
 
-		for(var/obj/effect/landmark/epicentre in epicentreList)
-			for(var/obj/machinery/power/apc/apc in range(epicentre,lightsoutRange))
+		for( var/obj/effect/landmark/epicentre in epicentreList)
+			for( var/obj/machinery/power/apc/apc in range(epicentre,lightsoutRange))
 				apc.overload_lighting()
 
 	else
-		for(var/obj/machinery/power/apc/apc in SSmachines.machinery)
+		for( var/obj/machinery/power/apc/apc in SSmachines.machinery)
 			apc.overload_lighting()
 
 	return
@@ -180,7 +180,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 */
 
 	//AI laws
-	for(var/mob/living/silicon/ai/M in GLOB.living_mob_list)
+	for( var/mob/living/silicon/ai/M in GLOB.living_mob_list)
 		if(M.stat != 2 && M.see_in_dark != 0)
 			var/who2 = pick("ALIENS", "BEARS", "CLOWNS", "XENOS", "PETES", "BOMBS", "FETISHES", "WIZARDS", "SYNDICATE AGENTS", "CENTCOM OFFICERS", "SPACE PIRATES", "TRAITORS", "MONKEYS",  "BEES", "CARP", "CRABS", "EELS", "BANDITS", "LIGHTS")
 			var/what2 = pick("BOLTERS", "STAVES", "DICE", "SINGULARITIES", "TOOLBOXES", "NETTLES", "AIRLOCKS", "CLOTHES", "WEAPONS", "MEDKITS", "BOMBS", "CANISTERS", "CHAIRS", "BBQ GRILLS", "ID CARDS", "CAPTAINS")
@@ -199,7 +199,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 			var/allergysev = pick("deathly", "mildly", "severely", "contagiously")
 			var/crew
 			var/list/pos_crew = list()
-			for(var/mob/living/carbon/human/pos in GLOB.player_list)
+			for( var/mob/living/carbon/human/pos in GLOB.player_list)
 				pos_crew += pos.real_name
 			if(pos_crew.len)
 				crew = pick(pos_crew)
@@ -278,7 +278,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 					M.add_ion_law("THE [uppertext(station_name())] IS [who2pref] [who2]")
 
 	if(botEmagChance)
-		for(var/mob/living/bot/bot in SSmachines.machinery)
+		for( var/mob/living/bot/bot in SSmachines.machinery)
 			if(prob(botEmagChance))
 				bot.emag_act(1)
 
@@ -295,7 +295,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 	spawn(0)
 		log_debug("Started processing APCs")
 
-		for (var/obj/machinery/power/apc/APC in world)
+		for( var/obj/machinery/power/apc/APC in world)
 			if(APC.z in station_levels)
 				APC.ion_act()
 				apcnum++
@@ -304,7 +304,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 	spawn(0)
 		log_debug("Started processing SMES")
 
-		for (var/obj/machinery/power/smes/SMES in world)
+		for( var/obj/machinery/power/smes/SMES in world)
 			if(SMES.z in station_levels)
 				SMES.ion_act()
 				smesnum++
@@ -313,7 +313,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 	spawn(0)
 		log_debug("Started processing AIRLOCKS")
 
-		for (var/obj/machinery/door/airlock/D in world)
+		for( var/obj/machinery/door/airlock/D in world)
 			if(D.z in station_levels)
 				//if(length(D.req_access) > 0 && !(12 in D.req_access)) //not counting general access and maintenance airlocks
 				airlocknum++
@@ -324,7 +324,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 	spawn(0)
 		log_debug("Started processing FIREDOORS")
 
-		for (var/obj/machinery/door/firedoor/D in world)
+		for( var/obj/machinery/door/firedoor/D in world)
 			if(D.z in station_levels)
 				firedoornum++;
 				spawn(0)

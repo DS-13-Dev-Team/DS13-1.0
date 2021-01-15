@@ -23,7 +23,7 @@
 
 /repository/decls/proc/get_decls(list/decl_types)
 	. = list()
-	for(var/decl_type in decl_types)
+	for( var/decl_type in decl_types)
 		.[decl_type] =  get_decl(decl_type)
 
 /repository/decls/proc/get_decls_of_type(decl_prototype)

@@ -35,17 +35,17 @@
 /obj/machinery/food_replicator/attackby(var/obj/item/O, mob/user)
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks))
 		var/obj/item/weapon/reagent_containers/food/snacks/S = O
-		for(var/datum/reagent/nutriment/N in S.reagents.reagent_list)
+		for( var/datum/reagent/nutriment/N in S.reagents.reagent_list)
 			biomass = Clamp(biomass + round(N.volume*deconstruct_eff),1,biomass_max)
 		qdel(O)
 	else if(istype(O, /obj/item/weapon/storage/plants))
 		if(!O.contents || !O.contents.len)
 			return
 		to_chat(user, "You empty \the [O] into \the [src]")
-		for(var/obj/item/weapon/reagent_containers/food/snacks/grown/G in O.contents)
+		for( var/obj/item/weapon/reagent_containers/food/snacks/grown/G in O.contents)
 			var/obj/item/weapon/storage/S = O
 			S.remove_from_storage(G, null)
-			for(var/datum/reagent/nutriment/N in G.reagents.reagent_list)
+			for( var/datum/reagent/nutriment/N in G.reagents.reagent_list)
 				biomass = Clamp(biomass + round(N.volume*deconstruct_eff),1,biomass_max)
 			qdel(G)
 
@@ -71,7 +71,7 @@
 	if(!speaking || speaking.machine_understands)
 		spawn(20)
 			var/true_text = lowertext(html_decode(text))
-			for(var/menu_item in menu)
+			for( var/menu_item in menu)
 				if(findtext(true_text, menu_item))
 					queue_dish(menu_item)
 			if(findtext(true_text, "status"))
@@ -120,7 +120,7 @@
 	deconstruct_eff = 0
 	biomass_max = 0
 	biomass_per = 20
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
+	for( var/obj/item/weapon/stock_parts/P in component_parts)
 		if(istype(P, /obj/item/weapon/stock_parts/matter_bin))
 			biomass_max += 100 * P.rating
 		if(istype(P, /obj/item/weapon/stock_parts/manipulator))

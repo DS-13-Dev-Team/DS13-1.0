@@ -14,10 +14,10 @@
 /obj/machinery/mineral/unloading_machine/New()
 	..()
 	spawn( 5 )
-		for (var/dir in GLOB.cardinal)
+		for( var/dir in GLOB.cardinal)
 			src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 			if(src.input) break
-		for (var/dir in GLOB.cardinal)
+		for( var/dir in GLOB.cardinal)
 			src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 			if(src.output) break
 		return
@@ -28,7 +28,7 @@
 		if (locate(/obj/structure/ore_box, input.loc))
 			var/obj/structure/ore_box/BOX = locate(/obj/structure/ore_box, input.loc)
 			var/i = 0
-			for (var/obj/item/weapon/ore/O in BOX.contents)
+			for( var/obj/item/weapon/ore/O in BOX.contents)
 				BOX.contents -= O
 				O.loc = output.loc
 				i++

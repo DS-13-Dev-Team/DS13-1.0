@@ -23,7 +23,7 @@
 /datum/map_template/proc/preload_size()
 	var/list/bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 	var/z_offset = 1 // needed to calculate z-bounds correctly
-	for (var/mappath in mappaths)
+	for( var/mappath in mappaths)
 		var/datum/map_load_metadata/M = maploader.load_map(file(mappath), 1, 1, z_offset, cropMap=FALSE, measureOnly=TRUE, no_changeturf=TRUE, clear_contents= template_flags & TEMPLATE_FLAG_CLEAR_CONTENTS)
 		if(M)
 			bounds = extend_bounds_if_needed(bounds, M.bounds)
@@ -45,7 +45,7 @@
 	var/list/obj/machinery/machines = list()
 	var/list/obj/structure/cable/cables = list()
 
-	for(var/atom/A in atoms)
+	for( var/atom/A in atoms)
 		if(istype(A, /turf))
 			turfs += A
 		if(istype(A, /obj/structure/cable))
@@ -60,14 +60,14 @@
 	SSmachines.setup_powernets_for_cables(cables)
 	SSmachines.setup_atmos_machinery(atmos_machines)
 
-	for (var/obj/machinery/machine in machines)
+	for( var/obj/machinery/machine in machines)
 		machine.power_change()
 
-	for (var/turf/T in turfs)
+	for( var/turf/T in turfs)
 		T.post_change()
 
 /datum/map_template/proc/init_shuttles()
-	for (var/shuttle_type in shuttles_to_initialise)
+	for( var/shuttle_type in shuttles_to_initialise)
 		SSshuttle.initialise_shuttle(shuttle_type)
 
 /datum/map_template/proc/load_new_z()
@@ -82,7 +82,7 @@
 	var/list/bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 	var/list/atoms_to_initialise = list()
 
-	for (var/mappath in mappaths)
+	for( var/mappath in mappaths)
 		var/datum/map_load_metadata/M = maploader.load_map(file(mappath), x, y, no_changeturf=TRUE)
 		if (M)
 			bounds = extend_bounds_if_needed(bounds, M.bounds)
@@ -90,7 +90,7 @@
 		else
 			return FALSE
 
-	for (var/z_index = bounds[MAP_MINZ]; z_index <= bounds[MAP_MAXZ]; z_index++)
+	for( var/z_index = bounds[MAP_MINZ]; z_index <= bounds[MAP_MAXZ]; z_index++)
 		if (accessibility_weight)
 			GLOB.using_map.accessible_z_levels[num2text(z_index)] = accessibility_weight
 		if (base_turf_for_zs)
@@ -100,7 +100,7 @@
 	//initialize things that are normally initialized after map load
 	init_atoms(atoms_to_initialise)
 	init_shuttles()
-	for(var/light_z = initial_z to world.maxz)
+	for( var/light_z = initial_z to world.maxz)
 		create_lighting_overlays_zlevel(light_z)
 	log_game("Z-level [name] loaded at [x],[y],[world.maxz]")
 	loaded++
@@ -119,7 +119,7 @@
 
 	var/list/atoms_to_initialise = list()
 
-	for (var/mappath in mappaths)
+	for( var/mappath in mappaths)
 		var/datum/map_load_metadata/M = maploader.load_map(file(mappath), T.x, T.y, T.z, cropMap=TRUE, clear_contents= template_flags & TEMPLATE_FLAG_CLEAR_CONTENTS)
 		if (M)
 			atoms_to_initialise += M.atoms_to_initialise
@@ -137,9 +137,9 @@
 
 /datum/map_template/proc/extend_bounds_if_needed(list/existing_bounds, list/new_bounds)
 	var/list/bounds_to_combine = existing_bounds.Copy()
-	for (var/min_bound in list(MAP_MINX, MAP_MINY, MAP_MINZ))
+	for( var/min_bound in list(MAP_MINX, MAP_MINY, MAP_MINZ))
 		bounds_to_combine[min_bound] = min(existing_bounds[min_bound], new_bounds[min_bound])
-	for (var/max_bound in list(MAP_MAXX, MAP_MAXY, MAP_MAXZ))
+	for( var/max_bound in list(MAP_MAXX, MAP_MAXY, MAP_MAXZ))
 		bounds_to_combine[max_bound] = max(existing_bounds[max_bound], new_bounds[max_bound])
 	return bounds_to_combine
 

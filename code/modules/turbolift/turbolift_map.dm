@@ -125,15 +125,15 @@
 			light_y2 = uy + lift_size_y - 1
 
 	// Generate each floor and store it in the controller datum.
-	for(var/cz = uz;cz<=ez;cz++)
+	for( var/cz = uz;cz<=ez;cz++)
 
 		var/datum/turbolift_floor/cfloor = new()
 		lift.floors += cfloor
 
 		var/list/floor_turfs = list()
 		// Update the appropriate turfs.
-		for(var/tx = ux to ex)
-			for(var/ty = uy to ey)
+		for( var/tx = ux to ex)
+			for( var/ty = uy to ey)
 
 				var/turf/checking = locate(tx,ty,cz)
 
@@ -156,7 +156,7 @@
 					checking = locate(tx,ty,cz)
 
 				// Clear out contents.
-				for(var/atom/movable/thing in checking.contents)
+				for( var/atom/movable/thing in checking.contents)
 					if(thing.simulated)
 						qdel(thing)
 
@@ -164,8 +164,8 @@
 					floor_turfs += checking
 
 		// Place exterior doors.
-		for(var/tx = door_x1 to door_x2)
-			for(var/ty = door_y1 to door_y2)
+		for( var/tx = door_x1 to door_x2)
+			for( var/ty = door_y1 to door_y2)
 				var/turf/checking = locate(tx,ty,cz)
 				var/internal = 1
 				if(!(checking in floor_turfs))
@@ -173,7 +173,7 @@
 					if(checking.type != floor_type)
 						checking.ChangeTurf(floor_type)
 						checking = locate(tx,ty,cz)
-					for(var/atom/movable/thing in checking.contents)
+					for( var/atom/movable/thing in checking.contents)
 						if(thing.simulated)
 							qdel(thing)
 				if(checking.type == floor_type) // Don't build over empty space on lower levels.
@@ -211,7 +211,7 @@
 			return
 
 		var/area_path = areas_to_use[az]
-		for(var/thing in floor_turfs)
+		for( var/thing in floor_turfs)
 			new area_path(thing)
 		var/area/A = locate(area_path)
 		cfloor.set_area_ref("\ref[A]")

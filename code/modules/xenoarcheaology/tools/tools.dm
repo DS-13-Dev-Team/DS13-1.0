@@ -53,7 +53,7 @@
 
 /obj/item/weapon/storage/box/samplebags/New()
 	..()
-	for(var/i = 1 to 7)
+	for( var/i = 1 to 7)
 		var/obj/item/weapon/evidencebag/S = new(src)
 		S.SetName("sample bag")
 		S.desc = "a bag for holding research samples."
@@ -85,7 +85,7 @@
 		var/nearestSimpleTargetDist = -1
 		var/turf/cur_turf = get_turf(src)
 
-		for(var/A in SSxenoarch.artifact_spawning_turfs)
+		for( var/A in SSxenoarch.artifact_spawning_turfs)
 			var/turf/simulated/mineral/T = A
 			if(T.density && T.artifact_find)
 				if(T.z == cur_turf.z)
@@ -96,7 +96,7 @@
 			else
 				SSxenoarch.artifact_spawning_turfs.Remove(T)
 
-		for(var/A in SSxenoarch.digsite_spawning_turfs)
+		for( var/A in SSxenoarch.digsite_spawning_turfs)
 			var/turf/simulated/mineral/T = A
 			if(T.density && T.finds && T.finds.len)
 				if(T.z == cur_turf.z)
@@ -205,7 +205,7 @@
 		dat += "<br><br><br><br>"
 	dat += "<hr>"
 	if(positive_locations.len)
-		for(var/index = 1 to positive_locations.len)
+		for( var/index = 1 to positive_locations.len)
 			var/datum/depth_scan/D = positive_locations[index]
 			dat += "<A href='?src=\ref[src];select=[index]'>[D.time], coords: [D.coords]</a><br>"
 	else
@@ -249,7 +249,7 @@
 	var/turf/T = get_turf(src)
 	var/zlevels = GetConnectedZlevels(T.z)
 	var/cur_dist = world.maxx+world.maxy
-	for(var/obj/item/device/radio/beacon/R in world)
+	for( var/obj/item/device/radio/beacon/R in world)
 		if((R.z in zlevels) && R.frequency == tracking_freq)
 			var/check_dist = get_dist(src,R)
 			if(check_dist < cur_dist)

@@ -71,7 +71,7 @@ client/proc/unhandled_reports()
 	if(!src.holder) return 0
 	var/list/reports = load_reports()
 
-	for(var/datum/admin_report/N in reports)
+	for( var/datum/admin_report/N in reports)
 		if(N.done)
 			continue
 		else return 1
@@ -82,7 +82,7 @@ client/proc/unhandled_reports()
 client/proc/is_reported()
 	var/list/reports = load_reports()
 
-	for(var/datum/admin_report/N in reports) if(!N.done)
+	for( var/datum/admin_report/N in reports) if(!N.done)
 		if(N.offender_key == src.key)
 			return 1
 
@@ -99,7 +99,7 @@ client/proc/display_admin_reports()
 	var/output = ""
 	if(unhandled_reports())
 		// load the list of unhandled reports
-		for(var/datum/admin_report/N in reports)
+		for( var/datum/admin_report/N in reports)
 			if(N.done)
 				continue
 			output += "<b>Reported player:</b> [N.offender_key](CID: [N.offender_cid])<br>"
@@ -145,7 +145,7 @@ client/proc/mark_report_done(ID as num)
 	Reports["reports"]   >> reports
 
 	var/datum/admin_report/found
-	for(var/datum/admin_report/N in reports)
+	for( var/datum/admin_report/N in reports)
 		if(N.ID == ID)
 			found = N
 	if(!found) to_chat(src, "<b>* An error occured, sorry.</b>")
@@ -164,7 +164,7 @@ client/proc/edit_report(ID as num)
 	Reports["reports"]   >> reports
 
 	var/datum/admin_report/found
-	for(var/datum/admin_report/N in reports)
+	for( var/datum/admin_report/N in reports)
 		if(N.ID == ID)
 			found = N
 	if(!found) to_chat(src, "<b>* An error occured, sorry.</b>")

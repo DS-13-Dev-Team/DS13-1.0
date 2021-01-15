@@ -55,7 +55,7 @@ datum/preferences
 
 /datum/preferences/proc/reset_gear_list()
 	gear_list = list()
-	for (var/i in 1 to LOADOUT_SLOTS)
+	for( var/i in 1 to LOADOUT_SLOTS)
 		gear_list += list(list())
 
 /datum/preferences/proc/load_and_update_character(slot)
@@ -184,7 +184,7 @@ datum/preferences
 	character.f_style = f_style
 
 	// Replace any missing limbs.
-	for(var/name in BP_ALL_LIMBS)
+	for( var/name in BP_ALL_LIMBS)
 		var/obj/item/organ/external/O = character.organs_by_name[name]
 		if(!O && organ_data[name] != "amputated")
 			var/list/organ_data = character.species.has_limbs[name]
@@ -193,7 +193,7 @@ datum/preferences
 			O = new limb_path(character)
 
 	// Destroy/cyborgize organs and limbs. The order is important for preserving low-level choices for robolimb sprites being overridden.
-	for(var/name in BP_BY_DEPTH)
+	for( var/name in BP_BY_DEPTH)
 		var/status = organ_data[name]
 		var/obj/item/organ/external/O = character.organs_by_name[name]
 		if(!O)
@@ -204,7 +204,7 @@ datum/preferences
 			character.organs_by_name[O.organ_tag] = null
 			character.organs -= O
 			if(O.children) // This might need to become recursive.
-				for(var/obj/item/organ/external/child in O.children)
+				for( var/obj/item/organ/external/child in O.children)
 					character.organs_by_name[child.organ_tag] = null
 					character.organs -= child
 		else if(status == "cyborg")
@@ -219,7 +219,7 @@ datum/preferences
 	//For species that don't care about your silly prefs
 	character.species.handle_limbs_setup(character)
 	if(!is_preview_copy)
-		for(var/name in list(BP_HEART,BP_EYES,BP_BRAIN,BP_LUNGS,BP_LIVER,BP_KIDNEYS))
+		for( var/name in list(BP_HEART,BP_EYES,BP_BRAIN,BP_LUNGS,BP_LIVER,BP_KIDNEYS))
 			var/status = organ_data[name]
 			if(!status)
 				continue
@@ -233,7 +233,7 @@ datum/preferences
 	QDEL_NULL_LIST(character.worn_underwear)
 	character.worn_underwear = list()
 
-	for(var/underwear_category_name in all_underwear)
+	for( var/underwear_category_name in all_underwear)
 		var/datum/category_group/underwear/underwear_category = GLOB.underwear.categories_by_name[underwear_category_name]
 		if(underwear_category)
 			var/underwear_item_name = all_underwear[underwear_category_name]
@@ -247,15 +247,15 @@ datum/preferences
 
 	character.backpack_setup = new(backpack, backpack_metadata["[backpack]"])
 
-	for(var/N in character.organs_by_name)
+	for( var/N in character.organs_by_name)
 		var/obj/item/organ/external/O = character.organs_by_name[N]
 		O.markings.Cut()
 
-	for(var/M in body_markings)
+	for( var/M in body_markings)
 		var/datum/sprite_accessory/marking/mark_datum = GLOB.body_marking_styles_list[M]
 		var/mark_color = "[body_markings[M]]"
 
-		for(var/BP in mark_datum.body_parts)
+		for( var/BP in mark_datum.body_parts)
 			var/obj/item/organ/external/O = character.organs_by_name[BP]
 			if(O)
 				O.markings[M] = list("color" = mark_color, "datum" = mark_datum)
@@ -308,7 +308,7 @@ datum/preferences
 	if(S)
 		dat += "<b>Select a character slot to load</b><hr>"
 		var/name
-		for(var/i=1, i<= config.character_slots, i++)
+		for( var/i=1, i<= config.character_slots, i++)
 			S.cd = GLOB.using_map.character_load_path(S, i)
 			S["real_name"] >> name
 			if(!name)	name = "Character[i]"

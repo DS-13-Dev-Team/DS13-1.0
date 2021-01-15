@@ -25,7 +25,7 @@
 
 /obj/screen/intent/deity/proc/sync_to_mob(mob)
 	var/mob/living/deity/D = mob
-	for(var/i in 1 to D.control_types.len)
+	for( var/i in 1 to D.control_types.len)
 		var/obj/screen/S = new()
 		S.SetName(null) //Don't want them to be able to actually right click it.
 		S.mouse_opacity = 0
@@ -44,7 +44,7 @@
 	if(!istype(usr, /mob/living/deity))
 		return
 	var/mob/living/deity/D = usr
-	for(var/i in D.control_types)
+	for( var/i in D.control_types)
 		var/obj/screen/S = desc_screens[i]
 		var/datum/phenomena/P = D.intent_phenomenas[intent][i]
 		if(P)

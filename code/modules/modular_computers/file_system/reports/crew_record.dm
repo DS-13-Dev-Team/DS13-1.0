@@ -61,7 +61,7 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 
 	if(H)
 		var/skills = list()
-		for(var/decl/hierarchy/skill/S in GLOB.skills)
+		for( var/decl/hierarchy/skill/S in GLOB.skills)
 			var/level = H.get_skill_value(S.type)
 			if(level > SKILL_NONE)
 				skills += "[S.name], [S.levels[level]]"
@@ -81,7 +81,7 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 // Gets crew records filtered by set of positions
 /proc/department_crew_manifest(list/filter_positions, blacklist = FALSE)
 	var/list/matches = list()
-	for(var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
+	for( var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
 		var/rank = CR.get_job()
 		if(blacklist)
 			if(!(rank in filter_positions))
@@ -96,7 +96,7 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 /proc/record_to_html(datum/computer_file/report/crew_record/CR, access)
 	var/dat = "<tt><H2>RECORD DATABASE DATA DUMP</H2><i>Generated on: [stationdate2text()] [stationtime2text()]</i><br>******************************<br>"
 	dat += "<table>"
-	for(var/datum/report_field/F in CR.fields)
+	for( var/datum/report_field/F in CR.fields)
 		if(F.verify_access(access))
 			dat += "<tr><td><b>[F.display_name()]</b>"
 			if(F.needs_big_box)
@@ -106,7 +106,7 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 	return dat
 
 /proc/get_crewmember_record(name)
-	for(var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
+	for( var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
 		if(CR.get_name() == name)
 			return CR
 	return null
@@ -174,20 +174,20 @@ FIELD_LONG("Qualifications", skillset, access_bridge)
 		return
 	. = list()
 	. |= "Unset"
-	for(var/rank in branch.ranks)
+	for( var/rank in branch.ranks)
 		var/datum/mil_rank/RA = branch.ranks[rank]
 		. |= RA.name
 
 /datum/report_field/options/crew_record/sex/proc/record_genders()
 	. = list()
 	. |= "Unset"
-	for(var/G in gender_datums)
+	for( var/G in gender_datums)
 		. |= gender2text(G)
 
 /datum/report_field/options/crew_record/branch/proc/record_branches()
 	. = list()
 	. |= "Unset"
-	for(var/B in mil_branches.branches)
+	for( var/B in mil_branches.branches)
 		var/datum/mil_branch/BR = mil_branches.branches[B]
 		. |= BR.name
 

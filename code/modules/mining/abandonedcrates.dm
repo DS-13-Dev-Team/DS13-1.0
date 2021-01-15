@@ -14,7 +14,7 @@
 	..()
 	var/list/digits = list("1", "2", "3", "4", "5", "6", "7", "8", "9", "0")
 
-	for(var/i in 1 to codelen)
+	for( var/i in 1 to codelen)
 		code += pick(digits)
 		digits -= code[code.len]
 
@@ -36,13 +36,13 @@
 		if(11 to 15)
 			new/obj/item/weapon/reagent_containers/glass/beaker/bluespace(src)
 		if(16 to 20)
-			for(var/i = 0, i < 10, i++)
+			for( var/i = 0, i < 10, i++)
 				new/obj/item/weapon/ore/diamond(src)
 		if(21 to 25)
-			for(var/i = 0, i < 3, i++)
+			for( var/i = 0, i < 3, i++)
 				new/obj/machinery/portable_atmospherics/hydroponics(src)
 		if(26 to 30)
-			for(var/i = 0, i < 3, i++)
+			for( var/i = 0, i < 3, i++)
 				new/obj/item/weapon/reagent_containers/glass/beaker/noreact(src)
 		if(31 to 35)
 			spawn_money(rand(300,800), src)
@@ -53,7 +53,7 @@
 			new/obj/item/clothing/under/shorts/blue(src)
 		if(46 to 50)
 			new/obj/item/clothing/under/chameleon(src)
-			for(var/i = 0, i < 7, i++)
+			for( var/i = 0, i < 7, i++)
 				new/obj/item/clothing/accessory/horrible(src)
 		if(51 to 52) // Uncommon, 2% each
 			new/obj/item/weapon/melee/classic_baton(src)
@@ -68,14 +68,14 @@
 			new/obj/item/weapon/rig(src)
 		if(63 to 64)
 			var/t = rand(4,7)
-			for(var/i = 0, i < t, ++i)
+			for( var/i = 0, i < t, ++i)
 				var/newcoin = pick(/obj/item/weapon/coin/silver, /obj/item/weapon/coin/silver, /obj/item/weapon/coin/silver, /obj/item/weapon/coin/iron, /obj/item/weapon/coin/iron, /obj/item/weapon/coin/iron, /obj/item/weapon/coin/gold, /obj/item/weapon/coin/diamond, /obj/item/weapon/coin/phoron, /obj/item/weapon/coin/uranium, /obj/item/weapon/coin/platinum)
 				new newcoin(src)
 		if(65 to 66)
 			new/obj/item/clothing/suit/ianshirt(src)
 		if(67 to 68)
 			var/t = rand(4,7)
-			for(var/i = 0, i < t, ++i)
+			for( var/i = 0, i < t, ++i)
 				var/newitem = pick(typesof(/obj/item/weapon/stock_parts) - /obj/item/weapon/stock_parts - /obj/item/weapon/stock_parts/subspace)
 				new newitem(src)
 		if(69 to 70)
@@ -168,7 +168,7 @@
 
 	. = 1
 	lastattempt.Cut()
-	for(var/i in 1 to codelen)
+	for( var/i in 1 to codelen)
 		var/guesschar = copytext(input, i, i+1)
 		lastattempt += guesschar
 		if(guesschar != code[i])
@@ -187,7 +187,7 @@
 				var/cows = 0
 
 				var/list/code_contents = code.Copy()
-				for(var/i in 1 to codelen)
+				for( var/i in 1 to codelen)
 					if(lastattempt[i] == code[i])
 						++bulls
 					else if(lastattempt[i] in code_contents)

@@ -18,7 +18,7 @@
 
 	var/list/turfs_buff = trange(range_buff, get_turf(user))
 	var/list/turfs_sense = trange(range_sense, get_turf(user))
-	for (var/mob/living/L in GLOB.living_mob_list)
+	for( var/mob/living/L in GLOB.living_mob_list)
 		if (L.stat == DEAD)
 			continue	//Gotta be alive to see or be seen
 
@@ -35,8 +35,8 @@
 			//This mob gets to see
 			seers += L
 
-	for (var/mob/living/L in seen)
-		for (var/mob/living/S in seers)
+	for( var/mob/living/L in seen)
+		for( var/mob/living/S in seers)
 			if (L == S)
 				continue //Don't see yourself
 			var/obj/screen/movable/tracker/TR = new (S,L, duration)
@@ -61,7 +61,7 @@
 
 	var/found = null
 	//And finally lets search for a living crewmember
-	for (var/datum/mind/M as anything in GLOB.living_crew)
+	for( var/datum/mind/M as anything in GLOB.living_crew)
 		if (ishuman(M.current))
 
 			//We dont care about the dead
@@ -75,7 +75,7 @@
 
 			//If they were deposited in a maw, we don't care
 			var/inmaw = FALSE
-			for (var/obj/structure/corruption_node/maw/maw in get_turf(H))
+			for( var/obj/structure/corruption_node/maw/maw in get_turf(H))
 				inmaw = TRUE
 				break
 			if (inmaw)

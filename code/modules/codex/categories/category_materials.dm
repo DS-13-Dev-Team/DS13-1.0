@@ -3,7 +3,7 @@
 	desc = "Various natural and artificial materials."
 
 /datum/codex_category/materials/Initialize()
-	for(var/thing in SSmaterials.materials)
+	for( var/thing in SSmaterials.materials)
 		var/material/mat = thing
 		if(!mat.hidden_from_codex)
 			var/datum/codex_entry/entry = new(_display_name = "[mat.display_name] (material)")
@@ -12,7 +12,7 @@
 			var/list/material_info = list(mat.mechanics_text)
 
 			material_info += "Its melting point is [mat.melting_point] K."
-	
+
 			if(mat.brute_armor < 2)
 				material_info += "It is weak to physical impacts."
 			else if(mat.brute_armor > 2)
@@ -31,7 +31,7 @@
 				material_info += "It conducts electricity."
 			else
 				material_info += "It does not conduct electricity."
-			
+
 			if(mat.opacity < 0.5)
 				material_info += "It is transparent."
 
@@ -63,14 +63,14 @@
 
 			if(LAZYLEN(mat.chem_products))
 				var/chems = list()
-				for(var/chemial in mat.chem_products)
+				for( var/chemial in mat.chem_products)
 					var/datum/reagent/R = chemial
 					chems += "[initial(R.name)] ([mat.chem_products[chemial]]u)"
 				material_info += "The following chemicals can be extracted from it (per [mat.sheet_singular_name]):<br>[english_list(chems)]"
-			
+
 			if(LAZYLEN(mat.alloy_materials))
 				var/parts = list()
-				for(var/alloy_part in mat.alloy_materials)
+				for( var/alloy_part in mat.alloy_materials)
 					var/material/part = SSmaterials.materials_by_name[alloy_part]
 					parts += "[mat.alloy_materials[alloy_part]]u [part.display_name]"
 				material_info += "It is an alloy of the following materials: [english_list(parts)]"

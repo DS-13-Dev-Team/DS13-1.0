@@ -68,7 +68,7 @@
 
 	else
 		if(damtype == "brute")
-			for(var/target_type in src.destroyable_obj)
+			for( var/target_type in src.destroyable_obj)
 				if(istype(target, target_type) && hascall(target, "attackby"))
 					src.occupant_message("You hit [target].")
 					src.visible_message("<font color='red'><b>[src.name] hits [target]</b></font>")
@@ -93,7 +93,7 @@
 		M.make_dizzy(3)
 		M.adjustBruteLoss(1)
 		M.updatehealth()
-		for (var/mob/V in viewers(src))
+		for( var/mob/V in viewers(src))
 			V.show_message("[src.name] shakes [M] like a rag doll.")
 	return
 */

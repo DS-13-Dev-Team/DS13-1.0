@@ -18,7 +18,7 @@
 /datum/artifact_effect/robohurt/DoEffectAura()
 	if(holder)
 		var/turf/T = get_turf(holder)
-		for (var/mob/living/silicon/robot/M in range(src.effectrange,T))
+		for( var/mob/living/silicon/robot/M in range(src.effectrange,T))
 			if(world.time - last_message > 200)
 				to_chat(M, "<span class='danger'>SYSTEM ALERT: Harmful energy field detected!</span>")
 				last_message = world.time
@@ -30,7 +30,7 @@
 /datum/artifact_effect/robohurt/DoEffectPulse()
 	if(holder)
 		var/turf/T = get_turf(holder)
-		for (var/mob/living/silicon/robot/M in range(src.effectrange,T))
+		for( var/mob/living/silicon/robot/M in range(src.effectrange,T))
 			if(world.time - last_message > 200)
 				to_chat(M, "<span class='danger'>SYSTEM ALERT: Structural damage inflicted by energy pulse!</span>")
 				last_message = world.time

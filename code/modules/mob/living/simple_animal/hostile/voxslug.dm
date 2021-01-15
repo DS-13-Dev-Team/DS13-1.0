@@ -29,7 +29,7 @@ Small, little HP, poisonous.
 
 /mob/living/simple_animal/hostile/voxslug/ListTargets(var/dist = 7)
 	var/list/L = list()
-	for(var/a in hearers(src, dist))
+	for( var/a in hearers(src, dist))
 		if(istype(a,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = a
 			if(H.species.get_bodytype() == SPECIES_VOX)
@@ -40,7 +40,7 @@ Small, little HP, poisonous.
 				continue
 		L += a
 
-	for (var/obj/mecha/M in mechas_list)
+	for( var/obj/mecha/M in mechas_list)
 		if (M.z == src.z && get_dist(src, M) <= dist)
 			L += M
 

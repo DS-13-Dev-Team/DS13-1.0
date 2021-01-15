@@ -125,7 +125,7 @@
 		lit = 0
 		usr.unset_machine()
 		usr << browse(null, "window=flamethrower")
-	for(var/mob/M in viewers(1, loc))
+	for( var/mob/M in viewers(1, loc))
 		if((M.client && M.machine == src))
 			attack_self(M)
 	update_icon()
@@ -136,7 +136,7 @@
 /obj/item/weapon/flamethrower/proc/flame_turf(turflist)
 	if(!lit || operating)	return
 	operating = 1
-	for(var/turf/T in turflist)
+	for( var/turf/T in turflist)
 		if(T.density || istype(T, /turf/space))
 			break
 		if(!previousturf && length(turflist)>1)
@@ -148,7 +148,7 @@
 		sleep(1)
 	previousturf = null
 	operating = 0
-	for(var/mob/M in viewers(1, loc))
+	for( var/mob/M in viewers(1, loc))
 		if((M.client && M.machine == src))
 			attack_self(M)
 	return

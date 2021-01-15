@@ -207,9 +207,9 @@
 		return FALSE
 
 	// Call the global listeners.
-	for (var/datum/listener in global_listeners)
+	for( var/datum/listener in global_listeners)
 		var/list/callbacks = global_listeners[listener]
-		for (var/proc_call in callbacks)
+		for( var/proc_call in callbacks)
 
 			// If the callback crashes, record the error and remove it.
 			try
@@ -223,9 +223,9 @@
 	var/source = args[1]
 	if (source in event_sources)
 		var/list/listeners = event_sources[source]
-		for (var/datum/listener in listeners)
+		for( var/datum/listener in listeners)
 			var/list/callbacks = listeners[listener]
-			for (var/proc_call in callbacks)
+			for( var/proc_call in callbacks)
 
 				// If the callback crashes, record the error and remove it.
 				try

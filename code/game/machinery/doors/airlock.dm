@@ -425,12 +425,12 @@ var/list/airlock_overlays = list()
 		PhoronBurn(exposed_temperature)
 
 /obj/machinery/door/airlock/phoron/proc/PhoronBurn(temperature)
-	for(var/turf/simulated/floor/target_tile in range(2,loc))
+	for( var/turf/simulated/floor/target_tile in range(2,loc))
 		target_tile.assume_gas(MATERIAL_PHORON, 35, 400+T0C)
 		spawn (0) target_tile.hotspot_expose(temperature, 400)
-	for(var/turf/simulated/wall/W in range(3,src))
+	for( var/turf/simulated/wall/W in range(3,src))
 		W.burn((temperature/4))//Added so that you can't set off a massive chain reaction with a small flame
-	for(var/obj/machinery/door/airlock/phoron/D in range(3,src))
+	for( var/obj/machinery/door/airlock/phoron/D in range(3,src))
 		D.ignite(temperature/4)
 	new/obj/structure/door_assembly( src.loc )
 	qdel(src)
@@ -1210,7 +1210,7 @@ About the new airlock wires panel:
 	stat |= BROKEN
 	if (secured_wires)
 		lock()
-	for (var/mob/O in viewers(src, null))
+	for( var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
 			O.show_message("[src.name]'s control panel bursts open, sparks spewing out!")
 
@@ -1265,8 +1265,8 @@ About the new airlock wires panel:
 
 
 	if(safe)
-		for(var/turf/turf in locs)
-			for(var/atom/movable/AM in turf)
+		for( var/turf/turf in locs)
+			for( var/atom/movable/AM in turf)
 				if(AM.blocks_airlock())
 					if(world.time > next_beep_at)
 						playsound(src.loc, close_failure_blocked, 30, 0, -3)
@@ -1274,8 +1274,8 @@ About the new airlock wires panel:
 					close_door_at = world.time + 6
 					return
 
-	for(var/turf/turf in locs)
-		for(var/atom/movable/AM in turf)
+	for( var/turf/turf in locs)
+		for( var/atom/movable/AM in turf)
 			if(AM.airlock_crush(door_crush_damage))
 				take_damage(door_crush_damage)
 				use_power(door_crush_damage * 100)		// Uses bunch extra power for crushing the target.
@@ -1360,7 +1360,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/Initialize()
 	if(src.closeOtherId != null)
-		for (var/obj/machinery/door/airlock/A in world)
+		for( var/obj/machinery/door/airlock/A in world)
 			if(A.closeOtherId == src.closeOtherId && A != src)
 				src.closeOther = A
 				break

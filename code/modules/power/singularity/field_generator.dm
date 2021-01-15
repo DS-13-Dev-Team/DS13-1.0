@@ -188,17 +188,17 @@ field_generator power level display
 		src.power = field_generator_max_power
 
 	var/power_draw = gen_power_draw
-	for(var/obj/machinery/field_generator/FG in connected_gens)
+	for( var/obj/machinery/field_generator/FG in connected_gens)
 		if (!isnull(FG))
 			power_draw += gen_power_draw
-	for (var/obj/machinery/containment_field/F in fields)
+	for( var/obj/machinery/containment_field/F in fields)
 		if (!isnull(F))
 			power_draw += field_power_draw
 	power_draw /= 2	//because this will be mirrored for both generators
 	if(draw_power(round(power_draw)) >= power_draw)
 		return 1
 	else
-		for(var/mob/M in viewers(src))
+		for( var/mob/M in viewers(src))
 			M.show_message("<span class='warning'>\The [src] shuts down!</span>")
 		turn_off()
 		investigate_log("ran out of power and <font color='red'>deactivated</font>","singulo")
@@ -217,7 +217,7 @@ field_generator power level display
 	var/actual_draw = src.power	//already checked that power < draw
 	src.power = 0
 
-	for(var/obj/machinery/field_generator/FG in connected_gens)
+	for( var/obj/machinery/field_generator/FG in connected_gens)
 		if (FG in flood_list)
 			continue
 		actual_draw += FG.draw_power(draw - actual_draw, flood_list) //since the flood list reference is shared this actually works.
@@ -247,11 +247,11 @@ field_generator power level display
 	var/steps = 0
 	if(!NSEW)//Make sure its ran right
 		return
-	for(var/dist = 0, dist <= 9, dist += 1) // checks out to 8 tiles away for another generator
+	for( var/dist = 0, dist <= 9, dist += 1) // checks out to 8 tiles away for another generator
 		T = get_step(T, NSEW)
 		if(T.density)//We cant shoot a field though this
 			return 0
-		for(var/atom/A in T.contents)
+		for( var/atom/A in T.contents)
 			if(ismob(A))
 				continue
 			if(!istype(A,/obj/machinery/field_generator))
@@ -267,7 +267,7 @@ field_generator power level display
 	if(isnull(G))
 		return
 	T = src.loc
-	for(var/dist = 0, dist < steps, dist += 1) // creates each field tile
+	for( var/dist = 0, dist < steps, dist += 1) // creates each field tile
 		var/field_dir = get_dir(T,get_step(G.loc, NSEW))
 		T = get_step(T, NSEW)
 		if(!locate(/obj/machinery/containment_field) in T)
@@ -278,7 +278,7 @@ field_generator power level display
 			CF.loc = T
 			CF.set_dir(field_dir)
 	var/listcheck = 0
-	for(var/obj/machinery/field_generator/FG in connected_gens)
+	for( var/obj/machinery/field_generator/FG in connected_gens)
 		if (isnull(FG))
 			continue
 		if(FG == G)
@@ -287,7 +287,7 @@ field_generator power level display
 	if(!listcheck)
 		connected_gens.Add(G)
 	listcheck = 0
-	for(var/obj/machinery/field_generator/FG2 in G.connected_gens)
+	for( var/obj/machinery/field_generator/FG2 in G.connected_gens)
 		if (isnull(FG2))
 			continue
 		if(FG2 == src)
@@ -299,12 +299,12 @@ field_generator power level display
 
 /obj/machinery/field_generator/proc/cleanup()
 	clean_up = 1
-	for (var/obj/machinery/containment_field/F in fields)
+	for( var/obj/machinery/containment_field/F in fields)
 		if (QDELETED(F))
 			continue
 		qdel(F)
 	fields = list()
-	for(var/obj/machinery/field_generator/FG in connected_gens)
+	for( var/obj/machinery/field_generator/FG in connected_gens)
 		if (QDELETED(FG))
 			continue
 		FG.connected_gens.Remove(src)
@@ -320,7 +320,7 @@ field_generator power level display
 	//I want to avoid using global variables.
 	spawn(1)
 		var/temp = 1 //stops spam
-		for(var/obj/singularity/O in SSmachines.machinery)
+		for( var/obj/singularity/O in SSmachines.machinery)
 			if(O.last_warning && temp)
 				if((world.time - O.last_warning) > 50) //to stop message-spam
 					temp = 0

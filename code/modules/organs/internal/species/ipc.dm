@@ -66,7 +66,7 @@
 	icon_state = "posibrain"
 
 	var/turf/T = get_turf_or_move(src.loc)
-	for (var/mob/M in viewers(T))
+	for( var/mob/M in viewers(T))
 		M.show_message("<span class='notice'>The positronic brain buzzes quietly, and the golden lights fade away. Perhaps you could try again?</span>")
 
 /obj/item/organ/internal/posibrain/attack_ghost(var/mob/observer/ghost/user)

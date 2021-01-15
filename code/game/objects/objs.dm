@@ -59,7 +59,7 @@
 	if(in_use)
 		var/is_in_use = 0
 		var/list/nearby = viewers(1, src)
-		for(var/mob/M in nearby)
+		for( var/mob/M in nearby)
 			if ((M.client && M.machine == src))
 				is_in_use = 1
 				src.attack_hand(M)
@@ -84,7 +84,7 @@
 	if(in_use)
 		var/list/nearby = viewers(1, src)
 		var/is_in_use = 0
-		for(var/mob/M in nearby)
+		for( var/mob/M in nearby)
 			if ((M.client && M.machine == src))
 				is_in_use = 1
 				src.interact(M)
@@ -221,7 +221,7 @@
 
 	if (dist >= 1)
 		dist += rand(0,1)
-		for(var/i = 1, i <= dist, i++)
+		for( var/i = 1, i <= dist, i++)
 			if(src)
 				step(src, pick(NORTH,SOUTH,EAST,WEST))
 				sleep(rand(2,4))

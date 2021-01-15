@@ -111,7 +111,7 @@
 
 /obj/mecha/Destroy()
 	src.go_out()
-	for(var/mob/M in src) //Let's just be ultra sure
+	for( var/mob/M in src) //Let's just be ultra sure
 		M.Move(loc)
 
 	if(loc)
@@ -122,7 +122,7 @@
 
 	if(wreckage)
 		var/obj/effect/decal/mecha_wreckage/WR = new wreckage(loc)
-		for(var/obj/item/mecha_parts/mecha_equipment/E in equipment)
+		for( var/obj/item/mecha_parts/mecha_equipment/E in equipment)
 			if(E.salvageable && prob(30))
 				WR.crowbar_salvage += E
 				E.forceMove(WR)
@@ -138,7 +138,7 @@
 			WR.crowbar_salvage += internal_tank
 			internal_tank.forceMove(WR)
 	else
-		for(var/obj/item/mecha_parts/mecha_equipment/E in equipment)
+		for( var/obj/item/mecha_parts/mecha_equipment/E in equipment)
 			E.detach(loc)
 			E.destroy()
 		if(cell)
@@ -206,7 +206,7 @@
 
 	var/turf/T = user.loc
 
-	for(var/i = 0, i<numticks, i++)
+	for( var/i = 0, i<numticks, i++)
 		sleep(delayfraction)
 		if(!src || !user || user.is_physically_disabled() || !(user.loc == T))
 			return 0
@@ -237,7 +237,7 @@
 			to_chat(user, "It's falling apart.")
 	if(equipment && equipment.len)
 		to_chat(user, "It's equipped with:")
-		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
+		for( var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 			to_chat(user, "\icon[ME] [ME]")
 	return
 
@@ -433,7 +433,7 @@
 	if(!islist(possible_int_damage) || isemptylist(possible_int_damage)) return
 	if(prob(20))
 		if(ignore_threshold || src.health*100/initial(src.health)<src.internal_damage_threshold)
-			for(var/T in possible_int_damage)
+			for( var/T in possible_int_damage)
 				if(internal_damage & T)
 					possible_int_damage -= T
 			var/int_dam_flag = safepick(possible_int_damage)
@@ -538,7 +538,7 @@
 
 /obj/mecha/proc/start_booster_cooldown(is_melee)
 
-	for(var/obj/item/mecha_parts/mecha_equipment/armor_booster/B in equipment) //Ideally this would be done by the armor booster itself; attempts weren't great for performance.
+	for( var/obj/item/mecha_parts/mecha_equipment/armor_booster/B in equipment) //Ideally this would be done by the armor booster itself; attempts weren't great for performance.
 		if(B.melee == is_melee && B.equip_ready)
 			B.set_ready_state(0)
 			B.do_after_cooldown()
@@ -631,7 +631,7 @@
 		if(Proj.penetrating)
 			var/distance = get_dist(Proj.starting, get_turf(loc))
 			var/hit_occupant = 1 //only allow the occupant to be hit once
-			for(var/i in 1 to min(Proj.penetrating, round(Proj.damage/15)))
+			for( var/i in 1 to min(Proj.penetrating, round(Proj.damage/15)))
 				if(src.occupant && hit_occupant && prob(20))
 					Proj.attack_mob(src.occupant, distance)
 					hit_occupant = 0
@@ -677,7 +677,7 @@
 		src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		playsound(src.loc, 'sound/effects/blobattack.ogg', 50, 1, -1)
 		to_chat(user, "<span class='danger'>You smash at the armored suit!</span>")
-		for (var/mob/V in viewers(src))
+		for( var/mob/V in viewers(src))
 			if(V.client && !(V.blinded))
 				V.show_message("<span class='danger'>\The [user] smashes against [src.name]'s armor!</span>", 1)
 	else
@@ -685,7 +685,7 @@
 		playsound(src.loc, 'sound/effects/blobattack.ogg', 50, 1, -1)
 		to_chat(user, "<span class='warning'>Your attack had no effect!</span>")
 		src.occupant_message("<span class='warning'>\The [user]'s attack is stopped by the armor.</span>")
-		for (var/mob/V in viewers(src))
+		for( var/mob/V in viewers(src))
 			if(V.client && !(V.blinded))
 				V.show_message("<span class='warning'>\The [user] rebounds off the [src.name] armor!</span>", 1)
 	return
@@ -1032,7 +1032,7 @@
 		to_chat(usr, "<span class='warning'>Access denied</span>")
 		src.log_append_to_last("Permission denied.")
 		return
-	for(var/mob/living/carbon/slime/M in range(1,usr))
+	for( var/mob/living/carbon/slime/M in range(1,usr))
 		if(M.Victim == usr)
 			to_chat(usr, "You're too busy getting your life sucked out of you.")
 			return
@@ -1113,7 +1113,7 @@
 		mob_container = brain.container
 	else
 		return
-	for(var/item in dropped_items)
+	for( var/item in dropped_items)
 		var/atom/movable/I = item
 		I.forceMove(loc)
 	dropped_items.Cut()
@@ -1163,14 +1163,14 @@
 /////////////////////////
 
 /obj/mecha/proc/operation_allowed(mob/living/carbon/human/H)
-	for(var/ID in list(H.get_active_hand(), H.wear_id, H.belt))
+	for( var/ID in list(H.get_active_hand(), H.wear_id, H.belt))
 		if(src.check_access(ID,src.operation_req_access))
 			return 1
 	return 0
 
 
 /obj/mecha/proc/internals_access_allowed(mob/living/carbon/human/H)
-	for(var/atom/ID in list(H.get_active_hand(), H.wear_id, H.belt))
+	for( var/atom/ID in list(H.get_active_hand(), H.wear_id, H.belt))
 		if(src.check_access(ID,src.internals_req_access))
 			return 1
 	return 0
@@ -1185,11 +1185,11 @@
 	if(!istype(I) || !I.access) //not ID or no access
 		return 0
 	if(access_list==src.operation_req_access)
-		for(var/req in access_list)
+		for( var/req in access_list)
 			if(!(req in I.access)) //doesn't have this access
 				return 0
 	else if(access_list==src.internals_req_access)
-		for(var/req in access_list)
+		for( var/req in access_list)
 			if(req in I.access)
 				return 1
 	return 1
@@ -1254,7 +1254,7 @@
 										"[MECHA_INT_CONTROL_LOST]" = "<font color='red'><b>COORDINATION SYSTEM CALIBRATION FAILURE</b></font> - <a href='?src=\ref[src];repair_int_control_lost=1'>Recalibrate</a>",
 										"[MECHA_INT_SHORT_CIRCUIT]" = "<font color='red'><b>SHORT CIRCUIT</b></font>"
 										)
-	for(var/tflag in dam_reports)
+	for( var/tflag in dam_reports)
 		var/intdamflag = text2num(tflag)
 		if(hasInternalDamage(intdamflag))
 			output += dam_reports[tflag]
@@ -1330,7 +1330,7 @@
 		output += {"<div class='wr'>
 						<div class='header'>Equipment</div>
 						<div class='links'>"}
-		for(var/obj/item/mecha_parts/mecha_equipment/W in equipment)
+		for( var/obj/item/mecha_parts/mecha_equipment/W in equipment)
 			output += "[W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
 		output += "<b>Available equipment slots:</b> [max_equip-equipment.len]"
 		output += "</div></div>"
@@ -1340,7 +1340,7 @@
 	if(!equipment.len)
 		return
 	var/output = "<b>Equipment:</b><div style=\"margin-left: 15px;\">"
-	for(var/obj/item/mecha_parts/mecha_equipment/MT in equipment)
+	for( var/obj/item/mecha_parts/mecha_equipment/MT in equipment)
 		output += "<div id='\ref[MT]'>[MT.get_equip_info()]</div>"
 	output += "</div>"
 	return output
@@ -1348,7 +1348,7 @@
 
 /obj/mecha/proc/get_log_html()
 	var/output = "<html><head><title>[src.name] Log</title></head><body style='font: 13px 'Courier', monospace;'>"
-	for(var/list/entry in log)
+	for( var/list/entry in log)
 		output += {"<div style='font-weight: bold;'>[time2text(entry["time"],"DDD MMM DD hh:mm:ss")] [game_year]</div>
 						<div style='margin-left:15px; margin-bottom:10px;'>[entry["message"]]</div>
 						"}
@@ -1367,10 +1367,10 @@
 						</head>
 						<body>
 						<h1>Following keycodes are present in this system:</h1>"}
-	for(var/a in operation_req_access)
+	for( var/a in operation_req_access)
 		output += "[get_access_desc(a)] - <a href='?src=\ref[src];del_req_access=[a];user=\ref[user];id_card=\ref[id_card]'>Delete</a><br>"
 	output += "<hr><h1>Following keycodes were detected on portable device:</h1>"
-	for(var/a in id_card.access)
+	for( var/a in id_card.access)
 		if(a in operation_req_access) continue
 		var/a_name = get_access_desc(a)
 		if(!a_name) continue //there's some strange access without a name
@@ -1542,7 +1542,7 @@
 	if(href_list["remove_passenger"] && state >= 1)
 		var/mob/user = F.getMob("user")
 		var/list/passengers = list()
-		for (var/obj/item/mecha_parts/mecha_equipment/tool/passenger/P in contents)
+		for( var/obj/item/mecha_parts/mecha_equipment/tool/passenger/P in contents)
 			if (P.occupant)
 				passengers["[P.occupant]"] = P
 

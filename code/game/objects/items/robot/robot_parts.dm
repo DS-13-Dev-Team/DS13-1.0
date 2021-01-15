@@ -172,7 +172,7 @@
 			if(!B.key)
 				var/ghost_can_reenter = 0
 				if(B.mind)
-					for(var/mob/observer/ghost/G in GLOB.player_list)
+					for( var/mob/observer/ghost/G in GLOB.player_list)
 						if(G.can_reenter_corpse && G.mind == B.mind)
 							ghost_can_reenter = 1
 							break
@@ -277,7 +277,7 @@
 			H.fully_replace_character_name(name)
 
 			// Remove all external organs other than chest and head..
-			for (var/O in list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG))
+			for( var/O in list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG))
 				var/obj/item/organ/external/organ = H.organs_by_name[O]
 				H.organs -= organ
 				H.organs_by_name[organ.organ_tag] = null
@@ -309,7 +309,7 @@
 
 /obj/item/robot_parts/chest/proc/GetCyborgSpecies()
 	. = list()
-	for(var/N in playable_species)
+	for( var/N in playable_species)
 		var/datum/species/S = all_species[N]
 		if(S.spawn_flags & SPECIES_NO_FBP_CONSTRUCTION)
 			continue

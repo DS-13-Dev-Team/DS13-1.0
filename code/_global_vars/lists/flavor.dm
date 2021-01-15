@@ -116,7 +116,7 @@ GLOBAL_LIST_INIT(music_tracks, list(
 /proc/setup_music_tracks(list/tracks)
 	. = list()
 	var/track_list = LAZYLEN(tracks) ? tracks : GLOB.music_tracks
-	for(var/track_name in track_list)
+	for( var/track_name in track_list)
 		var/track_path = track_list[track_name]
 		. += new/datum/track(track_name, track_path)
 
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(possible_cable_colours, SetupCableColors())
 
 	var/special_name_mappings = list(/obj/item/stack/cable_coil = "Red")
 
-	for(var/coil_type in (typesof(/obj/item/stack/cable_coil) - invalid_cable_coils))
+	for( var/coil_type in (typesof(/obj/item/stack/cable_coil) - invalid_cable_coils))
 		var/name = special_name_mappings[coil_type] || capitalize(copytext_after_last("[coil_type]", "/"))
 
 		var/obj/item/stack/cable_coil/C = coil_type

@@ -17,7 +17,7 @@
 	if (!turfs.len)
 		return "No nearby corruption."
 
-	for (var/turf/T in turfs)
+	for( var/turf/T in turfs)
 		var/obj/effect/vine/corruption/C = locate(/obj/effect/vine/corruption) in T
 		if (C && get_extension(C, /datum/extension/breaching_growth))
 			return "A breaching growth is already working on this door"

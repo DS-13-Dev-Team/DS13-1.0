@@ -29,13 +29,13 @@
 	if ((src.loc == user && usr.stat == 0))
 		if(emagged)
 			if(insults)
-				for(var/mob/O in (viewers(user)))
+				for( var/mob/O in (viewers(user)))
 					O.show_message("<B>[user]</B> broadcasts, <FONT size=3>\"[pick(insultmsg)]\"</FONT>",2) // 2 stands for hearable message
 				insults--
 			else
 				to_chat(user, "<span class='warning'>*BZZZZzzzzzt*</span>")
 		else
-			for(var/mob/O in (viewers(user)))
+			for( var/mob/O in (viewers(user)))
 				O.show_message("<B>[user]</B> broadcasts, <FONT size=3>\"[message]\"</FONT>",2) // 2 stands for hearable message
 
 		spamcheck = 1

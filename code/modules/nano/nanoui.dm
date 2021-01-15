@@ -358,10 +358,10 @@ nanoui is used to open and update nano browser uis
 
 	var/head_content = ""
 
-	for (var/filename in scripts)
+	for( var/filename in scripts)
 		head_content += "<script type='text/javascript' src='[filename]'></script> "
 
-	for (var/filename in stylesheets)
+	for( var/filename in stylesheets)
 		head_content += "<link rel='stylesheet' type='text/css' href='[filename]'> "
 
 	var/template_data_json = "{}" // An empty JSON object
@@ -456,7 +456,7 @@ nanoui is used to open and update nano browser uis
 	is_auto_updating = 0
 	SSnano.ui_closed(src)
 	show_browser(user, null, "window=[window_id]")
-	for(var/datum/nanoui/child in children)
+	for( var/datum/nanoui/child in children)
 		child.close()
 	children.Cut()
 	state = null

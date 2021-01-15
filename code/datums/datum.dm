@@ -23,7 +23,7 @@
 	SSnano && SSnano.close_uis(src)
 	var/list/timers = active_timers
 	active_timers = null
-	for(var/thing in timers)
+	for( var/thing in timers)
 		var/datum/timedevent/timer = thing
 		if (timer.spent)
 			continue

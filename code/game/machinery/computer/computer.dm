@@ -56,12 +56,12 @@
 				qdel(src)
 				return
 			if (prob(50))
-				for(var/x in verbs)
+				for( var/x in verbs)
 					verbs -= x
 				set_broken()
 		if(3.0)
 			if (prob(25))
-				for(var/x in verbs)
+				for( var/x in verbs)
 					verbs -= x
 				set_broken()
 		else
@@ -107,7 +107,7 @@
 			var/obj/item/weapon/circuitboard/M = new circuit( A )
 			A.circuit = M
 			A.anchored = 1
-			for (var/obj/C in src)
+			for( var/obj/C in src)
 				C.dropInto(loc)
 			if (src.stat & BROKEN)
 				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")

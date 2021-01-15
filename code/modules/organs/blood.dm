@@ -21,7 +21,7 @@
 
 //Resets blood data
 /mob/living/carbon/human/proc/fixblood()
-	for(var/datum/reagent/blood/B in vessel.reagent_list)
+	for( var/datum/reagent/blood/B in vessel.reagent_list)
 		if(B.type == /datum/reagent/blood)
 			B.data = list(
 				"donor" = weakref(src),
@@ -53,12 +53,12 @@
 	amt = ceil(amt/BLOOD_SPRAY_DISTANCE)
 	var/bled = 0
 	spawn(0)
-		for(var/i = 1 to BLOOD_SPRAY_DISTANCE)
+		for( var/i = 1 to BLOOD_SPRAY_DISTANCE)
 			sprayloc = get_step(sprayloc, spraydir)
 			if(!istype(sprayloc) || sprayloc.density)
 				break
 			var/hit_mob
-			for(var/thing in sprayloc)
+			for( var/thing in sprayloc)
 				var/atom/A = thing
 				if(!A.simulated)
 					continue
@@ -71,7 +71,7 @@
 						var/blinding = FALSE
 						if(ran_zone() == BP_HEAD)
 							blinding = TRUE
-							for(var/obj/item/I in list(H.head, H.glasses, H.wear_mask))
+							for( var/obj/item/I in list(H.head, H.glasses, H.wear_mask))
 								if(I && (I.body_parts_covered & EYES))
 									blinding = FALSE
 									break
@@ -140,14 +140,14 @@
 	if (!injected || !istype(injected))
 		return
 	var/list/sniffles = virus_copylist(injected.data["virus2"])
-	for(var/ID in sniffles)
+	for( var/ID in sniffles)
 		var/datum/disease2/disease/sniffle = sniffles[ID]
 		infect_virus2(src,sniffle,1)
 	if (injected.data["antibodies"] && prob(5))
 		antibodies |= injected.data["antibodies"]
 	var/list/chems = list()
 	chems = injected.data["trace_chem"]
-	for(var/C in chems)
+	for( var/C in chems)
 		src.reagents.add_reagent(C, (text2num(chems[C]) / species.blood_volume) * amount)//adds trace chemicals to owner's blood
 	reagents.update_total()
 
@@ -172,7 +172,7 @@
 	var/datum/reagent/blood/res = locate() in container.reagent_list //Grab some blood
 	if(res) // Make sure there's some blood at all
 		if(weakref && res.data["donor"] != weakref) //If it's not theirs, then we look for theirs
-			for(var/datum/reagent/blood/D in container.reagent_list)
+			for( var/datum/reagent/blood/D in container.reagent_list)
 				if(weakref && D.data["donor"] != weakref)
 					return D
 	return res
@@ -222,7 +222,7 @@ proc/blood_splatter(target, datum/reagent/blood/source, large, spray_dir)
 	// Are we dripping or splattering?
 	var/list/drips = list()
 	// Only a certain number of drips (or one large splatter) can be on a given turf.
-	for(var/obj/effect/decal/cleanable/blood/drip/drop in T)
+	for( var/obj/effect/decal/cleanable/blood/drip/drop in T)
 		drips |= drop.drips
 		qdel(drop)
 	if(!large && drips.len < 3)

@@ -41,7 +41,7 @@
 		to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
 		return 0
 
-	for(var/atom/A in destination)
+	for( var/atom/A in destination)
 		if(!A.CanMoveOnto(src, start, 1.5, direction))
 			to_chat(src, "<span class='warning'>\The [A] blocks you.</span>")
 			return 0
@@ -68,7 +68,7 @@
 	if(species && species.can_overcome_gravity(src))
 		return 1
 	else
-		for(var/atom/a in src.loc)
+		for( var/atom/a in src.loc)
 			if(a.atom_flags & ATOM_FLAG_CLIMBABLE)
 				return 1
 
@@ -77,7 +77,7 @@
 				/obj/item/weapon/stool,
 				/obj/structure/bed,
 			)
-		for(var/type in objects_to_stand_on)
+		for( var/type in objects_to_stand_on)
 			if(locate(type) in src.loc)
 				return 1
 	return 0
@@ -110,7 +110,7 @@
 		return 1
 
 	if(Check_Shoegrip())	//scaling hull with magboots
-		for(var/turf/simulated/T in trange(1,src))
+		for( var/turf/simulated/T in trange(1,src))
 			if(T.density)
 				return 1
 
@@ -121,7 +121,7 @@
 	if(Allow_Spacemove()) //Checks for active jetpack
 		return 1
 
-	for(var/turf/simulated/T in trange(1,src)) //Robots get "magboots"
+	for( var/turf/simulated/T in trange(1,src)) //Robots get "magboots"
 		if(T.density)
 			return 1
 
@@ -173,7 +173,7 @@
 			return FALSE
 
 		var/turf/below = GetBelow(location_override)
-		for(var/atom/A in below)
+		for( var/atom/A in below)
 			if(!A.CanPass(src, location_override))
 				return FALSE
 
@@ -218,7 +218,7 @@
 	else
 		visible_message("\The [src] falls from the deck above and slams into \the [landing]!", "You hear something slam into the deck.")
 		if(fall_damage())
-			for(var/mob/living/M in landing.contents)
+			for( var/mob/living/M in landing.contents)
 				visible_message("\The [src] hits \the [M.name]!")
 				M.take_overall_damage(fall_damage())
 

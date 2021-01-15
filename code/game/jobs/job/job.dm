@@ -127,14 +127,14 @@
 /datum/job/proc/apply_fingerprints(mob/living/carbon/human/target)
 	if(!istype(target))
 		return FALSE
-	for(var/obj/item/item in target.contents)
+	for( var/obj/item/item in target.contents)
 		apply_fingerprints_to_item(target, item)
 	return TRUE
 
 /datum/job/proc/apply_fingerprints_to_item(mob/living/carbon/human/holder, obj/item/item)
 	item.add_fingerprint(holder,1)
 	if(item.contents.len)
-		for(var/obj/item/sub_item in item.contents)
+		for( var/obj/item/sub_item in item.contents)
 			apply_fingerprints_to_item(holder, sub_item)
 
 /datum/job/proc/is_position_available()
@@ -179,7 +179,7 @@
 
 /datum/job/proc/get_active_count()
 	var/active = 0
-	for(var/mob/M in GLOB.player_list)
+	for( var/mob/M in GLOB.player_list)
 		if(check_is_active(M))
 			active++
 	return active
@@ -239,7 +239,7 @@
 //Returns human-readable list of branches this job allows.
 /datum/job/proc/get_branches()
 	var/list/res = list()
-	for(var/T in allowed_branches)
+	for( var/T in allowed_branches)
 		var/datum/mil_branch/B = mil_branches.get_branch_by_type(T)
 		res += B.name
 	return english_list(res)
@@ -248,7 +248,7 @@
 /datum/job/proc/get_ranks(branch)
 	var/list/res = list()
 	var/datum/mil_branch/B = mil_branches.get_branch(branch)
-	for(var/T in allowed_ranks)
+	for( var/T in allowed_ranks)
 		var/datum/mil_rank/R = T
 		if(B && !(initial(R.name) in B.ranks))
 			continue

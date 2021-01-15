@@ -40,7 +40,7 @@
 
 /atom/proc/remove_light()
 	light_max_bright = 0
-	for (var/datum/light_source/LS in light_sources)
+	for( var/datum/light_source/LS in light_sources)
 		LS.destroy()
 	light_sources = list()
 	if (light)
@@ -88,7 +88,7 @@
 var/turf/old_loc = loc;\
 . = ..();\
 if(loc != old_loc) {\
-	for(var/datum/light_source/L in light_sources) {\
+	for( var/datum/light_source/L in light_sources) {\
 		L.source_atom.update_light();\
 	}\
 }

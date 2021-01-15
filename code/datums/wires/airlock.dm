@@ -23,7 +23,7 @@ var/const/AIRLOCK_WIRE_SAFETY = 512
 var/const/AIRLOCK_WIRE_SPEED = 1024
 var/const/AIRLOCK_WIRE_LIGHT = 2048
 
-/datum/wires/airlock/CanUse(var/mob/living/L)
+/datum/wires/airlock/CanUse(mob/living/L)
 	var/obj/machinery/door/airlock/A = holder
 	if(!istype(L, /mob/living/silicon))
 		if(A.isElectrified())

@@ -19,7 +19,7 @@
 		var/D
 		if(req_components)
 			var/list/component_list = new
-			for(var/I in req_components)
+			for( var/I in req_components)
 				if(req_components[I] > 0)
 					component_list += "[num2text(req_components[I])] [req_component_names[I]]"
 			D = "Requires [english_list(component_list)]."
@@ -60,10 +60,10 @@
 						state = 3
 						components = list()
 						req_components = circuit.req_components.Copy()
-						for(var/A in circuit.req_components)
+						for( var/A in circuit.req_components)
 							req_components[A] = circuit.req_components[A]
 						req_component_names = circuit.req_components.Copy()
-						for(var/A in req_components)
+						for( var/A in req_components)
 							var/obj/ct = A
 							req_component_names[A] = initial(ct.name)
 						update_desc()
@@ -89,7 +89,7 @@
 						to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
 					else
 						to_chat(user, "<span class='notice'>You remove the circuit board and other components.</span>")
-						for(var/obj/item/weapon/W in components)
+						for( var/obj/item/weapon/W in components)
 							W.loc = src.loc
 					desc = initial(desc)
 					req_components = null
@@ -98,7 +98,7 @@
 				else
 					if(isScrewdriver(P))
 						var/component_check = 1
-						for(var/R in req_components)
+						for( var/R in req_components)
 							if(req_components[R] > 0)
 								component_check = 0
 								break
@@ -113,7 +113,7 @@
 
 							src.circuit.construct(new_machine)
 
-							for(var/obj/O in src)
+							for( var/obj/O in src)
 								if(circuit.contain_parts) // things like disposal don't want their parts in them
 									O.loc = new_machine
 								else
@@ -129,7 +129,7 @@
 							qdel(src)
 					else
 						if(istype(P, /obj/item))
-							for(var/I in req_components)
+							for( var/I in req_components)
 								if(istype(P, I) && (req_components[I] > 0))
 									if(isCoil(P))
 										var/obj/item/stack/cable_coil/CP = P

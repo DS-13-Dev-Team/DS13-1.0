@@ -23,7 +23,7 @@
 	..()
 
 	var/datum/playingcard/P
-	for(var/suit in list("spades","clubs","diamonds","hearts"))
+	for( var/suit in list("spades","clubs","diamonds","hearts"))
 
 		var/colour
 		if(suit == "spades" || suit == "clubs")
@@ -31,14 +31,14 @@
 		else
 			colour = "red_"
 
-		for(var/number in list("ace","two","three","four","five","six","seven","eight","nine","ten"))
+		for( var/number in list("ace","two","three","four","five","six","seven","eight","nine","ten"))
 			P = new()
 			P.name = "[number] of [suit]"
 			P.card_icon = "[colour]num"
 			P.back_icon = "card_back"
 			cards += P
 
-		for(var/number in list("jack","queen","king"))
+		for( var/number in list("jack","queen","king"))
 			P = new()
 			P.name = "[number] of [suit]"
 			P.card_icon = "[colour]col"
@@ -46,7 +46,7 @@
 			cards += P
 
 
-	for(var/i = 0,i<2,i++)
+	for( var/i = 0,i<2,i++)
 		P = new()
 		P.name = "joker"
 		P.card_icon = "joker"
@@ -55,7 +55,7 @@
 /obj/item/weapon/deck/attackby(obj/O as obj, mob/user as mob)
 	if(istype(O,/obj/item/weapon/hand))
 		var/obj/item/weapon/hand/H = O
-		for(var/datum/playingcard/P in H.cards)
+		for( var/datum/playingcard/P in H.cards)
 			cards += P
 		qdel(O)
 		to_chat(user, "You place your cards on the bottom of \the [src].")
@@ -112,7 +112,7 @@
 		return
 
 	var/list/players = list()
-	for(var/mob/living/player in viewers(3))
+	for( var/mob/living/player in viewers(3))
 		if(!player.stat)
 			players += player
 	//players -= usr
@@ -138,7 +138,7 @@
 /obj/item/weapon/hand/attackby(obj/O as obj, mob/user as mob)
 	if(istype(O,/obj/item/weapon/hand))
 		var/obj/item/weapon/hand/H = O
-		for(var/datum/playingcard/P in cards)
+		for( var/datum/playingcard/P in cards)
 			H.cards += P
 		H.concealed = src.concealed
 		qdel(src)
@@ -201,7 +201,7 @@
 	set desc = "Place a card from your hand in front of you."
 
 	var/list/to_discard = list()
-	for(var/datum/playingcard/P in cards)
+	for( var/datum/playingcard/P in cards)
 		to_discard[P.name] = P
 	var/discarding = input("Which card do you wish to put down?") as null|anything in to_discard
 
@@ -230,7 +230,7 @@
 	. = ..(user)
 	if((!concealed || src.loc == user) && cards.len)
 		to_chat(user, "It contains: ")
-		for(var/datum/playingcard/P in cards)
+		for( var/datum/playingcard/P in cards)
 			to_chat(user, "The [P.name].")
 
 /obj/item/weapon/hand/update_icon(var/direction = 0)
@@ -276,7 +276,7 @@
 				M.Turn(90)
 				M.Translate(-2,  0)
 	var/i = 0
-	for(var/datum/playingcard/P in cards)
+	for( var/datum/playingcard/P in cards)
 		var/image/I = new(src.icon, (concealed ? "[P.back_icon]" : "[P.card_icon]") )
 		//I.pixel_x = origin+(offset*i)
 		switch(direction)
@@ -311,7 +311,7 @@
 	. = ..()
 
 	var/list/deck_list = list()
-	for(var/obj/item/weapon/deck/D in world)
+	for( var/obj/item/weapon/deck/D in world)
 		if(isturf(D.loc))		//Decks hiding in inventories are safe. Respect the sanctity of loadout items.
 			deck_list += D
 

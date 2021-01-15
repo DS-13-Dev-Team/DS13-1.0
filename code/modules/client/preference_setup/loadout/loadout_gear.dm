@@ -46,7 +46,7 @@
 	//Initialize gear tweaks
 	var/list/typepaths = gear_tweaks.Copy()
 	gear_tweaks = list()
-	for (var/thing in typepaths)
+	for( var/thing in typepaths)
 		if (ispath(thing))
 			gear_tweaks += new thing()
 		else
@@ -62,7 +62,7 @@
 /datum/gear/proc/get_description(metadata)
 	. = description
 	if (metadata)
-		for(var/datum/gear_tweak/gt in gear_tweaks)
+		for( var/datum/gear_tweak/gt in gear_tweaks)
 			. = gt.tweak_description(., metadata["[gt]"])
 
 /datum/gear_data
@@ -76,7 +76,7 @@
 /datum/gear/proc/spawn_item(location, metadata, dummy)
 	var/datum/gear_data/gd = new(path, location)
 	if (metadata)
-		for(var/datum/gear_tweak/gt in gear_tweaks)
+		for( var/datum/gear_tweak/gt in gear_tweaks)
 			gt.tweak_gear_data(metadata["[gt]"], gd)
 
 	var/item
@@ -86,7 +86,7 @@
 	else
 		item = new gd.path(gd.location)
 
-	for(var/datum/gear_tweak/gt in gear_tweaks)
+	for( var/datum/gear_tweak/gt in gear_tweaks)
 		gt.tweak_item(item, (metadata ? metadata["[gt]"] : null), location)
 	return item
 
@@ -98,14 +98,14 @@
 	var/list/slots = list()
 	slots += slot
 	var/result = FALSE
-	for (var/slot_type in slots)
+	for( var/slot_type in slots)
 		result = H.equip_to_slot_if_possible(item, slot, del_on_fail = 1, force = 1)
 		if (result)
 			break
 	if(result)
 		to_chat(H, "<span class='notice'>Equipping you with \the [item]!</span>")
 
-		for(var/datum/gear_tweak/gt in gear_tweaks)
+		for( var/datum/gear_tweak/gt in gear_tweaks)
 			gt.tweak_postequip(H, item, slot)
 		return TRUE
 

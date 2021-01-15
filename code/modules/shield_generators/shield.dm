@@ -110,7 +110,7 @@
 		visible_message("<span class='danger'>\The [src] flashes a bit as it eventually fades out in a rain of sparks!</span>")
 	fail(range * 2)
 
-	for(var/obj/effect/shield/S in range(range, src))
+	for( var/obj/effect/shield/S in range(range, src))
 		// Don't affect shields owned by other shield generators
 		if(S.gen != src.gen)
 			continue
@@ -144,7 +144,7 @@
 			return
 		if(SHIELD_BREACHED_FAILURE)
 			fail_adjacent_segments(rand(8, 16), hitby)
-			for(var/obj/effect/shield/S in field_segments)
+			for( var/obj/effect/shield/S in field_segments)
 				S.fail(1)
 			return
 

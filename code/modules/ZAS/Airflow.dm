@@ -107,7 +107,7 @@ atom/movable/proc/airflow_hit(atom/A)
 	airborne_acceleration = 0
 
 mob/airflow_hit(atom/A)
-	for(var/mob/M in hearers(src))
+	for( var/mob/M in hearers(src))
 		M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='danger'>You hear a loud slam!</span>",2)
 	playsound(src.loc, "smash.ogg", 25, 1, -1)
 	var/weak_amt = istype(A,/obj/item) ? A:w_class : rand(1,5) //Heheheh
@@ -115,7 +115,7 @@ mob/airflow_hit(atom/A)
 	. = ..()
 
 obj/airflow_hit(atom/A)
-	for(var/mob/M in hearers(src))
+	for( var/mob/M in hearers(src))
 		M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='danger'>You hear a loud slam!</span>",2)
 	playsound(src.loc, "smash.ogg", 25, 1, -1)
 	. = ..()
@@ -125,7 +125,7 @@ obj/item/airflow_hit(atom/A)
 	airflow_dest = null
 
 mob/living/carbon/human/airflow_hit(atom/A)
-//	for(var/mob/M in hearers(src))
+//	for( var/mob/M in hearers(src))
 //		M.show_message("<span class='danger'>[src] slams into [A]!</span>",1,"<span class='danger'>You hear a loud slam!</span>",2)
 	playsound(src.loc, "punch", 25, 1, -1)
 	if (prob(33))
@@ -151,8 +151,8 @@ mob/living/carbon/human/airflow_hit(atom/A)
 
 zone/proc/movables()
 	. = list()
-	for(var/turf/T in contents)
-		for(var/atom/movable/A in T)
+	for( var/turf/T in contents)
+		for( var/atom/movable/A in T)
 			if(!A.simulated || A.anchored || istype(A, /obj/effect) || isobserver(A))
 				continue
 			. += A

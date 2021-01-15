@@ -52,7 +52,7 @@
 
 	target_turfs = shuffle(target_turfs)
 
-	for(var/i = 1; i <= target_turfs.len; i++)
+	for( var/i = 1; i <= target_turfs.len; i++)
 
 		var/turf/O = target_turfs[i]
 
@@ -71,7 +71,7 @@
 		P.launch(O)
 
 		//Make sure to hit any mobs in the source turf
-		for(var/mob/living/M in T)
+		for( var/mob/living/M in T)
 			//lying on a frag grenade while the grenade is on the ground causes you to absorb most of the shrapnel.
 			//you will most likely be dead, but others nearby will be spared the fragments that hit you instead.
 			if(M.lying && isturf(src.loc))

@@ -20,7 +20,7 @@
 	if(config.objectives_disabled == CONFIG_OBJECTIVE_NONE)
 		return 1
 	if(global_objectives && global_objectives.len)
-		for(var/datum/objective/O in global_objectives)
+		for( var/datum/objective/O in global_objectives)
 			if(!O.completed && !O.check_completion())
 				result = 0
 		if(result && victory_text)
@@ -42,7 +42,7 @@
 		return
 
 	var/all_antag_types = GLOB.all_antag_types_
-	for(var/tag in all_antag_types) //we do all of them in case an admin adds an antagonist via the PP. Those do not show up in gamemode.
+	for( var/tag in all_antag_types) //we do all of them in case an admin adds an antagonist via the PP. Those do not show up in gamemode.
 		var/datum/antagonist/antagonist = all_antag_types[tag]
 		if(antagonist && antagonist.is_antagonist(src.mind))
 			antagonist.create_objectives(src.mind,1)

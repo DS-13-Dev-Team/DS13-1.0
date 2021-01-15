@@ -26,7 +26,7 @@
 
 	var/list/shields = list()
 	var/connected_z_levels = GetConnectedZlevels(T.z)
-	for(var/obj/machinery/power/shield_generator/S in SSmachines.machinery)
+	for( var/obj/machinery/power/shield_generator/S in SSmachines.machinery)
 		if(!(S.z in connected_z_levels))
 			continue
 		shields.Add(S)
@@ -65,7 +65,7 @@
 		data["active"] = null
 		var/list/shields = get_shields()
 		var/list/shields_info = list()
-		for(var/obj/machinery/power/shield_generator/S in shields)
+		for( var/obj/machinery/power/shield_generator/S in shields)
 			var/area/A = get_area(S)
 			var/list/temp = list(list(
 				"shield_status" = S.running,

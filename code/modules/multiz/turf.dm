@@ -14,7 +14,7 @@
 
 	if (LAZYLEN(zstructures))
 		var/highest_priority = 0
-		for (var/atom/B in zstructures)
+		for( var/atom/B in zstructures)
 			if (zstructures[B] > highest_priority)
 				var/result=B.CanZPass(A, direction)
 				if (result != ZTRANSITION_MAYBE)
@@ -25,7 +25,7 @@
 	.=TRUE
 	if (LAZYLEN(zstructures))
 		var/highest_priority = 0
-		for (var/atom/B in zstructures)
+		for( var/atom/B in zstructures)
 			if (zstructures[B] > highest_priority)
 				var/result=B.CanZPass(A, direction)
 				if (result != ZTRANSITION_MAYBE)
@@ -37,7 +37,7 @@
 	.=TRUE
 	if (LAZYLEN(zstructures))
 		var/highest_priority = 0
-		for (var/atom/B in zstructures)
+		for( var/atom/B in zstructures)
 			if (zstructures[B] > highest_priority)
 				var/result=B.CanZPass(A, direction)
 				if (result != ZTRANSITION_MAYBE)
@@ -70,7 +70,7 @@
 	GLOB.exited_event.register(below, src, /turf/simulated/open/proc/handle_move)
 	GLOB.entered_event.register(below, src, /turf/simulated/open/proc/handle_move)
 	levelupdate()
-	for(var/atom/movable/A in src)
+	for( var/atom/movable/A in src)
 		A.fall()
 	SSopen_space.add_turf(src, 1)
 	update_icon()
@@ -91,7 +91,7 @@
 
 // override to make sure nothing is hidden
 /turf/simulated/open/levelupdate()
-	for(var/obj/O in src)
+	for( var/obj/O in src)
 		O.hide(0)
 
 
@@ -99,7 +99,7 @@
 /turf/simulated/open/examine(mob/user, distance, infix, suffix)
 	if(..(user, 2))
 		var/depth = 1
-		for(var/T = GetBelow(src); isopenspace(T); T = GetBelow(T))
+		for( var/T = GetBelow(src); isopenspace(T); T = GetBelow(T))
 			depth += 1
 		to_chat(user, "It is about [depth] level\s deep.")
 
@@ -126,7 +126,7 @@
 			bottom_turf.plane = below.plane + src.plane
 			bottom_turf.color = below.color
 			underlays += bottom_turf
-			for(var/image/I in below.overlays)
+			for( var/image/I in below.overlays)
 				var/image/temp = I
 				temp.plane = I.plane + src.plane
 				temp.color = I.color
@@ -135,7 +135,7 @@
 
 		// get objects (not mobs, they are handled by /obj/zshadow)
 		var/list/o_img = list()
-		for(var/obj/O in below)
+		for( var/obj/O in below)
 			if(O.invisibility) continue // Ignore objects that have any form of invisibility
 			if(O.loc != below) continue // Ignore multi-turf objects not directly below
 			var/image/temp2 = image(O, dir = O.dir, layer = O.layer)
@@ -218,7 +218,7 @@
 	GLOB.exited_event.unregister(below, src, /turf/simulated/open/proc/handle_move)
 	GLOB.entered_event.unregister(below, src, /turf/simulated/open/proc/handle_move)
 	//Take care of shadow
-	for(var/mob/zshadow/M in src)
+	for( var/mob/zshadow/M in src)
 		qdel(M)
 
 //When turf changes, a bunch of things can take place

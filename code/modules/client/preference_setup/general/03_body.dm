@@ -166,7 +166,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	//display limbs below
 	var/ind = 0
-	for(var/name in pref.organ_data)
+	for( var/name in pref.organ_data)
 		var/status = pref.organ_data[name]
 		var/organ_name = null
 		switch(name)
@@ -274,7 +274,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		. += "<a href='?src=\ref[src];skin_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_skin, 2)][num2hex(pref.g_skin, 2)][num2hex(pref.b_skin, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_skin, 2)][num2hex(pref.g_skin, 2)][num2hex(pref.b_skin)]'><tr><td>__</td></tr></table></font><br>"
 
 	. += "<br><a href='?src=\ref[src];marking_style=1'>Body Markings +</a><br>"
-	for(var/M in pref.body_markings)
+	for( var/M in pref.body_markings)
 		. += "[M] <a href='?src=\ref[src];marking_remove=[M]'>-</a> <a href='?src=\ref[src];marking_color=[M]'>Color</a>"
 		. += "<font face='fixedsys' size='3' color='[pref.body_markings[M]]'><table style='display:inline;' bgcolor='[pref.body_markings[M]]'><tr><td>__</td></tr></table></font>"
 		. += "<br>"
@@ -416,7 +416,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["marking_style"])
 		var/list/usable_markings = pref.body_markings.Copy() ^ GLOB.body_marking_styles_list.Copy()
-		for(var/M in usable_markings)
+		for( var/M in usable_markings)
 			var/datum/sprite_accessory/S = usable_markings[M]
 			if(!S.species_allowed.len)
 				continue
@@ -498,10 +498,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		switch(new_state)
 			if("Normal")
 				if(limb == BP_CHEST)
-					for(var/other_limb in (BP_ALL_LIMBS - BP_CHEST))
+					for( var/other_limb in (BP_ALL_LIMBS - BP_CHEST))
 						pref.organ_data[other_limb] = null
 						pref.rlimb_data[other_limb] = null
-						for(var/internal_organ in list(BP_HEART,BP_EYES,BP_LUNGS,BP_LIVER,BP_KIDNEYS,BP_BRAIN))
+						for( var/internal_organ in list(BP_HEART,BP_EYES,BP_LUNGS,BP_LIVER,BP_KIDNEYS,BP_BRAIN))
 							pref.organ_data[internal_organ] = null
 				pref.organ_data[limb] = null
 				pref.rlimb_data[limb] = null
@@ -520,7 +520,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			if("Prosthesis")
 				var/tmp_species = pref.species ? pref.species : SPECIES_HUMAN
 				var/list/usable_manufacturers = list()
-				for(var/company in chargen_robolimbs)
+				for( var/company in chargen_robolimbs)
 					var/datum/robolimb/M = chargen_robolimbs[company]
 					if(tmp_species in M.species_cannot_use)
 						continue

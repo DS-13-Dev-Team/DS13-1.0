@@ -8,7 +8,7 @@
 		return 0
 
 	if(flags & DEITY_STRUCTURE_ALONE)
-		for(var/structure in deity.structures)
+		for( var/structure in deity.structures)
 			if(istype(structure,type) && get_dist(target,structure) <= 3)
 				if(user)
 					to_chat(user, "<span class='warning'>You are too close to another [deity.get_type_name(type)]!</span>")

@@ -14,7 +14,7 @@
 /obj/effect/overmap/sector/exoplanet/desert/generate_map()
 	if(prob(70))
 		lightlevel = rand(5,10)/10	//deserts are usually :lit:
-	for(var/zlevel in map_z)
+	for( var/zlevel in map_z)
 		var/datum/random_map/noise/exoplanet/M = new /datum/random_map/noise/exoplanet/desert(md5(world.time + rand(-100,1000)),1,1,zlevel,maxx,maxy,0,1,1)
 		get_biostuff(M)
 		new /datum/random_map/noise/ore/rich(md5(world.time + rand(-100,1000)),1,1,zlevel,maxx,maxy,0,1,1)

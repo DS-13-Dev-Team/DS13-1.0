@@ -214,14 +214,14 @@
 		if(origin_tech)
 			desc_comp += "<span class='notice'>Testing potentials:</span><BR>"
 			//var/list/techlvls = params2list(origin_tech)
-			for(var/T in origin_tech)
+			for( var/T in origin_tech)
 				desc_comp += "Tech: Level [origin_tech[T]] [CallTechName(T)] <BR>"
 		else
 			desc_comp += "No tech origins detected.<BR>"
 
 		if(LAZYLEN(matter))
 			desc_comp += "<span class='notice'>Extractable materials:</span><BR>"
-			for(var/mat in matter)
+			for( var/mat in matter)
 				desc_comp += "[get_material_by_name(mat)]<BR>"
 		else
 			desc_comp += "<span class='danger'>No extractable materials detected.</span><BR>"
@@ -586,7 +586,7 @@ var/list/global/slot_flags_enumeration = list(
 
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
-		for(var/obj/item/protection in list(H.head, H.wear_mask, H.glasses))
+		for( var/obj/item/protection in list(H.head, H.wear_mask, H.glasses))
 			if(protection && (protection.body_parts_covered & EYES))
 				// you can't stab someone in the eyes wearing a mask!
 				to_chat(user, "<span class='warning'>You're going to need to remove the eye covering first.</span>")
@@ -616,7 +616,7 @@ var/list/global/slot_flags_enumeration = list(
 		var/obj/item/organ/internal/eyes/eyes = H.internal_organs_by_name[BP_EYES]
 
 		if(H != user)
-			for(var/mob/O in (viewers(M) - user - M))
+			for( var/mob/O in (viewers(M) - user - M))
 				O.show_message("<span class='danger'>[M] has been stabbed in the eye with [src] by [user].</span>", 1)
 			to_chat(M, "<span class='danger'>[user] stabs you in the eye with [src]!</span>")
 			to_chat(user, "<span class='danger'>You stab [M] in the eye with [src]!</span>")
@@ -696,12 +696,12 @@ var/list/global/slot_flags_enumeration = list(
 	I.Blend(new /icon('icons/effects/blood.dmi', "itemblood"),ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
 
 	//not sure if this is worth it. It attaches the blood_overlay to every item of the same type if they don't have one already made.
-	for(var/obj/item/A in world)
+	for( var/obj/item/A in world)
 		if(A.type == type && !A.blood_overlay)
 			A.blood_overlay = image(I)
 
 /obj/item/proc/showoff(mob/user)
-	for (var/mob/M in view(user))
+	for( var/mob/M in view(user))
 		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>",1)
 
 /mob/living/carbon/verb/showoff()

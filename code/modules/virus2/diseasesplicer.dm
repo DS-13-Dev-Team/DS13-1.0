@@ -68,7 +68,7 @@
 
 			if (dish.growth >= 50)
 				var/list/effects[0]
-				for (var/datum/disease2/effect/e in dish.virus2.effects)
+				for( var/datum/disease2/effect/e in dish.virus2.effects)
 					effects.Add(list(list("name" = (dish.analysed ? e.name : "Unknown"), "stage" = (e.stage), "reference" = "\ref[e]")))
 				data["effects"] = effects
 			else
@@ -163,7 +163,7 @@
 
 				var/datum/disease2/effect/target_effect
 				var/list/illegal_types = list()
-				for(var/datum/disease2/effect/e in dish.virus2.effects)
+				for( var/datum/disease2/effect/e in dish.virus2.effects)
 					if(e.stage == target)
 						target_effect = e
 					if(!e.allow_multiple)

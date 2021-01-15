@@ -6,7 +6,7 @@
 	var/obj/item/stack/cable_coil/cable_coil = holder
 	. += "<b>Available Colors</b><br>"
 	. += "<table>"
-	for(var/cable_color in GLOB.possible_cable_colours)
+	for( var/cable_color in GLOB.possible_cable_colours)
 		. += "<tr>"
 		. += "<td>[cable_color]</td>"
 		if(cable_coil.color == GLOB.possible_cable_colours[cable_color])

@@ -1,4 +1,4 @@
-/mob/living/carbon/human/say(var/message, datum/language/speaking = null, whispering)
+/mob/living/carbon/human/say(message, datum/language/speaking = null, whispering)
 	var/alt_name = ""
 	if(name != GetVoice())
 		if(get_id_name("Unknown") != GetVoice())
@@ -69,7 +69,7 @@
 					say(temp)
 				winset(client, "input", "text=[null]")
 
-/mob/living/carbon/human/say_understands(var/mob/other, datum/language/speaking = null)
+/mob/living/carbon/human/say_understands(mob/other, datum/language/speaking = null)
 
 	if(has_brain_worms()) //Brain worms translate everything. Even mice and alien speak.
 		return 1
@@ -106,7 +106,7 @@
 		if(rig.speech && rig.speech.voice_holder && rig.speech.voice_holder.active && rig.speech.voice_holder.voice)
 			voice_sub = rig.speech.voice_holder.voice
 	else
-		for(var/obj/item/gear in list(wear_mask,wear_suit,head))
+		for( var/obj/item/gear in list(wear_mask,wear_suit,head))
 			if(!gear)
 				continue
 			var/obj/item/voice_changer/changer = locate() in gear
@@ -133,7 +133,7 @@
 	return special_voice
 
 
-/mob/living/carbon/human/say_quote(var/message, datum/language/speaking = null)
+/mob/living/carbon/human/say_quote(message, datum/language/speaking = null)
 	var/verb = "says"
 	var/ending = copytext(message, length(message))
 
@@ -147,7 +147,7 @@
 
 	return verb
 
-/mob/living/carbon/human/handle_speech_problems(var/list/message_data)
+/mob/living/carbon/human/handle_speech_problems(list/message_data)
 	if(silent || (sdisabilities & MUTE))
 		message_data[1] = ""
 		. = 1
@@ -166,7 +166,7 @@
 	switch(message_mode)
 		if("intercom")
 			if(!src.restrained())
-				for(var/obj/item/device/radio/intercom/I in view(1))
+				for( var/obj/item/device/radio/intercom/I in view(1))
 					I.talk_into(src, message, null, verb, speaking)
 					I.add_fingerprint(src)
 					used_radios += I
@@ -229,7 +229,7 @@
 
 	if(species && speaking.name in species.assisted_langs)
 		needs_assist = 1
-		for(var/obj/item/organ/internal/I in src.internal_organs)
+		for( var/obj/item/organ/internal/I in src.internal_organs)
 			if((speaking in I.assists_languages) && (I.is_usable()))
 				can_speak_assist = 1
 
@@ -240,7 +240,7 @@
 
 	return ..()
 
-/mob/living/carbon/human/parse_language(var/message)
+/mob/living/carbon/human/parse_language(message)
 	var/prefix = copytext(message,1,2)
 	if(length(message) >= 1 && prefix == get_prefix_key(/decl/prefix/audible_emote))
 		return all_languages["Noise"]

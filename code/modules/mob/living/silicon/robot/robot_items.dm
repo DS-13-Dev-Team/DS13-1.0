@@ -28,12 +28,12 @@
 				to_chat(user, "You activate the analyzer's microlaser, analyzing \the [loaded_item] and breaking it down.")
 				flick("portable_analyzer_scan", src)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
-				for(var/T in loaded_item.origin_tech)
+				for( var/T in loaded_item.origin_tech)
 					files.UpdateTech(T, loaded_item.origin_tech[T])
 					to_chat(user, "\The [loaded_item] had level [loaded_item.origin_tech[T]] in [CallTechName(T)].")
 				loaded_item = null
-				for(var/obj/I in contents)
-					for(var/mob/M in I.contents)
+				for( var/obj/I in contents)
+					for( var/mob/M in I.contents)
 						M.death()
 					if(istype(I,/obj/item/stack/material))//Only deconstructs one sheet at a time instead of the entire stack
 						var/obj/item/stack/material/S = I
@@ -54,10 +54,10 @@
 			to_chat(user, "The [src] is empty.  Put something inside it first.")
 	if(response == "Sync")
 		var/success = 0
-		for(var/obj/machinery/r_n_d/server/S in SSmachines.machinery)
-			for(var/datum/tech/T in files.known_tech) //Uploading
+		for( var/obj/machinery/r_n_d/server/S in SSmachines.machinery)
+			for( var/datum/tech/T in files.known_tech) //Uploading
 				S.files.AddTech2Known(T)
-			for(var/datum/tech/T in S.files.known_tech) //Downloading
+			for( var/datum/tech/T in S.files.known_tech) //Downloading
 				files.AddTech2Known(T)
 			success = 1
 			files.RefreshResearch()
@@ -91,7 +91,7 @@
 		var/obj/item/I = target
 		I.loc = src
 		loaded_item = I
-		for(var/mob/M in viewers())
+		for( var/mob/M in viewers())
 			M.show_message(text("<span class='notice'>[user] adds the [I] to the [src].</span>"), 1)
 		desc = initial(desc) + "<br>It is holding \the [loaded_item]."
 		flick("portable_analyzer_load", src)
@@ -210,7 +210,7 @@
 
 		var addedSomething = 0
 
-		for(var/obj/item/weapon/reagent_containers/food/I in pickup)
+		for( var/obj/item/weapon/reagent_containers/food/I in pickup)
 
 
 			if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/item/projectile) )
@@ -233,7 +233,7 @@
 	if ( isturf(target) || istype(target,/obj/structure/table) )
 		var foundtable = istype(target,/obj/structure/table/)
 		if ( !foundtable ) //it must be a turf!
-			for(var/obj/structure/table/T in target)
+			for( var/obj/structure/table/T in target)
 				foundtable = 1
 				break
 
@@ -250,14 +250,14 @@
 
 		var droppedSomething = 0
 
-		for(var/obj/item/I in carrying)
+		for( var/obj/item/I in carrying)
 			I.loc = dropspot
 			carrying.Remove(I)
 			droppedSomething = 1
 			if(!foundtable && isturf(dropspot))
 				// if no table, presume that the person just shittily dropped the tray on the ground and made a mess everywhere!
 				spawn()
-					for(var/i = 1, i <= rand(1,2), i++)
+					for( var/i = 1, i <= rand(1,2), i++)
 						if(I)
 							step(I, pick(NORTH,SOUTH,EAST,WEST))
 							sleep(rand(2,4))
@@ -487,7 +487,7 @@
 
 /obj/item/robot_rack/Initialize(mapload, starting_objects = 0)
 	. = ..()
-	for(var/i = 1, i <= min(starting_objects, capacity), i++)
+	for( var/i = 1, i <= min(starting_objects, capacity), i++)
 		held += new object_type(src)
 
 /obj/item/robot_rack/attack_self(mob/user)

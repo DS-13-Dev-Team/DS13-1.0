@@ -5,7 +5,7 @@
 /datum/event/rogue_drone/start()
 	//spawn them at the same place as carp
 	var/list/possible_spawns = list()
-	for(var/obj/effect/landmark/C in landmarks_list)
+	for( var/obj/effect/landmark/C in landmarks_list)
 		if(C.name == "carpspawn")
 			possible_spawns.Add(C)
 
@@ -15,7 +15,7 @@
 		num = 0
 	else
 		num = rand(2,6)
-	for(var/i=0, i<num, i++)
+	for( var/i=0, i<num, i++)
 		var/mob/living/simple_animal/hostile/retaliate/malf_drone/D = new(get_turf(pick(possible_spawns)))
 		drones_list.Add(D)
 		if(prob(25))
@@ -33,7 +33,7 @@
 
 /datum/event/rogue_drone/end()
 	var/num_recovered = 0
-	for(var/mob/living/simple_animal/hostile/retaliate/malf_drone/D in drones_list)
+	for( var/mob/living/simple_animal/hostile/retaliate/malf_drone/D in drones_list)
 		var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
 		sparks.set_up(3, 0, D.loc)
 		sparks.start()

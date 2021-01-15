@@ -14,7 +14,7 @@ var/savefile/Banlistjob
 		return 1
 
 	Banlistjob.cd = "/base"
-	for (var/A in Banlistjob.dir)
+	for( var/A in Banlistjob.dir)
 		Banlistjob.cd = "/base/[A]"
 		if ((id == Banlistjob["id"] || key == Banlistjob["key"]) && rank == Banlistjob["rank"])
 			return 1
@@ -41,7 +41,7 @@ var/savefile/Banlistjob
 	UpdateTime()
 
 	Banlistjob.cd = "/base"
-	for (var/A in Banlistjob.dir)
+	for( var/A in Banlistjob.dir)
 		Banlistjob.cd = "/base/[A]"
 		//if (!Banlistjob["key"] || !Banlistjob["id"])
 		//	RemoveBanjob(A, "full")
@@ -179,7 +179,7 @@ var/savefile/Banlistjob
 		feedback_inc("ban_job_unban",1)
 		feedback_add_details("ban_job_unban","- [rank]")
 
-	for (var/A in Banlistjob.dir)
+	for( var/A in Banlistjob.dir)
 		Banlistjob.cd = "/base/[A]"
 		if ((key == Banlistjob["key"] || id == Banlistjob["id"]) && (rank == Banlistjob["rank"]))
 			Banlistjob.cd = "/base"
@@ -208,7 +208,7 @@ var/savefile/Banlistjob
 	var/dat
 	//var/dat = "<HR><B>Unban Player:</B> <span class='notice'>(U) = Unban , (E) = Edit Ban</span> <span class='good'>(Total<HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 ></span>"
 	Banlistjob.cd = "/base"
-	for (var/A in Banlistjob.dir)
+	for( var/A in Banlistjob.dir)
 		count++
 		Banlistjob.cd = "/base/[A]"
 		dat += text("<tr><td><A href='?src=\ref[src];unjobbanf=[Banlistjob["key"]][Banlistjob["id"]][Banlistjob["rank"]]'>(U)</A> Key: <B>[Banlistjob["key"]] </B>Rank: <B>[Banlistjob["rank"]]</B></td><td> ([Banlistjob["temp"] ? "[GetBanExpjob(Banlistjob["minutes"]) ? GetBanExpjob(Banlistjob["minutes"]) : "Removal pending" ]" : "Permaban"])</td><td>(By: [Banlistjob["bannedby"]])</td><td>(Reason: [Banlistjob["reason"]])</td></tr>")
@@ -268,5 +268,5 @@ var/savefile/Banlistjob
 
 /proc/ClearAllBansjob()
 	Banlistjob.cd = "/base"
-	for (var/A in Banlistjob.dir)
+	for( var/A in Banlistjob.dir)
 		RemoveBanjob(A, "full")

@@ -19,7 +19,7 @@
 		bcell = new bcell(src)
 	suit_sensor_jammer_methods = list()
 	suit_sensor_jammer_methods_by_type = list()
-	for(var/jammer_method_type in subtypesof(/suit_sensor_jammer_method))
+	for( var/jammer_method_type in subtypesof(/suit_sensor_jammer_method))
 		var/new_method = new jammer_method_type(src, /obj/item/device/suit_sensor_jammer/proc/may_process_crew_data)
 		dd_insertObjectList(suit_sensor_jammer_methods, new_method)
 		suit_sensor_jammer_methods_by_type[jammer_method_type] = new_method
@@ -31,7 +31,7 @@
 	qdel(bcell)
 	bcell = null
 	jammer_method = null
-	for(var/method in suit_sensor_jammer_methods)
+	for( var/method in suit_sensor_jammer_methods)
 		qdel(method)
 	suit_sensor_jammer_methods = null
 	suit_sensor_jammer_methods_by_type = null
@@ -126,7 +126,7 @@ obj/item/device/suit_sensor_jammer/tg_ui_interact(mob/user, ui_key = "main", dat
 
 obj/item/device/suit_sensor_jammer/ui_data()
 	var/list/methods = new
-	for(var/suit_sensor_jammer_method/ssjm in suit_sensor_jammer_methods)
+	for( var/suit_sensor_jammer_method/ssjm in suit_sensor_jammer_methods)
 		methods[++methods.len] = list("name" = ssjm.name, "cost" = ssjm.energy_cost, "ref" = "\ref[ssjm]")
 
 	var/list/data = list(

@@ -4,7 +4,7 @@
 /hook/startup/proc/populate_gear_list()
 
 	//create a list of gear datums to sort
-	for(var/geartype in typesof(/datum/gear)-/datum/gear)
+	for( var/geartype in typesof(/datum/gear)-/datum/gear)
 		var/datum/gear/G = geartype
 		if(initial(G.category) == geartype)
 			continue
@@ -21,7 +21,7 @@
 		LC.gear[use_name] = GLOB.gear_datums[use_name]
 
 	GLOB.loadout_categories = sortAssoc(GLOB.loadout_categories)
-	for(var/loadout_category in GLOB.loadout_categories)
+	for( var/loadout_category in GLOB.loadout_categories)
 		var/datum/loadout_category/LC = GLOB.loadout_categories[loadout_category]
 		sortTim(LC.gear, /proc/cmp_gear_subcategory, TRUE)	//Sort the loadout menu by subcategory
 		//LC.gear = sortAssoc(LC.gear)
@@ -56,12 +56,12 @@
 /datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(max_cost)
 	. = list()
 	var/mob/preference_mob = preference_mob()
-	for(var/gear_name in GLOB.gear_datums)
+	for( var/gear_name in GLOB.gear_datums)
 		var/datum/gear/G = GLOB.gear_datums[gear_name]
 		var/okay = 1
 		if(G.whitelisted && preference_mob)
 			okay = 0
-			for(var/species in G.whitelisted)
+			for( var/species in G.whitelisted)
 				if(is_species_whitelisted(preference_mob, species))
 					okay = 1
 					break
@@ -105,7 +105,7 @@
 
 	. += "<tr><td colspan=3><center><b>"
 	var/firstcat = 1
-	for(var/category in GLOB.loadout_categories)
+	for( var/category in GLOB.loadout_categories)
 
 		if(firstcat)
 			firstcat = 0
@@ -114,7 +114,7 @@
 
 		var/datum/loadout_category/LC = GLOB.loadout_categories[category]
 		var/category_cost = 0
-		for(var/gear in LC.gear)
+		for( var/gear in LC.gear)
 			if(gear in pref.gear_list[pref.gear_slot])
 				var/datum/gear/G = LC.gear[gear]
 				category_cost += G.cost
@@ -135,7 +135,7 @@
 	. += "<tr><td colspan=3><hr></td></tr>"
 	var/jobs = list()
 	if(job_master)
-		for(var/job_title in (pref.job_medium|pref.job_low|pref.job_high))
+		for( var/job_title in (pref.job_medium|pref.job_low|pref.job_high))
 			var/datum/job/J = job_master.occupations_by_title[job_title]
 			if(J)
 				dd_insertObjectList(jobs, J)
@@ -144,7 +144,7 @@
 	var/datum/player/P = get_player_from_key(pref.client_ckey)
 	var/is_patron = (P ? P.patron	: FALSE)
 	var/current_subcategory
-	for(var/gear_name in LC.gear)
+	for( var/gear_name in LC.gear)
 
 		if(!(gear_name in valid_gear_choices()))
 			continue
@@ -180,7 +180,7 @@
 			var/bad_job = 0
 			entry += "<br><i>"
 			var/ind = 0
-			for(var/datum/job/J in jobs)
+			for( var/datum/job/J in jobs)
 				++ind
 				if(ind > 1)
 					entry += ", "
@@ -195,7 +195,7 @@
 		entry += "</td></tr>"
 		if(ticked)
 			entry += "<tr><td colspan=3>"
-			for(var/datum/gear_tweak/tweak in G.gear_tweaks)
+			for( var/datum/gear_tweak/tweak in G.gear_tweaks)
 				if(!tweak.show_in_ui)
 					continue
 				entry += " <a href='?src=\ref[src];gear=[G.display_name];tweak=\ref[tweak]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
@@ -309,7 +309,7 @@
 			// If not the key is replaced with the corresponding value.
 			// This will convert the loadout slot data to a reasonable and (more importantly) compatible format.
 			// I.e. list("1" = loadout_data1, "2" = loadout_data2, "3" = loadout_data3) becomes list(loadout_data1, loadout_data2, loadaout_data3)
-			for(var/index = 1 to pref.gear_list.len)
+			for( var/index = 1 to pref.gear_list.len)
 				var/key = pref.gear_list[index]
 				if(islist(key))
 					continue

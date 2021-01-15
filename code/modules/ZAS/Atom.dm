@@ -17,11 +17,11 @@
 		if(target.blocks_air||blocks_air)
 			return 0
 
-		for(var/obj/obstacle in src)
+		for( var/obj/obstacle in src)
 			if(!obstacle.CanPass(mover, target, height, air_group))
 				return 0
 		if(target != src)
-			for(var/obj/obstacle in target)
+			for( var/obj/obstacle in target)
 				if(!obstacle.CanPass(mover, src, height, air_group))
 					return 0
 
@@ -29,10 +29,10 @@
 
 //Convenience function for atoms to update turfs they occupy
 /atom/movable/proc/update_nearby_tiles(need_rebuild)
-	for(var/turf/simulated/turf in locs)
+	for( var/turf/simulated/turf in locs)
 		SSair.mark_for_update(turf)
 
-	for (var/obj/effect/vine/V in range(1, src))
+	for( var/obj/effect/vine/V in range(1, src))
 		V.wake_up()
 
 	return 1
@@ -73,7 +73,7 @@ turf/c_airblock(turf/other)
 			return AIR_BLOCKED
 
 	var/result = 0
-	for(var/mm in contents)
+	for( var/mm in contents)
 		var/atom/movable/M = mm
 		result |= M.c_airblock(other)
 		if(result == BLOCKED) return BLOCKED

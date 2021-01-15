@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(timer)
 			bucket_resolution = 0
 
 		log_ss(name, "Timer bucket reset. world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset], times_flushed: [times_flushed], length(spent): [length(spent)]")
-		for (var/i in 1 to length(bucket_list))
+		for( var/i in 1 to length(bucket_list))
 			var/datum/timedevent/bucket_head = bucket_list[i]
 			if (!bucket_head)
 				continue
@@ -67,7 +67,7 @@ SUBSYSTEM_DEF(timer)
 				anti_loop_check--
 			while(bucket_node && bucket_node != bucket_head && anti_loop_check)
 		log_ss(name, "Active timers in the processing queue:")
-		for(var/I in processing)
+		for( var/I in processing)
 			log_ss(name, get_timer_debug_string(I))
 
 	while(length(clienttime_timers))
@@ -131,7 +131,7 @@ SUBSYSTEM_DEF(timer)
 
 	bucket_count -= length(spent)
 
-	for (var/spent_timer in spent)
+	for( var/spent_timer in spent)
 		qdel(spent_timer)
 
 	spent.len = 0
@@ -148,7 +148,7 @@ SUBSYSTEM_DEF(timer)
 	var/list/bucket_list = src.bucket_list
 	var/list/alltimers = list()
 	//collect the timers currently in the bucket
-	for (var/bucket_head in bucket_list)
+	for( var/bucket_head in bucket_list)
 		if (!bucket_head)
 			continue
 		var/datum/timedevent/bucket_node = bucket_head
@@ -178,7 +178,7 @@ SUBSYSTEM_DEF(timer)
 
 	var/list/timers_to_remove = list()
 
-	for (var/thing in alltimers)
+	for( var/thing in alltimers)
 		var/datum/timedevent/timer = thing
 		if (!timer)
 			timers_to_remove += timer
@@ -261,7 +261,7 @@ SUBSYSTEM_DEF(timer)
 			if(Last.timeToRun >= timeToRun)
 				ctts += src
 			else if(cttl > 1)
-				for(var/I in cttl to 1)
+				for( var/I in cttl to 1)
 					var/datum/timedevent/E = ctts[I]
 					if(E.timeToRun <= timeToRun)
 						ctts.Insert(src, I)

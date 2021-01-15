@@ -33,7 +33,7 @@ n_scriptOptions
 			if(!CanStartID(id)) //don't need to grab first char in id, since text2ascii does it automatically
 				return 0
 			if(length(id)==1) return 1
-			for(var/i=2 to length(id))
+			for( var/i=2 to length(id))
 				if(!IsValidIDChar(copytext(id, i, i+1)))
 					return 0
 			return 1
@@ -79,5 +79,5 @@ n_scriptOptions
 
 		New()
 			.=..()
-			for(var/O in assign_operators+binary_operators+unary_operators)
+			for( var/O in assign_operators+binary_operators+unary_operators)
 				if(!symbols.Find(O)) symbols+=O

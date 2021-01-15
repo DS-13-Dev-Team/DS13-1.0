@@ -59,7 +59,7 @@
 			to_chat(mob, "<span class='warning'>You angrily chew \the [mouth_status[2]] covering your mouth!</span>")
 			return
 		var/list/mobs_to_bite = list()
-		for (var/mob/living/carbon/human/L in trange(1))
+		for( var/mob/living/carbon/human/L in trange(1))
 			if (L == mob)
 				continue
 			mobs_to_bite += L
@@ -113,7 +113,7 @@
 	if (weapon)
 		new weapon(src.loc)
 	visible_message("<span class='warning'>Small shining spores float away from dying [src]!</span>")
-	for (var/mob/living/carbon/human/L in orange(3))//infect those who are around
+	for( var/mob/living/carbon/human/L in orange(3))//infect those who are around
 		if (prob(infection_chance(L, "Airborne")))
 			infect_virus2(L, LMD, 1)
 	qdel(src)

@@ -141,7 +141,7 @@
 //Find out how many crew can see our source
 /datum/extension/psychic_tracer/proc/get_visible_crew()
 	var/num = 0
-	for (var/mob/living/carbon/human/H in view(10, A))
+	for( var/mob/living/carbon/human/H in view(10, A))
 		if (H.stat == DEAD)
 			continue
 

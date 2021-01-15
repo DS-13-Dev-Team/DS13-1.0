@@ -11,7 +11,7 @@
 		QDEL_NULL(current_vote)
 		return
 
-	for(var/thing in nymphs)
+	for( var/thing in nymphs)
 		to_chat(thing, "<span class='notice'><b>\The [voter]</b> has called a vote to <i>[current_vote.descriptor]</i>. Click <a href='?src=\ref[current_vote];voter=\ref[thing]'>here</a> to vote yes. \
 		The vote will conclude in [current_vote.vote_time / 600] minute\s.</span>")
 

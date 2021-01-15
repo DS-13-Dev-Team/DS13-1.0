@@ -44,12 +44,12 @@
 
 /obj/item/device/electronic_assembly/GetAccess()
 	. = list()
-	for(var/obj/item/integrated_circuit/part in contents)
+	for( var/obj/item/integrated_circuit/part in contents)
 		. |= part.GetAccess()
 
 /obj/item/device/electronic_assembly/GetIdCard()
 	. = list()
-	for(var/obj/item/integrated_circuit/part in contents)
+	for( var/obj/item/integrated_circuit/part in contents)
 		var/id_card = part.GetIdCard()
 		if(id_card)
 			return id_card
@@ -65,12 +65,12 @@
 	to_chat(usr, "\The src is now facing [dir2text(dir)].")
 /obj/item/device/electronic_assembly/proc/get_part_complexity()
 	. = 0
-	for(var/obj/item/integrated_circuit/part in contents)
+	for( var/obj/item/integrated_circuit/part in contents)
 		. += part.complexity
 
 /obj/item/device/electronic_assembly/proc/get_part_size()
 	. = 0
-	for(var/obj/item/integrated_circuit/part in contents)
+	for( var/obj/item/integrated_circuit/part in contents)
 		. += part.size
 
 /obj/item/device/electronic_assembly/proc/open_interact(mob/user)
@@ -90,7 +90,7 @@
 	HTML += "Components;<br>"
 
 	HTML += "<table>"
-	for(var/obj/item/integrated_circuit/circuit in contents)
+	for( var/obj/item/integrated_circuit/circuit in contents)
 		HTML += "<tr>"
 		HTML += "<td><a href=?src=\ref[circuit];examine=1>[circuit.name]</a></td>"
 		HTML += "<td><a href=?src=\ref[circuit];rename=1>\[Rename\]</a></td>"
@@ -113,14 +113,14 @@
 	HTML += "<br><br>"
 
 	var/listed_components = FALSE
-	for(var/obj/item/integrated_circuit/circuit in contents)
+	for( var/obj/item/integrated_circuit/circuit in contents)
 		var/list/topic_data = circuit.get_topic_data(user)
 		if(topic_data.len)
 			listed_components = TRUE
 			HTML += "<b>[circuit.name]: </b>"
 			if(topic_data.len != 1)
 				HTML += "<br>"
-			for(var/entry in topic_data)
+			for( var/entry in topic_data)
 				var/href = topic_data[entry]
 				if(href)
 					HTML += "<a href=?src=\ref[circuit];[href]>[entry]</a>"
@@ -190,7 +190,7 @@
 	. = ..(user, 2 * w_class) // Larger assemblies are easier to see from a distance
 	to_chat(user, "\The [src] is currently facing [dir2text(dir)].")
 	if(.)
-		for(var/obj/item/integrated_circuit/IO in contents)
+		for( var/obj/item/integrated_circuit/IO in contents)
 			IO.external_examine(user, opened)
 
 /obj/item/device/electronic_assembly/attackby(var/obj/item/I, mob/user)
@@ -247,11 +247,11 @@
 
 /obj/item/device/electronic_assembly/emp_act(severity)
 	..()
-	for(var/atom/movable/AM in contents)
+	for( var/atom/movable/AM in contents)
 		AM.emp_act(severity)
 
 /obj/item/device/electronic_assembly/ex_act(severity, atom/epicentre)
-	for(var/obj/thing in src)
+	for( var/obj/thing in src)
 		thing.ex_act(severity, epicentre)
 	..()
 

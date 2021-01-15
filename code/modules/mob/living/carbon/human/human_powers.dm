@@ -21,7 +21,7 @@
 			return
 		else
 			var/list/datum/sprite_accessory/hair/valid_hairstyles = list()
-			for(var/hair_string in GLOB.hair_styles_list)
+			for( var/hair_string in GLOB.hair_styles_list)
 				var/list/datum/sprite_accessory/hair/test = GLOB.hair_styles_list[hair_string]
 				if(test.flags & HAIR_TIEABLE)
 					valid_hairstyles.Add(hair_string)
@@ -52,7 +52,7 @@
 		return
 
 	var/list/choices = list()
-	for(var/mob/living/M in view(1,src))
+	for( var/mob/living/M in view(1,src))
 		if(!istype(M,/mob/living/silicon) && Adjacent(M))
 			choices += M
 	choices -= src
@@ -94,7 +94,7 @@
 		return
 
 	var/list/choices = list()
-	for(var/mob/living/M in oview(6,src))
+	for( var/mob/living/M in oview(6,src))
 		if(!istype(M,/mob/living/silicon))
 			choices += M
 	choices -= src
@@ -177,7 +177,7 @@
 	set category = "Abilities"
 
 	if(stomach_contents.len)
-		for(var/mob/M in src)
+		for( var/mob/M in src)
 			if(M in stomach_contents)
 				stomach_contents.Remove(M)
 				M.forceMove(loc)

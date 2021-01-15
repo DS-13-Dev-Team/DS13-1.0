@@ -21,7 +21,7 @@
 			if(Robot.mmi)
 				qdel(Robot.mmi)
 		else
-			for(var/obj/item/W in M)
+			for( var/obj/item/W in M)
 				if(istype(W, /obj/item/weapon/implant))	//TODO: Carn. give implants a dropped() or something
 					qdel(W)
 					continue
@@ -30,7 +30,7 @@
 		var/mob/living/new_mob
 
 		var/options = list("robot", "slime")
-		for(var/t in all_species)
+		for( var/t in all_species)
 			options += t
 		options -= "Xenophage Queen"
 		options -= "Xenophage Drone"
@@ -84,7 +84,7 @@
 				A.randomize_appearance_and_body_for(H)
 
 		if(new_mob)
-			for (var/spell/S in M.mind.learned_spells)
+			for( var/spell/S in M.mind.learned_spells)
 				new_mob.add_spell(new S.type)
 
 			new_mob.a_intent = "hurt"

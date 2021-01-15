@@ -41,13 +41,13 @@
 	if(cam.aipictures.len == 0)
 		to_chat(usr, "<span class='userdanger'>No images saved</span>")
 		return
-	for(var/obj/item/weapon/photo/t in cam.aipictures)
+	for( var/obj/item/weapon/photo/t in cam.aipictures)
 		nametemp += t.name
 	find = input("Select image (numbered in order taken)") as null|anything in nametemp
 	if(!find)
 		return
 
-	for(var/obj/item/weapon/photo/q in cam.aipictures)
+	for( var/obj/item/weapon/photo/q in cam.aipictures)
 		if(q.name == find)
 			return q
 

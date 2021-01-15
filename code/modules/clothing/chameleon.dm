@@ -29,7 +29,7 @@
 	. = list()
 
 	var/i = 1 //in case there is a collision with both name AND icon_state
-	for(var/typepath in typesof(basetype) - blacklist)
+	for( var/typepath in typesof(basetype) - blacklist)
 		var/obj/O = typepath
 		if(initial(O.icon) && initial(O.icon_state))
 			var/name = initial(O.name)
@@ -357,7 +357,7 @@
 
 	if(!gun_choices)
 		gun_choices = list()
-		for(var/gun_type in typesof(/obj/item/weapon/gun/) - src.type)
+		for( var/gun_type in typesof(/obj/item/weapon/gun/) - src.type)
 			var/obj/item/weapon/gun/G = gun_type
 			src.gun_choices[initial(G.name)] = gun_type
 	return

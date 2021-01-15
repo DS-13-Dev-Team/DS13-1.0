@@ -31,7 +31,7 @@
 
 	dat += text("<h1>Stacking unit console</h1><hr><table>")
 
-	for(var/stacktype in machine.stack_storage)
+	for( var/stacktype in machine.stack_storage)
 		if(machine.stack_storage[stacktype] > 0)
 			dat += "<tr><td width = 150><b>[capitalize(stacktype)]:</b></td><td width = 30>[machine.stack_storage[stacktype]]</td><td width = 50><A href='?src=\ref[src];release_stack=[stacktype]'>\[release\]</a></td></tr>"
 	dat += "</table><hr>"
@@ -81,7 +81,7 @@
 /obj/machinery/mineral/stacking_machine/New()
 	..()
 
-	for(var/stacktype in subtypesof(/obj/item/stack/material))
+	for( var/stacktype in subtypesof(/obj/item/stack/material))
 		var/obj/item/stack/S = stacktype
 		var/stack_name = initial(S.name)
 		stack_storage[stack_name] = 0
@@ -95,10 +95,10 @@
 	stack_paths[MATERIAL_PLASTEEL] = /obj/item/stack/material/plasteel
 
 	spawn( 5 )
-		for (var/dir in GLOB.cardinal)
+		for( var/dir in GLOB.cardinal)
 			src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 			if(src.input) break
-		for (var/dir in GLOB.cardinal)
+		for( var/dir in GLOB.cardinal)
 			src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 			if(src.output) break
 		return
@@ -107,7 +107,7 @@
 /obj/machinery/mineral/stacking_machine/Process()
 	if (src.output && src.input)
 		var/turf/T = get_turf(input)
-		for(var/obj/item/O in T.contents)
+		for( var/obj/item/O in T.contents)
 			if(istype(O,/obj/item/stack/material))
 				var/obj/item/stack/material/S = O
 				if(!isnull(stack_storage[initial(S.name)]))
@@ -119,7 +119,7 @@
 				O.loc = output.loc
 
 	//Output amounts that are past stack_amt.
-	for(var/sheet in stack_storage)
+	for( var/sheet in stack_storage)
 		if(stack_storage[sheet] >= stack_amt)
 			var/stacktype = stack_paths[sheet]
 			var/obj/item/stack/material/S = new stacktype (get_turf(output))

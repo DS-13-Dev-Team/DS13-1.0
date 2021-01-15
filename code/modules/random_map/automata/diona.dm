@@ -29,7 +29,7 @@
 
 /obj/structure/diona/vines/proc/spread()
 	var/turf/origin = get_turf(src)
-	for(var/turf/T in range(src,2))
+	for( var/turf/T in range(src,2))
 		if(T.density || T == origin || istype(T, /turf/space))
 			continue
 		var/new_growth = 1
@@ -88,8 +88,8 @@
 /datum/random_map/automata/diona/cleanup()
 
 	// Hollow out the interior spaces.
-	for(var/x = 1, x <= limit_x, x++)
-		for(var/y = 1, y <= limit_y, y++)
+	for( var/x = 1, x <= limit_x, x++)
+		for( var/y = 1, y <= limit_y, y++)
 			var/current_cell = get_map_cell(x,y)
 			if(!current_cell) continue
 			if(map[current_cell] == WALL_CHAR)
@@ -99,8 +99,8 @@
 	// Prune exposed floor turfs away from the edges.
 	var/changed = 1
 	while(changed)
-		for(var/x = 1, x <= limit_x, x++)
-			for(var/y = 1, y <= limit_y, y++)
+		for( var/x = 1, x <= limit_x, x++)
+			for( var/y = 1, y <= limit_y, y++)
 				changed = 0
 				var/current_cell = get_map_cell(x,y)
 				if(!current_cell) continue
@@ -111,16 +111,16 @@
 
 	// Count and track the floors.
 	var/list/floor_turfs = list()
-	for(var/x = 1, x <= limit_x, x++)
-		for(var/y = 1, y <= limit_y, y++)
+	for( var/x = 1, x <= limit_x, x++)
+		for( var/y = 1, y <= limit_y, y++)
 			var/current_cell = get_map_cell(x,y)
 			if(!current_cell) continue
 			if(map[current_cell] == EMPTY_CHAR)
 				floor_turfs |= current_cell
 
 	// Add vine decals.
-	for(var/x = 1, x <= limit_x, x++)
-		for(var/y = 1, y <= limit_y, y++)
+	for( var/x = 1, x <= limit_x, x++)
+		for( var/y = 1, y <= limit_y, y++)
 			var/current_cell = get_map_cell(x,y)
 			if(!current_cell || map[current_cell] != EMPTY_CHAR) continue
 			if(search_neighbors_for(WALL_CHAR,x,y))
@@ -153,7 +153,7 @@
 /datum/random_map/automata/diona/get_additional_spawns(var/value, turf/T)
 
 	if(value != FLOOR_CHAR)
-		for(var/thing in T)
+		for( var/thing in T)
 			if(istype(thing, /atom))
 				var/atom/A = thing
 				if(A.simulated)

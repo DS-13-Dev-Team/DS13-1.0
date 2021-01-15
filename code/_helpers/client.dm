@@ -122,7 +122,7 @@
 //It will only work if that audio file is already being played by this client
 /client/proc/get_audio_length(filepath)
 	var/list/playing_sounds = SoundQuery()
-	for (var/sound/S in playing_sounds)
+	for( var/sound/S in playing_sounds)
 		if (S.file == filepath)
 			//We found it!
 			if (S.len)
@@ -191,7 +191,7 @@
 		return
 
 	var/removed = 0
-	for (var/obj/thing as anything in screen)
+	for( var/obj/thing as anything in screen)
 		if (istype(thing, selected))
 			if (removed < 10)
 				to_chat(usr, "Removed [thing]|[thing.type]")

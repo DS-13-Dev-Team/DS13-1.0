@@ -70,17 +70,17 @@
 				<b>Fuel:</b><br>
 				<table><tr><th><b>Name</b></th><th><b>Amount</b></th></tr>
 			"}
-			for(var/reagent in cur_viewed_device.owned_field.reactants)
+			for( var/reagent in cur_viewed_device.owned_field.reactants)
 				dat += "<tr><td>[reagent]</td><td>[cur_viewed_device.owned_field.reactants[reagent]]</td></tr>"
 			dat += "</table><hr>"
 
 	else
 
 		connected_devices.Cut()
-		for(var/obj/machinery/power/fusion_core/C in fusion_cores)
+		for( var/obj/machinery/power/fusion_core/C in fusion_cores)
 			if(C.id_tag == id_tag && get_dist(src, C) <= scan_range)
 				connected_devices += C
-		for(var/obj/machinery/power/fusion_core/C in gyrotrons)
+		for( var/obj/machinery/power/fusion_core/C in gyrotrons)
 			if(C.id_tag == id_tag && get_dist(src, C) <= scan_range)
 				connected_devices += C
 
@@ -95,7 +95,7 @@
 					</tr>
 			"}
 
-			for(var/obj/machinery/power/fusion_core/C in connected_devices)
+			for( var/obj/machinery/power/fusion_core/C in connected_devices)
 				var/status
 				var/can_access = 1
 				if(!check_core_status(C))

@@ -91,7 +91,7 @@ datum/preferences
 	else if(href_list["spawnpoint"])
 		var/list/spawnkeys = list()
 		var/list/spawntypes = spawntypes()
-		for(var/spawntype in spawntypes)
+		for( var/spawntype in spawntypes)
 			var/datum/spawnpoint/SP = spawntypes[spawntype]
 			if (SP.selectable)
 				spawnkeys += spawntype

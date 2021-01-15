@@ -8,7 +8,7 @@
 	desc = "A metal tray to lay food on."
 	throwforce = 12.0
 	throwforce = 10.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
@@ -27,12 +27,12 @@
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	// Drop all the things. All of them.
 	overlays.Cut()
-	for(var/obj/item/I in carrying)
+	for( var/obj/item/I in carrying)
 		I.loc = M.loc
 		carrying.Remove(I)
 		if(isturf(I.loc))
 			spawn()
-				for(var/i = 1, i <= rand(1,2), i++)
+				for( var/i = 1, i <= rand(1,2), i++)
 					if(I)
 						step(I, pick(NORTH,SOUTH,EAST,WEST))
 						sleep(rand(2,4))
@@ -68,18 +68,18 @@
 			M.take_organ_damage(5)
 		if(prob(50))
 			playsound(M, 'sound/items/trayhit1.ogg', 50, 1)
-			for(var/mob/O in viewers(M, null))
+			for( var/mob/O in viewers(M, null))
 				O.show_message(text("<span class='danger'>[] slams [] with the tray!</span>", user, M), 1)
 			return
 		else
 			playsound(M, 'sound/items/trayhit2.ogg', 50, 1)  //we applied the damage, we played the sound, we showed the appropriate messages. Time to return and stop the proc
-			for(var/mob/O in viewers(M, null))
+			for( var/mob/O in viewers(M, null))
 				O.show_message(text("<span class='danger'>[] slams [] with the tray!</span>", user, M), 1)
 			return
 
 
 	var/protected = 0
-	for(var/slot in list(slot_head, slot_wear_mask, slot_glasses))
+	for( var/slot in list(slot_head, slot_wear_mask, slot_glasses))
 		var/obj/item/protection = M.get_equipped_item(slot)
 		if(istype(protection) && (protection.body_parts_covered & FACE))
 			protected = 1
@@ -101,11 +101,11 @@
 
 		if(prob(50))
 			playsound(M, 'sound/items/trayhit1.ogg', 50, 1)
-			for(var/mob/O in viewers(M, null))
+			for( var/mob/O in viewers(M, null))
 				O.show_message(text("<span class='danger'>[] slams [] with the tray!</span>", user, M), 1)
 		else
 			playsound(M, 'sound/items/trayhit2.ogg', 50, 1)  //sound playin'
-			for(var/mob/O in viewers(M, null))
+			for( var/mob/O in viewers(M, null))
 				O.show_message(text("<span class='danger'>[] slams [] with the tray!</span>", user, M), 1)
 		if(prob(10))
 			M.Stun(rand(1,3))
@@ -125,11 +125,11 @@
 
 		if(prob(50))
 			playsound(M, 'sound/items/trayhit1.ogg', 50, 1)
-			for(var/mob/O in viewers(M, null))
+			for( var/mob/O in viewers(M, null))
 				O.show_message(text("<span class='danger'>[] slams [] in the face with the tray!</span>", user, M), 1)
 		else
 			playsound(M, 'sound/items/trayhit2.ogg', 50, 1)  //sound playin' again
-			for(var/mob/O in viewers(M, null))
+			for( var/mob/O in viewers(M, null))
 				O.show_message(text("<span class='danger'>[] slams [] in the face with the tray!</span>", user, M), 1)
 		if(prob(30))
 			M.Stun(rand(2,4))
@@ -162,7 +162,7 @@
 */
 /obj/item/weapon/tray/proc/calc_carry()
 	. = 0
-	for(var/obj/item/I in carrying)
+	for( var/obj/item/I in carrying)
 		. += I.get_storage_cost()
 
 /obj/item/weapon/tray/pickup(mob/user)
@@ -170,7 +170,7 @@
 	if(!isturf(loc))
 		return
 
-	for(var/obj/item/I in loc)
+	for( var/obj/item/I in loc)
 		if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/item/projectile) )
 			var/add = I.get_storage_cost()
 			if(calc_carry() + add >= max_carry)
@@ -187,19 +187,19 @@
 			return
 
 		var/foundtable = 0
-		for(var/obj/structure/table/T in loc)
+		for( var/obj/structure/table/T in loc)
 			foundtable = 1
 			break
 
 		overlays.Cut()
 
-		for(var/obj/item/I in carrying)
+		for( var/obj/item/I in carrying)
 			I.loc = loc
 			carrying.Remove(I)
 			if(!foundtable && isturf(loc))
 			// if no table, presume that the person just shittily dropped the tray on the ground and made a mess everywhere!
 				spawn()
-					for(var/i = 1, i <= rand(1,2), i++)
+					for( var/i = 1, i <= rand(1,2), i++)
 						if(I)
 							step(I, pick(NORTH,SOUTH,EAST,WEST))
 							sleep(rand(2,4))

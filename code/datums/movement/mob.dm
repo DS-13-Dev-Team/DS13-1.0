@@ -204,7 +204,7 @@
 
 	var/shoegrip = Check_Shoegrip()
 
-	for(var/turf/simulated/T in trange(1,src)) //we only care for non-space turfs
+	for( var/turf/simulated/T in trange(1,src)) //we only care for non-space turfs
 		if(T.density)	//walls work
 			return 1
 		else
@@ -212,7 +212,7 @@
 			if(A.has_gravity || shoegrip)
 				return 1
 
-	for(var/obj/O in orange(1, src))
+	for( var/obj/O in orange(1, src))
 		if(istype(O, /obj/structure/lattice))
 			return 1
 		if(O && O.density && O.anchored)
@@ -279,7 +279,7 @@
 	var/prevent_host_move = FALSE
 	var/list/allowed_movers
 
-/datum/movement_handler/mob/relayed_movement/MayMove(var/mob/mover, is_external)
+/datum/movement_handler/mob/relayed_movement/MayMove(mob/mover, is_external)
 	if(is_external)
 		return MOVEMENT_PROCEED
 	if(mover == mob && !(prevent_host_move && LAZYLEN(allowed_movers) && !LAZYISIN(allowed_movers, mover)))
@@ -364,7 +364,7 @@
 	mob.eyeobj.EyeMove(direction)
 	return MOVEMENT_HANDLED
 
-/datum/movement_handler/mob/eye/MayMove(var/mob/mover, is_external)
+/datum/movement_handler/mob/eye/MayMove(mob/mover, is_external)
 	if(IS_NOT_SELF(mover))
 		return MOVEMENT_PROCEED
 	if(is_external)
@@ -374,7 +374,7 @@
 	return (MOVEMENT_PROCEED|MOVEMENT_HANDLED)
 
 // Space movement
-/datum/movement_handler/mob/space/DoMove(var/direction, mob/mover)
+/datum/movement_handler/mob/space/DoMove(direction, mob/mover)
 	if(!mob.check_solid_ground())
 		var/allowmove = mob.Allow_Spacemove(0)
 		if(!allowmove)
@@ -384,7 +384,7 @@
 		else
 			mob.inertia_dir = 0 //If not then we can reset inertia and move
 
-/datum/movement_handler/mob/space/MayMove(var/mob/mover, is_external)
+/datum/movement_handler/mob/space/MayMove(mob/mover, is_external)
 	if(IS_NOT_SELF(mover) && is_external)
 		return MOVEMENT_PROCEED
 
@@ -394,7 +394,7 @@
 	return MOVEMENT_PROCEED
 
 // Buckle movement
-/datum/movement_handler/mob/buckle_relay/DoMove(var/direction, mover)
+/datum/movement_handler/mob/buckle_relay/DoMove(direction, mover)
 	// TODO: Datumlize buckle-handling
 	if(istype(mob.buckled, /obj/vehicle))
 		//drunk driving
@@ -463,7 +463,7 @@
 		return MOVEMENT_HANDLED
 
 /datum/movement_handler/mob/stop_effect/MayMove()
-	for(var/obj/effect/stop/S in mob.loc)
+	for( var/obj/effect/stop/S in mob.loc)
 		if(S.victim == mob)
 			return MOVEMENT_STOP
 	return MOVEMENT_PROCEED
@@ -473,16 +473,16 @@
 	return MOVEMENT_STOP
 
 // Consciousness - Is the entity trying to conduct the move conscious?
-/datum/movement_handler/mob/conscious/MayMove(var/mob/mover)
+/datum/movement_handler/mob/conscious/MayMove(mob/mover)
 	return (mover ? mover.stat == CONSCIOUS : mob.stat == CONSCIOUS) ? MOVEMENT_PROCEED : MOVEMENT_STOP
 
 // Along with more physical checks
-/datum/movement_handler/mob/physically_capable/MayMove(var/mob/mover)
+/datum/movement_handler/mob/physically_capable/MayMove(mob/mover)
 	// We only check physical capability if the host mob tried to do the moving
 	return ((mover && mover != mob) || !mob.incapacitated(INCAPACITATION_DISABLED & ~INCAPACITATION_FORCELYING)) ? MOVEMENT_PROCEED : MOVEMENT_STOP
 
 // Is anything physically preventing movement?
-/datum/movement_handler/mob/physically_restrained/MayMove(var/mob/mover)
+/datum/movement_handler/mob/physically_restrained/MayMove(mob/mover)
 	if(mob.anchored)
 		if(mover == mob)
 			to_chat(mob, "<span class='notice'>You're anchored down!</span>")
@@ -498,7 +498,7 @@
 			to_chat(mob, "<span class='notice'>You're pinned down by \a [mob.pinned[1]]!</span>")
 		return MOVEMENT_STOP
 
-	for(var/obj/item/grab/G in mob.grabbed_by)
+	for( var/obj/item/grab/G in mob.grabbed_by)
 		if(G.stop_move())
 			if(mover == mob)
 				to_chat(mob, "<span class='notice'>You're stuck in a grab!</span>")
@@ -506,7 +506,7 @@
 			return MOVEMENT_STOP
 
 	if(mob.restrained())
-		for(var/mob/M in range(mob, 1))
+		for( var/mob/M in range(mob, 1))
 			if(M.pulling == mob)
 				if(!M.incapacitated() && mob.Adjacent(M))
 					if(mover == mob)
@@ -554,22 +554,22 @@
 	var/extra_delay = HandleGrabs(direction, old_turf)
 	mob.extra_move_cooldown(extra_delay)
 
-	for (var/obj/item/grab/G in mob)
+	for( var/obj/item/grab/G in mob)
 		if (G.assailant_reverse_facing())
 			mob.set_dir(GLOB.reverse_dir[direction])
 		G.assailant_moved()
-	for (var/obj/item/grab/G in mob.grabbed_by)
+	for( var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
 
 	mob.moving = 0
 
-/datum/movement_handler/mob/movement/MayMove(var/mob/mover)
+/datum/movement_handler/mob/movement/MayMove(mob/mover)
 	return IS_SELF(mover) &&  mob.moving ? MOVEMENT_STOP : MOVEMENT_PROCEED
 
 /datum/movement_handler/mob/movement/proc/HandleGrabs(direction, old_turf)
 	. = 0
 	// TODO: Look into making grabs use movement events instead, this is a mess.
-	for (var/obj/item/grab/G in mob)
+	for( var/obj/item/grab/G in mob)
 		if(G.assailant == G.affecting)
 			return
 		. = max(., G.grab_slowdown())
@@ -584,11 +584,11 @@
 							if (mob.loc != old_turf && M.loc != mob.loc)
 								step(M, get_dir(M.loc, old_turf))
 			else
-				for(var/mob/M in L)
+				for( var/mob/M in L)
 					M.other_mobs = 1
 					if(mob != M)
 						M.animate_movement = 3
-				for(var/mob/M in L)
+				for( var/mob/M in L)
 					spawn( 0 )
 						step(M, direction)
 						return

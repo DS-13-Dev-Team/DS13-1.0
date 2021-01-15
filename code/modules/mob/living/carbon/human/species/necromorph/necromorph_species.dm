@@ -174,10 +174,10 @@
 /datum/species/necromorph/get_blood_name()
 	return "ichor"
 
-/datum/species/necromorph/get_icobase(var/mob/living/carbon/human/H)
+/datum/species/necromorph/get_icobase(mob/living/carbon/human/H)
 	return icon_template //We don't need to duplicate the same dmi path twice
 
-/datum/species/necromorph/add_inherent_verbs(var/mob/living/carbon/human/H)
+/datum/species/necromorph/add_inherent_verbs(mob/living/carbon/human/H)
 	.=..()
 	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
 	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
@@ -188,30 +188,30 @@
 /datum/species/necromorph/proc/make_scary(mob/living/carbon/human/H)
 	//H.set_traumatic_sight(TRUE) //All necrmorphs are scary. Some are more scary than others though
 
-/datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
+/datum/species/necromorph/setup_interaction(mob/living/carbon/human/H)
 	.=..()
 	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
 	H.faction = FACTION_NECROMORPH
 
 //Add this necro as a vision node for the marker and signals
-/datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
+/datum/species/necromorph/setup_interaction(mob/living/carbon/human/H)
 	.=..()
 	GLOB.necrovision.add_source(H)
 
 
 //We don't want to be suffering for the lack of most particular organs
-/datum/species/necromorph/should_have_organ(var/query)
+/datum/species/necromorph/should_have_organ(query)
 	if (query in list(BP_EYES))	//Expand this list as needed
 		return ..()
 	return FALSE
 
 
 //Populate the initial health values
-/datum/species/necromorph/create_organs(var/mob/living/carbon/human/H)
+/datum/species/necromorph/create_organs(mob/living/carbon/human/H)
 	.=..()
 	if (!initial_health_values)
 		initial_health_values = list()
-		for (var/organ_tag in H.organs_by_name)
+		for( var/organ_tag in H.organs_by_name)
 			var/obj/item/organ/external/E	= H.organs_by_name[organ_tag]
 			initial_health_values[organ_tag] = E.max_damage
 
@@ -220,7 +220,7 @@
 
 
 //Necromorphs die when they've taken enough total damage to all their limbs.
-/datum/species/necromorph/handle_death_check(var/mob/living/carbon/human/H)
+/datum/species/necromorph/handle_death_check(mob/living/carbon/human/H)
 
 	var/damage = get_weighted_total_limb_damage(H)
 	if (damage >= H.max_health)
@@ -229,7 +229,7 @@
 	return FALSE
 
 
-/datum/species/necromorph/handle_death(var/mob/living/carbon/human/H)
+/datum/species/necromorph/handle_death(mob/living/carbon/human/H)
 	//We just died? Lets start getting absorbed by the marker
 	if (!SSnecromorph.marker)	//Gotta have one
 		return
@@ -250,7 +250,7 @@
 	if (!initial_health_values)
 		return 0 //Not populated? welp
 
-	for (var/organ_tag in initial_health_values)
+	for( var/organ_tag in initial_health_values)
 		var/obj/item/organ/external/E	= H.organs_by_name[organ_tag]
 		var/subtotal = 0
 		if (!E || E.is_stump())
@@ -284,7 +284,7 @@
 	return "[src.name] [rand(0,999)]"
 
 // Used to update alien icons for aliens.
-/datum/species/necromorph/handle_login_special(var/mob/living/carbon/human/H)
+/datum/species/necromorph/handle_login_special(mob/living/carbon/human/H)
 	.=..()
 	H.set_necromorph(TRUE)
 	to_chat(H, "You are a [name]. \n\
@@ -294,7 +294,7 @@
 
 
 
-/datum/species/necromorph/can_autoheal(var/mob/living/carbon/human/H, dam_type, datum/wound/W)
+/datum/species/necromorph/can_autoheal(mob/living/carbon/human/H, dam_type, datum/wound/W)
 	if (healing_factor > 0)
 		return TRUE
 	else

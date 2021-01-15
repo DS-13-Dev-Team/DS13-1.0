@@ -214,7 +214,7 @@
 
 	var/list/mobs = sortmobs()
 	var/i = 1
-	for(var/entry in mobs)
+	for( var/entry in mobs)
 		var/mob/M = entry
 		if(!istype(M))
 			continue
@@ -332,7 +332,7 @@
 	//add <td>(IP: [M.lastKnownIP])</td> if you want to know their ip to the lists below
 	var/list/mobs = sortmobs()
 
-	for(var/mob/M in mobs)
+	for( var/mob/M in mobs)
 		if(!M.ckey) continue
 
 		dat += "<tr><td>[M.name]</td>"
@@ -412,7 +412,7 @@
 		dat += "<a href='?src=\ref[src];delay_round_end=1'>[ticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
 		dat += "<hr>"
 		var/list/all_antag_types = GLOB.all_antag_types_
-		for(var/antag_type in all_antag_types)
+		for( var/antag_type in all_antag_types)
 			var/datum/antagonist/A = all_antag_types[antag_type]
 			dat += A.get_check_antag_output(src)
 		dat += "</body></html>"

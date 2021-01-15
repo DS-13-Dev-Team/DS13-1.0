@@ -46,7 +46,7 @@
 		if(stat & (BROKEN|NOPOWER))
 			return
 
-		for(var/i = 0, i < copies, i++)
+		for( var/i = 0, i < copies, i++)
 			if(toner <= 0)
 				break
 
@@ -169,7 +169,7 @@
 	c.offset_y = copy.offset_y
 	var/list/temp_overlays = copy.overlays       //Iterates through stamps
 	var/image/img                                //and puts a matching
-	for (var/j = 1, j <= min(temp_overlays.len, copy.ico.len), j++) //gray overlay onto the copy
+	for( var/j = 1, j <= min(temp_overlays.len, copy.ico.len), j++) //gray overlay onto the copy
 		if (findtext(copy.ico[j], "cap") || findtext(copy.ico[j], "cent"))
 			img = image('icons/obj/bureaucracy.dmi', "paper_stamp-circle")
 		else if (findtext(copy.ico[j], "deny"))
@@ -209,7 +209,7 @@
 //If need_toner is 0, the copies will still be lightened when low on toner, however it will not be prevented from printing. TODO: Implement print queues for fax machines and get rid of need_toner
 /obj/machinery/photocopier/proc/bundlecopy(obj/item/weapon/paper_bundle/bundle, need_toner=1)
 	var/obj/item/weapon/paper_bundle/p = new /obj/item/weapon/paper_bundle (src)
-	for(var/obj/item/weapon/W in bundle.pages)
+	for( var/obj/item/weapon/W in bundle.pages)
 		if(toner <= 0 && need_toner)
 			toner = 0
 			visible_message("<span class='notice'>A red light on \the [src] flashes, indicating that it is out of toner.</span>")

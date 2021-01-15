@@ -46,7 +46,7 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	//our_owner.verbs |= /mob/proc/message_unitologists
 	to_chat(our_owner, "<span class='warning'>The marker has established a psychic link between you and your fellow zealots.</span>")
 	to_chat(our_owner, "<span class='warning'><i>Your mind is flooded with several names, these people must also share a connection to the marker...</i></span>")
-	for(var/mob/living/minion in GLOB.unitologists_list)
+	for( var/mob/living/minion in GLOB.unitologists_list)
 		if(minion && minion != our_owner)
 			to_chat(our_owner, "Fellow zealot: [minion.real_name]")
 			our_owner.mind.store_memory("<b>Fellow zealot</b>: [minion.real_name]")

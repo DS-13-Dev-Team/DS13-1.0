@@ -29,7 +29,7 @@
 /obj/structure/alien/egg/Process()
 	progress++
 	if(progress >= MAX_PROGRESS)
-		for(var/mob/observer/ghost/O in GLOB.ghost_mob_list)
+		for( var/mob/observer/ghost/O in GLOB.ghost_mob_list)
 			if(O.client && O.client.prefs && (MODE_XENOMORPH in O.client.prefs.be_special_role))
 				to_chat(O, "<span class='notice'>An alien is ready to hatch! ([ghost_follow_link(src, O)]) (<a href='byond://?src=\ref[src];spawn=1'>spawn</a>)</span>")
 		STOP_PROCESSING(SSobj, src)

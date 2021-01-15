@@ -8,7 +8,7 @@
 
 /mob/living/silicon/ai/New()
 	silicon_subsystems.Cut()
-	for(var/subtype in subtypesof(/datum/nano_module))
+	for( var/subtype in subtypesof(/datum/nano_module))
 		var/datum/nano_module/NM = subtype
 		if(initial(NM.available_to_ai))
 			silicon_subsystems += NM
@@ -21,17 +21,17 @@
 	)
 
 /mob/living/silicon/Destroy()
-	for(var/subsystem in silicon_subsystems)
+	for( var/subsystem in silicon_subsystems)
 		remove_subsystem(subsystem)
 	silicon_subsystems.Cut()
 	. = ..()
 
 /mob/living/silicon/proc/init_subsystems()
-	for(var/subsystem_type in silicon_subsystems)
+	for( var/subsystem_type in silicon_subsystems)
 		init_subsystem(subsystem_type)
 
 	if(/datum/nano_module/alarm_monitor/all in silicon_subsystems)
-		for(var/datum/alarm_handler/AH in SSalarm.all_handlers)
+		for( var/datum/alarm_handler/AH in SSalarm.all_handlers)
 			AH.register_alarm(src, /mob/living/silicon/proc/receive_alarm)
 			queued_alarms[AH] = list()	// Makes sure alarms remain listed in consistent order
 
@@ -80,7 +80,7 @@
 		return
 	if(!statpanel("Subsystems"))
 		return
-	for(var/subsystem_type in silicon_subsystems)
+	for( var/subsystem_type in silicon_subsystems)
 		var/stat_silicon_subsystem/SSS = silicon_subsystems[subsystem_type]
 		stat(SSS)
 

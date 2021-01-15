@@ -26,10 +26,10 @@ Vars in extradata list
 
 
 /datum/extension/spray/reagent/Process()
-	for (var/t in affected_turfs)
+	for( var/t in affected_turfs)
 		var/turf/T = t
 		chem_holder.trans_to(T, volume_tick)
-		for (var/atom/A in T)
+		for( var/atom/A in T)
 			chem_holder.trans_to(A, volume_tick)
 	.=..()
 

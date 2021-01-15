@@ -163,12 +163,12 @@ var/list/tape_roll_applications = list()
 			// spread tape in all directions, provided there is a wall/window
 			var/turf/T
 			var/possible_dirs = 0
-			for(var/dir in GLOB.cardinal)
+			for( var/dir in GLOB.cardinal)
 				T = get_step(start, dir)
 				if(T && T.density)
 					possible_dirs += dir
 				else
-					for(var/obj/structure/window/W in T)
+					for( var/obj/structure/window/W in T)
 						if(W.is_fulltile() || W.dir == GLOB.reverse_dir[dir])
 							possible_dirs += dir
 			if(!possible_dirs)
@@ -178,13 +178,13 @@ var/list/tape_roll_applications = list()
 				return
 			if(possible_dirs & (NORTH|SOUTH))
 				var/obj/item/tape/TP = new tape_type(start)
-				for(var/dir in list(NORTH, SOUTH))
+				for( var/dir in list(NORTH, SOUTH))
 					if (possible_dirs & dir)
 						TP.tape_dir += dir
 				TP.update_icon()
 			if(possible_dirs & (EAST|WEST))
 				var/obj/item/tape/TP = new tape_type(start)
-				for(var/dir in list(EAST, WEST))
+				for( var/dir in list(EAST, WEST))
 					if (possible_dirs & dir)
 						TP.tape_dir += dir
 				TP.update_icon()
@@ -207,7 +207,7 @@ var/list/tape_roll_applications = list()
 			else if (istype(cur, /turf/space))
 				can_place = 0
 			else
-				for(var/obj/O in cur)
+				for( var/obj/O in cur)
 					if(O.density)
 						can_place = 0
 						break
@@ -230,17 +230,17 @@ var/list/tape_roll_applications = list()
 				var/turf/T = get_step(start, GLOB.reverse_dir[orientation])
 				if(T && !T.density)
 					tape_dir = orientation
-					for(var/obj/structure/window/W in T)
+					for( var/obj/structure/window/W in T)
 						if(W.is_fulltile() || W.dir == orientation)
 							tape_dir = dir
 			else if(cur == end)
 				var/turf/T = get_step(end, orientation)
 				if(T && !T.density)
 					tape_dir = GLOB.reverse_dir[orientation]
-					for(var/obj/structure/window/W in T)
+					for( var/obj/structure/window/W in T)
 						if(W.is_fulltile() || W.dir == GLOB.reverse_dir[orientation])
 							tape_dir = dir
-			for(var/obj/item/tape/T in cur)
+			for( var/obj/item/tape/T in cur)
 				if((T.tape_dir == tape_dir) && (T.icon_base == icon_base))
 					tapetest = 1
 					break
@@ -309,7 +309,7 @@ var/list/tape_roll_applications = list()
 /obj/item/tape/attack_hand(mob/user as mob)
 	if (user.a_intent == I_HELP && src.allowed(user))
 		user.show_viewers("<span class='notice'>\The [user] lifts \the [src], allowing passage.</span>")
-		for(var/obj/item/tape/T in gettapeline())
+		for( var/obj/item/tape/T in gettapeline())
 			T.lift(100) //~10 seconds
 	else
 		breaktape(user)
@@ -335,14 +335,14 @@ var/list/tape_roll_applications = list()
 		dirs += EAST
 
 	var/list/obj/item/tape/tapeline = list()
-	for (var/obj/item/tape/T in get_turf(src))
+	for( var/obj/item/tape/T in get_turf(src))
 		tapeline += T
-	for(var/dir in dirs)
+	for( var/dir in dirs)
 		var/turf/cur = get_step(src, dir)
 		var/not_found = 0
 		while (!not_found)
 			not_found = 1
-			for (var/obj/item/tape/T in cur)
+			for( var/obj/item/tape/T in cur)
 				tapeline += T
 				not_found = 0
 			cur = get_step(cur, dir)
@@ -357,7 +357,7 @@ var/list/tape_roll_applications = list()
 		return
 	user.visible_message("<span class='notice'>\The [user] breaks \the [src]!</span>","<span class='notice'>You break \the [src].</span>")
 
-	for (var/obj/item/tape/T in gettapeline())
+	for( var/obj/item/tape/T in gettapeline())
 		if(T == src)
 			continue
 		if(T.tape_dir & get_dir(T, src))

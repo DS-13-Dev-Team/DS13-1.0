@@ -42,7 +42,7 @@
 
 	// the upper will connect to the lower
 	if(allowed_directions & DOWN) //we only want to do the top one, as it will initialize the ones before it.
-		for(var/obj/structure/ladder/L in GetBelow(src))
+		for( var/obj/structure/ladder/L in GetBelow(src))
 			if(L.allowed_directions & UP)
 				target_down = L
 				L.target_up = src
@@ -102,7 +102,7 @@
 		to_chat(M, "<span class='notice'>You fail to reach \the [src].</span>")
 		return
 
-	for (var/obj/item/grab/G in M)
+	for( var/obj/item/grab/G in M)
 		G.adjust_position()
 
 	var/direction = target_ladder == target_up ? "up" : "down"
@@ -118,14 +118,14 @@
 		action_time += M.pulling.mass * 1.5
 		to_chat(M, SPAN_WARNING("Dragging [M.pulling] along with you makes climbing slow"))
 
-	for(var/obj/item/grab/G in M)
+	for( var/obj/item/grab/G in M)
 		if (G.affecting)
 			action_time += G.affecting.mass * 1.5
 			to_chat(M, SPAN_WARNING("Dragging [G.affecting] along with you makes climbing slow"))
 
 	if(do_after(M, action_time, src))
 		climbLadder(M, target_ladder)
-		for (var/obj/item/grab/G in M)
+		for( var/obj/item/grab/G in M)
 			G.adjust_position(force = 1)
 
 /obj/structure/ladder/attack_ghost(var/mob/M)
@@ -161,7 +161,7 @@
 		return FALSE
 
 	var/carry_count = 0
-	for(var/obj/item/grab/G in src)
+	for( var/obj/item/grab/G in src)
 		if(!G.ladder_carry())
 			to_chat(src, "<span class='warning'>You can't carry [G.affecting] up \the [ladder].</span>")
 			return FALSE
@@ -178,7 +178,7 @@
 
 /obj/structure/ladder/proc/climbLadder(mob/M, target_ladder)
 	var/turf/T = get_turf(target_ladder)
-	for(var/atom/A in T)
+	for( var/atom/A in T)
 		if(!A.CanPass(M, M.loc, 1.5, 0))
 			to_chat(M, "<span class='notice'>\The [A] is blocking \the [src].</span>")
 			return FALSE
@@ -229,7 +229,7 @@
 	var/list/people = list()
 
 /obj/structure/stairs/Initialize()
-	for(var/turf/turf in locs)
+	for( var/turf/turf in locs)
 		var/turf/simulated/open/above = GetAbove(turf)
 		if(!above)
 			warning("Stair created without level above: ([loc.x], [loc.y], [loc.z])")

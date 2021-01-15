@@ -86,7 +86,7 @@
 									/obj/item/mecha_parts/part/gygax_right_arm,
 									/obj/item/mecha_parts/part/gygax_left_leg,
 									/obj/item/mecha_parts/part/gygax_right_leg)
-		for(var/i=0;i<2;i++)
+		for( var/i=0;i<2;i++)
 			if(!isemptylist(parts) && prob(40))
 				var/part = pick(parts)
 				welder_salvage += part
@@ -121,7 +121,7 @@
 									/obj/item/mecha_parts/part/ripley_right_arm,
 									/obj/item/mecha_parts/part/ripley_left_leg,
 									/obj/item/mecha_parts/part/ripley_right_leg)
-		for(var/i=0;i<2;i++)
+		for( var/i=0;i<2;i++)
 			if(!isemptylist(parts) && prob(40))
 				var/part = pick(parts)
 				welder_salvage += part
@@ -140,7 +140,7 @@
 									/obj/item/mecha_parts/part/ripley_left_leg,
 									/obj/item/mecha_parts/part/ripley_right_leg,
 									/obj/item/clothing/suit/fire)
-		for(var/i=0;i<2;i++)
+		for( var/i=0;i<2;i++)
 			if(!isemptylist(parts) && prob(40))
 				var/part = pick(parts)
 				welder_salvage += part
@@ -164,7 +164,7 @@
 									/obj/item/mecha_parts/part/durand_right_arm,
 									/obj/item/mecha_parts/part/durand_left_leg,
 									/obj/item/mecha_parts/part/durand_right_leg)
-		for(var/i=0;i<2;i++)
+		for( var/i=0;i<2;i++)
 			if(!isemptylist(parts) && prob(40))
 				var/part = pick(parts)
 				welder_salvage += part
@@ -189,7 +189,7 @@
 									/obj/item/mecha_parts/part/odysseus_right_arm,
 									/obj/item/mecha_parts/part/odysseus_left_leg,
 									/obj/item/mecha_parts/part/odysseus_right_leg)
-		for(var/i=0;i<2;i++)
+		for( var/i=0;i<2;i++)
 			if(!isemptylist(parts) && prob(40))
 				var/part = pick(parts)
 				welder_salvage += part

@@ -142,7 +142,7 @@
 		initial_ammo = max_ammo
 
 	if(initial_ammo && ammo_type)
-		for(var/i in 1 to initial_ammo)
+		for( var/i in 1 to initial_ammo)
 			stored_ammo += new ammo_type(src)
 	update_icon()
 
@@ -168,7 +168,7 @@
 	if(alert("Do you want to empty the magazine?",,"Yes","No") == "No")
 		return
 	to_chat(user, "<span class='notice'>You empty [src].</span>")
-	for(var/obj/item/ammo_casing/C in stored_ammo)
+	for( var/obj/item/ammo_casing/C in stored_ammo)
 		C.forceMove(user.loc)
 		C.set_dir(pick(GLOB.alldirs))
 	stored_ammo.Cut()
@@ -193,7 +193,7 @@
 	if(multiple_sprites)
 		//find the lowest key greater than or equal to stored_ammo.len
 		var/new_state = null
-		for(var/idx in 1 to icon_keys.len)
+		for( var/idx in 1 to icon_keys.len)
 			var/ammo_count = icon_keys[idx]
 			if (ammo_count >= stored_ammo.len)
 				new_state = ammo_states[idx]
@@ -220,7 +220,7 @@
 	var/list/icon_keys = list()
 	var/list/ammo_states = list()
 	var/list/states = icon_states(M.icon)
-	for(var/i = 0, i <= M.max_ammo, i++)
+	for( var/i = 0, i <= M.max_ammo, i++)
 		var/ammo_state = "[M.icon_state]-[i]"
 		if(ammo_state in states)
 			icon_keys += i

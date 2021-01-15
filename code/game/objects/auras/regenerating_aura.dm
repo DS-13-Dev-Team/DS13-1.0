@@ -46,7 +46,7 @@
 				D.status &= ~ORGAN_DISFIGURED
 				H.nutrition -= 20
 
-		for(var/bpart in shuffle(H.internal_organs_by_name - BP_BRAIN))
+		for( var/bpart in shuffle(H.internal_organs_by_name - BP_BRAIN))
 			var/obj/item/organ/internal/regen_organ = H.internal_organs_by_name[bpart]
 			if(BP_IS_ROBOTIC(regen_organ))
 				continue
@@ -58,7 +58,7 @@
 						to_chat(H, replacetext(regen_message,"ORGAN", regen_organ.name))
 
 	if(prob(grow_chance) && H.nutrition > grow_threshold)
-		for(var/limb_type in H.species.has_limbs)
+		for( var/limb_type in H.species.has_limbs)
 			var/obj/item/organ/external/E = H.organs_by_name[limb_type]
 			if(E && E.organ_tag != BP_HEAD && !E.vital && !E.is_usable())	//Skips heads and vital bits...
 				E.removed()			//...because no one wants their head to explode to make way for a new one.
@@ -73,7 +73,7 @@
 				H.update_body()
 				return
 			else
-				for(var/datum/wound/W in E.wounds)
+				for( var/datum/wound/W in E.wounds)
 					if(W.wound_damage() == 0 && prob(50))
 						E.wounds -= W
 	return 1

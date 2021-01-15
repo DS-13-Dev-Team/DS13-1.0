@@ -3,13 +3,13 @@
 
 /datum/unit_test/integrated_circuits/prefabs_shall_respect_complexity_and_size_contraints/start_test()
 	var/list/failed_prefabs = list()
-	for(var/prefab_type in subtypesof(/decl/prefab/ic_assembly))
+	for( var/prefab_type in subtypesof(/decl/prefab/ic_assembly))
 		var/decl/prefab/ic_assembly/prefab = decls_repository.get_decl(prefab_type)
 		var/obj/item/device/electronic_assembly/assembly = prefab.assembly_type
 
 		var/available_size = initial(assembly.max_components)
 		var/available_complexity = initial(assembly.max_complexity)
-		for(var/ic in prefab.integrated_circuits)
+		for( var/ic in prefab.integrated_circuits)
 			var/datum/ic_assembly_integrated_circuits/iaic = ic
 			var/obj/item/integrated_circuit/circuit = iaic.circuit_type
 			available_size -= initial(circuit.size)
@@ -33,7 +33,7 @@
 
 /datum/unit_test/integrated_circuits/prefabs_shall_not_fail_to_create/start_test()
 	var/list/failed_prefabs = list()
-	for(var/prefab_type in subtypesof(/decl/prefab/ic_assembly))
+	for( var/prefab_type in subtypesof(/decl/prefab/ic_assembly))
 		var/decl/prefab/ic_assembly/prefab = decls_repository.get_decl(prefab_type)
 
 		try
@@ -71,17 +71,17 @@
 		fail("Given inputs do not match the expected outputs length.")
 		return 1
 
-	for(var/test_index = 1 to all_inputs.len)
+	for( var/test_index = 1 to all_inputs.len)
 		var/list/inputs = all_inputs[test_index]
 		var/list/expected_outputs = all_expected_outputs[test_index]
 
-		for(var/input_pin_index = 1 to inputs.len)
+		for( var/input_pin_index = 1 to inputs.len)
 			ic.set_pin_data(IC_INPUT, input_pin_index, inputs[input_pin_index])
 
 		var/activator = ic.activators[activation_pin]
 		ic.do_work(activator)
 
-		for(var/output_index = 1 to expected_outputs.len)
+		for( var/output_index = 1 to expected_outputs.len)
 			var/actual_output = ic.get_pin_data(IC_OUTPUT, output_index)
 			var/expected_output = expected_outputs[output_index]
 			if(expected_output == IC_TEST_ANY_OUTPUT)
@@ -89,9 +89,9 @@
 			if(actual_output != expected_output)
 				failed = TRUE
 				log_bad("[circuit_type] - Test [test_index] - Expected '[expected_output]', was '[actual_output]'")
-				for(var/datum/integrated_io/io in ic.inputs)
+				for( var/datum/integrated_io/io in ic.inputs)
 					log_bad("Raw Input: [io.data]")
-				for(var/datum/integrated_io/io in ic.outputs)
+				for( var/datum/integrated_io/io in ic.outputs)
 					log_bad("Raw Output: [io.data]")
 
 	qdel(ic)

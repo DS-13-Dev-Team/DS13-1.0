@@ -39,7 +39,7 @@
 
 	var/list/feature_types = possible_features.Copy()
 	possible_features.Cut()
-	for(var/T in feature_types)
+	for( var/T in feature_types)
 		var/datum/map_template/ruin/exoplanet/ruin = new T
 		possible_features += ruin
 	..()
@@ -75,9 +75,9 @@
 	if(animals.len < 0.5*max_animal_count && !repopulating)
 		repopulating = 1
 		max_animal_count = round(max_animal_count * 0.5)
-	for(var/zlevel in map_z)
+	for( var/zlevel in map_z)
 		if(repopulating)
-			for(var/i = 1 to round(max_animal_count - animals.len))
+			for( var/i = 1 to round(max_animal_count - animals.len))
 				if(prob(10))
 					var/turf/simulated/T = locate(rand(1,maxx), rand(1,maxy), zlevel)
 					var/mob_type = pick(repopulate_types)
@@ -92,7 +92,7 @@
 		if(!atmosphere)
 			continue
 		var/zone/Z
-		for(var/i = 1 to maxx)
+		for( var/i = 1 to maxx)
 			var/turf/simulated/T = locate(i, 2, zlevel)
 			if(istype(T) && T.zone && T.zone.contents.len > (maxx*maxy*0.25)) //if it's a zone quarter of zlevel, good enough odds it's planetary main one
 				Z = T.zone
@@ -118,7 +118,7 @@
 	seeds += random_map.small_flora_types
 	if(random_map.big_flora_types)
 		seeds += random_map.big_flora_types
-	for(var/mob/living/simple_animal/A in GLOB.living_mob_list)
+	for( var/mob/living/simple_animal/A in GLOB.living_mob_list)
 		if(A.z in map_z)
 			animals += A
 			GLOB.death_event.register(A, src, /obj/effect/overmap/sector/exoplanet/proc/remove_animal)
@@ -126,10 +126,10 @@
 	max_animal_count = animals.len
 
 /obj/effect/overmap/sector/exoplanet/proc/update_biome()
-	for(var/datum/seed/S in seeds)
+	for( var/datum/seed/S in seeds)
 		adapt_seed(S)
 
-	for(var/mob/living/simple_animal/A in animals)
+	for( var/mob/living/simple_animal/A in animals)
 		adapt_animal(A)
 
 /obj/effect/overmap/sector/exoplanet/proc/adapt_seed(datum/seed/S)
@@ -141,7 +141,7 @@
 		S.exude_gasses -= badgas
 	if(S.consume_gasses)
 		S.consume_gasses = list(pick(atmosphere.gas)) // ensure that if the plant consumes a gas, the atmosphere will have it
-	for(var/g in atmosphere.gas)
+	for( var/g in atmosphere.gas)
 		if(gas_data.flags[g] & XGM_GAS_CONTAMINANT)
 			S.set_trait(TRAIT_TOXINS_TOLERANCE, rand(10,15))
 
@@ -171,7 +171,7 @@
 
 	species[species_type] = newname
 	log_and_message_admins("renamed [species_type] to [newname]")
-	for(var/mob/living/simple_animal/A in animals)
+	for( var/mob/living/simple_animal/A in animals)
 		if(istype(A,species_type))
 			A.SetName(newname)
 			A.real_name = newname
@@ -191,7 +191,7 @@
 		if(attempts >= 0) // While we have the patience, try to find better spawn points. If out of patience, put them down wherever, so long as there are no repeats.
 			var/valid = 1
 			var/list/block_to_check = block(locate(T.x - 10, T.y - 10, T.z), locate(T.x + 10, T.y + 10, T.z))
-			for(var/turf/check in block_to_check)
+			for( var/turf/check in block_to_check)
 				if(!istype(get_area(check), /area/exoplanet) || check.turf_flags & TURF_FLAG_NORUINS)
 					valid = 0
 					break
@@ -234,7 +234,7 @@
 				if(gas_data.flags[ng] & XGM_GAS_FUEL)
 					badflag = XGM_GAS_OXIDIZER
 				if(badflag)
-					for(var/g in newgases)
+					for( var/g in newgases)
 						if(gas_data.flags[g] & badflag)
 							newgases -= g
 					sanity = 0
@@ -247,7 +247,7 @@
 			i++
 
 	//Set up gases for living things
-	for(var/gas in atmosphere.gas)
+	for( var/gas in atmosphere.gas)
 		breathgas[gas] = round(0.4*atmosphere.gas[gas])
 	var/list/badgases = gas_data.gases.Copy()
 	badgases -= atmosphere.gas
@@ -375,7 +375,7 @@
 	new beastie(T)
 
 /datum/random_map/noise/exoplanet/proc/generate_flora()
-	for(var/i = 1 to flora_diversity)
+	for( var/i = 1 to flora_diversity)
 		var/datum/seed/S = new()
 		S.randomize()
 		S.set_trait(TRAIT_PRODUCT_ICON,"alien[rand(1,5)]")
@@ -393,7 +393,7 @@
 		small_flora_types += S
 	if(large_flora_prob)
 		var/tree_diversity = max(1,flora_diversity/2)
-		for(var/i = 1 to tree_diversity)
+		for( var/i = 1 to tree_diversity)
 			var/datum/seed/S = new()
 			S.randomize()
 			S.set_trait(TRAIT_PRODUCT_ICON,"alien[rand(1,5)]")

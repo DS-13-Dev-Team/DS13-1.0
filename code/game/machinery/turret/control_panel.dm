@@ -60,7 +60,7 @@
 
 	if(data["access"])
 		var/list/profiles = list()
-		for (var/id in targeting_profiles)
+		for( var/id in targeting_profiles)
 			var/datum/targeting_profile/TP = targeting_profiles[id]
 
 			profiles += list(list("name" = TP.name, "id" = TP.id))
@@ -127,7 +127,7 @@
 	if(!control_area)
 		control_area = get_area(src)
 	else if(istext(control_area))
-		for(var/area/A in world)
+		for( var/area/A in world)
 			if(A.name && (strip_improper(A.name)==control_area))
 				control_area = A
 				break
@@ -146,7 +146,7 @@
 	//Fill out the targeting profiles list
 	var/templist = targeting_profiles.Copy()
 	targeting_profiles = list()
-	for (var/tptype in templist)
+	for( var/tptype in templist)
 		var/datum/targeting_profile/TP = tptype
 		TP = GLOB.targeting_profiles[initial(TP.id)]
 		targeting_profiles[TP.id] = TP
@@ -228,7 +228,7 @@
 	TC.ailock = ailock
 
 	if(istype(control_area))
-		for (var/obj/machinery/turret/aTurret in control_area)
+		for( var/obj/machinery/turret/aTurret in control_area)
 			aTurret.setState(TC)
 			aTurret.targeting_profile = targeting_profiles[selected_profile]
 			aTurret.handle_targets()

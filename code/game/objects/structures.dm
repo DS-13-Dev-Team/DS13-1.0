@@ -76,7 +76,7 @@
 	if(!anchored)
 		return
 
-	for(var/obj/structure/S in orange(src, 1))
+	for( var/obj/structure/S in orange(src, 1))
 		if(can_visually_connect_to(S))
 			if(S.can_visually_connect())
 				if(propagate)
@@ -84,10 +84,10 @@
 					S.update_icon()
 				dirs += get_dir(src, S)
 
-	for(var/direction in GLOB.cardinal)
+	for( var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
 		var/success = 0
-		for(var/b_type in blend_objects)
+		for( var/b_type in blend_objects)
 			if(istype(T, b_type))
 				success = 1
 				if(propagate)
@@ -100,14 +100,14 @@
 			if(success)
 				break
 		if(!success)
-			for(var/obj/O in T)
-				for(var/b_type in blend_objects)
+			for( var/obj/O in T)
+				for( var/b_type in blend_objects)
 					if(istype(O, b_type))
 						success = 1
-						for(var/obj/structure/S in T)
+						for( var/obj/structure/S in T)
 							if(istype(S, src))
 								success = 0
-						for(var/nb_type in noblend_objects)
+						for( var/nb_type in noblend_objects)
 							if(istype(O, nb_type))
 								success = 0
 
@@ -128,13 +128,13 @@
 /obj/structure/ex_act(severity, atom/epicentre)
 	switch(severity)
 		if(1.0)
-			for(var/atom/movable/AM in contents)
+			for( var/atom/movable/AM in contents)
 				AM.ex_act(severity++, epicentre)
 
 			take_damage(rand(200,400), BRUTE, null, epicentre)
 		if(2.0)
 			if(prob(50))
-				for(var/atom/movable/AM in contents)
+				for( var/atom/movable/AM in contents)
 					AM.ex_act(severity++, epicentre)
 
 			take_damage(rand(100,200), BRUTE, null, epicentre)

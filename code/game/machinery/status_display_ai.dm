@@ -30,7 +30,7 @@ var/list/ai_status_emotions = list(
 
 /proc/get_ai_emotions(ckey)
 	var/list/emotions = new
-	for(var/emotion_name in ai_status_emotions)
+	for( var/emotion_name in ai_status_emotions)
 		var/datum/ai_emotion/emotion = ai_status_emotions[emotion_name]
 		if(!emotion.ckey || emotion.ckey == ckey)
 			emotions += emotion_name
@@ -40,7 +40,7 @@ var/list/ai_status_emotions = list(
 /proc/set_ai_status_displays(mob/user as mob)
 	var/list/ai_emotions = get_ai_emotions(user.ckey)
 	var/emote = input("Please, select a status!", "AI Status", null, null) in ai_emotions
-	for (var/obj/machinery/M in SSmachines.machinery) //change status
+	for( var/obj/machinery/M in SSmachines.machinery) //change status
 		if(istype(M, /obj/machinery/ai_status_display))
 			var/obj/machinery/ai_status_display/AISD = M
 			AISD.emotion = emote

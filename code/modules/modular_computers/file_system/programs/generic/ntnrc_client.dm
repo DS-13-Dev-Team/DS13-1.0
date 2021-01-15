@@ -39,7 +39,7 @@
 	if(href_list["PRG_joinchannel"])
 		. = 1
 		var/datum/ntnet_conversation/C
-		for(var/datum/ntnet_conversation/chan in ntnet_global.chat_channels)
+		for( var/datum/ntnet_conversation/chan in ntnet_global.chat_channels)
 			if(chan.id == text2num(href_list["PRG_joinchannel"]))
 				C = chan
 				break
@@ -117,7 +117,7 @@
 		// Now we will generate HTML-compliant file that can actually be viewed/printed.
 		logfile.filename = logname
 		logfile.stored_data = "\[b\]Logfile dump from SolNRC channel [channel.title]\[/b\]\[BR\]"
-		for(var/logstring in channel.messages)
+		for( var/logstring in channel.messages)
 			logfile.stored_data += "[logstring]\[BR\]"
 		logfile.stored_data += "\[b\]Logfile dump completed.\[/b\]"
 		logfile.calculate_size()
@@ -200,13 +200,13 @@
 	if(C.channel)
 		data["title"] = C.channel.title
 		var/list/messages[0]
-		for(var/M in C.channel.messages)
+		for( var/M in C.channel.messages)
 			messages.Add(list(list(
 				"msg" = M
 			)))
 		data["messages"] = messages
 		var/list/clients[0]
-		for(var/datum/computer_file/program/chatclient/cl in C.channel.clients)
+		for( var/datum/computer_file/program/chatclient/cl in C.channel.clients)
 			clients.Add(list(list(
 				"name" = cl.username
 			)))
@@ -216,7 +216,7 @@
 
 	else // Channel selection screen
 		var/list/all_channels[0]
-		for(var/datum/ntnet_conversation/conv in ntnet_global.chat_channels)
+		for( var/datum/ntnet_conversation/conv in ntnet_global.chat_channels)
 			if(conv && conv.title)
 				all_channels.Add(list(list(
 					"chan" = conv.title,

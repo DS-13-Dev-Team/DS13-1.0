@@ -62,7 +62,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 		log_admin("Ert aborted. Not enough candidates.")
 		return 0
 
-	for(var/i = 0; i <= outfits.len; i++)
+	for( var/i = 0; i <= outfits.len; i++)
 		if(candidates.len == 0)
 			break
 		var/candidate = pick(candidates)

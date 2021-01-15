@@ -9,7 +9,7 @@ proc/createRandomZlevel()
 	admin_notice("<span class='danger'>Searching for away missions...</span>", R_DEBUG)
 	var/list/Lines = file2list("maps/RandomZLevels/fileList.txt")
 	if(!Lines.len)	return
-	for (var/t in Lines)
+	for( var/t in Lines)
 		if (!t)
 			continue
 
@@ -46,7 +46,7 @@ proc/createRandomZlevel()
 			load_new_z_level(file, "Away mission")
 			log_debug("away mission loaded: [map]")
 
-		for(var/obj/effect/landmark/L in landmarks_list)
+		for( var/obj/effect/landmark/L in landmarks_list)
 			if (L.name != "awaystart")
 				continue
 			GLOB.awaydestinations.Add(L)
@@ -63,7 +63,7 @@ proc/createRandomZlevel()
 
 	if(!Lines.len)
 		return
-	for (var/t in Lines)
+	for( var/t in Lines)
 		if (!t)
 			continue
 

@@ -37,7 +37,7 @@
 	var/list/types = typesof(/atom)
 	var/list/matches = list()
 
-	for(var/path in types)
+	for( var/path in types)
 		if(findtext("[path]", desired_path))
 			matches += path
 

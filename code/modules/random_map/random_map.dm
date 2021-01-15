@@ -61,7 +61,7 @@ var/global/list/map_count = list()
 		rand_seed(seed)
 		priority_process = !never_be_priority
 
-	for(var/i = 0;i<max_attempts;i++)
+	for( var/i = 0;i<max_attempts;i++)
 		if(generate())
 			if(!do_not_announce) admin_notice("<span class='danger'>[capitalize(name)] generation completed in [round(0.1*(world.timeofday-start_time),0.1)] seconds.</span>", R_DEBUG)
 			return
@@ -99,8 +99,8 @@ var/global/list/map_count = list()
 		user = world
 
 	var/dat = "<code>+------+<br>"
-	for(var/x = 1, x <= limit_x, x++)
-		for(var/y = 1, y <= limit_y, y++)
+	for( var/x = 1, x <= limit_x, x++)
+		for( var/y = 1, y <= limit_y, y++)
 			var/current_cell = get_map_cell(x,y)
 			if(current_cell)
 				dat += get_map_char(map[current_cell])
@@ -112,8 +112,8 @@ var/global/list/map_count = list()
 	map.len = limit_x * limit_y
 
 /datum/random_map/proc/seed_map()
-	for(var/x = 1, x <= limit_x, x++)
-		for(var/y = 1, y <= limit_y, y++)
+	for( var/x = 1, x <= limit_x, x++)
+		for( var/y = 1, y <= limit_y, y++)
 			var/current_cell = get_map_cell(x,y)
 			if(prob(initial_wall_cell))
 				map[current_cell] = WALL_CHAR
@@ -121,8 +121,8 @@ var/global/list/map_count = list()
 				map[current_cell] = FLOOR_CHAR
 
 /datum/random_map/proc/clear_map()
-	for(var/x = 1, x <= limit_x, x++)
-		for(var/y = 1, y <= limit_y, y++)
+	for( var/x = 1, x <= limit_x, x++)
+		for( var/y = 1, y <= limit_y, y++)
 			map[get_map_cell(x,y)] = 0
 
 /datum/random_map/proc/generate()
@@ -152,8 +152,8 @@ var/global/list/map_count = list()
 	if(!origin_y) origin_y = 1
 	if(!origin_z) origin_z = 1
 
-	for(var/x = 1, x <= limit_x, x++)
-		for(var/y = 1, y <= limit_y, y++)
+	for( var/x = 1, x <= limit_x, x++)
+		for( var/y = 1, y <= limit_y, y++)
 			if(!priority_process)
 				CHECK_TICK
 			apply_to_turf(x,y)
@@ -193,8 +193,8 @@ var/global/list/map_count = list()
 		return
 	tx-- // Update origin so that x/y index
 	ty-- // doesn't push it off-kilter by one.
-	for(var/x = 1, x <= limit_x, x++)
-		for(var/y = 1, y <= limit_y, y++)
+	for( var/x = 1, x <= limit_x, x++)
+		for( var/y = 1, y <= limit_y, y++)
 			var/current_cell = get_map_cell(x,y)
 			if(!current_cell)
 				continue

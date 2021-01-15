@@ -22,7 +22,7 @@ GLOBAL_VAR_INIT(admin_sound_channel, GLOB.sound_channels.RequestChannel("ADMIN_F
 		CRASH("Invalid key given.")
 	. = list()
 
-	for(var/i = 1 to amount)
+	for( var/i = 1 to amount)
 		var/channel = available_channels.Pop() // Check if someone else has released their channel.
 		if(!channel)
 			if(channel_ceiling <= 0) // This basically means we ran out of channels
@@ -34,7 +34,7 @@ GLOBAL_VAR_INIT(admin_sound_channel, GLOB.sound_channels.RequestChannel("ADMIN_F
 		ReleaseChannels(.)
 		CRASH("Unable to supply the requested amount of channels: [key] - Expected [amount], was [length(.)]")
 
-	for(var/channel in .)
+	for( var/channel in .)
 		LAZYSET(keys_by_channel, "[channel]", key)
 	return .
 
@@ -42,6 +42,6 @@ GLOBAL_VAR_INIT(admin_sound_channel, GLOB.sound_channels.RequestChannel("ADMIN_F
 	ReleaseChannels(list(channel))
 
 /repository/sound_channels/proc/ReleaseChannels(list/channels)
-	for(var/channel in channels)
+	for( var/channel in channels)
 		LAZYREMOVE(keys_by_channel, "[channel]")
 		available_channels.Push(channel)

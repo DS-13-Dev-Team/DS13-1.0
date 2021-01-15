@@ -85,13 +85,13 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 // rebuild all power networks from scratch - only called at world creation or by the admin verb
 // The above is a lie. Turbolifts also call this proc.
 /datum/controller/subsystem/machines/proc/makepowernets()
-	for(var/datum/powernet/PN in powernets)
+	for( var/datum/powernet/PN in powernets)
 		qdel(PN)
 	powernets.Cut()
 	setup_powernets_for_cables(cable_list)
 
 /datum/controller/subsystem/machines/proc/setup_powernets_for_cables(list/cables)
-	for(var/obj/structure/cable/PC in cables)
+	for( var/obj/structure/cable/PC in cables)
 		if(!PC.powernet)
 			var/datum/powernet/NewPN = new()
 			NewPN.add_cable(PC)
@@ -102,17 +102,17 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 	set background=1
 
 	report_progress("Initializing atmos machinery")
-	for(var/obj/machinery/atmospherics/A in machines)
+	for( var/obj/machinery/atmospherics/A in machines)
 		A.atmos_init()
 		CHECK_TICK
 
 
 	report_progress("Initializing pipe networks")
-	for(var/obj/machinery/atmospherics/machine in machines)
+	for( var/obj/machinery/atmospherics/machine in machines)
 		machine.build_network()
 		CHECK_TICK
 
-	for(var/obj/machinery/atmospherics/unary/U in machines)
+	for( var/obj/machinery/atmospherics/unary/U in machines)
 		if(istype(U, /obj/machinery/atmospherics/unary/vent_pump))
 			var/obj/machinery/atmospherics/unary/vent_pump/T = U
 			T.broadcast_status()

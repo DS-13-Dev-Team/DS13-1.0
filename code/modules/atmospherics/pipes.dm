@@ -133,7 +133,7 @@
 			"<span class='notice'>You have unfastened \the [src].</span>", \
 			"You hear a ratchet.")
 		new /obj/item/pipe(loc, make_from=src)
-		for (var/obj/machinery/meter/meter in T)
+		for( var/obj/machinery/meter/meter in T)
 			if (meter.target == src)
 				new /obj/item/pipe_meter(T)
 				qdel(meter)
@@ -304,7 +304,7 @@
 	if(!node1 && !node2)
 		var/turf/T = get_turf(src)
 		new /obj/item/pipe(loc, make_from=src)
-		for (var/obj/machinery/meter/meter in T)
+		for( var/obj/machinery/meter/meter in T)
 			if (meter.target == src)
 				new /obj/item/pipe_meter(T)
 				qdel(meter)
@@ -325,19 +325,19 @@
 	var/node1_dir
 	var/node2_dir
 
-	for(var/direction in GLOB.cardinal)
+	for( var/direction in GLOB.cardinal)
 		if(direction&initialize_directions)
 			if (!node1_dir)
 				node1_dir = direction
 			else if (!node2_dir)
 				node2_dir = direction
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,node1_dir))
+	for( var/obj/machinery/atmospherics/target in get_step(src,node1_dir))
 		if(target.initialize_directions & get_dir(target,src))
 			if (check_connect_types(target,src))
 				node1 = target
 				break
-	for(var/obj/machinery/atmospherics/target in get_step(src,node2_dir))
+	for( var/obj/machinery/atmospherics/target in get_step(src,node2_dir))
 		if(target.initialize_directions & get_dir(target,src))
 			if (check_connect_types(target,src))
 				node2 = target
@@ -556,7 +556,7 @@
 	if(!node1 && !node2 && !node3)
 		var/turf/T = get_turf(src)
 		new /obj/item/pipe(loc, make_from=src)
-		for (var/obj/machinery/meter/meter in T)
+		for( var/obj/machinery/meter/meter in T)
 			if (meter.target == src)
 				new /obj/item/pipe_meter(T)
 				qdel(meter)
@@ -579,7 +579,7 @@
 		directions -= add_underlay(T,node2,node2_direction,icon_connect_type)
 		directions -= add_underlay(T,node3,node3_direction,icon_connect_type)
 
-		for(var/D in directions)
+		for( var/D in directions)
 			add_underlay(T,,D,icon_connect_type)
 
 
@@ -591,9 +591,9 @@
 	..()
 	var/connect_directions = (NORTH|SOUTH|EAST|WEST)&(~dir)
 
-	for(var/direction in GLOB.cardinal)
+	for( var/direction in GLOB.cardinal)
 		if(direction&connect_directions)
-			for(var/obj/machinery/atmospherics/target in get_step(src,direction))
+			for( var/obj/machinery/atmospherics/target in get_step(src,direction))
 				if(target.initialize_directions & get_dir(target,src))
 					if (check_connect_types(target,src))
 						node1 = target
@@ -603,9 +603,9 @@
 				break
 
 
-	for(var/direction in GLOB.cardinal)
+	for( var/direction in GLOB.cardinal)
 		if(direction&connect_directions)
-			for(var/obj/machinery/atmospherics/target in get_step(src,direction))
+			for( var/obj/machinery/atmospherics/target in get_step(src,direction))
 				if(target.initialize_directions & get_dir(target,src))
 					if (check_connect_types(target,src))
 						node2 = target
@@ -615,9 +615,9 @@
 				break
 
 
-	for(var/direction in GLOB.cardinal)
+	for( var/direction in GLOB.cardinal)
 		if(direction&connect_directions)
-			for(var/obj/machinery/atmospherics/target in get_step(src,direction))
+			for( var/obj/machinery/atmospherics/target in get_step(src,direction))
 				if(target.initialize_directions & get_dir(target,src))
 					if (check_connect_types(target,src))
 						node3 = target
@@ -815,7 +815,7 @@
 	if(!node1 && !node2 && !node3 && !node4)
 		var/turf/T = get_turf(src)
 		new /obj/item/pipe(loc, make_from=src)
-		for (var/obj/machinery/meter/meter in T)
+		for( var/obj/machinery/meter/meter in T)
 			if (meter.target == src)
 				new /obj/item/pipe_meter(T)
 				qdel(meter)
@@ -835,7 +835,7 @@
 		directions -= add_underlay(node3)
 		directions -= add_underlay(node4)
 
-		for(var/D in directions)
+		for( var/D in directions)
 			add_underlay(,D)
 		*/
 
@@ -853,7 +853,7 @@
 		directions -= add_underlay(T,node3,node3_direction,icon_connect_type)
 		directions -= add_underlay(T,node4,node4_direction,icon_connect_type)
 
-		for(var/D in directions)
+		for( var/D in directions)
 			add_underlay(T,,D,icon_connect_type)
 
 
@@ -868,25 +868,25 @@
 
 /obj/machinery/atmospherics/pipe/manifold4w/atmos_init()
 	..()
-	for(var/obj/machinery/atmospherics/target in get_step(src,1))
+	for( var/obj/machinery/atmospherics/target in get_step(src,1))
 		if(target.initialize_directions & 2)
 			if (check_connect_types(target,src))
 				node1 = target
 				break
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,2))
+	for( var/obj/machinery/atmospherics/target in get_step(src,2))
 		if(target.initialize_directions & 1)
 			if (check_connect_types(target,src))
 				node2 = target
 				break
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,4))
+	for( var/obj/machinery/atmospherics/target in get_step(src,4))
 		if(target.initialize_directions & 8)
 			if (check_connect_types(target,src))
 				node3 = target
 				break
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,8))
+	for( var/obj/machinery/atmospherics/target in get_step(src,8))
 		if(target.initialize_directions & 4)
 			if (check_connect_types(target,src))
 				node4 = target
@@ -1050,7 +1050,7 @@
 
 /obj/machinery/atmospherics/pipe/cap/atmos_init()
 	..()
-	for(var/obj/machinery/atmospherics/target in get_step(src, dir))
+	for( var/obj/machinery/atmospherics/target in get_step(src, dir))
 		if(target.initialize_directions & get_dir(target,src))
 			if (check_connect_types(target,src))
 				node = target
@@ -1163,7 +1163,7 @@
 	..()
 	var/connect_direction = dir
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,connect_direction))
+	for( var/obj/machinery/atmospherics/target in get_step(src,connect_direction))
 		if(target.initialize_directions & get_dir(target,src))
 			if (check_connect_types(target,src))
 				node1 = target
@@ -1345,7 +1345,7 @@
 	..()
 	var/connect_direction = dir
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,connect_direction))
+	for( var/obj/machinery/atmospherics/target in get_step(src,connect_direction))
 		if(target.initialize_directions & get_dir(target,src))
 			if (check_connect_types(target,src))
 				node1 = target

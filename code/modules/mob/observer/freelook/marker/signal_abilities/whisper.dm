@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(whispered, list())
 //This is kinda inefficient, but it shouldnt be used too often
 /datum/signal_ability/whisper/proc/get_possible_targets()
 	var/list/possible = list()
-	for (var/mob/M in GLOB.unitologists_list)
+	for( var/mob/M in GLOB.unitologists_list)
 		if (M.stat == DEAD)
 			continue
 

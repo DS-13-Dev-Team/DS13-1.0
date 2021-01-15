@@ -15,7 +15,7 @@
 /spell/hand/duration/sunwrath/cast_hand(var/atom/A, mob/user)
 	var/turf/T = get_turf(user)
 	var/list/turfs = getline(T,A) - T
-	for(var/t in turfs)
+	for( var/t in turfs)
 		var/turf/turf = t
 		if(turf.density || istype(turf, /turf/space))
 			break
@@ -33,5 +33,5 @@
 	QDEL_IN(src,100)
 
 /obj/effect/sunwrath/Process()
-	for(var/mob/living/L in loc)
+	for( var/mob/living/L in loc)
 		L.FireBurn(2,0,3000,ONE_ATMOSPHERE)

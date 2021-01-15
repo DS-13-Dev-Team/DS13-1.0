@@ -55,30 +55,30 @@
 	alarm_handlers = list(camera_alarm, motion_alarm)
 
 /datum/nano_module/alarm_monitor/proc/register_alarm(object, procName)
-	for(var/datum/alarm_handler/AH in alarm_handlers)
+	for( var/datum/alarm_handler/AH in alarm_handlers)
 		AH.register_alarm(object, procName)
 
 /datum/nano_module/alarm_monitor/proc/unregister_alarm(object)
-	for(var/datum/alarm_handler/AH in alarm_handlers)
+	for( var/datum/alarm_handler/AH in alarm_handlers)
 		AH.unregister_alarm(object)
 
 /datum/nano_module/alarm_monitor/proc/all_alarms()
 	var/list/all_alarms = new()
-	for(var/datum/alarm_handler/AH in alarm_handlers)
+	for( var/datum/alarm_handler/AH in alarm_handlers)
 		all_alarms += AH.alarms(get_host_z())
 
 	return all_alarms
 
 /datum/nano_module/alarm_monitor/proc/major_alarms()
 	var/list/all_alarms = new()
-	for(var/datum/alarm_handler/AH in alarm_handlers)
+	for( var/datum/alarm_handler/AH in alarm_handlers)
 		all_alarms += AH.major_alarms(get_host_z())
 
 	return all_alarms
 
 // Modified version of above proc that uses slightly less resources, returns 1 if there is a major alarm, 0 otherwise.
 /datum/nano_module/alarm_monitor/proc/has_major_alarms()
-	for(var/datum/alarm_handler/AH in alarm_handlers)
+	for( var/datum/alarm_handler/AH in alarm_handlers)
 		if(AH.has_major_alarms(get_host_z()))
 			return 1
 
@@ -86,7 +86,7 @@
 
 /datum/nano_module/alarm_monitor/proc/minor_alarms()
 	var/list/all_alarms = new()
-	for(var/datum/alarm_handler/AH in alarm_handlers)
+	for( var/datum/alarm_handler/AH in alarm_handlers)
 		all_alarms += AH.minor_alarms(get_host_z())
 
 	return all_alarms
@@ -106,17 +106,17 @@
 	var/list/data = host.initial_data()
 
 	var/categories[0]
-	for(var/datum/alarm_handler/AH in alarm_handlers)
+	for( var/datum/alarm_handler/AH in alarm_handlers)
 		categories[++categories.len] = list("category" = AH.category, "alarms" = list())
-		for(var/datum/alarm/A in AH.major_alarms(get_host_z()))
+		for( var/datum/alarm/A in AH.major_alarms(get_host_z()))
 
 			var/cameras[0]
 			var/lost_sources[0]
 
 			if(isAI(user))
-				for(var/obj/machinery/camera/C in A.cameras())
+				for( var/obj/machinery/camera/C in A.cameras())
 					cameras[++cameras.len] = C.nano_structure()
-			for(var/datum/alarm_source/AS in A.sources)
+			for( var/datum/alarm_source/AS in A.sources)
 				if(!AS.source)
 					lost_sources[++lost_sources.len] = AS.source_name
 

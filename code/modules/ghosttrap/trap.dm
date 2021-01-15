@@ -15,7 +15,7 @@ var/list/ghost_traps
 
 /proc/populate_ghost_traps()
 	ghost_traps = list()
-	for(var/traptype in typesof(/datum/ghosttrap))
+	for( var/traptype in typesof(/datum/ghosttrap))
 		var/datum/ghosttrap/G = new traptype
 		ghost_traps[G.object] = G
 
@@ -40,7 +40,7 @@ var/list/ghost_traps
 	if(!candidate.MayRespawn(1, minutes_since_death))
 		return 0
 	if(islist(ban_checks))
-		for(var/bantype in ban_checks)
+		for( var/bantype in ban_checks)
 			if(jobban_isbanned(candidate, "[bantype]"))
 				if(feedback)
 					to_chat(candidate, "You are banned from one or more required roles and hence cannot enter play as \a [object].")
@@ -55,7 +55,7 @@ var/list/ghost_traps
 	else
 		unregister_target(target)
 
-	for(var/mob/observer/ghost/O in GLOB.player_list)
+	for( var/mob/observer/ghost/O in GLOB.player_list)
 		if(!assess_candidate(O, target, FALSE))
 			return
 		if(pref_check && !O.client.wishes_to_be_role(pref_check))

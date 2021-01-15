@@ -57,7 +57,7 @@
 		WP.open_file = "Autorun Changelog"
 		WP.loaded_data = "Files added from \the [src]"
 	//Find all stored guides and transfer them over
-	for(var/datum/computer_file/F in stored_files)
+	for( var/datum/computer_file/F in stored_files)
 		//Don't add unnecessary copies
 		if(!M.hard_drive.stored_files.Find(F))
 			M.hard_drive.store_file(F)

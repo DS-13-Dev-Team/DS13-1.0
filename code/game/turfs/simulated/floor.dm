@@ -121,7 +121,7 @@
 
 /turf/simulated/floor/levelupdate()
 	if (flooring)
-		for(var/obj/O in src)
+		for( var/obj/O in src)
 			O.hide(O.hides_under_flooring() && (flooring.flags & TURF_HIDES_THINGS))
 
 

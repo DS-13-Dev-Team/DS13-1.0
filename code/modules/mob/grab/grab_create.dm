@@ -58,7 +58,7 @@
 	if (S && !S.can_pickup)
 		return FALSE	//You need to be able to pick things up to hold a grab object
 	*/
-	for(var/obj/item/grab/G in affecting.grabbed_by)
+	for( var/obj/item/grab/G in affecting.grabbed_by)
 		if(G.assailant == assailant && G.target_zone == target_zone)
 			var/obj/O = G.get_targeted_organ()
 			if (O)

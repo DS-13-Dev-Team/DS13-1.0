@@ -89,7 +89,7 @@ var/global/list/navbeacons = list()
 Location: [location ? location : "(none)"]</A><BR>
 Transponder Codes:<UL>"}
 
-		for(var/key in codes)
+		for( var/key in codes)
 			t += "<LI>[key] ... [codes[key]]"
 		t+= "<UL></TT>"
 
@@ -100,7 +100,7 @@ Transponder Codes:<UL>"}
 Location: <A href='byond://?src=\ref[src];locedit=1'>[location ? location : "(none)"]</A><BR>
 Transponder Codes:<UL>"}
 
-		for(var/key in codes)
+		for( var/key in codes)
 			t += "<LI>[key] ... [codes[key]]"
 			t += " <small><A href='byond://?src=\ref[src];edit=1;code=[key]'>(edit)</A>"
 			t += " <A href='byond://?src=\ref[src];delete=1;code=[key]'>(delete)</A></small><BR>"

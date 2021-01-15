@@ -29,7 +29,7 @@
 /obj/item/weapon/reagent_containers/food/drinks/glass2/examine(mob/M as mob)
 	. = ..()
 
-	for(var/I in extras)
+	for( var/I in extras)
 		if(istype(I, /obj/item/weapon/glass_extra))
 			to_chat(M, "There is \a [I] in \the [src].")
 		else if(istype(I, /obj/item/weapon/reagent_containers/food/snacks/fruit_slice))
@@ -57,7 +57,7 @@
 		var/datum/reagent/R = reagents.get_master_reagent()
 		if(!("fizz" in R.glass_special))
 			var/totalfizzy = 0
-			for(var/datum/reagent/re in reagents.reagent_list)
+			for( var/datum/reagent/re in reagents.reagent_list)
 				if("fizz" in re.glass_special)
 					totalfizzy += re.volume
 			if(totalfizzy >= reagents.total_volume / 5) // 20% fizzy by volume
@@ -69,7 +69,7 @@
 		var/datum/reagent/R = reagents.get_master_reagent()
 		if(!("vapor" in R.glass_special))
 			var/totalvape = 0
-			for(var/datum/reagent/re in reagents.reagent_list)
+			for( var/datum/reagent/re in reagents.reagent_list)
 				if("vapor" in re.glass_special)
 					totalvape += re.volume
 			if(totalvape >= volume * 0.6) // 60% vapor by container volume
@@ -113,27 +113,27 @@
 		if(has_vapor())
 			over_liquid |= "[base_icon]_vapor"
 
-		for(var/S in R.glass_special)
+		for( var/S in R.glass_special)
 			if("[base_icon]_[S]" in icon_states(DRINK_ICON_FILE))
 				under_liquid |= "[base_icon]_[S]"
 			else if("[base_icon][amnt]_[S]" in icon_states(DRINK_ICON_FILE))
 				over_liquid |= "[base_icon][amnt]_[S]"
 
-		for(var/k in under_liquid)
+		for( var/k in under_liquid)
 			underlays += image(DRINK_ICON_FILE, src, k, -3)
 
 		var/image/filling = image(DRINK_ICON_FILE, src, "[base_icon][amnt][R.glass_icon]", -2)
 		filling.color = reagents.get_color()
 		underlays += filling
 
-		for(var/k in over_liquid)
+		for( var/k in over_liquid)
 			underlays += image(DRINK_ICON_FILE, src, k, -1)
 	else
 		SetName(initial(name))
 		desc = initial(desc)
 
 	var/side = "left"
-	for(var/item in extras)
+	for( var/item in extras)
 		if(istype(item, /obj/item/weapon/glass_extra))
 			var/obj/item/weapon/glass_extra/GE = item
 			var/image/I = image(DRINK_ICON_FILE, src, "[base_icon]_[GE.glass_addition][side]")

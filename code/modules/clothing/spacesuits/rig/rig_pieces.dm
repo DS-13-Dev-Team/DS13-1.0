@@ -69,13 +69,13 @@
 		return
 
 	if(can_support(user))
-		for(var/obj/item/organ/external/E in user.bad_external_organs)
+		for( var/obj/item/organ/external/E in user.bad_external_organs)
 			if((E.body_part & body_parts_covered) && E.is_broken() && E.apply_splint(src))
 				to_chat(user, "<span class='notice'>You feel [src] constrict about your [E.name], supporting it.</span>")
 				supporting_limbs |= E
 	else
 		// Otherwise, remove the splints.
-		for(var/obj/item/organ/external/E in supporting_limbs)
+		for( var/obj/item/organ/external/E in supporting_limbs)
 			if(E.splinted == src && E.remove_splint(src))
 				to_chat(user, "<span class='notice'>\The [src] stops supporting your [E.name].</span>")
 		supporting_limbs.Cut()
@@ -101,7 +101,7 @@
 	if(!suit || !istype(suit) || !suit.installed_modules.len)
 		return 0
 
-	for(var/obj/item/rig_module/module in suit.installed_modules)
+	for( var/obj/item/rig_module/module in suit.installed_modules)
 		if(module.active && module.activates_on_touch)
 			if(module.engage(A))
 				return 1
@@ -166,7 +166,7 @@
 	if (health > 0)
 		var/healthpercent = health / max_health
 
-		for (var/obj/item/clothing/C as anything in get_pieces())
+		for( var/obj/item/clothing/C as anything in get_pieces())
 			C.set_healthpercent(healthpercent)
 
 

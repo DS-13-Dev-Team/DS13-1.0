@@ -16,7 +16,7 @@
 		to_chat(usr, "Gene masks not set.")
 		return
 
-	for(var/mask in plant_controller.gene_tag_masks)
+	for( var/mask in plant_controller.gene_tag_masks)
 		to_chat(usr, "[mask]: [plant_controller.gene_tag_masks[mask]]")
 
 var/global/datum/controller/plants/plant_controller // Set in New().
@@ -46,7 +46,7 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 /datum/controller/plants/proc/setup()
 
 	// Build the icon lists.
-	for(var/icostate in icon_states('icons/obj/hydroponics_growing.dmi'))
+	for( var/icostate in icon_states('icons/obj/hydroponics_growing.dmi'))
 		var/split = findtext(icostate,"-")
 		if(!split)
 			// invalid icon_state
@@ -62,13 +62,13 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 		if(!(plant_sprites[base]) || (plant_sprites[base]<ikey))
 			plant_sprites[base] = ikey
 
-	for(var/icostate in icon_states('icons/obj/hydroponics_products.dmi'))
+	for( var/icostate in icon_states('icons/obj/hydroponics_products.dmi'))
 		var/split = findtext(icostate,"-")
 		if(split)
 			plant_product_sprites |= copytext(icostate,1,split)
 
 	// Populate the global seed datum list.
-	for(var/type in typesof(/datum/seed)-/datum/seed)
+	for( var/type in typesof(/datum/seed)-/datum/seed)
 		var/datum/seed/S = new type
 		seeds[S.name] = S
 		S.uid = "[seeds.len]"
@@ -76,7 +76,7 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 
 	// Make sure any seed packets that were mapped in are updated
 	// correctly (since the seed datums did not exist a tick ago).
-	for(var/obj/item/seeds/S in world)
+	for( var/obj/item/seeds/S in world)
 		S.update_seed()
 
 	//Might as well mask the gene types while we're at it.
@@ -92,7 +92,7 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 
 		var/decl/plantgene/G
 
-		for(var/D in gene_datums)
+		for( var/D in gene_datums)
 			var/decl/plantgene/P = gene_datums[D]
 			if(gene_tag == P.gene_tag)
 				G = P

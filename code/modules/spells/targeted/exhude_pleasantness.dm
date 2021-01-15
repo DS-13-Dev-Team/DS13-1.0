@@ -11,7 +11,7 @@
 	hud_state = "friendly"
 
 /spell/targeted/exhude_pleasantness/cast(var/list/targets, mob/user)
-	for(var/m in targets)
+	for( var/m in targets)
 		var/mob/living/L = m
 		if(L.mind && L.mind.special_role == ANTAG_SERVANT)
 			to_chat(m, "<span class='notice'>\The [user] seems relatively harmless.</span>")

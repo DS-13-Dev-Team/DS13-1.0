@@ -24,7 +24,7 @@
 
 /obj/structure/catwalk/Initialize()
 	. = ..()
-	for(var/obj/structure/catwalk/C in get_turf(src))
+	for( var/obj/structure/catwalk/C in get_turf(src))
 		if(C != src)
 			qdel(C)
 	var/turf/T = get_turf(src)
@@ -50,7 +50,7 @@
 	return ..()
 
 /obj/structure/catwalk/proc/redraw_nearby_catwalks()
-	for(var/direction in GLOB.alldirs)
+	for( var/direction in GLOB.alldirs)
 		var/obj/structure/catwalk/L = locate() in get_step(src, direction)
 		if(L)
 			L.update_connections()
@@ -63,7 +63,7 @@
 	icon_state = ""
 	var/image/I
 	if(!hatch_open)
-		for(var/i = 1 to 4)
+		for( var/i = 1 to 4)
 			I = image('icons/obj/catwalks.dmi', "catwalk[connections[i]]", dir = 1<<(i-1))
 			overlays += I
 	if(plated_tile)
@@ -123,7 +123,7 @@
 			ST.in_use = 0
 			src.add_fingerprint(user)
 			if(ST.use(1))
-				for(var/flooring_type in flooring_types)
+				for( var/flooring_type in flooring_types)
 					var/decl/flooring/F = flooring_types[flooring_type]
 					if(!F.build_type)
 						continue
@@ -172,8 +172,8 @@
 		C.name = "plated catwalk"
 		C.update_icon()
 	activated = 1
-	for(var/turf/T in orange(src, 1))
-		for(var/obj/effect/wallframe_spawn/other in T)
+	for( var/turf/T in orange(src, 1))
+		for( var/obj/effect/wallframe_spawn/other in T)
 			if(!other.activated) other.activate()
 
 /obj/effect/catwalk_plated/dark

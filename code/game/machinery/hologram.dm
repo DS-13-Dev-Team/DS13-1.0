@@ -82,7 +82,7 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 				last_request = world.time
 				to_chat(user, "<span class='notice'>You request an AI's presence.</span>")
 				var/area/area = get_area(src)
-				for(var/mob/living/silicon/ai/AI in GLOB.living_mob_list)
+				for( var/mob/living/silicon/ai/AI in GLOB.living_mob_list)
 					if(!AI.client)	continue
 					to_chat(AI, "<span class='info'>Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>.</span>")
 			else
@@ -97,9 +97,9 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 				var/zlevels = GetConnectedZlevels(z)
 				if(GLOB.using_map.use_overmap && map_range >= 0)
 					var/obj/effect/overmap/O = map_sectors["[z]"]
-					for(var/obj/effect/overmap/OO in range(O,map_range))
+					for( var/obj/effect/overmap/OO in range(O,map_range))
 						zlevels |= OO.map_z
-				for(var/obj/machinery/hologram/holopad/H in SSmachines.machinery)
+				for( var/obj/machinery/hologram/holopad/H in SSmachines.machinery)
 					if((H.z in zlevels) && H.operable())
 						holopadlist["[H.loc.loc.name]"] = H	//Define a list and fill it with the area of every holopad in the world
 				holopadlist = sortAssoc(holopadlist)
@@ -182,7 +182,7 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 /obj/machinery/hologram/holopad/hear_talk(mob/living/M, text, verb, datum/language/speaking)
 	if(M)
-		for(var/mob/living/silicon/ai/master in masters)
+		for( var/mob/living/silicon/ai/master in masters)
 			if(!master.say_understands(M, speaking))//The AI will be able to understand most mobs talking through the holopad.
 				if(speaking)
 					text = speaking.scramble(text)
@@ -208,12 +208,12 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 
 /obj/machinery/hologram/holopad/see_emote(mob/living/M, text)
 	if(M)
-		for(var/mob/living/silicon/ai/master in masters)
+		for( var/mob/living/silicon/ai/master in masters)
 			//var/name_used = M.GetVoice()
 			var/rendered = "<i><span class='game say'>Holopad received, <span class='message'>[text]</span></span></i>"
 			//The lack of name_used is needed, because message already contains a name.  This is needed for simple mobs to emote properly.
 			master.show_message(rendered, 2)
-		for(var/mob/living/carbon/master in masters)
+		for( var/mob/living/carbon/master in masters)
 			//var/name_used = M.GetVoice()
 			var/rendered = "<i><span class='game say'>Holopad received, <span class='message'>[text]</span></span></i>"
 			//The lack of name_used is needed, because message already contains a name.  This is needed for simple mobs to emote properly.
@@ -222,16 +222,16 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 			targetpad.visible_message("<i><span class='message'>[text]</span></i>")
 
 /obj/machinery/hologram/holopad/show_message(msg, type, alt, alt_type)
-	for(var/mob/living/silicon/ai/master in masters)
+	for( var/mob/living/silicon/ai/master in masters)
 		var/rendered = "<i><span class='game say'>The holographic image of <span class='message'>[msg]</span></span></i>"
 		master.show_message(rendered, type)
 	if(findtext(msg, "Holopad received,"))
 		return
-	for(var/mob/living/carbon/master in masters)
+	for( var/mob/living/carbon/master in masters)
 		var/rendered = "<i><span class='game say'>The holographic image of <span class='message'>[msg]</span></span></i>"
 		master.show_message(rendered, type)
 	if(targetpad)
-		for(var/mob/living/carbon/master in view(targetpad))
+		for( var/mob/living/carbon/master in view(targetpad))
 			var/rendered = "<i><span class='game say'>The holographic image of <span class='message'>[msg]</span></span></i>"
 			master.show_message(rendered, type)
 
@@ -288,7 +288,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 
 
 /obj/machinery/hologram/holopad/Process()
-	for (var/mob/living/silicon/ai/master in masters)
+	for( var/mob/living/silicon/ai/master in masters)
 		var/active_ai = (master && !master.incapacitated() && master.client && master.eyeobj)//If there is an AI with an eye attached, it's not incapacitated, and it has a client
 		if((stat & NOPOWER) || !active_ai)
 			clear_holo(master)
@@ -364,7 +364,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	return
 
 /obj/machinery/hologram/holopad/Destroy()
-	for (var/mob/living/master in masters)
+	for( var/mob/living/master in masters)
 		clear_holo(master)
 	return ..()
 

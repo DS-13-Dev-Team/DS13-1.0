@@ -80,7 +80,7 @@
 		data["suspended"] = detailed_account_view.suspended
 
 		var/list/trx[0]
-		for (var/datum/transaction/T in detailed_account_view.transaction_log)
+		for( var/datum/transaction/T in detailed_account_view.transaction_log)
 			trx.Add(list(list(\
 				"date" = T.date, \
 				"time" = T.time, \
@@ -93,7 +93,7 @@
 			data["transactions"] = trx
 
 	var/list/accounts[0]
-	for(var/i=1, i<=all_money_accounts.len, i++)
+	for( var/i=1, i<=all_money_accounts.len, i++)
 		var/datum/money_account/D = all_money_accounts[i]
 		accounts.Add(list(list(\
 			"account_number"=D.account_number,\
@@ -218,7 +218,7 @@
 							<tbody>
 						"}
 
-					for (var/datum/transaction/T in detailed_account_view.transaction_log)
+					for( var/datum/transaction/T in detailed_account_view.transaction_log)
 						text += {"
 									<tr>
 										<td>[T.date] [T.time]</td>
@@ -251,7 +251,7 @@
 							<tbody>
 					"}
 
-					for(var/i=1, i<=all_money_accounts.len, i++)
+					for( var/i=1, i<=all_money_accounts.len, i++)
 						var/datum/money_account/D = all_money_accounts[i]
 						text += {"
 								<tr>

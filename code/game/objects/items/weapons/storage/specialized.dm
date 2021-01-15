@@ -75,7 +75,7 @@
 				to_chat(user, "The snatcher does not accept [W].")
 			return 0
 		var/current = 0
-		for(var/obj/item/stack/material/S in contents)
+		for( var/obj/item/stack/material/S in contents)
 			current += S.amount
 		if(capacity == current)//If it's full, you're done
 			if(!stop_messages)
@@ -92,14 +92,14 @@
 		var/amount
 		var/inserted = 0
 		var/current = 0
-		for(var/obj/item/stack/material/S2 in contents)
+		for( var/obj/item/stack/material/S2 in contents)
 			current += S2.amount
 		if(capacity < current + S.amount)//If the stack will fill it up
 			amount = capacity - current
 		else
 			amount = S.amount
 
-		for(var/obj/item/stack/material/sheet in contents)
+		for( var/obj/item/stack/material/sheet in contents)
 			if(S.type == sheet.type) // we are violating the amount limitation because these are not sane objects
 				sheet.amount += amount	// they should only be removed through procs in this file, which split them up.
 				S.amount -= amount
@@ -118,7 +118,7 @@
 // Modified quick_empty verb drops appropriate sized stacks
 	quick_empty()
 		var/location = get_turf(src)
-		for(var/obj/item/stack/material/S in contents)
+		for( var/obj/item/stack/material/S in contents)
 			while(S.amount)
 				var/obj/item/stack/material/N = new S.type(location)
 				var/stacksize = min(S.amount,N.max_amount)

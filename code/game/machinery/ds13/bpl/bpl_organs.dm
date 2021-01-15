@@ -1,9 +1,9 @@
 /obj/item/organ/proc/get_growth_state()
-	for (var/thing in GLOB.bpl_growth_organs)
+	for( var/thing in GLOB.bpl_growth_organs)
 		var/list/data = GLOB.bpl_growth_organs[thing]
 		if (islist(data["type"]))
 			var/list/types = data["type"]
-			for (var/t in types)
+			for( var/t in types)
 				if (istype(src, types[t]))
 					return data["icon"]
 		else

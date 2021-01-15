@@ -84,7 +84,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/proc/get_filling_state()
 	var/percent = round((reagents.total_volume / volume) * 100)
-	for(var/k in cached_number_list_decode(filling_states))
+	for( var/k in cached_number_list_decode(filling_states))
 		if(percent <= k)
 			return k
 

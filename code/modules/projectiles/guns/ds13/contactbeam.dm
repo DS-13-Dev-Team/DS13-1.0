@@ -299,7 +299,7 @@
 	spawn(5)
 
 
-		for (var/atom/movable/AM in view(2, location))
+		for( var/atom/movable/AM in view(2, location))
 			if (AM == user)
 				continue
 
@@ -308,7 +308,7 @@
 				L.adjustFireLoss(50)
 			AM.apply_push_impulse_from(location, 250, 0.3)
 
-		for (var/i in 1 to 4)
+		for( var/i in 1 to 4)
 			new /obj/effect/effect/expanding_circle(location, 0.25, 1. SECONDS)
 			sleep(rand_between(2,4))
 		qdel(src)

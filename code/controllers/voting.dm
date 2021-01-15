@@ -40,12 +40,12 @@
 
 			if(time_remaining < 0)
 				result()
-				for(var/client/C in voting)
+				for( var/client/C in voting)
 					if(C)
 						C << browse(null,"window=vote;size=450x740")
 				reset()
 			else
-				for(var/client/C in voting)
+				for( var/client/C in voting)
 					if(C)
 						C << browse(vote.interface(C),"window=vote;size=450x740")
 
@@ -120,7 +120,7 @@
 					to_world("<font color='purple'>Crew Transfer Factor: [factor]</font>")
 
 
-		for(var/option in choices)
+		for( var/option in choices)
 			var/votes = choices[option]
 			total_votes += votes
 			if(votes > greatest_votes)
@@ -137,7 +137,7 @@
 		var/first = list()
 		var/second = list()
 		var/third = list()
-		for(var/option in choices)
+		for( var/option in choices)
 			if(choices[option] == greatest_votes && greatest_votes)
 				first += option
 			else if(choices[option] == second_greatest_votes && second_greatest_votes)
@@ -156,7 +156,7 @@
 			if(length(winners[1]) > 1)
 				if(mode != "gamemode" || ticker.hide_mode == 0) // Here we are making sure we don't announce potential game modes
 					text = "<b>Vote Tied Between:</b>\n"
-					for(var/option in winners[1])
+					for( var/option in winners[1])
 						text += "\t[option]\n"
 			firstChoice = pick(winners[1])
 			winners[1] -= firstChoice
@@ -230,7 +230,7 @@
 						choices -= "Random"
 						if(!auto_add_antag)
 							choices -= "None"
-						for(var/i = 1, i <= length(.), i++)
+						for( var/i = 1, i <= length(.), i++)
 							if(.[i] == "Random")
 								.[i] = pick(choices)
 								to_world("The random antag in [i]\th place is [.[i]].")
@@ -319,7 +319,7 @@
 					if(ticker.current_state >= GAME_STATE_SETTING_UP)
 						return 0
 					choices.Add(config.votable_modes)
-					for (var/F in choices)
+					for( var/F in choices)
 						var/datum/game_mode/M = gamemode_cache[F]
 						if(!M)
 							continue
@@ -355,7 +355,7 @@
 					if(!config.allow_extra_antags)
 						return 0
 					var/list/all_antag_types = GLOB.all_antag_types_
-					for(var/antag_type in all_antag_types)
+					for( var/antag_type in all_antag_types)
 						var/datum/antagonist/antag = all_antag_types[antag_type]
 						if(!(antag.id in additional_antag_types) && antag.is_votable())
 							choices.Add(antag.role_text)
@@ -365,12 +365,12 @@
 				if("map")
 					if(!config.allow_map_switching)
 						return 0
-					for(var/name in GLOB.all_maps)
+					for( var/name in GLOB.all_maps)
 						choices.Add(name)
 				if("custom")
 					question = sanitizeSafe(input(usr,"What is the vote for?") as text|null)
 					if(!question)	return 0
-					for(var/i=1,i<=10,i++)
+					for( var/i=1,i<=10,i++)
 						var/option = capitalize(sanitize(input(usr,"Please enter an option or hit cancel to finish") as text|null))
 						if(!option || mode || !usr.client)	break
 						choices.Add(option)
@@ -426,10 +426,10 @@
 				if(capitalize(mode) == "Gamemode") .+= "<td align = 'center'><b>Minimum Players</b></td></tr>"
 
 				var/totalvotes = 0
-				for(var/i = 1, i <= choices.len, i++)
+				for( var/i = 1, i <= choices.len, i++)
 					totalvotes += choices[choices[i]]
 
-				for(var/i = 1, i <= choices.len, i++)
+				for( var/i = 1, i <= choices.len, i++)
 					var/votes = choices[choices[i]]
 					var/votepercent
 					if(totalvotes)

@@ -11,7 +11,7 @@
 	icon = GLOB.using_map.lobby_icon
 
 	var/known_icon_states = icon_states(icon)
-	for(var/lobby_screen in GLOB.using_map.lobby_screens)
+	for( var/lobby_screen in GLOB.using_map.lobby_screens)
 		if(!(lobby_screen in known_icon_states))
 			error("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
 			GLOB.using_map.lobby_screens -= lobby_screen

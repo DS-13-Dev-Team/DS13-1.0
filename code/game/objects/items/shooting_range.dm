@@ -55,7 +55,7 @@
 
 		hp -= Proj.damage
 		if(hp <= 0)
-			for(var/mob/O in oviewers())
+			for( var/mob/O in oviewers())
 				if ((O.client && !( O.blinded )))
 					to_chat(O, "<span class='warning'>\The [src] breaks into tiny pieces and collapses!</span>")
 			qdel(src)
@@ -97,7 +97,7 @@
 					new/datum/bullethole(src, bmark.pixel_x, bmark.pixel_y) // create new bullet hole
 
 		// draw bullet holes
-		for(var/datum/bullethole/B in bulletholes)
+		for( var/datum/bullethole/B in bulletholes)
 
 			virtualIcon.DrawBox(null, B.b1x1, B.b1y,  B.b1x2, B.b1y) // horizontal line, left to right
 			virtualIcon.DrawBox(null, B.b2x, B.b2y1,  B.b2x, B.b2y2) // vertical line, top to bottom

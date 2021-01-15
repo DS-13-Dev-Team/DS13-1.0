@@ -10,7 +10,7 @@
 	var/obj/test/extensions/expansion_obj = new(start, TRUE)
 
 	var/number_of_failures = 0
-	for(var/extension in expansion_obj)
+	for( var/extension in expansion_obj)
 		if(ispath(extension))
 			log_unit_test("[extension] was uninitalized.")
 			number_of_failures++

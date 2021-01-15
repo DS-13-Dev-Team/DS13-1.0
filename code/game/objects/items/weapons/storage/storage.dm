@@ -30,7 +30,7 @@
 
 /obj/item/weapon/storage/get_mass()
 	.=mass
-	for (var/a in contents)
+	for( var/a in contents)
 		var/atom/movable/AM = a
 		.+=AM.get_mass()
 
@@ -70,9 +70,9 @@
 
 	L += src.contents
 
-	for(var/obj/item/weapon/storage/S in src)
+	for( var/obj/item/weapon/storage/S in src)
 		L += S.return_inv()
-	for(var/obj/item/weapon/gift/G in src)
+	for( var/obj/item/weapon/gift/G in src)
 		L += G.gift
 		if (istype(G.gift, /obj/item/weapon/storage))
 			L += G.gift:return_inv()
@@ -112,7 +112,7 @@
 
 /obj/item/weapon/storage/proc/storage_space_used()
 	. = 0
-	for(var/obj/item/I in contents)
+	for( var/obj/item/I in contents)
 		. += I.get_storage_cost()
 
 //This proc return TRUE if the item can be picked up and 0 if it can't.
@@ -192,7 +192,7 @@
 		add_fingerprint(usr)
 
 		if(!prevent_warning)
-			for(var/mob/M in viewers(usr, null))
+			for( var/mob/M in viewers(usr, null))
 				if (M == usr)
 					to_chat(usr, "<span class='notice'>You put \the [W] into [src].</span>")
 				else if (get_dist(M, src) <= 2) //If someone is standing close enough, they can tell what it is... TODO replace with distance check
@@ -290,7 +290,7 @@
 	var/success = 0
 	var/failure = 0
 
-	for(var/obj/item/I in T)
+	for( var/obj/item/I in T)
 		if(!can_be_inserted(I, user, 0))	// Note can_be_inserted still makes noise when the answer is no
 			failure = 1
 			continue
@@ -325,7 +325,7 @@
 
 	var/turf/T = get_turf(src)
 	hide_from(usr)
-	for(var/obj/item/I in contents)
+	for( var/obj/item/I in contents)
 		remove_from_storage(I, T, 1)
 	finish_bulk_removal()
 
@@ -348,22 +348,22 @@
 	prepare_ui()
 
 	if(startswith)
-		for(var/item_path in startswith)
+		for( var/item_path in startswith)
 			var/list/data = startswith[item_path]
 			if(islist(data))
 				var/qty = data[1]
 				var/list/argsl = data.Copy()
 				argsl[1] = src
-				for(var/i in 1 to qty)
+				for( var/i in 1 to qty)
 					new item_path(arglist(argsl))
 			else
-				for(var/i in 1 to (isnull(data)? 1 : data))
+				for( var/i in 1 to (isnull(data)? 1 : data))
 					new item_path(src)
 		update_icon()
 
 /obj/item/weapon/storage/emp_act(severity)
 	if(!istype(src.loc, /mob/living))
-		for(var/obj/O in contents)
+		for( var/obj/O in contents)
 			O.emp_act(severity)
 	..()
 
@@ -380,7 +380,7 @@
 	can_hold.Cut()
 	max_w_class = 0
 	max_storage_space = 0
-	for(var/obj/item/I in src)
+	for( var/obj/item/I in src)
 		can_hold[I.type]++
 		max_w_class = max(I.w_class, max_w_class)
 		max_storage_space += I.get_storage_cost()

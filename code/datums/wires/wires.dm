@@ -54,7 +54,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 	var/list/colours_to_pick = wireColours.Copy() // Get a copy, not a reference.
 	var/list/indexes_to_pick = list()
 	//Generate our indexes
-	for(var/i = 1; i < MAX_FLAG && i < (1 << wire_count); i += i)
+	for( var/i = 1; i < MAX_FLAG && i < (1 << wire_count); i += i)
 		indexes_to_pick += i
 	colours_to_pick.len = wire_count // Downsize it to our specifications.
 
@@ -92,7 +92,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 	html += "<h3>Exposed Wires</h3>"
 	html += "<table[table_options]>"
 
-	for(var/colour in wires)
+	for( var/colour in wires)
 		html += "<tr>"
 		html += "<td[row_options1]><font color='[colour]'>&#9724;</font>[capitalize(colour)]</td>"
 		html += "<td[row_options2]>"
@@ -258,7 +258,7 @@ var/const/POWER = 8
 
 /datum/wires/proc/Pulse(obj/item/device/assembly/signaler/S)
 
-	for(var/colour in signallers)
+	for( var/colour in signallers)
 		if(S == signallers[colour])
 			PulseColour(colour)
 			break
@@ -284,12 +284,12 @@ var/const/POWER = 8
 	CutWireIndex(r)
 
 /datum/wires/proc/RandomCutAll(probability = 10)
-	for(var/i = 1; i < MAX_FLAG && i < (1 << wire_count); i += i)
+	for( var/i = 1; i < MAX_FLAG && i < (1 << wire_count); i += i)
 		if(prob(probability))
 			CutWireIndex(i)
 
 /datum/wires/proc/CutAll()
-	for(var/i = 1; i < MAX_FLAG && i < (1 << wire_count); i += i)
+	for( var/i = 1; i < MAX_FLAG && i < (1 << wire_count); i += i)
 		CutWireIndex(i)
 
 /datum/wires/proc/IsAllCut()
@@ -298,7 +298,7 @@ var/const/POWER = 8
 	return 0
 
 /datum/wires/proc/MendAll()
-	for(var/i = 1; i < MAX_FLAG && i < (1 << wire_count); i += i)
+	for( var/i = 1; i < MAX_FLAG && i < (1 << wire_count); i += i)
 		if(IsIndexCut(i))
 			CutWireIndex(i)
 

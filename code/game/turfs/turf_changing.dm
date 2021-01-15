@@ -6,7 +6,7 @@
 // Removes all signs of lattice on the pos of the turf -Donkieyo
 /turf/proc/RemoveLattice()
 
-	for (var/obj/structure/lattice/L in src)
+	for( var/obj/structure/lattice/L in src)
 		qdel(L)
 
 // Called after turf replaces old one
@@ -65,7 +65,7 @@
 		old_fire.RemoveFire()
 
 	//The zstructures list is wiped when a turf is changed, so lets rebuild it
-	for (var/atom/A in W)
+	for( var/atom/A in W)
 		A.register_zstructure(W)
 
 	if(tell_universe)
@@ -73,7 +73,7 @@
 
 	SSair.mark_for_update(src) //handle the addition of the new turf.
 
-	for(var/turf/space/S in range(W,1))
+	for( var/turf/space/S in range(W,1))
 		S.update_starlight()
 
 	W.post_change()

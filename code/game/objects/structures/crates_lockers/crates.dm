@@ -20,18 +20,18 @@ obj/structure/closet/crate
 	if(.)
 		if(rigged)
 			visible_message("<span class='danger'>There are wires attached to the lid of [src]...</span>")
-			for(var/obj/item/device/assembly_holder/H in src)
+			for( var/obj/item/device/assembly_holder/H in src)
 				H.process_activation(usr)
-			for(var/obj/item/device/assembly/A in src)
+			for( var/obj/item/device/assembly/A in src)
 				A.activate()
 
 /obj/structure/closet/crate/examine(mob/user)
 	..()
 	if(rigged && opened)
 		var/list/devices = list()
-		for(var/obj/item/device/assembly_holder/H in src)
+		for( var/obj/item/device/assembly_holder/H in src)
 			devices += H
-		for(var/obj/item/device/assembly/A in src)
+		for( var/obj/item/device/assembly/A in src)
 			devices += A
 		to_chat(user,"There are some wires attached to the lid, connected to [english_list(devices)].")
 
@@ -326,7 +326,7 @@ obj/structure/closet/crate
 	return list(/obj/structure/closet/body_bag/cryobag/blank)
 
 /obj/structure/closet/crate/secure/biohazard/blanks/can_close()
-	for(var/obj/structure/closet/closet in get_turf(src))
+	for( var/obj/structure/closet/closet in get_turf(src))
 		if(closet != src && !(istype(closet, /obj/structure/closet/body_bag/cryobag)))
 			return 0
 	return 1

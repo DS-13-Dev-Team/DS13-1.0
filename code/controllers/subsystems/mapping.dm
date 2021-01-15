@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(mapping)
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	preloadTemplates()
-	for(var/atype in subtypesof(/decl/submap_archetype))
+	for( var/atype in subtypesof(/decl/submap_archetype))
 		submap_archetypes[atype] = new atype
 	GLOB.using_map.build_away_sites()
 	..()
@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(mapping)
 
 /datum/controller/subsystem/mapping/proc/preloadTemplates(path = "maps/templates/") //see master controller setup
 	var/list/filelist = flist(path)
-	for(var/map in filelist)
+	for( var/map in filelist)
 		var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
 		map_templates[T.name] = T
 	preloadBlacklistableTemplates()
@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/banned_maps = list() + banned_exoplanet_dmms + banned_space_dmms + banned_away_site_dmms
 
-	for(var/item in sortList(subtypesof(/datum/map_template/ruin), /proc/cmp_ruincost_priority))
+	for( var/item in sortList(subtypesof(/datum/map_template/ruin), /proc/cmp_ruincost_priority))
 		var/datum/map_template/ruin/ruin_type = item
 		// screen out the abstract subtypes
 		if(!initial(ruin_type.id))
@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(mapping)
 
 		if (banned_maps)
 			var/is_banned = FALSE
-			for (var/mappath in R.mappaths)
+			for( var/mappath in R.mappaths)
 				if(banned_maps.Find(mappath))
 					is_banned = TRUE
 			if (is_banned)

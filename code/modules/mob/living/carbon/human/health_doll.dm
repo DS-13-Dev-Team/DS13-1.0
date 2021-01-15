@@ -97,7 +97,7 @@
 			trauma_val = max(H.shock_stage,H.get_shock())/(H.species.total_health-100)
 		// Collect and apply the images all at once to avoid appearance churn.
 		var/list/health_images = list()
-		for(var/obj/item/organ/external/E in H.organs)
+		for( var/obj/item/organ/external/E in H.organs)
 			if(no_damage && (E.brute_dam || E.burn_dam))
 				no_damage = 0
 			health_images += E.get_damage_hud_image()

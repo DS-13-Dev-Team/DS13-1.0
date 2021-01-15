@@ -24,10 +24,10 @@ var/repository/cameras/camera_repository = new()
 		return
 	invalidated = 0
 
-	for(var/sc in GLOB.cameranet.cameras)
+	for( var/sc in GLOB.cameranet.cameras)
 		var/obj/machinery/camera/C = sc
 		var/cam = C.nano_structure()
-		for(var/network in C.network)
+		for( var/network in C.network)
 			if(!networks[network])
 				ADD_SORTED(networks, network, /proc/cmp_text_asc)
 				networks[network] = list()

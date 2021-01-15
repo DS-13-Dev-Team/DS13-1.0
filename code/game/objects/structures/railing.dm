@@ -30,7 +30,7 @@
 /obj/structure/railing/Process()
 	if(!material || !material.radioactivity)
 		return
-	for(var/mob/living/L in range(1,src))
+	for( var/mob/living/L in range(1,src))
 		L.apply_effect(round(material.radioactivity/20),IRRADIATE, blocked = L.getarmor(null, "rad"))
 
 /obj/structure/railing/Initialize()
@@ -60,9 +60,9 @@
 	anchored = FALSE
 	atom_flags = 0
 	broken = TRUE
-	for(var/thing in trange(1, src))
+	for( var/thing in trange(1, src))
 		var/turf/T = thing
-		for(var/obj/structure/railing/R in T.contents)
+		for( var/obj/structure/railing/R in T.contents)
 			R.update_icon()
 	. = ..()
 
@@ -95,7 +95,7 @@
 	var/Rturn = turn(src.dir, -90)
 	var/Lturn = turn(src.dir, 90)
 
-	for(var/obj/structure/railing/R in src.loc)
+	for( var/obj/structure/railing/R in src.loc)
 		if ((R.dir == Lturn) && R.anchored)
 			neighbor_status |= 32
 			if (UpdateNeighbors)
@@ -104,22 +104,22 @@
 			neighbor_status |= 2
 			if (UpdateNeighbors)
 				R.update_icon(0)
-	for (var/obj/structure/railing/R in get_step(src, Lturn))
+	for( var/obj/structure/railing/R in get_step(src, Lturn))
 		if ((R.dir == src.dir) && R.anchored)
 			neighbor_status |= 16
 			if (UpdateNeighbors)
 				R.update_icon(0)
-	for (var/obj/structure/railing/R in get_step(src, Rturn))
+	for( var/obj/structure/railing/R in get_step(src, Rturn))
 		if ((R.dir == src.dir) && R.anchored)
 			neighbor_status |= 1
 			if (UpdateNeighbors)
 				R.update_icon(0)
-	for (var/obj/structure/railing/R in get_step(src, (Lturn + src.dir)))
+	for( var/obj/structure/railing/R in get_step(src, (Lturn + src.dir)))
 		if ((R.dir == Rturn) && R.anchored)
 			neighbor_status |= 64
 			if (UpdateNeighbors)
 				R.update_icon(0)
-	for (var/obj/structure/railing/R in get_step(src, (Rturn + src.dir))).
+	for( var/obj/structure/railing/R in get_step(src, (Rturn + src.dir))).
 		if ((R.dir == Lturn) && R.anchored)
 			neighbor_status |= 4
 			if (UpdateNeighbors)

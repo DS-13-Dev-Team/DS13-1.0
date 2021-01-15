@@ -10,12 +10,12 @@
 	var/inactive_groups = SSair.zones.len - active_groups
 
 	var/hotspots = 0
-	for(var/obj/fire/hotspot in world)
+	for( var/obj/fire/hotspot in world)
 		hotspots++
 
 	var/active_on_main_station = 0
 	var/inactive_on_main_station = 0
-	for(var/zone/zone in SSair.zones)
+	for( var/zone/zone in SSair.zones)
 		var/turf/simulated/turf = locate() in zone.contents
 		if(turf && turf.z in GLOB.using_map.station_levels)
 			if(zone.needs_update)
@@ -48,7 +48,7 @@
 	var/largest_click_time = 0
 	var/mob/largest_move_mob = null
 	var/mob/largest_click_mob = null
-	for(var/mob/M in world)
+	for( var/mob/M in world)
 		if(!M.client)
 			continue
 		if(M.next_move >= largest_move_time)
@@ -77,19 +77,19 @@
 	set name = "Radio report"
 
 	var/output = "<b>Radio Report</b><hr>"
-	for (var/fq in radio_controller.frequencies)
+	for( var/fq in radio_controller.frequencies)
 		output += "<b>Freq: [fq]</b><br>"
 		var/list/datum/radio_frequency/fqs = radio_controller.frequencies[fq]
 		if (!fqs)
 			output += "&nbsp;&nbsp;<b>ERROR</b><br>"
 			continue
-		for (var/filter in fqs.devices)
+		for( var/filter in fqs.devices)
 			var/list/f = fqs.devices[filter]
 			if (!f)
 				output += "&nbsp;&nbsp;[filter]: ERROR<br>"
 				continue
 			output += "&nbsp;&nbsp;[filter]: [f.len]<br>"
-			for (var/device in f)
+			for( var/device in f)
 				if (isobj(device))
 					output += "&nbsp;&nbsp;&nbsp;&nbsp;[device] ([device:x],[device:y],[device:z] in area [get_area(device:loc)])<br>"
 				else
@@ -123,7 +123,7 @@
 	set category = "Debug"
 
 	to_chat(usr, "<b>Jobbans active in this round.</b>")
-	for(var/t in jobban_keylist)
+	for( var/t in jobban_keylist)
 		to_chat(usr, "[t]")
 
 /client/proc/print_jobban_old_filter()
@@ -136,6 +136,6 @@
 		return
 
 	to_chat(usr, "<b>Jobbans active in this round.</b>")
-	for(var/t in jobban_keylist)
+	for( var/t in jobban_keylist)
 		if(findtext(t, filter))
 			to_chat(usr, "[t]")

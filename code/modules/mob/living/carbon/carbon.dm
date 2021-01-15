@@ -61,17 +61,17 @@
 				playsound(user.loc, 'sound/effects/attackblob.ogg', 50, 1)
 
 				if(prob(src.getBruteLoss() - 50))
-					for(var/atom/movable/A in stomach_contents)
+					for( var/atom/movable/A in stomach_contents)
 						A.loc = loc
 						stomach_contents.Remove(A)
 					src.gib()
 
 /mob/living/carbon/gib()
-	for(var/mob/M in src)
+	for( var/mob/M in src)
 		if(M in src.stomach_contents)
 			src.stomach_contents.Remove(M)
 		M.loc = src.loc
-		for(var/mob/N in viewers(src, null))
+		for( var/mob/N in viewers(src, null))
 			if(N.client)
 				N.show_message(text("<span class='danger'>[M] bursts out of [src]!</span>"), 2)
 	..()
@@ -345,7 +345,7 @@
 	return FALSE
 
 /mob/living/carbon/onDropInto(var/atom/movable/AM)
-	for(var/e in stomach_contents)
+	for( var/e in stomach_contents)
 		var/atom/movable/stomach_content = e
 		if(stomach_content.contains(AM))
 			if(can_devour(AM))
@@ -393,7 +393,7 @@
 	stasis_value = 0
 	if((species && (species.species_flags & SPECIES_FLAG_NO_SCAN)) || isSynthetic())
 		return
-	for(var/source in stasis_sources)
+	for( var/source in stasis_sources)
 		stasis_value += stasis_sources[source]
 	stasis_sources.Cut()
 

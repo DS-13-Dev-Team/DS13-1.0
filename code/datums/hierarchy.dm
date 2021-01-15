@@ -11,10 +11,10 @@
 
 	var/list/all_subtypes = list()
 	all_subtypes[type] = src
-	for(var/subtype in subtypesof(type))
+	for( var/subtype in subtypesof(type))
 		all_subtypes[subtype] = new subtype(FALSE, TRUE)
 
-	for(var/subtype in (all_subtypes - type))
+	for( var/subtype in (all_subtypes - type))
 		var/decl/hierarchy/subtype_instance = all_subtypes[subtype]
 		var/decl/hierarchy/subtype_parent = all_subtypes[subtype_instance.parent_type]
 		subtype_instance.parent = subtype_parent

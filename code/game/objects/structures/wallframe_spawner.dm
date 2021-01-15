@@ -53,13 +53,13 @@
 		var/obj/structure/window/new_win = new win_path(loc)
 		handle_window_spawn(new_win)
 	else
-		for (var/dir in GLOB.cardinal)
+		for( var/dir in GLOB.cardinal)
 			var/turf/T = get_step(src, dir)
 			var/obj/effect/wallframe_spawn/other = locate(type) in T
 			if(!other)
 				var/found_connection
 				if(locate(/obj/structure/grille) in T)
-					for(var/obj/structure/window/W in T)
+					for( var/obj/structure/window/W in T)
 						if(W.type == win_path && W.dir == get_dir(T,src))
 							found_connection = 1
 							qdel(W)
@@ -70,13 +70,13 @@
 			else
 				neighbours |= other
 	activated = 1
-	for(var/obj/effect/wallframe_spawn/other in neighbours)
+	for( var/obj/effect/wallframe_spawn/other in neighbours)
 		if(!other.activated) other.activate()
 
 /obj/effect/wallframe_spawn/proc/handle_frame_spawn(obj/structure/wall_frame/F)
-	for(var/direction in GLOB.cardinal)
+	for( var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
-		for(var/obj/O in T)
+		for( var/obj/O in T)
 			if( istype(O, /obj/machinery/door))
 				var/obj/machinery/door/D = O
 				D.update_connections()

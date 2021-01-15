@@ -73,7 +73,7 @@ obj/machinery/atmospherics/mains_pipe
 
 	proc/burst()
 		..()
-		for(var/obj/machinery/atmospherics/pipe/mains_component/pipe in contents)
+		for( var/obj/machinery/atmospherics/pipe/mains_component/pipe in contents)
 			burst()
 
 	proc/check_pressure(pressure)
@@ -93,7 +93,7 @@ obj/machinery/atmospherics/mains_pipe
 
 	disconnect()
 		..()
-		for(var/obj/machinery/atmospherics/pipe/mains_component/node in nodes)
+		for( var/obj/machinery/atmospherics/pipe/mains_component/node in nodes)
 			node.disconnect()
 
 	Destroy()
@@ -102,7 +102,7 @@ obj/machinery/atmospherics/mains_pipe
 
 	atmos_init()
 		..()
-		for(var/i = 1 to nodes.len)
+		for( var/i = 1 to nodes.len)
 			var/obj/machinery/atmospherics/mains_pipe/node = nodes[i]
 			if(node)
 				supply.nodes[i] = node.supply
@@ -160,18 +160,18 @@ obj/machinery/atmospherics/mains_pipe/simple
 		var/node1_dir
 		var/node2_dir
 
-		for(var/direction in GLOB.cardinal)
+		for( var/direction in GLOB.cardinal)
 			if(direction&initialize_mains_directions)
 				if (!node1_dir)
 					node1_dir = direction
 				else if (!node2_dir)
 					node2_dir = direction
 
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node1_dir))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node1_dir))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[1] = target
 				break
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node2_dir))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node2_dir))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[2] = target
 				break
@@ -206,9 +206,9 @@ obj/machinery/atmospherics/mains_pipe/manifold
 	atmos_init()
 		var/connect_directions = initialize_mains_directions
 
-		for(var/direction in GLOB.cardinal)
+		for( var/direction in GLOB.cardinal)
 			if(direction&connect_directions)
-				for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,direction))
+				for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,direction))
 					if(target.initialize_mains_directions & get_dir(target,src))
 						nodes[1] = target
 						connect_directions &= ~direction
@@ -217,9 +217,9 @@ obj/machinery/atmospherics/mains_pipe/manifold
 					break
 
 
-		for(var/direction in GLOB.cardinal)
+		for( var/direction in GLOB.cardinal)
 			if(direction&connect_directions)
-				for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,direction))
+				for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,direction))
 					if(target.initialize_mains_directions & get_dir(target,src))
 						nodes[2] = target
 						connect_directions &= ~direction
@@ -228,9 +228,9 @@ obj/machinery/atmospherics/mains_pipe/manifold
 					break
 
 
-		for(var/direction in GLOB.cardinal)
+		for( var/direction in GLOB.cardinal)
 			if(direction&connect_directions)
-				for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,direction))
+				for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,direction))
 					if(target.initialize_mains_directions & get_dir(target,src))
 						nodes[3] = target
 						connect_directions &= ~direction
@@ -268,22 +268,22 @@ obj/machinery/atmospherics/mains_pipe/manifold4w
 		..()
 
 	atmos_init()
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,NORTH))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,NORTH))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[1] = target
 				break
 
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,SOUTH))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,SOUTH))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[2] = target
 				break
 
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,EAST))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,EAST))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[3] = target
 				break
 
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,WEST))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,WEST))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[3] = target
 				break
@@ -328,15 +328,15 @@ obj/machinery/atmospherics/mains_pipe/split
 		node2_dir = turn(dir, -90)
 		node3_dir = dir
 
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node1_dir))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node1_dir))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[1] = target
 				break
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node2_dir))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node2_dir))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[2] = target
 				break
-		for(var/obj/machinery/atmospherics/target in get_step(src,node3_dir))
+		for( var/obj/machinery/atmospherics/target in get_step(src,node3_dir))
 			if(target.initialize_directions & get_dir(target,src))
 				node3 = target
 				break
@@ -435,19 +435,19 @@ obj/machinery/atmospherics/mains_pipe/split3
 			supply_node_dir = SOUTH
 			scrubbers_node_dir = NORTH
 
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src, node1_dir))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src, node1_dir))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[1] = target
 				break
-		for(var/obj/machinery/atmospherics/target in get_step(src,supply_node_dir))
+		for( var/obj/machinery/atmospherics/target in get_step(src,supply_node_dir))
 			if(target.initialize_directions & get_dir(target,src))
 				supply_node = target
 				break
-		for(var/obj/machinery/atmospherics/target in get_step(src,scrubbers_node_dir))
+		for( var/obj/machinery/atmospherics/target in get_step(src,scrubbers_node_dir))
 			if(target.initialize_directions & get_dir(target,src))
 				scrubbers_node = target
 				break
-		for(var/obj/machinery/atmospherics/target in get_step(src,aux_node_dir))
+		for( var/obj/machinery/atmospherics/target in get_step(src,aux_node_dir))
 			if(target.initialize_directions & get_dir(target,src))
 				aux_node = target
 				break
@@ -515,7 +515,7 @@ obj/machinery/atmospherics/mains_pipe/cap
 		icon_state = "cap[invisibility ? "-f" : ""]"
 
 	atmos_init()
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,dir))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,dir))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[1] = target
 				break
@@ -556,7 +556,7 @@ obj/machinery/atmospherics/mains_pipe/valve
 		var/turf/simulated/floor = loc
 		var/hide = istype(floor) ? floor.intact : 0
 		level = 1
-		for(var/obj/machinery/atmospherics/mains_pipe/node in nodes)
+		for( var/obj/machinery/atmospherics/mains_pipe/node in nodes)
 			if(node.level == 2)
 				hide = 0
 				level = 2
@@ -572,18 +572,18 @@ obj/machinery/atmospherics/mains_pipe/valve
 		var/node1_dir
 		var/node2_dir
 
-		for(var/direction in cardinal)
+		for( var/direction in cardinal)
 			if(direction&initialize_mains_directions)
 				if (!node1_dir)
 					node1_dir = direction
 				else if (!node2_dir)
 					node2_dir = direction
 
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node1_dir))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node1_dir))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[1] = target
 				break
-		for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node2_dir))
+		for( var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,node2_dir))
 			if(target.initialize_mains_directions & get_dir(target,src))
 				nodes[2] = target
 				break
@@ -615,8 +615,8 @@ obj/machinery/atmospherics/mains_pipe/valve
 		open = 0
 		update_icon()
 
-		for(var/obj/machinery/atmospherics/pipe/mains_component/node in src)
-			for(var/obj/machinery/atmospherics/pipe/mains_component/o in node.nodes)
+		for( var/obj/machinery/atmospherics/pipe/mains_component/node in src)
+			for( var/obj/machinery/atmospherics/pipe/mains_component/o in node.nodes)
 				o.disconnect(node)
 				o.build_network()
 
@@ -673,7 +673,7 @@ obj/machinery/atmospherics/mains_pipe/valve
 			var/turf/simulated/floor = loc
 			var/hide = istype(floor) ? floor.intact : 0
 			level = 1
-			for(var/obj/machinery/atmospherics/mains_pipe/node in nodes)
+			for( var/obj/machinery/atmospherics/mains_pipe/node in nodes)
 				if(node.level == 2)
 					hide = 0
 					level = 2

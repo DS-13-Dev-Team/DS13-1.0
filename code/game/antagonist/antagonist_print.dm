@@ -5,7 +5,7 @@
 
 	var/text = list()
 	text += "<br><br><font size = 2><b>The [current_antagonists.len == 1 ? "[role_text] was" : "[role_text_plural] were"]:</b></font>"
-	for(var/datum/mind/P in current_antagonists)
+	for( var/datum/mind/P in current_antagonists)
 		text += print_player(P)
 		text += get_special_objective_text(P)
 		if(P.ambitions)
@@ -14,7 +14,7 @@
 		if(!global_objectives.len && P.objectives && P.objectives.len)
 			var/failed
 			var/num = 1
-			for(var/datum/objective/O in P.objectives)
+			for( var/datum/objective/O in P.objectives)
 				text += print_objective(O, num)
 				if(O.check_completion())
 					text += "<font color='green'><B>Success!</B></font>"
@@ -32,7 +32,7 @@
 	if(global_objectives && global_objectives.len)
 		text += "<BR><FONT size = 2>Their objectives were:</FONT>"
 		var/num = 1
-		for(var/datum/objective/O in global_objectives)
+		for( var/datum/objective/O in global_objectives)
 			text += print_objective(O, num, 1)
 			num++
 

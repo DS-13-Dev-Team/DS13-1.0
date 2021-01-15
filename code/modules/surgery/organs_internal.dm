@@ -44,7 +44,7 @@
 		return FALSE
 	if(BP_IS_ROBOTIC(affected) || BP_IS_CRYSTAL(affected))
 		return FALSE
-	for(var/obj/item/organ/internal/I in affected.internal_organs)
+	for( var/obj/item/organ/internal/I in affected.internal_organs)
 		if(I.damage > 0)
 			if(I.surface_accessible)
 				return TRUE
@@ -64,7 +64,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if(!affected || affected.how_open() < 2)
 		return
-	for(var/obj/item/organ/internal/I in affected.internal_organs)
+	for( var/obj/item/organ/internal/I in affected.internal_organs)
 		if(I && I.damage > 0 && !BP_IS_ROBOTIC(I) && (!I.status & ORGAN_DEAD || I.can_recover()) && (I.surface_accessible || affected.how_open() >= (affected.encased ? 3 : 2)))
 			user.visible_message("[user] starts treating damage to [target]'s [I.name] with [tool_name].", \
 			"You start treating damage to [target]'s [I.name] with [tool_name]." )
@@ -84,7 +84,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if(!affected || affected.how_open() < 2)
 		return
-	for(var/obj/item/organ/internal/I in affected.internal_organs)
+	for( var/obj/item/organ/internal/I in affected.internal_organs)
 		if(I && I.damage > 0 && !BP_IS_ROBOTIC(I) && (I.surface_accessible || affected.how_open() >= (affected.encased ? SURGERY_ENCASED : SURGERY_RETRACTED)))
 			if(I.status & ORGAN_DEAD && I.can_recover())
 				user.visible_message("<span class='notice'>[user] treats damage to [target]'s [I.name] with [tool_name], though it needs to be recovered further.</span>", \
@@ -112,7 +112,7 @@
 		target.adjustToxLoss(10)
 		affected.take_external_damage(dam_amt, 0, (DAM_SHARP|DAM_EDGE), used_weapon = tool)
 
-	for(var/obj/item/organ/internal/I in affected.internal_organs)
+	for( var/obj/item/organ/internal/I in affected.internal_organs)
 		if(I && I.damage > 0 && !BP_IS_ROBOTIC(I) && (I.surface_accessible || affected.how_open() >= (affected.encased ? 3 : 2)))
 			I.take_internal_damage(dam_amt)
 
@@ -147,7 +147,7 @@
 	target.op_stage.current_organ = null
 
 	var/list/attached_organs = list()
-	for(var/organ in target.internal_organs_by_name)
+	for( var/organ in target.internal_organs_by_name)
 		var/obj/item/organ/I = target.internal_organs_by_name[organ]
 		if(I && !(I.status & ORGAN_CUT_AWAY) && I.parent_organ == target_zone)
 			attached_organs |= organ
@@ -210,7 +210,7 @@
 		return 0
 
 	var/list/removable_organs = list()
-	for(var/obj/item/organ/internal/I in affected.implants)
+	for( var/obj/item/organ/internal/I in affected.implants)
 		if(I.status & ORGAN_CUT_AWAY)
 			removable_organs |= I
 
@@ -368,7 +368,7 @@
 		return 0
 
 	var/list/attachable_organs = list()
-	for(var/obj/item/organ/I in affected.implants)
+	for( var/obj/item/organ/I in affected.implants)
 		if(I && (I.status & ORGAN_CUT_AWAY))
 			attachable_organs |= I
 
@@ -449,7 +449,7 @@
 	target.op_stage.current_organ = null
 
 	var/obj/item/organ/internal/list/dead_organs = list()
-	for(var/obj/item/organ/internal/I in target.internal_organs)
+	for( var/obj/item/organ/internal/I in target.internal_organs)
 		if(I && !(I.status & ORGAN_CUT_AWAY) && I.status & ORGAN_DEAD && I.parent_organ == affected.organ_tag && !BP_IS_ROBOTIC(I))
 			dead_organs |= I
 

@@ -44,8 +44,8 @@ Related Procs:
 	//*/
 	/*
 	. = list()
-	for(var/i = 0, i<diameter, i++)
-		for(var/j = 0, j<diameter, j++)
+	for( var/i = 0, i<diameter, i++)
+		for( var/j = 0, j<diameter, j++)
 			var/obj/screen/click_catcher/CC = new()
 			CC.screen_loc = "NORTH-[i],EAST-[j]"
 			. += CC
@@ -76,7 +76,7 @@ Related Procs:
 //This is mildly inefficient and should only be called at places which aren't performance critical
 /client/proc/thorough_remove_click_catcher()
 	remove_click_catcher()
-	for (var/obj/screen/click_catcher/C in screen)
+	for( var/obj/screen/click_catcher/C in screen)
 		screen -= C
 
 /client/proc/remake_click_catcher()

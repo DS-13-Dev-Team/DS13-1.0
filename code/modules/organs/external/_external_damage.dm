@@ -101,7 +101,7 @@ obj/item/organ/external/take_general_damage(var/amount, silent = FALSE)
 		//Disturb treated burns
 		if(owner && brute > 5)
 			var/disturbed = 0
-			for(var/datum/wound/burn/W in wounds)
+			for( var/datum/wound/burn/W in wounds)
 				if((W.disinfected || W.salved) && prob(brute + W.damage))
 					W.disinfected = 0
 					W.salved = 0
@@ -140,7 +140,7 @@ obj/item/organ/external/take_general_damage(var/amount, silent = FALSE)
 		return 0
 
 	//Heal damage on the individual wounds
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		if(brute == 0 && burn == 0)
 			break
 
@@ -223,7 +223,7 @@ obj/item/organ/external/take_general_damage(var/amount, silent = FALSE)
 	else if(is_dislocated())
 		lasting_pain += 5
 	var/tox_dam = 0
-	for(var/obj/item/organ/internal/I in internal_organs)
+	for( var/obj/item/organ/internal/I in internal_organs)
 		tox_dam += I.getToxLoss()
 	return pain + lasting_pain + 0.7 * brute_dam + 0.8 * burn_dam + 0.3 * tox_dam + 0.5 * get_genetic_damage()
 

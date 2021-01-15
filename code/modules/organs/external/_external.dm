@@ -97,7 +97,7 @@
 	if((limb_flags & ORGAN_FLAG_FINGERPRINT) && dna && !is_stump() && !BP_IS_ROBOTIC(src))
 		return md5(dna.uni_identity)
 
-	for(var/obj/item/organ/external/E in children)
+	for( var/obj/item/organ/external/E in children)
 		var/print = E.get_fingerprint()
 		if(print)
 			return print
@@ -119,7 +119,7 @@
 /obj/item/organ/external/Destroy()
 
 	if(wounds)
-		for(var/datum/wound/wound in wounds)
+		for( var/datum/wound/wound in wounds)
 			wound.embedded_objects.Cut()
 		wounds.Cut()
 
@@ -127,13 +127,13 @@
 		parent.children -= src
 
 	if(children)
-		for(var/obj/item/organ/external/C in children)
+		for( var/obj/item/organ/external/C in children)
 			if (C.parent == src)
 				C.parent = null
 			qdel(C)
 
 	if(internal_organs)
-		for(var/obj/item/organ/O in internal_organs)
+		for( var/obj/item/organ/O in internal_organs)
 			qdel(O)
 
 	applied_pressure = null
@@ -184,7 +184,7 @@
 	burn_damage *= mult/species.burn_mod //ignore burn mod for EMP damage
 
 	var/power = 4 - severity //stupid reverse severity
-	for(var/obj/item/I in implants)
+	for( var/obj/item/I in implants)
 		if(I.obj_flags & OBJ_FLAG_CONDUCTIBLE)
 			burn_damage += I.w_class * rand(power, 3*power)
 
@@ -196,10 +196,10 @@
 	if(!contents.len)
 		return ..()
 	var/list/removable_objects = list()
-	for(var/obj/item/organ/external/E in (contents + src))
+	for( var/obj/item/organ/external/E in (contents + src))
 		if(!istype(E))
 			continue
-		for(var/obj/item/I in E.contents)
+		for( var/obj/item/I in E.contents)
 			if(istype(I,/obj/item/organ))
 				continue
 			removable_objects |= I
@@ -216,7 +216,7 @@
 /obj/item/organ/external/examine()
 	. = ..()
 	if(in_range(usr, src) || isghost(usr))
-		for(var/obj/item/I in contents)
+		for( var/obj/item/I in contents)
 			if(istype(I, /obj/item/organ))
 				continue
 			to_chat(usr, "<span class='danger'>There is \a [I] sticking out of it.</span>")
@@ -224,7 +224,7 @@
 
 /obj/item/organ/external/show_decay_status(mob/user)
 	..(user)
-	for(var/obj/item/organ/external/child in children)
+	for( var/obj/item/organ/external/child in children)
 		child.show_decay_status(user)
 
 /obj/item/organ/external/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -274,7 +274,7 @@
 	all_items.Add(implants)
 	all_items.Add(internal_organs)
 
-	for(var/obj/item/organ/external/child in children)
+	for( var/obj/item/organ/external/child in children)
 		all_items.Add(child.get_contents_recursive())
 
 	return all_items
@@ -312,7 +312,7 @@
 		owner.shock_stage += 20
 
 		//check to see if we still need the verb
-		for(var/obj/item/organ/external/limb in owner.organs)
+		for( var/obj/item/organ/external/limb in owner.organs)
 			if(limb.dislocated == 1)
 				return
 		owner.verbs -= /mob/living/carbon/human/proc/undislocate
@@ -331,10 +331,10 @@
 		owner.organs_by_name[organ_tag] = src
 		owner.organs |= src
 
-		for(var/obj/item/organ/organ in internal_organs)
+		for( var/obj/item/organ/organ in internal_organs)
 			organ.replaced(owner, src)
 
-		for(var/obj/implant in implants)
+		for( var/obj/implant in implants)
 			implant.forceMove(owner)
 
 			if(istype(implant, /obj/item/weapon/implant))
@@ -344,7 +344,7 @@
 				imp_device.imp_in = owner
 				imp_device.implanted = 1
 
-		for(var/obj/item/organ/external/organ in children)
+		for( var/obj/item/organ/external/organ in children)
 			organ.replaced(owner, FALSE)
 
 		if (update)
@@ -357,7 +357,7 @@
 				parent.children = list()
 			parent.children.Add(src)
 			//Remove all stump wounds since limb is not missing anymore
-			for(var/datum/wound/lost_limb/W in parent.wounds)
+			for( var/datum/wound/lost_limb/W in parent.wounds)
 				parent.wounds -= W
 				qdel(W)
 				break
@@ -419,17 +419,17 @@ This function completely restores a damaged organ to perfect condition.
 	germ_level = 0
 	pain = 0
 	genetic_degradation = 0
-	for(var/datum/wound/wound in wounds)
+	for( var/datum/wound/wound in wounds)
 		wound.embedded_objects.Cut()
 	wounds.Cut()
 	number_wounds = 0
 
 	// handle internal organs
-	for(var/obj/item/organ/current_organ in internal_organs)
+	for( var/obj/item/organ/current_organ in internal_organs)
 		current_organ.rejuvenate(ignore_prosthetic_prefs)
 
 	// remove embedded objects and drop them on the floor
-	for(var/obj/implanted_object in implants)
+	for( var/obj/implanted_object in implants)
 		if(!istype(implanted_object,/obj/item/weapon/implant))	// We don't want to remove REAL implants. Just shrapnel etc.
 			implanted_object.loc = get_turf(src)
 			implants -= implanted_object
@@ -457,10 +457,10 @@ This function completely restores a damaged organ to perfect condition.
 		owner.organs_by_name -= organ_tag
 		while(null in owner.organs) owner.organs -= null
 	if(children && children.len)
-		for(var/obj/item/organ/external/E in children)
+		for( var/obj/item/organ/external/E in children)
 			E.remove_rejuv()
 	children.Cut()
-	for(var/obj/item/organ/internal/I in internal_organs)
+	for( var/obj/item/organ/internal/I in internal_organs)
 		I.remove_rejuv()
 	..()
 
@@ -520,7 +520,7 @@ This function completely restores a damaged organ to perfect condition.
 		if((type == CUT || type == BRUISE) && damage >= 5)
 			//we need to make sure that the wound we are going to worsen is compatible with the type of damage...
 			var/list/compatible_wounds = list()
-			for (var/datum/wound/W in wounds)
+			for( var/datum/wound/W in wounds)
 				if (W.can_worsen(type, damage))
 					compatible_wounds += W
 
@@ -554,7 +554,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(surgical)
 			W.autoheal_cutoff = 0
 		else
-			for(var/datum/wound/other in wounds)
+			for( var/datum/wound/other in wounds)
 				if(other.can_merge(W))
 					other.merge_wound(W)
 					return
@@ -642,14 +642,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/proc/handle_germ_sync()
 	var/turf/simulated/T = get_turf(owner)
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		//Open wounds can become infected
 		if(max(istype(T) && T.dirt*10, 2*owner.germ_level) > W.germ_level && W.infection_check())
 			W.germ_level++
 
 	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
 	if (!antibiotics)
-		for(var/datum/wound/W in wounds)
+		for( var/datum/wound/W in wounds)
 			//Infected wounds raise the organ's germ level
 			if (W.germ_level > germ_level || prob(min(W.germ_level, 30)))
 				germ_level++
@@ -665,7 +665,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(germ_level >= INFECTION_LEVEL_TWO)
 		//spread the infection to internal organs
 		var/obj/item/organ/target_organ = null	//make internal organs become infected one at a time instead of all at once
-		for (var/obj/item/organ/I in internal_organs)
+		for( var/obj/item/organ/I in internal_organs)
 			if (I.germ_level > 0 && I.germ_level < min(germ_level, INFECTION_LEVEL_TWO))	//once the organ reaches whatever we can give it, or level two, switch to a different one
 				if (!target_organ || I.germ_level > target_organ.germ_level)	//choose the organ with the highest germ_level
 					target_organ = I
@@ -673,7 +673,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if (!target_organ)
 			//figure out which organs we can spread germs to and pick one at random
 			var/list/candidate_organs = list()
-			for (var/obj/item/organ/I in internal_organs)
+			for( var/obj/item/organ/I in internal_organs)
 				if (I.germ_level < germ_level)
 					candidate_organs |= I
 			if (candidate_organs.len)
@@ -684,7 +684,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 		//spread the infection to child and parent organs
 		if (children)
-			for (var/obj/item/organ/external/child in children)
+			for( var/obj/item/organ/external/child in children)
 				if (child.germ_level < germ_level && !BP_IS_ROBOTIC(child))
 					if (child.germ_level < INFECTION_LEVEL_ONE*2 || prob(30))
 						child.germ_level++
@@ -707,7 +707,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/update_wounds()
 
 	if(BP_IS_ROBOTIC(src)) //Robotic limbs don't heal or get worse.
-		for(var/datum/wound/W in wounds) //Repaired wounds disappear though
+		for( var/datum/wound/W in wounds) //Repaired wounds disappear though
 			if(W.damage <= 0)  //and they disappear right away
 				wounds -= W    //TODO: robot wounds for robot limbs
 		return
@@ -721,7 +721,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/numwounds = max(wounds.len, 1)
 
 
-	for(var/datum/wound/W as anything in wounds)
+	for( var/datum/wound/W as anything in wounds)
 
 		if (W.damage)
 			//Wounds can be burn damage type. But when it comes to brute they are one of several subtypes instead. Cut, pierce, bruise
@@ -777,7 +777,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	//update damage counts
 	var/bleeds = (!BP_IS_ROBOTIC(src) && !BP_IS_CRYSTAL(src))
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		if(W.damage_type == BURN)
 			burn_dam += W.damage
 		else
@@ -958,7 +958,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				dir = 2
 		if(DROPLIMB_BURN)
 			new /obj/effect/decal/cleanable/ash(get_turf(victim))
-			for(var/obj/item/I in src)
+			for( var/obj/item/I in src)
 				if(I.w_class > ITEM_SIZE_SMALL && !istype(I,/obj/item/organ))
 					I.loc = get_turf(src)
 			qdel(src)
@@ -978,12 +978,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 			gore.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
 
-			for(var/obj/item/organ/I in internal_organs)
+			for( var/obj/item/organ/I in internal_organs)
 				I.removed()
 				if(istype(loc,/turf))
 					I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
 
-			for(var/obj/item/I in src)
+			for( var/obj/item/I in src)
 				I.loc = get_turf(src)
 				I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
 
@@ -1009,21 +1009,21 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 // checks if all wounds on the organ are bandaged
 /obj/item/organ/external/proc/is_bandaged()
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		if(!W.bandaged)
 			return 0
 	return 1
 
 // checks if all wounds on the organ are salved
 /obj/item/organ/external/proc/is_salved()
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		if(!W.salved)
 			return 0
 	return 1
 
 // checks if all wounds on the organ are disinfected
 /obj/item/organ/external/proc/is_disinfected()
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		if(!W.disinfected)
 			return 0
 	return 1
@@ -1031,7 +1031,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/bandage()
 	var/rval = 0
 	status &= ~ORGAN_BLEEDING
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		rval |= !W.bandaged
 		W.bandaged = 1
 	if(rval)
@@ -1040,14 +1040,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/proc/salve()
 	var/rval = 0
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		rval |= !W.salved
 		W.salved = 1
 	return rval
 
 /obj/item/organ/external/proc/disinfect()
 	var/rval = 0
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		rval |= !W.disinfected
 		W.disinfected = 1
 		W.germ_level = 0
@@ -1056,19 +1056,19 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/clamp_wounds()
 	var/rval = 0
 	src.status &= ~ORGAN_BLEEDING
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		rval |= !W.clamped
 		W.clamped = 1
 	return rval
 
 /obj/item/organ/external/proc/clamped()
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		if(W.clamped)
 			return 1
 
 obj/item/organ/external/proc/remove_clamps()
 	var/rval = 0
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		rval |= W.clamped
 		W.clamped = 0
 	return rval
@@ -1081,7 +1081,7 @@ obj/item/organ/external/proc/remove_clamps()
 	W.open_wound(min(W.damage * 2, W.damage_list[1] - W.damage))
 
 	if(!encased)
-		for(var/obj/item/weapon/implant/I in implants)
+		for( var/obj/item/weapon/implant/I in implants)
 			I.exposed()
 
 /obj/item/organ/external/proc/fracture()
@@ -1170,7 +1170,7 @@ obj/item/organ/external/proc/remove_clamps()
 	update_icon(1)
 	unmutate()
 
-	for(var/obj/item/organ/external/T in children)
+	for( var/obj/item/organ/external/T in children)
 		T.robotize(company, 1)
 
 	if(owner)
@@ -1179,7 +1179,7 @@ obj/item/organ/external/proc/remove_clamps()
 			owner.full_prosthetic = null // Will be rechecked next isSynthetic() call.
 
 		if(!keep_organs)
-			for(var/obj/item/organ/thing in internal_organs)
+			for( var/obj/item/organ/thing in internal_organs)
 				if(istype(thing))
 					if(thing.vital || BP_IS_ROBOTIC(thing))
 						continue
@@ -1198,7 +1198,7 @@ obj/item/organ/external/proc/remove_clamps()
 	return (brute_dam+burn_dam)	//could use max_damage?
 
 /obj/item/organ/external/proc/has_infected_wound()
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		if(W.germ_level > INFECTION_LEVEL_ONE)
 			return 1
 	return 0
@@ -1221,7 +1221,7 @@ obj/item/organ/external/proc/remove_clamps()
 			owner.visible_message("<span class='danger'>\The [W] sticks in the wound!</span>")
 
 	if(!supplied_wound)
-		for(var/datum/wound/wound in wounds)
+		for( var/datum/wound/wound in wounds)
 			if((wound.damage_type == CUT || wound.damage_type == PIERCE) && wound.damage >= W.w_class * 5)
 				supplied_wound = wound
 				break
@@ -1251,7 +1251,7 @@ obj/item/organ/external/proc/remove_clamps()
 		return
 
 	implants -= I
-	for(var/datum/wound/wound in wounds)
+	for( var/datum/wound/wound in wounds)
 		if(I in wound.embedded_objects)
 			wound.embedded_objects -= I
 			break
@@ -1290,7 +1290,7 @@ obj/item/organ/external/proc/remove_clamps()
 	victim.bad_external_organs -= src
 
 	remove_splint()
-	for(var/atom/movable/implant in implants)
+	for( var/atom/movable/implant in implants)
 		//large items and non-item objs fall to the floor, everything else stays
 		var/obj/item/I = implant
 		if(istype(I) && I.w_class < ITEM_SIZE_NORMAL)
@@ -1306,7 +1306,7 @@ obj/item/organ/external/proc/remove_clamps()
 
 	// Attached organs also fly off.
 	if(!ignore_children)
-		for(var/obj/item/organ/external/O in children)
+		for( var/obj/item/organ/external/O in children)
 			O.removed()
 
 
@@ -1322,7 +1322,7 @@ obj/item/organ/external/proc/remove_clamps()
 				O.parent = src
 
 	// Grab all the internal giblets too.
-	for(var/obj/item/organ/organ in internal_organs)
+	for( var/obj/item/organ/organ in internal_organs)
 		organ.removed(user, 0, 0)  // Organ stays inside and connected
 		organ.forceMove(src)
 
@@ -1378,7 +1378,7 @@ obj/item/organ/external/proc/remove_clamps()
 
 /obj/item/organ/external/proc/get_incision(strict)
 	var/datum/wound/cut/incision
-	for(var/datum/wound/cut/W in wounds)
+	for( var/datum/wound/cut/W in wounds)
 		if(W.bandaged || W.current_stage > W.max_bleeding_stage) // Shit's unusable
 			continue
 		if(strict && !W.is_surgical()) //We don't need dirty ones
@@ -1447,7 +1447,7 @@ obj/item/organ/external/proc/remove_clamps()
 		flavor_text += "a tear at the [amputation_point] so severe that it hangs by a scrap of flesh"
 
 	var/list/wound_descriptors = list()
-	for(var/datum/wound/W in wounds)
+	for( var/datum/wound/W in wounds)
 		var/this_wound_desc = W.desc
 		if(W.damage_type == BURN && W.salved)
 			this_wound_desc = "salved [this_wound_desc]"
@@ -1478,12 +1478,12 @@ obj/item/organ/external/proc/remove_clamps()
 
 		if(!encased || how_open() >= SURGERY_ENCASED)
 			var/list/bits = list()
-			for(var/obj/item/organ/internal/organ in internal_organs)
+			for( var/obj/item/organ/internal/organ in internal_organs)
 				bits += organ.get_visible_state()
 			if(bits.len)
 				wound_descriptors["[english_list(bits)] visible in the wounds"] = 1
 
-	for(var/wound in wound_descriptors)
+	for( var/wound in wound_descriptors)
 		switch(wound_descriptors[wound])
 			if(1)
 				flavor_text += "a [wound]"
@@ -1512,7 +1512,7 @@ obj/item/organ/external/proc/remove_clamps()
 		. += capitalize(broken_description)
 	if (implants.len)
 		var/unknown_body = 0
-		for(var/I in implants)
+		for( var/I in implants)
 			var/obj/item/weapon/implant/imp = I
 			if(istype(imp) && imp.known)
 				. += "[capitalize(imp.name)] implanted"
@@ -1530,7 +1530,7 @@ obj/item/organ/external/proc/remove_clamps()
 	if(wounds.len)
 		to_chat(user, "<span class='warning'>You find [get_wounds_desc()]</span>")
 		var/list/stuff = list()
-		for(var/datum/wound/wound in wounds)
+		for( var/datum/wound/wound in wounds)
 			if(wound.embedded_objects)
 				stuff += wound.embedded_objects
 		if(stuff.len)
@@ -1578,7 +1578,7 @@ obj/item/organ/external/proc/remove_clamps()
 
 /obj/item/organ/external/listen()
 	var/list/sounds = list()
-	for(var/obj/item/organ/internal/I in internal_organs)
+	for( var/obj/item/organ/internal/I in internal_organs)
 		var/gutsound = I.listen()
 		if(gutsound)
 			sounds += gutsound

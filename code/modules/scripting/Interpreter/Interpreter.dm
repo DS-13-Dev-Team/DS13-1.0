@@ -94,7 +94,7 @@
 
 			if(cur_statements < max_statements)
 
-				for(var/node/statement/S in Block.statements)
+				for( var/node/statement/S in Block.statements)
 					while(paused) sleep(10)
 
 					cur_statements++
@@ -188,7 +188,7 @@
 			if(istype(def))
 				if(curFunction) functions.Push(curFunction)
 				var/scope/S = CreateScope(def.block)
-				for(var/i=1 to def.parameters.len)
+				for( var/i=1 to def.parameters.len)
 					var/val
 					if(stmt.parameters.len>=i)
 						val = stmt.parameters[i]
@@ -206,7 +206,7 @@
 			else
 				cur_recursion--
 				var/list/params=new
-				for(var/node/expression/P in stmt.parameters)
+				for( var/node/expression/P in stmt.parameters)
 					params+=list(Eval(P))
 				if(isobject(def))	//def is an object which is the target of a function call
 					if( !hascall(def, stmt.func_name) )

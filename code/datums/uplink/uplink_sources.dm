@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 	name = "PDA"
 	desc = NO_GUARANTEE_NO_EXTRA_COST_DESC("a PDA")
 
-/decl/uplink_source/pda/setup_uplink_source(var/mob/M, amount)
+/decl/uplink_source/pda/setup_uplink_source(mob/M, amount)
 	var/obj/item/modular_computer/pda/P = find_in_mob(M, /obj/item/modular_computer/pda)
 	if(!P || !P.hard_drive)
 		return SETUP_FAILED
@@ -39,7 +39,7 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 	name = "Radio"
 	desc = NO_GUARANTEE_NO_EXTRA_COST_DESC("a radio")
 
-/decl/uplink_source/radio/setup_uplink_source(var/mob/M, amount)
+/decl/uplink_source/radio/setup_uplink_source(mob/M, amount)
 	var/obj/item/device/radio/R = find_in_mob(M, /obj/item/device/radio)
 	if(!R)
 		return SETUP_FAILED
@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 	name = "Implant"
 	desc = "Teleports an uplink implant into your head. Costs at least half the initial TC amount."
 
-/decl/uplink_source/implant/setup_uplink_source(var/mob/living/carbon/human/H, amount)
+/decl/uplink_source/implant/setup_uplink_source(mob/living/carbon/human/H, amount)
 	if(!istype(H))
 		return SETUP_FAILED
 
@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 	name = "Uplink Unit"
 	desc = "Teleports an uplink unit to your location. Costs 10% of the initial TC amount."
 
-/decl/uplink_source/unit/setup_uplink_source(var/mob/M, amount)
+/decl/uplink_source/unit/setup_uplink_source(mob/M, amount)
 	var/obj/item/device/radio/uplink/U = new(M, M.mind, round(amount * 0.9))
 	put_on_mob(M, U, "\A [U]")
 
@@ -92,12 +92,12 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 	name = "Telecrystals"
 	desc = "Get your telecrystals in pure form, without the means to trade them for goods."
 
-/decl/uplink_source/telecrystals/setup_uplink_source(var/mob/M, amount)
+/decl/uplink_source/telecrystals/setup_uplink_source(mob/M, amount)
 	var/obj/item/stack/telecrystal/TC = new(M, amount)
 	put_on_mob(M, TC, "[amount] telecrystal\s")
 
 /decl/uplink_source/proc/find_in_mob(mob/M, type)
-	for(var/item in M.get_equipped_items(TRUE))
+	for( var/item in M.get_equipped_items(TRUE))
 		if(!istype(item, type))
 			continue
 		var/obj/item/I = item
@@ -124,10 +124,10 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 
 	if(!priority_order || !priority_order.len)
 		priority_order = list()
-		for(var/entry in GLOB.default_uplink_source_priority)
+		for( var/entry in GLOB.default_uplink_source_priority)
 			priority_order += decls_repository.get_decl(entry)
 
-	for(var/entry in priority_order)
+	for( var/entry in priority_order)
 		var/decl/uplink_source/US = entry
 		if(US.setup_uplink_source(M, amount) != SETUP_FAILED)
 			return TRUE

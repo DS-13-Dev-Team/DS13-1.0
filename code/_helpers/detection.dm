@@ -85,7 +85,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 //As above, but specifically finds turfs without dense objects blocking them
 /atom/proc/clear_turfs_in_view(check_range = world.view)
 	var/list/things = list()
-	for (var/turf/T as anything in turfs_in_view(check_range))
+	for( var/turf/T as anything in turfs_in_view(check_range))
 		if (turf_clear(T))
 			things += T
 
@@ -107,7 +107,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	var/list/range = hear(R, T)
 
-	for(var/I in range)
+	for( var/I in range)
 		if(ismob(I))
 			hear |= recursive_content_check(I, hear, 3, 1, 0, include_mobs, include_objects)
 			if(include_mobs)
@@ -129,7 +129,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	. = list()
 	// Returns a list of mobs who can hear any of the radios given in @radios
 	var/list/speaker_coverage = list()
-	for(var/obj/item/device/radio/R in radios)
+	for( var/obj/item/device/radio/R in radios)
 		if(R)
 			//Cyborg checks. Receiving message uses a bit of cyborg's charge.
 			var/obj/item/device/radio/borg/BR = R
@@ -143,12 +143,12 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 			var/turf/speaker = get_turf(R)
 			if(speaker)
-				for(var/turf/T in hear(R.canhear_range,speaker))
+				for( var/turf/T in hear(R.canhear_range,speaker))
 					speaker_coverage[T] = T
 
 
 	// Try to find all the players who can hear the message
-	for(var/i = 1; i <= GLOB.player_list.len; i++)
+	for( var/i = 1; i <= GLOB.player_list.len; i++)
 		var/mob/M = GLOB.player_list[i]
 		if(M)
 			var/turf/ear = get_turf(M)
@@ -163,7 +163,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	var/list/hear = dview(range,T,INVISIBILITY_MAXIMUM)
 	var/list/hearturfs = list()
 
-	for(var/atom/movable/AM in hear)
+	for( var/atom/movable/AM in hear)
 		if(ismob(AM))
 			mobs += AM
 			hearturfs += get_turf(AM)
@@ -171,13 +171,13 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			objs += AM
 			hearturfs += get_turf(AM)
 
-	for(var/mob/M in GLOB.player_list)
+	for( var/mob/M in GLOB.player_list)
 		if(checkghosts && M.stat == DEAD && M.get_preference_value(checkghosts) != GLOB.PREF_NEARBY)
 			mobs |= M
 		else if(get_turf(M) in hearturfs)
 			mobs |= M
 
-	for(var/obj/O in GLOB.listening_objects)
+	for( var/obj/O in GLOB.listening_objects)
 		if(get_turf(O) in hearturfs)
 			objs |= O
 
@@ -235,7 +235,7 @@ proc
 
 /proc/able_mobs_in_oview(origin)
 	var/list/mobs = list()
-	for(var/mob/living/M in oview(origin)) // Only living mobs are considered able.
+	for( var/mob/living/M in oview(origin)) // Only living mobs are considered able.
 		if(!M.is_physically_disabled())
 			mobs += M
 	return mobs
@@ -248,7 +248,7 @@ proc
 	var/list/turfs = new/list()
 	var/rsq = radius * (radius+0.5)
 
-	for(var/atom/T in range(radius, centerturf))
+	for( var/atom/T in range(radius, centerturf))
 		var/dx = T.x - centerturf.x
 		var/dy = T.y - centerturf.y
 		if(dx*dx + dy*dy <= rsq)
@@ -263,7 +263,7 @@ proc
 	var/list/atoms = new/list()
 	var/rsq = radius * (radius+0.5)
 
-	for(var/atom/A in view(radius, centerturf))
+	for( var/atom/A in view(radius, centerturf))
 		var/dx = A.x - centerturf.x
 		var/dy = A.y - centerturf.y
 		if(dx*dx + dy*dy <= rsq)
@@ -304,7 +304,7 @@ proc
 	var/list/turfs = new/list()
 	var/rsq = radius * (radius+0.5)
 
-	for(var/turf/T in range(radius, centerturf))
+	for( var/turf/T in range(radius, centerturf))
 		var/dx = T.x - centerturf.x
 		var/dy = T.y - centerturf.y
 		if(dx*dx + dy*dy <= rsq)
@@ -317,7 +317,7 @@ proc
 	var/list/turfs = new/list()
 	var/rsq = radius * (radius+0.5)
 
-	for(var/turf/T in view(radius, centerturf))
+	for( var/turf/T in view(radius, centerturf))
 		var/dx = T.x - centerturf.x
 		var/dy = T.y - centerturf.y
 		if(dx*dx + dy*dy <= rsq)
@@ -355,11 +355,11 @@ proc
 
 	//Okay now we have our list to search through
 
-	for (var/atom/A as anything in haystack)
+	for( var/atom/A as anything in haystack)
 
 		//Check if it matches one of our required types
 		var/typematch = FALSE
-		for (var/v in valid_types)
+		for( var/v in valid_types)
 			if (istype(A, v))
 				typematch = TRUE
 				break
@@ -415,20 +415,20 @@ proc
 //These are literally just the same function with slightly different names, for convenience
 /atom/proc/get_cardinal()
 	.=list()
-	for (var/direction in GLOB.cardinal)
+	for( var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
 		.+=T
 
 /atom/proc/get_cardinal_turfs()
 	.=list()
-	for (var/direction in GLOB.cardinal)
+	for( var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
 		.+=T
 
 
 /atom/proc/get_diagonal_turfs()
 	.=list()
-	for (var/direction in GLOB.cornerdirs)
+	for( var/direction in GLOB.cornerdirs)
 		var/turf/T = get_step(src, direction)
 		.+=T
 
@@ -443,7 +443,7 @@ proc
 
 	//This is a list of all mobs with clients. At any given time it might contain 0-100 things
 	//Searching this is much cheaper than searching the contents of a view call, which is often several thousand atoms
-	for (var/mob/A as anything in GLOB.player_list)
+	for( var/mob/A as anything in GLOB.player_list)
 		//A mob seeing itself doesnt count
 		if (A == src)
 			continue

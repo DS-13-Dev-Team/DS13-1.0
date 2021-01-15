@@ -21,7 +21,7 @@
 	if(!istype(I.loc, /mob/living))
 		return
 	var/min_dist = INFINITY
-	for(var/s in connected_deity.structures)
+	for( var/s in connected_deity.structures)
 		var/dist = get_dist(holder,s)
 		if(dist < min_dist)
 			min_dist = dist

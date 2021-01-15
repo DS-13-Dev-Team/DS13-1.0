@@ -19,7 +19,7 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 
 /datum/disease2/disease/proc/makerandom(severity=2)
 	var/list/excludetypes = list()
-	for(var/i=1 ; i <= max_stage ; i++ )
+	for( var/i=1 ; i <= max_stage ; i++ )
 		var/datum/disease2/effect/E = get_random_virus2_effect(i, severity, excludetypes)
 		E.stage = i
 		if(!E.allow_multiple)
@@ -42,13 +42,13 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 /proc/get_infectable_species()
 	var/list/meat = list()
 	var/list/res = list()
-	for (var/specie in all_species)
+	for( var/specie in all_species)
 		var/datum/species/S = all_species[specie]
 		if((S.spawn_flags & SPECIES_CAN_JOIN) && !S.get_virus_immune() && !S.greater_form)
 			meat += S
 	if(meat.len)
 		var/num = rand(1,meat.len)
-		for(var/i=0,i<num,i++)
+		for( var/i=0,i<num,i++)
 			var/datum/species/picked = pick_n_take(meat)
 			res |= picked.name
 			if(picked.primitive_form)
@@ -85,7 +85,7 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 			cure(mob, 1)
 
 	var/top_badness = 1
-	for(var/datum/disease2/effect/e in effects)
+	for( var/datum/disease2/effect/e in effects)
 		if(e.stage == stage)
 			top_badness = max(top_badness, e.badness)
 
@@ -108,7 +108,7 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 			clicks = 0
 
 	//Do nasty effects
-	for(var/datum/disease2/effect/e in effects)
+	for( var/datum/disease2/effect/e in effects)
 		e.fire(mob,stage)
 
 	//fever
@@ -116,7 +116,7 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 		mob.bodytemperature = max(mob.bodytemperature, min(310+5*min(stage,max_stage) ,mob.bodytemperature+5*min(stage,max_stage)))
 
 /datum/disease2/disease/proc/cure(mob/living/carbon/mob, antigen)
-	for(var/datum/disease2/effect/e in effects)
+	for( var/datum/disease2/effect/e in effects)
 		e.deactivate(mob)
 	mob.virus2.Remove("[uniqueID]")
 	if(antigen)
@@ -132,7 +132,7 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 	uniqueID = rand(0,10000)
 	var/datum/disease2/effect/E = pick(effects)
 	var/list/exclude = list()
-	for(var/datum/disease2/effect/D in effects)
+	for( var/datum/disease2/effect/D in effects)
 		if(D != E)
 			exclude += D.type
 
@@ -158,7 +158,7 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 	disease.antigen   = antigen
 	disease.uniqueID = uniqueID
 	disease.affected_species = affected_species.Copy()
-	for(var/datum/disease2/effect/effect in effects)
+	for( var/datum/disease2/effect/effect in effects)
 		var/datum/disease2/effect/neweffect = new effect.type
 		neweffect.generate(effect.data)
 		neweffect.chance = effect.chance
@@ -172,9 +172,9 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 	. = 1
 
 	var/list/types = list()
-	for(var/datum/disease2/effect/d in effects)
+	for( var/datum/disease2/effect/d in effects)
 		types += d.type
-	for(var/datum/disease2/effect/d in disease.effects)
+	for( var/datum/disease2/effect/d in disease.effects)
 		if(!(d.type in types))
 			return 0
 
@@ -183,7 +183,7 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 
 /proc/virus_copylist(list/datum/disease2/disease/viruses)
 	var/list/res = list()
-	for (var/ID in viruses)
+	for( var/ID in viruses)
 		var/datum/disease2/disease/V = viruses[ID]
 		res["[V.uniqueID]"] = V.getcopy()
 	return res
@@ -214,13 +214,13 @@ var/global/list/virusDB = list()
 		if(verbose)
 			r += "<u>Rate of Progression:</u> [speed * 100]%<br>"
 			var/species = affected_species.Copy()
-			for(var/i = 1, i <= (SKILL_MAX - skill), i++)
+			for( var/i = 1, i <= (SKILL_MAX - skill), i++)
 				if(prob(30))
 					pick_n_take(species)
 			r += "<u>Species Affected:</u> [jointext(species, ", ")]<br>"
 			r += "<u>Symptoms:</u><br>"
 
-		for(var/datum/disease2/effect/E in given_effects)
+		for( var/datum/disease2/effect/E in given_effects)
 			dat += E.get_effect_info(verbose)
 
 	. = verbose ? JOINTEXT(r + dat) : "[r] ([jointext(dat, ", ")])"
@@ -247,7 +247,7 @@ proc/virology_letterhead(report_name)
 "}
 
 /datum/disease2/disease/proc/can_add_symptom(type)
-	for(var/datum/disease2/effect/H in effects)
+	for( var/datum/disease2/effect/H in effects)
 		if(H.type == type && !H.allow_multiple)
 			return 0
 

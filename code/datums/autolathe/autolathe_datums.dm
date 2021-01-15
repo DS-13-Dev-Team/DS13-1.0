@@ -78,7 +78,7 @@ other types of metals and chemistry for reagents).
 //Any materials specified in these designs are extras, added on top of what is extracted.
 /datum/design/proc/AssembleDesignMaterials(atom/temp_atom)
 	if(istype(temp_atom, /obj))
-		for(var/obj/O in temp_atom.GetAllContents(includeSelf = TRUE))
+		for( var/obj/O in temp_atom.GetAllContents(includeSelf = TRUE))
 			AddObjectMaterials(O)
 
 //Add materials and reagents from object to the recipe
@@ -93,7 +93,7 @@ other types of metals and chemistry for reagents).
 	var/list/mats = O.matter
 	if (mats && mats.len)
 
-		for(var/a in mats)
+		for( var/a in mats)
 
 			var/amount = mats[a] * multiplier
 			if(amount)
@@ -101,7 +101,7 @@ other types of metals and chemistry for reagents).
 
 	mats = O.matter_reagents
 	if (mats && mats.len)
-		for(var/a in mats)
+		for( var/a in mats)
 			var/amount = mats[a] * multiplier
 			if(amount)
 				LAZYAPLUS(chemicals, a, amount)
@@ -115,10 +115,10 @@ other types of metals and chemistry for reagents).
 	var/total_materials = 0
 	var/total_reagents = 0
 
-	for(var/m in materials)
+	for( var/m in materials)
 		total_materials += materials[m]
 
-	for(var/c in chemicals)
+	for( var/c in chemicals)
 		total_reagents += chemicals[c]
 
 	time = 5 + total_materials + (total_reagents / 5)
@@ -137,14 +137,14 @@ other types of metals and chemistry for reagents).
 
 	if(length(materials))
 		var/list/RS = list()
-		for(var/mat in materials)
+		for( var/mat in materials)
 			RS.Add(list(list("name" = mat, "req" = materials[mat])))
 		ui_data["materials"] = RS
 
 	if(length(chemicals))
 		var/list/RS = list()
 
-		for(var/reagent in chemicals)
+		for( var/reagent in chemicals)
 			var/datum/reagent/RG = new reagent(TRUE)//Passing in true here prevents a runtime errror
 			var/chemical_name = "UNKNOWN"
 			if(RG)
@@ -170,7 +170,7 @@ other types of metals and chemistry for reagents).
 	if(mat_efficiency != 1 && isobj(A))
 		var/obj/O = A
 		if(length(O.matter))
-			for(var/i in O.matter)
+			for( var/i in O.matter)
 				O.matter[i] = round(O.matter[i] * mat_efficiency, 0.01)
 
 	return A

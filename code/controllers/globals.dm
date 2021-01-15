@@ -60,7 +60,7 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 	gvars_datum_protected_varlist = list("gvars_datum_protected_varlist")
 
 	//See https://github.com/tgstation/tgstation/issues/26954
-	for(var/I in typesof(/datum/controller/global_vars/proc))
+	for( var/I in typesof(/datum/controller/global_vars/proc))
 		var/start_tick = world.time
 		call(src, I)()
 		if(world.time - start_tick)

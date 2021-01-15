@@ -45,7 +45,7 @@
 		state = 5
 	update_icon()
 	sleep(200)
-	for(var/atom/A in contents)
+	for( var/atom/A in contents)
 		A.clean_blood()
 		if(isitem(A))
 			var/obj/item/I = A
@@ -58,7 +58,7 @@
 				C.ironed_state = WRINKLES_WRINKLY
 
 	//Tanning!
-	for(var/obj/item/stack/material/hairlesshide/HH in contents)
+	for( var/obj/item/stack/material/hairlesshide/HH in contents)
 		var/obj/item/stack/material/wetleather/WL = new(src)
 		WL.amount = HH.amount
 		qdel(HH)
@@ -158,13 +158,13 @@
 			state = 2
 		if(2)
 			state = 1
-			for(var/atom/movable/O in contents)
+			for( var/atom/movable/O in contents)
 				O.forceMove(loc)
 		if(3)
 			state = 4
 		if(4)
 			state = 3
-			for(var/atom/movable/O in contents)
+			for( var/atom/movable/O in contents)
 				O.forceMove(get_turf(src))
 			crayon = null
 			state = 1
@@ -178,7 +178,7 @@
 				if(locate(/mob,contents))
 					var/mob/M = locate(/mob,contents)
 					M.gib()
-			for(var/atom/movable/O in contents)
+			for( var/atom/movable/O in contents)
 				O.forceMove(src.loc)
 			crayon = null
 			state = 1

@@ -85,7 +85,7 @@
 	var/list/tobuff = list()
 
 	//Okay we are good to go. Lets find our list of allies
-	for (var/mob/living/L in range(src, _range))
+	for( var/mob/living/L in range(src, _range))
 
 		if (L == src)
 			continue //Its a support ability, doesnt affect yourself
@@ -102,7 +102,7 @@
 
 
 	//Alrighty lets do this!
-	for (var/mob/living/L in tobuff)
+	for( var/mob/living/L in tobuff)
 		var/datum/extension/frenzy_buff/FB = get_extension(L, /datum/extension/frenzy_cooldown)
 		//Check if its already buffed, unlikely but we don't want duplicate extensions
 		//If it already exists, we'll extend the duration instead of remaking it. This ensures the message about muscle twitching doesn't repeat

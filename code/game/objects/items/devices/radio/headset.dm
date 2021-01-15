@@ -22,7 +22,7 @@
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
 	internal_channels.Cut()
-	for(var/T in encryption_keys)
+	for( var/T in encryption_keys)
 		if(ispath(T))
 			encryption_keys = new T(src)
 	if(ks1type)
@@ -270,10 +270,10 @@
 
 	if(isScrewdriver(W))
 		if(encryption_keys.len)
-			for(var/ch_name in channels)
+			for( var/ch_name in channels)
 				radio_controller.remove_object(src, radiochannels[ch_name])
 				secure_radio_connections[ch_name] = null
-			for(var/obj/ekey in encryption_keys)
+			for( var/obj/ekey in encryption_keys)
 				ekey.dropInto(user.loc)
 				encryption_keys -= ekey
 
@@ -303,7 +303,7 @@
 	src.translate_binary = 0
 	src.translate_hive = 0
 	src.syndie = 0
-	for(var/obj/ekey in encryption_keys)
+	for( var/obj/ekey in encryption_keys)
 		import_key_data(ekey)
 	reactivate()
 
@@ -313,7 +313,7 @@
 /obj/item/device/radio/headset/proc/import_key_data(obj/item/device/encryptionkey/key)
 	if(!key)
 		return
-	for(var/ch_name in key.channels)
+	for( var/ch_name in key.channels)
 		if(ch_name in src.channels)
 			continue
 		src.channels[ch_name] = key.channels[ch_name]
@@ -326,7 +326,7 @@
 
 /obj/item/device/radio/headset/proc/setupRadioDescription()
 	var/radio_text = ""
-	for(var/i = 1 to channels.len)
+	for( var/i = 1 to channels.len)
 		var/channel = channels[i]
 		var/key = get_radio_key_from_channel(channel)
 		radio_text += "[key] - [channel]"

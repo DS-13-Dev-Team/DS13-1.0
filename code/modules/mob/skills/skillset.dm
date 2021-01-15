@@ -13,7 +13,7 @@
 
 /datum/skillset/New(mob/mob)
 	owner = mob
-	for(var/datum/skill_verb/SV in GLOB.skill_verbs)
+	for( var/datum/skill_verb/SV in GLOB.skill_verbs)
 		if(SV.should_have_verb(src))
 			SV.give_to_skillset(src)
 	..()
@@ -28,7 +28,7 @@
 
 /datum/skillset/proc/get_value(skill_path)
 	. = skill_list[skill_path] || default_value
-	for(var/datum/skill_buff/SB in skill_buffs)
+	for( var/datum/skill_buff/SB in skill_buffs)
 		. += SB.buffs[skill_path]
 
 /datum/skillset/proc/obtain_from_mob(mob/mob)
@@ -61,7 +61,7 @@
 	var/allocation = given_client.prefs.skills_allocated[job] || list()
 	skill_list = list()
 
-	for(var/decl/hierarchy/skill/S in GLOB.skills)
+	for( var/decl/hierarchy/skill/S in GLOB.skills)
 		var/min = given_client.prefs.get_min_skill(job, S)
 		skill_list[S.type] = min + (allocation[S] || 0)
 	update_verbs()
@@ -85,5 +85,5 @@ datum/skillset/proc/open_ui()
 	NM.ui_interact(owner)
 
 datum/skillset/proc/refresh_uis()
-	for(var/nano_module in nm_viewing)
+	for( var/nano_module in nm_viewing)
 		SSnano.update_uis(nano_module)

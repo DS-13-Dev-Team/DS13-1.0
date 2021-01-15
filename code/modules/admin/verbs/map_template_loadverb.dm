@@ -19,7 +19,7 @@
 		May take a few seconds, particularly on  larger templates!", "Clear Contents", "No", "Yes") == "Yes")
 
 	var/list/preview = list()
-	for(var/S in template.get_affected_turfs(T,centered = TRUE))
+	for( var/S in template.get_affected_turfs(T,centered = TRUE))
 		preview += image('icons/turf/overlays.dmi',S,"greenOverlay")
 	usr.client.images += preview
 	if(alert(usr,"Confirm location.","Template Confirm","Yes","No") == "Yes")

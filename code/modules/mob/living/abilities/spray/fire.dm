@@ -14,10 +14,10 @@
 
 
 /datum/extension/spray/flame/Process()
-	for (var/t in affected_turfs)
+	for( var/t in affected_turfs)
 		var/turf/T = t
 
-		for (var/atom/A in T)
+		for( var/atom/A in T)
 			A.fire_act(null, temperature, null, 0.2)
 
 		T.fire_act(null, temperature, null, 0.2)

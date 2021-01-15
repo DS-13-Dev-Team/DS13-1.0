@@ -7,7 +7,7 @@
 
 /mob/living/deity/New()
 	..()
-	for(var/intent in intents) //Just in case we somehow remove/add a new intent #futureproofing
+	for( var/intent in intents) //Just in case we somehow remove/add a new intent #futureproofing
 		populate_intent(intent)
 	set_phenomena(add_phenomena(/datum/phenomena/communicate), I_HELP, "shift")
 	set_phenomena(add_phenomena(/datum/phenomena/punish), I_HELP, "control")
@@ -21,7 +21,7 @@
 		var/obj/screen/intent/deity/SD = hud_used.action_intent
 		SD.color = "#ff0000"
 	silenced += amount
-	for(var/phenom in phenomenas) //Also make it so that you don't do cooldowns.
+	for( var/phenom in phenomenas) //Also make it so that you don't do cooldowns.
 		var/datum/phenomena/P = phenomenas[phenom]
 		if(P.refresh_time)
 			P.refresh_time += amount
@@ -35,14 +35,14 @@
 			SD.color = null
 
 /mob/living/deity/Destroy()
-	for(var/phenom in phenomenas)
+	for( var/phenom in phenomenas)
 		remove_phenomena(phenom)
 	return ..()
 
 /mob/living/deity/proc/add_phenomena(type)
 	if(!phenomenas)
 		phenomenas = list()
-	for(var/P in phenomenas)
+	for( var/P in phenomenas)
 		if(istype(phenomenas[P], type))
 			return
 	var/datum/phenomena/P = new type(src)
@@ -58,9 +58,9 @@
 /mob/living/deity/proc/remove_phenomena(to_remove)
 	var/datum/phenomena/P = phenomenas[to_remove]
 	phenomenas -= to_remove
-	for(var/intent in intent_phenomenas)
+	for( var/intent in intent_phenomenas)
 		var/list/intent_list = intent_phenomenas[intent]
-		for(var/mod in intent_list)
+		for( var/mod in intent_list)
 			if(intent_list[mod] == P)
 				intent_list[mod] = null
 	qdel(P)

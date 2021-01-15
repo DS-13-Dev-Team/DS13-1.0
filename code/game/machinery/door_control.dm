@@ -86,7 +86,7 @@
 	*/
 
 /obj/machinery/button/remote/airlock/trigger()
-	for(var/obj/machinery/door/airlock/D in world)
+	for( var/obj/machinery/door/airlock/D in world)
 		if(D.id_tag == src.id)
 			if(specialfunctions & OPEN)
 				if (D.density)
@@ -131,7 +131,7 @@
 	icon_state = "blastctrl"
 
 /obj/machinery/button/remote/blast_door/trigger()
-	for(var/obj/machinery/door/blast/M in world)
+	for( var/obj/machinery/door/blast/M in world)
 		if(M.id == src.id)
 			if(M.density)
 				spawn(0)
@@ -150,7 +150,7 @@
 	desc = "It controls emitters, remotely."
 
 /obj/machinery/button/remote/emitter/trigger(mob/user as mob)
-	for(var/obj/machinery/power/emitter/E in world)
+	for( var/obj/machinery/power/emitter/E in world)
 		if(E.id == src.id)
 			spawn(0)
 				E.activate(user)
@@ -170,7 +170,7 @@
 	active = 1
 	update_icon()
 
-	for(var/obj/machinery/door/blast/M in SSmachines.machinery)
+	for( var/obj/machinery/door/blast/M in SSmachines.machinery)
 		if (M.id == src.id)
 			spawn( 0 )
 				M.open()
@@ -178,13 +178,13 @@
 
 	sleep(20)
 
-	for(var/obj/machinery/mass_driver/M in SSmachines.machinery)
+	for( var/obj/machinery/mass_driver/M in SSmachines.machinery)
 		if(M.id == src.id)
 			M.drive()
 
 	sleep(50)
 
-	for(var/obj/machinery/door/blast/M in SSmachines.machinery)
+	for( var/obj/machinery/door/blast/M in SSmachines.machinery)
 		if (M.id == src.id)
 			spawn(0)
 				M.close()

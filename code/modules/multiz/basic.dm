@@ -5,7 +5,7 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 /obj/effect/landmark/map_data/New()
 	..()
 
-	for(var/i = (z - height + 1) to (z-1))
+	for( var/i = (z - height + 1) to (z-1))
 		if (z_levels.len <i)
 			z_levels.len = i
 		z_levels[i] = TRUE
@@ -39,9 +39,9 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 
 /proc/GetConnectedZlevels(z)
 	. = list(z)
-	for(var/level = z, HasBelow(level), level--)
+	for( var/level = z, HasBelow(level), level--)
 		. |= level-1
-	for(var/level = z, HasAbove(level), level++)
+	for( var/level = z, HasAbove(level), level++)
 		. |= level+1
 
 /proc/AreConnectedZLevels(zA, zB)

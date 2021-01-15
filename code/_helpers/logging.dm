@@ -55,7 +55,7 @@
 	to_debug_listeners(text, "WARNING")
 
 /proc/to_debug_listeners(text, prefix = "DEBUG")
-	for(var/client/C in GLOB.admins)
+	for( var/client/C in GLOB.admins)
 		if(C.get_preference_value(/datum/client_preference/staff/show_debug_logs) == GLOB.PREF_SHOW)
 			to_chat(C, "[prefix]: [text]")
 
@@ -225,7 +225,7 @@
 		return "*null*"
 	if(islist(d))
 		var/list/L = list()
-		for(var/e in d)
+		for( var/e in d)
 			L += log_info_line(e)
 		return "\[[jointext(L, ", ")]\]" // We format the string ourselves, rather than use json_encode(), because it becomes difficult to read recursively escaped "
 	if(!istype(d))

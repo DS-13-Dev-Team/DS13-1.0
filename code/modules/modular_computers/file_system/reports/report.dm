@@ -22,7 +22,7 @@
 /*
 Access stuff. The report's access/access_edit should control whether it can be opened/submitted.
 For field editing or viewing, use the field's access/access_edit permission instead.
-The access system is based on "access patterns", lists of access values. 
+The access system is based on "access patterns", lists of access values.
 A user needs all access values in a pattern to be granted access.
 A user needs to only match one of the potentially several stored access patterns to be granted access.
 You must have access to have edit access.
@@ -43,7 +43,7 @@ If the override option is set to 0, the access supplied will instead be added as
 			access_edit = list(access_edit)
 		override ? (src.access_edit = list(access_edit)) : (src.access_edit += list(access_edit))
 	if(recursive)
-		for(var/datum/report_field/field in fields)
+		for( var/datum/report_field/field in fields)
 			field.set_access(access, access_edit, override)
 
 //Strongly recommended to use these procs to check for access. They can take access values (numbers) or lists of values.
@@ -57,12 +57,12 @@ If the override option is set to 0, the access supplied will instead be added as
 
 //Looking up fields. Names might not be unique unless you ensure otherwise.
 /datum/computer_file/report/proc/field_from_ID(ID)
-	for(var/datum/report_field/field in fields)
+	for( var/datum/report_field/field in fields)
 		if(field.ID == ID)
 			return field
 
 /datum/computer_file/report/proc/field_from_name(name)
-	for(var/datum/report_field/field in fields)
+	for( var/datum/report_field/field in fields)
 		if(field.display_name() == name)
 			return field
 
@@ -73,7 +73,7 @@ If the override option is set to 0, the access supplied will instead be added as
 /datum/computer_file/report/proc/submit(mob/user)
 	if(!istype(user))
 		return 0
-	for(var/datum/report_field/field in fields)
+	for( var/datum/report_field/field in fields)
 		if(field.required && !field.get_value())
 			to_chat(user, "<span class='notice'>You are missing a required field!</span>")
 			return 0
@@ -107,7 +107,7 @@ If the override option is set to 0, the access supplied will instead be added as
 	temp.file_time = file_time
 	temp.access_edit = access_edit
 	temp.access = access
-	for(var/i = 1, i <= length(fields), i++)
+	for( var/i = 1, i <= length(fields), i++)
 		var/datum/report_field/new_field = temp.fields[i]
 		new_field.copy_value(fields[i])
 	return temp
@@ -126,7 +126,7 @@ If the override option is set to 0, the access supplied will instead be added as
 	if(given_access)
 		.["access"] = verify_access(given_access)
 		.["access_edit"] = verify_access_edit(given_access)
-	for(var/datum/report_field/field in fields)
+	for( var/datum/report_field/field in fields)
 		var/dat = list()
 		if(given_access)
 			dat["access"] = field.verify_access(given_access)
@@ -148,7 +148,7 @@ no_html will strip any html, possibly killing useful formatting in the process.
 	. += "\[center\][logo]\[/center\]"
 	. += "\[center\]\[h2\][display_name()]\[/h2\]\[/center\]"
 	. += "\[grid\]"
-	for(var/datum/report_field/F in fields)
+	for( var/datum/report_field/F in fields)
 		if(!F.ignore_value)
 			. += "\[row\]\[cell\]\[b\][F.display_name()]:\[/b\]"
 			var/field = ((with_fields && F.can_edit) ? "\[field\]" : "" )

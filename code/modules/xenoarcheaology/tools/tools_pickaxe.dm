@@ -32,13 +32,13 @@
 
 /obj/item/weapon/storage/excavation/proc/sort_picks()
 	var/list/obj/item/weapon/tool/pickaxe/xeno/picksToSort = list()
-	for(var/obj/item/weapon/tool/pickaxe/xeno/P in src)
+	for( var/obj/item/weapon/tool/pickaxe/xeno/P in src)
 		picksToSort += P
 		P.loc = null
 	while(picksToSort.len)
 		var/min = 200 // No pick is bigger than 200
 		var/selected = 0
-		for(var/i = 1 to picksToSort.len)
+		for( var/i = 1 to picksToSort.len)
 			var/obj/item/weapon/tool/pickaxe/xeno/current = picksToSort[i]
 			if(current.get_tool_quality(QUALITY_DIGGING) <= min)
 				selected = i

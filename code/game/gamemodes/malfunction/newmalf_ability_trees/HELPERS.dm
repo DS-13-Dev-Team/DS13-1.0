@@ -15,12 +15,12 @@
 		return
 
 	var/hardware_list = list()
-	for(var/H in typesof(/datum/malf_hardware))
+	for( var/H in typesof(/datum/malf_hardware))
 		var/datum/malf_hardware/HW = new H
 		hardware_list += HW
 
 	var/possible_choices = list()
-	for(var/datum/malf_hardware/H in hardware_list)
+	for( var/datum/malf_hardware/H in hardware_list)
 		possible_choices += H.name
 
 	possible_choices += "CANCEL"
@@ -31,7 +31,7 @@
 
 	var/datum/malf_hardware/C
 
-	for (var/datum/malf_hardware/H in hardware_list)
+	for( var/datum/malf_hardware/H in hardware_list)
 		if(H.name == choice)
 			C = H
 			break
@@ -172,7 +172,7 @@
 	var/list/station_apcs = list()
 	var/list/offstation_apcs = list()
 
-	for(var/obj/machinery/power/apc/A in SSmachines.machinery)
+	for( var/obj/machinery/power/apc/A in SSmachines.machinery)
 		if(A.hacker && A.hacker == user)
 			continue
 		if(A.z in GLOB.using_map.station_levels)
@@ -191,7 +191,7 @@
 		return
 
 	var/list/L = list()
-	for(var/mob/living/silicon/robot/RB in SSmobs.mob_list)
+	for( var/mob/living/silicon/robot/RB in SSmobs.mob_list)
 		if(istype(RB, /mob/living/silicon/robot/drone))
 			continue
 		if(RB.connected_ai == A)
@@ -209,7 +209,7 @@
 		return
 
 	var/list/L = list()
-	for(var/mob/living/silicon/ai/AT in SSmobs.mob_list)
+	for( var/mob/living/silicon/ai/AT in SSmobs.mob_list)
 		if(L == A)
 			continue
 		L.Add(AT)
@@ -224,6 +224,6 @@
 	admin_attack_log(A, null, message, null, message)
 
 proc/check_for_interception()
-	for(var/mob/living/silicon/ai/A in SSmobs.mob_list)
+	for( var/mob/living/silicon/ai/A in SSmobs.mob_list)
 		if(A.intercepts_communication)
 			return A

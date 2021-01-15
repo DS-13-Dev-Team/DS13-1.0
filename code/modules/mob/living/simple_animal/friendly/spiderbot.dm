@@ -68,7 +68,7 @@
 		if(!B.key)
 			var/ghost_can_reenter = 0
 			if(B.mind)
-				for(var/mob/observer/ghost/G in GLOB.player_list)
+				for( var/mob/observer/ghost/G in GLOB.player_list)
 					if(G.can_reenter_corpse && G.mind == B.mind)
 						ghost_can_reenter = 1
 						break
@@ -250,14 +250,14 @@
 		return 1
 
 	var/list/items = list()
-	for(var/obj/item/I in view(1,src))
+	for( var/obj/item/I in view(1,src))
 		if(I.loc != src && I.w_class <= ITEM_SIZE_SMALL && I.Adjacent(src) )
 			items.Add(I)
 
 	var/obj/selection = input("Select an item.", "Pickup") in items
 
 	if(selection)
-		for(var/obj/item/I in view(1, src))
+		for( var/obj/item/I in view(1, src))
 			if(selection == I)
 				held_item = selection
 				selection.loc = src

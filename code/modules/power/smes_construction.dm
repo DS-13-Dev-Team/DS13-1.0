@@ -97,10 +97,10 @@
 /obj/machinery/power/smes/buildable/Destroy()
 	qdel(wires)
 	wires = null
-	for(var/obj/machinery/power/terminal/T in terminals)
+	for( var/obj/machinery/power/terminal/T in terminals)
 		T.master = null
 	terminals = null
-	for(var/datum/nano_module/rcon/R in world)
+	for( var/datum/nano_module/rcon/R in world)
 		R.FindDevices()
 	return ..()
 
@@ -143,7 +143,7 @@
 
 	// Allows for mapped-in SMESs with larger capacity/IO
 	if(cur_coils)
-		for(var/i = 1, i <= cur_coils, i++)
+		for( var/i = 1, i <= cur_coils, i++)
 			component_parts += new /obj/item/weapon/smes_coil(src)
 		recalc_coils()
 	..()
@@ -164,7 +164,7 @@
 	capacity = 0
 	input_level_max = 0
 	output_level_max = 0
-	for(var/obj/item/weapon/smes_coil/C in component_parts)
+	for( var/obj/item/weapon/smes_coil/C in component_parts)
 		cur_coils++
 		capacity += C.ChargeCapacity
 		input_level_max += C.IOCapacity
@@ -303,7 +303,7 @@
 	if (!src.powernet)
 		return
 
-	for(var/obj/machinery/power/terminal/T in src.powernet.nodes)
+	for( var/obj/machinery/power/terminal/T in src.powernet.nodes)
 		if(istype(T.master, /obj/machinery/power/apc))
 			var/obj/machinery/power/apc/A = T.master
 			if (prob(overload_chance))
@@ -377,7 +377,7 @@
 				var/obj/machinery/constructable_frame/machine_frame/M = new /obj/machinery/constructable_frame/machine_frame(src.loc)
 				M.state = 2
 				M.icon_state = "box_1"
-				for(var/obj/I in component_parts)
+				for( var/obj/I in component_parts)
 					I.forceMove(src.loc)
 					component_parts -= I
 				qdel(src)

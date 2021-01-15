@@ -221,7 +221,7 @@
 		//Here it gets complicated and i'll go for a quick solution for now.  Pick the most connected
 		var/list/candidates = list()
 		var/most_connections = 0
-		for (var/obj/item/projectile/wave/W in projectiles)
+		for( var/obj/item/projectile/wave/W in projectiles)
 			if (W.backstop)
 				continue	//Backstop cant be master
 			if (W.connections.len > most_connections)
@@ -248,14 +248,14 @@
 //Clear all existing connections and then re-connect
 //Yes we have to loop through the projectiles three times. No these can't all be done at once
 /datum/projectile_wave/proc/update_connections()
-	for (var/obj/item/projectile/wave/W as anything in projectiles)
+	for( var/obj/item/projectile/wave/W as anything in projectiles)
 		W.clear_connections()
 
-	for (var/obj/item/projectile/wave/W as anything in projectiles)
+	for( var/obj/item/projectile/wave/W as anything in projectiles)
 		W.connect_projectile()
 
 	if (master)
-		for (var/obj/item/projectile/wave/W as anything in projectiles)
+		for( var/obj/item/projectile/wave/W as anything in projectiles)
 			W.update_offset()
 
 
@@ -264,7 +264,7 @@
 //This assumes that each projectiles' connections list is up to date. If they might not be, update them with update_connections before calling it
 //Starting at a specified projectile, it recurses through everything in its connections, populating the connected list as it goes
 /datum/projectile_wave/proc/get_connected(obj/item/projectile/wave/W)
-	for (var/obj/item/projectile/wave/W2 as anything in W.connections)
+	for( var/obj/item/projectile/wave/W2 as anything in W.connections)
 		if (!(W2 in connected))
 			connected += W2
 			get_connected(W2)
@@ -301,7 +301,7 @@
 /datum/projectile_wave/proc/split_wave(list/leftover)
 
 	//First of all, remove them from us
-	for (var/obj/item/projectile/wave/W as anything in leftover)
+	for( var/obj/item/projectile/wave/W as anything in leftover)
 		remove(W, FALSE, FALSE)//Pass in false for these to prevent infinite loops
 
 	//Now lets make a new wave datum
@@ -312,7 +312,7 @@
 	new_wave.origin = origin
 
 	//Add the leftovers to it
-	for (var/obj/item/projectile/wave/W as anything in leftover)
+	for( var/obj/item/projectile/wave/W as anything in leftover)
 		new_wave.register(W, FALSE)//Pass in false for these to prevent infinite loops
 
 	//Update all the connections now everything is added
@@ -361,8 +361,8 @@
 
 
 	//1. First of all, connect to all wave projectiles in cardinal directions, which are part of the same wave as us
-	for (var/turf/T as anything in get_cardinal_turfs())
-		for (var/obj/item/projectile/wave/W in T)
+	for( var/turf/T as anything in get_cardinal_turfs())
+		for( var/obj/item/projectile/wave/W in T)
 
 			//If its part of a different wave, we don't want to know
 			if (W.PW != src.PW)
@@ -373,8 +373,8 @@
 
 
 	//2. Secondly, find non-backstop projectiles in diagonal directions from us
-	for (var/turf/T as anything in get_diagonal_turfs())
-		for (var/obj/item/projectile/wave/W in T)
+	for( var/turf/T as anything in get_diagonal_turfs())
+		for( var/obj/item/projectile/wave/W in T)
 			if (W.backstop)
 				continue	//We don't care about diagonal backstops
 
@@ -386,7 +386,7 @@
 
 			//To do this, we cycle through our own connections
 			var/connected = FALSE
-			for (var/obj/item/projectile/wave/W2 as anything in connections)
+			for( var/obj/item/projectile/wave/W2 as anything in connections)
 				//And we check if each of those is cardinally adjacent to the target
 				if (W2.cardinally_adjacent(W))
 					connected = TRUE
@@ -412,7 +412,7 @@
 
 
 /obj/item/projectile/wave/proc/clear_connections()
-	for (var/obj/item/projectile/wave/W2 as anything in connections)
+	for( var/obj/item/projectile/wave/W2 as anything in connections)
 		W2.connections -= src
 		connections -= W2
 

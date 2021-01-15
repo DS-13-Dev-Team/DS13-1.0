@@ -6,7 +6,7 @@ var/const/SUIT_STORAGE_WIRE_ELECTRIFY	= 1
 var/const/SUIT_STORAGE_WIRE_SAFETY		= 2
 var/const/SUIT_STORAGE_WIRE_LOCKED		= 4
 
-/datum/wires/suit_storage_unit/CanUse(var/mob/living/L)
+/datum/wires/suit_storage_unit/CanUse(mob/living/L)
 	var/obj/machinery/suit_cycler/S = holder
 	if(!istype(L, /mob/living/silicon))
 		if(S.electrified)

@@ -422,7 +422,7 @@
 	var/TP = get_total_power()
 
 	//Screenshake everyone near the impact site
-	for (var/mob/M in range(TP, obstacle))
+	for( var/mob/M in range(TP, obstacle))
 		shake_camera(M,10*TP,2)
 
 	obstacle.shake_animation(8*TP)
@@ -455,7 +455,7 @@
 		L.stunned = 0
 	var/TP = get_total_power()
 	//Screenshake everyone near the impact site
-	for (var/mob/M in range(TP))
+	for( var/mob/M in range(TP))
 		shake_camera(M,10*TP,2)
 	stop()
 
@@ -612,7 +612,7 @@
 
 //This is only for debugging
 /mob/proc/autocharge()
-	for (var/mob/living/L in view())
+	for( var/mob/living/L in view())
 		if (!L.client)
 			continue
 		charge_attack(_target = L, _speed = 5,  _cooldown = 20, _delay = 2 SECONDS)

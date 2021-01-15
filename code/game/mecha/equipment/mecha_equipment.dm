@@ -94,7 +94,7 @@
 	if (ispath(required_type))
 		return istype(M, required_type)
 
-	for (var/path in required_type)
+	for( var/path in required_type)
 		if (istype(M, path))
 			return 1
 

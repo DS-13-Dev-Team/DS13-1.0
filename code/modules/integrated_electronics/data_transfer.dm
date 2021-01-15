@@ -20,7 +20,7 @@
 
 /obj/item/integrated_circuit/transfer/splitter/do_work()
 	var/datum/integrated_io/I = inputs[1]
-	for(var/i = 1 to outputs.len)
+	for( var/i = 1 to outputs.len)
 		set_pin_data(IC_OUTPUT, i, I.data)
 
 /obj/item/integrated_circuit/transfer/activator_splitter
@@ -38,7 +38,7 @@
 	if(io != activators[1])
 		return
 
-	for(var/datum/integrated_io/activate/A in activators)
+	for( var/datum/integrated_io/activate/A in activators)
 		if(A == activators[1])
 			continue
 		A.activate()

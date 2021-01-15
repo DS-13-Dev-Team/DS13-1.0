@@ -173,15 +173,15 @@ swapmap
 			   y2>swapmaps_compiled_maxy ||\
 			   x2>swapmaps_compiled_maxx)
 				var/list/areas=new
-				for(var/atom/A in block(locate(x1,y1,z1),locate(x2,y2,z2)))
-					for(var/obj/O in A) qdel(O)
-					for(var/mob/M in A)
+				for( var/atom/A in block(locate(x1,y1,z1),locate(x2,y2,z2)))
+					for( var/obj/O in A) qdel(O)
+					for( var/mob/M in A)
 						if(!M.key) qdel(M)
 						else M.loc=null
 					areas[A.loc]=null
 					qdel(A)
 				// delete areas that belong only to this map
-				for(var/area/a in areas)
+				for( var/area/a in areas)
 					if(a && !a.contents.len) qdel(a)
 				if(x2>=world.maxx || y2>=world.maxy || z2>=world.maxz) CutXYZ()
 				qdel(areas)
@@ -211,7 +211,7 @@ swapmap
 		var/area/defarea=locate(world.area)
 		if(!defarea) defarea=new world.area
 		areas=list()
-		for(var/turf/T in block(locate(x1,y1,z1),locate(x2,y2,z2)))
+		for( var/turf/T in block(locate(x1,y1,z1),locate(x2,y2,z2)))
 			areas[T.loc]=null
 		for(n in areas)	// quickly eliminate associations for smaller storage
 			areas-=n
@@ -286,8 +286,8 @@ swapmap
 						A.contents+=T
 					else defarea.contents+=T
 					// clear the turf
-					for(var/obj/O in T) qdel(O)
-					for(var/mob/M in T)
+					for( var/obj/O in T) qdel(O)
+					for( var/mob/M in T)
 						if(!M.key) qdel(M)
 						else M.loc=null
 					// finish the read
@@ -366,7 +366,7 @@ swapmap
 		var/mx=swapmaps_compiled_maxx
 		var/my=swapmaps_compiled_maxy
 		var/mz=swapmaps_compiled_maxz
-		for(var/swapmap/M in swapmaps_loaded)	// may not include src
+		for( var/swapmap/M in swapmaps_loaded)	// may not include src
 			mx=max(mx,M.x2)
 			my=max(my,M.y2)
 			mz=max(mz,M.z2)
@@ -407,8 +407,8 @@ swapmap
 		          && T.z>=z1 && T.z<=z2)
 
 	proc/InUse()
-		for(var/turf/T in AllTurfs())
-			for(var/mob/M in T) if(M.key) return 1
+		for( var/turf/T in AllTurfs())
+			for( var/mob/M in T) if(M.key) return 1
 
 	proc/LoCorner(z=z1)
 		return locate(x1,y1,z)
@@ -449,11 +449,11 @@ swapmap
 		type. Actually the list doesn't have to be just turfs.
 	 */
 	proc/BuildInTurfs(list/turfs,item)
-		for(var/T in turfs) new item(T)
+		for( var/T in turfs) new item(T)
 
 atom
 	Write(savefile/S)
-		for(var/V in vars-"x"-"y"-"z"-"contents"-"icon"-"overlays"-"underlays")
+		for( var/V in vars-"x"-"y"-"z"-"contents"-"icon"-"overlays"-"underlays")
 			if(issaved(vars[V]))
 				if(vars[V]!=initial(vars[V])) S[V]<<vars[V]
 				else S.dir.Remove(V)
@@ -517,7 +517,7 @@ proc/InitializeSwapMaps()
 	swapmaps_loaded=list()
 	swapmaps_byname=list()
 	if(swapmaps_iconcache)
-		for(var/V in swapmaps_iconcache)
+		for( var/V in swapmaps_iconcache)
 			// reverse-associate everything
 			// so you can look up an icon file by name or vice-versa
 			swapmaps_iconcache[swapmaps_iconcache[V]]=V
@@ -560,7 +560,7 @@ proc/SwapMaps_Save(id)
 
 proc/SwapMaps_Save_All()
 	InitializeSwapMaps()
-	for(var/swapmap/M in swapmaps_loaded)
+	for( var/swapmap/M in swapmaps_loaded)
 		if(M) M.Save()
 
 proc/SwapMaps_Unload(id)

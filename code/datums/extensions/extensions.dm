@@ -18,7 +18,7 @@
 
 /datum/extension/Destroy()
 	if (statmods)
-		for (var/modtype in statmods)
+		for( var/modtype in statmods)
 			unregister_statmod(modtype)
 	holder = null
 	. = ..()
@@ -28,7 +28,7 @@
 
 /datum/Destroy()
 	if(extensions)
-		for(var/expansion_key in extensions)
+		for( var/expansion_key in extensions)
 			var/list/extension = extensions[expansion_key]
 			if(islist(extension))
 				extension.Cut()
@@ -86,7 +86,7 @@
 /proc/get_extension_of_type(datum/source, search_type)
 	if(!source.extensions)
 		return
-	for (var/typepath in source.extensions)
+	for( var/typepath in source.extensions)
 		var/datum/extension/E = source.extensions[typepath]
 		if (istype(E, search_type))
 			.=E

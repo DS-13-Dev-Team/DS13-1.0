@@ -41,7 +41,7 @@
 
 	to_chat(user, "<span class='notice'>You cut open the present.</span>")
 
-	for(var/mob/M in src) //Should only be one but whatever.
+	for( var/mob/M in src) //Should only be one but whatever.
 		M.dropInto(loc)
 		if (M.client)
 			M.client.eye = M.client.mob

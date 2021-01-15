@@ -135,7 +135,7 @@ Vars/
 	if (LAZYLEN(new_turfs))
 		//Check trajectory returns an assoc list with true/false as value of whether the tile is reachable
 		new_turfs = check_trajectory_mass(new_turfs, source, PASS_FLAG_TABLE)
-		for (var/turf in new_turfs)
+		for( var/turf in new_turfs)
 			//If the value is false, LOS was blockd, so we remove it from affected turfs
 			if (!new_turfs[turf])
 				affected_turfs -= turf

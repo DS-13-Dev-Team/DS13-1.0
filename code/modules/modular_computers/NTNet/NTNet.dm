@@ -32,7 +32,7 @@ var/global/datum/ntnet/ntnet_global = new()
 /datum/ntnet/New()
 	if(ntnet_global && (ntnet_global != src))
 		ntnet_global = src // There can be only one.
-	for(var/obj/machinery/ntnet_relay/R in SSmachines.machinery)
+	for( var/obj/machinery/ntnet_relay/R in SSmachines.machinery)
 		relays.Add(R)
 		R.NTNet = src
 	build_software_lists()
@@ -57,7 +57,7 @@ var/global/datum/ntnet/ntnet_global = new()
 
 	if(logs.len > setting_maxlogcount)
 		// We have too many logs, remove the oldest entries until we get into the limit
-		for(var/L in logs)
+		for( var/L in logs)
 			if(logs.len > setting_maxlogcount)
 				logs.Remove(L)
 			else
@@ -67,7 +67,7 @@ var/global/datum/ntnet/ntnet_global = new()
 	if(!relays || !relays.len)
 		return FALSE
 
-	for(var/obj/machinery/ntnet_relay/R in relays)
+	for( var/obj/machinery/ntnet_relay/R in relays)
 		if(R.operable())
 			return (NID in banned_nids)
 
@@ -81,7 +81,7 @@ var/global/datum/ntnet/ntnet_global = new()
 	var/operating = 0
 
 	// Check all relays. If we have at least one working relay, network is up.
-	for(var/obj/machinery/ntnet_relay/R in relays)
+	for( var/obj/machinery/ntnet_relay/R in relays)
 		if(R.operable())
 			operating = 1
 			break
@@ -103,7 +103,7 @@ var/global/datum/ntnet/ntnet_global = new()
 /datum/ntnet/proc/build_software_lists()
 	available_station_software = list()
 	available_antag_software = list()
-	for(var/F in typesof(/datum/computer_file/program))
+	for( var/F in typesof(/datum/computer_file/program))
 		var/datum/computer_file/program/prog = new F
 		// Invalid type (shouldn't be possible but just in case), invalid filetype (not executable program) or invalid filename (unset program)
 		if(!prog || !istype(prog) || prog.filename == "UnknownProgram" || prog.filetype != "PRG")
@@ -117,20 +117,20 @@ var/global/datum/ntnet/ntnet_global = new()
 // Builds lists that contain downloadable software.
 /datum/ntnet/proc/build_news_list()
 	available_news = list()
-	for(var/F in typesof(/datum/computer_file/data/news_article/))
+	for( var/F in typesof(/datum/computer_file/data/news_article/))
 		var/datum/computer_file/data/news_article/news = new F(1)
 		if(news.stored_data)
 			available_news.Add(news)
 
 // Generates service email list. Currently only used by broadcaster service
 /datum/ntnet/proc/build_emails_list()
-	for(var/F in subtypesof(/datum/computer_file/data/email_account/service))
+	for( var/F in subtypesof(/datum/computer_file/data/email_account/service))
 		new F()
 
 // Builds report list.
 /datum/ntnet/proc/build_reports_list()
 	available_reports = list()
-	for(var/F in typesof(/datum/computer_file/report))
+	for( var/F in typesof(/datum/computer_file/report))
 		var/datum/computer_file/report/type = F
 		if(initial(type.available_on_ntnet))
 			available_reports += new type
@@ -139,16 +139,16 @@ var/global/datum/ntnet/ntnet_global = new()
 	if(!access)
 		return available_reports
 	. = list()
-	for(var/datum/computer_file/report/report in available_reports)
+	for( var/datum/computer_file/report/report in available_reports)
 		if(report.verify_access_edit(access))
 			. += report
 
 // Attempts to find a downloadable file according to filename var
 /datum/ntnet/proc/find_ntnet_file_by_name(filename)
-	for(var/datum/computer_file/program/P in available_station_software)
+	for( var/datum/computer_file/program/P in available_station_software)
 		if(filename == P.filename)
 			return P
-	for(var/datum/computer_file/program/P in available_antag_software)
+	for( var/datum/computer_file/program/P in available_antag_software)
 		if(filename == P.filename)
 			return P
 
@@ -193,7 +193,7 @@ var/global/datum/ntnet/ntnet_global = new()
 			add_log("Configuration Updated. Wireless network firewall now [setting_systemcontrol ? "allows" : "disallows"] remote control of [station_name()]'s systems.")
 
 /datum/ntnet/proc/find_email_by_name(login)
-	for(var/datum/computer_file/data/email_account/A in ntnet_global.email_accounts)
+	for( var/datum/computer_file/data/email_account/A in ntnet_global.email_accounts)
 		if(A.login == login)
 			return A
 	return 0

@@ -350,7 +350,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if(!affected) return
 
-	for(var/obj/item/organ/internal/I in affected.internal_organs)
+	for( var/obj/item/organ/internal/I in affected.internal_organs)
 		if(BP_IS_ROBOTIC(I) && !BP_IS_CRYSTAL(I) && I.damage > 0)
 			if(I.surface_accessible)
 				return TRUE
@@ -362,7 +362,7 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	for(var/obj/item/organ/I in affected.internal_organs)
+	for( var/obj/item/organ/I in affected.internal_organs)
 		if(I && I.damage > 0)
 			if(BP_IS_ROBOTIC(I))
 				user.visible_message("[user] starts mending the damage to [target]'s [I.name]'s mechanisms.", \
@@ -374,7 +374,7 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	for(var/obj/item/organ/I in affected.internal_organs)
+	for( var/obj/item/organ/I in affected.internal_organs)
 
 		if(I && I.damage > 0)
 			if(BP_IS_ROBOTIC(I))
@@ -393,7 +393,7 @@
 	target.adjustToxLoss(5)
 	affected.createwound(CUT, 5)
 
-	for(var/internal in affected.internal_organs)
+	for( var/internal in affected.internal_organs)
 		var/obj/item/organ/internal/I = internal
 		if(I)
 			I.take_internal_damage(rand(3,5))
@@ -422,7 +422,7 @@
 	target.op_stage.current_organ = null
 
 	var/list/attached_organs = list()
-	for(var/organ in target.internal_organs_by_name)
+	for( var/organ in target.internal_organs_by_name)
 		var/obj/item/organ/I = target.internal_organs_by_name[organ]
 		if(I && !(I.status & ORGAN_CUT_AWAY) && !BP_IS_CRYSTAL(I) && I.parent_organ == target_zone)
 			attached_organs |= organ
@@ -473,7 +473,7 @@
 	target.op_stage.current_organ = null
 
 	var/list/removable_organs = list()
-	for(var/obj/item/organ/I in affected.implants)
+	for( var/obj/item/organ/I in affected.implants)
 		if ((I.status & ORGAN_CUT_AWAY) && BP_IS_ROBOTIC(I) && !BP_IS_CRYSTAL(I) && (I.parent_organ == target_zone))
 			removable_organs |= I.organ_tag
 
@@ -494,7 +494,7 @@
 	"<span class='notice'>You have reattached [target]'s [target.op_stage.current_organ] with \the [tool].</span>")
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	for (var/obj/item/organ/I in affected.implants)
+	for( var/obj/item/organ/I in affected.implants)
 		if (I.organ_tag == target.op_stage.current_organ)
 			I.status &= ~ORGAN_CUT_AWAY
 			affected.implants -= I

@@ -80,7 +80,7 @@ var/list/slot_equipment_priority = list( \
 /mob/proc/equip_to_appropriate_slot(obj/item/W)
 	if(!istype(W)) return FALSE
 
-	for(var/slot in slot_equipment_priority)
+	for( var/slot in slot_equipment_priority)
 		if(equip_to_slot_if_possible(W, slot, del_on_fail=0, disable_warning=1, redraw_mob=1))
 			return TRUE
 
@@ -102,7 +102,7 @@ var/list/slot_equipment_priority = list( \
 		if (rig.storage)
 			storages += back
 
-	for (var/obj/item/weapon/storage/S in src)
+	for( var/obj/item/weapon/storage/S in src)
 		storages |= S
 
 	return storages
@@ -111,7 +111,7 @@ var/list/slot_equipment_priority = list( \
 /mob/proc/equip_to_storage(obj/item/thing)
 	var/list/storages = get_all_storages()
 
-	for (var/obj/item/storage in storages)
+	for( var/obj/item/storage in storages)
 		if (storage.store_item(thing, src))
 			return storage
 
@@ -233,7 +233,7 @@ var/list/slot_equipment_priority = list( \
 
 /mob/proc/get_inventory_slot(obj/item/I)
 	var/slot = 0
-	for(var/s in slot_first to slot_last) //kind of worries me
+	for( var/s in slot_first to slot_last) //kind of worries me
 		if(get_equipped_item(s) == I)
 			slot = s
 			break
@@ -301,20 +301,20 @@ var/list/slot_equipment_priority = list( \
 	if(r_hand) . += r_hand
 
 /mob/proc/delete_inventory(include_carried = FALSE)
-	for(var/entry in get_equipped_items(include_carried))
+	for( var/entry in get_equipped_items(include_carried))
 		drop_from_inventory(entry)
 		qdel(entry)
 
 // Returns all currently covered body parts
 /mob/proc/get_covered_body_parts()
 	. = 0
-	for(var/entry in get_equipped_items())
+	for( var/entry in get_equipped_items())
 		var/obj/item/I = entry
 		. |= I.body_parts_covered
 
 // Returns the first item which covers any given body part
 /mob/proc/get_covering_equipped_item(body_parts)
-	for(var/entry in get_equipped_items())
+	for( var/entry in get_equipped_items())
 		var/obj/item/I = entry
 		if(I.body_parts_covered & body_parts)
 			return I
@@ -322,7 +322,7 @@ var/list/slot_equipment_priority = list( \
 // Returns all items which covers any given body part
 /mob/proc/get_covering_equipped_items(body_parts)
 	. = list()
-	for(var/entry in get_equipped_items())
+	for( var/entry in get_equipped_items())
 		var/obj/item/I = entry
 		if(I.body_parts_covered & body_parts)
 			. += I

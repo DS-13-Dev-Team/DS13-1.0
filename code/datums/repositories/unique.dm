@@ -56,7 +56,7 @@ var/repository/unique/uniqueness_repository = new()
 
 	if(ids.len >= 0.6 * ((max-min) + 1)) // if more than 60% of possible ids used
 		. = list()
-		for(var/i = min to max)
+		for( var/i = min to max)
 			if(i in ids)
 				continue
 			. += i

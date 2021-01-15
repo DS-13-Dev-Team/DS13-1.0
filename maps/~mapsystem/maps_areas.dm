@@ -8,7 +8,7 @@
 /datum/map/setup_map()
 	..()
 	if(!post_round_safe_areas.len)
-		for(var/area/A)
+		for( var/area/A)
 			if(isspace(A))
 				continue
 			if(A.z && (A.z in admin_levels))

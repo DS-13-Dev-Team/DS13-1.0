@@ -8,7 +8,7 @@
 	if(istype(shuttle))
 		var/fuel_pressure = 0
 		var/fuel_max_pressure = 0
-		for(var/obj/structure/fuel_port/FP in shuttle.fuel_ports) //loop through fuel ports
+		for( var/obj/structure/fuel_port/FP in shuttle.fuel_ports) //loop through fuel ports
 			var/obj/item/weapon/tank/fuel_tank = locate() in FP
 			if(fuel_tank)
 				fuel_pressure += fuel_tank.air_contents.return_pressure()

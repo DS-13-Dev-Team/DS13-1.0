@@ -50,7 +50,7 @@
 			if( !movement_target || !(movement_target.loc in oview(src, 3)) )
 				movement_target = null
 				stop_automated_movement = 0
-				for(var/obj/item/weapon/reagent_containers/food/snacks/S in oview(src,3))
+				for( var/obj/item/weapon/reagent_containers/food/snacks/S in oview(src,3))
 					if(isturf(S.loc) || ishuman(S.loc))
 						movement_target = S
 						break
@@ -82,7 +82,7 @@
 		if(prob(1))
 			visible_emote(pick("dances around.","chases their tail."))
 			spawn(0)
-				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
+				for( var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 					set_dir(i)
 					sleep(1)
 
@@ -93,11 +93,11 @@
 /mob/living/simple_animal/corgi/attackby(var/obj/item/O as obj, mob/user as mob)  //Marker -Agouri
 	if(istype(O, /obj/item/weapon/newspaper))
 		if(!stat)
-			for(var/mob/M in viewers(user, null))
+			for( var/mob/M in viewers(user, null))
 				if ((M.client && !( M.blinded )))
 					M.show_message("<span class='notice'>[user] baps [name] on the nose with the rolled up [O]</span>")
 			spawn(0)
-				for(var/i in list(1,2,4,8,4,2,1,2))
+				for( var/i in list(1,2,4,8,4,2,1,2))
 					set_dir(i)
 					sleep(1)
 	else
@@ -172,7 +172,7 @@
 			turns_since_scan = 0
 			var/alone = 1
 			var/ian = 0
-			for(var/mob/M in oviewers(7, src))
+			for( var/mob/M in oviewers(7, src))
 				if(istype(M, /mob/living/simple_animal/corgi/Ian))
 					if(M.client)
 						alone = 0
@@ -191,6 +191,6 @@
 		if(prob(1))
 			visible_emote(pick("dances around","chases her tail"))
 			spawn(0)
-				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
+				for( var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 					set_dir(i)
 					sleep(1)

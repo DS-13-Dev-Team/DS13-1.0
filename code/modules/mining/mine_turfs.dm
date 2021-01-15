@@ -80,7 +80,7 @@ var/list/mining_floors = list()
 
 	overlays.Cut()
 
-	for(var/direction in GLOB.cardinal)
+	for( var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
 		if(update_neighbors && istype(turf_to_check,/turf/simulated/floor/asteroid))
 			var/turf/simulated/floor/asteroid/T = turf_to_check
@@ -149,7 +149,7 @@ var/list/mining_floors = list()
 
 /turf/simulated/mineral/proc/MineralSpread()
 	if(mineral && mineral.spread)
-		for(var/trydir in GLOB.cardinal)
+		for( var/trydir in GLOB.cardinal)
 			if(prob(mineral.spread_chance))
 				var/turf/simulated/mineral/target_turf = get_step(src, trydir)
 				if(istype(target_turf) && !target_turf.mineral)
@@ -293,7 +293,7 @@ var/list/mining_floors = list()
 		return
 
 	var/depth = excavation_level()
-	for (var/datum/find/F in finds)
+	for( var/datum/find/F in finds)
 		if(depth > F.excavation_required) // Digging too deep can break the item. At least you won't summon a Balrog (probably)
 			var/fail_message = ". <b>[pick("There is a crunching noise","Part of the rock face crumbles away","Something breaks under your assault", "That didn't feel right")]</b>"
 
@@ -337,7 +337,7 @@ var/list/mining_floors = list()
 	if (mineral && mineral.result_amount)
 
 		//if the turf has already been excavated, some of it's ore has been removed
-		for (var/i = 1 to mineral.result_amount - mined_ore)
+		for( var/i = 1 to mineral.result_amount - mined_ore)
 			DropMineral()
 
 	var/obj/structure/boulder/B
@@ -396,7 +396,7 @@ var/list/mining_floors = list()
 	//sky's patented not-fucking-retarded overhaul!
 
 	//Give a random amount of loot from 1 to 3 or 5, varying on severity.
-	for(var/j in 1 to rand(1, 3 + max(min(severity, 1), 0) * 2))
+	for( var/j in 1 to rand(1, 3 + max(min(severity, 1), 0) * 2))
 		switch(rand(1,7))
 			if(1)
 				var/obj/item/stack/rods/R = new(src)
@@ -416,12 +416,12 @@ var/list/mining_floors = list()
 
 			if(5)
 				var/quantity = rand(1,3)
-				for(var/i=0, i<quantity, i++)
+				for( var/i=0, i<quantity, i++)
 					new /obj/item/weapon/material/shard(src)
 
 			if(6)
 				var/quantity = rand(1,3)
-				for(var/i=0, i<quantity, i++)
+				for( var/i=0, i<quantity, i++)
 					new /obj/item/weapon/material/shard/phoron(src)
 
 			if(7)
@@ -505,7 +505,7 @@ var/list/mining_floors = list()
 		)
 
 	var/valid_tool
-	for(var/valid_type in usable_tools)
+	for( var/valid_type in usable_tools)
 		if(istype(W,valid_type))
 			valid_tool = 1
 			break
@@ -530,13 +530,13 @@ var/list/mining_floors = list()
 	else if(istype(W,/obj/item/weapon/storage/ore))
 		var/obj/item/weapon/storage/ore/S = W
 		if(S.collection_mode)
-			for(var/obj/item/weapon/ore/O in contents)
+			for( var/obj/item/weapon/ore/O in contents)
 				O.attackby(W,user)
 				return
 	else if(istype(W,/obj/item/weapon/storage/bag/fossils))
 		var/obj/item/weapon/storage/bag/fossils/S = W
 		if(S.collection_mode)
-			for(var/obj/item/weapon/fossil/F in contents)
+			for( var/obj/item/weapon/fossil/F in contents)
 				F.attackby(W,user)
 				return
 
@@ -549,7 +549,7 @@ var/list/mining_floors = list()
 	if(dug)
 		return
 
-	for(var/i=0;i<(rand(3)+2);i++)
+	for( var/i=0;i<(rand(3)+2);i++)
 		new/obj/item/weapon/ore/glass(src)
 
 	dug = 1
@@ -561,7 +561,7 @@ var/list/mining_floors = list()
 	overlays.Cut()
 
 	var/list/step_overlays = list("n" = NORTH, "s" = SOUTH, "e" = EAST, "w" = WEST)
-	for(var/direction in step_overlays)
+	for( var/direction in step_overlays)
 
 		if(istype(get_step(src, step_overlays[direction]), /turf/space))
 			var/image/aster_edge = image('icons/turf/flooring/asteroid.dmi', "asteroid_edges", dir = step_overlays[direction])
@@ -581,7 +581,7 @@ var/list/mining_floors = list()
 
 	if(update_neighbors)
 		var/list/all_step_directions = list(NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST)
-		for(var/direction in all_step_directions)
+		for( var/direction in all_step_directions)
 			var/turf/simulated/floor/asteroid/A
 			if(istype(get_step(src, direction), /turf/simulated/floor/asteroid))
 				A = get_step(src, direction)

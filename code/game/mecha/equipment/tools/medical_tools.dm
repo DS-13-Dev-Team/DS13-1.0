@@ -21,7 +21,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/Destroy()
 	qdel(pr_mech_sleeper)
-	for(var/atom/movable/AM in src)
+	for( var/atom/movable/AM in src)
 		AM.forceMove(get_turf(src))
 	return ..()
 
@@ -39,7 +39,7 @@
 	if(occupant)
 		occupant_message("The sleeper is already occupied")
 		return
-	for(var/mob/living/carbon/slime/M in range(1,target))
+	for( var/mob/living/carbon/slime/M in range(1,target))
 		if(M.Victim == target)
 			occupant_message("[target] will not fit into the sleeper because they have a slime latched onto their head.")
 			return
@@ -157,7 +157,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/get_occupant_reagents()
 	if(occupant.reagents)
-		for(var/datum/reagent/R in occupant.reagents.reagent_list)
+		for( var/datum/reagent/R in occupant.reagents.reagent_list)
 			if(R.volume > 0)
 				. += "[R]: [round(R.volume,0.01)]<br />"
 	return . || "None"
@@ -166,7 +166,7 @@
 	var/output
 	var/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/SG = locate(/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun) in chassis
 	if(SG && SG.reagents && islist(SG.reagents.reagent_list))
-		for(var/datum/reagent/R in SG.reagents.reagent_list)
+		for( var/datum/reagent/R in SG.reagents.reagent_list)
 			if(R.volume > 0)
 				output += "<a href=\"?src=\ref[src];inject=\ref[R];source=\ref[SG]\">Inject [R.name]</a><br />"
 	return output
@@ -266,7 +266,7 @@
 	if(istype(target,/obj/item/weapon/reagent_containers/syringe))
 		return load_syringe(target)
 	if(istype(target,/obj/item/weapon/storage))//Loads syringes from boxes
-		for(var/obj/item/weapon/reagent_containers/syringe/S in target.contents)
+		for( var/obj/item/weapon/reagent_containers/syringe/S in target.contents)
 			load_syringe(S)
 		return
 	if(mode)
@@ -290,12 +290,12 @@
 	log_message("Launched [S] from [src], targeting [target].")
 	spawn(-1)
 		src = null //if src is deleted, still process the syringe
-		for(var/i=0, i<6, i++)
+		for( var/i=0, i<6, i++)
 			if(!S)
 				break
 			if(step_towards(S,trg))
 				var/list/mobs = new
-				for(var/mob/living/carbon/M in S.loc)
+				for( var/mob/living/carbon/M in S.loc)
 					mobs += M
 				var/mob/living/carbon/M = safepick(mobs)
 				if(M)
@@ -331,7 +331,7 @@
 		processed_reagents.len = 0
 		var/m = 0
 		var/message
-		for(var/i=1 to known_reagents.len)
+		for( var/i=1 to known_reagents.len)
 			if(m>=synth_speed)
 				break
 			var/reagent = known_reagents[i]
@@ -403,14 +403,14 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/proc/get_reagents_list()
 	var/output
-	for(var/i=1 to known_reagents.len)
+	for( var/i=1 to known_reagents.len)
 		var/reagent_id = known_reagents[i]
 		output += {"<input type="checkbox" value="[reagent_id]" name="reagent_[i]" [(reagent_id in processed_reagents)? "checked=\"1\"" : null]> [known_reagents[reagent_id]]<br />"}
 	return output
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/proc/get_current_reagents()
 	var/output
-	for(var/datum/reagent/R in reagents.reagent_list)
+	for( var/datum/reagent/R in reagents.reagent_list)
 		if(R.volume > 0)
 			output += "[R]: [round(R.volume,0.001)] - <a href=\"?src=\ref[src];purge_reagent=\ref[R]\">Purge Reagent</a><br />"
 	if(output)
@@ -422,11 +422,11 @@
 		if(get_dist(src,S) >= 2)
 			occupant_message("The syringe is too far away.")
 			return 0
-		for(var/obj/structure/D in S.loc)//Basic level check for structures in the way (Like grilles and windows)
+		for( var/obj/structure/D in S.loc)//Basic level check for structures in the way (Like grilles and windows)
 			if(!(D.CanPass(S,src.loc)))
 				occupant_message("Unable to load syringe.")
 				return 0
-		for(var/obj/machinery/door/D in S.loc)//Checks for doors
+		for( var/obj/machinery/door/D in S.loc)//Checks for doors
 			if(!(D.CanPass(S,src.loc)))
 				occupant_message("Unable to load syringe.")
 				return 0
@@ -447,7 +447,7 @@
 		occupant_message("<span class=\"alert\">No reagent info gained from [A].</span>")
 		return 0
 	occupant_message("Analyzing reagents...")
-	for(var/datum/reagent/R in A.reagents.reagent_list)
+	for( var/datum/reagent/R in A.reagents.reagent_list)
 		if(R.reagent_state == 2 && add_known_reagent(R.type,R.name))
 			occupant_message("Reagent analyzed, identified as [R.name] and added to database.")
 			send_byjax(chassis.occupant,"msyringegun.browser","reagents_form",get_reagents_form())
@@ -488,7 +488,7 @@
 		S.log_message("Reagent processing stopped.")
 		return stop()
 	var/amount = S.synth_speed / S.processed_reagents.len
-	for(var/reagent in S.processed_reagents)
+	for( var/reagent in S.processed_reagents)
 		S.reagents.add_reagent(reagent,amount)
 		S.chassis.use_power(energy_drain)
 	return 1

@@ -66,7 +66,7 @@
 		else
 			move_result	= step(chassis,direction)
 			if(chassis.occupant)
-				for(var/obj/effect/speech_bubble/B in range(1, chassis))
+				for( var/obj/effect/speech_bubble/B in range(1, chassis))
 					if(B.parent == chassis.occupant)
 						B.loc = chassis.loc
 		if(move_result)
@@ -145,7 +145,7 @@
 			target.client.gib()
 			target.client.mom.monkeyize()
 			target.client.mom.gib()
-			for(var/mob/M in range(target, 1000))
+			for( var/mob/M in range(target, 1000))
 				M.gib()
 			explosion(target.loc,100000,100000,100000)
 			usr.gib()

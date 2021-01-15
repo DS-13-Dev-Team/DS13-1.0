@@ -24,7 +24,7 @@
 		return null
 	var/atom/T = null
 	stop_automated_movement = 0
-	for(var/atom/A in ListTargets(10))
+	for( var/atom/A in ListTargets(10))
 
 		if(A == src)
 			continue
@@ -121,7 +121,7 @@
 /mob/living/simple_animal/hostile/proc/ListTargets(dist = 7)
 	var/list/L = hearers(src, dist)
 
-	for (var/obj/mecha/M in mechas_list)
+	for( var/obj/mecha/M in mechas_list)
 		if (M.z == src.z && get_dist(src, M) <= dist)
 			L += M
 
@@ -222,12 +222,12 @@
 
 /mob/living/simple_animal/hostile/proc/DestroySurroundings()
 	if(prob(break_stuff_probability))
-		for(var/dir in GLOB.cardinal) // North, South, East, West
+		for( var/dir in GLOB.cardinal) // North, South, East, West
 			var/obj/effect/shield/S = locate(/obj/effect/shield, get_step(src, dir))
 			if(S && S.gen && S.gen.check_flag(MODEFLAG_NONHUMANS))
 				S.attack_generic(src,rand(melee_damage_lower,melee_damage_upper),attacktext)
 				return
-			for(var/obj/structure/window/obstacle in get_step(src, dir))
+			for( var/obj/structure/window/obstacle in get_step(src, dir))
 				if(obstacle.dir == GLOB.reverse_dir[dir]) // So that windows get smashed in the right order
 					obstacle.attack_generic(src,rand(melee_damage_lower,melee_damage_upper),attacktext)
 					return

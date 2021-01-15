@@ -7,31 +7,31 @@ var/global/floorIsLava = 0
 /proc/message_admins(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
-	for(var/client/C in GLOB.admins)
+	for( var/client/C in GLOB.admins)
 		if(R_ADMIN & C.holder.rights)
 			to_chat(C, msg)
 /proc/message_mods(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">MOD LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
-	for(var/client/C in GLOB.admins)
+	for( var/client/C in GLOB.admins)
 		if(R_MOD & C.holder.rights)
 			to_chat(C, msg)
 /proc/message_staff(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
-	for(var/client/C in GLOB.admins)
+	for( var/client/C in GLOB.admins)
 		if(C && C.holder && (R_INVESTIGATE & C.holder.rights))
 			to_chat(C, msg)
 /proc/msg_admin_attack(text) //Toggleable Attack Messages
 	log_attack(text)
 	var/rendered = "<span class=\"log_message\"><span class=\"prefix\">ATTACK:</span> <span class=\"message\">[text]</span></span>"
-	for(var/client/C in GLOB.admins)
+	for( var/client/C in GLOB.admins)
 		if(check_rights(R_MOD, 0, C))
 			if(C.get_preference_value(/datum/client_preference/staff/show_attack_logs) == GLOB.PREF_SHOW)
 				var/msg = rendered
 				to_chat(C, msg)
 /proc/admin_notice(message, rights)
-	for(var/mob/M in SSmobs.mob_list)
+	for( var/mob/M in SSmobs.mob_list)
 		if(check_rights(rights, 0, M))
 			to_chat(M, message)
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
@@ -146,7 +146,7 @@ var/global/floorIsLava = 0
 				body += "<br><br>"
 				body += "<b>DNA Blocks:</b><br><table border='0'><tr><th>&nbsp;</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>"
 				var/bname
-				for(var/block=1;block<=DNA_SE_LENGTH;block++)
+				for( var/block=1;block<=DNA_SE_LENGTH;block++)
 					if(((block-1)%5)==0)
 						body += "</tr><tr><th>[block-1]</th>"
 					bname = assigned_blocks[block]
@@ -206,7 +206,7 @@ var/global/floorIsLava = 0
 	// language toggles
 	body += "<br><br><b>Languages:</b><br>"
 	var/f = 1
-	for(var/k in all_languages)
+	for( var/k in all_languages)
 		var/datum/language/L = all_languages[k]
 		if(!(L.flags & INNATE))
 			if(!f) body += " | "
@@ -248,7 +248,7 @@ var/global/floorIsLava = 0
 	S >> note_keys
 
 	if(filter_term)
-		for(var/t in note_keys)
+		for( var/t in note_keys)
 			if(findtext(lowertext(t), lowertext(filter_term)))
 				continue
 			note_keys -= t
@@ -260,7 +260,7 @@ var/global/floorIsLava = 0
 	else
 		dat += "<table>"
 		note_keys = sortList(note_keys)
-		for(var/t in note_keys)
+		for( var/t in note_keys)
 			dat += "<tr><td><a href='?src=\ref[src];notes=show;ckey=[t]'>[t]</a></td></tr>"
 		dat += "</table><br>"
 
@@ -290,7 +290,7 @@ var/global/floorIsLava = 0
 	var/list/dat = list()
 
 	var/p_age = "unknown"
-	for(var/client/C in GLOB.clients)
+	for( var/client/C in GLOB.clients)
 		if(C.ckey == key)
 			p_age = C.player_age
 			break
@@ -304,7 +304,7 @@ var/global/floorIsLava = 0
 	else
 		var/update_file = 0
 		var/i = 0
-		for(var/datum/player_info/I in infos)
+		for( var/datum/player_info/I in infos)
 			i += 1
 			if(!I.timestamp)
 				I.timestamp = "Pre-4/3/2012"
@@ -396,7 +396,7 @@ var/global/floorIsLava = 0
 			if( isemptylist(news_network.network_channels) )
 				dat+="<I>No active channels found...</I>"
 			else
-				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
+				for( var/datum/feed_channel/CHANNEL in news_network.network_channels)
 					if(CHANNEL.is_admin_channel)
 						dat+="<B><FONT style='BACKGROUND-COLOR: LightGreen'><A href='?src=\ref[src];ac_show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A></FONT></B><BR>"
 					else
@@ -443,7 +443,7 @@ var/global/floorIsLava = 0
 			if(src.admincaster_feed_channel.channel_name =="" || src.admincaster_feed_channel.channel_name == "\[REDACTED\]")
 				dat+="<FONT COLOR='maroon'>Invalid channel name.</FONT><BR>"
 			var/check = 0
-			for(var/datum/feed_channel/FC in news_network.network_channels)
+			for( var/datum/feed_channel/FC in news_network.network_channels)
 				if(FC.channel_name == src.admincaster_feed_channel.channel_name)
 					check = 1
 					break
@@ -462,7 +462,7 @@ var/global/floorIsLava = 0
 					dat+="<I>No feed messages found in channel...</I><BR>"
 				else
 					var/i = 0
-					for(var/datum/feed_message/MESSAGE in src.admincaster_feed_channel.messages)
+					for( var/datum/feed_message/MESSAGE in src.admincaster_feed_channel.messages)
 						i++
 						dat+="-[MESSAGE.body] <BR>"
 						if(MESSAGE.img)
@@ -483,7 +483,7 @@ var/global/floorIsLava = 0
 			if(isemptylist(news_network.network_channels))
 				dat+="<I>No feed channels found active...</I><BR>"
 			else
-				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
+				for( var/datum/feed_channel/CHANNEL in news_network.network_channels)
 					dat+="<A href='?src=\ref[src];ac_pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
 			dat+="<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Cancel</A>"
 		if(11)
@@ -496,7 +496,7 @@ var/global/floorIsLava = 0
 			if(isemptylist(news_network.network_channels))
 				dat+="<I>No feed channels found active...</I><BR>"
 			else
-				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
+				for( var/datum/feed_channel/CHANNEL in news_network.network_channels)
 					dat+="<A href='?src=\ref[src];ac_pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
 
 			dat+="<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Back</A>"
@@ -508,7 +508,7 @@ var/global/floorIsLava = 0
 			if( isemptylist(src.admincaster_feed_channel.messages) )
 				dat+="<I>No feed messages found in channel...</I><BR>"
 			else
-				for(var/datum/feed_message/MESSAGE in src.admincaster_feed_channel.messages)
+				for( var/datum/feed_message/MESSAGE in src.admincaster_feed_channel.messages)
 					dat+={"
 						-[MESSAGE.body] <BR><FONT SIZE=1>\[Story by <FONT COLOR='maroon'>[MESSAGE.author]</FONT>\]</FONT><BR>
 						<FONT SIZE=2><A href='?src=\ref[src];ac_censor_channel_story_body=\ref[MESSAGE]'>[(MESSAGE.body == "\[REDACTED\]") ? ("Undo story censorship") : ("Censor story")]</A>  -  <A href='?src=\ref[src];ac_censor_channel_story_author=\ref[MESSAGE]'>[(MESSAGE.author == "\[REDACTED\]") ? ("Undo Author Censorship") : ("Censor message Author")]</A></FONT><BR>
@@ -528,7 +528,7 @@ var/global/floorIsLava = 0
 				if( isemptylist(src.admincaster_feed_channel.messages) )
 					dat+="<I>No feed messages found in channel...</I><BR>"
 				else
-					for(var/datum/feed_message/MESSAGE in src.admincaster_feed_channel.messages)
+					for( var/datum/feed_message/MESSAGE in src.admincaster_feed_channel.messages)
 						dat+="-[MESSAGE.body] <BR><FONT SIZE=1>\[Story by <FONT COLOR='maroon'>[MESSAGE.author]</FONT>\]</FONT><BR>"
 
 			dat+="<BR><A href='?src=\ref[src];ac_setScreen=[11]'>Back</A>"
@@ -604,7 +604,7 @@ var/global/floorIsLava = 0
 	if(!check_rights(R_BAN))	return
 
 	var/dat = "<B>Job Bans!</B><HR><table>"
-	for(var/t in jobban_keylist)
+	for( var/t in jobban_keylist)
 		var/r = t
 		if( findtext(r,"##") )
 			r = copytext( r, 1, findtext(r,"##") )//removes the description
@@ -641,7 +641,7 @@ var/global/floorIsLava = 0
 
 	// Print the header with category selection buttons.
 	var/dat = "<B>The first rule of adminbuse is: you don't talk about the adminbuse.</B><HR>"
-	for(var/datum/admin_secret_category/category in admin_secrets.categories)
+	for( var/datum/admin_secret_category/category in admin_secrets.categories)
 		if(!category.can_view(usr))
 			continue
 		if(active_category == category)
@@ -654,7 +654,7 @@ var/global/floorIsLava = 0
 	if(istype(active_category) && active_category.can_view(usr))
 		if(active_category.desc)
 			dat += "<I>[active_category.desc]</I><BR>"
-		for(var/datum/admin_secret_item/item in active_category.items)
+		for( var/datum/admin_secret_item/item in active_category.items)
 			if(!item.can_view(usr))
 				continue
 			dat += "<A href='?src=\ref[src];admin_secrets=\ref[item]'>[item.name()]</A><BR>"
@@ -992,7 +992,7 @@ var/global/floorIsLava = 0
 
 	if(M)
 		if(ticker.mode.antag_templates && ticker.mode.antag_templates.len)
-			for(var/datum/antagonist/antag in ticker.mode.antag_templates)
+			for( var/datum/antagonist/antag in ticker.mode.antag_templates)
 				if(antag.is_antagonist(M))
 					return 2
 		if(M.special_role)
@@ -1052,10 +1052,10 @@ var/global/floorIsLava = 0
 		to_chat(usr, "Custom item list not populated.")
 		return
 
-	for(var/assoc_key in custom_items)
+	for( var/assoc_key in custom_items)
 		to_chat(usr, "[assoc_key] has:")
 		var/list/current_items = custom_items[assoc_key]
-		for(var/datum/custom_item/item in current_items)
+		for( var/datum/custom_item/item in current_items)
 			to_chat(usr, "- name: [item.name] icon: [item.item_icon] path: [item.item_path] desc: [item.item_desc]")
 
 /datum/admins/proc/spawn_plant(seedtype in plant_controller.seeds)
@@ -1080,7 +1080,7 @@ var/global/floorIsLava = 0
 	var/list/types = typesof(/atom)
 	var/list/matches = new()
 
-	for(var/path in types)
+	for( var/path in types)
 		if(findtext("[path]", object))
 			matches += path
 
@@ -1166,7 +1166,7 @@ var/global/floorIsLava = 0
 
 	if(ticker.mode.antag_tags && ticker.mode.antag_tags.len)
 		out += "<b>Core antag templates:</b></br>"
-		for(var/antag_tag in ticker.mode.antag_tags)
+		for( var/antag_tag in ticker.mode.antag_tags)
 			out += "<a href='?src=\ref[ticker.mode];debug_antag=[antag_tag]'>[antag_tag]</a>.</br>"
 
 	if(ticker.mode.round_autoantag)
@@ -1181,7 +1181,7 @@ var/global/floorIsLava = 0
 
 	out += "<b>All antag ids:</b>"
 	if(ticker.mode.antag_templates && ticker.mode.antag_templates.len).
-		for(var/datum/antagonist/antag in ticker.mode.antag_templates)
+		for( var/datum/antagonist/antag in ticker.mode.antag_templates)
 			antag.update_current_antag_max()
 			out += " <a href='?src=\ref[ticker.mode];debug_antag=[antag.id]'>[antag.id]</a>"
 			out += " ([antag.get_antag_count()]/[antag.cur_max]) "
@@ -1221,7 +1221,7 @@ var/global/floorIsLava = 0
 
 /datum/admins/proc/output_ai_laws()
 	var/ai_number = 0
-	for(var/mob/living/silicon/S in SSmobs.mob_list)
+	for( var/mob/living/silicon/S in SSmobs.mob_list)
 		ai_number++
 		if(isAI(S))
 			to_chat(usr, "<b>AI [key_name(S, usr)]'s laws:</b>")
@@ -1430,7 +1430,7 @@ var/global/floorIsLava = 0
 	set name = "Send Fax"
 	set desc = "Sends a fax to this machine"
 	var/department = input("Choose a fax", "Fax") as null|anything in GLOB.alldepartments
-	for(var/obj/machinery/photocopier/faxmachine/sendto in GLOB.allfaxes)
+	for( var/obj/machinery/photocopier/faxmachine/sendto in GLOB.allfaxes)
 		if(sendto.department == department)
 
 			if (!istype(src,/datum/admins))
@@ -1498,12 +1498,12 @@ datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies
 		to_chat(src.owner, "<span class='notice'>Message reply to transmitted successfully.</span>")
 		if(P.sender) // sent as a reply
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")
-			for(var/client/C in GLOB.admins)
+			for( var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
 					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 		else
 			log_admin("[key_name(src.owner)] has sent a fax message to [destination.department]")
-			for(var/client/C in GLOB.admins)
+			for( var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
 					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 

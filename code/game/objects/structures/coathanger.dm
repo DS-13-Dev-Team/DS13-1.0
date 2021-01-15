@@ -15,7 +15,7 @@
 
 /obj/structure/coatrack/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/can_hang = 0
-	for (var/T in allowed)
+	for( var/T in allowed)
 		if(istype(W,T))
 			can_hang = 1
 	if (can_hang && !coat && user.unEquip(coat, src))
@@ -28,7 +28,7 @@
 
 /obj/structure/coatrack/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	var/can_hang = 0
-	for (var/T in allowed)
+	for( var/T in allowed)
 		if(istype(mover,T))
 			can_hang = 1
 

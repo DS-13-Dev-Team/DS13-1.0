@@ -296,7 +296,7 @@
 	Detection
 ------------------*/
 /datum/extension/wallrun/proc/find_mountpoint(origin)
-	for (var/atom/target in orange(origin, 1))
+	for( var/atom/target in orange(origin, 1))
 		if (is_valid_mount_target(target) && is_valid_transition_target(target))
 			return target
 	return null
@@ -340,7 +340,7 @@
 
 	//Must be correct type
 	var/typematch = FALSE
-	for (var/typepath in valid_types)
+	for( var/typepath in valid_types)
 		if (istype(target, typepath))
 			typematch = TRUE
 			break

@@ -133,7 +133,7 @@
 
 
 
-#define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
+#define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for( var/arg in args) { log_debug("\t[log_info_line(arg)]") }
 
 // Helper macros to aid in optimizing lazy instantiation of lists.
 // All of these are null-safe, you can use them without knowing if the list var is initialized yet
@@ -187,7 +187,7 @@
 #define send_link(target, url) target << link(url)
 
 // Spawns multiple objects of the same type
-#define cast_new(type, num, args...) if((num) == 1) { new type(args) } else { for(var/i=0;i<(num),i++) { new type(args) } }
+#define cast_new(type, num, args...) if((num) == 1) { new type(args) } else { for( var/i=0;i<(num),i++) { new type(args) } }
 
 #define FLAGS_EQUALS(flag, flags) ((flag & (flags)) == (flags))
 
@@ -206,7 +206,7 @@
 #define span(class, text) ("<span class='[class]'>[text]</span>")
 
 //Used to set all the arguments of the currently executing proc, to a list
-#define SET_ARGS(L) var/list/newargs = L; for(var/i in 1 to length(newargs)) { args[i] = newargs[i] };
+#define SET_ARGS(L) var/list/newargs = L; for( var/i in 1 to length(newargs)) { args[i] = newargs[i] };
 
 #define subtypesof(prototype) (typesof(prototype) - prototype)
 
@@ -232,10 +232,10 @@ GLOB.vector_pool += A;}\
 A = null;
 
 
-#define release_vector_list(A)	for (var/vector2/v in A) {release_vector(v)}\
+#define release_vector_list(A)	for( var/vector2/v in A) {release_vector(v)}\
 A = null;
 
-#define release_vector_assoc_list(A)	for (var/b in A) {release_vector(A[b])}\
+#define release_vector_assoc_list(A)	for( var/b in A) {release_vector(A[b])}\
 A = null;
 
 #define NONSENSICAL_VALUE -99999

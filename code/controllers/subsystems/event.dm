@@ -101,7 +101,7 @@ SUBSYSTEM_DEF(event)
 		return
 
 	to_world("<br><br><br><font size=3><b>Random Events This Round:</b></font>")
-	for(var/datum/event/E in active_events|finished_events)
+	for( var/datum/event/E in active_events|finished_events)
 		var/datum/event_meta/EM = E.event_meta
 		if(EM.name == "Nothing")
 			continue
@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(event)
 		html += "<table[table_options]>"
 		html += "<tr><td[row_options2]>Name </td><td>Weight </td><td>MinWeight </td><td>MaxWeight </td><td>OneShot </td><td>Enabled </td><td><span class='alert'>CurrWeight </span></td><td>Remove</td></tr>"
 		var/list/active_with_role = number_active_with_role()
-		for(var/datum/event_meta/EM in selected_event_container.available_events)
+		for( var/datum/event_meta/EM in selected_event_container.available_events)
 			html += "<tr>"
 			html += "<td>[EM.name]</td>"
 			html += "<td><A align='right' href='?src=\ref[src];set_weight=\ref[EM]'>[EM.weight]</A></td>"
@@ -164,7 +164,7 @@ SUBSYSTEM_DEF(event)
 
 		html += "<table[table_options]>"
 		html += "<tr><td[row_options1]>Severity</td><td[row_options1]>Starts At</td><td[row_options1]>Starts In</td><td[row_options3]>Adjust Start</td><td[row_options1]>Pause</td><td[row_options1]>Interval Mod</td></tr>"
-		for(var/severity = EVENT_LEVEL_MUNDANE to EVENT_LEVEL_MAJOR)
+		for( var/severity = EVENT_LEVEL_MUNDANE to EVENT_LEVEL_MAJOR)
 			var/datum/event_container/EC = event_containers[severity]
 			var/next_event_at = max(0, EC.next_event_time - world.time)
 			html += "<tr>"
@@ -191,7 +191,7 @@ SUBSYSTEM_DEF(event)
 		html += "<h2>Next Event</h2>"
 		html += "<table[table_options]>"
 		html += "<tr><td[row_options1]>Severity</td><td[row_options2]>Name</td><td[row_options3]>Event Rotation</td><td>Clear</td></tr>"
-		for(var/severity = EVENT_LEVEL_MUNDANE to EVENT_LEVEL_MAJOR)
+		for( var/severity = EVENT_LEVEL_MUNDANE to EVENT_LEVEL_MAJOR)
 			var/datum/event_container/EC = event_containers[severity]
 			var/datum/event_meta/EM = EC.next_event
 			html += "<tr>"
@@ -208,7 +208,7 @@ SUBSYSTEM_DEF(event)
 		html += "Estimated times, affected by process scheduler delays."
 		html += "<table[table_options]>"
 		html += "<tr><td[row_options1]>Severity</td><td[row_options2]>Name</td><td[row_options1]>Ends At</td><td[row_options1]>Ends In</td><td[row_options3]>Stop</td></tr>"
-		for(var/datum/event/E in active_events)
+		for( var/datum/event/E in active_events)
 			if(!E.event_meta)
 				continue
 			var/datum/event_meta/EM = E.event_meta

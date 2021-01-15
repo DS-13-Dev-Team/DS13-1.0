@@ -30,8 +30,8 @@
 // Create ore turfs.
 /datum/random_map/automata/cave_system/cleanup()
 	var/tmp_cell
-	for (var/x = 1 to limit_x)
-		for (var/y = 1 to limit_y)
+	for( var/x = 1 to limit_x)
+		for( var/y = 1 to limit_y)
 			tmp_cell = TRANSLATE_COORD(x, y)
 			if (CELL_ALIVE(map[tmp_cell]))
 				ore_turfs += tmp_cell
@@ -67,7 +67,7 @@
 	var/tmp_cell
 	var/new_path
 	var/num_applied = 0
-	for (var/thing in block(locate(origin_x, origin_y, origin_z), locate(limit_x, limit_y, origin_z)))
+	for( var/thing in block(locate(origin_x, origin_y, origin_z), locate(limit_x, limit_y, origin_z)))
 		var/turf/T = thing
 		new_path = null
 		if (!T || (target_turf_type && !istype(T, target_turf_type)))

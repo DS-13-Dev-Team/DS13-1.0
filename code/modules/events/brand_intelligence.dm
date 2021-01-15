@@ -12,7 +12,7 @@
 
 
 /datum/event/brand_intelligence/start()
-	for(var/obj/machinery/vending/V in SSmachines.machinery)
+	for( var/obj/machinery/vending/V in SSmachines.machinery)
 		if(isNotStationLevel(V.z))	continue
 		vendingMachines.Add(V)
 
@@ -52,7 +52,7 @@
 /datum/event/brand_intelligence/end()
 	originMachine.shut_up = 1
 	originMachine.shooting_chance = initial(originMachine.shooting_chance)
-	for(var/obj/machinery/vending/infectedMachine in infectedVendingMachines)
+	for( var/obj/machinery/vending/infectedMachine in infectedVendingMachines)
 		infectedMachine.shut_up = 1
 		infectedMachine.shoot_inventory = 0
 	command_announcement.Announce("All traces of the rampant brand intelligence have disappeared from the systems.", "[location_name()] Firewall Subroutines")

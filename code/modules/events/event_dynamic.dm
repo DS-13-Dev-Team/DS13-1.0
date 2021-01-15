@@ -68,7 +68,7 @@ var/list/event_last_fired = list()
 	if(active_with_role["Security"] > 0)
 		possibleEvents[/datum/event/random_antag] = max(active_with_role["Security"], 5) + 2.5
 
-	for(var/event_type in event_last_fired) if(possibleEvents[event_type])
+	for( var/event_type in event_last_fired) if(possibleEvents[event_type])
 		var/time_passed = world.time - event_last_fired[event_type]
 		var/full_recharge_after = 60 * 60 * 10 * 3 // 3 hours
 		var/weight_modifier = max(0, (full_recharge_after - time_passed) / 300)
@@ -80,10 +80,10 @@ var/list/event_last_fired = list()
 
 	// Debug code below here, very useful for testing so don't delete please.
 	var/debug_message = "Firing random event. "
-	for(var/V in active_with_role)
+	for( var/V in active_with_role)
 		debug_message += "#[V]:[active_with_role[V]] "
 	debug_message += "||| "
-	for(var/V in possibleEvents)
+	for( var/V in possibleEvents)
 		debug_message += "[V]:[possibleEvents[V]]"
 	debug_message += "|||Picked:[picked_event]"
 	log_debug(debug_message)
@@ -119,7 +119,7 @@ var/list/event_last_fired = list()
 	/*switch(picked_event)
 		if("Meteor")
 			command_alert("Meteors have been detected on collision course with the [station_name()].", "Meteor Alert")
-			for(var/mob/M in GLOB.player_list)
+			for( var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/new_player))
 					sound_to(M, sound('sound/AI/torch/meteorstorch.ogg'))
 			spawn(100)
@@ -172,7 +172,7 @@ var/list/event_last_fired = list()
 	active_with_role["Janitor"] = 0
 	active_with_role["Gardener"] = 0
 
-	for(var/mob/M in GLOB.player_list)
+	for( var/mob/M in GLOB.player_list)
 		if(!M.mind || !M.client || M.client.is_afk(10 MINUTES)) // longer than 10 minutes AFK counts them as inactive
 			continue
 

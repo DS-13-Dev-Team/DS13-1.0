@@ -18,7 +18,7 @@
 	START_PROCESSING(SSturf, src)
 
 	// Nom.
-	for(var/atom/movable/A in src)
+	for( var/atom/movable/A in src)
 		Consume(A)
 
 /turf/unsimulated/wall/supermatter/Destroy()

@@ -39,7 +39,7 @@
 	real_name = name
 	add_language("Cult")
 	add_language(LANGUAGE_GUTTER)
-	for(var/spell in construct_spells)
+	for( var/spell in construct_spells)
 		src.add_spell(new spell, "const_spell_ready")
 	update_icon()
 

@@ -76,7 +76,7 @@
 	if(src.reagents.total_volume >= 1)
 		src.visible_message("<span class='warning'>\The [src] bursts!</span>","You hear a pop and a splash.")
 		src.reagents.touch_turf(get_turf(hit_atom))
-		for(var/atom/A in get_turf(hit_atom))
+		for( var/atom/A in get_turf(hit_atom))
 			src.reagents.touch(A)
 		src.icon_state = "burst"
 		spawn(5)
@@ -180,21 +180,21 @@
 			D.SetName("foam dart")
 			playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
 
-			for(var/i=0, i<6, i++)
+			for( var/i=0, i<6, i++)
 				if (D)
 					if(D.loc == trg) break
 					step_towards(D,trg)
 
-					for(var/mob/living/M in D.loc)
+					for( var/mob/living/M in D.loc)
 						if(!istype(M,/mob/living)) continue
 						if(M == user) continue
-						for(var/mob/O in viewers(world.view, D))
+						for( var/mob/O in viewers(world.view, D))
 							O.show_message(text("<span class='warning'>\The [] was hit by the foam dart!</span>", M), 1)
 						new /obj/item/toy/ammo/crossbow(M.loc)
 						qdel(D)
 						return
 
-					for(var/atom/A in D.loc)
+					for( var/atom/A in D.loc)
 						if(A == user) continue
 						if(A.density)
 							new /obj/item/toy/ammo/crossbow(A.loc)
@@ -210,7 +210,7 @@
 			return
 		else if (bullets == 0)
 			user.Weaken(5)
-			for(var/mob/O in viewers(world.view, user))
+			for( var/mob/O in viewers(world.view, user))
 				O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
 
 
@@ -221,7 +221,7 @@
 
 		if (src.bullets > 0 && M.lying)
 
-			for(var/mob/O in viewers(M, null))
+			for( var/mob/O in viewers(M, null))
 				if(O.client)
 					O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head and pulls the trigger!</span>", user, M), 1, "<span class='warning'>You hear the sound of foam against skull</span>", 2)
 					O.show_message(text("<span class='warning'>\The [] was hit in the head by the foam dart!</span>", M), 1)
@@ -230,7 +230,7 @@
 			new /obj/item/toy/ammo/crossbow(M.loc)
 			src.bullets--
 		else if (M.lying && src.bullets == 0)
-			for(var/mob/O in viewers(M, null))
+			for( var/mob/O in viewers(M, null))
 				if (O.client)	O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, M), 1, "<span class='warning'>You hear someone fall</span>", 2)
 			user.Weaken(5)
 		return

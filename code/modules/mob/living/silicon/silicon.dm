@@ -48,7 +48,7 @@
 	GLOB.silicon_mob_list -= src
 	QDEL_NULL(silicon_radio)
 	QDEL_NULL(silicon_camera)
-	for(var/datum/alarm_handler/AH in SSalarm.all_handlers)
+	for( var/datum/alarm_handler/AH in SSalarm.all_handlers)
 		AH.unregister_alarm(src)
 	return ..()
 
@@ -208,7 +208,7 @@
 	if(default_language)
 		dat += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
 
-	for(var/datum/language/L in languages)
+	for( var/datum/language/L in languages)
 		if(!(L.flags & NONGLOBAL))
 			var/default_str
 			if(L == default_language)
@@ -300,10 +300,10 @@
 		next_alarm_notice = 0
 
 		var/alarm_raised = 0
-		for(var/datum/alarm_handler/AH in queued_alarms)
+		for( var/datum/alarm_handler/AH in queued_alarms)
 			var/list/alarms = queued_alarms[AH]
 			var/reported = 0
-			for(var/datum/alarm/A in alarms)
+			for( var/datum/alarm/A in alarms)
 				if(alarms[A] == 1)
 					alarm_raised = 1
 					if(!reported)
@@ -311,10 +311,10 @@
 						to_chat(src, "<span class='warning'>--- [AH.category] Detected ---</span>")
 					raised_alarm(A)
 
-		for(var/datum/alarm_handler/AH in queued_alarms)
+		for( var/datum/alarm_handler/AH in queued_alarms)
 			var/list/alarms = queued_alarms[AH]
 			var/reported = 0
-			for(var/datum/alarm/A in alarms)
+			for( var/datum/alarm/A in alarms)
 				if(alarms[A] == -1)
 					if(!reported)
 						reported = 1
@@ -324,7 +324,7 @@
 		if(alarm_raised)
 			to_chat(src, "<A HREF=?src=\ref[src];showalerts=1>\[Show Alerts\]</A>")
 
-		for(var/datum/alarm_handler/AH in queued_alarms)
+		for( var/datum/alarm_handler/AH in queued_alarms)
 			var/list/alarms = queued_alarms[AH]
 			alarms.Cut()
 
@@ -333,7 +333,7 @@
 
 /mob/living/silicon/ai/raised_alarm(datum/alarm/A)
 	var/cameratext = ""
-	for(var/obj/machinery/camera/C in A.cameras())
+	for( var/obj/machinery/camera/C in A.cameras())
 		cameratext += "[(cameratext == "")? "" : "|"]<A HREF=?src=\ref[src];switchcamera=\ref[C]>[C.c_tag]</A>"
 	to_chat(src, "[A.alarm_name()]! ([(cameratext)? cameratext : "No Camera"])")
 

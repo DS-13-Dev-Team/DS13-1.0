@@ -26,10 +26,10 @@
 	var/special_roles = valid_special_roles()
 	var/old_be_special_role = pref.be_special_role.Copy()
 	var/old_never_be_special_role = pref.never_be_special_role.Copy()
-	for(var/role in old_be_special_role)
+	for( var/role in old_be_special_role)
 		if(!(role in special_roles))
 			pref.be_special_role -= role
-	for(var/role in old_never_be_special_role)
+	for( var/role in old_never_be_special_role)
 		if(!(role in special_roles))
 			pref.never_be_special_role -= role
 
@@ -40,7 +40,7 @@
 
 	. += "<b>Special Role Availability:</b><br>"
 	. += "<table>"
-	for(var/ntype in subtypesof(/datum/species/necromorph))
+	for( var/ntype in subtypesof(/datum/species/necromorph))
 		var/datum/species/necromorph/N = ntype
 		if (!initial(N.preference_settable))
 			continue
@@ -53,7 +53,7 @@
 		. += "</td></tr>"
 	. += "<br>"
 	var/list/all_antag_types = GLOB.all_antag_types_
-	for(var/antag_type in all_antag_types)
+	for( var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
 		if (!antag.preference_candidacy_toggle)
 			continue
@@ -69,7 +69,7 @@
 		. += "</td></tr>"
 
 	var/list/ghost_traps = get_ghost_traps()
-	for(var/ghost_trap_key in ghost_traps)
+	for( var/ghost_trap_key in ghost_traps)
 		var/datum/ghosttrap/ghost_trap = ghost_traps[ghost_trap_key]
 		if(!ghost_trap.list_as_special_role)
 			continue
@@ -89,7 +89,7 @@
 	. = jointext(.,null)
 
 /datum/category_item/player_setup_item/proc/banned_from_ghost_role(mob, datum/ghosttrap/ghost_trap)
-	for(var/ban_type in ghost_trap.ban_checks)
+	for( var/ban_type in ghost_trap.ban_checks)
 		if(jobban_isbanned(mob, ban_type))
 			return 1
 	return 0
@@ -126,15 +126,15 @@
 /datum/category_item/player_setup_item/antagonism/candidacy/proc/valid_special_roles()
 	var/list/private_valid_special_roles = list()
 
-	for(var/ntype in subtypesof(/datum/species/necromorph))
+	for( var/ntype in subtypesof(/datum/species/necromorph))
 		var/datum/species/necromorph/N = ntype
 		private_valid_special_roles += initial(N.name)
 
-	for(var/antag_type in GLOB.all_antag_types_)
+	for( var/antag_type in GLOB.all_antag_types_)
 		private_valid_special_roles += antag_type
 
 	var/list/ghost_traps = get_ghost_traps()
-	for(var/ghost_trap_key in ghost_traps)
+	for( var/ghost_trap_key in ghost_traps)
 		var/datum/ghosttrap/ghost_trap = ghost_traps[ghost_trap_key]
 		if(!ghost_trap.list_as_special_role)
 			continue

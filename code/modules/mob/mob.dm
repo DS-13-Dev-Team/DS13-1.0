@@ -6,12 +6,12 @@
 	QDEL_NULL(hud_used)
 	if(istype(skillset))
 		QDEL_NULL(skillset)
-	for(var/obj/item/grab/G in grabbed_by)
+	for( var/obj/item/grab/G in grabbed_by)
 		qdel(G)
 	clear_fullscreen()
 	if(client)
 		remove_screen_obj_references()
-		for(var/atom/movable/AM in client.screen)
+		for( var/atom/movable/AM in client.screen)
 			var/obj/screen/screenobj = AM
 			if(!istype(screenobj) || !screenobj.globalscreen)
 				qdel(screenobj)
@@ -85,11 +85,11 @@
 	var/list/objs = list()
 	get_mobs_and_objs_in_view_fast(T,range, mobs, objs, checkghosts)
 
-	for(var/o in objs)
+	for( var/o in objs)
 		var/obj/O = o
 		O.show_message(message, VISIBLE_MESSAGE, blind_message, AUDIBLE_MESSAGE)
 
-	for(var/m in mobs)
+	for( var/m in mobs)
 		var/mob/M = m
 		var/mob_message = message
 
@@ -125,7 +125,7 @@
 	var/list/objs = list()
 	get_mobs_and_objs_in_view_fast(T, hearing_distance, mobs, objs, checkghosts)
 
-	for(var/m in mobs)
+	for( var/m in mobs)
 		var/mob/M = m
 		var/mob_message = message
 
@@ -141,7 +141,7 @@
 		else
 			M.show_message(mob_message, AUDIBLE_MESSAGE)
 
-	for(var/o in objs)
+	for( var/o in objs)
 		var/obj/O = o
 		O.show_message(message, AUDIBLE_MESSAGE, deaf_message, VISIBLE_MESSAGE)
 
@@ -178,7 +178,7 @@
 	return -1
 
 /mob/proc/findname(msg)
-	for(var/mob/M in SSmobs.mob_list)
+	for( var/mob/M in SSmobs.mob_list)
 		if (M.real_name == msg)
 			return M
 	return 0
@@ -339,7 +339,7 @@
 		return L
 	if (!L)
 		L = list(src)
-	for(var/A in list(l_hand,r_hand))
+	for( var/A in list(l_hand,r_hand))
 		if (istype(A, /obj/item/grab))
 			var/obj/item/grab/G = A
 			if (!(G.affecting in L))
@@ -371,7 +371,7 @@
 /mob/verb/dump_source()
 
 	var/master = "<PRE>"
-	for(var/t in typesof(/area))
+	for( var/t in typesof(/area))
 		master += text("[]\n", t)
 		//Foreach goto(26)
 	src << browse(master)
@@ -487,7 +487,7 @@
 	var/list/namecounts = list()
 	var/list/creatures = list()
 
-	for(var/obj/O in world)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
+	for( var/obj/O in world)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
 		if(!O.loc)
 			continue
 		if(istype(O, /obj/item/weapon/disk/nuclear))
@@ -510,7 +510,7 @@
 				namecounts[name] = 1
 			creatures[name] = O
 
-	for(var/mob/M in sortAtom(SSmobs.mob_list))
+	for( var/mob/M in sortAtom(SSmobs.mob_list))
 		var/name = M.name
 		if (names.Find(name))
 			namecounts[name]++
@@ -560,7 +560,7 @@
 /mob/living/carbon/human/pull_damage()
 	if(!lying || getBruteLoss() + getFireLoss() < 100)
 		return 0
-	for(var/thing in organs)
+	for( var/thing in organs)
 		var/obj/item/organ/external/e = thing
 		if(!e || e.is_stump())
 			continue
@@ -608,7 +608,7 @@
 	return 1
 
 /mob/proc/show_viewers(message)
-	for(var/mob/M in viewers())
+	for( var/mob/M in viewers())
 		M.see(message)
 
 /mob/Stat()
@@ -642,7 +642,7 @@
 				stat("Failsafe Controller:", "ERROR")
 			if(Master)
 				stat(null)
-				for(var/datum/controller/subsystem/SS in Master.subsystems)
+				for( var/datum/controller/subsystem/SS in Master.subsystems)
 					SS.stat_entry()
 
 	if(listed_turf && client)
@@ -651,7 +651,7 @@
 		else
 			if(statpanel("Turf"))
 				stat(listed_turf)
-				for(var/atom/A in listed_turf)
+				for( var/atom/A in listed_turf)
 					if(!A.mouse_opacity)
 						continue
 					if(A.invisibility > see_invisible)
@@ -692,7 +692,7 @@
 		set_density(initial(density))
 	reset_layer()
 
-	for(var/obj/item/grab/G in grabbed_by)
+	for( var/obj/item/grab/G in grabbed_by)
 		if(G.force_stand())
 			lying = 0
 
@@ -855,7 +855,7 @@
 
 /mob/proc/get_visible_implants(class = 0)
 	var/list/visible_implants = list()
-	for(var/obj/item/O in embedded)
+	for( var/obj/item/O in embedded)
 		if(O.w_class > class)
 			visible_implants += O
 	return visible_implants
@@ -922,11 +922,11 @@
 		H = src
 		var/obj/item/organ/external/affected
 
-		for(var/obj/item/organ/external/organ in H.organs) //Grab the organ holding the implant.
+		for( var/obj/item/organ/external/organ in H.organs) //Grab the organ holding the implant.
 			if(selection in organ.implants)
 				affected = organ
 
-		for(var/datum/wound/wound in affected.wounds)
+		for( var/datum/wound/wound in affected.wounds)
 			wound.embedded_objects -= selection
 
 		H.shock_stage+=15
@@ -954,7 +954,7 @@
 
 	U.put_in_hands(selection)
 
-	for(var/obj/item/weapon/O in pinned)
+	for( var/obj/item/weapon/O in pinned)
 		if(O == selection)
 			pinned -= O
 		if(!pinned.len)
@@ -964,7 +964,7 @@
 //Check for brain worms in head.
 /mob/proc/has_brain_worms()
 
-	for(var/I in contents)
+	for( var/I in contents)
 		if(istype(I,/mob/living/simple_animal/borer))
 			return I
 

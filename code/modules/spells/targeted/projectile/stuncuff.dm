@@ -22,7 +22,7 @@
 	hud_state = "wiz_cuff"
 
 /spell/targeted/projectile/dumbfire/stuncuff/prox_cast(var/list/targets, spell_holder)
-	for(var/mob/living/M in targets)
+	for( var/mob/living/M in targets)
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			var/obj/item/weapon/handcuffs/wizard/cuffs = new()

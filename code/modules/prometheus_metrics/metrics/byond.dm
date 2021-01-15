@@ -25,7 +25,7 @@
 
 /datum/metric_family/byond_players/collect()
 	var/c = 0
-	for(var/client/C)
+	for( var/client/C)
 		if(C.connection == "seeker" || C.connection == "web")
 			c++
 	return list(list(null, c))

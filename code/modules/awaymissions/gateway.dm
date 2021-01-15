@@ -61,7 +61,7 @@ obj/machinery/gateway/centerstation/Process()
 	linked = list()	//clear the list
 	var/turf/T = loc
 
-	for(var/i in GLOB.alldirs)
+	for( var/i in GLOB.alldirs)
 		T = get_step(loc, i)
 		var/obj/machinery/gateway/G = locate(/obj/machinery/gateway) in T
 		if(G)
@@ -88,7 +88,7 @@ obj/machinery/gateway/centerstation/Process()
 		to_chat(user, "<span class='notice'>Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes.</span>")
 		return
 
-	for(var/obj/machinery/gateway/G in linked)
+	for( var/obj/machinery/gateway/G in linked)
 		G.active = 1
 		G.update_icon()
 	active = 1
@@ -96,7 +96,7 @@ obj/machinery/gateway/centerstation/Process()
 
 
 /obj/machinery/gateway/centerstation/proc/toggleoff()
-	for(var/obj/machinery/gateway/G in linked)
+	for( var/obj/machinery/gateway/G in linked)
 		G.active = 0
 		G.update_icon()
 	active = 0
@@ -165,7 +165,7 @@ obj/machinery/gateway/centerstation/Process()
 	linked = list()	//clear the list
 	var/turf/T = loc
 
-	for(var/i in GLOB.alldirs)
+	for( var/i in GLOB.alldirs)
 		T = get_step(loc, i)
 		var/obj/machinery/gateway/G = locate(/obj/machinery/gateway) in T
 		if(G)
@@ -188,7 +188,7 @@ obj/machinery/gateway/centerstation/Process()
 		to_chat(user, "<span class='notice'>Error: No destination found.</span>")
 		return
 
-	for(var/obj/machinery/gateway/G in linked)
+	for( var/obj/machinery/gateway/G in linked)
 		G.active = 1
 		G.update_icon()
 	active = 1
@@ -196,7 +196,7 @@ obj/machinery/gateway/centerstation/Process()
 
 
 /obj/machinery/gateway/centeraway/proc/toggleoff()
-	for(var/obj/machinery/gateway/G in linked)
+	for( var/obj/machinery/gateway/G in linked)
 		G.active = 0
 		G.update_icon()
 	active = 0
@@ -217,7 +217,7 @@ obj/machinery/gateway/centerstation/Process()
 	if(!ready)	return
 	if(!active)	return
 	if(istype(M, /mob/living/carbon))
-		for(var/obj/item/weapon/implant/exile/E in M)//Checking that there is an exile implant in the contents
+		for( var/obj/item/weapon/implant/exile/E in M)//Checking that there is an exile implant in the contents
 			if(E.imp_in == M)//Checking that it's actually implanted vs just in their pocket
 				to_chat(M, "The remote gate has detected your exile implant and is blocking your entry.")
 				return

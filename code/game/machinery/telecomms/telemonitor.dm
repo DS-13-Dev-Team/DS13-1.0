@@ -35,7 +35,7 @@
 				dat += "<br>Current Network: <a href='?src=\ref[src];network=1'>[network]</a><br>"
 				if(machinelist.len)
 					dat += "<br>Detected Network Entities:<ul>"
-					for(var/obj/machinery/telecomms/T in machinelist)
+					for( var/obj/machinery/telecomms/T in machinelist)
 						dat += "<li><a href='?src=\ref[src];viewmachine=[T.id]'>\ref[T] [T.name]</a> ([T.id])</li>"
 					dat += "</ul>"
 					dat += "<br><a href='?src=\ref[src];operation=release'>\[Flush Buffer\]</a>"
@@ -51,7 +51,7 @@
 				dat += "<br>Current Network: [network]<br>"
 				dat += "Selected Network Entity: [SelectedMachine.name] ([SelectedMachine.id])<br>"
 				dat += "Linked Entities: <ol>"
-				for(var/obj/machinery/telecomms/T in SelectedMachine.links)
+				for( var/obj/machinery/telecomms/T in SelectedMachine.links)
 					if(!T.hide)
 						dat += "<li><a href='?src=\ref[src];viewmachine=[T.id]'>\ref[T.id] [T.name]</a> ([T.id])</li>"
 				dat += "</ol>"
@@ -73,7 +73,7 @@
 
 		if(href_list["viewmachine"])
 			screen = 1
-			for(var/obj/machinery/telecomms/T in machinelist)
+			for( var/obj/machinery/telecomms/T in machinelist)
 				if(T.id == href_list["viewmachine"])
 					SelectedMachine = T
 					break
@@ -93,7 +93,7 @@
 						temp = "<font color = #d70b00>- FAILED: CANNOT PROBE WHEN BUFFER FULL -</font>"
 
 					else
-						for(var/obj/machinery/telecomms/T in range(25, src))
+						for( var/obj/machinery/telecomms/T in range(25, src))
 							if(T.network == network)
 								machinelist.Add(T)
 
@@ -130,7 +130,7 @@
 					var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 					new /obj/item/weapon/material/shard( src.loc )
 					var/obj/item/weapon/circuitboard/comm_monitor/M = new /obj/item/weapon/circuitboard/comm_monitor( A )
-					for (var/obj/C in src)
+					for( var/obj/C in src)
 						C.loc = src.loc
 					A.circuit = M
 					A.state = 3
@@ -141,7 +141,7 @@
 					to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
 					var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 					var/obj/item/weapon/circuitboard/comm_monitor/M = new /obj/item/weapon/circuitboard/comm_monitor( A )
-					for (var/obj/C in src)
+					for( var/obj/C in src)
 						C.loc = src.loc
 					A.circuit = M
 					A.state = 4

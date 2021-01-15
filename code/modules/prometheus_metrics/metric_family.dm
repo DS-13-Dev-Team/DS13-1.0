@@ -27,12 +27,12 @@
 		out["help"] = help
 
 	var/list/metrics = list()
-	for(var/list/m in collected)
+	for( var/list/m in collected)
 		if(m.len != 2)
 			continue
 
 		var/list/label_pairs = list()
-		for(var/k in m[1])
+		for( var/k in m[1])
 			label_pairs[++label_pairs.len] = list("name" = k, "value" = m[1][k])
 
 		metrics[++metrics.len] = list("label" = label_pairs, PROMETHEUS_METRIC_NAME(metric_type) = list("value" = m[2]))

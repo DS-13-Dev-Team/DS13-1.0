@@ -17,7 +17,7 @@ var/const/MOVEMENT_STOP    = 0x0008
 	SET_MOVER(mover)
 	SET_IS_EXTERNAL(mover)
 
-	for(var/mh in movement_handlers)
+	for( var/mh in movement_handlers)
 		var/datum/movement_handler/movement_handler = mh
 		if(movement_handler.MayMove(mover, is_external) & MOVEMENT_STOP)
 			return MOVEMENT_HANDLED
@@ -37,7 +37,7 @@ var/const/MOVEMENT_STOP    = 0x0008
 	SET_MOVER(mover)
 	SET_IS_EXTERNAL(mover)
 
-	for(var/mh in movement_handlers)
+	for( var/mh in movement_handlers)
 		var/datum/movement_handler/movement_handler = mh
 		var/may_move = movement_handler.MayMove(mover, is_external)
 		if(may_move & MOVEMENT_STOP)

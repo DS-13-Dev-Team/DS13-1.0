@@ -4,7 +4,7 @@
 
 /mob/proc/update_emotes(skip_sort)
 	usable_emotes.Cut()
-	for(var/emote in default_emotes)
+	for( var/emote in default_emotes)
 		var/decl/emote/emote_datum = decls_repository.get_decl(emote)
 		if(emote_datum.check_user(src))
 			usable_emotes[emote_datum.key] = emote_datum

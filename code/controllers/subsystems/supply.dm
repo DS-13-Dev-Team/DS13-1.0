@@ -40,12 +40,12 @@ SUBSYSTEM_DEF(supply)
 	ordernum = rand(1,9000)
 
 	//Build master supply list
-	for(var/decl/hierarchy/supply_pack/sp in cargo_supply_pack_root.children)
+	for( var/decl/hierarchy/supply_pack/sp in cargo_supply_pack_root.children)
 		if(sp.is_category())
-			for(var/decl/hierarchy/supply_pack/spc in sp.children)
+			for( var/decl/hierarchy/supply_pack/spc in sp.children)
 				master_supply_list += spc
 
-	for(var/material_type in material_buy_prices)
+	for( var/material_type in material_buy_prices)
 		var/material/material = material_type //False typing
 		var/material_name = initial(material.name)
 		point_source_descriptions[material_name] = "From exported [material_name]"
@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(supply)
 	if(istype(A,/obj/item/device/radio/beacon))
 		return 1
 
-	for(var/i=1, i<=A.contents.len, i++)
+	for( var/i=1, i<=A.contents.len, i++)
 		var/atom/B = A.contents[i]
 		if(.(B))
 			return 1
@@ -83,8 +83,8 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/proc/sell()
 	var/list/material_count = list()
 
-	for(var/area/subarea in shuttle.shuttle_area)
-		for(var/atom/movable/AM in subarea)
+	for( var/area/subarea in shuttle.shuttle_area)
+		for( var/atom/movable/AM in subarea)
 			if(AM.anchored)
 				continue
 			if(istype(AM, /obj/structure/closet/crate/))
@@ -93,7 +93,7 @@ SUBSYSTEM_DEF(supply)
 				add_points_from_source(CR.points_per_crate, "crate")
 				var/find_slip = 1
 
-				for(var/atom in CR)
+				for( var/atom in CR)
 					// Sell manifests
 					var/atom/A = atom
 					if(find_slip && istype(A,/obj/item/weapon/paper/manifest))
@@ -118,7 +118,7 @@ SUBSYSTEM_DEF(supply)
 			qdel(AM)
 
 	if(material_count.len)
-		for(var/material_type in material_count)
+		for( var/material_type in material_count)
 			var/profit = material_count[material_type] * material_buy_prices[material_type]
 			var/material/material = material_type //False typing.
 			add_points_from_source(profit, initial(material.name))
@@ -129,19 +129,19 @@ SUBSYSTEM_DEF(supply)
 		return
 	var/list/clear_turfs = list()
 
-	for(var/area/subarea in shuttle.shuttle_area)
-		for(var/turf/T in subarea)
+	for( var/area/subarea in shuttle.shuttle_area)
+		for( var/turf/T in subarea)
 			if(T.density)
 				continue
 			var/occupied = 0
-			for(var/atom/A in T.contents)
+			for( var/atom/A in T.contents)
 				if(!A.simulated)
 					continue
 				occupied = 1
 				break
 			if(!occupied)
 				clear_turfs += T
-	for(var/S in shoppinglist)
+	for( var/S in shoppinglist)
 		if(!clear_turfs.len)
 			break
 		var/turf/pickedloc = pick_n_take(clear_turfs)
@@ -177,7 +177,7 @@ SUBSYSTEM_DEF(supply)
 
 		var/list/spawned = SP.spawn_contents(A)
 		if(slip)
-			for(var/atom/content in spawned)
+			for( var/atom/content in spawned)
 				slip.info += "<li>[content.name]</li>" //add the item to the manifest
 			slip.info += "</ul><br>CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"
 

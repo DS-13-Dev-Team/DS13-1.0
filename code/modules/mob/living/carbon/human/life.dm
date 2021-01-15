@@ -84,7 +84,7 @@
 	//Update our name based on whether our face is obscured/disfigured
 	SetName(get_visible_name())
 
-/mob/living/carbon/human/set_stat(var/new_stat)
+/mob/living/carbon/human/set_stat(new_stat)
 	. = ..()
 	if(stat)
 		update_skin(1)
@@ -125,7 +125,7 @@
 	return pressure_adjustment_coefficient
 
 // Calculate how much of the enviroment pressure-difference affects the human.
-/mob/living/carbon/human/calculate_affecting_pressure(var/pressure)
+/mob/living/carbon/human/calculate_affecting_pressure(pressure)
 	var/pressure_difference
 
 	// First get the absolute pressure difference.
@@ -187,7 +187,7 @@
 
 	// DNA2 - Gene processing.
 	// The HULK stuff that was here is now in the hulk gene.
-	for(var/datum/dna/gene/gene in dna_genes)
+	for( var/datum/dna/gene/gene in dna_genes)
 		if(!gene.block)
 			continue
 		if(gene.is_active(src))
@@ -276,7 +276,7 @@
 	..()
 	//spread some viruses while we are at it
 	if(breath && !internal && virus2.len > 0 && prob(10))
-		for(var/mob/living/carbon/M in view(1,src))
+		for( var/mob/living/carbon/M in view(1,src))
 			src.spread_disease_to(M)
 
 
@@ -324,7 +324,7 @@
 	var/adjusted_pressure = calculate_affecting_pressure(pressure)
 
 	//Check for contaminants before anything else because we don't want to skip it.
-	for(var/g in environment.gas)
+	for( var/g in environment.gas)
 		if(gas_data.flags[g] & XGM_GAS_CONTAMINANT && environment.gas[g] > gas_data.overlay_limit[g] + 1)
 			pl_effects()
 			break
@@ -468,7 +468,7 @@
 		if(bloodstr) bloodstr.metabolize()
 
 	// Trace chemicals
-	for(var/T in chem_doses)
+	for( var/T in chem_doses)
 		if(bloodstr.has_reagent(T) || ingested.has_reagent(T) || touching.has_reagent(T))
 			continue
 		var/datum/reagent/R = T
@@ -575,7 +575,7 @@
 
 	return TRUE
 
-/mob/living/carbon/human/handle_regular_hud_updates(var/update_vision = TRUE)
+/mob/living/carbon/human/handle_regular_hud_updates(update_vision = TRUE)
 	if(hud_updateflag) // update our mob's hud overlays, AKA what others see flaoting above our head
 		handle_hud_list()
 
@@ -714,7 +714,7 @@
 	// Puke if toxloss is too high
 	if (species.can_vomit)
 		var/vomit_score = 0
-		for(var/tag in list(BP_LIVER,BP_KIDNEYS))
+		for( var/tag in list(BP_LIVER,BP_KIDNEYS))
 			var/obj/item/organ/internal/I = internal_organs_by_name[tag]
 			if(I)
 				vomit_score += I.damage
@@ -743,7 +743,7 @@
 
 /mob/living/carbon/human/handle_stomach()
 	spawn(0)
-		for(var/a in stomach_contents)
+		for( var/a in stomach_contents)
 			if(!(a in contents) || isnull(a))
 				stomach_contents.Remove(a)
 				continue
@@ -803,7 +803,7 @@
 
 
 		var/foundVirus = 0
-		for (var/ID in virus2)
+		for( var/ID in virus2)
 			if (ID in virusDB)
 				foundVirus = 1
 				break
@@ -902,7 +902,7 @@
 		holder2.icon_state = "hudblank"
 		holder3.icon_state = "hudblank"
 
-		for(var/obj/item/weapon/implant/I in src)
+		for( var/obj/item/weapon/implant/I in src)
 			if(I.implanted)
 				if(istype(I,/obj/item/weapon/implant/tracking))
 					holder1.icon_state = "hud_imp_tracking"
@@ -957,7 +957,7 @@
 	if(burn_temperature < 1)
 		return
 
-	for(var/obj/item/organ/external/E in organs)
+	for( var/obj/item/organ/external/E in organs)
 		if(!(E.body_part & protected_limbs) && prob(20))
 			E.take_external_damage(burn = round(species_heat_mod * log(10, (burn_temperature + 10)), 0.1), used_weapon = fire)
 

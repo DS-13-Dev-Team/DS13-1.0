@@ -9,7 +9,7 @@ var/const/EXTRA_COST_FACTOR = 1.25
 	//Create global autolathe recipe list if it hasn't been made already.
 	autolathe_recipes = list()
 	autolathe_categories = list()
-	for(var/R in typesof(/datum/autolathe/recipe)-/datum/autolathe/recipe)
+	for( var/R in typesof(/datum/autolathe/recipe)-/datum/autolathe/recipe)
 		var/datum/autolathe/recipe/recipe = new R
 		autolathe_recipes += recipe
 		autolathe_categories |= recipe.category
@@ -17,7 +17,7 @@ var/const/EXTRA_COST_FACTOR = 1.25
 		var/obj/item/I = new recipe.path
 		if(I.matter && !recipe.resources) //This can be overidden in the datums.
 			recipe.resources = list()
-			for(var/material in I.matter)
+			for( var/material in I.matter)
 				recipe.resources[material] = I.matter[material] * EXTRA_COST_FACTOR
 		qdel(I)
 

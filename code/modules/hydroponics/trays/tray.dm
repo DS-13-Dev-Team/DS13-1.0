@@ -210,7 +210,7 @@
 
 	reagents.trans_to_obj(temp_chem_holder, min(reagents.total_volume,rand(1,3)))
 
-	for(var/datum/reagent/R in temp_chem_holder.reagents.reagent_list)
+	for( var/datum/reagent/R in temp_chem_holder.reagents.reagent_list)
 
 		var/reagent_total = temp_chem_holder.reagents.get_reagent_amount(R.type)
 
@@ -466,7 +466,7 @@
 		attack_hand(user)
 
 		var/obj/item/weapon/storage/plants/S = O
-		for (var/obj/item/weapon/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
+		for( var/obj/item/weapon/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
 			if(!S.can_be_inserted(G, user))
 				return
 			S.handle_item_insertion(G, 1)

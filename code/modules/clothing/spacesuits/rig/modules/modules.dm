@@ -132,7 +132,7 @@
 
 	if(charges && charges.len)
 		var/list/processed_charges = list()
-		for(var/list/charge in charges)
+		for( var/list/charge in charges)
 			var/datum/rig_charge/charge_dat = new
 
 			charge_dat.short_name   = charge[1]
@@ -168,7 +168,7 @@
 
 /obj/item/rig_module/proc/can_install(obj/item/weapon/rig/rig, mob/user, feedback = FALSE, check_conflict = TRUE)
 	if (!redundant && check_conflict)
-		for (var/obj/item/rig_module/RM in rig.installed_modules)
+		for( var/obj/item/rig_module/RM in rig.installed_modules)
 			//Exact duplicates not allowed
 			if (type == RM.type)
 				return FALSE
@@ -181,7 +181,7 @@
 //Returns any existing module which blocks the installation of this one
 /obj/item/rig_module/proc/get_conflicting(obj/item/weapon/rig/rig)
 	if (!redundant)
-		for (var/obj/item/rig_module/RM in rig.installed_modules)
+		for( var/obj/item/rig_module/RM in rig.installed_modules)
 			//Exact duplicates not allowed
 			if (type == RM.type)
 				return RM
@@ -301,9 +301,9 @@
 		if(!wearing_rig.canremove && wearing_rig.installed_modules.len)
 			var/cell_status = wearing_rig.cell ? "[wearing_rig.cell.charge]/[wearing_rig.cell.maxcharge]" : "ERROR"
 			stat("Suit charge", cell_status)
-			for(var/obj/item/rig_module/module in wearing_rig.installed_modules)
+			for( var/obj/item/rig_module/module in wearing_rig.installed_modules)
 			{
-				for(var/datum/stat_rig_module/SRM as anything in module.stat_modules)
+				for( var/datum/stat_rig_module/SRM as anything in module.stat_modules)
 					if(SRM.CanUse())
 						stat(SRM.module.interface_name,SRM)
 			}

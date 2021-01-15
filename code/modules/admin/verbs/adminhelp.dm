@@ -8,22 +8,22 @@
 	//explode the input msg into a list
 	var/list/msglist = splittext(msg, " ")
 
-	for(var/mob/M in SSmobs.mob_list)
+	for( var/mob/M in SSmobs.mob_list)
 		var/list/indexing = list(M.real_name, M.name)
 		if(M.mind)	indexing += M.mind.name
 
-		for(var/string in indexing)
+		for( var/string in indexing)
 			var/list/L = splittext(string, " ")
 			var/surname_found = 0
 			//surnames
-			for(var/i=L.len, i>=1, i--)
+			for( var/i=L.len, i>=1, i--)
 				var/word = ckey(L[i])
 				if(word)
 					surnames[word] = M
 					surname_found = i
 					break
 			//forenames
-			for(var/i=1, i<surname_found, i++)
+			for( var/i=1, i<surname_found, i++)
 				var/word = ckey(L[i])
 				if(word)
 					forenames[word] = M
@@ -33,7 +33,7 @@
 	var/ai_found = 0
 	msg = ""
 	var/list/mobs_found = list()
-	for(var/original_word in msglist)
+	for( var/original_word in msglist)
 		var/word = ckey(original_word)
 		if(word)
 			if(!(word in GLOB.adminhelp_ignored_words))
@@ -102,7 +102,7 @@
 	else if(ticket.status == TICKET_ASSIGNED)
 		// manually check that the target client exists here as to not spam the usr for each logged out admin on the ticket
 		var/admin_found = 0
-		for(var/datum/client_lite/admin in ticket.assigned_admins)
+		for( var/datum/client_lite/admin in ticket.assigned_admins)
 			var/client/admin_client = client_by_ckey(admin.ckey)
 			if(admin_client)
 				admin_found = 1
@@ -126,7 +126,7 @@
 	var/list/mentorholders = list()
 	var/list/modholders = list()
 	var/list/adminholders = list()
-	for(var/client/X in GLOB.admins)
+	for( var/client/X in GLOB.admins)
 		if(R_MENTOR & X.holder.rights && !(R_ADMIN & X.holder.rights)) // we don't want to count admins twice. This list should be JUST mentors
 			mentorholders += X
 			if(X.is_afk())
@@ -146,23 +146,23 @@
 	switch(selected_type)
 		if("Mentors: Gameplay/Job Inquiries")
 			if(mentorholders.len)
-				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
+				for( var/client/X in mentorholders) // Mentors get a message without buttons and no character name
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << mentor_msg
 			if(adminholders.len)
-				for(var/client/X in adminholders) // Admins get the full monty
+				for( var/client/X in adminholders) // Admins get the full monty
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << msg
 		if("Mods/Admins: Rule Issue")
 			if(mentorholders.len)
-				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
+				for( var/client/X in mentorholders) // Mentors get a message without buttons and no character name
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << mentor_msg
 			if(adminholders.len)
-				for(var/client/X in adminholders) // Mods
+				for( var/client/X in adminholders) // Mods
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
 					X << msg

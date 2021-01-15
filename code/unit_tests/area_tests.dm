@@ -3,13 +3,13 @@
 
 /datum/unit_test/areas_shall_be_coherent/start_test()
 	var/incoherent_areas = 0
-	for(var/area/A)
+	for( var/area/A)
 		if(!A.contents.len)
 			continue
 		if(A.type in GLOB.using_map.area_coherency_test_exempt_areas)
 			continue
 		var/list/area_turfs = list()
-		for(var/turf/T in A)
+		for( var/turf/T in A)
 			area_turfs += T
 
 		var/actual_number_of_sub_areas = 0
@@ -39,7 +39,7 @@
 		var/turf/T = turfs_to_check.Pop()
 		. |= T
 		var/turf/neighbour
-		for(var/direction in GLOB.cardinal)
+		for( var/direction in GLOB.cardinal)
 			neighbour = get_step(T, direction)
 			SHOULD_CHECK_TURF(neighbour)
 #ifdef MULTIZAS
@@ -56,7 +56,7 @@
 
 /datum/unit_test/areas_shall_be_pure/start_test()
 	var/impure_areas = 0
-	for(var/area/A)
+	for( var/area/A)
 		if(!A.contents.len)
 			continue
 		if(A.type in GLOB.using_map.area_purity_test_exempt_areas)
@@ -77,7 +77,7 @@
 
 /datum/unit_test/areas_shall_be_used/start_test()
 	var/unused_areas = 0
-	for(var/area_type in subtypesof(/area))
+	for( var/area_type in subtypesof(/area))
 		if(area_type in GLOB.using_map.area_usage_test_exempted_areas)
 			continue
 		if(is_path_in_list(area_type, GLOB.using_map.area_usage_test_exempted_root_areas))

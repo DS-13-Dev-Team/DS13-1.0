@@ -38,7 +38,7 @@
 /obj/machinery/smartfridge/Destroy()
 	qdel(wires)
 	wires = null
-	for(var/datum/stored_items/S in item_records)
+	for( var/datum/stored_items/S in item_records)
 		qdel(S)
 	item_records = null
 	return ..()
@@ -182,8 +182,8 @@
 			overlays += "drying_rack_drying"
 
 /obj/machinery/smartfridge/drying_rack/proc/dry()
-	for(var/datum/stored_items/I in item_records)
-		for(var/obj/item/weapon/reagent_containers/food/snacks/S in I.instances)
+	for( var/datum/stored_items/I in item_records)
+		for( var/obj/item/weapon/reagent_containers/food/snacks/S in I.instances)
 			if(S.dry || !I.get_specific_product(get_turf(src), S)) continue
 			if(S.dried_type == S.type)
 				S.dry = 1
@@ -242,7 +242,7 @@
 	else if(istype(O, /obj/item/weapon/storage))
 		var/obj/item/weapon/storage/bag/P = O
 		var/plants_loaded = 0
-		for(var/obj/G in P.contents)
+		for( var/obj/G in P.contents)
 			if(accept_check(G) && P.remove_from_storage(G, src))
 				plants_loaded++
 				stock_item(G)
@@ -264,7 +264,7 @@
 		return 1
 
 /obj/machinery/smartfridge/proc/stock_item(obj/item/O)
-	for(var/datum/stored_items/I in item_records)
+	for( var/datum/stored_items/I in item_records)
 		if(istype(O, I.item_path) && O.name == I.item_name)
 			stock(I, O)
 			return
@@ -301,7 +301,7 @@
 	data["secure"] = is_secure
 
 	var/list/items[0]
-	for (var/i=1 to length(item_records))
+	for( var/i=1 to length(item_records))
 		var/datum/stored_items/I = item_records[i]
 		var/count = I.get_amount()
 		if(count > 0)
@@ -337,7 +337,7 @@
 		if(count > 0)
 			if((count - amount) < 0)
 				amount = count
-			for(var/i = 1 to amount)
+			for( var/i = 1 to amount)
 				I.get_product(get_turf(src))
 
 		return 1
@@ -349,7 +349,7 @@
 	if(!target)
 		return 0
 
-	for(var/datum/stored_items/I in src.item_records)
+	for( var/datum/stored_items/I in src.item_records)
 		throw_item = I.get_product(loc)
 		if (!throw_item)
 			continue

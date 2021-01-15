@@ -29,7 +29,7 @@
 	hud_state = "wiz_fireball"
 
 /spell/targeted/projectile/dumbfire/fireball/prox_cast(var/list/targets, atom/movable/spell_holder)
-	for(var/mob/living/M in targets)
+	for( var/mob/living/M in targets)
 		apply_spell_damage(M)
 	spell_holder.explosion(ex_severe, ex_heavy)
 

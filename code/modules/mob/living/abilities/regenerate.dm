@@ -58,7 +58,7 @@
 	var/list/missing_limbs = list()
 
 	//This loop counts and documents the damaged limbs, for the purpose of regrowing them and also for documenting how many there are for stun time
-	for(var/limb_tag in user.species.has_limbs)
+	for( var/limb_tag in user.species.has_limbs)
 
 		//Certain limbs cannot be regrown once lost. Lets check if this is one of those
 		var/organ_data = user.species.has_limbs[limb_tag]
@@ -98,7 +98,7 @@
 	duration *= (1 + (missing_limbs.len * 0.25))	//more limbs lost, the longer it takes
 
 	//Lets play the animations
-	for(var/limb_type in regenerating_organs)
+	for( var/limb_type in regenerating_organs)
 		user.species.regenerate_limb(user, limb_type, duration)
 
 	user.shake_animation(30)
@@ -126,7 +126,7 @@
 	var/obj/machinery/marker/M = get_marker()
 	//Lets finish up. The limb regrowing animations should be done by now
 	//Here we actually create the freshly grown limb
-	for(var/limb_type in regenerating_organs)
+	for( var/limb_type in regenerating_organs)
 		var/list/organ_data = user.species.has_limbs[limb_type]
 		var/limb_path = organ_data["path"]
 		var/obj/item/organ/O = new limb_path(user)
@@ -167,7 +167,7 @@
 
 	//Once we're done regenerating limbs, lets also immediately regenerate all internal organs.
 	//We're not gonna force these to be done one by one because there's nothing interesting to look at as it happens.
-	for(var/organ_tag in user.species.has_organ)
+	for( var/organ_tag in user.species.has_organ)
 
 		var/obj/item/organ/internal/I = user.internal_organs_by_name[organ_tag]
 		if(I && I.is_usable())

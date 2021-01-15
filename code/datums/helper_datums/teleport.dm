@@ -33,7 +33,7 @@
 	if(is_type_in_list(target, teleport_blacklist))
 		return 0
 
-	for(var/type in teleport_blacklist)
+	for( var/type in teleport_blacklist)
 		if(!isemptylist(target.search_contents_for(type)))
 			return 0
 	return 1

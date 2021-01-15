@@ -45,20 +45,20 @@
 
 	// Setup the full list of available security levels now that we no longer need to use "x in all_security_levels"
 	var/list/security_level_instances = list()
-	for(var/security_level_type in all_security_levels)
+	for( var/security_level_type in all_security_levels)
 		security_level_instances += decls_repository.get_decl(security_level_type)
 	all_security_levels = security_level_instances
 
 	standard_security_levels = list()
 	// Setup the list of normally selectable security levels
-	for(var/security_level in all_security_levels)
+	for( var/security_level in all_security_levels)
 		standard_security_levels += security_level
 		if(security_level == highest_standard_security_level)
 			break
 
 	comm_console_security_levels = list()
 	// Setup the list of selectable security levels available in the comm. console
-	for(var/security_level in all_security_levels)
+	for( var/security_level in all_security_levels)
 		if(security_level == highest_standard_security_level)
 			break
 		comm_console_security_levels += security_level
@@ -187,7 +187,7 @@
 	notify_station()
 
 /decl/security_level/default/proc/notify_station()
-	for(var/obj/machinery/firealarm/FA in SSmachines.machinery)
+	for( var/obj/machinery/firealarm/FA in SSmachines.machinery)
 		if(FA.z in GLOB.using_map.contact_levels)
 			FA.update_icon()
 	post_status("alert")

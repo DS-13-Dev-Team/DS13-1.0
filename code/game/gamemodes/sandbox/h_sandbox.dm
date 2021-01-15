@@ -39,7 +39,7 @@ datum/hSB
 				hsbpanel += "<b>Administration Tools:</b><br>"
 				hsbpanel += "- <a href=\"?\ref[src];hsb=hsbtobj\">Toggle Object Spawning</a><br><br>"
 			hsbpanel += "<b>Regular Tools:</b><br>"
-			for(var/T in hrefs)
+			for( var/T in hrefs)
 				hsbpanel += "- <a href=\"?\ref[src];hsb=[T]\">[hrefs[T]]</a><br>"
 			if(hsboxspawn)
 				hsbpanel += "- <a href=\"?\ref[src];hsb=hsbobj\">Spawn Object</a><br><br>"
@@ -100,7 +100,7 @@ datum/hSB
 					//TODO: DEFERRED make this better, with an HTML window or something instead of 15 popups
 					hsb.req_access = list()
 					var/accesses = get_all_accesses()
-					for(var/A in accesses)
+					for( var/A in accesses)
 						if(alert(usr, "Will this airlock require [get_access_desc(A)] access?", "Sandbox:", "Yes", "No") == "Yes")
 							hsb.req_access += A
 
@@ -119,7 +119,7 @@ datum/hSB
 					//hsb.loc = usr.loc
 				if("hsbtoolbox")
 					var/obj/item/weapon/storage/hsb = new/obj/item/weapon/storage/toolbox/mechanical
-					for(var/obj/item/device/radio/T in hsb)
+					for( var/obj/item/device/radio/T in hsb)
 						qdel(T)
 					new/obj/item/weapon/tool/crowbar (hsb)
 					hsb.loc = usr.loc
@@ -130,7 +130,7 @@ datum/hSB
 					if(!hsboxspawn) return
 
 					var/list/selectable = list()
-					for(var/O in typesof(/obj/item/))
+					for( var/O in typesof(/obj/item/))
 					//Note, these istypes don't work
 						if(istype(O, /obj/item/weapon/gun))
 							continue

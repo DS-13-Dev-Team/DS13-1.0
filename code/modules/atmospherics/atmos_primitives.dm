@@ -115,7 +115,7 @@
 	//Determine the specific power of each filterable gas type, and the total amount of filterable gas (gasses selected to be scrubbed)
 	var/total_filterable_moles = 0			//the total amount of filterable gas
 	var/list/specific_power_gas = list()	//the power required to remove one mole of pure gas, for each gas type
-	for (var/g in filtering)
+	for( var/g in filtering)
 		if (source.gas[g] < MINIMUM_MOLES_TO_FILTER)
 			continue
 
@@ -128,7 +128,7 @@
 
 	//now that we know the total amount of filterable gas, we can calculate the amount of power needed to scrub one mole of gas
 	var/total_specific_power = 0		//the power required to remove one mole of filterable gas
-	for (var/g in filtering)
+	for( var/g in filtering)
 		var/ratio = source.gas[g]/total_filterable_moles //this converts the specific power per mole of pure gas to specific power per mole of scrubbed gas
 		total_specific_power += specific_power_gas[g]*ratio
 
@@ -154,7 +154,7 @@
 		P.last_flow_rate = (total_transfer_moles/source.total_moles)*source.volume //group_multiplier gets divided out here
 
 	var/power_draw = 0
-	for (var/g in filtering)
+	for( var/g in filtering)
 		var/transfer_moles = source.gas[g]
 		//filter gas in proportion to the mole ratio
 		transfer_moles = min(transfer_moles, total_transfer_moles*(source.gas[g]/total_filterable_moles))
@@ -187,7 +187,7 @@
 	var/total_filterable_moles = 0		//the total amount of filterable gas
 	var/total_unfilterable_moles = 0	//the total amount of non-filterable gas
 	var/list/specific_power_gas = list()	//the power required to remove one mole of pure gas, for each gas type
-	for (var/g in source.gas)
+	for( var/g in source.gas)
 		if (source.gas[g] < MINIMUM_MOLES_TO_FILTER)
 			continue
 
@@ -228,7 +228,7 @@
 
 	var/filtered_power_used = 0		//power used to move filterable gas to sink_filtered
 	var/unfiltered_power_used = 0	//power used to move unfilterable gas to sink_clean
-	for (var/g in removed.gas)
+	for( var/g in removed.gas)
 		var/power_used = specific_power_gas[g]*removed.gas[g]
 
 		if (g in filtering)
@@ -259,7 +259,7 @@
 	var/total_filterable_moles = 0		//the total amount of filterable gas
 	var/total_unfilterable_moles = 0	//the total amount of non-filterable gas
 	var/list/specific_power_gas = list()	//the power required to remove one mole of pure gas, for each gas type
-	for (var/g in source.gas)
+	for( var/g in source.gas)
 		if (source.gas[g] < MINIMUM_MOLES_TO_FILTER)
 			continue
 
@@ -301,7 +301,7 @@
 
 	var/list/filtered_power_used = list()		//power used to move filterable gas to the filtered gas mixes
 	var/unfiltered_power_used = 0	//power used to move unfilterable gas to sink_clean
-	for (var/g in removed.gas)
+	for( var/g in removed.gas)
 		var/power_used = specific_power_gas[g]*removed.gas[g]
 
 		if (g in filtering)
@@ -317,7 +317,7 @@
 	removed.update_values()
 
 	var/power_draw = unfiltered_power_used
-	for (var/datum/gas_mixture/sink_filtered in filtered_power_used)
+	for( var/datum/gas_mixture/sink_filtered in filtered_power_used)
 		power_draw += filtered_power_used[sink_filtered]
 
 	sink_clean.merge(removed)
@@ -335,7 +335,7 @@
 	var/total_input_volume = 0		//for flow rate calculation
 	var/total_input_moles = 0		//for flow rate calculation
 	var/list/source_specific_power = list()
-	for (var/datum/gas_mixture/source in mix_sources)
+	for( var/datum/gas_mixture/source in mix_sources)
 		if (source.total_moles < MINIMUM_MOLES_TO_FILTER)
 			return -1	//either mix at the set ratios or mix no gas at all
 
@@ -377,7 +377,7 @@
 		P.last_flow_rate = (total_transfer_moles/total_input_moles)*total_input_volume //group_multiplier gets divided out here
 
 	var/total_power_draw = 0
-	for (var/datum/gas_mixture/source in mix_sources)
+	for( var/datum/gas_mixture/source in mix_sources)
 		var/mix_ratio = mix_sources[source]
 		if (!mix_ratio)
 			continue

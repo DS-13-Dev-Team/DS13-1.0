@@ -19,7 +19,7 @@
 
 	//Alright next up, we loop through the turfs. for each one:
 
-	for (var/turf/T as anything in turfs)
+	for( var/turf/T as anything in turfs)
 		//1. We check if its distance is less than the requirement. This is cheap. If it is...
 		var/dist_delta = get_dist_euclidian(origin, T)
 		if (dist_delta > distance)
@@ -63,7 +63,7 @@
 
 	var/list/subcones = list()
 	var/list/all_tiles = list()
-	for (var/i in 1 to stages)
+	for( var/i in 1 to stages)
 		//For each stage, we'll get the subcone
 		var/list/subcone = get_cone(origin, subcone_direction, distance, abs(subcone_angle))
 		subcone -= all_tiles	//Filter out any tiles that are already in another subcone

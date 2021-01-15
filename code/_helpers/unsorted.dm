@@ -136,7 +136,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			var/turf/center = locate((destination.x+xoffset),(destination.y+yoffset),location.z)//So now, find the new center.
 
 			//Now to find a box from center location and make that our destination.
-			for(var/turf/T in block(locate(center.x+b1xerror,center.y+b1yerror,location.z), locate(center.x+b2xerror,center.y+b2yerror,location.z) ))
+			for( var/turf/T in block(locate(center.x+b1xerror,center.y+b1yerror,location.z), locate(center.x+b2xerror,center.y+b2yerror,location.z) ))
 				if(density && T.contains_dense_objects())	continue//If density was specified.
 				if(T.x>world.maxx || T.x<1)	continue//Don't want them to teleport off the map.
 				if(T.y>world.maxy || T.y<1)	continue
@@ -173,12 +173,12 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 
 /proc/DirBlocked(turf/loc,dir)
-	for(var/obj/structure/window/D in loc)
+	for( var/obj/structure/window/D in loc)
 		if(!D.density)			continue
 		if(D.dir == SOUTHWEST)	return 1
 		if(D.dir == dir)		return 1
 
-	for(var/obj/machinery/door/D in loc)
+	for( var/obj/machinery/door/D in loc)
 		if(!D.density)			continue
 		if(istype(D, /obj/machinery/door/window))
 			if((dir & SOUTH) && (D.dir & (EAST|WEST)))		return 1
@@ -187,7 +187,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	return 0
 
 /proc/TurfBlockedNonWindow(turf/loc)
-	for(var/obj/O in loc)
+	for( var/obj/O in loc)
 		if(O.density && !istype(O, /obj/structure/window))
 			return 1
 	return 0
@@ -291,13 +291,13 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		var/time_passed = world.time
 		var/newname
 
-		for(var/i=1,i<=3,i++)	//we get 3 attempts to pick a suitable name.
+		for( var/i=1,i<=3,i++)	//we get 3 attempts to pick a suitable name.
 			newname = input(src,"You are \a [role]. Would you like to change your name to something else?", "Name change",oldname) as text
 			if((world.time-time_passed)>3000)
 				return	//took too long
 			newname = sanitizeName(newname, ,allow_numbers)	//returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
 
-			for(var/mob/living/M in GLOB.player_list)
+			for( var/mob/living/M in GLOB.player_list)
 				if(M == src)
 					continue
 				if(!newname || M.real_name == newname)
@@ -320,7 +320,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /proc/freeborg()
 	var/select = null
 	var/list/borgs = list()
-	for (var/mob/living/silicon/robot/A in GLOB.player_list)
+	for( var/mob/living/silicon/robot/A in GLOB.player_list)
 		if (A.stat == 2 || A.connected_ai || A.scrambledcodes || istype(A,/mob/living/silicon/robot/drone))
 			continue
 		var/name = "[A.real_name] ([A.modtype] [A.braintype])"
@@ -333,7 +333,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //When a borg is activated, it can choose which AI it wants to be slaved to
 /proc/active_ais()
 	. = list()
-	for(var/mob/living/silicon/ai/A in GLOB.living_mob_list)
+	for( var/mob/living/silicon/ai/A in GLOB.living_mob_list)
 		if(A.stat == DEAD)
 			continue
 		if(A.control_disabled == 1)
@@ -345,7 +345,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /proc/select_active_ai_with_fewest_borgs()
 	var/mob/living/silicon/ai/selected
 	var/list/active = active_ais()
-	for(var/mob/living/silicon/ai/A in active)
+	for( var/mob/living/silicon/ai/A in active)
 		if(!selected || (selected.connected_robots.len > A.connected_robots.len))
 			selected = A
 
@@ -365,7 +365,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/list/keyclient_list = list()
 	var/list/key_list = list()
 	var/list/logged_list = list()
-	for(var/named in old_list)
+	for( var/named in old_list)
 		var/mob/M = old_list[named]
 		if(issilicon(M))
 			AI_list |= M
@@ -393,7 +393,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/list/names = list()
 	var/list/creatures = list()
 	var/list/namecounts = list()
-	for(var/mob/M in mobs)
+	for( var/mob/M in mobs)
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -419,33 +419,33 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /proc/sortmobs()
 	var/list/moblist = list()
 	var/list/sortmob = sortAtom(SSmobs.mob_list)
-	for(var/mob/observer/eye/M in sortmob)
+	for( var/mob/observer/eye/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/silicon/ai/M in sortmob)
+	for( var/mob/living/silicon/ai/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/silicon/pai/M in sortmob)
+	for( var/mob/living/silicon/pai/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/silicon/robot/M in sortmob)
+	for( var/mob/living/silicon/robot/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/deity/M in sortmob)
+	for( var/mob/living/deity/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/human/M in sortmob)
+	for( var/mob/living/carbon/human/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/brain/M in sortmob)
+	for( var/mob/living/carbon/brain/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/alien/M in sortmob)
+	for( var/mob/living/carbon/alien/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/observer/ghost/M in sortmob)
+	for( var/mob/observer/ghost/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/new_player/M in sortmob)
+	for( var/mob/new_player/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/slime/M in sortmob)
+	for( var/mob/living/carbon/slime/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/simple_animal/M in sortmob)
+	for( var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
-//	for(var/mob/living/silicon/hivebot/M in world)
+//	for( var/mob/living/silicon/hivebot/M in world)
 //		mob_list.Add(M)
-//	for(var/mob/living/silicon/hive_mainframe/M in world)
+//	for( var/mob/living/silicon/hive_mainframe/M in world)
 //		mob_list.Add(M)
 	return moblist
 
@@ -537,7 +537,7 @@ proc/GaussRandRound(sigma, roundto)
 	if (includeSelf)
 		toReturn += src
 
-	for(var/atom/part in contents)
+	for( var/atom/part in contents)
 		toReturn += part
 		if(part.contents.len && searchDepth)
 			toReturn += part.GetAllContents(searchDepth - 1)
@@ -556,7 +556,7 @@ proc/GaussRandRound(sigma, roundto)
 	while(current != target_turf)
 		if(steps > length) return 0
 		if(current.opacity) return 0
-		for(var/atom/A in current)
+		for( var/atom/A in current)
 			if(A.opacity) return 0
 		current = get_step_towards(current, target_turf)
 		steps++
@@ -566,7 +566,7 @@ proc/GaussRandRound(sigma, roundto)
 /proc/is_blocked_turf(turf/T)
 	var/cant_pass = 0
 	if(T.density) cant_pass = 1
-	for(var/atom/A in T)
+	for( var/atom/A in T)
 		if(A.density)//&&A.anchored
 			cant_pass = 1
 	return cant_pass
@@ -615,7 +615,7 @@ proc/GaussRandRound(sigma, roundto)
 		areatype = areatemp.type
 
 	var/list/areas = new/list()
-	for(var/area/N in world)
+	for( var/area/N in world)
 		if(istype(N, areatype)) areas += N
 	return areas
 
@@ -631,9 +631,9 @@ proc/GaussRandRound(sigma, roundto)
 		return null
 
 	var/list/atoms = new/list()
-	for(var/area/N in world)
+	for( var/area/N in world)
 		if(istype(N, areatype))
-			for(var/atom/A in N)
+			for( var/atom/A in N)
 				atoms += A
 	return atoms
 
@@ -671,7 +671,7 @@ proc/DuplicateObject(obj/original, perfectcopy = 0 , sameloc = 0)
 
 	if(perfectcopy)
 		if((O) && (original))
-			for(var/V in original.vars)
+			for( var/V in original.vars)
 				if(!(V in list("type","loc","locs","vars", "parent", "parent_type","verbs","ckey","key")))
 					O.vars[V] = original.vars[V]
 	return O
@@ -699,18 +699,18 @@ proc/DuplicateObject(obj/original, perfectcopy = 0 , sameloc = 0)
 
 	var/src_min_x = 0
 	var/src_min_y = 0
-	for (var/turf/T in turfs_src)
+	for( var/turf/T in turfs_src)
 		if(T.x < src_min_x || !src_min_x) src_min_x	= T.x
 		if(T.y < src_min_y || !src_min_y) src_min_y	= T.y
 
 	var/trg_min_x = 0
 	var/trg_min_y = 0
-	for (var/turf/T in turfs_trg)
+	for( var/turf/T in turfs_trg)
 		if(T.x < trg_min_x || !trg_min_x) trg_min_x	= T.x
 		if(T.y < trg_min_y || !trg_min_y) trg_min_y	= T.y
 
 	var/list/refined_src = new/list()
-	for(var/turf/T in turfs_src)
+	for( var/turf/T in turfs_src)
 		refined_src += T
 		refined_src[T] = new/datum/coords
 		var/datum/coords/C = refined_src[T]
@@ -718,7 +718,7 @@ proc/DuplicateObject(obj/original, perfectcopy = 0 , sameloc = 0)
 		C.y_pos = (T.y - src_min_y)
 
 	var/list/refined_trg = new/list()
-	for(var/turf/T in turfs_trg)
+	for( var/turf/T in turfs_trg)
 		refined_trg += T
 		refined_trg[T] = new/datum/coords
 		var/datum/coords/C = refined_trg[T]
@@ -731,9 +731,9 @@ proc/DuplicateObject(obj/original, perfectcopy = 0 , sameloc = 0)
 
 
 	moving:
-		for (var/turf/T in refined_src)
+		for( var/turf/T in refined_src)
 			var/datum/coords/C_src = refined_src[T]
-			for (var/turf/B in refined_trg)
+			for( var/turf/B in refined_trg)
 				var/datum/coords/C_trg = refined_trg[B]
 				if(C_src.x_pos == C_trg.x_pos && C_src.y_pos == C_trg.y_pos)
 
@@ -760,7 +760,7 @@ proc/DuplicateObject(obj/original, perfectcopy = 0 , sameloc = 0)
 					var/list/mobs = new/list()
 					var/list/newmobs = new/list()
 
-					for(var/obj/O in T)
+					for( var/obj/O in T)
 
 						if(!istype(O,/obj) || !O.simulated)
 							continue
@@ -768,22 +768,22 @@ proc/DuplicateObject(obj/original, perfectcopy = 0 , sameloc = 0)
 						objs += O
 
 
-					for(var/obj/O in objs)
+					for( var/obj/O in objs)
 						newobjs += DuplicateObject(O , 1)
 
 
-					for(var/obj/O in newobjs)
+					for( var/obj/O in newobjs)
 						O.forceMove(X)
 
-					for(var/mob/M in T)
+					for( var/mob/M in T)
 
 						if(!istype(M,/mob) || !M.simulated) continue // If we need to check for more mobs, I'll add a variable
 						mobs += M
 
-					for(var/mob/M in mobs)
+					for( var/mob/M in mobs)
 						newmobs += DuplicateObject(M , 1)
 
-					for(var/mob/M in newmobs)
+					for( var/mob/M in newmobs)
 						M.forceMove(X)
 
 					copiedobjs += newobjs
@@ -805,7 +805,7 @@ proc/DuplicateObject(obj/original, perfectcopy = 0 , sameloc = 0)
 
 
 	if(toupdate.len)
-		for(var/turf/simulated/T1 in toupdate)
+		for( var/turf/simulated/T1 in toupdate)
 			SSair.mark_for_update(T1)
 
 	return copiedobjs
@@ -836,7 +836,7 @@ proc/oview_or_orange(distance = world.view , center = usr , type)
 
 proc/get_mob_with_client_list()
 	var/list/mobs = list()
-	for(var/mob/M in SSmobs.mob_list)
+	for( var/mob/M in SSmobs.mob_list)
 		if (M.client)
 			mobs += M
 	return mobs
@@ -1003,8 +1003,8 @@ var/list/WALLITEMS = list(
 	/obj/item/weapon/storage/mirror, /obj/structure/fireaxecabinet, /obj/structure/filingcabinet/wallcabinet
 	)
 /proc/gotwallitem(loc, dir)
-	for(var/obj/O in loc)
-		for(var/item in WALLITEMS)
+	for( var/obj/O in loc)
+		for( var/item in WALLITEMS)
 			if(istype(O, item))
 				//Direction works sometimes
 				if(O.dir == dir)
@@ -1027,8 +1027,8 @@ var/list/WALLITEMS = list(
 
 
 	//Some stuff is placed directly on the wallturf (signs)
-	for(var/obj/O in get_step(loc, dir))
-		for(var/item in WALLITEMS)
+	for( var/obj/O in get_step(loc, dir))
+		for( var/item in WALLITEMS)
 			if(istype(O, item))
 				if(O.pixel_x == 0 && O.pixel_y == 0)
 					return 1
@@ -1047,7 +1047,7 @@ var/list/WALLITEMS = list(
 	if(simple)
 		colour = pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))
 	else
-		for(var/i=1;i<=3;i++)
+		for( var/i=1;i<=3;i++)
 			var/temp_col = "[num2hex(rand(lower,upper))]"
 			if(length(temp_col )<2)
 				temp_col = "0[temp_col]"

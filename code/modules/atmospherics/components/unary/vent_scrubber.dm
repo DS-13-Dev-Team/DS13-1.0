@@ -130,7 +130,7 @@
 		src.broadcast_status()
 	if(!scrubbing_gas)
 		scrubbing_gas = list()
-		for(var/g in gas_data.gases)
+		for( var/g in gas_data.gases)
 			if(g != "oxygen" && g != "nitrogen")
 				scrubbing_gas += g
 

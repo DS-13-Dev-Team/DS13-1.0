@@ -8,14 +8,14 @@
 var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_RED, "blue" = PIPE_COLOR_BLUE, "cyan" = PIPE_COLOR_CYAN, "green" = PIPE_COLOR_GREEN, "yellow" = PIPE_COLOR_YELLOW, "black" = PIPE_COLOR_BLACK, "orange" = PIPE_COLOR_ORANGE)
 
 /proc/pipe_color_lookup(color)
-	for(var/C in pipe_colors)
+	for( var/C in pipe_colors)
 		if(color == pipe_colors[C])
 			return "[C]"
 
 /proc/pipe_color_check(color)
 	if(!color)
 		return 1
-	for(var/C in pipe_colors)
+	for( var/C in pipe_colors)
 		if(color == pipe_colors[C])
 			return 1
 	return 0
@@ -88,7 +88,7 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 
 	var/icon/pipe = new('icons/atmos/pipes.dmi')
 
-	for(var/state in pipe.IconStates())
+	for( var/state in pipe.IconStates())
 		if(!state || findtext(state, "map"))
 			continue
 
@@ -96,19 +96,19 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 		var/image/I = image('icons/atmos/pipes.dmi', icon_state = state)
 		pipe_icons[cache_name] = I
 
-		for(var/pipe_color in pipe_colors)
+		for( var/pipe_color in pipe_colors)
 			I = image('icons/atmos/pipes.dmi', icon_state = state)
 			I.color = pipe_colors[pipe_color]
 			pipe_icons[state + "[pipe_colors[pipe_color]]"] = I
 
 	pipe = new ('icons/atmos/heat.dmi')
-	for(var/state in pipe.IconStates())
+	for( var/state in pipe.IconStates())
 		if(!state || findtext(state, "map"))
 			continue
 		pipe_icons["hepipe" + state] = image('icons/atmos/heat.dmi', icon_state = state)
 
 	pipe = new ('icons/atmos/junction.dmi')
-	for(var/state in pipe.IconStates())
+	for( var/state in pipe.IconStates())
 		if(!state || findtext(state, "map"))
 			continue
 		pipe_icons["hejunction" + state] = image('icons/atmos/junction.dmi', icon_state = state)
@@ -120,7 +120,7 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 
 	var/icon/pipe = new('icons/atmos/manifold.dmi')
 
-	for(var/state in pipe.IconStates())
+	for( var/state in pipe.IconStates())
 		if(findtext(state, "clamps"))
 			var/image/I = image('icons/atmos/manifold.dmi', icon_state = state)
 			manifold_icons[state] = I
@@ -129,7 +129,7 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 		if(findtext(state, "core") || findtext(state, "4way"))
 			var/image/I = image('icons/atmos/manifold.dmi', icon_state = state)
 			manifold_icons[state] = I
-			for(var/pipe_color in pipe_colors)
+			for( var/pipe_color in pipe_colors)
 				I = image('icons/atmos/manifold.dmi', icon_state = state)
 				I.color = pipe_colors[pipe_color]
 				manifold_icons[state + pipe_colors[pipe_color]] = I
@@ -141,13 +141,13 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 	var/icon/device
 
 	device = new('icons/atmos/vent_pump.dmi')
-	for(var/state in device.IconStates())
+	for( var/state in device.IconStates())
 		if(!state || findtext(state, "map"))
 			continue
 		device_icons["vent" + state] = image('icons/atmos/vent_pump.dmi', icon_state = state)
 
 	device = new('icons/atmos/vent_scrubber.dmi')
-	for(var/state in device.IconStates())
+	for( var/state in device.IconStates())
 		if(!state || findtext(state, "map"))
 			continue
 		device_icons["scrubber" + state] = image('icons/atmos/vent_scrubber.dmi', icon_state = state)
@@ -158,7 +158,7 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 
 	var/icon/omni = new('icons/atmos/omni_devices.dmi')
 
-	for(var/state in omni.IconStates())
+	for( var/state in omni.IconStates())
 		if(!state || findtext(state, "map"))
 			continue
 		omni_icons[state] = image('icons/atmos/omni_devices.dmi', icon_state = state)
@@ -171,16 +171,16 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 
 	var/icon/pipe = new('icons/atmos/pipe_underlays.dmi')
 
-	for(var/state in pipe.IconStates())
+	for( var/state in pipe.IconStates())
 		if(state == "")
 			continue
 
 		var/cache_name = state
 
-		for(var/D in GLOB.cardinal)
+		for( var/D in GLOB.cardinal)
 			var/image/I = image('icons/atmos/pipe_underlays.dmi', icon_state = state, dir = D)
 			underlays[cache_name + "[D]"] = I
-			for(var/pipe_color in pipe_colors)
+			for( var/pipe_color in pipe_colors)
 				I = image('icons/atmos/pipe_underlays.dmi', icon_state = state, dir = D)
 				I.color = pipe_colors[pipe_color]
 				underlays[state + "[D]" + "[pipe_colors[pipe_color]]"] = I
@@ -205,11 +205,11 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 
 	var/icon/pipe = new('icons/atmos/pipe_underlays.dmi')
 
-	for(var/state in pipe.IconStates())
+	for( var/state in pipe.IconStates())
 		if(state == "")
 			continue
 
-		for(var/D in cardinal)
+		for( var/D in cardinal)
 			var/image/I = image('icons/atmos/pipe_underlays.dmi', icon_state = state, dir = D)
 			switch(state)
 				if("intact")
@@ -242,7 +242,7 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 					pipe_underlays_exposed["[D]"] = I
 				if("pipe_intact-scrubbers")
 					pipe_underlays_intact["[D]"] = I
-			for(var/pipe_color in pipe_colors)
+			for( var/pipe_color in pipe_colors)
 				I = image('icons/atmos/pipe_underlays.dmi', icon_state = state, dir = D)
 				I.color = pipe_colors[pipe_color]
 				switch(state)

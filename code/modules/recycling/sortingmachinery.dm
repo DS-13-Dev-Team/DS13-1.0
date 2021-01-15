@@ -117,7 +117,7 @@
 			O.welded = 0
 		wrapped = null
 	var/turf/T = get_turf(src)
-	for(var/atom/movable/AM in contents)
+	for( var/atom/movable/AM in contents)
 		AM.forceMove(T)
 	return ..()
 
@@ -348,7 +348,7 @@
 	var/dat = "<tt><center><h1><b>TagMaster 2.3</b></h1></center>"
 
 	dat += "<table style='width:100%; padding:4px;'><tr>"
-	for(var/i = 1, i <= GLOB.tagger_locations.len, i++)
+	for( var/i = 1, i <= GLOB.tagger_locations.len, i++)
 		dat += "<td><a href='?src=\ref[src];nextTag=[GLOB.tagger_locations[i]]'>[GLOB.tagger_locations[i]]</a></td>"
 
 		if (i%4==0)
@@ -440,7 +440,7 @@
 	sleep(5) // wait for animation to finish
 
 	if(prob(35))
-		for(var/mob/living/carbon/human/L in src)
+		for( var/mob/living/carbon/human/L in src)
 			var/list/obj/item/organ/external/crush = L.get_damageable_organs()
 			if(!crush.len)
 				return

@@ -9,7 +9,7 @@
 	if(!..())
 		return 0
 	var/is_good = 0
-	for(var/obj/structure/deity/altar/A in linked.structures)
+	for( var/obj/structure/deity/altar/A in linked.structures)
 		if(get_dist(target, A) < 2)
 			is_good = 1
 			break

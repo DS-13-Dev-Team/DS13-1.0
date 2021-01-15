@@ -1,5 +1,5 @@
 /mob/living/carbon/human/proc/get_unarmed_attack(mob/living/carbon/human/target, hit_zone)
-	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
+	for( var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
 		if(u_attack.is_usable(src, target, hit_zone))
 			if(pulling_punches)
 				var/datum/unarmed_attack/soft_variant = u_attack.get_sparring_variant()
@@ -24,7 +24,7 @@
 		M.spread_disease_to(src, "Contact")
 
 	if(H)
-		for (var/obj/item/grab/G in H)
+		for( var/obj/item/grab/G in H)
 			if (G.assailant == H && G.affecting == src)
 				if(G.resolve_openhand_attack())
 					return 1

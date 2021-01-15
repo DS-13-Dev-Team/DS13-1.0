@@ -34,14 +34,14 @@ SUBSYSTEM_DEF(garbage)
 	queues = new(GC_QUEUE_COUNT)
 	pass_counts = new(GC_QUEUE_COUNT)
 	fail_counts = new(GC_QUEUE_COUNT)
-	for(var/i in 1 to GC_QUEUE_COUNT)
+	for( var/i in 1 to GC_QUEUE_COUNT)
 		queues[i] = list()
 		pass_counts[i] = 0
 		fail_counts[i] = 0
 
 /datum/controller/subsystem/garbage/stat_entry(msg)
 	var/list/counts = list()
-	for (var/list/L in queues)
+	for( var/list/L in queues)
 		counts += length(L)
 	msg += "Q:[counts.Join(",")]|D:[delslasttick]|G:[gcedlasttick]|"
 	msg += "GR:"
@@ -65,7 +65,7 @@ SUBSYSTEM_DEF(garbage)
 
 	//sort by how long it's wasted hard deleting
 	sortTim(items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
-	for(var/path in items)
+	for( var/path in items)
 		var/datum/qdel_item/I = items[path]
 		dellog += "Path: [path]"
 		if (I.failures)
@@ -112,7 +112,7 @@ SUBSYSTEM_DEF(garbage)
 		count = 0 //so if we runtime on the Cut, we don't try again.
 		tobequeued.Cut(1,c+1)
 
-	for (var/ref in tobequeued)
+	for( var/ref in tobequeued)
 		count++
 		Queue(ref, GC_QUEUE_PREQUEUE+1)
 		if (MC_TICK_CHECK)
@@ -137,7 +137,7 @@ SUBSYSTEM_DEF(garbage)
 
 	lastlevel = level
 
-	for (var/refID in queue)
+	for( var/refID in queue)
 		if (!refID)
 			count++
 			if (MC_TICK_CHECK)
@@ -257,7 +257,7 @@ SUBSYSTEM_DEF(garbage)
 
 /datum/controller/subsystem/garbage/Recover()
 	if (istype(SSgarbage.queues))
-		for (var/i in 1 to SSgarbage.queues.len)
+		for( var/i in 1 to SSgarbage.queues.len)
 			queues[i] |= SSgarbage.queues[i]
 
 
@@ -390,13 +390,13 @@ SUBSYSTEM_DEF(garbage)
 	last_find_references = world.time
 
 	DoSearchVar(GLOB) //globals
-	for(var/datum/thing in world) //atoms (don't believe its lies)
+	for( var/datum/thing in world) //atoms (don't believe its lies)
 		DoSearchVar(thing, "World -> [thing]")
 
-	for (var/datum/thing) //datums
+	for( var/datum/thing) //datums
 		DoSearchVar(thing, "World -> [thing]")
 
-	for (var/client/thing) //clients
+	for( var/client/thing) //clients
 		DoSearchVar(thing, "World -> [thing]")
 
 	testing("Completed search for references to a [type].")
@@ -445,7 +445,7 @@ SUBSYSTEM_DEF(garbage)
 		D.last_find_references = last_find_references
 		var/list/L = D.vars
 
-		for(var/varname in L)
+		for( var/varname in L)
 			if (varname == "vars")
 				continue
 			var/variable = L[varname]
@@ -458,7 +458,7 @@ SUBSYSTEM_DEF(garbage)
 
 	else if(islist(X))
 		var/normal = IS_NORMAL_LIST(X)
-		for(var/I in X)
+		for( var/I in X)
 			if (I == src)
 				testing("Found [src.type] \ref[src] in list [Xname].")
 

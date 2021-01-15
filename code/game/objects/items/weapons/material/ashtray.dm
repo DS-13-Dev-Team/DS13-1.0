@@ -54,7 +54,7 @@
 		health = max(0,health - 3)
 		if (contents.len)
 			visible_message("<span class='danger'>\The [src] slams into [hit_atom], spilling its contents!</span>")
-			for (var/obj/O in contents)
+			for( var/obj/O in contents)
 				O.dropInto(loc)
 		if (health < 1)
 			shatter()

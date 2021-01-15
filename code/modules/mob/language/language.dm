@@ -32,9 +32,9 @@
 	var/full_name = ""
 	var/new_name = ""
 
-	for(var/i = 0;i<name_count;i++)
+	for( var/i = 0;i<name_count;i++)
 		new_name = ""
-		for(var/x = rand(Floor(syllable_count/syllable_divisor),syllable_count);x>0;x--)
+		for( var/x = rand(Floor(syllable_count/syllable_divisor),syllable_count);x>0;x--)
 			new_name += pick(syllables)
 		full_name += " [capitalize(lowertext(new_name))]"
 
@@ -106,7 +106,7 @@
 	if(!speaker_mask) speaker_mask = speaker.name
 	message = format_message(message, get_spoken_verb(message))
 
-	for(var/mob/player in GLOB.player_list)
+	for( var/mob/player in GLOB.player_list)
 		player.hear_broadcast(src, speaker, speaker_mask, message)
 
 /mob/proc/hear_broadcast(datum/language/language, mob/speaker, speaker_name, message)
@@ -168,7 +168,7 @@
 	return ..()
 
 /mob/proc/remove_all_languages()
-	for (var/datum/language/L in languages)
+	for( var/datum/language/L in languages)
 		remove_language(L.name)
 
 // Can we speak this language, as opposed to just understanding it?
@@ -195,7 +195,7 @@
 
 	var/dat = "<b><font size = 5>Known Languages</font></b><br/><br/>"
 
-	for(var/datum/language/L in languages)
+	for( var/datum/language/L in languages)
 		if(!(L.flags & NONGLOBAL))
 			dat += "<b>[L.name]([L.shorthand]) ([get_language_prefix()][L.key])</b><br/>[L.desc]<br/><br/>"
 
@@ -208,7 +208,7 @@
 	if(default_language)
 		dat += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
 
-	for(var/datum/language/L in languages)
+	for( var/datum/language/L in languages)
 		if(!(L.flags & NONGLOBAL))
 			if(L == default_language)
 				dat += "<b>[L.name]([L.shorthand]) ([get_language_prefix()][L.key])</b> - default - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/>[L.desc]<br/><br/>"
@@ -238,7 +238,7 @@
 		return ..()
 
 /proc/transfer_languages(mob/source, mob/target, except_flags)
-	for(var/datum/language/L in source.languages)
+	for( var/datum/language/L in source.languages)
 		if(L.flags & except_flags)
 			continue
 		target.add_language(L.name)

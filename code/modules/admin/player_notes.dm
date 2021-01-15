@@ -23,7 +23,7 @@ datum/admins/proc/notes_gethtml(ckey)
 	else
 		. = "<b>All Notes:</b> <a href='?src=\ref[src];notes=add'>\[+\]</a> <a href='?src=\ref[src];notes=remove'>\[-\]</a><br>"
 		notesfile.cd = "/"
-		for(var/dir in notesfile.dir)
+		for( var/dir in notesfile.dir)
 			. += "<a href='?src=\ref[src];notes=show;ckey=[dir]'>[dir]</a><br>"
 	return
 
@@ -144,7 +144,7 @@ datum/admins/proc/notes_gethtml(ckey)
 	if(!infos)
 		dat = "No information found on the given key."
 	else
-		for(var/datum/player_info/I in infos)
+		for( var/datum/player_info/I in infos)
 			dat += "[I.content]\nby [I.author] ([I.rank]) on [I.timestamp]\n\n"
 
 	return list2params(list(dat))

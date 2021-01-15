@@ -103,14 +103,14 @@
 	data["change_race"] = can_change(APPEARANCE_RACE)
 	if(data["change_race"])
 		var/species[0]
-		for(var/specimen in valid_species)
+		for( var/specimen in valid_species)
 			species[++species.len] =  list("specimen" = specimen)
 		data["species"] = species
 
 	data["change_gender"] = can_change(APPEARANCE_GENDER)
 	if(data["change_gender"])
 		var/genders[0]
-		for(var/gender in owner.species.genders)
+		for( var/gender in owner.species.genders)
 			genders[++genders.len] =  list("gender_name" = gender2text(gender), "gender_key" = gender)
 		data["genders"] = genders
 	data["change_skin_tone"] = can_change_skin_tone()
@@ -119,7 +119,7 @@
 	data["change_hair"] = can_change(APPEARANCE_HAIR)
 	if(data["change_hair"])
 		var/hair_styles[0]
-		for(var/hair_style in valid_hairstyles)
+		for( var/hair_style in valid_hairstyles)
 			hair_styles[++hair_styles.len] = list("hairstyle" = hair_style)
 		data["hair_styles"] = hair_styles
 		data["hair_style"] = owner.h_style
@@ -127,7 +127,7 @@
 	data["change_facial_hair"] = can_change(APPEARANCE_FACIAL_HAIR)
 	if(data["change_facial_hair"])
 		var/facial_hair_styles[0]
-		for(var/facial_hair_style in valid_facial_hairstyles)
+		for( var/facial_hair_style in valid_facial_hairstyles)
 			facial_hair_styles[++facial_hair_styles.len] = list("facialhairstyle" = facial_hair_style)
 		data["facial_hair_styles"] = facial_hair_styles
 		data["facial_hair_style"] = owner.f_style

@@ -27,7 +27,7 @@
 /datum/event/carp_migration/proc/spawn_fish(num_groups, group_size_min=3, group_size_max=5)
 	var/list/spawn_locations = list()
 
-	for(var/obj/effect/landmark/C in landmarks_list)
+	for( var/obj/effect/landmark/C in landmarks_list)
 		if(C.name == "carpspawn")
 			spawn_locations.Add(C.loc)
 	spawn_locations = shuffle(spawn_locations)
@@ -37,18 +37,18 @@
 	while (i <= num_groups)
 		var/group_size = rand(group_size_min, group_size_max)
 		if(prob(96))
-			for (var/j = 1, j <= group_size, j++)
+			for( var/j = 1, j <= group_size, j++)
 				spawned_carp.Add(new /mob/living/simple_animal/hostile/carp(spawn_locations[i]))
 			i++
 		else
 			group_size = max(1,round(group_size/6))
 			group_size = min(spawn_locations.len-i+1,group_size)
-			for(var/j = 1, j <= group_size, j++)
+			for( var/j = 1, j <= group_size, j++)
 				spawned_carp.Add(new /mob/living/simple_animal/hostile/carp/pike(spawn_locations[i+j]))
 			i += group_size
 
 /datum/event/carp_migration/end()
-	for(var/mob/living/simple_animal/hostile/C in spawned_carp)
+	for( var/mob/living/simple_animal/hostile/C in spawned_carp)
 		if(!C.stat)
 			var/turf/T = get_turf(C)
 			if(istype(T, /turf/space))

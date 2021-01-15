@@ -105,7 +105,7 @@
 		var/total_harvest = harvest_speed //Ore harvest-per-tick.
 		var/found_resource = 0 //If this doesn't get set, the area is depleted and the drill errors out.
 
-		for(var/metal in ore_types)
+		for( var/metal in ore_types)
 
 			if(contents.len >= capacity)
 				system_error("insufficient storage space")
@@ -132,7 +132,7 @@
 					create_ore = harvesting.resources[metal]
 					harvesting.resources[metal] = 0
 
-				for(var/i=1, i <= create_ore, i++)
+				for( var/i=1, i <= create_ore, i++)
 					var/oretype = ore_types[metal]
 					new oretype(src)
 
@@ -218,7 +218,7 @@
 	capacity = 0
 	var/charge_multiplier = 0
 
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
+	for( var/obj/item/weapon/stock_parts/P in component_parts)
 		if(istype(P, /obj/item/weapon/stock_parts/micro_laser))
 			harvest_speed = P.rating
 		if(istype(P, /obj/item/weapon/stock_parts/matter_bin))
@@ -266,8 +266,8 @@
 	var/tx = T.x - 2
 	var/ty = T.y - 2
 	var/turf/simulated/mine_turf
-	for(var/iy = 0,iy < 5, iy++)
-		for(var/ix = 0, ix < 5, ix++)
+	for( var/iy = 0,iy < 5, iy++)
+		for( var/ix = 0, ix < 5, ix++)
 			mine_turf = locate(tx + ix, ty + iy, T.z)
 			if(mine_turf && mine_turf.has_resources)
 				resource_field += mine_turf
@@ -287,7 +287,7 @@
 
 	var/obj/structure/ore_box/B = locate() in orange(1)
 	if(B)
-		for(var/obj/item/weapon/ore/O in contents)
+		for( var/obj/item/weapon/ore/O in contents)
 			O.loc = B
 		to_chat(usr, "<span class='notice'>You unload the drill's storage cache into the ore box.</span>")
 	else
@@ -335,7 +335,7 @@
 
 	var/turf/T = get_step(get_turf(src), src.dir)
 
-	for(var/thing in T.contents)
+	for( var/thing in T.contents)
 		if(istype(thing, /obj/machinery/mining/drill))
 			connected = thing
 			break

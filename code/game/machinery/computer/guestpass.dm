@@ -31,7 +31,7 @@
 		to_chat(usr, "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>")
 
 	to_chat(usr, "<span class='notice'>It grants access to following areas:</span>")
-	for (var/A in temp_access)
+	for( var/A in temp_access)
 		to_chat(usr, "<span class='notice'>[get_access_desc(A)].</span>")
 	to_chat(usr, "<span class='notice'>Issuing reason: [reason].</span>")
 	return
@@ -83,7 +83,7 @@
 
 	if (mode == 1) //Logs
 		dat += "<h3>Activity log</h3><br>"
-		for (var/entry in internal_log)
+		for( var/entry in internal_log)
 			dat += "[entry]<br><hr>"
 		dat += "<a href='?src=\ref[src];action=print'>Print</a><br>"
 		dat += "<a href='?src=\ref[src];mode=0'>Back</a><br>"
@@ -96,7 +96,7 @@
 		dat += "Duration (minutes):  <a href='?src=\ref[src];choice=duration'>[duration] m</a><br>"
 		dat += "Access to areas:<br>"
 		if (giver && giver.access)
-			for (var/A in giver.access)
+			for( var/A in giver.access)
 				var/area = get_access_desc(A)
 				if (A in accesses)
 					area = "<b>[area]</b>"
@@ -153,7 +153,7 @@
 				. = TOPIC_REFRESH
 			if ("print")
 				var/dat = "<h3>Activity log of guest pass terminal #[uid]</h3><br>"
-				for (var/entry in internal_log)
+				for( var/entry in internal_log)
 					dat += "[entry]<br><hr>"
 //				to_chat(user, "Printing the log, standby...")
 				//sleep(50)
@@ -167,7 +167,7 @@
 					var/number = add_zero(random_id("guestpass_id_number",1000,9999), 4)
 					var/entry = "\[[stationtime2text()]\] Pass #[number] issued by [giver.registered_name] ([giver.assignment]) to [giv_name]. Reason: [reason]. Granted access to following areas: "
 					var/list/access_descriptors = list()
-					for (var/A in accesses)
+					for( var/A in accesses)
 						if (A in giver.access)
 							access_descriptors += get_access_desc(A)
 					entry += english_list(access_descriptors, and_text = ", ")

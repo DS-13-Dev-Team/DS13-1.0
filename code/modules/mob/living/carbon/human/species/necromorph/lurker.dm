@@ -178,7 +178,7 @@ The Lurker can only fire spines while its shell is open"
 */
 /datum/species/necromorph/lurker/proc/num_tentacles(mob/living/carbon/human/H)
 	var/num = 0
-	for (var/organ_tag in list(BP_HEAD, BP_L_ARM, BP_R_ARM))
+	for( var/organ_tag in list(BP_HEAD, BP_L_ARM, BP_R_ARM))
 		var/obj/item/organ/external/E = H.get_organ(organ_tag)
 		if (istype(E) && !E.is_stump())
 			num++
@@ -208,7 +208,7 @@ The Lurker can only fire spines while its shell is open"
 
 
 //Special death condition: Lurkers die if they lose all three tentacles
-/datum/species/necromorph/lurker/handle_death_check(var/mob/living/carbon/human/H)
+/datum/species/necromorph/lurker/handle_death_check(mob/living/carbon/human/H)
 	.=..()
 	if (!.)
 		if (num_tentacles(H) <= 0)
@@ -251,7 +251,7 @@ The Lurker can only fire spines while its shell is open"
 	'sound/effects/creatures/necromorph/lurker/spine_fire_2.ogg',
 	'sound/effects/creatures/necromorph/lurker/spine_fire_3.ogg')
 
-/obj/item/projectile/bullet/spine/attack_mob(var/mob/living/target_mob, distance, miss_modifier=0)
+/obj/item/projectile/bullet/spine/attack_mob(mob/living/target_mob, distance, miss_modifier=0)
 	if (firer.is_allied(target_mob))	//The bullet passes through our own allies harmlessly
 		return TRUE
 
@@ -259,7 +259,7 @@ The Lurker can only fire spines while its shell is open"
 
 
 //Spines make wooshy sounds as they fly
-/obj/item/projectile/bullet/spine/Move(var/new_loc, new_dir)
+/obj/item/projectile/bullet/spine/Move(new_loc, new_dir)
 	playsound(src, pick(woosh_sounds), VOLUME_QUIET, 1, -2)
 	.=..()
 
@@ -406,7 +406,7 @@ The Lurker can only fire spines while its shell is open"
 	armor = list()
 	update_wear_icon()
 
-/datum/species/necromorph/lurker/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/necromorph/lurker/handle_post_spawn(mob/living/carbon/human/H)
 	.=..()
 
 	var/obj/item/clothing/lurker_shell/shell = new(H)
@@ -468,7 +468,7 @@ The Lurker can only fire spines while its shell is open"
 ----------------------*/
 //Because the lurker is a quadruped, it plays a second footstep sound - after a brief delay, whenever one plays
 //Twice as many legs, twice as many footstep sounds
-/datum/species/necromorph/lurker/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0)
+/datum/species/necromorph/lurker/play_species_audio(atom/source, audio_type, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0)
 	.=..()
 	if (audio_type == SOUND_FOOTSTEP || audio_type == SOUND_CLIMB)
 		spawn(5)
@@ -481,11 +481,11 @@ The Lurker can only fire spines while its shell is open"
 /*---------------------
 	Wallcrawling
 -----------------------*/
-/datum/species/necromorph/lurker/setup_movement(var/mob/living/carbon/human/H)
+/datum/species/necromorph/lurker/setup_movement(mob/living/carbon/human/H)
 	set_extension(H, /datum/extension/wallrun/lurker)
 
 
-/datum/extension/wallrun/lurker/mount_to_atom(var/atom/target)
+/datum/extension/wallrun/lurker/mount_to_atom(atom/target)
 	.=..()
 	if (mountpoint)
 		user.slow_turning = FALSE

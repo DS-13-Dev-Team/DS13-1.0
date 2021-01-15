@@ -28,7 +28,7 @@
 	var/datum/radio_frequency/connection = radio_controller.return_frequency(channel)
 
 	var/list/radios = list()
-	for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+	for( var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
 		radios += R
 
 
@@ -46,7 +46,7 @@
 	var/display_freq = connection.frequency
 
 	var/list/receive = list()
-	for (var/obj/item/device/radio/R in radios)
+	for( var/obj/item/device/radio/R in radios)
 		receive |= R.send_hear(display_freq)
 
 	return receive

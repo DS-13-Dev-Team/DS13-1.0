@@ -31,17 +31,17 @@
 
 /obj/item/device/uv_light/proc/clear_last_scan()
 	if(scanned.len)
-		for(var/atom/O in scanned)
+		for( var/atom/O in scanned)
 			O.set_invisibility(scanned[O])
 			if(O.fluorescent == 2) O.fluorescent = 1
 		scanned.Cut()
 	if(stored_alpha.len)
-		for(var/atom/O in stored_alpha)
+		for( var/atom/O in stored_alpha)
 			O.alpha = stored_alpha[O]
 			if(O.fluorescent == 2) O.fluorescent = 1
 		stored_alpha.Cut()
 	if(reset_objects.len)
-		for(var/obj/item/I in reset_objects)
+		for( var/obj/item/I in reset_objects)
 			I.overlays -= I.blood_overlay
 			if(I.fluorescent == 2) I.fluorescent = 1
 		reset_objects.Cut()
@@ -53,9 +53,9 @@
 		var/turf/origin = get_turf(src)
 		if(!origin)
 			return
-		for(var/turf/T in range(range, origin))
+		for( var/turf/T in range(range, origin))
 			var/use_alpha = 255 - (step_alpha * get_dist(origin, T))
-			for(var/atom/A in T.contents)
+			for( var/atom/A in T.contents)
 				if(A.fluorescent == 1)
 					A.fluorescent = 2 //To prevent light crosstalk.
 					if(A.invisibility)

@@ -69,9 +69,9 @@
 
 /obj/machinery/power/smes/Initialize()
 	. = ..()
-	for(var/d in GLOB.cardinal)
+	for( var/d in GLOB.cardinal)
 		var/turf/T = get_step(src, d)
-		for(var/obj/machinery/power/terminal/term in T)
+		for( var/obj/machinery/power/terminal/term in T)
 			if(term && term.dir == turn(d, 180) && !term.master)
 				terminals |= term
 				term.master = src
@@ -129,7 +129,7 @@
 		inputting = 1
 	// else inputting = 0, as set in process()
 
-	for(var/obj/machinery/power/terminal/term in terminals)
+	for( var/obj/machinery/power/terminal/term in terminals)
 		var/inputted = term.powernet.draw_power(to_input)
 		add_charge(inputted)
 		input_available += inputted
@@ -161,7 +161,7 @@
 	if(input_attempt && (!input_pulsed && !input_cut))
 		target_load = min((capacity-charge)/CELLRATE, input_level)	// Amount we will request from the powernet.
 		var/input_available = FALSE
-		for(var/obj/machinery/power/terminal/term in terminals)
+		for( var/obj/machinery/power/terminal/term in terminals)
 			if(!term.powernet)
 				continue
 			input_available = TRUE
@@ -247,7 +247,7 @@
 
 
 /obj/machinery/power/smes/proc/check_terminal_exists(turf/location, mob/user, direction)
-	for(var/obj/machinery/power/terminal/term in location)
+	for( var/obj/machinery/power/terminal/term in location)
 		if(term.dir == direction)
 			to_chat(user, "<span class='notice'>There is already a terminal here.</span>")
 			return 1
@@ -255,7 +255,7 @@
 
 /obj/machinery/power/smes/draw_power(var/amount)
 	var/drained = 0
-	for(var/obj/machinery/power/terminal/term in terminals)
+	for( var/obj/machinery/power/terminal/term in terminals)
 		if(!term.powernet)
 			continue
 		if((amount - drained) <= 0)
@@ -311,7 +311,7 @@
 	else if(isWirecutter(W) && !building_terminal)
 		building_terminal = 1
 		var/obj/machinery/power/terminal/term
-		for(var/obj/machinery/power/terminal/T in get_turf(user))
+		for( var/obj/machinery/power/terminal/T in get_turf(user))
 			if(T.master == src)
 				term = T
 				break

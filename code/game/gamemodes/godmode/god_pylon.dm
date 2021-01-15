@@ -46,7 +46,7 @@
 	if(linked_god.pylon != src)
 		if(!(M in intuned))
 			return
-		for(var/obj/structure/deity/pylon/P in linked_god.structures)
+		for( var/obj/structure/deity/pylon/P in linked_god.structures)
 			if(P == src || linked_god.pylon == P)
 				continue
 			P.audible_message("<b>\The [P]</b> resonates, \"[text]\"")

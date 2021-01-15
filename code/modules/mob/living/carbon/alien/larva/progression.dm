@@ -46,10 +46,10 @@
 	else
 		adult.key = src.key
 
-	for (var/obj/item/W in src.contents)
+	for( var/obj/item/W in src.contents)
 		src.drop_from_inventory(W)
 
-	for(var/datum/language/L in languages)
+	for( var/datum/language/L in languages)
 		adult.add_language(L.name)
 	qdel(src)
 

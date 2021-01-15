@@ -78,15 +78,15 @@
 
 					// Drop all the component stuff
 					if(contents.len > 0)
-						for(var/obj/x in src)
+						for( var/obj/x in src)
 							x.loc = user.loc
 					else
 
 						// If the machine wasn't made during runtime, probably doesn't have components:
 						// manually find the components and drop them!
 						var/obj/item/weapon/circuitboard/C = new circuitboard
-						for(var/I in C.req_components)
-							for(var/i = 1, i <= C.req_components[I], i++)
+						for( var/I in C.req_components)
+							for( var/i = 1, i <= C.req_components[I], i++)
 								var/obj/item/s = new I
 								s.loc = user.loc
 								if(istype(P, /obj/item/stack/cable_coil))
@@ -140,7 +140,7 @@
 		dat += "<br>Linked Network Entities: <ol>"
 
 		var/i = 0
-		for(var/obj/machinery/telecomms/T in links)
+		for( var/obj/machinery/telecomms/T in links)
 			i++
 			if(T.hide && !src.hide)
 				continue
@@ -151,7 +151,7 @@
 
 		i = 0
 		if(length(freq_listening))
-			for(var/x in freq_listening)
+			for( var/x in freq_listening)
 				i++
 				if(i < length(freq_listening))
 					dat += "[format_frequency(x)] GHz<a href='?src=\ref[src];delete=[x]'>\[X\]</a>; "
@@ -165,7 +165,7 @@
 		dat += "<br><br>Channel Tagging Rules: <ol>"
 
 		if(length(channel_tags))
-			for(var/list/rule in channel_tags)
+			for( var/list/rule in channel_tags)
 				dat +="<li>[format_frequency(rule[1])] -> [rule[2]] ([rule[3]]) <a href='?src=\ref[src];deletetagrule=[rule[1]]'>\[X\]</a></li>"
 
 		dat += "</ol>"
@@ -341,7 +341,7 @@
 						temp = "<font color = #666633>-% Too many characters in new network tag %-</font>"
 
 					else
-						for(var/obj/machinery/telecomms/T in links)
+						for( var/obj/machinery/telecomms/T in links)
 							T.links.Remove(src)
 
 						network = newnet
@@ -369,7 +369,7 @@
 						updateUsrDialog()
 						return
 
-					for(var/list/rule in channel_tags)
+					for( var/list/rule in channel_tags)
 						if(rule[1] == freq)
 							temp = "<font color = #660000>-% Tagging rule already defined %-</font>"
 							updateUsrDialog()
@@ -399,7 +399,7 @@
 
 		var/freq = text2num(href_list["deletetagrule"])
 		var/rule_delete
-		for(var/list/rule in channel_tags)
+		for( var/list/rule in channel_tags)
 			if(rule[1] == freq)
 				rule_delete = rule
 		temp = "<font color = #666633>-% Removed tagging rule: [rule_delete[1]] -> [rule_delete[2]] %-</font>"

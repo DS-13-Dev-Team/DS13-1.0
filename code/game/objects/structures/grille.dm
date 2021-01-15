@@ -34,14 +34,14 @@
 		var/image/I
 		icon_state = ""
 		if(on_frame)
-			for(var/i = 1 to 4)
+			for( var/i = 1 to 4)
 				if(other_connections[i] != "0")
 					I = image(icon, "grille_other_onframe[connections[i]]", dir = 1<<(i-1))
 				else
 					I = image(icon, "grille_onframe[connections[i]]", dir = 1<<(i-1))
 				overlays += I
 		else
-			for(var/i = 1 to 4)
+			for( var/i = 1 to 4)
 				if(other_connections[i] != "0")
 					I = image(icon, "grille_other[connections[i]]", dir = 1<<(i-1))
 				else
@@ -159,13 +159,13 @@
 				else
 					to_chat(user, "<span class='notice'>You can't reach.</span>")
 					return //Only works for cardinal direcitons, diagonals aren't supposed to work like this.
-		for(var/obj/structure/window/WINDOW in loc)
+		for( var/obj/structure/window/WINDOW in loc)
 			if(WINDOW.dir == dir_to_set)
 				to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
 				return
 		to_chat(user, "<span class='notice'>You start placing the window.</span>")
 		if(do_after(user,20,src))
-			for(var/obj/structure/window/WINDOW in loc)
+			for( var/obj/structure/window/WINDOW in loc)
 				if(WINDOW.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
 					to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
 					return
@@ -271,7 +271,7 @@
 /obj/structure/grille/proc/update_onframe()
 	on_frame = FALSE
 	var/turf/T = get_turf(src)
-	for(var/obj/O in T)
+	for( var/obj/O in T)
 		if(istype(O, /obj/structure/wall_frame))
 			on_frame = TRUE
 			break

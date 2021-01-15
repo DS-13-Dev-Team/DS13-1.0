@@ -27,7 +27,7 @@
 		return
 
 	var/list/choices = list()
-	for(var/mob/living/carbon/human/H in view(1,src))
+	for( var/mob/living/carbon/human/H in view(1,src))
 		if(isxenomorph(H))
 			continue
 		if(src.Adjacent(H) && H.lying)
@@ -96,8 +96,8 @@
 	var/obj/item/weapon/holder/holder = loc
 	var/obj/item/organ/external/affected
 	if(istype(holder))
-		for(var/obj/item/organ/external/organ in H.organs) //Grab the organ holding the implant.
-			for(var/obj/item/O in organ.implants)
+		for( var/obj/item/organ/external/organ in H.organs) //Grab the organ holding the implant.
+			for( var/obj/item/O in organ.implants)
 				if(O == holder)
 					affected = organ
 					break

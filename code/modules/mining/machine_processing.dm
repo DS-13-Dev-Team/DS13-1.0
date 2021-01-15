@@ -39,7 +39,7 @@
 
 	dat += "<hr><table>"
 
-	for(var/ore in machine.ores_processing)
+	for( var/ore in machine.ores_processing)
 
 		if(!machine.ores_stored[ore] && !show_all_ores) continue
 		var/ore/O = ore_data[ore]
@@ -121,20 +121,20 @@
 	// initialize static alloy_data list
 	if(!alloy_data)
 		alloy_data = list()
-		for(var/alloytype in typesof(/datum/alloy)-/datum/alloy)
+		for( var/alloytype in typesof(/datum/alloy)-/datum/alloy)
 			alloy_data += new alloytype()
 
 	ensure_ore_data_initialised()
-	for(var/ore in ore_data)
+	for( var/ore in ore_data)
 		ores_processing[ore] = 0
 		ores_stored[ore] = 0
 
 	//Locate our output and input machinery.
 	spawn(5)
-		for (var/dir in GLOB.cardinal)
+		for( var/dir in GLOB.cardinal)
 			src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 			if(src.input) break
-		for (var/dir in GLOB.cardinal)
+		for( var/dir in GLOB.cardinal)
 			src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 			if(src.output) break
 		return
@@ -147,7 +147,7 @@
 	var/list/tick_alloys = list()
 
 	//Grab some more ore to process this tick.
-	for(var/i = 0,i<sheets_per_tick,i++)
+	for( var/i = 0,i<sheets_per_tick,i++)
 		var/obj/item/weapon/ore/O = locate() in input.loc
 		if(!O) break
 		if(O.ore && !isnull(ores_stored[O.ore.name]))
@@ -162,7 +162,7 @@
 
 	//Process our stored ores and spit out sheets.
 	var/sheets = 0
-	for(var/metal in ores_stored)
+	for( var/metal in ores_stored)
 
 		if(sheets >= sheets_per_tick) break
 
@@ -174,7 +174,7 @@
 
 			if(ores_processing[metal] == 3 && O.alloy) //Alloying.
 
-				for(var/datum/alloy/A in alloy_data)
+				for( var/datum/alloy/A in alloy_data)
 
 					if(A.metaltag in tick_alloys)
 						continue
@@ -186,7 +186,7 @@
 
 						enough_metal = 1
 
-						for(var/needs_metal in A.requires)
+						for( var/needs_metal in A.requires)
 							//Check if we're alloying the needed metal and have it stored.
 							if(ores_processing[needs_metal] != 3 || ores_stored[needs_metal] < A.requires[needs_metal])
 								enough_metal = 0
@@ -196,13 +196,13 @@
 						continue
 					else
 						var/total
-						for(var/needs_metal in A.requires)
+						for( var/needs_metal in A.requires)
 							ores_stored[needs_metal] -= A.requires[needs_metal]
 							total += A.requires[needs_metal]
 							total = max(1,round(total*A.product_mod)) //Always get at least one sheet.
 							sheets += total-1
 
-						for(var/i=0,i<total,i++)
+						for( var/i=0,i<total,i++)
 							new A.product(output.loc)
 
 			else if(ores_processing[metal] == 2 && O.compresses_to) //Compressing.
@@ -215,7 +215,7 @@
 				if(!istype(M) || !can_make || ores_stored[metal] < 1)
 					continue
 
-				for(var/i=0,i<can_make,i+=2)
+				for( var/i=0,i<can_make,i+=2)
 					ores_stored[metal]-=2
 					sheets+=2
 					new M.stack_type(output.loc)
@@ -228,7 +228,7 @@
 				if(!istype(M) || !can_make || ores_stored[metal] < 1)
 					continue
 
-				for(var/i=0,i<can_make,i++)
+				for( var/i=0,i<can_make,i++)
 					ores_stored[metal]--
 					sheets++
 					new M.stack_type(output.loc)

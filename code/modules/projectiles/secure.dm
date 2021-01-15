@@ -9,7 +9,7 @@
 		if(!authorized_modes)
 			authorized_modes = list()
 
-		for(var/i = authorized_modes.len + 1 to firemodes.len)
+		for( var/i = authorized_modes.len + 1 to firemodes.len)
 			authorized_modes.Add(default_mode_authorization)
 
 	. = ..()

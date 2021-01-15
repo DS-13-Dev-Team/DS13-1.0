@@ -91,7 +91,7 @@
 	"<span class='notice'>You have connected tendons and muscles in [target]'s [E.amputation_point] with [tool].</span>")
 	E.status &= ~ORGAN_CUT_AWAY
 	if(E.children)
-		for(var/obj/item/organ/external/C in E.children)
+		for( var/obj/item/organ/external/C in E.children)
 			C.status &= ~ORGAN_CUT_AWAY
 	target.update_body()
 	target.updatehealth()
@@ -131,7 +131,7 @@
 	"<span class='notice'>You have attached \the [tool] to [target].</span>")
 
 	if(L.part)
-		for(var/part_name in L.part)
+		for( var/part_name in L.part)
 			if(!isnull(target.get_organ(part_name)))
 				continue
 			var/list/organ_data = target.species.has_limbs["[part_name]"]

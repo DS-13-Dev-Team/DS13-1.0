@@ -10,7 +10,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	var/list/Lines = file2list("config/admin_ranks.txt")
 
 	//process each line seperately
-	for(var/line in Lines)
+	for( var/line in Lines)
 		if(!length(line))				continue
 		if(copytext(line,1,2) == "#")	continue
 
@@ -23,7 +23,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 			if("Removed")	continue				//Reserved
 
 		var/rights = 0
-		for(var/i=2, i<=List.len, i++)
+		for( var/i=2, i<=List.len, i++)
 			switch(ckey(List[i]))
 				if("@","prev")					rights |= previous_rights
 				if("buildmode","build")			rights |= R_BUILDMODE
@@ -48,7 +48,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 
 	#ifdef TESTING
 	var/msg = "Permission Sets Built:\n"
-	for(var/rank in admin_ranks)
+	for( var/rank in admin_ranks)
 		msg += "\t[rank] - [admin_ranks[rank]]\n"
 	testing(msg)
 	#endif
@@ -60,7 +60,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 /proc/load_admins()
 	//clear the datums references
 	admin_datums.Cut()
-	for(var/client/C in GLOB.admins)
+	for( var/client/C in GLOB.admins)
 		C.remove_admin_verbs()
 		C.holder = null
 	GLOB.admins.Cut()
@@ -72,7 +72,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 		var/list/Lines = file2list("config/admins.txt")
 
 		//process each line seperately
-		for(var/line in Lines)
+		for( var/line in Lines)
 			if(!length(line))				continue
 			if(copytext(line,1,2) == "#")	continue
 
@@ -131,7 +131,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 
 	#ifdef TESTING
 	var/msg = "Admins Built:\n"
-	for(var/ckey in admin_datums)
+	for( var/ckey in admin_datums)
 		var/rank
 		var/datum/admins/D = admin_datums[ckey]
 		if(D)	rank = D.rank

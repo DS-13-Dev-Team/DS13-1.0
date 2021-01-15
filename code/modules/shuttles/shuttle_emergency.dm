@@ -209,13 +209,13 @@
 
 	if (!emagged)
 		var/i = 1
-		for (var/dna_hash in authorized)
+		for( var/dna_hash in authorized)
 			auth_list[i++] = list("auth_name"=authorized[dna_hash], "auth_hash"=dna_hash)
 
 		while (i <= req_authorizations)	//fill up the rest of the list with blank entries
 			auth_list[i++] = list("auth_name"="", "auth_hash"=null)
 	else
-		for (var/i = 1; i <= req_authorizations; i++)
+		for( var/i = 1; i <= req_authorizations; i++)
 			auth_list[i] = list("auth_name"="<font color=\"red\">ERROR</font>", "auth_hash"=null)
 
 	var/has_auth = has_authorization()

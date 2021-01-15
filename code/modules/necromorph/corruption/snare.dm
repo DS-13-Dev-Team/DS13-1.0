@@ -52,7 +52,7 @@
 	.=..()
 
 /obj/structure/corruption_node/snare/Destroy()
-	for (var/reference in aware)
+	for( var/reference in aware)
 		var/mob/M = locate(reference)
 		if (M)
 			unregister_awareness(M)
@@ -183,7 +183,7 @@
 
 	if (user.client)
 		var/obj/screen/movable/tracker/tracker = null
-		for (var/obj/screen/movable/tracker/snare_highlight/T in user.client.screen)
+		for( var/obj/screen/movable/tracker/snare_highlight/T in user.client.screen)
 			if (T.tracked == src)
 				tracker = T
 				tracker.set_lifetime(awareness_timeout)
@@ -198,7 +198,7 @@
 	aware -= reference
 
 	if (user.client)
-		for (var/obj/screen/movable/tracker/snare_highlight/T in user.client.screen)
+		for( var/obj/screen/movable/tracker/snare_highlight/T in user.client.screen)
 			if (T.tracked == src)
 				qdel(T)
 
@@ -254,7 +254,7 @@
 
 //Check we have a surface to place it on
 /datum/click_handler/placement/ability/snare/placement_blocked(var/turf/candidate)
-	for (var/mob/living/carbon/human/H in orange(SNARE_PLACEMENT_BUFFER, candidate))
+	for( var/mob/living/carbon/human/H in orange(SNARE_PLACEMENT_BUFFER, candidate))
 		if (!H.is_necromorph() && !H.stat)
 			return "Cannot be placed within [SNARE_PLACEMENT_BUFFER] tiles of a conscious crewmember."
 

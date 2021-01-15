@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(skybox)
 		if(GLOB.using_map.use_overmap)
 			var/obj/effect/overmap/visitable/O = map_sectors["[z]_[range]"]
 			if(istype(O))
-				for(var/zlevel in O.map_z)
+				for( var/zlevel in O.map_z)
 					skybox_cache["[zlevel]"] = skybox_cache["[z]_[range]"]
 		*/
 	return skybox_cache["[z]_[range]"]
@@ -61,20 +61,20 @@ SUBSYSTEM_DEF(skybox)
 		if(istype(O))
 			var/image/overmap = image(skybox_icon)
 			overmap.overlays += O.generate_skybox()
-			for(var/obj/effect/overmap/visitable/other in O.loc)
+			for( var/obj/effect/overmap/visitable/other in O.loc)
 				if(other != O)
 					overmap.overlays += other.get_skybox_representation()
 			overmap.appearance_flags = RESET_COLOR
 			res.overlays += overmap
 
-	for(var/datum/event/E in SSevent.active_events)
+	for( var/datum/event/E in SSevent.active_events)
 		if(E.has_skybox_image && E.isRunning && (z in E.affecting_z))
 			res.overlays += E.get_skybox_image()
 	*/
 
 	//Lets create and place foreground objects
 	if(GLOB.using_map.skybox_foreground_objects)
-		for (var/typepath in GLOB.using_map.skybox_foreground_objects)
+		for( var/typepath in GLOB.using_map.skybox_foreground_objects)
 			var/datum/skybox_foreground_object/SFO = get_foreground_datum(typepath)
 			var/image/foreground_image = image(SFO.icon, pick(SFO.icon_states))
 			foreground_image.appearance_flags = RESET_COLOR	//We do not want to inherit the background color tint of space
@@ -99,10 +99,10 @@ SUBSYSTEM_DEF(skybox)
 	return skybox_foreground_objects[typepath]
 
 /datum/controller/subsystem/skybox/proc/rebuild_skyboxes(list/zlevels)
-	for(var/z in zlevels)
+	for( var/z in zlevels)
 		skybox_cache["[z]_[world.view]"] = generate_skybox(z)
 
-	for(var/client/C)
+	for( var/client/C)
 		C.update_skybox(1)
 
 //Update skyboxes. Called by universes, for now.
@@ -127,5 +127,5 @@ SUBSYSTEM_DEF(skybox)
 	if(need_rebuild)
 		skybox_cache.Cut()
 
-		for(var/client/C)
+		for( var/client/C)
 			C.update_skybox(1)

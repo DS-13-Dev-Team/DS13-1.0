@@ -120,7 +120,7 @@
 	for (current_stage in 1 to stages)
 		var/list/cone = cones[current_stage]
 
-		for (var/turf/T as anything in cone)
+		for( var/turf/T as anything in cone)
 			//debug_mark_turf(T)
 			continue_swing = hit_turf(T)
 			if (!continue_swing)
@@ -201,7 +201,7 @@
 */
 //Hits a turf and the mobs in it
 /datum/extension/swing/proc/hit_turf(turf/T)
-	for (var/mob/living/L in T)
+	for( var/mob/living/L in T)
 		hit_mob(L)
 
 	//Return true to continue the swing

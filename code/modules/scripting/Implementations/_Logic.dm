@@ -5,18 +5,18 @@
 // Clone of list()
 /proc/n_list()
 	var/list/returnlist = list()
-	for(var/e in args)
+	for( var/e in args)
 		returnlist.Add(e)
 	return returnlist
 
 // Clone of pick()
 /proc/n_pick()
 	var/list/finalpick = list()
-	for(var/e in args)
+	for( var/e in args)
 		if(isobject(e))
 			if(istype(e, /list))
 				var/list/sublist = e
-				for(var/sube in sublist)
+				for( var/sube in sublist)
 					finalpick.Add(sube)
 				continue
 		finalpick.Add(e)
@@ -48,7 +48,7 @@
 /proc/n_listadd()
 	var/list/chosenlist
 	var/i = 1
-	for(var/e in args)
+	for( var/e in args)
 		if(i == 1)
 			if(isobject(e))
 				if(istype(e, /list))
@@ -62,7 +62,7 @@
 /proc/n_listremove()
 	var/list/chosenlist
 	var/i = 1
-	for(var/e in args)
+	for( var/e in args)
 		if(i == 1)
 			if(isobject(e))
 				if(istype(e, /list))

@@ -206,7 +206,7 @@
 /proc/id_card_states()
 	if(!id_card_states)
 		id_card_states = list()
-		for(var/path in typesof(/obj/item/weapon/card/id))
+		for( var/path in typesof(/obj/item/weapon/card/id))
 			var/obj/item/weapon/card/id/ID = path
 			var/datum/card_state/CS = new()
 			CS.icon_state = initial(ID.icon_state)

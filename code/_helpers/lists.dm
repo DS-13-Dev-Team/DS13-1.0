@@ -43,21 +43,21 @@ proc/isemptylist(list/list)
 
 //Checks for specific types in a list
 /proc/is_type_in_list(atom/A, list/L)
-	for(var/type in L)
+	for( var/type in L)
 		if(istype(A, type))
 			return 1
 	return 0
 
 //Checks for specific paths in a list
 /proc/is_path_in_list(path, list/L)
-	for(var/type in L)
+	for( var/type in L)
 		if(ispath(path, type))
 			return 1
 	return 0
 
 /proc/instances_of_type_in_list(atom/A, list/L)
 	var/instances = 0
-	for(var/type in L)
+	for( var/type in L)
 		if(istype(A, type))
 			instances++
 	return instances
@@ -84,7 +84,7 @@ proc/listclearnulls(list/list)
 		return
 	var/list/result = new
 	if(skiprep)
-		for(var/e in first)
+		for( var/e in first)
 			if(!(e in result) && !(e in second))
 				result += e
 	else
@@ -100,7 +100,7 @@ This actually tests if they have the same entries and values.
 		return 0
 	if(length(first) != length(second))
 		return 0
-	for(var/entry in first)
+	for( var/entry in first)
 		if(!(entry in second) || (first[entry] != second[entry]))
 			return 0
 	return 1
@@ -110,7 +110,7 @@ Checks if a list has the same entries and values as an element of big.
 /proc/in_as_list(list/little, list/big)
 	if(!islist(big))
 		return 0
-	for(var/element in big)
+	for( var/element in big)
 		if(same_entries(little, element))
 			return 1
 	return 0
@@ -135,11 +135,11 @@ Checks if a list has the same entries and values as an element of big.
 // This proc merges two associative lists
 /proc/merge_assoc_lists(list/a, list/b, merge_method, default_if_null_value = null)
 	. = list()
-	for(var/key in a)
+	for( var/key in a)
 		var/a_value = a[key]
 		a_value = isnull(a_value) ? default_if_null_value : a_value
 		.[key] = a_value
-	for(var/key in b)
+	for( var/key in b)
 		var/b_value = b[key]
 		b_value = isnull(b_value) ? default_if_null_value : b_value
 		if(!(key in .))
@@ -181,11 +181,11 @@ Checks if a list has the same entries and values as an element of big.
 	//Next we will make a list of randomly generated numbers, called Requests
 	//It is critical that this list be sorted in ascending order, so we will build it in that order. First one is free, so we start counting at 2
 	var/list/requests = list(rand(1, total))
-	for (var/i in 2 to quantity)
+	for( var/i in 2 to quantity)
 		//Each time we generate the next request
 		var/newreq = rand()* total
 
-		for (var/j in 1 to requests.len)	//We will loop through all existing requests
+		for( var/j in 1 to requests.len)	//We will loop through all existing requests
 
 			if (requests[j] > newreq)	//We keep going through the list until we find an element which is bigger than the one we want to add
 				requests.Insert(j, newreq)	//And then we insert the newqreq at that point, pushing everything else forward
@@ -241,7 +241,7 @@ Checks if a list has the same entries and values as an element of big.
 
 //Returns the next element in parameter list after first appearance of parameter element. If it is the last element of the list or not present in list, returns first element.
 /proc/next_in_list(element, list/L)
-	for(var/i=1, i<L.len, i++)
+	for( var/i=1, i<L.len, i++)
 		if(L[i] == element)
 			return L[i+1]
 	return L[1]
@@ -252,7 +252,7 @@ Checks if a list has the same entries and values as an element of big.
 	//The list contains all of L
 	var/list/closest = list()
 	var/list/min_dist = INFINITY
-	for (var/atom/A in L)
+	for( var/atom/A in L)
 		var/dist = get_dist(origin, A)
 		if (dist > min_dist)
 			continue
@@ -277,7 +277,7 @@ Checks if a list has the same entries and values as an element of big.
 /proc/reverselist(list/L)
 	var/list/output = list()
 	if(L)
-		for(var/i = L.len; i >= 1; i--)
+		for( var/i = L.len; i >= 1; i--)
 			output += L[i]
 	return output
 
@@ -288,20 +288,20 @@ Checks if a list has the same entries and values as an element of big.
 
 	L = L.Copy()
 
-	for(var/i=1; i<L.len; i++)
+	for( var/i=1; i<L.len; i++)
 		L.Swap(i, rand(i,L.len))
 	return L
 
 //Return a list with no duplicate entries
 /proc/uniquelist(list/L)
 	. = list()
-	for(var/i in L)
+	for( var/i in L)
 		. |= i
 
 // Return a list of the values in an assoc list (including null)
 /proc/list_values(list/L)
 	. = list()
-	for(var/e in L)
+	for( var/e in L)
 		. += L[e]
 
 //Mergesort: divides up the list into halves to begin the sort
@@ -365,7 +365,7 @@ Checks if a list has the same entries and values as an element of big.
 //Mergsorge: uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
 /proc/sortNames(list/L)
 	var/list/Q = new()
-	for(var/atom/x in L)
+	for( var/atom/x in L)
 		Q[x.name] = x
 	return sortList(Q)
 
@@ -442,12 +442,12 @@ Checks if a list has the same entries and values as an element of big.
 	if(istype(wordlist,/list))
 		var/max = min(wordlist.len,16)
 		var/bit = 1
-		for(var/i=1, i<=max, i++)
+		for( var/i=1, i<=max, i++)
 			if(bitfield & bit)
 				r += wordlist[i]
 			bit = bit << 1
 	else
-		for(var/bit=1, bit<=65535, bit = bit << 1)
+		for( var/bit=1, bit<=65535, bit = bit << 1)
 			if(bitfield & bit)
 				r += bit
 
@@ -456,7 +456,7 @@ Checks if a list has the same entries and values as an element of big.
 // Returns the key based on the index
 /proc/get_key_by_index(list/L, index)
 	var/i = 1
-	for(var/key in L)
+	for( var/key in L)
 		if(index == i)
 			return key
 		i++
@@ -464,13 +464,13 @@ Checks if a list has the same entries and values as an element of big.
 
 // Returns the key based on the index
 /proc/get_key_by_value(list/L, value)
-	for(var/key in L)
+	for( var/key in L)
 		if(L[key] == value)
 			return key
 
 /proc/count_by_type(list/L, type)
 	var/i = 0
-	for(var/T in L)
+	for( var/T in L)
 		if(istype(T, type))
 			i++
 	return i
@@ -479,10 +479,10 @@ Checks if a list has the same entries and values as an element of big.
 /proc/insertion_sort_numeric_list_ascending(list/L)
 	//world.log << "ascending len input: [L.len]"
 	var/list/out = list(pop(L))
-	for(var/entry in L)
+	for( var/entry in L)
 		if(isnum(entry))
 			var/success = 0
-			for(var/i=1, i<=out.len, i++)
+			for( var/i=1, i<=out.len, i++)
 				if(entry <= out[i])
 					success = 1
 					out.Insert(i, entry)
@@ -717,7 +717,7 @@ proc/dd_sortedTextList(list/incoming)
 //if no list/L is provided, one is created.
 /proc/init_subtypes(prototype, list/L)
 	if(!istype(L))	L = list()
-	for(var/path in subtypesof(prototype))
+	for( var/path in subtypesof(prototype))
 		L += new path()
 	return L
 
@@ -725,7 +725,7 @@ proc/dd_sortedTextList(list/incoming)
 //if no list/L is provided, one is created.
 /proc/init_subtypes_assoc(prototype, list/L)
 	if(!istype(L))	L = list()
-	for(var/path in subtypesof(prototype))
+	for( var/path in subtypesof(prototype))
 		L[path] = new path()
 	return L
 
@@ -733,7 +733,7 @@ proc/dd_sortedTextList(list/incoming)
 
 /proc/filter_list(list/L, type)
 	. = list()
-	for(var/entry in L)
+	for( var/entry in L)
 		if(istype(entry, type))
 			. += entry
 
@@ -748,7 +748,7 @@ proc/dd_sortedTextList(list/incoming)
 /proc/duplicates(list/L)
 	. = list()
 	var/list/checked = list()
-	for(var/value in L)
+	for( var/value in L)
 		if(value in checked)
 			. |= value
 		else
@@ -756,7 +756,7 @@ proc/dd_sortedTextList(list/incoming)
 
 /proc/assoc_by_proc(list/plain_list, get_initial_value)
 	. = list()
-	for(var/entry in plain_list)
+	for( var/entry in plain_list)
 		.[call(get_initial_value)(entry)] = entry
 
 /proc/get_initial_name(atom/atom_type)
@@ -789,7 +789,7 @@ proc/dd_sortedTextList(list/incoming)
 			return	//no need to move
 		fromIndex += len	//we want to shift left instead of right
 
-		for(var/i=0, i<distance, ++i)
+		for( var/i=0, i<distance, ++i)
 			L.Insert(fromIndex, null)
 			L.Swap(fromIndex, toIndex)
 			L.Cut(toIndex, toIndex+1)
@@ -797,7 +797,7 @@ proc/dd_sortedTextList(list/incoming)
 		if(fromIndex > toIndex)
 			fromIndex += len
 
-		for(var/i=0, i<len, ++i)
+		for( var/i=0, i<len, ++i)
 			L.Insert(toIndex, null)
 			L.Swap(fromIndex, toIndex)
 			L.Cut(fromIndex, fromIndex+1)
@@ -824,7 +824,7 @@ proc/dd_sortedTextList(list/incoming)
 	if(!islist(l))
 		return l
 	. = l.Copy()
-	for(var/i = 1 to l.len)
+	for( var/i = 1 to l.len)
 		if(islist(.[i]))
 			.[i] = .(.[i])
 
@@ -836,13 +836,13 @@ proc/dd_sortedTextList(list/incoming)
 /proc/compile_types_in_list(list/sourcelist)
 	var/list/typeslist = list()
 	//This is a little complex
-	for (var/datum/D as anything in sourcelist)
+	for( var/datum/D as anything in sourcelist)
 		//We split the path into a list of components by using / as delimiter
 
 		var/list/components = splittext("[D.type]", "/", 2)	//We start from character 2 so that it doesnt detect an empty string before the first slash
-		for (var/i = 1; i <= components.len; i++)
+		for( var/i = 1; i <= components.len; i++)
 			var/stringpath = ""
-			for (var/j in 1 to i)
+			for( var/j in 1 to i)
 				stringpath += "/[components[j]]"
 
 			var/typepath = text2path(stringpath)
@@ -857,10 +857,10 @@ proc/dd_sortedTextList(list/incoming)
 	var/output = ""
 	var/depthstring = ""
 
-	for (var/i in 0 to depth)
+	for( var/i in 0 to depth)
 		depthstring = "[depthstring]-"
 
-	for (var/element in L)
+	for( var/element in L)
 		var/typestring = "(?)"
 		if (islist(element))
 			output += "[dump_list(element, depth+1)]"

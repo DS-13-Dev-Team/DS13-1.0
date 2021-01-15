@@ -65,7 +65,7 @@ var/global/list/sparring_attack_cache = list()
 
 	// Check if they have a functioning hand.
 	var/has_required_organ = FALSE
-	for (var/organ_tag in required_limb)
+	for( var/organ_tag in required_limb)
 		var/obj/item/organ/external/E = user.organs_by_name[organ_tag]
 		if(E && !E.is_stump() && !E.retracted)
 			has_required_organ = TRUE
@@ -199,14 +199,14 @@ var/global/list/sparring_attack_cache = list()
 	return FALSE
 
 
-/mob/living/carbon/human/force_door(var/obj/machinery/door/target)
-	for(var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
+/mob/living/carbon/human/force_door(obj/machinery/door/target)
+	for( var/datum/unarmed_attack/u_attack in species.unarmed_attacks)
 		if (u_attack.force_door(src, target))
 			return TRUE
 		return FALSE
 
 //Perhaps someday we'll have a unified atom damage framework and not need lots of procs like this
-/mob/living/carbon/human/strike_door(var/obj/machinery/door/target)
+/mob/living/carbon/human/strike_door(obj/machinery/door/target)
 	var/datum/unarmed_attack/u_attack = get_unarmed_attack(target)
 	if (u_attack)
 		var/datum/strike/strike = launch_unarmed_strike(target, u_attack)
@@ -262,7 +262,7 @@ var/global/list/sparring_attack_cache = list()
 /mob/proc/strike_structure(obj/structure/target)
 	return
 
-/mob/living/carbon/human/strike_structure(var/obj/structure/target)
+/mob/living/carbon/human/strike_structure(obj/structure/target)
 	var/datum/unarmed_attack/u_attack = get_unarmed_attack(target)
 	if (u_attack)
 		var/datum/strike/strike = launch_unarmed_strike(target, u_attack)
@@ -284,11 +284,11 @@ var/global/list/sparring_attack_cache = list()
 	edge = 0
 	required_limb = list(BP_HEAD)
 
-/datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
+/datum/unarmed_attack/bite/is_usable(mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 
 	if(istype(user.wear_mask, /obj/item/clothing/mask/muzzle))
 		return 0
-	for(var/obj/item/clothing/C in list(user.wear_mask, user.head, user.wear_suit))
+	for( var/obj/item/clothing/C in list(user.wear_mask, user.head, user.wear_suit))
 		if(C && (C.body_parts_covered & FACE) && (C.item_flags & ITEM_FLAG_THICKMATERIAL))
 			return 0 //prevent biting through a space helmet or similar
 	if (user == target && (zone == BP_HEAD || zone == BP_EYES || zone == BP_MOUTH))
@@ -363,13 +363,13 @@ var/global/list/sparring_attack_cache = list()
 
 	required_limb = list(BP_L_LEG, BP_R_LEG)
 
-/datum/unarmed_attack/kick/is_usable(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
+/datum/unarmed_attack/kick/is_usable(mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 	if(!(zone in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT, BP_GROIN)))
 		return 0
 
 	.=..()
 
-/datum/unarmed_attack/kick/get_unarmed_damage(var/mob/living/carbon/human/user)
+/datum/unarmed_attack/kick/get_unarmed_damage(mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes
 	if(!istype(shoes))
 		return damage
@@ -382,7 +382,7 @@ var/global/list/sparring_attack_cache = list()
 
 	required_limb = list(BP_L_LEG, BP_R_LEG)
 
-/datum/unarmed_attack/stomp/is_usable(var/mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
+/datum/unarmed_attack/stomp/is_usable(mob/living/carbon/human/user, mob/living/carbon/human/target, zone)
 	if(!istype(target))
 		return 0
 
@@ -391,7 +391,7 @@ var/global/list/sparring_attack_cache = list()
 			return 0
 		.=..()
 
-/datum/unarmed_attack/stomp/get_unarmed_damage(var/mob/living/carbon/human/user)
+/datum/unarmed_attack/stomp/get_unarmed_damage(mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes
 	return .=..() + (shoes ? shoes.force : 0)
 

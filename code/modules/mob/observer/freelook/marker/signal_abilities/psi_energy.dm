@@ -100,7 +100,7 @@
 	Helper procs
 ----------------------*/
 /datum/proc/get_energy_extension()
-	for (var/subtype in extensions)
+	for( var/subtype in extensions)
 		var/datum/extension/E = extensions[subtype]
 		if (istype(E, /datum/extension/psi_energy))
 			return E
@@ -127,7 +127,7 @@
 /datum/extension/psi_energy/proc/build_ability_list(clear = TRUE)
 	if (clear)
 		abilities = list()
-	for (var/id in GLOB.signal_abilities)
+	for( var/id in GLOB.signal_abilities)
 		var/datum/signal_ability/SA = GLOB.signal_abilities[id]
 
 		if (SA.is_valid_user(host.get_mob()))
@@ -144,7 +144,7 @@
 
 /datum/extension/psi_energy/proc/generate_content_data()
 	var/list/spells = list()
-	for (var/id in abilities)
+	for( var/id in abilities)
 
 		var/datum/signal_ability/SA = GLOB.signal_abilities[id]
 		var/list/spell = list("name" = SA.name, "id" = SA.id, "cost" = SA.energy_cost)
@@ -155,12 +155,12 @@
 //Sorts the list of abilities by ascending cost
 /datum/extension/psi_energy/proc/sort_abilities()
 	var/list/sorted_abilities = list()
-	for (var/id in abilities)
+	for( var/id in abilities)
 
 		var/datum/signal_ability/SA = GLOB.signal_abilities[id]
 		var/newcost = SA.energy_cost
 		var/inserted = FALSE
-		for (var/i = 1; i <= sorted_abilities.len; i++)
+		for( var/i = 1; i <= sorted_abilities.len; i++)
 			var/sid = sorted_abilities[i]
 			var/datum/signal_ability/SA2 = GLOB.signal_abilities[sid]
 			if (SA2.energy_cost > newcost)

@@ -177,7 +177,7 @@ datum/sound_token/proc/Mute()
 	status |= SOUND_STOPPED
 
 	var/sound/null_sound = new(channel = sound.channel)
-	for(var/listener in listeners)
+	for( var/listener in listeners)
 		PrivRemoveListener(listener, null_sound)
 	listeners = null
 	listener_status = null
@@ -197,13 +197,13 @@ datum/sound_token/proc/Mute()
 	var/former_listeners = listeners - current_listeners
 	var/new_listeners = current_listeners - listeners
 
-	for(var/listener in former_listeners)
+	for( var/listener in former_listeners)
 		PrivRemoveListener(listener)
 
-	for(var/listener in new_listeners)
+	for( var/listener in new_listeners)
 		PrivAddListener(listener)
 
-	for(var/listener in current_listeners)
+	for( var/listener in current_listeners)
 		PrivUpdateListenerLoc(listener)
 
 /datum/sound_token/proc/PrivUpdateStatus(new_status)
@@ -269,7 +269,7 @@ datum/sound_token/proc/Mute()
 	PrivUpdateListener(listener, update_sound)
 
 /datum/sound_token/proc/PrivUpdateListeners()
-	for(var/listener in listeners)
+	for( var/listener in listeners)
 		PrivUpdateListener(listener)
 
 /datum/sound_token/proc/PrivUpdateListener(listener, update_sound = TRUE)

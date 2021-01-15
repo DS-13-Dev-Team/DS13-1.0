@@ -39,7 +39,7 @@
 
 /datum/recipe/proc/check_reagents(datum/reagents/avail_reagents)
 	. = 1
-	for (var/r_r in reagents)
+	for( var/r_r in reagents)
 		var/aval_r_amnt = avail_reagents.get_reagent_amount(r_r)
 		if (!(abs(aval_r_amnt - reagents[r_r])<0.5)) //if NOT equals
 			if (aval_r_amnt>reagents[r_r])
@@ -56,11 +56,11 @@
 		var/list/checklist = list()
 		 // You should trust Copy().
 		checklist = fruit.Copy()
-		for(var/obj/item/weapon/reagent_containers/food/snacks/grown/G in container)
+		for( var/obj/item/weapon/reagent_containers/food/snacks/grown/G in container)
 			if(!G.seed || !G.seed.kitchen_tag || isnull(checklist[G.seed.kitchen_tag]))
 				continue
 			checklist[G.seed.kitchen_tag]--
-		for(var/ktag in checklist)
+		for( var/ktag in checklist)
 			if(!isnull(checklist[ktag]))
 				if(checklist[ktag] < 0)
 					. = 0
@@ -74,11 +74,11 @@
 	if (items && items.len)
 		var/list/checklist = list()
 		checklist = items.Copy() // You should really trust Copy
-		for(var/obj/O in container.InsertedContents())
+		for( var/obj/O in container.InsertedContents())
 			if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/grown))
 				continue // Fruit is handled in check_fruit().
 			var/found = 0
-			for(var/i = 1; i < checklist.len+1; i++)
+			for( var/i = 1; i < checklist.len+1; i++)
 				var/item_type = checklist[i]
 				if (istype(O,item_type))
 					checklist.Cut(i, i+1)
@@ -93,7 +93,7 @@
 //general version
 /datum/recipe/proc/make(obj/container as obj)
 	var/obj/result_obj = new result(container)
-	for (var/obj/O in (container.InsertedContents()-result_obj))
+	for( var/obj/O in (container.InsertedContents()-result_obj))
 		O.reagents.trans_to_obj(result_obj, O.reagents.total_volume)
 		qdel(O)
 	container.reagents.clear_reagents()
@@ -106,7 +106,7 @@
 
 		return
 	var/obj/result_obj = new result(container)
-	for (var/obj/O in (container.InsertedContents()-result_obj))
+	for( var/obj/O in (container.InsertedContents()-result_obj))
 		if (O.reagents)
 			O.reagents.del_reagent(/datum/reagent/nutriment)
 			O.reagents.update_total()
@@ -121,7 +121,7 @@
 /proc/select_recipe(list/datum/recipe/avaiable_recipes, obj/obj as obj, exact)
 	var/list/datum/recipe/possible_recipes = new
 	var/target = exact ? 0 : 1
-	for (var/datum/recipe/recipe in avaiable_recipes)
+	for( var/datum/recipe/recipe in avaiable_recipes)
 		if((recipe.check_reagents(obj.reagents) < target) || (recipe.check_items(obj) < target) || (recipe.check_fruit(obj) < target))
 			continue
 		possible_recipes |= recipe
@@ -132,7 +132,7 @@
 	else //okay, let's select the most complicated recipe
 		var/highest_count = 0
 		. = possible_recipes[1]
-		for (var/datum/recipe/recipe in possible_recipes)
+		for( var/datum/recipe/recipe in possible_recipes)
 			var/count = ((recipe.items)?(recipe.items.len):0) + ((recipe.reagents)?(recipe.reagents.len):0) + ((recipe.fruit)?(recipe.fruit.len):0)
 			if (count >= highest_count)
 				highest_count = count

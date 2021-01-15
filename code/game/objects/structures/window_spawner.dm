@@ -58,13 +58,13 @@
 		var/obj/structure/window/new_win = new win_path(loc)
 		handle_window_spawn(new_win)
 	else
-		for (var/dir in GLOB.cardinal)
+		for( var/dir in GLOB.cardinal)
 			var/turf/T = get_step(src, dir)
 			var/obj/effect/wingrille_spawn/other = locate(type) in T
 			if(!other)
 				var/found_connection
 				if(locate(/obj/structure/grille) in T)
-					for(var/obj/structure/window/W in T)
+					for( var/obj/structure/window/W in T)
 						if(W.type == win_path && W.dir == get_dir(T,src))
 							found_connection = 1
 							qdel(W)
@@ -75,7 +75,7 @@
 			else
 				neighbours |= other
 	activated = 1
-	for(var/obj/effect/wingrille_spawn/other in neighbours)
+	for( var/obj/effect/wingrille_spawn/other in neighbours)
 		if(!other.activated) other.activate()
 
 /obj/effect/wingrille_spawn/proc/handle_window_spawn(obj/structure/window/W)

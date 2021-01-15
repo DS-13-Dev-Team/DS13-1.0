@@ -31,7 +31,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 		var/list/arrestwarrants = list()
 		var/list/searchwarrants = list()
 		var/list/archivedwarrants = list()
-		for(var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
+		for( var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
 			var/charges = W.fields["charges"]
 			if(length(charges) > 50)
 				charges = copytext(charges, 1, 50) + "..."
@@ -68,7 +68,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 
 	if(href_list["editwarrant"])
 		. = 1
-		for(var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
+		for( var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
 			if(W.uid == text2num(href_list["editwarrant"]))
 				activewarrant = W
 				break
@@ -87,14 +87,14 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 
 	if(href_list["sendtoarchive"])
 		. = 1
-		for(var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
+		for( var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
 			if(W.uid == text2num(href_list["sendtoarchive"]))
 				W.archived = TRUE
 				break
 
 	if(href_list["restore"])
 		. = 1
-		for(var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
+		for( var/datum/computer_file/data/warrant/W in GLOB.all_warrants)
 			if(W.uid == text2num(href_list["restore"]))
 				W.archived = FALSE
 				break
@@ -124,7 +124,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 	if(href_list["deletewarrant"])
 		. = 1
 		if(!activewarrant)
-			for(var/datum/computer_file/report/crew_record/W in GLOB.all_crew_records)
+			for( var/datum/computer_file/report/crew_record/W in GLOB.all_crew_records)
 				if(W.uid == text2num(href_list["deletewarrant"]))
 					activewarrant = W
 					break
@@ -134,7 +134,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 	if(href_list["editwarrantname"])
 		. = 1
 		var/namelist = list()
-		for(var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
+		for( var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
 			namelist += CR.get_name()
 		var/new_name = sanitize(input(usr, "Please input name") as null|anything in namelist)
 		if(CanInteract(user, GLOB.default_state))

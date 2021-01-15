@@ -65,7 +65,7 @@
 		if(removed && ishuman(M) && prob(100 * removed / meltdose)) // Applies disfigurement
 			var/mob/living/carbon/human/H = M
 			var/screamed
-			for(var/obj/item/organ/external/affecting in H.organs)
+			for( var/obj/item/organ/external/affecting in H.organs)
 				if(!screamed && affecting.can_feel_pain())
 					screamed = 1
 					H.emote("scream")
@@ -155,7 +155,7 @@
 			I.desc = "Looks like this was \an [src] some time ago."
 			I.plane = ourplane
 			I.plane = ourlayer
-			for(var/mob/M in viewers(5, T))
+			for( var/mob/M in viewers(5, T))
 				to_chat(M, "<span class='warning'>\The [ourname] melts.</span>")
 			if (!QDELETED(src))
 				qdel(src)

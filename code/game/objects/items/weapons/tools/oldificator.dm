@@ -21,15 +21,15 @@
 
 	germ_level = pick(80,110,160)
 	//Deplete matter and matter_reagents
-	for (var/a in matter)
+	for( var/a in matter)
 		matter[a] *= rand_between(0.5, 1)
 
 	/*
-	for (var/a in matter_reagents)
+	for( var/a in matter_reagents)
 		matter_reagents[a] *= rand_between(0.5, 1)
 		*/
 
-	for(var/obj/item/sub_item in contents)
+	for( var/obj/item/sub_item in contents)
 		if (prob(80))
 			sub_item.make_old()
 
@@ -55,7 +55,7 @@
 	.=..()
 	if (.)
 		var/del_count = rand(0, contents.len)
-		for(var/i = 1 to del_count)
+		for( var/i = 1 to del_count)
 			var/removed_item = pick(contents)
 			contents -= removed_item
 			qdel(removed_item)
@@ -70,7 +70,7 @@
 	if (prob(85))
 		name = "bottle of [pick("generic ", "unknown ", "")]pills"
 		desc = "Contains pills of some kind. The label has long since worn away"
-		for (var/obj/item/weapon/reagent_containers/pill/P in contents)
+		for( var/obj/item/weapon/reagent_containers/pill/P in contents)
 			P.make_old()
 
 	.=..()
@@ -84,7 +84,7 @@
 /obj/structure/reagent_dispensers/make_old()
 	.=..()
 	if (. && reagents)
-		for(var/datum/reagent/R in reagents.reagent_list)
+		for( var/datum/reagent/R in reagents.reagent_list)
 			R.volume = rand(0, R.volume)
 
 
@@ -92,7 +92,7 @@
 	.=..()
 	if (.)
 		var/actual_volume = reagents.total_volume
-		for(var/datum/reagent/R in reagents.reagent_list)
+		for( var/datum/reagent/R in reagents.reagent_list)
 			R.volume = rand(0, R.volume)
 		reagents.add_reagent("toxin", rand(0, actual_volume - reagents.total_volume))
 
@@ -103,7 +103,7 @@
 
 /obj/item/ammo_magazine/make_old()
 	var/del_count = rand(0,contents.len)
-	for(var/i = 1 to del_count)
+	for( var/i = 1 to del_count)
 		var/removed_item = pick(stored_ammo)
 		stored_ammo -= removed_item
 		qdel(removed_item)
@@ -239,7 +239,7 @@
 			shoot_inventory = TRUE
 
 		var/del_count = rand(0, product_records.len)
-		for(var/i in 1 to del_count)
+		for( var/i in 1 to del_count)
 			product_records.Remove(pick(product_records))
 
 /obj/item/clothing/glasses/sunglasses/sechud/make_old()

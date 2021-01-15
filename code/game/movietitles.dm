@@ -26,7 +26,7 @@ client
 	sleep(50)
 	var/list/_credits = credits
 	verbs += /client/proc/ClearCredits
-	for(var/I in GLOB.end_titles)
+	for( var/I in GLOB.end_titles)
 		if(!credits)
 			return
 		var/obj/screen/credit/T = new(null, I, src)
@@ -101,7 +101,7 @@ client
 	possible_titles += "[pick("SPACE", "SEXY", "DRAGON", "WARLOCK", "LAUNDRY", "GUN", "ADVERTISING", "DOG", "CARBON MONOXIDE", "NINJA", "WIZARD", "SOCRATIC", "JUVENILE DELIQUENCY", "POLITICALLY MOTIVATED", "RADTACULAR SICKNASTY")] [pick("QUEST", "FORCE", "ADVENTURE")]"
 	possible_titles += "[pick("THE DAY [uppertext(GLOB.using_map.station_short)] STOOD STILL", "HUNT FOR THE GREEN WEENIE", "NECRO VS VENDOMAT", "SPACE TRACK")]"
 	titles += "<center><h1>EPISODE [rand(1,1000)]<br>[pick(possible_titles)]<h1></h1></h1></center>"
-	for(var/mob/living/carbon/human/H in GLOB.living_mob_list|GLOB.dead_mob_list)
+	for( var/mob/living/carbon/human/H in GLOB.living_mob_list|GLOB.dead_mob_list)
 		if(findtext(H.real_name,"(mannequin)"))
 			continue
 		if(H.isMonkey() && findtext(H.real_name,"[lowertext(H.species.name)]")) //no monki
@@ -140,14 +140,14 @@ client
 
 	var/list/corpses = list()
 	var/list/monkies = list()
-	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list)
+	for( var/mob/living/carbon/human/H in GLOB.dead_mob_list)
 		if(H.timeofdeath < 5 MINUTES) //no prespawned corpses
 			continue
 		if(H.isMonkey() && findtext(H.real_name,"[lowertext(H.species.name)]"))
 			monkies[H.species.name] += 1
 		else if(H.real_name)
 			corpses += H.real_name
-	for(var/spec in monkies)
+	for( var/spec in monkies)
 		var/datum/species/S = all_species[spec]
 		corpses += "[monkies[spec]] [lowertext(monkies[spec] > 1 ? S.name_plural : S.name)]"
 	if(corpses.len)
@@ -156,7 +156,7 @@ client
 	var/list/staff = list("PRODUCTION STAFF:")
 	var/list/staffjobs = list("Coffe Fetcher", "Cameraman", "Angry Yeller", "Chair Operator", "Choreographer", "Historical Consultant", "Costume Designer", "Chief Editor", "Executive Assistant")
 	var/list/goodboys = list()
-	for(var/client/C)
+	for( var/client/C)
 		if(!C.holder)
 			continue
 		if(C.holder.rights & (R_DEBUG|R_ADMIN))

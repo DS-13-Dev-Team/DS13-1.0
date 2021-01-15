@@ -7,7 +7,7 @@
 
 	var/list/colors = list(0, 0, 0, 0)
 	var/tot_w = 0
-	for(var/datum/reagent/R in reagent_list)
+	for( var/datum/reagent/R in reagent_list)
 		var/hex = uppertext(R.color)
 		if(length(hex) == 7)
 			hex += "FF"

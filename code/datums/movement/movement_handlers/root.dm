@@ -9,7 +9,7 @@
 
 
 // Asks the handlers if the mob may move, ignoring destination, if attempting a DoMove()
-/datum/movement_handler/root/MayMove(var/mob/mover, is_external)
+/datum/movement_handler/root/MayMove(mob/mover, is_external)
 	if (world.time < finish_time)
 		return MOVEMENT_STOP
 	return MOVEMENT_PROCEED

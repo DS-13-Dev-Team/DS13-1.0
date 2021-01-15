@@ -68,7 +68,7 @@
 			var/answer = input(M, "[P] is requesting a DNA sample from you. Will you allow it to confirm your identity?", "[P] Check DNA", "No") in list("Yes", "No")
 			if(answer == "Yes")
 				var/turf/T = get_turf_or_move(P.loc)
-				for (var/mob/v in viewers(T))
+				for( var/mob/v in viewers(T))
 					v.show_message("<span class='notice'>[M] presses \his thumb against [P].</span>", 3, "<span class='notice'>[P] makes a sharp clicking sound as it extracts DNA material from [M].</span>", 2)
 				var/datum/dna/dna = M.dna
 				to_chat(P, "<font color = red><h3>[M]'s UE string : [dna.unique_enzymes]</h3></font>")
@@ -94,7 +94,7 @@
 		data["frequency"] = format_frequency(user.silicon_radio.frequency)
 
 		var/channels[0]
-		for(var/ch_name in user.silicon_radio.channels)
+		for( var/ch_name in user.silicon_radio.channels)
 			var/ch_stat = user.silicon_radio.channels[ch_name]
 			var/ch_dat[0]
 			ch_dat["name"] = ch_name
@@ -176,14 +176,14 @@
 			var/turf/T = get_turf_or_move(P.loc)
 			P.hack_aborted = 0
 			P.cable = new /obj/item/weapon/pai_cable(T)
-			for(var/mob/M in viewers(T))
+			for( var/mob/M in viewers(T))
 				M.show_message("<span class='warning'>A port on [P] opens to reveal [P.cable], which promptly falls to the floor.</span>", 3,
 				               "<span class='warning'>You hear the soft click of something light and hard falling to the ground.</span>", 2)
 			return 1
 
 /mob/living/silicon/pai/proc/hackloop()
 	var/turf/T = get_turf_or_move(src.loc)
-	for(var/mob/living/silicon/ai/AI in GLOB.player_list)
+	for( var/mob/living/silicon/ai/AI in GLOB.player_list)
 		if(T.loc)
 			to_chat(AI, "<font color = red><b>Network Alert: Brute-force encryption crack in progress in [T.loc].</b></font>")
 		else
@@ -236,7 +236,7 @@
 
 			var/t_moles = env.total_moles
 			var/gases[0]
-			for(var/g in env.gas)
+			for( var/g in env.gas)
 				var/gas[0]
 				gas["name"] = gas_data.name[g]
 				gas["percent"] = round((env.gas[g] / t_moles) * 100)
@@ -282,10 +282,10 @@
 		// 	Sol Common, Tradeband and Gutter are added with New() and are therefore the current default, always active languages
 		user.translator_on = !user.translator_on
 		if(user.translator_on)
-			for(var/language in languages)
+			for( var/language in languages)
 				user.add_language(language)
 		else
-			for(var/language in languages)
+			for( var/language in languages)
 				user.remove_language(language)
 
 	is_active(mob/living/silicon/pai/user)

@@ -140,7 +140,7 @@
 /hook/startup/proc/load_custom_items()
 
 	var/datum/custom_item/current_data
-	for(var/line in splittext(file2text("config/custom_items.txt"), "\n"))
+	for( var/line in splittext(file2text("config/custom_items.txt"), "\n"))
 
 		line = trim(line)
 		if(line == "" || !line || findtext(line, "#", 1, 2))
@@ -201,7 +201,7 @@
 	if(!key_list || key_list.len < 1)
 		return
 
-	for(var/datum/custom_item/citem in key_list)
+	for( var/datum/custom_item/citem in key_list)
 
 		// Check for requisite ckey and character name.
 		if((lowertext(citem.assoc_key) != lowertext(M.ckey)) || (lowertext(citem.character_name) != lowertext(M.real_name)))
@@ -221,7 +221,7 @@
 		if(citem.req_titles && citem.req_titles.len > 0)
 			var/has_title
 			var/current_title = M.mind.role_alt_title ? M.mind.role_alt_title : M.mind.assigned_role
-			for(var/title in citem.req_titles)
+			for( var/title in citem.req_titles)
 				if(title == current_title)
 					has_title = 1
 					break

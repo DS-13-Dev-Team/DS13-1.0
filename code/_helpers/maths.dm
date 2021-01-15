@@ -103,7 +103,7 @@ EG:
 
 /proc/Mean(...)
 	var/sum = 0
-	for(var/val in args)
+	for( var/val in args)
 		sum += val
 	return sum / args.len
 

@@ -3,7 +3,7 @@
 	if(abs(start[1] - end[1]) > abs(start[2] - end[2]))
 		var/dist = abs(start[1] - end[1]) * 2
 
-		for(var/i = 1, i <= dist, i++)
+		for( var/i = 1, i <= dist, i++)
 			var/x = round((start[1] * i / dist) + (end[1] * (1 - i / dist)))
 			var/y = round((start[2] * i / dist) + (end[2] * (1 - i / dist)))
 
@@ -13,7 +13,7 @@
 	else
 		var/dist = abs(start[2] - end[2]) * 2
 
-		for(var/i = 1, i <= dist, i++)
+		for( var/i = 1, i <= dist, i++)
 			var/x = round((start[1] * i / dist) + (end[1] * (1 - i / dist)))
 			var/y = round((start[2] * i / dist) + (end[2] * (1 - i / dist)))
 
@@ -99,7 +99,7 @@
 
 	var/hits = 0
 
-	for(var/i = 1, i <= 10, i++)
+	for( var/i = 1, i <= 10, i++)
 		var/point1
 		var/point2
 
@@ -216,7 +216,7 @@
 			list(  0,   0,   0,   0),
 		)
 
-	for(var/i = 1, i <= rand(1, 5), i++)
+	for( var/i = 1, i <= rand(1, 5), i++)
 		var/f = rand(1, length(frames))
 
 		if(frames[f][2] > 1)
@@ -237,7 +237,7 @@
 	src.icon = generate_bluespace_icon(src.icon, src.icon_state)
 
 /mob/verb/bluespam()
-	for(var/turf/t in view(5))
+	for( var/turf/t in view(5))
 		var/obj/s = new /obj/square(t)
 		s.icon = generate_bluespace_icon(s.icon, s.icon_state)
 

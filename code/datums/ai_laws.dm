@@ -44,7 +44,7 @@
 /datum/ai_laws/proc/laws_to_state()
 	sort_laws()
 	var/list/statements = new()
-	for(var/datum/ai_law/law in sorted_laws)
+	for( var/datum/ai_law/law in sorted_laws)
 		if(get_state_law(law))
 			statements += law
 
@@ -54,19 +54,19 @@
 	if(sorted_laws.len)
 		return
 
-	for(var/ion_law in ion_laws)
+	for( var/ion_law in ion_laws)
 		sorted_laws += ion_law
 
 	if(zeroth_law)
 		sorted_laws += zeroth_law
 
 	var/index = 1
-	for(var/datum/ai_law/inherent_law in inherent_laws)
+	for( var/datum/ai_law/inherent_law in inherent_laws)
 		inherent_law.index = index++
 		if(supplied_laws.len < inherent_law.index || !istype(supplied_laws[inherent_law.index], /datum/ai_law))
 			sorted_laws += inherent_law
 
-	for(var/datum/ai_law/AL in supplied_laws)
+	for( var/datum/ai_law/AL in supplied_laws)
 		if(istype(AL))
 			sorted_laws += AL
 
@@ -81,11 +81,11 @@
 	if(full_sync || supplied_laws.len)
 		S.laws.clear_supplied_laws()
 
-	for (var/datum/ai_law/law in ion_laws)
+	for( var/datum/ai_law/law in ion_laws)
 		S.laws.add_ion_law(law.law)
-	for (var/datum/ai_law/law in inherent_laws)
+	for( var/datum/ai_law/law in inherent_laws)
 		S.laws.add_inherent_law(law.law)
-	for (var/datum/ai_law/law in supplied_laws)
+	for( var/datum/ai_law/law in supplied_laws)
 		if(law)
 			S.laws.add_supplied_law(law.index, law.law)
 
@@ -119,7 +119,7 @@
 	if(!law)
 		return
 
-	for(var/datum/ai_law/AL in ion_laws)
+	for( var/datum/ai_law/AL in ion_laws)
 		if(AL.law == law)
 			return
 
@@ -134,7 +134,7 @@
 	if(!law)
 		return
 
-	for(var/datum/ai_law/AL in inherent_laws)
+	for( var/datum/ai_law/AL in inherent_laws)
 		if(AL.law == law)
 			return
 
@@ -222,7 +222,7 @@
 
 /datum/ai_laws/proc/show_laws(who)
 	sort_laws()
-	for(var/datum/ai_law/law in sorted_laws)
+	for( var/datum/ai_law/law in sorted_laws)
 		if(law == zeroth_law_borg)
 			continue
 		if(law == zeroth_law)

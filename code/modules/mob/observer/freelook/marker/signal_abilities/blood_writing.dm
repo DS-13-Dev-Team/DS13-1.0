@@ -12,7 +12,7 @@
 
 /datum/signal_ability/writing/special_check(var/turf/target)
 	var/num_doodles = 0
-	for(var/obj/effect/decal/cleanable/blood/writing/W in target)
+	for( var/obj/effect/decal/cleanable/blood/writing/W in target)
 		num_doodles++
 	if(num_doodles > 4)
 		to_chat(src, "<span class='warning'>There is no space to write on!</span>")

@@ -51,14 +51,14 @@
 		find_presence[/datum/reagent/mercury] = rand(1, 500) / 100
 	find_presence["chlorine"] = rand(500, 2500) / 100
 
-	for(var/datum/find/F in container.finds)
+	for( var/datum/find/F in container.finds)
 		var/responsive_reagent = get_responsive_reagent(F.find_type)
 		find_presence[responsive_reagent] = F.dissonance_spread
 
 	var/total_presence = 0
-	for(var/carrier in find_presence)
+	for( var/carrier in find_presence)
 		total_presence += find_presence[carrier]
-	for(var/carrier in find_presence)
+	for( var/carrier in find_presence)
 		find_presence[carrier] = find_presence[carrier] / total_presence
 
 /datum/geosample/proc/UpdateNearbyArtifactInfo(turf/simulated/mineral/container)
@@ -69,7 +69,7 @@
 		artifact_distance = rand()
 		artifact_id = container.artifact_find.artifact_id
 	else
-		for(var/turf/simulated/mineral/T in SSxenoarch.artifact_spawning_turfs)
+		for( var/turf/simulated/mineral/T in SSxenoarch.artifact_spawning_turfs)
 			if(T.artifact_find)
 				var/cur_dist = get_dist(container, T) * 2
 				if( (artifact_distance < 0 || cur_dist < artifact_distance))

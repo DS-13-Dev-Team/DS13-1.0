@@ -7,7 +7,7 @@
 	new_prefab.integrated_circuits = list() //setup lists
 	new_prefab.value_presets = list()
 	new_prefab.connections = list()
-	for(var/circuit_count = 1, circuit_count <= assembly.contents.len, circuit_count++) //We parse each individual circuit.
+	for( var/circuit_count = 1, circuit_count <= assembly.contents.len, circuit_count++) //We parse each individual circuit.
 		var/obj/item/integrated_circuit/ic = assembly.contents[circuit_count]
 		var/datum/ic_assembly_integrated_circuits/circuit = new()
 		new_prefab.metal_amount += ic.matter[MATERIAL_STEEL] //Increase metal amount
@@ -15,9 +15,9 @@
 		circuit.circuit_name = ic.name
 		new_prefab.integrated_circuits += circuit //add to our list
 		var/list/list_to_use = list(ic.inputs, ic.outputs, ic.activators) //Next we must parse 3 different lists, the inputs, outputs, and activators of the current circuit
-		for(var/channel_count in 1 to 3)
+		for( var/channel_count in 1 to 3)
 			var/list/current_list = list_to_use[channel_count] //Get the list we are on.
-			for(var/io_count in 1 to current_list.len) //Parse them!
+			for( var/io_count in 1 to current_list.len) //Parse them!
 				var/datum/integrated_io/IO = current_list[io_count]
 				var/data = IO.get_data() //First we see if they have a premade value
 				if(data && channel_count != 3) //if we are not activators, save that data
@@ -28,7 +28,7 @@
 					pres.io_pin_index = io_count //Point to the right input/output/etc list.
 					new_prefab.value_presets += pres
 				if(IO.linked && channel_count != 1) //if we are output/activators
-					for(var/linked_count in 1 to IO.linked.len) //We get what they are linkd to
+					for( var/linked_count in 1 to IO.linked.len) //We get what they are linkd to
 						var/datum/integrated_io/linked = IO.linked[linked_count]
 						var/other_count = assembly.contents.Find(linked.holder) //We figure out what circuit they are currently linked to.
 						if(channel_count == 3 && other_count > circuit_count) //Activators will show up twice if we don't do this.
@@ -66,17 +66,17 @@
 	assembly.SetName(assembly_name || assembly.name)
 
 	var/list/circuits = list()
-	for(var/ic in integrated_circuits)
+	for( var/ic in integrated_circuits)
 		var/datum/ic_assembly_integrated_circuits/circuit = ic
 		if(!circuit.create_circuit(assembly, circuits))
 			CRASH("Failed to add circuit [circuit.circuit_type].")
 
-	for(var/vpreset in value_presets)
+	for( var/vpreset in value_presets)
 		var/datum/ic_assembly_value_preset/value_preset = vpreset
 		if(!value_preset.set_value(circuits))
 			CRASH("Failed to set preset value - [value_preset.circuit_index] - [value_preset.io_pin_index] - [value_preset.pin_type] - [value_preset.value]")
 
-	for(var/conn in connections)
+	for( var/conn in connections)
 		var/datum/ic_assembly_connection/connection = conn
 		if(!connection.connect(circuits))
 			CRASH("Failed to connect circuits - [connection.circuit_index_a]/[connection.circuit_index_b] - [connection.io_pin_index_a]/[connection.io_pin_index_b] - [connection.pin_type_a]/[connection.pin_type_b]")

@@ -17,7 +17,7 @@
 		if (elapsed > alarm_delay)
 			triggerAlarm()
 	else if (detectTime == -1)
-		for (var/mob/target in motionTargets)
+		for( var/mob/target in motionTargets)
 			if (target.stat == DEAD)
 				lostTarget(target)
 			// See if the camera is still in range

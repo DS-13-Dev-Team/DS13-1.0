@@ -43,7 +43,7 @@
 
 	RefreshParts()
 		var/temp_rating = 0
-		for(var/obj/item/weapon/stock_parts/SP in component_parts)
+		for( var/obj/item/weapon/stock_parts/SP in component_parts)
 			if(istype(SP, /obj/item/weapon/stock_parts/matter_bin))
 				//max_coins = SP.rating * SP.rating * 1000
 			else if(istype(SP, /obj/item/weapon/stock_parts/micro_laser) || istype(SP, /obj/item/weapon/stock_parts/capacitor))
@@ -58,7 +58,7 @@
 		if (heat < 0)
 			heat = 0
 		else
-			for(var/mob/M in viewers(1, src))
+			for( var/mob/M in viewers(1, src))
 				if (M.client && M.machine == src)
 					src.updateUsrDialog()
 
@@ -93,7 +93,7 @@
 					to_chat(user, "<span class='notice'>You close the access panel.</span>")
 			else if(isCrowbar(O) && !open)
 				var/obj/machinery/constructable_frame/machine_frame/new_frame = new /obj/machinery/constructable_frame/machine_frame(src.loc)
-				for(var/obj/item/I in component_parts)
+				for( var/obj/item/I in component_parts)
 					I.loc = src.loc
 				new_frame.state = 2
 				new_frame.icon_state = "box_1"

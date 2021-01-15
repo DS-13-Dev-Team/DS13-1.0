@@ -70,7 +70,7 @@
 		var/obj/item/weapon/storage/S = A
 		var/amt_inserted = 0
 		var/turf/T = get_turf(user)
-		for(var/obj/item/weapon/light/L in S.contents)
+		for( var/obj/item/weapon/light/L in S.contents)
 			if(!user.stat && src.uses < src.max_uses)
 				src.AddUses(1)
 				amt_inserted++

@@ -53,7 +53,7 @@ proc/test_air_in_area(test_area, expectation = UT_NORMAL)
 
 	var/list/GM_checked = list()
 
-	for(var/turf/simulated/T in A)
+	for( var/turf/simulated/T in A)
 
 		if(!istype(T) || isnull(T.zone) || istype(T, /turf/simulated/floor/airless))
 			continue
@@ -151,7 +151,7 @@ datum/unit_test/zas_supply_shuttle_moved/check_result()
 
 	if(world.time < testtime)
 		return 0
-	for(var/area/A in shuttle.shuttle_area)
+	for( var/area/A in shuttle.shuttle_area)
 		var/list/test = test_air_in_area(A.type)
 		if(isnull(test))
 			fail("Check Runtimed")

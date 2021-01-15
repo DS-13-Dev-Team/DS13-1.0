@@ -9,17 +9,17 @@
 
 /proc/max_default_z_level()
 	var/max_z = 0
-	for(var/z in GLOB.using_map.station_levels)
+	for( var/z in GLOB.using_map.station_levels)
 		max_z = max(z, max_z)
-	for(var/z in GLOB.using_map.admin_levels)
+	for( var/z in GLOB.using_map.admin_levels)
 		max_z = max(z, max_z)
-	for(var/z in GLOB.using_map.player_levels)
+	for( var/z in GLOB.using_map.player_levels)
 		max_z = max(z, max_z)
 	return max_z
 
 /proc/living_observers_present(list/zlevels)
 	if(LAZYLEN(zlevels))
-		for(var/A in GLOB.player_list) //if a tree ticks on the empty zlevel does it really tick
+		for( var/A in GLOB.player_list) //if a tree ticks on the empty zlevel does it really tick
 			var/mob/M = A
 			if(M.stat != DEAD) //(no it doesn't)
 				var/turf/T = get_turf(M)
@@ -38,7 +38,7 @@
 		.= res
 
 /proc/get_area_name(N) //get area by its name
-	for(var/area/A in world)
+	for( var/area/A in world)
 		if(A.name == N)
 			return A
 	return 0
@@ -98,7 +98,7 @@
 	if(!recursion_limit)
 		return L
 
-	for(var/I in O.contents)
+	for( var/I in O.contents)
 
 		if(ismob(I))
 			if(!sight_check || isInSight(I, O))
@@ -139,7 +139,7 @@
 			return get_step(start, EAST)
 
 /proc/get_mob_by_key(key)
-	for(var/mob/M in SSmobs.mob_list)
+	for( var/mob/M in SSmobs.mob_list)
 		if(M.ckey == lowertext(key))
 			return M
 	return null
@@ -151,7 +151,7 @@
 	var/list/candidates = list() //List of candidate KEYS to assume control of the new larva ~Carn
 	var/i = 0
 	while(candidates.len <= 0 && i < 5)
-		for(var/mob/observer/ghost/G in GLOB.player_list)
+		for( var/mob/observer/ghost/G in GLOB.player_list)
 			if(((G.client.inactivity/10)/60) <= buffer + i) // the most active players are more likely to become an alien
 				if(!(G.mind && G.mind.current && G.mind.current.stat != DEAD))
 					candidates += G.key
@@ -164,7 +164,7 @@
 	var/list/candidates = list() //List of candidate KEYS to assume control of the new larva ~Carn
 	var/i = 0
 	while(candidates.len <= 0 && i < 5)
-		for(var/mob/observer/ghost/G in GLOB.player_list)
+		for( var/mob/observer/ghost/G in GLOB.player_list)
 			if(MODE_XENOMORPH in G.client.prefs.be_special_role)
 				if(((G.client.inactivity/10)/60) <= ALIEN_SELECT_AFK_BUFFER + i) // the most active players are more likely to become an alien
 					if(!(G.mind && G.mind.current && G.mind.current.stat != DEAD))
@@ -183,11 +183,11 @@
 /proc/Show2Group4Delay(obj/O, list/group, delay=0)
 	if(!isobj(O))	return
 	if(!group)	group = GLOB.clients
-	for(var/client/C in group)
+	for( var/client/C in group)
 		C.screen += O
 	if(delay)
 		spawn(delay)
-			for(var/client/C in group)
+			for( var/client/C in group)
 				C.screen -= O
 
 
@@ -253,7 +253,7 @@ datum/projectile_data
 	var/list/greens = list()
 	var/list/weights = list()
 
-	for (var/i = 0, ++i <= colors.len)
+	for( var/i = 0, ++i <= colors.len)
 		reds.Add(GetRedPart(colors[i]))
 		blues.Add(GetBluePart(colors[i]))
 		greens.Add(GetGreenPart(colors[i]))
@@ -299,7 +299,7 @@ datum/projectile_data
 /proc/getOPressureDifferential(turf/loc)
 	var/minp=16777216;
 	var/maxp=0;
-	for(var/dir in GLOB.cardinal)
+	for( var/dir in GLOB.cardinal)
 		var/turf/simulated/T=get_turf(get_step(loc,dir))
 		var/cp=0
 		if(T && istype(T) && T.zone)
@@ -320,7 +320,7 @@ datum/projectile_data
 
 /proc/getCardinalAirInfo(turf/loc, list/stats=list("temperature"))
 	var/list/temps = new/list(4)
-	for(var/dir in GLOB.cardinal)
+	for( var/dir in GLOB.cardinal)
 		var/direction
 		switch(dir)
 			if(NORTH)
@@ -335,7 +335,7 @@ datum/projectile_data
 		var/list/rstats = new /list(stats.len)
 		if(T && istype(T) && T.zone)
 			var/datum/gas_mixture/environment = T.return_air()
-			for(var/i=1;i<=stats.len;i++)
+			for( var/i=1;i<=stats.len;i++)
 				if(stats[i] == "pressure")
 					rstats[i] = environment.return_pressure()
 				else
@@ -345,7 +345,7 @@ datum/projectile_data
 		else if(istype(T, /turf))
 			// Should still work.  (/turf/return_air())
 			var/datum/gas_mixture/environment = T.return_air()
-			for(var/i=1;i<=stats.len;i++)
+			for( var/i=1;i<=stats.len;i++)
 				if(stats[i] == "pressure")
 					rstats[i] = environment.return_pressure()
 				else

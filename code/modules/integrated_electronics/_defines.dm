@@ -40,13 +40,13 @@
 
 /obj/item/integrated_circuit/proc/internal_examine(mob/user)
 	to_chat(user, "This board has [inputs.len] input pin\s, [outputs.len] output pin\s and [activators.len] activation pin\s.")
-	for(var/datum/integrated_io/input/I in inputs)
+	for( var/datum/integrated_io/input/I in inputs)
 		if(I.linked.len)
 			to_chat(user, "The '[I]' is connected to [I.get_linked_to_desc()].")
-	for(var/datum/integrated_io/output/O in outputs)
+	for( var/datum/integrated_io/output/O in outputs)
 		if(O.linked.len)
 			to_chat(user, "The '[O]' is connected to [O.get_linked_to_desc()].")
-	for(var/datum/integrated_io/activate/A in activators)
+	for( var/datum/integrated_io/activate/A in activators)
 		if(A.linked.len)
 			to_chat(user, "The '[A]' is connected to [A.get_linked_to_desc()].")
 	any_examine(user)
@@ -67,15 +67,15 @@
 /obj/item/integrated_circuit/proc/setup_io(list/io_list, io_type)
 	var/list/io_list_copy = io_list.Copy()
 	io_list.Cut()
-	for(var/io_entry in io_list_copy)
+	for( var/io_entry in io_list_copy)
 		io_list.Add(new io_type(src, io_entry, io_list_copy[io_entry]))
 
 /obj/item/integrated_circuit/Destroy()
-	for(var/datum/integrated_io/I in inputs)
+	for( var/datum/integrated_io/I in inputs)
 		qdel(I)
-	for(var/datum/integrated_io/O in outputs)
+	for( var/datum/integrated_io/O in outputs)
 		qdel(O)
-	for(var/datum/integrated_io/A in activators)
+	for( var/datum/integrated_io/A in activators)
 		qdel(A)
 	. = ..()
 
@@ -88,7 +88,7 @@
 	return
 
 /obj/item/integrated_circuit/emp_act(severity)
-	for(var/datum/integrated_io/io in inputs + outputs + activators)
+	for( var/datum/integrated_io/io in inputs + outputs + activators)
 		io.scramble(severity)
 
 /obj/item/integrated_circuit/verb/rename_component()
@@ -158,9 +158,9 @@
 	var/column_width = 3
 	var/row_height = max(inputs.len, outputs.len, 1)
 
-	for(var/i = 1 to row_height)
+	for( var/i = 1 to row_height)
 		HTML += "<tr>"
-		for(var/j = 1 to column_width)
+		for( var/j = 1 to column_width)
 			var/datum/integrated_io/io = null
 			var/words = list()
 			var/height = 1
@@ -170,12 +170,12 @@
 					if(io)
 						if(io.linked.len)
 							words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]><b>[io.name] [io.display_data()]</b></a><br>"
-							for(var/datum/integrated_io/linked in io.linked)
+							for( var/datum/integrated_io/linked in io.linked)
 								words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]>\[[linked.name]\]</a> \
 								@ <a href=?src=\ref[linked.holder];examine=1;>[linked.holder]</a><br>"
 						else
 							words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]>[io.name] [io.display_data()]</a><br>"
-							for(var/datum/integrated_io/linked in io.linked)
+							for( var/datum/integrated_io/linked in io.linked)
 								words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]>\[[linked.name]\]</a> \
 								@ <a href=?src=\ref[linked.holder];examine=1;>[linked.holder]</a><br>"
 						if(outputs.len > inputs.len)
@@ -191,12 +191,12 @@
 					if(io)
 						if(io.linked.len)
 							words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]><b>[io.name] [io.display_data()]</b></a><br>"
-							for(var/datum/integrated_io/linked in io.linked)
+							for( var/datum/integrated_io/linked in io.linked)
 								words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]>\[[linked.name]\]</a> \
 								@ <a href=?src=\ref[linked.holder];examine=1;user=\ref[user]>[linked.holder]</a><br>"
 						else
 							words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]>[io.name] [io.display_data()]</a><br>"
-							for(var/datum/integrated_io/linked in io.linked)
+							for( var/datum/integrated_io/linked in io.linked)
 								words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]>\[[linked.name]\]</a> \
 								@ <a href=?src=\ref[linked.holder];examine=1;>[linked.holder]</a><br>"
 						if(inputs.len > outputs.len)
@@ -204,17 +204,17 @@
 			HTML += "<td align='center' rowspan='[height]'>[jointext(words, null)]</td>"
 		HTML += "</tr>"
 
-	for(var/activator in activators)
+	for( var/activator in activators)
 		var/datum/integrated_io/io = activator
 		var/words = list()
 		if(io.linked.len)
 			words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]><font color='FF0000'><b>[io.name]</b></font></a><br>"
-			for(var/datum/integrated_io/linked in io.linked)
+			for( var/datum/integrated_io/linked in io.linked)
 				words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]>\[[linked.name]\]</a> \
 				@ <a href=?src[src];examine=1;user=\ref[user]>[linked.holder]</a><br>"
 		else
 			words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]><font color='FF0000'>[io.name]</font></a><br>"
-			for(var/datum/integrated_io/linked in io.linked)
+			for( var/datum/integrated_io/linked in io.linked)
 				words += "<a href=?src=\ref[src];wire=1;pin=\ref[io]>\[[linked.name]\]</a> \
 				@ <a href=?src=\ref[linked.holder];examine=1;>[linked.holder]</a><br>"
 		HTML += "<tr>"
@@ -414,15 +414,15 @@
 		push_data()
 
 /datum/integrated_io/input/proc/pull_data()
-	for(var/datum/integrated_io/io in linked)
+	for( var/datum/integrated_io/io in linked)
 		write_data_to_pin(io.data)
 
 /datum/integrated_io/output/proc/push_data()
-	for(var/datum/integrated_io/io in linked)
+	for( var/datum/integrated_io/io in linked)
 		io.write_data_to_pin(data)
 
 /datum/integrated_io/activate/proc/activate()
-	for(var/datum/integrated_io/io in linked)
+	for( var/datum/integrated_io/io in linked)
 		io.holder.check_then_do_work(io)
 
 /datum/integrated_io/proc/get_linked_to_desc()
@@ -433,9 +433,9 @@
 /datum/integrated_io/proc/disconnect()
 	data = null
 	//First we iterate over everything we are linked to.
-	for(var/datum/integrated_io/their_io in linked)
+	for( var/datum/integrated_io/their_io in linked)
 		//While doing that, we iterate them as well, and disconnect ourselves from them.
-		for(var/datum/integrated_io/their_linked_io in their_io.linked)
+		for( var/datum/integrated_io/their_linked_io in their_io.linked)
 			if(their_linked_io == src)
 				their_io.linked.Remove(src)
 			else
@@ -454,15 +454,15 @@
 	io_type = PULSE_CHANNEL
 
 /obj/item/integrated_circuit/proc/pull_data()
-	for(var/datum/integrated_io/input/I in inputs)
+	for( var/datum/integrated_io/input/I in inputs)
 		I.pull_data()
 
 /obj/item/integrated_circuit/proc/push_data()
-	for(var/datum/integrated_io/output/O in outputs)
+	for( var/datum/integrated_io/output/O in outputs)
 		O.push_data()
 
 /obj/item/integrated_circuit/proc/activate()
-	for(var/datum/integrated_io/activate/A in activators)
+	for( var/datum/integrated_io/activate/A in activators)
 		A.activate()
 
 /obj/item/integrated_circuit/proc/check_then_do_work(datum/integrated_io/io)
@@ -475,11 +475,11 @@
 	return
 
 /obj/item/integrated_circuit/proc/disconnect_all()
-	for(var/datum/integrated_io/input/I in inputs)
+	for( var/datum/integrated_io/input/I in inputs)
 		I.disconnect()
-	for(var/datum/integrated_io/output/O in outputs)
+	for( var/datum/integrated_io/output/O in outputs)
 		O.disconnect()
-	for(var/datum/integrated_io/activate/A in activators)
+	for( var/datum/integrated_io/activate/A in activators)
 		A.disconnect()
 
 /datum/encrypted_ic_data

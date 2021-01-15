@@ -24,7 +24,7 @@
 	if(!istype(T)) return
 
 	//blind and confuse adjacent people
-	for (var/mob/living/carbon/M in viewers(T, flash_range))
+	for( var/mob/living/carbon/M in viewers(T, flash_range))
 		if(M.eyecheck() < FLASH_PROTECTION_MAJOR)
 			M.flash_eyes()
 			M.eye_blurry += (brightness / 2)

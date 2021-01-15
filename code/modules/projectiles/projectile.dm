@@ -414,9 +414,9 @@
 		passthrough = attack_atom(A, distance)  //backwards compatibility
 		if (passthrough == PROJECTILE_CONTINUE)
 			if(isturf(A))
-				for(var/obj/O in A)
+				for( var/obj/O in A)
 					attack_atom(O, distance)
-				for(var/mob/living/M in A)
+				for( var/mob/living/M in A)
 					var/p = attack_mob(M, distance)
 					if (passthrough == TRUE)
 						passthrough = p	//A mob may block or deflect a projectile which was otherwise going to go through

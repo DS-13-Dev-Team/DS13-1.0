@@ -70,6 +70,6 @@ datum/category_group/underwear/dd_SortValue()
 	UW.icon = icon
 	UW.icon_state = icon_state
 
-	for(var/datum/gear_tweak/gt in tweaks)
+	for( var/datum/gear_tweak/gt in tweaks)
 		gt.tweak_item(UW, metadata && metadata["[gt]"] ? metadata["[gt]"] : gt.get_default())
 	return UW

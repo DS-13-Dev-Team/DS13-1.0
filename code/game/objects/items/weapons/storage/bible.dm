@@ -2,7 +2,7 @@
 	name = "bible"
 	desc = "Apply to head repeatedly."
 	icon_state ="bible"
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	max_w_class = ITEM_SIZE_SMALL
@@ -70,7 +70,7 @@
 	if(!icon_changed)
 		var/mob/M = usr
 
-		for(var/i = 10; i >= 0; i -= 1)
+		for( var/i = 10; i >= 0; i -= 1)
 			if(src && !M.stat && in_range(M,src))
 				var/icon_picked = input(M, "Icon?", "Book Icon", null) in list("don't change", "bible", "koran", "scrapbook", "white", "holylight", "atheist", "kojiki", "torah", "kingyellow", "ithaqua", "necronomicon")
 				if(icon_picked != "don't change" && icon_picked)

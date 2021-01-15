@@ -13,7 +13,7 @@
 		return
 
 	var/list/T = list()
-	for (var/obj/machinery/camera/C in GLOB.cameranet.cameras)
+	for( var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		var/list/tempnetwork = C.network&src.network
 		if (tempnetwork.len)
 			T[text("[][]", C.c_tag, (C.can_use() ? null : " (Deactivated)"))] = C
@@ -104,7 +104,7 @@
 		return list()
 
 	var/datum/trackable/TB = new()
-	for(var/mob/living/M in SSmobs.mob_list)
+	for( var/mob/living/M in SSmobs.mob_list)
 		if(M == usr)
 			continue
 		if(M.tracking_status() != TRACKING_POSSIBLE)
@@ -198,8 +198,8 @@
 	var/obj/machinery/camera/a
 	var/obj/machinery/camera/b
 
-	for (var/i = L.len, i > 0, i--)
-		for (var/j = 1 to i - 1)
+	for( var/i = L.len, i > 0, i--)
+		for( var/j = 1 to i - 1)
 			a = L[j]
 			b = L[j + 1]
 			if (a.c_tag_order != b.c_tag_order)
