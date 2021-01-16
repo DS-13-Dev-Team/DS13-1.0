@@ -212,7 +212,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	return click_handlers.Copy()
 
 /mob/proc/RemoveClickHandler(var/datum/click_handler/click_handler)
-	if(!click_handlers)
+	if(!click_handlers || !QDELETED(click_handler))
 		return
 
 	var/was_top = click_handlers.Top() == click_handler

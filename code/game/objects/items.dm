@@ -874,16 +874,6 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 /obj/item/lava_act()
 	. = (!throwing) ? ..() : FALSE
 
-
-//Called when a human swaps hands to a hand which is holding this item
-/obj/item/proc/swapped_to(var/mob/user)
-	return
-
-//Called when a human swaps hands away from a hand which is holding this item
-/obj/item/proc/swapped_from(var/mob/user)
-	return
-
-
 /obj/item/proc/is_equipped()
 	if (ismob(loc))
 		return (equip_slot != slot_none)
