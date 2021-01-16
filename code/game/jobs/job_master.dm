@@ -230,6 +230,7 @@ var/global/datum/controller/occupations/job_master
 			if((player) && (player.mind))
 				player.mind.assigned_role = null
 				player.mind.special_role = null
+				player.mind.ert_role = null
 		SetupOccupations()
 		unassigned = list()
 		return

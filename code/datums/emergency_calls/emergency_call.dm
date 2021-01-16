@@ -18,6 +18,8 @@
 	var/candidate_timer
 	var/cooldown_timer
 	var/spawn_type = /mob/living/carbon/human
+	var/max_specs = 1
+	var/specs = 0
 	var/max_medics = 1
 	var/medics = 0
 	var/max_enginers = 1
@@ -172,8 +174,9 @@
 
 	if(members_min > 0)
 		if(length(picked_candidates))
-			max_medics = max(round(length(picked_candidates) * 0.25), 1)
-			max_enginers = max(round(length(picked_candidates) * 0.25), 1)
+			max_specs    = max(round(length(picked_candidates) * 0.125), 1) // 1/8 team have spec
+			max_medics   = max(round(length(picked_candidates) * 0.125), 1)
+			max_enginers = max(round(length(picked_candidates) * 0.125), 1)
 			for(var/i in picked_candidates)
 				var/datum/mind/candidate_mind = i
 				members += candidate_mind
@@ -186,7 +189,7 @@
 
 	candidates.Cut() //Blank out the candidates list for next time.
 
-	cooldown_timer = addtimer(CALLBACK(src, .proc/reset), 1 MINUTES, TIMER_STOPPABLE)
+	cooldown_timer = addtimer(CALLBACK(src, .proc/reset), 5 MINUTES, TIMER_STOPPABLE)
 
 /datum/emergency_call/proc/add_candidate(mob/M)
 	if(!M.client)
