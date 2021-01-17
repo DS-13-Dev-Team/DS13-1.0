@@ -238,3 +238,6 @@
 			tank.distribute_pressure += cp
 		tank.distribute_pressure = min(max(round(tank.distribute_pressure), 0), TANK_MAX_RELEASE_PRESSURE)
 		return 1
+
+#undef TANK_MAX_RELEASE_PRESSURE
+#undef TANK_DEFAULT_RELEASE_PRESSURE

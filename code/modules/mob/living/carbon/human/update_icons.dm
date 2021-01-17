@@ -114,7 +114,7 @@ Please contact me on #coderbus IRC. ~Carn x
 //Human Overlays Indexes/////////
 #define MUTATIONS_LAYER			1
 #define SKIN_LAYER				2
-#define DAMAGE_LAYER			3
+#define MOB_DAMAGE_LAYER		3
 #define SURGERY_LEVEL			4		//bs12 specific.
 #define UNDERWEAR_LAYER         5
 #define UNIFORM_LAYER			6
@@ -137,7 +137,7 @@ Please contact me on #coderbus IRC. ~Carn x
 #define HANDCUFF_LAYER			23
 #define L_HAND_LAYER			24
 #define R_HAND_LAYER			25
-#define FIRE_LAYER				26		//If you're on fire
+#define MOB_FIRE_LAYER			26		//If you're on fire
 #define TARGETED_LAYER			27		//BS12: Layer for the target overlay from weapon targeting system
 #define TOTAL_LAYERS			27
 //////////////////////////////////
@@ -245,7 +245,7 @@ var/global/list/damage_icon_parts = list()
 
 		standing_image.overlays += DI
 
-	overlays_standing[DAMAGE_LAYER]	= standing_image
+	overlays_standing[MOB_DAMAGE_LAYER]	= standing_image
 
 	if(update_icons)
 		queue_icon_update()
@@ -778,10 +778,10 @@ var/global/list/damage_icon_parts = list()
 
 
 /mob/living/carbon/human/update_fire(var/update_icons=1)
-	overlays_standing[FIRE_LAYER] = null
+	overlays_standing[MOB_FIRE_LAYER] = null
 	if(on_fire)
 		var/image/standing = overlay_image('icons/mob/OnFire.dmi', "Standing", RESET_COLOR)
-		overlays_standing[FIRE_LAYER] = standing
+		overlays_standing[MOB_FIRE_LAYER] = standing
 	if(update_icons)
 		queue_icon_update()
 
@@ -799,7 +799,7 @@ var/global/list/damage_icon_parts = list()
 
 //Human Overlays Indexes/////////
 #undef MUTATIONS_LAYER
-#undef DAMAGE_LAYER
+#undef MOB_DAMAGE_LAYER
 #undef SURGERY_LEVEL
 #undef UNIFORM_LAYER
 #undef ID_LAYER
@@ -817,9 +817,8 @@ var/global/list/damage_icon_parts = list()
 #undef HEAD_LAYER
 #undef COLLAR_LAYER
 #undef HANDCUFF_LAYER
-#undef LEGCUFF_LAYER
 #undef L_HAND_LAYER
 #undef R_HAND_LAYER
 #undef TARGETED_LAYER
-#undef FIRE_LAYER
+#undef MOB_FIRE_LAYER
 #undef TOTAL_LAYERS

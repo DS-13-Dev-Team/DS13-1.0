@@ -516,7 +516,8 @@
 			if("stab")
 				var/mob/living/carbon/human/H = user
 				user << SPAN_DANGER("You accidentally stuck [src] in your hand!")
-				H.get_organ(H.get_holding_hand(src)).embed(src)
+				var/obj/item/organ/external/E = H.get_organ(H.get_holding_hand(src))
+				E.embed(src)
 				return
 
 			//The tool completely breaks, permanantly gone

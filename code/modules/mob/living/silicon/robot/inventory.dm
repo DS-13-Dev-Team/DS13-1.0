@@ -87,14 +87,12 @@
 
 /mob/living/silicon/robot/proc/activated(obj/item/O)
 	if(module_state_1 == O)
-		return 1
+		return TRUE
 	else if(module_state_2 == O)
-		return 1
+		return TRUE
 	else if(module_state_3 == O)
-		return 1
-	else
-		return 0
-	update_icon()
+		return TRUE
+	return FALSE
 
 //Helper procs for cyborg modules on the UI.
 //These are hackish but they help clean up code elsewhere.

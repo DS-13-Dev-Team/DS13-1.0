@@ -592,3 +592,5 @@ var/list/global/tank_gauge_cache = list()
 	name = "large metal fragment"
 	damage = 17
 
+#undef TANK_MAX_RELEASE_PRESSURE
+#undef TANK_DEFAULT_RELEASE_PRESSURE

@@ -110,8 +110,8 @@
 	var/obj/machinery/mineral/output = null
 	var/obj/machinery/mineral/console = null
 	var/sheets_per_tick = 10
-	var/list/ores_processing[0]
-	var/list/ores_stored[0]
+	var/list/ores_processing
+	var/list/ores_stored
 	var/static/list/alloy_data
 	var/active = 0
 
@@ -153,7 +153,7 @@
 		if(O.ore && !isnull(ores_stored[O.ore.name]))
 			ores_stored[O.ore.name]++
 		else
-			world.log << "[src] encountered ore [O] with oretag [O.ore ? O.ore : "(no ore)"] which this machine did not have an entry for!"
+			world.log << "[src] encountered ore [O] with oretag [O.ore || "(no ore)"] which this machine did not have an entry for!"
 
 		qdel(O)
 

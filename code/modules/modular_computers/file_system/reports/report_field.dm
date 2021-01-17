@@ -50,8 +50,8 @@
 /datum/report_field/proc/set_value(given_value)
 	value = given_value
 
-//Exports the contents of the field into html for viewing. 
-/datum/report_field/proc/get_value()
+//Exports the contents of the field into html for viewing.
+/datum/report_field/proc/get_value(in_line = FALSE)
 	return value
 
 //In case the name needs to be displayed dynamically.
@@ -84,7 +84,7 @@ Basic field subtypes.
 	value = ""
 	needs_big_box = 1
 
-/datum/report_field/pencode_text/get_value()
+/datum/report_field/pencode_text/get_value(in_line = FALSE)
 	return pencode2html(value)
 
 /datum/report_field/pencode_text/set_value(given_value)
@@ -144,7 +144,7 @@ Basic field subtypes.
 	return list("Yes", "No")
 
 //Signature field; ask_value will obtain the user's signature.
-/datum/report_field/signature/get_value()
+/datum/report_field/signature/get_value(in_line = FALSE)
 	return "<font face=\"Times New Roman\"><i>[value]</i></font>"
 
 /datum/report_field/signature/ask_value(mob/user)

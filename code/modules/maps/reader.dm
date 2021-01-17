@@ -113,7 +113,7 @@ GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
 				else
 					world.maxz = zcrd //create a new z_level if needed
 				if(!no_changeturf)
-					WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/post_change is called.")
+					crash_with("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/post_change is called.")
 
 			bounds[MAP_MINX] = min(bounds[MAP_MINX], Clamp(xcrdStart, x_lower, x_upper))
 			bounds[MAP_MINZ] = min(bounds[MAP_MINZ], zcrd)

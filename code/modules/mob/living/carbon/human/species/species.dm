@@ -293,7 +293,7 @@
 
 	//Stores organs that this species will use to defend itself from incoming strikes
 	//An associative list of sublists, with the key being a category
-	var/list/defensive_limbs = list(UPPERBODY = list(BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND), //Arms and hands are used to shield the face and body
+	var/list/list/defensive_limbs = list(UPPERBODY = list(BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND), //Arms and hands are used to shield the face and body
 	LOWERBODY = list(BP_L_LEG, BP_R_LEG))	//Legs, but not feet, are used to guard the groin
 
 	//Used for species which have alternate organs in place of some default. For example, the leaper which has a tail instead of legs
@@ -952,7 +952,6 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 //This is a proc so that enhanced necros can get their parent blurb
 /datum/species/proc/get_blurb()
-	.=..()
 	if (.)
 		.+="<br><br>"
 	.+=blurb

@@ -257,18 +257,17 @@
 					to_chat(usr, "\icon[src]<span class='warning'>Connected account has been suspended.</span>")
 			else
 				to_chat(usr, "\icon[src]<span class='warning'>EFTPOS is not connected to an account.</span>")
-	else if (istype(I, /obj/item/weapon/card/emag))
+		return
+	if (istype(I, /obj/item/weapon/card/emag))
 		if(transaction_locked)
 			if(transaction_paid)
 				to_chat(usr, "\icon[src]<span class='info'>You stealthily swipe \the [I] through \the [src].</span>")
 				transaction_locked = 0
 				transaction_paid = 0
-			else
-				usr.visible_message("<span class='info'>\The [usr] swipes a card through \the [src].</span>")
-				playsound(src, 'sound/machines/chime.ogg', 50, 1)
-				src.visible_message("\icon[src] \The [src] chimes.")
-				transaction_paid = 1
-	else
-		..()
+				return
+			usr.visible_message("<span class='info'>\The [usr] swipes a card through \the [src].</span>")
+			playsound(src, 'sound/machines/chime.ogg', 50, 1)
+			src.visible_message("\icon[src] \The [src] chimes.")
+			transaction_paid = 1
 
 	//emag?

@@ -1559,7 +1559,7 @@
 		var/mob/occupant = P.occupant
 
 		user.visible_message("<span class='notice'>\The [user] begins opening the hatch on \the [P]...</span>", "<span class='notice'>You begin opening the hatch on \the [P]...</span>")
-		if (!do_after(user, 40, needhand=0))
+		if (!global.do_after(user, 40, needhand=0))
 			return
 
 		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant]!</span>")

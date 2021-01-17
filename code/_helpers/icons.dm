@@ -1076,3 +1076,5 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 		host:vis_contents -= src
 
 	.=..()
+
+dm_filter
