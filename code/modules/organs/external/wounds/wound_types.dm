@@ -202,7 +202,7 @@ datum/wound/cut/massive
 		"large round scar" = 0
 		)
 
-datum/wound/puncture/massive
+/datum/wound/puncture/massive
 	max_bleeding_stage = 3
 	stages = list(
 		"massive wound" = 60,
@@ -211,6 +211,9 @@ datum/wound/puncture/massive
 		"massive angry scar" = 10,
 		"massive jagged scar" = 0
 		)
+
+//Special wound type that will be used by infectors in future
+/datum/wound/puncture/massive/skullbore
 
 /** BRUISES **/
 /datum/wound/bruise

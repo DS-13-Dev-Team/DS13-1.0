@@ -488,14 +488,7 @@ proc
 	return locate(x + offset.x, y + offset.y, z)
 
 
-//When passed a mob, returns the bodypart this mob is aiming its attacks at
-//This is a generic proc to allow it to handle null users
-/proc/get_zone_sel(var/mob/user)
-	.= BP_CHEST
-	if (istype(user) && user.zone_sel && user.zone_sel.selecting)
-		.=user.zone_sel.selecting
-		if (. in list(BP_MOUTH,BP_EYES))
-			. = BP_HEAD
+
 
 
 

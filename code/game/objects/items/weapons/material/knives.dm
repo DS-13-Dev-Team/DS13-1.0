@@ -103,3 +103,5 @@
 	attack_noun = list("attack", "slash", "stab", "slice", "tear", "rip", "dice", "cut")
 	tool_qualities = list(QUALITY_CUTTING, 40)
 	unbreakable = 1
+
+

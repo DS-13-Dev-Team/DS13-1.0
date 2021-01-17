@@ -274,8 +274,7 @@
 	/datum/execution_stage/scream)
 
 
-
-	vision_mod = -4
+	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -4)
 
 
 /datum/extension/execution/divider_tongue/safety_check()
@@ -335,6 +334,7 @@
 	host.victim.losebreath += 4
 	host.user.visible_message(SPAN_EXECUTION("[host.user] wraps their tongue around [host.victim]'s throat, constricting their airways and holding them in place!"))
 	host.user.do_shout(SOUND_SHOUT_LONG, FALSE)
+	.=..()
 
 /datum/execution_stage/wrap/stop()
 	if (user_root)
@@ -355,6 +355,7 @@
 
 
 /datum/execution_stage/strangle/enter()
+	.=..()
 	//If we've already won, skip this and just return
 	if (host.success)
 		duration =0 //Setting duration to 0 will prevent any waiting after this proc
@@ -423,6 +424,7 @@
 /datum/execution_stage/finisher/decapitate
 	duration = 0
 /datum/execution_stage/finisher/decapitate/enter()
+
 	host.user.visible_message(SPAN_EXECUTION("[host.user] makes one final pull as [host.victim]'s soft flesh yields under the assault, and their head tumbles to the floor!"))
 
 	var/obj/item/organ/external/E = host.victim.get_organ(BP_HEAD)
