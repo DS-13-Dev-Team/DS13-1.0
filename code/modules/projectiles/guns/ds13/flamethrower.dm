@@ -495,12 +495,8 @@
 	var/range =	4
 	var/angle = 30
 
-/obj/item/weapon/gun/spray/Initialize()
-	. = ..()
-	GLOB.item_unequipped_event.register(src, src, .proc/stop_firing)
-
-/obj/item/weapon/gun/spray/Destroy()
-	GLOB.item_unequipped_event.unregister(src, src, .proc/stop_firing)
+/obj/item/weapon/gun/spray/update_all_stop()
+	stop_firing()
 	. = ..()
 
 //How long it will take to windup before
