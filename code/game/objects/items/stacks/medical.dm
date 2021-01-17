@@ -13,7 +13,7 @@
 	var/apply_sounds
 	item_flags = ITEM_FLAG_NO_BLUDGEON
 	
-	var/list/rig_chestpiece_covers = list(BP_CHEST, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)  //dictates what organs the rig chestpiece covers to solve issue of hands not healing and whatnot
+	var/list/rig_chestpiece_covers = list(BP_CHEST, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)  //dictates what organs the rig chestpiece covers to solve issue of hands not healing and whatnot
 	var/list/rig_gloves_covers = list (BP_L_HAND, BP_R_HAND)
 	var/list/rig_boots_covers = list (BP_L_FOOT, BP_R_FOOT)
 
