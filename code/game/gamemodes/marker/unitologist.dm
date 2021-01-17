@@ -27,6 +27,8 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	initial_spawn_req = 0               // Gamemode using this template won't start without this # candidates.
 	initial_spawn_target = 3            // Gamemode will attempt to spawn this many antags.
 
+	category = CATEGORY_UNITOLOGY
+
 /datum/objective/unitologist
 	explanation_text = "Serve the marker at all costs."
 
@@ -65,6 +67,7 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	initial_spawn_req = 1
 	welcome_text = "While on a planetary survey team on Aegis VII below, you uncovered the Holy Marker. It spoke to you, and you followed its directions, chipping off a piece and smuggling it aboard with you. <br>\
 	The shard still speaks to you now. It tells you to hide it. Plant it somewhere in a dark, hidden corner of the Ishimura, where it will not be discovered"
+	category = CATEGORY_UNITOLOGY
 
 /datum/antagonist/unitologist/shardbearer/equip(var/mob/living/carbon/human/H)
 	.=..()

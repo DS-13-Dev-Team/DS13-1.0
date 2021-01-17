@@ -493,6 +493,20 @@
 	else
 		return 0
 
+
+
+/datum/mind/proc/get_antag_weight(var/category)
+	world << "Getting antag weight, current is [current]"
+	if (current)
+		world << "We have [current.get_equipped_items()] things"
+	. = 1
+
+	//We start with a base of 1, and add bonuses based on equipment
+
+
+
+
+
 //Initialisation procs
 /mob/living/proc/mind_initialize()
 	if(mind)
