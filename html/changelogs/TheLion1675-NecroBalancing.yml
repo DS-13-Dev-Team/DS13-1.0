@@ -35,3 +35,4 @@ delete-after: True
 changes: 
   - tweak: "Significantly reduced health on root and branch nodes."
   - tweak: "Moderately reduced health on hardened growth node."
+  - tweak: "Minorly reduced health on Nests."
