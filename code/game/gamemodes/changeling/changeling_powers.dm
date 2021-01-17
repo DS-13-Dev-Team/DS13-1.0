@@ -437,6 +437,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	C.update_lying_buckled_and_verb_status()
 	C.remove_changeling_powers()
 
+	C.gasp_sound()
 	C.emote("gasp")
 
 	spawn(rand(800,2000))

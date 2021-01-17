@@ -849,6 +849,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(DROPLIMB_EDGE)
 				if(!clean)
 					var/gore_sound = "[BP_IS_ROBOTIC(src) ? "tortured metal" : "ripping tendons and flesh"]"
+					if(owner.can_feel_pain() && prob(50))
+						owner.agony_scream()
 					return list(
 						"\The [owner]'s [src.name] flies off in an arc!",
 						"Your [src.name] goes flying off!",
@@ -856,6 +858,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 						)
 			if(DROPLIMB_BURN)
 				var/gore = "[BP_IS_ROBOTIC(src) ? "": " of burning flesh"]"
+				if(owner.can_feel_pain() && prob(50))
+					owner.agony_scream()
 				return list(
 					"\The [owner]'s [src.name] flashes away into ashes!",
 					"Your [src.name] flashes away into ashes!",
@@ -864,6 +868,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(DROPLIMB_BLUNT)
 				var/gore = "[BP_IS_ROBOTIC(src) ? "": " in shower of gore"]"
 				var/gore_sound = "[BP_IS_ROBOTIC(src) ? "rending sound of tortured metal" : "sickening splatter of gore"]"
+				if(owner.can_feel_pain() && prob(50))
+					owner.agony_scream()
 				return list(
 					"\The [owner]'s [src.name] explodes[gore]!",
 					"Your [src.name] explodes[gore]!",

@@ -19,6 +19,10 @@ mob/living/carbon/proc/custom_pain(var/message, var/power, var/force, var/obj/it
 	if(!nohalloss && power)
 		if(affecting)
 			affecting.add_pain(ceil(power/2))
+			if(power >= 70 && prob(5))
+				Stun(5)//makes you drop what you're holding.
+				Weaken(1)//knocks you over
+				agony_scream()
 		else
 			adjustHalLoss(ceil(power/2))
 

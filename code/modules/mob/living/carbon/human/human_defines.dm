@@ -122,3 +122,8 @@
 	var/became_younger
 
 
+//Add screaming here.
+/mob/living/carbon/human/IgniteMob()
+	..()
+	if(fire_stacks)
+		agony_scream(fire = TRUE)

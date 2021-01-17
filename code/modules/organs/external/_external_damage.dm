@@ -248,7 +248,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	if(owner)
 
 		if (((amount > 15 && prob(20)) || (amount > 30 && prob(60))))
-			owner.emote("scream")
+			owner.agony_scream()
 		owner.updatehealth()
 	return pain-last_pain
 

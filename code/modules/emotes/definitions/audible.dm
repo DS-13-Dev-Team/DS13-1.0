@@ -2,7 +2,6 @@
 	key = "burp"
 	emote_message_3p = "USER burps."
 	message_type = AUDIBLE_MESSAGE
-	var/emote_sound
 
 /decl/emote/audible/do_extra(var/atom/user)
 	if(emote_sound)
@@ -135,6 +134,23 @@
 /decl/emote/audible/scream
 	key = "scream"
 	emote_message_3p = "USER screams!"
+
+/decl/emote/audible/scream/do_emote(mob/living/carbon/human/user)
+	var/emotesound = null
+	if(user.isMonkey())
+		return
+
+	else if(user.gender == MALE)
+		emotesound = "sound/voice/emotes/male_scream[rand(1,2)].ogg"
+
+	else
+		emotesound = "sound/voice/emotes/female_scream[rand(1,2)].ogg"
+
+	if(emotesound)
+		playsound(user, emotesound, 50, 0, 1)
+
+	user.custom_emote(2,"screams!")
+	user.handle_emote_CD()
 
 /decl/emote/audible/grunt
 	key = "grunt"

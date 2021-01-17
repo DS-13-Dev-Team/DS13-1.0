@@ -187,6 +187,7 @@
 	// Not enough to breathe
 	if(inhale_efficiency < 1)
 		if(prob(20) && active_breathing)
+			owner.gasp_sound()
 			owner.emote("gasp")
 		breath_fail_ratio = 1 - inhale_efficiency
 		failed_inhale = 1
@@ -253,6 +254,12 @@
 	if(prob(15) && !owner.nervous_system_failure())
 		if(!owner.is_asystole())
 			if(active_breathing)
+				if(owner.lying && istype(owner.loc, /turf/simulated/floor/exoplanet/water/shallow))
+					owner.gasp_sound(drowning = TRUE)
+				else if(is_bruised())
+					owner.gasp_sound(collapsed_lung = TRUE)
+				else
+					owner.gasp_sound()
 				owner.emote("gasp")
 		else
 			owner.emote(pick("shiver","twitch"))

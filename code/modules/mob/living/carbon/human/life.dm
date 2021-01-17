@@ -249,6 +249,7 @@
 					to_chat(src, "<span class='warning'>You feel strange!</span>")
 					adjustCloneLoss(5 * RADIATION_SPEED_COEFFICIENT)
 					emote("gasp")
+					gasp_sound()
 		if(radiation > 150)
 			damage = 8
 			radiation -= 4 * RADIATION_SPEED_COEFFICIENT
@@ -503,6 +504,7 @@
 			if(!stat)
 				to_chat(src, "<span class='warning'>[species.halloss_message_self]</span>")
 				src.visible_message("<B>[src]</B> [species.halloss_message]")
+				agony_scream()
 			Paralyse(10)
 
 		if(paralysis || sleeping)

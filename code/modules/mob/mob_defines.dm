@@ -200,3 +200,5 @@
 
 	//Misc:
 	var/list/statmods	//This is a list which we don't initialise to save on object creating costs. use lazyprocs to init at runtime when needed
+
+	var/emote_cd = 0	//Emote cooldown.
