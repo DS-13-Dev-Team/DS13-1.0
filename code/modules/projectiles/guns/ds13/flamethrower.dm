@@ -495,6 +495,10 @@
 	var/range =	4
 	var/angle = 30
 
+/obj/item/weapon/gun/spray/update_all_stop()
+	stop_firing()
+	. = ..()
+
 //How long it will take to windup before
 /obj/item/weapon/gun/spray/proc/get_windup()
 	return 0
