@@ -634,20 +634,3 @@ proc/TextPreview(var/string,var/len=40)
 
 		else
 			return "its"//Something went wrong
-
-/proc/text2regex(text)
-	var/end = findlasttext(text, "/")
-	if (end > 2 && length(text) > 2 && text[1] == "/")
-		var/flags = end == length(text) ? FALSE : copytext(text, end + 1)
-		var/matcher = copytext(text, 2, end)
-		try
-			return flags ? regex(matcher, flags) : regex(matcher)
-		catch()
-	log_error("failed to parse text to regex: [text]")
-
-/proc/process_chat_markup(message)
-	if (message && length(config.chat_markup))
-		for (var/list/entry in config.chat_markup)
-			var/regex/matcher = entry[1]
-			message = matcher.Replace(message, entry[2])
-	return message

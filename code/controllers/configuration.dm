@@ -99,8 +99,6 @@ var/list/gamemode_cache = list()
 	var/githuburl
 	var/discord_url
 
-	var/list/chat_markup
-
 	var/forbid_singulo_possession = 0
 
 	//game_options.txt configs
@@ -770,17 +768,6 @@ var/list/gamemode_cache = list()
 					always_admit_patrons = TRUE
 				if("hub")
 					world.update_hub_visibility()
-
-				if ("chat_markup")
-					var/list/line = splittext(value, ";")
-					if (length(line) != 2)
-						log_error("Invalid chat_markup entry length: [value]")
-					else
-						var/matcher = text2regex(line[1])
-						if (!matcher)
-							log_error("Invalid chat_markup regex: [value]")
-						else
-							LAZYADD(config.chat_markup, list(list(matcher, line[2])))
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
