@@ -46,7 +46,7 @@
 /obj/structure/corruption_node/growth/branch
 	name = "branch"
 	desc = "This is just a tribute"
-	max_health = 60//Takes a while to kill
+	max_health = 45 // 60 -> 45, 17th of Jan, 2021.
 	resistance = 6
 	icon_state = "minigrowth"
 	density = FALSE
@@ -76,7 +76,7 @@
 /obj/structure/corruption_node/growth/root
 	name = "root"
 	desc = "The root of all evil"
-	max_health = 60//Takes a while to kill
+	max_health = 45 // 60 -> 45, 17th of Jan, 2021.
 	resistance = 6
 	icon_state = "minigrowth"
 	density = FALSE
