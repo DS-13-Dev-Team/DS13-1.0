@@ -319,7 +319,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 
 /obj/effect/effect/forceblast/tripod
-	color = "#EE0000"
+	color = "#ee0000"
 	max_length = 4
 
 

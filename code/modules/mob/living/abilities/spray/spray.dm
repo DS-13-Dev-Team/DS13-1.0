@@ -43,7 +43,7 @@
 	var/fx_type = /obj/effect/particle_system/spray
 
 
-	var/particle_color = "#FFFFFF"
+	var/particle_color = "#ffffff"
 
 /*
 Vars/
@@ -251,7 +251,7 @@ Vars/
 	icon_state = "spray"
 	scale_x_end = 2
 	scale_y_end = 4
-	color = "#FF0000"
+	color = "#ff0000"
 
 
 

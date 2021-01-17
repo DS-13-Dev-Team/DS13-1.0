@@ -153,7 +153,7 @@
 		if(O.ore && !isnull(ores_stored[O.ore.name]))
 			ores_stored[O.ore.name]++
 		else
-			world.log << "[src] encountered ore [O] with oretag [O.ore || "(no ore)"] which this machine did not have an entry for!"
+			to_world_log("[src] encountered ore [O] with oretag [O.ore || "(no ore)"] which this machine did not have an entry for!")
 
 		qdel(O)
 
