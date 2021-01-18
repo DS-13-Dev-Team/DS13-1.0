@@ -495,7 +495,7 @@
 		return 0
 
 //ERT role check
-/mob/living/proc/chec_ert_role(role)
+/mob/living/proc/check_ert_role(role)
 	if(mind)
 		if(!role)
 			return mind.ert_role

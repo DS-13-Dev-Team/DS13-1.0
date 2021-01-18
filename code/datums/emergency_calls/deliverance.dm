@@ -1,7 +1,7 @@
 /datum/emergency_call/deliverance
 	name = "Unitologist"
 	pref_name = "Unitologist Missionary"
-	weigh = 25
+	weight = 25
 	landmark_tag = "unitologiststeam"
 
 /datum/emergency_call/deliverance/print_backstory(mob/living/carbon/human/H)

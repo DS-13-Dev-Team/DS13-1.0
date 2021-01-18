@@ -11,7 +11,7 @@
 	var/landmark_tag
 	var/dispatch_message = "An encrypted signal has been received from a nearby vessel. Stand by." //Message displayed to marines once the signal is finalized.
 	var/objectives = "" //Objectives to display to the members.
-	var/weigh = 0 //So we can give different ERTs a different weigh.
+	var/weight = 0 //So we can give different ERTs a different weight.
 	var/list/members = list() //Currently-joined members.
 	var/list/candidates = list() //Potential candidates for enlisting.
 	var/mob/living/carbon/leader = null
@@ -47,12 +47,12 @@
 	var/list/valid_calls = list()
 
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
-		if(E.weigh < 1) //Those that are meant to be admin-only
+		if(E.weight < 1) //Those that are meant to be admin-only
 			continue
 
 		valid_calls.Add(E)
 
-		if(prob(E.weigh))
+		if(prob(E.weight))
 			chosen_call = E
 			break
 

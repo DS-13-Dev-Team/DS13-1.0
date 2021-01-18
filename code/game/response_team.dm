@@ -45,7 +45,7 @@
 	if(!istype(ticker.mode.picked_call))
 		return
 
-	var/max = input("What should the maximum team size instead of number off members be?", "Max members", ticker.mode.picked_call.members_max) as null|num
+	var/max = input("What should the maximum team size instead of number of members be?", "Max members", ticker.mode.picked_call.members_max) as null|num
 	if(!max || max < 1)
 		return
 

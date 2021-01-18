@@ -1,7 +1,7 @@
 /datum/emergency_call/kellionteam
 	name = "Kellionteam"
 	pref_name = "CEC Repair Crew"
-	weigh = 50
+	weight = 50
 	landmark_tag = "kellionteam"
 
 /datum/emergency_call/kellionteam/print_backstory(mob/living/carbon/human/H)
