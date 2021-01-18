@@ -40,9 +40,9 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	end_on_antag_death = 0
 	round_autoantag = TRUE
 	auto_recall_shuttle = FALSE
-	antag_tags = list(MODE_UNITOLOGIST)
-	latejoin_antag_tags = list(MODE_UNITOLOGIST)
-	antag_templates = list(/datum/antagonist/unitologist)
+	antag_tags = list(MODE_UNITOLOGIST, MODE_EARTHGOV_AGENT)
+	latejoin_antag_tags = list(MODE_UNITOLOGIST, MODE_EARTHGOV_AGENT)
+	antag_templates = list(/datum/antagonist/unitologist, /datum/antagonist/earthgov_agent)
 	require_all_templates = FALSE
 	votable = FALSE
 	var/marker_setup_time = 45 MINUTES
