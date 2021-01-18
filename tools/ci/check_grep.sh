@@ -106,10 +106,12 @@ while read f; do
         st=1
     fi;
 done < <(find . -type f -name '*.dm')
-if grep -nP '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
-    echo "changed files contains proc argument starting with 'var'"
-    st=1
-fi;
+#Disabled because #1187 was closed.
+#TODO: Re-enable at later date.
+#if grep -nP '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
+#    echo "changed files contains proc argument starting with 'var'"
+#    st=1
+#fi;
 if grep -ni 'nanotransen' code/**/*.dm; then
     echo "Misspelling(s) of nanotrasen detected in code, please remove the extra N(s)."
     st=1

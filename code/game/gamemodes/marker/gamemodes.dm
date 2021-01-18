@@ -24,7 +24,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	round_description = "The USG Ishimura has discovered a strange artifact on Aegis VII, but it is not whole. Some piece of it has been broken off and smuggled aboard"
 	extended_round_description = "The crew must holdout until help arrives"
 	config_tag = "enemy_within"
-	votable = TRUE
+	votable = FALSE
 	antag_tags = list(MODE_UNITOLOGIST_SHARD)
 
 /datum/game_mode/marker/enemy_within/get_marker_location()

@@ -18,7 +18,7 @@
 	reclamation_time = 10 MINUTES
 
 	default_scale = 1.4
-	max_health = 200	//Takes a while to kill
+	max_health = 175 // 200 -> 175, 17th of Jan, 2021.
 	resistance = 8
 
 	var/datum/species/necromorph/spawner_species
