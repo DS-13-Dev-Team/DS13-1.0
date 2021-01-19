@@ -3,6 +3,7 @@ var/global/datum/controller/gameticker/ticker
 /datum/controller/gameticker
 	var/const/restart_timeout = 600
 	var/current_state = GAME_STATE_PREGAME
+	var/force_ending = FALSE
 
 	var/start_ASAP = FALSE          //the game will start as soon as possible, bypassing all pre-game nonsense
 
@@ -360,7 +361,7 @@ var/global/datum/controller/gameticker/ticker
 			game_finished = (mode.check_finished() || (evacuation_controller.round_over() && evacuation_controller.emergency_evacuation) || universe_has_ended)
 			mode_finished = game_finished
 
-		if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game))
+		if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game) || force_ending)
 			current_state = GAME_STATE_FINISHED
 			Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
@@ -412,7 +413,7 @@ var/global/datum/controller/gameticker/ticker
 				if(!delay_end)
 					sleep(restart_timeout)
 					if(!delay_end)
-						world.Reboot()
+						world.Reboot(ping=TRUE)
 					else if(!delay_notified)
 						to_world("<span class='notice'><b>An admin has delayed the round end</b></span>")
 				else if(!delay_notified)
@@ -581,3 +582,10 @@ var/global/datum/controller/gameticker/ticker
 					to_world("Attempting to spawn [antag.role_text_plural].")
 
 	return FALSE
+
+/datum/controller/gameticker/proc/HasRoundStarted()
+	return current_state >= GAME_STATE_PLAYING
+
+
+/datum/controller/gameticker/proc/IsRoundInProgress()
+	return current_state == GAME_STATE_PLAYING 
