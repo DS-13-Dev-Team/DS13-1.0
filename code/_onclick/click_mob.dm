@@ -214,7 +214,7 @@
 */
 /mob/proc/RangedAttack(var/atom/A, var/params)
 	if(!mutations.len) return
-	if((LASER in mutations) && a_intent == I_HURT)
+	if((LASEREYES in mutations) && a_intent == I_HURT)
 		LaserEyes(A) // moved into a proc below
 	else if(TK in mutations)
 		set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -327,7 +327,6 @@
 		if (CH)
 			if (!CH.OnAltClick(A,params))
 				return
-	.=..()
 	A.AltClick(src)
 
 

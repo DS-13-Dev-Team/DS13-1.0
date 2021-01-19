@@ -16,5 +16,5 @@
 	/decl/hierarchy/outfit/necromorph/security = 0.5)
 	var/outfit_type = pickweight(possible_outfits)
 
-	var/decl/hierarchy/outfit/O = outfit_by_type(outfit_type)
+	var/decl/hierarchy/outfit/necromorph/O = outfit_by_type(outfit_type)
 	O.equip(src, equip_adjustments = OUTFIT_ADJUSTMENT_SKIP_SURVIVAL_GEAR)

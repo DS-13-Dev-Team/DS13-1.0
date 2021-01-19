@@ -187,7 +187,7 @@ var/list/name_to_material
 	if(islist(composite_material))
 		for(var/material_string in composite_material)
 			temp_matter[material_string] = composite_material[material_string]
-	else if(SHEET_MATERIAL_AMOUNT)
+	else
 		temp_matter[name] = SHEET_MATERIAL_AMOUNT
 	return temp_matter
 
@@ -801,7 +801,7 @@ var/list/name_to_material
 
 /material/resin/can_open_material_door(var/mob/living/user)
 	var/mob/living/carbon/M = user
-	if(istype(M) && locate(/obj/item/organ/internal/xeno/hivenode) in M.internal_organs)
+	if(istype(M) && (locate(/obj/item/organ/internal/xeno/hivenode) in M.internal_organs))
 		return 1
 	return 0
 

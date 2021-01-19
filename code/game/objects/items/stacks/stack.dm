@@ -84,7 +84,7 @@
 				continue
 			t1+="<br>"
 			var/max_multiplier = round(src.get_amount() / R.req_amount)
-			var/title as text
+			var/title
 			var/can_build = 1
 			can_build = can_build && (max_multiplier>0)
 			if (R.res_amount>1)
@@ -197,14 +197,12 @@
 		if (amount <= 0)
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		return 1
-	else
-		if(get_amount() < used)
-			return 0
-		for(var/i = 1 to charge_costs.len)
-			var/datum/matter_synth/S = synths[i]
-			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
-		return 1
-	return 0
+	if(get_amount() < used)
+		return 0
+	for(var/i = 1 to charge_costs.len)
+		var/datum/matter_synth/S = synths[i]
+		S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
+	return 1
 
 /obj/item/stack/proc/add(var/extra)
 	if(!uses_charge)

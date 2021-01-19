@@ -115,7 +115,7 @@
 	data["amount"] = amount
 	data["isBeakerLoaded"] = container ? 1 : 0
 	data[MATERIAL_GLASS] = accept_drinking
-	var beakerD[0]
+	var/beakerD[0]
 	if(container && container.reagents && container.reagents.reagent_list.len)
 		for(var/datum/reagent/R in container.reagents.reagent_list)
 			beakerD[++beakerD.len] = list("name" = R.name, "volume" = R.volume)
@@ -128,7 +128,7 @@
 		data["beakerCurrentVolume"] = null
 		data["beakerMaxVolume"] = null
 
-	var chemicals[0]
+	var/chemicals[0]
 	for(var/label in cartridges)
 		var/obj/item/weapon/reagent_containers/chem_disp_cartridge/C = cartridges[label]
 		chemicals[++chemicals.len] = list("label" = label, "amount" = C.reagents.total_volume)

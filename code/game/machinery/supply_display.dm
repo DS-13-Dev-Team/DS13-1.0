@@ -32,3 +32,5 @@
 		mode = STATUS_DISPLAY_CUSTOM
 	else
 		..(signal)
+
+#undef CHARS_PER_LINE

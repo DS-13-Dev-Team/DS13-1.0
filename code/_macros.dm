@@ -65,8 +65,6 @@
 
 #define isrobot(A) istype(A, /mob/living/silicon/robot)
 
-#define issignal(A) istype(A, /mob/observer/eye/signal)
-
 #define issilicon(A) istype(A, /mob/living/silicon)
 
 #define isslime(A) istype(A, /mob/living/carbon/slime)
@@ -80,8 +78,6 @@
 #define isweakref(A) istype(A, /weakref)
 
 #define attack_animation(A) if(istype(A)) A.do_attack_animation(src)
-
-#define isairlock(A) istype(A, /obj/machinery/door/airlock)
 
 #define isopenspace(A) istype(A, /turf/simulated/open)
 

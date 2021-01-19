@@ -21,7 +21,7 @@
 	var/intercept = 0 //can intercept other channels
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
-	
+
 	throw_range = 9
 	w_class = ITEM_SIZE_SMALL
 
@@ -255,7 +255,7 @@
 				update_active()
 		. = 1
 	else if(href_list["spec_freq"])
-		var freq = href_list["spec_freq"]
+		var/freq = href_list["spec_freq"]
 		if(has_channel_access(usr, freq))
 			set_frequency(text2num(freq))
 		. = 1
@@ -453,7 +453,7 @@
 			R.receive_signal(signal)
 
 		// Receiving code can be located in Telecommunications.dm
-		if(signal.data["done"] && position.z in signal.data["level"])
+		if(signal.data["done"] && (position.z in signal.data["level"]))
 			return TRUE //Huzzah, sent via subspace
 
 		else //Less huzzah, we have to fallback
@@ -512,7 +512,7 @@
 
 	sleep(rand(10,25)) // wait a little...
 
-	if(signal.data["done"] && position.z in signal.data["level"])
+	if(signal.data["done"] && (position.z in signal.data["level"]))
 		// we're done here.
 		return 1
 

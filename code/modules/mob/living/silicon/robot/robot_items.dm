@@ -206,9 +206,9 @@
 	if ( istype(target,/obj/item))
 		if ( !isturf(target.loc) ) // Don't load up stuff if it's inside a container or mob!
 			return
-		var turf/pickup = target.loc
+		var/turf/pickup = target.loc
 
-		var addedSomething = 0
+		var/addedSomething = 0
 
 		for(var/obj/item/weapon/reagent_containers/food/I in pickup)
 
@@ -231,13 +231,13 @@
 	// see code/game/objects/items/weapons/kitchen.dm line 263
 
 	if ( isturf(target) || istype(target,/obj/structure/table) )
-		var foundtable = istype(target,/obj/structure/table/)
+		var/foundtable = istype(target,/obj/structure/table/)
 		if ( !foundtable ) //it must be a turf!
 			for(var/obj/structure/table/T in target)
 				foundtable = 1
 				break
 
-		var turf/dropspot
+		var/turf/dropspot
 		if ( !foundtable ) // don't unload things onto walls or other silly places.
 			dropspot = user.loc
 		else if ( isturf(target) ) // they clicked on a turf with a table in it
@@ -248,7 +248,7 @@
 
 		overlays = null
 
-		var droppedSomething = 0
+		var/droppedSomething = 0
 
 		for(var/obj/item/I in carrying)
 			I.loc = dropspot

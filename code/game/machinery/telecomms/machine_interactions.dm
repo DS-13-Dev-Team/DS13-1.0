@@ -199,11 +199,9 @@
 	// Toggle on/off getting signals from the station or the current Z level
 	if(src.listening_levels == GLOB.using_map.contact_levels) // equals the station
 		src.listening_levels = GetConnectedZlevels(position.z)
-		return 1
 	else
 		src.listening_levels = GLOB.using_map.contact_levels
-		return 1
-	return 0
+	return 1
 
 // Returns a multitool from a user depending on their mobtype.
 

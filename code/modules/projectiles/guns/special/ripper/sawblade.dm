@@ -515,5 +515,5 @@
 #undef SOUND_NORMAL
 
 #undef STATE_STABLE
-#undef STATE_GRIND
+#undef STATE_GRINDING
 #undef STATE_MOVING

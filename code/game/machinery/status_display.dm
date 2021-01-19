@@ -2,6 +2,7 @@
 #define FONT_COLOR "#09f"
 #define FONT_STYLE "Arial Black"
 #define SCROLL_SPEED 2
+#define CHARS_PER_LINE 5
 
 // Status display
 // (formerly Countdown timer display)
@@ -39,7 +40,6 @@
 	maptext_height = 26
 	maptext_width = 32
 
-	var/const/CHARS_PER_LINE = 5
 	var/const/STATUS_DISPLAY_BLANK = 0
 	var/const/STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME = 1
 	var/const/STATUS_DISPLAY_MESSAGE = 2
@@ -233,8 +233,7 @@
 			set_picture(signal.data["picture_state"])
 	update()
 
-#undef CHARS_PER_LINE
-#undef FOND_SIZE
+#undef FONT_SIZE
 #undef FONT_COLOR
 #undef FONT_STYLE
 #undef SCROLL_SPEED

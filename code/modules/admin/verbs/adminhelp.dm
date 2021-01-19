@@ -182,7 +182,7 @@
 client/verb/bugreport()
 	set category = "Admin"
 	set name ="Submit Bug Report/Suggestions"
-	var url = "https://github.com/DS-13-Dev-Team/DS13/issues"
+	var/url = "https://github.com/DS-13-Dev-Team/DS13/issues"
 	if(url)
 		if(alert("This will open the Dead Space 13 Bug Report and Suggestions GitHub Page in your Browser. Are you sure?",,"Yes","No")=="No")
 			return

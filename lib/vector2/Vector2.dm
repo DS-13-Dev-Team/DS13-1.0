@@ -10,8 +10,8 @@
 		return "(wrongtype)"
 
 vector2
-	var x
-	var y
+	var/x
+	var/y
 
 	/* Takes 2 numbers or a vector2 to copy.
 	*/
@@ -20,7 +20,7 @@ vector2
 		if(isnum(x)) if(!isnum(y)) y = x
 
 		else if(istype(x, /vector2))
-			var vector2/v = x
+			var/vector2/v = x
 			x = v.x
 			y = v.y
 
@@ -50,12 +50,12 @@ vector2
 
 			// Transform
 			else if(istype(s, /matrix))
-				var matrix/m = s
+				var/matrix/m = s
 				return get_new_vector(x * m.a + y * m.b + m.c, x * m.d + y * m.e + m.f)
 
 			// Component-wise
 			else if(istype(s, /vector2))
-				var vector2/v = s
+				var/vector2/v = s
 				return get_new_vector(x * v.x, y * v.y)
 
 			else CRASH("Invalid args.")
@@ -71,7 +71,7 @@ vector2
 
 			// Component-wise
 			else if(istype(d, /vector2))
-				var vector2/v = d
+				var/vector2/v = d
 				return get_new_vector(x / v.x, y / v.y)
 
 			else CRASH("Invalid args.")
@@ -158,7 +158,7 @@ vector2
 			Also accepts a dir.
 		*/
 		RotationFrom(vector2/from_vector = Vector2.North)
-			var vector2/to_vector = Normalized()
+			var/vector2/to_vector = Normalized()
 
 			var/from_created = FALSE
 			if(isnum(from_vector))
@@ -167,9 +167,8 @@ vector2
 
 			if(istype(from_vector, /vector2))
 				from_vector.SelfNormalize()
-				var
-					cos_angle = to_vector.Dot(from_vector)
-					sin_angle = to_vector.Cross(from_vector)
+				var/cos_angle = to_vector.Dot(from_vector)
+				var/sin_angle = to_vector.Cross(from_vector)
 				.= matrix(cos_angle, sin_angle, 0, -sin_angle, cos_angle, 0)
 				release_vector(to_vector)
 
@@ -215,7 +214,7 @@ vector2
 			Also accepts a dir.
 		*/
 		AngleFrom(vector2/from_vector = Vector2.North, var/shorten = FALSE)
-			var vector2/to_vector = Normalized()
+			var/vector2/to_vector = Normalized()
 
 			if(isnum(from_vector))
 				from_vector = Vector2.FromDir(from_vector) //This is not copied, gotta be careful with it
@@ -327,6 +326,6 @@ vector2
 			/*
 			// Transform
 			else if(istype(s, /matrix))
-				var matrix/m = s
+				var/matrix/m = s
 				return get_new_vector(x * m.a + y * m.b + m.c, x * m.d + y * m.e + m.f)
 			*/

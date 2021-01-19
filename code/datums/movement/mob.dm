@@ -26,9 +26,7 @@
 		if ((other_mobs && moving_mob.other_mobs))
 			return TRUE
 		return (!mover.density || !density || (lying && !density_lying()))
-	else
-		return (!mover.density || !density || (lying && !density_lying()))
-	return
+	return (!mover.density || !density || (lying && !density_lying()))
 
 
 //Sets next move time to now, so a mob can move immediately

@@ -264,7 +264,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				runlevel_sorted_subsystems[I] += SS
 				added_to_any = TRUE
 		if(!added_to_any)
-			WARNING("[SS.name] subsystem is not SS_NO_FIRE but also does not have any runlevels set!")
+			crash_with("[SS.name] subsystem is not SS_NO_FIRE but also does not have any runlevels set!")
 
 	queue_head = null
 	queue_tail = null

@@ -1,12 +1,10 @@
 /*
-	Force Gun
+	Line Cutter
 
-	Fires a shortrange blast of gravity that repulses things. Light damage, but stuns and knocks down
+	Fires a blast of plasma.
 
-	Secondary fire is a focused beam with a similar effect and marginally better damage
+	Secondary fire is a plasma mine.
 */
-#define FORCE_FOCUS_WINDUP_TIME	15
-
 /obj/item/weapon/gun/projectile/linecutter
 	name = "IM-822 Handheld Ore Cutter Line Gun"
 	desc = "A basic energy-based gun."
@@ -130,7 +128,7 @@
 
 
 
-/obj/item/projectile/wave/linecutter/Bump(var/atom/A)
+/obj/item/projectile/wave/linecutter/Bump(var/atom/A, forced=0)
 	if(istype(A, /turf/simulated/mineral))
 		var/turf/simulated/mineral/M = A
 		if (dig_power)
@@ -188,7 +186,7 @@
 /obj/effect/plasma_light/proc/flicker()
 	set waitfor = FALSE
 	while (!QDELETED(src))
-		set_light(1, 1, 3, 2, "#CCCC11")
+		set_light(1, 1, 3, 2, "#cccc11")
 		sleep(2)
 		if (QDELETED(src))
 			return
