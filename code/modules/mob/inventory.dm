@@ -335,7 +335,7 @@ var/list/slot_equipment_priority = list( \
 		if(I.body_parts_covered & body_parts)
 			. += I
 
-/mob/proc/delete_worn_item(var/obj/item/I
+///mob/proc/delete_worn_item(var/obj/item/I)
 
 
 

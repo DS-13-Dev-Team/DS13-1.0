@@ -11,6 +11,13 @@
 	unbreakable = 1
 	wielded_verbs = list(/mob/living/carbon/human/proc/sacrifice_verb)
 
+
+/obj/item/weapon/material/knife/unitologist/get_antag_weight(var/category)
+	if (category == CATEGORY_UNITOLOGY)
+		return 0.15
+
+	.=..()
+
 /mob/living/carbon/human/proc/sacrifice_verb(var/mob/living/carbon/human/target)
 	set name = "Sacrifice"
 	set category = "Abilities"
