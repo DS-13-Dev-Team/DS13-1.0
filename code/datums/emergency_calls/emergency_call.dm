@@ -27,7 +27,7 @@
 	var/datum/announcement/priority/command/special/pr_announce = new(0)
 
 /datum/game_mode/proc/initialize_emergency_calls()
-	if(length(all_calls)) //It's already been set up.
+	if(length(GLOB.all_calls)) //It's already been set up.
 		return
 
 	var/list/total_calls = typesof(/datum/emergency_call)
@@ -38,7 +38,7 @@
 		var/datum/emergency_call/D = new x()
 		if(!D?.name)
 			continue //The default parent, don't add it
-		all_calls += D
+		GLOB.all_calls += D
 
 
 //Randomizes and chooses a call datum.
@@ -46,7 +46,7 @@
 	var/datum/emergency_call/chosen_call
 	var/list/valid_calls = list()
 
-	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
+	for(var/datum/emergency_call/E in GLOB.all_calls) //Loop through all potential candidates
 		if(E.weight < 1) //Those that are meant to be admin-only
 			continue
 
@@ -73,14 +73,14 @@
 
 
 /datum/game_mode/proc/activate_distress(datum/emergency_call/chosen_call)
-	picked_call = chosen_call || get_random_call()
+	GLOB.picked_call = chosen_call || get_random_call()
 
-	if(ticker?.mode?.waiting_for_candidates) //It's already been activated
+	if(ticker?.mode?.GLOB.waiting_for_candidates) //It's already been activated
 		return FALSE
 
-	picked_call.members_max = rand(5, 15)
+	GLOB.picked_call.members_max = rand(5, 15)
 
-	picked_call.activate()
+	GLOB.picked_call.activate()
 
 /datum/emergency_call/proc/reset()
 	if(candidate_timer)
@@ -91,8 +91,8 @@
 		cooldown_timer = null
 	members.Cut()
 	candidates.Cut()
-	ticker.mode.waiting_for_candidates = FALSE
-	ticker.mode.on_distress_cooldown = FALSE
+	GLOB.waiting_for_candidates = FALSE
+	GLOB.on_distress_cooldown = FALSE
 	message_admins("Distress beacon: [name] has been reset.")
 
 /datum/emergency_call/proc/activate(announce = TRUE)
@@ -100,12 +100,12 @@
 		message_admins("Distress beacon: [name] attempted to activate but no gamemode exists")
 		return FALSE
 
-	if(ticker.mode.on_distress_cooldown) //It's already been called.
+	if(GLOB.on_distress_cooldown) //It's already been called.
 		message_admins("Distress beacon: [name] attempted to activate but distress is on cooldown")
 		return FALSE
 
 	if(members_max > 0)
-		ticker.mode.waiting_for_candidates = TRUE
+		GLOB.waiting_for_candidates = TRUE
 
 	show_join_message() //Show our potential candidates the message to let them join.
 	message_admins("Distress beacon: '[name]' activated. Looking for candidates.")
@@ -113,13 +113,13 @@
 	if(announce)
 		pr_announce.Announce("A distress beacon has been launched from the USG Ishimura.", "Priority Alert")
 
-	ticker.mode.on_distress_cooldown = TRUE
+	GLOB.on_distress_cooldown = TRUE
 
 	candidate_timer = addtimer(CALLBACK(src, .proc/do_activate, announce), 5 MINUTES, TIMER_STOPPABLE)
 
 /datum/emergency_call/proc/do_activate(announce = TRUE)
 	candidate_timer = null
-	ticker.mode.waiting_for_candidates = FALSE
+	GLOB.waiting_for_candidates = FALSE
 
 	var/list/valid_candidates = list()
 
@@ -131,7 +131,7 @@
 			if(M.current.stat != DEAD) // and not dead or admin ghosting,
 				to_chat(M.current, "<span class='warning'>You didn't get selected to join the distress team because you aren't dead.</span>")
 				continue
-			if(initial(ticker.mode.picked_call.pref_name) in M.current?.client?.prefs.never_be_special_role)
+			if(initial(GLOB.picked_call.pref_name) in M.current?.client?.prefs.never_be_special_role)
 				continue
 		valid_candidates += M
 
@@ -139,15 +139,15 @@
 
 	if(members_min && length(valid_candidates) < members_min)
 		message_admins("Aborting distress beacon [name], not enough candidates. Found: [length(valid_candidates)]. Minimum required: [members_min].")
-		ticker.mode.waiting_for_candidates = FALSE
+		GLOB.waiting_for_candidates = FALSE
 		members.Cut() //Empty the members list.
 		candidates.Cut()
 
 		if(announce)
 			pr_announce.Announce("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
 
-		ticker.mode.picked_call = null
-		ticker.mode.on_distress_cooldown = TRUE
+		GLOB.picked_call = null
+		GLOB.on_distress_cooldown = TRUE
 
 		cooldown_timer = addtimer(CALLBACK(src, .proc/reset), 5 MINUTES, TIMER_STOPPABLE)
 		return

@@ -1,3 +1,8 @@
+GLOBAL_LIST_EMPTY(all_calls)								//initialized at round start and stores the datums.
+GLOBAL_DATUM_INIT(picked_call, /datum/emergency_call, null) //Which distress call is currently active
+GLOBAL_VAR_INIT(on_distress_cooldown, FALSE)
+GLOBAL_VAR_INIT(waiting_for_candidates, FALSE)
+
 var/global/antag_add_finished // Used in antag type voting.
 var/global/list/additional_antag_types = list()
 
@@ -41,12 +46,6 @@ var/global/list/additional_antag_types = list()
 	//Used for modes which end when everyone dies.
 	var/list/dead_players = list()
 	var/player_count = 0
-
-	//Distress call variables.
-	var/list/all_calls = list() //initialized at round start and stores the datums.
-	var/datum/emergency_call/picked_call = null //Which distress call is currently active
-	var/on_distress_cooldown = FALSE
-	var/waiting_for_candidates = FALSE
 
 /datum/game_mode/New()
 	..()

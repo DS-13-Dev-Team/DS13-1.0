@@ -15,16 +15,16 @@
 	if(alert("Do you want to dispatch an Emergency Response Team?",,"Yes","No") != "Yes")
 		return
 
-	if(ticker.mode.waiting_for_candidates)
+	if(GLOB.waiting_for_candidates)
 		to_chat(src, "<span class='warning'>Please wait for the current beacon to be finalized.</span>")
 		return
 
-	if(ticker.mode.picked_call)
-		ticker.mode.picked_call.reset()
-		ticker.mode.picked_call = null
+	if(GLOB.picked_call)
+		GLOB.picked_call.reset()
+		GLOB.picked_call = null
 
 	var/list/list_of_calls = list()
-	for(var/datum/emergency_call/L in ticker.mode.all_calls)
+	for(var/datum/emergency_call/L in GLOB.all_calls)
 		if(L.name)
 			list_of_calls += L.name
 
@@ -35,36 +35,36 @@
 		return
 
 	if(choice == "Randomize")
-		ticker.mode.picked_call	= ticker.mode.get_random_call()
+		GLOB.picked_call	= ticker.mode.get_random_call()
 	else
-		for(var/datum/emergency_call/C in ticker.mode.all_calls)
+		for(var/datum/emergency_call/C in GLOB.all_calls)
 			if(C.name == choice)
-				ticker.mode.picked_call = C
+				GLOB.picked_call = C
 				break
 
-	if(!istype(ticker.mode.picked_call))
+	if(!istype(GLOB.picked_call))
 		return
 
-	var/max = input("What should the maximum team size instead of number of members be?", "Max members", ticker.mode.picked_call.members_max) as null|num
+	var/max = input("What should the maximum team size instead of number of members be?", "Max members", GLOB.picked_call.members_max) as null|num
 	if(!max || max < 1)
 		return
 
-	ticker.mode.picked_call.members_max = max
+	GLOB.picked_call.members_max = max
 
-	var/min = input("What should the minimum team size instead of number of members be?", "Min members", ticker.mode.picked_call.members_min) as null|num
+	var/min = input("What should the minimum team size instead of number of members be?", "Min members", GLOB.picked_call.members_min) as null|num
 	if(!min || min < 1)
 		min = 0
 
-	ticker.mode.picked_call.members_min = min
+	GLOB.picked_call.members_min = min
 
 	var/is_announcing = TRUE
 	if(alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No") != "Yes")
 		is_announcing = FALSE
 
-	ticker.mode.picked_call.activate(is_announcing)
+	GLOB.picked_call.activate(is_announcing)
 
-	log_admin("[key_name(usr)] called a [choice == "Randomize" ? "randomized ":""]distress beacon: [ticker.mode.picked_call.name]. Min: [min], Max: [max].")
-	message_admins("[key_name(usr)] called a [choice == "Randomize" ? "randomized ":""]distress beacon: [ticker.mode.picked_call.name] Min: [min], Max: [max].")
+	log_admin("[key_name(usr)] called a [choice == "Randomize" ? "randomized ":""]distress beacon: [GLOB.picked_call.name]. Min: [min], Max: [max].")
+	message_admins("[key_name(usr)] called a [choice == "Randomize" ? "randomized ":""]distress beacon: [GLOB.picked_call.name] Min: [min], Max: [max].")
 
 
 /client/verb/JoinResponseTeam()
@@ -78,9 +78,9 @@
 	if(!isghost(usr))
 		to_chat(usr, "<span class='warning'>You cannot join the response team because you are not ghost.</span>")
 
-	var/datum/emergency_call/distress = ticker?.mode?.picked_call //Just to simplify things a bit
+	var/datum/emergency_call/distress = GLOB.picked_call //Just to simplify things a bit
 
-	if(!istype(distress) || !ticker.mode.waiting_for_candidates || distress.members_max < 1)
+	if(!istype(distress) || !GLOB.waiting_for_candidates || distress.members_max < 1)
 		to_chat(usr, "<span class='warning'>No distress beacons that need candidates are active. You will be notified if that changes.</span>")
 		return
 
