@@ -40,7 +40,7 @@ obj/machinery/embedded_controller/radio/Destroy()
 
 	src.ui_interact(user)
 
-/obj/machinery/embedded_controller/ui_interact(var/user, var/state)
+/obj/machinery/embedded_controller/ui_interact()
 	return
 
 /obj/machinery/embedded_controller/radio

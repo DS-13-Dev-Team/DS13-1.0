@@ -16,7 +16,7 @@
 */
 #define CUMULATIVE_BURN_DAMAGE	0.5
 #define FAKEDEATH_HEAL_TIME	4 SECONDS
-#define HUNTER_ARM_SWING_RANGE	3
+#define ARM_SWING_RANGE	3
 /datum/species/necromorph/hunter
 	name = SPECIES_NECROMORPH_HUNTER
 	mob_type	=	/mob/living/carbon/human/necromorph/hunter
@@ -354,7 +354,7 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 	source = src,
 	target = target,
 	angle = 150,
-	range = HUNTER_ARM_SWING_RANGE,
+	range = ARM_SWING_RANGE,
 	duration = 0.65 SECOND,
 	windup = 0,
 	cooldown = 0,//5 SECONDS, //TODO: Uncomment this

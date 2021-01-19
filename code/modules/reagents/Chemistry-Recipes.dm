@@ -870,7 +870,8 @@
 
 /datum/chemical_reaction/slime/monkey/on_reaction(var/datum/reagents/holder)
 	for(var/i = 1, i <= 3, i++)
-		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube(get_turf(holder.my_atom))
+		var /obj/item/weapon/reagent_containers/food/snacks/monkeycube/M = new /obj/item/weapon/reagent_containers/food/snacks/monkeycube
+		M.loc = get_turf(holder.my_atom)
 	..()
 
 //Green

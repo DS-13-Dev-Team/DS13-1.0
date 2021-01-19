@@ -25,8 +25,7 @@
 		var/turf/heat_turf = get_turf(src)
 		loc_temp = heat_turf.temperature
 	else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-		var/obj/machinery/atmospherics/unary/cryo_cell/CC = loc
-		loc_temp = CC.air_contents.temperature
+		loc_temp = loc:air_contents.temperature
 	else
 		loc_temp = environment.temperature
 

@@ -265,7 +265,6 @@
 //Also handles substitution for targeting something invalid. EG, legs on a leaper
 //External only
 /mob/living/carbon/human/proc/find_target_organ(var/hit_zone)
-	RETURN_TYPE(/obj/item/organ/external)
 	if (species.organ_substitutions[hit_zone])
 
 		hit_zone = species.organ_substitutions[hit_zone]

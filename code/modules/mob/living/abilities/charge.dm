@@ -462,7 +462,7 @@
 
 //Called when the charge reaches max time or range
 /datum/extension/charge/proc/peter_out_effects()
-	return
+
 
 //Visual Filters
 //------------------------
@@ -477,7 +477,9 @@
 
 	var/vector2/direction = Vector2.DirectionBetween(oldloc, newloc)
 	direction *= blur_filter_strength
-	blur = filter(type="motion_blur", x=direction.x, y=direction.y)
+
+	blur.x = direction.x
+	blur.y = direction.y
 
 
 

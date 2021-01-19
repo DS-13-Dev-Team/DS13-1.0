@@ -57,10 +57,10 @@ SUBSYSTEM_DEF(event)
 			return
 
 	while (pos <= EVENT_LEVEL_MAJOR)
-		var/datum/event_container/EC = event_containers[pos]
+		var/list/datum/event_container/EC = event_containers[pos]
 		EC.process()
 		pos++
-
+		
 		if (MC_TICK_CHECK)
 			return
 
@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(event)
 	log_debug("Event '[EM.name]' has completed at [worldtime2stationtime(world.time)].")
 
 /datum/controller/subsystem/event/proc/delay_events(var/severity, var/delay)
-	var/datum/event_container/EC = event_containers[severity]
+	var/list/datum/event_container/EC = event_containers[severity]
 	EC.next_event_time += delay
 
 /datum/controller/subsystem/event/proc/Interact(var/mob/living/user)
@@ -116,7 +116,7 @@ SUBSYSTEM_DEF(event)
 
 		to_world(message)
 
-//Event manager UI
+//Event manager UI 
 /datum/controller/subsystem/event/proc/GetInteractWindow()
 	var/html = "<A align='right' href='?src=\ref[src];refresh=1'>Refresh</A>"
 	html += "<A align='right' href='?src=\ref[src];pause_all=[!config.allow_random_events]'>Pause All - [config.allow_random_events ? "Pause" : "Resume"]</A>"

@@ -106,7 +106,7 @@
 	if(prob(2))
 		resources[MATERIAL_DIAMOND] = 1
 
-/turf/simulated/floor/exoplanet/grass/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/turf/simulated/floor/exoplanet/grass/fire_act(datum/gas_mixture/air, temperature, volume)
 	if((temperature > T0C + 200 && prob(5)) || temperature > T0C + 1000)
 		SetName("scorched ground")
 		icon_state = "scorched"

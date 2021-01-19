@@ -173,7 +173,3 @@
 		coil.turf_place(src, user)
 		return
 	return ..()
-
-// Stub to be overridden on floors and walls, with same arguments
-/turf/simulated/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
-	..()

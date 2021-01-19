@@ -5,8 +5,8 @@
 /datum/random_room/monster_room/apply_to_map(var/xorigin,var/yorigin,var/zorigin)
 	if(available_mobs.len == 0) //no mobs no problem
 		return 1
-	var/truex = xorigin + x - 1
-	var/truey = yorigin + y - 1
+	var truex = xorigin + x - 1
+	var truey = yorigin + y - 1
 	for(var/i = 1, i < width - 1, i++)
 		for(var/j = 1, j < height - 1, j++)
 			var/turf/T = locate(truex+i,truey+j,zorigin)

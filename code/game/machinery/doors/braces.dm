@@ -110,7 +110,7 @@
 				to_chat(user, "You repair some dents on \the [src].")
 
 
-/obj/item/weapon/airlock_brace/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/item/weapon/airlock_brace/take_damage(var/amount)
 	health = between(0, health - amount, max_health)
 	if(!health)
 		if(airlock)

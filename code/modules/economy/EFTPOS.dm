@@ -209,7 +209,7 @@
 				var/obj/item/I = usr.get_active_hand()
 				if (istype(I, /obj/item/weapon/card))
 					var/obj/item/weapon/card/id/C = I
-					if((access_fl in C.access) || (access_captain in C.access))
+					if(access_fl in C.access || access_captain in C.access)
 						access_code = 0
 						to_chat(usr, "\icon[src]<span class='info'>Access code reset to 0.</span>")
 				else if (istype(I, /obj/item/weapon/card/emag))
@@ -257,17 +257,18 @@
 					to_chat(usr, "\icon[src]<span class='warning'>Connected account has been suspended.</span>")
 			else
 				to_chat(usr, "\icon[src]<span class='warning'>EFTPOS is not connected to an account.</span>")
-		return
-	if (istype(I, /obj/item/weapon/card/emag))
+	else if (istype(I, /obj/item/weapon/card/emag))
 		if(transaction_locked)
 			if(transaction_paid)
 				to_chat(usr, "\icon[src]<span class='info'>You stealthily swipe \the [I] through \the [src].</span>")
 				transaction_locked = 0
 				transaction_paid = 0
-				return
-			usr.visible_message("<span class='info'>\The [usr] swipes a card through \the [src].</span>")
-			playsound(src, 'sound/machines/chime.ogg', 50, 1)
-			src.visible_message("\icon[src] \The [src] chimes.")
-			transaction_paid = 1
+			else
+				usr.visible_message("<span class='info'>\The [usr] swipes a card through \the [src].</span>")
+				playsound(src, 'sound/machines/chime.ogg', 50, 1)
+				src.visible_message("\icon[src] \The [src] chimes.")
+				transaction_paid = 1
+	else
+		..()
 
 	//emag?
