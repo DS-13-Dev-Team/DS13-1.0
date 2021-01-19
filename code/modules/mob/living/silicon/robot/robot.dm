@@ -1091,51 +1091,49 @@
 		if(wiresexposed)
 			to_chat(user, "You must close the panel first")
 			return
+		sleep(6)
+		if(prob(50))
+			emagged = 1
+			lawupdate = 0
+			disconnect_from_ai()
+			to_chat(user, "You emag [src]'s interface.")
+			message_admins("[key_name_admin(user)] emagged cyborg [key_name_admin(src)].  Laws overridden.")
+			log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
+			clear_supplied_laws()
+			clear_inherent_laws()
+			laws = new /datum/ai_laws/syndicate_override
+			var/time = time2text(world.realtime,"hh:mm:ss")
+			GLOB.lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
+			set_zeroth_law("Only [user.real_name] and people \he designates as being such are operatives.")
+			SetLockdown(0)
+			. = 1
+			spawn()
+				to_chat(src, "<span class='danger'>ALERT: Foreign software detected.</span>")
+				sleep(5)
+				to_chat(src, "<span class='danger'>Initiating diagnostics...</span>")
+				sleep(20)
+				to_chat(src, "<span class='danger'>SynBorg v1.7.1 loaded.</span>")
+				sleep(5)
+				to_chat(src, "<span class='danger'>LAW SYNCHRONISATION ERROR</span>")
+				sleep(5)
+				to_chat(src, "<span class='danger'>Would you like to send a report to NanoTraSoft? Y/N</span>")
+				sleep(10)
+				to_chat(src, "<span class='danger'>> N</span>")
+				sleep(20)
+				to_chat(src, "<span class='danger'>ERRORERRORERROR</span>")
+				to_chat(src, "<b>Obey these laws:</b>")
+				laws.show_laws(src)
+				to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and his commands.</span>")
+				if(src.module)
+					var/rebuild = 0
+					if(rebuild)
+						src.module.modules += new /obj/item/weapon/tool/pickaxe/diamonddrill(src.module)
+						src.module.rebuild()
+				update_icon()
 		else
-			sleep(6)
-			if(prob(50))
-				emagged = 1
-				lawupdate = 0
-				disconnect_from_ai()
-				to_chat(user, "You emag [src]'s interface.")
-				message_admins("[key_name_admin(user)] emagged cyborg [key_name_admin(src)].  Laws overridden.")
-				log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
-				clear_supplied_laws()
-				clear_inherent_laws()
-				laws = new /datum/ai_laws/syndicate_override
-				var/time = time2text(world.realtime,"hh:mm:ss")
-				GLOB.lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
-				set_zeroth_law("Only [user.real_name] and people \he designates as being such are operatives.")
-				SetLockdown(0)
-				. = 1
-				spawn()
-					to_chat(src, "<span class='danger'>ALERT: Foreign software detected.</span>")
-					sleep(5)
-					to_chat(src, "<span class='danger'>Initiating diagnostics...</span>")
-					sleep(20)
-					to_chat(src, "<span class='danger'>SynBorg v1.7.1 loaded.</span>")
-					sleep(5)
-					to_chat(src, "<span class='danger'>LAW SYNCHRONISATION ERROR</span>")
-					sleep(5)
-					to_chat(src, "<span class='danger'>Would you like to send a report to NanoTraSoft? Y/N</span>")
-					sleep(10)
-					to_chat(src, "<span class='danger'>> N</span>")
-					sleep(20)
-					to_chat(src, "<span class='danger'>ERRORERRORERROR</span>")
-					to_chat(src, "<b>Obey these laws:</b>")
-					laws.show_laws(src)
-					to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and his commands.</span>")
-					if(src.module)
-						var/rebuild = 0
-						if(rebuild)
-							src.module.modules += new /obj/item/weapon/tool/pickaxe/diamonddrill(src.module)
-							src.module.rebuild()
-					update_icon()
-			else
-				to_chat(user, "You fail to hack [src]'s interface.")
-				to_chat(src, "Hack attempt detected.")
-			return 1
-		return
+			to_chat(user, "You fail to hack [src]'s interface.")
+			to_chat(src, "Hack attempt detected.")
+		return TRUE
 
 /mob/living/silicon/robot/incapacitated(var/incapacitation_flags = INCAPACITATION_DEFAULT)
 	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && (lockcharge || !is_component_functioning("actuator")))

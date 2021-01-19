@@ -44,7 +44,7 @@
 
 	//search the href for script injection
 	if( findtext(href,"<script",1,0) )
-		world.log << "Attempted use of scripts within a topic call, by [src]"
+		to_world_log("Attempted use of scripts within a topic call, by [src]")
 		message_admins("Attempted use of scripts within a topic call, by [src]")
 		//qdel(usr)
 		return
@@ -322,7 +322,6 @@
 	query_accesslog.Execute()
 
 
-#undef TOPIC_SPAM_DELAY
 #undef UPLOAD_LIMIT
 #undef MIN_CLIENT_VERSION
 

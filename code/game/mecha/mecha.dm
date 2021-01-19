@@ -1050,7 +1050,7 @@
 	return
 
 /obj/mecha/proc/moved_inside(var/mob/living/carbon/human/H as mob)
-	if(H && H.client && H in range(1))
+	if(H?.client && get_dist(H, src) <= 1)
 		H.reset_view(src)
 		/*
 		H.client.perspective = EYE_PERSPECTIVE
@@ -1559,7 +1559,7 @@
 		var/mob/occupant = P.occupant
 
 		user.visible_message("<span class='notice'>\The [user] begins opening the hatch on \the [P]...</span>", "<span class='notice'>You begin opening the hatch on \the [P]...</span>")
-		if (!do_after(user, 40, needhand=0))
+		if (!global.do_after(user, 40, needhand=0))
 			return
 
 		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant]!</span>")

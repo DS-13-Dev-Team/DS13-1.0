@@ -102,7 +102,7 @@
 		to_chat(usr, "<span class='warning'>You can't reach the controls from the inside.</span>")
 		return STATUS_CLOSE
 	return ..()
-	    
+
 /obj/machinery/sleeper/OnTopic(user, href_list)
 	if(href_list["eject"])
 		go_out()
@@ -125,7 +125,7 @@
 				return TOPIC_REFRESH
 	if(href_list["stasis"])
 		var/nstasis = text2num(href_list["stasis"])
-		if(stasis != nstasis && nstasis in stasis_settings)
+		if(stasis != nstasis && (nstasis in stasis_settings))
 			stasis = text2num(href_list["stasis"])
 			return TOPIC_REFRESH
 

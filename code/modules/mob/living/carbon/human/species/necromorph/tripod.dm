@@ -4,7 +4,7 @@
 #define LEAP_REDUCED_COOLDOWN	3 SECONDS
 #define TONGUE_EXTEND_TIME 5 SECONDS	//How long the tongue stays out and visible after any tongue move
 
-#define ARM_SWING_RANGE	4
+#define TRIPOD_ARM_SWING_RANGE	4
 
 //These are used to position the arm sprite during swing
 #define TONGUE_OFFSETS	list(S_NORTH = new /vector2(6, 16), S_SOUTH = new /vector2(-2, 8), S_EAST = new /vector2(26, 10), S_WEST = new /vector2(-14, 10))
@@ -319,7 +319,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 
 /obj/effect/effect/forceblast/tripod
-	color = "#EE0000"
+	color = "#ee0000"
 	max_length = 4
 
 
@@ -354,7 +354,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	source = src,
 	target = target,
 	angle = 150,
-	range = ARM_SWING_RANGE,
+	range = TRIPOD_ARM_SWING_RANGE,
 	duration = 0.7 SECOND,
 	windup = 0.6 SECONDS,
 	cooldown = 3.5 SECONDS,
@@ -403,7 +403,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 	//To make it feel less janky, we'll only do this bumping effect if at least 30% of the swing has happened. So no being blocked right at the start
 	//In addition we won't be blocked by things at the limit of our range
-	if (timepercent > 0.3	&& range < ARM_SWING_RANGE)
+	if (timepercent > 0.3	&& range < TRIPOD_ARM_SWING_RANGE)
 		var/list/tocheck = list(T)
 		tocheck += T.contents
 
@@ -764,7 +764,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 	host.victim.silent =0
 
-https://bigmemes.funnyjunk.com/pictures/Long+boi_073bf6_7722185.jpg
+// https://bigmemes.funnyjunk.com/pictures/Long+boi_073bf6_7722185.jpg
 
 
 //Tongue Pull: Rips the tongue out sharply, victim's head is torn off
@@ -850,6 +850,4 @@ https://bigmemes.funnyjunk.com/pictures/Long+boi_073bf6_7722185.jpg
 #undef LEAP_REDUCED_COOLDOWN
 #undef TONGUE_EXTEND_TIME
 
-#undef LEFT_ARM_OFFSETS
-#undef RIGHT_ARM_OFFSETS
 #undef TONGUE_OFFSETS

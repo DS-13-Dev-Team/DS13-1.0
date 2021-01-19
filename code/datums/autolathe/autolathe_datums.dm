@@ -156,6 +156,7 @@ other types of metals and chemistry for reagents).
 
 
 /datum/design/ui_data()
+	RETURN_TYPE(/list)
 	return ui_data
 
 //Returns a new instance of the item for this design

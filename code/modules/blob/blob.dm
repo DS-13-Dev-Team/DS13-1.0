@@ -28,7 +28,7 @@
 	update_icon()
 	return ..(loc)
 
-/obj/effect/blob/CanPass(var/atom/movable/mover, vra/turf/target, var/height = 0, var/air_group = 0)
+/obj/effect/blob/CanPass(var/atom/movable/mover, var/turf/target, var/height = 0, var/air_group = 0)
 	if(air_group || height == 0)
 		return 1
 	return 0

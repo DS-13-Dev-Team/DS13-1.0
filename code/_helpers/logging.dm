@@ -24,7 +24,6 @@
 /proc/log_ss_init(text)
 	game_log("SS", "[text]")
 
-#define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
 //print a warning message to world.log
 /proc/warning(msg)
 	to_world_log("## WARNING: [msg][log_end]")

@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(timer)
 		var/msg = "No regular timers processed in the last [TIMER_NO_INVOKE_WARNING] ticks[bucket_auto_reset ? ", resetting buckets" : ""]!"
 		times_crashed++
 		message_admins(msg)
-		WARNING(msg)
+		crash_with(msg)
 		if(bucket_auto_reset)
 			bucket_resolution = 0
 

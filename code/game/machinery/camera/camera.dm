@@ -83,7 +83,7 @@
 	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		var/list/tempnetwork = C.network&src.network
 		if(C != src && C.c_tag == src.c_tag && tempnetwork.len)
-			world.log << "[src.c_tag] [src.x] [src.y] [src.z] conflicts with [C.c_tag] [C.x] [C.y] [C.z]"
+			to_world_log("[src.c_tag] [src.x] [src.y] [src.z] conflicts with [C.c_tag] [C.x] [C.y] [C.z]")
 	*/
 	if(!src.network || src.network.len < 1)
 		if(loc)
@@ -370,16 +370,12 @@
 	for(var/obj/machinery/camera/C in oview(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
-			break
 	return null
 
 /proc/near_range_camera(var/mob/M)
-
 	for(var/obj/machinery/camera/C in range(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
-			break
-
 	return null
 
 /obj/machinery/camera/proc/weld(var/obj/item/weapon/tool/weldingtool/WT, var/mob/user)

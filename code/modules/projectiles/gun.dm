@@ -101,7 +101,7 @@
 	.=..()
 	// Updating firing modes at appropriate times
 	// Now uses events to avoid unnecessarily complex proc overrides
-	GLOB.item_equipped_event.register(src, src, .proc/update_all)
+	GLOB.item_equipped_event.register(src, src, .proc/update_equipped)
 	GLOB.item_unequipped_event.register(src, src, .proc/update_all_stop)
 	GLOB.swapped_to_event.register(src, src, .proc/update_all)
 	GLOB.swapped_from_event.register(src, src, .proc/update_all_stop)
@@ -710,6 +710,14 @@
 	update_firemode(force_state)
 	update_click_handlers()
 
+/obj/item/weapon/gun/proc/update_equipped(obj/self, mob/equipper, slot)
+	if(!equipper)
+		CRASH("update_equipped called on [self] with slot [slot] and invalid mob!")
+	if(slot == equipper.get_active_hand_slot())
+		update_all()
+		return
+	update_all_stop()
+
 /obj/item/weapon/gun/proc/update_all_stop()
 	update_all(FALSE)
 
@@ -726,7 +734,7 @@
 		return ..()
 
 //Ammo handling, used by most types of weapons
-/obj/item/weapon/gun/proc/unload_ammo(mob/user)
+/obj/item/weapon/gun/proc/unload_ammo(mob/user, var/allow_dump)
 	playsound(loc, mag_remove_sound, 50, 1)
 
 

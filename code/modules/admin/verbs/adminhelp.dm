@@ -136,3 +136,12 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 
 	feedback_add_details("admin_verb","AH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
+
+client/verb/bugreport()
+	set category = "Admin"
+	set name ="Submit Bug Report/Suggestions"
+	var/url = "https://github.com/DS-13-Dev-Team/DS13/issues"
+	if(url)
+		if(alert("This will open the Dead Space 13 Bug Report and Suggestions GitHub Page in your Browser. Are you sure?",,"Yes","No")=="No")
+			return
+		src << link(url)

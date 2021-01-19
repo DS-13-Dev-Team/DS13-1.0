@@ -51,7 +51,7 @@ GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)
 /mob/living/bioblast_act(var/power = 1)
 	if (is_necromorph())
 		power *= NECROMORPH_FRIENDLY_FIRE_FACTOR	//Less friendly fire damage
-	take_overall_damage(brute = 0, burn = power, sharp = FALSE, edge = FALSE, used_weapon = "bioblast", armortype ="bio")
+	take_overall_damage(brute = 0, burn = power, used_weapon = "bioblast")
 
 
 //For carbon mobs, half of the damage is dealt over time by dousing the victim in acid
@@ -65,6 +65,18 @@ GLOBAL_DATUM_INIT(bioblast_acid_holder, /obj/item, new)
 	//Pass the remaining half of the power back to be dealt as ordinary burns
 	.=..(power*0.5)
 
+/mob/living/carbon/human/bioblast_act(var/power = 1)
+	// We have to duplicate the code because armortype doesn't exist on any parent types.
+	var/acid_volume = (power*0.5) / NECROMORPH_ACID_POWER	//Figure out how many units of acid we need to deal half of the power in damage
+	var/datum/reagents/R = new(acid_volume, GLOB.bioblast_acid_holder)	//Populate this
+	R.add_reagent(/datum/reagent/acid/necromorph, acid_volume, safety = TRUE)
+	R.trans_to(src, R.total_volume)	//Apply acid to mob
+	qdel(R)
+	//Pass the remaining half of the power back to be dealt as ordinary burns
+	//Can't call parent, paste manually
+	if (is_necromorph())
+		power *= NECROMORPH_FRIENDLY_FIRE_FACTOR	//Less friendly fire damage
+	take_overall_damage(brute = 0, burn = power, used_weapon = "bioblast", armortype ="bio")
 
 /atom/bioblast_act(var/power = 1)
 	if (power >= BIOBLAST_TIER_1)

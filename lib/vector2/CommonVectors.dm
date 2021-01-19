@@ -2,7 +2,7 @@
 	Make sure you don't modify these vectors.
 	You should treat all vectors as immutable in general.
 */
-var Vector2/Vector2 = new
+var/Vector2/Vector2 = new
 
 Vector2
 	var
@@ -13,10 +13,17 @@ Vector2
 			South = new(0, -1)
 			East = new(1, 0)
 			West = new(-1, 0)
-			Northeast = new(sqrt(1/2), sqrt(1/2))
-			Northwest = new(-sqrt(1/2), sqrt(1/2))
-			Southeast = new(sqrt(1/2), -sqrt(1/2))
-			Southwest = new(-sqrt(1/2), -sqrt(1/2))
+			Northeast
+			Northwest
+			Southeast
+			Southwest
+
+	New() // these should not be defined at compile-time, sqrt is irrational!
+		Northeast = new(sqrt(1/2), sqrt(1/2))
+		Northwest = new(-sqrt(1/2), sqrt(1/2))
+		Southeast = new(sqrt(1/2), -sqrt(1/2))
+		Southwest = new(-sqrt(1/2), -sqrt(1/2))
+		return ..()
 
 	proc
 		FromDir(dir)
