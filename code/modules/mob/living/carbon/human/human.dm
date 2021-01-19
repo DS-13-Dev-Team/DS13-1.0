@@ -181,6 +181,16 @@
 		var/obj/item/underwear/UW = entry
 		dat += "<BR><a href='?src=\ref[src];item=\ref[UW]'>Remove \the [UW]</a>"
 
+	if (wearing_rig)
+		dat += "<BR>"
+		dat += "<BR><B>[wearing_rig.name]:</b></A>"
+
+		//If this rig has a helmet, lets have a way to toggle it
+		if (wearing_rig.helm_type)
+			dat += "	<BR><A href='?src=\ref[src];rig=toggle_helmet'>Toggle helmet</A>"
+
+		dat += "<BR>"
+
 	dat += "<BR><A href='?src=\ref[src];item=splints'>Remove splints</A>"
 	dat += "<BR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
 	dat += "<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>"
@@ -269,6 +279,16 @@
 	if(href_list["item"])
 		if(!handle_strip(href_list["item"],usr,locate(href_list["holder"])))
 			show_inv(usr)
+
+	if(href_list["rig"])
+		switch(href_list["rig"])
+			if ("toggle_helmet")
+				var/mob/living/L = usr
+				if (L)
+					L.face_atom(src)
+					L.visible_message(SPAN_WARNING("[L] starts fiddling with the emergency release on [src]'s helmet"))
+					wearing_rig?.toggle_helmet(user = L, ignore_access = TRUE, duration = 10 SECONDS)
+
 
 	if (href_list["criminal"])
 		if(hasHUD(usr, HUD_SECURITY))

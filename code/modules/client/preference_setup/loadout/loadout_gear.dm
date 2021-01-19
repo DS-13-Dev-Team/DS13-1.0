@@ -169,3 +169,9 @@
 		return gear[display_name]
 	else
 		return list()
+
+/*
+	How does this gear affect weighting for the specified antag category
+*/
+/datum/gear/proc/get_antag_weight(var/category)
+	return 0

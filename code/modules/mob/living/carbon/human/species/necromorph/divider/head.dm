@@ -332,7 +332,7 @@
 
 
 
-	vision_mod = -4
+	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -4)
 
 
 /datum/extension/execution/divider_head/safety_check()
@@ -360,10 +360,13 @@
 	if (LAZYLEN(head.attack_sounds))
 		playsound(host.victim, pick(head.attack_sounds), VOLUME_MAX, TRUE)
 
+	.=..()
+
 /datum/execution_stage/divider_possess_start
 	duration = 5 SECONDS
 
 /datum/execution_stage/divider_possess/enter()
+	.=..()
 	playsound(host.user, 'sound/effects/creatures/necromorph/divider/divider_posession.ogg', VOLUME_LOUD, TRUE)
 	host.user.visible_message(SPAN_EXECUTION("[host.user] slips their tentacles down the gaping neck hole on [host.victim]'s twitching, headless corpse."))
 

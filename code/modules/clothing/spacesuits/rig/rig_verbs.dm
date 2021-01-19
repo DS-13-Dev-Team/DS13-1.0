@@ -39,7 +39,7 @@
 	else
 		visor.deactivate()
 
-/obj/item/weapon/rig/proc/toggle_helmet()
+/obj/item/weapon/rig/proc/toggle_helmet(var/mob/user, var/ignore_access = FALSE, var/duration = 0)
 
 	set name = "Toggle Helmet"
 	set desc = "Deploys or retracts your helmet."
@@ -50,10 +50,14 @@
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
-	if(!check_suit_access(usr))
+	if(!ignore_access && !check_suit_access(usr))
 		return
 
-	toggle_piece("helmet",wearer)
+	//If a duration is passed, we have a do-mob check, user and wearer need to stay still
+	if (duration && !do_after(user = user , target = wearer, delay = duration))
+		return
+
+	toggle_piece("helmet",user)
 
 /obj/item/weapon/rig/proc/toggle_chest()
 
