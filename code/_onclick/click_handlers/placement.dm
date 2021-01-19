@@ -171,9 +171,9 @@ GLOBAL_LIST_EMPTY(placement_previews)
 /datum/click_handler/placement/proc/set_preview_color(var/placeable = FALSE)
 	preview.alpha = 128
 	if (placeable)
-		preview.color = "#88cc88"
+		preview.color = "#88CC88"
 	else
-		preview.color = "#cc8888"
+		preview.color = "#CC8888"
 
 
 /datum/click_handler/placement/proc/update_pixel_offset()

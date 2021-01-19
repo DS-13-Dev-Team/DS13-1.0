@@ -378,8 +378,8 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 		parts -= picked
 
-	BITSET(hud_updateflag, HEALTH_HUD)
 	return heal_amount
+	BITSET(hud_updateflag, HEALTH_HUD)
 
 // damage MANY external organs, in random order
 /mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null, var/armortype ="melee" )
@@ -436,7 +436,6 @@ This function restores all organs.
 	return null
 
 /mob/living/carbon/human/get_organ(var/zone)
-	RETURN_TYPE(/obj/item/organ/external)
 	return organs_by_name[check_zone(zone)]
 
 

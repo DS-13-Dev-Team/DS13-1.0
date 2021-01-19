@@ -40,7 +40,7 @@
 	user.update_action_buttons()
 	user.update_floating()
 
-/obj/item/clothing/shoes/magboots/mob_can_equip(mob/user, var/slot, var/disable_warning = 0, var/force = 0)
+/obj/item/clothing/shoes/magboots/mob_can_equip(mob/user)
 	var/mob/living/carbon/human/H = user
 
 	if(H.shoes)

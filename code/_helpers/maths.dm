@@ -2,6 +2,7 @@
 #define RAND_F(LOW, HIGH) (rand()*(HIGH-LOW) + LOW)
 #define ceil(x) (-round(-(x)))
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
+#define NEAR_INFINITY	9999999999	//Just a really big number
 
 /**
 Mathematical function that allows us to scale numbers easily.

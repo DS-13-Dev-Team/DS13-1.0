@@ -107,7 +107,7 @@
 	command_announcement.Announce("The inter-ship communications subsystem has been re-enabled. Continuing on standard trajectory.","USG Ishimura Automated Announcement")
 	GLOB.shipsystem.comms_enabled = TRUE
 
-/obj/structure/ship_component/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/structure/ship_component/take_damage(amount)
 	if(health <= amount)
 		health = 5
 		operational = FALSE

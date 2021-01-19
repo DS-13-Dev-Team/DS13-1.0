@@ -52,7 +52,7 @@
 /datum/extension/gallop/proc/destroy()
 	if (!stopped_at)
 		stop()
-	return
+	.=..()
 
 
 

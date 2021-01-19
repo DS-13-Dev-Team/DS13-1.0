@@ -8,7 +8,7 @@
 	size = 8
 	requires_ntnet = 1
 	requires_ntnet_feature = NTNET_COMMUNICATION
-	network_destination = "NTNRC server"
+	network_destination = "NTNRC server" 
 	ui_header = "ntnrc_idle.gif"
 	available_on_ntnet = 1
 	nanomodule_path = /datum/nano_module/program/computer_chatclient/
@@ -124,7 +124,7 @@
 		if(!computer || !computer.hard_drive || !computer.hard_drive.store_file(logfile))
 			if(!computer)
 				// This program shouldn't even be runnable without computer.
-				crash_with("Var computer is null!")
+				CRASH("Var computer is null!")
 				return 1
 			if(!computer.hard_drive)
 				computer.visible_message("\The [computer] shows an \"I/O Error - Hard drive connection error\" warning.")

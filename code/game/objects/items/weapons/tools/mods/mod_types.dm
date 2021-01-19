@@ -86,7 +86,7 @@
 
 /obj/item/weapon/tool_modification/productivity/red_paint/apply_values()
 	if (..())
-		holder.color = "#ff4444"
+		holder.color = "#FF4444"
 
 /obj/item/weapon/tool_modification/productivity/whetstone
 	name = "sharpening block"
@@ -304,4 +304,4 @@
 /obj/item/weapon/tool_modification/augment/dampener/apply_values()
 	if (..())
 		holder.silenced = TRUE
-		holder.color = "#aaaaaa"
+		holder.color = "#AAAAAA"

@@ -16,7 +16,7 @@
 	proc/get_access_level()
 		if (!held_card)
 			return 0
-		else if((access_fl in held_card.access) || (access_captain in held_card.access))
+		else if(access_fl in held_card.access || access_captain in held_card.access)
 			return 1
 
 	proc/create_transation(target, reason, amount)

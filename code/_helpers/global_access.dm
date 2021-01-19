@@ -875,6 +875,8 @@
 			return global.telecomms_list;
 		if("tertiary_mode")
 			return global.tertiary_mode;
+		if("text_tag_icons")
+			return global.text_tag_icons;
 		if("tg_admin_state")
 			return global.tg_admin_state;
 		if("tg_always_state")
@@ -1858,6 +1860,8 @@
 			global.telecomms_list=newval;
 		if("tertiary_mode")
 			global.tertiary_mode=newval;
+		if("text_tag_icons")
+			global.text_tag_icons=newval;
 		if("tg_admin_state")
 			global.tg_admin_state=newval;
 		if("tg_always_state")
@@ -2406,6 +2410,7 @@
 	"tape_roll_applications",
 	"telecomms_list",
 	"tertiary_mode",
+	"text_tag_icons",
 	"tg_admin_state",
 	"tg_always_state",
 	"tg_conscious_state",

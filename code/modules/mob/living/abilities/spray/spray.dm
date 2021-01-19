@@ -43,7 +43,7 @@
 	var/fx_type = /obj/effect/particle_system/spray
 
 
-	var/particle_color = "#ffffff"
+	var/particle_color = "#FFFFFF"
 
 /*
 Vars/
@@ -87,7 +87,7 @@ Vars/
 	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/start), 0)
 
 /datum/extension/spray/proc/handle_extra_data(var/list/data)
-	return
+	.=..()
 
 /datum/extension/spray/proc/set_target_loc(var/vector2/newloc, var/target_object)
 	target = newloc
@@ -251,7 +251,7 @@ Vars/
 	icon_state = "spray"
 	scale_x_end = 2
 	scale_y_end = 4
-	color = "#ff0000"
+	color = "#FF0000"
 
 
 

@@ -57,7 +57,7 @@
 	check_armour = "bullet"
 	grippable = TRUE
 
-	Bump(atom/A as mob|obj|turf|area, forced=0)
+	Bump(atom/A as mob|obj|turf|area)
 		if(A == firer)
 			loc = A.loc
 			return

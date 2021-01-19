@@ -172,6 +172,7 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 
 //Causes the actual explosion logic at a target turf.
 /datum/extension/explosion/proc/explosion(turf/epicenter, radius, max_power=2)
+	. = ..()
 	explosion_FX(epicenter, radius)
 	for(var/dir in GLOB.alldirs)
 		new /datum/explosion_wave(epicenter, dir, radius, max_power)
@@ -180,6 +181,7 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 
 //Near instant "cheap" explosion that doesn't take into account things blocking it.
 /datum/extension/explosion/proc/simple_explosion(atom/movable/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, z_transfer, shaped)
+	. = ..()
 	for(var/turf/T in orange(devastation_range, epicenter)) //TODO: Account for the other ranges.
 		var/dist = get_dist(T, epicenter)
 		dist = (dist > 0) ? dist : 1

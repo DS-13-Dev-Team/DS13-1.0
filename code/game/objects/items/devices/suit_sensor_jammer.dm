@@ -143,16 +143,16 @@ obj/item/device/suit_sensor_jammer/ui_data()
 
 	return data
 
-/obj/item/device/suit_sensor_jammer/ui_act(action, params)
+obj/item/device/suit_sensor_jammer/ui_act(action, params)
 	if(..())
 		return TRUE
 	switch(action)
 		if("enable_jammer")
 			enable()
-			. = TRUE
+			. TRUE
 		if("disable_jammer")
 			disable()
-			. = FALSE
+			. FALSE
 		if("increase_range")
 			set_range(range + 1)
 			. = 1

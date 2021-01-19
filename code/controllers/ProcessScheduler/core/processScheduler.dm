@@ -3,37 +3,37 @@ var/global/datum/controller/processScheduler/processScheduler
 
 /datum/controller/processScheduler
 	// Processes known by the scheduler
-	var/tmp/list/datum/controller/process/processes = new
+	var/tmp/datum/controller/process/list/processes = new
 
 	// Processes that are currently running
-	var/tmp/list/datum/controller/process/running = new
+	var/tmp/datum/controller/process/list/running = new
 
 	// Processes that are idle
-	var/tmp/list/datum/controller/process/idle = new
+	var/tmp/datum/controller/process/list/idle = new
 
 	// Processes that are queued to run
-	var/tmp/list/datum/controller/process/queued = new
+	var/tmp/datum/controller/process/list/queued = new
 
 	// Process name -> process object map
-	var/tmp/list/datum/controller/process/nameToProcessMap = new
+	var/tmp/datum/controller/process/list/nameToProcessMap = new
 
 	// Process last queued times (world time)
-	var/tmp/list/datum/controller/process/last_queued = new
+	var/tmp/datum/controller/process/list/last_queued = new
 
 	// Process last start times (real time)
-	var/tmp/list/datum/controller/process/last_start = new
+	var/tmp/datum/controller/process/list/last_start = new
 
 	// Process last run durations
-	var/tmp/list/datum/controller/process/last_run_time = new
+	var/tmp/datum/controller/process/list/last_run_time = new
 
 	// Per process list of the last 20 durations
-	var/tmp/list/datum/controller/process/last_twenty_run_times = new
+	var/tmp/datum/controller/process/list/last_twenty_run_times = new
 
 	// Process highest run time
-	var/tmp/list/datum/controller/process/highest_run_time = new
+	var/tmp/datum/controller/process/list/highest_run_time = new
 
 	// Process total run time
-	var/tmp/list/datum/controller/process/total_run_time = new
+	var/tmp/datum/controller/process/list/total_run_time = new
 
 	// How long to sleep between runs (set to tick_lag in New)
 	var/tmp/scheduler_sleep_interval
@@ -368,8 +368,8 @@ var/global/datum/controller/processScheduler/processScheduler
 
 /datum/controller/processScheduler/proc/updateTimeAllowance()
 	// Time allowance goes down linearly with world.cpu.
-	var/error = cpuAverage - 100
-	var/timeAllowanceDelta = SIMPLE_SIGN(error) * -0.5 * world.tick_lag * max(0, 0.001 * abs(error))
+	var/tmp/error = cpuAverage - 100
+	var/tmp/timeAllowanceDelta = SIMPLE_SIGN(error) * -0.5 * world.tick_lag * max(0, 0.001 * abs(error))
 
 	//timeAllowance = world.tick_lag * min(1, 0.5 * ((200/max(1,cpuAverage)) - 1))
 	timeAllowance = min(timeAllowanceMax, max(0, timeAllowance + timeAllowanceDelta))

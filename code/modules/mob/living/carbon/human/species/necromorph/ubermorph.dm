@@ -277,7 +277,7 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 			//Find target organ should never fail, we won't bother checking
 			targetstring = "[H]'s [found_organ]"
 
-			playsound(charge, 'sound/weapons/slice.ogg', VOLUME_MAX, 1)
+			playsound(charge., 'sound/weapons/slice.ogg', VOLUME_MAX, 1)
 			//Handle the external damage
 			ubermorph.launch_strike(L, 30, ubermorph, damage_flags = DAM_SHARP, armor_penetration = 30)//Huge armor penetration to punch through resistance
 

@@ -87,7 +87,7 @@ obj/item/weapon/paper/admin/proc/updateDisplay()
 		if(!t)
 			return
 
-		var/last_fields_value = fields
+		var last_fields_value = fields
 
 		//t = html_encode(t)
 		t = replacetext(t, "\n", "<BR>")

@@ -64,7 +64,7 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/spline/fancy/wood
 	name = "spline - wood"
-	color = "#cb9e04"
+	color = "#CB9E04"
 
 /obj/effect/floor_decal/spline/fancy/wood/corner
 	icon_state = "spline_fancy_corner"
@@ -114,7 +114,7 @@ var/list/floor_decals = list()
 	icon_state = "delivery"
 
 /obj/effect/floor_decal/industrial/hatch/yellow
-	color = "#cfcf55"
+	color = "#CFCF55"
 
 /obj/effect/floor_decal/industrial/outline
 	name = "white outline"
@@ -122,11 +122,11 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/industrial/outline/blue
 	name = "blue outline"
-	color = "#00b8b2"
+	color = "#00B8B2"
 
 /obj/effect/floor_decal/industrial/outline/yellow
 	name = "yellow outline"
-	color = "#cfcf55"
+	color = "#CFCF55"
 
 /obj/effect/floor_decal/industrial/outline/grey
 	name = "grey outline"

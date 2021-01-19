@@ -142,7 +142,7 @@
 
 	var/permitted = 0
 	if(allowed_branches)
-		if(H.char_branch && (H.char_branch.type in allowed_branches))
+		if(H.char_branch && H.char_branch.type in allowed_branches)
 			permitted = 1
 	else
 		permitted = 1

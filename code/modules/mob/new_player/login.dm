@@ -42,7 +42,7 @@
 
 
 /obj/effect/lobby_image/proc/fade_in()
-	animate(src, color = "#ffffff", time = fade_time)
+	animate(src, color = "#FFFFFF", time = fade_time)
 
 
 /mob/new_player/Login()

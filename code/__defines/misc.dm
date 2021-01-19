@@ -99,6 +99,7 @@
 #define WALL_OPENING 2
 
 #define DEFAULT_TABLE_MATERIAL "plastic"
+#define MATERIAL_STEEL "steel"
 
 #define SHARD_SHARD "shard"
 #define SHARD_SHRAPNEL "shrapnel"
@@ -188,6 +189,7 @@
 #define CELLS 8								//Amount of cells per row/column in grid
 #define CELLSIZE (world.icon_size/CELLS)	//Size of a cell in pixels
 
+#define WORLD_ICON_SIZE 32
 #define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
 
 #define DEFAULT_SPAWNPOINT_ID "Default"

@@ -81,6 +81,8 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 /turf/proc/can_enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)
 
+	..()
+
 	if (!mover || !isturf(mover.loc) || isobserver(mover))
 		return FALSE
 
