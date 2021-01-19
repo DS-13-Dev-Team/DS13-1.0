@@ -11,7 +11,7 @@
 
 /datum/biomass_source/New(var/datum/_source = null, var/datum/_target = null, var/total_mass = 0, var/duration = 1 SECOND)
 	.=..()
-	source = "\ref[_source]"
+	source = "\ref[_source]" //I have no idea what's going on with this, but I'm too scared to change it. Please review this change if you know why it was implemented this way.
 	if (istype(_source, /atom))
 		var/atom/A = _source
 		sourcename = A.name
