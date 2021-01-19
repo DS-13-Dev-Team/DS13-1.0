@@ -145,7 +145,7 @@
 				return
 			loaded = thing
 		else if(load_sheet_max > 1)
-			var ammo_count = 0
+			var/ammo_count = 0
 			var/obj/item/stack/loaded_ammo = loaded
 			if(!istype(loaded_ammo))
 				ammo_count = min(load_sheet_max,ammo.amount)

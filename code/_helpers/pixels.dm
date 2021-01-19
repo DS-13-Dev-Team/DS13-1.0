@@ -5,10 +5,10 @@
 			"[tile_x]:[step_x],[tile_y]:[step_y]"
 		given by the "params" argument of the mouse events.
 	*/
-	var global/regex/ScreenLocRegex = regex("(\\d+):(\\d+),(\\d+):(\\d+)")
+	var/global/regex/ScreenLocRegex = regex("(\\d+):(\\d+),(\\d+):(\\d+)")
 	var/vector2/position = get_new_vector(0,0)
 	if(ScreenLocRegex.Find(screen_loc))
-		var list/data = ScreenLocRegex.group
+		var/list/data = ScreenLocRegex.group
 		//position.x = text2num(data[2]) + (text2num(data[1])) * world.icon_size
 		//position.y = text2num(data[4]) + (text2num(data[3])) * world.icon_size
 

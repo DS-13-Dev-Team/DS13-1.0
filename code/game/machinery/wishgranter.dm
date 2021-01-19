@@ -38,8 +38,8 @@
 		if (!(HULK in user.mutations))
 			user.mutations.Add(HULK)
 
-		if (!(LASER in user.mutations))
-			user.mutations.Add(LASER)
+		if (!(LASEREYES in user.mutations))
+			user.mutations.Add(LASEREYES)
 
 		if (!(XRAY in user.mutations))
 			user.mutations.Add(XRAY)

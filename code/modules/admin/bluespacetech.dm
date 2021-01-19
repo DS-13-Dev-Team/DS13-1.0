@@ -418,5 +418,4 @@
 	set name = "Blur"
 	set category = "BST"
 
-	var/newfilter = filter(type="blur", rand_between(1,6))
-	A.filters += newfilter
+	A.filters += filter(type = "blur", size = rand_between(1,6))

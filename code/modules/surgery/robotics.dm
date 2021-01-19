@@ -294,23 +294,12 @@
 		var/limb_can_operate = ((affected.hatch_state == HATCH_OPENED) && ((affected.status & ORGAN_DISFIGURED) || affected.burn_dam > 0) && target_zone != BP_MOUTH)
 		if(limb_can_operate)
 			if(istype(C))
-				if(!C.get_amount() >= 3)
+				if(!C.can_use(3))
 					to_chat(user, "<span class='danger'>You need three or more cable pieces to repair this damage.</span>")
 					return SURGERY_FAILURE
 				C.use(3)
 				return 1
 		return SURGERY_FAILURE
-
-		if(!limb_can_operate)
-			return 0
-
-		if(istype(C))
-			if(!C.can_use(10))
-				to_chat(user, "<span class='danger'>You need ten or more cable pieces to repair this damage.</span>")//usage amount made more consistent with regular cable repair
-
-				return SURGERY_FAILURE
-			C.use(10)
-		return 1
 
 /datum/surgery_step/robotics/repair_burn/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)

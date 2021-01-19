@@ -60,7 +60,7 @@
 	scale_x_end = 	1.5
 	scale_y_end = 	1.5
 	alpha_end	=	255
-	color = "#FFFFFF"
+	color = "#ffffff"
 	lifespan	=	1.7 SECOND
 
 
@@ -87,7 +87,7 @@
 	scale_x_end = 	1.6
 	scale_y_end = 	1.6
 	alpha_end	=	255
-	color = "#FFFFFF"
+	color = "#ffffff"
 	lifespan	=	1.4 SECOND
 
 

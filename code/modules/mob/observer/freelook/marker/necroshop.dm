@@ -405,7 +405,7 @@
 		var/list/params = list()
 		params["name"] = name
 		params["origin"] = caller.selected_spawn.spawnpoint	//Where are we spawning from? This may be useful for visual effects
-		var/list/turfs = params["origin"].clear_turfs_in_view(10)
+		var/list/turfs = caller.selected_spawn.spawnpoint.clear_turfs_in_view(10)
 		if (!turfs.len)
 			return //Failed?
 

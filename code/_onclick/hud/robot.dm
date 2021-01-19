@@ -7,6 +7,7 @@ var/obj/screen/robot_inventory
 
 	src.adding = list()
 	src.other = list()
+	var/mob/living/silicon/robot/mybot
 
 	var/obj/screen/using
 
@@ -28,7 +29,7 @@ var/obj/screen/robot_inventory
 	using.icon_state = "inv1"
 	using.screen_loc = ui_inv1
 	src.adding += using
-	mymob:inv1 = using
+	mybot.inv1 = using
 
 	using = new /obj/screen()
 	using.SetName("module2")
@@ -37,7 +38,7 @@ var/obj/screen/robot_inventory
 	using.icon_state = "inv2"
 	using.screen_loc = ui_inv2
 	src.adding += using
-	mymob:inv2 = using
+	mybot.inv2 = using
 
 	using = new /obj/screen()
 	using.SetName("module3")
@@ -46,7 +47,7 @@ var/obj/screen/robot_inventory
 	using.icon_state = "inv3"
 	using.screen_loc = ui_inv3
 	src.adding += using
-	mymob:inv3 = using
+	mybot.inv3 = using
 
 //End of module select
 
@@ -61,11 +62,11 @@ var/obj/screen/robot_inventory
 	action_intent = using
 
 //Cell
-	mymob:cells = new /obj/screen()
-	mymob:cells.icon = 'icons/mob/screen1_robot.dmi'
-	mymob:cells.icon_state = "charge-empty"
-	mymob:cells.SetName("cell")
-	mymob:cells.screen_loc = ui_toxin
+	mybot.cells = new /obj/screen()
+	mybot.cells.icon = 'icons/mob/screen1_robot.dmi'
+	mybot.cells.icon_state = "charge-empty"
+	mybot.cells.SetName("cell")
+	mybot.cells.screen_loc = ui_toxin
 
 //Health
 	mymob.healths = new /obj/screen()
@@ -140,7 +141,7 @@ var/obj/screen/robot_inventory
 	mymob.radio_use_icon = new /obj/screen/gun/radio(null)
 
 	mymob.client.screen = list()
-	mymob.client.screen += list(mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, mymob:cells, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
+	mymob.client.screen += list(mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, mybot.cells, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
 	mymob.client.screen += src.adding + src.other
 
 /datum/hud/proc/toggle_show_robot_modules()

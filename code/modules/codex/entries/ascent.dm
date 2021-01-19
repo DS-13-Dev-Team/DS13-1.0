@@ -4,7 +4,7 @@
 	associated_paths = list(
 		/mob/living/silicon/robot/flying/ascent,
 		/obj/item/device/multitool/mantid,
-		/obj/item/weapon/weldingtool/electric/mantid,
+		/obj/item/weapon/tool/weldingtool/electric/mantid,
 		/obj/item/weapon/cell/mantid,
 		/obj/item/weapon/gun/energy/particle,
 		/obj/item/weapon/gun/energy/particle/small
