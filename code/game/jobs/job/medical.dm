@@ -40,7 +40,7 @@ datum/job/smo/get_description_blurb()
 	minimal_player_age = 18
 	starting_credits = 3500
 
-	access = list(access_medical, access_chemistry)
+	access = list(access_medical, access_chemistry, access_research)
 	outfit_type = /decl/hierarchy/outfit/job/medical/md
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
