@@ -2584,6 +2584,7 @@
 	},
 /obj/random/loot/sometimes/few,
 /obj/random/rare_loot/rarely,
+/obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "afP" = (
@@ -3571,7 +3572,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/dank,
 /area/ishimura/lower/misc/storagesmall)
 "ahA" = (
 /obj/structure/table/rack,
@@ -4038,12 +4039,6 @@
 /turf/simulated/floor/tiled,
 /area/ishimura/lower/security/checkpoint/crew)
 "ait" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/effect/catwalk_plated,
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4052,6 +4047,17 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/lower/misc/hallway/central)
@@ -4506,6 +4512,11 @@
 	dir = 1
 	},
 /obj/effect/catwalk_plated,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/lower/misc/storagesmall)
 "ajk" = (
@@ -4635,10 +4646,16 @@
 /area/ishimura/lower/mining/briefing)
 "ajy" = (
 /obj/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/effect/catwalk_plated,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/lower/misc/storagesmall)
 "ajz" = (
@@ -4660,8 +4677,7 @@
 /area/ishimura/lower/security/checkpoint/crew)
 "ajA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/lower/mining/locker_room)
 "ajB" = (
 /obj/structure/table/standard,
@@ -4695,6 +4711,7 @@
 	},
 /obj/random/loot/sometimes/few,
 /obj/random/rare_loot/rarely,
+/obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "ajD" = (
@@ -4707,25 +4724,27 @@
 	dir = 8
 	},
 /obj/random/loot/sometimes/few,
+/obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "ajE" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
 /obj/structure/table/rack{
 	dir = 8
 	},
 /obj/random/loot/sometimes/few,
+/obj/item/device/radio/intercom{
+	dir = 4;
+	pixel_x = -21
+	},
+/obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "ajF" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/largecrate,
 /obj/random/rare_loot/usually,
+/obj/random/loot/usually/some,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "ajG" = (
@@ -8668,13 +8687,9 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/crew/sleepblock/executive/quarters/captain)
 "ard" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/catwalk_plated,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/lower/mining/locker_room)
 "are" = (
 /obj/structure/bed,
@@ -28257,35 +28272,49 @@
 /area/ishimura/lower/mining/processing_room)
 "bjI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/catwalk_plated,
-/obj/machinery/door/airlock/mining{
-	name = "Locker Room"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/plating,
+/turf/simulated/wall/r_wall,
 /area/ishimura/lower/misc/storagesmall)
 "bPq" = (
 /obj/random/tool,
 /obj/structure/table/standard,
 /obj/random/tool,
 /obj/random/tool/low_chance,
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/dank,
 /area/ishimura/lower/misc/storagesmall)
 "bPJ" = (
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/dank,
+/area/ishimura/lower/misc/storagesmall)
+"bYC" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/ishimura/lower/misc/hallway/central)
+"cLV" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/random/loot/sometimes/few,
+/obj/random/rare_loot/rarely,
+/obj/structure/table/standard,
+/obj/random/tool,
+/turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "dtb" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/largecrate,
 /obj/random/loot/often/many,
+/obj/random/loot/usually/some,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "fso" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack{
-	dir = 8
-	},
 /obj/random/loot/sometimes/few,
+/obj/structure/table/standard,
+/obj/random/tool,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "gqI" = (
@@ -28293,9 +28322,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/lower/misc/storagesmall)
@@ -28311,6 +28339,7 @@
 	dir = 8
 	},
 /obj/random/loot/sometimes/few,
+/obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "iDn" = (
@@ -28318,13 +28347,27 @@
 /obj/effect/catwalk_plated,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/misc/storagesmall)
+"iKW" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/dank,
+/area/ishimura/lower/misc/storagesmall)
 "jlG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/catwalk_plated,
-/obj/machinery/door/airlock/mining{
-	name = "Locker Room"
+/turf/simulated/wall/r_wall,
+/area/ishimura/lower/misc/storagesmall)
+"juV" = (
+/obj/machinery/light{
+	dir = 1
 	},
-/turf/simulated/floor/plating,
+/obj/structure/table/standard,
+/obj/random/tool,
+/turf/simulated/floor/dank,
 /area/ishimura/lower/misc/storagesmall)
 "los" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -28342,18 +28385,25 @@
 	dir = 8
 	},
 /obj/random/toolbox,
+/obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "nsT" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/device/radio/intercom{
-	dir = 4;
-	pixel_x = -21
-	},
 /obj/structure/table/rack{
 	dir = 8
 	},
 /obj/random/loot/sometimes/few,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "nQg" = (
@@ -28361,7 +28411,18 @@
 	dir = 8;
 	icon_state = "map_vent_out"
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/dank,
+/area/ishimura/lower/misc/storagesmall)
+"ojP" = (
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
 /area/ishimura/lower/misc/storagesmall)
 "oqL" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -28375,7 +28436,7 @@
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/dank,
 /area/ishimura/lower/misc/storagesmall)
 "pjt" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -28386,14 +28447,26 @@
 /obj/machinery/door/airlock/civilian{
 	name = "Small Storage Room"
 	},
-/turf/simulated/wall/r_wall,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/lower/misc/storagesmall)
 "tfL" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4;
 	icon_state = "map_scrubber_on"
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank,
 /area/ishimura/lower/misc/storagesmall)
 "tpl" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -28413,6 +28486,7 @@
 	dir = 8
 	},
 /obj/random/loot/sometimes/few,
+/obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "wHH" = (
@@ -28441,6 +28515,7 @@
 	dir = 8
 	},
 /obj/random/loot/sometimes/few,
+/obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 
@@ -50927,9 +51002,9 @@ adS
 adX
 adX
 ait
-adX
+bYC
 rZW
-bPJ
+iKW
 ajy
 ajC
 uDR
@@ -51132,7 +51207,7 @@ amq
 bbB
 gHS
 pgB
-ajy
+ojP
 ajD
 ajD
 ajD
@@ -51535,7 +51610,7 @@ adX
 agL
 adX
 gHS
-ahz
+juV
 nQg
 bPJ
 bPJ
@@ -51738,7 +51813,7 @@ agL
 adX
 gHS
 fso
-afO
+cLV
 pjt
 dtb
 ajF
