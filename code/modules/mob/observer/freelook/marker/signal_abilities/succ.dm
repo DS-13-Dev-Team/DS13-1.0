@@ -1,3 +1,7 @@
+/**
+Blank extension used to mark an object as being biomass absorbed.
+*/
+/datum/extension/biomass_being_absorbed
 /datum/signal_ability/succ
 	name = "Absorb"
 	id = "succ"
@@ -13,7 +17,7 @@
 /datum/signal_ability/proc/take_biomass(mob/user, atom/target, obj/O, obj/machinery/marker/M)
 	set waitfor = FALSE //Animation proc, don't hold up the thread.
 	var/biomass_gain = O.get_biomass()
-	O.obj_flags |= OBJ_FLAG_BEING_ABSORBED //Quick bitflag set to flag this thing as being absorbed.
+	set_extension(O, /datum/extension/biomass_being_absorbed)
 	O.layer = EYE_GLOW_LAYER
 	O.plane = EFFECTS_ABOVE_LIGHTING_PLANE
 	O.filters += filter(type="outline", size=1, color=COLOR_NECRO_YELLOW)
@@ -23,6 +27,7 @@
 	sleep(0.4 SECONDS)
 	M.biomass += biomass_gain
 	to_chat(user, SPAN_NOTICE("Gained [biomass_gain]kg biomass from absorbing [O]!"))
+	remove_extension(O, /datum/extension/biomass_being_absorbed)
 	qdel(O)
 
 /datum/signal_ability/succ/on_cast(var/mob/user, var/atom/target, var/list/data)
@@ -40,7 +45,7 @@
 			continue
 		for (var/obj/O in T)
 			var/biomass_gain = O.get_biomass()
-			if (O.obj_flags & OBJ_FLAG_BEING_ABSORBED || !isnum(biomass_gain) || biomass_gain <= 0)
+			if (get_extension(O, /datum/extension/biomass_being_absorbed) || !isnum(biomass_gain) || biomass_gain <= 0)
 				continue
 			total_gain += biomass_gain
 			total_objects ++
