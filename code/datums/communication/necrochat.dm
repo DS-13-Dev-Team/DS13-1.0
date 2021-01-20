@@ -52,15 +52,20 @@
 
 	for (var/ckey in SSnecromorph.necromorph_players)
 		var/datum/player/P = SSnecromorph.necromorph_players[ckey]
-		if (P)
-			var/client/target = P.get_client()
-			if (target)
-				receive_communication(A, target, message)
-				messaged += target
-		else
+		if (!P)
 			//Shouldn't happen
 			log_debug("Found invalid necromorph player key with no associated player datum [ckey]")
 			SSnecromorph.necromorph_players -= ckey
+			continue
+		var/client/target = P.get_client()
+		if (!target)
+			continue
+		if (!P.is_necromorph() || !target.mob?.is_necromorph())
+			log_debug("Found non-necromorph [ckey] (as [target.mob]) in necromorphs player list, please gather more info from them!")
+			SSnecromorph.necromorph_players -= ckey
+			continue
+		receive_communication(A, target, message)
+		messaged += target
 
 	var/list/valid_admins = GLOB.admins - messaged
 	for(var/client/target in valid_admins)
