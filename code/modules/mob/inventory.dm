@@ -335,4 +335,26 @@ var/list/slot_equipment_priority = list( \
 		if(I.body_parts_covered & body_parts)
 			. += I
 
-/mob/proc/delete_worn_item(var/obj/item/I)
+///mob/proc/delete_worn_item(var/obj/item/I)
+
+
+
+
+/*
+	Get Contents
+*/
+/atom/proc/get_contents()
+	var/list/things = list()
+	things += contents
+	for (var/obj/item/I as anything in things)
+		things += I.get_contents()
+	return things
+
+
+//Gets everything this mob is carrying or wearing. Does not include internal organs
+/mob/proc/get_inventory()
+	var/list/inventory = get_equipped_items(TRUE)
+	for (var/obj/item/I as anything in inventory)
+		inventory += I.get_contents()
+
+	return inventory

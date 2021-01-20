@@ -10,6 +10,8 @@
 		custom_lawset.add_inherent_law(law)
 	return custom_lawset
 
+	return gear_list[gear_slot]
+
 /datum/category_item/player_setup_item/law_pref
 	name = "Laws"
 	sort_order = 1
@@ -83,10 +85,9 @@
 		if(chosen_lawset)
 			var/path = valid_lawsets[chosen_lawset]
 			var/datum/ai_laws/lawset = new path()
-			var/list/datum/ai_law/laws = lawset.all_laws()
+			var/datum/ai_law/list/laws = lawset.all_laws()
 			pref.laws.Cut()
-			for(var/law in laws)
-				var/datum/ai_law/L = law
-				pref.laws += sanitize_text("[L.law]", default="")
+			for(var/datum/ai_law/law in laws)
+				pref.laws += sanitize_text("[law.law]", default="")
 		return TOPIC_REFRESH
 	return ..()

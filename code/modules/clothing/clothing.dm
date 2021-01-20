@@ -284,7 +284,9 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
 	if(item_state_slots && item_state_slots[slot])
 		return item_state_slots[slot]
-	return icon_state
+	else
+		return icon_state
+	return ..()
 
 /obj/item/clothing/glasses/update_clothing_icon()
 	if (ismob(src.loc))
@@ -362,7 +364,7 @@ BLIND     // can't see anything
 		species_restricted -= SPECIES_UNATHI
 	return
 
-/obj/item/clothing/gloves/mob_can_equip(mob/user, var/slot, var/disable_warning = 0, var/force = 0)
+/obj/item/clothing/gloves/mob_can_equip(mob/user)
 	var/mob/living/carbon/human/H = user
 
 	if(istype(H.gloves, /obj/item/clothing/ring))
@@ -910,6 +912,7 @@ BLIND     // can't see anything
 	set category = "Object"
 	set src in usr
 	set_sensors(usr)
+	..()
 
 /obj/item/clothing/under/verb/rollsuit()
 	set name = "Roll Down Jumpsuit"

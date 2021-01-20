@@ -73,7 +73,7 @@
 	//These flags are also set in the body_part var of external organs.
 	//This bitfield collates the bitflags of all the limbs that we don't have, it
 	var/missing_limbs = 0
-	var/limb_mask
+	var/dm_filter/limb_mask
 
 	var/xylophone = 0 //For the spoooooooky xylophone cooldown
 

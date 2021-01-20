@@ -32,7 +32,7 @@
 	//Now setting the name and desc
 	desc = "Apply "
 	for (var/i = 1; i <= valid_types.len;i++)
-		var/obj/I = valid_types[i]
+		var/var/obj/I = valid_types[i]
 		var/name = initial(I.name)
 		if (i == 1)
 			desc += name
@@ -194,7 +194,7 @@
 
 
 	//Now setting the name and desc
-	var/obj/item/stack/I = required_type
+	var/var/obj/item/stack/I = required_type
 	var/name = (required_quantity > 1?initial(I.name):initial(I.singular_name))
 
 	if (required_quantity == 1)

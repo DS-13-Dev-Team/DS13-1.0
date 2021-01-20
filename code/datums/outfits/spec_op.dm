@@ -282,7 +282,7 @@
 /decl/hierarchy/outfit/syndicate_command
 	name = "Spec Ops - Syndicate commando"
 
-/decl/hierarchy/outfit/syndicate_command/equip(var/mob/living/carbon/human/H, var/equip_adjustments)
+/decl/hierarchy/outfit/syndicate_command/equip(var/mob/living/carbon/human/H)
 	GLOB.commandos.equip(H)
 	return 1
 

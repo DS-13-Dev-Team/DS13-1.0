@@ -400,7 +400,7 @@ var/global/floorIsLava = 0
 					if(CHANNEL.is_admin_channel)
 						dat+="<B><FONT style='BACKGROUND-COLOR: LightGreen'><A href='?src=\ref[src];ac_show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A></FONT></B><BR>"
 					else
-						dat+="<B><A href='?src=\ref[src];ac_show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : null]<BR></B>"
+						dat+="<B><A href='?src=\ref[src];ac_show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR></B>"
 			dat+={"<BR><HR><A href='?src=\ref[src];ac_refresh=1'>Refresh</A>
 				<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Back</A>
 			"}
@@ -484,7 +484,7 @@ var/global/floorIsLava = 0
 				dat+="<I>No feed channels found active...</I><BR>"
 			else
 				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
-					dat+="<A href='?src=\ref[src];ac_pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : null]<BR>"
+					dat+="<A href='?src=\ref[src];ac_pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
 			dat+="<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Cancel</A>"
 		if(11)
 			dat+={"
@@ -497,7 +497,7 @@ var/global/floorIsLava = 0
 				dat+="<I>No feed channels found active...</I><BR>"
 			else
 				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
-					dat+="<A href='?src=\ref[src];ac_pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : null]<BR>"
+					dat+="<A href='?src=\ref[src];ac_pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
 
 			dat+="<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Back</A>"
 		if(12)
@@ -669,29 +669,6 @@ var/global/floorIsLava = 0
 //i.e. buttons/verbs
 
 
-/datum/admins/proc/restart()
-	set category = "Server"
-	set name = "Restart"
-	set desc="Restarts the world"
-	if (!usr.client.holder)
-		return
-	var/confirm = alert("Restart the game world?", "Restart", "Yes", "Cancel")
-	if(confirm == "Cancel")
-		return
-	if(confirm == "Yes")
-		to_world("<span class='danger'>Restarting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
-		log_admin("[key_name(usr)] initiated a reboot.")
-
-		feedback_set_details("end_error","admin reboot - by [usr.key]")
-		feedback_add_details("admin_verb","R") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
-
-		sleep(50)
-		world.Reboot()
-
-
 /datum/admins/proc/announce()
 	set category = "Special Verbs"
 	set name = "Announce"
@@ -705,264 +682,6 @@ var/global/floorIsLava = 0
 		to_world("<span class=notice><b>[usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggleooc()
-	set category = "Server"
-	set desc="Globally Toggles OOC"
-	set name="Toggle OOC"
-
-	if(!check_rights(R_ADMIN|R_REJUVINATE))
-		return
-
-	config.ooc_allowed = !(config.ooc_allowed)
-	if (config.ooc_allowed)
-		to_world("<B>The OOC channel has been globally enabled!</B>")
-	else
-		to_world("<B>The OOC channel has been globally disabled!</B>")
-	log_and_message_admins("toggled OOC.")
-	feedback_add_details("admin_verb","TOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggleaooc()
-	set category = "Server"
-	set desc="Globally Toggles AOOC"
-	set name="Toggle AOOC"
-
-	if(!check_rights(R_ADMIN|R_REJUVINATE))
-		return
-
-	config.aooc_allowed = !(config.aooc_allowed)
-	if (config.aooc_allowed)
-		to_world("<B>The AOOC channel has been globally enabled!</B>")
-	else
-		to_world("<B>The AOOC channel has been globally disabled!</B>")
-	log_and_message_admins("toggled AOOC.")
-	feedback_add_details("admin_verb","TAOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/togglelooc()
-	set category = "Server"
-	set desc="Globally Toggles LOOC"
-	set name="Toggle LOOC"
-
-	if(!check_rights(R_ADMIN|R_REJUVINATE))
-		return
-
-	config.looc_allowed = !(config.looc_allowed)
-	if (config.looc_allowed)
-		to_world("<B>The LOOC channel has been globally enabled!</B>")
-	else
-		to_world("<B>The LOOC channel has been globally disabled!</B>")
-	log_and_message_admins("toggled LOOC.")
-	feedback_add_details("admin_verb","TLOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-
-/datum/admins/proc/toggledsay()
-	set category = "Server"
-	set desc="Globally Toggles DSAY"
-	set name="Toggle DSAY"
-
-	if(!check_rights(R_ADMIN|R_REJUVINATE))
-		return
-
-	config.dsay_allowed = !(config.dsay_allowed)
-	if (config.dsay_allowed)
-		to_world("<B>Deadchat has been globally enabled!</B>")
-	else
-		to_world("<B>Deadchat has been globally disabled!</B>")
-	log_and_message_admins("toggled deadchat.")
-	feedback_add_details("admin_verb","TDSAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
-
-/datum/admins/proc/toggleoocdead()
-	set category = "Server"
-	set desc="Toggle Dead OOC."
-	set name="Toggle Dead OOC"
-
-	if(!check_rights(R_ADMIN|R_REJUVINATE))
-		return
-
-	config.dooc_allowed = !( config.dooc_allowed )
-	log_admin("[key_name(usr)] toggled Dead OOC.")
-	message_admins("[key_name_admin(usr)] toggled Dead OOC.", 1)
-	feedback_add_details("admin_verb","TDOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/togglehubvisibility()
-	set category = "Server"
-	set desc="Globally Toggles Hub Visibility"
-	set name="Toggle Hub Visibility"
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	//BYOND hates actually changing world.visibility at runtime, so let's just change if we give it the hub password.
-	world.update_hub_visibility() //proc defined in hub.dm
-	var/long_message = "toggled hub visibility. The server is now [GLOB.visibility_pref ? "visible" : "invisible"] ([GLOB.visibility_pref])."
-	if (GLOB.visibility_pref && !world.reachable)
-		message_admins("WARNING: The server will not show up on the hub because byond is detecting that a firewall is blocking incoming connections.")
-
-	send2adminirc("[key_name(src)]" + long_message)
-	log_and_message_admins(long_message)
-	feedback_add_details("admin_verb","THUB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
-
-/datum/admins/proc/toggletraitorscaling()
-	set category = "Server"
-	set desc="Toggle traitor scaling"
-	set name="Toggle Traitor Scaling"
-	config.traitor_scaling = !config.traitor_scaling
-	log_admin("[key_name(usr)] toggled Traitor Scaling to [config.traitor_scaling].")
-	message_admins("[key_name_admin(usr)] toggled Traitor Scaling [config.traitor_scaling ? "on" : "off"].", 1)
-	feedback_add_details("admin_verb","TTS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/startnow()
-	set category = "Server"
-	set desc="Start the round RIGHT NOW"
-	set name="Start Now"
-	if(!ticker)
-		alert("Unable to start the game as it is not set up.")
-		return
-	if(ticker.current_state == GAME_STATE_PREGAME && !(initialization_stage & INITIALIZATION_NOW))
-		log_admin("[usr.key] has started the game.")
-		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
-		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		initialization_stage |= INITIALIZATION_NOW
-		return 1
-	else
-		to_chat(usr, "<span class='warning'>Error: Start Now: Game has already started.</span>")
-		return 0
-
-/datum/admins/proc/toggleenter()
-	set category = "Server"
-	set desc="People can't enter"
-	set name="Toggle Entering"
-	config.enter_allowed = !(config.enter_allowed)
-	if (!(config.enter_allowed))
-		to_world("<B>New players may no longer enter the game.</B>")
-	else
-		to_world("<B>New players may now enter the game.</B>")
-	log_and_message_admins("[key_name_admin(usr)] toggled new player game entering.")
-	world.update_status()
-	feedback_add_details("admin_verb","TE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggleAI()
-	set category = "Server"
-	set desc="People can't be AI"
-	set name="Toggle AI"
-	config.allow_ai = !( config.allow_ai )
-	if (!( config.allow_ai ))
-		to_world("<B>The AI job is no longer chooseable.</B>")
-	else
-		to_world("<B>The AI job is chooseable now.</B>")
-	log_admin("[key_name(usr)] toggled AI allowed.")
-	world.update_status()
-	feedback_add_details("admin_verb","TAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggleaban()
-	set category = "Server"
-	set desc="Respawn basically"
-	set name="Toggle Respawn"
-	config.abandon_allowed = !(config.abandon_allowed)
-	if(config.abandon_allowed)
-		to_world("<B>You may now respawn.</B>")
-	else
-		to_world("<B>You may no longer respawn :(</B>")
-	log_and_message_admins("toggled respawn to [config.abandon_allowed ? "On" : "Off"].")
-	world.update_status()
-	feedback_add_details("admin_verb","TR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggle_aliens()
-	set category = "Server"
-	set desc="Toggle alien mobs"
-	set name="Toggle Aliens"
-	if(!check_rights(R_ADMIN))
-		return
-
-	config.aliens_allowed = !config.aliens_allowed
-	log_admin("[key_name(usr)] toggled Aliens to [config.aliens_allowed].")
-	message_admins("[key_name_admin(usr)] toggled Aliens [config.aliens_allowed ? "on" : "off"].", 1)
-	feedback_add_details("admin_verb","TA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggle_alien_eggs()
-	set category = "Server"
-	set desc="Toggle xenomorph egg laying"
-	set name="Toggle Alien Eggs"
-
-	if(!check_rights(R_ADMIN))
-		return
-	config.alien_eggs_allowed = !config.alien_eggs_allowed
-	log_admin("[key_name(usr)] toggled Alien Egg Laying to [config.alien_eggs_allowed].")
-	message_admins("[key_name_admin(usr)] toggled Alien Egg Laying [config.alien_eggs_allowed ? "on" : "off"].", 1)
-	feedback_add_details("admin_verb","AEA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-
-/datum/admins/proc/toggle_space_ninja()
-	set category = "Server"
-	set desc="Toggle space ninjas spawning."
-	set name="Toggle Space Ninjas"
-	if(!check_rights(R_ADMIN))
-		return
-
-	config.ninjas_allowed = !config.ninjas_allowed
-	log_and_message_admins("toggled Space Ninjas [config.ninjas_allowed ? "on" : "off"].")
-	feedback_add_details("admin_verb","TSN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/delay()
-	set category = "Server"
-	set desc="Delay the game start/end"
-	set name="Delay"
-
-	if(!check_rights(R_SERVER|R_REJUVINATE))	return
-	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
-		ticker.delay_end = !ticker.delay_end
-		log_and_message_admins("[ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
-		return //alert("Round end delayed", null, null, null, null, null)
-	round_progressing = !round_progressing
-	if (!round_progressing)
-		to_world("<b>The game start has been delayed.</b>")
-		log_admin("[key_name(usr)] delayed the game.")
-	else
-		to_world("<b>The game will start soon.</b>")
-		log_admin("[key_name(usr)] removed the delay.")
-	feedback_add_details("admin_verb","DELAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/adjump()
-	set category = "Server"
-	set desc="Toggle admin jumping"
-	set name="Toggle Jump"
-	config.allow_admin_jump = !(config.allow_admin_jump)
-	log_and_message_admins("Toggled admin jumping to [config.allow_admin_jump].")
-	feedback_add_details("admin_verb","TJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/adspawn()
-	set category = "Server"
-	set desc="Toggle admin spawning"
-	set name="Toggle Spawn"
-	config.allow_admin_spawning = !(config.allow_admin_spawning)
-	log_and_message_admins("toggled admin item spawning to [config.allow_admin_spawning].")
-	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/adrev()
-	set category = "Server"
-	set desc="Toggle admin revives"
-	set name="Toggle Revive"
-	config.allow_admin_rev = !(config.allow_admin_rev)
-	log_and_message_admins("toggled reviving to [config.allow_admin_rev].")
-	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/immreboot()
-	set category = "Server"
-	set desc="Reboots the server post haste"
-	set name="Immediate Reboot"
-	if(!usr.client.holder)	return
-	if( alert("Reboot server?",,"Yes","No") == "No")
-		return
-	to_world("<span class='danger'>Rebooting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
-	log_admin("[key_name(usr)] initiated an immediate reboot.")
-
-	feedback_set_details("end_error","immediate admin reboot - by [usr.key]")
-	feedback_add_details("admin_verb","IR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-	if(blackbox)
-		blackbox.save_all_data_to_sql()
-
-	world.Reboot()
 
 /datum/admins/proc/unprison(var/mob/M in SSmobs.mob_list)
 	set category = "Admin"
@@ -1180,7 +899,7 @@ var/global/floorIsLava = 0
 		out += "<b>Autotraitor <a href='?src=\ref[ticker.mode];toggle=autotraitor'>disabled</a></b>.<br/>"
 
 	out += "<b>All antag ids:</b>"
-	if(ticker.mode.antag_templates && ticker.mode.antag_templates.len)
+	if(ticker.mode.antag_templates && ticker.mode.antag_templates.len).
 		for(var/datum/antagonist/antag in ticker.mode.antag_templates)
 			antag.update_current_antag_max()
 			out += " <a href='?src=\ref[ticker.mode];debug_antag=[antag.id]'>[antag.id]</a>"
@@ -1205,19 +924,6 @@ var/global/floorIsLava = 0
 		to_world("<B>Reduced welder vision has been disabled!</B>")
 	log_and_message_admins("toggled welder vision.")
 	feedback_add_details("admin_verb","TTWH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggleguests()
-	set category = "Server"
-	set desc="Guests can't enter"
-	set name="Toggle guests"
-	config.guests_allowed = !(config.guests_allowed)
-	if (!(config.guests_allowed))
-		to_world("<B>Guests may no longer enter the game.</B>")
-	else
-		to_world("<B>Guests may now enter the game.</B>")
-	log_admin("[key_name(usr)] toggled guests game entering [config.guests_allowed?"":"dis"]allowed.")
-	log_and_message_admins("toggled guests game entering [config.guests_allowed?"":"dis"]allowed.")
-	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/output_ai_laws()
 	var/ai_number = 0
@@ -1310,15 +1016,15 @@ var/global/floorIsLava = 0
 
 		if(2)	//Admins
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M)]) (<A HREF='?_src_=holder;check_antagonist=1'>CA</A>)</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M, src)]) (<A HREF='?_src_=holder;check_antagonist=1'>CA</A>)</b>"
 
 		if(3)	//Devs
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>)([admin_jump_link(M)])</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>)([admin_jump_link(M, src)])</b>"
 
 		if(4)	//Mentors
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M)])</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M, src)])</b>"
 
 /proc/ishost(var/client/C)
 	return check_rights(R_HOST, 0, C)
@@ -1469,8 +1175,7 @@ datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies
 		P.stamps += "<hr><i>This paper has been stamped by the [P.origin] Quantum Relay.</i>"
 
 		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-		var/x
-		var/y
+		var/{x; y;}
 		x = rand(-2, 0)
 		y = rand(-1, 2)
 		P.offset_x += x

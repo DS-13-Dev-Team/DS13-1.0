@@ -549,7 +549,7 @@
 /obj/structure/window/reinforced/crescent/hitby()
 	return
 
-/obj/structure/window/reinforced/crescent/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/structure/window/reinforced/crescent/take_damage()
 	return
 
 /obj/structure/window/reinforced/crescent/shatter()

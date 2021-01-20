@@ -277,7 +277,7 @@
 /proc/get_harvestable_biomass_sources(var/atom/source, var/single_check = FALSE)
 	var/list/passive_sources = list()
 	var/list/active_sources = list()
-	for (var/atom/O in view(HARVESTER_HARVEST_RANGE, source))
+	for (var/atom/O in dview(HARVESTER_HARVEST_RANGE, source))
 		var/result = O.can_harvest_biomass()
 		if (result == MASS_FAIL)
 			continue

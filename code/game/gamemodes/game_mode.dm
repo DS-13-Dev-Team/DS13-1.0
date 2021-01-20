@@ -35,6 +35,9 @@ var/global/list/additional_antag_types = list()
 	var/event_delay_mod_moderate             // Modifies the timing of random events.
 	var/event_delay_mod_major                // As above.
 
+	var/round_finished
+	var/round_end_states = list()
+
 	var/waittime_l = 60 SECONDS				 // Lower bound on time before start of shift report
 	var/waittime_h = 180 SECONDS		     // Upper bounds on time before start of shift report
 
@@ -360,13 +363,14 @@ var/global/list/additional_antag_types = list()
 
 	var/text = ""
 	if(escaped_humans > 0 && escaped_humans < 4) // Between 1 and 3 players escaped, count as Necro Minor Victory.
+		round_finished = "Necromorph Minor"
 		text += "<br><h2><b><center><span class='danger'>Necromorph Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Necromorphs have slain a majority of the crew!</center>"
 		text += "<br><b><center>And so ends the struggle on [station_name()]...</center></b>"
 		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
 		sound_to(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 		if(escaped_necros > 0)
-			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : null], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
+			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
 			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
 				text += "<br><center><h3>The Marker is <span class ='warning'> displeased!</h3></span></center>"
 			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
@@ -374,13 +378,14 @@ var/global/list/additional_antag_types = list()
 			else if(escaped_necros > 6) // More than 7? Marker now has abandonment issues.
 				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</h3></span></center>"
 	else if(escaped_humans > 3 && escaped_humans < 9) // Between 4 and 8? Count as survivor minor.
+		round_finished = "Survivor Minor"
 		text += "<br><h2><b><center><span class='success'>Survivor Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Some survivors managed to evacuate!</center>"
 		text += "<br><b><cennter>And so ends the struggle on [station_name()]...</center></b>"
 		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
 		sound_to(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 		if(escaped_necros > 0)
-			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : null], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
+			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
 			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
 				text += "<br><center><h3>The Marker is <span class ='warning'> displeased!</h3></span></center>"
 			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
@@ -388,13 +393,14 @@ var/global/list/additional_antag_types = list()
 			else if(escaped_necros > 6) // More than 7? Marker now has abandonment issues.
 				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</h3></span></center>"
 	else if(escaped_humans > 8) // 9 or more escaped? Big party. Survivor major.
+		round_finished = "Survivor Major"
 		text += "<br><h1><b><center><span class='success'>Survivor Major Victory!</span></center></b></h1>"
 		text += "<br><center>A majority of the survivors managed to evacuate!</center>"
 		text += "<br><center><b>And so ends the struggle on [station_name()]...</center></b>"
 		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
 		sound_to(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 		if(escaped_necros > 0)
-			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : null], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
+			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
 			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
 				text += "<br><center><h3>The Marker is <span class ='warning'> displeased!</h3></span></center>"
 			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
@@ -402,13 +408,14 @@ var/global/list/additional_antag_types = list()
 			else if(escaped_necros > 6) // More than 7? Marker now has abandonment issues.
 				text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</h3></span></center>"
 	else if(escaped_humans < 1) // Big sad. Necro major. No evacuees.
+		round_finished = "Necromorph Major"
 		text += "<br><h1><b><center><span class='danger'>Necromorph Major Victory!</h1></center></b></large>"
 		text += "<br><center>The Necromorphs have slain the entire crew!</center>"
 		text += "<br><br><center><b>And so ends another struggle on [station_name()]...</b></center>"
 		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"] of which <b>none</b> managed to evacuate."
 		sound_to(world, sound('sound/music/ds13/twinkle.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 		if(escaped_necros > 0)
-			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : null], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
+			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
 			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
 				text += "<br><center><h3>The Marker is <span class ='warning'> displeased!</h3></span></center>"
 			else if(escaped_necros > 3 && escaped_necros < 7) // Between 4 and 6 Necro's escaped? The Marker is angery.
@@ -642,3 +649,4 @@ proc/get_nt_opposed()
 			var/mob/living/L = M.current
 			if (L.stat != DEAD) //They're alive!
 				GLOB.living_crew |= M
+

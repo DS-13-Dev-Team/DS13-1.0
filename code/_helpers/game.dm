@@ -32,7 +32,6 @@
 	return loc ? loc.z : 0
 
 /proc/get_area(O)
-	RETURN_TYPE(/area)
 	var/turf/loc = get_turf(O)
 	if(loc)
 		var/area/res = loc.loc

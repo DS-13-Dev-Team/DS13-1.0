@@ -3,7 +3,7 @@
 	var/lifetime = 0.3
 	anchored = TRUE
 
-/obj/effect/pixelmarker/New(var/location, var/_lifetime, var/newcolor = "#ffffff")
+/obj/effect/pixelmarker/New(var/location, var/_lifetime, var/newcolor = "#FFFFFF")
 	if (_lifetime)
 		lifetime = _lifetime
 

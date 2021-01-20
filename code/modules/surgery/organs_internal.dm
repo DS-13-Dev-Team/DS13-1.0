@@ -291,7 +291,7 @@
 		return SURGERY_FAILURE
 
 	if(!target.species)
-		crash_with("Target ([target]) of surgery [type] has no species!")
+		CRASH("Target ([target]) of surgery [type] has no species!")
 		return SURGERY_FAILURE
 
 	var/o_is = (O.gender == PLURAL) ? "are" : "is"
@@ -448,7 +448,7 @@
 
 	target.op_stage.current_organ = null
 
-	var/list/obj/item/organ/internal/dead_organs = list()
+	var/obj/item/organ/internal/list/dead_organs = list()
 	for(var/obj/item/organ/internal/I in target.internal_organs)
 		if(I && !(I.status & ORGAN_CUT_AWAY) && I.status & ORGAN_DEAD && I.parent_organ == affected.organ_tag && !BP_IS_ROBOTIC(I))
 			dead_organs |= I

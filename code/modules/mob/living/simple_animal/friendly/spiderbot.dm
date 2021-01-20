@@ -233,7 +233,9 @@
 
 	held_item.loc = src.loc
 	held_item = null
-	return TRUE
+	return 1
+
+	return
 
 /mob/living/simple_animal/spiderbot/verb/get_item()
 	set name = "Pick up item"

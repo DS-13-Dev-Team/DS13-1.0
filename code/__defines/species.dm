@@ -42,7 +42,7 @@
 #define DARKTINT_NONE      "#ffffff"
 #define DARKTINT_POOR  		"#cccccc"
 #define DARKTINT_MODERATE      "#aaaaaa"
-#define DARKTINT_GOOD			"#8c8c8c"
+#define DARKTINT_GOOD			"#8C8C8C"
 #define DARKTINT_EXCEPTIONAL	"#666666"
 
 

@@ -57,7 +57,7 @@
 	canremove = 1
 	return ..()
 
-/obj/item/clothing/mask/monitor/mob_can_equip(var/mob/living/carbon/human/user, var/slot, var/disable_warning = 0, var/force = 0)
+/obj/item/clothing/mask/monitor/mob_can_equip(var/mob/living/carbon/human/user, var/slot)
 	if (!..())
 		return 0
 	if(istype(user))

@@ -1,3 +1,7 @@
+#define RESTART_COUNTER_PATH "data/round_counter.txt"
+
+GLOBAL_VAR(restart_counter)
+
 /var/server_name = "Baystation 12"
 
 /var/game_id = null
@@ -77,8 +81,10 @@
 	diary << "[log_end]\n[log_end]\nStarting up. (ID: [game_id]) [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
+	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
+
 	if(byond_version < RECOMMENDED_VERSION)
-		to_world_log("Your server's byond version does not meet the recommended requirements for this server. Please update BYOND")
+		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
 	if(config && config.server_name != null && config.server_suffix && world.port > 0)
 		// dumb and hardcoded but I don't care~
@@ -119,7 +125,9 @@
 
 	processScheduler.deferSetupFor(/datum/controller/process/ticker)
 	processScheduler.setup()
-	Master.Initialize(10, FALSE)
+	Master.Initialize(10, FALSE, TRUE)
+
+	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
 #undef RECOMMENDED_VERSION
 
@@ -127,6 +135,7 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
+	TGS_TOPIC
 	diary << "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]"
 
 	if (T == "ping")
@@ -468,13 +477,50 @@ var/world_topic_spam_protect_time = world.timeofday
 		return GLOB.prometheus_metrics.collect()
 
 
-/world/Reboot(var/reason)
+/world/Reboot(reason, ping)
 	/*spawn(0)
 		sound_to(world, sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')))// random end sounds!! - LastyBatsy
 
 		*/
+	if(ping)
+		send2chat("GAME: <@&797602501813469224>", "game") //Don't forget change id channel and id role for you server!!!!!
+		var/list/msg = list()
 
+		msg += "Next Map: USG Ishumura"
+
+		if(ticker.mode)
+			msg += "Game Mode: [ticker.mode.name]"
+			msg += "Round End State: [ticker.mode.round_finished]"
+
+		if(length(GLOB.clients))
+			msg += "Players: [length(GLOB.clients)]"
+
+		if(length(msg))
+			send2chat("GAME: " + msg.Join(" | "), "game") //TOO!
+
+	TgsReboot()
 	processScheduler.stop()
+
+	if(TgsAvailable())
+		var/do_hard_reboot
+		// check the hard reboot counter
+		var/ruhr = -1
+		switch(ruhr)
+			if(-1)
+				do_hard_reboot = FALSE
+			if(0)
+				do_hard_reboot = TRUE
+			else
+				if(GLOB.restart_counter >= ruhr)
+					do_hard_reboot = TRUE
+				else
+					text2file("[++GLOB.restart_counter]", RESTART_COUNTER_PATH)
+					do_hard_reboot = FALSE
+
+		if(do_hard_reboot)
+			log_world("World rebooted at [time_stamp()]")
+			rustg_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
+			TgsEndProcess()
 
 	if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 		for(var/client/C in GLOB.clients)
@@ -647,9 +693,9 @@ var/failed_old_db_connections = 0
 
 /hook/startup/proc/connectDB()
 	if(!setup_database_connection())
-		to_world_log("Your server failed to establish a connection with the feedback database.")
+		world.log << "Your server failed to establish a connection with the feedback database."
 	else
-		to_world_log("Feedback database connection established.")
+		world.log << "Feedback database connection established."
 	return 1
 
 proc/setup_database_connection()
@@ -672,7 +718,7 @@ proc/setup_database_connection()
 		failed_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
 	else
 		failed_db_connections++		//If it failed, increase the failed connections counter.
-		to_world_log(dbcon.ErrorMsg())
+		world.log << dbcon.ErrorMsg()
 
 	return .
 
@@ -689,9 +735,9 @@ proc/establish_db_connection()
 
 /hook/startup/proc/connectOldDB()
 	if(!setup_old_database_connection())
-		to_world_log("Your server failed to establish a connection with the SQL database.")
+		world.log << "Your server failed to establish a connection with the SQL database."
 	else
-		to_world_log("SQL database connection established.")
+		world.log << "SQL database connection established."
 	return 1
 
 //These two procs are for the old database, while it's being phased out. See the tgstation.sql file in the SQL folder for more information.
@@ -715,7 +761,7 @@ proc/setup_old_database_connection()
 		failed_old_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
 	else
 		failed_old_db_connections++		//If it failed, increase the failed connections counter.
-		to_world_log(dbcon.ErrorMsg())
+		world.log << dbcon.ErrorMsg()
 
 	return .
 

@@ -22,7 +22,7 @@
 		else
 			var/list/datum/sprite_accessory/hair/valid_hairstyles = list()
 			for(var/hair_string in GLOB.hair_styles_list)
-				var/datum/sprite_accessory/hair/test = GLOB.hair_styles_list[hair_string]
+				var/list/datum/sprite_accessory/hair/test = GLOB.hair_styles_list[hair_string]
 				if(test.flags & HAIR_TIEABLE)
 					valid_hairstyles.Add(hair_string)
 			selected_string = input("Select a new hairstyle", "Your hairstyle", hair_style) as null|anything in valid_hairstyles

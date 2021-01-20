@@ -480,7 +480,7 @@ meteor_act
 	var/obj/item/organ/external/floor_organ
 
 	if(!lying)
-		var/list/obj/item/organ/external/standing = list()
+		var/obj/item/organ/external/list/standing = list()
 		for(var/limb_tag in species.locomotion_limbs)
 			var/obj/item/organ/external/E = organs_by_name[limb_tag]
 			if(E && E.is_usable())
@@ -495,7 +495,7 @@ meteor_act
 	if(!floor_organ)
 		floor_organ = pick(organs)
 
-	var/list/obj/item/organ/external/to_shock = trace_shock(initial_organ, floor_organ)
+	var/obj/item/organ/external/list/to_shock = trace_shock(initial_organ, floor_organ)
 
 	if(to_shock && to_shock.len)
 		shock_damage /= to_shock.len
@@ -510,7 +510,7 @@ meteor_act
 	return total_damage
 
 /mob/living/carbon/human/proc/trace_shock(var/obj/item/organ/external/init, var/obj/item/organ/external/floor)
-	var/list/obj/item/organ/external/traced_organs = list(floor)
+	var/obj/item/organ/external/list/traced_organs = list(floor)
 
 	if(!init)
 		return
@@ -530,6 +530,7 @@ meteor_act
 
 
 /mob/living/carbon/human/proc/handle_shock()
+	..()
 	if(status_flags & GODMODE)	return 0	//godmode
 	if(!can_feel_pain())
 		shock_stage = 0

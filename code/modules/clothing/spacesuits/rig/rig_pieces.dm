@@ -172,8 +172,8 @@
 
 //RIGs don't get deleted when broken, but they go into a malfunctioning state forever
 /obj/item/weapon/rig/zero_health()
-	malfunctioning = INFINITY
-	malfunction_delay = INFINITY
+	malfunctioning = NEAR_INFINITY
+	malfunction_delay = NEAR_INFINITY
 
 /obj/item/weapon/rig/repair(var/repair_power, var/datum/repair_source, var/mob/user)
 	.=..()

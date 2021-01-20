@@ -106,3 +106,7 @@
 
 	src.add_fingerprint(user)
 	return
+
+
+/obj/item/rig_module/storage/get_contents()
+	return container.get_contents()

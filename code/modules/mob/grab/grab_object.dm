@@ -79,7 +79,7 @@
 	This section is for newly defined useful procs.
 */
 /obj/item/grab/proc/target_change()
-	var/hit_zone = get_zone_sel(assailant)
+	var/hit_zone = get_zone_sel(assailant, precise = TRUE)//We want this to be able to target eyes/mouth
 	if(!assailant || src != assailant.get_active_hand())
 		return FALSE
 	if(hit_zone && hit_zone != last_target)

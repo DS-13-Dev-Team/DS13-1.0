@@ -53,9 +53,10 @@
 				if(/token/word)
 					return new/node/expression/value/variable(T.value)
 				if(/token/accessor)
-					var/token/accessor/A=T
-					var/node/expression/value/variable/E//=new(A.member)
-					var/stack/S=new()
+					var
+						token/accessor/A=T
+						node/expression/value/variable/E//=new(A.member)
+						stack/S=new()
 					while(istype(A.object, /token/accessor))
 						S.Push(A)
 						A=A.object
@@ -180,10 +181,11 @@
 	- <ParseParamExpression()>
 */
 		ParseExpression(list/end=list(/token/end), list/ErrChars=list("{", "}"))
-			var/stack/opr=new
-			var/stack/val=new
+			var/stack
+				opr=new
+				val=new
 			src.expecting=VALUE
-			while(TRUE)
+			for()
 				if(EndOfExpression(end))
 					break
 				if(istype(curToken, /token/symbol) && ErrChars.Find(curToken.value))
@@ -276,7 +278,7 @@
 			NextToken() //skip open parenthesis, already found
 			var/loops = 0
 
-			while(TRUE)
+			for()
 				loops++
 				if(loops>=1000)
 					CRASH("Something TERRIBLE has gone wrong in ParseFunctionExpression ;__;")

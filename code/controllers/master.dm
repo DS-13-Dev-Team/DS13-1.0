@@ -157,7 +157,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 // Please don't stuff random bullshit here,
 // 	Make a subsystem, give it the SS_NO_FIRE flag, and do your work in it's Initialize()
-/datum/controller/master/Initialize(delay, init_sss)
+/datum/controller/master/Initialize(delay, init_sss, tgs_prime)
 	set waitfor = 0
 
 	if(delay)
@@ -165,6 +165,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
+
+	if(tgs_prime)
+		world.TgsInitializationComplete()
 
 	report_progress("Initializing subsystems...")
 
@@ -264,7 +267,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				runlevel_sorted_subsystems[I] += SS
 				added_to_any = TRUE
 		if(!added_to_any)
-			crash_with("[SS.name] subsystem is not SS_NO_FIRE but also does not have any runlevels set!")
+			WARNING("[SS.name] subsystem is not SS_NO_FIRE but also does not have any runlevels set!")
 
 	queue_head = null
 	queue_tail = null
