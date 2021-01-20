@@ -539,6 +539,7 @@
 #include "code\game\antagonist\outsider\actors.dm"
 #include "code\game\antagonist\outsider\commando.dm"
 #include "code\game\antagonist\outsider\deity.dm"
+#include "code\game\antagonist\outsider\ert.dm"
 #include "code\game\antagonist\outsider\mercenary.dm"
 #include "code\game\antagonist\outsider\ninja.dm"
 #include "code\game\antagonist\outsider\raider.dm"
