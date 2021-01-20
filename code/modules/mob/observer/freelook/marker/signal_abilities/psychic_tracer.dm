@@ -50,7 +50,9 @@
 /obj/effect/psychic_tracer/get_visualnet_tiles(var/datum/visualnet/network)
 	return EM.get_visualnet_tiles(network)
 
-
+/obj/effect/psychic_tracer/Destroy()
+	EM = null //Clears out the ref that's about to become nulled to save GC time.
+	. = ..()
 
 /*
 	Extension: Added to the infected mob
@@ -133,10 +135,10 @@
 	remove_extension(holder, base_type)
 
 /datum/extension/psychic_tracer/Destroy()
-	QDEL_NULL(object)
+	qdel(object)
+	object = null
 	GLOB.necrovision.remove_source(src, TRUE, TRUE)
 	.=..()
-
 
 //Find out how many crew can see our source
 /datum/extension/psychic_tracer/proc/get_visible_crew()
