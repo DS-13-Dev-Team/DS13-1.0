@@ -60,7 +60,7 @@
 		var/client/target = P.get_client()
 		if (!target)
 			continue
-		if (!P.is_necromorph() && !target.mob?.is_necromorph())
+		if ((!P.is_necromorph() && !target.mob) || (target.mob && !target.mob.is_necromorph()))
 			log_debug("Found non-necromorph [ckey] (as [target.mob]) in necromorphs player list, please gather more info from them!")
 			SSnecromorph.necromorph_players -= ckey
 			continue
