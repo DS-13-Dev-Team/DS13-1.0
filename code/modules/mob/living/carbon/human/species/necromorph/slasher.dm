@@ -245,7 +245,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 		A = autotarget_enemy_mob(A, 2, src, 999)
 
 
-	.= charge_attack(A, _delay = 1 SECONDS, _speed = 5.0, _lifespan = 6 SECONDS)
+	.= charge_attack(A, _delay = 1 SECONDS, _speed = 5.0, _lifespan = 4 SECONDS)
 	if (.)
 		var/mob/H = src
 		if (istype(H))
@@ -267,7 +267,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 	if (!isliving(A))
 		A = autotarget_enemy_mob(A, 2, src, 999)
 
-	.= charge_attack(A, _delay = 0.75 SECONDS, _speed = 5.5, _lifespan = 6 SECONDS)
+	.= charge_attack(A, _delay = 0.75 SECONDS, _speed = 5.5, _lifespan = 4 SECONDS)
 	if (.)
 		var/mob/H = src
 		if (istype(H))

@@ -191,8 +191,7 @@
 
 	if ((drowsyness > 0) && !MOVING_DELIBERATELY(src))
 		. += 6
-	if(lying) //Crawling, it's slower
-		. += 8 + (weakened * 2)
+
 	. += move_intent.move_delay
 	. += encumbrance() * (0.5 + 1.5 * (SKILL_MAX - get_skill_value(SKILL_HAULING))/(SKILL_MAX - SKILL_MIN)) //Varies between 0.5 and 2, depending on skill
 
@@ -864,7 +863,7 @@
 /mob/proc/embedded_needs_process()
 	return (embedded.len > 0)
 
-/mob/proc/yank_out_object()
+/mob/proc/yank_out_object_verb()
 	set category = "Object"
 	set name = "Yank out object"
 	set desc = "Remove an embedded item at the cost of bleeding and pain."
@@ -883,11 +882,11 @@
 		return
 
 	var/mob/S = src
-	var/mob/U = usr
+	var/mob/user = usr
 	var/list/valid_objects = list()
 	var/self = null
 
-	if(S == U)
+	if(S == user)
 		self = 1 // Removing object from yourself.
 
 	valid_objects = get_visible_implants(0)
@@ -895,24 +894,34 @@
 		if(self)
 			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
 		else
-			to_chat(U, "[src] has nothing stuck in their wounds that is large enough to remove.")
+			to_chat(user, "[src] has nothing stuck in their wounds that is large enough to remove.")
 		return
 
 	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
 
-	if(self)
+	yank_out_object(selection, user)
+
+
+
+/mob/proc/yank_out_object(var/obj/item/selection, var/mob/user)
+	var/mob/S = src
+	if(user == S)
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
 	else
-		to_chat(U, "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>")
-	if(!do_mob(U, S, 30, incapacitation_flags = INCAPACITATION_DEFAULT & (~INCAPACITATION_FORCELYING))) //let people pinned to stuff yank it out, otherwise they're stuck... forever!!!
+		to_chat(user, "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>")
+	if(!do_mob(user, S, 30, incapacitation_flags = INCAPACITATION_DEFAULT & (~INCAPACITATION_FORCELYING))) //let people pinned to stuff yank it out, otherwise they're stuck... forever!!!
 		return
-	if(!selection || !S || !U)
+	if(!selection || !S || !user)
 		return
 
 
+
+	playsound(src, "fleshtear", VOLUME_MID, TRUE)
+
+	shake_animation()
 
 	var/message
-	if(self)
+	if(user == S)
 		message = "<span class='warning'><b>[src] rips [selection] out of their body.</b></span>"
 	else
 		message = "<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>"
@@ -936,8 +945,8 @@
 		if(prob(selection.w_class * 5) && affected.sever_artery()) //I'M SO ANEMIC I COULD JUST -DIE-.
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 50, affecting = affected)
 
-		if (ishuman(U))
-			var/mob/living/carbon/human/human_user = U
+		if (ishuman(user))
+			var/mob/living/carbon/human/human_user = user
 			human_user.bloody_hands(H)
 
 	else if(issilicon(src))
@@ -949,11 +958,11 @@
 	if (H)
 		H.unembed(selection, null, FALSE, message)
 
-	valid_objects = get_visible_implants(0)
-	if(valid_objects.len == 0) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object
+	var/list/valid_objects = get_visible_implants(0)
+	if(length(valid_objects.len == 0)) //Yanking out last object - removing verb.
+		src.verbs -= /mob/proc/yank_out_object_verb
 
-	U.put_in_hands(selection)
+	user.put_in_hands(selection)
 
 	for(var/obj/item/weapon/O in pinned)
 		if(O == selection)

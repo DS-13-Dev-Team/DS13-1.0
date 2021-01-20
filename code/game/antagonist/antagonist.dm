@@ -17,6 +17,7 @@
 	var/id = "traitor"                      // Unique datum identifier. Also preferences option for this role.
 	var/role_text = "Traitor"               // special_role text.
 	var/role_text_plural = "Traitors"       // As above but plural.
+	var/category = ""						// Category is a shared faction or grouping
 
 	// Visual references.
 	var/antaghud_indicator = "hudsyndicate" // Used by the ghost antagHUD.
@@ -123,7 +124,7 @@
 		else if(player_is_antag(player))
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are already an antagonist!")
 		else
-			candidates |= player
+			candidates[player] = player.get_antag_weight(category)
 	return candidates
 
 // Builds a list of potential antags without actually setting them. Used to test mode viability.
@@ -139,7 +140,7 @@
 		else if(!can_become_antag(player))
 		else if(player_is_antag(player))
 		else
-			candidates |= player
+			candidates[player] = player.get_antag_weight(category)
 
 	return candidates
 
@@ -195,7 +196,7 @@
 
 	//Grab candidates randomly until we have enough.
 	while(candidates.len && pending_antagonists.len < spawn_target)
-		var/datum/mind/player = pick(candidates)
+		var/datum/mind/player = pickweight(candidates)
 		candidates -= player
 		draft_antagonist(player)
 

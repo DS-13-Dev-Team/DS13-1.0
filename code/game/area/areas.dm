@@ -47,7 +47,7 @@
 /area/proc/unregister_door(var/obj/machinery/door/D)
 	bordering_doors -= D
 
-/area/proc/get_contents()
+/area/get_contents()
 	return contents
 
 /area/proc/get_cameras()

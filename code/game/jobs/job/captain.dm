@@ -46,7 +46,7 @@ datum/job/cap/get_description_blurb()
 	starting_credits = 6480
 
 	access = list(access_fl, access_bridge, access_security, access_armory, access_maint_tunnels,
-				access_keycard_auth)
+				access_keycard_auth, access_cargo)
 	outfit_type = /decl/hierarchy/outfit/job/command/fl
 
 	min_skill = list(   SKILL_HAULING     = SKILL_ADEPT,

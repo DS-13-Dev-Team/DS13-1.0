@@ -17,6 +17,7 @@ GLOBAL_DATUM_INIT(wizards, /datum/antagonist/wizard, new)
 
 	faction = "wizard"
 
+
 /datum/antagonist/wizard/create_objectives(var/datum/mind/wizard)
 
 	if(!..())

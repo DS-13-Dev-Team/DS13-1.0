@@ -340,67 +340,6 @@ Ccomp's first proc.
 	G.show_message("<span class=notice><b>You may now respawn.  You should roleplay as if you learned nothing about the round during your time with the dead.</b></span>", 1)
 	log_and_message_admins("has allowed [key_name(G)] to bypass the [config.respawn_delay] minute respawn limit.")
 
-/client/proc/toggle_antagHUD_use()
-	set category = "Server"
-	set name = "Toggle antagHUD usage"
-	set desc = "Toggles antagHUD usage for observers"
-
-	if(!holder)
-		to_chat(src, "Only administrators may use this command.")
-	var/action=""
-	if(config.antag_hud_allowed)
-		for(var/mob/observer/ghost/g in get_ghosts())
-			if(!g.client.holder)						//Remove the verb from non-admin ghosts
-				g.verbs -= /mob/observer/ghost/verb/toggle_antagHUD
-			if(g.antagHUD)
-				g.antagHUD = 0						// Disable it on those that have it enabled
-				g.has_enabled_antagHUD = 2				// We'll allow them to respawn
-				to_chat(g, "<span class='danger'>The Administrator has disabled AntagHUD</span>")
-		config.antag_hud_allowed = 0
-		to_chat(src, "<span class='danger'>AntagHUD usage has been disabled</span>")
-		action = "disabled"
-	else
-		for(var/mob/observer/ghost/g in get_ghosts())
-			if(!g.client.holder)						// Add the verb back for all non-admin ghosts
-				g.verbs += /mob/observer/ghost/verb/toggle_antagHUD
-				to_chat(g, "<span class='notice'><B>The Administrator has enabled AntagHUD </B></span>")// Notify all observers they can now use AntagHUD
-
-		config.antag_hud_allowed = 1
-		action = "enabled"
-		to_chat(src, "<span class='notice'><B>AntagHUD usage has been enabled</B></span>")
-
-
-	log_admin("[key_name(usr)] has [action] antagHUD usage for observers")
-	message_admins("Admin [key_name_admin(usr)] has [action] antagHUD usage for observers", 1)
-
-
-
-/client/proc/toggle_antagHUD_restrictions()
-	set category = "Server"
-	set name = "Toggle antagHUD Restrictions"
-	set desc = "Restricts players that have used antagHUD from being able to join this round."
-	if(!holder)
-		to_chat(src, "Only administrators may use this command.")
-	var/action=""
-	if(config.antag_hud_restricted)
-		for(var/mob/observer/ghost/g in get_ghosts())
-			to_chat(g, "<span class='notice'><B>The administrator has lifted restrictions on joining the round if you use AntagHUD</B></span>")
-		action = "lifted restrictions"
-		config.antag_hud_restricted = 0
-		to_chat(src, "<span class='notice'><B>AntagHUD restrictions have been lifted</B></span>")
-	else
-		for(var/mob/observer/ghost/g in get_ghosts())
-			to_chat(g, "<span class='danger'>The administrator has placed restrictions on joining the round if you use AntagHUD</span>")
-			to_chat(g, "<span class='danger'>Your AntagHUD has been disabled, you may choose to re-enabled it but will be under restrictions</span>")
-			g.antagHUD = 0
-			g.has_enabled_antagHUD = 0
-		action = "placed restrictions"
-		config.antag_hud_restricted = 1
-		to_chat(src, "<span class='danger'>AntagHUD restrictions have been enabled</span>")
-
-	log_admin("[key_name(usr)] has [action] on joining the round if they use AntagHUD")
-	message_admins("Admin [key_name_admin(usr)] has [action] on joining the round if they use AntagHUD", 1)
-
 /*
 If a guy was gibbed and you want to revive him, this is a good way to do so.
 Works kind of like entering the game with a new character. Character receives a new mind if they didn't have one.

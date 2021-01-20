@@ -36,13 +36,21 @@
 if (result == EXECUTION_CANCEL && can_interrupt){\
 	interrupt();\
 	return}
+
+//Execution status vars
+#define STATUS_NOT_STARTED	0
+#define STATUS_STARTING		1
+#define STATUS_PRE_FINISH	2
+#define STATUS_POST_FINISH	3
+#define STATUS_ENDED		4
+
 /datum/extension/execution
 	name = "Execution"
 	base_type = /datum/extension/execution
 	expected_type = /atom
 	flags = EXTENSION_FLAG_IMMEDIATE
 
-	var/status
+	var/status = STATUS_NOT_STARTED
 	var/mob/living/carbon/human/user
 	var/mob/living/carbon/human/victim
 	var/cooldown = 20 SECOND
@@ -70,15 +78,13 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	//Stat modifiers
 	//---------------
 	//While performing an execution, the user has lower vision range and cannot evade attacks
-	var/evasion_mod = -100
-	var/vision_mod = -4
-
-	var/evasion_delta = 0
-	var/vision_delta = 0
+	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -4)
 
 	//Aquisition vars
 	//-----------------------
 	//If true, this execution requires the victim to be grabbed at the start, and held in a grab throughout the move
+	//Can also be set to a number, in which case it only requires a grab from that step onwards
+	//In either case, grab is no longer required after the finisher
 	var/require_grab = TRUE
 
 	//If true this cannot be performed on corpses, victim must be alive at the start
@@ -86,6 +92,9 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 
 	//The victim must remain with this distance of the attacker, or the move fails
 	var/range = 1
+
+	//Before the first stage, we can commence the execution within this range
+	var/start_range	=	1
 
 	//A delay before acquisition happens
 	var/windup_time = 0
@@ -111,6 +120,11 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 
 	//The datum of the current stage
 	var/datum/execution_stage/current_stage
+
+	//How many times we have retried the current stage when it failed to advance
+	//If we hit the stage's max retries, we abort the whole execution
+	//Reset to 0 upon entering a new stage
+	var/retries = 0
 
 
 
@@ -154,7 +168,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		return
 
 	started_at	=	world.time
-
+	status = STATUS_STARTING
 	//First of all, we do windup
 	windup()
 
@@ -167,17 +181,13 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	//Getting past this point is considered a success
 	.= TRUE
 
+	status = STATUS_PRE_FINISH
+
 
 
 	//Alright we're clear to proceed
 	if (user.is_necromorph() && notify_necromorphs)
 		link_necromorphs_to(SPAN_EXECUTION("[user] is performing [name] at LINK"), victim)
-	//Modify user stats
-	user.evasion += evasion_mod
-	evasion_delta = evasion_mod
-
-	user.view_range += vision_mod
-	vision_delta = vision_mod
 
 	//Lets setup handling for future interruption
 	can_interrupt = TRUE
@@ -197,7 +207,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 /datum/extension/execution/proc/stop()
 	deltimer(ongoing_timer)
 	stopped_at = world.time
-
+	status = STATUS_ENDED
 	//Lets remove observations
 	GLOB.damage_hit_event.unregister(user, src, /datum/extension/execution/proc/user_damaged)
 
@@ -210,11 +220,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	user.animate_to_default(1 SECOND)
 
 
-	user.evasion -= evasion_delta
-	evasion_delta = 0
 
-	user.view_range -= vision_delta
-	vision_delta = 0
 
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 
@@ -233,6 +239,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		for (var/datum/execution_stage/ES as anything in entered_stages)
 			ES.interrupt()
 
+		to_chat(user, SPAN_DANGER("[name] aborted!"))
 		//We stop immediately
 		stop()
 
@@ -241,7 +248,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 /datum/extension/execution/proc/complete()
 	if (finished)
 		return
-
+	status = STATUS_POST_FINISH
 	finished = TRUE
 
 	//We are past the point of no return now
@@ -293,7 +300,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 //Here, we perform the first steps of starting the move. This may include moving towards the target, or pulling them to us
 //If required, it will also involve grabbing the target
 /datum/extension/execution/proc/acquire_target()
-	if (require_grab)
+	if (require_grab == TRUE)
 		grab = user.grab_with_any_limb(victim)
 
 	user.face_atom(victim)
@@ -316,13 +323,25 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	var/max_stages = all_stages.len
 	//If there's a current stage, ask it whether its ready to advance
 	if (current_stage && current_stage_index)
-		if (!current_stage.can_advance())
-			//TODO Here: Decide if/when to try again, or whether to simply abort the whole move
-			return FALSE
+		var/advance_result = current_stage.can_advance()
+		switch(advance_result)
+			if (EXECUTION_CANCEL)
+				//Abort mission
+				interrupt()
+				return FALSE
+			if (EXECUTION_RETRY)
+				if (retries >= current_stage.max_retries)
+					interrupt()
+					return FALSE
+				retries++
+				ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/try_advance_stage), current_stage.retry_time, TIMER_STOPPABLE)
+				return FALSE
+			if (EXECUTION_CONTINUE)
+				//Exit the previous stage
+				current_stage.exit()
+				current_stage = null
+			//if (EXECUTION_SUCCESS)	//Not yet implemented for advancing
 
-		//Exit the previous stage
-		current_stage.exit()
-		current_stage = null
 	//Okay we're advancing
 	current_stage_index++
 	if (current_stage_index > max_stages)
@@ -332,14 +351,33 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		return
 
 	//Here's our new current stage, enter it
-	current_stage = all_stages[current_stage_index]
-	current_stage.enter()
-	entered_stages += current_stage
+	if (!enter_next_stage())
+		//If we somehow fail to enter it, the entire process is aborted
+		interrupt()
+		return FALSE
 
 	//And set a timer to come back here
 	if (user)
 		user.disable(current_stage.duration)
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/try_advance_stage), current_stage.duration, TIMER_STOPPABLE)
+
+
+
+//This is called from try advance stage
+//After exiting the previous stage and then incrementing the index
+/datum/extension/execution/proc/enter_next_stage()
+	.=TRUE
+	//If we just reached a stage where grabbing is required, lets do that
+	if (require_grab && require_grab == current_stage_index)
+		grab = user.grab_with_any_limb(victim)
+		if (!grab)
+			return FALSE
+
+	retries = 0
+	current_stage = all_stages[current_stage_index]
+	if (!current_stage.enter())
+		return FALSE
+	entered_stages += current_stage
 
 
 
@@ -349,13 +387,14 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 ************************/
 /datum/extension/execution/proc/safety_check()
 	.=EXECUTION_CONTINUE
+
 	//If we needed a grab, check that we have it and its valid
-	if (require_grab)
+	if (require_grab && require_grab <= current_stage_index)
 		if (!grab || !grab.safety_check())
 			return EXECUTION_CANCEL
 
 	//Gotta be close enough
-	if (get_dist(user, victim) > range)
+	if (get_dist(user, victim) > get_range())
 		return EXECUTION_CANCEL
 
 	//If user has ceased to exist, we're finished
@@ -366,6 +405,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		var/result = ES.safety()
 		if (result != EXECUTION_CONTINUE)
 			return result
+
 
 //Called if the attacker takes a damaging impact while performing an execution
 /datum/extension/execution/proc/user_damaged(var/mob/living/damaged_user, var/obj/item/organ/external/organ, var/brute, var/burn, var/damage_flags, var/used_weapon)
@@ -381,6 +421,15 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	return TRUE
 
 
+
+/datum/extension/execution/proc/get_range()
+	if (current_stage)
+		if (!isnull(current_stage.range))
+			return current_stage.range
+	else
+		//If no current stage, we havent started yet
+		return start_range
+	return range
 
 //Access Proc
 /atom/proc/can_execute(var/execution_type = /datum/extension/execution)
@@ -417,5 +466,6 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	E.ongoing_timer = addtimer(CALLBACK(E, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
 
 	.= TRUE
+
 
 

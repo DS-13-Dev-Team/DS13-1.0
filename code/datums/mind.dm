@@ -504,6 +504,36 @@
 	else
 		return 0
 
+
+
+/datum/mind/proc/get_antag_weight(var/category)
+	/*
+		If we're a nonliving mob, then we're either joining at roundstart, or being picked from ghosts
+		In both of these cases, we will look at preference loadout for antag weightings
+	*/
+	. = 1
+	if (!isliving(current))
+		var/datum/preferences/P = get_preferences(current)
+		if (!P || !P.loadout)
+			return
+
+		var/datum/extension/loadout/L = P.loadout
+		for (var/datum/gear/G in L.gear_list)
+			. += G.get_antag_weight(category)
+	else
+		//If anything else, we're being considered while still alive. We will look at currently equipped gear
+		for (var/obj/item/I in current.get_inventory())
+			. += I.get_antag_weight(category)
+
+
+	//We start with a base of 1, and add bonuses based on equipment
+
+
+//Return a positive or negative number to add that percentage to antag weighting for the chosen category
+/obj/item/proc/get_antag_weight(var/category)
+	return 0
+
+
 //Initialisation procs
 /mob/living/proc/mind_initialize()
 	if(mind)

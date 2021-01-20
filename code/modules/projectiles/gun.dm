@@ -55,7 +55,7 @@
 	var/next_fire_time = 0
 
 	var/sel_mode = 1 //index of the currently selected mode
-	var/list/firemodes = list()
+	var/list/datum/firemode/firemodes = list()
 	var/datum/firemode/current_firemode
 	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 	var/firing = FALSE //True if currently firing, limited implementation, mostly for sustained/automatic weapons
@@ -99,6 +99,13 @@
 
 /obj/item/weapon/gun/Initialize()
 	.=..()
+	// Updating firing modes at appropriate times
+	// Now uses events to avoid unnecessarily complex proc overrides
+	GLOB.item_equipped_event.register(src, src, .proc/update_equipped)
+	GLOB.item_unequipped_event.register(src, src, .proc/update_all_stop)
+	GLOB.swapped_to_event.register(src, src, .proc/update_all)
+	GLOB.swapped_from_event.register(src, src, .proc/update_all_stop)
+
 	for(var/i in 1 to firemodes.len)
 		var/list/L = firemodes[i]
 
@@ -122,13 +129,13 @@
 		scoped_accuracy = accuracy
 
 /obj/item/weapon/gun/Destroy()
+	GLOB.item_equipped_event.unregister(src, src, .proc/update_all)
+	GLOB.item_unequipped_event.unregister(src, src, .proc/update_all_stop)
+	GLOB.swapped_to_event.unregister(src, src, .proc/update_all)
+	GLOB.swapped_from_event.unregister(src, src, .proc/update_all_stop)
 	if (current_firemode)
 		current_firemode.unapply_to(src)
-	for (var/a in firemodes)
-		if (istype(a, /datum/firemode))
-			qdel(a)
-
-	firemodes = list()
+	QDEL_LIST(firemodes)
 
 	disable_aiming_mode()
 	//TODO: Delete ACH click handler
@@ -698,31 +705,21 @@
 		var/datum/firemode/new_mode = firemodes[sel_mode]
 		new_mode.update(force_state)
 
-
-//Updating firing modes at appropriate times
-/obj/item/weapon/gun/equipped(var/mob/user, var/slot)
-	.=..()
+/obj/item/weapon/gun/proc/update_all(force_state = null)
 	update_icon()
-	update_firemode()
+	update_firemode(force_state)
 	update_click_handlers()
 
-/obj/item/weapon/gun/dropped(mob/user)
-	.=..()
-	update_firemode(FALSE)
-	update_click_handlers()
+/obj/item/weapon/gun/proc/update_equipped(obj/self, mob/equipper, slot)
+	if(!equipper)
+		CRASH("update_equipped called on [self] with slot [slot] and invalid mob!")
+	if(slot == equipper.get_active_hand_slot())
+		update_all()
+		return
+	update_all_stop()
 
-/obj/item/weapon/gun/swapped_from()
-	.=..()
-	update_icon()
-	update_firemode(FALSE)
-	update_click_handlers()
-
-/obj/item/weapon/gun/swapped_to()
-	.=..()
-	update_icon()
-	update_firemode()
-	update_click_handlers()
-
+/obj/item/weapon/gun/proc/update_all_stop()
+	update_all(FALSE)
 
 //Used by sustained weapons. Call to make the gun stop doing its thing
 /obj/item/weapon/gun/proc/stop_firing()

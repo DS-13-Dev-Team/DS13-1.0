@@ -42,9 +42,11 @@
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_up"
 		to_chat(user, "You raise the visor on the [src].")
+		body_parts_covered &= ~(FACE|EYES)
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You lower the visor on the [src].")
+		body_parts_covered |= (EYES|FACE)
 	update_clothing_icon()
 
 /obj/item/clothing/head/helmet/ballistic
