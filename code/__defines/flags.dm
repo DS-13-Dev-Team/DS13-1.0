@@ -34,7 +34,6 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define OBJ_FLAG_CONDUCTIBLE             0x0002 // Conducts electricity. (metal etc.)
 #define OBJ_FLAG_INVINCIBLE				 0x0004	// This object ignores all damage mechanics, and can't be broken, damaged etc
 
-
 #define MOB_FLAG_HOLY_BAD                0x001  // If this mob is allergic to holiness
 
 //Flags for items (equipment)
