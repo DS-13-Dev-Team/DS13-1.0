@@ -51,6 +51,7 @@
 	if (active)
 		return
 	active = TRUE
+	SSnecromorph.marker_activated_at = world.time
 
 	//Any shards in the world become active
 	for (var/obj/item/marker_shard/MS in SSnecromorph.shards)

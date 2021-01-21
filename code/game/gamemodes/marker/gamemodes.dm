@@ -9,7 +9,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	round_description = "The crew of the USG Ishimura has brought aboard a strange artifact and is tasked with discovering what its purpose is."
 	extended_round_description = "The crew must holdout until help arrives"
 	config_tag = "containment"
-	votable = TRUE
+	votable = FALSE//Debug TRUE
 
 /datum/game_mode/marker/containment/get_marker_location()
 	return pick(SSnecromorph.marker_spawns_ishimura)
@@ -24,8 +24,9 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	round_description = "The USG Ishimura has discovered a strange artifact on Aegis VII, but it is not whole. Some piece of it has been broken off and smuggled aboard"
 	extended_round_description = "The crew must holdout until help arrives"
 	config_tag = "enemy_within"
-	votable = FALSE
-	antag_tags = list(MODE_UNITOLOGIST_SHARD)
+	votable = TRUE
+	antag_tags = list(MODE_UNITOLOGIST_SHARD, MODE_EARTHGOV_AGENT)
+	latejoin_antag_tags = list(MODE_UNITOLOGIST_SHARD)
 
 /datum/game_mode/marker/enemy_within/get_marker_location()
 	return pick(SSnecromorph.marker_spawns_aegis)

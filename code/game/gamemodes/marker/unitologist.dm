@@ -100,3 +100,27 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	antag_text = "As one of the ship's fanatic Unitologists, it is your job to spread the word, light and convergence at the Marker's behest. You are to listen and comply with orders coming from the Marker, and you may <b>opt to listen</b> to the whispers coming from Signals.<br>\
 	As an antagonist, you may kill others or yourself in the name of the Marker, and provide offerings to them for good favor. If you play your cards right, you may be the only man or woman walking amongst corpses for a while.<br>\
 	As an antagonist, you may NOT use the Supermatter or Atmospherics in a grief-like way to ensure mass-kills. You may not willingly disrupt the flow of air, or blow up the Supermatter. You <b>may sabotage the Supermatter</b> however, by ejecting it and cutting power."
+
+
+
+/*
+	When counting shardbearers, we count the number of useable shards instead of people
+*/
+/datum/antagonist/unitologist/shardbearer/get_antag_count()
+	var/list/shards = get_viable_shards()
+	return length(shards)
+
+/*
+	Helpers
+*/
+/mob/proc/is_unitologist()
+	if (! (mind?.special_role))
+		return FALSE
+
+	var/datum/antagonist/A = get_antag_data(mind.special_role)
+	if (istype(A, /datum/antagonist/unitologist))
+		return TRUE
+
+	//Todo here in future: Check for unitologist ERT
+
+	return FALSE
