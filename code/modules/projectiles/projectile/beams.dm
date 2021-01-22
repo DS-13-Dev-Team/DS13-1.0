@@ -139,7 +139,7 @@
 	icon_state = "stun"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	sharp = 0 //not a laser
-	agony = 50
+	agony = 45
 	damage_type = STUN
 
 	muzzle_type = /obj/effect/projectile/stun/muzzle
