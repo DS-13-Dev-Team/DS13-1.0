@@ -64,7 +64,13 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	preference_candidacy_toggle = TRUE
 	id = MODE_UNITOLOGIST_SHARD
 	flags = 0
-	initial_spawn_req = 1
+
+	hard_cap = 1                        // When autoadding new shardbearers, we'll only do so if the number is below this
+	hard_cap_round = 1
+	initial_spawn_req = 1               // Gamemode using this template won't start without this # candidates.
+	initial_spawn_target = 3            // Gamemode will attempt to spawn this many antags.
+	override_scaling = FALSE	//No scaling
+
 	welcome_text = "While on a planetary survey team on Aegis VII below, you uncovered the Holy Marker. It spoke to you, and you followed its directions, chipping off a piece and smuggling it aboard with you. <br>\
 	The shard still speaks to you now. It tells you to hide it. Plant it somewhere in a dark, hidden corner of the Ishimura, where it will not be discovered"
 	category = CATEGORY_UNITOLOGY
@@ -108,6 +114,7 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 */
 /datum/antagonist/unitologist/shardbearer/get_antag_count()
 	var/list/shards = get_viable_shards()
+	world << "There are currently [length(shards)] viable shards"
 	return length(shards)
 
 /*

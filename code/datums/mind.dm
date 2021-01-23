@@ -470,6 +470,7 @@
 
 /datum/mind/proc/reset()
 	assigned_role =   null
+	world << SPAN_DANGER("Mind reset")
 	special_role =    null
 	role_alt_title =  null
 	assigned_job =    null

@@ -1,5 +1,4 @@
 /datum/antagonist/proc/add_antagonist(var/datum/mind/player, var/ignore_role, var/do_not_equip, var/move_to_spawn, var/do_not_announce, var/preserve_appearance)
-
 	if(!add_antagonist_mind(player, ignore_role))
 		return
 
@@ -8,6 +7,7 @@
 		player.assigned_role = role_text
 		player.role_alt_title = null
 	player.special_role = role_text
+	world << "Add antagonist 3 [player.special_role] to mind \ref[player]"
 
 	if(isghostmind(player))
 		create_default(player.current)
@@ -18,6 +18,8 @@
 			equip(player.current)
 
 	player.current.faction = faction
+
+	world << "Add antagonist 4 [player.special_role] to mind \ref[player]"
 	return 1
 
 /datum/antagonist/proc/add_antagonist_mind(var/datum/mind/player, var/ignore_role, var/nonstandard_role_type, var/nonstandard_role_msg)

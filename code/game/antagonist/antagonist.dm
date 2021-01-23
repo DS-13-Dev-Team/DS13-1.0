@@ -37,6 +37,7 @@
 	var/hard_cap_round = 5                  // As above but 'core' round antags ie. roundstart.
 	var/initial_spawn_req = 1               // Gamemode using this template won't start without this # candidates.
 	var/initial_spawn_target = 3            // Gamemode will attempt to spawn this many antags.
+	var/override_scaling	=	null		// Set this to true or false to override the antag quantity scaling of the gamemode
 	var/announced                           // Has an announcement been sent?
 	var/spawn_announcement                  // When the datum spawn proc is called, does it announce to the world? (ie. xenos)
 	var/spawn_announcement_title            // Report title.
@@ -156,6 +157,7 @@
 
 	update_current_antag_max()
 	var/active_antags = get_active_antag_count()
+	world << "[uppertext(id)]: Found [active_antags]/[cur_max] active [role_text_plural]."
 	log_debug("[uppertext(id)]: Found [active_antags]/[cur_max] active [role_text_plural].")
 
 	if(active_antags >= cur_max)

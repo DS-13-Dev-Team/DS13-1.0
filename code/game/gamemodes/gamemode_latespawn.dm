@@ -6,21 +6,16 @@
 ///process()
 ///Called by the gameticker
 /datum/game_mode/proc/process()
-	world << "Gamemode process 1"
 	if(shall_process_autoantag())
-		world << "Gamemode process 2"
 		process_autoantag()
 
 /datum/game_mode/proc/shall_process_autoantag()
 	if(!round_autoantag || world.time < next_spawn)
-		world << "Autoantag is [round_autoantag] next spawn [next_spawn]"
 		return FALSE
 	if(evacuation_controller.is_evacuating() || evacuation_controller.has_evacuated())
-		world << "Evac time"
 		return FALSE
 	// Don't create auto-antags in the last twenty minutes of the round, but only if the vote interval is longer than 20 minutes
 	if((config.vote_autotransfer_interval > 20 MINUTES) && (transfer_controller.time_till_transfer_vote() < 20 MINUTES))
-		world << "also evac time?"
 		return FALSE
 
 	return TRUE
@@ -33,20 +28,13 @@
 	return 0
 
 /datum/game_mode/proc/process_autoantag()
-	world << "Gamemode process 3"
-	message_admins("[uppertext(name)]: Attempting autospawn.")
 
 	var/list/usable_templates = list()
 	for(var/datum/antagonist/A in antag_templates)
 		if(A.can_late_spawn())
-			message_admins("[uppertext(name)]: [A.id] selected for spawn attempt.")
 			usable_templates |= A
-	/
+
 	if(!usable_templates.len)
-		/*
-		message_admins("[uppertext(name)]: Failed to find configured mode spawn templates, please re-enable auto-antagonists after one is added.")
-		round_autoantag = 0
-		*/
 		return
 
 	while(usable_templates.len)
@@ -59,5 +47,4 @@
 			next_spawn = world.time + rand(min_autotraitor_delay, max_autotraitor_delay)
 			return
 
-	message_admins("[uppertext(name)]: Failed to proc a viable spawn template.")
 	next_spawn = world.time + min_autotraitor_delay //recheck again in the miniumum time

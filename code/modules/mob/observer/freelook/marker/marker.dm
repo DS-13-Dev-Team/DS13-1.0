@@ -374,3 +374,11 @@
 
 /obj/machinery/marker/dismantle()
 	return
+
+
+/proc/marker_active()
+	var/obj/machinery/marker/M = get_marker()
+	if (M && !M.active)
+		return TRUE
+
+	return FALSE

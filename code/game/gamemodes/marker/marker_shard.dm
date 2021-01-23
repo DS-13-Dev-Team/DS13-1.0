@@ -264,6 +264,7 @@
 			var/mob/M = holder
 			//Non unitologist holding the shard
 			if (!M.is_unitologist())
+				world << "Held by non unitologist mob"
 				continue
 
 		else
@@ -273,7 +274,7 @@
 					continue
 
 			//If nothing is stopping it, it should have spread corruption by now.
-			if (!turf_corrupted(get_turf(MS)))
+			else if (marker_active() && !turf_corrupted(get_turf(MS)))
 				//If no corruption, we'll assume someone is screwing around. Maybe dragging around a backpack with the shard inside
 				//Either way its not viable
 				continue
