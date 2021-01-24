@@ -146,7 +146,7 @@
 			M.absorbed_dna[M.real_name] = M.dna.Clone()
 			M.make_changeling()
 			if(M.mind)
-				M.mind.special_role = "Changeling"
+				M.mind.set_special_role("Changeling")
 	else
 		alert("Invalid mob")
 */
@@ -203,7 +203,7 @@
 					to_chat(M, "<span class='warning'>You remembered one thing from the glimpse... [cultwords["see"]] is see...</span>")
 
 			if(M.mind)
-				M.mind.special_role = "Cultist"
+				M.mind.set_special_role("Cultist")
 				ticker.mode.cult += M.mind
 			to_chat(src, "Made [M] a cultist.")
 */

@@ -17,7 +17,7 @@
 	plane = ABOVE_OBJ_PLANE
 
 	//How long does the shard have to remain in one spot before it starts spreading corruption?
-	var/deploy_time = 3 MINUTES
+	var/deploy_time = 2 MINUTES
 	var/deploy_timer
 	var/deployed = FALSE	//Are we currently spreading corruption?
 
@@ -163,20 +163,27 @@
 */
 /obj/item/marker_shard/proc/try_sink()
 	//Doesnt happen if held or in containers
-	if (!isturf(loc))
-		return
+	if (isturf(loc))
 
-	var/turf/T = loc
-	//Can only sink into corruption which is 25% health or more
-	if (!turf_corrupted(T, FALSE, 0.25))
-		return
 
-	//Don't sink while being thrown or moved with kinesis
-	if (pass_flags & PASS_FLAG_FLYING)
-		return
+		var/turf/T = loc
+		//Can only sink into corruption which is 25% health or more
+		if (!turf_corrupted(T, FALSE, 0.25))
+			return
 
-	sink()
+		//Don't sink while being thrown or moved with kinesis
+		if (pass_flags & PASS_FLAG_FLYING)
+			return
 
+		sink()
+
+	//To prevent exploiting, if the shard is inside something being pulled around (locker, backpack, etc) by a non unitologist, it tumbles out
+	else
+		var/atom/A = get_toplevel_atom()
+		if (A != src && isobj(A) && prob(20))
+			tumble()
+			var/turf/T = get_turf(src)
+			T.visible_message(SPAN_NOTICE("\The [src] tumbles out of \the [A]"))
 
 /obj/item/marker_shard/proc/sink()
 	if (istype(loc, /turf))
@@ -264,7 +271,6 @@
 			var/mob/M = holder
 			//Non unitologist holding the shard
 			if (!M.is_unitologist())
-				world << "Held by non unitologist mob"
 				continue
 
 		else
@@ -290,7 +296,7 @@
 	Carrying a marker shard is harmful to your health
 */
 /datum/extension/shard_resistance
-	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE  = 0.4, STATMOD_VIEW_RANGE = -1, STATMOD_EVASION = -30)
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE  = 0.35, STATMOD_VIEW_RANGE = -2, STATMOD_EVASION = -30)
 	var/tick_interval = 5
 	var/mob/living/victim
 	var/tick_count = 0
@@ -299,7 +305,7 @@
 	.=..()
 	victim = holder
 	START_PROCESSING(SSprocessing, src)
-	to_chat(victim, "As you pickup the shard, you feel a burning sense of dread wash over you")
+	to_chat(victim, SPAN_DANGER("As you pickup the shard, you feel a burning sense of dread wash over you"))
 
 
 /datum/extension/shard_resistance/Process()
@@ -320,7 +326,7 @@
 	var/shards = 0
 	for (var/obj/item/marker_shard/MS in things)
 		shards++
-		victim.take_overall_damage(0, 5)
+		victim.take_overall_damage(0, 7.5)
 
 	if (!shards)
 		remove_self()

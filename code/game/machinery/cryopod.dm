@@ -400,7 +400,7 @@
 
 		if(occupant.mind.objectives.len)
 			occupant.mind.objectives = null
-			occupant.mind.special_role = null
+			occupant.mind.set_special_role(null)
 
 	//else
 		//if(ticker.mode.name == "AutoTraitor")

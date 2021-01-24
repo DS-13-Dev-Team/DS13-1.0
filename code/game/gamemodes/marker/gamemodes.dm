@@ -9,7 +9,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	round_description = "The crew of the USG Ishimura has brought aboard a strange artifact and is tasked with discovering what its purpose is."
 	extended_round_description = "The crew must holdout until help arrives"
 	config_tag = "containment"
-	votable = FALSE//Debug TRUE
+	votable = TRUE//Debug TRUE
 
 /datum/game_mode/marker/containment/get_marker_location()
 	return pick(SSnecromorph.marker_spawns_ishimura)

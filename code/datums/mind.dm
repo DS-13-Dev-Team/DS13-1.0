@@ -470,8 +470,7 @@
 
 /datum/mind/proc/reset()
 	assigned_role =   null
-	world << SPAN_DANGER("Mind reset")
-	special_role =    null
+	set_special_role(null)
 	role_alt_title =  null
 	assigned_job =    null
 	//faction =       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
@@ -496,11 +495,13 @@
 
 
 /datum/mind/proc/get_antag_weight(var/category)
+	//We start with a base of 1, and add bonuses based on equipment
+	. = 1
+
 	/*
 		If we're a nonliving mob, then we're either joining at roundstart, or being picked from ghosts
 		In both of these cases, we will look at preference loadout for antag weightings
 	*/
-	. = 1
 	if (!isliving(current))
 		var/datum/preferences/P = get_preferences(current)
 		if (!P || !P.loadout)
@@ -515,7 +516,12 @@
 			. += I.get_antag_weight(category)
 
 
-	//We start with a base of 1, and add bonuses based on equipment
+
+
+
+
+/datum/mind/proc/set_special_role(var/newinput)
+	special_role = newinput
 
 
 //Return a positive or negative number to add that percentage to antag weighting for the chosen category
@@ -551,7 +557,7 @@
 
 /mob/living/carbon/alien/larva/mind_initialize()
 	..()
-	mind.special_role = "Larva"
+	mind.set_special_role("Larva")
 
 //AI
 /mob/living/silicon/ai/mind_initialize()
@@ -567,7 +573,7 @@
 /mob/living/silicon/pai/mind_initialize()
 	..()
 	mind.assigned_role = "pAI"
-	mind.special_role = ""
+	mind.set_special_role("")
 
 //Animals
 /mob/living/simple_animal/mind_initialize()
@@ -585,14 +591,14 @@
 /mob/living/simple_animal/construct/builder/mind_initialize()
 	..()
 	mind.assigned_role = "Artificer"
-	mind.special_role = "Cultist"
+	mind.set_special_role("Cultist")
 
 /mob/living/simple_animal/construct/wraith/mind_initialize()
 	..()
 	mind.assigned_role = "Wraith"
-	mind.special_role = "Cultist"
+	mind.set_special_role("Cultist")
 
 /mob/living/simple_animal/construct/armoured/mind_initialize()
 	..()
 	mind.assigned_role = "Juggernaut"
-	mind.special_role = "Cultist"
+	mind.set_special_role("Cultist")

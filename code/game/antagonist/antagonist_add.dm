@@ -6,8 +6,7 @@
 	if(flags & ANTAG_OVERRIDE_JOB)
 		player.assigned_role = role_text
 		player.role_alt_title = null
-	player.special_role = role_text
-	world << "Add antagonist 3 [player.special_role] to mind \ref[player]"
+	player.set_special_role(role_text)
 
 	if(isghostmind(player))
 		create_default(player.current)
@@ -19,7 +18,8 @@
 
 	player.current.faction = faction
 
-	world << "Add antagonist 4 [player.special_role] to mind \ref[player]"
+	pending_antagonists -= player
+
 	return 1
 
 /datum/antagonist/proc/add_antagonist_mind(var/datum/mind/player, var/ignore_role, var/nonstandard_role_type, var/nonstandard_role_msg)
@@ -51,7 +51,7 @@
 	if(nonstandard_role_type)
 		faction_members |= player
 		to_chat(player.current, "<span class='danger'><font size=3>You are \a [nonstandard_role_type]!</font></span>")
-		player.special_role = nonstandard_role_type
+		player.set_special_role(nonstandard_role_type)
 		if(nonstandard_role_msg)
 			to_chat(player.current, "<span class='notice'>[nonstandard_role_msg]</span>")
 		update_icons_added(player)
@@ -66,7 +66,7 @@
 		to_chat(player.current, "<span class='danger'><font size = 3>You are no longer a [role_text]!</font></span>")
 		current_antagonists -= player
 		faction_members -= player
-		player.special_role = null
+		player.set_special_role(null)
 		update_icons_removed(player)
 		BITSET(player.current.hud_updateflag, SPECIALROLE_HUD)
 

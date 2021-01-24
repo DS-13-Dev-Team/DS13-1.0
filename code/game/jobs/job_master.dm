@@ -229,8 +229,7 @@ var/global/datum/controller/occupations/job_master
 		for(var/mob/new_player/player in GLOB.player_list)
 			if((player) && (player.mind))
 				player.mind.assigned_role = null
-				player.mind.special_role = null
-				world << SPAN_DANGER("ResetOccupations")
+				player.mind.set_special_role(null)
 		SetupOccupations()
 		unassigned = list()
 		return

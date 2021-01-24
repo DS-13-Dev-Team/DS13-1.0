@@ -22,8 +22,8 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 
 	// Spawn values (autotraitor and game mode)
 	//Hard cap of 6 will only be reached at really high playercounts
-	hard_cap = 6                        // Autotraitor var. Won't spawn more than this many antags.
-	hard_cap_round = 6                  // As above but 'core' round antags ie. roundstart.
+	hard_cap = 6                        // Max number at roundstart
+	hard_cap_round = 6                  // Max number with adding during round
 	initial_spawn_req = 0               // Gamemode using this template won't start without this # candidates.
 	initial_spawn_target = 3            // Gamemode will attempt to spawn this many antags.
 
@@ -65,8 +65,8 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	id = MODE_UNITOLOGIST_SHARD
 	flags = 0
 
-	hard_cap = 1                        // When autoadding new shardbearers, we'll only do so if the number is below this
-	hard_cap_round = 1
+	hard_cap = 4
+	hard_cap_round = 1					// When autoadding new shardbearers, we'll only do so if the number is below this
 	initial_spawn_req = 1               // Gamemode using this template won't start without this # candidates.
 	initial_spawn_target = 3            // Gamemode will attempt to spawn this many antags.
 	override_scaling = FALSE	//No scaling
@@ -114,7 +114,6 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 */
 /datum/antagonist/unitologist/shardbearer/get_antag_count()
 	var/list/shards = get_viable_shards()
-	world << "There are currently [length(shards)] viable shards"
 	return length(shards)
 
 /*

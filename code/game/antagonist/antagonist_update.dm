@@ -79,10 +79,10 @@
 							qdel(I)
 
 /datum/antagonist/proc/update_current_antag_max()
-	cur_max = hard_cap
-	if(ticker && ticker.mode)
-		if(ticker.mode.antag_tags && (id in ticker.mode.antag_tags))
-			cur_max = hard_cap_round
+	if (ticker.pregame())
+		cur_max = hard_cap
+	else
+		cur_max = hard_cap_round
 
 
 	var/scaling = ticker.mode.antag_scaling_coeff
