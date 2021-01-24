@@ -264,8 +264,15 @@
 */
 /proc/get_viable_shards()
 	var/list/shards = list()
+
+
 	for (var/obj/item/marker_shard/MS in SSnecromorph.shards)
 		var/atom/holder = MS.get_toplevel_atom()
+		var/turf/T = get_turf(MS)
+
+		//Its not aboard ishimura? not viable
+		if (!is_station_turf(T))
+			continue
 
 		if (ismob(holder))
 			var/mob/M = holder
@@ -275,12 +282,12 @@
 
 		else
 			if (isturf(holder))
-				var/turf/T = holder
+				//In this case, holder == T
 				if (T.is_hole)
 					continue
 
 			//If nothing is stopping it, it should have spread corruption by now.
-			else if (marker_active() && !turf_corrupted(get_turf(MS)))
+			else if (marker_active() && !turf_corrupted(T))
 				//If no corruption, we'll assume someone is screwing around. Maybe dragging around a backpack with the shard inside
 				//Either way its not viable
 				continue
