@@ -79,7 +79,7 @@
 							qdel(I)
 
 /datum/antagonist/proc/update_current_antag_max()
-	if (ticker.pregame())
+	if (ticker.current_state <	GAME_STATE_PLAYING)
 		cur_max = hard_cap
 	else
 		cur_max = hard_cap_round
