@@ -33,10 +33,11 @@
 	var/faction = "neutral"					// Actual faction name. Used primarily in stuff like simple_animals seeing if you are a threat or not.
 
 	// Spawn values (autotraitor and game mode)
-	var/hard_cap = 3                        // Autotraitor var. Won't spawn more than this many antags.
-	var/hard_cap_round = 5                  // As above but 'core' round antags ie. roundstart.
+	var/hard_cap = 3                        // Max number at roundstart
+	var/hard_cap_round = 5                  // Max number with adding during round
 	var/initial_spawn_req = 1               // Gamemode using this template won't start without this # candidates.
 	var/initial_spawn_target = 3            // Gamemode will attempt to spawn this many antags.
+	var/override_scaling	=	null		// Set this to true or false to override the antag quantity scaling of the gamemode
 	var/announced                           // Has an announcement been sent?
 	var/spawn_announcement                  // When the datum spawn proc is called, does it announce to the world? (ie. xenos)
 	var/spawn_announcement_title            // Report title.
@@ -226,7 +227,7 @@
 		player.role_alt_title = null
 
 	//Ensure that a player cannot be drafted for multiple antag roles, taking up slots for antag roles that they will not fill.
-	player.special_role = role_text
+	player.set_special_role(role_text)
 
 	return 1
 
@@ -236,7 +237,7 @@
 		return
 
 	for(var/datum/mind/player in pending_antagonists)
-		pending_antagonists -= player
+
 		add_antagonist(player,0,0,1)
 
 	reset_antag_selection()
@@ -252,6 +253,6 @@
 	for(var/datum/mind/player in pending_antagonists)
 		if(flags & ANTAG_OVERRIDE_JOB)
 			player.assigned_role = null
-		player.special_role = null
+		player.set_special_role(null)
 	pending_antagonists.Cut()
 	candidates.Cut()

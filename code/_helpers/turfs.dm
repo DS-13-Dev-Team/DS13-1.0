@@ -31,10 +31,14 @@
 	return TRUE
 
 
-/proc/turf_corrupted(var/atom/A, var/require_support = TRUE)
+/proc/turf_corrupted(var/atom/A, var/require_support = TRUE, var/min_health = 0)
 	var/turf/T = get_turf(A)
 	for (var/obj/effect/vine/corruption/C in T)
 		if (require_support && !C.is_supported())
+			return FALSE
+
+		//Min health is a percentage, corruption patches which have less health than this won't count
+		if (min_health && C.healthpercent() < min_health)
 			return FALSE
 
 		return TRUE
@@ -223,9 +227,13 @@
 		Animals
 		Necromorphs
 		Ghosts/signals
+
+	Optionally (enabled by default), tiles in sight of the marker, or a marker shard, are designated safe zone, crew visibility is ignored there
 */
-/turf/proc/is_seen_by_crew()
+/turf/proc/is_seen_by_crew(var/marker_safe_zone = TRUE)
 	.=FALSE
+	if (marker_safe_zone && is_in_sight_of_marker())
+		return FALSE
 	for (var/mob/living/carbon/human/H as anything in get_viewers(20, /mob/living/carbon/human))
 		if (H.is_necromorph())
 			//Necromorphs don't count
@@ -236,6 +244,16 @@
 				continue
 
 		return H
+
+
+/turf/proc/is_in_sight_of_marker()
+	var/list/safe_types = list(/obj/item/marker_shard, /obj/machinery/marker)
+	for (var/obj/O in dview(7, src))
+		if (is_type_in_list(O, safe_types))
+			return TRUE
+
+	return FALSE
+
 
 
 /atom/proc/get_cardinal_corruption()
