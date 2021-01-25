@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	if(!center)
 		return
 
-	GLOB.dview_mob.loc = center
+	GLOB.dview_mob.loc = get_turf(center)
 	GLOB.dview_mob.see_invisible = invis_flags
 	. = view(range, GLOB.dview_mob)
 	GLOB.dview_mob.loc = null

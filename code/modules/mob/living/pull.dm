@@ -145,6 +145,9 @@
 		if(!can_pull_size || can_pull_size < I.w_class)
 			to_chat(src, "<span class='warning'>It won't budge!</span>")
 			return
+		else if (min_pull_size() > I.w_class)
+			to_chat(src, "<span class='warning'>That's too small to drag while walking around, you need to pick it up!</span>")
+			return
 
 	return TRUE
 
@@ -209,7 +212,15 @@
 		do_pull_click(user, src)
 	return 1
 
-
+/*
+	Gets the smallest thing a mob can drag around
+	used to prevent humans from dragging pens and other tiny things
+*/
+/mob/proc/min_pull_size()
+	if (mob_size >= MOB_MEDIUM)
+		return ITEM_SIZE_LARGE
+	else
+		return 0
 
 /*
 	Client Procs
@@ -222,3 +233,5 @@
 		to_chat(usr, "<span class='notice'>You are not pulling anything.</span>")
 		return
 	usr.stop_pulling()
+
+
