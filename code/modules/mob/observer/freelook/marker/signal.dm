@@ -10,6 +10,33 @@
 		/datum/movement_handler/mob/incorporeal/eye
 	)
 
+	var/list/variations = list("markersignal-1",
+	"markersignal-2",
+	"markersignal-3",
+	"markersignal-4",
+	"markersignal-5",
+	"markersignal-6",
+	"markersignal-7",
+	"markersignal-8",
+	"markersignal-9",
+	"markersignal-10",
+	"markersignal-11",
+	"markersignal-12",
+	"markersignal-13",
+	"markersignal-14",
+	"markersignal-15",
+	"markersignal-16",
+	"markersignal-17",
+	"markersignal-18",
+	"markersignal-19",
+	"markersignal-20",
+	"markersignal-21",
+	"markersignal-22",
+	"markersignal-23",
+	"markersignal-24",
+	"markersignal-25"
+	)
+
 /mob/observer/eye/signal/Initialize()
 	..()
 	var/i = rand(1,25)
@@ -18,6 +45,8 @@
 /mob/observer/eye/signal/is_necromorph()
 	return TRUE
 
+/mob/observer/eye/signal/update_icon()
+	icon_state = pick(variations)
 
 //This will have a mob passed in that we were created from
 /mob/observer/eye/signal/New(var/mob/body)
@@ -159,6 +188,12 @@
 	set_necromorph(TRUE)
 	SSnecromorph.signals |= src
 	start_energy_tick()
+
+	//Lets load preferences if possible
+	//This will set our icon to one of the players' chosen ones
+	if (client && client.prefs && client.prefs.signal_custom && client.prefs.signal_custom.len)
+		variations = client.prefs.signal_custom.Copy()
+		update_icon()
 
 	spawn(1)	//Prevents issues when downgrading from master
 		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
