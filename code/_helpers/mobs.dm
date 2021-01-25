@@ -125,7 +125,12 @@ proc/age2agedescription(age)
 /proc/get_exposed_defense_zone(var/atom/movable/target)
 	return pick(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_FOOT, BP_R_FOOT, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG, BP_CHEST, BP_GROIN)
 
-/proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = 0, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT)
+/*
+	Needhand can be: 0, irrelevant
+	1: Must continue holding same thing
+	2. must have a free hand
+*/
+/proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = 0, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/needhand = 1)
 	if(!user || !target)
 		return 0
 	var/user_loc = user.loc
@@ -157,9 +162,13 @@ proc/age2agedescription(age)
 			. = 0
 			break
 
-		if(user.get_active_hand() != holding)
-			. = 0
-			break
+		if (needhand)
+			if(needhand == 1 && user.get_active_hand() != holding)
+				. = 0
+				break
+			else if (needhand == 2 && !user.has_free_hand())
+				. = 0
+				break
 
 		if(target_zone && user.zone_sel.selecting != target_zone)
 			. = 0

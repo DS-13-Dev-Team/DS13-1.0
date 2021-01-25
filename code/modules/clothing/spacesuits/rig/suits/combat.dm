@@ -4,7 +4,7 @@
 	icon_state = "security_rig"
 	suit_type = "combat hardsuit"
 	armor = list(melee = 70, bullet = 65, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 60)
-	online_slowdown = 1
+	online_slowdown = RIG_HEAVY
 	offline_slowdown = 3
 	offline_vision_restriction = TINT_HEAVY
 	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/handcuffs,/obj/item/device/t_scanner, /obj/item/weapon/rcd, /obj/item/weapon/tool/crowbar, \
@@ -51,7 +51,7 @@
 	icon_state = "military_rig"
 	suit_type = "military hardsuit"
 	armor = list(melee = 70, bullet = 75, laser = 60, energy = 15, bomb = 80, bio = 100, rad = 30)
-	online_slowdown = 1
+	online_slowdown = RIG_HEAVY
 	offline_slowdown = 3
 	offline_vision_restriction = TINT_HEAVY
 	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/handcuffs,/obj/item/device/t_scanner, /obj/item/weapon/rcd, /obj/item/weapon/tool/crowbar, \
@@ -93,210 +93,12 @@
 
 
 
-/////////////////////////////////////////////////////////////
-///////////////Dead Space EDF Rig Suits Proper///////////////
-/////////////////////////////////////////////////////////////
-
-
-/*/obj/item/weapon/rig/deadspace/edfsoldier
-	name = "advanced edf infantry rig control module"
-	suit_type = "advanced edf infantry rig"
-
-	icon_state = "edfgrunt_rig"
-	desc = "A reinforced rig suit with several thick armour plates covering vital areas. It bears the emblem of the USM Valor, an Earth Defense Force Destroyer Class vessel. It bears a mission patch on the right shoulder, a crimson red planet with a black Unitologist marker-like structure overshadowing it. 'Operation White Light, Cygnus System' is embroidered into the patch."
-	armor = list(melee = 70, bullet = 70, laser = 30, energy = 20, bomb = 50, bio = 50, rad = 50)
-	online_slowdown = 0.6
-	offline_slowdown = 5
-	emp_protection = 10
-	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/handcuffs,/obj/item/device/t_scanner, /obj/item/weapon/rcd, /obj/item/weapon/tool/crowbar, \
-	/obj/item/weapon/tool/screwdriver, /obj/item/weapon/tool/weldingtool, /obj/item/weapon/tool/wirecutters, /obj/item/weapon/tool/wrench, /obj/item/weapon/tool/multitool, \
-	/obj/item/device/radio, /obj/item/device/analyzer,/obj/item/weapon/storage/briefcase/inflatable, /obj/item/weapon/melee/baton, /obj/item/weapon/gun, \
-	/obj/item/weapon/storage/firstaid, /obj/item/weapon/reagent_containers/hypospray, /obj/item/roller, /obj/item/device/suit_cooling_unit)
-
-	chest_type = /obj/item/clothing/suit/space/rig/edfsoldier
-	helm_type = /obj/item/clothing/head/helmet/space/rig/edfsoldier
-	boot_type = /obj/item/clothing/shoes/magboots/rig/edfsoldier
-	glove_type = /obj/item/clothing/gloves/rig/edfsoldier
-
-
-/obj/item/clothing/suit/space/rig/edfsoldier
-	name = "advanced combat armor"
-	breach_threshold = 60
-
-/obj/item/clothing/head/helmet/space/rig/edfsoldier
-	name = "advanced combat helmet"
-	light_overlay = "helmet_light_dual"
-
-/obj/item/clothing/shoes/magboots/rig/edfsoldier
-	name = "advanced combat magboots"
-
-/obj/item/clothing/gloves/rig/edfsoldier
-	name = "advanced combat gloves"
-	siemens_coefficient = 0
-
-
-/obj/item/weapon/rig/deadspace/edfsoldier/equipped
-	initial_modules = list(
-		/obj/item/rig_module/vision/multi,
-		/obj/item/rig_module/chem_dispenser/combat,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/voice,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/mounted/taser	//adding taser here to reflect the stun mode EDF marines had in Dead Space: Aftermath
-		)
-
-
-/obj/item/weapon/rig/deadspace/edfengineer
-	name = "advanced edf sapper rig control module"
-	suit_type = "advanced edf sapper rig"
-
-	icon_state = "edfengie_rig"
-	desc = "A reinforced rig suit with several thick armour plates covering vital areas. It bears the emblem of the USM Valor, an Earth Defense Force Destroyer Class vessel. It bears a mission patch on the right shoulder, a crimson red planet with a black Unitologist marker-like structure overshadowing it. 'Operation White Light, Cygnus System' is embroidered into the patch. The suit has several yellow lines striped across it and the word 'Sapper' stamped on the chest."
-	armor = list(melee = 70, bullet = 70, laser = 30, energy = 20, bomb = 90, bio = 70, rad = 90)
-	online_slowdown = 0.6
-	offline_slowdown = 5
-	emp_protection = 10
-	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/handcuffs,/obj/item/device/t_scanner, /obj/item/weapon/rcd, /obj/item/weapon/tool/crowbar, \
-	/obj/item/weapon/tool/screwdriver, /obj/item/weapon/tool/weldingtool, /obj/item/weapon/tool/wirecutters, /obj/item/weapon/tool/wrench, /obj/item/weapon/tool/multitool, \
-	/obj/item/device/radio, /obj/item/device/analyzer,/obj/item/weapon/storage/briefcase/inflatable, /obj/item/weapon/melee/baton, /obj/item/weapon/gun, \
-	/obj/item/weapon/storage/firstaid, /obj/item/weapon/reagent_containers/hypospray, /obj/item/roller, /obj/item/device/suit_cooling_unit)
-
-	chest_type = /obj/item/clothing/suit/space/rig/edfengie
-	helm_type = /obj/item/clothing/head/helmet/space/rig/edfengie
-	boot_type = /obj/item/clothing/shoes/magboots/rig/edfengie
-	glove_type = /obj/item/clothing/gloves/rig/edfengie
-
-
-/obj/item/clothing/suit/space/rig/edfengie
-	name = "advanced combat armor"
-	breach_threshold = 60
-
-/obj/item/clothing/head/helmet/space/rig/edfengie
-	name = "advanced combat helmet"
-	light_overlay = "helmet_light_dual"
-
-/obj/item/clothing/shoes/magboots/rig/edfengie
-	name = "advanced combat magboots"
-
-/obj/item/clothing/gloves/rig/edfengie
-	name = "advanced combat gloves"
-	siemens_coefficient = 0
-
-
-/obj/item/weapon/rig/deadspace/edfengineer/equipped
-	initial_modules = list(
-		/obj/item/rig_module/vision/multi,
-		/obj/item/rig_module/chem_dispenser/combat,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/voice,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/device/rcd,
-		/obj/item/rig_module/mounted/taser	//adding taser here to reflect the stun mode EDF marines had in Dead Space: Aftermath
-		)
-
-
-/obj/item/weapon/rig/deadspace/edfmedic
-	name = "advanced edf medic rig control module"
-	suit_type = "advanced edf medic rig"
-
-	icon_state = "edfmedic_rig"
-	desc = "A reinforced rig suit with several thick armour plates covering vital areas. It bears the emblem of the USM Valor, an Earth Defense Force Destroyer Class vessel. It bears a mission patch on the right shoulder, a crimson red planet with a black Unitologist marker-like structure overshadowing it. 'Operation White Light, Cygnus System' is embroidered into the patch. The suit has a red cross on the chest, as well as the word 'Medic' stamped on the armour."
-	armor = list(melee = 70, bullet = 70, laser = 30, energy = 20, bomb = 50, bio = 90, rad = 70)
-	online_slowdown = 0.6
-	offline_slowdown = 5
-	emp_protection = 10
-	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/handcuffs,/obj/item/device/t_scanner, /obj/item/weapon/rcd, /obj/item/weapon/tool/crowbar, \
-	/obj/item/weapon/tool/screwdriver, /obj/item/weapon/tool/weldingtool, /obj/item/weapon/tool/wirecutters, /obj/item/weapon/tool/wrench, /obj/item/weapon/tool/multitool, \
-	/obj/item/device/radio, /obj/item/device/analyzer,/obj/item/weapon/storage/briefcase/inflatable, /obj/item/weapon/melee/baton, /obj/item/weapon/gun, \
-	/obj/item/weapon/storage/firstaid, /obj/item/weapon/reagent_containers/hypospray, /obj/item/roller, /obj/item/device/suit_cooling_unit)
-
-	chest_type = /obj/item/clothing/suit/space/rig/edfmedic
-	helm_type = /obj/item/clothing/head/helmet/space/rig/edfmedic
-	boot_type = /obj/item/clothing/shoes/magboots/rig/edfmedic
-	glove_type = /obj/item/clothing/gloves/rig/edfmedic
-
-
-/obj/item/clothing/suit/space/rig/edfmedic
-	name = "advanced combat armor"
-	breach_threshold = 60
-
-/obj/item/clothing/head/helmet/space/rig/edfmedic
-	name = "advanced combat helmet"
-	light_overlay = "helmet_light_dual"
-
-/obj/item/clothing/shoes/magboots/rig/edfmedic
-	name = "advanced combat magboots"
-
-/obj/item/clothing/gloves/rig/edfmedic
-	name = "advanced combat gloves"
-	siemens_coefficient = 0
-
-
-/obj/item/weapon/rig/deadspace/edfmedic/equipped
-	initial_modules = list(
-		/obj/item/rig_module/vision/multi,
-		/obj/item/rig_module/chem_dispenser/combat,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/voice,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/device/healthscanner,
-		/obj/item/rig_module/mounted/taser	//adding taser here to reflect the stun mode EDF marines had in Dead Space: Aftermath
-		)
-
-
-/obj/item/weapon/rig/deadspace/edfcommander
-	name = "advanced edf commander rig control module"
-	suit_type = "advanced edf commander rig"
-
-	icon_state = "edfcomm_rig"
-	desc = "A reinforced rig suit with several thick armour plates covering vital areas. It bears the emblem of the USM Valor, an Earth Defense Force Destroyer Class vessel. It bears a mission patch on the right shoulder, a crimson red planet with a black Unitologist marker-like structure overshadowing it. 'Operation White Light, Cygnus System' is embroidered into the patch. The suit bears an additional shoulderpad, the mark of a commissioned officer amongst the EDF."
-	armor = list(melee = 85, bullet = 85, laser = 30, energy = 20, bomb = 50, bio = 50, rad = 70)
-	online_slowdown = 0.4
-	offline_slowdown = 5
-	emp_protection = 10
-	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/handcuffs,/obj/item/device/t_scanner, /obj/item/weapon/rcd, /obj/item/weapon/tool/crowbar, \
-	/obj/item/weapon/tool/screwdriver, /obj/item/weapon/tool/weldingtool, /obj/item/weapon/tool/wirecutters, /obj/item/weapon/tool/wrench, /obj/item/weapon/tool/multitool, \
-	/obj/item/device/radio, /obj/item/device/analyzer,/obj/item/weapon/storage/briefcase/inflatable, /obj/item/weapon/melee/baton, /obj/item/weapon/gun, \
-	/obj/item/weapon/storage/firstaid, /obj/item/weapon/reagent_containers/hypospray, /obj/item/roller, /obj/item/device/suit_cooling_unit)
-
-	chest_type = /obj/item/clothing/suit/space/rig/edfcommander
-	helm_type = /obj/item/clothing/head/helmet/space/rig/edfcommander
-	boot_type = /obj/item/clothing/shoes/magboots/rig/edfcommander
-	glove_type = /obj/item/clothing/gloves/rig/edfcommander
-
-
-/obj/item/clothing/suit/space/rig/edfcommander
-	name = "advanced combat armor"
-	breach_threshold = 60
-
-/obj/item/clothing/head/helmet/space/rig/edfcommander
-	name = "advanced combat helmet"
-	light_overlay = "helmet_light_dual_green"
-
-/obj/item/clothing/shoes/magboots/rig/edfcommander
-	name = "advanced combat magboots"
-
-/obj/item/clothing/gloves/rig/edfcommander
-	name = "advanced combat gloves"
-	siemens_coefficient = 0
-
-
-/obj/item/weapon/rig/deadspace/edfcommander/equipped
-	initial_modules = list(
-		/obj/item/rig_module/vision/multi,
-		/obj/item/rig_module/chem_dispenser/combat,
-		/obj/item/rig_module/cooling_unit,
-		/obj/item/rig_module/voice,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/mounted/taser	//adding taser here to reflect the stun mode EDF marines had in Dead Space: Aftermath
-		)
-
 
 
 //////////////////////////////////////////////////////////////////////
 ///////////////Dead Space Unitologists Rig Suits Proper///////////////
 //////////////////////////////////////////////////////////////////////
-
+/*
 
 /obj/item/weapon/rig/deadspace/unisoldier
 	name = "unitologist combat rig control module"

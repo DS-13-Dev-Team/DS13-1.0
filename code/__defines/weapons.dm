@@ -68,5 +68,5 @@
 
 
 //Damage dealt by fire per second, is equal to the fire temperature - heat resistance, multiplied by this
-//1 damage (per second) per 150 degrees kelvin
-#define FIRE_DAMAGE_MULTIPLIER	0.0066
+//1 damage (per second) per 125 degrees kelvin
+#define FIRE_DAMAGE_MULTIPLIER	0.008

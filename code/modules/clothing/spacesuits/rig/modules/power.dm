@@ -14,7 +14,7 @@
 	var/atom/interfaced_with // Currently draining power from this device.
 	var/total_power_drained = 0
 	var/drain_loc
-	var/max_draining_rate = 20 KILOWATTS // The same as unupgraded cyborg recharger.
+	var/max_draining_rate = 30 KILOWATTS // The same as unupgraded cyborg recharger.
 
 	loadout_tags = list(LOADOUT_TAG_RIG_POWERSIPHON)
 
@@ -60,9 +60,10 @@
 		holder.processing_modules |= src
 	drain_loc = interfaced_with.loc
 
-	if (prob(20))
-		holder.spark_system.start()
-		playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)
+	H.face_atom(target)
+
+	holder.spark_system.start()
+	playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)
 
 	return 1
 
@@ -84,8 +85,9 @@
 	if(!H || !istype(H))
 		return 0
 
-	holder.spark_system.start()
-	playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)
+	if (prob(10))
+		holder.spark_system.start()
+		playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)
 
 	if(!holder.cell)
 		to_chat(H, "<span class = 'danger'>Your power siphon flashes an error; there is no cell in your rig.</span>")
@@ -114,6 +116,8 @@
 	return
 
 /obj/item/rig_module/power_sink/proc/drain_complete(var/mob/living/M)
+	holder.spark_system.start()
+	playsound(M.loc, 'sound/effects/sparks2.ogg', 50, 1)
 
 	if(!interfaced_with)
 		if(M) to_chat(M, "<font color='blue'><b>Total power drained:</b> [round(total_power_drained*CELLRATE)] Wh.</font>")

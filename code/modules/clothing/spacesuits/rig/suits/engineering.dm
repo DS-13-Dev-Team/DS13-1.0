@@ -4,7 +4,7 @@
 	icon_state = "ds_engineering_rig"
 	armor = list(melee = 40, bullet = 50, laser = 50, energy = 25, bomb = 60, bio = 100, rad = 75)
 	offline_slowdown = 4
-	online_slowdown = 1.75
+	online_slowdown = RIG_HEAVY
 	acid_resistance = 2	//Contains a fair bit of plastic
 
 	chest_type = /obj/item/clothing/suit/space/rig/engineering

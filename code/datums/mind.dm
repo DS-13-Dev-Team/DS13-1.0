@@ -42,7 +42,6 @@
 
 	var/assigned_role
 	var/special_role
-	var/ert_role
 
 	var/role_alt_title
 
@@ -74,7 +73,7 @@
 	src.key = key
 	..()
 
-/datum/mind/proc/transfer_to(mob/living/new_character, force_key_move = FALSE)
+/datum/mind/proc/transfer_to(mob/living/new_character)
 	if(!istype(new_character))
 		world.log << "## DEBUG: transfer_to(): Some idiot has tried to transfer_to() a non mob/living mob. Please inform Carn"
 	if(current)					//remove ourself from our old body's mind variable
@@ -98,7 +97,7 @@
 	if(changeling)
 		new_character.make_changeling()
 
-	if(active || force_key_move)
+	if(active)
 		new_character.key = key		//now transfer the key to link the client to our new body
 
 /datum/mind/proc/store_memory(new_text)
@@ -471,8 +470,7 @@
 
 /datum/mind/proc/reset()
 	assigned_role =   null
-	special_role =    null
-	ert_role =		  null
+	set_special_role(null)
 	role_alt_title =  null
 	assigned_job =    null
 	//faction =       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
@@ -494,24 +492,16 @@
 	else
 		return 0
 
-//ERT role check
-/mob/living/proc/check_ert_role(role)
-	if(mind)
-		if(!role)
-			return mind.ert_role
-		else
-			return (mind.ert_role == role) ? 1 : 0
-	else
-		return 0
-
 
 
 /datum/mind/proc/get_antag_weight(var/category)
+	//We start with a base of 1, and add bonuses based on equipment
+	. = 1
+
 	/*
 		If we're a nonliving mob, then we're either joining at roundstart, or being picked from ghosts
 		In both of these cases, we will look at preference loadout for antag weightings
 	*/
-	. = 1
 	if (!isliving(current))
 		var/datum/preferences/P = get_preferences(current)
 		if (!P || !P.loadout)
@@ -526,7 +516,12 @@
 			. += I.get_antag_weight(category)
 
 
-	//We start with a base of 1, and add bonuses based on equipment
+
+
+
+
+/datum/mind/proc/set_special_role(var/newinput)
+	special_role = newinput
 
 
 //Return a positive or negative number to add that percentage to antag weighting for the chosen category
@@ -562,7 +557,7 @@
 
 /mob/living/carbon/alien/larva/mind_initialize()
 	..()
-	mind.special_role = "Larva"
+	mind.set_special_role("Larva")
 
 //AI
 /mob/living/silicon/ai/mind_initialize()
@@ -578,7 +573,7 @@
 /mob/living/silicon/pai/mind_initialize()
 	..()
 	mind.assigned_role = "pAI"
-	mind.special_role = ""
+	mind.set_special_role("")
 
 //Animals
 /mob/living/simple_animal/mind_initialize()
@@ -596,14 +591,14 @@
 /mob/living/simple_animal/construct/builder/mind_initialize()
 	..()
 	mind.assigned_role = "Artificer"
-	mind.special_role = "Cultist"
+	mind.set_special_role("Cultist")
 
 /mob/living/simple_animal/construct/wraith/mind_initialize()
 	..()
 	mind.assigned_role = "Wraith"
-	mind.special_role = "Cultist"
+	mind.set_special_role("Cultist")
 
 /mob/living/simple_animal/construct/armoured/mind_initialize()
 	..()
 	mind.assigned_role = "Juggernaut"
-	mind.special_role = "Cultist"
+	mind.set_special_role("Cultist")

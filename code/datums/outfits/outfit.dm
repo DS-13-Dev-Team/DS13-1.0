@@ -273,6 +273,7 @@ var/list/outfits_decls_by_type_
 //Wrapper for creating, so that we can manipulate the items
 /decl/hierarchy/outfit/proc/create_item(var/path, var/location, var/dummy = FALSE)
 	var/datum/thing = path
+
 	if (dummy && initial(thing.implements_dummy))
 		return new path(location, dummy = TRUE)
 	else

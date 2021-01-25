@@ -308,7 +308,7 @@
 		to_chat(src, "<span class='notice'>Something is there but you can't see it.</span>")
 		return 1
 
-	face_atom(A)
+	face_atom(A, TRUE)
 	A.examine(src)
 
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
@@ -330,7 +330,7 @@
 		if(P)
 			qdel(P)	// qdel
 
-	face_atom(A)
+	face_atom(A, TRUE)
 	return 1
 
 //Gets the mob grab conga line.
@@ -909,7 +909,7 @@
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
 	else
 		to_chat(user, "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>")
-	if(!do_mob(user, S, 30, incapacitation_flags = INCAPACITATION_DEFAULT & (~INCAPACITATION_FORCELYING))) //let people pinned to stuff yank it out, otherwise they're stuck... forever!!!
+	if(!do_mob(user, S, 30, incapacitation_flags = INCAPACITATION_DEFAULT & (~INCAPACITATION_FORCELYING), needhand = 2)) //let people pinned to stuff yank it out, otherwise they're stuck... forever!!!
 		return
 	if(!selection || !S || !user)
 		return

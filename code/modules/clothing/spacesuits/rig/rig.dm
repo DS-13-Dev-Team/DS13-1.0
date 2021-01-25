@@ -87,8 +87,8 @@
 	var/seal_delay = SEAL_DELAY
 	var/sealing                                               // Keeps track of seal status independantly of canremove.
 	var/offline = 1                                           // Should we be applying suit maluses?
-	var/online_slowdown = 0                                   // If the suit is deployed and powered, it sets slowdown to this.
-	var/offline_slowdown = 3                                  // If the suit is deployed and unpowered, it sets slowdown to this.
+	var/online_slowdown = RIG_MEDIUM                                  // If the suit is deployed and powered, it sets slowdown to this.
+	var/offline_slowdown = 4                                  // If the suit is deployed and unpowered, it sets slowdown to this.
 	var/vision_restriction = TINT_NONE
 	var/offline_vision_restriction = TINT_HEAVY               // tint value given to helmet
 	var/airtight = 1 //If set, will adjust ITEM_FLAG_AIRTIGHT and ITEM_FLAG_STOPPRESSUREDAMAGE flags on components. Otherwise it should leave them untouched.
@@ -152,7 +152,7 @@
 	if(helm_type)
 		helmet = new helm_type(src)
 		helmet.rig = src
-		verbs |= /obj/item/weapon/rig/proc/toggle_helmet
+		verbs |= /obj/item/weapon/rig/proc/toggle_helmet_verb
 	if(boot_type)
 		boots = new boot_type(src)
 		boots.rig = src

@@ -200,7 +200,7 @@ GUEST_BAN
 # FORUMURL http://example.com
 
 ## Wiki address
-WIKIURL https://ds-ss13.com/index.php/ 
+WIKIURL https://ds-ss13.com/index.php/Main_Page
 
 ## GitHub address
 GITHUBURL https://github.com/DS-13-Dev-Team/DS13

@@ -143,6 +143,7 @@
 
 //The heavy pulse rifle gains some heat whenever the user pulls the trigger, in addition to per shot
 /obj/item/weapon/gun/projectile/automatic/pulse_heavy/started_firing()
+	.=..()
 	gain_heat(heat_per_burst)
 
 

@@ -59,6 +59,89 @@
 		
 		-->
 		<div class="commit sansserif">
+			<h2 class="date">06 February 2021</h2>
+			<h3 class="author">EvanKhell561 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed a common exploit where Cargo could infinitely export materials for credit gain.</li>
+			</ul>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed plastique explosion runtiming and not producing an explosion.</li>
+				<li class="bugfix">Fixed Marker shards being instantly destroyed by plastique explosives. Buffed shards health and resistance. Now it takes 2-3 charges to destroy it.</li>
+				<li class="tweak">Items now take damage to their health instead of just being deleted by explosions.</li>
+			</ul>
+			<h3 class="author">Nanako updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added the EDF marine RIG in two variants. The heavier, simpler, tougher one for grunts, and the lighter, fancier version for specialists. Only available to EDF Marine ERTs</li>
+				<li class="rscadd">Added the patrol RIG, currently only available as a rare drop in random rig lists.</li>
+				<li class="rscadd">Added the Femoral Exoskeleton RIG module, in basic and advanced versions. These allow the user to move more quickly, at a cost of power. Currently only available as random loot.</li>
+				<li class="tweak">Buffed the explosion size of the Self Destruct RIG module.</li>
+				<li class="tweak">Rigs with a hotswap module now do not need to be opened to install new modules, and thus require no tools.</li>
+				<li class="tweak">The power siphon module is now less spammy, and charges your battery faster.</li>
+				<li class="tweak">Adjusted and standardised all the slowdown values on rigs, into several discrete categories.</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Moderately increased HV Pulse Round cost to create in R&D.</li>
+				<li class="tweak">Minorly decreased the amout of toxin damage dealt when overdosed to make this more manageable.</li>
+				<li class="experiment">Replaced all locker sprites with the standard CEC Locker. This is for lore accuracy, but not set in stone.</li>
+				<li class="soundadd">New locker opening and closing sounds.</li>
+				<li class="rscadd">Made all departmentally-related jobs now spawn automatically with their RIG on their back. Despite what one has selected, if an override is present for job-specific RIGs, this will now take precedence.</li>
+				<li class="rscadd">Jobs with specific rigtypes that differ from their subordinate counterpart, will now spawn with the rig as designated.</li>
+				<li class="rscdel">Removed Civilian RIG from loadout options and instead added it to the new RIG Type.</li>
+				<li class="rscdel">Removed the ability to spawn with backpacks.</li>
+				<li class="rscdel">Removed RIGs from lockers.</li>
+				<li class="tweak">Renamed Backpack Type in loadout to RIG Type.</li>
+				<li class="tweak">Default RIG is now the CEC Civilian RIG, which will spawn on your back if you do not have a job with an override present.</li>
+			</ul>
+			<h3 class="author">evankhell561 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed a common issue with the Suspension Field Generator that caused it to go non-functional.</li>
+			</ul>
+
+			<h2 class="date">04 February 2021</h2>
+			<h3 class="author">Nanako updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Majorly refactored code for most DS13 guns. Everything should behave just about the same, but less buggy</li>
+				<li class="tweak">Rebalanced ripper, tweaked damage and degradation rate on sawblades</li>
+				<li class="tweak">Buffed the power of the hydrazine torch</li>
+				<li class="tweak">Swapped the controls to cycle (altclick) and toggle (ctrlaltclick) gun aiming modes</li>
+				<li class="bugfix">Fixed various cases where weapons wouldn't stop firing in certain conditions.</li>
+				<li class="bugfix">Fixed detonator briefly showing a line of green tiles when a mine is deployed.</li>
+				<li class="tweak">Slightly buffed the damage of the rivet gun.</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="experiment">Added a new type of shield. This shield is the most advanced combat shield currently in the game, and can be made by Research, requiring Combat 5 and Materials 6. All values currently pending initial testing.</li>
+				<li class="imageadd">New sprite for the riot shield, and altered its contained materials to match the new sprite.</li>
+			</ul>
+
+			<h2 class="date">27 January 2021</h2>
+			<h3 class="author">Unknown updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Rebalanced a few rigs. Buffed security rig, nerfed mining one</li>
+				<li class="bugfix">Fixed positioning and facing issues with sacrifice execution</li>
+				<li class="bugfix">Fixed helmet toggle not working</li>
+			</ul>
+
+			<h2 class="date">25 January 2021</h2>
+			<h3 class="author">Nanako updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="experiment">Re-enabled Enemy Within gamemode, with several balance tweaks.</li>
+				<li class="rscadd">Crew visibility blocking is now ignored on tiles which are in sight of the marker, or a marker shard. This applies to signal abilities and corruption node spawning</li>
+				<li class="tweak">Marker shards now embed in corruption, and will need to be slowly cut free with a bladed tool.</li>
+				<li class="tweak">Carrying a marker shard on your person is now extremely taxing, and bad for your health.</li>
+				<li class="tweak">Marker shards will no longer behave when dragged around in lockers or storages.</li>
+				<li class="rscdel">Items smaller than Large size can no longer be dragged by humans. If you want to move a small item, pick it up and carry it.</li>
+				<li class="tweak">Enemy Within gamemode will now spawn an additional shardbearer if all existing shards have been neutralised.</li>
+			</ul>
+
+			<h2 class="date">24 January 2021</h2>
+			<h3 class="author">Nanako updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed harvester not drawing biomass from things</li>
+			</ul>
+
 			<h2 class="date">20 January 2021</h2>
 			<h3 class="author">Nanako updated:</h3>
 			<ul class="changes bgimages16">
@@ -196,120 +279,6 @@
 				<li class="spellcheck">Fixed the door names of the Forensics Lab and Cryogenic Isolation in the Brig.</li>
 				<li class="maptweak">Minor adjustments to SMO and CSCIO's office to make them feel a little more fancy.</li>
 				<li class="tweak">Moderately increased the Heavy Pulse Rifle's accuracy, minorly increased the damage factor, heat capacity and overheat cooldown.</li>
-			</ul>
-
-			<h2 class="date">06 December 2020</h2>
-			<h3 class="author">Jeser updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed being unable to restock SCAF Bullpup and SWS Motorized Pulse Rifle magazines with appropriate ammunition.</li>
-				<li class="bugfix">Removed see_in_dark value changes that resulted in necromorphs not having dark vision.</li>
-			</ul>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">An experimental bugfix to departmental pagers not working.</li>
-			</ul>
-
-			<h2 class="date">30 November 2020</h2>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="experiment">!START OF EXPERIMENTAL BALANCING AND BUGFIXES!</li>
-				<li class="maptweak">The Kellion, Valor and Unitologist ERT types now all have a distinct access datum, locking their ship(s) to just them, including any of their controls. Unless you have an ID Card or have been granted access, you won't be able to hijack, enter or loot it.</li>
-				<li class="tweak">Kellion team members now spawn with an ERT headset.</li>
-				<li class="tweak">Kellion team members now spawn with individual rigs.</li>
-				<li class="tweak">Kellion team members now get HUDs relevant to their position.</li>
-				<li class="maptweak">Increased Kellion's medical capability, which was previously a bit... Underwhelming.</li>
-				<li class="maptweak">Kellion's lockers are now used to store weapons prior to spawning, with one random spawn per round.</li>
-				<li class="maptweak">SecTec added to Kellion.</li>
-				<li class="maptweak">NanoMed Plus added to Kellion.</li>
-				<li class="experiment">!END OF EXPERIMENTAL BALANCING AND BUGFIXES!</li>
-				<li class="rscdel">Temporarily removed flashbangs, teargas grenades and flashes from the Security vendors. They will be re-added when the intended fixes have been rolled out for Necromorphs getting stunlocked.</li>
-				<li class="rscdel">Removed a few R&D designs that made no sense or weren't for us.</li>
-				<li class="rscdel">Removed the 'Special Ops' crate that could be ordered by Cargo.</li>
-				<li class="rscadd">Laser Pickaxe added to R&D designs. Pick in dem heads! But... Really don't. I'm also a moderator, people. Please don't.</li>
-				<li class="tweak">Significantly reduced the explosion radius and power of fueltanks. They're not portable mininukes anymore.</li>
-				<li class="tweak">Reduced folded rollerbeds in size so they can now fit in storage.</li>
-				<li class="tweak">Changed the item requirements to make a Divet from Silver to Plasteel.</li>
-				<li class="tweak">Considerably lowered the requirements to make the Price Scanner in R&D.</li>
-				<li class="tweak">Significantly lowered the requirements of some RIG accessories in R&D. Some of these may not be useful as of yet, but might soon be.</li>
-				<li class="tweak">Contact Beam Energy significantly increased in cost.</li>
-				<li class="tweak">Made the Contact Beam moderately more expensive to make.</li>
-				<li class="tweak">Moderately decreased damage output from advanced circular saw.</li>
-				<li class="tweak">Made the Contact Beam gun a huge item, whereas previously it was normal.</li>
-				<li class="tweak">Replaced round end statistics to below the round type victory.</li>
-				<li class="spellcheck">Renamed the laser pickaxe to rock saw, according to wiki lore.</li>
-				<li class="experiment">Pulse High Velocity rounds can now be made by R&D. Their cost and price currently remain something that can be discussed.</li>
-				<li class="bugfix">Experimental fix to the wall of death screen one gets after being knocked unconscious at times.</li>
-				<li class="bugfix">Fixed an issue where the inner cargo warehouse shutter button wouldn't work.</li>
-				<li class="bugfix">Fixed the Colony's railings not being secured at round start.</li>
-				<li class="tweak">Granted Security, Medical and Research access to the colony.</li>
-				<li class="maptweak">Added a bloodbank to the Aegis Colony Medical outpost.</li>
-				<li class="rscadd">Rejoice for our Science Mains! A fully operational and waiting facility has been added to the Aegis Colony for all your (Xeno)-Archeology desires! Idk, feeling cute, might discover an anomaly later kind of stuff!</li>
-			</ul>
-			<h3 class="author">Unknown updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Rebalanced the power of all material melee weapons. Especially the fire axe</li>
-				<li class="bugfix">Certain limbs can no longer be regrown with healing spells. This applies to divider limbs/head, and exploder pustule</li>
-			</ul>
-
-			<h2 class="date">26 November 2020</h2>
-			<h3 class="author">Snypehunter007 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed there being no cameras on the E.V.A. Deck or in the Upper Deck Port SMES Room.</li>
-				<li class="bugfix">Fixed the Solar Transfer Power Substation atmos line not connecting to the main atmos loop.</li>
-				<li class="bugfix">Fixed the Solar Transfer Power Substation APC not charging.</li>
-				<li class="bugfix">Fixed there being no NanoUI map for the E.V.A. Deck.</li>
-			</ul>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added three more Necromorph related round-end stats. Total accrued biomass, and the Marker's player name.</li>
-				<li class="rscadd">Sound Environment overhaul! Rooms, hallways and even Aegis now have distinct types of sound environments that will change the environmental sound reverberation and sharpness on a room-to-room basis. Currently highly experimental. Contact me if the sound environment feels off.</li>
-			</ul>
-
-			<h2 class="date">20 November 2020</h2>
-			<h3 class="author">Jeser updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Increased rules window size.</li>
-				<li class="bugfix">Fixed rules window not loading rules.</li>
-			</ul>
-			<h3 class="author">Nanako updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added the Advanced RIG, a rare, lightweight and tough suit, which is afforded to the chief engineer by default. You might be lucky enough to find one elsewhere</li>
-				<li class="rscadd">Added the Advanced Vital Monitor, a rig module that comes with a built in death alarm to notify emergency services of your untimely demise.</li>
-				<li class="rscadd">Advanced and hacker rig now both have insulated gloves</li>
-				<li class="tweak">Slightly increased the range of puker's vomit, and reduced its windup time, both by 10%</li>
-				<li class="tweak">Necromorph acid now metabolises a little faster, thus dealing damage faster. The total damage is unaffected</li>
-				<li class="tweak">Pulse turrets now only require one power node to create. Formerly two</li>
-				<li class="tweak">Slightly reduced the max range of the plasma cutter, it may not reach the screen edge when firing diagonally now.</li>
-				<li class="rscadd">Added repair kits, which can be used to perfectly repair other tools, or to repair any kind of object. They can be crafted from easily available materials and items.</li>
-				<li class="rscadd">Added the Tool Expansion recipe, which increases the maximum modification slots on a tool by one, at the cost of a power node.</li>
-			</ul>
-			<h3 class="author">Snypehunter007 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">The E.V.A. Deck has been added.</li>
-				<li class="maptweak">The Upper Deck Port Power Storage room has been converted into an SMES substation that is getting power from the E.V.A Deck</li>
-				<li class="bugfix">An extra disposal pipe in the Engine SMES room has been removed.</li>
-				<li class="bugfix">The remaining titanium windows on the Bridge have been replaced with hull windows.</li>
-				<li class="bugfix">The lockdown buttons in the Captain's Workstation now are set to the correct values.</li>
-				<li class="rscadd">Added a variety of sprites for various condiments.</li>
-				<li class="rscdel">Screll Snacks have been removed from vendors.</li>
-				<li class="rscdel">Various non-lore friendly dishes have been removed.</li>
-				<li class="tweak">Various ingredients in freezer lockers have had the number in them reduced due to the introduction of Hydroponics.</li>
-				<li class="tweak">Changed the sprite of Cuban Carp.</li>
-				<li class="bugfix">Fixed spelling errors in the descriptions of the shark food dishes.</li>
-				<li class="bugfix">Fixed the large Monkfish sprite being incorrect.</li>
-			</ul>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Changed the Lurker's mob size status to MOB_SMALL as opposed to MOB_MEDIUM.</li>
-				<li class="tweak">Altered locker code. It will not fit one (1) medium sized mob.</li>
-			</ul>
-			<h3 class="author">Unknown updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Necromorph healing and regeneration abilities now remove embedded shrapnel in their body</li>
-				<li class="tweak">Pulse rounds will no longer embed in victims</li>
-				<li class="tweak">Pulse rounds are slightly faster</li>
-				<li class="tweak">Necromorph healing on corruption reduced from 1.2 to 1 per second</li>
-				<li class="tweak">Necromorph lasting damage ratio from hits increased from 15% to 20%</li>
 			</ul>
 		</div>
 

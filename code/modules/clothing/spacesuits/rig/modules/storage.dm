@@ -68,6 +68,11 @@
 *****************************/
 //This is called whenever people use something on the rig backpack
 /obj/item/rig_module/storage/accepts_item(var/obj/item/input_device)
+	if (istype(input_device, /obj/item/rig_module) && holder.hotswap)
+		var/response = alert(usr,"Are you trying to install this module into the RIG, or to store it in the internal storage?","Confirm installation","Install","Store")
+		if (response != "Store")
+			return FALSE
+
 	if (container)
 		return container.attackby(input_device, usr)
 	return FALSE

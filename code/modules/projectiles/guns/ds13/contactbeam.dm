@@ -64,7 +64,7 @@
 	if (charge_status == EMPTY)
 		return	//Save some processing, we don't care
 
-	update_click_handlers()
+	update_aiming_handler()
 
 	//Again, it might have changed
 	if (charge_status == EMPTY)

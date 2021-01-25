@@ -211,13 +211,17 @@
 
 //To be called from things that spill objects on the floor.
 //Makes an object move around randomly for a couple of tiles
-/obj/proc/tumble(var/dist = 2)
+//Emerge var tells whether or not to remove the item from objects its currently inside
+/obj/proc/tumble(var/dist = 2, var/emerge = TRUE)
 	set waitfor = FALSE
 	if (anchored)
 		return
 
 	if (!isturf(loc))
-		return
+		if (emerge)
+			forceMove(get_turf(src))
+		else
+			return
 
 	if (dist >= 1)
 		dist += rand(0,1)

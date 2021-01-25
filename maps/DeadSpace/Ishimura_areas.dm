@@ -802,6 +802,10 @@ area/ishimura/upper/medical/bpc
 	name = "\improper Large Storage Room"
 	sound_env = LARGE_ENCLOSED
 
+/area/ishimura/lower/misc/storagesmall
+	name = "\improper Small Storage Room"
+	sound_env = LARGE_ENCLOSED
+
 /area/ishimura/lower/misc/observationroom
 	name = "\improper Observation Room"
 	sound_env = MEDIUM_SOFTFLOOR
