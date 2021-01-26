@@ -132,7 +132,7 @@
 	duration = 5 SECONDS
 
 /datum/execution_stage/cover_mouth/enter()
-	host.user.face_atom(host.victim)
+	host.user.face_atom(host.victim, TRUE)
 	host.user.set_selected_zone(BP_MOUTH)
 	.=..()
 
@@ -163,7 +163,7 @@
 	host.user.visible_message(SPAN_EXECUTION("[host.user] raises the [host.weapon] high, preparing to strike!"))
 	//Rises up into the air then comes down upon the victim fast
 
-	animate(host.user, pixel_y = host.user.pixel_y + 16, time = duration * 0.9)
+	animate(host.user, pixel_y = host.user.pixel_y + 16, time = duration * 1)
 	animate(pixel_y = host.user.pixel_y - 18, time = duration * 0.1, easing = BACK_EASING | EASE_OUT)
 
 	.=..()
