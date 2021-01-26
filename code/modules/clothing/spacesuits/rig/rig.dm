@@ -152,7 +152,7 @@
 	if(helm_type)
 		helmet = new helm_type(src)
 		helmet.rig = src
-		verbs |= /obj/item/weapon/rig/proc/toggle_helmet
+		verbs |= /obj/item/weapon/rig/proc/toggle_helmet_verb
 	if(boot_type)
 		boots = new boot_type(src)
 		boots.rig = src

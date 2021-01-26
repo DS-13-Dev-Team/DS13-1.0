@@ -14,7 +14,9 @@
 /datum/execution_stage/approach/enter()
 	get_target_turf()
 
-
+	if (!target_turf)
+		to_chat(host.user, SPAN_DANGER("Unable to reach target, they may be too close to obstacles"))
+		return FALSE	//This will cause an interrupt and fail the execution
 
 	GLOB.moved_event.register(host.user, src, /datum/execution_stage/approach/proc/user_moved)
 	walk_to(host.user, target_turf, 0, SPEED_TO_DELAY(speed))
@@ -23,19 +25,34 @@
 
 
 /datum/execution_stage/approach/exit()
+	spawn(1)
+		host.user.face_atom(host.victim, TRUE)
 	walk(host.user, 0)
 
 	GLOB.moved_event.unregister(host.user, src, /datum/execution_stage/approach/proc/user_moved)
 
+/datum/execution_stage/approach/interrupt()
+	walk(host.user, 0)
+
+	GLOB.moved_event.unregister(host.user, src, /datum/execution_stage/approach/proc/user_moved)
 
 /datum/execution_stage/approach/proc/get_target_turf()
 	victim_last_loc = get_turf(host.victim)
+	target_turf = null
 	if (host.victim.lying)
-		target_turf = victim_last_loc
+		if (turf_clear(victim_last_loc))
+			target_turf = victim_last_loc
+		else
+			for (var/direction in GLOB.cardinal)
+				var/turf/T = get_step(victim_last_loc, direction)
+				if (turf_clear(T))
+					target_turf = T
 		return
 
 	//Get the turf infront of where the host.victim is facing
-	target_turf = get_step(host.victim, host.victim.dir)
+	var/turf/T = get_step(host.victim, host.victim.dir)
+	if (turf_clear(T))
+		target_turf = T
 
 //We will recalculate the position after each step, in case the host.victim is trying to escape us
 /datum/execution_stage/approach/proc/user_moved(var/mover, var/oldloc, var/newloc)
