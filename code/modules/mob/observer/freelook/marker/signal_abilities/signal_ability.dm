@@ -146,9 +146,8 @@
 
 //Path to the end of the cast
 /datum/signal_ability/proc/finish_casting(var/mob/user, var/atom/target,  var/list/data)
-	//Pay the energy costs
-	if (!user || !pay_cost(user))
-		//TODO: Abort casting, we failed
+	//Pay the energy costs.
+	if (!pay_cost(user))
 		return
 
 	//And do the actual effect of the spell
