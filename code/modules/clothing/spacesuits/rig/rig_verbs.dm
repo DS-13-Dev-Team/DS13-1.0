@@ -39,6 +39,19 @@
 	else
 		visor.deactivate()
 
+/obj/item/weapon/rig/proc/toggle_helmet_verb()
+
+	set name = "Toggle Helmet"
+	set desc = "Deploys or retracts your helmet."
+	set category = "RIG"
+	set src = usr.contents
+
+	if(!check_suit_access(usr))
+		return
+
+	toggle_piece("helmet",usr)
+
+
 /obj/item/weapon/rig/proc/toggle_helmet(var/mob/user, var/ignore_access = FALSE, var/duration = 0)
 
 	set name = "Toggle Helmet"

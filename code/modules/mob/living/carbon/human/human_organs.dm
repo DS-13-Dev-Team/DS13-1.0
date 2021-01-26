@@ -11,9 +11,11 @@
 
 	return has_organ(organ_tag)
 
+/mob/proc/has_free_hand()
+	return TRUE
 
 //Returns TRUE if src has at least one hand which isn't currently holding anything
-/mob/living/carbon/human/proc/has_free_hand()
+/mob/living/carbon/human/has_free_hand()
 	var/numhands = 0
 
 	//Possible future todo: Necromorphs with many arms? Bionic limbs?

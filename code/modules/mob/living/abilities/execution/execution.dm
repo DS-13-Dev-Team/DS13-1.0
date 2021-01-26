@@ -210,7 +210,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	status = STATUS_ENDED
 	//Lets remove observations
 	GLOB.damage_hit_event.unregister(user, src, /datum/extension/execution/proc/user_damaged)
-
+	unregister_statmods()
 
 
 	for (var/datum/execution_stage/ES as anything in entered_stages)
@@ -303,7 +303,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	if (require_grab == TRUE)
 		grab = user.grab_with_any_limb(victim)
 
-	user.face_atom(victim)
+	user.face_atom(victim, TRUE)
 
 	return acquisition_success()
 
