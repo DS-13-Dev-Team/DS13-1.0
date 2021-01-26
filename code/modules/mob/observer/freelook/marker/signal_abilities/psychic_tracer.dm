@@ -135,8 +135,7 @@
 	remove_extension(holder, base_type)
 
 /datum/extension/psychic_tracer/Destroy()
-	qdel(object)
-	object = null
+	QDEL_NULL(object)
 	GLOB.necrovision.remove_source(src, TRUE, TRUE)
 	.=..()
 
