@@ -33,7 +33,7 @@
 			if(isWelder(P))
 				if(P.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
 					to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
-					new /obj/item/stack/material/plasteel( loc, 4)
+					new /obj/item/stack/material/plasteel( loc, 10)
 					qdel(src)
 					return
 		if(1)
