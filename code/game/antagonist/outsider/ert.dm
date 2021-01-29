@@ -26,19 +26,25 @@ GLOBAL_DATUM_INIT(deliver, /datum/antagonist/ert/deliverance, new)
 	if(!..())
 		return FALSE
 
-	var/decl/hierarchy/outfit/ertfit = outfit_by_type(equips[4])
-
-	if(player.mind == leader)
-		ertfit = outfit_by_type(equips[1])
-
-	for(var/list/i in members_types)
-		if(i[0]==i[1]) continue
-		ertfit = outfit_by_type(equips[i+1])
+	var/decl/hierarchy/outfit/ertfit = choose_ertfit(player)
 
 	if(!ertfit)
 		return FALSE
+
 	dressup_human(player, ertfit)
 	return TRUE
+
+/datum/antagonist/ert/proc/choose_ertfit(mob/living/carbon/human/player)
+	if(player.mind == leader)
+		return outfit_by_type(equips[1])
+
+	for(var/list/i in members_types)
+		if(i[0]==i[1]) continue
+		if(!equips[i+1]) continue
+		i[0] += 1
+		return outfit_by_type(equips[i+1])
+
+	return 	outfit_by_type(equips[4])
 
 /datum/antagonist/ert/Initialize()
 	..()
@@ -62,13 +68,14 @@ GLOBAL_DATUM_INIT(deliver, /datum/antagonist/ert/deliverance, new)
 /datum/antagonist/ert/usm
 	role_text = "USM"
 	role_text_plural = "USM"
+	equips = list(/decl/hierarchy/outfit/edf_commander, null, /decl/hierarchy/outfit/edf_medic, /decl/hierarchy/outfit/edf_engie, /decl/hierarchy/outfit/edf_grunt)
 
 /datum/antagonist/ert/kellion
 	id = "Kellionteam"
 	role_text = "Maintenance Response Team"
 	role_text_plural = "Maintenance Response Team"
 	leader_welcome_text = "As leader of the Emergency Response Team, you are part of the Kellion Response Team, and are there with the intention of restoring normal operation to the vessel or the safe evacuation of crew and passengers. You should, to this effect, aid the Commanding Officer or ranking officer aboard in their endeavours to achieve this."
-
+	equips = list(/decl/hierarchy/outfit/kellion_sec_leader, null, /decl/hierarchy/outfit/kendra, /decl/hierarchy/outfit/isaac, /decl/hierarchy/outfit/kellion_sec)
 
 /datum/antagonist/ert/deliverance
 	id = "Unitologiststeam"
@@ -78,3 +85,4 @@ GLOBAL_DATUM_INIT(deliver, /datum/antagonist/ert/deliverance, new)
 	leader_welcome_text = "You are the leader of this response team. Work with the marker instead of against it."
 	antaghud_indicator = "hudunitologist"
 	antag_indicator = "hudunitologist"
+	equips = list(/decl/hierarchy/outfit/faithful, /decl/hierarchy/outfit/berserker, /decl/hierarchy/outfit/healer, /decl/hierarchy/outfit/mechanic, /decl/hierarchy/outfit/deacon)
