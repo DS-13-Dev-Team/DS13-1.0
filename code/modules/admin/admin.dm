@@ -716,8 +716,6 @@ var/global/floorIsLava = 0
 					return 2
 		if(M.special_role)
 			return 1
-		if(M.ert_role)
-			return 1
 
 	if(isrobot(character))
 		var/mob/living/silicon/robot/R = character

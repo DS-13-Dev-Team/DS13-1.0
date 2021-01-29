@@ -42,7 +42,6 @@
 
 	var/assigned_role
 	var/special_role
-	var/ert_role
 
 	var/role_alt_title
 
@@ -472,7 +471,6 @@
 /datum/mind/proc/reset()
 	assigned_role =   null
 	set_special_role(null)
-	ert_role =		  null
 	role_alt_title =  null
 	assigned_job =    null
 	//faction =       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
@@ -491,16 +489,6 @@
 			return mind.special_role
 		else
 			return (mind.special_role == role) ? 1 : 0
-	else
-		return 0
-
-//ERT role check
-/mob/living/proc/check_ert_role(role)
-	if(mind)
-		if(!role)
-			return mind.ert_role
-		else
-			return (mind.ert_role == role) ? 1 : 0
 	else
 		return 0
 
