@@ -38,11 +38,13 @@ GLOBAL_DATUM_INIT(deliver, /datum/antagonist/ert/deliverance, new)
 	if(player.mind == leader)
 		return outfit_by_type(equips[1])
 
+	var/k = 0
 	for(var/list/i in members_types)
+		k += 1
 		if(i[0]==i[1]) continue
-		if(!equips[i+1]) continue
+		if(!equips[k]) continue
 		i[0] += 1
-		return outfit_by_type(equips[i+1])
+		return outfit_by_type(equips[k])
 
 	return 	outfit_by_type(equips[4])
 
