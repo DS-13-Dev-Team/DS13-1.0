@@ -1990,10 +1990,13 @@
 
 /datum/chemical_reaction/phlogiston/on_reaction(var/datum/reagents/holder, var/created_volume, var/reaction_flags)
 	..()
-	var/turf/location = get_turf(holder.my_atom.loc)
-	for(var/turf/simulated/floor/target_tile in range(0,location))
-		target_tile.assume_gas(/datum/reagent/toxin/phoron, created_volume, 400+T0C)
-		spawn (0) target_tile.hotspot_expose(700, 400)
+	var/turf/location = get_turf(holder.my_atom)
+	to_chat(world, "este es el turf [location]")
+	for(var/turf/simulated/floor/target in range(1,location))
+		if(!target.blocks_air)
+			target.assume_gas(MATERIAL_PHORON, max(created_volume, 30))
+			target.hotspot_expose(1000, CELL_VOLUME)
+			to_chat(world, "este es el turf [location]")
 
 /datum/chemical_reaction/vecuronium_bromide
 	name = "Vecuronium Bromide"
