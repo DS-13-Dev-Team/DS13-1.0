@@ -47,7 +47,6 @@ GLOBAL_VAR(restart_counter)
 		if(M.mind)
 			strings += M.mind.assigned_role
 			strings += M.mind.special_role
-			strings += M.mind.ert_role
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H.species)
@@ -303,7 +302,6 @@ var/world_topic_spam_protect_time = world.timeofday
 			info["turf"] = MT ? "[MT] @ [MT.x], [MT.y], [MT.z]" : "null"
 			info["area"] = MT ? "[MT.loc]" : "null"
 			info["antag"] = M.mind ? (M.mind.special_role ? M.mind.special_role : "Not antag") : "No mind"
-			info["ert"] = M.mind ? (M.mind.ert_role ? M.mind.ert_role : "Not ert") : "No mind"
 			info["hasbeenrev"] = M.mind ? M.mind.has_been_rev : "No mind"
 			info["stat"] = M.stat
 			info["type"] = M.type
