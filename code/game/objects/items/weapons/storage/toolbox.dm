@@ -38,7 +38,7 @@
 	startswith = list( /obj/random/tool, /obj/item/weapon/tool/screwdriver, /obj/item/weapon/tool/wrench, /obj/item/weapon/tool/weldingtool, /obj/item/weapon/tool/crowbar, /obj/item/device/analyzer, /obj/item/weapon/tool/wirecutters)
 
 /obj/item/weapon/storage/toolbox/mechanical/Initialize()
-	..()
+	. = ..()
 	if (prob(40))
 		new /obj/random/tool_upgrade(src)
 
