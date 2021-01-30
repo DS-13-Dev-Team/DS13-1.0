@@ -114,6 +114,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	landmark_id = "unitologiststeam"
 	antaghud_indicator = "hudunitologist" // Used by the ghost antagHUD.
 	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
+	restricted_jobs = list(JOBS_SECURITY)
 	outfits = list(
 		/decl/hierarchy/outfit/faithful,
 		/decl/hierarchy/outfit/healer,
