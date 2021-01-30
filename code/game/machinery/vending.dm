@@ -1254,7 +1254,7 @@
 	vend_delay = 40
 
 	icon_state = "hotfood"
-	products = list(/obj/item/weapon/reagent_containers/food/snacks/slice/margherita = 3,
+	products = list(/obj/item/weapon/reagent_containers/food/snacks/slice/margherita/filled = 3,
 					/obj/item/weapon/reagent_containers/food/snacks/hamburger = 3,
 					/obj/item/weapon/reagent_containers/food/snacks/fries = 3,
 					/obj/item/weapon/reagent_containers/food/snacks/hotdog = 3,
