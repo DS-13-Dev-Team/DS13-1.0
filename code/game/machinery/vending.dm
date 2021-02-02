@@ -1148,7 +1148,7 @@
 /obj/machinery/vending/props
 	name = "prop dispenser"
 	desc = "All the props an actor could need. Probably."
-	icon_state = "Theater"
+	icon_state = "theater"
 	products = list(/obj/structure/flora/pottedplant = 2, /obj/item/device/flashlight/lamp = 2, /obj/item/device/flashlight/lamp/green = 2, /obj/item/weapon/reagent_containers/food/drinks/jar = 1,
 					/obj/item/weapon/nullrod = 1, /obj/item/toy/cultsword = 4, /obj/item/toy/katana = 2)
 
