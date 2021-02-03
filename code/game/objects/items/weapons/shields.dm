@@ -68,36 +68,20 @@
 	else
 		..()
 
-/obj/item/weapon/shield/riot/metal
-	name = "plasteel combat shield"
-	icon_state = "metal"
+/obj/item/weapon/shield/riot/advanced
+	name = "advanced combat shield"
+	icon_state = "advanced"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BACK
 	force = 6.0
 	throwforce = 7.0
 	throw_range = 3
 	w_class = ITEM_SIZE_HUGE
-	matter = list(MATERIAL_PLASTEEL = 8500)
+	matter = list(MATERIAL_PLASTEEL = 10000, MATERIAL_GLASS = 2000)
 	max_block = 30
 	max_health = 255
 	slowdown_general = 1.5
 	resistance = 6
-	blocksound = 'sound/items/trayhit2.ogg'
-
-/obj/item/weapon/shield/riot/advanced
-	name = "advanced combat shield"
-	icon_state = "advanced"
-	obj_flags = OBJ_FLAG_CONDUCTIBLE
-	slot_flags = SLOT_BACK
-	force = 7.5
-	throwforce = 8.0
-	throw_range = 2
-	w_class = ITEM_SIZE_HUGE
-	matter = list(MATERIAL_PLASTEEL = 10000, MATERIAL_GLASS = 2000)
-	max_block = 50
-	max_health = 350
-	slowdown_general = 2
-	resistance = 8
 	blocksound = 'sound/items/trayhit2.ogg'
 
 
