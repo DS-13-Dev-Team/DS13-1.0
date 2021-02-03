@@ -45,7 +45,7 @@
 	slot_flags = SLOT_BACK
 	force = 5.0
 	throwforce = 5.0
-	
+
 	throw_range = 4
 	w_class = ITEM_SIZE_HUGE
 	origin_tech = list(TECH_MATERIAL = 2)
@@ -84,6 +84,22 @@
 	resistance = 6
 	blocksound = 'sound/items/trayhit2.ogg'
 
+/obj/item/weapon/shield/riot/advanced
+	name = "advanced combat shield"
+	icon_state = "advanced"
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+	slot_flags = SLOT_BACK
+	force = 7.5
+	throwforce = 8.0
+	throw_range = 2
+	w_class = ITEM_SIZE_HUGE
+	matter = list(MATERIAL_PLASTEEL = 10000, MATERIAL_GLASS = 2000)
+	max_block = 50
+	max_health = 350
+	slowdown_general = 2
+	resistance = 8
+	blocksound = 'sound/items/trayhit2.ogg'
+
 
 /*
  * Handmade shield
@@ -93,7 +109,7 @@
 	name = "round handmade shield"
 	desc = "A handmade stout shield, but with a small size."
 	icon_state = "buckler"
-	
+
 	throw_range = 6
 	matter = list(MATERIAL_STEEL = 6)
 	base_block_chance = 65
@@ -107,7 +123,7 @@
 	name = "tray shield"
 	desc = "A thin metal tray held on the arm, won't endure much punishment"
 	icon_state = "tray_shield"
-	
+
 	throw_range = 4
 	matter = list(MATERIAL_STEEL = 4)
 	base_block_chance = 80
@@ -130,7 +146,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	force = 3.0
 	throwforce = 5.0
-	
+
 	throw_range = 4
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_ILLEGAL = 4)
