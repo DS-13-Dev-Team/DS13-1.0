@@ -816,14 +816,14 @@
 	if (usr)
 		to_chat(usr, SPAN_NOTICE("Selected [initial(AR.name)]"))
 
-/obj/item/weapon/gun/AltClick(var/mob/user)
+/obj/item/weapon/gun/CtrlAltClick(var/mob/user)
 	if (user == loc && is_held() && selected_aiming_mode)
 		toggle_aiming_mode()
 		return
 	.=..()
 
 
-/obj/item/weapon/gun/CtrlAltClick(var/mob/user)
+/obj/item/weapon/gun/AltClick(var/mob/user)
 	if (user == loc && is_held() && aiming_modes.len > 1)
 		cycle_aiming_mode()
 		return
