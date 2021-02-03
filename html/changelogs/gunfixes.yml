@@ -39,3 +39,4 @@ changes:
   - tweak: "Swapped the controls to cycle (altclick) and toggle (ctrlaltclick) gun aiming modes"
   - bugfix: "Fixed various cases where weapons wouldn't stop firing in certain conditions."
   - bugfix: "Fixed detonator briefly showing a line of green tiles when a mine is deployed."
+  - tweak: "Slightly buffed the damage of the rivet gun."
