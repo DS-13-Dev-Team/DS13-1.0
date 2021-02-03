@@ -123,6 +123,7 @@ vector2
 			//If we're within range, do this anyway to return a copy of ourselves
 			.=src.ToMagnitude(current_magnitude)
 
+
 		/* Get a vector in the same direction but with magnitude 1.
 		*/
 		Normalized() return ToMagnitude(1)
@@ -300,6 +301,19 @@ vector2
 
 			else if (current_magnitude > maximum)
 				SelfToMagnitude(maximum)
+
+
+		/*
+			Clamps our magnitude to a maximum distance from the reference
+			Destructive to self
+		*/
+		SelfClampMagFrom(var/atom/reference, var/minimum, var/maximum)
+			var/vector2/ref_loc = reference.get_global_pixel_loc()
+			SelfSubtract(ref_loc)	//Self is now an offset from ref loc
+			SelfClampMag(minimum, maximum)	//Now clamped
+			SelfAdd(ref_loc)	//And we are now a world loc
+			release_vector(ref_loc)
+
 
 		SelfZero()
 			x = 0
