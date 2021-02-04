@@ -14,8 +14,8 @@
 	allowed_spawns = list("Cryogenic Storage")
 	default_spawn = "Cryogenic Storage"
 
-	station_name  = "The Sprawl"
-	station_short = "Titan Station"
+	station_name  = "Titan Station - The 'Sprawl'"
+	station_short = "The Sprawl"
 	dock_name     = "TBD"
 	boss_name     = "Government Sector"
 	boss_short    = "GovSec"
