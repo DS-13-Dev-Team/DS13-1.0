@@ -36,6 +36,9 @@
 		if(cell.charge <= 0)
 			deactivate()
 
+/obj/machinery/suspension_gen/power_change()//This machine is not affected by the energy changes in the area.
+	return
+
 /obj/machinery/suspension_gen/interact(var/mob/user)
 	var/dat = "<b>Multi-phase mobile suspension field generator MK II \"Steadfast\"</b><br>"
 	if(cell)
