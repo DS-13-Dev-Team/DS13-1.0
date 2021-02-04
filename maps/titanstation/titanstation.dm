@@ -131,11 +131,11 @@
 	#include "loadout/loadout_xeno.dm"
 	#include "loadout/~defines.dm"
 */
-	#include "01-TitanUpper.dmm"
-	#include "02-TitanMid.dmm"
+	#include "01-GovLower.dmm"
+	#include "02-GovUpper.dmm"
 	#include "03-TitanLower.dmm"
-	#include "04-GovUpper.dmm"
-	#include "05-GovLower.dmm"
+	#include "04-TitanMid.dmm"
+	#include "05-TitanUpper.dmm"
 	#include "06-Space.dmm"
 	#include "07-Admin.dmm"
 

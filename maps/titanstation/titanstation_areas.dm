@@ -5,3 +5,7 @@
 
 	post_round_safe_areas = list (
 	) // ^^ TBA.
+
+/area/titanstation
+	icon = 'maps/titanstation/icons/areas.dmi'
+	ship_area = TRUE
