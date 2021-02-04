@@ -37,10 +37,10 @@
 
 
 /obj/item/weapon/shield/riot
-	name = "riot shield"
-	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
+	name = "combat shield"
+	desc = "A common combat shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "riot"
+	icon_state = "metal"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BACK
 	force = 5.0
@@ -49,7 +49,7 @@
 	throw_range = 4
 	w_class = ITEM_SIZE_HUGE
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list(MATERIAL_GLASS = 7500, MATERIAL_STEEL = 1000)
+	matter = list(MATERIAL_STEEL = 7500, MATERIAL_PLASTEEL = 1000)
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 	max_block = 25
