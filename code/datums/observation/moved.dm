@@ -7,6 +7,7 @@
 //			/atom/movable/moving_instance: The instance that moved
 //			/atom/old_loc: The loc before the move.
 //			/atom/new_loc: The loc after the move.
+//	moved(var/atom/movable/moving_instance, var/atom/old_loc, var/atom/new_loc)
 
 GLOBAL_DATUM_INIT(moved_event, /decl/observ/moved, new)
 
