@@ -3,8 +3,7 @@
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "ds_security_rig"
 	armor = list(melee = 57.5, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 60)
-	offline_slowdown = 4
-	online_slowdown = 1.75
+	online_slowdown = RIG_MEDIUM
 	acid_resistance = 1.75	//Contains a fair bit of plastic
 
 	chest_type = /obj/item/clothing/suit/space/rig/security

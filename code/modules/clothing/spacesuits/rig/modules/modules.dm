@@ -24,9 +24,39 @@
 	var/module_cooldown = 10
 	var/next_use = 0
 
-	var/toggleable                      // Set to 1 for the device to show up as an active effect.
-	var/usable                          // Set to 1 for the device to have an on-use effect.
-	var/selectable                      // Set to 1 to be able to assign the device as primary system.
+
+	/*
+		Set to 1 for the device to be able to turn on and off
+		This adds a verb in the RIG modules menu to enable the thing. And when enabled, it turns into a disable option
+		The on verb calls activate()
+			This calls engage(), making it incompatible with usable
+			This sets active to true
+		the off verb calls deactivate()
+			This sets active to false
+	*/
+	var/toggleable        = FALSE
+
+
+
+	/*
+		Very similar to the above
+		This adds a verb in the RIG modules menu to use the thing. Entirely non stateful
+		This use verb calls engage()
+	*/
+	var/usable      = FALSE
+
+
+
+	/*
+		Adds a select verb in the RIG modules menu to equip/designate this module for future use.
+		This select verb does not call anything on the module itself
+
+		Once a module is selected, it can be used with a hotkey (default middleclick)
+		A module which is used in this manner calls engage(var/atom/target)
+	*/
+	var/selectable	= FALSE
+
+
 	var/redundant                       // Set to 1 to ignore duplicate module checking when installing.
 	var/permanent                       // If set, the module can't be removed.
 	var/disruptive = 1                  // Can disrupt by other effects.
@@ -37,9 +67,9 @@
 	var/disruptable                     // Will deactivate if some other powers are used.
 
 	// Now in joules/watts!
-	var/use_power_cost = 0              // Power used when single-use ability called.
-	var/active_power_cost = 0           // Power used when turned on.
-	var/passive_power_cost = 0          // Power used when turned off.
+	var/use_power_cost = 0              // Power used when engage is called
+	var/active_power_cost = 0           // Power used per second when active is true. Only applicable when toggleable is true
+	var/passive_power_cost = 0          // Power used per second when active is false.
 
 	var/list/charges                    // Associative list of charge types and remaining numbers.
 	var/charge_selected                 // Currently selected option used for charge dispensing.
@@ -226,8 +256,7 @@
 		to_chat(usr, "<span class='warning'>You cannot use the suit in this state.</span>")
 		return 0
 
-	if(holder.wearer && holder.wearer.lying)
-		to_chat(usr, "<span class='warning'>The suit cannot function while the wearer is prone.</span>")
+	if (!holder.wearer)
 		return 0
 
 	if(holder.security_check_enabled && !holder.check_suit_access(usr))
@@ -293,6 +322,35 @@
 // Checks if an item is usable with this module and handles it if it is
 /obj/item/rig_module/proc/accepts_item(var/obj/item/input_device)
 	return 0
+
+
+
+/obj/item/rig_module/proc/rig_equipped(var/mob/user, var/slot)
+	return
+
+/obj/item/rig_module/proc/rig_unequipped(var/mob/user, var/slot)
+	return
+
+//Consumes power, returns true if it works
+/obj/item/rig_module/proc/use_power(var/cost)
+	.=FALSE
+	if (holder && holder.cell)
+		if(holder.cell.check_charge(cost * CELLRATE))
+			holder.cell.use(cost * CELLRATE)
+			return TRUE
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /mob/living/carbon/human/Stat()
 	. = ..()
@@ -403,17 +461,3 @@
 		return 1
 	return 0
 
-
-/obj/item/rig_module/proc/rig_equipped(var/mob/user, var/slot)
-	return
-
-/obj/item/rig_module/proc/rig_unequipped(var/mob/user, var/slot)
-	return
-
-//Consumes power, returns true if it works
-/obj/item/rig_module/proc/use_power(var/cost)
-	.=FALSE
-	if (holder && holder.cell)
-		if(holder.cell.check_charge(cost * CELLRATE))
-			holder.cell.use(cost * CELLRATE)
-			return TRUE
