@@ -1,28 +1,12 @@
-#ifndef PSI_IMPLANT_AUTOMATIC
-#define PSI_IMPLANT_AUTOMATIC "Security Level Derived"
-#endif
-#ifndef PSI_IMPLANT_SHOCK
-#define PSI_IMPLANT_SHOCK     "Issue Neural Shock"
-#endif
-#ifndef PSI_IMPLANT_WARN
-#define PSI_IMPLANT_WARN      "Issue Reprimand"
-#endif
-#ifndef PSI_IMPLANT_LOG
-#define PSI_IMPLANT_LOG       "Log Incident"
-#endif
-#ifndef PSI_IMPLANT_DISABLED
-#define PSI_IMPLANT_DISABLED  "Disabled"
-#endif
-
-/datum/map/torch // setting the map to use this list
-	security_state = /decl/security_state/default/torchdept
+/datum/map/titanstation // setting the map to use this list
+	security_state = /decl/security_state/default/titanstation
 
 //Torch map alert levels. Refer to security_state.dm.
-/decl/security_state/default/torchdept
+/decl/security_state/default/titanstation
 	all_security_levels = list(/decl/security_level/default/torchdept/code_green, /decl/security_level/default/torchdept/code_violet, /decl/security_level/default/torchdept/code_orange, /decl/security_level/default/torchdept/code_blue, /decl/security_level/default/torchdept/code_red, /decl/security_level/default/torchdept/code_delta)
 
-/decl/security_level/default/torchdept
-	icon = 'maps/torch/icons/security_state.dmi'
+/decl/security_level/default/titanstation
+	icon = 'maps/titanstation/icons/security_state.dmi'
 
 /decl/security_level/default/torchdept/code_green
 	name = "code green"
