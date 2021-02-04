@@ -139,6 +139,10 @@
 /obj/item/stack/material/plastic/ten
 	amount = 10
 
+/obj/item/stack/material/plastic/random/Initialize()
+	..()
+	amount = rand(1, 35)
+
 /obj/item/stack/material/plastic/fifty
 	amount = 50
 
@@ -216,6 +220,10 @@
 
 /obj/item/stack/material/steel/ten
 	amount = 10
+
+/obj/item/stack/material/steel/random/Initialize()
+	..()
+	amount = rand(1, 25)
 
 /obj/item/stack/material/steel/fifty
 	amount = 50
