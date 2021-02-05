@@ -240,7 +240,8 @@
 	warmup_time = 10
 	destination_tags = list(
 		"deliverance_start",
-		"deliverance_landing"
+		"deliverance_landing",
+		"deliverance_landing2"
 	)
 	shuttle_area = /area/ERT/deliverance
 	current_location = "deliverance_start"
@@ -265,7 +266,8 @@
 	warmup_time = 10
 	destination_tags = list(
 		"kellion_start",
-		"kellion_landing"
+		"kellion_landing",
+		"kellion_landing2"
 	)
 	shuttle_area = /area/ERT/kellion
 	current_location = "kellion_start"
@@ -290,7 +292,8 @@
 	warmup_time = 10
 	destination_tags = list(
 		"valor_start",
-		"valor_landing"
+		"valor_landing",
+		"valor_landing2"
 	)
 	shuttle_area = /area/ERT/valor/shuttle
 	current_location = "valor_start"
@@ -309,4 +312,19 @@
 /obj/effect/shuttle_landmark/valor/landing
 	name = "Ishimura Hangar #1"
 	landmark_tag = "valor_landing"
+	base_turf = /turf/simulated/floor/plating
+
+/obj/effect/shuttle_landmark/valor/landing2
+	name = "Evacuation Site - Alpha #2"
+	landmark_tag = "valor_landing2"
+	base_turf = /turf/simulated/floor/plating
+
+/obj/effect/shuttle_landmark/kellion/landing2
+	name = "Evacuation Site - Alpha #1"
+	landmark_tag = "kellion_landing2"
+	base_turf = /turf/simulated/floor/plating
+
+/obj/effect/shuttle_landmark/deliverance/landing2
+	name = "Evacuation Site - Alpha #3"
+	landmark_tag = "deliverance_landing2"
 	base_turf = /turf/simulated/floor/plating

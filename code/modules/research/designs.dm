@@ -557,6 +557,14 @@
 	build_path = /obj/item/weapon/gun/energy/cutter/plasma
 	sort_string = "TAEAC"
 
+/datum/design/item/weapon/advancedshield
+	name = "Advanced Combat Shield"
+	id = "advancedcombatshield"
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 6)
+	materials = list(MATERIAL_PLASTEEL = 10000, MATERIAL_GLASS = 2000)
+	build_path = /obj/item/weapon/shield/riot/advanced
+	sort_string = "TAEAD"
+
 /datum/design/item/weapon/divet
 	name = "Winchester NK Divet pistol"
 	id = "divet"

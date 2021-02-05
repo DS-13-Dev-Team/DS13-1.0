@@ -47,7 +47,7 @@
 	var/atom/movable/subject	=	null
 
 	//Click handler
-	var/datum/click_handler/sustained/kinesis/CHK
+	var/datum/click_handler/gun/sustained/kinesis/CHK
 
 	var/hotkeys_set = FALSE
 
@@ -187,7 +187,7 @@
 		var/mob/living/carbon/human/user = get_user()
 		if (!user || !user.client)
 			return
-		CHK = user.PushUniqueClickHandler(/datum/click_handler/sustained/kinesis)
+		CHK = user.PushUniqueClickHandler(/datum/click_handler/gun/sustained/kinesis)
 		CHK.reciever = src
 		to_chat(user, SPAN_NOTICE("Kinesis activated.(F)"))
 
@@ -786,7 +786,7 @@
 /*
 	The click handler itself
 */
-/datum/click_handler/sustained/kinesis
+/datum/click_handler/gun/sustained/kinesis
 
 	fire_proc = /obj/item/rig_module/kinesis/proc/update
 	//var/start_proc = /obj/item/weapon/gun/proc/start_firing
