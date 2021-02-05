@@ -95,7 +95,7 @@
 				. += " <a href='?src=\ref[src];underwear=[UWC.name];tweak=\ref[gt]'>[gt.get_contents(get_underwear_metadata(UWC.name, gt))]</a>"
 
 		. += "<br>"
-	. += "Backpack Type: <a href='?src=\ref[src];change_backpack=1'><b>[pref.backpack.name]</b></a>"
+	. += "RIG Type: <a href='?src=\ref[src];change_backpack=1'><b>[pref.backpack.name]</b></a>"
 	for(var/datum/backpack_tweak/bt in pref.backpack.tweaks)
 		. += " <a href='?src=\ref[src];backpack=[pref.backpack.name];tweak=\ref[bt]'>[bt.get_ui_content(get_backpack_metadata(pref.backpack, bt))]</a>"
 	. += "<br>"
@@ -177,12 +177,7 @@
 	if(preferences["version"]  <= 16)
 		var/list/old_index_to_backpack_type = list(
 			/decl/backpack_outfit/nothing,
-			/decl/backpack_outfit/backpack,
-			/decl/backpack_outfit/satchel,
-			/decl/backpack_outfit/messenger_bag,
-			/decl/backpack_outfit/satchel,
-			/decl/backpack_outfit/satchel,
-			/decl/backpack_outfit/pocketbook
+			/decl/backpack_outfit/backpack // Actually Civ Rig.
 		)
 
 		var/old_index

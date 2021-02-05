@@ -22,3 +22,15 @@
 	uniform = /obj/item/clothing/under/deadspace/planet_cracker
 	shoes = /obj/item/clothing/shoes/black
 	id_type = /obj/item/weapon/card/id/holo/mining
+
+/decl/hierarchy/outfit/job/mining/New()
+	..()
+	BACKPACK_OVERRIDE_MINING
+
+/decl/hierarchy/outfit/job/mining/foreman/New()
+	..()
+	BACKPACK_OVERRIDE_MININGSUPERVISOR
+
+/decl/hierarchy/outfit/job/mining/dom/New()
+	..()
+	BACKPACK_OVERRIDE_MININGCHIEF
