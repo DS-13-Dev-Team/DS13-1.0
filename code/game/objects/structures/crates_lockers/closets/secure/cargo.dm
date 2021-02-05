@@ -1,11 +1,11 @@
 /obj/structure/closet/secure_closet/cargoservice
 	name = "cargo serviceman's locker"
 	req_access = list(access_cargo)
-	icon_state = "securecargo1"
-	icon_closed = "securecargo"
-	icon_locked = "securecargo1"
-	icon_opened = "securecargoopen"
-	icon_off = "securecargooff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/cargoservice/WillContain()
 	return list(
@@ -21,11 +21,11 @@
 /obj/structure/closet/secure_closet/SO
 	name = "supply officer's locker"
 	req_access = list(access_cargo)
-	icon_state = "secureqm1"
-	icon_closed = "secureqm"
-	icon_locked = "secureqm1"
-	icon_opened = "secureqmopen"
-	icon_off = "secureqmoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/SO/WillContain()
 	return list(

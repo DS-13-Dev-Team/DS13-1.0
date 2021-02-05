@@ -1,10 +1,10 @@
 /obj/structure/closet/secure_closet/freezer
 	name = "refrigerator"
-	icon_state = "fridge1"
-	icon_closed = "fridge"
-	icon_locked = "fridge1"
-	icon_opened = "fridgeopen"
-	icon_off = "fridgebroken"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 	req_access = list(access_service)
 
 /obj/structure/closet/secure_closet/freezer/WillContain()
