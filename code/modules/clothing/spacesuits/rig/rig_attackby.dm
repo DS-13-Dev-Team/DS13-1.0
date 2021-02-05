@@ -40,7 +40,7 @@
 		to_chat(user, "You [open ? "open" : "close"] the access panel.")
 		return
 
-	if(open && can_modify())
+	if((open || hotswap) && can_modify())
 
 		// Hacking.
 		if(isWirecutter(W) || isMultitool(W))
@@ -260,5 +260,6 @@
 /obj/item/weapon/rig/proc/can_modify()
 	if (is_worn() && !hotswap)
 		return FALSE
+
 
 	return TRUE
