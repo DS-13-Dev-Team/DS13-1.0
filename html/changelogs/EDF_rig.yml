@@ -38,3 +38,5 @@ changes:
   - rscadd: "Added the Femoral Exoskeleton RIG module, in basic and advanced versions. These allow the user to move more quickly, at a cost of power. Currently only available as random loot."
   - tweak: "Buffed the explosion size of the Self Destruct RIG module."
   - tweak: "Rigs with a hotswap module now do not need to be opened to install new modules, and thus require no tools."
+  - tweak: "The power siphon module is now less spammy, and charges your battery faster."
+  - tweak: "Adjusted and standardised all the slowdown values on rigs, into several discrete categories."
