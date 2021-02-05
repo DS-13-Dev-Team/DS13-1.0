@@ -117,7 +117,7 @@
 
 /obj/item/rig_module/power_sink/proc/drain_complete(var/mob/living/M)
 	holder.spark_system.start()
-	playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)
+	playsound(M.loc, 'sound/effects/sparks2.ogg', 50, 1)
 
 	if(!interfaced_with)
 		if(M) to_chat(M, "<font color='blue'><b>Total power drained:</b> [round(total_power_drained*CELLRATE)] Wh.</font>")
