@@ -80,9 +80,15 @@
 
 	var/list/bumped_atoms = list()
 
+	var/next_update = 0
+	var/update_timer_handle	//A scheduled update
+
 //Config
 	//Cooldown between hitting mobs
 	var/bump_cooldown = 1.5 SECONDS
+
+	//Minimum cooldown between updates, for performance
+	var/update_cooldown = 0.15 SECONDS
 
 	//How far away can we grip objects?
 	//Measured in metres. Also note tiles are 1x1 metre
@@ -422,7 +428,6 @@
 //The default entrypoint, a wrapper for release
 //If the item is not in control range, it will be thrown based upon its velocity
 /obj/item/rig_module/kinesis/proc/release_grip()
-
 	var/speed = velocity.Magnitude()
 	if (speed > 1 && release_type == RELEASE_DROP)
 		release_type = RELEASE_THROW
@@ -779,19 +784,7 @@
 				release_vector(offset)
 				release_vector(direction)
 				release_vector(velocity_towards_target)
-/*
-	Click Handler Stuff
-*/
 
-/*
-	The click handler itself
-*/
-/datum/click_handler/gun/sustained/kinesis
-
-	fire_proc = /obj/item/rig_module/kinesis/proc/update
-	//var/start_proc = /obj/item/weapon/gun/proc/start_firing
-	stop_proc = /obj/item/rig_module/kinesis/proc/release_grip
-	get_firing_proc = /obj/item/rig_module/kinesis/proc/is_gripping
 
 
 
@@ -815,15 +808,18 @@
 	Params: Click params from the mouse action which caused this update, vitally important
 	global clickpoint: Where the user clicked in world pixel coords
 */
+
+
 /obj/item/rig_module/kinesis/proc/update(var/atom/A, mob/living/user, adjacent, params, var/vector2/global_clickpoint)
+
 
 	if (subject && holder && holder.wearer)
 		//Lets see if the clickpoint has actually changed
 		if (!target || global_clickpoint.x != target.x || global_clickpoint.y != target.y)
 
 			//It has! Set the new target, and if we were at rest, we start moving again
-			release_vector(target)
-			target = global_clickpoint
+			global_clickpoint.CopyTo(target)
+
 			var/vector2/userloc = holder.wearer.get_global_pixel_loc()
 			var/vector2/tether_end = global_clickpoint - userloc	//Cant use selfsubtract here, need to make a new vector
 			tether_end.SelfClampMag(1, drop_range*WORLD_ICON_SIZE)
@@ -850,8 +846,14 @@
 
 		if (target_atom)
 			attempt_grip(target_atom)
-	sleep(1)
 
+
+/*
+	Called from the click handler when the user drags something around
+*/
+/obj/item/rig_module/kinesis/proc/changed_target(var/atom/newtarget)
+	//schedule_
+	update(newtarget, CHK.user, FALSE, CHK.last_clickparams, CHK.last_click_location)
 
 /obj/item/rig_module/kinesis/proc/is_gripping()
 	if (subject)
@@ -859,7 +861,18 @@
 	return FALSE
 
 
+//Future todo: Scheduling
+/*
+/obj/item/rig_module/kinesis/proc/schedule_update(var/atom/A, mob/living/user, adjacent, params, var/vector2/global_clickpoint)
+	if (update_timer_handle)
+		deltimer(update_timer_handle)
+	if(world.time >= next_update)
 
+		update(A, user, adjacent, params, global_clickpoint)
+	else
+		update_timer_handle = addtimer(CALLBACK(src, /obj/item/rig_module/kinesis/proc/update, A, user, adjacent, params, global_clickpoint.Copy()), next_update - world.time, TIMER_STOPPABLE)
+
+*/
 
 
 

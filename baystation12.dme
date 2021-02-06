@@ -162,6 +162,7 @@
 #include "code\_onclick\click_handlers\placement.dm"
 #include "code\_onclick\click_handlers\rmb_aim.dm"
 #include "code\_onclick\click_handlers\target.dm"
+#include "code\_onclick\click_handlers\gun\kinesis.dm"
 #include "code\_onclick\click_handlers\gun\sustained.dm"
 #include "code\_onclick\hud\_defines.dm"
 #include "code\_onclick\hud\ability_screen_objects.dm"
