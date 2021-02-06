@@ -1,0 +1,7 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed Marker shards being instantly destroyed by plastique explosives. Buffed shards health and resistance. Now it takes 2-3 charges to destroy it."
+  - tweak: "Items now take damage to their health instead of just being deleted by explosions."
