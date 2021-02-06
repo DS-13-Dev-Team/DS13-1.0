@@ -26,8 +26,13 @@
 	icon_state = "white"
 
 
-/proc/pixelmark(var/turf/source, var/iconstate = "ax", var/vector2/coords)
-	var/obj/effect/pixelmarker/P = new /obj/effect/pixelmarker(source, 3 SECOND)
+/proc/pixelmark(var/vector2/coords, var/iconstate = "ax")
+	var/zlevel = 1
+	if (usr)
+		zlevel	= usr.z
+
+	var/turf/T = get_turf_at_pixel_coords(coords, zlevel)
+	var/obj/effect/pixelmarker/P = new /obj/effect/pixelmarker(T, 3 SECOND)
 	P.icon_state = iconstate
 	if (coords)
 		P.set_global_pixel_loc(coords)

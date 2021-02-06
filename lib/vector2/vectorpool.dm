@@ -3,6 +3,27 @@
 	Keeps vectors in a global list and recycles them
 
 	Creates new ones when needed
+
+	Vectors must be cleaned up using release_vector(vector) when they are no longer needed, and before the end of their scope.
+	The responsibility for doing this belongs to the owner
+
+	Do not leave vectors to be GCed
+
+	Here is how ownership is determined
+
+		-Anything you create is yours. Unless you return it, then the caller owns it.
+		-Anything passed into you as a parameter is not yours, make a copy if you wish to modify it, and be sure to release your copy
+		-Anything held in a variable of an object is the property of that object. Don't locally store a vector you don't own
+
+	Never modify a vector you don't own.
+		-All of the SelfXXXX functions will modify that vector.
+		-All those without self will create a new vector which is yours to use
+
+
+	Creating Copies:
+		If you're creating something for the first time or as a temporary var, use sourcevector.Copy()
+		If you're regularly copying a vector into a locally stored version, use sourcevector.CopyTo(myvector)
+			This is more efficient than releasing the old one and then using copy
 */
 
 GLOBAL_LIST_EMPTY(vector_pool)
@@ -28,6 +49,11 @@ GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 
 	GLOB.vector_pool_filling = FALSE
 
+/*
+	This is the proc to make a new vector, it should always be used instead of new whenever possible
+	It is not possible at compiletime, and so that is one scenario where using new is acceptable.
+		But in that case, be sure to release those vectors in Destroy
+*/
 /proc/get_new_vector(var/new_x, var/new_y)
 	if (length(GLOB.vector_pool))
 		var/vector2/newvec
