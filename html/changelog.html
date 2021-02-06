@@ -60,6 +60,16 @@
 		-->
 		<div class="commit sansserif">
 			<h2 class="date">06 February 2021</h2>
+			<h3 class="author">EvanKhell561 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed a common exploit where Cargo could infinitely export materials for credit gain.</li>
+			</ul>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed plastique explosion runtiming and not producing an explosion.</li>
+				<li class="bugfix">Fixed Marker shards being instantly destroyed by plastique explosives. Buffed shards health and resistance. Now it takes 2-3 charges to destroy it.</li>
+				<li class="tweak">Items now take damage to their health instead of just being deleted by explosions.</li>
+			</ul>
 			<h3 class="author">Nanako updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Added the EDF marine RIG in two variants. The heavier, simpler, tougher one for grunts, and the lighter, fancier version for specialists. Only available to EDF Marine ERTs</li>
@@ -76,6 +86,13 @@
 				<li class="tweak">Minorly decreased the amout of toxin damage dealt when overdosed to make this more manageable.</li>
 				<li class="experiment">Replaced all locker sprites with the standard CEC Locker. This is for lore accuracy, but not set in stone.</li>
 				<li class="soundadd">New locker opening and closing sounds.</li>
+				<li class="rscadd">Made all departmentally-related jobs now spawn automatically with their RIG on their back. Despite what one has selected, if an override is present for job-specific RIGs, this will now take precedence.</li>
+				<li class="rscadd">Jobs with specific rigtypes that differ from their subordinate counterpart, will now spawn with the rig as designated.</li>
+				<li class="rscdel">Removed Civilian RIG from loadout options and instead added it to the new RIG Type.</li>
+				<li class="rscdel">Removed the ability to spawn with backpacks.</li>
+				<li class="rscdel">Removed RIGs from lockers.</li>
+				<li class="tweak">Renamed Backpack Type in loadout to RIG Type.</li>
+				<li class="tweak">Default RIG is now the CEC Civilian RIG, which will spawn on your back if you do not have a job with an override present.</li>
 			</ul>
 			<h3 class="author">evankhell561 updated:</h3>
 			<ul class="changes bgimages16">

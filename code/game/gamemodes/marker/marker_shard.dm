@@ -13,6 +13,9 @@
 
 	var/mass_active = 30 //It gets heavier when active
 
+	resistance = 40
+	max_health = 1000
+
 	var/active = FALSE
 	plane = ABOVE_OBJ_PLANE
 
