@@ -366,7 +366,7 @@
 
 	if(mind.objectives.len)
 		qdel(mind.objectives)
-		mind.special_role = null
+		mind.set_special_role(null)
 
 	clear_antag_roles(mind)
 

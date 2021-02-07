@@ -13,7 +13,8 @@
 
 	var/obj/item/weapon/reagent_containers/glass/fuel_tank/tank
 
-	var/fuel_per_second = 20
+	//25 Seconds continuous firing from a 400u fueltank
+	var/fuel_per_second = 16
 	var/consume_excess_fuel = TRUE	//When trying to consume more fuel than we have:
 	//If true, consume all the fuel that remains, and then call it a failure
 	//If false, don't consume anything and fail
@@ -495,6 +496,10 @@
 	var/range =	4
 	var/angle = 30
 
+/obj/item/weapon/gun/spray/update_all_stop()
+	stop_firing()
+	. = ..()
+
 //How long it will take to windup before
 /obj/item/weapon/gun/spray/proc/get_windup()
 	return 0
@@ -520,7 +525,6 @@
 
 
 /obj/item/weapon/gun/spray/stop_firing()
-	firing = FALSE
 	.=..()
 	if (can_stop_processing())
 		STOP_PROCESSING(SSfastprocess, src)

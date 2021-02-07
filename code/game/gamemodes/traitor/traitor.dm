@@ -17,3 +17,4 @@
 	antag_scaling_coeff = 5
 	end_on_antag_death = 0
 	latejoin_antag_tags = list(MODE_TRAITOR)
+	votable = FALSE

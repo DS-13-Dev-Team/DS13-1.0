@@ -94,6 +94,8 @@
 	item_state = "knife"
 	applies_material_colour = 0
 	unbreakable = 1
+	force_divisor = 0.27 // 12 when wielded with hardness 40 (steel)
+	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
 
 /obj/item/weapon/material/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))

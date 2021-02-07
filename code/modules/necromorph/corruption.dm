@@ -45,6 +45,14 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 	can_block_movement = FALSE
 
+/obj/effect/vine/corruption/proc/healthpercent()
+	if (health <= 0)
+		return 0
+
+	if (!max_health)
+		return 1
+
+	return health / max_health
 
 /obj/effect/vine/is_organic()
 	return TRUE

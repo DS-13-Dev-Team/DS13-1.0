@@ -696,7 +696,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	/datum/execution_stage/tripod_bisect)
 
 
-	vision_mod = -6
+	statmods = 	list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -6)
 
 
 /datum/extension/execution/tripod_kiss/interrupt()
@@ -758,8 +758,9 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 /datum/execution_stage/tripod_claw_pin
 	duration = 3 SECOND
 
-	//Rises up into the air then comes down upon the victim fast
+//Rises up into the air then comes down upon the victim fast
 /datum/execution_stage/tripod_claw_pin/enter()
+	.=..()
 	animate(host.user, pixel_y = host.user.pixel_y + 16, time = duration * 0.7)
 	animate(pixel_y = host.user.pixel_y - 18, time = duration * 0.3, easing = BACK_EASING)
 	spawn(duration*0.9)
@@ -789,6 +790,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	duration = 2 SECOND
 
 /datum/execution_stage/tripod_scream/enter()
+	.=..()
 	host.user.do_shout(SOUND_SHOUT_LONG, FALSE)
 
 
@@ -802,6 +804,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	duration = 5 SECOND
 
 /datum/execution_stage/tripod_tongue_force/enter()
+	.=..()
 	//We will gradually tilt forward
 	var/angle = 30
 	if (host.user.dir & WEST)
@@ -833,6 +836,7 @@ https://bigmemes.funnyjunk.com/pictures/Long+boi_073bf6_7722185.jpg
 	duration = 2 SECOND
 
 /datum/execution_stage/finisher/tripod_tongue_pull/enter()
+	.=..()
 	var/angle = -55
 	if (host.user.dir & WEST)
 		angle *= -1
@@ -866,6 +870,7 @@ https://bigmemes.funnyjunk.com/pictures/Long+boi_073bf6_7722185.jpg
 	duration = 5 SECOND
 
 /datum/execution_stage/tripod_bisect/enter()
+	.=..()
 	var/x_offset = -48
 	var/angle = 30
 	if (host.user.dir & WEST)

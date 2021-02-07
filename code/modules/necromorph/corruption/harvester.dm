@@ -150,7 +150,7 @@
 
 	//We add an outline visual effect to each thing we're absorbing from
 	for (var/atom/A in all_sources)
-		var/newfilter = filter(type="outline", size=1, color=COLOR_MARKER_RED)
+		var/newfilter = filter(type="outline", size=1, color=COLOR_HARVESTER_RED)
 		A.filters.Add(newfilter)
 		all_sources[A] = newfilter//We store the reference to that filter in the all_sources list, so we can cleanly remove it later if needed
 
@@ -277,7 +277,8 @@
 /proc/get_harvestable_biomass_sources(var/atom/source, var/single_check = FALSE)
 	var/list/passive_sources = list()
 	var/list/active_sources = list()
-	for (var/atom/O in view(HARVESTER_HARVEST_RANGE, source))
+	var/list/things = dview(HARVESTER_HARVEST_RANGE, source)
+	for (var/atom/O in things)
 		var/result = O.can_harvest_biomass()
 		if (result == MASS_FAIL)
 			continue

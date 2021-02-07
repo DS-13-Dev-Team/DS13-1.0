@@ -55,7 +55,7 @@
 	var/next_fire_time = 0
 
 	var/sel_mode = 1 //index of the currently selected mode
-	var/list/firemodes = list()
+	var/list/datum/firemode/firemodes = list()
 	var/datum/firemode/current_firemode
 	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 	var/firing = FALSE //True if currently firing, limited implementation, mostly for sustained/automatic weapons
@@ -75,6 +75,8 @@
 	var/multi_aim = 0 //Used to determine if you can target multiple people.
 	var/tmp/list/mob/living/aim_targets //List of who yer targeting.
 	var/require_aiming = FALSE	//If true, this gun can ONLY be fired while in ironsights mode. it will fail to fire if not aiming down the sights
+	var/require_held = TRUE	//If true, this gun can only be fired while held in the hands of a human. Should usually be true, but set false for rare special cases
+
 
 	//Aiming Modes: Scopes, ironsights, etc
 	var/selected_aiming_mode	//Typepath of the aiming mode datum we will create when we activate aiming mode
@@ -90,6 +92,7 @@
 	var/safety_state = 0
 	var/has_safety = TRUE
 
+
 	var/projectile_type = null	//What type of projectile will we fire when the trigger is pulled? If this is set, it overrides default ammo-based typing in projectile guns
 	var/ammo_cost = 1	//How many shots' worth of ammo do we consume to fire once?
 
@@ -99,6 +102,13 @@
 
 /obj/item/weapon/gun/Initialize()
 	.=..()
+	// Updating firing modes at appropriate times
+	// Now uses events to avoid unnecessarily complex proc overrides
+	GLOB.item_equipped_event.register(src, src, .proc/update_equipped)
+	GLOB.item_unequipped_event.register(src, src, .proc/update_all_stop)
+	GLOB.swapped_to_event.register(src, src, .proc/update_all)
+	GLOB.swapped_from_event.register(src, src, .proc/update_all_stop)
+
 	for(var/i in 1 to firemodes.len)
 		var/list/L = firemodes[i]
 
@@ -122,13 +132,13 @@
 		scoped_accuracy = accuracy
 
 /obj/item/weapon/gun/Destroy()
+	GLOB.item_equipped_event.unregister(src, src, .proc/update_all)
+	GLOB.item_unequipped_event.unregister(src, src, .proc/update_all_stop)
+	GLOB.swapped_to_event.unregister(src, src, .proc/update_all)
+	GLOB.swapped_from_event.unregister(src, src, .proc/update_all_stop)
 	if (current_firemode)
 		current_firemode.unapply_to(src)
-	for (var/a in firemodes)
-		if (istype(a, /datum/firemode))
-			qdel(a)
-
-	firemodes = list()
+	QDEL_LIST(firemodes)
 
 	disable_aiming_mode()
 	//TODO: Delete ACH click handler
@@ -273,29 +283,33 @@
 			to_chat(user, SPAN_WARNING("[src] is not ready to fire again!"))
 		return FALSE
 
+	if (!can_ever_fire(user))
+		return FALSE
+
 	if(target && user && (target.z != user.z))
-		return FALSE
-
-	if(safety() || !has_ammo())
-		return FALSE
-
-	if (!special_check(user))
-		return FALSE
-
-	if (require_aiming && !active_aiming_mode)
 		return FALSE
 
 	return TRUE
 
 //Returns true if the gun can fire now, or will become able to fire in the near future without any active intervention
-//This is true even when the gun is cooling down between shots
-//It is false when safety is on, or ammo has run out
+/*
+	This only counts problems that will not resolve themselves in time.
+
+	The following things are not counted:
+		Cooldown times/overheating
+*/
 /obj/item/weapon/gun/proc/can_ever_fire(mob/living/user)
 	if(safety() || !has_ammo())
 		return FALSE
 
 	//We'll only do the special check if a user is supplied
 	if (user && !special_check(user))
+		return FALSE
+
+	if (require_aiming && !active_aiming_mode)
+		return FALSE
+
+	if (require_held && !is_held())
 		return FALSE
 
 	return TRUE
@@ -634,7 +648,7 @@
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
 	new_mode.update()
-	update_click_handlers()
+	update_aiming_handler()
 	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
@@ -663,7 +677,7 @@
 		last_safety_check = world.time
 		playsound(src, 'sound/weapons/flipblade.ogg', 30, 1)
 	update_firemode()
-	update_click_handlers()
+	update_aiming_handler()
 
 /obj/item/weapon/gun/verb/toggle_safety_verb()
 	set src in usr
@@ -696,37 +710,36 @@
 		var/datum/firemode/new_mode = firemodes[sel_mode]
 		new_mode.update(force_state)
 
-
-//Updating firing modes at appropriate times
-/obj/item/weapon/gun/equipped(var/mob/user, var/slot)
-	.=..()
+/obj/item/weapon/gun/proc/update_all(force_state = null)
 	update_icon()
-	update_firemode()
-	update_click_handlers()
+	update_firemode(force_state)
+	update_aiming_handler()
 
-/obj/item/weapon/gun/dropped(mob/user)
-	.=..()
-	update_firemode(FALSE)
-	update_click_handlers()
+/obj/item/weapon/gun/proc/update_equipped(obj/self, mob/equipper, slot)
+	if(!equipper)
+		CRASH("update_equipped called on [self] with slot [slot] and invalid mob!")
+	if(slot == equipper.get_active_hand_slot())
+		update_all()
+		return
+	update_all_stop()
 
-/obj/item/weapon/gun/swapped_from()
-	.=..()
-	update_icon()
-	update_firemode(FALSE)
-	update_click_handlers()
+/obj/item/weapon/gun/proc/update_all_stop()
+	update_all(FALSE)
 
-/obj/item/weapon/gun/swapped_to()
-	.=..()
-	update_icon()
-	update_firemode()
-	update_click_handlers()
 
+/obj/item/weapon/gun/proc/can_stop_firing()
+	if (!can_ever_fire())
+		return TRUE
+	return current_firemode.can_stop_firing()
 
 //Used by sustained weapons. Call to make the gun stop doing its thing
 /obj/item/weapon/gun/proc/stop_firing()
-	next_fire_time = world.time + max(fire_delay, 1)	//A tiny minimum delay is needed to prevent an additional click going through on sustained/automatic weapons when the mouse button is released
-	update_firemode(FALSE)
-	update_click_handlers()
+	if (can_stop_firing())
+		firing = FALSE
+		next_fire_time = world.time + max(fire_delay, 1)	//A tiny minimum delay is needed to prevent an additional click going through on sustained/automatic weapons when the mouse button is released
+		if (current_firemode)
+			current_firemode.stop_firing()
+		update_aiming_handler()
 
 /obj/item/weapon/gun/attack_hand(mob/user as mob)
 	if(user.get_inactive_hand() == src)
@@ -801,14 +814,14 @@
 	if (usr)
 		to_chat(usr, SPAN_NOTICE("Selected [initial(AR.name)]"))
 
-/obj/item/weapon/gun/AltClick(var/mob/user)
+/obj/item/weapon/gun/CtrlAltClick(var/mob/user)
 	if (user == loc && is_held() && selected_aiming_mode)
 		toggle_aiming_mode()
 		return
 	.=..()
 
 
-/obj/item/weapon/gun/CtrlAltClick(var/mob/user)
+/obj/item/weapon/gun/AltClick(var/mob/user)
 	if (user == loc && is_held() && aiming_modes.len > 1)
 		cycle_aiming_mode()
 		return
@@ -831,10 +844,10 @@
 
 
 /*------------------------
-	Clickhandler Stuff
+	RMB Aiming
 -------------------------*/
 
-/obj/item/weapon/gun/proc/update_click_handlers()
+/obj/item/weapon/gun/proc/update_aiming_handler()
 	var/check = update_aiming_mode()
 	if (check == AIM_FINE)
 		create_click_handlers()
@@ -864,6 +877,7 @@
 //This is called on automatic weapons when the user pulls the trigger
 //It will only be triggered once per mouseclick, no matter how long they hold it down
 /obj/item/weapon/gun/proc/started_firing()
+	firing = TRUE
 	return
 
 //just a wrapper, used in click handler callbacks

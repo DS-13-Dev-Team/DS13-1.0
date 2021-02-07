@@ -327,3 +327,8 @@ datum/preferences
 		panel.close()
 		panel = null
 	user << browse(null, "window=saves")
+
+
+/proc/get_preferences(var/mob/M)
+	if (M && M.client && M.client.prefs)
+		return M.client.prefs

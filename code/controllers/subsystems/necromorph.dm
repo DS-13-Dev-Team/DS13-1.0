@@ -17,6 +17,7 @@ SUBSYSTEM_DEF(necromorph)
 	var/obj/machinery/marker/marker
 	var/list/marker_spawns_ishimura = list()	//Possible spawn locations aboard ishimura
 	var/list/marker_spawns_aegis = list()	//Possible spawn locations on Aegis VII
+	var/marker_activated_at = 0	//World time when the marker was activated
 
 	//Players
 	var/list/necromorph_players = list()	//This is a list of keys and mobs of players on the necromorph team

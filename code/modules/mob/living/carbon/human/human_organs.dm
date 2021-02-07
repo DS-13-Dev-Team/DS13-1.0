@@ -11,6 +11,26 @@
 
 	return has_organ(organ_tag)
 
+/mob/proc/has_free_hand()
+	return TRUE
+
+//Returns TRUE if src has at least one hand which isn't currently holding anything
+/mob/living/carbon/human/has_free_hand()
+	var/numhands = 0
+
+	//Possible future todo: Necromorphs with many arms? Bionic limbs?
+	for (var/organ_tag in list(BP_R_HAND, BP_L_HAND))
+		if (has_organ(organ_tag))
+			numhands++
+
+
+	var/list/held = get_held_items()
+
+	if (length(held) < numhands)
+		return TRUE
+
+	return FALSE
+
 
 /mob/living/carbon/human/proc/get_active_grasping_limb()
 	var/numtocheck = 1 + hand //This feels hacky
@@ -415,3 +435,5 @@
 
 	return base_icon
 
+
+v

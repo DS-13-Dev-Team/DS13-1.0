@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	if(!center)
 		return
 
-	GLOB.dview_mob.loc = center
+	GLOB.dview_mob.loc = get_turf(center)
 	GLOB.dview_mob.see_invisible = invis_flags
 	. = view(range, GLOB.dview_mob)
 	GLOB.dview_mob.loc = null
@@ -491,14 +491,7 @@ proc
 	return locate(x + offset.x, y + offset.y, z)
 
 
-//When passed a mob, returns the bodypart this mob is aiming its attacks at
-//This is a generic proc to allow it to handle null users
-/proc/get_zone_sel(var/mob/user)
-	.= BP_CHEST
-	if (istype(user) && user.zone_sel && user.zone_sel.selecting)
-		.=user.zone_sel.selecting
-		if (. in list(BP_MOUTH,BP_EYES))
-			. = BP_HEAD
+
 
 
 

@@ -10,7 +10,7 @@
 	force = 3
 	edge = 0
 	sharp = 0
-	force_divisor = 0.3 // 13 when wielded with hardness 40 (steel)
+	force_divisor = 0.27 // 12 when wielded with hardness 40 (steel)
 	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
 	attack_cooldown_modifier = -1
 	tool_qualities = list(QUALITY_CUTTING, 20)
@@ -103,3 +103,5 @@
 	attack_noun = list("attack", "slash", "stab", "slice", "tear", "rip", "dice", "cut")
 	tool_qualities = list(QUALITY_CUTTING, 40)
 	unbreakable = 1
+
+

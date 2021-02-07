@@ -230,7 +230,7 @@
 
 //Simple form ideal for basic use. That proc will return TRUE only when everything was done right, and FALSE if something went wrong, ot user was unlucky.
 //Editionaly, handle_failure proc will be called for a critical failure roll.
-/obj/proc/use_tool(var/mob/living/user, var/atom/target, var/base_time, var/required_quality, var/fail_chance, var/required_stat, var/instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/progress_proc_interval = 0.5 SECONDS)
+/obj/proc/use_tool(var/mob/living/user, var/atom/target, var/base_time, var/required_quality, var/fail_chance, var/required_stat, var/instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/datum/callback/progress_proc, var/progress_proc_interval = 1 SECOND)
 	var/obj/item/weapon/tool/T
 	if (istool(src))
 		T = src
@@ -238,7 +238,7 @@
 			return FALSE
 		T.tool_in_use = TRUE
 
-	var/result = use_tool_extended(user, target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier, forced_sound, sound_repeat)
+	var/result = use_tool_extended(user, target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier, forced_sound, sound_repeat, progress_proc, progress_proc_interval)
 
 	if (T)
 		T.tool_in_use = FALSE
@@ -253,7 +253,7 @@
 			return TRUE
 
 //Use this proc if you want to handle all types of failure yourself. It used in surgery, for example, to deal damage to patient.
-/obj/proc/use_tool_extended(var/mob/living/user, var/atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/progress_proc_interval = 0.5 SECONDS)
+/obj/proc/use_tool_extended(var/mob/living/user, var/atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/datum/callback/progress_proc, var/progress_proc_interval = 1 SECOND)
 
 	var/obj/item/weapon/tool/T
 	if(istool(src))
@@ -327,14 +327,14 @@
 	if(time_to_finish)
 		target.used_now = TRUE
 
-		//Setup the periodic call to the progress proc
-		var/datum/callback/progress_proc = null
-		var/interval = 5
-		if (T)
+		//Setup the periodic call to the progress proc, if one wasnt passed in to override it
+		if (!progress_proc)
 			progress_proc = CALLBACK(src, /obj/item/weapon/tool/proc/work_in_progress)
-			interval = T.progress_interval
 
-		if(!do_after(user, time_to_finish, target, proc_to_call = progress_proc, proc_interval = interval))
+		if (!progress_proc_interval)
+			progress_proc_interval = T.progress_interval
+
+		if(!do_after(user, time_to_finish, target, proc_to_call = progress_proc, proc_interval = progress_proc_interval))
 			//If the doafter fails
 			user << SPAN_WARNING("You need to stand still to finish the task properly!")
 			target.used_now = FALSE

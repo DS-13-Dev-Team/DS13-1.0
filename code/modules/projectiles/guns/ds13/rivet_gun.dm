@@ -140,7 +140,7 @@
 	Projectile
 */
 /obj/item/projectile/bullet/rivet
-	damage = 7	//Weaker than a pulse rifle shot, and lacks full auto
+	damage = 9	//Not really meant for direct fire
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
 	//fire_sound='sound/weapons/guns/fire/divet_fire.ogg'
@@ -242,7 +242,7 @@
 	Fragmentation
 */
 /obj/item/projectile/bullet/pellet/fragment/rivet
-	damage = 2.2
+	damage = 2.5
 	range_step = 3 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
 
 	base_spread = 0 //causes it to be treated as a shrapnel explosion instead of cone
