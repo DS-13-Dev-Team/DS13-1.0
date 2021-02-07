@@ -111,6 +111,19 @@
 		list("cleaning grenade",   "cleaning grenade",   /obj/item/weapon/grenade/chem_grenade/cleaner,  9),
 		)
 
+
+
+/obj/item/rig_module/grenade_launcher/military
+	name = "military grenade launcher"
+	interface_name = "military grenade launcher"
+	desc = "A shoulder-mounted micro-explosive dispenser designed to launch a variety of combat explosives."
+
+	charges = list(
+		list("fragmentation grenade",   "fragmentation grenade",   /obj/item/weapon/grenade/frag,  2),
+		list("smoke bomb",   "smoke bomb",   /obj/item/weapon/grenade/smokebomb,  4),
+		list("illumination grenade",   "illumination grenade",   /obj/item/weapon/grenade/light,  8)
+		)
+
 /obj/item/rig_module/grenade_launcher/smoke
 	name = "mounted smoke grenade launcher"
 	interface_name = "smoke grenade launcher"

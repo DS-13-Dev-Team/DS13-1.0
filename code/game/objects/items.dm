@@ -167,14 +167,12 @@
 
 /obj/item/ex_act(severity)
 	switch(severity)
-		if(1)
-			qdel(src)
-		if(2)
-			if (prob(50))
-				qdel(src)
-		if(3)
-			if (prob(5))
-				qdel(src)
+		if(1.0)
+			take_damage(500)
+		if(2.0)
+			take_damage(rand(125, 200))
+		if(3.0)
+			take_damage(rand(75, 125))
 
 /obj/item/verb/move_to_top()
 	set name = "Move To Top"
@@ -873,16 +871,6 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 /obj/item/lava_act()
 	. = (!throwing) ? ..() : FALSE
-
-
-//Called when a human swaps hands to a hand which is holding this item
-/obj/item/proc/swapped_to(var/mob/user)
-	return
-
-//Called when a human swaps hands away from a hand which is holding this item
-/obj/item/proc/swapped_from(var/mob/user)
-	return
-
 
 /obj/item/proc/is_equipped()
 	if (ismob(loc))

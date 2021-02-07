@@ -22,6 +22,14 @@
 	//How long to remain in this stage before moving to the next one
 	var/duration = 1 SECOND
 
+	//In the case that we fail to advance when our duration ends
+	var/retry_time = 1 SECOND
+
+	var/max_retries = 10
+
+	//If not null, this overrides the range of the execution while active
+	var/range = null
+
 /datum/execution_stage/New(var/datum/extension/execution/host)
 	src.host = host
 	.=..()
@@ -36,7 +44,7 @@
 
 //Here, do safety checks to see if everything is in order for being able to advance to the next stage. Return true/false appropriately
 /datum/execution_stage/proc/can_advance()
-	return TRUE
+	return EXECUTION_CONTINUE
 
 
 //Here, do safety checks to see if its okay to continue the execution move
@@ -57,6 +65,9 @@
 /datum/execution_stage/proc/stop()
 	return TRUE
 
+//Called to make a stage advance early, before its duration is up
+/datum/execution_stage/proc/advance()
+	host.try_advance_stage()
 
 /*
 	A finisher is a special stage which marks the endpoint of an execution move.
@@ -73,6 +84,7 @@
 
 /datum/execution_stage/finisher/enter()
 	host.complete()
+	.=..()
 
 
 
@@ -89,3 +101,6 @@
 	var/obj/effect/projectile/tether/T = host.weapon
 	if (istype(T))
 		T.retract(duration)
+
+
+

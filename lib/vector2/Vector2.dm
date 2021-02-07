@@ -81,6 +81,15 @@ vector2
 		Copy()
 			return get_new_vector(x, y)
 
+		/*
+			Copies the values of src into v, without modifying src.
+			v is modified, be sure that you own it first
+			Does not return anything
+		*/
+		CopyTo(vector2/v)
+			v.x = src.x
+			v.y = src.y
+
 
 		/* Vector dot product.
 			Returns the cosine of the angle between the vectors.
@@ -122,6 +131,7 @@ vector2
 
 			//If we're within range, do this anyway to return a copy of ourselves
 			.=src.ToMagnitude(current_magnitude)
+
 
 		/* Get a vector in the same direction but with magnitude 1.
 		*/
@@ -300,6 +310,19 @@ vector2
 
 			else if (current_magnitude > maximum)
 				SelfToMagnitude(maximum)
+
+
+		/*
+			Clamps our magnitude to a maximum distance from the reference
+			Destructive to self
+		*/
+		SelfClampMagFrom(var/atom/reference, var/minimum, var/maximum)
+			var/vector2/ref_loc = reference.get_global_pixel_loc()
+			SelfSubtract(ref_loc)	//Self is now an offset from ref loc
+			SelfClampMag(minimum, maximum)	//Now clamped
+			SelfAdd(ref_loc)	//And we are now a world loc
+			release_vector(ref_loc)
+
 
 		SelfZero()
 			x = 0

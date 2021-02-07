@@ -61,6 +61,8 @@ GLOBAL_LIST_INIT(doorheavyclose_sound,list('sound/machines/airlock_heavy_close.o
 GLOBAL_LIST_INIT(interact_sound,list('sound/machines/vending_click.ogg'))
 GLOBAL_LIST_INIT(bubble_sound,list('sound/machines/tankbubble1.ogg','sound/machines/tankbubble2.ogg','sound/machines/tankbubble3.ogg'))
 GLOBAL_LIST_INIT(bubble_small_sound,list('sound/machines/tanksmallbubble1.ogg','sound/machines/tanksmallbubble2.ogg','sound/machines/tanksmallbubble3.ogg','sound/machines/tanksmallbubble4.ogg'))
+GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg','sound/effects/organic/flesh_tear_2.ogg','sound/effects/organic/flesh_tear_3.ogg',))
+
 
 /proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
@@ -198,6 +200,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 		if ("interact") soundin = pick(GLOB.interact_sound)
 		if ("bubble") soundin = pick(GLOB.bubble_sound)
 		if ("bubble_small") soundin = pick(GLOB.bubble_small_sound)
+		if ("fleshtear")	soundin = pick(GLOB.fleshtear_sound)
 	return soundin
 
 

@@ -4,7 +4,7 @@
 	icon_state = "vintage_rig"
 	armor = list(melee = 65, bullet = 70, laser = 70, energy = 25, bomb = 90, bio = 100, rad = 70)
 	offline_slowdown = 5
-	online_slowdown = 3
+	online_slowdown = RIG_SUPER_HEAVY
 
 	max_health = 4000
 

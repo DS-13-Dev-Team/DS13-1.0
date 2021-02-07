@@ -227,7 +227,7 @@
 	default_type = MATERIAL_PLASTEEL
 
 /obj/item/stack/material/plasteel/random/Initialize()
-	..()
+	. = ..()
 	amount = rand(1, 10)
 
 

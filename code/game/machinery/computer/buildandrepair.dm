@@ -23,7 +23,7 @@
 			if(isWelder(P))
 				if(P.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
 					to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
-					new /obj/item/stack/material/steel( src.loc, 5 )
+					new /obj/item/stack/material/steel( src.loc, 8 )
 					qdel(src)
 		if(1)
 			if(isWrench(P))

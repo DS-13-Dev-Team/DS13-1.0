@@ -1,11 +1,11 @@
 /obj/structure/closet/secure_closet/scientist
 	name = "scientist's locker"
 	req_one_access = list(access_research)
-	icon_state = "secureres1"
-	icon_closed = "secureres"
-	icon_locked = "secureres1"
-	icon_opened = "secureresopen"
-	icon_off = "secureresoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/scientist/WillContain()
 	return list(
@@ -45,11 +45,11 @@
 /obj/structure/closet/secure_closet/CSCIO
 	name = "chief science officer's locker"
 	req_access = list(access_cscio)
-	icon_state = "rdsecure1"
-	icon_closed = "rdsecure"
-	icon_locked = "rdsecure1"
-	icon_opened = "rdsecureopen"
-	icon_off = "rdsecureoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/CSCIO/WillContain()
 	return list(

@@ -32,7 +32,7 @@
 	default_scale = 1
 	pixel_y = 6
 
-	max_health = 65
+	max_health = 55 // 65 -> 55, 17th Jan, 2021.
 	resistance = 5
 	can_block_movement = TRUE
 
