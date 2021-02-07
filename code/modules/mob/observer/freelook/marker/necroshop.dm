@@ -52,7 +52,7 @@
 		I.spawn_method = initial(N.spawn_method)
 		I.spawn_path = N.mob_type
 		I.queue_fill = N.major_vessel
-		I.require_total_biomass = N.require_total_biomass
+		I.require_total_biomass = N.use_total_biomass
 		I.global_limit = N.global_limit
 
 		//Check if its allowed, based on global limits
@@ -306,11 +306,11 @@
 	//For total mass requirements, we check but don't pay
 	if (params["reqtotal"])
 		if (host.get_total_biomass() < params["price"])
-			to_chat(params["user"], SPAN_DANGER("ERROR: Not enough total biomass to spawn [params["name"]]"))
+			to_chat(params["user"], SPAN_DANGER("ERROR: Not enough biomass to spawn [params["name"]]"))
 			return
 
 	//This line actually takes the biomass in most cases
-	if (!host_pay_biomass(params["name"], params["price"]))
+	else if (!host_pay_biomass(params["name"], params["price"]))
 		to_chat(params["user"], SPAN_DANGER("ERROR: Not enough biomass to spawn [params["name"]]"))
 		return
 
@@ -348,10 +348,6 @@
 //Attempts to subtract the relevant quantity of biomass from the host marker or whatever else
 //Make sure this is the last step before spawning, it can't be allowed to fail after this
 /datum/necroshop/proc/host_pay_biomass(var/purpose, var/amount)
-	//If the cost is zero, don't even trouble the marker, we're sure it can pay
-	if (!amount)
-		return TRUE
-
 	if (host.pay_biomass(purpose, amount))
 		return TRUE
 
@@ -387,10 +383,10 @@
 		return FALSE
 
 	if (require_total_biomass)
-		if (caller.host.get_total_biomass() < require_total_biomass)
+		if (caller.host.get_total_biomass() < price)
 			return FALSE
 
-	if (caller.host.biomass < price)
+	else if (caller.host.biomass < price)
 		return FALSE
 
 	return TRUE

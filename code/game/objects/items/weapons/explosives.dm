@@ -71,8 +71,6 @@
 		target = get_atom_on_turf(src)
 	if(!target)
 		target = src
-	if(location)
-		explosion(4, 2)
 
 	if(target)
 		if (istype(target, /turf/simulated/wall))
@@ -84,6 +82,12 @@
 			target.ex_act(1, src)
 	if(target)
 		target.overlays -= image_overlay
+
+	if(location)
+		var/turf/T = location
+		spawn()
+			T.explosion(4, 2)
+
 	qdel(src)
 
 /obj/item/weapon/plastique/proc/run_timer() //Basically exists so the C4 will beep when running. Better idea than putting sleeps in attackby.

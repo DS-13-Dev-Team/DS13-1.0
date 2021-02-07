@@ -14,6 +14,7 @@
 
 	var/fire_damage_multiplier = 3
 
+	var/dummy = FALSE
 
 	default_rotation = 0
 	max_health = 100
@@ -26,11 +27,6 @@
 	var/processing = FALSE
 
 	can_block_movement = FALSE
-	implements_dummy = TRUE
-
-/obj/structure/corruption_node/New(var/location, var/dummy)
-	src.dummy = dummy
-	.=..()
 
 /obj/structure/corruption_node/is_organic()
 	return TRUE

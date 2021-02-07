@@ -791,15 +791,6 @@ proc/is_blind(A)
 
 
 /mob/proc/is_within_reach(var/atom/target)
-	if (get_dist(src, target) <= get_reach())
+	if (get_dist(src, target) <= reach)
 		return TRUE
 	return FALSE
-
-
-//Mobs which are lying down get 1 less reach, if they had more than 1 to begin with
-/mob/proc/get_reach()
-	var/reach_mod = 0
-	if (lying)
-		reach_mod -= 1
-
-	return max(min(reach, 1), reach+reach_mod)

@@ -268,7 +268,7 @@ GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
 			old_position = dpos + 1
 
 			if(!atom_def) // Skip the item if the path does not exist.  Fix your crap, mappers!
-	#ifdef UNIT_TESTS
+	#ifdef UNIT_TEST
 				log_error("Couldn't find atom path specified in map: [full_def]")
 	#endif
 				if (dpos == 0)

@@ -28,6 +28,5 @@
 	var/obj/effect/decal/cleanable/blood/writing/W = new(target)
 	W.transform = W.transform.Scale(2)
 	W.message = message
-	W.creator = "[user.name]_[user.ckey]"
 	W.visible_message("<span class='warning'>Invisible fingers crudely paint something in blood on \the [target].</span>")
 

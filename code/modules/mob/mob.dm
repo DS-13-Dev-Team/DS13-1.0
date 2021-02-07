@@ -191,7 +191,8 @@
 
 	if ((drowsyness > 0) && !MOVING_DELIBERATELY(src))
 		. += 6
-
+	if(lying) //Crawling, it's slower
+		. += 8 + (weakened * 2)
 	. += move_intent.move_delay
 	. += encumbrance() * (0.5 + 1.5 * (SKILL_MAX - get_skill_value(SKILL_HAULING))/(SKILL_MAX - SKILL_MIN)) //Varies between 0.5 and 2, depending on skill
 
@@ -668,7 +669,7 @@
 	return 0
 
 //Updates lying and icons
-/mob/proc/update_lying_buckled_and_verb_status()
+/mob/proc/UpdateLyingBuckledAndVerbStatus()
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0
 	else if(buckled)
@@ -761,38 +762,38 @@
 		facing_dir = null
 		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower your current stun
 
-		update_lying_buckled_and_verb_status()
+		UpdateLyingBuckledAndVerbStatus()
 	return
 
 /mob/proc/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
 	if(status_flags & CANSTUN)
 		stunned = max(amount,0)
-		update_lying_buckled_and_verb_status()
+		UpdateLyingBuckledAndVerbStatus()
 	return
 
 /mob/proc/AdjustStunned(amount)
 	if(status_flags & CANSTUN)
 		stunned = max(stunned + amount,0)
-		update_lying_buckled_and_verb_status()
+		UpdateLyingBuckledAndVerbStatus()
 	return
 
 /mob/proc/Weaken(amount)
 	if(status_flags & CANWEAKEN)
 		facing_dir = null
 		weakened = max(max(weakened,amount),0)
-		update_lying_buckled_and_verb_status()
+		UpdateLyingBuckledAndVerbStatus()
 	return
 
 /mob/proc/SetWeakened(amount)
 	if(status_flags & CANWEAKEN)
 		weakened = max(amount,0)
-		update_lying_buckled_and_verb_status()
+		UpdateLyingBuckledAndVerbStatus()
 	return
 
 /mob/proc/AdjustWeakened(amount)
 	if(status_flags & CANWEAKEN)
 		weakened = max(weakened + amount,0)
-		update_lying_buckled_and_verb_status()
+		UpdateLyingBuckledAndVerbStatus()
 	return
 
 /mob/proc/Paralyse(amount)

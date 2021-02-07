@@ -104,7 +104,7 @@
 
 /*Roughly speaking, enhanced versions of necromorphs have:
 	250% biomass cost and max health
-	140% damage on attacks and abilites
+	150% damage on attacks and abilites
 	80% windup and cooldown times, move and attack delays
 */
 /datum/species/necromorph/slasher/enhanced
@@ -115,7 +115,6 @@
 	total_health = 225
 	slowdown = 2.8
 	biomass = 125
-	require_total_biomass	=	BIOMASS_REQ_T2
 	view_range = 8
 	mass = 120
 	mob_size	= MOB_LARGE
@@ -192,7 +191,7 @@
 	edge = TRUE
 	shredding = TRUE
 	damage = 16
-	delay = 15
+	delay = 13
 	airlock_force_power = 2
 	armor_penetration = 5
 
@@ -228,10 +227,10 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 	return TRUE
 
 /datum/unarmed_attack/blades/strong
-	damage = 22.4
-	delay = 14
+	damage = 24
+	delay = 11
 	airlock_force_power = 3
-	armor_penetration = 8
+	armor_penetration = 10
 
 /*
 	Abilities
@@ -245,7 +244,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 		A = autotarget_enemy_mob(A, 2, src, 999)
 
 
-	.= charge_attack(A, _delay = 1 SECONDS, _speed = 5.0, _lifespan = 4 SECONDS)
+	.= charge_attack(A, _delay = 1 SECONDS, _speed = 5.0, _lifespan = 6 SECONDS)
 	if (.)
 		var/mob/H = src
 		if (istype(H))
@@ -267,7 +266,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 	if (!isliving(A))
 		A = autotarget_enemy_mob(A, 2, src, 999)
 
-	.= charge_attack(A, _delay = 0.75 SECONDS, _speed = 5.5, _lifespan = 4 SECONDS)
+	.= charge_attack(A, _delay = 0.75 SECONDS, _speed = 5.5, _lifespan = 6 SECONDS)
 	if (.)
 		var/mob/H = src
 		if (istype(H))

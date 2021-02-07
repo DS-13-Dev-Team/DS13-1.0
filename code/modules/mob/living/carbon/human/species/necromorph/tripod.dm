@@ -1,15 +1,15 @@
 #define LEAP_SHOCKWAVE_DAMAGE	10
-#define LEAP_CONE_DAMAGE	15
-#define LEAP_CONE_WEAKEN	3
+#define LEAP_CONE_DAMAGE	10
+#define LEAP_CONE_WEAKEN	2
 #define LEAP_REDUCED_COOLDOWN	3 SECONDS
-#define TONGUE_EXTEND_TIME 5 SECONDS	//How long the tongue stays out and visible after any tongue move
+#define TONGUE_EXTEND_TIME 7 SECONDS	//How long the tongue stays out and visible after any tongue move
 
 #define ARM_SWING_RANGE	4
 
 //These are used to position the arm sprite during swing
-#define TONGUE_OFFSETS	list(S_NORTH = new /vector2(6, 16), S_SOUTH = new /vector2(-2, 8), S_EAST = new /vector2(26, 10), S_WEST = new /vector2(-14, 10))
-
-
+#define LEFT_ARM_OFFSETS	list("[NORTH]" = new /vector2(-4, 12), "[SOUTH]" = new /vector2(8, 8), "[EAST]" = new /vector2(14, 2), "[WEST]" = new /vector2(8, 6))
+#define RIGHT_ARM_OFFSETS	list("[NORTH]" = new /vector2(12, 12), "[SOUTH]" = new /vector2(-8, 6), "[EAST]" = new /vector2(-2, 4), "[WEST]" = new /vector2(-6, 6))
+#define TONGUE_OFFSETS	list("[NORTH]" = new /vector2(6, 16), "[SOUTH]" = new /vector2(-2, 8), "[EAST]" = new /vector2(26, 10), "[WEST]" = new /vector2(-14, 10))
 
 /datum/species/necromorph/tripod
 	name = SPECIES_NECROMORPH_TRIPOD
@@ -32,8 +32,7 @@
 	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 
-	biomass = 400
-	require_total_biomass	=	BIOMASS_REQ_T3
+	biomass = 350
 	mass = 250
 	biomass_reclamation_time	=	15 MINUTES
 	marker_spawnable = TRUE
@@ -45,7 +44,7 @@
 	bump_flag 	= HEAVY	// What are we considered to be when bumped?
 	push_flags 	= ALLMOBS	// What can we push?
 	swap_flags 	= ALLMOBS	// What can we swap place with?
-	evasion = -10	//Tripod has poor natural evasion, but this value will be constantly modified by a passive ability
+	evasion = 0	//Tripod has no natural evasion, but this value will be constantly modified by a passive ability
 	reach = 2
 
 	//Implacable
@@ -139,7 +138,7 @@
 
 
 #define TRIPOD_PASSIVE_1	"<h2>PASSIVE: Personal Space:</h2><br>\
-The tripod needs room to manoeuvre. For each clear tile within 2 radius around it, the tripod gains bonus evasion, up to a maximum of [TRIPOD_PERSONAL_SPACE_MAX_EVASION] if standing in a completely open space."
+The tripod needs room to manoeuvre. For each clear tile within 2 radius around it, the tripod gains bonus evasion, up to a maximum of 35 if standing in a completely open space."
 
 #define TRIPOD_PASSIVE_2	"<h2>PASSIVE: Cadence:</h2><br>\
 The tripod is capable of a great top speed, but its huge mass requires some time to start moving. Tripod gains bonus movespeed for each tile it moves in the same direction, up to double speed after moving 5 tiles.<br>\
@@ -151,8 +150,7 @@ This speed bonus is lost if you stop moving in a straight line"
 <h3>Damage: 10 radial + 10 cone</h3><br>\
 <h3>Cooldown: 6 seconds</h3><br>\
 The tripod's signature ability. Leaps high into the air and briefly out of view, before landing hard at the designated spot. <br>\
-Deals a small amount of damage to victims in a 1 tile radius around the landing point, and additional damage+knockdown to a cone shaped area infront of the tripod as it lands.<br>\
-If the tripod hits a victim with the frontal cone, it gains 40% reduction on incoming damage for 3 seconds. Keep jumping around to survive longer!"
+Deals a small amount of damage to victims in a 1 tile radius around the landing point, and additional damage+knockdown to a cone shaped area infront of the tripod as it lands"
 
 
 #define TRIPOD_SWING_DESC 	"<h2>Arm Swing:</h2><br>\
@@ -246,7 +244,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	name = "Claw Strike"
 	desc = "A modestly powerful punch that is cumbersome to use"
 	delay = 20
-	damage = 13
+	damage = 14
 	airlock_force_power = 3
 	airlock_force_speed = 1.5
 	structure_damage_mult = 1.5	//Slightly annoys obstacles
@@ -305,7 +303,6 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 			L.take_overall_damage(LEAP_CONE_DAMAGE)
 			L.Weaken(LEAP_CONE_WEAKEN)
-			set_extension(user, /datum/extension/tripod_leap_defense)
 			shake_camera(src,10,3)
 			conehit = TRUE
 
@@ -326,20 +323,12 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 
 
-/datum/extension/tripod_leap_defense
-	base_type = /datum/extension/tripod_leap_defense
-	flags = EXTENSION_FLAG_IMMEDIATE
-	statmods = list(STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = 0.6)
 
 
-/datum/extension/tripod_leap_defense/New(var/atom/holder)
-	.=..()
-	addtimer(CALLBACK(src, /datum/extension/proc/remove_self), 3 SECONDS)
 
 /*--------------------------------
 	Arm Swing
 --------------------------------*/
-
 /mob/living/carbon/human/proc/tripod_arm_swing(var/atom/target)
 	set name = "Arm Swing"
 	set desc = "Swings an arm in a wide radius"
@@ -349,18 +338,65 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	if (!target)
 		target = dir
 
+	var/num_arms = 0
+	var/selected_arm
+	//Alright lets check our arm status first
+	var/obj/item/organ/external/arm/left = get_organ(BP_L_ARM)
+	var/obj/item/organ/external/arm/right = get_organ(BP_R_ARM)
+
+	if (QDELETED(left) || left.is_stump() || left.retracted)
+		left = null
+	else
+		num_arms++
+
+	if (QDELETED(right) || right.is_stump() || right.retracted)
+		right = null
+	else
+		num_arms++
+
+	if (num_arms <= 0)
+		to_chat(src, SPAN_DANGER("You have no arms to swing!"))
+		return
+
+	else if (num_arms == 1)
+		if (left)
+			selected_arm = BP_L_ARM
+		else
+			selected_arm = BP_R_ARM
+	else
+		//If we have both arms, then the user gets to choose which to swing based on their selected hand
+		if (hand)
+			selected_arm = BP_L_ARM
+		else
+			selected_arm = BP_R_ARM
+
+
+
+	var/swing_dir = CLOCKWISE
+	var/effect
+	//Alright we have finally chosen what arm to swing with, what will that affect?
+	if (selected_arm == BP_L_ARM)
+		swing_dir = CLOCKWISE
+		effect = /obj/effect/effect/swing/tripod_left
+	else
+		swing_dir = ANTICLOCKWISE
+		effect = /obj/effect/effect/swing/tripod_right
+
+
 	//Okay lets actually start the swing
-	.=swing_attack(swing_type = /datum/extension/swing/arm/tripod,
+	.=swing_attack(swing_type = /datum/extension/swing/tripod_arm,
 	source = src,
 	target = target,
 	angle = 150,
 	range = ARM_SWING_RANGE,
-	duration = 0.7 SECOND,
-	windup = 0.6 SECONDS,
+	duration = 0.85 SECOND,
+	windup = 0.8 SECONDS,
 	cooldown = 3.5 SECONDS,
+	effect_type = effect,
 	damage = 20,
 	damage_flags = DAM_EDGE,
-	stages = 8)
+	stages = 8,
+	swing_direction = swing_dir)
 
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 2)
@@ -371,33 +407,29 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 			playsound(src, sound_effect, VOLUME_LOW, TRUE)
 
 
-//Extension subtype
-/datum/extension/swing/arm/tripod
-	base_type = /datum/extension/swing/arm/tripod
-	precise = FALSE
-	left = /obj/effect/effect/swing/tripod_left
-	right = /obj/effect/effect/swing/tripod_right
-
-	offsets_left = list(S_NORTH = new /vector2(-4, 12), S_SOUTH = new /vector2(8, 8), S_EAST = new /vector2(14, 2), S_WEST = new /vector2(8, 6))
-	offsets_right = list(S_NORTH = new /vector2(12, 12), S_SOUTH = new /vector2(-8, 6), S_EAST = new /vector2(-2, 4), S_WEST = new /vector2(-6, 6))
-
 
 
 //Swing FX
 /obj/effect/effect/swing/tripod_left
 	icon_state = "tripod_left"
 	default_scale = 1.65
+	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
 
 /obj/effect/effect/swing/tripod_right
 	icon_state = "tripod_right"
 	default_scale = 1.65
+	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
 
 
-
+//Extension subtype
+/datum/extension/swing/tripod_arm
+	base_type = /datum/extension/swing/tripod_arm
+	var/limb_used
+	precise = FALSE
 
 
 //The arm swing may be terminated early by obstacles
-/datum/extension/swing/arm/tripod/hit_turf(var/turf/T)
+/datum/extension/swing/tripod_arm/hit_turf(var/turf/T)
 	var/timepercent = current_stage / stages
 	var/range = get_dist(user, T)
 
@@ -423,7 +455,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	.=..()
 
 
-/datum/extension/swing/arm/tripod/hit_mob(var/mob/living/L)
+/datum/extension/swing/tripod_arm/hit_mob(var/mob/living/L)
 	//We harmlessly swooce over lying targets
 	if (L.lying)
 		return FALSE
@@ -438,27 +470,54 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 		L.apply_impulse(push_direction, 200)
 		release_vector(push_direction)
 
-/datum/extension/swing/arm/tripod/windup_animation()
+/datum/extension/swing/tripod_arm/windup_animation()
 	var/vector2/back_offset = target_direction.Turn(180) * 16
 	animate(user, pixel_x = user.pixel_x + back_offset.x, pixel_y = user.pixel_y + back_offset.y, easing = BACK_EASING, time = windup * 0.3)
 	var/vector2/forward_offset = target_direction * 48
 	animate(pixel_x = user.pixel_x + forward_offset.x, pixel_y = user.pixel_y + forward_offset.y, easing = QUAD_EASING, time = windup * 0.7)
+	sleep(windup)
 
+	switch (swing_direction)
+		//Cache the limb used
+		if (CLOCKWISE)
+			limb_used = BP_L_ARM
+		else
+			limb_used = BP_R_ARM
 
-	.=..()
+	var/mob/living/carbon/human/H = user
+	//We will temporarily retract the arm from the sprite
+	var/obj/item/organ/external/E = H.get_organ(limb_used)
+	if (E)
+		E.retracted = TRUE
+		H.update_body(TRUE)
 
 	release_vector(back_offset)
 	release_vector(forward_offset)
 
 
+/datum/extension/swing/tripod_arm/setup_effect()
+	.=..()
+	//The parent code will move the effect object to the centre of our sprite, now we will offset it farther to the appropriate shoulder joint
+	var/vector2/offset
+	if (limb_used == BP_L_ARM)
+		offset = LEFT_ARM_OFFSETS["[user.dir]"]
+	else
+		offset = RIGHT_ARM_OFFSETS["[user.dir]"]
 
+	effect.pixel_x += offset.x
+	effect.pixel_y += offset.y
 
-/datum/extension/swing/arm/tripod/cleanup_effect()
+/datum/extension/swing/tripod_arm/cleanup_effect()
 	.=..()
 	var/mob/living/carbon/human/H = user
-	//Slide back to normal position
-	animate(user, pixel_x = H.default_pixel_x, pixel_y = H.default_pixel_y, time = 5)
 
+	//Slide back to normal position
+	animate(H, pixel_x = H.default_pixel_x, pixel_y = H.default_pixel_y, time = 5)
+	//Put the arm back now
+	var/obj/item/organ/external/E = H.get_organ(limb_used)
+	if (E)
+		E.retracted = FALSE
+		H.update_body(TRUE)
 
 
 
@@ -513,18 +572,18 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	windup = 0,
 	cooldown = 6 SECONDS,
 	effect_type = /obj/effect/effect/swing/tripod_tongue,
-	damage = 22.5,
+	damage = 18,
 	damage_flags = DAM_EDGE | DAM_SHARP,
 	stages = 4,
 	swing_direction = pick(CLOCKWISE, ANTICLOCKWISE))
 
-	if (.)
-		var/sound_effect = pick(list('sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_1.ogg',
-		'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_2.ogg',
-		'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_3.ogg',
-		'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_4.ogg',
-		'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_5.ogg'))
-		playsound(src, sound_effect, VOLUME_MID, TRUE)
+
+	var/sound_effect = pick(list('sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_1.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_2.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_3.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_4.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_tongue_lash_5.ogg'))
+	playsound(src, sound_effect, VOLUME_MID, TRUE)
 
 //Extension subtype
 /datum/extension/swing/tripod_tongue

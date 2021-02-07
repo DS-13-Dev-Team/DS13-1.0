@@ -477,7 +477,24 @@
 
 /obj/structure/window/reinforced/full/indestructible
 	icon_state = "rwindow_full"
-	resistance = 100
+
+/obj/structure/window/reinforced/full/indestructible/attack_hand()
+	return
+
+/obj/structure/window/reinforced/full/indestructible/attackby()
+	return
+
+/obj/structure/window/reinforced/full/indestructible/ex_act()
+	return
+
+/obj/structure/window/reinforced/full/indestructible/hitby()
+	return
+
+/obj/structure/window/reinforced/full/indestructible/take_damage()
+	return
+
+/obj/structure/window/reinforced/full/indestructible/shatter()
+	return
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"

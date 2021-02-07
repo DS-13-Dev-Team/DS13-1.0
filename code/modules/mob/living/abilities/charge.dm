@@ -55,7 +55,6 @@
 	var/atom/target = null //What we want to hit
 	var/atom/move_target = null //What we're actually running towards, may not be the same
 	var/speed = 5
-	var/base_speed = 5
 	var/lifespan = 0
 	var/homing = TRUE
 	var/inertia = FALSE
@@ -97,7 +96,7 @@
 
 
 	target = _target
-
+	speed = _speed * user.get_move_speed_factor()
 	lifespan = _lifespan
 	range_left = _maxrange
 	homing = _homing
@@ -116,11 +115,6 @@
 		L.face_atom(target)
 		L.disable(max_lifespan())
 		starting_locomotion_limbs = length(L.get_locomotion_limbs(FALSE))
-
-	if (_speed)
-		base_speed = speed
-	calculate_speed()
-
 	//Delay handling
 	if (!delay)
 		//If no delay, start immediately
@@ -130,35 +124,6 @@
 
 		//If positive delay, wait that long before starting
 		start_timer = addtimer(CALLBACK(src, .proc/start), _delay, TIMER_STOPPABLE)
-
-/datum/extension/charge/proc/calculate_speed()
-	speed = base_speed * user.get_move_speed_factor()
-	if (isliving(user))
-		var/mob/living/L = user
-
-		//Lets factor in lying and missing limbs
-		var/mob/living/carbon/human/H
-		if (ishuman(L))
-			H = L
-
-		var/bad_speed_factor = 0.4
-		if (H)
-			bad_speed_factor = H.species.lying_speed_factor
-
-		//If we're crawling, we have the worst speed
-		if (L.lying)
-			speed *= bad_speed_factor
-			lifespan /= bad_speed_factor
-		else if (H)
-			//If we're missing limbs but still standing, we get a penalty thats not as bad as crawling
-			var/remaining_limb_percent = H.get_locomotive_limb_percent()
-			if (remaining_limb_percent < 1)
-				//This seems complicated but i'll walk through it with an example of 0.25
-				var/bad_speed_penalty = 1 - bad_speed_factor	//0.75, aka 75% speed penalty
-				bad_speed_penalty *= 1 - remaining_limb_percent	//1 - remaining_limb_percent gives us the percentage of limbs which are missing
-				bad_speed_factor = 1 - bad_speed_penalty //Convert penalty back to factor
-				speed *= bad_speed_factor	//Multiply with charge speed
-				lifespan /= bad_speed_factor
 
 /datum/extension/charge/proc/check_limbs(var/trip = FALSE)
 	if (L)
@@ -444,7 +409,6 @@
 	if (isliving(holder))
 		var/mob/living/L = holder
 		L.stunned = 0
-		peter_out_effects()
 	stop()
 
 
@@ -460,8 +424,8 @@
 	stop()
 
 
-//Called when the charge reaches max time or range
-/datum/extension/charge/proc/peter_out_effects()
+
+
 
 
 //Visual Filters
@@ -596,7 +560,7 @@
 
 	return ..()
 
-/atom/movable/proc/charge_attack(var/atom/_target, var/_speed = 7, var/_lifespan = 3 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)
+/atom/movable/proc/charge_attack(var/atom/_target, var/_speed = 7, var/_lifespan = 2 SECONDS, var/_maxrange = null, var/_homing = TRUE, var/_inertia = FALSE, var/_power = 0, var/_cooldown = 20 SECONDS, var/_delay = 0)
 	//First of all, lets check if we're currently able to charge
 	if (!can_charge(_target, TRUE))
 		return FALSE
@@ -607,16 +571,4 @@
 	set_extension(src, /datum/extension/charge, _target, _speed, _lifespan, _maxrange, _homing, _inertia, _power, _cooldown, _delay)
 
 	return TRUE
-
-
-
-//This is only for debugging
-/mob/proc/autocharge()
-	for (var/mob/living/L in view())
-		if (!L.client)
-			continue
-		charge_attack(_target = L, _speed = 5,  _cooldown = 20, _delay = 2 SECONDS)
-		break
-
-
 

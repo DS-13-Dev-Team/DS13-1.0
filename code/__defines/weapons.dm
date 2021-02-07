@@ -2,12 +2,12 @@
 
 //Weapon Force: Provides the base damage for melee weapons.
 #define WEAPON_FORCE_HARMLESS    3
-#define WEAPON_FORCE_WEAK        4
-#define WEAPON_FORCE_NORMAL      6
-#define WEAPON_FORCE_PAINFUL     10
-#define WEAPON_FORCE_DANGEROUS   14
-#define WEAPON_FORCE_ROBUST      19
-#define WEAPON_FORCE_LETHAL      28
+#define WEAPON_FORCE_WEAK        7
+#define WEAPON_FORCE_NORMAL      8
+#define WEAPON_FORCE_PAINFUL     12
+#define WEAPON_FORCE_DANGEROUS   16
+#define WEAPON_FORCE_ROBUST      22
+#define WEAPON_FORCE_LETHAL      30
 
 
 //Resistance values, used on floors, windows, airlocks, girders, and similar hard targets
@@ -68,5 +68,5 @@
 
 
 //Damage dealt by fire per second, is equal to the fire temperature - heat resistance, multiplied by this
-//1 damage (per second) per 150 degrees kelvin
-#define FIRE_DAMAGE_MULTIPLIER	0.0066
+//1 damage (per second) per 125 degrees kelvin
+#define FIRE_DAMAGE_MULTIPLIER	0.008

@@ -6,7 +6,7 @@
 	hierarchy_type = /decl/hierarchy/outfit/necromorph
 	id_slot = slot_wear_id
 
-/decl/hierarchy/outfit/necromorph/create_item(var/path, var/location, var/dummy = FALSE)
+/decl/hierarchy/outfit/necromorph/create_item(var/path, var/location)
 	.=..()
 	if (isatom(.))
 		var/atom/A = .

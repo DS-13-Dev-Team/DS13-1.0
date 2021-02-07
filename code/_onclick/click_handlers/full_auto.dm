@@ -40,8 +40,6 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["left"])
 		left_mousedown = TRUE
-		if(modifiers["ctrl"] || modifiers["alt"] || modifiers["shift"]) //no firing after using hotkeys
-			return TRUE
 		object = resolve_world_target(object, params)
 		if (object)
 			target = object

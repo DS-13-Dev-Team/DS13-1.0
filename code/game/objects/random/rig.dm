@@ -7,9 +7,10 @@
 /obj/random/hardsuit/item_to_spawn()
 	return pickweight(list(/obj/item/weapon/rig/security,
 				/obj/item/weapon/rig/engineering,
-				/obj/item/weapon/rig/mining,
 				/obj/item/weapon/rig/vintage = 0.5,
 				/obj/item/weapon/rig/advanced = 0.5,
+				/obj/item/weapon/rig/riot = 0.5,
+				/obj/item/weapon/rig/patrol = 0.5,
 				/obj/item/weapon/rig/industrial,
 				/obj/item/weapon/rig/eva,
 				/obj/item/weapon/rig/civilian))
@@ -43,5 +44,7 @@
 	/obj/item/rig_module/grenade_launcher/light = 0.5,
 	/obj/item/rig_module/mounted/taser = 0.5,
 	/obj/item/rig_module/hotswap = 0.5,
-	/obj/item/rig_module/power_sink = 1
+	/obj/item/rig_module/power_sink = 1,
+	/obj/item/rig_module/extension/speedboost = 1,
+	/obj/item/rig_module/extension/speedboost/advanced = 0.5
 	))

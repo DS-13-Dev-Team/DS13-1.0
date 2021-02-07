@@ -58,7 +58,11 @@ Vars/
 /datum/extension/spray/New(var/atom/source, var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/mob/override_user = null, var/list/extra_data)
 	.=..()
 	src.source = source
-	if (override_user)
+
+	//-1 is a special value that means no user, dont create click handlers
+	if (override_user == -1)
+		user = null
+	else if (override_user)
 		user = override_user
 	else if (isliving(source))
 		user = source
@@ -152,10 +156,6 @@ Vars/
 
 		recalculate_cone()
 
-		//Make sure we don't get double fx
-		if (fx)
-			QDEL_NULL(fx)
-
 		//Lets create the chemspray fx
 		fx = new fx_type(source, direction, duration, length, angle)
 		fx.particle_color = particle_color
@@ -173,8 +173,11 @@ Vars/
 		user.RemoveClickHandlersByType(/datum/click_handler/spray)
 		spray_handler = null
 	stopped_at = world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 	QDEL_NULL(fx)
+	if (cooldown)
+		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
+	else
+		finish_cooldown()
 
 
 
@@ -185,7 +188,7 @@ Vars/
 
 /datum/extension/spray/proc/finish_cooldown()
 	deltimer(ongoing_timer)
-	remove_self()
+	remove_extension(holder, base_type)
 
 
 /datum/extension/spray/proc/get_cooldown_time()
@@ -193,9 +196,6 @@ Vars/
 	return cooldown - elapsed
 
 
-/datum/extension/spray/Destroy()
-	QDEL_NULL(fx)
-	.=..()
 
 
 

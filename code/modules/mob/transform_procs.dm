@@ -22,7 +22,7 @@
 
 	DEL_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	stunned = 0
-	update_lying_buckled_and_verb_status()
+	UpdateLyingBuckledAndVerbStatus()
 	set_invisibility(initial(invisibility))
 
 	if(!species.primitive_form) //If the creature in question has no primitive set, this is going to be messy.

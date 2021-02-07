@@ -1073,7 +1073,6 @@
 		W.basecolor = (hand_blood_color) ? hand_blood_color : COLOR_BLOOD_HUMAN
 		W.update_icon()
 		W.message = message
-		W.creator = "[src.name]_[src.ckey]"
 		W.add_fingerprint(src)
 
 #define CAN_INJECT 1

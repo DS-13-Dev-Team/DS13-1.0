@@ -14,11 +14,11 @@
 /obj/structure/closet/secure_closet/medical1
 	name = "medical equipment closet"
 	desc = "Filled with medical junk."
-	icon_state = "medical1"
-	icon_closed = "medical"
-	icon_locked = "medical1"
-	icon_opened = "medicalopen"
-	icon_off = "medicaloff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 	req_access = list(access_medical)
 
 /obj/structure/closet/secure_closet/medical1/WillContain()
@@ -31,11 +31,11 @@
 /obj/structure/closet/secure_closet/medical2
 	name = "anesthetics closet"
 	desc = "Used to knock people out."
-	icon_state = "medical1"
-	icon_closed = "medical"
-	icon_locked = "medical1"
-	icon_opened = "medicalopen"
-	icon_off = "medicaloff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 	req_access = list(access_surgery)
 
 /obj/structure/closet/secure_closet/medical2/WillContain()
@@ -48,11 +48,11 @@
 /obj/structure/closet/secure_closet/medical3
 	name = "medical doctor's locker"
 	req_access = list(access_medical)
-	icon_state = "securemed1"
-	icon_closed = "securemed"
-	icon_locked = "securemed1"
-	icon_opened = "securemedopen"
-	icon_off = "securemedoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/medical3/WillContain()
 	return list(
@@ -74,11 +74,11 @@
 /obj/structure/closet/secure_closet/medical4
 	name = "surgeon's locker"
 	req_access = list(access_medical)
-	icon_state = "securesenmed1"
-	icon_closed = "securesenmed"
-	icon_locked = "securesenmed1"
-	icon_opened = "securesenmedopen"
-	icon_off = "securesenmedoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/medical4/WillContain()
 	return list(
@@ -100,11 +100,11 @@
 /obj/structure/closet/secure_closet/SMO
 	name = "senior medical officer's locker"
 	req_access = list(access_smo)
-	icon_state = "cmosecure1"
-	icon_closed = "cmosecure"
-	icon_locked = "cmosecure1"
-	icon_opened = "cmosecureopen"
-	icon_off = "cmosecureoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/SMO/WillContain()
 	return list(
@@ -132,11 +132,11 @@
 /obj/structure/closet/secure_closet/chemical
 	name = "chemical closet"
 	desc = "Store dangerous chemicals in here."
-	icon_state = "medical1"
-	icon_closed = "medical"
-	icon_locked = "medical1"
-	icon_opened = "medicalopen"
-	icon_off = "medicaloff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 	req_access = list(access_chemistry)
 
 /obj/structure/closet/secure_closet/chemical/WillContain()

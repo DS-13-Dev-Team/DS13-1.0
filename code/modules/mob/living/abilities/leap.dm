@@ -23,11 +23,6 @@
 	.=..()
 	homing = FALSE
 
-//Leap does not get any speed penalties from missing limbs
-
-/datum/extension/charge/leap/calculate_speed()
-	speed = base_speed * user.get_move_speed_factor()
-
 
 
 /datum/extension/charge/leap/start()

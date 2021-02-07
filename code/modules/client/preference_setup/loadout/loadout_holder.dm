@@ -301,7 +301,7 @@
 /*
 	Actually equip the loadout, after all setup
 */
-/datum/extension/loadout/proc/equip_to_mob(var/dummy = FALSE)
+/datum/extension/loadout/proc/equip_to_mob()
 
 	//Some additional preparation, lets divide the gear into two lists based on whether or not they have any job/role restrictions. This is critical
 	var/list/unrestricted_gear = list()
@@ -320,16 +320,16 @@
 	//Right lets start equipping
 
 	//First of all, we equip the base of the outfit
-	outfit.equip_base(H, equip_adjustments, TRUE, dummy = dummy)
+	outfit.equip_base(H, equip_adjustments, TRUE)
 
 
 	//Secondly, we'll equip our unrestricted gear items
 	for(var/datum/gear/G in unrestricted_gear)
-		equip_gear(G, FALSE, dummy = dummy)
+		equip_gear(G, FALSE)
 
 
 	//Thirdly, we'll equip the ID, this may change our access, hence why we cut the gear list in two
-	var/obj/item/weapon/card/id/W = outfit.equip_id(H, rank, assignment, equip_adjustments, dummy = dummy)
+	var/obj/item/weapon/card/id/W = outfit.equip_id(H, rank, assignment, equip_adjustments)
 	if(W)
 		rank = W.rank
 		assignment = W.assignment
@@ -337,17 +337,17 @@
 
 	//Fourthly, we equip any restricted gear
 	for(var/datum/gear/G in restricted_gear)
-		equip_gear(G, dummy = dummy)
+		equip_gear(G)
 
 
 	//Fifth, the PDA if applicable
-	outfit.equip_pda(H, rank, assignment, equip_adjustments, dummy = dummy)
+	outfit.equip_pda(H, rank, assignment, equip_adjustments)
 
 
 	//Sixth, stored items
 	outfit.equip_stored(H, equip_adjustments)
 	for(var/datum/gear/G in spawn_in_storage)
-		G.spawn_in_storage_or_drop(H, prefs.Gear()[G.display_name], dummy = dummy)
+		G.spawn_in_storage_or_drop(H, prefs.Gear()[G.display_name])
 
 	//Seventh: Some finishing touches
 	if(!(OUTFIT_ADJUSTMENT_SKIP_POST_EQUIP & equip_adjustments))
@@ -362,13 +362,12 @@
 
 
 
-/datum/extension/loadout/proc/equip_gear(var/datum/gear/G, var/check_job = TRUE, var/dummy = FALSE)
+/datum/extension/loadout/proc/equip_gear(var/datum/gear/G, var/check_job = TRUE)
 	if (check_job && !G.job_permitted(H, job))
 		to_chat(H, "<span class='warning'>Your current species, job, branch or whitelist status does not permit you to spawn with [G]!</span>")
 		return
 
 	//Gear doesnt claim a slot, or its slot is taken by another gear, into storage it goes
-	//This will be spawned in a later step, not right now
 	if(!G.slot || G.slot == slot_tie || (G.slot in loadout_taken_slots))
 		spawn_in_storage.Add(G)
 		return
@@ -379,7 +378,7 @@
 		return	//This cannot fail so no need for checks
 
 	//Normal spawning into a mob's equipment slots
-	else if (!G.spawn_on_mob(H, G.get_metadata(prefs), dummy = dummy))
+	else if (!G.spawn_on_mob(H, G.get_metadata(prefs)))
 		//If that fails, it goes into storage
 		spawn_in_storage.Add(G)
 		return
@@ -397,7 +396,7 @@
 
 
 	/*
-	for(var/index = 1 to LOADOUT_SLOTS)
+	for(var/index = 1 to config.loadout_slots)
 		var/list/gears = pref.gear_list[index]
 
 		if(istype(gears))

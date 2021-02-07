@@ -300,3 +300,4 @@
 	if(!anchored || material.is_brittle())
 		take_damage(max_health) // Fatboy
 	climbers -= user
+

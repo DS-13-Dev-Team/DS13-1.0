@@ -37,19 +37,19 @@
 
 
 /obj/item/weapon/shield/riot
-	name = "riot shield"
-	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
+	name = "combat shield"
+	desc = "A common combat shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "riot"
+	icon_state = "metal"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BACK
 	force = 5.0
 	throwforce = 5.0
-	
+
 	throw_range = 4
 	w_class = ITEM_SIZE_HUGE
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list(MATERIAL_GLASS = 7500, MATERIAL_STEEL = 1000)
+	matter = list(MATERIAL_STEEL = 7500, MATERIAL_PLASTEEL = 1000)
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 	max_block = 25
@@ -68,16 +68,16 @@
 	else
 		..()
 
-/obj/item/weapon/shield/riot/metal
-	name = "plasteel combat shield"
-	icon_state = "metal"
+/obj/item/weapon/shield/riot/advanced
+	name = "advanced combat shield"
+	icon_state = "advanced"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BACK
 	force = 6.0
 	throwforce = 7.0
 	throw_range = 3
 	w_class = ITEM_SIZE_HUGE
-	matter = list(MATERIAL_PLASTEEL = 8500)
+	matter = list(MATERIAL_PLASTEEL = 10000, MATERIAL_GLASS = 2000)
 	max_block = 30
 	max_health = 255
 	slowdown_general = 1.5
@@ -93,7 +93,7 @@
 	name = "round handmade shield"
 	desc = "A handmade stout shield, but with a small size."
 	icon_state = "buckler"
-	
+
 	throw_range = 6
 	matter = list(MATERIAL_STEEL = 6)
 	base_block_chance = 65
@@ -107,7 +107,7 @@
 	name = "tray shield"
 	desc = "A thin metal tray held on the arm, won't endure much punishment"
 	icon_state = "tray_shield"
-	
+
 	throw_range = 4
 	matter = list(MATERIAL_STEEL = 4)
 	base_block_chance = 80
@@ -130,7 +130,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	force = 3.0
 	throwforce = 5.0
-	
+
 	throw_range = 4
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_ILLEGAL = 4)

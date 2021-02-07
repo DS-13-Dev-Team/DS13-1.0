@@ -87,8 +87,8 @@
 	var/seal_delay = SEAL_DELAY
 	var/sealing                                               // Keeps track of seal status independantly of canremove.
 	var/offline = 1                                           // Should we be applying suit maluses?
-	var/online_slowdown = 0                                   // If the suit is deployed and powered, it sets slowdown to this.
-	var/offline_slowdown = 3                                  // If the suit is deployed and unpowered, it sets slowdown to this.
+	var/online_slowdown = RIG_MEDIUM                                  // If the suit is deployed and powered, it sets slowdown to this.
+	var/offline_slowdown = 4                                  // If the suit is deployed and unpowered, it sets slowdown to this.
 	var/vision_restriction = TINT_NONE
 	var/offline_vision_restriction = TINT_HEAVY               // tint value given to helmet
 	var/airtight = 1 //If set, will adjust ITEM_FLAG_AIRTIGHT and ITEM_FLAG_STOPPRESSUREDAMAGE flags on components. Otherwise it should leave them untouched.
@@ -115,10 +115,6 @@
 		if(open)
 			to_chat(usr, "It's equipped with [english_list(installed_modules)].")
 
-/obj/item/weapon/rig/New(var/location, var/dummy)
-	src.dummy = dummy
-	.=..()
-
 /obj/item/weapon/rig/Initialize()
 	. = ..()
 
@@ -131,8 +127,8 @@
 	spark_system = new()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
-	if (!dummy)
-		START_PROCESSING(SSobj, src)
+
+	START_PROCESSING(SSobj, src)
 
 	if(initial_modules && initial_modules.len)
 		for(var/path in initial_modules)
@@ -194,6 +190,7 @@
 			if (C.rig == src)
 				C.rig = null
 		qdel(piece)
+	STOP_PROCESSING(SSobj, src)
 	qdel(wires)
 	wires = null
 	qdel(spark_system)

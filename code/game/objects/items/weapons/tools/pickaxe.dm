@@ -21,7 +21,6 @@
 	worksound = WORKSOUND_PICKAXE
 	hitsound = WORKSOUND_PICKAXE
 	degradation = DEGRADATION_TOUGH_1
-	armor_penetration = 8
 
 /obj/item/weapon/tool/pickaxe/jackhammer
 	name = "jackhammer"
@@ -101,7 +100,6 @@
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
 	degradation = DEGRADATION_TOUGH_2
-	armor_penetration = 8
 
 /obj/item/weapon/tool/pickaxe/laser/update_icon()
 	if (switched_on)
@@ -129,7 +127,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	item_state = "screwdriver_brown"
 	force = WEAPON_FORCE_HARMLESS
-	armor_penetration = 8	//For dealing guaranteed damage to tough rocks
+	armor_penetration = 20	//For dealing guaranteed damage to tough rocks
 	throwforce = 0
 	attack_verb = list("stabbed", "jabbed", "spiked", "attacked")
 	matter = list(MATERIAL_STEEL = 75)
