@@ -182,11 +182,14 @@
 
 	return 1
 
-//Selects players that will be spawned in the antagonist role from the potential candidates
-//Selected players are added to the pending_antagonists lists.
-//Attempting to spawn an antag role with ANTAG_OVERRIDE_JOB should be done before jobs are assigned,
-//so that they do not occupy regular job slots. All other antag roles should be spawned after jobs are
-//assigned, so that job restrictions can be respected.
+/*
+	Called both at roundstart and for latespawning, this is the core entrypoint
+	Selects players that will be spawned in the antagonist role from the potential candidates
+	Selected players are added to the pending_antagonists lists.
+	Attempting to spawn an antag role with ANTAG_OVERRIDE_JOB should be done before jobs are assigned,
+	so that they do not occupy regular job slots. All other antag roles should be spawned after jobs are
+	assigned, so that job restrictions can be respected.
+*/
 /datum/antagonist/proc/attempt_spawn(var/spawn_target = null)
 	if(spawn_target == null)
 		spawn_target = initial_spawn_target
@@ -203,6 +206,10 @@
 
 	return 1
 
+
+/*
+	Attempts to turn a specified player into an antagonist
+*/
 /datum/antagonist/proc/draft_antagonist(var/datum/mind/player)
 	//Check if the player can join in this antag role, or if the player has already been given an antag role.
 	if(!can_become_antag(player))
