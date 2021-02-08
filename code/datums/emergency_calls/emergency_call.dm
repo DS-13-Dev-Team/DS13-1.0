@@ -11,13 +11,15 @@
 	var/landmark_tag
 	var/dispatch_message = "An encrypted signal has been received from a nearby vessel. Stand by." //Message displayed to marines once the signal is finalized.
 	var/objectives = "" //Objectives to display to the members.
-	var/weight = 0 //So we can give different ERTs a different weight.
+	var/weight = 1 //So we can give different ERTs a different weight.
 	var/list/members = list() //Currently-joined members.
 	var/list/candidates = list() //Potential candidates for enlisting.
 	var/candidate_timer
 	var/cooldown_timer
 	var/spawn_type = /mob/living/carbon/human
 	var/datum/announcement/priority/command/special/pr_announce = new(0)
+	var/datum/antagonist/antag
+	var/antag_id = MODE_ERT
 
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(length(GLOB.all_calls)) //It's already been set up.
@@ -31,28 +33,14 @@
 		var/datum/emergency_call/D = new x()
 		if(!D?.name)
 			continue //The default parent, don't add it
-		GLOB.all_calls += D
+
+		D.antag = GLOB.all_antag_types_[antag_id]
+		GLOB.all_calls[D] = D.weight
 
 
 //Randomizes and chooses a call datum.
 /datum/game_mode/proc/get_random_call()
-	var/datum/emergency_call/chosen_call
-	var/list/valid_calls = list()
-
-	for(var/datum/emergency_call/E in GLOB.all_calls) //Loop through all potential candidates
-		if(E.weight < 1) //Those that are meant to be admin-only
-			continue
-
-		valid_calls.Add(E)
-
-		if(prob(E.weight))
-			chosen_call = E
-			break
-
-	if(!istype(chosen_call))
-		chosen_call = pick(valid_calls)
-
-	return chosen_call
+	return pickweight(GLOB.all_calls)
 
 /datum/emergency_call/proc/show_join_message()
 	if(!members_max || !ticker?.mode) //Not a joinable distress call.
@@ -111,23 +99,18 @@
 	candidate_timer = addtimer(CALLBACK(src, .proc/do_activate, announce), 5 MINUTES, TIMER_STOPPABLE)
 
 /datum/emergency_call/proc/do_activate(announce = TRUE)
-	candidate_timer = null
-	GLOB.waiting_for_candidates = FALSE
 
-	var/list/valid_candidates = list()
+	antag.attempt_random_spawn()
 
-	for(var/i in candidates)
-		var/datum/mind/M = i
-		if(!istype(M)) // invalid
-			continue
-		if(M.current) //If they still have a body
-			if(M.current.stat != DEAD) // and not dead or admin ghosting,
-				to_chat(M.current, "<span class='warning'>You didn't get selected to join the distress team because you aren't dead.</span>")
-				continue
-			if(initial(GLOB.picked_call.pref_name) in M.current?.client?.prefs.never_be_special_role)
-				continue
-		valid_candidates += M
+	cooldown_timer = addtimer(CALLBACK(src, .proc/reset), 5 MINUTES, TIMER_STOPPABLE)
 
+	//Right, lets examine the data from the last spawn
+	if (!antag.last_spawn_data["success"])
+		message_admins("Aborting distress beacon [name], Failed to spawn a response team")
+		return
+
+
+	/*
 	message_admins("Distress beacon: [name] got [length(candidates)] candidates, [length(valid_candidates)] of them were valid.")
 
 	if(members_min && length(valid_candidates) < members_min)
@@ -142,7 +125,7 @@
 		GLOB.picked_call = null
 		GLOB.on_distress_cooldown = TRUE
 
-		cooldown_timer = addtimer(CALLBACK(src, .proc/reset), 5 MINUTES, TIMER_STOPPABLE)
+
 		return
 
 	var/list/datum/mind/picked_candidates = list()
@@ -181,22 +164,8 @@
 	candidates.Cut() //Blank out the candidates list for next time.
 
 	cooldown_timer = addtimer(CALLBACK(src, .proc/reset), 5 MINUTES, TIMER_STOPPABLE)
+	*/
 
-/datum/emergency_call/proc/add_candidate(mob/M)
-	if(!M.client)
-		return FALSE  //Not connected
-
-	if(!M.mind) //They don't have a mind
-		return FALSE
-
-	if(M.mind in candidates)
-		return FALSE  //Already there.
-
-	if(M.stat != DEAD)
-		return FALSE  //Alive, could have been drafted into xenos or something else.
-
-	candidates += M.mind
-	return TRUE
 
 /datum/emergency_call/proc/get_spawn_point()
 	var/list/landmarks = list()

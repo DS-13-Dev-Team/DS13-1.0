@@ -1,7 +1,7 @@
 /datum/emergency_call/usm
 	name = "USM Valor Marine"
 	pref_name = "EDF Marine"
-	weight = 25
+	weight = 2
 	landmark_tag = "edfteam"
 
 /datum/emergency_call/usm/print_backstory(mob/living/carbon/human/H)

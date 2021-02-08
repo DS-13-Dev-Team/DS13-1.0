@@ -1,8 +1,9 @@
 /datum/emergency_call/kellionteam
 	name = "Kellionteam"
 	pref_name = "CEC Repair Crew"
-	weight = 50
+	weight = 1
 	landmark_tag = "kellionteam"
+	antag_id = "Kellionteam"
 
 /datum/emergency_call/kellionteam/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, "<B> You are part of the Kellion Repair Team.</b>")

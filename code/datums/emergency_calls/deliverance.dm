@@ -1,8 +1,9 @@
 /datum/emergency_call/deliverance
 	name = "Unitologist"
 	pref_name = "Unitologist Missionary"
-	weight = 25
+	weight = 1
 	landmark_tag = "unitologiststeam"
+	antag_id = "Kellionteam"
 
 /datum/emergency_call/deliverance/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, "<B>You are Unitologist.</b>")

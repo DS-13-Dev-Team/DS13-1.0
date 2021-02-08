@@ -19,7 +19,9 @@
 	player.current.faction = faction
 
 	pending_antagonists -= player
-
+	//At least one was spawned, thats a success in our book
+	last_spawn_data["success"] = TRUE
+	last_spawn_data["spawns"] |= "\ref[player]"
 	return 1
 
 /datum/antagonist/proc/add_antagonist_mind(var/datum/mind/player, var/ignore_role, var/nonstandard_role_type, var/nonstandard_role_msg)

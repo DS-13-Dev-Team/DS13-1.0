@@ -24,7 +24,7 @@
 		GLOB.picked_call = null
 
 	var/list/list_of_calls = list()
-	for(var/datum/emergency_call/L in GLOB.all_calls)
+	for(var/datum/emergency_call/L in GLOB.emergency_call_datums)
 		if(L.name)
 			list_of_calls += L.name
 
@@ -37,7 +37,7 @@
 	if(choice == "Randomize")
 		GLOB.picked_call	= ticker.mode.get_random_call()
 	else
-		for(var/datum/emergency_call/C in GLOB.all_calls)
+		for(var/datum/emergency_call/C in GLOB.emergency_call_datums)
 			if(C.name == choice)
 				GLOB.picked_call = C
 				break

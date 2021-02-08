@@ -37,6 +37,7 @@
 	var/hard_cap_round = 5                  // Max number with adding during round
 	var/initial_spawn_req = 1               // Gamemode using this template won't start without this # candidates.
 	var/initial_spawn_target = 3            // Gamemode will attempt to spawn this many antags.
+	var/finalize_minimum_req = FALSE		// If true, when finalize spawn is called, it will fail and not spawn any antags, if the number of pending is below initial_spawn_req
 	var/override_scaling	=	null		// Set this to true or false to override the antag quantity scaling of the gamemode
 	var/announced                           // Has an announcement been sent?
 	var/spawn_announcement                  // When the datum spawn proc is called, does it announce to the world? (ie. xenos)
@@ -70,6 +71,18 @@
 	var/list/candidates =          list()   // Potential candidates.
 	var/list/faction_members =     list()   // Semi-antags (in-round revs, borer thralls)
 	var/preference_candidacy_toggle = FALSE	// Whether to show an option in preferences to toggle candidacy
+
+	/*
+		This list holds various bits of information about the last attempt at spawning that was done with this antag
+		This data may be held indefinitely, and often for the whole round. But it is wiped at the start of any new spawning attempt
+		It includes
+			success:	Did we spawn any antags at all?
+			spawn_target:	How many members did we want to spawn in ideal circumstances? Note that spawning may be successful even if this fails
+			spawns:	A list of weak references to mind datums who we actually spawned as antags. Use locate(thing) to convert them back to actual datums
+				These are weak refs to not interfere with GC
+
+	*/
+	var/list/last_spawn_data = list()
 
 	// ID card stuff.
 	var/default_access = list()
@@ -146,12 +159,14 @@
 	return candidates
 
 /datum/antagonist/proc/attempt_random_spawn()
+
 	update_current_antag_max()
 	build_candidate_list(flags & (ANTAG_OVERRIDE_MOB|ANTAG_OVERRIDE_JOB))
 	attempt_spawn()
 	finalize_spawn()
 
 /datum/antagonist/proc/attempt_auto_spawn()
+	last_spawn_data = list()
 	if(!can_late_spawn())
 		return 0
 
@@ -193,6 +208,9 @@
 /datum/antagonist/proc/attempt_spawn(var/spawn_target = null)
 	if(spawn_target == null)
 		spawn_target = initial_spawn_target
+
+	//Record how many we wanted to spawn
+	last_spawn_data["spawn_target"] = spawn_target
 
 	// Update our boundaries.
 	if(!candidates.len)
@@ -243,9 +261,14 @@
 	if(!pending_antagonists)
 		return
 
+
+	if (finalize_minimum_req && pending_antagonists.len < initial_spawn_req)
+		return
+
 	for(var/datum/mind/player in pending_antagonists)
 
 		add_antagonist(player,0,0,1)
+
 
 	reset_antag_selection()
 
@@ -263,3 +286,10 @@
 		player.set_special_role(null)
 	pending_antagonists.Cut()
 	candidates.Cut()
+
+
+
+/datum/antagonist/proc/reset_last_spawn_data()
+	last_spawn_data = list()
+	last_spawn_data["spawns"] = list()
+	last_spawn_data["success"] = FALSE

@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(all_calls)								//initialized at round start and stores the datums.
+GLOBAL_LIST_EMPTY(emergency_call_datums)								//initialized at round start and stores the datums.
 GLOBAL_DATUM_INIT(picked_call, /datum/emergency_call, null) //Which distress call is currently active
 GLOBAL_VAR_INIT(on_distress_cooldown, FALSE)
 GLOBAL_VAR_INIT(waiting_for_candidates, FALSE)

@@ -15,7 +15,7 @@
 	back = null
 	shoes = /obj/item/clothing/shoes/dutyboots
 	gloves = /obj/item/clothing/gloves/combat
-
+	backpack_contents = list(/obj/item/weapon/material/knife/unitologist = 1)
 	id_slot = slot_wear_id
 	id_type = /obj/item/weapon/card/id/holo/unitologist
 	id_desc = "A holographic ID belonging to an unregistered civilian vessel. It bears unitologist iconography."
@@ -32,7 +32,7 @@
 	back = null
 	shoes = /obj/item/clothing/shoes/dutyboots
 	gloves = /obj/item/clothing/gloves/combat
-
+	backpack_contents = list(/obj/item/weapon/material/knife/unitologist = 1)
 	id_slot = slot_wear_id
 	id_type = /obj/item/weapon/card/id/holo/healer
 	id_desc = "A holographic ID belonging to an unregistered civilian vessel. It bears unitologist iconography."
@@ -49,7 +49,7 @@
 	back = null
 	shoes = /obj/item/clothing/shoes/dutyboots
 	gloves = /obj/item/clothing/gloves/combat
-
+	backpack_contents = list(/obj/item/weapon/material/knife/unitologist = 1)
 	id_slot = slot_wear_id
 	id_type = /obj/item/weapon/card/id/holo/mechanic
 	id_desc = "A holographic ID belonging to an unregistered civilian vessel. It bears unitologist iconography."
@@ -65,7 +65,7 @@
 	back = null
 	shoes = /obj/item/clothing/shoes/dutyboots
 	gloves = /obj/item/clothing/gloves/combat
-
+	backpack_contents = list(/obj/item/weapon/material/knife/unitologist = 1)
 	id_slot = slot_wear_id
 	id_type = /obj/item/weapon/card/id/holo/berserker
 	id_desc = "A holographic ID belonging to an unregistered civilian vessel. It bears unitologist iconography."
@@ -81,10 +81,13 @@
 	back = null
 	shoes = /obj/item/clothing/shoes/dutyboots
 	gloves = /obj/item/clothing/gloves/combat
-
+	backpack_contents = list(/obj/item/weapon/material/knife/unitologist = 1)
 	id_slot = slot_wear_id
 	id_type = /obj/item/weapon/card/id/holo/deacon
 	id_desc = "A holographic ID belonging to an unregistered civilian vessel. It bears unitologist iconography."
+
+
+
 
 /////////////////////
 ///KELLION OUTFITS///

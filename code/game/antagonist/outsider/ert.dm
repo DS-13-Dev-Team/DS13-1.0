@@ -26,6 +26,7 @@ GLOBAL_DATUM_INIT(kellion, /datum/antagonist/ert/kellion, new)
 	hard_cap_round = 8
 	initial_spawn_req = 2
 	initial_spawn_target = 6
+	finalize_minimum_req = TRUE
 	valid_species = list(SPECIES_HUMAN)
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_SET_APPEARANCE | ANTAG_HAS_LEADER | ANTAG_CHOOSE_NAME | ANTAG_RANDOM_EXCEPTED
 	antaghud_indicator = "hudloyalist"
