@@ -7,7 +7,7 @@
 	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
 	siemens_coefficient = 0.4
 	emp_protection = 10
-	online_slowdown = 0
+	online_slowdown = RIG_LIGHT
 	item_flags = ITEM_FLAG_STOPPRESSUREDAMAGE | ITEM_FLAG_THICKMATERIAL
 	offline_slowdown = TINT_NONE
 	offline_vision_restriction = TINT_NONE

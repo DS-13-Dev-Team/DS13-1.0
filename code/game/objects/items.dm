@@ -167,14 +167,12 @@
 
 /obj/item/ex_act(severity)
 	switch(severity)
-		if(1)
-			qdel(src)
-		if(2)
-			if (prob(50))
-				qdel(src)
-		if(3)
-			if (prob(5))
-				qdel(src)
+		if(1.0)
+			take_damage(500)
+		if(2.0)
+			take_damage(rand(125, 200))
+		if(3.0)
+			take_damage(rand(75, 125))
 
 /obj/item/verb/move_to_top()
 	set name = "Move To Top"

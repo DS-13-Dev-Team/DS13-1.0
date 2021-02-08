@@ -81,6 +81,15 @@ vector2
 		Copy()
 			return get_new_vector(x, y)
 
+		/*
+			Copies the values of src into v, without modifying src.
+			v is modified, be sure that you own it first
+			Does not return anything
+		*/
+		CopyTo(vector2/v)
+			v.x = src.x
+			v.y = src.y
+
 
 		/* Vector dot product.
 			Returns the cosine of the angle between the vectors.
