@@ -53,14 +53,34 @@
 		to_chat(user, "<span class='notice'>[src] already has something inside it.</span>")
 		return
 
-	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",\
-	"You hear a rustle as someone puts something into a plastic bag.")
-	if(!user.skill_check(SKILL_COMPUTER, SKILL_BASIC))
-		I.add_fingerprint(user)
+
+	insert_stored_item(I)
+
+
+
+
+/obj/item/weapon/evidencebag/proc/insert_stored_item(var/obj/item/I, var/mob/living/user)
 	I.forceMove(src)
+	if (I.loc != src)
+		return
+
 	stored_item = I
+	GLOB.exited_event.register(src, src, /obj/item/weapon/evidencebag/proc/item_removed)
 	w_class = I.w_class
 	update_icon()
+	if (user)
+		user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",\
+		"You hear a rustle as someone puts something into a plastic bag.")
+		if(!user.skill_check(SKILL_COMPUTER, SKILL_BASIC))
+			I.add_fingerprint(user)
+
+
+/obj/item/weapon/evidencebag/proc/item_removed(var/atom/exited, var/atom/movable/exiter, var/atom/new_loc)
+	if (!stored_item || exiter == stored_item)
+		GLOB.exited_event.unregister(src, src, /obj/item/weapon/evidencebag/proc/item_removed)
+		stored_item = null
+		w_class = initial(w_class)
+		update_icon()
 
 /obj/item/weapon/evidencebag/update_icon()
 	overlays.Cut()
@@ -87,9 +107,6 @@
 		"You hear someone rustle around in a plastic bag, and remove something.")
 
 		user.put_in_hands(stored_item)
-		stored_item = null
-		w_class = initial(w_class)
-		update_icon()
 	else
 		to_chat(user, "[src] is empty.")
 		update_icon()

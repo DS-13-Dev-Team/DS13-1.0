@@ -40,7 +40,13 @@
 		to_chat(user, "You [open ? "open" : "close"] the access panel.")
 		return
 
-	if((open || hotswap) && can_modify())
+	else if (hotswap && can_modify())
+		if(istype(W,/obj/item/rig_module))
+			attempt_install(W, user, FALSE)
+
+			return 1
+
+	if(open && can_modify())
 
 		// Hacking.
 		if(isWirecutter(W) || isMultitool(W))
@@ -147,7 +153,7 @@
 			else
 				to_chat(user, "You don't see any use for \the [S].")
 
-		return
+			return
 
 	// If we've gotten this far, all we have left to do before we pass off to root procs
 	// is check if any of the loaded modules want to use the item we've been given.
