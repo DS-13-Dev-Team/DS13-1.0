@@ -93,7 +93,8 @@
 		/obj/item/weapon/storage/box/holobadge,
 		/obj/item/device/holowarrant,
 		/obj/random/tool,
-		/obj/item/weapon/gun/energy/taser
+		/obj/item/weapon/gun/energy/taser,
+		/obj/item/weapon/rig/riot
 	)
 
 /obj/structure/closet/secure_closet/security
@@ -123,7 +124,8 @@
 		/obj/item/clothing/under/deadspace/security,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/device/holowarrant,
-//		/obj/item/device/flash
+//		/obj/item/device/flash,
+		/obj/item/weapon/rig/security
 	)
 
 /obj/structure/closet/secure_closet/security/cargo/WillContain()
@@ -236,7 +238,10 @@
 		/obj/item/device/flashlight/maglight,
 		/obj/item/device/tape/random = 3,
 		/obj/item/weapon/storage/belt/holster/forensic,
-		/obj/item/weapon/storage/belt/holster/security
+		/obj/item/weapon/storage/belt/holster/security,
+		/obj/item/weapon/rig/security,
+		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
+		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec))
 	)
 
 /obj/structure/closet/secure_closet/military

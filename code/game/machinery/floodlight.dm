@@ -170,4 +170,4 @@
 
 /obj/machinery/floodlight/on/Initialize()
 	. = ..()
-    turn_on()
+	turn_on()

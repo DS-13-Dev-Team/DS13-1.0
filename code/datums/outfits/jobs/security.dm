@@ -12,10 +12,6 @@
 	..()
 	BACKPACK_OVERRIDE_SECURITY
 
-/decl/hierarchy/outfit/job/security/cseco/New()
-	..()
-	BACKPACK_OVERRIDE_SECURITYCHIEF
-
 /decl/hierarchy/outfit/job/security/cseco
 	name = OUTFIT_JOB_NAME("Chief Security Officer")
 	suit = /obj/item/clothing/suit/armor/vest/ds_jacket

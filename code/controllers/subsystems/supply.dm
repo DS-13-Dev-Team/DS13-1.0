@@ -10,8 +10,8 @@ SUBSYSTEM_DEF(supply)
 	var/points_per_process = 1.5
 	var/points_per_slip = 2
 	var/material_buy_prices = list(
-		/material/platinum = 5,
-		/material/phoron = 5
+		/material/platinum = 2,
+		/material/phoron = 2
 	) //Should only contain material datums, with values the profit per sheet sold.
 	var/point_sources = list()
 	var/pointstotalsum = 0
@@ -82,42 +82,52 @@ SUBSYSTEM_DEF(supply)
 
 /datum/controller/subsystem/supply/proc/sell()
 	var/list/material_count = list()
+	var/list/exports = list()
+	var/list/crate_areas = list()
 
 	for(var/area/subarea in shuttle.shuttle_area)
 		for(var/atom/movable/AM in subarea)
 			if(AM.anchored)
 				continue
-			if(istype(AM, /obj/structure/closet/crate/))
-				var/obj/structure/closet/crate/CR = AM
-				callHook("sell_crate", list(CR, subarea))
-				add_points_from_source(CR.points_per_crate, "crate")
-				var/find_slip = 1
+			if(istype(AM, /obj/structure/closet))
+				var/obj/structure/closet/C = AM
+				for(var/atom/movable/A in C.GetAllContents())
+					exports |= A
+				if(istype(AM, /obj/structure/closet/crate))
+					crate_areas[AM] = subarea
+			exports |= AM
 
-				for(var/atom in CR)
-					// Sell manifests
-					var/atom/A = atom
-					if(find_slip && istype(A,/obj/item/weapon/paper/manifest))
-						var/obj/item/weapon/paper/manifest/slip = A
-						if(!slip.is_copy && slip.stamped && slip.stamped.len) //Any stamp works.
-							add_points_from_source(points_per_slip, "manifest")
-							find_slip = 0
-						continue
+	for(var/atom/movable/AM in exports)
+		if(istype(AM, /obj/structure/closet/crate))
+			var/obj/structure/closet/crate/CR = AM
+			callHook("sell_crate", list(CR, crate_areas[AM]))
+			add_points_from_source(CR.points_per_crate, "crate")
+			var/find_slip = 1
 
-					// Sell materials
-					if(istype(A, /obj/item/stack))
-						var/obj/item/stack/P = A
-						var/material/material = P.get_material()
-						if(material_buy_prices[material.type])
-							material_count[material.type] += P.get_amount()
-						continue
+			for(var/atom/movable/A in CR.GetAllContents())
+				// Sell manifests
+				if(find_slip && istype(A,/obj/item/weapon/paper/manifest))
+					var/obj/item/weapon/paper/manifest/slip = A
+					if(!slip.is_copy && slip.stamped && slip.stamped.len) //Any stamp works.
+						add_points_from_source(points_per_slip, "manifest")
+						find_slip = 0
+					continue
 
-					// Must sell ore detector disks in crates
-					if(istype(A, /obj/item/weapon/disk/survey))
-						var/obj/item/weapon/disk/survey/D = A
-						add_points_from_source(round(D.Value() * 0.005), "gep")
-			for(var/atom/movable/A in AM.GetAllContents())
-				qdel(A)
-			qdel(AM)
+		// Sell materials
+		if(istype(AM, /obj/item/stack))
+			var/obj/item/stack/P = AM
+			var/material/material = P.get_material()
+			if(material_buy_prices[material.type])
+				material_count[material.type] += P.get_amount()
+			continue
+
+		// Must sell ore detector disks in crates
+		if(istype(AM, /obj/item/weapon/disk/survey))
+			var/obj/item/weapon/disk/survey/D = AM
+			add_points_from_source(round(D.Value() * 0.005), "gep")
+
+	for(var/atom/movable/AM in exports)
+		qdel(AM)
 
 	if(material_count.len)
 		for(var/material_type in material_count)

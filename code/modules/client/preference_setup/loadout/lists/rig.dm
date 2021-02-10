@@ -31,13 +31,13 @@
 		. += "	-[initial(RM.name)]\n"
 
 */
-/* Temp removed. Not sure if we want this entirely gone yet. -- Lion, feb 5th 2021
+
 /datum/gear/RIG/frame/civilian
 	display_name = "civilian RIG"
 	path = /obj/item/weapon/rig/civilian
 
 	cost = 0
-*/
+
 
 
 /datum/gear/RIG/frame/hacker
