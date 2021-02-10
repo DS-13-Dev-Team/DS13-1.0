@@ -103,7 +103,7 @@
 			. -= 5
 		else if(locate(/obj/structure/table, T))
 			. -= 10
-		else if(locate(/obj/effect/rune/, T))
+		else if(locate(/obj/effect/rune, T))
 			. -= 10
 	. = max(., 0)
 
