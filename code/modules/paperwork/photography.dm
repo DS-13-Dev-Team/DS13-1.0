@@ -286,7 +286,7 @@ var/global/photo_count = 0
 	p.desc = mobs
 	p.photo_size = size
 	p.update_icon()
-	if(earthgov_evidence))
+	if(earthgov_evidence)
 		set_extension(p, /datum/extension/earthgov_evidence, earthgov_evidence) //Mark us as valid earthgov evidence, and record details about what they saw.
 
 	return p
