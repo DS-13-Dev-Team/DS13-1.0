@@ -46,6 +46,10 @@ GLOBAL_LIST_EMPTY(agents_list)
 	var/suspect_details = null //What this evidence shows.
 	var/suspect_type = null
 
+/datum/extension/earthgov_evidence/proc/copy_to(datum/extension/target)
+	target.suspect_details = suspect_details
+	target.suspect_type = suspect_type
+
 /datum/extension/earthgov_evidence/New(datum/holder, atom/movable/suspicious_object)
 	. = ..()
 	if(!istype(suspicious_object))

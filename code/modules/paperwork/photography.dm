@@ -286,7 +286,7 @@ var/global/photo_count = 0
 	p.desc = mobs
 	p.photo_size = size
 	p.update_icon()
-	if(earthgov_evidence)
+	if(earthgov_evidence))
 		set_extension(p, /datum/extension/earthgov_evidence, earthgov_evidence) //Mark us as valid earthgov evidence, and record details about what they saw.
 
 	return p
@@ -308,6 +308,12 @@ var/global/photo_count = 0
 	p.pixel_y = pixel_y
 	p.photo_size = photo_size
 	p.scribble = scribble
+	//Ensure that the earthgov evidence is transferred over
+	var/datum/extension/earthgov_evidence/egov = get_extension(src, /datum/extension/earthgov_evidence)
+	if(egov)
+		set_extension(p, /datum/extension/earthgov_evidence)
+		var/datum/extension/earthgov_evidence/othergov = get_extension(p, /datum/extension/earthgov_evidence)
+		egov.copy_to(othergov)
 
 	if(copy_id)
 		p.id = id
