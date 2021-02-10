@@ -245,8 +245,8 @@
 		loaded_disk.desc += " The label reads \'gene [plant_controller.gene_tag_masks[href_list["get_gene"]]], sampled from [genetics.display_name]\'."
 		eject_disk = 1
 
-		degradation += rand(20,60) + user.skill_fail_chance(SKILL_ANATOMY, 100, SKILL_ADEPT)
-		var/expertise = max(0, user.get_skill_value(SKILL_ANATOMY) - SKILL_ADEPT)
+		degradation += rand(20,60) + user.skill_fail_chance(SKILL_BOTANY, 100, SKILL_ADEPT)
+		var/expertise = max(0, user.get_skill_value(SKILL_BOTANY) - SKILL_ADEPT)
 		degradation = max(0, degradation - 10*expertise)
 
 		if(degradation >= 100)

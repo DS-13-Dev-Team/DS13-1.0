@@ -10,8 +10,18 @@ SUBSYSTEM_DEF(supply)
 	var/points_per_process = 1.5
 	var/points_per_slip = 2
 	var/material_buy_prices = list(
-		/material/platinum = 2,
-		/material/phoron = 2
+		/material/platinum = 0.3, // Idem as below. Used for manufacturing plasteel.
+		/material/phoron = 0.4, // Phoron is super common now, and yields high per-vein results.
+		/material/diamond = 1.5, // Rare. Higher price.
+		/material/gold = 0.8, // Timeless commodity of wealth.
+		/material/silver = 0.6, // Timeless commodity of minor wealth.
+		/material/mhydrogen = 0.2, // Useless. Used to create hydrogen fuel. We do not use this. Comes up from the drill nowadays.
+		/material/steel = 0.1, // Common material. C'mon guys.
+		/material/plasteel = 0.5, // Less common material.
+		/material/glass = 0.1, // Super common. Just press real hard on sand apparently.
+		/material/uranium = 0.5, // Uncommon material. Lesser yield per-vein.
+		/material/wood = 0.1, // This just fancies up an office.
+		/material/osmium = 0.3 // I actually do not know what this is used for, nor how it is gained.
 	) //Should only contain material datums, with values the profit per sheet sold.
 	var/point_sources = list()
 	var/pointstotalsum = 0
