@@ -124,7 +124,6 @@
 	. = ..()
 
 /obj/machinery/turretid/Initialize()
-	. = ..()
 	if(!control_area)
 		control_area = get_area(src)
 	else if(istext(control_area))
@@ -147,7 +146,7 @@
 	//Fill out the targeting profiles list
 	var/templist = targeting_profiles.Copy()
 	targeting_profiles = list()
-	for (var/tptype in templist)
+	for(var/tptype in templist)
 		var/datum/targeting_profile/TP = tptype
 		TP = GLOB.targeting_profiles[initial(TP.id)]
 		targeting_profiles[TP.id] = TP
