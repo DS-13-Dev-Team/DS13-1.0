@@ -29,15 +29,15 @@
 	for (var/typepath in initial(R.initial_modules))
 		var/obj/item/rig_module/RM = typepath
 		. += "	-[initial(RM.name)]\n"
-
 */
-/* Temp removed. Not sure if we want this entirely gone yet. -- Lion, feb 5th 2021
+
+// Temp removed. Not sure if we want this entirely gone yet. -- Lion, feb 5th 2021
 /datum/gear/RIG/frame/civilian
 	display_name = "civilian RIG"
 	path = /obj/item/weapon/rig/civilian
 
 	cost = 0
-*/
+
 
 
 /datum/gear/RIG/frame/hacker
@@ -69,7 +69,7 @@
 	priority = 2 //These should come after a frame is equipped
 
 	//They go into a rig frame, so you need to pick one first
-	required_tags = list(LOADOUT_TAG_RIG)
+//	required_tags = list(LOADOUT_TAG_RIG) -- Removed, because you HAD to do this, pre-loadout overhaul.
 
 	slot = GEAR_EQUIP_SPECIAL
 
