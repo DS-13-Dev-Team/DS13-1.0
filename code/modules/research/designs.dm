@@ -609,7 +609,7 @@
 	name = "high velocity pulse magazine"
 	id = "pulsehighvel"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
-	materials = list(MATERIAL_PLASTEEL = 15000, MATERIAL_DIAMOND = 5000, MATERIAL_SILVER = 1000) // Same thing here. It might need tweaking with exotic materials to stop people getting a lot of it early on though.
+	materials = list(MATERIAL_PLASTEEL = 17500, MATERIAL_DIAMOND = 5500, MATERIAL_SILVER = 2500) // Same thing here. It might need tweaking with exotic materials to stop people getting a lot of it early on though.
 	build_path = /obj/item/ammo_magazine/pulse/hv
 	sort_string = "TBECE"
 

@@ -22,7 +22,7 @@
 #################################
 
 # Your name.  
-author: TheLion1675
+author: Nanako
 
 # Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
 delete-after: True
@@ -33,10 +33,5 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - rscadd: "Made all departmentally-related jobs now spawn automatically with their RIG on their back. Despite what one has selected, if an override is present for job-specific RIGs, this will now take precedence."
-  - rscadd: "Jobs with specific rigtypes that differ from their subordinate counterpart, will now spawn with the rig as designated."
-  - rscdel: "Removed Civilian RIG from loadout options and instead added it to the new RIG Type."
-  - rscdel: "Removed the ability to spawn with backpacks."
-  - rscdel: "Removed RIGs from lockers."
-  - tweak: "Renamed Backpack Type in loadout to RIG Type."
-  - tweak: "Default RIG is now the CEC Civilian RIG, which will spawn on your back if you do not have a job with an override present."
+  - bugfix: "Fixed evidence bag not updating when things are removed from it, falsely giving the impression of duplication"
+  - bugfix: "Fixed being unable to insert things into rig storage by using them on it"

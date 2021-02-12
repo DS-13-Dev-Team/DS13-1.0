@@ -1,11 +1,11 @@
 /obj/structure/closet/secure_closet/captains
 	name = "captain's locker"
 	req_access = list(access_captain)
-	icon_state = "capsecure1"
-	icon_closed = "capsecure"
-	icon_locked = "capsecure1"
-	icon_opened = "capsecureopen"
-	icon_off = "capsecureoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/captains/WillContain()
 	return list(
@@ -66,11 +66,11 @@
 /obj/structure/closet/secure_closet/CSECO
 	name = "chief security officer's locker"
 	req_access = list(access_armory)
-	icon_state = "hossecure1"
-	icon_closed = "hossecure"
-	icon_locked = "hossecure1"
-	icon_opened = "hossecureopen"
-	icon_off = "hossecureoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/CSECO/WillContain()
 	return list(
@@ -93,17 +93,18 @@
 		/obj/item/weapon/storage/box/holobadge,
 		/obj/item/device/holowarrant,
 		/obj/random/tool,
-		/obj/item/weapon/gun/energy/taser
+		/obj/item/weapon/gun/energy/taser,
+		/obj/item/weapon/rig/riot
 	)
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
 	req_access = list(access_security)
-	icon_state = "sec1"
-	icon_closed = "sec"
-	icon_locked = "sec1"
-	icon_opened = "secopen"
-	icon_off = "secoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/security/WillContain()
 	return list(
@@ -123,7 +124,8 @@
 		/obj/item/clothing/under/deadspace/security,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/device/holowarrant,
-//		/obj/item/device/flash
+//		/obj/item/device/flash,
+		/obj/item/weapon/rig/security
 	)
 
 /obj/structure/closet/secure_closet/security/cargo/WillContain()
@@ -210,11 +212,11 @@
 /obj/structure/closet/secure_closet/SSO
 	name = "senior security officer's locker"
 	req_access = list(access_security)
-	icon_state = "sec1"
-	icon_closed = "sec"
-	icon_locked = "sec1"
-	icon_opened = "secopen"
-	icon_off = "secoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/SSO/WillContain()
 	return list(
@@ -236,7 +238,10 @@
 		/obj/item/device/flashlight/maglight,
 		/obj/item/device/tape/random = 3,
 		/obj/item/weapon/storage/belt/holster/forensic,
-		/obj/item/weapon/storage/belt/holster/security
+		/obj/item/weapon/storage/belt/holster/security,
+		/obj/item/weapon/rig/security,
+		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
+		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec))
 	)
 
 /obj/structure/closet/secure_closet/military

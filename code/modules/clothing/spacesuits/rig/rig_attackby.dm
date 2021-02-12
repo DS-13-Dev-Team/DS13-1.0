@@ -40,6 +40,12 @@
 		to_chat(user, "You [open ? "open" : "close"] the access panel.")
 		return
 
+	else if (hotswap && can_modify())
+		if(istype(W,/obj/item/rig_module))
+			attempt_install(W, user, FALSE)
+
+			return 1
+
 	if(open && can_modify())
 
 		// Hacking.
@@ -147,7 +153,7 @@
 			else
 				to_chat(user, "You don't see any use for \the [S].")
 
-		return
+			return
 
 	// If we've gotten this far, all we have left to do before we pass off to root procs
 	// is check if any of the loaded modules want to use the item we've been given.
@@ -260,5 +266,6 @@
 /obj/item/weapon/rig/proc/can_modify()
 	if (is_worn() && !hotswap)
 		return FALSE
+
 
 	return TRUE

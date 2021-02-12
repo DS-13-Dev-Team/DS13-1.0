@@ -1,11 +1,11 @@
 /obj/structure/closet/secure_closet/engineering_chief
 	name = "chief engineer's locker"
 	req_access = list(access_ce)
-	icon_state = "securece1"
-	icon_closed = "securece"
-	icon_locked = "securece1"
-	icon_opened = "secureceopen"
-	icon_off = "secureceoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/engineering_chief/WillContain()
 	return list(
@@ -13,6 +13,7 @@
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/industrial, /obj/item/weapon/storage/backpack/satchel_eng)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/eng, 50),
 		/obj/item/blueprints,
+		/obj/item/weapon/rig/advanced,
 		/obj/item/clothing/under/deadspace/engineer,
 		/obj/item/clothing/head/hardhat/white,
 		/obj/item/clothing/head/welding,
@@ -32,11 +33,11 @@
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies"
 	req_access = list(access_engineering)
-	icon_state = "secureengelec1"
-	icon_closed = "secureengelec"
-	icon_locked = "secureengelec1"
-	icon_opened = "toolclosetopen"
-	icon_off = "secureengelecoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/engineering_electrical/WillContain()
 	return list(
@@ -50,11 +51,11 @@
 /obj/structure/closet/secure_closet/engineering_welding
 	name = "welding supplies"
 	req_access = list(access_engineering)
-	icon_state = "secureengweld1"
-	icon_closed = "secureengweld"
-	icon_locked = "secureengweld1"
-	icon_opened = "toolclosetopen"
-	icon_off = "secureengweldoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/engineering_welding/WillContain()
 	return list(
@@ -69,11 +70,11 @@
 /obj/structure/closet/secure_closet/engineering_personal
 	name = "engineer's locker"
 	req_access = list(access_engineering)
-	icon_state = "secureeng1"
-	icon_closed = "secureeng"
-	icon_locked = "secureeng1"
-	icon_opened = "secureengopen"
-	icon_off = "secureengoff"
+	icon_state = "securenew1"
+	icon_closed = "securenew"
+	icon_locked = "securenew1"
+	icon_opened = "secureopen"
+	icon_off = "securenewoff"
 
 /obj/structure/closet/secure_closet/engineering_personal/WillContain()
 	return list(
@@ -88,7 +89,8 @@
 		/obj/item/device/radio/headset/headset_eng,
 		/obj/item/taperoll/engineering,
 		/obj/item/device/flashlight,
-		/obj/item/weapon/storage/belt/utility/full
+		/obj/item/weapon/storage/belt/utility/full,
+		/obj/item/weapon/rig/engineering
 	)
 
 /obj/structure/closet/secure_closet/atmos_personal
