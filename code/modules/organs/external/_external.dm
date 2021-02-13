@@ -1234,7 +1234,7 @@ obj/item/organ/external/proc/remove_clamps()
 	supplied_wound.embedded_objects += W
 	implants += W
 	LAZYADD(owner.implants,W)
-	owner.verbs += /mob/proc/yank_out_object
+	owner.verbs += /mob/proc/yank_out_object_verb
 	W.add_blood(owner)
 	if(ismob(W.loc))
 		var/mob/living/H = W.loc
