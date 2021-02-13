@@ -37,7 +37,7 @@
 	path = /obj/item/weapon/rig/civilian
 
 	cost = 0
-
+*/
 
 
 /datum/gear/RIG/frame/hacker
