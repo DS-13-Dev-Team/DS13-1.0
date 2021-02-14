@@ -1,0 +1,7 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "Decreased maximum level of Anatomy skill for Medical Doctor to Expert."
+  - tweak: "Increased amount of skill points for Surgeon to 24."

@@ -47,7 +47,7 @@ datum/job/smo/get_description_blurb()
 						SKILL_MEDICAL	  = SKILL_ADEPT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_ANATOMY	  = SKILL_MAX,
+	max_skill = list(   SKILL_ANATOMY	  = SKILL_EXPERT,
 	                    SKILL_MEDICAL     = SKILL_MAX)
 	skill_points = 20
 
@@ -75,7 +75,7 @@ datum/job/md/get_description_blurb()
 
 	max_skill = list(   SKILL_ANATOMY	  = SKILL_MAX,
 	                    SKILL_MEDICAL     = SKILL_MAX)
-	skill_points = 20
+	skill_points = 24
 
 datum/job/surg/get_description_blurb()
 	return "You are a Surgeon. Your job is to perform surgery on any wounded crewmembers who require it and are one of the few people given access to the surgical suites. You are subordinate to the Senior Medical Officer."
