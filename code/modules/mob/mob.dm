@@ -884,12 +884,12 @@
 	var/mob/S = src
 	var/mob/user = usr
 	var/list/valid_objects = list()
-	var/self = null
+	var/self = FALSE
 
 	if(S == user)
-		self = 1 // Removing object from yourself.
+		self = TRUE // Removing object from yourself.
 
-	valid_objects = get_visible_implants(0)
+	valid_objects = get_visible_implants(0, TRUE)
 	if(!valid_objects.len)
 		if(self)
 			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
@@ -958,7 +958,7 @@
 	if (H)
 		H.unembed(selection, null, FALSE, message)
 
-	var/list/valid_objects = get_visible_implants(0)
+	var/list/valid_objects = get_visible_implants(0, TRUE)
 	if(length(valid_objects.len == 0)) //Yanking out last object - removing verb.
 		src.verbs -= /mob/proc/yank_out_object_verb
 

@@ -777,12 +777,12 @@
 		update_inv_shoes(1)
 		return TRUE
 
-/mob/living/carbon/human/get_visible_implants(var/class = 0)
+/mob/living/carbon/human/get_visible_implants(var/class = 0, include_shrapnel = FALSE)
 
 	var/list/visible_implants = list()
 	for(var/obj/item/organ/external/organ in src.organs)
 		for(var/obj/item/weapon/O in organ.implants)
-			if(!istype(O,/obj/item/weapon/implant) && (O.w_class > class) && !istype(O,/obj/item/weapon/material/shard/shrapnel))
+			if(!istype(O,/obj/item/weapon/implant) && (O.w_class > class) && (include_shrapnel || !istype(O,/obj/item/weapon/material/shard/shrapnel)))
 				visible_implants += O
 
 	return(visible_implants)
