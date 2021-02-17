@@ -900,6 +900,8 @@
 
 
 /obj/item/rig_module/kinesis/proc/add_hotkeys(var/mob/living/carbon/human/user)
+	if(/mob/living/carbon/human/verb/kinesis_toggle in user.verbs)
+		return
 	//user.client.show_popup_menus = FALSE
 	user.verbs |= /mob/living/carbon/human/verb/kinesis_toggle
 	winset(user, "kinesis_toggle", "parent=macro;name=F;command=kinesis_toggle")
@@ -907,7 +909,8 @@
 	hotkeys_set = TRUE
 
 /obj/item/rig_module/kinesis/proc/remove_hotkeys(var/mob/living/carbon/human/user)
-
+	if(user.wearing_rig && user.wearing_rig != src)
+		return
 	winset(user, "macro.kinesis_toggle", "parent=")
 	winset(user, "hotkeymode.kinesis_toggle", "parent=")
 	user.verbs -= /mob/living/carbon/human/verb/kinesis_toggle
@@ -919,6 +922,7 @@
 	set hidden = TRUE
 	set popup_menu = FALSE
 	set category = null
+
 
 	if (wearing_rig)
 		for (var/obj/item/rig_module/kinesis/K in wearing_rig.installed_modules)
