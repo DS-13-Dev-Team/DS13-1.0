@@ -253,6 +253,15 @@
 	update_ui_after_item_removal()
 	update_icon()
 
+/obj/item/weapon/storage/AltClick(mob/user)
+	if(user.incapacitated())
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		return
+	if(!in_range(src, user))
+		return
+	else
+		src.open(user)
+
 //This proc is called when you want to place an item into the storage item.
 /obj/item/weapon/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()
