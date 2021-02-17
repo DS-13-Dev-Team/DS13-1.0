@@ -4445,17 +4445,118 @@
 	icon_state = "wall3"
 	},
 /area/supply/dock)
+"kD" = (
+/obj/structure/table/standard,
+/obj/item/weapon/storage/firstaid/regular{
+	pixel_y = 8
+	},
+/obj/item/weapon/storage/firstaid/o2{
+	pixel_y = 4
+	},
+/obj/item/weapon/storage/firstaid/fire,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/grey,
+/turf/simulated/floor/reinforced,
+/area/space)
 "kQ" = (
 /turf/space/transit/east,
+/area/space)
+"lr" = (
+/obj/machinery/door/blast/regular/open{
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "kellion_window"
+	},
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor,
+/area/space)
+"lO" = (
+/obj/structure/closet/walllocker/emerglocker/north,
+/turf/simulated/floor/reinforced,
+/area/space)
+"mT" = (
+/obj/structure/table/reinforced,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"mX" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet{
+	name = "Security Locker"
+	},
+/obj/item/weapon/gun/projectile/divet,
+/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/clothing/glasses/hud/security,
+/obj/item/weapon/rig/security,
+/obj/random/gun_tool,
+/turf/simulated/floor/reinforced,
+/area/space)
+"ni" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 2;
+	icon_state = "blastctrl";
+	id = "kellion_blast";
+	name = "Kellion Blast Door Control";
+	pixel_x = 0;
+	pixel_y = 24;
+	req_access = list(999);
+	step_x = 0
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 "on" = (
 /obj/item/weapon/reagent_containers/food/drinks/golden_cup,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"os" = (
+/obj/structure/bed/chair/padded/black,
+/turf/simulated/floor/reinforced,
+/area/space)
 "ow" = (
 /obj/machinery/vending/wallmed1,
 /turf/simulated/wall/titanium,
 /area/ERT/escapebase)
+"qk" = (
+/obj/item/device/flashlight/floodlamp{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/obj/item/device/flashlight/floodlamp{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/device/flashlight/floodlamp{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/device/flashlight/floodlamp{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/device/flashlight/floodlamp{
+	pixel_x = -2;
+	pixel_y = 0
+	},
+/obj/structure/table/standard,
+/obj/effect/floor_decal/industrial/outline/grey,
+/turf/simulated/floor/reinforced,
+/area/space)
 "qA" = (
 /obj/effect/shuttle_landmark/valor/landing2,
 /turf/unsimulated/floor{
@@ -4463,43 +4564,230 @@
 	icon_state = "plating"
 	},
 /area/space)
+"rj" = (
+/obj/machinery/door/blast/regular/open{
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "kellion_window"
+	},
+/obj/machinery/door/airlock/hatch,
+/obj/structure/closet/hydrant{
+	pixel_x = 32
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"rw" = (
+/turf/simulated/shuttle/wall{
+	icon_state = "wall3"
+	},
+/area/space)
+"rC" = (
+/obj/machinery/vending/security,
+/turf/simulated/floor/reinforced,
+/area/space)
 "rD" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/reagent_containers/food/snacks/grilledcheese,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"rM" = (
+/obj/machinery/optable,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/reinforced,
+/area/space)
+"st" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 32
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"uN" = (
+/obj/structure/table/rack,
+/obj/item/stack/rods/fifty,
+/obj/item/stack/rods/fifty,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/weapon/storage/bag/trash,
+/obj/item/weapon/storage/bag/trash,
+/turf/simulated/floor/reinforced,
+/area/space)
 "uT" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/reagent_containers/food/snacks/fishburger,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"xm" = (
+/obj/structure/bed/chair/shuttle/black{
+	dir = 1;
+	icon_state = "shuttle_chair_preview"
+	},
+/obj/effect/floor_decal/industrial/outline/grey,
+/turf/simulated/floor/reinforced,
+/area/space)
 "xu" = (
 /turf/unsimulated/floor{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "plating"
 	},
 /area/ERT/escapebase)
+"yd" = (
+/obj/structure/table/standard,
+/obj/item/weapon/storage/briefcase/inflatable,
+/obj/item/weapon/storage/briefcase/inflatable,
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/item/weapon/storage/firstaid/surgery,
+/turf/simulated/floor/reinforced,
+/area/space)
+"yR" = (
+/turf/simulated/floor/reinforced,
+/area/space)
+"Af" = (
+/obj/item/weapon/stool/bar/padded,
+/turf/simulated/floor/reinforced,
+/area/space)
 "An" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/reagent_containers/food/snacks/fishandchips,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"Bb" = (
+/obj/structure/table/standard,
+/obj/item/stack/cable_coil/random{
+	pixel_y = 8
+	},
+/obj/item/stack/cable_coil/random{
+	pixel_y = 4
+	},
+/obj/item/stack/cable_coil/random,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Be" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	icon_state = "pdoor1";
+	id = "kellion_blast"
+	},
+/obj/machinery/door/airlock/external{
+	dir = 8;
+	icon_state = "closed";
+	req_access = list(999)
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"Bk" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/remote/blast_door{
+	id = "kellion_window";
+	name = "Kellion Blast Window Control";
+	req_access = list(999)
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"BW" = (
+/obj/machinery/computer/engines,
+/turf/simulated/floor/reinforced,
+/area/space)
 "Cj" = (
 /obj/machinery/vending/hotfood,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"DV" = (
+/obj/machinery/door/airlock/external{
+	dir = 8;
+	icon_state = "closed";
+	req_access = list(999)
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"EV" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet{
+	name = "Engineer Locker"
+	},
+/obj/item/ammo_magazine/lineracks,
+/obj/item/ammo_magazine/lineracks,
+/obj/item/ammo_magazine/lineracks,
+/obj/item/ammo_magazine/lineracks,
+/obj/item/weapon/gun/projectile/linecutter,
+/obj/item/clothing/glasses/meson,
+/obj/item/weapon/rig/engineering,
+/turf/simulated/floor/reinforced,
+/area/space)
+"FN" = (
+/obj/structure/table/standard,
+/obj/item/stack/material/glass/reinforced/fifty{
+	pixel_y = 6
+	},
+/obj/item/stack/material/glass/reinforced/fifty{
+	pixel_y = 4
+	},
+/obj/item/stack/material/glass/reinforced/fifty{
+	pixel_y = 2
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "FR" = (
 /obj/structure/table/woodentable,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"Gy" = (
+/obj/machinery/light,
+/turf/simulated/floor/reinforced,
+/area/space)
+"GJ" = (
+/obj/machinery/vending/tool,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Hl" = (
+/obj/machinery/vending/engivend,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Io" = (
+/obj/machinery/door/blast/regular/open{
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "kellion_window"
+	},
+/obj/machinery/door/airlock/hatch,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Iv" = (
+/obj/machinery/vending/boozeomat,
+/turf/simulated/floor/reinforced,
+/area/space)
+"IK" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/shuttle/wall{
+	icon_state = "wall3"
+	},
+/area/space)
 "IW" = (
 /obj/machinery/vending/boozeomat,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"KB" = (
+/obj/structure/shuttle/engine/heater,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/wall/r_wall,
+/area/space)
 "Lo" = (
 /obj/machinery/door/airlock,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"LD" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 32
+	},
+/turf/simulated/shuttle/wall{
+	icon_state = "wall3"
+	},
+/area/space)
 "MM" = (
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
@@ -4511,14 +4799,132 @@
 /obj/machinery/vending/snack,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"Rk" = (
+/obj/machinery/vending/medical,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Rq" = (
+/obj/structure/table/standard,
+/obj/item/weapon/storage/belt/utility/full,
+/obj/item/device/lightreplacer,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Sy" = (
+/obj/machinery/computer/crew{
+	dir = 1;
+	icon_state = "computer"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"SQ" = (
+/obj/structure/closet/medical_wall/filled{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"SU" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet{
+	name = "Security Locker"
+	},
+/obj/item/weapon/gun/projectile/divet,
+/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/clothing/glasses/hud/security,
+/obj/item/weapon/rig/security,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Ti" = (
+/obj/machinery/pipedispenser/disposal,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Tn" = (
+/obj/structure/table/standard,
+/obj/item/stack/material/steel/fifty{
+	pixel_y = 6
+	},
+/obj/item/stack/material/steel/fifty{
+	pixel_y = 4
+	},
+/obj/item/stack/material/steel/fifty{
+	pixel_y = 2
+	},
+/obj/item/stack/material/plasteel/fifty{
+	pixel_y = 2
+	},
+/obj/item/stack/material/plasteel/fifty{
+	pixel_y = 2
+	},
+/obj/item/stack/material/plasteel/fifty{
+	pixel_y = 2
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "TR" = (
 /obj/machinery/door/airlock/external,
 /turf/space,
 /area/ERT/escapebase)
+"TW" = (
+/obj/machinery/turret/covered/pulse,
+/turf/simulated/shuttle/wall{
+	icon_state = "wall3"
+	},
+/area/space)
+"UG" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet{
+	name = "Security Leader Locker"
+	},
+/obj/item/weapon/gun/projectile/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/seeker,
+/obj/item/ammo_magazine/seeker,
+/obj/item/ammo_magazine/seeker,
+/obj/item/weapon/gun/projectile/seeker,
+/obj/item/clothing/glasses/hud/security,
+/obj/item/weapon/rig/advanced,
+/turf/simulated/floor/reinforced,
+/area/space)
+"UJ" = (
+/obj/machinery/pipedispenser,
+/obj/machinery/light,
+/turf/simulated/floor/reinforced,
+/area/space)
 "Vu" = (
 /obj/structure/table/standard,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"VT" = (
+/obj/structure/sign/warning/lethal_turrets,
+/turf/simulated/shuttle/wall{
+	icon_state = "wall3"
+	},
+/area/space)
+"Wb" = (
+/obj/structure/table/reinforced,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "Wo" = (
 /obj/effect/shuttle_landmark/kellion/landing2,
 /turf/unsimulated/floor{
@@ -4532,6 +4938,34 @@
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "plating"
 	},
+/area/space)
+"Ye" = (
+/obj/structure/bed/chair/shuttle/black{
+	dir = 8;
+	icon_state = "shuttle_chair_preview"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"Zp" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/reinforced,
+/area/space)
+"ZF" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet{
+	name = "Technician Locker"
+	},
+/obj/item/weapon/gun/energy/cutter,
+/obj/item/weapon/cell/plasmacutter,
+/obj/item/weapon/cell/plasmacutter,
+/obj/item/weapon/cell/plasmacutter,
+/obj/item/weapon/cell/plasmacutter,
+/obj/item/weapon/storage/firstaid/combat,
+/obj/item/weapon/storage/firstaid/adv,
+/obj/item/weapon/defibrillator/compact/loaded,
+/obj/item/clothing/glasses/hud/health/visor,
+/obj/item/weapon/rig/civilian,
+/turf/simulated/floor/reinforced,
 /area/space)
 
 (1,1,1) = {"
@@ -6187,19 +6621,19 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+rw
+rw
+rw
+rw
+Be
+Be
+rw
+rw
+rw
+rw
+rw
+rw
+rw
 aa
 aa
 aa
@@ -6388,20 +6822,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+rw
+rw
+kD
+yd
+rw
+ni
+Gy
+rw
+Tn
+os
+Sy
+rM
+KB
+IK
 aa
 aa
 aa
@@ -6588,22 +7022,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+TW
+VT
+rw
+lO
+yR
+yR
+rw
+DV
+DV
+rw
+Rk
+yR
+yR
+UG
+KB
+IK
 aa
 aa
 aa
@@ -6790,22 +7224,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+lr
+mT
+yR
+xm
+xm
+yR
+rw
+SQ
+yR
+yR
+yR
+yR
+yR
+mX
+rw
+rw
 aa
 aa
 aa
@@ -6992,22 +7426,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+lr
+yR
+xm
+yR
+yR
+yR
+Io
+yR
+yR
+FN
+rC
+Rq
+GJ
+Hl
+ZF
+rw
 aa
 aa
 aa
@@ -7194,22 +7628,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+lr
+Bk
+yR
+yR
+qk
+yR
+Io
+yR
+yR
+yR
+yR
+yR
+yR
+yR
+Gy
+rw
 aa
 aa
 aa
@@ -7396,22 +7830,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+lr
+BW
+xm
+yR
+yR
+yR
+rj
+yR
+yR
+st
+Af
+Af
+Af
+yR
+UJ
+rw
 aa
 aa
 aa
@@ -7598,22 +8032,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+lr
+Wb
+yR
+xm
+xm
+yR
+rw
+yR
+yR
+LD
+Zp
+Zp
+Zp
+yR
+rw
+rw
 aa
 aa
 aa
@@ -7800,22 +8234,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+TW
+VT
+rw
+lO
+yR
+yR
+rw
+DV
+DV
+rw
+Ye
+yR
+yR
+yR
+KB
+IK
 aa
 aa
 aa
@@ -8004,20 +8438,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+rw
+rw
+EV
+Bb
+rw
+ni
+Gy
+rw
+Iv
+uN
+SU
+Ti
+KB
+IK
 aa
 aa
 aa
@@ -8207,19 +8641,19 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+rw
+rw
+rw
+rw
+Be
+Be
+rw
+rw
+rw
+rw
+rw
+rw
+rw
 aa
 aa
 aa

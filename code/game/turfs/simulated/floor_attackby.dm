@@ -124,16 +124,19 @@
 					if(I.use_tool(user, src, flooring.removal_time, tool_type, FAILCHANCE_VERY_EASY))
 						to_chat(user, SPAN_NOTICE("You remove the broken [flooring.descriptor]."))
 						make_plating()
+						remove_runes()
 					return
 				else if(flooring.flags & TURF_IS_FRAGILE)
 					if(I.use_tool(user, src, flooring.removal_time, tool_type, FAILCHANCE_VERY_EASY))
 						to_chat(user, SPAN_DANGER("You forcefully pry off the [flooring.descriptor], destroying them in the process."))
 						make_plating()
+						remove_runes()
 					return
 				else if(flooring.flags & TURF_REMOVE_CROWBAR)
 					if(I.use_tool(user, src, flooring.removal_time, tool_type, FAILCHANCE_VERY_EASY))
 						to_chat(user, SPAN_NOTICE("You lever off the [flooring.descriptor]."))
 						make_plating(1)
+						remove_runes()
 					return
 				return
 
@@ -142,6 +145,7 @@
 					if(I.use_tool(user, src, flooring.removal_time*1.5, tool_type, FAILCHANCE_VERY_EASY))
 						to_chat(user, SPAN_NOTICE("You unscrew and remove the [flooring.descriptor]."))
 						make_plating(1)
+						remove_runes()
 				return
 
 			if(QUALITY_BOLT_TURNING)
@@ -149,6 +153,7 @@
 					if(I.use_tool(user, src, flooring.removal_time, tool_type, FAILCHANCE_NORMAL))
 						to_chat(user, SPAN_NOTICE("You unwrench and remove the [flooring.descriptor]."))
 						make_plating(1)
+						remove_runes()
 				return
 
 			if(QUALITY_SHOVELING)
@@ -156,6 +161,7 @@
 					if(I.use_tool(user, src, flooring.removal_time, tool_type, FAILCHANCE_VERY_EASY))
 						to_chat(user, SPAN_NOTICE("You shovel off the [flooring.descriptor]."))
 						make_plating(1)
+						remove_runes()
 				return
 
 			if(QUALITY_WELDING)
@@ -175,6 +181,7 @@
 					if(I.use_tool(user, src, flooring.removal_time, tool_type, FAILCHANCE_NORMAL))
 						to_chat(user, SPAN_NOTICE("You cut through and remove the [flooring.descriptor]."))
 						make_plating(1)
+						remove_runes()
 
 			if(ABORT_CHECK)
 				return
@@ -191,6 +198,9 @@
 
 	return ..()
 
+/turf/simulated/floor/proc/remove_runes()
+	for(var/obj/effect/rune/R in src)
+		qdel(R)
 
 /turf/simulated/floor/can_build_cable(var/mob/user)
 	if(flooring && (flooring.flags & TURF_HIDES_THINGS))
