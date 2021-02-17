@@ -46,14 +46,6 @@
 		list(CRAFT_MATERIAL, MATERIAL_WOOD, 5)
 	)
 
-/datum/craft_recipe/weapon/handmade_shield
-	name = "handmade shield"
-	result = /obj/item/weapon/shield/riot/metal
-	steps = list(
-		list(CRAFT_STACK, /obj/item/stack/rods, 4),
-		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10)
-	)
-
 /datum/craft_recipe/weapon/tray_shield
 	name = "handmade tray shield"
 	result = /obj/item/weapon/shield/tray
