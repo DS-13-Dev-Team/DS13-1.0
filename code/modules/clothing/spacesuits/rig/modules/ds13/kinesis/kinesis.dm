@@ -923,8 +923,6 @@
 	set popup_menu = FALSE
 	set category = null
 
-	if(src.incapacitated())
-		return
 
 	if (wearing_rig)
 		for (var/obj/item/rig_module/kinesis/K in wearing_rig.installed_modules)
