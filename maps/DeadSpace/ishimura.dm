@@ -6,13 +6,12 @@
 	name = "Ishimura"
 	full_name = "USG Ishimura"
 	path = "ishimura"
-	station_levels = list(1,2,3)
-	contact_levels = list(1,2,3,4,5)
-	player_levels = list(1,2,3)
-	admin_levels = list(4,5)
-	sealed_levels = list(3,4) // No edge-of-map teleportation for players who hit the edge, to prevent shitlery.
+	station_levels = list(1,2,3,4,5,6)
+	contact_levels = list(1,2,3,4,5,6)
+	player_levels = list(1,2,3,4,5)
+	admin_levels = list(7)
 	empty_levels = list()
-	accessible_z_levels = list("1"=1,"2"=1,"3"=1)
+	accessible_z_levels = list("1"=1,"2"=1,"3"=1,"4"=1)
 	local_currency_name = "credits"
 	station_networks = list(
 		NETWORK_CARGO,
