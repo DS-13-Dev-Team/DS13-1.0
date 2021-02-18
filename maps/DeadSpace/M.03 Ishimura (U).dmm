@@ -37,8 +37,7 @@
 /obj/machinery/access_button{
 	frequency = 1380;
 	master_tag = "eva_smes1";
-	pixel_x = 24;
-	pixel_y = 0
+	pixel_x = 24
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
@@ -91,8 +90,7 @@
 /obj/machinery/access_button{
 	frequency = 1380;
 	master_tag = "eva_smes2";
-	pixel_x = -24;
-	pixel_y = 0
+	pixel_x = -24
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
@@ -348,7 +346,6 @@
 	cycle_to_external_air = 0;
 	frequency = 1380;
 	id_tag = "eva_smes1";
-	pixel_x = 0;
 	pixel_y = 30;
 	tag_airpump = "eva_smes1_pump";
 	tag_chamber_sensor = "eva_smes1_sensor";
@@ -424,7 +421,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/orange{
@@ -729,7 +725,6 @@
 	cycle_to_external_air = 1;
 	frequency = 1380;
 	id_tag = "eva_smes2";
-	pixel_x = 0;
 	pixel_y = 30;
 	tag_airpump = "eva_smes2_pump";
 	tag_chamber_sensor = "eva_smes2_sensor";
@@ -838,8 +833,7 @@
 "bt" = (
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -917,7 +911,6 @@
 "bA" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -35
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1019,7 +1012,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/table/standard,
@@ -1451,8 +1443,7 @@
 "cF" = (
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
@@ -1521,7 +1512,6 @@
 "cP" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -35
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -1543,7 +1533,6 @@
 "cR" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -35
 	},
 /obj/structure/disposalpipe/segment{
@@ -1699,7 +1688,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/orange{
@@ -1848,7 +1836,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/orange{
@@ -1864,7 +1851,6 @@
 	cycle_to_external_air = 0;
 	frequency = 1380;
 	id_tag = "topdeck_airlock";
-	pixel_x = 0;
 	pixel_y = 30;
 	tag_airpump = "topdeck_airlock_pump";
 	tag_chamber_sensor = "topdeck_airlock_sensor";
@@ -2071,8 +2057,7 @@
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
-	pixel_x = 22;
-	pixel_y = 0
+	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock)
@@ -2461,7 +2446,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -35
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -2471,8 +2455,7 @@
 	command = "cycle_exterior";
 	frequency = 1380;
 	master_tag = "topdeck_airlock";
-	pixel_x = -24;
-	pixel_y = 0
+	pixel_x = -24
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
@@ -2806,8 +2789,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -2879,7 +2861,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/random/tool,
@@ -2971,8 +2952,7 @@
 /obj/machinery/access_button{
 	frequency = 1380;
 	master_tag = "eva_smes3";
-	pixel_x = 24;
-	pixel_y = 0
+	pixel_x = 24
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
@@ -3001,7 +2981,6 @@
 	cycle_to_external_air = 1;
 	frequency = 1380;
 	id_tag = "eva_smes3";
-	pixel_x = 0;
 	pixel_y = 30;
 	tag_airpump = "eva_smes3_pump";
 	tag_chamber_sensor = "eva_smes3_sensor";
@@ -3215,8 +3194,7 @@
 /area/space)
 "fR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -3230,8 +3208,7 @@
 "fS" = (
 /obj/item/device/radio/intercom{
 	dir = 8;
-	pixel_x = 22;
-	pixel_y = 0
+	pixel_x = 22
 	},
 /obj/machinery/camera/network/engineering{
 	dir = 8;
