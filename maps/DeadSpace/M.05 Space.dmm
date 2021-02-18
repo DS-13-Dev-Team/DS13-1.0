@@ -766,8 +766,7 @@
 	name = "Kellion Blast Door Control";
 	pixel_x = 0;
 	pixel_y = 24;
-	req_access = list(999);
-	step_x = 0
+	req_access = list(999)
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
@@ -848,8 +847,7 @@
 	icon_state = "blastctrl";
 	id = "deliverance_door";
 	name = "Deliverance Transit Door Control";
-	pixel_x = -24;
-	step_x = 0
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
 /area/ERT/deliverance)
@@ -4515,8 +4513,7 @@
 	name = "Kellion Blast Door Control";
 	pixel_x = 0;
 	pixel_y = 24;
-	req_access = list(999);
-	step_x = 0
+	req_access = list(999)
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
