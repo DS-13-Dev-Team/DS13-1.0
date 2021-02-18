@@ -114,7 +114,6 @@
 /area/ERT/kellion)
 "aq" = (
 /obj/structure/closet/medical_wall/filled{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -763,7 +762,6 @@
 	icon_state = "blastctrl";
 	id = "kellion_blast";
 	name = "Kellion Blast Door Control";
-	pixel_x = 0;
 	pixel_y = 24;
 	req_access = list(999)
 	},
@@ -2119,7 +2117,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 15;
 	req_access = list(201)
 	},
@@ -4504,7 +4501,6 @@
 	icon_state = "blastctrl";
 	id = "kellion_blast";
 	name = "Kellion Blast Door Control";
-	pixel_x = 0;
 	pixel_y = 24;
 	req_access = list(999)
 	},
@@ -4807,7 +4803,6 @@
 /area/space)
 "SQ" = (
 /obj/structure/closet/medical_wall/filled{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/reinforced,
