@@ -20345,8 +20345,7 @@
 "aMp" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -20365,8 +20364,7 @@
 "aMr" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -20385,8 +20383,7 @@
 "aMt" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -25197,8 +25194,7 @@
 "aXl" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
@@ -26075,8 +26071,7 @@
 "aZv" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
@@ -26095,8 +26090,7 @@
 "aZw" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
