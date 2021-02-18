@@ -27,16 +27,6 @@ if grep -nP '"\w+" = \(\n([^)]+\n)*/obj/structure/cable,\n([^)]+\n)*/obj/structu
     echo "found multiple cables on the same tile, please remove them."
     st=1
 fi;
-echo "Checking for cable varedits"
-if grep -nP '/obj/structure/cable(/\w+)+\{' maps/DeadSpace/*.dmm;	then
-    echo "ERROR: vareditted cables detected, please remove them."
-    st=1
-fi;
-echo "Checking for cable d1/d2"
-if grep -nP '\td[1-2] =' maps/DeadSpace/*.dmm;	then
-    echo "ERROR: d1/d2 cable variables detected in maps, please remove them."
-    st=1
-fi;
 echo "Checking for pixel_[xy]"
 if grep -nP 'pixel_[xy] = 0' maps/DeadSpace/*.dmm;	then
     echo "pixel_x/pixel_y = 0 variables detected in maps, please review to ensure they are not dirty varedits."
