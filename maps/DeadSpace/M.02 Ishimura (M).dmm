@@ -961,8 +961,11 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ishimura/upper/engineering/engine_room)
 "act" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/wall/r_wall,
-/area/ishimura/upper/security)
+/area/ishimura/upper/research/virology/quarantine)
 "acu" = (
 /obj/structure/table/standard,
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -1306,8 +1309,9 @@
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/security/checkpoint/engineering)
 "adm" = (
-/turf/simulated/wall/r_wall,
-/area/ishimura/upper/research/virology)
+/obj/structure/foamedmetal,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
 "adn" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2175,7 +2179,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white/monotile,
-/area/ishimura/upper/medical)
+/area/ishimura/upper/medical/bpc)
 "afd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -14231,7 +14235,7 @@
 	icon_state = "open"
 	},
 /turf/simulated/floor/plating,
-/area/ishimura/upper/research/chief_science_office)
+/area/ishimura/upper/research/biolab)
 "aAV" = (
 /obj/structure/sign/directions/evac{
 	pixel_y = 28
@@ -14736,10 +14740,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/misc/hallway/fore)
 "aBK" = (
-/obj/effect/wallframe_spawn/reinforced,
-/obj/machinery/door/firedoor,
+/obj/structure/foamedmetal,
 /turf/simulated/floor/plating,
-/area/ishimura/upper/research/virology)
+/area/ishimura/upper/misc/hallway/fore)
 "aBL" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -42982,8 +42985,8 @@ aaa
 aaa
 aaa
 aah
-aab
-aab
+aak
+aak
 aak
 abH
 anb
@@ -61806,7 +61809,7 @@ aMF
 aOE
 aQX
 arH
-aab
+arP
 arP
 aUW
 bfQ
@@ -62008,7 +62011,7 @@ aMI
 aOT
 aRr
 arH
-aab
+arP
 arP
 aOM
 aRy
@@ -62210,7 +62213,7 @@ aNs
 aPV
 aIZ
 arH
-aab
+arP
 arP
 aPz
 aQP
@@ -62412,8 +62415,8 @@ aOb
 arH
 arH
 arH
-aec
-aec
+arP
+arP
 aQH
 aRN
 aQH
@@ -65626,7 +65629,7 @@ afM
 awJ
 afM
 baU
-axK
+ayk
 ayk
 ayM
 aOx
@@ -66650,7 +66653,7 @@ aaY
 aaY
 aaY
 arN
-aeh
+aaq
 aaq
 aaq
 aaq
@@ -66852,7 +66855,7 @@ aaY
 acJ
 afP
 arQ
-aeh
+aaq
 aCK
 aFM
 aOR
@@ -67054,7 +67057,7 @@ aaY
 acX
 ago
 asa
-aeh
+aaq
 aCL
 aHj
 aOY
@@ -67256,7 +67259,7 @@ aaY
 adk
 aoN
 ass
-aeh
+aaq
 aCN
 aHk
 aPd
@@ -67848,13 +67851,13 @@ aFZ
 aHO
 aFY
 aGf
-aCP
+aGd
 aAU
 aAU
 aAU
 aAU
-aCP
-aCP
+aGd
+aGd
 aYy
 aJH
 aDw
@@ -68440,7 +68443,7 @@ aaa
 aaa
 aaa
 aah
-abP
+alW
 alW
 alW
 alW
@@ -69272,12 +69275,12 @@ aGd
 aDw
 aJH
 aDw
-aaD
-act
-act
-act
-act
-act
+acA
+acA
+acA
+acA
+acA
+acA
 aQI
 aQI
 acA
@@ -69670,8 +69673,8 @@ aHb
 aFQ
 aOj
 aBz
-atk
-atk
+aBK
+aBK
 aec
 aDw
 aJH
@@ -69872,8 +69875,8 @@ aBz
 aMm
 aOk
 aBz
-atk
-atk
+aBK
+aBK
 aec
 aEr
 bcp
@@ -70264,12 +70267,12 @@ abU
 azJ
 aAc
 aAi
-adm
 azU
 azU
 azU
 azU
-aBz
+azU
+aau
 aCM
 aAG
 axq
@@ -70466,7 +70469,7 @@ awY
 afd
 aAf
 aBj
-aBK
+aCz
 aBn
 aCx
 aJE
@@ -70668,7 +70671,7 @@ agW
 azV
 bgl
 bhS
-aBK
+aCz
 aCm
 aAk
 aAk
@@ -70870,7 +70873,7 @@ akl
 apK
 aAc
 aAi
-aBK
+aCz
 aCn
 aCy
 aCI
@@ -71067,8 +71070,8 @@ aaa
 aaa
 aaa
 aah
-awG
-adm
+act
+azU
 azU
 bgp
 bgG
@@ -71091,7 +71094,7 @@ aDy
 bhW
 aDy
 aDy
-acv
+aaT
 acN
 acN
 acN
@@ -71481,8 +71484,8 @@ aBt
 aCB
 aCB
 azU
-atk
-atk
+adm
+adm
 aaT
 azN
 aDD
@@ -71683,8 +71686,8 @@ aCq
 aCC
 avA
 azU
-atk
-atk
+adm
+adm
 aaT
 aaT
 aJA
@@ -71885,8 +71888,8 @@ aBt
 aCD
 aCD
 azU
-atk
-atk
+adm
+adm
 aaT
 afk
 aJG
@@ -72087,8 +72090,8 @@ aGZ
 aAl
 azU
 azU
-atk
-atk
+adm
+adm
 aaT
 aCa
 abw
@@ -72288,9 +72291,9 @@ aBP
 aCr
 aCE
 azU
-aab
-atk
-atk
+azU
+adm
+adm
 aaT
 aEf
 aDy
@@ -72304,7 +72307,7 @@ aKU
 bfl
 aKU
 aMZ
-aaT
+acN
 acN
 aIb
 anV
@@ -72490,7 +72493,7 @@ aBP
 anK
 aAo
 azU
-aav
+azU
 aav
 aav
 aaT
@@ -72506,7 +72509,7 @@ aMY
 aEo
 aEJ
 aVe
-aaT
+acN
 acN
 acN
 acN
@@ -72692,7 +72695,7 @@ azU
 azU
 azU
 azU
-aav
+azU
 aav
 aav
 aaT
