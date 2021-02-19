@@ -654,3 +654,15 @@ proc/get_nt_opposed()
 			if (L.stat != DEAD) //They're alive!
 				GLOB.living_crew |= M
 
+//proc returns the amount of alive active humans onboard Ishimura (space turfs are excluded), the rest are considered marooned
+/datum/game_mode/proc/get_alive_crewmates_count()
+	var/crew_count = 0
+	for(var/datum/mind/M in GLOB.living_crew)
+		var/mob/living/L = M.current
+		if(!L.client || L.client.is_afk(2 MINUTES))	//activity check
+			continue
+		if(!isStationLevel(L.z) || istype(get_turf(L), /turf/space))	//location check
+			continue
+		crew_count++
+
+	return crew_count
