@@ -877,9 +877,59 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/tramdeck/tram/tunnel/aft
 	name = "\improper Ishimura Aft Tram Tunnel"
 
-/area/ishimura/tramdeck/tram/tunnel/forwad
+/area/ishimura/tramdeck/tram/tunnel/forward
 	name = "\improper Ishimura Forward Tram Tunnel"
 
+/area/ishimura/tramdeck/tram/maintenance/foremaintenance
+	name = "Tram Fore Maintenance"
+
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance
+	name = "Tram Mid Maintenance"
+
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance
+	name = "Tram Aft Maintenance"
+
+/area/ishimura/tramdeck/tram/misc/disusedbotanics
+	name = "Disused Botanics"
+
+/area/ishimura/tramdeck/tram/misc/abandonedmeet
+	name = "Abandoned Meet"
+
+/area/ishimura/tramdeck/tram/misc/temp
+	name = "Temp"
+
+//------------------UnderTram Deck------------------//
+
+
+/area/ishimura/tramdeck/tram/undertunnel/temp1
+	name = "\improper Temp"
+
+/area/ishimura/tramdeck/tram/undertunnel/temp2
+	name = "\improper Temp"
+
+/area/ishimura/tramdeck/tram/undertunnel/temp3
+	name = "\improper Temp"
+
+/area/ishimura/tramdeck/tram/undertunnel/temp4
+	name = "\improper Temp"
+
+/area/ishimura/tramdeck/tram/undertunnel/temp5
+	name = "\improper Temp"
+
+/area/ishimura/tramdeck/tram/undertunnel/temp6
+	name = "\improper Temp"
+
+/area/ishimura/tramdeck/tram/undertunnel/temp7
+	name = "\improper Temp"
+
+/area/ishimura/tramdeck/tram/undertunnel/underforemaintenance
+	name = "UnderTram Fore Maintenance"
+
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance
+	name = "UnderTram Mid Maintenance"
+
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance
+	name = "UnderTram Aft Maintenance"
 //------------------Switching Station------------------//
 
 /area/ishimura/tramdeck/switchingstation
