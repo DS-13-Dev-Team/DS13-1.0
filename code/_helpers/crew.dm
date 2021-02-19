@@ -2,16 +2,9 @@
 /proc/get_historic_crew_total()
 	return GLOB.all_crew.len
 
-//Returns the number of alive humans aboard Ishimura
+//Returns the number of live crewmembers
 /proc/get_living_crew_total()
-	var/crew_count = 0
-	for(var/datum/mind/M in GLOB.living_crew)
-		if(!M || QDELETED(M.current) || !ishuman(M.current))	//regular sanity checks
-			continue
-		var/mob/living/L = M.current
-		if(!L.client || L.stat == DEAD || !isStationLevel(L.z))	//only count alive active humans onboard Ishimura, the rest are marooned
-			continue
-		crew_count++
+	return GLOB.living_crew.len
 
 	return crew_count
 
