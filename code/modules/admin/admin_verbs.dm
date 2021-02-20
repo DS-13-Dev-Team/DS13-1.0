@@ -14,7 +14,8 @@ var/list/admin_verbs_default = list(
 //	/client/proc/deadchat				//toggles deadchat on/off,
 	/client/proc/cmd_dev_bst,
 	/client/proc/cmd_dev_bse,
-	/client/proc/fix_necroshop 			//This is a completely harmless debug verb
+	/client/proc/fix_necroshop, 			//This is a completely harmless debug verb
+	/client/proc/trigger_response_team
 	)
 var/list/admin_verbs_admin = list(
 	/client/proc/activate_marker,		//Activates The Marker

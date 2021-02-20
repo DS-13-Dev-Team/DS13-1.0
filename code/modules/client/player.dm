@@ -101,6 +101,14 @@
 	return GLOB.players[key]
 
 
+/proc/get_preferences_from_key(var/key)
+	var/datum/player/P = get_player_from_key(key)
+	var/client/C = locate(P.client)
+	if (istype(C))
+		return C.prefs
+	else
+		return null
+
 /*
 	Necromorph helpers
 */

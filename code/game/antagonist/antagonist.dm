@@ -1,4 +1,5 @@
 /datum/antagonist
+	var/base_type = /datum/antagonist
 
 	// Text shown when becoming this antagonist.
 	var/list/restricted_jobs = 		list()   // Jobs that cannot be this antagonist at roundstart (depending on config)
@@ -71,6 +72,7 @@
 	var/list/candidates =          list()   // Potential candidates.
 	var/list/faction_members =     list()   // Semi-antags (in-round revs, borer thralls)
 	var/preference_candidacy_toggle = FALSE	// Whether to show an option in preferences to toggle candidacy
+	var/preference_candidacy_category = "Antagonists"
 
 	/*
 		This list holds various bits of information about the last attempt at spawning that was done with this antag
@@ -96,7 +98,9 @@
 		rules aside from those without explicit exceptions apply to antagonists.</b>"
 
 /datum/antagonist/New()
+	reset_last_spawn_data()
 	GLOB.all_antag_types_[id] = src
+	sortTim(GLOB.all_antag_types_, /proc/cmp_antagonist_category, TRUE)
 	GLOB.all_antag_spawnpoints_[landmark_id] = list()
 	GLOB.antag_names_to_ids_[role_text] = id
 	skill_setter = new skill_setter
@@ -129,13 +133,13 @@
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
 		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Is only [player.current.client.player_age] day\s old, has to be [minimum_player_age] day\s!")
-		else if(player.special_role)
+		else if(player.special_role && !ghosts_only)	//Ghosts are no longer what their body was, it shouldn't prevent them taking a new role
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They already have a special role ([player.special_role])!")
 		else if (player in pending_antagonists)
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They have already been selected for this role!")
 		else if(!can_become_antag(player))
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are blacklisted for this role!")
-		else if(player_is_antag(player))
+		else if(player_is_antag(player) && !ghosts_only)	//Ghosts are no longer what their body was, it shouldn't prevent them taking a new role
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are already an antagonist!")
 		else
 			candidates[player] = player.get_antag_weight(category)
@@ -233,13 +237,13 @@
 	if(!can_become_antag(player))
 		log_debug("[player.key] was selected for [role_text] by lottery, but is not allowed to be that role.")
 		return 0
-	if(player.special_role)
+	if(player.special_role && !isghostmind(player))
 		log_debug("[player.key] was selected for [role_text] by lottery, but they already have a special role.")
 		return 0
 	if(!(flags & ANTAG_OVERRIDE_JOB) && (!player.current || istype(player.current, /mob/new_player)))
 		log_debug("[player.key] was selected for [role_text] by lottery, but they have not joined the game.")
 		return 0
-	if(ticker.current_state >= GAME_STATE_PLAYING && (isghostmind(player) || isnewplayer(player.current)) && !(player in ticker.antag_pool))
+	if(ticker.current_state >= GAME_STATE_PLAYING && (isghostmind(player) || isnewplayer(player.current)) && !(player.ghost_role_valid()))
 		log_debug("[player.key] was selected for [role_text] by lottery, but they are a ghost not in the antag pool.")
 		return 0
 
@@ -266,7 +270,6 @@
 		return
 
 	for(var/datum/mind/player in pending_antagonists)
-
 		add_antagonist(player,0,0,1)
 
 

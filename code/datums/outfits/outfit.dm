@@ -125,6 +125,7 @@ var/list/outfits_decls_by_type_
 // end of check_and_try_equip_xeno
 
 /decl/hierarchy/outfit/proc/equip(mob/living/carbon/human/H, var/rank, var/assignment, var/equip_adjustments)
+	world << "Outfit [src] equip"
 	equip_base(H, equip_adjustments)
 
 	rank = id_pda_assignment || rank
@@ -146,6 +147,7 @@ var/list/outfits_decls_by_type_
 	return TRUE
 
 /decl/hierarchy/outfit/proc/equip_base(mob/living/carbon/human/H, var/equip_adjustments, var/overwrite = FALSE, var/dummy = FALSE)
+	world << "Outfit [src.type] equip_base"
 	pre_equip(H)
 	//Start with uniform,suit,backpack for additional slots
 	if(uniform)
@@ -157,6 +159,7 @@ var/list/outfits_decls_by_type_
 			QDEL_NULL(H.wear_suit)
 		H.equip_to_slot_or_del(create_item(suit, H, dummy),slot_wear_suit)
 	if(back)
+		world << "Outfit [src.type] back [back] onto [H] dummy [dummy]"
 		if (overwrite && H.back)
 			QDEL_NULL(H.back)
 		H.equip_to_slot_or_del(create_item(back, H, dummy),slot_back)

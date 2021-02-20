@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(loyalists, /datum/antagonist/loyalists, new)
-
 /datum/antagonist/loyalists
 	id = MODE_LOYALIST
 	role_text = "Head Loyalist"

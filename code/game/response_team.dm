@@ -67,28 +67,3 @@
 	message_admins("[key_name(usr)] called a [choice == "Randomize" ? "randomized ":""]distress beacon: [GLOB.picked_call.name] Min: [min], Max: [max].")
 
 
-/client/verb/JoinResponseTeam()
-
-	set name = "Join Response Team"
-	set category = "IC"
-
-	if(!MayRespawn(1))
-		to_chat(usr, "<span class='warning'>You cannot join the response team at this time.</span>")
-		return
-	if(!isghost(usr))
-		to_chat(usr, "<span class='warning'>You cannot join the response team because you are not ghost.</span>")
-
-	var/datum/emergency_call/distress = GLOB.picked_call //Just to simplify things a bit
-
-	if(!istype(distress) || !GLOB.waiting_for_candidates || distress.members_max < 1)
-		to_chat(usr, "<span class='warning'>No distress beacons that need candidates are active. You will be notified if that changes.</span>")
-		return
-
-	if(usr.mind in distress.candidates)
-		to_chat(usr, "<span class='warning'>You are already a candidate for this emergency response team.</span>")
-		return
-
-	if(distress.add_candidate(usr))
-		to_chat(usr, "<span class='boldnotice'>You are now a candidate in the emergency response team! If there are enough candidates, you may be picked to be part of the team.</span>")
-	else
-		to_chat(usr, "<span class='warning'>Something went wrong while adding you into the candidate list!</span>")

@@ -1,6 +1,7 @@
 //This file deals with distress beacons. It randomizes between a number of different types when activated.
 //There's also an admin commmand which lets you set one to your liking.
-
+#define DISTRESS_COOLDOWN_FAIL	5 MINUTES
+#define DISTRESS_COOLDOWN_SUCCESS	1 HOUR
 
 //The distress call parent.
 /datum/emergency_call
@@ -21,45 +22,30 @@
 	var/datum/antagonist/antag
 	var/antag_id = MODE_ERT
 
-/datum/game_mode/proc/initialize_emergency_calls()
-	if(length(GLOB.all_calls)) //It's already been set up.
+/proc/initialize_emergency_calls()
+	if(length(GLOB.emergency_call_datums)) //It's already been set up.
 		return
 
-	var/list/total_calls = typesof(/datum/emergency_call)
-	if(!length(total_calls))
-		CRASH("No distress Datums found.")
-
-	for(var/x in total_calls)
+	for(var/x in typesof(/datum/emergency_call))
 		var/datum/emergency_call/D = new x()
 		if(!D?.name)
 			continue //The default parent, don't add it
 
-		D.antag = GLOB.all_antag_types_[antag_id]
-		GLOB.all_calls[D] = D.weight
+		D.antag = GLOB.all_antag_types_[D.antag_id]
+		GLOB.emergency_call_datums[D] = D.weight
 
 
 //Randomizes and chooses a call datum.
 /datum/game_mode/proc/get_random_call()
-	return pickweight(GLOB.all_calls)
-
-/datum/emergency_call/proc/show_join_message()
-	if(!members_max || !ticker?.mode) //Not a joinable distress call.
-		return
-
-	for(var/i in GLOB.player_list)
-		if(!isghost(i)) continue
-		var/client/M = i
-		to_chat(M, "<br><font size='3'><span class='attack'>An emergency beacon has been activated. Use the <B>IC > <a href='byond://?src=[REF(M)];join_ert=1'>Join Response Team</a></b> verb to join!</span></font><br>")
-		to_chat(M, "<span class='attack'>You cannot join if you have Ghosted before this message.</span><br>")
+	return pickweight(GLOB.emergency_call_datums)
 
 
 /datum/game_mode/proc/activate_distress(datum/emergency_call/chosen_call)
 	GLOB.picked_call = chosen_call || get_random_call()
 
-	if(ticker?.mode?.GLOB.waiting_for_candidates) //It's already been activated
-		return FALSE
-
-	GLOB.picked_call.members_max = rand(5, 15)
+	//if(ticker?.mode?.GLOB.waiting_for_candidates) //It's already been activated
+		//return FALSE
+	GLOB.on_distress_cooldown = TRUE
 
 	GLOB.picked_call.activate()
 
@@ -88,101 +74,53 @@
 	if(members_max > 0)
 		GLOB.waiting_for_candidates = TRUE
 
-	show_join_message() //Show our potential candidates the message to let them join.
-	message_admins("Distress beacon: '[name]' activated. Looking for candidates.")
-
 	if(announce)
 		pr_announce.Announce("A distress beacon has been launched from the USG Ishimura.", "Priority Alert")
 
-	GLOB.on_distress_cooldown = TRUE
+	do_activate(announce)
 
-	candidate_timer = addtimer(CALLBACK(src, .proc/do_activate, announce), 5 MINUTES, TIMER_STOPPABLE)
 
 /datum/emergency_call/proc/do_activate(announce = TRUE)
 
+	//This handles everything related to creating the team
 	antag.attempt_random_spawn()
 
-	cooldown_timer = addtimer(CALLBACK(src, .proc/reset), 5 MINUTES, TIMER_STOPPABLE)
+
 
 	//Right, lets examine the data from the last spawn
+	var/list/spawns = antag.last_spawn_data["spawns"]
+	var/target = antag.last_spawn_data["spawn_target"]
+
 	if (!antag.last_spawn_data["success"])
 		message_admins("Aborting distress beacon [name], Failed to spawn a response team")
+		cooldown_timer = addtimer(CALLBACK(src, .proc/reset), DISTRESS_COOLDOWN_FAIL, TIMER_STOPPABLE)
+		addtimer(CALLBACK(src, .proc/announce_fail), DISTRESS_COOLDOWN_FAIL, TIMER_STOPPABLE)
+		//It will take some time for the crew to be told whether or not the beacon was recieved
 		return
 
+	else if  (LAZYLEN(spawns) < target)
+		message_admins("Spawning incomplete response team [name]. We have [LAZYLEN(spawns)]/[target] members, some specialists may not be present")
 
-	/*
-	message_admins("Distress beacon: [name] got [length(candidates)] candidates, [length(valid_candidates)] of them were valid.")
-
-	if(members_min && length(valid_candidates) < members_min)
-		message_admins("Aborting distress beacon [name], not enough candidates. Found: [length(valid_candidates)]. Minimum required: [members_min].")
-		GLOB.waiting_for_candidates = FALSE
-		members.Cut() //Empty the members list.
-		candidates.Cut()
-
-		if(announce)
-			pr_announce.Announce("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
-
-		GLOB.picked_call = null
-		GLOB.on_distress_cooldown = TRUE
-
-
-		return
-
-	var/list/datum/mind/picked_candidates = list()
-	if(length(valid_candidates) > members_max)
-		for(var/i in 1 to members_max)
-			if(!length(valid_candidates)) //We ran out of candidates.
-				break
-			picked_candidates += pick_n_take(valid_candidates) //Get a random candidate, then remove it from the candidates list.
-
-		for(var/datum/mind/M in valid_candidates)
-			if(M.current)
-				to_chat(M.current, "<span class='warning'>You didn't get selected to join the distress team. Better luck next time!</span>")
-		message_admins("Distress beacon: [length(valid_candidates)] valid candidates were not selected.")
 	else
-		picked_candidates = valid_candidates // save some time
-		message_admins("Distress beacon: All valid candidates were selected.")
+		message_admins("Successfully spawned response team [name]. We have [LAZYLEN(spawns)]/[target] members, some specialists may not be present")
 
-	if(announce)
-		pr_announce.Announce(dispatch_message, "Distress Beacon")
-
-	message_admins("Distress beacon: [name] finalized, starting spawns.")
-
-	if(members_min > 0)
-		if(length(picked_candidates))
-			GLOB.ert.update_members_type(max(round(length(picked_candidates) * 0.125), 1))
-			for(var/i in picked_candidates)
-				var/datum/mind/candidate_mind = i
-				members += candidate_mind
-				create_member(candidate_mind)
-		else
-			message_admins("ERROR: No picked candidates, aborting.")
-			return
-
-	message_admins("Distress beacon: [name] finished spawning.")
-
-	candidates.Cut() //Blank out the candidates list for next time.
-
-	cooldown_timer = addtimer(CALLBACK(src, .proc/reset), 5 MINUTES, TIMER_STOPPABLE)
-	*/
+	cooldown_timer = addtimer(CALLBACK(src, .proc/reset), DISTRESS_COOLDOWN_SUCCESS, TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, .proc/announce_success), DISTRESS_COOLDOWN_FAIL, TIMER_STOPPABLE)
 
 
-/datum/emergency_call/proc/get_spawn_point()
-	var/list/landmarks = list()
-	for(var/obj/effect/landmark/O in landmarks_list)
-		if(O.name == landmark_tag)
-			landmarks += O
-	var/obj/effect/landmark/L = pick(landmarks)
-	if(L)
-		return get_turf(L)
+/datum/emergency_call/proc/announce_success()
+	pr_announce.Announce("USG Ishimura distress beacon has been noticed. A vessel has been detected on long range sensors", "Priority Alert")
 
-/datum/emergency_call/proc/create_member(datum/mind/mind_to_assign) //Overriden in each distress call file.
-	var/turf/spawn_loc = get_spawn_point()
+/datum/emergency_call/proc/announce_fail()
+	pr_announce.Announce("USG Ishimura distress beacon has drawn no response. Another beacon is ready to launch.", "Priority Alert")
 
-	if(!istype(spawn_loc))
-		CRASH("[type] failed to find a proper spawn_loc")
 
-	return spawn_type ? new spawn_type(spawn_loc) : spawn_loc
+/client/proc/trigger_response_team()
+	set name = "Response Team"
+	set desc = "Triggers a specific Emergency Response Team instantly"
+	set category = "Fun"
 
-/datum/emergency_call/proc/print_backstory(mob/living/carbon/human/M)
-	return
+	var/datum/emergency_call/C = input(mob,"Pick which response team to trigger","Trigger response team") as null|anything in GLOB.emergency_call_datums
+	if (!C)
+		return
+	C.activate(TRUE)

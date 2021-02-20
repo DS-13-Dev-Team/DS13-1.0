@@ -1,8 +1,10 @@
+#define CLOSE_TABLE	if (open_table) {. += "</table><br>";\
+open_table = FALSE;}
 /datum/preferences
 	var/list/never_be_special_role
 	var/list/be_special_role
 	var/auto_necroqueue = TRUE
-	var/auto_ert = FALSE
+	var/ghost_candidacy = TRUE
 
 /datum/category_item/player_setup_item/antagonism/candidacy
 	name = "Candidacy"
@@ -12,13 +14,16 @@
 	from_file(S["be_special"],           pref.be_special_role)
 	from_file(S["never_be_special"],     pref.never_be_special_role)
 	from_file(S["auto_necroqueue"],           pref.auto_necroqueue)
-	from_file(S["auto_ert"], 			 pref.auto_ert)
+	from_file(S["ghost_candidacy"], 			 pref.ghost_candidacy)
+	//Safeguard to make sure it defaults to on
+	if (isnull(pref.ghost_candidacy))
+		pref.ghost_candidacy = TRUE
 
 /datum/category_item/player_setup_item/antagonism/candidacy/save_character(var/savefile/S)
 	to_file(S["be_special"],             pref.be_special_role)
 	to_file(S["never_be_special"],       pref.never_be_special_role)
 	to_file(S["auto_necroqueue"],           pref.auto_necroqueue)
-	to_file(S["auto_ert"],               pref.auto_ert)
+	to_file(S["ghost_candidacy"], 			 pref.ghost_candidacy)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/sanitize_character()
 	if(!istype(pref.be_special_role))
@@ -38,11 +43,14 @@
 
 /datum/category_item/player_setup_item/antagonism/candidacy/content(var/mob/user)
 	. = list()
+	var/open_table = FALSE
 	. += "Auto Join Necroqueue:"
 	. += {"<a class='linkActive noIcon checkbox' unselectable='on' title='If ticked, you will automatically be placed in the necroqueue when joining the necromorph team, or leaving a necromorph body.'  style='display:inline-block;' onclick='document.location="?src=\ref[src];auto_necroqueue=[pref.auto_necroqueue ? "false" : "true"]"' ><div><form><input type='checkbox' [pref.auto_necroqueue ? "checked" : ""]></form></div></a><br>"}
 
 	. += "<b>Special Role Availability:</b><br>"
+	. += "<b>Necromorphs:</b><br>"
 	. += "<table>"
+	open_table = TRUE
 	for(var/ntype in subtypesof(/datum/species/necromorph))
 		var/datum/species/necromorph/N = ntype
 		if (!initial(N.preference_settable))
@@ -55,11 +63,26 @@
 			. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];add_never=[necro_id]'>No</a></br>"
 		. += "</td></tr>"
 	. += "<br>"
+	CLOSE_TABLE
 	var/list/all_antag_types = GLOB.all_antag_types_
+	var/antag_category
+
 	for(var/antag_type in all_antag_types)
 		var/datum/antagonist/antag = all_antag_types[antag_type]
+		//We have entered a new category
+
 		if (!antag.preference_candidacy_toggle)
 			continue
+		if (antag.preference_candidacy_category != antag_category)
+			antag_category = antag.preference_candidacy_category
+			CLOSE_TABLE
+			.+= "<b>[antag_category]:</b><br>"
+			world << "Inserting category [antag_category]"
+			.+= "<table>"
+
+			open_table = TRUE
+
+
 		. += "<tr><td>[antag.role_text]: </td><td>"
 		if(jobban_isbanned(preference_mob(), antag.id) || (antag.id == MODE_MALFUNCTION && jobban_isbanned(preference_mob(), "AI")))
 			. += "<span class='danger'>\[BANNED\]</span><br>"
@@ -70,6 +93,10 @@
 		else
 			. += "<a href='?src=\ref[src];add_special=[antag.id]'>High</a> <span class='linkOn'>Low</span> <a href='?src=\ref[src];add_never=[antag.id]'>Never</a></br>"
 		. += "</td></tr>"
+	CLOSE_TABLE
+
+	. += "<table>"
+	open_table = TRUE
 
 	var/list/ghost_traps = get_ghost_traps()
 	for(var/ghost_trap_key in ghost_traps)
@@ -89,9 +116,10 @@
 		. += "</td></tr>"
 	. += "</table>"
 
-	. += "Auto Join ERT: "
-	. += {"<a class='linkActive noIcon checkbox' unselectable='on' title='If ticked, you will automatically join ert.'  style='display:inline-block;' onclick='document.location="?src=\ref[src];auto_ert=[pref.auto_ert ? "false" : "true"]"' ><div><form><input type='checkbox' [pref.auto_ert ? "checked" : ""]></form></div></a><br>"}
+	//. += "Auto Join ERT: "
+	//. += {"<a class='linkActive noIcon checkbox' unselectable='on' title='If ticked, you will automatically join ert.'  style='display:inline-block;' onclick='document.location="?src=\ref[src];auto_ert=[pref.auto_ert ? "false" : "true"]"' ><div><form><input type='checkbox' [pref.auto_ert ? "checked" : ""]></form></div></a><br>"}
 
+	/*
 	. += "<b>ERT Availability:</b><br>"
 	. += "<table>"
 	for(var/ert_type in subtypesof(/datum/emergency_call))
@@ -104,6 +132,7 @@
 			. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];add_never=[ert_id]'>No</a></br>"
 		. += "</td></tr>"
 	. += "</table>"
+	*/
 	. = jointext(.,null)
 
 /datum/category_item/player_setup_item/proc/banned_from_ghost_role(var/mob, var/datum/ghosttrap/ghost_trap)
@@ -139,12 +168,6 @@
 			pref.auto_necroqueue = TRUE
 		return TOPIC_REFRESH
 
-	if(href_list["auto_ert"])
-		if(href_list["auto_ert"] == "false")
-			pref.auto_ert = FALSE
-		if(href_list["auto_ert"] == "true")
-			pref.auto_ert = TRUE
-		return TOPIC_REFRESH
 
 	return ..()
 
