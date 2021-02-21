@@ -56,8 +56,7 @@
 	var/sound_in = 'sound/effects/holster/holsterin.ogg'
 	var/sound_out = 'sound/effects/holster/holsterout.ogg'
 	can_hold = list(
-		/obj/item/weapon/melee/baton,
-		/obj/item/weapon/melee/telebaton
+		/obj/item/weapon
 		)
 
 /obj/item/weapon/storage/belt/holster/Initialize()
@@ -109,6 +108,7 @@
 	overlay_flags = BELT_OVERLAY_ITEMS
 	can_hold = list(
 		/obj/item/weapon/tool,
+		/obj/item/weapon/melee,/obj/item/weapon/material,
 		/obj/item/weapon/tool/multitool,
 		/obj/item/device/flashlight,
 		/obj/item/stack/cable_coil,
@@ -186,6 +186,7 @@
 		/obj/item/taperoll,
 		/obj/item/weapon/extinguisher/mini,
 		/obj/item/weapon/storage/med_pouch,
+		/obj/item/weapon/melee,/obj/item/weapon/material,
 		/obj/item/bodybag
 		)
 
@@ -207,8 +208,7 @@
 		/obj/item/ammo_casing/shotgun,
 		/obj/item/ammo_magazine,
 		/obj/item/weapon/reagent_containers/food/snacks/donut/,
-		/obj/item/weapon/melee/baton,
-		/obj/item/weapon/melee/telebaton,
+		/obj/item/weapon/melee,/obj/item/weapon/material,
 		/obj/item/weapon/flame/lighter,
 		/obj/item/clothing/glasses/hud/security,
 		/obj/item/device/flashlight,
@@ -216,7 +216,6 @@
 		/obj/item/device/radio/headset,
 		/obj/item/device/hailer,
 		/obj/item/device/megaphone,
-		/obj/item/weapon/melee,
 		/obj/item/taperoll,
 		/obj/item/device/holowarrant,
 		/obj/item/weapon/magnetic_ammo,
@@ -231,8 +230,6 @@
 	overlay_flags = BELT_OVERLAY_ITEMS
 	can_hold = list(
 		/obj/item/device/flash,
-		/obj/item/weapon/melee/baton,
-		/obj/item/weapon/melee/telebaton,
 		/obj/item/device/taperecorder,
 		/obj/item/weapon/folder,
 		/obj/item/weapon/paper,
@@ -266,7 +263,7 @@
 	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
 	can_hold = list(
 		/obj/item/device/flash,
-		/obj/item/weapon/melee/telebaton,
+		/obj/item/weapon/melee,/obj/item/weapon/material,
 		/obj/item/device/taperecorder,
 		/obj/item/weapon/folder,
 		/obj/item/weapon/paper,
@@ -299,10 +296,10 @@
 	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
 	can_hold = list(
 		/obj/item/device/flash,
-		/obj/item/weapon/melee/telebaton,
 		/obj/item/device/taperecorder,
 		/obj/item/weapon/folder,
 		/obj/item/weapon/paper,
+		/obj/item/weapon/melee,/obj/item/weapon/material,
 		/obj/item/weapon/clipboard,
 		/obj/item/modular_computer/tablet,
 		/obj/item/device/flash,
@@ -352,6 +349,7 @@
 		/obj/item/device/camera,
 		/obj/item/device/taperecorder,
 		/obj/item/device/tape,
+		/obj/item/weapon
 		)
 
 /obj/item/weapon/storage/belt/holster/machete

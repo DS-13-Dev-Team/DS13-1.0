@@ -34,6 +34,7 @@
 	var/name				//replaces mob/var/original_name
 	var/mob/living/current
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
+	var/mob/observer/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
 	var/active = 0
 
 	var/memory
@@ -89,6 +90,8 @@
 	new_character.skillset.obtain_from_mob(current)	//handles moving skills over.
 
 	current = new_character		//link ourself to our new body
+	if (isghost(current))
+		ghost = current
 	new_character.mind = src	//and link our new body to ourself
 
 	if(learned_spells && learned_spells.len)
@@ -107,13 +110,8 @@
 	var/output = "<B>[current.real_name]'s Memory</B><HR>"
 	output += memory
 
-	if(objectives.len>0)
-		output += "<HR><B>Objectives:</B>"
+	output += objective_text(links = TRUE)
 
-		var/obj_count = 1
-		for(var/datum/objective/objective in objectives)
-			output += "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
-			obj_count++
 	if(ambitions)
 		output += "<HR><B>Ambitions:</B> [ambitions]<br>"
 	recipient << browse(output,"window=memory")
@@ -133,26 +131,38 @@
 		var/datum/antagonist/antag = all_antag_types[antag_type]
 		out += "[antag.get_panel_entry(src)]"
 	out += "</table><hr>"
-	out += "<b>Objectives</b></br>"
 
-	if(objectives && objectives.len)
-		var/num = 1
-		for(var/datum/objective/O in objectives)
-			out += "<b>Objective #[num]:</b> [O.explanation_text] "
-			if(O.completed)
-				out += "(<font color='green'>complete</font>)"
-			else
-				out += "(<font color='red'>incomplete</font>)"
-			out += " <a href='?src=\ref[src];obj_completed=\ref[O]'>\[toggle\]</a>"
-			out += " <a href='?src=\ref[src];obj_delete=\ref[O]'>\[remove\]</a><br>"
-			num++
-		out += "<br><a href='?src=\ref[src];obj_announce=1'>\[announce objectives\]</a>"
 
-	else
-		out += "None."
+	out += objective_text(links = TRUE)
+
+
 	out += "<br><a href='?src=\ref[src];obj_add=1'>\[add\]</a><br><br>"
 	out += "<b>Ambitions:</b> [ambitions ? ambitions : "None"] <a href='?src=\ref[src];amb_edit=\ref[src]'>\[edit\]</a></br>"
 	usr << browse(out, "window=edit_memory[src]")
+
+/datum/mind/proc/objective_text(var/links = TRUE)
+	var/out
+	out += "<b>Objectives</b></br>"
+	if(objectives && objectives.len)
+		var/num = 1
+		for(var/datum/objective/O in objectives)
+			var/style = "objective"
+
+			if(O.completed == TRUE)
+				style = "objective_complete"
+			else if (O.completed == FAILED)
+				style = "objective_fail"
+			out += "<div class=[style]><b>Objective #[num]:</b> [O.explanation_text] </div>"
+			if (links)
+				out += " <a href='?src=\ref[src];obj_completed=\ref[O]'>\[toggle\]</a>"
+				out += " <a href='?src=\ref[src];obj_delete=\ref[O]'>\[remove\]</a>"
+			out += "<br>"
+			num++
+		if (links)
+			out += "<br><a href='?src=\ref[src];obj_announce=1'>\[announce objectives\]</a>"
+	else
+		out += "None."
+
 
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))	return
@@ -523,6 +533,19 @@
 /datum/mind/proc/set_special_role(var/newinput)
 	special_role = newinput
 
+//Can this mind be picked to spawn in a ghost role right now?
+/datum/mind/proc/ghost_role_valid()
+	if (!isghostmind(src))
+		return FALSE
+	var/datum/preferences/P = get_preferences_from_key(key)
+	if (!P?.ghost_candidacy)
+		return FALSE
+	return TRUE
+
+
+
+
+
 
 //Return a positive or negative number to add that percentage to antag weighting for the chosen category
 /obj/item/proc/get_antag_weight(var/category)
@@ -602,3 +625,5 @@
 	..()
 	mind.assigned_role = "Juggernaut"
 	mind.set_special_role("Cultist")
+
+

@@ -35,7 +35,6 @@ var/global/datum/controller/gameticker/ticker
 
 	var/round_end_announced = 0 // Spam Prevention. Announce round end only once.
 
-	var/list/antag_pool = list()
 	var/looking_for_antags = 0
 	var/bypass_gamemode_vote = FALSE
 
@@ -545,17 +544,18 @@ var/global/datum/controller/gameticker/ticker
 		var/needs_ghost = antag.flags & (ANTAG_OVERRIDE_JOB | ANTAG_OVERRIDE_MOB)
 		if (needs_ghost)
 			looking_for_antags = 1
-			antag_pool.Cut()
 			to_world("<b>A ghost is needed to spawn \a [antag.role_text].</b>\nGhosts may enter the antag pool by making sure their [antag.role_text] preference is set to high, then using the toggle-add-antag-candidacy verb. You have 3 minutes to enter the pool.")
 
 			sleep(3 MINUTES)
 			looking_for_antags = 0
 			antag.update_current_antag_max()
 			antag.build_candidate_list(needs_ghost)
+			/*
 			for(var/datum/mind/candidate in antag.candidates)
 				if(!(candidate in antag_pool))
 					antag.candidates -= candidate
 					log_debug("[candidate.key] was not in the antag pool and could not be selected.")
+			*/
 		else
 			antag.update_current_antag_max()
 			antag.build_candidate_list(needs_ghost)
@@ -588,4 +588,4 @@ var/global/datum/controller/gameticker/ticker
 
 
 /datum/controller/gameticker/proc/IsRoundInProgress()
-	return current_state == GAME_STATE_PLAYING 
+	return current_state == GAME_STATE_PLAYING

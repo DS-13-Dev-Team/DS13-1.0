@@ -210,6 +210,15 @@ var/global/list/string_slot_flags = list(
 		SA = new subtype()
 		GLOB.targeting_profiles[SA.id] = SA
 
+
+	for (var/subtype in subtypesof(/datum/antagonist))
+		var/datum/antagonist/SA = subtype
+		if (initial(SA.base_type) == subtype)
+			continue	//If base type matches type, its an abstract parent class, do not instantiate
+
+		SA = new subtype()//antag datums add themselves to global lists in new, just creating it is enough
+	initialize_emergency_calls()
+
 	return 1
 
 /* // Uncomment to debug chemical reaction list.

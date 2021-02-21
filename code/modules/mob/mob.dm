@@ -1060,18 +1060,17 @@
 	set name = "Toggle Add-Antag Candidacy"
 	set desc = "Toggles whether or not you will be considered a candidate by an add-antag vote."
 	set category = "OOC"
-	if(isghostmind(src.mind) || isnewplayer(src))
-		if(ticker && ticker.looking_for_antags)
-			if(src.mind in ticker.antag_pool)
-				ticker.antag_pool -= src.mind
-				to_chat(usr, "You have left the antag pool.")
-			else
-				ticker.antag_pool += src.mind
-				to_chat(usr, "You have joined the antag pool. Make sure you have the needed role set to high!")
-		else
-			to_chat(usr, "The game is not currently looking for antags.")
+	if (!mind || !client || !client.prefs)
+		return
+	if(client.prefs.ghost_candidacy)
+		to_chat(usr, "You have left the antag pool.")
+		client.prefs.ghost_candidacy = FALSE
+		client.prefs.save_preferences()
 	else
-		to_chat(usr, "You must be observing or in the lobby to join the antag pool.")
+		to_chat(usr, "You have joined the antag pool. Make sure you have the needed role set to high!")
+		client.prefs.ghost_candidacy = TRUE
+		client.prefs.save_preferences()
+
 /mob/proc/is_invisible_to(var/mob/viewer)
 	return (!alpha || !mouse_opacity || viewer.see_invisible < invisibility)
 

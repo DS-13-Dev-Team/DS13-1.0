@@ -1,25 +1,26 @@
 /datum/antagonist/proc/can_become_antag(var/datum/mind/player, var/ignore_role)
 
-	if(player.current)
-		if(jobban_isbanned(player.current, id))
-			return 0
-		if(player.current.faction != "neutral")
-			return 0
-
-	var/datum/job/J = job_master.GetJob(player.assigned_role)
-	if(is_type_in_list(J,blacklisted_jobs))
-		return 0
-
-	if(!ignore_role)
-		if(player.current && player.current.client)
-			var/client/C = player.current.client
-			// Limits antag status to clients above player age, if the age system is being used.
-			if(C && config.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(min_player_age) && (C.player_age < min_player_age))
+	if (!isghostmind(player))
+		if(player.current)
+			if(jobban_isbanned(player.current, id))
 				return 0
-		if(is_type_in_list(J,restricted_jobs))
+			if(player.current.faction != "neutral")
+				return 0
+
+		var/datum/job/J = job_master.GetJob(player.assigned_role)
+		if(is_type_in_list(J,blacklisted_jobs))
 			return 0
-		if(player.current && (player.current.status_flags & NO_ANTAG))
-			return 0
+
+		if(!ignore_role)
+			if(player.current && player.current.client)
+				var/client/C = player.current.client
+				// Limits antag status to clients above player age, if the age system is being used.
+				if(C && config.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(min_player_age) && (C.player_age < min_player_age))
+					return 0
+			if(is_type_in_list(J,restricted_jobs))
+				return 0
+			if(player.current && (player.current.status_flags & NO_ANTAG))
+				return 0
 	return 1
 
 /datum/antagonist/proc/antags_are_dead()
@@ -77,3 +78,5 @@
 		if(antag.flags & ANTAG_RANDOM_EXCEPTED)
 			antag_candidates -= antag
 	return antag_candidates
+
+/proc/get_antagonist(var/id)
