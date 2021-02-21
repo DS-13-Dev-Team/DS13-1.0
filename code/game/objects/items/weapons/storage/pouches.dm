@@ -24,16 +24,20 @@
 	to_chat(usr, SPAN_NOTICE("Items will now [sliding_behavior ? "" : "not"] slide out of [src]"))
 
 /obj/item/weapon/storage/pouch/attack_hand(mob/living/carbon/human/user)
-	if(sliding_behavior && contents.len && (src in user))
-		var/obj/item/I = contents[contents.len]
-		if(istype(I))
-			hide_from(usr)
-			var/turf/T = get_turf(user)
-			remove_from_storage(I, T)
-			usr.put_in_hands(I)
-			add_fingerprint(user)
-	else
-		..()
+	if(src in user)
+		if(!sliding_behavior)
+			src.open(user)
+			return
+		else if(contents.len)
+			var/obj/item/I = contents[contents.len]
+			if(istype(I))
+				hide_from(usr)
+				var/turf/T = get_turf(user)
+				remove_from_storage(I, T)
+				usr.put_in_hands(I)
+				add_fingerprint(user)
+				return
+	..()
 
 /obj/item/weapon/storage/pouch/small_generic
 	name = "small generic pouch"
