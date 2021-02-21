@@ -1,3 +1,8 @@
+GLOBAL_LIST_EMPTY(emergency_call_datums)								//initialized at round start and stores the datums.
+GLOBAL_DATUM_INIT(picked_call, /datum/emergency_call, null) //Which distress call is currently active
+GLOBAL_VAR_INIT(on_distress_cooldown, FALSE)
+GLOBAL_VAR_INIT(waiting_for_candidates, FALSE)
+
 var/global/antag_add_finished // Used in antag type voting.
 var/global/list/additional_antag_types = list()
 
@@ -496,7 +501,6 @@ var/global/list/additional_antag_types = list()
 					players -= player
 					if(candidates.len == required_enemies || players.len == 0)
 						break
-
 
 	return candidates		// Returns: The number of people who had the antagonist role set to yes, regardless of recomended_enemies, if that number is greater than required_enemies
 							//			required_enemies if the number of people with that role set to yes is less than recomended_enemies,

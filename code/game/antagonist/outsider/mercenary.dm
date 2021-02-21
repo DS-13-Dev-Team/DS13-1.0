@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(mercs, /datum/antagonist/mercenary, new)
-
 /datum/antagonist/mercenary
 	id = MODE_MERCENARY
 	role_text = "Mercenary"

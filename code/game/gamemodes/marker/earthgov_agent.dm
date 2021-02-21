@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(agents_list)
 #define EARTHGOV_EVIDENCE_TYPES EARTHGOV_UNITOLOGIST_EVIDENCE + EARTHGOV_CRACKING_EVIDENCE
 
 /datum/antagonist/earthgov_agent
-	role_text = "EarthGov Agent"
+	role_text = ROLETEXT_EARTHGOV_AGENT
 	role_text_plural = "EarthGov Agents"
 	welcome_text = "You are a well-trained agent of the government of Earth, sent to spy on the illegal planet cracking operation in the Cygnus system. In addition, you are investigating a lead that the Church of Unitology has infiltrated the crew of the Ishimura. It is your assignment to report back to your superiors, investigate the situation surrounding the Church, and protect the interests of Earth. You have been provided a direct comm-link to <b>EarthGov Command</b>. Remember, EarthGov directives come before your own..."
 	id = MODE_EARTHGOV_AGENT
@@ -39,6 +39,20 @@ GLOBAL_LIST_EMPTY(agents_list)
 	initial_spawn_req = 0               // Gamemode using this template won't start without this # candidates.
 	initial_spawn_target = 2            // Gamemode will attempt to spawn this many antags.
 	restricted_jobs = list(JOBS_COMMAND)
+
+
+/datum/antagonist/earthgov_agent/create_objectives(var/datum/mind/player, var/override=0)
+	.=..()
+
+	//When a new agent is activated, we force the marine team to regenerate their global objectives, in order to create an extract objective targeting us
+	var/datum/antagonist/ert/edf_marines/EDFM = get_antag_data(ERT_EDF_MARINES)
+	EDFM.create_global_objectives(TRUE)
+
+
+
+
+
+
 
 //Extension for handling special earthgov objectives.
 

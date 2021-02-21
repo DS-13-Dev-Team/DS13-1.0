@@ -1084,4 +1084,12 @@ var/list/WALLITEMS = list(
 	else
 		step(user.pulling, get_dir(user.pulling.loc, A))
 
-
+/proc/REF(input)
+	if(istype(input, /datum))
+		var/datum/thing = input
+		if(thing.datum_flags & DF_USE_TAG)
+			if(!thing.tag)
+				thing.datum_flags &= ~DF_USE_TAG
+			else
+				return "\[[url_encode(thing.tag)]\]"
+	return "\ref[input]"

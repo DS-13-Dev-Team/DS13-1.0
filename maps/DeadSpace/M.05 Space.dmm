@@ -114,7 +114,6 @@
 /area/ERT/kellion)
 "aq" = (
 /obj/structure/closet/medical_wall/filled{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -387,8 +386,7 @@
 	pixel_y = 4
 	},
 /obj/item/device/flashlight/floodlamp{
-	pixel_x = -2;
-	pixel_y = 0
+	pixel_x = -2
 	},
 /obj/structure/table/standard,
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -764,10 +762,8 @@
 	icon_state = "blastctrl";
 	id = "kellion_blast";
 	name = "Kellion Blast Door Control";
-	pixel_x = 0;
 	pixel_y = 24;
-	req_access = list(999);
-	step_x = 0
+	req_access = list(999)
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
@@ -848,8 +844,7 @@
 	icon_state = "blastctrl";
 	id = "deliverance_door";
 	name = "Deliverance Transit Door Control";
-	pixel_x = -24;
-	step_x = 0
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
 /area/ERT/deliverance)
@@ -1574,8 +1569,7 @@
 /area/ERT/valor)
 "dS" = (
 /obj/structure/sign/redcross{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
 /area/ERT/valor)
@@ -2123,7 +2117,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 15;
 	req_access = list(201)
 	},
@@ -2342,8 +2335,7 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
+	pixel_x = -24
 	},
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -2357,8 +2349,7 @@
 /obj/machinery/firealarm{
 	dir = 4;
 	icon_state = "fire0";
-	pixel_x = 20;
-	pixel_y = 0
+	pixel_x = 20
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ERT/valor/medical/morgue)
@@ -3005,8 +2996,7 @@
 /area/ERT/valor/medical/surgery)
 "gR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -3170,8 +3160,7 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/ERT/valor/firingrange)
@@ -3231,8 +3220,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/machinery/light_switch{
 	pixel_x = 4;
@@ -4513,10 +4501,8 @@
 	icon_state = "blastctrl";
 	id = "kellion_blast";
 	name = "Kellion Blast Door Control";
-	pixel_x = 0;
 	pixel_y = 24;
-	req_access = list(999);
-	step_x = 0
+	req_access = list(999)
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
@@ -4550,8 +4536,7 @@
 	pixel_y = 4
 	},
 /obj/item/device/flashlight/floodlamp{
-	pixel_x = -2;
-	pixel_y = 0
+	pixel_x = -2
 	},
 /obj/structure/table/standard,
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -4818,7 +4803,6 @@
 /area/space)
 "SQ" = (
 /obj/structure/closet/medical_wall/filled{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/reinforced,

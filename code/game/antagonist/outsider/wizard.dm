@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(wizards, /datum/antagonist/wizard, new)
-
 /datum/antagonist/wizard
 	id = MODE_WIZARD
 	role_text = ANTAG_WIZARD

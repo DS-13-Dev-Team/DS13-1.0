@@ -7,7 +7,7 @@
 	icon_state = "unifaith"
 	item_state = "unifaith"
 	desc = "A square, black helmet with several crimson highlights, it seems to be a custom design made of parts from a Fuel Carrier RIG. The words, 'Schofield Tools' are stamped on the bottom-back of the helmet. Despite the helmet's non-standard nature, the work done putting it together seems professional."
-	armor = list(melee = 50, bullet = 60, laser = 0,energy = 0, bomb = 60, bio = 100, rad = 30)
+	armor = list(melee = 50, bullet = 60, laser = 30,energy = 30, bomb = 60, bio = 100, rad = 30)
 	siemens_coefficient = 0.3
 
 /obj/item/clothing/suit/space/unitologist
@@ -19,7 +19,7 @@
 	)
 	desc = "A black and gray RIG suit covered in strange symbols and red highlights. The words, 'Schofield Tools' are stamped to the back of the shoulder piece. It seems to be a custom design made of parts from a Fuel Carrier RIG. Despite the helmet's non-standard nature, the work done putting it together seems professional."
 	w_class = ITEM_SIZE_LARGE
-	armor = list(melee = 50, bullet = 60, laser = 0,energy = 0, bomb = 60, bio = 100, rad = 30)
+	armor = list(melee = 50, bullet = 60, laser = 30,energy = 30, bomb = 60, bio = 100, rad = 30)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	siemens_coefficient = 0.3
 
@@ -36,7 +36,7 @@
 		slot_l_hand_str = "s_suit",
 		slot_r_hand_str = "s_suit",
 	)
-	armor = list(melee = 60, bullet = 70, laser = 0,energy = 0, bomb = 70, bio = 100, rad = 30)
+	armor = list(melee = 60, bullet = 70, laser = 30,energy = 30, bomb = 70, bio = 100, rad = 30)
 
 /obj/item/clothing/suit/space/unitologist/berserker
 	name = "heavy suit"
@@ -46,7 +46,7 @@
 		slot_l_hand_str = "s_suit",
 		slot_r_hand_str = "s_suit",
 	)
-	armor = list(melee = 60, bullet = 70, laser = 0,energy = 0, bomb = 70, bio = 100, rad = 30)
+	armor = list(melee = 60, bullet = 70, laser = 30,energy = 30, bomb = 70, bio = 100, rad = 30)
 
 /obj/item/clothing/head/helmet/space/unitologist/deacon
 	name = "ornate helmet"
@@ -57,7 +57,7 @@
 		slot_l_hand_str = "s_suit",
 		slot_r_hand_str = "s_suit",
 	)
-	armor = list(melee = 30, bullet = 30, laser = 0,energy = 0, bomb = 50, bio = 100, rad = 30)
+	armor = list(melee = 30, bullet = 30, laser = 30,energy = 30, bomb = 50, bio = 100, rad = 30)
 
 /obj/item/clothing/suit/space/unitologist/deacon
 	name = "ornate suit"
@@ -67,7 +67,7 @@
 		slot_l_hand_str = "s_suit",
 		slot_r_hand_str = "s_suit",
 	)
-	armor = list(melee = 30, bullet = 30, laser = 0,energy = 0, bomb = 50, bio = 100, rad = 30)
+	armor = list(melee = 30, bullet = 30, laser = 30,energy = 30, bomb = 50, bio = 100, rad = 30)
 
 /obj/item/clothing/head/helmet/space/unitologist/healer
 	name = "blood helmet"
@@ -97,7 +97,7 @@
 		slot_l_hand_str = "s_suit",
 		slot_r_hand_str = "s_suit",
 	)
-	armor = list(melee = 40, bullet = 50, laser = 0,energy = 0, bomb = 20, bio = 100, rad = 30)
+	armor = list(melee = 40, bullet = 50, laser = 30,energy = 30, bomb = 20, bio = 100, rad = 30)
 
 /obj/item/clothing/suit/space/unitologist/mechanic
 	name = "refitted suit"
@@ -107,18 +107,19 @@
 		slot_l_hand_str = "s_suit",
 		slot_r_hand_str = "s_suit",
 	)
-	armor = list(melee = 40, bullet = 50, laser = 0,energy = 0, bomb = 20, bio = 100, rad = 30)
+	armor = list(melee = 40, bullet = 50, laser = 30,energy = 30, bomb = 20, bio = 100, rad = 30)
 
 ///////////////////
 ////EDF OUTFITS////
 ///////////////////
-
+/*
+	//These are obsolete but they have nice writing, we should port that over at some point
 /obj/item/clothing/head/helmet/space/edf
 	name = "MDH-G7 Marine Helmet"
 	icon_state = "edfgrunt"
 	item_state = "edfgrunt"
 	desc = "A blocky, white helmet with a red stripe above the eye. The letters, 'T.E.A.K' are stamped on the bottom-back of the helmet."
-	armor = list(melee = 50, bullet = 60, laser = 0,energy = 0, bomb = 60, bio = 100, rad = 30)
+	armor = list(melee = 50, bullet = 60, laser = 30,energy = 30, bomb = 60, bio = 100, rad = 30)
 	siemens_coefficient = 0.3
 
 /obj/item/clothing/suit/space/edf
@@ -130,7 +131,7 @@
 	)
 	desc = "A military RIG suit given to EDF marines. The letters, 'T.E.A.K' are stamped on the back of the shoulder piece. Professionally manufactured and well maintained, this suit of armor gleams as it catches the light."
 	w_class = ITEM_SIZE_LARGE
-	armor = list(melee = 50, bullet = 60, laser = 0,energy = 0, bomb = 60, bio = 100, rad = 30)
+	armor = list(melee = 50, bullet = 60, laser = 30,energy = 30, bomb = 60, bio = 100, rad = 30)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	siemens_coefficient = 0.3
 
@@ -156,7 +157,7 @@
 		slot_l_hand_str = "s_suit",
 		slot_r_hand_str = "s_suit",
 	)
-	armor = list(melee = 55, bullet = 65, laser = 0,energy = 0, bomb = 65, bio = 100, rad = 30)
+	armor = list(melee = 55, bullet = 65, laser = 30,energy = 30, bomb = 65, bio = 100, rad = 30)
 
 /obj/item/clothing/head/helmet/space/edf/engineer
 	name = "MDH-E7 Engineer Helmet"
@@ -176,7 +177,7 @@
 		slot_l_hand_str = "s_suit",
 		slot_r_hand_str = "s_suit",
 	)
-	armor = list(melee = 55, bullet = 65, laser = 0,energy = 0, bomb = 65, bio = 100, rad = 30)
+	armor = list(melee = 55, bullet = 65, laser = 30,energy = 30, bomb = 65, bio = 100, rad = 30)
 
 /obj/item/clothing/head/helmet/space/edf/medic
 	name = "MDH-M7 Medic Helmet"
@@ -196,4 +197,6 @@
 		slot_l_hand_str = "s_suit",
 		slot_r_hand_str = "s_suit",
 	)
-	armor = list(melee = 55, bullet = 65, laser = 0,energy = 0, bomb = 65, bio = 100, rad = 30)
+	armor = list(melee = 55, bullet = 65, laser = 30,energy = 30, bomb = 65, bio = 100, rad = 30)
+
+*/

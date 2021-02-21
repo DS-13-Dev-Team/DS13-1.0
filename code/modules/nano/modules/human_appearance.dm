@@ -100,7 +100,7 @@
 
 	data["specimen"] = owner.species.name
 	data["gender"] = owner.gender
-	data["change_race"] = can_change(APPEARANCE_RACE)
+	data["change_race"] = FALSE//can_change(APPEARANCE_RACE)	//Rework and re-enable this feature if we ever add human subspecies in future
 	if(data["change_race"])
 		var/species[0]
 		for(var/specimen in valid_species)

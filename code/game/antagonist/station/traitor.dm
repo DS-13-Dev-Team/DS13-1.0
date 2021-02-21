@@ -1,6 +1,3 @@
-GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
-
-// Inherits most of its vars from the base datum.
 /datum/antagonist/traitor
 	id = MODE_TRAITOR
 	protected_jobs = null

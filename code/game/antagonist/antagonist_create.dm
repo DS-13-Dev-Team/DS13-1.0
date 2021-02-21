@@ -26,6 +26,14 @@
 	else
 		M = new /mob/living/carbon/human(get_turf(source))
 	M.ckey = source.ckey
+
+	//Delete the ghost
+	if (isghost(source))
+		qdel(source)
+
+	M.mind_initialize()//Force immediare creation of a mind in the new mob, we need it right now!
+	//This proc will be called again later but thats fine, it won't duplicate anything, it checks stuff
+
 	add_antagonist(M.mind, 1, 0, 1) // Equip them and move them to spawn.
 	return M
 
