@@ -461,7 +461,6 @@ var/global/list/additional_antag_types = list()
 	return 0
 
 /datum/game_mode/proc/get_players_for_role(var/antag_id)
-	world << "Get players for role [antag_id] 1"
 	var/list/players = list()
 	var/list/candidates = list()
 
@@ -470,7 +469,6 @@ var/global/list/additional_antag_types = list()
 	if(!antag_template)
 		return candidates
 
-	world << "Get players for role [antag_id] 2"
 	// If this is being called post-roundstart then it doesn't care about ready status.
 	if(ticker && ticker.current_state == GAME_STATE_PLAYING)
 		for(var/mob/player in GLOB.player_list)
@@ -504,7 +502,6 @@ var/global/list/additional_antag_types = list()
 					if(candidates.len == required_enemies || players.len == 0)
 						break
 
-	world << "Get players for role [antag_id] 3, got [candidates.len]"
 	return candidates		// Returns: The number of people who had the antagonist role set to yes, regardless of recomended_enemies, if that number is greater than required_enemies
 							//			required_enemies if the number of people with that role set to yes is less than recomended_enemies,
 							//			Less if there are not enough valid players in the game entirely to make required_enemies.

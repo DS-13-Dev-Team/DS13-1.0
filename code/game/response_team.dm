@@ -1,6 +1,6 @@
 /client/proc/response_team()
 	set name = "Dispatch Emergency Response Team"
-	set category = "Special Verbs"
+	set category = "Admin"
 	set desc = "Send an emergency response team"
 
 	if(!holder)
@@ -45,6 +45,7 @@
 	if(!istype(GLOB.picked_call))
 		return
 
+	/*
 	var/max = input("What should the maximum team size instead of number of members be?", "Max members", GLOB.picked_call.members_max) as null|num
 	if(!max || max < 1)
 		return
@@ -56,14 +57,14 @@
 		min = 0
 
 	GLOB.picked_call.members_min = min
-
+	*/
 	var/is_announcing = TRUE
 	if(alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No") != "Yes")
 		is_announcing = FALSE
 
 	GLOB.picked_call.activate(is_announcing)
 
-	log_admin("[key_name(usr)] called a [choice == "Randomize" ? "randomized ":""]distress beacon: [GLOB.picked_call.name]. Min: [min], Max: [max].")
-	message_admins("[key_name(usr)] called a [choice == "Randomize" ? "randomized ":""]distress beacon: [GLOB.picked_call.name] Min: [min], Max: [max].")
+	log_admin("[key_name(usr)] called a [choice == "Randomize" ? "randomized ":""]distress beacon: [GLOB.picked_call.name]..")
+	message_admins("[key_name(usr)] called a [choice == "Randomize" ? "randomized ":""]distress beacon: [GLOB.picked_call.name] ")
 
 

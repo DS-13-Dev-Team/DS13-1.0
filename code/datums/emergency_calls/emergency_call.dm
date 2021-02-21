@@ -96,6 +96,8 @@
 		cooldown_timer = addtimer(CALLBACK(src, .proc/reset), DISTRESS_COOLDOWN_FAIL, TIMER_STOPPABLE)
 		addtimer(CALLBACK(src, .proc/announce_fail), DISTRESS_COOLDOWN_FAIL, TIMER_STOPPABLE)
 		//It will take some time for the crew to be told whether or not the beacon was recieved
+
+		GLOB.waiting_for_candidates = FALSE
 		return
 
 	else if  (LAZYLEN(spawns) < target)
@@ -106,6 +108,7 @@
 
 	cooldown_timer = addtimer(CALLBACK(src, .proc/reset), DISTRESS_COOLDOWN_SUCCESS, TIMER_STOPPABLE)
 	addtimer(CALLBACK(src, .proc/announce_success), DISTRESS_COOLDOWN_FAIL, TIMER_STOPPABLE)
+	GLOB.waiting_for_candidates = FALSE
 
 
 /datum/emergency_call/proc/announce_success()
@@ -115,12 +118,3 @@
 	pr_announce.Announce("USG Ishimura distress beacon has drawn no response. Another beacon is ready to launch.", "Priority Alert")
 
 
-/client/proc/trigger_response_team()
-	set name = "Response Team"
-	set desc = "Triggers a specific Emergency Response Team instantly"
-	set category = "Fun"
-
-	var/datum/emergency_call/C = input(mob,"Pick which response team to trigger","Trigger response team") as null|anything in GLOB.emergency_call_datums
-	if (!C)
-		return
-	C.activate(TRUE)
