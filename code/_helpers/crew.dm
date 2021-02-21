@@ -6,8 +6,6 @@
 /proc/get_living_crew_total()
 	return GLOB.living_crew.len
 
-	return crew_count
-
 /*
 	Returns a list of all living crewmembers whose role fits the filter
 	If role type is true, checks special role (AKA, antag status)
