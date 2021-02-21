@@ -14,7 +14,6 @@
 	icon_state = "linecutter"
 	item_state = "linecutter"
 
-	ammo_type = /obj/item/ammo_casing/linerack
 	slot_flags = SLOT_BACK
 	mag_insert_sound = 'sound/weapons/guns/interaction/line_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/line_magout.ogg'
