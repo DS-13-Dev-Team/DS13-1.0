@@ -147,7 +147,7 @@ Non-critical characters like any ghost-roles you may wish to add, or even antags
 	if(marker_active)	//Marker must be active
 		if (get_historic_crew_total() >= minimum_historic_crew)	//We need to have had a minimum total crewcount
 			var/minimum_living_crew = Ceiling(get_historic_crew_total() * minimum_alive_percentage)	//This many crew players at least, need to be left alive
-			if (get_living_crew_total() < minimum_living_crew)
+			if (get_living_active_crew_aboard_ship() < minimum_living_crew)
 				return TRUE
 
 	return ..() //Fallback to the default game end conditions like all antags dying, shuttles being docked, etc.

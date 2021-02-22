@@ -77,7 +77,6 @@ open_table = FALSE;}
 			antag_category = antag.preference_candidacy_category
 			CLOSE_TABLE
 			.+= "<b>[antag_category]:</b><br>"
-			world << "Inserting category [antag_category]"
 			.+= "<table>"
 
 			open_table = TRUE
