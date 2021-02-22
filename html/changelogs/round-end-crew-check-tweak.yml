@@ -1,0 +1,6 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "Round end check for alive crewmates changed: only alive active humans onboard Ishimura count now."
