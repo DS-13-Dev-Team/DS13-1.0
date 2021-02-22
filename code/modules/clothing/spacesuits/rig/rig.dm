@@ -668,7 +668,6 @@
 
 /obj/item/weapon/rig/equipped(mob/living/carbon/human/M, var/slot)
 	.=..()
-	world << "Rig equipped at [jumplink(src)]"
 	if (!istype(M))
 		return FALSE
 
