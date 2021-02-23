@@ -132,7 +132,22 @@
 			overlays += I
 
 /obj/structure/wall_frame/indestructible
-	health = 9999
+	name = "heavily fortified wall frame"
+
+/obj/structure/wall_frame/indestructible/attack_hand()
+	return
+
+/obj/structure/wall_frame/indestructible/attackby()
+	return
+
+/obj/structure/wall_frame/indestructible/ex_act()
+	return
+
+/obj/structure/wall_frame/indestructible/hitby()
+	return
+
+/obj/structure/wall_frame/indestructible/take_damage()
+	return
 
 /obj/structure/wall_frame/titanium
 	color = COLOR_TITANIUM
