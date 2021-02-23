@@ -2,6 +2,7 @@
 //There's also an admin commmand which lets you set one to your liking.
 #define DISTRESS_COOLDOWN_FAIL	5 MINUTES
 #define DISTRESS_COOLDOWN_SUCCESS	1 HOUR
+GLOBAL_VAR_INIT(distress_cooldown, FALSE)
 
 //The distress call parent.
 /datum/emergency_call
@@ -45,7 +46,7 @@
 
 	//if(ticker?.mode?.GLOB.waiting_for_candidates) //It's already been activated
 		//return FALSE
-	GLOB.on_distress_cooldown = TRUE
+
 
 	GLOB.picked_call.activate()
 
@@ -53,13 +54,9 @@
 	if(candidate_timer)
 		deltimer(candidate_timer)
 		candidate_timer = null
-	if(cooldown_timer)
-		deltimer(cooldown_timer)
-		cooldown_timer = null
 	members.Cut()
 	candidates.Cut()
 	GLOB.waiting_for_candidates = FALSE
-	GLOB.on_distress_cooldown = FALSE
 	message_admins("Distress beacon: [name] has been reset.")
 
 /datum/emergency_call/proc/activate(announce = TRUE)
@@ -67,8 +64,8 @@
 		message_admins("Distress beacon: [name] attempted to activate but no gamemode exists")
 		return FALSE
 
-	if(GLOB.on_distress_cooldown) //It's already been called.
-		message_admins("Distress beacon: [name] attempted to activate but distress is on cooldown")
+	if(GLOB.distress_cooldown > world.time) //It's already been called.
+		message_admins("Distress beacon: [name] attempted to activate but distress is on cooldown for another [time2text(GLOB.distress_cooldown - world.time, "mm:ss")]")
 		return FALSE
 
 	if(members_max > 0)
@@ -93,7 +90,10 @@
 
 	if (!antag.last_spawn_data["success"])
 		message_admins("Aborting distress beacon [name], Failed to spawn a response team")
+		GLOB.distress_cooldown = world.time + DISTRESS_COOLDOWN_FAIL
+
 		cooldown_timer = addtimer(CALLBACK(src, .proc/reset), DISTRESS_COOLDOWN_FAIL, TIMER_STOPPABLE)
+
 		addtimer(CALLBACK(src, .proc/announce_fail), DISTRESS_COOLDOWN_FAIL, TIMER_STOPPABLE)
 		//It will take some time for the crew to be told whether or not the beacon was recieved
 
@@ -106,7 +106,10 @@
 	else
 		message_admins("Successfully spawned response team [name]. We have [LAZYLEN(spawns)]/[target] members, some specialists may not be present")
 
+	GLOB.distress_cooldown = world.time + DISTRESS_COOLDOWN_SUCCESS
+
 	cooldown_timer = addtimer(CALLBACK(src, .proc/reset), DISTRESS_COOLDOWN_SUCCESS, TIMER_STOPPABLE)
+
 	addtimer(CALLBACK(src, .proc/announce_success), DISTRESS_COOLDOWN_FAIL, TIMER_STOPPABLE)
 	GLOB.waiting_for_candidates = FALSE
 
