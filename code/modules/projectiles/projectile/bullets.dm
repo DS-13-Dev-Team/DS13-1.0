@@ -226,7 +226,7 @@
 	..()
 
 /obj/item/projectile/bullet/javeling
-	name = "javeling projectile"
+	name = "javelin spears"
 	damage = 20
 	armor_penetration = 30
 	penetration_modifier = 1.5

@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/projectile/javeling_gun
-	name = "javeling gun"
-	desc = ""
+	name = "T15 Javelin Gun"
+	desc = "The Javelin Gun is a telemetric survey tool manufactured by Timson Tools, designed to fire titanium javelins at high speeds with extreme accuracy and piercing power."
 	icon_state = "heavysniper" //sort of placeholder
 	item_state = "heavysniper" //sort of placeholder
 	w_class = ITEM_SIZE_HUGE
@@ -18,6 +18,7 @@
 	wielded_item_state = "heavysniper-wielded" //sort of placeholder
 	load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	var/detone_javeling = FALSE
+	var/shock_damage = 20
 	var/list/obj/item/weapon/material/shard/shrapnel/javeling/javelings = list()
 
 /obj/item/weapon/gun/projectile/javeling_gun/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
@@ -49,7 +50,6 @@
 
 /obj/item/weapon/gun/projectile/javeling_gun/proc/detone_javeling(mob/living/user)
 	detone_javeling = FALSE
-	to_chat(world, "entramos en el proc")
 	if(!javelings.len)
 		to_chat(user, SPAN_NOTICE("There is no javelin to detonate."))
 		return
@@ -71,6 +71,6 @@
 				L = O.owner
 
 		if(L)
-			L.electrocute_act(20, A)
+			L.electrocute_act(shock_damage, A)
 
 	javelings = list()

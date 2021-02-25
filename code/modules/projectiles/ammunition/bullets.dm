@@ -221,7 +221,7 @@
 	matter = list(MATERIAL_STEEL = 260, "uranium" = 200)
 
 /obj/item/ammo_casing/javeling
-	name = "javeling projectile"
+	name = "javelin spears"
 	desc = "A javeling projectile."
 	icon_state = "lcasing"
 	spent_icon = "lcasing-spent"
