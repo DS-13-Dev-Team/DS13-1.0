@@ -225,5 +225,10 @@
 	pixel_y = rand(-10,10)
 	..()
 
-
-
+/obj/item/projectile/bullet/javeling
+	name = "javeling projectile"
+	damage = 20
+	armor_penetration = 30
+	penetration_modifier = 1.5
+	embed_mult = 1.5
+	shrapnel_type = /obj/item/weapon/material/shard/shrapnel/javeling
