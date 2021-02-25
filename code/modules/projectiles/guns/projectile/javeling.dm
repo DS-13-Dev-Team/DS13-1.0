@@ -55,6 +55,8 @@
 		return
 
 	for(var/obj/item/weapon/material/shard/shrapnel/javeling/A in javelings)
+		if(get_dist(src, A) > 7)
+			continue
 
 		var/datum/effect/effect/system/spark_spread/S = new
 		S.set_up(5, 1, get_turf(A))
