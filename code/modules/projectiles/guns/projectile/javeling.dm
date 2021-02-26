@@ -10,7 +10,7 @@
 	screen_shake = 2 //extra kickback
 	handle_casings = HOLD_CASINGS
 	load_method = SINGLE_CASING
-	max_shells = 1
+	max_shells = 5
 	ammo_type = /obj/item/ammo_casing/javeling
 	one_hand_penalty = -30
 	accuracy = -10

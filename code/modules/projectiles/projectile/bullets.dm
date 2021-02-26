@@ -228,7 +228,7 @@
 /obj/item/projectile/bullet/javeling
 	name = "javelin spears"
 	damage = 20
-	armor_penetration = 30
+	armor_penetration = 50
 	penetration_modifier = 1.5
-	embed_mult = 1.5
+	embed_mult = 2.5
 	shrapnel_type = /obj/item/weapon/material/shard/shrapnel/javeling
