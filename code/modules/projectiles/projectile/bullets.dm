@@ -230,5 +230,5 @@
 	damage = 20
 	armor_penetration = 50
 	penetration_modifier = 1.5
-	embed_mult = 2.5
+	embed_mult = 10
 	shrapnel_type = /obj/item/weapon/material/shard/shrapnel/javeling
