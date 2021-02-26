@@ -1,16 +1,4 @@
-/mob/observer/eye/signal
-	name = "Signal"
-	icon = 'icons/mob/eye.dmi'
-	icon_state = "markersignal"
-	plane = ABOVE_OBSCURITY_PLANE
-	var/energy_extension_type = /datum/extension/psi_energy/signal
-	var/datum/extension/psi_energy/psi_energy
-
-	movement_handlers = list(
-		/datum/movement_handler/mob/incorporeal/eye
-	)
-
-	var/list/variations = list("markersignal-1",
+GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	"markersignal-2",
 	"markersignal-3",
 	"markersignal-4",
@@ -35,18 +23,35 @@
 	"markersignal-23",
 	"markersignal-24",
 	"markersignal-25"
+	))
+
+/mob/observer/eye/signal
+	name = "Signal"
+	icon = 'icons/mob/eye.dmi'
+	icon_state = "markersignal"
+	plane = ABOVE_OBSCURITY_PLANE
+	var/energy_extension_type = /datum/extension/psi_energy/signal
+	var/datum/extension/psi_energy/psi_energy
+
+	var/datum/preferences/prefs
+
+	var/list/variations
+
+	movement_handlers = list(
+		/datum/movement_handler/mob/incorporeal/eye
 	)
 
-/mob/observer/eye/signal/Initialize()
-	..()
-	var/i = rand(1,25)
-	icon_state = "markersignal-[i]"
 
 /mob/observer/eye/signal/is_necromorph()
 	return TRUE
 
+/mob/observer/eye/signal/apply_customisation(var/datum/preferences/prefs)
+
 /mob/observer/eye/signal/update_icon()
-	icon_state = pick(variations)
+	if (lazylen(variations))
+		icon_state = pick(variations)
+	else
+		icon_state = pick(GLOB.signal_sprites)
 
 //This will have a mob passed in that we were created from
 /mob/observer/eye/signal/New(var/mob/body)

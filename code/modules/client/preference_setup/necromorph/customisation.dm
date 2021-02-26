@@ -21,11 +21,16 @@
 
 /datum/category_item/player_setup_item/necromorph/customisation/content(var/mob/user)
 	. = list()
-	. += "Auto Join Necroqueue:"
-	. += {"<a class='linkActive noIcon checkbox' unselectable='on' title='If ticked, you will automatically be placed in the necroqueue when joining the necromorph team, or leaving a necromorph body.'  style='display:inline-block;' onclick='document.location="?src=\ref[src];auto_necroqueue=[pref.auto_necroqueue ? "false" : "true"]"' ><div><form><input type='checkbox' [pref.auto_necroqueue ? "checked" : ""]></form></div></a><br>"}
-
-	. += "<b>Special Role Availability:</b><br>"
+	. += "<b>Signals:</b><br>"
 	. += "<table>"
+	. += "<tr><td>"
+	if(selected == SIGNAL)
+		. += "<a href='?src=\ref[src];del_special=[necro_id]'>Yes</a> <span class='linkOn'>No</span></br>"
+	else
+		. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];add_never=[necro_id]'>No</a></br>"
+		. += "</td></tr>"
+	. += "<br>"
+
 	for(var/ntype in subtypesof(/datum/species/necromorph))
 		var/datum/species/necromorph/N = ntype
 		if (!initial(N.preference_settable))
@@ -74,12 +79,6 @@
 	. += "</table>"
 	. = jointext(.,null)
 
-/datum/category_item/player_setup_item/proc/banned_from_ghost_role(var/mob, var/datum/ghosttrap/ghost_trap)
-	for(var/ban_type in ghost_trap.ban_checks)
-		if(jobban_isbanned(mob, ban_type))
-			return 1
-	return 0
-
 /datum/category_item/player_setup_item/necromorph/customisation/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["add_special"])
 		if(!(href_list["add_special"] in valid_special_roles()))
@@ -108,34 +107,6 @@
 		return TOPIC_REFRESH
 
 	return ..()
-
-/datum/category_item/player_setup_item/necromorph/customisation/proc/valid_special_roles()
-	var/list/private_valid_special_roles = list()
-
-	for(var/ntype in subtypesof(/datum/species/necromorph))
-		var/datum/species/necromorph/N = ntype
-		private_valid_special_roles += initial(N.name)
-
-	for(var/antag_type in GLOB.all_antag_types_)
-		private_valid_special_roles += antag_type
-
-	var/list/ghost_traps = get_ghost_traps()
-	for(var/ghost_trap_key in ghost_traps)
-		var/datum/ghosttrap/ghost_trap = ghost_traps[ghost_trap_key]
-		if(!ghost_trap.list_as_special_role)
-			continue
-		private_valid_special_roles += ghost_trap.pref_check
-
-	return private_valid_special_roles
-
-/client/proc/wishes_to_be_role(var/role)
-	if(!prefs)
-		return FALSE
-	if(role in prefs.be_special_role)
-		return 2
-	if(role in prefs.never_be_special_role)
-		return FALSE
-	return 1	//Default to "sometimes" if they don't opt-out.
 
 
 /*
@@ -166,3 +137,10 @@
 	html += "<div class='checkbox'><form><input type='checkbox' [ticked ? "checked" : ""]></form></div>"
 	html += "</div>"
 	return html
+
+/datum/preferences/proc/can_customise()
+	if (patron)
+		return TRUE
+	return FALSE
+
+/mob/proc/apply_customisation(var/datum/preferences/prefs)
