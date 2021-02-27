@@ -324,9 +324,14 @@
 		"nav_amidships",
 		"nav_aftships"
 		)
-	shuttle_area = /area/ishimura/tramdeck/tram
+	shuttle_area = /area/shuttle/tram
 	current_location = "nav_forwardships"
 //	landmark_transition = "nav_tramtrans"
+
+/obj/effect/shuttle_landmark/ishimuratram
+	autoset = -1
+	base_area = null
+	base_turf = /turf/simulated/open
 
 /obj/effect/shuttle_landmark/ishimuratram/start
 	name = "Ship Forward"
@@ -335,13 +340,13 @@
 
 /obj/effect/shuttle_landmark/ishimuratram/mid
 	name = "Amidships"
-	landmark_tag = "nav_admiships"
-	/turf/simulated/open
+	landmark_tag = "nav_amidships"
+	base_turf = /turf/simulated/open
 
 /obj/effect/shuttle_landmark/ishimuratram/aft
 	name = "Ship Aft"
 	landmark_tag = "nav_aftships"
-	/turf/simulated/open
+	base_turf = /turf/simulated/open
 
 /obj/machinery/computer/shuttle_control/multi/tram
 	name = "Tram Control Console"
