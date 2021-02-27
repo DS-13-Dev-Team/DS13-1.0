@@ -915,6 +915,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/tramdeck/tram/undertunnel/temp5
 	name = "\improper Temp"
+	icon_state = "uttt"
 
 /area/ishimura/tramdeck/tram/undertunnel/temp6
 	name = "\improper Temp"
@@ -924,12 +925,15 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/tramdeck/tram/undertunnel/underforemaintenance
 	name = "UnderTram Fore Maintenance"
+	icon_state = "utfm"
 
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance
 	name = "UnderTram Mid Maintenance"
+	icon_state = "utmm"
 
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance
 	name = "UnderTram Aft Maintenance"
+	icon_state = "utam"
 //------------------Switching Station------------------//
 
 /area/ishimura/tramdeck/switchingstation

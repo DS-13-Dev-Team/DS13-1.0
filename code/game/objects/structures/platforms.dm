@@ -104,8 +104,10 @@ obj/structure/platform/platform_decoration
 	icon_state = "kutjevo_stair_plate"
 
 /obj/structure/platform/platform/kutjevo/smooth/stair_cut
-	icon_state = "kutjevo_stair_cm_stair"
+	icon_state = "kutjevo_platform_sm_stair"
 
+/obj/structure/platform/platform/kutjevo/smooth/stair_plate
+	icon_state = "kutjevo_stair_plate"
 
 /obj/structure/platform/platform_decoration/kutjevo/smooth
 	name = "raised metal corner"
