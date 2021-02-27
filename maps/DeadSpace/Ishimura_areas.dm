@@ -893,7 +893,7 @@ area/ishimura/upper/medical/bpc
 	name = "Disused Botanics"
 
 /area/ishimura/tramdeck/tram/misc/abandonedmeet
-	name = "Abandoned Meet"
+	name = "Abandoned Engineering Lounge"
 
 /area/ishimura/tramdeck/tram/misc/temp
 	name = "Temp"
@@ -901,9 +901,10 @@ area/ishimura/upper/medical/bpc
 //------------------UnderTram Deck------------------//
 
 
-/area/ishimura/tramdeck/tram/undertunnel/temp1
-	name = "\improper Temp"
-
+/area/ishimura/tramdeck/tram/undertunnel/utama
+	name = "\improper Abandoned Machining Area"
+	icon_state = "engi_bay"
+/*
 /area/ishimura/tramdeck/tram/undertunnel/temp2
 	name = "\improper Temp"
 
@@ -912,16 +913,18 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/tramdeck/tram/undertunnel/temp4
 	name = "\improper Temp"
-
-/area/ishimura/tramdeck/tram/undertunnel/temp5
-	name = "\improper Temp"
+*/
+/area/ishimura/tramdeck/tram/undertunnel/uttt
+	name = "\improper Transit Tunnel - Lower"
 	icon_state = "uttt"
 
-/area/ishimura/tramdeck/tram/undertunnel/temp6
-	name = "\improper Temp"
+/area/ishimura/tramdeck/tram/undertunnel/utars
+	name = "\improper Abandoned Atmospherics Refill Station"
+	icon_state = "utatmos"
 
-/area/ishimura/tramdeck/tram/undertunnel/temp7
-	name = "\improper Temp"
+/area/ishimura/tramdeck/tram/undertunnel/utass
+	name = "\improper Abandoned Switching Station - Lower"
+	icon_state = "engibase"
 
 /area/ishimura/tramdeck/tram/undertunnel/underforemaintenance
 	name = "UnderTram Fore Maintenance"
@@ -941,7 +944,7 @@ area/ishimura/upper/medical/bpc
 	icon_state = "switchingstation"
 
 /area/ishimura/tramdeck/switchingstation/upper
-	name = "\improper Disused Upper Switching Station"
+	name = "\improper Abandoned Switching Station - Upper"
 
 /area/ishimura/tramdeck/switchingstation/lower
-	name = "\improper Disused Lower Switching Station"
+	name = "\improper Abandoned Switching Station - Lower"

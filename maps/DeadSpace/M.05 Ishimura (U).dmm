@@ -1,5 +1,5 @@
 "aa" = (/turf/space,/area/space)
-"ab" = (/obj/effect/landmark/map_data{height = 3},/turf/space,/area/space)
+"ab" = (/obj/effect/landmark/map_data{height = 5},/turf/space,/area/space)
 "ac" = (/obj/machinery/power/tracker,/obj/effect/floor_decal/industrial/hatch/yellow,/obj/structure/cable/yellow{d2 = 2; dir = 2; icon_state = "0-2"},/turf/simulated/floor/reinforced,/area/ishimura/eva/solar/port)
 "ad" = (/obj/structure/grille,/turf/simulated/floor/reinforced,/area/space)
 "ae" = (/turf/simulated/wall,/area/space)

@@ -33,9 +33,12 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - maptweak: "Tram Deck is here now! For all your lazy non-leg related movement."
+  - experiment: "Tram Deck is here now! For all your lazy non-leg related movement."
+  - maptweak: "Added storage closets to the operating rooms in medical. This can be used to store medical supplies for later use, to avoid clutter."
+  - maptweak: "Moved the surgical tools to the operating room storage closets."
+  - maptweak: "Added Space Cleaner to the operating room that did not have it."
   - bugfix: "Fixed an issue where a disposal pipe segment was missing on the lower deck, upper hallway."
   - bugfix: "Fixed an issue with missing wiring and atmos-piping in Virology/Isolation."
   - bugfix: "Fixed an issue where the Brig's armory had indestructible doors. These were previously vault doors."
-  - tweak: "Made the shuttle windows and wallframes indestructible."
+  - tweak: "Made the escape pod windows and wallframes indestructible."
   - tweak: "Made the Escape Pod doors tamperproof."
