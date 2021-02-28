@@ -65,12 +65,11 @@
 		var/turf/target = target_turf
 		if(!target)
 			message_admins("Edge of map")
-			return FALSE //collides with edge of map
+			return TRUE //collides with edge of map
 
-		debug_mark_turf(target, 1 MINUTE)
 		if(target.loc != target_area)
 			message_admins("Area collision ([target.loc] & [target_area])")
-			return FALSE //collides with another area
+			return TRUE //collides with another area
 		if(target.density)
 			message_admins("Dense turf")
 			return TRUE //dense turf
