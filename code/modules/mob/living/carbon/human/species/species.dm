@@ -236,6 +236,14 @@
 
 	var/list/skin_overlays = list()
 
+	/*
+		Necromorph customisation system
+	*/
+	var/has_customisation = FALSE
+	var/list/subspecies = list()	//Species variants included. Weighted list
+	var/list/outfits = list()	//Outfits the mob can spawn with, weighted
+	var/naked_chance = 40	//If outfits are available, chance to not spawn with one
+
 
 
 	/*--------------------------

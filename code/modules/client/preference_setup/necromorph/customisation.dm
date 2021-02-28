@@ -21,94 +21,73 @@
 
 /datum/category_item/player_setup_item/necromorph/customisation/content(var/mob/user)
 	. = list()
+
+	. += "<table><tr><td>"
+	/*
+		First of all, the sidebar
+	*/
 	. += "<b>Signals:</b><br>"
 	. += "<table>"
 	. += "<tr><td>"
 	if(selected == SIGNAL)
-		. += "<a href='?src=\ref[src];del_special=[necro_id]'>Yes</a> <span class='linkOn'>No</span></br>"
+		. += "<a href='?src=\ref[src];select=[SIGNAL]'>Signal</a>"
 	else
-		. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];add_never=[necro_id]'>No</a></br>"
-		. += "</td></tr>"
+		. += "<span class='linkOn'>Signal</span>"
+	. += "</td></tr> </table>"
 	. += "<br>"
 
-	for(var/ntype in subtypesof(/datum/species/necromorph))
-		var/datum/species/necromorph/N = ntype
-		if (!initial(N.preference_settable))
+
+
+	//Necromorphs
+	. += "<b>Necromorphs:</b><br>"
+	. += "<table>"
+	for(var/nname in GLOB.all_necromorph_species)
+		var/datum/species/necromorph/N = GLOB.all_necromorph_species[nname]
+		if (!N.has_customisation)
 			continue
-		var/necro_id = initial(N.name)
-		. += "<tr><td>[necro_id]: </td><td>"
-		if(necro_id in pref.never_be_special_role)
-			. += "<a href='?src=\ref[src];del_special=[necro_id]'>Yes</a> <span class='linkOn'>No</span></br>"
+		. += "<tr><td>"
+		if(selected == nname)
+			. += "<span class='linkOn'>[nname]</span>"
+
 		else
-			. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];add_never=[necro_id]'>No</a></br>"
+			. += "<a href='?src=\ref[src];select=[nname]'>[nname]</a>"
 		. += "</td></tr>"
 	. += "<br>"
-	var/list/all_antag_types = GLOB.all_antag_types_
-	for(var/antag_type in all_antag_types)
-		var/datum/antagonist/antag = all_antag_types[antag_type]
-		if (!antag.preference_customisation_toggle)
-			continue
-		. += "<tr><td>[antag.role_text]: </td><td>"
-		if(jobban_isbanned(preference_mob(), antag.id) || (antag.id == MODE_MALFUNCTION && jobban_isbanned(preference_mob(), "AI")))
-			. += "<span class='danger'>\[BANNED\]</span><br>"
-		else if(antag.id in pref.be_special_role)
-			. += "<span class='linkOn'>High</span> <a href='?src=\ref[src];del_special=[antag.id]'>Low</a> <a href='?src=\ref[src];add_never=[antag.id]'>Never</a></br>"
-		else if(antag.id in pref.never_be_special_role)
-			. += "<a href='?src=\ref[src];add_special=[antag.id]'>High</a> <a href='?src=\ref[src];del_special=[antag.id]'>Low</a> <span class='linkOn'>Never</span></br>"
-		else
-			. += "<a href='?src=\ref[src];add_special=[antag.id]'>High</a> <span class='linkOn'>Low</span> <a href='?src=\ref[src];add_never=[antag.id]'>Never</a></br>"
-		. += "</td></tr>"
-
-	var/list/ghost_traps = get_ghost_traps()
-	for(var/ghost_trap_key in ghost_traps)
-		var/datum/ghosttrap/ghost_trap = ghost_traps[ghost_trap_key]
-		if(!ghost_trap.list_as_special_role)
-			continue
-
-		. += "<tr><td>[(ghost_trap.ghost_trap_role)]: </td><td>"
-		if(banned_from_ghost_role(preference_mob(), ghost_trap))
-			. += "<span class='danger'>\[BANNED\]</span><br>"
-		else if(ghost_trap.pref_check in pref.be_special_role)
-			. += "<span class='linkOn'>High</span> <a href='?src=\ref[src];del_special=[ghost_trap.pref_check]'>Low</a> <a href='?src=\ref[src];add_never=[ghost_trap.pref_check]'>Never</a></br>"
-		else if(ghost_trap.pref_check in pref.never_be_special_role)
-			. += "<a href='?src=\ref[src];add_special=[ghost_trap.pref_check]'>High</a> <a href='?src=\ref[src];del_special=[ghost_trap.pref_check]'>Low</a> <span class='linkOn'>Never</span></br>"
-		else
-			. += "<a href='?src=\ref[src];add_special=[ghost_trap.pref_check]'>High</a> <span class='linkOn'>Low</span> <a href='?src=\ref[src];add_never=[ghost_trap.pref_check]'>Never</a></br>"
-		. += "</td></tr>"
 
 	. += "</table>"
+
+	//Next, the main window
+	. += "</td><td>"
+	if (selected == SIGNAL)
+		//Initialize the list if it isnt already
+		if (!pref.signal_custom)
+			initialize_necrocustom_prefs()
+
+		var/list/enabled_sprites = pref.signal_custom["signal_base"]
+
+		for (var/iconstate in GLOB.signal_sprites)
+			var/icon/I = new ('icons/mob/eye.dmi',iconstate,SOUTH)
+			var/enabled = (iconstate in enabled)
+			. += image_check_panel(text = iconstate, I = I, ticked = enabled, user = user, command = enabled ? "disable" : "enable", source = src)
+
+
+	. += "</td></tr></table>"
+
 	. = jointext(.,null)
 
 /datum/category_item/player_setup_item/necromorph/customisation/OnTopic(var/href,var/list/href_list, var/mob/user)
-	if(href_list["add_special"])
-		if(!(href_list["add_special"] in valid_special_roles()))
-			return TOPIC_HANDLED
-		pref.be_special_role |= href_list["add_special"]
-		pref.never_be_special_role -= href_list["add_special"]
+	if(href_list["select"])
+		selected = href_list["select"]
 		return TOPIC_REFRESH
 
-	if(href_list["del_special"])
-		if(!(href_list["del_special"] in valid_special_roles()))
-			return TOPIC_HANDLED
-		pref.be_special_role -= href_list["del_special"]
-		pref.never_be_special_role -= href_list["del_special"]
-		return TOPIC_REFRESH
-
-	if(href_list["add_never"])
-		pref.be_special_role -= href_list["add_never"]
-		pref.never_be_special_role |= href_list["add_never"]
-		return TOPIC_REFRESH
-
-	if(href_list["auto_necroqueue"])
-		if(href_list["auto_necroqueue"] == "false")
-			pref.auto_necroqueue = FALSE
-		if(href_list["auto_necroqueue"] == "true")
-			pref.auto_necroqueue = TRUE
-		return TOPIC_REFRESH
-
+	if(href_list["enable"])
 	return ..()
 
 
+/datum/category_item/player_setup_item/necromorph/customisation/initialize_necrocustom_prefs()
+
+	pref.signal_custom = list()
+	pref.signal_custom["signal_base"] = GLOB.signal_sprites.Copy()
 /*
 	This returns the HTML for a UI button used in the necromorph customisation menu.
 	The button is square and mostly taken up by an image, but it also contains a title along the bottom,
@@ -123,14 +102,17 @@
 		Ticked:	Boolean, should the checkbox be ticked or not?
 		User: Who is viewing this button? Used to preload the image for them
 */
-/proc/image_check_panel(var/text, var/icon/I, var/ticked, var/mob/user, var/command, var/source)
+/proc/image_check_panel(var/text, var/icon/I, var/ticked, var/mob/user, var/command, var/source, var/category, var/subcategory)
 
-	var/filename = text //Todo: Sanitize
+	var/filename = sanitizeFileName(text)
 
 	if (user)
 		user << browse_rsc(I, "[filename].png")
 
-	var/html = {"<a class='linkActive noIcon' unselectable='on' style='display:inline-block;' onclick='document.location="?src=\ref[source];[command]=[text]"' ></a><br>"}
+	var/subcategory_text = ""
+	if (subcategory)
+		subcategory_text = "subcategory=[subcategory]"
+	var/html = {"<a class='linkActive noIcon' unselectable='on' style='display:inline-block;' onclick='document.location="?src=\ref[source];[command]=[text];category=[category];[subcategory_text]"' ></a><br>"}
 
 	html += "<div><img src=[filename].png width=[I.Width()] height=[I.Height()]></center>"
 	html += text
