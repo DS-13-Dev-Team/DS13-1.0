@@ -40,5 +40,8 @@ changes:
   - bugfix: "Fixed an issue where a disposal pipe segment was missing on the lower deck, upper hallway."
   - bugfix: "Fixed an issue with missing wiring and atmos-piping in Virology/Isolation."
   - bugfix: "Fixed an issue where the Brig's armory had indestructible doors. These were previously vault doors."
+  - bugfix: "Fixed missing monitor decryption key to telecommunications."
+  - bugfix: "Fixed erroneous pixel locations on the big box sprite."
   - tweak: "Made the escape pod windows and wallframes indestructible."
   - tweak: "Made the Escape Pod doors tamperproof."
+  - imageadd: "New sprites for the Noticeboard and Telecomm Machinery."
