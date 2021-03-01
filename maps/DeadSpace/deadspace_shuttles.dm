@@ -326,6 +326,7 @@
 		)
 	shuttle_area = /area/shuttle/tram
 	current_location = "nav_forwardships"
+
 //	landmark_transition = "nav_tramtrans"
 
 /obj/effect/shuttle_landmark/ishimuratram
@@ -336,6 +337,7 @@
 /obj/effect/shuttle_landmark/ishimuratram/start
 	name = "Ship Forward"
 	landmark_tag = "nav_forwardships"
+	base_area = /area/ishimura/tramdeck/tram/tunnel	//This is necessary since it can't autofetch the area when the tram is already there
 	base_turf = /turf/simulated/open
 
 /obj/effect/shuttle_landmark/ishimuratram/mid

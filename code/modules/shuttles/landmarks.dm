@@ -31,7 +31,9 @@
 		var/turf/T = get_turf(src)
 		if(T && (autoset == TRUE || (autoset == -1 && !base_area)))
 			base_turf = T.type
-	else
+
+	//If the base area is null or a typepath after the above, lets initialize it
+	if (!istype(base_area))
 		base_area = locate(base_area || world.area)
 
 	SetName(name + " ([x],[y])")
