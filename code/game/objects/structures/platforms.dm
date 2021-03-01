@@ -11,7 +11,7 @@
 	density = 1
 	throwpass = 1
 	layer = 5.2 // Same layer as regular railing.
-	atom_flags = ATOM_FLAG_CHECKS_BORDER | ATOM_FLAG_CLIMBABLE
+	atom_flags = ATOM_FLAG_CHECKS_BORDER | ATOM_FLAG_CLIMBABLE | ATOM_FLAG_CHECKS_BORDER
 	breakable = 0 // Cannot be breakable.
 
 /obj/structure/platform/platform/New()
@@ -40,7 +40,7 @@ obj/structure/platform/platform_decoration
 	icon = 'icons/obj/platforms.dmi'
 	icon_state = "platform_deco"
 	anchored = 1
-	density = 1
+	density = 0
 	throwpass = 1
 	layer = 5.2 // Same layer as regular railing.
 	atom_flags = ATOM_FLAG_CHECKS_BORDER
@@ -137,11 +137,6 @@ obj/structure/platform/platform_decoration
 		return
 
 	if(!can_climb(user, post_climb_check=1))
-		climbers -= user
-		return
-
-	if(!turf_is_crowded())
-		to_chat(user, "<span class='warning'>You can't climb there, the way is blocked.</span>")
 		climbers -= user
 		return
 
