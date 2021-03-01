@@ -34,6 +34,8 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - experiment: "Tram Deck is here now! For all your lazy non-leg related movement."
+  - rscadd: "Newsfeeds and newscasters are now in! All your news in one, useless little computer!"
+  - rscadd: "Much like useless computers, the tablets are here! Specifically given to Heads of Staff. Now you can look fancy while going about your business!"
   - maptweak: "Added storage closets to the operating rooms in medical. This can be used to store medical supplies for later use, to avoid clutter."
   - maptweak: "Moved the surgical tools to the operating room storage closets."
   - maptweak: "Added Space Cleaner to the operating room that did not have it."
@@ -44,4 +46,6 @@ changes:
   - bugfix: "Fixed erroneous pixel locations on the big box sprite."
   - tweak: "Made the escape pod windows and wallframes indestructible."
   - tweak: "Made the Escape Pod doors tamperproof."
+  - tweak: "Renamed Newscaster to News Terminal."
   - imageadd: "New sprites for the Noticeboard and Telecomm Machinery."
+  - imageadd: "New sprite for the Newscaster."
