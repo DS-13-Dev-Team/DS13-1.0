@@ -9,6 +9,7 @@
 	station_levels = list(1,2,3,4,5,6)
 	contact_levels = list(1,2,3,4,5,6)
 	player_levels = list(1,2,3,4,5)
+	sealed_levels = list(6,7)
 	admin_levels = list(7)
 	empty_levels = list()
 	accessible_z_levels = list("1"=1,"2"=1,"3"=1,"4"=1)
