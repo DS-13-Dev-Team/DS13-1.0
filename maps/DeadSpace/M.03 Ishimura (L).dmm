@@ -1937,7 +1937,7 @@
 "aLm" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/door/firedoor/border_only,/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance{name = "Executive Hallway Maintenance"},/turf/simulated/floor/plating,/area/ishimura/lower/misc/hallway/escape_executive)
 "aLn" = (/obj/machinery/light{dir = 8},/obj/machinery/floodlight,/obj/effect/floor_decal/industrial/outline/yellow,/turf/simulated/floor/tiled/monotile,/area/ishimura/lower/engineering/storage_closet/battery)
 "aLo" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/space_heater,/obj/effect/floor_decal/industrial/outline/yellow,/turf/simulated/floor/tiled/monotile,/area/ishimura/lower/engineering/storage_closet/battery)
-"aLp" = (/obj/item/device/radio/intercom{dir = 4; pixel_x = -21},/turf/simulated/floor/plating,/area/ishimura/lower/maintenance/aft_starboard)
+"aLp" = (/obj/item/device/radio/intercom{dir = 4; pixel_x = -21},/obj/structure/ladder,/turf/simulated/floor/plating,/area/ishimura/lower/maintenance/aft_starboard)
 "aLq" = (/obj/effect/floor_decal/industrial/outline/yellow,/obj/machinery/recharger,/obj/structure/table/standard,/turf/simulated/floor/tiled/monotile,/area/ishimura/lower/engineering/storage_closet/battery)
 "aLr" = (/obj/machinery/recharger/wallcharger{pixel_x = -24},/obj/structure/table/standard,/obj/random/powercell,/turf/simulated/floor/tiled/steel_grid,/area/ishimura/lower/engineering/storage_closet/battery)
 "aLs" = (/obj/machinery/light,/turf/simulated/floor/tiled,/area/ishimura/lower/misc/hallway/central)
