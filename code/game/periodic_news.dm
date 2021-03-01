@@ -5,8 +5,8 @@
 	var
 		round_time // time of the round at which this should be announced, in seconds
 		message // body of the message
-		author = "NanoTrasen Editor"
-		channel_name = "Nyx Daily"
+		author = "Joseph O'Neill"
+		channel_name = "New Horizon Daily"
 		can_be_redacted = 0
 		message_type = "Story"
 
@@ -38,84 +38,52 @@
 			 			the experiments, and reported to have died in a \"work accident\" by NanoTrasen."}
 			author = "Unauthorized"
 
-	bluespace_research
+	cec_neutral
 
-		announcement
-			round_time = 60*20
-			message = {"The new field of research trying to explain several interesting spacetime oddities,
-						also known as \"Bluespace Research\", has reached new heights. Of the several
-						hundred space stations now orbiting in Tau Ceti, fifteen are now specially equipped
-						to experiment with and research Bluespace effects. Rumours have it some of these
-						stations even sport functional \"travel gates\" that can instantly move a whole research
-						team to an alternate reality."}
-
-	random_junk
-
-		cheesy_honkers
-			author = "Assistant Editor Carl Ritz"
-			channel_name = "The Gibson Gazette"
-			message = {"Do cheesy honkers increase risk of having a miscarriage? Several health administrations
-						say so!"}
+		ishimura_decommissioning
+			author = "Assistant Editor Veronica Best"
+			channel_name = "New Horizon Daily"
+			message = {"Today marks the one-year countdown for the Ishimura's last voyage. After return at Titan Station, it is due for decommissioning.
+			When asked for a comment, CEC responded with a prepared statement: \"The Ishimura has served us well, but as Planet-Cracking becomes a diminished practice, we too must adapt as a company and turn to the future.\"
+			Surprisingly little is known about the Ishimura's final act. CEC was not prepared to comment on this."}
 			round_time = 60 * 15
 
-		net_block
-			author = "Assistant Editor Carl Ritz"
-			channel_name = "The Gibson Gazette"
-			message = {"Several corporations banding together to block access to 'wetskrell.nt', site administrators
-			claiming violation of net laws."}
-			round_time = 60 * 50
+	cec_scathing
 
-		found_ssd
-			channel_name = "Nyx Daily"
-			author = "Doctor Eric Hanfield"
+		report
+			channel_name = "New Horizon Daily"
+			author = "Reporter Laila Hanfield"
 
-			message = {"Several people have been found unconscious at their terminals. It is thought that it was due
-						to a lack of sleep or of simply migraines from staring at the screen too long. Camera footage
-						reveals that many of them were playing games instead of working and their pay has been docked
-						accordingly."}
-			round_time = 60 * 90
-
-	lotus_tree
-
-		explosions
-			channel_name = "Nyx Daily"
-			author = "Reporter Leland H. Howards"
-
-			message = {"The newly-christened civillian transport Lotus Tree suffered two very large explosions near the
-						bridge today, and there are unconfirmed reports that the death toll has passed 50. The cause of
-						the explosions remain unknown, but there is speculation that it might have something to do with
-						the recent change of regulation in the Moore-Lee Corporation, a major funder of the ship, when M-L
-						announced that they were officially acknowledging inter-species marriage and providing couples
-						with marriage tax-benefits."}
+			message = {"A scathing report was published today, putting CEC in the middle of budget cuts across their fleet. Usage of old food vendors with poorly preserved food amongst long-term mission ships makes crew ten times more likely to die of heart failure.
+			\"It's an embarassment. We are one of the largest corporations, and can't even feed our crew proper nutritious meals.\" says a Captain of one of their ships.
+			In response to this report, we reached out to CEC's Public Relations office, who have declined to comment at this time, citing: \"We do not comment on on-going investigations. We assure everyone that we take this report very seriously.\"
+			We will update this story as new information reaches us."}
 			round_time = 60 * 30
 
-	food_riots
+	marker_research
 
 		breaking_news
-			channel_name = "Nyx Daily"
-			author = "Reporter Ro'kii Ar-Raqis"
+			channel_name = "New Horizon Daily"
+			author = "Joseph O'Neill"
 
-			message = {"Breaking news: Food riots have broken out throughout the Refuge asteroid colony in the Tenebrae
-						Lupus system. This comes only hours after NanoTrasen officials announced they will no longer trade with the
-						colony, citing the increased presence of \"hostile factions\" on the colony has made trade too dangerous to
-						continue. NanoTrasen officials have not given any details about said factions. More on that at the top of
-						the hour."}
+			message = {"Breaking news: Titan Station, Director of Operation reports breakthrough in Marker research.
+			States the Marker may be able to provide endless and renewable powersources. The Director was not available for comment on delivery.
+			May our energy crisis finally be over? These following years will tell, says spokeswoman Tracy."}
 			round_time = 60 * 10
 
-		more
-			channel_name = "Nyx Daily"
-			author = "Reporter Ro'kii Ar-Raqis"
+		marker_research_more
+			channel_name = "New Horizon Daily"
+			author = "Joseph O'Neill"
 
-			message = {"More on the Refuge food riots: The Refuge Council has condemned NanoTrasen's withdrawal from
-			the colony, claiming \"there has been no increase in anti-NanoTrasen activity\", and \"\[the only] reason
-			NanoTrasen withdrew was because the \[Tenebrae Lupus] system's Phoron deposits have been completely mined out.
-			We have little to trade with them now\". NanoTrasen officials have denied these allegations, calling them
-			\"further proof\" of the colony's anti-NanoTrasen stance. Meanwhile, Refuge Security has been unable to quell
-			the riots. More on this at 6."}
+			message = {"Increased instability in Titan Station's powergrid today as the first official Marker test commences. Chief Scientist Beatrice speaks with us:
+			\"We appreciate the concern of our station residents, but there is no need for panic.\", she says in an official statement.
+			Several residents speak out against her claims, saying that it is said at a period of historically low stability on Titan Station.
+			\"These scientists have no regard for us, our daily lives. They are backed by Earth Government and their cronies. How can we believe anything?\", says an anonymous source.
+			More on this at 9."}
 			round_time = 60 * 60
 
 
-var/global/list/newscaster_standard_feeds = list(/datum/news_announcement/bluespace_research, /datum/news_announcement/lotus_tree, /datum/news_announcement/random_junk,  /datum/news_announcement/food_riots)
+var/global/list/newscaster_standard_feeds = list(/datum/news_announcement/marker_research, /datum/news_announcement/cec_scathing, /datum/news_announcement/cec_neutral)
 
 proc/process_newscaster()
 	check_for_newscaster_updates(ticker.mode.newscaster_announcements)

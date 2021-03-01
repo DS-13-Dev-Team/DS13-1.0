@@ -654,30 +654,39 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/maintenance/aft_central
 	name = "\improper Lower Deck Aft-Central Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance
 
 /area/ishimura/lower/maintenance/aft_port
 	name = "\improper Lower Deck Aft-Port Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance
 
 /area/ishimura/lower/maintenance/aft_starboard
 	name = "\improper Lower Deck Aft-Starboard Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance
 
 /area/ishimura/lower/maintenance/engineering
 	name = "\improper Lower Deck Engineering-Port Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance
 
 /area/ishimura/lower/maintenance/fore_central
 	name = "\improper Lower Deck Fore-Central Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance
 
 /area/ishimura/lower/maintenance/fore_starboard
 	name = "\improper Lower Deck Fore-Starboard Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance
 
 /area/ishimura/lower/maintenance/messhall
 	name = "\improper Messhall Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance
 
 /area/ishimura/lower/maintenance/port
 	name = "\improper Lower Deck Port Maintenace"
+	turf_initializer = /decl/turf_initializer/maintenance
 
 /area/ishimura/lower/maintenance/starboard
 	name = "\improper Lower Deck Starboard Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance
 
 //------------------Mining------------------//
 /area/ishimura/lower/mining
@@ -751,6 +760,7 @@ area/ishimura/upper/medical/bpc
 
 /area/ishimura/lower/misc/abandon_surgery
 	name = "\improper Abandoned Surgical Suite"
+	turf_initializer = /decl/turf_initializer/maintenance
 
 /area/ishimura/lower/misc/bathroom
 	name = "\improper Bathroom"
@@ -848,4 +858,117 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/lower/security/escape/adminshuttle
 	name = "\improper Administrative Shuttle"
 	icon_state = "miscbase"
-	sound_env = LARGE_ENCLOSED
+//------------------Tram Deck------------------//
+
+/area/shuttle/tram
+	name = "\improper Ishimura Tram"
+	icon_state = "tram"
+
+/area/ishimura/tramdeck/tram
+	name = "\improper Ishimura Tram"
+	icon_state = "tram"
+
+/area/ishimura/tramdeck/tram/station
+	name = "\improper Ishimura Tramstation"
+	icon_state = "tramstation"
+
+/area/ishimura/tramdeck/tram/station/forward
+	name = "\improper Ishimura Forward Tram Station"
+
+/area/ishimura/tramdeck/tram/station/amidships/north
+	name = "\improper Ishimura Amidships North Tram Station"
+
+/area/ishimura/tramdeck/tram/station/amidships/south
+	name = "\improper Ishimura Amidships South Tram Station"
+
+/area/ishimura/tramdeck/tram/station/aft
+	name = "\improper Ishimura Aft Tram Station"
+
+/area/ishimura/tramdeck/tram/tunnel
+	name = "\improper Ishimura Tram Tunnel"
+	icon_state = "tramtunnel"
+
+/area/ishimura/tramdeck/tram/tunnel/aft
+	name = "\improper Ishimura Aft Tram Tunnel"
+
+/area/ishimura/tramdeck/tram/tunnel/forward
+	name = "\improper Ishimura Forward Tram Tunnel"
+
+/area/ishimura/tramdeck/tram/maintenance/foremaintenance
+	name = "Tram Fore Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance/heavy
+
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance
+	name = "Tram Mid Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance/heavy
+
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance
+	name = "Tram Aft Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance/heavy
+
+/area/ishimura/tramdeck/tram/misc/disusedbotanics
+	name = "Disused Botanics"
+	turf_initializer = /decl/turf_initializer/maintenance
+
+/area/ishimura/tramdeck/tram/misc/abandonedmeet
+	name = "Abandoned Engineering Lounge"
+
+/area/ishimura/tramdeck/tram/misc/auxcargostor
+	name = "\improper Auxiliary Storage"
+	icon_state = "cargostorage"
+
+//------------------UnderTram Deck------------------//
+
+
+/area/ishimura/tramdeck/tram/undertunnel/utama
+	name = "\improper Abandoned Machining Area"
+	icon_state = "engi_bay"
+	turf_initializer = /decl/turf_initializer/maintenance
+/*
+/area/ishimura/tramdeck/tram/undertunnel/temp2
+	name = "\improper Temp"
+
+/area/ishimura/tramdeck/tram/undertunnel/temp3
+	name = "\improper Temp"
+
+/area/ishimura/tramdeck/tram/undertunnel/temp4
+	name = "\improper Temp"
+*/
+/area/ishimura/tramdeck/tram/undertunnel/uttt
+	name = "\improper Transit Tunnel - Lower"
+	icon_state = "uttt"
+	turf_initializer = /decl/turf_initializer/maintenance/heavy
+
+/area/ishimura/tramdeck/tram/undertunnel/utars
+	name = "\improper Abandoned Atmospherics Refill Station"
+	icon_state = "utatmos"
+	turf_initializer = /decl/turf_initializer/maintenance
+
+/area/ishimura/tramdeck/tram/undertunnel/underforemaintenance
+	name = "UnderTram Fore Maintenance"
+	icon_state = "utfm"
+	turf_initializer = /decl/turf_initializer/maintenance/heavy
+
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance
+	name = "UnderTram Mid Maintenance"
+	icon_state = "utmm"
+	turf_initializer = /decl/turf_initializer/maintenance/heavy
+
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance
+	name = "UnderTram Aft Maintenance"
+	icon_state = "utam"
+	turf_initializer = /decl/turf_initializer/maintenance/heavy
+//------------------Switching Station------------------//
+
+/area/ishimura/tramdeck/switchingstation
+	name = "\improper Disused Switching Station"
+	icon_state = "switchingstation"
+	turf_initializer = /decl/turf_initializer/maintenance
+
+/area/ishimura/tramdeck/switchingstation/upper
+	name = "\improper Abandoned Switching Station - Upper"
+	turf_initializer = /decl/turf_initializer/maintenance
+
+/area/ishimura/tramdeck/switchingstation/lower
+	name = "\improper Abandoned Switching Station - Lower"
+	turf_initializer = /decl/turf_initializer/maintenance

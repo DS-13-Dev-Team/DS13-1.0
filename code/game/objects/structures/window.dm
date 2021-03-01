@@ -504,6 +504,32 @@
 	basestate = "w"
 	dir = 5
 
+/obj/structure/window/reinforced/full
+	dir = 5
+	icon_state = "rwindow_full"
+	resistance = 15
+
+/obj/structure/window/reinforced/full/indestructible
+	icon_state = "rwindow_full"
+
+/obj/structure/window/reinforced/full/indestructible/attack_hand()
+	return
+
+/obj/structure/window/reinforced/full/indestructible/attackby()
+	return
+
+/obj/structure/window/reinforced/full/indestructible/ex_act()
+	return
+
+/obj/structure/window/reinforced/full/indestructible/hitby()
+	return
+
+/obj/structure/window/reinforced/full/indestructible/take_damage()
+	return
+
+/obj/structure/window/reinforced/full/indestructible/shatter()
+	return
+
 /obj/structure/window/reinforced/polarized
 	name = "electrochromic window"
 	desc = "Adjusts its tint with voltage. Might take a few good hits to shatter it."

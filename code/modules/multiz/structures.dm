@@ -319,3 +319,13 @@
 /obj/structure/stairs/west
 	dir = WEST
 	bound_width = 64
+
+// Non-Z stairs. Used for perspective and prettying up the map. Thanks to Colonial Warfare. - Lion
+
+/obj/structure/stair/perspective //instance these for the required icons
+	name = "Stairs"
+	icon = 'icons/obj/stairs-persp.dmi'
+	icon_state = "p_stair_full"
+
+/obj/structure/stair/perspective/regular
+	icon_state = "np_stair"
