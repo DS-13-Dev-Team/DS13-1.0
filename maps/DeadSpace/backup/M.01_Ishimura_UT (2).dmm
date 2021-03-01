@@ -138,7 +138,7 @@
 "cH" = (/turf/simulated/floor/plating,/area/ishimura/tramdeck/tram/station/forward)
 "cI" = (/obj/structure/grille,/turf/simulated/floor,/area/ishimura/lower/maintenance)
 "cJ" = (/obj/structure/table/steel,/obj/random/common_loot,/turf/simulated/floor,/area/ishimura/lower/maintenance)
-"cK" = (/obj/structure/noticeboard{step_y = 25},/obj/structure/table/steel,/turf/simulated/floor,/area/ishimura/lower/maintenance)
+"cK" = (/obj/structure/noticeboard,/obj/structure/table/steel,/turf/simulated/floor,/area/ishimura/lower/maintenance)
 "cL" = (/obj/machinery/light_construct{icon_state = "tube-construct-stage1"; dir = 8},/turf/simulated/floor,/area/ishimura/lower/maintenance)
 "cM" = (/obj/structure/largecrate,/turf/simulated/floor/plating,/area/ishimura/upper/maintenance/fore_central{name = "\improper Fore_Maintenance"})
 "cN" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4; layer = 2.4; level = 2},/turf/simulated/floor,/area/ishimura/lower/maintenance)

@@ -239,7 +239,7 @@
 "eE" = (/obj/structure/catwalk,/obj/structure/railing/mapped{icon_state = "railing0"; dir = 4},/turf/simulated/floor/plating/under,/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eF" = (/turf/simulated/floor,/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eG" = (/obj/structure/table/steel,/obj/random/common_loot,/turf/simulated/floor,/area/ishimura/tramdeck/tram/undertunnel/uttt)
-"eH" = (/obj/structure/noticeboard{step_y = 25},/obj/structure/table/steel,/turf/simulated/floor,/area/ishimura/tramdeck/tram/undertunnel/uttt)
+"eH" = (/obj/structure/noticeboard,/obj/structure/table/steel,/turf/simulated/floor,/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eI" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable/green{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor,/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eJ" = (/obj/structure/stair/perspective{icon_state = "p_stair_full"; dir = 1},/obj/structure/railing/mapped{icon_state = "railing0"; dir = 8},/obj/structure/catwalk,/turf/simulated/floor/plating/under,/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eK" = (/obj/structure/stair/perspective{icon_state = "p_stair_full"; dir = 1},/obj/structure/railing/mapped{icon_state = "railing0"; dir = 4},/obj/structure/catwalk,/turf/simulated/floor/plating/under,/area/ishimura/tramdeck/tram/undertunnel/uttt)
