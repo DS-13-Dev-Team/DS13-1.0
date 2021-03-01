@@ -369,6 +369,7 @@
 	var/mob/living/victim
 
 /obj/effect/rune/offering/cast(var/mob/living/user)
+	/*
 	var/list/mob/living/cultists = get_cultists()
 	if(victim)
 		to_chat(user, "<span class='warning'>You are already sarcificing \the [victim] on this rune.</span>")
@@ -436,7 +437,7 @@
 	if(victim)
 		victim.ExtinguishMob() // Technically allows them to put the fire out by sacrificing them and stopping immediately, but I don't think it'd have much effect
 		victim = null
-
+	*/
 
 /obj/effect/rune/drain
 	cultname = "blood drain"

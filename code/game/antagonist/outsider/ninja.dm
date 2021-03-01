@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(ninjas, /datum/antagonist/ninja, new)
-
 /datum/antagonist/ninja
 	id = MODE_NINJA
 	role_text = "Ninja"

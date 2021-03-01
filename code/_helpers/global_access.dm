@@ -265,8 +265,6 @@
 			return global.camera_range_display_status;
 		if("camera_repository")
 			return global.camera_repository;
-		if("can_call_ert")
-			return global.can_call_ert;
 		if("captain_announcement")
 			return global.captain_announcement;
 		if("cargo_supply_pack_root")
@@ -375,8 +373,6 @@
 			return global.endgame_exits;
 		if("endgame_safespawns")
 			return global.endgame_safespawns;
-		if("ert_base_chance")
-			return global.ert_base_chance;
 		if("escape_pods")
 			return global.escape_pods;
 		if("escape_pods_by_name")
@@ -769,8 +765,6 @@
 			return global.secondary_mode;
 		if("secret_force_mode")
 			return global.secret_force_mode;
-		if("send_emergency_team")
-			return global.send_emergency_team;
 		if("sent_spiders_to_station")
 			return global.sent_spiders_to_station;
 		if("server_name")
@@ -1250,8 +1244,6 @@
 			global.camera_range_display_status=newval;
 		if("camera_repository")
 			global.camera_repository=newval;
-		if("can_call_ert")
-			global.can_call_ert=newval;
 		if("captain_announcement")
 			global.captain_announcement=newval;
 		if("cargo_supply_pack_root")
@@ -1360,8 +1352,6 @@
 			global.endgame_exits=newval;
 		if("endgame_safespawns")
 			global.endgame_safespawns=newval;
-		if("ert_base_chance")
-			global.ert_base_chance=newval;
 		if("escape_pods")
 			global.escape_pods=newval;
 		if("escape_pods_by_name")
@@ -1754,8 +1744,6 @@
 			global.secondary_mode=newval;
 		if("secret_force_mode")
 			global.secret_force_mode=newval;
-		if("send_emergency_team")
-			global.send_emergency_team=newval;
 		if("sent_spiders_to_station")
 			global.sent_spiders_to_station=newval;
 		if("server_name")

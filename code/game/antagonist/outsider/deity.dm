@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(deity, /datum/antagonist/deity, new)
-
 /datum/antagonist/deity
 	id = MODE_DEITY
 	role_text = "Deity"

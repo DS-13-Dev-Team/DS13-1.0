@@ -128,6 +128,7 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	if (istype(A, /datum/antagonist/unitologist))
 		return TRUE
 
-	//Todo here in future: Check for unitologist ERT
+	if (istype(A, /datum/antagonist/ert/unitologists))
+		return TRUE
 
 	return FALSE

@@ -1,41 +1,66 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 var/global/list/all_objectives = list()
-
-datum/objective
+#define FAILED	-1	//When an objective is set to failed, it has entered an unwinnable state and can never be completed
+/datum/objective
 	var/datum/mind/owner = null			//Who owns the objective.
 	var/explanation_text = "Nothing"	//What that person is supposed to do.
 	var/datum/mind/target = null		//If they are focused on a particular person.
+	var/atom/target_atom = null
 	var/target_amount = 0				//If they are focused on a particular number. Steal objectives have their own counter.
-	var/completed = 0					//currently only used for custom objectives.
+	var/completed = FALSE					//currently only used for custom objectives.
 
-	New(var/text)
-		all_objectives |= src
-		if(text)
-			explanation_text = text
-		..()
+/datum/objective/New(var/text)
+	all_objectives |= src
+	if(text)
+		explanation_text = text
+	..()
 
-	Destroy()
-		all_objectives -= src
-		..()
+/datum/objective/Destroy()
+	all_objectives -= src
+	..()
 
-	proc/check_completion()
-		return completed
+/datum/objective/proc/check_completion(var/silent = FALSE)
+	return completed
 
-	proc/find_target()
-		var/list/possible_targets = list()
-		for(var/datum/mind/possible_target in ticker.minds)
-			if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2))
-				possible_targets += possible_target
-		if(possible_targets.len > 0)
-			target = pick(possible_targets)
+/datum/objective/proc/find_target()
+	var/list/possible_targets = list()
+	for(var/datum/mind/possible_target in ticker.minds)
+		if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2))
+			possible_targets += possible_target
+	if(possible_targets.len > 0)
+		set_target(possible_targets)
 
 
-	proc/find_target_by_role(role, role_type=0)//Option sets either to check assigned role or special role. Default to assigned.
-		for(var/datum/mind/possible_target in ticker.minds)
-			if((possible_target != owner) && ishuman(possible_target.current) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
-				target = possible_target
-				break
 
+/datum/objective/proc/set_target(var/new_target, var/silent = FALSE)
+	if (istype(new_target, /datum/mind))
+		target = new_target
+		target_atom = target.current
+	else
+		target_atom = new_target
+
+	set_text()
+	check_completion(silent)
+
+/datum/objective/proc/find_target_by_role(role, role_type=0)//Option sets either to check assigned role or special role. Default to assigned.
+	for(var/datum/mind/possible_target in ticker.minds)
+		if((possible_target != owner) && ishuman(possible_target.current) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
+			target = possible_target
+			break
+
+	set_text()
+
+/datum/objective/proc/set_text(var/show = FALSE)
+
+/datum/objective/proc/fail(var/silent = FALSE)
+	completed = FAILED
+	if (!silent)
+		show_objectives(owner)
+
+/datum/objective/proc/complete(var/silent = FALSE)
+	completed = TRUE
+	if (!silent)
+		show_objectives(owner)
 
 
 datum/objective/assassinate
@@ -417,7 +442,7 @@ datum/objective/steal
 	)
 
 
-	proc/set_target(item_name)
+	proc/set_steal_target(var/item_name)
 		target_name = item_name
 		steal_target = possible_items[target_name]
 		if (!steal_target )
@@ -427,7 +452,7 @@ datum/objective/steal
 
 
 	find_target()
-		return set_target(pick(possible_items))
+		return set_steal_target(pick(possible_items))
 
 
 	proc/select_target()

@@ -668,12 +668,13 @@
 
 /obj/item/weapon/rig/equipped(mob/living/carbon/human/M, var/slot)
 	.=..()
-
 	if (!istype(M))
 		return FALSE
 
 	if (equip_slot == desired_slot)
 
+		//This code is completely out of place and causes a myriad of problems, it is not worth the effort to solve it
+		/*
 		if(seal_delay > 0)
 			M.visible_message("<font color='blue'>[M] starts putting on \the [src]...</font>", "<font color='blue'>You start putting on \the [src]...</font>")
 			if(!do_after(M,seal_delay,src))
@@ -682,6 +683,7 @@
 						return FALSE
 				src.forceMove(get_turf(src))
 				return FALSE
+		*/
 
 		if(istype(M) && equip_slot == desired_slot)
 			M.visible_message("<font color='blue'><b>[M] struggles into \the [src].</b></font>", "<font color='blue'><b>You struggle into \the [src].</b></font>")

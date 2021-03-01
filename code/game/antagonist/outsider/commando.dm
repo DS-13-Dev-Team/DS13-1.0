@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(commandos, /datum/antagonist/deathsquad/mercenary, new)
-
 /datum/antagonist/deathsquad/mercenary
 	id = MODE_COMMANDO
 	landmark_id = "Syndicate-Commando"

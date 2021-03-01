@@ -54,10 +54,12 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 					name = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
+		mind.ghost = src	//Register ourself on the mind too
 	else
 		spawn(10) // wait for the observer mob to receive the client's key
 			mind = new /datum/mind(key)
 			mind.current = src
+			mind.ghost = src
 	if(!T)	T = pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway)			//Safety in case we cannot find the body's position
 	forceMove(T)
 
@@ -65,8 +67,6 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 	real_name = name
 
-	if(GLOB.cult)
-		GLOB.cult.add_ghost_magic(src)
 
 	ghost_multitool = new(src)
 
@@ -79,6 +79,10 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	stop_following()
 	qdel(ghost_multitool)
 	ghost_multitool = null
+	if (mind)
+		if (mind.ghost == src)
+			mind.ghost = null
+		mind = null
 	if(hud_images)
 		for(var/image/I in hud_images)
 			show_hud_icon(I.icon_state, FALSE)
@@ -524,7 +528,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	return 1
 
 /proc/isghostmind(var/datum/mind/player)
-	return player && !isnewplayer(player.current) && (!player.current || isghost(player.current) || (isliving(player.current) && player.current.stat == DEAD) || !player.current.client)
+	if( player?.ghost)
+		return TRUE
+	else if (isghost(player.current))
+		return TRUE
+	return FALSE
+	//.= player && !isnewplayer(player.current) && (!player.current || isghost(player.current) || (isliving(player.current) && player.current.stat == DEAD) || !player.current.client)
+
 
 /mob/proc/check_is_holy_turf(var/turf/T)
 	return 0
