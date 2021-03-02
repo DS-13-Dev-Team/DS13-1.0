@@ -326,6 +326,8 @@
 	name = "Stairs"
 	icon = 'icons/obj/stairs-persp.dmi'
 	icon_state = "p_stair_full"
+	anchored = 1
+	breakable = 0 // Cannot be breakable.
 
 /obj/structure/stair/perspective/regular
 	icon_state = "np_stair"
