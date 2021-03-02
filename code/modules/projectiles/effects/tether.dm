@@ -143,6 +143,8 @@
 	if (delete_on_finish)
 		QDEL_IN(src, time+1)
 	for (var/i = 1; i <= steps; i++)
+		if (!start)
+			break
 		var/vector2/delta = tether_direction.ToMagnitude(max(1,magnitude * (1 - (i * step_percent))))
 		var/vector2/temp_end = start + delta
 		set_ends(start, temp_end, step_time, apply_offset = FALSE)

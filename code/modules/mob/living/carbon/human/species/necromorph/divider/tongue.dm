@@ -173,7 +173,6 @@
 	If it returns false, the execution is denied or cancelled.
 */
 /proc/divider_tongue_safety(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target)
-
 	//We only target humans
 	if (!istype(user) || !istype(target))
 		return EXECUTION_CANCEL
@@ -248,7 +247,6 @@
 	if (target.stat == DEAD)
 		return EXECUTION_CANCEL
 
-
 	return EXECUTION_CONTINUE
 
 
@@ -276,15 +274,15 @@
 
 	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -4)
 
+/datum/extension/execution/divider_tongue/get_range()
+	return range
 
 /datum/extension/execution/divider_tongue/safety_check()
-
 	var/obj/effect/projectile/tether/tongue/T = weapon
 
 
 
 	var/safety_result = divider_tongue_continue(user, victim)
-
 	if (safety_result == EXECUTION_SUCCESS)
 		success = TRUE
 		return EXECUTION_SUCCESS
