@@ -69,7 +69,7 @@
 
 	unarmed_types = list(/datum/unarmed_attack/punch/tripod)
 
-	slowdown = 5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
+	slowdown = 4.5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
 
 	//Vision
 	view_range = 12
@@ -228,7 +228,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 
 /datum/extension/cadence/tripod
-	max_speed_buff = 2.5
+	max_speed_buff = 2.25
 	max_steps = 6
 
 
@@ -261,6 +261,9 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	set name = "High Leap"
 	set desc = "Leaps to a target location, dealing damage around the landing point, and knockdown in a frontal cone"
 	set category = "Abilities"
+
+	if (get_turf(target) == get_turf(src))
+		return
 
 	.=high_leap_ability(target, windup_time = 0.8 SECOND, winddown_time = 0.8 SECOND, cooldown = 6 SECONDS, minimum_range = 3, travel_speed = 5.25)
 	if(.)
