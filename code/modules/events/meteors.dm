@@ -13,8 +13,8 @@
 	waves = 0
 	for(var/n in 1 to severity)
 		waves += rand(5,15)
-
-	start_side = pick(GLOB.cardinal)
+	var/obj/machinery/asteroidcannon/AC = GLOB.asteroid_cannon
+	start_side = AC.dir //Again, so they have a chance to shoot them down.
 	endWhen = worst_case_end()
 
 /datum/event/meteor_wave/announce()
@@ -38,8 +38,10 @@
 	return activeFor + ((30 / severity) * waves) + 30
 
 /datum/event/meteor_wave/proc/send_wave()
-	var/pick_side = prob(80) ? start_side : (prob(50) ? turn(start_side, 90) : turn(start_side, -90))
-	spawn() spawn_meteors(get_wave_size(), get_meteors(), pick_side, pick(affecting_z))
+	//var/pick_side = prob(80) ? start_side : (prob(50) ? turn(start_side, 90) : turn(start_side, -90))
+	//spawn() spawn_meteors(get_wave_size(), get_meteors(), pick_side, pick(affecting_z))
+	var/obj/machinery/asteroidcannon/AC = GLOB.asteroid_cannon
+	spawn() spawn_meteors(get_wave_size(), get_meteors(), start_side, AC.z) //Overrode this so meteors only spawn on the Z-level that the asteroid cannon is on.
 	next_meteor += rand(next_meteor_lower, next_meteor_upper) / severity
 	waves--
 	endWhen = worst_case_end()

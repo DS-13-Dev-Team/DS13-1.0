@@ -1,4 +1,5 @@
 GLOBAL_VAR_INIT(asteroid_cannon, null)
+GLOBAL_LIST_EMPTY(asteroids)
 
 /obj/machinery/asteroidcannon
 	name = "Asteroid Defense System"
@@ -9,7 +10,35 @@ GLOBAL_VAR_INIT(asteroid_cannon, null)
 	bound_width = 128
 	density = TRUE
 	anchored = TRUE
+	dir = EAST //Ship faces east, so does big mega gun.
+	var/lead_distance = 3 //How aggressively to lead each shot.
+	var/firing_arc = 180
+	var/fire_sound = 'sound/weapons/taser2.ogg'
 	var/datum/extension/asteroidcannon/AC = null
+
+/obj/machinery/asteroidcannon/ex_act(severity)
+	return FALSE
+
+/obj/item/projectile/bullet/asteroidcannon
+	name = "Accelerated Tungsten Slug"
+	icon_state = "asteroidcannon"
+	damage = 100
+
+/obj/item/projectile/bullet/asteroidcannon/Bump(atom/A, forced)
+	. = ..()
+	if(istype(A, /obj/effect/meteor))
+		var/obj/effect/meteor/M = A
+		M.visible_message("<span class='danger'>\The [M] breaks into dust!</span>")
+		M.make_debris()
+		qdel(M)
+		qdel(src)
+
+/obj/machinery/asteroidcannon/proc/fire_at(turf/T)
+	if(Get_Angle(src, T) > firing_arc)
+		return FALSE
+	var/obj/item/projectile/bullet/asteroidcannon/bullet = new (get_turf(src))
+	playsound(src, fire_sound, 100, 1)
+	bullet.launch(T)
 
 /obj/machinery/asteroidcannon/attack_hand(mob/user)
 	start_gunning(user)
@@ -39,15 +68,33 @@ GLOBAL_VAR_INIT(asteroid_cannon, null)
 /datum/extension/asteroidcannon
 	var/obj/machinery/asteroidcannon/gun = null
 	var/mob/living/carbon/human/gunner = null
-	var/mob/observer/eye/eyeobj = null
+	var/mob/observer/eye/asteroidcannon/eyeobj = null
+
+/mob/observer/eye/asteroidcannon
+	var/obj/machinery/asteroidcannon/gun = null
+
+/mob/observer/eye/asteroidcannon/EyeMove(direct)
+	if((direct == WEST) && (src.x < gun.x)) //No looking behind you...
+		setLoc(get_turf(locate(gun.x, y)))
+		return FALSE
+	. = ..()
+
+/mob/observer/eye/asteroidcannon/Destroy()
+	gun = null
+	. = ..()
 
 /datum/extension/asteroidcannon/Process()
 	if(gunner) //We've got a gunner, don't fire.
 		return
-	//Eye sanity checking.
-	if(eyeobj && eyeobj.x < gun.x)
-		to_chat(world, "snap")
-		eyeobj.setLoc(gun.x, eyeobj.y)
+	if(!GLOB.asteroids || !GLOB.asteroids.len)
+		return
+	//Meteor targeting!
+	var/obj/effect/meteor/ME = pick(GLOB.asteroids)
+	//Lead your shots.
+	var/turf/aim_at = get_turf(ME)
+	if(ME.velocity)
+		aim_at = get_turf(locate(ME.x - (ME.velocity.x * gun.lead_distance), ME.y - (ME.velocity.y * gun.lead_distance), ME.z))
+	gun.fire_at(aim_at)
 
 /mob/living/carbon/human/proc/stop_gunning()
 	set name = "Stop Gunning"
@@ -60,6 +107,14 @@ GLOBAL_VAR_INIT(asteroid_cannon, null)
 	set category = "Asteroid Defense System"
 	var/datum/extension/asteroidcannon/AC = get_extension(GLOB.asteroid_cannon, /datum/extension/asteroidcannon)
 	AC.recenter()
+
+/datum/extension/asteroidcannon/proc/target_click(var/mob/user, var/atom/target, var/params)
+	gun.fire_at(get_turf(target))
+
+/datum/click_handler/target/asteroidcannon/stop()
+	var/mob/living/carbon/human/H = user
+	H.stop_gunning()
+	. = ..()
 
 /**
 	Sets up the cannon for manual aiming, removes the autofire ability.
@@ -74,8 +129,10 @@ GLOBAL_VAR_INIT(asteroid_cannon, null)
 	gunner.pixel_x = 32
 	gunner.pixel_y = 32
 	gunner.set_dir(8)
+	gunner.PushClickHandler(/datum/click_handler/target/asteroidcannon, CALLBACK(src, /datum/extension/asteroidcannon/proc/target_click, gunner))
 	gun.vis_contents += gunner
-	eyeobj = new /mob/observer/eye(get_turf(gun))
+	eyeobj = new /mob/observer/eye/asteroidcannon(get_turf(gun))
+	eyeobj.gun = gun
 	eyeobj.acceleration = FALSE
 	eyeobj.possess(gunner)
 
@@ -97,4 +154,4 @@ GLOBAL_VAR_INIT(asteroid_cannon, null)
 	if(!istype(holder, /obj/machinery/asteroidcannon))
 		return FALSE
 	gun = holder
-	START_PROCESSING(SSobj, src)
+	START_PROCESSING(SSfastprocess, src)

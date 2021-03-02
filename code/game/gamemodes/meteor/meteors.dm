@@ -81,6 +81,11 @@
 	var/Me = pickweight(meteortypes)
 	var/obj/effect/meteor/M = new Me(pickedstart)
 	M.dest = pickedgoal
+	M.velocity = new /vector2()
+	if(pickedgoal.x != pickedstart.x)
+		M.velocity.x = (pickedgoal.x < pickedstart.x) ? -2 : 2
+	if(pickedgoal.y != pickedstart.y)
+		M.velocity.y = (pickedgoal.y < pickedstart.y) ? -2 : 2
 	spawn(0)
 		walk_towards(M, M.dest, 1)
 	return
@@ -142,6 +147,7 @@
 	var/z_original
 	var/meteordrop = /obj/item/weapon/ore/iron
 	var/dropamt = 1
+	var/vector2/velocity = null
 
 	var/move_count = 0
 
@@ -151,6 +157,12 @@
 /obj/effect/meteor/New()
 	..()
 	z_original = z
+	GLOB.asteroids += src
+
+/obj/effect/meteor/Destroy()
+	GLOB.asteroids -= src
+	velocity = null
+	. = ..()
 
 /obj/effect/meteor/Move()
 	. = ..() //process movement...
