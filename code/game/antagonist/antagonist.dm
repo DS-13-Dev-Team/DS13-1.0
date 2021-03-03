@@ -129,7 +129,6 @@
 
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
-	var/list/minds = ticker.mode.get_players_for_role(id)
 	for(var/datum/mind/player in ticker.mode.get_players_for_role(id))
 		if(ghosts_only)
 			if(!isghostmind(player))
