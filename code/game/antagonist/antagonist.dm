@@ -97,6 +97,7 @@
 		Think through your actions and make the roleplay immersive! <b>Please remember all \
 		rules aside from those without explicit exceptions apply to antagonists.</b>"
 
+
 /datum/antagonist/New()
 	reset_last_spawn_data()
 	GLOB.all_antag_types_[id] = src
@@ -128,10 +129,18 @@
 
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
+	var/list/minds = ticker.mode.get_players_for_role(id)
 	for(var/datum/mind/player in ticker.mode.get_players_for_role(id))
-		if(ghosts_only && !(isghostmind(player) || isnewplayer(player.current)))
-			log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
-		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
+		if(ghosts_only)
+			if(!isghostmind(player))
+				log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
+				continue
+		else
+			if(isghostmind(player))
+				log_debug("[key_name(player)] is not eligible to become a [role_text]: Ghosts may not join as this role!")
+				continue
+
+		if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Is only [player.current.client.player_age] day\s old, has to be [minimum_player_age] day\s!")
 		else if(player.special_role && !ghosts_only)	//Ghosts are no longer what their body was, it shouldn't prevent them taking a new role
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They already have a special role ([player.special_role])!")
@@ -151,12 +160,20 @@
 
 	// Keeping broken up for readability
 	for(var/datum/mind/player in mode.get_players_for_role(id))
-		if(ghosts_only && !(isghostmind(player) || isnewplayer(player.current)))
-		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
-		else if(player.special_role)
+		if(ghosts_only)
+			if(!isghostmind(player))
+				log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
+				continue
+		else
+			if(isghostmind(player))
+				log_debug("[key_name(player)] is not eligible to become a [role_text]: Ghosts may not join as this role!")
+				continue
+
+		if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
+		else if(player.special_role && !ghosts_only)
 		else if (player in pending_antagonists)
 		else if(!can_become_antag(player))
-		else if(player_is_antag(player))
+		else if(player_is_antag(player) && !ghosts_only)
 		else
 			candidates[player] = player.get_antag_weight(category)
 
@@ -170,7 +187,7 @@
 	finalize_spawn()
 
 /datum/antagonist/proc/attempt_auto_spawn()
-	last_spawn_data = list()
+	reset_last_spawn_data()
 	if(!can_late_spawn())
 		return 0
 
