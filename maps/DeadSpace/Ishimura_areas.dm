@@ -640,6 +640,11 @@ area/ishimura/upper/medical/bpc
 	name = "Escape Pod Nine"
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
+	
+/area/shuttle/escape_pod10/station
+	name = "Escape Pod Nine"
+	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 //------------------Maintenance------------------//
 /area/ishimura/lower/maintenance
