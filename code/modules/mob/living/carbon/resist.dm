@@ -32,6 +32,8 @@
 
 	if(handcuffed)
 		spawn() escape_handcuffs()
+	else if(legcuffed)
+		spawn() escape_legcuffs()
 
 /mob/living/carbon/proc/escape_handcuffs()
 	//if(!(last_special <= world.time)) return
@@ -72,6 +74,57 @@
 			"<span class='notice'>You successfully remove \the [handcuffed].</span>"
 			)
 		drop_from_inventory(handcuffed)
+
+/mob/living/carbon/proc/escape_legcuffs()
+	set_click_cooldown(100)
+
+	if(can_break_cuffs()) //Don't want to do a lot of logic gating here.
+		break_legcuffs()
+		return
+
+	var/obj/item/weapon/legcuffs/HC = legcuffed
+
+	//A default in case you are somehow legcuffed with something that isn't an obj/item/weapon/legcuffs type
+	var/breakouttime = 1200
+	//If you are legcuffed with actual legcuffs... Well what do I know, maybe someone will want to legcuff you with toilet paper in the future...
+	if(istype(HC))
+		breakouttime = HC.breakouttime
+
+	visible_message(
+		SPAN_DANGER("[usr] attempts to remove \the [HC]!"),
+		SPAN_WARNING("You attempt to remove \the [HC]. (This will take around [breakouttime / 10] seconds and you need to stand still)")
+		)
+
+	if(do_after(src, breakouttime, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
+		if(!legcuffed || buckled)
+			return
+		visible_message(
+			SPAN_DANGER("[src] manages to remove \the [legcuffed]!"),
+			SPAN_NOTICE("You successfully remove \the [legcuffed].")
+			)
+
+		drop_from_inventory(legcuffed)
+		legcuffed = null
+		update_inv_legcuffed()
+
+/mob/living/carbon/proc/break_legcuffs()
+	to_chat(src, SPAN_WARNING("You attempt to break your legcuffs. (This will take around 5 seconds and you need to stand still)"))
+	visible_message(SPAN_DANGER("[src] is trying to break the legcuffs!"))
+
+	if(do_after(src, 5 SECONDS, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
+		if(!legcuffed || buckled)
+			return
+
+		visible_message(
+			SPAN_DANGER("[src] manages to break the legcuffs!"),
+			SPAN_WARNING("You successfully break your legcuffs.")
+			)
+
+		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
+
+		qdel(legcuffed)
+		legcuffed = null
+		update_inv_legcuffed()
 
 /mob/living/carbon/proc/can_break_cuffs()
 	if(HULK in mutations)

@@ -197,7 +197,6 @@
 	var/slowdown = 0              // Passive movement speed malus (or boost, if negative)
 	var/slow_turning = FALSE		//If true, mob goes on move+click cooldown when rotating in place, and can't turn+move in the same step
 	var/list/locomotion_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)	//What limbs does this species use to move? It goes slower when these are missing/broken/splinted
-	var/list/bola_limbs
 	var/lying_speed_factor = 0.25	//Our speed is multiplied by this when crawling
 
 
@@ -391,7 +390,6 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		var/obj/item/organ/limb_path = organ_data["path"]
 		organ_data["descriptor"] = initial(limb_path.name)
 
-	bola_limbs = locomotion_limbs - list(BP_L_FOOT, BP_R_FOOT)
 
 
 /*

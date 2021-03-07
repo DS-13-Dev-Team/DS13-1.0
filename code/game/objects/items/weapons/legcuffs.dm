@@ -1,9 +1,16 @@
+/obj/item/proc/get_onmob_delay()
+	return 0
+
+/obj/item/weapon/legcuffs/get_onmob_delay()
+	return move_delay
+
 /obj/item/weapon/legcuffs
 	icon = 'icons/obj/items.dmi'
 	icon_state = "handcuff"
 	item_state_slots = list(
 		slot_legcuffed_str = "legcuff1",
 		)
+	var/move_delay = 5
 	var/breakouttime = 600
 
 /obj/item/weapon/legcuffs/Destroy()
