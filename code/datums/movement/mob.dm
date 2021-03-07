@@ -273,6 +273,8 @@
 
 /mob/proc/set_move_intent(var/decl/move_intent/M)
 	move_intent = M
+	return TRUE
+
 
 // Movement relayed to self handling
 /datum/movement_handler/mob/relayed_movement
