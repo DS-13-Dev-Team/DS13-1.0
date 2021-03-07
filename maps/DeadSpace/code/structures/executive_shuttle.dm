@@ -13,7 +13,7 @@
 /obj/effect/shuttle_landmark/executive/start
 	name = "Executive Shuttle EVAC"
 	landmark_tag = "nav_executive_start"
-	docking_controller = "executive_shuttle"
+	//docking_controller = "executive_shuttle"
 	base_area = /area/centcom
 	base_turf = /turf/simulated/floor/plating
 
@@ -23,7 +23,7 @@
 /obj/effect/shuttle_landmark/executive/out
 	name = "Docking Bay"
 	landmark_tag = "nav_executive_out"
-//	docking_controller = "executive_dock_airlock"
+	//docking_controller = "executive_dock_airlock"
 
 /area/shuttle/executive_shuttle
 	name = "\improper Executive Shuttle"

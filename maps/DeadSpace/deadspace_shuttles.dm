@@ -219,19 +219,19 @@
 	number = 9
 /obj/effect/shuttle_landmark/escape_pod/transit/pod9
 	number = 9
-
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/shuttle
+/*
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod10
 	warmup_time = 10
-	shuttle_area = /area/ishimura/lower/security/escape/adminshuttle
+	shuttle_area = /area/shuttle/escape_pod10/station
 	number = 10
-/obj/effect/shuttle_landmark/escape_pod/start/shuttle
+/obj/effect/shuttle_landmark/escape_pod/start/pod10
 	number = 10
-	base_turf =/turf/simulated/floor
-/obj/effect/shuttle_landmark/escape_pod/out/shuttle
+	base_turf =/turf/simulated/floor/airless
+/obj/effect/shuttle_landmark/escape_pod/out/pod10
 	number = 10
-/obj/effect/shuttle_landmark/escape_pod/transit/shuttle
+/obj/effect/shuttle_landmark/escape_pod/transit/pod10
 	number = 10
-
+*/
 
 //////// ERT SHUTTLES \\\\\\\\
 

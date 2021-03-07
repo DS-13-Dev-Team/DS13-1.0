@@ -86,6 +86,7 @@ GLOBAL_VAR_INIT(distress_cooldown, FALSE)
 
 	//Right, lets examine the data from the last spawn
 	var/list/spawns = antag.last_spawn_data["spawns"]
+	spawns = spawns.Copy()
 	var/target = antag.last_spawn_data["spawn_target"]
 
 	if (!antag.last_spawn_data["success"])
