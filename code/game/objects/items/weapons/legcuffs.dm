@@ -10,7 +10,7 @@
 	item_state_slots = list(
 		slot_legcuffed_str = "legcuff1",
 		)
-	var/move_delay = 5
+	var/move_delay = 6
 	var/breakouttime = 600
 
 /obj/item/weapon/legcuffs/Destroy()

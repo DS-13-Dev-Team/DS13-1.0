@@ -162,13 +162,6 @@
 			if(2)
 				visible_message("<span class='notice'>\The [src] looks out of breath!</span>", "<span class='notice'>You are out of breath!</span>")
 
-/mob/living/carbon/set_move_intent(var/decl/move_intent/M)
-	if(legcuffed)
-		to_chat(src, "<span class='notice'>You are legcuffed! You cannot run until you get [legcuffed] removed!</span>")
-		. = ..(decls_repository.get_decl(/decl/move_intent/walk))
-	else
-		return ..()
-
 /mob/living/carbon/human/set_move_intent(var/decl/move_intent/M)
 	. = ..()
 	if(.)
