@@ -48,7 +48,9 @@
 	organ_substitutions = list(BP_L_LEG = BP_TAIL,
 	BP_R_LEG = BP_TAIL,
 	BP_L_FOOT = BP_TAIL,
-	BP_R_FOOT = BP_TAIL)
+	BP_R_FOOT = BP_TAIL,
+	BP_L_FOOT = BP_L_LEG,
+	BP_R_FOOT = BP_R_LEG)
 
 	inherent_verbs = list(/atom/movable/proc/leaper_leap, /mob/living/carbon/human/proc/tailstrike_leaper, /mob/living/proc/leaper_gallop, /mob/proc/shout)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap),
