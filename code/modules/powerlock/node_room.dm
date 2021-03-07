@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 	create_lock()
 	dim_lights()
 
-	message_admins("Powerlocked room created at [jumplink(origin)]")
+	world << "Powerlocked room created at [jumplink(origin)]"
 
 
 /datum/node_room/proc/measure_room()
