@@ -4,6 +4,7 @@
 /obj/item/weapon/legcuffs/get_onmob_delay()
 	return move_delay
 
+///obj/item/weapon/legcuffs is a debug item
 /obj/item/weapon/legcuffs
 	icon = 'icons/obj/items.dmi'
 	icon_state = "handcuff"
