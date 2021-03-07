@@ -268,12 +268,13 @@ var/const/enterloopsanity = 100
 
 //expects an atom containing the reagents used to clean the turf
 /turf/proc/clean(atom/source, mob/user = null)
-	if(source.reagents.has_reagent(/datum/reagent/water, 1) || source.reagents.has_reagent(/datum/reagent/space_cleaner, 1))
+	if(!source || source.reagents.has_reagent(/datum/reagent/water, 1) || source.reagents.has_reagent(/datum/reagent/space_cleaner, 1))
 		clean_blood()
 		remove_cleanables()
-	else
+	else if (user)
 		to_chat(user, "<span class='warning'>\The [source] is too dry to wash that.</span>")
-	source.reagents.trans_to_turf(src, 1, 10)	//10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
+	if (source)
+		source.reagents.trans_to_turf(src, 1, 10)	//10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
 
 /turf/proc/remove_cleanables()
 	for(var/obj/effect/O in src)

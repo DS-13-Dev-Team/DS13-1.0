@@ -220,6 +220,14 @@ Checks if a list has the same entries and values as an element of big.
 		return picked
 	return null
 
+//As above but weighted picking
+/proc/pickweight_n_take(list/listfrom)
+	if (listfrom.len > 0)
+		var/picked = pickweight(listfrom)
+		listfrom -= picked
+		return picked
+	return null
+
 //Returns the top(last) element from the list and removes it from the list (typical stack function)
 /proc/pop(list/listfrom)
 	if (listfrom.len > 0)

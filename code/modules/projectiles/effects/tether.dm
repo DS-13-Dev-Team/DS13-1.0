@@ -19,8 +19,7 @@
 	lifespan = 0
 	var/base_length = WORLD_ICON_SIZE *2
 
-	atom_flags = ATOM_FLAG_INTANGIBLE
-	obj_flags = OBJ_FLAG_INVINCIBLE
+	atom_flags = ATOM_FLAG_INTANGIBLE | ATOM_FLAG_INDESTRUCTIBLE
 
 	//Optional. If set, we will track movements of the origin atom, regularly setting start to it
 	var/atom/movable/origin_atom
@@ -197,7 +196,7 @@
 
 
 /obj/effect/projectile/tether/attackby(var/obj/item/C, var/mob/user)
-	if (!(obj_flags & OBJ_FLAG_INVINCIBLE))
+	if (!(atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
 		playsound(src, C.hitsound, VOLUME_MID, 1)
 		user.do_attack_animation(src)
 		take_damage(C.force, C.damtype, user, C)
@@ -216,7 +215,7 @@
 
 //Called when a structure takes damage
 /obj/effect/projectile/tether/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
-	if ((obj_flags & OBJ_FLAG_INVINCIBLE))
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
 		return
 
 	//if (!bypass_resist)
@@ -241,7 +240,7 @@
 
 //Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
 /obj/effect/projectile/tether/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
-	if ((!obj_flags & OBJ_FLAG_INVINCIBLE))
+	if (!(atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
 		qdel(src)
 	return TRUE
 

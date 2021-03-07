@@ -36,6 +36,8 @@
 
 	mass = 15
 
+	var/stored_units = 0
+
 /obj/structure/closet/meddle()
 	src.toggle()
 
@@ -105,8 +107,10 @@
 	for(var/atom/movable/AM in src)
 		AM.dropInto(loc)
 
+	stored_units = 0
+
 /obj/structure/closet/proc/store_contents()
-	var/stored_units = 0
+
 
 	if(storage_types & CLOSET_STORAGE_ITEMS)
 		stored_units += store_items(stored_units)

@@ -140,6 +140,8 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		"Atheist"
 		)
 
+	var/powernode_rooms = 6
+
 /datum/map/New()
 	if(!map_levels)
 		map_levels = station_levels.Copy()
@@ -157,6 +159,9 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 	lobby_track = decls_repository.get_decl(lobby_track_type)
 	world.update_status()
+
+	if (powernode_rooms)
+		setup_powernode_rooms()
 
 //Gets a random lobby track, excluding a list of tracks we've already heard
 /datum/map/proc/get_lobby_track(var/list/played)

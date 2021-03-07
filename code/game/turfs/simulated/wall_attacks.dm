@@ -66,6 +66,7 @@
 	take_damage(rand(25,75))
 
 /turf/simulated/wall/proc/success_smash(var/mob/user)
+
 	to_chat(user, "<span class='danger'>You smash through \the [src]!</span>")
 	user.do_attack_animation(src)
 	spawn(1)
@@ -158,6 +159,8 @@
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting simulated walls and the relevant effects
 	if(thermite)
+		if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+			return
 		if(isWelder(W))
 			if( W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
 				thermitemelt(user)
@@ -185,7 +188,8 @@
 
 	// Basic dismantling.
 	if(isnull(construction_stage) || !reinf_material)
-
+		if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+			return
 		var/cut_delay = 60 - material.cut_delay
 		var/dismantle_verb
 		var/dismantle_sound
@@ -223,6 +227,8 @@
 
 	//Reinforced dismantling.
 	else
+		if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+			return
 		switch(construction_stage)
 			if(6)
 				if(isWirecutter(W))
