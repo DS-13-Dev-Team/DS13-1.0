@@ -493,6 +493,8 @@ var/list/global/slot_flags_enumeration = list(
 		if(slot_handcuffed)
 			if(!istype(src, /obj/item/weapon/handcuffs))
 				return 0
+		if(slot_legcuffed)
+			return !H.legcuffed && istype(src, /obj/item/weapon/legcuffs)
 		if(slot_in_backpack) //used entirely for equipping spawned mobs or at round start
 			var/allow = 0
 			if(H.back)
