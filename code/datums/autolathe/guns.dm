@@ -51,10 +51,6 @@
 	name = "NT GL \"Protector\""
 	build_path = /obj/item/weapon/gun/launcher/grenade
 
-/datum/design/autolathe/gun/taser
-	name = "NT SP \"Counselor\""
-	build_path = /obj/item/weapon/gun/energy/taser
-
 /datum/design/autolathe/gun/energygun
 	name = "FS PDW E \"Spider Rose\""
 	build_path = /obj/item/weapon/gun/energy/gun

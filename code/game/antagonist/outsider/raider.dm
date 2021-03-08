@@ -65,7 +65,6 @@
 		/obj/item/weapon/gun/energy/toxgun,
 		/obj/item/weapon/gun/energy/stunrevolver,
 		/obj/item/weapon/gun/energy/ionrifle,
-		/obj/item/weapon/gun/energy/taser,
 		/obj/item/weapon/gun/energy/crossbow/largecrossbow,
 		/obj/item/weapon/gun/launcher/crossbow,
 		/obj/item/weapon/gun/launcher/grenade/loaded,
