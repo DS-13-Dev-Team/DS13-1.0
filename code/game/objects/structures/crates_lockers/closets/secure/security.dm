@@ -85,7 +85,6 @@
 		/obj/item/taperoll/police,
 		/obj/item/clothing/mask/gas,
 		/obj/item/device/flashlight/maglight,
-//		/obj/item/weapon/storage/box/flashbangs,
 		/obj/item/weapon/storage/box/teargas,
 		/obj/item/weapon/storage/belt/holster/security,
 		/obj/item/weapon/reagent_containers/spray/pepper,
@@ -93,7 +92,6 @@
 		/obj/item/weapon/storage/box/holobadge,
 		/obj/item/device/holowarrant,
 		/obj/random/tool,
-		/obj/item/weapon/gun/energy/taser,
 		/obj/item/weapon/rig/riot
 	)
 
@@ -122,9 +120,7 @@
 		/obj/item/device/flashlight/maglight,
 		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/under/deadspace/security,
-		/obj/item/weapon/gun/energy/taser,
 		/obj/item/device/holowarrant,
-//		/obj/item/device/flash,
 		/obj/item/weapon/rig/security
 	)
 
@@ -221,7 +217,6 @@
 /obj/structure/closet/secure_closet/SSO/WillContain()
 	return list(
 		/obj/item/device/radio/headset/headset_sec,
-		/obj/item/weapon/gun/energy/taser,
 		/obj/item/clothing/mask/gas,
 		/obj/item/weapon/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
@@ -234,7 +229,6 @@
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,
 		/obj/item/device/holowarrant,
-//		/obj/item/device/flash,
 		/obj/item/device/flashlight/maglight,
 		/obj/item/device/tape/random = 3,
 		/obj/item/weapon/storage/belt/holster/forensic,
