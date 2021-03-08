@@ -67,6 +67,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 
 /datum/node_room/New(var/obj/effect/landmark/node_room/source)
 	GLOB.powernode_rooms += src
+	src.source = source
 	origin = get_turf(source)
 	measure_room()
 	prepare_room()

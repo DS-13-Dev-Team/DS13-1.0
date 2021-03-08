@@ -160,6 +160,11 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	lobby_track = decls_repository.get_decl(lobby_track_type)
 	world.update_status()
 
+
+
+//Called late in the load order after other subsystems are done
+/datum/map/proc/post_setup()
+	build_exoplanets()
 	if (powernode_rooms)
 		setup_powernode_rooms()
 
