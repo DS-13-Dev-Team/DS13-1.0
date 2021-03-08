@@ -82,10 +82,16 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return things
 
 
-//As above, but specifically finds turfs without dense objects blocking them
-/atom/proc/clear_turfs_in_view(var/check_range = world.view)
+/*
+	As above, but specifically finds turfs without dense objects blocking them
+	Floor only excludes space and openspace, only returning tiles that someone could stand/be placed on
+*/
+/atom/proc/clear_turfs_in_view(var/check_range = world.view, var/floor_only = TRUE)
 	var/list/things = list()
 	for (var/turf/T as anything in turfs_in_view(check_range))
+		if (floor_only && !istype(T, /turf/simulated/floor))
+			continue
+
 		if (turf_clear(T))
 			things += T
 
