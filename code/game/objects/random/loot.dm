@@ -14,10 +14,10 @@
 */
 /obj/random/loot
 	icon_state = "randomloot"
-/obj/random/loot/item_to_spawn()
-	return pickweight(list(/obj/random/common_loot = 74,
+	possible_spawns = list(/obj/random/common_loot = 74,
 				/obj/random/uncommon_loot = 20,
-				/obj/random/rare_loot = 6))
+				/obj/random/rare_loot = 6)
+
 
 /obj/random/loot/usually
 	spawn_nothing_percentage = USUALLY
@@ -82,8 +82,8 @@
 
 
 
-/obj/random/common_loot/item_to_spawn()
-	return pickweight(list(/obj/random/ammo = 1,
+/obj/random/common_loot
+	possible_spawns = list(/obj/random/ammo = 1,
 				/obj/random/tool = 3,
 				/obj/random/lathe_disk = 1,
 				/obj/random/powercell = 1,
@@ -96,13 +96,13 @@
 				/obj/random/storage = 1,
 				/obj/random/cash = 0.5,
 				/obj/random/light = 2
-				))
+				)
 
 
 
 
-/obj/random/uncommon_loot/item_to_spawn()
-	return pickweight(list(/obj/random/tool_upgrade = 3,
+/obj/random/uncommon_loot
+	possible_spawns = list(/obj/random/tool_upgrade = 3,
 	/obj/random/gun_tool = 0.5,//Only tool-like guns are randomly spawned, the military weapons stay in the armoury. More for theming than for balance
 	/obj/random/firstaid = 2,
 	/obj/random/glasses = 1,
@@ -113,19 +113,23 @@
 	/obj/random/pouch = 2,
 	/obj/random/tool/advanced = 1,
 	/obj/random/toolbox = 1,
-	/obj/random/rig_module = 0.5))
+	/obj/random/rig_module = 0.5)
 
 /obj/random/rare_loot
 	icon_state = "rareloot"
 
 
-/obj/random/rare_loot/item_to_spawn()
-	return pickweight(list( /obj/item/stack/power_node = 3,
+/obj/random/rare_loot
+	possible_spawns = list( /obj/item/stack/power_node = 3,
 	/obj/random/material/rare = 1,
 	/obj/random/tool/modded = 1,
 	/obj/random/material/rare = 1,
-	/obj/random/hardsuit = 0.5))
+	/obj/random/hardsuit = 0.5,
+	/obj/random/rig_module/rare = 1)
 
+//Subtype that cannot spawn power nodes
+/obj/random/rare_loot/nodeless
+	exclusions = list(/obj/item/stack/power_node)
 
 /obj/random/rare_loot/usually
 	spawn_nothing_percentage = USUALLY

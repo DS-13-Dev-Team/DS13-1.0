@@ -2,6 +2,8 @@
 	A node room is a special room which is sealed with a power lock, and cannot be entered except by opening that lock.
 
 	Node rooms contain goodies, lots of random loot
+	Node rooms are always pristine and in good condition. They have been sealed and are less worn than other places on the ship
+
 */
 GLOBAL_LIST_EMPTY(powernode_rooms)
 
@@ -29,7 +31,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 
 
 	//Chance that a piece of loot will spawn on the floor, even when placements are available
-	var/floor_spawn_chance = 10
+	var/floor_spawn_chance = 20
 
 	/*
 		Cache Lists
@@ -42,6 +44,16 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 
 	//Clear floor tiles, upon which we might place large items, or maybe just normal ones
 	var/list/floors = list()
+
+	//When a node room is in maintenance with a plating floor, we pick one of these floors to use instead
+	var/list/possible_flooring_types = list(/decl/flooring/carpet/red,
+	/decl/flooring/complex/perforated_gray,
+	/decl/flooring/complex/perforated_brown,
+	/decl/flooring/complex/mono,
+	/decl/flooring/complex/techno)
+
+	//The flooring we've picked
+	var/decl/flooring/selected_flooring
 
 	//A list of atoms which we've added the indestructible flag to. So we can remove it later
 	var/list/indestructible_atoms = list()
@@ -61,6 +73,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 		Loot spawns
 	*/
 	var/ammo = 5
+	var/toolmods = 5
 	var/uncommon_loot	= 10
 	var/rare_loot	= 5
 	//var/epic_loot	//Currently unused
@@ -82,6 +95,8 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 /datum/node_room/proc/measure_room()
 	turfs = get_room(origin, TRUE)	//This gets the turfs in the room, including walls
 	stuff = get_contents_list(turfs)	//Gets all the stuff in those turfs
+	if (origin.is_plating())
+		selected_flooring = pickweight(possible_flooring_types)
 
 /datum/node_room/proc/prepare_room()
 
@@ -95,8 +110,13 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 		if (T2)
 			make_indestructible(T2)
 
+
+		if (selected_flooring && isfloor(A))
+			var/turf/simulated/floor/F = A
+			F.set_flooring(get_flooring_data(selected_flooring))
 		if (turf_clear(A))
 			floors |= A
+
 
 	for (var/atom/A as anything in stuff)
 		if (isturf(A))
@@ -106,6 +126,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 		else if (istype(A, /obj/machinery/door/airlock))
 			make_indestructible(A)
 			lock_door(A)
+			doors += A
 		else if (iscloset(A) || istable(A))
 			placements += A
 		else if (islight(A))
@@ -120,6 +141,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 
 //The room has been opened with powernodes!
 /datum/node_room/proc/open()
+	opened = TRUE
 	//Open the doors
 	for (var/obj/machinery/door/airlock/A in doors)
 		unlock_door(A)
@@ -157,6 +179,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 	doors |= A
 	A.req_access |= access_powerlock
 	A.locked = TRUE
+	A.update_icon()
 
 /datum/node_room/proc/unlock_door(var/obj/machinery/door/airlock/A)
 
@@ -165,13 +188,15 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 	A.locked = FALSE
 	spawn(10)
 		A.open()
+	A.update_icon()
 
 
 
 /datum/node_room/proc/spawn_loot()
 	spawn_loot_type(/obj/random/ammo, ammo)
+	spawn_loot_type(/obj/random/tool_upgrade, toolmods)
 	spawn_loot_type(/obj/random/uncommon_loot, uncommon_loot)
-	spawn_loot_type(/obj/random/rare_loot, rare_loot)
+	spawn_loot_type(/obj/random/rare_loot/nodeless, rare_loot)
 
 /datum/node_room/proc/spawn_loot_type(var/item_path, var/quantity)
 	quantity *= multiplier
@@ -220,4 +245,5 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 				L.lightbulb.b_max_bright /= light_dim_factor
 				L.lightbulb.b_inner_range /= light_dim_factor
 				L.lightbulb.b_outer_range /= light_dim_factor
+				L.seton(TRUE)
 				L.update_icon()

@@ -14,9 +14,11 @@
 
 
 /obj/power_lock/attackby(obj/item/I, mob/user)
-	if (istype(I, /obj/item/stack/power_node))
 
+	if (istype(I, /obj/item/stack/power_node))
+		world << "Powerlock attackby [I]"
 		if (already_completed(user))
+			world << "Powerlock already done"
 			return
 
 		var/obj/item/stack/power_node/PN = I
@@ -38,4 +40,5 @@
 
 /obj/power_lock/proc/check_completion()
 	if (nodes_collected >= NR.difficulty)
+		world << "Powerlock opening"
 		NR.open()

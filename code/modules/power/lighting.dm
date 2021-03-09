@@ -117,7 +117,7 @@
 
 	src.transfer_fingerprints_to(newlight)
 
-	QDEL_IN(1, src)
+	QDEL_IN(src, 1)
 	return newlight
 
 /obj/machinery/light_construct/small
