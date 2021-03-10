@@ -91,7 +91,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 		return FALSE
 	flick("asteroidgun_firing", src)
 	next_shot = world.time + fire_delay
-	var/obj/item/projectile/bullet/asteroidcannon/bullet = new out
+	var/obj/item/projectile/bullet/asteroidcannon/bullet = new(out)
 	playsound(src, fire_sound, 100, 1)
 	//And apply the bullet offset... Gunners don't get hitscan bullets
 	if(lead_distance <= 0)
