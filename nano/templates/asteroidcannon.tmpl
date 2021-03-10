@@ -6,10 +6,22 @@
 </div>
 
 <h3>Maintenance Protocols:</h3>
+<div class="item">
+	System status: {{:data.reboot_status}}
+</div>
 <div class="item" style="padding-top: 10px">
 	<div class="item">
 		<div class="itemContent" style="padding-top: 2px; width: 100%">
-			{{:helper.link('Magnetic Accelerators', 'alert', {'magaccelerators' : '1'}, (data.magaccelerators || data.is_operational) ? 'disabled' : null , null)}}
+			{{:helper.link('Recalibrate Magnetic Accelerators', 'alert', {'magaccelerators' : '1'}, (!data.can_magaccelerators || data.is_operational) ? 'disabled' : null , null)}}
+		</div>
+		<div class="itemContent" style="padding-top: 2px; width: 100%">
+			{{:helper.link('Reset Flux Alignment Matrix', 'alert', {'fluxalignment' : '1'}, (!data.can_fluxalignment || data.is_operational) ? 'disabled' : null , null)}}
+		</div>
+		<div class="itemContent" style="padding-top: 2px; width: 100%">
+			{{:helper.link('Reboot Targeting Matrix', 'alert', {'targetingmatrix' : '1'}, (!data.can_targetingmatrix || data.is_operational) ? 'disabled' : null , null)}}
+		</div>
+		<div class="itemContent" style="padding-top: 2px; width: 100%">
+			{{:helper.link('Full System Reboot', 'alert', {'reboot' : '1'}, (!data.can_reboot || data.is_operational) ? 'disabled' : null , null)}}
 		</div>
 	</div>
 </div>

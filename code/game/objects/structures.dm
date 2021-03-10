@@ -18,6 +18,20 @@
 	var/step_priority = 1	//Priority of the sound attached to this
 	mass = 10
 
+/obj/structure/examine(mob/user, distance, infix, suffix)
+	. = ..()
+	var/message = ""
+	switch(health / max_health * 100)
+		if(0 to 20)
+			message = "<span class='warning'><b>It's falling apart!</b></span>"
+		if(20 to 40)
+			message = "<span class='warning'>It appears heavily damaged...</span>"
+		if(40 to 80)
+			message = "<span class='notice'>It looks a bit scuffed up...</span>"
+		if(80 to 100)
+			message = "<span class='notice'>It seems structurally sound...</span>"
+	to_chat(user, message)
+
 /obj/structure/proc/repair_damage(amount)
 	if(health + amount > max_health)
 		health = max_health
