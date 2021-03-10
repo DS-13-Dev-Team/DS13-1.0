@@ -48,7 +48,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 /mob/observer/eye/signal/apply_customisation(var/datum/preferences/prefs)
 
 /mob/observer/eye/signal/update_icon()
-	if (lazylen(variations))
+	if (LAZYLEN(variations))
 		icon_state = pick(variations)
 	else
 		icon_state = pick(GLOB.signal_sprites)

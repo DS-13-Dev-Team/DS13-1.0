@@ -67,8 +67,8 @@
 
 		for (var/iconstate in GLOB.signal_sprites)
 			var/icon/I = new ('icons/mob/eye.dmi',iconstate,SOUTH)
-			var/enabled = (iconstate in enabled)
-			. += image_check_panel(text = iconstate, I = I, ticked = enabled, user = user, command = enabled ? "disable" : "enable", source = src)
+			var/is_enabled = (iconstate in enabled)
+			. += image_check_panel(text = iconstate, I = I, ticked = enabled, user = user, command = is_enabled ? "disable" : "enable", source = src)
 
 
 	. += "</td></tr></table>"
@@ -81,10 +81,11 @@
 		return TOPIC_REFRESH
 
 	if(href_list["enable"])
+		//Do stuff here
 	return ..()
 
 
-/datum/category_item/player_setup_item/necromorph/customisation/initialize_necrocustom_prefs()
+/datum/category_item/player_setup_item/necromorph/customisation/proc/initialize_necrocustom_prefs()
 
 	pref.signal_custom = list()
 	pref.signal_custom["signal_base"] = GLOB.signal_sprites.Copy()
@@ -121,7 +122,7 @@
 	return html
 
 /datum/preferences/proc/can_customise()
-	if (patron)
+	if (is_patron())
 		return TRUE
 	return FALSE
 
