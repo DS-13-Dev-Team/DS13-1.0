@@ -230,7 +230,6 @@
 		/datum/design/autolathe/gun/combat_shotgun,
 		/datum/design/autolathe/gun/heavysniper,
 		/datum/design/autolathe/gun/grenade_launcher,
-		/datum/design/autolathe/gun/taser,
 		/datum/design/autolathe/gun/sniperrifle
 	)
 
