@@ -19,6 +19,9 @@ GLOBAL_LIST_EMPTY(asteroids)
 	var/next_shot = 0
 	var/fire_delay = 0.10 SECONDS
 
+/obj/machinery/asteroidcannon/proc/is_operational()
+	return TRUE
+
 /obj/machinery/asteroidcannon/ex_act(severity)
 	return FALSE
 
@@ -47,7 +50,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	var/obj/item/projectile/bullet/pellet/asteroidcannon/bullet = new (get_turf(locate(src.x+bullet_origin_offset, src.y, src.z)))
 	playsound(src, fire_sound, 100, 1)
 	//And apply the bullet offset... Gunners don't get hitscan bullets
-	if(lead_distance <= 0 && !gunner)
+	if(lead_distance <= 0)
 		bullet.hitscan = TRUE
 	bullet.launch(T)
 
@@ -145,6 +148,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	gunner.set_dir(8)
 	gunner.PushClickHandler(/datum/click_handler/target/asteroidcannon, CALLBACK(src, /datum/extension/asteroidcannon/proc/target_click, gunner))
 	gun.vis_contents += gunner
+	gun.lead_distance = 1 //Gunners don't get hitscan...
 	eyeobj = new /mob/observer/eye/asteroidcannon(get_turf(gun))
 	eyeobj.gun = gun
 	eyeobj.acceleration = FALSE
@@ -155,6 +159,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 
 /datum/extension/asteroidcannon/proc/remove_gunner()
 	qdel(eyeobj)
+	gun.lead_distance = initial(gun.lead_distance) //Gunners don't get hitscan...
 	gunner.verbs -= /mob/living/carbon/human/proc/stop_gunning
 	gunner.verbs -= /mob/living/carbon/human/proc/recenter_gunning
 	gunner.eyeobj = null
@@ -169,3 +174,58 @@ GLOBAL_LIST_EMPTY(asteroids)
 		return FALSE
 	gun = holder
 	START_PROCESSING(SSfastprocess, src)
+
+// Asteroid cannon console.
+/obj/machinery/computer/asteroidcannon
+	name = "Asteroid Defense Mainframe"
+	desc = "A console used to control the ship's automated asteroid defense systems."
+	var/ui_template = "asteroidcannon.tmpl"
+	var/obj/machinery/asteroidcannon/gun = null
+	var/reboot_step = 0
+	var/time_per_step = 10 SECONDS
+
+/obj/machinery/computer/asteroidcannon/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	if (!gun)
+		to_chat(user,"<span class='warning'>Unable to establish link with the asteroid cannon.</span>")
+		return
+
+	var/list/data = get_ui_data()
+
+	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	if(!ui)
+		ui = new(user, src, ui_key, ui_template, "[name]", 470, 450)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(TRUE)
+
+/obj/machinery/computer/asteroidcannon/attack_hand(user as mob)
+	if(..(user))
+		return
+	if(!allowed(user))
+		to_chat(user, "<span class='warning'>Access Denied.</span>")
+		return TRUE
+
+	ui_interact(user)
+
+/obj/machinery/computer/asteroidcannon/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer/asteroidcannon/LateInitialize()
+	. = ..()
+	gun = GLOB.asteroid_cannon
+
+/obj/machinery/computer/asteroidcannon/proc/get_ui_data()
+	var/list/data = list()
+	data["magaccelerators"] = reboot_step == 0
+	data["is_operational"] = gun?.is_operational()
+	data["cannon_status"] =  data["is_operational"] ? "ONLINE" : "OFFLINE"
+	return data
+
+/obj/machinery/computer/asteroidcannon/proc/handle_topic_href(var/datum/shuttle/autodock/shuttle, var/list/href_list, var/user)
+	if(!gun)
+		return TOPIC_NOACTION
+
+	if(href_list["magaccelerators"])
+		to_chat(world, "bing")
+		return TOPIC_REFRESH

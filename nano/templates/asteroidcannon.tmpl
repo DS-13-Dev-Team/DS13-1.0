@@ -1,0 +1,15 @@
+<h3>Asteroid Cannon Status:</h3>
+<div class="item" style="padding-top: 10px">
+	<div class="item">
+		{{:data.cannon_status}}
+	</div>
+</div>
+
+<h3>Maintenance Protocols:</h3>
+<div class="item" style="padding-top: 10px">
+	<div class="item">
+		<div class="itemContent" style="padding-top: 2px; width: 100%">
+			{{:helper.link('Magnetic Accelerators', 'alert', {'magaccelerators' : '1'}, (data.magaccelerators || data.is_operational) ? 'disabled' : null , null)}}
+		</div>
+	</div>
+</div>
