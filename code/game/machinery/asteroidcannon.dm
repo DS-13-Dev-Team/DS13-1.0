@@ -11,20 +11,27 @@ GLOBAL_LIST_EMPTY(asteroids)
 	density = TRUE
 	anchored = TRUE
 	dir = EAST //Ship faces east, so does big mega gun.
-	var/lead_distance = 3 //How aggressively to lead each shot.
+	var/lead_distance = 0 //How aggressively to lead each shot. If set to 0 the bullets become hitscan.
+	var/bullet_origin_offset = 4 //+/-x. Offsets the bullet so it can shoot "through the wall" to more closely mirror the source material's gun.
 	var/firing_arc = 180
 	var/fire_sound = 'sound/weapons/taser2.ogg'
 	var/datum/extension/asteroidcannon/AC = null
+	var/next_shot = 0
+	var/fire_delay = 0.10 SECONDS
 
 /obj/machinery/asteroidcannon/ex_act(severity)
 	return FALSE
 
-/obj/item/projectile/bullet/asteroidcannon
+/obj/item/projectile/bullet/pellet/asteroidcannon
 	name = "Accelerated Tungsten Slug"
 	icon_state = "asteroidcannon"
 	damage = 100
+	step_delay = 0
+	pellets = 2
+	range_step = 3
+	spread_step = 3
 
-/obj/item/projectile/bullet/asteroidcannon/Bump(atom/A, forced)
+/obj/item/projectile/bullet/pellet/asteroidcannon/Bump(atom/A, forced)
 	. = ..()
 	if(istype(A, /obj/effect/meteor))
 		var/obj/effect/meteor/M = A
@@ -33,11 +40,15 @@ GLOBAL_LIST_EMPTY(asteroids)
 		qdel(M)
 		qdel(src)
 
-/obj/machinery/asteroidcannon/proc/fire_at(turf/T)
-	if(Get_Angle(src, T) > firing_arc)
+/obj/machinery/asteroidcannon/proc/fire_at(atom/T)
+	if(Get_Angle(src, T) > firing_arc || world.time < next_shot)
 		return FALSE
-	var/obj/item/projectile/bullet/asteroidcannon/bullet = new (get_turf(src))
+	next_shot = world.time + fire_delay
+	var/obj/item/projectile/bullet/pellet/asteroidcannon/bullet = new (get_turf(locate(src.x+bullet_origin_offset, src.y, src.z)))
 	playsound(src, fire_sound, 100, 1)
+	//And apply the bullet offset... Gunners don't get hitscan bullets
+	if(lead_distance <= 0 && !gunner)
+		bullet.hitscan = TRUE
 	bullet.launch(T)
 
 /obj/machinery/asteroidcannon/attack_hand(mob/user)
@@ -57,6 +68,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	//Sets up the overlay
 	var/obj/asteroidover = new()
 	asteroidover.forceMove(src)
+	asteroidover.mouse_opacity = FALSE //Just a fluff overlay.
 	asteroidover.layer = layer + 0.1
 	asteroidover.icon = icon
 	asteroidover.icon_state = "asteroidgun_over"
@@ -92,8 +104,10 @@ GLOBAL_LIST_EMPTY(asteroids)
 	var/obj/effect/meteor/ME = pick(GLOB.asteroids)
 	//Lead your shots.
 	var/turf/aim_at = get_turf(ME)
-	if(ME.velocity)
+	if(ME.velocity && gun.lead_distance > 0)
 		aim_at = get_turf(locate(ME.x - (ME.velocity.x * gun.lead_distance), ME.y - (ME.velocity.y * gun.lead_distance), ME.z))
+	else
+		aim_at = ME
 	gun.fire_at(aim_at)
 
 /mob/living/carbon/human/proc/stop_gunning()
