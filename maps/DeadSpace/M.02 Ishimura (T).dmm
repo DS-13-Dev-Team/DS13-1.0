@@ -6898,6 +6898,13 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
+"UG" = (
+/obj/effect/landmark/node_room,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "ZF" = (
 /obj/machinery/door/airlock/civilian,
 /turf/simulated/floor/dank/mono,
@@ -14237,7 +14244,7 @@ je
 ja
 ja
 ja
-jr
+UG
 jr
 nb
 af

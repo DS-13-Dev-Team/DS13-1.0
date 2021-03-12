@@ -5558,6 +5558,11 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"oL" = (
+/obj/structure/table/steel,
+/obj/random/loot/sometimes/few,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "qO" = (
 /obj/effect/catwalk_plated/dank,
 /obj/structure/cable/green{
@@ -5579,6 +5584,28 @@
 /obj/structure/foamedmetal,
 /turf/simulated/wall/r_wall,
 /area/space)
+"vU" = (
+/obj/machinery/door/airlock/civilian,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"wW" = (
+/obj/structure/table/rack/dark,
+/obj/random/loot/sometimes/few,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"Ff" = (
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"FF" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "FV" = (
 /obj/structure/table/rack/dark,
 /obj/random/loot/sometimes/few,
@@ -5671,6 +5698,14 @@
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
+"WT" = (
+/obj/effect/landmark/node_room,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"YH" = (
+/obj/structure/table/rack/dark,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "ZQ" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor,
@@ -31793,7 +31828,7 @@ cl
 ck
 il
 il
-il
+ck
 ck
 dI
 dM
@@ -31995,7 +32030,7 @@ cl
 ck
 il
 il
-il
+ck
 ck
 ck
 ck
@@ -32197,10 +32232,10 @@ dE
 ck
 il
 il
-il
-il
-il
-il
+ck
+ia
+cl
+cl
 ck
 ij
 ck
@@ -32399,10 +32434,10 @@ dE
 ck
 il
 il
-il
-il
-il
-il
+ck
+oL
+cl
+cl
 ck
 co
 ck
@@ -32601,10 +32636,10 @@ eO
 ck
 il
 il
-il
-il
-il
-il
+ck
+cl
+cl
+cl
 ck
 co
 ck
@@ -32803,10 +32838,10 @@ cl
 ck
 il
 il
-il
-il
-il
-il
+ck
+cl
+cl
+cl
 ck
 co
 ck
@@ -33005,11 +33040,11 @@ cl
 ck
 il
 il
-il
-il
-il
-il
 ck
+Ff
+cl
+cl
+vU
 co
 gq
 ef
@@ -33207,10 +33242,10 @@ cl
 ck
 il
 il
-il
-il
-il
-il
+ck
+cl
+cl
+cl
 ck
 co
 gr
@@ -33409,10 +33444,10 @@ cl
 ck
 il
 il
-il
-il
-il
-il
+ck
+YH
+cl
+cl
 ck
 co
 eO
@@ -33611,10 +33646,10 @@ cl
 ck
 il
 il
-il
-il
-il
-il
+ck
+wW
+cl
+cl
 ck
 gp
 ck
@@ -33813,10 +33848,10 @@ cl
 ck
 il
 il
-il
-il
-il
-il
+ck
+wW
+cl
+WT
 ck
 co
 ck
@@ -44943,10 +44978,10 @@ eD
 gx
 el
 ef
-im
-im
-im
-ab
+ef
+ef
+ef
+ef
 ab
 ab
 ab
@@ -45145,10 +45180,10 @@ eE
 gy
 el
 ef
-im
-im
-im
-ab
+Vq
+kG
+Vq
+ef
 ac
 ac
 ac
@@ -45347,10 +45382,10 @@ eL
 ef
 em
 ef
-im
-im
-im
-ab
+eF
+eF
+eF
+ef
 ac
 aa
 aa
@@ -45549,10 +45584,10 @@ ga
 ef
 el
 ef
-im
-im
-im
-ab
+eF
+eF
+eF
+ef
 ac
 aa
 aa
@@ -45750,11 +45785,11 @@ eU
 eF
 ef
 el
+do
+kI
+FF
+eF
 ef
-im
-im
-im
-ab
 ac
 aa
 aa
@@ -45953,10 +45988,10 @@ eF
 ef
 el
 ef
-ab
-ab
-ab
-ab
+ef
+ef
+ef
+ef
 ac
 aa
 aa
