@@ -124,3 +124,15 @@
 	w_class = ITEM_SIZE_NORMAL
 	force = 5
 	one_hand_penalty = 0
+
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel/bola_lancher
+	name = "SCL Shotgun"
+	desc = "Omar's coming!"
+	icon_state = "scl_shotgun"
+	item_state = "scl_shotgun"
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	ammo_type = /obj/item/ammo_casing/shotgun/bola
+	w_class = ITEM_SIZE_NORMAL
+	load_method = MAGAZINE
+	force = 5
+	one_hand_penalty = 0
