@@ -17,7 +17,9 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 
 	//Powerlock
 	var/obj/power_lock/lock
-
+	var/lock_dir	= SOUTH	//What direction should the lock face when we place it?
+	var/turf/lock_spawn_turf
+	var/turf/lock_offset_turf
 
 
 	//How many powernodes are needed to open this?
@@ -72,10 +74,10 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 	/*
 		Loot spawns
 	*/
-	var/ammo = 5
-	var/toolmods = 5
-	var/uncommon_loot	= 10
-	var/rare_loot	= 5
+	var/ammo = 4
+	var/toolmods = 4
+	var/uncommon_loot	= 9
+	var/rare_loot	= 4
 	//var/epic_loot	//Currently unused
 
 /datum/node_room/New(var/obj/effect/landmark/node_room/source)
@@ -93,7 +95,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 
 
 /datum/node_room/proc/measure_room()
-	turfs = get_room(origin, TRUE)	//This gets the turfs in the room, including walls
+	turfs = get_room(origin, TRUE, same_level_only = TRUE)	//This gets the turfs in the room, including walls
 	stuff = get_contents_list(turfs)	//Gets all the stuff in those turfs
 	if (origin.is_plating())
 		selected_flooring = pickweight(possible_flooring_types)
@@ -154,7 +156,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 	illuminate_lights()
 
 /datum/node_room/proc/set_difficulty()
-	difficulty = rand_between(1, source.max_difficulty)
+	difficulty = rand(1, source.max_difficulty)
 	multiplier = 1 + ((difficulty - 1)* 0.5)
 
 /datum/node_room/proc/make_indestructible(var/atom/A)
@@ -220,15 +222,78 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 	/*
 		Lets pick which door we're going to put the lock next to
 	*/
-	var/obj/machinery/door/airlock/A = doors[1]
-	if (doors.len > 1)
-		A = pick(doors)	//Todo: try to pick one that stands alone with a nearby wall to use
 
-	lock = new (get_turf(A))
+	var/list/possible_doors = doors.Copy()
+	var/obj/machinery/door/airlock/A
+	while (doors.len > 0 && !lock_offset_turf)
+		A = pick_n_take(possible_doors)
+		get_lock_mountpoint(A)
+
+
+	if (!lock_offset_turf)
+		message_admins("ERROR: Powerlocked room unable to spawn lock at [jumplink(origin)]")
+		return
+			//Todo: try to pick one that stands alone with a nearby wall to use
+
+	lock = new (lock_spawn_turf)
+	//Do a square offset so it completes full diagonal movement
+	lock.offset_to(lock_offset_turf, WORLD_ICON_SIZE, square = TRUE)
+	lock.dir = lock_dir
 	lock.NR = src
-	for (var/turf/simulated/wall/W in lock.get_cardinal())
-		lock.offset_to(W, 24)
-		break
+
+/*
+	Given an airlock, this proc attempts to find the turf we should place a powerlock onto
+*/
+/datum/node_room/proc/get_lock_mountpoint(var/obj/machinery/door/airlock/A)
+	//This is a somewhat complicated process, done in several phases
+	/*
+		First of all we need to figure out what direction outwards the door is facing. Outwards is relative to where the room is so
+		-We get the two tiles infront and behind the door (according to its dir)
+		-We'll also grab a list of the side turfs by subtracting those two from cardinal
+		-We remove the one which is in the room's turf list
+		-The direction to the remaining one is the out direction
+	*/
+	var/list/doorturfs = list(get_step(A, A.dir), get_step(A, GLOB.reverse_dir[A.dir]))
+	var/list/side_turfs = A.get_cardinal() - doorturfs
+	doorturfs -= turfs
+
+	//something went horribly wrong!
+	if (!doorturfs.len)
+		return null
+
+	//Now we know the direction
+	var/turf/front = doorturfs[1]
+	var/front_dir = get_dir(A, front)
+
+	lock_spawn_turf = front
+
+
+	/*
+		Alright, next step. Lets look at those side turfs and see if any are suitable
+		To qualify it just needs a viable space infront of it. Front being the same as the door's front
+	*/
+	for (var/turf/T in side_turfs)
+		var/turf/diagonal = get_step(T, front_dir)
+		if (!diagonal.has_wall())
+			//This is good enough
+			lock_dir = front_dir
+			lock_offset_turf = T
+			return
+
+	/*
+		If we get here, then none of those side turfs had a tile infront
+		In this case, we will look at the turfs infront of those side turfs instead
+	*/
+	for (var/turf/T in side_turfs)
+		var/turf/diagonal = get_step(T, front_dir)
+		if (diagonal.has_wall())
+			//This is good enough
+			lock_dir = get_dir(diagonal, front)
+			lock_offset_turf = diagonal
+			return
+
+
+
 
 /datum/node_room/proc/dim_lights()
 	for (var/obj/machinery/light/L in lights)

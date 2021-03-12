@@ -42,6 +42,18 @@
 
 	var/movement_delay
 
+
+/turf/proc/has_wall()
+	if (is_wall)
+		return TRUE
+	for (var/atom/A in src)
+		if (iswindow(A))
+			var/obj/structure/window/W = A
+			if (W.is_full_window())
+				return TRUE
+
+	return FALSE
+
 /turf/New()
 	..()
 	for(var/atom/movable/AM as mob|obj in src)

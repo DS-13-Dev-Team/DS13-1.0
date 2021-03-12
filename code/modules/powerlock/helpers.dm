@@ -17,15 +17,24 @@
 	Not recommended for use after roundstart, as gameplay may result in walls being removed and rooms changing
 
 	The perimeter var grabs a 1 tile buffer around the room as well. important if you want walls, windows, doors, etc
+	Same level only var confines room selection to the same zlevel
 */
-/proc/get_room(var/turf/simulated/origin, var/perimeter = TRUE)
+/proc/get_room(var/turf/simulated/origin, var/perimeter = TRUE, var/same_level_only = FALSE)
 	. = list()
 
 	if (istype(origin) && origin.zone)
 		. += origin.zone.contents
 
+
+
 	//else
 		//Possible future todo: Account for vacuum and flood fill the room manually?
+
+
+	if (same_level_only)
+		for (var/turf/T in .)
+			if (T.z != origin.z)
+				.-=T
 
 	if (perimeter)
 		for (var/turf/T in .)

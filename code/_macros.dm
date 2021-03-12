@@ -89,6 +89,8 @@
 
 #define isCoil(A) istype(A, /obj/item/stack/cable_coil)
 
+#define iswindow(A)	istype(A, /obj/structure/window)
+
 #define isWirecutter(A) A.has_quality(QUALITY_WIRE_CUTTING)
 
 #define isScrewdriver(A) A.has_quality(QUALITY_SCREW_DRIVING)
