@@ -146,7 +146,7 @@
 
 /obj/item/ammo_casing/shotgun/bola
 	name = "bola"
-	desc = "a bullet that when fired releases a ball that captures the target."
+	desc = "A bullet that when fired releases a ball that captures the target."
 	icon_state = "fshell"
 	spent_icon = "fshell-spent"
 	projectile_type = /obj/item/projectile/bullet/shotgun/bola

@@ -188,6 +188,15 @@
 	if(handle_casings != HOLD_CASINGS)
 		chambered = null
 
+/obj/item/weapon/gun/projectile/proc/load_magazine(obj/item/A, mob/user)
+	if(ammo_magazine)
+		to_chat(user, "<span class='warning'>[src] already has a magazine loaded.</span>")//already a magazine here
+		return
+
+	ammo_magazine = A
+	user.visible_message("[user] inserts [A] into [src].", "<span class='notice'>You insert [A] into [src].</span>")
+	playsound(loc, mag_insert_sound, 50, 1)
+	update_firemode()
 
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
@@ -202,16 +211,10 @@
 				if((ispath(allowed_magazines) && !istype(A, allowed_magazines)) || (islist(allowed_magazines) && !is_type_in_list(A, allowed_magazines)))
 					to_chat(user, "<span class='warning'>\The [A] won't fit into [src].</span>")
 					return
-				if(ammo_magazine)
-					to_chat(user, "<span class='warning'>[src] already has a magazine loaded.</span>")//already a magazine here
 
-					return
 				if(!user.unEquip(AM, src))
 					return
-				ammo_magazine = AM
-				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
-				playsound(loc, mag_insert_sound, 50, 1)
-				update_firemode()
+				load_magazine(A, user)
 			if(SPEEDLOADER)
 				if(loaded.len >= max_shells)
 					to_chat(user, "<span class='warning'>[src] is full!</span>")
@@ -249,6 +252,9 @@
 
 	update_icon()
 
+/obj/item/weapon/gun/projectile/proc/on_unload_ammo(atom/A)
+	return TRUE
+
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
 /obj/item/weapon/gun/projectile/unload_ammo(mob/user, var/allow_dump=1)
 	if(is_jammed)
@@ -262,7 +268,9 @@
 		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
 		playsound(loc, mag_remove_sound, 50, 1)
 		ammo_magazine.update_icon()
+		var/atom/A = ammo_magazine
 		ammo_magazine = null
+		on_unload_ammo(A)
 	else if(loaded.len)
 		//presumably, if it can be speed-loaded, it can be speed-unloaded.
 		if(allow_dump && (load_method & SPEEDLOADER))
