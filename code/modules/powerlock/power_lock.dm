@@ -12,7 +12,7 @@
 	.=..()
 
 	set_light(1, 1, 3, 2.5, COLOR_DEEP_SKY_BLUE)
-
+	update_icon()
 
 /obj/power_lock/examine(var/mob/user)
 	.=..()

@@ -15,3 +15,7 @@ GLOBAL_LIST_EMPTY(possible_node_rooms)
 /obj/effect/landmark/node_room/New()
 	GLOB.possible_node_rooms[src] = weight
 	.=..()
+
+
+/obj/effect/landmark/node_room/maintenance
+	weight = 2
