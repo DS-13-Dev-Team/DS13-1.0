@@ -138,6 +138,9 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 			var/obj/machinery/light_construct/LC = A
 			var/atom/B = LC.finish_construction(TRUE)
 			lights += B
+		else if (istype(A, /obj/item/stack/power_node))
+			qdel(A)//We dont want powernodes to spawn inside these rooms, Replace it with some generic loot
+			uncommon_loot++
 
 	stuff = list()	//Dont need this data anymore
 
