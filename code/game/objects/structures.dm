@@ -169,6 +169,8 @@
 
 //Called when a structure takes damage
 /obj/structure/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	if (!bypass_resist)
 		amount -= resistance
 

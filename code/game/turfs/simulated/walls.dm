@@ -153,6 +153,8 @@
 	return
 
 /turf/simulated/wall/proc/take_damage(dam)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	if(dam)
 		damage = max(0, damage + dam)
 		update_damage()
@@ -191,7 +193,8 @@
 	return ..()
 
 /turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product)
-
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
 		if(reinf_material)

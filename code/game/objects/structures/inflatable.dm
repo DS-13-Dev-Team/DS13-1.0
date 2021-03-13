@@ -61,7 +61,8 @@
 
 //Inflatables have no defense against sharp tools
 /obj/structure/inflatable/take_damage(var/amount, var/damtype = BRUTE, var/mob/user, var/used_weapon, var/bypass_resist = FALSE)
-
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	if (isitem(used_weapon))
 		var/obj/item/I = used_weapon
 		if (I.sharp)

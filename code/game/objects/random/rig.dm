@@ -22,8 +22,8 @@
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "generic"
 
-/obj/random/rig_module/item_to_spawn()
-	return pickweight(list(/obj/item/rig_module/kinesis = 2,
+/obj/random/rig_module
+	possible_spawns = list(/obj/item/rig_module/kinesis = 2,
 	/obj/item/rig_module/kinesis/advanced = 0.5,
 	/obj/item/rig_module/healthbar/advanced = 1,
 	/obj/item/rig_module/storage = 0.75,
@@ -46,4 +46,22 @@
 	/obj/item/rig_module/power_sink = 1,
 	/obj/item/rig_module/extension/speedboost = 1,
 	/obj/item/rig_module/extension/speedboost/advanced = 0.5
-	))
+	)
+
+/*
+	Only contains the good stuff
+*/
+/obj/random/rig_module/rare
+	possible_spawns = list(/obj/item/rig_module/kinesis/advanced = 0.5,
+	/obj/item/rig_module/healthbar/advanced = 1,
+	/obj/item/rig_module/storage/heavy = 0.5,
+	/obj/item/rig_module/vision/thermal = 0.2,
+	/obj/item/rig_module/chem_dispenser/ninja = 0.2,
+	/obj/item/rig_module/self_destruct = 0.2,
+	/obj/item/rig_module/power_sink = 0.5,
+	/obj/item/rig_module/grenade_launcher = 0.2,
+	/obj/item/rig_module/grenade_launcher/smoke = 0.5,
+	/obj/item/rig_module/grenade_launcher/mfoam = 0.5,
+	/obj/item/rig_module/extension/speedboost = 1,
+	/obj/item/rig_module/extension/speedboost/advanced = 0.5
+	)

@@ -511,24 +511,7 @@
 
 /obj/structure/window/reinforced/full/indestructible
 	icon_state = "rwindow_full"
-
-/obj/structure/window/reinforced/full/indestructible/attack_hand()
-	return
-
-/obj/structure/window/reinforced/full/indestructible/attackby()
-	return
-
-/obj/structure/window/reinforced/full/indestructible/ex_act()
-	return
-
-/obj/structure/window/reinforced/full/indestructible/hitby()
-	return
-
-/obj/structure/window/reinforced/full/indestructible/take_damage()
-	return
-
-/obj/structure/window/reinforced/full/indestructible/shatter()
-	return
+	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
 
 /obj/structure/window/reinforced/polarized
 	name = "electrochromic window"

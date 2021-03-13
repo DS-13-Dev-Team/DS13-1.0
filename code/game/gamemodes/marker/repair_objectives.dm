@@ -108,6 +108,8 @@
 	GLOB.shipsystem.comms_enabled = TRUE
 
 /obj/structure/ship_component/take_damage(amount)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	if(health <= amount)
 		health = 5
 		operational = FALSE
