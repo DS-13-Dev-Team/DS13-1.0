@@ -91,8 +91,6 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 	create_lock()
 	dim_lights()
 
-	world << "Powerlocked room created at [jumplink(origin)]"
-
 
 /datum/node_room/proc/measure_room()
 	turfs = get_room(origin, TRUE, same_level_only = TRUE)	//This gets the turfs in the room, including walls
