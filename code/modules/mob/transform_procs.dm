@@ -22,7 +22,7 @@
 
 	DEL_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	stunned = 0
-	UpdateLyingBuckledAndVerbStatus()
+	update_lying_buckled_and_verb_status()
 	set_invisibility(initial(invisibility))
 
 	if(!species.primitive_form) //If the creature in question has no primitive set, this is going to be messy.
@@ -312,7 +312,7 @@
 	if (src.mind)
 		if (src.mind.special_role == "Zombie")
 			return
-		src.mind.special_role = "Zombie"
+		src.mind.set_special_role("Zombie")
 	log_admin("[key_name(src)] has transformed into a zombie!")
 	Weaken(5)
 	if (should_have_organ(BP_HEART))

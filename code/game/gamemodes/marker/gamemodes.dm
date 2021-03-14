@@ -9,7 +9,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	round_description = "The crew of the USG Ishimura has brought aboard a strange artifact and is tasked with discovering what its purpose is."
 	extended_round_description = "The crew must holdout until help arrives"
 	config_tag = "containment"
-	votable = TRUE
+	votable = TRUE//Debug TRUE
 
 /datum/game_mode/marker/containment/get_marker_location()
 	return pick(SSnecromorph.marker_spawns_ishimura)
@@ -25,7 +25,8 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	extended_round_description = "The crew must holdout until help arrives"
 	config_tag = "enemy_within"
 	votable = TRUE
-	antag_tags = list(MODE_UNITOLOGIST_SHARD)
+	antag_tags = list(MODE_UNITOLOGIST_SHARD, MODE_EARTHGOV_AGENT)
+	latejoin_antag_tags = list(MODE_UNITOLOGIST_SHARD)
 
 /datum/game_mode/marker/enemy_within/get_marker_location()
 	return pick(SSnecromorph.marker_spawns_aegis)
@@ -40,9 +41,9 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	end_on_antag_death = 0
 	round_autoantag = TRUE
 	auto_recall_shuttle = FALSE
-	antag_tags = list(MODE_UNITOLOGIST)
-	latejoin_antag_tags = list(MODE_UNITOLOGIST)
-	antag_templates = list(/datum/antagonist/unitologist)
+	antag_tags = list(MODE_UNITOLOGIST, MODE_EARTHGOV_AGENT)
+	latejoin_antag_tags = list(MODE_UNITOLOGIST, MODE_EARTHGOV_AGENT)
+	antag_templates = list(/datum/antagonist/unitologist, /datum/antagonist/earthgov_agent)
 	require_all_templates = FALSE
 	votable = FALSE
 	var/marker_setup_time = 45 MINUTES
@@ -142,7 +143,7 @@ Non-critical characters like any ghost-roles you may wish to add, or even antags
 	if(marker_active)	//Marker must be active
 		if (get_historic_crew_total() >= minimum_historic_crew)	//We need to have had a minimum total crewcount
 			var/minimum_living_crew = Ceiling(get_historic_crew_total() * minimum_alive_percentage)	//This many crew players at least, need to be left alive
-			if (get_living_crew_total() < minimum_living_crew)
+			if (get_living_active_crew_aboard_ship() < minimum_living_crew)
 				return TRUE
 
 	return ..() //Fallback to the default game end conditions like all antags dying, shuttles being docked, etc.

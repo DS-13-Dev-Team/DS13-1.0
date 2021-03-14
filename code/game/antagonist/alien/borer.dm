@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(borers, /datum/antagonist/xenos/borer, new)
-
 /datum/antagonist/xenos/borer
 	id = MODE_BORER
 	role_text = "Cortical Borer"

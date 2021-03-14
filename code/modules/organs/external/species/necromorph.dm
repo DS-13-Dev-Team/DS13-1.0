@@ -104,6 +104,8 @@
 		owner.update_body(TRUE)
 
 
+
+
 /obj/item/organ/external/head/simple/slasher_enhanced
 	normal_eyes = FALSE
 	glowing_eyes = TRUE

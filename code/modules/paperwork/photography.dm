@@ -70,6 +70,11 @@ var/global/photo_count = 0
 	if(in_range(user, src))
 		show(user)
 		to_chat(user, desc)
+		//If we've captured anything suspicious in this photograph...
+		var/datum/extension/earthgov_evidence/suspicion = get_extension(src, /datum/extension/earthgov_evidence)
+		if(suspicion && ishuman(user))
+			suspicion.display_evidence(user)
+
 	else
 		to_chat(user, "<span class='notice'>It is too far away.</span>")
 
@@ -193,22 +198,33 @@ var/global/photo_count = 0
 
 /obj/item/device/camera/proc/get_mobs(turf/the_turf as turf)
 	var/mob_detail
-	for(var/mob/living/carbon/A in the_turf)
-		if(A.invisibility) continue
-		var/holding = null
-		if(A.l_hand || A.r_hand)
-			if(A.l_hand) holding = "They are holding \a [A.l_hand]"
-			if(A.r_hand)
-				if(holding)
-					holding += " and \a [A.r_hand]"
-				else
-					holding = "They are holding \a [A.r_hand]"
+	for(var/atom/movable/AM in the_turf)
+		if(AM.invisibility) continue
+		if(iscarbon(AM)) //Carbons are added to the details...
+			var/mob/living/carbon/A = AM
+			var/holding = null
+			if(A.l_hand || A.r_hand)
+				if(A.l_hand) holding = "They are holding \a [A.l_hand]"
+				if(A.r_hand)
+					if(holding)
+						holding += " and \a [A.r_hand]"
+					else
+						holding = "They are holding \a [A.r_hand]"
 
-		if(!mob_detail)
-			mob_detail = "You can see [A] on the photo[(A.health / A.max_health) < 0.75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]. "
-		else
-			mob_detail += "You can also see [A] on the photo[(A.health / A.max_health)< 0.75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
+			if(!mob_detail)
+				mob_detail = "You can see [A] on the photo[(A.health / A.max_health) < 0.75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]. "
+			else
+				mob_detail += "You can also see [A] on the photo[(A.health / A.max_health)< 0.75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
+
 	return mob_detail
+//Record evidence which earthgov agents can fax home for greentext.
+/obj/item/device/camera/proc/get_evidence(turf/T)
+	for(var/atom/movable/AM in T)
+		for(var/sustype in EARTHGOV_EVIDENCE_TYPES)
+			if(istype(AM, sustype))
+				message_admins("[AM] IS SUS!")
+				return AM
+	return null
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
 	if(!on || !pictures_left || ismob(target.loc)) return
@@ -244,19 +260,22 @@ var/global/photo_count = 0
 	var/y_c = target.y + (size-1)/2
 	var/z_c	= target.z
 	var/mobs = ""
+	var/atom/movable/earthgov_evidence = null
 	for(var/i = 1 to size)
 		for(var/j = 1 to size)
 			var/turf/T = locate(x_c, y_c, z_c)
 			if(user.can_capture_turf(T))
 				mobs += get_mobs(T)
+				if(!earthgov_evidence) //Don't overwrite our currently acquired evidence....
+					earthgov_evidence = get_evidence(T)
 			x_c++
 		y_c--
 		x_c = x_c - size
 
-	var/obj/item/weapon/photo/p = createpicture(target, user, mobs, flag)
+	var/obj/item/weapon/photo/p = createpicture(target, user, mobs, earthgov_evidence, flag)
 	printpicture(user, p)
 
-/obj/item/device/camera/proc/createpicture(atom/target, mob/user, mobs, flag)
+/obj/item/device/camera/proc/createpicture(atom/target, mob/user, mobs, atom/movable/earthgov_evidence, flag)
 	var/x_c = target.x - (size-1)/2
 	var/y_c = target.y - (size-1)/2
 	var/z_c	= target.z
@@ -267,6 +286,8 @@ var/global/photo_count = 0
 	p.desc = mobs
 	p.photo_size = size
 	p.update_icon()
+	if(earthgov_evidence)
+		set_extension(p, /datum/extension/earthgov_evidence, earthgov_evidence) //Mark us as valid earthgov evidence, and record details about what they saw.
 
 	return p
 
@@ -287,6 +308,12 @@ var/global/photo_count = 0
 	p.pixel_y = pixel_y
 	p.photo_size = photo_size
 	p.scribble = scribble
+	//Ensure that the earthgov evidence is transferred over
+	var/datum/extension/earthgov_evidence/egov = get_extension(src, /datum/extension/earthgov_evidence)
+	if(egov)
+		set_extension(p, /datum/extension/earthgov_evidence)
+		var/datum/extension/earthgov_evidence/othergov = get_extension(p, /datum/extension/earthgov_evidence)
+		egov.copy_to(othergov)
 
 	if(copy_id)
 		p.id = id

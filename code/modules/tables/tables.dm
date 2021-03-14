@@ -44,6 +44,13 @@
 		if(3.0)
 			take_damage(rand(75, 125))//Enough to break a plastic table and sometimes a marble one
 
+/obj/structure/table/get_heat_limit()
+	var/material/M = get_material()
+	if (M)
+		return M.get_heat_limit()
+
+	.=..()
+
 /obj/structure/table/proc/update_material()
 	var/old_max_health = max_health
 	if(!material)
@@ -257,7 +264,7 @@
 		return
 	user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>",
 	                              "<span class='notice'>You dismantle \the [src].</span>")
-	new /obj/item/stack/material/steel(src.loc)
+	new /obj/item/stack/material/steel(src.loc, 2)
 	qdel(src)
 	return
 

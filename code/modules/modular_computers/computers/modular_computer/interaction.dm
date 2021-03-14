@@ -25,6 +25,9 @@
 		to_chat(usr, "<span class='warning'>You can't reach it.</span>")
 		return
 
+	do_shutdown()
+
+/obj/item/modular_computer/proc/do_shutdown()
 	if(enabled)
 		bsod = 1
 		update_icon()
@@ -34,6 +37,23 @@
 			bsod = 0
 			update_icon()
 
+
+/obj/item/modular_computer/meddle()
+	if (enabled)
+		//If a human is standing infront of the computer, we can't turn it off.
+		//A safeguard to stop petty signals trying to prevent evac
+		var/mob/living/carbon/human/H = locate() in get_step(src, dir)
+		if (!H)
+			do_shutdown()
+	else
+		turn_on()
+
+
+	var/list/sounds = list("keyboard", "keystroke", 'sound/effects/compbeep1.ogg','sound/effects/compbeep2.ogg','sound/effects/compbeep3.ogg','sound/effects/compbeep4.ogg','sound/effects/compbeep5.ogg')
+
+	if(world.time > ambience_last_played + 1 SECOND)
+		ambience_last_played = world.time
+		playsound(src.loc, pick(sounds),VOLUME_MID, TRUE)
 
 // Eject ID card from computer, if it has ID slot with card inside.
 /obj/item/modular_computer/verb/eject_id()

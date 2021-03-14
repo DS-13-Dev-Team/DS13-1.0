@@ -146,3 +146,33 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 	if(job.department_flag & MIN)
 		return "Mining"
 	return "Common"
+
+/datum/announcement/priority/command/special/Announce(message as text, new_title = "", new_sound = null, do_newscast = newscast, msg_sanitized = 0, zlevels = GLOB.using_map.contact_levels)
+	if(!message)
+		return
+
+	if (contains_links(message))
+		to_chat(usr, SPAN_DANGER("Links are not allowed in in-character messages"))
+		return FALSE
+	var/message_title = new_title ? new_title : title
+	var/message_sound = new_sound ? new_sound : sound
+
+	if(!msg_sanitized)
+		message = sanitize(message, extra = 0, allow_links = FALSE)	//No links in IC communication
+	message_title = sanitizeSafe(message_title)
+
+	var/msg = FormMessage(message, message_title)
+	for(var/mob/M in GLOB.player_list)
+		if(M.is_necromorph())
+			continue
+		if((M.z in (zlevels | GLOB.using_map.admin_levels)) && !istype(M,/mob/new_player) && !isdeaf(M))
+			to_chat(M, msg)
+			if(message_sound)
+				sound_to(M, message_sound)
+
+	if(do_newscast)
+		NewsCast(message, message_title)
+
+	if(log)
+		log_say("[key_name(usr)] has made \a [announcement_type]: [message_title] - [message] - [announcer]")
+		message_admins("[key_name_admin(usr)] has made \a [announcement_type].", 1)

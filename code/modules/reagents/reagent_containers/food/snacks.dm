@@ -405,22 +405,14 @@
 	..()
 	bitesize = 1
 
-/obj/item/weapon/reagent_containers/food/snacks/carpmeat
-	desc = "A fillet of space carp meat."
-/obj/item/weapon/reagent_containers/food/snacks/carpmeat/New()
-	..()
-	reagents.add_reagent(/datum/reagent/nutriment/protein, 3)
-	reagents.add_reagent(/datum/reagent/toxin/carpotoxin, 6)
-	src.bitesize = 6
-
-/obj/item/weapon/reagent_containers/food/snacks/carpmeat/safe
+/obj/item/weapon/reagent_containers/food/snacks/fish
 	name = "fish fillet"
 	desc = "A fillet of fish meat"
 	icon_state = "fishfillet"
 	filling_color = "#ffdefe"
 	center_of_mass = "x=17;y=13"
 
-/obj/item/weapon/reagent_containers/food/snacks/carpmeat/safe/New()
+/obj/item/weapon/reagent_containers/food/snacks/fish/New()
 	..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 3)
 	src.bitesize = 6
@@ -586,19 +578,6 @@
 	reagents.add_reagent(/datum/reagent/alkysine, 6)
 	bitesize = 2
 
-/obj/item/weapon/reagent_containers/food/snacks/ghostburger
-	name = "ghost burger"
-	desc = "Spooky! It doesn't look very filling."
-	icon_state = "ghostburger"
-	filling_color = "#fff2ff"
-	center_of_mass = "x=16;y=11"
-	nutriment_desc = list("buns" = 3, "spookiness" = 3)
-	nutriment_amt = 2
-/obj/item/weapon/reagent_containers/food/snacks/ghostburger/New()
-	..()
-	bitesize = 2
-
-
 /obj/item/weapon/reagent_containers/food/snacks/human
 	var/hname = ""
 	var/job = null
@@ -689,33 +668,6 @@
 /obj/item/weapon/reagent_containers/food/snacks/tofuburger/New()
 	..()
 	bitesize = 2
-
-/obj/item/weapon/reagent_containers/food/snacks/roburger
-	name = "roburger"
-	desc = "The lettuce is the only organic component. Beep."
-	icon_state = "roburger"
-	filling_color = "#cccccc"
-	center_of_mass = "x=16;y=11"
-	nutriment_desc = list("bun" = 2, "iron" = 3)
-	nutriment_amt = 2
-/obj/item/weapon/reagent_containers/food/snacks/roburger/New()
-	..()
-	if(prob(5))
-		reagents.add_reagent(/datum/reagent/nanites, 2)
-	bitesize = 2
-
-/obj/item/weapon/reagent_containers/food/snacks/roburgerbig
-	name = "roburger"
-	desc = "This massive patty looks like poison. Beep."
-	icon_state = "roburger"
-	filling_color = "#cccccc"
-	volume = 100
-	center_of_mass = "x=16;y=11"
-
-/obj/item/weapon/reagent_containers/food/snacks/roburgerbig/New()
-	..()
-	reagents.add_reagent(/datum/reagent/nanites, 100)
-	bitesize = 0.1
 
 /obj/item/weapon/reagent_containers/food/snacks/xenoburger
 	name = "xenoburger"
@@ -1001,8 +953,8 @@
 	..()
 	bitesize = 2
 
-/obj/item/weapon/reagent_containers/food/snacks/cubancarp
-	name = "\improper Cuban Carp"
+/obj/item/weapon/reagent_containers/food/snacks/cubanfish
+	name = "\improper Cuban Fish"
 	desc = "A sandwich that burns your tongue and then leaves it numb!"
 	icon_state = "cubancarp"
 	trash = /obj/item/trash/plate
@@ -1010,7 +962,7 @@
 	center_of_mass = "x=12;y=5"
 	nutriment_desc = list("toasted bread" = 3)
 	nutriment_amt = 3
-/obj/item/weapon/reagent_containers/food/snacks/cubancarp/New()
+/obj/item/weapon/reagent_containers/food/snacks/cubanfish/New()
 	..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 3)
 	reagents.add_reagent(/datum/reagent/capsaicin, 3)
@@ -1193,22 +1145,6 @@
 	reagents.add_reagent(/datum/reagent/psilocybin, 6)
 	bitesize = 3
 
-/obj/item/weapon/reagent_containers/food/snacks/amanitajelly
-	name = "amanita jelly"
-	desc = "Looks curiously toxic."
-	icon_state = "amanitajelly"
-	trash = /obj/item/trash/snack_bowl
-	filling_color = "#ed0758"
-	center_of_mass = "x=16;y=5"
-	nutriment_desc = list("jelly" = 3, "mushroom" = 3)
-	nutriment_amt = 6
-
-/obj/item/weapon/reagent_containers/food/snacks/amanitajelly/New()
-	..()
-	reagents.add_reagent(/datum/reagent/toxin/amatoxin, 6)
-	reagents.add_reagent(/datum/reagent/psilocybin, 3)
-	bitesize = 3
-
 /obj/item/weapon/reagent_containers/food/snacks/poppypretzel
 	name = "poppy pretzel"
 	desc = "It's all twisted up!"
@@ -1322,7 +1258,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/mysterysoup/New()
 	..()
-	switch(rand(1,10))
+	switch(rand(1,9))
 		if(1)
 			reagents.add_reagent(/datum/reagent/nutriment, 6)
 			reagents.add_reagent(/datum/reagent/capsaicin, 3)
@@ -1345,15 +1281,12 @@
 			reagents.add_reagent(/datum/reagent/nutriment, 6)
 			reagents.add_reagent(/datum/reagent/blood, 10)
 		if(7)
-			reagents.add_reagent(/datum/reagent/slimejelly, 10)
-			reagents.add_reagent(/datum/reagent/water, 10)
-		if(8)
 			reagents.add_reagent(/datum/reagent/carbon, 10)
 			reagents.add_reagent(/datum/reagent/toxin, 10)
-		if(9)
+		if(8)
 			reagents.add_reagent(/datum/reagent/nutriment, 5)
 			reagents.add_reagent(/datum/reagent/drink/juice/tomato, 10)
-		if(10)
+		if(9)
 			reagents.add_reagent(/datum/reagent/nutriment, 6)
 			reagents.add_reagent(/datum/reagent/drink/juice/tomato, 5)
 			reagents.add_reagent(/datum/reagent/imidazoline, 5)
@@ -1485,18 +1418,6 @@
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/neaeracube
 	name = "neaera cube"
 	monkey_type = /mob/living/carbon/human/neaera
-
-
-/obj/item/weapon/reagent_containers/food/snacks/spellburger
-	name = "spell burger"
-	desc = "This is absolutely Ei Nath."
-	icon_state = "spellburger"
-	filling_color = "#d505ff"
-	nutriment_desc = list("magic" = 3, "buns" = 3)
-	nutriment_amt = 6
-/obj/item/weapon/reagent_containers/food/snacks/spellburger/New()
-	..()
-	bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/bigbiteburger
 	name = "big bite burger"
@@ -1673,11 +1594,6 @@
 	..()
 	reagents.add_reagent(/datum/reagent/nutriment/cherryjelly, 5)
 
-/obj/item/weapon/reagent_containers/food/snacks/jelliedtoast/slime
-/obj/item/weapon/reagent_containers/food/snacks/jelliedtoast/slime/New()
-	..()
-	reagents.add_reagent(/datum/reagent/slimejelly, 5)
-
 /obj/item/weapon/reagent_containers/food/snacks/jellyburger
 	name = "jelly burger"
 	desc = "Culinary delight..?"
@@ -1689,11 +1605,6 @@
 /obj/item/weapon/reagent_containers/food/snacks/jellyburger/New()
 	..()
 	bitesize = 2
-
-/obj/item/weapon/reagent_containers/food/snacks/jellyburger/slime
-/obj/item/weapon/reagent_containers/food/snacks/jellyburger/slime/New()
-	..()
-	reagents.add_reagent(/datum/reagent/slimejelly, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/jellyburger/cherry
 /obj/item/weapon/reagent_containers/food/snacks/jellyburger/cherry/New()
@@ -1776,20 +1687,6 @@
 /obj/item/weapon/reagent_containers/food/snacks/pastatomato/New()
 	..()
 	reagents.add_reagent(/datum/reagent/drink/juice/tomato, 10)
-	bitesize = 4
-
-/obj/item/weapon/reagent_containers/food/snacks/nanopasta
-	name = "nanopasta"
-	desc = "Nanomachines, son!"
-	icon_state = "nanopasta"
-	trash = /obj/item/trash/plate
-	filling_color = "#535e66"
-	center_of_mass = "x=16;y=10"
-	nutriment_amt = 6
-
-/obj/item/weapon/reagent_containers/food/snacks/nanopasta/New()
-	..()
-	reagents.add_reagent(/datum/reagent/nanites, 10)
 	bitesize = 4
 
 /obj/item/weapon/reagent_containers/food/snacks/meatballspagetti
@@ -1920,24 +1817,10 @@
 	..()
 	bitesize = 3
 
-/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/slime
-/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/slime/New()
-	..()
-	reagents.add_reagent(/datum/reagent/slimejelly, 5)
-
 /obj/item/weapon/reagent_containers/food/snacks/jellysandwich/cherry
 /obj/item/weapon/reagent_containers/food/snacks/jellysandwich/cherry/New()
 	..()
 	reagents.add_reagent(/datum/reagent/nutriment/cherryjelly, 5)
-
-/obj/item/weapon/reagent_containers/food/snacks/boiledslimecore
-	name = "boiled slime core"
-	desc = "A boiled red thing."
-	icon_state = "boiledslimecore"//nonexistant?
-/obj/item/weapon/reagent_containers/food/snacks/boiledslimecore/New()
-	..()
-	reagents.add_reagent(/datum/reagent/slimejelly, 5)
-	bitesize = 3
 
 /obj/item/weapon/reagent_containers/food/snacks/mint
 	name = "mint"
@@ -2875,22 +2758,6 @@
 	pizza = new /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza(src)
 	boxtag = "Meatlover's Supreme"
 
-/obj/item/weapon/reagent_containers/food/snacks/dionaroast
-	name = "roast diona"
-	desc = "It's like an enormous, leathery carrot. With an eye."
-	icon_state = "dionaroast"
-	trash = /obj/item/trash/plate
-	filling_color = "#75754b"
-	center_of_mass = "x=16;y=7"
-	nutriment_desc = list("a chorus of flavor" = 6)
-	nutriment_amt = 6
-/obj/item/weapon/reagent_containers/food/snacks/dionaroast/New()
-	..()
-	reagents.add_reagent(/datum/reagent/radium, 2)
-	bitesize = 2
-
-
-
 
 ///////////////////////////////////////////
 // new old food stuff from bs12
@@ -3043,15 +2910,6 @@
 //		return
 //	else
 //		..()
-
-/obj/item/weapon/reagent_containers/food/snacks/bunbun
-	name = "\improper Bun Bun"
-	desc = "A small bread monkey fashioned from two burger buns."
-	icon_state = "bunbun"
-	bitesize = 2
-	center_of_mass = list("x"=16, "y"=8)
-	nutriment_desc = list("bun" = 8)
-	nutriment_amt = 8
 
 /obj/item/weapon/reagent_containers/food/snacks/taco
 	name = "taco"
@@ -3490,7 +3348,6 @@
 		/datum/reagent/nutriment/sprinkles,
 		/datum/reagent/toxin/phoron,
 		/datum/reagent/nutriment/coco,
-		/datum/reagent/slimejelly,
 		/datum/reagent/drink/juice/banana,
 		/datum/reagent/drink/juice/berry,
 		/datum/reagent/fuel,
@@ -3512,24 +3369,6 @@
 	..()
 	reagents.add_reagent(/datum/reagent/nutriment/sprinkles, 1)
 	reagents.add_reagent(/datum/reagent/drink/juice/berry, 5)
-	bitesize = 5
-	if(prob(30))
-		src.icon_state = "jdonut2"
-		src.overlay_state = "box-donut2"
-		src.SetName("frosted jelly donut")
-	reagents.add_reagent(/datum/reagent/nutriment/sprinkles, 2)
-
-/obj/item/weapon/reagent_containers/food/snacks/donut/slimejelly
-	name = "jelly donut"
-	desc = "You jelly?"
-	icon_state = "jdonut1"
-	filling_color = "#ed1169"
-	center_of_mass = "x=16;y=11"
-	nutriment_amt = 3
-/obj/item/weapon/reagent_containers/food/snacks/donut/slimejelly/New()
-	..()
-	reagents.add_reagent(/datum/reagent/nutriment/sprinkles, 1)
-	reagents.add_reagent(/datum/reagent/slimejelly, 5)
 	bitesize = 5
 	if(prob(30))
 		src.icon_state = "jdonut2"
@@ -3568,7 +3407,6 @@
 	reagents.add_reagent(pick(list(
 				/datum/reagent/fuel,
 				/datum/reagent/toxin/amatoxin,
-				/datum/reagent/toxin/carpotoxin,
 				/datum/reagent/toxin/zombiepowder,
 				/datum/reagent/cryptobiolin,
 				/datum/reagent/psilocybin)), 5)

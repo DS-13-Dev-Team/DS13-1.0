@@ -20,7 +20,7 @@
 	one_hand_penalty = 6	//Don't try to fire this with one hand
 	var/list/deployed_mines = list()
 
-	firemodes = list(list(mode_name = "minelayer", mode_type = /datum/firemode, require_aiming = TRUE),\
+	firemodes = list(list(mode_name = "minelayer", mode_type = /datum/firemode, require_aiming = TRUE, projectile_type = /obj/item/projectile/deploy/detonator),\
 	list(mode_name = "mine retrieval", mode_type = /datum/firemode/tripmine))
 
 	load_sound = 'sound/weapons/guns/interaction/detonator_reload.ogg'
@@ -41,7 +41,7 @@
 
 /*
 	Firemode
-	Detonates all rivets
+	Disarms mines so they can be recovered
 */
 /datum/firemode/tripmine
 	override_fire = TRUE
@@ -61,7 +61,7 @@
 	ammo_type = /obj/item/ammo_casing/tripmine
 
 /obj/item/weapon/gun/projectile/detonator/update_icon()
-	if(getAmmo())
+	if(get_remaining_ammo())
 		icon_state = "detonator_loaded"
 	else
 		icon_state = "detonator"

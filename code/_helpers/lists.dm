@@ -853,7 +853,7 @@ proc/dd_sortedTextList(list/incoming)
 /*
 	Outputs the entire contents of an associative list to a string including sublists. Recursive
 */
-/proc/dump_list(var/list/L, var/depth = 0)
+/proc/dump_list(var/list/L, var/depth = 0, var/assoc = TRUE)
 	var/output = ""
 	var/depthstring = ""
 
@@ -864,7 +864,7 @@ proc/dd_sortedTextList(list/incoming)
 		var/typestring = "(?)"
 		if (islist(element))
 			output += "[dump_list(element, depth+1)]"
-		else if (L[element])
+		else if (assoc && L[element])
 			var/linestring = "[depthstring][element] = "
 			if (islist(L[element]))
 				linestring += "List:\n"

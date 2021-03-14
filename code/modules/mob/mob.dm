@@ -191,8 +191,7 @@
 
 	if ((drowsyness > 0) && !MOVING_DELIBERATELY(src))
 		. += 6
-	if(lying) //Crawling, it's slower
-		. += 8 + (weakened * 2)
+
 	. += move_intent.move_delay
 	. += encumbrance() * (0.5 + 1.5 * (SKILL_MAX - get_skill_value(SKILL_HAULING))/(SKILL_MAX - SKILL_MIN)) //Varies between 0.5 and 2, depending on skill
 
@@ -309,7 +308,7 @@
 		to_chat(src, "<span class='notice'>Something is there but you can't see it.</span>")
 		return 1
 
-	face_atom(A)
+	face_atom(A, TRUE)
 	A.examine(src)
 
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
@@ -331,7 +330,7 @@
 		if(P)
 			qdel(P)	// qdel
 
-	face_atom(A)
+	face_atom(A, TRUE)
 	return 1
 
 //Gets the mob grab conga line.
@@ -669,7 +668,7 @@
 	return 0
 
 //Updates lying and icons
-/mob/proc/UpdateLyingBuckledAndVerbStatus()
+/mob/proc/update_lying_buckled_and_verb_status()
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0
 	else if(buckled)
@@ -762,38 +761,38 @@
 		facing_dir = null
 		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower your current stun
 
-		UpdateLyingBuckledAndVerbStatus()
+		update_lying_buckled_and_verb_status()
 	return
 
 /mob/proc/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
 	if(status_flags & CANSTUN)
 		stunned = max(amount,0)
-		UpdateLyingBuckledAndVerbStatus()
+		update_lying_buckled_and_verb_status()
 	return
 
 /mob/proc/AdjustStunned(amount)
 	if(status_flags & CANSTUN)
 		stunned = max(stunned + amount,0)
-		UpdateLyingBuckledAndVerbStatus()
+		update_lying_buckled_and_verb_status()
 	return
 
 /mob/proc/Weaken(amount)
 	if(status_flags & CANWEAKEN)
 		facing_dir = null
 		weakened = max(max(weakened,amount),0)
-		UpdateLyingBuckledAndVerbStatus()
+		update_lying_buckled_and_verb_status()
 	return
 
 /mob/proc/SetWeakened(amount)
 	if(status_flags & CANWEAKEN)
 		weakened = max(amount,0)
-		UpdateLyingBuckledAndVerbStatus()
+		update_lying_buckled_and_verb_status()
 	return
 
 /mob/proc/AdjustWeakened(amount)
 	if(status_flags & CANWEAKEN)
 		weakened = max(weakened + amount,0)
-		UpdateLyingBuckledAndVerbStatus()
+		update_lying_buckled_and_verb_status()
 	return
 
 /mob/proc/Paralyse(amount)
@@ -864,7 +863,7 @@
 /mob/proc/embedded_needs_process()
 	return (embedded.len > 0)
 
-/mob/proc/yank_out_object()
+/mob/proc/yank_out_object_verb()
 	set category = "Object"
 	set name = "Yank out object"
 	set desc = "Remove an embedded item at the cost of bleeding and pain."
@@ -883,61 +882,71 @@
 		return
 
 	var/mob/S = src
-	var/mob/U = usr
+	var/mob/user = usr
 	var/list/valid_objects = list()
-	var/self = null
+	var/self = FALSE
 
-	if(S == U)
-		self = 1 // Removing object from yourself.
+	if(S == user)
+		self = TRUE // Removing object from yourself.
 
-	valid_objects = get_visible_implants(0)
+	valid_objects = get_visible_implants(0, TRUE)
 	if(!valid_objects.len)
 		if(self)
 			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
 		else
-			to_chat(U, "[src] has nothing stuck in their wounds that is large enough to remove.")
+			to_chat(user, "[src] has nothing stuck in their wounds that is large enough to remove.")
 		return
 
-	var/obj/item/weapon/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
+	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
 
-	if(self)
+	yank_out_object(selection, user)
+
+
+
+/mob/proc/yank_out_object(var/obj/item/selection, var/mob/user)
+	var/mob/S = src
+	if(user == S)
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
 	else
-		to_chat(U, "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>")
-	if(!do_mob(U, S, 30, incapacitation_flags = INCAPACITATION_DEFAULT & (~INCAPACITATION_FORCELYING))) //let people pinned to stuff yank it out, otherwise they're stuck... forever!!!
+		to_chat(user, "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>")
+	if(!do_mob(user, S, 30, incapacitation_flags = INCAPACITATION_DEFAULT & (~INCAPACITATION_FORCELYING), needhand = 2)) //let people pinned to stuff yank it out, otherwise they're stuck... forever!!!
 		return
-	if(!selection || !S || !U)
+	if(!selection || !S || !user)
 		return
 
-	if(self)
-		visible_message("<span class='warning'><b>[src] rips [selection] out of their body.</b></span>","<span class='warning'><b>You rip [selection] out of your body.</b></span>")
+
+
+	playsound(src, "fleshtear", VOLUME_MID, TRUE)
+
+	shake_animation()
+
+	var/message
+	if(user == S)
+		message = "<span class='warning'><b>[src] rips [selection] out of their body.</b></span>"
 	else
-		visible_message("<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'><b>[usr] rips [selection] out of your body.</b></span>")
-	valid_objects = get_visible_implants(0)
-	if(valid_objects.len == 1) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object
+		message = "<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>"
 
+
+	var/mob/living/carbon/human/H
 	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
+		H = src
 		var/obj/item/organ/external/affected
 
 		for(var/obj/item/organ/external/organ in H.organs) //Grab the organ holding the implant.
-			for(var/obj/item/O in organ.implants)
-				if(O == selection)
-					affected = organ
+			if(selection in organ.implants)
+				affected = organ
 
-		affected.implants -= selection
 		for(var/datum/wound/wound in affected.wounds)
 			wound.embedded_objects -= selection
 
-		H.shock_stage+=20
-		affected.take_external_damage((selection.w_class * 3), 0, DAM_EDGE, "Embedded object extraction", allow_dismemberment = FALSE)
+		H.shock_stage+=15
+		affected.take_external_damage((selection.w_class * 2.5), 0, DAM_EDGE, "Embedded object extraction", allow_dismemberment = FALSE)
 
 		if(prob(selection.w_class * 5) && affected.sever_artery()) //I'M SO ANEMIC I COULD JUST -DIE-.
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 50, affecting = affected)
 
-		if (ishuman(U))
-			var/mob/living/carbon/human/human_user = U
+		if (ishuman(user))
+			var/mob/living/carbon/human/human_user = user
 			human_user.bloody_hands(H)
 
 	else if(issilicon(src))
@@ -946,9 +955,14 @@
 		R.adjustBruteLoss(5)
 		R.adjustFireLoss(10)
 
-	selection.forceMove(get_turf(src))
-	if(!(U.l_hand && U.r_hand))
-		U.put_in_hands(selection)
+	if (H)
+		H.unembed(selection, null, FALSE, message)
+
+	var/list/valid_objects = get_visible_implants(0, TRUE)
+	if(length(valid_objects.len == 0)) //Yanking out last object - removing verb.
+		src.verbs -= /mob/proc/yank_out_object_verb
+
+	user.put_in_hands(selection)
 
 	for(var/obj/item/weapon/O in pinned)
 		if(O == selection)
@@ -1046,18 +1060,17 @@
 	set name = "Toggle Add-Antag Candidacy"
 	set desc = "Toggles whether or not you will be considered a candidate by an add-antag vote."
 	set category = "OOC"
-	if(isghostmind(src.mind) || isnewplayer(src))
-		if(ticker && ticker.looking_for_antags)
-			if(src.mind in ticker.antag_pool)
-				ticker.antag_pool -= src.mind
-				to_chat(usr, "You have left the antag pool.")
-			else
-				ticker.antag_pool += src.mind
-				to_chat(usr, "You have joined the antag pool. Make sure you have the needed role set to high!")
-		else
-			to_chat(usr, "The game is not currently looking for antags.")
+	if (!mind || !client || !client.prefs)
+		return
+	if(client.prefs.ghost_candidacy)
+		to_chat(usr, "You have left the antag pool.")
+		client.prefs.ghost_candidacy = FALSE
+		client.prefs.save_preferences()
 	else
-		to_chat(usr, "You must be observing or in the lobby to join the antag pool.")
+		to_chat(usr, "You have joined the antag pool. Make sure you have the needed role set to high!")
+		client.prefs.ghost_candidacy = TRUE
+		client.prefs.save_preferences()
+
 /mob/proc/is_invisible_to(var/mob/viewer)
 	return (!alpha || !mouse_opacity || viewer.see_invisible < invisibility)
 

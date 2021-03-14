@@ -54,7 +54,7 @@
 	stun = 3
 	weaken = 3
 	penetrating = 5
-	armor_penetration = 10
+	armor_penetration = 20
 
 
 /obj/item/ammo_magazine/seeker

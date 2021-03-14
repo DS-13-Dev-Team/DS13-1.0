@@ -17,6 +17,7 @@ SUBSYSTEM_DEF(necromorph)
 	var/obj/machinery/marker/marker
 	var/list/marker_spawns_ishimura = list()	//Possible spawn locations aboard ishimura
 	var/list/marker_spawns_aegis = list()	//Possible spawn locations on Aegis VII
+	var/marker_activated_at = 0	//World time when the marker was activated
 
 	//Players
 	var/list/necromorph_players = list()	//This is a list of keys and mobs of players on the necromorph team
@@ -142,6 +143,8 @@ SUBSYSTEM_DEF(necromorph)
 //Updates the energy holders of all necromorph players, refreshing their spell list
 /datum/controller/subsystem/necromorph/proc/update_all_ability_lists(var/clear = FALSE)
 	for (var/key in GLOB.players)
+		if (!key)
+			continue
 		var/datum/player/P = GLOB.players[key]
 		var/datum/extension/psi_energy/PE = P.get_energy_extension()
 		if (PE)

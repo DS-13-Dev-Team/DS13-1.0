@@ -78,7 +78,7 @@
 	name = "knife"
 	desc = "A knife for eating with. Can cut through any food."
 	icon_state = "knife"
-	force_divisor = 0.1 // 6 when wielded with hardness 60 (steel)
+	force_divisor = 0.2 // 8 when wielded with hardness 40 (steel)
 	scoop_food = 0
 	sharp = 1
 	edge = 1
@@ -94,6 +94,8 @@
 	item_state = "knife"
 	applies_material_colour = 0
 	unbreakable = 1
+	force_divisor = 0.27 // 12 when wielded with hardness 40 (steel)
+	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
 
 /obj/item/weapon/material/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
@@ -125,7 +127,7 @@
 	icon_state = "rolling_pin"
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
 	default_material = "wood"
-	force_divisor = 0.7 // 10 when wielded with weight 15 (wood)
+	force_divisor = 0.3
 	thrown_force_divisor = 1 // as above
 
 /obj/item/weapon/material/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)

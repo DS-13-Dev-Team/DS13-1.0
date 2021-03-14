@@ -222,6 +222,8 @@
 		storage_ui.on_post_remove(usr)
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
+//The drop flag should be set false when the item is going to go from storage worn by a mob, to that mob's hands
+//drop should be true when the item is going to go from storage to anywhere else
 /obj/item/weapon/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, var/NoUpdate = 0)
 	if(!istype(W)) return FALSE
 	new_location = new_location || get_turf(src)
@@ -229,13 +231,13 @@
 	if(storage_ui)
 		storage_ui.on_pre_remove(W)
 
-	if(ismob(loc))
-		W.dropped(usr)
+
 	if(ismob(new_location))
 		W.hud_layerise()
 	else
 		W.reset_plane_and_layer()
 	W.forceMove(new_location)
+
 
 	if(usr && !NoUpdate)
 		update_ui_after_item_removal()
@@ -250,6 +252,15 @@
 /obj/item/weapon/storage/proc/finish_bulk_removal()
 	update_ui_after_item_removal()
 	update_icon()
+
+/obj/item/weapon/storage/AltClick(mob/user)
+	if(user.incapacitated())
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		return
+	if(!in_range(src, user))
+		return
+	else
+		src.open(user)
 
 //This proc is called when you want to place an item into the storage item.
 /obj/item/weapon/storage/attackby(obj/item/W as obj, mob/user as mob)

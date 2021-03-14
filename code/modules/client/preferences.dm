@@ -31,7 +31,7 @@ datum/preferences
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
 
-	var/list/gear_list = list()//Custom/fluff item loadouts.
+	var/list/gear_list//Custom/fluff item loadouts.
 	var/gear_slot = 1  //The current gear save slot
 
 	var/datum/extension/loadout/loadout
@@ -55,7 +55,7 @@ datum/preferences
 
 /datum/preferences/proc/reset_gear_list()
 	gear_list = list()
-	for (var/i in 1 to config.loadout_slots)
+	for (var/i in 1 to LOADOUT_SLOTS)
 		gear_list += list(list())
 
 /datum/preferences/proc/load_and_update_character(var/slot)
@@ -327,3 +327,8 @@ datum/preferences
 		panel.close()
 		panel = null
 	user << browse(null, "window=saves")
+
+
+/proc/get_preferences(var/mob/M)
+	if (M && M.client && M.client.prefs)
+		return M.client.prefs

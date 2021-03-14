@@ -1,13 +1,13 @@
 /obj/item/weapon/flamethrower
 	name = "flamethrower"
 	desc = "You are a firestarter!"
-	icon = 'icons/obj/flamethrower.dmi'
-	icon_state = "flamethrowerbase"
-	item_state = "flamethrower_0"
+	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
+	icon_state = "hydetorch"
+	item_state = "hydetorch"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	force = 3.0
 	throwforce = 10.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_LARGE
 	origin_tech = list(TECH_COMBAT = 1)

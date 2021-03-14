@@ -118,9 +118,9 @@
 
 	if (prev_held != new_held)
 		if (istype(prev_held))
-			prev_held.swapped_from(src)
+			GLOB.swapped_from_event.raise_event(prev_held, src)
 		if (istype(new_held))
-			new_held.swapped_to(src)
+			GLOB.swapped_to_event.raise_event(new_held, src)
 
 	return TRUE
 
@@ -240,7 +240,7 @@
 
 
 
-/mob/living/carbon/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/mob/living/carbon/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
 	..()
 	var/temp_inc = max(min(BODYTEMP_HEATING_MAX*(1-get_heat_protection()), exposed_temperature - bodytemperature), 0)
 	bodytemperature += temp_inc

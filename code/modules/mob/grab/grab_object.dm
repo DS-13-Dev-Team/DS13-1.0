@@ -79,8 +79,8 @@
 	This section is for newly defined useful procs.
 */
 /obj/item/grab/proc/target_change()
-	var/hit_zone = assailant.zone_sel.selecting
-	if(src != assailant.get_active_hand())
+	var/hit_zone = get_zone_sel(assailant, precise = TRUE)//We want this to be able to target eyes/mouth
+	if(!assailant || src != assailant.get_active_hand())
 		return FALSE
 	if(hit_zone && hit_zone != last_target)
 		last_target = hit_zone
@@ -127,7 +127,7 @@
 
 /obj/item/grab/proc/init()
 	last_target = assailant.zone_sel.selecting
-	affecting.UpdateLyingBuckledAndVerbStatus()
+	affecting.update_lying_buckled_and_verb_status()
 	if (!adjust_position())
 		return FALSE
 	update_icons()

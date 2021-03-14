@@ -2,6 +2,12 @@
 	var/tmp/gc_destroyed //Time when this object was destroyed.
 	var/tmp/is_processing = FALSE
 	var/list/active_timers  //for SStimer
+	var/implements_dummy = FALSE	//If true, this datum has an argument named "dummy" in its new proc
+	var/dummy = FALSE	//Set true if this datum is a dummy and should not perform its normal functions
+	//Used by mob previews
+
+	/// Datum level flags
+	var/datum_flags = NONE
 
 #ifdef TESTING
 	var/tmp/running_find_references
@@ -30,3 +36,6 @@
 /datum/proc/Process()
 	set waitfor = 0
 	return PROCESS_KILL
+
+/datum/proc/CanProcCall(procname)
+	return TRUE

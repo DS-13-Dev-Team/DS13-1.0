@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/energy/taser
 	name = "taser gun"
-	desc = "The NT Mk30 NL is a small, low capacity gun used for non-lethal takedowns. Produced by NT, it's actually a licensed version of a W-T design. It can switch between high and low intensity stun shots."
+	desc = "The Winchester Arms Mk30 NL is a small, low capacity gun used for non-lethal takedowns. Produced by Winchester Arms, it's actually a licensed version of a W-T design. It can switch between high and low intensity stun shots."
 	icon_state = "taser"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	max_shots = 8

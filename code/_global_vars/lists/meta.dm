@@ -4,3 +4,6 @@ GLOBAL_LIST_INIT(url_prefixes, list(URL_HTTP_WWW = "https://www."))
 
 
 GLOBAL_LIST_EMPTY(loadout_categories)
+
+
+var/global/list/processing_subsystems_by_varname = list()

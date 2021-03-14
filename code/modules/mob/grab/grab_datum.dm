@@ -100,6 +100,12 @@
 	G.force_drop()
 
 /datum/grab/proc/process(var/obj/item/grab/G)
+	//Safety check
+	if (!can_maintain(G))
+		let_go(G)
+		return
+
+
 	var/diff_zone = G.target_change()
 	if(diff_zone && G.special_target_functional)
 		special_target_change(G, diff_zone)
@@ -212,11 +218,30 @@
 	if(downgrade_on_move)
 		G.downgrade()
 
+
+/*
+	Safety check, called each tick while a grab is active.
+
+	Returning false will cause the grab to immediately terminate
+*/
+/datum/grab/proc/can_maintain(var/obj/item/grab/G)
+	.=TRUE
+	//If any of the objects or mobs involved have been deleted, we're done
+	if (QDELETED(G) || QDELETED(G.affecting) || QDELETED(G.assailant))
+		return FALSE
+
+	//Next up, distance check. The victim must be within the assailant's reach
+	//We add a one tile leeway to allow temporary shifts while moving.
+	var/distance = get_dist(G.assailant, G.affecting)
+	if (distance > (G.assailant.reach + 1))
+		return FALSE
+
 /*
 	Override these procs to set how the grab state will work. Some of them are best
 	overriden in the parent of the grab set (for example, the behaviour for on_hit_intent(var/obj/item/grab/G)
 	procs is determined in /datum/grab/normal and then inherited by each intent).
 */
+
 
 // What happens when you upgrade from one grab state to the next.
 /datum/grab/proc/upgrade_effect(var/obj/item/grab/G)

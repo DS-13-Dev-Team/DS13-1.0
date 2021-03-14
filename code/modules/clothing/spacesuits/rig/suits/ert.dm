@@ -3,7 +3,7 @@
 	desc = "A hardsuit used by many corporate and governmental emergency response forces. Has blue highlights. Armoured and space ready."
 	suit_type = "emergency response command"
 	icon_state = "ert_commander_rig"
-
+	online_slowdown = RIG_HEAVY
 	chest_type = /obj/item/clothing/suit/space/rig/ert
 	helm_type = /obj/item/clothing/head/helmet/space/rig/ert
 	boot_type = /obj/item/clothing/shoes/magboots/rig/ert

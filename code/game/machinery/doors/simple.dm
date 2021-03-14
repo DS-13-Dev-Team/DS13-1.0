@@ -10,7 +10,7 @@
 	var/initial_lock_value //for mapping purposes. Basically if this value is set, it sets the lock to this value.
 
 
-/obj/machinery/door/unpowered/simple/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/machinery/door/unpowered/simple/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
 	TemperatureAct(exposed_temperature)
 
 /obj/machinery/door/unpowered/simple/proc/TemperatureAct(temperature)

@@ -40,14 +40,14 @@ datum/job/smo/get_description_blurb()
 	minimal_player_age = 18
 	starting_credits = 3500
 
-	access = list(access_medical, access_chemistry)
+	access = list(access_medical, access_chemistry, access_research)
 	outfit_type = /decl/hierarchy/outfit/job/medical/md
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
 						SKILL_MEDICAL	  = SKILL_ADEPT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_ANATOMY	  = SKILL_MAX,
+	max_skill = list(   SKILL_ANATOMY	  = SKILL_EXPERT,
 	                    SKILL_MEDICAL     = SKILL_MAX)
 	skill_points = 20
 
@@ -66,7 +66,7 @@ datum/job/md/get_description_blurb()
 	minimal_player_age = 18
 	starting_credits = 4440
 
-	access = list(access_medical, access_surgery)
+	access = list(access_medical, access_surgery, access_research)
 	outfit_type = /decl/hierarchy/outfit/job/medical/surg
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_PROF,
@@ -75,7 +75,7 @@ datum/job/md/get_description_blurb()
 
 	max_skill = list(   SKILL_ANATOMY	  = SKILL_MAX,
 	                    SKILL_MEDICAL     = SKILL_MAX)
-	skill_points = 20
+	skill_points = 24
 
 datum/job/surg/get_description_blurb()
 	return "You are a Surgeon. Your job is to perform surgery on any wounded crewmembers who require it and are one of the few people given access to the surgical suites. You are subordinate to the Senior Medical Officer."

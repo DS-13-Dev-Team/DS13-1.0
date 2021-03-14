@@ -13,8 +13,8 @@
 	var/list/content_atoms = list()
 
 
-	var/breakdown_rate = 0.0007	//Remove this many units of biomass per tick, and convert it into purified biomass
-	var/reagent_breakdown_rate = 0.04	//Remove this many units of reagents per tick and convert to biomass
+	var/breakdown_rate = 0.001	//Remove this many units of biomass per tick, and convert it into purified biomass
+	var/reagent_breakdown_rate = 0.065	//Remove this many units of reagents per tick and convert to biomass
 
 	var/obj/structure/reagent_dispensers/biomass/storage
 	density = TRUE
@@ -92,7 +92,7 @@
 		return TRUE
 	else
 		if (user)
-			to_chat(user, "[test] is not organic, or contains no recoverable biomass")
+			to_chat(user, "[test] is not organic, or contains no recoverable biomass.")
 		return FALSE
 
 
@@ -140,8 +140,9 @@
 /obj/machinery/recycling_tank/proc/insert_atom(var/atom/movable/A, var/mob/user)
 	A.forceMove(src)
 	content_atoms |= A
+	playsound(src, 'sound/machines/tankbiorecycle.ogg', VOLUME_LOW)
 	if (user)
-		user.visible_message("[user] places \the [A] into \the [src]")
+		user.visible_message("[user] places \the [A] into \the [src].")
 
 	update_icon()
 

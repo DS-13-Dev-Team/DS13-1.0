@@ -44,8 +44,8 @@
 			to_chat(user, "<span class='notice'>You refuel \the [W].</span>")
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
-	else if(istype(W, /obj/item/weapon/tool_upgrade/augment/fuel_tank))
-		var/obj/item/weapon/tool_upgrade/augment/fuel_tank/tank = W
+	else if(istype(W, /obj/item/weapon/tool_modification/augment/fuel_tank))
+		var/obj/item/weapon/tool_modification/augment/fuel_tank/tank = W
 		src.reagents.trans_to_obj(tank, tank.max_fuel)
 		to_chat(user, "<span class='notice'>You refuel \the [W].</span>")
 		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)

@@ -4,21 +4,12 @@
 	var/min_interval = 0.6 SECONDS	//Minimum time between changing states (zoom in/zoom out) to make things feel less janky
 	var/interval_timer_handle
 	var/last_change = 0
+	flags = CLICK_HANDLER_SUPPRESS_POPUP_MENU
 
 
-/datum/click_handler/rmb_aim/New(var/mob/user)
-	.=..()
-	user.client.show_popup_menus = FALSE
 
-
-/datum/click_handler/rmb_aim/Exit()
-	if (user && user.client)
-		user.client.show_popup_menus = TRUE
-	.=..()
 
 /datum/click_handler/rmb_aim/Destroy()
-	if (user && user.client)
-		user.client.show_popup_menus = TRUE
 	if (gun)
 		gun.disable_aiming_mode()
 	.=..()
@@ -27,6 +18,8 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["right"])
 		object = user.client.resolve_drag(object, params)
+
+
 		user.face_atom(object)
 		deltimer(interval_timer_handle)
 		var/delta = world.time - last_change
@@ -35,12 +28,17 @@
 		else
 			start_aiming()
 		return FALSE
+	else
+		left_mousedown = TRUE
 	return TRUE
 
 /datum/click_handler/rmb_aim/MouseUp(object,location,control,params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["right"])
 		object = user.client.resolve_drag(object, params)
+
+
+
 		deltimer(interval_timer_handle)
 		var/delta = world.time - last_change
 		if (delta < min_interval)
@@ -48,6 +46,8 @@
 		else
 			stop_aiming()
 		return FALSE
+	else
+		left_mousedown = FALSE
 	return TRUE
 
 

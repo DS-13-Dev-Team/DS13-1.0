@@ -5,7 +5,7 @@
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	icon = null
 	set_invisibility(101)
-	UpdateLyingBuckledAndVerbStatus()
+	update_lying_buckled_and_verb_status()
 	remove_from_dead_mob_list()
 
 	var/atom/movable/overlay/animation = null
@@ -57,13 +57,12 @@
 
 	set_stat(DEAD)
 	reset_plane_and_layer()
-	UpdateLyingBuckledAndVerbStatus()
+	update_lying_buckled_and_verb_status()
 
 	dizziness = 0
 	jitteriness = 0
 
 	set_sight(sight|SEE_TURFS|SEE_MOBS|SEE_OBJS)
-	set_see_in_dark(8)
 	set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 
 	drop_r_hand()

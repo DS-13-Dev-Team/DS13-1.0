@@ -47,7 +47,7 @@
 	var/atom/movable/subject	=	null
 
 	//Click handler
-	var/datum/click_handler/sustained/kinesis/CHK
+	var/datum/click_handler/gun/sustained/kinesis/CHK
 
 	var/hotkeys_set = FALSE
 
@@ -80,9 +80,15 @@
 
 	var/list/bumped_atoms = list()
 
+	var/next_update = 0
+	var/update_timer_handle	//A scheduled update
+
 //Config
 	//Cooldown between hitting mobs
 	var/bump_cooldown = 1.5 SECONDS
+
+	//Minimum cooldown between updates, for performance
+	var/update_cooldown = 0.15 SECONDS
 
 	//How far away can we grip objects?
 	//Measured in metres. Also note tiles are 1x1 metre
@@ -138,6 +144,9 @@
 /obj/item/rig_module/kinesis/advanced
 	name = "G.R.I.P advanced kinesis module"
 	desc = "An engineering tool that uses microgravity fields to manipulate objects at distances of several metres. This version has improved range and power."
+	interface_name = "Kinesis: Advanced"
+	interface_desc = "An engineering tool that uses microgravity fields to manipulate objects at distances of several metres. This version has improved range and power."
+
 	range = 6.5
 	drop_range = 7
 	max_force = 30
@@ -167,6 +176,12 @@
 	if (active)
 		deactivate()
 
+/obj/item/rig_module/kinesis/proc/get_user()
+	if (holder)
+		return holder.wearer
+
+	return null
+
 
 //When the kinesis module is activated, it gets its click handler and
 /obj/item/rig_module/kinesis/activate()
@@ -175,15 +190,19 @@
 		return
 	.=..()
 	if (.)
-		var/mob/living/carbon/human/user = holder.wearer
-		CHK = user.PushUniqueClickHandler(/datum/click_handler/sustained/kinesis)
+		var/mob/living/carbon/human/user = get_user()
+		if (!user || !user.client)
+			return
+		CHK = user.PushUniqueClickHandler(/datum/click_handler/gun/sustained/kinesis)
 		CHK.reciever = src
 		to_chat(user, SPAN_NOTICE("Kinesis activated.(F)"))
 
 /obj/item/rig_module/kinesis/deactivate()
 	.=..()
 	if (.)
-		var/mob/living/carbon/human/user = holder.wearer
+		var/mob/living/carbon/human/user = get_user()
+		if (!user || !user.client)
+			return
 		user.RemoveClickHandler(CHK)
 		CHK = null
 		to_chat(user, SPAN_NOTICE("Kinesis deactivated.(F)"))
@@ -207,10 +226,14 @@
 	if (target)
 		release_vector(target)
 
-	target = AM.get_global_pixel_loc()
 
 	var/obj/effect/projectile/tether/newtether = new /obj/effect/projectile/tether/lightning(get_turf(src))
 	var/vector2/origin_pixels = holder.wearer.get_global_pixel_loc()
+
+	target = AM.get_global_pixel_loc()
+	target.SelfSubtract(origin_pixels)
+	target.SelfClampMag(1, drop_range*WORLD_ICON_SIZE)
+	target.SelfAdd(origin_pixels)
 	newtether.set_ends(origin_pixels, target)
 	release_vector(origin_pixels)
 
@@ -312,6 +335,7 @@
 	subject = AM
 	subject.telegripped(src)	//Tell the object it was picked up
 	subject.throwing = TRUE
+	subject.thrower = get_user()
 	subject.animate_movement = NO_STEPS	//Needed for pixel movement to be smoother
 
 	//Cache these before we change them
@@ -404,7 +428,6 @@
 //The default entrypoint, a wrapper for release
 //If the item is not in control range, it will be thrown based upon its velocity
 /obj/item/rig_module/kinesis/proc/release_grip()
-
 	var/speed = velocity.Magnitude()
 	if (speed > 1 && release_type == RELEASE_DROP)
 		release_type = RELEASE_THROW
@@ -423,7 +446,7 @@
 		var/vector2/velocity_offset = velocity * WORLD_ICON_SIZE
 		var/turf/throw_target = thing.get_turf_at_pixel_offset(velocity_offset)
 		release_vector(velocity_offset)
-		thing.throw_at(throw_target, speed, speed, null)
+		thing.throw_at(throw_target, speed, speed, get_user())
 	else
 		//We need to reset the animate_movement var if we are dropping it precisely
 		//If its being thrown, pixel movement will do this
@@ -761,19 +784,7 @@
 				release_vector(offset)
 				release_vector(direction)
 				release_vector(velocity_towards_target)
-/*
-	Click Handler Stuff
-*/
 
-/*
-	The click handler itself
-*/
-/datum/click_handler/sustained/kinesis
-
-	fire_proc = /obj/item/rig_module/kinesis/proc/update
-	//var/start_proc = /obj/item/weapon/gun/proc/start_firing
-	stop_proc = /obj/item/rig_module/kinesis/proc/release_grip
-	get_firing_proc = /obj/item/rig_module/kinesis/proc/is_gripping
 
 
 
@@ -797,15 +808,18 @@
 	Params: Click params from the mouse action which caused this update, vitally important
 	global clickpoint: Where the user clicked in world pixel coords
 */
+
+
 /obj/item/rig_module/kinesis/proc/update(var/atom/A, mob/living/user, adjacent, params, var/vector2/global_clickpoint)
+
 
 	if (subject && holder && holder.wearer)
 		//Lets see if the clickpoint has actually changed
 		if (!target || global_clickpoint.x != target.x || global_clickpoint.y != target.y)
 
 			//It has! Set the new target, and if we were at rest, we start moving again
-			release_vector(target)
-			target = global_clickpoint
+			global_clickpoint.CopyTo(target)
+
 			var/vector2/userloc = holder.wearer.get_global_pixel_loc()
 			var/vector2/tether_end = global_clickpoint - userloc	//Cant use selfsubtract here, need to make a new vector
 			tether_end.SelfClampMag(1, drop_range*WORLD_ICON_SIZE)
@@ -832,8 +846,14 @@
 
 		if (target_atom)
 			attempt_grip(target_atom)
-	sleep(1)
 
+
+/*
+	Called from the click handler when the user drags something around
+*/
+/obj/item/rig_module/kinesis/proc/changed_target(var/atom/newtarget)
+	//schedule_
+	update(newtarget, CHK.user, FALSE, CHK.last_clickparams, CHK.last_click_location)
 
 /obj/item/rig_module/kinesis/proc/is_gripping()
 	if (subject)
@@ -841,7 +861,18 @@
 	return FALSE
 
 
+//Future todo: Scheduling
+/*
+/obj/item/rig_module/kinesis/proc/schedule_update(var/atom/A, mob/living/user, adjacent, params, var/vector2/global_clickpoint)
+	if (update_timer_handle)
+		deltimer(update_timer_handle)
+	if(world.time >= next_update)
 
+		update(A, user, adjacent, params, global_clickpoint)
+	else
+		update_timer_handle = addtimer(CALLBACK(src, /obj/item/rig_module/kinesis/proc/update, A, user, adjacent, params, global_clickpoint.Copy()), next_update - world.time, TIMER_STOPPABLE)
+
+*/
 
 
 
@@ -858,10 +889,8 @@
 
 
 /obj/item/rig_module/kinesis/proc/update_hotkeys()
-	if (!holder || !holder.wearer)
-		return
-	var/mob/living/user = holder.wearer
-	if (!user.client)
+	var/mob/living/carbon/human/user = get_user()
+	if (!user || !user.client)
 		return
 
 	if (!hotkeys_set)
@@ -871,6 +900,8 @@
 
 
 /obj/item/rig_module/kinesis/proc/add_hotkeys(var/mob/living/carbon/human/user)
+	if(/mob/living/carbon/human/verb/kinesis_toggle in user.verbs)
+		return
 	//user.client.show_popup_menus = FALSE
 	user.verbs |= /mob/living/carbon/human/verb/kinesis_toggle
 	winset(user, "kinesis_toggle", "parent=macro;name=F;command=kinesis_toggle")
@@ -878,7 +909,8 @@
 	hotkeys_set = TRUE
 
 /obj/item/rig_module/kinesis/proc/remove_hotkeys(var/mob/living/carbon/human/user)
-
+	if(user.wearing_rig && user.wearing_rig != src)
+		return
 	winset(user, "macro.kinesis_toggle", "parent=")
 	winset(user, "hotkeymode.kinesis_toggle", "parent=")
 	user.verbs -= /mob/living/carbon/human/verb/kinesis_toggle
@@ -890,6 +922,7 @@
 	set hidden = TRUE
 	set popup_menu = FALSE
 	set category = null
+
 
 	if (wearing_rig)
 		for (var/obj/item/rig_module/kinesis/K in wearing_rig.installed_modules)
@@ -904,27 +937,21 @@
 /*
 	We will make several passes through the list, first grabbing things that might be important like projectiles in flight
 
-	if find_anything is true, we will try to return some kind of object even if its unsuitable, so that we can do a failed-grab for visual fx
 */
-/obj/item/rig_module/kinesis/proc/find_target(var/atom/origin, var/find_anything = TRUE)
+/obj/item/rig_module/kinesis/proc/find_target(var/atom/origin)
 	var/list/nearby_stuff = range(1, origin)
-	var/atom/anything = null
+
+
 	for (var/target_type in target_priority)
 		for (var/atom/movable/A in nearby_stuff)
 			if (!istype(A, target_type))
 				continue
 
-			if (!anything && find_anything)
-				anything = A
 
 			var/distance  = holder.wearer.get_global_pixel_distance(A)
 			//Too far from user
 			if (distance > (range * WORLD_ICON_SIZE))
 				continue
-
-			//A better candidate
-			if (find_anything)
-				anything = A
 
 			if (!can_grip(A))
 				nearby_stuff -= A
@@ -934,8 +961,5 @@
 			//If we get this far, we've found a valid item matching the highest possible priority, we are done!
 			return A
 
-	if (!anything && find_anything)
-		anything = origin
 
-	//Here we return anything vaguely fitting
-	return anything
+	return origin

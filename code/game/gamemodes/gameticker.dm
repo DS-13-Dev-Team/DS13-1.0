@@ -3,6 +3,7 @@ var/global/datum/controller/gameticker/ticker
 /datum/controller/gameticker
 	var/const/restart_timeout = 600
 	var/current_state = GAME_STATE_PREGAME
+	var/force_ending = FALSE
 
 	var/start_ASAP = FALSE          //the game will start as soon as possible, bypassing all pre-game nonsense
 
@@ -34,7 +35,6 @@ var/global/datum/controller/gameticker/ticker
 
 	var/round_end_announced = 0 // Spam Prevention. Announce round end only once.
 
-	var/list/antag_pool = list()
 	var/looking_for_antags = 0
 	var/bypass_gamemode_vote = FALSE
 
@@ -360,7 +360,7 @@ var/global/datum/controller/gameticker/ticker
 			game_finished = (mode.check_finished() || (evacuation_controller.round_over() && evacuation_controller.emergency_evacuation) || universe_has_ended)
 			mode_finished = game_finished
 
-		if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game))
+		if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game) || force_ending)
 			current_state = GAME_STATE_FINISHED
 			Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
@@ -412,7 +412,7 @@ var/global/datum/controller/gameticker/ticker
 				if(!delay_end)
 					sleep(restart_timeout)
 					if(!delay_end)
-						world.Reboot()
+						world.Reboot(ping=TRUE)
 					else if(!delay_notified)
 						to_world("<span class='notice'><b>An admin has delayed the round end</b></span>")
 				else if(!delay_notified)
@@ -544,17 +544,18 @@ var/global/datum/controller/gameticker/ticker
 		var/needs_ghost = antag.flags & (ANTAG_OVERRIDE_JOB | ANTAG_OVERRIDE_MOB)
 		if (needs_ghost)
 			looking_for_antags = 1
-			antag_pool.Cut()
 			to_world("<b>A ghost is needed to spawn \a [antag.role_text].</b>\nGhosts may enter the antag pool by making sure their [antag.role_text] preference is set to high, then using the toggle-add-antag-candidacy verb. You have 3 minutes to enter the pool.")
 
 			sleep(3 MINUTES)
 			looking_for_antags = 0
 			antag.update_current_antag_max()
 			antag.build_candidate_list(needs_ghost)
+			/*
 			for(var/datum/mind/candidate in antag.candidates)
 				if(!(candidate in antag_pool))
 					antag.candidates -= candidate
 					log_debug("[candidate.key] was not in the antag pool and could not be selected.")
+			*/
 		else
 			antag.update_current_antag_max()
 			antag.build_candidate_list(needs_ghost)
@@ -581,3 +582,10 @@ var/global/datum/controller/gameticker/ticker
 					to_world("Attempting to spawn [antag.role_text_plural].")
 
 	return FALSE
+
+/datum/controller/gameticker/proc/HasRoundStarted()
+	return current_state >= GAME_STATE_PLAYING
+
+
+/datum/controller/gameticker/proc/IsRoundInProgress()
+	return current_state == GAME_STATE_PLAYING

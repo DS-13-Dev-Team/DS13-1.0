@@ -18,14 +18,17 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	skill_setter = /datum/antag_skill_setter/station
 	antaghud_indicator = "hudunitologist" // Used by the ghost antagHUD.
 	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
+	restricted_jobs = list(JOBS_SECURITY)
 	preference_candidacy_toggle = TRUE
 
 	// Spawn values (autotraitor and game mode)
 	//Hard cap of 6 will only be reached at really high playercounts
-	hard_cap = 6                        // Autotraitor var. Won't spawn more than this many antags.
-	hard_cap_round = 6                  // As above but 'core' round antags ie. roundstart.
+	hard_cap = 6                        // Max number at roundstart
+	hard_cap_round = 6                  // Max number with adding during round
 	initial_spawn_req = 0               // Gamemode using this template won't start without this # candidates.
 	initial_spawn_target = 3            // Gamemode will attempt to spawn this many antags.
+
+	category = CATEGORY_UNITOLOGY
 
 /datum/objective/unitologist
 	explanation_text = "Serve the marker at all costs."
@@ -62,9 +65,16 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	preference_candidacy_toggle = TRUE
 	id = MODE_UNITOLOGIST_SHARD
 	flags = 0
-	initial_spawn_req = 1
+
+	hard_cap = 4
+	hard_cap_round = 1					// When autoadding new shardbearers, we'll only do so if the number is below this
+	initial_spawn_req = 1               // Gamemode using this template won't start without this # candidates.
+	initial_spawn_target = 3            // Gamemode will attempt to spawn this many antags.
+	override_scaling = FALSE	//No scaling
+
 	welcome_text = "While on a planetary survey team on Aegis VII below, you uncovered the Holy Marker. It spoke to you, and you followed its directions, chipping off a piece and smuggling it aboard with you. <br>\
 	The shard still speaks to you now. It tells you to hide it. Plant it somewhere in a dark, hidden corner of the Ishimura, where it will not be discovered"
+	category = CATEGORY_UNITOLOGY
 
 /datum/antagonist/unitologist/shardbearer/equip(var/mob/living/carbon/human/H)
 	.=..()
@@ -97,3 +107,28 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	antag_text = "As one of the ship's fanatic Unitologists, it is your job to spread the word, light and convergence at the Marker's behest. You are to listen and comply with orders coming from the Marker, and you may <b>opt to listen</b> to the whispers coming from Signals.<br>\
 	As an antagonist, you may kill others or yourself in the name of the Marker, and provide offerings to them for good favor. If you play your cards right, you may be the only man or woman walking amongst corpses for a while.<br>\
 	As an antagonist, you may NOT use the Supermatter or Atmospherics in a grief-like way to ensure mass-kills. You may not willingly disrupt the flow of air, or blow up the Supermatter. You <b>may sabotage the Supermatter</b> however, by ejecting it and cutting power."
+
+
+
+/*
+	When counting shardbearers, we count the number of useable shards instead of people
+*/
+/datum/antagonist/unitologist/shardbearer/get_antag_count()
+	var/list/shards = get_viable_shards()
+	return length(shards)
+
+/*
+	Helpers
+*/
+/mob/proc/is_unitologist()
+	if (! (mind?.special_role))
+		return FALSE
+
+	var/datum/antagonist/A = get_antag_data(mind.special_role)
+	if (istype(A, /datum/antagonist/unitologist))
+		return TRUE
+
+	if (istype(A, /datum/antagonist/ert/unitologists))
+		return TRUE
+
+	return FALSE

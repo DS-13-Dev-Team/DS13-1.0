@@ -1,4 +1,13 @@
 /*
+	Limb Code
+*/
+/obj/item/organ/external/leg/right/simple/divider
+	can_regrow = FALSE
+
+/obj/item/organ/external/leg/simple/divider
+	can_regrow = FALSE
+
+/*
 	Leg
 	Kicks mobs and bounces off
 */
@@ -36,7 +45,7 @@
 		var/mob/living/L = charge.last_obstacle
 		L.shake_animation(15)
 		shake_camera(L,10,6) //Smack
-		launch_strike(L, damage = 15, used_weapon = src, damage_flags = 0, armor_penetration = 10, damage_type = BRUTE, armor_type = "melee", target_zone = get_zone_sel(src), difficulty = 50)
+		launch_strike(L, damage = 18, used_weapon = src, damage_flags = 0, armor_penetration = 10, damage_type = BRUTE, armor_type = "melee", target_zone = get_zone_sel(src), difficulty = 50)
 		//We are briefly stunned
 		Stun(1)
 

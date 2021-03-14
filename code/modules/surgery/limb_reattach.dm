@@ -38,7 +38,12 @@
 		if(!BP_IS_ROBOTIC(using))
 			to_chat(user, "<span class='danger'>You cannot attach a flesh part to a robotic body.</span>")
 			return SURGERY_FAILURE
-	return 1
+	if(istype(tool, /obj/item/organ/external))
+		var/obj/item/organ/external/E = tool
+		if(istype(E.species, /datum/species/necromorph) && !istype(target.species, /datum/species/necromorph))
+			to_chat(user, "<span class='danger'>You can't attach [tool] to [target].</span>")
+			return FALSE
+	return TRUE
 
 /datum/surgery_step/limb/attach/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/E = tool

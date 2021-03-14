@@ -12,6 +12,11 @@
 	var/animal_heal = 3
 	var/apply_sounds
 	item_flags = ITEM_FLAG_NO_BLUDGEON
+	
+	var/list/rig_chestpiece_covers = list(BP_CHEST, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)  //dictates what organs the rig chestpiece covers to solve issue of hands not healing and whatnot
+	var/list/rig_gloves_covers = list (BP_L_HAND, BP_R_HAND)
+	var/list/rig_boots_covers = list (BP_L_FOOT, BP_R_FOOT)
+
 
 /obj/item/stack/medical/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if (!istype(M))
@@ -35,10 +40,22 @@
 			if(H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.head]!</span>")
 				return 1
-		else
-			if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
+				
+		if(affecting.organ_tag in rig_chestpiece_covers)   // also stops you healing in the same places with voidsuit
+			if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space/rig) || H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space/void))
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.wear_suit]!</span>")
 				return 1
+
+		if(affecting.organ_tag in rig_gloves_covers)
+			if(H.gloves && istype(H.gloves, /obj/item/clothing/gloves/rig) || H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space/void))
+				to_chat(user, "<span class='warning'>You can't apply [src] through [H.wear_suit]!</span>")
+				return 1
+
+		if(affecting.organ_tag in rig_boots_covers)
+			if(H.shoes && istype(H.shoes,/obj/item/clothing/shoes/magboots/rig) || H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space/void))
+				to_chat(user, "<span class='warning'>You can't apply [src] through [H.wear_suit]!</span>")
+				return 1
+
 
 		if(BP_IS_ROBOTIC(affecting))
 			to_chat(user, "<span class='warning'>This isn't useful at all on a robotic limb..</span>")

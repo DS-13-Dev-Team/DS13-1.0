@@ -17,6 +17,7 @@
 	l_ear = /obj/item/device/radio/headset/heads/ce
 	id_type = /obj/item/weapon/card/id/holo/engineering/chief_engineer
 	pda_type = /obj/item/modular_computer/pda/heads/ce
+	//back = /obj/item/weapon/rig/advanced //Future TODO: Allow rigs in outfits to be not-broken
 
 /decl/hierarchy/outfit/job/engineering/tech_engineer
 	name = OUTFIT_JOB_NAME("Technical Engineer")

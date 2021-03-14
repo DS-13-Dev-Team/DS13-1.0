@@ -11,7 +11,7 @@
 
 //Compute how to fire.....
 //Return 1 if a target was found, 0 otherwise.
-/obj/item/weapon/gun/proc/PreFire(var/atom/A, var/mob/living/user, var/params)
+/obj/item/weapon/gun/proc/baycode_aim(var/atom/A, var/mob/living/user, var/params)
 	if(!user.aiming)
 		user.aiming = new(user)
 	user.face_atom(A)

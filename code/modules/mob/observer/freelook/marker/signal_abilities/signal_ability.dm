@@ -146,11 +146,9 @@
 
 //Path to the end of the cast
 /datum/signal_ability/proc/finish_casting(var/mob/user, var/atom/target,  var/list/data)
-	//Pay the energy costs
+	//Pay the energy costs.
 	if (!pay_cost(user))
-		//TODO: Abort casting, we failed
 		return
-
 
 	//And do the actual effect of the spell
 	on_cast(user, target,  data)
@@ -162,7 +160,7 @@
 /datum/signal_ability/proc/stop_casting(var/mob/user)
 
 	//Search the user's clickhandlers for any which have an id matching our type, indicating we put them there. And remove those
-	for (var/datum/click_handler/CH in user.GetClickHandlers())
+	for (var/datum/click_handler/CH in user?.GetClickHandlers())
 		if (CH.id == "[src.type]")
 			user.RemoveClickHandler(CH)
 
@@ -237,7 +235,6 @@
 	.= FALSE
 
 	//Pay energy cost last
-	//var/datum/player/P = user.get_player()
 	var/datum/extension/psi_energy/PE = user.get_energy_extension()
 
 	//We set right now as the last casting time, used for cooldowns
@@ -309,7 +306,6 @@
 	if (!.)
 		return
 
-	//var/datum/player/P = user.get_player()
 	var/datum/extension/psi_energy/PE = user.get_energy_extension()
 	if (energy_cost)
 

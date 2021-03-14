@@ -718,33 +718,44 @@ proc/is_blind(A)
 
 // Direction Setting
 //------------------------
+
+
 /mob/proc/canface()
 	if (!incapacitated() && CheckMoveCooldown())
 		return TRUE
 	return FALSE
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
-/mob/proc/face_atom(var/atom/A)
+/mob/proc/face_atom(var/atom/A, var/force = FALSE)
 	if(!A || !x || !y || !A.x || !A.y) return
 	var/dx = A.x - x
 	var/dy = A.y - y
-	if(!dx && !dy) return
-
 	var/direction
-	if(abs(dx) < abs(dy))
-		if(dy > 0)	direction = NORTH
-		else		direction = SOUTH
+
+	//We're in the same tile
+	if(!dx && !dy)
+		direction = A.sametile_facedir(src)
+
 	else
-		if(dx > 0)	direction = EAST
-		else		direction = WEST
-	return facedir(direction)
+		if(abs(dx) < abs(dy))
+			if(dy > 0)	direction = NORTH
+			else		direction = SOUTH
+		else
+			if(dx > 0)	direction = EAST
+			else		direction = WEST
+	return facedir(direction, force)
 
 //Facedir is called from face_atom and has
-/mob/proc/facedir(var/ndir)
-	if(!canface() || moving)
+/mob/proc/facedir(var/ndir, var/force = FALSE)
+	if(!force && (!canface() || moving))
 		return FALSE
-	var/changing = (ndir != dir)
-	.=set_dir(ndir)
+	var/changing = (ndir != get_visual_dir())
+
+	//The return value is only set true if we actually change dir, AND if the changing var above is also true.
+	//Return false otherwise
+
+	.=(set_dir(ndir) && changing)
+
 	if(buckled && buckled.buckle_movable)
 		buckled.set_dir(ndir)
 	if (. && slow_turning && changing)	//Only mobs with slow turning set will set their move cooldown when changing dir
@@ -759,6 +770,19 @@ proc/is_blind(A)
 		reset_view(null)	//Possible future consideration, should this call handle_vision instead?
 							//Seems pointlessly expensive for now, but consider it if there are problems
 
+
+/*
+	This highly specific proc asks an atom what direction a facing mob should look in, to face towards it, when they both share the same tile
+*/
+/atom/proc/sametile_facedir(var/atom/facer)
+	return GLOB.reverse_dir[dir]
+
+//Humans always turn 90 degrees clockwise when lying down, so their head is on the right/east side of the sprite
+/mob/living/carbon/human/sametile_facedir(var/atom/facer)
+	if (lying)
+		return EAST
+	.=..()
+
 /mob/living/get_move_speed_factor()
 	return move_speed_factor
 
@@ -767,6 +791,15 @@ proc/is_blind(A)
 
 
 /mob/proc/is_within_reach(var/atom/target)
-	if (get_dist(src, target) <= reach)
+	if (get_dist(src, target) <= get_reach())
 		return TRUE
 	return FALSE
+
+
+//Mobs which are lying down get 1 less reach, if they had more than 1 to begin with
+/mob/proc/get_reach()
+	var/reach_mod = 0
+	if (lying)
+		reach_mod -= 1
+
+	return max(min(reach, 1), reach+reach_mod)

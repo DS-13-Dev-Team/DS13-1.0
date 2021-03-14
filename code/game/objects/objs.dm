@@ -29,7 +29,10 @@
 	var/biomass = 0
 
 /obj/Destroy()
-	STOP_PROCESSING(SSobj, src)
+	if (is_processing)
+		var/datum/controller/subsystem/processing/P = processing_subsystems_by_varname[is_processing]
+		if (P)
+			STOP_PROCESSING(P, src)
 	.=..()
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
@@ -204,3 +207,25 @@
 //Return true if this is a flat surface which people could work on
 /obj/proc/is_surface()
 	return FALSE
+
+
+//To be called from things that spill objects on the floor.
+//Makes an object move around randomly for a couple of tiles
+//Emerge var tells whether or not to remove the item from objects its currently inside
+/obj/proc/tumble(var/dist = 2, var/emerge = TRUE)
+	set waitfor = FALSE
+	if (anchored)
+		return
+
+	if (!isturf(loc))
+		if (emerge)
+			forceMove(get_turf(src))
+		else
+			return
+
+	if (dist >= 1)
+		dist += rand(0,1)
+		for(var/i = 1, i <= dist, i++)
+			if(src)
+				step(src, pick(NORTH,SOUTH,EAST,WEST))
+				sleep(rand(2,4))

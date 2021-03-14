@@ -44,7 +44,6 @@
 		if (!(XRAY in user.mutations))
 			user.mutations.Add(XRAY)
 			user.set_sight(user.sight|SEE_MOBS|SEE_OBJS|SEE_TURFS)
-			user.set_see_in_dark(8)
 			user.set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 
 		if (!(COLD_RESISTANCE in user.mutations))
@@ -57,7 +56,7 @@
 			user.mutations.Add(HEAL)
 
 		user.update_mutations()
-		user.mind.special_role = "Avatar of the Wish Granter"
+		user.mind.set_special_role("Avatar of the Wish Granter")
 
 		var/datum/objective/silence/silence = new
 		silence.owner = user.mind

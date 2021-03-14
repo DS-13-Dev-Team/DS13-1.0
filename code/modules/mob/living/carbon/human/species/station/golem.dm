@@ -28,7 +28,7 @@
 /datum/species/golem/handle_post_spawn(var/mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.assigned_role = "Golem"
-		H.mind.special_role = "Golem"
+		H.mind.set_special_role("Golem")
 	H.real_name = "golem ([rand(1, 1000)])"
 	H.SetName(H.real_name)
 	..()

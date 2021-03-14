@@ -18,6 +18,20 @@
 	var/step_priority = 1	//Priority of the sound attached to this
 	mass = 10
 
+/obj/structure/examine(mob/user, distance, infix, suffix)
+	. = ..()
+	var/message = ""
+	switch(health / max_health * 100)
+		if(0 to 20)
+			message = "<span class='warning'><b>It's falling apart!</b></span>"
+		if(20 to 40)
+			message = "<span class='warning'>It appears heavily damaged...</span>"
+		if(40 to 80)
+			message = "<span class='notice'>It looks a bit scuffed up...</span>"
+		if(80 to 100)
+			message = "<span class='notice'>It seems structurally sound...</span>"
+	to_chat(user, message)
+
 /obj/structure/proc/repair_damage(amount)
 	if(health + amount > max_health)
 		health = max_health
@@ -199,3 +213,19 @@
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()
+
+/obj/structure/repair_needed()
+	return max_health - health
+
+
+//Future TODO: Make this generic atom behaviour
+/obj/structure/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+	var/damage = get_fire_damage(exposed_temperature, multiplier) //Plants and corruption take 2.5x damage from fire
+	if (damage > 0)
+		take_damage(damage, BURN,bypass_resist = TRUE)
+
+
+//Most structures are stee
+/obj/structure/get_heat_limit()
+	return 1370
+

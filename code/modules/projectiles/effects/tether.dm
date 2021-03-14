@@ -6,6 +6,7 @@
 	light_outer_range = 5
 	light_max_bright = 1
 	light_color = COLOR_DEEP_SKY_BLUE
+	icon = 'icons/effects/tethers.dmi'
 	icon_state = "gravity_tether"
 
 	//Start and endpoints are in world pixel coordinates
@@ -16,7 +17,7 @@
 
 	animate_movement = 0
 	lifespan = 0
-	var/base_length = WORLD_ICON_SIZE
+	var/base_length = WORLD_ICON_SIZE *2
 
 	atom_flags = ATOM_FLAG_INTANGIBLE
 	obj_flags = OBJ_FLAG_INVINCIBLE
@@ -36,33 +37,45 @@
 	GLOB.moved_event.register(origin_atom, src, /obj/effect/projectile/tether/proc/origin_moved)
 
 /obj/effect/projectile/tether/proc/origin_moved()
-	var/vector2/newstart = origin_atom.get_global_pixel_loc()
-	set_ends(newstart, end, 3, 1)
+	var/vector2/newstart = origin_atom.get_toplevel_global_pixel_loc()
+	set_ends(newstart, end, TRUE, 3)
 	release_vector(newstart)
 
 /obj/effect/projectile/tether/proc/set_target(var/atom/newtarget)
 	target_atom = newtarget
 	GLOB.moved_event.register(target_atom, src, /obj/effect/projectile/tether/proc/target_moved)
 
+//This proc takes a vector2 global pixel coords to point the end at
+//It expects a source atom to already be set first.
+//If you're not using a source atom, just call set_ends directly
+/obj/effect/projectile/tether/proc/set_target_coords(var/vector2/newend)
+	var/vector2/newstart = origin_atom.get_toplevel_global_pixel_loc()
+	set_ends(newstart, newend, TRUE, 3)
+	release_vector(newstart)
+
 /obj/effect/projectile/tether/proc/target_moved()
-	var/vector2/newend = target_atom.get_global_pixel_loc()
-	set_ends(start, newend, 3, 2)
+	var/vector2/newend = target_atom.get_toplevel_global_pixel_loc()
+	set_ends(start, newend, TRUE, 3)
 	release_vector(newend)
 
 //Takes start and endpoint as vector2s of global pixel coords
 //The animate var should be either FALSE for instant, or a number of deciseconds for how long the animation should take
 //apply offset values0 = neither, 1= start only, 2 = end only, 3 = both
 /obj/effect/projectile/tether/proc/set_ends(var/vector2/_start = null, var/vector2/_end = null, var/animate = FALSE, var/apply_offset = 3)
+
 	//We copy the passed start and end vars into our own, without modifying the passed ones
 	start.x = _start.x
 	start.y = _start.y
 	if (apply_offset == 1 || apply_offset == 3)
 		start.SelfAdd(start_offset)
 
+
+
 	end.x = _end.x
 	end.y = _end.y
 	if (apply_offset == 2 || apply_offset == 3)
 		end.SelfAdd(end_offset)
+
 
 	var/matrix/M = matrix()
 
@@ -234,3 +247,7 @@
 	health = clamp(health+repair_power, 0, max_health)
 	updatehealth()
 	update_icon()
+
+
+/obj/effect/projectile/tether/repair_needed()
+	return max_health - health

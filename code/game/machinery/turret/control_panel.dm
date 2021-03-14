@@ -146,7 +146,7 @@
 	//Fill out the targeting profiles list
 	var/templist = targeting_profiles.Copy()
 	targeting_profiles = list()
-	for (var/tptype in templist)
+	for(var/tptype in templist)
 		var/datum/targeting_profile/TP = tptype
 		TP = GLOB.targeting_profiles[initial(TP.id)]
 		targeting_profiles[TP.id] = TP

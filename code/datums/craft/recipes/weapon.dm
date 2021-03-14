@@ -83,14 +83,24 @@
 
 
 /datum/craft_recipe/weapon/flamethrower
-	name = "flamethrower"
-	result = /obj/item/weapon/flamethrower
+	name = "PFM-100 Industrial Torch"
+	result = /obj/item/weapon/gun/spray/hydrazine_torch
 	steps = list(
 		list(CRAFT_OBJECT, /obj/item/weapon/tool/weldingtool, "time" = 60),
 		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10, 70),
 		list(CRAFT_OBJECT, /obj/item/device/assembly/igniter,),
+		list(CRAFT_STACK, /obj/item/stack/power_node, 1)
 	)
 
+/datum/craft_recipe/weapon/torch_tank
+	name = "liquid fuel tank"
+	result = /obj/item/weapon/reagent_containers/glass/fuel_tank
+	steps = list(
+		list(CRAFT_OBJECT, /obj/item/weapon/tank, "time" = 60),
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10, 70),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 2),
+		list(CRAFT_TOOL, QUALITY_WELDING, 20, 70)
+	)
 
 
 

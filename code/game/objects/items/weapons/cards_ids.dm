@@ -170,6 +170,8 @@ var/const/NO_EMAG_ACT = -50
 	side = getFlatIcon(M, WEST, always_use_defdir = 1)
 
 /mob/proc/set_id_info(var/obj/item/weapon/card/id/id_card)
+	if(!id_card)
+		return FALSE
 	id_card.age = 0
 	id_card.registered_name		= real_name
 	id_card.sex 				= capitalize(gender)
@@ -179,9 +181,12 @@ var/const/NO_EMAG_ACT = -50
 		id_card.blood_type		= dna.b_type
 		id_card.dna_hash		= dna.unique_enzymes
 		id_card.fingerprint_hash= md5(dna.uni_identity)
+	return TRUE
 
 /mob/living/carbon/human/set_id_info(var/obj/item/weapon/card/id/id_card)
-	..()
+	if(!..())
+		return
+
 	id_card.age = age
 
 	if(GLOB.using_map.flags & MAP_HAS_BRANCH)
@@ -675,7 +680,7 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth)
+				access_surgery, access_maint_tunnels, access_keycard_auth, access_kellion)
 
 /obj/item/weapon/card/id/holo/kellion_sec
 	name = "holographic id"
@@ -685,7 +690,7 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth)
+				access_surgery, access_maint_tunnels, access_keycard_auth, access_kellion)
 
 /obj/item/weapon/card/id/holo/kellion_sec_leader
 	name = "holographic id"
@@ -695,7 +700,7 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth)
+				access_surgery, access_maint_tunnels, access_keycard_auth, access_kellion)
 
 /obj/item/weapon/card/id/holo/kendra
 	name = "holographic id"
@@ -705,4 +710,4 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth)
+				access_surgery, access_maint_tunnels, access_keycard_auth, access_kellion)

@@ -26,13 +26,13 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define ATOM_FLAG_OPEN_CONTAINER         0x0010 // Is an open container for chemistry purposes.
 #define ATOM_FLAG_INITIALIZED            0x0020 // Has this atom been initialized
 #define ATOM_FLAG_INTANGIBLE			 0x0040 // This atom does not physically exist, and can't be subjected to physical forces
+#define ATOM_FLAG_UNTARGETABLE           0x0080 // The atom cannot be targetted by a gun
 
 #define MOVABLE_FLAG_PROXMOVE            0x0001 // Does this object require proximity checking in Enter()?
 
 #define OBJ_FLAG_ANCHORABLE              0x0001 // This object can be stuck in place with a tool
 #define OBJ_FLAG_CONDUCTIBLE             0x0002 // Conducts electricity. (metal etc.)
 #define OBJ_FLAG_INVINCIBLE				 0x0004	// This object ignores all damage mechanics, and can't be broken, damaged etc
-
 
 #define MOB_FLAG_HOLY_BAD                0x001  // If this mob is allergic to holiness
 
@@ -57,3 +57,8 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define PASS_FLAG_GRILLE 	0x4			//Generally gases and very tiny things
 #define PASS_FLAG_FLYING 	0x8			//Objects that are not touching the ground
 #define PASS_FLAG_NOMOB		0x10		//For things that don't collide with mobs at all
+
+// for /datum/var/datum_flags
+#define DF_USE_TAG		(1<<0)
+#define DF_VAR_EDITED	(1<<1)
+#define DF_ISPROCESSING (1<<2)

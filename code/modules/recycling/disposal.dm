@@ -405,6 +405,11 @@
 	if (power_draw > 0)
 		use_power(power_draw)
 
+
+
+/obj/machinery/disposal/meddle()
+	flush()
+	.=..()
 // perform a flush
 /obj/machinery/disposal/proc/flush()
 

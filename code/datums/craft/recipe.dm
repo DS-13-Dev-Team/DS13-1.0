@@ -59,7 +59,7 @@
 	. = list()
 	if (desc)
 		.+=desc
-	else
+	else if (result)
 		var/atom/A = result
 		.+="[initial(A.desc)]"
 

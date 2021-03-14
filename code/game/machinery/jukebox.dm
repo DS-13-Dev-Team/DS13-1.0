@@ -151,6 +151,15 @@ datum/track/proc/GetTrack()
 			AdjustVolume(text2num(params["level"]))
 			. = TRUE
 
+
+/obj/machinery/media/jukebox/meddle()
+	if (prob(1))
+		emag_play()
+
+	else
+		current_track = pick(tracks)
+		StartPlaying()
+
 /obj/machinery/media/jukebox/proc/emag_play()
 	playsound(loc, 'sound/items/AirHorn.ogg', 100, 1)
 	for(var/mob/living/carbon/M in ohearers(6, src))

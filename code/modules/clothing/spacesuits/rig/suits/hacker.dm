@@ -7,7 +7,7 @@
 	armor = list(melee = 35, bullet = 35, laser = 40, energy = 40, bomb = 40, bio = 80, rad = 60) //less protective, but a lot faster
 
 	offline_slowdown = 2
-	online_slowdown = 1
+	online_slowdown = RIG_LIGHT
 
 
 	max_health = 1500
@@ -32,7 +32,9 @@
 	name = "suit"
 
 /obj/item/clothing/gloves/rig/hacker
-	name = "gloves"
+	name = "insulated gloves"
+	desc = "These gloves will protect the wearer from electric shocks."
+	siemens_coefficient = 0
 
 /obj/item/clothing/shoes/magboots/rig/hacker
 	name = "shoes"

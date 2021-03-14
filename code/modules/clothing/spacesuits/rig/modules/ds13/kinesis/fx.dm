@@ -6,7 +6,10 @@
 	icon_state = "lightning"
 	plane = MOB_PLANE
 	alpha = 128
+
+	//These should not be necessary, there's something fundamentally wrong with pixel calculations
 	start_offset = new /vector2(-48,-8)
+	end_offset = new /vector2(-48,-8)
 	base_length = 128
 
 /obj/effect/projectile/tether/lightning/can_telegrip()

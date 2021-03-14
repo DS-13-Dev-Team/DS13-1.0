@@ -10,7 +10,7 @@
 	icon = 'icons/obj/machines/ds13/bpl.dmi'
 	icon_state = "base"
 
-	var/max_biomass = 100	//1 Litre
+	var/max_biomass = 150	//1.5 Litre
 	var/current_biomass
 
 	var/obj/item/organ/current_growth_atom
@@ -23,9 +23,9 @@
 	var/list/valid_reagents = list(/datum/reagent/nutriment/biomass,
 	/datum/reagent/nutriment/stemcells)	//TODO: Add stem cells and blood to this
 
-	var/growth_rate = 0.5	//This many units of refined biomass are added to the forming organ each tick
+	var/growth_rate = 0.6	//This many units of refined biomass are added to the forming organ each tick
 
-	var/sustain_rate = 0.04	//This many units of refined biomass are consumed each tick to keep alive an already-fully-grown organ
+	var/sustain_rate = 0.03	//This many units of refined biomass are consumed each tick to keep alive an already-fully-grown organ
 
 	var/efficiency = 0.9	//Some of the biomass is wasted
 
@@ -91,6 +91,7 @@
 
 /obj/machinery/growth_tank/on_reagent_change()
 	update_current_biomass()
+	playsound(src, "bubble_small", VOLUME_LOW)
 
 /obj/machinery/growth_tank/proc/update_current_biomass()
 	current_biomass = reagents.get_reagent_amount(/datum/reagent/nutriment/biomass)
@@ -209,6 +210,7 @@
 			else
 				//The blinking red light appears when biomass has completely run out. At this point, the contained atom takes damage until it starves to death
 				overlays += image(icon, src, "light_red")
+				playsound(src, 'sound/machines/tankdanger.ogg', VOLUME_MID)
 		else
 			//If biomass is fine, then lets show some other lights
 			if (istype(current_growth_atom, /obj/item/organ/forming))
@@ -279,6 +281,7 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 		Do you wish to eject it?", "Eject Growth Product", "Remove from Tank", "Leave it in")
 		if (choice == "Remove from Tank")
 			remove_product(user)
+			playsound(src, "bubble", VOLUME_LOW)
 
 	else
 		//Selecting a product to grow!
@@ -301,12 +304,14 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 			return FALSE
 	current_growth_atom = new /obj/item/organ/forming(src, choice)
 	forming = TRUE
+	playsound(src, "bubble", VOLUME_LOW)
 	turn_on()
 
 
 /obj/machinery/growth_tank/proc/finish_growing()
 	var/obj/item/organ/forming/F = current_growth_atom
 	forming = FALSE
+	playsound(src, 'sound/machines/tankconfirm.ogg', VOLUME_MID)
 	if (istype(F))	//Should never be false but just in case
 
 		//We spawn a new completed organ to replace the forming one

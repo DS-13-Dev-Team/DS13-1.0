@@ -8,7 +8,7 @@
 	throwforce = 0
 	w_class = ITEM_SIZE_SMALL
 	throw_range = 2
-	
+
 	layer = ABOVE_OBJ_LAYER
 	attack_verb = list("bapped")
 	var/page = 1    // current page
@@ -30,7 +30,7 @@
 
 	// burning
 	else if(istype(W, /obj/item/weapon/flame))
-		burnpaper(W, user)
+		burn_with_object(W, user)
 
 	// merging bundles
 	else if(istype(W, /obj/item/weapon/paper_bundle))
@@ -67,7 +67,7 @@
 	if(index <= page)
 		page++
 
-/obj/item/weapon/paper_bundle/proc/burnpaper(obj/item/weapon/flame/P, mob/user)
+/obj/item/weapon/paper_bundle/proc/burn_with_object(obj/item/weapon/flame/P, mob/user)
 	var/class = "warning"
 
 	if(P.lit && !user.restrained())
@@ -85,11 +85,19 @@
 				if(user.get_inactive_hand() == src)
 					user.drop_from_inventory(src)
 
-				new /obj/effect/decal/cleanable/ash(src.loc)
-				qdel(src)
+				burn()
 
 			else
 				to_chat(user, "<span class='warning'>You must hold \the [P] steady to burn \the [src].</span>")
+
+//We won't even bother with damage, paper exposed to fire is just gone
+/obj/item/weapon/paper_bundle/fire_act()
+	burn()
+
+/obj/item/weapon/paper_bundle/proc/burn()
+	new /obj/effect/decal/cleanable/ash(get_turf(src))
+	qdel(src)
+
 
 /obj/item/weapon/paper_bundle/examine(mob/user)
 	if(..(user, 1))

@@ -12,8 +12,8 @@
 	var/placement_type = /datum/click_handler/placement/necromorph
 	var/placement_location = PLACEMENT_FLOOR
 
+	var/fire_damage_multiplier = 3
 
-	var/dummy = FALSE
 
 	default_rotation = 0
 	max_health = 100
@@ -26,6 +26,11 @@
 	var/processing = FALSE
 
 	can_block_movement = FALSE
+	implements_dummy = TRUE
+
+/obj/structure/corruption_node/New(var/location, var/dummy)
+	src.dummy = dummy
+	.=..()
 
 /obj/structure/corruption_node/is_organic()
 	return TRUE
@@ -118,7 +123,7 @@
 		processing = TRUE
 		START_PROCESSING(SSobj, src)
 
-/obj/structure/corruption_node/proc/can_stop_processing()
+/obj/structure/corruption_node/can_stop_processing()
 	if (health < max_health)
 		return FALSE
 
@@ -139,3 +144,13 @@
 	if (placement_location == P.placement_location)
 		return FALSE
 	return TRUE
+
+
+//Future TODO: Make this generic atom behaviour
+/obj/structure/corruption_node/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+	.=..(air, exposed_temperature, exposed_volume, multiplier*fire_damage_multiplier)
+
+
+//Nodes are organic
+/obj/structure/corruption_node/get_heat_limit()
+	return 310

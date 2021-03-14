@@ -16,6 +16,6 @@
 
 	//The loadout will do all the necessary preparations from here
 
-	L.equip_to_mob(H, TRUE)
+	L.equip_to_mob()
 
 	remove_extension(H, /datum/extension/loadout)

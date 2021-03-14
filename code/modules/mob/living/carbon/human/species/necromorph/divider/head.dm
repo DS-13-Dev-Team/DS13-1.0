@@ -28,6 +28,7 @@
 	leap_state = "head_leap"
 	attack_state = "head_attack"
 
+
 /mob/living/simple_animal/necromorph/divider_component/head/Initialize()
 	.=..()
 	add_modclick_verb(KEY_CTRLALT, /mob/living/simple_animal/necromorph/divider_component/head/proc/takeover_verb)
@@ -141,15 +142,17 @@
 
 
 
-/*
-	Special head subtype, used only on puppets
 
-*/
 /obj/item/organ/external/head/simple/divider
 	base_miss_chance = 45
+	can_regrow = FALSE
 
+/*
+	Special head subtype, used only on puppets
+*/
 /obj/item/organ/external/head/simple/divider/human
 	icon_name = "head_human"
+	can_regrow = FALSE
 
 
 /obj/item/organ/external/head/simple/divider/New(var/mob/living/carbon/holder, var/datum/dna/given_dna)
@@ -329,7 +332,7 @@
 
 
 
-	vision_mod = -4
+	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -4)
 
 
 /datum/extension/execution/divider_head/safety_check()
@@ -357,10 +360,13 @@
 	if (LAZYLEN(head.attack_sounds))
 		playsound(host.victim, pick(head.attack_sounds), VOLUME_MAX, TRUE)
 
+	.=..()
+
 /datum/execution_stage/divider_possess_start
 	duration = 5 SECONDS
 
 /datum/execution_stage/divider_possess/enter()
+	.=..()
 	playsound(host.user, 'sound/effects/creatures/necromorph/divider/divider_posession.ogg', VOLUME_LOUD, TRUE)
 	host.user.visible_message(SPAN_EXECUTION("[host.user] slips their tentacles down the gaping neck hole on [host.victim]'s twitching, headless corpse."))
 

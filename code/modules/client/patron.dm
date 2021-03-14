@@ -31,8 +31,10 @@
 			//Their patron status has expired!
 			continue
 
+		line_list[1] = ckey(line_list[1])
+
 		//patron status is still valid!
-		GLOB.patron_keys[lowertext(line_list[1])] = line_list[2]
+		GLOB.patron_keys[line_list[1]] = line_list[2]
 
 /*
 	Writes to the patrons.txt file
@@ -67,6 +69,8 @@
 
 /proc/update_patrons()
 	for (var/key in GLOB.players)
+		if (!key)
+			continue
 		var/datum/player/P = GLOB.players[key]
 		P.update_patron()
 /*
@@ -139,6 +143,7 @@
 	if (href_list["register"])
 		var/newkey = input(usr, "Please enter the ckey of the player you wish to register as a patron. This is not case sensitive, but please make sure the spelling is accurate.", "A New Patron", 0) as text
 		if (newkey)
+			newkey = ckey(newkey)
 			GLOB.patron_keys[newkey] = add_time_to_date(current_date(), 30 DAYS)
 			to_chat(usr, "Success, [newkey] Added as patron, an initial 30 day duration has been set, it can be farther edited")
 			save_patrons()

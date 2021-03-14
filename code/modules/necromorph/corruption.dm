@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	icon = 'icons/effects/corruption.dmi'
 	icon_state = ""
 
-	max_health = 80
+	max_health = 30
 	max_growth = 1
 
 	var/max_alpha = 215
@@ -45,6 +45,14 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 	can_block_movement = FALSE
 
+/obj/effect/vine/corruption/proc/healthpercent()
+	if (health <= 0)
+		return 0
+
+	if (!max_health)
+		return 1
+
+	return health / max_health
 
 /obj/effect/vine/is_organic()
 	return TRUE
@@ -354,7 +362,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	flags = EXTENSION_FLAG_IMMEDIATE
 
 	//Effects on necromorphs
-	var/healing_per_tick = 1.2	//Passive Healing
+	var/healing_per_tick = 1	//Passive Healing
 	var/speedup = 1.25	//Bonus movespeed
 	var/incoming_damage_mod = 0.85	//Incoming damage reduction
 

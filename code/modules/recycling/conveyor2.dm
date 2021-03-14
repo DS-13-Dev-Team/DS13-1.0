@@ -201,7 +201,7 @@
 
 // attack with hand, switch position
 /obj/machinery/conveyor_switch/attack_hand(mob/user)
-	if(!allowed(user))
+	if(user && !allowed(user))
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 
@@ -225,6 +225,9 @@
 			S.position = position
 			S.update_icon()
 
+
+/obj/machinery/conveyor_switch/meddle()
+	attack_hand(null)
 
 /obj/machinery/conveyor_switch/attackby(obj/item/I, mob/user, params)
 	if(isCrowbar(I))

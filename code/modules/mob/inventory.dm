@@ -133,10 +133,18 @@ var/list/slot_equipment_priority = list( \
 	if(hand)	return l_hand
 	else		return r_hand
 
+/mob/proc/get_active_hand_slot()
+	if(hand)	return slot_l_hand
+	return slot_r_hand
+
 //Returns the thing in our inactive hand
 /mob/proc/get_inactive_hand()
 	if(hand)	return r_hand
 	else		return l_hand
+
+/mob/proc/get_inactive_hand_slot()
+	if(hand) return slot_r_hand
+	return slot_l_hand
 
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
@@ -256,6 +264,8 @@ var/list/slot_equipment_priority = list( \
 /mob/proc/remove_from_mob(var/obj/O, var/atom/target)
 	if(!O) // Nothing to remove, so we succeed.
 		return TRUE
+
+
 	src.u_equip(O)
 	if (src.client)
 		src.client.screen -= O
@@ -267,7 +277,10 @@ var/list/slot_equipment_priority = list( \
 			I.forceMove(target)
 		else
 			I.dropInto(loc)
-		I.dropped(src)
+
+		//If it was somewhere on us before, and its no longer there now
+		if (I.loc != src)
+			I.dropped(src)
 	return TRUE
 
 
@@ -322,4 +335,26 @@ var/list/slot_equipment_priority = list( \
 		if(I.body_parts_covered & body_parts)
 			. += I
 
-/mob/proc/delete_worn_item(var/obj/item/I)
+///mob/proc/delete_worn_item(var/obj/item/I)
+
+
+
+
+/*
+	Get Contents
+*/
+/atom/proc/get_contents()
+	var/list/things = list()
+	things += contents
+	for (var/obj/item/I as anything in things)
+		things += I.get_contents()
+	return things
+
+
+//Gets everything this mob is carrying or wearing. Does not include internal organs
+/mob/proc/get_inventory()
+	var/list/inventory = get_equipped_items(TRUE)
+	for (var/obj/item/I as anything in inventory)
+		inventory += I.get_contents()
+
+	return inventory

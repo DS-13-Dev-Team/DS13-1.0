@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(actor, /datum/antagonist/actor, new)
-
 /datum/antagonist/actor
 	id = MODE_ACTOR
 	role_text = "NanoTrasen Actor"

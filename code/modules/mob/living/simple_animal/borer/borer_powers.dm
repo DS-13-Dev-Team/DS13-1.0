@@ -184,7 +184,7 @@ GLOBAL_LIST_INIT(borer_reagent_types_by_name, setup_borer_reagents())
 		H.ghostize(0)
 
 	if(src.mind)
-		src.mind.special_role = "Borer Husk"
+		src.mind.set_special_role("Borer Husk")
 		src.mind.transfer_to(host)
 
 	H.ChangeToHusk()
@@ -360,4 +360,4 @@ GLOBAL_LIST_INIT(borer_reagent_types_by_name, setup_borer_reagents())
 	rejuvenate()
 	restore_blood()
 	fixblood()
-	UpdateLyingBuckledAndVerbStatus()
+	update_lying_buckled_and_verb_status()

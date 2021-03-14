@@ -1,9 +1,20 @@
 /datum/antagonist/proc/create_global_objectives(var/override=0)
 	if(config.objectives_disabled != CONFIG_OBJECTIVE_ALL && !override)
 		return 0
+
+	//If global objectives exist, we are recreating them
 	if(global_objectives && global_objectives.len)
-		return 0
+		if (!override)
+			return 0
+		else
+			//Get rid of the old set so we don't end up with duplicates
+			clear_global_objectives()
 	return 1
+
+/datum/antagonist/proc/clear_global_objectives()
+	for (var/datum/mind/player in current_antagonists)
+		player.objectives -= global_objectives
+	QDEL_LIST(global_objectives)
 
 /datum/antagonist/proc/create_objectives(var/datum/mind/player, var/override=0)
 	if(config.objectives_disabled != CONFIG_OBJECTIVE_ALL && !override)

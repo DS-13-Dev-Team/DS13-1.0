@@ -10,10 +10,10 @@
 	blurb = "An expendable suicide bomber, the exploder's sole purpose is to go out in a blaze of glory, and hopefully take a few people with it."
 	unarmed_types = list(/datum/unarmed_attack/bite/weak/exploder) //Bite attack is a backup if blades are severed
 	total_health = 85	//It has high health for the sake of making it a bit harder to destroy without targeting the pustule. Exploding the pustule is always an instakill
-	biomass = 70
+	biomass = 65
 	mass = 50
 
-	biomass_reclamation_time	=	4.5 MINUTES
+	biomass_reclamation_time	=	5 MINUTES
 	view_range = 6
 	darksight_tint = DARKTINT_POOR
 
@@ -178,6 +178,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE
 	base_miss_chance = -5	//Big  target
 	var/exploded = FALSE
+	can_regrow = FALSE	//This is once only
 
 //The pustule casts soft yellow light in a broad area
 /obj/item/organ/external/hand/exploder_pustule/Initialize()
@@ -206,11 +207,11 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	//A normal explosion
 	spawn()
 		//Max power 2 because hull breaches are not cool
-		T.explosion(5,2)
+		T.EXPLOSION_LARGE
 
 	spawn()
 		//An immediate second, smaller explosion to deal more damage
-		T.explosion(4,3)
+		T.EXPLOSION_STANDARD
 
 	//Make sure the pustule is deleted if these explosions don't destroy it
 	spawn()

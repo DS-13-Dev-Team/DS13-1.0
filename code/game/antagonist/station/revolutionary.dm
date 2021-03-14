@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(revs, /datum/antagonist/revolutionary, new)
-
 /datum/antagonist/revolutionary
 	id = MODE_REVOLUTIONARY
 	role_text = "Head Revolutionary"

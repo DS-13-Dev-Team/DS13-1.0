@@ -11,8 +11,7 @@
 			return -2
 		return -1
 
-	if(embedded_flag || (stomach_contents && stomach_contents.len))
-		handle_embedded_and_stomach_objects() //Moving with objects stuck in you can cause bad times.
+
 
 	if(CE_SPEEDBOOST in chem_effects)
 		tally -= chem_effects[CE_SPEEDBOOST]
@@ -80,7 +79,8 @@
 
 	tally += config.human_delay
 	tally /= get_move_speed_factor()
-
+	if(lying) //Crawling, it's slower
+		tally /= species.lying_speed_factor
 	return tally
 
 /mob/living/carbon/human/size_strength_mod()
@@ -148,6 +148,10 @@
 /mob/living/carbon/human/proc/handle_exertion()
 	if(isSynthetic())
 		return
+
+	if(LAZYLEN(implants) || (stomach_contents && stomach_contents.len))
+		handle_embedded_and_stomach_objects() //Moving with objects stuck in you can cause bad times.
+
 	var/lac_chance =  10 * encumbrance()
 	if(lac_chance && prob(skill_fail_chance(SKILL_HAULING, lac_chance)))
 		make_reagent(1, /datum/reagent/lactate)
@@ -163,3 +167,15 @@
 /mob/living/carbon/human/set_move_intent(var/decl/move_intent/M)
 	. = ..()
 	step_interval = M.footstep_interval
+
+
+//Returns what percentage of the limbs we use for movement, are still attached
+/mob/living/carbon/human/proc/get_locomotive_limb_percent()
+
+	var/current = length(get_locomotion_limbs(FALSE))
+	var/max = LAZYLEN(species.locomotion_limbs)
+
+	if (max > 0)
+		return current / max
+
+	return 1

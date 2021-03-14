@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(renegades, /datum/antagonist/renegade, new)
-
 /datum/antagonist/renegade
 	role_text = "Renegade"
 	role_text_plural = "Renegades"

@@ -71,6 +71,8 @@
 /proc/cmp_gear_priority(var/datum/gear/a, var/datum/gear/b)
 	return a.priority - b.priority
 
+/proc/cmp_antagonist_category(var/datum/antagonist/a, var/datum/antagonist/b)
+	return sorttext(b.preference_candidacy_category, a.preference_candidacy_category)
 
 /proc/cmp_gear_subcategory(var/datum/gear/a, var/datum/gear/b)
 	return sorttext(b.subcategory, a.subcategory)
