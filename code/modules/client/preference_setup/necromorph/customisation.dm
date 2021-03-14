@@ -4,7 +4,7 @@
 
 /datum/category_item/player_setup_item/necromorph/customisation
 	name = "customisation"
-	sort_order = 1
+	sort_order = 8
 	var/selected = "Signal"
 
 /datum/category_item/player_setup_item/necromorph/customisation/load_character(var/savefile/S)
@@ -67,8 +67,8 @@
 
 		for (var/iconstate in GLOB.signal_sprites)
 			var/icon/I = new ('icons/mob/eye.dmi',iconstate,SOUTH)
-			var/is_enabled = (iconstate in enabled)
-			. += image_check_panel(text = iconstate, I = I, ticked = enabled, user = user, command = is_enabled ? "disable" : "enable", source = src)
+			var/is_enabled = (iconstate in enabled_sprites)
+			. += image_check_panel(text = iconstate, I = I, ticked = is_enabled, user = user, command = is_enabled ? "disable" : "enable", source = src)
 
 
 	. += "</td></tr></table>"
