@@ -241,6 +241,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 	lock.offset_to(lock_offset_turf, WORLD_ICON_SIZE, square = TRUE)
 	lock.dir = lock_dir
 	lock.NR = src
+	lock.update_icon()
 
 /*
 	Given an airlock, this proc attempts to find the turf we should place a powerlock onto
