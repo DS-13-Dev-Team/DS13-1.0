@@ -17,6 +17,7 @@
 	var/list/footstep_sounds	//footstep sounds when stepped on
 	var/step_priority = 1	//Priority of the sound attached to this
 	mass = 10
+	w_class = ITEM_SIZE_HUGE
 
 /obj/structure/proc/repair_damage(amount)
 	if(health + amount > max_health)
