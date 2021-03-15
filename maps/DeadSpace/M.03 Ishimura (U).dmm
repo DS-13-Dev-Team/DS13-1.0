@@ -3284,7 +3284,7 @@
 	pixel_x = -28;
 	pixel_y = -14
 	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/tiled/techmaint,
 /area/ishimura/eva/ADS)
 "jg" = (
 /obj/structure/closet/walllocker/emerglocker/north,
@@ -3490,7 +3490,7 @@
 	dir = 8;
 	icon_state = "railing0"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
 "AZ" = (
 /obj/structure/cable/green{
@@ -3631,7 +3631,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
 "Nm" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
 "Nz" = (
 /obj/structure/table/reinforced,
@@ -3817,7 +3817,7 @@
 	dir = 8;
 	icon_state = "railing0"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
 "Wh" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -3849,7 +3849,7 @@
 	dir = 8;
 	icon_state = "railing0"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
 "Ys" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -3871,7 +3871,7 @@
 	dir = 8;
 	icon_state = "railing0"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
 "YU" = (
 /obj/effect/floor_decal/industrial/warning/full,
@@ -27202,7 +27202,7 @@ au
 ay
 ai
 ai
-ZV
+ai
 ai
 eA
 cq
@@ -28413,7 +28413,7 @@ ao
 ao
 ao
 ao
-ao
+eA
 ai
 ai
 ai
@@ -28421,7 +28421,7 @@ ai
 ai
 ai
 ai
-ao
+eB
 ao
 ao
 ao
@@ -29827,7 +29827,7 @@ ao
 ao
 ao
 ao
-ao
+eA
 ai
 ai
 ai
@@ -29835,7 +29835,7 @@ ZV
 ZV
 ZV
 ai
-ao
+eB
 ao
 ao
 ao
@@ -31241,7 +31241,7 @@ ao
 ao
 ao
 ao
-ao
+eA
 ai
 ai
 ai
@@ -31249,7 +31249,7 @@ ai
 ai
 ai
 ai
-ao
+eB
 ao
 ao
 ao
@@ -32655,7 +32655,7 @@ ao
 ao
 ao
 ao
-ao
+eA
 ai
 ai
 ai
@@ -32663,7 +32663,7 @@ ai
 ai
 ai
 ai
-ao
+eB
 ao
 ao
 ao
@@ -34069,7 +34069,7 @@ ao
 ao
 ao
 ao
-ao
+eA
 ai
 ai
 ai
@@ -34077,7 +34077,7 @@ ai
 ai
 ai
 ai
-ao
+eB
 ao
 ao
 ao
@@ -35483,7 +35483,7 @@ ao
 ao
 ao
 ao
-ao
+eA
 ai
 ao
 ao
@@ -35491,7 +35491,7 @@ ao
 ai
 ai
 ai
-ao
+eB
 ao
 ao
 ao
@@ -36897,7 +36897,7 @@ ao
 ao
 ao
 ao
-ao
+eA
 ai
 ai
 ai
@@ -36905,7 +36905,7 @@ ai
 ai
 ai
 ai
-ao
+eB
 ao
 ao
 ao
@@ -38311,7 +38311,7 @@ ao
 ao
 ao
 ao
-ao
+eA
 ai
 ai
 ai
@@ -38319,7 +38319,7 @@ ai
 ai
 ai
 ai
-ao
+eB
 ao
 ao
 ao
@@ -39725,7 +39725,7 @@ ao
 ao
 ao
 ao
-ao
+eA
 ai
 ai
 ai
@@ -39733,7 +39733,7 @@ ai
 ai
 ai
 ai
-ao
+eB
 ao
 ao
 ao
@@ -43160,13 +43160,13 @@ ao
 ao
 ao
 rX
-ZC
-ZC
-ZC
+vB
+vB
+vB
 iB
-ZC
-ZC
-ZC
+vB
+vB
+vB
 rX
 ao
 ao
