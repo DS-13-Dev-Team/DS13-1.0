@@ -106,13 +106,19 @@
 				"You close [src]'s casing.", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 75, 1)
 
-			var/obj/machinery/light/newlight = new fixture_type(src.loc, src)
-			newlight.set_dir(src.dir)
-
-			src.transfer_fingerprints_to(newlight)
-			qdel(src)
+			finish_construction()
 			return
 	..()
+
+//Turns a construct into a finished light
+/obj/machinery/light_construct/proc/finish_construction(var/spawn_bulb = FALSE)
+	var/obj/machinery/light/newlight = new fixture_type(src.loc, (spawn_bulb ? null : src))
+	newlight.set_dir(src.dir)
+
+	src.transfer_fingerprints_to(newlight)
+
+	QDEL_IN(src, 1)
+	return newlight
 
 /obj/machinery/light_construct/small
 	name = "small light fixture frame"
@@ -131,6 +137,21 @@
 		if(1) icon_state = "bulb-construct-stage1"
 		if(2) icon_state = "bulb-construct-stage2"
 		if(3) icon_state = "bulb-empty"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // the standard tube light fixture
 /obj/machinery/light
@@ -267,8 +288,11 @@
 
 /obj/machinery/light/proc/switch_check()
 	lightbulb.switch_on()
+
 	if(get_status() != LIGHT_OK)
 		set_light(0)
+	else
+		playsound(src.loc, 'sound/effects/Custom_lights.ogg', 65, 1)
 
 /obj/machinery/light/attack_generic(var/mob/user, var/damage)
 	if(!damage)
@@ -547,6 +571,21 @@
 		set_mode(LIGHTMODE_READY)
 	else
 		set_mode(null)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // the light item
 // can be tube or bulb subtypes

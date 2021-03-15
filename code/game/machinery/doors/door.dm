@@ -392,6 +392,9 @@
 /obj/machinery/door/proc/take_damage(var/damage, var/ignore_resistance = FALSE)
 	var/initialhealth = health
 
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
+
 	damage = apply_resistance(damage, ignore_resistance)
 	if (!damage)
 		return

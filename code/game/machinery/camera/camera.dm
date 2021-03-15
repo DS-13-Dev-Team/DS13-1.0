@@ -266,6 +266,8 @@
 		add_hiddenprint(user)
 
 /obj/machinery/camera/proc/take_damage(var/force, var/message)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	//prob(25) gives an average of 3-4 hits
 	if (force >= toughness && (force > toughness*4 || prob(25)))
 		destroy()

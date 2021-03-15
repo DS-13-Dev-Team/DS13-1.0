@@ -17,7 +17,8 @@
 	w_class = ITEM_SIZE_SMALL
 	//price_tag = 200
 
-	var/prefix = "upgraded" //Added to the tool's name
+	var/adjective = "upgraded" //Added to the tool's name
+	var/adjective_type = ADJECTIVE_TYPE_OPINION	//Defines in _defines/text.dm, determines the order that adjectives appear
 
 	//The modification can be applied to a tool that has any of these qualities
 	var/list/required_qualities = list()
@@ -182,5 +183,5 @@
 	holder.use_fuel_cost *= fuelcost_mult
 	holder.use_power_cost *= powercost_mult
 	holder.extra_bulk += bulk_mod
-	holder.prefixes |= prefix
+	holder.adjectives[adjective] = adjective_type
 	return TRUE

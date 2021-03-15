@@ -100,10 +100,8 @@
 
 /decl/hierarchy/supply_pack/security/weapons
 	name = "Weapons - Security basic"
-	contains = list(/obj/item/device/flash = 4,
-					/obj/item/weapon/reagent_containers/spray/pepper = 4,
-					/obj/item/weapon/melee/baton/loaded = 4,
-					/obj/item/weapon/gun/energy/taser = 4)
+	contains = list(/obj/item/weapon/reagent_containers/spray/pepper = 4,
+					/obj/item/weapon/melee/baton/loaded = 4)
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper Weapons crate"

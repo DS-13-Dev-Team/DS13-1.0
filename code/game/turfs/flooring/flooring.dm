@@ -42,7 +42,7 @@ var/list/flooring_types
 	var/color = COLOR_WHITE
 
 	var/descriptor = "tiles"
-	var/flags = TURF_CAN_BURN | TURF_CAN_BREAK
+	var/flags = TURF_CAN_BURN | TURF_CAN_BREAK | TURF_HIDES_THINGS
 	var/can_paint
 
 	var/is_plating = FALSE
@@ -300,6 +300,14 @@ var/list/flooring_types
 	damage_temperature = T0C+200
 	flags = TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
 	step_priority = 2 //Soft surfaces have more distinctive sounds
+	space_smooth = SMOOTH_NONE
+	floor_smooth = SMOOTH_NONE
+	wall_smooth = SMOOTH_NONE
+	smooth_nothing = FALSE
+	smooth_movable_atom = SMOOTH_GREYLIST
+	movable_atom_blacklist = list(
+		list(/obj, list("density" = TRUE, "anchored" = TRUE), 1)
+		)
 
 /decl/flooring/carpet/blue
 	name = "blue carpet"

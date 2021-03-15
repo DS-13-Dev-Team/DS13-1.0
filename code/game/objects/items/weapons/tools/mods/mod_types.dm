@@ -11,7 +11,7 @@
 	desc = "A sturdy pole made of fiber tape and metal rods. Can be used to reinforce the shaft of many tools"
 	icon_state = "brace_bar"
 	required_qualities = list(QUALITY_BOLT_TURNING,QUALITY_PRYING, QUALITY_SAWING,QUALITY_SHOVELING,QUALITY_DIGGING,QUALITY_EXCAVATION)
-	prefix = "braced"
+	adjective = "braced"
 	degradation_mult = 0.65
 	force_mod = 1
 	//price_tag = 120
@@ -22,7 +22,8 @@
 	name = "heatsink"
 	desc = "An array of aluminium fins which dissipates heat, reducing damage and extending the lifespan of power tools."
 	icon_state = "heatsink"
-	prefix = "heatsunk"
+	adjective = "heatsunk"
+	adjective_type = ADJECTIVE_TYPE_PURPOSE
 	degradation_mult = 0.65
 
 
@@ -37,21 +38,22 @@
 	name = "reinforced plating"
 	desc = "A sturdy bit of metal that can be bolted onto any tool to protect it. Tough, but bulky"
 	icon_state = "plate"
-	prefix = "reinforced"
+	adjective = "reinforced"
 	degradation_mult = 0.55
 	force_mod = 1
 	precision = -5
 	bulk_mod = 1
-
+	adjective_type = ADJECTIVE_TYPE_MATERIAL
 
 /obj/item/weapon/tool_modification/reinforcement/guard
 	name = "metal guard"
 	desc = "A bent piece of metal that wraps around sensitive parts of a tool, protecting it from impacts, debris, and stray fingers."
 	icon_state = "guard"
 	required_qualities = list(QUALITY_CUTTING,QUALITY_DRILLING, QUALITY_SAWING, QUALITY_DIGGING, QUALITY_EXCAVATION, QUALITY_WELDING)
-	prefix = "shielded"
+	adjective = "shielded"
 	degradation_mult = 0.75
 	precision = 5
+	adjective_type = ADJECTIVE_TYPE_SHAPE
 
 
 
@@ -63,8 +65,9 @@
 	name = "ergonomic grip"
 	desc = "A replacement grip for a tool which allows it to be more precisely controlled with one hand"
 	icon_state = "ergonomic"
-	prefix = "ergonomic"
+	adjective = "ergonomic"
 	workspeed = 0.15
+	adjective_type = ADJECTIVE_TYPE_OPINION
 
 
 /obj/item/weapon/tool_modification/productivity/ratchet
@@ -72,17 +75,19 @@
 	desc = "A mechanical modification for wrenches and screwdrivers which allows the tool to only turn in one direction"
 	icon_state = "ratchet"
 	required_qualities = list(QUALITY_BOLT_TURNING,QUALITY_SCREW_DRIVING)
-	prefix = "ratcheting"
+	adjective = "ratcheting"
 	workspeed = 0.25
+	adjective_type = ADJECTIVE_TYPE_PURPOSE
 
 /obj/item/weapon/tool_modification/productivity/red_paint
 	name = "red paint"
 	desc = "Do red tools really work faster, or is the effect purely psychological"
 	icon_state = "paint_red"
-	prefix = "red"
+	adjective = "red"
 	workspeed = 0.20
 	precision = -10
 	recoverable = FALSE //What are you gonna do, scrape it off and glue the paint flakes onto something else?
+	adjective_type = ADJECTIVE_TYPE_COLOR
 
 /obj/item/weapon/tool_modification/productivity/red_paint/apply_values()
 	if (..())
@@ -93,7 +98,7 @@
 	desc = "A rough single-use block to sharpen a blade. The honed edge cuts smoothly"
 	icon_state = "whetstone"
 	required_qualities = list(QUALITY_CUTTING,QUALITY_SAWING, QUALITY_WIRE_CUTTING)
-	prefix = "sharpened"
+	adjective = "sharpened"
 	workspeed = 0.15
 	precision = 5
 	force_mult = 1.15
@@ -106,12 +111,13 @@
 	desc = "An adaptable industrial grade cutting disc, with diamond dust worked into the metal. Exceptionally durable"
 	icon_state = "diamond_blade"
 	required_qualities = list(QUALITY_CUTTING,QUALITY_SAWING, QUALITY_WIRE_CUTTING, QUALITY_PRYING)
-	prefix = "diamond-edged"
+	adjective = "dikoted"
 	//price_tag = 300
 	workspeed = 0.25
 	degradation_mult = 0.85
 	force_mult = 1.10
 	matter = list(MATERIAL_STEEL = 1, MATERIAL_DIAMOND = 1)
+	adjective_type = ADJECTIVE_TYPE_MATERIAL
 
 /obj/item/weapon/tool_modification/productivity/diamond_blade/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
 	.=..()
@@ -127,10 +133,11 @@
 	desc = "A canister of pure, compressed oxygen with adapters for mounting onto a welding tool. Used alongside fuel, it allows for higher burn temperatures"
 	icon_state = "oxyjet"
 	required_qualities = list(QUALITY_WELDING)
-	prefix = "oxyjet"
+	adjective = "oxyjet"
 	workspeed = 0.20
 	force_mult = 1.15
 	degradation_mult = 1.15
+	adjective_type = ADJECTIVE_TYPE_PURPOSE
 
 
 //Enhances power tools majorly, but also increases costs
@@ -139,7 +146,7 @@
 	desc = "A motor for power tools with a higher horsepower than usually expected. Significantly enhances productivity and lifespan, but more expensive to run and harder to control"
 	icon_state = "motor"
 	required_qualities = list(QUALITY_SCREW_DRIVING, QUALITY_DRILLING, QUALITY_SAWING, QUALITY_DIGGING, QUALITY_EXCAVATION)
-	prefix = "high-power"
+	adjective = "high-power"
 	workspeed = 0.50
 	force_mult = 1.15
 
@@ -166,9 +173,10 @@
 	name = "Asters \"Guiding Light\" laser guide"
 	desc = "A small visible laser which can be strapped onto any tool, giving an accurate representation of its target. Helps improve precision"
 	icon_state = "laser_guide"
-	prefix = "laser-guided"
+	adjective = "laser-guided"
 	precision = 10
 	matter = list(MATERIAL_PLASTIC = 1, MATERIAL_URANIUM = 1)
+	adjective_type = ADJECTIVE_TYPE_PURPOSE
 
 
 //Fits onto generally small tools that require precision, especially surgical tools
@@ -179,7 +187,8 @@
 	icon_state = "stabilizing"
 	required_qualities = list(QUALITY_CUTTING,QUALITY_WIRE_CUTTING, QUALITY_SCREW_DRIVING, QUALITY_WELDING,
 	QUALITY_PULSING, QUALITY_CLAMPING, QUALITY_CAUTERIZING, QUALITY_BONE_SETTING, QUALITY_LASER_CUTTING)
-	prefix = "stabilized"
+	adjective = "stabilized"
+	adjective_type = ADJECTIVE_TYPE_PURPOSE
 	precision = 10
 
 /obj/item/weapon/tool_modification/refinement/magbit
@@ -187,8 +196,9 @@
 	desc = "Magnetises tools used for handling small objects, reducing instances of dropping screws and bolts."
 	icon_state = "magnetic"
 	required_qualities = list(QUALITY_SCREW_DRIVING, QUALITY_BOLT_TURNING, QUALITY_CLAMPING, QUALITY_BONE_SETTING)
-	prefix = "magnetic"
+	adjective = "magnetic"
 	precision = 10
+	adjective_type = ADJECTIVE_TYPE_PURPOSE
 
 
 /obj/item/weapon/tool_modification/refinement/ported_barrel
@@ -196,10 +206,11 @@
 	desc = "A barrel extension for a welding tool which helps manage gas pressure and keep the torch steady."
 	icon_state = "ported_barrel"
 	required_qualities = list(QUALITY_WELDING)
-	prefix = "ported"
+	adjective = "ported"
 	precision = 12
 	degradation_mult = 1.15
 	bulk_mod = 1
+	adjective_type = ADJECTIVE_TYPE_SHAPE
 
 
 
@@ -220,9 +231,10 @@
 	icon_state = "cell_mount"
 	desc = "A bulky adapter which allows oversized power cells to be installed into small tools"
 	req_cell = TRUE
-	prefix = "medium-cell"
+	adjective = "medium-cell"
 	bulk_mod = 1
 	degradation_mult = 1.15
+	adjective_type = ADJECTIVE_TYPE_SIZE
 
 /obj/item/weapon/tool_modification/augment/cell_mount/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
 	.=..()
@@ -240,10 +252,10 @@
 		return
 	if (holder.suitable_cell == /obj/item/weapon/cell)
 		holder.suitable_cell = /obj/item/weapon/cell
-		prefix = "large-cell"
+		adjective = "large-cell"
 	else if (holder.suitable_cell == /obj/item/weapon/cell)
 		holder.suitable_cell = /obj/item/weapon/cell
-		prefix = "medium-cell"
+		adjective = "medium-cell"
 	..()
 */
 
@@ -255,8 +267,9 @@
 	desc = "An auxiliary tank which stores 30 extra units of fuel"
 	icon_state = "canister"
 	req_fuel = TRUE
-	prefix = "expanded"
+	adjective = "expanded"
 	bulk_mod = 1
+	adjective_type = ADJECTIVE_TYPE_SIZE
 
 /obj/item/weapon/tool_modification/augment/fuel_tank/apply_values()
 	if (..())
@@ -268,10 +281,11 @@
 	name = "expansion port"
 	icon_state = "expand"
 	desc = "A bulky adapter which more modifications to be attached to the tool.  A bit fragile but you can compensate"
-	prefix = "custom"
+	adjective = "custom"
 	bulk_mod = 2
 	degradation_mult = 1.3
 	precision = -10
+	adjective_type = ADJECTIVE_TYPE_ORIGIN
 
 /obj/item/weapon/tool_modification/augment/expansion/apply_values()
 	if (..())
@@ -282,11 +296,12 @@
 	name = "spikes"
 	icon_state = "spike"
 	desc = "An array of sharp bits of metal, seemingly adapted for easy affixing to a tool. Would make it into a better weapon, but won't do much for productivity."
-	prefix = "spiked"
+	adjective = "spiked"
 	force_mod = 4
 	precision = -5
 	degradation_mult = 1.15
 	workspeed = -0.15
+	adjective_type = ADJECTIVE_TYPE_SHAPE
 	//price_tag = 100
 
 /obj/item/weapon/tool_modification/augment/spikes/apply_values()
@@ -298,7 +313,8 @@
 	name = "aural dampener"
 	desc = "This aural dampener is a cutting edge tool attachment which mostly nullifies sound waves within a tiny radius. It minimises the noise created during use, perfect for stealth operations"
 	icon_state = "dampener"
-	prefix = "silenced"
+	adjective = "silenced"
+	adjective_type = ADJECTIVE_TYPE_PURPOSE
 
 
 /obj/item/weapon/tool_modification/augment/dampener/apply_values()

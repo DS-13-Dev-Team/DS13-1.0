@@ -441,6 +441,9 @@
 	desc = "Code Gold"
 	access_type = ACCESS_TYPE_CENTCOM
 
+
+
+
 /***************
 * Antag access *
 ***************/

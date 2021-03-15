@@ -477,6 +477,8 @@
 ////////////////////////////////////////
 
 /obj/mecha/proc/take_damage(amount, type="brute")
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	if(amount)
 		var/damage = absorb_damage(amount,type)
 		health -= damage
