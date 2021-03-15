@@ -3281,10 +3281,10 @@
 /area/ishimura/eva/prep/ADS)
 "iB" = (
 /obj/structure/asteroidcannon{
-	pixel_x = -41;
+	pixel_x = -28;
 	pixel_y = -14
 	},
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/ADS)
 "jg" = (
 /obj/structure/closet/walllocker/emerglocker/north,
@@ -3340,6 +3340,19 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
+"mM" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/machinery/camera/network/engineering{
+	dir = 1;
+	icon_state = "camera"
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "ADS_airlock_pump"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/ishimura/eva/airlock/ADS)
 "np" = (
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
 /obj/machinery/atmospherics/pipe/zpipe/down/supply,
@@ -3392,8 +3405,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/ADS)
 "rX" = (
-/obj/structure/closet/secure_closet/engineering_electrical,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/wall,
 /area/ishimura/eva/ADS)
 "sR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3411,10 +3423,11 @@
 	dir = 4;
 	icon_state = "map_vent_out"
 	},
+/obj/structure/closet/secure_closet/engineering_electrical,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/eva/ADS)
 "vB" = (
-/turf/simulated/wall,
+/turf/simulated/floor/tiled/techmaint,
 /area/ishimura/eva/ADS)
 "vW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3433,19 +3446,6 @@
 	locked = 1
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/ishimura/eva/airlock/ADS)
-"xp" = (
-/obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/camera/network/engineering{
-	dir = 1;
-	icon_state = "camera"
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "ADS_airlock_pump"
-	},
-/turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
 "zr" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -3490,7 +3490,7 @@
 	dir = 8;
 	icon_state = "railing0"
 	},
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/ADS)
 "AZ" = (
 /obj/structure/cable/green{
@@ -3526,9 +3526,6 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/eva/prep/ADS)
-"El" = (
-/turf/simulated/floor/tiled/steel_ridged,
-/area/ishimura/eva/ADS)
 "Gz" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -3634,8 +3631,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
 "Nm" = (
-/obj/structure/table/rack,
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/ADS)
 "Nz" = (
 /obj/structure/table/reinforced,
@@ -3783,9 +3779,7 @@
 /area/ishimura/eva/airlock/ADS)
 "UE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
+/obj/structure/bed/chair/office/light,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/eva/ADS)
 "UP" = (
@@ -3823,7 +3817,7 @@
 	dir = 8;
 	icon_state = "railing0"
 	},
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/ADS)
 "Wh" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -3855,7 +3849,7 @@
 	dir = 8;
 	icon_state = "railing0"
 	},
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/ADS)
 "Ys" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -3877,7 +3871,7 @@
 	dir = 8;
 	icon_state = "railing0"
 	},
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/ADS)
 "YU" = (
 /obj/effect/floor_decal/industrial/warning/full,
@@ -3892,8 +3886,7 @@
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/eva/airlock/ADS)
 "ZC" = (
-/obj/structure/stairs/east,
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/eva/ADS)
 "ZP" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -41353,7 +41346,7 @@ gw
 jg
 ge
 kC
-xp
+mM
 gw
 ao
 ao
@@ -41558,7 +41551,7 @@ wB
 gw
 gw
 gw
-vB
+rX
 ao
 ao
 ao
@@ -41760,7 +41753,7 @@ kd
 Ry
 Sj
 sV
-vB
+rX
 ao
 ao
 ao
@@ -41951,7 +41944,7 @@ ao
 ao
 ao
 ao
-vB
+rX
 AZ
 DR
 DR
@@ -41962,7 +41955,7 @@ HO
 Ry
 Ry
 td
-vB
+rX
 ao
 ao
 ao
@@ -42153,7 +42146,7 @@ ao
 ao
 ao
 ao
-vB
+rX
 DR
 DR
 DR
@@ -42164,7 +42157,7 @@ HO
 Ry
 Ry
 Hy
-vB
+rX
 ao
 ao
 ao
@@ -42355,7 +42348,7 @@ ao
 ao
 ao
 ao
-vB
+rX
 Rg
 Nz
 hH
@@ -42366,7 +42359,7 @@ vW
 Ko
 UE
 ZP
-vB
+rX
 ao
 ao
 ao
@@ -42557,18 +42550,18 @@ ao
 ao
 ao
 ao
-vB
-vB
-vB
-vB
+rX
+rX
+rX
+rX
 Ys
 Ry
 Ry
 Ry
 Ry
-rX
+Ry
 Wq
-vB
+rX
 ao
 ao
 ao
@@ -42762,7 +42755,7 @@ ao
 ao
 ao
 ao
-vB
+rX
 Wc
 Wc
 WG
@@ -42770,7 +42763,7 @@ ZC
 AQ
 Wc
 YI
-vB
+rX
 ao
 ao
 ao
@@ -42964,15 +42957,15 @@ ao
 ao
 ao
 ao
-vB
+rX
 Nm
-El
-El
-El
-El
-El
 Nm
-vB
+Nm
+ZC
+Nm
+Nm
+Nm
+rX
 ao
 ao
 ao
@@ -43166,15 +43159,15 @@ ao
 ao
 ao
 ao
-vB
-Nm
-El
-El
+rX
+ZC
+ZC
+ZC
 iB
-El
-El
-Nm
-vB
+ZC
+ZC
+ZC
+rX
 ao
 ao
 ao
@@ -43368,15 +43361,15 @@ ao
 ao
 ao
 ao
+rX
 vB
-Nm
-El
-El
-El
-El
-El
-Nm
 vB
+vB
+vB
+vB
+vB
+vB
+rX
 ao
 ao
 ao
