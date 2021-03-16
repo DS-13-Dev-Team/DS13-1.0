@@ -114,6 +114,22 @@
 	embed = 0
 	sharp = 0
 
+/obj/item/projectile/bullet/shotgun/bola
+	name = "bola"
+	icon_state = "bola"
+	fire_sound = 'sound/weapons/bolathrow.ogg'
+	damage = 0
+	agony = 0
+	embed = 0
+	sharp = FALSE
+	muzzle_type = null
+
+/obj/item/projectile/bullet/shotgun/bola/on_impact(atom/movable/A)
+	..()
+	var/obj/item/weapon/legcuffs/bola/L = new (get_turf(src))
+	if(ishuman(A))
+		L.catch_human(A)
+
 //Should do about 80 damage at 1 tile distance (adjacent), and 50 damage at 3 tiles distance.
 //Overall less damage than slugs in exchange for more damage at very close range and more embedding
 /obj/item/projectile/bullet/pellet/shotgun

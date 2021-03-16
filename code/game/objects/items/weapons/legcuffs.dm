@@ -40,18 +40,9 @@
 /obj/item/weapon/legcuffs/bola/throw_impact(atom/hit_atom)
 	if(..() || !ishuman(hit_atom))//if it gets caught or the target can't be cuffed,
 		return//abort
-	var/mob/living/carbon/human/H = hit_atom
-	/*
-	var/num_legs
+	catch_human(hit_atom)
 
-
-	for(var/limb_tag in H.species.bola_limbs)
-		var/obj/item/organ/external/E = H.has_organ_or_replacement(limb_tag)
-		if(E)
-			num_legs++
-
-	if(!H.legcuffed && num_legs >= 2)
-	*/
+/obj/item/weapon/legcuffs/bola/proc/catch_human(var/mob/living/carbon/human/H)
 	if(!H.legcuffed && H.has_organ_for_slot(slot_legcuffed))
 		visible_message("<span class='danger'>[src] ensnares [H]!</span>")
 		H.legcuffed = src
