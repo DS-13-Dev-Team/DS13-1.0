@@ -142,10 +142,10 @@
 	caliber = "shotgun"
 	force = 5
 	one_hand_penalty = 0
-	fire_delay = 40
+	fire_delay = 20
 	firemodes = list(
-		list(mode_name = "sotgun", fire_delay = 2.5 SECONDS),
-		list(mode_name = "bola", projectile_type = /obj/item/projectile/bullet/shotgun/bola, fire_sound = 'sound/weapons/bolathrow.ogg', fire_delay = 2.5 SECONDS))
+		list(mode_name = "shotgun", fire_delay = 1 SECONDS),
+		list(mode_name = "bolas", projectile_type = /obj/item/projectile/bullet/shotgun/bola, fire_sound = 'sound/weapons/bolathrow.ogg', fire_delay = 1 SECONDS))
 
 /obj/item/weapon/gun/projectile/shotgun/bola_lancher/update_icon()
 	. = ..()

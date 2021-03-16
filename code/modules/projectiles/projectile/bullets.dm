@@ -128,7 +128,7 @@
 	..()
 	var/obj/item/weapon/legcuffs/bola/L = new (get_turf(src))
 	if(ishuman(A))
-		L.cacht(A)
+		L.catch_human(A)
 
 //Should do about 80 damage at 1 tile distance (adjacent), and 50 damage at 3 tiles distance.
 //Overall less damage than slugs in exchange for more damage at very close range and more embedding

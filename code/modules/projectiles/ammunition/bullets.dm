@@ -144,13 +144,6 @@
 	projectile_type = /obj/item/projectile/energy/flash/flare
 	matter = list(MATERIAL_STEEL = 90, MATERIAL_GLASS = 90)
 
-/obj/item/ammo_casing/shotgun/bola
-	name = "bola"
-	desc = "A bullet that when fired releases a ball that captures the target."
-	icon_state = "fshell"
-	spent_icon = "fshell-spent"
-	projectile_type = /obj/item/projectile/bullet/shotgun/bola
-
 /obj/item/ammo_casing/a556
 	desc = "A 5.56mm bullet casing."
 	caliber = "a556"

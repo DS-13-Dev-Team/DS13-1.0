@@ -325,16 +325,3 @@
 	matter = list(MATERIAL_STEEL = 600)
 	max_ammo = 7
 	multiple_sprites = 0
-/*
-/obj/item/ammo_magazine/bola
-	name = "bola loader"
-	desc = "A magazine containing several bola cartridges."
-	icon_state = "shotgun_magazine"
-	caliber = "shotgun"
-	color = "#ff0000"
-	mag_type = MAGAZINE
-	ammo_type = /obj/item/ammo_casing/shotgun/bola
-	matter = list(MATERIAL_STEEL = 600)
-	max_ammo = 7
-	multiple_sprites = 0
-*/
