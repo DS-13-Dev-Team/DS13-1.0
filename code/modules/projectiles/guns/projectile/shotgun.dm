@@ -135,7 +135,7 @@
 	item_state = "scl_shotgun"
 	var/icon_loaded = "scl_shotgun_loaded"
 	slot_flags = SLOT_BELT
-	magazine_type = /obj/item/ammo_magazine/bola
+	magazine_type = /obj/item/ammo_magazine/shotgun
 	var/aditional_magazine = /obj/item/ammo_magazine/shotgun
 	w_class = ITEM_SIZE_NORMAL
 	load_method = MAGAZINE
@@ -143,8 +143,9 @@
 	force = 5
 	one_hand_penalty = 0
 	fire_delay = 40
-	var/max_mag = 2
-	var/list/magazines = list()
+	firemodes = list(
+		list(mode_name = "sotgun", fire_delay = 2.5 SECONDS),
+		list(mode_name = "bola", projectile_type = /obj/item/projectile/bullet/shotgun/bola, fire_sound = 'sound/weapons/bolathrow.ogg', fire_delay = 2.5 SECONDS))
 
 /obj/item/weapon/gun/projectile/shotgun/bola_lancher/update_icon()
 	. = ..()
@@ -153,53 +154,9 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher/Initialize()
-	. = ..()
-	if(ammo_magazine && !(ammo_magazine in magazines))
-		magazines += ammo_magazine
-	if(ispath(aditional_magazine) && magazines.len < max_mag)
-		var/atom/movable/A = new aditional_magazine (src)
-		magazines += A
-
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher/load_magazine(obj/item/A, mob/user)
-	if(magazines.len >= max_mag)
-		to_chat(user, "<span class='warning'>[src] already has a magazine loaded.</span>")//already a magazine here
-		return
-
-	magazines += A
-
-	if(!ammo_magazine)
-		ammo_magazine = A
-
-	user.visible_message("[user] inserts [A] into [src].", "<span class='notice'>You insert [A] into [src].</span>")
-	playsound(loc, mag_insert_sound, 50, 1)
-	update_firemode()
-
-
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher/on_unload_ammo(atom/A)
-
-	magazines -= A
-	if(ammo_magazine)
-		return
-
-	for(var/atom/movable/AM in magazines)
-		ammo_magazine = AM
-		return
 
 /obj/item/weapon/gun/projectile/shotgun/bola_lancher/MouseDrop(over_object)
 	if(ammo_magazine)
 		unload_ammo(usr)
 		return
 	return ..()
-
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher/attack_self(mob/user)
-	change_mag(user)
-
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher/proc/change_mag(mob/user)
-	if(magazines.len > 1)
-		for(var/atom/movable/A in magazines)
-			if(ammo_magazine == A)
-				continue
-			ammo_magazine = A
-			to_chat(user, SPAN_NOTICE("You change the mag of [src] to [ammo_magazine]."))
-			return

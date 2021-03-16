@@ -315,7 +315,7 @@
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/shotgun
-	name = "magazine shotgun slug"
+	name = "magazine SCL-shotgun slug"
 	desc = "Magazine shotgun slug."
 	icon_state = "shotgun_magazine"
 	caliber = "shotgun"
@@ -325,7 +325,7 @@
 	matter = list(MATERIAL_STEEL = 600)
 	max_ammo = 7
 	multiple_sprites = 0
-
+/*
 /obj/item/ammo_magazine/bola
 	name = "bola loader"
 	desc = "A magazine containing several bola cartridges."
@@ -337,3 +337,4 @@
 	matter = list(MATERIAL_STEEL = 600)
 	max_ammo = 7
 	multiple_sprites = 0
+*/
