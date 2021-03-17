@@ -49,6 +49,8 @@
 		icon_state = "blob_damaged"
 
 /obj/effect/blob/proc/take_damage(var/damage)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	health -= damage
 	if(health < 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)

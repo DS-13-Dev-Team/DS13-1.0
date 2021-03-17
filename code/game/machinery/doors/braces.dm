@@ -111,6 +111,8 @@
 
 
 /obj/item/weapon/airlock_brace/take_damage(var/amount)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	health = between(0, health - amount, max_health)
 	if(!health)
 		if(airlock)

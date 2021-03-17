@@ -317,6 +317,8 @@
 	..()
 
 /obj/effect/cultwall/proc/take_damage(var/amount)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	health -= amount
 	if(health <= 0)
 		visible_message("<span class='warning'>\The [src] dissipates.</span>")

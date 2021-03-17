@@ -19,6 +19,7 @@
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = ENVIRON
+	var/no_confirmation = FALSE
 
 /obj/machinery/keycard_auth/attack_ai(mob/user as mob)
 	to_chat(user, "<span class='warning'>A firewall prevents you from interfacing with this device!</span>")
@@ -102,7 +103,11 @@
 /obj/machinery/keycard_auth/OnTopic(user, href_list)
 	if(href_list["triggerevent"])
 		event = href_list["triggerevent"]
-		screen = 2
+		if (no_confirmation)
+			trigger_event()
+		else
+
+			screen = 2
 		. = TOPIC_REFRESH
 	if(href_list["reset"])
 		reset()
@@ -173,6 +178,10 @@
 			if(is_ert_blocked())
 				to_chat(usr, "<span class='warning'>All emergency response teams are dispatched and can not be called at this time.</span>")
 				return
+
+			if(GLOB.distress_cooldown > world.time) //It's already been called.
+				to_chat(usr, "Distress beacon will not be ready for another [time2text(GLOB.distress_cooldown - world.time, "mm:ss")]")
+				return FALSE
 
 			ticker.mode.activate_distress()
 

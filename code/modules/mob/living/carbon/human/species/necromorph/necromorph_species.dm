@@ -157,7 +157,9 @@
 	grasping_limbs = list()
 
 	organ_substitutions = list(BP_L_HAND = BP_L_ARM,
-	BP_R_HAND = BP_R_ARM)
+	BP_R_HAND = BP_R_ARM,
+	BP_L_FOOT = BP_L_LEG,
+	BP_R_FOOT = BP_R_LEG)
 
 	//HUD Handling
 	hud_type = /datum/hud_data/necromorph

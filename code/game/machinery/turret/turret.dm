@@ -290,6 +290,8 @@ var/list/turret_icons
 		return 1
 
 /obj/machinery/turret/proc/take_damage(var/force)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	health -= force
 	spark_system.start()
 	if(health <= 0)

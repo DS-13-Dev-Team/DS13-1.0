@@ -14,5 +14,4 @@
 	lifespan = 0
 	base_length = WORLD_ICON_SIZE *2
 
-	atom_flags = ATOM_FLAG_INTANGIBLE
-	obj_flags = OBJ_FLAG_INVINCIBLE
+	atom_flags = ATOM_FLAG_INTANGIBLE | ATOM_FLAG_INDESTRUCTIBLE

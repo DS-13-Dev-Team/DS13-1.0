@@ -51,7 +51,7 @@
 	var/workspeed = 1	//Worktimes are divided by this
 	var/extra_bulk = 0 	//Extra physicial volume added by certain mods
 	var/silenced = FALSE //If true the tool makes far less noise when used
-	var/list/prefixes = list()
+	var/list/adjectives = list()
 
 	//Mods that come already applied on a tool
 	var/list/preinstalled_mods = list()
@@ -782,14 +782,17 @@
 	max_modifications = base_max_modifications
 	color = initial(color)
 	sharp = initial(sharp)
-	prefixes = list()
+	adjectives = list()
 
 	//Now lets have each modification reapply its modifications
 	for (var/obj/item/weapon/tool_modification/T in modifications)
 		T.apply_values()
 
-	for (var/prefix in prefixes)
-		name = "[prefix] [name]"
+	//This sorts the adjectives into the correct order based on their type
+	sortTim(adjectives, cmp=/proc/cmp_numeric_dsc, associative = TRUE)
+
+	for (var/adjective in adjectives)
+		name = "[adjective] [name]"
 
 	//Set the fuel volume, incase any mods altered our max fuel
 	if (reagents)

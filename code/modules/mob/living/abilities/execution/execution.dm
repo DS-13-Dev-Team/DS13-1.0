@@ -368,7 +368,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 /datum/extension/execution/proc/enter_next_stage()
 	.=TRUE
 	//If we just reached a stage where grabbing is required, lets do that
-	if (require_grab && require_grab == current_stage_index)
+	if (require_grab && require_grab == current_stage_index && !grab)
 		grab = user.grab_with_any_limb(victim)
 		if (!grab)
 			return FALSE

@@ -196,6 +196,8 @@
 	if(W.item_flags & ITEM_FLAG_NO_BLUDGEON) return
 
 	if(isScrewdriver(W))
+		if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+			return
 		if(reinf && state >= 1)
 			state = 3 - state
 			update_nearby_icons()
@@ -210,10 +212,14 @@
 			playsound(loc, 'sound/items/Screwdriver.ogg', 75, 1)
 			to_chat(user, (anchored ? "<span class='notice'>You have fastened the window to the floor.</span>" : "<span class='notice'>You have unfastened the window.</span>"))
 	else if(isCrowbar(W) && reinf && state <= 1)
+		if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+			return
 		state = 1 - state
 		playsound(loc, 'sound/items/Crowbar.ogg', 75, 1)
 		to_chat(user, (state ? "<span class='notice'>You have pried the window into the frame.</span>" : "<span class='notice'>You have pried the window out of the frame.</span>"))
 	else if(isWrench(W) && !anchored && (!state || !reinf))
+		if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+			return
 		if(!glasstype)
 			to_chat(user, "<span class='notice'>You're not sure how to dismantle \the [src] properly.</span>")
 		else
@@ -226,6 +232,8 @@
 				new glasstype(loc)
 			qdel(src)
 	else if(isCoil(W) && reinf && !polarized)
+		if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+			return
 		var/obj/item/stack/cable_coil/C = W
 		if (C.use(1))
 			playsound(src.loc, 'sound/effects/sparks1.ogg', 75, 1)
@@ -503,6 +511,15 @@
 	reinf = 1
 	basestate = "w"
 	dir = 5
+
+/obj/structure/window/reinforced/full
+	dir = 5
+	icon_state = "rwindow_full"
+	resistance = 15
+
+/obj/structure/window/reinforced/full/indestructible
+	icon_state = "rwindow_full"
+	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
 
 /obj/structure/window/reinforced/polarized
 	name = "electrochromic window"

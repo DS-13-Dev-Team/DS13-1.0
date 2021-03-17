@@ -176,6 +176,8 @@
 			dat += "<BR><A href='?src=\ref[src];item=sensors'>Set sensors</A>"
 	if(handcuffed)
 		dat += "<BR><A href='?src=\ref[src];item=[slot_handcuffed]'>Handcuffed</A>"
+	if(legcuffed)
+		dat += "<BR><A href='?src=\ref[src];item=[slot_legcuffed]'>Legcuffed</A>"
 
 	for(var/entry in worn_underwear)
 		var/obj/item/underwear/UW = entry

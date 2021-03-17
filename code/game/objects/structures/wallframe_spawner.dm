@@ -108,6 +108,13 @@
 	name = "reinforced hull wall frame window spawner"
 	frame_path = /obj/structure/wall_frame/hull
 
+/obj/effect/wallframe_spawn/reinforced/shuttle
+	name = "reinforced wall frame window spawner"
+	desc = "A reinforced shuttle window. Impossible to break."
+	icon_state = "r-wingrille"
+	win_path = /obj/structure/window/reinforced/full/indestructible
+	frame_path = /obj/structure/wall_frame/indestructible
+
 /obj/effect/wallframe_spawn/phoron
 	name = "phoron wall frame window spawner"
 	icon_state = "p-wingrille"

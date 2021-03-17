@@ -1093,6 +1093,10 @@ About the new airlock wires panel:
 				src.update_icon()
 			return
 		else if(isScrewdriver(C) && C.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_NORMAL))
+			if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+				p_open = 0
+				return
+
 			if (src.p_open)
 				if (stat & BROKEN)
 					to_chat(usr, "<span class='warning'>The panel is broken and cannot be closed.</span>")
@@ -1105,6 +1109,8 @@ About the new airlock wires panel:
 		else if(isWirecutter(C))
 			return src.attack_hand(user)
 		else if(isMultitool(C))
+			if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+				return
 			return src.attack_hand(user)
 		else if(istype(C, /obj/item/device/assembly/signaler))
 			return src.attack_hand(user)

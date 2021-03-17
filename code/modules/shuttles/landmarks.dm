@@ -19,17 +19,21 @@
 	var/area/base_area
 	//Will also leave this type of turf behind if set.
 	var/turf/base_turf
-	//If set, will set base area and turf type to same as where it was spawned at
+	//If true, will set base area and turf type to same as where it was spawned at
+	//if -1, will overwrite these only if not set
 	var/autoset
 
 /obj/effect/shuttle_landmark/Initialize()
 	. = ..()
 	if(autoset)
-		base_area = get_area(src)
+		if(autoset == TRUE || (autoset == -1 && !base_area))
+			base_area = get_area(src)
 		var/turf/T = get_turf(src)
-		if(T)
+		if(T && (autoset == TRUE || (autoset == -1 && !base_area)))
 			base_turf = T.type
-	else
+
+	//If the base area is null or a typepath after the above, lets initialize it
+	if (!istype(base_area))
 		base_area = locate(base_area || world.area)
 
 	SetName(name + " ([x],[y])")
@@ -64,6 +68,7 @@
 		if(!target)
 			message_admins("Edge of map")
 			return TRUE //collides with edge of map
+
 		if(target.loc != target_area)
 			message_admins("Area collision ([target.loc] & [target_area])")
 			return TRUE //collides with another area
