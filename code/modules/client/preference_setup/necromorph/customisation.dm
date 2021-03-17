@@ -1,3 +1,5 @@
+#define NECROCUSTOM_UI_SCALE	2.5
+
 /datum/preferences
 	var/list/signal_custom
 	var/list/necro_custom
@@ -5,7 +7,7 @@
 /datum/category_item/player_setup_item/necromorph/customisation
 	name = "customisation"
 	sort_order = 8
-	var/selected = "Signal"
+	var/selected = SIGNAL
 
 /datum/category_item/player_setup_item/necromorph/customisation/load_character(var/savefile/S)
 	from_file(S["signal_custom"],           pref.signal_custom)
@@ -27,7 +29,7 @@
 		First of all, the sidebar
 	*/
 	. += "<b>Signals:</b><br>"
-	. += "<table>"
+	. += "<table style='width:100%'>"
 	. += "<tr><td>"
 	if(selected == SIGNAL)
 		. += "<a href='?src=\ref[src];select=[SIGNAL]'>Signal</a>"
@@ -103,6 +105,10 @@
 		Ticked:	Boolean, should the checkbox be ticked or not?
 		User: Who is viewing this button? Used to preload the image for them
 */
+
+#define IMAGE_CHECK_PANEL_FOOTER_HEIGHT	10
+#define IMAGE_CHECK_PANEL_PADDING	2
+#define IMAGE_CHECK_PANEL_CHECKBOX_SIZE	10
 /proc/image_check_panel(var/text, var/icon/I, var/ticked, var/mob/user, var/command, var/source, var/category, var/subcategory)
 
 	var/filename = sanitizeFileName(text)
@@ -113,12 +119,29 @@
 	var/subcategory_text = ""
 	if (subcategory)
 		subcategory_text = "subcategory=[subcategory]"
-	var/html = {"<a class='linkActive noIcon' unselectable='on' style='display:inline-block;' onclick='document.location="?src=\ref[source];[command]=[text];category=[category];[subcategory_text]"' ></a><br>"}
+	var/html
 
-	html += "<div><img src=[filename].png width=[I.Width()] height=[I.Height()]></center>"
-	html += text
-	html += "<div class='checkbox'><form><input type='checkbox' [ticked ? "checked" : ""]></form></div>"
-	html += "</div>"
+	//Size of the icon in pixels
+	var/iwidth = I.Width()*NECROCUSTOM_UI_SCALE
+	var/total_width = iwidth + (2 * IMAGE_CHECK_PANEL_PADDING)
+	var/iheight = I.Width()*NECROCUSTOM_UI_SCALE
+	//We wrap everything in a link so the whole box is clickable
+	html += {"<a class='linkActive noIcon' unselectable='on' style='display:inline-block;' onclick='document.location="?src=\ref[source];[command]=[text];category=[category];[subcategory_text]"' >"}
+
+	//A div inside represents the box, with width and height based on the image size
+	html += "<div style='position:relative; width:[total_width]px; height:[iwidth + IMAGE_CHECK_PANEL_FOOTER_HEIGHT + (2 * IMAGE_CHECK_PANEL_PADDING)]px;'>"
+
+	//The image of the thing
+	html += "<img src=[filename].png width=[iwidth] height=[iheight]>"
+
+	//This text appears in the lower right corner of the panel
+	html += "<div style='font-size: 8px; position:absolute; bottom: 4px; right: 0; width: [total_width - (IMAGE_CHECK_PANEL_CHECKBOX_SIZE)]px; padding: [IMAGE_CHECK_PANEL_PADDING]px; text-align:right;line-height: 100%;'>[text]</div>"
+
+	//Checkbox appears in the lower left corner of the panel
+	html += "<div style='position:absolute; bottom: 0; left: 0;'><form><input type='checkbox' [ticked ? "checked" : ""]></form></div>"
+
+	//Finally close everything and return it
+	html += "</div></a>"
 	return html
 
 /datum/preferences/proc/can_customise()
