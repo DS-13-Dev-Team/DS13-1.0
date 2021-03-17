@@ -313,3 +313,15 @@
 	matter = list(MATERIAL_STEEL = 600)
 	max_ammo = 7
 	multiple_sprites = 1
+
+/obj/item/ammo_magazine/shotgun
+	name = "magazine SCL-shotgun slug"
+	desc = "Magazine shotgun slug."
+	icon_state = "shotgun_magazine"
+	caliber = "shotgun"
+	color = "#ff0000"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/shotgun
+	matter = list(MATERIAL_STEEL = 600)
+	max_ammo = 7
+	multiple_sprites = 0

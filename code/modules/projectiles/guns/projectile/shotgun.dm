@@ -124,3 +124,39 @@
 	w_class = ITEM_SIZE_NORMAL
 	force = 5
 	one_hand_penalty = 0
+
+/obj/item/weapon/gun/projectile/shotgun/bola_lancher
+	name = "SCL Shotgun"
+	desc = "The SCL Shotgun is a close to medium-ranged weapon developed by the Sovereign Colonies Armed Forces and utilized by SCAF Legionaries. \
+	The shotgun has remained in use in private security and police departments as a riot-control tool, given its ability to fire bolas shells for capture and arrest, or lethal slugs in life-threatening situations. \
+	The SCL Shotgun is magazine loaded and is effective at short range or for fugitive capture."
+	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
+	icon_state = "scl_shotgun"
+	item_state = "scl_shotgun"
+	var/icon_loaded = "scl_shotgun_loaded"
+	slot_flags = SLOT_BELT
+	magazine_type = /obj/item/ammo_magazine/shotgun
+	var/aditional_magazine = /obj/item/ammo_magazine/shotgun
+	w_class = ITEM_SIZE_NORMAL
+	load_method = MAGAZINE
+	caliber = "shotgun"
+	force = 5
+	one_hand_penalty = 0
+	fire_delay = 20
+	firemodes = list(
+		list(mode_name = "shotgun", fire_delay = 1 SECONDS),
+		list(mode_name = "bolas", projectile_type = /obj/item/projectile/bullet/shotgun/bola, fire_sound = 'sound/weapons/bolathrow.ogg', fire_delay = 1 SECONDS))
+
+/obj/item/weapon/gun/projectile/shotgun/bola_lancher/update_icon()
+	. = ..()
+	if(ammo_magazine)
+		icon_state = icon_loaded
+	else
+		icon_state = initial(icon_state)
+
+
+/obj/item/weapon/gun/projectile/shotgun/bola_lancher/MouseDrop(over_object)
+	if(ammo_magazine)
+		unload_ammo(usr)
+		return
+	return ..()
