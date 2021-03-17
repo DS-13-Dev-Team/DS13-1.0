@@ -325,3 +325,16 @@
 	matter = list(MATERIAL_STEEL = 600)
 	max_ammo = 7
 	multiple_sprites = 0
+
+/obj/item/ammo_magazine/javelin
+	name = "magazine javelin"
+	desc = "Magazine javelin."
+	icon_state = "javelin"
+	caliber = "javelin"
+	color = "#ff0000"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/javelin
+	matter = list(MATERIAL_STEEL = 600)
+	max_ammo = 6
+	multiple_sprites = 1
+

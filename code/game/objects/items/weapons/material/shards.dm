@@ -105,20 +105,20 @@
 /obj/item/weapon/material/shard/phoron/New(loc)
 	..(loc, "phglass")
 
-/obj/item/weapon/material/shard/shrapnel/javeling
-	name = "javeling"
+/obj/item/weapon/material/shard/shrapnel/javelin
+	name = "javelin"
 
-/obj/item/weapon/material/shard/shrapnel/javeling/New(loc, atom/projectile/P)
+/obj/item/weapon/material/shard/shrapnel/javelin/New(loc, atom/projectile/P)
 	..()
-	if(istype(launcher, /obj/item/weapon/gun/projectile/javeling_gun))
-		var/obj/item/weapon/gun/projectile/javeling_gun/J = launcher
-		J.javelings |= src
+	if(istype(launcher, /obj/item/weapon/gun/projectile/javelin_gun))
+		var/obj/item/weapon/gun/projectile/javelin_gun/J = launcher
+		J.javelins |= src
 
-/obj/item/weapon/material/shard/shrapnel/javeling/Destroy()
+/obj/item/weapon/material/shard/shrapnel/javelin/Destroy()
 	remove_from_luncher_list()
 	return ..()
 
-/obj/item/weapon/material/shard/shrapnel/javeling/proc/remove_from_luncher_list()
-	if(istype(launcher, /obj/item/weapon/gun/projectile/javeling_gun))
-		var/obj/item/weapon/gun/projectile/javeling_gun/J = launcher
-		J.javelings -= src
+/obj/item/weapon/material/shard/shrapnel/javelin/proc/remove_from_luncher_list()
+	if(istype(launcher, /obj/item/weapon/gun/projectile/javelin_gun))
+		var/obj/item/weapon/gun/projectile/javelin_gun/J = launcher
+		J.javelins -= src

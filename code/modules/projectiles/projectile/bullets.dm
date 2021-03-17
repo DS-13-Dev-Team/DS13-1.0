@@ -241,10 +241,13 @@
 	pixel_y = rand(-10,10)
 	..()
 
-/obj/item/projectile/bullet/javeling
+/obj/item/projectile/bullet/javelin
 	name = "javelin spears"
 	damage = 20
+	embed = TRUE
+	sharp = TRUE
 	armor_penetration = 50
 	penetration_modifier = 1.5
 	embed_mult = 10
-	shrapnel_type = /obj/item/weapon/material/shard/shrapnel/javeling
+	muzzle_type = null
+	shrapnel_type = /obj/item/weapon/material/shard/shrapnel/javelin
