@@ -87,6 +87,8 @@ Vector2
 			var/list/returnlist = list("direction" = delta.ToMagnitude(1), "magnitude" = delta.Magnitude())
 			release_vector(delta)
 			return returnlist
+
+	//TODO: Rename this, it is misleading. What it actually does is rescales the directional vector to a specified magnitude and returns that
 	proc
 		MagnitudeBetween(var/atom/A, var/atom/B, var/magnitude)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
