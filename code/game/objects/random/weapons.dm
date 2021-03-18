@@ -24,10 +24,11 @@
 	icon_state = "revolver"
 
 /obj/random/gun_security/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1,
-	/obj/item/weapon/gun/projectile/automatic/bullpup = 0.5,
+	return pickweight(list(/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1.5,
+	///obj/item/weapon/gun/projectile/automatic/bullpup = 0.5,	//We dont want this to be used by security
 	/obj/item/weapon/gun/projectile/divet = 2,
-	/obj/item/weapon/gun/projectile/seeker = 1))
+	/obj/item/weapon/gun/projectile/seeker = 1,
+	/obj/item/weapon/gun/projectile/shotgun/bola_lancher = 1))
 
 /obj/random/gun_tool
 	name = "Random Projectile Weapon"
@@ -61,11 +62,11 @@
 	icon_state = "45-10"
 
 /obj/random/ammo/item_to_spawn()
-	return pickweight(list(/obj/item/ammo_magazine/pulse = 1.5,
+	return pickweight(list(/obj/item/ammo_magazine/pulse = 2,
 	/obj/item/ammo_magazine/pulse/hv = 0.5,
 	/obj/item/weapon/cell/plasmacutter = 1.5,
 	/obj/item/ammo_magazine/sawblades = 1,
-	/obj/item/ammo_magazine/bullpup = 1,
+	///obj/item/ammo_magazine/bullpup = 1,
 	/obj/item/weapon/cell/force = 0.75,
 	/obj/item/ammo_magazine/seeker = 1,
 	/obj/item/weapon/cell/contact = 0.75,
@@ -73,4 +74,14 @@
 	/obj/item/ammo_magazine/lineracks = 1,
 	/obj/item/ammo_casing/tripmine = 1,
 	/obj/item/weapon/reagent_containers/glass/fuel_tank/fuel = 1,
-	/obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine = 0.4))
+	/obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine = 0.4,
+	/obj/item/ammo_magazine/shotgun = 1))
+
+
+//This subtype only spawns ammo for security/military-type weapons
+/obj/random/ammo/security/item_to_spawn()
+	return pickweight(list(/obj/item/ammo_magazine/pulse = 1.5,
+	/obj/item/ammo_magazine/pulse/hv = 0.5,
+	/obj/item/ammo_magazine/seeker = 1,
+	/obj/item/ammo_magazine/divet = 1.5,
+	/obj/item/ammo_magazine/shotgun = 1))
