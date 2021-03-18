@@ -243,6 +243,7 @@
 
 /obj/item/projectile/bullet/javelin
 	name = "javelin spears"
+	icon_state = "SpearFlight"
 	damage = 20
 	embed = TRUE
 	sharp = TRUE
