@@ -17,7 +17,11 @@
 	one_hand_penalty = -30
 	accuracy = -10
 	scoped_accuracy = 5 //increased accuracy over the LWAP because only one shot
-	load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
+	fire_sound = 'sound/weapons/tablehit1.ogg'
+	firemodes = list(
+		list(mode_name="launch", burst=1),
+		list(mode_name="fire both barrels at once", burst=2),
+		)
 	var/detone_javelin = FALSE
 	var/shock_damage = 20
 	var/list/obj/item/weapon/material/shard/shrapnel/javelin/javelins = list()
