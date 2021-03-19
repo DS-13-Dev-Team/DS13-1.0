@@ -1,7 +1,6 @@
 #define NECROCUSTOM_UI_SCALE	2.5
 
 /datum/preferences
-	var/list/signal_custom
 	var/list/necro_custom
 
 /datum/category_item/player_setup_item/necromorph/customisation
@@ -10,11 +9,9 @@
 	var/selected = SIGNAL
 
 /datum/category_item/player_setup_item/necromorph/customisation/load_character(var/savefile/S)
-	from_file(S["signal_custom"],           pref.signal_custom)
 	from_file(S["necro_custom"],     pref.necro_custom)
 
 /datum/category_item/player_setup_item/necromorph/customisation/save_character(var/savefile/S)
-	from_file(S["signal_custom"],           pref.signal_custom)
 	from_file(S["necro_custom"],     pref.necro_custom)
 
 
@@ -23,6 +20,9 @@
 
 /datum/category_item/player_setup_item/necromorph/customisation/content(var/mob/user)
 	. = list()
+
+	if (!pref.signal_custom)
+		initialize_necrocustom_prefs()
 
 	. += "<table><tr><td>"
 	/*
@@ -62,27 +62,59 @@
 	. += "</td><td>"
 	if (selected == SIGNAL)
 		//Initialize the list if it isnt already
-		if (!pref.signal_custom)
-			initialize_necrocustom_prefs()
+
 
 		var/list/enabled_sprites = pref.signal_custom["signal_base"]
 
 		for (var/iconstate in GLOB.signal_sprites)
 			var/icon/I = new ('icons/mob/eye.dmi',iconstate,SOUTH)
 			var/is_enabled = (iconstate in enabled_sprites)
-			. += image_check_panel(text = iconstate, I = I, ticked = is_enabled, user = user, command = is_enabled ? "disable" : "enable", source = src)
+			. += image_check_panel(text = iconstate, I = I, ticked = is_enabled, user = user, command = is_enabled ? "disable" : "enable", source = src, category = SIGNAL, subcategory = "Red")
 
 
+	else
+		//What we have selected is a necromorph
 	. += "</td></tr></table>"
 
 	. = jointext(.,null)
 
 /datum/category_item/player_setup_item/necromorph/customisation/OnTopic(var/href,var/list/href_list, var/mob/user)
+	.= TOPIC_REFRESH
 	if(href_list["select"])
 		selected = href_list["select"]
 		return TOPIC_REFRESH
 
-	if(href_list["enable"])
+	if(href_list["enable"] || href_list["disable"])
+		//These are necessary
+		if (!href_list["category"] || !href_list["subcategory"])
+			return
+
+		//Lets make sure the necessary lists are in place to recieve the data
+
+		//First up the main category. This will be signal, slasher, brute, etc. What thing is being customised
+		if (!islist(necro_custom[href_list["category"]])
+			necro_custom[href_list["category"]] = list()
+
+		//Second the subcategory. Species variant, outfit, or bodypart. In the case of signals, what type they might be
+		if (!islist(necro_custom[href_list["category"]][href_list["subcategory"]])
+			necro_custom[href_list["category"]][href_list["subcategory"]] = list()
+
+		//Alright we are ready to work with the data. Now...
+
+		//If we are enabling, insert it into the list exclusively
+		if(href_list["enable"])
+			necro_custom[href_list["category"]][href_list["subcategory"]] |= href_list["enable"]
+		//If disabling, remove
+		else(href_list["disable"])
+			//However, we only allow removing if there are two or more items remaining. Dont allow removing the last thing or we'd be left with no fallbacks
+			var/numentries = length(necro_custom[href_list["category"]][href_list["subcategory"]])
+			if (numentries <= 1)
+				to_chat(user, SPAN_DANGER("You can't remove the last item in a category!")
+				return
+
+			necro_custom[href_list["category"]][href_list["subcategory"]] -= href_list["disable"]
+
+		return
 		//Do stuff here
 	return ..()
 
@@ -109,7 +141,7 @@
 #define IMAGE_CHECK_PANEL_FOOTER_HEIGHT	10
 #define IMAGE_CHECK_PANEL_PADDING	2
 #define IMAGE_CHECK_PANEL_CHECKBOX_SIZE	10
-/proc/image_check_panel(var/text, var/icon/I, var/ticked, var/mob/user, var/command, var/source, var/category, var/subcategory)
+/proc/image_check_panel(var/text, var/icon/I, var/ticked, var/mob/user, var/command, var/source, var/category, var/subcategory = "Default")
 
 	var/filename = sanitizeFileName(text)
 

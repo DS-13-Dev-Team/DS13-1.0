@@ -46,6 +46,10 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	return TRUE
 
 /mob/observer/eye/signal/apply_customisation(var/datum/preferences/prefs)
+	var/list/things = prefs.necro_custom[SIGNAL]["red"]
+	if (length(things))
+		variations = things.Copy()
+		update_icon()
 
 /mob/observer/eye/signal/update_icon()
 	if (LAZYLEN(variations))
@@ -58,7 +62,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	..()
 	visualnet = GLOB.necrovision	//Set the visualnet of course
 
-
+	variations = GLOB.signal_sprites.Copy()	//All are enabled by default
 
 	var/turf/T = get_turf(body)
 	if(ismob(body))
@@ -196,9 +200,9 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 	//Lets load preferences if possible
 	//This will set our icon to one of the players' chosen ones
+
 	if (client && client.prefs && client.prefs.signal_custom && client.prefs.signal_custom.len)
-		variations = client.prefs.signal_custom.Copy()
-		update_icon()
+		apply_customisation(client.prefs)
 
 	spawn(1)	//Prevents issues when downgrading from master
 		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
@@ -326,3 +330,6 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	if (!QDELETED(src))
 		close_spawn_windows()
 	.=..()
+
+
+
