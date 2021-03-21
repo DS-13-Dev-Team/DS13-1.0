@@ -58,10 +58,11 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 			mind.ghost = src	//Register ourself on the mind too
 
 		else					//new mind for the body
-			body.mind = new /datum/mind(key)
-			mind = body.mind
-			mind.current = body
-			mind.ghost = src
+			spawn(10)
+				body.mind = new /datum/mind(key)
+				mind = body.mind
+				mind.current = body
+				mind.ghost = src
 
 	else
 		spawn(10) // wait for the observer mob to receive the client's key
