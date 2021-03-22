@@ -91,6 +91,8 @@
 	'sound/effects/footstep/twitcher_footstep_4.ogg')
 	)
 
+	variants = null
+
 #define TWITCHER_PASSIVE	"<h2>PASSIVE: Temporal Displacement:</h2><br>\
 The twitcher is out of phase with normal time as a result of a stasis module embedded in their body. This causes them to randomly displace in a random direction periodically while moving<br>\
 

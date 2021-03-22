@@ -110,6 +110,8 @@
 	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/brute/brute_shout_long.ogg')
 	)
 
+	variants = list(SPECIES_NECROMORPH_BRUTE = 1, SPECIES_NECROMORPH_BRUTE_FLESH = 1)
+
 
 #define BRUTE_PASSIVE_1	"<h2>PASSIVE: Tunnel Vision:</h2><br>\
 The brute has extremely restricted vision, able only to see a few tiles infront of it, and none behind it. This makes it very vulnerable to flanking attacks. Keep the enemy infront of you!"

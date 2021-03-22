@@ -149,12 +149,13 @@ Please contact me on #coderbus IRC. ~Carn x
 
 //UPDATES OVERLAYS FROM OVERLAYS_LYING/OVERLAYS_STANDING
 /mob/living/carbon/human/update_icons()
-
+	world << "Human updateicons 1"
 	update_hud()		//TODO: remove the need for this
 	overlays.Cut()
 
 	var/list/overlays_to_apply = list()
 	if (icon_update)
+		world << "Human updateicons 2 [icon_update]"
 		if (species.icon_lying && lying != lying_prev)
 			regenerate_icons()
 
@@ -200,6 +201,8 @@ Please contact me on #coderbus IRC. ~Carn x
 	else
 		M.Translate(0, 16*(default_scale-1))
 	transform = M
+
+	world << "Human updateicons end, overlays [overlays]"
 
 var/global/list/damage_icon_parts = list()
 

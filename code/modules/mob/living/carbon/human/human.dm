@@ -13,7 +13,7 @@
 	var/list/grasp_limbs
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
-
+	world << "Human created with species [new_species]"
 	grasp_limbs = list()
 	stance_limbs = list()
 
@@ -26,6 +26,8 @@
 			set_species(new_species,1)
 		else
 			set_species()
+
+	world << "Human species set [species] overlays [overlays.len]"
 
 	if(species)
 		real_name = species.get_random_name(gender)

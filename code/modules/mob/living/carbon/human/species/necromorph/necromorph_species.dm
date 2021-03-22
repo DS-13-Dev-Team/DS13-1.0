@@ -1,7 +1,7 @@
 /*
 	Base species for necromorphs,. the reanimated organic assemblages of the Dead Space universe
 
-	This datum should probably not be used as is, but instead make subspecies of it for each type of necromorph
+	This datum should probably not be used as is, but instead make variants of it for each type of necromorph
 */
 
 /datum/species/necromorph
@@ -62,7 +62,12 @@
 	damage_mask 	=   null
 	blood_mask 		=   null
 
-
+	/*
+		Necromorph customisation system
+	*/
+	var/list/variants			//Species variants included. Weighted list
+	var/list/outfits = list(null = 1)		//Outfits the mob can spawn with, weighted. Null outfit is for naked
+	//var/naked_chance = 40	//If outfits are available, chance to not spawn with one
 
 	//Biology
 	blood_color = COLOR_BLOOD_NECRO
@@ -301,3 +306,60 @@
 		return TRUE
 	else
 		return FALSE
+
+
+
+/*
+	Return true if this species has any customisation options at all
+*/
+/datum/species/necromorph/proc/has_customisation()
+
+	//This is how we mark variant subtypes
+	if (preference_settable == FALSE)
+		return FALSE
+
+	if (variants)
+		return TRUE
+
+	return FALSE
+
+/*
+	This produces all the content for the customisation menu main panel, when this species is selected
+*/
+/datum/species/necromorph/proc/get_customisation_content(var/datum/preferences/prefs, var/mob/living/user)
+	. += "<table>"
+	var/list/data = LAZYACCESS(prefs.necro_custom, name)	//This gets the list containing all saved customisation data for this necromorph category
+	if (!data)	data = list()
+
+	if (variants)
+		.+= "<tr><td>"
+		.+= "<h1>Variants</h1>"
+
+		//This gets the sublist containing all saved customisation data for this subcategory
+		var/list/variants_data = LAZYACCESS(data, VARIANT)
+		if (!variants_data)	variants_data = list()
+
+		for (var/species_name in variants)
+			var/datum/species/necromorph/S = GLOB.all_necromorph_species[species_name]
+			var/is_enabled = (species_name in variants_data)
+			. += image_check_panel(text = species_name, I = S.get_default_icon(), ticked = is_enabled, user = user, command = is_enabled ? "disable" : "enable", source = src, category = src.name, subcategory = VARIANT)
+		. += "</td></tr>"
+
+
+/datum/species/necromorph/proc/prefill_customisation_prefs(var/datum/preferences/prefs)
+	prefs.necro_custom[name] = list()
+	if (variants)
+		prefs.necro_custom[name][VARIANT]	=	variants.Copy()
+
+/datum/species/necromorph/proc/get_default_icon()
+	if (!default_icon)
+		var/mob/living/carbon/human/H = new (locate(1,1,1), src.name)	//Create a new human of our species
+		//H.update_icons()
+		var/frames = 0
+		while (H.overlays.len == 0)
+			frames++
+			sleep()	//This is unfortunately necessary
+		world << "Human created [H.overlays.len], Frames:[frames]"
+		default_icon = getFlatIcon(H)
+
+	return default_icon

@@ -20,6 +20,8 @@
 	//Slightly faster than a slasher
 	slowdown = 3
 
+	variants = null
+
 	species_audio = list(
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/spitter/spitter_attack_1.ogg',
 	'sound/effects/creatures/necromorph/spitter/spitter_attack_2.ogg',

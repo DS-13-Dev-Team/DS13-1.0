@@ -70,6 +70,10 @@
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge),
 	KEY_ALT = list(/mob/living/proc/slasher_dodge))
 
+
+	variants = list(SPECIES_NECROMORPH_SLASHER = 8,
+	SPECIES_NECROMORPH_SLASHER_DESICCATED = 2)
+
 //slasher variants share a bodytype with the base slasher, same clothes fit all
 /datum/species/necromorph/slasher/get_bodytype()
 	return SPECIES_NECROMORPH_SLASHER
@@ -122,7 +126,7 @@
 	bump_flag 	= HEAVY
 	spawner_spawnable = FALSE
 
-
+	variants = null
 	icon_template = 'icons/mob/necromorph/slasher_enhanced.dmi'
 	icon_lying = "_lying"
 	//lying_rotation = 90

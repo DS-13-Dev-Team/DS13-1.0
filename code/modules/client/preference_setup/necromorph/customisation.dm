@@ -12,7 +12,7 @@
 	from_file(S["necro_custom"],     pref.necro_custom)
 
 /datum/category_item/player_setup_item/necromorph/customisation/save_character(var/savefile/S)
-	from_file(S["necro_custom"],     pref.necro_custom)
+	to_file(S["necro_custom"],     pref.necro_custom)
 
 
 /datum/category_item/player_setup_item/necromorph/customisation/sanitize_character()
@@ -21,10 +21,10 @@
 /datum/category_item/player_setup_item/necromorph/customisation/content(var/mob/user)
 	. = list()
 
-	if (!pref.signal_custom)
+	if (!pref.necro_custom)
 		initialize_necrocustom_prefs()
 
-	. += "<table><tr><td>"
+	. += "<table><tr><td style='vertical-align:top;'>"
 	/*
 		First of all, the sidebar
 	*/
@@ -45,7 +45,7 @@
 	. += "<table>"
 	for(var/nname in GLOB.all_necromorph_species)
 		var/datum/species/necromorph/N = GLOB.all_necromorph_species[nname]
-		if (!N.has_customisation)
+		if (!N.has_customisation())
 			continue
 		. += "<tr><td>"
 		if(selected == nname)
@@ -64,16 +64,18 @@
 		//Initialize the list if it isnt already
 
 
-		var/list/enabled_sprites = pref.signal_custom["signal_base"]
+		var/list/enabled_sprites = pref.necro_custom[SIGNAL][SIGNAL_DEFAULT]
 
 		for (var/iconstate in GLOB.signal_sprites)
 			var/icon/I = new ('icons/mob/eye.dmi',iconstate,SOUTH)
 			var/is_enabled = (iconstate in enabled_sprites)
-			. += image_check_panel(text = iconstate, I = I, ticked = is_enabled, user = user, command = is_enabled ? "disable" : "enable", source = src, category = SIGNAL, subcategory = "Red")
+			. += image_check_panel(text = iconstate, I = I, ticked = is_enabled, user = user, command = is_enabled ? "disable" : "enable", source = src, category = SIGNAL, subcategory = SIGNAL_DEFAULT)
 
 
 	else
 		//What we have selected is a necromorph
+		var/datum/species/necromorph/N = GLOB.all_necromorph_species[selected]
+		.+= N.get_customisation_content(pref, user)	//This is in necromorph_species.dm
 	. += "</td></tr></table>"
 
 	. = jointext(.,null)
@@ -92,27 +94,27 @@
 		//Lets make sure the necessary lists are in place to recieve the data
 
 		//First up the main category. This will be signal, slasher, brute, etc. What thing is being customised
-		if (!islist(necro_custom[href_list["category"]])
-			necro_custom[href_list["category"]] = list()
+		if (!islist(pref.necro_custom[href_list["category"]]))
+			pref.necro_custom[href_list["category"]] = list()
 
 		//Second the subcategory. Species variant, outfit, or bodypart. In the case of signals, what type they might be
-		if (!islist(necro_custom[href_list["category"]][href_list["subcategory"]])
-			necro_custom[href_list["category"]][href_list["subcategory"]] = list()
+		if (!islist(pref.necro_custom[href_list["category"]][href_list["subcategory"]]))
+			pref.necro_custom[href_list["category"]][href_list["subcategory"]] = list()
 
 		//Alright we are ready to work with the data. Now...
 
 		//If we are enabling, insert it into the list exclusively
 		if(href_list["enable"])
-			necro_custom[href_list["category"]][href_list["subcategory"]] |= href_list["enable"]
+			pref.necro_custom[href_list["category"]][href_list["subcategory"]] |= href_list["enable"]
 		//If disabling, remove
-		else(href_list["disable"])
+		else if (href_list["disable"])
 			//However, we only allow removing if there are two or more items remaining. Dont allow removing the last thing or we'd be left with no fallbacks
-			var/numentries = length(necro_custom[href_list["category"]][href_list["subcategory"]])
+			var/numentries = length(pref.necro_custom[href_list["category"]][href_list["subcategory"]])
 			if (numentries <= 1)
-				to_chat(user, SPAN_DANGER("You can't remove the last item in a category!")
+				to_chat(user, SPAN_DANGER("You can't remove the last item in a category!"))
 				return
 
-			necro_custom[href_list["category"]][href_list["subcategory"]] -= href_list["disable"]
+			pref.necro_custom[href_list["category"]][href_list["subcategory"]] -= href_list["disable"]
 
 		return
 		//Do stuff here
@@ -121,8 +123,19 @@
 
 /datum/category_item/player_setup_item/necromorph/customisation/proc/initialize_necrocustom_prefs()
 
-	pref.signal_custom = list()
-	pref.signal_custom["signal_base"] = GLOB.signal_sprites.Copy()
+	pref.necro_custom = list()
+	pref.necro_custom[SIGNAL] = list()
+	pref.necro_custom[SIGNAL][SIGNAL_DEFAULT] = GLOB.signal_sprites.Copy()
+
+	for(var/nname in GLOB.all_necromorph_species)
+		var/datum/species/necromorph/N = GLOB.all_necromorph_species[nname]
+		if (!N.has_customisation())
+			continue
+
+		N.prefill_customisation_prefs(pref)
+
+
+
 /*
 	This returns the HTML for a UI button used in the necromorph customisation menu.
 	The button is square and mostly taken up by an image, but it also contains a title along the bottom,
@@ -158,13 +171,13 @@
 	var/total_width = iwidth + (2 * IMAGE_CHECK_PANEL_PADDING)
 	var/iheight = I.Width()*NECROCUSTOM_UI_SCALE
 	//We wrap everything in a link so the whole box is clickable
-	html += {"<a class='linkActive noIcon' unselectable='on' style='display:inline-block;' onclick='document.location="?src=\ref[source];[command]=[text];category=[category];[subcategory_text]"' >"}
+	html += {"<a class='linkActive noIcon' unselectable='on' style='display:inline-block; [!ticked ? "background-color: transparent;": ""]' onclick='document.location="?src=\ref[source];[command]=[text];category=[category];[subcategory_text]"' >"}
 
 	//A div inside represents the box, with width and height based on the image size
 	html += "<div style='position:relative; width:[total_width]px; height:[iwidth + IMAGE_CHECK_PANEL_FOOTER_HEIGHT + (2 * IMAGE_CHECK_PANEL_PADDING)]px;'>"
 
 	//The image of the thing
-	html += "<img src=[filename].png width=[iwidth] height=[iheight]>"
+	html += "<img src=[filename].png width=[iwidth] height=[iheight] [!ticked ? "style='filter: grayscale(100%);'": ""]>"
 
 	//This text appears in the lower right corner of the panel
 	html += "<div style='font-size: 8px; position:absolute; bottom: 4px; right: 0; width: [total_width - (IMAGE_CHECK_PANEL_CHECKBOX_SIZE)]px; padding: [IMAGE_CHECK_PANEL_PADDING]px; text-align:right;line-height: 100%;'>[text]</div>"
