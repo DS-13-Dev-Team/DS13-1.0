@@ -17,6 +17,7 @@
 	var/list/footstep_sounds	//footstep sounds when stepped on
 	var/step_priority = 1	//Priority of the sound attached to this
 	mass = 10
+	w_class = ITEM_SIZE_HUGE
 
 /obj/structure/examine(mob/user, distance, infix, suffix)
 	. = ..()
@@ -183,6 +184,8 @@
 
 //Called when a structure takes damage
 /obj/structure/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	if (!bypass_resist)
 		amount -= resistance
 

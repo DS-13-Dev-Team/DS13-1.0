@@ -8,9 +8,24 @@
 	var/spread_range = 0
 	var/has_postspawn = FALSE
 
+	var/possible_spawns = list()
+
+	//Used only in subtypes. Items in this list are subtracted from possible spawns
+	var/list/exclusions
+
+	//Used only in subtypes. Items in this list are added to possible spawns
+	var/list/additions
+
 // creates a new object and deletes itself
 /obj/random/Initialize()
 	..()
+
+	if (exclusions)
+		possible_spawns -= exclusions
+
+	if (additions)
+		possible_spawns += additions
+
 	if(!prob(spawn_nothing_percentage))
 		var/list/spawns = spawn_item()
 		if (has_postspawn && spawns.len)
@@ -20,7 +35,7 @@
 
 // this function should return a specific item to spawn
 /obj/random/proc/item_to_spawn()
-	return
+	return pickweight(possible_spawns)
 
 // this function should return a specific item to spawn
 /obj/random/proc/post_spawn(var/list/spawns)

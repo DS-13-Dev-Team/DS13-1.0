@@ -8,8 +8,7 @@ SUBSYSTEM_DEF(misc_late)
 
 
 /datum/controller/subsystem/misc_late/Initialize()
-	GLOB.using_map.build_exoplanets()
-	//calculate_door_areas()
+	GLOB.using_map.post_setup()
 	. = ..()
 
 

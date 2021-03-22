@@ -34,7 +34,6 @@
 	//At least one was spawned, thats a success in our book
 	last_spawn_data["success"] = TRUE
 	var/list/spawns = last_spawn_data["spawns"]
-
 	spawns |= "\ref[player]"
 	return TRUE
 

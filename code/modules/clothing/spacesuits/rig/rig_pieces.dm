@@ -148,6 +148,8 @@
 //When rig pieces take damage, they send that damage to their frame instead
 //The frame will spread the damage evenly over the pieces
 /obj/item/clothing/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	if (!rig)
 		.=..()
 		return

@@ -11,7 +11,8 @@
 			return -2
 		return -1
 
-
+	if(legcuffed)
+		tally += legcuffed.get_onmob_delay()
 
 	if(CE_SPEEDBOOST in chem_effects)
 		tally -= chem_effects[CE_SPEEDBOOST]
@@ -161,12 +162,10 @@
 			if(2)
 				visible_message("<span class='notice'>\The [src] looks out of breath!</span>", "<span class='notice'>You are out of breath!</span>")
 
-
-
-
 /mob/living/carbon/human/set_move_intent(var/decl/move_intent/M)
 	. = ..()
-	step_interval = M.footstep_interval
+	if(.)
+		step_interval = M.footstep_interval
 
 
 //Returns what percentage of the limbs we use for movement, are still attached

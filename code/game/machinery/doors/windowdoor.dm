@@ -149,6 +149,8 @@
 	return 1
 
 /obj/machinery/door/window/take_damage(var/damage)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	src.health = max(0, src.health - damage)
 	if (src.health <= 0)
 		shatter()

@@ -243,11 +243,27 @@
 	pixel_y = 0
 	offset_to(target, distance)
 
-/atom/proc/offset_to(var/atom/target, var/distance)
-	var/vector2/delta = get_offset_to(target, distance)
-	pixel_x += delta.x
-	pixel_y += delta.y
-	release_vector(delta)
+/atom/proc/offset_to(var/atom/target, var/distance, var/square = FALSE)
+	if (!square)
+		var/vector2/delta = get_offset_to(target, distance)
+		pixel_x += delta.x
+		pixel_y += delta.y
+		release_vector(delta)
+	else
+		var/x_mult = 0
+		var/y_mult = 0
+		if (x > target.x)
+			x_mult = -1
+		else if (x < target.x)
+			x_mult = 1
+
+		if (y > target.y)
+			y_mult = -1
+		else if (y < target.y)
+			y_mult = 1
+
+		pixel_x += distance * x_mult
+		pixel_y += distance * y_mult
 
 
 /atom/proc/get_offset_to(var/atom/target, var/distance)

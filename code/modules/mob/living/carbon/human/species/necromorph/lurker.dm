@@ -72,7 +72,9 @@
 	organ_substitutions = list(BP_L_LEG = BP_CHEST,
 	BP_R_LEG = BP_CHEST,
 	BP_L_FOOT = BP_CHEST,
-	BP_R_FOOT = BP_CHEST)
+	BP_R_FOOT = BP_CHEST,
+	BP_L_FOOT = BP_L_LEG,
+	BP_R_FOOT = BP_R_LEG)
 
 	inherent_verbs = list(/mob/living/carbon/human/proc/retract_shell, /mob/living/carbon/human/proc/lurker_spinelaunch, /mob/proc/shout)
 	modifier_verbs = list(KEY_ALT = list(/mob/living/carbon/human/proc/lurker_spinelaunch),

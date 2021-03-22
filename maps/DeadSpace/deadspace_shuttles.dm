@@ -219,19 +219,19 @@
 	number = 9
 /obj/effect/shuttle_landmark/escape_pod/transit/pod9
 	number = 9
-
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/shuttle
+/*
+/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod10
 	warmup_time = 10
-	shuttle_area = /area/ishimura/lower/security/escape/adminshuttle
+	shuttle_area = /area/shuttle/escape_pod10/station
 	number = 10
-/obj/effect/shuttle_landmark/escape_pod/start/shuttle
+/obj/effect/shuttle_landmark/escape_pod/start/pod10
 	number = 10
-	base_turf =/turf/simulated/floor
-/obj/effect/shuttle_landmark/escape_pod/out/shuttle
+	base_turf =/turf/simulated/floor/airless
+/obj/effect/shuttle_landmark/escape_pod/out/pod10
 	number = 10
-/obj/effect/shuttle_landmark/escape_pod/transit/shuttle
+/obj/effect/shuttle_landmark/escape_pod/transit/pod10
 	number = 10
-
+*/
 
 //////// ERT SHUTTLES \\\\\\\\
 
@@ -313,6 +313,48 @@
 	name = "Ishimura Hangar #1"
 	landmark_tag = "valor_landing"
 	base_turf = /turf/simulated/floor/plating
+
+// Tram //
+
+/datum/shuttle/autodock/multi/tram
+	name = "Tram"
+	warmup_time = 10
+	destination_tags = list(
+		"nav_forwardships",
+		"nav_amidships",
+		"nav_aftships"
+		)
+	shuttle_area = /area/shuttle/tram
+	current_location = "nav_forwardships"
+
+//	landmark_transition = "nav_tramtrans"
+
+/obj/effect/shuttle_landmark/ishimuratram
+	autoset = -1
+	base_area = null
+	base_turf = /turf/simulated/open
+
+/obj/effect/shuttle_landmark/ishimuratram/start
+	name = "Ship Forward"
+	landmark_tag = "nav_forwardships"
+	base_area = /area/ishimura/tramdeck/tram/tunnel	//This is necessary since it can't autofetch the area when the tram is already there
+	base_turf = /turf/simulated/open
+
+/obj/effect/shuttle_landmark/ishimuratram/mid
+	name = "Amidships"
+	landmark_tag = "nav_amidships"
+	base_turf = /turf/simulated/open
+
+/obj/effect/shuttle_landmark/ishimuratram/aft
+	name = "Ship Aft"
+	landmark_tag = "nav_aftships"
+	base_turf = /turf/simulated/open
+
+/obj/machinery/computer/shuttle_control/multi/tram
+	name = "Tram Control Console"
+	shuttle_tag = "Tram"
+
+// Something else. //
 
 /obj/effect/shuttle_landmark/valor/landing2
 	name = "Evacuation Site - Alpha #2"

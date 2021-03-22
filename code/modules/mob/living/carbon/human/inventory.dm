@@ -197,6 +197,9 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(buckled && buckled.buckle_require_restraints)
 			buckled.unbuckle_mob()
 		update_inv_handcuffed()
+	else if(W == legcuffed)
+		legcuffed = null
+		update_inv_legcuffed()
 	else if (W == r_hand)
 		r_hand = null
 		if(l_hand)
@@ -246,6 +249,9 @@ This saves us from having to call add_fingerprint() any time something is put in
 			drop_l_hand()
 			stop_pulling()
 			update_inv_handcuffed(redraw_mob)
+		if(slot_legcuffed)
+			src.legcuffed = W
+			update_inv_legcuffed(redraw_mob)
 		if(slot_l_hand)
 			src.l_hand = W
 			W.equipped(src, slot)
@@ -380,6 +386,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 /mob/living/carbon/human/get_equipped_item(var/slot)
 	switch(slot)
 		if(slot_back)       return back
+		if(slot_legcuffed)  return legcuffed
 		if(slot_handcuffed) return handcuffed
 		if(slot_l_store)    return l_store
 		if(slot_r_store)    return r_store
@@ -415,6 +422,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 	if(include_carried)
 		if(l_store)    . += l_store
 		if(r_store)    . += r_store
+		if(legcuffed)  . += legcuffed
 		if(handcuffed) . += handcuffed
 		if(s_store)    . += s_store
 
@@ -439,6 +447,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 			update_inv_wear_mask(redraw_mob)
 		if(slot_handcuffed)
 			update_inv_handcuffed(redraw_mob)
+		if(slot_legcuffed)
+			update_inv_legcuffed(redraw_mob)
 		if(slot_l_hand)
 			update_inv_l_hand(redraw_mob)
 		if(slot_r_hand)

@@ -110,6 +110,8 @@
 	take_damage(degen, BRUTE, null, null, bypass_resist = TRUE)
 
 /obj/structure/corruption_node/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	.=..()
 	if (.)
 		start_processing()

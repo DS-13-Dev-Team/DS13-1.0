@@ -37,7 +37,7 @@
 	wave.perpendicular_direction = direction.Turn(90)
 	//These belong to the wave now, so we won't release them
 
-	var/turf/start_turf = wave.origin.get_turf_at_pixel_offset(direction * WORLD_ICON_SIZE)
+	var/turf/start_turf = wave.origin.get_turf_at_pixel_offset(direction)
 
 	//Lets make our first/master projectile
 	var/obj/item/projectile/wave/W = new projectile_type(start_turf)
@@ -105,7 +105,7 @@
 
 /obj/item/projectile/wavespawner/finalize_launch(var/turf/curloc, var/turf/targloc, var/x_offset, var/y_offset, var/angle_offset)
 
-	launch_wave(firer, original, wave_type, width, firer, shot_from)
+	launch_wave(curloc, targloc, wave_type, width, firer, shot_from)
 	expire()
 
 

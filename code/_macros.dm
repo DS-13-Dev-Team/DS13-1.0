@@ -89,6 +89,8 @@
 
 #define isCoil(A) istype(A, /obj/item/stack/cable_coil)
 
+#define iswindow(A)	istype(A, /obj/structure/window)
+
 #define isWirecutter(A) A.has_quality(QUALITY_WIRE_CUTTING)
 
 #define isScrewdriver(A) A.has_quality(QUALITY_SCREW_DRIVING)
@@ -100,6 +102,12 @@
 #define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
 
 #define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
+
+#define iscloset(A)	istype(A, /obj/structure/closet)
+
+#define istable(A)	istype(A, /obj/structure/table)
+
+#define islight(A)	istype(A, /obj/machinery/light)
 
 #define to_chat(target, message)                            target << message
 #define to_world(message)                                   world << message

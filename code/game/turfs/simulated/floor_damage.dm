@@ -28,6 +28,8 @@
 
 
 /turf/simulated/floor/proc/take_damage(var/damage, var/damage_type = BRUTE, var/ignore_resistance = FALSE)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
 	if (is_hole)
 		//This turf is space or an open space, it can't break, burn or be damaged
 		broken = FALSE
