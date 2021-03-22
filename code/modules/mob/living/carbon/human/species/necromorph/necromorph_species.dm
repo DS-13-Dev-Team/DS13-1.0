@@ -353,13 +353,7 @@
 
 /datum/species/necromorph/proc/get_default_icon()
 	if (!default_icon)
-		var/mob/living/carbon/human/H = new (locate(1,1,1), src.name)	//Create a new human of our species
-		//H.update_icons()
-		var/frames = 0
-		while (H.overlays.len == 0)
-			frames++
-			sleep()	//This is unfortunately necessary
-		world << "Human created [H.overlays.len], Frames:[frames]"
+		var/mob/living/carbon/human/H = new mob_type(locate(1,1,1), src.name)	//Create a new human of our species
 		default_icon = getFlatIcon(H)
 
 	return default_icon

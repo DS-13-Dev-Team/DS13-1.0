@@ -13,7 +13,6 @@
 	var/list/grasp_limbs
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
-	world << "Human created with species [new_species]"
 	grasp_limbs = list()
 	stance_limbs = list()
 
@@ -27,7 +26,6 @@
 		else
 			set_species()
 
-	world << "Human species set [species] overlays [overlays.len]"
 
 	if(species)
 		real_name = species.get_random_name(gender)
@@ -995,8 +993,9 @@
 	if(!(species.appearance_flags & HAS_UNDERWEAR))
 		QDEL_NULL_LIST(worn_underwear)
 
+	regenerate_icons(TRUE)
 	spawn(0)
-		regenerate_icons()
+
 		if(vessel.total_volume < species.blood_volume)
 			vessel.maximum_volume = species.blood_volume
 			vessel.add_reagent(/datum/reagent/blood, species.blood_volume - vessel.total_volume)

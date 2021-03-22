@@ -175,6 +175,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	icon_normal = "brute-f"
 	icon_lying = "brute-f-dead"//Temporary icon so its not invisible lying down
 	icon_dead = "brute-f-dead"
+	mob_type = /mob/living/carbon/human/necromorph/bruteflesh
 
 	marker_spawnable = FALSE
 	preference_settable = FALSE

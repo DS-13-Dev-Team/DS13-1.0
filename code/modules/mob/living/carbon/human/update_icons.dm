@@ -146,16 +146,16 @@ Please contact me on #coderbus IRC. ~Carn x
 /mob/living/carbon/human
 	var/list/overlays_standing[TOTAL_LAYERS]
 	var/previous_damage_appearance // store what the body last looked like, so we only have to update it if something changed
+	var/icon_updates = 0
 
 //UPDATES OVERLAYS FROM OVERLAYS_LYING/OVERLAYS_STANDING
 /mob/living/carbon/human/update_icons()
-	world << "Human updateicons 1"
+
 	update_hud()		//TODO: remove the need for this
 	overlays.Cut()
 
 	var/list/overlays_to_apply = list()
 	if (icon_update)
-		world << "Human updateicons 2 [icon_update]"
 		if (species.icon_lying && lying != lying_prev)
 			regenerate_icons()
 
@@ -186,7 +186,6 @@ Please contact me on #coderbus IRC. ~Carn x
 		if(istype(head) && !head.is_stump())
 			var/image/I = head.get_eye_overlay()
 			if(I) overlays_to_apply += I
-
 	lying_prev = lying	//so we don't update overlays for lying/standing unless our stance changes again
 
 	if(auras)
@@ -202,7 +201,6 @@ Please contact me on #coderbus IRC. ~Carn x
 		M.Translate(0, 16*(default_scale-1))
 	transform = M
 
-	world << "Human updateicons end, overlays [overlays]"
 
 var/global/list/damage_icon_parts = list()
 
@@ -256,7 +254,6 @@ var/global/list/damage_icon_parts = list()
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body(var/update_icons=1)
-
 	//Maybe we were just gibbed
 	if (QDELETED(src))
 		return
@@ -461,7 +458,7 @@ var/global/list/damage_icon_parts = list()
 		queue_icon_update()
 /* --------------------------------------- */
 //For legacy support.
-/mob/living/carbon/human/regenerate_icons()
+/mob/living/carbon/human/regenerate_icons(var/update_instantly = FALSE)
 	..()
 	if(HasMovementHandler(/datum/movement_handler/mob/transformation) || QDELETED(src))		return
 	update_missing_limbs()
@@ -490,9 +487,15 @@ var/global/list/damage_icon_parts = list()
 	update_fire(0)
 	update_surgery(0)
 	UpdateDamageIcon()
-	queue_icon_update()
+
 	//Hud Stuff
 	update_hud()
+
+	if (update_instantly)
+		update_icons()
+	else
+		queue_icon_update()
+
 
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
