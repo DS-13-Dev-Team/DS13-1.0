@@ -1,12 +1,13 @@
 /obj/item/weapon/paper_bin
 	name = "paper bin"
+	desc = "For holding paper, unsurprisingly."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper_bin1"
 	item_state = "sheet-metal"
 	randpixel = 0
 	throwforce = 1
 	w_class = ITEM_SIZE_NORMAL
-	
+
 	throw_range = 7
 	layer = BELOW_OBJ_LAYER
 	var/amount = 30					//How much paper is in the bin.

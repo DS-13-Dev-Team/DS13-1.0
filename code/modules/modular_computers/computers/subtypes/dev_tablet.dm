@@ -1,6 +1,6 @@
 /obj/item/modular_computer/tablet
 	name = "tablet computer"
-	desc = "A small portable microcomputer"
+	desc = "A small portable microcomputer."
 	icon = 'icons/obj/modular_tablet.dmi'
 	icon_state = "tablet"
 	icon_state_unpowered = "tablet"

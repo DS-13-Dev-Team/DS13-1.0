@@ -103,7 +103,7 @@
 
 /obj/item/clothing/gloves/latex/nitrile
 	name = "nitrile gloves"
-	desc = "Sterile nitrile gloves"
+	desc = "Sterile nitrile gloves."
 	icon_state = "nitrile"
 	item_state = "ngloves"
 
