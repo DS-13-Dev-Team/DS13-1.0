@@ -59,14 +59,16 @@
 	if(owner.client)
 		owner.client.eye = src
 	setLoc(owner)
-	visualnet.update_eye_chunks(src, TRUE)
+	if (visualnet)
+		visualnet.update_eye_chunks(src, TRUE)
 
 /mob/observer/eye/proc/release(var/mob/user)
 	if(owner != user || !user)
 		return
 	if(owner.eyeobj != src)
 		return
-	visualnet.remove_eye(src)
+	if (visualnet)
+		visualnet.remove_eye(src)
 	owner.eyeobj = null
 	owner = null
 	SetName(initial(name))
@@ -88,7 +90,8 @@
 	if(owner_follows_eye)
 		owner.forceMove(loc)
 
-	visualnet.update_eye_chunks(src)
+	if (visualnet)
+		visualnet.update_eye_chunks(src)
 	return TRUE
 
 /mob/observer/eye/proc/getLoc()
