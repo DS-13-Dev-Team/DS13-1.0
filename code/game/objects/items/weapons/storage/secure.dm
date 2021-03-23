@@ -172,6 +172,7 @@
 
 /obj/item/weapon/storage/secure/safe
 	name = "secure safe"
+	desc = "A wall-mounted safe with a digital locking system."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "safe"
 	icon_opened = "safe0"
