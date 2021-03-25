@@ -22,19 +22,34 @@
 		if(!line_list.len)
 			continue
 
+		var/key = ckey(line_list[1])
+
+		var/date
+		log_world("Doing key [key], date is [date]")
+		if (line_list.len > 1)
+			date = sanitize_date(line_list[2])	//This will return FALSE if the date does not look right
+		if (!date)
+			log_world("ERROR: Bad date found in patrons.txt for ckey [key], replacing this with a 1 month timer from now as a fallback")
+			message_admins("ERROR: Bad date found in patrons.txt for ckey [key], replacing this with a 1 month timer from now as a fallback")
+			date = current_date()
+			date = add_time_to_date(date, 28 DAYS)
+
 
 		//We now have a list containing two things:
 			//1. Ckey of a patron player
 			//2. The date up to which their patron status lasts
 
-		if (is_past_date(line_list[2]))
+		if (is_past_date(date))
 			//Their patron status has expired!
 			continue
 
-		line_list[1] = ckey(line_list[1])
 
 		//patron status is still valid!
-		GLOB.patron_keys[line_list[1]] = line_list[2]
+		GLOB.patron_keys[key] = date
+
+	//Once we're done loading, we save again.
+	//This is because the loading process sanitises and repairs bad data
+	save_patrons()
 
 /*
 	Writes to the patrons.txt file
