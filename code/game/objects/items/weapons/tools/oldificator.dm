@@ -69,7 +69,7 @@
 /obj/item/weapon/storage/pill_bottle/make_old()
 	if (prob(85))
 		name = "bottle of [pick("generic ", "unknown ", "")]pills"
-		desc = "Contains pills of some kind. The label has long since worn away"
+		desc = "Contains pills of some kind. The label has long since worn away."
 		for (var/obj/item/weapon/reagent_containers/pill/P in contents)
 			P.make_old()
 
@@ -78,7 +78,7 @@
 //Make sure old pills always hide their contents too
 /obj/item/weapon/reagent_containers/pill/make_old()
 	name = "pill"
-	desc = "some kind of pill. The imprints have worn away"
+	desc = "some kind of pill. The imprints have worn away."
 	.=..()
 
 /obj/structure/reagent_dispensers/make_old()
@@ -174,7 +174,7 @@
 
 /obj/item/weapon/aiModule/broken
 	name = "\improper broken core AI module"
-	desc = "broken Core AI Module: 'Reconfigures the AI's core laws.'"
+	desc = "broken Core AI Module: 'Reconfigures the AI's core laws."
 
 /obj/machinery/broken/Initialize()
 	..()

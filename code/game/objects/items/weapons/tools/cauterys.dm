@@ -1,6 +1,6 @@
 /obj/item/weapon/tool/cautery
 	name = "cautery"
-	desc = "This stops bleeding."
+	desc = "This cauterises and closes incisions."
 	icon_state = "cautery"
 	matter = list(MATERIAL_STEEL = 500, MATERIAL_GLASS = 200)
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
