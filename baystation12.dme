@@ -2599,6 +2599,7 @@
 #include "code\modules\projectiles\projectile\pellet.dm"
 #include "code\modules\projectiles\projectile\remote.dm"
 #include "code\modules\projectiles\projectile\special.dm"
+#include "code\modules\projectiles\projectile\spread.dm"
 #include "code\modules\projectiles\targeting\targeting_client.dm"
 #include "code\modules\projectiles\targeting\targeting_gun.dm"
 #include "code\modules\projectiles\targeting\targeting_mob.dm"

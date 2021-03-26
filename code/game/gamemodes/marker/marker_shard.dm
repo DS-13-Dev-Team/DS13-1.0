@@ -72,7 +72,7 @@
 			//The worktime taken depends on the health of the local corruption vine, assuming there is one
 			var/strength = C.get_tool_quality(quality) * tool_cut_multiplier
 			var/obj/effect/vine/corruption/CO = locate() in loc
-			if(!CO || C.use_tool(user = user, target = src, base_time = (((CO.health*1.2) / strength) SECONDS), required_quality = quality, fail_chance = 0, progress_proc = CALLBACK(src, /obj/item/marker_shard/proc/erode_corruption, strength)))
+			if(!CO || (strength && C.use_tool(user = user, target = src, base_time = (((CO.health*1.2) / strength) SECONDS), required_quality = quality, fail_chance = 0, progress_proc = CALLBACK(src, /obj/item/marker_shard/proc/erode_corruption, strength))))
 				//If we get here, it has been cut free
 				undeploy()
 				if (user)

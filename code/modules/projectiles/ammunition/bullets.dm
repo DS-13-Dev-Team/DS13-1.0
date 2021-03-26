@@ -93,7 +93,7 @@
 	desc = "A 12 gauge shell."
 	icon_state = "gshell"
 	spent_icon = "gshell-spent"
-	projectile_type = /obj/item/projectile/bullet/pellet/shotgun
+	projectile_type = /obj/item/projectile/spread
 	matter = list(MATERIAL_STEEL = 360)
 
 /obj/item/ammo_casing/shotgun/blank

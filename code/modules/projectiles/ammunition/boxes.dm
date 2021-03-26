@@ -315,13 +315,13 @@
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/shotgun
-	name = "magazine SCL-shotgun slug"
-	desc = "Magazine shotgun slug."
+	name = "magazine SCL-shotgun buckshot"
+	desc = "Magazine buckshot."
 	icon_state = "shotgun_magazine"
 	caliber = "shotgun"
 	color = "#ff0000"
 	mag_type = MAGAZINE
-	ammo_type = /obj/item/ammo_casing/shotgun
+	ammo_type = /obj/item/ammo_casing/shotgun/pellet
 	matter = list(MATERIAL_STEEL = 600)
 	max_ammo = 7
 	multiple_sprites = 0
