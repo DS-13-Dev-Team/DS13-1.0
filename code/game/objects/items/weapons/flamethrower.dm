@@ -1,4 +1,4 @@
-/obj/item/weapon/flamethrower
+/obj/item/weapon/flamethrower//
 	name = "flamethrower"
 	desc = "You are a firestarter!"
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'

@@ -221,10 +221,60 @@
 	matter = list(MATERIAL_STEEL = 260, "uranium" = 200)
 
 /obj/item/ammo_casing/javelin
-	name = "javelin spears"
-	desc = "A javelin projectile."
-	icon_state = "lcasing"
-	spent_icon = "lcasing-spent"
+	name = "javelin"
+	desc = "A javelin."
+	icon_state = "bolt"
+	spent_icon = "bolt"
+	var/charged_icon = "bolt_charged"
 	caliber = "javelin"
 	projectile_type = /obj/item/projectile/bullet/javelin
 	matter = list(MATERIAL_STEEL = 1000)
+	var/obj/item/weapon/gun/projectile/javelin_gun/launcher
+	var/shock_count = 0
+	var/max_shock = 4
+	var/shock_damage = 20
+
+/obj/item/ammo_casing/javelin/New(nloc, obj/item/projectile/P)
+	..()
+	if(P)
+		launcher = P.launcher
+		launcher.javelins |= src
+		icon_state = "bolt_charged"
+		update_icon()
+
+/obj/item/ammo_casing/javelin/update_icon()
+	. = ..()
+	if(launcher && shock_count < max_shock)
+		icon_state = charged_icon
+	else
+		icon_state = initial(icon_state)
+
+/obj/item/ammo_casing/javelin/examine(mob/user, distance)
+	. = ..()
+	if(shock_count >= max_shock)
+		to_chat(user, SPAN_NOTICE("Its fully discharged."))
+	else
+		to_chat(user, SPAN_WARNING("Its charged with electricity."))
+
+/obj/item/ammo_casing/javelin/Destroy()
+	remove_from_luncher_list()
+	return ..()
+
+/obj/item/ammo_casing/javelin/proc/remove_from_luncher_list()
+	launcher.javelins -= src
+
+/obj/item/ammo_casing/javelin/proc/process_shock()
+	shock()
+	shock_count++
+	if(shock_count >= max_shock)
+		remove_from_luncher_list()
+		update_icon()
+
+/obj/item/ammo_casing/javelin/proc/shock()
+	var/datum/effect/effect/system/spark_spread/S = new
+	S.set_up(3, 1, get_turf(src))
+	S.start()
+	new /obj/effect/overload(get_turf(src))
+	for(var/turf/T in trange(2, get_turf(src)))
+		for(var/mob/living/L in T)
+			L.electrocute_act(shock_damage, src)

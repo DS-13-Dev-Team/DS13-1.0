@@ -251,4 +251,10 @@
 	penetration_modifier = 1.5
 	embed_mult = 10
 	muzzle_type = null
-	shrapnel_type = /obj/item/weapon/material/shard/shrapnel/javelin
+
+/obj/item/projectile/bullet/javelin/on_impact(atom/A)
+	..()
+	if(ismob(A))
+		new /obj/item/ammo_casing/javelin(get_turf(A), src)
+	else
+		new /obj/item/ammo_casing/javelin(get_turf(src), src)
