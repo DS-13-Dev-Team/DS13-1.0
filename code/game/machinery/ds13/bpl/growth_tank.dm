@@ -7,6 +7,7 @@
 */
 /obj/machinery/growth_tank
 	name = "growth tank"
+	desc = "A vat for growing organic components."
 	icon = 'icons/obj/machines/ds13/bpl.dmi'
 	icon_state = "base"
 

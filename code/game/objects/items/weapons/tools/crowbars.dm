@@ -31,7 +31,7 @@
 
 /obj/item/weapon/tool/crowbar/improvised
 	name = "rebar"
-	desc = "A pair of metal rods laboriously twisted into a useful shape"
+	desc = "A pair of metal rods laboriously twisted into a useful shape."
 	icon_state = "impro_crowbar"
 	item_state = "crowbar"
 	tool_qualities = list(QUALITY_PRYING = 10, QUALITY_DIGGING = 10)

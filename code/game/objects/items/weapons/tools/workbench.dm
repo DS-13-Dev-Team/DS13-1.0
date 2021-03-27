@@ -1,6 +1,7 @@
 //A workbench for upgrading things
 /obj/structure/table/workbench
 	name = "Nanocircuit Repair Bench"
+	desc = "For repairing and upgrading devices and tools."
 	tool_qualities = list(QUALITY_WORKBENCH = 1)
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "deadspace_workbench"

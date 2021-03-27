@@ -1,6 +1,6 @@
 /obj/item/weapon/tool/hemostat
 	name = "hemostat"
-	desc = "You think you have seen this before."
+	desc = "A surgical clamp to stop bleeding."
 	icon_state = "hemostat"
 	matter = list(MATERIAL_STEEL = 200)
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
