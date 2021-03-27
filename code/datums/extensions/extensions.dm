@@ -40,6 +40,8 @@
 //Variadic - Additional positional arguments can be given. Named arguments might not work so well
 /proc/set_extension(var/datum/source, var/datum/extension/extension_type)
 	var/datum/extension/extension_base_type = initial(extension_type.base_type)
+	if (QDELETED(source))
+		return
 	if (!extension_base_type)
 		extension_base_type = extension_type
 	if(!ispath(extension_base_type, /datum/extension))

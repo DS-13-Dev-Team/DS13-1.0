@@ -51,6 +51,52 @@
 
 
 /*
+	This proc returns our rotation delta towards the target, or optionally, a different, specified target
+	This is here rather than in a helper proc since it depends upon existing data - our current rotation and forward vector
+*/
+/datum/extension/rotate_facing/proc/get_rotation_to_target(var/alt_target = null)
+	var/vector2/rotated_forward_vector = forward_vector.Turn(current_rotation)
+
+	//Where do we want to look?
+	var/vector2/direction = Vector2.SmartDirectionBetween(AM, alt_target ? alt_target : target)
+	//We can't face in a zero direction
+	if (direction.x == 0 && direction.y == 0)
+		return 0
+
+	//This gets the rotiation from where we are currently facing, to where we want to face
+	. = direction.AngleFrom(rotated_forward_vector, TRUE)
+
+	release_vector(direction)
+	release_vector(rotated_forward_vector)
+
+/*
+	Like the above, but works with the unrotated forward vector
+*/
+/datum/extension/rotate_facing/proc/get_total_rotation_to_target(var/alt_target = null)
+	//Where do we want to look?
+	var/vector2/direction = Vector2.SmartDirectionBetween(AM, alt_target ? alt_target : target)
+	//We can't face in a zero direction
+	if (direction.x == 0 && direction.y == 0)
+		return 0
+
+	//This gets the rotiation from where we are currently facing, to where we want to face
+	. = direction.AngleFrom(forward_vector, TRUE)
+
+	release_vector(direction)
+
+/*
+	Gets the turf infront of our
+*/
+/datum/extension/rotate_facing/proc/get_turf_infront(var/distance)
+	var/vector2/rotated_forward_vector = forward_vector.Turn(current_rotation)
+	rotated_forward_vector.SelfMultiply(WORLD_ICON_SIZE*distance)
+
+	.= AM.get_turf_at_pixel_offset(rotated_forward_vector)
+	release_vector(rotated_forward_vector)
+
+
+
+/*
 	This is called when a new target is set
 	In active track mode, it is also called when the holder or target moves
 	This starts the processing

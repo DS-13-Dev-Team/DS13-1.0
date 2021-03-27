@@ -6,127 +6,10 @@
 // Dust, used by space dust event and during earliest stages of meteor mode.
 /var/list/meteors_dust = list(/obj/effect/meteor/dust)
 
-// Standard meteors, used during early stages of the meteor gamemode.
-/var/list/meteors_normal = list(\
-		/obj/effect/meteor/medium=8,\
-		/obj/effect/meteor/dust=3,\
-		/obj/effect/meteor/irradiated=3,\
-		/obj/effect/meteor/big=3,\
-		/obj/effect/meteor/flaming=1,\
-		/obj/effect/meteor/golden=1,\
-		/obj/effect/meteor/silver=1\
-		)
-
-// Threatening meteors, used during the meteor gamemode.
-/var/list/meteors_threatening = list(\
-		/obj/effect/meteor/big=10,\
-		/obj/effect/meteor/medium=5,\
-		/obj/effect/meteor/golden=3,\
-		/obj/effect/meteor/silver=3,\
-		/obj/effect/meteor/flaming=3,\
-		/obj/effect/meteor/irradiated=3,\
-		/obj/effect/meteor/emp=3\
-		)
-
-// Catastrophic meteors, pretty dangerous without shields and used during the meteor gamemode.
-/var/list/meteors_catastrophic = list(\
-		/obj/effect/meteor/big=75,\
-		/obj/effect/meteor/flaming=10,\
-		/obj/effect/meteor/irradiated=10,\
-		/obj/effect/meteor/emp=10,\
-		/obj/effect/meteor/medium=5,\
-		/obj/effect/meteor/golden=4,\
-		/obj/effect/meteor/silver=4,\
-		/obj/effect/meteor/tunguska=1\
-		)
-
-// Armageddon meteors, very dangerous, and currently used only during the meteor gamemode.
-/var/list/meteors_armageddon = list(\
-		/obj/effect/meteor/big=25,\
-		/obj/effect/meteor/flaming=10,\
-		/obj/effect/meteor/irradiated=10,\
-		/obj/effect/meteor/emp=10,\
-		/obj/effect/meteor/medium=3,\
-		/obj/effect/meteor/tunguska=3,\
-		/obj/effect/meteor/golden=2,\
-		/obj/effect/meteor/silver=2\
-		)
-
-// Cataclysm meteor selection. Very very dangerous and effective even against shields. Used in late game meteor gamemode only.
-/var/list/meteors_cataclysm = list(\
-		/obj/effect/meteor/big=40,\
-		/obj/effect/meteor/emp=20,\
-		/obj/effect/meteor/tunguska=20,\
-		/obj/effect/meteor/irradiated=10,\
-		/obj/effect/meteor/golden=10,\
-		/obj/effect/meteor/silver=10,\
-		/obj/effect/meteor/flaming=10,\
-		/obj/effect/meteor/supermatter=1\
-		)
 
 
 
-///////////////////////////////
-//Meteor spawning global procs
-///////////////////////////////
 
-/proc/spawn_meteors(var/number = 10, var/list/meteortypes, var/startSide, var/zlevel)
-	for(var/i = 0; i < number; i++)
-		spawn_meteor(meteortypes, startSide, zlevel)
-
-/proc/spawn_meteor(var/list/meteortypes, var/startSide, var/zlevel)
-	var/turf/pickedstart = spaceDebrisStartLoc(startSide, zlevel)
-	var/turf/pickedgoal = spaceDebrisFinishLoc(startSide, zlevel)
-
-	var/Me = pickweight(meteortypes)
-	var/obj/effect/meteor/M = new Me(pickedstart)
-	M.dest = pickedgoal
-	M.velocity = new /vector2()
-	if(pickedgoal.x != pickedstart.x)
-		M.velocity.x = (pickedgoal.x < pickedstart.x) ? -2 : 2
-	if(pickedgoal.y != pickedstart.y)
-		M.velocity.y = (pickedgoal.y < pickedstart.y) ? -2 : 2
-	spawn(0)
-		walk_towards(M, M.dest, 1)
-	return
-
-/proc/spaceDebrisStartLoc(startSide, Z)
-	var/starty
-	var/startx
-	switch(startSide)
-		if(NORTH)
-			starty = world.maxy-(TRANSITIONEDGE+1)
-			startx = rand((TRANSITIONEDGE+1), world.maxx-(TRANSITIONEDGE+1))
-		if(EAST)
-			starty = rand((TRANSITIONEDGE+1),world.maxy-(TRANSITIONEDGE+1))
-			startx = world.maxx-(TRANSITIONEDGE+1)
-		if(SOUTH)
-			starty = (TRANSITIONEDGE+1)
-			startx = rand((TRANSITIONEDGE+1), world.maxx-(TRANSITIONEDGE+1))
-		if(WEST)
-			starty = rand((TRANSITIONEDGE+1), world.maxy-(TRANSITIONEDGE+1))
-			startx = (TRANSITIONEDGE+1)
-	var/turf/T = locate(startx, starty, Z)
-	return T
-
-/proc/spaceDebrisFinishLoc(startSide, Z)
-	var/endy
-	var/endx
-	switch(startSide)
-		if(NORTH)
-			endy = TRANSITIONEDGE
-			endx = rand(TRANSITIONEDGE, world.maxx-TRANSITIONEDGE)
-		if(EAST)
-			endy = rand(TRANSITIONEDGE, world.maxy-TRANSITIONEDGE)
-			endx = TRANSITIONEDGE
-		if(SOUTH)
-			endy = world.maxy-TRANSITIONEDGE
-			endx = rand(TRANSITIONEDGE, world.maxx-TRANSITIONEDGE)
-		if(WEST)
-			endy = rand(TRANSITIONEDGE,world.maxy-TRANSITIONEDGE)
-			endx = world.maxx-TRANSITIONEDGE
-	var/turf/T = locate(endx, endy, Z)
-	return T
 
 ///////////////////////
 //The meteor effect
@@ -150,6 +33,8 @@
 	var/vector2/velocity = null
 
 	var/move_count = 0
+	var/speed = 1
+	var/registered = FALSE
 
 /obj/effect/meteor/proc/get_shield_damage()
 	return max(((max(hits, 2)) * (heavy + 1) * rand(30, 60)) / hitpwr , 0)
@@ -157,11 +42,15 @@
 /obj/effect/meteor/New()
 	..()
 	z_original = z
-	GLOB.asteroids += src
+	if (isturf(loc))
+		registered = TRUE
+		GLOB.asteroids += src
+		world << "Meteor spawned at [jumplink(src)]"
 
 /obj/effect/meteor/Destroy()
 	GLOB.asteroids -= src
 	velocity = null
+	walk(src,0) //this cancels the walk_towards() proc
 	. = ..()
 
 /obj/effect/meteor/Move()
@@ -174,9 +63,6 @@
 	if(move_count > TRANSITIONEDGE)
 		qdel(src)
 
-/obj/effect/meteor/Destroy()
-	walk(src,0) //this cancels the walk_towards() proc
-	return ..()
 
 /obj/effect/meteor/New()
 	..()

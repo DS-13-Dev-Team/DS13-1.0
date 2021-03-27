@@ -1,6 +1,8 @@
 GLOBAL_VAR_INIT(asteroid_cannon, null)
 GLOBAL_LIST_EMPTY(asteroids)
-
+#define CANNON_FORWARD_DIR	EAST
+#define CANNON_FIRING_ARC 45
+#define CANNON_ROTATION_SPEED 75
 /**
 
 Asteroid cannon!
@@ -29,8 +31,8 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	layer = ABOVE_OBJ_LAYER
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
 	var/lead_distance = 0 //How aggressively to lead each shot. If set to 0 the bullets become hitscan.
-	var/bullet_origin_offset = 4 //+/-x. Offsets the bullet so it can shoot "through the wall" to more closely mirror the source material's gun.
-	var/firing_arc = 220
+	var/bullet_origin_offset = 3 //+/-x. Offsets the bullet so it can shoot "through the wall" to more closely mirror the source material's gun.
+
 	var/fire_sound = 'sound/effects/asteroidcannon_fire.ogg'
 	var/datum/extension/asteroidcannon/AC = null
 	var/next_shot = 0
@@ -44,12 +46,13 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	//Rotation handling
 	var/datum/extension/rotate_facing/rotator
 	var/atom/target
-	var/angular_momentum = 60	//max angle per second
-	var/max_rotation = 45	//Maximum rotation in either direction
+	var/firing_arc = CANNON_FIRING_ARC
 	pixel_y = -64
 	pixel_x = -144
 	var/cached_plane
-
+	var/deadzone = 10	//The angle towards the target must be <= this amount in order to fire at it
+	var/vector2/forward_vector = CANNON_FORWARD_DIR
+	var/vector2/offset_vector	//This is the offset we point towards when we return to neutral
 
 /obj/structure/asteroidcannon/Initialize(mapload, d)
 	. = ..()
@@ -57,8 +60,9 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 		message_admins("Duplicate asteroid cannon at [get_area(src)], [x], [y], [z] spawned!")
 		return INITIALIZE_HINT_QDEL
 	GLOB.asteroid_cannon = src
-
-
+	forward_vector = Vector2.FromDir(forward_vector)
+	offset_vector = forward_vector * bullet_origin_offset
+	offset_vector.SelfMultiply(WORLD_ICON_SIZE)
 
 	//Sets up the overlay
 	var/obj/asteroidover = new(loc)
@@ -127,16 +131,21 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 
 
 /obj/structure/asteroidcannon/proc/fire_at(atom/T)
-	var/turf/out = get_turf(locate(src.x+bullet_origin_offset, src.y, src.z))
-	if(Get_Angle(out, T) > firing_arc || world.time < next_shot || get_dist(out, src) <= 3)
+	if (!T)
+		return
+
+	var/delta = rotator.get_rotation_to_target(T)
+	if (abs(delta) > deadzone)
+		//We aren't pointed at the target yet, fail
+		return
+
+	var/turf/out = rotator.get_turf_infront(bullet_origin_offset)
+	if(world.time < next_shot)
 		return FALSE
 	flick("asteroidgun_firing", src)
 	next_shot = world.time + fire_delay
 	var/obj/item/projectile/bullet/asteroidcannon/bullet = new(out)
 	playsound(src, fire_sound, 100, 1)
-	//And apply the bullet offset... Gunners don't get hitscan bullets
-	if(lead_distance <= 0)
-		bullet.hitscan = TRUE
 	bullet.launch(T)
 
 /obj/structure/asteroidcannon/attack_hand(mob/user)
@@ -147,11 +156,9 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 
 
 /obj/structure/asteroidcannon/proc/start_firing()
-	world << "Cannon started firing"
 	firing = TRUE
 
 /obj/structure/asteroidcannon/proc/stop_firing()
-	world << "Cannon stopped firing"
 	firing = FALSE
 
 /obj/structure/asteroidcannon/proc/start_gunning(mob/user)
@@ -164,17 +171,24 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 
 /obj/structure/asteroidcannon/proc/stop_gunning(mob/user)
 	AC.remove_gunner()
-
+	unset_target()
 
 
 
 
 /obj/structure/asteroidcannon/proc/set_target(var/atom/newtarget)
+	if (target == newtarget || abs(rotator.get_total_rotation_to_target(newtarget)) > firing_arc || get_dist(src, newtarget) < bullet_origin_offset)
+		//Too close or not in our angle
+		return
+
 	target = newtarget
 	rotator.set_target(target)
 
-//This is used to turn towards the target
-/obj/structure/asteroidcannon/Process()
+/obj/structure/asteroidcannon/proc/unset_target()
+	//This causes the gun to rotate back to neutral by aiming at a tile infront
+	var/turf/T = get_turf_at_pixel_offset(offset_vector)
+	set_target(T)
+
 /*
 	Projectile
 */
@@ -182,10 +196,11 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	name = "Accelerated Tungsten Slug"
 	icon_state = "asteroidcannon"
 	damage = 100
-	step_delay = 0
+	hitscan = TRUE
 	muzzle_type = /obj/effect/projectile/laser/xray/muzzle
 	tracer_type = /obj/effect/projectile/laser/xray/tracer
 	impact_type = /obj/effect/projectile/laser/xray/impact
+
 
 /obj/item/projectile/bullet/asteroidcannon/Bump(atom/A, forced)
 	. = ..()
@@ -200,7 +215,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 
 
 /datum/extension/rotate_facing/asteroidcannon
-	max_rotation = 45
-	angular_speed = 60
+	max_rotation = CANNON_FIRING_ARC
+	angular_speed = CANNON_ROTATION_SPEED
 	active_track = TRUE
-	forward_vector = EAST	//The cannon faces right
+	forward_vector = CANNON_FORWARD_DIR	//The cannon faces right

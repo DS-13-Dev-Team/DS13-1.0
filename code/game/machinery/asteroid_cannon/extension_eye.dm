@@ -24,16 +24,35 @@
 
 /datum/extension/asteroidcannon/proc/handle_auto_fire()
 	//Meteor targeting!
-	var/obj/effect/meteor/ME = pick(GLOB.asteroids)
-	world << "Firing at meteor located at [jumplink(ME)]"
-	//Lead your shots.
-	var/turf/aim_at = get_turf(ME)
-	if(ME.velocity && gun.lead_distance > 0)
-		aim_at = get_turf(locate(ME.x - (ME.velocity.x * gun.lead_distance), ME.y - (ME.velocity.y * gun.lead_distance), ME.z))
-	else
-		aim_at = ME
-	gun.fire_at(aim_at)
+	if (!is_valid_meteor(gun.target))
 
+		var/obj/effect/meteor/M = get_valid_meteor()
+		if (!M)
+			return
+		gun.set_target(M)
+
+	gun.fire_at(gun.target)
+
+/datum/extension/asteroidcannon/proc/get_valid_meteor()
+	var/list/things = GLOB.asteroids.Copy()
+	while (LAZYLEN(things))
+		var/obj/effect/meteor/M = pick_n_take(things)
+		if (is_valid_meteor(M))
+			return M
+
+	return null
+
+/datum/extension/asteroidcannon/proc/is_valid_meteor(var/obj/effect/meteor/M)
+	if (!istype(M))
+		return FALSE
+	if (QDELETED(M))
+		return FALSE
+	if (!isturf(M.loc))
+		return FALSE
+	if (abs(gun.rotator.get_total_rotation_to_target(M)) > gun.firing_arc)
+		return FALSE	//Out of our firing arc
+
+	return TRUE
 
 /datum/extension/asteroidcannon/proc/target_click(var/mob/user, var/atom/target, var/params)
 	gun.fire_at(get_turf(target))
