@@ -299,7 +299,7 @@
 		Cooldown times/overheating
 */
 /obj/item/weapon/gun/proc/can_ever_fire(mob/living/user)
-	if(safety() || (current_firemode.req_ammo && !has_ammo()))
+	if(safety() || ((!current_firemode || current_firemode.req_ammo) && !has_ammo()))
 		return FALSE
 
 	//We'll only do the special check if a user is supplied
@@ -312,7 +312,7 @@
 	if (require_held && !is_held())
 		return FALSE
 
-	if(!current_firemode.can_fire(user))
+	if(current_firemode && !current_firemode.can_fire(user))
 		return FALSE
 
 	return TRUE
