@@ -54,6 +54,10 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	var/vector2/forward_vector = CANNON_FORWARD_DIR
 	var/vector2/offset_vector	//This is the offset we point towards when we return to neutral
 
+	//Extra objects
+	var/obj/asteroidover
+	var/obj/asteroidunder
+
 /obj/structure/asteroidcannon/Initialize(mapload, d)
 	. = ..()
 	if(GLOB.asteroid_cannon)
@@ -65,7 +69,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	offset_vector.SelfMultiply(WORLD_ICON_SIZE)
 
 	//Sets up the overlay
-	var/obj/asteroidover = new(loc)
+	asteroidover = new(loc)
 	asteroidover.mouse_opacity = FALSE //Just a fluff overlay.
 	asteroidover.plane = plane + 0.1
 	asteroidover.layer = layer + 0.1
@@ -75,7 +79,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	asteroidover.icon_state = "asteroidgun_over"
 
 	//And the underlay
-	var/obj/asteroidunder = new(loc)
+	asteroidunder = new(loc)
 	asteroidunder.mouse_opacity = FALSE //Just a fluff overlay.
 	asteroidunder.plane = plane - 0.1
 	asteroidunder.layer = layer - 0.1
@@ -147,6 +151,10 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	var/obj/item/projectile/bullet/asteroidcannon/bullet = new(out)
 	playsound(src, fire_sound, 100, 1)
 	bullet.launch(T)
+
+
+	flick("asteroidgun_over_fire", asteroidover)
+	flick("asteroidgun_under_fire", asteroidunder)
 
 /obj/structure/asteroidcannon/attack_hand(mob/user)
 	if (AC.gunner)

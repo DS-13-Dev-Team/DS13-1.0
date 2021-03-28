@@ -126,7 +126,6 @@
 		return
 
 	//Where are we currently looking?
-	//world << "About to turn AM[AM] to target [target] FV [vstr(forward_vector)] by [current_rotation]"
 	var/vector2/rotated_forward_vector = forward_vector.Turn(current_rotation)
 
 	//Where do we want to look?
@@ -134,7 +133,6 @@
 	//We can't face in a zero direction
 	if (direction.x == 0 && direction.y == 0)
 		return
-	//world << "RFV [vstr(rotated_forward_vector)] D [vstr(direction)]"
 
 	//This gets the rotiation from where we are currently facing, to where we want to face
 	var/rotation_delta = direction.AngleFrom(rotated_forward_vector, TRUE)

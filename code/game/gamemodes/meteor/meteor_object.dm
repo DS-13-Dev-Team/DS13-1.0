@@ -35,6 +35,7 @@
 	var/move_count = 0
 	var/speed = 1
 	var/registered = FALSE
+	default_scale = 2
 
 /obj/effect/meteor/proc/get_shield_damage()
 	return max(((max(hits, 2)) * (heavy + 1) * rand(30, 60)) / hitpwr , 0)
@@ -45,7 +46,8 @@
 	if (isturf(loc))
 		registered = TRUE
 		GLOB.asteroids += src
-		world << "Meteor spawned at [jumplink(src)]"
+
+	animate_to_default()
 
 /obj/effect/meteor/Destroy()
 	GLOB.asteroids -= src
@@ -164,8 +166,9 @@
 	meteordrop = /obj/item/weapon/ore/phoron
 
 /obj/effect/meteor/flaming/meteor_effect()
-	..()
 	explosion(4, 2)
+	..()
+
 
 //Radiation meteor
 /obj/effect/meteor/irradiated
@@ -175,8 +178,9 @@
 	meteordrop = /obj/item/weapon/ore/uranium
 
 /obj/effect/meteor/irradiated/meteor_effect()
-	..()
 	explosion(4, 2)
+	..()
+
 	new /obj/effect/decal/cleanable/greenglow(get_turf(src))
 	SSradiation.radiate(src, 50)
 
@@ -219,8 +223,9 @@
 	meteordrop = /obj/item/weapon/ore/diamond	// Probably means why it penetrates the hull so easily before exploding.
 
 /obj/effect/meteor/tunguska/meteor_effect()
-	..()
 	explosion(30,3)
+	..()
+
 
 // This is the final solution against shields - a single impact can bring down most shield generators.
 /obj/effect/meteor/supermatter

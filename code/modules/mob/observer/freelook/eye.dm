@@ -58,9 +58,12 @@
 	SetName("[owner.name] ([name_sufix])") // Update its name
 	if(owner.client)
 		owner.client.eye = src
+		owner.update_vision_range()
 	setLoc(owner)
 	if (visualnet)
 		visualnet.update_eye_chunks(src, TRUE)
+
+
 
 /mob/observer/eye/proc/release(var/mob/user)
 	if(owner != user || !user)

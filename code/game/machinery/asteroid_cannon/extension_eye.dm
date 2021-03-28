@@ -2,14 +2,15 @@
 /datum/extension/asteroidcannon
 	var/obj/structure/asteroidcannon/gun = null
 	var/mob/living/carbon/human/gunner = null
-	var/mob/observer/eye/asteroidcannon/eyeobj = null
+	var/mob/observer/eye/turret/eyeobj = null
 	var/datum/click_handler/gun/tracked/TCH
 
 
 /datum/extension/asteroidcannon/Process()
-	if(gunner && gun.is_firing()) //We've got a gunner, don't fire.
-		handle_manual_fire()
-		return
+	if(gunner)
+		if(gun.is_firing()) //We've got a gunner, don't fire.
+			handle_manual_fire()
+			return
 	else if (gun?.operational)
 		if(!LAZYLEN(GLOB.asteroids))
 			return
@@ -83,10 +84,9 @@
 	//gunner.vis_flags |= VIS_INHERIT_ID
 	//gun.vis_contents += gunner
 	gun.lead_distance = 1 //Gunners don't get hitscan...
-	eyeobj = new /mob/observer/eye/asteroidcannon(get_turf(gun))
-	eyeobj.gun = gun
+	eyeobj = new /mob/observer/eye/turret(get_turf(gun))
 	eyeobj.acceleration = FALSE
-	eyeobj.possess(gunner)
+	eyeobj.possess(gunner, gun)	//Pass in the gun with possess
 
 /datum/extension/asteroidcannon/proc/recenter()
 	eyeobj?.setLoc(get_turf(gun))
@@ -120,17 +120,59 @@
 
 
 /*
-	Eye: Used for offset view
+	Eye: Used for offset view on fixed angle turrets
 */
-/mob/observer/eye/asteroidcannon
-	var/obj/structure/asteroidcannon/gun = null
+/mob/observer/eye/turret
+	var/atom/gun = null
+	var/offset = 6
+	view_range = 12
+	var/turf/offset_turf
+	var/vector2/direction_vector	//This uses a non-copied global vector fetched from direction.
+	//Do not edit or release it
 
-/mob/observer/eye/asteroidcannon/EyeMove(direct)
-	if((direct == WEST) && (src.x < gun.x)) //No looking behind you...
-		setLoc(get_turf(locate(gun.x, y)))
-		return FALSE
-	. = ..()
+/mob/observer/eye/turret/possess(var/mob/user, var/atom/newgun)
+	gun = newgun
+	update_direction()
+	.=..()
 
-/mob/observer/eye/asteroidcannon/Destroy()
+/mob/observer/eye/turret/proc/update_direction()
+	//We do NOT release the old vector here, it is a global value
+	direction_vector = Vector2.FromDir(gun.dir)
+
+	//This is temporary, we'll release it in a sec
+	var/vector2/offset_vector = direction_vector * offset
+	offset_turf = locate(gun.x + offset_vector.x, gun.y + offset_vector.y, gun.z)
+
+
+	release_vector(offset_vector)
+
+
+/mob/observer/eye/turret/EyeMove(direct)
+	//Lets see if our target turf is valid
+	var/turf/target_turf = get_step(src, direct)
+
+	//To do that, we simply get the delta vector between our offset and the target, then
+	var/vector2/difference = Vector2.DirMagBetween(offset_turf, target_turf)
+
+	//Cross product with the turret direction
+	var/vector2/cross = difference * direction_vector
+
+
+	var/fail = FALSE
+	//Now we check the cross. Any values which are negative, have gone past where they should, and that makes this movement invalid
+	if (cross.x < 0 || cross.y < 0)
+		fail = TRUE
+
+	//Call parent to allow move to proceed
+	if (!fail)
+		. = ..()
+
+	//Simply do not call parent to terminate movement
+	//Either way we gotta cleanup vectors
+	release_vector(cross)
+	release_vector(difference)
+
+
+/mob/observer/eye/turret/Destroy()
 	gun = null
 	. = ..()
