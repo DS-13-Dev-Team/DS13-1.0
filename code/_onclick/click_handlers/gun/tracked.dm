@@ -34,3 +34,12 @@
 	if (object)
 		set_target(object)
 	return TRUE
+
+
+/datum/click_handler/gun/tracked/MouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
+	update_clickparams(params)
+	over_object = resolve_world_target(over_object, params)
+	if (over_object)
+		set_target(over_object)
+		return FALSE
+	return TRUE

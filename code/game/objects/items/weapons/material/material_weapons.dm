@@ -80,7 +80,6 @@
 	shatter()
 
 /obj/item/weapon/material/proc/shatter(var/consumed)
-	crash_with("Shattering")
 	var/turf/T = get_turf(src)
 	if (T)
 		T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")

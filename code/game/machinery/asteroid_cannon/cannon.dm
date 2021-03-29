@@ -1,5 +1,5 @@
 GLOBAL_VAR_INIT(asteroid_cannon, null)
-GLOBAL_LIST_EMPTY(asteroids)
+
 #define CANNON_FORWARD_DIR	EAST
 #define CANNON_FIRING_ARC 45
 #define CANNON_ROTATION_SPEED 75
@@ -42,6 +42,8 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	var/last_offline = 0 //When was it last taken offline? Used to spawn meteors when it's taken offline. Spite!
 	var/firing = FALSE	//Set true when user is holding down fire button
 	appearance_flags=KEEP_TOGETHER
+
+	var/datum/extension/asteroidcannon/fire_handler
 
 	//Rotation handling
 	var/datum/extension/rotate_facing/rotator
@@ -91,7 +93,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 
 
 	//Give it the shooty bit
-	set_extension(src, /datum/extension/asteroidcannon)
+	fire_handler = set_extension(src, /datum/extension/asteroidcannon)
 	rotator = set_extension(src, /datum/extension/rotate_facing/asteroidcannon)
 	AC = get_extension(src, /datum/extension/asteroidcannon) //Cached for later.
 
@@ -149,7 +151,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	flick("asteroidgun_firing", src)
 	next_shot = world.time + fire_delay
 	var/obj/item/projectile/bullet/asteroidcannon/bullet = new(out)
-	playsound(src, fire_sound, 100, 1)
+	playsound(src, fire_sound, VOLUME_HIGH, 1, 12)
 	bullet.launch(T)
 
 
@@ -214,9 +216,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	. = ..()
 	if(istype(A, /obj/effect/meteor))
 		var/obj/effect/meteor/M = A
-		M.visible_message("<span class='danger'>\The [M] breaks into dust!</span>")
-		M.make_debris()
-		qdel(M)
+		M.break_apart()
 		qdel(src)
 
 

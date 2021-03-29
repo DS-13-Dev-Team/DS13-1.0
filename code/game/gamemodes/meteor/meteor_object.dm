@@ -8,7 +8,7 @@
 
 
 
-
+GLOBAL_LIST_EMPTY(asteroids)
 
 
 ///////////////////////
@@ -35,7 +35,14 @@
 	var/move_count = 0
 	var/speed = 1
 	var/registered = FALSE
-	default_scale = 2
+	var/start_side = EAST //Where did we come from?
+	default_scale = 3
+
+	//Meteors are big objects
+	bound_width = WORLD_ICON_SIZE*2
+	bound_height = WORLD_ICON_SIZE*2
+	pixel_x = 16
+	pixel_y = 16
 
 /obj/effect/meteor/proc/get_shield_damage()
 	return max(((max(hits, 2)) * (heavy + 1) * rand(30, 60)) / hitpwr , 0)
@@ -44,10 +51,16 @@
 	..()
 	z_original = z
 	if (isturf(loc))
-		registered = TRUE
-		GLOB.asteroids += src
+		register_asteroid(src)
 
 	animate_to_default()
+	SpinAnimation(0.2)
+
+
+/proc/register_asteroid(var/obj/effect/meteor/M)
+	GLOB.asteroids += src
+	if (GLOB.asteroid_cannon)
+		GLOB.asteroid_cannon.fire_handler.wake_up()
 
 /obj/effect/meteor/Destroy()
 	GLOB.asteroids -= src
@@ -66,15 +79,26 @@
 		qdel(src)
 
 
-/obj/effect/meteor/New()
-	..()
-	SpinAnimation()
+
 
 /obj/effect/meteor/Bump(atom/A)
 	..()
 	if(A && !QDELETED(src))	// Prevents explosions and other effects when we were deleted by whatever we Bumped() - currently used by shields.
-		ram_turf(get_turf(A))
-		get_hit() //should only get hit once per move attempt
+		if (istype(A, /obj/effect/meteor))
+			//We bounce off other meteors
+			ricochet()
+			return
+		else
+			ram_turf(get_turf(A))
+			get_hit() //should only get hit once per move attempt
+
+
+//We fly in a different direction
+/obj/effect/meteor/proc/ricochet()
+	walk(src, 0)
+	dest = spaceDebrisFinishLoc(start_side, z)
+
+	walk_towards(src, dest, SPEED_TO_DELAY(speed))
 
 /obj/effect/meteor/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	return istype(mover, /obj/effect/meteor) ? 1 : ..()
@@ -100,6 +124,18 @@
 
 /obj/effect/meteor/ex_act()
 	return
+
+
+/*
+	Called when a meteor is harmlessly destroyed by cannon fire
+*/
+/obj/effect/meteor/proc/break_apart()
+	var/datum/effect/system/explosion/E = new/datum/effect/system/explosion()
+	E.set_up(loc, FALSE)
+	E.start()
+	make_debris()
+	if (!QDELETED(src))
+		qdel(src)
 
 /obj/effect/meteor/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
 	if(istype(W, /obj/item/weapon/tool/pickaxe))
@@ -143,7 +179,7 @@
 
 /obj/effect/meteor/medium/meteor_effect()
 	..()
-	explosion(4, 2)
+	explosion(3, 2)
 
 //Large-sized
 /obj/effect/meteor/big
@@ -155,7 +191,7 @@
 
 /obj/effect/meteor/big/meteor_effect()
 	..()
-	explosion(10, 2)
+	explosion(5, 2)
 
 //Flaming meteor
 /obj/effect/meteor/flaming
@@ -166,7 +202,7 @@
 	meteordrop = /obj/item/weapon/ore/phoron
 
 /obj/effect/meteor/flaming/meteor_effect()
-	explosion(4, 2)
+	explosion(2, 2)
 	..()
 
 
@@ -178,7 +214,7 @@
 	meteordrop = /obj/item/weapon/ore/uranium
 
 /obj/effect/meteor/irradiated/meteor_effect()
-	explosion(4, 2)
+	explosion(2, 2)
 	..()
 
 	new /obj/effect/decal/cleanable/greenglow(get_turf(src))
@@ -223,7 +259,7 @@
 	meteordrop = /obj/item/weapon/ore/diamond	// Probably means why it penetrates the hull so easily before exploding.
 
 /obj/effect/meteor/tunguska/meteor_effect()
-	explosion(30,3)
+	explosion(8,3)
 	..()
 
 
@@ -236,7 +272,7 @@
 
 /obj/effect/meteor/supermatter/meteor_effect()
 	..()
-	explosion(4, 2)
+	explosion(3, 2)
 	for(var/obj/machinery/power/apc/A in range(rand(12, 20), src))
 		A.energy_fail(round(10 * rand(8, 12)))
 

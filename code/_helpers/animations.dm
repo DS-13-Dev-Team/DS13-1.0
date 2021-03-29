@@ -2,3 +2,17 @@
 	for(var/client/C in show_to)
 		C.images -= I
 		qdel(I)
+
+
+/atom/proc/SpinAnimation(speed = 1, loops = -1)
+	var/matrix/m120 = matrix(transform)
+	m120.Turn(120)
+	var/matrix/m240 = matrix(transform)
+	m240.Turn(240)
+	var/matrix/m360 = matrix(transform)
+	speed /= 3      //Gives us 3 equal time segments for our three turns.
+	                //Why not one turn? Because byond will see that the start and finish are the same place and do nothing
+	                //Why not two turns? Because byond will do a flip instead of a turn
+	animate(src, transform = m120, time = ((10 / 3) / speed), loops,flags = ANIMATION_PARALLEL)
+	animate(transform = m240, time = ((10 / 3) / speed))
+	animate(transform = m360, time = ((10 / 3) / speed))

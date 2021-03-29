@@ -13,7 +13,7 @@
 			return
 	else if (gun?.operational)
 		if(!LAZYLEN(GLOB.asteroids))
-			return
+			return PROCESS_KILL//Nothing to shoot at
 		handle_auto_fire()
 
 
@@ -124,16 +124,17 @@
 */
 /mob/observer/eye/turret
 	var/atom/gun = null
-	var/offset = 6
-	view_range = 12
+	var/offset = 12
+	view_range = 15
 	var/turf/offset_turf
 	var/vector2/direction_vector	//This uses a non-copied global vector fetched from direction.
 	//Do not edit or release it
 
 /mob/observer/eye/turret/possess(var/mob/user, var/atom/newgun)
 	gun = newgun
-	update_direction()
+
 	.=..()
+	update_direction()
 
 /mob/observer/eye/turret/proc/update_direction()
 	//We do NOT release the old vector here, it is a global value
@@ -142,7 +143,8 @@
 	//This is temporary, we'll release it in a sec
 	var/vector2/offset_vector = direction_vector * offset
 	offset_turf = locate(gun.x + offset_vector.x, gun.y + offset_vector.y, gun.z)
-
+	setLoc(offset_turf)
+	world << "Moving to [offset_turf]"
 
 	release_vector(offset_vector)
 
@@ -152,7 +154,7 @@
 	var/turf/target_turf = get_step(src, direct)
 
 	//To do that, we simply get the delta vector between our offset and the target, then
-	var/vector2/difference = Vector2.DirMagBetween(offset_turf, target_turf)
+	var/vector2/difference = Vector2.VectorBetween(offset_turf, target_turf)
 
 	//Cross product with the turret direction
 	var/vector2/cross = difference * direction_vector

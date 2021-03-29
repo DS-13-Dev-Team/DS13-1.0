@@ -113,7 +113,7 @@ Vars/
 		ourloc = A.get_global_pixel_loc()
 	if (!(ourloc ~= target))
 
-		.=Vector2.VecDirectionBetween(ourloc, target)
+		.=Vector2.DirectionBetween(ourloc, target)
 		release_vector(ourloc)
 		return
 

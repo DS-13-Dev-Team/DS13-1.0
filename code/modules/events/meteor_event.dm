@@ -124,6 +124,9 @@
 		. *= 2
 
 
+
+
+
 /datum/event/meteor_wave/ishimura
 	startWhen = 0
 	next_meteor = 0
@@ -139,6 +142,9 @@
 	endWhen = worst_case_end()
 
 
+
+
+
 /proc/spaceDebrisFrontalStartLoc(startSide, Z)
 	var/obj/structure/asteroidcannon/AC = GLOB.asteroid_cannon
 	var/starty
@@ -148,7 +154,7 @@
 			starty = world.maxy-(TRANSITIONEDGE+1)
 			startx = rand((TRANSITIONEDGE+1), world.maxx-(TRANSITIONEDGE+1))
 		if(EAST)
-			starty = rand(AC.y + 20,AC.y - 20)
+			starty = rand(AC.y + 25,AC.y - 25)
 			startx = world.maxx-(TRANSITIONEDGE+1)
 		if(SOUTH)
 			starty = (TRANSITIONEDGE+1)
@@ -179,6 +185,7 @@
 
 	var/Me = pickweight(meteortypes)
 	var/obj/effect/meteor/M = new Me(pickedstart)
+	M.start_side = startSide
 	M.dest = pickedgoal
 	M.velocity = new /vector2()
 	if(pickedgoal.x != pickedstart.x)
