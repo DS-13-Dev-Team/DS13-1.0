@@ -71,8 +71,8 @@
 	KEY_ALT = list(/mob/living/proc/slasher_dodge))
 
 
-	variants = list(SPECIES_NECROMORPH_SLASHER = 8,
-	SPECIES_NECROMORPH_SLASHER_DESICCATED = 2)
+	variants = list(SPECIES_NECROMORPH_SLASHER = list(WEIGHT = 8),
+	SPECIES_NECROMORPH_SLASHER_DESICCATED = list(WEIGHT = 2))
 
 //slasher variants share a bodytype with the base slasher, same clothes fit all
 /datum/species/necromorph/slasher/get_bodytype()

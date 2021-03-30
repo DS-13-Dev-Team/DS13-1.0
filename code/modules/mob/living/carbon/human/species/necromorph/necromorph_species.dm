@@ -65,7 +65,8 @@
 	/*
 		Necromorph customisation system
 	*/
-	var/list/variants			//Species variants included. Weighted list
+	var/list/variants			//Species variants included. This is an assoc list in the format: species_name = list(weight, patron)
+		//If patron is true, this variant is not available by default
 	var/list/outfits = list(null = 1)		//Outfits the mob can spawn with, weighted. Null outfit is for naked
 	//var/naked_chance = 40	//If outfits are available, chance to not spawn with one
 
@@ -349,6 +350,13 @@
 /datum/species/necromorph/proc/prefill_customisation_prefs(var/datum/preferences/prefs)
 	prefs.necro_custom[name] = list()
 	if (variants)
+		var/list/public_variants = list()
+		for (var/vname in variants)
+			var/list/params = variants[vname]
+
+			//Premium variant, not implemented by default
+			if (params[PATRON])
+				continue
 		prefs.necro_custom[name][VARIANT]	=	variants.Copy()
 
 /datum/species/necromorph/proc/get_default_icon()
