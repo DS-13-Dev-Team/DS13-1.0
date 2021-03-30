@@ -30,6 +30,7 @@
 	possession_candidate = 1
 	can_escape = 1
 	speed = 5
+	biomass = 0.2
 
 	can_pull_size = ITEM_SIZE_TINY
 	can_pull_mobs = MOB_PULL_NONE

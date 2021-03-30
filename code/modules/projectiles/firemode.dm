@@ -17,6 +17,7 @@
 
 	var/mob/user
 	var/atom/target
+	var/req_ammo = TRUE
 
 /datum/firemode/New(obj/item/weapon/gun/_gun, list/properties = null)
 	..()
@@ -148,7 +149,7 @@
 /*
 	This only handles additional checks that the gun itself may not handle
 */
-/datum/firemode/proc/can_fire()
+/datum/firemode/proc/can_fire(mob/living/user)
 	return TRUE
 
 //Override in subtypes

@@ -1,11 +1,12 @@
 /obj/item/weapon/clipboard
 	name = "clipboard"
+	desc = "Useful for holding documents or pretending to look busy."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "clipboard"
 	item_state = "clipboard"
 	throwforce = 0
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 10
 	var/obj/item/weapon/pen/haspen		//The stored pen.
 	var/obj/item/weapon/toppaper	//The topmost piece of paper.

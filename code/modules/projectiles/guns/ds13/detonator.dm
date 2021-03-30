@@ -45,6 +45,7 @@
 */
 /datum/firemode/tripmine
 	override_fire = TRUE
+	req_ammo = FALSE
 
 /datum/firemode/tripmine/fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
 	var/obj/item/weapon/gun/projectile/detonator/R = gun

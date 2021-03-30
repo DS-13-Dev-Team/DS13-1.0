@@ -1,5 +1,6 @@
 /obj/machinery/photocopier
 	name = "photocopier"
+	desc = "This machine scans and copies papers. Usually."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "bigscanner"
 	var/insert_anim = "bigscanner1"
@@ -230,5 +231,6 @@
 
 /obj/item/device/toner
 	name = "toner cartridge"
+	desc = "A component consumed by printing devices."
 	icon_state = "tonercartridge"
 	var/toner_amount = 30
