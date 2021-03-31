@@ -98,7 +98,10 @@
 	winset(src, null, "mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true input.background-color=#d3b5b5")
 
 
-
+/*
+	This updates lighting, darkvision, and skybox
+	Called on login and when switching species
+*/
 /mob/proc/refresh_lighting_overlays()
 	if (!client)
 		return
