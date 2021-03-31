@@ -12017,9 +12017,7 @@
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "axo" = (
 /obj/structure/table/standard,
-/obj/item/device/taperecorder{
-	pixel_y = 0
-	},
+/obj/item/device/taperecorder,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/security/interrogation)
 "axp" = (
@@ -23166,9 +23164,7 @@
 /area/ishimura/upper/misc/bathroom)
 "aQF" = (
 /obj/structure/table/standard,
-/obj/item/device/taperecorder{
-	pixel_y = 0
-	},
+/obj/item/device/taperecorder,
 /obj/item/weapon/reagent_containers/spray/cleaner,
 /obj/item/device/tape,
 /obj/item/device/tape,
@@ -29397,9 +29393,7 @@
 /obj/item/weapon/pen,
 /obj/item/device/tape,
 /obj/item/device/tape,
-/obj/item/device/taperecorder{
-	pixel_y = 0
-	},
+/obj/item/device/taperecorder,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
