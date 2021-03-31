@@ -5243,8 +5243,7 @@
 	id = "disused_tramsec";
 	name = "Security Post Shutters";
 	pixel_x = 24;
-	req_access = list(2);
-	step_x = 0
+	req_access = list(2)
 	},
 /obj/random/common_loot,
 /turf/simulated/floor/dank,

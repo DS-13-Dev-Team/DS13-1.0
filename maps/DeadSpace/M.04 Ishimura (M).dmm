@@ -2952,8 +2952,7 @@
 	icon_state = "blastctrl";
 	id = "supermatterblastdoors1";
 	name = "Reactor 1 Blast Control";
-	pixel_x = -24;
-	step_x = 0
+	pixel_x = -24
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -4050,8 +4049,7 @@
 	dir = 4;
 	icon_state = "blastctrl";
 	id = "engine_monitoring";
-	name = "Engine Lockout Blast Door Control";
-	step_x = 0
+	name = "Engine Lockout Blast Door Control"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/upper/engineering/monitoring_room)
@@ -4248,8 +4246,7 @@
 	dir = 4;
 	icon_state = "blastctrl";
 	id = "engine_monitoring2";
-	name = "Monitoring Window Blast Door Control";
-	step_x = 0
+	name = "Monitoring Window Blast Door Control"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/upper/engineering/monitoring_room)
@@ -12707,7 +12704,6 @@
 /area/ishimura/upper/medical/supply_storage)
 "ayF" = (
 /obj/item/weapon/storage/box/bodybags{
-	pixel_x = 0;
 	pixel_y = 2
 	},
 /obj/structure/table/standard,
@@ -12785,7 +12781,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -13791,9 +13786,7 @@
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/item/weapon/disk/tech_disk{
-	pixel_x = 0
-	},
+/obj/item/weapon/disk/tech_disk,
 /obj/item/weapon/disk/design_disk,
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/circuits,
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/components,
@@ -14411,7 +14404,6 @@
 	pixel_x = -3
 	},
 /obj/item/weapon/ironingiron{
-	pixel_x = 0;
 	pixel_y = 10
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -16775,7 +16767,6 @@
 /area/ishimura/upper/misc/hangar/reception)
 "aFp" = (
 /obj/machinery/atm{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/structure/disposalpipe/segment{
@@ -17737,8 +17728,7 @@
 	icon_state = "blastctrl";
 	id = "med_lock";
 	name = "Medical Lockdown";
-	pixel_x = -35;
-	step_x = 0
+	pixel_x = -35
 	},
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -19214,7 +19204,6 @@
 /area/ishimura/upper/misc/hallway/central)
 "aJu" = (
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/dark/monotile,
@@ -19276,7 +19265,6 @@
 /area/ishimura/upper/command/bridge)
 "aJz" = (
 /obj/structure/closet/medical_wall/filled{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark/monotile,
@@ -19686,7 +19674,6 @@
 /area/ishimura/upper/engineering/spare_storage/tool)
 "aKj" = (
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -21059,7 +21046,6 @@
 /area/ishimura/upper/misc/breakroom)
 "aMO" = (
 /obj/machinery/atm{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21226,7 +21212,6 @@
 /area/ishimura/upper/engineering/tcomms)
 "aNb" = (
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -22260,7 +22245,6 @@
 "aOW" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/atm{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/machinery/camera/network/common,
@@ -22615,7 +22599,6 @@
 /area/ishimura/upper/command/bridge)
 "aPF" = (
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -23353,7 +23336,6 @@
 	},
 /obj/effect/catwalk_plated,
 /obj/machinery/atm{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /turf/simulated/floor/plating,
@@ -23493,7 +23475,6 @@
 /area/ishimura/upper/misc/hallway/escape)
 "aRe" = (
 /obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /obj/item/device/radio/intercom/department/security{
@@ -24000,7 +23981,6 @@
 /area/ishimura/upper/engineering/spare_storage)
 "aRX" = (
 /obj/item/weapon/storage/mirror{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/structure/sink{
@@ -24021,7 +24001,6 @@
 /area/ishimura/upper/engineering/machining_room)
 "aRZ" = (
 /obj/item/weapon/storage/mirror{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/structure/sink{
@@ -24124,7 +24103,6 @@
 /area/ishimura/upper/misc/hallway/escape)
 "aSh" = (
 /obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /obj/machinery/recharger/wallcharger{
@@ -25230,7 +25208,6 @@
 /area/ishimura/upper/misc/escape)
 "aUl" = (
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -25737,7 +25714,6 @@
 /area/ishimura/upper/misc/escape)
 "aVj" = (
 /obj/machinery/atm{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark/monotile,
@@ -28431,8 +28407,7 @@
 	icon_state = "blastctrl";
 	id = "supermatterblastdoors2";
 	name = "Reactor 2 Blast Control";
-	pixel_x = -24;
-	step_x = 0
+	pixel_x = -24
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -28496,7 +28471,6 @@
 /area/ishimura/upper/maintenance/fore_port)
 "aZU" = (
 /obj/structure/closet/medical_wall/filled{
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /turf/simulated/floor/tiled,
@@ -28977,7 +28951,6 @@
 /area/ishimura/upper/maintenance/aft_starboard)
 "baT" = (
 /obj/machinery/keycard_auth{
-	pixel_x = 0;
 	pixel_y = -24
 	},
 /obj/machinery/camera/network/research{
@@ -29005,8 +28978,7 @@
 	icon_state = "blastctrl";
 	id = "research_lock";
 	name = "Research Lockdown";
-	pixel_x = 35;
-	step_x = 0
+	pixel_x = 35
 	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/chief_science_office)
@@ -30439,7 +30411,6 @@
 	dir = 8
 	},
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /turf/simulated/floor/tiled,
@@ -31092,7 +31063,6 @@
 /area/ishimura/upper/security/brig)
 "beQ" = (
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -31579,7 +31549,6 @@
 "bfw" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/closet/medical_wall/filled{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -32602,7 +32571,6 @@
 /area/ishimura/upper/misc/hallway/fore)
 "bhr" = (
 /obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,

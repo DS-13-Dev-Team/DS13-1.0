@@ -8436,9 +8436,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/weapon/circuitboard/protolathe{
-	pixel_x = 0
-	},
+/obj/item/weapon/circuitboard/protolathe,
 /obj/item/weapon/circuitboard/protolathe{
 	pixel_x = -4;
 	pixel_y = -4
@@ -11599,7 +11597,6 @@
 	dir = 4
 	},
 /obj/machinery/atm{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/effect/landmark{
@@ -19277,9 +19274,7 @@
 /area/ishimura/lower/security/escape/lounge)
 "aJY" = (
 /obj/structure/table/rack,
-/obj/item/weapon/grenade/chem_grenade/metalfoam{
-	pixel_x = 0
-	},
+/obj/item/weapon/grenade/chem_grenade/metalfoam,
 /obj/item/weapon/grenade/chem_grenade/metalfoam{
 	pixel_x = 2;
 	pixel_y = 2
@@ -20411,8 +20406,7 @@
 "aMp" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -20431,8 +20425,7 @@
 "aMr" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -20451,8 +20444,7 @@
 "aMt" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -25653,8 +25645,7 @@
 "aXl" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
@@ -26447,8 +26438,7 @@
 "aZv" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
@@ -26467,8 +26457,7 @@
 "aZw" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
-	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
+	icon_state = "shuttle_chair_preview"
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
