@@ -258,6 +258,12 @@ var/global/list/damage_icon_parts = list()
 	if (QDELETED(src))
 		return
 
+	//Our core organ is missing? This can only happen while switching species.
+	//In that case, we can't proceed, abort
+	var/obj/item/organ/external/chest = get_organ(BP_CHEST)
+	if (!chest)
+		return
+
 	var/husk_color_mod = rgb(96,88,80)
 	var/hulk_color_mod = rgb(48,224,40)
 
@@ -327,7 +333,7 @@ var/global/list/damage_icon_parts = list()
 		base_icon = human_icon_cache[icon_key]
 	else
 		//BEGIN CACHED ICON GENERATION.
-		var/obj/item/organ/external/chest = get_organ(BP_CHEST)
+
 		base_icon = chest.get_icon()
 
 		for(var/obj/item/organ/external/part in (organs-chest))

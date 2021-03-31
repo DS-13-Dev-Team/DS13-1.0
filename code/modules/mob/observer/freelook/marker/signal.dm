@@ -46,7 +46,8 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	return TRUE
 
 /mob/observer/eye/signal/apply_customisation(var/datum/preferences/prefs)
-	var/list/things = prefs.necro_custom[SIGNAL][SIGNAL_DEFAULT]
+	var/list/custom = prefs.get_necro_custom_list()
+	var/list/things = custom[SIGNAL][SIGNAL_DEFAULT]
 	if (length(things))
 		variations = things.Copy()
 		update_icon()

@@ -110,7 +110,8 @@
 	SOUND_SHOUT_LONG = list('sound/effects/creatures/necromorph/brute/brute_shout_long.ogg')
 	)
 
-	variants = list(SPECIES_NECROMORPH_BRUTE = 1, SPECIES_NECROMORPH_BRUTE_FLESH = 1)
+	variants = list(SPECIES_NECROMORPH_BRUTE = list(WEIGHT = 1),
+	SPECIES_NECROMORPH_BRUTE_FLESH = list(WEIGHT = 1))
 
 
 #define BRUTE_PASSIVE_1	"<h2>PASSIVE: Tunnel Vision:</h2><br>\

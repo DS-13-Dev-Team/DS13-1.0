@@ -6,9 +6,6 @@
 /mob/living/carbon/human/necromorph/slasher/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/slasherdesiccated/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER_DESICCATED)
-	..(new_loc, new_species)
-
 /mob/living/carbon/human/necromorph/slasher_enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_SLASHER_ENHANCED)
 	..(new_loc, new_species)
 

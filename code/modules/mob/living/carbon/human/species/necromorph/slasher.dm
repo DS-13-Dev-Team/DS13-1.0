@@ -85,7 +85,7 @@
 	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
 	marker_spawnable = FALSE
 	preference_settable = FALSE
-	mob_type = /mob/living/carbon/human/necromorph/slasherdesiccated
+	//mob_type = /mob/living/carbon/human/necromorph/slasherdesiccated
 
 
 

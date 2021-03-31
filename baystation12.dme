@@ -1491,6 +1491,8 @@
 #include "code\modules\client\preference_setup\matchmaking\matchmaking.dm"
 #include "code\modules\client\preference_setup\matchmaking\relations.dm"
 #include "code\modules\client\preference_setup\matchmaking\relations_types.dm"
+#include "code\modules\client\preference_setup\necromorph\custom_mob.dm"
+#include "code\modules\client\preference_setup\necromorph\custom_species.dm"
 #include "code\modules\client\preference_setup\necromorph\customisation.dm"
 #include "code\modules\client\preference_setup\occupation\occupation.dm"
 #include "code\modules\client\preference_setup\occupation\skill_selection.dm"

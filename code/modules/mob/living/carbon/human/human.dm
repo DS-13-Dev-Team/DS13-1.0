@@ -1009,6 +1009,7 @@
 	if(client && client.screen)
 		client.screen.len = null
 		InitializeHud()
+		refresh_lighting_overlays()
 
 	if(config && config.use_cortical_stacks && client && client.prefs.has_cortical_stack)
 		create_stack()

@@ -1,5 +1,7 @@
 #define NECROCUSTOM_UI_SCALE	2.5
 
+GLOBAL_LIST_EMPTY(default_necro_custom)
+
 /datum/preferences
 	var/list/necro_custom
 
@@ -9,7 +11,11 @@
 	var/selected = SIGNAL
 
 /datum/category_item/player_setup_item/necromorph/customisation/load_character(var/savefile/S)
-	from_file(S["necro_custom"],     pref.necro_custom)
+	if (pref.is_patron())
+		from_file(S["necro_custom"],     pref.necro_custom)
+	else
+		//non patrons cant use this
+		pref.necro_custom = null
 
 /datum/category_item/player_setup_item/necromorph/customisation/save_character(var/savefile/S)
 	to_file(S["necro_custom"],     pref.necro_custom)
@@ -21,8 +27,12 @@
 /datum/category_item/player_setup_item/necromorph/customisation/content(var/mob/user)
 	. = list()
 
+	//This is a patron only feature!
+	if (!pref.is_patron())
+		return
+
 	if (!pref.necro_custom)
-		initialize_necrocustom_prefs()
+		pref.initialize_necrocustom_prefs()
 
 	. += "<table><tr><td style='vertical-align:top;'>"
 	/*
@@ -32,9 +42,10 @@
 	. += "<table style='width:100%'>"
 	. += "<tr><td>"
 	if(selected == SIGNAL)
-		. += "<a href='?src=\ref[src];select=[SIGNAL]'>Signal</a>"
-	else
 		. += "<span class='linkOn'>Signal</span>"
+	else
+
+		. += "<a href='?src=\ref[src];select=[SIGNAL]'>Signal</a>"
 	. += "</td></tr> </table>"
 	. += "<br>"
 
@@ -50,7 +61,6 @@
 		. += "<tr><td>"
 		if(selected == nname)
 			. += "<span class='linkOn'>[nname]</span>"
-
 		else
 			. += "<a href='?src=\ref[src];select=[nname]'>[nname]</a>"
 		. += "</td></tr>"
@@ -75,15 +85,19 @@
 	else
 		//What we have selected is a necromorph
 		var/datum/species/necromorph/N = GLOB.all_necromorph_species[selected]
-		.+= N.get_customisation_content(pref, user)	//This is in necromorph_species.dm
+		.+= N.get_customisation_content(pref, user, src)	//This is in necromorph_species.dm
 	. += "</td></tr></table>"
 
 	. = jointext(.,null)
 
+
+
 /datum/category_item/player_setup_item/necromorph/customisation/OnTopic(var/href,var/list/href_list, var/mob/user)
+	world << "[dump_list(href_list)]"
 	.= TOPIC_REFRESH
 	if(href_list["select"])
 		selected = href_list["select"]
+		world << "Selected is now [selected]"
 		return TOPIC_REFRESH
 
 	if(href_list["enable"] || href_list["disable"])
@@ -120,20 +134,40 @@
 		//Do stuff here
 	return ..()
 
+/*
+	If patron, fetch necrocustom data from prefs
 
-/datum/category_item/player_setup_item/necromorph/customisation/proc/initialize_necrocustom_prefs()
+	If not, fetch the global default
+*/
+/datum/preferences/proc/get_necro_custom_list()
+	if (is_patron())
+		if (!necro_custom)
+			initialize_necrocustom_prefs()
+		return necro_custom
 
-	pref.necro_custom = list()
-	pref.necro_custom[SIGNAL] = list()
-	pref.necro_custom[SIGNAL][SIGNAL_DEFAULT] = GLOB.signal_sprites.Copy()
+	else
+		if (!LAZYLEN(GLOB.default_necro_custom))
+			GLOB.default_necro_custom = initialize_necrocustom_list(GLOB.default_necro_custom)
+		return GLOB.default_necro_custom
+
+/datum/preferences/proc/initialize_necrocustom_prefs()
+	if (!necro_custom)
+		necro_custom = list()
+	necro_custom = initialize_necrocustom_list(necro_custom)
+
+/proc/initialize_necrocustom_list(var/list/necro_custom)
+	necro_custom = list()
+	necro_custom[SIGNAL] = list()
+	necro_custom[SIGNAL][SIGNAL_DEFAULT] = GLOB.signal_sprites.Copy()
 
 	for(var/nname in GLOB.all_necromorph_species)
 		var/datum/species/necromorph/N = GLOB.all_necromorph_species[nname]
 		if (!N.has_customisation())
 			continue
 
-		N.prefill_customisation_prefs(pref)
+		necro_custom = N.prefill_customisation_prefs(necro_custom)
 
+	return necro_custom
 
 
 /*
@@ -194,4 +228,7 @@
 		return TRUE
 	return FALSE
 
-/mob/proc/apply_customisation(var/datum/preferences/prefs)
+
+
+
+/datum/extension/customisation_applied
