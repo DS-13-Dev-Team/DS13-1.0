@@ -1,5 +1,3 @@
-#define ZONE_BLOCKED 2
-#define AIR_BLOCKED 1
 //Interactions
 /turf/simulated/wall/proc/toggle_open(var/mob/user)
 
