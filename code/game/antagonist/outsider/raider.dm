@@ -93,6 +93,10 @@
 		/obj/item/clothing/accessory/storage/holster/hip
 		)
 
+/datum/antagonist/raider/New()
+	..()
+	GLOB.raiders = src
+
 /datum/antagonist/raider/update_access(var/mob/living/player)
 	for(var/obj/item/weapon/storage/wallet/W in player.contents)
 		for(var/obj/item/weapon/card/id/id in W.contents)

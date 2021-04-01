@@ -15,6 +15,8 @@
 
 	faction = "wizard"
 
+/datum/antagonist/wizard/New()
+	GLOB.wizards = src
 
 /datum/antagonist/wizard/create_objectives(var/datum/mind/wizard)
 

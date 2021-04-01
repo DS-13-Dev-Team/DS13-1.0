@@ -17,6 +17,10 @@
 
 	faction = "mercenary"
 
+/datum/antagonist/mercenary/New()
+	..()
+	GLOB.mercs = src
+
 /datum/antagonist/mercenary/create_global_objectives()
 	if(!..())
 		return 0

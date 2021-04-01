@@ -12,3 +12,7 @@
 	hard_cap_round = 2
 	initial_spawn_req = 1
 	initial_spawn_target = 1
+
+/datum/antagonist/deity/New()
+	..()
+	GLOB.deity = src
