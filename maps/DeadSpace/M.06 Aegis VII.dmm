@@ -6838,16 +6838,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/aegis/colony/spare_storage)
-"QZ" = (
-/obj/machinery/door/airlock/mining{
-	dir = 8;
-	icon_state = "closed";
-	name = "Spare Mining Supplies";
-	req_access = list();
-	req_one_access = list(46,4)
-	},
-/turf/simulated/floor/tiled,
-/area/aegis/colony)
 "UD" = (
 /obj/machinery/light{
 	dir = 1
@@ -31066,7 +31056,7 @@ jf
 aS
 aS
 dE
-QZ
+aS
 aS
 hb
 dK
@@ -31256,7 +31246,7 @@ lN
 mg
 mG
 lu
-Lc
+cg
 PS
 UD
 ay
@@ -31458,7 +31448,7 @@ lN
 mh
 mH
 lu
-cg
+Lc
 ox
 aJ
 dR
