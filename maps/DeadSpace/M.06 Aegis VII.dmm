@@ -636,13 +636,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
-"bB" = (
-/obj/structure/table/standard,
-/obj/item/weapon/storage/box/glowsticks,
-/obj/item/weapon/storage/box/glowsticks,
-/obj/random/loot/often,
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
 "bC" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/engineering/maintenance)
@@ -789,12 +782,6 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/structure/table/standard,
-/obj/item/weapon/storage/box/snappops,
-/obj/machinery/alarm{
-	pixel_y = 23
-	},
-/obj/random/loot/often,
 /turf/simulated/floor/tiled,
 /area/aegis/colony/spare_storage)
 "bX" = (
@@ -860,12 +847,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/engineering)
 "cg" = (
-/obj/machinery/light{
-	dir = 1
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "mining"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/mineral/output,
+/turf/simulated/floor/tiled,
 /area/aegis/colony/spare_storage)
 "ch" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
@@ -1199,20 +1186,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/aegis/colony/medical)
-"cM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "cN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -1220,7 +1193,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/effect/catwalk_plated,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
@@ -1231,8 +1203,8 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating,
-/area/aegis/colony)
+/turf/simulated/wall/r_wall,
+/area/aegis/colony/spare_storage)
 "cO" = (
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/machinery/suit_storage_unit/medical,
@@ -1252,31 +1224,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
-"cQ" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/mining{
-	dir = 8;
-	icon_state = "closed";
-	name = "Spare Mining Supplies";
-	req_access = list();
-	req_one_access = list(46,4)
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "cR" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/research/airlock/breakroom)
@@ -1323,20 +1270,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/security)
-"cX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "cY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -1639,9 +1572,8 @@
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/breakroom)
 "dC" = (
-/obj/structure/closet/crate,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/mineral/processing_unit,
+/turf/simulated/floor/tiled,
 /area/aegis/colony/spare_storage)
 "dD" = (
 /turf/simulated/wall/r_wall,
@@ -1762,9 +1694,8 @@
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
 "dR" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/effect/wallframe_spawn/reinforced,
-/turf/simulated/floor/plating,
+/obj/machinery/mineral/stacking_unit_console,
+/turf/simulated/wall/r_wall,
 /area/aegis/colony/spare_storage)
 "dS" = (
 /obj/effect/wingrille_spawn/reinforced,
@@ -2415,12 +2346,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/aegis/colony/maintenance/south)
-"fj" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
-/obj/random/tool/low_chance,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "fk" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -2872,16 +2797,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/engineering)
-"fV" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
-	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
-/obj/random/uncommon_loot,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "fW" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -3087,37 +3002,6 @@
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/aegis/colony/security)
-"gq" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/weapon/cell/plasmacutter,
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/random/loot/often,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "gr" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/deployable/barrier,
@@ -3426,11 +3310,12 @@
 /turf/simulated/floor/tiled/white,
 /area/aegis/colony/medical)
 "gT" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+/obj/machinery/conveyor{
+	dir = 8;
+	icon_state = "conveyor0";
+	id = "mining"
 	},
-/obj/effect/wallframe_spawn/reinforced,
+/obj/structure/plasticflaps,
 /turf/simulated/floor/plating,
 /area/aegis/colony/spare_storage)
 "gU" = (
@@ -3464,10 +3349,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/aegis/colony/maintenance/north)
-"gZ" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
 "ha" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 8;
@@ -5866,21 +5747,6 @@
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
 /area/aegis/colony/research/lab)
-"lV" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "lW" = (
 /obj/machinery/light{
 	dir = 8
@@ -6288,31 +6154,6 @@
 /obj/random/loot/rarely/few,
 /turf/simulated/floor/holofloor/concrete,
 /area/aegis)
-"mO" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/mining{
-	dir = 8;
-	icon_state = "closed";
-	name = "Spare Mining Supplies";
-	req_access = list();
-	req_one_access = list(46,4)
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "mP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6817,28 +6658,267 @@
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "nM" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
-/obj/random/common_loot,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
-"nN" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
-/obj/random/uncommon_loot,
+/obj/structure/ore_box,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
 "nO" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
-/obj/random/tool/advanced,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
-"nP" = (
+"ox" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"po" = (
+/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"qL" = (
+/obj/structure/dispenser/oxygen,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
-/obj/random/tool/modded,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/spare_storage)
+"uN" = (
+/obj/machinery/mineral/unloading_machine,
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"An" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"AH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/mineral/input,
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"Bw" = (
+/obj/machinery/mineral/processing_unit_console,
+/turf/simulated/wall/r_wall,
+/area/aegis/colony/spare_storage)
+"Cq" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/weapon/cell/plasmacutter,
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/random/loot/often,
+/obj/random/loot/often,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/spare_storage)
+"DP" = (
+/obj/machinery/conveyor{
+	dir = 9;
+	id = "mining"
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"JD" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/crate,
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"Kh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/catwalk_plated,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/mining{
+	name = "Spare Mining Supplies";
+	req_access = list();
+	req_one_access = list(46,4)
+	},
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/plating,
+/area/aegis/colony/spare_storage)
+"Lc" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "mining"
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"LT" = (
+/obj/machinery/mineral/output,
+/obj/machinery/conveyor{
+	id = "mining"
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"Nl" = (
+/obj/machinery/mineral/output,
+/obj/machinery/conveyor{
+	dir = 8;
+	icon_state = "conveyor0";
+	id = "mining"
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"PS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/r_wall,
+/area/aegis/colony/spare_storage)
+"Qn" = (
+/obj/machinery/mineral/stacking_machine,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"QZ" = (
+/obj/machinery/door/airlock/mining{
+	dir = 8;
+	icon_state = "closed";
+	name = "Spare Mining Supplies";
+	req_access = list();
+	req_one_access = list(46,4)
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony)
+"UD" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"Vt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/conveyor_switch/oneway{
+	id = "mining"
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"Xf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/r_wall,
+/area/aegis/colony/spare_storage)
+"XK" = (
+/obj/machinery/mineral/input,
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"XS" = (
+/obj/structure/table/standard,
+/obj/item/weapon/storage/box/glowsticks,
+/obj/item/weapon/storage/box/glowsticks,
+/obj/random/loot/often,
+/obj/machinery/alarm{
+	pixel_y = 23
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"YZ" = (
+/obj/machinery/conveyor{
+	dir = 5;
+	icon_state = "conveyor0";
+	id = "mining"
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony/spare_storage)
+"ZJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
 /area/aegis/colony/spare_storage)
 
 (1,1,1) = {"
@@ -29963,7 +30043,7 @@ js
 ad
 ad
 ad
-ad
+ay
 ay
 ay
 ay
@@ -30165,10 +30245,10 @@ js
 ad
 ad
 ad
-ad
 ay
 bc
-aJ
+Cq
+fP
 dN
 dV
 gc
@@ -30367,14 +30447,14 @@ js
 ad
 ad
 ad
-ad
 ay
-bB
+XS
+aJ
 aJ
 aJ
 bt
 aJ
-aJ
+fP
 ay
 ej
 aS
@@ -30570,7 +30650,7 @@ lu
 lu
 lu
 lu
-ay
+JD
 bW
 bl
 bl
@@ -30772,13 +30852,13 @@ lL
 mf
 mE
 lu
-ay
+XK
+Vt
+aJ
+aJ
+aJ
 aX
 aJ
-aJ
-aJ
-cM
-gq
 ay
 ej
 aS
@@ -30974,19 +31054,19 @@ lM
 mg
 mF
 lu
-bp
-aX
+uN
+PS
 aJ
 ay
 gT
-cQ
-gT
+PS
+UD
 ay
 jf
 aS
 aS
 dE
-aS
+QZ
 aS
 hb
 dK
@@ -31176,14 +31256,14 @@ lN
 mg
 mG
 lu
-aK
-aX
-fP
-dR
-aS
-cK
-aS
-aS
+Lc
+PS
+UD
+ay
+Nl
+PS
+aJ
+po
 aS
 aS
 aS
@@ -31379,13 +31459,13 @@ mh
 mH
 lu
 cg
-aX
+ox
 aJ
 dR
-aS
+Qn
 cN
-et
-et
+bm
+Kh
 et
 et
 et
@@ -31580,14 +31660,14 @@ lO
 mi
 mI
 lu
-aK
-aX
-fP
-dR
-aS
-cP
-aS
-aS
+Lc
+PS
+Bw
+ay
+XK
+Xf
+aJ
+po
 aS
 aS
 aS
@@ -31782,13 +31862,13 @@ lP
 mj
 mJ
 lu
-bp
-aX
+DP
+AH
 dC
-ay
-gT
-mO
-gT
+LT
+YZ
+Xf
+UD
 ay
 jg
 aS
@@ -31985,12 +32065,12 @@ cR
 mK
 cR
 cR
-aX
+PS
+ay
+ay
+ay
+Xf
 aJ
-nM
-fj
-cX
-nN
 ay
 cc
 dG
@@ -32188,11 +32268,11 @@ nd
 nw
 cR
 be
-bm
-bm
+An
+ZJ
 bJ
 ey
-gZ
+aJ
 ay
 aW
 aS
@@ -32591,11 +32671,11 @@ mk
 nm
 ny
 nE
-lV
-aJ
-fV
+br
+qL
+bp
 nO
-nP
+aK
 nM
 ay
 hB
