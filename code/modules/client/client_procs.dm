@@ -81,7 +81,7 @@
 
 
 	//Logs all hrefs
-	if(config && config.log_hrefs && href_logfile)
+	if(config && CONFIG_GET(flag/log_hrefs) && href_logfile)
 		to_chat(href_logfile, "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>")
 
 	switch(href_list["_src_"])
@@ -118,21 +118,21 @@
 	if(byond_version < MIN_CLIENT_VERSION)		//Out of date client.
 		return null
 
-	if(!config.guests_allowed && IsGuestKey(key))
+	if(!CONFIG_GET(flag/guests_allowed) && IsGuestKey(key))
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		qdel(src)
 		return
 
-	if(config.player_limit != 0 && (GLOB.clients.len >= config.player_limit))
+	if(CONFIG_GET(number/player_limit) != 0 && (GLOB.clients.len >= CONFIG_GET(number/player_limit)))
 		var/allowed = FALSE
 		if (ckey in admin_datums)
 			allowed = TRUE
-		if(config.always_admit_patrons && (ckey in GLOB.patron_keys))
+		if(CONFIG_GET(flag/always_admit_patrons) && (ckey in GLOB.patron_keys))
 			allowed = TRUE
 
 		if (!allowed)
 			alert(src,"This server is currently full and not accepting new connections. Please try again later!","Server Full","OK")
-			log_admin("[ckey] tried to join and was turned away due to the server being full (player_limit=[config.player_limit])")
+			log_admin("[ckey] tried to join and was turned away due to the server being full (player_limit=[CONFIG_GET(number/player_limit)])")
 			qdel(src)
 			return
 	//DS13 - Give locally logged in users host status
@@ -143,9 +143,10 @@
 		D.associate(src)
 
 	// Change the way they should download resources.
-	if(config.resource_urls && config.resource_urls.len)
-		src.preload_rsc = pick(config.resource_urls)
-	else src.preload_rsc = 1 // If config.resource_urls is not set, preload like normal.
+	var/list/resource_urls = CONFIG_GET(keyed_list/resource_urls)
+	if(resource_urls?.len)
+		src.preload_rsc = pick(resource_urls)
+	else src.preload_rsc = 1 // If resource_urls is not set, preload like normal.
 
 	if(byond_version < DM_VERSION)
 		to_chat(src, "<span class='warning'>You are running an older version of BYOND than the server and may experience issues.</span>")
@@ -199,7 +200,7 @@
 	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		winset(src, "rpane.changelog", "background-color=#f55b5b;font-style=bold")
-		if(config.aggressive_changelog)
+		if(CONFIG_GET(flag/aggressive_changelog))
 			src.changes()
 
 	if(isnum(player_age) && player_age < 7)

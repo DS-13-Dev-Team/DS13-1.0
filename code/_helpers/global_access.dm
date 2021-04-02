@@ -303,8 +303,6 @@
 			return global.command_name;
 		if("common_tools")
 			return global.common_tools;
-		if("config")
-			return global.config;
 		if("contamination_overlay")
 			return global.contamination_overlay;
 		if("controller_iteration")
@@ -1282,8 +1280,6 @@
 			global.command_name=newval;
 		if("common_tools")
 			global.common_tools=newval;
-		if("config")
-			global.config=newval;
 		if("contamination_overlay")
 			global.contamination_overlay=newval;
 		if("controller_iteration")
@@ -2110,7 +2106,6 @@
 	"command_announcement",
 	"command_name",
 	"common_tools",
-	"config",
 	"contamination_overlay",
 	"controller_iteration",
 	"create_mob_html",

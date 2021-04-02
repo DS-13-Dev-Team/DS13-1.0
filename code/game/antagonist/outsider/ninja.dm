@@ -18,7 +18,7 @@
 	faction = "ninja"
 
 /datum/antagonist/ninja/attempt_random_spawn()
-	if(config.ninjas_allowed) ..()
+	if(CONFIG_GET(flag/ninjas_allowed)) ..()
 
 /datum/antagonist/ninja/create_objectives(var/datum/mind/ninja)
 

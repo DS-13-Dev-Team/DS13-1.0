@@ -182,7 +182,7 @@
 	update_gear()
 
 /datum/extension/loadout/proc/reset_points()
-	max_points = config.max_gear_cost
+	max_points = CONFIG_GET(number/max_gear_cost)
 
 	//Possible todo here: support for varying max points
 	points = max_points
@@ -419,7 +419,7 @@
 						gears -= gear_name
 						continue
 
-					if(total_cost + G.cost > config.max_gear_cost)
+					if(total_cost + G.cost > CONFIG_GET(number/max_gear_cost))
 						gears -= gear_name
 					else
 						total_cost += G.cost

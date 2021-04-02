@@ -112,7 +112,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 
 		//If there are still hurties to dispense
 		if (spillover && owner)
-			owner.shock_stage += spillover * config.organ_damage_spillover_multiplier
+			owner.shock_stage += spillover * CONFIG_GET(number/organ_damage_spillover_multiplier)
 
 
 
@@ -120,9 +120,9 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 
 		//If limb took enough damage, try to cut or tear it off
 		if(allow_dismemberment && loc == owner && !is_stump())
-			if((limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && config.limbs_can_break)
+			if((limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && CONFIG_GET(flag/limbs_can_break))
 				var/total_damage = brute_dam + burn_dam + brute + burn + spillover
-				var/threshold = max_damage * config.organ_health_multiplier
+				var/threshold = max_damage * CONFIG_GET(number/organ_health_multiplier)
 				if(total_damage > threshold)
 					if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*3))
 						return

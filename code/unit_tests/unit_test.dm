@@ -110,9 +110,9 @@ datum/unit_test/proc/get_space_turf()
 proc/load_unit_test_changes()
 /*
 	//This takes about 60 seconds to run on Travis and is only used for the ZAS vacume check on The Asteroid.
-	if(config.generate_map != 1)
+	if(!CONFIG_GET(flag/generate_map))
 		log_unit_test("Overiding Configuration option for Asteroid Generation to ENABLED")
-		config.generate_map = 1	// The default map requires it, the example config doesn't have this enabled.
+		CONFIG_SET(flag/generate_map, TRUE)	// The default map requires it, the example config doesn't have this enabled.
  */
 
 /proc/get_test_datums()

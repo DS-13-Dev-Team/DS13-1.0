@@ -83,14 +83,16 @@ GLOBAL_VAR(restart_counter)
 
 	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
 
+	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
+
 	if(byond_version < RECOMMENDED_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
-	if(config && config.server_name != null && config.server_suffix && world.port > 0)
+	if(config && CONFIG_GET(string/server_name) != null && CONFIG_GET(flag/server_suffix) && world.port > 0)
 		// dumb and hardcoded but I don't care~
-		config.server_name += " #[(world.port % 1000) / 100]"
+		CONFIG_SET(string/server_name, CONFIG_GET(string/server_name) + " #[(world.port % 1000) / 100]")
 
-	if(config && config.log_runtime)
+	if(config && CONFIG_GET(flag/log_runtime))
 		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[game_id].log")
 		runtime_log << "Game [game_id] starting up at [time2text(world.timeofday, "hh:mm.ss")]"
 		log = runtime_log
@@ -113,7 +115,7 @@ GLOBAL_VAR(restart_counter)
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
 
-	if(config.generate_map)
+	if(CONFIG_GET(flag/generate_map))
 		GLOB.using_map.perform_map_generation()
 
 
@@ -156,10 +158,10 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/list/s = list()
 		s["version"] = game_version
 		s["mode"] = PUBLIC_GAME_MODE
-		s["respawn"] = config.abandon_allowed
-		s["enter"] = config.enter_allowed
-		s["vote"] = config.allow_vote_mode
-		s["ai"] = config.allow_ai
+		s["respawn"] = CONFIG_GET(flag/abandon_allowed)
+		s["enter"] = CONFIG_GET(flag/enter_allowed)
+		s["vote"] = CONFIG_GET(flag/allow_vote_mode)
+		s["ai"] = CONFIG_GET(flag/allow_ai)
 		s["host"] = host ? host : null
 
 		// This is dumb, but spacestation13.com's banners break if player count isn't the 8th field of the reply, so... this has to go here.
@@ -225,7 +227,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	else if(copytext(T,1,5) == "laws")
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != CONFIG_GET(string/comms_password))
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -275,7 +277,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	else if(copytext(T,1,5) == "info")
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != CONFIG_GET(string/comms_password))
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -343,7 +345,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != CONFIG_GET(string/comms_password))
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -393,7 +395,7 @@ var/world_topic_spam_protect_time = world.timeofday
 				2. validationkey = the key the bot has, it should match the gameservers commspassword in it's configuration.
 		*/
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != CONFIG_GET(string/comms_password))
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -408,7 +410,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	else if(copytext(T,1,4) == "age")
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != CONFIG_GET(string/comms_password))
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
 					world_topic_spam_protect_time = world.time
@@ -429,9 +431,9 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	else if(copytext(T,1,14) == "placepermaban")
 		var/input[] = params2list(T)
-		if(!config.ban_comms_password)
+		if(!CONFIG_GET(flag/ban_comms_password))
 			return "Not enabled"
-		if(input["bankey"] != config.ban_comms_password)
+		if(input["bankey"] != CONFIG_GET(flag/ban_comms_password))
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
 					world_topic_spam_protect_time = world.time
@@ -461,7 +463,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	else if(copytext(T,1,19) == "prometheus_metrics")
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != CONFIG_GET(string/comms_password))
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
 					world_topic_spam_protect_time = world.time
@@ -522,11 +524,11 @@ var/world_topic_spam_protect_time = world.timeofday
 			rustg_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
 			TgsEndProcess()
 
-	if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+	if(CONFIG_GET(string/server))	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 		for(var/client/C in GLOB.clients)
-			to_chat(C, link("byond://[config.server]"))
+			to_chat(C, link("byond://[CONFIG_GET(string/server)]"))
 
-	if(config.wait_for_sigusr1_reboot && reason != 3)
+	if(CONFIG_GET(flag/wait_for_sigusr1_reboot) && reason != 3)
 		text2file("foo", "reboot_called")
 		to_world("<span class=danger>World reboot waiting for external scripts. Please be patient.</span>")
 		return
@@ -563,22 +565,13 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/load_motd()
 	join_motd = file2text("config/motd.txt")
 
-
-/proc/load_configuration()
-	config = new /datum/configuration()
-	config.load("config/config.txt")
-	config.load("config/debug.txt")
-	config.load("config/game_options.txt","game_options")
-	config.loadsql("config/dbconfig.txt")
-	config.load_event("config/custom_event.txt")
-
 /hook/startup/proc/loadMods()
 	world.load_mods()
 	world.load_mentors() // no need to write another hook.
 	return 1
 
 /world/proc/load_mods()
-	if(config.admin_legacy_system)
+	if(CONFIG_GET(flag/admin_legacy_system))
 		var/text = file2text("config/moderators.txt")
 		if (!text)
 			error("Failed to load config/mods.txt")
@@ -599,7 +592,7 @@ var/world_topic_spam_protect_time = world.timeofday
 				D.associate(GLOB.ckey_directory[ckey])
 
 /world/proc/load_mentors()
-	if(config.admin_legacy_system)
+	if(CONFIG_GET(flag/admin_legacy_system))
 		var/text = file2text("config/mentors.txt")
 		if (!text)
 			error("Failed to load config/mentors.txt")
@@ -621,8 +614,8 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/update_status()
 	var/s = ""
 
-	if (config && config.server_name)
-		s += "<b>[config.server_name]</b> &#8212; "
+	if (config && CONFIG_GET(string/server_name))
+		s += "<b>[CONFIG_GET(string/server_name)]</b> &#8212; "
 
 	s += "<b>[station_name()]</b>";
 	s += " ("
@@ -640,15 +633,15 @@ var/world_topic_spam_protect_time = world.timeofday
 	else
 		features += "<b>STARTING</b>"
 
-	if (!config.enter_allowed)
+	if (!CONFIG_GET(flag/enter_allowed))
 		features += "closed"
 
-	features += config.abandon_allowed ? "respawn" : "no respawn"
+	features += CONFIG_GET(flag/abandon_allowed) ? "respawn" : "no respawn"
 
-	if (config && config.allow_vote_mode)
+	if (config && CONFIG_GET(flag/allow_vote_mode))
 		features += "vote"
 
-	if (config && config.allow_ai)
+	if (config && CONFIG_GET(flag/allow_ai))
 		features += "AI allowed"
 
 	var/n = 0
@@ -662,8 +655,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		features += "~[n] player"
 
 
-	if (config && config.hostedby)
-		features += "hosted by <b>[config.hostedby]</b>"
+	if (config && CONFIG_GET(string/hostedby))
+		features += "hosted by <b>[CONFIG_GET(string/hostedby)]</b>"
 
 	if (features)
 		s += ": [jointext(features, ", ")]"

@@ -42,7 +42,7 @@
 			debug_variables(evacuation_controller)
 			feedback_add_details("admin_verb","DEmergency")
 		if("Configuration")
-			debug_variables(config)
+			debug_variables(global.config)
 			feedback_add_details("admin_verb","DConf")
 		if("pAI")
 			debug_variables(paiController)

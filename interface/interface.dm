@@ -4,10 +4,10 @@
 	set name = "Wiki"
 	set desc = "Visit the wiki."
 	set hidden = 1
-	if( config.wikiurl )
+	if(CONFIG_GET(string/wikiurl))
 		if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.wikiurl)
+		src << link(CONFIG_GET(string/wikiurl))
 	else
 		to_chat(src, "<span class='warning'>The wiki URL is not set in the server configuration.</span>")
 	return
@@ -16,10 +16,10 @@ client/verb/discord()
 	set name ="Join the Discord"
 	set desc = "Join our Discord server."
 	set hidden = 1
-	if( config.discord_url )
+	if(CONFIG_GET(string/discord_url))
 		if(alert("This will open the Dead Space 13 Discord invite in your Browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.discord_url)
+		src << link(CONFIG_GET(string/discord_url))
 	else
 		to_chat(src, "<span class='warning'>The Discord URL is not set in the server configuration. Please contact a developer.</span>")
 	return
@@ -28,10 +28,10 @@ client/verb/discord()
 	set name = "Forum"
 	set desc = "Visit the forum."
 	set hidden = 1
-	if( config.forumurl )
+	if(CONFIG_GET(string/forumurl))
 		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.forumurl)
+		src << link(CONFIG_GET(string/forumurl))
 	else
 		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
 	return
