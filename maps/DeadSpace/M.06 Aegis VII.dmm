@@ -4541,7 +4541,7 @@
 /area/aegis/colony/research/analysis)
 "ju" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
-/obj/machinery/meter/turf,
+/obj/item/pipe_meter,
 /turf/simulated/floor,
 /area/aegis/colony/research/atmos)
 "jv" = (
