@@ -21,6 +21,7 @@
 	slowdown = 3
 
 	variants = null
+	outfits = null
 
 	species_audio = list(
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/spitter/spitter_attack_1.ogg',

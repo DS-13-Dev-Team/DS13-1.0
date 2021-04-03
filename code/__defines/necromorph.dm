@@ -65,5 +65,6 @@
 */
 #define SIGNAL_DEFAULT	"red"
 #define VARIANT	"variant"
+#define OUTFIT	"outfit"
 #define WEIGHT	"weight"
 #define PATRON	"patron"

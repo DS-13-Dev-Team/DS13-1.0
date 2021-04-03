@@ -33,12 +33,35 @@
 		for (var/species_name in variants)
 			var/datum/species/necromorph/S = GLOB.all_necromorph_species[species_name]
 			var/is_enabled = (species_name in variants_data)
-			world << "Checking if [species_name] is enabled: [is_enabled]"
 			. += image_check_panel(text = species_name, I = S.get_default_icon(), ticked = is_enabled, user = user, command = is_enabled ? "disable" : "enable", source = topic_reciever, category = src.name, subcategory = VARIANT)
 		. += "</td></tr>"
 
 
-/datum/species/necromorph/proc/prefill_customisation_prefs(var/list/necro_custom = list())
+	if (outfits)
+		.+= "<tr><td>"
+		.+= "<h1>Outfits</h1>"
+
+		//This gets the sublist containing all saved customisation data for this subcategory
+		var/list/outfits_data = LAZYACCESS(data, OUTFIT)
+		if (!outfits_data)
+			outfits_data = list()
+
+		for (var/outfit_type in outfits)
+
+			var/decl/hierarchy/outfit/O = outfit_by_type(outfit_type)
+
+			var/string_outfit_type = "[outfit_type]"
+
+			var/is_enabled = (string_outfit_type in outfits_data)
+			. += image_check_panel(text = O.name, I = O.get_default_species_icon(src.name), ticked = is_enabled, user = user, command = is_enabled ? "disable" : "enable", source = topic_reciever, category = src.name, subcategory = OUTFIT, command_data = string_outfit_type)
+		. += "</td></tr>"
+
+/*
+	this can be overridden in case of interesting special things, but always call parent
+*/
+/datum/species/necromorph/proc/prefill_customisation_prefs(var/list/necro_custom)
+	if (!necro_custom)
+		necro_custom = list()
 	necro_custom[name] = list()
 	if (variants)
 		var/list/public_variants = list()
@@ -52,6 +75,19 @@
 			public_variants[vname] = (params[WEIGHT] ? params[WEIGHT] : 1)
 		necro_custom[name][VARIANT]	= public_variants
 
+	if (outfits)
+		var/list/public_outfits = list()
+		for (var/outfit_type in outfits)
+			//var/decl/hierarchy/outfit/O = outfit_by_type(outfit_type)
+			var/string_outfit_type = "[outfit_type]"	//We convert it to a string from here on out
+			var/list/params = outfits[outfit_type]
+
+			//Premium outfit, not in the default list
+			if (params[PATRON])
+				continue
+
+			public_outfits[string_outfit_type] = (params[WEIGHT] ? params[WEIGHT] : 1)
+		necro_custom[name][OUTFIT]	= public_outfits
 	return necro_custom
 
 /datum/species/necromorph/proc/get_default_icon()

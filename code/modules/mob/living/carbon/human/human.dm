@@ -984,7 +984,6 @@
 	species.handle_post_spawn(src)
 
 
-
 	default_pixel_x = initial(pixel_x) + species.pixel_offset_x
 	default_pixel_y = initial(pixel_y) + species.pixel_offset_y
 	pixel_x = default_pixel_x

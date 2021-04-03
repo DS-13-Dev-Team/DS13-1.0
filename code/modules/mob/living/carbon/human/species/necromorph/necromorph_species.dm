@@ -67,8 +67,7 @@
 	*/
 	var/list/variants			//Species variants included. This is an assoc list in the format: species_name = list(weight, patron)
 		//If patron is true, this variant is not available by default
-	var/list/outfits = list(null = 1)		//Outfits the mob can spawn with, weighted. Null outfit is for naked
-	//var/naked_chance = 40	//If outfits are available, chance to not spawn with one
+	var/list/outfits		//Outfits the mob can spawn with, weighted.
 
 	//Biology
 	blood_color = COLOR_BLOOD_NECRO
@@ -311,3 +310,7 @@
 
 
 
+/datum/species/necromorph/handle_post_spawn(var/mob/living/carbon/human/H)
+	.=..()
+	//Apply customisation with a null preference, this applies default settings
+	H.apply_customisation(null)

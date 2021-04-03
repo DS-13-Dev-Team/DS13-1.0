@@ -614,7 +614,8 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/update_inv_wear_suit(var/update_icons=1)
 
 	if(wear_suit)
-		overlays_standing[SUIT_LAYER]	= wear_suit.get_mob_overlay(src,slot_wear_suit_str)
+		var/image/first = wear_suit.get_mob_overlay(src,slot_wear_suit_str)
+		overlays_standing[SUIT_LAYER]	= first
 		update_tail_showing(0)
 	else
 		overlays_standing[SUIT_LAYER]	= null
