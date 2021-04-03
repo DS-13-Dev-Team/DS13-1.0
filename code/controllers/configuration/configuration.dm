@@ -40,10 +40,10 @@
 	InitEntries()
 	LoadModes()
 	if(fexists("[directory]/config.txt") && LoadEntries("config.txt") <= 1)
-		var/list/legacy_configs = list("dbconfig.txt","debug.txt","game_options.txt")
+		var/list/legacy_configs = list("dbconfig.txt")
 		for(var/I in legacy_configs)
 			if(fexists("[directory]/[I]"))
-				log_config("No $include directives found in [I]! Loading legacy [legacy_configs.Join("/")] files...")
+				log_config("No $include directives found in config.txt! Loading legacy [legacy_configs.Join("/")] files...")
 				for(var/J in legacy_configs)
 					LoadEntries(J)
 				break
