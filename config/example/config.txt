@@ -226,16 +226,13 @@ DISCORD_URL https://discord.gg/WH2fT2Y
 #POPUP_ADMIN_PM
 
 ## Remove the # to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
-HOLIDAY
+#ALLOW_HOLIDAYS TO_DO
 
 ##Defines the ticklag for the world.  0.9 is the normal one, 0.5 is smoother.
 TICKLAG 0.7
 
 ##Defines world FPS. Defaults to 20.
 FPS 20
-
-## Whether the server will talk to other processes through socket_talk
-SOCKET_TALK 0
 
 ## Comment this out to disable automuting
 #AUTOMUTE_ON
@@ -282,16 +279,13 @@ USEALIENWHITELIST
 #ADMIN_IRC #admin
 
 ## Uncommen to allow ghosts to write in blood during Cult rounds.
-ALLOW_CULT_GHOSTWRITER
+CULT_GHOSTWRITER
 
 ## Sets the minimum number of cultists needed for ghosts to write in blood.
-REQ_CULT_GHOSTWRITER 6
+CULT_GHOSTWRITER_REQ_CULTISTS 6
 
 ## Sets the number of available character slots
 CHARACTER_SLOTS 10
-
-## Sets the number of loadout slots per character
-LOADOUT_SLOTS 3
 
 ## Expected round length in minutes
 EXPECTED_ROUND_LENGTH 180
