@@ -1,3 +1,30 @@
+GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
+	"markersignal-2",
+	"markersignal-3",
+	"markersignal-4",
+	"markersignal-5",
+	"markersignal-6",
+	"markersignal-7",
+	"markersignal-8",
+	"markersignal-9",
+	"markersignal-10",
+	"markersignal-11",
+	"markersignal-12",
+	"markersignal-13",
+	"markersignal-14",
+	"markersignal-15",
+	"markersignal-16",
+	"markersignal-17",
+	"markersignal-18",
+	"markersignal-19",
+	"markersignal-20",
+	"markersignal-21",
+	"markersignal-22",
+	"markersignal-23",
+	"markersignal-24",
+	"markersignal-25"
+	))
+
 /mob/observer/eye/signal
 	name = "Signal"
 	icon = 'icons/mob/eye.dmi'
@@ -6,25 +33,37 @@
 	var/energy_extension_type = /datum/extension/psi_energy/signal
 	var/datum/extension/psi_energy/psi_energy
 
+	var/datum/preferences/prefs
+
+	var/list/variations
+
 	movement_handlers = list(
 		/datum/movement_handler/mob/incorporeal/eye
 	)
 
-/mob/observer/eye/signal/Initialize()
-	..()
-	var/i = rand(1,25)
-	icon_state = "markersignal-[i]"
 
 /mob/observer/eye/signal/is_necromorph()
 	return TRUE
 
+/mob/observer/eye/signal/apply_customisation(var/datum/preferences/prefs)
+	var/list/custom = prefs.get_necro_custom_list()
+	var/list/things = custom[SIGNAL][SIGNAL_DEFAULT]
+	if (length(things))
+		variations = things.Copy()
+		update_icon()
+
+/mob/observer/eye/signal/update_icon()
+	if (LAZYLEN(variations))
+		icon_state = pick(variations)
+	else
+		icon_state = pick(GLOB.signal_sprites)
 
 //This will have a mob passed in that we were created from
 /mob/observer/eye/signal/New(var/mob/body)
 	..()
 	visualnet = GLOB.necrovision	//Set the visualnet of course
 
-
+	variations = GLOB.signal_sprites.Copy()	//All are enabled by default
 
 	var/turf/T = get_turf(body)
 	if(ismob(body))
@@ -160,6 +199,12 @@
 	SSnecromorph.signals |= src
 	start_energy_tick()
 
+	//Lets load preferences if possible
+	//This will set our icon to one of the players' chosen ones
+
+	if (client && client.prefs && client.prefs.necro_custom && client.prefs.necro_custom.len)
+		apply_customisation(client.prefs)
+
 	spawn(1)	//Prevents issues when downgrading from master
 		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
 
@@ -286,3 +331,6 @@
 	if (!QDELETED(src))
 		close_spawn_windows()
 	.=..()
+
+
+

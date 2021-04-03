@@ -4,6 +4,7 @@
 	var/obj/item/clothing/head/winterhood/hood
 	var/hoodtype = null //so the chaplain hoodie or other hoodies can override this
 	var/suittoggled = 0
+	var/start_toggled = FALSE
 
 /obj/item/clothing/suit/storage/hooded/New()
 	MakeHood()
@@ -17,13 +18,24 @@
 	if(!hood)
 		hood = new hoodtype(src)
 
+
 /obj/item/clothing/suit/storage/hooded/ui_action_click()
 	ToggleHood()
 
+/obj/item/clothing/suit/storage/hooded/verb/toggle_hood()
+	set name = "Toggle Hood"
+	set category = "Object"
+
+	ToggleHood()
+
 /obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot)
-	if(slot != slot_wear_suit)
-		RemoveHood()
 	..()
+	if(is_worn())
+		if (start_toggled)
+			AddHood()
+	else
+		RemoveHood()
+
 
 /obj/item/clothing/suit/storage/hooded/proc/RemoveHood()
 	if(!hood)
@@ -36,24 +48,28 @@
 		H.update_inv_wear_suit()
 	hood.forceMove(src)
 
+
+/obj/item/clothing/suit/storage/hooded/proc/AddHood()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = src.loc
+		if(H.wear_suit != src)
+			to_chat(H, "<span class='warning'>You must be wearing \the [src] to put up the hood!</span>")
+			return
+		if(H.head)
+			to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
+			return
+		else
+			H.equip_to_slot_if_possible(hood,slot_head,0,0,1)
+			suittoggled = 1
+			update_icon()
+			H.update_inv_wear_suit()
+
 /obj/item/clothing/suit/storage/hooded/dropped()
 	RemoveHood()
 
 /obj/item/clothing/suit/storage/hooded/proc/ToggleHood()
 	if(!suittoggled)
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = src.loc
-			if(H.wear_suit != src)
-				to_chat(H, "<span class='warning'>You must be wearing \the [src] to put up the hood!</span>")
-				return
-			if(H.head)
-				to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
-				return
-			else
-				H.equip_to_slot_if_possible(hood,slot_head,0,0,1)
-				suittoggled = 1
-				update_icon()
-				H.update_inv_wear_suit()
+		AddHood()
 	else
 		RemoveHood()
 
@@ -127,3 +143,91 @@
 	min_cold_protection_temperature = T0C - 20
 	cold_protection = HEAD
 	flags_inv = HIDEEARS | BLOCKHAIR
+
+/*
+	Hooded Biosuit
+*/
+/obj/item/clothing/head/ds_bio_hood
+	name = "bio hood"
+	icon_state = "ds_bio_white"
+	item_state_slots = list(
+		slot_l_hand_str = "bio_hood",
+		slot_r_hand_str = "bio_hood",
+		)
+	species_restricted = null
+	desc = "A hood that protects the head and face from biological comtaminants."
+	permeability_coefficient = 0
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
+	acid_resistance = 8	//These plastic suits are very resistant to corrosion
+	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
+	item_flags = ITEM_FLAG_THICKMATERIAL
+	body_parts_covered = HEAD|FACE|EYES
+	siemens_coefficient = 0.9
+	sprite_sheets = list(
+		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/head.dmi'
+		)
+
+/obj/item/clothing/suit/storage/hooded/ds_bio_suit
+	name = "bio suit"
+	desc = "A suit that protects against biological contamination."
+	hoodtype = /obj/item/clothing/head/ds_bio_hood
+	icon_state = "ds_bio_white"
+	item_state_slots = list(
+		slot_l_hand_str = "bio_suit",
+		slot_r_hand_str = "bio_suit",
+	)
+	w_class = ITEM_SIZE_HUGE//bulky item
+	gas_transfer_coefficient = 0
+	permeability_coefficient = 0
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	armor = list(melee = 20, bullet = 15, laser = 35,energy = 20, bomb = 20, bio = 100, rad = 40)
+	flags_inv = HIDETAIL
+	item_flags = ITEM_FLAG_THICKMATERIAL
+	siemens_coefficient = 0.9
+	acid_resistance = 8	//These plastic suits are very resistant to corrosion
+
+	//Start raised
+	start_toggled = TRUE
+
+	sprite_sheets = list(
+		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
+		)
+
+//Debug
+/obj/item/clothing/under/ds_bio_suit
+	name = "bio suit"
+	desc = "A suit that protects against biological contamination."
+	//hoodtype = /obj/item/clothing/head/ds_bio_hood
+	icon_state = "ds_bio_black"
+	item_state_slots = list(
+		slot_l_hand_str = "bio_suit",
+		slot_r_hand_str = "bio_suit",
+	)
+	w_class = ITEM_SIZE_HUGE//bulky item
+	gas_transfer_coefficient = 0
+	permeability_coefficient = 0
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	armor = list(melee = 20, bullet = 15, laser = 35,energy = 20, bomb = 20, bio = 100, rad = 40)
+	flags_inv = HIDETAIL
+	item_flags = ITEM_FLAG_THICKMATERIAL
+	siemens_coefficient = 0.9
+	acid_resistance = 8	//These plastic suits are very resistant to corrosion
+
+	//Start raised
+	//start_toggled = TRUE
+
+	sprite_sheets = list(
+		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
+		)
+
+
+
+
+/obj/item/clothing/head/ds_bio_hood/black
+	name = "Earthgov bio hood"
+	icon_state = "ds_bio_black"
+
+/obj/item/clothing/suit/storage/hooded/ds_bio_suit/black
+	name = "Earthgov bio suit"
+	icon_state = "ds_bio_black"
+	hoodtype = /obj/item/clothing/head/ds_bio_hood/black

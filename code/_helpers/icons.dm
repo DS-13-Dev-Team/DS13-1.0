@@ -632,6 +632,16 @@ proc/ColorTone(rgb, tone)
 
 
 /*
+	Datum level wrapper, override as desired
+	Intended for species
+*/
+/datum/proc/get_flat_icon(defdir=2, deficon=null, defstate="", defblend=BLEND_DEFAULT, always_use_defdir = 0)
+	return
+
+/atom/get_flat_icon(defdir=2, deficon=null, defstate="", defblend=BLEND_DEFAULT, always_use_defdir = 0)
+	return getFlatIcon(src, defdir, deficon, defstate, defblend, always_use_defdir)
+
+/*
 Get flat icon by DarkCampainger. As it says on the tin, will return an icon with all the overlays
 as a single icon. Useful for when you want to manipulate an icon via the above as overlays are not normally included.
 The _flatIcons list is a cache for generated icon files.

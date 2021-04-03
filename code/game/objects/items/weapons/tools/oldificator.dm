@@ -9,7 +9,7 @@
 	if (oldified)
 		return FALSE
 	if (prob(80))
-		color = pick("#AA7744", "#774411", "#777777")
+		color = pick("#BB8855", "#885522", "#888888")
 	light_color = color
 	name = "[pick("old", "worn", "rusted", "weathered", "expired", "dirty", "frayed", "beaten", "ancient", "tarnished")] [name]"
 	desc += "\n "

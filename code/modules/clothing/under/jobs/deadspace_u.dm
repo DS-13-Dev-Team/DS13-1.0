@@ -63,6 +63,9 @@
 	icon_state = "ds_med_doctor"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
+	sprite_sheets = list(
+		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
+		)
 
 /obj/item/clothing/under/deadspace/surgeon
 	name = "surgeon's uniform"
