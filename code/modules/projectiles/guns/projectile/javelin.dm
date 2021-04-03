@@ -19,8 +19,8 @@
 	scoped_accuracy = 5
 	fire_sound = 'sound/weapons/tablehit1.ogg'
 	firemodes = list(
-		list(mode_name = "launch", burst=1),
-		list(mode_name = "shock mode", mode_type = /datum/firemode/automatic/shock, projectile_type = /obj/item/projectile/null_projectile, ammo_cost = 0)
+		list(mode_name = "launch", fire_delay = 0.2 SECONDS),
+		list(mode_name = "shock mode", mode_type = /datum/firemode/automatic/shock, projectile_type = /obj/item/projectile/null_projectile, fire_delay = 3 SECONDS)
 		)
 	screen_shake = FALSE
 	var/list/obj/item/weapon/gun/projectile/javelin_gun/javelins = list()
@@ -44,11 +44,19 @@
 
 /datum/firemode/automatic/shock/can_fire(atom/target, mob/living/user)
 	. = ..()
-	if(istype(gun, /obj/item/weapon/gun/projectile/javelin_gun))
+	if(. && istype(gun, /obj/item/weapon/gun/projectile/javelin_gun))
 		var/obj/item/weapon/gun/projectile/javelin_gun/J = gun
 		if(!J.javelins.len)
 			to_chat(user, SPAN_WARNING("There is no charged javalina nearby."))
 			return FALSE
+
+/obj/item/weapon/gun/projectile/javelin_gun/stop_firing()
+	. = ..()
+	if(!.)
+		return
+	for(var/obj/item/ammo_casing/javelin/J in javelins)
+		if(J.shock_count)
+			J.remove_from_luncher_list()
 
 /obj/item/weapon/gun/projectile/javelin_gun/update_icon()
 	. = ..()
@@ -69,8 +77,27 @@
 	anchored = TRUE
 	pixel_x = -32
 	pixel_y = -32
+	var/life_time = 5
+	var/shock_damage = 20
 
-/obj/effect/overload/Initialize(mapload, life_time = 5)
+/obj/effect/overload/Initialize(mapload, n_life_time = 5)
 	. = ..()
-	if(life_time != -1)
-		QDEL_IN(src, life_time)
+	life_time = n_life_time
+	START_PROCESSING(SSobj, src)
+
+/obj/effect/overload/Process()
+	for(var/turf/T in trange(2, get_turf(src)))
+		for(var/mob/living/L in T)
+			L.electrocute_act(shock_damage, src)
+	if(--life_time <= 0)
+		qdel(src)
+
+/obj/effect/overload/Crossed(atom/A)
+	. = ..()
+	if(isliving(A))
+		var/mob/living/L = A
+		L.electrocute_act(shock_damage, src)
+
+/obj/effect/overload/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
