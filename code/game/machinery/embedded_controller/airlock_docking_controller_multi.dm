@@ -2,6 +2,7 @@
 //this is the master controller, that things will try to dock with.
 /obj/machinery/embedded_controller/radio/docking_port_multi
 	name = "docking port controller"
+	clicksound = "button2"
 
 	var/child_tags_txt
 	var/child_names_txt

@@ -72,7 +72,7 @@
 	if (!removeable)
 		user << SPAN_DANGER("This modification is permanant, it can never be removed once applied!")
 	else if (!recoverable)
-		user << SPAN_WARNING("This modification cannot be recovered or re-used. It will be destroyed if you remove it from a tool")
+		user << SPAN_WARNING("This modification cannot be recovered or re-used. It will be destroyed if you remove it from a tool.")
 
 	if (required_qualities.len)
 		user << SPAN_WARNING("Requires a tool with one of the following qualities:")
@@ -145,7 +145,7 @@
 	//No using multiples of the same modification
 	for (var/obj/item/weapon/tool_modification/U in T.modifications)
 		if (U.type == type)
-			user << SPAN_WARNING("An modification of this type is already installed!")
+			user << SPAN_WARNING("A modification of this type is already installed!")
 			return
 
 	return TRUE

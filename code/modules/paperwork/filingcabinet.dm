@@ -24,6 +24,8 @@
 		/obj/item/weapon/photo,
 		/obj/item/weapon/paper_bundle,
 		/obj/item/weapon/sample)
+	var/open_sound = 'sound/effects/locker_open.ogg'
+	var/close_sound = 'sound/effects/locker_close.ogg'
 
 /obj/structure/filingcabinet/chestdrawer
 	name = "chest drawer"
@@ -53,6 +55,7 @@
 			return
 		add_fingerprint(user)
 		to_chat(user, "<span class='notice'>You put [P] in [src].</span>")
+		playsound(src.loc, close_sound, VOLUME_LOW, 0)
 		icon_state = "[initial(icon_state)]-open"
 		sleep(5)
 		icon_state = initial(icon_state)
@@ -64,7 +67,9 @@
 
 /obj/structure/filingcabinet/meddle()
 	icon_state = "[initial(icon_state)]-open"
+	playsound(src.loc, open_sound, VOLUME_LOW, 0)
 	sleep(5)
+	playsound(src.loc, close_sound, VOLUME_LOW, 0)
 	icon_state = initial(icon_state)
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
@@ -95,8 +100,10 @@
 			if(prob(25))
 				step_rand(I)
 			to_chat(user, "<span class='notice'>You pull \a [I] out of [src] at random.</span>")
+			playsound(src.loc, close_sound, VOLUME_LOW, 0)
 			return
 	to_chat(user, "<span class='notice'>You find nothing in [src].</span>")
+	playsound(src.loc, close_sound, VOLUME_LOW, 0)
 
 /obj/structure/filingcabinet/Topic(href, href_list)
 	if(href_list["retrieve"])
@@ -108,6 +115,8 @@
 			usr.put_in_hands(P)
 			updateUsrDialog()
 			icon_state = "[initial(icon_state)]-open"
+			playsound(src.loc, open_sound, VOLUME_LOW, 0)
 			spawn(0)
 				sleep(5)
 				icon_state = initial(icon_state)
+				playsound(src.loc, close_sound, VOLUME_LOW, 0)
