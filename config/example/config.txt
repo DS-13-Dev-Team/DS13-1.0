@@ -95,13 +95,13 @@ MOD_JOB_TEMPBAN_MAX 1440
 ##
 ## default probablity is 1, increase to make that mode more likely to be picked
 ## set to 0 to disable that mode
-PROBABILITY EXTENDED 1
-PROBABILITY MALFUNCTION 1
-PROBABILITY MERCENARY 1
-PROBABILITY WIZARD 1
-PROBABILITY CHANGELING 1
-PROBABILITY CULT 1
-PROBABILITY EXTEND-A-TRAITORMONGOUS 6
+PROBABILITIES 1 EXTENDED 1
+PROBABILITIES 2 MALFUNCTION 1
+PROBABILITIES 3 MERCENARY 1
+PROBABILITIES 4 WIZARD 1
+PROBABILITIES 5 CHANGELING 1
+PROBABILITIES 6 CULT 1
+PROBABILITIES 7 EXTEND-A-TRAITORMONGOUS 6
 
 ## Hash out to disable random events during the round.
 ALLOW_RANDOM_EVENTS
@@ -158,10 +158,10 @@ VOTE_AUTOGAMEMODE_TIMELEFT 100
 #NO_DEAD_VOTE_CREW_TRANSFER
 
 ## players' votes default to "No vote" (otherwise,  default to "No change")
-DEFAULT_NO_VOTE
+VOTE_NO_DEFAULT
 
 ## Allow ghosts to see antagonist through AntagHUD
-ALLOW_ANTAG_HUD
+ANTAG_HUD_ALLOWED
 
 ## If ghosts use antagHUD they are no longer allowed to join the round.
 ANTAG_HUD_RESTRICTED
@@ -183,8 +183,8 @@ HOSTEDBY yournamehere
 ## Set to 1 to jobban them from those positions, set to 0 to allow them.
 GUEST_JOBBAN
 
-## Uncomment this to stop people connecting to your server without a registered ckey. (i.e. guest-* are all blocked from connecting)
-GUEST_BAN
+## Comment this to stop people connecting to your server without a registered ckey. (i.e. guest-* are all blocked from connecting)
+#GUEST_ALLOWED
 ## Set to jobban everyone who's key is not listed in data/whitelist.txt from Captain, HoS, HoP, CE, RD, CMO, Warden, Security, Detective, and AI positions.
 ## Uncomment to 1 to jobban, leave commented out to allow these positions for everyone (but see GUEST_JOBBAN above and regular jobbans)
 # USEWHITELIST
@@ -226,7 +226,7 @@ DISCORD_URL https://discord.gg/WH2fT2Y
 #POPUP_ADMIN_PM
 
 ## Remove the # to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
-ALLOW_HOLIDAYS
+HOLIDAY
 
 ##Defines the ticklag for the world.  0.9 is the normal one, 0.5 is smoother.
 TICKLAG 0.7
@@ -298,17 +298,21 @@ EXPECTED_ROUND_LENGTH 180
 
 ## The lower delay between events in minutes.
 ## Affect mundane, moderate, and major events respectively
-EVENT_DELAY_LOWER 10;30;50
+EVENT_DELAY_LOWER 1 10 
+EVENT_DELAY_LOWER 2 30 
+EVENT_DELAY_LOWER 3 50
 
 ## The upper delay between events in minutes.
 ## Affect mundane, moderate, and major events respectively
-EVENT_DELAY_UPPER 15;45;70
+EVENT_DELAY_UPPER 1 15 
+EVENT_DELAY_UPPER 2 45 
+EVENT_DELAY_UPPER 3 70
 
 ## The delay until the first time an event of the given severity runs in minutes.
 ## Unset setting use the EVENT_DELAY_LOWER and EVENT_DELAY_UPPER values instead.
 # EVENT_CUSTOM_START_MINOR 10;15
 # EVENT_CUSTOM_START_MODERATE 30;45
-EVENT_CUSTOM_START_MAJOR 80;100
+EVENT_CUSTOM_START_MAJOR 80 100
 
 ## Uncomment to make proccall require R_ADMIN instead of R_DEBUG
 ## designed for environments where you have testers but don't want them
@@ -412,117 +416,3 @@ RADIATION_LOWER_LIMIT 0.15
 
 ## Uncomment this to allow patron players to bypass the player limit, and connect even if server is full. Only works if a player limit is set
 #ALWAYS_ADMIT_PATRONS
-
-## This contaiment is full of settings to aid in development and debugging. Nothing in here is intended for use in a live server, and these settings aren't even useful for runtime administration, just delete the whole file in any live config. Internal testing only.
-### HEALTH ###
-
-## level of health at which a mob goes into continual shock (soft crit)
-HEALTH_THRESHOLD_SOFTCRIT 0
-
-## level of health at which a mob becomes unconscious (crit)
-HEALTH_THRESHOLD_CRIT -50
-
-## level of health at which a mob becomes dead
-HEALTH_THRESHOLD_DEAD -100
-
-## Determines whether bones can be broken through excessive damage to the organ
-## 0 means bones can't break, 1 means they can
-BONES_CAN_BREAK 1
-## Determines whether limbs can be amputated through excessive damage to the organ
-## 0 means limbs can't be amputated, 1 means they can
-LIMBS_CAN_BREAK 1
-
-## multiplier which enables organs to take more damage before bones breaking or limbs being destroyed
-## 100 means normal, 50 means half
-ORGAN_HEALTH_MULTIPLIER 90
-
-## multiplier which influences how fast organs regenerate naturally
-## 100 means normal, 50 means half
-ORGAN_REGENERATION_MULTIPLIER 25
-
-### REVIVAL ###
-
-## whether pod plants work or not
-REVIVAL_POD_PLANTS 1
-
-## whether cloning tubes work or not
-REVIVAL_CLONING 1
-
-## amount of time (in hundredths of seconds) for which a brain retains the "spark of life" after the person's death (set to -1 for infinite)
-REVIVAL_BRAIN_LIFE -1
-
-
-
-### MOB MOVEMENT ###
-
-## We suggest editing these variabled in-game to find a good speed for your server. To do this you must be a high level admin. Open the 'debug' tab ingame. Select "Debug Controller" and then, in the popup, select "Configuration". These variables should have the same name.
-
-## These values get directly added to values and totals in-game. To speed things up make the number negative, to slow things down, make the number positive.
-
-
-## These modify the run/walk speed of all mobs before the mob-specific modifiers are applied. 
-RUN_SPEED 2
-WALK_SPEED 1
-
-
-## The variables below affect the movement of specific mob types.
-HUMAN_DELAY 0
-ROBOT_DELAY 0
-MONKEY_DELAY 0
-ALIEN_DELAY 0
-ANIMAL_DELAY 0
-
-
-### Miscellaneous ###
-
-## Config options which, of course, don't fit into previous categories.
-
-## Remove the # in front of this config option to have loyalty implants spawn by default on your server.
-#USE_LOYALTY_IMPLANTS
-
-## DEBUG ##
-## Autostart: Uncomment this option to force the round to be automatically started as soon as possible, instead of having the 3 minute wait period
-## Code for this is located in ticker.dm, Initialize proc
-AUTO_START
-
-## Auto-observe: Uncomment this to force players to be immediately spawned as observer-ghosts instead of being left at the menu. They will need to respawn to use character setup
-## Code for this is located in ticker.dm, start_now proc
-AUTO_OBSERVE
-
-## Auto-BST: When uncommented, this option will cause anyone who enters observer mode to immediately spawn as a bluespace technician, if they have the permissions to do so
-## Code for this is located in ticker.dm, start_now proc
-AUTO_BST
-
-## No Overmap: When uncommented, this will prevent generation of overmap, exoplanets, away sites, and any other locations outside of the ship. Thus greatly speeding server startup
-NO_OVERMAP
-
-## Debug verbs: Enables debug verbs by default
-DEBUG_VERBS
-
-## SQL CONFIG ##
-# MySQL Connection Configuration
-
-# Server the MySQL database can be found at
-# Examples: localhost, 200.135.5.43, www.mysqldb.com, etc.
-ADDRESS localhost
-
-# MySQL server port (default is 3306)
-PORT 3306
-
-# Database the population, death, karma, etc. tables may be found in
-DATABASE tgstation
-
-# Username/Login used to access the database
-LOGIN mylogin
-
-# Password used to access the database
-PASSWORD mypassword
-
-# The following information is for feedback tracking via the blackbox server
-FEEDBACK_DATABASE test
-FEEDBACK_LOGIN mylogin
-FEEDBACK_PASSWORD mypassword
-
-# Track population and death statistics
-# Comment this out to disable
-#ENABLE_STAT_TRACKING

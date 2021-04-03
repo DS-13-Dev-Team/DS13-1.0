@@ -92,12 +92,14 @@
 
 /datum/config_entry/number/radiation_resistance_multiplier
     config_entry_value = 125
+    integer = FALSE
 
 /datum/config_entry/number/radiation_material_resistance_divisor    //A turf's possible radiation resistance is divided by this number, to get the real value.
     config_entry_value = 2
 
 /datum/config_entry/number/radiation_lower_limit    //If the radiation level for a turf would be below this, ignore it.
     config_entry_value = 0.15
+    integer = FALSE
 
 /datum/config_entry/number/autostealth    //Staff get automatic stealth after this many minutes
 

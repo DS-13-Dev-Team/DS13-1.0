@@ -100,14 +100,48 @@ Basics, the most important.
 /datum/config_entry/flag/popup_admin_pm //adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 
 /datum/config_entry/number/fps
-    config_entry_value = 20
+	config_entry_value = 20
+	integer = FALSE
+	min_val = 1
+	max_val = 100   //byond will start crapping out at 50, so this is just ridic
+	var/sync_validate = FALSE
+
+/datum/config_entry/number/fps/ValidateAndSet(str_val)
+	. = ..()
+	if(.)
+		sync_validate = TRUE
+		var/datum/config_entry/number/ticklag/TL = config.entries_by_type[/datum/config_entry/number/ticklag]
+		if(!TL.sync_validate)
+			TL.ValidateAndSet(10 / config_entry_value)
+		sync_validate = FALSE
+
+/datum/config_entry/number/ticklag
+	config_entry_value = 0.5
+	integer = FALSE
+	var/sync_validate = FALSE
+
+/datum/config_entry/number/ticklag/New()	//ticklag weirdly just mirrors fps
+	var/datum/config_entry/CE = /datum/config_entry/number/fps
+	config_entry_value = 10 / initial(CE.config_entry_value)
+	return ..()
+
+/datum/config_entry/number/ticklag/ValidateAndSet(str_val)
+	. = text2num(str_val) > 0 && ..()
+	if(.)
+		sync_validate = TRUE
+		var/datum/config_entry/number/fps/FPS = config.entries_by_type[/datum/config_entry/number/fps]
+		if(!FPS.sync_validate)
+			FPS.ValidateAndSet(10 / config_entry_value)
+		sync_validate = FALSE
 
 /datum/config_entry/number/tick_limit_mc_init //SSinitialization throttling
     config_entry_value = TICK_LIMIT_MC_INIT_DEFAULT
+    min_val = 0 //oranges warned us
+    integer = FALSE
 
 /datum/config_entry/keyed_list/resource_urls
 	key_mode = KEY_MODE_TEXT
-	value_mode = VALUE_MODE_NUM
+	value_mode = VALUE_MODE_TEXT
 
 /datum/config_entry/flag/antag_hud_allowed  //Ghosts can turn on Antagovision to see a HUD of who is the bad guys this round.
 
@@ -115,7 +149,7 @@ Basics, the most important.
 
 /datum/config_entry/keyed_list/probabilities    //relative probability of each mode
     key_mode = KEY_MODE_TEXT
-    value_mode = VALUE_MODE_NUM
+    value_mode = VALUE_MODE_TEXT
 
 /datum/config_entry/keyed_list/probabilities/ValidateListEntry(key_name)
 	return key_name in config.modes
@@ -190,7 +224,6 @@ Basics, the most important.
 /datum/config_entry/flag/allow_extra_antags
 
 /datum/config_entry/flag/guests_allowed
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/debugparanoid
 
