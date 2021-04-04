@@ -38,8 +38,6 @@
 	can_open = WALL_CAN_OPEN
 	update_icon()
 
-#undef ZONE_BLOCKED
-#undef AIR_BLOCKED
 
 /turf/simulated/wall/proc/update_air()
 	if(!SSair)
