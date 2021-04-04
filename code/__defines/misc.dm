@@ -99,6 +99,7 @@
 #define WALL_OPENING 2
 
 #define DEFAULT_TABLE_MATERIAL "plastic"
+#define MATERIAL_STEEL "steel"
 
 #define SHARD_SHARD "shard"
 #define SHARD_SHRAPNEL "shrapnel"

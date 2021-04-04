@@ -2,7 +2,7 @@
 #define ANTAG_APPRENTICE "apprentice"
 #define ANTAG_WIZARD "Space Wizard"
 
-#define FAILED	-1 //When an objective is set to failed, it has entered an unwinnable state and can never be completed
+#define FAILED	-1
 
 //Antag categories. Broad groupings of antags that are in the same general faction
 #define CATEGORY_UNITOLOGY	"Church of Unitology"
