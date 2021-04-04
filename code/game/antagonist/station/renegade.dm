@@ -45,6 +45,10 @@
 		list(/obj/item/weapon/gun/projectile/revolver/detective, /obj/item/weapon/gun/projectile/revolver/deckard)
 		)
 
+/datum/antagonist/renegade/New()
+	..()
+	GLOB.renegades = src
+
 /datum/antagonist/renegade/create_objectives(var/datum/mind/player)
 
 	if(!..())
