@@ -830,7 +830,7 @@
 /area/casino/casino_security)
 "ci" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/wrench,
+/obj/item/weapon/tool/wrench,
 /turf/simulated/floor/plating,
 /area/casino/casino_security)
 "cj" = (
@@ -3913,7 +3913,7 @@
 	dir = 4
 	},
 /obj/structure/table/rack,
-/obj/item/weapon/wrench,
+/obj/item/weapon/tool/wrench,
 /obj/item/clothing/head/welding,
 /obj/item/weapon/weldingtool,
 /turf/simulated/floor/plating,

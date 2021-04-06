@@ -795,7 +795,7 @@
 /area/smugglers/base)
 "bO" = (
 /obj/machinery/portable_atmospherics/canister/air,
-/obj/item/weapon/wrench,
+/obj/item/weapon/tool/wrench,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 8

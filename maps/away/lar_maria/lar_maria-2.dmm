@@ -179,7 +179,7 @@
 /obj/structure/closet/crate/radiation,
 /obj/item/stack/material/tritium/fifty,
 /obj/item/stack/cable_coil/orange,
-/obj/item/weapon/wrench,
+/obj/item/weapon/tool/wrench,
 /obj/item/weapon/wirecutters,
 /turf/simulated/floor/plating,
 /area/lar_maria/solar_control)

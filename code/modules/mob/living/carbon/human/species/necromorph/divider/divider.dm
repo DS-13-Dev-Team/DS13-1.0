@@ -338,6 +338,3 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 	offsets_left = list(S_NORTH = new /vector2(-56, -10), S_SOUTH = new /vector2(-24, -10), S_EAST = new /vector2(-36, -14), S_WEST = new /vector2(-36, -14))
 	offsets_right = list(S_NORTH = new /vector2(-28, -10), S_SOUTH = new /vector2(-48, -10), S_EAST = new /vector2(-40, -14), S_WEST = new /vector2(-36,-14))
 
-
-#undef LEFT_ARM_OFFSETS
-#undef RIGHT_ARM_OFFSETS

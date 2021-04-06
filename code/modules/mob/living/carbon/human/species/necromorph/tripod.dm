@@ -858,6 +858,4 @@ https://bigmemes.funnyjunk.com/pictures/Long+boi_073bf6_7722185.jpg
 #undef LEAP_REDUCED_COOLDOWN
 #undef TONGUE_EXTEND_TIME
 
-#undef LEFT_ARM_OFFSETS
-#undef RIGHT_ARM_OFFSETS
 #undef TONGUE_OFFSETS

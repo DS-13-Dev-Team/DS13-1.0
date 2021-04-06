@@ -2741,7 +2741,7 @@
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/material/tritium/ten,
 /obj/item/weapon/wirecutters,
-/obj/item/weapon/wrench,
+/obj/item/weapon/tool/wrench,
 /turf/simulated/floor/plating,
 /area/lar_maria/sec_wing)
 "gu" = (

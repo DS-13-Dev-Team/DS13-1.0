@@ -17,6 +17,7 @@
 #define CUMULATIVE_BURN_DAMAGE	0.5
 #define FAKEDEATH_HEAL_TIME	4 SECONDS
 #define ARM_SWING_RANGE	3
+
 /datum/species/necromorph/hunter
 	name = SPECIES_NECROMORPH_HUNTER
 	mob_type	=	/mob/living/carbon/human/necromorph/hunter
