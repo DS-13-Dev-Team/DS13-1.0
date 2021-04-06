@@ -249,7 +249,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /obj/effect/vine/corruption/proc/get_viable_alternative(var/turf/T)
 	if (!LAZYLEN(alternatives))
 		return null
-	var/best_multiplier = 9999999999999
+	var/best_multiplier = NEAR_INFINITY
 	var/best_source = null
 	for (var/ref in alternatives)
 		var/datum/extension/corruption_source/CS = locate(ref)

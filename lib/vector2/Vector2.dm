@@ -9,7 +9,7 @@
 	else
 		return "(wrongtype)"
 
-/vector2
+vector2
 	var/x
 	var/y
 
@@ -20,7 +20,7 @@
 		if(isnum(x)) if(!isnum(y)) y = x
 
 		else if(istype(x, /vector2))
-			var vector2/v = x
+			var/vector2/v = x
 			x = v.x
 			y = v.y
 

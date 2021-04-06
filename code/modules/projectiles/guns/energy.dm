@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 
 
 
-/obj/item/weapon/gun/energy/unload_ammo(mob/user)
+/obj/item/weapon/gun/energy/unload_ammo(mob/user, allow_dump = TRUE)
 	if(power_supply && removeable_cell)
 		user.put_in_hands(power_supply)
 		user.visible_message("[user] removes [power_supply] from [src].", "<span class='notice'>You remove [power_supply] from [src].</span>")

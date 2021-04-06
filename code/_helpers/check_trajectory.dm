@@ -133,7 +133,7 @@
 /obj/item/projectile/test/expire()
 	return
 
-/obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area)
+/obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == firer)
 		last_loc = loc
 		loc = A.loc

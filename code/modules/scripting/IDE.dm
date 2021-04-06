@@ -28,7 +28,7 @@ client/verb/tcssave()
 client/verb/tcscompile()
 	set hidden = 1
 	if(mob.machine || issilicon(mob))
-		if((istype(mob.machine, /obj/machinery/computer/telecomms/traffic) && mob.machine in view(1, mob)) || (issilicon(mob) && istype(mob.machine, /obj/machinery/computer/telecomms/traffic) ))
+		if((istype(mob.machine, /obj/machinery/computer/telecomms/traffic) && (mob.machine in view(1, mob))) || (issilicon(mob) && istype(mob.machine, /obj/machinery/computer/telecomms/traffic) ))
 			var/obj/machinery/computer/telecomms/traffic/Machine = mob.machine
 			if(Machine.editingcode != mob)
 				return
@@ -157,7 +157,7 @@ client/verb/exittcs()
 client/verb/tcsrevert()
 	set hidden = 1
 	if(mob.machine || issilicon(mob))
-		if((istype(mob.machine, /obj/machinery/computer/telecomms/traffic) && mob.machine in view(1, mob)) || (issilicon(mob) && istype(mob.machine, /obj/machinery/computer/telecomms/traffic) ))
+		if((istype(mob.machine, /obj/machinery/computer/telecomms/traffic) && (mob.machine in view(1, mob))) || (issilicon(mob) && istype(mob.machine, /obj/machinery/computer/telecomms/traffic) ))
 			var/obj/machinery/computer/telecomms/traffic/Machine = mob.machine
 			if(Machine.editingcode != mob)
 				return

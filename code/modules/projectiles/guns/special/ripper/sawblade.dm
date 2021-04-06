@@ -280,10 +280,3 @@
 			qdel(src)
 
 #undef IMPACT_DAMAGE
-
-#undef EX3_TOTAL
-#undef EX2_TOTAL
-#undef EX1_TOTAL
-
-#undef STATE_STABLE
-#undef STATE_MOVING
