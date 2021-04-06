@@ -78,7 +78,7 @@
 	pixel_x = -32
 	pixel_y = -32
 	var/life_time = 5
-	var/shock_damage = 20
+	var/shock_damage = 35
 
 /obj/effect/overload/Initialize(mapload, n_life_time = 5)
 	. = ..()

@@ -250,11 +250,16 @@
 	armor_penetration = 50
 	penetration_modifier = 1.5
 	embed_mult = 10
+	paralyze = 5
 	muzzle_type = null
 
 /obj/item/projectile/bullet/javelin/on_impact(atom/A)
 	..()
 	if(ismob(A))
-		new /obj/item/ammo_casing/javelin(get_turf(A), src)
+		var/mob/M = A
+		if(!M.buckled)
+			M.throw_at(get_step(M, src.dir), 3,, src)
+		spawn(3)
+			new /obj/item/ammo_casing/javelin(get_turf(A), src)
 	else
 		new /obj/item/ammo_casing/javelin(get_turf(src), src)
