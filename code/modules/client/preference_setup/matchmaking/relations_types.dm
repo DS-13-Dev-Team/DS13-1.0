@@ -16,7 +16,7 @@
 /datum/relation/kid_friend/get_candidates()
 	var/list/creche = ..()
 	var/mob/living/carbon/human/holdermob = holder.current
-	
+
 	if(istype(holdermob))
 		for(var/datum/relation/kid in creche)
 			var/mob/living/carbon/human/kidmob = kid.holder.current

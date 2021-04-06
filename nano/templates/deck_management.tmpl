@@ -1,7 +1,7 @@
 <div class='notice'>
-	You 
+	You
 	{{if !data.default_access}}
-		do not 
+		do not
 	{{/if}}
 	have program access.
 </div>
@@ -11,7 +11,7 @@
 	{{for data.shuttles}}
 		<h3>{{:value.name}}</h3>
 		{{if value.mission}}
-			<div class='item'>		
+			<div class='item'>
 				<div class='itemLabel'>
 					Current Mission:
 				</div>
@@ -19,7 +19,7 @@
 					{{:value.mission_name}}
 				</div>
 			</div>
-			<div class='item'>		
+			<div class='item'>
 				<div class='itemLabel'>
 					Mission Status:
 				</div>
@@ -27,7 +27,7 @@
 					{{:value.status}}
 				</div>
 			</div>
-			<div class='item'>		
+			<div class='item'>
 				<div class='itemLabel'>
 					Departure Time:
 				</div>
@@ -36,7 +36,7 @@
 				</div>
 			</div>
 		{{else}}
-			<div class='item'>		
+			<div class='item'>
 				<div class='itemLabel'>
 					Current Mission:
 				</div>
@@ -75,7 +75,7 @@
 	<h2>Shuttle: {{:data.shuttle_name}}<br><center>Mission History</center></h2>
 	{{for data.mission_data}}
 		<h3>{{:value.name}}{{if value.is_current}} (ACTIVE MISSION){{/if}}</h3>
-		<div class='item'>		
+		<div class='item'>
 			<div class='itemLabel'>
 				Mission Status:
 			</div>
@@ -83,7 +83,7 @@
 				{{:value.status}}
 			</div>
 		</div>
-		<div class='item'>		
+		<div class='item'>
 			<div class='itemLabel'>
 				Departure Time:
 			</div>
@@ -91,7 +91,7 @@
 				{{:value.departure}}
 			</div>
 		</div>
-		<div class='item'>		
+		<div class='item'>
 			<div class='itemLabel'>
 				Return Time:
 			</div>
@@ -108,7 +108,7 @@
 	<h2><center>Scheduled Missions</center></h2>
 	{{for data.queued_data}}
 		<h3>{{:value.name}}{{if value.is_current}} (ACTIVE MISSION){{/if}}</h3>
-		<div class='item'>		
+		<div class='item'>
 			<div class='itemLabel'>
 				Mission Status:
 			</div>
@@ -116,7 +116,7 @@
 				{{:value.status}}
 			</div>
 		</div>
-		<div class='item'>		
+		<div class='item'>
 			<div class='itemLabel'>
 				Departure Time:
 			</div>
@@ -124,7 +124,7 @@
 				{{:value.departure}}
 			</div>
 		</div>
-		<div class='item'>		
+		<div class='item'>
 			<div class='itemLabel'>
 				Return Time:
 			</div>
@@ -146,7 +146,7 @@
 		{{:helper.link('All Missions', null, {'history' : data.shuttle_name}, null)}}
 	</div>
 	<h2>Shuttle: {{:data.shuttle_name}}<br><center>Mission: {{:data.mission_data.name}}{{if data.mission_data.is_current}} (ACTIVE MISSION){{/if}}</center></h2>
-	<div class='item'>		
+	<div class='item'>
 		<div class='itemLabel'>
 			Mission Status:
 		</div>
@@ -154,7 +154,7 @@
 			{{:data.mission_data.status}}
 		</div>
 	</div>
-	<div class='item'>		
+	<div class='item'>
 		<div class='itemLabel'>
 			Departure Time:
 		</div>
@@ -162,7 +162,7 @@
 			{{:data.mission_data.departure}}
 		</div>
 	</div>
-	<div class='item'>		
+	<div class='item'>
 		<div class='itemLabel'>
 			Return Time:
 		</div>
@@ -183,7 +183,7 @@
 				{{if !value.ignore_value}}
 					<div class='item'>
 						<div class='itemLabel'>
-							{{:value.name}}: 
+							{{:value.name}}:
 						</div>
 						<div class="itemContent">
 							{{if value.needs_big_box}}
@@ -248,7 +248,7 @@
 					{{if (value.can_edit && value.access_edit && !data.view_only)}}
 						{{:helper.link('','pencil' , {'edit' : 1, 'ID' : value.ID}, null)}}
 					{{/if}}
-					{{:value.name}}: 
+					{{:value.name}}:
 				</div>
 				{{if value.access}}
 					<div class="itemContent">

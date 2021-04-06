@@ -50,7 +50,7 @@
 /datum/report_field/proc/set_value(given_value)
 	value = given_value
 
-//Exports the contents of the field into html for viewing. 
+//Exports the contents of the field into html for viewing.
 /datum/report_field/proc/get_value()
 	return value
 

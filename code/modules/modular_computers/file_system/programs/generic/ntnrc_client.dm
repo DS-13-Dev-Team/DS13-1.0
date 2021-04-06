@@ -8,7 +8,7 @@
 	size = 8
 	requires_ntnet = 1
 	requires_ntnet_feature = NTNET_COMMUNICATION
-	network_destination = "NTNRC server" 
+	network_destination = "NTNRC server"
 	ui_header = "ntnrc_idle.gif"
 	available_on_ntnet = 1
 	nanomodule_path = /datum/nano_module/program/computer_chatclient/

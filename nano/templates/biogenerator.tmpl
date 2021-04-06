@@ -26,16 +26,16 @@
 {{/if}}
 {{if data.state == 1}} <!-- Processing -->
 	<span style='color: red'>Biogenerator is processing! Please wait...</span>
-{{/if}}	
+{{/if}}
 {{if data.state == 2}} <!-- No beaker -->
 	<span style='color: red'>No beaker inside. Please insert a beaker.</span>
-{{/if}}	
+{{/if}}
 {{if data.state == 3}} <!-- Creation is complete -->
 	Creation is complete.<br>
 	<div class='item'>
 		{{:helper.link('Return to menu', 'arrowreturn-1-w', {"action" : "return"})}}
 	</div>
-{{/if}}	
+{{/if}}
 {{if data.state == 4}}
 	<span style='color: red'>Error: No produce inside.</span><BR>Please, put produce into reactor.<BR>
 	<div class='item'>

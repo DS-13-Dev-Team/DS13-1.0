@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(price_cache)
 	var/value = worths[t]
 	if(value >= 0) // Value zero or greater than zero, all instances have same value
 		return value
-	else 
+	else
 		if(ispath(A)) // Build a cache for tricky pricing types
 			t = A
 			if(!GLOB.price_cache[A])

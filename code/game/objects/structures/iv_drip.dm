@@ -88,7 +88,7 @@
 
 	if(!beaker)
 		return
-	
+
 	//SSObj fires twice as fast as SSMobs, so gotta slow down to not OD our victims.
 	if(SSobj.times_fired % 2)
 		return
@@ -100,7 +100,7 @@
 	else // Take blood
 		var/amount = beaker.reagents.maximum_volume - beaker.reagents.total_volume
 		amount = min(amount, 4)
-		
+
 		if(amount == 0) // If the beaker is full, ping
 			if(prob(5)) visible_message("\The [src] pings.")
 			return
@@ -133,23 +133,23 @@
 	set category = "Object"
 	set name = "Detach IV Drip"
 	set src in range(1)
-	
+
 	if(!attached)
 		return
-		
+
 	if(!usr.Adjacent(attached))
 		to_chat(usr, "<span class='warning'>You are too far away from the [attached]!</span>")
 		return
-		
+
 	if(!usr.skill_check(SKILL_MEDICAL, SKILL_BASIC))
 		rip_out()
 	else
 		visible_message("\The [attached] is taken off \the [src].")
 		attached = null
-	
+
 	queue_icon_update()
 	STOP_PROCESSING(SSobj,src)
-		
+
 /obj/structure/iv_drip/verb/toggle_mode()
 	set category = "Object"
 	set name = "Toggle IV Mode"
@@ -168,7 +168,7 @@
 /obj/structure/iv_drip/examine(mob/user)
 	. = ..(user)
 
-	if (get_dist(src, user) > 2) 
+	if (get_dist(src, user) > 2)
 		return
 
 	to_chat(user, "The IV drip is [mode ? "injecting" : "taking blood"].")

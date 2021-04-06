@@ -14,7 +14,7 @@ Used In File(s): \code\modules\nano\modules\alarm_monitor.dm
 		{{if alarmValue.has_cameras || alarmValue.lost_sources != ""}}
 			<div class="item">
 				{{if alarmValue.has_cameras}}
-					<div class="itemContent" style="width: 100%;">	
+					<div class="itemContent" style="width: 100%;">
 						{{for alarmValue.cameras :cameraValue:cameraIndex}}
 							{{if cameraValue.deact}}
 								{{:helper.link(cameraValue.name + " (deactivated)", '', {}, 'inactive')}}
@@ -22,7 +22,7 @@ Used In File(s): \code\modules\nano\modules\alarm_monitor.dm
 								{{:helper.link(cameraValue.name, '', {'switchTo' : cameraValue.camera})}}
 							{{/if}}
 						{{/for}}
-					</div>		
+					</div>
 				{{/if}}
 				{{if alarmValue.lost_sources != ""}}
 					<div class="itemContent" style="width: 100%;">
@@ -31,7 +31,7 @@ Used In File(s): \code\modules\nano\modules\alarm_monitor.dm
 				{{/if}}
 			</div>
 		{{/if}}
-	{{empty}}	
+	{{empty}}
 		<span class="white">--All Systems Nominal</span>
 	{{/for}}
 {{/for}}

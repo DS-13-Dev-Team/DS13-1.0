@@ -11,7 +11,7 @@ The following conduct may result in a warning being logged against your account:
 * Issuing commits, editing wiki pages, commenting, or opening bug reports in bad faith.
 	* The Head Developer and Developers are obligated to assume good faith until evidence otherwise surfaces.
     * Examples:
-	    * Opening a PR you do not personally want merged. 
+	    * Opening a PR you do not personally want merged.
 		    * Exceptions exist on a case-by-case basis for opening PRs on behalf of other people, but they MUST sponsor the PR and be willing to argue in its defense as would any other contributor)
 		* Opening a PR changing, removing or adding features as a political statement to protest a change you do not like.
 		* Repeated attempts to force the 'Contentious' tag to block a change you do not agree with.
@@ -33,13 +33,13 @@ Warnings expire in six months from the date of warning.
 * The second issued ban against your account will result in a **one month ban**, which may be appealed after two weeks.
 * The third issued ban against your account will result in a **permanent ban** and removal of chat privlages in #coding, both of which may be appealed after one month.
 * Every subsequent ban will result in a permanent ban until appeal as described above.
-    * Fully serving or successfully appealing a ban will remove the oldest warning, resulting in two. 
+    * Fully serving or successfully appealing a ban will remove the oldest warning, resulting in two.
 
 
 ## Developer Responsibilities
 The Head Developer is responsible for clarifying the standards of acceptable behaviour and is expected to take appropriate and fair corrective action in response to any instances of unacceptable behaviour. The Head Developer has the right to to ban temporarily or permanently any contributor for behaviours that they deem inappropriate, threatening, offensive, or harmful, in accordance with the rules established above.
 
-Developers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct. 
+Developers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct.
 
 
 ## Enforcement

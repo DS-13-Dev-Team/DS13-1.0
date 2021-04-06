@@ -28,7 +28,7 @@
 	registered += module
 
 /datum/shuttle_log/proc/unregister(datum/nano_module/module)
-	registered -= module	
+	registered -= module
 
 /datum/shuttle_log/proc/update_registred()
 	for(var/datum/nano_module/module in registered)

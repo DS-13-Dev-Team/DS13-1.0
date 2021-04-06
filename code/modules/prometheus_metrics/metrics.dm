@@ -20,5 +20,5 @@ GLOBAL_DATUM_INIT(prometheus_metrics, /datum/prometheus_metrics, new)
 		var/proto = MF._to_proto()
 		if(proto != null)
 			out[++out.len] = MF._to_proto()
-	
+
 	return json_encode(out)

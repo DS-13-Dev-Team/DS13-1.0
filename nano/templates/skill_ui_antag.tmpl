@@ -15,7 +15,7 @@
 			{{for value.selected :selected_value:selected_key}}
 				{{:helper.link(selected_value.name, null, {'remove_skill' : selected_value.ref})}}<br><br>
 			{{/for}}
-		</div>	
+		</div>
 		{{:helper.link("Add", null, {'add_skill' : value.level}, value.remaining ? null : 'disabled')}}
 	{{/for}}
 	<br><br>

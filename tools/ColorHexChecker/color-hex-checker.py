@@ -25,7 +25,7 @@ def print_bad_hexes(bad_hexes_by_path):
 			print('\tLine: {0}'.format(line))
 			for bad_hex in bad_hexes:
 				print('\t\t{0}'.format(bad_hex))
-	
+
 def main():
 	opt = argparse.ArgumentParser()
 	opt.add_argument('dir', help='The directory to recursively scan for *.dm and *.dmm files with invalid color hexes')

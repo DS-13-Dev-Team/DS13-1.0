@@ -1,7 +1,7 @@
 /obj/item/instrument
 	icon = 'icons/obj/items.dmi'
 	throwforce = 0
-	
+
 	throw_range = 6
 	force = 0
 

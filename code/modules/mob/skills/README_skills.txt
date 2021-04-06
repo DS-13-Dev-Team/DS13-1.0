@@ -33,7 +33,7 @@ User's Guide to Skills
 	This minimum value is given for free to the player, and does not use up allocation points.
 	For each job, a maximum value can also be assigned. Add a similar entry to the max_skills list.
 	For each job, a base number of free points can be assigned. This is given in the job datum's skill_points variable (should be a number).
-	Free point bonuses/penalties can be specified, for each species, as a function of a player's selected age. 
+	Free point bonuses/penalties can be specified, for each species, as a function of a player's selected age.
 	This can be done by overwriting species datum's skills_from_age proc, which takes in the age and returns an integer (positive or negative) which will be added to all jobs' available skill points.
 	Free point bonuses/penalties can be specified, for each species, as a function of the job.
 	To do this, add the entry /datum/job/my_job = points_to_add to the species datum's job_skill_buffs variable (this is a list). Then points_to_add (positive or negative) will be added to that job's available skill points.

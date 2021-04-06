@@ -2,7 +2,7 @@
 	display_name = "Cuchulain Foundation"
 	associated_strings = list("Cuchulain", "Foundation")
 	associated_paths = list(
-		/obj/item/weapon/storage/briefcase/foundation, 
+		/obj/item/weapon/storage/briefcase/foundation,
 		/obj/item/weapon/gun/projectile/revolver/foundation,
 		/obj/item/weapon/card/id/foundation,
 		/obj/item/weapon/card/id/foundation_civilian,

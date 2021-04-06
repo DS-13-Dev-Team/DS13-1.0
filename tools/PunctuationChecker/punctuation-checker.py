@@ -15,7 +15,7 @@ found_bad_descriptions = False
 
 for index, exception in enumerate(exceptions, 0):
 	exceptions[index] = (exception[0].replace('/', sep), exception[1])
-	
+
 # This section parses all *.dm files in the given directory, recursively.
 for root, subdirs, files in walk(args.dir):
     for filename in files:
@@ -54,6 +54,6 @@ for root, subdirs, files in walk(args.dir):
 							continue
 						print file_path, ' ', line, ' ', line_number
 						found_bad_descriptions = True
-						
+
 if found_bad_descriptions:
 	sys.exit(1)

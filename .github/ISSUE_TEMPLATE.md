@@ -1,13 +1,13 @@
 <!--
 	For the title make sure to put the words, 'Suggestion:' or 'Bug:' before the actual title of your issue, it helps with sorting!
-	
+
 	If a specific field doesn't apply, remove it!
 	Anything inside tags like these is a comment and will not be displayed in the final issue.
 	Be careful not to write inside them!
 	Joke or spammed issues can and will result in punishment.
-	
-	PUT YOUR ANSWERS ON THE BLANK LINES BELOW THE HEADERS 
-	(The lines with four #'s) 
+
+	PUT YOUR ANSWERS ON THE BLANK LINES BELOW THE HEADERS
+	(The lines with four #'s)
 	Don't edit them or delete them it's part of the formatting
 -->
 

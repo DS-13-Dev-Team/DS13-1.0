@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Title: Necroshop
 Used In File(s): \code\modules\mob\observer\freelook\marker\necroshop.dm
 data.authorised ? null : 'disabled'
@@ -7,7 +7,7 @@ data.authorised ? null : 'disabled'
 	td {border-style: solid;
   border-width: 1px; border-color: black;}
   body{height: 100%; line-height:135%;}
-  
+
   h1 {
     font-size: 18px; color: #e9c183;padding: 0px;
 }
@@ -22,13 +22,13 @@ h3 {
 <table style="width: 100%; height: 550px; margin: 0px;">
 	<tr style="height: 5vh;">
 		<td colspan = "2" style="width: 100%; border: 1px solid black; overflow: hidden; padding: 0px; margin: 0px; line-height: 100%;">
-			
+
 			<div style = "display:inline-block; overflow: hidden; padding: 0px; margin: 0px; margin-left: 40%; ">
-				<div style = "display:inline-block; font-size: 16px; color: #e9c183; padding-top: 5px; margin: 0px; font-weight: bold;">Psi Energy: {{:data.energy}}/{{:data.max_energy}}</div> 
+				<div style = "display:inline-block; font-size: 16px; color: #e9c183; padding-top: 5px; margin: 0px; font-weight: bold;">Psi Energy: {{:data.energy}}/{{:data.max_energy}}</div>
 				<div style = "display:inline-block; vertical-align: top;"><div style = "font-size: 0.7em;">+{{:data.income}} /sec</div></div>
 			</div>
 		</td>
-	</tr>	
+	</tr>
 	<tr style="height: 80vh;">
 		<td style="width: 35%; vertical-align: top; text-align: center;">
 			<div style="height:100%;  height: 440px; overflow-y: auto;">
@@ -38,9 +38,9 @@ h3 {
 				<div class="item" style="vertical-align: top; text-align: center;">
 					{{:helper.link(value.name+' (' + value.cost + ')', null, { "select" : value.id }, null, "linkCompact")}}
 				</div>
-				
+
 			{{/for}}
-			
+
 			</div>
 		</td>
 		<td style="width: 65%; vertical-align: top;">
@@ -51,7 +51,7 @@ h3 {
 				<h2>Nothing Selected</h2>
 			{{/if}}
 		</td>
-	</tr>	
+	</tr>
 	<tr style="height: 7vh;">
 		<td style="width: 25%; vertical-align: top; text-align: center;">
 			{{:helper.link(('Cast'), null, { "cast" : (data.current) ? data.current.id : null }, (data.current) ? null : 'disabled', "linkMax")}}

@@ -1,5 +1,5 @@
 
-<!-- 
+<!--
 Title: Syndicate Uplink, uses some javascript to change nanoUI up a bit.
 Used In File(s): \code\game\objects\items\devices\uplinks.dm
  -->
@@ -51,7 +51,7 @@ Used In File(s): \code\game\objects\items\devices\uplinks.dm
 {{else data.menu == 1}}
     <H2><span class="white">Request items:</span></H2>
     <span class="white"><i>Each item costs a number of tele-crystals as indicated by the number following their name.</i></span>
-	
+
 	{{for data.items}}
 		<div class="item">
 			{{:helper.link(value.name, 'gear', {'buy_item' : value.ref}, value.can_buy ? null : 'disabled')}} - <span class="white">{{:value.cost}}</span>

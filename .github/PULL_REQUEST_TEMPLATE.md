@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Do not forget to add a changelog when you have made admin/player facing changes that can alter gameplay.
 Examples which require a changelog entry include:
 * Adding/removing objects that players may interact with, or the way they function.

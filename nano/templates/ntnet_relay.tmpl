@@ -7,7 +7,7 @@
 	{{:helper.link('Purge buffered traffic', null, { 'restart' : 1 })}}
 {{else}}
 <div class="itemLabel">
-	Relay status: 
+	Relay status:
 </div>
 <div class="itemContent">
 	{{if data.enabled}}
@@ -15,16 +15,16 @@
 	{{else}}
 		{{:helper.link('DISABLED', null, { 'toggle' : 1 })}}
 	{{/if}}
-	
-</div>	
+
+</div>
 <div class="itemLabel">
-	Network buffer status: 
+	Network buffer status:
 </div>
 <div class="itemContent">
 	{{:data.dos_overload}} / {{:data.dos_capacity}} GQ
 </div>
 <div class="itemLabel">
-	Options: 
+	Options:
 </div>
 <div class="itemContent">
 	{{:helper.link('Purge network blacklist', null, { 'purge' : 1 })}}

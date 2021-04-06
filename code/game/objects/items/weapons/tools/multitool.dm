@@ -14,7 +14,7 @@
 	throwforce = WEAPON_FORCE_HARMLESS
 	worksound = WORKSOUND_PULSING
 	throw_range = 15
-	
+
 	tool_qualities = list(QUALITY_PULSING = 30)
 	matter = list(MATERIAL_PLASTIC = 200, MATERIAL_GLASS = 100)
 

@@ -349,7 +349,7 @@ var/list/slot_equipment_priority = list( \
 	for (var/obj/item/I as anything in things)
 		things += I.get_contents()
 	return things
-	
+
 /proc/get_contents_list(var/list/things)
 	var/list/stuff = list()
 	for (var/atom/A as anything in things)

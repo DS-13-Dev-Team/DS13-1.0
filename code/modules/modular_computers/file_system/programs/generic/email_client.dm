@@ -441,7 +441,7 @@
 		msg_recipient = M.source
 		msg_title = "Re: [M.title]"
 		var/atom/movable/AM = host
-		if(istype(AM))		
+		if(istype(AM))
 			if(ismob(AM.loc))
 				ui_interact(AM.loc)
 		return 1

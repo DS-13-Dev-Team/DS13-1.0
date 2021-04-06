@@ -9,7 +9,7 @@
 	<b>Detected SMES units with RCON support:</b><br>
 	{{for data.smes_info}}
 		<div class = "item">
-			<div class="itemLabel">				
+			<div class="itemLabel">
 				{{:value.RCON_tag}}
 			</div>
 			<div class="itemContent">
@@ -32,7 +32,7 @@
 						{{:helper.link('', 'power', { 'smes_in_toggle' : value.RCON_tag})}}
 						{{:helper.link('', 'pencil', { 'smes_in_set' : value.RCON_tag})}}
 						<tr><td>
-						Input Load: 
+						Input Load:
 						<td>
 						{{:value.input_load}} kW
 						<tr><td>
@@ -40,9 +40,9 @@
 						<td>
 						{{:helper.link('', 'power', { 'smes_out_toggle' : value.RCON_tag})}}
 						{{:helper.link('', 'pencil', { 'smes_out_set' : value.RCON_tag})}}
-					
+
 						<tr><td>
-						Output Load: 
+						Output Load:
 						<td>
 						{{:value.output_load}} kW
 					{{/if}}
@@ -59,7 +59,7 @@
 	<b>Detected Breaker Boxes with RCON support:</b><br>
 	{{for data.breaker_info}}
 		<div class = "item">
-			<div class="itemLabel">				
+			<div class="itemLabel">
 				{{:value.RCON_tag}}
 			</div>
 			<div class="itemContent">

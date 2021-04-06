@@ -34,7 +34,7 @@ Clone the repository to a path of your choosing, then change directory to it and
 ```
 npm install -g
 bower install -g
-``` 
+```
 
 Then you can either compile with DM or open the DM environment in DreamMaker and compile/run from there.
 
@@ -51,7 +51,7 @@ To use the process scheduler in your SS13 codebase, you'll need:
 - core/updateQueue.dm
 - core/updateQueueWorker.dm
 
-To integrate, you can copy the contents of _defines.dm into your global defines file. Most ss13 codebases already have the code from _stubs.dm. 
+To integrate, you can copy the contents of _defines.dm into your global defines file. Most ss13 codebases already have the code from _stubs.dm.
 
 The processScheduler is intended as a replacement for the old master_controller from r4407 and other fork codebases. To implement it, you need only to add the source files to your DM environment, and add the following code into world.New, above where the old master_controller is initialized.
 

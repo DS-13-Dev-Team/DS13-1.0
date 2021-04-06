@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Title: Jukebox UI
 Used In File(s): \code\game\machinery\jukebox.dm
  -->
@@ -13,7 +13,7 @@ Used In File(s): \code\game\machinery\jukebox.dm
 <div class="itemContent">
     {{for data.tracks}}
         <div class="item">
-            {{:helper.link( value.track, 'gear', {'change_track' : 1, 'title' : value.track}, value.track == data.current_track ? 'disabled' : null, null)}}    
+            {{:helper.link( value.track, 'gear', {'change_track' : 1, 'title' : value.track}, value.track == data.current_track ? 'disabled' : null, null)}}
         </div>
     {{/for}}
 </div>

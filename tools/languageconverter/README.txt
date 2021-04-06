@@ -28,11 +28,11 @@ the other files from this archive, including this one.
 
 ---USAGE---
 [ENGLISH TO SHAGE]
-First, find the word you want to translate in shage_3.html, via ctrl-F. 
+First, find the word you want to translate in shage_3.html, via ctrl-F.
 Apply the grammar rules on the doc to get the correct IPA.
 	EXAMPLE
 	For example, if you wanted the word "shooter", well, that exact word doesn't
-	exist. But we can make that word via grammar rules. 
+	exist. But we can make that word via grammar rules.
 	you would get the word for
 	"shoot" (ħuˈʔos), and look at the derivational morphology section.
 	Applying those rules, we would add ɛʔ to get ħuˈʔosɛʔ. Brackets mean

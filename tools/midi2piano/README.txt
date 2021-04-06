@@ -23,7 +23,7 @@ OCTAVE_TRANSPOSE - amount of octaves you melody will be shifted by
 FLOAT_PRECISION - read comment
 
 Additional notes:
-1. Unlike previous midi2piano, this tool optimizes sheet music to fit more in less lines. 
+1. Unlike previous midi2piano, this tool optimizes sheet music to fit more in less lines.
 2. If two notes are less than 50 ms apart, they are chorded. BYOND works in  1/10th of a second so 100 ms is time quanta.
 4. MIDI event set_tempo is NOT supported. If your MIDI file uses set_tempo to change BPM significantly, consider using some other midi file.
 

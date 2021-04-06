@@ -30,7 +30,7 @@
 				{{else}}
 					<span class='good'>{{:data.SM_ambienttemp}} K</span>
 				{{/if}}
-			</div>		
+			</div>
 			<div class="itemLabel">
 				Pressure:
 			</div>
@@ -56,7 +56,7 @@
 				{{else}}
 					<span class='good'>{{:data.SM_EPR}}</span>
 				{{/if}}
-			</div>		
+			</div>
 		</div>
 		<hr><br
 		<div class="item">
@@ -70,7 +70,7 @@
 					</div>
 					<div class="itemContent">
 						{{:data.SM_gas_O2}} %
-					</div>	
+					</div>
 					<div class="itemLabel">
 						CO2:
 					</div>
@@ -102,7 +102,7 @@
 						{{:data.SM_gas_N2O}} %
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
 {{else}}
 	{{:helper.link('Refresh', null, {'refresh' : 1})}}<br>
@@ -125,7 +125,7 @@
 			</div>
 			<div class="itemContent">
 				{{:helper.link('View Details', null, {'set' : value.uid})}}
-			</div>			
-		</div>	
+			</div>
+		</div>
 	{{/for}}
 {{/if}}

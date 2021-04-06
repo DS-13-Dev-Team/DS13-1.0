@@ -65,15 +65,15 @@
 			Power Cell:
 		</div>
 		{{if data.powerCellStatus == null}}
-			<div class="itemContent bad">		
+			<div class="itemContent bad">
 				Power cell removed.
 			</div>
 		{{else}}
-			
+
 			{{:helper.displayBar(data.powerCellStatus, 0, 100, (data.powerCellStatus >= 50) ? 'good' : (data.powerCellStatus >= 25) ? 'average' : 'bad')}}
-			<div class="itemContent" style="width: 60px">		
+			<div class="itemContent" style="width: 60px">
 				{{:helper.round(data.powerCellStatus*10)/10}}%
-			</div>	
+			</div>
 		{{/if}}
 	</div>
 
@@ -88,7 +88,7 @@
 						<span class='good'>Auto</span>
 					{{else}}
 						<span class='bad'>Off</span>
-					{{/if}}				
+					{{/if}}
 				{{else}}
 					{{:helper.link('Auto', 'refresh', {'cmode' : 1}, data.chargeMode ? 'selected' : null)}}{{:helper.link('Off', 'close', {'cmode' : 1}, data.chargeMode ? null : 'selected')}}
 				{{/if}}
@@ -127,7 +127,7 @@
 						&nbsp;&nbsp;Auto
 					{{else}}
 						&nbsp;&nbsp;Manual
-					{{/if}}		
+					{{/if}}
 				{{/if}}
 			</div>
 			{{if !data.locked || data.siliconUser}}

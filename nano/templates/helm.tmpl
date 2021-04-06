@@ -1,6 +1,6 @@
 
 <div style="float:left;width:50%">
-	<h3>Sector information</h3> 
+	<h3>Sector information</h3>
 	<div class='block'>
 		{{:data.sector}}
 		<br>
@@ -11,7 +11,7 @@
 </div>
 
 <div style="float:right;width:50%">
-	<h3>Flight data</h3> 
+	<h3>Flight data</h3>
 	<div class='block'>
 		<div class='item'>
 			<div class="itemLabel">
@@ -44,7 +44,7 @@
 			<div style="float:right">
 				{{:data.heading}}
 			</div>
-		</div> 
+		</div>
 	</div>
 </div>
 
@@ -86,7 +86,7 @@
 	<div class="itemContent" style="padding-top: 10px;">
 		{{:helper.link(data.autopilot ? 'Engaged' : 'Disengaged', 'gear', { 'apilot' : 1 }, data.dest ? null : 'disabled', data.autopilot ? 'selected' : null)}}
 	</div>
-</div> 
+</div>
 <div class='block'>
 	<div class='item'>
 		<div style="float:left;width:45%">
@@ -99,7 +99,7 @@
 				{{:helper.link('None', null, { 'sety' : 1, 'setx' : 1 }, null, null)}}
 			{{/if}}
 		</div>
-	</div> 
+	</div>
 	<div class='item'>
 		<div style="float:left;width:45%">
 			<span class='white'>Maximum speed:</span>
@@ -107,7 +107,7 @@
 		<div style="float:left;width:20%">
 			{{:helper.link(data.speedlimit, null, { 'speedlimit' : 1 }, null, null)}}
 		</div>
-	</div> 
+	</div>
 </div>
 
 <h3>Navigation data</h3>
@@ -129,4 +129,4 @@
 		  </div>
 		{{/for}}
 	{{/if}}
-</div>	
+</div>

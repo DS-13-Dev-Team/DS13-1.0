@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(event)
 		var/list/datum/event_container/EC = event_containers[pos]
 		EC.process()
 		pos++
-		
+
 		if (MC_TICK_CHECK)
 			return
 
@@ -116,7 +116,7 @@ SUBSYSTEM_DEF(event)
 
 		to_world(message)
 
-//Event manager UI 
+//Event manager UI
 /datum/controller/subsystem/event/proc/GetInteractWindow()
 	var/html = "<A align='right' href='?src=\ref[src];refresh=1'>Refresh</A>"
 	html += "<A align='right' href='?src=\ref[src];pause_all=[!config.allow_random_events]'>Pause All - [config.allow_random_events ? "Pause" : "Resume"]</A>"

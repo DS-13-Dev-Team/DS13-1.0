@@ -705,7 +705,7 @@ BLIND     // can't see anything
 	var/image/ret = ..()
 	if(item_state_slots && item_state_slots[slot])
 		ret.icon_state = item_state_slots[slot]
-	
+
 	return ret
 
 /obj/item/clothing/suit/proc/get_collar()

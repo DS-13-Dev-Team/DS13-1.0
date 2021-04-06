@@ -117,7 +117,7 @@ obj/machinery/atmospherics/binary
 		update_underlays()
 
 		return null
-		
+
 obj/machinery/atmospherics/binary/Destroy()
 	loc = null
 

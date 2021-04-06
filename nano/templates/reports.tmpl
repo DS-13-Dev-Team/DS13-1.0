@@ -2,7 +2,7 @@
 	<div class='item'>
 		{{:helper.link('Load Report', null, {'load' : 1, 'warning' : (data.report_data && !data.view_only) ? 1 : 0}, null)}}
 		{{:helper.link('Save Report', null, {'save' : 1, 'save_as' : 0}, (data.report_data && !data.view_only) ? null : 'disabled')}}
-		{{:helper.link('Save Copy', null, {'save' : 1, 'save_as' : 1}, (data.report_data && !data.view_only) ? null : 'disabled')}}		
+		{{:helper.link('Save Copy', null, {'save' : 1, 'save_as' : 1}, (data.report_data && !data.view_only) ? null : 'disabled')}}
 		{{:helper.link('New Report', null, {'download' : 1, 'warning' : (data.report_data && !data.view_only) ? 1 : 0}, null)}}
 	</div>
 	<center><h2>Report Editor</h2></center>
@@ -17,7 +17,7 @@
 						{{if (value.can_edit && value.access_edit && !data.view_only)}}
 							{{:helper.link('','pencil' , {'edit' : 1, 'ID' : value.ID}, null)}}
 						{{/if}}
-						{{:value.name}}: 
+						{{:value.name}}:
 					</div>
 					{{if value.access}}
 						<div class="itemContent">

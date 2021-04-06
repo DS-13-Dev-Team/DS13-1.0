@@ -70,7 +70,7 @@
 		var/mode = text2num(href_list["mode"])
 		return isnum(do_authorize) && isnum(mode) && G && G.authorize(mode, do_authorize, usr.name)
 
-	if(href_list["cyborg_gun"] && ("authorize" in href_list) && href_list["mode"]) 
+	if(href_list["cyborg_gun"] && ("authorize" in href_list) && href_list["mode"])
 		var/obj/item/weapon/gun/energy/gun/secure/mounted/M = locate(href_list["cyborg_gun"]) in GLOB.registered_cyborg_weapons
 		var/do_authorize = text2num(href_list["authorize"])
 		var/mode = text2num(href_list["mode"])

@@ -58,7 +58,7 @@ def has_mismatch(match_list):
 		if(len(list_of_mismatched_lines) > 0):
 			return 1
 	return 0
-	
+
 def arrange_mismatches(mismatches_by_tag, mismatch_line, mismatch_counts):
 	for tag, mismatch_count in mismatch_counts.iteritems():
 		stack_of_existing_mismatches = mismatches_by_tag[tag]
@@ -111,10 +111,10 @@ for file, mismatches_by_tag in mismatches_by_file.iteritems():
 				for mismatch_line in sorted(set(mismatch_list)):
 					print('\t\tLine {0}'.format(abs(mismatch_line)))
 
-# Simply prints the total number of mismatches found and if so returns 1 to, for example, fail Travis builds.				
+# Simply prints the total number of mismatches found and if so returns 1 to, for example, fail Travis builds.
 if(total_mismatches == 0):
 	print('No mismatches found.')
-else:	
+else:
 	print('')
 	print('Total number of mismatches: {0}'.format(total_mismatches))
 	sys.exit(1)
