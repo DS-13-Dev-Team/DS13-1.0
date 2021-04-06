@@ -19,7 +19,7 @@
 **/
 
 /datum/proc/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = tg_default_state)
-    return -1 // Not implemented.
+	return -1 // Not implemented.
 
 /**
 * public
@@ -33,7 +33,7 @@
 **/
 
 /datum/proc/ui_data(mob/user, ui_key = "main")
-    return list() // Not implemented.
+	return list() // Not implemented.
 
 
 /**
@@ -49,8 +49,8 @@
 **/
 
 /datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-    if(!ui || ui.status != UI_INTERACTIVE)
-        return 1 // If UI is not interactive or usr calling Topic is not the UI user, bail.
+	if(!ui || ui.status != UI_INTERACTIVE)
+		return 1 // If UI is not interactive or usr calling Topic is not the UI user, bail.
 
 
 /**
@@ -62,7 +62,7 @@
 **/
 
 /datum/proc/ui_host()
-    return src // Default src.
+	return src // Default src.
 
 /**
 * global
@@ -90,16 +90,16 @@
 **/
 
 /client/verb/uiclose(ref as text)
-    // Name the verb, and hide it from the user panel.
-    set name = "uiclose"
-    set hidden = 1
+	// Name the verb, and hide it from the user panel.
+	set name = "uiclose"
+	set hidden = 1
 
-    // Get the UI based on the ref.
-    var/datum/tgui/ui = locate(ref)
+	// Get the UI based on the ref.
+	var/datum/tgui/ui = locate(ref)
 
-    // If we found the UI, close it.
-    if(istype(ui))
-        ui.close()
-        // Unset machine just to be sure.
-        if(src && src.mob)
-            src.mob.unset_machine()
+	// If we found the UI, close it.
+	if(istype(ui))
+		ui.close()
+		// Unset machine just to be sure.
+		if(src && src.mob)
+			src.mob.unset_machine()

@@ -273,8 +273,8 @@ nanoui is used to open and update nano browser uis
 * Set the layout key for use in the frontend Javascript
 * The layout key is the basic layout key for the page
 * Two files are loaded on the client based on the layout key varable:
-*     -> a template in /nano/templates with the filename "layout_<layout_key>.tmpl
-*     -> a CSS stylesheet in /nano/css with the filename "layout_<layout_key>.css
+*	 -> a template in /nano/templates with the filename "layout_<layout_key>.tmpl
+*	 -> a CSS stylesheet in /nano/css with the filename "layout_<layout_key>.css
 *
 * @param nlayout string The layout key to use
 *
