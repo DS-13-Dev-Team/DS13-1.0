@@ -39,30 +39,6 @@
 
 #define R_MAXPERMISSION 0x8000 // This holds the maximum value for a permission. It is used in iteration, so keep it updated.
 
-#define ADMIN_QUESTION(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];moreinfo=[REF(user)]'>?</a>)"
-#define ADMIN_FOLLOW(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];observefollow=[REF(user)]'>FLW</a>)"
-#define ADMIN_JUMP(src) "(<a href='?_src_=holder;[HrefToken(TRUE)];observecoordjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)"
-#define ADMIN_JUMP_USER(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];observecoordjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)"
-#define ADMIN_PP(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];playerpanel=[REF(user)]'>PP</a>)"
-#define ADMIN_VV(atom) "(<a href='?_src_=vars;[HrefToken(TRUE)];vars=[REF(atom)]'>VV</a>)"
-#define ADMIN_SM(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];subtlemessage=[REF(user)]'>SM</a>)"
-#define ADMIN_TP(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];traitorpanel=[REF(user)]'>TP</a>)"
-#define ADMIN_KICK(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];kick=[REF(user)]'>KICK</a>)"
-#define ADMIN_SPAWNCOOKIE(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];spawncookie=[REF(user)]'>SC</a>)"
-#define ADMIN_SPAWNFORTUNECOKIE(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];spawnfortunecookie=[REF(user)]'>SFC</a>)"
-#define ADMIN_LOOKUP(user) "[key_name_admin(user)][ADMIN_QUESTION(user)]"
-#define ADMIN_LOOKUPFLW(user) "[key_name_admin(user)][ADMIN_QUESTION(user)] [ADMIN_FOLLOW(user)]"
-#define ADMIN_FULL_NONAME(user) "[ADMIN_QUESTION(user)] [ADMIN_PP(user)] [ADMIN_VV(user)] [ADMIN_SM(user)] [ADMIN_JUMP(user)] [ADMIN_FOLLOW(user)]"
-#define ADMIN_FULL(user) "[key_name_admin(user)] [ADMIN_FULL_NONAME(user)]"
-#define ADMIN_TPMONTY_NONAME(user) "[ADMIN_QUESTION(user)] [ADMIN_JUMP(user)] [ADMIN_FOLLOW(user)]"
-#define ADMIN_TPMONTY(user) "[key_name_admin(user)] [ADMIN_TPMONTY_NONAME(user)]"
-#define COORD(src) "[src ? "([src.x],[src.y],[src.z])" : "nonexistent location"]"
-#define AREACOORD(src) "[src ? "[get_area_name(src, TRUE)] ([src.x], [src.y], [src.z])" : "nonexistent location"]"
-#define AREACOORD_NO_Z(src) "[src ? "[get_area_name(src, TRUE)] (X: [src.x], Y: [src.y])" : "nonexistent location"]"
-#define ADMIN_COORDJUMP(src) "[src ? "[COORD(src)] [ADMIN_JUMP(src)]" : "nonexistent location"]"
-#define ADMIN_VERBOSEJUMP(src) "[src ? "[AREACOORD(src)] [ADMIN_JUMP(src)]" : "nonexistent location"]"
-#define ADMIN_INDIVIDUALLOG(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];individuallog=[REF(user)]'>LOGS</a>)"
-
 #define ADDANTAG_PLAYER 1	// Any player may call the add antagonist vote.
 #define ADDANTAG_ADMIN 2	// Any player with admin privilegies may call the add antagonist vote.
 #define ADDANTAG_AUTO 4		// The add antagonist vote is available as an alternative for transfer vote.

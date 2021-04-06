@@ -25,7 +25,7 @@
 	if(check_rights(R_ADMIN))
 		return
 	log_admin("[key_name(usr)] has forcefully reloaded the configuration from disk.")
-	message_admins("[ADMIN_TPMONTY(usr)] has forcefully reloaded the configuration from disk.")
+	message_admins("[key_name(usr)] has forcefully reloaded the configuration from disk.")
 	full_wipe()
 	Load(world.params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
