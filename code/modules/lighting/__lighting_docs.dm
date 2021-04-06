@@ -4,22 +4,22 @@ BS12 object based lighting system
 
 /*
 Changes from tg DAL:
-  -	Lighting is done using objects instead of subareas.
-  - Animated transitions. (newer tg DAL has this)
-  - Full colours with mixing.
-  - Support for lights on shuttles.
+-	Lighting is done using objects instead of subareas.
+- Animated transitions. (newer tg DAL has this)
+- Full colours with mixing.
+- Support for lights on shuttles.
 
-  - Code:
-    - Instead of one flat luminosity var, light is represented by 3 atom vars:
-      - light_range; diameter in tiles of the light, used for calculating falloff, Cannot be 1.
-      - light_power; multiplier for the brightness of lights,
-      - light_color; hex string representing the RGB colour of the light.
-    - setLuminousity() is now set_light() and takes the three variables above.
-      - Variables can be left as null to not update them.
-    - set_opacity() is now set_opacity().
-    - Areas have luminosity set to 1 permanently, no hard-lighting.
-    - Objects inside other objects can have lights and they properly affect the turf. (flashlights)
-    - area/master and area/list/related have been eviscerated since subareas aren't needed.
+- Code:
+- Instead of one flat luminosity var, light is represented by 3 atom vars:
+> light_range; diameter in tiles of the light, used for calculating falloff, Cannot be 1.
+> light_power; multiplier for the brightness of lights,
+> light_color; hex string representing the RGB colour of the light.
+- setLuminousity() is now set_light() and takes the three variables above.
+> Variables can be left as null to not update them.
+- set_opacity() is now set_opacity().
+- Areas have luminosity set to 1 permanently, no hard-lighting.
+- Objects inside other objects can have lights and they properly affect the turf. (flashlights)
+- area/master and area/list/related have been eviscerated since subareas aren't needed.
 */
 
 /*
