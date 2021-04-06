@@ -1,5 +1,3 @@
-#define ZONE_BLOCKED 2
-#define AIR_BLOCKED 1
 //Interactions
 /turf/simulated/wall/proc/toggle_open(var/mob/user)
 
@@ -40,8 +38,6 @@
 	can_open = WALL_CAN_OPEN
 	update_icon()
 
-#undef ZONE_BLOCKED
-#undef AIR_BLOCKED
 
 /turf/simulated/wall/proc/update_air()
 	if(!SSair)

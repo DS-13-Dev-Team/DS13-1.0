@@ -1,5 +1,6 @@
 /obj/item/weapon/hand_labeler
 	name = "hand labeler"
+	desc = "A multipurpose tagger for labelling various objects."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler0"
 	item_state = "flight"

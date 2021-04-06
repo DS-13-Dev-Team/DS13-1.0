@@ -26,7 +26,7 @@
  */
 /obj/item/weapon/hemostat
 	name = "hemostat"
-	desc = "You think you have seen this before."
+	desc = "A surgical clamp to stop bleeding."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "hemostat"
 	matter = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 2500)
@@ -40,7 +40,7 @@
  */
 /obj/item/weapon/cautery
 	name = "cautery"
-	desc = "This stops bleeding."
+	desc = "This cauterises and closes incisions."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "cautery"
 	matter = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 2500)
@@ -80,7 +80,7 @@
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
 	throwforce = 5.0
-	
+
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	matter = list(MATERIAL_STEEL = 10000, MATERIAL_GLASS = 5000)
@@ -137,11 +137,11 @@
 
 /obj/item/weapon/bonesetter
 	name = "bone setter"
+	desc = "Sets bones back to their healthy positions."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "bone setter"
 	force = 8.0
 	throwforce = 9.0
-	
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("attacked", "hit", "bludgeoned")

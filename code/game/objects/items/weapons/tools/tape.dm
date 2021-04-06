@@ -42,7 +42,7 @@
 				user << SPAN_WARNING("\The [H] doesn't have any eyes.")
 				return
 			if(H.glasses)
-				user << SPAN_WARNING("\The [H] is already wearing somethign on their eyes.")
+				user << SPAN_WARNING("\The [H] is already wearing something on their eyes.")
 				return
 			if(H.head && (H.head.body_parts_covered & FACE))
 				user << SPAN_WARNING("Remove their [H.head] first.")

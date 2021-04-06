@@ -855,6 +855,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	else
 		mob_icon = default_onmob_icons[slot]
 
+
 	if(user_human)
 		return user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)

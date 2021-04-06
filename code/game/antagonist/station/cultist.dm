@@ -53,6 +53,10 @@
 
 	faction = "cult"
 
+/datum/antagonist/cultist/New()
+	..()
+	GLOB.cult = src
+
 /datum/antagonist/cultist/create_global_objectives()
 
 	if(!..())

@@ -59,3 +59,12 @@
 #define BIOMASS_REQ_T2	600
 #define BIOMASS_REQ_T3	1000
 #define BIOMASS_REQ_T4	3825
+
+/*
+	Customisation parameters
+*/
+#define SIGNAL_DEFAULT	"red"
+#define VARIANT	"variant"
+#define OUTFIT	"outfit"
+#define WEIGHT	"weight"
+#define PATRON	"patron"
