@@ -22,7 +22,7 @@
 	icon_dead = list("arm_dead_1", "arm_dead_2")
 	speed = 2.25
 	melee_damage_lower = 2
-	melee_damage_upper = 4
+	melee_damage_upper = 3.5
 	attacktext = "scratched"
 	attack_sound = 'sound/weapons/bite.ogg'
 	leap_range = 5
@@ -69,7 +69,7 @@
 
 //The divider arm has an additional effect, the target is steered around randomly
 /datum/extension/mount/parasite/arm
-	damage = 6
+	damage = 8
 
 /datum/extension/mount/parasite/arm/Process()
 	.=..()
