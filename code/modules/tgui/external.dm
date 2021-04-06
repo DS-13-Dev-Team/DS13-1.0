@@ -17,6 +17,7 @@
 * optional master_ui datum/tgui The parent UI.
 * optional state datum/ui_state The state used to determine status.
 **/
+
 /datum/proc/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = tg_default_state)
     return -1 // Not implemented.
 
@@ -30,6 +31,7 @@
 *
 * return list Data to be sent to the UI.
 **/
+
 /datum/proc/ui_data(mob/user, ui_key = "main")
     return list() // Not implemented.
 
@@ -45,6 +47,7 @@
 *
 * return bool If the UI should be updated or not.
 **/
+
 /datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
     if(!ui || ui.status != UI_INTERACTIVE)
         return 1 // If UI is not interactive or usr calling Topic is not the UI user, bail.
@@ -57,6 +60,7 @@
 * This allows modules/datums to have the UI attached to them,
 * and be a part of another object.
 **/
+
 /datum/proc/ui_host()
     return src // Default src.
 
@@ -65,6 +69,7 @@
 *
 * Used to track the current screen.
 **/
+
 /datum/var/ui_screen = "home"
 
 /**
@@ -72,6 +77,7 @@
 *
 * Used to track UIs for a mob.
 **/
+
 /mob/var/list/tg_open_uis = list()
 
 /**
@@ -82,6 +88,7 @@
 *
 * required uiref ref The UI that was closed.
 **/
+
 /client/verb/uiclose(ref as text)
     // Name the verb, and hide it from the user panel.
     set name = "uiclose"

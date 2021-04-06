@@ -14,6 +14,7 @@
 *
 * return UI_state The state of the UI.
 **/
+
 /datum/proc/ui_status(mob/user, datum/ui_state/state)
   var/datum/src_object = ui_host()
   if(src_object != src)
@@ -38,6 +39,7 @@
 *
 * return UI_state The state of the UI.
 **/
+
 /datum/ui_state/proc/can_use_topic(src_object, mob/user)
   return UI_CLOSE // Don't allow interaction by default.
 
@@ -48,6 +50,7 @@
 *
 * return UI_state The state of the UI.
 **/
+
 /mob/proc/shared_ui_interaction(src_object)
   if(!client) // Close UIs if mindless.
     return UI_CLOSE
@@ -79,6 +82,7 @@
 *
 * return UI_state The state of the UI.
 **/
+
 /atom/proc/contents_ui_distance(src_object, mob/living/user)
   return user.shared_living_ui_distance(src_object) // Just call this mob's check.
 
@@ -91,6 +95,7 @@
 *
 * return UI_state The state of the UI.
 **/
+
 /mob/living/proc/shared_living_ui_distance(atom/movable/src_object)
   if(!(src_object in view(src))) // If the object is obscured, close it.
     return UI_CLOSE
