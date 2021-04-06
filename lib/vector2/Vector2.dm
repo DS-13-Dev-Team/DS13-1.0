@@ -9,9 +9,9 @@
 	else
 		return "(wrongtype)"
 
-vector2
-	var x
-	var y
+/vector2
+	var/x
+	var/y
 
 	/* Takes 2 numbers or a vector2 to copy.
 	*/
@@ -177,9 +177,8 @@ vector2
 
 			if(istype(from_vector, /vector2))
 				from_vector.SelfNormalize()
-				var
-					cos_angle = to_vector.Dot(from_vector)
-					sin_angle = to_vector.Cross(from_vector)
+				var/cos_angle = to_vector.Dot(from_vector)
+				var/sin_angle = to_vector.Cross(from_vector)
 				.= matrix(cos_angle, sin_angle, 0, -sin_angle, cos_angle, 0)
 				release_vector(to_vector)
 
