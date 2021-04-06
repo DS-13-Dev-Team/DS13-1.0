@@ -5971,7 +5971,7 @@
 /turf/simulated/wall/r_wall/hull,
 /area/ship/scrap/comms)
 "LY" = (
-/obj/item/weapon/screwdriver,
+/obj/item/weapon/tool/screwdriver,
 /obj/structure/cable{
 	icon_state = "5-8"
 	},

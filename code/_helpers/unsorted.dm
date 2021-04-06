@@ -869,7 +869,7 @@ proc/get_mob_with_client_list()
 
 
 //Quick type checks for some tools
-var/global/list/common_tools = list(//here
+var/global/list/common_tools = list(
 /obj/item/stack/cable_coil,
 /obj/item/weapon/tool/wrench,
 /obj/item/weapon/tool/weldingtool,

@@ -853,7 +853,7 @@
 /area/constructionsite/hallway/fore)
 "cJ" = (
 /obj/structure/table/standard,
-/obj/item/weapon/screwdriver,
+/obj/item/weapon/tool/screwdriver,
 /obj/machinery/light,
 /obj/random/maintenance,
 /turf/simulated/floor/tiled,

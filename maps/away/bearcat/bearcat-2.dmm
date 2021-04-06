@@ -2944,7 +2944,7 @@
 /turf/simulated/floor/usedup,
 /area/ship/scrap/maintenance/engine/port)
 "eD" = (
-/obj/item/weapon/screwdriver,
+/obj/item/weapon/tool/screwdriver,
 /obj/structure/cable{
 	icon_state = "5-8"
 	},

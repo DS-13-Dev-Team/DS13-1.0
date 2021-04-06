@@ -6031,7 +6031,7 @@
 "or" = (
 /obj/structure/table/rack,
 /obj/item/weapon/tool/wrench,
-/obj/item/weapon/screwdriver,
+/obj/item/weapon/tool/screwdriver,
 /obj/item/weapon/wirecutters,
 /turf/simulated/floor/plating,
 /area/errant_pisces/aux_power)

@@ -247,7 +247,7 @@
 	manipulating = 0
 	return null
 
-/obj/structure/table/proc/remove_reinforced(obj/item/weapon/screwdriver/S, mob/user)
+/obj/structure/table/proc/remove_reinforced(obj/item/weapon/tool/screwdriver/S, mob/user)
 	reinforced = common_material_remove(user, reinforced, 40, "reinforcements", "screws", 'sound/items/Screwdriver.ogg')
 
 /obj/structure/table/proc/remove_material(obj/item/weapon/tool/wrench/W, mob/user)

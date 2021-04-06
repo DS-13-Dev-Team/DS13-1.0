@@ -1951,7 +1951,7 @@
 "eW" = (
 /obj/machinery/optable,
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/screwdriver,
+/obj/item/weapon/tool/screwdriver,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/airless,
 /area/slavers_base/med)
