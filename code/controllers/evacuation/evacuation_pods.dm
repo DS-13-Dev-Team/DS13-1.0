@@ -1,6 +1,7 @@
 #define EVAC_OPT_ABANDON_SHIP "abandon_ship"
 #define EVAC_OPT_BLUESPACE_JUMP "bluespace_jump"
 #define EVAC_OPT_CANCEL_ABANDON_SHIP "cancel_abandon_ship"
+#define EVAC_OPT_CANCEL_BLUESPACE_JUMP "cancel_bluespace_jump"
 
 // Apparently, emergency_evacuation --> "abandon ship" and !emergency_evacuation --> "bluespace jump"
 // That stuff should be moved to the evacuation option datums but someone can do that later
