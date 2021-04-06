@@ -101,21 +101,3 @@
 	*/
 
 	return leap_attack(A, _cooldown = leap_cooldown, _delay = (leap_windup_time - (0.2 SECONDS)), _speed = 7, _maxrange = 6, _lifespan = 5 SECONDS, subtype = /datum/extension/charge/leap/component)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

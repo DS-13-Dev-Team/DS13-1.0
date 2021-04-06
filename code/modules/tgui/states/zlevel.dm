@@ -1,8 +1,8 @@
- /**
-  * tgui state: z_state
-  *
-  * Only checks that the Z-level of the user and src_object are the same.
- **/
+/**
+* tgui state: z_state
+*
+* Only checks that the Z-level of the user and src_object are the same.
+**/
 
 /var/global/datum/ui_state/z_state/tg_z_state = new()
 

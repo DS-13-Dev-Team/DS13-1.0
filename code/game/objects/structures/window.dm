@@ -95,7 +95,7 @@
 	return
 
 /obj/structure/window/zero_health()
-    shatter()
+	shatter()
 
 
 //TODO: Make full windows a separate type of window.

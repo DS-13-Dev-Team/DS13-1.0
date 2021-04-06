@@ -167,7 +167,7 @@
 	rotate()
 
 /obj/machinery/floodlight/on
-    use = 50
+	use = 50
 
 /obj/machinery/floodlight/on/Initialize()
 	. = ..()

@@ -286,11 +286,11 @@ var/list/outfits_decls_by_type_
 
 
 /decl/hierarchy/outfit/proc/copy()
-    var/savefile/s = new
-    s << src
-    var/decl/hierarchy/outfit/copy
-    s >> copy
-    return copy
+	var/savefile/s = new
+	s << src
+	var/decl/hierarchy/outfit/copy
+	s >> copy
+	return copy
 
 
 //Returns a list of all the item paths this outfit contains, along with a quantity
@@ -371,6 +371,3 @@ var/list/outfits_decls_by_type_
 			//If so, we remove it from this outfit
 			var/outfit_slot = outfit_item[2]
 			vars[outfit_slot] = null
-
-
-

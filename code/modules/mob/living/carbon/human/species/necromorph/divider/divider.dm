@@ -101,11 +101,11 @@ The divider swings one of its clawed arms in a wide arc, dealing moderate damage
 <h3>Hotkey: Ctrl+Alt+Click </h3><br>\
 <h3>Cooldown: 12 seconds</h3><br>\
 The divider launches its ropelike prehensile tongue, attempting to latch onto a victim.<br>\
- If it hits a standing humanoid, it will wrap around their neck, rooting them in place as it slowly garottes their throat.<br>\
-  The tongue will deal damage over time until it completely severs the neck and decapitates the victim, but it can be interrupted if the divider is knocked down, decapitated, or the tongue itself takes enough damage.<br>\
-  <br>\
-  The tongue is vulnerable to blades and takes double damage from edged weapons.<br>\
-  Tonguetacle is best used on a lone victim who is trying to escape, it is fairly easy for teammates to break them out of it if they aren't alone."
+If it hits a standing humanoid, it will wrap around their neck, rooting them in place as it slowly garottes their throat.<br>\
+The tongue will deal damage over time until it completely severs the neck and decapitates the victim, but it can be interrupted if the divider is knocked down, decapitated, or the tongue itself takes enough damage.<br>\
+<br>\
+The tongue is vulnerable to blades and takes double damage from edged weapons.<br>\
+Tonguetacle is best used on a lone victim who is trying to escape, it is fairly easy for teammates to break them out of it if they aren't alone."
 
 #define DIVIDER_COMPONENTS 	"<h2>Components:</h2><br>\
 On death, dismemberment or manual splitting, the divider seperates into five smaller creatures. Two arms, two legs, and one head. <br>\

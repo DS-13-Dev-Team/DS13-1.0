@@ -1,8 +1,8 @@
- /**
-  * tgui state: physical_state
-  *
-  * Short-circuits the default state to only check physical distance.
- **/
+/**
+* tgui state: physical_state
+*
+* Short-circuits the default state to only check physical distance.
+**/
 
 /var/global/datum/ui_state/physical/tg_physical_state = new()
 

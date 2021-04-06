@@ -1,8 +1,8 @@
- /**
-  * tgui state: hands_state
-  *
-  * Checks that the src_object is in the user's hands, or user's active gripper.
- **/
+/**
+* tgui state: hands_state
+*
+* Checks that the src_object is in the user's hands, or user's active gripper.
+**/
 
 /var/global/datum/ui_state/hands_state/tg_hands_state = new()
 

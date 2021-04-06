@@ -237,7 +237,7 @@ What is the naming convention for planes or layers?
 	layer = initial(layer)
 
 /*
-  PLANE MASTERS
+PLANE MASTERS
 */
 
 /obj/screen/plane_master

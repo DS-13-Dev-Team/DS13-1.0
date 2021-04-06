@@ -5,7 +5,7 @@ GLOBAL_LIST_EMPTY(skills)
 	name = "None" 				// Name of the skill. This is what the player sees.
 	var/desc = "Placeholder skill" 	// Generic description of this skill.
 
-   	// Names for different skill values, in order from 1 up.
+	// Names for different skill values, in order from 1 up.
 	var/levels = list( 		"Unskilled"			= "Unskilled Description",
 							"Basic"				= "Basic Description",
 							"Trained"			= "Trained Description",

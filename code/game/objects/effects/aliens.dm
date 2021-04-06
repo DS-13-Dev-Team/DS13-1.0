@@ -1,9 +1,9 @@
 /*
- * Acid
- */
- #define ACID_STRONG     2
- #define ACID_MODERATE   1.5
- #define ACID_WEAK       1
+* Acid
+*/
+#define ACID_STRONG     2
+#define ACID_MODERATE   1.5
+#define ACID_WEAK       1
 
 /obj/effect/acid
 	name = "acid"

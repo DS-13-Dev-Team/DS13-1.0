@@ -67,9 +67,9 @@
 *******************************/
 //Fuel and cell spawn
 /obj/item/weapon/tool/proc/consume_power(var/power_usage) // its time
-    if(!cell)
-        return FALSE
-    return cell.checked_use(power_usage)
+	if(!cell)
+		return FALSE
+	return cell.checked_use(power_usage)
 
 /obj/item/weapon/tool/New()
 

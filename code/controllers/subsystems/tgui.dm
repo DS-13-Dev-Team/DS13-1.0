@@ -41,25 +41,25 @@ SUBSYSTEM_DEF(tgui)
 	. = ..()
 	. += list("basehtml")
 
- /**
-  * tgui subsystem
-  *
-  * Contains all tgui state and process code.
- **/
+/**
+* tgui subsystem
+*
+* Contains all tgui state and process code.
+**/
 
- /**
-  * public
-  *
-  * Get a open UI given a user, src_object, and ui_key and try to update it with data.
-  *
-  * required user mob The mob who opened/is using the UI.
-  * required src_object datum The object/datum which owns the UI.
-  * required ui_key string The ui_key of the UI.
-  * optional ui datum/tgui The UI to be updated, if it exists.
-  * optional force_open bool If the UI should be re-opened instead of updated.
-  *
-  * return datum/tgui The found UI.
- **/
+/**
+* public
+*
+* Get a open UI given a user, src_object, and ui_key and try to update it with data.
+*
+* required user mob The mob who opened/is using the UI.
+* required src_object datum The object/datum which owns the UI.
+* required ui_key string The ui_key of the UI.
+* optional ui datum/tgui The UI to be updated, if it exists.
+* optional force_open bool If the UI should be re-opened instead of updated.
+*
+* return datum/tgui The found UI.
+**/
 /datum/controller/subsystem/tgui/proc/try_update_ui(mob/user, datum/src_object, ui_key, datum/tgui/ui, force_open = 0)
 	if(isnull(ui)) // No UI was passed, so look for one.
 		ui = get_open_ui(user, src_object, ui_key)
@@ -74,17 +74,17 @@ SUBSYSTEM_DEF(tgui)
 	else
 		return null // We couldn't find a UI.
 
- /**
-  * private
-  *
-  * Get a open UI given a user, src_object, and ui_key.
-  *
-  * required user mob The mob who opened/is using the UI.
-  * required src_object datum The object/datum which owns the UI.
-  * required ui_key string The ui_key of the UI.
-  *
-  * return datum/tgui The found UI.
- **/
+/**
+* private
+*
+* Get a open UI given a user, src_object, and ui_key.
+*
+* required user mob The mob who opened/is using the UI.
+* required src_object datum The object/datum which owns the UI.
+* required ui_key string The ui_key of the UI.
+*
+* return datum/tgui The found UI.
+**/
 /datum/controller/subsystem/tgui/proc/get_open_ui(mob/user, datum/src_object, ui_key)
 	var/src_object_key = "\ref[src_object]"
 	if(isnull(tg_open_uis[src_object_key]) || !istype(tg_open_uis[src_object_key], /list))
@@ -98,15 +98,15 @@ SUBSYSTEM_DEF(tgui)
 
 	return null // Couldn't find a UI!
 
- /**
-  * private
-  *
-  * Update all UIs attached to src_object.
-  *
-  * required src_object datum The object/datum which owns the UIs.
-  *
-  * return int The number of UIs updated.
- **/
+/**
+* private
+*
+* Update all UIs attached to src_object.
+*
+* required src_object datum The object/datum which owns the UIs.
+*
+* return int The number of UIs updated.
+**/
 /datum/controller/subsystem/tgui/proc/update_uis(datum/src_object)
 	var/src_object_key = "\ref[src_object]"
 	if(isnull(tg_open_uis[src_object_key]) || !istype(tg_open_uis[src_object_key], /list))
@@ -120,15 +120,15 @@ SUBSYSTEM_DEF(tgui)
 				update_count++ // Count each UI we update.
 	return update_count
 
- /**
-  * private
-  *
-  * Close all UIs attached to src_object.
-  *
-  * required src_object datum The object/datum which owns the UIs.
-  *
-  * return int The number of UIs closed.
- **/
+/**
+* private
+*
+* Close all UIs attached to src_object.
+*
+* required src_object datum The object/datum which owns the UIs.
+*
+* return int The number of UIs closed.
+**/
 /datum/controller/subsystem/tgui/proc/close_uis(datum/src_object)
 	var/src_object_key = "\ref[src_object]"
 	if(isnull(tg_open_uis[src_object_key]) || !istype(tg_open_uis[src_object_key], /list))
@@ -142,17 +142,17 @@ SUBSYSTEM_DEF(tgui)
 				close_count++ // Count each UI we close.
 	return close_count
 
- /**
-  * private
-  *
-  * Update all UIs belonging to a user.
-  *
-  * required user mob The mob who opened/is using the UI.
-  * optional src_object datum If provided, only update UIs belonging this src_object.
-  * optional ui_key string If provided, only update UIs with this UI key.
-  *
-  * return int The number of UIs updated.
- **/
+/**
+* private
+*
+* Update all UIs belonging to a user.
+*
+* required user mob The mob who opened/is using the UI.
+* optional src_object datum If provided, only update UIs belonging this src_object.
+* optional ui_key string If provided, only update UIs with this UI key.
+*
+* return int The number of UIs updated.
+**/
 /datum/controller/subsystem/tgui/proc/update_user_uis(mob/user, datum/src_object = null, ui_key = null)
 	if(isnull(user.tg_open_uis) || !istype(user.tg_open_uis, /list) || tg_open_uis.len == 0)
 		return 0 // Couldn't find any UIs for this user.
@@ -164,17 +164,17 @@ SUBSYSTEM_DEF(tgui)
 			update_count++ // Count each UI we upadte.
 	return update_count
 
- /**
-  * private
-  *
-  * Close all UIs belonging to a user.
-  *
-  * required user mob The mob who opened/is using the UI.
-  * optional src_object datum If provided, only close UIs belonging this src_object.
-  * optional ui_key string If provided, only close UIs with this UI key.
-  *
-  * return int The number of UIs closed.
- **/
+/**
+* private
+*
+* Close all UIs belonging to a user.
+*
+* required user mob The mob who opened/is using the UI.
+* optional src_object datum If provided, only close UIs belonging this src_object.
+* optional ui_key string If provided, only close UIs with this UI key.
+*
+* return int The number of UIs closed.
+**/
 /datum/controller/subsystem/tgui/proc/close_user_uis(mob/user, datum/src_object = null, ui_key = null)
 	if(isnull(user.tg_open_uis) || !istype(user.tg_open_uis, /list) || tg_open_uis.len == 0)
 		return 0 // Couldn't find any UIs for this user.
@@ -186,13 +186,13 @@ SUBSYSTEM_DEF(tgui)
 			close_count++ // Count each UI we close.
 	return close_count
 
- /**
-  * private
-  *
-  * Add a UI to the list of open UIs.
-  *
-  * required ui datum/tgui The UI to be added.
- **/
+/**
+* private
+*
+* Add a UI to the list of open UIs.
+*
+* required ui datum/tgui The UI to be added.
+**/
 /datum/controller/subsystem/tgui/proc/on_open(datum/tgui/ui)
 	var/src_object_key = "\ref[ui.src_object]"
 	if(isnull(tg_open_uis[src_object_key]) || !istype(tg_open_uis[src_object_key], /list))
@@ -206,15 +206,15 @@ SUBSYSTEM_DEF(tgui)
 	uis |= ui
 	processing_uis |= ui
 
- /**
-  * private
-  *
-  * Remove a UI from the list of open UIs.
-  *
-  * required ui datum/tgui The UI to be removed.
-  *
-  * return bool If the UI was removed or not.
- **/
+/**
+* private
+*
+* Remove a UI from the list of open UIs.
+*
+* required ui datum/tgui The UI to be removed.
+*
+* return bool If the UI was removed or not.
+**/
 /datum/controller/subsystem/tgui/proc/on_close(datum/tgui/ui)
 	var/src_object_key = "\ref[ui.src_object]"
 	if(isnull(tg_open_uis[src_object_key]) || !istype(tg_open_uis[src_object_key], /list))
@@ -236,28 +236,28 @@ SUBSYSTEM_DEF(tgui)
 
 	return 1 // Let the caller know we did it.
 
- /**
-  * private
-  *
-  * Handle client logout, by closing all their UIs.
-  *
-  * required user mob The mob which logged out.
-  *
-  * return int The number of UIs closed.
- **/
+/**
+* private
+*
+* Handle client logout, by closing all their UIs.
+*
+* required user mob The mob which logged out.
+*
+* return int The number of UIs closed.
+**/
 /datum/controller/subsystem/tgui/proc/on_logout(mob/user)
 	return close_user_uis(user)
 
- /**
-  * private
-  *
-  * Handle clients switching mobs, by transfering their UIs.
-  *
-  * required user source The client's original mob.
-  * required user target The client's new mob.
-  *
-  * return bool If the UIs were transferred.
- **/
+/**
+* private
+*
+* Handle clients switching mobs, by transfering their UIs.
+*
+* required user source The client's original mob.
+* required user target The client's new mob.
+*
+* return bool If the UIs were transferred.
+**/
 /datum/controller/subsystem/tgui/proc/on_transfer(mob/source, mob/target)
 	if(!source || isnull(source.tg_open_uis) || !istype(source.tg_open_uis, /list) || tg_open_uis.len == 0)
 		return 0 // The old mob had no open UIs.

@@ -1,10 +1,10 @@
 
- /**
-  * tgui state: human_adjacent_state
-  *
-  * In addition to default checks, only allows interaction for a
-  * human adjacent user.
- **/
+/**
+* tgui state: human_adjacent_state
+*
+* In addition to default checks, only allows interaction for a
+* human adjacent user.
+**/
 
 /var/global/datum/ui_state/human_adjacent_state/tg_human_adjacent_state = new()
 

@@ -136,7 +136,7 @@ A successful charge is the most effective and reliable way to detonate. It shoul
 #define EXPLODER_EXPLODE_DESC "<h2>Explode:</h2><br>\
 <h3>Hotkey: Ctrl+Shift+Click</h3><br>\
 The last resort. The exploder screams and shakes violently for 3 seconds, before detonating the pustule.<br>\
- This is quite telegraphed and it can give your victims time to back away before the explosion. Not the most ideal way to detonate, but it can be a viable backup if you fail to hit something with charge."
+This is quite telegraphed and it can give your victims time to back away before the explosion. Not the most ideal way to detonate, but it can be a viable backup if you fail to hit something with charge."
 
 /datum/species/necromorph/exploder/get_ability_descriptions()
 	.= ""

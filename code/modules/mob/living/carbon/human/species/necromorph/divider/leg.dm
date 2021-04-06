@@ -69,4 +69,3 @@
 		//And we ourselves also get knocked back
 		//We spawn it off to let the current stack finish first, otherwise we get hit twice
 		apply_push_impulse_from(epicentre, 20)
-

@@ -16,7 +16,7 @@
 	. = ..()
 
 
- //No longer needed, but I'll leave it here incase we plan to re-use it.
+//No longer needed, but I'll leave it here incase we plan to re-use it.
 /mob/living/silicon/robot/movement_delay()
 	var/tally = ..() //Incase I need to add stuff other than "speed" later
 
@@ -28,4 +28,3 @@
 	tally += config.robot_delay
 	tally /= get_move_speed_factor()
 	return tally
-

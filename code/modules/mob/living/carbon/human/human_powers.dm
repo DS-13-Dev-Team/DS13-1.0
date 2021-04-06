@@ -2,7 +2,7 @@
 // species.dm's inherent_verbs ~ Z
 
 /****************
- true human verbs
+true human verbs
 ****************/
 /mob/living/carbon/human/proc/tie_hair()
 	set name = "Tie Hair"
@@ -37,7 +37,7 @@
 			to_chat(src, "<span class ='notice'>You're already using that style.</span>")
 
 /****************
- misc alien verbs
+misc alien verbs
 ****************/
 /mob/living/carbon/human/proc/tackle()
 	set category = "Abilities"
@@ -197,7 +197,7 @@
 	return
 
 /***********
- diona verbs
+diona verbs
 ***********/
 /mob/living/carbon/human/proc/diona_heal_toggle()
 	set name = "Toggle Heal"

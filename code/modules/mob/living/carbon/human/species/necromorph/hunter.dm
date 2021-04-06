@@ -142,7 +142,7 @@ This effect has a cooldown of 2 minutes"
 #define HUNTER_REGENERATE_DESC	"<h2>Regenerate:</h2><br>\
 <h3>Cooldown: 30 seconds</h3><br>\
 The Hunter starts shaking and screaming in pain, as it regrows a missing limb and heals 30 health, over a period of 8 seconds.<br>\
- This also heals 20 lasting damage. The hunter's regenerate is much less effective against burn damage, healing it at only 33% of the normal rate."
+This also heals 20 lasting damage. The hunter's regenerate is much less effective against burn damage, healing it at only 33% of the normal rate."
 
 
 #define HUNTER_LUNGE_DESC	"<h2>Hookblade:</h2><br>\

@@ -1,20 +1,20 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /* Tools!
- * Note: Multitools are /obj/item/device
- *
- * Contains:
- * 		Wrench
- * 		Screwdriver
- * 		Wirecutters
- * 		Welding Tool
- * 		Crowbar
- */
+* Note: Multitools are /obj/item/device
+*
+* Contains:
+* 		Wrench
+* 		Screwdriver
+* 		Wirecutters
+* 		Welding Tool
+* 		Crowbar
+*/
 
 /*
- * Wrench
- */
- /*
+* Wrench
+*/
+/*
 /obj/item/weapon/tool/wrench
 	name = "wrench"
 	desc = "A good, durable combination wrench, with self-adjusting, universal open- and ring-end mechanisms to match a wide variety of nuts and bolts."
@@ -39,8 +39,8 @@
 	. = ..()
 
 /*
- * Screwdriver
- */
+* Screwdriver
+*/
 /obj/item/weapon/tool/screwdriver
 	name = "screwdriver"
 	desc = "Your archetypal flathead screwdriver, with a nice, heavy polymer handle."
@@ -101,7 +101,7 @@
 */
 
 /*
- * Wirecutters
+* Wirecutters
 /obj/item/weapon/tool/wirecutters
 	name = "wirecutters"
 	desc = "A special pair of pliers with cutting edges. Various brackets and manipulators built into the handle allow it to repair severed wiring."
@@ -141,9 +141,9 @@
 		return
 	else
 		..()
- */
+*/
 /*
- * Welding Tool
+* Welding Tool
 
 /obj/item/weapon/tool/weldingtool
 	name = "welding tool"
@@ -575,9 +575,9 @@
 
 	else
 		return ..()
- */
+*/
 /*
- * Crowbar
+* Crowbar
 
 owbar
 	name = "crowbar"
@@ -619,8 +619,8 @@ owbar
 	. = ..()
 */
 /*
- * Combitool
- */
+* Combitool
+*/
 
 
 /*/obj/item/weapon/combitool
