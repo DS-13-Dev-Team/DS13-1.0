@@ -18,7 +18,6 @@
 	var/protection = NONE
 	var/abstract_type = /datum/config_entry	//do not instantiate if type matches this
 
-	var/vv_VAS = TRUE		//Force validate and set on VV. VAS proccall guard will run regardless.
 
 	var/dupes_allowed = FALSE
 
@@ -114,7 +113,6 @@
 	abstract_type = /datum/config_entry/keyed_list
 	config_entry_value = list()
 	dupes_allowed = TRUE
-	vv_VAS = FALSE			//VAS will not allow things like deleting from lists, it'll just bug horribly.
 	var/key_mode
 	var/value_mode
 	var/splitter = " "
