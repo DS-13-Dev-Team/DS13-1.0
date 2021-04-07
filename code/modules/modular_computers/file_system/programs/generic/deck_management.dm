@@ -319,7 +319,7 @@
 			return 1
 		if(!selected_mission.flight_plan)
 			return 1
-		var/crew = selected_mission.flight_plan.manifest.get_value(in_line = 1)
+		var/crew = selected_mission.flight_plan.manifest.get_value(in_line = TRUE)
 		var/time = selected_mission.flight_plan.planned_depart.get_value()
 		if(!crew || !time)
 			to_chat(user, "<span class='warning'>Please fill in the crew manifest and departure time first.</span>")

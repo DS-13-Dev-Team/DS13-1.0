@@ -477,10 +477,7 @@
 
 	var/vector2/direction = Vector2.DirectionBetween(oldloc, newloc)
 	direction *= blur_filter_strength
-
-	blur.x = direction.x
-	blur.y = direction.y
-
+	blur = filter(type="motion_blur", x=direction.x, y=direction.y)
 
 
 

@@ -364,7 +364,7 @@ BLIND     // can't see anything
 		species_restricted -= SPECIES_UNATHI
 	return
 
-/obj/item/clothing/gloves/mob_can_equip(mob/user)
+/obj/item/clothing/gloves/mob_can_equip(mob/user, var/slot, var/disable_warning = 0, var/force = 0)
 	var/mob/living/carbon/human/H = user
 
 	if(istype(H.gloves, /obj/item/clothing/ring))
