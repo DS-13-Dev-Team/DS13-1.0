@@ -9,11 +9,12 @@
 
 //Inverts the colour of an HTML string
 /proc/invertHTML(HTMLstring)
-	if (!( istext(HTMLstring) ))
-		CRASH("Given non-text argument!")
-	else
-		if (length(HTMLstring) != 7)
-			CRASH("Given non-HTML argument!")
+	if(!( istext(HTMLstring) ))
+		crash_with("Given non-text argument!")
+		return
+	else if(length(HTMLstring) != 7)
+		crash_with("Given non-HTML argument!")
+		return
 	var/textr = copytext(HTMLstring, 2, 4)
 	var/textg = copytext(HTMLstring, 4, 6)
 	var/textb = copytext(HTMLstring, 6, 8)

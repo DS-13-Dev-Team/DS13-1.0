@@ -107,7 +107,7 @@
 /obj/item/marker_shard/proc/activate()
 	active = TRUE
 	last_known_location = loc
-	GLOB.moved_event.register(src, src, /obj/item/marker_shard/moved)
+	GLOB.moved_event.register(src, src, .proc/moved)
 	attempt_deploy()
 	mass = mass_active
 	update_icon()
@@ -115,13 +115,13 @@
 /obj/item/marker_shard/proc/deactivate()
 	active = FALSE
 	mass = initial(mass)
-	GLOB.moved_event.unregister(src, src, /obj/item/marker_shard/moved)
+	GLOB.moved_event.unregister(src, src, .proc/moved)
 	update_icon()
 
 /obj/item/marker_shard/proc/set_deploy_timer()
 	deltimer(deploy_timer)
-	if (active)
-		deploy_timer = addtimer(CALLBACK(src, /obj/item/marker_shard/proc/attempt_deploy),  deploy_time, TIMER_STOPPABLE)
+	if(active)
+		deploy_timer = addtimer(CALLBACK(src, .proc/attempt_deploy),  deploy_time, TIMER_STOPPABLE)
 
 //Whenever we move, reset the timer
 /obj/item/marker_shard/moved(mob/user as mob, old_loc as turf)

@@ -24,7 +24,7 @@
 /obj/aura/regenerating/human/life_tick()
 	var/mob/living/carbon/human/H = user
 	if(!istype(H))
-		CRASH("Someone gave [user.type] a [src.type] aura. This is invalid.")
+		crash_with("Someone gave [user.type] a [src.type] aura. This is invalid.")
 		return 0
 	if(!H.innate_heal || H.InStasis() || H.stat == DEAD)
 		return 0
