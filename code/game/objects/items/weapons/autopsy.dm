@@ -50,7 +50,7 @@
 			*/
 
 			// Buffing this stuff up for now!
-			if(1)
+			if(W.weapon)
 				W.pretend_weapon = W.weapon
 			else
 				W.pretend_weapon = pick("mechanical toolbox", "wirecutters", "revolver", "crowbar", "fire extinguisher", "tomato soup", "oxygen tank", "emergency oxygen tank", "laser", "bullet")

@@ -1,4 +1,4 @@
-/var/datum/controller/vote/vote = new()
+var/datum/controller/vote/vote = new()
 
 /datum/controller/vote
 	var/initiator = null
