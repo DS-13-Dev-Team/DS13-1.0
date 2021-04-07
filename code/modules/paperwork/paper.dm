@@ -129,7 +129,7 @@
 				H.update_body()
 			else
 				user.visible_message("<span class='warning'>[user] begins to wipe [H]'s lipstick off with \the [src].</span>", \
-								 	"<span class='notice'>You begin to wipe off [H]'s lipstick.</span>")
+									"<span class='notice'>You begin to wipe off [H]'s lipstick.</span>")
 				if(do_after(user, 10, H) && do_after(H, 10, needhand = 0))	//user needs to keep their active hand, H does not.
 					user.visible_message("<span class='notice'>[user] wipes [H]'s lipstick off with \the [src].</span>", \
 										"<span class='notice'>You wipe off [H]'s lipstick.</span>")
