@@ -6,7 +6,7 @@
 
 	If it hits a mob, wraps around their neck and begins an execution move. At this point, the tongue becomes a targetable object
 */
-#define TONGUE_PROJECTILE_SPEED	4.5
+#define TONGUE_PROJECTILE_SPEED	5.5
 #define	TONGUE_OFFSET	-8,40
 #define TONGUE_RANGE	5
 /*
@@ -148,6 +148,9 @@
 	layer = BELOW_HUMAN_LAYER
 	atom_flags = 0
 	obj_flags = 0
+	max_health = 60
+	health = 60
+	mouse_opacity = TRUE
 
 //Tongue takes double damage from edged weapons
 /obj/effect/projectile/tether/tongue/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
@@ -157,6 +160,9 @@
 
 	.=..()
 
+
+/obj/effect/projectile/tether/tongue/zero_health()
+	retract()
 
 /obj/effect/projectile/tether/tongue/retract(var/time = 1 SECOND, var/delete_on_finish = TRUE, var/steps = 3)
 	if (origin_atom)

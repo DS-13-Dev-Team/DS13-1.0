@@ -4,11 +4,11 @@
 	mob_type = /mob/living/carbon/human/necromorph/divider
 	blurb = "A bizarre walking horrorshow, slow but extremely durable. On death, it splits into five smaller creatures, in an attempt to find a new body to control. The divider is hard to kill, and has several abilities which excel at pinning down a lone target."
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/divider)
-	total_health = 225
+	total_health = 240
 	biomass = 150
 	require_total_biomass	=	BIOMASS_REQ_T2
 	mass = 120
-	limb_health_factor = 1.0
+	limb_health_factor = 1.15
 
 	evasion = -10	//Slow and predictable
 
@@ -286,7 +286,7 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 	angle = 130,
 	range = 3,
 	duration = 0.85 SECOND,
-	windup = 0.4 SECONDS,
+	windup = 0.3 SECONDS,
 	cooldown = 3.5 SECONDS,
 	damage = 20,
 	damage_flags = DAM_EDGE,
