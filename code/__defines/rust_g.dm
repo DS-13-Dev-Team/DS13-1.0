@@ -16,7 +16,8 @@
 // On Linux, looks in `.`, `$LD_LIBRARY_PATH`, and `~/.byond/bin` for either of
 // `librust_g.so` (preferred) or `rust_g` (old).
 
-/* This comment bypasses grep checks */ /var/__rust_g
+/* This comment bypasses grep checks */
+var/__rust_g
 
 /proc/__detect_rust_g()
 	if (world.system_type == UNIX)

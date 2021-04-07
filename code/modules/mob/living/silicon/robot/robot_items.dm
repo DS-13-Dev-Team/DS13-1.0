@@ -206,9 +206,9 @@
 	if ( istype(target,/obj/item))
 		if ( !isturf(target.loc) ) // Don't load up stuff if it's inside a container or mob!
 			return
-		var turf/pickup = target.loc
+		var/turf/pickup = target.loc
 
-		var addedSomething = 0
+		var/addedSomething = 0
 
 		for(var/obj/item/weapon/reagent_containers/food/I in pickup)
 

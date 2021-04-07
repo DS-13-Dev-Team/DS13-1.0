@@ -62,7 +62,7 @@ datum/unit_test/human_breath/check_result()
 
 // ============================================================================
 
-/var/default_mobloc = null
+var/default_mobloc
 
 proc/create_test_mob_with_mind(var/turf/mobloc = null, var/mobtype = /mob/living/carbon/human)
 	var/list/test_result = list("result" = FAILURE, "msg"    = "", "mobref" = null)

@@ -2,9 +2,9 @@
 
 GLOBAL_VAR(restart_counter)
 
-/var/server_name = "Baystation 12"
+var/server_name = "Baystation 12"
 
-/var/game_id = null
+var/game_id = null
 /hook/global_init/proc/generate_gameid()
 	if(game_id != null)
 		return

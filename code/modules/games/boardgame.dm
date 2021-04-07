@@ -47,7 +47,7 @@ obj/item/weapon/board/attackby(obj/item/I as obj, mob/user as mob)
 		board_icons["[I.icon] [I.icon_state]"] = new /icon(I.icon,I.icon_state)
 
 	if(tile == 0)
-		var i;
+		var/i;
 		for(i=0;i<64;i++)
 			if(!board["[i]"])
 				board["[i]"] = I
@@ -71,9 +71,8 @@ obj/item/weapon/board/attackby(obj/item/I as obj, mob/user as mob)
 	td,td a{height:50px;width:50px}table{border-spacing:0;border:none;border-collapse:collapse}td{text-align:center;padding:0;background-repeat:no-repeat;background-position:center center}td.light{background-color:#6cf}td.dark{background-color:#544b50}td.selected{background-color:#c8dbc3}td a{display:table-cell;text-decoration:none;position:relative;line-height:50px;height:50px;width:50 px;vertical-align:middle}
 	</style></head><body><table>
 	"})
-	var i, stagger
-	stagger = 0 //so we can have the checkerboard effect
-	for(i=0, i<64, i++)
+	var/stagger = 0 //so we can have the checkerboard effect
+	for(var/i=0, i<64, i++)
 		if(i%8 == 0)
 			dat += "<tr>"
 			stagger = !stagger
@@ -148,7 +147,7 @@ obj/item/weapon/board/attackby(obj/item/I as obj, mob/user as mob)
 			I.forceMove(src.loc)
 			num--
 			selected = -1
-			var j
+			var/j
 			for(j=0;j<64;j++)
 				if(board["[j]"])
 					var/obj/item/K = board["[j]"]

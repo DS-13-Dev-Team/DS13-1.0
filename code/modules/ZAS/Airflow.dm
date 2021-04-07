@@ -2,8 +2,8 @@
 Contains helper procs for airflow, handled in /connection_group.
 */
 
-mob/var/tmp/last_airflow_stun = 0
-mob/proc/airflow_stun()
+/mob/var/tmp/last_airflow_stun = 0
+/mob/proc/airflow_stun()
 	if(stat == 2)
 		return FALSE
 	if(last_airflow_stun > world.time - vsc.airflow_stun_cooldown)	return FALSE
@@ -19,19 +19,19 @@ mob/proc/airflow_stun()
 	Weaken(4)
 	last_airflow_stun = world.time
 
-mob/living/silicon/airflow_stun()
+/mob/living/silicon/airflow_stun()
 	return
 
-mob/living/carbon/slime/airflow_stun()
+/mob/living/carbon/slime/airflow_stun()
 	return
 
-mob/living/carbon/human/airflow_stun()
+/mob/living/carbon/human/airflow_stun()
 	if(!slip_chance())
 		to_chat(src, "<span class='notice'>Air suddenly rushes past you!</span>")
 		return FALSE
 	..()
 
-atom/movable/proc/check_airflow_movable(n)
+/atom/movable/proc/check_airflow_movable(n)
 
 	if(anchored && !ismob(src)) return FALSE
 
@@ -39,7 +39,7 @@ atom/movable/proc/check_airflow_movable(n)
 
 	return TRUE
 
-mob/check_airflow_movable(n)
+/mob/check_airflow_movable(n)
 	if(n < vsc.airflow_heavy_pressure)
 		return FALSE
 	else if (mob_size >= MOB_LARGE && n < vsc.airflow_extreme_pressure)
@@ -47,11 +47,11 @@ mob/check_airflow_movable(n)
 
 	return TRUE
 
-mob/living/silicon/check_airflow_movable()
+/mob/living/silicon/check_airflow_movable()
 	return FALSE
 
 
-obj/check_airflow_movable(n)
+/obj/check_airflow_movable(n)
 	if(isnull(w_class))
 		if(n < vsc.airflow_dense_pressure) return FALSE //most non-item objs don't have a w_class yet
 	else
@@ -101,12 +101,12 @@ obj/check_airflow_movable(n)
 		airborne_acceleration = 0
 		. = ..()
 
-atom/movable/proc/airflow_hit(atom/A)
+/atom/movable/proc/airflow_hit(atom/A)
 	airflow_speed = 0
 	airflow_dest = null
 	airborne_acceleration = 0
 
-mob/airflow_hit(atom/A)
+/mob/airflow_hit(atom/A)
 	for(var/mob/M in hearers(src))
 		M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='danger'>You hear a loud slam!</span>",2)
 	playsound(src.loc, "smash.ogg", 25, 1, -1)
@@ -114,17 +114,17 @@ mob/airflow_hit(atom/A)
 	Weaken(weak_amt)
 	. = ..()
 
-obj/airflow_hit(atom/A)
+/obj/airflow_hit(atom/A)
 	for(var/mob/M in hearers(src))
 		M.show_message("<span class='danger'>\The [src] slams into \a [A]!</span>",1,"<span class='danger'>You hear a loud slam!</span>",2)
 	playsound(src.loc, "smash.ogg", 25, 1, -1)
-	. = ..()
+	return ..()
 
-obj/item/airflow_hit(atom/A)
+/obj/item/airflow_hit(atom/A)
 	airflow_speed = 0
 	airflow_dest = null
 
-mob/living/carbon/human/airflow_hit(atom/A)
+/mob/living/carbon/human/airflow_hit(atom/A)
 //	for(var/mob/M in hearers(src))
 //		M.show_message("<span class='danger'>[src] slams into [A]!</span>",1,"<span class='danger'>You hear a loud slam!</span>",2)
 	playsound(src.loc, "punch", 25, 1, -1)
@@ -147,7 +147,7 @@ mob/living/carbon/human/airflow_hit(atom/A)
 		Stun(paralysis + 3)
 	else
 		Stun(round(airflow_speed * vsc.airflow_stun/2))
-	. = ..()
+	return ..()
 
 zone/proc/movables()
 	. = list()
