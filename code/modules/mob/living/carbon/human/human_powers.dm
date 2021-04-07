@@ -23,8 +23,9 @@
 			var/list/datum/sprite_accessory/hair/valid_hairstyles = list()
 			for(var/hair_string in GLOB.hair_styles_list)
 				var/list/datum/sprite_accessory/hair/test = GLOB.hair_styles_list[hair_string]
-				if(test.flags & HAIR_TIEABLE)
-					valid_hairstyles.Add(hair_string)
+				for(var/element in test)
+					if(test[element].flags & HAIR_TIEABLE)
+						valid_hairstyles.Add(hair_string)
 			selected_string = input("Select a new hairstyle", "Your hairstyle", hair_style) as null|anything in valid_hairstyles
 		if(incapacitated())
 			to_chat(src, "<span class='warning'>You can't mess with your hair right now!</span>")
