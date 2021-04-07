@@ -4,7 +4,7 @@
 /datum/gear_tweak/proc/get_contents(var/metadata)
 	return
 
-/datum/gear_tweak/proc/get_metadata(var/user, var/metadata)
+/datum/gear_tweak/proc/get_metadata(var/user, var/metadata, var/title)
 	return
 
 /datum/gear_tweak/proc/get_default()

@@ -255,7 +255,7 @@
 				update_active()
 		. = 1
 	else if(href_list["spec_freq"])
-		var freq = href_list["spec_freq"]
+		var/freq = href_list["spec_freq"]
 		if(has_channel_access(usr, freq))
 			set_frequency(text2num(freq))
 		. = 1

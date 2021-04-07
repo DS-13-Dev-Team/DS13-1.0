@@ -180,9 +180,8 @@
 	- <ParseParamExpression()>
 */
 		ParseExpression(list/end=list(/token/end), list/ErrChars=list("{", "}"))
-			var/stack
-				opr=new
-				val=new
+			var/stack/opr=new
+			var/stack/val=new
 			src.expecting=VALUE
 			for()
 				if(EndOfExpression(end))
@@ -275,13 +274,8 @@
 			exp.func_name=curToken.value
 			NextToken() //skip function name
 			NextToken() //skip open parenthesis, already found
-			var/loops = 0
 
-			for()
-				loops++
-				if(loops>=1000)
-					CRASH("Something TERRIBLE has gone wrong in ParseFunctionExpression ;__;")
-
+			for(var/i in 1 to 1000)
 				if(istype(curToken, /token/symbol) && curToken.value==")")
 					return exp
 				exp.parameters+=ParseParamExpression()

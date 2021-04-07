@@ -50,12 +50,12 @@ vector2
 
 			// Transform
 			else if(istype(s, /matrix))
-				var matrix/m = s
+				var/matrix/m = s
 				return get_new_vector(x * m.a + y * m.b + m.c, x * m.d + y * m.e + m.f)
 
 			// Component-wise
 			else if(istype(s, /vector2))
-				var vector2/v = s
+				var/vector2/v = s
 				return get_new_vector(x * v.x, y * v.y)
 
 			else CRASH("Invalid args.")
@@ -71,7 +71,7 @@ vector2
 
 			// Component-wise
 			else if(istype(d, /vector2))
-				var vector2/v = d
+				var/vector2/v = d
 				return get_new_vector(x / v.x, y / v.y)
 
 			else CRASH("Invalid args.")
@@ -168,7 +168,7 @@ vector2
 			Also accepts a dir.
 		*/
 		RotationFrom(vector2/from_vector = Vector2.North)
-			var vector2/to_vector = Normalized()
+			var/vector2/to_vector = Normalized()
 
 			var/from_created = FALSE
 			if(isnum(from_vector))
@@ -224,7 +224,7 @@ vector2
 			Also accepts a dir.
 		*/
 		AngleFrom(vector2/from_vector = Vector2.North, var/shorten = FALSE)
-			var vector2/to_vector = Normalized()
+			var/vector2/to_vector = Normalized()
 
 			if(isnum(from_vector))
 				from_vector = Vector2.FromDir(from_vector) //This is not copied, gotta be careful with it
@@ -349,6 +349,6 @@ vector2
 			/*
 			// Transform
 			else if(istype(s, /matrix))
-				var matrix/m = s
+				var/matrix/m = s
 				return get_new_vector(x * m.a + y * m.b + m.c, x * m.d + y * m.e + m.f)
 			*/

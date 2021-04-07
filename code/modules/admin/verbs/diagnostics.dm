@@ -16,8 +16,8 @@
 	var/active_on_main_station = 0
 	var/inactive_on_main_station = 0
 	for(var/zone/zone in SSair.zones)
-		var/turf/simulated/turf = locate() in zone.contents
-		if(turf && turf.z in GLOB.using_map.station_levels)
+		var/turf/simulated/T = locate() in zone.contents
+		if(T && (T.z in GLOB.using_map.station_levels))
 			if(zone.needs_update)
 				active_on_main_station++
 			else

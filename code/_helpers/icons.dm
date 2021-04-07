@@ -107,7 +107,7 @@ AngleToHue(hue)
 	Converts an angle to a hue in the valid range.
 RotateHue(hsv, angle)
 	Takes an HSV or HSVA value and rotates the hue forward through red, green, and blue by an angle from 0 to 360.
-	(Rotating red by 60° produces yellow.) The result is another HSV or HSVA color with the same saturation and value
+	(Rotating red by 60ï¿½ produces yellow.) The result is another HSV or HSVA color with the same saturation and value
 	as the original, but a different hue.
 GrayScale(rgb)
 	Takes an RGB or RGBA color and converts it to grayscale. Returns an RGB or RGBA string.
@@ -755,7 +755,10 @@ proc
 			// Current dimensions of flattened icon
 		var/{flatX1=1;flatX2=flat.Width();flatY1=1;flatY2=flat.Height()}
 			// Dimensions of overlay being added
-		var/{addX1;addX2;addY1;addY2}
+		var/addX1
+		var/addX2
+		var/addY1
+		var/addY2
 
 		for(var/I in layers)
 
