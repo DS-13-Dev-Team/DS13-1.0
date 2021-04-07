@@ -770,7 +770,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 	host.victim.silent =0
 
-https://bigmemes.funnyjunk.com/pictures/Long+boi_073bf6_7722185.jpg
+//https://bigmemes.funnyjunk.com/pictures/Long+boi_073bf6_7722185.jpg
 
 
 //Tongue Pull: Rips the tongue out sharply, victim's head is torn off

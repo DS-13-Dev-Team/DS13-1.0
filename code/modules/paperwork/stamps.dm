@@ -6,7 +6,7 @@
 	item_state = "stamp"
 	throwforce = 0
 	w_class = ITEM_SIZE_TINY
-	
+
 	throw_range = 15
 	matter = list(MATERIAL_STEEL = 60)
 	attack_verb = list("stamped")
@@ -102,7 +102,7 @@
 
 	var/input_stamp = input(user, "Choose a stamp to disguise as.", "Choose a stamp.") in show_stamps
 
-	if(user && src in user.contents)
+	if(user && (src in user.contents))
 
 		var/obj/item/weapon/stamp/chosen_stamp = stamps[capitalize(input_stamp)]
 
