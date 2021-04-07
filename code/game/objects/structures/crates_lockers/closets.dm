@@ -261,8 +261,8 @@
 			for(var/obj/item/I in LB.contents)
 				LB.remove_from_storage(I, T)
 			user.visible_message("<span class='notice'>[user] empties \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You empty \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You hear rustling of clothes.</span>")
+								"<span class='notice'>You empty \the [LB] into \the [src].</span>", \
+								"<span class='notice'>You hear rustling of clothes.</span>")
 			return
 
 		if(user.unEquip(W, loc))
@@ -298,8 +298,8 @@
 	if (WT.use_tool(user, src, WORKTIME_SLOW, QUALITY_WELDING, FAILCHANCE_NORMAL))
 		new /obj/item/stack/material/steel(src.loc)
 		user.visible_message("<span class='notice'>\The [src] has been cut apart by [user] with \the [WT].</span>", \
-							 "<span class='notice'>You have cut \the [src] apart with \the [WT].</span>", \
-							 "You hear welding.")
+							"<span class='notice'>You have cut \the [src] apart with \the [WT].</span>", \
+							"You hear welding.")
 		qdel(src)
 
 /obj/structure/closet/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)

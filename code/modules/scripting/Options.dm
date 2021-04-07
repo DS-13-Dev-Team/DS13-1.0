@@ -52,13 +52,13 @@ n_scriptOptions
 	associated values are <nS_Keyword> types of which the <n_Keyword.Parse()> proc will be called.
 */
 				keywords 	 	= list("if"			  = /n_Keyword/nS_Keyword/kwIf,  			"else"  = /n_Keyword/nS_Keyword/kwElse, \
-													 "while"	  = /n_Keyword/nS_Keyword/kwWhile,		"break"	= /n_Keyword/nS_Keyword/kwBreak, \
-													 "continue" = /n_Keyword/nS_Keyword/kwContinue, "elseif" = /n_Keyword/nS_Keyword/kwElseIf, \
-													 "return" = /n_Keyword/nS_Keyword/kwReturn, 		"def"   = /n_Keyword/nS_Keyword/kwDef)
+													"while"	  = /n_Keyword/nS_Keyword/kwWhile,		"break"	= /n_Keyword/nS_Keyword/kwBreak, \
+													"continue" = /n_Keyword/nS_Keyword/kwContinue, "elseif" = /n_Keyword/nS_Keyword/kwElseIf, \
+													"return" = /n_Keyword/nS_Keyword/kwReturn, 		"def"   = /n_Keyword/nS_Keyword/kwDef)
 
 			list
-				assign_operators=list("="  = null, 																					 "&=" = "&",
-												 			"|=" = "|",																					 	 "`=" = "`",
+				assign_operators=list("="  = null,																					 "&=" = "&",
+															"|=" = "|",																					 	 "`=" = "`",
 															"+=" = "+",																						 "-=" = "-",
 															"*=" = "*",																						 "/=" = "/",
 															"^=" = "^",

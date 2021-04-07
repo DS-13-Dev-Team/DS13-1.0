@@ -270,7 +270,7 @@
 		update_inv_legcuffed()
 
 	else
-	 ..()
+		..()
 
 
 /mob/living/carbon/verb/mob_sleep()

@@ -16,11 +16,11 @@
 	var/make_time = 0
 	var/start_making = 0
 	var/list/menu = list("nutrition slab" = /obj/item/weapon/reagent_containers/food/snacks/tofu,
-					 "turkey substitute" = /obj/item/weapon/reagent_containers/food/snacks/tofurkey,
-					 "waffle substitute" = /obj/item/weapon/reagent_containers/food/snacks/soylenviridians,
-					 "nutrition fries" = /obj/item/weapon/reagent_containers/food/snacks/fries,
-					 "liquid nutrition" = /obj/item/weapon/reagent_containers/food/snacks/soydope,
-					 "pudding substitute" = /obj/item/weapon/reagent_containers/food/snacks/ricepudding)
+					"turkey substitute" = /obj/item/weapon/reagent_containers/food/snacks/tofurkey,
+					"waffle substitute" = /obj/item/weapon/reagent_containers/food/snacks/soylenviridians,
+					"nutrition fries" = /obj/item/weapon/reagent_containers/food/snacks/fries,
+					"liquid nutrition" = /obj/item/weapon/reagent_containers/food/snacks/soydope,
+					"pudding substitute" = /obj/item/weapon/reagent_containers/food/snacks/ricepudding)
 
 /obj/machinery/food_replicator/New()
 	..()

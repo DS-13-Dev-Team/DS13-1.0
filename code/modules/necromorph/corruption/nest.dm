@@ -110,10 +110,10 @@
 			spawn_possibilities["[N.name]    [N.biomass]"] = N
 
 	var/choice = input(user, "You can upgrade this nest to automatically respawn a specified necromorph unit.\n\
-	 This will cost the same biomass as that necromorph would normally cost to spawn, and once the creature dies, it will take the same time to grow another as that creature would normally take to be reabsorbed\n\
-	  You will get the biomass back if the nest is destroyed\n\
-	  \n\
-	  Signal players can click the nest to spawn the creature when it is available.", "Spawner Upgrade Menu") as null|anything in spawn_possibilities
+	This will cost the same biomass as that necromorph would normally cost to spawn, and once the creature dies, it will take the same time to grow another as that creature would normally take to be reabsorbed\n\
+		You will get the biomass back if the nest is destroyed\n\
+		\n\
+		Signal players can click the nest to spawn the creature when it is available.", "Spawner Upgrade Menu") as null|anything in spawn_possibilities
 
 	if (!choice)
 		return

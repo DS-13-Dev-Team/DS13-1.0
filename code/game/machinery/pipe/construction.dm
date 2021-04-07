@@ -1274,7 +1274,7 @@ Buildable meters
 	qdel(src)	// remove the pipe item
 
 	return
-	 //TODO: DEFERRED
+	//TODO: DEFERRED
 
 // ensure that setterm() is called for a newly connected pipeline
 

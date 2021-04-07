@@ -139,7 +139,7 @@
 	var/target_turf = get_turf(target)
 
 	while(src && target && src.throwing && istype(src.loc, /turf) \
-		 && loc != target_turf && dist_travelled < range)
+		&& loc != target_turf && dist_travelled < range)
 		// only stop when we've gone the whole distance (or max throw range) and are on a non-space tile, or hit something, or hit the end of the map, or someone picks it up
 		var/atom/step
 		step = get_step_towards(src, target_turf)

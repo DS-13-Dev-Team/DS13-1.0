@@ -51,12 +51,12 @@
 	.+="<b>Range</b>: [max_range]<br>"
 	.+="The Cyst is a stationary defensive emplacement, which must be mounted on a wall or similar hard surface. <br>\
 	It detects any non-necromorph movement along a straight line infront of itself, and launches its payload blindly in that direction.\
-	 It will be triggered by thrown objects, but not by anything a necromorph is dragging along the ground..<br><br>\
-	 \
-	 The payload is an unstable organic bomb which will explode on impact, dealing heavy damage in a cross-shaped area of effect.\
-	  A direct hit could deal up to [CYST_BLAST_POWER + CYST_IMPACT_DAMAGE] in total, with a bit under half of that dealt to other targets near the epicentre.\
-	  \
-	  The damage dealt is a combination of brute force from direct impact, melee burn damage, and chemical burn damage from acid splashing on the victim. It is very difficult to fully defend against, but acid-resistant gear will reduce the damage significantly."
+	It will be triggered by thrown objects, but not by anything a necromorph is dragging along the ground..<br><br>\
+	\
+	The payload is an unstable organic bomb which will explode on impact, dealing heavy damage in a cross-shaped area of effect.\
+	A direct hit could deal up to [CYST_BLAST_POWER + CYST_IMPACT_DAMAGE] in total, with a bit under half of that dealt to other targets near the epicentre.\
+	\
+	The damage dealt is a combination of brute force from direct impact, melee burn damage, and chemical burn damage from acid splashing on the victim. It is very difficult to fully defend against, but acid-resistant gear will reduce the damage significantly."
 
 
 

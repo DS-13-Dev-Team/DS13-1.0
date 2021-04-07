@@ -215,9 +215,9 @@
 		-Spine Launch<br>\
 		-Acid Spray<br>\
 	The harvester has no intelligence though, all of these weapons must be manually activated by signal spells. \
-	 At least two signals working in tandem are required to operate the weapons at maximum efficiency. If used correctly, the harvester is an immovable object<br>\
-	 <br>\
-	 The harvester has only one weakness. It depends heavily on corruption support. Like any other node, it will starve and die-off if the corruption nodes nearby are removed"
+	At least two signals working in tandem are required to operate the weapons at maximum efficiency. If used correctly, the harvester is an immovable object<br>\
+	<br>\
+	The harvester has only one weakness. It depends heavily on corruption support. Like any other node, it will starve and die-off if the corruption nodes nearby are removed"
 
 /*
 	Biomass Absorbing
@@ -368,7 +368,7 @@
 	id = "h_spine"
 	desc = "This ability is a trigger for functions on a Harvester node. It requires a harvester somewhere near your target location. \
 	The cooldown on these harvester abilities is longer than what the harvester itself can do, so for best results;\
-	 two or more signals should man each harvester during combat<br>\
+	two or more signals should man each harvester during combat<br>\
 	<br>\
 	The harvester fires a sharp bony spine, dealing ballistic damage on impact."
 	cooldown = HARVESTER_SPINE_COOLDOWN*1.5
@@ -409,7 +409,7 @@
 	id = "h_acid"
 	desc = "This ability is a trigger for functions on a Harvester node. It requires a harvester somewhere near your target location. \
 	The cooldown on these harvester abilities is longer than what the harvester itself can do, so for best results;\
-	 two or more signals should man each harvester during combat<br>\
+	two or more signals should man each harvester during combat<br>\
 	<br>\
 	The harvester fires a narrow stream of acid over two seconds, with good range."
 
@@ -454,7 +454,7 @@
 	id = "h_tentacle"
 	desc = "This ability is a trigger for functions on a Harvester node. It requires a harvester somewhere near your target location. \
 	The cooldown on these harvester abilities is longer than what the harvester itself can do, so for best results;\
-	 two or more signals should man each harvester during combat<br>\
+	two or more signals should man each harvester during combat<br>\
 	<br>\
 	The harvester swings one of its tentacles in a wide arc, striking humans nearby."
 

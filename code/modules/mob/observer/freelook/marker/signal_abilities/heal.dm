@@ -45,10 +45,10 @@
 	name = "Rebuild"
 	id = "rebuild"
 	desc = "Fully heals the target necromorph, restoring all limbs and healing up to 200 lasting damage, as well as up to 200 normal damage.<br>\
-	 Also removes any embedded shrapnel and weapons in the target's body<br>\
-	 Costs biomass based on the limb health and lasting damage restored. <br>\
-	 The biomass spent in this way is invested into the necromorph, not destroyed, and thus will be gradually recovered after it dies. <br>\
-	 Biomass costs are unpredictable and cannot be previewed, but will never be more than 1kg per 2 points of the necromorph's maximum health"
+	Also removes any embedded shrapnel and weapons in the target's body<br>\
+	Costs biomass based on the limb health and lasting damage restored. <br>\
+	The biomass spent in this way is invested into the necromorph, not destroyed, and thus will be gradually recovered after it dies. <br>\
+	Biomass costs are unpredictable and cannot be previewed, but will never be more than 1kg per 2 points of the necromorph's maximum health"
 	target_string = "A damaged necromorph, must be on corruption"
 
 /datum/signal_ability/heal/marker/can_cast_now(var/mob/user)

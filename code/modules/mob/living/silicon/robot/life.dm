@@ -276,7 +276,7 @@
 	else if (src.stat != DEAD)
 		set_sight(sight&(~SEE_TURFS)&(~SEE_MOBS)&(~SEE_OBJS))
 		set_see_invisible(SEE_INVISIBLE_LIVING) // This is normal vision (25), setting it lower for normal vision means you don't "see" things like darkness since darkness
-							 // has a "invisible" value of 15
+							// has a "invisible" value of 15
 
 
 /mob/living/silicon/robot/proc/update_items()

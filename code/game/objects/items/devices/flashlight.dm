@@ -68,7 +68,7 @@
 				return
 
 			user.visible_message("<span class='notice'>\The [user] directs [src] into [M]'s [vision.name].</span>", \
-								 "<span class='notice'>You direct [src] into [M]'s [vision.name].</span>")
+								"<span class='notice'>You direct [src] into [M]'s [vision.name].</span>")
 
 			inspect_vision(vision, user)
 

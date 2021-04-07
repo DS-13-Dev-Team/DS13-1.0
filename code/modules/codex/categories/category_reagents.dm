@@ -10,9 +10,9 @@
 			continue
 		var/chem_name = lowertext(initial(reagent.name))
 		var/datum/codex_entry/entry = new( \
-		 _display_name = "[chem_name] (chemical)", \
-		 _associated_strings = list("[chem_name] pill"), \
-		 _lore_text = "[initial(reagent.description)] It apparently tastes of [initial(reagent.taste_description)].")
+		_display_name = "[chem_name] (chemical)", \
+		_associated_strings = list("[chem_name] pill"), \
+		_lore_text = "[initial(reagent.description)] It apparently tastes of [initial(reagent.taste_description)].")
 
 		var/list/production_strings = list()
 		for(var/react in SSchemistry.chemical_reactions_by_result[thing])

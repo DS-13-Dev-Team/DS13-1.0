@@ -12,7 +12,7 @@
 		1. It only affects currently existing necromorphs. Any spawned after its cast won't get the effect. <br>\
 		2. It has an extremely long cooldown of 15 minutes.<br>\
 	Once used, it'll be quite a while before the next time. So you should strive to make the most of it,\
-	 by spawning lots of necromorphs and having them wait until you're ready to launch an assault with a large group all at once."
+	by spawning lots of necromorphs and having them wait until you're ready to launch an assault with a large group all at once."
 	energy_cost = 500
 	cooldown = 15 MINUTES
 	targeting_method	=	TARGET_SELF

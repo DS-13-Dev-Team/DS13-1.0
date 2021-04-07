@@ -180,10 +180,10 @@
 	var/old_loc = AM.loc
 	if(AM == user)
 		user.visible_message("<span class='warning'>[user] starts climbing into [src].</span>", \
-							 "<span class='notice'>You start climbing into [src].</span>")
+							"<span class='notice'>You start climbing into [src].</span>")
 	else
 		user.visible_message("<span class='[is_dangerous ? "warning" : "notice"]'>[user] starts stuffing [AM] into [src].</span>", \
-							 "<span class='notice'>You start stuffing [AM] into [src].</span>")
+							"<span class='notice'>You start stuffing [AM] into [src].</span>")
 
 	if(!do_after(user, 2 SECONDS, src))
 		return
@@ -199,10 +199,10 @@
 	// Messages and logging
 	if(AM == user)
 		user.visible_message("<span class='danger'>[user] climbs into [src].</span>", \
-							 "<span class='notice'>You climb into [src].</span>")
+							"<span class='notice'>You climb into [src].</span>")
 	else
 		user.visible_message("<span class='[is_dangerous ? "danger" : "notice"]'>[user] stuffs [AM] into [src][is_dangerous ? "!" : "."]</span>", \
-							 "<span class='notice'>You stuff [AM] into [src].</span>")
+							"<span class='notice'>You stuff [AM] into [src].</span>")
 		if(ismob(M))
 			admin_attack_log(user, M, "Placed the victim into \the [src].", "Was placed into \the [src] by the attacker.", "stuffed \the [src] with")
 			if (M.client)

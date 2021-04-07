@@ -14,10 +14,10 @@
 	name = "[pick("old", "worn", "rusted", "weathered", "expired", "dirty", "frayed", "beaten", "ancient", "tarnished")] [name]"
 	desc += "\n "
 	desc += pick("Its warranty has expired.",
-	 "The inscriptions on this thing have been erased by time.",
-	  "Looks completely ruined.",
-	   "It is difficult to make out what this thing once was.",
-	    "A relic from a bygone age.")
+	"The inscriptions on this thing have been erased by time.",
+	"Looks completely ruined.",
+	"It is difficult to make out what this thing once was.",
+	"A relic from a bygone age.")
 
 	germ_level = pick(80,110,160)
 	//Deplete matter and matter_reagents

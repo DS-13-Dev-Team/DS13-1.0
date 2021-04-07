@@ -736,7 +736,7 @@
 
 			src.cell = null
 			user.visible_message("<span class='warning'>[user.name] removes the power cell from [src.name]!</span>",\
-								 "<span class='notice'>You remove the power cell.</span>")
+								"<span class='notice'>You remove the power cell.</span>")
 //			to_chat(user, "You remove the power cell.")
 			charging = 0
 			src.update_icon()

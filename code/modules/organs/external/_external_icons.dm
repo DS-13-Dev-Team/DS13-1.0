@@ -6,7 +6,7 @@ var/list/limb_icon_cache = list()
 
 /obj/item/organ/external/proc/compile_icon()
 	overlays.Cut()
-	 // This is a kludge, only one icon has more than one generation of children though.
+	// This is a kludge, only one icon has more than one generation of children though.
 	for(var/obj/item/organ/external/organ in contents)
 		if(organ.children && organ.children.len)
 			for(var/obj/item/organ/external/child in organ.children)
@@ -209,4 +209,3 @@ var/list/robot_hud_colours = list("#ffffff","#cccccc","#aaaaaa","#888888","#6666
 			icon_cache_key += "_color_[s_col[1]]_[s_col[2]]_[s_col[3]]_[s_col_blend]"
 
 	return applying
-

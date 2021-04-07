@@ -216,7 +216,7 @@
 		var/breathed_product = gas_data.breathed_product[gasname]
 		if(breathed_product)
 			var/reagent_amount = breath.gas[gasname] * REAGENT_GAS_EXCHANGE_FACTOR * ratio
-			 // Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
+			// Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
 			if(reagent_amount >= 0.05)
 				owner.reagents.add_reagent(breathed_product, reagent_amount)
 				breath.adjust_gas(gasname, -breath.gas[gasname], update = 0) //update after

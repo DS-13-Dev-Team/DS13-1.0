@@ -65,8 +65,8 @@
 	var/comment = roll_result[2]
 	icon_state = "[name][result]"
 	user.visible_message("<span class='notice'>[user] has thrown [src]. It lands on [result]. [comment]</span>", \
-						 "<span class='notice'>You throw [src]. It lands on a [result]. [comment]</span>", \
-						 "<span class='notice'>You hear [src] landing on a [result]. [comment]</span>")
+						"<span class='notice'>You throw [src]. It lands on a [result]. [comment]</span>", \
+						"<span class='notice'>You hear [src] landing on a [result]. [comment]</span>")
 
 /obj/item/weapon/dice/throw_impact(atom/hit_atom, var/speed)
 	..()
