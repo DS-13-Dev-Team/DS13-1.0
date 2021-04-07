@@ -1,10 +1,10 @@
 #define DRINK_ICON_FILE 'icons/pdrink.dmi'
 
-/var/const/DRINK_FIZZ = "fizz"
-/var/const/DRINK_ICE = "ice"
-/var/const/DRINK_VAPOR = "vapor"
-/var/const/DRINK_ICON_DEFAULT = ""
-/var/const/DRINK_ICON_NOISY = "_noise"
+var/const/DRINK_FIZZ = "fizz"
+var/const/DRINK_ICE = "ice"
+var/const/DRINK_VAPOR = "vapor"
+var/const/DRINK_ICON_DEFAULT = ""
+var/const/DRINK_ICON_NOISY = "_noise"
 
 /obj/item/weapon/reagent_containers/food/drinks/glass2
 	name = MATERIAL_GLASS // Name when empty
