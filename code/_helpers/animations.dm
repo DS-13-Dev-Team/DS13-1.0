@@ -4,11 +4,14 @@
 		qdel(I)
 
 
-/atom/proc/SpinAnimation(speed = 1, loops = -1)
+/atom/proc/SpinAnimation(speed = 1, loops = -1, var/spin_direction)
+	//Pass a spin direction of -1 to spin counterclockwise, 1 clockwise, default random
+	if (!spin_direction)
+		spin_direction = pick(1, -1)
 	var/matrix/m120 = matrix(transform)
-	m120.Turn(120)
+	m120.Turn(120*spin_direction)
 	var/matrix/m240 = matrix(transform)
-	m240.Turn(240)
+	m240.Turn(240*spin_direction)
 	var/matrix/m360 = matrix(transform)
 	speed /= 3      //Gives us 3 equal time segments for our three turns.
 	                //Why not one turn? Because byond will see that the start and finish are the same place and do nothing

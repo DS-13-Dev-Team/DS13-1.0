@@ -28,15 +28,19 @@ GLOBAL_LIST_EMPTY(asteroids)
 	pass_flags = PASS_FLAG_TABLE
 	var/heavy = 0
 	var/z_original
+	var/z_target
 	var/meteordrop = /obj/item/weapon/ore/iron
 	var/dropamt = 1
 	var/vector2/velocity = null
 
 	var/move_count = 0
-	var/speed = 1
+	var/speed = 1.5
 	var/registered = FALSE
 	var/start_side = EAST //Where did we come from?
-	default_scale = 3
+	default_scale = 3.5
+
+	var/min_scale = 3
+	var/max_scale = 5
 
 	//Meteors are big objects
 	bound_width = WORLD_ICON_SIZE*2
@@ -50,15 +54,19 @@ GLOBAL_LIST_EMPTY(asteroids)
 /obj/effect/meteor/New()
 	..()
 	z_original = z
+	z_target = pick(GLOB.using_map.station_levels)	//The meteor targets a random height
+	world << "Meteor targeting zlevel [z_target]"
 	if (isturf(loc))
 		register_asteroid(src)
 
+	default_scale = rand_between(min_scale, max_scale)
 	animate_to_default()
-	SpinAnimation(0.2)
+	SpinAnimation(0.5 / (default_scale * rand_between(0.75, 1.25)))
+	speed = rand_between(speed * 0.75, speed * 1.25)
 
 
 /proc/register_asteroid(var/obj/effect/meteor/M)
-	GLOB.asteroids += src
+	GLOB.asteroids += M
 	if (GLOB.asteroid_cannon)
 		GLOB.asteroid_cannon.fire_handler.wake_up()
 
@@ -68,11 +76,44 @@ GLOBAL_LIST_EMPTY(asteroids)
 	walk(src,0) //this cancels the walk_towards() proc
 	. = ..()
 
-/obj/effect/meteor/Move()
-	. = ..() //process movement...
+/obj/effect/meteor/Move(var/turf/NewLoc,Dir=0,step_x=0,step_y=0)
 	move_count++
+
+
+
+	//When a meteor is about to move into a turf, we check if that turf is any kind of not-empty-space thing
+	//That includes empty space with potential non empty space below
+	var/impacting = FALSE
+	if (istype(NewLoc))
+		if (isspace(NewLoc))
+			world << "Newloc is space"
+			var/turf/space/S = NewLoc
+
+			//Easy optimisation to see if this is empty space
+			if (S.first_solid_z_below)
+				//Lets see if there's anything to hit at our target zlevel
+				var/turf/target = locate(NewLoc.x, NewLoc.y, z_target)
+				if (target && !target.is_hole)
+					impacting = TRUE
+
+		else if (!(NewLoc.is_hole))
+			impacting = TRUE
+
+	if (impacting)
+		//Its solid enough to hit, lets do it!
+		//We'll detonate next to it, not inside it
+		detonate_at_turf(locate(x, y, z_target))
+		return
+
+
+	else
+		//We're just moving into empty space
+		. = ..() //process movement...
+
 	if(loc == dest)
 		qdel(src)
+
+
 
 /obj/effect/meteor/touch_map_edge()
 	if(move_count > TRANSITIONEDGE)
@@ -112,6 +153,12 @@ GLOBAL_LIST_EMPTY(asteroids)
 	//then, ram the turf if it still exists
 	if(T && !T.CanPass(src, src.loc, 0.5, 0))
 		T.ex_act(hitpwr, src)
+
+/obj/effect/meteor/proc/detonate_at_turf(var/turf/T)
+	ram_turf(T)
+	forceMove(T)
+	hits = 0
+	get_hit()
 
 //process getting 'hit' by colliding with a dense object
 //or randomly when ramming turfs

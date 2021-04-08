@@ -7,6 +7,7 @@
 	dynamic_lighting = 0
 	temperature = T20C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
+	is_hole = TRUE
 	var/static/list/dust_cache
 
 

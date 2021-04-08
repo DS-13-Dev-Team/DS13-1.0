@@ -4,17 +4,23 @@
 	var/mob/living/carbon/human/gunner = null
 	var/mob/observer/eye/turret/eyeobj = null
 	var/datum/click_handler/gun/tracked/TCH
+	flags = EXTENSION_FLAG_IMMEDIATE
 
 
 /datum/extension/asteroidcannon/Process()
+	//world << "Extension process"
 	if(gunner)
 		if(gun.is_firing()) //We've got a gunner, don't fire.
 			handle_manual_fire()
 			return
-	else if (gun?.operational)
+	else
 		if(!LAZYLEN(GLOB.asteroids))
 			return PROCESS_KILL//Nothing to shoot at
-		handle_auto_fire()
+
+		if (gun?.operational)
+			handle_auto_fire()
+		else
+			return PROCESS_KILL//Nonfunctional
 
 
 
@@ -35,18 +41,16 @@
 	gun.fire_at(gun.target)
 
 /datum/extension/asteroidcannon/proc/get_valid_meteor()
-	var/list/things = GLOB.asteroids.Copy()
-	while (LAZYLEN(things))
-		var/obj/effect/meteor/M = pick_n_take(things)
+	for (var/obj/effect/meteor/M as anything in GLOB.asteroids)
 		if (is_valid_meteor(M))
 			return M
 
 	return null
 
 /datum/extension/asteroidcannon/proc/is_valid_meteor(var/obj/effect/meteor/M)
-	if (!istype(M))
-		return FALSE
 	if (QDELETED(M))
+		return FALSE
+	if (!istype(M))
 		return FALSE
 	if (!isturf(M.loc))
 		return FALSE
@@ -88,6 +92,8 @@
 	eyeobj.acceleration = FALSE
 	eyeobj.possess(gunner, gun)	//Pass in the gun with possess
 
+	wake_up()
+
 /datum/extension/asteroidcannon/proc/recenter()
 	eyeobj?.setLoc(get_turf(gun))
 
@@ -110,71 +116,11 @@
 	if(!istype(holder, /obj/structure/asteroidcannon))
 		return FALSE
 	gun = holder
-	START_PROCESSING(SSfastprocess, src)
+	wake_up()
 
 
 
 
-
-
-
-
-/*
-	Eye: Used for offset view on fixed angle turrets
-*/
-/mob/observer/eye/turret
-	var/atom/gun = null
-	var/offset = 12
-	view_range = 15
-	var/turf/offset_turf
-	var/vector2/direction_vector	//This uses a non-copied global vector fetched from direction.
-	//Do not edit or release it
-
-/mob/observer/eye/turret/possess(var/mob/user, var/atom/newgun)
-	gun = newgun
-
-	.=..()
-	update_direction()
-
-/mob/observer/eye/turret/proc/update_direction()
-	//We do NOT release the old vector here, it is a global value
-	direction_vector = Vector2.FromDir(gun.dir)
-
-	//This is temporary, we'll release it in a sec
-	var/vector2/offset_vector = direction_vector * offset
-	offset_turf = locate(gun.x + offset_vector.x, gun.y + offset_vector.y, gun.z)
-	setLoc(offset_turf)
-	world << "Moving to [offset_turf]"
-
-	release_vector(offset_vector)
-
-
-/mob/observer/eye/turret/EyeMove(direct)
-	//Lets see if our target turf is valid
-	var/turf/target_turf = get_step(src, direct)
-
-	//To do that, we simply get the delta vector between our offset and the target, then
-	var/vector2/difference = Vector2.VectorBetween(offset_turf, target_turf)
-
-	//Cross product with the turret direction
-	var/vector2/cross = difference * direction_vector
-
-
-	var/fail = FALSE
-	//Now we check the cross. Any values which are negative, have gone past where they should, and that makes this movement invalid
-	if (cross.x < 0 || cross.y < 0)
-		fail = TRUE
-
-	//Call parent to allow move to proceed
-	if (!fail)
-		. = ..()
-
-	//Simply do not call parent to terminate movement
-	//Either way we gotta cleanup vectors
-	release_vector(cross)
-	release_vector(difference)
-
-
-/mob/observer/eye/turret/Destroy()
-	gun = null
-	. = ..()
+/datum/extension/asteroidcannon/proc/wake_up()
+	if (!is_processing)
+		START_PROCESSING(SSfastprocess, src)

@@ -73,6 +73,7 @@
 	if (visualnet)
 		visualnet.remove_eye(src)
 	owner.eyeobj = null
+	owner.update_vision_range()
 	owner = null
 	SetName(initial(name))
 

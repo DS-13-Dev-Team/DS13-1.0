@@ -1,3 +1,5 @@
+#define FRONTAL_METEOR_SPREAD	35
+
 /datum/event/meteor_wave
 	startWhen		= 30	// About one minute early warning
 	endWhen 		= 60	// Adjusted automatically in tick()
@@ -5,8 +7,8 @@
 	var/next_meteor = 40
 	var/waves = 1
 	var/start_side
-	var/next_meteor_lower = 5
-	var/next_meteor_upper = 10
+	var/next_meteor_lower = 10
+	var/next_meteor_upper = 20
 
 
 /datum/event/meteor_wave/setup()
@@ -154,13 +156,13 @@
 			starty = world.maxy-(TRANSITIONEDGE+1)
 			startx = rand((TRANSITIONEDGE+1), world.maxx-(TRANSITIONEDGE+1))
 		if(EAST)
-			starty = rand(AC.y + 25,AC.y - 25)
+			starty = rand(AC.y + FRONTAL_METEOR_SPREAD,AC.y - FRONTAL_METEOR_SPREAD)
 			startx = world.maxx-(TRANSITIONEDGE+1)
 		if(SOUTH)
 			starty = (TRANSITIONEDGE+1)
 			startx = rand((TRANSITIONEDGE+1), world.maxx-(TRANSITIONEDGE+1))
 		if(WEST)
-			starty = rand((TRANSITIONEDGE+1), world.maxy-(TRANSITIONEDGE+1))
+			starty = rand(AC.y + FRONTAL_METEOR_SPREAD,AC.y - FRONTAL_METEOR_SPREAD)
 			startx = (TRANSITIONEDGE+1)
 	var/turf/T = locate(startx, starty, Z)
 	return T

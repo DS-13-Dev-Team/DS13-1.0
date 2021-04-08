@@ -1,7 +1,7 @@
-GLOBAL_VAR_INIT(asteroid_cannon, null)
+GLOBAL_DATUM(asteroid_cannon, /obj/structure/asteroidcannon)
 
 #define CANNON_FORWARD_DIR	EAST
-#define CANNON_FIRING_ARC 45
+#define CANNON_FIRING_ARC 55
 #define CANNON_ROTATION_SPEED 75
 /**
 
@@ -34,7 +34,6 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	var/bullet_origin_offset = 3 //+/-x. Offsets the bullet so it can shoot "through the wall" to more closely mirror the source material's gun.
 
 	var/fire_sound = 'sound/effects/asteroidcannon_fire.ogg'
-	var/datum/extension/asteroidcannon/AC = null
 	var/next_shot = 0
 	var/fire_delay = 0.50 SECONDS
 	var/operational = TRUE //Is it online?
@@ -93,9 +92,9 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 
 
 	//Give it the shooty bit
+
 	fire_handler = set_extension(src, /datum/extension/asteroidcannon)
 	rotator = set_extension(src, /datum/extension/rotate_facing/asteroidcannon)
-	AC = get_extension(src, /datum/extension/asteroidcannon) //Cached for later.
 
 
 /obj/structure/asteroidcannon/attackby(obj/item/C, mob/user)
@@ -159,7 +158,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	flick("asteroidgun_under_fire", asteroidunder)
 
 /obj/structure/asteroidcannon/attack_hand(mob/user)
-	if (AC.gunner)
+	if (fire_handler.gunner)
 		stop_gunning()
 	else
 		start_gunning(user)
@@ -174,13 +173,13 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 /obj/structure/asteroidcannon/proc/start_gunning(mob/user)
 	if(!isliving(user) || user.is_necromorph())
 		return FALSE //No.
-	if (AC.gunner)
+	if (fire_handler.gunner)
 		to_chat(user, SPAN_DANGER("The hotseat is occupied"))
 		return
-	AC.set_gunner(user)
+	fire_handler.set_gunner(user)
 
 /obj/structure/asteroidcannon/proc/stop_gunning(mob/user)
-	AC.remove_gunner()
+	fire_handler.remove_gunner()
 	unset_target()
 
 
@@ -207,9 +206,10 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	icon_state = "asteroidcannon"
 	damage = 100
 	hitscan = TRUE
-	muzzle_type = /obj/effect/projectile/laser/xray/muzzle
-	tracer_type = /obj/effect/projectile/laser/xray/tracer
-	impact_type = /obj/effect/projectile/laser/xray/impact
+	muzzle_type = /obj/effect/projectile/laser/ads/muzzle
+	tracer_type = /obj/effect/projectile/laser/ads/tracer
+	impact_type = /obj/effect/projectile/laser/ads/impact
+	kill_count = INFINITY
 
 
 /obj/item/projectile/bullet/asteroidcannon/Bump(atom/A, forced)
@@ -227,3 +227,25 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	angular_speed = CANNON_ROTATION_SPEED
 	active_track = TRUE
 	forward_vector = CANNON_FORWARD_DIR	//The cannon faces right
+
+
+
+
+
+
+
+//----------------------------
+// Cannon laser stuff
+//	Has no light color to help performance
+//----------------------------
+/obj/effect/projectile/laser/ads
+	light_color = null
+
+/obj/effect/projectile/laser/ads/tracer
+	icon_state = "xray"
+
+/obj/effect/projectile/laser/ads/muzzle
+	icon_state = "muzzle_xray"
+
+/obj/effect/projectile/laser/ads/impact
+	icon_state = "impact_xray"
