@@ -39,4 +39,4 @@ changes:
   - maptweak: "Added toggleable blast doors to all the windows on the bridge, and a switch to control them. The outer wall of the bridge can now be turned into a metal shell at a moment's notice."
   - tweak: "All doors and airlocks now take less damage from explosions."
   - maptweak: "Added more hull plating to the front of the ship on several decks, allowing a few meteor hits to be sustained before hull breaches start to occur."
-  - tweak: "Blast doors are significantly buffed, especially against explosions and meteors.
+  - tweak: "Blast doors are significantly buffed, especially against explosions and meteors."
