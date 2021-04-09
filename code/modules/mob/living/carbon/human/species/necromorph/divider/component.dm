@@ -92,13 +92,7 @@
 	release_vector(pixel_offset)
 	release_vector(cached_pixels)
 
-	//Long shout when targeting mobs, normal when targeting objects
-	/*
-	if (ismob(A))
-		H.play_species_audio(H, SOUND_SHOUT_LONG, 100, 1, 3)
-	else
-		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
-	*/
+
 
 	return leap_attack(A, _cooldown = leap_cooldown, _delay = (leap_windup_time - (0.2 SECONDS)), _speed = 7, _maxrange = 6, _lifespan = 5 SECONDS, subtype = /datum/extension/charge/leap/component)
 

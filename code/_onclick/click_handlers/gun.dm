@@ -14,6 +14,10 @@
 	if (start_proc)
 		call(reciever, start_proc)()
 
+/datum/click_handler/gun/proc/fire()
+	if (fire_proc)
+		call(reciever, fire_proc)()
+
 /datum/click_handler/gun/proc/stop_firing()
 	if (stop_proc)
 		call(reciever, stop_proc)()

@@ -25,7 +25,8 @@
 	closed_layer = ABOVE_WINDOW_LAYER
 	var/id = 1.0
 	dir = 1
-	explosion_resistance = 25
+	explosion_resistance = 40
+	resistance = 20
 
 	//Most blast doors are infrequently toggled and sometimes used with regular doors anyways,
 	//turning this off prevents awkward zone geometry in places like medbay lobby, for example.
@@ -180,6 +181,10 @@
 /obj/machinery/door/blast/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group) return 1
 	return ..()
+
+//We dont want these things opening when EMP-ed
+/obj/machinery/door/blast/emp_act(var/severity)
+	take_damage(severity ? 100/severity : 33)
 
 
 

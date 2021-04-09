@@ -1,0 +1,42 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Nanako
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - rscadd: "Added the Asteroid Defense System, located on the top deck, above the bridge. It is only accessible via spacewalk along the spine of the ship. The ADS will automatically shoot down incoming asteroids, and it can also be manually controlled. There is currently no need for the manual control, but maybe someday soon it will start breaking down...."
+  - tweak: "Majorly revamped meteors. They now come in varying sizes, speeds, and rotation speeds, and they explode when destroyed in flight. Meteors will now always approach on the top deck, but will hit a random deck of the ship when they make contact"
+  - rscadd: "Meteor events are now enabled and can occur randomly. Meteors will generally come from the front of the ship, and will be shot down by the ADS as long as it's working."
+  - maptweak: "Added toggleable blast doors to all the windows on the bridge, and a switch to control them. The outer wall of the bridge can now be turned into a metal shell at a moment's notice."
+  - tweak: "All doors and airlocks now take less damage from explosions."
+  - maptweak: "Added more hull plating to the front of the ship on several decks, allowing a few meteor hits to be sustained before hull breaches start to occur."
+  - tweak: "Blast doors are significantly buffed, especially against explosions and meteors."

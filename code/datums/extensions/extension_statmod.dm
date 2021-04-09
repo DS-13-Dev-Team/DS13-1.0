@@ -189,10 +189,16 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	return world.view
 
 /mob/living/get_base_view_range()
+	if (eyeobj)
+		return eyeobj.get_base_view_range()
 	return initial(view_range)
 
+/mob/observer/eye/get_base_view_range()
+	return initial(view_range)
 
 /mob/living/carbon/human/get_base_view_range()
+	if (eyeobj)
+		return eyeobj.get_base_view_range()
 	return species.view_range
 
 
