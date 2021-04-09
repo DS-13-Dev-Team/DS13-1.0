@@ -55,7 +55,6 @@ GLOBAL_LIST_EMPTY(asteroids)
 	..()
 	z_original = z
 	z_target = pick(GLOB.using_map.station_levels)	//The meteor targets a random height
-	z_target = 4 //todo REMOVE THIS
 	if (isturf(loc))
 		register_asteroid(src)
 

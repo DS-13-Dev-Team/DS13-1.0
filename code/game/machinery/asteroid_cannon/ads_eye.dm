@@ -23,7 +23,6 @@
 	var/vector2/offset_vector = direction_vector * offset
 	offset_turf = locate(gun.x + offset_vector.x, gun.y + offset_vector.y, gun.z)
 	setLoc(offset_turf)
-	world << "Moving to [offset_turf]"
 
 	release_vector(offset_vector)
 

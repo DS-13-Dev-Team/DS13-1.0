@@ -8,7 +8,6 @@
 
 
 /datum/extension/asteroidcannon/Process()
-	//world << "Extension process"
 	if(gunner)
 		if(gun.is_firing()) //We've got a gunner, don't fire.
 			handle_manual_fire()
