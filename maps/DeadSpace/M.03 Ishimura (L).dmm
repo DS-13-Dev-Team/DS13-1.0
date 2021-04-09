@@ -20407,7 +20407,6 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
 	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -20427,7 +20426,6 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
 	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -20447,7 +20445,6 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
 	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -25649,7 +25646,6 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
 	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
@@ -26443,7 +26439,6 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
 	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
@@ -26463,7 +26458,6 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1;
 	icon_state = "shuttle_chair_preview";
-	tag = "icon-shuttle_chair_preview (NORTH)"
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
