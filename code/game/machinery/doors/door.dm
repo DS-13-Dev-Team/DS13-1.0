@@ -391,7 +391,6 @@
 		return reduced_damage
 
 /obj/machinery/door/proc/take_damage(var/damage, var/ignore_resistance = FALSE)
-	world << "Door take damage [damage]"
 	var/initialhealth = health
 
 	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
@@ -440,9 +439,6 @@
 
 
 /obj/machinery/door/ex_act(severity)
-	//world << "Door ex_act [severity] [jumplink(src)]"
-	if (!severity)
-		crash_with("Ex act called with zero or null severity")
 	var/blast_divisor = 1 + (explosion_resistance * 0.1)
 	switch(severity)
 		if(1)
