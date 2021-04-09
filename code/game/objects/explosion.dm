@@ -142,12 +142,17 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 //Why the hell are there two definitions for process() and Process() ????
 /datum/explosion_wave/Process()
 	location = get_step(location, dir)
-	if(!location || power <= 0)
+	if(!location || !power || power <= 0)
 		qdel(src)
 		return PROCESS_KILL
 	//Firstly, the centre turf takes a hit.
-	power -= location.get_explosion_resistance() > 1 ? location.get_explosion_resistance() : (power_cap + (location.get_explosion_resistance()))
 	location.explosion_ripple(explosion_power_to_ex_act(MAP(power, 0, 100, 0, 3)))
+
+	power -= location.get_explosion_resistance() > 1 ? location.get_explosion_resistance() : (power_cap + (location.get_explosion_resistance()))
+	if(!power || power <= 0)
+		qdel(src)
+		return PROCESS_KILL
+
 	//Secondly, we push the wave outwards from the centre turf, blocking it off as needed.
 	for(var/turf/T in orange(distance_travelled, location))
 		var/resistance = T.get_explosion_resistance()

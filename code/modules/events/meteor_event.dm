@@ -188,14 +188,12 @@
 	var/Me = pickweight(meteortypes)
 	var/obj/effect/meteor/M = new Me(pickedstart)
 	M.start_side = startSide
-	M.dest = pickedgoal
 	M.velocity = new /vector2()
 	if(pickedgoal.x != pickedstart.x)
 		M.velocity.x = (pickedgoal.x < pickedstart.x) ? -2 : 2
 	if(pickedgoal.y != pickedstart.y)
 		M.velocity.y = (pickedgoal.y < pickedstart.y) ? -2 : 2
-	spawn(0)
-		walk_towards(M, M.dest, SPEED_TO_DELAY(M.speed))
+	M.set_destination(pickedgoal)
 	return
 
 /proc/spaceDebrisStartLoc(startSide, Z)

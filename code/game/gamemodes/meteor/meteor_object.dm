@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	default_scale = 3.5
 
 	var/min_scale = 3
-	var/max_scale = 5
+	var/max_scale = 6
 
 	//Meteors are big objects
 	bound_width = WORLD_ICON_SIZE*2
@@ -55,13 +55,13 @@ GLOBAL_LIST_EMPTY(asteroids)
 	..()
 	z_original = z
 	z_target = pick(GLOB.using_map.station_levels)	//The meteor targets a random height
-	world << "Meteor targeting zlevel [z_target]"
+	z_target = 4 //todo REMOVE THIS
 	if (isturf(loc))
 		register_asteroid(src)
 
 	default_scale = rand_between(min_scale, max_scale)
 	animate_to_default()
-	SpinAnimation(0.5 / (default_scale * rand_between(0.75, 1.25)))
+	SpinAnimation(0.5 / (default_scale * rand_between(0.5, 1.5)))
 	speed = rand_between(speed * 0.75, speed * 1.25)
 
 
@@ -76,28 +76,42 @@ GLOBAL_LIST_EMPTY(asteroids)
 	walk(src,0) //this cancels the walk_towards() proc
 	. = ..()
 
-/obj/effect/meteor/Move(var/turf/NewLoc,Dir=0,step_x=0,step_y=0)
+/obj/effect/meteor/Move(var/turf/NewLoc,NewDir=0)
 	move_count++
 
-
+	//Turns out that NewLoc is actually our current location so we need to get the next step
+	var/turf/next_loc = get_step(loc, NewDir)
 
 	//When a meteor is about to move into a turf, we check if that turf is any kind of not-empty-space thing
 	//That includes empty space with potential non empty space below
 	var/impacting = FALSE
-	if (istype(NewLoc))
-		if (isspace(NewLoc))
-			world << "Newloc is space"
-			var/turf/space/S = NewLoc
+	if (istype(next_loc))
+		if (istype(next_loc, /turf/space))
+			var/turf/space/S = next_loc
 
 			//Easy optimisation to see if this is empty space
 			if (S.first_solid_z_below)
 				//Lets see if there's anything to hit at our target zlevel
-				var/turf/target = locate(NewLoc.x, NewLoc.y, z_target)
+				var/turf/target = locate(next_loc.x, next_loc.y, z_target)
 				if (target && !target.is_hole)
 					impacting = TRUE
 
-		else if (!(NewLoc.is_hole))
-			impacting = TRUE
+				//If not we'll keep going as normal
+
+		//We're about to enter a non space tile. Again lets check our destination
+		else if (!(next_loc.is_hole))
+			var/turf/target = locate(next_loc.x, next_loc.y, z_target)
+			if (src.z == z_target || (target && !target.is_hole))
+				impacting = TRUE	//If our target is solid we hit it
+			else
+				//Okay we have a problem, our target level has empty space but the zlevel we're on does not.
+				//At this point we have officially moved under the ship, and out of line of sight of the deck we were on. This asteroid is no longer shootable
+
+				loc = locate(x, y, z_target)	//We snap down to the deck we targeted and continue moving from there
+
+				NewLoc = loc
+
+				set_destination(dest, TRUE)	//Reset the destination, this will target a turf on our new z
 
 	if (impacting)
 		//Its solid enough to hit, lets do it!
@@ -108,7 +122,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 
 	else
 		//We're just moving into empty space
-		. = ..() //process movement...
+		.=..()
 
 	if(loc == dest)
 		qdel(src)
@@ -137,9 +151,17 @@ GLOBAL_LIST_EMPTY(asteroids)
 //We fly in a different direction
 /obj/effect/meteor/proc/ricochet()
 	walk(src, 0)
-	dest = spaceDebrisFinishLoc(start_side, z)
 
-	walk_towards(src, dest, SPEED_TO_DELAY(speed))
+	set_destination(spaceDebrisFinishLoc(start_side, z))
+
+
+/obj/effect/meteor/proc/set_destination(var/turf/T, var/z_adjust = TRUE)
+	if (z_adjust && T.z != z)
+		//Get the appropriate turf on our own zlevel
+		T = locate(T.x, T.y, z)
+	dest = T
+	spawn(0)
+		walk_towards(src, T, SPEED_TO_DELAY(speed))
 
 /obj/effect/meteor/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	return istype(mover, /obj/effect/meteor) ? 1 : ..()
@@ -180,7 +202,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	var/datum/effect/system/explosion/E = new/datum/effect/system/explosion()
 	E.set_up(loc, FALSE)
 	E.start()
-	make_debris()
+	//make_debris()	//No debris to prevent spam, because things will be miles away when shot down and we dont want ore floating in space forever, ignored
 	if (!QDELETED(src))
 		qdel(src)
 

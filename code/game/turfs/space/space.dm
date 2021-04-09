@@ -8,6 +8,7 @@
 	temperature = T20C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	is_hole = TRUE
+	explosion_resistance = 0.5	//Impedes blasts less than any other tile, though not zero
 	var/static/list/dust_cache
 
 

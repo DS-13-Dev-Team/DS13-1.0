@@ -92,6 +92,7 @@
 			bound_height = width * world.icon_size
 
 	health = max_health
+	resistance = min_force	//Todo: remove min force and roll everything into resistance
 	update_connections(1)
 	update_icon()
 
@@ -390,6 +391,7 @@
 		return reduced_damage
 
 /obj/machinery/door/proc/take_damage(var/damage, var/ignore_resistance = FALSE)
+	world << "Door take damage [damage]"
 	var/initialhealth = health
 
 	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
@@ -438,19 +440,23 @@
 
 
 /obj/machinery/door/ex_act(severity)
+	//world << "Door ex_act [severity] [jumplink(src)]"
+	if (!severity)
+		crash_with("Ex act called with zero or null severity")
+	var/blast_divisor = 1 + (explosion_resistance * 0.1)
 	switch(severity)
 		if(1)
-			take_damage(rand_between(500, 650))
+			take_damage(rand_between(500, 650) / blast_divisor)
 		if(2)
-			take_damage(rand_between(300, 400))
+			take_damage(rand_between(300, 400) / blast_divisor)
 		if(3)
 			if(prob(80))
 				var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 				s.set_up(2, 1, src)
 				s.start()
 			else
-				take_damage(rand_between(100, 150))
-			take_damage(rand_between(100, 150))
+				take_damage(rand_between(100, 150) / blast_divisor)
+			take_damage(rand_between(100, 150) / blast_divisor)
 
 
 /obj/machinery/door/update_icon()
