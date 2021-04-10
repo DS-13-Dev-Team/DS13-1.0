@@ -2,7 +2,7 @@
 	Make sure you don't modify these vectors.
 	You should treat all vectors as immutable in general.
 */
-var Vector2/Vector2 = new
+var/global/Vector2/Vector2 = new
 
 Vector2
 	var
