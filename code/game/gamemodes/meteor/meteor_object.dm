@@ -6,122 +6,10 @@
 // Dust, used by space dust event and during earliest stages of meteor mode.
 /var/list/meteors_dust = list(/obj/effect/meteor/dust)
 
-// Standard meteors, used during early stages of the meteor gamemode.
-/var/list/meteors_normal = list(\
-		/obj/effect/meteor/medium=8,\
-		/obj/effect/meteor/dust=3,\
-		/obj/effect/meteor/irradiated=3,\
-		/obj/effect/meteor/big=3,\
-		/obj/effect/meteor/flaming=1,\
-		/obj/effect/meteor/golden=1,\
-		/obj/effect/meteor/silver=1\
-		)
-
-// Threatening meteors, used during the meteor gamemode.
-/var/list/meteors_threatening = list(\
-		/obj/effect/meteor/big=10,\
-		/obj/effect/meteor/medium=5,\
-		/obj/effect/meteor/golden=3,\
-		/obj/effect/meteor/silver=3,\
-		/obj/effect/meteor/flaming=3,\
-		/obj/effect/meteor/irradiated=3,\
-		/obj/effect/meteor/emp=3\
-		)
-
-// Catastrophic meteors, pretty dangerous without shields and used during the meteor gamemode.
-/var/list/meteors_catastrophic = list(\
-		/obj/effect/meteor/big=75,\
-		/obj/effect/meteor/flaming=10,\
-		/obj/effect/meteor/irradiated=10,\
-		/obj/effect/meteor/emp=10,\
-		/obj/effect/meteor/medium=5,\
-		/obj/effect/meteor/golden=4,\
-		/obj/effect/meteor/silver=4,\
-		/obj/effect/meteor/tunguska=1\
-		)
-
-// Armageddon meteors, very dangerous, and currently used only during the meteor gamemode.
-/var/list/meteors_armageddon = list(\
-		/obj/effect/meteor/big=25,\
-		/obj/effect/meteor/flaming=10,\
-		/obj/effect/meteor/irradiated=10,\
-		/obj/effect/meteor/emp=10,\
-		/obj/effect/meteor/medium=3,\
-		/obj/effect/meteor/tunguska=3,\
-		/obj/effect/meteor/golden=2,\
-		/obj/effect/meteor/silver=2\
-		)
-
-// Cataclysm meteor selection. Very very dangerous and effective even against shields. Used in late game meteor gamemode only.
-/var/list/meteors_cataclysm = list(\
-		/obj/effect/meteor/big=40,\
-		/obj/effect/meteor/emp=20,\
-		/obj/effect/meteor/tunguska=20,\
-		/obj/effect/meteor/irradiated=10,\
-		/obj/effect/meteor/golden=10,\
-		/obj/effect/meteor/silver=10,\
-		/obj/effect/meteor/flaming=10,\
-		/obj/effect/meteor/supermatter=1\
-		)
 
 
+GLOBAL_LIST_EMPTY(asteroids)
 
-///////////////////////////////
-//Meteor spawning global procs
-///////////////////////////////
-
-/proc/spawn_meteors(var/number = 10, var/list/meteortypes, var/startSide, var/zlevel)
-	for(var/i = 0; i < number; i++)
-		spawn_meteor(meteortypes, startSide, zlevel)
-
-/proc/spawn_meteor(var/list/meteortypes, var/startSide, var/zlevel)
-	var/turf/pickedstart = spaceDebrisStartLoc(startSide, zlevel)
-	var/turf/pickedgoal = spaceDebrisFinishLoc(startSide, zlevel)
-
-	var/Me = pickweight(meteortypes)
-	var/obj/effect/meteor/M = new Me(pickedstart)
-	M.dest = pickedgoal
-	spawn(0)
-		walk_towards(M, M.dest, 1)
-	return
-
-/proc/spaceDebrisStartLoc(startSide, Z)
-	var/starty
-	var/startx
-	switch(startSide)
-		if(NORTH)
-			starty = world.maxy-(TRANSITIONEDGE+1)
-			startx = rand((TRANSITIONEDGE+1), world.maxx-(TRANSITIONEDGE+1))
-		if(EAST)
-			starty = rand((TRANSITIONEDGE+1),world.maxy-(TRANSITIONEDGE+1))
-			startx = world.maxx-(TRANSITIONEDGE+1)
-		if(SOUTH)
-			starty = (TRANSITIONEDGE+1)
-			startx = rand((TRANSITIONEDGE+1), world.maxx-(TRANSITIONEDGE+1))
-		if(WEST)
-			starty = rand((TRANSITIONEDGE+1), world.maxy-(TRANSITIONEDGE+1))
-			startx = (TRANSITIONEDGE+1)
-	var/turf/T = locate(startx, starty, Z)
-	return T
-
-/proc/spaceDebrisFinishLoc(startSide, Z)
-	var/endy
-	var/endx
-	switch(startSide)
-		if(NORTH)
-			endy = TRANSITIONEDGE
-			endx = rand(TRANSITIONEDGE, world.maxx-TRANSITIONEDGE)
-		if(EAST)
-			endy = rand(TRANSITIONEDGE, world.maxy-TRANSITIONEDGE)
-			endx = TRANSITIONEDGE
-		if(SOUTH)
-			endy = world.maxy-TRANSITIONEDGE
-			endx = rand(TRANSITIONEDGE, world.maxx-TRANSITIONEDGE)
-		if(WEST)
-			endy = rand(TRANSITIONEDGE,world.maxy-TRANSITIONEDGE)
-			endx = world.maxx-TRANSITIONEDGE
-	var/turf/T = locate(endx, endy, Z)
-	return T
 
 ///////////////////////
 //The meteor effect
@@ -140,10 +28,25 @@
 	pass_flags = PASS_FLAG_TABLE
 	var/heavy = 0
 	var/z_original
+	var/z_target
 	var/meteordrop = /obj/item/weapon/ore/iron
 	var/dropamt = 1
+	var/vector2/velocity = null
 
 	var/move_count = 0
+	var/speed = 1.5
+	var/registered = FALSE
+	var/start_side = EAST //Where did we come from?
+	default_scale = 3.5
+
+	var/min_scale = 3
+	var/max_scale = 6
+
+	//Meteors are big objects
+	bound_width = WORLD_ICON_SIZE*2
+	bound_height = WORLD_ICON_SIZE*2
+	pixel_x = 16
+	pixel_y = 16
 
 /obj/effect/meteor/proc/get_shield_damage()
 	return max(((max(hits, 2)) * (heavy + 1) * rand(30, 60)) / hitpwr , 0)
@@ -151,30 +54,113 @@
 /obj/effect/meteor/New()
 	..()
 	z_original = z
+	z_target = pick(GLOB.using_map.station_levels)	//The meteor targets a random height
+	if (isturf(loc))
+		register_asteroid(src)
 
-/obj/effect/meteor/Move()
-	. = ..() //process movement...
+	default_scale = rand_between(min_scale, max_scale)
+	animate_to_default()
+	SpinAnimation(0.5 / (default_scale * rand_between(0.5, 1.5)))
+	speed = rand_between(speed * 0.75, speed * 1.25)
+
+
+/proc/register_asteroid(var/obj/effect/meteor/M)
+	GLOB.asteroids += M
+	if (GLOB.asteroid_cannon)
+		GLOB.asteroid_cannon.fire_handler.wake_up()
+
+/obj/effect/meteor/Destroy()
+	GLOB.asteroids -= src
+	velocity = null
+	walk(src,0) //this cancels the walk_towards() proc
+	. = ..()
+
+/obj/effect/meteor/Move(var/turf/NewLoc,NewDir=0)
 	move_count++
+
+	//Turns out that NewLoc is actually our current location so we need to get the next step
+	var/turf/next_loc = get_step(loc, NewDir)
+
+	//When a meteor is about to move into a turf, we check if that turf is any kind of not-empty-space thing
+	//That includes empty space with potential non empty space below
+	var/impacting = FALSE
+	if (istype(next_loc))
+		if (istype(next_loc, /turf/space))
+			var/turf/space/S = next_loc
+
+			//Easy optimisation to see if this is empty space
+			if (S.first_solid_z_below)
+				//Lets see if there's anything to hit at our target zlevel
+				var/turf/target = locate(next_loc.x, next_loc.y, z_target)
+				if (target && !target.is_hole)
+					impacting = TRUE
+
+				//If not we'll keep going as normal
+
+		//We're about to enter a non space tile. Again lets check our destination
+		else if (!(next_loc.is_hole))
+			var/turf/target = locate(next_loc.x, next_loc.y, z_target)
+			if (src.z == z_target || (target && !target.is_hole))
+				impacting = TRUE	//If our target is solid we hit it
+			else
+				//Okay we have a problem, our target level has empty space but the zlevel we're on does not.
+				//At this point we have officially moved under the ship, and out of line of sight of the deck we were on. This asteroid is no longer shootable
+
+				loc = locate(x, y, z_target)	//We snap down to the deck we targeted and continue moving from there
+
+				NewLoc = loc
+
+				set_destination(dest, TRUE)	//Reset the destination, this will target a turf on our new z
+
+	if (impacting)
+		//Its solid enough to hit, lets do it!
+		//We'll detonate next to it, not inside it
+		detonate_at_turf(locate(x, y, z_target))
+		return
+
+
+	else
+		//We're just moving into empty space
+		.=..()
+
 	if(loc == dest)
 		qdel(src)
+
+
 
 /obj/effect/meteor/touch_map_edge()
 	if(move_count > TRANSITIONEDGE)
 		qdel(src)
 
-/obj/effect/meteor/Destroy()
-	walk(src,0) //this cancels the walk_towards() proc
-	return ..()
 
-/obj/effect/meteor/New()
-	..()
-	SpinAnimation()
+
 
 /obj/effect/meteor/Bump(atom/A)
 	..()
 	if(A && !QDELETED(src))	// Prevents explosions and other effects when we were deleted by whatever we Bumped() - currently used by shields.
-		ram_turf(get_turf(A))
-		get_hit() //should only get hit once per move attempt
+		if (istype(A, /obj/effect/meteor))
+			//We bounce off other meteors
+			ricochet()
+			return
+		else
+			ram_turf(get_turf(A))
+			get_hit() //should only get hit once per move attempt
+
+
+//We fly in a different direction
+/obj/effect/meteor/proc/ricochet()
+	walk(src, 0)
+
+	set_destination(spaceDebrisFinishLoc(start_side, z))
+
+
+/obj/effect/meteor/proc/set_destination(var/turf/T, var/z_adjust = TRUE)
+	if (z_adjust && T.z != z)
+		//Get the appropriate turf on our own zlevel
+		T = locate(T.x, T.y, z)
+	dest = T
+	spawn(0)
+		walk_towards(src, T, SPEED_TO_DELAY(speed))
 
 /obj/effect/meteor/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	return istype(mover, /obj/effect/meteor) ? 1 : ..()
@@ -189,6 +175,12 @@
 	if(T && !T.CanPass(src, src.loc, 0.5, 0))
 		T.ex_act(hitpwr, src)
 
+/obj/effect/meteor/proc/detonate_at_turf(var/turf/T)
+	ram_turf(T)
+	forceMove(T)
+	hits = 0
+	get_hit()
+
 //process getting 'hit' by colliding with a dense object
 //or randomly when ramming turfs
 /obj/effect/meteor/proc/get_hit()
@@ -200,6 +192,18 @@
 
 /obj/effect/meteor/ex_act()
 	return
+
+
+/*
+	Called when a meteor is harmlessly destroyed by cannon fire
+*/
+/obj/effect/meteor/proc/break_apart()
+	var/datum/effect/system/explosion/E = new/datum/effect/system/explosion()
+	E.set_up(loc, FALSE)
+	E.start()
+	//make_debris()	//No debris to prevent spam, because things will be miles away when shot down and we dont want ore floating in space forever, ignored
+	if (!QDELETED(src))
+		qdel(src)
 
 /obj/effect/meteor/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
 	if(istype(W, /obj/item/weapon/tool/pickaxe))
@@ -243,7 +247,7 @@
 
 /obj/effect/meteor/medium/meteor_effect()
 	..()
-	explosion(4, 2)
+	explosion(3, 2)
 
 //Large-sized
 /obj/effect/meteor/big
@@ -255,7 +259,7 @@
 
 /obj/effect/meteor/big/meteor_effect()
 	..()
-	explosion(10, 2)
+	explosion(5, 2)
 
 //Flaming meteor
 /obj/effect/meteor/flaming
@@ -266,8 +270,9 @@
 	meteordrop = /obj/item/weapon/ore/phoron
 
 /obj/effect/meteor/flaming/meteor_effect()
+	explosion(2, 2)
 	..()
-	explosion(4, 2)
+
 
 //Radiation meteor
 /obj/effect/meteor/irradiated
@@ -277,8 +282,9 @@
 	meteordrop = /obj/item/weapon/ore/uranium
 
 /obj/effect/meteor/irradiated/meteor_effect()
+	explosion(2, 2)
 	..()
-	explosion(4, 2)
+
 	new /obj/effect/decal/cleanable/greenglow(get_turf(src))
 	SSradiation.radiate(src, 50)
 
@@ -321,8 +327,9 @@
 	meteordrop = /obj/item/weapon/ore/diamond	// Probably means why it penetrates the hull so easily before exploding.
 
 /obj/effect/meteor/tunguska/meteor_effect()
+	explosion(8,3)
 	..()
-	explosion(30,3)
+
 
 // This is the final solution against shields - a single impact can bring down most shield generators.
 /obj/effect/meteor/supermatter
@@ -333,7 +340,7 @@
 
 /obj/effect/meteor/supermatter/meteor_effect()
 	..()
-	explosion(4, 2)
+	explosion(3, 2)
 	for(var/obj/machinery/power/apc/A in range(rand(12, 20), src))
 		A.energy_fail(round(10 * rand(8, 12)))
 

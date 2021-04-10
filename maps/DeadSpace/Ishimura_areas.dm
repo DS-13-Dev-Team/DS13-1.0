@@ -44,13 +44,24 @@
 	icon_state = "engibase"
 	sound_env = LARGE_ENCLOSED
 
+/area/ishimura/eva/ADS
+	name = "\improper Asteroid Defense System"
+	icon_state = "engibase"
+	sound_env = SMALL_ENCLOSED
+
 /area/ishimura/eva/airlock
 	name = "\improper Communication Airlock"
 	sound_env = SMALL_ENCLOSED
 
+/area/ishimura/eva/airlock/ADS
+	name = "\improper Asteroid Defense Airlock"
+
 /area/ishimura/eva/prep
 	name = "\improper EVA Equipment Prep"
 	sound_env = SMALL_ENCLOSED
+
+/area/ishimura/eva/prep/ADS
+	name = "\improper ADS Airlock Tank Bay"
 
 /area/ishimura/eva/solar
 	name = "\improper Solar Control"
