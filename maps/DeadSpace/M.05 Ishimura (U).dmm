@@ -3534,7 +3534,7 @@
 	dir = 4;
 	icon_state = "open"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/plating,
 /area/ishimura/eva/ADS)
 "ud" = (
 /obj/machinery/status_display{
@@ -3633,7 +3633,7 @@
 	icon_state = "32-2"
 	},
 /turf/simulated/open,
-/area/space)
+/area/ishimura/eva/ADS)
 "Av" = (
 /obj/structure/closet/walllocker/emerglocker/north,
 /obj/effect/floor_decal/industrial/warning/full,
