@@ -28,9 +28,8 @@ jobs:
           bash tools/ci/check_filedirs.sh baystation12.dme
           bash tools/ci/check_changelogs.sh
           find . -name "*.json" -not -path "*/node_modules/*" -print0 | xargs -0 python3 ./tools/json_verifier.py
-          bash tools/ci/build_tgui.sh
           bash tools/ci/check_grep.sh
-          ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
+          ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&0
       - name: Annotate Lints
         uses: yogstation13/DreamAnnotate@v1
         if: always()
