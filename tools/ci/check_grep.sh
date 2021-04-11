@@ -41,26 +41,26 @@ if grep -nP '\W\/turf\s*[,\){]' maps/DeadSpace/*.dmm; then
     echo "base /turf path use detected in maps, please replace with proper paths."
     st=1
 fi;
-echo "Checking for unmanaged globals"
-if grep -nP '^/*var/' code/**/*.dm; then
-    echo "Unmanaged global var use detected in code, please use the helpers."
-    st=1
-fi;
+#echo "Checking for unmanaged globals"
+#if grep -nP '^/*var/' code/**/*.dm; then
+#    echo "Unmanaged global var use detected in code, please use the helpers."
+#    st=1
+#fi;
 echo "Checking for 0 length timers"
-if grep -nP 'addtimer\(.+?, ?0\)($| |/)' code/**/*,dm; then
+if grep -nP 'addtimer\(.+?, ?0\)($| |/)' code/**/*.dm; then
 	echo "Default timer type with no length detected. Please add the correct flags or use the async macro call"
 	st=1
 fi;
-echo "Checking for space indentation"
-if grep -nP '(^ {2})|(^ [^ * ])|(^    +)' code/**/*.dm; then
-    echo "space indentation detected"
-    st=1
-fi;
-echo "Checking for mixed indentation"
-if grep -nP '^\t+ [^ *]' code/**/*.dm; then
-    echo "mixed <tab><space> indentation detected"
-    st=1
-fi;
+#echo "Checking for space indentation"
+#if grep -nP '(^ {2})|(^ [^ * ])|(^    +)' code/**/*.dm; then
+#    echo "space indentation detected"
+#    st=1
+#fi;
+#echo "Checking for mixed indentation"
+#if grep -nP '^\t+ [^ *]' code/**/*.dm; then
+#    echo "mixed <tab><space> indentation detected"
+#    st=1
+#fi;
 echo "Checking long list formatting"
 if pcregrep -nM '^(\t)[\w_]+ = list\(\n\1\t{2,}' code/**/*.dm; then
     echo "long list overidented, should be two tabs"
@@ -89,13 +89,13 @@ fi;
 nl='
 '
 nl=$'\n'
-while read f; do
-    t=$(tail -c2 $f; printf x); r1="${nl}$"; r2="${nl}${r1}"
-    if [[ ! ${t%x} =~ $r1 ]]; then
-        echo "file $f is missing a trailing newline"
-        st=1
-    fi;
-done < <(find . -type f -name '*.dm')
+#while read f; do
+#    t=$(tail -c2 $f; printf x); r1="${nl}$"; r2="${nl}${r1}"
+#    if [[ ! ${t%x} =~ $r1 ]]; then
+#        echo "file $f is missing a trailing newline"
+#        st=1
+#    fi;
+#done < <(find . -type f -name '*.dm')
 #Disabled because #1187 was closed.
 #TODO: Re-enable at later date.
 #if grep -nP '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
