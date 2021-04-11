@@ -182,3 +182,12 @@
 
 	var/datum/extension/interactive/patrons/NH = get_or_create_extension(mob, /datum/extension/interactive/patrons)
 	NH.ui_interact(mob)
+
+
+
+/*
+	Checking procs
+*/
+/datum/preferences/proc/is_patron()
+	var/datum/player/P = get_player_from_key(client_ckey)
+	return P.patron

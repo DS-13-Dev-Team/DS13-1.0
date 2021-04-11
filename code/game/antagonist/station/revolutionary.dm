@@ -31,6 +31,9 @@
 	restricted_jobs = null
 	protected_jobs = null
 
+/datum/antagonist/revolutionary/New()
+	..()
+	GLOB.revs = src
 
 /datum/antagonist/revolutionary/create_global_objectives()
 	if(!..())

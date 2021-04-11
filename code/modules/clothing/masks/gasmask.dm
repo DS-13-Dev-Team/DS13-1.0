@@ -1,8 +1,8 @@
 /obj/item/clothing/mask/gas
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air."
-	icon_state = "fullgas"
-	item_state = "fullgas"
+	icon_state = "ds_bio_mask_white"
+	item_state = "ds_bio_mask_white"
 	item_flags = ITEM_FLAG_BLOCK_GAS_SMOKE_EFFECT | ITEM_FLAG_AIRTIGHT
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE
 	body_parts_covered = FACE|EYES
@@ -13,6 +13,14 @@
 	var/gas_filter_strength = 1			//For gas mask filters
 	var/list/filtered_gases = list(MATERIAL_PHORON, "sleeping_agent")
 	armor = list(melee = 5, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 75, rad = 0)
+
+/obj/item/clothing/mask/gas/black
+	name = "Earthgov gas mask"
+	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air."
+	icon_state = "ds_bio_mask_black"
+	item_state = "ds_bio_mask_black"
+
+
 
 /obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
 	var/datum/gas_mixture/filtered = new

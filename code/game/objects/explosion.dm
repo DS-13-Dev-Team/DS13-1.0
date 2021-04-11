@@ -57,7 +57,8 @@ Method to create an explosion at a given turf.
 	if(adminlog)
 		message_admins("Explosion with size ([radius]) in area [get_area(src).name] ([x],[y],[z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 		log_game("Explosion with size ([radius]) in area [get_area(src).name] ")
-	set_extension(src, /datum/extension/explosion, radius, max_power)
+	if (!QDELETED(src))
+		set_extension(src, /datum/extension/explosion, radius, max_power)
 
 /**
 
@@ -141,12 +142,17 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 //Why the hell are there two definitions for process() and Process() ????
 /datum/explosion_wave/Process()
 	location = get_step(location, dir)
-	if(!location || power <= 0)
+	if(!location || !power || power <= 0)
 		qdel(src)
 		return PROCESS_KILL
 	//Firstly, the centre turf takes a hit.
-	power -= location.get_explosion_resistance() > 1 ? location.get_explosion_resistance() : (power_cap + (location.get_explosion_resistance()))
 	location.explosion_ripple(explosion_power_to_ex_act(MAP(power, 0, 100, 0, 3)))
+
+	power -= location.get_explosion_resistance() > 1 ? location.get_explosion_resistance() : (power_cap + (location.get_explosion_resistance()))
+	if(!power || power <= 0)
+		qdel(src)
+		return PROCESS_KILL
+
 	//Secondly, we push the wave outwards from the centre turf, blocking it off as needed.
 	for(var/turf/T in orange(distance_travelled, location))
 		var/resistance = T.get_explosion_resistance()
@@ -172,7 +178,6 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 
 //Causes the actual explosion logic at a target turf.
 /datum/extension/explosion/proc/explosion(turf/epicenter, radius, max_power=2)
-	. = ..()
 	explosion_FX(epicenter, radius)
 	for(var/dir in GLOB.alldirs)
 		new /datum/explosion_wave(epicenter, dir, radius, max_power)
@@ -181,7 +186,6 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 
 //Near instant "cheap" explosion that doesn't take into account things blocking it.
 /datum/extension/explosion/proc/simple_explosion(atom/movable/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog, z_transfer, shaped)
-	. = ..()
 	for(var/turf/T in orange(devastation_range, epicenter)) //TODO: Account for the other ranges.
 		var/dist = get_dist(T, epicenter)
 		dist = (dist > 0) ? dist : 1

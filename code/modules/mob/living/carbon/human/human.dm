@@ -13,7 +13,6 @@
 	var/list/grasp_limbs
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
-
 	grasp_limbs = list()
 	stance_limbs = list()
 
@@ -26,6 +25,7 @@
 			set_species(new_species,1)
 		else
 			set_species()
+
 
 	if(species)
 		real_name = species.get_random_name(gender)
@@ -984,7 +984,6 @@
 	species.handle_post_spawn(src)
 
 
-
 	default_pixel_x = initial(pixel_x) + species.pixel_offset_x
 	default_pixel_y = initial(pixel_y) + species.pixel_offset_y
 	pixel_x = default_pixel_x
@@ -993,8 +992,9 @@
 	if(!(species.appearance_flags & HAS_UNDERWEAR))
 		QDEL_NULL_LIST(worn_underwear)
 
+	regenerate_icons(TRUE)
 	spawn(0)
-		regenerate_icons()
+
 		if(vessel.total_volume < species.blood_volume)
 			vessel.maximum_volume = species.blood_volume
 			vessel.add_reagent(/datum/reagent/blood, species.blood_volume - vessel.total_volume)
@@ -1008,6 +1008,7 @@
 	if(client && client.screen)
 		client.screen.len = null
 		InitializeHud()
+		refresh_lighting_overlays()
 
 	if(config && config.use_cortical_stacks && client && client.prefs.has_cortical_stack)
 		create_stack()

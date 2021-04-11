@@ -60,6 +60,11 @@ var/list/outfits_decls_by_type_
 	var/list/all_types = list()
 	var/list/all_possible_types = list()
 	var/list/implants
+	var/list/species_icons	//Generated on demand at runtime, this list contains icons representing species wearing this outfit
+
+/decl/hierarchy/outfit/naked
+	//This is just here because of how hierarchies work
+
 
 /decl/hierarchy/outfit/New(var/full_init = TRUE, var/list_entry = FALSE)
 	..()
@@ -140,7 +145,7 @@ var/list/outfits_decls_by_type_
 
 	if(!(OUTFIT_ADJUSTMENT_SKIP_POST_EQUIP & equip_adjustments))
 		post_equip(H)
-	H.regenerate_icons()
+	H.regenerate_icons(TRUE)	//Passing true ensures the icons are made instantly
 	if(W) // We set ID info last to ensure the ID photo is as correct as possible.
 		H.set_id_info(W)
 	return TRUE
@@ -331,6 +336,20 @@ var/list/outfits_decls_by_type_
 	for (var/typepath in get_all_item_paths())
 		loadout_tags |= get_loadout_tags_from_type(typepath)
 
+
+/*
+	This creates and caches an icon, then returns it
+	The icon represents a typical member of the passed species, wearing this outfit
+*/
+/decl/hierarchy/outfit/proc/get_default_species_icon(var/species_name = SPECIES_HUMAN)
+	if (!LAZYACCESS(species_icons, species_name))
+		var/mob/living/carbon/human/H = new /mob/living/carbon/human(null, species_name)
+		equip(H, equip_adjustments = OUTFIT_ADJUSTMENT_SKIP_SURVIVAL_GEAR)
+		//H.regenerate_icons()
+		LAZYSET(species_icons,	species_name,	getFlatIcon(H))
+	return LAZYACCESS(species_icons, species_name)
+
+
 /*
 	INSTANCE ONLY PROCS
 	These modify ourself in destructive ways, they should only be called from an instanced copy of an outfit, not on the version stored in global lists
@@ -352,3 +371,6 @@ var/list/outfits_decls_by_type_
 			//If so, we remove it from this outfit
 			var/outfit_slot = outfit_item[2]
 			vars[outfit_slot] = null
+
+
+
