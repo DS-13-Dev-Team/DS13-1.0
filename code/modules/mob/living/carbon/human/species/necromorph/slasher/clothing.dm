@@ -61,6 +61,6 @@
 	id_type = /obj/item/weapon/card/id/holo/medical
 
 /decl/hierarchy/outfit/necromorph/command
-	name = "Doctor Slick"
+	name = "Commander Slasher"
 	uniform = /obj/item/clothing/under/deadspace/captain
 	id_type = /obj/item/weapon/card/id/holo/command
