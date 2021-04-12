@@ -21,7 +21,7 @@ jobs:
     - name: Apply DMAPI update
       uses: tgstation/tgs-dmapi-updater@v2
       with:
-        header-path: 'code/__DEFINES/tgs.dm'
+        header-path: 'code/__defines/tgs.dm'
         library-path: 'code/modules/tgs'
 
     - name: Commit and Push
