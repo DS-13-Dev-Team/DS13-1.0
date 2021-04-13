@@ -54,6 +54,7 @@
 	desc = "It keeps the ship together."
 	icon_base = "rivets"
 	build_type = /obj/item/stack/tile/rivets
+	has_base_range = 4
 
 /decl/flooring/complex/tiling_ds/slashed
 	name = "slashed plating"
