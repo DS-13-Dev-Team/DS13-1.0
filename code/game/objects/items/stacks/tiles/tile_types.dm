@@ -355,7 +355,7 @@
 /obj/item/stack/tile/slashed/fifty
 	amount = 50
 
-/obj/item/stack/tile/slashedodd
+/obj/item/stack/tile/slashed/odd
 	name = "slashed tile"
 	desc = "Robust plating to reinforce the edges of a room."
 	singular_name = "slashed tiles"
@@ -364,7 +364,7 @@
 	matter = list(MATERIAL_STEEL = 937.5)
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 
-/obj/item/stack/tile/slashedodd/fifty
+/obj/item/stack/tile/slashed/odd/fifty
 	amount = 50
 
 /*

@@ -88,6 +88,6 @@
 	title = "slashed floor tile"
 	result_type = /obj/item/stack/tile/slashed
 
-/datum/stack_recipe/tile/metal/slashedodd
+/datum/stack_recipe/tile/metal/slashed/odd
 	title = "slashed floor tile"
-	result_type = /obj/item/stack/tile/slashedodd
+	result_type = /obj/item/stack/tile/slashed/odd
