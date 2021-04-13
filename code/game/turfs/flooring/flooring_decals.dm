@@ -681,17 +681,25 @@ var/list/floor_decals = list()
 	name = "slats"
 	icon_state = "slats"
 
-/obj/effect/floor_decal/dank/slats_c
-	name = "slats curving"
-	icon_state = "slats_c"
+/obj/effect/floor_decal/dank/slats_cs
+	name = "slats curving start"
+	icon_state = "slats_cs"
+
+/obj/effect/floor_decal/dank/slats_cs_r
+	name = "slats curving start reverse"
+	icon_state = "slats_cs_r"
+
+/obj/effect/floor_decal/dank/slats_ce
+	name = "slats curving end"
+	icon_state = "slats_ce"
+
+/obj/effect/floor_decal/dank/slats_ce_r
+	name = "slats curving end reverse"
+	icon_state = "slats_ce_r"
 
 /obj/effect/floor_decal/dank/slats_cc
 	name = "slats curving both ends"
 	icon_state = "slats_cc"
-
-/obj/effect/floor_decal/dank/slats_c_r
-	name = "slats curving reverse"
-	icon_state = "slats_c_r"
 
 /obj/effect/floor_decal/dank/slats_cc_r
 	name = "slats curving both ends reverse"
