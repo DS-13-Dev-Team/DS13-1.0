@@ -3,7 +3,7 @@
 	result = /obj/structure/girder
 	time = WORKTIME_SLOW
 	steps = list(
-		list(CRAFT_MATERIAL, MATERIAL_STEEL, 25)
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10)
 	)
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
 
