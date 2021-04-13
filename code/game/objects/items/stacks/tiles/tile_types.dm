@@ -331,6 +331,41 @@
 /obj/item/stack/tile/bathroom/fifty
 	amount = 50
 
+/obj/item/stack/tile/rivets
+	name = "rivet tile"
+	desc = "It keeps the ship together."
+	singular_name = "rivet tiles"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "rivets_held"
+	matter = list(MATERIAL_STEEL = 937.5)
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+
+/obj/item/stack/tile/rivets/fifty
+	amount = 50
+
+/obj/item/stack/tile/slashed
+	name = "slashed tile"
+	desc = "Robust plating to reinforce the edges of a room."
+	singular_name = "slashed tiles"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "slashed_held"
+	matter = list(MATERIAL_STEEL = 937.5)
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+
+/obj/item/stack/tile/slashed/fifty
+	amount = 50
+
+/obj/item/stack/tile/slashedodd
+	name = "slashed tile"
+	desc = "Robust plating to reinforce the edges of a room."
+	singular_name = "slashed tiles"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "slashed_odd_held"
+	matter = list(MATERIAL_STEEL = 937.5)
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+
+/obj/item/stack/tile/slashedodd/fifty
+	amount = 50
 
 /*
  * Flooring parent

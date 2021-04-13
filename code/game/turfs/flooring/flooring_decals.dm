@@ -649,7 +649,81 @@ var/list/floor_decals = list()
 	name = "asylum scratch"
 	icon_state = "asylum_scratch"
 
+/obj/effect/floor_decal/slashed_border
+	name = "slashed border"
+	icon_state = "slashed_border"
 
+/obj/effect/floor_decal/slats_start
+	name = "slats start"
+	icon_state = "slats_start"
+
+/obj/effect/floor_decal/slats_end
+	name = "slats end"
+	icon_state = "slats_end"
+
+/obj/effect/floor_decal/slats_start_c
+	name = "slats start curving"
+	icon_state = "slats_start_c"
+
+/obj/effect/floor_decal/slats_end_c
+	name = "slats end curving"
+	icon_state = "slats_end_c"
+
+/obj/effect/floor_decal/slats_start_c_r
+	name = "slats start curving reverse"
+	icon_state = "slats_start_c_r"
+
+/obj/effect/floor_decal/slats_end_c_r
+	name = "slats end curving reverse"
+	icon_state = "slats_end_c_r"
+
+/obj/effect/floor_decal/slats
+	name = "slats"
+	icon_state = "slats"
+
+/obj/effect/floor_decal/slats_c
+	name = "slats curving"
+	icon_state = "slats_c"
+
+/obj/effect/floor_decal/slats_cc
+	name = "slats curving both ends"
+	icon_state = "slats_cc"
+
+/obj/effect/floor_decal/slats_c_r
+	name = "slats curving reverse"
+	icon_state = "slats_c_r"
+
+/obj/effect/floor_decal/slats_cc_r
+	name = "slats curving both ends reverse"
+	icon_state = "slats_cc_r"
+
+/obj/effect/floor_decal/slats_corner
+	name = "slats corner"
+	icon_state = "slats_corner"
+
+/obj/effect/floor_decal/slats_twist
+	name = "slats twisted"
+	icon_state = "slats_twist"
+
+/obj/effect/floor_decal/slats_twist_r
+	name = "slats twisted reverse"
+	icon_state = "slats_twist_r"
+
+/obj/effect/floor_decal/plastic_slab_s
+	name = "plastic slab small"
+	icon_state = "plastic_slab_s"
+
+/obj/effect/floor_decal/plastic_slab_m
+	name = "plastic slab medium"
+	icon_state = "plastic_slab_m"
+
+/obj/effect/floor_decal/plastic_slab_l
+	name = "plastic slab large"
+	icon_state = "plastic_slab_l"
+
+/obj/effect/floor_decal/plastic_slab_xl
+	name = "plastic slab extra large"
+	icon_state = "plastic_slab_xl"
 
 //Corners
 /obj/effect/floor_decal/corner

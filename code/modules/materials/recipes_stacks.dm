@@ -79,3 +79,15 @@
 /datum/stack_recipe/tile/metal/dank_mono
 	title = "grim floor tile"
 	result_type = /obj/item/stack/tile/dankmono
+
+/datum/stack_recipe/tile/metal/rivets
+	title = "riveted floor tile"
+	result_type = /obj/item/stack/tile/rivets
+
+/datum/stack_recipe/tile/metal/slashed
+	title = "slashed floor tile"
+	result_type = /obj/item/stack/tile/slashed
+
+/datum/stack_recipe/tile/metal/slashedodd
+	title = "slashed floor tile"
+	result_type = /obj/item/stack/tile/slashedodd
