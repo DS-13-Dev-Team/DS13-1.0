@@ -42,7 +42,7 @@
 
 /obj/item/weapon/computer_hardware/hard_drive/portable/autorun/manual/surgery
 	name = "\improper surgical flash drive"
-	desc = "A flash drive with step by step instructions for surgery"
+	desc = "A flash drive with step by step instructions for surgery."
 	default_files = list(/datum/computer_file/data/text/manual/surgery)
 
 //We don't want or need any default programs on this drive

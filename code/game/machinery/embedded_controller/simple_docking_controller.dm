@@ -4,6 +4,7 @@
 	var/tag_door
 	var/datum/computer/file/embedded_program/docking/simple/docking_program
 	var/progtype = /datum/computer/file/embedded_program/docking/simple/
+	clicksound = "button2"
 
 /obj/machinery/embedded_controller/radio/simple_docking_controller/New()
 	..()

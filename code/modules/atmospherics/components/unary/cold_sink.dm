@@ -6,6 +6,7 @@
 	desc = "Cools gas when connected to a pipe network."
 	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "freezer_0"
+	clicksound = "button2"
 	density = 1
 	anchored = 1
 	use_power = 0
