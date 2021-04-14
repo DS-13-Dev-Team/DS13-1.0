@@ -712,7 +712,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
+	icon_state = "4-8"
 	},
 /obj/structure/handrai,
 /turf/simulated/floor/dank/mono,
@@ -721,7 +721,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
+	icon_state = "4-8"
 	},
 /obj/machinery/light{
 	dir = 1;
