@@ -21,6 +21,8 @@
 	layer = BELOW_DOOR_LAYER
 	open_layer = BELOW_DOOR_LAYER
 	closed_layer = ABOVE_WINDOW_LAYER
+	var/open_sound = "doorheavyopen"
+	var/close_sound = "doorheavyclose"
 
 	max_health = 50
 	min_force = 12
@@ -56,8 +58,6 @@
 	)
 
 	blend_objects = list(/obj/machinery/door/firedoor, /obj/structure/wall_frame, /turf/unsimulated/wall, /obj/structure/window) // Objects which to blend with
-	var/open_sound = "doorheavyopen"
-	var/close_sound = "doorheavyclose"
 
 /obj/machinery/door/firedoor/Initialize()
 	. = ..()
@@ -388,8 +388,10 @@
 	switch(animation)
 		if("opening")
 			flick("opening", src)
+			playsound(src.loc, open_sound, VOLUME_LOW, 0)
 		if("closing")
 			flick("closing", src)
+			playsound(src.loc, close_sound, VOLUME_LOW, 0)
 	return
 
 
