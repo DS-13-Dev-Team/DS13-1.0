@@ -35,10 +35,10 @@ delete-after: True
 changes: 
   - bugfix: "Fixed the SO not having keycard authorization access."
   - bugfix: "Fixed the Services jobs (Botanist, Line Cook, Bartender) having the wrong colors."
-  - bugfix: "Fixed the Mining Department sharing the same color on the Occupation screen in the Character Setup."
+  - bugfix: "Fixed the Mining Department sharing the same color as the Supply Department on the Occupation screen in the Character Setup."
   - tweak: "MDs starting Medical skill has been bumped up to Experienced."
   - tweak: "The SMO and MD's starting Athletics skill has been bumped up to Basic."
-  - tweak: "The SMO's starting Medical and Anatomy skill have been bumped up to Master."
+  - tweak: "The SMO's starting Medical and Anatomy skill has been bumped up to Master."
   - tweak: "Surgeon's starting Anatomy skill has been downgraded to Experienced."
   - tweak: "The Forensics skill has been capped at Trained for most of the crew except for Medical personnel, who have it capped as Experienced, and Security personnel."
   - tweak: "The Cooking, Botany, and Medical skills have been capped at Experienced for roles who don't use those skills for their job."
