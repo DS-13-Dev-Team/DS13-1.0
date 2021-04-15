@@ -3742,7 +3742,7 @@
 /area/aegis/colony/engineering/maintenance)
 "hE" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
-/obj/machinery/meter/turf,
+/obj/machinery/meter,
 /turf/simulated/floor/tiled/dark,
 /area/aegis/colony/engineering/maintenance)
 "hF" = (
@@ -3820,11 +3820,11 @@
 /turf/simulated/floor/tiled,
 /area/aegis/colony)
 "hL" = (
-/obj/machinery/meter/turf,
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 8;
 	icon_state = "map"
 	},
+/obj/machinery/meter,
 /turf/simulated/floor/tiled/dark,
 /area/aegis/colony/engineering/maintenance)
 "hM" = (

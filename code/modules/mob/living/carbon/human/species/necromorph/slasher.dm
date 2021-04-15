@@ -79,7 +79,8 @@
 	/decl/hierarchy/outfit/necromorph/security = list(),
 	/decl/hierarchy/outfit/necromorph/biosuit = list(),
 	/decl/hierarchy/outfit/necromorph/biosuit/earthgov = list( PATRON = TRUE),
-	/decl/hierarchy/outfit/necromorph/doctor = list())
+	/decl/hierarchy/outfit/necromorph/doctor = list(),
+	/decl/hierarchy/outfit/necromorph/command = list())
 
 //slasher variants share a bodytype with the base slasher, same clothes fit all
 /datum/species/necromorph/slasher/get_bodytype()
