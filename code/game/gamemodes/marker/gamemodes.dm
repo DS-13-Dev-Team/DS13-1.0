@@ -59,7 +59,6 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 
 /datum/game_mode/marker/New()
 	..()
-	marker_setup_time = rand(25,45) MINUTES
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
 	. = ..()
