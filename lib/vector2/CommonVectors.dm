@@ -73,9 +73,8 @@ Vector2
 			return get_new_vector(0, 0)
 
 	proc
-		VecDirectionBetween(var/vector2/A, var/vector2/B)
+		VectorBetween(var/vector2/A, var/vector2/B)
 			var/vector2/delta = get_new_vector(B.x - A.x, B.y - A.y)
-			delta.SelfToMagnitude(1)
 			return delta
 
 	proc

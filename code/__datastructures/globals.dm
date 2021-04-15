@@ -1,4 +1,5 @@
 //See controllers/globals.dm
+//I wish these could be moved to defines, but im fairly sure they need to be here for compile order
 #define GLOBAL_MANAGED(X, InitValue)\
 /datum/controller/global_vars/proc/InitGlobal##X(){\
 	##X = ##InitValue;\

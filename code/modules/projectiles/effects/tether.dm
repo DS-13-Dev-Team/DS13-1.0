@@ -9,6 +9,8 @@
 	icon = 'icons/effects/tethers.dmi'
 	icon_state = "gravity_tether"
 
+	var/retracting = FALSE
+
 	//Start and endpoints are in world pixel coordinates
 	var/vector2/start = new /vector2(0,0)
 	var/vector2/end = new /vector2(0,0)
@@ -130,6 +132,10 @@
 
 /obj/effect/projectile/tether/proc/retract(var/time = 1 SECOND, var/delete_on_finish = TRUE, var/steps = 3)
 	set waitfor = FALSE
+	if (retracting)
+		return
+	retracting = TRUE
+
 	//We'll retract the tongue to 1 pixel away from its origin
 	//This is done in several steps to prevent visual glitches
 	var/vector2/tether_direction = end - start

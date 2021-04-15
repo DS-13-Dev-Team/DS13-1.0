@@ -46,7 +46,12 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	return TRUE
 
 /mob/observer/eye/signal/apply_customisation(var/datum/preferences/prefs)
-	var/list/custom = prefs.get_necro_custom_list()
+	var/list/custom
+	if (prefs)
+		custom = prefs.get_necro_custom_list()
+	else
+		//With blank prefs, we use the global default
+		custom = get_default_necro_custom()
 	var/list/things = custom[SIGNAL][SIGNAL_DEFAULT]
 	if (length(things))
 		variations = things.Copy()
@@ -202,7 +207,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	//Lets load preferences if possible
 	//This will set our icon to one of the players' chosen ones
 
-	if (client && client.prefs && client.prefs.necro_custom && client.prefs.necro_custom.len)
+	if (client)
 		apply_customisation(client.prefs)
 
 	spawn(1)	//Prevents issues when downgrading from master

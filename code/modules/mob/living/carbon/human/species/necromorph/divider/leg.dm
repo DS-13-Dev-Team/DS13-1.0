@@ -17,8 +17,8 @@
 	icon_living = "leg"
 	icon_dead = list("leg_dead_1", "leg_dead_2")
 	speed = 3
-	melee_damage_lower = 3
-	melee_damage_upper = 6
+	melee_damage_lower = 2
+	melee_damage_upper = 4
 	attacktext = "kicked"
 	attack_sound = 'sound/weapons/bite.ogg'
 	leap_cooldown = 4 SECONDS
@@ -45,7 +45,7 @@
 		var/mob/living/L = charge.last_obstacle
 		L.shake_animation(15)
 		shake_camera(L,10,6) //Smack
-		launch_strike(L, damage = 18, used_weapon = src, damage_flags = 0, armor_penetration = 10, damage_type = BRUTE, armor_type = "melee", target_zone = get_zone_sel(src), difficulty = 50)
+		launch_strike(L, damage = 22, used_weapon = src, damage_flags = 0, armor_penetration = 10, damage_type = BRUTE, armor_type = "melee", target_zone = get_zone_sel(src), difficulty = 50)
 		//We are briefly stunned
 		Stun(1)
 
@@ -57,7 +57,7 @@
 	var/turf/epicentre = get_turf(charge.last_obstacle)
 	if (istype(charge.last_obstacle, /atom/movable))
 		var/atom/movable/AM = charge.last_obstacle
-		AM.apply_push_impulse_from(src, 20)
+		AM.apply_push_impulse_from(src, 40)
 
 	//After getting kicked you stagger a bit
 	spawn(0.75 SECONDS)
