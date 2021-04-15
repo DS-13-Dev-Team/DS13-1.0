@@ -24,6 +24,8 @@
 		)
 	screen_shake = FALSE
 	var/list/obj/item/weapon/gun/projectile/javelin_gun/javelins = list()
+	var/mount_type = /obj/effect/javelin
+	var/extension_type = /datum/extension/mount/self_delete
 
 /obj/item/weapon/gun/projectile/javelin_gun/patreon
 	icon_state = "javelin_p"
@@ -47,7 +49,7 @@
 	if(. && istype(gun, /obj/item/weapon/gun/projectile/javelin_gun))
 		var/obj/item/weapon/gun/projectile/javelin_gun/J = gun
 		if(!J.javelins.len)
-			to_chat(user, SPAN_WARNING("There is no charged javalina nearby."))
+			to_chat(user, SPAN_WARNING("There is no charged javelin nearby."))
 			return FALSE
 
 /obj/item/weapon/gun/projectile/javelin_gun/stop_firing()
@@ -70,6 +72,21 @@
 		if(get_dist(src, J) > 7)
 			continue
 		J.process_shock()
+
+/obj/item/weapon/gun/projectile/javelin_gun/proc/on_target_collision(mob/user, atom/obstacle)
+	var/mount_target = get_mount_target_at_direction(user, get_dir(obstacle, user))
+
+	if(!mount_target)
+		return
+
+	var/obj/O = new mount_type(get_turf(user))
+	mount_to_atom(O, mount_target, extension_type)
+	O.buckle_mob(user)
+
+/obj/effect/javelin
+	name = "bullet"
+	icon_state = "SpearFlight"
+	icon = 'icons/effects/wall.dmi'
 
 /obj/effect/overload
 	icon = 'icons/effects/96x96.dmi'

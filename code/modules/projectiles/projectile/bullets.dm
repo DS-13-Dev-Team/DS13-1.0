@@ -258,7 +258,8 @@
 	if(ismob(A))
 		var/mob/M = A
 		if(!M.buckled)
-			M.throw_at(get_step(M, src.dir), 3,, src)
+			GLOB.bump_event.register(M, launcher, /obj/item/weapon/gun/projectile/javelin_gun/proc/on_target_collision)
+			M.throw_at(get_step(M, src.dir), 4,, src)
 		spawn(3)
 			new /obj/item/ammo_casing/javelin(get_turf(A), src)
 	else
