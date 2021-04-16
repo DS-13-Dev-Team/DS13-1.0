@@ -106,24 +106,18 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 				health = CLAMP(health, 0, max_health)
 
 /obj/structure/asteroidcannon/take_damage(amount, damtype, user, used_weapon, bypass_resist)
-	//The cannon can't be destroyed, but you can sure as hell knock it offline..
-	if(health < amount)
-		health = 10
-		operational = FALSE
-		visible_message("<span class='warning'>[src] sparks wildly!</span>")
-		playsound(src, 'sound/effects/caution.ogg', 100, TRUE)
-		//sparks
-		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
-		spark_system.set_up(5, 0, loc)
-		spark_system.start()
-		playsound(loc, "sparks", 50, 1)
-		set_light(1)
-		if(world.time >= last_offline + 5 MINUTES)
-			var/datum/event/meteor_wave/E = new /datum/event/meteor_wave(new /datum/event_meta(pick(EVENT_LEVEL_MUNDANE, EVENT_LEVEL_MODERATE, EVENT_LEVEL_MAJOR))) //Don't let this thing get taken out.
-			E.announce()
-			last_offline = world.time
-		return FALSE
-	. = ..()
+	return
+
+/obj/structure/asteroidcannon/proc/break_down()
+	operational = FALSE
+	reboot_step = 0
+	visible_message("<span class='warning'>[src] sparks wildly!</span>")
+	playsound(src, 'sound/effects/caution.ogg', 100, TRUE)
+	//sparks
+	var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
+	spark_system.set_up(5, 0, loc)
+	spark_system.start()
+	playsound(loc, "sparks", 50, 1)
 
 /obj/structure/asteroidcannon/proc/is_operational()
 	return operational

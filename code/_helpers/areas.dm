@@ -44,6 +44,9 @@
 /*
 	Pick helpers
 */
+/area/proc/get_clear_turf()
+	return clear_turf_in_list(get_area_turfs(src), ignore_mobs = TRUE)
+
 /proc/pick_subarea_turf(var/areatype, var/list/predicates)
 	var/list/turfs = get_subarea_turfs(areatype, predicates)
 	if(turfs && turfs.len)
@@ -64,6 +67,8 @@
 	if(!A)
 		return
 	return pick_area_turf(A, turf_predicates)
+
+
 
 /*
 	Predicate Helpers

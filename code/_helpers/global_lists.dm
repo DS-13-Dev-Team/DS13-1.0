@@ -22,6 +22,11 @@ var/global/list/playable_species = list(SPECIES_HUMAN)    // A list of ALL playa
 
 var/list/mannequins_
 
+/*
+	Antag/Objective stuff
+*/
+GLOBAL_LIST_EMPTY(all_crew_objectives)
+
 // Grabs
 var/global/list/all_grabstates[0]
 var/global/list/all_grabobjects[0]
@@ -218,6 +223,13 @@ var/global/list/string_slot_flags = list(
 
 		SA = new subtype()//antag datums add themselves to global lists in new, just creating it is enough
 	initialize_emergency_calls()
+
+	//Crew objectives
+	for (var/subtype in subtypesof(/datum/crew_objective))
+		var/datum/crew_objective/CO = new subtype()//antag datums add themselves to global lists in new, just creating it is enough
+		GLOB.all_crew_objectives[subtype] = CO	//To complete the setup, Initialize needs to be called on them
+		//We do NOT do that here. It is done in map post_setup, its a per-map thing
+		//
 
 	return 1
 

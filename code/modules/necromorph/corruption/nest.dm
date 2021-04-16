@@ -84,6 +84,7 @@
 		to_chat(user, "Only the marker may do this.")
 		return
 
+
 	if (spawner_species)
 
 		if (upgrade_level < upgrade_multipliers.len)
@@ -244,3 +245,14 @@
 					to_chat(user, SPAN_DANGER("There are no spawns left. Someone must have beat you to it!"))
 		else
 			examine(user)
+
+
+
+/*
+	A special subtype used during crew objectives
+	it is indestructible, doesnt require corruption and cannot be upgraded
+*/
+/obj/structure/corruption_node/nest/event_spawn
+	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
+	degen = 0	//No decay without corruption
+	upgrade_multipliers = list()	//Prevent upgrading
