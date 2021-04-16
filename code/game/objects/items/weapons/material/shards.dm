@@ -163,4 +163,7 @@
 			mount_to_atom(src, mount_target, extension_type)
 			src.buckle_mob(user)
 
-	GLOB.bump_event.unregister(user, src, /obj/item/weapon/material/shard/shrapnel/javeling/proc/on_target_collision)
+	unregister_collision(user)
+
+/obj/item/weapon/material/shard/shrapnel/javeling/proc/unregister_collision(mob/M)
+	GLOB.bump_event.unregister(M, src, /obj/item/weapon/material/shard/shrapnel/javeling/proc/on_target_collision)
