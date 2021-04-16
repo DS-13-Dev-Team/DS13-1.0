@@ -74,7 +74,7 @@ datum/job/md/get_description_blurb()
 	outfit_type = /decl/hierarchy/outfit/job/medical/surg
 
 	min_skill = list(	SKILL_ANATOMY     = SKILL_EXPERT,
-						SKILL_MEDICAL	  = SKILL_ADEPT,
+						SKILL_MEDICAL	  = SKILL_EXPERT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
