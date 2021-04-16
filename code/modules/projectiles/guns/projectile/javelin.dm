@@ -23,9 +23,7 @@
 		list(mode_name = "shock mode", mode_type = /datum/firemode/automatic/shock, projectile_type = /obj/item/projectile/null_projectile, fire_delay = 3 SECONDS)
 		)
 	screen_shake = FALSE
-	var/list/obj/item/weapon/gun/projectile/javelin_gun/javelins = list()
-	var/mount_type = /obj/effect/javelin
-	var/extension_type = /datum/extension/mount/self_delete
+	var/list/javelins = list()
 
 /obj/item/weapon/gun/projectile/javelin_gun/patreon
 	icon_state = "javelin_p"
@@ -56,7 +54,7 @@
 	. = ..()
 	if(!.)
 		return
-	for(var/obj/item/ammo_casing/javelin/J in javelins)
+	for(var/obj/item/weapon/material/shard/shrapnel/javeling/J in javelins)
 		if(J.shock_count)
 			J.remove_from_luncher_list()
 
@@ -68,25 +66,16 @@
 		icon_state = initial(icon_state)
 
 /obj/item/weapon/gun/projectile/javelin_gun/proc/detone_javelin(mob/living/user)
-	for(var/obj/item/ammo_casing/javelin/J in javelins)
+	for(var/obj/item/weapon/material/shard/shrapnel/javeling/J in javelins)
 		if(get_dist(src, J) > 7)
 			continue
 		J.process_shock()
 
-/obj/item/weapon/gun/projectile/javelin_gun/proc/on_target_collision(mob/user, atom/obstacle)
-	var/mount_target = get_mount_target_at_direction(user, get_dir(obstacle, user))
+/obj/item/weapon/gun/projectile/javelin_gun/register_sharpnel(obj/item/weapon/material/shard/shrapnel/SP)
+	javelins |= SP
 
-	if(!mount_target)
-		return
-
-	var/obj/O = new mount_type(get_turf(user))
-	mount_to_atom(O, mount_target, extension_type)
-	O.buckle_mob(user)
-
-/obj/effect/javelin
-	name = "bullet"
-	icon_state = "SpearFlight"
-	icon = 'icons/effects/wall.dmi'
+/obj/item/weapon/gun/projectile/javelin_gun/unregister_sharpnel(obj/item/weapon/material/shard/shrapnel/SP)
+	javelins -= SP
 
 /obj/effect/overload
 	icon = 'icons/effects/96x96.dmi'

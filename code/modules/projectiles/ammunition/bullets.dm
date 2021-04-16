@@ -225,52 +225,6 @@
 	desc = "A javelin."
 	icon_state = "bolt"
 	spent_icon = "bolt"
-	var/charged_icon = "bolt_charged"
 	caliber = "javelin"
 	projectile_type = /obj/item/projectile/bullet/javelin
 	matter = list(MATERIAL_STEEL = 1000)
-	var/obj/item/weapon/gun/projectile/javelin_gun/launcher
-	var/obj/effect/overload/tesla
-	var/shock_count
-
-/obj/item/ammo_casing/javelin/New(nloc, obj/item/projectile/P)
-	..()
-	if(P)
-		launcher = P.launcher
-		launcher.javelins |= src
-		icon_state = "bolt_charged"
-		update_icon()
-
-/obj/item/ammo_casing/javelin/update_icon()
-	. = ..()
-	if(launcher && !shock_count)
-		icon_state = charged_icon
-	else
-		icon_state = initial(icon_state)
-
-/obj/item/ammo_casing/javelin/examine(mob/user, distance)
-	. = ..()
-	if(launcher)
-		if(shock_count)
-			to_chat(user, SPAN_NOTICE("Its fully discharged."))
-		else
-			to_chat(user, SPAN_WARNING("Its charged with electricity."))
-
-/obj/item/ammo_casing/javelin/Destroy()
-	remove_from_luncher_list()
-	return ..()
-
-/obj/item/ammo_casing/javelin/proc/remove_from_luncher_list()
-	launcher.javelins -= src
-	if(tesla)
-		QDEL_NULL(tesla)
-	update_icon()
-
-/obj/item/ammo_casing/javelin/proc/process_shock()
-	if(!shock_count)
-		var/datum/effect/effect/system/spark_spread/S = new
-		S.set_up(3, 1, get_turf(src))
-		S.start()
-		tesla = new /obj/effect/overload(get_turf(src), 5)
-		addtimer(CALLBACK(src, .proc/remove_from_luncher_list), 4 SECONDS)
-	shock_count++

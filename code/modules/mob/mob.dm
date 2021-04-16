@@ -853,7 +853,7 @@
 
 
 
-/mob/proc/get_visible_implants(var/class = 0)
+/mob/proc/get_visible_implants(var/class = 0, include_shrapnel = FALSE)
 	var/list/visible_implants = list()
 	for(var/obj/item/O in embedded)
 		if(O.w_class > class)

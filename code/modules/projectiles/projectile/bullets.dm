@@ -248,19 +248,13 @@
 	embed = TRUE
 	sharp = TRUE
 	armor_penetration = 50
-	penetration_modifier = 1.5
-	embed_mult = 10
-	paralyze = 5
+	penetration_modifier = 50
+	embed_mult = 100
 	muzzle_type = null
+	shrapnel_type = /obj/item/weapon/material/shard/shrapnel/javeling
 
-/obj/item/projectile/bullet/javelin/on_impact(atom/A)
-	..()
-	if(ismob(A))
-		var/mob/M = A
-		if(!M.buckled)
-			GLOB.bump_event.register(M, launcher, /obj/item/weapon/gun/projectile/javelin_gun/proc/on_target_collision)
-			M.throw_at(get_step(M, src.dir), 4,, src)
-		spawn(3)
-			new /obj/item/ammo_casing/javelin(get_turf(A), src)
-	else
-		new /obj/item/ammo_casing/javelin(get_turf(src), src)
+/obj/item/projectile/bullet/javelin/on_organ_embed(obj/item/organ/external/target, mob/M)
+	var/obj/item/SP = new src.shrapnel_type(target, src)
+	target.embed(SP)
+	GLOB.bump_event.register(M, SP, /obj/item/weapon/material/shard/shrapnel/javeling/proc/on_target_collision)
+	M.throw_at(get_step(M, src.dir), 4,, src)

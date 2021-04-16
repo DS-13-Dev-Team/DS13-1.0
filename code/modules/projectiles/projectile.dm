@@ -598,3 +598,9 @@
 	if (gripper.release_type == RELEASE_DROP)
 		var/turf/T = get_turf(src)
 		Bump(T)
+
+/obj/item/projectile/proc/on_organ_embed(obj/item/organ/external/target, mob/M)
+	var/obj/item/SP = new src.shrapnel_type(target, src)
+	SP.SetName((src.name != "shrapnel")? "[src.name] shrapnel" : "shrapnel")
+	SP.desc = "[SP.desc] It looks like it was fired from [src.shot_from]."
+	target.embed(SP)
