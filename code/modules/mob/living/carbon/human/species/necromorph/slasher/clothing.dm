@@ -38,12 +38,6 @@
 	uniform = /obj/item/clothing/under/deadspace/security
 	id_type = /obj/item/weapon/card/id/holo/security
 
-/obj/item/clothing/under/deadspace/security
-	sprite_sheets = list(
-		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
-		)
-
-
 
 //Science biosuits Uniform
 /decl/hierarchy/outfit/necromorph/biosuit
@@ -65,3 +59,8 @@
 	name = "Doctor Slick"
 	uniform = /obj/item/clothing/under/deadspace/doctor
 	id_type = /obj/item/weapon/card/id/holo/medical
+
+/decl/hierarchy/outfit/necromorph/command
+	name = "Commander Slasher"
+	uniform = /obj/item/clothing/under/deadspace/captain
+	id_type = /obj/item/weapon/card/id/holo/command

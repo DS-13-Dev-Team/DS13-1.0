@@ -238,12 +238,14 @@
 	placement_location = PLACEMENT_WALL
 
 //Check we have a surface to place it on
-/datum/click_handler/placement/necromorph/cyst/placement_blocked(var/turf/candidate)
+/datum/click_handler/placement/necromorph/cyst/placement_blocked(turf/candidate)
 	mount_target = get_mount_target_at_direction(candidate, dir)
 	if (!mount_target)
 		return "This must be placed against a wall or similar hard surface"
-
-	.=..()
+	for(var/obj/structure/corruption_node/cyst/C in candidate)
+		if(C.dir == dir)
+			return "There cannot be two cysts in the same direction."
+	return ..()
 
 /datum/click_handler/placement/necromorph/cyst/spawn_result(var/turf/site)
 	var/atom/movable/result = ..()
@@ -318,12 +320,15 @@
 	placement_location = PLACEMENT_WALL
 
 //Check we have a surface to place it on
-/datum/click_handler/placement/ability/cyst/placement_blocked(var/turf/candidate)
+/datum/click_handler/placement/ability/cyst/placement_blocked(turf/candidate)
 	mount_target = get_mount_target_at_direction(candidate, dir)
 	if (!mount_target)
 		return "This must be placed against a wall or similar hard surface"
 
-	.=..()
+	for(var/obj/structure/corruption_node/cyst/C in candidate)
+		if(C.dir == dir)
+			return "There cannot be two cysts in the same direction."
+	return ..()
 
 
 

@@ -3315,9 +3315,6 @@
 /area/ishimura/lower/crew/hydroponics)
 "aha" = (
 /obj/structure/closet/crate/freezer/chocolate,
-/obj/random/snack,
-/obj/random/snack,
-/obj/random/snack,
 /turf/simulated/floor/tiled/freezer,
 /area/ishimura/lower/crew/messhall/kitchen/freezer)
 "ahb" = (
@@ -6172,12 +6169,8 @@
 /turf/simulated/floor/tiled,
 /area/ishimura/lower/crew/messhall)
 "amg" = (
-/obj/effect/floor_decal/corner/grey/border{
-	dir = 9;
-	icon_state = "bordercolor"
-	},
-/obj/structure/table/marble,
-/obj/item/weapon/book/manual/chef_recipes,
+/obj/machinery/chem_master/condimaster,
+/obj/effect/floor_decal/corner/grey/full,
 /turf/simulated/floor/tiled/kafel_full,
 /area/ishimura/lower/crew/messhall/kitchen)
 "amh" = (
@@ -6399,6 +6392,7 @@
 /obj/item/weapon/material/kitchen/rollingpin,
 /obj/item/weapon/material/kitchen/utensil/knife,
 /obj/structure/table/marble,
+/obj/item/weapon/book/manual/chef_recipes,
 /turf/simulated/floor/tiled/kafel_full,
 /area/ishimura/lower/crew/messhall/kitchen)
 "amH" = (

@@ -53,8 +53,17 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 				else
 					name = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 
-		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
-		mind.ghost = src	//Register ourself on the mind too
+		if(body.mind)
+			mind = body.mind	//we don't transfer the mind but we keep a reference to it.
+			mind.ghost = src	//Register ourself on the mind too
+
+		else					//new mind for the body
+			spawn(10)
+				body.mind = new /datum/mind(key)
+				mind = body.mind
+				mind.current = body
+				mind.ghost = src
+
 	else
 		spawn(10) // wait for the observer mob to receive the client's key
 			mind = new /datum/mind(key)

@@ -171,7 +171,7 @@ ARMCHAIR(yellow)
 /datum/stack_recipe/furniture/girder
 	title = "wall girders"
 	result_type = /obj/structure/girder
-	req_amount = 2
+	req_amount = 10
 	time = 50
 
 /datum/stack_recipe/furniture/wall
