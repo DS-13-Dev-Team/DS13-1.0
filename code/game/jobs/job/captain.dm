@@ -7,7 +7,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the CEC"
-	selection_color = "#1d1d4f"
+	selection_color = "#2f2f7f"
 	req_admin_notify = 1
 	minimal_player_age = 18
 	ideal_character_age = 50
@@ -23,9 +23,11 @@
 						SKILL_WEAPONS     = SKILL_BASIC,
 	                    SKILL_COMPUTER    = SKILL_ADEPT)
 
-	max_skill = list(   SKILL_HAULING     = SKILL_MAX,
-						SKILL_WEAPONS     = SKILL_MAX,
-	                    SKILL_COMPUTER    = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/cap/get_description_blurb()
@@ -39,7 +41,7 @@ datum/job/cap/get_description_blurb()
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Captain"
-	selection_color = "#2f2f7f"
+	selection_color = "#1d1d4f"
 	req_admin_notify = 1
 	minimal_player_age = 18
 	ideal_character_age = 35
@@ -53,9 +55,11 @@ datum/job/cap/get_description_blurb()
 						SKILL_WEAPONS     = SKILL_BASIC,
 	                    SKILL_COMPUTER    = SKILL_ADEPT)
 
-	max_skill = list(   SKILL_HAULING     = SKILL_MAX,
-						SKILL_WEAPONS     = SKILL_MAX,
-	                    SKILL_COMPUTER    = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/fl/get_description_blurb()
@@ -68,7 +72,7 @@ datum/job/fl/get_description_blurb()
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the Captain and First Lieutenant"
-	selection_color = "#2f2f7f"
+	selection_color = "#1d1d4f"
 	minimal_player_age = 18
 	ideal_character_age = 27
 	starting_credits = 3400
@@ -79,8 +83,11 @@ datum/job/fl/get_description_blurb()
 	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
 	                    SKILL_COMPUTER    = SKILL_EXPERT)
 
-	max_skill = list(   SKILL_HAULING     = SKILL_MAX,
-	                    SKILL_COMPUTER    = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/bo/get_description_blurb()

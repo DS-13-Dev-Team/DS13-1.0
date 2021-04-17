@@ -96,8 +96,10 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 		if(copyitem)
 			if (destination in admin_departments)
 				send_admin_fax(usr, destination)
+				playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
 			else
 				sendfax(destination)
+				playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
 
 			if (sendcooldown)
 				spawn(sendcooldown) // cooldown time
@@ -136,9 +138,11 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	if(href_list["auth"])
 		if ( (!( authenticated ) && (scan)) )
 			if (check_access(scan))
+				playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
 				authenticated = 1
 
 	if(href_list["logout"])
+		playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
 		authenticated = 0
 
 	updateUsrDialog()

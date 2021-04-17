@@ -6,6 +6,7 @@
 	icon_state = "dnaopen"
 	anchored = 1
 	density = 1
+	clicksound = "button2"
 
 	var/obj/item/weapon/forensics/swab/bloodsamp = null
 	var/closed = 0
