@@ -7,7 +7,16 @@
 	dynamic_lighting = 0
 	temperature = T20C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
+	is_hole = TRUE
+	explosion_resistance = 0.5	//Impedes blasts less than any other tile, though not zero
 	var/static/list/dust_cache
+
+
+	/*
+		This is a temporary hack, it should eventually be replaced by porting the bay z-mimic system
+		This var tells us what zlevel below us contains
+	*/
+	var/first_solid_z_below
 
 /turf/space/proc/build_dust_cache()
 	LAZYINITLIST(dust_cache)
@@ -31,6 +40,8 @@
 		return
 	var/turf/below = GetBelow(src)
 
+
+
 	if(istype(below, /turf/space))
 		return
 	var/area/A = below.loc
@@ -38,7 +49,25 @@
 	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
 		return
 
+	//We found a solid thing below us
+	first_solid_z_below = z-1
+
 	return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
+
+/turf/space/proc/first_solid_z_below()
+	if(!HasBelow(z))
+		return
+	var/turf/T = src
+	while (T)
+
+		if (isfloor(T))
+			first_solid_z_below = T.z
+			break
+
+		else if (!turf_clear(T))
+			first_solid_z_below = T.z
+			break
+		T = GetBelow(T)
 
 /turf/space/LateInitialize()
 	// We alter area type before the turf to ensure the turf-change-event-propagation is handled as expected.

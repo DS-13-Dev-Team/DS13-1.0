@@ -22,6 +22,8 @@
 	//This default value is fine for humans and anything roughly the same width as a human, larger creatures will require different numbers
 	//The value required depends not only on overall icon size, but also on the empty space on -both- sides of the sprite. Trial and error is the best way to find the right number
 
+	var/icon/default_icon	//Constructed at runtime, this stores an icon which represents a typical member of this species with all values at default. This is mainly for use in UIs and reference
+
 	//This icon_lying var pulls several duties
 	//First, if its non-null, it indicates this species has some kind of special behaviour when lying down. This will trigger extra updates and things
 	//Secondly, it is the string suffix added to organ iconstates
@@ -235,6 +237,8 @@
 	var/obj/effect/decal/cleanable/blood/tracks/move_trail = /obj/effect/decal/cleanable/blood/tracks/footprints // What marks are left when walking
 
 	var/list/skin_overlays = list()
+
+
 
 
 

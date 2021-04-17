@@ -11,10 +11,11 @@ export BYOND_MINOR=${LIST[1]}
 unset LIST
 
 #rust_g git tag
-export RUST_G_VERSION=0.4.5
+export RUST_G_VERSION=0.4.7
 
 #node version
 export NODE_VERSION=12
+export NODE_VERSION_PRECISE=12.20.0
 
 # PHP version
 export PHP_VERSION=5.6
@@ -23,4 +24,7 @@ export PHP_VERSION=5.6
 export SPACEMAN_DMM_VERSION=suite-1.6
 
 # Extools git tag
-export EXTOOLS_VERSION=v0.0.6
+export EXTOOLS_VERSION=v0.0.7
+
+# Python version for mapmerge and other tools
+export PYTHON_VERSION=3.6.8

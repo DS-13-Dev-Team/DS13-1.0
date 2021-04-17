@@ -1,5 +1,5 @@
 /obj/machinery/keycard_auth
-	name = "Keycard Authentication Device"
+	name = "keycard authentication device"
 	desc = "This device is used to trigger functions which require more than one ID card to authenticate."
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "auth_off"
@@ -20,6 +20,7 @@
 	active_power_usage = 6
 	power_channel = ENVIRON
 	var/no_confirmation = FALSE
+	clicksound = "button2"
 
 /obj/machinery/keycard_auth/attack_ai(mob/user as mob)
 	to_chat(user, "<span class='warning'>A firewall prevents you from interfacing with this device!</span>")

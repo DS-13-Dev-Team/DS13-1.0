@@ -5,7 +5,6 @@
 	icon_locked = "fridge1"
 	icon_opened = "fridgeopen"
 	icon_off = "fridgebroken"
-	req_access = list(access_service)
 
 /obj/structure/closet/secure_closet/freezer/WillContain()
 	return list(

@@ -1,7 +1,7 @@
 /*
 	Base species for necromorphs,. the reanimated organic assemblages of the Dead Space universe
 
-	This datum should probably not be used as is, but instead make subspecies of it for each type of necromorph
+	This datum should probably not be used as is, but instead make variants of it for each type of necromorph
 */
 
 /datum/species/necromorph
@@ -62,7 +62,12 @@
 	damage_mask 	=   null
 	blood_mask 		=   null
 
-
+	/*
+		Necromorph customisation system
+	*/
+	var/list/variants			//Species variants included. This is an assoc list in the format: species_name = list(weight, patron)
+		//If patron is true, this variant is not available by default
+	var/list/outfits		//Outfits the mob can spawn with, weighted.
 
 	//Biology
 	blood_color = COLOR_BLOOD_NECRO
@@ -293,6 +298,7 @@
 	[blurb]\n\
 	\n\
 	Check the Abilities tab, use the Help ability to find out what your controls and abilities do!")
+	H.apply_customisation(H.client.prefs)
 
 
 
@@ -301,3 +307,10 @@
 		return TRUE
 	else
 		return FALSE
+
+
+
+/datum/species/necromorph/handle_post_spawn(var/mob/living/carbon/human/H)
+	.=..()
+	//Apply customisation with a null preference, this applies default settings
+	H.apply_customisation(null)

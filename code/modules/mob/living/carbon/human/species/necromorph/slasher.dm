@@ -70,6 +70,18 @@
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge),
 	KEY_ALT = list(/mob/living/proc/slasher_dodge))
 
+
+	variants = list(SPECIES_NECROMORPH_SLASHER = list(WEIGHT = 8),
+	SPECIES_NECROMORPH_SLASHER_DESICCATED = list(WEIGHT = 2))
+
+	outfits = list(/decl/hierarchy/outfit/naked = list(),
+	/decl/hierarchy/outfit/necromorph/planet_cracker = list(),
+	/decl/hierarchy/outfit/necromorph/security = list(),
+	/decl/hierarchy/outfit/necromorph/biosuit = list(),
+	/decl/hierarchy/outfit/necromorph/biosuit/earthgov = list( PATRON = TRUE),
+	/decl/hierarchy/outfit/necromorph/doctor = list(),
+	/decl/hierarchy/outfit/necromorph/command = list())
+
 //slasher variants share a bodytype with the base slasher, same clothes fit all
 /datum/species/necromorph/slasher/get_bodytype()
 	return SPECIES_NECROMORPH_SLASHER
@@ -81,6 +93,7 @@
 	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
 	marker_spawnable = FALSE
 	preference_settable = FALSE
+	//mob_type = /mob/living/carbon/human/necromorph/slasherdesiccated
 
 
 
@@ -122,7 +135,8 @@
 	bump_flag 	= HEAVY
 	spawner_spawnable = FALSE
 
-
+	variants = null
+	outfits = null
 	icon_template = 'icons/mob/necromorph/slasher_enhanced.dmi'
 	icon_lying = "_lying"
 	//lying_rotation = 90

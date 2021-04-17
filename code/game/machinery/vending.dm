@@ -260,6 +260,7 @@
 	if(currently_vending.price > wallet.worth)
 		src.status_message = "Insufficient funds on chargecard."
 		src.status_error = 1
+		playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 		return 0
 	else
 		wallet.worth -= currently_vending.price
@@ -281,11 +282,13 @@
 	if (!customer_account)
 		src.status_message = "Error: Unable to access account. Please contact technical support if problem persists."
 		src.status_error = 1
+		playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 		return 0
 
 	if(customer_account.suspended)
 		src.status_message = "Unable to access account: account suspended."
 		src.status_error = 1
+		playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 		return 0
 
 	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
@@ -297,11 +300,13 @@
 		if(!customer_account)
 			src.status_message = "Unable to access account: incorrect credentials."
 			src.status_error = 1
+			playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 			return 0
 
 	if(currently_vending.price > customer_account.money)
 		src.status_message = "Insufficient funds in account."
 		src.status_error = 1
+		playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 		return 0
 	else
 		// Okay to move the money at this point
@@ -412,6 +417,7 @@
 		if ((href_list["vend"]) && (src.vend_ready) && (!currently_vending))
 			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
 				to_chat(usr, "<span class='warning'>Access denied.</span>")//Unless emagged of course
+				playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 				flick(icon_deny,src)
 				return
 
@@ -426,12 +432,14 @@
 				src.vend(R, usr)
 			else if(istype(usr,/mob/living/silicon)) //If the item is not free, provide feedback if a synth is trying to buy something.
 				to_chat(usr, "<span class='danger'>Artificial unit recognized.  Artificial units cannot complete this transaction.  Purchase canceled.</span>")
+				playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 				return
 			else
 				src.currently_vending = R
 				if(!vendor_account || vendor_account.suspended)
 					src.status_message = "This machine is currently unable to process payments due to problems with the associated account."
 					src.status_error = 1
+					playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 				else
 					src.status_message = "Please swipe a card or insert cash to pay for the item."
 					src.status_error = 0
@@ -448,6 +456,7 @@
 	if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
 		to_chat(usr, "<span class='warning'>Access denied.</span>")//Unless emagged of course
 		flick(src.icon_deny,src)
+		playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 		return
 	src.vend_ready = 0 //One thing at a time!!
 	src.status_message = "Vending..."
@@ -486,7 +495,7 @@
 			src.visible_message("<span class='notice'>\The [src] makes an odd grinding noise before coming to a halt as \a [S.name] slurmps out from the receptacle.</span>")
 		else //Just a normal vend, then
 			R.get_product(get_turf(src))
-			playsound(loc, 'sound/machines/vending_purchase.ogg', 12)
+			playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 			src.visible_message("\The [src] whirs as it vends \the [R.item_name].")
 			if(prob(1)) //The vending gods look favorably upon you
 				sleep(3)

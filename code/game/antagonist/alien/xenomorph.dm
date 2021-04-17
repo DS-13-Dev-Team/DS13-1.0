@@ -26,7 +26,7 @@
 	spawn_announcement = replacetext(GLOB.using_map.unidentified_lifesigns_message, "%STATION_NAME%", station_name())
 	spawn_announcement_sound = GLOB.using_map.xenomorph_spawn_sound
 	GLOB.xenomorphs = src
-	..()
+	return ..()
 
 /datum/antagonist/xenos/attempt_random_spawn()
 	if(CONFIG_GET(flag/aliens_allowed)) ..()

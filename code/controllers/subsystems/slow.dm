@@ -9,6 +9,8 @@ SUBSYSTEM_DEF(slow)
 	var/list/doors_needing_areas = list()
 
 
+
+
 //This should always return immediately and not delay the start of the round
 /datum/controller/subsystem/slow/Initialize()
 	set waitfor = FALSE
@@ -27,6 +29,12 @@ SUBSYSTEM_DEF(slow)
 
 	doors_needing_areas = list()
 
+
+	for (var/obj/machinery/door/D in doors_needing_areas)
+		D.update_areas()
+		CHECK_TICK
+
+	doors_needing_areas = list()
 
 /datum/controller/subsystem/slow/proc/cache_maintenance_turfs()
 	for(var/Y in GLOB.ship_areas)

@@ -21,6 +21,10 @@
 	antaghud_indicator = "hudcultist"
 	skill_setter = /datum/antag_skill_setter/station
 
+/datum/antagonist/godcultist/New()
+	..()
+	GLOB.godcult = src
+
 /datum/antagonist/godcultist/add_antagonist_mind(var/datum/mind/player, var/ignore_role, var/nonstandard_role_type, var/nonstandard_role_msg, var/mob/living/deity/specific_god)
 	if(!..())
 		return 0

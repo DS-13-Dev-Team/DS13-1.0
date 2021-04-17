@@ -14,14 +14,12 @@ var/list/stored_shock_by_ref = list()
 		to_chat(H, "<span class='notice'>You are now [H.pulling_punches ? "pulling your punches" : "not pulling your punches"].</span>")
 
 /datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
-
 	// If we don't actually need to offset this, don't bother with any of the generation/caching.
 	if(!spritesheet && equip_adjust.len && equip_adjust[slot] && LAZYLEN(equip_adjust[slot]))
 
 		// Check the cache for previously made icons.
 		var/image_key = "[mob_icon]-[mob_state]-[color]"
 		if(!equip_overlays[image_key])
-
 			var/icon/final_I = new(mob_icon, icon_state = mob_state)
 			var/list/shifts = equip_adjust[slot]
 
