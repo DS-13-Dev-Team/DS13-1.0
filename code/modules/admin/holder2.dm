@@ -17,7 +17,6 @@ var/list/admin_datums = list()
 	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
 	var/admincaster_signature	//What you'll sign the newsfeeds as
 
-	var/href_token
 
 /datum/admins/proc/marked_datum()
 	if(marked_datum_weak)
@@ -32,7 +31,6 @@ var/list/admin_datums = list()
 	rank = initial_rank
 	rights = initial_rights
 	admin_datums[ckey] = src
-	href_token = GenerateToken()
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))
@@ -55,24 +53,6 @@ var/list/admin_datums = list()
 		owner.deadmin_holder = null
 		owner.add_admin_verbs()
 
-/proc/GenerateToken()
-	. = ""
-	for(var/I in 1 to 32)
-		. += "[rand(10)]"
-
-/proc/RawHrefToken(forceGlobal = FALSE)
-	var/tok = GLOB.href_token
-	if(!forceGlobal && usr)
-		var/client/C = usr.client
-		if(!C)
-			CRASH("No client for HrefToken()!")
-		var/datum/admins/holder = C.holder
-		if(holder)
-			tok = holder.href_token
-	return tok
-
-/proc/HrefToken(forceGlobal = FALSE)
-	return "admin_token=[RawHrefToken(forceGlobal)]"
 /*
 checks if usr is an admin with at least ONE of the flags in rights_required. (Note, they don't need all the flags)
 if rights_required == 0, then it simply checks if they are an admin.
