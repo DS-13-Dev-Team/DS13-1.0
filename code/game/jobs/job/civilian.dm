@@ -5,7 +5,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the First Lieutenant"
-	selection_color = "#5e4215"
+	selection_color = "#006200"
 	minimal_player_age = 18
 	ideal_character_age = 30
 	starting_credits = 943
@@ -14,7 +14,10 @@
 	outfit_type = /decl/hierarchy/outfit/job/service/bar
 
 	min_skill = list(   SKILL_COOKING     = SKILL_ADEPT)
-	max_skill = list(   SKILL_COOKING     = SKILL_MAX)
+	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/bar/get_description_blurb()
@@ -27,7 +30,7 @@ datum/job/bar/get_description_blurb()
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the First Lieutenant"
-	selection_color = "#5e4215"
+	selection_color = "#006200"
 	minimal_player_age = 18
 	ideal_character_age = 21
 	starting_credits = 1240
@@ -38,7 +41,10 @@ datum/job/bar/get_description_blurb()
 	min_skill = list(   SKILL_COOKING     = SKILL_EXPERT,
 						SKILL_HAULING     = SKILL_BASIC)
 
-	max_skill = list(   SKILL_COOKING     = SKILL_MAX)
+	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/line_cook/get_description_blurb()
@@ -52,20 +58,23 @@ datum/job/line_cook/get_description_blurb()
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the First Lieutenant"
-	selection_color = "#3b3b3b"
+	selection_color = "#515151"
 	minimal_player_age = 18
 	ideal_character_age = 40
 	starting_credits = 2380
 
-	access = list(access_so, access_bridge, access_cargo, access_maint_tunnels)
+	access = list(access_so, access_bridge, access_cargo, access_maint_tunnels, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/so
 
 	min_skill = list(   SKILL_HAULING     = SKILL_ADEPT,
 	                    SKILL_COMPUTER    = SKILL_ADEPT,
 	                    SKILL_COMBAT	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_HAULING     = SKILL_MAX,
-	                    SKILL_COMPUTER    = SKILL_MAX)
+	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/so/get_description_blurb()
@@ -79,7 +88,7 @@ datum/job/so/get_description_blurb()
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "the Supply Officer"
-	selection_color = "#515151"
+	selection_color = "#3b3b3b"
 	minimal_player_age = 18
 	starting_credits = 1970
 
@@ -89,8 +98,11 @@ datum/job/so/get_description_blurb()
 	min_skill = list(   SKILL_HAULING     = SKILL_EXPERT,
 	                    SKILL_COMPUTER    = SKILL_BASIC)
 
-	max_skill = list(   SKILL_HAULING     = SKILL_MAX,
-	                    SKILL_COMPUTER    = SKILL_MAX)
+	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/serviceman/get_description_blurb()
@@ -103,7 +115,7 @@ datum/job/serviceman/get_description_blurb()
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the First Lieutenant"
-	selection_color = "#5e4215"
+	selection_color = "#006200"
 	minimal_player_age = 18
 	ideal_character_age = 30
 	starting_credits = 943
@@ -111,8 +123,11 @@ datum/job/serviceman/get_description_blurb()
 	access = list(access_service)
 	outfit_type = /decl/hierarchy/outfit/job/service/botanist
 
-	min_skill = list(   SKILL_BOTANY = SKILL_EXPERT)
-	max_skill = list(   SKILL_BOTANY     = SKILL_MAX)
+	min_skill = list(   SKILL_BOTANY 	  = SKILL_EXPERT)
+	max_skill = list(   SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/bar/get_description_blurb()
