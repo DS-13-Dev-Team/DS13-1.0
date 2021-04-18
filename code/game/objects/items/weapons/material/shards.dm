@@ -16,6 +16,7 @@
 	default_material = MATERIAL_GLASS
 	unbreakable = 1 //It's already broken.
 	drops_debris = 0
+	var/custom
 
 /obj/item/weapon/material/shard/set_material(var/new_material)
 	..(new_material)
@@ -115,6 +116,7 @@
 	var/obj/effect/overload/tesla
 	var/shock_count
 	var/extension_type = /datum/extension/mount/self_delete
+	var/effect_type = /obj/item/javelin
 
 /obj/item/weapon/material/shard/shrapnel/javeling/New(loc, obj/item/projectile/P)
 	..()
@@ -159,11 +161,24 @@
 	if(src in implants)
 		var/mount_target = get_mount_target_at_direction(user, get_dir(obstacle, user))
 		if(mount_target)
-			src.forceMove(get_turf(user))
-			mount_to_atom(src, mount_target, extension_type)
-			src.buckle_mob(user)
+			var/obj/javelin = new effect_type(get_turf(user))
+			src.forceMove(javelin)
+			mount_to_atom(javelin, mount_target, extension_type)
+			javelin.anchored = TRUE
+			javelin.buckle_mob(user)
 
 	unregister_collision(user)
 
 /obj/item/weapon/material/shard/shrapnel/javeling/proc/unregister_collision(mob/M)
 	GLOB.bump_event.unregister(M, src, /obj/item/weapon/material/shard/shrapnel/javeling/proc/on_target_collision)
+
+/obj/item/javelin
+	name = "javelin"
+	icon_state = "spearFlight"
+	icon = 'icons/effects/wall.dmi'
+
+/obj/item/javelin/attack_hand(mob/user)
+	if(is_mounted())
+		anchored = FALSE
+		unbuckle_mob()
+	return ..()
