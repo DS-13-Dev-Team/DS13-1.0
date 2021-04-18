@@ -71,10 +71,10 @@
 			continue
 		J.process_shock()
 
-/obj/item/weapon/gun/projectile/javelin_gun/register_sharpnel(obj/item/weapon/material/shard/shrapnel/SP)
+/obj/item/weapon/gun/projectile/javelin_gun/register_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
 	javelins |= SP
 
-/obj/item/weapon/gun/projectile/javelin_gun/unregister_sharpnel(obj/item/weapon/material/shard/shrapnel/SP)
+/obj/item/weapon/gun/projectile/javelin_gun/unregister_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
 	javelins -= SP
 
 /obj/effect/overload

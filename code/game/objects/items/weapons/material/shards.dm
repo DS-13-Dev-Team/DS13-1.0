@@ -100,7 +100,7 @@
 /obj/item/weapon/material/shard/shrapnel/New(loc, obj/item/projectile/P)
 	if(P)
 		launcher = P.launcher
-		launcher.register_sharpnel(src)
+		launcher.register_shrapnel(src)
 	..(loc, MATERIAL_STEEL)
 
 /obj/item/weapon/material/shard/phoron/New(loc)
@@ -141,7 +141,7 @@
 			to_chat(user, SPAN_WARNING("Its charged with electricity."))
 
 /obj/item/weapon/material/shard/shrapnel/javeling/proc/remove_from_launcher_list()
-	launcher.unregister_sharpnel(src)
+	launcher.unregister_shrapnel(src)
 	QDEL_NULL(tesla)
 	update_icon()
 
