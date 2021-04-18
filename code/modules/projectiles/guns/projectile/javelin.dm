@@ -56,7 +56,7 @@
 		return
 	for(var/obj/item/weapon/material/shard/shrapnel/javeling/J in javelins)
 		if(J.shock_count)
-			J.remove_from_luncher_list()
+			J.remove_from_launcher_list()
 
 /obj/item/weapon/gun/projectile/javelin_gun/update_icon()
 	. = ..()

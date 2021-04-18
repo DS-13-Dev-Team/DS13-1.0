@@ -123,7 +123,7 @@
 
 /obj/item/weapon/material/shard/shrapnel/javeling/Destroy()
 	if(launcher)
-		remove_from_luncher_list()
+		remove_from_launcher_list()
 	return ..()
 
 /obj/item/weapon/material/shard/shrapnel/javeling/update_icon()
@@ -140,7 +140,7 @@
 		else
 			to_chat(user, SPAN_WARNING("Its charged with electricity."))
 
-/obj/item/weapon/material/shard/shrapnel/javeling/proc/remove_from_luncher_list()
+/obj/item/weapon/material/shard/shrapnel/javeling/proc/remove_from_launcher_list()
 	launcher.unregister_sharpnel(src)
 	QDEL_NULL(tesla)
 	update_icon()
@@ -151,7 +151,7 @@
 		S.set_up(3, 1, get_turf(src))
 		S.start()
 		tesla = new /obj/effect/overload(get_turf(src), 5)
-		addtimer(CALLBACK(src, .proc/remove_from_luncher_list), 4 SECONDS)
+		addtimer(CALLBACK(src, .proc/remove_from_launcher_list), 4 SECONDS)
 	shock_count++
 
 /obj/item/weapon/material/shard/shrapnel/javeling/proc/on_target_collision(mob/user, atom/obstacle)
