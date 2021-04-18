@@ -247,7 +247,7 @@
 	damage = 20
 	embed = TRUE
 	sharp = TRUE
-	armor_penetration = 50
+	armor_penetration = 15
 	penetration_modifier = 50
 	embed_mult = 100
 	muzzle_type = null
