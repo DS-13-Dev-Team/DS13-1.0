@@ -107,7 +107,7 @@
 	..(loc, "phglass")
 
 /obj/item/weapon/material/shard/shrapnel/javeling
-	name = "javeling"
+	name = "javelin"
 	icon_state = "SpearFlight"
 	icon = 'icons/effects/wall.dmi'
 	var/charged_icon = "SpearFlight_charged"
