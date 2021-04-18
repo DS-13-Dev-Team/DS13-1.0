@@ -256,7 +256,11 @@
 /obj/item/projectile/bullet/javelin/on_organ_embed(obj/item/organ/external/target, mob/M)
 	var/obj/item/SP = new src.shrapnel_type(target, src)
 	target.embed(SP)
+	playsound(src, "fleshtear", VOLUME_MID, TRUE)
 	if(!M.buckled)
 		GLOB.bump_event.register(M, SP, /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision)
-		M.throw_at(get_step(M, src.dir), 4,, src)
+		var/throw_power = 2
+		if(istype(target, /obj/item/organ/external/chest))
+			throw_power *= 2
+		M.throw_at(get_step(M, src.dir), throw_power,, src)
 		addtimer(CALLBACK(SP, /obj/item/weapon/material/shard/shrapnel/javelin/proc/unregister_collision, M), 40)

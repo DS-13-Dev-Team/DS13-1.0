@@ -16,7 +16,6 @@
 	default_material = MATERIAL_GLASS
 	unbreakable = 1 //It's already broken.
 	drops_debris = 0
-	var/custom
 
 /obj/item/weapon/material/shard/set_material(var/new_material)
 	..(new_material)
@@ -167,6 +166,7 @@
 			mount_to_atom(javelin, mount_target, extension_type)
 			javelin.anchored = TRUE
 			javelin.buckle_mob(user)
+			playsound(src, "fleshtear", VOLUME_MID, TRUE)
 
 	unregister_collision(user)
 
