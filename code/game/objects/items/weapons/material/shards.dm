@@ -107,7 +107,7 @@
 /obj/item/weapon/material/shard/phoron/New(loc)
 	..(loc, "phglass")
 
-/obj/item/weapon/material/shard/shrapnel/javeling
+/obj/item/weapon/material/shard/shrapnel/javelin
 	name = "javelin"
 	icon_state = "spearFlight"
 	icon = 'icons/effects/wall.dmi'
@@ -116,25 +116,25 @@
 	var/obj/effect/overload/tesla
 	var/shock_count
 	var/extension_type = /datum/extension/mount/self_delete
-	var/effect_type = /obj/item/javelin
 
-/obj/item/weapon/material/shard/shrapnel/javeling/New(loc, obj/item/projectile/P)
+
+/obj/item/weapon/material/shard/shrapnel/javelin/New(loc, obj/item/projectile/P)
 	..()
 	javelin_gun = launcher
 	update_icon()
 
-/obj/item/weapon/material/shard/shrapnel/javeling/Destroy()
+/obj/item/weapon/material/shard/shrapnel/javelin/Destroy()
 	if(launcher)
 		remove_from_launcher_list()
 	return ..()
 
-/obj/item/weapon/material/shard/shrapnel/javeling/update_icon()
+/obj/item/weapon/material/shard/shrapnel/javelin/update_icon()
 	if(launcher && !shock_count)
 		icon_state = charged_icon
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/weapon/material/shard/shrapnel/javeling/examine(mob/user, distance)
+/obj/item/weapon/material/shard/shrapnel/javelin/examine(mob/user, distance)
 	. = ..()
 	if(launcher)
 		if(shock_count)
@@ -142,12 +142,12 @@
 		else
 			to_chat(user, SPAN_WARNING("Its charged with electricity."))
 
-/obj/item/weapon/material/shard/shrapnel/javeling/proc/remove_from_launcher_list()
+/obj/item/weapon/material/shard/shrapnel/javelin/proc/remove_from_launcher_list()
 	launcher.unregister_shrapnel(src)
 	QDEL_NULL(tesla)
 	update_icon()
 
-/obj/item/weapon/material/shard/shrapnel/javeling/proc/process_shock()
+/obj/item/weapon/material/shard/shrapnel/javelin/proc/process_shock()
 	if(!shock_count)
 		var/datum/effect/effect/system/spark_spread/S = new
 		S.set_up(3, 1, get_turf(src))
@@ -156,12 +156,13 @@
 		addtimer(CALLBACK(src, .proc/remove_from_launcher_list), 4 SECONDS)
 	shock_count++
 
-/obj/item/weapon/material/shard/shrapnel/javeling/proc/on_target_collision(mob/user, atom/obstacle)
+/obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision(mob/user, atom/obstacle)
 	var/list/implants = user.get_visible_implants(0, TRUE)
 	if(src in implants)
 		var/mount_target = get_mount_target_at_direction(user, get_dir(obstacle, user))
 		if(mount_target)
-			var/obj/javelin = new effect_type(get_turf(user))
+			var/obj/item/javelin/javelin = new /obj/item/javelin(get_turf(user))
+			javelin.javelin = src
 			src.forceMove(javelin)
 			mount_to_atom(javelin, mount_target, extension_type)
 			javelin.anchored = TRUE
@@ -169,13 +170,18 @@
 
 	unregister_collision(user)
 
-/obj/item/weapon/material/shard/shrapnel/javeling/proc/unregister_collision(mob/M)
-	GLOB.bump_event.unregister(M, src, /obj/item/weapon/material/shard/shrapnel/javeling/proc/on_target_collision)
+/obj/item/weapon/material/shard/shrapnel/javelin/proc/unregister_collision(mob/M)
+	GLOB.bump_event.unregister(M, src, /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision)
 
 /obj/item/javelin
 	name = "javelin"
 	icon_state = "spearFlight"
 	icon = 'icons/effects/wall.dmi'
+	var/obj/item/weapon/material/shard/shrapnel/javelin/javelin
+
+/obj/item/javelin/update_icon()
+	javelin.update_icon()
+	icon_state = javelin.icon_state
 
 /obj/item/javelin/attack_hand(mob/user)
 	if(is_mounted())

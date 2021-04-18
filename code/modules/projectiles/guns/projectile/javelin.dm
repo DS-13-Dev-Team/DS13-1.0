@@ -54,7 +54,7 @@
 	. = ..()
 	if(!.)
 		return
-	for(var/obj/item/weapon/material/shard/shrapnel/javeling/J in javelins)
+	for(var/obj/item/weapon/material/shard/shrapnel/javelin/J in javelins)
 		if(J.shock_count)
 			J.remove_from_launcher_list()
 
@@ -66,7 +66,7 @@
 		icon_state = initial(icon_state)
 
 /obj/item/weapon/gun/projectile/javelin_gun/proc/detonate_javelin(mob/living/user)
-	for(var/obj/item/weapon/material/shard/shrapnel/javeling/J in javelins)
+	for(var/obj/item/weapon/material/shard/shrapnel/javelin/J in javelins)
 		if(get_dist(src, J) > 7)
 			continue
 		J.process_shock()
