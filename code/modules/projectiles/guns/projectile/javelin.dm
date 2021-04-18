@@ -105,5 +105,5 @@
 		L.electrocute_act(shock_damage, src)
 
 /obj/effect/overload/Destroy()
-	STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSfastprocess, src)
 	return ..()
