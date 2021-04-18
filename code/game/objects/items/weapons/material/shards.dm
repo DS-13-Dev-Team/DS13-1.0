@@ -108,9 +108,9 @@
 
 /obj/item/weapon/material/shard/shrapnel/javeling
 	name = "javelin"
-	icon_state = "SpearFlight"
+	icon_state = "spearFlight"
 	icon = 'icons/effects/wall.dmi'
-	var/charged_icon = "SpearFlight_charged"
+	var/charged_icon = "spearFlight_charged"
 	var/obj/item/weapon/gun/projectile/javelin_gun/javelin_gun
 	var/obj/effect/overload/tesla
 	var/shock_count

@@ -40,7 +40,7 @@
 /datum/firemode/automatic/shock/on_fire(atom/target, mob/living/user, clickparams, pointblank, reflex, obj/projectile)
 	if(istype(gun, /obj/item/weapon/gun/projectile/javelin_gun))
 		var/obj/item/weapon/gun/projectile/javelin_gun/J = gun
-		J.detone_javelin(user)
+		J.detonate_javelin(user)
 
 /datum/firemode/automatic/shock/can_fire(atom/target, mob/living/user)
 	. = ..()
@@ -65,7 +65,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/weapon/gun/projectile/javelin_gun/proc/detone_javelin(mob/living/user)
+/obj/item/weapon/gun/projectile/javelin_gun/proc/detonate_javelin(mob/living/user)
 	for(var/obj/item/weapon/material/shard/shrapnel/javeling/J in javelins)
 		if(get_dist(src, J) > 7)
 			continue
