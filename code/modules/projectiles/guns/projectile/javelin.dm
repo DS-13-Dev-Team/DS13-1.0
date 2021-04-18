@@ -89,7 +89,7 @@
 /obj/effect/overload/Initialize(mapload, n_life_time = 5)
 	. = ..()
 	life_time = n_life_time
-	START_PROCESSING(SSobj, src)
+	START_PROCESSING(SSfastprocess, src)
 
 /obj/effect/overload/Process()
 	for(var/turf/T in trange(2, get_turf(src)))
