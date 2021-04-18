@@ -288,6 +288,5 @@
 
 /datum/extension/mount/self_delete/on_dismount()
 	.=..()
-	admin_notice("entramos en el proc on dismount")
 	mountee.pixel_x = 0
 	mountee.pixel_y = 0
