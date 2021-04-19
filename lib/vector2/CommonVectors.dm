@@ -2,7 +2,7 @@
 	Make sure you don't modify these vectors.
 	You should treat all vectors as immutable in general.
 */
-var Vector2/Vector2 = new
+GLOBAL_REAL(Vector2, /Vector2) = new
 
 Vector2
 	var
@@ -111,4 +111,3 @@ Vector2
 			if (A)
 				return (A.x + A.y) / 2
 			return 0
-
