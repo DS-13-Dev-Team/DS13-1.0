@@ -8,5 +8,5 @@
 
 /datum/codex_entry/concept/patron/get_text(var/mob/user)
 	var/string = "[mechanics_text]"
-	string += "<a href='?src=\ref[user];open_url=patreon.com/user?u=31268725&fan_landing=true;prefix=[URL_HTTP_WWW];'>Clicky!</a>"
+	string += "<a href='?src=\ref[user];open_url=patreon.com/ds13_server_ru?fan_landing=true;prefix=[URL_HTTP_WWW];'>Clicky!</a>"
 	return string
