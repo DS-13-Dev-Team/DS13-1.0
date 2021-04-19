@@ -21,8 +21,11 @@
 						SKILL_COMPUTER	  = SKILL_ADEPT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_COMPUTER	  = SKILL_MAX,
-	                    SKILL_DEVICES	  = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/cscio/get_description_blurb()
@@ -49,8 +52,11 @@ datum/job/cscio/get_description_blurb()
 						SKILL_COMPUTER	  = SKILL_ADEPT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_COMPUTER	  = SKILL_MAX,
-	                    SKILL_DEVICES	  = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/ra/get_description_blurb()

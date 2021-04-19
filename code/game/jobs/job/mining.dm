@@ -7,7 +7,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the CEC"
-	selection_color = "#515151"
+	selection_color = "#7e591c"
 	req_admin_notify = 1
 	minimal_player_age = 18
 	ideal_character_age = 30
@@ -19,8 +19,11 @@
 	min_skill = list(   SKILL_COMPUTER	  = SKILL_BASIC,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_COMPUTER	  = SKILL_MAX,
-	                    SKILL_DEVICES     = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 30
 
 /datum/job/dom/get_description_blurb()
@@ -34,7 +37,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Director of Mining"
-	selection_color = "#515151"
+	selection_color = "#5e4215"
 	minimal_player_age = 18
 	starting_credits = 2400
 
@@ -45,8 +48,11 @@
 						SKILL_HAULING	  = SKILL_ADEPT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_EVA		  = SKILL_MAX,
-	                    SKILL_HAULING     = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 /datum/job/foreman/get_description_blurb()
@@ -60,7 +66,7 @@
 	total_positions = 25
 	spawn_positions = 25
 	supervisors = "the Mining Foreman"
-	selection_color = "#515151"
+	selection_color = "#5e4215"
 	minimal_player_age = 18
 	starting_credits = 670
 
@@ -71,8 +77,11 @@
 						SKILL_HAULING	  = SKILL_ADEPT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_EVA		  = SKILL_MAX,
-	                    SKILL_HAULING     = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 /datum/job/planet_cracker/get_description_blurb()

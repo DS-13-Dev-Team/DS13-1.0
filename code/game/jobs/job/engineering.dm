@@ -23,10 +23,11 @@
 	                    SKILL_ELECTRICAL  = SKILL_EXPERT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_EVA	      = SKILL_MAX,
-	                    SKILL_COMPUTER    = SKILL_MAX,
-	                    SKILL_CONSTRUCTION= SKILL_MAX,
-	                    SKILL_ELECTRICAL  = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/ce/get_description_blurb()
@@ -54,10 +55,11 @@ datum/job/ce/get_description_blurb()
 	                    SKILL_CONSTRUCTION= SKILL_ADEPT,
 	                    SKILL_ELECTRICAL  = SKILL_ADEPT)
 
-	max_skill = list(   SKILL_EVA	      = SKILL_MAX,
-						SKILL_COMPUTER    = SKILL_MAX,
-	                    SKILL_CONSTRUCTION= SKILL_MAX,
-	                    SKILL_ELECTRICAL  = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT,
+	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 14
 
 datum/job/tech_engineer/get_description_blurb()

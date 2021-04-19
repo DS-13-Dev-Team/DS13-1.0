@@ -21,8 +21,10 @@
 						SKILL_COMBAT	  = SKILL_ADEPT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_WEAPONS     = SKILL_MAX,
-						SKILL_COMBAT	  = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY	  = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/cseco/get_description_blurb()
@@ -48,8 +50,10 @@ datum/job/cseco/get_description_blurb()
 						SKILL_FORENSICS   = SKILL_EXPERT,
 	                    SKILL_DEVICES	  = SKILL_ADEPT)
 
-	max_skill = list(   SKILL_WEAPONS     = SKILL_MAX,
-						SKILL_COMBAT	  = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT)
 	skill_points = 16
 
 datum/job/sso/get_description_blurb()
@@ -75,8 +79,10 @@ datum/job/sso/get_description_blurb()
 						SKILL_FORENSICS   = SKILL_ADEPT,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
-	max_skill = list(   SKILL_WEAPONS     = SKILL_MAX,
-						SKILL_COMBAT	  = SKILL_MAX)
+	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
+	                    SKILL_COOKING     = SKILL_EXPERT,
+	                    SKILL_MEDICAL     = SKILL_EXPERT,
+	                    SKILL_ANATOMY     = SKILL_ADEPT)
 	skill_points = 10
 
 datum/job/security_officer/get_description_blurb()
