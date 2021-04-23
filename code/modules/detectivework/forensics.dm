@@ -11,10 +11,10 @@ var/const/FINGERPRINT_COMPLETE = 6
 proc/is_complete_print(var/print)
 	return stringpercent(print) <= FINGERPRINT_COMPLETE
 
-atom/var/list/suit_fibers
-atom/var/list/fingerprints
-atom/var/list/fingerprintshidden
-atom/var/fingerprintslast = null
+/atom/var/list/suit_fibers
+/atom/var/list/fingerprints
+/atom/var/list/fingerprintshidden
+/atom/var/fingerprintslast
 
 /atom/proc/add_hiddenprint(mob/M)
 	if(!M || !M.key)
