@@ -140,7 +140,8 @@
 /datum/tgs_api/v3210/OnReboot()
 	switch(reboot_mode)
 		if(REBOOT_MODE_HARD)
-			TGS_WORLD_ANNOUNCE("Hard reboot triggered, you will automatically reconnect...")
+			var/msg = "Hard reboot triggered, you will automatically reconnect..."
+			TGS_WORLD_ANNOUNCE(msg)
 			EndProcess()
 		if(REBOOT_MODE_SHUTDOWN)
 			TGS_WORLD_ANNOUNCE("The server is shutting down...")
