@@ -90,6 +90,9 @@ var/list/airlock_overlays = list()
 	var/welded_file = 'icons/obj/doors/station/welded.dmi'
 	var/emag_file = 'icons/obj/doors/station/emag.dmi'
 
+	/// Unrestricted sides. A bitflag for which direction (if any) can open the door with no access.
+	var/obj/item/airlock_reinforcement/reinforcement
+
 /obj/machinery/door/airlock/attack_generic(var/mob/user, var/damage)
 	if(stat & (BROKEN|NOPOWER))
 		if(damage >= 10)
@@ -1050,6 +1053,10 @@ About the new airlock wires panel:
 		if(brace && (istype(C.GetIdCard(), /obj/item/weapon/card/id/) || istype(C, /obj/item/weapon/tool/crowbar/brace_jack)))
 			return brace.attackby(C, user)
 
+		if(reinforcement && isCrowbar(C) && C.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_NORMAL))
+			remove_reinforce(C, user)
+			return
+
 		if(!brace && istype(C, /obj/item/weapon/airlock_brace))
 			var/obj/item/weapon/airlock_brace/A = C
 			if(!density)
@@ -1071,6 +1078,10 @@ About the new airlock wires panel:
 				if(src.shock(user, 75))
 					return
 		if(istype(C, /obj/item/taperoll))
+			return
+
+		if(!reinforcement && istype(C, /obj/item/airlock_reinforcement))
+			try_reinforce(C, user)
 			return
 
 		if (!repairing && (stat & BROKEN) && src.locked) //bolted and broken
@@ -1324,8 +1335,15 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/allowed(mob/M)
 	if(locked)
-		return 0
+		return FALSE
+	if(restricted_side(M))
+		return FALSE
 	return ..(M)
+
+/obj/machinery/door/airlock/proc/restricted_side(mob/M) //Allows for specific side of airlocks to be unrestrected (IE, can exit maint freely, but need access to enter)
+	if(reinforcement)
+		return get_dir(src, M) & reinforcement.block_dir
+	return FALSE
 
 /obj/machinery/door/airlock/New(var/newloc, var/obj/structure/door_assembly/assembly=null)
 	..()
@@ -1513,3 +1531,33 @@ About the new airlock wires panel:
 	locked = FALSE
 	QDEL_NULL(brace)
 	.=..()
+
+/obj/machinery/door/airlock/proc/try_reinforce(obj/item/airlock_reinforcement/R, mob/M)
+	var/msg = SPAN_WARNING("You cannot apply [R] to [src] from this position.")
+	if(get_turf(R) == get_turf(src))
+		to_chat(M, msg)
+		return
+	var/form_dir = get_dir(M, src)
+	if(form_dir == GLOB.reverse_dir[dir] || form_dir == dir)
+		if(!do_after(M, 5 SECONDS, src, TRUE) || density || !R || !M.unEquip(R, src))
+			to_chat(M, SPAN_NOTICE("fallaste"))
+			return
+		reinforcement = R
+		reinforcement.block_dir = form_dir
+		icon = 'icons/obj/doors/station/metaldoor.dmi'
+		update_icon()
+		to_chat(M, SPAN_NOTICE("You apply [R] to [src]."))
+
+/obj/machinery/door/airlock/proc/remove_reinforce(obj/item/I, mob/M)
+	reinforcement.forceMove(get_turf(src))
+	icon = initial(icon)
+	update_icon()
+	to_chat(M, SPAN_NOTICE("You remove [reinforcement] from [src]."))
+
+/obj/item/airlock_reinforcement
+	name = "door_reinforcement"
+	desc = "temp desc"
+	icon = 'icons/obj/airlock_machines.dmi'
+	icon_state = "brace_open"
+	var/block_dir
+
