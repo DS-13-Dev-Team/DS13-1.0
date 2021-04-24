@@ -1140,7 +1140,7 @@ About the new airlock wires panel:
 				to_chat(user, "<span class='notice'>The airlock's motors resist your efforts to force it.</span>")
 			else if(locked)
 				to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
-			else if(brace)
+			else if(brace || reinforcement)
 				to_chat(user, "<span class='notice'>The airlock's brace holds it firmly in place.</span>")
 			else if((stat & BROKEN) && !density)//Broken doors must be open, they cannot be forced closed
 				to_chat(user, "<span class='notice'>The [src] is too damaged to be closed!</span>")
@@ -1539,7 +1539,7 @@ About the new airlock wires panel:
 		return
 	var/form_dir = get_dir(M, src)
 	if(form_dir == GLOB.reverse_dir[dir] || form_dir == dir)
-		if(!do_after(M, 5 SECONDS, src, TRUE) || density || !R || !M.unEquip(R, src))
+		if(!do_after(M, 5 SECONDS, src, TRUE) || !density || !R || !M.unEquip(R, src))
 			to_chat(M, SPAN_NOTICE("fallaste"))
 			return
 		reinforcement = R
