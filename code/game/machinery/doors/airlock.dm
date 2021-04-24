@@ -1129,7 +1129,7 @@ About the new airlock wires panel:
 			var/obj/item/weapon/pai_cable/cable = C
 			cable.plugin(src, user)
 		else if(!repairing && isCrowbar(C))
-			if(src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && !src.locked)) && !brace)
+			if(src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && !src.locked)) && !brace && !reinforcement)
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 100, 1)
 				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
 				if(do_after(user,40,src))
@@ -1507,6 +1507,9 @@ About the new airlock wires panel:
 	if (brace)
 		.+=2 //Braces are reeeally strong
 
+	if(reinforcement)
+		. += 3
+
 /obj/machinery/door/airlock/apply_resistance(var/damage, var/ignore_resistance = FALSE)
 	if (ignore_resistance)
 		return ..(damage, ignore_resistance)
@@ -1530,7 +1533,8 @@ About the new airlock wires panel:
 	welded = FALSE
 	locked = FALSE
 	QDEL_NULL(brace)
-	.=..()
+	QDEL_NULL(reinforcement)
+	return ..()
 
 /obj/machinery/door/airlock/proc/try_reinforce(obj/item/airlock_reinforcement/R, mob/M)
 	var/msg = SPAN_WARNING("You cannot apply [R] to [src] from this position.")
