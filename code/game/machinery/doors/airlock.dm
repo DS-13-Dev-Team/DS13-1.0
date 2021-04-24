@@ -1555,8 +1555,8 @@ About the new airlock wires panel:
 	to_chat(M, SPAN_NOTICE("You remove [reinforcement] from [src]."))
 
 /obj/item/airlock_reinforcement
-	name = "door_reinforcement"
-	desc = "temp desc"
+	name = "airlock brace"
+	desc = "A sturdy device that can be attached to an airlock to reinforce it and provide additional security."
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "brace_open"
 	var/block_dir
