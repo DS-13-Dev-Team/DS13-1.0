@@ -64,3 +64,11 @@
 	name = "Commander Slasher"
 	uniform = /obj/item/clothing/under/deadspace/captain
 	id_type = /obj/item/weapon/card/id/holo/command
+
+/decl/hierarchy/outfit/necromorph/mining
+	name = "mining Slasher"
+	suit = /obj/item/clothing/suit/space/void/mining/slasher
+
+/decl/hierarchy/outfit/necromorph/engi
+	name = "engi Slasher"
+	suit = /obj/item/clothing/suit/space/void/engineering
