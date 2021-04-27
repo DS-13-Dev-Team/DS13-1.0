@@ -127,9 +127,7 @@
 			already_hit += E.organ_tag
 			H.bullet_act(src, E.organ_tag)
 
-
-
-/obj/item/projectile/wave/linecutter/Bump(var/atom/A)
+/obj/item/projectile/wave/linecutter/Bump(atom/A, forced = 0)
 	if(istype(A, /turf/simulated/mineral))
 		var/turf/simulated/mineral/M = A
 		if (dig_power)

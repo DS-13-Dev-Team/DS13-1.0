@@ -57,14 +57,14 @@
 	impact_type = /obj/effect/projectile/trilaser/impact
 	fire_sound = 'sound/weapons/plasma_cutter.ogg'
 
-/obj/item/projectile/beam/cutter/Bump(var/atom/A)
+/obj/item/projectile/beam/cutter/Bump(atom/A, forced = 0)
 	if(istype(A, /turf/simulated/mineral))
 		var/turf/simulated/mineral/M = A
 		if (dig_power)
 			var/dig_amount = min(dig_power, (M.health+M.resistance))
 			dig_power -= dig_amount
 			M.dig(dig_amount)
-	. = ..()
+	return ..()
 
 
 

@@ -65,7 +65,7 @@
 	value = list()
 	needs_big_box = 1
 
-/datum/report_field/people/list_from_manifest/get_value(in_line = 0)
+/datum/report_field/people/list_from_manifest/get_value(in_line = FALSE)
 	var/dat = list()
 	for(var/entry in value)
 		var/milrank = entry["milrank"]
@@ -88,7 +88,7 @@
 		if(in_as_list(entry, new_value))
 			continue //ignore repeats
 		new_value += list(entry)
-	value = new_value	
+	value = new_value
 
 /datum/report_field/people/list_from_manifest/ask_value(mob/user)
 	var/alert = alert(user, "Would you like to add or remove a name?", "Form Input", "Add", "Remove")

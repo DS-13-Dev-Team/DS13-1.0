@@ -23,13 +23,13 @@
 			T.Entered(A)
 		step_rand(A)
 	..()
-	return
+
 
 /obj/mecha/working/Topic(href, href_list)
 	..()
 	if(href_list["drop_from_cargo"])
 		var/obj/O = locate(href_list["drop_from_cargo"])
-		if(O && O in src.cargo)
+		if(O && (O in src.cargo))
 			src.occupant_message("<span class='notice'>You unload [O].</span>")
 			O.loc = get_turf(src)
 			src.cargo -= O
@@ -37,7 +37,7 @@
 			if(T)
 				T.Entered(O)
 			src.log_message("Unloaded [O]. Cargo compartment capacity: [cargo_capacity - src.cargo.len]")
-	return
+
 
 /obj/mecha/working/Exit(atom/movable/O)
 	if(O in cargo)

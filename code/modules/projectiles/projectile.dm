@@ -381,7 +381,7 @@
 	if (. >= 0 && prob(ricochet_chance))
 		return PROJECTILE_DEFLECT
 
-/obj/item/projectile/Bump(atom/A as mob|obj|turf|area, forced=0)
+/obj/item/projectile/Bump(atom/A, forced = 0)
 	if(A == src)
 		return 0 //no
 

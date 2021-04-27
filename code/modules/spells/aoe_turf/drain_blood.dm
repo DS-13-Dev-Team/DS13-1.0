@@ -54,9 +54,9 @@
 	tracer_type = /obj/effect/projectile/blood
 	impact_type = /obj/effect/projectile/blood
 
-/obj/item/projectile/beam/blood_effect/Bump(var/atom/a)
-	if(a == original)
-		on_impact(a)
+/obj/item/projectile/beam/blood_effect/Bump(atom/A, forced = 0)
+	if(A == original)
+		on_impact(A)
 		qdel(src)
 		return 1
 	return 0
