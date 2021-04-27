@@ -1490,9 +1490,9 @@
 
 /mob/living/carbon/human/InitializeHud()
 	..()
-	set_intenet(a_intent)
+	set_intent(a_intent)
 
-/mob/living/carbon/human/proc/set_intenet(new_intent = I_HELP)
+/mob/living/carbon/human/proc/set_intent(new_intent = I_HELP)
 	a_intent = new_intent
 	if(istype(hud_used.action_intent, /obj/screen/intent))
 		var/obj/screen/intent/I = hud_used.action_intent
