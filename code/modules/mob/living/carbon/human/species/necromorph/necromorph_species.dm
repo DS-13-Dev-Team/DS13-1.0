@@ -5,7 +5,7 @@
 */
 
 /datum/species/necromorph
-	name = SPECIES_NECROMORPH
+	name = "Necromorph"
 	name_plural =  "Necromorphs"
 	blurb = "Mutated and reanimated corpses, reshaped into horrific new forms by a recombinant extraterrestrial infection. \
 	The resulting creatures are extremely aggressive and will attack any uninfected organism on sight."
@@ -195,7 +195,7 @@
 /datum/species/necromorph/proc/make_scary(mob/living/carbon/human/H)
 	//H.set_traumatic_sight(TRUE) //All necrmorphs are scary. Some are more scary than others though
 
-/datum/species/necromorph/setup_interaction(mob/living/carbon/human/H)
+/datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
 	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
 	H.faction = FACTION_NECROMORPH
