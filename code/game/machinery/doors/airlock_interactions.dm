@@ -25,9 +25,6 @@
 /mob/living/blocks_airlock()
 	return 1
 
-/obj/structure/closet/blocks_airlock()
-	return TRUE
-
 /obj/structure/closet/body_bag/blocks_airlock()
 	if (locate(/mob) in src)
 		return 1
