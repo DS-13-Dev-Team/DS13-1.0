@@ -3,37 +3,37 @@ var/global/datum/controller/processScheduler/processScheduler
 
 /datum/controller/processScheduler
 	// Processes known by the scheduler
-	var/tmp/datum/controller/process/list/processes = new
+	var/tmp/list/datum/controller/process/processes = new
 
 	// Processes that are currently running
-	var/tmp/datum/controller/process/list/running = new
+	var/tmp/list/datum/controller/process/running = new
 
 	// Processes that are idle
-	var/tmp/datum/controller/process/list/idle = new
+	var/tmp/list/datum/controller/process/idle = new
 
 	// Processes that are queued to run
-	var/tmp/datum/controller/process/list/queued = new
+	var/tmp/list/datum/controller/process/queued = new
 
 	// Process name -> process object map
-	var/tmp/datum/controller/process/list/nameToProcessMap = new
+	var/tmp/list/datum/controller/process/nameToProcessMap = new
 
 	// Process last queued times (world time)
-	var/tmp/datum/controller/process/list/last_queued = new
+	var/tmp/list/datum/controller/process/last_queued = new
 
 	// Process last start times (real time)
-	var/tmp/datum/controller/process/list/last_start = new
+	var/tmp/list/datum/controller/process/last_start = new
 
 	// Process last run durations
-	var/tmp/datum/controller/process/list/last_run_time = new
+	var/tmp/list/datum/controller/process/last_run_time = new
 
 	// Per process list of the last 20 durations
-	var/tmp/datum/controller/process/list/last_twenty_run_times = new
+	var/tmp/list/datum/controller/process/last_twenty_run_times = new
 
 	// Process highest run time
-	var/tmp/datum/controller/process/list/highest_run_time = new
+	var/tmp/list/datum/controller/process/highest_run_time = new
 
 	// Process total run time
-	var/tmp/datum/controller/process/list/total_run_time = new
+	var/tmp/list/datum/controller/process/total_run_time = new
 
 	// How long to sleep between runs (set to tick_lag in New)
 	var/tmp/scheduler_sleep_interval
