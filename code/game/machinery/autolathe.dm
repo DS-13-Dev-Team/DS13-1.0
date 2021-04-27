@@ -640,8 +640,8 @@
 
 
 	//And if there's any remainder, we eject that as a shard
-	if (remainder)
-		new /obj/item/weapon/material/shard(loc, material, _amount = remainder)
+	for(var/i = 1, i <= remainder, i++)
+		new /obj/item/weapon/material/shard(loc, material)
 
 	//The stored material gets the amount (whole+remainder) subtracted
 	stored_material[material] -= amount * SHEET_MATERIAL_AMOUNT
