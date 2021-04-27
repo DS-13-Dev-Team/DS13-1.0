@@ -20,6 +20,9 @@
 		slot_l_hand_str = "eng_voidsuit",
 		slot_r_hand_str = "eng_voidsuit",
 	)
+	sprite_sheets = list(
+		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
+		)
 	armor = list(melee = 35, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 80)
 
 /obj/item/clothing/suit/space/void/engineering/New()
@@ -55,6 +58,12 @@
 
 /obj/item/clothing/suit/space/void/mining/prepared
 	helmet = /obj/item/clothing/head/helmet/space/void/mining
+
+/obj/item/clothing/suit/space/void/mining/slasher
+	sprite_sheets = list(
+		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
+		)
+	icon_state = "ds_mining_rig_sealed"
 
 //Medical
 /obj/item/clothing/head/helmet/space/void/medical
