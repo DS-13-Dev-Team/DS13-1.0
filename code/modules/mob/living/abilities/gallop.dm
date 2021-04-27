@@ -50,9 +50,8 @@
 		GLOB.moved_event.register(user, src, /datum/extension/gallop/proc/user_moved)
 
 /datum/extension/gallop/proc/destroy()
-	if (!stopped_at)
+	if(!stopped_at)
 		stop()
-	.=..()
 
 
 

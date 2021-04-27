@@ -906,8 +906,6 @@ var/global/list/common_tools = list(
 		else
 			return W.is_hot()
 
-	return W.is_hot()
-
 //Whether or not the given item counts as sharp in terms of dealing damage
 /proc/is_sharp(obj/O as obj)
 	if (!O) return 0

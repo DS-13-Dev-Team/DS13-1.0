@@ -32,7 +32,7 @@ obj/machinery/atmospherics/pipe/mains_component
 	proc/mains_burst()
 		parent_pipe.burst()
 
-obj/machinery/atmospherics/mains_pipe
+/obj/machinery/atmospherics/mains_pipe
 	icon = 'icons/obj/atmospherics/mainspipe.dmi'
 
 	var/volume = 0
@@ -72,7 +72,7 @@ obj/machinery/atmospherics/mains_pipe
 		update_icon()
 
 	proc/burst()
-		..()
+
 		for(var/obj/machinery/atmospherics/pipe/mains_component/pipe in contents)
 			burst()
 
