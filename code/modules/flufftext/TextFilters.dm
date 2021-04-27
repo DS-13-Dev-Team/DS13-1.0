@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
-proc/Intoxicated(phrase)
+/proc/Intoxicated(phrase)
 	phrase = html_decode(phrase)
 	var/leng=length(phrase)
 	var/counter=length(phrase)
@@ -23,7 +23,7 @@ proc/Intoxicated(phrase)
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
-proc/NewStutter(phrase,stunned)
+/proc/NewStutter(phrase,stunned)
 	phrase = html_decode(phrase)
 
 	var/list/split_phrase = splittext(phrase," ") //Split it up into words.
@@ -59,16 +59,15 @@ proc/NewStutter(phrase,stunned)
 
 	return sanitize(jointext(split_phrase," "))
 
-proc/Stagger(mob/M,d) //Technically not a filter, but it relates to drunkenness.
+/proc/Stagger(mob/M,d) //Technically not a filter, but it relates to drunkenness.
 	step(M, pick(d,turn(d,90),turn(d,-90)))
 
-proc/Ellipsis(original_msg, chance = 50)
+/proc/Ellipsis(original_msg, chance = 50)
 	if(chance <= 0) return "..."
 	if(chance >= 100) return original_msg
 
-	var/list
-		words = splittext(original_msg," ")
-		new_words = list()
+	var/list/words = splittext(original_msg," ")
+	var/list/new_words = list()
 
 	var/new_msg = ""
 
@@ -135,14 +134,14 @@ proc/RadioChat(mob/living/user, message, distortion_chance = 60, distortion_spee
 					if(english_only)
 						newletter += "*"
 					else
-						newletter = pick("ø", "Ð", "%", "æ", "µ")
+						newletter = pick("ï¿½", "ï¿½", "%", "ï¿½", "ï¿½")
 				distortion += 0.5 * distortion_speed
 			else if(prob(0.75 * distortion)) // Incomprehensible
 				newletter = pick("<", ">", "!", "$", "%", "^", "&", "*", "~", "#")
 				distortion += 0.75 * distortion_speed
 			else if(prob(0.05 * distortion)) // Total cut out
 				if(!english_only)
-					newletter = "¦w¡¼b»%> -BZZT-"
+					newletter = "ï¿½wï¿½ï¿½bï¿½%> -BZZT-"
 				else
 					newletter = "srgt%$hjc< -BZZT-"
 				new_message += newletter
@@ -152,15 +151,15 @@ proc/RadioChat(mob/living/user, message, distortion_chance = 60, distortion_spee
 					if("s")
 						newletter = "$"
 					if("e")
-						newletter = "€"
+						newletter = "ï¿½"
 					if("w")
-						newletter = "ø"
+						newletter = "ï¿½"
 					if("y")
-						newletter = "¡"
+						newletter = "ï¿½"
 					if("x")
-						newletter = "æ"
+						newletter = "ï¿½"
 					if("u")
-						newletter = "µ"
+						newletter = "ï¿½"
 		else
 			if(prob(0.2 * distortion))
 				newletter = " *crackle* "

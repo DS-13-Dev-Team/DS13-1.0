@@ -956,10 +956,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 //This is a proc so that enhanced necros can get their parent blurb
 /datum/species/proc/get_blurb()
-	.=..()
-	if (.)
-		.+="<br><br>"
-	.+=blurb
+	return blurb
 
 //Shows information for the basic attacks of this species
 /datum/species/proc/get_unarmed_description()

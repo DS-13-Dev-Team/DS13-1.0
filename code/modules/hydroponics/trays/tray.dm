@@ -282,7 +282,7 @@
 	return TRUE
 
 //Clears out a dead plant.
-/obj/machinery/portable_atmospherics/hydroponics/proc/remove_dead(var/mob/user, var/silent)
+/obj/machinery/portable_atmospherics/hydroponics/proc/remove_dead(mob/user, silent)
 	if(!user || !dead) return
 
 	if(closed_system)
@@ -329,7 +329,7 @@
 		return
 
 	// Check if we should even bother working on the current seed datum.
-	if(seed.mutants. && seed.mutants.len && severity > 1)
+	if(seed.mutants && seed.mutants.len && severity > 1)
 		mutate_species()
 		return
 

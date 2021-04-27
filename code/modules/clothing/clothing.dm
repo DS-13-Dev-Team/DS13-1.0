@@ -284,9 +284,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
 	if(item_state_slots && item_state_slots[slot])
 		return item_state_slots[slot]
-	else
-		return icon_state
-	return ..()
+	return icon_state
 
 /obj/item/clothing/glasses/update_clothing_icon()
 	if (ismob(src.loc))

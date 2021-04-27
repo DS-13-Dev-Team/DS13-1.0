@@ -208,7 +208,7 @@
 		M.Weaken(5)
 	..()
 
-/mob/living/bot/mulebot/proc/runOver(var/mob/living/carbon/human/H)
+/mob/living/bot/mulebot/proc/runOver(mob/living/carbon/human/H)
 	if(istype(H)) // No safety checks - WILL run over lying humans. Stop ERPing in the maint!
 		visible_message("<span class='warning'>[src] drives over [H]!</span>")
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -222,7 +222,6 @@
 		H.apply_damage(0.5 * damage, BRUTE, BP_R_ARM)
 
 		blood_splatter(src, H, 1)
-	..()
 
 /mob/living/bot/mulebot/relaymove(var/mob/user, var/direction)
 	if(load == user)
