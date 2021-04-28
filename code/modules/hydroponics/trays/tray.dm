@@ -282,7 +282,7 @@
 	return TRUE
 
 //Clears out a dead plant.
-/obj/machinery/portable_atmospherics/hydroponics/proc/remove_dead(mob/user, silent)
+/obj/machinery/portable_atmospherics/hydroponics/proc/remove_dead(var/mob/user, var/silent)
 	if(!user || !dead) return
 
 	if(closed_system)
