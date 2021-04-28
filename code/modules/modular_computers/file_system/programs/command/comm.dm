@@ -287,7 +287,7 @@ var/last_message_id = 0
 /datum/comm_message_listener/proc/Remove(var/list/message)
 	messages -= list(message)
 
-/proc/post_status(command, data1, data2)
+/proc/post_status(var/command, var/data1, var/data2)
 
 	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
 
