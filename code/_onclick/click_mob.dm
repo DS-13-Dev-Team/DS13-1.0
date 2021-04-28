@@ -324,8 +324,9 @@
 
 	while (click_handlers.Num())
 		var/datum/click_handler/CH = click_handlers.Pop()
-		if(CH && !CH.OnAltClick(A,params))
-			return
+		if (CH)
+			if (!CH.OnAltClick(A,params))
+				return
 	A.AltClick(src)
 
 
