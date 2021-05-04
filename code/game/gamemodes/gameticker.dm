@@ -99,7 +99,6 @@ var/global/datum/controller/gameticker/ticker
 	else
 		src.hide_mode = 0
 
-	var/list/runnable_modes = config.get_runnable_modes()
 	if((master_mode=="random") || (master_mode=="secret"))
 		if(!runnable_modes.len)
 			current_state = GAME_STATE_PREGAME
@@ -110,11 +109,7 @@ var/global/datum/controller/gameticker/ticker
 		if(secret_force_mode != "secret")
 			src.mode = config.pick_mode(secret_force_mode)
 		if(!src.mode)
-			var/list/weighted_modes = list()
-			var/list/probabilities = CONFIG_GET(keyed_list/probabilities)
-			for(var/datum/game_mode/GM in runnable_modes)
-				weighted_modes[GM.config_tag] = probabilities[GM.config_tag]
-			src.mode = gamemode_cache[pickweight(weighted_modes)]
+			src.mode = config.pick_mode(master_mode)
 	else
 		src.mode = config.pick_mode(master_mode)
 
