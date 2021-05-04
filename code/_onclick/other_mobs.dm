@@ -8,10 +8,19 @@
 
 	Otherwise pretty standard.
 */
+/mob/living/carbon/human
+	var/last_disarm
+
 /mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity)
 
 	if(!..())
 		return
+
+	if(a_intent == I_DISARM)
+		if(world.time < last_disarm + species.disarm_cooldown)
+			admin_notice("disarm is in cooldown")
+			return
+		last_disarm = world.time
 
 	// Special glove functions:
 	// If the gloves do anything, have them return 1 to stop
