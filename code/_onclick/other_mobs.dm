@@ -18,7 +18,6 @@
 
 	if(a_intent == I_DISARM)
 		if(world.time < last_disarm + species.disarm_cooldown)
-			admin_notice("disarm is in cooldown")
 			return
 		last_disarm = world.time
 
