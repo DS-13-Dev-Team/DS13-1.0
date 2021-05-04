@@ -86,10 +86,9 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 
 /datum/event_container/proc/set_event_delay()
 	// If the next event time has not yet been set and we have a custom first time start
-	var/list/event_first_run = CONFIG_GET(keyed_list/event_first_run)
-	if(next_event_time == 0 && event_first_run[severity])
-		var/lower = event_first_run[severity]["lower"]
-		var/upper = event_first_run[severity]["upper"]
+	if(next_event_time == 0 && EVENT_FIRST_RUN[severity])
+		var/lower = EVENT_FIRST_RUN[severity]["lower"]
+		var/upper = EVENT_FIRST_RUN[severity]["upper"]
 		var/event_delay = rand(lower, upper)
 		next_event_time = world.time + event_delay
 	// Otherwise, follow the standard setup process
@@ -108,9 +107,7 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 				playercount_modifier = 0.8
 		playercount_modifier = playercount_modifier * delay_modifier
 
-		var/list/event_delay_lower = CONFIG_GET(keyed_list/event_delay_lower)
-		var/list/event_delay_upper = CONFIG_GET(keyed_list/event_delay_upper)
-		var/event_delay = rand(event_delay_lower[severity], event_delay_upper[severity]) * playercount_modifier
+		var/event_delay = rand(EVENT_DELAY_LOWER[severity], EVENT_DELAY_UPPER[severity]) * playercount_modifier
 		next_event_time = world.time + event_delay
 
 	log_debug("Next event of severity [severity_to_string[severity]] in [(next_event_time - world.time)/600] minutes.")

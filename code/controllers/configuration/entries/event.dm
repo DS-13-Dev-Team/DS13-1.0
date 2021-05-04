@@ -3,42 +3,6 @@
 /datum/config_entry/number/expected_round_length
     config_entry_value = 3 * 60 * 60 * 10 //3 hours
 
-//If the first delay has a custom start time
-//No custom time, no custom time, between 80 to 100 minutes respectively.
-
-/datum/config_entry/keyed_list/event_first_run
-    key_mode = KEY_MODE_TYPE
-    value_mode = VALUE_MODE_NUM
-    config_entry_value = list(
-        EVENT_LEVEL_MUNDANE = null, 	
-        EVENT_LEVEL_MODERATE = null,	
-        EVENT_LEVEL_MAJOR = list("lower" = 48000, "upper" = 60000)
-        )
-
-//The lowest delay until next event
-//10, 30, 50 minutes respectively
-
-/datum/config_entry/keyed_list/event_delay_lower
-    key_mode = KEY_MODE_TYPE
-    value_mode = VALUE_MODE_NUM
-    config_entry_value = list(
-        EVENT_LEVEL_MUNDANE = 6000,
-    	EVENT_LEVEL_MODERATE = 18000,
-    	EVENT_LEVEL_MAJOR = 30000
-    )
-
-//The upper delay until next event
-//15, 45, 70 minutes respectively
-
-/datum/config_entry/keyed_list/event_delay_upper
-    key_mode = KEY_MODE_TYPE
-    value_mode = VALUE_MODE_NUM
-    config_entry_value = list(
-        EVENT_LEVEL_MUNDANE = 9000,
-    	EVENT_LEVEL_MODERATE = 27000,
-    	EVENT_LEVEL_MAJOR = 42000
-    )
-
 /datum/config_entry/flag/aliens_allowed
 
 /datum/config_entry/flag/alien_eggs_allowed
