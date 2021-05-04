@@ -99,13 +99,8 @@ var/global/datum/controller/gameticker/ticker
 	else
 		src.hide_mode = 0
 
-	if((master_mode=="random") || (master_mode=="secret"))
-		if(!runnable_modes.len)
-			current_state = GAME_STATE_PREGAME
-			Master.SetRunLevel(RUNLEVEL_LOBBY)
-			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
-
-			return FALSE
+	var/list/runnable_modes = config.get_runnable_modes()
+	if(master_mode=="secret")
 		if(secret_force_mode != "secret")
 			src.mode = config.pick_mode(secret_force_mode)
 		if(!src.mode)
@@ -138,14 +133,6 @@ var/global/datum/controller/gameticker/ticker
 
 	if(hide_mode)
 		to_world("<B>The current game mode is - Secret!</B>")
-
-		if(runnable_modes.len)
-			var/list/tmpmodes = new
-			for (var/datum/game_mode/M in runnable_modes)
-				tmpmodes+=M.name
-			tmpmodes = sortList(tmpmodes)
-			if(tmpmodes.len)
-				to_world("<B>Possibilities:</B> [english_list(tmpmodes)]")
 
 	else
 		src.mode.announce()
