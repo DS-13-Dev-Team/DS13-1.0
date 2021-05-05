@@ -99,7 +99,6 @@ var/global/datum/controller/gameticker/ticker
 	else
 		src.hide_mode = 0
 
-	var/list/runnable_modes = config.get_runnable_modes()
 	if(master_mode=="secret")
 		if(secret_force_mode != "secret")
 			src.mode = config.pick_mode(secret_force_mode)
