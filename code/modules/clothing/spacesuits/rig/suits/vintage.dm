@@ -32,3 +32,26 @@
 
 /obj/item/clothing/head/helmet/space/rig/vintage
 	name = "hood"
+
+/obj/item/weapon/rig/vintage/heavy
+	name = "Heavy Duty Vintage Suit"
+	desc = "The Heavy Vintage RIG is used in the most hazardous engineering operations aboard CEC vessels. Its heavier armor plating can withstand more blunt damage than most CEC suits, and can withstand radiation just as well. As working conditions on CEC ships have improved, this RIG has been discontinued, but some heavy variants can still be found on old planet crackers."
+	icon_state = "vintage_suit"
+	armor = list(melee = 72, bullet = 77, laser = 77, energy = 28, bomb = 99, bio = 110, rad = 77)
+
+	chest_type = /obj/item/clothing/suit/space/rig/vintage/heavy
+	helm_type =  /obj/item/clothing/head/helmet/space/rig/vintage/heavy
+	boot_type =  /obj/item/clothing/shoes/magboots/rig/vintage/heavy
+	glove_type = /obj/item/clothing/gloves/rig/vintage/heavy
+
+/obj/item/clothing/suit/space/rig/vintage/heavy
+	name = "suit"
+
+/obj/item/clothing/gloves/rig/vintage/heavy
+	name = "gloves"
+
+/obj/item/clothing/shoes/magboots/rig/vintage/heavy
+	name = "shoes"
+
+/obj/item/clothing/head/helmet/space/rig/vintage/heavy
+	name = "hood"
