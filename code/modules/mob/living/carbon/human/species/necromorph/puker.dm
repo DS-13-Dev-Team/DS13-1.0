@@ -1,4 +1,5 @@
 #define PUKER_SNAPSHOT_RANGE	6
+#define PUKER_ACID_SHOT_COOLDOWN (4 SECONDS)
 /datum/species/necromorph/puker
 	name = SPECIES_NECROMORPH_PUKER
 	name_plural = "pukers"
@@ -90,7 +91,7 @@ All of your abilities douse the victims in acid, which slows their movement spee
 
 #define PUKER_SNAP_DESC	"<h2>Snapshot:</h2><br>\
 <h3>Hotkey: Middle Click </h3><br>\
-<h3>Cooldown: 3 seconds</h3><br>\
+<h3>Cooldown: [PUKER_ACID_SHOT_COOLDOWN/10] seconds (shared with Long Shot)</h3><br>\
 Fires an instant autoaimed shot at a target within a 6 tile range, dealing 17.5 burn damage on hit. <br>\
 In addition, it douses the victim in acid, dealing up to 17.5 additional burn damage over time <br>\
 <br>\
@@ -100,6 +101,7 @@ Snapshot requires no manual aiming at all, and is thusly great to use in the mid
 
 #define PUKER_LONGSHOT_DESC "<h2>Long Shot:</h2><br>\
 <h3>Hotkey: Alt+Click</h3><br>\
+<h3>Cooldown: [PUKER_ACID_SHOT_COOLDOWN/10] seconds (shared with Snapshot)</h3><br>\
 After a half-second windup, Fires a long ranged unguided bolt of acid, dealing 35 burn damage on hit<br>\
 In addition, it douses the victim in acid, dealing up to 35 additional burn damage over time <br>\
 Long shot is powerful and has no cooldown, but is easily dodged<br>\
@@ -166,7 +168,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 		return FALSE
 
 	face_atom(A)
-	.= shoot_ability(/datum/extension/shoot/snapshot, A , /obj/item/projectile/bullet/acid/puker_snap, accuracy = 50, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = 1 SECOND, cooldown = 3 SECONDS)
+	.= shoot_ability(/datum/extension/shoot/acid_shot/snapshot, A , /obj/item/projectile/bullet/acid/puker_snap, accuracy = 50, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = 1 SECOND, cooldown = 3 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
@@ -181,7 +183,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	set desc = "A powerful projectile for longrange shooting. HK: Alt+Click"
 
 	face_atom(A)
-	.= shoot_ability(/datum/extension/shoot/longshot, A , /obj/item/projectile/bullet/acid/puker_long, accuracy = 50, dispersion = 0, num = 1, windup_time = 0.5 SECONDS, fire_sound = null, nomove = 1 SECOND, cooldown = 1 SECONDS)
+	.= shoot_ability(/datum/extension/shoot/acid_shot/long_shot, A , /obj/item/projectile/bullet/acid/puker_long, accuracy = 50, dispersion = 0, num = 1, windup_time = 0.5 SECONDS, fire_sound = null, nomove = 1 SECOND, cooldown = 1 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 

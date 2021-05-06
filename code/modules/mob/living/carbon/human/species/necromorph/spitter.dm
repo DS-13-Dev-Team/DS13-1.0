@@ -1,4 +1,5 @@
 #define SPITTER_SNAPSHOT_RANGE	5
+#define SPITTER_ACID_SHOT_COOLDOWN (4 SECONDS)
 /datum/species/necromorph/slasher/spitter
 	name = SPECIES_NECROMORPH_SPITTER
 	name_plural = "Spitters"
@@ -83,7 +84,7 @@ All of your abilities douse the victims in acid, which slows their movement spee
 
 #define SPITTER_SNAP_DESC	"<h2>Snapshot:</h2><br>\
 <h3>Hotkey: Middle Click </h3><br>\
-<h3>Cooldown: 3 seconds</h3><br>\
+<h3>Cooldown: [SPITTER_ACID_SHOT_COOLDOWN/10] seconds (shared with Long Shot)</h3><br>\
 Fires an instant autoaimed shot at a target within a 5 tile range, dealing 10 burn damage on hit. <br>\
 In addition, it douses the victim in acid, dealing up to 10 additional burn damage over time <br>\
 <br>\
@@ -92,9 +93,10 @@ Snapshot requires no manual aiming at all, and is thusly great to use in the mid
 
 #define SPITTER_LONGSHOT_DESC "<h2>Long Shot:</h2><br>\
 <h3>Hotkey: Alt+Click</h3><br>\
+<h3>Cooldown: [SPITTER_ACID_SHOT_COOLDOWN/10] seconds (shared with Snapshot)</h3><br>\
 After a half-second windup, Fires a long ranged unguided bolt of acid, dealing 20 burn damage on hit<br>\
 In addition, it douses the victim in acid, dealing up to 20 additional burn damage over time <br>\
-Long shot is powerful and has no cooldown, but is easily dodged<br>\
+Long shot is powerful, but is easily dodged<br>\
 
 Best used for harassment, skirmishing and initiating fights from afar against unwary targets"
 
@@ -130,7 +132,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 		return FALSE
 
 	face_atom(A)
-	.= shoot_ability(/datum/extension/shoot/snapshot, A , /obj/item/projectile/bullet/acid/spitter_snap, accuracy = 50, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = 1 SECOND, cooldown = 3 SECONDS)
+	. = shoot_ability(/datum/extension/shoot/acid_shot/snapshot, A , /obj/item/projectile/bullet/acid/spitter_snap, accuracy = 50, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = 1 SECOND, cooldown = SPITTER_ACID_SHOT_COOLDOWN)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
@@ -145,19 +147,19 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 	set desc = "A moderate-strength projectile for longrange shooting. HK: Alt+Click"
 
 	face_atom(A)
-	.= shoot_ability(/datum/extension/shoot/longshot, A , /obj/item/projectile/bullet/acid/spitter_long, accuracy = 50, dispersion = 0, num = 1, windup_time = 0.5 SECONDS, fire_sound = null, nomove = 1 SECOND, cooldown = 1 SECONDS)
+	. = shoot_ability(/datum/extension/shoot/acid_shot/long_shot, A , /obj/item/projectile/bullet/acid/spitter_long, accuracy = 50, dispersion = 0, num = 1, windup_time = 0.5 SECONDS, fire_sound = null, nomove = 1 SECOND, cooldown = SPITTER_ACID_SHOT_COOLDOWN)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
 
 //Shoot extension subtype. This just needs to exist so it has its own cooldown and name.
-/datum/extension/shoot/snapshot
-	name = "Snapshot"
-	base_type = /datum/extension/shoot/snapshot
-
-/datum/extension/shoot/longshot
+/datum/extension/shoot/acid_shot/long_shot
 	name = "Long Shot"
-	base_type = /datum/extension/shoot/longshot
+	base_type = /datum/extension/shoot/acid_shot
+
+/datum/extension/shoot/acid_shot/snapshot
+	name = "Snapshot"
+	base_type = /datum/extension/shoot/acid_shot
 /*
 	Acid projectiles deal total damage equal to 100-200% of the damage value written here. So write in a value for half of what it should actually do
 	On impact, the damage is applied immediately as burn, and the victim is doused in enough acid to deal that same amount of damage again over time.

@@ -192,18 +192,22 @@
 /***********************
 	Safety Checks
 ************************/
-//Access Proc
-/atom/proc/can_shoot(var/error_messages = TRUE, var/subtype = /datum/extension/shoot)
+/**
+ * Access Proc
+ *
+ * subtype should just be a typepath, it is casted for the purpose of getting the shoot extension's initial var values
+ */
+/atom/proc/can_shoot(var/error_messages = TRUE, var/datum/extension/shoot/subtype = /datum/extension/shoot)
 	if (isliving(src))
 		var/mob/living/L = src
 		if (L.incapacitated())
 			return FALSE
 
-	var/datum/extension/shoot/E = get_extension(src, subtype)
+	var/datum/extension/shoot/E = get_extension(src, initial(subtype.base_type))
 	if(istype(E))
 		if (error_messages)
 			if (E.stopped_at)
-				to_chat(src, SPAN_NOTICE("[E.name] is cooling down. You can use it again in [E.get_cooldown_time() /10] seconds"))
+				to_chat(src, SPAN_NOTICE("[initial(subtype.name)] is cooling down. You can use it again in [E.get_cooldown_time() /10] seconds"))
 			else
 				to_chat(src, SPAN_NOTICE("You're already shooting"))
 		return FALSE
