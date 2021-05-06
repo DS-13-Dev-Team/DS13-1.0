@@ -97,6 +97,10 @@
 		if (tank.contamination > 0)
 			to_chat(user, span("danger", "The fuel contamination warning light is blinking!"))
 
+/obj/item/weapon/gun/spray/hydrazine_torch/has_ammo()
+	if(tank && tank.get_remaining_fuel() > 0)
+		return TRUE
+	return FALSE
 
 /obj/item/weapon/gun/spray/hydrazine_torch/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
 	.=..()
