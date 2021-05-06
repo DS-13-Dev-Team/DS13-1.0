@@ -124,27 +124,22 @@
 /obj/machinery/computer/asteroidcannon/proc/finish_repair_action(var/mob/living/user, var/obj/item/I)
 
 	//Effectiveness is measured in seconds of normal time taken off. Base 10
-	var/effectiveness = 5
-	world << "Effectiveness 1	[effectiveness]"
+	var/effectiveness = 3
 
 	//The quality of the tool matters
 	var/required_quality = current_repair_step["tool"]
 	var/quality = I.get_tool_quality(required_quality)
 	var/precision = I.get_tool_precision()	//Precision improves it too. 1 point of precision = 1% bonus
-	world << "Toolscore [quality] Pre: [precision]"
 	var/effective_quality = quality * (1 + (precision*0.01))
-	effective_quality *= 0.25 //Finally, we use a quarter of this total
+	effective_quality *= 0.15 //Finally, we use 15% of this total
 	effectiveness += effective_quality
 
-	world << "Effectiveness 2	[effectiveness]"
 
 
 	//The user's stats also affect it
 	var/stat_modifier = user.get_skill_percentage(SKILL_ELECTRICAL)
-	world << "Electrical skill modififer [stat_modifier]"
 	effectiveness *= 1 + (stat_modifier*0.5)	//Up to a 50% bonus at max skill
 
-	world << "Effectiveness 3	[effectiveness]"
 
 	//Okay we are done, now lets add progress
 	progress += progress_per_tick * effectiveness
