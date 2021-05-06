@@ -70,7 +70,7 @@
 	allowed_spawns = list(SPAWNPOINT_CRYO, SPAWNPOINT_DORM, SPAWNPOINT_MAINT)
 	evac_controller_type = /datum/evacuation_controller/starship
 
-	crew_objectives = list()
+	crew_objectives = list(/datum/crew_objective/ads)
 
 	lobby_icon = 'maps/DeadSpace/icons/lobby.dmi'
 	lobby_screens = list("lobby1")

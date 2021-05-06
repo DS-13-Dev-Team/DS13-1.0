@@ -117,6 +117,34 @@
 
 	return FALSE
 
+/proc/area_contains_crew(var/atom/A)
+	var/area/T = (isarea(A) ? A : get_area(A))
+	for (var/mob/living/L in T.contents)
+		if (L.stat != DEAD && L.is_crew_aligned())
+			return TRUE
+
+	return FALSE
+
+//Makes all the entrypoints to an area indestructible
+/area/proc/seal()
+	for (var/turf/T in contents)
+		if (isfloor(T))
+			T.make_indestructible()
+
+		else if (iswall(T))
+			T.make_indestructible()
+
+
+
+//Is this turf adjacent to another area?
+/atom/proc/is_on_area_border()
+	var/area/our_area = get_area(src)
+	for (var/turf/T in orange(1, get_turf(src)))
+		if (T.loc != our_area)
+			return TRUE
+
+	return FALSE
+
 GLOBAL_LIST_INIT(is_station_but_not_space_or_shuttle_area, list(/proc/is_station_area, /proc/is_not_space_area, /proc/is_not_shuttle_area))
 
 GLOBAL_LIST_INIT(is_contact_but_not_space_or_shuttle_area, list(/proc/is_contact_area, /proc/is_not_space_area, /proc/is_not_shuttle_area))

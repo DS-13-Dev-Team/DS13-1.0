@@ -1,4 +1,4 @@
-GLOBAL_DATUM(asteroid_cannon, /obj/structure/asteroidcannon)
+GLOBAL_DATUM(asteroidcannon, /obj/structure/asteroidcannon)
 
 #define CANNON_FORWARD_DIR	EAST
 #define CANNON_FIRING_ARC 55
@@ -17,6 +17,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 /obj/structure/asteroidcannon
 	name = "Asteroid Defense System"
 	desc = "A huge machine that shoots down oncoming asteroids."
+	description_antag = "You could sabotage this with some precisely modded wirecutters and some insulated gloves. Electrical skill would help too."
 	icon = 'icons/obj/asteroidcannon_centred.dmi'
 	icon_state = "asteroidgun"
 	bound_height = 128
@@ -37,12 +38,15 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	var/next_shot = 0
 	var/fire_delay = 0.50 SECONDS
 	var/operational = TRUE //Is it online?
-	var/reboot_step = 0
+
+
 	var/last_offline = 0 //When was it last taken offline? Used to spawn meteors when it's taken offline. Spite!
 	var/firing = FALSE	//Set true when user is holding down fire button
 	appearance_flags=KEEP_TOGETHER
 
 	var/datum/extension/asteroidcannon/fire_handler
+
+	var/obj/machinery/computer/asteroidcannon/console
 
 	//Rotation handling
 	var/datum/extension/rotate_facing/rotator
@@ -61,10 +65,10 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 
 /obj/structure/asteroidcannon/Initialize(mapload, d)
 	. = ..()
-	if(GLOB.asteroid_cannon)
+	if(GLOB.asteroidcannon)
 		message_admins("Duplicate asteroid cannon at [get_area(src)], [x], [y], [z] spawned!")
 		return INITIALIZE_HINT_QDEL
-	GLOB.asteroid_cannon = src
+	GLOB.asteroidcannon = src
 	forward_vector = Vector2.FromDir(forward_vector)
 	offset_vector = forward_vector * bullet_origin_offset
 	offset_vector.SelfMultiply(WORLD_ICON_SIZE)
@@ -98,19 +102,29 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 
 
 /obj/structure/asteroidcannon/attackby(obj/item/C, mob/user)
-	. = ..()
-	if(health < max_health)
-		if(isWelder(C))
-			if( C.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
-				to_chat(user, "<span class='notice'>You repair [src] with your welder...</span>")
-				health = CLAMP(health, 0, max_health)
+	//. = ..()
+	//Antags can sabotage the cannon
+	if (user.is_antagonist())
+
+		var/datum/crew_objective/CO = get_crew_objective(/datum/crew_objective/ads)
+		if (!CO.can_sabotage())
+			to_chat(user, SPAN_NOTICE("You've done enough, This will probably break down soon"))
+			return
+
+		if(C.has_quality(QUALITY_WIRE_CUTTING))
+			user.visible_message(SPAN_DANGER("[user] starts cutting cables under the [src]"))
+			if(C.use_tool(user, src, WORKTIME_SLOW, QUALITY_WIRE_CUTTING, FAILCHANCE_IMPOSSIBLE, required_stat = SKILL_ELECTRICAL))
+				to_chat(user, "<span class='notice'>You have carefully sabotaged the Asteroid Defense System, it will surely break down soon...</span>")
+				CO.sabotage()
 
 /obj/structure/asteroidcannon/take_damage(amount, damtype, user, used_weapon, bypass_resist)
 	return
 
-/obj/structure/asteroidcannon/proc/break_down()
-	operational = FALSE
-	reboot_step = 0
+/obj/structure/asteroidcannon/proc/sabotage()
+
+	var/datum/crew_objective/CO = get_crew_objective(/datum/crew_objective/ads)
+	CO.sabotage()
+
 	visible_message("<span class='warning'>[src] sparks wildly!</span>")
 	playsound(src, 'sound/effects/caution.ogg', 100, TRUE)
 	//sparks
@@ -118,6 +132,22 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	spark_system.set_up(5, 0, loc)
 	spark_system.start()
 	playsound(loc, "sparks", 50, 1)
+
+/obj/structure/asteroidcannon/proc/break_down()
+	operational = FALSE
+	visible_message("<span class='warning'>[src] sparks wildly!</span>")
+	playsound(src, 'sound/effects/caution.ogg', 100, TRUE)
+	//sparks
+	var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
+	spark_system.set_up(5, 0, loc)
+	spark_system.start()
+	playsound(loc, "sparks", 50, 1)
+
+/obj/structure/asteroidcannon/proc/finish_repair()
+	operational = TRUE
+	visible_message("<span class='warning'>[src] springs to life as the autotargeting reboots!</span>")
+	stop_gunning()
+	fire_handler.wake_up()
 
 /obj/structure/asteroidcannon/proc/is_operational()
 	return operational

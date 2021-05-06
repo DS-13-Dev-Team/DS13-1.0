@@ -6,7 +6,8 @@
 
 //Create an event for us and put it in the major event list
 /datum/crew_objective/proc/setup_event()
-	var/datum/event_meta/EM = new (EVENT_LEVEL_MAJOR, event_name = src.name, type = /datum/event/crew_objective, event_weight = src.weight, is_one_shot = src.oneshot, objective_type = src.type)
+	EM = new (EVENT_LEVEL_MAJOR, event_name = src.name, type = /datum/event/crew_objective, event_weight = src.weight, is_one_shot = src.oneshot, objective_type = src.type)
+	EM.name = src.name
 	var/datum/event_container/EC = SSevent.event_containers[EVENT_LEVEL_MAJOR]
 	EC.available_events |= EM
 
@@ -46,3 +47,6 @@
 		CO.fade()
 
 	.=..()
+
+
+

@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(event)
 	name = "Event Manager"
-	wait = 2 SECONDS
+	wait = EVENT_PROCESS_INTERVAL
 	priority = SS_PRIORITY_EVENT
 
 	var/tmp/list/processing_events = list()
@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(event)
 		var/list/datum/event_container/EC = event_containers[pos]
 		EC.process()
 		pos++
-		
+
 		if (MC_TICK_CHECK)
 			return
 
@@ -116,7 +116,7 @@ SUBSYSTEM_DEF(event)
 
 		to_world(message)
 
-//Event manager UI 
+//Event manager UI
 /datum/controller/subsystem/event/proc/GetInteractWindow()
 	var/html = "<A align='right' href='?src=\ref[src];refresh=1'>Refresh</A>"
 	html += "<A align='right' href='?src=\ref[src];pause_all=[!config.allow_random_events]'>Pause All - [config.allow_random_events ? "Pause" : "Resume"]</A>"
@@ -332,8 +332,15 @@ SUBSYSTEM_DEF(event)
 		return
 
 	if(ispath(type))
-		new type(new /datum/event_meta(EVENT_LEVEL_MAJOR))
-		message_admins("[key_name_admin(usr)] has triggered an event. ([type])", 1)
+		trigger_event(type, EVENT_LEVEL_MAJOR, mob)
+
+
+proc/trigger_event(var/type, var/severity = EVENT_LEVEL_MAJOR, var/user = null)
+
+	if(ispath(type))
+		new type(new /datum/event_meta(severity))
+		if (user)
+			message_admins("[key_name_admin(usr)] has triggered an event. ([type])", 1)
 
 /client/proc/event_manager_panel()
 	set name = "Event Manager Panel"

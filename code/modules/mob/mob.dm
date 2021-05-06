@@ -51,6 +51,11 @@
 	START_PROCESSING(SSmobs, src)
 	update_verbs()
 
+	//Call Entered on the area we're created in
+	var/area/A = get_area(src)
+	if (A)
+		A.Entered(src)
+
 /mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 	if(!client)	return
 

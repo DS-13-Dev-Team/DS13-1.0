@@ -43,11 +43,13 @@
 	.=..()
 	if (!dummy)
 		if (SSnecromorph.marker)
-			SSnecromorph.marker.add_spawnpoint(src)
+			register_spawnpoint()
+
 
 		set_light(1, 1, 7, 2, COLOR_NECRO_YELLOW)
 
-
+/obj/structure/corruption_node/nest/proc/register_spawnpoint()
+	SSnecromorph.marker.add_spawnpoint(src)
 
 /obj/structure/corruption_node/nest/Destroy()
 
@@ -253,6 +255,24 @@
 	it is indestructible, doesnt require corruption and cannot be upgraded
 */
 /obj/structure/corruption_node/nest/event_spawn
+	name = "Spawnpoint"
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
 	degen = 0	//No decay without corruption
 	upgrade_multipliers = list()	//Prevent upgrading
+	var/datum/crew_objective/event
+	visualnet_range = 30
+
+/obj/structure/corruption_node/nest/event_spawn/New(var/atom/newloc, var/dummy, var/datum/crew_objective/event)
+	src.event = event
+	.=..()
+
+/obj/structure/corruption_node/nest/event_spawn/Initialize()
+	GLOB.necrovision.add_source(src, TRUE, TRUE)
+
+/obj/structure/corruption_node/nest/event_spawn/register_spawnpoint()
+	//name = event.name
+	SSnecromorph.marker.add_spawnpoint(src, event)
+
+/obj/structure/corruption_node/nest/event_spawn/get_visualnet_tiles(var/datum/visualnet/network)
+
+	return trange(visualnet_range, src)

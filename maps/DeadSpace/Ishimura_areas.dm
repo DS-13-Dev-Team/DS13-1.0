@@ -63,15 +63,6 @@
 /area/ishimura/eva/prep/ADS
 	name = "\improper ADS Airlock Tank Bay"
 
-/area/ishimura/eva/solar
-	name = "\improper Solar Control"
-
-/area/ishimura/eva/solar/port
-	name = "\improper Port Solar Array"
-
-/area/ishimura/eva/solar/starboard
-	name = "\improper Starboard Solar Array"
-
 /area/ishimura/eva/substation
 	name = "\improper EVA Deck Substation"
 	sound_env = SMALL_ENCLOSED
@@ -85,8 +76,48 @@
 	sound_env = SMALL_ENCLOSED
 
 
+/*
+	Areas of ishimura that are outdoors
+*/
+/area/ishimura/external
+	icon_state = "hull"
+	requires_power = 1
+	always_unpowered = 1
+	dynamic_lighting = 1
+	power_light = 0
+	power_equip = 0
+	power_environ = 0
+	has_gravity = 0
+	area_flags = AREA_FLAG_EXTERNAL
+	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
 
-//---------------------------------------------------UPPER--AREAS---------------------------------------------------//
+/area/ishimura/external/solar
+	name = "\improper Solar Control"
+	icon_state = "solar"
+
+/area/ishimura/external/solar/port
+	name = "\improper Port Solar Array"
+
+/area/ishimura/external/solar/starboard
+	name = "\improper Starboard Solar Array"
+
+//The channel area is cut in two for objective tracking purposes
+/area/ishimura/external/channel
+	name = "\improper Ishimura Spine, aft"
+	icon_state = "channel"
+
+/area/ishimura/external/channel/first
+	name = "\improper Ishimura Spine, aft"
+	icon_state = "channel"
+
+/area/ishimura/external/channel/second
+	name = "\improper Ishimura Spine, fore"
+	icon_state = "channel"
+
+/area/ishimura/external/hull
+	name = "\improper External Hull"
+
+//---------------------------------------------------MID DECK--AREAS---------------------------------------------------//
 /area/ishimura/upper
 	name = "\improper Upper Deck"
 
@@ -651,7 +682,7 @@ area/ishimura/upper/medical/bpc
 	name = "Escape Pod Nine"
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
-	
+
 /area/shuttle/escape_pod10/station
 	name = "Escape Pod Nine"
 	area_flags = AREA_FLAG_RAD_SHIELDED
