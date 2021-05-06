@@ -273,7 +273,6 @@
 
 //Spawnpoints
 /obj/machinery/marker/proc/add_spawnpoint(var/atom/source, var/datum/crew_objective/event)
-	world << "Shop adding spawnpoint [jumplink(source)] event [event]"
 	if (shop)
 		shop.possible_spawnpoints += new /datum/necrospawn(source, source.name, event)
 

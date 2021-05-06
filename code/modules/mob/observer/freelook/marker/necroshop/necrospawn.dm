@@ -16,7 +16,6 @@
 	name = _name
 
 	if (event)
-		world << "Event necrospawn made"
 		src.event = event
 		name = "Event: [event.name] | [name]"
 		color = event.color
