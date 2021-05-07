@@ -62,6 +62,177 @@
 	var/progress_interval = 5	//How often to call the in progress proc
 	var/last_resource_consumption
 
+
+/******************************
+	/* Tool Usage */
+*******************************/
+
+//Simple form ideal for basic use. That proc will return TRUE only when everything was done right, and FALSE if something went wrong, ot user was unlucky.
+//Editionaly, handle_failure proc will be called for a critical failure roll.
+/obj/proc/use_tool(var/mob/living/user, var/atom/target, var/base_time, var/required_quality, var/fail_chance, var/required_stat, var/instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/datum/callback/progress_proc, var/progress_proc_interval = 1 SECOND)
+	var/obj/item/weapon/tool/T
+	if (istool(src))
+		T = src
+		if (T.tool_in_use)
+			return FALSE
+		T.tool_in_use = TRUE
+
+	var/result = use_tool_extended(user, target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier, forced_sound, sound_repeat, progress_proc, progress_proc_interval)
+
+	if (T)
+		T.tool_in_use = FALSE
+
+	switch(result)
+		if(TOOL_USE_CANCEL)
+			return FALSE
+		if(TOOL_USE_FAIL)
+			handle_failure(user, target, required_stat = required_stat, required_quality = required_quality)	//We call it here because extended proc mean to be used only when you need to handle tool fail by yourself
+			return FALSE
+		if(TOOL_USE_SUCCESS)
+			return TRUE
+
+//Use this proc if you want to handle all types of failure yourself. It used in surgery, for example, to deal damage to patient.
+/obj/proc/use_tool_extended(var/mob/living/user, var/atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/datum/callback/progress_proc, var/progress_proc_interval = 1 SECOND)
+
+	var/obj/item/weapon/tool/T
+	if(istool(src))
+
+		T = src
+		T.last_tooluse = world.time
+
+	if (is_hot() >= HEAT_MOBIGNITE_THRESHOLD)
+		if (isliving(target))
+			var/mob/living/L = target
+			L.IgniteMob()
+
+	if(target.used_now)
+		user << SPAN_WARNING("[target.name] is used by someone. Wait for them to finish.")
+		return TOOL_USE_CANCEL
+
+
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.shock_stage >= 30)
+			user << SPAN_WARNING("Pain distracts you from your task.")
+			fail_chance += round(H.shock_stage/120 * 40)
+			base_time += round(H.shock_stage/120 * 40)
+
+
+	//Start time and time spent are used to calculate resource use
+	var/start_time = world.time
+	var/time_spent = 0
+
+	//Precalculate worktime here
+	var/time_to_finish = 0
+	if (base_time)
+		time_to_finish = base_time / (1 + (get_tool_quality(required_quality)/100))//TODO: Factor in bay skills here user.stats.getStat(required_stat)
+
+		//Workspeed var, can be improved by modifications
+		if (T && T.workspeed > 0)
+			time_to_finish /= T.workspeed
+
+	if((instant_finish_tier < get_tool_quality(required_quality)) || time_to_finish < 0)
+		time_to_finish = 0
+
+	if (T)
+		if(!T.check_tool_effects(user, time_to_finish))
+			return TOOL_USE_CANCEL
+
+	//Repeating sound code!
+	//A datum/repeating_sound is a little object we can use to make a sound repeat a few times
+	var/datum/repeating_sound/toolsound = null
+	if(forced_sound != NO_WORKSOUND)
+		var/volume = 70
+		var/extrarange = 0
+
+		if (T && T.silenced)
+			volume = 3
+			extrarange = -6
+
+		var/soundfile
+		if(forced_sound)
+			soundfile = forced_sound
+		else
+			soundfile = worksound
+
+		if (sound_repeat && time_to_finish)
+			//It will repeat roughly every 2.5 seconds until our tool finishes
+			toolsound = new/datum/repeating_sound(sound_repeat,time_to_finish,0.15, src, soundfile, volume, TRUE, extrarange)
+		else
+			playsound(src.loc, soundfile, volume, 1, extrarange)
+
+	//The we handle the doafter for the tool usage
+	if(time_to_finish)
+		target.used_now = TRUE
+
+		//Setup the periodic call to the progress proc, if one wasnt passed in to override it
+		if (!progress_proc && T)
+			progress_proc = CALLBACK(T, /obj/item/weapon/tool/proc/work_in_progress)
+
+		if (!progress_proc_interval)
+			progress_proc_interval = T.progress_interval
+
+		if(!do_after(user, time_to_finish, target, proc_to_call = progress_proc, proc_interval = progress_proc_interval))
+			//If the doafter fails
+			user << SPAN_WARNING("You need to stand still to finish the task properly!")
+			target.used_now = FALSE
+			time_spent = world.time - max(start_time, T ? T.last_resource_consumption : 0) //We failed, spent only part of the time working
+			if (T)
+				T.consume_resources(time_spent, user)
+				T.last_tooluse = world.time
+			if (toolsound)
+				//We abort the repeating sound.
+				//Stop function will delete itself too
+				toolsound.stop()
+				toolsound = null
+			return TOOL_USE_CANCEL
+		else
+			if (T)
+				T.last_tooluse = world.time
+
+			target.used_now = FALSE
+
+	//If we get here the operation finished correctly, we spent the full time working
+	time_spent = world.time - start_time
+	if (T)
+		time_spent = world.time - max(start_time, T.last_resource_consumption)
+		T.consume_resources(time_spent, user)
+
+	//Safe cleanup
+	if (toolsound)
+		toolsound.stop()
+		toolsound = null
+
+	var/stat_modifer = user.get_skill_percentage_bonus(required_stat)
+
+
+	fail_chance = fail_chance - get_tool_quality(required_quality) - stat_modifer
+
+	//Unreliability increases failure rates, and precision reduces it
+	if (T)
+		fail_chance += T.unreliability
+		fail_chance -= T.precision
+
+	if (fail_chance < 0)
+		fail_chance = 0
+
+	if(prob(fail_chance))
+		user << SPAN_WARNING("You failed to finish your task with [src.name]! There was a [fail_chance]% chance to screw this up.")
+		return TOOL_USE_FAIL
+
+	return TOOL_USE_SUCCESS
+
+
+
+
+
+
+
+
+
+
+
 /******************************
 	/* Core Procs */
 *******************************/
@@ -224,165 +395,7 @@
 /obj/item/weapon/tool/get_storage_cost()
 	return (..() + extra_bulk)
 
-/******************************
-	/* Tool Usage */
-*******************************/
 
-//Simple form ideal for basic use. That proc will return TRUE only when everything was done right, and FALSE if something went wrong, ot user was unlucky.
-//Editionaly, handle_failure proc will be called for a critical failure roll.
-/obj/proc/use_tool(var/mob/living/user, var/atom/target, var/base_time, var/required_quality, var/fail_chance, var/required_stat, var/instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/datum/callback/progress_proc, var/progress_proc_interval = 1 SECOND)
-	var/obj/item/weapon/tool/T
-	if (istool(src))
-		T = src
-		if (T.tool_in_use)
-			return FALSE
-		T.tool_in_use = TRUE
-
-	var/result = use_tool_extended(user, target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier, forced_sound, sound_repeat, progress_proc, progress_proc_interval)
-
-	if (T)
-		T.tool_in_use = FALSE
-
-	switch(result)
-		if(TOOL_USE_CANCEL)
-			return FALSE
-		if(TOOL_USE_FAIL)
-			handle_failure(user, target, required_stat = required_stat, required_quality = required_quality)	//We call it here because extended proc mean to be used only when you need to handle tool fail by yourself
-			return FALSE
-		if(TOOL_USE_SUCCESS)
-			return TRUE
-
-//Use this proc if you want to handle all types of failure yourself. It used in surgery, for example, to deal damage to patient.
-/obj/proc/use_tool_extended(var/mob/living/user, var/atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/datum/callback/progress_proc, var/progress_proc_interval = 1 SECOND)
-
-	var/obj/item/weapon/tool/T
-	if(istool(src))
-
-		T = src
-		T.last_tooluse = world.time
-
-	if (is_hot() >= HEAT_MOBIGNITE_THRESHOLD)
-		if (isliving(target))
-			var/mob/living/L = target
-			L.IgniteMob()
-
-	if(target.used_now)
-		user << SPAN_WARNING("[target.name] is used by someone. Wait for them to finish.")
-		return TOOL_USE_CANCEL
-
-
-
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.shock_stage >= 30)
-			user << SPAN_WARNING("Pain distracts you from your task.")
-			fail_chance += round(H.shock_stage/120 * 40)
-			base_time += round(H.shock_stage/120 * 40)
-
-
-	//Start time and time spent are used to calculate resource use
-	var/start_time = world.time
-	var/time_spent = 0
-
-	//Precalculate worktime here
-	var/time_to_finish = 0
-	if (base_time)
-		time_to_finish = base_time / (1 + (get_tool_quality(required_quality)/100))//TODO: Factor in bay skills here user.stats.getStat(required_stat)
-
-		//Workspeed var, can be improved by modifications
-		if (T && T.workspeed > 0)
-			time_to_finish /= T.workspeed
-
-	if((instant_finish_tier < get_tool_quality(required_quality)) || time_to_finish < 0)
-		time_to_finish = 0
-
-	if (T)
-		if(!T.check_tool_effects(user, time_to_finish))
-			return TOOL_USE_CANCEL
-
-	//Repeating sound code!
-	//A datum/repeating_sound is a little object we can use to make a sound repeat a few times
-	var/datum/repeating_sound/toolsound = null
-	if(forced_sound != NO_WORKSOUND)
-		var/volume = 70
-		var/extrarange = 0
-
-		if (T && T.silenced)
-			volume = 3
-			extrarange = -6
-
-		var/soundfile
-		if(forced_sound)
-			soundfile = forced_sound
-		else
-			soundfile = worksound
-
-		if (sound_repeat && time_to_finish)
-			//It will repeat roughly every 2.5 seconds until our tool finishes
-			toolsound = new/datum/repeating_sound(sound_repeat,time_to_finish,0.15, src, soundfile, volume, TRUE, extrarange)
-		else
-			playsound(src.loc, soundfile, volume, 1, extrarange)
-
-	//The we handle the doafter for the tool usage
-	if(time_to_finish)
-		target.used_now = TRUE
-
-		//Setup the periodic call to the progress proc, if one wasnt passed in to override it
-		if (!progress_proc)
-			progress_proc = CALLBACK(src, /obj/item/weapon/tool/proc/work_in_progress)
-
-		if (!progress_proc_interval)
-			progress_proc_interval = T.progress_interval
-
-		if(!do_after(user, time_to_finish, target, proc_to_call = progress_proc, proc_interval = progress_proc_interval))
-			//If the doafter fails
-			user << SPAN_WARNING("You need to stand still to finish the task properly!")
-			target.used_now = FALSE
-			time_spent = world.time - max(start_time, T ? T.last_resource_consumption : 0) //We failed, spent only part of the time working
-			if (T)
-				T.consume_resources(time_spent, user)
-				T.last_tooluse = world.time
-			if (toolsound)
-				//We abort the repeating sound.
-				//Stop function will delete itself too
-				toolsound.stop()
-				toolsound = null
-			return TOOL_USE_CANCEL
-		else
-			if (T)
-				T.last_tooluse = world.time
-
-			target.used_now = FALSE
-
-	//If we get here the operation finished correctly, we spent the full time working
-	time_spent = world.time - start_time
-	if (T)
-		time_spent = world.time - max(start_time, T.last_resource_consumption)
-		T.consume_resources(time_spent, user)
-
-	//Safe cleanup
-	if (toolsound)
-		toolsound.stop()
-		toolsound = null
-
-	var/stat_modifer = user.get_skill_percentage_bonus(required_stat)
-
-
-	fail_chance = fail_chance - get_tool_quality(required_quality) - stat_modifer
-
-	//Unreliability increases failure rates, and precision reduces it
-	if (T)
-		fail_chance += T.unreliability
-		fail_chance -= T.precision
-
-	if (fail_chance < 0)
-		fail_chance = 0
-
-	if(prob(fail_chance))
-		user << SPAN_WARNING("You failed to finish your task with [src.name]! There was a [fail_chance]% chance to screw this up.")
-		return TOOL_USE_FAIL
-
-	return TOOL_USE_SUCCESS
 
 
 
@@ -634,8 +647,12 @@
 	return return_quality
 
 
+/obj/proc/get_tool_precision()
+	return 0
 
 
+/obj/item/weapon/tool/get_tool_precision()
+	return precision
 
 
 

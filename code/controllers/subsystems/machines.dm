@@ -39,6 +39,8 @@ SUBSYSTEM_DEF(machines)
 	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
+	wait = MACHINE_PROCESS_INTERVAL
+
 	var/current_step = SSMACHINES_PIPENETS
 
 	var/cost_pipenets      = 0

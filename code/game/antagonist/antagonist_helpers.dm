@@ -80,3 +80,11 @@
 	return antag_candidates
 
 /proc/get_antagonist(var/id)
+
+
+
+
+
+
+/mob/proc/is_antagonist()
+	return (mind && player_is_antag(mind))
