@@ -308,7 +308,7 @@
 			return FALSE
 
 	if (consume_fuel(required_fuel))
-		return .=..()
+		return ..()
 
 	return FALSE
 
