@@ -65,3 +65,11 @@
 	var/datum/effect/effect/system/smoke_spread/S = new/datum/effect/effect/system/smoke_spread()
 	S.set_up(5,0,location,null)
 	S.start()
+
+
+/proc/explosion_fx(var/atom/source)
+	var/turf/T = get_turf(source)
+	var/datum/effect/system/explosion/E = new/datum/effect/system/explosion()
+	E.set_up(T, FALSE)
+	E.start()
+	QDEL_IN(E, 2 SECOND)

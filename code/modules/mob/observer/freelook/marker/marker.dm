@@ -272,9 +272,9 @@
 	return trange(visualnet_range, src)
 
 //Spawnpoints
-/obj/machinery/marker/proc/add_spawnpoint(var/atom/source)
+/obj/machinery/marker/proc/add_spawnpoint(var/atom/source, var/datum/crew_objective/event)
 	if (shop)
-		shop.possible_spawnpoints += new /datum/necrospawn(source, source.name)
+		shop.possible_spawnpoints += new /datum/necrospawn(source, source.name, event)
 
 /obj/machinery/marker/proc/remove_spawnpoint(var/atom/source)
 	if (shop)

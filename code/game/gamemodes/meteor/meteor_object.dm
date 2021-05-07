@@ -14,7 +14,6 @@ GLOBAL_LIST_EMPTY(asteroids)
 ///////////////////////
 //The meteor effect
 //////////////////////
-
 /obj/effect/meteor
 	name = "the concept of meteor"
 	desc = "You should probably run instead of gawking at this."
@@ -66,8 +65,8 @@ GLOBAL_LIST_EMPTY(asteroids)
 
 /proc/register_asteroid(var/obj/effect/meteor/M)
 	GLOB.asteroids += M
-	if (GLOB.asteroid_cannon)
-		GLOB.asteroid_cannon.fire_handler.wake_up()
+	if (GLOB.asteroidcannon)
+		GLOB.asteroidcannon.fire_handler.wake_up()
 
 /obj/effect/meteor/Destroy()
 	GLOB.asteroids -= src
@@ -198,9 +197,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	Called when a meteor is harmlessly destroyed by cannon fire
 */
 /obj/effect/meteor/proc/break_apart()
-	var/datum/effect/system/explosion/E = new/datum/effect/system/explosion()
-	E.set_up(loc, FALSE)
-	E.start()
+	explosion_fx(src)
 	//make_debris()	//No debris to prevent spam, because things will be miles away when shot down and we dont want ore floating in space forever, ignored
 	if (!QDELETED(src))
 		qdel(src)
