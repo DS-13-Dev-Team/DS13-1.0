@@ -328,7 +328,7 @@
 	var/list/prone_overlay_offset = list(0, 0) // amount to shift overlays when lying
 	var/job_skill_buffs = list()				// A list containing jobs (/datum/job), with values the extra points that job recieves.
 
-
+	var/disarm_cooldown = 0
 
 /*
 These are all the things that can be adjusted for equipping stuff and

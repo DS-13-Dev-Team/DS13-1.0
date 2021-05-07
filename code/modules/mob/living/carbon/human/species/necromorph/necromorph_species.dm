@@ -169,6 +169,8 @@
 	//HUD Handling
 	hud_type = /datum/hud_data/necromorph
 
+	disarm_cooldown = 10
+
 /datum/species/necromorph/psychosis_vulnerable()
 	return FALSE
 

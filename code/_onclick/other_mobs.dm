@@ -8,10 +8,18 @@
 
 	Otherwise pretty standard.
 */
+/mob/living/carbon/human
+	var/last_disarm
+
 /mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity)
 
 	if(!..())
 		return
+
+	if(a_intent == I_DISARM)
+		if(world.time < last_disarm + species.disarm_cooldown)
+			return
+		last_disarm = world.time
 
 	// Special glove functions:
 	// If the gloves do anything, have them return 1 to stop
@@ -52,7 +60,7 @@
 
 	if(!gloves && !mutations.len) return
 	var/obj/item/clothing/gloves/G = gloves
-	if((LASER in mutations) && a_intent == I_HURT)
+	if((LASEREYES in mutations) && a_intent == I_HURT)
 		LaserEyes(A) // moved into a proc below
 
 	else if(istype(G) && G.Touch(A,0)) // for magic gloves
