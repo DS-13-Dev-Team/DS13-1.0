@@ -335,7 +335,6 @@ SUBSYSTEM_DEF(air)
 			merge(A.zone,B.zone)
 			return
 
-
 	var/a_to_b = get_dir(A,B)
 	var/b_to_a = get_dir(B,A)
 

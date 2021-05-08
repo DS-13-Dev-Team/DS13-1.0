@@ -44,6 +44,9 @@
 /*
 	Pick helpers
 */
+/area/proc/get_clear_turf()
+	return clear_turf_in_list(get_area_turfs(src), ignore_mobs = TRUE)
+
 /proc/pick_subarea_turf(var/areatype, var/list/predicates)
 	var/list/turfs = get_subarea_turfs(areatype, predicates)
 	if(turfs && turfs.len)
@@ -64,6 +67,8 @@
 	if(!A)
 		return
 	return pick_area_turf(A, turf_predicates)
+
+
 
 /*
 	Predicate Helpers
@@ -108,6 +113,34 @@
 	var/area/T = get_area(A)
 	for (var/mob/living/L in T)
 		if (L.stat != DEAD && L.is_necromorph())
+			return TRUE
+
+	return FALSE
+
+/proc/area_contains_crew(var/atom/A)
+	var/area/T = (isarea(A) ? A : get_area(A))
+	for (var/mob/living/L in T.contents)
+		if (L.stat != DEAD && L.is_crew_aligned())
+			return TRUE
+
+	return FALSE
+
+//Makes all the entrypoints to an area indestructible
+/area/proc/seal()
+	for (var/turf/T in contents)
+		if (isfloor(T))
+			T.make_indestructible()
+
+		else if (iswall(T))
+			T.make_indestructible()
+
+
+
+//Is this turf adjacent to another area?
+/atom/proc/is_on_area_border()
+	var/area/our_area = get_area(src)
+	for (var/turf/T in orange(1, get_turf(src)))
+		if (T.loc != our_area)
 			return TRUE
 
 	return FALSE

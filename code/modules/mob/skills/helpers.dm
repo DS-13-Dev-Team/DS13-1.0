@@ -56,3 +56,18 @@
 
 	//10% per point
 	return points*10
+	
+	
+//This returns a value in the range 0..1 representing how much of this skill we know
+/mob/proc/get_skill_percentage(var/skill_path)
+	//This gives a value in the range 1-5
+	var/points = get_skill_value(skill_path)
+	
+	if (!isnum(points))
+		return 0
+
+	//Move it to a 0 - 4 range
+	points--
+	
+	//25% per point
+	return points*0.25

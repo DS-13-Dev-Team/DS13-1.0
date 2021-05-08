@@ -46,9 +46,26 @@
 	icon_base = "bathroom"
 	build_type = /obj/item/stack/tile/bathroom
 
+/decl/flooring/complex/tiling_ds
+	icon = 'icons/turf/floors_ds13.dmi'
 
+/decl/flooring/complex/tiling_ds/rivets
+	name = "riveted plating"
+	desc = "It keeps the ship together."
+	icon_base = "rivets"
+	build_type = /obj/item/stack/tile/rivets
+	has_base_range = 4
 
+/decl/flooring/complex/tiling_ds/slashed
+	name = "slashed plating"
+	desc = "Robust plating to reinforce the edges of a room."
+	icon_base = "slashed"
+	build_type = /obj/item/stack/tile/slashed
+	has_base_range = 3
 
+/decl/flooring/complex/tiling_ds/slashed/odd
+	icon_base = "slashed_odd"
+	build_type = /obj/item/stack/tile/slashed/odd
 
 /decl/flooring/tiling/mono
 	icon_base = "monotile"

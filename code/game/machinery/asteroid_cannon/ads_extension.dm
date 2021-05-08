@@ -19,6 +19,7 @@
 		if (gun?.operational)
 			handle_auto_fire()
 		else
+			gun.unset_target()	//Unset so we're not preventing some poor meteor from GCing
 			return PROCESS_KILL//Nonfunctional
 
 
@@ -96,20 +97,23 @@
 /datum/extension/asteroidcannon/proc/recenter()
 	eyeobj?.setLoc(get_turf(gun))
 
+
+
 /datum/extension/asteroidcannon/proc/remove_gunner()
-	qdel(eyeobj)
-	qdel(TCH)
+	if (eyeobj)
+		qdel(eyeobj)
+	if (TCH)
+		qdel(TCH)
 	gun.lead_distance = initial(gun.lead_distance) //Gunners don't get hitscan...
-	gunner.verbs -= /mob/living/carbon/human/proc/stop_gunning
-	gunner.verbs -= /mob/living/carbon/human/proc/recenter_gunning
-	//gunner.vis_flags |= VIS_INHERIT_ID
-	gunner.eyeobj = null
-	gun.overlays.Cut()
-	gunner.plane = gun.cached_plane
-	gunner.forceMove(get_turf(gun))
-	gunner.animate_to_default()
-	//gun.vis_contents -= gunner
-	gunner = null
+	if (gunner)
+		gunner.verbs -= /mob/living/carbon/human/proc/stop_gunning
+		gunner.verbs -= /mob/living/carbon/human/proc/recenter_gunning
+		gunner.eyeobj = null
+		gun.overlays.Cut()
+		gunner.plane = gun.cached_plane
+		gunner.forceMove(get_turf(gun))
+		gunner.animate_to_default()
+		gunner = null
 
 /datum/extension/asteroidcannon/New(datum/holder)
 	if(!istype(holder, /obj/structure/asteroidcannon))

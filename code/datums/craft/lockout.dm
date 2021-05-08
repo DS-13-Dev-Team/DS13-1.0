@@ -1,5 +1,4 @@
 /datum/extension/craft_lockout
-	/datum/extension/charge
 	name = "Craft"
 	base_type = /datum/extension/craft_lockout
 	expected_type = /mob/living

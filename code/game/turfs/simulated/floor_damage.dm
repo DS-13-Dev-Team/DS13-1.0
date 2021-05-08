@@ -41,7 +41,7 @@
 				L.ex_act(1)
 		return
 
-	if (!ignore_resistance)
+	if (!ignore_resistance && flooring)
 		damage -= flooring.resistance
 	if (!damage || damage <= 0)
 		return

@@ -70,7 +70,7 @@
 	contains  = list(/obj/item/solar_assembly = 16)
 	cost = 10
 	containername = "\improper Solar Assembly crate"
-
+/*
 /decl/hierarchy/supply_pack/engineering/emitter
 	name = "Emitter crate"
 	contains = list(/obj/machinery/power/emitter = 2)
@@ -78,7 +78,7 @@
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "\improper Emitter crate"
 	access = access_engineering
-
+*/
 /decl/hierarchy/supply_pack/engineering/collector
 	name = "Collector crate"
 	contains = list(/obj/machinery/power/rad_collector = 2)
