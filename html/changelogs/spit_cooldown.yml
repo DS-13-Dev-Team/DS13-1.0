@@ -34,5 +34,4 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - tweak: "Slightly increased the cooldown times on spitter and puker ranged attacks."
-  - tweak: "Spitter and puker ranged attacks now have a small shared cooldown, preventing both shots from firing simultaneously. Alternate!."
-  - bugfix: "Fixed a nice but also bad thing."
+  - tweak: "Spitter and puker ranged attacks now have a small shared cooldown, preventing both shots from firing simultaneously."
