@@ -10,14 +10,62 @@
 	var/next_meteor_lower = 10
 	var/next_meteor_upper = 20
 
+	var/started_at
+
+/*
+	Subtypes
+*/
+/datum/event/meteor_wave/ishimura
+	startWhen = 0
+	next_meteor = 0
+	start_side = EAST	//Meteors always come from the front
+
+
+
+
+
+/datum/event/meteor_wave/ishimura/send_wave()
+	var/obj/structure/asteroidcannon/AC = GLOB.asteroidcannon
+	spawn()
+		spawn_meteors(get_wave_size(), get_meteors(), start_side, AC.z, frontal = TRUE) //Overrode this so meteors only spawn on the Z-level that the asteroid cannon is on.
+	next_meteor += rand(next_meteor_lower, next_meteor_upper) / severity
+	waves--
+	endWhen = worst_case_end()
+
+
+
+
+//The boss wave called when ADS repair starts
+/datum/event/meteor_wave/ishimura/final/calculate_waves()
+	waves = NEAR_INFINITY	//it goes until time expires
+
+/datum/event/meteor_wave/ishimura/final/worst_case_end()
+	return (15 MINUTES) / (EVENT_PROCESS_INTERVAL)//15 minute duration
+
+/datum/event/meteor_wave/ishimura/final/announce()
+	var/string = "Warning: [location_name()] is approaching a massive asteroid field. Activate emergency measures."
+	if (!GLOB.asteroidcannon.operational)
+		string += " Asteroid Defense System is offline, manual operation required."
+	command_announcement.Announce(string, "[location_name()] Sensor Array", zlevels = affecting_z, new_sound = 'sound/misc/redalert1.ogg')
+
+
+
+
+
 
 /datum/event/meteor_wave/setup()
+	calculate_waves()
+	started_at = world.time
+	var/obj/structure/asteroidcannon/AC = GLOB.asteroidcannon
+	start_side = AC.dir //Again, so they have a chance to shoot them down.
+	endWhen = worst_case_end()
+
+
+/datum/event/meteor_wave/proc/calculate_waves()
 	waves = 0
 	for(var/n in 1 to severity)
 		waves += rand(5,15)
-	var/obj/structure/asteroidcannon/AC = GLOB.asteroid_cannon
-	start_side = AC.dir //Again, so they have a chance to shoot them down.
-	endWhen = worst_case_end()
+
 
 /datum/event/meteor_wave/announce()
 	switch(severity)
@@ -35,6 +83,7 @@
 
 	if(waves && activeFor >= next_meteor)
 		send_wave()
+
 
 /datum/event/meteor_wave/proc/worst_case_end()
 	return activeFor + ((30 / severity) * waves) + 30
@@ -129,26 +178,12 @@
 
 
 
-/datum/event/meteor_wave/ishimura
-	startWhen = 0
-	next_meteor = 0
-	start_side = EAST	//Meteors always come from the front
-
-
-/datum/event/meteor_wave/ishimura/send_wave()
-	var/obj/structure/asteroidcannon/AC = GLOB.asteroid_cannon
-	spawn()
-		spawn_meteors(get_wave_size(), get_meteors(), start_side, AC.z, frontal = TRUE) //Overrode this so meteors only spawn on the Z-level that the asteroid cannon is on.
-	next_meteor += rand(next_meteor_lower, next_meteor_upper) / severity
-	waves--
-	endWhen = worst_case_end()
-
 
 
 
 
 /proc/spaceDebrisFrontalStartLoc(startSide, Z)
-	var/obj/structure/asteroidcannon/AC = GLOB.asteroid_cannon
+	var/obj/structure/asteroidcannon/AC = GLOB.asteroidcannon
 	var/starty
 	var/startx
 	switch(startSide)	//TODO: Other sides

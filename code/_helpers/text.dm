@@ -572,16 +572,6 @@ proc/TextPreview(var/string,var/len=40)
 	return whereLink
 
 
-/proc/link_necromorphs_to(var/message, var/target)
-	for (var/ckey in SSnecromorph.necromorph_players)
-		if (!ckey)
-			continue
-		var/datum/player/P = get_or_create_player(ckey)
-		var/mob/M = P.get_mob()
-		if (M && M.client)
-			var/personal_message = replacetext(message, "LINK", jumplink_public(M, target))
-			to_chat(M, personal_message)
-
 
 
 /proc/contains_links(var/message)

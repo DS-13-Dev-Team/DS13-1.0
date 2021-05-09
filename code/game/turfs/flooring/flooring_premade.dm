@@ -354,3 +354,18 @@
 	name = "bathroom tiles"
 	icon_state = "bathroom"
 	initial_flooring = /decl/flooring/tiling_ds/bathroom
+
+/turf/simulated/floor/dank/rivets
+	name = "riveted plating"
+	icon_state = "rivets"
+	initial_flooring = /decl/flooring/complex/tiling_ds/rivets
+
+/turf/simulated/floor/dank/slashed
+	name = "slashed plating"
+	icon_state = "slashed"
+	initial_flooring = /decl/flooring/complex/tiling_ds/slashed
+
+/turf/simulated/floor/dank/slashed/odd
+	name = "slashed plating"
+	icon_state = "slashed_odd"
+	initial_flooring = /decl/flooring/complex/tiling_ds/slashed/odd

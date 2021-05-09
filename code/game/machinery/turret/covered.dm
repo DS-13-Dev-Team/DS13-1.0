@@ -80,7 +80,7 @@
 
 	set_raised_raising(0, 0)
 	update_icon()
-	qdel(cover)
+	QDEL_NULL(cover)
 
 
 

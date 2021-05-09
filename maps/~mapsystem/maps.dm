@@ -142,6 +142,11 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 	var/powernode_rooms = 6
 
+	/*
+		Which crew objectives are active on this map?
+	*/
+	var/list/crew_objectives
+
 /datum/map/New()
 	if(!map_levels)
 		map_levels = station_levels.Copy()
@@ -167,6 +172,8 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	build_exoplanets()
 	if (powernode_rooms)
 		setup_powernode_rooms()
+	if (crew_objectives)
+		setup_crew_objectives()
 
 //Gets a random lobby track, excluding a list of tracks we've already heard
 /datum/map/proc/get_lobby_track(var/list/played)
@@ -313,3 +320,9 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		num2text(SUP_FREQ)   = list(access_cargo),
 		num2text(SRV_FREQ)   = list(access_service),
 	)
+
+
+/datum/map/proc/setup_crew_objectives()
+	for (var/subtype in GLOB.all_crew_objectives)
+		var/datum/crew_objective/CO = GLOB.all_crew_objectives[subtype]
+		CO.Initialize()
