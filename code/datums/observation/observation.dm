@@ -259,9 +259,9 @@
 		observation_procs = procs = list()
 	if(!procs[event_source])
 		procs[event_source] = list()
-	var/list/lookup = event_source.observations
+	var/list/lookup = event_source.observation_datum
 	if(!lookup)
-		event_source.observations = lookup = list()
+		event_source.observation_datum = lookup = list()
 
 	var/list/obs_types = islist(obs_type_or_types) ? obs_type_or_types : list(obs_type_or_types)
 	for(var/decl/observ/obs_type in obs_types)
@@ -279,6 +279,7 @@
 			lookup[obs_type][src] = TRUE
 		else // Many other things have registered here
 			lookup[obs_type][src] = TRUE
+		//obs_type.register() //Call register singleton
 
 	observation_enabled = TRUE
 
@@ -294,7 +295,7 @@
  * * obs_typeor_types observation string key or list of observation keys to stop listening to specifically
  */
 /datum/proc/UnregisterObservation(datum/event_source, obs_type_or_types)
-	var/list/lookup = event_source.observations
+	var/list/lookup = event_source.observation_datum
 	if(!observation_procs || !observation_procs[event_source] || !lookup)
 		return
 	if(!islist(obs_type_or_types))
@@ -310,12 +311,12 @@
 				if(src in lookup[obs])
 					lookup -= obs
 					if(!length(lookup))
-						event_source.observations = null
+						event_source.observation_datum = null
 						break
 			if(0)
 				lookup -= obs
 				if(!length(lookup))
-					event_source.observations = null
+					event_source.observation_datum = null
 					break
 			else
 				lookup[obs] -= src
@@ -332,7 +333,7 @@
  * Use the [RAISE_EVENT] define instead
  */
 /datum/proc/RaiseEvent(decl/observ/obstype, list/arguments)
-	var/source = observations[obstype]
+	var/source = observation_datum[obstype]
 	if(!length(source))
 		var/datum/C = source
 		if(!C.observation_enabled)

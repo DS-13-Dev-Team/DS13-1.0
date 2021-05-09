@@ -3,4 +3,4 @@ PROCESSING_SUBSYSTEM_DEF(observation)
 	flags = SS_NO_INIT
 
 /datum/controller/subsystem/processing/observation/Recover()
-	observations = SSobservation.observations
+	observation_datum = SSobservation.observation_datum
