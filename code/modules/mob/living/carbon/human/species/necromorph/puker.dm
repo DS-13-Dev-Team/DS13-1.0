@@ -166,7 +166,14 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 		return FALSE
 
 	face_atom(A)
-	.= shoot_ability(/datum/extension/shoot/snapshot, A , /obj/item/projectile/bullet/acid/puker_snap, accuracy = 50, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = 1 SECOND, cooldown = 3 SECONDS)
+
+	//Shared cooldown
+	var/datum/extension/shoot/longshot/LS = get_extension(src, /datum/extension/shoot/longshot)
+	if (LS && (world.time - LS.started_at) < SHARED_COOLDOWN_SHOT)
+		return
+
+
+	.= shoot_ability(/datum/extension/shoot/snapshot, A , /obj/item/projectile/bullet/acid/puker_snap, accuracy = 50, dispersion = 0, num = 1, windup_time = 0, fire_sound = null, nomove = 1 SECOND, cooldown = 3.5 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
@@ -181,7 +188,13 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	set desc = "A powerful projectile for longrange shooting. HK: Alt+Click"
 
 	face_atom(A)
-	.= shoot_ability(/datum/extension/shoot/longshot, A , /obj/item/projectile/bullet/acid/puker_long, accuracy = 50, dispersion = 0, num = 1, windup_time = 0.5 SECONDS, fire_sound = null, nomove = 1 SECOND, cooldown = 1 SECONDS)
+
+	//Shared cooldown
+	var/datum/extension/shoot/longshot/LS = get_extension(src, /datum/extension/shoot/longshot)
+	if (LS && (world.time - LS.started_at) < SHARED_COOLDOWN_SHOT)
+		return
+
+	.= shoot_ability(/datum/extension/shoot/longshot, A , /obj/item/projectile/bullet/acid/puker_long, accuracy = 50, dispersion = 0, num = 1, windup_time = 0.5 SECONDS, fire_sound = null, nomove = 1 SECOND, cooldown = 1.25 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
