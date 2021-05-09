@@ -9,6 +9,21 @@
 	/// Datum level flags
 	var/datum_flags = NONE
 
+	/**
+	  * Any datum registered to receive observations from this datum is in this list
+	  *
+	  * Lazy associated list in the structure of `observation:registree/list of registrees`
+	  */
+	var/list/observations
+	/// Lazy associated list in the structure of `observations:proctype` that are run when the datum receives that observation
+	var/list/list/datum/callback/observation_procs
+	/**
+	  * Is this datum capable of sending observations?
+	  *
+	  * Set to true when a observation has been registered
+	  */
+	var/observation_enabled = FALSE
+
 #ifdef TESTING
 	var/tmp/running_find_references
 	var/tmp/last_find_references = 0
@@ -31,6 +46,10 @@
 		if (timer.spent)
 			continue
 		qdel(timer)
+
+	for(var/target in observation_procs)
+		UnregisterObservation(target, observation_procs[target])
+
 	return QDEL_HINT_QUEUE
 
 /datum/proc/Process()
