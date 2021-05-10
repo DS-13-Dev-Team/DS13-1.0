@@ -1,11 +1,5 @@
 ### HEALTH ###
 
-## level of health at which a mob goes into continual shock (soft crit)
-HEALTH_THRESHOLD_SOFTCRIT 0
-
-## level of health at which a mob becomes unconscious (crit)
-HEALTH_THRESHOLD_CRIT -50
-
 ## level of health at which a mob becomes dead
 HEALTH_THRESHOLD_DEAD -100
 
@@ -44,7 +38,7 @@ REVIVAL_BRAIN_LIFE -1
 ## These values get directly added to values and totals in-game. To speed things up make the number negative, to slow things down, make the number positive.
 
 
-## These modify the run/walk speed of all mobs before the mob-specific modifiers are applied. 
+## These modify the run/walk speed of all mobs before the mob-specific modifiers are applied.
 RUN_SPEED 2
 WALK_SPEED 1
 

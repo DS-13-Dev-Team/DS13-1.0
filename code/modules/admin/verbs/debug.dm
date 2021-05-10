@@ -236,9 +236,9 @@
 	set category = "Server"
 	set name = "Toggle Aliens"
 
-	config.aliens_allowed = !config.aliens_allowed
-	log_admin("[key_name(src)] has turned aliens [config.aliens_allowed ? "on" : "off"].")
-	message_admins("[key_name_admin(src)] has turned aliens [config.aliens_allowed ? "on" : "off"].", 0)
+	CONFIG_SET(flag/aliens_allowed, !CONFIG_GET(flag/aliens_allowed))
+	log_admin("[key_name(src)] has turned aliens [CONFIG_GET(flag/aliens_allowed) ? "on" : "off"].")
+	message_admins("[key_name_admin(src)] has turned aliens [CONFIG_GET(flag/aliens_allowed) ? "on" : "off"].", 0)
 	feedback_add_details("admin_verb","TAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_grantfullaccess(var/mob/M in SSmobs.mob_list)

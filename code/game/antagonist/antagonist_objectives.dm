@@ -1,5 +1,5 @@
 /datum/antagonist/proc/create_global_objectives(var/override=0)
-	if(config.objectives_disabled != CONFIG_OBJECTIVE_ALL && !override)
+	if(CONFIG_GET(flag/objectives_disabled) != CONFIG_OBJECTIVE_ALL && !override)
 		return 0
 
 	//If global objectives exist, we are recreating them
@@ -17,7 +17,7 @@
 	QDEL_LIST(global_objectives)
 
 /datum/antagonist/proc/create_objectives(var/datum/mind/player, var/override=0)
-	if(config.objectives_disabled != CONFIG_OBJECTIVE_ALL && !override)
+	if(CONFIG_GET(flag/objectives_disabled) != CONFIG_OBJECTIVE_ALL && !override)
 		return 0
 	if(create_global_objectives(override) || global_objectives.len)
 		player.objectives |= global_objectives
@@ -28,7 +28,7 @@
 
 /datum/antagonist/proc/check_victory()
 	var/result = 1
-	if(config.objectives_disabled == CONFIG_OBJECTIVE_NONE)
+	if(CONFIG_GET(flag/objectives_disabled) == CONFIG_OBJECTIVE_NONE)
 		return 1
 	if(global_objectives && global_objectives.len)
 		for(var/datum/objective/O in global_objectives)

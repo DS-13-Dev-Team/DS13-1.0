@@ -97,7 +97,7 @@
 	. += "<tr><td colspan=3><center>"
 	. += "<a href='?src=\ref[src];prev_slot=1'>\<\<</a><b><font color = '[fcolor]'>\[[pref.gear_slot]\]</font> </b><a href='?src=\ref[src];next_slot=1'>\>\></a>"
 
-	if(config.max_gear_cost < INFINITY)
+	if(CONFIG_GET(number/max_gear_cost) < INFINITY)
 		. += "<b><font color = '[fcolor]'>[pref.loadout.max_points - pref.loadout.points]/[pref.loadout.max_points]</font> loadout points spent.</b>"
 
 	. += "<a href='?src=\ref[src];clear_loadout=1'>Clear Loadout</a>"

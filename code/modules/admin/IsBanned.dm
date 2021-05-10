@@ -5,12 +5,12 @@ world/IsBanned(key,address,computer_id)
 		return ..()
 
 	//Guest Checking
-	if(!config.guests_allowed && IsGuestKey(key))
+	if(!CONFIG_GET(flag/guests_allowed) && IsGuestKey(key))
 		log_access("Failed Login: [key] - Guests not allowed")
 		message_admins("<span class='notice'>Failed Login: [key] - Guests not allowed</span>")
 		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
 
-	if(config.ban_legacy_system)
+	if(CONFIG_GET(flag/ban_legacy_system))
 
 		//Ban Checking
 		. = CheckBan( ckey(key), computer_id, address )
