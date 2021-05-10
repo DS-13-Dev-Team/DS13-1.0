@@ -267,21 +267,42 @@
 	for(var/decl/observ/obs_type in obs_types)
 		if(!override && procs[event_source][obs_type])
 			crash_with("[obs_type] overridden. Use override = TRUE to suppress this warning")
-
-		procs[event_source][obs_type] = proctype
-
-		if(!lookup[obs_type]) // Nothing has registered here yet
-			lookup[obs_type] = src
-		else if(lookup[obs_type] == src) // We already registered here
-			continue
-		else if(!length(lookup[obs_type])) // One other thing registered here
-			lookup[obs_type] = list(lookup[obs_type]=TRUE)
-			lookup[obs_type][src] = TRUE
-		else // Many other things have registered here
-			lookup[obs_type][src] = TRUE
-		//obs_type.register() //Call register singleton
+		obs_type.RegisterObservation(event_source, src, proctype) //Call register singleton
 
 	observation_enabled = TRUE
+
+/decl/observ/RegisterObservation(datum/event_source, listener, proctype)
+	// Setup the listeners for this source if needed.
+	var/list/listeners = event_sources[event_source]
+	if (!listeners)
+		listeners = list()
+		event_sources[event_source] = listeners
+
+	// Make sure the callbacks are a list.
+	var/list/callbacks = listeners[listener]
+	if (!callbacks)
+		callbacks = list()
+		listeners[listener] = callbacks
+
+	var/list/procs = observation_procs
+	var/list/lookup = event_source.observation_datum
+
+	procs[event_source][src] = proctype
+
+	if(!lookup[src]) // Nothing has registered here yet
+		lookup[src] = listener
+	else if(!length(lookup[src])) // One other thing registered here
+		lookup[src] = list(lookup[src]=TRUE)
+		lookup[src][listener] = TRUE
+	else if(lookup[src] != listener)// Many other things have registered here
+		lookup[src][listener] = TRUE
+
+	// If the proc_call is already registered skip
+	if(proctype in callbacks)
+		return
+
+	// Add the callback, and return true.
+	callbacks += proctype
 
 /**
  * Stop listening to a given observation from event_source
@@ -328,22 +349,21 @@
 /**
  * Internal proc to handle most all of the observationing procedure
  *
- * Will runtime if used on datums with an empty component list
+ * Will runtime if used on datums with an empty observation list
  *
  * Use the [RAISE_EVENT] define instead
  */
 /datum/proc/RaiseEvent(decl/observ/obstype, list/arguments)
 	var/source = observation_datum[obstype]
 	if(!length(source))
-		var/datum/C = source
-		if(!C.observation_enabled)
-			return NONE
-		var/proctype = C.observation_procs[src][obstype]
-		return NONE | CallAsync(C, proctype, arguments)
+		return obstype.RaiseEvent(source, arguments)
 	. = NONE
 	for(var/I in source)
-		var/datum/C = I
-		if(!C.observation_enabled)
-			continue
-		var/proctype = C.observation_procs[src][obstype]
-		. |= CallAsync(C, proctype, arguments)
+		. |= obstype.RaiseEvent(source, src, arguments)
+
+/decl/observ/RaiseEvent(source, listener, list/arguments)
+	var/datum/C = source
+	if(!C.observation_enabled)
+		return NONE
+	var/proctype = C.observation_procs[listener][src]
+	return NONE | CallAsync(C, proctype, arguments)
