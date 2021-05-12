@@ -14,7 +14,7 @@
 	if (isclient(A))
 		var/client/C = A
 		if(!C.holder)
-			if(!config.dooc_allowed && (C.mob.stat == DEAD))
+			if(!CONFIG_GET(flag/dooc_allowed) && (C.mob.stat == DEAD))
 				to_chat(C, "<span class='danger'>[name] for dead mobs has been turned off.</span>")
 				return FALSE
 			if(findtext(message, "byond://"))

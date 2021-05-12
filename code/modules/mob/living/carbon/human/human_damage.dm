@@ -79,7 +79,7 @@
 	handle_death_check()	//This is where people die
 
 	//TODO: fix husking
-	if(((max_health - getFireLoss()) < config.health_threshold_dead) && stat == DEAD)
+	if(((max_health - getFireLoss()) < CONFIG_GET(number/health_threshold_dead)) && stat == DEAD)
 		ChangeToHusk()
 	return
 

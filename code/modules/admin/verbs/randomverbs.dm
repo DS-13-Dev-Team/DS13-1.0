@@ -323,7 +323,7 @@ Ccomp's first proc.
 		to_chat(src, "<span class='warning'>[selection] no longer has an associated ghost.</span>")
 		return
 
-	if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted)
+	if(G.has_enabled_antagHUD == 1 && CONFIG_GET(flag/antag_hud_restricted))
 		var/response = alert(src, "[selection] has enabled antagHUD. Are you sure you wish to allow them to respawn?","Ghost has used AntagHUD","No","Yes")
 		if(response == "No") return
 	else
@@ -338,7 +338,7 @@ Ccomp's first proc.
 	G.can_reenter_corpse = CORPSE_CAN_REENTER_AND_RESPAWN
 
 	G.show_message("<span class=notice><b>You may now respawn.  You should roleplay as if you learned nothing about the round during your time with the dead.</b></span>", 1)
-	log_and_message_admins("has allowed [key_name(G)] to bypass the [config.respawn_delay] minute respawn limit.")
+	log_and_message_admins("has allowed [key_name(G)] to bypass the [CONFIG_GET(number/respawn_delay)] minute respawn limit.")
 
 /*
 If a guy was gibbed and you want to revive him, this is a good way to do so.
@@ -475,7 +475,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!istype(M))
 		alert("Cannot revive a ghost")
 		return
-	if(config.allow_admin_rev)
+	if(CONFIG_GET(flag/allow_admin_rev))
 		M.revive()
 
 		log_and_message_admins("healed / revived [key_name_admin(M)]!")
@@ -791,12 +791,12 @@ disabled while adding delay_shuttle since evac cancelling needs a complete rewor
 	set desc = "Toggles random events such as meteors, black holes, blob (but not space dust) on/off"
 	if(!check_rights(R_SERVER))	return
 
-	if(!config.allow_random_events)
-		config.allow_random_events = 1
+	if(!CONFIG_GET(flag/allow_random_events))
+		CONFIG_SET(flag/allow_random_events, TRUE)
 		to_chat(usr, "Random events enabled")
 		message_admins("Admin [key_name_admin(usr)] has enabled random events.", 1)
 	else
-		config.allow_random_events = 0
+		CONFIG_SET(flag/allow_random_events, FALSE)
 		to_chat(usr, "Random events disabled")
 		message_admins("Admin [key_name_admin(usr)] has disabled random events.", 1)
 	feedback_add_details("admin_verb","TRE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

@@ -35,7 +35,7 @@
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 	var/action=""
-	if(config.antag_hud_allowed)
+	if(CONFIG_GET(flag/antag_hud_allowed))
 		for(var/mob/observer/ghost/g in get_ghosts())
 			if(!g.client.holder)						//Remove the verb from non-admin ghosts
 				g.verbs -= /mob/observer/ghost/verb/toggle_antagHUD
@@ -43,7 +43,7 @@
 				g.antagHUD = 0						// Disable it on those that have it enabled
 				g.has_enabled_antagHUD = 2				// We'll allow them to respawn
 				to_chat(g, "<span class='danger'>The Administrator has disabled AntagHUD</span>")
-		config.antag_hud_allowed = 0
+		CONFIG_SET(flag/antag_hud_allowed, FALSE)
 		to_chat(src, "<span class='danger'>AntagHUD usage has been disabled</span>")
 		action = "disabled"
 	else
@@ -52,7 +52,7 @@
 				g.verbs += /mob/observer/ghost/verb/toggle_antagHUD
 				to_chat(g, "<span class='notice'><B>The Administrator has enabled AntagHUD </B></span>")// Notify all observers they can now use AntagHUD
 
-		config.antag_hud_allowed = 1
+		CONFIG_SET(flag/antag_hud_allowed, TRUE)
 		action = "enabled"
 		to_chat(src, "<span class='notice'><B>AntagHUD usage has been enabled</B></span>")
 
@@ -69,11 +69,11 @@
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 	var/action=""
-	if(config.antag_hud_restricted)
+	if(CONFIG_GET(flag/antag_hud_restricted))
 		for(var/mob/observer/ghost/g in get_ghosts())
 			to_chat(g, "<span class='notice'><B>The administrator has lifted restrictions on joining the round if you use AntagHUD</B></span>")
 		action = "lifted restrictions"
-		config.antag_hud_restricted = 0
+		CONFIG_SET(flag/antag_hud_restricted, FALSE)
 		to_chat(src, "<span class='notice'><B>AntagHUD restrictions have been lifted</B></span>")
 	else
 		for(var/mob/observer/ghost/g in get_ghosts())
@@ -82,7 +82,7 @@
 			g.antagHUD = 0
 			g.has_enabled_antagHUD = 0
 		action = "placed restrictions"
-		config.antag_hud_restricted = 1
+		CONFIG_SET(flag/antag_hud_restricted, TRUE)
 		to_chat(src, "<span class='danger'>AntagHUD restrictions have been enabled</span>")
 
 	log_admin("[key_name(usr)] has [action] on joining the round if they use AntagHUD")
@@ -96,8 +96,8 @@
 	if(!check_rights(R_ADMIN|R_REJUVINATE))
 		return
 
-	config.aooc_allowed = !(config.aooc_allowed)
-	if (config.aooc_allowed)
+	CONFIG_SET(flag/aooc_allowed, !CONFIG_GET(flag/aooc_allowed))
+	if (CONFIG_GET(flag/aooc_allowed))
 		to_world("<B>The AOOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The AOOC channel has been globally disabled!</B>")
@@ -112,8 +112,8 @@
 	if(!check_rights(R_ADMIN|R_REJUVINATE))
 		return
 
-	config.looc_allowed = !(config.looc_allowed)
-	if (config.looc_allowed)
+	CONFIG_SET(flag/looc_allowed, !CONFIG_GET(flag/looc_allowed))
+	if(CONFIG_GET(flag/looc_allowed))
 		to_world("<B>The LOOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The LOOC channel has been globally disabled!</B>")
@@ -129,8 +129,8 @@
 	if(!check_rights(R_ADMIN|R_REJUVINATE))
 		return
 
-	config.dsay_allowed = !(config.dsay_allowed)
-	if (config.dsay_allowed)
+	CONFIG_SET(flag/dsay_allowed, !CONFIG_GET(flag/dsay_allowed))
+	if (CONFIG_GET(flag/dsay_allowed))
 		to_world("<B>Deadchat has been globally enabled!</B>")
 	else
 		to_world("<B>Deadchat has been globally disabled!</B>")
@@ -145,7 +145,7 @@
 	if(!check_rights(R_ADMIN|R_REJUVINATE))
 		return
 
-	config.dooc_allowed = !( config.dooc_allowed )
+	CONFIG_SET(flag/dooc_allowed, !CONFIG_GET(flag/dooc_allowed))
 	log_admin("[key_name(usr)] toggled Dead OOC.")
 	message_admins("[key_name_admin(usr)] toggled Dead OOC.", 1)
 	feedback_add_details("admin_verb","TDOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -172,9 +172,9 @@
 	set category = "Server"
 	set desc="Toggle traitor scaling"
 	set name="Toggle Traitor Scaling"
-	config.traitor_scaling = !config.traitor_scaling
-	log_admin("[key_name(usr)] toggled Traitor Scaling to [config.traitor_scaling].")
-	message_admins("[key_name_admin(usr)] toggled Traitor Scaling [config.traitor_scaling ? "on" : "off"].", 1)
+	CONFIG_SET(flag/traitor_scaling, !CONFIG_GET(flag/traitor_scaling))
+	log_admin("[key_name(usr)] toggled Traitor Scaling to [CONFIG_GET(flag/traitor_scaling)].")
+	message_admins("[key_name_admin(usr)] toggled Traitor Scaling [CONFIG_GET(flag/traitor_scaling) ? "on" : "off"].", 1)
 	feedback_add_details("admin_verb","TTS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/startnow()
@@ -198,8 +198,8 @@
 	set category = "Server"
 	set desc="People can't enter"
 	set name="Toggle Entering"
-	config.enter_allowed = !(config.enter_allowed)
-	if (!(config.enter_allowed))
+	CONFIG_SET(flag/enter_allowed, !CONFIG_GET(flag/enter_allowed))
+	if (!CONFIG_GET(flag/enter_allowed))
 		to_world("<B>New players may no longer enter the game.</B>")
 	else
 		to_world("<B>New players may now enter the game.</B>")
@@ -211,8 +211,8 @@
 	set category = "Server"
 	set desc="People can't be AI"
 	set name="Toggle AI"
-	config.allow_ai = !( config.allow_ai )
-	if (!( config.allow_ai ))
+	CONFIG_SET(flag/allow_ai, !CONFIG_GET(flag/allow_ai))
+	if (!CONFIG_GET(flag/allow_ai))
 		to_world("<B>The AI job is no longer chooseable.</B>")
 	else
 		to_world("<B>The AI job is chooseable now.</B>")
@@ -224,12 +224,12 @@
 	set category = "Server"
 	set desc="Respawn basically"
 	set name="Toggle Respawn"
-	config.abandon_allowed = !(config.abandon_allowed)
-	if(config.abandon_allowed)
+	CONFIG_SET(flag/abandon_allowed, !CONFIG_GET(flag/abandon_allowed))
+	if(CONFIG_GET(flag/abandon_allowed))
 		to_world("<B>You may now respawn.</B>")
 	else
 		to_world("<B>You may no longer respawn :(</B>")
-	log_and_message_admins("toggled respawn to [config.abandon_allowed ? "On" : "Off"].")
+	log_and_message_admins("toggled respawn to [CONFIG_GET(flag/abandon_allowed) ? "On" : "Off"].")
 	world.update_status()
 	feedback_add_details("admin_verb","TR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -240,9 +240,9 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	config.aliens_allowed = !config.aliens_allowed
-	log_admin("[key_name(usr)] toggled Aliens to [config.aliens_allowed].")
-	message_admins("[key_name_admin(usr)] toggled Aliens [config.aliens_allowed ? "on" : "off"].", 1)
+	CONFIG_SET(flag/aliens_allowed, !CONFIG_GET(flag/aliens_allowed))
+	log_admin("[key_name(usr)] toggled Aliens to [CONFIG_GET(flag/aliens_allowed)].")
+	message_admins("[key_name_admin(usr)] toggled Aliens [CONFIG_GET(flag/aliens_allowed) ? "on" : "off"].", 1)
 	feedback_add_details("admin_verb","TA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/toggle_alien_eggs()
@@ -252,9 +252,9 @@
 
 	if(!check_rights(R_ADMIN))
 		return
-	config.alien_eggs_allowed = !config.alien_eggs_allowed
-	log_admin("[key_name(usr)] toggled Alien Egg Laying to [config.alien_eggs_allowed].")
-	message_admins("[key_name_admin(usr)] toggled Alien Egg Laying [config.alien_eggs_allowed ? "on" : "off"].", 1)
+	CONFIG_SET(flag/alien_eggs_allowed, !CONFIG_GET(flag/alien_eggs_allowed))
+	log_admin("[key_name(usr)] toggled Alien Egg Laying to [CONFIG_GET(flag/alien_eggs_allowed)].")
+	message_admins("[key_name_admin(usr)] toggled Alien Egg Laying [CONFIG_GET(flag/alien_eggs_allowed) ? "on" : "off"].", 1)
 	feedback_add_details("admin_verb","AEA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -265,8 +265,8 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	config.ninjas_allowed = !config.ninjas_allowed
-	log_and_message_admins("toggled Space Ninjas [config.ninjas_allowed ? "on" : "off"].")
+	CONFIG_SET(flag/ninjas_allowed, !CONFIG_GET(flag/ninjas_allowed))
+	log_and_message_admins("toggled Space Ninjas [CONFIG_GET(flag/ninjas_allowed) ? "on" : "off"].")
 	feedback_add_details("admin_verb","TSN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/delay()
@@ -292,24 +292,24 @@
 	set category = "Server"
 	set desc="Toggle admin jumping"
 	set name="Toggle Jump"
-	config.allow_admin_jump = !(config.allow_admin_jump)
-	log_and_message_admins("Toggled admin jumping to [config.allow_admin_jump].")
+	CONFIG_SET(flag/allow_admin_jump, !CONFIG_GET(flag/allow_admin_jump))
+	log_and_message_admins("Toggled admin jumping to [CONFIG_GET(flag/allow_admin_jump)].")
 	feedback_add_details("admin_verb","TJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adspawn()
 	set category = "Server"
 	set desc="Toggle admin spawning"
 	set name="Toggle Spawn"
-	config.allow_admin_spawning = !(config.allow_admin_spawning)
-	log_and_message_admins("toggled admin item spawning to [config.allow_admin_spawning].")
+	CONFIG_SET(flag/allow_admin_spawning, !CONFIG_GET(flag/allow_admin_spawning))
+	log_and_message_admins("toggled admin item spawning to [CONFIG_GET(flag/allow_admin_spawning)].")
 	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adrev()
 	set category = "Server"
 	set desc="Toggle admin revives"
 	set name="Toggle Revive"
-	config.allow_admin_rev = !(config.allow_admin_rev)
-	log_and_message_admins("toggled reviving to [config.allow_admin_rev].")
+	CONFIG_SET(flag/allow_admin_rev, !CONFIG_GET(flag/allow_admin_rev))
+	log_and_message_admins("toggled reviving to [CONFIG_GET(flag/allow_admin_rev)].")
 	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/immreboot()
@@ -360,8 +360,8 @@
 	if(!check_rights(R_ADMIN|R_REJUVINATE))
 		return
 
-	config.ooc_allowed = !(config.ooc_allowed)
-	if (config.ooc_allowed)
+	CONFIG_SET(flag/ooc_allowed, !CONFIG_GET(flag/ooc_allowed))
+	if (CONFIG_GET(flag/ooc_allowed))
 		to_world("<B>The OOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The OOC channel has been globally disabled!</B>")
@@ -372,38 +372,37 @@
 	set category = "Server"
 	set desc="Guests can't enter"
 	set name="Toggle guests"
-	config.guests_allowed = !(config.guests_allowed)
-	if (!(config.guests_allowed))
+	CONFIG_SET(flag/guests_allowed, !CONFIG_GET(flag/guests_allowed))
+	if (!CONFIG_GET(flag/guests_allowed))
 		to_world("<B>Guests may no longer enter the game.</B>")
 	else
 		to_world("<B>Guests may now enter the game.</B>")
-	log_admin("[key_name(usr)] toggled guests game entering [config.guests_allowed?"":"dis"]allowed.")
-	log_and_message_admins("toggled guests game entering [config.guests_allowed?"":"dis"]allowed.")
+	log_admin("[key_name(usr)] toggled guests game entering [CONFIG_GET(flag/guests_allowed)?"":"dis"]allowed.")
+	log_and_message_admins("toggled guests game entering [CONFIG_GET(flag/guests_allowed)?"":"dis"]allowed.")
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_log_hrefs()
 	set name = "Toggle href logging"
 	set category = "Server"
 	if(!holder)	return
-	if(config)
-		if(config.log_hrefs)
-			config.log_hrefs = 0
-			to_chat(src, "<b>Stopped logging hrefs</b>")
-		else
-			config.log_hrefs = 1
-			to_chat(src, "<b>Started logging hrefs</b>")
+	if(CONFIG_GET(flag/log_hrefs))
+		CONFIG_SET(flag/log_hrefs, 0)
+		to_chat(src, "<b>Stopped logging hrefs</b>")
+	else
+		CONFIG_SET(flag/log_hrefs, 1)
+		to_chat(src, "<b>Started logging hrefs</b>")
 
 /client/proc/toggleghostwriters()
 	set name = "Toggle ghost writers"
 	set category = "Server"
 	if(!holder)	return
 	if(config)
-		if(config.cult_ghostwriter)
-			config.cult_ghostwriter = 0
+		if(CONFIG_GET(flag/cult_ghostwriter))
+			CONFIG_SET(flag/cult_ghostwriter, FALSE)
 			to_chat(src, "<b>Disallowed ghost writers.</b>")
 			message_admins("Admin [key_name_admin(usr)] has disabled ghost writers.", 1)
 		else
-			config.cult_ghostwriter = 1
+			CONFIG_SET(flag/cult_ghostwriter, TRUE)
 			to_chat(src, "<b>Enabled ghost writers.</b>")
 			message_admins("Admin [key_name_admin(usr)] has enabled ghost writers.", 1)
 
@@ -412,11 +411,11 @@
 	set category = "Server"
 	if(!holder)	return
 	if(config)
-		if(config.allow_drone_spawn)
-			config.allow_drone_spawn = 0
+		if(CONFIG_GET(flag/allow_drone_spawn))
+			CONFIG_SET(flag/allow_drone_spawn, FALSE)
 			to_chat(src, "<b>Disallowed maint drones.</b>")
 			message_admins("Admin [key_name_admin(usr)] has disabled maint drones.", 1)
 		else
-			config.allow_drone_spawn = 1
+			CONFIG_SET(flag/allow_drone_spawn, TRUE)
 			to_chat(src, "<b>Enabled maint drones.</b>")
 			message_admins("Admin [key_name_admin(usr)] has enabled maint drones.", 1)

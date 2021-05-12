@@ -1,30 +1,30 @@
 /proc/send2irc(var/channel, var/msg)
-	export2irc(list(type="msg", mesg=msg, chan=channel, pwd=config.comms_password))
+	export2irc(list(type="msg", mesg=msg, chan=channel, CONFIG_GET(string/comms_password)))
 
 /proc/export2irc(params)
-	if(config.use_irc_bot && config.irc_bot_host)
+	if(CONFIG_GET(flag/use_irc_bot) && CONFIG_GET(string/irc_bot_host))
 		spawn(-1) // spawn here prevents hanging in the case that the bot isn't reachable
-			world.Export("http://[config.irc_bot_host]:45678?[list2params(params)]")
+			world.Export("http://[CONFIG_GET(string/irc_bot_host)]:45678?[list2params(params)]")
 
 /proc/runtimes2irc(runtimes, revision)
-	export2irc(list(pwd=config.comms_password, type="runtime", runtimes=runtimes, revision=revision))
+	export2irc(list(pwd=CONFIG_GET(string/comms_password), type="runtime", runtimes=runtimes, revision=revision))
 
 /proc/send2mainirc(var/msg)
-	if(config.main_irc)
-		send2irc(config.main_irc, msg)
+	if(CONFIG_GET(string/main_irc))
+		send2irc(CONFIG_GET(string/main_irc), msg)
 	return
 
 /proc/send2adminirc(var/msg)
-	if(config.admin_irc)
-		send2irc(config.admin_irc, msg)
+	if(CONFIG_GET(string/admin_irc))
+		send2irc(CONFIG_GET(string/admin_irc), msg)
 	return
 
 /proc/adminmsg2adminirc(client/source, client/target, msg)
-	if(config.admin_irc)
+	if(CONFIG_GET(string/admin_irc))
 		var/list/params[0]
 
-		params["pwd"] = config.comms_password
-		params["chan"] = config.admin_irc
+		params["pwd"] = CONFIG_GET(string/comms_password)
+		params["chan"] = CONFIG_GET(string/admin_irc)
 		params["msg"] = msg
 		params["src_key"] = source.key
 		params["src_char"] = source.mob.real_name || source.mob.name
@@ -42,6 +42,6 @@
 		export2irc(params)
 
 /hook/startup/proc/ircNotify()
-	send2mainirc("Server starting up on byond://[config.serverurl ? config.serverurl : (config.server ? config.server : "[world.address]:[world.port]")]")
+	send2mainirc("Server starting up on byond://[CONFIG_GET(string/serverurl) ? CONFIG_GET(string/serverurl) : (CONFIG_GET(string/server) ? CONFIG_GET(string/server) : "[world.address]:[world.port]")]")
 	return 1
 

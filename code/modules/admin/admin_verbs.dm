@@ -452,7 +452,7 @@ var/list/admin_verbs_mentor = list(
 		if(holder.rights & R_SERVER)		verbs += admin_verbs_server
 		if(holder.rights & R_DEBUG)
 			verbs += admin_verbs_debug
-			if(config.debugparanoid && !(holder.rights & R_ADMIN))
+			if(CONFIG_GET(flag/debugparanoid) && !(holder.rights & R_ADMIN))
 				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
 		if(holder.rights & R_POSSESS)		verbs += admin_verbs_possess
 		if(holder.rights & R_PERMISSIONS)	verbs += admin_verbs_permissions
@@ -593,7 +593,7 @@ var/list/admin_verbs_mentor = list(
 	set name = "Display Job bans"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
+		if(CONFIG_GET(flag/ban_legacy_system))
 			holder.Jobbans()
 		else
 			holder.DB_ban_panel()
@@ -604,7 +604,7 @@ var/list/admin_verbs_mentor = list(
 	set name = "Unban Panel"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
+		if(CONFIG_GET(flag/ban_legacy_system))
 			holder.unbanpanel()
 		else
 			holder.DB_ban_panel()

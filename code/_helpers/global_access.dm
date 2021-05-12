@@ -303,8 +303,6 @@
 			return global.command_name;
 		if("common_tools")
 			return global.common_tools;
-		if("config")
-			return global.config;
 		if("contamination_overlay")
 			return global.contamination_overlay;
 		if("controller_iteration")
@@ -799,24 +797,8 @@
 			return global.spells;
 		if("splatter_cache")
 			return global.splatter_cache;
-		if("sqladdress")
-			return global.sqladdress;
-		if("sqldb")
-			return global.sqldb;
-		if("sqlfdbkdb")
-			return global.sqlfdbkdb;
-		if("sqlfdbklogin")
-			return global.sqlfdbklogin;
-		if("sqlfdbkpass")
-			return global.sqlfdbkpass;
 		if("sqllogging")
 			return global.sqllogging;
-		if("sqllogin")
-			return global.sqllogin;
-		if("sqlpass")
-			return global.sqlpass;
-		if("sqlport")
-			return global.sqlport;
 		if("station_account")
 			return global.station_account;
 		if("station_date")
@@ -1282,8 +1264,6 @@
 			global.command_name=newval;
 		if("common_tools")
 			global.common_tools=newval;
-		if("config")
-			global.config=newval;
 		if("contamination_overlay")
 			global.contamination_overlay=newval;
 		if("controller_iteration")
@@ -1778,24 +1758,8 @@
 			global.spells=newval;
 		if("splatter_cache")
 			global.splatter_cache=newval;
-		if("sqladdress")
-			global.sqladdress=newval;
-		if("sqldb")
-			global.sqldb=newval;
-		if("sqlfdbkdb")
-			global.sqlfdbkdb=newval;
-		if("sqlfdbklogin")
-			global.sqlfdbklogin=newval;
-		if("sqlfdbkpass")
-			global.sqlfdbkpass=newval;
 		if("sqllogging")
 			global.sqllogging=newval;
-		if("sqllogin")
-			global.sqllogin=newval;
-		if("sqlpass")
-			global.sqlpass=newval;
-		if("sqlport")
-			global.sqlport=newval;
 		if("station_account")
 			global.station_account=newval;
 		if("station_date")
@@ -2110,7 +2074,6 @@
 	"command_announcement",
 	"command_name",
 	"common_tools",
-	"config",
 	"contamination_overlay",
 	"controller_iteration",
 	"create_mob_html",
@@ -2363,15 +2326,7 @@
 	"sparring_attack_cache",
 	"spells",
 	"splatter_cache",
-	"sqladdress",
-	"sqldb",
-	"sqlfdbkdb",
-	"sqlfdbklogin",
-	"sqlfdbkpass",
 	"sqllogging",
-	"sqllogin",
-	"sqlpass",
-	"sqlport",
 	"station_account",
 	"station_date",
 	"stool_cache",

@@ -60,6 +60,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
 
 /datum/controller/master/New()
+	if(!config)
+		config = new
 	total_run_times = list()
 	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
 	var/list/_subsystems = list()
@@ -176,7 +178,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	var/start_timeofday = REALTIMEOFDAY
 	// Initialize subsystems.
-	current_ticklimit = config.tick_limit_mc_init
+	current_ticklimit = CONFIG_GET(number/tick_limit_mc_init)
 	for (var/datum/controller/subsystem/SS in subsystems)
 		if (SS.flags & SS_NO_INIT)
 			continue
@@ -199,7 +201,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 #else
 	world.sleep_offline = TRUE
 #endif
-	world.fps = config.fps
+	world.fps = CONFIG_GET(number/fps)
 	var/initialized_tod = REALTIMEOFDAY
 
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
@@ -597,3 +599,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StopLoadingMap()
+
+/datum/controller/master/proc/OnConfigLoad()
+	for (var/thing in subsystems)
+		var/datum/controller/subsystem/SS = thing
+		SS.OnConfigLoad()

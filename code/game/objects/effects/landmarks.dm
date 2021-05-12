@@ -179,7 +179,7 @@
 /obj/effect/landmark/random_gen/asteroid/Initialize()
 	. = ..()
 
-	if (!config.generate_map)
+	if (!CONFIG_GET(flag/generate_map))
 		return
 
 	var/min_x = 1
