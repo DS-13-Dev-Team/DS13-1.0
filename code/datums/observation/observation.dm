@@ -270,16 +270,16 @@
  *
  * Use the [RAISE_EVENT] define instead
  */
-/datum/proc/RaiseEvent(decl/observ/obstype, list/arguments)
-	var/source = observations[obstype]
-	if(!length(source))
-		return obstype.RaiseEvent(source, arguments)
+/datum/proc/RaiseEvent(decl/observ/observation_datum, list/arguments)
+	var/event_source = observations[observation_datum]
+	if(!length(event_source))
+		return observation_datum.RaiseEvent(event_source, src, arguments)
 	. = NONE
-	for(var/I in source)
-		. |= obstype.RaiseEvent(source, src, arguments)
+	for(var/I in event_source)
+		. |= observation_datum.RaiseEvent(event_source, src, arguments)
 
-/decl/observ/RaiseEvent(source, listener, list/arguments)
-	var/datum/C = source
+/decl/observ/RaiseEvent(event_source, listener, list/arguments)
+	var/datum/C = event_source
 	if(!C.observation_enabled)
 		return NONE
 	var/proctype = C.observation_procs[listener][src]
