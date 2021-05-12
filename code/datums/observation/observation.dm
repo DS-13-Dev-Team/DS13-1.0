@@ -156,30 +156,6 @@
 	return TRUE
 
 /decl/observ/proc/unregister(datum/event_source, datum/listener, proc_call)
-	var/list/lookup = event_source.observations
-	if(!observation_procs || !observation_procs[event_source] || !lookup)
-		return
-	if(observation_procs[event_source][src])
-		switch(length(lookup[src]))
-			if(2)
-				lookup[src] = (lookup[src]-listener)[1]
-			if(1)
-				crash_with("[event_source] ([event_source.type]) somehow has single length list inside observations")
-				if(listener in lookup[src])
-					lookup -= src
-					if(!length(lookup))
-						event_source.observations = null
-			if(0)
-				lookup -= src
-				if(!length(lookup))
-					event_source.observations = null
-			else
-				lookup[src] -= src
-
-	listener.observation_procs[event_source] -= src
-	if(!listener.observation_procs[event_source].len)
-		listener.observation_procs -= event_source
-
 	// Sanity.
 	if (!(event_source && listener && (event_source in event_sources)))
 		return FALSE
@@ -308,3 +284,29 @@
 		return NONE
 	var/proctype = C.observation_procs[listener][src]
 	return NONE | CallAsync(C, proctype, arguments)
+
+/datum/proc/UnregisterObservation(datum/event_source, decl/observ/observation_datum)
+	var/list/lookup = event_source.observations
+	if(!observation_procs || !observation_procs[event_source] || !lookup)
+		return
+	if(!observation_procs[event_source][observation_datum])
+		return
+	switch(length(lookup[observation_datum]))
+		if(2)
+			lookup[observation_datum] = (lookup[observation_datum]-src)[1]
+		if(1)
+			crash_with("[event_source] ([event_source.type]) somehow has single length list inside observations")
+			if(src in lookup[observation_datum])
+				lookup -= observation_datum
+				if(!length(lookup))
+					event_source.observations = null
+		if(0)
+			lookup -= observation_datum
+			if(!length(lookup))
+				event_source.observations = null
+		else
+			lookup[observation_datum] -= src
+
+	observation_procs[event_source] -= observation_datum
+	if(!observation_procs[event_source].len)
+		observation_procs -= event_source

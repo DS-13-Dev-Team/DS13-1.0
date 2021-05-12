@@ -47,6 +47,7 @@
 			continue
 		qdel(timer)
 
+	//Unregister need because we will UNREGISTER ALL OBSERVATION_DATUM, NO PROC CALL //TO DO make unregister on OBSERVATION_DATUM
 	for(var/target in observation_procs)
 		UnregisterObservation(target, observation_procs[target])
 
