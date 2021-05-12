@@ -271,18 +271,18 @@
  * Use the [RAISE_EVENT] define instead
  */
 /datum/proc/RaiseEvent(decl/observ/observation_datum, list/arguments)
-	var/event_source = observations[observation_datum]
-	if(!length(event_source))
-		return observation_datum.RaiseEvent(event_source, src, arguments)
+	var/listener = observations[observation_datum]
+	if(!length(listener))
+		return observation_datum.RaiseEvent(listener, src, arguments)
 	. = NONE
-	for(var/I in event_source)
-		. |= observation_datum.RaiseEvent(event_source, src, arguments)
+	for(var/I in listener)
+		. |= observation_datum.RaiseEvent(listener, src, arguments)
 
-/decl/observ/RaiseEvent(event_source, listener, list/arguments)
-	var/datum/C = event_source
+/decl/observ/RaiseEvent(listener, event_source, list/arguments)
+	var/datum/C = listener
 	if(!C.observation_enabled)
 		return NONE
-	var/proctype = C.observation_procs[listener][src]
+	var/proctype = C.observation_procs[event_source][src]
 	return NONE | CallAsync(C, proctype, arguments)
 
 /datum/proc/UnregisterObservation(datum/event_source, decl/observ/observation_datum)
