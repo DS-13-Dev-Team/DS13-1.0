@@ -14,7 +14,7 @@
 	  *
 	  * Lazy associated list in the structure of `observation:registree/list of registrees`
 	  */
-	var/list/observation_datum
+	var/list/observations
 	/// Lazy associated list in the structure of `observations:proctype` that are run when the datum receives that observation
 	var/list/list/datum/callback/observation_procs
 	/**

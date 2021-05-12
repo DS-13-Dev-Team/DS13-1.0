@@ -98,7 +98,9 @@
 /decl/observ/proc/has_listeners(var/event_source)
 	return is_listening(event_source)
 
-/decl/observ/proc/register(var/datum/event_source, var/datum/listener, var/proc_call)
+/decl/observ/proc/register(datum/event_source, datum/listener, proc_call, override = FALSE)
+	if(QDELETED(listener) || QDELETED(event_source))
+		return
 	// Sanity checking.
 	if (!(event_source && listener && proc_call))
 		return FALSE
@@ -121,7 +123,31 @@
 		callbacks = list()
 		listeners[listener] = callbacks
 
-	// If the proc_call is already registered skip
+	var/list/procs = listener.observation_procs
+	if(!procs)
+		listener.observation_procs = procs = list()
+	if(!procs[event_source])
+		procs[event_source] = list()
+	var/list/lookup = event_source.observations
+	if(!lookup)
+		event_source.observations = lookup = list()
+
+	if(!override && procs[event_source][src])
+		crash_with("[src] overridden. Use override = TRUE to suppress this warning")
+
+	procs[event_source][src] = proc_call
+
+	if(!lookup[src]) // Nothing has registered here yet
+		lookup[src] = listener
+	else if(!length(lookup[src])) // One other thing registered here
+		lookup[src] = list(lookup[src]=TRUE)
+		lookup[src][listener] = TRUE
+	else if(lookup[src] != listener)// Many other things have registered here
+		lookup[src][listener] = TRUE
+
+	listener.observation_enabled = TRUE
+
+	// If the proc_call is already registered skip in Singleton
 	if(proc_call in callbacks)
 		return FALSE
 
@@ -129,7 +155,31 @@
 	callbacks += proc_call
 	return TRUE
 
-/decl/observ/proc/unregister(var/event_source, var/datum/listener, var/proc_call)
+/decl/observ/proc/unregister(datum/event_source, datum/listener, proc_call)
+	var/list/lookup = event_source.observations
+	if(!observation_procs || !observation_procs[event_source] || !lookup)
+		return
+	if(observation_procs[event_source][src])
+		switch(length(lookup[src]))
+			if(2)
+				lookup[src] = (lookup[src]-listener)[1]
+			if(1)
+				crash_with("[event_source] ([event_source.type]) somehow has single length list inside observations")
+				if(listener in lookup[src])
+					lookup -= src
+					if(!length(lookup))
+						event_source.observations = null
+			if(0)
+				lookup -= src
+				if(!length(lookup))
+					event_source.observations = null
+			else
+				lookup[src] -= src
+
+	listener.observation_procs[event_source] -= src
+	if(!listener.observation_procs[event_source].len)
+		listener.observation_procs -= event_source
+
 	// Sanity.
 	if (!(event_source && listener && (event_source in event_sources)))
 		return FALSE
@@ -238,115 +288,6 @@
 	return TRUE
 
 /**
- * Register to listen for a observation from the passed in listener
- *
- * This sets up a listening relationship such that when the listener object emits a observation
- * the source datum this proc is called upon, will recieve a callback to the given proctype
- * Return values from procs registered must be a bitfield
- *
- * Arguments:
- * * datum/source_event The source_event to listen for observations from
- * * obs_type_or_types Either a string observation name, or a list of observation names (strings)
- * * proctype The proc to call back when the observation is emitted
- * * override If a previous registration exists you must explicitly set this
- */
-/datum/proc/RegisterObservation(datum/event_source, obs_type_or_types, proctype, override = FALSE)
-	if(QDELETED(src) || QDELETED(event_source))
-		return
-
-	var/list/procs = observation_procs
-	if(!procs)
-		observation_procs = procs = list()
-	if(!procs[event_source])
-		procs[event_source] = list()
-	var/list/lookup = event_source.observation_datum
-	if(!lookup)
-		event_source.observation_datum = lookup = list()
-
-	var/list/obs_types = islist(obs_type_or_types) ? obs_type_or_types : list(obs_type_or_types)
-	for(var/decl/observ/obs_type in obs_types)
-		if(!override && procs[event_source][obs_type])
-			crash_with("[obs_type] overridden. Use override = TRUE to suppress this warning")
-		obs_type.RegisterObservation(event_source, src, proctype) //Call register singleton
-
-	observation_enabled = TRUE
-
-/decl/observ/RegisterObservation(datum/event_source, listener, proctype)
-	// Setup the listeners for this source if needed.
-	var/list/listeners = event_sources[event_source]
-	if (!listeners)
-		listeners = list()
-		event_sources[event_source] = listeners
-
-	// Make sure the callbacks are a list.
-	var/list/callbacks = listeners[listener]
-	if (!callbacks)
-		callbacks = list()
-		listeners[listener] = callbacks
-
-	var/list/procs = observation_procs
-	var/list/lookup = event_source.observation_datum
-
-	procs[event_source][src] = proctype
-
-	if(!lookup[src]) // Nothing has registered here yet
-		lookup[src] = listener
-	else if(!length(lookup[src])) // One other thing registered here
-		lookup[src] = list(lookup[src]=TRUE)
-		lookup[src][listener] = TRUE
-	else if(lookup[src] != listener)// Many other things have registered here
-		lookup[src][listener] = TRUE
-
-	// If the proc_call is already registered skip
-	if(proctype in callbacks)
-		return
-
-	// Add the callback, and return true.
-	callbacks += proctype
-
-/**
- * Stop listening to a given observation from event_source
- *
- * Breaks the relationship between event_source and source datum, removing the callback when the observation fires
- *
- * Doesn't care if a registration exists or not
- *
- * Arguments:
- * * datum/event_source Datum to stop listening to observations from
- * * obs_typeor_types observation string key or list of observation keys to stop listening to specifically
- */
-/datum/proc/UnregisterObservation(datum/event_source, obs_type_or_types)
-	var/list/lookup = event_source.observation_datum
-	if(!observation_procs || !observation_procs[event_source] || !lookup)
-		return
-	if(!islist(obs_type_or_types))
-		obs_type_or_types = list(obs_type_or_types)
-	for(var/decl/observ/obs in obs_type_or_types)
-		if(!observation_procs[event_source][obs])
-			continue
-		switch(length(lookup[obs]))
-			if(2)
-				lookup[obs] = (lookup[obs]-src)[1]
-			if(1)
-				crash_with("[event_source] ([event_source.type]) somehow has single length list inside observations")
-				if(src in lookup[obs])
-					lookup -= obs
-					if(!length(lookup))
-						event_source.observation_datum = null
-						break
-			if(0)
-				lookup -= obs
-				if(!length(lookup))
-					event_source.observation_datum = null
-					break
-			else
-				lookup[obs] -= src
-
-	observation_procs[event_source] -= obs_type_or_types
-	if(!observation_procs[event_source].len)
-		observation_procs -= event_source
-
-/**
  * Internal proc to handle most all of the observationing procedure
  *
  * Will runtime if used on datums with an empty observation list
@@ -354,7 +295,7 @@
  * Use the [RAISE_EVENT] define instead
  */
 /datum/proc/RaiseEvent(decl/observ/obstype, list/arguments)
-	var/source = observation_datum[obstype]
+	var/source = observations[obstype]
 	if(!length(source))
 		return obstype.RaiseEvent(source, arguments)
 	. = NONE
