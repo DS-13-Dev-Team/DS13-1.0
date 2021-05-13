@@ -6,6 +6,13 @@ Basics, the most important.
 
 /datum/config_entry/flag/server_suffix  //generate numeric suffix based on server port
 
+/datum/config_entry/flag/hub
+
+/datum/config_entry/flag/hub/ValidateAndSet(str_val)
+	. = ..()
+	if(config_entry_value)
+		world.update_hub_visibility()
+
 /datum/config_entry/flag/log_ooc    //log OOC channel
 
 /datum/config_entry/flag/log_necro  //log necrochat
@@ -17,7 +24,6 @@ Basics, the most important.
 /datum/config_entry/flag/log_admin  //log admin actions
 
 /datum/config_entry/flag/log_debug  //log debug output
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/log_game   //log game events
 
@@ -39,6 +45,7 @@ Basics, the most important.
     protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/flag/log_runtime    //logs world.log to a file
+	config_entry_value = FALSE
 
 /datum/config_entry/flag/log_world_output   //log world.log << messages
 
@@ -53,13 +60,10 @@ Basics, the most important.
 /datum/config_entry/flag/allow_vote_mode    //allow votes to change mode
 
 /datum/config_entry/flag/allow_admin_jump   //allows admin jumping
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/allow_admin_spawning   //allows admin item spawning
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/allow_admin_rev    //allows admin revives
-    config_entry_value = TRUE
 
 /datum/config_entry/number/vote_delay   //minimum time between voting sessions (deciseconds, 10 minute default)
     config_entry_value = 6000
@@ -73,7 +77,7 @@ Basics, the most important.
 /datum/config_entry/number/vote_autotransfer_interval   //length of time before next sequential autotransfer vote
     config_entry_value = 18000
 
-/datum/config_entry/number/vote_autogamemode_timeleft  //Length of time before round start when autogamemode vote is called (in seconds, default 100). 
+/datum/config_entry/number/vote_autogamemode_timeleft  //Length of time before round start when autogamemode vote is called (in seconds, default 100).
     config_entry_value = 100
 
 /datum/config_entry/flag/vote_no_default    //vote does not default to nochange/norestart (tbi)
@@ -83,7 +87,6 @@ Basics, the most important.
 /datum/config_entry/flag/vote_no_dead_crew_transfer //dead people can't vote on crew transfer votes
 
 /datum/config_entry/flag/del_new_on_log //del's new players if they log before they spawn in
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/feature_object_spell_system    //spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
 
@@ -159,7 +162,6 @@ Basics, the most important.
 /datum/config_entry/flag/allow_random_events    //enables random events mid-round when set to 1
 
 /datum/config_entry/flag/allow_ai   //allow ai job
-    config_entry_value = TRUE
 
 /datum/config_entry/string/hostedby
 
@@ -167,7 +169,6 @@ Basics, the most important.
     config_entry_value = 30
 
 /datum/config_entry/flag/guest_jobban
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/usewhitelist
 
@@ -190,7 +191,6 @@ Basics, the most important.
 /datum/config_entry/flag/use_cortical_stacks
 
 /datum/config_entry/flag/cult_ghostwriter   //Allows ghosts to write in blood in cult rounds...
-    config_entry_value = TRUE
 
 /datum/config_entry/number/cult_ghostwriter_req_cultists    //...so long as this many cultists are active.
     config_entry_value = 10
@@ -202,7 +202,6 @@ Basics, the most important.
     config_entry_value = 5
 
 /datum/config_entry/flag/allow_drone_spawn  //assuming the admin allow them to.
-    config_entry_value = TRUE
 
 /datum/config_entry/number/drone_build_time //A drone will become available every X ticks since last drone spawn. Default is 2 minutes.
     config_entry_value = 1200

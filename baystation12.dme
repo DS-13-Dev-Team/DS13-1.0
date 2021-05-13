@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\_compile_options.dm"
 #include "code\_macros.dm"
 #include "code\client_macros.dm"
 #include "code\hub.dm"
@@ -18,7 +19,6 @@
 #include "code\__datastructures\globals.dm"
 #include "code\__datastructures\priority_queue.dm"
 #include "code\__datastructures\stack.dm"
-#include "code\__defines\_compile_options.dm"
 #include "code\__defines\_planes+layers.dm"
 #include "code\__defines\_protect.dm"
 #include "code\__defines\_tick.dm"
