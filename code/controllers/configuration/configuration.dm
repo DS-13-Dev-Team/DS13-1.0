@@ -231,7 +231,7 @@
 		modes += M.config_tag
 		mode_names[M.config_tag] = M.name
 		if(M.votable)
-			votable_modes += M
+			votable_modes += M.config_tag //I foget that config tag there need.
 	log_config("Loading config file [CONFIG_MODES_FILE]...")
 	var/filename = "[directory]/[CONFIG_MODES_FILE]"
 	var/list/Lines = file2list(filename)
