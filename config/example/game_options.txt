@@ -18,7 +18,7 @@ LIMBS_CAN_BREAK
 ORGAN_HEALTH_MULTIPLIER 0.9
 
 ## multiplier which influences how fast organs regenerate naturally
-## 1 means normal, .5 means half
+## 1 means normal, 0.5 means half
 ORGAN_REGENERATION_MULTIPLIER 0.25
 
 ### REVIVAL ###

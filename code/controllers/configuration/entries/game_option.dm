@@ -26,10 +26,8 @@
 	integer = FALSE
 
 /datum/config_entry/flag/bones_can_break
-	config_entry_value = TRUE
 
 /datum/config_entry/flag/limbs_can_break
-	config_entry_value = TRUE
 
 /datum/config_entry/flag/revival_pod_plants
 
