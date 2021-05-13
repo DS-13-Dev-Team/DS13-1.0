@@ -15,12 +15,6 @@
 	  * Lazy associated list in the structure of `observation:registree/list of registrees`
 	  */
 	var/list/observations
-	/**
-	  * Is this datum capable of sending observations?
-	  *
-	  * Set to true when a observation has been registered
-	  */
-	var/observation_enabled = FALSE
 
 #ifdef TESTING
 	var/tmp/running_find_references
