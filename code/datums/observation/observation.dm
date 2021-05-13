@@ -98,7 +98,7 @@
 /decl/observ/proc/has_listeners(var/event_source)
 	return is_listening(event_source)
 
-/decl/observ/proc/register(datum/event_source, datum/listener, proc_call, override = FALSE)
+/decl/observ/proc/register(datum/event_source, datum/listener, proc_call)
 	if(QDELETED(listener) || QDELETED(event_source))
 		return
 	// Sanity checking.
@@ -123,28 +123,22 @@
 		callbacks = list()
 		listeners[listener] = callbacks
 
-	var/list/lookup = event_source.observations
-	if(!lookup)
-		event_source.observations = lookup = list()
-	if(!lookup[src])
-		event_source.observations[src] = lookup[src] = list()
-	if(!lookup[src][listener])
-		event_source.observations[src][listener] = lookup[src][listener] = list()
-
-	var/list/procs = event_source.observations[src][listener]
-
-	if(!override && procs[event_source])
-		crash_with("[src] overridden. Use override = TRUE to suppress this warning")
-
-	procs[event_source] = proc_call
-
+	if(!event_source.observations)
+		event_source.observations = list()
+	if(!event_source.observations[src])
+		event_source.observations[src] = list()
+	if(!event_source.observations[src][listener])
+		event_source.observations[src][listener] =  list()
 
 	// If the proc_call is already registered skip in Singleton
 	if(proc_call in callbacks)
 		return FALSE
+	if(proc_call in event_source.observations[src][listener][event_source])
+		return FALSE
 
 	// Add the callback, and return true.
 	callbacks += proc_call
+	event_source.observations[src][listener][event_source] += proc_call
 	return TRUE
 
 /decl/observ/proc/unregister(datum/event_source, datum/listener, proc_call)
@@ -262,20 +256,11 @@
  *
  * Use the [RAISE_EVENT] define instead
  */
-/datum/proc/RaiseEvent(decl/observ/observation_datum, list/arguments)
-	var/listener = observations[observation_datum]
-	if(!length(listener))
-		return observation_datum.RaiseEvent(listener, src, arguments)
+/decl/observ/proc/RaiseEvent(datum/event_source, list/arguments)
 	. = NONE
-	for(var/I in listener)
-		. |= observation_datum.RaiseEvent(listener, src, arguments)
-
-/decl/observ/RaiseEvent(listener, event_source, list/arguments)
-	var/datum/E = event_source
-	if(!E.observations || E.observations == list())
-		return NONE
-	var/proctype = E.observations[src][listener][event_source]
-	return NONE | CallAsync(listener, proctype, arguments)
+	for (var/listener as anything in event_source.observations[src])
+		for (var/proctype in event_source.observations[src][listener])
+			. |= CallAsync(listener, proctype, arguments)
 
 /datum/proc/UnregisterObservation(datum/event_source, decl/observ/observation_datum)
 	var/list/lookup = event_source.observations
