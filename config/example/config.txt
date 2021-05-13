@@ -301,17 +301,17 @@ EXPECTED_ROUND_LENGTH 180
 ## Uncomment to prevent anyone from joining the round by default.
 #DISABLE_ENTRY
 
-## Uncomment to disable the OOC channel by default.
-#DISABLE_OOC
+##Comment to disable the OOC channel by default.
+OOC_ALLOWED
 
-## Uncomment to disable the LOOC channel by default.
-#DISABLE_LOOC
+##Comment to disable the LOOC channel by default.
+LOOC_ALLOWED
 
-## Uncomment to disable the dead OOC channel by default.
-#DISABLE_DEAD_OOC
+##Comment to disable the dead OOC channel by default.
+DOOC_ALLOWED
 
-## Uncomment to disable the AOOC channel by default.
-#DISABLE_AOOC
+##Comment to disable the AOOC channel by default.
+AOOC_ALLOWED
 
 ## Uncomment to disable ghost chat by default.
 #DISABLE_DSAY

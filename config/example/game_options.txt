@@ -1,30 +1,33 @@
 ### HEALTH ###
 
+## level of health at which a mob becomes unconscious (crit)
+HEALTH_THRESHOLD_CRIT -50
+
 ## level of health at which a mob becomes dead
 HEALTH_THRESHOLD_DEAD -100
 
 ## Determines whether bones can be broken through excessive damage to the organ
-## 0 means bones can't break, 1 means they can
-BONES_CAN_BREAK 1
+## Comment this for disable
+BONES_CAN_BREAK
 ## Determines whether limbs can be amputated through excessive damage to the organ
-## 0 means limbs can't be amputated, 1 means they can
-LIMBS_CAN_BREAK 1
+## Comment this for disable
+LIMBS_CAN_BREAK
 
 ## multiplier which enables organs to take more damage before bones breaking or limbs being destroyed
-## 100 means normal, 50 means half
-ORGAN_HEALTH_MULTIPLIER 90
+## 1 means normal, 0.5 means half
+ORGAN_HEALTH_MULTIPLIER 0.9
 
 ## multiplier which influences how fast organs regenerate naturally
-## 100 means normal, 50 means half
-ORGAN_REGENERATION_MULTIPLIER 25
+## 1 means normal, 0.5 means half
+ORGAN_REGENERATION_MULTIPLIER 0.25
 
 ### REVIVAL ###
 
 ## whether pod plants work or not
-REVIVAL_POD_PLANTS 1
+REVIVAL_POD_PLANTS
 
 ## whether cloning tubes work or not
-REVIVAL_CLONING 1
+REVIVAL_CLONING
 
 ## amount of time (in hundredths of seconds) for which a brain retains the "spark of life" after the person's death (set to -1 for infinite)
 REVIVAL_BRAIN_LIFE -1

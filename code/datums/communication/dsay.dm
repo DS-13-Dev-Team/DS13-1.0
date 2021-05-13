@@ -3,7 +3,7 @@
 
 /decl/communication_channel/dsay
 	name = "DSAY"
-	config_setting = "dsay_allowed"
+	config_setting = /datum/config_entry/flag/dsay_allowed
 	expected_communicator_type = list(/client, /datum)
 	flags = COMMUNICATION_LOG_CHANNEL_NAME
 	log_proc = /proc/log_say
