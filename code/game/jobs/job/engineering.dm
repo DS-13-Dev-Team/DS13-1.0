@@ -30,6 +30,8 @@
 	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
+	salary = SALARY_COMMAND
+
 datum/job/ce/get_description_blurb()
 	return "You are the Chief Engineer. Your job is to keep the ship well-maintained and in one piece, along with directing the Technical Engineers. You are subordinate to the Captain and First Lieutenant."
 
@@ -46,6 +48,7 @@ datum/job/ce/get_description_blurb()
 	ideal_character_age = 30
 	starting_credits = 4520
 
+	salary = SALARY_SKILLED
 	access = list(access_engineering, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/engineering/tech_engineer
 

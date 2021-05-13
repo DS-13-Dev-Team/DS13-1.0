@@ -98,3 +98,5 @@
 /obj/item/weapon/storage/internal/pouch/New(var/newloc, var/storage_space)
 	max_storage_space = storage_space
 	..()
+
+

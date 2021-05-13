@@ -13,6 +13,8 @@
 	ideal_character_age = 50
 	starting_credits = 4995
 
+	salary = SALARY_COMMAND
+
 	access = list(access_cscio, access_bridge, access_research, access_medical, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/science/cscio
 
@@ -43,6 +45,8 @@ datum/job/cscio/get_description_blurb()
 	minimal_player_age = 18
 	ideal_character_age = 26
 	starting_credits = 2690
+
+	salary = SALARY_EDUCATED
 
 	access = list(access_research, access_medical)
 	outfit_type = /decl/hierarchy/outfit/job/science/ra

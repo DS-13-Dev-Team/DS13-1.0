@@ -1007,13 +1007,13 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 /*
 	Use the icon proc to produce an icon to pass in here
 */
-/atom/proc/flick_overlay_icon(var/duration, var/icon/I)
+/atom/proc/flick_overlay_icon(var/duration, var/icon/I, var/override_layer, var/override_plane)
 
 
 	var/obj/flick_overlay/OF = new(src)
 	OF.icon = I
-	OF.plane = src.plane
-	OF.layer = src.layer
+	OF.plane = (override_plane ? override_plane : src.plane)
+	OF.layer = (override_layer ? override_layer : src.layer)
 	OF.set_host(src, duration)
 	return OF
 

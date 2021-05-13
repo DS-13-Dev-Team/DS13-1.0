@@ -303,3 +303,9 @@ var/const/enterloopsanity = 100
 		if(isliving(AM))
 			var/mob/living/M = AM
 			M.turf_collision(src, speed)
+
+
+
+//Telling a turf to store an item just puts it ontop of us
+/turf/store_item(var/obj/item/input, var/mob/user)
+	input.forceMove(src)

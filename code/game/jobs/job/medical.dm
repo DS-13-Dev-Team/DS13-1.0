@@ -27,6 +27,8 @@
 	                    SKILL_FORENSICS   = SKILL_EXPERT)
 	skill_points = 25
 
+	salary = SALARY_COMMAND
+
 datum/job/smo/get_description_blurb()
 	return "You are the Senior Medical Officer. You are chiefly responsible for the health and well-being of all crewmembers aboard the ship. You are subordinate to the Captain and First Lieutenant."
 
@@ -44,6 +46,8 @@ datum/job/smo/get_description_blurb()
 
 	access = list(access_medical, access_chemistry, access_research)
 	outfit_type = /decl/hierarchy/outfit/job/medical/md
+
+	salary = SALARY_EDUCATED
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
 						SKILL_MEDICAL	  = SKILL_EXPERT,
@@ -69,6 +73,8 @@ datum/job/md/get_description_blurb()
 	selection_color = "#013d3b"
 	minimal_player_age = 18
 	starting_credits = 4440
+
+	salary = SALARY_EDUCATED
 
 	access = list(access_medical, access_surgery, access_research)
 	outfit_type = /decl/hierarchy/outfit/job/medical/surg

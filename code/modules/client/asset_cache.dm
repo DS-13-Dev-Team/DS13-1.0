@@ -112,8 +112,10 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	var/t = 0
 	var/timeout_time = ASSET_CACHE_SEND_TIMEOUT * client.sending.len
 	while(client && !client.completed_asset_jobs.Find(job) && t < timeout_time) // Reception is handled in Topic()
+		world << "Waiting for timeout"
 		sleep(1) // Lock up the caller until this is received.
 		t++
+
 
 	if(client)
 		client.sending -= unreceived
@@ -199,17 +201,6 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
 
-//This loads little icons used for proto/autolathe
-/datum/asset/simple/design_icons/register()
-	for(var/D in SSresearch.all_designs)
-		var/datum/design/design = D
-
-		var/filename = sanitizeFileName("[design.build_path].png")
-		var/icon/I = getFlatTypeIcon(design.build_path)
-		register_asset(filename, I)
-		assets[filename] = I
-
-		design.ui_data["icon"] = filename
 
 /datum/asset/simple/tgui
 	isTrivial = FALSE
@@ -327,21 +318,31 @@ var/decl/asset_cache/asset_cache = new()
 /datum/asset/simple/research_designs/register()
 	for(var/R in subtypesof(/datum/design))
 		var/datum/design/design = new R
+
 		design.AssembleDesignInfo()
+
 		if(!design.build_path)
 			continue
 
+		//Cache the icons
+		var/filename = sanitizeFileName("[design.build_path].png")
+		var/icon/I = getFlatTypeIcon(design.build_path)
+		register_asset(filename, I)
+		assets[filename] = I
+
+		design.ui_data["icon"] = filename
+		design.ui_data["icon_width"] = I.Width()
+		design.ui_data["icon_height"] = I.Height()
+
 		SSresearch.all_designs += design
 
-		// Design ID is string or path.
-		// If path, make it accessible in both path and text form.
-		SSresearch.design_ids[design.id] = design
+		// Design ID is string
 		SSresearch.design_ids["[design.id]"] = design
 
 	SSresearch.generate_integrated_circuit_designs()
 
-	for(var/d in SSresearch.all_designs)
-		var/datum/design/design = d
+	for(var/D in SSresearch.design_ids)
+		var/datum/design/design = SSresearch.design_ids[D]
 		var/datum/computer_file/binary/design/design_file = new
 		design_file.design = design
 		design_file.on_design_set()
@@ -353,3 +354,8 @@ var/decl/asset_cache/asset_cache = new()
 	for(var/file in SSresearch.design_files_to_init)
 		SSresearch.initialize_design_file(file)
 	SSresearch.design_files_to_init = list()
+
+	load_store_database()
+
+
+

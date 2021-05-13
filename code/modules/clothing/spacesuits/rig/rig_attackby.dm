@@ -30,6 +30,10 @@
 		to_chat(user, "You [locked ? "lock" : "unlock"] \the [src] access panel.")
 		return
 
+	else if (iscredits(W))
+		if (!handle_credit_chip(W, user))
+			return
+
 	else if(isCrowbar(W) && can_modify())
 
 		if(!open && locked)
@@ -211,32 +215,28 @@
 		return FALSE
 
 
-
+	var/list/replaced
 	if (!RM.can_install(src, user, TRUE))
-		var/obj/item/rig_module/conflict = RM.get_conflicting(src)
+		RM.resolve_installation_upgrade(src, do_install = FALSE, force = force)
 
 		//If force is enabled, we check again with conflict detection turned off
-		if (!force || !RM.can_install(src, user, FALSE, FALSE))
-			if (conflict)
+		if (!RM.can_install(src, user, FALSE, FALSE))
+			if (RM.get_conflicting(src))
 				to_chat(user, "The RIG already has a module of that class installed.")
 			return FALSE
-
-		//If force is enabled, and it -would- be able to install without conflict detection, then we can do a replacement install
-		//Assuming the existing one doesnt block it
-		if (!conflict.pre_replace(src, RM))
-			return FALSE
-
-		//Okay no blocking was done, lets eject the old one
-		uninstall(conflict, delete_replaced)
 
 	if (user)
 		if (!instant)
 			to_chat(user, "You begin installing \the [RM] into \the [src].")
 			if(!do_after(user,40,src))
 				return	FALSE
-		if(!user.unEquip(RM)) return FALSE
+		if(!user.unEquip(RM))
+			return FALSE
 		to_chat(user, "You install \the [RM] into \the [src].")
 	install(RM)
+
+	if (replaced && length(replaced))
+		return replaced
 	return TRUE
 
 
@@ -269,3 +269,10 @@
 
 
 	return TRUE
+
+
+
+
+
+
+

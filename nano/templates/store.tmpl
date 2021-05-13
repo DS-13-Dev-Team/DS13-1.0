@@ -1,0 +1,134 @@
+<!-- 
+Title: Store
+Used In File(s): \code\modules\economy\store\store_ui.dm
+ -->
+<style>
+  body{height: 100%; line-height:135%;}
+  
+h1 {
+    font-size: 18px; color: #e9c183;padding: 0px;
+}
+h2 {
+    font-size: 16px; color: #e9c183;padding: 0px;
+}
+h3 {
+    font-size: 14px; color: #e9c183;padding: 0px;
+}
+
+div.scrollable
+{
+width:100%;
+height: 100%;
+margin: 0;
+padding: 0;
+overflow-y: auto
+}
+</style>
+<table style="width: 100%; height: 90vh; margin: 0px;">
+	
+	<tr style="height: 15%;">
+		<!-- Category Selection Buttons -->
+		<td colspan = "2" style="width: 70%; border: 1px solid black; overflow: hidden; padding: 0px; margin: 0px; line-height: 140%; vertical-align: top;">
+			{{props data.designs :sublist:category}}
+				{{:helper.link(category, null, { "category" : category }, (category != data.selected_category) ? null : 'disabled')}}
+			{{/props}}
+			
+		</td>
+		
+		<!-- Balance and Withdrawal-->
+		<td rowspan = "2" style="vertical-align: top; padding: 10px;">
+			<h1> Credits: </h1>
+			<hr>
+			<span style="color: #e9c183">Account:</span> {{:data.credits_account}} </br>
+			{{:helper.link("Withdraw", null, { "withdraw" : 1 })}}</br></br>
+			<span style="color: #e9c183">RIG:</span> {{:data.credits_rig}}</br>
+			<span style="color: #e9c183">Chip:</span> 
+													{{if data.credits_chip}}
+														{{:data.credits_chip}} <span style = "display: inline; float: none;">{{:helper.link("->", null, { "eject_chip" : 1 }, null,"linkInline")}}</span>
+													{{else}}
+														Not inserted
+													{{/if}}
+														</br>
+			<hr>
+			<span style="color: #e9c183">Total Available:</span> {{:data.credits_total}}</br>
+
+
+			</br>
+			
+			<!-- Deposit Box -->
+			<h3>Deposit Box</h3>
+			<div style = "height:150px; width= 200px; background-color:#444444; overflow: auto;">
+			<table style = "height 100%; width: 100%;    color: #dddddd;">
+			
+				{{if data.deposit}}
+					{{for data.deposit}}
+						<tr>
+							<td>{{:value.name}}</td>	
+							<td>{{:value.value}}</td> 
+							<td style="text-align: right;">{{:helper.link("->", null, { "eject" : value.name })}}</td>
+						</tr>
+					{{/for}}
+				{{else}}
+					<tr>
+					<td>
+					Deposit box is empty...</td>
+					</tr>
+				{{/if}}
+			</table>
+			</div>
+			{{:helper.link("Eject All", null, { "eject_all" : 1 }, data.deposit ? null : 'disabled')}}
+		</td>
+	</tr>	
+	
+	<tr style="height: 60%;">	
+		<!-- List of items in current category-->
+		<td colspan = "2" style="width: 70%; border: 1px solid black; overflow: hidden; line-height: 100%; vertical-align: top;">
+			<div class="scrollable" style="height:300px;">
+			<table style="table-layout:fixed;">
+			{{props data.designs :sublist:category}}
+				{{if category == data.selected_category}}
+					{{for sublist :value}}
+						<tr>
+						<td style="text-align: left;">
+						{{:helper.link(value.item_name, null, { "select_item" : value.id }, (data.selected_id != value.id) ? null : 'disabled')}}
+						</td>
+						<td style="text-align: right;">
+						{{:value.price}}
+						</td>
+						</tr>
+					{{/for}}
+				{{/if}}
+			{{/props}}
+			</table>
+			</div>
+		</td>
+	</tr>	
+	<tr style="height: 25%;">
+	
+		<!-- Display of info about currently selected item. Image, name, description, price-->
+		<!-- Image-->
+		<td  style="width: 15%; border: 1px solid black; overflow: hidden; text-align: center;">
+			{{if data.current}}
+				<img src= {{:data.current.icon}} height={{:data.current.icon_height * 2.5}} width={{:data.current.icon_width * 2.5}}>
+			{{/if}}
+
+
+		<!-- Name and Desc-->
+		<td  style="width: 50%; border: 1px solid black; overflow: hidden; vertical-align: top; padding: 5px; padding-left: 10px;">	
+			{{if data.current}}	
+				<h1>{{:data.current.item_name}}</h1>
+				{{:data.current.desc}}
+			{{/if}}
+		</td>
+		
+		
+		<!-- Buy buttons-->
+		<td>
+			{{:helper.link("Buy", null, { "buy" : 1 }, (data.buy_enabled) ? null : 'disabled', "linkWide")}}
+			{{:helper.link("Buy to Deposit Box", null, { "buy" : 2 }, (data.buy_enabled) ? null : 'disabled', "linkWide")}}
+			{{if data.transfer_enabled}}
+				{{:helper.link("Buy and Transfer", null, { "buy" : 3 }, (data.buy_enabled) ? null : 'disabled', "linkWide")}}
+			{{/if}}
+		</td>
+	</tr>	
+</table>

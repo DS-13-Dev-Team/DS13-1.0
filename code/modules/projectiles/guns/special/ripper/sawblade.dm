@@ -157,8 +157,11 @@
 	mag_type = SPEEDLOADER
 	delete_when_empty = TRUE
 
-
-
+/obj/item/ammo_magazine/sawblades/diamond
+	name = "diamond blades"
+	icon_state = "diamond_blades"
+	desc = "A pack of high precision diamond-edged replacement sawblades"
+	ammo_type = /obj/item/ammo_casing/sawblade/diamond
 
 
 /*-----------------------------------
