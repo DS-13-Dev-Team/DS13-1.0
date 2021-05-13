@@ -123,27 +123,17 @@
 		callbacks = list()
 		listeners[listener] = callbacks
 
-	var/list/procs = listener.observation_procs
-	if(!procs)
-		listener.observation_procs = procs = list()
-	if(!procs[event_source])
-		procs[event_source] = list()
 	var/list/lookup = event_source.observations
 	if(!lookup)
 		event_source.observations = lookup = list()
+		event_source.observations[src][listener] = lookup[src][listener] = list()
+		event_source.observations[src][listener][event_source] = lookup[src][listener][event_source] = list()
+	var/list/procs = event_source.observations[src][listener]
 
-	if(!override && procs[event_source][src])
+	if(!override && procs[event_source])
 		crash_with("[src] overridden. Use override = TRUE to suppress this warning")
 
-	procs[event_source][src] = proc_call
-
-	if(!lookup[src]) // Nothing has registered here yet
-		lookup[src] = listener
-	else if(!length(lookup[src])) // One other thing registered here
-		lookup[src] = list(lookup[src]=TRUE)
-		lookup[src][listener] = TRUE
-	else if(lookup[src] != listener)// Many other things have registered here
-		lookup[src][listener] = TRUE
+	procs[event_source] = proc_call
 
 	listener.observation_enabled = TRUE
 
@@ -279,17 +269,16 @@
 		. |= observation_datum.RaiseEvent(listener, src, arguments)
 
 /decl/observ/RaiseEvent(listener, event_source, list/arguments)
-	var/datum/C = listener
-	if(!C.observation_enabled)
+	var/datum/E = event_source
+	if(!E.observations || E.observations == list())
 		return NONE
-	var/proctype = C.observation_procs[event_source][src]
-	return NONE | CallAsync(C, proctype, arguments)
+	var/proctype = E.observations[src][listener][event_source]
+	return NONE | CallAsync(listener, proctype, arguments)
 
 /datum/proc/UnregisterObservation(datum/event_source, decl/observ/observation_datum)
 	var/list/lookup = event_source.observations
-	if(!observation_procs || !observation_procs[event_source] || !lookup)
-		return
-	if(!observation_procs[event_source][observation_datum])
+	var/list/listener = event_source.observations[observation_datum]
+	if(!listener || !lookup)
 		return
 	switch(length(lookup[observation_datum]))
 		if(2)
@@ -306,7 +295,3 @@
 				event_source.observations = null
 		else
 			lookup[observation_datum] -= src
-
-	observation_procs[event_source] -= observation_datum
-	if(!observation_procs[event_source].len)
-		observation_procs -= event_source

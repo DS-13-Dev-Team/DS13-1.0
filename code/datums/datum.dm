@@ -15,8 +15,6 @@
 	  * Lazy associated list in the structure of `observation:registree/list of registrees`
 	  */
 	var/list/observations
-	/// Lazy associated list in the structure of `observations:proctype` that are run when the datum receives that observation
-	var/list/list/datum/callback/observation_procs
 	/**
 	  * Is this datum capable of sending observations?
 	  *
@@ -48,8 +46,8 @@
 		qdel(timer)
 
 	//Unregister need because we will UNREGISTER ALL OBSERVATION_DATUM, NO PROC CALL //TO DO make unregister on OBSERVATION_DATUM
-	for(var/target in observation_procs)
-		UnregisterObservation(target, observation_procs[target])
+	for(var/observ in observations)
+		UnregisterObservation(observations[observ], observ)
 
 	return QDEL_HINT_QUEUE
 
