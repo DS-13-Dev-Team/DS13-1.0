@@ -126,8 +126,11 @@
 	var/list/lookup = event_source.observations
 	if(!lookup)
 		event_source.observations = lookup = list()
+	if(!lookup[src])
+		event_source.observations[src] = lookup[src] = list()
+	if(!lookup[src][listener])
 		event_source.observations[src][listener] = lookup[src][listener] = list()
-		event_source.observations[src][listener][event_source] = lookup[src][listener][event_source] = list()
+
 	var/list/procs = event_source.observations[src][listener]
 
 	if(!override && procs[event_source])
@@ -135,7 +138,6 @@
 
 	procs[event_source] = proc_call
 
-	listener.observation_enabled = TRUE
 
 	// If the proc_call is already registered skip in Singleton
 	if(proc_call in callbacks)
