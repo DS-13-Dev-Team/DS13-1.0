@@ -207,10 +207,8 @@
 
 /mob/living/carbon/human/reset_layer()
 	if(hiding)
-		plane = HIDING_MOB_PLANE
 		layer = HIDING_MOB_LAYER
 	else if(lying)
-		plane = species.plane_lying
 		layer = species.layer_lying
 	else
 		plane = species.plane

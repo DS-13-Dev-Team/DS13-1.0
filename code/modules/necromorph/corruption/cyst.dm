@@ -14,7 +14,7 @@
 	max_health = 50
 	resistance = 5
 	desc = "That looks dangerous."
-	plane = EFFECTS_BELOW_LIGHTING_PLANE //Cysts need to draw over many things
+	plane = DEFAULT_PLANE //Cysts need to draw over many things
 	var/obj/item/ammo_casing/cystbomb/payload = null
 
 	biomass = 5

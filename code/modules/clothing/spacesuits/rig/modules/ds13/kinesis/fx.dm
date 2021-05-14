@@ -4,7 +4,7 @@
 	light_color = COLOR_KINESIS_INDIGO
 	icon = 'icons/effects/128x48.dmi'
 	icon_state = "lightning"
-	plane = MOB_PLANE
+	plane = DEFAULT_PLANE
 	alpha = 128
 
 	//These should not be necessary, there's something fundamentally wrong with pixel calculations

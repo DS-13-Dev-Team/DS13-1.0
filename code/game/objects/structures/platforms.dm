@@ -15,19 +15,19 @@
 	breakable = 0 // Cannot be breakable.
 
 /obj/structure/platform/platform/New()
-	var/image/I = image(icon, src, "platform_overlay", ABOVE_TURF_PLANE, dir)
+	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)
 	switch(dir)
 		if(SOUTH)
-			layer = ABOVE_TURF_PLANE+0.1
+			layer = LADDER_LAYER+0.1
 			I.pixel_y = -16
 		if(NORTH)
 			I.pixel_y = 16
 		if(EAST)
 			I.pixel_x = 16
-			layer = ABOVE_TURF_PLANE+0.1
+			layer = LADDER_LAYER+0.1
 		if(WEST)
 			I.pixel_x = -16
-			layer = ABOVE_TURF_PLANE+0.1
+			layer = LADDER_LAYER+0.1
 	overlays += I
 	..()
 
@@ -49,13 +49,13 @@ obj/structure/platform/platform_decoration
 /obj/structure/platform/platform_decoration/New()
 	switch(dir)
 		if (NORTH)
-			layer = ABOVE_TURF_PLANE+0.1
+			layer = LADDER_LAYER+0.1
 		if (SOUTH)
-			layer = ABOVE_TURF_PLANE+0.1
+			layer = LADDER_LAYER+0.1
 		if (SOUTHEAST)
-			layer = ABOVE_TURF_PLANE+0.1
+			layer = LADDER_LAYER+0.1
 		if (SOUTHWEST)
-			layer = ABOVE_TURF_PLANE+0.1
+			layer = LADDER_LAYER+0.1
 	.. ()
 
 //Map variants//

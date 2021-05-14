@@ -223,7 +223,7 @@
 	density = 0
 	opacity = 0
 	anchored = 1
-	plane = ABOVE_TURF_PLANE
+
 	layer = RUNE_LAYER
 	var/debug = FALSE
 	var/list/people = list()

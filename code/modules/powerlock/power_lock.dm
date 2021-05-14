@@ -1,7 +1,6 @@
 /obj/power_lock
 	var/datum/node_room/NR
 	var/nodes_collected = 0
-	plane = ABOVE_OBJ_PLANE
 	desc = "A security system which requires power nodes to open."
 	//Temporary
 	icon = 'icons/obj/powerlock.dmi'

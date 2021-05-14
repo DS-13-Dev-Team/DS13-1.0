@@ -7,7 +7,7 @@
 	icon_state = "singularity_s1"
 	anchored = 1
 	density = 1
-	plane = EFFECTS_BELOW_LIGHTING_PLANE
+	plane = DEFAULT_PLANE
 	layer = SINGULARITY_LAYER
 	light_outer_range = 6
 	unacidable = 1 //Don't comment this out.

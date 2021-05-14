@@ -118,7 +118,7 @@
 /obj/structure/pit/closed/grave/Initialize()
 	var/obj/structure/closet/coffin/C = new(src.loc)
 	var/obj/item/remains/human/bones = new(C)
-	bones.plane = LYING_MOB_PLANE
+	bones.plane = DEFAULT_PLANE
 	bones.layer = LYING_MOB_LAYER
 	var/obj/structure/gravemarker/random/R = new(src.loc)
 	R.generate()

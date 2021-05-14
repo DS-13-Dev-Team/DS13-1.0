@@ -6,7 +6,7 @@
 	density = 0
 	anchored = 1.0
 	var/obj/item/stack/tile/mono/plated_tile
-	plane = ABOVE_TURF_PLANE
+
 	layer = CATWALK_LAYER
 	var/hatch_open = FALSE
 	footstep_sounds= list(
@@ -139,7 +139,7 @@
 	density = 1
 	anchored = 1.0
 	var/activated = FALSE
-	layer = ABOVE_TURF_PLANE
+	layer = CATWALK_LAYER
 	var/plating_type = /decl/flooring/tiling/mono
 
 /obj/effect/catwalk_plated/Initialize(mapload)
@@ -198,5 +198,4 @@
 */
 /obj/structure/catwalk/rail
 	name = "rail"
-	plane = BELOW_TURF_PLANE
 	simulated = FALSE	//This prevents it from being moved with the tram

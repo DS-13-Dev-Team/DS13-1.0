@@ -4,7 +4,7 @@
 	icon = 'icons/mob/bot/ED209.dmi'
 	icon_state = "ed2090"
 	attack_state = "ed209-c"
-	plane = MOB_PLANE
+	plane = DEFAULT_PLANE
 	layer = MOB_LAYER
 	density = 1
 	health = 100
