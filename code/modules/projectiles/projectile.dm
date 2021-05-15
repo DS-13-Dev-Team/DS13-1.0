@@ -376,6 +376,8 @@
 
 /obj/item/projectile/proc/attack_atom(var/atom/A,  var/distance, var/miss_modifier=0)
 	.= A.bullet_act(src, def_zone)
+	if (!.)
+		. = PROJECTILE_HIT
 
 	//A return value of less than zero indicates the projectile missed or penetrated, we won't deflect it in that case
 	if (. >= 0 && prob(ricochet_chance))
