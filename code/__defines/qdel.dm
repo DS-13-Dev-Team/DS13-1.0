@@ -18,17 +18,3 @@
 #define GC_QUEUED_FOR_QUEUING -1
 #define GC_QUEUED_FOR_HARD_DEL -2
 #define GC_CURRENTLY_BEING_QDELETED -3
-
-#define QDELING(X) (X.gc_destroyed)
-#define QDELETED(X) (!X || QDELING(X))
-#define QDESTROYING(X) (!X || X.gc_destroyed == GC_CURRENTLY_BEING_QDELETED)
-
-
-#define QDEL_NULL_LIST(x) if(x) { for(var/y in x) { qdel(y) } ; x = null }
-
-#define QDEL_LIST(x) if(x) { for(var/y in x) { qdel(y) } ; x = list() }
-#define QDEL_ASSOC_LIST(x) if(x) { for(var/y in x) { if(x[y]){qdel(x[y])} } ; x = list() }
-
-#define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
-
-#define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE)

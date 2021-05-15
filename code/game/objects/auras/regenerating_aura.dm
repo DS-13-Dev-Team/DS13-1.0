@@ -30,13 +30,13 @@
 		return 0
 
 	if(brute_mult && H.getBruteLoss())
-		H.adjustBruteLoss(-brute_mult * config.organ_regeneration_multiplier)
+		H.adjustBruteLoss(-brute_mult * CONFIG_GET(number/organ_regeneration_multiplier))
 		H.nutrition -= nutrition_damage_mult
 	if(fire_mult && H.getFireLoss())
-		H.adjustFireLoss(-fire_mult * config.organ_regeneration_multiplier)
+		H.adjustFireLoss(-fire_mult * CONFIG_GET(number/organ_regeneration_multiplier))
 		H.nutrition -= nutrition_damage_mult
 	if(tox_mult && H.getToxLoss())
-		H.adjustToxLoss(-tox_mult * config.organ_regeneration_multiplier)
+		H.adjustToxLoss(-tox_mult * CONFIG_GET(number/organ_regeneration_multiplier))
 		H.nutrition -= nutrition_damage_mult
 
 	if(organ_mult)

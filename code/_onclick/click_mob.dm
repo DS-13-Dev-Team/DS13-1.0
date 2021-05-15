@@ -172,7 +172,7 @@
 	next_move = world.time
 
 /mob/proc/canClick()
-	if(config.no_click_cooldown || next_move <= world.time)
+	if(CONFIG_GET(flag/no_click_cooldown) || next_move <= world.time)
 		return 1
 	return 0
 

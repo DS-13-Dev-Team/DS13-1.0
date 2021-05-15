@@ -9,7 +9,7 @@
 #define ITEM_SIZE_BULKY          4
 #define ITEM_SIZE_HUGE           5
 #define ITEM_SIZE_GARGANTUAN     6
-#define ITEM_SIZE_NO_CONTAINER INFINITY // Use this to forbid item from being placed in a container.
+#define ITEM_SIZE_NO_CONTAINER 		7// Use this to forbid item from being placed in a container.
 
 
 /*

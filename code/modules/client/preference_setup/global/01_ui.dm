@@ -31,14 +31,14 @@
 	. += "<b>UI Settings</b><br>"
 	. += "<b>UI Style:</b> <a href='?src=\ref[src];select_style=1'><b>[pref.UI_style]</b></a><br>"
 	. += "<b>Custom UI</b> (recommended for White UI):<br>"
-	. += "-Color: <a href='?src=\ref[src];select_color=1'><b>[pref.UI_style_color]</b></a> <table style='display:inline;' bgcolor='[pref.UI_style_color]'><tr><td>__</td></tr></table> <a href='?src=\ref[src];reset=ui'>reset</a><br>"
-	. += "-Alpha(transparency): <a href='?src=\ref[src];select_alpha=1'><b>[pref.UI_style_alpha]</b></a> <a href='?src=\ref[src];reset=alpha'>reset</a><br>"
+	. += "-Color: <a href='?src=\ref[src];select_color=1'><b>[pref.UI_style_color]</b></a>ï¿½<table style='display:inline;' bgcolor='[pref.UI_style_color]'><tr><td>__</td></tr></table>ï¿½<a href='?src=\ref[src];reset=ui'>reset</a><br>"
+	. += "-Alpha(transparency): <a href='?src=\ref[src];select_alpha=1'><b>[pref.UI_style_alpha]</b></a>ï¿½<a href='?src=\ref[src];reset=alpha'>reset</a><br>"
 	if(can_select_ooc_color(user))
-		. += "<b>OOC Color:</b> "
+		. += "<b>OOC Color:</b>ï¿½"
 		if(pref.ooccolor == initial(pref.ooccolor))
 			. += "<a href='?src=\ref[src];select_ooc_color=1'><b>Using Default</b></a><br>"
 		else
-			. += "<a href='?src=\ref[src];select_ooc_color=1'><b>[pref.ooccolor]</b></a> <table style='display:inline;' bgcolor='[pref.ooccolor]'><tr><td>__</td></tr></table> <a href='?src=\ref[src];reset=ooc'>reset</a><br>"
+			. += "<a href='?src=\ref[src];select_ooc_color=1'><b>[pref.ooccolor]</b></a> <table style='display:inline;' bgcolor='[pref.ooccolor]'><tr><td>__</td></tr></table>ï¿½<a href='?src=\ref[src];reset=ooc'>reset</a><br>"
 
 /datum/category_item/player_setup_item/player_global/ui/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["select_style"])
@@ -79,4 +79,4 @@
 	return ..()
 
 /proc/can_select_ooc_color(var/mob/user)
-	return config.allow_admin_ooccolor && check_rights(R_ADMIN, 0, user)
+	return CONFIG_GET(flag/allow_admin_ooccolor) && check_rights(R_ADMIN, 0, user)

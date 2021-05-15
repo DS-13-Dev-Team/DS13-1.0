@@ -82,7 +82,7 @@
 	PT.register_turfs()
 	set_extension(src, /datum/extension/proximity_manager, PT)
 
-	if (config.marker_auto_activate)
+	if (CONFIG_GET(flag/marker_auto_activate))
 		spawn(100)
 			make_active()
 

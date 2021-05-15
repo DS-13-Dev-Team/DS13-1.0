@@ -54,7 +54,7 @@ var/global/datum/controller/gameticker/ticker
 				master_mode = "extended"
 
 		to_world("<b>Trying to start [master_mode]...</b>")
-		if (config.auto_start)
+		if (CONFIG_GET(flag/auto_start))
 			start_ASAP = TRUE
 		else
 			to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
@@ -69,7 +69,7 @@ var/global/datum/controller/gameticker/ticker
 				vote.process()
 			if(round_progressing)
 				pregame_timeleft--
-			if(pregame_timeleft == config.vote_autogamemode_timeleft && !gamemode_voted && !bypass_gamemode_vote)
+			if(pregame_timeleft == CONFIG_GET(number/vote_autogamemode_timeleft) && !gamemode_voted && !bypass_gamemode_vote)
 				gamemode_voted = 1
 				if(!vote.time_remaining)
 					vote.autogamemode()	//Quit calling this over and over and over and over.
@@ -99,21 +99,11 @@ var/global/datum/controller/gameticker/ticker
 	else
 		src.hide_mode = 0
 
-	var/list/runnable_modes = config.get_runnable_modes()
-	if((master_mode=="random") || (master_mode=="secret"))
-		if(!runnable_modes.len)
-			current_state = GAME_STATE_PREGAME
-			Master.SetRunLevel(RUNLEVEL_LOBBY)
-			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
-
-			return FALSE
+	if(master_mode=="secret")
 		if(secret_force_mode != "secret")
 			src.mode = config.pick_mode(secret_force_mode)
 		if(!src.mode)
-			var/list/weighted_modes = list()
-			for(var/datum/game_mode/GM in runnable_modes)
-				weighted_modes[GM.config_tag] = config.probabilities[GM.config_tag]
-			src.mode = gamemode_cache[pickweight(weighted_modes)]
+			src.mode = config.pick_mode(master_mode)
 	else
 		src.mode = config.pick_mode(master_mode)
 
@@ -143,14 +133,6 @@ var/global/datum/controller/gameticker/ticker
 	if(hide_mode)
 		to_world("<B>The current game mode is - Secret!</B>")
 
-		if(runnable_modes.len)
-			var/list/tmpmodes = new
-			for (var/datum/game_mode/M in runnable_modes)
-				tmpmodes+=M.name
-			tmpmodes = sortList(tmpmodes)
-			if(tmpmodes.len)
-				to_world("<B>Possibilities:</B> [english_list(tmpmodes)]")
-
 	else
 		src.mode.announce()
 
@@ -168,17 +150,17 @@ var/global/datum/controller/gameticker/ticker
 	callHook("roundstart")
 
 	//Here we will trigger the auto-observe and auto bst debug things
-	if (config.auto_observe)
+	if (CONFIG_GET(flag/auto_observe))
 		for(var/client/C in GLOB.clients)
 			if (C.mob)
 				make_observer(C.mob)
 	spawn(5)
-		if (config.auto_bst)
+		if (CONFIG_GET(flag/auto_bst))
 			for(var/client/C in GLOB.clients)
 				if (C.mob)
 					C.cmd_dev_bst(TRUE)
 
-		if (config.debug_verbs)
+		if (CONFIG_GET(flag/debug_verbs))
 			for(var/client/C in GLOB.clients)
 				C.enable_debug_verbs(TRUE)
 
@@ -200,7 +182,7 @@ var/global/datum/controller/gameticker/ticker
 
 	processScheduler.start()
 
-	if(config.sql_enabled)
+	if(CONFIG_GET(flag/sql_enabled))
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 
 	return TRUE
@@ -353,7 +335,7 @@ var/global/datum/controller/gameticker/ticker
 
 		var/game_finished = 0
 		var/mode_finished = 0
-		if (config.continous_rounds)
+		if (CONFIG_GET(flag/continous_rounds))
 			game_finished = (evacuation_controller.round_over() || mode.station_was_nuked)
 			mode_finished = (!post_game && mode.check_finished())
 		else
@@ -369,7 +351,7 @@ var/global/datum/controller/gameticker/ticker
 
 
 			spawn(50)
-				if(config.allow_map_switching && config.auto_map_vote && GLOB.all_maps.len > 1)
+				if(CONFIG_GET(flag/allow_map_switching) && CONFIG_GET(flag/auto_map_vote) && GLOB.all_maps.len > 1)
 					vote.automap()
 					while(vote.time_remaining)
 						sleep(50)

@@ -25,7 +25,7 @@
 	if(module_active && istype(module_active,/obj/item/borg/combat/mobility))
 		tally-=3
 
-	tally += config.robot_delay
+	tally += CONFIG_GET(number/robot_delay)
 	tally /= get_move_speed_factor()
 	return tally
 

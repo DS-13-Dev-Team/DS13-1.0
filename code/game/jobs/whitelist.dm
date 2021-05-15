@@ -3,7 +3,7 @@
 var/list/whitelist = list()
 
 /hook/startup/proc/loadWhitelist()
-	if(config.usewhitelist)
+	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
 	return 1
 
@@ -19,8 +19,8 @@ var/list/whitelist = list()
 /var/list/alien_whitelist = list()
 
 /hook/startup/proc/loadAlienWhitelist()
-	if(config.usealienwhitelist)
-		if(config.usealienwhitelistSQL)
+	if(CONFIG_GET(flag/usealienwhitelist))
+		if(CONFIG_GET(flag/usealienwhitelistSQL))
 			if(!load_alienwhitelistSQL())
 				world.log << "Could not load alienwhitelist via SQL"
 		else
@@ -57,7 +57,7 @@ var/list/whitelist = list()
 /proc/is_alien_whitelisted(mob/M, var/species)
 	if(!M || !species)
 		return 0
-	if(!config.usealienwhitelist)
+	if(!CONFIG_GET(flag/usealienwhitelist))
 		return 1
 	if(check_rights(R_ADMIN, 0, M))
 		return 1
@@ -80,7 +80,7 @@ var/list/whitelist = list()
 	if(!alien_whitelist)
 		return 0
 
-	if(config.usealienwhitelistSQL)
+	if(CONFIG_GET(flag/usealienwhitelistSQL))
 		//SQL Whitelist
 		if(!(ckey in alien_whitelist))
 			return 0;
