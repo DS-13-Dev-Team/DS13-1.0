@@ -49,10 +49,10 @@
 		GLOB.bump_event.register(user, src, /datum/extension/gallop/proc/user_bumped)
 		GLOB.moved_event.register(user, src, /datum/extension/gallop/proc/user_moved)
 
-/datum/extension/gallop/proc/destroy()
+/datum/extension/gallop/Destroy()
 	if (!stopped_at)
 		stop()
-	.=..()
+	return ..()
 
 
 

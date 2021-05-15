@@ -327,7 +327,7 @@
 		if (CH)
 			if (!CH.OnAltClick(A,params))
 				return
-	.=..()
+
 	A.AltClick(src)
 
 
