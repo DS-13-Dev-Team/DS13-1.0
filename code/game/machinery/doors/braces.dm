@@ -19,8 +19,10 @@
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "brace_open"
 	max_health = 450
-	var/obj/machinery/door/airlock/airlock = null
+	var/obj/machinery/door/airlock/airlock
 	var/obj/item/weapon/airlock_electronics/brace/electronics
+	var/is_directional = FALSE
+	var/block_dir
 
 
 /obj/item/weapon/airlock_brace/examine(var/mob/user)
@@ -132,6 +134,7 @@
 	airlock.brace = null
 	airlock.update_icon()
 	airlock = null
+	block_dir = null
 	update_icon()
 
 
@@ -149,3 +152,6 @@
 	else
 		req_access = electronics.conf_access
 		req_one_access = list()
+
+/obj/item/weapon/airlock_brace/directional
+	is_directional = TRUE

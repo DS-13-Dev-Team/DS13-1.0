@@ -64,7 +64,7 @@ var/list/airlock_overlays = list()
 
 	var/_wifi_id
 	var/datum/wifi/receiver/button/door/wifi_receiver
-	var/obj/item/weapon/airlock_brace/brace = null
+	var/obj/item/weapon/airlock_brace/brace
 
 	//Airlock 2.0 Aesthetics Properties
 	//The variables below determine what color the airlock and decorative stripes will be -Cakey
@@ -89,9 +89,6 @@ var/list/airlock_overlays = list()
 	var/sparks_broken_file = 'icons/obj/doors/station/sparks_broken.dmi'
 	var/welded_file = 'icons/obj/doors/station/welded.dmi'
 	var/emag_file = 'icons/obj/doors/station/emag.dmi'
-
-	/// Unrestricted sides. A bitflag for which direction (if any) can open the door with no access.
-	var/obj/item/airlock_reinforcement/reinforcement
 
 /obj/machinery/door/airlock/attack_generic(var/mob/user, var/damage)
 	if(stat & (BROKEN|NOPOWER))
@@ -1053,24 +1050,8 @@ About the new airlock wires panel:
 		if(brace && (istype(C.GetIdCard(), /obj/item/weapon/card/id/) || istype(C, /obj/item/weapon/tool/crowbar/brace_jack)))
 			return brace.attackby(C, user)
 
-		if(reinforcement && isCrowbar(C) && C.use_tool(user, src, WORKTIME_NORMAL, QUALITY_PRYING, FAILCHANCE_NORMAL))
-			remove_reinforce(C, user)
-			return
-
 		if(!brace && istype(C, /obj/item/weapon/airlock_brace))
-			var/obj/item/weapon/airlock_brace/A = C
-			if(!density)
-				to_chat(user, "<span class='warning'>You must close \the [src] before installing \the [A]!</span>")
-				return
-
-			if((!A.req_access.len && !A.req_one_access) && (alert("\the [A]'s 'Access Not Set' light is flashing. Install it anyway?", "Access not set", "Yes", "No") == "No"))
-				return
-
-			if(do_after(user, 50, src) && density && A && user.unEquip(A, src))
-				to_chat(user, "<span class='notice'>You successfully install \the [A].</span>")
-				brace = A
-				brace.airlock = src
-				update_icon()
+			try_reinforce(C, user)
 			return
 
 		if(!istype(usr, /mob/living/silicon))
@@ -1078,10 +1059,6 @@ About the new airlock wires panel:
 				if(src.shock(user, 75))
 					return
 		if(istype(C, /obj/item/taperoll))
-			return
-
-		if(!reinforcement && istype(C, /obj/item/airlock_reinforcement))
-			try_reinforce(C, user)
 			return
 
 		if (!repairing && (stat & BROKEN) && src.locked) //bolted and broken
@@ -1129,7 +1106,7 @@ About the new airlock wires panel:
 			var/obj/item/weapon/pai_cable/cable = C
 			cable.plugin(src, user)
 		else if(!repairing && isCrowbar(C))
-			if(src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && !src.locked)) && !brace && !reinforcement)
+			if(src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && !src.locked)) && !brace)
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 100, 1)
 				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
 				if(do_after(user,40,src))
@@ -1140,7 +1117,7 @@ About the new airlock wires panel:
 				to_chat(user, "<span class='notice'>The airlock's motors resist your efforts to force it.</span>")
 			else if(locked)
 				to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
-			else if(brace || reinforcement)
+			else if(brace)
 				to_chat(user, "<span class='notice'>The airlock's brace holds it firmly in place.</span>")
 			else if((stat & BROKEN) && !density)//Broken doors must be open, they cannot be forced closed
 				to_chat(user, "<span class='notice'>The [src] is too damaged to be closed!</span>")
@@ -1254,7 +1231,7 @@ About the new airlock wires panel:
 	return ..()
 
 /obj/machinery/door/airlock/can_open(var/forced=0)
-	if(brace)
+	if(brace && !brace.is_directional)
 		return 0
 
 	if(!forced)
@@ -1341,8 +1318,8 @@ About the new airlock wires panel:
 	return ..(M)
 
 /obj/machinery/door/airlock/proc/restricted_side(mob/M) //Allows for specific side of airlocks to be unrestrected (IE, can exit maint freely, but need access to enter)
-	if(reinforcement)
-		return get_dir(src, M) & reinforcement.block_dir
+	if(brace && brace.is_directional)
+		return get_dir(src, M) & brace.block_dir
 	return FALSE
 
 /obj/machinery/door/airlock/New(var/newloc, var/obj/structure/door_assembly/assembly=null)
@@ -1407,8 +1384,7 @@ About the new airlock wires panel:
 	wires = null
 	qdel(wifi_receiver)
 	wifi_receiver = null
-	if(brace)
-		qdel(brace)
+	QDEL_NULL(brace)
 	return ..()
 
 // Most doors will never be deconstructed over the course of a round,
@@ -1507,9 +1483,6 @@ About the new airlock wires panel:
 	if (brace)
 		.+=2 //Braces are reeeally strong
 
-	if(reinforcement)
-		. += 3
-
 /obj/machinery/door/airlock/apply_resistance(var/damage, var/ignore_resistance = FALSE)
 	if (ignore_resistance)
 		return ..(damage, ignore_resistance)
@@ -1533,35 +1506,29 @@ About the new airlock wires panel:
 	welded = FALSE
 	locked = FALSE
 	QDEL_NULL(brace)
-	QDEL_NULL(reinforcement)
 	return ..()
 
-/obj/machinery/door/airlock/proc/try_reinforce(obj/item/airlock_reinforcement/R, mob/M)
-	var/msg = SPAN_WARNING("You cannot apply [R] to [src] from this position.")
-	if(get_turf(R) == get_turf(src))
-		to_chat(M, msg)
+/obj/machinery/door/airlock/proc/try_reinforce(obj/item/weapon/airlock_brace/B, mob/M)
+	if(!density)
+		to_chat(M, "<span class='warning'>You must close \the [src] before installing \the [B]!</span>")
 		return
+
+	if((!B.req_access.len && !B.req_one_access) && (alert("\the [B]'s 'Access Not Set' light is flashing. Install it anyway?", "Access not set", "Yes", "No") == "No"))
+		return
+
+	if(get_turf(B) == get_turf(src))
+		to_chat(M, SPAN_WARNING("You cannot apply [B] to [src] from this position."))
+		return
+
 	var/form_dir = get_dir(M, src)
 	if(form_dir == GLOB.reverse_dir[dir] || form_dir == dir)
-		if(!do_after(M, 5 SECONDS, src, TRUE) || !density || !R || !M.unEquip(R, src))
+		if(!do_after(M, 5 SECONDS, src, TRUE) || !density || !B || !M.unEquip(B, src))
 			to_chat(M, SPAN_NOTICE("fallaste"))
 			return
-		reinforcement = R
-		reinforcement.block_dir = form_dir
-		icon = 'icons/obj/doors/station/metaldoor.dmi'
+		to_chat(M, "<span class='notice'>You successfully install \the [B].</span>")
+		brace = B
+		brace.airlock = src
+		if(brace.is_directional)
+			brace.block_dir = form_dir
 		update_icon()
-		to_chat(M, SPAN_NOTICE("You apply [R] to [src]."))
-
-/obj/machinery/door/airlock/proc/remove_reinforce(obj/item/I, mob/M)
-	reinforcement.forceMove(get_turf(src))
-	icon = initial(icon)
-	update_icon()
-	to_chat(M, SPAN_NOTICE("You remove [reinforcement] from [src]."))
-
-/obj/item/airlock_reinforcement
-	name = "airlock brace"
-	desc = "A sturdy device that can be attached to an airlock to reinforce it and provide additional security."
-	icon = 'icons/obj/airlock_machines.dmi'
-	icon_state = "brace_open"
-	var/block_dir
-
+		to_chat(M, SPAN_NOTICE("You apply [B] to [src]."))
