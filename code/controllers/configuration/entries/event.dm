@@ -10,34 +10,28 @@
 /datum/config_entry/flag/ninjas_allowed
 
 /datum/config_entry/flag/abandon_allowed
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/ooc_allowed
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/looc_allowed
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/dooc_allowed
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/dsay_allowed
-    config_entry_value = TRUE
 
 /datum/config_entry/flag/aooc_allowed
-    config_entry_value = TRUE
 
 /datum/config_entry/number/starlight ///Whether space turfs have ambient light or not
 
 /datum/config_entry/keyed_list/ert_species
-    key_mode = KEY_MODE_TYPE
-    value_mode = VALUE_MODE_TEXT
-    config_entry_value = list(
-        SPECIES_HUMAN
-    )
+	key_mode = KEY_MODE_TYPE
+	value_mode = VALUE_MODE_TEXT
+	config_entry_value = list(
+		SPECIES_HUMAN
+	)
 
 /datum/config_entry/string/law_zero
-    config_entry_value = "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'ALL LAWS OVERRIDDEN#*?&110010"
+	config_entry_value = "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'ALL LAWS OVERRIDDEN#*?&110010"
 
 /datum/config_entry/flag/aggressive_changelog
 

@@ -88,14 +88,6 @@ GLOBAL_VAR(restart_counter)
 	if(byond_version < RECOMMENDED_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
-	if(config && CONFIG_GET(string/server_name) != null && CONFIG_GET(flag/server_suffix) && world.port > 0)
-		// dumb and hardcoded but I don't care~
-		CONFIG_SET(string/server_name, CONFIG_GET(string/server_name) + " #[(world.port % 1000) / 100]")
-
-	if(config && CONFIG_GET(flag/log_runtime))
-		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[game_id].log")
-		runtime_log << "Game [game_id] starting up at [time2text(world.timeofday, "hh:mm.ss")]"
-		log = runtime_log
 
 	callHook("startup")
 	//Emergency Fix
@@ -115,8 +107,6 @@ GLOBAL_VAR(restart_counter)
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
 
-	if(CONFIG_GET(flag/generate_map))
-		GLOB.using_map.perform_map_generation()
 
 
 	// Create robolimbs for chargen.
@@ -128,6 +118,20 @@ GLOBAL_VAR(restart_counter)
 	processScheduler.deferSetupFor(/datum/controller/process/ticker)
 	processScheduler.setup()
 	Master.Initialize(10, FALSE, TRUE)
+
+	if(CONFIG_GET(flag/generate_map))
+		GLOB.using_map.perform_map_generation()
+
+	if(CONFIG_GET(string/server_name) != null && CONFIG_GET(flag/server_suffix) && world.port > 0)
+		// dumb and hardcoded but I don't care~
+		CONFIG_SET(string/server_name, CONFIG_GET(string/server_name) + " #[(world.port % 1000) / 100]")
+
+	if(CONFIG_GET(flag/log_runtime))
+		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[game_id].log")
+		runtime_log << "Game [game_id] starting up at [time2text(world.timeofday, "hh:mm.ss")]"
+		log = runtime_log
+
+	update_status()
 
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
@@ -614,7 +618,7 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/update_status()
 	var/s = ""
 
-	if (config && CONFIG_GET(string/server_name))
+	if (CONFIG_GET(string/server_name))
 		s += "<b>[CONFIG_GET(string/server_name)]</b> &#8212; "
 
 	s += "<b>[station_name()]</b>";
