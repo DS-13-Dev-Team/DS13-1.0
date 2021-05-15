@@ -10,8 +10,9 @@ Basics, the most important.
 
 /datum/config_entry/flag/hub/ValidateAndSet(str_val)
 	. = ..()
-	if(config_entry_value)
-		world.update_hub_visibility()
+	if(.)
+		if(config_entry_value)
+			world.update_hub_visibility()
 
 /datum/config_entry/flag/log_ooc    //log OOC channel
 
