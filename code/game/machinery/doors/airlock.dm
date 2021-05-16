@@ -752,7 +752,7 @@ About the new airlock wires panel:
 			if(p_open)
 				panel_overlay = panel_file
 
-	if(brace && state == AIRLOCK_CLOSED)
+	if(brace && state != AIRLOCK_OPEN && state != AIRLOCK_OPENING)
 		brace.update_icon()
 		brace_overlay += image(brace.icon, brace.icon_state)
 
