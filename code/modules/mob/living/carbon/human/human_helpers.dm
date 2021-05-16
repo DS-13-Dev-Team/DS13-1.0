@@ -209,9 +209,9 @@
 	if(hiding)
 		layer = HIDING_MOB_LAYER
 	else if(lying)
-		layer = species.layer_lying
+		layer = LYING_HUMAN_LAYER
 	else
-		plane = species.plane
+		..()
 		layer = species.layer
 
 /mob/living/carbon/human/proc/has_headset_in_ears()

@@ -7,7 +7,6 @@
 	icon = 'icons/obj/machines/shielding.dmi'
 	icon_state = "shield_normal"
 	anchored = 1
-	plane = DEFAULT_PLANE
 	layer = PROJECTILE_LAYER
 	density = 0
 	invisibility = 101
