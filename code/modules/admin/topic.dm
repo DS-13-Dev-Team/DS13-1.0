@@ -1642,9 +1642,9 @@
 	else if(href_list["object_list"])			//this is the laggiest thing ever
 		if(!check_rights(R_SPAWN))	return
 
-		if(!CONFIG_GET(flag/allow_admin_spawning))
-			to_chat(usr, "Spawning of items is not allowed.")
-			return
+		//if(!CONFIG_GET(flag/allow_admin_spawning))
+		//	to_chat(usr, "Spawning of items is not allowed.")
+		//	return
 
 		var/atom/loc = usr.loc
 
