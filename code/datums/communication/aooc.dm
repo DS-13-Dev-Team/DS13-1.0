@@ -1,6 +1,6 @@
 /decl/communication_channel/aooc
 	name = "AOOC"
-	config_setting = /datum/config_entry/flag/aooc_allowed
+	config_setting = "aooc_allowed"
 	expected_communicator_type = list(/client, /datum)
 	flags = COMMUNICATION_LOG_CHANNEL_NAME|COMMUNICATION_ADMIN_FOLLOW
 	log_proc = /proc/log_ooc

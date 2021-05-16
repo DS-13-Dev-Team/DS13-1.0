@@ -13,13 +13,38 @@
 
 /datum/config_entry/flag/ooc_allowed
 
+/datum/config_entry/flag/ooc_allowed/ValidateAndSet(str_val)
+	. = ..()
+	if(.)
+		config.ooc_allowed = config_entry_value
+
 /datum/config_entry/flag/looc_allowed
+
+/datum/config_entry/flag/looc_allowed/ValidateAndSet(str_val)
+	. = ..()
+	if(.)
+		config.looc_allowed = config_entry_value
 
 /datum/config_entry/flag/dooc_allowed
 
+/datum/config_entry/flag/dooc_allowed/ValidateAndSet(str_val)
+	. = ..()
+	if(.)
+		config.dooc_allowed = config_entry_value
+
 /datum/config_entry/flag/dsay_allowed
 
+/datum/config_entry/flag/dsay_allowed/ValidateAndSet(str_val)
+	. = ..()
+	if(.)
+		config.dsay_allowed = config_entry_value
+
 /datum/config_entry/flag/aooc_allowed
+
+/datum/config_entry/flag/aooc_allowed/ValidateAndSet(str_val)
+	. = ..()
+	if(.)
+		config.aooc_allowed = config_entry_value
 
 /datum/config_entry/number/starlight ///Whether space turfs have ambient light or not
 

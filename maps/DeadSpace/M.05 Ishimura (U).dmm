@@ -3172,6 +3172,13 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/engineering{
+	dir = 8;
+	name = "Airlock Pressure Room"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
 "gh" = (
@@ -3909,7 +3916,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
-	id_tag = "topdeck_airlock_sensor";
+	id_tag = "ADS_airlock_sensor";
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{

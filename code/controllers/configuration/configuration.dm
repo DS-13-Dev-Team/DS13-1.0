@@ -19,6 +19,12 @@
 	var/motd
 	var/policy
 
+	var/ooc_allowed 	= TRUE
+	var/looc_allowed 	= TRUE
+	var/dsay_allowed 	= TRUE
+	var/aooc_allowed 	= TRUE
+	var/dooc_allowed 	= TRUE
+
 	var/static/regex/ic_filter_regex
 
 /datum/controller/configuration/proc/admin_reload()
@@ -231,7 +237,7 @@
 		modes += M.config_tag
 		mode_names[M.config_tag] = M.name
 		if(M.votable)
-			votable_modes += M.config_tag //I foget that config tag there need.
+			votable_modes += M
 	log_config("Loading config file [CONFIG_MODES_FILE]...")
 	var/filename = "[directory]/[CONFIG_MODES_FILE]"
 	var/list/Lines = file2list(filename)
