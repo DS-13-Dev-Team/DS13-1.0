@@ -739,12 +739,13 @@
 
 //Used by sustained weapons. Call to make the gun stop doing its thing
 /obj/item/weapon/gun/proc/stop_firing()
-	if (can_stop_firing())
+	if(can_stop_firing())
 		firing = FALSE
 		next_fire_time = world.time + max(fire_delay, 1)	//A tiny minimum delay is needed to prevent an additional click going through on sustained/automatic weapons when the mouse button is released
-		if (current_firemode)
+		if(current_firemode)
 			current_firemode.stop_firing()
 		update_aiming_handler()
+		return TRUE
 
 /obj/item/weapon/gun/attack_hand(mob/user as mob)
 	if(user.get_inactive_hand() == src)
