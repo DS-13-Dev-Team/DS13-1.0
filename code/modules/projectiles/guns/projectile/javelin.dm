@@ -165,7 +165,6 @@
 
 /obj/item/projectile/bullet/javelin/attack_atom(var/atom/A,  var/distance, var/miss_modifier=0)
 	.=..()
-	world << "Javelin attack atom [A] [.]"
 	if (. == PROJECTILE_HIT)
 		new src.shrapnel_type(get_turf(A), src)
 
