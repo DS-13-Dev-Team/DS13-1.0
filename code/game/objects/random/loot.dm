@@ -83,8 +83,8 @@
 
 
 /obj/random/common_loot
-	possible_spawns = list(/obj/random/ammo = 1,
-				/obj/random/tool = 3,
+	possible_spawns = list(/obj/random/ammo = 1.4,
+				/obj/random/tool = 2.75,
 				/obj/random/lathe_disk = 1,
 				/obj/random/powercell = 1,
 				/obj/random/tech_supply = 1,
@@ -103,7 +103,7 @@
 
 /obj/random/uncommon_loot
 	possible_spawns = list(/obj/random/tool_upgrade = 3,
-	/obj/random/gun_tool = 0.5,//Only tool-like guns are randomly spawned, the military weapons stay in the armoury. More for theming than for balance
+	/obj/random/gun_tool = 0.65,//Only tool-like guns are randomly spawned, the military weapons stay in the armoury. More for theming than for balance
 	/obj/random/firstaid = 2,
 	/obj/random/glasses = 1,
 	/obj/random/clothing = 1,

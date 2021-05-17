@@ -1,4 +1,8 @@
 //This extension is a low cost way of adding per-datum cooldowns for various types of audio files
+
+/*
+	Future TODO: Refactor this as a more generic cooldown manager, its not just for audio
+*/
 /datum/extension/audio_cooldown
 	base_type = /datum/extension/audio_cooldown
 	expected_type = /datum

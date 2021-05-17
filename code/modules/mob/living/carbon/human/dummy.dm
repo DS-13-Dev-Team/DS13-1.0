@@ -7,6 +7,8 @@
 	status_flags = GODMODE|CANPUSH
 	virtual_mob = null
 
+
+
 //This one starts off holding a riot shield and wearing riot armor
 /mob/living/carbon/human/dummy/shielded/Initialize()
 	.=..()

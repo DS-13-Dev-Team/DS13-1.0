@@ -1,5 +1,5 @@
 // internal pipe, don't actually place or use these
-obj/machinery/atmospherics/pipe/mains_component
+/obj/machinery/atmospherics/pipe/mains_component
 	var/obj/machinery/atmospherics/mains_pipe/parent_pipe
 	var/list/obj/machinery/atmospherics/pipe/mains_component/nodes = new()
 
@@ -32,7 +32,7 @@ obj/machinery/atmospherics/pipe/mains_component
 	proc/mains_burst()
 		parent_pipe.burst()
 
-obj/machinery/atmospherics/mains_pipe
+/obj/machinery/atmospherics/mains_pipe
 	icon = 'icons/obj/atmospherics/mainspipe.dmi'
 
 	var/volume = 0
@@ -72,7 +72,6 @@ obj/machinery/atmospherics/mains_pipe
 		update_icon()
 
 	proc/burst()
-		..()
 		for(var/obj/machinery/atmospherics/pipe/mains_component/pipe in contents)
 			burst()
 
@@ -109,7 +108,7 @@ obj/machinery/atmospherics/mains_pipe
 				scrubbers.nodes[i] = node.scrubbers
 				aux.nodes[i] = node.aux
 
-obj/machinery/atmospherics/mains_pipe/simple
+/obj/machinery/atmospherics/mains_pipe/simple
 	name = "mains pipe"
 	desc = "A one meter section of 3-line mains pipe"
 

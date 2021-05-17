@@ -275,6 +275,18 @@
 
 	return FALSE
 
-/atom/proc/on_mount(var/datum/extension/mount/ME)
+/atom/proc/on_mount(datum/extension/mount/ME)
 
-/atom/proc/on_dismount(var/datum/extension/mount/ME)
+/atom/proc/on_dismount(datum/extension/mount/ME)
+
+/datum/extension/mount/self_delete
+	face_away_from_mountpoint = TRUE
+
+/datum/extension/mount/self_delete/on_mount()
+	.=..()
+	mountee.set_offset_to(mountpoint, 8)
+
+/datum/extension/mount/self_delete/on_dismount()
+	.=..()
+	mountee.pixel_x = 0
+	mountee.pixel_y = 0

@@ -634,3 +634,9 @@ its easier to just keep the beam vertical.
 
 /atom/proc/is_organic()
 	return FALSE
+
+/atom/proc/register_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
+	return FALSE
+
+/atom/proc/unregister_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
+	return FALSE

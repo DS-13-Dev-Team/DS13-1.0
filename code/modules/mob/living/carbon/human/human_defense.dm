@@ -62,13 +62,10 @@ meteor_act
 	var/blocked = ..(P, def_zone)
 
 	//Embed or sever artery
-	if(P.can_embed() && !(species.species_flags & SPECIES_FLAG_NO_EMBED) && prob((22.5 + max(penetrating_damage, -10))*P.embed_mult) && !(prob(50) && (organ.sever_artery())))
-		var/obj/item/SP = new P.shrapnel_type(organ, P)
-		SP.SetName((P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel")
-		SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
-		organ.embed(SP)
-
-
+	if(P.can_embed() && !(species.species_flags & SPECIES_FLAG_NO_EMBED) && prob((22.5 + max(penetrating_damage, -10))*P.embed_mult))
+		if (prob(15))
+			organ.sever_artery()
+		P.on_organ_embed(organ, src)
 
 	projectile_hit_bloody(P, P.damage*blocked_mult(blocked), def_zone)
 
@@ -458,7 +455,7 @@ meteor_act
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	//if(status_flags & GODMODE)	return 0	//godmode
 
 	if(species.siemens_coefficient == -1)
 		if(stored_shock_by_ref["\ref[src]"])
@@ -473,6 +470,8 @@ meteor_act
 	return ..(shock_damage, source, base_siemens_coeff, def_zone)
 
 /mob/living/carbon/human/apply_shock(var/shock_damage, var/def_zone, var/base_siemens_coeff = 1.0)
+	if (def_zone == BP_OVERALL)
+		return ..()
 	var/obj/item/organ/external/initial_organ = get_organ(check_zone(def_zone))
 	if(!initial_organ)
 		initial_organ = pick(organs)
@@ -530,7 +529,6 @@ meteor_act
 
 
 /mob/living/carbon/human/proc/handle_shock()
-	..()
 	if(status_flags & GODMODE)	return 0	//godmode
 	if(!can_feel_pain())
 		shock_stage = 0
