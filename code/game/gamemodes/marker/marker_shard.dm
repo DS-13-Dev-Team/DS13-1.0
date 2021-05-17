@@ -17,7 +17,6 @@
 	max_health = 1000
 
 	var/active = FALSE
-	plane = ABOVE_OBJ_PLANE
 
 	//How long does the shard have to remain in one spot before it starts spreading corruption?
 	var/deploy_time = 2 MINUTES

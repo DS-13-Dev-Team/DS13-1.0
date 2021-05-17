@@ -7,7 +7,6 @@
 	icon = 'icons/obj/marker_giant.dmi'
 	icon_state = "marker_giant_dormant"
 	pixel_x = -33
-	plane = ABOVE_HUMAN_PLANE
 	density = TRUE
 	anchored = TRUE
 	var/light_colour = COLOR_MARKER_RED

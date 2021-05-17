@@ -82,7 +82,7 @@
 	icon = 'maps/away/errant_pisces/errant_pisces_sprites.dmi'
 	icon_state = "net_f"
 	anchored = 1
-	plane = ABOVE_TURF_PLANE//on the floor
+	//on the floor
 	layer = CATWALK_LAYER//probably? Should cover cables, pipes and the rest of objects that are secured on the floor
 	health = 100
 
@@ -137,7 +137,6 @@ obj/structure/net/Initialize(var/mapload)
 /obj/structure/net/net_wall
 	icon_state = "net_w"
 	density = 1
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 
 /obj/structure/net/net_wall/Initialize(var/mapload)
@@ -167,7 +166,7 @@ obj/structure/net/Initialize(var/mapload)
 	w_class = ITEM_SIZE_LARGE
 	force = 3.0
 	throwforce = 5.0
-	
+
 	throw_range = 10
 	matter = list("cloth" = 1875, MATERIAL_PLASTEEL = 350)
 	max_amount = 30

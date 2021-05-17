@@ -72,7 +72,6 @@
 
 	icon_state = "apc0"
 	icon = 'icons/obj/apc.dmi'
-	plane = ABOVE_HUMAN_PLANE
 	anchored = 1
 	use_power = 0
 	req_access = list(access_engineering)

@@ -70,9 +70,7 @@
 		//This is in kilograms, and is thus approximately the mass of an average human male adult
 	var/mass = 80	//Actual mass of the resulting mob
 
-	var/plane	=	HUMAN_PLANE
-	var/layer = 0
-	var/plane_lying	=	LYING_HUMAN_PLANE
+	var/layer = BASE_HUMAN_LAYER
 	var/layer_lying	=	LYING_HUMAN_LAYER
 
 	var/light_sensitive                       // Ditto, but requires sunglasses to fix

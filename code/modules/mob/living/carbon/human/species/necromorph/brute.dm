@@ -21,7 +21,6 @@
 	health_doll_offset	= 74
 
 	pixel_offset_x = -16
-	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 	require_total_biomass	=	BIOMASS_REQ_T3
 	biomass = 400

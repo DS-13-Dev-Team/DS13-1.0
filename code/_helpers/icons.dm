@@ -107,7 +107,7 @@ AngleToHue(hue)
 	Converts an angle to a hue in the valid range.
 RotateHue(hsv, angle)
 	Takes an HSV or HSVA value and rotates the hue forward through red, green, and blue by an angle from 0 to 360.
-	(Rotating red by 60° produces yellow.) The result is another HSV or HSVA color with the same saturation and value
+	(Rotating red by 60ï¿½ produces yellow.) The result is another HSV or HSVA color with the same saturation and value
 	as the original, but a different hue.
 GrayScale(rgb)
 	Takes an RGB or RGBA color and converts it to grayscale. Returns an RGB or RGBA string.
@@ -204,7 +204,7 @@ obj/effect/overlayTest
 	icon_state = "blue"
 	pixel_x = -24
 	pixel_y = 24
-	plane = ABOVE_TURF_PLANE
+
 	layer = HOLOMAP_LAYER
 
 world

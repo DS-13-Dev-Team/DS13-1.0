@@ -213,7 +213,6 @@
 	var/detonated = FALSE
 
 	//Draw above other objects
-	plane = ABOVE_OBJ_PLANE
 	layer = 0
 
 /obj/item/embedded_rivet/New(var/atom/location, var/obj/item/projectile/bullet/rivet/rivet)
