@@ -2,7 +2,6 @@
 
 GLOBAL_VAR(restart_counter)
 
-/var/server_name = "Baystation 12"
 
 /var/game_id = null
 /hook/global_init/proc/generate_gameid()
@@ -70,9 +69,6 @@ GLOBAL_VAR(restart_counter)
 
 #define RECOMMENDED_VERSION 511
 /world/New()
-	//set window title
-	name = "[server_name] - [GLOB.using_map.full_name]"
-
 	//logs
 	SetupLogs()
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
@@ -118,13 +114,6 @@ GLOBAL_VAR(restart_counter)
 	processScheduler.deferSetupFor(/datum/controller/process/ticker)
 	processScheduler.setup()
 	Master.Initialize(10, FALSE, TRUE)
-
-	if(CONFIG_GET(flag/generate_map))
-		GLOB.using_map.perform_map_generation()
-
-	if(CONFIG_GET(string/server_name) != null && CONFIG_GET(flag/server_suffix) && world.port > 0)
-		// dumb and hardcoded but I don't care~
-		CONFIG_SET(string/server_name, CONFIG_GET(string/server_name) + " #[(world.port % 1000) / 100]")
 
 	if(CONFIG_GET(flag/log_runtime))
 		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[game_id].log")
@@ -482,6 +471,14 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		return GLOB.prometheus_metrics.collect()
 
+/world/proc/update_hub_visibility(new_visibility)
+	if(new_visibility == GLOB.visibility_pref)
+		return
+	GLOB.visibility_pref = new_visibility
+	if(GLOB.visibility_pref)
+		hub_password = "kMZy3U5jJHSiBQjr"
+	else
+		hub_password = "SORRYNOPASSWORD"
 
 /world/Reboot(reason, ping)
 	/*spawn(0)
@@ -616,58 +613,22 @@ var/world_topic_spam_protect_time = world.timeofday
 				D.associate(GLOB.ckey_directory[ckey])
 
 /world/proc/update_status()
-	var/s = ""
+	var/server_name = CONFIG_GET(string/server_name)
+	if(!server_name || Master?.current_runlevel == RUNLEVEL_INIT)
+		// If you didn't see a server name, or the master controller
+		// is stilling initing, we don't update the hub.
+		return
 
-	if (CONFIG_GET(string/server_name))
-		s += "<b>[CONFIG_GET(string/server_name)]</b> &#8212; "
+	var/discord_url = CONFIG_GET(string/discord_url)
+	var/mapname = GLOB.using_map.full_name
 
-	s += "<b>[station_name()]</b>";
-	s += " ("
-	s += "<a href=\"https://forums.baystation12.net/\">" //Change this to wherever you want the hub to link to.
-//	s += "[game_version]"
-	s += "Forums"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
-	s += "</a>"
-	s += ")"
+	var/new_status = ""
+	new_status += "<b><a href='[discord_url ? discord_url : "#"]'>[server_name] &#8212; [mapname]</a></b>"
+	new_status += "<br>Mode: <b>[ticker.mode ? ticker.mode.name : "Lobby"]</b>"
+	new_status += "<br>Round time: <b>[gameTimestamp("hh:mm")]</b>"
 
-	var/list/features = list()
-
-	if(ticker)
-		if(master_mode)
-			features += master_mode
-	else
-		features += "<b>STARTING</b>"
-
-	if (!CONFIG_GET(flag/enter_allowed))
-		features += "closed"
-
-	features += CONFIG_GET(flag/abandon_allowed) ? "respawn" : "no respawn"
-
-	if (config && CONFIG_GET(flag/allow_vote_mode))
-		features += "vote"
-
-	if (config && CONFIG_GET(flag/allow_ai))
-		features += "AI allowed"
-
-	var/n = 0
-	for (var/mob/M in GLOB.player_list)
-		if (M.client)
-			n++
-
-	if (n > 1)
-		features += "~[n] players"
-	else if (n > 0)
-		features += "~[n] player"
-
-
-	if (config && CONFIG_GET(string/hostedby))
-		features += "hosted by <b>[CONFIG_GET(string/hostedby)]</b>"
-
-	if (features)
-		s += ": [jointext(features, ", ")]"
-
-	/* does this help? I do not know */
-	if (src.status != s)
-		src.status = s
+	// Finally set the new status
+	status = new_status
 
 #define WORLD_LOG_START(X) WRITE_FILE(GLOB.world_##X##_log, "\n\nStarting up round ID [game_id]. [time_stamp()]\n---------------------")
 #define WORLD_SETUP_LOG(X) GLOB.world_##X##_log = file("[GLOB.log_directory]/[#X].log") ; WORLD_LOG_START(X)

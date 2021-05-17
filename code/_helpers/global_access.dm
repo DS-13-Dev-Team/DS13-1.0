@@ -765,8 +765,6 @@
 			return global.secret_force_mode;
 		if("sent_spiders_to_station")
 			return global.sent_spiders_to_station;
-		if("server_name")
-			return global.server_name;
 		if("severity_to_string")
 			return global.severity_to_string;
 		if("ship_engines")
@@ -1726,8 +1724,6 @@
 			global.secret_force_mode=newval;
 		if("sent_spiders_to_station")
 			global.sent_spiders_to_station=newval;
-		if("server_name")
-			global.server_name=newval;
 		if("severity_to_string")
 			global.severity_to_string=newval;
 		if("ship_engines")
@@ -2310,7 +2306,6 @@
 	"secret_force_mode",
 	"send_emergency_team",
 	"sent_spiders_to_station",
-	"server_name",
 	"severity_to_string",
 	"ship_engines",
 	"side_effects",
