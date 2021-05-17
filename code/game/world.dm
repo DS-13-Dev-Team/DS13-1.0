@@ -115,6 +115,9 @@ GLOBAL_VAR(restart_counter)
 	processScheduler.setup()
 	Master.Initialize(10, FALSE, TRUE)
 
+	if(CONFIG_GET(flag/generate_map))
+		GLOB.using_map.perform_map_generation()
+
 	if(CONFIG_GET(flag/log_runtime))
 		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[game_id].log")
 		runtime_log << "Game [game_id] starting up at [time2text(world.timeofday, "hh:mm.ss")]"
