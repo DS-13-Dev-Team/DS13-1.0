@@ -18,6 +18,7 @@ var/list/airlock_overlays = list()
 /obj/machinery/door/airlock
 	name = "airlock"
 	icon = 'icons/obj/doors/station/door_medsec.dmi'
+	var/reinforced_icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "closed"
 	power_channel = ENVIRON
 
@@ -618,6 +619,11 @@ About the new airlock wires panel:
 
 
 /obj/machinery/door/airlock/update_icon(state=0, override=0)
+	if(brace)
+		icon = reinforced_icon
+	else
+		icon = initial(icon)
+
 	if(connections in list(NORTH, SOUTH, NORTH|SOUTH))
 		if(connections in list(WEST, EAST, EAST|WEST))
 			set_dir(SOUTH)
@@ -657,7 +663,7 @@ About the new airlock wires panel:
 
 	set_light(0)
 
-	if(door_color && !(door_color == "none"))
+	if(door_color && door_color != "none")
 		var/ikey = "[airlock_type]-[door_color]-color"
 		color_overlay = airlock_icon_cache["[ikey]"]
 		if(!color_overlay)
