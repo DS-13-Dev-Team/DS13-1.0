@@ -337,8 +337,8 @@
 							to_chat(initiator_key, "The current alert status is too high to call for a crew transfer!")
 							return 0
 						if(ticker.current_state <= GAME_STATE_SETTING_UP)
-							return 0
 							to_chat(initiator_key, "The crew transfer button has been disabled!")
+							return 0
 						question = "End the shift?"
 						choices.Add("Initiate Crew Transfer", "Extend the Round ([CONFIG_GET(number/vote_autotransfer_initial) / 600] minutes)")
 						if (CONFIG_GET(flag/allow_extra_antags) && is_addantag_allowed(1))
