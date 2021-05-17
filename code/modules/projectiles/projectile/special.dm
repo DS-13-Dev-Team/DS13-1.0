@@ -159,3 +159,14 @@
 	damage_type = PAIN
 	muzzle_type = /obj/effect/projectile/bullet/muzzle
 
+/obj/item/projectile/null_projectile
+	name = ""
+	icon_state = ""
+	invisibility = INVISIBILITY_MAXIMUM
+	density = FALSE
+	check_armour = ""
+	damage = 0
+	embed = 0
+	nodamage = 1
+	damage_type = null
+	muzzle_type = null

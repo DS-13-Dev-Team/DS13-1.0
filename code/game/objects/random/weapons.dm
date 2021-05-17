@@ -75,7 +75,8 @@
 	/obj/item/ammo_casing/tripmine = 1,
 	/obj/item/weapon/reagent_containers/glass/fuel_tank/fuel = 1,
 	/obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine = 0.4,
-	/obj/item/ammo_magazine/shotgun = 1))
+	/obj/item/ammo_magazine/shotgun = 1,
+	/obj/item/ammo_magazine/javelin = 0.5))
 
 
 //This subtype only spawns ammo for security/military-type weapons

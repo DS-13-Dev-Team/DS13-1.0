@@ -81,3 +81,11 @@ GLOBAL_LIST_INIT(month_seconds_cumulative_leap, list(
 305 DAYS,//November
 335 DAYS//December
 ))
+
+
+
+
+/*
+	Future TODO
+*/
+#define	COOLDOWN_ELECTROCUTION	"electrocution"

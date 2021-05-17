@@ -318,14 +318,11 @@
 				if("gamemode")
 					if(ticker.current_state >= GAME_STATE_SETTING_UP)
 						return 0
-					choices.Add(config.votable_modes)
-					for (var/F in choices)
-						var/datum/game_mode/M = gamemode_cache[F]
-						if(!M)
+					for(var/datum/game_mode/mode as anything in config.votable_modes)
+						var/players = length(GLOB.clients)
+						if(players < mode.required_players)
 							continue
-						gamemode_names[M.config_tag] = capitalize(M.name) //It's ugly to put this here but it works
-						additional_text.Add("<td align = 'center'>[M.required_players]</td>")
-					//gamemode_names["secret"] = "Secret"
+						choices.Add(mode.config_tag)
 				if("crew_transfer")
 					if(!evacuation_controller || !evacuation_controller.should_call_autotransfer_vote())
 						return 0

@@ -220,5 +220,11 @@
 	projectile_type  = /obj/item/projectile/ion
 	matter = list(MATERIAL_STEEL = 260, "uranium" = 200)
 
-
-
+/obj/item/ammo_casing/javelin
+	name = "javelin"
+	desc = "A javelin."
+	icon_state = "bolt"
+	spent_icon = "bolt"
+	caliber = "javelin"
+	projectile_type = /obj/item/projectile/bullet/javelin
+	matter = list(MATERIAL_STEEL = 1000)
