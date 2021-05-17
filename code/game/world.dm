@@ -479,7 +479,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		return
 	GLOB.visibility_pref = new_visibility
 	if(GLOB.visibility_pref)
-		hub_password = "kMZy3U5jJHSiBQjr"
+		hub_password = "kMZy3U5jJHSiBQjr" //Password for hub http://www.byond.com/games/Exadv1/SpaceStation13
 	else
 		hub_password = "SORRYNOPASSWORD"
 
