@@ -82,7 +82,7 @@
 	PT.register_turfs()
 	set_extension(src, /datum/extension/proximity_manager, PT)
 
-	if (config.marker_auto_activate)
+	if (CONFIG_GET(flag/marker_auto_activate))
 		spawn(100)
 			make_active()
 
@@ -272,9 +272,9 @@
 	return trange(visualnet_range, src)
 
 //Spawnpoints
-/obj/machinery/marker/proc/add_spawnpoint(var/atom/source)
+/obj/machinery/marker/proc/add_spawnpoint(var/atom/source, var/datum/crew_objective/event)
 	if (shop)
-		shop.possible_spawnpoints += new /datum/necrospawn(source, source.name)
+		shop.possible_spawnpoints += new /datum/necrospawn(source, source.name, event)
 
 /obj/machinery/marker/proc/remove_spawnpoint(var/atom/source)
 	if (shop)

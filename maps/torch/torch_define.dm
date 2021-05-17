@@ -83,7 +83,7 @@
 
 /datum/map/torch/send_welcome()
 	//Lack of overmap throws runtime errors in this proc
-	if (config.no_overmap)
+	if (CONFIG_GET(flag/no_overmap))
 		return
 
 	var/welcome_text = "<center><img src = sollogo.png /><br /><font size = 3><b>SEV Torch</b> Sensor Readings:</font><hr />"

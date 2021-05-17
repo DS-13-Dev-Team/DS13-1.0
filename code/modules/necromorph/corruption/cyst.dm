@@ -242,6 +242,10 @@
 	mount_target = get_mount_target_at_direction(candidate, dir)
 	if (!mount_target)
 		return "This must be placed against a wall or similar hard surface"
+
+	if(istype(mount_target, /turf/simulated/shuttle))
+		return "cannot be placed in a shuttle."
+
 	for(var/obj/structure/corruption_node/cyst/C in candidate)
 		if(C.dir == dir)
 			return "There cannot be two cysts in the same direction."
@@ -324,6 +328,9 @@
 	mount_target = get_mount_target_at_direction(candidate, dir)
 	if (!mount_target)
 		return "This must be placed against a wall or similar hard surface"
+
+	if(istype(mount_target, /turf/simulated/shuttle))
+		return "cannot be placed in a shuttle."
 
 	for(var/obj/structure/corruption_node/cyst/C in candidate)
 		if(C.dir == dir)

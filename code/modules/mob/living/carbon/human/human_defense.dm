@@ -62,13 +62,10 @@ meteor_act
 	var/blocked = ..(P, def_zone)
 
 	//Embed or sever artery
-	if(P.can_embed() && !(species.species_flags & SPECIES_FLAG_NO_EMBED) && prob((22.5 + max(penetrating_damage, -10))*P.embed_mult) && !(prob(50) && (organ.sever_artery())))
-		var/obj/item/SP = new P.shrapnel_type(organ, P)
-		SP.SetName((P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel")
-		SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
-		organ.embed(SP)
-
-
+	if(P.can_embed() && !(species.species_flags & SPECIES_FLAG_NO_EMBED) && prob((22.5 + max(penetrating_damage, -10))*P.embed_mult))
+		if (prob(15))
+			organ.sever_artery()
+		P.on_organ_embed(organ, src)
 
 	projectile_hit_bloody(P, P.damage*blocked_mult(blocked), def_zone)
 
@@ -310,7 +307,7 @@ meteor_act
 		return 0
 
 	//want the dislocation chance to be such that the limb is expected to dislocate after dealing a fraction of the damage needed to break the limb
-	var/dislocate_chance = effective_force/(dislocate_mult * organ.min_broken_damage * config.organ_health_multiplier)*100
+	var/dislocate_chance = effective_force/(dislocate_mult * organ.min_broken_damage * CONFIG_GET(number/organ_health_multiplier))*100
 	if(prob(dislocate_chance * blocked_mult(blocked)))
 		visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
 		organ.dislocate(1)
@@ -458,7 +455,7 @@ meteor_act
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	//if(status_flags & GODMODE)	return 0	//godmode
 
 	if(species.siemens_coefficient == -1)
 		if(stored_shock_by_ref["\ref[src]"])
@@ -473,6 +470,8 @@ meteor_act
 	return ..(shock_damage, source, base_siemens_coeff, def_zone)
 
 /mob/living/carbon/human/apply_shock(var/shock_damage, var/def_zone, var/base_siemens_coeff = 1.0)
+	if (def_zone == BP_OVERALL)
+		return ..()
 	var/obj/item/organ/external/initial_organ = get_organ(check_zone(def_zone))
 	if(!initial_organ)
 		initial_organ = pick(organs)
@@ -480,7 +479,7 @@ meteor_act
 	var/obj/item/organ/external/floor_organ
 
 	if(!lying)
-		var/obj/item/organ/external/list/standing = list()
+		var/list/obj/item/organ/external/standing = list()
 		for(var/limb_tag in species.locomotion_limbs)
 			var/obj/item/organ/external/E = organs_by_name[limb_tag]
 			if(E && E.is_usable())
@@ -495,7 +494,7 @@ meteor_act
 	if(!floor_organ)
 		floor_organ = pick(organs)
 
-	var/obj/item/organ/external/list/to_shock = trace_shock(initial_organ, floor_organ)
+	var/list/obj/item/organ/external/to_shock = trace_shock(initial_organ, floor_organ)
 
 	if(to_shock && to_shock.len)
 		shock_damage /= to_shock.len
@@ -510,7 +509,7 @@ meteor_act
 	return total_damage
 
 /mob/living/carbon/human/proc/trace_shock(var/obj/item/organ/external/init, var/obj/item/organ/external/floor)
-	var/obj/item/organ/external/list/traced_organs = list(floor)
+	var/list/obj/item/organ/external/traced_organs = list(floor)
 
 	if(!init)
 		return
@@ -530,7 +529,6 @@ meteor_act
 
 
 /mob/living/carbon/human/proc/handle_shock()
-	..()
 	if(status_flags & GODMODE)	return 0	//godmode
 	if(!can_feel_pain())
 		shock_stage = 0

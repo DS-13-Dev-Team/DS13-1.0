@@ -361,20 +361,25 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 /*
 	Exploders have a special charge impact. They detonate on impact
 */
-/datum/species/necromorph/exploder/charge_impact(var/mob/living/charger, var/atom/obstacle, var/power, var/target_type, var/distance_travelled)
-	if (target_type == CHARGE_TARGET_PRIMARY && isliving(obstacle))
+/datum/species/necromorph/exploder/charge_impact(var/datum/extension/charge/charge)
+	var/mob/living/carbon/human/charger = charge.user
+
+	if (isliving(charge.last_obstacle))
 		//Make sure its still there
+		var/mob/living/L = charge.last_obstacle
 		if (!can_explode(charger))
 			return
 
+		//Bonus behaviour if we hit our originally intended target
+		if (charge.last_target_type == CHARGE_TARGET_PRIMARY)
+			L.Weaken(3)	//Knock them down
+			charger.forceMove(get_turf(charge.last_obstacle))	//Move ontop of them for maximum damage
 
-
-		var/mob/living/L = obstacle
-		L.Weaken(3)	//Knock them down
-		charger.forceMove(get_turf(obstacle))	//Move ontop of them for maximum damage
 
 		var/obj/item/organ/external/hand/exploder_pustule/E = charger.get_organ(BP_L_HAND)
-		E.explode()	//Kaboom!
+		if (istype(E))
+
+			E.explode()	//Kaboom!
 
 		return FALSE
 	else

@@ -1,3 +1,5 @@
+GLOBAL_REAL(config, /datum/controller/configuration)
+
 // Bomb cap!
 GLOBAL_VAR_INIT(max_explosion_range, 14)
 

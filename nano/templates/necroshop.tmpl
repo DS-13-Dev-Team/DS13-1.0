@@ -50,6 +50,12 @@ h3 {
 					This can be spawned for {{:data.current.price}}kg biomass when you accumulate enough total mass.</span>
 					<hr>
 				{{/if}}
+				{{if data.current.event}}
+					<hr>
+					<span class="notice" style="padding: 4px">  {{:data.current.free}} Free Necromorphs available from event: {{:data.current.event}}   </br>
+					This necromorph can be spawned for free at an associated spawnpoint</span>
+					<hr>
+				{{/if}}
 				<div style="line-height: 120%; font-size: 11px;">{{:data.current.desc}}</div>
 			{{else}}
 				<h2>Nothing Selected</h2>
@@ -61,7 +67,7 @@ h3 {
 			<hr>
 			{{for data.necromorphs}}
 				<div class="item" style="vertical-align: top; text-align: center;">
-					{{:helper.link(value.name+' (' + value.price + ')', 'circle-arrow-s', { "select" : value.name }, null, "linkFixed")}}
+					{{:helper.link(value.name+' (' + value.price + ')'+((value.free) ? ' <' + value.free + '>' : ''), 'circle-arrow-s', { "select" : value.name }, null, "linkFixed"+((value.free) ? ' linkOrange' : ''))}}
 				</div>
 				
 			{{/for}}
@@ -83,11 +89,11 @@ h3 {
 			<table ><tr>
 			<td style="width: 90%; vertical-align: middle; font-size: 1.2em; padding-left: 80px; border-style: none;">
 				<div class="itemLabel" style = "display:inline-block; overflow: hidden; width: 50%; "><b>Selected Spawnpoint</b>: </div> 
-				<div style = "display:inline-block;">{{:data.spawn.name}} ({{:data.spawn.x}}, {{:data.spawn.y}}, {{:data.spawn.z}})</div>
+				<div style = "display:inline-block; color:{{:data.spawn.color}}">{{:data.spawn.name}} ({{:data.spawn.x}}, {{:data.spawn.y}}, {{:data.spawn.z}})</div>
 				
 			</td>
 			<td style="width: 10%; border-style: none;">
-				<div style = "display:inline-block;">{{:helper.link('Change', null, { "select_spawn" : 1 }, (data.authorised) ? null : 'disabled')}}</div>
+				<div style = "display:inline-block;">{{:helper.link((data.authorised) ? 'Change' : 'Check', null, { "select_spawn" : 1 }, null)}}</div>
 			</td>
 			</tr></table>
 		</td>

@@ -13,7 +13,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]EarthGov_Law" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="[CONFIG_GET(string/wikiurl)]EarthGov_Law" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -36,7 +36,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]Sol_Gov_Military_Justice&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="[CONFIG_GET(string/wikiurl)]Sol_Gov_Military_Justice&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -58,7 +58,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]Standard_Operating_Procedure" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="[CONFIG_GET(string/wikiurl)]Standard_Operating_Procedure" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -108,7 +108,7 @@
 	. = ..()
 
 	//Throws runtimes without overmap
-	if (config.no_overmap)
+	if (CONFIG_GET(flag/no_overmap))
 		return
 
 	var/obj/effect/overmap/torch = map_sectors["[z]"]

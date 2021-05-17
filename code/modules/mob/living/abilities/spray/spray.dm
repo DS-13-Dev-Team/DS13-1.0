@@ -91,7 +91,6 @@ Vars/
 	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/start), 0)
 
 /datum/extension/spray/proc/handle_extra_data(var/list/data)
-	.=..()
 
 /datum/extension/spray/proc/set_target_loc(var/vector2/newloc, var/target_object)
 	target = newloc

@@ -78,7 +78,7 @@
 	if(mRun in mutations)
 		tally = 0
 
-	tally += config.human_delay
+	tally += CONFIG_GET(number/human_delay)
 	tally /= get_move_speed_factor()
 	if(lying) //Crawling, it's slower
 		tally /= species.lying_speed_factor

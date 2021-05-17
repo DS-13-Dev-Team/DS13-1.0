@@ -687,7 +687,7 @@ var/global/floorIsLava = 0
 	set category = "Admin"
 	set name = "Unprison"
 	if (isAdminLevel(M.z))
-		if (config.allow_admin_jump)
+		if (CONFIG_GET(flag/allow_admin_jump))
 			M.forceMove(pick(GLOB.latejoin))
 			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
 			log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
@@ -917,8 +917,8 @@ var/global/floorIsLava = 0
 	set category = "Debug"
 	set desc="Reduces view range when wearing welding helmets"
 	set name="Toggle tinted welding helmets."
-	config.welder_vision = !( config.welder_vision )
-	if (config.welder_vision)
+	CONFIG_SET(flag/welder_vision, !CONFIG_GET(flag/welder_vision))
+	if (CONFIG_GET(flag/welder_vision))
 		to_world("<B>Reduced welder vision has been enabled!</B>")
 	else
 		to_world("<B>Reduced welder vision has been disabled!</B>")

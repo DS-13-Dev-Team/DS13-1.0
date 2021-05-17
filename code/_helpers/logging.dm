@@ -1,6 +1,11 @@
 //wrapper macros for easier grepping
 #define DIRECT_OUTPUT(A, B) A << B
 #define WRITE_FILE(file, text) DIRECT_OUTPUT(file, text)
+#define SEND_TEXT(target, text) DIRECT_OUTPUT(target, text)
+
+//This is an external call, "true" and "false" are how rust parses out booleans
+#define WRITE_LOG(log, text) rustg_log_write(log, text, "true")
+#define WRITE_LOG_NO_FORMAT(log, text) rustg_log_write(log, text, "false")
 
 
 // On Linux/Unix systems the line endings are LF, on windows it's CRLF, admins that don't use notepad++
@@ -38,11 +43,11 @@
 
 /proc/log_admin(text)
 	GLOB.admin_log.Add(text)
-	if (config.log_admin)
+	if (CONFIG_GET(flag/log_admin))
 		game_log("ADMIN", text)
 
 /proc/log_debug(text)
-	if (config.log_debug)
+	if (CONFIG_GET(flag/log_debug))
 		game_log("DEBUG", text)
 	to_debug_listeners(text)
 
@@ -54,63 +59,68 @@
 	warning(text)
 	to_debug_listeners(text, "WARNING")
 
+/* Rarely gets called; just here in case the config breaks. */
+/proc/log_config(text)
+	WRITE_LOG(GLOB.config_error_log, text)
+	SEND_TEXT(world.log, text)
+
 /proc/to_debug_listeners(text, prefix = "DEBUG")
 	for(var/client/C in GLOB.admins)
 		if(C.get_preference_value(/datum/client_preference/staff/show_debug_logs) == GLOB.PREF_SHOW)
 			to_chat(C, "[prefix]: [text]")
 
 /proc/log_game(text)
-	if (config.log_game)
+	if (CONFIG_GET(flag/log_game))
 		game_log("GAME", text)
 
 /proc/log_vote(text)
-	if (config.log_vote)
+	if (CONFIG_GET(flag/log_vote))
 		game_log("VOTE", text)
 
 /proc/log_access(text)
-	if (config.log_access)
+	if (CONFIG_GET(flag/log_access))
 		game_log("ACCESS", text)
 
 /proc/log_say(text)
-	if (config.log_say)
+	if (CONFIG_GET(flag/log_say))
 		game_log("SAY", text)
 
 /proc/log_ooc(text)
-	if (config.log_ooc)
+	if (CONFIG_GET(flag/log_ooc))
 		game_log("OOC", text)
 
 
 /proc/log_necro(text)
-	if (config.log_necro)
+	if (CONFIG_GET(flag/log_necro))
 		game_log("NECRO", text)
 
 /proc/log_whisper(text)
-	if (config.log_whisper)
+	if (CONFIG_GET(flag/log_whisper))
 		game_log("WHISPER", text)
 
 /proc/log_emote(text)
-	if (config.log_emote)
+	if (CONFIG_GET(flag/log_emote))
 		game_log("EMOTE", text)
 
 /proc/log_attack(text)
-	if (config.log_attack)
+	if (CONFIG_GET(flag/log_attack))
 		game_log("ATTACK", text)
 
 /proc/log_adminsay(text)
-	if (config.log_adminchat)
+	if (CONFIG_GET(flag/log_adminchat))
 		game_log("ADMINSAY", text)
 
 /proc/log_adminwarn(text)
-	if (config.log_adminwarn)
+	if (CONFIG_GET(flag/log_adminwarn))
 		game_log("ADMINWARN", text)
 
 /proc/log_pda(text)
-	if (config.log_pda)
+	if (CONFIG_GET(flag/log_pda))
 		game_log("PDA", text)
 
 /proc/log_to_dd(text)
 	to_world_log(text) //this comes before the config check because it can't possibly runtime
-	if(config.log_world_output)
+	if(CONFIG_GET(flag/log_world_output))
 		game_log("DD_OUTPUT", text)
 
 /proc/log_misc(text)
@@ -125,7 +135,7 @@
 
 //This replaces world.log so it displays both in DD and the file
 /proc/log_world(text)
-	if(config && config.log_runtime)
+	if(config && CONFIG_GET(flag/log_runtime))
 		to_world_log(runtime_diary)
 		to_world_log(text)
 	to_world_log(null)

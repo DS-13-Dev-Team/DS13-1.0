@@ -204,8 +204,8 @@
 
 	return 1
 
-/obj/machinery/atmospherics/valve/return_network_air(datum/network/reference)
-	return null
+/obj/machinery/atmospherics/valve/return_network_air(datum/pipe_network/reference)
+	return
 
 /obj/machinery/atmospherics/valve/disconnect(obj/machinery/atmospherics/reference)
 	if(reference==node1)

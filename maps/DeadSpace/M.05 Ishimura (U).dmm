@@ -13,18 +13,17 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
 	d2 = 2;
-	dir = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "ad" = (
 /obj/structure/grille,
 /turf/simulated/floor/reinforced,
 /area/space)
 "ae" = (
 /turf/simulated/wall,
-/area/space)
+/area/ishimura/external/hull)
 "af" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -32,7 +31,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "ag" = (
 /obj/machinery/access_button{
 	frequency = 1380;
@@ -40,7 +39,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "ah" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
@@ -50,13 +49,13 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "ai" = (
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "aj" = (
 /turf/simulated/floor/reinforced/airless,
-/area/space)
+/area/ishimura/external/hull)
 "ak" = (
 /obj/effect/floor_decal/solarpanel,
 /obj/machinery/power/solar{
@@ -65,27 +64,24 @@
 	},
 /obj/structure/cable/yellow{
 	d2 = 2;
-	dir = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "al" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 4;
-	dir = 2;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 4;
-	dir = 2;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "am" = (
 /obj/machinery/access_button{
 	frequency = 1380;
@@ -93,29 +89,26 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "an" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
-	dir = 2;
 	icon_state = "4-8"
 	},
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 4;
-	dir = 2;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 4;
-	dir = 2;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "ao" = (
 /turf/simulated/wall/r_wall/hull,
 /area/space)
@@ -124,11 +117,10 @@
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
-	dir = 2;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "aq" = (
 /turf/simulated/wall,
 /area/ishimura/eva/substation/transfer)
@@ -148,7 +140,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "as" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
@@ -160,17 +152,15 @@
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 8;
-	dir = 2;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 4;
-	dir = 2;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "at" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -178,45 +168,40 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "au" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
-	dir = 2;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 8;
-	dir = 2;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
-	dir = 2;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "av" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
-	dir = 2;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 8;
-	dir = 2;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "aw" = (
 /turf/simulated/wall,
 /area/ishimura/eva)
@@ -231,7 +216,7 @@
 	},
 /obj/structure/cable/yellow,
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "az" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -239,8 +224,7 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -250,7 +234,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "aA" = (
 /obj/effect/floor_decal/solarpanel,
 /obj/machinery/power/solar{
@@ -259,7 +243,7 @@
 	},
 /obj/structure/cable/orange,
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar/port)
+/area/ishimura/external/solar/port)
 "aB" = (
 /obj/structure/closet/firecloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -284,15 +268,14 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10;
-	icon_state = "intact-scrubbers"
+	dir = 10
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "aF" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -310,7 +293,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "aG" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -326,7 +309,6 @@
 /obj/machinery/door/airlock/external/glass{
 	dir = 4;
 	frequency = 1380;
-	icon_state = "closed";
 	id_tag = "eva_smes1_outer";
 	locked = 1
 	},
@@ -343,7 +325,6 @@
 	dir = 4
 	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	cycle_to_external_air = 0;
 	frequency = 1380;
 	id_tag = "eva_smes1";
 	pixel_y = 30;
@@ -358,8 +339,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6;
-	icon_state = "intact"
+	dir = 6
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -376,7 +356,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "aJ" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -384,8 +364,7 @@
 /area/ishimura/eva)
 "aK" = (
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 4;
-	icon_state = "cobweb2"
+	dir = 4
 	},
 /obj/structure/table/standard,
 /obj/random/tool,
@@ -396,7 +375,6 @@
 /obj/machinery/power/smes/buildable/preset/torch/substation_full,
 /obj/structure/cable/orange{
 	d2 = 4;
-	dir = 2;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -425,7 +403,6 @@
 	},
 /obj/structure/cable/orange{
 	d2 = 8;
-	dir = 2;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -440,8 +417,7 @@
 /area/ishimura/eva)
 "aQ" = (
 /obj/effect/floor_decal/industrial/warning/corner{
-	dir = 8;
-	icon_state = "warningcorner"
+	dir = 8
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -455,7 +431,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "aS" = (
 /obj/effect/wallframe_spawn/reinforced/hull,
 /obj/machinery/door/firedoor/border_only,
@@ -472,8 +448,7 @@
 /area/ishimura/eva/substation)
 "aV" = (
 /obj/machinery/power/terminal{
-	dir = 1;
-	icon_state = "term"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d2 = 2;
@@ -504,19 +479,16 @@
 /area/space)
 "aY" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
+	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8;
-	icon_state = "map_scrubber_on"
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
 "aZ" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	icon_state = "map_vent_out"
+	dir = 4
 	},
 /obj/machinery/light{
 	dir = 8
@@ -538,13 +510,11 @@
 /obj/machinery/door/airlock/external{
 	dir = 8;
 	frequency = 1380;
-	icon_state = "closed";
 	id_tag = "eva_smes1_inner";
 	locked = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -576,12 +546,10 @@
 /area/ishimura/eva)
 "be" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8;
-	icon_state = "map_scrubber_on"
+	dir = 8
 	},
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
+	dir = 4
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -590,9 +558,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
 "bg" = (
@@ -606,8 +574,7 @@
 	},
 /obj/effect/catwalk_plated/dank,
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -631,8 +598,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -641,8 +607,7 @@
 /area/ishimura/eva/substation)
 "bi" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4;
-	icon_state = "map"
+	dir = 4
 	},
 /obj/structure/cable/white{
 	d1 = 4;
@@ -665,8 +630,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -677,7 +641,6 @@
 /obj/machinery/door/airlock/external{
 	dir = 8;
 	frequency = 1380;
-	icon_state = "closed";
 	id_tag = "eva_smes2_inner";
 	locked = 1
 	},
@@ -693,8 +656,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -724,8 +686,7 @@
 	tag_interior_door = "eva_smes2_inner"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -747,7 +708,6 @@
 /obj/machinery/door/airlock/external/glass{
 	dir = 4;
 	frequency = 1380;
-	icon_state = "closed";
 	id_tag = "eva_smes2_outer";
 	locked = 1
 	},
@@ -773,7 +733,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "bo" = (
 /obj/structure/cable/white{
 	d1 = 2;
@@ -782,7 +742,7 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "bp" = (
 /obj/item/device/radio/intercom{
 	dir = 4;
@@ -801,8 +761,7 @@
 /area/ishimura/eva)
 "br" = (
 /obj/effect/floor_decal/industrial/warning{
-	dir = 1;
-	icon_state = "warning"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -814,8 +773,7 @@
 /area/ishimura/eva)
 "bs" = (
 /obj/effect/floor_decal/industrial/warning/corner{
-	dir = 1;
-	icon_state = "warningcorner"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -838,13 +796,11 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
-	icon_state = "map_vent";
 	id_tag = "eva_smes1_pump"
 	},
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
@@ -858,8 +814,7 @@
 	pixel_x = -24
 	},
 /obj/machinery/camera/network/engineering{
-	dir = 1;
-	icon_state = "camera"
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
@@ -880,6 +835,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/structure/dispenser/oxygen,
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
 "bz" = (
@@ -891,7 +847,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
-	icon_state = "map_vent";
 	id_tag = "eva_smes2_pump"
 	},
 /obj/effect/floor_decal/industrial/warning/full,
@@ -939,8 +894,7 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10;
-	icon_state = "intact-scrubbers"
+	dir = 10
 	},
 /obj/structure/cable/orange{
 	d1 = 2;
@@ -953,7 +907,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "bG" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -961,7 +915,6 @@
 	pixel_x = -24
 	},
 /obj/structure/cable/white{
-	d1 = 0;
 	d2 = 2;
 	icon_state = "0-2"
 	},
@@ -1011,7 +964,6 @@
 /obj/item/weapon/storage/briefcase/inflatable,
 /obj/structure/cable/orange{
 	d2 = 2;
-	dir = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/dank,
@@ -1029,8 +981,7 @@
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	icon_state = "map_vent_out"
+	dir = 4
 	},
 /obj/item/stack/material/glass/fifty,
 /obj/item/device/radio/intercom{
@@ -1040,8 +991,7 @@
 /area/ishimura/eva/supply)
 "bR" = (
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
@@ -1062,7 +1012,7 @@
 "bU" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/channel/first)
 "bV" = (
 /obj/machinery/status_display{
 	pixel_y = 32
@@ -1084,8 +1034,7 @@
 /area/ishimura/eva)
 "bY" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
+	dir = 4
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -1115,8 +1064,7 @@
 /area/ishimura/eva/prep)
 "ce" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	icon_state = "map_vent_out"
+	dir = 4
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva/prep)
@@ -1137,15 +1085,13 @@
 /area/ishimura/eva/prep)
 "ch" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8;
-	icon_state = "map_scrubber_on"
+	dir = 8
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva/prep)
 "ci" = (
 /obj/machinery/camera/network/engineering{
-	dir = 4;
-	icon_state = "camera"
+	dir = 4
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -1161,11 +1107,10 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "cl" = (
 /obj/machinery/camera/network/engineering{
-	dir = 8;
-	icon_state = "camera"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
@@ -1190,8 +1135,7 @@
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	icon_state = "map_vent_out"
+	dir = 4
 	},
 /obj/item/stack/material/steel/fifty,
 /turf/simulated/floor/tiled/monotile,
@@ -1204,7 +1148,7 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "cr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1217,8 +1161,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1260,8 +1203,7 @@
 /area/ishimura/eva/supply)
 "cu" = (
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/structure/cable/orange{
 	d1 = 4;
@@ -1279,7 +1221,6 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	dir = 8;
-	icon_state = "closed";
 	name = "Repair Supply Storage"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -1308,8 +1249,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/junction{
-	dir = 4;
-	icon_state = "pipe-j1"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1327,7 +1267,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "cy" = (
 /obj/structure/cable/orange{
 	d1 = 2;
@@ -1341,8 +1281,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6;
-	icon_state = "intact"
+	dir = 6
 	},
 /obj/structure/cable/orange{
 	d1 = 2;
@@ -1359,8 +1298,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/structure/cable/orange{
 	d1 = 4;
@@ -1377,8 +1315,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/structure/cable/orange{
 	d1 = 2;
@@ -1389,8 +1326,7 @@
 /area/ishimura/eva/prep)
 "cB" = (
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1399,20 +1335,17 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/machinery/door/airlock/engineering{
 	dir = 8;
-	icon_state = "closed";
 	name = "Airlock Pressure Room"
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/eva/prep)
 "cC" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1429,8 +1362,7 @@
 /area/ishimura/eva/prep/ADS)
 "cD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1469,7 +1401,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "cI" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4;
@@ -1490,8 +1422,7 @@
 /area/ishimura/eva)
 "cK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8;
-	icon_state = "map_scrubber_on"
+	dir = 8
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -1575,9 +1506,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/power/apc{
-	dir = 2;
 	name = "south bump";
-	operating = 1;
 	pixel_y = -28
 	},
 /obj/structure/cable/orange,
@@ -1585,8 +1514,7 @@
 /area/ishimura/eva/prep)
 "cV" = (
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
@@ -1604,8 +1532,7 @@
 /area/ishimura/eva/prep)
 "cY" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8;
-	icon_state = "map_vent_out"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
@@ -1670,25 +1597,9 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/eva/prep)
-"dg" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/orange{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/port)
 "dh" = (
 /obj/structure/sign/warning/server_room{
 	dir = 4;
-	icon_state = "server";
 	pixel_x = -35
 	},
 /turf/simulated/floor/dank,
@@ -1701,7 +1612,6 @@
 	},
 /obj/structure/cable/orange{
 	d2 = 2;
-	dir = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/dank,
@@ -1740,7 +1650,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "do" = (
 /obj/machinery/light{
 	dir = 1
@@ -1767,11 +1677,11 @@
 /area/ishimura/eva/airlock)
 "ds" = (
 /turf/simulated/wall/r_wall,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "dt" = (
 /obj/effect/wallframe_spawn/reinforced/hull,
 /turf/simulated/floor/plating,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "du" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/cable/yellow{
@@ -1781,7 +1691,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "dv" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/dank,
@@ -1808,8 +1718,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -1821,8 +1730,7 @@
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -1849,7 +1757,6 @@
 	},
 /obj/structure/cable/orange{
 	d2 = 2;
-	dir = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1857,7 +1764,6 @@
 "dD" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	cycle_to_external_air = 0;
 	frequency = 1380;
 	id_tag = "topdeck_airlock";
 	pixel_y = 30;
@@ -1882,11 +1788,10 @@
 	},
 /obj/structure/cable/yellow{
 	d2 = 4;
-	dir = 2;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "dF" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/orange{
@@ -1900,7 +1805,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "dG" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -1911,11 +1816,10 @@
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
-	dir = 2;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "dH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plating,
@@ -1929,21 +1833,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
-"dJ" = (
-/obj/structure/bed/chair{
-	dir = 4;
-	icon_state = "chair_preview"
-	},
-/turf/simulated/floor/dank,
-/area/ishimura/eva)
 "dK" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva)
 "dL" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_preview"
+	dir = 8
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -1972,8 +1868,7 @@
 /area/ishimura/eva)
 "dO" = (
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
@@ -2016,8 +1911,7 @@
 	},
 /obj/effect/catwalk_plated/dank,
 /obj/structure/disposalpipe/junction{
-	dir = 4;
-	icon_state = "pipe-j1"
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva)
@@ -2074,7 +1968,6 @@
 /obj/machinery/door/airlock/external{
 	dir = 8;
 	frequency = 1380;
-	icon_state = "closed";
 	id_tag = "topdeck_airlock_inner";
 	locked = 1
 	},
@@ -2169,7 +2062,6 @@
 /obj/machinery/door/airlock/external/glass{
 	dir = 4;
 	frequency = 1380;
-	icon_state = "closed";
 	id_tag = "topdeck_airlock_outer";
 	locked = 1
 	},
@@ -2178,20 +2070,18 @@
 "ea" = (
 /obj/item/weapon/stool,
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "eb" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 4;
-	dir = 2;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "ec" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -2199,14 +2089,6 @@
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
-"ed" = (
-/obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = 21
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/plating,
-/area/ishimura/eva/substation/transfer)
 "ee" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -2215,7 +2097,7 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "ef" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank,
@@ -2226,8 +2108,7 @@
 /area/ishimura/eva)
 "eh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -2251,13 +2132,11 @@
 /area/ishimura/eva)
 "ej" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/machinery/door/airlock/external{
 	dir = 8;
 	frequency = 1380;
-	icon_state = "closed";
 	id_tag = "topdeck_airlock_inner";
 	locked = 1
 	},
@@ -2269,15 +2148,13 @@
 /area/ishimura/eva/airlock)
 "el" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock)
 "em" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4;
-	icon_state = "map"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock)
@@ -2285,7 +2162,6 @@
 /obj/machinery/door/airlock/external/glass{
 	dir = 4;
 	frequency = 1380;
-	icon_state = "closed";
 	id_tag = "topdeck_airlock_outer";
 	locked = 1
 	},
@@ -2295,27 +2171,24 @@
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 4;
-	dir = 2;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "ep" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable/yellow{
 	d2 = 8;
-	dir = 2;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "eq" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/eva/substation/transfer)
 "er" = (
 /obj/structure/bed/chair{
-	dir = 1;
-	icon_state = "chair_preview"
+	dir = 1
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -2339,7 +2212,6 @@
 "ev" = (
 /obj/structure/sign/warning/airlock{
 	dir = 8;
-	icon_state = "doors";
 	pixel_x = 32
 	},
 /turf/simulated/floor/dank,
@@ -2349,7 +2221,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
-	icon_state = "map_vent";
 	id_tag = "topdeck_airlock_pump"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2364,7 +2235,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
-	icon_state = "map_vent";
 	id_tag = "topdeck_airlock_pump"
 	},
 /obj/effect/floor_decal/industrial/warning/full,
@@ -2383,12 +2253,11 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "eA" = (
 /obj/machinery/floodlight/on,
 /obj/structure/window/reinforced{
-	dir = 4;
-	icon_state = "rwindow"
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -2398,12 +2267,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "eB" = (
 /obj/machinery/floodlight/on,
 /obj/structure/window/reinforced{
-	dir = 4;
-	icon_state = "rwindow"
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -2411,7 +2279,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "eC" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
@@ -2419,7 +2287,6 @@
 "eD" = (
 /obj/machinery/power/solar_control{
 	dir = 1;
-	icon_state = "solar";
 	id = "auxsolarstarboard";
 	name = "Starboard Solar Array Control"
 	},
@@ -2428,20 +2295,18 @@
 	},
 /obj/structure/cable/yellow{
 	d2 = 4;
-	dir = 2;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "eE" = (
 /obj/machinery/power/smes/buildable,
 /obj/structure/cable/white{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "eF" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank,
@@ -2466,7 +2331,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "eI" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
@@ -2508,7 +2373,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "eP" = (
 /obj/item/device/radio/intercom{
 	dir = 1;
@@ -2536,7 +2401,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/hull)
 "eS" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
@@ -2546,7 +2411,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/solar/starboard)
 "eT" = (
 /obj/machinery/power/solar{
 	id = "auxsolarstarboard";
@@ -2555,59 +2420,52 @@
 /obj/effect/floor_decal/solarpanel,
 /obj/structure/cable/yellow{
 	d2 = 2;
-	dir = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/solar/starboard)
 "eU" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 4;
-	dir = 2;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 4;
-	dir = 2;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/solar/starboard)
 "eV" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
-	dir = 2;
 	icon_state = "4-8"
 	},
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 4;
-	dir = 2;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 4;
-	dir = 2;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/solar/starboard)
 "eW" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
-	dir = 2;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/solar/starboard)
 "eX" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
@@ -2619,55 +2477,48 @@
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
-	dir = 2;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 4;
-	dir = 2;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/solar/starboard)
 "eY" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
-	dir = 2;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 8;
-	dir = 2;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
-	dir = 2;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/solar/starboard)
 "eZ" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
-	dir = 2;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 8;
-	dir = 2;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/solar/starboard)
 "fa" = (
 /obj/machinery/power/solar{
 	id = "auxsolarstarboard";
@@ -2676,13 +2527,13 @@
 /obj/effect/floor_decal/solarpanel,
 /obj/structure/cable/yellow,
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/solar/starboard)
 "fb" = (
 /obj/machinery/power/tracker,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow,
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/solar/starboard)
+/area/ishimura/external/solar/starboard)
 "fc" = (
 /obj/machinery/vending/coffee,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2734,11 +2585,10 @@
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 8;
-	dir = 2;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "fg" = (
 /obj/machinery/floodlight/on,
 /obj/structure/window/reinforced{
@@ -2753,31 +2603,28 @@
 	health = 1e+006
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fh" = (
 /obj/machinery/floodlight/on,
 /obj/structure/window/reinforced{
-	dir = 2;
 	health = 1e+007
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	icon_state = "rwindow"
+	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fi" = (
 /obj/machinery/floodlight/on,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 1;
-	icon_state = "rwindow"
+	dir = 1
 	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2789,7 +2636,7 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fk" = (
 /obj/structure/cable/orange{
 	d1 = 1;
@@ -2813,12 +2660,11 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fl" = (
 /obj/structure/lattice,
 /obj/structure/cable/green{
 	d1 = 32;
-	d2 = 1;
 	icon_state = "32-1"
 	},
 /turf/simulated/open,
@@ -2826,22 +2672,19 @@
 "fm" = (
 /obj/machinery/floodlight/on,
 /obj/structure/window/reinforced{
-	dir = 2;
 	health = 1e+007
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	icon_state = "rwindow"
+	dir = 1
 	},
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fn" = (
 /obj/machinery/door/airlock/external{
-	dir = 4;
-	icon_state = "closed"
+	dir = 4
 	},
 /obj/structure/cable/white{
 	d1 = 4;
@@ -2849,7 +2692,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "fo" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/orange{
@@ -2863,7 +2706,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fp" = (
 /obj/structure/table/standard,
 /obj/machinery/power/apc{
@@ -2879,12 +2722,11 @@
 	icon_state = "2-8"
 	},
 /obj/structure/cable/white{
-	d1 = 0;
 	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "fq" = (
 /obj/structure/cable/white{
 	d1 = 2;
@@ -2897,7 +2739,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "fr" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -2905,7 +2747,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "fs" = (
 /obj/structure/table/standard,
 /obj/item/device/radio/intercom{
@@ -2920,7 +2762,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "ft" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -2935,24 +2777,18 @@
 /area/ishimura/eva/substation/transfer)
 "fv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4;
-	icon_state = "map"
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
 "fw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/camera/network/engineering{
-	dir = 8;
-	icon_state = "camera"
-	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
 "fx" = (
 /obj/machinery/atmospherics/binary/pump/on,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
@@ -2963,7 +2799,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fz" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -2973,7 +2809,6 @@
 /obj/machinery/door/airlock/external/glass{
 	dir = 4;
 	frequency = 1380;
-	icon_state = "closed";
 	id_tag = "eva_smes3_outer";
 	locked = 1
 	},
@@ -2996,8 +2831,7 @@
 	tag_interior_door = "eva_smes3_inner"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6;
-	icon_state = "intact"
+	dir = 6
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
@@ -3010,20 +2844,17 @@
 /obj/machinery/door/airlock/external{
 	dir = 8;
 	frequency = 1380;
-	icon_state = "closed";
 	id_tag = "eva_smes3_inner";
 	locked = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
 "fC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/structure/cable/white{
 	d1 = 4;
@@ -3039,17 +2870,15 @@
 /area/ishimura/eva/substation/transfer)
 "fD" = (
 /obj/machinery/power/terminal{
-	dir = 1;
-	icon_state = "term"
+	dir = 1
 	},
 /obj/structure/cable/yellow{
 	d2 = 8;
-	dir = 2;
 	icon_state = "0-8"
 	},
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/airless,
-/area/ishimura/eva/solar)
+/area/ishimura/external/solar)
 "fE" = (
 /obj/structure/lattice,
 /obj/structure/cable/white{
@@ -3058,8 +2887,7 @@
 	icon_state = "32-8"
 	},
 /obj/machinery/atmospherics/pipe/zpipe/down/supply{
-	dir = 1;
-	icon_state = "down-supply"
+	dir = 1
 	},
 /turf/simulated/open,
 /area/ishimura/eva/substation/transfer)
@@ -3067,13 +2895,11 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
-	icon_state = "map_vent";
 	id_tag = "eva_smes3_pump"
 	},
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
+	dir = 4
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
@@ -3087,19 +2913,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fH" = (
 /obj/machinery/access_button{
 	frequency = 1380;
 	master_tag = "eva_smes3";
 	pixel_x = -24
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
 "fI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /obj/item/device/radio/intercom{
 	dir = 1;
@@ -3110,8 +2936,7 @@
 "fJ" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
@@ -3131,7 +2956,7 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fM" = (
 /obj/effect/wallframe_spawn/reinforced/hull,
 /obj/machinery/door/firedoor/border_only,
@@ -3167,12 +2992,10 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
-	icon_state = "map_vent";
 	id_tag = "topdeck_airlock_pump"
 	},
 /obj/machinery/camera/network/engineering{
-	dir = 1;
-	icon_state = "camera"
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock)
@@ -3188,7 +3011,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3200,7 +3023,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -3213,29 +3036,26 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/hull)
 "fS" = (
 /obj/item/device/radio/intercom{
 	dir = 8;
 	pixel_x = 22
 	},
 /obj/machinery/camera/network/engineering{
-	dir = 8;
-	icon_state = "camera"
+	dir = 8
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva/prep)
 "fT" = (
 /obj/machinery/camera/network/engineering{
-	dir = 1;
-	icon_state = "camera"
+	dir = 1
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva/supply)
 "fU" = (
 /obj/machinery/camera/network/engineering{
-	dir = 1;
-	icon_state = "camera"
+	dir = 1
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
@@ -3254,11 +3074,10 @@
 	},
 /obj/structure/disposalpipe/down,
 /turf/simulated/open,
-/area/ishimura/eva/ADS)
+/area/ishimura/external/hull)
 "fX" = (
 /obj/machinery/camera/network/engineering{
-	dir = 8;
-	icon_state = "camera"
+	dir = 8
 	},
 /obj/machinery/power/apc{
 	dir = 1;
@@ -3328,8 +3147,7 @@
 /area/ishimura/eva/ADS)
 "gf" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3340,14 +3158,6 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/eva/prep)
 "gg" = (
-/obj/machinery/door/airlock/engineering{
-	dir = 4;
-	name = "Airlock Pressure Room"
-	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3355,13 +3165,19 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/engineering{
+	dir = 8;
+	name = "Airlock Pressure Room"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
@@ -3379,8 +3195,7 @@
 /area/ishimura/eva/ADS)
 "gi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -3431,8 +3246,7 @@
 /area/ishimura/eva/ADS)
 "gm" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	icon_state = "map_vent_out"
+	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/dispenser/oxygen,
@@ -3564,13 +3378,13 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
 "gB" = (
-/obj/machinery/computer/asteroidcannon,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/modular_computer/console/preset/engineering,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/ADS)
 "gC" = (
-/obj/item/modular_computer/console/preset/engineering,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/computer/asteroidcannon,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/ADS)
 "gD" = (
@@ -3708,6 +3522,15 @@
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
+"gU" = (
+/turf/simulated/wall/r_wall/hull,
+/area/necrospawn/ads/channel_port)
+"gV" = (
+/turf/simulated/floor/reinforced,
+/area/necrospawn/ads/channel_port)
+"hu" = (
+/turf/simulated/floor/reinforced,
+/area/necrospawn/ads/cannon_housing)
 "hS" = (
 /obj/machinery/door/airlock/external/glass{
 	dir = 8;
@@ -3725,6 +3548,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"iq" = (
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/second)
 "jK" = (
 /obj/machinery/light{
 	dir = 1
@@ -3733,8 +3559,7 @@
 /area/ishimura/eva/airlock/ADS)
 "ke" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8;
-	icon_state = "map"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
@@ -3742,28 +3567,60 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"kI" = (
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/external/solar/starboard)
 "kY" = (
 /turf/simulated/wall,
 /area/ishimura/eva/ADS)
+"lg" = (
+/turf/simulated/wall/r_wall/hull,
+/area/necrospawn/ads/channel_starboard)
 "ln" = (
 /obj/structure/sign/warning/engineering_access{
 	dir = 8;
 	pixel_x = 35
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/channel/second)
 "mi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
+"mj" = (
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/eva/substation/transfer)
+"ne" = (
+/obj/machinery/floodlight/on,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/second)
 "oi" = (
 /obj/structure/railing/mapped,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
+/obj/machinery/turret/covered/pulse/active,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
+"oW" = (
+/obj/structure/table/standard,
+/obj/item/device/radio/intercom{
+	dir = 8;
+	pixel_x = 21
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/eva/substation/transfer)
 "ps" = (
 /obj/machinery/door/airlock/external{
 	dir = 4;
@@ -3772,16 +3629,14 @@
 	locked = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/airlock/ADS)
 "pA" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/camera/network/engineering{
-	dir = 1;
-	icon_state = "camera"
+	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
@@ -3797,13 +3652,16 @@
 "pZ" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/eva/airlock/ADS)
+"qg" = (
+/obj/structure/grille,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/solar/starboard)
 "rI" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
 "sB" = (
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
@@ -3814,16 +3672,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
+"sF" = (
+/obj/effect/necrohatch{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/necrospawn/ads/channel_starboard)
 "sO" = (
 /turf/simulated/floor/hull{
 	initial_gas = null
 	},
-/area/space)
+/area/ishimura/external/hull)
 "tR" = (
 /obj/effect/wallframe_spawn/reinforced/hull,
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/ADS)
@@ -3835,8 +3698,7 @@
 /area/ishimura/eva/airlock/ADS)
 "uo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6;
-	icon_state = "intact"
+	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -3850,6 +3712,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"wC" = (
+/obj/effect/necrohatch,
+/turf/simulated/floor/reinforced,
+/area/necrospawn/ads/channel_port)
 "wF" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/closet/walllocker/emerglocker/north,
@@ -3859,6 +3725,24 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"wJ" = (
+/obj/machinery/floodlight/on,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/second)
+"xr" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/hull)
 "yd" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
@@ -3895,6 +3779,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"AR" = (
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/first)
 "Bv" = (
 /turf/simulated/wall,
 /area/ishimura/eva/prep/ADS)
@@ -3907,6 +3794,25 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"CU" = (
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/external/channel/second)
+"Dg" = (
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/solar/starboard)
+"Ds" = (
+/turf/simulated/floor/plating,
+/area/ishimura/eva/substation/transfer)
+"EF" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	dir = 1;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/hull)
 "EV" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/eva/ADS)
@@ -3918,11 +3824,10 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/channel/second)
 "GM" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -3932,20 +3837,45 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
+"Ii" = (
+/obj/machinery/floodlight/on,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/first)
+"IC" = (
+/turf/simulated/floor/reinforced,
+/area/necrospawn/ads/channel_starboard)
 "JS" = (
 /obj/machinery/camera/network/engineering{
-	dir = 1;
-	icon_state = "camera"
+	dir = 1
 	},
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
+"Ku" = (
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/solar/port)
+"Lp" = (
+/obj/effect/necrohatch,
+/turf/simulated/floor/reinforced,
+/area/necrospawn/ads/cannon_housing)
 "Lz" = (
 /turf/simulated/wall,
 /area/ishimura/eva/airlock/ADS)
+"OQ" = (
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/external/channel/first)
 "OS" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -3956,26 +3886,37 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
+"Pr" = (
+/obj/structure/closet/medical_wall/filled,
+/turf/simulated/wall,
+/area/ishimura/eva/substation/transfer)
 "PU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"PW" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/plating,
+/area/ishimura/eva/substation/transfer)
 "Qg" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
+"QV" = (
+/obj/structure/table/standard,
+/obj/random/loot/often/many,
+/turf/simulated/floor/plating,
+/area/ishimura/eva/substation/transfer)
 "RG" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
-	id_tag = "topdeck_airlock_sensor";
+	id_tag = "ADS_airlock_sensor";
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
@@ -3997,14 +3938,19 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/eva/prep/ADS)
+"UC" = (
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/external/hull)
+"WD" = (
+/obj/structure/wall_frame/hull,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/second)
 "WR" = (
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
@@ -4014,11 +3960,26 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/channel/second)
 "XJ" = (
 /obj/structure/wall_frame/hull,
 /turf/simulated/floor/reinforced,
-/area/space)
+/area/ishimura/external/channel/first)
+"Yg" = (
+/obj/machinery/floodlight/on,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/first)
+"YJ" = (
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/eva)
 "Zv" = (
 /obj/machinery/door/airlock/external{
 	dir = 4;
@@ -11982,10 +11943,10 @@ ai
 ai
 ai
 ai
-ao
-ao
-ao
-ao
+YJ
+YJ
+YJ
+YJ
 ai
 ai
 ai
@@ -12180,18 +12141,18 @@ ai
 ai
 ai
 ai
-ao
-ao
-ao
-ao
-ao
-ae
-ae
-ao
-ao
-ao
-ao
-ao
+YJ
+YJ
+YJ
+YJ
+YJ
+aw
+aw
+YJ
+YJ
+YJ
+YJ
+YJ
 ai
 ai
 ai
@@ -12382,18 +12343,18 @@ ai
 ai
 ai
 ai
-ao
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ao
+YJ
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+YJ
 ai
 ai
 ai
@@ -12584,18 +12545,18 @@ ai
 ai
 ai
 ai
-ao
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ao
+YJ
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+YJ
 ai
 ai
 ai
@@ -12786,18 +12747,18 @@ ai
 ai
 ai
 ai
-ao
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ao
+YJ
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+YJ
 ai
 ai
 ai
@@ -12988,18 +12949,18 @@ ai
 ai
 ai
 ai
-ao
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ao
+YJ
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+YJ
 ai
 ai
 ai
@@ -13190,18 +13151,18 @@ ai
 ai
 ai
 ai
-ao
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ao
+YJ
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+YJ
 ai
 ai
 ai
@@ -13382,18 +13343,17 @@ ai
 ai
 ar
 ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ae
+YJ
+YJ
+YJ
+YJ
+YJ
+YJ
+YJ
+YJ
+YJ
+YJ
+YJ
 aw
 aw
 aw
@@ -13402,8 +13362,9 @@ aw
 aw
 aw
 aw
-ae
-ao
+aw
+aw
+YJ
 ai
 ai
 ai
@@ -13584,7 +13545,7 @@ ai
 ai
 ar
 ai
-ao
+YJ
 aw
 aw
 aw
@@ -13599,13 +13560,13 @@ aw
 aw
 dh
 bX
-dJ
-dJ
+es
+es
 bX
 dh
 aw
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -13786,7 +13747,7 @@ ai
 ai
 ar
 ai
-ao
+YJ
 aw
 aB
 ci
@@ -13807,7 +13768,7 @@ er
 aC
 aB
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -13988,7 +13949,7 @@ ai
 ai
 ar
 ai
-ao
+YJ
 aw
 do
 aO
@@ -14009,7 +13970,7 @@ aC
 aC
 eN
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -14190,7 +14151,7 @@ ai
 ai
 ar
 ai
-ao
+YJ
 aw
 aD
 aP
@@ -14211,7 +14172,7 @@ aC
 aC
 eP
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -14392,7 +14353,7 @@ ai
 ai
 ar
 ai
-ao
+YJ
 aw
 do
 aQ
@@ -14413,7 +14374,7 @@ aC
 aC
 aC
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -14594,7 +14555,7 @@ ai
 ai
 ar
 ai
-ao
+YJ
 aw
 aJ
 aC
@@ -14615,7 +14576,7 @@ aC
 aC
 eQ
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -14796,7 +14757,7 @@ ai
 ai
 ar
 ai
-ao
+YJ
 aw
 aw
 aw
@@ -14817,7 +14778,7 @@ es
 aC
 aJ
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -14998,13 +14959,13 @@ ai
 ai
 ar
 ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+YJ
+YJ
+YJ
+YJ
+YJ
+YJ
+YJ
 bK
 bN
 bZ
@@ -15019,7 +14980,7 @@ et
 er
 aw
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -15206,7 +15167,7 @@ ai
 ai
 ai
 ai
-ao
+YJ
 bK
 dj
 cc
@@ -15220,8 +15181,8 @@ aC
 dL
 eF
 aw
-ao
-ao
+YJ
+YJ
 ai
 ai
 ai
@@ -15408,7 +15369,7 @@ ai
 ai
 ai
 ai
-ao
+YJ
 bK
 bO
 ca
@@ -15422,7 +15383,7 @@ aC
 aC
 fU
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -15610,7 +15571,7 @@ ai
 ai
 ai
 ai
-ao
+YJ
 bK
 bP
 cb
@@ -15624,7 +15585,7 @@ ef
 ef
 eG
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -15812,7 +15773,7 @@ ai
 ai
 ai
 ai
-ao
+YJ
 bK
 bQ
 cc
@@ -15826,7 +15787,7 @@ aC
 aC
 eI
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -16014,7 +15975,7 @@ ai
 ai
 ai
 ai
-ao
+YJ
 bK
 bR
 bR
@@ -16028,7 +15989,7 @@ eg
 eu
 eI
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -16216,7 +16177,7 @@ ai
 ai
 ai
 ai
-ao
+YJ
 bL
 bS
 cd
@@ -16230,7 +16191,7 @@ aC
 aC
 eJ
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -16418,7 +16379,7 @@ aI
 aI
 aF
 ai
-ao
+YJ
 bL
 bT
 ce
@@ -16432,7 +16393,7 @@ aC
 aC
 eK
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -16620,7 +16581,7 @@ ai
 ag
 ar
 ai
-ao
+YJ
 bL
 bV
 cf
@@ -16634,7 +16595,7 @@ aC
 aC
 eL
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -16836,7 +16797,7 @@ aC
 aC
 eL
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -17038,7 +16999,7 @@ eh
 ev
 eM
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -17240,7 +17201,7 @@ ej
 dq
 dq
 aw
-ao
+YJ
 ai
 ai
 ai
@@ -17441,8 +17402,8 @@ dW
 ek
 ew
 dq
-ao
-ao
+YJ
+YJ
 ai
 ai
 ai
@@ -17643,7 +17604,7 @@ dX
 el
 ex
 dq
-ao
+UC
 ai
 ai
 ai
@@ -17845,7 +17806,7 @@ dW
 ek
 ey
 dq
-ao
+UC
 ai
 ai
 ai
@@ -18047,7 +18008,7 @@ dY
 el
 eC
 dq
-ao
+UC
 ai
 ai
 ai
@@ -18249,7 +18210,7 @@ dW
 em
 fO
 dq
-ao
+UC
 ai
 ai
 ai
@@ -18451,19 +18412,19 @@ dZ
 en
 dr
 dr
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 ao
 ao
 ao
@@ -18634,42 +18595,42 @@ ad
 ai
 ai
 ai
-ao
-ao
-ao
+UC
+UC
+UC
 aT
 bm
 aT
 aT
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 ai
 bn
-bU
+xr
 eH
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ad
+UC
+UC
+UC
+UC
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+Dg
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -18852,26 +18813,26 @@ ai
 ai
 ai
 bn
-bU
+xr
 ai
 ai
 ai
 ai
 ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ad
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -19054,26 +19015,26 @@ fj
 fj
 fj
 fk
-bU
+xr
 ai
 ai
 ai
 ai
 ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ad
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -19256,26 +19217,26 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
 ai
 ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ad
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -19439,16 +19400,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 al
 ay
-ai
+Ku
 ak
 al
 ay
-ai
+Ku
 ak
 al
 ay
@@ -19458,7 +19419,7 @@ ai
 ai
 eA
 cx
-bU
+xr
 eB
 ai
 ai
@@ -19467,17 +19428,17 @@ ai
 eT
 eU
 fa
-ai
+Dg
 eT
 eU
 fa
-ai
+Dg
 eT
 eU
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -19641,16 +19602,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -19660,7 +19621,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -19669,17 +19630,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -19843,16 +19804,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -19862,7 +19823,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -19871,17 +19832,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -20045,16 +20006,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 aA
-ai
+Ku
 ak
 an
 aA
-ai
+Ku
 ak
 an
 aA
@@ -20064,7 +20025,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -20073,17 +20034,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -20247,16 +20208,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -20266,7 +20227,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -20275,17 +20236,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -20449,16 +20410,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -20468,7 +20429,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -20477,17 +20438,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -20651,16 +20612,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -20670,7 +20631,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -20679,17 +20640,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -20853,16 +20814,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -20872,7 +20833,7 @@ ai
 ai
 eA
 cx
-bU
+xr
 eB
 ai
 ai
@@ -20881,17 +20842,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -21055,16 +21016,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -21074,7 +21035,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -21083,17 +21044,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -21257,16 +21218,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -21276,7 +21237,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -21285,17 +21246,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -21459,16 +21420,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -21478,7 +21439,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -21487,17 +21448,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -21661,16 +21622,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -21680,7 +21641,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -21689,17 +21650,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -21863,16 +21824,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -21882,7 +21843,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -21891,17 +21852,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -22065,16 +22026,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -22084,7 +22045,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -22093,17 +22054,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -22267,16 +22228,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -22286,7 +22247,7 @@ ai
 ai
 eA
 cx
-bU
+xr
 eB
 ai
 ai
@@ -22295,17 +22256,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -22469,16 +22430,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -22488,7 +22449,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -22497,17 +22458,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -22671,16 +22632,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -22690,7 +22651,7 @@ ai
 ai
 ai
 cx
-bU
+xr
 ai
 ai
 ai
@@ -22699,17 +22660,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -22873,16 +22834,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -22901,17 +22862,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -23075,16 +23036,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
-ai
+Ku
 ak
 an
 ay
@@ -23103,17 +23064,17 @@ ai
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
+Dg
 eT
 eV
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -23277,19 +23238,19 @@ aa
 aa
 aa
 ad
-ai
-ai
-ai
+Ku
+Ku
+Ku
 ap
-ai
-ai
-ai
+Ku
+Ku
+Ku
 ap
-ai
-ai
-ai
+Ku
+Ku
+Ku
 ap
-ai
+Ku
 ai
 ai
 cx
@@ -23302,20 +23263,20 @@ dt
 cx
 ai
 ai
-ai
+Dg
 eW
-ai
-ai
-ai
+Dg
+Dg
+Dg
 eW
-ai
-ai
-ai
+Dg
+Dg
+Dg
 eW
-ai
-ai
-ai
-ad
+Dg
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -23492,9 +23453,9 @@ ah
 ah
 as
 ah
-ah
-ah
-dg
+EF
+EF
+eR
 du
 dG
 eb
@@ -23502,8 +23463,8 @@ eo
 ff
 du
 eR
-eS
-eS
+EF
+EF
 eS
 eX
 eS
@@ -23517,7 +23478,7 @@ eX
 eS
 eS
 fb
-ad
+qg
 aa
 aa
 aa
@@ -23681,19 +23642,19 @@ aa
 aa
 aa
 ad
-ai
-ai
-ai
+Ku
+Ku
+Ku
 ap
-ai
-ai
-ai
+Ku
+Ku
+Ku
 ap
-ai
-ai
-ai
+Ku
+Ku
+Ku
 ap
-ai
+Ku
 ai
 ai
 cx
@@ -23706,20 +23667,20 @@ dt
 cx
 ai
 ai
-ai
+Dg
 eW
-ai
-ai
-ai
+Dg
+Dg
+Dg
 eW
-ai
-ai
-ai
+Dg
+Dg
+Dg
 eW
-ai
-ai
-ai
-ad
+Dg
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -23883,16 +23844,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -23911,17 +23872,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -24085,16 +24046,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -24113,17 +24074,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -24287,16 +24248,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -24315,17 +24276,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -24489,16 +24450,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 aA
-ai
+Ku
 ak
 au
 aA
-ai
+Ku
 ak
 au
 aA
@@ -24508,7 +24469,7 @@ ai
 fi
 ai
 cq
-bU
+xr
 ai
 fi
 ai
@@ -24517,17 +24478,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -24691,16 +24652,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -24710,7 +24671,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -24719,17 +24680,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -24893,16 +24854,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -24912,7 +24873,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -24921,17 +24882,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -25095,16 +25056,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -25114,7 +25075,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -25123,17 +25084,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -25297,16 +25258,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -25316,7 +25277,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -25325,17 +25286,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -25499,16 +25460,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -25518,7 +25479,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -25527,17 +25488,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -25701,16 +25662,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -25720,7 +25681,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -25729,17 +25690,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -25903,16 +25864,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -25922,7 +25883,7 @@ ai
 ai
 eA
 cq
-bU
+xr
 eB
 ai
 ai
@@ -25931,17 +25892,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -26105,16 +26066,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -26124,7 +26085,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -26133,17 +26094,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -26307,16 +26268,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -26326,7 +26287,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -26335,17 +26296,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -26509,16 +26470,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -26528,7 +26489,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -26537,17 +26498,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -26711,16 +26672,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -26730,7 +26691,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -26739,17 +26700,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -26913,16 +26874,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -26932,7 +26893,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -26941,17 +26902,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -27115,16 +27076,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -27134,7 +27095,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -27143,17 +27104,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -27317,16 +27278,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
-ai
+Ku
 ak
 au
 ay
@@ -27336,7 +27297,7 @@ ai
 ai
 eA
 cq
-bU
+xr
 eB
 ai
 ai
@@ -27345,17 +27306,17 @@ ai
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
+Dg
 eT
 eY
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -27519,16 +27480,16 @@ aa
 aa
 aa
 ad
-ai
-ai
+Ku
+Ku
 ak
 av
 ay
-ai
+Ku
 ak
 av
 ay
-ai
+Ku
 ak
 av
 ay
@@ -27538,7 +27499,7 @@ ai
 ai
 ai
 cq
-bU
+xr
 ai
 ai
 ai
@@ -27547,17 +27508,17 @@ ai
 eT
 eZ
 fa
-ai
+Dg
 eT
 eZ
 fa
-ai
+Dg
 eT
 eZ
 fa
-ai
-ai
-ad
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -27740,26 +27701,26 @@ ee
 ee
 ee
 fL
-bU
+xr
 ai
 ai
 ai
 ai
 ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ad
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -27938,30 +27899,30 @@ ee
 ee
 ee
 fL
-ao
-ao
-ao
+OQ
+OQ
+OQ
 bU
 bU
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ad
+OQ
+OQ
+OQ
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+Dg
+qg
 aa
 aa
 aa
@@ -28124,46 +28085,46 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
 ai
 cq
 ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+OQ
+OQ
+OQ
 bU
 bU
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+OQ
+OQ
+OQ
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -28326,46 +28287,46 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
 eA
 cq
 ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+gU
+gU
+gU
+gU
+gU
+gU
+OQ
+OQ
+OQ
+OQ
+AR
+AR
+OQ
+OQ
+OQ
+lg
+lg
+lg
+lg
+lg
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -28528,46 +28489,46 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
 ai
 cq
 ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-eA
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-eB
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+Ii
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+Yg
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -28730,46 +28691,46 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
 ai
 cq
 ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+gU
+gV
+gV
+gV
+wC
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+sF
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -28932,46 +28893,46 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
 ai
 cq
 ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -29134,46 +29095,46 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
 fy
 cq
 ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ao
-ao
-ao
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+OQ
+OQ
+OQ
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -29336,46 +29297,46 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
 eq
 fz
 eq
 eq
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -29538,46 +29499,46 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
 aq
 fA
 fF
 aq
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -29740,46 +29701,46 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
+UC
+UC
+UC
 aq
 aq
 aq
 fB
 aq
 aq
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -29942,8 +29903,8 @@ aa
 aa
 aa
 aa
-ao
-ao
+UC
+UC
 aq
 aq
 bG
@@ -29951,37 +29912,37 @@ ft
 fC
 fH
 aq
-ao
-ao
-ao
-ao
-ao
-ao
-eA
-ai
-ai
-ai
+gU
+gV
+gV
+gV
+gV
+gU
+Ii
+AR
+AR
+AR
 XJ
 XJ
 XJ
-ai
-eB
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+AR
+Yg
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -30144,8 +30105,8 @@ aa
 aa
 aa
 aa
-ao
-ao
+UC
+UC
 aq
 bf
 dH
@@ -30153,37 +30114,37 @@ fu
 bi
 fJ
 aq
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+gU
+gV
+gV
+gV
+wC
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+sF
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -30346,46 +30307,46 @@ aa
 aa
 aa
 aa
-ao
-ao
+UC
+UC
 aq
 by
-ed
+fw
 fw
 fE
 fK
 aq
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -30548,47 +30509,47 @@ aa
 aa
 aa
 aa
-ao
-ao
+UC
+UC
 aq
+QV
+Ds
+Ds
+Ds
+QV
 aq
-aq
-aq
-aq
-aq
-aq
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -30749,50 +30710,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ao
-ao
-ao
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+Pr
+QV
+PW
+Ds
+PW
+QV
+aq
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+OQ
+OQ
+OQ
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -30951,50 +30912,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+aq
+QV
+oW
+mj
+Ds
+QV
+aq
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -31153,50 +31114,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -31355,50 +31316,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-eA
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-eB
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+Ii
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+Yg
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -31557,50 +31518,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+wC
+gU
+OQ
+AR
 XJ
 XJ
 XJ
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+AR
+AR
+AR
+OQ
+lg
+sF
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -31759,50 +31720,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -31961,50 +31922,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -32163,50 +32124,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -32365,50 +32326,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ao
-ao
-ao
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+OQ
+OQ
+OQ
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -32567,50 +32528,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -32769,50 +32730,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-eA
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-eB
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+Ii
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+Yg
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -32971,50 +32932,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+wC
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+sF
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -33173,50 +33134,50 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
 XJ
 XJ
 XJ
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -33375,48 +33336,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -33577,48 +33538,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -33779,48 +33740,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -33981,48 +33942,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ao
-ao
-ao
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+OQ
+AR
+AR
+AR
+OQ
+OQ
+OQ
+AR
+OQ
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -34183,48 +34144,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-eA
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-eB
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+Ii
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+Yg
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -34385,48 +34346,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+wC
+gU
+OQ
+AR
+AR
+AR
+AR
+AR
+AR
+AR
+OQ
+lg
+sF
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -34587,48 +34548,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -34789,48 +34750,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-XJ
-XJ
-XJ
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+WD
+WD
+WD
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -34991,48 +34952,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -35193,48 +35154,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -35395,48 +35356,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -35597,48 +35558,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-eA
-ai
-ao
-ao
-ao
-ai
-ai
-ai
-eB
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+wJ
+iq
+CU
+CU
+CU
+iq
+iq
+iq
+ne
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -35799,48 +35760,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+wC
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+sF
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -36001,48 +35962,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -36203,48 +36164,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -36405,48 +36366,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-XJ
-XJ
-XJ
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+WD
+WD
+WD
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -36607,48 +36568,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -36809,48 +36770,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -37011,48 +36972,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-eA
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-eB
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+wJ
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+ne
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -37213,48 +37174,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ao
-ao
-ao
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+wC
+gU
+CU
+iq
+iq
+iq
+CU
+CU
+CU
+iq
+CU
+lg
+sF
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -37415,48 +37376,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -37617,48 +37578,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -37819,48 +37780,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -38021,48 +37982,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-XJ
-XJ
-XJ
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+WD
+WD
+WD
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -38223,48 +38184,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -38425,48 +38386,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-eA
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-eB
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+wJ
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+ne
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -38627,48 +38588,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+wC
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+sF
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -38829,48 +38790,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ao
-ao
-ao
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+CU
+CU
+CU
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -39031,48 +38992,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -39233,48 +39194,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -39435,48 +39396,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -39637,48 +39598,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-XJ
-XJ
-XJ
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
+iq
+iq
+WD
+WD
+WD
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -39839,48 +39800,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-eA
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-eB
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+wJ
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+ne
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -40041,48 +40002,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+wC
+gU
+CU
+iq
+iq
+iq
+iq
+iq
+iq
+iq
+CU
+lg
+sF
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -40243,48 +40204,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ai
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gV
+gV
+gV
+gV
+gU
+CU
+iq
 Xp
-ai
-ai
+iq
+iq
 FW
 ln
-ai
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+iq
+CU
+lg
+IC
+IC
+IC
+IC
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -40445,48 +40406,48 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+gU
+gU
+gU
+gU
+gU
+gU
+CU
 pZ
 pZ
 hS
 hS
 pZ
 pZ
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+CU
+CU
+lg
+lg
+lg
+lg
+lg
+lg
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -40647,18 +40608,18 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 Bv
 Bv
 Bv
@@ -40670,24 +40631,24 @@ uu
 ke
 Cj
 Lz
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -40850,17 +40811,17 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+hu
+hu
+Lp
+UC
 Bv
 ga
 OS
@@ -40872,24 +40833,24 @@ rI
 PU
 ud
 Lz
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -41052,17 +41013,17 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+hu
+hu
+hu
+UC
 Bv
 gd
 uo
@@ -41074,24 +41035,24 @@ uu
 pG
 RG
 Lz
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -41254,17 +41215,17 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+hu
+hu
+Lp
+UC
 Bv
 yX
 GM
@@ -41276,24 +41237,24 @@ ij
 PU
 kq
 Lz
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -41456,17 +41417,17 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+hu
+hu
+hu
+UC
 Bv
 fX
 cC
@@ -41478,24 +41439,24 @@ gw
 pG
 pA
 Lz
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -41658,17 +41619,17 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+hu
+hu
+hu
+UC
 Bv
 Bv
 gg
@@ -41682,22 +41643,22 @@ Lz
 Lz
 Lz
 kY
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -41860,17 +41821,17 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+hu
+hu
+Lp
+UC
 fW
 fY
 gi
@@ -41884,22 +41845,22 @@ gu
 gn
 gv
 kY
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -42062,18 +42023,18 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+hu
+hu
+hu
+UC
+UC
 kY
 gh
 gn
@@ -42086,22 +42047,22 @@ gn
 gn
 gF
 kY
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -42264,18 +42225,18 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+hu
+hu
+Lp
+UC
+UC
 kY
 gj
 gn
@@ -42288,21 +42249,21 @@ gK
 gK
 gS
 kY
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -42467,17 +42428,17 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+hu
+hu
+hu
+UC
+UC
 kY
 gk
 go
@@ -42490,21 +42451,21 @@ gB
 gn
 gT
 kY
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -42669,17 +42630,17 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 kY
 kY
 kY
@@ -42692,21 +42653,21 @@ gC
 gM
 gO
 kY
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -42871,20 +42832,20 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 kY
 sB
 sB
@@ -42894,21 +42855,21 @@ WR
 sB
 JS
 kY
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -43073,20 +43034,20 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 kY
 ge
 gD
@@ -43096,21 +43057,21 @@ gL
 gL
 gQ
 kY
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -43275,20 +43236,20 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 kY
 gc
 TG
@@ -43298,21 +43259,21 @@ TG
 TG
 TG
 kY
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -43477,20 +43438,20 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 kY
 TG
 TG
@@ -43500,21 +43461,21 @@ TG
 TG
 TG
 kY
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa
@@ -43679,20 +43640,20 @@ aa
 aa
 aa
 aa
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 EV
 tR
 tR
@@ -43702,21 +43663,21 @@ tR
 tR
 tR
 EV
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
-ao
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 aa
 aa
 aa

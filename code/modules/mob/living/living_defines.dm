@@ -10,7 +10,7 @@
 
 	var/ranged_accuracy_modifier = 0	//Added or removed from accuracy when using ranged weapons
 
-	var/biomass = 1	//How much biomass is this mob worth when absorbed
+	biomass = 1	//How much biomass is this mob worth when absorbed
 
 	var/hud_updateflag = 0
 

@@ -68,3 +68,12 @@
 #define OUTFIT	"outfit"
 #define WEIGHT	"weight"
 #define PATRON	"patron"
+
+
+
+/*
+
+*/
+#define OBJECTIVE_BIOMASS_LOW	300
+#define OBJECTIVE_BIOMASS_MED	650
+#define OBJECTIVE_BIOMASS_HIGH	900

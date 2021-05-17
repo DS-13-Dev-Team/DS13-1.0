@@ -11,17 +11,15 @@
 </div>
 <div class="item" style="padding-top: 10px">
 	<div class="item">
-		<div class="itemContent" style="padding-top: 2px; width: 100%">
-			{{:helper.link('Recalibrate Magnetic Accelerators', 'alert', {'magaccelerators' : '1'}, (!data.can_magaccelerators || data.is_operational) ? 'disabled' : null , null)}}
-		</div>
-		<div class="itemContent" style="padding-top: 2px; width: 100%">
-			{{:helper.link('Reset Flux Alignment Matrix', 'alert', {'fluxalignment' : '1'}, (!data.can_fluxalignment || data.is_operational) ? 'disabled' : null , null)}}
-		</div>
-		<div class="itemContent" style="padding-top: 2px; width: 100%">
-			{{:helper.link('Reboot Targeting Matrix', 'alert', {'targetingmatrix' : '1'}, (!data.can_targetingmatrix || data.is_operational) ? 'disabled' : null , null)}}
-		</div>
-		<div class="itemContent" style="padding-top: 2px; width: 100%">
-			{{:helper.link('Full System Reboot', 'alert', {'reboot' : '1'}, (!data.can_reboot || data.is_operational) ? 'disabled' : null , null)}}
-		</div>
+		{{if data.canreboot}}
+			<div class="itemContent" style="padding-top: 2px; width: 100%">
+				{{:helper.link('Full System Reboot', 'alert', {'reboot' : '1'}, null , null)}}
+			</div>
+			<br>
+		{{/if}}
+		{{if data.rebooting}}
+			{{:helper.displayBar(data.progress, 0, 1, 'good', data.progresstext + "%")}}
+			{{:data.repair ? "<br>Action Required:<br> "+data.repair : "Processing..."}}
+		{{/if}}
 	</div>
 </div>

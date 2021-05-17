@@ -100,8 +100,8 @@ datum/preferences
 	if(isliving(user)) return
 
 	if(href_list["preference"] == "open_whitelist_forum")
-		if(config.forumurl)
-			user << link(config.forumurl)
+		if(CONFIG_GET(string/forumurl))
+			user << link(CONFIG_GET(string/forumurl))
 		else
 			to_chat(user, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
 			return
@@ -145,7 +145,7 @@ datum/preferences
 	if(be_random_name)
 		real_name = random_name(gender,species)
 
-	if(config.humans_need_surnames)
+	if(CONFIG_GET(flag/humans_need_surnames))
 		var/firstspace = findtext(real_name, " ")
 		var/name_length = length(real_name)
 		if(!firstspace)	//we need a surname
@@ -308,7 +308,7 @@ datum/preferences
 	if(S)
 		dat += "<b>Select a character slot to load</b><hr>"
 		var/name
-		for(var/i=1, i<= config.character_slots, i++)
+		for(var/i=1, i<= CONFIG_GET(number/character_slots), i++)
 			S.cd = GLOB.using_map.character_load_path(S, i)
 			S["real_name"] >> name
 			if(!name)	name = "Character[i]"

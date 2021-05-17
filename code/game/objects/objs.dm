@@ -12,7 +12,7 @@
 	//Used to store information about the contents of the object.
 	var/list/matter
 	var/list/matter_reagents
-	var/w_class // Size of the object.
+	var/w_class  = ITEM_SIZE_LARGE// Size of the object.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
 	animate_movement = 2
 	var/throwforce = 1
@@ -26,7 +26,7 @@
 	var/list/tool_qualities = null// List of item qualities for tools system. See tools_and_qualities.dm.
 	var/heat = 0 //Temperature of this object, mostly used to see if it can set other things on fire
 	var/worksound = null	//Sound played when this object is used as a tool in tool operations
-	var/biomass = 0
+
 
 /obj/Destroy()
 	if (is_processing)

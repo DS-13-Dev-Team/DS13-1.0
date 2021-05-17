@@ -50,7 +50,7 @@
 	if(faction_verb && player.current)
 		player.current.verbs |= faction_verb
 
-	if(config.objectives_disabled == CONFIG_OBJECTIVE_VERB)
+	if(CONFIG_GET(flag/objectives_disabled) == CONFIG_OBJECTIVE_VERB)
 		player.current.verbs += /mob/proc/add_objectives
 
 	player.current.client.verbs += /client/proc/aooc

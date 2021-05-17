@@ -1,3 +1,7 @@
+$include dbconfig.txt
+$include game_options.txt
+$include debug.txt
+
 ## Server name: This appears at the top of the screen in-game. In this case it will read "tgstation: station_name" where station_name is the randomly generated name of the station for the round. Remove the # infront of SERVERNAME and replace 'tgstation' with the name of your choice
 # SERVERNAME spacestation13
 
@@ -90,19 +94,6 @@ MOD_TEMPBAN_MAX 1440
 ## Maximum mod job tempban duration (in minutes)
 MOD_JOB_TEMPBAN_MAX 1440
 
-
-## probablities for game modes chosen in "secret" and "random" modes
-##
-## default probablity is 1, increase to make that mode more likely to be picked
-## set to 0 to disable that mode
-PROBABILITY EXTENDED 1
-PROBABILITY MALFUNCTION 1
-PROBABILITY MERCENARY 1
-PROBABILITY WIZARD 1
-PROBABILITY CHANGELING 1
-PROBABILITY CULT 1
-PROBABILITY EXTEND-A-TRAITORMONGOUS 6
-
 ## Hash out to disable random events during the round.
 ALLOW_RANDOM_EVENTS
 
@@ -158,10 +149,10 @@ VOTE_AUTOGAMEMODE_TIMELEFT 100
 #NO_DEAD_VOTE_CREW_TRANSFER
 
 ## players' votes default to "No vote" (otherwise,  default to "No change")
-DEFAULT_NO_VOTE
+VOTE_NO_DEFAULT
 
 ## Allow ghosts to see antagonist through AntagHUD
-ALLOW_ANTAG_HUD
+ANTAG_HUD_ALLOWED
 
 ## If ghosts use antagHUD they are no longer allowed to join the round.
 ANTAG_HUD_RESTRICTED
@@ -183,8 +174,8 @@ HOSTEDBY yournamehere
 ## Set to 1 to jobban them from those positions, set to 0 to allow them.
 GUEST_JOBBAN
 
-## Uncomment this to stop people connecting to your server without a registered ckey. (i.e. guest-* are all blocked from connecting)
-GUEST_BAN
+## Comment this to stop people connecting to your server without a registered ckey. (i.e. guest-* are all blocked from connecting)
+#GUEST_ALLOWED
 ## Set to jobban everyone who's key is not listed in data/whitelist.txt from Captain, HoS, HoP, CE, RD, CMO, Warden, Security, Detective, and AI positions.
 ## Uncomment to 1 to jobban, leave commented out to allow these positions for everyone (but see GUEST_JOBBAN above and regular jobbans)
 # USEWHITELIST
@@ -226,16 +217,13 @@ DISCORD_URL https://discord.gg/WH2fT2Y
 #POPUP_ADMIN_PM
 
 ## Remove the # to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
-ALLOW_HOLIDAYS
+#ALLOW_HOLIDAYS TO_DO
 
 ##Defines the ticklag for the world.  0.9 is the normal one, 0.5 is smoother.
 TICKLAG 0.7
 
 ##Defines world FPS. Defaults to 20.
 FPS 20
-
-## Whether the server will talk to other processes through socket_talk
-SOCKET_TALK 0
 
 ## Comment this out to disable automuting
 #AUTOMUTE_ON
@@ -282,33 +270,16 @@ USEALIENWHITELIST
 #ADMIN_IRC #admin
 
 ## Uncommen to allow ghosts to write in blood during Cult rounds.
-ALLOW_CULT_GHOSTWRITER
+CULT_GHOSTWRITER
 
 ## Sets the minimum number of cultists needed for ghosts to write in blood.
-REQ_CULT_GHOSTWRITER 6
+CULT_GHOSTWRITER_REQ_CULTISTS 6
 
 ## Sets the number of available character slots
 CHARACTER_SLOTS 10
 
-## Sets the number of loadout slots per character
-LOADOUT_SLOTS 3
-
 ## Expected round length in minutes
 EXPECTED_ROUND_LENGTH 180
-
-## The lower delay between events in minutes.
-## Affect mundane, moderate, and major events respectively
-EVENT_DELAY_LOWER 10;30;50
-
-## The upper delay between events in minutes.
-## Affect mundane, moderate, and major events respectively
-EVENT_DELAY_UPPER 15;45;70
-
-## The delay until the first time an event of the given severity runs in minutes.
-## Unset setting use the EVENT_DELAY_LOWER and EVENT_DELAY_UPPER values instead.
-# EVENT_CUSTOM_START_MINOR 10;15
-# EVENT_CUSTOM_START_MODERATE 30;45
-EVENT_CUSTOM_START_MAJOR 80;100
 
 ## Uncomment to make proccall require R_ADMIN instead of R_DEBUG
 ## designed for environments where you have testers but don't want them
@@ -330,17 +301,17 @@ EVENT_CUSTOM_START_MAJOR 80;100
 ## Uncomment to prevent anyone from joining the round by default.
 #DISABLE_ENTRY
 
-## Uncomment to disable the OOC channel by default.
-#DISABLE_OOC
+##Comment to disable the OOC channel by default.
+OOC_ALLOWED
 
-## Uncomment to disable the LOOC channel by default.
-#DISABLE_LOOC
+##Comment to disable the LOOC channel by default.
+LOOC_ALLOWED
 
-## Uncomment to disable the dead OOC channel by default.
-#DISABLE_DEAD_OOC
+##Comment to disable the dead OOC channel by default.
+DOOC_ALLOWED
 
-## Uncomment to disable the AOOC channel by default.
-#DISABLE_AOOC
+##Comment to disable the AOOC channel by default.
+AOOC_ALLOWED
 
 ## Uncomment to disable ghost chat by default.
 #DISABLE_DSAY
@@ -363,7 +334,7 @@ STARLIGHT 0
 
 
 ## Enable asteroid tunnel/cave generation. Will behave strangely if turned off with a map that expects it on.
-# GENERATE_ASTEROID
+# GENERATE_MAP
 
 
 

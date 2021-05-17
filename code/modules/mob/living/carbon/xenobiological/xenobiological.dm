@@ -95,7 +95,7 @@
 	if(health <= 0) // if damaged, the slime moves twice as slow
 		tally *= 2
 
-	tally += config.slime_delay
+	tally += CONFIG_GET(number/slime_delay)
 	tally /= get_move_speed_factor()
 	return tally
 

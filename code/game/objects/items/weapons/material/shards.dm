@@ -6,8 +6,8 @@
 	desc = "Made of nothing. How does this even exist?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
 	icon_state = "large"
 	randpixel = 8
-	sharp = 1
-	edge = 1
+	sharp = TRUE
+	edge = TRUE
 	w_class = ITEM_SIZE_SMALL
 	force_divisor = 0.12 // 6 with hardness 30 (glass)
 	thrown_force_divisor = 0.4 // 4 with weight 15 (glass)
@@ -94,8 +94,15 @@
 	default_material = MATERIAL_STEEL
 	w_class = ITEM_SIZE_TINY	//it's real small
 
-/obj/item/weapon/material/shard/shrapnel/New(loc)
+/obj/item/weapon/material/shard/shrapnel
+	var/atom/launcher
+
+/obj/item/weapon/material/shard/shrapnel/New(loc, obj/item/projectile/P)
+	if(P)
+		launcher = P.launcher
+		launcher.register_shrapnel(src)
 	..(loc, MATERIAL_STEEL)
 
 /obj/item/weapon/material/shard/phoron/New(loc)
 	..(loc, "phglass")
+

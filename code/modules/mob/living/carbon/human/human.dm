@@ -104,7 +104,7 @@
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
-	if(!config.use_loyalty_implants && !override) return // Nuh-uh.
+	if(!CONFIG_GET(flag/use_loyalty_implants) && !override) return // Nuh-uh.
 
 	var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(M)
 	L.imp_in = M
@@ -1010,7 +1010,7 @@
 		InitializeHud()
 		refresh_lighting_overlays()
 
-	if(config && config.use_cortical_stacks && client && client.prefs.has_cortical_stack)
+	if(config && CONFIG_GET(flag/use_cortical_stacks) && client && client.prefs.has_cortical_stack)
 		create_stack()
 	full_prosthetic = null
 
@@ -1487,3 +1487,14 @@
 
 /mob/living/carbon/human/density_lying()
 	return species.density_lying
+
+/mob/living/carbon/human/InitializeHud()
+	..()
+	set_intent(a_intent)
+
+/mob/living/carbon/human/proc/set_intent(new_intent = I_HELP)
+	a_intent = new_intent
+	if(istype(hud_used.action_intent, /obj/screen/intent))
+		var/obj/screen/intent/I = hud_used.action_intent
+		I.intent = I_HURT
+		I.update_icon()

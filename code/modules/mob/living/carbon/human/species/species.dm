@@ -328,7 +328,7 @@
 	var/list/prone_overlay_offset = list(0, 0) // amount to shift overlays when lying
 	var/job_skill_buffs = list()				// A list containing jobs (/datum/job), with values the extra points that job recieves.
 
-
+	var/disarm_cooldown = 0
 
 /*
 These are all the things that can be adjusted for equipping stuff and
@@ -662,7 +662,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.set_fullscreen(H.eye_blind && !H.equipment_prescription, "blind", /obj/screen/fullscreen/blind)
 	H.set_fullscreen(H.stat == UNCONSCIOUS, "blackout", /obj/screen/fullscreen/blackout)
 
-	if(config.welder_vision)
+	if(CONFIG_GET(flag/welder_vision))
 		H.set_fullscreen(H.equipment_tint_total, "welder", /obj/screen/fullscreen/impaired, H.equipment_tint_total)
 	var/how_nearsighted = get_how_nearsighted(H)
 	H.set_fullscreen(how_nearsighted, "nearsighted", /obj/screen/fullscreen/oxy, how_nearsighted)
@@ -956,10 +956,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 //This is a proc so that enhanced necros can get their parent blurb
 /datum/species/proc/get_blurb()
-	.=..()
-	if (.)
-		.+="<br><br>"
-	.+=blurb
+	return blurb
 
 //Shows information for the basic attacks of this species
 /datum/species/proc/get_unarmed_description()
