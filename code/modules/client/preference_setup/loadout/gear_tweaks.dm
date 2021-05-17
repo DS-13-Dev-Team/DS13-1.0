@@ -242,7 +242,7 @@
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a battery.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
+	entry = input(user, "Choose a battery.", title) in names
 	. += names[entry]
 
 	names = list()
@@ -254,7 +254,7 @@
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a hard drive.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
+	entry = input(user, "Choose a hard drive.", title) in names
 	. += names[entry]
 
 	names = list()
@@ -266,7 +266,7 @@
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a network card.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
+	entry = input(user, "Choose a network card.", title) in names
 	. += names[entry]
 
 	names = list()
@@ -278,7 +278,7 @@
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a nanoprinter.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
+	entry = input(user, "Choose a nanoprinter.", title) in names
 	. += names[entry]
 
 	names = list()
@@ -290,7 +290,7 @@
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a card slot.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
+	entry = input(user, "Choose a card slot.", title) in names
 	. += names[entry]
 
 	names = list()
@@ -302,7 +302,7 @@
 		else
 			names["None"] = counter++
 
-	entry = input(user, "Choose a tesla link.", CHARACTER_PREFERENCE_INPUT_TITLE) in names
+	entry = input(user, "Choose a tesla link.", title) in names
 	. += names[entry]
 
 /datum/gear_tweak/tablet/get_default()
