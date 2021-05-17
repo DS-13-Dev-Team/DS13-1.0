@@ -18,7 +18,7 @@ var/list/airlock_overlays = list()
 /obj/machinery/door/airlock
 	name = "airlock"
 	icon = 'icons/obj/doors/station/door_medsec.dmi'
-	var/reinforced_icon = 'icons/obj/airlock_machines.dmi'
+	var/reinforced_icon = 'icons/obj/doors/station/metaldoor.dmi'
 	icon_state = "closed"
 	power_channel = ENVIRON
 
@@ -1383,7 +1383,7 @@ About the new airlock wires panel:
 			brace.electronics.conf_access = req_one_access
 			brace.electronics.one_access = 1
 		update_icon()
-	. = ..()
+	return ..()
 
 /obj/machinery/door/airlock/Destroy()
 	qdel(wires)
