@@ -57,7 +57,7 @@ var/religion_name = null
 
 /proc/station_name()
 	if(!GLOB.using_map)
-		return server_name
+		return CONFIG_GET(string/server_name)
 	if (GLOB.using_map.station_name)
 		return GLOB.using_map.station_name
 
@@ -108,22 +108,7 @@ var/religion_name = null
 			GLOB.using_map.station_name += pick("13","XIII","Thirteen")
 
 
-	if (config && CONFIG_GET(string/server_name))
-		world.name = "[CONFIG_GET(string/server_name)]: [name]"
-	else
-		world.name = GLOB.using_map.station_name
-
 	return GLOB.using_map.station_name
-
-/proc/world_name(var/name)
-	GLOB.using_map.station_name = name
-
-	if (config && CONFIG_GET(string/server_name))
-		world.name = "[CONFIG_GET(string/server_name)]: [name]"
-	else
-		world.name = name
-
-	return name
 
 var/syndicate_name = null
 /proc/syndicate_name()
