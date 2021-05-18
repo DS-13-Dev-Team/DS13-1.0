@@ -286,6 +286,7 @@
 	degradation_mult = 1.3
 	precision = -10
 	adjective_type = ADJECTIVE_TYPE_ORIGIN
+	removeable = FALSE
 
 /obj/item/weapon/tool_modification/augment/expansion/apply_values()
 	if (..())
