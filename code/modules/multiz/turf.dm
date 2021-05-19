@@ -64,7 +64,7 @@
 
 
 /turf/simulated/open/proc/update()
-	plane = OPENSPACE_PLANE + (src.z * PLANE_DIFFERENCE)
+	//plane = OPENSPACE_PLANE + (src.z * PLANE_DIFFERENCE)
 	below = GetBelow(src)
 	GLOB.turf_changed_event.register(below, src,/turf/simulated/open/proc/turf_change)
 	GLOB.exited_event.register(below, src, /turf/simulated/open/proc/handle_move)
