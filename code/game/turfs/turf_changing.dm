@@ -12,9 +12,8 @@
 // Called after turf replaces old one
 /turf/proc/post_change()
 	levelupdate()
-	var/turf/simulated/open/T = GetAbove(src)
-	if(istype(T))
-		T.update_icon()
+	if (above)
+		above.update_mimic()
 
 //Creates a new turf
 /turf/proc/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0)
@@ -33,6 +32,7 @@
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_overlay = lighting_overlay
 	var/old_corners = corners
+	var/old_ao_neighbors = ao_neighbors
 
 //	log_debug("Replacing [src.type] with [N]")
 
@@ -51,9 +51,10 @@
 	if(ispath(N, /turf/simulated/floor))
 		RemoveLattice()
 
-	var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
+	var/turf/simulated/W = new N(src)
 
-
+	if(permit_ao)
+		regenerate_ao()
 
 	W.opaque_counter = opaque_counter
 
@@ -78,6 +79,8 @@
 
 	W.post_change()
 	. = W
+
+	W.ao_neighbors = old_ao_neighbors
 
 	if(lighting_overlays_initialised)
 		lighting_overlay = old_lighting_overlay

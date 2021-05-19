@@ -57,8 +57,13 @@
 	else
 		luminosity = 1
 
+	if (mapload && permit_ao)
+		queue_ao()
+
 	if (z_flags & ZM_MIMIC_BELOW)
 		setup_zmimic(mapload)
+
+	return INITIALIZE_HINT_NORMAL
 
 /turf/New()
 	..()
@@ -69,6 +74,13 @@
 
 /turf/Destroy()
 	remove_cleanables()
+
+	if (ao_queued)
+		SSao.queue -= src
+		ao_queued = 0
+
+	if (z_flags & ZM_MIMIC_BELOW)
+		cleanup_zmimic()
 
 	if (bound_overlay)
 		QDEL_NULL(bound_overlay)

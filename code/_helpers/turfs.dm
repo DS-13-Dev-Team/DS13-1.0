@@ -12,6 +12,9 @@
 /proc/isfloor(turf/T)
 	return (istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor))
 
+/turf/update_icon()
+	queue_ao(FALSE)
+
 /proc/turf_clear(turf/T, var/ignore_mobs = FALSE)
 	if (!isnull(T.clear))
 		return T.clear

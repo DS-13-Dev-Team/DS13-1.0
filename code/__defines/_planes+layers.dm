@@ -69,10 +69,6 @@ What is the naming convention for planes or layers?
 	#define DEBRIS_LAYER 1
 	#define DUST_LAYER 2
 
-//Reserve planes for openspace
-#define OPENSPACE_PLANE -4
-#define OVER_OPENSPACE_PLANE -3
-
 #define DEFAULT_PLANE                   0
 	#define PLATING_LAYER               1
 	//ABOVE PLATING
