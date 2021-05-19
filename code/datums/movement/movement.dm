@@ -45,11 +45,3 @@ var/const/MOVEMENT_STOP    = 0x0008
 		if((may_move & (MOVEMENT_PROCEED|MOVEMENT_HANDLED)) == (MOVEMENT_PROCEED|MOVEMENT_HANDLED))
 			return TRUE
 	return TRUE
-
-// Base
-/atom/movable/Destroy()
-	if(LAZYLEN(movement_handlers) && !ispath(movement_handlers[1]))
-		QDEL_NULL_LIST(movement_handlers)
-	. = ..()
-
-

@@ -50,6 +50,15 @@
 				return TRUE
 
 	return FALSE
+/turf/Initialize(mapload, ...)
+	. = ..()
+	if(dynamic_lighting)
+		luminosity = 0
+	else
+		luminosity = 1
+
+	if (z_flags & ZM_MIMIC_BELOW)
+		setup_zmimic(mapload)
 
 /turf/New()
 	..()
@@ -58,13 +67,12 @@
 			src.Entered(AM)
 			return
 
-	if(dynamic_lighting)
-		luminosity = 0
-	else
-		luminosity = 1
-
 /turf/Destroy()
 	remove_cleanables()
+
+	if (bound_overlay)
+		QDEL_NULL(bound_overlay)
+
 	..()
 	return QDEL_HINT_IWILLGC
 

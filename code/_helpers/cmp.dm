@@ -76,3 +76,6 @@
 
 /proc/cmp_gear_subcategory(var/datum/gear/a, var/datum/gear/b)
 	return sorttext(b.subcategory, a.subcategory)
+
+/proc/cmp_planelayer(atom/A, atom/B)
+	return (B.plane - A.plane) || (B.layer - A.layer)

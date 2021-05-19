@@ -75,8 +75,6 @@
 			return global.SSnano;
 		if("SSobj")
 			return global.SSobj;
-		if("SSopen_space")
-			return global.SSopen_space;
 		if("SSprocessing")
 			return global.SSprocessing;
 		if("SSradiation")
@@ -1034,8 +1032,6 @@
 			global.SSnano=newval;
 		if("SSobj")
 			global.SSobj=newval;
-		if("SSopen_space")
-			global.SSopen_space=newval;
 		if("SSprocessing")
 			global.SSprocessing=newval;
 		if("SSradiation")
@@ -1955,7 +1951,6 @@
 	"SSmobs",
 	"SSnano",
 	"SSobj",
-	"SSopen_space",
 	"SSprocessing",
 	"SSradiation",
 	"SSresearch",

@@ -11,6 +11,7 @@
 	explosion_resistance = 0.5	//Impedes blasts less than any other tile, though not zero
 	var/static/list/dust_cache
 
+	z_eventually_space = TRUE
 
 	/*
 		This is a temporary hack, it should eventually be replaced by porting the bay z-mimic system
