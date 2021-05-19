@@ -23,6 +23,7 @@ SUBSYSTEM_DEF(asset)
 		A.register()
 
 	for(var/client/C in GLOB.clients)
+		winset(C, null, "mainwindow.title='[CONFIG_GET(string/title)] - [GLOB.using_map.full_name]'")
 		// Doing this to a client too soon after they've connected can cause issues, also the proc we call sleeps.
 		spawn(10)
 			getFilesSlow(C, asset_cache.cache, FALSE)
