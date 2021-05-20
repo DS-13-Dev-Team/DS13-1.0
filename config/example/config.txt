@@ -316,8 +316,8 @@ DOOC_ALLOWED
 ##Comment to disable the AOOC channel by default.
 AOOC_ALLOWED
 
-## Uncomment to disable ghost chat by default.
-#DISABLE_DSAY
+## Comment to disable ghost chat by default.
+DSAY_ALLOWED
 
 ## Uncomment to disable respawning by default.
 #DISABLE_RESPAWN
