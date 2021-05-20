@@ -213,7 +213,7 @@
 	if(holder)
 		src.control_freak = 0 //Devs need 0 for profiler access
 
-	winset(src, null, "mainwindow.title='[CONFIG_GET(string/title)]'")
+	winset(src, null, "mainwindow.title='[CONFIG_GET(string/title)] - [GLOB.using_map.full_name]'")
 
 	//////////////
 	//DISCONNECT//
