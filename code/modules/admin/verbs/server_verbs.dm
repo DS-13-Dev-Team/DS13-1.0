@@ -159,7 +159,7 @@
 		return
 
 	//BYOND hates actually changing world.visibility at runtime, so let's just change if we give it the hub password.
-	world.update_hub_visibility() //proc defined in hub.dm
+	world.update_hub_visibility(!GLOB.visibility_pref) //proc defined in hub.dm
 	var/long_message = "toggled hub visibility. The server is now [GLOB.visibility_pref ? "visible" : "invisible"] ([GLOB.visibility_pref])."
 	if (GLOB.visibility_pref && !world.reachable)
 		message_admins("WARNING: The server will not show up on the hub because byond is detecting that a firewall is blocking incoming connections.")

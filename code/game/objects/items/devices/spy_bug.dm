@@ -4,7 +4,6 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "eshield0"
 	item_state = "nothing"
-	plane = OBJ_PLANE
 	layer = BELOW_TABLE_LAYER
 
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
@@ -13,7 +12,7 @@
 	slot_flags = SLOT_EARS
 	throwforce = 5.0
 	throw_range = 15
-	
+
 
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1, TECH_ILLEGAL = 3)
 

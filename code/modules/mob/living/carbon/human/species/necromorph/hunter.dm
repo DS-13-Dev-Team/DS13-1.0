@@ -44,7 +44,6 @@
 	lying_rotation = 90
 	icon_lying = null
 	pixel_offset_x = -8
-	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong) //Bite attack is a backup if blades are severed

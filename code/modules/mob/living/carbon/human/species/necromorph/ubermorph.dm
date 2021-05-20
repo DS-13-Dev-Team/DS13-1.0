@@ -23,7 +23,6 @@
 	lying_rotation = 90
 	icon_lying = null//Ubermorph doesnt have a lying icon, due to complexity from regen animations
 	pixel_offset_x = -16
-	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 
 	unarmed_types = list(/datum/unarmed_attack/claws/ubermorph, /datum/unarmed_attack/bite/strong) //Bite attack is a backup if blades are severed
