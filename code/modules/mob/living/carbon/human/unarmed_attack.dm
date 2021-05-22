@@ -269,6 +269,15 @@ var/global/list/sparring_attack_cache = list()
 
 		return strike
 
+/mob/proc/strike_machine(obj/machinery/target)
+	return
+
+/mob/living/carbon/human/strike_machine(var/obj/structure/target)
+	var/datum/unarmed_attack/u_attack = get_unarmed_attack(target)
+	if (u_attack)
+		var/datum/strike/strike = launch_unarmed_strike(target, u_attack)
+
+		return strike
 
 
 

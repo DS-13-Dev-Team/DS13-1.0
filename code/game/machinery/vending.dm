@@ -70,6 +70,7 @@
 	var/scan_id = 1
 	var/obj/item/weapon/coin/coin
 	var/datum/wires/vending/wires = null
+	var/shot_down = FALSE
 
 /obj/machinery/vending/New()
 	..()
@@ -93,7 +94,7 @@
 
 	src.build_inventory()
 	power_change()
-	.=..()
+	return ..()
 
 /**
  *  Build src.produdct_records from the products lists
@@ -121,10 +122,8 @@
 			src.product_records.Add(product)
 
 /obj/machinery/vending/Destroy()
-	qdel(wires)
-	wires = null
-	qdel(coin)
-	coin = null
+	QDEL_NULL(wires)
+	QDEL_NULL(coin)
 	for(var/datum/stored_items/vending_products/R in product_records)
 		qdel(R)
 	product_records = null
@@ -334,16 +333,47 @@
 /obj/machinery/vending/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/vending/attack_hand(mob/user as mob)
+/obj/machinery/vending/proc/fall_down(mob/user)
+	if(shot_down || !density)
+		return FALSE
+	if(user)
+		user.visible_message(SPAN_NOTICE("[user] knock down [src]."), SPAN_NOTICE("You tear down [src]."))
+	shot_down = TRUE
+	density = FALSE
+	src.set_dir(turn(src.dir, 90))
+	return TRUE
+
+
+/obj/machinery/vending/attack_hand(mob/user)
 	if(stat & (BROKEN|NOPOWER))
 		return
 
 	if(src.seconds_electrified != 0)
 		if(src.shock(user, 100))
 			return
+	if(!shot_down && user.a_intent == I_HURT)
+		admin_notice("entramos en el strike_machine")
+		user.strike_machine(src)
+		return
+	else if(shot_down && user.a_intent != I_HURT)
+		try_raise(user)
+		return
 
 	wires.Interact(user)
 	ui_interact(user)
+
+/obj/machinery/vending/proc/try_raise(mob/user)
+	if(!shot_down)
+		return FALSE
+	if((user && !do_after(user, 1 SECONDS, src, TRUE)) || !shot_down)
+		return FALSE
+	src.set_dir(turn(src.dir, -90))
+	if(user)
+		user.visible_message(SPAN_NOTICE("[user] lifts [src]."), SPAN_NOTICE("You lift [src]."))
+	shot_down = FALSE
+	density = TRUE
+	return TRUE
+
 
 /**
  *  Display the NanoUI window for the vending machine.
