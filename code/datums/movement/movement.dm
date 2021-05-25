@@ -12,7 +12,7 @@ var/const/MOVEMENT_STOP    = 0x0008
 
 
 
-/atom/movable/proc/DoMove(var/direction, var/mob/mover, var/is_external)
+/atom/movable/proc/DoMove(direction, mob/mover, is_external)
 	INIT_MOVEMENT_HANDLERS
 	SET_MOVER(mover)
 	SET_IS_EXTERNAL(mover)

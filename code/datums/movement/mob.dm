@@ -2,15 +2,6 @@
 	var/moving           = FALSE
 
 /mob/proc/SelfMove(var/direction)
-	///Mobs with slow turning take a move to turn in place.
-	//We will attempt to turn towards the target if our movement is off cooldown
-	if (slow_turning)
-		if (CheckMoveCooldown() && facedir(direction))
-			return TRUE
-		else if (!(get_visual_dir() & direction))
-			return FALSE
-
-	//This is in movement/movement.dm, /atom/movable/proc/DoMove(
 	if(DoMove(direction, src) & MOVEMENT_HANDLED)
 		return TRUE // Doesn't necessarily mean the mob physically moved
 

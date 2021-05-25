@@ -1,7 +1,7 @@
 ////////////////////////////
 // parent class for pipes //
 ////////////////////////////
-obj/machinery/atmospherics/pipe/zpipe
+/obj/machinery/atmospherics/pipe/zpipe
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "up"
 
@@ -18,43 +18,21 @@ obj/machinery/atmospherics/pipe/zpipe
 
 	var/maximum_pressure = 70*ONE_ATMOSPHERE
 	var/fatigue_pressure = 55*ONE_ATMOSPHERE
-	alert_pressure = 55*ONE_ATMOSPHERE
-
 
 	level = 1
 
-obj/machinery/atmospherics/pipe/zpipe/New()
-	..()
-	switch(dir)
-		if(SOUTH)
-			initialize_directions = SOUTH
-		if(NORTH)
-			initialize_directions = NORTH
-		if(WEST)
-			initialize_directions = WEST
-		if(EAST)
-			initialize_directions = EAST
-		if(NORTHEAST)
-			initialize_directions = NORTH
-		if(NORTHWEST)
-			initialize_directions = WEST
-		if(SOUTHEAST)
-			initialize_directions = EAST
-		if(SOUTHWEST)
-			initialize_directions = SOUTH
-
-/obj/machinery/atmospherics/pipe/zpipe/hide(var/i)
+/obj/machinery/atmospherics/pipe/zpipe/hide(i)
 	if(istype(loc, /turf/simulated))
 		set_invisibility(i ? 101 : 0)
 	update_icon()
 
-obj/machinery/atmospherics/pipe/zpipe/Process()
+/obj/machinery/atmospherics/pipe/zpipe/Process()
 	if(!parent) //This should cut back on the overhead calling build_network thousands of times per cycle
 		..()
 	else
 		. = PROCESS_KILL
 
-obj/machinery/atmospherics/pipe/zpipe/check_pressure(pressure)
+/obj/machinery/atmospherics/pipe/zpipe/check_pressure(pressure)
 	var/datum/gas_mixture/environment = loc.return_air()
 
 	var/pressure_difference = pressure - environment.return_pressure()
@@ -69,7 +47,7 @@ obj/machinery/atmospherics/pipe/zpipe/check_pressure(pressure)
 
 	else return 1
 
-obj/machinery/atmospherics/pipe/zpipe/proc/burst()
+/obj/machinery/atmospherics/pipe/zpipe/proc/burst()
 	src.visible_message("<span class='warning'>\The [src] bursts!</span>");
 	playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
 	var/datum/effect/effect/system/smoke_spread/smoke = new
@@ -77,26 +55,17 @@ obj/machinery/atmospherics/pipe/zpipe/proc/burst()
 	smoke.start()
 	qdel(src) // NOT qdel.
 
-obj/machinery/atmospherics/pipe/zpipe/proc/normalize_dir()
-	if(dir == (NORTH|SOUTH))
-		set_dir(NORTH)
-	else if(dir == (EAST|WEST))
-		set_dir(EAST)
-
-obj/machinery/atmospherics/pipe/zpipe/Destroy()
+/obj/machinery/atmospherics/pipe/zpipe/Destroy()
 	if(node1)
 		node1.disconnect(src)
 	if(node2)
 		node2.disconnect(src)
 	. = ..()
 
-obj/machinery/atmospherics/pipe/zpipe/pipeline_expansion()
+/obj/machinery/atmospherics/pipe/zpipe/pipeline_expansion()
 	return list(node1, node2)
 
-obj/machinery/atmospherics/pipe/zpipe/update_icon()
-	return
-
-obj/machinery/atmospherics/pipe/zpipe/disconnect(obj/machinery/atmospherics/reference)
+/obj/machinery/atmospherics/pipe/zpipe/disconnect(obj/machinery/atmospherics/reference)
 	if(reference == node1)
 		if(istype(node1, /obj/machinery/atmospherics/pipe))
 			qdel(parent)
@@ -111,16 +80,15 @@ obj/machinery/atmospherics/pipe/zpipe/disconnect(obj/machinery/atmospherics/refe
 /////////////////////////
 // the elusive up pipe //
 /////////////////////////
-obj/machinery/atmospherics/pipe/zpipe/up
+/obj/machinery/atmospherics/pipe/zpipe/up
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "up"
 
 	name = "upwards pipe"
 	desc = "A pipe segment to connect upwards."
 
-obj/machinery/atmospherics/pipe/zpipe/up/atmos_init()
+/obj/machinery/atmospherics/pipe/zpipe/up/atmos_init()
 	..()
-	normalize_dir()
 	var/node1_dir
 
 	for(var/direction in GLOB.cardinal)
@@ -150,16 +118,15 @@ obj/machinery/atmospherics/pipe/zpipe/up/atmos_init()
 // and the down pipe //
 ///////////////////////
 
-obj/machinery/atmospherics/pipe/zpipe/down
+/obj/machinery/atmospherics/pipe/zpipe/down
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "down"
 
 	name = "downwards pipe"
 	desc = "A pipe segment to connect downwards."
 
-obj/machinery/atmospherics/pipe/zpipe/down/atmos_init()
+/obj/machinery/atmospherics/pipe/zpipe/down/atmos_init()
 	..()
-	normalize_dir()
 	var/node1_dir
 
 	for(var/direction in GLOB.cardinal)
@@ -189,7 +156,7 @@ obj/machinery/atmospherics/pipe/zpipe/down/atmos_init()
 // supply/scrubbers  //
 ///////////////////////
 
-obj/machinery/atmospherics/pipe/zpipe/up/scrubbers
+/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers
 	icon_state = "up-scrubbers"
 	name = "upwards scrubbers pipe"
 	desc = "A scrubbers pipe segment to connect upwards."
@@ -197,7 +164,7 @@ obj/machinery/atmospherics/pipe/zpipe/up/scrubbers
 	icon_connect_type = "-scrubbers"
 	color = PIPE_COLOR_RED
 
-obj/machinery/atmospherics/pipe/zpipe/up/supply
+/obj/machinery/atmospherics/pipe/zpipe/up/supply
 	icon_state = "up-supply"
 	name = "upwards supply pipe"
 	desc = "A supply pipe segment to connect upwards."
@@ -205,7 +172,7 @@ obj/machinery/atmospherics/pipe/zpipe/up/supply
 	icon_connect_type = "-supply"
 	color = PIPE_COLOR_BLUE
 
-obj/machinery/atmospherics/pipe/zpipe/down/scrubbers
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers
 	icon_state = "down-scrubbers"
 	name = "downwards scrubbers pipe"
 	desc = "A scrubbers pipe segment to connect downwards."
@@ -213,7 +180,7 @@ obj/machinery/atmospherics/pipe/zpipe/down/scrubbers
 	icon_connect_type = "-scrubbers"
 	color = PIPE_COLOR_RED
 
-obj/machinery/atmospherics/pipe/zpipe/down/supply
+/obj/machinery/atmospherics/pipe/zpipe/down/supply
 	icon_state = "down-supply"
 	name = "downwards supply pipe"
 	desc = "A supply pipe segment to connect downwards."
@@ -222,26 +189,28 @@ obj/machinery/atmospherics/pipe/zpipe/down/supply
 	color = PIPE_COLOR_BLUE
 
 // Colored misc. pipes
-obj/machinery/atmospherics/pipe/zpipe/up/cyan
+/obj/machinery/atmospherics/pipe/zpipe/up/cyan
 	color = PIPE_COLOR_CYAN
-obj/machinery/atmospherics/pipe/zpipe/down/cyan
+/obj/machinery/atmospherics/pipe/zpipe/down/cyan
 	color = PIPE_COLOR_CYAN
 
-obj/machinery/atmospherics/pipe/zpipe/up/red
+/obj/machinery/atmospherics/pipe/zpipe/up/red
 	color = PIPE_COLOR_RED
-obj/machinery/atmospherics/pipe/zpipe/down/red
+/obj/machinery/atmospherics/pipe/zpipe/down/red
 	color = PIPE_COLOR_RED
 
-obj/machinery/atmospherics/pipe/zpipe/up/fuel
+/obj/machinery/atmospherics/pipe/zpipe/up/fuel
 	name = "upwards fuel pipe"
 	color = PIPE_COLOR_ORANGE
 	maximum_pressure = 420*ONE_ATMOSPHERE
 	fatigue_pressure = 350*ONE_ATMOSPHERE
 	alert_pressure = 350*ONE_ATMOSPHERE
+	connect_types = CONNECT_TYPE_FUEL
 
-obj/machinery/atmospherics/pipe/zpipe/down/fuel
+/obj/machinery/atmospherics/pipe/zpipe/down/fuel
 	name = "downwards fuel pipe"
 	color = PIPE_COLOR_ORANGE
 	maximum_pressure = 420*ONE_ATMOSPHERE
 	fatigue_pressure = 350*ONE_ATMOSPHERE
 	alert_pressure = 350*ONE_ATMOSPHERE
+	connect_types = CONNECT_TYPE_FUEL

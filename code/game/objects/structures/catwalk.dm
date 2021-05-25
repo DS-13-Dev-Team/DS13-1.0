@@ -3,47 +3,25 @@
 	desc = "Cats really don't like these things."
 	icon = 'icons/obj/catwalks.dmi'
 	icon_state = "catwalk"
-	density = 0
-	anchored = 1.0
-	var/obj/item/stack/tile/mono/plated_tile
-
+	density = FALSE
+	anchored = TRUE
 	layer = CATWALK_LAYER
-	var/hatch_open = FALSE
-	footstep_sounds= list(
+	footstep_sounds = list(
 		'sound/effects/footstep/catwalk1.ogg',
 		'sound/effects/footstep/catwalk2.ogg',
 		'sound/effects/footstep/catwalk3.ogg',
 		'sound/effects/footstep/catwalk4.ogg',
 		'sound/effects/footstep/catwalk5.ogg')
-
-	can_block_movement = FALSE //It IS the floor
-	atom_flags = ATOM_FLAG_UNTARGETABLE
-
-/obj/structure/catwalk/register_zstructure(var/turf/T)
-	LAZYSET(T.zstructures, src, 1)	//Ladders have a ztransition priority of 2 to overrule other things
+	obj_flags = OBJ_FLAG_NOFALL
+	var/hatch_open = FALSE
+	var/obj/item/stack/tile/mono/plated_tile
 
 /obj/structure/catwalk/Initialize()
 	. = ..()
-	for(var/obj/structure/catwalk/C in get_turf(src))
-		if(C != src)
-			qdel(C)
-	var/turf/T = get_turf(src)
-	register_zstructure(T)
+	DELETE_IF_DUPLICATE_OF(/obj/structure/catwalk)
 	update_connections(1)
 	update_icon()
 
-/obj/structure/catwalk/Destroy()
-
-	unregister_zstructure(get_turf(src))
-	.=..()
-
-/obj/structure/catwalk/CanZPass(atom/A, direction)
-	if(z == A.z)
-		if(direction == DOWN)
-			return FALSE
-	else if(direction == UP)
-		return FALSE
-	return ZTRANSITION_MAYBE
 
 /obj/structure/catwalk/Destroy()
 	redraw_nearby_catwalks()
@@ -71,15 +49,13 @@
 		I.color = plated_tile.color
 		overlays += I
 
-
-
 /obj/structure/catwalk/ex_act(severity)
 	switch(severity)
 		if(1)
-			new /obj/item/stack/rods(src.loc)
+			new /obj/item/stack/material/rods(src.loc)
 			qdel(src)
 		if(2)
-			new /obj/item/stack/rods(src.loc)
+			new /obj/item/stack/material/rods(src.loc)
 			qdel(src)
 
 /obj/structure/catwalk/attack_hand(mob/user)
@@ -87,20 +63,34 @@
 		do_pull_click(user, src)
 	..()
 
+/obj/structure/catwalk/attack_robot(var/mob/user)
+	if(Adjacent(user))
+		attack_hand(user)
+
+/obj/structure/catwalk/proc/deconstruct(mob/user)
+	playsound(src, 'sound/items/Welder.ogg', 100, 1)
+	to_chat(user, "<span class='notice'>Slicing \the [src] joints ...</span>")
+	new /obj/item/stack/material/rods(src.loc)
+	new /obj/item/stack/material/rods(src.loc)
+	//Lattice would delete itself, but let's save ourselves a new obj
+	if(istype(src.loc, /turf/space) || istype(src.loc, /turf/simulated/open))
+		new /obj/structure/lattice/(src.loc)
+	if(plated_tile)
+		new plated_tile.build_type(src.loc)
+	qdel(src)
+
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
 	if(isWelder(C))
-		to_chat(user, "<span class='notice'>Slicing \the [src] joints ...</span>")
-		if (C.use_tool(user, src, WORKTIME_SLOW, QUALITY_WELDING, FAILCHANCE_NORMAL))
-			new /obj/item/stack/rods(src.loc)
-			new /obj/item/stack/rods(src.loc)
-			//Lattice would delete itself, but let's save ourselves a new obj
-			if(istype(src.loc, /turf/space) || istype(src.loc, /turf/simulated/open))
-				new /obj/structure/lattice/(src.loc)
-			if(plated_tile)
-				new plated_tile.build_type(src.loc)
-			qdel(src)
+		var/obj/item/weapon/tool/weldingtool/WT = C
+		if(WT.consume_resources(0, user))
+			deconstruct(user)
 		return
-	if(isCrowbar(C) && plated_tile && C.use_tool(user, src, WORKTIME_FAST, QUALITY_PRYING, FAILCHANCE_NORMAL))
+	if(istype(C, /obj/item/weapon/gun/energy/cutter))
+		deconstruct(user)
+		return
+	if(isCrowbar(C) && plated_tile)
+		if(user.a_intent != I_HELP)
+			return
 		hatch_open = !hatch_open
 		if(hatch_open)
 			playsound(src, 'sound/items/Crowbar.ogg', 100, 2)
@@ -123,8 +113,9 @@
 			ST.in_use = 0
 			src.add_fingerprint(user)
 			if(ST.use(1))
-				for(var/flooring_type in flooring_types)
-					var/decl/flooring/F = flooring_types[flooring_type]
+				var/list/decls = decls_repository.get_decls_of_subtype(/decl/flooring)
+				for(var/flooring_type in decls)
+					var/decl/flooring/F = decls[flooring_type]
 					if(!F.build_type)
 						continue
 					if(ispath(C.type, F.build_type))

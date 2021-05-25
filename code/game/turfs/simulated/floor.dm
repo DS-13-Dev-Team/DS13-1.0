@@ -129,3 +129,6 @@
 	if (broken || burnt || health < max_health)
 		return TRUE
 	return FALSE
+
+/turf/simulated/floor/is_floor()
+	return TRUE

@@ -60,12 +60,12 @@ What is the naming convention for planes or layers?
 	FLOAT_PLANE = -32767
 */
 
-#define CLICKCATCHER_PLANE -99
+#define CLICKCATCHER_PLANE -100
 
-#define SPACE_PLANE -95
-#define SKYBOX_PLANE -94
+#define SPACE_PLANE -99
+#define SKYBOX_PLANE -98
 
-#define DUST_PLANE -93
+#define DUST_PLANE -97
 	#define DEBRIS_LAYER 1
 	#define DUST_LAYER 2
 
@@ -194,10 +194,6 @@ What is the naming convention for planes or layers?
 	#define HUD_ITEM_LAYER				2
 	#define HUD_ABOVE_ITEM_LAYER		3
 	#define HUD_TEXT_LAYER				4
-
-
-//This is difference between highest and lowest visible
-#define PLANE_DIFFERENCE				22
 
 /atom
 	plane = DEFAULT_PLANE

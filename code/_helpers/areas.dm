@@ -44,6 +44,23 @@
 /*
 	Pick helpers
 */
+// Changes the area of T to A. Do not do this manually.
+// Area is expected to be a non-null instance.
+/proc/ChangeArea(turf/T, area/A)
+	if(!istype(A))
+		CRASH("Area change attempt failed: invalid area supplied.")
+	var/area/old_area = get_area(T)
+	if(old_area == A)
+		return
+	A.contents.Add(T)
+	if(old_area)
+		old_area.Exited(T, A)
+		for(var/atom/movable/AM in T)
+			old_area.Exited(AM, A)  // Note: this _will_ raise exited events.
+	A.Entered(T, old_area)
+	for(var/atom/movable/AM in T)
+		A.Entered(AM, old_area) // Note: this will _not_ raise moved or entered events. If you change this, you must also change everything which uses them.
+
 /area/proc/get_clear_turf()
 	return clear_turf_in_list(get_area_turfs(src), ignore_mobs = TRUE)
 

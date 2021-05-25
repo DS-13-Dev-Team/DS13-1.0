@@ -243,7 +243,7 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "aM" = (
-/obj/structure/platform/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/strata/metal,
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
@@ -1013,8 +1013,8 @@
 /area/ishimura/tramdeck/tram/tunnel)
 "cw" = (
 /obj/structure/lattice,
-/obj/structure/platform/platform/strata/metal,
-/obj/structure/platform/platform/strata/metal{
+/obj/structure/platform/strata/metal,
+/obj/structure/platform/strata/metal{
 	dir = 4;
 	icon_state = "strata_metalplatform"
 	},
@@ -1171,15 +1171,15 @@
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "cO" = (
 /obj/structure/lattice,
-/obj/structure/platform/platform/strata/metal{
+/obj/structure/platform/strata/metal{
 	dir = 8;
 	icon_state = "strata_metalplatform"
 	},
-/obj/structure/platform/platform/strata/metal,
+/obj/structure/platform/strata/metal,
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cP" = (
-/obj/structure/platform/platform_decoration/strata/metal{
+/obj/structure/platform_decoration/strata/metal{
 	dir = 1;
 	icon_state = "strata_metalplatform_deco"
 	},
@@ -1187,7 +1187,7 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cQ" = (
-/obj/structure/platform/platform/strata/metal{
+/obj/structure/platform/strata/metal{
 	dir = 4;
 	icon_state = "strata_metalplatform"
 	},
@@ -1204,7 +1204,7 @@
 /turf/simulated/floor/dank/mono,
 /area/space)
 "cT" = (
-/obj/structure/platform/platform/strata/metal{
+/obj/structure/platform/strata/metal{
 	dir = 8;
 	icon_state = "strata_metalplatform"
 	},
@@ -1230,7 +1230,7 @@
 /area/ishimura/tramdeck/switchingstation/upper)
 "cX" = (
 /obj/structure/lattice,
-/obj/structure/platform/platform/strata/metal{
+/obj/structure/platform/strata/metal{
 	dir = 4;
 	icon_state = "strata_metalplatform"
 	},
@@ -1238,14 +1238,14 @@
 /area/ishimura/tramdeck/switchingstation/upper)
 "cY" = (
 /obj/structure/lattice,
-/obj/structure/platform/platform/strata/metal{
+/obj/structure/platform/strata/metal{
 	dir = 8;
 	icon_state = "strata_metalplatform"
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cZ" = (
-/obj/structure/platform/platform_decoration/strata/metal{
+/obj/structure/platform_decoration/strata/metal{
 	dir = 8;
 	icon_state = "strata_metalplatform_deco"
 	},
@@ -1358,7 +1358,7 @@
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
 "dq" = (
-/obj/structure/platform/platform/strata/metal{
+/obj/structure/platform/strata/metal{
 	dir = 1;
 	icon_state = "strata_metalplatform"
 	},
@@ -1686,7 +1686,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/aft)
 "dY" = (
-/obj/structure/platform/platform_decoration/strata/metal{
+/obj/structure/platform_decoration/strata/metal{
 	dir = 4;
 	icon_state = "strata_metalplatform_deco"
 	},
@@ -6671,22 +6671,8 @@
 /obj/machinery/constructable_frame,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
-"oY" = (
-/obj/structure/stair/perspective{
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/switchingstation/upper)
-"oZ" = (
-/obj/structure/stair/perspective,
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/switchingstation/upper)
 "pa" = (
-/obj/structure/stair/perspective{
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/short,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/upper)
 "pb" = (
@@ -36261,7 +36247,7 @@ aa
 ad
 ab
 aw
-oY
+pa
 cV
 db
 dq
@@ -36463,7 +36449,7 @@ aa
 ad
 ab
 aJ
-oZ
+pa
 cV
 db
 dq

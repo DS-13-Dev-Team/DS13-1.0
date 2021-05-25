@@ -39,6 +39,8 @@
 
 	var/movement_delay
 
+	var/tmp/changing_turf
+
 
 /turf/proc/has_wall()
 	if (is_wall)
@@ -65,14 +67,12 @@
 
 	return INITIALIZE_HINT_NORMAL
 
-/turf/New()
-	..()
-	for(var/atom/movable/AM as mob|obj in src)
-		spawn( 0 )
-			src.Entered(AM)
-			return
-
 /turf/Destroy()
+	if (!changing_turf)
+		crash_with("Improper turf qdel. Do not qdel turfs directly.")
+
+	changing_turf = FALSE
+
 	remove_cleanables()
 
 	if (ao_queued)
@@ -323,3 +323,9 @@ var/const/enterloopsanity = 100
 		if(isliving(AM))
 			var/mob/living/M = AM
 			M.turf_collision(src, speed)
+
+/turf/proc/is_open()
+	return FALSE
+
+/turf/proc/is_floor()
+	return FALSE

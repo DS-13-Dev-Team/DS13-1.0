@@ -1,9 +1,3 @@
-/atom/proc/register_zstructure(var/turf/T)
-	return
-
-/atom/proc/unregister_zstructure(var/turf/T)
-	if (T)
-		LAZYREMOVE(T.zstructures, src)
 //////////////////////////////
 //Contents: Ladders, Stairs.//
 //////////////////////////////
@@ -13,12 +7,10 @@
 	desc = "A ladder. You can climb it up and down."
 	icon_state = "ladder01"
 	icon = 'icons/obj/structures.dmi'
-	breakable = FALSE
-	unacidable = 1
-	density = 0
+	density = FALSE
 	opacity = 0
-	anchored = 1
-	layer = ABOVE_OBJ_LAYER
+	anchored = TRUE
+	obj_flags = OBJ_FLAG_NOFALL
 
 	var/allowed_directions = DOWN
 	var/obj/structure/ladder/target_up
@@ -26,26 +18,16 @@
 
 	var/const/climb_time = 2 SECONDS
 	var/static/list/climbsounds = list('sound/effects/ladder.ogg','sound/effects/ladder2.ogg','sound/effects/ladder3.ogg','sound/effects/ladder4.ogg')
-	resistance = 20
-	health = 100	//Hard to break
-
-
-/obj/structure/ladder/register_zstructure(var/turf/T)
-	LAZYSET(T.zstructures, src, 2)	//Ladders have a ztransition priority of 2 to overrule other things
-
-
 
 /obj/structure/ladder/Initialize()
 	. = ..()
-	var/turf/T = get_turf(src)
-	register_zstructure(T)
-
 	// the upper will connect to the lower
 	if(allowed_directions & DOWN) //we only want to do the top one, as it will initialize the ones before it.
 		for(var/obj/structure/ladder/L in GetBelow(src))
 			if(L.allowed_directions & UP)
 				target_down = L
 				L.target_up = src
+				var/turf/T = get_turf(src)
 				T.ReplaceWithLattice()
 				return
 	update_icon()
@@ -57,20 +39,37 @@
 	if(target_up)
 		target_up.target_down = null
 		target_up = null
-
-
-	unregister_zstructure(get_turf(src))
-
 	return ..()
 
-/obj/structure/ladder/CanZPass(atom/A, direction)
-	if (z == A.z)
-		return(allowed_directions & direction)	//Ladder allows climbing through other obstacles#
-	else
-		return(allowed_directions & GLOB.reverse_dir[direction])
+/obj/structure/ladder/attackby(obj/item/I, mob/user)
+	climb(user, I)
 
-/obj/structure/ladder/attackby(obj/item/C as obj, mob/user as mob)
-	climb(user)
+/turf/hitby(atom/movable/AM)
+	if(isobj(AM))
+		var/obj/structure/ladder/L = locate() in contents
+		if(L)
+			L.hitby(AM)
+			return
+	..()
+
+/obj/structure/ladder/hitby(obj/item/I)
+	if (istype(src, /obj/structure/ladder/up))
+		return
+	var/area/room = get_area(src)
+	if(!room.has_gravity())
+		return
+	var/atom/blocker
+	var/turf/landing = get_turf(target_down)
+	for(var/atom/A in landing)
+		if(!A.CanPass(I, I.loc, 1.5, 0))
+			blocker = A
+			break
+	if(blocker)
+		visible_message(SPAN_WARNING("\The [I] fails to go down \the [src], blocked by the [blocker]!"))
+	else
+		visible_message(SPAN_WARNING("\The [I] goes down \the [src]!"))
+		I.forceMove(landing)
+		landing.visible_message(SPAN_WARNING("\The [I] falls from the top of \the [target_down]!"))
 
 /obj/structure/ladder/attack_hand(var/mob/M)
 	climb(M)
@@ -87,14 +86,15 @@
 	climb(M)
 
 /obj/structure/ladder/proc/instant_climb(var/mob/M)
-	var/target_ladder = getTargetLadder(M)
+	var/atom/target_ladder = getTargetLadder(M)
 	if(target_ladder)
-		M.forceMove(get_turf(target_ladder))
+		M.dropInto(target_ladder.loc)
 
-/obj/structure/ladder/proc/climb(var/mob/M)
+/obj/structure/ladder/proc/climb(mob/M, obj/item/I = null)
 	if(!M.may_climb_ladders(src))
 		return
 
+	add_fingerprint(M)
 	var/obj/structure/ladder/target_ladder = getTargetLadder(M)
 	if(!target_ladder)
 		return
@@ -113,18 +113,8 @@
 
 	target_ladder.audible_message("<span class='notice'>You hear something coming [direction] \the [src]</span>")
 
-	var/action_time = climb_time
-	if (M.pulling)
-		action_time += M.pulling.mass * 1.5
-		to_chat(M, SPAN_WARNING("Dragging [M.pulling] along with you makes climbing slow"))
-
-	for(var/obj/item/grab/G in M)
-		if (G.affecting)
-			action_time += G.affecting.mass * 1.5
-			to_chat(M, SPAN_WARNING("Dragging [G.affecting] along with you makes climbing slow"))
-
-	if(do_after(M, action_time, src))
-		climbLadder(M, target_ladder)
+	if(do_after(M, climb_time, src))
+		climbLadder(M, target_ladder, I)
 		for (var/obj/item/grab/G in M)
 			G.adjust_position(force = 1)
 
@@ -176,20 +166,25 @@
 /mob/observer/ghost/may_climb_ladders(var/ladder)
 	return TRUE
 
-/obj/structure/ladder/proc/climbLadder(var/mob/M, var/target_ladder)
+/obj/structure/ladder/proc/climbLadder(mob/user, target_ladder, obj/item/I = null)
 	var/turf/T = get_turf(target_ladder)
 	for(var/atom/A in T)
-		if(!A.CanPass(M, M.loc, 1.5, 0))
-			to_chat(M, "<span class='notice'>\The [A] is blocking \the [src].</span>")
+		if(!A.CanPass(user, user.loc, 1.5, 0))
+			to_chat(user, "<span class='notice'>\The [A] is blocking \the [src].</span>")
+
+			//We cannot use the ladder, but we probably can remove the obstruction
+			var/atom/movable/M = A
+			if(istype(M) && M.movable_flags & MOVABLE_FLAG_Z_INTERACT)
+				if(isnull(I))
+					M.attack_hand(user)
+				else
+					M.attackby(I, user)
+
 			return FALSE
+
 	playsound(src, pick(climbsounds), 50)
 	playsound(target_ladder, pick(climbsounds), 50)
-
-	.= M.Move(T)
-
-	var/atom/movable/pulled_atom = M.pulling
-	if (pulled_atom)
-		pulled_atom.forceMove(T)
+	return user.Move(T)
 
 /obj/structure/ladder/CanPass(obj/mover, turf/source, height, airflow)
 	return airflow || !density
@@ -205,28 +200,14 @@
 	allowed_directions = UP|DOWN
 	icon_state = "ladder11"
 
-
-
-
-
-
-
-
-
-
 /obj/structure/stairs
-	name = "Stairs"
+	name = "stairs"
 	desc = "Stairs leading to another deck.  Not too useful if the gravity goes out."
 	icon = 'icons/obj/stairs.dmi'
-	breakable = FALSE
-	unacidable = 1
-	density = 0
+	density = FALSE
 	opacity = 0
-	anchored = 1
-
+	anchored = TRUE
 	layer = RUNE_LAYER
-	var/debug = FALSE
-	var/list/people = list()
 
 /obj/structure/stairs/Initialize()
 	for(var/turf/turf in locs)
@@ -238,66 +219,37 @@
 			above.ChangeTurf(/turf/simulated/open)
 	. = ..()
 
-/obj/structure/stairs/Destroy()
-	unregister_zstructure(get_turf(src))
-	.=..()
+/obj/structure/stairs/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
+	if(get_dir(loc, target) == dir && upperStep(mover.loc))
+		return FALSE
+	return ..()
 
-/obj/structure/stairs/Uncross(atom/movable/A)
-
-	if (A.z != z)
-		return
-
-	if(A.dir == dir && upperStep(A.loc))
-		// This is hackish but whatever.
-		var/turf/target = get_step(GetAbove(A), dir)
+/obj/structure/stairs/Bumped(atom/movable/A)
+	var/turf/above = GetAbove(A)
+	if (above)
+		var/turf/target = get_step(above, dir)
 		var/turf/source = A.loc
-		var/turf/above = GetAbove(A)
-		if(above.CanZPass(source, UP) && target.Enter(A, source))
+		if(above.CanZPass(source, UP) && target.Enter(A, src))
 			A.forceMove(target)
 			if(isliving(A))
 				var/mob/living/L = A
 				if(L.pulling)
-					L.pulling.forceMove(source)
+					L.pulling.forceMove(target)
+			if(ishuman(A))
+				var/mob/living/carbon/human/H = A
+				if(H.has_footsteps())
+					playsound(source, 'sound/effects/stairs_step.ogg', 50)
+					playsound(target, 'sound/effects/stairs_step.ogg', 50)
 		else
 			to_chat(A, "<span class='warning'>Something blocks the path.</span>")
-		return 0
+	else
+		to_chat(A, SPAN_NOTICE("There is nothing of interest in this direction."))
 
-
-	return 1
-
-
-/obj/structure/stairs/Exit(atom/movable/A)
-
-	if (A.z != z)
-		return
-
-	if(A.dir == dir && upperStep(A.loc))
-		// This is hackish but whatever.
-		var/turf/target = get_step(GetAbove(A), dir)
-		var/turf/source = A.loc
-		var/turf/above = GetAbove(A)
-		if(above.CanZPass(source, UP) && target.Enter(A, source))
-			A.forceMove(target)
-			if(isliving(A))
-				var/mob/living/L = A
-				if(L.pulling)
-					L.pulling.forceMove(source)
-		else
-			to_chat(A, "<span class='warning'>Something blocks the path.</span>")
-		return 0
-
-
-	return 1
-
-/obj/structure/stairs/proc/upperStep(var/turf/T)
+/obj/structure/stairs/proc/upperStep(turf/T)
 	return (T == loc)
 
 /obj/structure/stairs/CanPass(obj/mover, turf/source, height, airflow)
 	return airflow || !density
-
-/obj/structure/stairs/Click()
-	if(istype(usr,/mob/observer))
-		usr.forceMove(GetAbove(src))
 
 // type paths to make mapping easier.
 /obj/structure/stairs/north
@@ -320,14 +272,11 @@
 	dir = WEST
 	bound_width = 64
 
-// Non-Z stairs. Used for perspective and prettying up the map. Thanks to Colonial Warfare. - Lion
-
-/obj/structure/stair/perspective //instance these for the required icons
-	name = "Stairs"
-	icon = 'icons/obj/stairs-persp.dmi'
+/obj/structure/stairs/short
+	bound_height = 32
+	bound_width = 32
+	icon = 'icons/obj/stairs_persp.dmi'
 	icon_state = "p_stair_full"
-	anchored = 1
-	breakable = 0 // Cannot be breakable.
 
-/obj/structure/stair/perspective/regular
-	icon_state = "np_stair"
+/obj/structure/stairs/short/west
+	dir = WEST

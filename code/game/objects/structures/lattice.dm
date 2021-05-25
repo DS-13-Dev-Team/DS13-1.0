@@ -7,7 +7,7 @@
 	anchored = 1.0
 	w_class = ITEM_SIZE_NORMAL
 	layer = LATTICE_LAYER
-	//	obj_flags = OBJ_FLAG_CONDUCTIBLE
+	obj_flags = OBJ_FLAG_NOFALL
 
 /obj/structure/lattice/Initialize()
 	.=..()

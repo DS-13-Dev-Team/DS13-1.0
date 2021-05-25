@@ -179,7 +179,7 @@
 	return turf_map
 
 
-/proc/translate_turfs(var/list/translation, var/area/base_area = null, var/turf/base_turf)
+/proc/translate_turfs(list/translation, area/base_area = null, turf/base_turf)
 	for(var/turf/source in translation)
 
 		var/turf/target = translation[source]
@@ -187,8 +187,8 @@
 		if(target)
 			//update area first so that area/Entered() will be called with the correct area when atoms are moved
 			if(base_area)
-				source.loc.contents.Add(target)
-				base_area.contents.Add(source)
+				ChangeArea(target, get_area(source))
+				ChangeArea(source, base_area)
 			transport_turf_contents(source, target)
 
 	//change the old turfs

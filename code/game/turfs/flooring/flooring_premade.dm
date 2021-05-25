@@ -3,6 +3,7 @@
 	name = "plating"
 	icon = 'icons/turf/flooring/plating.dmi'
 	icon_state = "plating"
+	layer = PLATING_LAYER
 
 /turf/simulated/floor/bluegrid
 	name = "mainframe floor"

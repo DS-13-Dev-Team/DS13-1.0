@@ -14,7 +14,8 @@
 		queue_ao()
 
 /turf/proc/regenerate_ao()
-	for(var/turf/T in RANGE_TURFS(1, src))
+	for(var/thing in RANGE_TURFS(src, 1))
+		var/turf/T = thing
 		if (T.permit_ao)
 			T.queue_ao(TRUE)
 

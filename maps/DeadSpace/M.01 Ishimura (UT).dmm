@@ -319,7 +319,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bh" = (
-/obj/structure/platform/platform/strata/metal,
+/obj/structure/platform/strata/metal,
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8;
 	icon_state = "intact"
@@ -327,7 +327,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bi" = (
-/obj/structure/platform/platform/strata/metal,
+/obj/structure/platform/strata/metal,
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 9;
 	icon_state = "intact"
@@ -335,7 +335,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bj" = (
-/obj/structure/platform/platform/strata/metal,
+/obj/structure/platform/strata/metal,
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 5;
 	icon_state = "intact"
@@ -396,9 +396,8 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 8
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
@@ -419,9 +418,8 @@
 	dir = 1;
 	icon_state = "railing0"
 	},
-/obj/structure/stair/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
@@ -450,9 +448,8 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 8
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
@@ -475,9 +472,8 @@
 	icon_state = "np_stair"
 	},
 /obj/structure/railing/mapped,
-/obj/structure/stair/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
@@ -506,9 +502,8 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bF" = (
-/obj/structure/platform/platform/strata/metal{
-	dir = 4;
-	icon_state = "strata_metalplatform"
+/obj/structure/platform/strata/metal{
+	dir = 4
 	},
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8;
@@ -548,7 +543,7 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bJ" = (
-/obj/structure/platform/platform/strata/metal{
+/obj/structure/platform/strata/metal{
 	dir = 8;
 	icon_state = "strata_metalplatform"
 	},
@@ -596,9 +591,8 @@
 	dir = 1;
 	icon_state = "railing0"
 	},
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 8
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
@@ -650,9 +644,8 @@
 	icon_state = "np_stair"
 	},
 /obj/structure/railing/mapped,
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 8
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
@@ -664,9 +657,8 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bW" = (
-/obj/structure/platform/platform/strata/metal{
-	dir = 4;
-	icon_state = "strata_metalplatform"
+/obj/structure/platform/strata/metal{
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/tank/carbon_dioxide{
 	dir = 8;
@@ -676,7 +668,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bX" = (
-/obj/structure/platform/platform/strata/metal{
+/obj/structure/platform/strata/metal{
 	dir = 8;
 	icon_state = "strata_metalplatform"
 	},
@@ -1323,7 +1315,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform_decoration,
+/obj/structure/platform_decoration,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -1667,11 +1659,11 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "dZ" = (
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 1;
 	icon_state = "platform_deco"
 	},
-/obj/structure/platform/platform_decoration,
+/obj/structure/platform_decoration,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -1974,11 +1966,8 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eB" = (
-/obj/structure/stair/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/platform_decoration,
+/obj/structure/stairs/short,
+/obj/structure/platform_decoration,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eC" = (
@@ -2027,32 +2016,15 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eJ" = (
-/obj/structure/stair/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 1
 	},
-/obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating/under,
-/area/ishimura/tramdeck/tram/undertunnel/uttt)
-"eK" = (
-/obj/structure/stair/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating/under,
+/obj/structure/platform_decoration,
+/turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eL" = (
 /obj/structure/grille/broken,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 8;
 	icon_state = "platform"
 	},
@@ -2060,7 +2032,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eM" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -2114,11 +2086,11 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eT" = (
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eU" = (
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -2126,23 +2098,21 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eV" = (
 /obj/structure/catwalk,
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eW" = (
 /obj/structure/catwalk,
-/obj/structure/stair/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 8
 	},
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eX" = (
-/obj/structure/platform/platform_decoration,
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration,
+/obj/structure/platform_decoration{
 	dir = 1;
 	icon_state = "platform_deco"
 	},
@@ -2151,7 +2121,7 @@
 "eY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/platform/platform_decoration,
+/obj/structure/platform_decoration,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eZ" = (
@@ -2164,15 +2134,15 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fa" = (
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 8;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 5;
 	icon_state = "platform_deco"
 	},
@@ -2226,7 +2196,7 @@
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fd" = (
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -2246,7 +2216,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fe" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -2287,7 +2257,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "fi" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -2312,7 +2282,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fj" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -2328,7 +2298,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fl" = (
 /obj/structure/catwalk,
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -2337,9 +2307,8 @@
 "fm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2355,35 +2324,35 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fn" = (
 /obj/structure/catwalk,
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 1;
 	icon_state = "platform_deco"
 	},
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fo" = (
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 8;
 	icon_state = "platform"
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fp" = (
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 1;
 	icon_state = "platform_deco"
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fq" = (
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 4;
 	icon_state = "platform_deco"
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fr" = (
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/machinery/light{
 	dir = 1;
 	icon_state = "tube_map"
@@ -2401,7 +2370,7 @@
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fu" = (
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -2487,7 +2456,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fG" = (
@@ -2671,7 +2640,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gb" = (
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2681,7 +2650,7 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gc" = (
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -2689,38 +2658,34 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gd" = (
-/obj/structure/stair/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/platform{
+/obj/structure/stairs/short,
+/obj/structure/platform{
 	dir = 8;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 4;
 	icon_state = "platform"
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "ge" = (
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gf" = (
-/obj/structure/platform/platform,
-/obj/structure/platform/platform{
+/obj/structure/platform,
+/obj/structure/platform{
 	dir = 8;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 10;
 	icon_state = "platform_deco"
 	},
@@ -2739,7 +2704,7 @@
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gg" = (
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/effect/catwalk_plated/dank,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2770,7 +2735,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gj" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -2786,7 +2751,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gk" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10;
 	icon_state = "intact-scrubbers"
@@ -2809,7 +2774,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gl" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gm" = (
@@ -2822,27 +2787,11 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gn" = (
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /turf/simulated/floor/plating/under,
-/area/ishimura/tramdeck/tram/undertunnel/uttt)
-"go" = (
-/obj/structure/stair/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/platform{
-	dir = 4;
-	icon_state = "platform"
-	},
-/obj/structure/platform/platform{
-	dir = 8;
-	icon_state = "platform"
-	},
-/turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2884,22 +2833,7 @@
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gu" = (
-/obj/structure/stair/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
-	},
-/obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
-	},
-/turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/uttt)
-"gv" = (
-/obj/structure/stair/perspective,
+/obj/structure/stairs/short,
 /obj/structure/railing/mapped{
 	dir = 8;
 	icon_state = "railing0"
@@ -2916,7 +2850,7 @@
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gx" = (
-/obj/structure/stair/perspective,
+/obj/structure/stairs/short,
 /obj/structure/railing/mapped{
 	dir = 8;
 	icon_state = "railing0"
@@ -2924,7 +2858,7 @@
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gy" = (
-/obj/structure/stair/perspective,
+/obj/structure/stairs/short,
 /obj/structure/railing/mapped{
 	dir = 4;
 	icon_state = "railing0"
@@ -2959,15 +2893,15 @@
 	dir = 4
 	},
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 4;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 9;
 	icon_state = "platform_deco"
 	},
@@ -2981,27 +2915,21 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 8;
 	icon_state = "platform"
 	},
-/obj/structure/stair/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/short,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 4;
 	icon_state = "platform"
 	},
-/obj/structure/stair/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs/short,
 /obj/structure/railing/mapped{
 	dir = 8;
 	icon_state = "railing0"
@@ -3041,7 +2969,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -3075,12 +3003,12 @@
 	dir = 4
 	},
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
-/obj/structure/platform/platform{
+/obj/structure/platform,
+/obj/structure/platform{
 	dir = 4;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 6;
 	icon_state = "platform_deco"
 	},
@@ -3109,23 +3037,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gJ" = (
-/obj/structure/stair/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 1
 	},
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 1;
 	icon_state = "platform_deco"
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gK" = (
-/obj/structure/stair/perspective,
-/obj/structure/platform/platform_decoration{
+/obj/structure/stairs/short,
+/obj/structure/platform_decoration{
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -3144,13 +3071,12 @@
 	dir = 4
 	},
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
-/obj/structure/stair/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 8
 	},
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
@@ -3167,15 +3093,14 @@
 	dir = 4
 	},
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
-/obj/structure/stair/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/platform,
+/obj/structure/stairs/short{
+	dir = 8
 	},
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gN" = (
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -3197,7 +3122,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gO" = (
 /obj/structure/catwalk,
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -3222,7 +3147,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gP" = (
 /obj/structure/catwalk,
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -3251,7 +3176,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -3270,12 +3195,12 @@
 "gS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gT" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -3300,27 +3225,25 @@
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gV" = (
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gW" = (
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gX" = (
-/obj/structure/stair/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gY" = (
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 8
 	},
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
@@ -3330,7 +3253,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -3440,7 +3363,7 @@
 "hh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -3461,7 +3384,7 @@
 "hi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -3469,16 +3392,15 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hj" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
-/obj/structure/stair/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3493,7 +3415,7 @@
 "hk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -3544,7 +3466,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "ho" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/platform/platform_decoration,
+/obj/structure/platform_decoration,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8;
 	icon_state = "map-scrubbers"
@@ -3558,7 +3480,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hp" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3574,7 +3496,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hq" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -3623,11 +3545,10 @@
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "ht" = (
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -3713,11 +3634,11 @@
 /area/ishimura/tramdeck/tram/undertunnel/underforemaintenance)
 "hy" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 8;
 	icon_state = "platform"
 	},
@@ -3779,12 +3700,12 @@
 /area/ishimura/tramdeck/tram/undertunnel/underforemaintenance)
 "hC" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hD" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -3803,7 +3724,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hE" = (
 /obj/structure/catwalk,
-/obj/structure/platform/platform_decoration,
+/obj/structure/platform_decoration,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -3826,7 +3747,7 @@
 "hF" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -3879,11 +3800,11 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hI" = (
 /obj/structure/catwalk,
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 1;
 	icon_state = "platform_deco"
 	},
-/obj/structure/platform/platform_decoration,
+/obj/structure/platform_decoration,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -3899,10 +3820,11 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hJ" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
-/obj/structure/stair/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/stairs/short{
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -3920,7 +3842,7 @@
 "hK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3934,7 +3856,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hL" = (
 /obj/structure/catwalk,
-/obj/structure/platform/platform_decoration,
+/obj/structure/platform_decoration,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3964,7 +3886,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hN" = (
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -3972,13 +3894,12 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hO" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4009,7 +3930,7 @@
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "hQ" = (
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -4030,7 +3951,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/platform/platform_decoration,
+/obj/structure/platform_decoration,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
@@ -4153,7 +4074,7 @@
 "ih" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/platform/platform_decoration,
+/obj/structure/platform_decoration,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -4195,11 +4116,10 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "ik" = (
-/obj/structure/stair/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 8
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
@@ -4258,75 +4178,34 @@
 /obj/machinery/door/airlock/civilian,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
-"iu" = (
-/obj/structure/stair/perspective,
-/obj/structure/platform/platform{
-	dir = 8;
-	icon_state = "platform"
-	},
-/obj/structure/platform/platform{
-	dir = 4;
-	icon_state = "platform"
-	},
-/turf/simulated/floor/plating,
-/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "iv" = (
-/obj/structure/stair/perspective,
-/obj/structure/platform/platform{
+/obj/structure/stairs/short,
+/obj/structure/platform{
 	dir = 4;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 8;
 	icon_state = "platform"
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
-"iw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/platform/platform{
-	dir = 8;
-	icon_state = "platform"
-	},
-/obj/structure/stair/perspective,
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/tram/undertunnel/uttt)
-"ix" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/platform/platform{
-	dir = 4;
-	icon_state = "platform"
-	},
-/obj/structure/stair/perspective,
-/obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
-	},
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "iy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 8;
 	icon_state = "platform_deco"
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "iz" = (
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 8;
 	icon_state = "platform_deco"
 	},
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -4335,20 +4214,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
-"iA" = (
-/obj/structure/stair/perspective,
-/obj/structure/platform/platform_decoration{
-	dir = 8;
-	icon_state = "platform_deco"
-	},
-/turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "iB" = (
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 4;
 	icon_state = "platform_deco"
 	},
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -4357,7 +4228,7 @@
 "iC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -4873,15 +4744,15 @@
 /area/space)
 "jM" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 1;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform{
+/obj/structure/platform{
 	dir = 4;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 9;
 	icon_state = "platform_deco"
 	},
@@ -4907,8 +4778,8 @@
 /area/space)
 "jO" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
-/obj/structure/platform/platform{
+/obj/structure/platform,
+/obj/structure/platform{
 	dir = 8;
 	icon_state = "platform"
 	},
@@ -4927,7 +4798,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "jP" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -4953,7 +4824,7 @@
 "jR" = (
 /obj/effect/decal/cleanable/greenglow,
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -4969,10 +4840,9 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "jS" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/platform,
+/obj/structure/stairs/short{
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5047,9 +4917,8 @@
 "kb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
 /obj/structure/railing/mapped,
 /obj/structure/railing/mapped{
@@ -5060,7 +4929,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "kc" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -5075,11 +4944,10 @@
 /turf/simulated/floor/plating/under,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "kd" = (
-/obj/structure/stair/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 4
 	},
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -5119,11 +4987,10 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "kg" = (
-/obj/structure/stair/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
+/obj/structure/stairs/short{
+	dir = 8
 	},
-/obj/structure/platform/platform,
+/obj/structure/platform,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -5139,12 +5006,12 @@
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "kh" = (
 /obj/effect/catwalk_plated/dank,
-/obj/structure/platform/platform,
-/obj/structure/platform/platform{
+/obj/structure/platform,
+/obj/structure/platform{
 	dir = 4;
 	icon_state = "platform"
 	},
-/obj/structure/platform/platform_decoration{
+/obj/structure/platform_decoration{
 	dir = 6;
 	icon_state = "platform_deco"
 	},
@@ -5534,6 +5401,14 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/tiled/dark,
 /area/space)
+"lX" = (
+/obj/structure/stairs/short,
+/obj/structure/platform_decoration{
+	dir = 8;
+	icon_state = "platform_deco"
+	},
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "mg" = (
 /obj/structure/table/rack/dark,
 /obj/random/loot/sometimes/few,
@@ -17506,7 +17381,7 @@ dZ
 gd
 hP
 ke
-iu
+gd
 iz
 ef
 ef
@@ -17911,7 +17786,7 @@ eN
 ik
 kg
 eN
-iA
+lX
 eF
 eF
 eF
@@ -23159,7 +23034,7 @@ eF
 eF
 eF
 eX
-go
+iv
 hP
 hI
 iv
@@ -31848,7 +31723,7 @@ ez
 gB
 ha
 hG
-iw
+gB
 ez
 ez
 ez
@@ -32253,7 +32128,7 @@ eN
 gP
 hL
 eN
-iA
+lX
 eF
 ef
 ef
@@ -36288,12 +36163,12 @@ hu
 cf
 cf
 fv
-eB
+eJ
 eN
 gQ
 hR
 eN
-iA
+lX
 ga
 cf
 hS
@@ -40534,7 +40409,7 @@ eY
 gC
 hh
 ih
-ix
+gC
 iC
 gt
 eS
@@ -44575,7 +44450,7 @@ eN
 fd
 gg
 eN
-gv
+gu
 eF
 ef
 el
@@ -44972,9 +44847,9 @@ dt
 dt
 dm
 ek
-eJ
+gx
 eD
-eJ
+gx
 eN
 fd
 gg
@@ -45174,9 +45049,9 @@ ci
 ci
 do
 ec
-eK
+gy
 eE
-eK
+gy
 eN
 fd
 gg
