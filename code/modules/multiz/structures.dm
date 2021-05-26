@@ -71,10 +71,10 @@
 		I.forceMove(landing)
 		landing.visible_message(SPAN_WARNING("\The [I] falls from the top of \the [target_down]!"))
 
-/obj/structure/ladder/attack_hand(var/mob/M)
+/obj/structure/ladder/attack_hand(mob/M)
 	climb(M)
 
-/obj/structure/ladder/attack_ai(var/mob/M)
+/obj/structure/ladder/attack_ai(mob/M)
 	var/mob/living/silicon/ai/ai = M
 	if(!istype(ai))
 		return
@@ -82,10 +82,10 @@
 	if(istype(AIeye))
 		instant_climb(AIeye)
 
-/obj/structure/ladder/attack_robot(var/mob/M)
+/obj/structure/ladder/attack_robot(mob/M)
 	climb(M)
 
-/obj/structure/ladder/proc/instant_climb(var/mob/M)
+/obj/structure/ladder/proc/instant_climb(mob/M)
 	var/atom/target_ladder = getTargetLadder(M)
 	if(target_ladder)
 		M.dropInto(target_ladder.loc)
@@ -118,10 +118,10 @@
 		for (var/obj/item/grab/G in M)
 			G.adjust_position(force = 1)
 
-/obj/structure/ladder/attack_ghost(var/mob/M)
+/obj/structure/ladder/attack_ghost(mob/M)
 	instant_climb(M)
 
-/obj/structure/ladder/proc/getTargetLadder(var/mob/M)
+/obj/structure/ladder/proc/getTargetLadder(mob/M)
 	if((!target_up && !target_down) || (target_up && !istype(target_up.loc, /turf/simulated/open) || (target_down && !istype(target_down.loc, /turf))))
 		to_chat(M, "<span class='notice'>\The [src] is incomplete and can't be climbed.</span>")
 		return
@@ -142,7 +142,7 @@
 	else
 		return target_down || target_up
 
-/mob/proc/may_climb_ladders(var/ladder)
+/mob/proc/may_climb_ladders(ladder)
 	if(!Adjacent(ladder))
 		to_chat(src, "<span class='warning'>You need to be next to \the [ladder] to start climbing.</span>")
 		return FALSE
@@ -163,7 +163,7 @@
 
 	return TRUE
 
-/mob/observer/ghost/may_climb_ladders(var/ladder)
+/mob/observer/ghost/may_climb_ladders(ladder)
 	return TRUE
 
 /obj/structure/ladder/proc/climbLadder(mob/user, target_ladder, obj/item/I = null)
@@ -277,6 +277,15 @@
 	bound_width = 32
 	icon = 'icons/obj/stairs_persp.dmi'
 	icon_state = "p_stair_full"
+
+/obj/structure/stairs/short/north
+	dir = NORTH
+
+/obj/structure/stairs/short/south
+	dir = SOUTH
+
+/obj/structure/stairs/short/east
+	dir = EAST
 
 /obj/structure/stairs/short/west
 	dir = WEST

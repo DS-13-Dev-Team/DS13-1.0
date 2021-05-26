@@ -139,7 +139,7 @@
 // We timer(0) here to let the current move operation complete before we start falling. fall() is normally called from
 // Entered() which is part of Move(), by spawn()ing we let that complete.  But we want to preserve if we were in client movement
 // or normal movement so other move behavior can continue.
-/atom/movable/proc/begin_falling(var/lastloc, var/below)
+/atom/movable/proc/begin_falling(lastloc, below)
 	addtimer(CALLBACK(src, /atom/movable/proc/fall_callback, below), 0)
 
 /atom/movable/proc/fall_callback(var/turf/below)
@@ -152,7 +152,7 @@
 		M.moving = 0
 
 //For children to override
-/atom/movable/proc/can_fall(var/anchor_bypass = FALSE, var/turf/location_override = loc)
+/atom/movable/proc/can_fall(anchor_bypass = FALSE, turf/location_override = loc)
 	if(!simulated)
 		return FALSE
 
@@ -173,16 +173,16 @@
 
 	return TRUE
 
-/obj/can_fall(var/anchor_bypass = FALSE, var/turf/location_override = loc)
+/obj/can_fall(anchor_bypass = FALSE, turf/location_override = loc)
 	return ..(anchor_fall)
 
-/obj/effect/can_fall(var/anchor_bypass = FALSE, var/turf/location_override = loc)
+/obj/effect/can_fall(anchor_bypass = FALSE, turf/location_override = loc)
 	return FALSE
 
-/obj/effect/decal/cleanable/can_fall(var/anchor_bypass = FALSE, var/turf/location_override = loc)
+/obj/effect/decal/cleanable/can_fall(anchor_bypass = FALSE, turf/location_override = loc)
 	return TRUE
 
-/obj/item/pipe/can_fall(var/anchor_bypass = FALSE, var/turf/location_override = loc)
+/obj/item/pipe/can_fall(anchor_bypass = FALSE, turf/location_override = loc)
 	var/turf/simulated/open/below = loc
 	below = below.below
 
@@ -194,18 +194,18 @@
 	if((locate(/obj/structure/disposalpipe/up) in below) || locate(/obj/machinery/atmospherics/pipe/zpipe/up) in below)
 		return FALSE
 
-/mob/living/carbon/human/can_fall(var/anchor_bypass = FALSE, var/turf/location_override = loc)
+/mob/living/carbon/human/can_fall(anchor_bypass = FALSE, turf/location_override = loc)
 	if(..())
 		return species.can_fall(src)
 
-/atom/movable/proc/handle_fall(var/turf/landing)
+/atom/movable/proc/handle_fall(turf/landing)
 	forceMove(landing)
 	if(locate(/obj/structure/stairs) in landing)
 		return 1
 	else
 		handle_fall_effect(landing)
 
-/atom/movable/proc/handle_fall_effect(var/turf/landing)
+/atom/movable/proc/handle_fall_effect(turf/landing)
 	if(istype(landing, /turf/simulated/open))
 		visible_message("\The [src] falls through \the [landing]!", "You hear a whoosh of displaced air.")
 	else
@@ -227,7 +227,7 @@
 		return 100
 	return BASE_STORAGE_COST(w_class)
 
-/mob/living/carbon/human/handle_fall_effect(var/turf/landing)
+/mob/living/carbon/human/handle_fall_effect(turf/landing)
 	if(species && species.handle_fall_special(src, landing))
 		return
 
