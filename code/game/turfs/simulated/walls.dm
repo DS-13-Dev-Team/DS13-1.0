@@ -112,9 +112,15 @@
 			plant.pixel_y = 0
 		plant.get_neighbors()
 
-/turf/simulated/wall/ChangeTurf(var/newtype)
+/turf/simulated/wall/ChangeTurf(newtype)
 	clear_plants()
-	return ..(newtype)
+	. = ..(newtype)
+	var/turf/new_turf = .
+	for (var/turf/simulated/wall/W in RANGE_TURFS(new_turf, 1))
+		if (W == src)
+			continue
+		W.update_connections()
+		W.queue_icon_update()
 
 //Appearance
 /turf/simulated/wall/examine(mob/user)

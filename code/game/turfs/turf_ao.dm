@@ -102,6 +102,8 @@
 	if(AO_TURF_CHECK(src) && !(z_flags & ZM_MIMIC_NO_AO))
 		REGEN_AO(src, ao_overlays, ao_neighbors)
 
+	update_above()
+
 #undef PROCESS_AO_CORNER
 
 /turf/ChangeTurf()

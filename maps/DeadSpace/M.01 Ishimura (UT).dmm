@@ -4239,16 +4239,16 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iE" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iF" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iG" = (
 /obj/structure/table/standard,
 /obj/machinery/light{
@@ -4257,7 +4257,7 @@
 /obj/item/weapon/storage/box/greenglowsticks,
 /obj/random/tool_upgrade,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iH" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/toolbox/emergency{
@@ -4268,52 +4268,52 @@
 	},
 /obj/item/weapon/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iI" = (
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
 /obj/random/loot/often/some,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iJ" = (
 /obj/machinery/vending/printomat,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iK" = (
 /obj/machinery/camera/autoname,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iL" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iN" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iO" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/closet/hydrant{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iP" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iQ" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iR" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -4324,7 +4324,7 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4345,13 +4345,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iU" = (
 /obj/structure/closet/medical_wall/filled{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iV" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -4360,7 +4360,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iW" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4;
@@ -4368,18 +4368,18 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iX" = (
 /obj/structure/table/standard,
 /obj/random/tech_supply,
 /obj/random/tool/low_chance,
 /obj/random/tool/advanced,
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iY" = (
 /obj/machinery/autolathe,
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -4395,7 +4395,7 @@
 /obj/structure/table/standard,
 /obj/item/stack/material/steel/ten,
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jb" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -4404,18 +4404,18 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jc" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8;
 	icon_state = "map_scrubber_on"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jd" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "je" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4;
@@ -4423,13 +4423,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jf" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jg" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4;
@@ -4449,7 +4449,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jh" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1;
@@ -4457,14 +4457,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "ji" = (
 /obj/item/device/radio/intercom{
 	dir = 8;
 	pixel_x = 21
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jj" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -4482,7 +4482,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jk" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -4494,7 +4494,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jl" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -4508,7 +4508,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jm" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -4527,7 +4527,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jn" = (
 /obj/structure/cable/cyan{
 	d1 = 2;
@@ -4541,22 +4541,22 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jo" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jp" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jq" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/workbench,
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jr" = (
 /obj/structure/table/standard,
 /obj/item/stack/material/steel/fifty,
@@ -4572,18 +4572,18 @@
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/robustcells,
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/tools,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "js" = (
 /obj/structure/table/standard,
 /obj/item/stack/material/plasteel/random,
 /obj/item/weapon/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/steel_grid,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jt" = (
 /obj/machinery/autolathe,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "ju" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -4593,12 +4593,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jv" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jw" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/cable/cyan{
@@ -4612,14 +4612,14 @@
 	name = "Machining Room Storage"
 	},
 /turf/simulated/floor/tiled,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jx" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/glass/phoronrglass/ten,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jy" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -4631,13 +4631,13 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jz" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/plastic/fifty,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jA" = (
 /obj/structure/table/rack,
 /obj/item/stack/cable_coil/random,
@@ -4645,13 +4645,13 @@
 /obj/item/stack/cable_coil/random,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jB" = (
 /obj/structure/table/rack,
 /obj/item/stack/rods/fifty,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jC" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -4661,7 +4661,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jD" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/steel/ten,
@@ -4672,7 +4672,7 @@
 	},
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jE" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/glass/phoronglass{
@@ -4685,7 +4685,7 @@
 	},
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jF" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -4693,7 +4693,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jG" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -4701,7 +4701,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jH" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -4711,7 +4711,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jI" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/cardboard/fifty,
@@ -4722,26 +4722,26 @@
 	},
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jJ" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/stack/material/glass/fifty,
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jK" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jM" = (
 /obj/effect/catwalk_plated/dank,
 /obj/structure/platform{
@@ -4775,7 +4775,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jO" = (
 /obj/effect/catwalk_plated/dank,
 /obj/structure/platform,
@@ -4820,7 +4820,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jR" = (
 /obj/effect/decal/cleanable/greenglow,
 /obj/effect/catwalk_plated/dank,
@@ -4868,25 +4868,25 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jV" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jW" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/wood/fifty,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jX" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/stack/material/wood/fifty,
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jY" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -4894,14 +4894,14 @@
 /obj/item/stack/material/plasteel/ten,
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jZ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "ka" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/phoron/ten,
@@ -4913,7 +4913,7 @@
 	},
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark/monotile,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "kb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5385,10 +5385,6 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
-"kQ" = (
-/obj/effect/landmark/node_room/maintenance,
-/turf/simulated/floor,
-/area/space)
 "kR" = (
 /obj/effect/landmark/node_room/maintenance,
 /obj/structure/table/steel,
@@ -5400,7 +5396,7 @@
 	},
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "lX" = (
 /obj/structure/stairs/short,
 /obj/structure/platform_decoration{
@@ -5464,7 +5460,7 @@
 "rW" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "sr" = (
 /obj/structure/foamedmetal,
 /turf/simulated/wall/r_wall,
@@ -5518,12 +5514,12 @@
 /obj/structure/table/standard,
 /obj/random/loot/often,
 /turf/simulated/floor,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "Ir" = (
 /obj/structure/table/standard,
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "Kv" = (
 /obj/machinery/door/airlock/civilian,
 /obj/structure/cable/green{
@@ -5536,13 +5532,13 @@
 "KC" = (
 /obj/effect/decal/cleanable/blood/gibs/robot/down,
 /turf/simulated/floor,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "Mk" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "OO" = (
 /obj/effect/catwalk_plated/dank,
 /obj/structure/cable/green{
@@ -5571,13 +5567,10 @@
 /obj/structure/table/steel,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
-"Uk" = (
-/turf/simulated/floor,
-/area/space)
 "Us" = (
 /obj/structure/table/standard,
 /turf/simulated/floor,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "Vq" = (
 /obj/structure/table/standard,
 /obj/random/loot/sometimes/few,
@@ -5590,7 +5583,7 @@
 "ZQ" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor,
-/area/space)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 
 (1,1,1) = {"
 aa
@@ -16967,8 +16960,8 @@ il
 il
 il
 il
-ab
-ab
+ck
+ck
 ef
 dK
 ev
@@ -34960,11 +34953,11 @@ eU
 nk
 ef
 ZQ
-Uk
+cl
 Us
 HF
 Us
-ab
+ck
 im
 im
 im
@@ -35162,11 +35155,11 @@ eU
 hd
 do
 ZQ
-Uk
-Uk
-Uk
+cl
+cl
+cl
 Us
-ab
+ck
 im
 im
 im
@@ -35364,11 +35357,11 @@ hi
 iZ
 ef
 ZQ
-Uk
-Uk
+cl
+cl
 rW
-Uk
-ab
+cl
+ck
 im
 im
 im
@@ -35567,10 +35560,10 @@ hM
 ef
 cf
 cf
-Uk
-Uk
-Uk
-ab
+cl
+cl
+cl
+ck
 im
 im
 im
@@ -35770,9 +35763,9 @@ hm
 cY
 cf
 Ir
-Uk
-Uk
-ab
+cl
+cl
+ck
 im
 im
 im
@@ -35972,9 +35965,9 @@ ef
 kr
 cf
 Us
-Uk
-Uk
-ab
+cl
+cl
+ck
 im
 im
 im
@@ -36175,8 +36168,8 @@ hS
 cf
 KC
 Mk
-kQ
-ab
+kO
+ck
 im
 im
 im
@@ -36375,19 +36368,19 @@ eF
 cf
 hS
 cf
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
 ab
 ab
 ab
@@ -36584,12 +36577,12 @@ iV
 jd
 jj
 iN
-ab
+ck
 jx
 jE
 jJ
 jU
-ab
+ck
 ac
 ac
 ac
@@ -36786,12 +36779,12 @@ iW
 je
 jk
 jp
-ab
+ck
 jy
 jF
 jK
 jV
-ab
+ck
 ac
 aa
 aa
@@ -36993,7 +36986,7 @@ jz
 jG
 jL
 jW
-ab
+ck
 ac
 aa
 aa
@@ -37186,7 +37179,7 @@ cf
 iG
 iN
 iR
-ab
+ck
 jg
 jm
 jr
@@ -37195,7 +37188,7 @@ jA
 jG
 jL
 jX
-ab
+ck
 ac
 aa
 aa
@@ -37397,7 +37390,7 @@ jB
 jG
 kS
 jX
-ab
+ck
 ac
 aa
 aa
@@ -37599,7 +37592,7 @@ jB
 jG
 jL
 jY
-ab
+ck
 ac
 aa
 aa
@@ -37801,7 +37794,7 @@ jC
 jH
 jN
 jZ
-ab
+ck
 ac
 aa
 aa
@@ -37998,12 +37991,12 @@ jc
 ji
 jo
 iN
-ab
+ck
 jD
 jI
 jQ
 ka
-ab
+ck
 ac
 aa
 aa
@@ -38193,19 +38186,19 @@ eF
 cf
 hS
 cf
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
 ac
 aa
 aa
