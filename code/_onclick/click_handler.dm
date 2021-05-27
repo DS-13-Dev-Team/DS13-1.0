@@ -169,6 +169,10 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 //If its not valid, null will be returned
 //In the case of click catchers, we resolve and return the turf under it
 /datum/click_handler/proc/resolve_world_target(var/a, var/params)
+	if(isliving(user))
+		var/mob/living/L = user
+		if(user.stat != CONSCIOUS)
+			return
 	if (params && user && user.client)
 		var/b = user.client.resolve_drag(a, params)
 		if (a != b)
@@ -184,7 +188,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		var/atom/A = a
 		if (istype(A.loc, /turf))
 			return A
-	return null
+	return
 
 
 /mob/proc/GetClickHandler(var/datum/click_handler/popped_handler)
