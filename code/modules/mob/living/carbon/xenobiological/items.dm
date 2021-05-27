@@ -6,7 +6,7 @@
 	force = 1.0
 	w_class = ITEM_SIZE_TINY
 	throwforce = 0
-	
+
 	throw_range = 6
 	origin_tech = list(TECH_BIO = 4)
 	var/Uses = 1 // uses before it goes inert
@@ -238,7 +238,7 @@
 	icon = 'icons/obj/rune.dmi'
 	icon_state = "golem"
 	unacidable = 1
-	plane = ABOVE_TURF_PLANE
+
 	layer = RUNE_LAYER
 
 /obj/effect/golemrune/Initialize()

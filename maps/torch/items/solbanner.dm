@@ -5,7 +5,6 @@
 	desc = "A wooden pole bearing a banner of Sol Central Government. Ave."
 	anchored = 1
 	obj_flags = OBJ_FLAG_ANCHORABLE
-	plane = ABOVE_HUMAN_PLANE
 
 /obj/structure/solbanner/exo
 	name = "exoplanet SCG banner"
@@ -13,7 +12,7 @@
 	icon_state = "steel"
 	obj_flags = 0
 	var/plantedby
-	
+
 /obj/structure/solbanner/exo/Initialize()
 	. = ..()
 	flick("deploy",src)

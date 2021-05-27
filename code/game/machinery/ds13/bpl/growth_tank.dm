@@ -47,7 +47,6 @@
 			upper = TRUE
 			default_pixel_y = 24
 			pixel_y = 24
-			plane = ABOVE_HUMAN_PLANE
 			break
 
 	turn_off()

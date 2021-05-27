@@ -57,7 +57,6 @@
 	var/deployed = FALSE
 
 
-	plane = LARGE_MOB_PLANE
 	layer = LARGE_MOB_LAYER
 
 	can_block_movement = TRUE
@@ -502,7 +501,6 @@
 	icon_state = "harvester_tentacle"
 	default_scale = 1.65
 	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
-	plane = ABOVE_HUMAN_PLANE
 	layer = BELOW_LARGE_MOB_LAYER
 	inherit_order = FALSE
 

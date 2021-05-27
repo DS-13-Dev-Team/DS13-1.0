@@ -6,13 +6,14 @@ Basics, the most important.
 
 /datum/config_entry/flag/server_suffix  //generate numeric suffix based on server port
 
+/datum/config_entry/string/title		//TITLE mainwindow
+
 /datum/config_entry/flag/hub
 
 /datum/config_entry/flag/hub/ValidateAndSet(str_val)
 	. = ..()
 	if(.)
-		if(config_entry_value)
-			world.update_hub_visibility()
+		world.update_hub_visibility(config_entry_value)
 
 /datum/config_entry/flag/log_ooc    //log OOC channel
 

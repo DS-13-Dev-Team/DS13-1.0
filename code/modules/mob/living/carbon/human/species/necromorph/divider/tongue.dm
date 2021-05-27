@@ -144,8 +144,7 @@
 	base_length = WORLD_ICON_SIZE*2
 	start_offset = new /vector2(TONGUE_OFFSET)
 	end_offset = new /vector2(-16, 8)//Elevated a bit so it wraps around the victim's neck
-	plane = HUMAN_PLANE
-	layer = BELOW_HUMAN_LAYER
+	layer = BASE_ABOVE_OBJ_LAYER
 	atom_flags = 0
 	obj_flags = 0
 	max_health = 60
