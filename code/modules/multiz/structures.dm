@@ -272,20 +272,18 @@
 	dir = WEST
 	bound_width = 64
 
-/obj/structure/stairs/short
-	bound_height = 32
-	bound_width = 32
+/obj/structure/stairs_short
 	icon = 'icons/obj/stairs_persp.dmi'
 	icon_state = "p_stair_full"
 
-/obj/structure/stairs/short/north
+/obj/structure/stairs_short/north
 	dir = NORTH
 
-/obj/structure/stairs/short/south
+/obj/structure/stairs_short/south
 	dir = SOUTH
 
-/obj/structure/stairs/short/east
+/obj/structure/stairs_short/east
 	dir = EAST
 
-/obj/structure/stairs/short/west
+/obj/structure/stairs_short/west
 	dir = WEST
