@@ -171,7 +171,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 /datum/click_handler/proc/resolve_world_target(var/a, var/params)
 	if(isliving(user))
 		var/mob/living/L = user
-		if(user.stat != CONSCIOUS)
+		if(user.incapacitated())
 			return
 	if (params && user && user.client)
 		var/b = user.client.resolve_drag(a, params)
