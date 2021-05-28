@@ -10,5 +10,7 @@
 	change_target_proc = /obj/item/rig_module/kinesis/proc/changed_target
 	start_proc = null	//No start firing proc
 
-
-
+/datum/click_handler/gun/sustained/kinesis/resolve_world_target(a, params)
+	if(isliving(user))
+		var/mob/living/L = user
+	return ..()
