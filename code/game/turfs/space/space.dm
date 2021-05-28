@@ -13,6 +13,7 @@
 	is_hole = TRUE
 	explosion_resistance = 0.5 //Impedes blasts less than any other tile, though not zero
 
+	z_flags = ZM_MIMIC_BELOW
 	z_eventually_space = TRUE
 
 	/*
