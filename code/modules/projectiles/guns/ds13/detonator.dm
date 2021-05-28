@@ -131,6 +131,7 @@
 	start_offset = new /vector2(-16,0)
 	end_offset = new /vector2(-16,0)
 	alpha = 220
+	anchored = TRUE
 
 /*
 	Deployed mine
@@ -187,7 +188,7 @@
 		D.deployed_mines -= src
 	gunref = null
 	QDEL_NULL(laser)
-	.=..()
+	return ..()
 
 /obj/effect/mine/trip/on_mount(var/datum/extension/mount/ME)
 	icon_state = "detonator_mine_deployed"
