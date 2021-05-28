@@ -164,3 +164,10 @@
 		list(CRAFT_TOOL, QUALITY_BOLT_TURNING, 10, 60)
 	)
 
+/datum/craft_recipe/brace
+	name = "airlock brace"
+	result = /obj/item/weapon/airlock_brace/directional
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 20),
+		list(CRAFT_TOOL, QUALITY_WELDING, 10, 60)
+	)

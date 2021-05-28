@@ -17,13 +17,16 @@
 	desc = "A sturdy device that can be attached to an airlock to reinforce it and provide additional security."
 	w_class = ITEM_SIZE_LARGE
 	icon = 'icons/obj/airlock_machines.dmi'
-	icon_state = "brace_open"
+	icon_state = "brace"
 	max_health = 450
 	var/obj/machinery/door/airlock/airlock
 	var/obj/item/weapon/airlock_electronics/brace/electronics
 	var/is_directional = FALSE
 	var/block_dir
 
+/obj/item/weapon/airlock_brace/New()
+	..()
+	update_icon()
 
 /obj/item/weapon/airlock_brace/examine(var/mob/user)
 	. = ..()
@@ -46,10 +49,11 @@
 
 
 /obj/item/weapon/airlock_brace/update_icon()
+	var/temp_state = initial(icon_state)
 	if(airlock)
-		icon_state = "brace_closed"
+		icon_state = temp_state+"_closed"
 	else
-		icon_state = "brace_open"
+		icon_state = temp_state+"_open"
 
 
 /obj/item/weapon/airlock_brace/New()
@@ -154,4 +158,5 @@
 		req_one_access = list()
 
 /obj/item/weapon/airlock_brace/directional
+	icon_state = "barricade"
 	is_directional = TRUE
