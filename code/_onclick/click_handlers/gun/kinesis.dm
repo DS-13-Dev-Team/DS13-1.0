@@ -12,5 +12,6 @@
 
 /datum/click_handler/gun/sustained/kinesis/resolve_world_target(a, params)
 	if(isliving(user))
-		var/mob/living/L = user
+		if(user.incapacitated())
+			return
 	return ..()
