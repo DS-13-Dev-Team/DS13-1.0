@@ -167,7 +167,8 @@
 	if(shoes && (shoes.item_flags & ITEM_FLAG_SILENT))
 		return // quiet shoes
 
-	if(!has_organ(BP_L_FOOT) && !has_organ(BP_R_FOOT))
-		return //no feet no footsteps
+	if(!is_necromorph(src))
+		if(!has_organ(BP_L_FOOT) && !has_organ(BP_R_FOOT))
+			return //no feet no footsteps
 
 	return TRUE

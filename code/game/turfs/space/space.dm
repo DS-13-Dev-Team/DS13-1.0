@@ -10,6 +10,9 @@
 	var/static/list/dust_cache
 	permit_ao = FALSE
 
+	is_hole = TRUE
+	explosion_resistance = 0.5 //Impedes blasts less than any other tile, though not zero
+
 	z_eventually_space = TRUE
 
 	/*
@@ -46,6 +49,9 @@
 
 	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
 		return
+
+	//We found a solid thing below us
+	first_solid_z_below = z-1
 
 	return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
 
@@ -117,9 +123,6 @@
 
 /turf/space/ChangeTurf(turf/N, tell_universe = TRUE, force_lighting_update = FALSE, keep_air = FALSE)
 	return ..(N, tell_universe, TRUE, keep_air)
-
-/turf/space/is_open()
-	return TRUE
 
 //Bluespace turfs for shuttles and possible future transit use
 /turf/space/bluespace

@@ -204,8 +204,9 @@
 	name = "stairs"
 	desc = "Stairs leading to another deck.  Not too useful if the gravity goes out."
 	icon = 'icons/obj/stairs.dmi'
+	breakable = TRUE
 	density = FALSE
-	opacity = 0
+	opacity = FALSE
 	anchored = TRUE
 	layer = RUNE_LAYER
 

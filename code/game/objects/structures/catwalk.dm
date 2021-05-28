@@ -19,13 +19,24 @@
 /obj/structure/catwalk/Initialize()
 	. = ..()
 	DELETE_IF_DUPLICATE_OF(/obj/structure/catwalk)
+	var/turf/T = get_turf(src)
+	LAZYSET(T.zstructures, src, 1) //Ladders have a ztransition priority of 2 to overrule other things
 	update_connections(1)
 	update_icon()
 
-
 /obj/structure/catwalk/Destroy()
 	redraw_nearby_catwalks()
+	var/turf/T = get_turf(src)
+	LAZYREMOVE(T.zstructures, src)
 	return ..()
+
+/obj/structure/catwalk/CanZPass(atom/A, direction)
+	if(z == A.z)
+		if(direction == DOWN)
+			return FALSE
+	else if(direction == UP)
+		return FALSE
+	return ZTRANSITION_MAYBE
 
 /obj/structure/catwalk/proc/redraw_nearby_catwalks()
 	for(var/direction in GLOB.alldirs)
