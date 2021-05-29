@@ -4,7 +4,6 @@
  * /obj/item/rig_module/device/flash/advanced
  * /obj/item/rig_module/grenade_launcher (cleaner, smoke, mfoam)
  * /obj/item/rig_module/mounted (laser cannon)
- * /obj/item/rig_module/mounted/egun
  * /obj/item/rig_module/mounted/taser
  * /obj/item/rig_module/mounted/energy_blade
  * /obj/item/rig_module/fabricator
