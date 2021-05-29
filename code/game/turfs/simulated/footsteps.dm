@@ -167,8 +167,16 @@
 	if(shoes && (shoes.item_flags & ITEM_FLAG_SILENT))
 		return // quiet shoes
 
-	if(!is_necromorph(src))
-		if(!has_organ(BP_L_FOOT) && !has_organ(BP_R_FOOT))
-			return //no feet no footsteps
+	if(!has_organ(BP_L_FOOT) && !has_organ(BP_R_FOOT))
+		return //no feet no footsteps
+
+	return TRUE
+
+/mob/living/carbon/human/necromorph/has_footsteps()
+	if(species.silent_steps || buckled || lying || throwing)
+		return //people flying, lying down or sitting do not step
+
+	if(!has_organ(BP_L_LEG) && !has_organ(BP_R_LEG))
+		return //no feet no legs
 
 	return TRUE
