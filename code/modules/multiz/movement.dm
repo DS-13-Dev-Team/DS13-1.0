@@ -74,7 +74,7 @@
 
 /mob/living/carbon/human/can_overcome_gravity()
 	//First do species check
-	if(species && species.can_overcome_gravity(src))
+	if(species?.can_overcome_gravity(src) || is_mounted())
 		return TRUE
 	else
 		for(var/atom/a in src.loc)
