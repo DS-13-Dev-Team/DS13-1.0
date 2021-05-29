@@ -28,6 +28,7 @@
 		if (line_list.len > 1)
 			date = sanitize_date(line_list[2])	//This will return FALSE if the date does not look right
 		if (!date)
+			log_world("ERROR: Bad date found in patrons.txt for ckey [key], replacing this with a 1 month timer from now as a fallback")
 			message_admins("ERROR: Bad date found in patrons.txt for ckey [key], replacing this with a 1 month timer from now as a fallback")
 			date = current_date()
 			date = add_time_to_date(date, 28 DAYS)
