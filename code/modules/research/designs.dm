@@ -1267,15 +1267,6 @@
 	build_path = /obj/item/rig_module/mounted/taser
 	sort_string = "WCKAA"
 
-/datum/design/item/rig/egun
-	name = "Energy Gun"
-	desc = "An energy gun, mountable on a RIG."
-	id = "rig_egun"
-	req_tech = list(TECH_POWER = 6, TECH_COMBAT = 6, TECH_ENGINEERING = 6)
-	materials = list(MATERIAL_STEEL = 6000, MATERIAL_GLASS = 3000, "plastic" = 2500, MATERIAL_GOLD = 2000, MATERIAL_SILVER = 1000)
-	build_path = /obj/item/rig_module/mounted/egun
-	sort_string = "WCKAB"
-
 /datum/design/item/rig/enet
 	name = "Energy Net"
 	desc = "An advanced energy-patterning projector used to capture targets, mountable on a RIG."
@@ -1283,7 +1274,7 @@
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 6, TECH_MAGNET = 5, TECH_ILLEGAL = 4, TECH_ENGINEERING = 6)
 	materials = list(MATERIAL_STEEL = 6000, MATERIAL_GLASS = 3000, MATERIAL_DIAMOND = 2000, "plastic" = 2000)
 	build_path = /obj/item/rig_module/fabricator/energy_net
-	sort_string = "WCKAC"
+	sort_string = "WCKAB"
 
 /datum/design/item/rig/cooling_unit
 	name = "Cooling Unit"

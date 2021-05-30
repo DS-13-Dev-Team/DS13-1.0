@@ -479,7 +479,6 @@ var/list/worths = list(
 					/obj/item/inflatable = 30,
 					/obj/item/roller = 80,
 					/obj/item/rig_module/grenade_launcher = 1500,
-					/obj/item/rig_module/mounted/egun = 2100,
 					/obj/item/rig_module/mounted/energy_blade = 2200,
 					/obj/item/rig_module/mounted = 4100,
 					/obj/item/rig_module/stealth_field = 2500,
