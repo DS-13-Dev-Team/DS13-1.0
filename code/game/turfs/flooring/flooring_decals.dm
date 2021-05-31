@@ -745,22 +745,22 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/dank/frame_medium
 	name = "medium frame"
 	icon_state = "frame"
-	icon = 'icons/turf/marks_ds13.dmi'
+	icon = 'icons/turf/marks_48x48_ds13.dmi'
 
 /obj/effect/floor_decal/dank/frame_tiled_medium
 	name = "medium frame with tiles"
 	icon_state = "frame_tiles"
-	icon = 'icons/turf/marks_ds13.dmi'
+	icon = 'icons/turf/marks_48x48_ds13.dmi'
 
 /obj/effect/floor_decal/dank/frame_large
 	name = "large frame"
 	icon_state = "frame"
-	icon = 'icons/turf/marks_ds13.dmi'
+	icon = 'icons/turf/marks_96x96_ds13.dmi'
 
 /obj/effect/floor_decal/dank/frame_tiled_large
 	name = "large frame with tiles"
 	icon_state = "frame_tiles"
-	icon = 'icons/turf/marks_ds13.dmi'
+	icon = 'icons/turf/marks_96x96_ds13.dmi'
 
 //Corners
 /obj/effect/floor_decal/corner
