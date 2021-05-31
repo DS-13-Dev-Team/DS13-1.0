@@ -107,3 +107,197 @@
 	icon_base = "ridged"
 	color = COLOR_GUNMETAL
 	build_type = /obj/item/stack/tile/ridge
+
+// FLOOR UPDATE 2 ELECTRIC BOOGALO.
+
+/decl/flooring/complex/tiling_ds/tech
+	name = "tech plating"
+	desc = "Ingenius plating that can supposedly withstand more tension stress."
+	icon_base = "tech"
+	build_type = null
+	has_base_range = 6
+
+/decl/flooring/complex/tiling_ds/slides
+	name = "sliding plating"
+	desc = "Layered plating that expands when subjected to heat, keeping ship pressure limited near heavy machinery."
+	icon_base = "slides"
+	build_type = null
+	has_base_range = 6
+
+/decl/flooring/complex/tiling_ds/slides/end
+	name = "sliding plating"
+	desc = "Layered plating that expands when subjected to heat, keeping ship pressure limited near heavy machinery."
+	icon_base = "slides_end"
+	build_type = null
+	has_base_range = 6
+
+/decl/flooring/complex/tiling_ds/golf_gray
+	name = " gray golf plating"
+	desc = "Rickety, noisy plating that dents relatively easy despite being made by a dense alloy."
+	icon_base = "golf_gray"
+	build_type = null
+	has_base_range = 6
+
+/decl/flooring/complex/tiling_ds/golf_brown
+	name = " brown golf plating"
+	desc = "Rickety, noisy plating that dents relatively easy despite being made by a dense alloy."
+	icon_base = "golf_brown"
+	build_type = null
+	has_base_range = 6
+
+/decl/flooring/complex/tiling_ds/rectangles
+	name = "rectangle plating"
+	desc = "Sturdy, simple, just what you need to keep the ship together."
+	icon_base = "rectangles"
+	build_type = null
+	has_base_range = 6
+
+/decl/flooring/complex/tiling_ds/maint
+	name = "path plating"
+	desc = "Designed with extra grip in mind, this plating pads the way."
+	icon_base = "maint_center"
+	build_type = null
+	has_base_range = 4
+
+/decl/flooring/complex/tiling_ds/maint/left
+	name = "path plating"
+	desc = "Designed with extra grip in mind, this plating pads the way."
+	icon_base = "maint_left"
+	build_type = null
+	has_base_range = 4
+
+/decl/flooring/complex/tiling_ds/maint/right
+	name = "path plating"
+	desc = "Designed with extra grip in mind, this plating pads the way."
+	icon_base = "maint_right"
+	build_type = null
+	has_base_range = 4
+
+/decl/flooring/complex/tiling_ds/hardwood
+	name = "hardwood"
+	desc = "Dusty, ancient, but unusually sturdy."
+	icon_base = "hardwood"
+	build_type = null
+	has_base_range = 0
+
+/decl/flooring/complex/tiling_ds/hardwood/alt
+	icon_base = "hardwood_alt"
+
+/decl/flooring/complex/tiling_ds/ornate1
+	name = "ornate"
+	desc = "Extremely fancy plating that represents the CEC logo, keep working employee!"
+	icon_base = "1_ornate"
+	build_type = null
+	has_base_range = 1
+
+/decl/flooring/complex/tiling_ds/ornate2
+	name = "ornate"
+	desc = "Extremely fancy plating that represents the CEC logo, keep working employee!"
+	icon_base = "2_ornate"
+	build_type = null
+	has_base_range = 1
+
+/decl/flooring/complex/tiling_ds/ornate3
+	name = "ornate"
+	desc = "Extremely fancy plating that represents the CEC logo, keep working employee!"
+	icon_base = "3_ornate"
+	build_type = null
+	has_base_range = 1
+
+/decl/flooring/complex/tiling_ds/ornate4
+	name = "ornate"
+	desc = "Extremely fancy plating that represents the CEC logo, keep working employee!"
+	icon_base = "4_ornate"
+	build_type = null
+	has_base_range = 1
+
+/decl/flooring/complex/tiling_ds/ornate5
+	name = "ornate"
+	desc = "Extremely fancy plating that represents the CEC logo, keep working employee!"
+	icon_base = "5_ornate"
+	build_type = null
+	has_base_range = 1
+
+/decl/flooring/complex/tiling_ds/ornate6
+	name = "ornate"
+	desc = "Extremely fancy plating that represents the CEC logo, keep working employee!"
+	icon_base = "6_ornate"
+	build_type = null
+	has_base_range = 1
+
+/decl/flooring/complex/tiling_ds/ornate7
+	name = "ornate"
+	desc = "Extremely fancy plating that represents the CEC logo, keep working employee!"
+	icon_base = "7_ornate"
+	build_type = null
+	has_base_range = 1
+
+/decl/flooring/complex/tiling_ds/ornate8
+	name = "ornate"
+	desc = "Extremely fancy plating that represents the CEC logo, keep working employee!"
+	icon_base = "8_ornate"
+	build_type = null
+	has_base_range = 1
+
+/decl/flooring/complex/tiling_ds/grille_spare1
+	name = "grille"
+	desc = "Don't loose your keys."
+	icon_base = "grille-spare1"
+	build_type = null
+	has_base_range = 0
+
+/decl/flooring/complex/tiling_ds/grille_spare2
+	name = "grille"
+	desc = "Don't loose your keys."
+	icon_base = "grille-spare2"
+	build_type = null
+	has_base_range = 0
+
+/decl/flooring/complex/tiling_ds/grille_spare3
+	name = "grille"
+	desc = "Don't loose your keys."
+	icon_base = "grille-spare3"
+	build_type = null
+	has_base_range = 0
+
+/decl/flooring/complex/tiling_ds/grille_spare4
+	name = "grille"
+	desc = "Don't loose your keys."
+	icon_base = "grille-spare4"
+	build_type = null
+	has_base_range = 0
+
+/decl/flooring/complex/tiling_ds/grate
+	name = "grate"
+	desc = "Especially rough grating, guaranteed knee-scratches without protection."
+	icon_base = "grate"
+	build_type = null
+	has_base_range = 0
+
+/decl/flooring/complex/tiling_ds/grater
+	name = "grater"
+	desc = "You can't see anything but the abyss."
+	icon_base = "grater"
+	build_type = null
+	has_base_range = 0
+
+/decl/flooring/complex/tiling_ds/cable
+	name = "dense cabling"
+	desc = "Surprisingly well insulated cabling running between two grates, seems deprecated."
+	icon_base = "cable"
+	build_type = null
+	has_base_range = 0
+
+/decl/flooring/complex/tiling_ds/cable/start
+	name = "dense cabling"
+	desc = "Surprisingly well insulated cabling running between two grates, seems deprecated."
+	icon_base = "cable_start"
+	build_type = null
+	has_base_range = 0
+
+/decl/flooring/complex/tiling_ds/cable/end
+	name = "dense cabling"
+	desc = "Surprisingly well insulated cabling running between two grates, seems deprecated."
+	icon_base = "cable_end"
+	build_type = null
+	has_base_range = 0

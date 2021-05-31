@@ -732,6 +732,36 @@ var/list/floor_decals = list()
 	name = "plastic slab extra large"
 	icon_state = "plastic_slab_xl"
 
+// FLOOR UPDATE 2 : ELECTRIC BOOGALOO
+
+/obj/effect/floor_decal/dank/frame_small
+	name = "small frame"
+	icon_state = "frame"
+
+/obj/effect/floor_decal/dank/frame_tiled_small
+	name = "small frame with tiles"
+	icon_state = "frame_tiles"
+
+/obj/effect/floor_decal/dank/frame_medium
+	name = "medium frame"
+	icon_state = "frame"
+	icon = 'icons/turf/marks_ds13.dmi'
+
+/obj/effect/floor_decal/dank/frame_tiled_medium
+	name = "medium frame with tiles"
+	icon_state = "frame_tiles"
+	icon = 'icons/turf/marks_ds13.dmi'
+
+/obj/effect/floor_decal/dank/frame_large
+	name = "large frame"
+	icon_state = "frame"
+	icon = 'icons/turf/marks_ds13.dmi'
+
+/obj/effect/floor_decal/dank/frame_tiled_large
+	name = "large frame with tiles"
+	icon_state = "frame_tiles"
+	icon = 'icons/turf/marks_ds13.dmi'
+
 //Corners
 /obj/effect/floor_decal/corner
 	icon_state = "corner_white"
