@@ -156,8 +156,7 @@
 		/obj/item/rig_module/vision/meson,
 		/obj/item/rig_module/kinesis,
 		/obj/item/rig_module/hotswap,
-		/obj/item/rig_module/power_sink,
-		/obj/item/rig_module/mounted/egun
+		/obj/item/rig_module/power_sink
 		)
 
 /client/proc/bst_post_spawn(mob/living/carbon/human/bst/bst)
