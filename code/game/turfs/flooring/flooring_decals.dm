@@ -734,6 +734,22 @@ var/list/floor_decals = list()
 
 // FLOOR UPDATE 2 : ELECTRIC BOOGALOO
 
+/obj/effect/floor_decal/dank/tech_nub
+	name = "tech nub"
+	icon_state = "tech_nub"
+
+/obj/effect/floor_decal/dank/tech_chip
+	name = "tech chip"
+	icon_state = "tech_chip"
+
+/obj/effect/floor_decal/dank/tech_duo
+	name = "tech duo"
+	icon_state = "tech_duo"
+
+/obj/effect/floor_decal/dank/grate
+	name = "grate"
+	icon_state = "grate"
+
 /obj/effect/floor_decal/dank/frame_small
 	name = "small frame"
 	icon_state = "frame"
