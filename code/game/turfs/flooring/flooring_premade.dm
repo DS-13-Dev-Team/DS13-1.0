@@ -399,9 +399,9 @@
 	icon_state = "maint_left"
 	initial_flooring = /decl/flooring/complex/tiling_ds/maint/left
 
-/turf/simulated/floor/dank/maint_central
+/turf/simulated/floor/dank/maint
 	name = "maint central"
-	icon_state = "maint_central"
+	icon_state = "maint_center"
 	initial_flooring = /decl/flooring/complex/tiling_ds/maint
 
 /turf/simulated/floor/dank/maint_right
