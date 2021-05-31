@@ -501,7 +501,7 @@
 
 /turf/simulated/floor/dank/grille_spare_3
 	name = "grille-spare3"
-	icon_state = "grille-spar3"
+	icon_state = "grille-spare3"
 	initial_flooring = /decl/flooring/complex/tiling_ds/grille_spare3
 
 /turf/simulated/floor/dank/grille_spare_2
