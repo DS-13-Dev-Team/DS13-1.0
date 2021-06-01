@@ -1,14 +1,14 @@
 /decl/hierarchy/supply_pack/hydroponics
 	name = "Hydroponics"
 	containertype = /obj/structure/closet/crate/hydroponics
-
+/*
 /decl/hierarchy/supply_pack/hydroponics/monkey
 	name = "Monkey crate"
 	contains = list (/obj/item/weapon/storage/box/monkeycubes)
 	cost = 20
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Monkey crate"
-
+*/
 //farm animals - useless and annoying, but potentially a good source of food. expensive because they're live animals and their produce is available cheaper
 /decl/hierarchy/supply_pack/hydroponics/cow
 	name = "Cow crate"
