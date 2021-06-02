@@ -10,6 +10,7 @@
 		else if (!(get_visual_dir() & direction))
 			return FALSE
 
+	//This is in movement/movement.dm, /atom/movable/proc/DoMove(
 	if(DoMove(direction, src) & MOVEMENT_HANDLED)
 		return TRUE // Doesn't necessarily mean the mob physically moved
 
