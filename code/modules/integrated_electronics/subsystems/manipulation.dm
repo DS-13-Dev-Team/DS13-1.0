@@ -224,6 +224,113 @@
 	attached_grenade = null
 	desc = initial(desc)
 
+/obj/item/integrated_circuit/manipulation/plant_module
+	name = "plant manipulation module"
+	desc = "Used to uproot weeds and harvest/plant trays."
+	icon_state = "plant_m"
+	extended_desc = "The circuit accepts a reference to a hydroponic tray or an item on an adjacent tile. \
+	Mode input (0-harvest, 1-uproot weeds, 2-uproot plant, 3-plant seed) determines action. \
+	Harvesting outputs a list of the harvested plants."
+	w_class = ITEM_SIZE_TINY
+	complexity = 10
+	inputs = list("tray" = IC_PINTYPE_REF,"mode" = IC_PINTYPE_NUMBER,"item" = IC_PINTYPE_REF)
+	outputs = list("result" = IC_PINTYPE_LIST)
+	activators = list("pulse in" = IC_PINTYPE_PULSE_IN,"pulse out" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_RESEARCH
+	power_draw_per_use = 50
+
+/obj/item/integrated_circuit/manipulation/plant_module/do_work()
+	..()
+	var/obj/acting_object = get_object()
+	var/obj/OM = get_pin_data_as_type(IC_INPUT, 1, /obj)
+	var/obj/O = get_pin_data_as_type(IC_INPUT, 3, /obj/item)
+
+	if(!check_target(OM))
+		push_data()
+		activate_pin(2)
+		return
+
+	if(istype(OM,/obj/effect/vine) && check_target(OM) && get_pin_data(IC_INPUT, 2) == 2)
+		qdel(OM)
+		push_data()
+		activate_pin(2)
+		return
+
+	var/obj/machinery/portable_atmospherics/hydroponics/TR = OM
+	if(istype(TR))
+		switch(get_pin_data(IC_INPUT, 2))
+			if(0)
+				var/list/harvest_output = TR.harvest()
+				for(var/i in 1 to length(harvest_output))
+					harvest_output[i] = weakref(harvest_output[i])
+
+				if(length(harvest_output))
+					set_pin_data(IC_OUTPUT, 1, harvest_output)
+					push_data()
+			if(1)
+				TR.weedlevel = 0
+				TR.update_icon()
+			if(2)
+				if(TR.seed) //Could be that they're just using it as a de-weeder
+					TR.age = 0
+					TR.health = 0
+					if(TR.harvest)
+						TR.harvest = FALSE //To make sure they can't just put in another seed and insta-harvest it
+					qdel(TR.seed)
+					TR.seed = null
+				TR.weedlevel = 0 //Has a side effect of cleaning up those nasty weeds
+				TR.dead = 0
+				TR.update_icon()
+			if(3)
+				if(!check_target(O))
+					activate_pin(2)
+					return FALSE
+
+				else if(istype(O, /obj/item/seeds) && !istype(O, /obj/item/seeds/cutting))
+					if(!TR.seed)
+						acting_object.visible_message("<span class='notice'>[acting_object] plants [O].</span>")
+						TR.dead = 0
+						TR.seed = O
+						TR.age = 1
+						TR.health = TR.seed.get_trait(TRAIT_ENDURANCE)
+						TR.lastcycle = world.time
+						O.forceMove(TR)
+						TR.update_icon()
+	activate_pin(2)
+
+/obj/item/integrated_circuit/manipulation/seed_extractor
+	name = "seed extractor module"
+	desc = "Used to extract seeds from grown produce."
+	icon_state = "plant_m"
+	extended_desc = "The circuit accepts a reference to a plant item and extracts seeds from it, outputting the results to a list."
+	complexity = 8
+	inputs = list("target" = IC_PINTYPE_REF)
+	outputs = list("result" = IC_PINTYPE_LIST)
+	activators = list("pulse in" = IC_PINTYPE_PULSE_IN,"pulse out" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_RESEARCH
+	power_draw_per_use = 50
+
+/obj/item/integrated_circuit/manipulation/seed_extractor/do_work()
+	..()
+	var/obj/item/weapon/reagent_containers/food/snacks/grown/O = get_pin_data_as_type(IC_INPUT, 1, /obj/item/weapon/reagent_containers/food/snacks/grown)
+	if(!check_target(O))
+		push_data()
+		activate_pin(2)
+		return
+	var/list/seed_output = list()
+	for(var/i in 1 to rand(1,4))
+		var/obj/item/seeds/seeds = new(get_turf(O))
+		seeds.seed = SSplants.seeds[O.plantname]
+		seeds.seed_type = plant_controller.seeds[O.seed.name]
+		seeds.update_seed()
+		seed_output += weakref(seeds)
+	qdel(O)
+
+	if(seed_output.len)
+		set_pin_data(IC_OUTPUT, 1, seed_output)
+		push_data()
+	activate_pin(2)
+
 /obj/item/integrated_circuit/manipulation/grabber
 	name = "grabber"
 	desc = "A circuit with its own inventory for items. Used to grab and store things."
