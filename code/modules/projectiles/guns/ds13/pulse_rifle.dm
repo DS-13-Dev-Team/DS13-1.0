@@ -171,28 +171,3 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	icon_state = "muzzle_pulse_hv"
 	light_max_bright = 1
 	light_color = COLOR_MARKER_RED
-
-
-/*
-	Acquisition
-*/
-
-/decl/hierarchy/supply_pack/security/pulse_ammo
-	name = "Ammunition - Pulse Rounds"
-	contains = list(/obj/item/ammo_magazine/pulse = 6)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "\improper pulse ammunition crate"
-	access = access_security
-	security_level = SUPPLY_SECURITY_ELEVATED
-
-
-/decl/hierarchy/supply_pack/security/pulse_rifle
-	name = "Weapon - Pulse Rifle"
-	contains = list(/obj/item/ammo_magazine/pulse = 3,
-	/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "\improper pulse rifle crate"
-	access = access_security
-	security_level = SUPPLY_SECURITY_ELEVATED

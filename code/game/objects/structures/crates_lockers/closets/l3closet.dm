@@ -12,7 +12,7 @@
 
 /obj/structure/closet/l3closet/general/WillContain()
 	return list(
-		/obj/item/clothing/suit/storage/hooded/ds_bio_suit,
+		/obj/item/clothing/suit/bio_suit/ds,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/weapon/tank/emergency/oxygen/engi,
 	)
@@ -33,7 +33,7 @@
 
 /obj/structure/closet/l3closet/virology/WillContain()
 	return list(
-		/obj/item/clothing/suit/storage/hooded/ds_bio_suit,
+		/obj/item/clothing/suit/bio_suit/ds,
 		/obj/item/clothing/mask/gas,
 		/obj/item/weapon/tank/oxygen
 	)
@@ -46,7 +46,7 @@
 
 /obj/structure/closet/l3closet/security/WillContain()
 	return list(
-		/obj/item/clothing/suit/storage/hooded/ds_bio_suit,
+		/obj/item/clothing/suit/bio_suit/ds,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/weapon/tank/emergency/oxygen/engi
 	)
@@ -58,7 +58,7 @@
 
 /obj/structure/closet/l3closet/janitor/WillContain()
 	return list(
-		/obj/item/clothing/suit/storage/hooded/ds_bio_suit,
+		/obj/item/clothing/suit/bio_suit/ds,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/weapon/tank/emergency/oxygen/engi
 	)
@@ -78,7 +78,7 @@
 
 /obj/structure/closet/l3closet/scientist/multi/WillContain()
 	return MERGE_ASSOCS_WITH_NUM_VALUES(..(), list(
-		/obj/item/clothing/suit/storage/hooded/ds_bio_suit = 5,
+		/obj/item/clothing/suit/bio_suit/ds = 5,
 		/obj/item/clothing/mask/gas = 5,
 		/obj/item/weapon/tank/emergency/oxygen/double = 5,
 	))
@@ -90,7 +90,7 @@
 
 /obj/structure/closet/l3closet/command/WillContain()
 	return list(
-		/obj/item/clothing/suit/storage/hooded/ds_bio_suit,
+		/obj/item/clothing/suit/bio_suit/ds,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/weapon/tank/emergency/oxygen/engi
 	)

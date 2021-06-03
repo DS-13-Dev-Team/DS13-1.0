@@ -106,24 +106,3 @@
 /obj/item/weapon/cell/plasmacutter/update_icon()
 	return
 
-
-
-
-/*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/mining/plasma_energy
-	name = "Power - Plasma Energy"
-	contains = list(/obj/item/weapon/cell/plasmacutter = 4)
-	cost = 60
-	containertype = /obj/structure/closet/crate
-	containername = "\improper plasma energy crate"
-
-
-/decl/hierarchy/supply_pack/mining/mining_cutter
-	name = "Mining Tool - Mining Cutter"
-	contains = list(/obj/item/weapon/cell/plasmacutter = 2,
-	/obj/item/weapon/gun/energy/cutter/empty = 1)
-	cost = 60
-	containertype = /obj/structure/closet/crate
-	containername = "\improper mining cutter crate"

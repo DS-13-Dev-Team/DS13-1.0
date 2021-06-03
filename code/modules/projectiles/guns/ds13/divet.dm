@@ -60,27 +60,3 @@
 	armor_penetration = 5
 	structure_damage_factor = 1.5
 	penetration_modifier = 1.1
-
-
-/*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/security/divet_ammo
-	name = "Ammunition - Divet Slugs"
-	contains = list(/obj/item/ammo_magazine/divet = 6)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "\improper divet slug crate"
-	access = access_security
-	security_level = SUPPLY_SECURITY_ELEVATED
-
-
-/decl/hierarchy/supply_pack/security/divet
-	name = "Weapon - Divet handgun"
-	contains = list(/obj/item/ammo_magazine/divet = 3,
-	/obj/item/weapon/gun/projectile/divet/empty = 1)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "\improper divet handgun crate"
-	access = access_security
-	security_level = SUPPLY_SECURITY_ELEVATED

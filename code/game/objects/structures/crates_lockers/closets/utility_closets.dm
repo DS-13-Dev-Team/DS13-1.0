@@ -172,7 +172,7 @@
 	name = "radiation suit closet"
 	desc = "It's a storage unit for rad-protective suits."
 	icon_state = "radsuitcloset"
-	icon_opened = "toolclosetopen"
+	icon_opened = "toolclosetopen_old"
 	icon_closed = "radsuitcloset"
 
 /obj/structure/closet/radiation/WillContain()

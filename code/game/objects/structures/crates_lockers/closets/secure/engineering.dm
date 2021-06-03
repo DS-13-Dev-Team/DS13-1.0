@@ -1,11 +1,11 @@
 /obj/structure/closet/secure_closet/engineering_chief
 	name = "chief engineer's locker"
 	req_access = list(access_ce)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
-	icon_opened = "secureopen"
-	icon_off = "securenewoff"
+	icon_state = "secureeng1"
+	icon_closed = "secureeng"
+	icon_locked = "secureeng1"
+	icon_opened = "secureengopen"
+	icon_off = "secureengwoff"
 
 /obj/structure/closet/secure_closet/engineering_chief/WillContain()
 	return list(
@@ -33,11 +33,11 @@
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies"
 	req_access = list(access_engineering)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
-	icon_opened = "secureopen"
-	icon_off = "securenewoff"
+	icon_state = "secureengelec1"
+	icon_closed = "secureengelec"
+	icon_locked = "secureengelec1"
+	icon_opened = "secureengelecopen"
+	icon_off = "secureengwoff"
 
 /obj/structure/closet/secure_closet/engineering_electrical/WillContain()
 	return list(
@@ -51,11 +51,11 @@
 /obj/structure/closet/secure_closet/engineering_welding
 	name = "welding supplies"
 	req_access = list(access_engineering)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
-	icon_opened = "secureopen"
-	icon_off = "securenewoff"
+	icon_state = "secureengweld1"
+	icon_closed = "secureengweld"
+	icon_locked = "secureengweld1"
+	icon_opened = "secureengweldopen"
+	icon_off = "secureengwoff"
 
 /obj/structure/closet/secure_closet/engineering_welding/WillContain()
 	return list(
@@ -70,11 +70,11 @@
 /obj/structure/closet/secure_closet/engineering_personal
 	name = "engineer's locker"
 	req_access = list(access_engineering)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
-	icon_opened = "secureopen"
-	icon_off = "securenewoff"
+	icon_state = "secureeng1"
+	icon_closed = "secureeng"
+	icon_locked = "secureeng1"
+	icon_opened = "secureengopen"
+	icon_off = "secureengwoff"
 
 /obj/structure/closet/secure_closet/engineering_personal/WillContain()
 	return list(

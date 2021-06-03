@@ -1,11 +1,11 @@
 /obj/structure/closet/secure_closet/hydroponics
 	name = "botanist's locker"
 	req_access = list(access_service)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
+	icon_state = "secure1"
+	icon_closed = "secure"
+	icon_locked = "secure1"
 	icon_opened = "secureopen"
-	icon_off = "securenewoff"
+	icon_off = "secureoff"
 
 /obj/structure/closet/secure_closet/hydroponics/WillContain()
 	return list(

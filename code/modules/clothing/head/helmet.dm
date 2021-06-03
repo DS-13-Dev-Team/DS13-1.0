@@ -28,6 +28,15 @@
 	cold_protection = HEAD
 	siemens_coefficient = 0.5
 
+/obj/item/clothing/head/helmet/pcsi
+	name = "P.C.S.I helmet"
+	desc = "It looks like it was made from a bucket and some steel. Uncomfortable and heavy but better than nothing."
+	icon_state = "hm_helmet"
+	armor = list(melee = 35, bullet = 30, laser = 30,energy = 30, bomb = 0, bio = 0, rad = 0)
+	flags_inv = HIDEEARS
+	cold_protection = HEAD
+	siemens_coefficient = 0.5
+
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
 	desc = "It's a helmet specifically designed to protect against close range attacks."

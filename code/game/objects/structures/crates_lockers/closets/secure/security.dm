@@ -1,11 +1,11 @@
 /obj/structure/closet/secure_closet/captains
 	name = "captain's locker"
 	req_access = list(access_captain)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
+	icon_state = "secure1"
+	icon_closed = "secure"
+	icon_locked = "secure1"
 	icon_opened = "secureopen"
-	icon_off = "securenewoff"
+	icon_off = "secureoff"
 
 /obj/structure/closet/secure_closet/captains/WillContain()
 	return list(
@@ -66,18 +66,18 @@
 /obj/structure/closet/secure_closet/CSECO
 	name = "chief security officer's locker"
 	req_access = list(access_armory)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
+	icon_state = "secure1"
+	icon_closed = "secure"
+	icon_locked = "secure1"
 	icon_opened = "secureopen"
-	icon_off = "securenewoff"
+	icon_off = "secureoff"
 
 /obj/structure/closet/secure_closet/CSECO/WillContain()
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/sec, 50),
 		/obj/item/clothing/under/deadspace/security,
-		/obj/item/clothing/shoes/ds_securityboots,
+		/obj/item/clothing/shoes/pcsi,
 		/obj/item/device/radio/headset/heads/cseco,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/weapon/gun/projectile/divet,
@@ -90,38 +90,66 @@
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/weapon/storage/box/holobadge,
+		/obj/item/device/holowarrant
+	)
+
+/obj/structure/closet/secure_closet/SSO
+	name = "senior security officer's locker"
+	req_access = list(access_security)
+	icon_state = "secure1"
+	icon_closed = "secure"
+	icon_locked = "secure1"
+	icon_opened = "secureopen"
+	icon_off = "secureoff"
+
+/obj/structure/closet/secure_closet/SSO/WillContain()
+	return list(
+		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
+		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec)),
+		/obj/item/clothing/under/deadspace/security,
+		/obj/item/clothing/shoes/pcsi,
+		/obj/item/clothing/gloves/forensic,
+		/obj/item/clothing/mask/gas,
+		/obj/item/device/radio/headset/headset_sec,
+		/obj/item/weapon/storage/belt/holster/forensic,
+		/obj/item/weapon/storage/belt/holster/security,
+		/obj/item/weapon/gun/projectile/divet,
+		/obj/item/ammo_magazine/divet = 2,
+		/obj/item/weapon/reagent_containers/spray/pepper,
+		/obj/item/weapon/melee/baton/loaded,
+		/obj/item/taperoll/police,
+		/obj/item/device/hailer,
 		/obj/item/device/holowarrant,
-		/obj/random/tool,
-		/obj/item/weapon/rig/riot
+		/obj/item/device/flashlight/maglight
 	)
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
 	req_access = list(access_security)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
+	icon_state = "secure1"
+	icon_closed = "secure"
+	icon_locked = "secure1"
 	icon_opened = "secureopen"
-	icon_off = "securenewoff"
+	icon_off = "secureoff"
 
 /obj/structure/closet/secure_closet/security/WillContain()
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/sec, 50),
+		/obj/item/clothing/under/deadspace/security,
+		/obj/item/clothing/shoes/pcsi,
+		/obj/item/clothing/glasses/sunglasses/sechud,
+		/obj/item/clothing/mask/gas,
 		/obj/item/device/radio/headset/headset_sec,
+		/obj/item/weapon/storage/belt/holster/security,
 		/obj/item/weapon/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
-		/obj/item/weapon/storage/belt/holster/security,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/clothing/mask/gas,
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,
-		/obj/item/device/flashlight/maglight,
-		/obj/item/clothing/accessory/storage/black_vest,
-		/obj/item/clothing/under/deadspace/security,
 		/obj/item/device/holowarrant,
-		/obj/item/weapon/rig/security
+		/obj/item/device/flashlight/maglight
 	)
 
 /obj/structure/closet/secure_closet/security/cargo/WillContain()
@@ -204,48 +232,14 @@
 		/obj/item/weapon/storage/secure/briefcase = 2,
 	)
 
-
-/obj/structure/closet/secure_closet/SSO
-	name = "senior security officer's locker"
-	req_access = list(access_security)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
-	icon_opened = "secureopen"
-	icon_off = "securenewoff"
-
-/obj/structure/closet/secure_closet/SSO/WillContain()
-	return list(
-		/obj/item/device/radio/headset/headset_sec,
-		/obj/item/clothing/mask/gas,
-		/obj/item/weapon/gun/projectile/divet,
-		/obj/item/ammo_magazine/divet = 2,
-		/obj/item/weapon/reagent_containers/spray/pepper,
-		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/clothing/accessory/storage/black_vest,
-		/obj/item/clothing/gloves/forensic,
-		/obj/item/clothing/under/deadspace/security,
-		/obj/item/clothing/accessory/storage/black_vest,
-		/obj/item/taperoll/police,
-		/obj/item/device/hailer,
-		/obj/item/device/holowarrant,
-		/obj/item/device/flashlight/maglight,
-		/obj/item/device/tape/random = 3,
-		/obj/item/weapon/storage/belt/holster/forensic,
-		/obj/item/weapon/storage/belt/holster/security,
-		/obj/item/weapon/rig/security,
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec))
-	)
-
 /obj/structure/closet/secure_closet/military
 	name = "military personnel's locker"
 	req_access = list(access_captain)
-	icon_state = "base"
-	icon_closed = "base"
-	icon_locked = "base"
-	icon_opened = "base"
-	icon_off = "base"
+	icon_state = "secure1"
+	icon_closed = "secure"
+	icon_locked = "secure1"
+	icon_opened = "secureopen"
+	icon_off = "secureoff"
 
 /obj/structure/closet/secure_closet/military/WillContain()
 	return list(

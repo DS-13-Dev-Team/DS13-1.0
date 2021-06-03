@@ -279,26 +279,3 @@
 	matter = list(MATERIAL_STEEL = 600)
 	max_ammo = 6
 	multiple_sprites = 1
-
-
-
-
-
-/*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/mining/javelin_spears
-	name = "Mining - Javelin Spears"
-	contains = list(/obj/item/ammo_magazine/javelin = 4)
-	cost = 120
-	containertype = /obj/structure/closet/crate
-	containername = "\improper javelin spears crate"
-
-
-/decl/hierarchy/supply_pack/mining/contact_beam
-	name = "Mining Tool - C99 Supercollider Contact Beam"
-	contains = list(/obj/item/weapon/gun/projectile/javelin_gun/empty = 2,
-	/obj/item/ammo_magazine/javelin = 2)
-	cost = 120
-	containertype = /obj/structure/closet/crate
-	containername = "\improper javelin launcher crate"

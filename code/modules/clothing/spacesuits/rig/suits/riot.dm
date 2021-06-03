@@ -34,14 +34,3 @@
 
 /obj/item/clothing/head/helmet/space/rig/riot
 	name = "helmet"
-
-
-
-
-/decl/hierarchy/supply_pack/security/rig
-	name = "Armor - Riot rig"
-	contains = list(/obj/item/weapon/rig/riot)
-	cost = 240
-	containername = "\improper Riot rig crate"
-	containertype = /obj/structure/closet/crate/secure/large
-	access = access_security

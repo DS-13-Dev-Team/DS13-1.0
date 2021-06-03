@@ -36,14 +36,3 @@
 
 /obj/item/clothing/head/helmet/space/rig/engineering
 	name = "hood"
-
-
-
-
-/decl/hierarchy/supply_pack/engineering/rig
-	name = "Armor - Engineering rig"
-	contains = list(/obj/item/weapon/rig/engineering)
-	cost = 120
-	containername = "\improper Engineering rig crate"
-	containertype = /obj/structure/closet/crate/secure/large
-	access = access_engineering

@@ -94,6 +94,56 @@
 	icon_state = "bio_cmo"
 
 
+/obj/item/clothing/suit/bio_suit/ds
+	name = "bio suit"
+	desc = "A suit that protects against biological contamination."
+	icon_state = "ds_bio_white"
+	item_state_slots = list(
+		slot_l_hand_str = "bio_suit",
+		slot_r_hand_str = "bio_suit",
+	)
+	w_class = ITEM_SIZE_HUGE//bulky item
+	gas_transfer_coefficient = 0
+	permeability_coefficient = 0
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	armor = list(melee = 20, bullet = 15, laser = 35,energy = 20, bomb = 20, bio = 100, rad = 40)
+	flags_inv = HIDETAIL
+	item_flags = ITEM_FLAG_THICKMATERIAL
+	siemens_coefficient = 0.9
+	acid_resistance = 8	//These plastic suits are very resistant to corrosion
+	sprite_sheets = list(
+		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
+		)
+
+/obj/item/clothing/head/bio_hood/ds
+	name = "bio hood"
+	icon_state = "ds_bio_white"
+	item_state_slots = list(
+		slot_l_hand_str = "bio_hood",
+		slot_r_hand_str = "bio_hood",
+		)
+	species_restricted = null
+	desc = "A hood that protects the head from biological comtaminants."
+	permeability_coefficient = 0
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
+	acid_resistance = 8	//These plastic suits are very resistant to corrosion
+	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
+	item_flags = ITEM_FLAG_THICKMATERIAL
+	body_parts_covered = HEAD
+	siemens_coefficient = 0.9
+	sprite_sheets = list(
+		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/head.dmi'
+		)
+
+
+/obj/item/clothing/suit/bio_suit/ds/black
+	name = "Earthgov bio suit"
+	icon_state = "ds_bio_black"
+
+/obj/item/clothing/head/bio_hood/ds/black
+	name = "Earthgov bio hood"
+	icon_state = "ds_bio_black"
+
 //Plague Dr mask can be found in clothing/masks/gasmask.dm
 /obj/item/clothing/suit/bio_suit/plaguedoctorsuit
 	name = "Plague doctor suit"

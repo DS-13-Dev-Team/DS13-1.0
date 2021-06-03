@@ -20,10 +20,10 @@
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 45, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
 
-/obj/item/clothing/suit/armor/vest/ds_armor
-	name = "security officer's armor"
-	desc = "An armored vest that protects against some damage."
-	icon_state = "ds_securityarmor"
+/obj/item/clothing/suit/armor/vest/pcsi
+	name = "P.C.S.I officer's vest"
+	desc = "A standard issue vest issued to CEC security personnel across the galaxy, with the CEC's emblem emblazoned proudly on the right side of the vest. Reliable and relatively lightweight, it strikes a good balance between protection and mobility."
+	icon_state = "ds_pcsi_armor"
 	//item_state = "armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	cold_protection = UPPER_TORSO|LOWER_TORSO

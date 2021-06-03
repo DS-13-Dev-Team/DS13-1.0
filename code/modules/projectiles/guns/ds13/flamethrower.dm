@@ -565,43 +565,6 @@
 
 
 /*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/mining/torch_fuel
-	name = "Torch Fuel Canisters"
-	contains = list(/obj/item/weapon/reagent_containers/glass/fuel_tank/fuel = 4)
-	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "\improper Torch Fuel Canisters crate"
-
-
-//Crazy expensive for just ONE tank of hydrazine. Cargo is not a convenient source for it
-/decl/hierarchy/supply_pack/mining/torch_hydrazine
-	name = "Torch Hydrazine Canister"
-	contains = list(/obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine = 1)
-	cost = 200
-	containertype = /obj/structure/closet/crate
-	containername = "\improper Torch Fuel Canisters crate"
-
-
-/decl/hierarchy/supply_pack/mining/hydrazine_torch
-	name = "Mining Tool - Hydrazine Torch"
-	contains = list(/obj/item/weapon/gun/spray/hydrazine_torch = 1,
-	/obj/item/weapon/reagent_containers/glass/fuel_tank/fuel = 2)
-	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "\improper Hydrazine Torch crate"
-
-
-
-
-
-
-
-
-
-
-/*
 	Alternate Fire
 	incendiary blast:
 	Fires an impact grenade which, on detonation, creates a radial fire spray for a few seconds, rather than an explosion
