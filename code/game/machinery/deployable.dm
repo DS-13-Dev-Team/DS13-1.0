@@ -69,7 +69,9 @@ for reference:
 	anchored = 0.0
 	density = 1
 	icon_state = "barrier0"
-	max_health = 200.0
+	max_health = 100
+	health = 100
+	resistance = 5
 	var/locked = 0.0
 //	req_access = list(access_maint_tunnels)
 
@@ -220,6 +222,12 @@ for reference:
 /obj/machinery/deployable/repair_needed()
 	return max_health - health
 
+
+/obj/machinery/deployable/attack_hand(mob/user)
+	if(user.a_intent == I_HURT)
+		user.strike_structure(src)
+		return 1
+	return ..()
 
 //Future TODO: Make this generic atom behaviour
 /obj/machinery/deployable/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
