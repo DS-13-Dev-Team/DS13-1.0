@@ -12,7 +12,6 @@
 	var/placement_type = /datum/click_handler/placement/necromorph
 	var/placement_location = PLACEMENT_FLOOR
 
-	var/fire_damage_multiplier = 3
 
 
 	default_rotation = 0
@@ -150,7 +149,7 @@
 
 //Future TODO: Make this generic atom behaviour
 /obj/structure/corruption_node/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
-	.=..(air, exposed_temperature, exposed_volume, multiplier*fire_damage_multiplier)
+	.=..(air, exposed_temperature, exposed_volume, multiplier*CORRUPTION_FIRE_DAMAGE_FACTOR)
 
 
 //Nodes are organic

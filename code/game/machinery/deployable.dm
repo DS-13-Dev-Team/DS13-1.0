@@ -69,8 +69,7 @@ for reference:
 	anchored = 0.0
 	density = 1
 	icon_state = "barrier0"
-	health = 100.0
-	max_health = 100.0
+	max_health = 200.0
 	var/locked = 0.0
 //	req_access = list(access_maint_tunnels)
 
@@ -113,26 +112,9 @@ for reference:
 				return
 			return
 		else
-			switch(W.damtype)
-				if("fire")
-					src.health -= W.force * 0.75
-				if("brute")
-					src.health -= W.force * 0.5
-				else
-			if (src.health <= 0)
-				src.explode()
+			take_damage(W.force * 0.75)
 			..()
 
-	ex_act(severity)
-		switch(severity)
-			if(1.0)
-				src.explode()
-				return
-			if(2.0)
-				src.health -= 25
-				if (src.health <= 0)
-					src.explode()
-				return
 	emp_act(severity)
 		if(stat & (BROKEN|NOPOWER))
 			return
@@ -183,3 +165,69 @@ for reference:
 		s.start()
 		visible_message("<span class='warning'>BZZzZZzZZzZT</span>")
 		return 1
+
+
+
+
+
+
+
+
+/*
+	Damage Mechanics
+
+	One day we will extend these to all machinery, then all objects, then all atoms
+	But the unintended consequences of that are, for now, too much to deal with
+*/
+/obj/machinery/deployable/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+		return
+	if (!bypass_resist)
+		amount -= resistance
+
+	if (amount <= 0)
+		return 0
+
+	health -= amount
+
+	if (health <= 0)
+		health = 0
+		return zero_health(amount, damtype, user, used_weapon, bypass_resist)//Some zero health overrides do things with a return value
+	else
+		update_icon()
+		return amount
+
+/obj/machinery/deployable/proc/updatehealth()
+	if (health <= 0)
+		health = 0
+		return zero_health()
+
+//Called when health drops to zero. Parameters are the params of the final hit that broke us, if this was called from take_damage
+/obj/machinery/deployable/barrier/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
+	explode()
+	return TRUE
+
+
+/obj/machinery/deployable/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist)
+	qdel(src)
+	return TRUE
+
+/obj/machinery/deployable/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+	health = clamp(health+repair_power, 0, max_health)
+	updatehealth()
+	update_icon()
+
+/obj/machinery/deployable/repair_needed()
+	return max_health - health
+
+
+//Future TODO: Make this generic atom behaviour
+/obj/machinery/deployable/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+	var/damage = get_fire_damage(exposed_temperature, multiplier)
+	if (damage > 0)
+		take_damage(damage, BURN,bypass_resist = TRUE)
+
+
+//Most structures are stee
+/obj/machinery/deployable/get_heat_limit()
+	return 1370
