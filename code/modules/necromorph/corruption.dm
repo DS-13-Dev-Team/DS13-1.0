@@ -282,7 +282,8 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	return trange(1, src)
 
 /obj/effect/vine/corruption/watched_tile_updated(var/turf/T)
-	source.needs_update = TRUE
+	if (source)
+		source.needs_update = TRUE
 	.=..()
 
 //Finds all visualnet chunks that this vine could possibly infringe on.

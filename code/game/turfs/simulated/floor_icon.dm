@@ -310,7 +310,7 @@ var/list/flooring_cache = list()
 	return round(p, 0.1)
 
 
-/turf/simulated/floor/proc/get_damage_overlay(var/cache_key, var/icon_base)
+/turf/simulated/floor/proc/get_damage_overlay(var/cache_key, var/icon_base, var/forced_alpha)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon =  'icons/turf/flooring/damage.dmi', icon_state = icon_base)
 		I.alpha = 255 * get_damagepercent()

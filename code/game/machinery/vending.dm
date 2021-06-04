@@ -339,7 +339,7 @@
 	if(user)
 		user.visible_message(SPAN_NOTICE("[user] knock down [src]."), SPAN_NOTICE("You tear down [src]."))
 	shot_down = TRUE
-	density = FALSE
+	set_density(FALSE)
 	src.set_dir(turn(src.dir, 90))
 	return TRUE
 
