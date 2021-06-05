@@ -36,7 +36,6 @@
 	if (length(textb) < 2)
 		textr = text("0[]", textb)
 	return text("#[][][]", textr, textg, textb)
-	return
 
 //Returns the middle-most value
 /proc/dd_range(var/low, var/high, var/num)
@@ -906,8 +905,6 @@ var/global/list/common_tools = list(
 				return 0
 		if(/obj/item/weapon/melee/energy)
 			return 3500
-		else
-			return W.is_hot()
 
 	return W.is_hot()
 
