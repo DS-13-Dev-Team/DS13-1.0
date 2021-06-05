@@ -286,7 +286,6 @@ BLIND     // can't see anything
 		return item_state_slots[slot]
 	else
 		return icon_state
-	return ..()
 
 /obj/item/clothing/glasses/update_clothing_icon()
 	if (ismob(src.loc))
@@ -364,13 +363,13 @@ BLIND     // can't see anything
 		species_restricted -= SPECIES_UNATHI
 	return
 
-/obj/item/clothing/gloves/mob_can_equip(mob/user)
-	var/mob/living/carbon/human/H = user
+/obj/item/clothing/gloves/mob_can_equip(mob/M, var/slot, var/disable_warning = 0, var/force = 0)
+	var/mob/living/carbon/human/H = M
 
 	if(istype(H.gloves, /obj/item/clothing/ring))
 		ring = H.gloves
 		if(!ring.undergloves)
-			to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
+			to_chat(M, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
 			ring = null
 			return 0
 		if(!H.unEquip(ring, src))//Remove the ring (or other under-glove item in the hand slot?) so you can put on the gloves.
@@ -384,7 +383,7 @@ BLIND     // can't see anything
 		return 0
 
 	if (ring)
-		to_chat(user, "You slip \the [src] on over \the [ring].")
+		to_chat(M, "You slip \the [src] on over \the [ring].")
 	wearer = H //TODO clean this when magboots are cleaned
 	return 1
 
