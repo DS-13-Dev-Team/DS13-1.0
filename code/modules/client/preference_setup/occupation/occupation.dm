@@ -447,6 +447,6 @@ datum/category_item/player_setup_item/proc/prune_occupation_prefs()
 	return (job.title in player_alt_titles) ? player_alt_titles[job.title] : job.title
 
 #undef JOB_LEVEL_NEVER
-#undef SET_LEVE_LOW
+#undef JOB_LEVEL_LOW
 #undef JOB_LEVEL_MEDIUM
 #undef JOB_LEVEL_HIGH
