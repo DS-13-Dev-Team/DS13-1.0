@@ -289,6 +289,10 @@
 
 #define SPECIES_BLOOD_DEFAULT 560
 
+//Used in mob/proc/get_input
+#define MOB_INPUT_TEXT "text"
+#define MOB_INPUT_MESSAGE "message"
+#define MOB_INPUT_NUM "num"
 
 //Faction strings
 #define FACTION_NECROMORPH	"necromorph"

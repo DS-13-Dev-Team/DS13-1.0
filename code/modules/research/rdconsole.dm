@@ -1,19 +1,15 @@
 /*
 Research and Development (R&D) Console
-
 This is the main work horse of the R&D system. It contains the menus/controls for the Destructive Analyzer, Protolathe, and Circuit
 imprinter. It also contains the /datum/research holder with all the known/possible technology paths and device designs.
-
 Basic use: When it first is created, it will attempt to link up to related devices within 3 squares. It'll only link up if they
 aren't already linked to another console. Any consoles it cannot link up with (either because all of a certain type are already
 linked or there aren't any in range), you'll just not have access to that menu. In the settings menu, there are menu options that
 allow a player to attempt to re-sync with nearby consoles. You can also force it to disconnect from a specific console.
-
 The imprinting and construction menus do NOT require toxins access to access but all the other menus do. However, if you leave it
 on a menu, nothing is to stop the person from using the options on that menu (although they won't be able to change to a different
 one). You can also lock the console on the settings menu if you're feeling paranoid and you don't want anyone messing with it who
 doesn't have toxins access.
-
 When a R&D console is destroyed or even partially disassembled, you lose all research data on it. However, there are two ways around
 this dire fate:
 - The easiest way is to go to the settings menu and select "Sync Database with Network." That causes it to upload (but not download)
@@ -88,9 +84,6 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 				linked_imprinter = D
 				D.linked_console = src
 	return
-
-/obj/machinery/computer/rdconsole/proc/add_ic_design(var/obj/item/device/electronic_assembly/assembly)
-	files.AddDesign2Known(new /datum/design/prefab(files,create_prefab_from_assembly(assembly)))
 
 /obj/machinery/computer/rdconsole/proc/griefProtection() //Have it automatically push research to the centcomm server so wild griffins can't fuck up R&D's work
 	for(var/obj/machinery/r_n_d/server/centcom/C in SSmachines.machinery)
@@ -239,11 +232,8 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 							to_chat(usr, "<span class='notice'>The destructive analyzer appears to be empty.</span>")
 							screen = 1.0
 							return
-						if(istype(linked_destroy.loaded_item, /obj/item/device/electronic_assembly))
-							add_ic_design(linked_destroy.loaded_item)
-						else
-							for(var/T in linked_destroy.loaded_item.origin_tech)
-								files.UpdateTech(T, linked_destroy.loaded_item.origin_tech[T])
+						for(var/T in linked_destroy.loaded_item.origin_tech)
+							files.UpdateTech(T, linked_destroy.loaded_item.origin_tech[T])
 						if(linked_lathe && linked_destroy.loaded_item.matter) // Also sends salvaged materials to a linked protolathe, if any.
 							for(var/t in linked_destroy.loaded_item.matter)
 								if(t in linked_lathe.materials)
