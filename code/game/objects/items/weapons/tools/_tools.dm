@@ -311,6 +311,8 @@
 //Cell reload
 /obj/item/weapon/tool/MouseDrop(over_object)
 	if((src.loc == usr) && istype(over_object, /obj/screen) && eject_item(cell, usr)) ///Formerly checked for /obj/screeninventory/hand. Not sure how that fits with bay's UI system
+		if (switched_on)
+			turn_off()
 		cell = null
 		update_icon()
 	else
