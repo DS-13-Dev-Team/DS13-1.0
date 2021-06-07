@@ -150,7 +150,7 @@
 		else if(player_is_antag(player) && !ghosts_only)	//Ghosts are no longer what their body was, it shouldn't prevent them taking a new role
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are already an antagonist!")
 		else
-			candidates[player] = player.get_antag_weight(category)
+			candidates[player] = player.get_antag_weight(category, id)
 	return candidates
 
 // Builds a list of potential antags without actually setting them. Used to test mode viability.
@@ -174,7 +174,7 @@
 		else if(!can_become_antag(player))
 		else if(player_is_antag(player) && !ghosts_only)
 		else
-			candidates[player] = player.get_antag_weight(category)
+			candidates[player] = player.get_antag_weight(category, id)
 
 	return candidates
 

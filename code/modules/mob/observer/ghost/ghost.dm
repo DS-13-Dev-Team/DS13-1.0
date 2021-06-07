@@ -578,8 +578,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "OOC"
 
 	if (!CONFIG_GET(flag/abandon_allowed))
-		to_chat(usr, "<span class='notice'>Respawn is disabled.</span>")
-		return
+		if(!check_rights(R_ADMIN|R_DEBUG, 0, src))
+			to_chat(usr, "<span class='notice'>Respawn is disabled.</span>")
+			return
 	if (!(ticker && ticker.mode))
 		to_chat(usr, "<span class='notice'><B>You may not attempt to respawn yet.</B></span>")
 		return

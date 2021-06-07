@@ -479,6 +479,7 @@ var/global/list/additional_antag_types = list()
 			if(!antag_id || (antag_id in player.client.prefs.be_special_role))
 				log_debug("[player.key] had [antag_id] enabled, so we are drafting them.")
 				candidates += player.mind
+
 	else
 		// Assemble a list of active players without jobbans.
 		for(var/mob/new_player/player in GLOB.player_list)
