@@ -2,6 +2,24 @@
 ////EDF OUTFITS////
 ///////////////////
 
+/*	Outfit Template:
+
+	name = "Job"
+	uniform = null
+	suit = null
+	l_ear = null
+	mask = null
+	head = null
+	belt = null
+	back = null
+	shoes = null
+	gloves = null
+
+	id_slot = slot_wear_id
+	id_type = /obj/item/weapon/card/id/holo
+	id_desc = "Job Desc Here"*/
+
+
 /decl/hierarchy/outfit/edf_commander
 	name = "EDF CO"
 	uniform = /obj/item/clothing/under/rigunder

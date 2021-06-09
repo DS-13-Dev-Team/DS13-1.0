@@ -146,12 +146,12 @@
 	armor = list(melee = 40, bullet = 40, laser = 0, energy = 0, bomb = 20, bio = 10, rad = 0)
 
 /obj/item/clothing/gloves/combat/pcsi
-	desc = ""
+	desc = "A pair of thick, ceramic-plated gloves issue to Concordance Extraction Corporation security officers. They often clink when an officer balls his fist."
 	name = "security gloves"
-	icon_state = "ds_pcsi_gloves"
-	item_state = "ds_pcsi_gloves"
+	icon_state = "pcsi_gloves"
+	item_state = "pcsi_gloves"
 	force = 5
-	armor = list(melee = 60, bullet = 60, laser = 0,energy = 0, bomb = 50, bio = 10, rad = 0)
+	armor = list(melee = 55, bullet = 60, laser = 0,energy = 0, bomb = 30, bio = 10, rad = 0)
 
 /obj/item/clothing/gloves/combat/kellion
 	desc = "A pair of thick, armored gloves designed to protect the wearer and stains off."

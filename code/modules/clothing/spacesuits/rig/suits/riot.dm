@@ -1,7 +1,7 @@
 /obj/item/weapon/rig/riot
 	name = "riot rig"
 	desc = "A heavy duty and armoured rig suit, designed for riot control and shipboard disciplinary enforcement. This suit is commonly found among security officers on the Sprawl, and in lesser capacity on private ships and stations."
-	icon_state = "ds_police_rig"
+	icon_state = "ds_riot_rig"
 	armor = list(melee = 70, bullet = 60, laser = 60, energy = 30, bomb = 65, bio = 100, rad = 60)
 	online_slowdown = RIG_VERY_HEAVY
 	acid_resistance = 2	//Contains a fair bit of plastic

@@ -210,23 +210,83 @@
 
 /* ERT */
 
-/var/const/access_kellion = 999
+// Kellion
+/var/const/access_kellion = 900
 /datum/access/kellion
 	id = access_kellion
 	desc = "USG Kellion Access"
 	region = ACCESS_REGION_NONE
 
-/var/const/access_valor = 998
+/var/const/access_klead = 901
+/datum/access/klead
+	id = access_klead
+	desc = "Kellion Security Leader"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_kgrunt = 902
+/datum/access/kgrunt
+	id = access_kgrunt
+	desc = "Kellion Security"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_ktechnician = 903
+/datum/access/ktechnician
+	id = access_ktechnician
+	desc = "Kellion Technician"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_kengineer = 904
+/datum/access/kengineer
+	id = access_kengineer
+	desc = "Kellion Engineer"
+	region = ACCESS_REGION_NONE
+
+
+//Valor
+/var/const/access_valor = 905
 /datum/access/valor
 	id = access_valor
 	desc = "USS Valor Access"
 	region = ACCESS_REGION_NONE
 
-/var/const/access_unitologist = 997
+
+//Deliverance
+/var/const/access_unitologist = 910
 /datum/access/unitologist
 	id = access_unitologist
 	desc = "Unmarked Vessel Access"
 	region = ACCESS_REGION_NONE
+
+/var/const/access_ulead = 911
+/datum/access/ulead
+	id = access_ulead
+	desc = "UNI Deacon"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_ufaithful = 912
+/datum/access/ufaithful
+	id = access_ufaithful
+	desc = "UNI Faithful"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_uberserker = 913
+/datum/access/uberserker
+	id = access_uberserker
+	desc = "UNI Berserker"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_uhealer = 914
+/datum/access/uhealer
+	id = access_uhealer
+	desc = "UNI Healer"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_umechanic = 915
+/datum/access/umechanic
+	id = access_umechanic
+	desc = "UNI Mechanic"
+	region = ACCESS_REGION_NONE
+
 
 
 /var/const/access_powerlock = 9999//Allows bluespacetechs to open powerlocks

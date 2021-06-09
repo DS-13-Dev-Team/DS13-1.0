@@ -53,7 +53,6 @@
 	id_type = /obj/item/weapon/card/id/holo/science
 
 
-
 //Medical
 /decl/hierarchy/outfit/necromorph/doctor
 	name = "Doctor Slick"

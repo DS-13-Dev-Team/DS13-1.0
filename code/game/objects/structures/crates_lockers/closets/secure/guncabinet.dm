@@ -10,20 +10,12 @@
 	icon_opened = "base"
 
 /obj/structure/closet/secure_closet/guncabinet/WillContain()
-	var/list/stuff = list(/obj/random/gun_security  = 1, /obj/random/ammo/security = 2)
-
-	if (prob(50))
-		stuff += list(
-			/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty,
-			/obj/item/ammo_magazine/pulse = 4
-		)
-	else
-		stuff += list(
-			/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
-			/obj/item/ammo_magazine/shotgun = 4
-		)
-
-	return stuff
+	return list(
+		/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
+		/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
+		/obj/item/ammo_magazine/pulse = 2,
+		/obj/item/ammo_magazine/shotgun = 2
+	)
 
 
 /obj/structure/closet/secure_closet/guncabinet/military

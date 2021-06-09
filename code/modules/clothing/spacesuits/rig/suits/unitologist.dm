@@ -1,8 +1,8 @@
 /obj/item/weapon/rig/zealot
 	name = "zealot rig"
-	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
+	desc = "An old combat RIG used by SCAF over two hundred years ago. The armour has seen some wear but still functions as it should, it has been repainted in black and crimson colours. There are unitologist markings across the suit."
 	icon_state = "zealot_rig"
-	armor = list(melee = 57.5, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 60)
+	armor = list(melee = 60, bullet = 60, laser = 30, energy = 20, bomb = 30, bio = 40, rad = 40)
 	online_slowdown = RIG_MEDIUM
 	acid_resistance = 1.75	//Contains a fair bit of plastic
 
@@ -15,8 +15,6 @@
 		/obj/item/rig_module/healthbar,
 		/obj/item/rig_module/storage,
 		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
-		/obj/item/rig_module/device/paperdispenser,	//For warrants and paperwork
-		/obj/item/rig_module/device/pen,
 		/obj/item/rig_module/vision/nvgsec
 		)
 
@@ -32,5 +30,5 @@
 	name = "shoes"
 
 /obj/item/clothing/head/helmet/space/rig/zealot
-	name = "hood"
+	name = "helmet"
 	light_overlay = "zealothelm_light"

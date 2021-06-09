@@ -17103,7 +17103,6 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/effect/landmark/node_room,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical/supply_storage)
 "aFT" = (
@@ -23015,8 +23014,10 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/random/ammo/security,
-/obj/random/ammo/security,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "aQs" = (
@@ -23038,8 +23039,6 @@
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/obj/random/ammo/security,
-/obj/random/ammo/security,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "aQt" = (
@@ -33035,7 +33034,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/effect/landmark/node_room,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/medical/morgue/autopsy)
 "bil" = (
