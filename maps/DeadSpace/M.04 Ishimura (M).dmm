@@ -12877,13 +12877,13 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/medical/morgue/autopsy)
 "ayR" = (
-/obj/machinery/floodlight,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/camera/network/security{
 	dir = 8;
 	icon_state = "camera";
 	pixel_y = -20
 	},
+/obj/structure/closet/secure_closet/guncabinet/sec_support,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "ayS" = (

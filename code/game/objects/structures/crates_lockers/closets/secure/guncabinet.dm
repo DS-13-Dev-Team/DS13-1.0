@@ -17,6 +17,25 @@
 		/obj/item/ammo_magazine/shotgun = 2
 	)
 
+/obj/structure/closet/secure_closet/guncabinet/sec_support
+	name = "support weapon cabinet"
+	req_access = list(access_security)
+	icon = 'icons/obj/guncabinet.dmi'
+	icon_state = "base"
+	icon_off ="base"
+	icon_broken ="base"
+	icon_locked ="base"
+	icon_closed ="base"
+	icon_opened = "base"
+
+/obj/structure/closet/secure_closet/guncabinet/sec_support/WillContain()
+	var/list/things = list()
+	if(prob(75))
+		things += /obj/item/weapon/gun/projectile/seeker/empty
+		things[/obj/item/ammo_magazine/seeker] = 4
+	else
+		things += /obj/item/weapon/gun/projectile/automatic/pulse_heavy
+	return things
 
 /obj/structure/closet/secure_closet/guncabinet/military
 	name = "military gun cabinet"

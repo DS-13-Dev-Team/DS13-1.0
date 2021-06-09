@@ -43,6 +43,7 @@ changes:
   - tweak: "Reduced the Ishimura bio suit's stats."
   - rscadd: "Added a black tie to the Director of Mining's closet."
   - rscadd: "Added security HUD glasses to each of the personnel lockers in the Brig."
+  - rscadd: "Added a support weapon cabinet to the Brig Armory in place of the floodlight, it will spawn either a Seeker Rifle or Heavy Pulse Rifle."
   - rscadd: "Added four divet magazines to the Brig Armory."
   - rscadd: "Added Cre's new bio suit."
   - rscadd: "Added Cre's new EVA RIG."
