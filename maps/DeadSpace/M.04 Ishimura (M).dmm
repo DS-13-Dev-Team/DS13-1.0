@@ -12877,13 +12877,13 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/medical/morgue/autopsy)
 "ayR" = (
-/obj/machinery/floodlight,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/camera/network/security{
 	dir = 8;
 	icon_state = "camera";
 	pixel_y = -20
 	},
+/obj/structure/closet/secure_closet/guncabinet/sec_support,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "ayS" = (
@@ -17103,7 +17103,6 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/effect/landmark/node_room,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical/supply_storage)
 "aFT" = (
@@ -23015,8 +23014,10 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/random/ammo/security,
-/obj/random/ammo/security,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "aQs" = (
@@ -23038,8 +23039,6 @@
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/obj/random/ammo/security,
-/obj/random/ammo/security,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "aQt" = (
@@ -33034,7 +33033,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/effect/landmark/node_room,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/medical/morgue/autopsy)
 "bil" = (

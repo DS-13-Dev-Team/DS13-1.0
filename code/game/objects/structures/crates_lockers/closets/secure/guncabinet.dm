@@ -10,21 +10,32 @@
 	icon_opened = "base"
 
 /obj/structure/closet/secure_closet/guncabinet/WillContain()
-	var/list/stuff = list(/obj/random/gun_security  = 1, /obj/random/ammo/security = 2)
+	return list(
+		/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
+		/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
+		/obj/item/ammo_magazine/pulse = 2,
+		/obj/item/ammo_magazine/shotgun = 2
+	)
 
-	if (prob(50))
-		stuff += list(
-			/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty,
-			/obj/item/ammo_magazine/pulse = 4
-		)
+/obj/structure/closet/secure_closet/guncabinet/sec_support
+	name = "support weapon cabinet"
+	req_access = list(access_security)
+	icon = 'icons/obj/guncabinet.dmi'
+	icon_state = "base"
+	icon_off ="base"
+	icon_broken ="base"
+	icon_locked ="base"
+	icon_closed ="base"
+	icon_opened = "base"
+
+/obj/structure/closet/secure_closet/guncabinet/sec_support/WillContain()
+	var/list/things = list()
+	if(prob(75))
+		things += /obj/item/weapon/gun/projectile/seeker/empty
+		things[/obj/item/ammo_magazine/seeker] = 4
 	else
-		stuff += list(
-			/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
-			/obj/item/ammo_magazine/shotgun = 4
-		)
-
-	return stuff
-
+		things += /obj/item/weapon/gun/projectile/automatic/pulse_heavy
+	return things
 
 /obj/structure/closet/secure_closet/guncabinet/military
 	name = "military gun cabinet"

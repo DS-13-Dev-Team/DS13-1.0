@@ -558,7 +558,7 @@ var/const/NO_EMAG_ACT = -50
 
 /obj/item/weapon/card/id/holo/security
 	name = "holographic id"
-	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to an Ishimura Security Officer."
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Ishimura Security Officer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/security_officer
@@ -577,19 +577,13 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/sso
 
-/*/obj/item/weapon/card/id/holoiddeadofficer
-	name = "holographic id"
-	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a PSEC Security Officer."
-	icon_state = "holowarrant_filled"
-	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/ds13psecsecurityofficer*/
 
 //////////////////////////////////////////////////
 ///////DEAD SPACE EDF/UNI/KELLION IDS BELOW///////
 //////////////////////////////////////////////////
 
 
-//edf//
+//EDF//
 
 /obj/item/weapon/card/id/holo/edf
 	name = "EDF marine's holographic id"
@@ -631,7 +625,7 @@ var/const/NO_EMAG_ACT = -50
 				access_medical, access_research, access_chemistry,
 				access_surgery, access_maint_tunnels, access_keycard_auth)
 
-//uni//
+//Deliverance//
 
 /obj/item/weapon/card/id/holo/unitologist
 	name = "holographic id"
@@ -641,7 +635,7 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth)
+				access_surgery, access_ufaithful, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/berserker
 	name = "holographic id"
@@ -651,7 +645,7 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth)
+				access_surgery, access_uberserker, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/mechanic
 	name = "holographic id"
@@ -661,7 +655,7 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth)
+				access_surgery, access_umechanic, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/healer
 	name = "holographic id"
@@ -671,7 +665,7 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth)
+				access_surgery, access_uhealer, access_maint_tunnels, access_keycard_auth)
 
 /obj/item/weapon/card/id/holo/deacon
 	name = "holographic id"
@@ -681,9 +675,9 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth)
+				access_surgery, access_ulead, access_maint_tunnels, access_keycard_auth)
 
-//kellion//
+//Kellion//
 
 /obj/item/weapon/card/id/holo/isaac
 	name = "holographic id"
@@ -693,7 +687,7 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth, access_kellion)
+				access_surgery, access_kengineer, access_maint_tunnels, access_keycard_auth, access_kellion)
 
 /obj/item/weapon/card/id/holo/kellion_sec
 	name = "holographic id"
@@ -703,7 +697,7 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth, access_kellion)
+				access_surgery, access_kgrunt, access_maint_tunnels, access_keycard_auth, access_kellion)
 
 /obj/item/weapon/card/id/holo/kellion_sec_leader
 	name = "holographic id"
@@ -713,7 +707,7 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth, access_kellion)
+				access_surgery, access_klead, access_maint_tunnels, access_keycard_auth, access_kellion)
 
 /obj/item/weapon/card/id/holo/kendra
 	name = "holographic id"
@@ -723,4 +717,5 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth, access_kellion)
+				access_surgery, access_ktechnician, access_maint_tunnels, access_keycard_auth, access_kellion)
+
