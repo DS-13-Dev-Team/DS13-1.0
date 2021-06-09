@@ -25,9 +25,9 @@
 	desc = "The Concordance Extraction Corporation's standard issue security armor, used on its larger vessels and colonial interests, outfitted with protective polymer plating and a lightweight kevlar web beneath those plates. Deployed in high-risk situations where CEC property and personnel are at risk, usually from piracy or looters."
 	icon_state = "pcsi_armor"
 	item_state = "pcsi_armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor = list(melee = 55, bullet = 60, laser = 0, energy = 0, bomb = 25, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/vest/ds_jacket
