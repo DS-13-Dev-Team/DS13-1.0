@@ -28635,8 +28635,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/research/biolab)
 "bah" = (
-/obj/machinery/integrated_circuit_printer,
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/table/workbench,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/research/biolab)
 "bai" = (

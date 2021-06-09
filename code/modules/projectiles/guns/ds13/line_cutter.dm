@@ -5,7 +5,6 @@
 
 	Secondary fire is a focused beam with a similar effect and marginally better damage
 */
-#define FORCE_FOCUS_WINDUP_TIME	15
 
 /obj/item/weapon/gun/projectile/linecutter
 	name = "IM-822 Handheld Ore Cutter Line Gun"

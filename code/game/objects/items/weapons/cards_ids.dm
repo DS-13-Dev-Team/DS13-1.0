@@ -9,7 +9,7 @@
 
 
 /*
- * DATA CARDS - Used for the teleporter
+ * DATA CARDS - Used for the IC data card reader
  */
 /obj/item/weapon/card
 	name = "card"
@@ -25,25 +25,30 @@
 	unacidable = TRUE	//These melt too easily
 
 /obj/item/weapon/card/data
-	name = "data disk"
-	desc = "A disk of data."
-	icon_state = "data"
+	name = "data card"
+	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one has a stripe running down the middle."
+	icon_state = "data_1"
+	var/detail_color = COLOR_ASSEMBLY_ORANGE
 	var/function = "storage"
 	var/data = "null"
 	var/special = null
-	item_state = "card-id"
 
-/obj/item/weapon/card/data/verb/label(t as text)
-	set name = "Label Disk"
-	set category = "Object"
-	set src in usr
+/obj/item/weapon/card/data/Initialize()
+	.=..()
+	update_icon()
 
-	if (t)
-		src.SetName(text("data disk- '[]'", t))
-	else
-		src.SetName("data disk")
-	src.add_fingerprint(usr)
-	return
+/obj/item/weapon/card/data/update_icon()
+	overlays.Cut()
+	var/image/detail_overlay = image('icons/obj/card.dmi', src,"[icon_state]-color")
+	detail_overlay.color = detail_color
+	overlays += detail_overlay
+
+/obj/item/weapon/card/data/attackby(obj/item/I, mob/living/user)
+	if(istype(I, /obj/item/device/integrated_electronics/detailer))
+		var/obj/item/device/integrated_electronics/detailer/D = I
+		detail_color = D.detail_color
+		update_icon()
+	return ..()
 
 /obj/item/weapon/card/data/clown
 	name = "\proper the coordinates to clown planet"
@@ -53,6 +58,14 @@
 	desc = "This card contains coordinates to the fabled Clown Planet. Handle with care."
 	function = "teleporter"
 	data = "Clown Land"
+
+/obj/item/weapon/card/data/full_color
+	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one has the entire card colored."
+	icon_state = "data_2"
+
+/obj/item/weapon/card/data/disk
+	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one inexplicibly looks like a floppy disk."
+	icon_state = "data_3"
 
 /*
  * ID CARDS
@@ -704,4 +717,5 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_ktechnician, access_maint_tunnels, access_keycard_auth, access_kellion)
+				access_surgery, access_maint_tunnels, access_keycard_auth, access_kellion)
+

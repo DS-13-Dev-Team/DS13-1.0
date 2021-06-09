@@ -243,3 +243,6 @@ A = null;
 A = null;
 
 #define NONSENSICAL_VALUE -99999
+
+// Returns true if val is from min to max, inclusive.
+#define ISINRANGE(val, min, max) (min <= val && val <= max)
