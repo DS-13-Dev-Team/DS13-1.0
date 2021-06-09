@@ -11,7 +11,6 @@
 	start_proc = null	//No start firing proc
 
 /datum/click_handler/gun/sustained/kinesis/resolve_world_target(a, params)
-	if(isliving(user))
-		if(user.incapacitated())
-			return
+	if(isliving(user) && user.incapacitated(INCAPACITATION_KNOCKOUT))
+		return
 	return ..()

@@ -40,7 +40,7 @@
 #define IS_NECROMORPH	10
 
 #define CE_STABLE        "stable"       // Inaprovaline
-#define CE_ANTIBIOTIC    "antibiotic"   // Spaceacilin
+#define CE_ANTIBIOTIC    "antibiotic"   // Spaceacilin // Fights wound-based infections.
 #define CE_BLOODRESTORE  "bloodrestore" // Iron/nutriment
 #define CE_PAINKILLER    "painkiller"
 #define CE_ALCOHOL       "alcohol"      // Liver filtering
@@ -59,7 +59,6 @@
 #define CE_CRYO 	     "cryogenic"    // Prevents damage from being frozen
 #define CE_BLOCKAGE	     "blockage"     // Gets in the way of blood circulation, higher the worse
 #define CE_SQUEAKY		 "squeaky"      // Helium voice. Squeak squeak.
-#define CE_ANTIBIOTIC    "antibiotic"   // Fights wound-based infections.
 #define CE_SEDATE        "sedate"       // Applies sedation effects, i.e. paralysis, inability to use items, etc.
 #define CE_ENERGETIC     "energetic"    // Speeds up stamina recovery.
 #define	CE_VOICELOSS     "whispers"     // Lowers the subject's voice to a whisper

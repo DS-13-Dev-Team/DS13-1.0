@@ -63,7 +63,7 @@ Basics, the most important.
 
 /datum/config_entry/flag/allow_admin_jump   //allows admin jumping
 
-/datum/config_entry/flag/allow_admin_spawning   //allows admin item spawning
+/datum/config_entry/flag/disable_admin_spawn   //allows admin item spawning
 
 /datum/config_entry/flag/allow_admin_rev    //allows admin revives
 

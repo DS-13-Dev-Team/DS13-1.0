@@ -269,6 +269,12 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	send_asset_list(client, uncommon, FALSE)
 	send_asset_list(client, common, TRUE)
 
+/datum/asset/simple/jquery
+	verify = TRUE
+	assets = list(
+		"jquery.min.js" = 'html/jquery.min.js',
+	)
+
 /*
 	Asset cache
 */

@@ -5,6 +5,10 @@
 	return TRUE
 
 
+/obj/can_telegrip(var/obj/item/rig_module/kinesis/gripper)
+	if(buckled_mob)
+		return FALSE
+	return TRUE
 
 /mob/living/can_telegrip(var/obj/item/rig_module/kinesis/gripper)
 	if (!gripper.can_grip_live() && stat != DEAD)
