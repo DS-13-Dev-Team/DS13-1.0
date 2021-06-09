@@ -717,5 +717,5 @@ var/const/NO_EMAG_ACT = -50
 	access = list(access_bridge, access_security, access_armory, access_service, access_cargo,
 				access_mining, access_engineering, access_external_airlocks,
 				access_medical, access_research, access_chemistry,
-				access_surgery, access_maint_tunnels, access_keycard_auth, access_kellion)
+				access_surgery, access_ktechnician, access_maint_tunnels, access_keycard_auth, access_kellion)
 
