@@ -706,6 +706,8 @@
 
 	if(use_power_cost)
 		if (!consume_power(use_power_cost*timespent))
+			if (switched_on)
+				turn_off()
 			user << SPAN_WARNING("[src] battery is dead or missing.")
 			return FALSE
 
