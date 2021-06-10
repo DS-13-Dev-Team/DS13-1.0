@@ -29,7 +29,8 @@
 	desc = "A ceramic helmet with a thin, tempered glass, face shield in the middle. A common design look for different security force helmets throughout the galaxy."
 	icon_state = "pcsi_helmet"
 	armor = list(melee = 55, bullet = 60, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)
-	flags_inv = HIDEEARS
+	flags_inv = HIDEEARS|BLOCKHEADHAIR
+	body_parts_covered = HEAD|FACE|EYES
 	cold_protection = HEAD
 	siemens_coefficient = 0.5
 
