@@ -14,7 +14,8 @@
 		/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
 		/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
 		/obj/item/ammo_magazine/pulse = 2,
-		/obj/item/ammo_magazine/shotgun = 2
+		/obj/item/ammo_magazine/shotgun = 2,
+		/obj/item/weapon/rig/security/pcsi
 	)
 
 /obj/structure/closet/secure_closet/guncabinet/sec_support
