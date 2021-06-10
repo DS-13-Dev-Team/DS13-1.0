@@ -31,3 +31,11 @@
 #define S_SOUTHWEST	"10"
 #define S_UP	"16"
 #define S_DOWN "32"
+
+#define run_delay 2
+#define walk_delay 3.5
+#define stalk_delay 6
+#define minimum_sprint_cost 0.8
+#define skill_sprint_cost_range 0.8
+#define minimum_stamina_recovery 4
+#define maximum_stamina_recovery 6

@@ -125,6 +125,9 @@
 	if(step_count % step_interval)
 		return
 
+	if(istype(move_intent, /decl/move_intent/stalk)) //We don't make sounds if we're tiptoeing
+		return
+
 	//Nanako's Priority based footstep system.
 	//All structures, floors, and species have a step priority var.
 	//When determining which one gets to choose the footstep sound, highest value wins.

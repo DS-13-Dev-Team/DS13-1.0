@@ -1,3 +1,6 @@
+/mob/living/carbon/human
+	move_intents = list(/decl/move_intent/walk)
+
 /mob/living/carbon/human/movement_delay()
 	var/tally = ..()
 
@@ -6,7 +9,8 @@
 
 	tally += species.handle_movement_delay_special(src)
 
-	if (istype(loc, /turf/space)) // It's hard to be slowed down in space by... anything
+	var/area/a = get_area(src)
+	if(a && !a.has_gravity())
 		if(skill_check(SKILL_EVA, SKILL_PROF))
 			return -2
 		return -1
@@ -62,7 +66,8 @@
 			else if(E.status & ORGAN_BROKEN)
 				tally += 1.5
 
-	if(shock_stage >= 10) tally += 3
+	if(shock_stage >= 10 || get_stamina() <= 0)
+		tally += 3
 
 	if(is_asystole()) tally += 10  //heart attacks are kinda distracting
 
@@ -162,12 +167,6 @@
 			if(2)
 				visible_message("<span class='notice'>\The [src] looks out of breath!</span>", "<span class='notice'>You are out of breath!</span>")
 
-/mob/living/carbon/human/set_move_intent(var/decl/move_intent/M)
-	. = ..()
-	if(.)
-		step_interval = M.footstep_interval
-
-
 //Returns what percentage of the limbs we use for movement, are still attached
 /mob/living/carbon/human/proc/get_locomotive_limb_percent()
 
@@ -178,3 +177,6 @@
 		return current / max
 
 	return 1
+
+/mob/living/carbon/human/can_sprint()
+	return (stamina > 0)

@@ -8,7 +8,20 @@
 	var/flags = 0
 	var/move_delay = 1
 	var/hud_icon_state
-	var/footstep_interval = 1
+
+/decl/move_intent/proc/can_be_used_by(var/mob/user)
+	if(flags & MOVE_INTENT_QUICK)
+		return user.can_sprint()
+	return TRUE
+
+/decl/move_intent/stalk
+	name = "Stalk"
+	flags = MOVE_INTENT_DELIBERATE
+	hud_icon_state = "stalking"
+
+/decl/move_intent/stalk/Initialize()
+	. = ..()
+	move_delay = stalk_delay
 
 /decl/move_intent/walk
 	name = "Walk"
@@ -17,15 +30,13 @@
 
 /decl/move_intent/walk/Initialize()
 	. = ..()
-	move_delay = CONFIG_GET(number/walk_speed) + 7
-
+	move_delay = walk_delay
 
 /decl/move_intent/run
 	name = "Run"
 	flags = MOVE_INTENT_EXERTIVE | MOVE_INTENT_QUICK
 	hud_icon_state = "running"
-	footstep_interval = 2
 
 /decl/move_intent/run/Initialize()
 	. = ..()
-	move_delay = CONFIG_GET(number/run_speed) + 1
+	move_delay = run_delay
