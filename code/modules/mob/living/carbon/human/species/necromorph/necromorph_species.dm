@@ -42,6 +42,9 @@
 	darksight_range = -1
 	darksight_tint = DARKTINT_MODERATE
 
+	// Move intents
+	move_intents = list(/decl/move_intent/walk, /decl/move_intent/stalk)
+
 	//Sprites
 	damage_overlays = null
 	damage_mask = null
