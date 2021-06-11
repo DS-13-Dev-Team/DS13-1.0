@@ -142,7 +142,7 @@
 /atom/movable/proc/begin_falling(lastloc, below)
 	addtimer(CALLBACK(src, /atom/movable/proc/fall_callback, below), 0)
 
-/atom/movable/proc/fall_callback(var/turf/below)
+/atom/movable/proc/fall_callback(turf/below)
 	var/mob/M = src
 	var/is_client_moving = (ismob(M) && M.moving)
 	if(is_client_moving)

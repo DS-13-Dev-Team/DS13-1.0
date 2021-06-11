@@ -15,12 +15,6 @@
 
 	z_eventually_space = TRUE
 
-	/*
-		This is a temporary hack, it should eventually be replaced by porting the bay z-mimic system
-		This var tells us what zlevel below us contains
-	*/
-	var/first_solid_z_below
-
 /turf/space/proc/build_dust_cache()
 	LAZYINITLIST(dust_cache)
 	for (var/i in 0 to 25)
@@ -49,9 +43,6 @@
 
 	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
 		return
-
-	//We found a solid thing below us
-	first_solid_z_below = z-1
 
 	return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
 
