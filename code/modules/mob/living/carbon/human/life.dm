@@ -87,9 +87,6 @@
 	//Update our name based on whether our face is obscured/disfigured
 	SetName(get_visible_name())
 
-/mob/living/carbon/human/get_stamina()
-	return stamina
-
 /mob/living/carbon/human/adjust_stamina(var/amt)
 	var/last_stamina = stamina
 	if(stat == DEAD)
