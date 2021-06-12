@@ -668,7 +668,7 @@
 		else
 			mod *= 0.8
 
-	return minimum_sprint_cost + (skill_sprint_cost_range * mod)
+	return MINIMUM_STAMINA_RECOVERY + (SKILL_SPRINT_COST_RANGE * mod)
 
 /datum/movement_handler/mob/movement/proc/HandleGrabs(var/direction, var/old_turf)
 	. = 0

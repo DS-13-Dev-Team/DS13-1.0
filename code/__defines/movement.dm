@@ -32,10 +32,10 @@
 #define S_UP	"16"
 #define S_DOWN "32"
 
-#define run_delay 2
-#define walk_delay 3.5
-#define stalk_delay 6
-#define minimum_sprint_cost 0.8
-#define skill_sprint_cost_range 0.8
-#define minimum_stamina_recovery 4
-#define maximum_stamina_recovery 6
+#define RUN_DELAY 2
+#define WALK_DELAY 3.5
+#define STALK_DELAY 6
+#define MINIMUM_SPRINT_COST 0.8
+#define SKILL_SPRINT_COST_RANGE 0.8
+#define MINIMUM_STAMINA_RECOVERY 4
+#define MAXIMUM_STAMINA_RECOVERY 6

@@ -21,7 +21,7 @@
 
 /decl/move_intent/stalk/Initialize()
 	. = ..()
-	move_delay = stalk_delay
+	move_delay = STALK_DELAY
 
 /decl/move_intent/walk
 	name = "Walk"
@@ -30,7 +30,7 @@
 
 /decl/move_intent/walk/Initialize()
 	. = ..()
-	move_delay = walk_delay
+	move_delay = WALK_DELAY
 
 /decl/move_intent/run
 	name = "Run"
@@ -39,4 +39,4 @@
 
 /decl/move_intent/run/Initialize()
 	. = ..()
-	move_delay = run_delay
+	move_delay = RUN_DELAY

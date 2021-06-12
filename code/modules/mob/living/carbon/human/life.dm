@@ -106,7 +106,7 @@
 /mob/living/carbon/human/proc/handle_stamina()
 	if((world.time - last_quick_move_time) > 5 SECONDS)
 		var/mod = (lying + (nutrition / initial(nutrition))) / 2
-		adjust_stamina(max(minimum_stamina_recovery, maximum_stamina_recovery * mod) * (1+chem_effects[CE_ENERGETIC]))
+		adjust_stamina(max(MINIMUM_STAMINA_RECOVERY, MAXIMUM_STAMINA_RECOVERY * mod) * (1+chem_effects[CE_ENERGETIC]))
 
 /mob/living/carbon/human/set_stat(var/new_stat)
 	. = ..()
