@@ -52,6 +52,9 @@ GLOBAL_VAR_INIT(distress_cooldown, FALSE)
 /datum/emergency_call/proc/reset()
 	members.Cut()
 	candidates.Cut()
+	if(cooldown_timer)
+		deltimer(cooldown_timer)
+		cooldown_timer = null
 	GLOB.waiting_for_candidates = FALSE
 	message_admins("Distress beacon: [name] has been reset.")
 
