@@ -2,6 +2,7 @@
 #define MOVE_INTENT_DELIBERATE 0x0001
 #define MOVE_INTENT_EXERTIVE   0x0002
 #define MOVE_INTENT_QUICK      0x0004
+#define MOVE_INTENT_SILENT	   0x0008
 
 /decl/move_intent
 	var/name
@@ -16,7 +17,7 @@
 
 /decl/move_intent/stalk
 	name = "Stalk"
-	flags = MOVE_INTENT_DELIBERATE
+	flags = MOVE_INTENT_DELIBERATE | MOVE_INTENT_SILENT
 	hud_icon_state = "stalking"
 
 /decl/move_intent/stalk/Initialize()

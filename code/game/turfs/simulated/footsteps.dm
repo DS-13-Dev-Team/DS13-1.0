@@ -125,7 +125,7 @@
 	if(step_count % step_interval)
 		return
 
-	if(istype(move_intent, /decl/move_intent/stalk)) //We don't make sounds if we're tiptoeing
+	if(move_intent.flags & MOVE_INTENT_SILENT)
 		return
 
 	//Nanako's Priority based footstep system.
