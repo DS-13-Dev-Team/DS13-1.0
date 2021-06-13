@@ -15,6 +15,18 @@
 		return user.can_sprint()
 	return TRUE
 
+/decl/move_intent/stalk/can_be_used_by(var/mob/user)
+	if(user.incapacitated(INCAPACITATION_ALL))
+		return FALSE
+	else
+		return TRUE
+
+/decl/move_intent/run/can_be_used_by(var/mob/user)
+	if(user.incapacitated(INCAPACITATION_ALL))
+		return FALSE
+	else
+		return user.can_sprint()
+
 /decl/move_intent/stalk
 	name = "Stalk"
 	flags = MOVE_INTENT_DELIBERATE | MOVE_INTENT_SILENT

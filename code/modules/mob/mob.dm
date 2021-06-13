@@ -682,6 +682,7 @@
 	else if(buckled)
 		anchored = 1
 		if(istype(buckled))
+			set_moving_slowly()
 			if(buckled.buckle_lying == -1)
 				lying = incapacitated(INCAPACITATION_KNOCKDOWN)
 			else
@@ -692,6 +693,7 @@
 		lying = incapacitated(INCAPACITATION_KNOCKDOWN)
 
 	if(lying)
+		set_moving_slowly()
 		set_density(density_lying())
 		if (incapacitated(INCAPACITATION_KNOCKOUT))
 			if(l_hand) unEquip(l_hand)
