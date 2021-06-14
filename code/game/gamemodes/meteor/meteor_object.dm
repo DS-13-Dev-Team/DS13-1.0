@@ -84,14 +84,14 @@ GLOBAL_LIST_EMPTY(asteroids)
 	//That includes empty space with potential non empty space below
 	var/impacting = FALSE
 	if (istype(next_loc))
-		if (istype(next_loc, /turf/space))
+		if (next_loc.z_eventually_space)
 			var/turf/space/S = next_loc
 
 			//Easy optimisation to see if this is empty space
-			if (GetBelow(S))
+			if (S.solid_below)
 				//Lets see if there's anything to hit at our target zlevel
 				var/turf/target = locate(next_loc.x, next_loc.y, z_target)
-				if (target && !target.is_hole)
+				if (!target?.is_hole)
 					impacting = TRUE
 
 				//If not we'll keep going as normal

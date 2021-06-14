@@ -28,7 +28,7 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 	return z_levels[z-1]
 
 // Thankfully, no bitwise magic is needed here.
-/proc/GetAbove(var/atom/atom)
+/proc/GetAbove(atom/atom)
 	var/turf/turf = get_turf(atom)
 	if(!turf)
 		return null
@@ -39,6 +39,17 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 	if(!turf)
 		return null
 	return HasBelow(turf.z) ? get_step(turf, DOWN) : null
+
+/proc/GetSolidBelow(atom/atom)
+	var/turf/turf = get_turf(atom)
+	if(!turf)
+		return null
+	if(isfloor(turf))
+		return turf
+	if(!turf_clear(turf))
+		return turf
+
+	return HasBelow(turf.z) ? GetSolidBelow(get_step(turf, DOWN)) : null
 
 /proc/GetConnectedZlevels(z)
 	. = list(z)

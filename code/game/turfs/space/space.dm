@@ -15,6 +15,8 @@
 
 	z_eventually_space = TRUE
 
+	var/solid_below
+
 /turf/space/proc/build_dust_cache()
 	LAZYINITLIST(dust_cache)
 	for (var/i in 0 to 25)
@@ -40,6 +42,8 @@
 	if(istype(below, /turf/space))
 		return
 	var/area/A = below.loc
+
+	solid_below = GetSolidBelow(src)
 
 	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
 		return
