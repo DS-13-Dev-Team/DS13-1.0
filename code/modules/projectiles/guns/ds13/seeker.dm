@@ -102,29 +102,3 @@
 	view_range = -1
 	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.85,
 	STATMOD_RANGED_ACCURACY = 60)
-
-
-
-
-/*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/security/seeker_ammo
-	name = "Ammunition - Seeker Shells"
-	contains = list(/obj/item/ammo_magazine/seeker = 8)
-	cost = 80
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "\improper seeker shells crate"
-	access = access_security
-	security_level = SUPPLY_SECURITY_ELEVATED
-
-
-/decl/hierarchy/supply_pack/security/seeker_rifle
-	name = "Weapon - Seeker Rifle"
-	contains = list(/obj/item/ammo_magazine/seeker = 4,
-	/obj/item/weapon/gun/projectile/seeker/empty = 1)
-	cost = 80
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "\improper seeker rifle crate"
-	access = access_security
-	security_level = SUPPLY_SECURITY_ELEVATED

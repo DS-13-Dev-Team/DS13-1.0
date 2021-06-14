@@ -312,24 +312,3 @@
 			new /obj/effect/effect/expanding_circle(location, 0.25, 1. SECONDS)
 			sleep(rand_between(2,4))
 		qdel(src)
-
-
-
-/*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/mining/contact_energy
-	name = "Power - Contact Energy"
-	contains = list(/obj/item/weapon/cell/contact = 4)
-	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "\improper contact energy crate"
-
-
-/decl/hierarchy/supply_pack/mining/contact_beam
-	name = "Mining Tool - C99 Supercollider Contact Beam"
-	contains = list(/obj/item/weapon/cell/contact = 2,
-	/obj/item/weapon/gun/energy/contact/empty = 1)
-	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "\improper contact beam crate"

@@ -190,25 +190,3 @@
 	if(overlay_state)
 		overlays += image('icons/obj/ammo.dmi', overlay_state)
 
-
-
-
-
-/*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/mining/force_energy
-	name = "Power - Force Energy"
-	contains = list(/obj/item/weapon/cell/force = 4)
-	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "\improper force energy crate"
-
-
-/decl/hierarchy/supply_pack/mining/force_gun
-	name = "Mining Tool - Graviton Accelerator"
-	contains = list(/obj/item/weapon/cell/force = 2,
-	/obj/item/weapon/gun/energy/forcegun/empty = 1)
-	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "\improper Graviton Accelerator crate"

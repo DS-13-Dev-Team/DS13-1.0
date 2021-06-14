@@ -4,8 +4,7 @@
 	l_ear = /obj/item/device/radio/headset/headset_sec
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud
 	belt = /obj/item/weapon/storage/belt/holster/security
-	gloves = /obj/item/clothing/gloves/combat
-	shoes = /obj/item/clothing/shoes/ds_securityboots
+	shoes = /obj/item/clothing/shoes/pcsi
 	backpack_contents = list(/obj/item/weapon/handcuffs = 1)
 
 /decl/hierarchy/outfit/job/security/New()

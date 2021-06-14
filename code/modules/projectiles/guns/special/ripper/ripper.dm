@@ -64,27 +64,3 @@
 
 	tether_type = /obj/effect/projectile/tether/gravity
 	max_range	=	112	//3.5 tiles
-
-
-
-
-
-
-/*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/mining/ripper_blades
-	name = "Sawblades"
-	contains = list(/obj/item/ammo_magazine/sawblades = 6)
-	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "\improper sawblade crate"
-
-
-/decl/hierarchy/supply_pack/mining/ripper
-	name = "Mining Tool - RC-DS Disc Ripper"
-	contains = list(/obj/item/ammo_magazine/sawblades = 3,
-	/obj/item/weapon/gun/projectile/ripper = 1)
-	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "\improper Disc Ripper crate"

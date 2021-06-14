@@ -20,21 +20,21 @@
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 45, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
 
-/obj/item/clothing/suit/armor/vest/ds_armor
-	name = "security officer's armor"
-	desc = "An armored vest that protects against some damage."
-	icon_state = "ds_securityarmor"
-	//item_state = "armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	cold_protection = UPPER_TORSO|LOWER_TORSO
-	heat_protection = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 45, bullet = 40, laser = 50, energy = 0, bomb = 25, bio = 0, rad = 0)
+/obj/item/clothing/suit/armor/vest/pcsi
+	name = "P.C.S.I officer's vest"
+	desc = "The Concordance Extraction Corporation's standard issue security armor, used on its larger vessels and colonial interests, outfitted with protective polymer plating and a lightweight kevlar web beneath those plates. Deployed in high-risk situations where CEC property and personnel are at risk, usually from piracy or looters."
+	icon_state = "pcsi_armor"
+	item_state = "pcsi_armor"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	armor = list(melee = 55, bullet = 60, laser = 0, energy = 0, bomb = 25, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/vest/ds_jacket
 	name = "armored security jacket"
 	desc = "An armored jacket often worn by the Chief Security Officer that combines style and protection."
 	icon_state = "ds_securityjacket"
-	//item_state = "armor"
+	item_state = "ds_securityjacket"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -173,7 +173,7 @@
 	name = "C.E.C. armored vest"
 	desc = "A set of armor issued to security teams assigned to guarding C.E.C. maintenance teams."
 	icon_state = "kellion_grunt"
-	item_state = "armor"
+	item_state = "kellion_grunt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor = list(melee = 55, bullet = 60, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)
 

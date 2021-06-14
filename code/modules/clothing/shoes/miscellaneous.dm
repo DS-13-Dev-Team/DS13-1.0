@@ -150,7 +150,7 @@
 	item_flags = ITEM_FLAG_SILENT
 	description_fluff =  "Originally designed to confuse Terran troops on the swamp moon of Nabier XI, where they were proven somewhat effective. Not bad on a space vessel, either."
 
-/obj/item/clothing/shoes/ds_securityboots
+/obj/item/clothing/shoes/pcsi
 	name = "combat boots"
 	desc = "A pair of standard, CEC issue, combat boots. Stomping on secession since the Mars Riots."
 	icon_state = "duty"

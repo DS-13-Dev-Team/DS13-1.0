@@ -504,9 +504,11 @@
 
 
 
-/datum/mind/proc/get_antag_weight(var/category)
+/datum/mind/proc/get_antag_weight(var/category, var/antag_id)
 	//We start with a base of 1, and add bonuses based on equipment
 	. = 1
+
+
 
 	/*
 		If we're a nonliving mob, then we're either joining at roundstart, or being picked from ghosts
@@ -526,6 +528,12 @@
 			. += I.get_antag_weight(category)
 
 
+	//Selecting high weight in the role screen will make you more likely to be that antag
+	var/client/C = src.get_client()
+	if (C && C.prefs)
+		var/weight = C.prefs.be_special_role[antag_id]
+		if (isnum(weight) && weight > 0)
+			.*= weight
 
 
 
@@ -550,6 +558,13 @@
 //Return a positive or negative number to add that percentage to antag weighting for the chosen category
 /obj/item/proc/get_antag_weight(var/category)
 	return 0
+
+//Attempts to find a client associated with this mind, based on its current mob(s)
+/datum/mind/get_client()
+	if (ghost && ghost.client)
+		return ghost.client
+	else if (current && current.client)
+		return current.client
 
 
 //Initialisation procs

@@ -368,3 +368,143 @@
 	name = "slashed plating"
 	icon_state = "slashed_odd"
 	initial_flooring = /decl/flooring/complex/tiling_ds/slashed/odd
+
+// FLOOR UPDATE 2 : ELECTRIC BOOGALLOO
+/turf/simulated/floor/dank/tech
+	name = "tech plating"
+	icon_state = "tech"
+	initial_flooring = /decl/flooring/complex/tiling_ds/tech
+
+/turf/simulated/floor/dank/hardwood
+	name = "hardwood"
+	icon_state = "hardwood"
+	initial_flooring = /decl/flooring/complex/tiling_ds/hardwood
+
+/turf/simulated/floor/dank/hardwood/alt
+	icon_state = "hardwood_alt"
+	initial_flooring = /decl/flooring/complex/tiling_ds/hardwood/alt
+
+/turf/simulated/floor/dank/golf_gray
+	name = "golf gray"
+	icon_state = "golf_gray"
+	initial_flooring = /decl/flooring/complex/tiling_ds/golf_gray
+
+/turf/simulated/floor/dank/golf_brown
+	name = "golf brown"
+	icon_state = "golf_brown"
+	initial_flooring = /decl/flooring/complex/tiling_ds/golf_brown
+
+/turf/simulated/floor/dank/maint_left
+	name = "maint left"
+	icon_state = "maint_left"
+	initial_flooring = /decl/flooring/complex/tiling_ds/maint/left
+
+/turf/simulated/floor/dank/maint
+	name = "maint central"
+	icon_state = "maint_center"
+	initial_flooring = /decl/flooring/complex/tiling_ds/maint
+
+/turf/simulated/floor/dank/maint_right
+	name = "maint right"
+	icon_state = "maint_right"
+	initial_flooring = /decl/flooring/complex/tiling_ds/maint/right
+
+/turf/simulated/floor/dank/ornate1
+	name = "ornate 1"
+	icon_state = "1_ornate"
+	initial_flooring = /decl/flooring/complex/tiling_ds/ornate1
+
+/turf/simulated/floor/dank/ornate2
+	name = "ornate 2"
+	icon_state = "2_ornate"
+	initial_flooring = /decl/flooring/complex/tiling_ds/ornate2
+
+/turf/simulated/floor/dank/ornate3
+	name = "ornate 3"
+	icon_state = "3_ornate"
+	initial_flooring = /decl/flooring/complex/tiling_ds/ornate3
+
+/turf/simulated/floor/dank/ornate4
+	name = "ornate 4"
+	icon_state = "4_ornate"
+	initial_flooring = /decl/flooring/complex/tiling_ds/ornate4
+
+/turf/simulated/floor/dank/ornate5
+	name = "ornate 5"
+	icon_state = "5_ornate"
+	initial_flooring = /decl/flooring/complex/tiling_ds/ornate5
+
+/turf/simulated/floor/dank/ornate6
+	name = "ornate 6"
+	icon_state = "6_ornate"
+	initial_flooring = /decl/flooring/complex/tiling_ds/ornate6
+
+/turf/simulated/floor/dank/ornate7
+	name = "ornate 7"
+	icon_state = "7_ornate"
+	initial_flooring = /decl/flooring/complex/tiling_ds/ornate7
+
+/turf/simulated/floor/dank/ornate8
+	name = "ornate 8"
+	icon_state = "8_ornate"
+	initial_flooring = /decl/flooring/complex/tiling_ds/ornate8
+
+/turf/simulated/floor/dank/rectangles
+	name = "rectangles"
+	icon_state = "rectangles"
+	initial_flooring = /decl/flooring/complex/tiling_ds/rectangles
+
+/turf/simulated/floor/dank/slides
+	name = "slides"
+	icon_state = "slides"
+	initial_flooring = /decl/flooring/complex/tiling_ds/slides
+
+/turf/simulated/floor/dank/slides_end
+	name = "slides_end"
+	icon_state = "slides_end"
+	initial_flooring = /decl/flooring/complex/tiling_ds/slides/end
+
+/turf/simulated/floor/dank/grate
+	name = "grate"
+	icon_state = "grate"
+	initial_flooring = /decl/flooring/complex/tiling_ds/grate
+
+/turf/simulated/floor/dank/grater
+	name = "grater"
+	icon_state = "grater"
+	initial_flooring = /decl/flooring/complex/tiling_ds/grater
+
+/turf/simulated/floor/dank/cable
+	name = "cable"
+	icon_state = "cable"
+	initial_flooring = /decl/flooring/complex/tiling_ds/cable
+
+/turf/simulated/floor/dank/cable/start
+	name = "cable_start"
+	icon_state = "cable_start"
+	initial_flooring = /decl/flooring/complex/tiling_ds/cable/start
+
+/turf/simulated/floor/dank/cable/end
+	name = "cable_end"
+	icon_state = "cable_end"
+	initial_flooring = /decl/flooring/complex/tiling_ds/cable/end
+
+/turf/simulated/floor/dank/grille_spare_1
+	name = "grille-spare1"
+	icon_state = "grille-spare1"
+	initial_flooring = /decl/flooring/complex/tiling_ds/grille_spare1
+
+/turf/simulated/floor/dank/grille_spare_4
+	name = "grille-spare4"
+	icon_state = "grille-spare4"
+	initial_flooring = /decl/flooring/complex/tiling_ds/grille_spare4
+
+/turf/simulated/floor/dank/grille_spare_3
+	name = "grille-spare3"
+	icon_state = "grille-spare3"
+	initial_flooring = /decl/flooring/complex/tiling_ds/grille_spare3
+
+/turf/simulated/floor/dank/grille_spare_2
+	name = "grille-spare2"
+	icon_state = "grille-spare2"
+	initial_flooring = /decl/flooring/complex/tiling_ds/grille_spare2

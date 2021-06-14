@@ -24434,7 +24434,7 @@
 /turf/simulated/shuttle/wall{
 	icon_state = "wall3"
 	},
-/area/shuttle/escape_pod9)
+/area/shuttle/escape_pod9/station)
 "aUG" = (
 /obj/structure/sign/warning/pods/east{
 	dir = 4;
@@ -24733,7 +24733,7 @@
 	req_access = list(15)
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/escape_pod9)
+/area/shuttle/escape_pod9/station)
 "aVj" = (
 /obj/machinery/door/blast/shutters/open{
 	dir = 4;
@@ -25350,7 +25350,7 @@
 /turf/simulated/shuttle/wall{
 	icon_state = "wall3"
 	},
-/area/shuttle/escape_pod9)
+/area/shuttle/escape_pod9/station)
 "aWo" = (
 /obj/structure/bed/chair/shuttle,
 /obj/item/device/radio/intercom{
@@ -25366,7 +25366,7 @@
 	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod9,
 /turf/simulated/floor/plating,
-/area/shuttle/escape_pod9)
+/area/shuttle/escape_pod9/station)
 "aWp" = (
 /obj/structure/table/standard,
 /obj/item/weapon/flame/lighter/zippo,
@@ -25396,14 +25396,14 @@
 	},
 /obj/structure/closet/walllocker/emerglocker/west,
 /turf/simulated/floor/plating,
-/area/shuttle/escape_pod9)
+/area/shuttle/escape_pod9/station)
 "aWs" = (
 /turf/simulated/shuttle/wall/corner/dark/sw,
-/area/shuttle/escape_pod9)
+/area/shuttle/escape_pod9/station)
 "aWt" = (
 /obj/effect/wallframe_spawn/reinforced/shuttle,
 /turf/simulated/floor/airless,
-/area/shuttle/escape_pod9)
+/area/shuttle/escape_pod9/station)
 "aWu" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1;
@@ -25421,7 +25421,7 @@
 /area/ishimura/lower/crew/messhall/executive)
 "aWv" = (
 /turf/simulated/shuttle/wall/corner/dark/se,
-/area/shuttle/escape_pod9)
+/area/shuttle/escape_pod9/station)
 "aWw" = (
 /obj/random/closet,
 /obj/random/maintenance,

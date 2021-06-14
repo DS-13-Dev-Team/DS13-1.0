@@ -26,6 +26,10 @@
 
 
 #define CORRUPTION_SPREAD_RANGE	12	//How far from the source corruption spreads
+#define CORRUPTION_FIRE_DAMAGE_FACTOR	3	//Damage dealt to corruption from high heat is multiplied by this value
+#define CORRUPTION_SCORCH_DURATION	(5 MINUTES)	//Corruption hit by fire cannot regrow in that tile for this quantity of time
+
+
 #define MAW_EAT_RANGE	2	//Nom distance of a maw node
 
 

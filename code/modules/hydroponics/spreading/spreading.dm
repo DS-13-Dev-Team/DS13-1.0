@@ -59,6 +59,7 @@
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 	var/list/neighbors
 	var/can_cut = TRUE
+	layer = PLANT_LAYER
 
 /obj/effect/vine/single
 	spread_chance = 0

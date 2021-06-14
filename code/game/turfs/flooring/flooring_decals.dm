@@ -732,6 +732,52 @@ var/list/floor_decals = list()
 	name = "plastic slab extra large"
 	icon_state = "plastic_slab_xl"
 
+// FLOOR UPDATE 2 : ELECTRIC BOOGALOO
+
+/obj/effect/floor_decal/dank/tech_nub
+	name = "tech nub"
+	icon_state = "tech_nub"
+
+/obj/effect/floor_decal/dank/tech_chip
+	name = "tech chip"
+	icon_state = "tech_chip"
+
+/obj/effect/floor_decal/dank/tech_duo
+	name = "tech duo"
+	icon_state = "tech_duo"
+
+/obj/effect/floor_decal/dank/grate
+	name = "grate"
+	icon_state = "grate"
+
+/obj/effect/floor_decal/dank/frame_small
+	name = "small frame"
+	icon_state = "frame"
+
+/obj/effect/floor_decal/dank/frame_tiled_small
+	name = "small frame with tiles"
+	icon_state = "frame_tiles"
+
+/obj/effect/floor_decal/dank/frame_medium
+	name = "medium frame"
+	icon_state = "frame"
+	icon = 'icons/turf/marks_48x48_ds13.dmi'
+
+/obj/effect/floor_decal/dank/frame_tiled_medium
+	name = "medium frame with tiles"
+	icon_state = "frame_tiles"
+	icon = 'icons/turf/marks_48x48_ds13.dmi'
+
+/obj/effect/floor_decal/dank/frame_large
+	name = "large frame"
+	icon_state = "frame"
+	icon = 'icons/turf/marks_96x96_ds13.dmi'
+
+/obj/effect/floor_decal/dank/frame_tiled_large
+	name = "large frame with tiles"
+	icon_state = "frame_tiles"
+	icon = 'icons/turf/marks_96x96_ds13.dmi'
+
 //Corners
 /obj/effect/floor_decal/corner
 	icon_state = "corner_white"
