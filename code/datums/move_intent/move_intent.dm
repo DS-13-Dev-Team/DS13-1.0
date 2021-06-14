@@ -9,6 +9,7 @@
 	var/flags = 0
 	var/move_delay = 1
 	var/hud_icon_state
+	var/step_value = 1
 
 /decl/move_intent/proc/can_be_used_by(var/mob/user)
 	if(flags & MOVE_INTENT_QUICK)
@@ -31,10 +32,9 @@
 	name = "Stalk"
 	flags = MOVE_INTENT_DELIBERATE | MOVE_INTENT_SILENT
 	hud_icon_state = "stalking"
-
-/decl/move_intent/stalk/Initialize()
-	. = ..()
+	step_value = 0
 	move_delay = STALK_DELAY
+
 
 /decl/move_intent/walk
 	name = "Walk"
@@ -49,7 +49,5 @@
 	name = "Run"
 	flags = MOVE_INTENT_EXERTIVE | MOVE_INTENT_QUICK
 	hud_icon_state = "running"
-
-/decl/move_intent/run/Initialize()
-	. = ..()
+	step_value = 2
 	move_delay = RUN_DELAY

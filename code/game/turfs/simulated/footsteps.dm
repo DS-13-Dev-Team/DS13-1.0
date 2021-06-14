@@ -95,8 +95,9 @@
 /turf/simulated/floor/Entered(var/mob/living/carbon/human/H)
 	..()
 	if(istype(H))
+		H.step_count += H.move_intent?.step_value
 		H.handle_footsteps()
-		H.step_count++
+
 
 /datum/species/var/silent_steps
 /datum/species/nabber/silent_steps = 1
@@ -122,8 +123,9 @@
 	if(shoes && (shoes.item_flags & ITEM_FLAG_SILENT))
 		return // quiet shoes
 
-	if(step_count % step_interval)
+	if(step_count < step_interval)
 		return
+	step_count = 0
 
 	if(move_intent.flags & MOVE_INTENT_SILENT)
 		return

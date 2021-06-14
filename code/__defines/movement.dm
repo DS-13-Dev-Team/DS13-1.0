@@ -34,8 +34,8 @@
 #define S_DOWN "32"
 
 #define RUN_DELAY 2
-#define WALK_DELAY 3.5
-#define STALK_DELAY 6
+#define WALK_DELAY 3.75
+#define STALK_DELAY 7
 #define MINIMUM_SPRINT_COST 0.8
 #define SKILL_SPRINT_COST_RANGE 0.8
 #define MINIMUM_STAMINA_RECOVERY 2
