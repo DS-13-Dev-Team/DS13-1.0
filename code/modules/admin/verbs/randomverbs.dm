@@ -475,7 +475,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!istype(M))
 		alert("Cannot revive a ghost")
 		return
-	if(CONFIG_GET(flag/allow_admin_rev))
+	if(!CONFIG_GET(flag/disable_admin_rev))
 		M.revive()
 
 		log_and_message_admins("healed / revived [key_name_admin(M)]!")
