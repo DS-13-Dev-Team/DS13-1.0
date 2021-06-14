@@ -49,8 +49,7 @@
 
 
 
-#define SS_INIT_GARBAGE          9
-#define SS_INIT_MATERIALS        8
+#define SS_INIT_GARBAGE          8
 #define SS_INIT_ANTAGS           7
 #define SS_INIT_PLANTS           7
 #define SS_INIT_SKYBOX           6
