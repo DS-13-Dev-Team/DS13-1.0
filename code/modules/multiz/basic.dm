@@ -44,7 +44,7 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 	var/turf/turf = get_turf(atom)
 	if(!turf)
 		return null
-	if(isfloor(turf))
+	if(!turf.is_hole)
 		return turf
 	if(!turf_clear(turf))
 		return turf
