@@ -4,6 +4,7 @@
 
 #define MOVING_DELIBERATELY(X) (X.move_intent.flags & MOVE_INTENT_DELIBERATE)
 #define MOVING_QUICKLY(X) (X.move_intent.flags & MOVE_INTENT_QUICK)
+#define MOVING_SILENT(X) (X.move_intent.flags & MOVE_INTENT_SILENT)
 
 //Takes a speed in metres per second, and outputs delay in deciseconds between each step to achieve that
 #define SPEED_TO_DELAY(speed) (10/speed)
@@ -31,3 +32,11 @@
 #define S_SOUTHWEST	"10"
 #define S_UP	"16"
 #define S_DOWN "32"
+
+#define RUN_DELAY 2
+#define WALK_DELAY 3.75
+#define STALK_DELAY 7
+#define MINIMUM_SPRINT_COST 0.8
+#define SKILL_SPRINT_COST_RANGE 0.8
+#define MINIMUM_STAMINA_RECOVERY 2
+#define MAXIMUM_STAMINA_RECOVERY 6
