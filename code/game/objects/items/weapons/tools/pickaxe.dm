@@ -98,6 +98,7 @@
 	max_modifications = 4
 	use_power_cost = 0.3
 	passive_power_cost = 0.075
+	passive_fuel_cost = 0
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
 	degradation = DEGRADATION_TOUGH_2
