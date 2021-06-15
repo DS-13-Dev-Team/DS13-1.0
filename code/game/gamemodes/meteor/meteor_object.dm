@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	//That includes empty space with potential non empty space below
 	var/impacting = FALSE
 	if (istype(next_loc))
-		if (next_loc.z_eventually_space)
+		if (istype(next_loc, /turf/space))
 			var/turf/space/S = next_loc
 
 			//Easy optimisation to see if this is empty space
