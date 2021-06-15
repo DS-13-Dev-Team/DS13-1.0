@@ -1229,7 +1229,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living")
 			return
 
-		if(CONFIG_GET(flag/allow_admin_rev))
+		if(!CONFIG_GET(flag/disable_admin_rev))
 			L.revive()
 			log_and_message_admins("healed / Rrvived [key_name(L)]")
 		else
