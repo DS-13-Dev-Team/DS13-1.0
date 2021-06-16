@@ -22,7 +22,7 @@
 	name = "Emergency RIG"
 	desc = "A cheaply made emergency rig for use by non-qualified personnel in the case of emergency decompression."
 	icon_state = "eva_suit"
-	armor = list(melee = 15, bullet = 20, laser = 20, energy = 15, bomb = 35, bio = 100, rad = 50)
+	armor = list(melee = 20, bullet = 25, laser = 25, energy = 20, bomb = 35, bio = 100, rad = 50)
 	online_slowdown = RIG_SUPER_HEAVY
 	offline_slowdown = RIG_SUPER_HEAVY
 
