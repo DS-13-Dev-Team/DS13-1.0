@@ -65,7 +65,7 @@
 	var/list/implants = list()         // Currently implanted objects.
 	var/base_miss_chance = 0          // Chance of missing.
 	var/genetic_degradation = 0
-	biomass = 2	//By default, external organs are worth 2kg of biomass. Hella inaccurate, could find more exact values
+	biomass = 1	//How much biomass worth external organs
 
 
 	//Forensics stuff
