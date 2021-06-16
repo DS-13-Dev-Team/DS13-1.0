@@ -5,7 +5,7 @@
 	icon_closed = "secureeng"
 	icon_locked = "secureeng1"
 	icon_opened = "secureengopen"
-	icon_off = "secureengwoff"
+	icon_off = "secureengoff"
 
 /obj/structure/closet/secure_closet/engineering_chief/WillContain()
 	return list(
@@ -36,8 +36,8 @@
 	icon_state = "secureengelec1"
 	icon_closed = "secureengelec"
 	icon_locked = "secureengelec1"
-	icon_opened = "secureengelecopen"
-	icon_off = "secureengwoff"
+	icon_opened = "secureengopen"
+	icon_off = "secureengelecoff"
 
 /obj/structure/closet/secure_closet/engineering_electrical/WillContain()
 	return list(
@@ -54,8 +54,8 @@
 	icon_state = "secureengweld1"
 	icon_closed = "secureengweld"
 	icon_locked = "secureengweld1"
-	icon_opened = "secureengweldopen"
-	icon_off = "secureengwoff"
+	icon_opened = "secureengopen"
+	icon_off = "secureengweldoff"
 
 /obj/structure/closet/secure_closet/engineering_welding/WillContain()
 	return list(

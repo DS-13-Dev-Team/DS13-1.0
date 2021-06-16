@@ -1,7 +1,7 @@
 /obj/item/weapon/rig/vintage
 	name = "antique CEC suit"
 	desc = "An extremely bulky, durable vintage suit that has mostly been replaced by sleeker modern designs. Some collectors still value the good old days though."
-	icon_state = "ds_vintage_rig"
+	icon_state = "vintage_rig"
 	armor = list(melee = 65, bullet = 70, laser = 70, energy = 25, bomb = 90, bio = 100, rad = 70)
 	offline_slowdown = 5
 	online_slowdown = RIG_SUPER_HEAVY
@@ -31,7 +31,7 @@
 	name = "shoes"
 
 /obj/item/clothing/head/helmet/space/rig/vintage
-	name = "hood"
+	name = "helmet"
 
 /obj/item/weapon/rig/vintage/heavy
 	name = "Heavy Duty Vintage Suit"
@@ -54,4 +54,4 @@
 	name = "shoes"
 
 /obj/item/clothing/head/helmet/space/rig/vintage/heavy
-	name = "hood"
+	name = "helmet"
