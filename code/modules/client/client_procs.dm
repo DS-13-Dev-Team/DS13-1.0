@@ -197,8 +197,8 @@
 			winset(src, null, "command=\".configure graphics-hwmode on\"")
 
 	log_client_to_db()
-	
-	if (!local)	
+
+	if (!local)
 		send_resources()
 
 	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
@@ -358,7 +358,6 @@
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_resources()
-	world << "Client doing send resources"
 	getFiles(
 		'html/search.js',
 		'html/panels.css',

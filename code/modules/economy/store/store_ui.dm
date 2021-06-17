@@ -13,7 +13,6 @@
 	var/list/data = list()
 
 	var/datum/money_account/ECA = occupant?.get_account()
-	world << "Got account [ECA]"
 	data["credits_account"] = (ECA ? ECA.money : "No ECA found")
 
 	var/credits_rig = (occupant ? occupant.get_rig_balance() : 0)//TODO: Embedded bank account in rig
@@ -44,7 +43,6 @@
 
 	//This is null if the deposit box is empty
 	if (deposit_box.ui_data)
-		world << "Populating deposit field because data is [dump_list(deposit_box.ui_data)]"
 		data["deposit"] = deposit_box.ui_data
 
 	return data
@@ -52,7 +50,6 @@
 
 /obj/machinery/store/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
 	var/list/data = ui_data(user, ui_key)
-	//world << "[dump_list(data)]"
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data)
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
@@ -72,13 +69,14 @@
 		return
 
 	if (user != occupant)
-		//TODO: Error sound and message here
-		world << "User [user] [user.type] \ref[user] is not occupant \ref[occupant]"
+		playsound(src, 'sound/machines/deadspace/menu_negative.ogg', VOLUME_MID, TRUE)
 		return
+
 	if(href_list["category"])
 		current_category = href_list["category"]
 		playsound(src, 'sound/machines/deadspace/menu_positive.ogg', VOLUME_MID, TRUE)
 		return TOPIC_REFRESH
+
 	if(href_list["select_item"])
 		var/datum/design/D = SSresearch.design_ids[href_list["select_item"]]
 		//TODO: Check that D is in our valid designs
@@ -86,6 +84,7 @@
 			current_design = D
 		playsound(src, 'sound/machines/deadspace/menu_neutral.ogg', VOLUME_MID, TRUE)
 		return TOPIC_REFRESH
+
 	if(href_list["buy"])
 		//Nosound because buying plays a vending sound
 		switch(text2num(href_list["buy"]))
@@ -95,8 +94,8 @@
 				buy_to_deposit()
 			if (3)
 				buy_and_transfer()
-
 		return TOPIC_REFRESH
+
 
 	if(href_list["withdraw"])
 		playsound(src, 'sound/machines/deadspace/menu_neutral.ogg', VOLUME_MID, TRUE)

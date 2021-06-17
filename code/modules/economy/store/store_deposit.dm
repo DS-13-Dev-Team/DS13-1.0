@@ -9,14 +9,11 @@
 /obj/item/weapon/storage/internal/deposit/proc/update_ui_data()
 	ui_data = list()
 	for (var/obj/item/I in contents)
-		world << "Adding [I] to ui data"
 		ui_data += list(list("name" = copytext(I.name, 1, 21), "value" = 0))
 
-		world << "Ui data now contains [length(ui_data)] elements"
 
 	///If the list is empty, null it out
 	if (!length(ui_data))
-		world << "Nulling out because contains [length(ui_data)] elements"
 		ui_data = null
 
 

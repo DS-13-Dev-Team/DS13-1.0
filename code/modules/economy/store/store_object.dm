@@ -211,13 +211,11 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 		Their current rig will be used as target, no source. The modules in the box will be taken as
 */
 /obj/machinery/store/proc/start_transfer(var/obj/item/weapon/rig/target)
-	world << "Transfer 1 [target]"
 	if (!occupant)
 		return
 	var/obj/item/weapon/rig/source
 	if (!target)
 		if (!occupant.wearing_rig)
-			world << "No target found"
 			to_chat(occupant, "No rig found! You need to purchase or be wearing a rig to use this feature.")
 			return
 		else
@@ -228,7 +226,6 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	var/list/extra_modules = get_box_modules()
 
-	world << "Got extra modules [dump_list(extra_modules)]"
 
 	//Do we have extra modules to feed in?
 	//If not, we require both a target and a source to do anything

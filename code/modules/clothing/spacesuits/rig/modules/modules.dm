@@ -241,7 +241,6 @@ Called when attempting to install this module into the target rig
 	var/obj/item/rig_module/conflict
 	var/list/removed = list()
 	while ((conflict = get_conflicting(rig)))
-		world << "Conflict is [conflict]"
 		//We found a conflict, maybe we can replace it. But only if we are better in all qualities
 		if (LAZYLEN(module_tags & conflict.module_tags))
 			var/better = TRUE
