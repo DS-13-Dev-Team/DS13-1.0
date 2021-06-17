@@ -24,9 +24,7 @@
 	var/list/valid_reagents = list(/datum/reagent/nutriment/biomass,
 	/datum/reagent/nutriment/stemcells)	//TODO: Add stem cells and blood to this
 
-	var/growth_rate = 0.6	//This many units of refined biomass are added to the forming organ each tick
-
-	var/sustain_rate = 0.03	//This many units of refined biomass are consumed each tick to keep alive an already-fully-grown organ
+	var/growth_rate = 1.2	//This many units of refined biomass are added to the forming organ each tick
 
 	var/efficiency = 0.9	//Some of the biomass is wasted
 
@@ -162,11 +160,6 @@
 
 		if (growth_progress() >= 1.0)
 			finish_growing()
-
-	else
-		var/change = reagents.remove_reagent(/datum/reagent/nutriment/biomass, sustain_rate)
-		if (change != sustain_rate)
-			biomass_exhausted()
 
 
 
