@@ -158,5 +158,5 @@
 
 		if ("Withdraw to Credit Chip")
 			charge_to_account(ECA.account_number, machine_id, "Credit Withdrawal", machine_id, -withdrawal_amount)
-			chip.worth += withdrawal_amount
+			chip.modify_worth(withdrawal_amount)
 			to_chat(user, "Withdrawal successful. [withdrawal_amount] credits moved to chip")

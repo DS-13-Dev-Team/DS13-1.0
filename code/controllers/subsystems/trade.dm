@@ -68,12 +68,10 @@ SUBSYSTEM_DEF(trade)
 	//Track some stats
 	var/people_paid = 0
 	var/credits_paid = 0
-	var/records = 0
 
 	next_salary_period	= world.time + SALARY_INTERVAL
 	//We cycle through the records
 	for(var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
-		records++
 		//We need to check that the mob is in a condition to be paid
 		var/mob/living/carbon/human/H = CR.get_mob()
 
@@ -88,7 +86,7 @@ SUBSYSTEM_DEF(trade)
 		//Lastly, you gotta be online and active
 		//Future TODO: Find some way to catch people who just crashed or relogged at the wrong time
 			//Maybe find out when they logged out?
-		 if (!H.client || H.client.inactivity > (SALARY_INTERVAL * 0.5))
+		if (!H.client || (H.client.inactivity > (SALARY_INTERVAL * 0.5)))
 			continue
 
 		//Get the job datum, tells us how much to pay

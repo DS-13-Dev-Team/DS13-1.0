@@ -71,7 +71,7 @@
 
 	//Alright we are ready to do this
 	charge_to_rig_account(chip, (cashflow_direction == 1 ? "Deposit" : "Withdrawal"), chip, amount*cashflow_direction)
-	chip.worth -= amount*cashflow_direction
+	chip.modify_worth((-amount)*cashflow_direction)
 	to_chat(user, "Transferred [amount] credits [(cashflow_direction == 1 ? "to" : "from")] RIG")
 
 /*

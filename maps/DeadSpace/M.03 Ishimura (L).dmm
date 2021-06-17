@@ -3273,9 +3273,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/engineering/storage_closet/paint)
 "ahc" = (
-/obj/machinery/atm{
-	pixel_x = -32
-	},
 /obj/structure/bed/chair/office/light,
 /obj/effect/landmark/start{
 	name = "Cargo Serviceman"
@@ -4203,12 +4200,6 @@
 /obj/item/device/lightreplacer,
 /turf/simulated/floor/tiled,
 /area/ishimura/lower/misc/janitorcloset/midship)
-"aiQ" = (
-/obj/machinery/atm{
-	pixel_x = 30
-	},
-/turf/simulated/floor/tiled,
-/area/ishimura/lower/cargo/lobby)
 "aiR" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -4960,13 +4951,6 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/ishimura/lower/crew/messhall/kitchen/freezer)
-"aki" = (
-/obj/machinery/light,
-/obj/machinery/atm{
-	pixel_y = -32
-	},
-/turf/simulated/floor/tiled,
-/area/ishimura/lower/misc/hallway/central)
 "akj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -11184,6 +11168,7 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
+/obj/machinery/store,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/cargo/lobby)
 "awe" = (
@@ -11363,19 +11348,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/mining/reception)
-"awz" = (
-/obj/machinery/cryopod,
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/atm{
-	pixel_y = 32
-	},
-/obj/effect/landmark{
-	name = "JoinLateCryo"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/ishimura/lower/crew/cryo)
 "awA" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -42616,7 +42588,7 @@ acE
 aco
 awf
 aed
-aiQ
+acA
 aNW
 aco
 aAk
@@ -49266,7 +49238,7 @@ adS
 aJc
 adX
 agL
-aki
+aLs
 adS
 aku
 aVA
@@ -62813,7 +62785,7 @@ aqk
 aCo
 aqk
 aqz
-awz
+aHh
 aBy
 aBy
 aBy
