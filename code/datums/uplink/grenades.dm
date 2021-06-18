@@ -32,6 +32,7 @@
 /datum/uplink_item/item/grenades/emp/special
 	is_special = 3
 	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)
 
 /datum/uplink_item/item/grenades/emps
 	name = "5xEMP Grenades"
@@ -41,6 +42,7 @@
 /datum/uplink_item/item/grenades/emps/special
 	is_special = 9
 	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)
 
 /datum/uplink_item/item/grenades/frag_high_yield
 	name = "Fragmentation Bomb"

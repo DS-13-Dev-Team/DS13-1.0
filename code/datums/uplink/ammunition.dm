@@ -88,3 +88,4 @@
 	item_cost = 2
 	path = /obj/item/ammo_magazine/divet
 	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)

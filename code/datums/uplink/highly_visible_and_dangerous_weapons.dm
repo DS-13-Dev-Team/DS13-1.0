@@ -141,3 +141,4 @@
 	item_cost = 7
 	path = /obj/item/weapon/gun/projectile/divet
 	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)

@@ -12,6 +12,7 @@
 /datum/uplink_item/item/implants/imp_freedom/special
 	item_cost = 12
 	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)
 
 /datum/uplink_item/item/implants/imp_compress
 	name = "Compressed Matter Implant"
