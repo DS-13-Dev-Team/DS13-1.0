@@ -886,25 +886,27 @@ var/global/list/common_tools = list(
 	return FALSE
 
 //Deprecated. Use obj/is_hot instead where
-/proc/is_hot(obj/item/W as obj)
-	switch(W.type)
-		if(/obj/item/weapon/flame/lighter)
-			if(W:lit)
-				return 1500
-			else
-				return 0
-		if(/obj/item/weapon/flame/match)
-			if(W:lit)
-				return 1000
-			else
-				return 0
-		if(/obj/item/clothing/mask/smokable/cigarette)
-			if(W:lit)
-				return 1000
-			else
-				return 0
-		if(/obj/item/weapon/melee/energy)
-			return 3500
+/proc/is_hot(obj/item/W)
+	if(istype(W, /obj/item/weapon/flame/lighter))
+		if(W:lit)
+			return 1500
+		else
+			return 0
+
+	else if(istype(W, /obj/item/weapon/flame/match))
+		if(W:lit)
+			return 1000
+		else
+			return 0
+
+	else if(istype(W, /obj/item/clothing/mask/smokable/cigarette))
+		if(W:lit)
+			return 1000
+		else
+			return 0
+
+	else if(istype(W, /obj/item/weapon/melee/energy))
+		return 3500
 
 	return W.is_hot()
 
