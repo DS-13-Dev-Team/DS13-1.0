@@ -5,7 +5,6 @@
 
 GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
-//TODO: Make the store emit light while open
 /obj/machinery/store
 	name = "Store Kiosk"
 	icon = 'icons/obj/machines/store.dmi'
@@ -40,12 +39,10 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 /obj/machinery/store/Initialize()
 	.=..()
-	log_world("Making store chip")
 	deposit_box = new(src)
 	machine_id = "[station_name()] Store #[GLOB.number_of_store_kiosks++]"
 
-	//TODO: Remove this, only for temporary debugging
-	chip = new /obj/item/weapon/spacecash/ewallet/random/c10000(src)
+
 
 /obj/machinery/store/update_icon()
 	var/light = TRUE

@@ -15,8 +15,8 @@
 	var/datum/money_account/ECA = occupant?.get_account()
 	data["credits_account"] = (ECA ? ECA.money : "No ECA found")
 
-	var/credits_rig = (occupant ? occupant.get_rig_balance() : 0)//TODO: Embedded bank account in rig
-	data["credits_rig"] = credits_rig	//TODO: Get account details from ID
+	var/credits_rig = (occupant ? occupant.get_rig_balance() : 0)
+	data["credits_rig"] = credits_rig
 
 
 	var/credits_chip = (chip ? chip.worth : null)
@@ -64,18 +64,22 @@
 /obj/machinery/store/OnTopic(var/mob/user, var/href_list, var/datum/topic_state/state)
 	.= TOPIC_REFRESH
 
+
 	if (busy)
 		playsound(src, 'sound/machines/deadspace/menu_negative.ogg', VOLUME_MID, TRUE)
 		return
+
 
 	if (user != occupant)
 		playsound(src, 'sound/machines/deadspace/menu_negative.ogg', VOLUME_MID, TRUE)
 		return
 
+
 	if(href_list["category"])
 		current_category = href_list["category"]
 		playsound(src, 'sound/machines/deadspace/menu_positive.ogg', VOLUME_MID, TRUE)
 		return TOPIC_REFRESH
+
 
 	if(href_list["select_item"])
 		var/datum/design/D = SSresearch.design_ids[href_list["select_item"]]
@@ -84,6 +88,7 @@
 			current_design = D
 		playsound(src, 'sound/machines/deadspace/menu_neutral.ogg', VOLUME_MID, TRUE)
 		return TOPIC_REFRESH
+
 
 	if(href_list["buy"])
 		//Nosound because buying plays a vending sound
@@ -102,14 +107,19 @@
 		handle_withdraw(occupant)
 		return TOPIC_REFRESH
 
+
 	if(href_list["eject"])
 		playsound(src, 'sound/machines/deadspace/menu_negative.ogg', VOLUME_MID, TRUE)
 		eject_item_by_name(href_list["eject"])
 		return TOPIC_REFRESH
+
+
 	if(href_list["eject_all"])
 		playsound(src, 'sound/machines/deadspace/menu_negative.ogg', VOLUME_MID, TRUE)
 		eject_all(href_list["eject"])
 		return TOPIC_REFRESH
+
+
 	if(href_list["eject_chip"] && chip)
 		playsound(src, 'sound/machines/deadspace/menu_negative.ogg', VOLUME_MID, TRUE)
 		eject_chip()
