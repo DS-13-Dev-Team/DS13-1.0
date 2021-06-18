@@ -82,3 +82,9 @@
 	name = "Flechette Magazine"
 	item_cost = 8
 	path = /obj/item/weapon/magnetic_ammo
+
+/datum/uplink_item/item/ammo/divet
+	name = "Divet Magazine"
+	item_cost = 2
+	path = /obj/item/ammo_magazine/divet
+	is_special = TRUE

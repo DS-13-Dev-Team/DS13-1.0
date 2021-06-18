@@ -9,6 +9,10 @@
 	item_cost = 24
 	path = /obj/item/weapon/storage/box/syndie_kit/imp_freedom
 
+/datum/uplink_item/item/implants/imp_freedom/special
+	item_cost = 12
+	is_special = TRUE
+
 /datum/uplink_item/item/implants/imp_compress
 	name = "Compressed Matter Implant"
 	item_cost = 32

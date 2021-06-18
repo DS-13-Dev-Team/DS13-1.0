@@ -29,10 +29,18 @@
 	item_cost = 8
 	path = /obj/item/weapon/grenade/empgrenade
 
+/datum/uplink_item/item/grenades/emp/special
+	is_special = 3
+	is_special = TRUE
+
 /datum/uplink_item/item/grenades/emps
 	name = "5xEMP Grenades"
 	item_cost = 24
 	path = /obj/item/weapon/storage/box/emps
+
+/datum/uplink_item/item/grenades/emps/special
+	is_special = 9
+	is_special = TRUE
 
 /datum/uplink_item/item/grenades/frag_high_yield
 	name = "Fragmentation Bomb"
