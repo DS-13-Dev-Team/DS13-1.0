@@ -135,7 +135,7 @@ open_table = FALSE;}
 	if(href_list["add_special"])
 		if(!(href_list["add_special"] in valid_special_roles()))
 			return TOPIC_HANDLED
-		pref.be_special_role[href_list["add_special"]] = max(text2num(href_list["add_special"]), ROLE_WEIGHT_LOW)
+		pref.be_special_role[href_list["add_special"]] = max(text2num(href_list["weight"]), ROLE_WEIGHT_LOW)
 		pref.never_be_special_role -= href_list["add_special"]
 		return TOPIC_REFRESH
 

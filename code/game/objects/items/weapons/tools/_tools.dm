@@ -664,6 +664,7 @@
 			return FALSE
 	.=TRUE //assume if those checks pass its going to succeed anyway.
 	switched_on = TRUE
+	START_PROCESSING(SSobj, src)
 	tool_qualities = switched_on_qualities
 	if (!isnull(switched_on_force))
 		force = switched_on_force

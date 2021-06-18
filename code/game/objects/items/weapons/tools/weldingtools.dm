@@ -43,14 +43,12 @@
 	return
 
 /obj/item/weapon/tool/weldingtool/turn_on(mob/user)
-
 	if (get_fuel() > passive_fuel_cost)
 		item_state = "[initial(item_state)]_on"
 		user << SPAN_NOTICE("You switch [src] on.")
 		playsound(loc, 'sound/items/welderactivate.ogg', 50, 1)
 		..()
 		damtype = BURN
-		START_PROCESSING(SSobj, src)
 	else
 		item_state = initial(item_state)
 		user << SPAN_WARNING("[src] has no fuel!")

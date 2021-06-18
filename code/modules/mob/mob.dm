@@ -47,7 +47,10 @@
 /mob/Initialize()
 	. = ..()
 	skillset = new skillset(src)
-	move_intent = decls_repository.get_decl(move_intent)
+	if(!move_intent)
+		move_intent = move_intents[1]
+	if(ispath(move_intent))
+		move_intent = decls_repository.get_decl(move_intent)
 	START_PROCESSING(SSmobs, src)
 	update_verbs()
 
@@ -679,6 +682,7 @@
 	else if(buckled)
 		anchored = 1
 		if(istype(buckled))
+			set_moving_slowly()
 			if(buckled.buckle_lying == -1)
 				lying = incapacitated(INCAPACITATION_KNOCKDOWN)
 			else
@@ -689,6 +693,7 @@
 		lying = incapacitated(INCAPACITATION_KNOCKDOWN)
 
 	if(lying)
+		set_moving_slowly()
 		set_density(density_lying())
 		if (incapacitated(INCAPACITATION_KNOCKOUT))
 			if(l_hand) unEquip(l_hand)
@@ -1125,7 +1130,6 @@
 
 /mob/proc/has_chem_effect(chem, threshold)
 	return FALSE
-
 
 /*
 	Simple generic proc to simplify verb adding/removal logic.
