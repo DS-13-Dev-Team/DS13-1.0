@@ -229,7 +229,8 @@
 
 /obj/item/weapon/tool/multitool/uplink/New(var/loc, var/owner)
 	..()
-	hidden_uplink = new(src, owner)
+	if(!hidden_uplink)
+		hidden_uplink = new(src, owner)
 
 /obj/item/weapon/tool/multitool/uplink/attack_self(mob/user as mob)
 	if(hidden_uplink)
@@ -250,3 +251,6 @@
 	uplink = GLOB.special_uplink
 	..()
 
+/obj/item/weapon/tool/multitool/uplink/special/New(var/loc, var/owner, var/telecrystals)
+	hidden_uplink = new /obj/item/device/uplink/especial(src, owner, telecrystals)
+	..()
