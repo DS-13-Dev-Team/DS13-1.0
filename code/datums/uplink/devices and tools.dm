@@ -28,7 +28,7 @@
 /datum/uplink_item/item/tools/plastique/special
 	item_cost = 1
 	is_special = TRUE
-	antag_roles = list(MODE_EARTHGOV_AGENT)
+	antag_roles = list(MODE_EARTHGOV_AGENT, MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/tools/heavy_armor
 	name = "Heavy Armor Vest and Helmet"
@@ -72,7 +72,7 @@
 /datum/uplink_item/item/tools/hacking_tool/special
 	item_cost = 6
 	is_special = TRUE
-	antag_roles = list(MODE_EARTHGOV_AGENT)
+	antag_roles = list(MODE_EARTHGOV_AGENT, MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/tools/space_suit
 	name = "Space Suit"

@@ -50,12 +50,22 @@
 	antag_roles = list(MODE_MERCENARY) // yeah maybe regular traitors shouldn't be able to get these
 	path = /obj/item/weapon/grenade/frag/high_yield
 
+/datum/uplink_item/item/grenades/frag_high_yield/special
+	item_cost = 10
+	is_special = TRUE
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
+
 /datum/uplink_item/item/grenades/fragshell
 	name = "1xFragmentation Shell"
 	desc = "Weaker than standard fragmentation grenades, these devices can be fired from a grenade launcher."
 	item_cost = 10
 	antag_roles = list(MODE_MERCENARY)
 	path = /obj/item/weapon/grenade/frag/shell
+
+/datum/uplink_item/item/grenades/fragshell/special
+	item_cost = 3
+	is_special = TRUE
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/grenades/fragshells
 	name = "5xFragmentation Shells"
