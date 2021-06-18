@@ -95,7 +95,7 @@
 	GetClickHandlers()	//Just call this to create the default handler, prevents an unpleasant edge case where it never gets created a
 	update_popup_menu()	//Update the existence of the rightclick menu, or lack thereof
 	//set macro to normal incase it was overriden (like cyborg currently does)
-	winset(src, null, "mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true input.background-color=#d3b5b5")
+	winset(src, null, "mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true input.background-color=#d3b5b5")
 
 
 /*

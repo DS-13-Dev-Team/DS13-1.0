@@ -268,7 +268,7 @@
 	Projectile
 */
 /obj/item/projectile/beam/contact
-	damage = 80
+	damage = 92
 	armor_penetration = 15
 	accuracy	=	100
 	fire_sound = list('sound/weapons/guns/fire/contact_fire_1.ogg', 'sound/weapons/guns/fire/contact_fire_2.ogg')

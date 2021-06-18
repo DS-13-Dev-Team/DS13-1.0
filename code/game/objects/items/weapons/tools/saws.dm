@@ -81,6 +81,7 @@
 	max_modifications = 4
 	use_power_cost = 0.44
 	passive_power_cost = 0.06
+	passive_fuel_cost = 0
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
 	atom_flags = ATOM_FLAG_NO_BLOOD

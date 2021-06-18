@@ -206,11 +206,11 @@
 	icobase = 'icons/mob/human_races/species/diona/body.dmi'
 	deform = 'icons/mob/human_races/species/diona/deformed_body.dmi'
 	preview_icon = 'icons/mob/human_races/species/diona/preview.dmi'
-
+	move_intents = list(/decl/move_intent/walk, /decl/move_intent/stalk)
 	language = LANGUAGE_GUTTER
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/diona)
 	//primitive_form = "Nymph"
-	slowdown = 7
+	slowdown = 5
 	rarity_value = 3
 	hud_type = /datum/hud_data/diona
 	siemens_coefficient = 0.3

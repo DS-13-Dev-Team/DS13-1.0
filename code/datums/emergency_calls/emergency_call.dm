@@ -16,7 +16,6 @@ GLOBAL_VAR_INIT(distress_cooldown, FALSE)
 	var/weight = 1 //So we can give different ERTs a different weight.
 	var/list/members = list() //Currently-joined members.
 	var/list/candidates = list() //Potential candidates for enlisting.
-	var/candidate_timer
 	var/cooldown_timer
 	var/spawn_type = /mob/living/carbon/human
 	var/datum/announcement/priority/command/special/pr_announce = new(0)
@@ -51,11 +50,11 @@ GLOBAL_VAR_INIT(distress_cooldown, FALSE)
 	GLOB.picked_call.activate()
 
 /datum/emergency_call/proc/reset()
-	if(candidate_timer)
-		deltimer(candidate_timer)
-		candidate_timer = null
 	members.Cut()
 	candidates.Cut()
+	if(cooldown_timer)
+		deltimer(cooldown_timer)
+		cooldown_timer = null
 	GLOB.waiting_for_candidates = FALSE
 	message_admins("Distress beacon: [name] has been reset.")
 
