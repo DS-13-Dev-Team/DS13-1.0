@@ -10,7 +10,7 @@ body
 
 hr
 {
-	background-color: #40628a;
+	background-color: #397ea5;
 	height: 1px;
 }
 
@@ -28,13 +28,13 @@ a, a:link, a:visited, a:active, .linkOn, .linkOff
 
 a:hover 
 { 
-	color: #40628a;
+	color: #3d5bc3;
 	background: #ffffff;
 }
 
 a.white, a.white:link, a.white:visited, a.white:active
 { 
-	color: #40628a; 
+	color: #3d5bc3; 
 	text-decoration: none;
 	background: #ffffff;
 	border: 1px solid #161616;
@@ -46,25 +46,21 @@ a.white, a.white:link, a.white:visited, a.white:active
 a.white:hover 
 { 
 	color: #ffffff;
-	background: #40628a;
+	background: #3d5bc3;
 }
 
-.checkbox, .checkbox:hover {width: 10px !important;
-height: 10px !important;
-background: transparent !important;
-}
 
 .linkOn, a.linkOn:link, a.linkOn:visited, a.linkOn:active, a.linkOn:hover
 { 
 	color: #ffffff; 
-	background: #2f943c;
+	background: #397ea5;
 	border-color: #24722e;
 }
 
 .linkOff, a.linkOff:link, a.linkOff:visited, a.linkOff:active, a.linkOff:hover
 { 
 	color: #ffffff; 
-	background: #999999;
+	background: #397ea5;
 	border-color: #666666;
 }
 
@@ -325,4 +321,10 @@ div.notice
 	border: 1px solid #40628a;
 	padding: 4px;
 	margin: 3px 0;
+}
+
+
+.checkbox, .checkbox:hover {width: 10px !important;
+height: 10px !important;
+background: transparent !important;
 }
