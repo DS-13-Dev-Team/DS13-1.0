@@ -33,7 +33,9 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - rscadd: "Added Stores, where players can go purchase things with credits."
+  - experiment: "Added Stores, where players can go purchase things with credits. Please note that store credit prices are very unbalanced and will be subject to lots of future changes."
+  - tweak: "Added credit chips in random loot, replacing spacecash."
+  - tweak: "Significantly reworked accounts, they are now withdraw only, and at stores rather than ATMs. However, each RIG also contains its own embedded bank account, accessed using chips."
   - tweak: "Reduced the damage of Divet and Plasma Cutter by 20%. They are meant to be sidearms and not as powerful as main weaponry."
   - tweak: "Reduced the damage of HV Pulse ammo, from 50% to 40% more than normal pulse rounds. A tradeoff for being more readily available through the store."
 
