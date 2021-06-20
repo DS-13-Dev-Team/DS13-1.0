@@ -19,9 +19,13 @@
 */
 /proc/transfer_rig(var/obj/item/weapon/rig/target, var/obj/item/weapon/rig/source, var/list/extra_modules, var/atom/dump, var/mob/living/carbon/human/user)
 
+
 	//This is required
 	if (!istype(target))
 		return
+
+	var/t_hotswap = target.hotswap
+	target.hotswap = TRUE
 
 	//The dump location is where we'll put any modules that can't fit into either rig
 	if (!dump)
@@ -31,8 +35,9 @@
 			dump = get_turf(target)
 
 	//Remove source from user and register them if applicable
-	if (!user && source && source.is_worn())
-		user = source.loc
+	if (source && source.is_worn())
+		if (!user)
+			user = source.loc
 		source.instant_unequip()
 
 
@@ -48,7 +53,11 @@
 	var/list/failed = list()
 
 	//Now lets succ all the modules out of both rigs and put them into a pool
+	var/s_hotswap
+	target.hotswap = TRUE
 	if (source)
+		s_hotswap = source.hotswap
+		source.hotswap = TRUE
 		for (var/obj/item/rig_module/RM as anything in source.installed_modules)
 			source.uninstall(RM)
 			primary += RM
@@ -61,7 +70,6 @@
 	//Next up, we're going to try to put every single module into the target.
 	for (var/obj/item/rig_module/RM as anything in primary)
 		var/list/result = target.attempt_install(RM, user = null, force = FALSE, instant = TRUE, delete_replaced = FALSE)
-
 		//If result is false, RM failed to go in, toss it in the secondary list
 		if (!result)
 			secondary += RM
@@ -73,21 +81,24 @@
 		//Otherwise, result is true, it went in without problems
 
 
-	//Now the target rig has been populated, lets put the leftover/inferior modules into the old/source rig
-	for (var/obj/item/rig_module/RM as anything in secondary)
-		var/list/result = source.attempt_install(RM, user = null, force = FALSE, instant = TRUE, delete_replaced = FALSE)
+	//Now the target rig has been populated, lets put the leftover/inferior modules into the old/source rig, if there is one
+	if (source)
+		for (var/obj/item/rig_module/RM as anything in secondary)
+			var/list/result = source.attempt_install(RM, user = null, force = FALSE, instant = TRUE, delete_replaced = FALSE)
 
-		//If result is false, RM failed to go in, toss it in the failed list
-		if (!result)
-			failed += RM
+			//If result is false, RM failed to go in, toss it in the failed list
+			if (!result)
+				failed += RM
 
-		//If result is a list, it contained the modules which were removed to make room for RM. Put those into secondary
-		else if (islist(result))
-			failed += result
+			//If result is a list, it contained the modules which were removed to make room for RM. Put those into secondary
+			else if (islist(result))
+				failed += result
 
-		//Otherwise, result is true, it went in without problems
+			//Otherwise, result is true, it went in without problems
 
-	//Cleanup, any failed modules are stored in the dump site
+	//Cleanup time,
+
+	//any failed modules are stored in the dump site
 	//This might be putting them inside a container, or maybe just dropping them in a floor, the dump decides
 	for (var/atom/movable/A in failed)
 		if (A.loc)
@@ -95,12 +106,27 @@
 
 		dump.store_item(A)
 
+	//Reset hotswap values
+	target.hotswap = t_hotswap
+	if (source)
 
-	//Alright now the last part, lets put the target rig onto the user
+		source.hotswap = s_hotswap
+		dump.store_item(source)
+
+	//Lets swap over accounts if there were any
+	if (source && target)
+		var/buffer_account = source.account
+		source.account = target.account
+		target.account = buffer_account
+
+
+	//Alright now the last part, lets put the target rig onto the user, if it isn't already
+
 	if (user)
 		target.instant_equip(user)
 	else
 		dump.store_item(target)
+
 
 
 /obj/item/weapon/rig/proc/instant_unequip()
@@ -119,10 +145,11 @@
 
 	user.drop_from_inventory(src, get_turf(user))
 
+//Future TODO: Add a force var that, if true, will unequip any blocking hats/gloves/boots/suits so deployment will succeed
 /obj/item/weapon/rig/proc/instant_equip(var/mob/living/carbon/human/target, var/deploy = TRUE)
 	var/cached_seal_delay = seal_delay
 	seal_delay = 0
-	if (target.equip_to_slot_if_possible(src, desired_slot, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = FALSE, force = TRUE)\
+	if (wearer == target || target.equip_to_slot_if_possible(src, desired_slot, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = FALSE, force = TRUE)\
 	&& deploy)
 		toggle_seals(target, TRUE)
 

@@ -30,8 +30,10 @@
 	if (safety && (!occupant || !occupant_can_afford()))
 		return FALSE
 
+
+	var/pay_amount
 	if (chip)
-		var/pay_amount = min(cost, chip.worth)
+		pay_amount = min(cost, chip.worth)
 		if (chip.pay_into(pay_amount, src))
 			cost -= pay_amount
 
@@ -39,9 +41,15 @@
 		return TRUE
 
 	//Alright now we pay whatever is leftover from the rig account
+
+
+
 	if (cost > 0)
+		if (occupant && occupant.wearing_rig)
+			pay_amount = min(occupant.wearing_rig.get_account_balance(), cost)
 		var/obj/item/weapon/rig/R = occupant.wearing_rig
-		R.charge_to_rig_account(src, "Store Purchase", machine_id, cost)
+		R.charge_to_rig_account(src, "Store Purchase", machine_id, -pay_amount)
+		cost -= pay_amount
 
 
 	if (cost <= 0)

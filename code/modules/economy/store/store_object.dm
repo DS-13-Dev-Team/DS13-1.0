@@ -69,6 +69,9 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	The store has enough room for one person. No others can enter it while someone is inside
 */
 /obj/machinery/store/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+	if (air_group)
+		return TRUE
+
 	if (occupant && mover != occupant && occupant.loc == get_turf(src))
 		return FALSE
 
@@ -163,6 +166,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 
 /obj/machinery/store/proc/makeover_animation()
+	set waitfor = FALSE
 	if (!occupant)
 		return //We need an occupant to do this
 
@@ -175,6 +179,11 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	vertical_light_effect()
 	sleep(light_time + stall_time)
 	transfer_callback.Invoke()
+
+	//Things may have just been removed from the deposit box
+	deposit_box.update_ui_data()
+	update_open_uis()
+
 	sleep(stall_time*2)
 	open()
 	sleep(open_time)

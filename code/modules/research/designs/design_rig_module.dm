@@ -174,6 +174,7 @@
 	build_path = /obj/item/rig_module/kinesis
 
 /datum/design/item/rig_module/kinesis_adv
+	price = 5000
 	name = "G.R.I.P advanced kinesis module"
 	build_path = /obj/item/rig_module/kinesis/advanced
 
@@ -183,7 +184,14 @@
 
 
 /datum/design/item/rig_module/speedboost
+
 	build_path = /obj/item/rig_module/extension/speedboost
 
 /datum/design/item/rig_module/speedboost_adv
+	price = 5000
 	build_path = /obj/item/rig_module/extension/speedboost/advanced
+
+
+/datum/design/item/rig_module/adv_healthbar
+
+	build_path = /obj/item/rig_module/healthbar/advanced
