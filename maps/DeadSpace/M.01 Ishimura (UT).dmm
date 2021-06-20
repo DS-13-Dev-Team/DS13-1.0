@@ -2015,13 +2015,6 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
-"eJ" = (
-/obj/structure/stairs_short{
-	dir = 1
-	},
-/obj/structure/platform_decoration,
-/turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "eL" = (
 /obj/structure/grille/broken,
 /obj/structure/platform{
@@ -3036,9 +3029,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "gJ" = (
-/obj/structure/stairs_short{
-	dir = 1
-	},
+/obj/structure/stairs_short,
 /obj/structure/platform_decoration{
 	dir = 1;
 	icon_state = "platform_deco"
@@ -36139,7 +36130,7 @@ hu
 ck
 ck
 fv
-eJ
+eB
 fs
 gQ
 hR

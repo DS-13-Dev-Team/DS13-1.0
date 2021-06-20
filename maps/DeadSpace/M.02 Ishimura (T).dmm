@@ -986,7 +986,7 @@
 /obj/structure/lattice,
 /obj/structure/platform/strata/metal,
 /obj/structure/platform/strata/metal{
-	dir = 4;
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
@@ -1134,21 +1134,21 @@
 "cO" = (
 /obj/structure/lattice,
 /obj/structure/platform/strata/metal{
-	dir = 8;
+	dir = 8
 	},
 /obj/structure/platform/strata/metal,
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cP" = (
 /obj/structure/platform_decoration/strata/metal{
-	dir = 1;
+	dir = 1
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cQ" = (
 /obj/structure/platform/strata/metal{
-	dir = 4;
+	dir = 4
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
@@ -1164,7 +1164,7 @@
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "cT" = (
 /obj/structure/platform/strata/metal{
-	dir = 8;
+	dir = 8
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
@@ -1188,20 +1188,20 @@
 "cX" = (
 /obj/structure/lattice,
 /obj/structure/platform/strata/metal{
-	dir = 4;
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cY" = (
 /obj/structure/lattice,
 /obj/structure/platform/strata/metal{
-	dir = 8;
+	dir = 8
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cZ" = (
 /obj/structure/platform_decoration/strata/metal{
-	dir = 8;
+	dir = 8
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
@@ -1308,7 +1308,7 @@
 /area/shuttle/tram)
 "dq" = (
 /obj/structure/platform/strata/metal{
-	dir = 1;
+	dir = 1
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
@@ -1617,7 +1617,7 @@
 /area/ishimura/tramdeck/tram/station/aft)
 "dY" = (
 /obj/structure/platform_decoration/strata/metal{
-	dir = 4;
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
@@ -6440,16 +6440,6 @@
 /obj/machinery/constructable_frame,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
-"oY" = (
-/obj/structure/stair/perspective{
-	dir = 10
-	},
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/switchingstation/upper)
-"oZ" = (
-/obj/structure/stair/perspective,
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/switchingstation/upper)
 "pa" = (
 /obj/structure/stairs_short,
 /turf/simulated/floor/dank/heavy,
