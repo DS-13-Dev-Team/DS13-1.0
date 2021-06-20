@@ -10,6 +10,7 @@ var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 	invisibility = INVISIBILITY_OBSERVER
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	sight = SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
+	atom_flags = ATOM_FLAG_INTANGIBLE
 	simulated = FALSE
 	stat = DEAD
 	status_flags = GODMODE

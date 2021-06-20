@@ -41,7 +41,7 @@
 
 /obj/item/projectile/beam/cutter
 	name = "plasma arc"
-	damage = 15
+	damage = 12
 	accuracy = 130	//Its a broad arc, easy to land hits on limbs with
 	edge = 1
 	damage_type = BRUTE //plasma is a physical object with mass, rather than purely burning. this also means you can decapitate/sever limbs, not just ash them.
@@ -69,7 +69,7 @@
 
 
 /obj/item/projectile/beam/cutter/plasma
-	damage = 21
+	damage = 17.75
 	kill_count = 7 //an upgrade over the mining cutter, used for engineering work, but still not a proper firearm
 	dig_power = 900
 
@@ -106,24 +106,3 @@
 /obj/item/weapon/cell/plasmacutter/update_icon()
 	return
 
-
-
-
-/*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/mining/plasma_energy
-	name = "Power - Plasma Energy"
-	contains = list(/obj/item/weapon/cell/plasmacutter = 4)
-	cost = 60
-	containertype = /obj/structure/closet/crate
-	containername = "\improper plasma energy crate"
-
-
-/decl/hierarchy/supply_pack/mining/mining_cutter
-	name = "Mining Tool - Mining Cutter"
-	contains = list(/obj/item/weapon/cell/plasmacutter = 2,
-	/obj/item/weapon/gun/energy/cutter/empty = 1)
-	cost = 60
-	containertype = /obj/structure/closet/crate
-	containername = "\improper mining cutter crate"

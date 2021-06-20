@@ -146,7 +146,7 @@
 /obj/structure/wall_frame/indestructible/hitby()
 	return
 
-/obj/structure/wall_frame/indestructible/take_damage()
+/obj/structure/wall_frame/indestructible/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
 	return
 
 /obj/structure/wall_frame/titanium

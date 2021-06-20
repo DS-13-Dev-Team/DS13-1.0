@@ -90,11 +90,12 @@
 		if(potato && potato.cell)
 			stat("Battery charge:", "[potato.get_charge()]/[potato.cell.maxcharge]")
 
-		if(back && istype(back,/obj/item/weapon/rig))
-			var/obj/item/weapon/rig/suit = back
+		if(wearing_rig)
+			var/obj/item/weapon/rig/suit = wearing_rig
 			var/cell_status = "ERROR"
 			if(suit.cell) cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
 			stat(null, "Suit charge: [cell_status]")
+			stat(null, "Credit Balance: [wearing_rig.get_account_balance()]")
 
 		if(mind)
 			if(mind.changeling)
@@ -1013,6 +1014,14 @@
 	if(config && CONFIG_GET(flag/use_cortical_stacks) && client && client.prefs.has_cortical_stack)
 		create_stack()
 	full_prosthetic = null
+
+	default_walk_intent = null
+	default_run_intent = null
+	move_intent = null
+	move_intents = species.move_intents.Copy()
+	set_move_intent(decls_repository.get_decl(move_intents[1]))
+	if(!istype(move_intent))
+		set_next_usable_move_intent()
 
 	//recheck species-restricted clothing
 	for(var/slot in slot_first to slot_last)

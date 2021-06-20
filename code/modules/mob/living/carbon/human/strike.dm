@@ -551,8 +551,11 @@
 	else if (istype(target, /obj/machinery/door))
 		impact_door()
 
-	else if (istype(target, /obj/structure))
+	else if (istype(target, /obj/structure) || istype(target, /obj/machinery/deployable))
 		impact_structure()
+
+	else if(istype(target, /obj/machinery/vending) && ishuman(huser) && huser.is_necromorph())
+		impact_vending()
 
 //This is called when the target is a living mob, so we can assume L is populated
 /datum/strike/proc/impact_mob()
@@ -572,7 +575,12 @@
 /datum/strike/proc/impact_structure()
 	var/obj/structure/S = target
 	damage_done = get_final_damage()
-	damage_done = S.take_damage(damage_done, BRUTE, user, used_weapon)
+	damage_done = S:take_damage(damage_done, BRUTE, user, used_weapon)
+
+/datum/strike/proc/impact_vending()
+	var/obj/machinery/vending/S = target
+	damage_done = TRUE
+	S.fall_down(user)
 
 //Result Showing
 /datum/strike/proc/show_result()

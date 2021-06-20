@@ -91,7 +91,12 @@
 
 //Future TODO: Make this generic atom behaviour
 /obj/effect/vine/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
-	var/damage = get_fire_damage(exposed_temperature, 3*multiplier) //Plants and corruption take 3x damage from fire
+	var/damage = get_fire_damage(exposed_temperature, CORRUPTION_FIRE_DAMAGE_FACTOR*multiplier)
+
+	var/datum/extension/scorched_earth/SE = get_extension(loc, /datum/extension/scorched_earth)
+	if (!SE)
+		set_extension(loc, /datum/extension/scorched_earth)
+
 	if (damage > 0)
 		adjust_health(-damage)
 

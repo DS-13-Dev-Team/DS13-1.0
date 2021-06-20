@@ -81,6 +81,11 @@
 
 
 /obj/effect/vine/proc/can_spread_to(var/turf/floor, var/bounds)
+	if (isfloor(floor))
+		var/turf/simulated/floor/F = floor
+		if (F.incorruptible)
+			return -1
+
 	if(bounds && !can_reach(floor))
 		return FALSE
 
@@ -91,6 +96,8 @@
 			break
 	if(blocked)
 		return FALSE
+
+
 
 	if(!floor.Enter(src))
 		watch_tile(floor)

@@ -3,7 +3,7 @@ $include game_options.txt
 $include debug.txt
 
 ## Server name: This appears at the top of the screen in-game. In this case it will read "tgstation: station_name" where station_name is the randomly generated name of the station for the round. Remove the # infront of SERVERNAME and replace 'tgstation' with the name of your choice
-# SERVERNAME spacestation13
+# SERVER_NAME spacestation13
 
 ## Hub visibility: If you want to be visible on the hub, uncomment the below line and be sure that Dream Daemon is set to "Visible." This can be changed in-round as well with toggle-hub-visibility if Dream Daemon is set correctly.
 # HUB
@@ -316,8 +316,8 @@ DOOC_ALLOWED
 ##Comment to disable the AOOC channel by default.
 AOOC_ALLOWED
 
-## Uncomment to disable ghost chat by default.
-#DISABLE_DSAY
+## Comment to disable ghost chat by default.
+DSAY_ALLOWED
 
 ## Uncomment to disable respawning by default.
 #DISABLE_RESPAWN
@@ -386,3 +386,5 @@ RADIATION_LOWER_LIMIT 0.15
 
 ## Uncomment this to allow patron players to bypass the player limit, and connect even if server is full. Only works if a player limit is set
 #ALWAYS_ADMIT_PATRONS
+
+ABANDON_ALLOWED

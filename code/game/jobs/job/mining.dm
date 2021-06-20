@@ -13,6 +13,8 @@
 	ideal_character_age = 30
 	starting_credits = 7620
 
+	salary = SALARY_COMMAND
+
 	access = list(access_dom, access_mf, access_bridge, access_mining, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/mining/dom
 
@@ -40,6 +42,7 @@
 	selection_color = "#5e4215"
 	minimal_player_age = 18
 	starting_credits = 2400
+	salary = SALARY_SUPERVISOR
 
 	access = list(access_mining, access_mf)
 	outfit_type = /decl/hierarchy/outfit/job/mining/foreman
@@ -69,6 +72,8 @@
 	selection_color = "#5e4215"
 	minimal_player_age = 18
 	starting_credits = 670
+
+	salary	= SALARY_UNSKILLED	//Miners and civilians are underpaid plebs
 
 	access = list(access_mining)
 	outfit_type = /decl/hierarchy/outfit/job/mining/planet_cracker

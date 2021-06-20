@@ -1,17 +1,18 @@
 /obj/structure/closet/secure_closet/DOM
 	name = "director of mining's closet"
 	req_access = list(access_dom)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
+	icon_state = "secure1"
+	icon_closed = "secure"
+	icon_locked = "secure1"
 	icon_opened = "secureopen"
-	icon_off = "securenewoff"
+	icon_off = "secureoff"
 
 /obj/structure/closet/secure_closet/DOM/WillContain()
 	return list(
 		/obj/item/device/radio/headset/heads/dom,
 		/obj/item/clothing/under/suit_jacket/dom,
 		/obj/item/clothing/shoes/dress,
+		/obj/item/clothing/accessory/black,
 		/obj/item/weapon/storage/secure/briefcase/money,
 		/obj/item/weapon/storage/briefcase,
 		/obj/item/weapon/clipboard,
@@ -22,11 +23,11 @@
 /obj/structure/closet/secure_closet/foreman
 	name = "mining foreman's closet"
 	req_access = list(access_mf)
-	icon_state = "securenew1"
-	icon_closed = "securenew"
-	icon_locked = "securenew1"
+	icon_state = "secure1"
+	icon_closed = "secure"
+	icon_locked = "secure1"
 	icon_opened = "secureopen"
-	icon_off = "securenewoff"
+	icon_off = "secureoff"
 
 /obj/structure/closet/secure_closet/foreman/WillContain()
 		return list(

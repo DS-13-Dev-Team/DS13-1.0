@@ -145,16 +145,17 @@
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 	armor = list(melee = 40, bullet = 40, laser = 0, energy = 0, bomb = 20, bio = 10, rad = 0)
 
-/obj/item/clothing/gloves/kellion
+/obj/item/clothing/gloves/combat/pcsi
+	desc = "A pair of thick, ceramic-plated gloves issue to Concordance Extraction Corporation security officers. They often clink when an officer balls his fist."
+	name = "security gloves"
+	icon_state = "pcsi_gloves"
+	item_state = "pcsi_gloves"
+	force = 5
+	armor = list(melee = 55, bullet = 60, laser = 0,energy = 0, bomb = 30, bio = 10, rad = 0)
+
+/obj/item/clothing/gloves/combat/kellion
 	desc = "A pair of thick, armored gloves designed to protect the wearer and stains off."
 	name = "armored gloves"
 	icon_state = "grunt_gloves"
 	item_state = "grunt_gloves"
-	siemens_coefficient = 0.50
-	permeability_coefficient = 0.05
-	item_flags = ITEM_FLAG_THICKMATERIAL
-	cold_protection = HANDS
-	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
-	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 	armor = list(melee = 50, bullet = 50, laser = 0, energy = 0, bomb = 30, bio = 10, rad = 0)

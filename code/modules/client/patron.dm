@@ -25,7 +25,6 @@
 		var/key = ckey(line_list[1])
 
 		var/date
-		log_world("Doing key [key], date is [date]")
 		if (line_list.len > 1)
 			date = sanitize_date(line_list[2])	//This will return FALSE if the date does not look right
 		if (!date)

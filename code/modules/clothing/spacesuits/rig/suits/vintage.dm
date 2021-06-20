@@ -31,7 +31,7 @@
 	name = "shoes"
 
 /obj/item/clothing/head/helmet/space/rig/vintage
-	name = "hood"
+	name = "helmet"
 
 /obj/item/weapon/rig/vintage/heavy
 	name = "Heavy Duty Vintage Suit"
@@ -54,4 +54,4 @@
 	name = "shoes"
 
 /obj/item/clothing/head/helmet/space/rig/vintage/heavy
-	name = "hood"
+	name = "helmet"

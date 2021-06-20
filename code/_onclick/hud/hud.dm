@@ -30,6 +30,7 @@
 	var/obj/screen/l_hand_hud_object
 	var/obj/screen/action_intent
 	var/obj/screen/move_intent
+	var/obj/screen/stamina/stamina_bar
 
 	var/list/adding
 	var/list/other
@@ -45,6 +46,7 @@
 
 /datum/hud/Destroy()
 	. = ..()
+	stamina_bar = null
 	lingchemdisplay = null
 	r_hand_hud_object = null
 	l_hand_hud_object = null
@@ -54,6 +56,14 @@
 	other = null
 	hotkeybuttons = null
 	mymob = null
+
+/datum/hud/proc/update_stamina()
+	if(mymob && stamina_bar)
+		stamina_bar.invisibility = INVISIBILITY_MAXIMUM
+		var/stamina = mymob.get_stamina()
+		if(stamina < 100)
+			stamina_bar.invisibility = 0
+			stamina_bar.icon_state = "prog_bar_[Floor(stamina/5)*5]"
 
 /datum/hud/proc/hidden_inventory_update()
 	if(!mymob) return
@@ -253,3 +263,9 @@
 	hud_used.persistant_inventory_update()
 	update_action_buttons()
 
+/obj/screen/stamina
+	name = "stamina"
+	icon = 'icons/effects/progessbar.dmi'
+	icon_state = "prog_bar_100"
+	invisibility = INVISIBILITY_MAXIMUM
+	screen_loc = ui_stamina

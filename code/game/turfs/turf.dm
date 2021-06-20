@@ -325,3 +325,7 @@ var/const/enterloopsanity = 100
 
 /turf/proc/is_floor()
 	return FALSE
+
+//Telling a turf to store an item just puts it ontop of us
+/turf/store_item(var/obj/item/input, var/mob/user)
+	input.forceMove(src)

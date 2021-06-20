@@ -131,6 +131,7 @@
 	start_offset = new /vector2(-16,0)
 	end_offset = new /vector2(-16,0)
 	alpha = 220
+	anchored = TRUE
 
 /*
 	Deployed mine
@@ -187,7 +188,7 @@
 		D.deployed_mines -= src
 	gunref = null
 	QDEL_NULL(laser)
-	.=..()
+	return ..()
 
 /obj/effect/mine/trip/on_mount(var/datum/extension/mount/ME)
 	icon_state = "detonator_mine_deployed"
@@ -302,24 +303,3 @@
 
 /datum/extension/shoot/det3
 	base_type = /datum/extension/shoot/det3
-
-
-/*
-	Acquisition
-*/
-/decl/hierarchy/supply_pack/mining/detonator_mines
-	name = "Mining - Detonator Charges"
-	contains = list(/obj/item/ammo_casing/tripmine = 12)
-	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "\improper detonator charges crate"
-
-
-/decl/hierarchy/supply_pack/mining/detonator
-	name = "Mining Tool - Detonator Mine Launcher"
-	contains = list(/obj/item/ammo_casing/tripmine = 6,
-	/obj/item/weapon/gun/projectile/detonator = 1)
-	cost = 80
-	containertype = /obj/structure/closet/crate
-	containername = "\improper detonator crate"
-

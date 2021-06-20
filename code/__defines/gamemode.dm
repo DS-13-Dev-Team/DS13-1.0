@@ -107,3 +107,8 @@
 //When testing a spawnpoint to see if its safe to spawn there, we will test a maximum of this many tiles.
 //If they are all unsafe then the spawnpoint is unsafe
 #define SPAWNPOINT_MAX_SAFETY_ATTEMPTS	20
+
+
+//Role weightings for candidacy
+#define ROLE_WEIGHT_HIGH	2
+#define ROLE_WEIGHT_LOW		1

@@ -300,16 +300,16 @@
 	set category = "Server"
 	set desc="Toggle admin spawning"
 	set name="Toggle Spawn"
-	CONFIG_SET(flag/allow_admin_spawning, !CONFIG_GET(flag/allow_admin_spawning))
-	log_and_message_admins("toggled admin item spawning to [CONFIG_GET(flag/allow_admin_spawning)].")
+	CONFIG_SET(flag/disable_admin_spawn, !CONFIG_GET(flag/disable_admin_spawn))
+	log_and_message_admins("toggled admin item spawning to [CONFIG_GET(flag/disable_admin_spawn)].")
 	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adrev()
 	set category = "Server"
 	set desc="Toggle admin revives"
 	set name="Toggle Revive"
-	CONFIG_SET(flag/allow_admin_rev, !CONFIG_GET(flag/allow_admin_rev))
-	log_and_message_admins("toggled reviving to [CONFIG_GET(flag/allow_admin_rev)].")
+	CONFIG_SET(flag/disable_admin_rev, !CONFIG_GET(flag/disable_admin_rev))
+	log_and_message_admins("toggled reviving to [CONFIG_GET(flag/disable_admin_rev)].")
 	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/immreboot()

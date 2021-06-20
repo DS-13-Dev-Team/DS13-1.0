@@ -98,7 +98,7 @@
 	var/atom/launcher
 
 /obj/item/weapon/material/shard/shrapnel/New(loc, obj/item/projectile/P)
-	if(P)
+	if(P && P.launcher)
 		launcher = P.launcher
 		launcher.register_shrapnel(src)
 	..(loc, MATERIAL_STEEL)

@@ -184,7 +184,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		var/atom/A = a
 		if (istype(A.loc, /turf))
 			return A
-	return null
+	return
 
 
 /mob/proc/GetClickHandler(var/datum/click_handler/popped_handler)

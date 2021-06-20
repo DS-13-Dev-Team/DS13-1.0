@@ -27,6 +27,8 @@
 
 #define iscorgi(A) istype(A, /mob/living/simple_animal/corgi)
 
+#define iscredits(A) istype(A, /obj/item/weapon/spacecash/ewallet)
+
 #define is_drone(A) istype(A, /mob/living/silicon/robot/drone)
 
 #define isEye(A) istype(A, /mob/observer/eye)
@@ -54,6 +56,8 @@
 #define isorgan(A) istype(A, /obj/item/organ/external)
 
 #define isprojectile(A)	istype(A, /obj/item/projectile)
+
+#define isrig(A)	istype(A, /obj/item/weapon/rig)
 
 #define issignal(A) istype(A, /mob/observer/eye/signal)
 
@@ -245,3 +249,6 @@ A = null;
 A = null;
 
 #define NONSENSICAL_VALUE -99999
+
+// Returns true if val is from min to max, inclusive.
+#define ISINRANGE(val, min, max) (min <= val && val <= max)

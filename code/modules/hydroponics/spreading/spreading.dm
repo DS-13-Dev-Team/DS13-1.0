@@ -59,6 +59,7 @@
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 	var/list/neighbors
 	var/can_cut = TRUE
+	layer = PLANT_LAYER
 
 /obj/effect/vine/single
 	spread_chance = 0
@@ -250,7 +251,7 @@
 			die_off()
 
 //handles being overrun by vines - note that attacker_parent may be null in some cases
-/obj/effect/vine/proc/vine_overrun(datum/seed/attacker_seed, obj/effect/plant/attacker_parent)
+/obj/effect/vine/proc/vine_overrun(datum/seed/attacker_seed, obj/effect/vine/attacker_parent)
 	var/aggression = 0
 	aggression += (attacker_seed.get_trait(TRAIT_CARNIVOROUS) - seed.get_trait(TRAIT_CARNIVOROUS))
 	aggression += (attacker_seed.get_trait(TRAIT_SPREAD) - seed.get_trait(TRAIT_SPREAD))

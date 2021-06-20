@@ -27,6 +27,7 @@
 	var/account_allowed = 1               // Does this job type come with a station account?
 	var/economic_modifier = 2             // With how much does this job modify the initial account amount?
 	var/starting_credits = 0		 	  // Starting amount decided on by job. Overrides economic modifier.
+	var/salary	= SALARY_SKILLED	//How much money this job earns, every 30-minute pay period
 
 	var/outfit_type                       // The outfit the employee will be dressed in, if any
 

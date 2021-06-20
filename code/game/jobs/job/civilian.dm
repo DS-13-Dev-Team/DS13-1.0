@@ -20,6 +20,8 @@
 	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
+	salary	= 500	//Miners and civilians are underpaid plebs
+
 datum/job/bar/get_description_blurb()
 	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You are subordinate to the First Lieutenant."
 
@@ -35,6 +37,7 @@ datum/job/bar/get_description_blurb()
 	ideal_character_age = 21
 	starting_credits = 1240
 
+	salary	= 500	//Miners and civilians are underpaid plebs
 	access = list(access_service, access_cook)
 	outfit_type = /decl/hierarchy/outfit/job/service/line_cook
 
@@ -62,6 +65,7 @@ datum/job/line_cook/get_description_blurb()
 	minimal_player_age = 18
 	ideal_character_age = 40
 	starting_credits = 2380
+	salary	= SALARY_UNSKILLED
 
 	access = list(access_so, access_bridge, access_cargo, access_maint_tunnels, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/so
@@ -91,6 +95,7 @@ datum/job/so/get_description_blurb()
 	selection_color = "#3b3b3b"
 	minimal_player_age = 18
 	starting_credits = 1970
+	salary	= SALARY_UNSKILLED	//Miners and civilians are underpaid plebs
 
 	access = list(access_cargo, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/serviceman
@@ -129,6 +134,8 @@ datum/job/serviceman/get_description_blurb()
 	                    SKILL_ANATOMY     = SKILL_ADEPT,
 	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
+
+	salary = SALARY_SKILLED
 
 datum/job/bar/get_description_blurb()
 	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You don't have a department head and are subordinate to the Captain and First Lieutenant."

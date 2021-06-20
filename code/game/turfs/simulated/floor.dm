@@ -26,6 +26,9 @@
 	var/list/step_structures = list()
 	var/step_priority = 1
 
+	//If true, corruption cannot spread to this turf
+	var/incorruptible = FALSE
+
 
 /turf/simulated/floor/Entered(var/atom/movable/AM, var/atom/old_loc)
 	..(AM, old_loc)

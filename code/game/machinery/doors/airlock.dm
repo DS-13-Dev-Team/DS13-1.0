@@ -64,7 +64,7 @@ var/list/airlock_overlays = list()
 
 	var/_wifi_id
 	var/datum/wifi/receiver/button/door/wifi_receiver
-	var/obj/item/weapon/airlock_brace/brace = null
+	var/obj/item/weapon/airlock_brace/brace
 
 	//Airlock 2.0 Aesthetics Properties
 	//The variables below determine what color the airlock and decorative stripes will be -Cakey
@@ -657,7 +657,7 @@ About the new airlock wires panel:
 
 	set_light(0)
 
-	if(door_color && !(door_color == "none"))
+	if(door_color && door_color != "none")
 		var/ikey = "[airlock_type]-[door_color]-color"
 		color_overlay = airlock_icon_cache["[ikey]"]
 		if(!color_overlay)
@@ -752,7 +752,7 @@ About the new airlock wires panel:
 			if(p_open)
 				panel_overlay = panel_file
 
-	if(brace)
+	if(brace && state != AIRLOCK_OPEN && state != AIRLOCK_OPENING && state != AIRLOCK_CLOSING)
 		brace.update_icon()
 		brace_overlay += image(brace.icon, brace.icon_state)
 
@@ -1051,19 +1051,7 @@ About the new airlock wires panel:
 			return brace.attackby(C, user)
 
 		if(!brace && istype(C, /obj/item/weapon/airlock_brace))
-			var/obj/item/weapon/airlock_brace/A = C
-			if(!density)
-				to_chat(user, "<span class='warning'>You must close \the [src] before installing \the [A]!</span>")
-				return
-
-			if((!A.req_access.len && !A.req_one_access) && (alert("\the [A]'s 'Access Not Set' light is flashing. Install it anyway?", "Access not set", "Yes", "No") == "No"))
-				return
-
-			if(do_after(user, 50, src) && density && A && user.unEquip(A, src))
-				to_chat(user, "<span class='notice'>You successfully install \the [A].</span>")
-				brace = A
-				brace.airlock = src
-				update_icon()
+			try_reinforce(C, user)
 			return
 
 		if(!istype(usr, /mob/living/silicon))
@@ -1243,7 +1231,7 @@ About the new airlock wires panel:
 	return ..()
 
 /obj/machinery/door/airlock/can_open(var/forced=0)
-	if(brace)
+	if(brace && !brace.is_directional)
 		return 0
 
 	if(!forced)
@@ -1324,8 +1312,15 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/allowed(mob/M)
 	if(locked)
-		return 0
+		return FALSE
+	if(restricted_side(M))
+		return FALSE
 	return ..(M)
+
+/obj/machinery/door/airlock/proc/restricted_side(mob/M) //Allows for specific side of airlocks to be unrestrected (IE, can exit maint freely, but need access to enter)
+	if(brace && brace.is_directional)
+		return get_dir(src, M) & brace.block_dir
+	return FALSE
 
 /obj/machinery/door/airlock/New(var/newloc, var/obj/structure/door_assembly/assembly=null)
 	..()
@@ -1382,15 +1377,14 @@ About the new airlock wires panel:
 			brace.electronics.conf_access = req_one_access
 			brace.electronics.one_access = 1
 		update_icon()
-	. = ..()
+	return ..()
 
 /obj/machinery/door/airlock/Destroy()
 	qdel(wires)
 	wires = null
 	qdel(wifi_receiver)
 	wifi_receiver = null
-	if(brace)
-		qdel(brace)
+	QDEL_NULL(brace)
 	return ..()
 
 // Most doors will never be deconstructed over the course of a round,
@@ -1512,4 +1506,29 @@ About the new airlock wires panel:
 	welded = FALSE
 	locked = FALSE
 	QDEL_NULL(brace)
-	.=..()
+	return ..()
+
+/obj/machinery/door/airlock/proc/try_reinforce(obj/item/weapon/airlock_brace/B, mob/M)
+	if(!density)
+		to_chat(M, "<span class='warning'>You must close \the [src] before installing \the [B]!</span>")
+		return
+
+	if((!B.req_access.len && !B.req_one_access) && (alert("\the [B]'s 'Access Not Set' light is flashing. Install it anyway?", "Access not set", "Yes", "No") == "No"))
+		return
+
+	if(get_turf(B) == get_turf(src))
+		to_chat(M, SPAN_WARNING("You cannot apply [B] to [src] from this position."))
+		return
+
+	var/form_dir = get_dir(M, src)
+	if(form_dir == GLOB.reverse_dir[dir] || form_dir == dir)
+		if(!do_after(M, 5 SECONDS, src, TRUE) || !density || !B || !M.unEquip(B, src))
+			to_chat(M, SPAN_NOTICE("fallaste"))
+			return
+		to_chat(M, "<span class='notice'>You successfully install \the [B].</span>")
+		brace = B
+		brace.airlock = src
+		if(brace.is_directional)
+			brace.block_dir = form_dir
+		update_icon()
+		to_chat(M, SPAN_NOTICE("You apply [B] to [src]."))

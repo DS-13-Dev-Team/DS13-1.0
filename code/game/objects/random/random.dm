@@ -578,9 +578,33 @@ obj/random/obstruction/item_to_spawn()
 	icon_state = "gift1"
 
 /obj/random/assembly/item_to_spawn()
-	return pickweight(list(/obj/item/device/electronic_assembly,
-				/obj/item/device/electronic_assembly/medium,
-				/obj/item/device/electronic_assembly/large))
+	return pickweight(list(/obj/item/device/electronic_assembly/calc,
+				/obj/item/device/electronic_assembly/clam,
+				/obj/item/device/electronic_assembly/default,
+				/obj/item/device/electronic_assembly/drone/android,
+				/obj/item/device/electronic_assembly/drone/arms,
+				/obj/item/device/electronic_assembly/drone/default,
+				/obj/item/device/electronic_assembly/drone/genbot,
+				/obj/item/device/electronic_assembly/drone/genbot,
+				/obj/item/device/electronic_assembly/drone/medbot,
+				/obj/item/device/electronic_assembly/drone/secbot,
+				/obj/item/device/electronic_assembly/hook,
+				/obj/item/device/electronic_assembly/pda,
+				/obj/item/device/electronic_assembly/simple,
+				/obj/item/device/electronic_assembly/medium/box,
+				/obj/item/device/electronic_assembly/medium/clam,
+				/obj/item/device/electronic_assembly/medium/default,
+				/obj/item/device/electronic_assembly/medium/gun,
+				/obj/item/device/electronic_assembly/medium/medical,
+				/obj/item/device/electronic_assembly/medium/radio,
+				/obj/item/device/electronic_assembly/large/arm,
+				/obj/item/device/electronic_assembly/large/default,
+				/obj/item/device/electronic_assembly/large/industrial,
+				/obj/item/device/electronic_assembly/large/scope,
+				/obj/item/device/electronic_assembly/large/tall,
+				/obj/item/device/electronic_assembly/large/terminal,
+				/obj/item/device/electronic_assembly/wallmount/heavy,
+				/obj/item/device/electronic_assembly/wallmount/light))
 
 /obj/random/advdevice
 	name = "random advanced device"
@@ -851,13 +875,11 @@ obj/random/obstruction/item_to_spawn()
 	icon_state = "spacecash1"
 
 /obj/random/cash/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/spacecash/bundle/c1 = 4,
-				/obj/item/weapon/spacecash/bundle/c10 = 3,
-				/obj/item/weapon/spacecash/bundle/c20 = 3,
-				/obj/item/weapon/spacecash/bundle/c50 = 2,
-				/obj/item/weapon/spacecash/bundle/c100 = 2,
-				/obj/item/weapon/spacecash/bundle/c1000 = 1,
-				/obj/item/weapon/spacecash/bundle/c10000 = 1))
+	return pickweight(list(/obj/item/weapon/spacecash/ewallet/random/c200 = 8,
+				/obj/item/weapon/spacecash/ewallet/random/c500 = 6,
+				/obj/item/weapon/spacecash/ewallet/random/c1000 = 4,
+				/obj/item/weapon/spacecash/ewallet/random/c5000 = 2,
+				/obj/item/weapon/spacecash/ewallet/random/c10000 = 1))
 
 
 

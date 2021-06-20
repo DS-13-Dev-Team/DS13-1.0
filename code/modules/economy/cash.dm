@@ -9,13 +9,25 @@
 	anchored = 0.0
 	force = 1.0
 	throwforce = 1.0
-	
+
 	throw_range = 2
 	w_class = ITEM_SIZE_TINY
 	var/access = list()
 	access = access_bridge
 	var/worth = 0
 	var/global/denominations = list(1000,500,200,100,50,20,10,1)
+
+
+/obj/item/weapon/spacecash/proc/pay_into(var/cost, var/atom/target)
+	if (cost > worth)
+		return FALSE
+
+	.=TRUE
+	worth -= cost
+
+	//Possible future TODO: Inform the target that it recieved credits
+
+	update_icon()
 
 /obj/item/weapon/spacecash/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/spacecash))
@@ -176,13 +188,3 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 			human_user.put_in_hands(bundle)
 	return
 
-/obj/item/weapon/spacecash/ewallet
-	name = "Charge card"
-	icon_state = "efundcard"
-	desc = "A card that holds an amount of money."
-	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
-
-/obj/item/weapon/spacecash/ewallet/examine(mob/user)
-	. = ..(user)
-	if (!(user in view(2)) && user!=src.loc) return
-	to_chat(user, "<span class='notice'>Charge card's owner: [src.owner_name]. Credits remaining: [src.worth].</span>")
