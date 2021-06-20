@@ -458,6 +458,7 @@
 
 /datum/design/item/implant
 	materials = list(MATERIAL_STEEL = 50, MATERIAL_GLASS = 50)
+	build_type = PROTOLATHE
 
 /datum/design/item/implant/AssembleDesignName()
 	..()
