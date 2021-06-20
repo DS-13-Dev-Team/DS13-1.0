@@ -8,6 +8,7 @@
 
 
 //Rig storage exclusion tags
+#define LOADOUT_TAG_RIG_STORAGE	"storage"
 #define LOADOUT_TAG_RIG_STORAGE_1	"storage_1"
 #define LOADOUT_TAG_RIG_STORAGE_2	"storage_2"
 #define LOADOUT_TAG_RIG_STORAGE_3	"storage_3"
@@ -19,6 +20,10 @@
 #define LOADOUT_TAG_RIG_JETPACK	"jetpack"
 
 #define LOADOUT_TAG_RIG_KINESIS	"kinesis"
+
+#define LOADOUT_TAG_RIG_MOVESPEED	"movespeed"
+
+#define LOADOUT_TAG_RIG_HEALTHBAR	"healthbar"
 
 #define LOADOUT_TAG_RIG_POWERSIPHON	"siphon"
 

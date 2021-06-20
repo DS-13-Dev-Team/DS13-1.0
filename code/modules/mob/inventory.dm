@@ -115,8 +115,14 @@ var/list/slot_equipment_priority = list( \
 		if (storage.store_item(thing, src))
 			return storage
 
-
-
+/*
+	Deposits an item in storages first, then in the user's hands as a fallback, returns false if both of those options fail
+*/
+/mob/proc/equip_to_storage_or_hands(obj/item/thing)
+	if (!equip_to_storage(thing))
+		if (!put_in_any_hand_if_possible(thing))
+			return FALSE
+	return TRUE
 
 
 /mob/proc/equip_to_storage_or_drop(obj/item/newitem)
@@ -349,7 +355,7 @@ var/list/slot_equipment_priority = list( \
 	for (var/obj/item/I as anything in things)
 		things += I.get_contents()
 	return things
-	
+
 /proc/get_contents_list(var/list/things)
 	var/list/stuff = list()
 	for (var/atom/A as anything in things)
@@ -364,3 +370,8 @@ var/list/slot_equipment_priority = list( \
 		inventory += I.get_contents()
 
 	return inventory
+
+
+
+/mob/remove_item(var/obj/item/output)
+	return unEquip(output, get_turf(src))

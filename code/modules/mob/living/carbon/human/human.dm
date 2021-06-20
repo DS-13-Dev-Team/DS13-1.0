@@ -90,11 +90,12 @@
 		if(potato && potato.cell)
 			stat("Battery charge:", "[potato.get_charge()]/[potato.cell.maxcharge]")
 
-		if(back && istype(back,/obj/item/weapon/rig))
-			var/obj/item/weapon/rig/suit = back
+		if(wearing_rig)
+			var/obj/item/weapon/rig/suit = wearing_rig
 			var/cell_status = "ERROR"
 			if(suit.cell) cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
 			stat(null, "Suit charge: [cell_status]")
+			stat(null, "Credit Balance: [wearing_rig.get_account_balance()]")
 
 		if(mind)
 			if(mind.changeling)

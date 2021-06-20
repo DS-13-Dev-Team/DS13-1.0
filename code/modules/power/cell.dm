@@ -28,6 +28,11 @@
 	. = ..()
 	update_icon()
 
+/obj/item/weapon/cell/Created()
+	charge = 0
+	.=..()
+
+
 /obj/item/weapon/cell/drain_power(var/drain_check, var/surge, var/power = 0)
 
 	if(drain_check)

@@ -4,6 +4,7 @@
 	extension_type = /datum/extension/rig_speedboost
 	active_power_cost = 500
 
+	module_tags = list(LOADOUT_TAG_RIG_MOVESPEED = 1)
 
 /obj/item/rig_module/extension/speedboost/advanced
 	name = "Advanced Femoral Exoskeleton"
@@ -11,6 +12,7 @@
 	extension_type = /datum/extension/rig_speedboost/advanced
 	active_power_cost = 750
 
+	module_tags = list(LOADOUT_TAG_RIG_MOVESPEED = 2)
 
 
 /datum/extension/rig_speedboost

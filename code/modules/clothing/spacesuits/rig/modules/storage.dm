@@ -19,6 +19,7 @@
 
 	base_type = /obj/item/rig_module/storage
 	loadout_tags = list(LOADOUT_TAG_RIG_STORAGE_2)
+	module_tags = list(LOADOUT_TAG_RIG_STORAGE = 2)
 
 /obj/item/rig_module/storage/light
 	name = "compact internal storage compartment"
@@ -27,6 +28,7 @@
 	max_storage_space = DEFAULT_SMALL_STORAGE
 
 	loadout_tags = list(LOADOUT_TAG_RIG_STORAGE_1)
+	module_tags = list(LOADOUT_TAG_RIG_STORAGE = 1)
 
 /obj/item/rig_module/storage/heavy
 	name = "expanded internal storage compartment"
@@ -34,6 +36,7 @@
 	max_w_class = ITEM_SIZE_LARGE
 	max_storage_space = DEFAULT_BULKY_STORAGE
 	loadout_tags = list(LOADOUT_TAG_RIG_STORAGE_3)
+	module_tags = list(LOADOUT_TAG_RIG_STORAGE = 3)
 
 //Create the internal storage and pass on various parameters
 /obj/item/rig_module/storage/New()

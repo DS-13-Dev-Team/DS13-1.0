@@ -117,8 +117,8 @@
 
 //We don't need to stop the looping audio here, it will do that itself
 /obj/item/projectile/remote/Destroy()
-
-	firemode.unregister_projectile(src)
+	if (firemode)
+		firemode.unregister_projectile(src)
 
 	if (!dropped)
 		drop()

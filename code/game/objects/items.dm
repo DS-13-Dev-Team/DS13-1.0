@@ -990,7 +990,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	return delay
 
 
-/obj/item/proc/store_item(var/obj/item/input, var/mob/user)
+/obj/item/store_item(var/obj/item/input, var/mob/user)
 	return FALSE
 
 

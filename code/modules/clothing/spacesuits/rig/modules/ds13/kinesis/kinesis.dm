@@ -40,6 +40,7 @@
 	/mob,
 	/atom/movable)
 
+	module_tags = list(LOADOUT_TAG_RIG_KINESIS = 1)
 
 
 //Registry
@@ -53,6 +54,7 @@
 
 	//The gravity tether, a beam of lightning which connects gun and blade
 	var/obj/effect/projectile/tether/tether = null
+
 
 
 //Data:
@@ -154,6 +156,10 @@
 	max_speed = 5.5
 
 	max_launch_speed = 11
+
+	module_tags = list(LOADOUT_TAG_RIG_KINESIS = 2)
+
+
 
 /*
 	Activation and Engaging

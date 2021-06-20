@@ -640,3 +640,13 @@ its easier to just keep the beam vertical.
 
 /atom/proc/unregister_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
 	return FALSE
+
+//Tell this atom to take an item inside it.
+//It should return false if it fails to do so
+/atom/proc/store_item(var/obj/item/input, var/mob/user)
+	return FALSE
+
+//Tell this atom that we want output to be removed from it.
+//Return false if we fail to remove the item
+/atom/proc/remove_item(var/obj/item/output)
+	return TRUE
