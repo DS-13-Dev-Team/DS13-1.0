@@ -14850,9 +14850,8 @@
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/engineering/spare_storage/tool)
 "aDd" = (
-/obj/machinery/camera/network/security,
-/obj/structure/closet/radiation/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/store,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/security/equipment)
 "aDe" = (
@@ -30573,6 +30572,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/structure/closet/radiation/security,
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/security/equipment)
 "bfA" = (
@@ -32024,6 +32024,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hallway/fore)
+"oMI" = (
+/obj/structure/table/standard,
+/obj/machinery/recharger,
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled,
+/area/ishimura/upper/security/equipment)
 
 (1,1,1) = {"
 aaa
@@ -67855,7 +67861,7 @@ aDw
 aJH
 aDw
 acA
-adh
+oMI
 aen
 aen
 aCd
