@@ -389,6 +389,7 @@
 	req_tech = list(TECH_MATERIAL = 4, TECH_BIO = 5)
 	materials = list(MATERIAL_STEEL = 8000, MATERIAL_GLASS = 8000, MATERIAL_SILVER = 2000)
 	build_path = /obj/item/weapon/reagent_containers/hypospray/vial
+	build_type = PROTOLATHE	//No appearing in store
 	sort_string = "MAEAA"
 
 /datum/design/item/surgery

@@ -195,7 +195,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	set waitfor = FALSE
 	playsound(src, sound_bolt, VOLUME_HIGH, TRUE)
 	if (delay)
-		sleep(bolt_time)
+		sleep(bolt_time+2)
 
 	occupant.facedir(SOUTH)
 	buckle_mob(occupant)

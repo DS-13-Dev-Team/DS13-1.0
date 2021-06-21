@@ -151,6 +151,7 @@
 	seal_delay = 0
 	if (wearer == target || target.equip_to_slot_if_possible(src, desired_slot, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = FALSE, force = TRUE)\
 	&& deploy)
-		toggle_seals(target, TRUE)
+		if (!active)
+			toggle_seals(target, TRUE)
 
 	seal_delay = cached_seal_delay
