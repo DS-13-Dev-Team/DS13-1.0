@@ -367,7 +367,6 @@
 		update_component_sealed()
 	update_icon(1)
 
-
 /obj/item/weapon/rig/proc/update_component_sealed()
 	for(var/obj/item/piece in list(helmet,boots,gloves,chest))
 		if(canremove)
