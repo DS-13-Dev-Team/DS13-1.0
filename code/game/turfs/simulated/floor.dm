@@ -2,6 +2,7 @@
 	name = "plating"
 	icon = 'icons/turf/flooring/plating.dmi'
 	icon_state = "plating"
+	permit_ao = TRUE
 
 	// Damage to flooring.
 	var/broken
@@ -131,3 +132,6 @@
 	if (broken || burnt || health < max_health)
 		return TRUE
 	return FALSE
+
+/turf/simulated/floor/is_floor()
+	return TRUE

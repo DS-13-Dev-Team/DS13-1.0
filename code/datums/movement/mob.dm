@@ -1,7 +1,7 @@
 /mob
 	var/moving           = FALSE
 
-/mob/proc/SelfMove(var/direction)
+/mob/proc/SelfMove(direction)
 	///Mobs with slow turning take a move to turn in place.
 	//We will attempt to turn towards the target if our movement is off cooldown
 	if (slow_turning)

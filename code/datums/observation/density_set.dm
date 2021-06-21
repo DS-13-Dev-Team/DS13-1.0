@@ -19,7 +19,7 @@ GLOBAL_DATUM_INIT(density_set_event, /decl/observ/density_set, new)
 *******************/
 /atom/set_density(new_density)
 	var/old_density = density
-	. = ..()
+	UNLINT(. = ..())
 	if(density != old_density)
 		GLOB.density_set_event.raise_event(src, old_density, density)
 		//We may have just changed our turf's clear status, set it to maybe
@@ -30,7 +30,7 @@ GLOBAL_DATUM_INIT(density_set_event, /decl/observ/density_set, new)
 
 /turf/ChangeTurf()
 	var/old_density = opacity
-	. = ..()
+	UNLINT(. = ..())
 	if(density != old_density)
 		GLOB.density_set_event.raise_event(src, old_density, density)
 		clear = null

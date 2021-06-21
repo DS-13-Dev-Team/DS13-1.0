@@ -957,8 +957,29 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ishimura/upper/engineering/engine_room)
 "act" = (
-/turf/simulated/wall/r_wall,
-/area/ishimura/upper/security)
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4;
+	icon_state = "open"
+	},
+/obj/machinery/door/airlock/maintenance{
+	dir = 4;
+	icon_state = "closed";
+	name = "Escape Wing Maintenance"
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_starboard)
 "acu" = (
 /obj/structure/table/standard,
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -30025,7 +30046,7 @@
 	name = "Hallway Maintenance"
 	},
 /turf/simulated/floor/plating,
-/area/ishimura/upper/misc/hallway/fore)
+/area/ishimura/upper/maintenance/fore_starboard)
 "beK" = (
 /obj/machinery/space_heater,
 /obj/structure/cable/cyan{
@@ -60798,7 +60819,7 @@ aMF
 aOE
 aQX
 arH
-aab
+arP
 arP
 aUW
 bfQ
@@ -61000,7 +61021,7 @@ aMI
 aOT
 aRr
 arH
-aab
+arP
 arP
 aOM
 aRy
@@ -61202,7 +61223,7 @@ aNs
 aPV
 aIZ
 arH
-aab
+arP
 arP
 aPz
 aQP
@@ -61404,8 +61425,8 @@ aOb
 arH
 arH
 arH
-aec
-aec
+arP
+arP
 aQH
 aRN
 aQH
@@ -61611,12 +61632,12 @@ aDw
 aEr
 bcM
 aEr
-aec
-aUi
-aXs
-aUi
-aUi
-aUi
+bfM
+bfM
+act
+bfM
+bfM
+bfM
 aah
 aah
 aaa
@@ -61813,7 +61834,7 @@ aDw
 aDw
 bcN
 aLu
-aec
+bfM
 adp
 bcT
 bge
@@ -62217,7 +62238,7 @@ aDw
 aDw
 aDu
 aLu
-aec
+bfM
 adp
 bgd
 bgg
@@ -62419,7 +62440,7 @@ bhQ
 aEr
 bcR
 bdO
-aec
+bfM
 aDR
 bcT
 bgm
@@ -65642,7 +65663,7 @@ aaY
 aaY
 aaY
 arN
-aeh
+aaq
 aaq
 aaq
 aaq
@@ -65844,7 +65865,7 @@ aaY
 acJ
 afP
 arQ
-aeh
+aaq
 aCK
 aFM
 aOR
@@ -66046,7 +66067,7 @@ aaY
 acX
 ago
 asa
-aeh
+aaq
 aCL
 aHj
 aOY
@@ -66248,7 +66269,7 @@ aaY
 adk
 aoN
 ass
-aeh
+aaq
 aCN
 aHk
 aPd
@@ -68264,12 +68285,12 @@ aGd
 aDw
 aJH
 aDw
-aaD
-act
-act
-act
-act
-act
+acA
+acA
+acA
+acA
+acA
+acA
 aQI
 aQI
 acA
@@ -69880,8 +69901,8 @@ aaT
 aaT
 aaT
 aaT
-acv
-acv
+aaT
+aaT
 aHC
 adW
 aGh
@@ -70083,7 +70104,7 @@ aDy
 bhW
 aDy
 aDy
-acv
+aaT
 acN
 acN
 acN
@@ -71280,7 +71301,7 @@ aBP
 aCr
 aCE
 azU
-aab
+azU
 atk
 atk
 aaT
@@ -71296,7 +71317,7 @@ aKU
 bfl
 aKU
 aMZ
-aaT
+acN
 acN
 aIb
 aKg
@@ -71482,7 +71503,7 @@ aBP
 anK
 aAo
 azU
-aav
+azU
 aav
 aav
 aaT
@@ -71498,7 +71519,7 @@ aMY
 aEo
 aEJ
 aVe
-aaT
+acN
 acN
 acN
 acN
@@ -71684,7 +71705,7 @@ azU
 azU
 azU
 azU
-aav
+azU
 aav
 aav
 aaT
@@ -71705,8 +71726,8 @@ aav
 aav
 aav
 aav
-aah
-aah
+ajT
+ajT
 aah
 aah
 aah
@@ -71884,8 +71905,8 @@ aah
 aah
 aah
 aah
-aah
-aah
+ajT
+ajT
 aav
 aaL
 aJN
@@ -71907,8 +71928,8 @@ aKM
 aLh
 aaL
 aav
-aah
-aah
+ajT
+ajT
 bbF
 bbF
 bbF
@@ -72086,7 +72107,7 @@ bbF
 bbF
 bbF
 bbF
-aah
+ajT
 aav
 aav
 aaM
@@ -72110,7 +72131,7 @@ aaO
 bdK
 aav
 aav
-aah
+ajT
 aaa
 aaa
 aaa
@@ -72288,7 +72309,7 @@ aaa
 aaa
 aaa
 aaa
-aah
+ajT
 aav
 aJh
 aZa
@@ -72312,7 +72333,7 @@ aZa
 aZa
 aJh
 aav
-aah
+ajT
 aaa
 aaa
 aaa
@@ -72490,7 +72511,7 @@ aaa
 aaa
 aaa
 aaa
-aah
+ajT
 aav
 aJh
 aZa
@@ -72514,7 +72535,7 @@ aJp
 aZa
 aJh
 aav
-aah
+ajT
 aaa
 aaa
 aaa
@@ -74712,8 +74733,8 @@ aaa
 aaa
 aaa
 aaa
-aah
-aah
+ajT
+ajT
 aav
 aIJ
 aZa
@@ -74735,8 +74756,8 @@ aZa
 aZa
 aLi
 aav
-aah
-aah
+ajT
+ajT
 aaa
 aaa
 aaa
@@ -75528,7 +75549,7 @@ bcv
 bct
 ats
 aav
-aah
+ajT
 aaa
 aaa
 aaa
@@ -75536,7 +75557,7 @@ aaa
 aaa
 aaa
 aaa
-aah
+ajT
 aav
 ats
 bct
@@ -75730,7 +75751,7 @@ aar
 aar
 aar
 ajT
-aah
+ajT
 aaa
 aaa
 aaa
@@ -75738,7 +75759,7 @@ aaa
 aaa
 aaa
 aaa
-aah
+ajT
 ajT
 aar
 aar

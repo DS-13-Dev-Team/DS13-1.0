@@ -2076,9 +2076,6 @@
 /obj/random/loot/often,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
-"eA" = (
-/turf/simulated/wall/r_wall,
-/area/space)
 "eB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -32007,10 +32004,10 @@ dD
 dD
 fx
 dD
-eA
-eA
-eA
-eA
+fv
+fv
+fv
+fv
 fw
 eU
 iV
@@ -32209,10 +32206,10 @@ id
 hu
 gP
 cO
-eA
-eA
-eA
-eA
+fv
+fv
+fv
+fv
 fw
 eU
 fv
@@ -32411,10 +32408,10 @@ ed
 fa
 fy
 dQ
-eA
-eA
-eA
-eA
+fv
+fv
+fv
+fv
 fw
 eU
 fv
@@ -32613,10 +32610,10 @@ fb
 fk
 cL
 dD
-eA
-eA
-eA
-eA
+fv
+fv
+fv
+fv
 fw
 eU
 fv
@@ -32815,10 +32812,10 @@ gX
 fl
 fm
 dD
-eA
-eA
-eA
-eA
+fv
+fv
+fv
+fv
 fw
 eU
 fv
