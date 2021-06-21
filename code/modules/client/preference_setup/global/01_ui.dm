@@ -4,6 +4,7 @@
 	var/UI_style = "Midnight"
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
+	var/client_theme = "dark"
 
 /datum/category_item/player_setup_item/player_global/ui
 	name = "UI"
@@ -14,18 +15,22 @@
 	S["UI_style_color"]	>> pref.UI_style_color
 	S["UI_style_alpha"]	>> pref.UI_style_alpha
 	S["ooccolor"]		>> pref.ooccolor
+	S["client_theme"]	>>	pref.client_theme
+	pref.client.set_theme(pref.client_theme, FALSE)
 
 /datum/category_item/player_setup_item/player_global/ui/save_preferences(var/savefile/S)
 	S["UI_style"]		<< pref.UI_style
 	S["UI_style_color"]	<< pref.UI_style_color
 	S["UI_style_alpha"]	<< pref.UI_style_alpha
 	S["ooccolor"]		<< pref.ooccolor
+	S["client_theme"]	<<	pref.client_theme
 
 /datum/category_item/player_setup_item/player_global/ui/sanitize_preferences()
 	pref.UI_style		= sanitize_inlist(pref.UI_style, all_ui_styles, initial(pref.UI_style))
 	pref.UI_style_color	= sanitize_hexcolor(pref.UI_style_color, initial(pref.UI_style_color))
 	pref.UI_style_alpha	= sanitize_integer(pref.UI_style_alpha, 0, 255, initial(pref.UI_style_alpha))
 	pref.ooccolor		= sanitize_hexcolor(pref.ooccolor, initial(pref.ooccolor))
+	pref.client_theme		= sanitize_inlist(pref.client_theme, GLOB.client_themes, "dark")
 
 /datum/category_item/player_setup_item/player_global/ui/content(var/mob/user)
 	. += "<b>UI Settings</b><br>"
