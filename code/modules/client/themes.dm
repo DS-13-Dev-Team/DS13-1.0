@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(skin_buttons, list("infob","discordb", "textb", "wikib", "forumb", "changelog", "rulesb", "hotkey_toggle"))
+GLOBAL_LIST_INIT(skin_buttons, list("infob","discordb", "textb", "wikib", "forumb", "changelog", "rulesb", "hotkey_toggle", "codexb"))
 /decl/theme
 	var/name = "Theme"
 	var/id = "theme"	//All lowercase, must be unique
@@ -7,9 +7,11 @@ GLOBAL_LIST_INIT(skin_buttons, list("infob","discordb", "textb", "wikib", "forum
 	var/border_color = "#FFFFFF"	//The outer portions of panels around the inner
 	var/text_color = "#000000"
 
-	var/hide_menu	=	FALSE
-	var/hide_status = FALSE
-	var/hide_title = FALSE
+	var/fullscreen = FALSE
+
+//Note, pressing tab used to turn the textbox this color
+// input.background-color=#D3B5B5
+//Future TODO: Reimplement this with theme-specific coloring
 
 /decl/theme/proc/apply(var/player)
 	winset(player, "infowindow", "background-color = [panel_color]; text-color = [text_color]")
@@ -18,9 +20,9 @@ GLOBAL_LIST_INIT(skin_buttons, list("infob","discordb", "textb", "wikib", "forum
 	winset(player, "browseroutput", "text-color = [text_color]")
 	winset(player, "outputwindow", "background-color = [panel_color]")
 	winset(player, "outputwindow", "text-color = [text_color]")
-	winset(player, "input", "background-color = [panel_color]; font-size = 10;")
+	winset(player, "input", "background-color = [panel_color]; font-size = 8; text-color = [text_color];")
 	winset(player, "mainwindow", "background-color = [panel_color]")
-	winset(player, "mainvsplit", "background-color = [border_color]")
+	winset(player, "split", "background-color = [border_color]")
 	//Buttons
 	for (var/button in GLOB.skin_buttons)
 		winset(player, button, "background-color = [panel_color]; text-color = [text_color]")
@@ -48,20 +50,16 @@ GLOBAL_LIST_INIT(skin_buttons, list("infob","discordb", "textb", "wikib", "forum
 	winset(player, "tooltip", "background-color = [panel_color]")
 	winset(player, "tooltip", "text-color = [text_color]")
 
-	if (hide_menu)
-		winset(player, "mainwindow", "menu=")
+	if(fullscreen)
+		winset(player, "mainwindow", "is-maximized=false;can-resize=false;titlebar=false")
+		winset(player, "mainwindow", "menu=null;statusbar=false")
+		winset(player, "mainwindow.split", "pos=0x0")
 	else
-		winset(player, "mainwindow", "menu=menu")
+		winset(player, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true")
+		winset(player, "mainwindow", "menu=menu;statusbar=true")
+		winset(player, "mainwindow.split", "pos=3x0")
+	winset(player, "mainwindow", "is-maximized=true")
 
-	if (hide_status)
-		winset(player, "mainwindow", "statusbar=false")
-	else
-		winset(player, "mainwindow", "statusbar=true")
-
-	if (hide_title)
-		winset(player, "mainwindow", "titlebar=false")
-	else
-		winset(player, "mainwindow", "titlebar=true")
 	/*
 		Statics
 		These shouldn't change between skins
@@ -88,9 +86,7 @@ GLOBAL_LIST_INIT(skin_buttons, list("infob","discordb", "textb", "wikib", "forum
 /decl/theme/dark/perfect
 	name = "Perfect Dark"
 	id = "realdark"
-	hide_menu	=	TRUE
-	hide_status = TRUE
-	hide_title = TRUE
+	fullscreen	=	TRUE
 
 
 
