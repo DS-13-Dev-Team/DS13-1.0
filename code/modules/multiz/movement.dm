@@ -22,8 +22,8 @@
 	var/turf/simulated/open/O = GetAbove(src)
 	var/atom/climb_target
 	if(istype(O))
-		for(var/turf/T in trange(1,O))
-			if(!isopenspace(T) && T.is_floor())
+		for(var/turf/T in RANGE_TURFS(O, 1))
+			if(T.is_hole && T.is_floor())
 				climb_target = T
 			else
 				for(var/obj/I in T)

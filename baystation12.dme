@@ -381,6 +381,7 @@
 #include "code\datums\movement\mob.dm"
 #include "code\datums\movement\movement.dm"
 #include "code\datums\movement\movement_handler.dm"
+#include "code\datums\movement\multiz.dm"
 #include "code\datums\movement\robot.dm"
 #include "code\datums\movement\movement_handlers\helpers.dm"
 #include "code\datums\movement\movement_handlers\mob.dm"
