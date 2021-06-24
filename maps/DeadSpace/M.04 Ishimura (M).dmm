@@ -970,12 +970,10 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance{
 	dir = 4;
-	icon_state = "closed";
 	name = "Escape Wing Maintenance"
 	},
 /turf/simulated/floor/plating,
@@ -9758,10 +9756,10 @@
 /area/ishimura/upper/engineering/breakroom)
 "aug" = (
 /obj/structure/table/gamblingtable,
-/obj/item/weapon/spacecash/bundle/c100,
-/obj/item/weapon/spacecash/bundle/c100,
-/obj/item/weapon/spacecash/bundle/c50,
-/obj/item/weapon/spacecash/bundle/c10,
+/obj/item/weapon/spacecash/ewallet/random/c10000,
+/obj/item/weapon/spacecash/ewallet/random/c10000,
+/obj/item/weapon/spacecash/ewallet/random/c200,
+/obj/item/weapon/spacecash/ewallet/random/c200,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/misc/janitorcloset/aft)
 "auh" = (
@@ -29575,10 +29573,10 @@
 "bdU" = (
 /obj/structure/table/standard,
 /obj/structure/table/standard,
-/obj/item/weapon/spacecash/bundle/c10{
+/obj/item/weapon/spacecash/ewallet/random/c200{
 	pixel_y = 4
 	},
-/obj/item/weapon/spacecash/bundle/c20,
+/obj/item/weapon/spacecash/ewallet/random/c200,
 /obj/item/device/radio/intercom{
 	dir = 1;
 	pixel_y = -35

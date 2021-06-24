@@ -2325,7 +2325,7 @@
 	},
 /obj/random/projectile,
 /obj/item/weapon/material/hatchet/tacknife,
-/obj/item/weapon/spacecash/bundle/c100,
+/obj/item/weapon/spacecash/ewallet/random/c20000,
 /obj/random/cash,
 /obj/random/cash,
 /obj/random/handgun,

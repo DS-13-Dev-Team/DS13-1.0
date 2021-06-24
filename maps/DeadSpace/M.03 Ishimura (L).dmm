@@ -4157,10 +4157,10 @@
 /area/ishimura/lower/mining/mining_bay)
 "aiM" = (
 /obj/structure/table/rack,
-/obj/item/weapon/spacecash/bundle/c10{
+/obj/item/weapon/spacecash/ewallet/random/c200{
 	pixel_y = 4
 	},
-/obj/item/weapon/spacecash/bundle/c20,
+/obj/item/weapon/spacecash/ewallet/random/c200,
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/aft_port)
@@ -22502,10 +22502,10 @@
 /area/ishimura/lower/maintenance/starboard)
 "aRR" = (
 /obj/structure/table/gamblingtable,
-/obj/item/weapon/spacecash/bundle/c100,
-/obj/item/weapon/spacecash/bundle/c100,
-/obj/item/weapon/spacecash/bundle/c50,
-/obj/item/weapon/spacecash/bundle/c10,
+/obj/item/weapon/spacecash/ewallet/random/c1000,
+/obj/item/weapon/spacecash/ewallet/random/c1000,
+/obj/item/weapon/spacecash/ewallet/random/c200,
+/obj/item/weapon/spacecash/ewallet/random/c200,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/starboard)
 "aRS" = (
