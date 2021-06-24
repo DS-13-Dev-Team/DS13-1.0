@@ -980,7 +980,7 @@
 "ct" = (
 /obj/structure/table/standard,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/spacecash/bundle/c10,
+/obj/item/weapon/spacecash/ewallet/random/c2000,
 /obj/random/smokes,
 /obj/random/snack,
 /turf/simulated/floor/tiled,

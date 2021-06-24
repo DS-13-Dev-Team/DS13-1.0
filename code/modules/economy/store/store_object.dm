@@ -11,6 +11,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	icon_state = "kiosk_on"
 
 	layer = ABOVE_WINDOW_LAYER	//Above windows but below humans
+	anchored = TRUE
 
 	var/door_state = STORE_OPEN
 

@@ -1541,10 +1541,10 @@
 /area/ishimura/eva)
 "da" = (
 /obj/structure/table/standard,
-/obj/item/weapon/spacecash/bundle/c10{
+/obj/item/weapon/spacecash/ewallet/random/c200{
 	pixel_y = 4
 	},
-/obj/item/weapon/spacecash/bundle/c20,
+/obj/item/weapon/spacecash/ewallet/random/c200,
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "db" = (

@@ -145,7 +145,16 @@
 	Enter the amount you wish to withdraw. Please note, deposits are not available, this account is withdrawal-only."
 	,"CEC Employee Checking Account",available_balance) as num | null
 
-	withdrawal_amount = Clamp(withdrawal_amount, 1, available_balance)
+
+	//We need to recheck things to prevent exploits now
+	if (!ECA)
+		return
+	available_balance = ECA.money
+
+	withdrawal_amount = Clamp(withdrawal_amount, 0, available_balance)
+
+	if (!withdrawal_amount)
+		return
 
 	var/response = alert(user, "Welcome to the CEC Employee Checking Account withdrawal interface. \n\
 	Currently Available Balance:	[available_balance]	credits \n\
