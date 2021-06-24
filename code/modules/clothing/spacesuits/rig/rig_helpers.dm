@@ -19,13 +19,12 @@
 */
 /proc/transfer_rig(var/obj/item/weapon/rig/target, var/obj/item/weapon/rig/source, var/list/extra_modules, var/atom/dump, var/mob/living/carbon/human/user)
 
-
+	//world << "Transfer T:[target]	S:[source]	Mod:[extra_modules]	D:[dump]	U:[user]"
 	//This is required
 	if (!istype(target))
 		return
 
-	var/t_hotswap = target.hotswap
-	target.hotswap = TRUE
+
 
 	//The dump location is where we'll put any modules that can't fit into either rig
 	if (!dump)
@@ -53,11 +52,8 @@
 	var/list/failed = list()
 
 	//Now lets succ all the modules out of both rigs and put them into a pool
-	var/s_hotswap
-	target.hotswap = TRUE
 	if (source)
-		s_hotswap = source.hotswap
-		source.hotswap = TRUE
+
 		for (var/obj/item/rig_module/RM as anything in source.installed_modules)
 			source.uninstall(RM)
 			primary += RM
@@ -67,9 +63,12 @@
 		primary += RM
 
 
+
 	//Next up, we're going to try to put every single module into the target.
 	for (var/obj/item/rig_module/RM as anything in primary)
-		var/list/result = target.attempt_install(RM, user = null, force = FALSE, instant = TRUE, delete_replaced = FALSE)
+		var/list/result = target.attempt_install(RM, user = null, force = FALSE, instant = TRUE, delete_replaced = FALSE, selfchecks = FALSE)
+		//world << "Installing [RM] into [target], result [result] "
+
 		//If result is false, RM failed to go in, toss it in the secondary list
 		if (!result)
 			secondary += RM
@@ -84,7 +83,7 @@
 	//Now the target rig has been populated, lets put the leftover/inferior modules into the old/source rig, if there is one
 	if (source)
 		for (var/obj/item/rig_module/RM as anything in secondary)
-			var/list/result = source.attempt_install(RM, user = null, force = FALSE, instant = TRUE, delete_replaced = FALSE)
+			var/list/result = source.attempt_install(RM, user = null, force = FALSE, instant = TRUE, delete_replaced = FALSE, selfchecks = FALSE)
 
 			//If result is false, RM failed to go in, toss it in the failed list
 			if (!result)
@@ -106,12 +105,6 @@
 
 		dump.store_item(A)
 
-	//Reset hotswap values
-	target.hotswap = t_hotswap
-	if (source)
-
-		source.hotswap = s_hotswap
-		dump.store_item(source)
 
 	//Lets swap over accounts if there were any
 	if (source && target)

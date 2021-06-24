@@ -206,11 +206,15 @@
 
 
 /*
-	Central entrypoint to install Rig modules
+	Central entrypoint to install Rig modules. All vars optional unless noted
+	RM: The module we are installing, required
+	User: Who is doing it, if anyone
+	force: If true, the module will be installed even if a superior version already exists	//Todo: refactor this
+	instant: Skip time delay
 */
-/obj/item/weapon/rig/proc/attempt_install(var/obj/item/rig_module/RM, var/mob/user, var/force = FALSE, var/instant = FALSE, var/delete_replaced = FALSE)
+/obj/item/weapon/rig/proc/attempt_install(var/obj/item/rig_module/RM, var/mob/user, var/force = FALSE, var/instant = FALSE, var/delete_replaced = FALSE, var/selfchecks = TRUE)
 
-	if(is_worn() && !can_modify() && !force)
+	if(selfchecks && is_worn() && !can_modify() && !force)
 		to_chat(user, "<span class='danger'>You can't install a RIG module while the suit is being worn.</span>")
 		return FALSE
 
