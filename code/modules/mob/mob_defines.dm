@@ -21,11 +21,13 @@
 		/datum/movement_handler/mob/physically_capable,
 		/datum/movement_handler/mob/physically_restrained,
 		/datum/movement_handler/mob/space,
+		/datum/movement_handler/mob/multiz,
 		/datum/movement_handler/mob/movement
 	)
 
 	var/mob_flags
 
+	var/last_quick_move_time = 0
 	var/list/client_images = list() // List of images applied to/removed from the client on login/logout
 	var/datum/mind/mind
 
@@ -107,8 +109,11 @@
 
 	var/a_intent = I_HELP//Living
 
-	var/decl/move_intent/move_intent = /decl/move_intent/run
-	var/move_intents = list(/decl/move_intent/run, /decl/move_intent/walk)
+	var/decl/move_intent/move_intent = /decl/move_intent/walk
+	var/list/move_intents = list(/decl/move_intent/walk)
+
+	var/decl/move_intent/default_walk_intent
+	var/decl/move_intent/default_run_intent
 
 	var/obj/buckled = null//Living
 	var/obj/item/l_hand = null//Living

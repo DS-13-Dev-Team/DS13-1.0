@@ -2,10 +2,6 @@
 	name = "helmet"
 	desc = "Reinforced headgear. Protects the head from impacts."
 	icon_state = "helmet"
-	item_state_slots = list(
-		slot_l_hand_str = "helmet",
-		slot_r_hand_str = "helmet",
-		)
 	valid_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	item_flags = ITEM_FLAG_THICKMATERIAL
@@ -23,8 +19,18 @@
 	name = "handmade combat helmet"
 	desc = "It looks like it was made from a bucket and some steel. Uncomfortable and heavy but better than nothing."
 	icon_state = "hm_helmet"
-	armor = list(melee = 35, bullet = 30, laser = 30,energy = 30, bomb = 0, bio = 0, rad = 0)
+	armor = list(melee = 35, bullet = 30, laser = 30, energy = 30, bomb = 0, bio = 0, rad = 0)
 	flags_inv = HIDEEARS
+	cold_protection = HEAD
+	siemens_coefficient = 0.5
+
+/obj/item/clothing/head/helmet/pcsi
+	name = "P.C.S.I helmet"
+	desc = "A ceramic helmet with a thin, tempered glass, face shield in the middle. A common design look for different security force helmets throughout the galaxy."
+	icon_state = "pcsi_helmet"
+	armor = list(melee = 55, bullet = 60, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)
+	flags_inv = HIDEEARS|BLOCKHEADHAIR
+	body_parts_covered = HEAD|FACE|EYES
 	cold_protection = HEAD
 	siemens_coefficient = 0.5
 

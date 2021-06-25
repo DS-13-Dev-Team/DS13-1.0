@@ -86,11 +86,14 @@ open_table = FALSE;}
 		if(jobban_isbanned(preference_mob(), antag.id) || (antag.id == MODE_MALFUNCTION && jobban_isbanned(preference_mob(), "AI")))
 			. += "<span class='danger'>\[BANNED\]</span><br>"
 		else if(antag.id in pref.be_special_role)
-			. += "<span class='linkOn'>High</span> <a href='?src=\ref[src];del_special=[antag.id]'>Low</a> <a href='?src=\ref[src];add_never=[antag.id]'>Never</a></br>"
-		else if(antag.id in pref.never_be_special_role)
-			. += "<a href='?src=\ref[src];add_special=[antag.id]'>High</a> <a href='?src=\ref[src];del_special=[antag.id]'>Low</a> <span class='linkOn'>Never</span></br>"
+			var/weight = min(pref.be_special_role[antag.id])
+			if (weight == ROLE_WEIGHT_HIGH)
+				. += "<span class='linkOn'>High</span> <a href='?src=\ref[src];add_special=[antag.id];weight=[ROLE_WEIGHT_LOW]'>Low</a> <a href='?src=\ref[src];del_special=[antag.id]'>Never</a></br>"
+			else
+				. += "<a href='?src=\ref[src];add_special=[antag.id];weight=[ROLE_WEIGHT_HIGH]'>High</a> <span class='linkOn'>Low</span> <a href='?src=\ref[src];del_special=[antag.id]'>Never</a></br>"
 		else
-			. += "<a href='?src=\ref[src];add_special=[antag.id]'>High</a> <span class='linkOn'>Low</span> <a href='?src=\ref[src];add_never=[antag.id]'>Never</a></br>"
+			. += "<a href='?src=\ref[src];add_special=[antag.id];weight=[ROLE_WEIGHT_HIGH]'>High</a> <a href='?src=\ref[src];add_special=[antag.id];weight=[ROLE_WEIGHT_LOW]'>Low</a> <span class='linkOn'>Never</span></br>"
+
 		. += "</td></tr>"
 	CLOSE_TABLE
 
@@ -107,31 +110,19 @@ open_table = FALSE;}
 		if(banned_from_ghost_role(preference_mob(), ghost_trap))
 			. += "<span class='danger'>\[BANNED\]</span><br>"
 		else if(ghost_trap.pref_check in pref.be_special_role)
-			. += "<span class='linkOn'>High</span> <a href='?src=\ref[src];del_special=[ghost_trap.pref_check]'>Low</a> <a href='?src=\ref[src];add_never=[ghost_trap.pref_check]'>Never</a></br>"
-		else if(ghost_trap.pref_check in pref.never_be_special_role)
-			. += "<a href='?src=\ref[src];add_special=[ghost_trap.pref_check]'>High</a> <a href='?src=\ref[src];del_special=[ghost_trap.pref_check]'>Low</a> <span class='linkOn'>Never</span></br>"
+			var/weight = min(pref.be_special_role[ghost_trap.pref_check])
+			if (weight == ROLE_WEIGHT_HIGH)
+				. += "<span class='linkOn'>High</span> <a href='?src=\ref[src];add_special=[ghost_trap.pref_check];weight=[ROLE_WEIGHT_LOW]'>Low</a> <a href='?src=\ref[src];del_special=[ghost_trap.pref_check]'>Never</a></br>"
+			else
+				. += "<a href='?src=\ref[src];add_special=[ghost_trap.pref_check];weight=[ROLE_WEIGHT_HIGH]'>High</a> <span class='linkOn'>Low</span> <a href='?src=\ref[src];del_special=[ghost_trap.pref_check]'>Never</a></br>"
 		else
-			. += "<a href='?src=\ref[src];add_special=[ghost_trap.pref_check]'>High</a> <span class='linkOn'>Low</span> <a href='?src=\ref[src];add_never=[ghost_trap.pref_check]'>Never</a></br>"
+			. += "<a href='?src=\ref[src];add_special=[ghost_trap.pref_check];weight=[ROLE_WEIGHT_HIGH]'>High</a> <a href='?src=\ref[src];add_special=[ghost_trap.pref_check];weight=[ROLE_WEIGHT_LOW]'>Low</a> <span class='linkOn'>Never</span></br>"
+
 		. += "</td></tr>"
+
+
 	. += "</table>"
 
-	//. += "Auto Join ERT: "
-	//. += {"<a class='linkActive noIcon checkbox' unselectable='on' title='If ticked, you will automatically join ert.'  style='display:inline-block;' onclick='document.location="?src=\ref[src];auto_ert=[pref.auto_ert ? "false" : "true"]"' ><div><form><input type='checkbox' [pref.auto_ert ? "checked" : ""]></form></div></a><br>"}
-
-	/*
-	. += "<b>ERT Availability:</b><br>"
-	. += "<table>"
-	for(var/ert_type in subtypesof(/datum/emergency_call))
-		var/datum/emergency_call/ert = ert_type
-		var/ert_id = initial(ert.pref_name)
-		. += "<tr><td>[ert_id]: </td><td>"
-		if(ert_id in pref.never_be_special_role)
-			. += "<a href='?src=\ref[src];del_special=[ert_id]'>Yes</a> <span class='linkOn'>No</span></br>"
-		else
-			. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];add_never=[ert_id]'>No</a></br>"
-		. += "</td></tr>"
-	. += "</table>"
-	*/
 	. = jointext(.,null)
 
 /datum/category_item/player_setup_item/proc/banned_from_ghost_role(var/mob, var/datum/ghosttrap/ghost_trap)
@@ -144,7 +135,7 @@ open_table = FALSE;}
 	if(href_list["add_special"])
 		if(!(href_list["add_special"] in valid_special_roles()))
 			return TOPIC_HANDLED
-		pref.be_special_role |= href_list["add_special"]
+		pref.be_special_role[href_list["add_special"]] = max(text2num(href_list["weight"]), ROLE_WEIGHT_LOW)
 		pref.never_be_special_role -= href_list["add_special"]
 		return TOPIC_REFRESH
 

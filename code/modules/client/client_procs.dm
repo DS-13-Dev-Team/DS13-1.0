@@ -137,10 +137,13 @@
 			return
 	//DS13 - Give locally logged in users host status
 	var/localhost_addresses = list("127.0.0.1", "::1")
+	var/local = FALSE
 	if(isnull(address) || (address in localhost_addresses))
+		local = TRUE
 		var/rights = admin_ranks["Host"]
 		var/datum/admins/D = new /datum/admins("Host", rights, ckey)
 		D.associate(src)
+		addtimer(CALLBACK(src, /client/proc/send_resources), 30 SECONDS)
 
 	// Change the way they should download resources.
 	var/list/resource_urls = CONFIG_GET(keyed_list/resource_urls)
@@ -195,7 +198,8 @@
 
 	log_client_to_db()
 
-	send_resources()
+	if (!local)
+		send_resources()
 
 	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
@@ -354,7 +358,6 @@
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_resources()
-
 	getFiles(
 		'html/search.js',
 		'html/panels.css',

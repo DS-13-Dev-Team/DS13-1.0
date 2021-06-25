@@ -1,7 +1,7 @@
 /mob
 	var/moving           = FALSE
 
-/mob/proc/SelfMove(var/direction)
+/mob/proc/SelfMove(direction)
 	///Mobs with slow turning take a move to turn in place.
 	//We will attempt to turn towards the target if our movement is off cooldown
 	if (slow_turning)
@@ -269,11 +269,95 @@
 
 #undef DO_MOVE
 
+/mob/proc/set_next_usable_move_intent()
+	var/checking_intent = (istype(move_intent) ? move_intent.type : move_intents[1])
+	for(var/i = 1 to length(move_intents)) // One full iteration of the move set.
+		checking_intent = next_in_list(checking_intent, move_intents)
+		if(set_move_intent(decls_repository.get_decl(checking_intent)))
+			return
 
-/mob/proc/set_move_intent(var/decl/move_intent/M)
-	move_intent = M
-	return TRUE
+/mob/proc/set_move_intent(var/decl/move_intent/next_intent)
+	if(next_intent && move_intent != next_intent && next_intent.can_be_used_by(src))
+		move_intent = next_intent
+		if(hud_used)
+			hud_used.move_intent.icon_state = move_intent.hud_icon_state
+		return TRUE
+	return FALSE
 
+/mob/proc/get_movement_datum_by_flag(var/move_flag = MOVE_INTENT_DELIBERATE)
+	for(var/m_intent in move_intents)
+		var/decl/move_intent/check_move_intent = decls_repository.get_decl(m_intent)
+		if(check_move_intent.flags & move_flag)
+			return check_move_intent
+
+/mob/proc/get_movement_datum_by_missing_flag(var/move_flag = MOVE_INTENT_DELIBERATE)
+	for(var/m_intent in move_intents)
+		var/decl/move_intent/check_move_intent = decls_repository.get_decl(m_intent)
+		if(!(check_move_intent.flags & move_flag))
+			return check_move_intent
+
+/mob/proc/get_movement_datums_by_flag(var/move_flag = MOVE_INTENT_DELIBERATE)
+	. = list()
+	for(var/m_intent in move_intents)
+		var/decl/move_intent/check_move_intent = decls_repository.get_decl(m_intent)
+		if(check_move_intent.flags & move_flag)
+			. += check_move_intent
+
+/mob/proc/get_movement_datums_by_missing_flag(var/move_flag = MOVE_INTENT_DELIBERATE)
+	. = list()
+	for(var/m_intent in move_intents)
+		var/decl/move_intent/check_move_intent = decls_repository.get_decl(m_intent)
+		if(!(check_move_intent.flags & move_flag))
+			. += check_move_intent
+
+/mob/verb/SetDefaultWalk()
+	set name = "Set Default Walk"
+	set desc = "Select your default walking style."
+	set category = "IC"
+	var/choice = input(usr, "Select a default walk.", "Set Default Walk") as null|anything in get_movement_datums_by_missing_flag(MOVE_INTENT_QUICK)
+	if(choice && (choice in get_movement_datums_by_missing_flag(MOVE_INTENT_QUICK)))
+		default_walk_intent = choice
+		to_chat(src, "You will now default to [default_walk_intent] when moving deliberately.")
+
+/mob/verb/SetDefaultRun()
+	set name = "Set Default Run"
+	set desc = "Select your default running style."
+	set category = "IC"
+	var/choice = input(usr, "Select a default run.", "Set Default Run") as null|anything in get_movement_datums_by_flag(MOVE_INTENT_QUICK)
+	if(choice && (choice in get_movement_datums_by_flag(MOVE_INTENT_QUICK)))
+		default_run_intent = choice
+		to_chat(src, "You will now default to [default_run_intent] when moving quickly.")
+
+/client/verb/setmovingslowly()
+	set hidden = 1
+	if(mob)
+		mob.set_moving_slowly()
+
+/mob/proc/set_moving_slowly()
+	if(!default_walk_intent)
+		default_walk_intent = get_movement_datum_by_missing_flag(MOVE_INTENT_QUICK)
+	if(default_walk_intent && move_intent != default_walk_intent)
+		set_move_intent(default_walk_intent)
+
+/client/verb/setmovingquickly()
+	set hidden = 1
+	if(mob)
+		mob.set_moving_quickly()
+
+/mob/proc/set_moving_quickly()
+	if(!default_run_intent)
+		default_run_intent = get_movement_datum_by_flag(MOVE_INTENT_QUICK)
+	if(default_run_intent && move_intent != default_run_intent)
+		set_move_intent(default_run_intent)
+
+/mob/proc/can_sprint()
+	return FALSE
+
+/mob/proc/adjust_stamina(var/amt)
+	return
+
+/mob/proc/get_stamina()
+	return 100
 
 // Movement relayed to self handling
 /datum/movement_handler/mob/relayed_movement
@@ -562,10 +646,29 @@
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
 
+	//Moving with objects stuck in you can cause bad times.
+	if(get_turf(mob) != old_turf)
+		if(MOVING_QUICKLY(mob))
+			mob.last_quick_move_time = world.time
+			mob.adjust_stamina(-(mob.get_stamina_used_per_step() * (1+mob.encumbrance())))
+
 	mob.moving = 0
 
 /datum/movement_handler/mob/movement/MayMove(var/mob/mover)
 	return IS_SELF(mover) &&  mob.moving ? MOVEMENT_STOP : MOVEMENT_PROCEED
+
+/mob/proc/get_stamina_used_per_step()
+	return 1
+
+/mob/living/carbon/human/get_stamina_used_per_step()
+	var/mod = (1-((get_skill_value(SKILL_HAULING) - SKILL_MIN)/(SKILL_MAX - SKILL_MIN)))
+	if(species && (species.species_flags & SPECIES_FLAG_LOW_GRAV_ADAPTED))
+		if(has_gravity(src))
+			mod *= 1.2
+		else
+			mod *= 0.8
+
+	return MINIMUM_SPRINT_COST + (SKILL_SPRINT_COST_RANGE * mod)
 
 /datum/movement_handler/mob/movement/proc/HandleGrabs(var/direction, var/old_turf)
 	. = 0
@@ -613,10 +716,3 @@
 		return
 
 	return prob(50) ? GLOB.cw_dir[.] : GLOB.ccw_dir[.]
-
-
-
-
-
-
-

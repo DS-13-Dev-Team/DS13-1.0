@@ -44,7 +44,6 @@
 	bst.equip_to_slot_or_del(new /obj/item/device/t_scanner(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/modular_computer/pda/captain(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/stack/power_node(bst.back, 3), slot_in_backpack)
-	bst.equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/javelin_gun(bst), slot_r_hand)
 
 	var/obj/item/weapon/storage/box/pills = new /obj/item/weapon/storage/box(null, TRUE)
 	pills.name = "adminordrazine"
@@ -101,11 +100,9 @@
 
 	//They get an engineering rig
 	var/obj/item/weapon/rig/advanced/rig = new(bst)
-	var/cached_delay = rig.seal_delay
-	rig.seal_delay = 0
-	bst.equip_to_slot_or_del(rig, slot_back)
-	rig.toggle_seals(bst, TRUE)
-	rig.seal_delay = cached_delay
+	rig.instant_equip(bst)
+	//Give the BSE a bunch of money in their rig
+	rig.charge_to_rig_account("Earthgov", "Expenses", "Terra", 999999)
 
 	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/box/survival(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/shoes/black/bst(bst), slot_shoes)

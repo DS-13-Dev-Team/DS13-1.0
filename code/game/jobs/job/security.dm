@@ -12,6 +12,8 @@
 	minimal_player_age = 18
 	starting_credits = 4595
 
+	salary = SALARY_COMMAND
+
 	access = list(access_bridge, access_cseco, access_armory, access_security, access_maint_tunnels,
 					access_external_airlocks, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/security/cseco
@@ -42,6 +44,8 @@ datum/job/cseco/get_description_blurb()
 	minimal_player_age = 18
 	starting_credits = 3400
 
+	salary = SALARY_SUPERVISOR
+
 	access = list(access_armory, access_security, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/security/sso
 
@@ -70,6 +74,8 @@ datum/job/sso/get_description_blurb()
 	selection_color = "#601c1c"
 	minimal_player_age = 18
 	starting_credits = 3072
+
+	salary = SALARY_UNSKILLED
 
 	access = list(access_security, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/security/officer

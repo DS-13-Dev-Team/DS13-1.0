@@ -19,8 +19,8 @@
 
 	startswith = list(
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-		/obj/item/weapon/spacecash/bundle/c50,
-		/obj/item/weapon/spacecash/bundle/c50,
+		/obj/item/weapon/spacecash/ewallet/random/c200,
+		/obj/item/weapon/spacecash/ewallet/random/c200,
 		)
 
 /obj/item/weapon/storage/bible/unitology

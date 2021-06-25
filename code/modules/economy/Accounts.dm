@@ -70,7 +70,7 @@
 		//set a random date, time and location some time over the past few decades
 		T.date = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year-rand(8,18)]"
 		T.time = "[rand(0,24)]:[rand(11,59)]"
-		T.source_terminal = "NTGalaxyNet Terminal #[rand(111,1111)]"
+		T.source_terminal = "CEC StellarNet Terminal #[rand(111,1111)]"
 
 		M.account_number = random_id("station_account_number", 111111, 999999)
 	else
@@ -113,11 +113,10 @@
 	var/datum/money_account/D = get_account(attempt_account_number)
 	if(!D || D.suspended)
 		return 0
-	D.money = max(0, D.money + amount)
 
 	//create a transaction log entry
 	var/datum/transaction/T = new(source_name, purpose, amount, terminal_id)
-	D.transaction_log.Add(T)
+	D.do_transaction(T)
 
 	return 1
 
@@ -131,3 +130,14 @@
 	for(var/datum/money_account/D in all_money_accounts)
 		if(D.account_number == account_number)
 			return D
+
+/mob/proc/get_account()
+
+	return mind?.initial_account
+
+/mob/proc/get_account_balance()
+	var/datum/money_account/A = get_account()
+	if (A)
+		return A.money
+
+	else return 0

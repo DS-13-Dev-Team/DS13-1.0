@@ -45,6 +45,8 @@
 			return global.SSasset;
 		if("SSatoms")
 			return global.SSatoms;
+		if("SScircuit_components")
+			return global.SScircuit_components;
 		if("SScraft")
 			return global.SScraft;
 		if("SSevac")
@@ -75,8 +77,6 @@
 			return global.SSnano;
 		if("SSobj")
 			return global.SSobj;
-		if("SSopen_space")
-			return global.SSopen_space;
 		if("SSprocessing")
 			return global.SSprocessing;
 		if("SSradiation")
@@ -479,8 +479,6 @@
 			return global.init;
 		if("initialization_stage")
 			return global.initialization_stage;
-		if("integrated_circuit_blacklist")
-			return global.integrated_circuit_blacklist;
 		if("intents")
 			return global.intents;
 		if("intercom_range_display_status")
@@ -1004,6 +1002,8 @@
 			global.SSasset=newval;
 		if("SSatoms")
 			global.SSatoms=newval;
+		if("SScircuit_components")
+			global.SScircuit_components=newval;
 		if("SScraft")
 			global.SScraft=newval;
 		if("SSevac")
@@ -1034,8 +1034,6 @@
 			global.SSnano=newval;
 		if("SSobj")
 			global.SSobj=newval;
-		if("SSopen_space")
-			global.SSopen_space=newval;
 		if("SSprocessing")
 			global.SSprocessing=newval;
 		if("SSradiation")
@@ -1438,8 +1436,6 @@
 			global.init=newval;
 		if("initialization_stage")
 			global.initialization_stage=newval;
-		if("integrated_circuit_blacklist")
-			global.integrated_circuit_blacklist=newval;
 		if("intents")
 			global.intents=newval;
 		if("intercom_range_display_status")
@@ -1940,6 +1936,7 @@
 	"SSantags",
 	"SSasset",
 	"SSatoms",
+	"SScircuit_components",
 	"SScraft",
 	"SSevac",
 	"SSevent",
@@ -1955,7 +1952,6 @@
 	"SSmobs",
 	"SSnano",
 	"SSobj",
-	"SSopen_space",
 	"SSprocessing",
 	"SSradiation",
 	"SSresearch",

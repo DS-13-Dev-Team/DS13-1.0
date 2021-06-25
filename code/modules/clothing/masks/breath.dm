@@ -2,7 +2,10 @@
 	desc = "A close-fitting mask that can be connected to an air supply."
 	name = "breath mask"
 	icon_state = "breath"
-	item_state = "breath"
+	item_state_slots = list(
+		slot_l_hand_str = "breath",
+		slot_r_hand_str = "breath",
+	)
 	item_flags = ITEM_FLAG_AIRTIGHT|ITEM_FLAG_FLEXIBLEMATERIAL
 	body_parts_covered = FACE
 	w_class = ITEM_SIZE_SMALL

@@ -5289,7 +5289,7 @@
 "yS" = (
 /obj/structure/closet/crate,
 /obj/random/coin,
-/obj/item/weapon/spacecash/bundle/c1000,
+/obj/item/weapon/spacecash/ewallet/random/c200000,
 /turf/simulated/floor/plating,
 /area/ship/scrap/hidden)
 "zb" = (
@@ -5656,7 +5656,7 @@
 /obj/structure/table/reinforced,
 /obj/item/device/flashlight/lamp,
 /obj/random_multi/single_item/captains_spare_id,
-/obj/item/weapon/spacecash/bundle/c1000,
+/obj/item/weapon/spacecash/ewallet/random/c200000,
 /obj/item/weapon/storage/bible/booze,
 /turf/simulated/floor/plating,
 /area/ship/scrap/hidden)

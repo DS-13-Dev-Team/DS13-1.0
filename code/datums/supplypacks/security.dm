@@ -98,6 +98,22 @@
 	containername = "\improper Ballistic suit crate"
 	access = access_armory
 
+/decl/hierarchy/supply_pack/security/rig
+	name = "Armor - Security RIG"
+	contains = list(/obj/item/weapon/rig/security)
+	cost = 120
+	containername = "\improper Security RIG crate"
+	containertype = /obj/structure/closet/crate/secure/large
+	access = access_security
+
+/decl/hierarchy/supply_pack/security/rig
+	name = "Armor - Riot RIG"
+	contains = list(/obj/item/weapon/rig/riot)
+	cost = 240
+	containername = "\improper Riot RIG crate"
+	containertype = /obj/structure/closet/crate/secure/large
+	access = access_security
+
 /decl/hierarchy/supply_pack/security/weapons
 	name = "Weapons - Security basic"
 	contains = list(/obj/item/weapon/reagent_containers/spray/pepper = 4,
@@ -190,7 +206,6 @@
 	containername = "\improper surplus weapons crate"
 	access = access_security
 
-
 /decl/hierarchy/supply_pack/security/random_ammo
 	name = "Ammunition - Assorted Surplus"
 	contains = list(/obj/random/ammo = 7)
@@ -198,3 +213,64 @@
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper surplus ammunition crate"
 	access = access_security
+
+
+/decl/hierarchy/supply_pack/security/divet
+	name = "Weapon - Divet handgun"
+	contains = list(/obj/item/ammo_magazine/divet = 3,
+	/obj/item/weapon/gun/projectile/divet/empty = 1)
+	cost = 60
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper divet handgun crate"
+	access = access_security
+	security_level = SUPPLY_SECURITY_ELEVATED
+
+/decl/hierarchy/supply_pack/security/divet_ammo
+	name = "Ammunition - Divet Slugs"
+	contains = list(/obj/item/ammo_magazine/divet = 6)
+	cost = 60
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper divet slug crate"
+	access = access_security
+	security_level = SUPPLY_SECURITY_ELEVATED
+
+
+/decl/hierarchy/supply_pack/security/pulse_rifle
+	name = "Weapon - Pulse Rifle"
+	contains = list(/obj/item/ammo_magazine/pulse = 3,
+	/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1)
+	cost = 60
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper pulse rifle crate"
+	access = access_security
+	security_level = SUPPLY_SECURITY_ELEVATED
+
+/decl/hierarchy/supply_pack/security/pulse_ammo
+	name = "Ammunition - Pulse Rounds"
+	contains = list(/obj/item/ammo_magazine/pulse = 6)
+	cost = 60
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper pulse ammunition crate"
+	access = access_security
+	security_level = SUPPLY_SECURITY_ELEVATED
+
+
+/decl/hierarchy/supply_pack/security/seeker_rifle
+	name = "Weapon - Seeker Rifle"
+	contains = list(/obj/item/ammo_magazine/seeker = 4,
+	/obj/item/weapon/gun/projectile/seeker/empty = 1)
+	cost = 80
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper seeker rifle crate"
+	access = access_security
+	security_level = SUPPLY_SECURITY_ELEVATED
+
+/decl/hierarchy/supply_pack/security/seeker_ammo
+	name = "Ammunition - Seeker Shells"
+	contains = list(/obj/item/ammo_magazine/seeker = 8)
+	cost = 80
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper seeker shells crate"
+	access = access_security
+	security_level = SUPPLY_SECURITY_ELEVATED
+

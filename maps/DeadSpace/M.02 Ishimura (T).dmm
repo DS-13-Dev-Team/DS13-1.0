@@ -11,7 +11,7 @@
 /area/ishimura/tramdeck/switchingstation/upper)
 "ad" = (
 /turf/simulated/wall/r_wall/hull,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "ae" = (
 /obj/structure/catwalk,
 /obj/structure/lattice,
@@ -81,8 +81,7 @@
 	name = "Switching Track"
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -178,22 +177,19 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "aC" = (
 /obj/machinery/computer/shuttle_control/multi/tram{
-	dir = 1;
-	icon_state = "computer"
+	dir = 1
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/aft)
 "aD" = (
 /obj/machinery/light_construct{
-	dir = 4;
-	icon_state = "tube-construct-stage1"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10;
-	icon_state = "intact-scrubbers"
+	dir = 10
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/misc)
@@ -210,8 +206,7 @@
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "aH" = (
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /obj/structure/stairs/north,
 /turf/simulated/floor/dank/mono,
@@ -243,7 +238,7 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "aM" = (
-/obj/structure/platform/platform_decoration/strata/metal,
+/obj/structure/platform_decoration/strata/metal,
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
@@ -363,8 +358,8 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/station/aft)
 "aZ" = (
-/turf/simulated/open,
-/area/space)
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/tramdeck/switchingstation/upper)
 "ba" = (
 /obj/structure/catwalk,
 /obj/structure/lattice,
@@ -403,8 +398,7 @@
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/effect/spider/stickyweb,
 /obj/machinery/light{
-	dir = 1;
-	icon_state = "tube_map"
+	dir = 1
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
@@ -443,8 +437,7 @@
 /obj/structure/closet/secure_closet/hydroponics/hydro,
 /obj/random/tool_upgrade/rare,
 /obj/machinery/light{
-	dir = 1;
-	icon_state = "tube_map"
+	dir = 1
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
@@ -458,8 +451,7 @@
 	name = "Transit Tunnel"
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -519,8 +511,7 @@
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bs" = (
 /obj/machinery/atmospherics/pipe/cap/hidden{
-	dir = 1;
-	icon_state = "cap"
+	dir = 1
 	},
 /obj/effect/decal/cleanable/mucus,
 /turf/simulated/floor/dank,
@@ -531,13 +522,11 @@
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bu" = (
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 5;
-	icon_state = "steel_grid"
+	dir = 5
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
@@ -572,32 +561,27 @@
 "by" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 5;
-	icon_state = "steel_grid"
+	dir = 5
 	},
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "bz" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 5;
-	icon_state = "steel_grid"
+	dir = 5
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "bA" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 5;
-	icon_state = "steel_grid"
+	dir = 5
 	},
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
@@ -613,8 +597,7 @@
 /obj/effect/catwalk_plated/dank,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/station/amidships/north)
@@ -627,14 +610,13 @@
 /obj/effect/catwalk_plated/dank,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "bF" = (
-/obj/machinery/atm,
-/turf/simulated/wall/r_wall,
+/obj/machinery/store,
+/turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "bG" = (
 /obj/structure/catwalk,
@@ -666,8 +648,7 @@
 	pixel_x = -22
 	},
 /obj/machinery/light{
-	dir = 1;
-	icon_state = "tube_map"
+	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
@@ -697,7 +678,6 @@
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bO" = (
 /obj/structure/cable{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
@@ -724,8 +704,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light{
-	dir = 1;
-	icon_state = "tube_map"
+	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
@@ -746,8 +725,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/disposalpipe/junction/yjunction{
-	dir = 1;
-	icon_state = "pipe-y"
+	dir = 1
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -830,16 +808,14 @@
 /area/shuttle/tram)
 "ca" = (
 /obj/machinery/light{
-	dir = 1;
-	icon_state = "tube_map"
+	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
 "cb" = (
 /obj/effect/wallframe_spawn/reinforced/titanium,
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/tram)
@@ -871,8 +847,7 @@
 "cf" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 5;
-	icon_state = "steel_grid"
+	dir = 5
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
@@ -914,7 +889,6 @@
 /obj/structure/catwalk/rail,
 /obj/machinery/door/blast/regular{
 	dir = 2;
-	icon_state = "pdoor1";
 	id = "kellion_blast";
 	name = "Tram Section Lockdown"
 	},
@@ -922,13 +896,11 @@
 /area/ishimura/tramdeck/switchingstation/upper)
 "cl" = (
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 5;
-	icon_state = "steel_grid"
+	dir = 5
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
@@ -936,8 +908,7 @@
 /obj/effect/catwalk_plated/dank,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/station/aft)
@@ -953,7 +924,6 @@
 "cp" = (
 /obj/machinery/door/blast/regular{
 	dir = 2;
-	icon_state = "pdoor1";
 	id = "kellion_blast";
 	name = "Tram Section Lockdown"
 	},
@@ -981,13 +951,14 @@
 /turf/simulated/floor/dank/roller,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "cs" = (
-/obj/machinery/atm,
-/turf/simulated/wall/r_wall,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "ct" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4;
-	icon_state = "map_scrubber_on"
+	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
@@ -1013,10 +984,9 @@
 /area/ishimura/tramdeck/tram/tunnel)
 "cw" = (
 /obj/structure/lattice,
-/obj/structure/platform/platform/strata/metal,
-/obj/structure/platform/platform/strata/metal{
-	dir = 4;
-	icon_state = "strata_metalplatform"
+/obj/structure/platform/strata/metal,
+/obj/structure/platform/strata/metal{
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
@@ -1048,8 +1018,7 @@
 /area/shuttle/tram)
 "cA" = (
 /obj/structure/handrai{
-	dir = 1;
-	icon_state = "handrail"
+	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
@@ -1057,8 +1026,7 @@
 /obj/effect/catwalk_plated/dank,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/station/aft)
@@ -1078,8 +1046,7 @@
 /obj/effect/catwalk_plated/dank,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/station/forward)
@@ -1092,8 +1059,7 @@
 /obj/effect/catwalk_plated/dank,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/station/forward)
@@ -1142,19 +1108,16 @@
 /area/ishimura/tramdeck/tram/tunnel)
 "cK" = (
 /obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger"
+	dir = 1
 	},
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 10;
-	icon_state = "steel_grid"
+	dir = 10
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "cL" = (
 /obj/item/frame/light{
-	dir = 8;
-	icon_state = "tube-construct-item"
+	dir = 8
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
@@ -1164,57 +1127,51 @@
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "cN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "cO" = (
 /obj/structure/lattice,
-/obj/structure/platform/platform/strata/metal{
-	dir = 8;
-	icon_state = "strata_metalplatform"
+/obj/structure/platform/strata/metal{
+	dir = 8
 	},
-/obj/structure/platform/platform/strata/metal,
+/obj/structure/platform/strata/metal,
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cP" = (
-/obj/structure/platform/platform_decoration/strata/metal{
-	dir = 1;
-	icon_state = "strata_metalplatform_deco"
+/obj/structure/platform_decoration/strata/metal{
+	dir = 1
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cQ" = (
-/obj/structure/platform/platform/strata/metal{
-	dir = 4;
-	icon_state = "strata_metalplatform"
+/obj/structure/platform/strata/metal{
+	dir = 4
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cR" = (
-/turf/simulated/wall/r_wall,
-/area/space)
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "cS" = (
 /obj/structure/table/steel,
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen,
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "cT" = (
-/obj/structure/platform/platform/strata/metal{
-	dir = 8;
-	icon_state = "strata_metalplatform"
+/obj/structure/platform/strata/metal{
+	dir = 8
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cU" = (
 /obj/machinery/computer/station_alert/engineering{
-	dir = 4;
-	icon_state = "computer"
+	dir = 4
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/upper)
@@ -1230,24 +1187,21 @@
 /area/ishimura/tramdeck/switchingstation/upper)
 "cX" = (
 /obj/structure/lattice,
-/obj/structure/platform/platform/strata/metal{
-	dir = 4;
-	icon_state = "strata_metalplatform"
+/obj/structure/platform/strata/metal{
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cY" = (
 /obj/structure/lattice,
-/obj/structure/platform/platform/strata/metal{
-	dir = 8;
-	icon_state = "strata_metalplatform"
+/obj/structure/platform/strata/metal{
+	dir = 8
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cZ" = (
-/obj/structure/platform/platform_decoration/strata/metal{
-	dir = 8;
-	icon_state = "strata_metalplatform_deco"
+/obj/structure/platform_decoration/strata/metal{
+	dir = 8
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
@@ -1263,8 +1217,7 @@
 /area/ishimura/tramdeck/switchingstation/upper)
 "dc" = (
 /obj/machinery/computer/atmos_alert{
-	dir = 8;
-	icon_state = "computer"
+	dir = 8
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/upper)
@@ -1276,8 +1229,7 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "de" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8;
-	icon_state = "map_vent_out"
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
@@ -1290,8 +1242,7 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "dg" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4;
-	icon_state = "map_scrubber_on"
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/mono,
@@ -1304,16 +1255,14 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "di" = (
 /obj/effect/floor_decal/corner/grey/half{
-	dir = 1;
-	icon_state = "bordercolorhalf"
+	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "dj" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
@@ -1358,9 +1307,8 @@
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
 "dq" = (
-/obj/structure/platform/platform/strata/metal{
-	dir = 1;
-	icon_state = "strata_metalplatform"
+/obj/structure/platform/strata/metal{
+	dir = 1
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
@@ -1390,30 +1338,24 @@
 /obj/structure/stairs/west,
 /obj/structure/railing/mapped,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "dw" = (
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "dx" = (
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "dy" = (
-/obj/machinery/light{
-	dir = 1;
-	icon_state = "tube_map"
-	},
+/obj/machinery/store,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "dz" = (
@@ -1426,8 +1368,7 @@
 /area/ishimura/tramdeck/tram/station/forward)
 "dB" = (
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /obj/structure/stairs/north,
 /turf/simulated/floor/dank/mono,
@@ -1473,8 +1414,7 @@
 	name = "Transit Tunnel"
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -1499,8 +1439,7 @@
 	name = "Transit Tunnel"
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -1523,16 +1462,14 @@
 "dI" = (
 /obj/machinery/smartfridge/drying_rack,
 /obj/item/frame/light{
-	dir = 4;
-	icon_state = "tube-construct-item"
+	dir = 4
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "dJ" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small/red{
-	dir = 1;
-	icon_state = "bulb_map"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -1587,8 +1524,7 @@
 /obj/structure/catwalk,
 /obj/structure/railing/mapped,
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -1596,8 +1532,7 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1609,8 +1544,7 @@
 "dQ" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /obj/structure/railing/mapped,
 /obj/structure/cable/green{
@@ -1642,7 +1576,6 @@
 /obj/structure/catwalk/rail,
 /obj/machinery/door/blast/regular{
 	dir = 2;
-	icon_state = "pdoor1";
 	id = "kellion_blast";
 	name = "Tram Section Lockdown"
 	},
@@ -1651,7 +1584,6 @@
 "dU" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "kellion_blast";
 	name = "Tram Section Lockdown"
 	},
@@ -1660,15 +1592,13 @@
 "dV" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "dW" = (
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 4;
-	icon_state = "cobweb2"
+	dir = 4
 	},
 /obj/structure/filingcabinet,
 /turf/simulated/floor/dank,
@@ -1686,9 +1616,8 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/aft)
 "dY" = (
-/obj/structure/platform/platform_decoration/strata/metal{
-	dir = 4;
-	icon_state = "strata_metalplatform_deco"
+/obj/structure/platform_decoration/strata/metal{
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/switchingstation/upper)
@@ -1705,8 +1634,7 @@
 /area/ishimura/tramdeck/tram/station/aft)
 "eb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
@@ -1734,8 +1662,7 @@
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/structure/cable/green{
 	d2 = 2;
@@ -1764,8 +1691,7 @@
 /area/ishimura/tramdeck/tram/station/aft)
 "ek" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_preview"
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -1798,12 +1724,10 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/machinery/light/small/red{
-	dir = 8;
-	icon_state = "bulb_map"
+	dir = 8
 	},
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1828,7 +1752,6 @@
 /obj/structure/catwalk/rail,
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "kellion_blast";
 	name = "Tram Section Lockdown"
 	},
@@ -1838,12 +1761,10 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/machinery/light/small/red{
-	dir = 4;
-	icon_state = "bulb_map"
+	dir = 4
 	},
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
@@ -1865,8 +1786,7 @@
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "ex" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4;
-	icon_state = "map_scrubber_on"
+	dir = 4
 	},
 /obj/effect/catwalk_plated/dank,
 /turf/simulated/floor/plating,
@@ -1908,12 +1828,10 @@
 /area/ishimura/tramdeck/tram/misc/abandonedmeet)
 "eF" = (
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 4;
-	icon_state = "cobweb2"
+	dir = 4
 	},
 /obj/machinery/light/small/red{
-	dir = 8;
-	icon_state = "bulb_map"
+	dir = 8
 	},
 /obj/structure/table,
 /turf/simulated/floor/plating,
@@ -1955,8 +1873,7 @@
 /area/ishimura/tramdeck/tram/station/aft)
 "eO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1973,8 +1890,7 @@
 "eQ" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/station/amidships/north)
@@ -1988,8 +1904,7 @@
 "eS" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2008,24 +1923,20 @@
 /area/ishimura/tramdeck/tram/station/aft)
 "eU" = (
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/upper)
 "eV" = (
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/computer/shuttle_control/lift/tramswitch,
@@ -2038,8 +1949,7 @@
 "eX" = (
 /obj/structure/railing/mapped,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /obj/effect/floor_decal/dank/outline_striped,
 /obj/effect/shuttle_landmark/lift/tramswitch_top,
@@ -2048,8 +1958,7 @@
 "eY" = (
 /obj/structure/railing/mapped,
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/heavy,
@@ -2062,7 +1971,6 @@
 /obj/structure/catwalk/rail,
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "kellion_blast";
 	name = "Tram Section Lockdown"
 	},
@@ -2071,22 +1979,19 @@
 "fb" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "kellion_blast";
 	name = "Tram Section Lockdown"
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack{
-	dir = 1;
-	icon_state = "borderfloor_white"
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/tunnel)
 "fc" = (
 /obj/effect/wallframe_spawn/reinforced/titanium,
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/structure/catwalk/rail,
 /turf/simulated/floor/plating,
@@ -2094,8 +1999,7 @@
 "fd" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/machinery/computer/shuttle_control/multi/tram{
-	dir = 4;
-	icon_state = "computer"
+	dir = 4
 	},
 /obj/structure/catwalk/rail,
 /turf/simulated/floor/dank/mono,
@@ -2110,7 +2014,6 @@
 "ff" = (
 /obj/machinery/door/blast/regular{
 	dir = 2;
-	icon_state = "pdoor1";
 	id = "kellion_blast";
 	name = "Tram Section Lockdown"
 	},
@@ -2124,8 +2027,7 @@
 "fh" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2177,16 +2079,14 @@
 "fn" = (
 /obj/structure/railing/mapped,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "fo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/structure/cable/green{
 	d1 = 2;
@@ -2270,8 +2170,7 @@
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/structure/cable/green{
 	d1 = 2;
@@ -2279,8 +2178,7 @@
 	icon_state = "2-4"
 	},
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 4;
-	icon_state = "cobweb2"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
@@ -2379,8 +2277,7 @@
 /area/ishimura/tramdeck/tram/station/aft)
 "fH" = (
 /obj/effect/floor_decal/corner/grey{
-	dir = 10;
-	icon_state = "corner_white"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2397,8 +2294,7 @@
 /area/ishimura/tramdeck/tram/station/aft)
 "fI" = (
 /obj/effect/floor_decal/corner/grey{
-	dir = 10;
-	icon_state = "corner_white"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -2416,8 +2312,7 @@
 /area/ishimura/tramdeck/tram/station/aft)
 "fJ" = (
 /obj/effect/floor_decal/corner/grey{
-	dir = 10;
-	icon_state = "corner_white"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2516,12 +2411,10 @@
 "fO" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 2;
@@ -2542,19 +2435,16 @@
 "fQ" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "fR" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "kellion_blast";
 	name = "Tram Section Lockdown"
 	},
@@ -2580,8 +2470,7 @@
 "fV" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
@@ -2589,13 +2478,11 @@
 "fW" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/lattice,
 /obj/structure/sign/warning/moving_parts{
 	dir = 1;
-	icon_state = "movingparts";
 	pixel_y = -32
 	},
 /turf/simulated/open,
@@ -2606,8 +2493,7 @@
 	name = "Switching Track"
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2624,8 +2510,7 @@
 /area/ishimura/tramdeck/tram/tunnel)
 "fY" = (
 /obj/effect/floor_decal/corner/grey{
-	dir = 10;
-	icon_state = "corner_white"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2646,8 +2531,7 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "fZ" = (
 /obj/effect/floor_decal/corner/grey{
-	dir = 10;
-	icon_state = "corner_white"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2664,8 +2548,7 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "ga" = (
 /obj/effect/floor_decal/corner/grey{
-	dir = 10;
-	icon_state = "corner_white"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2680,8 +2563,7 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "gb" = (
 /obj/effect/floor_decal/corner/grey{
-	dir = 10;
-	icon_state = "corner_white"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2705,15 +2587,13 @@
 "gc" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "gd" = (
 /obj/effect/floor_decal/corner/grey{
-	dir = 10;
-	icon_state = "corner_white"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2730,8 +2610,7 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "ge" = (
 /obj/effect/floor_decal/corner/grey{
-	dir = 10;
-	icon_state = "corner_white"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2761,8 +2640,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -2777,8 +2655,7 @@
 	name = "Transit Tunnel"
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2796,20 +2673,17 @@
 "gi" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/bed/chair/shuttle/black{
-	dir = 1;
-	icon_state = "shuttle_chair_preview"
+	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
 "gj" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/sign/warning/moving_parts{
 	dir = 1;
-	icon_state = "movingparts";
 	pixel_y = -32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2828,8 +2702,7 @@
 "gk" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2848,8 +2721,7 @@
 "gl" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 5;
-	icon_state = "steel_grid"
+	dir = 5
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2881,8 +2753,7 @@
 "go" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -2900,8 +2771,7 @@
 "gp" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/lattice,
 /obj/structure/cable/green{
@@ -2955,19 +2825,16 @@
 "gw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/red{
-	dir = 1;
-	icon_state = "bulb_map"
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/misc/abandonedmeet)
 "gx" = (
 /obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger"
+	dir = 1
 	},
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 10;
-	icon_state = "steel_grid"
+	dir = 10
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2979,8 +2846,7 @@
 "gy" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3002,8 +2868,7 @@
 "gA" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/machinery/computer/shuttle_control/multi/tram{
-	dir = 8;
-	icon_state = "computer"
+	dir = 8
 	},
 /obj/structure/catwalk/rail,
 /turf/simulated/floor/dank/mono,
@@ -3011,8 +2876,7 @@
 "gB" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/lattice,
 /obj/structure/cable/green{
@@ -3030,8 +2894,7 @@
 "gD" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 5;
-	icon_state = "steel_grid"
+	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/mono,
@@ -3042,8 +2905,7 @@
 /area/ishimura/tramdeck/tram/station/forward)
 "gF" = (
 /obj/machinery/computer/shuttle_control/multi/tram{
-	dir = 1;
-	icon_state = "computer"
+	dir = 1
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/amidships/north)
@@ -3060,8 +2922,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/office{
-	dir = 1;
-	icon_state = "officechair_preview"
+	dir = 1
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/amidships/north)
@@ -3070,8 +2931,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/office{
-	dir = 1;
-	icon_state = "officechair_preview"
+	dir = 1
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/forward)
@@ -3090,12 +2950,10 @@
 /area/ishimura/tramdeck/tram/tunnel)
 "gM" = (
 /obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger"
+	dir = 1
 	},
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 10;
-	icon_state = "steel_grid"
+	dir = 10
 	},
 /obj/structure/cable/green{
 	d1 = 2;
@@ -3106,8 +2964,7 @@
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3118,12 +2975,10 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "gN" = (
 /obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger"
+	dir = 1
 	},
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 10;
-	icon_state = "steel_grid"
+	dir = 10
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3194,12 +3049,10 @@
 /area/ishimura/tramdeck/tram/station/aft)
 "gU" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 10;
-	icon_state = "steel_grid"
+	dir = 10
 	},
 /obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3222,8 +3075,7 @@
 "gV" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 5;
-	icon_state = "steel_grid"
+	dir = 5
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -3264,12 +3116,10 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
@@ -3301,27 +3151,23 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "hh" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "hi" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 10;
-	icon_state = "steel_grid"
+	dir = 10
 	},
 /obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 2;
@@ -3343,12 +3189,10 @@
 /area/ishimura/tramdeck/tram/station/forward)
 "hj" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 10;
-	icon_state = "steel_grid"
+	dir = 10
 	},
 /obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3365,12 +3209,10 @@
 /area/ishimura/tramdeck/tram/station/forward)
 "hk" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	dir = 10;
-	icon_state = "steel_grid"
+	dir = 10
 	},
 /obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3391,8 +3233,7 @@
 	name = "Transit Tunnel"
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -3400,12 +3241,10 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/sign/warning/moving_parts{
 	dir = 1;
-	icon_state = "movingparts";
 	pixel_y = -32
 	},
 /turf/simulated/open,
@@ -3452,8 +3291,7 @@
 	dir = 5
 	},
 /obj/machinery/light_construct{
-	dir = 4;
-	icon_state = "tube-construct-stage1"
+	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
@@ -3472,13 +3310,13 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "ht" = (
-/obj/machinery/atm,
-/turf/simulated/wall/r_wall,
-/area/ishimura/tramdeck/tram/station/forward)
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/store,
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/station/amidships/north)
 "hu" = (
 /obj/effect/floor_decal/corner/grey/half{
-	dir = 1;
-	icon_state = "bordercolorhalf"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -3491,16 +3329,14 @@
 /area/ishimura/tramdeck/tram/station/forward)
 "hv" = (
 /obj/effect/floor_decal/corner/grey/half{
-	dir = 1;
-	icon_state = "bordercolorhalf"
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "hw" = (
 /obj/effect/floor_decal/corner/grey/half{
-	dir = 1;
-	icon_state = "bordercolorhalf"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3508,8 +3344,7 @@
 /area/ishimura/tramdeck/tram/station/forward)
 "hx" = (
 /obj/effect/floor_decal/corner/grey/half{
-	dir = 1;
-	icon_state = "bordercolorhalf"
+	dir = 1
 	},
 /obj/machinery/light{
 	dir = 4
@@ -3532,8 +3367,7 @@
 /area/ishimura/tramdeck/tram/station/forward)
 "hz" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4;
-	icon_state = "map_scrubber_on"
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/mono,
@@ -3616,8 +3450,7 @@
 /area/ishimura/tramdeck/tram/station/forward)
 "hH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8;
-	icon_state = "map-scrubbers"
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -3810,9 +3643,7 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "id" = (
 /obj/machinery/power/apc{
-	dir = 2;
 	name = "south bump";
-	operating = 1;
 	pixel_y = -23
 	},
 /obj/structure/cable/green,
@@ -3839,8 +3670,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8;
-	icon_state = "map-scrubbers"
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -3875,12 +3705,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/machinery/store,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "il" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4;
-	icon_state = "map_scrubber_on"
+	dir = 4
 	},
 /obj/structure/bed/chair{
 	dir = 4
@@ -4043,15 +3873,12 @@
 /area/ishimura/tramdeck/tram/station/forward)
 "iA" = (
 /obj/machinery/power/apc{
-	dir = 2;
 	name = "south bump";
-	operating = 1;
 	pixel_y = -23
 	},
 /obj/structure/cable/green,
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 1;
-	icon_state = "cobweb2"
+	dir = 1
 	},
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/forward)
@@ -4147,8 +3974,7 @@
 "iP" = (
 /obj/machinery/vending/cigarette,
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 4;
-	icon_state = "cobweb2"
+	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
@@ -4213,8 +4039,7 @@
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/structure/cable/green{
 	d1 = 2;
@@ -4294,7 +4119,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/dank,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "ji" = (
 /obj/effect/floor_decal/dank/outline_striped,
 /obj/structure/closet/crate,
@@ -4320,7 +4145,7 @@
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "jn" = (
 /turf/simulated/floor/dank,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "jo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4425,8 +4250,7 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8;
-	icon_state = "map-scrubbers"
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -4450,8 +4274,7 @@
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "jD" = (
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 1;
-	icon_state = "cobweb2"
+	dir = 1
 	},
 /obj/item/weapon/stool/padded,
 /turf/simulated/floor/plating,
@@ -4463,8 +4286,7 @@
 "jF" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4490,8 +4312,7 @@
 /area/ishimura/tramdeck/tram/misc/abandonedmeet)
 "jI" = (
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 1;
-	icon_state = "cobweb2"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -4544,8 +4365,7 @@
 "jP" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -4561,8 +4381,7 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8;
-	icon_state = "map-scrubbers"
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -4603,8 +4422,7 @@
 "jT" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
@@ -4630,12 +4448,10 @@
 "jX" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small/red{
-	dir = 4;
-	icon_state = "bulb_map"
+	dir = 4
 	},
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
@@ -4643,8 +4459,7 @@
 /obj/structure/wall_frame,
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/station/forward)
@@ -4663,8 +4478,7 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 2;
@@ -4693,8 +4507,7 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "kc" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8;
-	icon_state = "map-scrubbers"
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/bed/chair{
@@ -4757,8 +4570,7 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4770,8 +4582,7 @@
 "kk" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4785,12 +4596,11 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "km" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4844,8 +4654,7 @@
 	name = "Switching Track"
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4867,8 +4676,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4904,8 +4712,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5036,8 +4843,7 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5059,8 +4865,7 @@
 	name = "Switching Track"
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5096,8 +4901,7 @@
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "kN" = (
 /obj/machinery/light{
-	dir = 1;
-	icon_state = "tube_map"
+	dir = 1
 	},
 /obj/structure/bed/chair,
 /obj/structure/cable/green{
@@ -5120,8 +4924,7 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5156,8 +4959,7 @@
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "kS" = (
 /obj/effect/floor_decal/corner/grey{
-	dir = 10;
-	icon_state = "corner_white"
+	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -5202,16 +5004,14 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/random/armor,
 /obj/machinery/light_construct{
-	dir = 8;
-	icon_state = "tube-construct-stage1"
+	dir = 8
 	},
 /obj/structure/table/steel,
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc)
 "kY" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	icon_state = "map_vent_out"
+	dir = 4
 	},
 /obj/structure/table/steel,
 /turf/simulated/floor/dank,
@@ -5239,7 +5039,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	icon_state = "blastctrl";
 	id = "disused_tramsec";
 	name = "Security Post Shutters";
 	pixel_x = 24;
@@ -5315,7 +5114,6 @@
 /obj/item/weapon/tool/wrench,
 /obj/item/frame/air_alarm{
 	dir = 4;
-	icon_state = "alarm_bitem";
 	pixel_x = -32
 	},
 /turf/simulated/floor,
@@ -5328,55 +5126,52 @@
 /obj/structure/table/steel,
 /obj/item/device/flashlight/lamp,
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lq" = (
 /obj/structure/bed/chair/office{
-	dir = 8;
-	icon_state = "officechair_preview"
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lr" = (
 /obj/structure/table/steel,
 /obj/item/weapon/folder/yellow,
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "ls" = (
 /obj/item/modular_computer/console/preset/civilian/professional{
-	dir = 4;
-	icon_state = "console"
+	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lt" = (
 /obj/structure/table/steel,
 /obj/item/weapon/clipboard,
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
 /turf/simulated/floor/dank,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lv" = (
 /obj/structure/closet/firecloset,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lw" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lx" = (
 /obj/effect/floor_decal/industrial/danger{
-	dir = 4;
-	icon_state = "danger"
+	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "ly" = (
 /obj/effect/decal/cleanable/spiderling_remains,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5387,26 +5182,25 @@
 /obj/effect/catwalk_plated/dank,
 /obj/machinery/firealarm,
 /turf/simulated/floor/plating,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lA" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/catwalk_plated/dank,
 /turf/simulated/floor/plating,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lB" = (
 /obj/structure/sign/warning/moving_parts{
 	dir = 1;
-	icon_state = "movingparts";
 	pixel_y = -32
 	},
 /turf/simulated/open,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lC" = (
 /obj/structure/sign/warning/fall,
 /turf/simulated/wall/r_wall,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lD" = (
 /obj/structure/lattice,
 /obj/structure/cable/green{
@@ -5421,7 +5215,7 @@
 	dir = 4
 	},
 /turf/simulated/open,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lE" = (
 /obj/structure/lattice,
 /obj/structure/cable/green{
@@ -5436,11 +5230,11 @@
 	dir = 10
 	},
 /turf/simulated/open,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lG" = (
 /obj/structure/lattice,
 /obj/structure/cable/green{
@@ -5451,20 +5245,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/open,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
 /turf/simulated/floor/dank,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lJ" = (
 /obj/structure/lattice,
 /obj/structure/cable/green{
@@ -5479,7 +5273,7 @@
 	dir = 5
 	},
 /turf/simulated/open,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lK" = (
 /obj/structure/wall_frame,
 /obj/structure/window/reinforced/full,
@@ -5496,7 +5290,7 @@
 	dir = 4
 	},
 /turf/simulated/floor,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lL" = (
 /obj/structure/table/steel,
 /obj/item/weapon/paper_bin,
@@ -5513,7 +5307,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lM" = (
 /obj/structure/table/steel,
 /obj/random/common_loot,
@@ -5529,7 +5323,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lN" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -5547,7 +5341,7 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/dank,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lO" = (
 /obj/structure/cable/green{
 	d2 = 8;
@@ -5560,33 +5354,29 @@
 	dir = 9
 	},
 /obj/machinery/power/apc{
-	dir = 2;
 	name = "south bump";
 	pixel_y = -24
 	},
 /turf/simulated/floor/dank,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lP" = (
 /obj/machinery/light/spot{
-	dir = 1;
-	icon_state = "tube_map"
+	dir = 1
 	},
 /turf/simulated/open,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lQ" = (
 /obj/machinery/light/spot{
-	dir = 8;
-	icon_state = "tube_map"
+	dir = 8
 	},
 /turf/simulated/open,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lR" = (
 /obj/machinery/light/spot{
-	dir = 4;
-	icon_state = "tube_map"
+	dir = 4
 	},
 /turf/simulated/open,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lS" = (
 /obj/structure/lattice,
 /obj/structure/cable/green{
@@ -5602,7 +5392,7 @@
 	},
 /obj/machinery/light/spot,
 /turf/simulated/open,
-/area/space)
+/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lT" = (
 /obj/machinery/vending/security,
 /obj/random/ammo,
@@ -5619,8 +5409,7 @@
 "lW" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 1;
-	icon_state = "cobweb2"
+	dir = 1
 	},
 /obj/item/weapon/storage/toolbox/mechanical,
 /turf/simulated/floor/dank,
@@ -5682,8 +5471,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
+	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -5804,12 +5592,10 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /obj/structure/sign/warning/moving_parts{
 	dir = 1;
-	icon_state = "movingparts";
 	pixel_y = -32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5831,8 +5617,7 @@
 	name = "Transit Tunnel"
 	},
 /obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5862,8 +5647,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -5881,15 +5665,13 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "my" = (
 /obj/effect/floor_decal/industrial/danger{
-	dir = 4;
-	icon_state = "danger"
+	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
@@ -5921,8 +5703,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6046,8 +5827,7 @@
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "mR" = (
 /obj/effect/floor_decal/industrial/danger{
-	dir = 8;
-	icon_state = "danger"
+	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
@@ -6099,8 +5879,7 @@
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
 "mW" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4;
-	icon_state = "map_scrubber_on"
+	dir = 4
 	},
 /obj/effect/catwalk_plated/dank,
 /obj/structure/closet/emcloset,
@@ -6181,8 +5960,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/railing/mapped{
-	dir = 1;
-	icon_state = "railing0"
+	dir = 1
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6227,8 +6005,7 @@
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
 "np" = (
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 4;
-	icon_state = "cobweb2"
+	dir = 4
 	},
 /obj/structure/table/rack,
 /turf/simulated/floor,
@@ -6251,8 +6028,7 @@
 "nt" = (
 /obj/effect/landmark/node_room/maintenance,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
@@ -6352,8 +6128,7 @@
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "nO" = (
 /obj/structure/handrai{
-	dir = 1;
-	icon_state = "handrail"
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
@@ -6363,8 +6138,7 @@
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "nQ" = (
 /obj/machinery/light_construct{
-	dir = 4;
-	icon_state = "tube-construct-stage1"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
@@ -6413,14 +6187,12 @@
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "nY" = (
 /obj/structure/disposalpipe/up{
-	dir = 4;
-	icon_state = "pipe-u"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/zpipe/up/supply,
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 4;
-	icon_state = "cobweb2"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/foremaintenance)
@@ -6480,8 +6252,7 @@
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "ok" = (
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 1;
-	icon_state = "cobweb2"
+	dir = 1
 	},
 /obj/structure/janitorialcart,
 /turf/simulated/floor,
@@ -6552,8 +6323,7 @@
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "oy" = (
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 1;
-	icon_state = "cobweb2"
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
@@ -6573,8 +6343,7 @@
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "oC" = (
 /obj/effect/decal/cleanable/cobweb2{
-	dir = 4;
-	icon_state = "cobweb2"
+	dir = 4
 	},
 /obj/random/closet,
 /turf/simulated/floor,
@@ -6671,22 +6440,8 @@
 /obj/machinery/constructable_frame,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
-"oY" = (
-/obj/structure/stair/perspective{
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/switchingstation/upper)
-"oZ" = (
-/obj/structure/stair/perspective,
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/switchingstation/upper)
 "pa" = (
-/obj/structure/stair/perspective{
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
+/obj/structure/stairs_short,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/upper)
 "pb" = (
@@ -6712,8 +6467,7 @@
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
 "pf" = (
 /obj/effect/floor_decal/industrial/danger{
-	dir = 4;
-	icon_state = "danger"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6735,8 +6489,7 @@
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
 "pi" = (
 /obj/effect/floor_decal/industrial/danger{
-	dir = 8;
-	icon_state = "danger"
+	dir = 8
 	},
 /obj/machinery/alarm,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6845,8 +6598,7 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6859,8 +6611,7 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
@@ -6868,20 +6619,17 @@
 /obj/structure/catwalk,
 /obj/structure/lattice,
 /obj/machinery/light/small/red{
-	dir = 4;
-	icon_state = "bulb_map"
+	dir = 4
 	},
 /obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "pz" = (
 /obj/structure/catwalk,
 /obj/structure/railing/mapped{
-	dir = 4;
-	icon_state = "railing0"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6889,8 +6637,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small/red{
-	dir = 8;
-	icon_state = "bulb_map"
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
@@ -6915,24 +6662,31 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/foremaintenance)
 "qU" = (
-/obj/structure/table/steel,
-/obj/random/loot/sometimes/few,
-/turf/simulated/floor,
-/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/tramdeck/tram/misc/abandonedmeet)
 "va" = (
 /obj/structure/table/steel,
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
+"yA" = (
+/obj/structure/foamedmetal,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/misc/abandonedmeet)
 "IG" = (
 /obj/structure/table/steel,
 /obj/random/loot/sometimes/few,
 /obj/machinery/light/small/red{
-	dir = 8;
-	icon_state = "bulb_map"
+	dir = 8
 	},
 /turf/simulated/floor,
-/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
+"JO" = (
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/tramdeck/tram/tunnel)
+"Wl" = (
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/tramdeck/tram/station/forward)
 "ZF" = (
 /obj/machinery/door/airlock/civilian,
 /turf/simulated/floor/dank/mono,
@@ -12041,15 +11795,15 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -12070,15 +11824,15 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -12242,8 +11996,8 @@ aa
 aa
 aa
 aa
-ad
-ad
+cR
+cR
 ja
 ja
 ja
@@ -12251,7 +12005,7 @@ ja
 ja
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -12272,7 +12026,7 @@ aa
 aa
 aa
 aa
-ad
+cR
 ja
 ja
 ja
@@ -12280,8 +12034,8 @@ ja
 ja
 ja
 ja
-ad
-ad
+cR
+cR
 aa
 aa
 aa
@@ -12444,7 +12198,7 @@ aa
 aa
 aa
 aa
-ad
+cR
 ja
 ja
 jr
@@ -12453,8 +12207,8 @@ lU
 lU
 lU
 ja
-ad
-ad
+cR
+cR
 aa
 aa
 aa
@@ -12473,8 +12227,8 @@ aa
 aa
 aa
 aa
-ad
-ad
+cR
+cR
 ja
 np
 jr
@@ -12482,8 +12236,8 @@ jr
 jr
 oy
 ja
+ja
 cR
-ad
 aa
 aa
 aa
@@ -12646,7 +12400,7 @@ aa
 aa
 aa
 aa
-ad
+cR
 ja
 fj
 jr
@@ -12656,8 +12410,8 @@ jr
 jr
 ja
 ja
-ad
-ad
+cR
+cR
 aa
 aa
 aa
@@ -12674,8 +12428,8 @@ aa
 aa
 aa
 aa
-ad
-ad
+cR
+cR
 ja
 ja
 jr
@@ -12684,8 +12438,8 @@ on
 oo
 oL
 ja
+ja
 cR
-ad
 aa
 aa
 aa
@@ -12848,7 +12602,7 @@ aa
 aa
 aa
 aa
-ad
+cR
 ja
 fj
 ed
@@ -12859,8 +12613,8 @@ jr
 jr
 ja
 ja
-ad
-ad
+cR
+cR
 aa
 af
 aS
@@ -12875,8 +12629,8 @@ aS
 aS
 aa
 aa
-ad
-ad
+cR
+cR
 ja
 ja
 nS
@@ -12886,8 +12640,8 @@ oo
 ox
 oL
 ja
+ja
 cR
-ad
 aa
 aa
 aa
@@ -13050,7 +12804,7 @@ aa
 aa
 aa
 aa
-ad
+cR
 ja
 fj
 jr
@@ -13062,7 +12816,7 @@ jr
 nD
 ja
 ja
-ad
+cR
 af
 af
 dN
@@ -13077,7 +12831,7 @@ dN
 aS
 af
 aa
-ad
+cR
 ja
 ja
 jr
@@ -13088,8 +12842,8 @@ op
 op
 oj
 ja
+ja
 cR
-ad
 aa
 aa
 aa
@@ -13252,7 +13006,7 @@ aa
 aa
 aa
 aa
-ad
+cR
 ja
 fj
 jr
@@ -13290,8 +13044,8 @@ nQ
 jr
 jr
 ja
+ja
 cR
-ad
 aa
 aa
 aa
@@ -13454,7 +13208,7 @@ aa
 aa
 aa
 aa
-ad
+cR
 ja
 ja
 jr
@@ -13492,8 +13246,8 @@ ja
 ja
 ja
 ja
+ja
 cR
-ad
 aa
 aa
 aa
@@ -13656,8 +13410,8 @@ aa
 aa
 aa
 aa
-ad
-ad
+cR
+cR
 ja
 ja
 jr
@@ -13692,10 +13446,10 @@ ob
 jr
 oq
 ja
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -13859,8 +13613,8 @@ aa
 aa
 aa
 aa
-ad
-ad
+cR
+cR
 ja
 ja
 ja
@@ -13894,7 +13648,7 @@ oc
 jr
 jr
 ja
-ad
+cR
 aa
 aa
 aa
@@ -14062,8 +13816,8 @@ aa
 aa
 aa
 aa
-ad
-ad
+cR
+cR
 ja
 ja
 jo
@@ -14096,7 +13850,7 @@ nB
 nr
 oc
 ja
-ad
+cR
 aa
 aa
 aa
@@ -14265,7 +14019,7 @@ aa
 aa
 aa
 aa
-ad
+cR
 ja
 ja
 je
@@ -14298,7 +14052,7 @@ od
 jr
 oe
 ja
-ad
+cR
 aa
 aa
 aa
@@ -14468,7 +14222,7 @@ ad
 ad
 ad
 ad
-ja
+eu
 ja
 jp
 jB
@@ -14500,11 +14254,11 @@ oe
 jr
 or
 ja
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -14666,11 +14420,11 @@ aa
 aa
 ad
 ad
-cR
-cR
-cR
-cR
-cR
+eu
+eu
+eu
+eu
+eu
 ja
 jq
 jC
@@ -14706,8 +14460,8 @@ mg
 mg
 mg
 mg
-ad
-ad
+mY
+mY
 aa
 aa
 aa
@@ -14867,12 +14621,12 @@ aa
 aa
 aa
 ad
-cR
-cR
-aZ
+eu
+eu
+er
 lQ
 lQ
-aZ
+er
 ja
 jr
 jr
@@ -14909,7 +14663,7 @@ mr
 mr
 mg
 mg
-ad
+mY
 aa
 aa
 aa
@@ -15069,12 +14823,12 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
 ja
 jr
 jr
@@ -15111,7 +14865,7 @@ mV
 mr
 mV
 mg
-ad
+mY
 aa
 aa
 aa
@@ -15271,12 +15025,12 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
 ja
 ja
 ja
@@ -15313,7 +15067,7 @@ mV
 mr
 mV
 mg
-ad
+mY
 aa
 aa
 aa
@@ -15473,15 +15227,15 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 dl
@@ -15515,7 +15269,7 @@ mV
 mr
 mV
 mg
-ad
+mY
 aa
 aa
 aa
@@ -15675,15 +15429,15 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
 lS
 af
 ap
@@ -15717,7 +15471,7 @@ mV
 mr
 mV
 mg
-ad
+mY
 aa
 aa
 aa
@@ -15877,18 +15631,18 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
 lD
+af
 cs
-al
 eM
 al
 fv
@@ -15919,7 +15673,7 @@ mV
 mr
 mV
 mg
-ad
+mY
 aa
 aa
 aa
@@ -16079,15 +15833,15 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 dy
@@ -16121,7 +15875,7 @@ mV
 mr
 mV
 mg
-ad
+mY
 aa
 aa
 aa
@@ -16281,15 +16035,15 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 ar
@@ -16323,7 +16077,7 @@ mV
 mr
 mV
 mg
-ad
+mY
 aa
 aa
 aa
@@ -16483,15 +16237,15 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 dv
@@ -16525,7 +16279,7 @@ mV
 mr
 mV
 mg
-ad
+mY
 aa
 aa
 aa
@@ -16685,15 +16439,15 @@ aa
 ad
 ad
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 fn
@@ -16727,8 +16481,8 @@ mV
 mr
 mV
 mg
-ad
-ad
+mY
+mY
 aa
 aa
 aa
@@ -16885,17 +16639,17 @@ aa
 aa
 aa
 ad
-cR
-cR
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+eu
+eu
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 al
@@ -17087,17 +16841,17 @@ aa
 aa
 aa
 ad
-cR
+eu
 lP
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 al
@@ -17289,17 +17043,17 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 ar
@@ -17491,17 +17245,17 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 dW
@@ -17693,17 +17447,17 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 dX
@@ -17895,17 +17649,17 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 ea
@@ -18097,17 +17851,17 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lD
 af
 as
@@ -18299,17 +18053,17 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lS
 af
 af
@@ -18501,21 +18255,21 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lE
 lG
 lJ
-cR
+eu
 nd
 af
 fK
@@ -18703,21 +18457,21 @@ aa
 aa
 aa
 ad
-cR
+eu
 lP
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lD
-cR
+eu
 nd
 af
 fN
@@ -18905,21 +18659,21 @@ aa
 aa
 aa
 ad
-cR
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lD
-cR
+eu
 nd
 aS
 aT
@@ -19108,20 +18862,20 @@ aa
 aa
 ad
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lS
-cR
+eu
 nd
 aS
 aU
@@ -19310,20 +19064,20 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lD
-cR
+eu
 nd
 aS
 bh
@@ -19512,20 +19266,20 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+eu
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
+er
 lD
-cR
+eu
 nd
 aS
 aU
@@ -19714,20 +19468,20 @@ aa
 aa
 aa
 ad
-cR
-aZ
-aZ
-aZ
+eu
+er
+er
+er
 lR
 lR
-aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+er
+er
+er
+er
+er
+er
 lD
-cR
+eu
 nd
 aS
 bh
@@ -19916,20 +19670,20 @@ aa
 aa
 aa
 ad
-cR
-cR
-cR
-cR
-cR
-cR
-cR
-cR
+eu
+eu
+eu
+eu
+eu
+eu
+eu
+eu
 kl
 kl
 kl
 kl
 lK
-cR
+eu
 nd
 aS
 aU
@@ -20125,13 +19879,13 @@ ad
 ad
 ad
 ad
-cR
+eu
 cS
 lr
 ls
 lt
 lL
-cR
+eu
 nd
 aS
 bh
@@ -20154,15 +19908,15 @@ nO
 ja
 jr
 ma
-ja
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+mg
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
 aa
 aa
 aa
@@ -20327,13 +20081,13 @@ aa
 aa
 aa
 ad
-cR
+eu
 lp
 lq
 jn
 lq
 lM
-cR
+eu
 nd
 aS
 aU
@@ -20357,7 +20111,7 @@ ja
 jr
 ma
 ja
-ad
+cR
 aa
 aa
 aa
@@ -20529,13 +20283,13 @@ aa
 aa
 aa
 ad
-cR
+eu
 jn
 jn
 jn
 jn
 lN
-cR
+eu
 nd
 aS
 bh
@@ -20559,7 +20313,7 @@ ja
 jr
 jr
 ja
-ad
+cR
 aa
 aa
 aa
@@ -20731,13 +20485,13 @@ aa
 aa
 aa
 ad
-cR
+eu
 jn
 jh
 lF
 lH
 lO
-cR
+eu
 nd
 aS
 aU
@@ -20761,7 +20515,7 @@ ja
 jr
 jr
 ja
-ad
+cR
 aa
 aa
 aa
@@ -20933,13 +20687,13 @@ aa
 aa
 aa
 ad
-cR
+eu
 lz
 lu
 jn
 lI
 lA
-cR
+eu
 nd
 aS
 bh
@@ -20963,7 +20717,7 @@ ja
 oc
 ok
 ja
-ad
+cR
 aa
 aa
 aa
@@ -21135,13 +20889,13 @@ ad
 ad
 ad
 ad
-cR
+eu
 lv
 lx
 lx
 lx
 lw
-cR
+eu
 nd
 aS
 aU
@@ -21165,10 +20919,10 @@ ja
 jr
 ed
 ja
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -21339,11 +21093,11 @@ eu
 eu
 eu
 lC
-aZ
-aZ
-aZ
-cR
-cR
+er
+er
+er
+eu
+eu
 nd
 aS
 bh
@@ -21370,7 +21124,7 @@ ja
 ja
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -21540,11 +21294,11 @@ eu
 nd
 nd
 nd
-cR
-aZ
-aZ
+eu
+er
+er
 lB
-cR
+eu
 nd
 nd
 aS
@@ -21572,7 +21326,7 @@ jr
 ol
 oc
 ja
-ad
+cR
 aa
 aa
 aa
@@ -21742,11 +21496,11 @@ eu
 nd
 nd
 nd
-cR
-cR
-cR
-cR
-cR
+eu
+eu
+eu
+eu
+eu
 nd
 nd
 aS
@@ -21774,7 +21528,7 @@ nw
 ma
 oM
 ja
-ad
+cR
 aa
 aa
 aa
@@ -21976,7 +21730,7 @@ ja
 ja
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -22178,7 +21932,7 @@ nJ
 jr
 ja
 ne
-ad
+cR
 aa
 aa
 aa
@@ -22380,7 +22134,7 @@ jJ
 oc
 ja
 ne
-ad
+cR
 aa
 aa
 aa
@@ -22582,7 +22336,7 @@ jJ
 oc
 ja
 ne
-ad
+cR
 aa
 aa
 aa
@@ -22784,7 +22538,7 @@ jJ
 ja
 ja
 ne
-ad
+cR
 aa
 aa
 aa
@@ -22986,7 +22740,7 @@ os
 ja
 ja
 ne
-ad
+cR
 aa
 aa
 aa
@@ -23188,7 +22942,7 @@ jJ
 oy
 ja
 ne
-ad
+cR
 aa
 aa
 aa
@@ -23390,7 +23144,7 @@ mA
 nJ
 ja
 ne
-ad
+cR
 aa
 aa
 aa
@@ -23592,7 +23346,7 @@ jr
 jJ
 ja
 ne
-ad
+cR
 aa
 aa
 aa
@@ -23794,7 +23548,7 @@ ja
 mc
 ja
 ne
-ad
+cR
 aa
 aa
 aa
@@ -23996,30 +23750,30 @@ jr
 jJ
 ja
 ne
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -24221,7 +23975,7 @@ ja
 ja
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -24423,7 +24177,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -24625,7 +24379,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -24827,7 +24581,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -25029,7 +24783,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -25231,7 +24985,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -25433,7 +25187,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -25635,7 +25389,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -25837,7 +25591,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -26039,7 +25793,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -26241,7 +25995,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -26443,7 +26197,7 @@ ja
 ja
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -26623,29 +26377,29 @@ na
 ja
 ne
 ja
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -26825,7 +26579,7 @@ oz
 ja
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -27027,7 +26781,7 @@ eu
 eu
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -27229,7 +26983,7 @@ hc
 hc
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -27431,7 +27185,7 @@ ky
 mS
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -27633,7 +27387,7 @@ mD
 mT
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -27835,7 +27589,7 @@ mD
 mT
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -28037,16 +27791,16 @@ kz
 mU
 ja
 ja
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -28248,7 +28002,7 @@ ja
 ja
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -28428,7 +28182,7 @@ fS
 fS
 fS
 hg
-bF
+ah
 aj
 aj
 ah
@@ -28450,8 +28204,8 @@ ne
 ne
 ne
 ja
-ad
-ad
+cR
+cR
 aa
 aa
 aa
@@ -28653,7 +28407,7 @@ ne
 ne
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -28855,7 +28609,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -29015,8 +28769,8 @@ nd
 nd
 nd
 nd
+ah
 bF
-aj
 cj
 eP
 ak
@@ -29057,7 +28811,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -29259,7 +29013,7 @@ ne
 ne
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -29460,8 +29214,8 @@ ne
 ne
 ne
 ja
-ad
-ad
+cR
+cR
 aa
 aa
 aa
@@ -29662,7 +29416,7 @@ ja
 ja
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -29855,16 +29609,16 @@ oC
 hc
 oQ
 ja
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -30057,7 +29811,7 @@ oD
 hc
 oR
 ja
-ad
+cR
 aa
 aa
 aa
@@ -30252,14 +30006,14 @@ hO
 aE
 aF
 eP
-cj
-am
+ht
+aj
 ah
 eL
 hc
 oS
 ja
-ad
+cR
 aa
 aa
 aa
@@ -30461,7 +30215,7 @@ hc
 pb
 oT
 ja
-ad
+cR
 aa
 aa
 aa
@@ -30663,7 +30417,7 @@ hc
 hc
 oU
 ja
-ad
+cR
 aa
 aa
 aa
@@ -30865,7 +30619,7 @@ eL
 hc
 hc
 ja
-ad
+cR
 aa
 aa
 aa
@@ -31067,7 +30821,7 @@ oE
 pB
 hc
 ja
-ad
+cR
 aa
 aa
 aa
@@ -31221,7 +30975,7 @@ aa
 aa
 aa
 aa
-ad
+aO
 aO
 bd
 bd
@@ -31269,16 +31023,16 @@ oF
 hc
 oV
 ja
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -31423,7 +31177,7 @@ aa
 aa
 aa
 aa
-ad
+aO
 aG
 be
 be
@@ -31480,7 +31234,7 @@ ja
 ja
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -31624,8 +31378,8 @@ aa
 aa
 aa
 aa
-ad
-ad
+aO
+aO
 aG
 bf
 bl
@@ -31682,8 +31436,8 @@ ne
 ne
 ne
 ja
-ad
-ad
+cR
+cR
 aa
 aa
 aa
@@ -31826,7 +31580,7 @@ aa
 aa
 aa
 aa
-ad
+aO
 aG
 aG
 bg
@@ -31885,7 +31639,7 @@ ne
 ne
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -32028,7 +31782,7 @@ aa
 aa
 aa
 aa
-ad
+aO
 aG
 aV
 bi
@@ -32087,7 +31841,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -32230,7 +31984,7 @@ aa
 aa
 aa
 aa
-ad
+aO
 aG
 bc
 bi
@@ -32289,7 +32043,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -32432,7 +32186,7 @@ aa
 aa
 aa
 aa
-ad
+aO
 aG
 aG
 bj
@@ -32491,7 +32245,7 @@ ne
 ne
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -32634,8 +32388,8 @@ aa
 aa
 aa
 aa
-ad
-ad
+aO
+aO
 aG
 bk
 br
@@ -32692,8 +32446,8 @@ ne
 ne
 ne
 ja
-ad
-ad
+cR
+cR
 aa
 aa
 aa
@@ -32837,7 +32591,7 @@ aa
 aa
 aa
 aa
-ad
+aO
 aG
 be
 be
@@ -32894,7 +32648,7 @@ ja
 ja
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -33039,7 +32793,7 @@ aa
 aa
 aa
 aa
-ad
+aO
 aO
 bd
 bd
@@ -33087,16 +32841,16 @@ hc
 hc
 eu
 ja
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -33250,7 +33004,7 @@ aa
 kx
 aa
 kx
-ad
+qU
 ei
 eD
 ei
@@ -33289,7 +33043,7 @@ hc
 hc
 eu
 ja
-ad
+cR
 aa
 aa
 aa
@@ -33452,7 +33206,7 @@ aa
 kx
 aa
 kx
-ad
+qU
 ei
 eE
 gv
@@ -33491,7 +33245,7 @@ oG
 oO
 eu
 ja
-ad
+cR
 aa
 aa
 aa
@@ -33654,7 +33408,7 @@ aa
 kx
 aa
 kx
-ad
+qU
 ei
 ei
 ei
@@ -33693,7 +33447,7 @@ hc
 hc
 oW
 ja
-ad
+cR
 aa
 aa
 aa
@@ -33856,9 +33610,9 @@ aa
 kx
 aa
 kx
-ad
-IG
 qU
+IG
+va
 ei
 gv
 ei
@@ -33895,7 +33649,7 @@ hc
 hc
 oX
 ja
-ad
+cR
 aa
 aa
 aa
@@ -34058,9 +33812,9 @@ kx
 kx
 kx
 kx
-ad
-hc
-hc
+qU
+jr
+jr
 ei
 eD
 ei
@@ -34097,7 +33851,7 @@ hc
 hc
 eu
 ja
-ad
+cR
 aa
 aa
 aa
@@ -34260,9 +34014,9 @@ aa
 kx
 aa
 kx
-ad
-hc
-hc
+qU
+jr
+jr
 ei
 gv
 ei
@@ -34299,7 +34053,7 @@ oH
 hc
 eu
 ja
-ad
+cR
 aa
 aa
 aa
@@ -34462,7 +34216,7 @@ aa
 kx
 aa
 kx
-ad
+qU
 ei
 ei
 ei
@@ -34501,7 +34255,7 @@ hc
 hc
 eu
 ja
-ad
+cR
 aa
 aa
 aa
@@ -34664,7 +34418,7 @@ aa
 kx
 aa
 kx
-ad
+qU
 ei
 eF
 ei
@@ -34703,7 +34457,7 @@ hc
 hc
 eu
 ja
-ad
+cR
 aa
 aa
 aa
@@ -34866,7 +34620,7 @@ aa
 kx
 aa
 kx
-ad
+qU
 ei
 eG
 ei
@@ -34905,7 +34659,7 @@ hc
 hc
 eu
 ja
-ad
+cR
 aa
 aa
 aa
@@ -35047,28 +34801,28 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+qU
 el
 eH
 ei
@@ -35107,28 +34861,28 @@ hc
 hc
 eu
 ja
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -35248,8 +35002,8 @@ aa
 aa
 aa
 aa
-ad
-ad
+aZ
+aZ
 ab
 ab
 ab
@@ -35270,7 +35024,7 @@ ab
 ab
 ab
 ab
-eu
+ei
 ei
 eD
 eI
@@ -35330,8 +35084,8 @@ ja
 ja
 ja
 ja
-ad
-ad
+cR
+cR
 aa
 aa
 aa
@@ -35450,7 +35204,7 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 ab
 an
@@ -35472,7 +35226,7 @@ aW
 aQ
 aX
 ab
-nd
+yA
 ei
 eJ
 gZ
@@ -35533,7 +35287,7 @@ kA
 kA
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -35652,7 +35406,7 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 an
 aL
@@ -35674,7 +35428,7 @@ em
 em
 au
 ab
-ab
+ei
 ei
 eK
 ei
@@ -35735,7 +35489,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -35854,7 +35608,7 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 au
 aM
@@ -35937,7 +35691,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -36056,7 +35810,7 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 av
 cw
@@ -36139,7 +35893,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -36258,10 +36012,10 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 aw
-oY
+pa
 cV
 db
 dq
@@ -36341,7 +36095,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -36460,10 +36214,10 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 aJ
-oZ
+pa
 cV
 db
 dq
@@ -36543,7 +36297,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -36662,7 +36416,7 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 ae
 pa
@@ -36745,7 +36499,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -36864,7 +36618,7 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 ac
 cO
@@ -36947,7 +36701,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -37066,7 +36820,7 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 ae
 cP
@@ -37149,7 +36903,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -37268,7 +37022,7 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 ac
 ae
@@ -37351,7 +37105,7 @@ kA
 kA
 kA
 ja
-ad
+cR
 aa
 aa
 aa
@@ -37470,7 +37224,7 @@ aa
 aa
 aa
 aa
-ad
+aZ
 ab
 ab
 ac
@@ -37553,7 +37307,7 @@ kA
 kA
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -37672,8 +37426,8 @@ aa
 aa
 aa
 aa
-ad
-ad
+aZ
+aZ
 ab
 ab
 ab
@@ -37694,7 +37448,7 @@ ab
 ab
 ab
 ab
-ab
+eu
 eu
 eu
 eu
@@ -37754,8 +37508,8 @@ ja
 ja
 ja
 ja
-ad
-ad
+cR
+cR
 aa
 aa
 aa
@@ -37875,27 +37629,27 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
 eu
 nd
 nd
@@ -37936,27 +37690,27 @@ mq
 lV
 ne
 ja
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -38138,7 +37892,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -38340,7 +38094,7 @@ oJ
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -38542,7 +38296,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -38744,7 +38498,7 @@ oI
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -38946,7 +38700,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -39148,7 +38902,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -39350,7 +39104,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -39552,7 +39306,7 @@ lV
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -39754,7 +39508,7 @@ ou
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -39956,7 +39710,7 @@ oP
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -40158,7 +39912,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -40360,7 +40114,7 @@ oK
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -40562,7 +40316,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -40764,7 +40518,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -40966,7 +40720,7 @@ oi
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -41168,7 +40922,7 @@ pC
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -41370,7 +41124,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -41572,7 +41326,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -41774,7 +41528,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -41976,7 +41730,7 @@ oK
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -42178,7 +41932,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -42380,7 +42134,7 @@ mq
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -42568,7 +42322,7 @@ aI
 fS
 fS
 km
-ht
+aR
 ja
 ja
 ja
@@ -42582,7 +42336,7 @@ lV
 lV
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -42784,7 +42538,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -42986,7 +42740,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -43188,7 +42942,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -43390,7 +43144,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -43592,7 +43346,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -43794,7 +43548,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -43996,7 +43750,7 @@ ne
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -44198,7 +43952,7 @@ ne
 ne
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -44399,7 +44153,7 @@ aR
 ne
 ne
 ja
-ad
+cR
 aa
 aa
 aa
@@ -44601,7 +44355,7 @@ aR
 ne
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -44800,10 +44554,10 @@ aR
 dm
 dm
 aR
-ja
-ja
-ad
-ad
+aR
+aR
+Wl
+Wl
 aa
 aa
 aa
@@ -45002,9 +44756,9 @@ dm
 dm
 dm
 aR
-ad
-ad
-ad
+Wl
+Wl
+Wl
 aa
 aa
 aa
@@ -45204,7 +44958,7 @@ iL
 dm
 dm
 aR
-ad
+Wl
 aa
 aa
 aa
@@ -45406,7 +45160,7 @@ aR
 ZF
 aR
 aR
-ad
+Wl
 aa
 aa
 aa
@@ -45608,7 +45362,7 @@ aR
 jr
 va
 ja
-ad
+cR
 aa
 aa
 aa
@@ -45810,7 +45564,7 @@ aR
 jr
 va
 ja
-ad
+cR
 aa
 aa
 aa
@@ -46012,7 +45766,7 @@ aR
 jr
 va
 ja
-ad
+cR
 aa
 aa
 aa
@@ -46214,7 +45968,7 @@ aR
 nt
 va
 ja
-ad
+cR
 aa
 aa
 aa
@@ -46416,7 +46170,7 @@ aR
 ja
 ja
 ja
-ad
+cR
 aa
 aa
 aa
@@ -46614,11 +46368,11 @@ hV
 io
 iA
 aR
-ad
-ad
-ad
-ad
-ad
+Wl
+cR
+cR
+cR
+cR
 aa
 aa
 aa
@@ -46816,8 +46570,8 @@ hW
 hY
 ni
 aR
-ad
-ad
+Wl
+cR
 aa
 aa
 aa
@@ -47422,7 +47176,7 @@ aR
 aR
 aR
 aR
-ad
+Wl
 aa
 aa
 aa
@@ -47619,12 +47373,12 @@ fS
 fS
 gy
 aR
-ad
-ad
-ad
-ad
-ad
-ad
+Wl
+Wl
+Wl
+Wl
+Wl
+Wl
 aa
 aa
 aa
@@ -47821,10 +47575,10 @@ fS
 fS
 gB
 aR
-ad
-ad
-ad
-ad
+Wl
+Wl
+Wl
+Wl
 aa
 aa
 aa
@@ -48023,9 +47777,9 @@ fS
 fS
 gy
 aR
-ad
-ad
-ad
+Wl
+Wl
+Wl
 aa
 aa
 aa
@@ -48225,8 +47979,8 @@ fS
 fO
 fU
 aR
-ad
-ad
+Wl
+Wl
 aa
 aa
 aa
@@ -48426,9 +48180,9 @@ fT
 fO
 fU
 aS
-cR
-ad
-ad
+aR
+Wl
+Wl
 aa
 aa
 aa
@@ -48627,10 +48381,10 @@ fS
 fO
 fU
 aS
-cR
-ad
-ad
-ad
+aS
+Wl
+Wl
+Wl
 aa
 aa
 aa
@@ -48817,9 +48571,9 @@ aa
 aa
 ad
 ad
-ad
-ad
-cR
+JO
+JO
+aS
 aS
 dS
 dQ
@@ -48828,11 +48582,11 @@ gG
 fO
 fU
 aS
-cR
-ad
-ad
-ad
-ad
+aS
+JO
+Wl
+Wl
+Wl
 aa
 aa
 aa
@@ -49019,21 +48773,21 @@ aa
 aa
 aa
 ad
-ad
-ad
-ad
-cR
+JO
+JO
+JO
+aS
 aS
 dS
 eS
 gG
 fP
 aS
-cR
-ad
-ad
-ad
-ad
+aS
+JO
+JO
+Wl
+Wl
 aa
 aa
 aa
@@ -49221,20 +48975,20 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
-ad
-cR
+JO
+JO
+JO
+JO
+aS
 aS
 dN
 gG
 aS
-cR
-ad
-ad
-ad
-ad
+aS
+JO
+JO
+JO
+Wl
 aa
 aa
 aa
@@ -49424,18 +49178,18 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
-ad
-cR
-cR
-cR
-cR
-ad
-ad
-ad
-ad
+JO
+JO
+JO
+JO
+aS
+aS
+aS
+aS
+JO
+JO
+JO
+JO
 aa
 aa
 aa
@@ -49627,16 +49381,16 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+JO
+JO
+JO
+JO
+JO
+JO
+JO
+JO
+JO
+JO
 aa
 aa
 aa
@@ -49830,14 +49584,14 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+JO
+JO
+JO
+JO
+JO
+JO
+JO
+JO
 aa
 aa
 aa

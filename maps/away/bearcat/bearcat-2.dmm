@@ -4031,7 +4031,7 @@
 "gw" = (
 /obj/structure/closet/crate,
 /obj/random/coin,
-/obj/item/weapon/spacecash/bundle/c1000,
+/obj/item/weapon/spacecash/ewallet/random/c200000,
 /turf/simulated/floor/usedup,
 /area/ship/scrap/hidden)
 "gx" = (
@@ -4200,7 +4200,7 @@
 "gI" = (
 /obj/structure/table/reinforced,
 /obj/item/device/flashlight/lamp,
-/obj/item/weapon/spacecash/bundle/c1000,
+/obj/item/weapon/spacecash/ewallet/random/c200000,
 /obj/item/weapon/storage/bible/booze,
 /obj/item/weapon/cell/high,
 /turf/simulated/floor/usedup,

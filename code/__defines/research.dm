@@ -18,3 +18,4 @@
 #define MECHFAB		4	//Mechfab
 #define CHASSIS		8	//For protolathe, but differently
 #define AUTOLATHE	16  //For autolathe
+#define STORE		32	//Purchasing in store

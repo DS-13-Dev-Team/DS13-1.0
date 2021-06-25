@@ -27,13 +27,6 @@ SUBSYSTEM_DEF(skybox)
 /datum/controller/subsystem/skybox/proc/get_skybox(var/z, var/range = world.view)
 	if(!skybox_cache["[z]_[range]"])
 		skybox_cache["[z]_[range]"] = generate_skybox(z, range)
-		/*
-		if(GLOB.using_map.use_overmap)
-			var/obj/effect/overmap/visitable/O = map_sectors["[z]_[range]"]
-			if(istype(O))
-				for(var/zlevel in O.map_z)
-					skybox_cache["[zlevel]"] = skybox_cache["[z]_[range]"]
-		*/
 	return skybox_cache["[z]_[range]"]
 
 /datum/controller/subsystem/skybox/proc/generate_skybox(var/z, var/range = world.view)
@@ -54,23 +47,6 @@ SUBSYSTEM_DEF(skybox)
 		base.overlays += stars
 
 	res.overlays += base
-
-	/*
-	if(GLOB.using_map.use_overmap && use_overmap_details)
-		var/obj/effect/overmap/visitable/O = map_sectors["[z]"]
-		if(istype(O))
-			var/image/overmap = image(skybox_icon)
-			overmap.overlays += O.generate_skybox()
-			for(var/obj/effect/overmap/visitable/other in O.loc)
-				if(other != O)
-					overmap.overlays += other.get_skybox_representation()
-			overmap.appearance_flags = RESET_COLOR
-			res.overlays += overmap
-
-	for(var/datum/event/E in SSevent.active_events)
-		if(E.has_skybox_image && E.isRunning && (z in E.affecting_z))
-			res.overlays += E.get_skybox_image()
-	*/
 
 	//Lets create and place foreground objects
 	if(GLOB.using_map.skybox_foreground_objects)

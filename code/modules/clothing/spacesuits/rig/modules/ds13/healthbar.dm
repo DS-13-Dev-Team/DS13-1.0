@@ -17,6 +17,7 @@
 	suit_overlay_plane = EFFECTS_ABOVE_LIGHTING_PLANE
 	suit_overlay_flags = KEEP_APART
 
+	module_tags = list(LOADOUT_TAG_RIG_HEALTHBAR = 1)
 
 	base_type = /obj/item/rig_module/healthbar
 
@@ -81,7 +82,7 @@
 	interface_name = "Vitals Monitor: Advanced"
 	interface_desc = "Shows an informative health readout on the user's spine, and notifies local emergency services in the event of their untimely demise"
 
-
+	module_tags = list(LOADOUT_TAG_RIG_HEALTHBAR = 2)
 
 /obj/item/rig_module/healthbar/advanced/death()
 	.=..()

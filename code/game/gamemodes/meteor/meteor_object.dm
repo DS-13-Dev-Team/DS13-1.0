@@ -74,7 +74,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	walk(src,0) //this cancels the walk_towards() proc
 	. = ..()
 
-/obj/effect/meteor/Move(var/turf/NewLoc,NewDir=0)
+/obj/effect/meteor/Move(turf/NewLoc, NewDir=0)
 	move_count++
 
 	//Turns out that NewLoc is actually our current location so we need to get the next step
@@ -88,10 +88,10 @@ GLOBAL_LIST_EMPTY(asteroids)
 			var/turf/space/S = next_loc
 
 			//Easy optimisation to see if this is empty space
-			if (S.first_solid_z_below)
+			if (S.solid_below)
 				//Lets see if there's anything to hit at our target zlevel
 				var/turf/target = locate(next_loc.x, next_loc.y, z_target)
-				if (target && !target.is_hole)
+				if (!target?.is_hole)
 					impacting = TRUE
 
 				//If not we'll keep going as normal

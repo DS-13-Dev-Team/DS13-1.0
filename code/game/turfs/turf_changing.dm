@@ -12,12 +12,11 @@
 // Called after turf replaces old one
 /turf/proc/post_change()
 	levelupdate()
-	var/turf/simulated/open/T = GetAbove(src)
-	if(istype(T))
-		T.update_icon()
+	if (above)
+		above.update_mimic()
 
 //Creates a new turf
-/turf/proc/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0)
+/turf/proc/ChangeTurf(turf/N, tell_universe = TRUE, force_lighting_update = FALSE, keep_air = FALSE)
 	if (!N)
 		return
 
@@ -25,17 +24,20 @@
 	if(N == /turf/space)
 		var/turf/below = GetBelow(src)
 		if(istype(below) && !istype(below,/turf/space))
-			N = below.density ? /turf/simulated/floor/airless : /turf/simulated/open
+			N = /turf/simulated/open
 
-	var/obj/fire/old_fire = fire
+	var/old_air = air
+	var/old_fire = fire
 	var/old_opacity = opacity
 	var/old_dynamic_lighting = dynamic_lighting
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_overlay = lighting_overlay
 	var/old_corners = corners
+	var/old_ao_neighbors = ao_neighbors
 
 //	log_debug("Replacing [src.type] with [N]")
 
+	changing_turf = TRUE
 
 	if(connections) connections.erase_all()
 
@@ -48,25 +50,27 @@
 		var/turf/simulated/S = src
 		if(S.zone) S.zone.rebuild()
 
-	if(ispath(N, /turf/simulated/floor))
-		RemoveLattice()
+	// Run the Destroy() chain.
+	qdel(src)
 
-	var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
+	var/old_opaque_counter = opaque_counter
+	var/turf/simulated/W = new N(src)
 
+	if (permit_ao)
+		regenerate_ao()
 
+	W.opaque_counter = old_opaque_counter
 
-	W.opaque_counter = opaque_counter
+	if (keep_air)
+		W.air = old_air
 
 	if(ispath(N, /turf/simulated))
 		if(old_fire)
 			fire = old_fire
-
+		if (istype(W,/turf/simulated/floor))
+			W.RemoveLattice()
 	else if(old_fire)
-		old_fire.RemoveFire()
-
-	//The zstructures list is wiped when a turf is changed, so lets rebuild it
-	for (var/atom/A in W)
-		A.register_zstructure(W)
+		qdel(old_fire)
 
 	if(tell_universe)
 		GLOB.universe.OnTurfChange(W)
@@ -79,6 +83,7 @@
 	W.post_change()
 	. = W
 
+	W.ao_neighbors = old_ao_neighbors
 	if(lighting_overlays_initialised)
 		lighting_overlay = old_lighting_overlay
 		affecting_lights = old_affecting_lights
@@ -90,6 +95,9 @@
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
+
+	for(var/turf/T in RANGE_TURFS(src, 1))
+		T.update_icon()
 
 /turf/proc/transport_properties_from(turf/other)
 	if(!istype(other, src.type))

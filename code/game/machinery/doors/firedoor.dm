@@ -21,6 +21,7 @@
 	layer = BELOW_DOOR_LAYER
 	open_layer = BELOW_DOOR_LAYER
 	closed_layer = ABOVE_WINDOW_LAYER
+	movable_flags = MOVABLE_FLAG_Z_INTERACT
 	var/open_sound = "doorheavyopen"
 	var/close_sound = "doorheavyclose"
 
@@ -442,13 +443,16 @@
 //These are playing merry hell on ZAS.  Sorry fellas :(
 
 /obj/machinery/door/firedoor/border_only
+
+/obj/machinery/door/firedoor/multi_tile
+	icon = 'icons/obj/doors/DoorHazard2x1.dmi'
+	width = 2
 /*
 	icon = 'icons/obj/doors/edge_Doorfire.dmi'
 	glass = 1 //There is a glass window so you can see through the door
 			  //This is needed due to BYOND limitations in controlling visibility
 	heat_proof = 1
 	air_properties_vary_with_direction = 1
-
 	CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 		if(istype(mover) && mover.checkpass(PASS_FLAG_GLASS))
 			return 1
@@ -457,7 +461,6 @@
 			return !density
 		else
 			return 1
-
 	CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
 		if(istype(mover) && mover.checkpass(PASS_FLAG_GLASS))
 			return 1
@@ -465,21 +468,12 @@
 			return !density
 		else
 			return 1
-
-
 	update_nearby_tiles(need_rebuild)
 		if(!air_master) return 0
-
 		var/turf/simulated/source = loc
 		var/turf/simulated/destination = get_step(source,dir)
-
 		update_heat_protection(loc)
-
 		if(istype(source)) air_master.tiles_to_update += source
 		if(istype(destination)) air_master.tiles_to_update += destination
 		return 1
 */
-
-/obj/machinery/door/firedoor/multi_tile
-	icon = 'icons/obj/doors/DoorHazard2x1.dmi'
-	width = 2

@@ -26,7 +26,7 @@ GLOBAL_DATUM_INIT(moved_event, /decl/observ/moved, new)
 * Movement Handling *
 ********************/
 
-/atom/Entered(var/atom/movable/am, var/atom/old_loc)
+/atom/Entered(atom/movable/am, atom/old_loc)
 	. = ..()
 	GLOB.moved_event.raise_event(am, old_loc, am.loc)
 

@@ -136,7 +136,6 @@
 		)
 
 /obj/item/weapon/rig/ce
-
 	name = "advanced engineering hardsuit control module"
 	suit_type = "engineering hardsuit"
 	desc = "An advanced hardsuit that protects against hazardous, low pressure environments. Shines with a high polish. Appears compatible with the physiology of most species."
