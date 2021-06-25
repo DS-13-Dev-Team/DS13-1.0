@@ -387,3 +387,10 @@
 
 	release_vector(diff)
 
+#undef EX3_TOTAL
+#undef EX2_TOTAL
+#undef EX1_TOTAL
+
+#undef STATE_STABLE
+#undef STATE_GRINDING
+#undef STATE_MOVING

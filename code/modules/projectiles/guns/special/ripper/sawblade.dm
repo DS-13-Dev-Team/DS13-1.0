@@ -282,16 +282,7 @@
 		if (!QDELETED(src))
 			qdel(src)
 
-#undef DROP_DAMAGE
+
 #undef IMPACT_DAMAGE
-
-#undef EX3_TOTAL
-#undef EX2_TOTAL
-#undef EX1_TOTAL
-
-#undef SOUND_GRIND
-#undef SOUND_NORMAL
-
-#undef STATE_STABLE
-#undef STATE_GRIND
-#undef STATE_MOVING
+#undef SAWBLADE_HEALTH
+#undef DIAMONDBLADE_HEALTH
