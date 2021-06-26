@@ -2,6 +2,9 @@
 		The way datum/mind stuff works has been changed a lot.
 		Minds now represent IC characters rather than following a client around constantly.
 
+		Note that a mind only represents a character who has been brought into physical existence this round.
+		Minds do not exist for characters in savefiles until they are spawned
+
 	Guidelines for using minds properly:
 
 	-	Never mind.transfer_to(ghost). The var/current and var/original of a mind must always be of type mob/living!
@@ -36,6 +39,8 @@
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/mob/observer/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
 	var/active = 0
+
+	var/character_id	//The database ID of the associated character records for this mind. Used to fetch and store persistent data
 
 	var/memory
 	var/list/known_connections //list of known (RNG) relations between people

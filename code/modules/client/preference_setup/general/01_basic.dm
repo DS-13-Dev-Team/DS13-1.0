@@ -5,18 +5,23 @@ datum/preferences
 	var/age = 30						//age of character
 	var/spawnpoint = SPAWNPOINT_CRYO 			//where this character will spawn (0-2).
 	var/metadata = ""
+	var/character_id
 
 /datum/category_item/player_setup_item/general/basic
 	name = "Basic"
 	sort_order = 1
 
 /datum/category_item/player_setup_item/general/basic/load_character(var/savefile/S)
+
 	S["real_name"]				>> pref.real_name
 	S["name_is_always_random"]	>> pref.be_random_name
 	S["gender"]					>> pref.gender
 	S["age"]					>> pref.age
 	S["spawnpoint"]				>> pref.spawnpoint
 	S["OOC_Notes"]				>> pref.metadata
+	S["character_id"]			>> pref.character_id
+
+
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
 	S["real_name"]				<< pref.real_name
@@ -25,6 +30,7 @@ datum/preferences
 	S["age"]					<< pref.age
 	S["spawnpoint"]				<< pref.spawnpoint
 	S["OOC_Notes"]				<< pref.metadata
+	S["character_id"]			<< pref.character_id
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
 	var/datum/species/S = all_species[pref.species ? pref.species : SPECIES_HUMAN]
@@ -36,6 +42,9 @@ datum/preferences
 		pref.real_name      = random_name(pref.gender, pref.species)
 	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, spawntypes(), initial(pref.spawnpoint))
 	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
+	if (!pref.character_id)
+		//If this wasn't there, get it registered
+		get_character_id(pref)
 
 /datum/category_item/player_setup_item/general/basic/content()
 	. = list()

@@ -23,7 +23,7 @@ var/round_progressing = 1
 // Database connections. A connection is established on world creation.
 // Ideally, the connection dies when the server restarts (After feedback logging.).
 var/DBConnection/dbcon     = new() // Feedback    database (New database)
-var/DBConnection/dbcon_old = new() // /tg/station database (Old database) -- see the files in the SQL folder for information on what goes where.
+var/DBConnection/dbcon = new() // /tg/station database (Old database) -- see the files in the SQL folder for information on what goes where.
 
 
 // For FTP requests. (i.e. downloading runtime logs.)
