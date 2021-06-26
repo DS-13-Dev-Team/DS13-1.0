@@ -146,6 +146,16 @@
 	,"CEC Employee Checking Account",available_balance) as num | null
 
 
+
+
+	var/response = alert(user, "Welcome to the CEC Employee Checking Account withdrawal interface. \n\
+	Currently Available Balance:	[available_balance]	credits \n\
+	You are withdrawing: [withdrawal_amount] credits. Please select the location to withdraw to.",
+	"CEC Employee Checking Account",
+	(rig_account ? "Withdraw to RIG" : null),
+	(chip ? "Withdraw to Credit Chip" : null),
+	"Cancel")
+
 	//We need to recheck things to prevent exploits now
 	if (!ECA)
 		return
@@ -155,14 +165,6 @@
 
 	if (!withdrawal_amount)
 		return
-
-	var/response = alert(user, "Welcome to the CEC Employee Checking Account withdrawal interface. \n\
-	Currently Available Balance:	[available_balance]	credits \n\
-	You are withdrawing: [withdrawal_amount] credits. Please select the location to withdraw to.",
-	"CEC Employee Checking Account",
-	(rig_account ? "Withdraw to RIG" : null),
-	(chip ? "Withdraw to Credit Chip" : null),
-	"Cancel")
 
 	switch (response)
 		if ("Cancel")
