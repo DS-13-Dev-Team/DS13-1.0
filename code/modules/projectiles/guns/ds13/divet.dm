@@ -1,3 +1,7 @@
+/**
+Divet pistol typedef & logic
+*/
+
 /obj/item/weapon/gun/projectile/divet
 	name = "divet pistol"
 	desc = "A Winchester Arms NK-series pistol capable of fully automatic fire."
@@ -39,6 +43,9 @@
 		icon_state = "divet_e"
 
 
+/**
+Magazine type definitions
+*/
 
 /obj/item/ammo_magazine/divet
 	name = "magazine (pistol slug)"
@@ -65,6 +72,11 @@
 	icon_state = "icds"
 	ammo_type = /obj/item/ammo_casing/ls_slug/incendiary
 
+
+/**
+Ammo casings for the mags
+*/
+
 /obj/item/ammo_casing/ls_slug
 	desc = "A .45 bullet casing."
 	caliber = "slug"
@@ -78,6 +90,10 @@
 
 /obj/item/ammo_casing/ls_slug/incendiary
 	projectile_type = /obj/item/projectile/bullet/ls_slug/incendiary
+
+/**
+Projectile logic
+*/
 
 /obj/item/projectile/bullet/ls_slug
 	damage = 17.5
@@ -109,12 +125,6 @@
 
 
 /obj/item/projectile/bullet/ls_slug/incendiary/on_hit(atom/target, blocked)
+	//Yoinked from hydrazine torch. Spreads the flames on the turf because this bullet is about to be GC'd
+	get_turf(target).spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = (T0C + 2600)))
 	. = ..()
-	//Mostly lifted from the hydrazine torch...
-	var/spraytype = /datum/extension/spray/flame/radial
-	var/temperature = T0C + 2600
-
-	var/turf/T = get_turf(target)
-
-	//We trigger the spray on the turf, because this object is about to be deleted
-	T.spray_ability(subtype = spraytype,  target = target, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = temperature))
