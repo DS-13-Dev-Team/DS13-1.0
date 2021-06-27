@@ -149,10 +149,11 @@
 	//Ears
 	if(sdisabilities & DEAF)	//disabled-deaf, doesn't get better on its own
 		setEarDamage(null, max(ear_deaf, 1))
-	else if(ear_damage < 25)
-		adjustEarDamage(-0.05, -1)	// having ear damage impairs the recovery of ear_deaf
-	else if(ear_damage < 100)
-		adjustEarDamage(-0.05, 0)	// deafness recovers slowly over time, unless ear_damage is over 100. TODO meds that heal ear_damage
+	else
+		adjust_ear_damage(-0.1, -1)	
+		//Change by Nanako, 2021-06-07, damage no longer impairs deafness recovery. This feature simply wasn't fun, and generated a lot of complaints
+		//Also increased the healing of ear damage
+	
 
 
 //this handles hud updates. Calls update_vision() and handle_hud_icons()

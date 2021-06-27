@@ -486,7 +486,8 @@ default behaviour is:
 	. = ..()
 
 //damage/heal the mob ears and adjust the deaf amount
-/mob/living/adjustEarDamage(var/damage, var/deaf)
+/mob/living/adjust_ear_damage(var/damage, var/deaf)
+	
 	ear_damage = max(0, ear_damage + damage)
 	ear_deaf = max(0, ear_deaf + deaf)
 
