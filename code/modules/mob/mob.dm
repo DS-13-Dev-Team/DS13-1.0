@@ -1042,7 +1042,7 @@
 	set hidden = 1
 	set_face_dir(client.client_dir(WEST))
 
-/mob/proc/adjustEarDamage()
+/mob/proc/adjust_ear_damage()
 	return
 
 /mob/proc/setEarDamage()

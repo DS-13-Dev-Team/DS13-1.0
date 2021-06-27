@@ -113,10 +113,7 @@
 		src.eye_blind--
 		src.blinded = 1
 
-	if (src.ear_deaf > 0) src.ear_deaf--
-	if (src.ear_damage < 25)
-		src.ear_damage -= 0.05
-		src.ear_damage = max(src.ear_damage, 0)
+	adjust_ear_damage(-0.05, -1)
 
 	src.set_density(!src.lying)
 

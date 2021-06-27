@@ -169,7 +169,7 @@ datum/track/proc/GetTrack()
 				continue
 		M.sleeping = 0
 		M.stuttering += 20
-		M.ear_deaf += 30
+		M.adjust_ear_damage(0, 30)
 		M.Weaken(3)
 		if(prob(30))
 			M.Stun(10)

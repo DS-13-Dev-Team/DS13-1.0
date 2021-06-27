@@ -94,5 +94,7 @@
 	if (!default_icon)
 		var/mob/living/carbon/human/H = new mob_type(locate(1,1,1), src.name)	//Create a new human of our species
 		default_icon = getFlatIcon(H)
+		H.adjust_biomass(-INFINITY)	//Not worth biomass
+		QDEL_NULL(H)
 
 	return default_icon

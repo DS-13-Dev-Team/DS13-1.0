@@ -225,7 +225,7 @@
 /datum/design/item/ammo/ripper_blades
 	name = "ripper blades (steel)"
 	id = "ripper_blades"
-	build_path = /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine
+	build_path = /obj/item/ammo_magazine/sawblades
 	price = 1800
 
 

@@ -48,33 +48,25 @@
 //Flashing everyone
 	if(eye_safety < FLASH_PROTECTION_MODERATE)
 		M.flash_eyes()
-		M.Stun(2)
-		M.Weaken(10)
 
 //Now applying sound
+	if(ear_safety > 0)
+		return
 	if((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
-		if(ear_safety > 0)
-			M.Stun(2)
-			M.Weaken(1)
+		if ((prob(14) || (M == src.loc && prob(70))))
+			M.adjust_ear_damage(rand(0, 10),15)
+			M.make_dizzy(600)
 		else
-			M.Stun(10)
-			M.Weaken(3)
-			if ((prob(14) || (M == src.loc && prob(70))))
-				M.ear_damage += rand(1, 10)
-			else
-				M.ear_damage += rand(0, 5)
-				M.ear_deaf = max(M.ear_deaf,15)
+			M.adjust_ear_damage(rand(0, 5),15)
+			M.make_dizzy(500)
 
 	else if(get_dist(M, T) <= 5)
-		if(!ear_safety)
-			M.Stun(8)
-			M.ear_damage += rand(0, 3)
-			M.ear_deaf = max(M.ear_deaf,10)
+		M.adjust_ear_damage(rand(0, 3),10)
+		M.make_dizzy(400)
 
-	else if(!ear_safety)
-		M.Stun(4)
-		M.ear_damage += rand(0, 1)
-		M.ear_deaf = max(M.ear_deaf,5)
+	else
+		M.adjust_ear_damage(rand(0, 1),5)
+		M.make_dizzy(300)
 
 //This really should be in mob not every check
 	if(ishuman(M))
