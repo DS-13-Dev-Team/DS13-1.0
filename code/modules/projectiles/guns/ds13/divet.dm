@@ -26,6 +26,11 @@
 /obj/item/weapon/gun/projectile/divet/empty
 	magazine_type = null
 
+/obj/item/weapon/gun/projectile/divet/silenced
+	icon_state = "divet_spec"
+	name = "special ops divet pistol"
+	silenced = TRUE
+
 /obj/item/weapon/gun/projectile/divet/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
@@ -45,12 +50,34 @@
 	max_ammo = 10
 	multiple_sprites = 1
 
+/obj/item/ammo_magazine/divet/hollow_point
+	name = "divet magazine (hollow point)"
+	icon_state = "hpds"
+	ammo_type = /obj/item/ammo_casing/ls_slug/hollow_point
+
+/obj/item/ammo_magazine/divet/ap
+	name = "divet magazine (AP)"
+	icon_state = "apds"
+	ammo_type = /obj/item/ammo_casing/ls_slug/ap
+
+/obj/item/ammo_magazine/divet/incendiary
+	name = "divet magazine (dragon's breath)"
+	icon_state = "icds"
+	ammo_type = /obj/item/ammo_casing/ls_slug/incendiary
 
 /obj/item/ammo_casing/ls_slug
 	desc = "A .45 bullet casing."
 	caliber = "slug"
 	projectile_type = /obj/item/projectile/bullet/ls_slug
 
+/obj/item/ammo_casing/ls_slug/hollow_point
+	projectile_type = /obj/item/projectile/bullet/ls_slug/hollow_point
+
+/obj/item/ammo_casing/ls_slug/ap
+	projectile_type = /obj/item/projectile/bullet/ls_slug/ap
+
+/obj/item/ammo_casing/ls_slug/incendiary
+	projectile_type = /obj/item/projectile/bullet/ls_slug/incendiary
 
 /obj/item/projectile/bullet/ls_slug
 	damage = 17.5
@@ -60,3 +87,34 @@
 	armor_penetration = 5
 	structure_damage_factor = 1.5
 	penetration_modifier = 1.1
+	icon_state = "divet"
+
+/obj/item/projectile/bullet/ls_slug/hollow_point
+	structure_damage_factor = 0.5
+	penetration_modifier = 0
+	armor_penetration = -50
+	icon_state = "divet_hp"
+
+/obj/item/projectile/bullet/ls_slug/ap
+	structure_damage_factor = 1.75
+	penetration_modifier = 1.5
+	armor_penetration = 25 //May wanna change this!
+	icon_state = "divet_ap"
+
+/obj/item/projectile/bullet/ls_slug/incendiary
+	icon_state = "divet_incend"
+	fire_sound = list('sound/weapons/guns/fire/torch_altfire_1.ogg',
+	'sound/weapons/guns/fire/torch_altfire_2.ogg',
+	'sound/weapons/guns/fire/torch_altfire_3.ogg')
+
+
+/obj/item/projectile/bullet/ls_slug/incendiary/on_hit(atom/target, blocked)
+	. = ..()
+	//Mostly lifted from the hydrazine torch...
+	var/spraytype = /datum/extension/spray/flame/radial
+	var/temperature = T0C + 2600
+
+	var/turf/T = get_turf(target)
+
+	//We trigger the spray on the turf, because this object is about to be deleted
+	T.spray_ability(subtype = spraytype,  target = target, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = temperature))
