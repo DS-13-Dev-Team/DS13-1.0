@@ -212,6 +212,15 @@ var/global/list/string_slot_flags = list(
 		var/decl/theme/T = new subtype()
 		GLOB.client_themes[T.id] = T
 
+	//Targeting profiles
+	for (var/subtype in subtypesof(/datum/targeting_profile))
+		var/datum/targeting_profile/SA = subtype
+		if (initial(SA.base_type) == subtype)
+			continue	//If base type matches type, its an abstract parent class, do not instantiate
+
+		SA = new subtype()
+		GLOB.targeting_profiles[SA.id] = SA
+
 
 	for (var/subtype in subtypesof(/datum/antagonist))
 		var/datum/antagonist/SA = subtype

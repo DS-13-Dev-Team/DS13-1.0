@@ -261,17 +261,19 @@
 	upgrade_multipliers = list()	//Prevent upgrading
 	var/datum/crew_objective/event
 	visualnet_range = 30
+	marker_spawnable = FALSE
 
 /obj/structure/corruption_node/nest/event_spawn/New(var/atom/newloc, var/dummy, var/datum/crew_objective/event)
 	src.event = event
 	.=..()
 
 /obj/structure/corruption_node/nest/event_spawn/Initialize()
+	.=..()
 	GLOB.necrovision.add_source(src, TRUE, TRUE)
 
 /obj/structure/corruption_node/nest/event_spawn/register_spawnpoint()
 	//name = event.name
-	SSnecromorph.marker.add_spawnpoint(src, event)
+	SSnecromorph.marker.add_spawnpoint(src, event = src.event)
 
 /obj/structure/corruption_node/nest/event_spawn/get_visualnet_tiles(var/datum/visualnet/network)
 
