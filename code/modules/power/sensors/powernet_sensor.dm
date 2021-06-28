@@ -22,7 +22,7 @@
 // Proc: New()
 // Parameters: None
 // Description: Automatically assigns name according to ID tag.
-/obj/machinery/power/sensor/New()
+/obj/machinery/power/sensor/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	auto_set_name()
 

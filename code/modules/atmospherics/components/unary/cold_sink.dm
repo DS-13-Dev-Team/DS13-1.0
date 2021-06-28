@@ -21,7 +21,7 @@
 	var/set_temperature = T20C		// Thermostat
 	var/cooling = 0
 
-/obj/machinery/atmospherics/unary/freezer/New()
+/obj/machinery/atmospherics/unary/freezer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	initialize_directions = dir
 	component_parts = list()

@@ -144,7 +144,7 @@ obj/machinery/door/airlock/Initialize()
 
 	update_icon()
 
-obj/machinery/door/airlock/New()
+obj/machinery/door/airlock/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	if(radio_controller)
@@ -221,7 +221,7 @@ obj/machinery/airlock_sensor/Initialize()
 	set_frequency(frequency)
 	. = ..()
 
-obj/machinery/airlock_sensor/New()
+obj/machinery/airlock_sensor/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	if(radio_controller)
 		set_frequency(frequency)
@@ -294,7 +294,7 @@ obj/machinery/access_button/Initialize()
 	set_frequency(frequency)
 
 
-obj/machinery/access_button/New()
+obj/machinery/access_button/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	if(radio_controller)

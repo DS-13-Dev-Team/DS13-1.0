@@ -35,7 +35,7 @@
 		icon_state = "generator0"
 
 
-/obj/machinery/power/shield_generator/New()
+/obj/machinery/power/shield_generator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/weapon/circuitboard/shield_generator(src)

@@ -35,7 +35,7 @@
 	//Necrovision
 	visualnet_range = 12
 
-/obj/machinery/marker/New()
+/obj/machinery/marker/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	SSnecromorph.marker = src	//Populate the global var with ourselves
 	..()
 

@@ -11,7 +11,7 @@
 	var/obj/machinery/mineral/output = null
 
 
-/obj/machinery/mineral/unloading_machine/New()
+/obj/machinery/mineral/unloading_machine/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	spawn( 5 )
 		for (var/dir in GLOB.cardinal)

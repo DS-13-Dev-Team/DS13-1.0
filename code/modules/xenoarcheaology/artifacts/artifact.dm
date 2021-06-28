@@ -9,7 +9,7 @@
 	var/datum/artifact_effect/secondary_effect
 	var/being_used = 0
 
-/obj/machinery/artifact/New()
+/obj/machinery/artifact/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	var/effecttype = pick(typesof(/datum/artifact_effect) - /datum/artifact_effect)

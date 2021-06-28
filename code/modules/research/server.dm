@@ -14,7 +14,7 @@
 	var/delay = 10
 	req_access = list(access_cscio) //Only the R&D can change server settings.
 
-/obj/machinery/r_n_d/server/New()
+/obj/machinery/r_n_d/server/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/weapon/circuitboard/rdserver(src)

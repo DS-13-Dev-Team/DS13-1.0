@@ -9,7 +9,7 @@
 	var/obj/item/stack/tile/T
 	var/list/mode = list("dismantle"=0,"laying"=0,"collect"=0)
 
-/obj/machinery/floorlayer/New()
+/obj/machinery/floorlayer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	T = new/obj/item/stack/tile/floor(src)
 	..()
 

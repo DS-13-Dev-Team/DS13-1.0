@@ -26,7 +26,7 @@
 	var/ui_tick = 0
 
 
-/obj/machinery/power/smes/batteryrack/New()
+/obj/machinery/power/smes/batteryrack/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	add_parts()
 	RefreshParts()

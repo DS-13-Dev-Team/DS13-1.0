@@ -55,7 +55,7 @@ field_generator power level display
 	return
 
 
-/obj/machinery/field_generator/New()
+/obj/machinery/field_generator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	fields = list()
 	connected_gens = list()

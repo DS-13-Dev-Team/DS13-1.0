@@ -19,7 +19,7 @@
 	var/datum/gas_mixture/inner_tank = new
 	var/tank_volume = 400//Litres
 
-/obj/machinery/atmospherics/binary/oxyregenerator/New()
+/obj/machinery/atmospherics/binary/oxyregenerator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	inner_tank.volume = tank_volume
 	component_parts = list()

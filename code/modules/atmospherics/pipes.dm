@@ -28,7 +28,7 @@
 /obj/machinery/atmospherics/pipe/drain_power()
 	return -1
 
-/obj/machinery/atmospherics/pipe/New()
+/obj/machinery/atmospherics/pipe/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	if(istype(get_turf(src), /turf/simulated/wall) || istype(get_turf(src), /turf/simulated/shuttle/wall) || istype(get_turf(src), /turf/unsimulated/wall))
 		level = 1
 	..()
@@ -197,7 +197,7 @@
 
 	level = 1
 
-/obj/machinery/atmospherics/pipe/simple/New()
+/obj/machinery/atmospherics/pipe/simple/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	// Pipe colors and icon states are handled by an image cache - so color and icon should
@@ -472,7 +472,7 @@
 
 	level = 1
 
-/obj/machinery/atmospherics/pipe/manifold/New()
+/obj/machinery/atmospherics/pipe/manifold/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	alpha = 255
 	icon = null
@@ -736,7 +736,7 @@
 
 	level = 1
 
-/obj/machinery/atmospherics/pipe/manifold4w/New()
+/obj/machinery/atmospherics/pipe/manifold4w/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	alpha = 255
 	icon = null
@@ -1000,7 +1000,7 @@
 
 	var/obj/machinery/atmospherics/node
 
-/obj/machinery/atmospherics/pipe/cap/New()
+/obj/machinery/atmospherics/pipe/cap/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	initialize_directions = dir
 
@@ -1192,7 +1192,7 @@
 	name = "Pressure Tank (Air)"
 	icon_state = "air_map"
 
-/obj/machinery/atmospherics/pipe/tank/air/New()
+/obj/machinery/atmospherics/pipe/tank/air/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	air_temporary = new
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
@@ -1208,7 +1208,7 @@
 	name = "Pressure Tank (Oxygen)"
 	icon_state = "o2_map"
 
-/obj/machinery/atmospherics/pipe/tank/oxygen/New()
+/obj/machinery/atmospherics/pipe/tank/oxygen/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	air_temporary = new
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
@@ -1222,7 +1222,7 @@
 	name = "Pressure Tank (Nitrogen)"
 	icon_state = "n2_map"
 
-/obj/machinery/atmospherics/pipe/tank/nitrogen/New()
+/obj/machinery/atmospherics/pipe/tank/nitrogen/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	air_temporary = new
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
@@ -1236,7 +1236,7 @@
 	name = "Pressure Tank (Carbon Dioxide)"
 	icon_state = "co2_map"
 
-/obj/machinery/atmospherics/pipe/tank/carbon_dioxide/New()
+/obj/machinery/atmospherics/pipe/tank/carbon_dioxide/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	air_temporary = new
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
@@ -1250,7 +1250,7 @@
 	name = "Pressure Tank (Phoron)"
 	icon_state = "phoron_map"
 
-/obj/machinery/atmospherics/pipe/tank/phoron/New()
+/obj/machinery/atmospherics/pipe/tank/phoron/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	air_temporary = new
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
@@ -1264,7 +1264,7 @@
 	name = "Pressure Tank (Nitrous Oxide)"
 	icon_state = "n2o_map"
 
-/obj/machinery/atmospherics/pipe/tank/nitrous_oxide/New()
+/obj/machinery/atmospherics/pipe/tank/nitrous_oxide/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	air_temporary = new
 	air_temporary.volume = volume
 	air_temporary.temperature = T0C
@@ -1278,7 +1278,7 @@
 	name = "Pressure Tank (Hydrogen)"
 	icon_state = "h2_map"
 
-/obj/machinery/atmospherics/pipe/tank/hydrogen/New()
+/obj/machinery/atmospherics/pipe/tank/hydrogen/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	air_temporary = new
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
@@ -1304,7 +1304,7 @@
 
 	var/build_killswitch = 1
 
-/obj/machinery/atmospherics/pipe/vent/New()
+/obj/machinery/atmospherics/pipe/vent/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	initialize_directions = dir
 	..()
 

@@ -39,7 +39,7 @@
 	var/need_update_field = 0
 	var/need_player_check = 0
 
-/obj/machinery/mining/drill/New()
+/obj/machinery/mining/drill/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 
 	..()
 
@@ -299,7 +299,7 @@
 	icon_state = "mining_brace"
 	var/obj/machinery/mining/drill/connected
 
-/obj/machinery/mining/brace/New()
+/obj/machinery/mining/brace/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	component_parts = list()

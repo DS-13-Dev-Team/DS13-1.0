@@ -25,7 +25,7 @@
 	var/manufacturer = null
 	var/sync_message = ""
 
-/obj/machinery/mecha_part_fabricator/New()
+/obj/machinery/mecha_part_fabricator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	component_parts = list()

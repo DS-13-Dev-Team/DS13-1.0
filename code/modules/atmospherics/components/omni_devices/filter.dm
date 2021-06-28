@@ -19,7 +19,7 @@
 
 	var/list/filtering_outputs = list()	//maps gasids to gas_mixtures
 
-/obj/machinery/atmospherics/omni/filter/New()
+/obj/machinery/atmospherics/omni/filter/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	rebuild_filtering_list()
 	for(var/datum/omni_port/P in ports)
