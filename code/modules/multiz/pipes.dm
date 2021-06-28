@@ -11,7 +11,7 @@
 	volume = 70
 
 	dir = SOUTH
-	initialize_directions = SOUTH
+	initialize_directions = null	//This will force it to take initialize directions from dir instead
 
 	var/minimum_temperature_difference = 300
 	var/thermal_conductivity = 0 //WALL_HEAT_TRANSFER_COEFFICIENT No
@@ -21,6 +21,14 @@
 	alert_pressure = 55*ONE_ATMOSPHERE
 
 	level = 1
+
+/obj/machinery/atmospherics/pipe/zpipe/New()
+
+
+	if (isnull(initialize_directions))
+		initialize_directions = dir
+
+	..()
 
 /obj/machinery/atmospherics/pipe/zpipe/hide(i)
 	if(istype(loc, /turf/simulated))
@@ -88,6 +96,9 @@
 	name = "upwards pipe"
 	desc = "A pipe segment to connect upwards."
 
+/obj/machinery/atmospherics/pipe/zpipe/up/hides_under_flooring()
+	return FALSE	//It goes upwards, it can't hide under the floor below
+
 /obj/machinery/atmospherics/pipe/zpipe/up/atmos_init()
 	..()
 	var/node1_dir
@@ -112,8 +123,7 @@
 					break
 
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	hide(!T.is_plating())
+
 
 ///////////////////////
 // and the down pipe //
