@@ -9,6 +9,11 @@
 	item_cost = 24
 	path = /obj/item/weapon/storage/box/syndie_kit/imp_freedom
 
+/datum/uplink_item/item/implants/imp_freedom/special
+	item_cost = 12
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)
+
 /datum/uplink_item/item/implants/imp_compress
 	name = "Compressed Matter Implant"
 	item_cost = 32
@@ -33,3 +38,16 @@
 	desc = "Use on someone who is under influence of Mindbreaker to give them laws-like set of instructions. Kit comes with a dose of mindbreaker."
 	item_cost = 20
 	path = /obj/item/weapon/storage/box/syndie_kit/imp_imprinting
+
+/datum/uplink_item/item/implants/imp_imprinting/special
+	item_cost = 13
+	is_special = TRUE
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
+
+/datum/uplink_item/item/implants/explosive
+	name = "temp name1"
+	desc = "temp desc1"
+	item_cost = 13
+	is_special = TRUE
+	path = /obj/item/weapon/implantcase/explosive
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)

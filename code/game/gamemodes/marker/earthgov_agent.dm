@@ -49,6 +49,17 @@ GLOBAL_LIST_EMPTY(agents_list)
 	EDFM.create_global_objectives(TRUE)
 
 
+/datum/antagonist/earthgov_agent/equip(var/mob/living/carbon/human/player)
+	admin_notice(SPAN_NOTICE("ENTRO AL EQUIP"))
+	if(!..())
+		admin_notice(SPAN_NOTICE("NO PASO EL CHECK"))
+		return FALSE
+
+	var/obj/item/weapon/tool/multitool/uplink/special/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
+	player.put_in_hands(U)
+	admin_notice(SPAN_NOTICE("PASO EL CHECK"))
+
+	return TRUE
 
 
 

@@ -58,10 +58,20 @@
 	item_cost = 8
 	path = /obj/item/ammo_magazine/c45uzi
 
+/datum/uplink_item/item/ammo/c45uzi/special
+	item_cost = 2
+	is_special = TRUE
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
+
 /datum/uplink_item/item/ammo/a10mm
 	name = "10mm SMG Magazine"
 	item_cost = 8
 	path = /obj/item/ammo_magazine/a10mm
+
+/datum/uplink_item/item/ammo/a10mm/special
+	item_cost = 2
+	is_special = TRUE
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/ammo/a50
 	name = ".50 AE magazine"
@@ -82,3 +92,10 @@
 	name = "Flechette Magazine"
 	item_cost = 8
 	path = /obj/item/weapon/magnetic_ammo
+
+/datum/uplink_item/item/ammo/divet
+	name = "Divet Magazine"
+	item_cost = 2
+	path = /obj/item/ammo_magazine/divet
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)
