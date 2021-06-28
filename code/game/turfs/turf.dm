@@ -185,7 +185,7 @@ var/const/enterloopsanity = 100
 	..()
 
 	if (atom.can_block_movement)
-		movement_blocking_atoms |= atom
+		LAZYDISTINCTADD(movement_blocking_atoms,atom)
 
 	if(!istype(atom, /atom/movable))
 		return
@@ -218,7 +218,7 @@ var/const/enterloopsanity = 100
 /turf/Exited(atom/atom as mob|obj)
 	if (atom.can_block_movement)
 
-		movement_blocking_atoms -= atom
+		LAZYREMOVE(movement_blocking_atoms,atom)
 
 	.=..()
 

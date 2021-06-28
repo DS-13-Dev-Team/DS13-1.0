@@ -9,7 +9,7 @@
 	anchored = 1
 	var/boom_time = 1
 
-	can_block_movement = TRUE //Incorporeal
+	can_block_movement = TRUE
 
 /obj/effect/force_portal/Initialize()
 	. = ..()

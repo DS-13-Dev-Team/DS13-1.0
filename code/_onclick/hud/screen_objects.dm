@@ -15,6 +15,7 @@
 	unacidable = 1
 	var/obj/master = null    //A reference to the object in the slot. Grabs or items, generally.
 	var/globalscreen = FALSE //Global screens are not qdeled when the holding mob is destroyed.
+	can_block_movement = FALSE	//This can never be on a turf
 
 /obj/screen/Destroy()
 	master = null

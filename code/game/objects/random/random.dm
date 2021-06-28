@@ -16,6 +16,8 @@
 	//Used only in subtypes. Items in this list are added to possible spawns
 	var/list/additions
 
+	can_block_movement = FALSE
+
 // creates a new object and deletes itself
 /obj/random/Initialize()
 	..()

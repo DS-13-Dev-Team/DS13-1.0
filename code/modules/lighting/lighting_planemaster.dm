@@ -15,5 +15,5 @@
 		)
 
 	mouse_opacity = 0    // nothing on this plane is mouse-visible
-
+	can_block_movement = FALSE
 

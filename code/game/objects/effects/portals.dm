@@ -10,6 +10,7 @@
 	anchored = 1.0
 	var/dangerous = 0
 	var/failchance = 0
+	can_block_movement = TRUE
 
 /obj/effect/portal/Bumped(mob/M as mob|obj)
 	spawn(0)
