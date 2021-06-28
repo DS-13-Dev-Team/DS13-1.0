@@ -87,6 +87,7 @@
 		0, SHADOWER_DARKENING_FACTOR, 0,
 		0, 0, SHADOWER_DARKENING_FACTOR
 	)
+	can_block_movement = FALSE
 
 /atom/movable/openspace/multiplier/Destroy()
 	var/turf/myturf = loc

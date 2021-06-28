@@ -33,8 +33,7 @@
 /atom/movable/Initialize(var/mapload)
 	if (can_block_movement && isturf(loc))
 		var/turf/T = loc
-		T.movement_blocking_atoms |= src
-
+		LAZYDISTINCTADD(T.movement_blocking_atoms,src)
 
 	.=..()
 
@@ -42,7 +41,7 @@
 	if (can_block_movement)
 		var/turf/T = get_turf(src)
 		if (T)
-			T.movement_blocking_atoms -= src
+			LAZYREMOVE(T.movement_blocking_atoms,src)
 
 	. = ..()
 
