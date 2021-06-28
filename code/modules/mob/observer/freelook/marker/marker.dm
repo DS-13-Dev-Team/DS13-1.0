@@ -287,6 +287,8 @@
 				break
 		SSnano.update_uis(shop)
 
+	crash_with("Marker removing spawnpoint [source]")
+
 
 //Marker spawning landmarks
 /obj/effect/landmark/marker
