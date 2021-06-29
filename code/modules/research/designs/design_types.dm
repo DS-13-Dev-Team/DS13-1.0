@@ -455,12 +455,20 @@
 	.=..()
 	name = "Beaker prototype ([item_name])"
 
+/datum/design/item/beaker
+	name = "beaker"
+	id = "beaker"
+	materials = list(MATERIAL_GLASS = 250)
+	build_path = /obj/item/weapon/reagent_containers/glass/beaker
+	sort_string = "MCAAA"
+	price = 150
+
 /datum/design/item/beaker/large
 	name = "large beaker"
 	id = "large beaker"
-	materials = list(MATERIAL_GLASS = 200)
+	materials = list(MATERIAL_GLASS = 500)
 	build_path = /obj/item/weapon/reagent_containers/glass/beaker/large
-	sort_string = "MCAAA"
+	sort_string = "MCAAB"
 	price = 300
 
 /datum/design/item/beaker/noreact
@@ -470,7 +478,7 @@
 	req_tech = list(TECH_MATERIAL = 2)
 	materials = list(MATERIAL_STEEL = 3000)
 	build_path = /obj/item/weapon/reagent_containers/glass/beaker/noreact
-	sort_string = "MCAAB"
+	sort_string = "MCAAC"
 
 /datum/design/item/beaker/bluespace
 	name = "bluespace beaker"
@@ -479,7 +487,7 @@
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 6)
 	materials = list(MATERIAL_STEEL = 3000, MATERIAL_PHORON = 3000, MATERIAL_DIAMOND = 500)
 	build_path = /obj/item/weapon/reagent_containers/glass/beaker/bluespace
-	sort_string = "MCAAC"
+	sort_string = "MCAAD"
 	price = 1500
 
 /datum/design/item/implant
