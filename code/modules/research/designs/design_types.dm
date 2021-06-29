@@ -14,6 +14,7 @@
 
 /datum/design/item/stock_part
 	category = "Parts"
+	build_type = PROTOLATHE | STORE
 
 /datum/design/item/stock_part/AssembleDesignName()
 	..()
@@ -236,6 +237,7 @@
 
 /datum/design/item/hud
 	materials = list(MATERIAL_STEEL = 50, MATERIAL_GLASS = 50)
+	build_type = PROTOLATHE | STORE
 	category = "Optics"
 
 /datum/design/item/hud/AssembleDesignName()
@@ -262,6 +264,7 @@
 	price = 500
 
 /datum/design/item/optical
+	build_type = PROTOLATHE | STORE
 	category = "Optics"
 
 /datum/design/item/optical/AssembleDesignName()
@@ -297,6 +300,7 @@
 	price = 750
 
 /datum/design/item/mining
+	build_type = PROTOLATHE | STORE
 	category = "Mining"
 
 /datum/design/item/mining/AssembleDesignName()
@@ -310,7 +314,7 @@
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_PLASTEEL = 1300, MATERIAL_GLASS = 500, MATERIAL_DIAMOND = 750)
 	build_path = /obj/item/weapon/tool/pickaxe/laser
 	sort_string = "KAAAA"
-	price = 3500 //Because of how OP saws currently are
+	price = 2000
 
 /datum/design/item/mining/plasmasaw
 	name = "SH-B1 Plasma Saw"
@@ -319,7 +323,7 @@
 	materials = list(MATERIAL_STEEL = 1500, MATERIAL_GLASS = 500, MATERIAL_DIAMOND = 500)
 	build_path = /obj/item/weapon/tool/saw/plasma
 	sort_string = "KAAAB"
-	price = 2000
+	price = 1000
 
 /datum/design/item/mining/depth_scanner
 	name = "depth scanner"
@@ -342,6 +346,7 @@
 	price = 300
 
 /datum/design/item/medical
+	build_type = PROTOLATHE | STORE
 	materials = list(MATERIAL_STEEL = 30, MATERIAL_GLASS = 20)
 	category = "Medical"
 
@@ -406,6 +411,7 @@
 	sort_string = "MAEAA"
 
 /datum/design/item/surgery
+	build_type = PROTOLATHE | STORE
 	category = "Medical"
 
 /datum/design/item/surgery/AssembleDesignName()

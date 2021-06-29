@@ -1,5 +1,6 @@
 /datum/design/item/weapon
 	category = "Weapons"
+	build_type = PROTOLATHE | STORE
 	price = 7000
 	materials = list(MATERIAL_STEEL = 30000, MATERIAL_GLASS = 2000, MATERIAL_SILVER = 4000, MATERIAL_URANIUM = 4000)
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5)
@@ -152,6 +153,7 @@
 
 /datum/design/item/ammo
 	category = "Ammunition"
+	build_type = PROTOLATHE | STORE
 	price = 2000
 
 
