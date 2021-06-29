@@ -24,6 +24,7 @@
 
 /obj/machinery/computer/shuttle_control/multi/kellion
 	name = "repair shuttle control console"
+	req_access = list(access_kellion)
 	shuttle_tag = "Kellion"
 
 /obj/machinery/computer/shuttle_control/multi/valor

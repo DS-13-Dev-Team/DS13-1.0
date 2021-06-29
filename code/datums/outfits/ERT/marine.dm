@@ -38,7 +38,7 @@
 	l_ear = /obj/item/device/radio/headset/ert
 	l_hand = /obj/item/weapon/storage/firstaid/ds_healkitcombat
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
-	back = /obj/item/weapon/rig/marine/specialist
+	back = /obj/item/weapon/rig/marine
 	shoes = /obj/item/clothing/shoes/dutyboots
 
 	id_slot = slot_wear_id
@@ -50,7 +50,7 @@
 	uniform = /obj/item/clothing/under/rigunder
 	l_ear = /obj/item/device/radio/headset/ert
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
-	back = /obj/item/weapon/rig/marine/specialist
+	back = /obj/item/weapon/rig/marine
 	shoes = /obj/item/clothing/shoes/dutyboots
 
 	id_slot = slot_wear_id
@@ -62,6 +62,7 @@
 	uniform = /obj/item/clothing/under/rigunder
 	l_ear = /obj/item/device/radio/headset/ert
 	belt = /obj/item/weapon/storage/belt/holster/security/tactical
+	back = /obj/item/weapon/rig/marine
 	shoes = /obj/item/clothing/shoes/dutyboots
 
 	id_slot = slot_wear_id
