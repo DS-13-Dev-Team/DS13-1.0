@@ -108,13 +108,14 @@ Projectile logic
 /obj/item/projectile/bullet/ls_slug/hollow_point
 	structure_damage_factor = 0.5
 	penetration_modifier = 0
+	embed = TRUE
 	armor_penetration = -50
 	icon_state = "divet_hp"
 
 /obj/item/projectile/bullet/ls_slug/ap
 	structure_damage_factor = 1.75
 	penetration_modifier = 1.5
-	armor_penetration = 25 //May wanna change this!
+	armor_penetration = 15
 	icon_state = "divet_ap"
 
 /obj/item/projectile/bullet/ls_slug/incendiary
@@ -126,5 +127,6 @@ Projectile logic
 
 /obj/item/projectile/bullet/ls_slug/incendiary/on_hit(atom/target, blocked)
 	//Yoinked from hydrazine torch. Spreads the flames on the turf because this bullet is about to be GC'd
-	get_turf(target).spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = (T0C + 2600)))
+	var/turf/T = get_turf(target)
+	T.spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = (T0C + 2600)))
 	. = ..()
