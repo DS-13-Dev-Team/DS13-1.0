@@ -1,7 +1,6 @@
 #define CLOSE_TABLE	if (open_table) {. += "</table><br>";\
 open_table = FALSE;}
 /datum/preferences
-	var/list/never_be_special_role
 	var/list/be_special_role
 	var/auto_necroqueue = TRUE
 	var/ghost_candidacy = TRUE
@@ -12,7 +11,6 @@ open_table = FALSE;}
 
 /datum/category_item/player_setup_item/antagonism/candidacy/load_character(var/savefile/S)
 	from_file(S["be_special"],           pref.be_special_role)
-	from_file(S["never_be_special"],     pref.never_be_special_role)
 	from_file(S["auto_necroqueue"],           pref.auto_necroqueue)
 	from_file(S["ghost_candidacy"], 			 pref.ghost_candidacy)
 	//Safeguard to make sure it defaults to on
@@ -21,25 +19,25 @@ open_table = FALSE;}
 
 /datum/category_item/player_setup_item/antagonism/candidacy/save_character(var/savefile/S)
 	to_file(S["be_special"],             pref.be_special_role)
-	to_file(S["never_be_special"],       pref.never_be_special_role)
 	to_file(S["auto_necroqueue"],           pref.auto_necroqueue)
 	to_file(S["ghost_candidacy"], 			 pref.ghost_candidacy)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/sanitize_character()
 	if(!istype(pref.be_special_role))
+		//Lets setup default values, necros are enabled by default
 		pref.be_special_role = list()
-	if(!istype(pref.never_be_special_role))
-		pref.never_be_special_role = list()
+		for(var/ntype in subtypesof(/datum/species/necromorph))
+			var/datum/species/necromorph/N = ntype
+			if (!initial(N.preference_settable))
+				continue
+			var/necro_id = initial(N.name)
+			pref.be_special_role[necro_id] = 1
 
 	var/special_roles = valid_special_roles()
 	var/old_be_special_role = pref.be_special_role.Copy()
-	var/old_never_be_special_role = pref.never_be_special_role.Copy()
 	for(var/role in old_be_special_role)
 		if(!(role in special_roles))
 			pref.be_special_role -= role
-	for(var/role in old_never_be_special_role)
-		if(!(role in special_roles))
-			pref.never_be_special_role -= role
 
 /datum/category_item/player_setup_item/antagonism/candidacy/content(var/mob/user)
 	. = list()
@@ -57,10 +55,11 @@ open_table = FALSE;}
 			continue
 		var/necro_id = initial(N.name)
 		. += "<tr><td>[necro_id]: </td><td>"
-		if(necro_id in pref.never_be_special_role)
-			. += "<a href='?src=\ref[src];del_special=[necro_id]'>Yes</a> <span class='linkOn'>No</span></br>"
+		if(necro_id in pref.be_special_role)
+			. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];del_special=[necro_id]'>No</a></br>"
 		else
-			. += "<span class='linkOn'>Yes</span> <a href='?src=\ref[src];add_never=[necro_id]'>No</a></br>"
+			. += "<a href='?src=\ref[src];add_special=[necro_id];weight=[ROLE_WEIGHT_LOW]'>Yes</a> <span class='linkOn'>No</span></br>"
+
 		. += "</td></tr>"
 	. += "<br>"
 	CLOSE_TABLE
@@ -136,20 +135,15 @@ open_table = FALSE;}
 		if(!(href_list["add_special"] in valid_special_roles()))
 			return TOPIC_HANDLED
 		pref.be_special_role[href_list["add_special"]] = max(text2num(href_list["weight"]), ROLE_WEIGHT_LOW)
-		pref.never_be_special_role -= href_list["add_special"]
 		return TOPIC_REFRESH
 
 	if(href_list["del_special"])
 		if(!(href_list["del_special"] in valid_special_roles()))
 			return TOPIC_HANDLED
 		pref.be_special_role -= href_list["del_special"]
-		pref.never_be_special_role -= href_list["del_special"]
 		return TOPIC_REFRESH
 
-	if(href_list["add_never"])
-		pref.be_special_role -= href_list["add_never"]
-		pref.never_be_special_role |= href_list["add_never"]
-		return TOPIC_REFRESH
+
 
 	if(href_list["auto_necroqueue"])
 		if(href_list["auto_necroqueue"] == "false")
@@ -187,8 +181,9 @@ open_table = FALSE;}
 /client/proc/wishes_to_be_role(var/role)
 	if(!prefs)
 		return FALSE
-	if(role in prefs.be_special_role)
-		return 2
-	if(role in prefs.never_be_special_role)
-		return FALSE
-	return 1	//Default to "sometimes" if they don't opt-out.
+
+	if((role in prefs.be_special_role))
+		if (isnum(prefs.be_special_role[role]))
+			return prefs.be_special_role[role]	//Return the weight if there is one
+		return 1	//Return 1 if no specific weight
+	return FALSE	//Return false if not valid

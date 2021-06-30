@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(necromorph)
 			continue	//Gotta be connected
 
 		//The id is used to check preferences
-		if (vessel_id in M.client.prefs.never_be_special_role)
+		if (!vessel_id in M.client.prefs.be_special_role)
 			continue	//They don't wanna be this kind of necro, skip them
 
 		//If we get here, they'll do.
