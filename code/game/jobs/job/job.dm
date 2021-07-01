@@ -83,10 +83,9 @@
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
-	var/money_amount = (rand(5,50) + rand(5, 50))
-	money_amount = round(money_amount)
-	if(starting_credits)
-		money_amount = starting_credits
+	//Here we load persistent credits from the database
+	var/money_amount = get_character_credits(H.mind)
+	
 	var/datum/money_account/M = create_account(H.real_name, money_amount, null)
 	if(H.mind)
 		var/remembered_info = ""

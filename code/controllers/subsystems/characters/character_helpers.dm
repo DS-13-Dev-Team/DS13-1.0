@@ -56,13 +56,85 @@
 	VALUES('[ckey],[name]');")
 	query.Execute()
 
-
-
-
-
-
 	if(query.NextRow())
 		world << "Query: [dump_list(query.item)]"
 		if (output)
 			output:character_id = query.item[1]
 			world << "set character ID to [output:character_id]"
+
+
+
+/*
+	Called when a character loads into the world, to populate their employee checking account
+
+	Returns the number of credits this character should have
+
+	the input is either a preferences or a mind
+*/
+//TODO: Insert in preferences menu
+/proc/get_character_credits(var/character_data)
+
+
+/*
+	Called when a character enters a round, or is revived by an admin to negate a death
+	This updates the last seen time for them in the characters table
+	and creates an entry for them in the credits_lastround table.
+		The latter makes them eligible for end of round fees depending on their status
+*/
+/proc/character_spawned(var/datum/mind/M)
+	//Get their id, registering them in the process if needed
+	var/id = get_character_id(character_data)
+
+	//Now lets update the characters table first
+	var/DBQuery/query = dbcon.NewQuery("UPDATE characters\
+	SET \
+    	last_seen = CURRENT_TIMESTAMP\
+	WHERE\
+    	id = [id];")
+	query.Execute()
+
+
+	update_lastround_credits(M)
+
+
+/*
+	Creates or updates an entry in the lastround_credits table, which is used at the end or beginning of the round to handle changes in persistent credits
+	A status can optionally be passed in, if not we'll call a proc to get status
+*/
+/proc/update_lastround_credits(var/datum/mind/M, var/status)
+
+	if (!status)
+		mind.get_round_status()
+
+	//And lets set their status in the lastround table to living
+	query = dbcon.NewQuery("SET @id = [get_character_id(M)],\
+	    @credits_stored = 0,\
+	    @credits_carried = 0,\
+	    @status = [status];\
+	INSERT INTO credits_lastround\
+	    (id, credits_stored, credits_carried, status)\
+	VALUES\
+	    (@id, @credits_stored, @credits_carried, @status)\
+	ON DUPLICATE KEY UPDATE\
+	    credits_stored = @credits_stored,\
+	    credits_carried = @credits_carried,\
+	    status = @status;")
+	query.Execute()
+
+
+/*
+	Called when a character dies
+
+	any deaths in a designated escape zone are noncanon, so we'll check for that here
+	The input is always a mind because someone must first exist in order to die
+*/
+/proc/character_died(var/datum/mind/M)
+
+
+/*
+	Called when a character escapes
+
+	any deaths in a designated escape zone are noncanon, so we'll check for that here
+*/
+//TODO: Insert on character entering an escape zone, or end of round if theyre on a shuttle
+/proc/character_escaped(var/datum/mind/M)

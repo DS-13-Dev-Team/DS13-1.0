@@ -40,6 +40,11 @@
 	if(s)
 		s.do_backup()
 
+
+	//Database update
+	if (mind)
+		mind.on_death()
+
 	//Handle species-specific deaths.
 	species.handle_death(src)
 

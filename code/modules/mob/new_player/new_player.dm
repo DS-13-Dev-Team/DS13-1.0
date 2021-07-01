@@ -500,6 +500,10 @@
 	new_character.regenerate_icons()
 
 	new_character.key = key		//Manually transfer the key to log them in
+	
+	//Register that they've joined the round
+	character_spawned(new_character.mind)
+	
 	return new_character
 
 /mob/new_player/proc/ViewManifest()

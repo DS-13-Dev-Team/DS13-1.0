@@ -647,3 +647,45 @@
 	mind.set_special_role("Cultist")
 
 
+/*
+	Called when we are in a human mob who dies
+*/
+/datum/mind/proc/on_death()
+
+	//Database handling, only do this if we have a registered character ID
+	if (character_id)
+		//Antags don't get death penalties
+		if (special_role)
+			return
+
+		//Necromorphs don't get death penalties
+		if (is_necromorph(current))
+			return
+
+		character_died(src)
+
+
+
+
+
+
+/*
+	How is this character doing this round? Returns one of the three STATUS_XXX defines from defines/characters.dm
+*/
+/datum/mind/proc/get_round_status()
+	if (current?.stat == DEAD || isghostmind(src))
+		return STATUS_DEAD
+
+	//TODO: Check if they're on a shuttle or an escape area
+
+	return STATUS_LIVING
+
+
+/*
+	Get the total credits that this character "owns", divided into two categories:
+	Stored: The contents of their checking account
+	Carried: The contents of their rig account, and of any credit chips on their person
+*/
+/datum/mind/proc/get_owned_credits()
+	.=list()
+	.["stored"] = initial_account.money
