@@ -73,7 +73,17 @@
 */
 //TODO: Insert in preferences menu
 /proc/get_character_credits(var/character_data)
+	var/id = get_character_id(character_data)
 
+	var/DBQuery/query = dbcon.NewQuery("SELECT FROM credit_records\
+	WHERE character_id = [id]")
+	query.Execute()
+
+	if(query.NextRow())
+		world << "Query: [dump_list(query.item)]"
+		return query.item[1]
+
+	return 0
 
 /*
 	Called when a character enters a round, or is revived by an admin to negate a death
@@ -82,15 +92,16 @@
 		The latter makes them eligible for end of round fees depending on their status
 */
 /proc/character_spawned(var/datum/mind/M)
+	world << "Character spawned [M]"
 	//Get their id, registering them in the process if needed
-	var/id = get_character_id(character_data)
+	var/id = get_character_id(M)
 
 	//Now lets update the characters table first
 	var/DBQuery/query = dbcon.NewQuery("UPDATE characters\
 	SET \
-    	last_seen = CURRENT_TIMESTAMP\
+		last_seen = CURRENT_TIMESTAMP\
 	WHERE\
-    	id = [id];")
+		id = [id];")
 	query.Execute()
 
 
@@ -104,21 +115,23 @@
 /proc/update_lastround_credits(var/datum/mind/M, var/status)
 
 	if (!status)
-		mind.get_round_status()
+		status = M.get_round_status()
+
+	var/list/credits = M.get_owned_credits()
 
 	//And lets set their status in the lastround table to living
-	query = dbcon.NewQuery("SET @id = [get_character_id(M)],\
-	    @credits_stored = 0,\
-	    @credits_carried = 0,\
-	    @status = [status];\
+	var/DBQuery/query = dbcon.NewQuery("SET @id = [get_character_id(M)],\
+		@credits_stored = [credits["stored"]],\
+		@credits_carried = [credits["carried"]],\
+		@status = [status];\
 	INSERT INTO credits_lastround\
-	    (id, credits_stored, credits_carried, status)\
+		(id, credits_stored, credits_carried, status)\
 	VALUES\
-	    (@id, @credits_stored, @credits_carried, @status)\
+		(@id, @credits_stored, @credits_carried, @status)\
 	ON DUPLICATE KEY UPDATE\
-	    credits_stored = @credits_stored,\
-	    credits_carried = @credits_carried,\
-	    status = @status;")
+		credits_stored = @credits_stored,\
+		credits_carried = @credits_carried,\
+		status = @status;")
 	query.Execute()
 
 

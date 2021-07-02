@@ -66,3 +66,25 @@
 //Helpers
 /datum/proc/credits_recieved(var/balance, var/datum/source)
 	return TRUE
+
+
+/mob/proc/get_carried_credits()
+	. = 0
+
+
+
+	for (var/obj/item/weapon/spacecash/ewallet/C as anything in get_carried_credit_chips())
+		. += C.worth
+
+/mob/living/carbon/human/get_carried_credits()
+	.=..()
+	if (wearing_rig)
+		. += wearing_rig.get_account_balance()
+
+/mob/proc/get_carried_credit_chips()
+	//Get everything we're carrying recursively
+	var/list/things = src.get_contents()
+	. = list()
+	for (var/obj/item/weapon/spacecash/ewallet/C in things)
+		. += C
+

@@ -301,7 +301,7 @@ var/list/slot_equipment_priority = list( \
 
 /mob/proc/get_equipped_items(var/include_carried = 0)
 	. = list()
-	if(back)      . += back
+	if(back)	  . += back
 	if(wear_mask) . += wear_mask
 
 	if(include_carried)

@@ -36,7 +36,7 @@
 	var/key
 	var/name				//replaces mob/var/original_name
 	var/mob/living/current
-	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
+	var/mob/living/original	//Edit by Nanako, this value is now used and should not be removed
 	var/mob/observer/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
 	var/active = 0
 
@@ -69,6 +69,14 @@
 	//put this here for easier tracking ingame
 	var/datum/money_account/initial_account
 
+	/*
+		This value is set once, on death, during the call stack
+		It checks and caches how many credits our original mob was carrying when they died.
+
+		The main purpose of this is to have a record in case the body is gibbed, dusted, or otherwise annihilated
+	*/
+	var/list/final_credits = null
+
 	var/list/initial_email_login = list("login" = "", "password" = "")
 
 	//used for optional self-objectives that antagonists can give themselves, which are displayed at the end of the round.
@@ -78,6 +86,8 @@
 /datum/mind/New(var/key)
 	src.key = key
 	..()
+
+
 
 /datum/mind/proc/transfer_to(mob/living/new_character)
 	if(!istype(new_character))
@@ -487,14 +497,14 @@
 	assigned_role =   null
 	set_special_role(null)
 	role_alt_title =  null
-	assigned_job =    null
-	//faction =       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
-	changeling =      null
+	assigned_job =	null
+	//faction =	   null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
+	changeling =	  null
 	initial_account = null
-	objectives =      list()
+	objectives =	  list()
 	special_verbs =   list()
-	has_been_rev =    0
-	rev_cooldown =    0
+	has_been_rev =	0
+	rev_cooldown =	0
 	brigged_since =   -1
 
 //Antagonist role check
@@ -662,11 +672,9 @@
 		if (is_necromorph(current))
 			return
 
+
+		get_final_credits()//Record this immediately
 		character_died(src)
-
-
-
-
 
 
 /*
@@ -687,5 +695,37 @@
 	Carried: The contents of their rig account, and of any credit chips on their person
 */
 /datum/mind/proc/get_owned_credits()
-	.=list()
-	.["stored"] = initial_account.money
+
+
+
+	//If they're dead, we don't check credits again as we don't want to know about any postmortem changes
+	if (is_dead())
+		return final_credits
+
+	var/list/values =list()
+	values["stored"] = initial_account.money
+	values["carried"] = current.get_carried_credits()
+
+	return values
+
+
+/*
+	Called exactly once on death, caches the value of credits we were carrying at the moment we died
+	This happens just before our body is gibbed, if that's going to happen
+*/
+/datum/mind/proc/get_final_credits()
+	//Don't do it again if its been done
+	if (!isnull(final_credits))
+		return
+
+	final_credits["carried"] = original.get_carried_credits()
+	final_credits["stored"] = initial_account.money
+	//TODO: Delete excess carried credits from the mob to avoid looting?
+
+
+//Returns true if this mind is for a character who is dead.
+/datum/mind/proc/is_dead()
+	if (current?.stat == DEAD || isghostmind(src))
+		return TRUE
+
+	return FALSE

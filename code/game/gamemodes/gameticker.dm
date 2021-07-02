@@ -5,7 +5,7 @@ var/global/datum/controller/gameticker/ticker
 	var/current_state = GAME_STATE_PREGAME
 	var/force_ending = FALSE
 
-	var/start_ASAP = FALSE          //the game will start as soon as possible, bypassing all pre-game nonsense
+	var/start_ASAP = FALSE		  //the game will start as soon as possible, bypassing all pre-game nonsense
 
 	var/hide_mode = 0
 	var/datum/game_mode/mode = null
