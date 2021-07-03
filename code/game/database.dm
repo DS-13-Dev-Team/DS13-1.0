@@ -3,11 +3,20 @@ var/failed_db_connections = 0
 var/failed_old_db_connections = 0
 
 /hook/startup/proc/connectDB()
-	if(!setup_database_connection())
-		world.log << "Your server failed to establish a connection with the feedback database."
+	var/success = FALSE
+	while (failed_db_connections < FAILED_DB_CONNECTION_CUTOFF && !success)
+		var/result = setup_database_connection()
+		if(!result)
+			sleep(10)
+		else
+			success = TRUE
+
+	if (success)
+		world.log << "Feedback database connection established ? [dbcon.IsConnected()]"
+
 	else
-		world.log << "Feedback database connection established."
-	return 1
+		world.log << "Your server failed to establish a connection with the feedback database."
+	return success
 
 proc/setup_database_connection()
 
@@ -31,17 +40,22 @@ proc/setup_database_connection()
 	[db]\n\
 	[address]\n\
 	[port]")
-	dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
+	var/result = dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
+	log_world("Setting up DB connection 3.5 R:[result]")
 	. = dbcon.IsConnected()
+	log_world("Setting up DB connection 4, Connected status [.]!")
 	if ( . )
-		log_world("Setting up DB connection 4, Success!")
+
+		log_world("Setting up DB connection 5a, Success!")
 		failed_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
+
+		return TRUE
 	else
-		log_world("Setting up DB connection 5, fail")
+		log_world("Setting up DB connection 5b, fail [failed_db_connections]")
 		failed_db_connections++		//If it failed, increase the failed connections counter.
 		world.log << dbcon.ErrorMsg()
+		return FALSE
 
-	return .
 
 //This proc ensures that the connection to the feedback database (global variable dbcon) is established
 proc/establish_db_connection()

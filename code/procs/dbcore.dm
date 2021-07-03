@@ -56,17 +56,18 @@ DBConnection/New(dbi_handler,username,password_handler,cursor_handler)
 	_db_con = _dm_db_new_con()
 
 DBConnection/proc/Connect(dbi_handler=src.dbi,user_handler=src.user,password_handler=src.password,cursor_handler)
-	if(!sqllogging)
-		return 0
+
 	if(!src) return 0
 	cursor_handler = src.default_cursor
 	if(!cursor_handler) cursor_handler = Default_Cursor
+	log_world("Attempting connect:\
+	|[_db_con]|[dbi_handler]|[user_handler]|[password_handler]|[cursor_handler]")
 	return _dm_db_connect(_db_con,dbi_handler,user_handler,password_handler,cursor_handler,null)
 
 DBConnection/proc/Disconnect() return _dm_db_close(_db_con)
 
 DBConnection/proc/IsConnected()
-	if(!sqllogging) return 0
+
 	var/success = _dm_db_is_connected(_db_con)
 	return success
 
