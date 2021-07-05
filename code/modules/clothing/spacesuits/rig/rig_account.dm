@@ -5,7 +5,8 @@
 
 	For conserving memory the account is only made when necessary
 */
-#define RIG_ACCOUNT_CREATE	if (!account)	account = create_account(new_owner_name = (wearer ? wearer.name : "Generic"))
+#define RIG_ACCOUNT_CREATE	if (!account)	create_account()
+
 /obj/item/weapon/rig
 	var/datum/money_account/account
 
@@ -13,6 +14,17 @@
 /obj/item/weapon/rig/proc/get_account()
 	RIG_ACCOUNT_CREATE
 	return account
+
+/obj/item/weapon/rig/proc/create_account()
+	account = create_account((wearer ? wearer.name : "Generic"))
+	GLOB.item_equipped_event.register(src, src, /obj/item/weapon/rig/proc/on_equip)
+	GLOB.item_unequipped_event.register(src, src, /obj/item/weapon/rig/proc/on_unequip)
+
+/obj/item/weapon/rig/proc/on_equip(var/mob/equipper, var/obj/item/item)
+	credits_changed()
+
+/obj/item/weapon/rig/proc/on_unequip(var/mob/equipper, var/obj/item/item)
+	equipper.credits_changed()
 
 /obj/item/weapon/rig/proc/get_account_balance()
 	//We don't need to create the account for this if it doesn't exist yet
@@ -25,6 +37,8 @@
 
 
 	charge_to_account(get_account().account_number, source, purpose, terminal_id, amount)
+	if (wearer)
+		wearer.credits_changed()
 	//TODO: Inform the reciever it recieved money
 	return TRUE
 

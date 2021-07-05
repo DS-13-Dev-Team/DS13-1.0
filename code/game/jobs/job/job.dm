@@ -99,6 +99,7 @@
 		H.mind.store_memory(remembered_info)
 
 		H.mind.initial_account = M
+		update_lastround_credits(H.mind)	//Update persistent credits to prepare for future changes
 
 	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
 

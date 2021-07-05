@@ -50,17 +50,25 @@
 	Output is an optional datum with a character_id var which we'll populate with our result
 */
 /proc/register_character(var/ckey, var/name, var/output)
-	world << "Register character [ckey]	[name]	[output]"
-	var/DBQuery/query = dbcon.NewQuery("INSERT INTO character (ckey, name)\
-	OUTPUT Inserted.ID\
-	VALUES('[ckey],[name]');")
-	query.Execute()
+	crash_with("Register character [ckey]	[name]	[output]")
+	var/DBQuery/query = dbcon.NewQuery("INSERT INTO characters (ckey, character_name) VALUES('[ckey]','[name]');")
+	var/query_result = query.Execute()
+
+	query = dbcon.NewQuery("SELECT LAST_INSERT_ID();")
+	query_result = query.Execute()
+
+	world << "Query executed, result [query_result]"
 
 	if(query.NextRow())
 		world << "Query: [dump_list(query.item)]"
 		if (output)
-			output:character_id = query.item[1]
+			var/id = query.item[1]
+			output:character_id = id
 			world << "set character ID to [output:character_id]"
+			query = dbcon.NewQuery("INSERT INTO credit_records (character_id)\
+			VALUES('[id]');")
+			query.Execute()
+
 
 
 
@@ -75,8 +83,8 @@
 /proc/get_character_credits(var/character_data)
 	var/id = get_character_id(character_data)
 
-	var/DBQuery/query = dbcon.NewQuery("SELECT FROM credit_records\
-	WHERE character_id = [id]")
+	//Get the number of credits from the database record associated with our ID
+	var/DBQuery/query = dbcon.NewQuery("SELECT (credits) FROM (credit_records)	WHERE (character_id = [id]);")
 	query.Execute()
 
 	if(query.NextRow())
@@ -97,15 +105,13 @@
 	var/id = get_character_id(M)
 
 	//Now lets update the characters table first
-	var/DBQuery/query = dbcon.NewQuery("UPDATE characters\
-	SET \
-		last_seen = CURRENT_TIMESTAMP\
-	WHERE\
-		id = [id];")
+	//Update the last seen var
+	var/DBQuery/query = dbcon.NewQuery("UPDATE characters	 SET	last_seen = CURRENT_TIMESTAMP()	 WHERE	 (character_id = 2);")
 	query.Execute()
 
-
-	update_lastround_credits(M)
+	//Force living status on spawning.
+	//This accounts for situations where someone is killed by griefing and admins let them respawn to fix it
+	update_lastround_credits(M, STATUS_LIVING)
 
 
 /*
@@ -114,24 +120,28 @@
 */
 /proc/update_lastround_credits(var/datum/mind/M, var/status)
 
+	world << "Updating lastround credits [M]"
 	if (!status)
 		status = M.get_round_status()
 
 	var/list/credits = M.get_owned_credits()
+	if (credits == null)
+		return	//No account setup
 
+	var/id = get_character_id(M)
+	var/credits_stored = credits["stored"]
+	var/credits_carried = credits["carried"]
+	var/character_status = status
 	//And lets set their status in the lastround table to living
-	var/DBQuery/query = dbcon.NewQuery("SET @id = [get_character_id(M)],\
-		@credits_stored = [credits["stored"]],\
-		@credits_carried = [credits["carried"]],\
-		@status = [status];\
-	INSERT INTO credits_lastround\
-		(id, credits_stored, credits_carried, status)\
-	VALUES\
-		(@id, @credits_stored, @credits_carried, @status)\
-	ON DUPLICATE KEY UPDATE\
-		credits_stored = @credits_stored,\
-		credits_carried = @credits_carried,\
-		status = @status;")
+	var/DBQuery/query = dbcon.NewQuery(
+	"INSERT INTO credit_lastround	\
+		(character_id, credits_stored, credits_carried, character_status)	\
+	VALUES	\
+		([id], [credits_stored], [credits_carried], [character_status])	\
+	ON DUPLICATE KEY UPDATE	\
+		credits_stored = [credits_stored],\
+		credits_carried = [credits_carried],\
+		character_status = [character_status];")
 	query.Execute()
 
 

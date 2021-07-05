@@ -480,6 +480,8 @@
 		GLOB.living_crew |= mind
 
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
+		
+		client.prefs.copy_to_mind(new_character.mind)
 
 	new_character.SetName(real_name)
 	new_character.dna.ready_dna(new_character)

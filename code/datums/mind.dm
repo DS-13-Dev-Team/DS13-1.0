@@ -681,6 +681,9 @@
 	How is this character doing this round? Returns one of the three STATUS_XXX defines from defines/characters.dm
 */
 /datum/mind/proc/get_round_status()
+
+
+
 	if (current?.stat == DEAD || isghostmind(src))
 		return STATUS_DEAD
 
@@ -696,7 +699,9 @@
 */
 /datum/mind/proc/get_owned_credits()
 
-
+	//Indicates this mind is not properly setup yet
+	if (!initial_account)
+		return null
 
 	//If they're dead, we don't check credits again as we don't want to know about any postmortem changes
 	if (is_dead())

@@ -102,8 +102,13 @@ DBQuery
 DBQuery/proc/Connect(DBConnection/connection_handler) src.db_connection = connection_handler
 
 DBQuery/proc/Execute(sql_query=src.sql,cursor_handler=default_cursor)
+	world << "About to execute query [sql]"
 	Close()
-	return _dm_db_execute(_db_query,sql_query,db_connection._db_con,cursor_handler,null)
+	. = _dm_db_execute(_db_query,sql_query,db_connection._db_con,cursor_handler,null)
+	if (!.)
+		world << SPAN_DANGER("Query failed, error: [_dm_db_error_msg(_db_query)]")
+	else
+		world << SPAN_NOTICE("success")
 
 DBQuery/proc/NextRow() return _dm_db_next_row(_db_query,item,conversions)
 

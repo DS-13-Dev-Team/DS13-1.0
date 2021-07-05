@@ -42,9 +42,18 @@ datum/preferences
 		pref.real_name      = random_name(pref.gender, pref.species)
 	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, spawntypes(), initial(pref.spawnpoint))
 	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
-	if (!pref.character_id)
-		//If this wasn't there, get it registered
+
+
+//Called from load and update character, through several layers of propagation
+/datum/category_item/player_setup_item/general/basic/update_setup()
+
+	//If there is no character ID, register one in the database
+	if (isnull(pref.character_id))
 		get_character_id(pref)
+		return TRUE	//Returning true tells it to save preferences back to disk. This will ensure this is only done once, and not every round
+
+		//TODO: Figure out why character switching isnt working
+		//TODO: Delete character from database if deleted ingame?
 
 /datum/category_item/player_setup_item/general/basic/content()
 	. = list()
