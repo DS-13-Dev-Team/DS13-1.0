@@ -11,6 +11,8 @@
 	Planned future uses:
 		Skills?
 */
+
+//TODO: Fix depositing credits from chip to rig
 SUBSYSTEM_DEF(database)
 	name = "Database"
 	init_order = SS_INIT_MISC_LATE
@@ -72,14 +74,14 @@ SUBSYSTEM_DEF(database)
 /datum/controller/subsystem/database/proc/process_pending_credits()
 
 	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM credit_lastround")
-	var/query_result = query.Execute()
+	query.Execute()
 
 	//Lets fetch the records for each character
 	while(query.NextRow())
-		var/id = query.item[1]
-		var/stored = query.item[2]
-		var/carried = query.item[3]
-		var/status = query.item[4]
+		var/id = text2num(query.item[1])
+		var/stored = text2num(query.item[2])
+		var/carried = text2num(query.item[3])
+		var/status = text2num(query.item[4])
 
 
 
@@ -106,8 +108,8 @@ SUBSYSTEM_DEF(database)
 		var/total = carried + stored
 
 		//And lets write the new value back to the database
-		query = dbcon.NewQuery("UPDATE credit_lastround	SET credits = [total] WHERE character_id = [id];")
-		query.Execute(
+		query = dbcon.NewQuery("UPDATE credit_records	SET credits = [total] WHERE character_id = [id];")
+		query.Execute()
 
 		if (total_fees)
 			message_character(id, SPAN_NOTICE("CEC has charged you a total of [total_fees] credits in holding fees."))
@@ -121,8 +123,8 @@ SUBSYSTEM_DEF(database)
 
 //Called at server start
 /hook/database_connected/proc/handle_lastround_credits()
-process_pending_credits()
+	SSdatabase.process_pending_credits()
 
 //Called at round end
 /hook/roundend/proc/handle_endround_credits()
-	process_pending_credits()
+	SSdatabase.process_pending_credits()

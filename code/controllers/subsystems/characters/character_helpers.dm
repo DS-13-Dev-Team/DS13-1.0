@@ -176,10 +176,10 @@
 		M = GLOB.characters["[target]"]
 
 	//We need a client to talk to, no point if there's no human player reading this
-	var/datum/client/C = M.client
+	var/client/C
 	if (!C)
 		//Mind didn't have a client?
-		C = M.original?.client || M.current?.client
+		C = M.original?.client || M.current?.client || M.ghost?.client
 
 	if (C)
 		to_chat(C, message)

@@ -3,6 +3,7 @@
 #define URL_HTTP_WWW	"hypertext"
 
 
+
 /*
 	Adjective Types
 	The rule is that multiple adjectives are always ranked accordingly: opinion, size, age, shape, colour, origin, material, purpose.

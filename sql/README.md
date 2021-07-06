@@ -45,3 +45,14 @@ Instead of putting -user, -password and -url in the command line every time you 
     flyway.password=PASSWORD
 
 Now you can just run `flyway migrate -configFile=db.conf`, and the settings will be loaded from config.
+
+
+---
+
+Troubleshooting:
+Added by Nanako
+Solutions to some problems I personally ran into
+
+Connection Error: Can't initialize character set unknown (path: compiled_in)
+This is caused by not having a character set setup for the server. To fix this, you need to find and edit my.ini
+On windows 10, it is located in C:\ProgramData\MySQL\MySQL Server X.X

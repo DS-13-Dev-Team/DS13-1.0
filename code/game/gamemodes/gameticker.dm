@@ -7,6 +7,7 @@ var/global/datum/controller/gameticker/ticker
 
 	var/start_ASAP = FALSE		  //the game will start as soon as possible, bypassing all pre-game nonsense
 
+
 	var/hide_mode = 0
 	var/datum/game_mode/mode = null
 	var/post_game = 0
@@ -335,6 +336,7 @@ var/global/datum/controller/gameticker/ticker
 
 		var/game_finished = 0
 		var/mode_finished = 0
+
 		if (CONFIG_GET(flag/continous_rounds))
 			game_finished = (evacuation_controller.round_over() || mode.station_was_nuked)
 			mode_finished = (!post_game && mode.check_finished())
