@@ -106,7 +106,7 @@
 
 	//Now lets update the characters table first
 	//Update the last seen var
-	var/DBQuery/query = dbcon.NewQuery("UPDATE characters	 SET	last_seen = CURRENT_TIMESTAMP()	 WHERE	 (character_id = 2);")
+	var/DBQuery/query = dbcon.NewQuery("UPDATE characters	 SET	last_seen = CURRENT_TIMESTAMP()	 WHERE	 (character_id = [id]);")
 	query.Execute()
 
 	//Force living status on spawning.
@@ -153,6 +153,11 @@
 */
 /proc/character_died(var/datum/mind/M)
 
+	//TODO: Check for escape zone
+	//TODO: Check if they were already dead to prevent duplication
+	M.get_final_credits()
+	update_lastround_credits(M)
+
 
 /*
 	Called when a character escapes
@@ -161,3 +166,20 @@
 */
 //TODO: Insert on character entering an escape zone, or end of round if theyre on a shuttle
 /proc/character_escaped(var/datum/mind/M)
+
+
+//Takes an ID or a mind. Delivers a string message to a client who is associated with it
+/proc/message_character(var/target, var/message)
+	//Lets get the mind first
+	var/datum/mind/M = target
+	if (isnum(target))
+		M = GLOB.characters["[target]"]
+
+	//We need a client to talk to, no point if there's no human player reading this
+	var/datum/client/C = M.client
+	if (!C)
+		//Mind didn't have a client?
+		C = M.original?.client || M.current?.client
+
+	if (C)
+		to_chat(C, message)

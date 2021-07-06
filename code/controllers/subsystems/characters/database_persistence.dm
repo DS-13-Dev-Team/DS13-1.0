@@ -60,3 +60,69 @@ SUBSYSTEM_DEF(database)
 	var/mob/M = get_holding_mob()
 	if(M)
 		M.credits_changed()
+
+
+/*
+	This proc cleans out the credit_lastround table, and converts it into actual changes to each character's stored credits,
+	which are committed to the credit_records table
+	This is called exactly twice per round:	World boot, and end of round
+	In most cases, the end of round call will handle everything and the table will be empty next round
+	However, in case of a crash, the endround processing may not happen, so its run at the start to cover last round's changes
+*/
+/datum/controller/subsystem/database/proc/process_pending_credits()
+
+	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM credit_lastround")
+	var/query_result = query.Execute()
+
+	//Lets fetch the records for each character
+	while(query.NextRow())
+		var/id = query.item[1]
+		var/stored = query.item[2]
+		var/carried = query.item[3]
+		var/status = query.item[4]
+
+
+
+		if (!id)
+			continue	//Failsafe
+
+		var/total_fees = 0
+
+		//Lets process the held credits first.
+		//There are three status, living, dead, and escaped. But we're only interested in the first one
+		//In the case that they died, the processing needed happened instantly on death, we dont repeat it here
+		//In the case that they escaped, we don't take any of their credits.
+		//So here, we're only applying a fee to held credits if they lived to the end of the round, but did not escape the ship.
+			//This includes going afk/cryo/hiding out on aegis
+		if (status == STATUS_LIVING)
+			total_fees += carried * FEE_NEUTRAL
+			carried *= 1 - FEE_NEUTRAL
+
+		//Next, the stored credits, this is simple
+		total_fees += stored * FEE_NEUTRAL
+		stored *= 1 - FEE_NEUTRAL
+
+		//Add them up
+		var/total = carried + stored
+
+		//And lets write the new value back to the database
+		query = dbcon.NewQuery("UPDATE credit_lastround	SET credits = [total] WHERE character_id = [id];")
+		query.Execute(
+
+		if (total_fees)
+			message_character(id, SPAN_NOTICE("CEC has charged you a total of [total_fees] credits in holding fees."))
+
+
+
+	//Alright we are done with the pending stuff, wipe it
+	query = dbcon.NewQuery("TRUNCATE TABLE credit_lastround;")
+	query.Execute()
+
+
+//Called at server start
+/hook/database_connected/proc/handle_lastround_credits()
+process_pending_credits()
+
+//Called at round end
+/hook/roundend/proc/handle_endround_credits()
+	process_pending_credits()

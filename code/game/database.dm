@@ -12,10 +12,11 @@ var/failed_old_db_connections = 0
 			success = TRUE
 
 	if (success)
-		world.log << "Feedback database connection established ? [dbcon.IsConnected()]"
+		world.log << "Database connection established ? [dbcon.IsConnected()]"
+		callHook("database_connected")
 
 	else
-		world.log << "Your server failed to establish a connection with the feedback database."
+		world.log << "Your server failed to establish a connection with the database."
 	return success
 
 proc/setup_database_connection()

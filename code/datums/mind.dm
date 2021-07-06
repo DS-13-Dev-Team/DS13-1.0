@@ -734,3 +734,9 @@
 		return TRUE
 
 	return FALSE
+
+
+//A wrapper that puts us in a global list
+/datum/mind/proc/set_id(var/new_id)
+	character_id = new_id
+	GLOB.characters["character_id"] = src
