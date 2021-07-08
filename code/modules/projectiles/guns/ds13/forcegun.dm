@@ -174,7 +174,7 @@
 /obj/item/weapon/cell/force
 	name = "force energy"
 	desc = "A heavy power pack designed for use with the handheld graviton accelerator"
-	origin_tech = list(TECH_POWER = 6)
+	origin_tech = list(TECH_POWER = 4)
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "forcebattery"
 	w_class = ITEM_SIZE_LARGE

@@ -96,7 +96,7 @@
 /obj/item/weapon/cell/plasmacutter
 	name = "plasma energy"
 	desc = "A light power pack designed for use with high energy cutting tools"
-	origin_tech = list(TECH_POWER = 6)
+	origin_tech = list(TECH_POWER = 4)
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "darts"
 	w_class = ITEM_SIZE_SMALL

@@ -4,8 +4,8 @@
 	category = "Modules"
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 5)
 	materials = list(MATERIAL_STEEL = 4000, "plastic" = 2500, MATERIAL_GLASS = 2000, MATERIAL_GOLD = 1000)
-	build_type = STORE
 	price = 2500
+	build_type = STORE
 	store_transfer = TRUE
 
 /datum/design/item/rig_module/AssembleDesignName()
@@ -16,7 +16,6 @@
 	name = "Meson Scanner"
 	desc = "A layered, translucent visor system for a RIG."
 	id = "rig_meson"
-
 	materials = list(MATERIAL_STEEL = 100, MATERIAL_GLASS = 200, "plastic" = 300)
 	build_path = /obj/item/rig_module/vision/meson
 	sort_string = "WCAAA"
@@ -171,11 +170,13 @@
 
 /datum/design/item/rig_module/kinesis
 	name = "G.R.I.P kinesis module"
+	build_type = STORE
 	build_path = /obj/item/rig_module/kinesis
 
 /datum/design/item/rig_module/kinesis_adv
 	price = 5000
 	name = "G.R.I.P advanced kinesis module"
+	build_type = STORE
 	build_path = /obj/item/rig_module/kinesis/advanced
 
 
@@ -184,14 +185,18 @@
 
 
 /datum/design/item/rig_module/speedboost
-
+	name = "Femoral Exoskeleton"
+	build_type = STORE
 	build_path = /obj/item/rig_module/extension/speedboost
 
 /datum/design/item/rig_module/speedboost_adv
+	name = "Advanced Femoral Exoskeleton"
+	build_type = STORE
 	price = 5000
 	build_path = /obj/item/rig_module/extension/speedboost/advanced
 
 
 /datum/design/item/rig_module/adv_healthbar
-
+	name = "Vitals Monitor: Advanced"
+	build_type = STORE
 	build_path = /obj/item/rig_module/healthbar/advanced
