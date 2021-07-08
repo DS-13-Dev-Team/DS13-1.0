@@ -125,6 +125,8 @@ SUBSYSTEM_DEF(database)
 /hook/database_connected/proc/handle_lastround_credits()
 	SSdatabase.process_pending_credits()
 
+	return TRUE	//Needed to let the hook know we handled things okay
+
 //Called at round end
 /hook/roundend/proc/handle_endround_credits()
 	SSdatabase.process_pending_credits()

@@ -50,7 +50,7 @@
 	Output is an optional datum with a character_id var which we'll populate with our result
 */
 /proc/register_character(var/ckey, var/name, var/output)
-	crash_with("Register character [ckey]	[name]	[output]")
+
 	var/DBQuery/query = dbcon.NewQuery("INSERT INTO characters (ckey, character_name) VALUES('[ckey]','[name]');")
 	var/query_result = query.Execute()
 
@@ -68,6 +68,8 @@
 			query = dbcon.NewQuery("INSERT INTO credit_records (character_id)\
 			VALUES('[id]');")
 			query.Execute()
+
+	crash_with("Register character [ckey]	[name]	[output]")
 
 
 
@@ -103,6 +105,11 @@
 	world << "Character spawned [M]"
 	//Get their id, registering them in the process if needed
 	var/id = get_character_id(M)
+
+
+	if (!id)
+		return
+
 
 	//Now lets update the characters table first
 	//Update the last seen var
@@ -170,10 +177,17 @@
 
 //Takes an ID or a mind. Delivers a string message to a client who is associated with it
 /proc/message_character(var/target, var/message)
+	if (!target)
+		return
+
 	//Lets get the mind first
 	var/datum/mind/M = target
 	if (isnum(target))
 		M = GLOB.characters["[target]"]
+
+	//
+	if (!istype(M))
+		return
 
 	//We need a client to talk to, no point if there's no human player reading this
 	var/client/C

@@ -14,7 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema database
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `database` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `database` DEFAULT CHARACTER SET UTF8MB4 ;
 USE `database` ;
 
 -- -----------------------------------------------------
@@ -22,7 +22,7 @@ USE `database` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `database`.`credit_records` (
   `character_id` INT UNSIGNED NOT NULL,
-  `credits` INT ZEROFILL NOT NULL DEFAULT 0,
+  `credits` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`character_id`),
   UNIQUE INDEX `character_id_UNIQUE` (`character_id` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -33,8 +33,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `database`.`credit_lastround` (
   `character_id` INT UNSIGNED NOT NULL,
-  `credits_stored` INT ZEROFILL NOT NULL DEFAULT 0,
-  `credits_carried` INT ZEROFILL NOT NULL DEFAULT 0,
+  `credits_stored` INT NOT NULL DEFAULT 0,
+  `credits_carried` INT NOT NULL DEFAULT 0,
   `character_status` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`character_id`),
   UNIQUE INDEX `character_id_UNIQUE` (`character_id` ASC) VISIBLE)
