@@ -50,6 +50,7 @@ GLOBAL_LIST_EMPTY(agents_list)
 
 
 /datum/antagonist/earthgov_agent/equip(var/mob/living/carbon/human/player)
+	world << "Earthgov agent equip"
 	admin_notice(SPAN_NOTICE("ENTRO AL EQUIP"))
 	if(!..())
 		admin_notice(SPAN_NOTICE("NO PASO EL CHECK"))

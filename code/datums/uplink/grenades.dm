@@ -30,7 +30,7 @@
 	path = /obj/item/weapon/grenade/empgrenade
 
 /datum/uplink_item/item/grenades/emp/special
-	is_special = 3
+	is_special = 6
 	is_special = TRUE
 	antag_roles = list(MODE_EARTHGOV_AGENT)
 
@@ -40,7 +40,7 @@
 	path = /obj/item/weapon/storage/box/emps
 
 /datum/uplink_item/item/grenades/emps/special
-	is_special = 9
+	is_special = 18
 	is_special = TRUE
 	antag_roles = list(MODE_EARTHGOV_AGENT)
 
@@ -51,7 +51,7 @@
 	path = /obj/item/weapon/grenade/frag/high_yield
 
 /datum/uplink_item/item/grenades/frag_high_yield/special
-	item_cost = 10
+	item_cost = 18
 	is_special = TRUE
 	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
@@ -63,7 +63,7 @@
 	path = /obj/item/weapon/grenade/frag/shell
 
 /datum/uplink_item/item/grenades/fragshell/special
-	item_cost = 3
+	item_cost = 7
 	is_special = TRUE
 	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
