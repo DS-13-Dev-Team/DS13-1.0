@@ -18,6 +18,9 @@ SUBSYSTEM_DEF(database)
 	init_order = SS_INIT_MISC_LATE
 	wait = 1 MINUTE
 
+	//A cache, stores the value from get_unknown_designs
+	var/list/unknown_designs
+
 	//A list of mind datums whose credit amounts have changed recently, and are queued for updates
 	//These are batched into one per mind per minute, as needed, to reduce database load.
 	//So we're not sending a flurry of requests if someone is shuffling around chips in their inventory
@@ -130,3 +133,60 @@ SUBSYSTEM_DEF(database)
 //Called at round end
 /hook/roundend/proc/handle_endround_credits()
 	SSdatabase.process_pending_credits()
+
+
+
+
+
+
+
+
+
+
+/*
+	Schematic Handling
+	See store_schematic and store_designs for more info
+
+*/
+
+//This returns a list of all design IDs which are not known to the store. These can thusly be used for assigning to new schematics
+/proc/get_unknown_designs()
+	if (!SSdatabase.unknown_designs)
+
+
+		//This gets a list of every design that exists
+		var/list/designs = SSresearch.design_ids.Copy()
+
+		//We need to filter it to contain only designs that are valid for store use
+		for (var/id in designs)
+			var/datum/design/D = designs[id]
+			if (!(D.build_type & STORE))
+				designs -= id
+
+
+		//Now lets get the list of all persisting schematics in the database
+		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM store_schematics;")
+		query.Execute()
+
+		//We loop through the db results and subtract any design in it, from the all-list.
+		while (query.NextRow())
+			var/schematic_id = query.item[1]
+			designs -= schematic_id
+
+		//Now designs only contains things which aren't in the DB
+
+		//Cache this
+		SSdatabase.unknown_designs	=	designs
+
+	//TODO: Null this out when a new schematic is uploadeds
+	return SSdatabase.unknown_designs
+
+
+
+/proc/upload_design(var/id)
+
+	var/DBQuery/query = dbcon.NewQuery("INSERT INTO store_schematics	(store_schematic)	VALUES([id]);")
+	query.Execute()
+
+	//We loop through the db results and subtract any design in it, from the all-list.
+	while (query.NextRow())
