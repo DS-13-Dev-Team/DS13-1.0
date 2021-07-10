@@ -125,3 +125,19 @@
 	caliber = ".44"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/c44
+
+/obj/item/weapon/gun/projectile/revolver/hr
+	name = "antique revolver"
+	desc = "An older .44 caliber revlover of unknown make and model. Despite the lack of identifying marks, the pistol appears lovingly cared for. 'Human Resources' has been carefully engraved on the receiver."
+	icon_state = "hrrevolver"
+	item_state = "hrrevolver"
+	caliber = ".44"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	ammo_type = /obj/item/ammo_casing/c44
+
+/obj/item/weapon/gun/projectile/revolver/hr/update_icon()
+	..()
+	if(loaded.len)
+		icon_state = "hrrevolver"
+	else
+		icon_state = "hrrevolver_e"

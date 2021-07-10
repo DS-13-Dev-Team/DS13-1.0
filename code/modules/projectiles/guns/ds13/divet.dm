@@ -27,20 +27,27 @@ Divet pistol typedef & logic
 
 		)
 
-/obj/item/weapon/gun/projectile/divet/empty
-	magazine_type = null
-
-/obj/item/weapon/gun/projectile/divet/silenced
-	icon_state = "divet_spec"
-	name = "special ops divet pistol"
-	silenced = TRUE
-
 /obj/item/weapon/gun/projectile/divet/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "divet"
 	else
 		icon_state = "divet_e"
+
+/obj/item/weapon/gun/projectile/divet/empty
+	magazine_type = null
+
+/obj/item/weapon/gun/projectile/divet/silenced
+	name = "special ops divet pistol"
+	icon_state = "divet_spec"
+	silenced = TRUE
+
+/obj/item/weapon/gun/projectile/divet/silenced/update_icon()
+	..()
+	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+		icon_state = "divet_spec"
+	else
+		icon_state = "divet_spec_e"
 
 
 /**
