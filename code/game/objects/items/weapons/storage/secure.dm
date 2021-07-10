@@ -205,7 +205,7 @@
 		..()
 
 /obj/item/weapon/storage/secure/safe/captain/New()
-		new /obj/item/weapon/gun/projectile/magnum_pistol(src)
+		new /obj/item/weapon/gun/projectile/revolver/hr(src)
 		new /obj/random/loot/often(src)
 		new /obj/random/loot/sometimes(src)
 		new /obj/random/loot/sometimes(src)
