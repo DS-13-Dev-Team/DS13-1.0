@@ -408,7 +408,7 @@ update_flag
 		if (istype(src.loc))
 			while (!location2.air)
 				sleep(10)
-			location.assume_air(air_contents)
+			location2.assume_air(air_contents)
 			air_contents = new
 	return 1
 
