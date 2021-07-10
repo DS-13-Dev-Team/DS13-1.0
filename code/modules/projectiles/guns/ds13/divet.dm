@@ -33,7 +33,9 @@ Divet pistol typedef & logic
 /obj/item/weapon/gun/projectile/divet/silenced
 	icon_state = "divet_spec"
 	name = "special ops divet pistol"
+	desc = "A modified version of the Winchester Arms NK-series pistol. An integrated suppressor lowers the audio profile, although this has a detrimental effect on power."
 	silenced = TRUE
+	damage_factor = 0.85	//Silencers reduce bullet speed, and hence damage output
 
 /obj/item/weapon/gun/projectile/divet/update_icon()
 	..()
@@ -68,7 +70,7 @@ Magazine type definitions
 	ammo_type = /obj/item/ammo_casing/ls_slug/ap
 
 /obj/item/ammo_magazine/divet/incendiary
-	name = "divet magazine (dragon's breath)"
+	name = "divet magazine (incendiary)"
 	icon_state = "icds"
 	ammo_type = /obj/item/ammo_casing/ls_slug/incendiary
 
@@ -125,8 +127,8 @@ Projectile logic
 	'sound/weapons/guns/fire/torch_altfire_3.ogg')
 
 
-/obj/item/projectile/bullet/ls_slug/incendiary/on_hit(atom/target, blocked)
+/obj/item/projectile/bullet/ls_slug/incendiary/on_impact(atom/target)
 	//Yoinked from hydrazine torch. Spreads the flames on the turf because this bullet is about to be GC'd
 	var/turf/T = get_turf(target)
-	T.spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = (T0C + 2600)))
+	T.spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 3, duration = 1.6 SECONDS, extra_data = list("temperature" = (T0C + 2600)))
 	. = ..()
