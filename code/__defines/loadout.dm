@@ -21,6 +21,8 @@
 
 #define LOADOUT_TAG_RIG_KINESIS	"kinesis"
 
+#define LOADOUT_TAG_RIG_STASIS "stasis"
+
 #define LOADOUT_TAG_RIG_MOVESPEED	"movespeed"
 
 #define LOADOUT_TAG_RIG_HEALTHBAR	"healthbar"

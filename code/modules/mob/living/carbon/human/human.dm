@@ -1507,3 +1507,7 @@
 		var/obj/screen/intent/I = hud_used.action_intent
 		I.intent = I_HURT
 		I.update_icon()
+
+/mob/living/carbon/human/stasis_act()
+	if(!has_extension(src, /datum/extension/stasis_effect))
+		set_extension(src, /datum/extension/stasis_effect)
