@@ -3174,7 +3174,7 @@
 /obj/structure/sign/warning/radioactive{
 	dir = 8
 	},
-/turf/simulated/wall/r_wall/hull,
+/turf/simulated/wall/r_wall,
 /area/ishimura/hull)
 "ahD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -25252,11 +25252,13 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/upper/engineering/tcomms)
 "aXl" = (
-/obj/structure/sign/warning/radioactive{
-	dir = 8
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
-/turf/simulated/wall/r_wall,
-/area/ishimura/hull)
+/turf/simulated/floor/reinforced/airless,
+/area/ishimura/upper/engineering/engine_room)
 "aXm" = (
 /turf/simulated/floor/lino,
 /area/ishimura/upper/engineering/tcomms/control)
@@ -31147,14 +31149,42 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hallway/fore)
-"bGQ" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 10
+"cEn" = (
+/obj/machinery/light,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/engine_room)
+"idD" = (
+/obj/machinery/fusion_fuel_injector/mapped{
+	dir = 1;
+	id_tag = "Reactor 2"
 	},
-/obj/effect/wallframe_spawn/reinforced_phoron,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/engine_room)
+"kbR" = (
+/obj/structure/cable/cyan{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/power/emitter/gyrotron/anchored{
+	dir = 8;
+	id_tag = "Reactor 2"
+	},
+/turf/simulated/floor/dank/grille_spare_4,
+/area/ishimura/upper/engineering/engine_room)
+"khj" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 1;
+	injecting = 1;
+	use_power = 1
+	},
 /turf/simulated/floor/reinforced/airless,
 /area/ishimura/upper/engineering/engine_room)
-"clh" = (
+"lvk" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
@@ -31170,7 +31200,13 @@
 	},
 /turf/simulated/floor/dank/grille_spare_4,
 /area/ishimura/upper/engineering/engine_room)
-"drb" = (
+"oMI" = (
+/obj/structure/table/standard,
+/obj/machinery/recharger,
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled,
+/area/ishimura/upper/security/equipment)
+"rIk" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -31179,56 +31215,7 @@
 	},
 /turf/simulated/floor/dank/grille_spare_4,
 /area/ishimura/upper/engineering/engine_room)
-"jti" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 1;
-	injecting = 1;
-	use_power = 1
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ishimura/upper/engineering/engine_room)
-"kBB" = (
-/obj/structure/cable/cyan{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/obj/machinery/power/emitter/gyrotron/anchored{
-	dir = 8;
-	id_tag = "Reactor 2"
-	},
-/turf/simulated/floor/dank/grille_spare_4,
-/area/ishimura/upper/engineering/engine_room)
-"kMo" = (
-/obj/machinery/fusion_fuel_injector/mapped{
-	dir = 1;
-	id_tag = "Reactor 2"
-	},
-/turf/simulated/floor/dank/rivets,
-/area/ishimura/upper/engineering/engine_room)
-"nFV" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ishimura/upper/engineering/engine_room)
-"oGt" = (
-/obj/machinery/light,
-/turf/simulated/floor/dank/rivets,
-/area/ishimura/upper/engineering/engine_room)
-"oMI" = (
-/obj/structure/table/standard,
-/obj/machinery/recharger,
-/obj/machinery/camera/network/security,
-/turf/simulated/floor/tiled,
-/area/ishimura/upper/security/equipment)
-"yec" = (
+"uGx" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -31236,6 +31223,13 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/dank/grille_spare_4,
+/area/ishimura/upper/engineering/engine_room)
+"wKV" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
+/obj/effect/wallframe_spawn/reinforced_phoron,
+/turf/simulated/floor/reinforced/airless,
 /area/ishimura/upper/engineering/engine_room)
 
 (1,1,1) = {"
@@ -34551,12 +34545,12 @@ aah
 aah
 aah
 aah
-aXl
+aah
+ahz
 aaa
 aaa
 aaa
-aaa
-aXl
+ahz
 aah
 aah
 aah
@@ -35164,7 +35158,7 @@ bdr
 bdr
 bdr
 bdi
-kMo
+idD
 bgu
 aad
 aah
@@ -35360,13 +35354,13 @@ bgu
 bgu
 ati
 bdi
-nFV
+aXl
 ahF
 ajZ
 bdr
 bdr
 bdi
-kMo
+idD
 bgu
 aad
 aah
@@ -35568,7 +35562,7 @@ aka
 bdr
 bdr
 bdi
-kMo
+idD
 bgu
 aad
 aah
@@ -35764,7 +35758,7 @@ bgu
 ath
 atj
 amP
-jti
+khj
 bdr
 aka
 bdr
@@ -35966,7 +35960,7 @@ bgu
 bgu
 bgu
 aad
-bGQ
+wKV
 azq
 aZA
 aZP
@@ -36170,7 +36164,7 @@ bgu
 bgE
 asU
 bgi
-yec
+uGx
 bar
 bgu
 bgu
@@ -36371,13 +36365,13 @@ bgu
 bgu
 bgu
 asU
-drb
-kBB
+rIk
+kbR
 bar
 bgu
 bgu
 bgu
-oGt
+cEn
 aad
 aah
 aaa
@@ -36574,7 +36568,7 @@ bhp
 bhp
 asU
 bgj
-clh
+lvk
 bbl
 bgu
 bgu
