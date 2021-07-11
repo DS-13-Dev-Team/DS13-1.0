@@ -229,3 +229,6 @@
 			if(src)
 				step(src, pick(NORTH,SOUTH,EAST,WEST))
 				sleep(rand(2,4))
+
+/obj/stasis_act()
+	return

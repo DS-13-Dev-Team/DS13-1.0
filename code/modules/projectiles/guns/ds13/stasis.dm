@@ -5,7 +5,6 @@
 	icon_state = "contact"
 	item_state = "stasis_gun"
 	w_class = ITEM_SIZE_HUGE
-
 	charge_cost = 1 //Doesn't matter, untobtainable gun
 	cell_type = /obj/item/weapon/cell/potato //20 charge, joke time
 	projectile_type = /obj/item/projectile/bullet/stasis
@@ -18,17 +17,18 @@
 	name = "stasis blast"
 	icon_state = "stasis_blast"
 	step_delay = 1.5
-	damage = 0				//This dog doesn't bite, it hurts differently
+	ricochet_chance	= 0
+	nodamage = 1				//This dog doesn't bite, it hurts differently
 	grippable = FALSE
 
 /obj/item/projectile/bullet/stasis/on_impact(var/atom/A)
 	var/impact_zone = trange(2, A)
 	for(var/t in impact_zone)
 		var/turf/T = t
-			for(var/mob/L in T)
-				L.stasis_act()
-			for(var/obj/O in T)
-				O.stasis_act()
+		for(var/mob/L in T)
+			L.stasis_act()
+		for(var/obj/O in T)
+			O.stasis_act()
 
 /datum/extension/stasis_effect
 	name = "Stasis Effect"
