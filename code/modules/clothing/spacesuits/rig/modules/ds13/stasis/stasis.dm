@@ -15,3 +15,10 @@
 
 	module_tags = list(LOADOUT_TAG_RIG_STASIS = 1)
 	gun = /obj/item/weapon/gun/energy/stasis
+
+/obj/item/weapon/stasis_pack
+	name = "stasis pack"
+	desc = "Stasis pack used to recharge stasis module."
+	origin_tech = list(TECH_POWER = 6, TECH_MAGNET = 4)
+	icon = 'icons/obj/power.dmi' //'icons/obj/harvest.dmi'
+	icon_state = "potato_cell" //"potato_battery"

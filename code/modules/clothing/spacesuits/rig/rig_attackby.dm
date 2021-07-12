@@ -6,6 +6,18 @@
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.
 			return
 
+	if(istype(W, /obj/item/weapon/stasis_pack))
+		for(var/obj/item/rig_module/mounted/stasis/S in installed_modules)
+			for(var/obj/item/weapon/gun/energy/stasis/G in S.contents)
+				for(var/obj/item/weapon/cell/C in G.contents)
+					if(C.percent() != 100)
+						QDEL_NULL(W)
+						C.insta_recharge()
+						to_chat(user, "Stasis Module was recharged")
+						return
+					else
+						to_chat(user, "Stasis Module is already fully charged")
+
 	// Pass repair items on to the chestpiece.
 	if(chest && (istype(W,/obj/item/stack/material) || isWelder(W)))
 		return chest.attackby(W,user)
@@ -118,8 +130,10 @@
 							module.deactivate()
 						user.put_in_hands(cell)
 						cell = null
+						return
 					else
 						to_chat(user, "There is nothing loaded in that mount.")
+						return
 
 				if("system module")
 
@@ -144,6 +158,7 @@
 					installed_modules -= removed
 					processing_modules -= removed
 					update_icon()
+					return
 
 		else if(istype(W,/obj/item/stack/nanopaste)) //EMP repair
 			var/obj/item/stack/S = W

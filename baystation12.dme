@@ -822,6 +822,7 @@
 #include "code\game\machinery\doors\simple.dm"
 #include "code\game\machinery\doors\unpowered.dm"
 #include "code\game\machinery\doors\windowdoor.dm"
+#include "code\game\machinery\ds13\stasis_station.dm"
 #include "code\game\machinery\ds13\bpl\biomass_storage.dm"
 #include "code\game\machinery\ds13\bpl\bpl_organs.dm"
 #include "code\game\machinery\ds13\bpl\growth_tank.dm"

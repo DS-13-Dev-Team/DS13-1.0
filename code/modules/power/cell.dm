@@ -151,6 +151,10 @@
 
 	qdel(src)
 
+/obj/item/weapon/cell/proc/insta_recharge()
+	charge = maxcharge
+	return
+
 /obj/item/weapon/cell/get_cell()
 	return src //no shit Sherlock
 
