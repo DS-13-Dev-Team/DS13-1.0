@@ -17,6 +17,10 @@
 	gun = /obj/item/weapon/gun/energy/stasis
 
 /obj/item/rig_module/mounted/stasis/military
+	name = "Regenerative Stasis Module"
+	interface_name = "Regenerative Stasis Module"
+	desc = "Stasis module is capable of producing a temporary time dilation, making objects move at an extremely slow rate for a period of time. This version is capable of self rechargin."
+	interface_desc = "Stasis module is capable of producing a temporary time dilation, making objects move at an extremely slow rate for a period of time. This version is capable of self rechargin."
 	gun = /obj/item/weapon/gun/energy/stasis/military
 
 /obj/item/weapon/stasis_pack
