@@ -561,7 +561,7 @@
 	if (islist(shot_sound))
 		shot_sound = pick(shot_sound)
 	if(silenced)
-		playsound(user, shot_sound, VOLUME_QUIET, 1)
+		playsound(user, shot_sound, VOLUME_QUIET, 1, -2)
 	else
 		playsound(user, shot_sound, shot_volume, 1)
 

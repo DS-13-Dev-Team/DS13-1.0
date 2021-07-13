@@ -141,7 +141,7 @@
 	antag_costs = list(MODE_MERCENARY = DEFAULT_TELECRYSTAL_AMOUNT) // This, on the other hand, is to encourage usage specifically by mercs with high budgets.
 	path = /obj/item/weapon/gun/magnetic/railgun/tcc
 
-/datum/uplink_item/item/visible_weapons/flechetterifle
+/datum/uplink_item/item/visible_weapons/divet
 	name = "Divet pistol"
 	item_cost = 7
 	path = /obj/item/weapon/gun/projectile/divet
