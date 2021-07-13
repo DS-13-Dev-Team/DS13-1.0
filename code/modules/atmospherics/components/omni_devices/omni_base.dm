@@ -24,7 +24,7 @@
 
 	var/list/ports = new()
 
-/obj/machinery/atmospherics/omni/New()
+/obj/machinery/atmospherics/omni/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	icon_state = "base"
 

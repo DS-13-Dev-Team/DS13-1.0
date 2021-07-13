@@ -26,7 +26,7 @@
 	var/datum/effect/effect/system/spark_spread/spark_system
 	var/account_security_level = 0
 
-/obj/machinery/atm/New()
+/obj/machinery/atm/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	machine_id = "[station_name()] ATM #[num_financial_terminals++]"
 	spark_system = new /datum/effect/effect/system/spark_spread

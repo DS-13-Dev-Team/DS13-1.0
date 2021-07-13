@@ -13,12 +13,12 @@
 	var/datum/pipe_network/network_node1
 	var/datum/pipe_network/network_node2
 
-/obj/machinery/clamp/New(loc, var/obj/machinery/atmospherics/pipe/simple/to_attach = null)
+/obj/machinery/clamp/New(var/atom/location, var/direction, var/nocircuit = FALSE, var/obj/machinery/atmospherics/pipe/simple/to_attach = null)
 	..()
 	if(istype(to_attach))
 		target = to_attach
 	else
-		target = locate(/obj/machinery/atmospherics/pipe/simple) in loc
+		target = locate(/obj/machinery/atmospherics/pipe/simple) in location
 	if(target)
 		update_networks()
 		set_dir(target.dir)

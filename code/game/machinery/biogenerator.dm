@@ -44,7 +44,7 @@
 			/obj/item/clothing/suit/storage/toggle/bomber = 500,
 			/obj/item/clothing/suit/storage/hooded/wintercoat = 500))
 
-/obj/machinery/biogenerator/New()
+/obj/machinery/biogenerator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	create_reagents(1000)
 	beaker = new /obj/item/weapon/reagent_containers/glass/bottle(src)

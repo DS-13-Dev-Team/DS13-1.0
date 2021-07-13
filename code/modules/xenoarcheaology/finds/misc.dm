@@ -8,7 +8,7 @@
 	icon_state = MATERIAL_CRYSTAL
 
 
-/obj/machinery/crystal/New()
+/obj/machinery/crystal/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	icon_state = pick(MATERIAL_CRYSTAL, "crystal2", "crystal3")
 

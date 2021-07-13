@@ -23,7 +23,7 @@
 	else
 		icon_state = "[initial(icon_state)]_off"
 
-/obj/machinery/bluespacerelay/New()
+/obj/machinery/bluespacerelay/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/weapon/circuitboard/bluespacerelay(src)

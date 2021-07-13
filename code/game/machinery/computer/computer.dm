@@ -27,7 +27,7 @@
 		return 1
 	return .=..()
 
-/obj/machinery/computer/New()
+/obj/machinery/computer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	overlay_layer = layer
 	..()
 

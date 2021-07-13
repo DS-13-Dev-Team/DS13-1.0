@@ -6,7 +6,7 @@
 	var/progtype = /datum/computer/file/embedded_program/docking/simple/
 	clicksound = "button2"
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/New()
+/obj/machinery/embedded_controller/radio/simple_docking_controller/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	docking_program = new progtype(src)
 	program = docking_program

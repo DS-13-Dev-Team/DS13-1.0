@@ -251,7 +251,7 @@
 			launch()
 		..()
 
-/obj/machinery/cryopod/New()
+/obj/machinery/cryopod/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	announce = new /obj/item/device/radio/intercom(src)
 	..()
 

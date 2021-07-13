@@ -23,7 +23,7 @@
 	var/effective_gen = 0
 	var/lastgenlev = 0
 
-/obj/machinery/power/generator/New()
+/obj/machinery/power/generator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	desc = initial(desc) + " Rated for [round(max_power/1000)] kW."
 	spawn(1)

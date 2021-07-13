@@ -9,7 +9,7 @@
 	var/air_frequency = 1437
 	autoclose = 0
 
-/obj/machinery/door/airlock/alarmlock/New()
+/obj/machinery/door/airlock/alarmlock/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	air_connection = new
 

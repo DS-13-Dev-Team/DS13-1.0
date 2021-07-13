@@ -28,7 +28,7 @@
 /obj/machinery/gibber/autogibber
 	var/turf/input_plate
 
-/obj/machinery/gibber/autogibber/New()
+/obj/machinery/gibber/autogibber/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	spawn(5)
 		for(var/i in GLOB.cardinal)

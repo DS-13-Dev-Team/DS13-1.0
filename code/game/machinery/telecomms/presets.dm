@@ -113,7 +113,7 @@
 	freq_listening = list(SUP_FREQ, SRV_FREQ)
 	autolinkers = list("processor2", "supply", "service", "unused")
 
-/obj/machinery/telecomms/bus/preset_two/New()
+/obj/machinery/telecomms/bus/preset_two/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
 		if(i == PUB_FREQ)
 			continue
@@ -213,7 +213,7 @@
 	freq_listening = list()
 	autolinkers = list("unused")
 
-/obj/machinery/telecomms/server/presets/unused/New()
+/obj/machinery/telecomms/server/presets/unused/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
 		if(i == AI_FREQ || i == PUB_FREQ)
 			continue

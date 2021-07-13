@@ -150,7 +150,7 @@
 	// These cheap toys are accessible from the mercenary camera console as well
 	network = list(NETWORK_MERCENARY)
 
-/obj/machinery/camera/spy/New()
+/obj/machinery/camera/spy/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	name = "DV-136ZB #[random_id(/obj/machinery/camera/spy, 1000,9999)]"
 	c_tag = name

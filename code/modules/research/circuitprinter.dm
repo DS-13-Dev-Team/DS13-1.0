@@ -19,7 +19,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	idle_power_usage = 30
 	active_power_usage = 2500
 
-/obj/machinery/r_n_d/circuit_imprinter/New()
+/obj/machinery/r_n_d/circuit_imprinter/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	materials = default_material_composition.Copy()
 
 	..()

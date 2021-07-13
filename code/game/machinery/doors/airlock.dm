@@ -1449,7 +1449,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/autoname
 
-/obj/machinery/door/airlock/autoname/New()
+/obj/machinery/door/airlock/autoname/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	var/area/A = get_area(src)
 	name = A.name
 	..()
