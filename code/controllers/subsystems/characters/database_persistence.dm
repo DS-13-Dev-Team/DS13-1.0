@@ -15,10 +15,12 @@
 //TODO: Fix depositing credits from chip to rig
 SUBSYSTEM_DEF(database)
 	name = "Database"
-	init_order = SS_INIT_MISC_LATE
 	wait = 1 MINUTE
+	init_order = SS_INIT_DATABASE	//Initializes before atoms
 
-	//A cache, stores the value from get_unknown_designs
+
+	//Design caches
+	var/list/known_designs
 	var/list/unknown_designs
 
 	//A list of mind datums whose credit amounts have changed recently, and are queued for updates
@@ -26,10 +28,17 @@ SUBSYSTEM_DEF(database)
 	//So we're not sending a flurry of requests if someone is shuffling around chips in their inventory
 	var/list/credits_to_update = list()
 
+	var/free_schematics	=	20	//The first X are considered free and won't be counted when determining how many to remove
+	var/schematic_loss	=	0.05
 
-
+/datum/controller/subsystem/database/stat_entry()
+	..("Click to debug!")
 
 /datum/controller/subsystem/database/Initialize()
+
+
+
+	update_store_designs()
 
 
 
@@ -130,9 +139,8 @@ SUBSYSTEM_DEF(database)
 
 	return TRUE	//Needed to let the hook know we handled things okay
 
-//Called at round end
-/hook/roundend/proc/handle_endround_credits()
-	SSdatabase.process_pending_credits()
+
+
 
 
 
@@ -150,43 +158,125 @@ SUBSYSTEM_DEF(database)
 */
 
 //This returns a list of all design IDs which are not known to the store. These can thusly be used for assigning to new schematics
-/proc/get_unknown_designs()
-	if (!SSdatabase.unknown_designs)
+/datum/controller/subsystem/database/proc/update_store_designs()
+
+	known_designs = list()
+	unknown_designs = list()
+
+	//This gets a list of every design that exists
+	var/list/designs = SSresearch.design_ids.Copy()
+
+	if (!length(designs))
+		return	//Fatal error
+
+	//We need to filter it to contain only designs that are valid for store use
+	for (var/id in designs)
+		var/datum/design/D = designs[id]
+		if (!(D.build_type & STORE))
+			designs -= id
 
 
-		//This gets a list of every design that exists
-		var/list/designs = SSresearch.design_ids.Copy()
-
-		//We need to filter it to contain only designs that are valid for store use
-		for (var/id in designs)
-			var/datum/design/D = designs[id]
-			if (!(D.build_type & STORE))
-				designs -= id
-
-
-		//Now lets get the list of all persisting schematics in the database
-		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM store_schematics;")
-		query.Execute()
-
-		//We loop through the db results and subtract any design in it, from the all-list.
-		while (query.NextRow())
-			var/schematic_id = query.item[1]
-			designs -= schematic_id
-
-		//Now designs only contains things which aren't in the DB
-
-		//Cache this
-		SSdatabase.unknown_designs	=	designs
-
-	//TODO: Null this out when a new schematic is uploadeds
-	return SSdatabase.unknown_designs
-
-
-
-/proc/upload_design(var/id)
-
-	var/DBQuery/query = dbcon.NewQuery("INSERT INTO store_schematics	(store_schematic)	VALUES([id]);")
+	//Now lets get the list of all persisting schematics in the database
+	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM store_schematics;")
 	query.Execute()
 
 	//We loop through the db results and subtract any design in it, from the all-list.
 	while (query.NextRow())
+		var/schematic_id = query.item[1]
+		if (!(schematic_id in designs))
+			//Garbage ID, remove from database
+			var/DBQuery/Q2 = dbcon.NewQuery("DELETE FROM store_schematics WHERE store_schematic=\"[schematic_id]\";")
+			Q2.Execute()
+			continue
+
+		designs -= schematic_id
+		SSdatabase.known_designs += schematic_id
+
+	//Now designs only contains things which aren't in the DB
+
+	//Cache this
+	unknown_designs	=	designs
+
+
+	//And now reload the database for individual stores
+	load_store_database()
+
+
+
+/datum/controller/subsystem/database/proc/upload_design(var/id)
+
+	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM store_schematics	WHERE (store_schematic = \"[id]\");")
+	query.Execute()
+
+	//If this returns anything, then that schematic already existed, return false
+	if (query.NextRow())
+		return FALSE
+
+	query = dbcon.NewQuery("INSERT INTO store_schematics	(store_schematic)	VALUES(\"[id]\");")
+	query.Execute()
+
+
+	//We're uploading something new, lets update this
+	update_store_designs()
+
+	return TRUE
+
+
+
+
+//Handle end of round loss
+/hook/roundend/proc/handle_endround_schematics()
+	SSdatabase.handle_endround_schematics()
+	return TRUE
+
+/datum/controller/subsystem/database/proc/handle_endround_schematics()
+	//Now lets get the list of all persisting schematics in the database
+	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM store_schematics	ORDER BY upload_date ASC;")
+	query.Execute()
+
+	var/total = query.RowCount()
+	world << "Total is [total]"
+	total -= free_schematics
+
+	if (total <= 0)
+		//not enough, we're done
+		return
+
+	var/list/data = query.GetData()
+
+
+	var/num_to_remove = round(total * schematic_loss, 1)
+	//Always remove at least one
+	if (num_to_remove < 1)
+		num_to_remove = 1
+
+
+	var/list/deleted_ids = list()
+
+	while(num_to_remove > 0)
+		num_to_remove--
+		//Lets pick one from the list, averaged towards the earlier items
+		var/index = clamp(round(rand()*0.75*length(data),1), 1, length(data))
+
+		//This is a list of ID and date
+		var/list/record = data[index]
+		var/schematic_id = record[1]
+
+		//Store a note of what we removed
+		deleted_ids += schematic_id
+
+		//Remove from database
+		var/DBQuery/Q2 = dbcon.NewQuery("DELETE FROM store_schematics WHERE store_schematic=\"[schematic_id]\";")
+		Q2.Execute()
+
+		//Remove from that data list too
+		data.Cut(index, index+1)
+
+		if (length(data) < 1)
+			break	//Shouldn't happen
+
+	if (length(deleted_ids))
+		command_announcement.Announce("Data Corruption detected in schematic database. [length(deleted_ids)] schematics corrupted.", new_sound = sound('sound/misc/interference.ogg', volume=25))
+
+
+	world << "Removed [dump_list(deleted_ids)]"

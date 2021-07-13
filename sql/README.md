@@ -112,3 +112,4 @@ DROP TABLE IF EXISTS `library`;
 DROP TABLE IF EXISTS `population`;
 DROP TABLE IF EXISTS `ranks`;
 DROP TABLE IF EXISTS `whitelist`;
+DROP TABLE IF EXISTS `store_schematics`;

@@ -99,3 +99,28 @@
 	for (var/obj/item/weapon/spacecash/ewallet/C in things)
 		. += C
 
+
+//Giving credits to a mob
+/mob/proc/recieve_credits(var/amount, var/sender, var/origin_account, var/reason)
+	var/datum/money_account/ECA = get_account()
+	if (ECA)
+		charge_to_account(ECA.account_number, sender, reason, sender, amount)
+		return
+
+	var/datum/money_account/rig_account = get_rig_account()
+	if (rig_account)
+		charge_to_account(rig_account.account_number, sender, reason, sender, amount)
+		return
+
+
+	var/list/chips = get_carried_credit_chips()
+	for (var/obj/item/weapon/spacecash/ewallet/C in chips)
+		C.modify_worth(amount)
+		return
+
+
+	//Last fallback, create a new chip and give it to the mob
+	var/obj/item/weapon/spacecash/ewallet/C = new /obj/item/weapon/spacecash/ewallet
+	C.set_worth(amount)
+
+	equip_to_storage_or_hands(C)

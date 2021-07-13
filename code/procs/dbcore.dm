@@ -118,6 +118,14 @@ DBQuery/proc/RowCount() return _dm_db_row_count(_db_query)
 
 DBQuery/proc/ErrorMsg() return _dm_db_error_msg(_db_query)
 
+//Runs through the data and dumps it into a nested list of lists
+DBQuery/proc/GetData()
+	var/list/stuff = list()
+	while (NextRow())
+		stuff += list(item.Copy())
+
+	return stuff
+
 DBQuery/proc/Columns()
 	if(!columns)
 		columns = _dm_db_columns(_db_query,/DBColumn)

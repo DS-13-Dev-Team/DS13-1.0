@@ -12,3 +12,6 @@
 
 #define FEE_NEUTRAL	0.1	//10 percent
 #define FEE_DEATH	0.15
+
+
+#define REWARD_SCHEMATIC	3000

@@ -41,7 +41,6 @@
 	charge_to_account(get_account().account_number, source, purpose, terminal_id, amount)
 	if (wearer)
 		wearer.credits_changed()
-	//TODO: Inform the reciever it recieved money
 	return TRUE
 
 
@@ -105,3 +104,16 @@
 		return wearing_rig.get_account_balance()
 
 	return 0
+
+
+
+
+/mob/proc/get_rig_account()
+	return null
+
+
+/mob/living/carbon/human/get_rig_account()
+	if (wearing_rig)
+		return wearing_rig.get_account()
+
+	return null

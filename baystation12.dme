@@ -1714,6 +1714,7 @@
 #include "code\modules\economy\store\store_deposit.dm"
 #include "code\modules\economy\store\store_designs.dm"
 #include "code\modules\economy\store\store_object.dm"
+#include "code\modules\economy\store\store_schematic.dm"
 #include "code\modules\economy\store\store_ui.dm"
 #include "code\modules\emotes\emote_define.dm"
 #include "code\modules\emotes\emote_mob.dm"

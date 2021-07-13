@@ -55,6 +55,8 @@
 	if (cost <= 0)
 		return TRUE
 
+
+
 //Buys and returns the current item, don't call this directly
 /obj/machinery/store/proc/buy_current()
 	if (!occupant)
