@@ -16,6 +16,9 @@
 	module_tags = list(LOADOUT_TAG_RIG_STASIS = 1)
 	gun = /obj/item/weapon/gun/energy/stasis
 
+/obj/item/rig_module/mounted/stasis/military
+	gun = /obj/item/weapon/gun/energy/stasis/military
+
 /obj/item/weapon/stasis_pack
 	name = "stasis pack"
 	desc = "Stasis pack used to recharge stasis module."

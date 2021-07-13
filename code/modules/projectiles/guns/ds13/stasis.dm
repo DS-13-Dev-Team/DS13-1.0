@@ -13,15 +13,19 @@
 
 	shot_volume = VOLUME_MAX
 
+/obj/item/weapon/gun/energy/stasis/military
+	self_recharge = 1
+
 /obj/item/projectile/bullet/stasis
 	name = "stasis blast"
 	icon_state = "stasis_blast"
-	step_delay = 2
+	step_delay = 2.5
 	ricochet_chance	= 0
 	damage = 0
 	structure_damage_factor = 0
 	nodamage = 1				//This dog doesn't bite, it hurts differently
 	grippable = FALSE
+	projectile_type = /obj/item/projectile/bullet/stasis
 
 /obj/item/projectile/bullet/stasis/on_impact(var/atom/A)
 	var/impact_zone = trange(2, A)
@@ -41,6 +45,7 @@
 	var/attack_slowdown = -12.5
 	var/slowdown = 0.5
 	var/mob/M
+	var/stasis_duration = 50 //1 = 0.1 second
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.5, STATMOD_ATTACK_SPEED = -12.5)
 
 /datum/extension/stasis_effect/New(var/datum/holder)
@@ -62,7 +67,7 @@
 		return attack_slowdown
 
 /datum/extension/stasis_effect/Process()
-	spawn(50)
+	spawn(stasis_duration)
 		remove_extension(holder, type)
 		return PROCESS_KILL
 
