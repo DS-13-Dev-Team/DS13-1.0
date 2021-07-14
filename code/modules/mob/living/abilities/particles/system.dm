@@ -11,7 +11,7 @@
 	var/turf/origin_turf
 	//var/tick_delay = 0.2 SECONDS
 	var/particles_per_tick = 3
-	var/particle_lifetime = 0.85 SECONDS
+	var/particle_lifetime = null	//Overrides lifetime on particles if nonzero
 	var/particle_travel_distance = 3
 	var/particle_type = /obj/effect/particle
 	var/particle_color
@@ -32,6 +32,9 @@
 		src.duration = duration
 	if (particle_travel_distance)
 		src.particle_travel_distance = particle_travel_distance
+		if (particle_lifetime)
+			particle_lifetime *= particle_travel_distance
+
 	if (angle)
 		src.angle = angle
 	.=..()
