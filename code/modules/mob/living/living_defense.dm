@@ -308,10 +308,8 @@
 	location.hotspot_expose(fire_burn_temperature(), 50, 1)
 
 /mob/living/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
-	world << "Living fire act"
 	var/protection = get_heat_protection(exposed_temperature)
 	if (protection >= 1)
-		world << "Max protection"
 		return
 	else
 		var/damage = get_fire_damage(exposed_temperature, multiplier)
