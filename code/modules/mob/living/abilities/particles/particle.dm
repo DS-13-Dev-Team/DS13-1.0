@@ -55,8 +55,13 @@
 	starting_transform.Scale(scale_x_start, scale_y_start)
 
 	//Setup expiration
-	src.lifespan = lifespan
-	QDEL_IN(src, lifespan)
+	if (lifespan)
+		//Lifespan will already be multiplied by range if one was passed in
+		//If null is passed in, we use our own
+		src.lifespan = lifespan
+	else
+		src.lifespan *= range
+	QDEL_IN(src, src.lifespan)
 
 	//Lets calculate the destination pixel_loc
 	origin_pixels = get_global_pixel_loc()

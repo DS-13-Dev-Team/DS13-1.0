@@ -51,7 +51,7 @@
 	var/check_armour = "bullet" //Defines what armor to use when it hits things.  Must be set to bullet, laser, energy,or bomb	//Cael - bio and rad are also valid
 	var/projectile_type = /obj/item/projectile
 	var/penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
-	var/kill_count = 50 //This will de-increment every process(). When 0, it will delete the projectile.
+	var/kill_count = 50 //Actually means range. This will de-increment every process(). When 0, it will delete the projectile.
 		//Effects
 	var/stun = 0
 	var/weaken = 0
@@ -66,7 +66,7 @@
 
 
 	var/hitscan = 0		// whether the projectile should be hitscan
-	var/step_delay = 1	// the delay between iterations if not a hitscan projectile
+	var/step_delay = 1	// Speed. the delay between iterations if not a hitscan projectile. Lower is better
 
 	// effect types to be used
 	var/muzzle_type

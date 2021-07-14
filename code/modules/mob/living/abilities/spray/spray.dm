@@ -100,7 +100,10 @@ Vars/
 			user.face_atom(target_object)
 	else if (source)
 		target_atom = get_turf_at_pixel_coords(target, source.z)
-	recalculate_cone()
+
+	//Only recalc if this is set
+	if (angle)
+		recalculate_cone()
 
 /datum/extension/spray/proc/get_direction()
 	//As long as we're not on the same turf, we can do this easily
@@ -137,7 +140,7 @@ Vars/
 	var/list/new_turfs = affected_turfs - previous_turfs
 	if (LAZYLEN(new_turfs))
 		//Check trajectory returns an assoc list with true/false as value of whether the tile is reachable
-		new_turfs = check_trajectory_mass(new_turfs, source, PASS_FLAG_TABLE)
+		new_turfs = check_trajectory_mass(new_turfs, source, PASS_FLAG_TABLE | PASS_FLAG_NOMOB)
 		for (var/turf in new_turfs)
 			//If the value is false, LOS was blockd, so we remove it from affected turfs
 			if (!new_turfs[turf])
@@ -145,6 +148,7 @@ Vars/
 
 	if (fx)
 		fx.set_direction(direction)
+
 
 /datum/extension/spray/proc/start()
 	if (!started_at)
@@ -258,7 +262,7 @@ Vars/
 	scale_x_end = 2
 	scale_y_end = 4
 	color = "#FF0000"
-
+	lifespan	=	0.25 SECOND
 
 
 

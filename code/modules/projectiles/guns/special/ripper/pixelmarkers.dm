@@ -2,6 +2,7 @@
 	icon = 'icons/debug/pixelmarkers.dmi'
 	var/lifetime = 0.3
 	anchored = TRUE
+	alpha = 200
 
 /obj/effect/pixelmarker/New(var/location, var/_lifetime, var/newcolor = "#FFFFFF")
 	if (_lifetime)
