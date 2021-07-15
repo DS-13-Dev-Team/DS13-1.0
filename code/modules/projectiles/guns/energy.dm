@@ -157,3 +157,6 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 			icon_state = "[modifystate][ratio]"
 		else
 			icon_state = "[initial(icon_state)][ratio]"
+
+/obj/item/weapon/gun/energy/proc/get_remaining_percent()
+	return power_supply.percent()

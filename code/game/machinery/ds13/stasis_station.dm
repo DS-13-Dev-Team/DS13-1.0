@@ -19,13 +19,13 @@
 	var/turf/T = get_step(get_turf(src), walldir)
 	if(istype(T) && T.density)
 		if(dir == SOUTH)
-			pixel_y = 32
+			pixel_y = 29
 		else if(dir == NORTH)
-			pixel_y = -32
+			pixel_y = -29
 		else if(dir == EAST)
-			pixel_x = 32
+			pixel_x = 29
 		else if(dir == WEST)
-			pixel_x = -32
+			pixel_x = -29
 
 /obj/machinery/stasis_station/attack_hand(var/mob/user)
 	for(var/obj/item/weapon/rig/R in user.contents)

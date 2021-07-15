@@ -2,23 +2,26 @@
 	name = "Stasis Gun"
 	desc = "Wow! You've managed to obtain it!"
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
-	icon_state = "contact"
-	item_state = "stasis_gun"
+	icon_state = "forcegun"
+	item_state = "forcegun"
+	fire_sound = 'sound/weapons/Taser.ogg'
+	fire_sound_text = "stasis blast"
 	w_class = ITEM_SIZE_HUGE
-	charge_cost = 5 //Doesn't matter, untobtainable gun
+	charge_cost = 5
 	cell_type = /obj/item/weapon/cell/potato //20 charge, joke time
 	projectile_type = /obj/item/projectile/bullet/stasis
-
 	removeable_cell = FALSE
-
-	shot_volume = VOLUME_MAX
+	safety_state = FALSE
+	shot_volume = VOLUME_QUIET
 
 /obj/item/weapon/gun/energy/stasis/military
+	recharge_time = 12
 	self_recharge = 1
 
 /obj/item/projectile/bullet/stasis
 	name = "stasis blast"
 	icon_state = "stasis_blast"
+	fire_sound = 'sound/weapons/Taser.ogg'
 	step_delay = 2.5
 	ricochet_chance	= 0
 	damage = 0
@@ -42,21 +45,34 @@
 	flags = EXTENSION_FLAG_IMMEDIATE
 
 	var/dm_filter/ripple
-	var/attack_slowdown = -12.5
+	var/dm_filter/outline
+
+	var/attack_slowdown = -0.5
 	var/slowdown = 0.5
 	var/mob/M
 	var/stasis_duration = 50 //1 = 0.1 second
-	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.5, STATMOD_ATTACK_SPEED = -12.5)
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.5, STATMOD_ATTACK_SPEED = -0.5)
 
 /datum/extension/stasis_effect/New(var/datum/holder)
 	.=..()
 	M = holder
-	to_chat(M, SPAN_DANGER("It feels like something prevents you from moving fast!"))
+	var/twitcher = get_extension(M, /datum/extension/twitch)
+	var/stasis = get_extension(M, /datum/extension/stasis_effect)
+	if(twitcher)
+		if(!stasis)
+			to_chat(M, SPAN_DANGER("You feel like an easy target!"))
+	else if(!stasis)
+		to_chat(M, SPAN_DANGER("It feels like something prevents you from moving fast!"))
+	statmods[STATMOD_ATTACK_SPEED] = attack_slowdown
+
 	ripple = filter(type = "ripple", radius = 0, size = 8)
 	M.filters.Add(ripple)
 	ripple = M.filters[M.filters.len]
-	animate(ripple, radius = 16, size = 1, time = 4, loop = -1, flags = ANIMATION_PARALLEL)
-	statmods[STATMOD_ATTACK_SPEED] = attack_slowdown
+	animate(ripple, radius = 16, size = 1, time = 5, loop = -1, flags = ANIMATION_PARALLEL)
+
+	outline = filter(type = "outline", size = 2, color = "#cdfdff", alpha = 128)
+	M.filters.Add(outline)
+	outline = M.filters[M.filters.len]
 
 	START_PROCESSING(SSprocessing, src)
 
@@ -74,6 +90,7 @@
 /datum/extension/stasis_effect/Destroy()
 	if(M)
 		M.filters.Remove(ripple)
+		M.filters.Remove(outline)
 	.=..()
 
 /datum/proc/stasis_act()

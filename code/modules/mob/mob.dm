@@ -1139,5 +1139,4 @@
 	return
 
 /mob/stasis_act()
-	if(!has_extension(src, /datum/extension/stasis_effect))
-		set_extension(src, /datum/extension/stasis_effect)
+	set_extension(src, /datum/extension/stasis_effect)

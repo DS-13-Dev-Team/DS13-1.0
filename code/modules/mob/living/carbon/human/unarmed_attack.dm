@@ -14,7 +14,8 @@ var/global/list/sparring_attack_cache = list()
 	var/shredding = 0 // Calls the old attack_alien() behavior on objects/mobs when on harm intent.
 	var/sharp = 0
 	var/edge = 0
-	var/delay = 1 SECOND	//Default delay, overrideable
+	var/def_delay = 1 SECOND //Default delay
+	var/delay = 1 SECOND	 //Overrideable
 	var/required_limb = list(BP_L_ARM, BP_R_ARM)	//The mob must have any of these limbs to do this attack
 
 	var/deal_halloss
@@ -84,10 +85,11 @@ var/global/list/sparring_attack_cache = list()
 //Factor in attackspeed here
 /datum/unarmed_attack/proc/get_delay(var/mob/living/user)
 	if (isnum(delay) && delay > 0)
-		.= (delay / user.get_attack_speed_factor())
+		delay = def_delay
+		delay /= user.get_attack_speed_factor()
 		if (user.lying)
-			. *= lying_cooldown_factor
-		return
+			delay *= lying_cooldown_factor
+		return delay
 	return 0
 
 /datum/unarmed_attack/proc/apply_effects(var/datum/strike/strike)
