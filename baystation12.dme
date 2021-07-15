@@ -2838,6 +2838,7 @@
 #include "code\modules\shuttles\escape_pods.dm"
 #include "code\modules\shuttles\landmarks.dm"
 #include "code\modules\shuttles\shuttle.dm"
+#include "code\modules\shuttles\shuttle_area.dm"
 #include "code\modules\shuttles\shuttle_autodock.dm"
 #include "code\modules\shuttles\shuttle_console.dm"
 #include "code\modules\shuttles\shuttle_console_multi.dm"

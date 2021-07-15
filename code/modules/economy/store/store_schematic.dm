@@ -13,8 +13,8 @@
 
 /obj/item/store_schematic
 	name = "Store Schematic"
-	icon = 'icons/obj/pinpointer.dmi'
-	icon_state = "pinoff"
+	icon = 'icons/obj/economy.dmi'
+	icon_state = "schematic"
 
 	var/design_name
 	var/design_id = null

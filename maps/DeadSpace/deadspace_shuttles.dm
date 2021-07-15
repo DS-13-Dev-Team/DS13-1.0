@@ -104,6 +104,7 @@
 
 /obj/effect/shuttle_landmark/escape_pod/out
 	name = "Escaped"
+	escape = TRUE
 
 /obj/effect/shuttle_landmark/escape_pod/out/New()
 	landmark_tag = "escape_pod_[number]_out"
@@ -360,13 +361,16 @@
 	name = "Evacuation Site - Alpha #2"
 	landmark_tag = "valor_landing2"
 	base_turf = /turf/simulated/floor/plating
+	escape = TRUE
 
 /obj/effect/shuttle_landmark/kellion/landing2
 	name = "Evacuation Site - Alpha #1"
 	landmark_tag = "kellion_landing2"
 	base_turf = /turf/simulated/floor/plating
+	escape = TRUE
 
 /obj/effect/shuttle_landmark/deliverance/landing2
 	name = "Evacuation Site - Alpha #3"
 	landmark_tag = "deliverance_landing2"
 	base_turf = /turf/simulated/floor/plating
+	escape = TRUE

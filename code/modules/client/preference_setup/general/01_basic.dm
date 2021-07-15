@@ -49,13 +49,11 @@ datum/preferences
 
 	var/ID_needed = FALSE
 	if (!isnull(pref.character_id))
-		world << "ID Exists, checking validity"
 		//Here we will account for an edge case
 		//If we have an ID, but the database has been wiped and no longer contains our information....
 		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM characters	WHERE	 (character_id = [pref.character_id]);")
 		query.Execute()
 		if(!query.NextRow())
-			world << "ID is not in the database?"
 			//We're not in the database!
 			ID_needed = TRUE
 

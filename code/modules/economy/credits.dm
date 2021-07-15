@@ -13,7 +13,6 @@
 	GLOB.item_unequipped_event.register(src, src, /obj/item/weapon/spacecash/ewallet/proc/on_equip)
 
 /obj/item/weapon/spacecash/ewallet/proc/on_equip()
-	world << "Credits moved [worth]"
 	credits_changed()
 
 /obj/item/weapon/spacecash/ewallet/examine(mob/user)

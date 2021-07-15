@@ -65,7 +65,6 @@ SUBSYSTEM_DEF(database)
 
 //Mob level helper
 /mob/proc/credits_changed()
-	world << "[src] credits changed"
 	if (mind)
 		SSdatabase.credits_changed(mind)
 
@@ -235,7 +234,6 @@ SUBSYSTEM_DEF(database)
 	query.Execute()
 
 	var/total = query.RowCount()
-	world << "Total is [total]"
 	total -= free_schematics
 
 	if (total <= 0)
@@ -278,5 +276,3 @@ SUBSYSTEM_DEF(database)
 	if (length(deleted_ids))
 		command_announcement.Announce("Data Corruption detected in schematic database. [length(deleted_ids)] schematics corrupted.", new_sound = sound('sound/misc/interference.ogg', volume=25))
 
-
-	world << "Removed [dump_list(deleted_ids)]"

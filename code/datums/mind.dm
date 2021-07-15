@@ -688,8 +688,21 @@
 		return STATUS_DEAD
 
 	//TODO: Check if they're on a shuttle or an escape area
+	var/area/A = get_area(current)
+	if(A)
+		if (is_type_in_list(A, GLOB.using_map.post_round_safe_areas))
+			return STATUS_ESCAPED
+
+		//Shuttle handling
+		if (istype(A, /area/shuttle))
+			var/area/shuttle/AS = A
+			if (AS.has_escaped())
+				return STATUS_ESCAPED
+
+
 
 	return STATUS_LIVING
+
 
 
 /*

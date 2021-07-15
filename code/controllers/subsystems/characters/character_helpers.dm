@@ -30,6 +30,10 @@
 		ckey = P.client_ckey
 	else if (istype(data, /datum/mind))
 		var/datum/mind/M = data
+		if (!M.has_crew_persistence())
+			//Not allowed, must be a necro/antag/bst
+			return null
+
 		if (M.character_id)
 			return M.character_id
 		name = M.name
@@ -57,19 +61,15 @@
 	query = dbcon.NewQuery("SELECT LAST_INSERT_ID();")
 	query_result = query.Execute()
 
-	world << "Query executed, result [query_result]"
 
 	if(query.NextRow())
-		world << "Query: [dump_list(query.item)]"
 		if (output)
 			var/id = query.item[1]
 			output:character_id = id
-			world << "set character ID to [output:character_id]"
 			query = dbcon.NewQuery("INSERT INTO credit_records (character_id)\
 			VALUES('[id]');")
 			query.Execute()
 
-	crash_with("Register character [ckey]	[name]	[output]")
 
 
 
@@ -84,13 +84,14 @@
 //TODO: Insert in preferences menu
 /proc/get_character_credits(var/character_data)
 	var/id = get_character_id(character_data)
+	if (!id)
+		return 0
 
 	//Get the number of credits from the database record associated with our ID
 	var/DBQuery/query = dbcon.NewQuery("SELECT (credits) FROM (credit_records)	WHERE (character_id = [id]);")
 	query.Execute()
 
 	if(query.NextRow())
-		world << "Query: [dump_list(query.item)]"
 		return query.item[1]
 
 	return 0
@@ -102,7 +103,6 @@
 		The latter makes them eligible for end of round fees depending on their status
 */
 /proc/character_spawned(var/datum/mind/M)
-	world << "Character spawned [M]"
 	//Get their id, registering them in the process if needed
 	var/id = get_character_id(M)
 
@@ -127,7 +127,6 @@
 */
 /proc/update_lastround_credits(var/datum/mind/M, var/status)
 
-	world << "Updating lastround credits [M]"
 	if (!status)
 		status = M.get_round_status()
 
@@ -136,6 +135,10 @@
 		return	//No account setup
 
 	var/id = get_character_id(M)
+
+	if (!id)
+		return 0
+
 	var/credits_stored = credits["stored"]
 	var/credits_carried = credits["carried"]
 	var/character_status = status
@@ -166,13 +169,6 @@
 	update_lastround_credits(M)
 
 
-/*
-	Called when a character escapes
-
-	any deaths in a designated escape zone are noncanon, so we'll check for that here
-*/
-//TODO: Insert on character entering an escape zone, or end of round if theyre on a shuttle
-/proc/character_escaped(var/datum/mind/M)
 
 
 //Takes an ID or a mind. Delivers a string message to a client who is associated with it
@@ -197,3 +193,29 @@
 
 	if (C)
 		to_chat(C, message)
+
+
+
+/*
+	Is this mind/mob allowed to save stuff in the database? Used to filter out things
+*/
+/datum/mind/proc/has_crew_persistence()
+	return original.has_crew_persistence()
+
+
+/mob/proc/has_crew_persistence()
+	//No necromorphs
+	if (is_necromorph())
+		return FALSE
+
+	//No special admin characters
+	if (isbst(src))
+		return FALSE
+
+	//No ERTs
+	var/datum/antagonist/A = get_antag_data(mind.special_role)
+	if (A)
+		if ((A.flags & ANTAG_OVERRIDE_JOB))
+			return FALSE
+
+	return TRUE
