@@ -33,9 +33,10 @@
 			for(var/obj/item/weapon/gun/energy/stasis/G in S.contents)
 				for(var/obj/item/weapon/cell/C in G.contents)
 					if(C.percent() != 100)
-						C.insta_recharge()
-						to_chat(user, "Stasis Module was recharged")
-						return
+						if(user.do_skilled(1 SECOND, SKILL_DEVICES, src))
+							C.insta_recharge()
+							to_chat(user, "Stasis Module was recharged")
+							return
 					else
 						to_chat(user, "Stasis Module is already fully charged")
 						return

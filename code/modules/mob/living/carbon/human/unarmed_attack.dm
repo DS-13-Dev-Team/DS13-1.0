@@ -85,7 +85,7 @@ var/global/list/sparring_attack_cache = list()
 //Factor in attackspeed here
 /datum/unarmed_attack/proc/get_delay(var/mob/living/user)
 	if (isnum(delay) && delay > 0)
-		delay = def_delay
+		delay = def_delay //Resets value to prevent accumulation
 		delay /= user.get_attack_speed_factor()
 		if (user.lying)
 			delay *= lying_cooldown_factor
