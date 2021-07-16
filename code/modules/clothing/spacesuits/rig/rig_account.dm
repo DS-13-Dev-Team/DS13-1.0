@@ -37,7 +37,6 @@
 /obj/item/weapon/rig/proc/charge_to_rig_account(var/source, var/purpose, var/terminal_id, var/amount)
 	RIG_ACCOUNT_CREATE
 
-	world << "Charge to rig account [amount]"
 	charge_to_account(get_account().account_number, source, purpose, terminal_id, amount)
 	if (wearer)
 		wearer.credits_changed()
@@ -73,7 +72,6 @@
 	\n\
 	How many credits would you like to [(cashflow_direction == 1 ? "deposit into" : "withdraw from")] the RIG?") as num|null
 	if (!isnum(amount))
-		world << "Invalid amount"
 		return
 
 	//Now we need to sanitize
@@ -85,7 +83,6 @@
 		//Cant take more than the RIG has
 		amount = clamp(amount, 0, get_account_balance())
 
-	world << "Doing charge [amount], [cashflow_direction]"
 
 	//Alright we are ready to do this
 	charge_to_rig_account(chip, (cashflow_direction == 1 ? "Deposit" : "Withdrawal"), chip, amount*cashflow_direction)
