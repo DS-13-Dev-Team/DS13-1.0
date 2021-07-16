@@ -21,9 +21,7 @@ var/failed_old_db_connections = 0
 
 proc/setup_database_connection()
 
-	log_world("Setting up DB connection 1")
 	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
-		log_world("Setting up DB connection 2, too many failures")
 		return 0
 
 	if(!dbcon)
@@ -35,24 +33,15 @@ proc/setup_database_connection()
 	var/address = CONFIG_GET(string/address)
 	var/port = CONFIG_GET(number/port)
 
-	log_world("Setting up DB connection 3: attempting connect:\n\
-	[user]\n\
-	[pass]\n\
-	[db]\n\
-	[address]\n\
-	[port]")
+
 	var/result = dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
-	log_world("Setting up DB connection 3.5 R:[result]")
 	. = dbcon.IsConnected()
-	log_world("Setting up DB connection 4, Connected status [.]!")
 	if ( . )
 
-		log_world("Setting up DB connection 5a, Success!")
 		failed_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
 
 		return TRUE
 	else
-		log_world("Setting up DB connection 5b, fail [failed_db_connections]")
 		failed_db_connections++		//If it failed, increase the failed connections counter.
 		world.log << dbcon.ErrorMsg()
 		return FALSE

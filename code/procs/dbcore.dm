@@ -60,8 +60,6 @@ DBConnection/proc/Connect(dbi_handler=src.dbi,user_handler=src.user,password_han
 	if(!src) return 0
 	cursor_handler = src.default_cursor
 	if(!cursor_handler) cursor_handler = Default_Cursor
-	log_world("Attempting connect:\
-	|[_db_con]|[dbi_handler]|[user_handler]|[password_handler]|[cursor_handler]")
 	return _dm_db_connect(_db_con,dbi_handler,user_handler,password_handler,cursor_handler,null)
 
 DBConnection/proc/Disconnect() return _dm_db_close(_db_con)
