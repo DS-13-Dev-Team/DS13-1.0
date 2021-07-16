@@ -56,7 +56,7 @@
 /proc/register_character(var/ckey, var/name, var/output)
 
 	var/DBQuery/query = dbcon.NewQuery("INSERT INTO characters (ckey, character_name) VALUES('[ckey]','[name]');")
-	var/query_result = query.Execute()
+	query.Execute()
 
 	query = dbcon.NewQuery("SELECT LAST_INSERT_ID();")
 	query_result = query.Execute()
