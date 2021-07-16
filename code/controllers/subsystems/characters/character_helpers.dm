@@ -92,7 +92,7 @@
 	query.Execute()
 
 	if(query.NextRow())
-		return query.item[1]
+		return text2num(query.item[1])
 
 	return 0
 
@@ -163,10 +163,9 @@
 */
 /proc/character_died(var/datum/mind/M)
 
-	//TODO: Check for escape zone
 	//TODO: Check if they were already dead to prevent duplication
 	M.get_final_credits()
-	update_lastround_credits(M)
+	update_lastround_credits(M, STATUS_DEAD)
 
 
 
@@ -200,8 +199,10 @@
 	Is this mind/mob allowed to save stuff in the database? Used to filter out things
 */
 /datum/mind/proc/has_crew_persistence()
-	return original.has_crew_persistence()
+	if (isnull(cached_crew_persistence))
+		cached_crew_persistence = original.has_crew_persistence()
 
+	return cached_crew_persistence
 
 /mob/proc/has_crew_persistence()
 	//No necromorphs

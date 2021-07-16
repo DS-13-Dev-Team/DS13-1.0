@@ -77,6 +77,8 @@
 	*/
 	var/list/final_credits = null
 
+	var/cached_crew_persistence	=	null
+
 	var/list/initial_email_login = list("login" = "", "password" = "")
 
 	//used for optional self-objectives that antagonists can give themselves, which are displayed at the end of the round.
@@ -661,19 +663,12 @@
 	Called when we are in a human mob who dies
 */
 /datum/mind/proc/on_death()
-
 	//Database handling, only do this if we have a registered character ID
-	if (character_id)
+	if (has_crew_persistence())
 		//Antags don't get death penalties
 		if (special_role)
 			return
 
-		//Necromorphs don't get death penalties
-		if (is_necromorph(current))
-			return
-
-
-		get_final_credits()//Record this immediately
 		character_died(src)
 
 
@@ -736,9 +731,19 @@
 	if (!isnull(final_credits))
 		return
 
+	final_credits = list()
 	final_credits["carried"] = original.get_carried_credits()
-	final_credits["stored"] = initial_account.money
+	if (initial_account)
+		final_credits["stored"] = initial_account.money
 	//TODO: Delete excess carried credits from the mob to avoid looting?
+
+	//Lets drop a credit chip for the loot we have
+	if (final_credits["carried"] > 1)
+		var/obj/item/weapon/spacecash/ewallet/E = new (get_turf(original))
+		E.set_worth(final_credits["carried"]*FEE_DEATH)
+
+	if (initial_account)
+		initial_account.money += final_credits["carried"] * (1 - FEE_DEATH)
 
 
 //Returns true if this mind is for a character who is dead.

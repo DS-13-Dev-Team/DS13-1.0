@@ -55,7 +55,6 @@
 
 /proc/create_account(var/new_owner_name = "Default user", var/starting_funds = 0, var/obj/machinery/computer/account_database/source_db)
 
-	world << "Create account [new_owner_name],	[starting_funds]"
 	//create a new account
 	var/datum/money_account/M = new()
 	M.owner_name = new_owner_name
@@ -113,7 +112,6 @@
 /proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
 
 	var/datum/money_account/D = get_account(attempt_account_number)
-	world << "Charge to account No: [attempt_account_number]	Acc: [D]	Amount: [amount]"
 	if(!D || D.suspended)
 		return 0
 
