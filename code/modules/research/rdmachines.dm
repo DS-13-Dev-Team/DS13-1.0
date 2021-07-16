@@ -10,6 +10,10 @@ var/list/default_material_composition = list("steel" = 0, MATERIAL_GLASS = 0, MA
 	anchored = 1
 	use_power = 1
 	var/busy = 0
+	var/hacked = 0
+	var/disabled = 0
+	var/shocked = 0
+	var/datum/wires/rnd/wires = null
 	var/obj/machinery/computer/rdconsole/linked_console
 
 	var/list/materials = list()

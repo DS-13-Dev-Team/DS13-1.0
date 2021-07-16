@@ -279,11 +279,11 @@
 			var/obj/machinery/mecha_part_fabricator/input_machine = input_device
 			incoming_files = input_machine.files
 
-		if(!incoming_files || !incoming_files.known_tech || !incoming_files.known_tech.len)
+		if(!incoming_files || !incoming_files.known_designs || !incoming_files.known_designs.len)
 			to_chat(user, "<span class='warning'>Memory failure. There is nothing accessible stored on this terminal.</span>")
 		else
 			// Maybe consider a way to drop all your data into a target repo in the future.
-			if(load_data(incoming_files.known_tech))
+			if(load_data(incoming_files.known_designs))
 				to_chat(user, "<font color='blue'>Download successful; local and remote repositories synchronized.</font>")
 			else
 				to_chat(user, "<span class='warning'>Scan complete. There is nothing useful stored on this terminal.</span>")

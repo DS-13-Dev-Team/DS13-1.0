@@ -28,9 +28,6 @@ other types of metals and chemistry for reagents).
 	var/category = "Misc"			//Used to sort designs
 	var/time = 0					//How many ticks it requires to build. If 0, calculated from the amount of materials used.
 
-	var/list/req_tech = null		//IDs of that techs the object originated from and the minimum level requirements.
-									//Use null to make design undiscoverable in R&D.
-
 	var/list/ui_data = null			//Pre-generated UI data, to be sent into NanoUI/TGUI interfaces.
 
 	// An MPC file containing this design. You can use it directly, but only if it doesn't interact with the rest of MPC system. If it does, use copies.
@@ -43,6 +40,7 @@ other types of metals and chemistry for reagents).
 	//When this design is bought at the store, can we do a makeover/transfer to equip it?
 	//Only true for RIGs and rig modules
 	var/store_transfer	= FALSE
+	var/starts_unlocked = FALSE     //If true does not require any technologies and unlocked from the start
 
 //These procs are used in subtypes for assigning names and descriptions dynamically
 /datum/design/proc/AssembleDesignInfo()

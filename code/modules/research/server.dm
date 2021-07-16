@@ -16,6 +16,7 @@
 
 /obj/machinery/r_n_d/server/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
+	GLOB.rnd_server_list += src
 	component_parts = list()
 	component_parts += new /obj/item/weapon/circuitboard/rdserver(src)
 	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
@@ -24,6 +25,7 @@
 	RefreshParts()
 
 /obj/machinery/r_n_d/server/Destroy()
+	GLOB.rnd_server_list -= src
 	griefProtection()
 	.=..()
 
@@ -60,11 +62,7 @@
 			health = max(0, health - 1)
 	if(health <= 0)
 		griefProtection() //I dont like putting this in process() but it's the best I can do without re-writing a chunk of rd servers.
-		files.known_designs = list()
-		for(var/datum/tech/T in files.known_tech)
-			if(prob(1))
-				T.level--
-		files.RefreshResearch()
+		files.forget_random_technology()
 	if(delay)
 		delay--
 	else
@@ -82,11 +80,7 @@
 //Backup files to centcomm to help admins recover data after greifer attacks
 /obj/machinery/r_n_d/server/proc/griefProtection()
 	for(var/obj/machinery/r_n_d/server/centcom/C in SSmachines.machinery)
-		for(var/datum/tech/T in files.known_tech)
-			C.files.AddTech2Known(T)
-		for(var/datum/design/D in files.known_designs)
-			C.files.AddDesign2Known(D)
-		C.files.RefreshResearch()
+		C.files.download_from(files)
 
 /obj/machinery/r_n_d/server/proc/produce_heat()
 	if(!produces_heat)
@@ -213,25 +207,15 @@
 	else if(href_list["reset_tech"])
 		var/choice = alert(user, "Technology Data Rest", "Are you sure you want to reset this technology to its default data? Data lost cannot be recovered.", "Continue", "Cancel")
 		if(choice == "Continue" && CanUseTopic(user, state))
-			for(var/datum/tech/T in temp_server.files.known_tech)
-				if(T.id == href_list["reset_tech"])
-					T.level = 1
-					break
-		temp_server.files.RefreshResearch()
-		. = TOPIC_REFRESH
+			temp_server.files.forget_all(href_list["reset_tech"])
 
-	else if(href_list["reset_design"])
-		var/choice = alert(user, "Design Data Deletion", "Are you sure you want to delete this design? If you still have the prerequisites for the design, it'll reset to its base reliability. Data lost cannot be recovered.", "Continue", "Cancel")
+	else if(href_list["reset_techology"])
+		var/choice = alert("Techology Deletion", "Are you sure you want to delete this techology? Data lost cannot be recovered.", "Continue", "Cancel")
+
 		if(choice == "Continue" && CanUseTopic(user, state))
-			for(var/datum/design/D in temp_server.files.known_designs)
-				if(D.id == href_list["reset_design"])
-					temp_server.files.known_designs -= D
-					break
-		temp_server.files.RefreshResearch()
-		. = TOPIC_REFRESH
+			temp_server.files.forget_techology( temp_server.files.researched_tech[href_list["reset_design"]] )
 
-	if(. == TOPIC_REFRESH)
-		attack_hand(user)
+	updateUsrDialog()
 
 /obj/machinery/computer/rdservercontrol/attack_hand(mob/user as mob)
 	if(stat & (BROKEN|NOPOWER))
@@ -274,14 +258,16 @@
 
 		if(2) //Data Management menu
 			dat += "[temp_server.name] Data ManagementP<BR><BR>"
-			dat += "Known Technologies<BR>"
-			for(var/datum/tech/T in temp_server.files.known_tech)
+			dat += "Known Tech Trees<BR>"
+			for(var/tech_tree in temp_server.files.tech_trees)
+				var/datum/tech/T = temp_server.files.tech_trees[tech_tree]
 				dat += "* [T.name] "
 				dat += "<A href='?src=\ref[src];reset_tech=[T.id]'>(Reset)</A><BR>" //FYI, these are all strings.
-			dat += "Known Designs<BR>"
-			for(var/datum/design/D in temp_server.files.known_designs)
-				dat += "* [D.name] "
-				dat += "<A href='?src=\ref[src];reset_design=[D.id]'>(Delete)</A><BR>"
+			dat += "Known Technologies<BR>"
+			for(var/techology_id in temp_server.files.researched_tech)
+				var/datum/technology/T = temp_server.files.researched_tech[techology_id]
+				dat += "* [T.name] "
+				dat += "<A href='?src=\ref[src];reset_techology=[T.id]'>(Delete)</A><BR>"
 			dat += "<HR><A href='?src=\ref[src];main=1'>Main Menu</A>"
 
 		if(3) //Server Data Transfer

@@ -127,7 +127,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	newchip.forceMove(src)
 	chip = newchip
 
-	update_open_uis()
+	nanomanager.update_open_uis(src)
 
 /obj/machinery/store/proc/eject_chip()
 	chip.forceMove(loc)
@@ -183,7 +183,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	//Things may have just been removed from the deposit box
 	deposit_box.update_ui_data()
-	update_open_uis()
+	nanomanager.update_open_uis(src)
 
 	sleep(stall_time*2)
 	open()
