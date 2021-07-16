@@ -59,7 +59,7 @@
 	query.Execute()
 
 	query = dbcon.NewQuery("SELECT LAST_INSERT_ID();")
-	query_result = query.Execute()
+	query.Execute()
 
 
 	if(query.NextRow())
