@@ -18,6 +18,9 @@
 */
 /proc/get_character_id(var/data)
 
+	if(!dbcon || !dbcon.IsConnected())
+		return null
+
 	//Data used for registering, if we need to
 	var/name
 	var/ckey
@@ -41,6 +44,7 @@
 	else
 		//Invalid type, no good
 		return null
+
 
 
 	//If we get here, the character isn't registered, do so

@@ -84,6 +84,9 @@ SUBSYSTEM_DEF(database)
 */
 /datum/controller/subsystem/database/proc/process_pending_credits()
 
+	if(!dbcon || !dbcon.IsConnected())
+		return null
+
 	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM credit_lastround")
 	query.Execute()
 
@@ -174,27 +177,29 @@ SUBSYSTEM_DEF(database)
 		if (!(D.build_type & STORE))
 			designs -= id
 
+	if(dbcon && dbcon.IsConnected())
 
-	//Now lets get the list of all persisting schematics in the database
-	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM store_schematics;")
-	query.Execute()
 
-	//We loop through the db results and subtract any design in it, from the all-list.
-	while (query.NextRow())
-		var/schematic_id = query.item[1]
-		if (!(schematic_id in designs))
-			//Garbage ID, remove from database
-			var/DBQuery/Q2 = dbcon.NewQuery("DELETE FROM store_schematics WHERE store_schematic=\"[schematic_id]\";")
-			Q2.Execute()
-			continue
+		//Now lets get the list of all persisting schematics in the database
+		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM store_schematics;")
+		query.Execute()
 
-		designs -= schematic_id
-		SSdatabase.known_designs += schematic_id
+		//We loop through the db results and subtract any design in it, from the all-list.
+		while (query.NextRow())
+			var/schematic_id = query.item[1]
+			if (!(schematic_id in designs))
+				//Garbage ID, remove from database
+				var/DBQuery/Q2 = dbcon.NewQuery("DELETE FROM store_schematics WHERE store_schematic=\"[schematic_id]\";")
+				Q2.Execute()
+				continue
 
-	//Now designs only contains things which aren't in the DB
+			designs -= schematic_id
+			SSdatabase.known_designs += schematic_id
 
-	//Cache this
-	unknown_designs	=	designs
+		//Now designs only contains things which aren't in the DB
+
+		//Cache this
+		unknown_designs	=	designs
 
 
 	//And now reload the database for individual stores
@@ -203,6 +208,9 @@ SUBSYSTEM_DEF(database)
 
 
 /datum/controller/subsystem/database/proc/upload_design(var/id)
+
+	if(!dbcon || !dbcon.IsConnected())
+		return null
 
 	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM store_schematics	WHERE (store_schematic = \"[id]\");")
 	query.Execute()
@@ -229,6 +237,10 @@ SUBSYSTEM_DEF(database)
 	return TRUE
 
 /datum/controller/subsystem/database/proc/handle_endround_schematics()
+
+	if(!dbcon || !dbcon.IsConnected())
+		return null
+
 	//Now lets get the list of all persisting schematics in the database
 	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM store_schematics	ORDER BY upload_date ASC;")
 	query.Execute()
