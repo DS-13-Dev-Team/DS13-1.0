@@ -34,7 +34,7 @@ proc/setup_database_connection()
 	var/port = CONFIG_GET(number/port)
 
 
-	var/result = dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
+	dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
 	. = dbcon.IsConnected()
 	if ( . )
 
