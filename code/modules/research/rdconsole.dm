@@ -132,13 +132,12 @@ cause a ton of data to be lost, an admin can go send it back.
 		//The construction/deconstruction of the console code.
 		..()
 
-	nanomanager.update_open_uis(src)
+	update_open_uis()
 
 /obj/machinery/computer/rdconsole/attack_hand(mob/user as mob)
 	if(..())
-		return TRUE
+		return
 
-	user.set_machine(src)
 	ui_interact(user)
 
 /obj/machinery/computer/rdconsole/emp_act(var/remaining_charges, var/mob/user)
@@ -148,10 +147,9 @@ cause a ton of data to be lost, an admin can go send it back.
 		to_chat(user, "<span class='notice'>You you disable the security protocols.</span>")
 		return 1
 
-/obj/machinery/computer/rdconsole/CanUseTopic(var/mob/user, var/datum/topic_state/state, var/href_list)
-	. = ..()
-	if(!.)
-		return
+/obj/machinery/computer/rdconsole/Topic(href, href_list) // Oh boy here we go.
+	if(..())
+		return TRUE
 
 	if(href_list["select_tech_tree"])
 		var/new_select_tech_tree = href_list["select_tech_tree"]
@@ -191,7 +189,7 @@ cause a ton of data to be lost, an admin can go send it back.
 			screen = "working"
 			griefProtection() //Putting this here because I dont trust the sync process
 			addtimer(CALLBACK(src, .proc/sync_tech), 3 SECONDS)
-			nanomanager.update_open_uis(src)
+			update_open_uis()
 	if(href_list["togglesync"]) //Prevents the console from being synced by other consoles. Can still send data.
 		sync = !sync
 	if(href_list["select_category"])
@@ -279,7 +277,7 @@ cause a ton of data to be lost, an admin can go send it back.
 			files = new /datum/research(src)
 			spawn(20)
 				screen = "main"
-				nanomanager.update_open_uis(src)
+				update_open_uis()
 	if(href_list["lock"]) //Lock the console from use by anyone without tox access.
 		if(allowed(usr) || emagged)
 			screen = "locked"
@@ -296,7 +294,7 @@ cause a ton of data to be lost, an admin can go send it back.
 /obj/machinery/computer/rdconsole/proc/find_devices()
 	SyncRDevices()
 	screen = "main"
-	nanomanager.update_open_uis(src)
+	update_open_uis()
 
 
 /obj/machinery/computer/rdconsole/proc/sync_tech()
@@ -313,7 +311,7 @@ cause a ton of data to be lost, an admin can go send it back.
 		if(!istype(S, /obj/machinery/r_n_d/server/centcom) && server_processed)
 			S.produce_heat(100)
 	screen = "main"
-	nanomanager.update_open_uis(src)
+	update_open_uis()
 
 /obj/machinery/computer/rdconsole/proc/get_protolathe_data()
 	var/list/protolathe_list = list(
@@ -321,20 +319,20 @@ cause a ton of data to be lost, an admin can go send it back.
 		"total_materials" =                  linked_lathe.TotalMaterials(),
 	)
 	var/list/material_list = list()
-	for(var/M in linked_lathe.loaded_materials)
+	for(var/M in linked_lathe.materials)
 		material_list += list(list(
 			"id" =             M,
-			"name" =           linked_lathe.loaded_materials[M].name,
-			"ammount" =        linked_lathe.loaded_materials[M].amount,
-			"can_eject_one" =  linked_lathe.loaded_materials[M].amount >= linked_lathe.loaded_materials[M].sheet_size,
-			"can_eject_five" = linked_lathe.loaded_materials[M].amount >= (linked_lathe.loaded_materials[M].sheet_size * 5),
+			"name" =           linked_lathe.materials[M].name,
+			"ammount" =        linked_lathe.materials[M].amount,
+			"can_eject_one" =  linked_lathe.materials[M].amount >= linked_lathe.materials[M].sheet_size,
+			"can_eject_five" = linked_lathe.materials[M].amount >= (linked_lathe.materials[M].sheet_size * 5),
 		))
 	protolathe_list["materials"] = material_list
 	return protolathe_list
 
 /obj/machinery/computer/rdconsole/proc/get_imprinter_data()
 	var/list/imprinter_list = list(
-		"max_material_storage" =             linked_imprinter.max_material_amount,
+		"max_material_storage" =             linked_imprinter.max_material_storage,
 		"total_materials" =                  linked_imprinter.TotalMaterials(),
 		"total_volume" =                     linked_imprinter.reagents.total_volume,
 		"maximum_volume" =                   linked_imprinter.reagents.maximum_volume,
@@ -347,13 +345,13 @@ cause a ton of data to be lost, an admin can go send it back.
 		))
 	imprinter_list["reagents"] = printer_reagent_list
 	var/list/material_list = list()
-	for(var/M in linked_imprinter.loaded_materials)
+	for(var/M in linked_imprinter.materials)
 		material_list += list(list(
 			"id" =             M,
-			"name" =           linked_imprinter.loaded_materials[M].name,
-			"ammount" =        linked_imprinter.loaded_materials[M].amount,
-			"can_eject_one" =  linked_imprinter.loaded_materials[M].amount >= linked_imprinter.loaded_materials[M].sheet_size,
-			"can_eject_five" = linked_imprinter.loaded_materials[M].amount >= (linked_imprinter.loaded_materials[M].sheet_size * 5),
+			"name" =           linked_imprinter.materials[M].name,
+			"ammount" =        linked_imprinter.materials[M].amount,
+			"can_eject_one" =  linked_imprinter.materials[M].amount >= linked_imprinter.materials[M].sheet_size,
+			"can_eject_five" = linked_imprinter.materials[M].amount >= (linked_imprinter.materials[M].sheet_size * 5),
 		))
 	imprinter_list["materials"] = material_list
 	return imprinter_list
@@ -436,9 +434,9 @@ cause a ton of data to be lost, an admin can go send it back.
 
 		if(linked_destroy)
 			if(linked_destroy.loaded_item)
-				var/list/tech_names = list("materials" = "Materials", "engineering" = "Engineering", "phorontech" = "Phoron", "powerstorage" = "Power", "bluespace" = "Blue-space", "biotech" = "Biotech", "combat" = "Combat", "magnets" = "Electromagnetic", "programming" = "Programming", "syndicate" = "Illegal")
+				var/list/tech_names = list(TECH_MATERIAL = "Materials", TECH_ENGINEERING = "Engineering", TECH_PHORON = "Phoron", TECH_POWER = "Power", TECH_BLUESPACE = "Blue-space", TECH_BIO = "Biotech", TECH_COMBAT = "Combat", TECH_MAGNET = "Electromagnetic", TECH_DATA = "Programming", TECH_ILLEGAL = "Illegal", TECH_NECRO = "Marker", TECH_ROBOT = "Roboticist")
 
-				var/list/temp_tech = linked_destroy.ConvertReqString2List(linked_destroy.loaded_item.origin_tech)
+				var/list/temp_tech = linked_destroy.loaded_item.origin_tech
 				var/list/item_data = list()
 
 				for(var/T in temp_tech)
@@ -630,7 +628,7 @@ cause a ton of data to be lost, an admin can go send it back.
 
 			data["selected_technology"] = technology_data
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data)
+	ui = SSnano.try_update_ui(user, src, ui_key, ui, data)
 	if (!ui)
 		ui = new(user, src, ui_key, "rdconsole.tmpl", "R&D Console", 1000, 700)
 

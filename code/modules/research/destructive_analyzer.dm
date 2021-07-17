@@ -64,7 +64,7 @@
 		to_chat(user, "<span class='notice'>You add the [O.name] to the machine!</span>")
 		flick("d_analyzer_la", src)
 		if(linked_console)
-			nanomanager.update_open_uis(linked_console)
+			linked_console.update_open_uis()
 		addtimer(CALLBACK(src, .proc/unbusy), 10)
 		return 1
 	return
@@ -112,7 +112,7 @@
 	use_power(250)
 	if(linked_console)
 		linked_console.screen = "main"
-		nanomanager.update_open_uis(linked_console)
+		linked_console.update_open_uis()
 
 /obj/machinery/r_n_d/destructive_analyzer/eject_item()
 	if(busy)

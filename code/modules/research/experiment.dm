@@ -4,16 +4,17 @@
 	var/saved_best_explosion = 0
 
 	var/list/tech_points = list(
-		"materials" = 200,
-		"engineering" = 250,
-		"phorontech" = 500,
-		"powerstorage" = 300,
-		"bluespace" = 1000,
-		"biotech" = 300,
-		"combat" = 500,
-		"magnets" = 350,
-		"programming" = 400,
-		"syndicate" = 5000,
+		TECH_MATERIAL = 200,
+		TECH_ENGINEERING = 250,
+		TECH_PHORON = 500,
+		TECH_POWER = 300,
+		TECH_BLUESPACE = 1000,
+		TECH_BIO = 300,
+		TECH_COMBAT = 500,
+		TECH_MAGNET = 350,
+		TECH_DATA = 400,
+		TECH_ILLEGAL = 2000,
+		TECH_NECRO = 4000
 	)
 
 	// So we don't give points for researching non-artifact item
@@ -35,28 +36,21 @@
 	var/list/saved_symptoms = list()
 	var/list/saved_slimecores = list()
 
-/datum/experiment_data/proc/ConvertReqString2List(list/source_list)
-	var/list/temp_list = params2list(source_list)
-	for(var/O in temp_list)
-		temp_list[O] = text2num(temp_list[O])
-	return temp_list
-
 /datum/experiment_data/proc/get_object_research_value(obj/item/I, ignoreRepeat = FALSE)
-	var/list/temp_tech = ConvertReqString2List(I.origin_tech)
 	var/item_tech_points = 0
 	var/has_new_tech = FALSE
 	var/is_board = istype(I, /obj/item/weapon/circuitboard)
 
-	for(var/T in temp_tech)
+	for(var/T in I.origin_tech)
 		if(tech_points[T])
 			if(ignoreRepeat)
-				item_tech_points += temp_tech[T] * tech_points[T]
+				item_tech_points += I.origin_tech[T] * tech_points[T]
 			else
-				if(saved_tech_levels[T] && (temp_tech[T] in saved_tech_levels[T])) // You only get a fraction of points if you researched items with this level already
+				if(saved_tech_levels[T] && (I.origin_tech in saved_tech_levels[T])) // You only get a fraction of points if you researched items with this level already
 					if(!is_board) // Boards are cheap to make so we don't give any points for repeats
-						item_tech_points += temp_tech[T] * tech_points[T] * 0.1
+						item_tech_points += I.origin_tech[T] * tech_points[T] * 0.1
 				else
-					item_tech_points += temp_tech[T] * tech_points[T]
+					item_tech_points += I.origin_tech[T] * tech_points[T]
 					has_new_tech = TRUE
 
 	if(!ignoreRepeat && !has_new_tech) // We are deconstucting the same items, cut the reward really hard
@@ -65,14 +59,13 @@
 	return round(item_tech_points)
 
 /datum/experiment_data/proc/do_research_object(obj/item/I)
-	var/list/temp_tech = ConvertReqString2List(I.origin_tech)
 
-	for(var/T in temp_tech)
+	for(var/T in I.origin_tech)
 		if(!saved_tech_levels[T])
 			saved_tech_levels[T] = list()
 
-		if(!(temp_tech[T] in saved_tech_levels[T]))
-			saved_tech_levels[T] += temp_tech[T]
+		if(!(I.origin_tech in saved_tech_levels[T]))
+			saved_tech_levels[T] += I.origin_tech
 
 // Returns ammount of research points received
 /*/datum/experiment_data/proc/read_science_tool(obj/item/device/science_tool/I)
