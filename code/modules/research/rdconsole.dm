@@ -53,8 +53,8 @@ cause a ton of data to be lost, an admin can go send it back.
 /obj/machinery/computer/rdconsole/proc/CallMaterialName(var/ID)
 	var/return_name = ID
 	switch(return_name)
-		if("metal")
-			return_name = "Metal"
+		if(MATERIAL_STEEL)
+			return_name = "Steel"
 		if(MATERIAL_GLASS)
 			return_name = MATERIAL_GLASS
 		if(MATERIAL_GOLD)
@@ -192,12 +192,6 @@ cause a ton of data to be lost, an admin can go send it back.
 			update_open_uis()
 	if(href_list["togglesync"]) //Prevents the console from being synced by other consoles. Can still send data.
 		sync = !sync
-	if(href_list["select_category"])
-		var/what_cat = href_list["select_category"]
-		if(screen == "protolathe")
-			selected_protolathe_category = what_cat
-		if(screen == "circuit_imprinter")
-			selected_imprinter_category = what_cat
 	if(href_list["build"] && screen == "protolathe" && linked_lathe) //Causes the Protolathe to build something.
 		var/amount=text2num(href_list["amount"])
 		var/datum/design/being_built = null
@@ -215,6 +209,14 @@ cause a ton of data to be lost, an admin can go send it back.
 				break
 		if(being_built)
 			linked_imprinter.queue_design(being_built)
+	if(href_list["select_category"])
+		var/what_cat
+		if(screen == "protolathe")
+			what_cat = input("Which category do you wish to display?") as null|anything in files.design_categories_protolathe+"All"
+			selected_protolathe_category = what_cat
+		if(screen == "circuit_imprinter")
+			what_cat = input("Which category do you wish to display?") as null|anything in files.design_categories_imprinter+"All"
+			selected_imprinter_category = what_cat
 	if(href_list["search"])
 		var/input = input(usr, "Enter text to search", "Searching") as null|text
 		search_text = input

@@ -89,17 +89,16 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 		return
 
 	var/amount = round(input("How many sheets do you want to add?") as num)
-	if(amount < 0)
-		amount = 0
-	if(amount == 0)
+	if(amount <= 0)
 		return
+
 	if(amount > stack.get_amount())
 		amount = min(stack.get_amount(), round((max_material_storage-TotalMaterials())/stack.perunit))
 
 	busy = 1
 	use_power(max(1000, (3750*amount/10)))
-	spawn(16)
-		if(stack.get_amount() >= amount)
+	if(stack.get_amount() >= amount)
+		if(do_after(usr, 16, src))
 			to_chat(user, "You add [amount] sheets to the [src].")
 			for(var/M in materials)
 				if(stack.stacktype == materials[M].sheet_type)

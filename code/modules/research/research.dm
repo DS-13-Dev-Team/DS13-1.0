@@ -168,11 +168,9 @@ The tech datums are the actual "tech trees" that you improve through researching
 
 	if(D.category)
 		if(D.build_type == PROTOLATHE)
-			for(var/cat in D.category)
-				design_categories_protolathe |= cat
+			design_categories_protolathe |= D.category
 		else if(D.build_type == IMPRINTER)
-			for(var/cat in D.category)
-				design_categories_imprinter |= cat
+			design_categories_imprinter |= D.category
 	else
 		if(D.build_type == PROTOLATHE)
 			design_categories_protolathe |= "Unspecified"
@@ -355,22 +353,6 @@ The tech datums are the actual "tech trees" that you improve through researching
 
 	unlocks_designs = list()
 
-/datum/technology/ice_and_fire
-	name = "Ice And Fire"
-	desc = "Ice And Fire"
-	id = "ice_and_fire"
-	tech_type = TECH_ENGINEERING
-
-	x = 0.2
-	y = 0.6
-	icon = "spaceheater"
-
-	required_technologies = list("monitoring")
-	required_tech_levels = list()
-	cost = 500
-
-	unlocks_designs = list()
-
 /datum/technology/adv_engineering
 	name = "Advanced Engineering"
 	desc = "Advanced Engineering"
@@ -489,13 +471,29 @@ The tech datums are the actual "tech trees" that you improve through researching
 	id = "adv_parts"
 	tech_type = TECH_ENGINEERING
 
-	x = 0.7
+	x = 0.1
 	y = 0.5
 	icon = "advmatterbin"
 
-	required_technologies = list("adv_handheld", "advanced_mining")
+	required_technologies = list()
 	required_tech_levels = list()
 	cost = 1000
+
+	unlocks_designs = list("adv_capacitor", "nano_mani", "adv_matter_bin", "high_micro_laser", "adv_sensor")
+
+/datum/technology/super_parts
+	name = "Super Parts"
+	desc = "Super Parts"
+	id = "super_parts"
+	tech_type = TECH_ENGINEERING
+
+	x = 0.2
+	y = 0.5
+	icon = "supermatterbin"
+
+	required_technologies = list("adv_parts")
+	required_tech_levels = list()
+	cost = 2000
 
 	unlocks_designs = list()
 
@@ -505,11 +503,11 @@ The tech datums are the actual "tech trees" that you improve through researching
 	id = "ultra_parts"
 	tech_type = TECH_ENGINEERING
 
-	x = 0.8
+	x = 0.3
 	y = 0.5
-	icon = "supermatterbin"
+	icon = "bluespacematterbin"
 
-	required_technologies = list("adv_parts")
+	required_technologies = list("super_parts")
 	required_tech_levels = list()
 	cost = 2000
 
@@ -525,25 +523,9 @@ The tech datums are the actual "tech trees" that you improve through researching
 	y = 0.3
 	icon = "telescience"
 
-	required_technologies = list("ultra_parts")
+	required_technologies = list()
 	required_tech_levels = list()
 	cost = 3000
-
-	unlocks_designs = list()
-
-/datum/technology/bluespace_parts
-	name = "Bluespace Parts"
-	desc = "Bluespace Parts"
-	id = "bluespace_parts"
-	tech_type = TECH_ENGINEERING
-
-	x = 0.9
-	y = 0.5
-	icon = "bluespacematterbin"
-
-	required_technologies = list("ultra_parts")
-	required_tech_levels = list()
-	cost = 2500
 
 	unlocks_designs = list()
 
@@ -557,7 +539,7 @@ The tech datums are the actual "tech trees" that you improve through researching
 	y = 0.7
 	icon = "rped"
 
-	required_technologies = list("ultra_parts")
+	required_technologies = list()
 	required_tech_levels = list()
 	cost = 1500
 

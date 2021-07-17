@@ -44,13 +44,14 @@
 	component_parts += new /obj/item/weapon/reagent_containers/glass/beaker(src)
 	RefreshParts()
 
-	materials[MATERIAL_STEEL]    = new /datum/rnd_material("Steel",    /obj/item/stack/material/steel)
-	materials[MATERIAL_GLASS]    = new /datum/rnd_material("Glass",    /obj/item/stack/material/glass)
-	materials[MATERIAL_SILVER]   = new /datum/rnd_material("Silver",   /obj/item/stack/material/silver)
-	materials[MATERIAL_GOLD]     = new /datum/rnd_material("Gold",     /obj/item/stack/material/gold)
-	materials[MATERIAL_DIAMOND]  = new /datum/rnd_material("Diamond",  /obj/item/stack/material/diamond)
-	materials[MATERIAL_URANIUM]  = new /datum/rnd_material("Uranium",  /obj/item/stack/material/uranium)
-	materials[MATERIAL_PHORON]   = new /datum/rnd_material("Phoron",   /obj/item/stack/material/phoron)
+	materials[MATERIAL_STEEL]	= new /datum/rnd_material("Steel",    /obj/item/stack/material/steel)
+	materials[MATERIAL_GLASS]	= new /datum/rnd_material("Glass",    /obj/item/stack/material/glass)
+	materials[MATERIAL_PLASTIC]	= new /datum/rnd_material("Plastic",  /obj/item/stack/material/plastic)
+	materials[MATERIAL_SILVER]	= new /datum/rnd_material("Silver",   /obj/item/stack/material/silver)
+	materials[MATERIAL_GOLD]	= new /datum/rnd_material("Gold",     /obj/item/stack/material/gold)
+	materials[MATERIAL_DIAMOND]	= new /datum/rnd_material("Diamond",  /obj/item/stack/material/diamond)
+	materials[MATERIAL_URANIUM]	= new /datum/rnd_material("Uranium",  /obj/item/stack/material/uranium)
+	materials[MATERIAL_PHORON]	= new /datum/rnd_material("Phoron",   /obj/item/stack/material/phoron)
 
 /obj/machinery/r_n_d/protolathe/TotalMaterials() //returns the total of all the stored materials. Makes code neater.
 	var/am = 0
@@ -62,7 +63,7 @@
 	var/T = 0
 	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
 		T += M.rating
-	max_material_storage = T * 75000
+	max_material_storage = T * 100000
 	T = 0
 	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
 		T += (M.rating/3)
@@ -113,9 +114,7 @@
 	var/amount = round(input("How many sheets do you want to add?") as num)//No decimals
 	if(!O)
 		return
-	if(amount < 0)//No negative numbers
-		amount = 0
-	if(amount == 0)
+	if(amount <= 0)
 		return
 	if(amount > stack.get_amount())
 		amount = stack.get_amount()
@@ -126,18 +125,19 @@
 
 	to_chat(user, "<span class='notice'>You add [amount] sheets to the [name].</span>")
 
-	overlays += "protolathe_[stack.name]"
-	sleep(10)
-	overlays -= "protolathe_[stack.name]"
+	overlays += "protolathe_n"
+	spawn(10)
+		overlays -= "protolathe_n"
 
 	use_power(max(1000, (3750 * amount / 10)))
 
 	if(stack.get_amount() >= amount)
-		for(var/M in materials)
-			if(stack.stacktype == materials[M].sheet_type)
-				if(stack.use(amount))
-					materials[M].amount += amount * stack.perunit
-					break
+		if(do_after(user, 16,src))
+			for(var/M in materials)
+				if(stack.stacktype == materials[M].sheet_type)
+					if(stack.use(amount))
+						materials[M].amount += amount * stack.perunit
+						break
 
 	busy = FALSE
 	if(linked_console)
