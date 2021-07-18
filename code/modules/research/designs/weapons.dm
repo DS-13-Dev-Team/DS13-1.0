@@ -1,5 +1,5 @@
 /datum/design/item/weapon
-	category = "Weapons"
+	category = list("Weapons")
 	build_type = PROTOLATHE | STORE
 	price = 7000
 	materials = list(MATERIAL_STEEL = 30000, MATERIAL_GLASS = 2000, MATERIAL_SILVER = 4000, MATERIAL_URANIUM = 4000)

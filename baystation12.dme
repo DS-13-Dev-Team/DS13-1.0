@@ -2795,6 +2795,7 @@
 #include "code\modules\research\research.dm"
 #include "code\modules\research\server.dm"
 #include "code\modules\research\stock_parts.dm"
+#include "code\modules\research\tech_tree.dm"
 #include "code\modules\research\designs\design_circuit.dm"
 #include "code\modules\research\designs\design_rig.dm"
 #include "code\modules\research\designs\design_rig_module.dm"
