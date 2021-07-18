@@ -103,8 +103,9 @@
 	return pick(tiles)
 
 
-
+/*
 /client/verb/conetest()
 	var/angle = 360//rand(1, 360)
 
 	get_view_cone(get_turf(mob), Vector2.FromDir(SOUTH), 3, angle)
+*/
