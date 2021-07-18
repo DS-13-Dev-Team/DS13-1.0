@@ -183,7 +183,11 @@
 		return
 
 	gun.Fire(target,holder.wearer)
+	on_shot()
 	return 1
+
+/obj/item/rig_module/mounted/proc/on_shot()
+	return
 
 /obj/item/rig_module/mounted/egun
 

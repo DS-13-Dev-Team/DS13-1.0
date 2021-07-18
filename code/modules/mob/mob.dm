@@ -1137,6 +1137,3 @@
 */
 /mob/proc/update_verbs()
 	return
-
-/mob/stasis_act()
-	set_extension(src, /datum/extension/stasis_effect)

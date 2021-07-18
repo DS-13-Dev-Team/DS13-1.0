@@ -487,7 +487,7 @@ default behaviour is:
 
 //damage/heal the mob ears and adjust the deaf amount
 /mob/living/adjust_ear_damage(var/damage, var/deaf)
-	
+
 	ear_damage = max(0, ear_damage + damage)
 	ear_deaf = max(0, ear_deaf + deaf)
 
@@ -594,3 +594,6 @@ default behaviour is:
 
 /mob/living/is_organic()
 	return TRUE
+
+/mob/living/stasis_act()
+	set_extension(src, /datum/extension/stasis_effect)

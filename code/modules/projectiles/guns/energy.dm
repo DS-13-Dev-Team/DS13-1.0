@@ -102,6 +102,7 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 				return 0
 
 		power_supply.give(charge_cost) //... to recharge the shot
+		on_shot_recharged()
 		update_icon()
 	return 1
 
@@ -160,3 +161,6 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 
 /obj/item/weapon/gun/energy/proc/get_remaining_percent()
 	return power_supply.percent()
+
+/obj/item/weapon/gun/energy/proc/on_shot_recharged()
+	return

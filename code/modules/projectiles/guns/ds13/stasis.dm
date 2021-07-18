@@ -18,6 +18,9 @@
 	recharge_time = 12
 	self_recharge = 1
 
+/obj/item/weapon/gun/energy/stasis/on_shot_recharged()
+	loc.update_stas_charge()
+
 /obj/item/projectile/bullet/stasis
 	name = "stasis blast"
 	icon_state = "stasis_blast"
@@ -29,15 +32,14 @@
 	nodamage = 1				//This dog doesn't bite, it hurts differently
 	grippable = FALSE
 	projectile_type = /obj/item/projectile/bullet/stasis
+	muzzle_type = ""
 
 /obj/item/projectile/bullet/stasis/on_impact(var/atom/A)
 	var/impact_zone = trange(2, A)
 	for(var/t in impact_zone)
 		var/turf/T = t
-		for(var/mob/L in T)
+		for(var/mob/living/L in T)
 			L.stasis_act()
-		for(var/obj/O in T)
-			O.stasis_act()
 
 /datum/extension/stasis_effect
 	name = "Stasis Effect"
@@ -50,12 +52,13 @@
 	var/attack_slowdown = -0.5
 	var/slowdown = 0.5
 	var/mob/M
-	var/stasis_duration = 50 //1 = 0.1 second
+	var/stasis_duration = 5 //1 = 1 second
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.5, STATMOD_ATTACK_SPEED = -0.5)
 
 /datum/extension/stasis_effect/New(var/datum/holder)
 	.=..()
 	M = holder
+	stasis_duration = 5
 	var/twitcher = get_extension(M, /datum/extension/twitch)
 	var/stasis = get_extension(M, /datum/extension/stasis_effect)
 	if(twitcher)
@@ -83,9 +86,12 @@
 		return attack_slowdown
 
 /datum/extension/stasis_effect/Process()
-	spawn(stasis_duration)
-		remove_extension(holder, type)
-		return PROCESS_KILL
+	while(stasis_duration)
+		stasis_duration--
+		return
+
+	remove_extension(holder, type)
+	return PROCESS_KILL
 
 /datum/extension/stasis_effect/Destroy()
 	if(M)

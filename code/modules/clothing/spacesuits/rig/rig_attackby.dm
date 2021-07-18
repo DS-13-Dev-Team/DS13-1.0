@@ -6,17 +6,11 @@
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.
 			return
 
-	if(istype(W, /obj/item/weapon/stasis_pack))
+	if(istype(W, /obj/item/stack/stasis_pack))
 		for(var/obj/item/rig_module/mounted/stasis/S in installed_modules)
-			for(var/obj/item/weapon/gun/energy/stasis/G in S.contents)
-				for(var/obj/item/weapon/cell/C in G.contents)
-					if(C.percent() != 100)
-						QDEL_NULL(W)
-						C.insta_recharge()
-						to_chat(user, "Stasis Module was recharged")
-						return
-					else
-						to_chat(user, "Stasis Module is already fully charged")
+			var/use_pack = S.try_use_pack(W, user)
+			if(use_pack)
+				return
 
 	// Pass repair items on to the chestpiece.
 	if(chest && (istype(W,/obj/item/stack/material) || isWelder(W)))
