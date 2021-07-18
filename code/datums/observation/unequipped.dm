@@ -6,7 +6,7 @@
 //		Arguments that the called proc should expect:
 //			/mob/equipped:  The mob that unequipped/dropped the item.
 //			/obj/item/item: The unequipped item.
-
+//	(var/mob/equipper, var/obj/item/item)
 GLOBAL_DATUM_INIT(mob_unequipped_event, /decl/observ/mob_unequipped, new)
 
 /decl/observ/mob_unequipped

@@ -1,11 +1,11 @@
-//shuttle moving state defines are in setup.dm
+//shuttle moving state defines are in defines/misc
 
 /datum/shuttle
 	var/name = ""
 	var/warmup_time = 0
 	var/moving_status = SHUTTLE_IDLE
 
-	var/area/shuttle_area //can be both single area type or a list of areas
+	var/area/shuttle_area //can be both single area type or a list of areas. It will be converted into a list of area datums at runtime
 	var/obj/effect/shuttle_landmark/current_location //This variable is type-abused initially: specify the landmark_tag, not the actual landmark.
 
 	var/arrive_time = 0	//the time at which the shuttle arrives when long jumping

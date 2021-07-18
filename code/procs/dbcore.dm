@@ -56,8 +56,7 @@ DBConnection/New(dbi_handler,username,password_handler,cursor_handler)
 	_db_con = _dm_db_new_con()
 
 DBConnection/proc/Connect(dbi_handler=src.dbi,user_handler=src.user,password_handler=src.password,cursor_handler)
-	if(!sqllogging)
-		return 0
+
 	if(!src) return 0
 	cursor_handler = src.default_cursor
 	if(!cursor_handler) cursor_handler = Default_Cursor
@@ -66,7 +65,7 @@ DBConnection/proc/Connect(dbi_handler=src.dbi,user_handler=src.user,password_han
 DBConnection/proc/Disconnect() return _dm_db_close(_db_con)
 
 DBConnection/proc/IsConnected()
-	if(!sqllogging) return 0
+
 	var/success = _dm_db_is_connected(_db_con)
 	return success
 
@@ -102,7 +101,7 @@ DBQuery/proc/Connect(DBConnection/connection_handler) src.db_connection = connec
 
 DBQuery/proc/Execute(sql_query=src.sql,cursor_handler=default_cursor)
 	Close()
-	return _dm_db_execute(_db_query,sql_query,db_connection._db_con,cursor_handler,null)
+	. = _dm_db_execute(_db_query,sql_query,db_connection._db_con,cursor_handler,null)
 
 DBQuery/proc/NextRow() return _dm_db_next_row(_db_query,item,conversions)
 
@@ -111,6 +110,14 @@ DBQuery/proc/RowsAffected() return _dm_db_rows_affected(_db_query)
 DBQuery/proc/RowCount() return _dm_db_row_count(_db_query)
 
 DBQuery/proc/ErrorMsg() return _dm_db_error_msg(_db_query)
+
+//Runs through the data and dumps it into a nested list of lists
+DBQuery/proc/GetData()
+	var/list/stuff = list()
+	while (NextRow())
+		stuff += list(item.Copy())
+
+	return stuff
 
 DBQuery/proc/Columns()
 	if(!columns)

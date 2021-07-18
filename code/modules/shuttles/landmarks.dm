@@ -23,6 +23,9 @@
 	//if -1, will overwrite these only if not set
 	var/autoset
 
+
+	var/escape	= FALSE	//If true, this destination is located in a designated escape zone. Any humans aboard a shuttle at this location are considered safe
+
 /obj/effect/shuttle_landmark/Initialize()
 	. = ..()
 	if(autoset)

@@ -8,19 +8,14 @@ GLOBAL_LIST_EMPTY(store_designs)
 
 
 /proc/load_store_database()
-	/*
-		This is all for debug
+	GLOB.store_designs = list()
 
-		TODO Future: Load designs from a persistent database
-	*/
-
-	//For now we will just load every possible design
-
-	var/list/temp_list = SSresearch.design_ids.Copy()
+	var/list/temp_list = SSdatabase.known_designs.Copy()
 
 	for (var/id in temp_list)
 
-		var/datum/design/D = temp_list[id]
+		var/datum/design/D = SSresearch.design_ids[id]
+
 		//Its gotta be printable in the store
 		if (!(D.build_type & STORE))
 			continue
