@@ -51,7 +51,8 @@
 	for(var/obj/item/weapon/gun/energy/stasis/G in contents)
 		for(var/obj/item/weapon/cell/C in G.contents)
 			if(C.percent() != 100)
-				I.use(1)
+				var/obj/item/stack/stasis_pack/pack = I
+				pack.use(1)
 				C.insta_recharge()
 				to_chat(user, "Stasis Module was recharged")
 				return TRUE
