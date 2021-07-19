@@ -65,7 +65,7 @@
 	output += "</div>"
 
 	panel = new(src, "Welcome","Welcome", 210, 280, src)
-	panel.set_window_options("can_close=0")
+	panel.set_window_options("can_close=0;titlebar=0")
 	panel.set_content(output)
 	panel.open()
 	return
@@ -480,6 +480,8 @@
 		GLOB.living_crew |= mind
 
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
+		
+		client.prefs.copy_to_mind(new_character.mind)
 
 	new_character.SetName(real_name)
 	new_character.dna.ready_dna(new_character)
@@ -500,6 +502,10 @@
 	new_character.regenerate_icons()
 
 	new_character.key = key		//Manually transfer the key to log them in
+	
+	//Register that they've joined the round
+	character_spawned(new_character.mind)
+	
 	return new_character
 
 /mob/new_player/proc/ViewManifest()

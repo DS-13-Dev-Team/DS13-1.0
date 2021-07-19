@@ -357,7 +357,7 @@
 	to_chat(user, "The AI is not to interact with these devices!")
 	return
 
-/obj/machinery/readybutton/New()
+/obj/machinery/readybutton/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 

@@ -25,6 +25,11 @@
 	item_cost = 16
 	path = /obj/item/weapon/plastique
 
+/datum/uplink_item/item/tools/plastique/special
+	item_cost = 4
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT, MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
+
 /datum/uplink_item/item/tools/heavy_armor
 	name = "Heavy Armor Vest and Helmet"
 	item_cost = 16
@@ -63,6 +68,11 @@
 	desc = "Appears and functions as a standard multitool until the mode is toggled by applying a screwdriver appropriately. \
 			When in hacking mode this device will grant full access to any standard airlock within 20 to 40 seconds. \
 			This device will also be able to immediately access the last 6 to 8 hacked airlocks."
+
+/datum/uplink_item/item/tools/hacking_tool/special
+	item_cost = 6
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT, MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/tools/space_suit
 	name = "Space Suit"

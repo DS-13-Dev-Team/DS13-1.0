@@ -16,6 +16,8 @@
 	//Used only in subtypes. Items in this list are added to possible spawns
 	var/list/additions
 
+	can_block_movement = FALSE
+
 // creates a new object and deletes itself
 /obj/random/Initialize()
 	..()
@@ -875,13 +877,11 @@ obj/random/obstruction/item_to_spawn()
 	icon_state = "spacecash1"
 
 /obj/random/cash/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/spacecash/bundle/c1 = 4,
-				/obj/item/weapon/spacecash/bundle/c10 = 3,
-				/obj/item/weapon/spacecash/bundle/c20 = 3,
-				/obj/item/weapon/spacecash/bundle/c50 = 2,
-				/obj/item/weapon/spacecash/bundle/c100 = 2,
-				/obj/item/weapon/spacecash/bundle/c1000 = 1,
-				/obj/item/weapon/spacecash/bundle/c10000 = 1))
+	return pickweight(list(/obj/item/weapon/spacecash/ewallet/random/c200 = 8,
+				/obj/item/weapon/spacecash/ewallet/random/c500 = 6,
+				/obj/item/weapon/spacecash/ewallet/random/c1000 = 4,
+				/obj/item/weapon/spacecash/ewallet/random/c5000 = 2,
+				/obj/item/weapon/spacecash/ewallet/random/c10000 = 1))
 
 
 

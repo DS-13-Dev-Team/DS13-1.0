@@ -21,7 +21,7 @@
 	var/weld_power_use = 2300	// power used per point of brute damage repaired. 2.3 kW ~ about the same power usage of a handheld arc welder
 	var/wire_power_use = 500	// power used per point of burn damage repaired.
 
-/obj/machinery/recharge_station/New()
+/obj/machinery/recharge_station/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	component_parts = list()

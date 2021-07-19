@@ -378,8 +378,9 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 		parts -= picked
 
-	return heal_amount
 	BITSET(hud_updateflag, HEALTH_HUD)
+
+	return heal_amount
 
 // damage MANY external organs, in random order
 /mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null, var/armortype ="melee" )
@@ -470,18 +471,16 @@ This function restores all organs.
 			f_loss = 60
 
 			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
-				ear_damage += 30
-				ear_deaf += 120
+				adjust_ear_damage(30, 20)
 			if (prob(70))
-				Paralyse(10)
+				Paralyse(3)
 
 		if(3.0)
 			b_loss = 30
 			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
-				ear_damage += 15
-				ear_deaf += 60
+				adjust_ear_damage(15, 15)
 			if (prob(50))
-				Paralyse(10)
+				Paralyse(3)
 
 	// factor in armour
 	var/protection = blocked_mult(getarmor(null, "bomb"))

@@ -1541,10 +1541,10 @@
 /area/ishimura/eva)
 "da" = (
 /obj/structure/table/standard,
-/obj/item/weapon/spacecash/bundle/c10{
+/obj/item/weapon/spacecash/ewallet/random/c200{
 	pixel_y = 4
 	},
-/obj/item/weapon/spacecash/bundle/c20,
+/obj/item/weapon/spacecash/ewallet/random/c200,
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "db" = (
@@ -3547,6 +3547,10 @@
 "iq" = (
 /turf/simulated/floor/reinforced,
 /area/ishimura/external/channel/second)
+"iv" = (
+/obj/machinery/store,
+/turf/simulated/floor/dank,
+/area/ishimura/eva)
 "jK" = (
 /obj/machinery/light{
 	dir = 1
@@ -3778,6 +3782,10 @@
 "AR" = (
 /turf/simulated/floor/reinforced,
 /area/ishimura/external/channel/first)
+"Ba" = (
+/obj/machinery/store,
+/turf/simulated/floor/plating,
+/area/ishimura/eva/substation/transfer)
 "Bv" = (
 /turf/simulated/wall,
 /area/ishimura/eva/prep/ADS)
@@ -14766,7 +14774,7 @@ aw
 dO
 dO
 aw
-aC
+do
 aC
 dN
 aC
@@ -15170,7 +15178,7 @@ cc
 dP
 cN
 bK
-do
+iv
 aC
 fe
 aC
@@ -30508,7 +30516,7 @@ aa
 UC
 UC
 aq
-QV
+Ba
 Ds
 Ds
 Ds

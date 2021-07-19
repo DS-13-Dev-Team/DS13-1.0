@@ -32,7 +32,7 @@
 
 // create a new disposal
 // find the attached trunk (if present) and init gas resvr.
-/obj/machinery/disposal/New()
+/obj/machinery/disposal/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	spawn(5)
 		trunk = locate() in src.loc

@@ -15,7 +15,7 @@
 	var/mat_efficiency = 1
 	var/speed = 1
 
-/obj/machinery/r_n_d/protolathe/New()
+/obj/machinery/r_n_d/protolathe/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	materials = default_material_composition.Copy()
 	..()
 	component_parts = list()

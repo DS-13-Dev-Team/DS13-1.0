@@ -28,7 +28,7 @@
 /obj/machinery/smartfridge/secure
 	is_secure = 1
 
-/obj/machinery/smartfridge/New()
+/obj/machinery/smartfridge/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	if(is_secure)
 		wires = new/datum/wires/smartfridge/secure(src)

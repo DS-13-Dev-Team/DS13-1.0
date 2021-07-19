@@ -19,6 +19,18 @@
 	item_cost = 24
 	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/ewar_voice
 
+/datum/uplink_item/item/hardsuit_modules/ewar_voice/special
+	is_special = TRUE
+	item_cost = 6
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
+
+/datum/uplink_item/item/hardsuit_modules/zealot
+	name = "Zealot RIG"
+	path = /obj/item/weapon/rig/zealot
+	item_cost = 15
+	is_special = TRUE
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
+
 /datum/uplink_item/item/hardsuit_modules/maneuvering_jets
 	name = "\improper Maneuvering Jets"
 	item_cost = 32

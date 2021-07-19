@@ -15,6 +15,7 @@
 
 /datum/extension/spray/flame/Process()
 	for (var/t in affected_turfs)
+
 		var/turf/T = t
 
 		for (var/atom/A in T)
@@ -61,7 +62,7 @@
 	scale_y_end = 	1.5
 	alpha_end	=	255
 	color = "#FFFFFF"
-	lifespan	=	1.7 SECOND
+	lifespan	=	0.3 SECOND
 
 
 
@@ -88,7 +89,7 @@
 	scale_y_end = 	1.6
 	alpha_end	=	255
 	color = "#FFFFFF"
-	lifespan	=	1.4 SECOND
+	lifespan	=	0.25 SECOND
 
 
 

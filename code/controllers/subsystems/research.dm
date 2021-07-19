@@ -1,4 +1,5 @@
 //Ported from eris as a dependancy for autolathe code. Most of the stuff here isn't needed and has been disabled
+//Loading of designs is currently done through asset_cache.dm instead
 //~Nanako
 SUBSYSTEM_DEF(research)
 	name = "Research"
@@ -29,6 +30,9 @@ SUBSYSTEM_DEF(research)
 
 	return ..()
 
+
+/datum/controller/subsystem/research/stat_entry()
+	..("Click to debug!")
 
 /datum/controller/subsystem/research/proc/generate_integrated_circuit_designs()
 	/*
@@ -78,7 +82,7 @@ SUBSYSTEM_DEF(research)
 	// If designs are already generated, initialized right away.
 	// If not, add them to the list to be initialized later.
 	if(designs_initialized)
-		var/datum/design/design = design_ids[design_file.design]
+		var/datum/design/design = design_ids[get_design_id_from_type(design_file.design)]
 		if(design)
 			design_file.design = design
 			design_file.on_design_set()
@@ -87,6 +91,9 @@ SUBSYSTEM_DEF(research)
 
 	else
 		design_files_to_init += design_file
+
+
+
 
 
 /atom/research_design_initializer

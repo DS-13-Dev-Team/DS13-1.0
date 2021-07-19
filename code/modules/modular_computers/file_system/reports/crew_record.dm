@@ -68,7 +68,14 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 
 		set_skillset(jointext(skills,"\n"))
 
-
+/*
+	Attempts to find an existing mob who matches this crew record
+*/
+/datum/computer_file/report/crew_record/proc/get_mob()
+	var/name =  get_name()
+	for(var/mob/M in GLOB.human_mob_list)
+		if(M.real_name == name)
+			return M
 
 // Global methods
 // Used by character creation to create a record for new arrivals.

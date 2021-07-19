@@ -14,6 +14,11 @@
 	item_cost = 8
 	path = /obj/item/weapon/storage/box/syndie_kit/spy
 
+/datum/uplink_item/item/stealth_items/spy/special
+	item_cost = 5
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)
+
 /datum/uplink_item/item/stealth_items/id
 	name = "Agent ID card"
 	item_cost = 12

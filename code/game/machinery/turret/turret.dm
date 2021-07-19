@@ -112,7 +112,7 @@
 	active_power_usage = round(initial(active_power_usage) * 5)
 	return 1
 
-/obj/machinery/turret/New()
+/obj/machinery/turret/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	//We are created in nullspace for a crafting recipe
 	if (isturf(loc))
@@ -131,7 +131,7 @@
 
 		setup()
 
-/obj/machinery/turret/crescent/New()
+/obj/machinery/turret/crescent/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	req_one_access.Cut()
 

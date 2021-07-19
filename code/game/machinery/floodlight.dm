@@ -18,7 +18,7 @@
 
 	can_block_movement = TRUE
 
-/obj/machinery/floodlight/New()
+/obj/machinery/floodlight/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	cell = new/obj/item/weapon/cell/crap(src)
 	..()
 

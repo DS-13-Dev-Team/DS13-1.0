@@ -32,7 +32,7 @@
 *   Initialising
 ********************/
 
-/obj/machinery/microwave/New()
+/obj/machinery/microwave/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	create_reagents(100)
 	if (!available_recipes)

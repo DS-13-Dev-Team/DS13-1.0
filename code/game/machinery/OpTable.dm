@@ -14,7 +14,7 @@
 	var/strapped = 0.0
 	var/obj/machinery/computer/operating/computer = null
 
-/obj/machinery/optable/New()
+/obj/machinery/optable/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	for(dir in list(NORTH,EAST,SOUTH,WEST))
 		computer = locate(/obj/machinery/computer/operating, get_step(src, dir))

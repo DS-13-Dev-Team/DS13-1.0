@@ -1,6 +1,9 @@
 /mob/living/carbon/human/gib()
 
 
+	if(species.can_obliterate)
+		..(species.gibbed_anim)
+
 	for(var/obj/item/organ/external/E in src.organs)
 		if (species.can_obliterate || (E.limb_flags & ORGAN_FLAG_CAN_AMPUTATE))
 			for(var/obj/item/organ/I in E.internal_organs)
@@ -16,9 +19,6 @@
 			continue	//Organs are already handled above
 		drop_from_inventory(I)
 		I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/I.w_class))
-
-	if(species.can_obliterate)
-		..(species.gibbed_anim)
 	gibs(loc, dna, null, species.get_flesh_colour(src), species.get_blood_colour(src))
 
 /mob/living/carbon/human/dust()
@@ -39,6 +39,11 @@
 	var/obj/item/organ/internal/stack/s = get_organ(BP_STACK)
 	if(s)
 		s.do_backup()
+
+
+	//Database update
+	if (mind)
+		mind.on_death()
 
 	//Handle species-specific deaths.
 	species.handle_death(src)

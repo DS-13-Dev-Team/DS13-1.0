@@ -24,7 +24,7 @@
 
 	density = 1
 
-/obj/machinery/atmospherics/binary/circulator/New()
+/obj/machinery/atmospherics/binary/circulator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
 	air1.volume = 400

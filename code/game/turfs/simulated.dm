@@ -79,10 +79,9 @@
 	. = ..()
 
 /turf/simulated/Entered(atom/A, atom/OL)
+	. = ..()
 	if (istype(A,/mob/living))
 		var/mob/living/M = A
-		if(M.lying)
-			return ..()
 
 		// Dirt overlays.
 		update_dirt()
@@ -98,7 +97,7 @@
 					S.handle_movement(src, MOVING_QUICKLY(H))
 					if(S.track_blood && S.blood_DNA)
 						bloodDNA = S.blood_DNA
-						bloodcolor=S.blood_color
+						bloodcolor = S.blood_color
 						S.track_blood--
 			else
 				if(H.track_blood && H.feet_blood_DNA)
@@ -114,9 +113,16 @@
 
 				bloodDNA = null
 
+		if(M.lying)
+			return
+
 		if(src.wet)
 
 			if(M.buckled || (MOVING_DELIBERATELY(M) && prob(min(100, 100/(wet/10))) ) )
+				return
+
+			// skillcheck for slipping
+			if(!prob(min(100, M.skill_fail_chance(SKILL_HAULING, 100, SKILL_MAX+1)/(3/wet))))
 				return
 
 			var/slip_dist = 1
@@ -136,8 +142,6 @@
 				M.inertia_dir = 0
 		else
 			M.inertia_dir = 0
-
-	..()
 
 //returns 1 if made bloody, returns 0 otherwise
 /turf/simulated/add_blood(mob/living/carbon/human/M as mob)

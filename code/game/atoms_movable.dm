@@ -33,8 +33,7 @@
 /atom/movable/Initialize(var/mapload)
 	if (can_block_movement && isturf(loc))
 		var/turf/T = loc
-		T.movement_blocking_atoms |= src
-
+		LAZYDISTINCTADD(T.movement_blocking_atoms,src)
 
 	.=..()
 
@@ -42,7 +41,7 @@
 	if (can_block_movement)
 		var/turf/T = get_turf(src)
 		if (T)
-			T.movement_blocking_atoms -= src
+			LAZYREMOVE(T.movement_blocking_atoms,src)
 
 	. = ..()
 
@@ -55,6 +54,16 @@
 		if (pulledby.pulling == src)
 			pulledby.pulling = null
 		pulledby = null
+
+	if(LAZYLEN(movement_handlers) && !ispath(movement_handlers[1]))
+		QDEL_NULL_LIST(movement_handlers)
+
+	if (bound_overlay)
+		QDEL_NULL(bound_overlay)
+
+	if(virtual_mob && !ispath(virtual_mob))
+		qdel(virtual_mob)
+		virtual_mob = null
 
 /atom/movable/Bump(var/atom/A, yes)
 	if(src.throwing)

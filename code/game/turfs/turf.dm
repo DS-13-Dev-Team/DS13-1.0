@@ -39,6 +39,8 @@
 
 	var/movement_delay
 
+	var/tmp/changing_turf
+
 
 /turf/proc/has_wall()
 	if (is_wall)
@@ -50,21 +52,39 @@
 				return TRUE
 
 	return FALSE
-
-/turf/New()
-	..()
-	for(var/atom/movable/AM as mob|obj in src)
-		spawn( 0 )
-			src.Entered(AM)
-			return
-
+/turf/Initialize(mapload, ...)
+	. = ..()
 	if(dynamic_lighting)
 		luminosity = 0
 	else
 		luminosity = 1
 
+	if (mapload && permit_ao)
+		queue_ao()
+
+	if (z_flags & ZM_MIMIC_BELOW)
+		setup_zmimic(mapload)
+
+	return INITIALIZE_HINT_NORMAL
+
 /turf/Destroy()
+	if (!changing_turf)
+		crash_with("Improper turf qdel. Do not qdel turfs directly.")
+
+	changing_turf = FALSE
+
 	remove_cleanables()
+
+	if (ao_queued)
+		SSao.queue -= src
+		ao_queued = 0
+
+	if (z_flags & ZM_MIMIC_BELOW)
+		cleanup_zmimic()
+
+	if (bound_overlay)
+		QDEL_NULL(bound_overlay)
+
 	..()
 	return QDEL_HINT_IWILLGC
 
@@ -124,7 +144,6 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 
 	if (!mover || !isturf(mover.loc) || isobserver(mover))
-
 		return TRUE
 
 	var/turf/origin = mover.loc
@@ -133,7 +152,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	for(var/obj/obstacle in origin.movement_blocking_atoms)
 		if((mover != obstacle) && (forget != obstacle))
 			if(!obstacle.CheckExit(mover, src))
-
+				mover.Bump(obstacle, 1)
 				return FALSE
 
 	//Next, check objects to block entry that are on the border
@@ -166,7 +185,7 @@ var/const/enterloopsanity = 100
 	..()
 
 	if (atom.can_block_movement)
-		movement_blocking_atoms |= atom
+		LAZYDISTINCTADD(movement_blocking_atoms,atom)
 
 	if(!istype(atom, /atom/movable))
 		return
@@ -199,7 +218,7 @@ var/const/enterloopsanity = 100
 /turf/Exited(atom/atom as mob|obj)
 	if (atom.can_block_movement)
 
-		movement_blocking_atoms -= atom
+		LAZYREMOVE(movement_blocking_atoms,atom)
 
 	.=..()
 
@@ -303,3 +322,10 @@ var/const/enterloopsanity = 100
 		if(isliving(AM))
 			var/mob/living/M = AM
 			M.turf_collision(src, speed)
+
+/turf/proc/is_floor()
+	return FALSE
+
+//Telling a turf to store an item just puts it ontop of us
+/turf/store_item(var/obj/item/input, var/mob/user)
+	input.forceMove(src)

@@ -496,7 +496,7 @@ var/global/list/additional_antag_types = list()
 		// If we don't have enough antags, draft people who voted for the round.
 		if(candidates.len < max(required_enemies, antag_template.initial_spawn_target))
 			for(var/mob/new_player/player in players)
-				if(!antag_id || !(antag_id in player.client.prefs.never_be_special_role))
+				if(!antag_id || (antag_id in player.client.prefs.be_special_role))
 					log_debug("[player.key] has not selected never for this role, so we are drafting them.")
 					candidates += player.mind
 					players -= player

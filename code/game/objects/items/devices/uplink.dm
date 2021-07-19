@@ -31,6 +31,7 @@
 	var/next_offer_time					//The time a discount will next be offered
 	var/datum/uplink_item/discount_item	//The item to be discounted
 	var/discount_amount					//The amount as a percent the item will be discounted by
+	var/datum/uplink/uplink
 
 /obj/item/device/uplink/nano_host()
 	return loc
@@ -40,6 +41,8 @@
 		CRASH("Invalid spawn location. Expected /atom, was [location ? location.type : "NULL"]")
 
 	..()
+	if(!uplink)
+		uplink = global.uplink
 	nanoui_data = list()
 	update_nano_data()
 
@@ -226,7 +229,8 @@
 
 /obj/item/weapon/tool/multitool/uplink/New(var/loc, var/owner)
 	..()
-	hidden_uplink = new(src, owner)
+	if(!hidden_uplink)
+		hidden_uplink = new(src, owner)
 
 /obj/item/weapon/tool/multitool/uplink/attack_self(mob/user as mob)
 	if(hidden_uplink)
@@ -241,3 +245,12 @@
 
 /obj/item/device/uplink/contained/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/uistate = GLOB.contained_state)
 	return ..()
+
+
+/obj/item/device/uplink/especial/New(atom/location, datum/mind/owner, telecrystals)
+	uplink = GLOB.special_uplink
+	..()
+
+/obj/item/weapon/tool/multitool/uplink/special/New(var/loc, var/owner, var/telecrystals)
+	hidden_uplink = new /obj/item/device/uplink/especial(src, owner, telecrystals)
+	..()

@@ -1,9 +1,15 @@
 var/datum/uplink/uplink = new()
 
+GLOBAL_DATUM_INIT(special_uplink, /datum/uplink/special, new())
+
 /datum/uplink
 	var/list/items_assoc
 	var/list/datum/uplink_item/items
 	var/list/datum/uplink_category/categories
+	var/is_special = FALSE
+
+/datum/uplink/special
+	is_special = TRUE
 
 /datum/uplink/New()
 	items_assoc = list()
@@ -12,7 +18,7 @@ var/datum/uplink/uplink = new()
 	categories = dd_sortedObjectList(categories)
 
 	for(var/datum/uplink_item/item in items)
-		if(!item.name)
+		if(!item.name || (item.is_special != is_special))
 			items -= item
 			continue
 
@@ -33,6 +39,7 @@ var/datum/uplink/uplink = new()
 	var/list/antag_costs = list()			// Allows specific antag roles to purchase at a different cost
 	var/datum/uplink_category/category		// Item category
 	var/list/datum/antagonist/antag_roles = list("Exclude", MODE_DEITY)	// Antag roles this item is displayed to. If empty, display to all. If it includes 'Exclude", anybody except this role can view it
+	var/is_special = FALSE
 
 /datum/uplink_item/item
 	var/path = null

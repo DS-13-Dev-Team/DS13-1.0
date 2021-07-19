@@ -29,10 +29,20 @@
 	item_cost = 8
 	path = /obj/item/weapon/grenade/empgrenade
 
+/datum/uplink_item/item/grenades/emp/special
+	is_special = 6
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)
+
 /datum/uplink_item/item/grenades/emps
 	name = "5xEMP Grenades"
 	item_cost = 24
 	path = /obj/item/weapon/storage/box/emps
+
+/datum/uplink_item/item/grenades/emps/special
+	is_special = 18
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)
 
 /datum/uplink_item/item/grenades/frag_high_yield
 	name = "Fragmentation Bomb"
@@ -40,12 +50,22 @@
 	antag_roles = list(MODE_MERCENARY) // yeah maybe regular traitors shouldn't be able to get these
 	path = /obj/item/weapon/grenade/frag/high_yield
 
+/datum/uplink_item/item/grenades/frag_high_yield/special
+	item_cost = 18
+	is_special = TRUE
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
+
 /datum/uplink_item/item/grenades/fragshell
 	name = "1xFragmentation Shell"
 	desc = "Weaker than standard fragmentation grenades, these devices can be fired from a grenade launcher."
 	item_cost = 10
 	antag_roles = list(MODE_MERCENARY)
 	path = /obj/item/weapon/grenade/frag/shell
+
+/datum/uplink_item/item/grenades/fragshell/special
+	item_cost = 7
+	is_special = TRUE
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/grenades/fragshells
 	name = "5xFragmentation Shells"

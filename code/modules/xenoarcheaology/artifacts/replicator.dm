@@ -19,7 +19,7 @@
 
 	var/fail_message
 
-/obj/machinery/replicator/New()
+/obj/machinery/replicator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	var/list/viables = list(

@@ -13,7 +13,7 @@
 	var/list/content_atoms = list()
 
 
-	var/breakdown_rate = 0.001	//Remove this many units of biomass per tick, and convert it into purified biomass
+	var/breakdown_rate = 0.002	//Remove this many units of biomass per tick, and convert it into purified biomass
 	var/reagent_breakdown_rate = 0.065	//Remove this many units of reagents per tick and convert to biomass
 
 	var/obj/structure/reagent_dispensers/biomass/storage

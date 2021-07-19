@@ -30,7 +30,7 @@ hr {
     height: 1px;
 }
 
-.link, .linkFixed, .linkMax, .linkOn, .linkOff, .selected, .disabled, .yellowButton, .redButton {
+.link, .linkFixed, .linkMax, .linkWide, .linkInline, .linkOn, .linkOff, .selected, .disabled, .yellowButton, .redButton {
     float: left;
     min-width: 15px;
     height: 16px;
@@ -63,6 +63,15 @@ hr {
 	padding-top: 12px !important;
 }
 
+.linkWide {
+	width: 100%;
+	float: none;
+	box-sizing: border-box;
+	font-size: 20px;
+	height: 32px;
+	padding-top: 8px !important;
+}
+
 .linkCompact {
 	float: none;
     min-width: 15px;
@@ -71,6 +80,11 @@ hr {
     margin: 0px;
 	font-size: 9px;
 	line-height: 80%;
+}
+
+.linkInline {
+	float: none;
+    display: inline;
 }
 
 .checkbox, .checkbox:hover {width: 10px !important;

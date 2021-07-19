@@ -9,28 +9,45 @@
 	if (!istype(origin))
 		origin = get_turf(origin)
 
-	//First of all, lets find a centre point. Halfway between origin and the edge of the cone
-	var/turf/halfpoint = locate(origin.x + (direction.x * distance * 0.5), origin.y + (direction.y * distance * 0.5), origin.z)
 
-	//And from this halfpoint, lets get a square area of turfs which is every possible turf that could be in the cone
-	//We use half the distance as radius, +1 to account for any rounding errors. Its not a big deal if we get some unnecessary turfs in here
-	var/list/turfs = trange(((distance*0.5) + 1), halfpoint)
+	var/list/turfs
 
+
+	//If the angle is narrow enough, we can reduce the number of tiles we need to test
+
+	if (angle <= 90)
+		//First of all, lets find a centre point. Halfway between origin and the edge of the cone
+		var/turf/halfpoint = locate(origin.x + (direction.x * distance * 0.5), origin.y + (direction.y * distance * 0.5), origin.z)
+
+		//And from this halfpoint, lets get a square area of turfs which is every possible turf that could be in the cone
+		//We use half the distance as radius, +1 to account for any rounding errors. Its not a big deal if we get some unnecessary turfs in here
+		turfs = trange(((distance*0.5) + 1), halfpoint)
+
+	else
+		//Optimisation
+		turfs = trange(distance, origin)
 
 	//Alright next up, we loop through the turfs. for each one:
+	if (angle < 360)
+		for (var/turf/T as anything in turfs)
+			//1. We check if its distance is less than the requirement. This is cheap. If it is...
+			var/dist_delta = get_dist_euclidian(origin, T)
+			if (dist_delta > distance)
+				turfs -= T
+				continue
 
-	for (var/turf/T as anything in turfs)
-		//1. We check if its distance is less than the requirement. This is cheap. If it is...
-		var/dist_delta = get_dist_euclidian(origin, T)
-		if (dist_delta > distance)
-			turfs -= T
-			continue
-
-		//2. We check if it falls within the desired angle
-		if (!target_in_arc(origin, T, direction, angle))
-			turfs -= T
-			continue
-
+			//2. We check if it falls within the desired angle
+			if (!target_in_arc(origin, T, direction, angle))
+				turfs -= T
+				continue
+	else
+		//Optimisation for 360 degree circles, a common use case. We can skip the arc math
+		for (var/turf/T as anything in turfs)
+			//1. We check if its distance is less than the requirement. This is cheap. If it is...
+			var/dist_delta = get_dist_euclidian(origin, T)
+			if (dist_delta > distance)
+				turfs -= T
+				continue
 
 
 	//Alright we've removed all the turfs which aren't in the cone!
@@ -42,7 +59,9 @@
 	var/list/viewlist = origin.turfs_in_view(distance)
 	var/list/conelist = get_cone(origin, direction, distance, angle)
 
-	return (viewlist & conelist)
+	var/list/all = (viewlist & conelist)
+
+	return all
 
 //This hella complex proc gets a cone, but divided into several smaller cones. Returns a list of lists, each containing the tiles of the subcone
 //No overlapping is allowed, each subcone contains a unique list
@@ -82,3 +101,11 @@
 /proc/random_tile_in_cone(var/turf/origin, var/vector2/direction, var/distance, var/angle)
 	var/list/tiles = get_cone(origin, direction, distance, angle)
 	return pick(tiles)
+
+
+/*
+/client/verb/conetest()
+	var/angle = 360//rand(1, 360)
+
+	get_view_cone(get_turf(mob), Vector2.FromDir(SOUTH), 3, angle)
+*/

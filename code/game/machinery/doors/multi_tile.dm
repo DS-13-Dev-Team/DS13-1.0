@@ -20,7 +20,7 @@
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
 
-/obj/machinery/door/airlock/multi_tile/New()
+/obj/machinery/door/airlock/multi_tile/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	SetBounds()
 

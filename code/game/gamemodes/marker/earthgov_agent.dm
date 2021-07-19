@@ -49,6 +49,15 @@ GLOBAL_LIST_EMPTY(agents_list)
 	EDFM.create_global_objectives(TRUE)
 
 
+/datum/antagonist/earthgov_agent/equip(var/mob/living/carbon/human/player)
+
+	if(!..())
+		return FALSE
+
+	var/obj/item/weapon/tool/multitool/uplink/special/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
+	player.put_in_hands(U)
+
+	return TRUE
 
 
 

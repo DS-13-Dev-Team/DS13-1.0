@@ -40,13 +40,13 @@
 	user.update_action_buttons()
 	user.update_floating()
 
-/obj/item/clothing/shoes/magboots/mob_can_equip(mob/user)
-	var/mob/living/carbon/human/H = user
+/obj/item/clothing/shoes/magboots/mob_can_equip(var/mob/M, var/slot, var/disable_warning = 0, var/force = 0)
+	var/mob/living/carbon/human/H = M
 
 	if(H.shoes)
 		shoes = H.shoes
 		if(shoes.overshoes)
-			to_chat(user, "You are unable to wear \the [src] as \the [H.shoes] are in the way.")
+			to_chat(M, "You are unable to wear \the [src] as \the [H.shoes] are in the way.")
 			shoes = null
 			return 0
 		if(!H.unEquip(shoes, src))//Remove the old shoes so you can put on the magboots.
@@ -60,7 +60,7 @@
 		return 0
 
 	if (shoes)
-		to_chat(user, "You slip \the [src] on over \the [shoes].")
+		to_chat(M, "You slip \the [src] on over \the [shoes].")
 	set_slowdown()
 	wearer = H //TODO clean this up
 	return 1

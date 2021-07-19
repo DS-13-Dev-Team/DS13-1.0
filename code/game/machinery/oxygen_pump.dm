@@ -22,7 +22,7 @@
 	idle_power_usage = 10
 	active_power_usage = 120 // No idea what the realistic amount would be.
 
-/obj/machinery/oxygen_pump/New()
+/obj/machinery/oxygen_pump/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	tank = new spawn_type (src)
 	contained = new mask_type (src)

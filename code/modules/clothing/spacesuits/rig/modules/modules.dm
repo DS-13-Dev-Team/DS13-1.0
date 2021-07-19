@@ -92,6 +92,15 @@
 
 	var/list/datum/stat_rig_module/stat_modules = new()
 
+	/*
+		Used for store makeovers.
+		A list in the format tag = value
+		When two modules have the same quality, the one with the higher associated value is considered superior
+
+		use the LOADOUT_TAG_RIG_XXXXX defines for the tag
+	*/
+	var/module_tags
+
 /obj/item/rig_module/Initialize()
 	.=..()
 	if (!interface_name)
@@ -198,20 +207,14 @@
 
 /obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, var/mob/user, var/feedback = FALSE, var/check_conflict = TRUE)
 	if (!redundant && check_conflict)
-		for (var/obj/item/rig_module/RM in rig.installed_modules)
-			//Exact duplicates not allowed
-			if (type == RM.type)
-				return FALSE
-
-			//Matching base types count as a duplicate, if non null
-			if (base_type && base_type == RM.base_type)
-				return FALSE
+		if (get_conflicting(rig))
+			return FALSE
 	return TRUE
 
 //Returns any existing module which blocks the installation of this one
 /obj/item/rig_module/proc/get_conflicting(var/obj/item/weapon/rig/rig)
 	if (!redundant)
-		for (var/obj/item/rig_module/RM in rig.installed_modules)
+		for (var/obj/item/rig_module/RM as anything in rig.installed_modules)
 			//Exact duplicates not allowed
 			if (type == RM.type)
 				return RM
@@ -220,8 +223,56 @@
 			if (base_type && base_type == RM.base_type)
 				return RM
 
+			if (LAZYLEN(module_tags & RM.module_tags))
+				return RM
 	return null
 
+
+/*
+Called when attempting to install this module into the target rig
+//Removes any conflicting modules in the target rig, if we are better.
+//Does not remove if they are better
+//Return values:
+	-A list of the things we replaced, if we replaced anything
+	-False if we were denied installation due to conflict with something better
+
+*/
+/obj/item/rig_module/proc/resolve_installation_upgrade(var/obj/item/weapon/rig/rig, var/do_install = TRUE, var/force = FALSE)
+	var/obj/item/rig_module/conflict
+	var/list/removed = list()
+	while ((conflict = get_conflicting(rig)))
+		//We found a conflict, maybe we can replace it. But only if we are better in all qualities
+		if (LAZYLEN(module_tags & conflict.module_tags))
+			var/better = TRUE
+
+			//If force is true, we overwrite even when the target is better than us
+			if (!force)
+				for (var/tag in module_tags)
+					if (conflict.module_tags[tag])
+						//If it has a higher quality than us, we are not better
+						if (conflict.module_tags[tag] >= module_tags[tag])
+							better = FALSE
+							break
+			if (better)
+				//Tell the conflicting module if its about to get replaced
+				if (do_install)
+					conflict.pre_replace(rig, src)
+				rig.uninstall(conflict)
+				removed += conflict
+				conflict = null
+
+			else
+				//We have found something we cannot replace, this installation is failing
+				break
+		else
+			//We have found something we cannot replace, this installation is failing
+			break
+
+
+	if (do_install)
+		rig.install(src)
+
+	return removed
 
 /*
 	Called to inform this module that its position in rig is about to be replaced with successor.
@@ -460,4 +511,5 @@
 		name = "[charge.display_name] ([charge.charges]C) - Change"
 		return 1
 	return 0
+
 

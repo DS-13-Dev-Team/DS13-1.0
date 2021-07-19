@@ -26,7 +26,7 @@
 	core_skill = SKILL_MEDICAL
 	var/sloppy = 1 //Whether reagents will not be fully purified (sloppy = 1) or there will be reagent loss (sloppy = 0) on reagent add.
 
-/obj/machinery/chem_master/New()
+/obj/machinery/chem_master/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	create_reagents(1000)
 	..()
 
@@ -337,7 +337,7 @@
 	var/limit = 10
 	var/list/holdingitems = list()
 
-/obj/machinery/reagentgrinder/New()
+/obj/machinery/reagentgrinder/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
 

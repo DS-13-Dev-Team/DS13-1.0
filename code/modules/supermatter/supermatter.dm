@@ -104,7 +104,7 @@
 	var/aw_delam = FALSE
 	var/aw_EPR = FALSE
 
-/obj/machinery/power/supermatter/New()
+/obj/machinery/power/supermatter/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	uid = gl_uid++
 
@@ -536,8 +536,7 @@
 #undef CRITICAL_TEMPERATURE
 #undef CHARGING_FACTOR
 #undef DAMAGE_RATE_LIMIT
-#undef DETONATION_RADS_RANGE
-#undef DETONATION_RADS_BASE
+#undef DETONATION_RADS
 #undef DETONATION_MOB_CONCUSSION
 #undef DETONATION_APC_OVERLOAD_PROB
 #undef DETONATION_SHUTDOWN_APC

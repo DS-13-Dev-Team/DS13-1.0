@@ -12,7 +12,7 @@
 	var/_wifi_id
 	var/datum/wifi/receiver/button/igniter/wifi_receiver
 
-/obj/machinery/igniter/New()
+/obj/machinery/igniter/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	update_icon()
 

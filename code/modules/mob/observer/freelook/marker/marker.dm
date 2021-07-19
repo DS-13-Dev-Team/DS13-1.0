@@ -35,7 +35,7 @@
 	//Necrovision
 	visualnet_range = 12
 
-/obj/machinery/marker/New()
+/obj/machinery/marker/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	SSnecromorph.marker = src	//Populate the global var with ourselves
 	..()
 
@@ -286,6 +286,8 @@
 					message_necromorphs("<span class='necromarker'>[source] was destroyed, current spawnpoint was set to [N_Marker.spawnpoint].</span>")
 				break
 		SSnano.update_uis(shop)
+
+	crash_with("Marker removing spawnpoint [source]")
 
 
 //Marker spawning landmarks

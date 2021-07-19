@@ -22,7 +22,7 @@
 
 	var/current_heat_capacity = 50
 
-/obj/machinery/atmospherics/unary/cryo_cell/New()
+/obj/machinery/atmospherics/unary/cryo_cell/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	icon = 'icons/obj/cryogenics_split.dmi'
 	update_icon()

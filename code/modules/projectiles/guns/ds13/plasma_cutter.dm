@@ -41,7 +41,7 @@
 
 /obj/item/projectile/beam/cutter
 	name = "plasma arc"
-	damage = 15
+	damage = 12
 	accuracy = 130	//Its a broad arc, easy to land hits on limbs with
 	edge = 1
 	damage_type = BRUTE //plasma is a physical object with mass, rather than purely burning. this also means you can decapitate/sever limbs, not just ash them.
@@ -69,7 +69,7 @@
 
 
 /obj/item/projectile/beam/cutter/plasma
-	damage = 21
+	damage = 17.75
 	kill_count = 7 //an upgrade over the mining cutter, used for engineering work, but still not a proper firearm
 	dig_power = 900
 
@@ -96,7 +96,7 @@
 /obj/item/weapon/cell/plasmacutter
 	name = "plasma energy"
 	desc = "A light power pack designed for use with high energy cutting tools"
-	origin_tech = list(TECH_POWER = 6)
+	origin_tech = list(TECH_POWER = 4)
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "darts"
 	w_class = ITEM_SIZE_SMALL

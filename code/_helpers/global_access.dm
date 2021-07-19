@@ -77,8 +77,6 @@
 			return global.SSnano;
 		if("SSobj")
 			return global.SSobj;
-		if("SSopen_space")
-			return global.SSopen_space;
 		if("SSprocessing")
 			return global.SSprocessing;
 		if("SSradiation")
@@ -329,8 +327,8 @@
 			return global.damage_icon_parts;
 		if("dbcon")
 			return global.dbcon;
-		if("dbcon_old")
-			return global.dbcon_old;
+		if("dbcon")
+			return global.dbcon;
 		if("debug_verbs")
 			return global.debug_verbs;
 		if("decls_repository")
@@ -1036,8 +1034,6 @@
 			global.SSnano=newval;
 		if("SSobj")
 			global.SSobj=newval;
-		if("SSopen_space")
-			global.SSopen_space=newval;
 		if("SSprocessing")
 			global.SSprocessing=newval;
 		if("SSradiation")
@@ -1288,8 +1284,8 @@
 			global.damage_icon_parts=newval;
 		if("dbcon")
 			global.dbcon=newval;
-		if("dbcon_old")
-			global.dbcon_old=newval;
+		if("dbcon")
+			global.dbcon=newval;
 		if("debug_verbs")
 			global.debug_verbs=newval;
 		if("decls_repository")
@@ -1956,7 +1952,6 @@
 	"SSmobs",
 	"SSnano",
 	"SSobj",
-	"SSopen_space",
 	"SSprocessing",
 	"SSradiation",
 	"SSresearch",
@@ -2083,7 +2078,7 @@
 	"custom_items",
 	"damage_icon_parts",
 	"dbcon",
-	"dbcon_old",
+	"dbcon",
 	"debug_verbs",
 	"decls_repository",
 	"default_material_composition",

@@ -20,6 +20,13 @@ var/global/list/language_keys[0]					// Table of say codes for all languages
 var/global/list/whitelisted_species = list(SPECIES_HUMAN) // Species that require a whitelist check.
 var/global/list/playable_species = list(SPECIES_HUMAN)    // A list of ALL playable species, whitelisted, latejoin or otherwise.
 
+
+//A list of IC characters in the format character_id = mind
+GLOBAL_LIST_EMPTY(characters)
+
+
+GLOBAL_LIST_EMPTY(client_themes)
+
 var/list/mannequins_
 
 /*
@@ -204,9 +211,12 @@ var/global/list/string_slot_flags = list(
 		SA = new subtype()
 		GLOB.signal_abilities[SA.id] = SA
 
+	//Client themes
+	for (var/subtype in subtypesof(/decl/theme))
+		var/decl/theme/T = new subtype()
+		GLOB.client_themes[T.id] = T
 
-
-
+	//Targeting profiles
 	for (var/subtype in subtypesof(/datum/targeting_profile))
 		var/datum/targeting_profile/SA = subtype
 		if (initial(SA.base_type) == subtype)

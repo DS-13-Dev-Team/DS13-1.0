@@ -118,8 +118,8 @@
 			M.show_message(blind_message, AUDIBLE_MESSAGE)
 			continue
 	//Multiz, have shadow do same
-	if(shadow)
-		shadow.visible_message(message, self_message, blind_message)
+	if(bound_overlay)
+		bound_overlay.visible_message(message, self_message, blind_message)
 
 // Show a message to all mobs and objects in earshot of this one
 // This would be for audible actions by the src mob
@@ -1042,7 +1042,7 @@
 	set hidden = 1
 	set_face_dir(client.client_dir(WEST))
 
-/mob/proc/adjustEarDamage()
+/mob/proc/adjust_ear_damage()
 	return
 
 /mob/proc/setEarDamage()

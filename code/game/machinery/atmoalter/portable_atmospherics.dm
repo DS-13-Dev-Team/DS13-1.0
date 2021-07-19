@@ -13,7 +13,7 @@
 	var/maximum_pressure = 90 * ONE_ATMOSPHERE
 	atom_flags = ATOM_FLAG_CLIMBABLE
 
-/obj/machinery/portable_atmospherics/New()
+/obj/machinery/portable_atmospherics/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	air_contents.volume = volume

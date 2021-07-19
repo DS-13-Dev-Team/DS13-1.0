@@ -27,7 +27,7 @@
 	var/list/supported_programs = list()
 	var/list/restricted_programs = list()
 
-/obj/machinery/computer/HolodeckControl/New()
+/obj/machinery/computer/HolodeckControl/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	linkedholodeck = locate(linkedholodeck_area)
 	if (programs_list_id in GLOB.using_map.holodeck_supported_programs)
@@ -153,10 +153,10 @@
 		to_chat(user, "<span class='notice'>You vastly increase projector power and override the safety and security protocols.</span>")
 		to_chat(user, "Warning.  Automatic shutoff and derezing protocols have been corrupted.  Please call [GLOB.using_map.company_name] maintenance and do not use the simulator.")
 		log_game("[key_name(usr)] emagged the Holodeck Control Computer")
-		return 1
 		src.updateUsrDialog()
+		return TRUE
 	else
-		..()
+		return ..()
 
 /obj/machinery/computer/HolodeckControl/proc/update_projections()
 	if (safety_disabled)

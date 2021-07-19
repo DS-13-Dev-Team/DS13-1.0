@@ -69,7 +69,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 			//Messages having theese tokens will be rejected by server. Case sensitive
 	var/spamfilter_limit = MESSAGE_SERVER_DEFAULT_SPAM_LIMIT	//Maximal amount of tokens
 
-/obj/machinery/message_server/New()
+/obj/machinery/message_server/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	message_servers += src
 	decryptkey = GenerateKey()
 	..()

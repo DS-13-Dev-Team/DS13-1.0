@@ -32,9 +32,7 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
 "af" = (
-/obj/machinery/computer/shuttle_control/multi/kellion{
-	req_access = list(999)
-	},
+/obj/machinery/computer/shuttle_control/multi/kellion,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
 "ag" = (
@@ -104,7 +102,7 @@
 /obj/machinery/door/airlock/external{
 	dir = 8;
 	icon_state = "closed";
-	req_access = list(999)
+	req_access = list(900)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ERT/kellion)
@@ -147,7 +145,7 @@
 /obj/machinery/button/remote/blast_door{
 	id = "kellion_window";
 	name = "Kellion Blast Window Control";
-	req_access = list(999)
+	req_access = list(900)
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
@@ -747,7 +745,7 @@
 	id = "kellion_blast";
 	name = "Kellion Blast Door Control";
 	pixel_y = 24;
-	req_access = list(999)
+	req_access = list(900)
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
@@ -4453,7 +4451,7 @@
 	id = "kellion_blast";
 	name = "Kellion Blast Door Control";
 	pixel_y = 24;
-	req_access = list(999)
+	req_access = list(900)
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
@@ -4608,7 +4606,7 @@
 /obj/machinery/door/airlock/external{
 	dir = 8;
 	icon_state = "closed";
-	req_access = list(999)
+	req_access = list(900)
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
@@ -4617,7 +4615,7 @@
 /obj/machinery/button/remote/blast_door{
 	id = "kellion_window";
 	name = "Kellion Blast Window Control";
-	req_access = list(999)
+	req_access = list(900)
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
@@ -4633,7 +4631,7 @@
 /obj/machinery/door/airlock/external{
 	dir = 8;
 	icon_state = "closed";
-	req_access = list(999)
+	req_access = list(900)
 	},
 /turf/simulated/floor/reinforced,
 /area/space)

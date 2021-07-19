@@ -27,6 +27,7 @@
 	var/account_allowed = 1               // Does this job type come with a station account?
 	var/economic_modifier = 2             // With how much does this job modify the initial account amount?
 	var/starting_credits = 0		 	  // Starting amount decided on by job. Overrides economic modifier.
+	var/salary	= SALARY_SKILLED	//How much money this job earns, every 30-minute pay period
 
 	var/outfit_type                       // The outfit the employee will be dressed in, if any
 
@@ -82,10 +83,9 @@
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
-	var/money_amount = (rand(5,50) + rand(5, 50))
-	money_amount = round(money_amount)
-	if(starting_credits)
-		money_amount = starting_credits
+	//Here we load persistent credits from the database
+	var/money_amount = get_character_credits(H.mind)
+	
 	var/datum/money_account/M = create_account(H.real_name, money_amount, null)
 	if(H.mind)
 		var/remembered_info = ""
@@ -99,6 +99,7 @@
 		H.mind.store_memory(remembered_info)
 
 		H.mind.initial_account = M
+		update_lastround_credits(H.mind)	//Update persistent credits to prepare for future changes
 
 	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
 
