@@ -49,7 +49,8 @@ GLOBAL_DATUM(peng, /obj/item/weapon/peng)
 
 	claimed = TRUE
 	visible_message("Congratulations! You've found peng. Turn her in at a store to redeem a reward.")
-	command_announcement.Announce("Peng has been found by [user.real_name] at [jumplink(user)], please congratulate them.  This has been a cross-promotional announcement from Peng corp.", desc)
+	command_announcement.Announce("Peng has been found by [user.real_name] at [loctext(user)], please congratulate them. But remember, there's always More Peng!\n\
+	 This has been a cross-promotional announcement from Peng corp.", desc)
 
 	//Lets make a new Peng
 	var/turf/T = pick(GLOB.loot_locations)
