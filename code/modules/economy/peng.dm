@@ -39,7 +39,6 @@ GLOBAL_DATUM(peng, /obj/item/weapon/peng)
 	log_admin("Peng spawned at [jumplink(src)]")
 
 /obj/item/weapon/peng/pickup(var/mob/living/user as mob)
-	world << "Peng claimed"
 	if (user)
 		claim(user)
 
