@@ -48,7 +48,7 @@ datum/preferences
 /datum/category_item/player_setup_item/general/basic/update_setup()
 
 	var/ID_needed = FALSE
-	if (!isnull(pref.character_id))
+	if (!isnull(pref.character_id) && (dbcon?.IsConnected()))
 		//Here we will account for an edge case
 		//If we have an ID, but the database has been wiped and no longer contains our information....
 		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM characters	WHERE	 (character_id = [pref.character_id]);")
@@ -64,8 +64,8 @@ datum/preferences
 	//If there is no character ID or the one we have is invalid, re/register one in the database
 	if (ID_needed)
 		pref.character_id = null
-		get_character_id(pref)
-		return TRUE	//Returning true tells it to save preferences back to disk. This will ensure this is only done once, and not every round
+		if (get_character_id(pref))
+			return TRUE	//Returning true tells it to save preferences back to disk. This will ensure this is only done once, and not every round
 
 		//TODO: Figure out why character switching isnt working
 		//TODO: Delete character from database if deleted ingame?

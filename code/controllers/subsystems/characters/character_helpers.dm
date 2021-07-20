@@ -18,7 +18,7 @@
 */
 /proc/get_character_id(var/data)
 
-	if(!dbcon || !dbcon.IsConnected())
+	if(!dbcon || !(dbcon?.IsConnected()))
 		return null
 
 	//Data used for registering, if we need to
@@ -88,7 +88,7 @@
 //TODO: Insert in preferences menu
 /proc/get_character_credits(var/character_data)
 	var/id = get_character_id(character_data)
-	if (!id)
+	if (!id || !(dbcon?.IsConnected()))
 		return 0
 
 	//Get the number of credits from the database record associated with our ID
@@ -111,7 +111,7 @@
 	var/id = get_character_id(M)
 
 
-	if (!id)
+	if (!id || !(dbcon?.IsConnected()))
 		return
 
 
@@ -140,7 +140,7 @@
 
 	var/id = get_character_id(M)
 
-	if (!id)
+	if (!id || !(dbcon?.IsConnected()))
 		return 0
 
 	var/credits_stored = credits["stored"]
