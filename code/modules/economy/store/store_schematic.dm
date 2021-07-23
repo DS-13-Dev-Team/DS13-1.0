@@ -75,3 +75,15 @@
 	var/datum/design/D = SSresearch.design_ids[design_id]
 	design_name = D.item_name
 	name = "Store Schematic ([design_name])"
+
+
+
+/obj/machinery/store/proc/handle_peng(var/obj/item/weapon/peng/I, var/mob/user)
+
+
+
+	visible_message("Thank you for participating in the Peng cross-promotional scheme, [user.real_name]. Your account has been credited with [PENG_BOUNTY] credits")
+	occupant.recieve_credits(PENG_BOUNTY, machine_id, machine_id, "Peng Bounty")
+
+	occupant.remove_item(I)
+	qdel(I)

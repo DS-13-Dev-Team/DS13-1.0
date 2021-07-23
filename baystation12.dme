@@ -1708,6 +1708,7 @@
 #include "code\modules\economy\Events.dm"
 #include "code\modules\economy\Events_Mundane.dm"
 #include "code\modules\economy\money_account.dm"
+#include "code\modules\economy\peng.dm"
 #include "code\modules\economy\TradeDestinations.dm"
 #include "code\modules\economy\store\_readme.dm"
 #include "code\modules\economy\store\store_credits.dm"
