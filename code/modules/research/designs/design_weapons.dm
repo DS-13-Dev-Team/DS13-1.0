@@ -1,5 +1,36 @@
+/*
+List of circuit's designs:
+Guns:
++	chemsprayer
++	large capacity syringe gun
++	large chemical grenade case
+	//advanced flash
++	C99 Supercollider Contact Beam
++	210-V mining cutter
++	211-V plasma cutter
++	Advanced Combat Shield
++	Winchester NK Divet pistol
++	SWS Motorized Pulse Rifle
++	RC-DS Remote Control Disc Ripper
++	IM-822 Handheld Ore Cutter Line Gun
++	T15 Javelin Gun
++	PFM-100 Industrial Torch
++	Seeker Rifle
+Ammo:
++	divet magazine
++	speed loader (.44 magnum)
++	plasma energy
++	rivet bolts
++	pulse rounds
++	high velocity pulse rounds
++	ripper blades (steel)
++	ripper blades (diamond)
++	line racks
++	force energy
++	contact energy
+*/
 /datum/design/item/weapon
-	category = list("Weapons")
+	category = "Weapons"
 	build_type = PROTOLATHE | STORE
 	price = 7000
 	materials = list(MATERIAL_STEEL = 30000, MATERIAL_GLASS = 2000, MATERIAL_SILVER = 4000, MATERIAL_URANIUM = 4000)
@@ -34,7 +65,7 @@
 
 /datum/design/item/weapon/large_grenade
 	name = "large chemical grenade case"
-	id = "large_Grenade"
+	id = "large_grenade"
 	materials = list(MATERIAL_STEEL = 3000)
 	build_path = /obj/item/weapon/grenade/chem_grenade/large
 	sort_string = "TABAA"
@@ -46,6 +77,22 @@
 	build_path = /obj/item/device/flash/advanced
 	sort_string = "TADAA"
 */
+/datum/design/item/weapon/stunbaton
+	name = "stunbaton"
+	desc = "A stun baton for incapacitating people with."
+	id = "stunbaton"
+	materials = list(MATERIAL_STEEL = 3000, MATERIAL_GLASS = 500)
+	build_path = /obj/item/weapon/melee/baton/loaded
+	sort_string = "TABAA"
+
+/datum/design/item/weapon/handcuffs
+	name = "handcuffs"
+	desc = "Use this to keep prisoners in line."
+	id = "handcuffs"
+	materials = list(MATERIAL_STEEL = 1000)
+	build_path = /obj/item/weapon/handcuffs
+	sort_string = "TABAA"
+
 /datum/design/item/weapon/contactbeam
 	name = "C99 Supercollider Contact Beam"
 	id = "contactbeam"
@@ -131,12 +178,13 @@
 	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GLASS = 100, MATERIAL_GOLD = 4000, MATERIAL_SILVER = 4000)
 	price = 11000
 
-/datum/design/item/weapon/grenadelauncher
-	name = "junk grenade launcher"
-	id = "grenadelauncher"
-	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000)
-	build_path = /obj/item/weapon/gun/launcher/grenade
+/datum/design/item/weapon/seeker
+	name = "Seeker Rifle"
+	id = "seeker"
+	build_path = /obj/item/weapon/gun/projectile/seeker
+	build_type = PROTOLATHE		//Temp. Add to store once proper price specifide
 	sort_string = "TBECF"
+	materials = list(MATERIAL_STEEL = 2500, MATERIAL_PLASTEEL = 7500, MATERIAL_GLASS = 100, MATERIAL_DIAMOND = 800, MATERIAL_PLASTIC = 2000)
 
 /datum/design/item/ammo
 	category = "Ammunition"
@@ -154,10 +202,10 @@
 	price = 1200
 
 /datum/design/item/ammo/fiftycal/ammo
-	name = ".50 AE magazine"
-	id = "50cal"
-	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GOLD = 2000, MATERIAL_DIAMOND = 1000, MATERIAL_PLASTEEL = 2000) // Plasteel can be changed to deuterium later when I get around to defining material for it. If you have an idea for a reagent that could be used to minimize production of these, please add it.
-	build_path = /obj/item/ammo_magazine/a50
+	name = "speed loader (.44 magnum)"
+	id = "44cal"
+	materials = list(MATERIAL_STEEL = 750)
+	build_path = /obj/item/ammo_magazine/c44
 	sort_string = "TBECG"
 	price = 1200
 
@@ -185,7 +233,7 @@
 /datum/design/item/ammo/pulseslug
 	name = "pulse rounds"
 	id = "pulseslug"
-	materials = list(MATERIAL_STEEL = 7500, MATERIAL_DIAMOND = 1500) // Same thing here. It might need tweaking with exotic materials to stop people getting a lot of it early on though.
+	materials = list(MATERIAL_STEEL = 7500, MATERIAL_DIAMOND = 1500)
 	build_path = /obj/item/ammo_magazine/pulse
 	sort_string = "TBECG"
 	price = 1250
@@ -193,10 +241,18 @@
 /datum/design/item/ammo/pulsehighvel
 	name = "high velocity pulse rounds"
 	id = "pulsehighvel"
-	materials = list(MATERIAL_PLASTEEL = 17500, MATERIAL_DIAMOND = 5500, MATERIAL_PHORON = 2500) // Same thing here. It might need tweaking with exotic materials to stop people getting a lot of it early on though.
+	materials = list(MATERIAL_PLASTEEL = 7500, MATERIAL_DIAMOND = 2500, MATERIAL_PHORON = 500)
 	build_path = /obj/item/ammo_magazine/pulse/hv
 	sort_string = "TBECG"
 	price = 2500
+
+/datum/design/item/ammo/seeker_ammo
+	name = "seeker shell"
+	id = "seeker_ammo"
+	materials = list(MATERIAL_PLASTEEL = 5000, MATERIAL_DIAMOND = 1250, MATERIAL_URANIUM = 500)
+	build_path = /obj/item/projectile/bullet/seeker
+	build_type = PROTOLATHE //Temp. Add to the store once proper price will be specified
+	sort_string = "TBECG"
 
 
 
@@ -206,7 +262,6 @@
 	build_type = STORE
 	build_path = /obj/item/weapon/reagent_containers/glass/fuel_tank/fuel
 	price = 1000
-
 
 /datum/design/item/ammo/hydrazine_tank
 	name = "fuel tank (hydrazine)"

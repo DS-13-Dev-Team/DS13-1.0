@@ -30,6 +30,15 @@
 	var/max_material_storage = 100000
 	var/efficiency_coeff
 	var/list/queue = list()
+	var/list/allowed_mats = list(MATERIAL_STEEL,
+	MATERIAL_GLASS,
+	MATERIAL_PLASTIC,
+	MATERIAL_PLASTEEL,
+	MATERIAL_SILVER,
+	MATERIAL_GOLD,
+	MATERIAL_DIAMOND,
+	MATERIAL_URANIUM,
+	MATERIAL_PHORON)
 
 /obj/machinery/r_n_d/protolathe/Initialize()
 	materials = default_material_composition.Copy()
@@ -40,13 +49,12 @@
 	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
 	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/reagent_containers/glass/beaker(src)
-	component_parts += new /obj/item/weapon/reagent_containers/glass/beaker(src)
 	RefreshParts()
 
 	materials[MATERIAL_STEEL]	= new /datum/rnd_material("Steel",    /obj/item/stack/material/steel)
 	materials[MATERIAL_GLASS]	= new /datum/rnd_material("Glass",    /obj/item/stack/material/glass)
 	materials[MATERIAL_PLASTIC]	= new /datum/rnd_material("Plastic",  /obj/item/stack/material/plastic)
+	materials[MATERIAL_PLASTEEL]= new /datum/rnd_material("Plasteel", /obj/item/stack/material/plasteel)
 	materials[MATERIAL_SILVER]	= new /datum/rnd_material("Silver",   /obj/item/stack/material/silver)
 	materials[MATERIAL_GOLD]	= new /datum/rnd_material("Gold",     /obj/item/stack/material/gold)
 	materials[MATERIAL_DIAMOND]	= new /datum/rnd_material("Diamond",  /obj/item/stack/material/diamond)
@@ -76,7 +84,6 @@
 	A = A / max(1 , (being_built.materials[M]/efficiency_coeff))
 	return A
 
-
 /obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
@@ -103,6 +110,11 @@
 	if(!istype(O, /obj/item/stack/material))
 		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
 		return FALSE
+	var/obj/item/stack/material/stack = O
+	if(istype(O, /obj/item/stack/material))
+		if(!(stack.default_type in allowed_mats))
+			to_chat(user, "<span class='notice'>You cannot insert this material into the [src]!</span>")
+			return
 	if(stat)
 		return TRUE
 
@@ -110,36 +122,23 @@
 		to_chat(user, "<span class='notice'>\The [src]'s material bin is full. Please remove material before adding more.</span>")
 		return TRUE
 
-	var/obj/item/stack/material/stack = O
-	var/amount = round(input("How many sheets do you want to add?") as num)//No decimals
-	if(!O)
-		return
-	if(amount <= 0)
-		return
-	if(amount > stack.get_amount())
-		amount = stack.get_amount()
-	if(max_material_storage - TotalMaterials() < (amount*stack.perunit))//Can't overfill
-		amount = min(stack.get_amount(), round((max_material_storage-TotalMaterials())/stack.perunit))
+	var/amount = min(stack.get_amount(), round((max_material_storage - TotalMaterials()) / SHEET_MATERIAL_AMOUNT))
 
-	busy = TRUE
-
-	to_chat(user, "<span class='notice'>You add [amount] sheets to the [name].</span>")
-
-	overlays += "protolathe_n"
+	var/t = stack.material.name
+	overlays += "protolathe_[t]"
 	spawn(10)
-		overlays -= "protolathe_n"
+		overlays -= "protolathe_[t]"
 
-	use_power(max(1000, (3750 * amount / 10)))
-
-	if(stack.get_amount() >= amount)
+	busy = 1
+	use_power(max(1000, (SHEET_MATERIAL_AMOUNT * amount / 10)))
+	if(t)
 		if(do_after(user, 16,src))
 			for(var/M in materials)
 				if(stack.stacktype == materials[M].sheet_type)
 					if(stack.use(amount))
 						materials[M].amount += amount * stack.perunit
 						break
-
-	busy = FALSE
+	busy = 0
 	if(linked_console)
 		linked_console.update_open_uis()
 
@@ -202,7 +201,7 @@
 	if(linked_console)
 		linked_console.update_open_uis()
 
-/obj/machinery/r_n_d/protolathe/proc/eject_sheet(sheet_type, amount)
+/obj/machinery/r_n_d/protolathe/eject_sheet(sheet_type, amount)
 	if(materials[sheet_type])
 		var/available_num_sheets = Floor(materials[sheet_type].amount / materials[sheet_type].sheet_size)
 		if(available_num_sheets > 0)

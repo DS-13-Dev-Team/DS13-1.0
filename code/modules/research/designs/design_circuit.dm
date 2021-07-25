@@ -1,54 +1,55 @@
 /*
 List of circuit's designs:
-	battle arcade machine
-	orion trail arcade machine
-	prisoner management console
-	patient monitoring console
-	crew monitoring console
-	R&D control console
-	telecommunications monitoring console
-	telecommunications server monitoring console
-	telecommunications traffic control console
-	messaging monitor console
-	destructive analyzer
-	protolathe
-	circuit imprinter
-	autolathe board
-	R&D server control console
-	R&D server
-	exosuit fabricator
-	atmosphere alert console
-	atmosphere monitoring console
-	RCON remote control console
-	power monitoring console
-	solar control console
-	PACMAN-type generator
-	SUPERPACMAN-type generator
-	MRSPACMAN-type generator
-	cell rack PSU
-	'SMES' superconductive magnetic energy storage
-	gas heating system
-	gas cooling system
-	secure airlock electronics
-	biogenerator
-	mining drill head
-	mining drill brace
-	server mainframe
-	processor unit
-	bus mainframe
-	hub mainframe
-	relay mainframe
-	subspace broadcaster
-	subspace receiver
-	Shield Generator
-	Shield Diffuser
-	SolNet Quantum Relay
-	fusion core control console
-	fusion fuel compressor
-	fusion fuel control console
-	gyrotron control console
-	fusion core
-	fusion fuel injector
++	battle arcade machine
++	orion trail arcade machine
++	prisoner management console
++	patient monitoring console
++	crew monitoring console
++	R&D control console
++	telecommunications monitoring console
++	telecommunications server monitoring console
++	telecommunications traffic control console
++	messaging monitor console
++	destructive analyzer
++	protolathe
++	circuit imprinter
++	autolathe board
++	R&D server control console
++	R&D server
+	//exosuit fabricator
++	atmosphere alert console
++	atmosphere monitoring console
++	RCON remote control console
++	power monitoring console
++	solar control console
++	PACMAN-type generator
++	SUPERPACMAN-type generator
++	MRSPACMAN-type generator
++	cell rack PSU
++	'SMES' superconductive magnetic energy storage
++	gas heating system
++	gas cooling system
++	biogenerator
++	mining drill head
++	mining drill brace
++	server mainframe
++	processor unit
++	bus mainframe
++	hub mainframe
++	relay mainframe
++	subspace broadcaster
++	subspace receiver
++	Shield Generator
++	Shield Diffuser
++	SolNet Quantum Relay
++	fusion core control console
++	fusion fuel compressor
++	fusion fuel control console
++	gyrotron control console
++	fusion core
++	fusion fuel injector
++	chemical dispenser
++	chem master
 */
 
 /datum/design/circuit
@@ -249,13 +250,6 @@ List of circuit's designs:
 	build_path = /obj/item/weapon/circuitboard/unary_atmos/cooler
 	sort_string = "JCAAB"
 
-/datum/design/circuit/secure_airlock
-	name = "secure airlock electronics"
-	desc =  "Allows for the construction of a tamper-resistant airlock electronics."
-	id = "securedoor"
-	build_path = /obj/item/weapon/airlock_electronics/secure
-	sort_string = "JDAAA"
-
 /datum/design/circuit/biogenerator
 	name = "biogenerator"
 	id = "biogenerator"
@@ -376,3 +370,93 @@ List of circuit's designs:
 	id = "fusion_injector"
 	build_path = /obj/item/weapon/circuitboard/fusion_injector
 	sort_string = "LAAAI"
+
+/datum/design/circuit/chemical_dispenser
+	name = "chemical dispenser"
+	id = "chemical_dispenser"
+	build_path = /obj/item/weapon/circuitboard/chemical_dispenser
+	sort_string = "LAAAK"
+
+/datum/design/circuit/chem_master
+	name = "chem master"
+	id = "chem_master"
+	build_path = /obj/item/weapon/circuitboard/chem_master
+	sort_string = "LAAAH"
+
+/datum/design/circuit/hydro_tray
+	name = "Hydroponic Tray"
+	id = "hydro_tray"
+	build_path = /obj/item/weapon/circuitboard/hydro_tray
+	sort_string = "LAAAH"
+
+/datum/design/circuit/seed_extractor
+	name = "Seed Extractor"
+	id = "seed_extractor"
+	build_path = /obj/item/weapon/circuitboard/seed_extractor
+	sort_string = "LAAAH"
+
+/datum/design/circuit/smartfridge
+	name = "Smartfridge"
+	id = "smartfridge"
+	build_path = /obj/item/weapon/circuitboard/smartfridge
+	sort_string = "LAAAH"
+
+/datum/design/circuit/deepfryer
+	name = "Deep Fryer"
+	id = "deepfryer"
+	build_path = /obj/item/weapon/circuitboard/deepfryer
+	sort_string = "LAAAH"
+
+/datum/design/circuit/microwave
+	name = "Microwave"
+	id = "microwave"
+	build_path = /obj/item/weapon/circuitboard/microwave
+	sort_string = "LAAAH"
+
+/datum/design/circuit/oven
+	name = "Oven"
+	id = "oven"
+	build_path = /obj/item/weapon/circuitboard/oven
+	sort_string = "LAAAH"
+
+/datum/design/circuit/grill
+	name = "Grill"
+	id = "grill"
+	build_path = /obj/item/weapon/circuitboard/grill
+	sort_string = "LAAAH"
+
+/datum/design/circuit/candymaker
+	name = "Candy Machine"
+	id = "candymaker"
+	build_path = /obj/item/weapon/circuitboard/candymaker
+	sort_string = "LAAAH"
+
+/datum/design/circuit/cereal
+	name = "Cereal"
+	id = "cereal"
+	build_path = /obj/item/weapon/circuitboard/cereal
+	sort_string = "LAAAH"
+
+/datum/design/circuit/gibber
+	name = "Gibber"
+	id = "gibber"
+	build_path = /obj/item/weapon/circuitboard/gibber
+	sort_string = "LAAAH"
+
+/datum/design/circuit/cryo_cell
+	name = "Cryo Cell"
+	id = "cryo_cell"
+	build_path = /obj/item/weapon/circuitboard/cryo_cell
+	sort_string = "LAAAH"
+
+/datum/design/circuit/sleeper
+	name = "Sleeper"
+	id = "sleeper"
+	build_path = /obj/item/weapon/circuitboard/sleeper
+	sort_string = "LAAAH"
+
+/datum/design/circuit/recharger
+	name = "Recharger"
+	id = "recharger"
+	build_path = /obj/item/weapon/circuitboard/recharger
+	sort_string = "LAAAH"

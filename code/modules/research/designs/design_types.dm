@@ -1,122 +1,135 @@
 /*
-Lis of designs:
+Lis of designs (+ means it's researchable):
 	power node
 Machinery parts:
-	basic capacitor
-	advanced capacitor
-	super capacitor
-	micro-manipulator
-	nano-manipulator
-	pico-manipulator
-	matter bin
-	advanced matter bin
-	super matter bin
-	micro-laser
-	high-power micro-laser
-	ultra-high-power micro-laser
-	scanning module
-	advanced scanning module
-	phasic scanning module
-	Rapid Part Exchange Device
++	basic capacitor
++	advanced capacitor
++	super capacitor
++	micro-manipulator
++	nano-manipulator
++	pico-manipulator
++	matter bin
++	advanced matter bin
++	super matter bin
++	micro-laser
++	high-power micro-laser
++	ultra-high-power micro-laser
++	scanning module
++	advanced scanning module
++	phasic scanning module
++	Rapid Part Exchange Device
 Power cell:
-	basic power cell
-	advanced power cell
-	enhanced power cell
-	hyper-capacity power cell
-	device power cell
-	advanced device power cell
++	basic power cell
++	advanced power cell
++	enhanced power cell
++	hyper-capacity power cell
++	device power cell
++	advanced device power cell
 HUD and goggles:
-	health scanner hud
-	security scanner hud
-	meson goggles
-	material goggles
++	health scanner hud
++	security scanner hud
++	meson goggles
++	material goggles
 	tactical goggles
 Mining:
-	Rock Saw
-	SH-B1 Plasma Saw
-	depth scanner
-	Alden-Saraspova counter
++	Rock Saw
++	Excavation Drill
++	Diamond Excavation Drill
++	SH-B1 Plasma Saw
++	depth scanner
++	Alden-Saraspova counter
 Biology:
-	mass spectrometer
-	advanced mass spectrometer
-	reagent scanner
-	advanced reagent scanner
-	nanopaste
-	hypospray
-	Basic Laser Scalpel
-	Improved Laser Scalpel
-	Advanced Laser Scalpel
-	Incision Management System
-	beaker
-	large beaker
-	cryostasis beaker
-	bluespace beaker
++	health analyzer
++	Defibrillators
++	Compact Defibrillators
++	mass spectrometer
++	advanced mass spectrometer
++	reagent scanner
++	advanced reagent scanner
++	nanopaste
++	hypospray
++	Basic Laser Scalpel
++	Improved Laser Scalpel
++	Advanced Laser Scalpel
++	Incision Management System
++	beaker
++	large beaker
++	cryostasis beaker
++	bluespace beaker
 Implants:
++	implanter
 	chemical implant
-	death alarm
-	tracking implant
++	death alarm
++	tracking implant
 	imprinting implant
 	adrenaline implant
 	freedom implant
 	explosive implant
 Telecomm:
-	subspace ansible
-	hyperwave filter
-	subspace amplifier
-	subspace treatment disk
-	subspace wavelength analyzer
-	ansible crystal
-	subspace transmitter
++	subspace ansible
++	hyperwave filter
++	subspace amplifier
++	subspace treatment disk
++	subspace wavelength analyzer
++	ansible crystal
++	subspace transmitter
 Tracking:
-	tracking beacon
-	triangulating device
-	beacon tracking pinpointer
++	tracking beacon
++	triangulating device
++	beacon tracking pinpointer
 Engineering:
-	light replacer
-	airlock brace
-	maintenance jack
-	stasis clamp
-	price scanner
-	advanced welding tool
-	oxycandle
++	welding mask
++	light replacer
++	pneumatic crowbar
++	combi driver
++	airlock brace
++	maintenance jack
++	stasis clamp
++	price scanner
++	advanced welding tool
++	oxycandle
 SMES coils:
-	superconductive magnetic coil
-	superconductive capacitance coil
-	superconductive transmission coil
++	superconductive magnetic coil
++	superconductive capacitance coil
++	superconductive transmission coil
 Modular computers, PDAs etc:
-	micro hard drive
-	small hard drive
-	basic hard drive
-	advanced hard drive
-	super hard drive
-	cluster hard drive
-	basic network card
-	advanced network card
-	wired network card
-	basic data crystal
-	advanced data crystal
-	super data crystal
-	RFID card slot
-	nano printer
-	tesla link
-	reagent scanner module
-	paper scanner module
-	atmospheric scanner module
-	medical scanner module
-	standard battery module
-	advanced battery module
-	super battery module
-	ultra battery module
-	nano battery module
-	micro battery module
-	computer microprocessor unit
-	computer processor unit
-	computer photonic processor unit
-	computer photonic microprocessor unit
++	micro hard drive
++	small hard drive
++	basic hard drive
++	advanced hard drive
++	super hard drive
++	cluster hard drive
++	basic network card
++	advanced network card
++	wired network card
++	basic data crystal
++	advanced data crystal
++	super data crystal
++	RFID card slot
++	nano printer
++	tesla link
++	reagent scanner module
++	paper scanner module
++	atmospheric scanner module
++	medical scanner module
++	standard battery module
++	advanced battery module
++	super battery module
++	ultra battery module
++	nano battery module
++	micro battery module
++	computer microprocessor unit
++	computer processor unit
++	computer photonic processor unit
++	computer photonic microprocessor unit
++	PDA Frame
++	Tablet Frame
++	Laptop Frame
++	Telescreen Frame
 IC:
-	Integrated Circuit Printer
-	Integrated Circuit Printer Upgrade Disk
-	Integrated Circuit Printer Clone Disk
++	Integrated Circuit Printer
++	Integrated Circuit Printer Upgrade Disk
++	Integrated Circuit Printer Clone Disk
 */
 
 
@@ -138,6 +151,14 @@ IC:
 /datum/design/item/stock_part/AssembleDesignName()
 	..()
 	name = "Component design ([item_name])"
+
+/datum/design/item/megaphone
+	name = "Megaphone"
+	id = "megaphone"
+	materials = list(MATERIAL_STEEL = 500, MATERIAL_PLASTIC = 750)
+	build_path = /obj/item/device/megaphone
+	sort_string = "CAAAA"
+	price = 100
 
 /datum/design/item/stock_part/AssembleDesignDesc()
 	if(!desc)
@@ -407,6 +428,22 @@ IC:
 	sort_string = "KAAAA"
 	price = 2000
 
+/datum/design/item/mining/excavation_drill
+	name = "Excavation Drill"
+	desc = "Basic archaeological drill combining ultrasonic excitation and bluespace manipulation to provide extreme precision."
+	id = "excavation_drill"
+	build_type = PROTOLATHE
+	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000)
+	build_path = /obj/item/weapon/tool/pickaxe/xeno/excavationdrill
+
+/datum/design/item/mining/excavation_drill_diamond
+	name = "Diamond Excavation Drill"
+	desc = "Advanced archaeological drill combining ultrasonic excitation and bluespace manipulation to provide extreme precision."
+	id = "excavation_drill_diamond"
+	build_type = PROTOLATHE
+	materials = list(MATERIAL_METAL = 3000, MATERIAL_GLASS = 1000, MATERIAL_DIAMOND = 3750)
+	build_path = /obj/item/weapon/tool/pickaxe/xeno/excavationdrill/adv
+
 /datum/design/item/mining/plasmasaw
 	name = "SH-B1 Plasma Saw"
 	id = "SH-B1 Plasma Saw"
@@ -441,6 +478,29 @@ IC:
 /datum/design/item/medical/AssembleDesignName()
 	..()
 	name = "Biotech device prototype ([item_name])"
+
+/datum/design/item/medical/health_analyzer
+	name = "health analyzer"
+	desc = "A hand-held body scanner able to distinguish vital signs of the subject."
+	id = "health_analyzer"
+	sort_string = "MACAA"
+	materials = list(MATERIAL_STEEL = 1000, MATERIAL_GLASS = 300)
+	build_path = /obj/item/device/healthanalyzer
+	price = 250
+
+/datum/design/item/medical/defibrillators_back
+	name = "Defibrillators"
+	desc = "Defibrillators to revive people."
+	id = "defibrillators_back"
+	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 50)
+	build_path = /obj/item/weapon/defibrillator
+
+/datum/design/item/medical/defibrillators_belt
+	name = "Compact Defibrillators"
+	desc = "Defibrillators to revive people."
+	id = "defibrillators_compact"
+	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 50)
+	build_path = /obj/item/weapon/defibrillator/compact
 
 /datum/design/item/medical/mass_spectrometer
 	name = "mass spectrometer"
@@ -574,11 +634,18 @@ IC:
 
 /datum/design/item/implant
 	materials = list(MATERIAL_STEEL = 50, MATERIAL_GLASS = 50)
+	category = "Implants"
 	build_type = PROTOLATHE
 
 /datum/design/item/implant/AssembleDesignName()
 	..()
 	name = "Implantable biocircuit design ([item_name])"
+
+/datum/design/item/implant/implanter
+	name = "Implanter"
+	id = "implanter"
+	build_path = /obj/item/weapon/implanter
+	materials = list(MATERIAL_STEEL = 1000, MATERIAL_GLASS = 1000)
 
 /datum/design/item/implant/chemical
 	name = "chemical implant"
@@ -682,11 +749,10 @@ IC:
 	..()
 	name = "Biological intelligence storage ([item_name])"
 
-/datum/design/item/bluespace/AssembleDesignName()
-	..()
-	name = "Bluespace device ([item_name])"
+/datum/design/item/tracking
+	category = "Tracking"
 
-/datum/design/item/bluespace/beacon
+/datum/design/item/tracking/beacon
 	name = "tracking beacon"
 	id = "beacon"
 	materials = list (MATERIAL_STEEL = 20, MATERIAL_GLASS = 10)
@@ -694,7 +760,7 @@ IC:
 	sort_string = "VADAA"
 	price = 100
 
-/datum/design/item/bluespace/gps
+/datum/design/item/tracking/gps
 	name = "triangulating device"
 	desc = "Triangulates approximate co-ordinates using a nearby satellite network."
 	id = "gps"
@@ -703,7 +769,7 @@ IC:
 	sort_string = "VADAB"
 	price = 100
 
-/datum/design/item/bluespace/beacon_locator
+/datum/design/item/tracking/beacon_locator
 	name = "beacon tracking pinpointer"
 	desc = "Used to scan and locate signals on a particular frequency."
 	id = "beacon_locator"
@@ -714,9 +780,20 @@ IC:
 
 // tools
 
+/datum/design/item/tool
+	category = "Tools"
+
 /datum/design/item/tool/AssembleDesignName()
 	..()
 	name = "Tool design ([item_name])"
+
+/datum/design/item/tool/welding_mask
+	name = "Welding Mask"
+	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
+	id = "weldingmask"
+	build_type = PROTOLATHE | STORE
+	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GLASS = 1000)
+	build_path = /obj/item/clothing/head/welding
 
 /datum/design/item/tool/light_replacer
 	name = "light replacer"
@@ -726,6 +803,24 @@ IC:
 	build_path = /obj/item/device/lightreplacer
 	sort_string = "VAGAB"
 	price = 500
+
+/datum/design/item/tool/pneum_crow
+	name = "pneumatic crowbar"
+	desc = "When you realy need to crack open something."
+	id = "pneum_crow"
+	materials = list(MATERIAL_STEEL = 3200, MATERIAL_PLASTIC = 600, MATERIAL_SILVER = 50)
+	build_type = PROTOLATHE
+	build_path = /obj/item/weapon/tool/crowbar/pneumatic
+	sort_string = "VAGAB"
+
+/datum/design/item/tool/combi_driver
+	name = "combi driver"
+	desc = "Drive screws, drive bolts, drill bones, you can do everything with it."
+	id = "combi_driver"
+	materials = list(MATERIAL_STEEL = 1600, MATERIAL_PLASTIC = 1000, MATERIAL_SILVER = 50)
+	build_type = PROTOLATHE
+	build_path = /obj/item/weapon/tool/screwdriver/combi_driver
+	sort_string = "VAGAB"
 
 /datum/design/item/tool/airlock_brace
 	name = "airlock brace"
@@ -774,9 +869,8 @@ IC:
 /datum/design/item/tool/oxycandle
 	name = "oxycandle"
 	desc = "a device which, via a chemical reaction, can pressurise small areas."
-	id="oxycandle"
-	materials = list(MATERIAL_STEEL = 3000)
-	chemicals = list(/datum/reagent/sodiumchloride = 20, /datum/reagent/acetone = 20)
+	id = "oxycandle"
+	materials = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 500)
 	build_path = /obj/item/device/oxycandle
 	sort_string = "VAGAI"
 	price = 500
@@ -909,7 +1003,6 @@ IC:
 	name = "basic data crystal"
 	id = "portadrive_basic"
 	materials = list(MATERIAL_GLASS = 800)
-	chemicals = list(/datum/reagent/acid = 20)
 	build_path = /obj/item/weapon/computer_hardware/hard_drive/portable
 	sort_string = "VBACA"
 	price = 100
@@ -918,7 +1011,6 @@ IC:
 	name = "advanced data crystal"
 	id = "portadrive_advanced"
 	materials = list(MATERIAL_GLASS = 1600)
-	chemicals = list(/datum/reagent/acid = 20)
 	build_path = /obj/item/weapon/computer_hardware/hard_drive/portable/advanced
 	sort_string = "VBACB"
 	price = 250
@@ -927,7 +1019,6 @@ IC:
 	name = "super data crystal"
 	id = "portadrive_super"
 	materials = list(MATERIAL_GLASS = 3200)
-	chemicals = list(/datum/reagent/acid = 20)
 	build_path = /obj/item/weapon/computer_hardware/hard_drive/portable/super
 	sort_string = "VBACC"
 	price = 500
@@ -1058,7 +1149,6 @@ IC:
 	name = "computer microprocessor unit"
 	id = "cpu_small"
 	materials = list(MATERIAL_STEEL = 800)
-	chemicals = list(/datum/reagent/acid = 20)
 	build_path = /obj/item/weapon/computer_hardware/processor_unit/small
 	sort_string = "VBAFA"
 	price = 90
@@ -1074,7 +1164,7 @@ IC:
 /datum/design/item/modularcomponent/cpu/photonic
 	name = "computer photonic processor unit"
 	id = "pcpu_normal"
-	materials = list(MATERIAL_STEEL = 6400, glass = 2000)
+	materials = list(MATERIAL_STEEL = 6400, MATERIAL_GLASS = 2000)
 	build_path = /obj/item/weapon/computer_hardware/processor_unit/photonic
 	sort_string = "VBAFC"
 	price = 250
@@ -1082,10 +1172,34 @@ IC:
 /datum/design/item/modularcomponent/cpu/photonic/small
 	name = "computer photonic microprocessor unit"
 	id = "pcpu_small"
-	materials = list(MATERIAL_STEEL = 3200, glass = 1000)
+	materials = list(MATERIAL_STEEL = 3200, MATERIAL_GLASS = 1000)
 	build_path = /obj/item/weapon/computer_hardware/processor_unit/photonic/small
 	sort_string = "VBAFD"
 	price = 500
+
+/datum/design/item/modularcomponent/pda_frame
+	name = "PDA Frame"
+	id = "pda_frame"
+	materials = list(MATERIAL_STEEL = 750, MATERIAL_GLASS = 250)
+	build_path = /obj/item/modular_computer/pda
+
+/datum/design/item/modularcomponent/tablet_frame
+	name = "Tablet Frame"
+	id = "tablet_frame"
+	materials = list(MATERIAL_STEEL = 1500, MATERIAL_GLASS = 500)
+	build_path = /obj/item/modular_computer/tablet
+
+/datum/design/item/modularcomponent/laptop_frame
+	name = "Laptop Frame"
+	id = "laptop_frame"
+	materials = list(MATERIAL_STEEL = 3000, MATERIAL_GLASS = 1000)
+	build_path = /obj/item/modular_computer/laptop
+
+/datum/design/item/modularcomponent/telescreen_frame
+	name = "Telescreen Frame"
+	id = "telescreen_frame"
+	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 1500)
+	build_path = /obj/item/modular_computer/telescreen
 
 /datum/design/item/integrated_printer
 	name = "Integrated Circuit Printer"

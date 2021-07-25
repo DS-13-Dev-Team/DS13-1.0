@@ -56,17 +56,21 @@ cause a ton of data to be lost, an admin can go send it back.
 		if(MATERIAL_STEEL)
 			return_name = "Steel"
 		if(MATERIAL_GLASS)
-			return_name = MATERIAL_GLASS
+			return_name = "Glass"
+		if(MATERIAL_PLASTIC)
+			return_name = "Plastic"
+		if(MATERIAL_PLASTEEL)
+			return_name = "Plasteel"
 		if(MATERIAL_GOLD)
-			return_name = MATERIAL_GOLD
+			return_name = "Gold"
 		if(MATERIAL_SILVER)
-			return_name = MATERIAL_SILVER
+			return_name = "Silver"
 		if(MATERIAL_PHORON)
 			return_name = "Solid Phoron"
-		if("uranium")
+		if(MATERIAL_URANIUM)
 			return_name = "Uranium"
 		if(MATERIAL_DIAMOND)
-			return_name = MATERIAL_DIAMOND
+			return_name = "Diamond"
 	return return_name
 
 /obj/machinery/computer/rdconsole/proc/CallReagentName(var/reagent_type)
@@ -99,6 +103,7 @@ cause a ton of data to be lost, an admin can go send it back.
 	. = ..()
 	files = new /datum/research(src) //Setup the research data holder.
 	SyncRDevices()
+	sync_tech()
 
 /obj/machinery/computer/rdconsole/Destroy()
 	if(linked_destroy)
@@ -210,12 +215,10 @@ cause a ton of data to be lost, an admin can go send it back.
 		if(being_built)
 			linked_imprinter.queue_design(being_built)
 	if(href_list["select_category"])
-		var/what_cat
+		var/what_cat = href_list["select_category"]
 		if(screen == "protolathe")
-			what_cat = input("Which category do you wish to display?") as null|anything in files.design_categories_protolathe+"All"
 			selected_protolathe_category = what_cat
 		if(screen == "circuit_imprinter")
-			what_cat = input("Which category do you wish to display?") as null|anything in files.design_categories_imprinter+"All"
 			selected_imprinter_category = what_cat
 	if(href_list["search"])
 		var/input = input(usr, "Enter text to search", "Searching") as null|text
@@ -270,16 +273,6 @@ cause a ton of data to be lost, an admin can go send it back.
 			if("imprinter")
 				linked_imprinter.linked_console = null
 				linked_imprinter = null
-	if(href_list["reset"]) //Reset the R&D console's database.
-		griefProtection()
-		var/choice = alert("R&D Console Database Reset", "Are you sure you want to reset the R&D console's database? Data lost cannot be recovered.", "Continue", "Cancel")
-		if(choice == "Continue")
-			screen = "working"
-			qdel(files)
-			files = new /datum/research(src)
-			spawn(20)
-				screen = "main"
-				update_open_uis()
 	if(href_list["lock"]) //Lock the console from use by anyone without tox access.
 		if(allowed(usr) || emagged)
 			screen = "locked"
@@ -368,10 +361,10 @@ cause a ton of data to be lost, an admin can go send it back.
 	var/list/designs_list = list()
 	for(var/datum/design/D in files.known_designs)
 		if(D.build_type & build_type)
-			var/cat = list("Unspecified")
+			var/cat = "Unspecified"
 			if(D.category)
 				cat = D.category
-			if((category in cat) || (category == "Search Results" && findtext(D.name, search_text)))
+			if((category == cat) || (category == "Search Results" && findtext(D.name, search_text)))
 				var/temp_material
 				var/c = 50
 				var/t
@@ -381,11 +374,24 @@ cause a ton of data to be lost, an admin can go send it back.
 					if(build_type == IMPRINTER)
 						t = linked_imprinter.check_mat(D, M)
 
+
 					if(t < 1)
 						temp_material += " <span style=\"color:red\">[D.materials[M]/coeff] [CallMaterialName(M)]</span>"
 					else
 						temp_material += " [D.materials[M]/coeff] [CallMaterialName(M)]"
 					c = min(t,c)
+
+				if(D.chemicals.len)
+					for(var/R in D.chemicals)
+						if(build_type == IMPRINTER)
+							t = linked_imprinter.check_mat(D, R)
+
+						if(t < 1)
+							temp_material += " <span style=\"color:red\">[D.chemicals[R]/coeff] [CallReagentName(R)]</span>"
+						else
+							temp_material += " [D.chemicals[R]/coeff] [CallReagentName(R)]"
+						c = min(t,c)
+
 
 				designs_list += list(list(
 					"id" =             D.id,
@@ -558,7 +564,7 @@ cause a ton of data to be lost, an admin can go send it back.
 				for(var/req_tech_id in Tech.required_technologies)
 					if(files.all_technologies[selected_tech_tree][req_tech_id])
 						var/datum/technology/OTech = files.all_technologies[selected_tech_tree][req_tech_id]
-						if(OTech.tech_type == Tech.tech_type)
+						if(OTech.tech_type == Tech.tech_type && !Tech.no_lines)
 							var/line_x = (min(round(OTech.x*100), round(Tech.x*100)))
 							var/line_y = (min(round(OTech.y*100), round(Tech.y*100)))
 							var/width = (abs(round(OTech.x*100) - round(Tech.x*100)))
@@ -610,7 +616,7 @@ cause a ton of data to be lost, an admin can go send it back.
 				)
 				requirement_list += list(req_data)
 			for(var/t in Tech.required_technologies)
-				var/datum/technology/OTech = files.all_technologies[selected_tech_tree][t]
+				var/datum/technology/OTech = files.all_tech_no_types[t]
 
 				var/list/req_data = list(
 					"text" =           "[OTech.name]",
@@ -637,31 +643,7 @@ cause a ton of data to be lost, an admin can go send it back.
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/machinery/computer/rdconsole/robotics
-	name = "Robotics R&D Console"
-	id = 2
-	req_access = list(access_research)
-	can_research = FALSE
-
-/obj/machinery/computer/rdconsole/robotics/Initialize()
-	. = ..()
-	if(circuit)
-		circuit.name = "circuit board (RD Console - Robotics)"
-		circuit.build_path = /obj/machinery/computer/rdconsole/robotics
-
 /obj/machinery/computer/rdconsole/core
 	name = "Core R&D Console"
 	id = 1
 	can_research = TRUE
-
-/obj/machinery/computer/rdconsole/mining
-	name = "Mining R&D Console"
-	id = 3
-	req_access = list(access_mining)
-	can_research = FALSE
-
-/obj/machinery/computer/rdconsole/mining/Initialize()
-	. = ..()
-	if(circuit)
-		circuit.name = "circuit board (RD Console - Mining)"
-		circuit.build_path = /obj/machinery/computer/rdconsole/mining

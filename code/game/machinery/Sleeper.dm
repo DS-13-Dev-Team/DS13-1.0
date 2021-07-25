@@ -15,13 +15,26 @@
 	var/list/stasis_settings = list(1, 2, 5)
 	var/stasis = 1
 
+	var/mapload = FALSE
+
 	use_power = 1
 	idle_power_usage = 15
 	active_power_usage = 200 //builtin health analyzer, dialysis machine, injectors.
 
+/obj/machinery/sleeper/mapload
+	mapload = TRUE
+
 /obj/machinery/sleeper/Initialize()
 	. = ..()
-	beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
+	component_parts = list()
+	component_parts += new /obj/item/weapon/circuitboard/sleeper(null)
+	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
+	component_parts += new /obj/item/weapon/stock_parts/manipulator(null)
+	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
+	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
+	component_parts += new /obj/item/stack/cable_coil(null, 1)
+	if(mapload)
+		beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
 	update_icon()
 
 /obj/machinery/sleeper/Process()
@@ -102,7 +115,7 @@
 		to_chat(usr, "<span class='warning'>You can't reach the controls from the inside.</span>")
 		return STATUS_CLOSE
 	return ..()
-	    
+
 /obj/machinery/sleeper/OnTopic(user, href_list)
 	if(href_list["eject"])
 		go_out()
@@ -143,8 +156,17 @@
 		else
 			to_chat(user, "<span class='warning'>\The [src] has a beaker already.</span>")
 		return
+	if(!occupant)
+		if(default_deconstruction_screwdriver(user, I))
+			return
+	if(default_deconstruction_crowbar(user, I))
+		return
 	else
 		..()
+
+/obj/machinery/sleeper/dismantle()
+	remove_beaker()
+	..()
 
 /obj/machinery/sleeper/MouseDrop_T(var/mob/target, var/mob/user)
 	if(!CanMouseDrop(target, user))

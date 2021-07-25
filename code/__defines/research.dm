@@ -11,7 +11,6 @@
 #define TECH_DATA "programming"
 #define TECH_ILLEGAL "earth gov"
 #define TECH_NECRO "marker"
-#define TECH_ROBOT "roboticist"
 
 #define NONE		0
 #define IMPRINTER	1	//For circuits. Uses glass/chemicals.

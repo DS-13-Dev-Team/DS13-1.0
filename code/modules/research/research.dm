@@ -39,8 +39,9 @@ The tech datums are the actual "tech trees" that you improve through researching
 	var/list/design_categories_protolathe = list()
 	var/list/design_categories_imprinter = list()
 
-	var/list/tech_trees = list() // associative
-	var/list/all_technologies = list() // associative
+	var/list/tech_trees = list()
+	var/list/all_technologies = list()
+	var/list/all_tech_no_types = list()
 	var/list/researched_tech = list()
 
 	var/datum/experiment_data/experiments
@@ -59,6 +60,7 @@ The tech datums are the actual "tech trees" that you improve through researching
 
 	for(var/T in subtypesof(/datum/technology))
 		var/datum/technology/Tech = new T
+		all_tech_no_types[Tech.id] = Tech
 		if(all_technologies[Tech.tech_type])
 			all_technologies[Tech.tech_type][Tech.id] = Tech
 		else
@@ -90,7 +92,7 @@ The tech datums are the actual "tech trees" that you improve through researching
 			return FALSE
 
 	for(var/t in T.required_technologies)
-		var/datum/technology/OTech = all_technologies[T.tech_type][t]
+		var/datum/technology/OTech = all_tech_no_types[t]
 
 		if(!IsResearched(OTech))
 			return FALSE
@@ -267,17 +269,17 @@ The tech datums are the actual "tech trees" that you improve through researching
 	id = TECH_POWER
 
 /datum/tech/bluespace
-	name = "'Blue-space' Research"
-	shortname = "Blue-space"
-	desc = "Research into the sub-reality known as 'blue-space'."
+	name = "Telecommunication Research"
+	shortname = "Telecomm"
+	desc = "Research into the Telecommuncation"
 	id = TECH_BLUESPACE
 	rare = 2
 
-/datum/tech/robotics
-	name = "Robotics Research"
-	shortname = "Robotics"
-	desc = "Research into the exosuits"
-	id = TECH_ROBOT
+/datum/tech/data
+	name = "Computer Technology"
+	shortname = "Computer"
+	desc = "Research into the modular computers."
+	id = TECH_DATA
 
 /datum/tech/illegal
 	name = "Illegal Technologies Research"
@@ -296,3 +298,20 @@ The tech datums are the actual "tech trees" that you improve through researching
 	rare = 3
 	shown = FALSE
 	item_tech_req = TECH_NECRO
+
+/datum/technology
+	var/name = "name"
+	var/desc = "description"
+	var/id = "id"							// should be unique
+	var/tech_type							// Which tech tree does this techology belongs to
+
+	var/x = 0.5								// Position on the tech tree map, 0 - left, 1 - right
+	var/y = 0.5								// 0 - down, 1 - top
+	var/no_lines = FALSE					// Prevents rendering any lines that leads to this tech
+	var/icon = "gun"						// css class of techology icon, defined in shared.css
+
+	var/list/required_technologies = list()	// Ids of techologies that are required to be unlocked before this one. Should have same tech_type
+	var/list/required_tech_levels = list()	// list(TECH_BIO = 5, ...) Ids and required levels of tech
+	var/cost = 100							// How much research points required to unlock this techology
+
+	var/list/unlocks_designs = list()		// Ids of designs that this technology unlocks

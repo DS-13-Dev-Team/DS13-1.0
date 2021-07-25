@@ -11,6 +11,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	var/max_material_storage = 75000
 	var/efficiency_coeff
 	var/list/queue = list()
+	var/list/allowed_mats = list(MATERIAL_GLASS, MATERIAL_GOLD, MATERIAL_DIAMOND)
 
 /obj/machinery/r_n_d/circuit_imprinter/Initialize()
 	. = ..()
@@ -31,8 +32,10 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	for(var/obj/item/weapon/reagent_containers/glass/G in component_parts)
 		T += G.reagents.maximum_volume
 	create_reagents(T)
+	T = 0
 	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
 		T += M.rating
+	world << T
 	max_material_storage = T * 75000
 	T = 0
 	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
@@ -68,14 +71,15 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 		to_chat(user, "\The [src] must be linked to an R&D console first.")
 		return 1
 	if(O.is_open_container())
-		return 0
+		return 1
 	if(is_robot_module(O))
 		return 0
 	if(!istype(O, /obj/item/stack/material))
 		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
 		return 0
+	var/obj/item/stack/material/stack = O
 	if(istype(O, /obj/item/stack/material))
-		if(!istype(O, /obj/item/stack/material/glass) && !istype(O, /obj/item/stack/material/gold) && !istype(O, /obj/item/stack/material/diamond))
+		if(!(stack.default_type in allowed_mats))
 			to_chat(user, "<span class='notice'>You cannot insert this material into the [src]!</span>")
 			return
 	if(stat)
@@ -83,23 +87,18 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	if(busy)
 		to_chat(user, "The [src] is busy. Please wait for completion of previous operation.")
 		return
-	var/obj/item/stack/material/stack  = O
 	if((TotalMaterials() + stack.perunit) > max_material_storage)
 		to_chat(user, "The [src] is full. Please remove some materials from the protolathe in order to insert more.")
 		return
 
-	var/amount = round(input("How many sheets do you want to add?") as num)
-	if(amount <= 0)
-		return
-
-	if(amount > stack.get_amount())
-		amount = min(stack.get_amount(), round((max_material_storage-TotalMaterials())/stack.perunit))
+	var/amount = min(stack.get_amount(), round((max_material_storage - TotalMaterials()) / SHEET_MATERIAL_AMOUNT))
 
 	busy = 1
-	use_power(max(1000, (3750*amount/10)))
-	if(stack.get_amount() >= amount)
+	use_power(max(1000, (SHEET_MATERIAL_AMOUNT * amount / 10)))
+
+	var/t = stack.material.name
+	if(t)
 		if(do_after(usr, 16, src))
-			to_chat(user, "You add [amount] sheets to the [src].")
 			for(var/M in materials)
 				if(stack.stacktype == materials[M].sheet_type)
 					if(stack.use(amount))
@@ -167,7 +166,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	if(linked_console)
 		linked_console.update_open_uis()
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/eject_sheet(sheet_type, amount)
+/obj/machinery/r_n_d/circuit_imprinter/eject_sheet(sheet_type, amount)
 	if(materials[sheet_type])
 		var/available_num_sheets = Floor(materials[sheet_type].amount / materials[sheet_type].sheet_size)
 		if(available_num_sheets > 0)

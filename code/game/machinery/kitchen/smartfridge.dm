@@ -1,3 +1,4 @@
+GLOBAL_LIST_EMPTY(smartfridge_types)
 
 /* SmartFridge.  Much todo
 */
@@ -30,16 +31,22 @@
 
 /obj/machinery/smartfridge/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
+	component_parts = list()
+	component_parts += new /obj/item/weapon/circuitboard/deepfryer(null)
+	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
 	if(is_secure)
 		wires = new/datum/wires/smartfridge/secure(src)
 	else
 		wires = new/datum/wires/smartfridge(src)
 
+/obj/machinery/smartfridge/dismantle()
+	for(var/atom/movable/A in contents)
+		A.forceMove(loc)
+	..()
+
 /obj/machinery/smartfridge/Destroy()
 	qdel(wires)
 	wires = null
-	for(var/datum/stored_items/S in item_records)
-		qdel(S)
 	item_records = null
 	return ..()
 
@@ -222,6 +229,12 @@
 		if(panel_open)
 			overlays += image(icon, icon_panel)
 		SSnano.update_uis(src)
+		return
+
+	if(default_deconstruction_crowbar(user, O))
+		return
+
+	if(default_part_replacement(user, O))
 		return
 
 	if(isMultitool(O) || isWirecutter(O))

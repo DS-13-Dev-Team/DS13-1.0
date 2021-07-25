@@ -113,6 +113,7 @@
 	name = "Flash"
 	desc = "A normal flash, mountable on a RIG."
 	id = "rig_flash"
+	build_type = PROTOLATHE | STORE
 	materials = list("plastic" = 1500, MATERIAL_STEEL = 1000, MATERIAL_GLASS = 500)
 	build_path = /obj/item/rig_module/device/flash
 	sort_string = "WCJAA"
@@ -121,6 +122,7 @@
 	name = "Taser"
 	desc = "A taser, mountable on a RIG."
 	id = "rig_taser"
+	build_type = PROTOLATHE | STORE
 	materials = list(MATERIAL_STEEL = 4000, "plastic" = 2500, MATERIAL_GLASS = 2000, MATERIAL_GOLD = 1000)
 	build_path = /obj/item/rig_module/mounted/taser
 	sort_string = "WCKAA"

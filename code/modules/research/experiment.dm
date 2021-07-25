@@ -46,7 +46,7 @@
 			if(ignoreRepeat)
 				item_tech_points += I.origin_tech[T] * tech_points[T]
 			else
-				if(saved_tech_levels[T] && (I.origin_tech in saved_tech_levels[T])) // You only get a fraction of points if you researched items with this level already
+				if(T in saved_tech_levels) // You only get a fraction of points if you researched items with this level already
 					if(!is_board) // Boards are cheap to make so we don't give any points for repeats
 						item_tech_points += I.origin_tech[T] * tech_points[T] * 0.1
 				else
@@ -59,13 +59,12 @@
 	return round(item_tech_points)
 
 /datum/experiment_data/proc/do_research_object(obj/item/I)
-
 	for(var/T in I.origin_tech)
 		if(!saved_tech_levels[T])
 			saved_tech_levels[T] = list()
 
 		if(!(I.origin_tech in saved_tech_levels[T]))
-			saved_tech_levels[T] += I.origin_tech
+			saved_tech_levels[T] += I.origin_tech[T]
 
 // Returns ammount of research points received
 /*/datum/experiment_data/proc/read_science_tool(obj/item/device/science_tool/I)
@@ -198,7 +197,7 @@
 	throw_speed = 5
 	throw_range = 10
 	matter = list(MATERIAL_STEEL = 200)
-	origin_tech = "engineering=1;biotech=1"
+	origin_tech = list(TECH_ENGINEERING = 1, TECH_BIO = 1)
 
 	var/datum/experiment_data/experiments
 	var/list/scanned_autopsy_weapons = list()

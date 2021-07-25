@@ -146,6 +146,14 @@
 	temp_chem_holder = new()
 	temp_chem_holder.create_reagents(10)
 	temp_chem_holder.atom_flags |= ATOM_FLAG_OPEN_CONTAINER
+
+	component_parts = list()
+	component_parts += new /obj/item/weapon/circuitboard/hydro_tray(src)
+	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
+	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
+
 	create_reagents(200)
 	if(mechanical)
 		connect()
@@ -393,6 +401,14 @@
 	return
 
 /obj/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(default_deconstruction_screwdriver(user, O))
+		return
+
+	if(default_deconstruction_crowbar(user, O))
+		return
+
+	if(default_part_replacement(user, O))
+		return
 
 	if (O.is_open_container())
 		return 0

@@ -28,6 +28,22 @@
 	update_icon()
 	initialize_directions = dir
 
+	component_parts = list()
+	component_parts += new /obj/item/weapon/circuitboard/cryo_cell(null)
+	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
+	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
+	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
+	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
+	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
+	component_parts += new /obj/item/stack/cable_coil(null, 1)
+	RefreshParts()
+
+/obj/machinery/atmospherics/unary/cryo_cell/RefreshParts()
+	var/C
+	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
+		C += M.rating
+	current_heat_capacity = 50 * C
+
 /obj/machinery/atmospherics/unary/cryo_cell/Destroy()
 	var/turf/T = loc
 	T.contents += contents
@@ -180,7 +196,7 @@
 			return
 		beaker =  G
 		user.visible_message("[user] adds \a [G] to \the [src]!", "You add \a [G] to \the [src]!")
-	else if(istype(G, /obj/item/grab))
+	if(istype(G, /obj/item/grab))
 		if(!ismob(G:affecting))
 			return
 		for(var/mob/living/carbon/slime/M in range(1,G:affecting))
@@ -190,6 +206,13 @@
 		var/mob/M = G:affecting
 		if(put_mob(M))
 			qdel(G)
+	if(!(on || occupant))
+		if(default_deconstruction_screwdriver(user, G))
+			return
+		if(default_part_replacement(user, G))
+			return
+	if(default_deconstruction_crowbar(user, G))
+		return
 	return
 
 /obj/machinery/atmospherics/unary/cryo_cell/update_icon()

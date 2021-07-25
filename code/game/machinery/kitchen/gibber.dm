@@ -57,6 +57,11 @@
 
 /obj/machinery/gibber/Initialize()
 	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/weapon/circuitboard/gibber(null)
+	component_parts += new /obj/item/weapon/stock_parts/manipulator(null)
+	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
+	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
 	update_icon()
 
 /obj/machinery/gibber/update_icon()
@@ -94,7 +99,22 @@
 	to_chat(user, "<span class='danger'>You [emagged ? "disable" : "enable"] \the [src]'s safety guard.</span>")
 	return 1
 
+/obj/machinery/gibber/dismantle()
+	for(var/atom/movable/M in contents)
+		M.forceMove(loc)
+	..()
+
 /obj/machinery/gibber/attackby(var/obj/item/W, var/mob/user)
+	if(!operating)
+		if(default_deconstruction_screwdriver(user, W))
+			return
+
+		if(default_deconstruction_crowbar(user, W))
+			return
+
+		if(default_part_replacement(user, W))
+			return
+
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(!G.force_danger())
@@ -130,7 +150,7 @@
 		to_chat(user, "<span class='danger'>This is not suitable for \the [src]!</span>")
 		return
 
-	if(istype(victim,/mob/living/carbon/human) && !emagged)
+	if(istype(victim,/mob/living/carbon/human) && !emagged && !istype(victim,/mob/living/carbon/human/necromorph))
 		to_chat(user, "<span class='danger'>\The [src] safety guard is engaged!</span>")
 		return
 

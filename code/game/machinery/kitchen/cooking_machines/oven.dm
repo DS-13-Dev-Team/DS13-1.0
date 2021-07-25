@@ -22,3 +22,11 @@
 		"Cookie" = /obj/item/weapon/reagent_containers/food/snacks/variable/cookie,
 		"Donut" = /obj/item/weapon/reagent_containers/food/snacks/variable/donut,
 		)
+
+/obj/machinery/cooker/oven/Initialize()
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/weapon/circuitboard/oven(null)
+	component_parts += new /obj/item/weapon/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
+	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)

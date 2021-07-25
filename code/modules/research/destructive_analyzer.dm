@@ -96,10 +96,10 @@
 		linked_console.files.research_points += linked_console.files.experiments.get_object_research_value(loaded_item)
 		linked_console.files.experiments.do_research_object(loaded_item)
 
-	if(istype(loaded_item, /obj/item/stack/material))
-		var/obj/item/stack/material/S = loaded_item
+	if(istype(loaded_item, /obj/item/stack))
+		var/obj/item/stack/S = loaded_item
 		if(S.amount == 1)
-			qdel(S)
+			S.use(1)
 			icon_state = "d_analyzer"
 			loaded_item = null
 		else

@@ -27,8 +27,14 @@
 	var/sloppy = 1 //Whether reagents will not be fully purified (sloppy = 1) or there will be reagent loss (sloppy = 0) on reagent add.
 
 /obj/machinery/chem_master/New(var/atom/location, var/direction, var/nocircuit = FALSE)
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/weapon/circuitboard/chem_master(src)
+	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
+	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
+	component_parts += new /obj/item/weapon/reagent_containers/glass/beaker(src)
+	component_parts += new /obj/item/weapon/reagent_containers/glass/beaker(src)
 	create_reagents(1000)
-	..()
 
 /obj/machinery/chem_master/ex_act(severity)
 	switch(severity)
@@ -40,7 +46,18 @@
 				qdel(src)
 				return
 
+/obj/machinery/chem_master/dismantle()
+	if(beaker)
+		beaker.forceMove(loc)
+	..()
+
 /obj/machinery/chem_master/attackby(var/obj/item/weapon/B as obj, var/mob/user as mob)
+	if(default_deconstruction_screwdriver(user, B))
+		return
+	if(default_deconstruction_crowbar(user, B))
+		return
+	if(default_part_replacement(user, B))
+		return
 
 	if(istype(B, /obj/item/weapon/reagent_containers/glass))
 
