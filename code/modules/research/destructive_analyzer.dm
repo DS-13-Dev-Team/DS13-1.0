@@ -25,11 +25,22 @@
 		temp_list[O] = text2num(temp_list[O])
 	return temp_list
 
+/obj/machinery/r_n_d/destructive_analyzer/update_icon()
+	if(panel_open)
+		icon_state = "d_analyzer_t"
+	else if(busy)
+		icon_state = "d_analyzer_process"
+	else if(loaded_item)
+		icon_state = "d_analyzer_l"
+	else
+		icon_state = "d_analyzer"
 
 /obj/machinery/r_n_d/destructive_analyzer/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if (shocked)
 		shock(user,50)
-	if (default_deconstruction_screwdriver(user, "d_analyzer_t", "d_analyzer", O))
+
+	if (default_deconstruction_screwdriver(user, O))
+		update_icon()
 		if(linked_console)
 			linked_console.linked_destroy = null
 			linked_console = null
@@ -42,11 +53,14 @@
 		return
 	if (disabled)
 		return
-	if (!linked_console)
-		to_chat(user, "<span class='warning'>The protolathe must be linked to an R&D console first!</span>")
+	if(panel_open)
+		to_chat(user, "<span class='notice'>You can't load \the [src] while it's opened.</span>")
+		return 1
+	if(!linked_console)
+		to_chat(user, "<span class='notice'>\The [src] must be linked to an R&D console first.</span>")
 		return
 	if (busy)
-		to_chat(user, "<span class='warning'> The protolathe is busy right now.</span>")
+		to_chat(user, "<span class='warning'> The [src] is busy right now.</span>")
 		return
 	if (istype(O, /obj/item) && !loaded_item)
 		if(isrobot(user)) //Don't put your module items in there!
@@ -57,21 +71,19 @@
 		if (O.origin_tech.len == 0 || O.holographic)
 			to_chat(user, "<span class='warning'> You cannot deconstruct this item!</span>")
 			return
-		busy = 1
 		loaded_item = O
 		user.drop_item()
 		O.loc = src
-		to_chat(user, "<span class='notice'>You add the [O.name] to the machine!</span>")
+		busy = TRUE
+		to_chat(user, "<span class='notice'>You add the [O.name] to the [src]!</span>")
 		flick("d_analyzer_la", src)
+		spawn(10)
+			busy = FALSE
+			update_icon()
 		if(linked_console)
 			linked_console.update_open_uis()
-		addtimer(CALLBACK(src, .proc/unbusy), 10)
 		return 1
 	return
-
-/obj/machinery/r_n_d/destructive_analyzer/proc/unbusy()
-	icon_state = "d_analyzer_l"
-	busy = 0
 
 /obj/machinery/r_n_d/destructive_analyzer/proc/deconstruct_item()
 	if(busy)
@@ -81,13 +93,14 @@
 		return
 
 	busy = TRUE
-	flick("d_analyzer_process", src)
+	update_icon()
 	if(linked_console)
 		linked_console.screen = "working"
 	addtimer(CALLBACK(src, .proc/finish_deconstructing), 24)
 
 /obj/machinery/r_n_d/destructive_analyzer/proc/finish_deconstructing()
 	busy = FALSE
+	update_icon()
 	if(hacked)
 		return
 
@@ -100,14 +113,14 @@
 		var/obj/item/stack/S = loaded_item
 		if(S.amount == 1)
 			S.use(1)
-			icon_state = "d_analyzer"
 			loaded_item = null
+			update_icon()
 		else
 			S.use(1)
 	else
 		qdel(loaded_item)
-		icon_state = "d_analyzer"
 		loaded_item = null
+		update_icon()
 
 	use_power(250)
 	if(linked_console)
@@ -122,4 +135,4 @@
 	if(loaded_item)
 		loaded_item.forceMove(loc)
 		loaded_item = null
-		icon_state = "d_analyzer"
+		update_icon()

@@ -15,7 +15,7 @@ var/list/default_material_composition = list("steel" = 0, MATERIAL_GLASS = 0, MA
 	var/shocked = 0
 	var/datum/wires/rnd/wires = null
 	var/obj/machinery/computer/rdconsole/linked_console
-
+	var/working = 0
 	var/list/materials = list()
 
 /obj/machinery/r_n_d/proc/eject_sheet()

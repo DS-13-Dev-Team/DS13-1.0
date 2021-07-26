@@ -42,6 +42,14 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 		T += M.rating
 	efficiency_coeff = 2 ** (T - 1)
 
+/obj/machinery/r_n_d/circuit_imprinter/update_icon()
+	if(panel_open)
+		icon_state = "circuit_imprinter_t"
+	else if(working)
+		icon_state = "circuit_imprinter_ani"
+	else
+		icon_state = "circuit_imprinter"
+
 /obj/machinery/r_n_d/circuit_imprinter/proc/check_mat(datum/design/being_built, M)
 	if(materials[M])
 		return (materials[M].amount - (being_built.materials[M]/efficiency_coeff) >= 0) ? 1 : 0
@@ -56,6 +64,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 
 /obj/machinery/r_n_d/circuit_imprinter/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
+		update_icon()
 		if(linked_console)
 			linked_console.linked_imprinter = null
 			linked_console = null
@@ -94,6 +103,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	var/amount = min(stack.get_amount(), round((max_material_storage - TotalMaterials()) / SHEET_MATERIAL_AMOUNT))
 
 	busy = 1
+	update_icon()
 	use_power(max(1000, (SHEET_MATERIAL_AMOUNT * amount / 10)))
 
 	var/t = stack.material.name
@@ -105,6 +115,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 						materials[M].amount += amount * stack.perunit
 						break
 	busy = 0
+	update_icon()
 	if(linked_console)
 		linked_console.update_open_uis()
 
@@ -138,26 +149,29 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 		return
 
 	busy = TRUE
-	flick("circuit_imprinter_ani", src)
+	update_icon()
 	use_power(power)
 
 	for(var/M in D.materials)
 		if(!check_mat(D, M))
 			visible_message("<span class='warning'>The [name] beeps, \"Not enough materials to complete prototype.\"</span>")
 			busy = FALSE
+			update_icon()
 			return
+
 	for(var/M in D.materials)
 		if(materials[M])
 			materials[M].amount = max(0, (materials[M].amount - (D.materials[M] / efficiency_coeff)))
 		else
 			reagents.remove_reagent(M, D.materials[M]/efficiency_coeff)
 
-	addtimer(CALLBACK(src, .proc/create_design, RNDD), 16)
+	addtimer(CALLBACK(src, .proc/create_design, RNDD), D.time)
 
 /obj/machinery/r_n_d/circuit_imprinter/proc/create_design(datum/rnd_queue_design/RNDD)
 	var/datum/design/D = RNDD.design
 	new D.build_path(loc)
 	busy = FALSE
+	update_icon()
 	queue -= RNDD
 
 	if(queue.len)

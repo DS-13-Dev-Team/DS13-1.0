@@ -77,6 +77,14 @@
 		T += (M.rating/3)
 	efficiency_coeff = max(T, 1)
 
+/obj/machinery/r_n_d/protolathe/update_icon()
+	if(panel_open)
+		icon_state = "protolathe_t"
+	else if(busy)
+		icon_state = "protolathe_n"
+	else
+		icon_state = "protolathe"
+
 /obj/machinery/r_n_d/protolathe/proc/check_mat(datum/design/being_built, M)
 	var/A = 0
 	if(materials[M])
@@ -89,6 +97,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
 		return TRUE
 	if(default_deconstruction_screwdriver(user, O))
+		update_icon()
 		if(linked_console)
 			linked_console.linked_lathe = null
 			linked_console = null
@@ -126,19 +135,20 @@
 
 	var/t = stack.material.name
 	overlays += "protolathe_[t]"
-	spawn(10)
-		overlays -= "protolathe_[t]"
 
-	busy = 1
+	busy = TRUE
+	update_icon()
 	use_power(max(1000, (SHEET_MATERIAL_AMOUNT * amount / 10)))
 	if(t)
-		if(do_after(user, 16,src))
+		if(do_after(user, 18, src))
 			for(var/M in materials)
 				if(stack.stacktype == materials[M].sheet_type)
 					if(stack.use(amount))
 						materials[M].amount += amount * stack.perunit
 						break
-	busy = 0
+	overlays -= "protolathe_[t]"
+	busy = FALSE
+	update_icon()
 	if(linked_console)
 		linked_console.update_open_uis()
 
@@ -174,18 +184,18 @@
 		return
 
 	busy = TRUE
-	flick("protolathe_n",src)
+	update_icon()
 	use_power(power)
 
 	for(var/M in D.materials)
 		if(check_mat(D, M) < amount)
 			visible_message("<span class='warning'>The [name] beeps, \"Not enough materials to complete prototype.\"</span>")
 			busy = FALSE
+			update_icon()
 			return
 	for(var/M in D.materials)
 		materials[M].amount = max(0, (materials[M].amount - (D.materials[M] / efficiency_coeff * amount)))
-
-	addtimer(CALLBACK(src, .proc/create_design, RNDD), 32 * amount / efficiency_coeff)
+	addtimer(CALLBACK(src, .proc/create_design, RNDD), D.time * amount / efficiency_coeff)
 
 /obj/machinery/r_n_d/protolathe/proc/create_design(datum/rnd_queue_design/RNDD)
 	var/datum/design/D = RNDD.design
@@ -193,6 +203,7 @@
 	for(var/i = 1 to amount)
 		new D.build_path(loc)
 	busy = FALSE
+	update_icon()
 	queue -= RNDD
 
 	if(queue.len)

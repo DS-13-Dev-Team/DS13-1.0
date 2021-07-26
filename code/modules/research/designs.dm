@@ -19,14 +19,13 @@ other types of metals and chemistry for reagents).
 	var/name_category = null		//If set, name is modified into "[name_category] ([item_name])"
 	var/desc = "No description set"	//Description of the created object. If null, it will use group_desc and name where applicable.
 	var/id = null					//ID of the created object for easy refernece. If null, uses typepath instead.
-	var/sort_string = "ZZZZZ"		//Sorting order
 
 	var/list/materials = list()		//List of materials. Format: "id" = amount.
 	var/list/chemicals = list()		//List of reagents. Format: "id" = amount. DON'T USE IN PROTOLATHE DESIGNS!
 	var/build_path = null			//The path of the object that gets created.
 	var/build_type = PROTOLATHE		//Flag as to what kind machine the design is built in. See defines.
 	var/category = "Misc"			//Used to sort designs
-	var/time = 0					//How many ticks it requires to build. If 0, calculated from the amount of materials used.
+	var/time = 18					//How many ticks it requires to build
 
 	var/list/ui_data = null			//Pre-generated UI data, to be sent into NanoUI/TGUI interfaces.
 

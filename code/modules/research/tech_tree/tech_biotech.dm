@@ -188,7 +188,7 @@
 	y = 0.4
 	icon = "rapidsyringegun"
 
-	required_technologies = list("hypospray")
+	required_technologies = list("hypospray", "nleth_eq")
 	required_tech_levels = list()
 	cost = 1500
 

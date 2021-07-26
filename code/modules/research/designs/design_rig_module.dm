@@ -13,7 +13,6 @@
 	id = "rig_meson"
 	materials = list(MATERIAL_STEEL = 100, MATERIAL_GLASS = 200, "plastic" = 300)
 	build_path = /obj/item/rig_module/vision/meson
-	sort_string = "WCAAA"
 
 /datum/design/item/rig_module/medhud
 	name = "Medical HUD"
@@ -21,7 +20,6 @@
 	id = "rig_medhud"
 	materials = list(MATERIAL_STEEL = 100, MATERIAL_GLASS = 200,  "plastic" = 300)
 	build_path = /obj/item/rig_module/vision/medhud
-	sort_string = "WCAAB"
 
 /datum/design/item/rig_module/sechud
 	name = "Security HUD"
@@ -29,7 +27,6 @@
 	id = "rig_sechud"
 	materials = list(MATERIAL_STEEL = 100, MATERIAL_GLASS = 200,  "plastic" = 300)
 	build_path = /obj/item/rig_module/vision/sechud
-	sort_string = "WCAAC"
 
 /datum/design/item/rig_module/nvg
 	name = "Night Vision"
@@ -37,7 +34,6 @@
 	id = "rig_nvg"
 	materials = list("plastic" = 500, MATERIAL_STEEL = 300, MATERIAL_GLASS = 200, "uranium" = 200)
 	build_path = /obj/item/rig_module/vision/nvg
-	sort_string = "WCAAD"
 
 /datum/design/item/rig_module/healthscanner
 	name = "Medical Scanner"
@@ -45,7 +41,6 @@
 	id = "rig_healthscanner"
 	materials = list("plastic" = 1000, MATERIAL_STEEL = 700, MATERIAL_GLASS = 500)
 	build_path = /obj/item/rig_module/device/healthscanner
-	sort_string = "WCBAA"
 
 /datum/design/item/rig_module/drill
 	name = "Mining Drill"
@@ -53,7 +48,6 @@
 	id = "rig_drill"
 	materials = list(MATERIAL_STEEL = 3500, MATERIAL_GLASS = 1500, MATERIAL_DIAMOND = 2000, "plastic" = 1000)
 	build_path = /obj/item/rig_module/device/drill
-	sort_string = "WCCAA"
 
 /datum/design/item/rig_module/orescanner
 	name = "Ore Scanner"
@@ -61,7 +55,6 @@
 	id = "rig_orescanner"
 	materials = list("plastic" = 1000, MATERIAL_STEEL = 800, MATERIAL_GLASS = 500)
 	build_path = /obj/item/rig_module/device/orescanner
-	sort_string = "WCDAA"
 
 /datum/design/item/rig_module/anomaly_scanner
 	name = "Anomaly Scanner"
@@ -69,7 +62,6 @@
 	id = "rig_anomaly_scanner"
 	materials = list("plastic" = 1000, MATERIAL_STEEL = 800, MATERIAL_GLASS = 500)
 	build_path = /obj/item/rig_module/device/anomaly_scanner
-	sort_string = "WCDAB"
 
 /*	//Noncanon
 /datum/design/item/rig_module/rcd
@@ -86,7 +78,6 @@
 	id = "rig_jets"
 	materials = list(MATERIAL_STEEL = 3000, "plastic" = 2000, MATERIAL_GLASS = 1000)
 	build_path = /obj/item/rig_module/maneuvering_jets
-	sort_string = "WCFAA"
 
 //I think this is like a janitor thing but seems like it could be useful for engis
 /datum/design/item/rig_module/decompiler
@@ -95,7 +86,6 @@
 	id = "rig_decompiler"
 	materials = list(MATERIAL_STEEL = 3000, "plastic" = 2000, MATERIAL_GLASS = 1000)
 	build_path = /obj/item/rig_module/device/decompiler
-	sort_string = "WCGAA"
 
 /datum/design/item/rig_module/powersink
 	name = "Power Sink"
@@ -103,7 +93,6 @@
 	id = "rig_powersink"
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 2000, MATERIAL_GOLD = 1000, "plastic" = 1000)
 	build_path = /obj/item/rig_module/power_sink
-	sort_string = "WCHAA"
 
 /datum/design/item/rig_module/flash
 	name = "Flash"
@@ -112,7 +101,6 @@
 	build_type = PROTOLATHE | STORE
 	materials = list("plastic" = 1500, MATERIAL_STEEL = 1000, MATERIAL_GLASS = 500)
 	build_path = /obj/item/rig_module/device/flash
-	sort_string = "WCJAA"
 
 /datum/design/item/rig_module/taser
 	name = "Taser"
@@ -121,7 +109,6 @@
 	build_type = PROTOLATHE | STORE
 	materials = list(MATERIAL_STEEL = 4000, "plastic" = 2500, MATERIAL_GLASS = 2000, MATERIAL_GOLD = 1000)
 	build_path = /obj/item/rig_module/mounted/taser
-	sort_string = "WCKAA"
 
 /*	//Noncanon
 /datum/design/item/rig_module/egun
@@ -130,7 +117,6 @@
 	id = "rig_egun"
 	materials = list(MATERIAL_STEEL = 6000, MATERIAL_GLASS = 3000, "plastic" = 2500, MATERIAL_GOLD = 2000, MATERIAL_SILVER = 1000)
 	build_path = /obj/item/rig_module/mounted/egun
-	sort_string = "WCKAB"
 
 /datum/design/item/rig_module/enet
 	name = "Energy Net"
@@ -138,7 +124,6 @@
 	id = "rig_enet"
 	materials = list(MATERIAL_STEEL = 6000, MATERIAL_GLASS = 3000, MATERIAL_DIAMOND = 2000, "plastic" = 2000)
 	build_path = /obj/item/rig_module/fabricator/energy_net
-	sort_string = "WCKAC"
 */
 /datum/design/item/rig_module/cooling_unit
 	name = "Cooling Unit"
@@ -146,7 +131,7 @@
 	id = "rig_cooler"
 	materials = list(MATERIAL_STEEL = 3000, MATERIAL_GLASS = 3500, "plastic" = 2000)
 	build_path = /obj/item/rig_module/cooling_unit
-	sort_string = "WCLAB"
+
 
 
 /datum/design/item/rig_module/kinesis
